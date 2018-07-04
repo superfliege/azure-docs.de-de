@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/15/2018
+ms.date: 06/22/2018
 ms.author: terrylan
-ms.openlocfilehash: 86e8c1c8f0d8654c86b851e3ae7296476f38b94e
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 1bb0b61fe8a74edd35bb096fd295aedc67f6efb3
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34756900"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335889"
 ---
 # <a name="supported-platforms-in-azure-security-center"></a>Unterstützte Plattformen in Azure Security Center
 Die Überwachung des Sicherheitsstatus und entsprechende Empfehlungen sind für virtuelle Computer (VMs), die mit dem klassischen Bereitstellungsmodell oder mit dem Resource Manager-Bereitstellungsmodell erstellt wurden, und für Computer verfügbar.
@@ -42,12 +42,14 @@ Unterstützte Windows-Betriebssysteme:
 ## <a name="supported-platforms-for-linux-computers-and-vms"></a>Unterstützte Plattformen für Linux-Computer und -VMs
 Unterstützte Linux-Betriebssysteme:
 
-* Ubuntu-Versionen 12.04, 14.04, 16.04, 16.10
-* Debian-Versionen 7, 8
-* CentOS-Versionen 6.\*, 7.*
-* Red Hat Enterprise Linux-Versionen (RHEL) 6.\*, 7.\*
-* SUSE Linux Enterprise Server-Versionen (SLES) 11 SP4+, 12.\*
-* Oracle Linux-Versionen 6.\*, 7.\*
+* Ubuntu-Versionen 12.04 LTS, 14.04 LTS, 16.04 LTS
+* Debian-Versionen 6, 7, 8, 9
+* CentOS-Versionen 5, 6, 7
+* Red Hat Enterprise Linux-Versionen (RHEL) 5, 6, 7
+* SUSE Linux Enterprise Server-Versionen (SLES) 11, 12
+* Oracle Linux-Versionen 5, 6, 7
+* Amazon Linux 2012.09 bis 2017
+* OpenSSL 1.1.0 wird nur auf x86_64-Plattformen (64-Bit) unterstützt.
 
 > [!NOTE]
 > Verhaltensanalysen für virtuelle Computer sind für Linux-Betriebssysteme noch nicht verfügbar.

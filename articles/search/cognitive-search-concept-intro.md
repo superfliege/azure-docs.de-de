@@ -3,17 +3,18 @@ title: Cognitive Search für die Datenextrahierung und die Verarbeitung natürli
 description: Datenextrahierung, die Verarbeitung natürlicher Sprache (Natural Language Processing, NLP) und die Bildverarbeitung zum Erstellen durchsuchbarer Inhalte in der Azure Search-Indizierung mithilfe von kognitiven Fähigkeiten.
 manager: cgronlun
 author: HeidiSteen
+services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: heidist
-ms.openlocfilehash: ca6c285348208a7ad24faf966073d641810039fc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 64b4c0a315e206cd260f2f1108362e92f55d1843
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641110"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36304281"
 ---
 # <a name="what-is-cognitive-search"></a>Was ist Cognitive Search?
 
@@ -25,12 +26,12 @@ Die KI-Integration erfolgt durch *kognitive Fähigkeiten*, die Quelldokumente au
 
 Während der Indizierung verwendete Fähigkeiten können vordefiniert oder benutzerdefiniert sein:
 
-+ [Vordefinierte Fähigkeiten](cognitive-search-predefined-skills.md) basieren auf den gleichen KI-Algorithmen, die auch in Cognitive Services-APIs verwendet werden: [Erkennung benannter Entitäten](cognitive-search-skill-named-entity-recognition.md), [Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md) und [OCR](cognitive-search-skill-ocr.md) sind nur wenige Beispiele dafür. 
++ [Vordefinierte Skills](cognitive-search-predefined-skills.md) basieren auf den gleichen KI-Algorithmen, die auch in Cognitive Services-APIs verwendet werden: [Erkennung benannter Entitäten](cognitive-search-skill-named-entity-recognition.md), [Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md) und [OCR](cognitive-search-skill-ocr.md) sind nur wenige Beispiele dafür. 
 
 + [Benutzerdefinierte Fähigkeiten](cognitive-search-create-custom-skill-example.md) können von Ihnen für eine spezielle, für Sie erforderliche Verarbeitung entwickelt werden. Zu Beispielen für benutzerdefinierte Fähigkeiten zählen ein benutzerdefiniertes Entitätsmodul oder ein benutzerdefinierter Dokumentenklassifizierer, das bzw. der auf eine bestimmte Domäne ausgerichtet ist, wie z.B. Finanzen, wissenschaftliche Veröffentlichungen oder Medizin.
 
 > [!NOTE]
-> Cognitive Search ist als öffentliche Vorschauversion verfügbar, und die Ausführung von Fähigkeitengruppen ist derzeit kostenlos. Die Preisgestaltung für diese Funktion wird zu einem späteren Zeitpunkt bekannt gegeben.
+> Die kognitive Suche ist als öffentliche Vorschauversion verfügbar, und die Ausführung von Skillsets ist derzeit kostenlos. Die Preise für diese Funktion werden zu einem späteren Zeitpunkt bekannt gegeben.
 
 ## <a name="components-of-cognitive-search"></a>Komponenten von Cognitive Search
 

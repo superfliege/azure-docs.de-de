@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2018
+ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 231f7b915c324a5af91564c80d17bbad335d658d
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 1b75443f442affea2f1010605bb9aa330043336a
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294770"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319582"
 ---
 # <a name="manage-access-using-rbac-and-azure-powershell"></a>Verwalten des Zugriffs mit der RBAC und Azure PowerShell
 
@@ -27,7 +27,7 @@ Der Zugriff auf Ressourcen in Azure wird mithilfe der [rollenbasierten Zugriffss
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie PowerShell verwenden können, um die RBAC zu verwalten, benötigen Sie ein der folgenden Komponenten:
+Für die Zugriffsverwaltung benötigen Sie Folgendes:
 
 * [PowerShell in Azure Cloud Shell](/azure/cloud-shell/overview)
 * [Azure PowerShell](/powershell/azure/install-azurerm-ps)
@@ -198,7 +198,7 @@ Get-AzureRmRoleAssignment -SignInName isabella@example.com -ExpandPrincipalGroup
 
 ### <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>Auflisten der Rollenzuweisungen für klassische Abonnementadministratoren und -Co-Administratoren
 
-Zum Auflisten der Rollenzuweisungen für die klassischen Abonnementadministratoren und -Co-Administratoren verwenden Sie [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment):
+Zum Auflisten der Rollenzuweisungen für den Administrator und die Co-Administratoren für das klassische Abonnement verwenden Sie [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
 
 ```azurepowershell
 Get-AzureRmRoleAssignment -IncludeClassicAdministrators
@@ -220,7 +220,7 @@ So rufen Sie die Objekt-ID für eine Azure AD-Gruppe mit [Get-AzureRmADGroup](/p
 Get-AzureRmADGroup -SearchString <group name in quotes>
 ```
 
-So rufen Sie die Objekt-ID für einen Azure AD-Dienstprinzipal oder eine Azure AD-Anwendung mit [Get-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal) ab:
+Die Objekt-ID für einen Azure AD-Dienstprinzipal oder eine Azure AD-Anwendung können Sie mit [Get-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal) abrufen.
 
 ```azurepowershell
 Get-AzureRmADServicePrincipal -SearchString <service name in quotes>
@@ -228,7 +228,7 @@ Get-AzureRmADServicePrincipal -SearchString <service name in quotes>
 
 ### <a name="create-a-role-assignment-for-an-application-at-a-subscription-scope"></a>Erstellen einer Rollenzuweisung für eine Anwendung im Abonnementbereich
 
-So gewähren Sie einer Anwendung mit [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) Zugriff im Abonnementkontext:
+Einer Anwendung können Sie mit [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) Zugriff auf der Ebene der Abonnements gewähren.
 
 ```azurepowershell
 New-AzureRmRoleAssignment -ObjectId <application id> -RoleDefinitionName <role name> -Scope <subscription id>
@@ -250,7 +250,7 @@ CanDelegate        : False
 
 ### <a name="create-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>Erstellen einer Rollenzuweisung für einen Benutzer in einem Ressourcengruppenbereich
 
-So gewähren Sie einem Benutzer mit [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) Zugriff im Ressourcengruppenkontext:
+Einem Benutzer können Sie mit [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) Zugriff auf der Ebene der Ressourcengruppe gewähren.
 
 ```azurepowershell
 New-AzureRmRoleAssignment -SignInName <email of user> -RoleDefinitionName <role name in quotes> -ResourceGroupName <resource group name>
@@ -274,7 +274,7 @@ CanDelegate        : False
 
 ### <a name="create-a-role-assignment-for-a-group-at-a-resource-scope"></a>Erstellen einer Rollenzuweisung für eine Gruppe in einem Ressourcenbereich
 
-So gewähren Sie einer Gruppe mit [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) Zugriff im Ressourcenkontext:
+Einer Gruppe können Sie mit [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) Zugriff auf Ressourcenebene gewähren.
 
 ```azurepowershell
 New-AzureRmRoleAssignment -ObjectId <object id> -RoleDefinitionName <role name in quotes> -ResourceName <resource name> -ResourceType <resource type> -ParentResource <parent resource> -ResourceGroupName <resource group name>
@@ -305,7 +305,7 @@ CanDelegate        : False
 
 ## <a name="remove-access"></a>Zugriff entfernen
 
-In RBAC entfernen Sie mit [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) eine Rollenzuweisung, um den Zugriff zu entfernen:
+In der RBAC entfernen Sie mit [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) eine Rollenzuweisung, um den Zugriff zu entfernen.
 
 ```azurepowershell
 Remove-AzureRmRoleAssignment -ObjectId <object id> -RoleDefinitionName <role name> -Scope <scope such as subscription id>
@@ -315,272 +315,8 @@ Remove-AzureRmRoleAssignment -ObjectId <object id> -RoleDefinitionName <role nam
 PS C:\> Remove-AzureRmRoleAssignment -SignInName alain@example.com -RoleDefinitionName "Virtual Machine Contributor" -ResourceGroupName pharma-sales-projectforecast
 ```
 
-## <a name="list-custom-roles"></a>Auflisten benutzerdefinierter Rollen 
-
-Zum Auflisten der Rollen, die in einem Bereich für die Zuweisung verfügbar sind, wählen Sie den Befehl [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition).
-
-Im folgenden Beispiel werden alle Rollen aufgelistet, die für die Zuweisung im ausgewählten Abonnement verfügbar sind.
-
-```azurepowershell
-Get-AzureRmRoleDefinition | FT Name, IsCustom
-```
-
-```Example
-Name                                              IsCustom
-----                                              --------
-Virtual Machine Operator                              True
-AcrImageSigner                                       False
-AcrQuarantineReader                                  False
-AcrQuarantineWriter                                  False
-API Management Service Contributor                   False
-...
-```
-
-Im folgenden Beispiel werden nur die benutzerdefinierten Rollen aufgelistet, die für die Zuweisung im ausgewählten Abonnement verfügbar sind.
-
-```azurepowershell
-Get-AzureRmRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom
-```
-
-```Example
-Name                     IsCustom
-----                     --------
-Virtual Machine Operator     True
-```
-
-Wenn sich das ausgewählte Abonnement nicht in der `AssignableScopes` der Rolle befindet, wird die benutzerdefinierte Rolle nicht aufgeführt.
-
-## <a name="create-a-custom-role"></a>Erstellen einer benutzerdefinierten Rolle
-
-Um eine benutzerdefinierte Rolle zu erstellen, verwenden Sie den Befehl [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition). Es gibt zwei Methoden zum Strukturieren der Rolle: mithilfe eines `PSRoleDefinition`-Objekts oder einer JSON-Vorlage. 
-
-### <a name="get-operations-for-a-resource-provider"></a>Abrufen von Vorgängen für Ressourcenanbieter
-
-Wenn Sie benutzerdefinierte Rollen neu erstellen, ist es wichtig, alle möglichen Vorgänge der Ressourcenanbieter zu kennen.
-Sie können die Liste der [Ressourcenanbietervorgänge](resource-provider-operations.md) ansehen oder den Befehl [Get AzureRMProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) ausführen, um diese Informationen zu erhalten.
-Wenn Sie beispielsweise alle verfügbaren Vorgänge für virtuelle Computer überprüfen möchten, verwenden Sie folgenden Befehl:
-
-```azurepowershell
-Get-AzureRMProviderOperation <operation> | FT OperationName, Operation, Description -AutoSize
-```
-
-```Example
-PS C:\> Get-AzureRMProviderOperation "Microsoft.Compute/virtualMachines/*" | FT OperationName, Operation, Description -AutoSize
-
-OperationName                                  Operation                                                      Description
--------------                                  ---------                                                      -----------
-Get Virtual Machine                            Microsoft.Compute/virtualMachines/read                         Get the propertie...
-Create or Update Virtual Machine               Microsoft.Compute/virtualMachines/write                        Creates a new vir...
-Delete Virtual Machine                         Microsoft.Compute/virtualMachines/delete                       Deletes the virtu...
-Start Virtual Machine                          Microsoft.Compute/virtualMachines/start/action                 Starts the virtua...
-...
-```
-
-### <a name="create-a-role-with-psroledefinition-object"></a>Erstellen einer Rolle mit dem „PSRoleDefinition“-Objekt
-
-Wenn Sie PowerShell verwenden, um eine benutzerdefinierte Rolle zu erstellen, können Sie eine der [integrierten Rollen](built-in-roles.md) als Ausgangspunkt verwenden oder von Grund auf beginnen. Das erste Beispiel in diesem Abschnitt beginnt mit einer integrierten Rolle. Diese wird dann mit weiteren Berechtigungen angepasst. Bearbeiten Sie die Attribute, und fügen Sie die gewünschten `Actions`, `NotActions` oder `AssignableScopes` hinzu. Speichern Sie die Änderungen anschließend als neue Rolle.
-
-Das folgende Beispiel beginnt mit der integrierten Rolle [Virtual Machine Contributor](built-in-roles.md#virtual-machine-contributor), um eine benutzerdefinierte Rolle namens *Virtual Machine Operator* zu erstellen. Die neue Rolle gewährt Zugriff auf alle Lesevorgänge der Ressourcenanbieter *Microsoft.Compute*, *Microsoft.Storage* und *Microsoft.Network* sowie zum Starten, Neustarten und Überwachen virtueller Computer. Die benutzerdefinierte Rolle kann in zwei Abonnements verwendet werden.
-
-```azurepowershell
-$role = Get-AzureRmRoleDefinition "Virtual Machine Contributor"
-$role.Id = $null
-$role.Name = "Virtual Machine Operator"
-$role.Description = "Can monitor and restart virtual machines."
-$role.Actions.Clear()
-$role.Actions.Add("Microsoft.Storage/*/read")
-$role.Actions.Add("Microsoft.Network/*/read")
-$role.Actions.Add("Microsoft.Compute/*/read")
-$role.Actions.Add("Microsoft.Compute/virtualMachines/start/action")
-$role.Actions.Add("Microsoft.Compute/virtualMachines/restart/action")
-$role.Actions.Add("Microsoft.Authorization/*/read")
-$role.Actions.Add("Microsoft.Resources/subscriptions/resourceGroups/read")
-$role.Actions.Add("Microsoft.Insights/alertRules/*")
-$role.Actions.Add("Microsoft.Support/*")
-$role.AssignableScopes.Clear()
-$role.AssignableScopes.Add("/subscriptions/00000000-0000-0000-0000-000000000000")
-$role.AssignableScopes.Add("/subscriptions/11111111-1111-1111-1111-111111111111")
-New-AzureRmRoleDefinition -Role $role
-```
-
-Das folgende Beispiel zeigt eine weitere Möglichkeit, um die benutzerdefinierte Rolle *Virtual Machine Operator* zu erstellen. Es beginnt mit der Erstellung eines neuen „PSRoleDefinition“-Objekts. Die Aktionsvorgänge werden in der `perms`-Variable angegeben, und auf die `Actions`-Eigenschaft festgelegt. Die `NotActions`-Eigenschaft wird festgelegt, indem die `NotActions` aus der integrierten Rolle [Virtual Machine Contributor](built-in-roles.md#virtual-machine-contributor) gelesen werden. Da [Virtual Machine Contributor](built-in-roles.md#virtual-machine-contributor) über keine `NotActions` verfügt, ist diese Zeile nicht erforderlich, aber sie zeigt, wie Informationen aus einer anderen Rolle abgerufen werden können.
-
-```azurepowershell
-$role = [Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition]::new()
-$role.Name = 'Virtual Machine Operator 2'
-$role.Description = 'Can monitor and restart virtual machines.'
-$role.IsCustom = $true
-$perms = 'Microsoft.Storage/*/read','Microsoft.Network/*/read','Microsoft.Compute/*/read'
-$perms += 'Microsoft.Compute/virtualMachines/start/action','Microsoft.Compute/virtualMachines/restart/action'
-$perms += 'Microsoft.Authorization/*/read','Microsoft.Resources/subscriptions/resourceGroups/read'
-$perms += 'Microsoft.Insights/alertRules/*','Microsoft.Support/*'
-$role.Actions = $perms
-$role.NotActions = (Get-AzureRmRoleDefinition -Name 'Virtual Machine Contributor').NotActions
-$subs = '/subscriptions/00000000-0000-0000-0000-000000000000','/subscriptions/11111111-1111-1111-1111-111111111111'
-$role.AssignableScopes = $subs
-New-AzureRmRoleDefinition -Role $role
-```
-
-### <a name="create-role-with-json-template"></a>Erstellen der Rolle mit einer JSON-Vorlage
-
-Eine JSON-Vorlage kann als Quelldefinition für die benutzerdefinierte Rolle verwendet werden. Im folgenden Beispiel wird eine benutzerdefinierte Rolle erstellt, die Lesezugriff auf Speicher- und Computeressourcen und Zugriff auf den Support ermöglicht. Außerdem wird diese Rolle zwei Abonnements hinzugefügt. Erstellen Sie eine neue Datei `C:\CustomRoles\customrole1.json` anhand des folgenden Beispiels. Die ID muss bei der Ersterstellung der Rolle auf `null` festgelegt werden, da eine neue ID automatisch generiert wird. 
-
-```json
-{
-  "Name": "Custom Role 1",
-  "Id": null,
-  "IsCustom": true,
-  "Description": "Allows for read access to Azure storage and compute resources and access to support",
-  "Actions": [
-    "Microsoft.Compute/*/read",
-    "Microsoft.Storage/*/read",
-    "Microsoft.Support/*"
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/00000000-0000-0000-0000-000000000000",
-    "/subscriptions/11111111-1111-1111-1111-111111111111"
-  ]
-}
-```
-
-Um die Rolle den Abonnements hinzuzufügen, führen Sie den folgenden PowerShell-Befehl aus:
-
-```azurepowershell
-New-AzureRmRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
-```
-
-## <a name="modify-a-custom-role"></a>Ändern einer benutzerdefinierten Rolle
-
-Ähnlich wie beim Erstellen einer benutzerdefinierten Rolle können Sie eine vorhandene benutzerdefinierte Rolle mithilfe des `PSRoleDefinition`-Objekts oder einer JSON-Vorlage ändern.
-
-### <a name="modify-role-with-psroledefinition-object"></a>Ändern der Rolle mit „PSRoleDefinition““-Objekt
-
-Zum Ändern einer benutzerdefinierten Rolle verwenden Sie zunächst den Befehl [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition), um die Rollendefinition abzurufen. Nehmen Sie zweitens die gewünschten Änderungen an der Rollendefinitionsdatei vor. Verwenden Sie abschließend den Befehl [Set-AzureRmRoleDefinition](/powershell/module/azurerm.resources/set-azurermroledefinition), um die geänderte Rollendefinition zu speichern.
-
-Im folgenden Beispiel wird der Vorgang `Microsoft.Insights/diagnosticSettings/*` zur benutzerdefinierten Rolle *Virtual Machine Operator* hinzugefügt.
-
-```azurepowershell
-$role = Get-AzureRmRoleDefinition "Virtual Machine Operator"
-$role.Actions.Add("Microsoft.Insights/diagnosticSettings/*")
-Set-AzureRmRoleDefinition -Role $role
-```
-
-```Example
-PS C:\> $role = Get-AzureRmRoleDefinition "Virtual Machine Operator"
-PS C:\> $role.Actions.Add("Microsoft.Insights/diagnosticSettings/*")
-PS C:\> Set-AzureRmRoleDefinition -Role $role
-
-Name             : Virtual Machine Operator
-Id               : 88888888-8888-8888-8888-888888888888
-IsCustom         : True
-Description      : Can monitor and restart virtual machines.
-Actions          : {Microsoft.Storage/*/read, Microsoft.Network/*/read, Microsoft.Compute/*/read,
-                   Microsoft.Compute/virtualMachines/start/action...}
-NotActions       : {}
-AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
-                   /subscriptions/11111111-1111-1111-1111-111111111111}
-```
-
-Im folgenden Beispiel wird ein Azure-Abonnement den zuweisbaren Bereichen der benutzerdefinierten Rolle *Virtual Machine Operator* hinzugefügt.
-
-```azurepowershell
-Get-AzureRmSubscription -SubscriptionName Production3
-
-$role = Get-AzureRmRoleDefinition "Virtual Machine Operator"
-$role.AssignableScopes.Add("/subscriptions/22222222-2222-2222-2222-222222222222")
-Set-AzureRmRoleDefinition -Role $role
-```
-
-```Example
-PS C:\> Get-AzureRmSubscription -SubscriptionName Production3
-
-Name     : Production3
-Id       : 22222222-2222-2222-2222-222222222222
-TenantId : 99999999-9999-9999-9999-999999999999
-State    : Enabled
-
-PS C:\> $role = Get-AzureRmRoleDefinition "Virtual Machine Operator"
-PS C:\> $role.AssignableScopes.Add("/subscriptions/22222222-2222-2222-2222-222222222222")
-PS C:\> Set-AzureRmRoleDefinition -Role $role
-
-Name             : Virtual Machine Operator
-Id               : 88888888-8888-8888-8888-888888888888
-IsCustom         : True
-Description      : Can monitor and restart virtual machines.
-Actions          : {Microsoft.Storage/*/read, Microsoft.Network/*/read, Microsoft.Compute/*/read,
-                   Microsoft.Compute/virtualMachines/start/action...}
-NotActions       : {}
-AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
-                   /subscriptions/11111111-1111-1111-1111-111111111111,
-                   /subscriptions/22222222-2222-2222-2222-222222222222}
-```
-
-### <a name="modify-role-with-json-template"></a>Ändern der Rolle mit einer JSON-Vorlage
-
-Mithilfe der vorherigen JSON-Vorlage können Sie eine vorhandene benutzerdefinierte Rolle über das Hinzufügen oder Entfernen von Aktionen mühelos ändern. Aktualisieren Sie die JSON-Vorlage, indem Sie „Microsoft.Network“ die Aktion „Read“ hinzufügen (siehe unten). Die Definitionen in der Vorlage werden nicht kumulativ auf eine vorhandene Definition angewendet. Dies bedeutet, dass die Rolle entsprechend Ihren Angaben in der Vorlage angezeigt wird. Außerdem müssen Sie das Feld „ID“ mit der ID der Rolle aktualisieren. Wenn Sie nicht sicher sind, wie dieser Wert lautet, können Sie diese Informationen mit dem Cmdlet [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) abrufen.
-
-```json
-{
-  "Name": "Custom Role 1",
-  "Id": "acce7ded-2559-449d-bcd5-e9604e50bad1",
-  "IsCustom": true,
-  "Description": "Allows for read access to Azure storage and compute resources and access to support",
-  "Actions": [
-    "Microsoft.Compute/*/read",
-    "Microsoft.Storage/*/read",
-    "Microsoft.Network/*/read",
-    "Microsoft.Support/*"
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/00000000-0000-0000-0000-000000000000",
-    "/subscriptions/11111111-1111-1111-1111-111111111111"
-  ]
-}
-```
-
-Führen Sie zum Aktualisieren der vorhandenen Rolle den folgenden PowerShell-Befehl aus:
-
-```azurepowershell
-Set-AzureRmRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
-```
-
-## <a name="delete-a-custom-role"></a>Löschen einer benutzerdefinierten Rolle
-
-Um eine benutzerdefinierte Rolle zu löschen, verwenden Sie den Befehl [Remove-AzureRmRoleDefinition](/powershell/module/azurerm.resources/remove-azurermroledefinition).
-
-Im folgenden Beispiel wird die benutzerdefinierte Rolle *Virtual Machine Operator* entfernt.
-
-```azurepowershell
-Get-AzureRmRoleDefinition "Virtual Machine Operator"
-Get-AzureRmRoleDefinition "Virtual Machine Operator" | Remove-AzureRmRoleDefinition
-```
-
-```Example
-PS C:\> Get-AzureRmRoleDefinition "Virtual Machine Operator"
-
-Name             : Virtual Machine Operator
-Id               : 88888888-8888-8888-8888-888888888888
-IsCustom         : True
-Description      : Can monitor and restart virtual machines.
-Actions          : {Microsoft.Storage/*/read, Microsoft.Network/*/read, Microsoft.Compute/*/read,
-                   Microsoft.Compute/virtualMachines/start/action...}
-NotActions       : {}
-AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
-                   /subscriptions/11111111-1111-1111-1111-111111111111}
-
-PS C:\> Get-AzureRmRoleDefinition "Virtual Machine Operator" | Remove-AzureRmRoleDefinition
-
-Confirm
-Are you sure you want to remove role definition with name 'Virtual Machine Operator'.
-[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
-```
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Verwenden von Azure PowerShell mit dem Azure-Ressourcen-Manager](../azure-resource-manager/powershell-azure-resource-manager.md)
-
-[!INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
+- [Tutorial: Gewähren des Zugriffs für eine Gruppe mit der RBAC und mit Azure PowerShell](tutorial-role-assignments-group-powershell.md)
+- [Tutorial: Erstellen einer benutzerdefinierten Rolle mithilfe von Azure PowerShell](tutorial-custom-role-powershell.md)
+- [Verwalten von Ressourcen mit Azure PowerShell](../azure-resource-manager/powershell-azure-resource-manager.md)

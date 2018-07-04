@@ -8,19 +8,18 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: d8fac770-bb57-4e1f-b50b-9ffeae239d07
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2018
+ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 2d22720e71788493d3663524f2b70783ba26b84d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0b5fb84f8d8fbed7e1d4112e96b00af3e460661a
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218163"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317101"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fluxx-labs"></a>Tutorial: Azure Active Directory-Integration mit Fluxx Labs
 
@@ -67,7 +66,7 @@ Zum Konfigurieren der Integration von Fluxx Labs in Azure AD müssen Sie Fluxx L
 2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“][2]
-    
+
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
@@ -103,7 +102,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
+
     ![Dialogfeld „Einmaliges Anmelden“](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Fluxx Labs** die folgenden Schritte aus:
@@ -123,8 +122,8 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     |-------------|------------|
     | Bereitstellung | `https://<subdomain>.fluxx.io/auth/saml/callback` |
     | Vor der Bereitstellung | `https://<subdomain>.preprod.fluxxlabs.com/auth/saml/callback`|
-        
-    > [!NOTE] 
+
+    > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam von Fluxx Labs](mailto:travis@fluxxlabs.com), um diese Werte zu erhalten.
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
@@ -135,7 +134,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/fluxxlabs-tutorial/tutorial_general_400.png)
 
-6. Klicken Sie im Abschnitt **Fluxx Labs-Konfiguration** auf **Fluxx Labs konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+6. Klicken Sie im Abschnitt **Fluxx Labs-Konfiguration** auf **Fluxx Labs konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
     ![Fluxx Labs-Konfiguration](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_configure.png)
 
@@ -148,9 +147,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 9. Klicken Sie im Verwaltungsbereich auf **Plug-Ins** > **Integrations** (Integrationen) und anschließend auf **SAML SSO-(Disabled)** (SAML-SSO (Deaktiviert)).
 
     ![Fluxx Labs-Konfiguration](./media/fluxxlabs-tutorial/config2.png)
-    
+
 10. Führen Sie im Abschnitt mit den Attributen die folgenden Schritte aus:
-    
+
     ![Fluxx Labs-Konfiguration](./media/fluxxlabs-tutorial/config3.png)
 
     a. Aktivieren Sie das Kontrollkästchen **SAML SSO** (SAML-SSO).
@@ -159,15 +158,17 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     c. Geben Sie im Textfeld **Callback Path** (Rückrufpfad) den Pfad **/auth/saml/callback** ein.
 
-    d. Fügen Sie in das Textfeld **Assertion Consumer Service Url(Single Sign-On URL)** (Assertionsverbraucherdienst-URL (URL für einmaliges Anmelden)) den Wert der **SAML-Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
+    d. Geben Sie in das Textfeld **Assertion Consumer Service Url (Single Sign-On URL)** (Assertionsverbraucherdienst-URL (URL für einmaliges Anmelden)) den Wert der **Antwort-URL** ein, den Sie im Azure-Portal eingegeben haben.
 
-    e. Fügen Sie in das Textfeld **Audience(SP Entity ID)** (Zielgruppe (SP-Entitäts-ID)) den Wert der **SAML-Entitäts-ID** ein, den Sie aus dem Azure-Portal kopiert haben.
+    e. Geben Sie in das Textfeld **Audience (SP Entity ID)** (Zielgruppe (SP-Entitäts-ID)) den Wert unter **Bezeichner** ein, den Sie im Azure-Portal eingegeben haben.
 
-    f. Öffnen Sie das Base64-codierte Zertifikat im Editor, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Zertifikat des Identitätsanbieters** ein.
+    f. Fügen Sie den Wert der **URL für den SAML-SSO-Dienst**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Identity Provider SSO Target URL** (SSO-Ziel-URL des Identitätsanbieters) ein.
 
-    g. Geben Sie in das Textfeld **Name identifier Format** (Namensbezeichnerformat) den Wert `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` ein.
+    g. Öffnen Sie das Base64-codierte Zertifikat im Editor, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Zertifikat des Identitätsanbieters** ein.
 
-    h. Klicken Sie auf **Speichern**.
+    h. Geben Sie in das Textfeld **Name identifier Format** (Namensbezeichnerformat) den Wert `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` ein.
+
+    i. Klicken Sie auf **Speichern**.
 
     > [!NOTE]
     > Nachdem der Inhalt gespeichert wurde, wird das Feld aus Sicherheitsgründen leer angezeigt, der Wert wurde jedoch in der Konfiguration gespeichert.
@@ -221,7 +222,7 @@ Damit sich Azure AD-Benutzer bei Fluxx Labs anmelden können, müssen sie in Flu
     ![Fluxx Labs-Konfiguration](./media/fluxxlabs-tutorial/config4.png)
 
 4. Führen Sie im Abschnitt **NEW PEOPLE** (NEUE PERSONEN) die folgenden Schritte aus:
-    
+
     ![Fluxx Labs-Konfiguration](./media/fluxxlabs-tutorial/config5.png)
 
     a. Fluxx Labs verwendet die E-Mail-Adresse als eindeutigen Bezeichner für SSO-Anmeldenamen. Geben Sie im Feld **SSO UID** (SSO-UID) die E-Mail-Adresse des Benutzers ein, die der Benutzer für die SSO-Anmeldung verwendet.
@@ -232,7 +233,7 @@ Damit sich Azure AD-Benutzer bei Fluxx Labs anmelden können, müssen sie in Flu
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Fluxx Labs gewähren.
 
-![Zuweisen der Benutzerrolle][200] 
+![Zuweisen der Benutzerrolle][200]
 
 **Um Britta Simon Fluxx Labs zuzuweisen, führen Sie die folgenden Schritte aus:**
 
@@ -257,7 +258,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
-    
+
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.

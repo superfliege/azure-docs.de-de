@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cshoe
-ms.openlocfilehash: ac301daca769f9cec0d3395e7bde32494dd8e3d1
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: ba008a86f76a526967bb9dab6ba37043a85f5cf3
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34735326"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36304131"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage-Sicherheitsleitfaden
 
@@ -101,7 +101,7 @@ Hier sind die wichtigsten Punkte, die Sie über die Verwendung von RBAC für den
 * [Azure Storage Resource Provider REST-API-Referenz](https://msdn.microsoft.com/library/azure/mt163683.aspx)
 
   Diese API-Referenz beschreibt die APIs, die Sie zum programmgesteuerten Verwalten Ihres Speicherkontos verwenden können.
-* [Developer's guide to auth with Azure Resource Manager API (Entwicklerhandbuch für die Authentifizierung mit Azure Resource Manager-API)](http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/)
+* [Verwenden der Resource Manager-Authentifizierungs-API für den Zugriff auf Abonnements](../../azure-resource-manager/resource-manager-api-authentication.md)
 
   In diesem Artikel wird die Authentifizierung mithilfe der Resource Manager-APIs gezeigt.
 * [Role-Based Access Control for Microsoft Azure from Ignite (Rollenbasierte Zugriffssteuerung für Microsoft Azure über Ignite)](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
@@ -209,7 +209,7 @@ http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
 &sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D (signature used for the authentication of the SAS)
 ```
 
-#### <a name="how-the-shared-access-signature-is-authenticated-by-the-azure-storage-service"></a>Authentifizierung der Shared Access Signature durch den Azure Storage-Dienst
+#### <a name="how-the-shared-access-signature-is-authorized-by-the-azure-storage-service"></a>Autorisierung der Shared Access Signature durch den Azure Storage-Dienst
 Wenn der Speicherdienst die Anforderung empfängt, erstellt er aufgrund der Eingabeabfrageparameter mit der gleichen Methode wie das aufrufende Programm eine Signatur. Anschließend werden die zwei Signaturen verglichen. Wenn sie übereinstimmen, kann der Speicherdienst die Speicherdienstversion prüfen, um die Gültigkeit sicherzustellen sowie festzustellen, ob aktuelles Datum und aktuelle Uhrzeit im angegebenen Fenster liegen, ob der angeforderte Zugriff der Anforderung entspricht usw.
 
 Würde z. B. die obige URL statt auf ein Blob auf eine Datei weisen, würde diese Anforderung fehlschlagen, weil sie angibt, dass die Shared Access Signature für ein Blob gilt. Wenn der aufgerufene REST-Befehl versuchen würde, ein Blob zu aktualisieren, würde er fehlschlagen, da die Shared Access Signature angibt, dass nur Lesezugriff zulässig ist.
@@ -404,11 +404,11 @@ In den nachstehenden Ressourcen ist ein Artikel aufgeführt, der die Liste der v
 
 ![Momentaufnahme von Feldern einer Protokolldatei](./media/storage-security-guide/image3.png)
 
-Uns interessieren die Einträge für „GetBlob“ und deren Authentifizierung. Darum müssen wir nach Einträgen mit „operation-type“ „Get-Blob“ suchen und überprüfen den „request-status“ (vierte</sup> Spalte) sowie den „authorization-type“ (achte</sup> Spalte).
+Uns interessieren die Einträge für „GetBlob“ und deren Autorisierung. Darum müssen wir nach Einträgen mit „operation-type“ „Get-Blob“ suchen und überprüfen den „request-status“ (vierte</sup> Spalte) sowie den „authorization-type“ (achte</sup> Spalte).
 
-In den ersten Zeilen der obigen Auflistung ist z.B. der „request-status“ „Success“ und der „authorization-type“ „authenticated“. Dies bedeutet, dass die Anforderung mithilfe des Speicherkontoschlüssels überprüft wurde.
+In den ersten Zeilen der obigen Auflistung ist z.B. der „request-status“ „Success“ und der „authorization-type“ „authenticated“. Dies bedeutet, dass die Anforderung mithilfe des Speicherkontoschlüssels autorisiert wurde.
 
-#### <a name="how-are-my-blobs-being-authenticated"></a>Wie werden meine Blobs authentifiziert?
+#### <a name="how-is-access-to-my-blobs-being-authorized"></a>Wie wird der Zugriff auf meine Blobs autorisiert?
 Drei Fälle interessieren uns.
 
 1. Das Blob ist öffentlich, und der Zugriff erfolgt mithilfe einer URL ohne SAS. In diesem Fall ist der „request-status“ „AnonymousSuccess“ und der „authorization-type“ „anonymous“.

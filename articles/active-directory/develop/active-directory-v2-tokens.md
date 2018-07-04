@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/22/2018
+ms.date: 06/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: d7b9ad5c76b0e20a3c58bddcc4947482b237fb8f
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 93d551bcc6e517702c064ec0bdf6be61d3230cb3
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164457"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36316667"
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Azure Active Directory v2.0-Tokenreferenz
 Der Azure Active Directory (Azure AD) v2.0-Endpunkt stellt bei jedem [Authentifizierungsfluss](active-directory-v2-flows.md) verschiedene Arten von Sicherheitstoken aus. Dieses Dokument beschreibt das Format, die Sicherheitsmerkmale und den Inhalt der einzelnen Tokentypen.
@@ -95,8 +95,7 @@ Wenn Sie ein Aktualisierungstoken für ein neues Zugriffstoken einlösen (und we
 ## <a name="validating-tokens"></a>Überprüfen von Token
 Zum aktuellen Zeitpunkt müssen Ihre Apps nur ID-Token überprüfen. Zur Überprüfung eines ID-Tokens muss Ihre App sowohl die Signatur des ID-Tokens als auch die Ansprüche im ID-Token überprüfen.
 
-<!-- TODO: Link -->
-Microsoft bietet Bibliotheken und Codebeispiele, die zeigen, wie die Tokenüberprüfung problemlos ausgeführt werden kann. In den nächsten Abschnitten wird der zugrunde liegende Prozess beschrieben. Einige Drittanbieter-Open-Source-Bibliotheken sind auch für die JWT-Überprüfung verfügbar. Es gibt mindestens eine Bibliotheksoption für nahezu jede Plattform und Sprache.
+<!-- TODO: Link --> Microsoft bietet Bibliotheken und Codebeispiele, die zeigen, wie die Tokenüberprüfung problemlos ausgeführt werden kann. In den nächsten Abschnitten wird der zugrunde liegende Prozess beschrieben. Einige Drittanbieter-Open-Source-Bibliotheken sind auch für die JWT-Überprüfung verfügbar. Es gibt mindestens eine Bibliotheksoption für nahezu jede Plattform und Sprache.
 
 ### <a name="validate-the-signature"></a>Überprüfen der Signatur
 Ein JWT enthält drei Segmente, die durch das Zeichen `.` getrennt sind. Das erste Segment wird als *Header*, das zweite als *Text* und das dritte als *Signatur* bezeichnet. Mit dem Signatursegment kann die Authentizität des ID-Tokens überprüft werden, sodass es für Ihre App als vertrauenswürdig eingestuft werden kann.
@@ -113,7 +112,7 @@ ID-Token werden mit branchenüblichen asymmetrischen Verschlüsselungsalgorithme
 
 Der Anspruch `alg` gibt den Algorithmus an, mit dem das Token signiert wurde. Der Anspruch `kid` bezeichnet den öffentlichen Schlüssel, mit dem das Token signiert wurde.
 
-Der v2.0-Endpunkt kann jederzeit ein ID-Token mithilfe eines bestimmten Satzes von Paaren aus öffentlichen und privaten Schlüsseln signieren. Der v2.0-Endpunkt wechselt regelmäßig durch die möglichen Sätze von Schlüsseln. Ihre App muss also auf die automatische Verarbeitung dieser Schlüsseländerungen ausgelegt sein. Die vom v2.0-Endpunkt verwendeten öffentlichen Schlüssel sollten idealerweise alle 24 Stunden auf Änderungen überprüft werden.
+Der v2.0-Endpunkt signiert ID- und Zugriffstoken mithilfe einer bestimmten Gruppe von Paaren aus öffentlichen und privaten Schlüsseln. Der v2.0-Endpunkt wechselt regelmäßig durch die möglichen Sätze von Schlüsseln. Ihre App muss also auf die automatische Verarbeitung dieser Schlüsseländerungen ausgelegt sein. Die vom v2.0-Endpunkt verwendeten öffentlichen Schlüssel sollten idealerweise alle 24 Stunden auf Änderungen überprüft werden.
 
 Sie können die Signaturschlüsseldaten, die zum Überprüfen der Signatur erforderlich sind, mithilfe des OpenID Connect-Metadatendokuments abrufen. Dieses Dokument befindet sich unter:
 
@@ -123,10 +122,11 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
 > [!TIP]
 > Fügen Sie die URL in einen Browser ein.
->
->
 
 Bei diesem Metadatendokument handelt es sich um ein JSON-Objekt, das zahlreiche nützliche Informationen enthält, beispielsweise den Ort der verschiedenen Endpunkte, die für die OpenID Connect-Authentifizierung erforderlich sind. Darüber hinaus enthält das Dokument einen *jwks_uri*, der den Speicherort des Satzes von öffentlichen Schlüsseln zum Signieren von Token angibt. Das JSON-Dokument am jwks_uri verfügt über alle Informationen zum gegenwärtig verwendeten öffentlichen Schlüssel. Ihre App kann mit dem `kid`-Anspruch im JWT-Header auswählen, welcher öffentliche Schlüssel in diesem Dokument zum Signieren eines Tokens verwendet wurde. Sie führt anschließend die Signaturüberprüfung mithilfe des korrekten öffentlichen Schlüssels und des angegebenen Algorithmus aus.
+
+> [!NOTE]
+> Der Anspruch `x5t` im v2.0-Endpunkt ist veraltet. Es wird empfohlen, Ihr Token mithilfe des Anspruchs `kid` zu überprüfen.
 
 Die Signaturüberprüfung geht über den Rahmen dieses Dokuments hinaus. Hilfreiche Informationen stehen jedoch in zahlreichen Open Source-Bibliotheken zur Verfügung.
 

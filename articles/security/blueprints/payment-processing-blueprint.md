@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: jomolesk
-ms.openlocfilehash: 03f13c0b1ae209cc3da211a252a9a735faad34d0
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 223829df11bb1c9add811b40b55e47ee1fbb1fe4
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301370"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751837"
 ---
 # <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Azure Security and Compliance Blueprint – PCI-DSS-konforme Umgebungen für die Zahlungsverarbeitung
 
@@ -298,7 +298,7 @@ Die standardmäßige Bereitstellung dient dazu, ein Mindestmaß an Security Cent
 
 ## <a name="deploy-the-solution"></a>Bereitstellen der Lösung
 
-Die Komponenten für die Bereitstellung dieser Lösung sind im [PCI Blueprint-Coderepository][code-repo] verfügbar. Die Bereitstellung der grundlegenden Architektur erfordert mehrere Schritte, die über Microsoft PowerShell 5.x ausgeführt werden. Um eine Verbindung mit der Website herzustellen, müssen Sie einen benutzerdefinierten Domänennamen (z. B. „contoso.com“) bereitstellen. Dies wird mit dem Parameter `-customHostName` in Schritt 2 angegeben. Weitere Informationen finden Sie unter [Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps](/azure/app-service-web/custom-dns-web-site-buydomains-web-app). Ein benutzerdefinierter Domänenname ist nicht erforderlich, um die Lösung erfolgreich bereitzustellen und auszuführen, aber es wird Ihnen nicht möglich sein, zu Demonstrationszwecken eine Verbindung mit der Website herzustellen.
+Die Komponenten für die Bereitstellung dieser Lösung sind im [Repository für PCI Blueprint-Code](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms) verfügbar. Die Bereitstellung der grundlegenden Architektur erfordert mehrere Schritte, die über Microsoft PowerShell 5.x ausgeführt werden. Um eine Verbindung mit der Website herzustellen, müssen Sie einen benutzerdefinierten Domänennamen (z. B. „contoso.com“) bereitstellen. Dieser wird über eine angeleitete Benutzereingabe im primären Bereitstellungsskript in Schritt 2 angegeben. Weitere Informationen finden Sie unter [Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps](/azure/app-service-web/custom-dns-web-site-buydomains-web-app). Ein benutzerdefinierter Domänenname ist nicht erforderlich, um die Lösung erfolgreich bereitzustellen und auszuführen, aber es wird Ihnen nicht möglich sein, zu Demonstrationszwecken eine Verbindung mit der Website herzustellen.
 
 In den Skripts werden Domänenbenutzer zu dem Azure AD-Mandanten hinzugefügt, den Sie angeben. Es wird empfohlen, einen neuen Azure AD-Mandanten zu erstellen, der zum Testen verwendet wird.
 
@@ -323,19 +323,17 @@ Es wird dringend empfohlen, eine Neuinstallation von PowerShell zu verwenden, um
  
     ```powershell
     .\1-DeployAndConfigureAzureResources.ps1 
-        -resourceGroupName contosowebstore
-        -globalAdminUserName adminXX@contosowebstore.com 
-        -globalAdminPassword **************
-        -azureADDomainName contosowebstore.com 
-        -subscriptionID XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 
-        -suffix PCIcontosowebstore
-        -customHostName contosowebstore.com
-        -sqlTDAlertEmailAddress edna@contosowebstore.com 
-        -enableSSL
-        -enableADDomainPasswordPolicy 
     ```
     
-    Ausführliche Nutzungsanweisungen finden Sie unter [Script Instructions – Deploy and Configure Azure Resources](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md).
+    Ausführliche Nutzungsanweisungen finden Sie unter [Script Instructions – Deploy and Configure Azure Resources](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md). Dieses Skript kann zur Unterstützung der Contoso Web Store-Demo oder zum Durchführen der ersten Schritte der Bereitstellung einer Umgebung zur Unterstützung der PCI-Konformität verwendet werden. 
+    
+    ```PowerShell
+    .\1A-ContosoWebStoreDemoAzureResources.ps1
+    ```
+    
+    Ausführliche Nutzungsanweisungen zur Unterstützung der Contoso Web Store-Demobereitstellung finden Sie unter [Script Instructions – Contoso Web Store Demo Azure Resources (Skriptanweisungen – Azure-Ressourcen für Contoso Web Store Demo)](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1A-ContosoWebStoreDemoAzureResources.md). Mit diesem Skript kann die Infrastruktur für die Contoso Web Store-Demo bereitgestellt werden. 
+    
+    Diese Skripts können unabhängig voneinander verwendet werden. Um die Lösung am besten zu verstehen, sollten Sie die Demobereitstellung zum Identifizieren der Azure-Ressourcen, die zur Unterstützung der Lösung erforderlich sind, abschließen. 
     
 3. Protokollierung und Überwachung. Wenn die Lösung bereitgestellt wurde, kann ein Log Analytics-Arbeitsbereich geöffnet werden, und die im Lösungsrepository bereitgestellten Beispielvorlagen veranschaulichen, wie ein Überwachungsdashboard konfiguriert wird. Die Beispielvorlagen finden Sie im Ordner [omsDashboards](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md). Beachten Sie, dass Daten in Log Analytics erfasst werden müssen, damit Vorlagen ordnungsgemäß bereitgestellt werden. Dies kann je nach Standortaktivität eine Stunde oder länger dauern.
  

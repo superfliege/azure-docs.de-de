@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: df1981443d8c55f07f86394967e357a599a7b3a3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 262c864a9e580ab5e2ebb0d4fc1e6ec16adeacb3
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213140"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334325"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -60,6 +60,8 @@ Diese Workday-Benutzerbereitstellungslösung ist derzeit als öffentliche Vorsch
 * Organisationen, bei denen Benutzer beim Beitreten, Verschieben und Verlassen nur auf Grundlage von Änderungsinformationen, die im HCM-Modul von Workday erkannt werden, mit einer oder mehreren Active Directory-Gesamtstrukturen, -Domänen und -Organisationseinheiten synchronisiert werden müssen (siehe [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html))
 
 * Organisationen, die Office 365 für E-Mail verwenden
+
+[!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]
 
 ## <a name="planning-your-solution"></a>Planen der Lösung
 
@@ -543,14 +545,13 @@ In den folgenden Abschnitten wird das Einrichten einer Verbindung zwischen Workd
 
    * Wenn der Verbindungstest erfolgreich ist, klicken Sie oben auf die Schaltfläche **Speichern**. Falls nicht, überprüfen Sie, ob die Workday-URL und -Anmeldeinformationen in Workday gültig sind.
 
-
 ### <a name="part-2-configure-attribute-mappings"></a>Teil 2: Konfigurieren von Attributzuordnungen 
 
 In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in Azure Active Directory für reine Cloudbenutzer.
 
-1.  Klicken Sie auf der Registerkarte „Bereitstellung“ unter **Zuordnungen** auf **Mitarbeiter in Azure AD synchronisieren**.
+1. Klicken Sie auf der Registerkarte „Bereitstellung“ unter **Zuordnungen** auf **Mitarbeiter in Azure AD synchronisieren**.
 
-2.   Im Feld **Quellobjektbereich** können Sie die Benutzergruppen in Workday für die Bereitstellung in Azure Active Directory auswählen, indem Sie verschiedene attributbasierte Filter definieren. Die Standardoption ist „Alle Benutzer in Workday“. Beispielfilter:
+2. Im Feld **Quellobjektbereich** können Sie die Benutzergruppen in Workday für die Bereitstellung in Azure Active Directory auswählen, indem Sie verschiedene attributbasierte Filter definieren. Die Standardoption ist „Alle Benutzer in Workday“. Beispielfilter:
 
    * Beispiel: Auswählen der Benutzer mit Mitarbeiter-IDs von 1000000 bis 2000000
 
@@ -566,9 +567,9 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 
       * Operator: IST NICHT NULL
 
-3.  Im Feld **Zielobjektaktionen** können Sie global filtern, welche Aktionen auf Azure AD angewendet werden können. **Erstellen** und **Aktualisieren** erfolgen am häufigsten.
+3. Im Feld **Zielobjektaktionen** können Sie global filtern, welche Aktionen auf Azure AD angewendet werden können. **Erstellen** und **Aktualisieren** erfolgen am häufigsten.
 
-4.  Im Abschnitt **Attributzuordnungen** können Sie definieren, wie einzelne Workday-Attribute Active Directory-Attributen zugeordnet werden.
+4. Im Abschnitt **Attributzuordnungen** können Sie definieren, wie einzelne Workday-Attribute Active Directory-Attributen zugeordnet werden.
 
 5. Klicken Sie auf eine vorhandene Attributzuordnung, um sie zu aktualisieren. Oder klicken Sie am unteren Bildschirmrand auf **Neue Zuordnung hinzufügen**, um neue Zuordnungen hinzuzufügen. Eine einzelne Attributzuordnung unterstützt die folgenden Eigenschaften:
 
@@ -602,7 +603,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 ### <a name="part-3-start-the-service"></a>Teil 3: Starten des Diensts
 Sobald Sie die Teile 1 und 2 abgeschlossen haben, können Sie den Bereitstellungsdienst starten.
 
-1.  Legen Sie auf der Registerkarte **Bereitstellung** die Einstellung **Bereitstellungsstatus** auf **Ein** fest.
+1. Legen Sie auf der Registerkarte **Bereitstellung** die Einstellung **Bereitstellungsstatus** auf **Ein** fest.
 
 2. Klicken Sie auf **Speichern**.
 
@@ -612,7 +613,6 @@ Sobald Sie die Teile 1 und 2 abgeschlossen haben, können Sie den Bereitstellung
 
 5. Anschließend wird auf der Registerkarte **Bereitstellung** ein Überwachungszusammenfassungsbericht ausgegeben:
 
-
 ## <a name="configuring-writeback-of-email-addresses-to-workday"></a>Konfigurieren des Zurückschreibens von E-Mail-Adressen in Workday
 Befolgen Sie diese Anweisungen zum Konfigurieren des Zurückschreibens von E-Mail-Adressen der Benutzer aus Azure Active Directory in Workday.
 
@@ -620,21 +620,21 @@ Befolgen Sie diese Anweisungen zum Konfigurieren des Zurückschreibens von E-Mai
 
 **So konfigurieren Sie die Bereitstellung aus Workday in Active Directory**
 
-1.  Besuchen Sie <https://portal.azure.com>.
+1. Besuchen Sie <https://portal.azure.com>.
 
-2.  Wählen Sie auf der linken Navigationsleiste **Azure Active Directory** aus.
+2. Wählen Sie auf der linken Navigationsleiste **Azure Active Directory** aus.
 
-3.  Klicken Sie auf **Unternehmensanwendungen** und dann auf **Alle Anwendungen**.
+3. Klicken Sie auf **Unternehmensanwendungen** und dann auf **Alle Anwendungen**.
 
-4.  Klicken Sie auf **Anwendung hinzufügen**, und wählen Sie dann die Kategorie **Alle** aus.
+4. Klicken Sie auf **Anwendung hinzufügen**, und wählen Sie dann die Kategorie **Alle** aus.
 
-5.  Suchen Sie nach **Workday Writeback**, und fügen Sie die App aus dem Katalog hinzu.
+5. Suchen Sie nach **Workday Writeback**, und fügen Sie die App aus dem Katalog hinzu.
 
-6.  Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
+6. Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
 
-7.  Legen Sie **Bereitstellungsmodus** **auf** **Automatisch** fest.
+7. Legen Sie **Bereitstellungsmodus** **auf** **Automatisch** fest.
 
-8.  Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
+8. Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
 
    * **Administratorbenutzername**: Geben Sie den Benutzernamen des Workday-Systemintegrationskontos mit angefügtem Mandantendomänennamen ein. Dies sollte ungefähr wie folgt aussehen: username@contoso4
 
@@ -646,24 +646,22 @@ Befolgen Sie diese Anweisungen zum Konfigurieren des Zurückschreibens von E-Mai
 
    * Klicken Sie auf die Schaltfläche **Verbindung testen**. Wenn der Verbindungstest erfolgreich ist, klicken Sie oben auf die Schaltfläche **Speichern**. Falls nicht, überprüfen Sie, ob die Workday-URL und -Anmeldeinformationen in Workday gültig sind.
 
-
 ### <a name="part-2-configure-attribute-mappings"></a>Teil 2: Konfigurieren von Attributzuordnungen 
-
 
 In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in Active Directory.
 
-1.  Klicken Sie auf der Registerkarte „Bereitstellung“ unter **Zuordnungen** auf **Azure AD-Benutzer in Workday synchronisieren**.
+1. Klicken Sie auf der Registerkarte „Bereitstellung“ unter **Zuordnungen** auf **Azure AD-Benutzer in Workday synchronisieren**.
 
-2.  Im Feld **Quellobjektbereich** können Sie optional filtern, für welche Gruppen von Benutzern in Azure Active Directory E-Mail-Adressen in Workday zurückgeschrieben werden sollen. Die Standardoption ist „Alle Benutzer in Azure AD“. 
+2. Im Feld **Quellobjektbereich** können Sie optional filtern, für welche Gruppen von Benutzern in Azure Active Directory E-Mail-Adressen in Workday zurückgeschrieben werden sollen. Die Standardoption ist „Alle Benutzer in Azure AD“. 
 
-3.  Im Abschnitt **Attributzuordnungen** können Sie definieren, wie einzelne Workday-Attribute Active Directory-Attributen zugeordnet werden. Für die E-Mail-Adresse gibt es standardmäßig eine Zuordnung. Die ID für den Abgleich muss jedoch aktualisiert werden, um Benutzer in Azure AD mit ihren entsprechenden Einträgen in Workday abzugleichen. Eine gängige Methode für den Abgleich ist das Synchronisieren der Mitarbeiter-ID von Workday mit „extensionAttribute“ 1-15 in Azure AD und das anschließende Verwenden dieses Attributs in Azure AD, um die Benutzer wieder mit Workday abzugleichen.
+3. Im Abschnitt **Attributzuordnungen** können Sie definieren, wie einzelne Workday-Attribute Active Directory-Attributen zugeordnet werden. Für die E-Mail-Adresse gibt es standardmäßig eine Zuordnung. Die ID für den Abgleich muss jedoch aktualisiert werden, um Benutzer in Azure AD mit ihren entsprechenden Einträgen in Workday abzugleichen. Eine gängige Methode für den Abgleich ist das Synchronisieren der Mitarbeiter-ID von Workday mit „extensionAttribute“ 1-15 in Azure AD und das anschließende Verwenden dieses Attributs in Azure AD, um die Benutzer wieder mit Workday abzugleichen.
 
-4.  Klicken Sie oben im Abschnitt „Attributzuordnung“ auf **Speichern**, um Ihre Zuordnungen zu speichern.
+4. Klicken Sie oben im Abschnitt „Attributzuordnung“ auf **Speichern**, um Ihre Zuordnungen zu speichern.
 
 ### <a name="part-3-start-the-service"></a>Teil 3: Starten des Diensts
 Sobald Sie die Teile 1 und 2 abgeschlossen haben, können Sie den Bereitstellungsdienst starten.
 
-1.  Legen Sie auf der Registerkarte **Bereitstellung** die Einstellung **Bereitstellungsstatus** auf **Ein** fest.
+1. Legen Sie auf der Registerkarte **Bereitstellung** die Einstellung **Bereitstellungsstatus** auf **Ein** fest.
 
 2. Klicken Sie auf **Speichern**.
 
@@ -672,7 +670,6 @@ Sobald Sie die Teile 1 und 2 abgeschlossen haben, können Sie den Bereitstellung
 4. Einzelne Synchronisierungsereignisse können auf der Registerkarte **Überwachungsprotokolle** angezeigt werden. **[Ausführliche Anweisungen zum Lesen der Überwachungsprotokolle finden Sie in der Anleitung zur Erstellung von Bereitstellungsberichten.](../active-directory-saas-provisioning-reporting.md)**
 
 5. Anschließend wird auf der Registerkarte **Bereitstellung** ein Überwachungszusammenfassungsbericht ausgegeben:
-
 
 ## <a name="customizing-the-list-of-workday-user-attributes"></a>Anpassen der Liste der Workday-Benutzerattribute
 Die Workday-Bereitstellungs-Apps für Active Directory und Azure AD umfassen jeweils eine Liste mit Workday-Benutzerattributen, aus denen Sie auswählen können. Diese Listen sind jedoch nicht sehr umfangreich. Workday unterstützt mehrere Hundert möglicher Benutzerattribute, die entweder als Standardattribute oder als eindeutige Attribute für Ihren Workday-Mandanten eingerichtet werden können. 
@@ -799,15 +796,9 @@ Zu diesem Zweck müssen Sie [Workday Studio](https://community.workday.com/studi
 
 * Ein anderes Problem, das dazu führte, dass Überwachungsprotokolle bei Azure AD-Mandanten in der Europäischen Union nicht angezeigt wurden, ist inzwischen behoben. Für Azure AD-Mandanten in der EU müssen jedoch zusätzliche Agent-Konfigurationsschritte ausgeführt werden. Ausführlichere Informationen finden Sie in [Teil 3: Konfigurieren des lokalen Synchronisierungs-Agents](#Part 3: Configure the on-premises synchronization agent).
 
-
 ## <a name="managing-personal-data"></a>Verwalten von personenbezogenen Daten
 
 Die Workday-Bereitstellungslösung für Active Directory benötigt einen Synchronisierungs-Agent, der auf einem in die Domäne eingebundenen Server installiert ist. Dieser Agent erstellt Protokolle im Windows-Ereignisprotokoll, die personenbezogene Daten enthalten können.
-
-[!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)], wobei die ../-Verweise der Hierarchiestruktur Ihres Artikels entsprechen
-
-> [!NOTE]
-> Weitere Informationen zum Ansehen oder Löschen personenbezogener Daten finden Sie in der Microsoft-Anleitung auf der Website [Windows-Datensubjektanforderungen für die DSGVO](https://review.docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-windows) (Datenschutz-Grundverordnung). Allgemeine Informationen zur DSGVO finden Sie im Abschnitt [DSGVO im Service Trust Portal](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

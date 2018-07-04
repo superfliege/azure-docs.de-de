@@ -8,19 +8,18 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 8e521099-bf7d-43ab-a0e0-86aa1c9e577e
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 44b34c20c8b21b58ef67beedc1074f0664048b90
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f4ef40ea5e3d68ed8c04dc2a67042abd74df42aa
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212373"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317807"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-manabi-pocket"></a>Tutorial: Azure Active Directory-Integration mit Manabi Pocket
 
@@ -101,35 +100,29 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
+
     ![Dialogfeld „Einmaliges Anmelden“](./media/manabipocket-tutorial/tutorial_manabipocket_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für Manabi Pocket** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
+3. Führen Sie im Abschnitt **Domäne und URLs für Manabi Pocket** die folgenden Schritte aus:
 
     ![SSO-Informationen zur Domäne und zu den URLs von Manabi Pocket](./media/manabipocket-tutorial/tutorial_manabipocket_url.png)
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<SERVER-NAME>.ed-cl.com/<TENANT-ID>/idp/provider`
-    
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<SERVER-NAME>.ed-cl.com/<TENANT-ID>/idp/assertion_post`
+    a. Geben Sie im Textfeld **Anmelde-URL** diese URL ein: `https://ed-cl.com/`
+
+    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<SERVER-NAME>.ed-cl.com/<TENANT-ID>/idp/provider`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Manabi Pocket-Kundensupportteam](mailto:info-ed-cl@ntt.com), um diese Werte zu erhalten.
+    > Der ID-Wert ist nicht der tatsächliche Wert. Aktualisieren Sie diesen Wert mit dem tatsächlichen Bezeichner. Wenden Sie sich an das [Manabi Pocket-Kundensupportteam](mailto:info-ed-cl@ntt.com), um diesen Wert zu erhalten.
 
-4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, und führen Sie die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
-
-    ![SSO-Informationen zur Domäne und zu den URLs von Manabi Pocket](./media/manabipocket-tutorial/tutorial_manabipocket_url1.png)
-
-    Geben Sie im Textfeld **Anmelde-URL** diese URL ein: `https://ed-cl.com/`
-
-5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](./media/manabipocket-tutorial/tutorial_manabipocket_certificate.png) 
 
-6. Klicken Sie auf die Schaltfläche **Save** .
+5. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/manabipocket-tutorial/tutorial_general_400.png)
 
-7. Um das einmalige Anmelden bei **Manabi Pocket** zu konfigurieren, müssen Sie das heruntergeladene **Metadaten-XML** an das [Manabi Pocket-Supportteam](mailto:info-ed-cl@ntt.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+6. Um das einmalige Anmelden bei **Manabi Pocket** zu konfigurieren, müssen Sie das heruntergeladene **Metadaten-XML** an das [Manabi Pocket-Supportteam](mailto:info-ed-cl@ntt.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -196,7 +189,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
-    
+
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
@@ -222,4 +215,3 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 [201]: ./media/manabipocket-tutorial/tutorial_general_201.png
 [202]: ./media/manabipocket-tutorial/tutorial_general_202.png
 [203]: ./media/manabipocket-tutorial/tutorial_general_203.png
-

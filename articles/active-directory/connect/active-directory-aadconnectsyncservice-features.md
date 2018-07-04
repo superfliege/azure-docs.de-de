@@ -1,5 +1,5 @@
 ---
-title: Features und Konfiguration des Azure AD Connect-Synchronisierungsdiensts | Microsoft Docs
+title: Features und Konfiguration des Azure AD Connect-Synchronisierungsdiensts | Microsoft-Dokumentation
 description: Beschreibt die dienstseitigen Features des Azure AD Connect-Synchronisierungsdiensts.
 services: active-directory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 06/25/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2dbe14f6c7f8f9f1dcfaf733dc884df5adf919aa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f721c371687addfe48d753e7289df78c2be1f3c7
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593170"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36957999"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Features des Azure AD Connect-Synchronisierungsdiensts
 Das Synchronisierungsfeature von Azure AD Connect besteht aus zwei Komponenten:
@@ -58,7 +58,8 @@ Die folgenden Einstellungen werden von Azure AD Connect konfiguriert und können
 | DeviceWriteback |[Azure AD Connect: Aktivieren des Geräterückschreibens](active-directory-aadconnect-feature-device-writeback.md) |
 | DirectoryExtensions |[Azure AD Connect Sync: Verzeichniserweiterungen](active-directory-aadconnectsync-feature-directory-extensions.md) |
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Ermöglicht es, ein Attribut unter Quarantäne zu stellen, falls es sich um ein Duplikat eines anderen Objekts handelt, damit nicht der Export des gesamten Objekts mit einem Fehler abgebrochen wird. |
-| PasswordSync |[Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-implement-password-hash-synchronization.md) |
+| Kennworthashsynchronisierung |[Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-implement-password-hash-synchronization.md) |
+|Passthrough-Authentifizierung|[Benutzeranmeldung mit der Azure Active Directory-Passthrough-Authentifizierung](active-directory-aadconnect-pass-through-authentication.md)|
 | UnifiedGroupWriteback |[Vorschau: Gruppenrückschreiben](active-directory-aadconnect-feature-preview.md#group-writeback) |
 | UserWriteback |Derzeit nicht unterstützt. |
 

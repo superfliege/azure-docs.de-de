@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: bwren
-ms.openlocfilehash: cb48d6f61991fd16112b3507a413946ec01b4871
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 1e0fd56b6e420103b4f786985f71a84737db642d
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34851136"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333631"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Häufig gestellte Fragen zum Übergang vom OMS-Portal zum Azure-Portal für Log Analytics-Benutzer
 Log Analytics verwendete zunächst ein eigenes Portal, das OMS-Portal, um die Konfiguration zu verwalten und gesammelte Daten zu analysieren.  Alle Funktionen dieses Portals wurden in das Azure-Portal übernommen, wo sie weiter entwickelt werden.
@@ -39,7 +39,7 @@ Klicken Sie im Azure-Portal in der Liste der Arbeitsbereiche auf **Hinzufügen**
 ![Seite „Übersicht“](media/log-analytics-new-portal/new-workspace.png)
 
 ## <a name="where-is-my-overview-page"></a>Wo befindet sich meine Seite „Übersicht“?
-Der Hauptbildschirm im OMS-Portal zeigt die Kacheln für alle in Ihrem Arbeitsbereich installierten Verwaltungslösungen und alle benutzerdefinierten Ansichten, die Sie erstellt haben. Im Azure-Portal wird dies als die Seite **Übersicht** bezeichnet. Wählen Sie im Azure-Portal in Ihrem Arbeitsbereich entweder im Menü **Übersicht** aus, oder klicken Sie auf der Hauptseite auf die Schaltfläche **Übersicht**.
+Der Hauptbildschirm im OMS-Portal zeigt die Kacheln für alle in Ihrem Arbeitsbereich installierten Verwaltungslösungen und alle benutzerdefinierten Ansichten, die Sie erstellt haben. Die gleiche Ansicht steht im Azure-Portal zur Verfügung. Wählen Sie in Ihrem Arbeitsbereich die Option **Arbeitsbereichzusammenfassung** aus.
 
 ![Seite „Übersicht“](media/log-analytics-new-portal/overview.png)
 
@@ -60,10 +60,10 @@ Die Einstellungen der Konten werden an verschiedenen Stellen im Azure-Portal ver
 |:---|:---|
 | Automation-Konto | Menü **Automation-Konto** für den Arbeitsbereich |
 | Azure-Abonnement und Datenplan | Menü **Tarif** für den Arbeitsbereich |
-| Benutzer verwalten | Verwenden Sie rollenbasierten Zugriff in Azure, um [Berechtigungen für Ihren Arbeitsbereich zu verwalten](#how-do-i-manage-permissions). |
+| Verwalten von Benutzern | Verwenden Sie rollenbasierten Zugriff in Azure, um [Berechtigungen für Ihren Arbeitsbereich zu verwalten](#how-do-i-manage-permissions). |
 | Informationen zum Arbeitsbereich | Über das Menü **OMS-Arbeitsbereich** verfügbare Informationen für Ihren Arbeitsbereich |
 
-### <a name="alerts"></a>Warnungen
+### <a name="alerts"></a>Alerts
 Warnungsregeln basierend auf Log Analytics-Abfragen werden jetzt über die [vereinheitlichte Oberfläche für Warnungen](#how-do-i-create-and-manage-alerts) verwaltet. 
 
 ### <a name="computer-groups"></a>Computergruppen

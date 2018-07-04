@@ -1,6 +1,6 @@
 ---
 title: Planen der Skalierung Ihrer Azure Time Series Insights-Umgebung | Microsoft-Dokumentation
-description: In diesem Artikel werden bewährte Methoden bei der Planung einer Azure Time Series Insights-Umgebung beschrieben, einschließlich Speicherkapazität, Datenaufbewahrung, Eingangskapazität und Überwachung.
+description: In diesem Artikel werden bewährte Methoden bei der Planung einer Azure Time Series Insights-Umgebung beschrieben, einschließlich Speicherkapazität, Datenaufbewahrung, Eingangskapazität, Überwachung und Business Disaster Recovery (BCDR).
 services: time-series-insights
 ms.service: time-series-insights
 author: ashannon7
@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: 49842f971645f97d954451ff6755294dc3c5a40f
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: f0f414e43231fc6d873d639902fd4f71e48f1002
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293263"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751168"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Planen Ihrer Azure Time Series Insights-Umgebung
 
@@ -94,8 +94,18 @@ Ein Verweisdataset ist eine Sammlung von Elementen, die die Ereignisse aus Ihrer
 
 Hinweis: Verweisdaten werden nicht rückwirkend verknüpft. Das bedeutet, dass nur aktuelle und künftige eingehende Daten nach dem Konfigurieren und Hochladen abgeglichen und dem Verweisdataset hinzugefügt werden.  Wenn Sie planen, eine große Menge von Verlaufsdaten an TSI zu senden, und nicht zuerst Verweisdaten in TSI hochladen oder erstellen, müssen Sie Ihre Arbeitsschritte unter Umständen erneut durchführen (was keinen Spaß macht).  
 
-Weitere Informationen dazu, wie Sie Ihre Verweisdaten in TSI erstellen, hochladen und verwalten, finden Sie in unserer Dokumentation zu den *Verweisdaten* [Dokumentation] (https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
+Weitere Informationen dazu, wie Sie Ihre Verweisdaten in TSI erstellen, hochladen und verwalten, finden Sie in unserer Dokumentation zu den *Verweisdaten* Dokumentation [Dokumentation](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
 
+## <a name="business-disaster-recovery"></a>Business Disaster Recovery
+Als Azure-Dienst sorgt Time Series Insights für Hochverfügbarkeit, indem Redundanzen auf Azure-Regionsebene bereitgestellt werden, ohne dass zusätzlicher Aufwand für die Lösung anfällt. Die Microsoft Azure-Plattform bietet auch Features zum Erstellen von Lösungen mit Notfallwiederherstellungsfunktionen (Disaster Recovery, DR) oder regionsübergreifender Verfügbarkeit. Wenn Sie global und regionsübergreifend Hochverfügbarkeit für Geräte oder Benutzer erreichen möchten, nutzen Sie die Notfallwiederherstellungsfeatures von Azure. Im Artikel [Azure-Geschäftskontinuität – Technische Anleitung](../resiliency/resiliency-technical-guidance.md) werden die integrierten Features von Azure für Geschäftskontinuität und Notfallwiederherstellung beschrieben. Das Dokument [Notfallwiederherstellung und Hochverfügbarkeit für Azure-Anwendungen][Notfallwiederherstellung und Hochverfügbarkeit für Azure-Anwendungen] enthält Architekturinformationen zu Strategien für Azure-Anwendungen in Bezug auf Notfallwiederherstellung und Hochverfügbarkeit.
+
+Time Series Insights verfügt nicht über integrierte Business Disaster Recovery (BCDR).  Allerdings können Kunden, die BCDR benötigen, immer noch eine Wiederherstellungsstrategie implementieren. Erstellen Sie eine zweite Time Series Insights-Umgebung in einer Azure-Sicherungsregion, und senden Sie Ereignisse aus der primären Ereignisquelle an diese sekundäre Umgebung, wobei Sie eine zweite dedizierte Comsumergruppe und die BCDR-Richtlinien dieser Ereignisquelle nutzen.  
+
+1.  Erstellen Sie eine Umgebung in der zweiten Region.  Weitere Informationen zum Erstellen einer Time Series Insights-Umgebung finden Sie [hier](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-get-started).
+2.  Erstellen Sie eine zweite dedizierte Consumergruppe für Ihre Ereignisquelle, und stellen Sie eine Verbindung dieser Ereignisquelle mit der neuen Umgebung her.  Vergessen Sie nicht, die zweite, dedizierte Consumergruppe festzulegen.  Um mehr hierzu zu erfahren, lesen Sie die [IoT Hub-Dokumentation](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) oder [Event Hub-Dokumentation](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-data-access).
+3.  Wenn Ihre primäre Region während eines Notfalls ausfällt, verlagern Sie den Betrieb in die Time Series Insights-Sicherungsumgebung.  
+
+Weitere Informationen zu den BCDR-Richtlinien von IoT Hub finden Sie [hier](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-ha-dr).  Weitere Informationen zu den BCDR-Richtlinien von Event Hub finden Sie [hier](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-geo-dr).  
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Hinzufügen einer Event Hub-Ereignisquelle](time-series-insights-how-to-add-an-event-source-eventhub.md)

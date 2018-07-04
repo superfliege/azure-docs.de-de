@@ -1,6 +1,6 @@
 ---
-title: Dienstremoting in Service Fabric | Microsoft Docs
-description: Service Fabric-Remoting ermöglicht Clients und Diensten die Kommunikation mit Diensten über einen Remoteprozeduraufruf.
+title: Dienstremoting mit C# in Service Fabric | Microsoft-Dokumentation
+description: Service Fabric-Remoting ermöglicht Clients und Diensten die Kommunikation mit C#-Diensten über einen Remoteprozeduraufruf.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,15 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 672bdd3ddb5b32b82d83322eadce2a594b13ce5b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ad56580e73c06acff95b3146f6dc2d83ab2ba3ae
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643531"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36945971"
 ---
-# <a name="service-remoting-with-reliable-services"></a>Dienstremoting mit Reliable Services
-Für WebAPI, WCF (Windows Communication Foundation) und andere Dienste, die nicht an ein bestimmtes Kommunikationsprotokoll oder einen bestimmten Kommunikationsstapel gebunden sind, stellt das Reliable Services-Framework einen Remotingmechanismus für das schnelle, einfache Einrichten von Remoteprozeduraufrufen für Dienste bereit.
+# <a name="service-remoting-in-c-with-reliable-services"></a>Dienstremoting in C# mit Reliable Services
+> [!div class="op_single_selector"]
+> * [C# unter Windows](service-fabric-reliable-services-communication-remoting.md)
+> * [Java unter Linux](service-fabric-reliable-services-communication-remoting-java.md)
+>
+>
+
+Für WebAPI, WCF (Windows Communication Foundation) und andere Dienste, die nicht an ein bestimmtes Kommunikationsprotokoll oder einen bestimmten Kommunikationsstapel gebunden sind, stellt das Reliable Services-Framework einen Remotingmechanismus dar, mit dem sich Remoteprozeduraufrufe für Dienste schnell und einfach einrichten lassen. Dieser Artikel beschreibt das Einrichten von Remoteprozeduraufrufen für Dienste, die in C# geschrieben wurden.
 
 ## <a name="set-up-remoting-on-a-service"></a>Einrichten von Remoting für einen Dienst
 Die Einrichtung von Remoting für einen Dienst erfolgt in zwei einfachen Schritten:
@@ -83,7 +89,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 Das Remotingframework gibt vom Dienst ausgelöste Ausnahmen an den Client weiter. Folglich ist der Client bei der Verwendung von `ServiceProxy` für die Behandlung der vom Dienst ausgelösten Ausnahmen verantwortlich.
 
 ## <a name="service-proxy-lifetime"></a>Gültigkeitsdauer von Dienstproxys
-Die Erstellung von Dienstproxys ist ein einfacher Vorgang, sodass Benutzer so viele erstellen können, wie sie benötigen. Dienstproxyinstanzen können erneut verwendet werden, solange Benutzer sie benötigen. Wenn ein Remoteprozeduraufruf eine Ausnahme auslöst, können Benutzer immer noch dieselbe Proxyinstanz wiederverwenden. Jeder Dienstproxy enthält einen Kommunikationsclient zum Senden von Nachrichten im Netzwerk. Beim Aufruf von Remoteaufrufen wird intern geprüft, ob der Kommunikationsclient gültig ist. Basierend auf diesem Ergebnis erstellen wir bei Bedarf den Kommunikationsclient neu. Daher müssen Benutzer, wenn eine Ausnahme auftritt, den `ServiceProxy` nicht neu erstellen, da dies auf transparente Weise erfolgt.
+Die Erstellung von Dienstproxys ist ein einfacher Vorgang, der sehr wenige Ressourcen verbraucht, sodass Sie so viele erstellen können, wie Sie benötigen. Dienstproxyinstanzen können erneut verwendet werden, solange sie benötigt werden. Wenn ein Remoteprozeduraufruf eine Ausnahme auslöst, können Sie weiterhin dieselbe Proxyinstanz wiederverwenden. Jeder Dienstproxy enthält einen Kommunikationsclient zum Senden von Nachrichten im Netzwerk. Beim Aufruf von Remoteaufrufen wird intern geprüft, ob der Kommunikationsclient gültig ist. Basierend auf den Ergebnissen dieser Überprüfungen wird der Kommunikationsclient bei Bedarf neu erstellt. Darum müssen Sie im Falle einer Ausnahme `ServiceProxy` nicht neu erstellen.
 
 ### <a name="serviceproxyfactory-lifetime"></a>Gültigkeitsdauer von „ServiceProxyFactory“
 [ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) ist eine Factory, die Proxyinstanzen für verschiedene Remotingschnittstellen erstellt. Wenn Sie die API `ServiceProxy.Create` zum Erstellen von Proxys verwenden, dann erstellt das Framework einen Singleton-Dienstproxy.
@@ -98,27 +104,32 @@ Alle von der Dienst-API ausgelösten Remoteausnahmen werden als „AggregateExce
 Wenn vorübergehende Ausnahmen auftreten, versucht der Proxy erneut, den Aufruf auszuführen.
 
 Standardparameter für die Wiederholung werden von [OperationRetrySettings](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings) angegeben.
-Der Benutzer kann diese Werte konfigurieren, indem das „OperationRetrySettings“-Objekt an den „ServiceProxyFactory“-Konstruktor übergeben wird.
-## <a name="how-to-use-remoting-v2-stack"></a>So verwenden Sie den Remoting V2-Stapel
-Mit dem 2.8 NuGet Remoting-Paket haben Sie die Möglichkeit, den Remoting V2-Stapel zu verwenden. Der Remoting-V2-Stapel ist leistungsfähiger und stellt Funktionalität wie benutzerdefinierte serialisierbare und besser austauschbare APIs zur Verfügung.
-Standardmäßig wird, wenn Sie die folgenden Änderungen nicht vornehmen, weiterhin der Remoting V1-Stapel verwendet.
-Remoting V2 ist nicht mit V1 (vorheriger Remotingstapel) kompatibel. Lesen Sie daher im weiteren Verlauf des Artikels, wie ein Upgrade von V1 auf V2 erfolgt, ohne dass die Verfügbarkeit des Diensts beeinträchtigt wird.
 
-### <a name="using-assembly-attribute-to-use-v2-stack"></a>Verwenden des Assembly-Attributs, um V2-Stapel zu verwenden
+Sie können diese Werte jetzt konfigurieren, indem Sie das OperationRetrySettings-Objekt an den ServiceProxyFactory-Konstruktor übergeben.
 
-Es folgen die Schritte, die für einen Wechsel zu V2-Stapel auszuführen sind.
+## <a name="how-to-use-the-remoting-v2-stack"></a>Verwenden des Remoting V2-Stapels
 
-1. Fügen Sie im Dienstmanifest eine Endpunktressource namens „ServiceEndpointV2“ hinzu.
+Ab dem NuGet Remoting-Paket Version 2.8 haben Sie die Möglichkeit, den Remoting V2-Stapel zu verwenden. Der Remoting V2-Stapel ist leistungsfähiger und stellt Funktionen wie eine benutzerdefinierte Serialisierung und besser einsetzbare APIs zur Verfügung.
+Der Vorlagencode verwendet weiterhin den Remoting V1-Stapel.
+Remoting V2 ist nicht mit V1 (vorheriger Remotingstapel) kompatibel. Befolgen Sie daher die Anweisungen weiter unten in diesem Artikel, um ein [Upgrade von V1 auf V2](#how-to-upgrade-from-remoting-v1-to-remoting-v2) durchzuführen, ohne die Verfügbarkeit des Diensts zu beeinträchtigen.
+
+Zum Aktivieren des V2-Stapels stehen folgende Methoden zur Verfügung.
+
+### <a name="using-an-assembly-attribute-to-use-the-v2-stack"></a>Verwenden eines assembly-Attributs, um den V2-Stapel zu verwenden
+
+Diese Schritte ändern den Vorlagencode so, dass der V2-Stapel mit einem assembly-Attribut verwendet wird.
+
+1. Ändern Sie die Endpunktressource im Dienstmanifest von `"ServiceEndpoint"` in `"ServiceEndpointV2"`.
 
   ```xml
   <Resources>
     <Endpoints>
-      <Endpoint Name="ServiceEndpointV2" />  
+      <Endpoint Name="ServiceEndpointV2" />
     </Endpoints>
   </Resources>
   ```
 
-2.  Verwenden Sie die Remoting-Erweiterungsmethode, um einen Remoting-Listener zu erstellen.
+2. Verwenden Sie die Erweiterungsmethode `Microsoft.ServiceFabric.Services.Remoting.Runtime.CreateServiceRemotingInstanceListeners`, um Remotinglistener zu erstellen (diese sind für V1 und V2 gleich).
 
   ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -127,27 +138,32 @@ Es folgen die Schritte, die für einen Wechsel zu V2-Stapel auszuführen sind.
     }
   ```
 
-3.  Fügen Sie das Assembly-Attribut für Remotingschnittstellen hinzu.
+3. Markieren Sie die Assembly, die die Remotingschnittstellen enthält, mit einem `FabricTransportServiceRemotingProvider`-Attribut.
 
   ```csharp
   [assembly: FabricTransportServiceRemotingProvider(RemotingListener = RemotingListener.V2Listener, RemotingClient = RemotingClient.V2Client)]
   ```
-Im Clientprojekt sind keine Änderungen erforderlich.
-Erstellen Sie die Client-Assembly mit der Schnittstellenassembly, um sicherzustellen, dass das obige Assembly Attribut verwendet wird.
 
-### <a name="using-explicit-v2-classes-to-create-listener-clientfactory"></a>Verwenden von expliziten V2-Klassen, um Listener/ClientFactory zu erstellen
-Es folgen die Schritte, die auszuführen sind.
-1.  Fügen Sie im Dienstmanifest eine Endpunktressource namens „ServiceEndpointV2“ hinzu.
+Im Clientprojekt sind keine Codeänderungen erforderlich.
+Erstellen Sie die Clientassembly mit der Schnittstellenassembly, um sicherzustellen, dass das oben gezeigte assembly-Attribut verwendet wird.
+
+### <a name="using-explicit-v2-classes-to-use-the-v2-stack"></a>Verwenden von expliziten V2-Klassen für die Verwendung des V2-Stapels
+
+Alternativ zur Verwendung eines assembly-Attributs kann der V2-Stapel auch mithilfe von expliziten V2-Klassen aktiviert werden.
+
+Diese Schritte ändern den Vorlagencode so, dass der V2-Stapel mit expliziten V2-Klassen verwendet wird.
+
+1. Ändern Sie die Endpunktressource im Dienstmanifest von `"ServiceEndpoint"` in `"ServiceEndpointV2"`.
 
   ```xml
   <Resources>
     <Endpoints>
-      <Endpoint Name="ServiceEndpointV2" />  
+      <Endpoint Name="ServiceEndpointV2" />
     </Endpoints>
   </Resources>
   ```
 
-2. Verwenden Sie [RemotingV2Listener](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotingListener?view=azure-dotnet). Der Standardname für die Dienstendpunktressource lautet „ServiceEndpointV2“, und dieser muss im Dienstmanifest definiert sein.
+2. Verwenden Sie den [FabricTransportServiceRemotingListener](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotingListener?view=azure-dotnet) aus dem `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime`-Namespace.
 
   ```csharp
   protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -163,7 +179,8 @@ Es folgen die Schritte, die auszuführen sind.
     }
   ```
 
-3. Verwenden Sie V2-[ClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet).
+3. Verwenden Sie die [FabricTransportServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) aus dem `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client`-Namespace, um Clients zu erstellen.
+
   ```csharp
   var proxyFactory = new ServiceProxyFactory((c) =>
           {

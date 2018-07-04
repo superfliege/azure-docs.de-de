@@ -1,6 +1,6 @@
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>Öffnen der TCP-Ports in der Windows-Firewall für die Standardinstanz der Datenbank-Engine
 1. Herstellen der Verbindung mit dem virtuellen Computer über Remotedesktop Weitere Informationen zum Herstellen einer Verbindung mit dem virtuellen Computer finden Sie unter [Öffnen der VM mit Remotedesktop](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#remotedesktop).
-2. Geben Sie nach der Anmeldung auf dem Startbildschirm **WF.msc**ein, und drücken Sie dann die EINGABETASTE.
+2. Geben Sie nach der Anmeldung auf dem Startbildschirm **WF.msc** ein, und drücken Sie dann die EINGABETASTE.
    
     ![Starten des Firewall-Programms](./media/virtual-machines-sql-server-connection-steps/12Open-WF.png)
 3. Klicken Sie in **Windows-Firewall mit erweiterter Sicherheit** im linken Bereich mit der rechten Maustaste auf **Eingehende Regeln**, und klicken Sie dann im Aktionsbereich auf **Neue Regel**.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: badd2d63ffaf8e88ff672087783f2bce150bc7c3
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: ad26772650cf052926a2534d343f64765f47b78f
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264989"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333393"
 ---
 # <a name="traffic-analytics"></a>Datenverkehrsanalyse
 
@@ -267,7 +267,7 @@ Einige der Erkenntnisse, die Sie nach der vollständigen Konfiguration von Traff
 
 **Suchen nach**
 
-- Verteilung des Datenverkehrs nach Subnetz, Topologie, Hauptquellen des Datenverkehrs in das Subnetz, häufigste bösartige Netzwerke mit Kommunikation im Subnetz und Anwendungsprotokolle mit der meisten Kommunikation.
+- Verteilung des Datenverkehrs nach Subnetz, Topologie, Hauptquellen des in das Subnetz eingehenden Datenverkehrs, häufigsten bösartigen Netzwerken mit Kommunikation mit dem Subnetz und Anwendungsprotokollen mit der meisten Kommunikation.
     - Verstehen, welches Subnetz mit welchem Subnetz kommuniziert. Wenn unerwartete Kommunikationen angezeigt werden, können Sie Ihre Konfiguration korrigieren.
     - Wenn bösartige Netzwerke mit einem Subnetz kommunizieren, können Sie dies beheben, indem Sie die NSG-Regeln zum Blockieren von bösartigen Netzwerken anpassen.
 - Sie können in der Subnetztopologie auf dem oberen Menüband Parameter auswählen, z.B. aktive/inaktive Subnetze, externe Verbindungen, aktive Datenflüsse und bösartige Datenflüsse im Subnetz.
@@ -277,7 +277,7 @@ Einige der Erkenntnisse, die Sie nach der vollständigen Konfiguration von Traff
 
 **Suchen nach**
 
-Verteilung des Datenverkehrs nach Anwendungsgateway, Lastenausgleichsmodul, Topologie, Hauptquellen des Datenverkehrs, häufigste bösartige Netzwerke mit Kommunikation zum Anwendungsgateway und Lastenausgleichsmodul sowie Anwendungsprotokolle mit der meisten Kommunikation. 
+Verteilung des Datenverkehrs nach Anwendungsgateway, Lastenausgleichsmodul, Topologie, Hauptquellen des Datenverkehrs, häufigsten bösartigen Netzwerken mit Kommunikation zum Anwendungsgateway und Lastenausgleichsmodul sowie Anwendungsprotokollen mit der meisten Kommunikation. 
     
  - Wissen, welches Subnetz mit welchem Anwendungsgateway bzw. Lastenausgleichsmodul kommuniziert. Wenn unerwartete Kommunikationen beobachtet werden, können Sie Ihre Konfiguration korrigieren.
  - Wenn bösartige Netzwerke mit einem Anwendungsgateway oder Lastenausgleichsmodul kommunizieren, können Sie dies beheben, indem Sie die NSG-Regeln zum Blockieren von bösartigen Netzwerken anpassen. 

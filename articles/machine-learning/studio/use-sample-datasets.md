@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.openlocfilehash: 63f079f6c8e584ff3a89503104060daf056763ed
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5e225a16baef53c12a5d0a719c36a2042d391c7f
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836299"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959101"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Verwenden von Beispieldatasets in Azure Machine Learning Studio
 [top]: #machine-learning-sample-datasets
@@ -403,7 +403,7 @@ Themenzuweisungen für Nachrichtenartikel im Reuters-Nachrichtendataset RCV1-V2 
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td>
-Diese Daten stammen aus dem KDD Cup 2010 zur Leistungsbewertung von Schülern (<a href="http://www.kdd.org/kdd-cup-2010-student-performance-evaluation">Schülerleistungsbewertung</a>). Die verwendeten Daten stammen aus dem Trainingssatz „Algebra_2008_2009“ (Stamper, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). Algebra I 2008-2009. Dataset des KDD Cup 2010 – Educational Data Mining Challenge. Sie finden das Dataset unter <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a> oder <a href="http://www.kdd.org/sites/default/files/kddcup/site/2010/files/algebra_2008_2009.zip">algebra_2008_2009.zip</a>.
+Diese Daten stammen aus dem KDD Cup 2010 zur Leistungsbewertung von Schülern (<a href="http://www.kdd.org/kdd-cup-2010-student-performance-evaluation">Schülerleistungsbewertung</a>). Die verwendeten Daten stammen aus dem Trainingssatz „Algebra_2008_2009“ (Stamper, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). Algebra I 2008-2009. Dataset des KDD Cup 2010 – Educational Data Mining Challenge. Sie finden das Dataset unter <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a>.
 <p></p>
 Das Dataset wurde in Azure Blob Storage heruntergeladen und gespeichert (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>). Es enthält Protokolldateien aus einem Tutorensystem für Schüler. Die bereitgestellten Funktionen umfassen eine Problem-ID und eine zugehörige Kurzbeschreibung, die Schüler-ID, einen Zeitstempel und die Anzahl der Versuche, bevor das Problem vom Schüler ordnungsgemäß gelöst wurde. Das ursprüngliche Dataset umfasst 8,9 Millionen Datensätze. Dieses Dataset wurde auf die ersten 100.000 Zeilen reduziert. Das DataSet umfasst 23 durch Tabulatoren getrennte Spalten mit verschiedenen Typen: numerisch, kategorisch und Zeitstempel.
   </td>

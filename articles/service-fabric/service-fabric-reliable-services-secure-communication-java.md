@@ -1,6 +1,6 @@
 ---
-title: Unterstützung der sicheren Kommunikation für Dienste in Azure Service Fabric | Microsoft-Dokumentation
-description: Übersicht über die Möglichkeiten zur Unterstützung der sicheren Kommunikation für Reliable Services, die in einem Azure Service Fabric-Cluster ausgeführt werden.
+title: Schützen der Dienstremotingkommunikation mit Java in Azure Service Fabric | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie die dienstremotingbasierte Kommunikation für Reliable Services in Java schützen, die in einem Azure Service Fabric-Cluster ausgeführt werden.
 services: service-fabric
 documentationcenter: java
 author: PavanKunapareddyMSFT
@@ -13,22 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 624d9d358145fb8b41013d686821cb157693d3c6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: cbefb3ede6d0d1fe21065b49c84db9f4db5dd39c
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207994"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020812"
 ---
-# <a name="help-secure-communication-for-services-in-azure-service-fabric"></a>Unterstützung der Kommunikationssicherung für Dienste in Azure Service Fabric
+# <a name="secure-service-remoting-communications-in-a-java-service"></a>Schützen der Dienstremotingkommunikation in einem Java-Dienst
 > [!div class="op_single_selector"]
 > * [C# unter Windows](service-fabric-reliable-services-secure-communication.md)
 > * [Java unter Linux](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
 
-## <a name="help-secure-a-service-when-youre-using-service-remoting"></a>Unterstützung der Sicherung eines Diensts bei der Verwendung von Dienstremoting
-Wir verwenden ein vorhandenes [Beispiel](service-fabric-reliable-services-communication-remoting-java.md) , um zu erläutern, wie das Remoting für Reliable Services eingerichtet wird. Um die Sicherung eines Diensts bei der Verwendung von Dienstremoting zu unterstützen, befolgen Sie diese Schritte:
+Sicherheit ist einer der wichtigsten Aspekte der Kommunikation. Das Reliable Services-Anwendungsframework stellt einige fertige Kommunikationsstapel und Tools bereit, die Sie verwenden können, um die Sicherheit zu verbessern. In diesem Artikel erfahren Sie, wie Sie die Sicherheit bei Verwendung des Dienstremotings in einem Java-Dienst verbessern können. Der Artikel erläutert anhand eines [Beispiels](service-fabric-reliable-services-communication-remoting-java.md), wie das Remoting für in Java geschriebene Reliable Services eingerichtet wird. 
+
+Führen Sie die folgenden Schritte aus, um einen Dienst zu schützen, wenn Sie das Dienstremoting mit Java-Diensten verwenden:
 
 1. Erstellen Sie eine Schnittstelle, `HelloWorldStateless`, die definiert, welche Methoden für einen Remoteprozeduraufruf Ihres Diensts verfügbar sind. Ihr Dienst verwendet `FabricTransportServiceRemotingListener`, der im Paket `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` deklariert wird. Dies ist eine `CommunicationListener` -Implementierung, die Remotingfunktionen bereitstellt.
 
@@ -54,11 +55,13 @@ Wir verwenden ein vorhandenes [Beispiel](service-fabric-reliable-services-commun
     ```
 2. Fügen Sie Listenereinstellungen und Sicherheitsanmeldeinformationen hinzu.
 
-    Stellen Sie sicher, dass das Zertifikat, das Sie zum Schützen Ihrer Dienstkommunikation verwenden möchten, auf allen Knoten im Cluster installiert wird. Es gibt zwei Möglichkeiten, wie Sie Listenereinstellungen und Sicherheitsanmeldeinformationen bereitstellen können:
+    Stellen Sie sicher, dass das Zertifikat, das Sie zum Schutz Ihrer Dienstkommunikation verwenden möchten, auf allen Knoten im Cluster installiert ist. Bei unter Linux ausgeführten Diensten muss das Zertifikat als Datei im PEM-Format verfügbar sein: Entweder muss eine `.pem`-Datei vorhanden sein, die das Zertifikat und den privaten Schlüssel enthält, oder eine `.crt`-Datei mit dem Zertifikat und eine `.key`-Datei mit dem privaten Schlüssel. Weitere Informationen finden Sie unter [Speicherort und Format von X.509-Zertifikaten auf Linux-Knoten](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes).
+    
+    Es gibt zwei Möglichkeiten, wie Sie Listenereinstellungen und Sicherheitsanmeldeinformationen bereitstellen können:
 
    1. Bereitstellung mithilfe eines [Konfigurationspakets](service-fabric-application-and-service-manifests.md):
 
-       Fügen Sie in der Datei „settings.xml“ den Abschnitt `TransportSettings` hinzu.
+       Fügen Sie in der Datei „settings.xml“ einen Abschnitt namens `TransportSettings` hinzu.
 
        ```xml
        <!--Section name should always end with "TransportSettings".-->

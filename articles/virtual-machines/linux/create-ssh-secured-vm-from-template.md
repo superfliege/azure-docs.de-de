@@ -1,6 +1,6 @@
 ---
 title: Erstellen einer Linux-VM in Azure mithilfe einer Vorlage | Microsoft-Dokumentation
-description: Verwenden der Azure-CLI-2.0 zum Erstellen einer Linux-VM aus einer Ressourcen-Manager-Vorlage
+description: Verwenden von Azure CLI zum Erstellen einer Linux-VM aus einer Ressourcen-Manager-Vorlage
 services: virtual-machines-linux
 documentationcenter: ''
 author: iainfoulds
@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 05/30/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0e241d56eba8c8cb23b1a78227b4ca7ff725162d
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: fc2b4dde9796336112d6c8a68d16d0b3006b3fee
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716406"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936413"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Erstellen eines virtuellen Linux-Computers mithilfe von Azure Resource Manager-Vorlagen
-In diesem Artikel erfahren Sie, wie Sie schnell einen virtuellen Linux-Computer (VM) mithilfe von Azure Resource Manager-Vorlagen und der Azure CLI 2.0 bereitstellen. Sie können diese Schritte auch per [Azure CLI 1.0](create-ssh-secured-vm-from-template-nodejs.md) ausführen.
+In diesem Artikel erfahren Sie, wie Sie schnell einen virtuellen Linux-Computer (VM) mithilfe von Azure Resource Manager-Vorlagen und der Azure CLI bereitstellen. 
 
 
 ## <a name="templates-overview"></a>Übersicht über Vorlagen

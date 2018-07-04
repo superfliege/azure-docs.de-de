@@ -15,20 +15,20 @@ ms.date: 01/20/2018
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c115414fc6ae599342192196e256597c28e5aa6
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: aeb67a73a69684b89609c6b04160357b244f62b7
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293193"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754187"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind.
 
-In diesem Artikel geht es um eine Funktion, die Administratoren das Konfigurieren der einmaligen Anmeldung bei Anwendungen, die im Azure Active Directory-App-Katalog nicht vorhanden sind, *ohne Schreiben von Code* ermöglicht. Diese Funktion wurde über die technische Vorschau am 18. November 2015 veröffentlicht und steht in [Azure Active Directory Premium](active-directory-whatis.md) zur Verfügung. Wenn Sie stattdessen nach einer Anleitung für Entwickler zum Integrieren von benutzerdefinierten Apps in Azure AD mithilfe von Code suchen, finden Sie diese unter [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md).
+In diesem Artikel geht es um eine Funktion, die Administratoren das Konfigurieren der einmaligen Anmeldung bei Anwendungen, die im Azure Active Directory-App-Katalog nicht vorhanden sind, *ohne Schreiben von Code* ermöglicht. Diese Funktion wurde über die technische Vorschau am 18. November 2015 veröffentlicht und steht in [Azure Active Directory Premium](fundamentals/active-directory-whatis.md) zur Verfügung. Wenn Sie stattdessen nach einer Anleitung für Entwickler zum Integrieren von benutzerdefinierten Apps in Azure AD mithilfe von Code suchen, finden Sie diese unter [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md).
 
 Der Azure Active Directory-Anwendungskatalog enthält eine Liste der Anwendungen, die bekanntermaßen eine Form der einmaligen Anmeldung mit Azure Active Directory unterstützen, wie [in diesem Artikel](manage-apps/what-is-single-sign-on.md)beschrieben. Wenn Sie (als IT-Spezialist oder Systemintegrator in Ihrer Organisation) die Anwendung gefunden haben, mit der Sie eine Verbindung herstellen möchten, können Sie mithilfe der Schritt-für-Schritt-Anleitungen im Azure-Portal das einmalige Anmelden aktivieren.
 
-Kunden mit [Azure Active Directory Premium](active-directory-whatis.md)-Lizenzen erhalten außerdem diese zusätzlichen Funktionen:
+Kunden mit [Azure Active Directory Premium](fundamentals/active-directory-whatis.md)-Lizenzen erhalten außerdem diese zusätzlichen Funktionen:
 
 * Self-Service-Integration für Anwendungen, die SAML 2.0-Identitätsanbieter unterstützen (SP-initiiert oder IdP-initiiert)
 * Self-Service-Integration für Webanwendungen, die über eine HTML-basierte Anmeldeseite mit [kennwortbasierter einmaliger Anmeldung (Single Sign-On, SSO)](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on)
@@ -148,18 +148,7 @@ Durch die Zuweisung eines Benutzers kann Azure AD ein Token für den Benutzer au
 
 ### <a name="test-the-saml-application"></a>Testen der SAML-Anwendung
 
-Vor dem Testen der SAML-Anwendung müssen Sie die Anwendung mit Azure AD eingerichtet und der Anwendung Benutzer oder Gruppen zugewiesen haben.
-
-  ![Testen](./media/active-directory-saas-custom-apps/testing.png)
-
-Klicken Sie auf der Seite für einmaliges Anmelden unter dem Abschnitt für Domänen und URLs auf **SAML-Einstellungen testen**. Dadurch wird ein Inhaltsbereich mit Anleitungen zum Testen der Anwendung geöffnet.
-
-1. Melden Sie sich bei der Anwendung an. Wenn für die Anwendung vom Dienstanbieter initiiertes einmaliges Anmelden konfiguriert ist, werden Sie auf die URL für einmaliges Anmelden umgeleitet, wo Sie die Anmeldung initiieren können. Wenn für die Anwendung vom Identitätsanbieter initiiertes einmaliges Anmelden konfiguriert ist, werden Sie bei der Anwendung angemeldet.
-2.  Wird eine Fehlermeldung auf der Anmeldeseite Ihres Unternehmens angezeigt, kopieren Sie diese und wechseln Sie zurück zum Azure AD-Inhaltsbereich für das Testen des einmaligen Anmeldens. Fügen Sie die Fehlermeldung in das Feld ein, und klicken Sie auf **Lösungsschritte abrufen**. Wenn sich der Fehler auf der Anwendungsseite befindet, müssen Sie den Hersteller der Anwendung kontaktieren und Ihre Konfiguration auf Azure AD freigeben, um die Werte zu überprüfen. 
-3.  Basierend auf dem Fehler bietet Azure AD spezifische Schritte zur Behebung des Problems.
-
-Weitere Informationen finden Sie unter [Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-saml-debugging/?WT.mc_id=DMC_AAD_?WT.mc_id=UI_AAD_Configure_NonGalleryApps).
-
+Vor dem Testen der SAML-Anwendung müssen Sie die Anwendung mit Azure AD eingerichtet und der Anwendung Benutzer oder Gruppen zugewiesen haben. Informationen zum Testen der SAML-Anwendung finden Sie unter [Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory](develop/active-directory-saml-debugging.md).
 
 ## <a name="password-single-sign-on"></a>Einmaliges Anmelden per Kennwort
 

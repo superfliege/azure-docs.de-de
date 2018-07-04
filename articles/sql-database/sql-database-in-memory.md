@@ -9,12 +9,12 @@ ms.custom: develop databases
 ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: jodebrui
-ms.openlocfilehash: 89e5497c10f3e24dd84333f095a9bd7c0017ea88
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a21ce5c9cbf5517733a6b491124e51b163f6c2b9
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647866"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309298"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimieren der Leistung mithilfe von In-Memory-Technologien in SQL-Datenbank
 
@@ -72,7 +72,7 @@ Ausführliche Videos zu den Technologien:
 
 In-Memory-OLTP enthält speicheroptimierte Tabellen, die zum Speichern von Benutzerdaten verwendet werden. Diese Tabellen sind müssen in den Arbeitsspeicher passen. Da Sie Arbeitsspeicher direkt im SQL-Datenbank-Dienst verwalten, arbeiten wir mit dem Konzept eines Kontingents für Benutzerdaten. Dieses Konzept wird als *In-Memory-OLTP-Speicher* bezeichnet.
 
-Jeder unterstützte eigenständige Datenbanktarif und jeder Tarif für Pools für elastische Datenbanken sieht eine bestimmte Menge von In-Memory-OLTP-Speicher vor. Siehe [DTU-basierte Ressourceneinschränkungen](sql-database-dtu-resource-limits.md) und [V-Kern-basierte Ressourceneinschränkungen](sql-database-vcore-resource-limits.md).
+Jeder unterstützte eigenständige Datenbanktarif und jeder Tarif für Pools für elastische Datenbanken sieht eine bestimmte Menge von In-Memory-OLTP-Speicher vor. Siehe [DTU-basierte Ressourceneinschränkungen – Einzeldatenbank](sql-database-dtu-resource-limits-single-databases.md), [DTU-basierte Ressourceneinschränkungen – Pool für elastische Datenbanken](sql-database-dtu-resource-limits-elastic-pools.md),[V-Kern-basierte Ressourceneinschränkungen – Einzeldatenbanken](sql-database-vcore-resource-limits-single-databases.md) und [V-Kern-basierte Ressourceneinschränkungen – Pool für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md).
 
 Die folgenden Elemente werden bis zu Ihrer In-Memory-OLTP-Speicherkapazitätsobergrenze angerechnet:
 

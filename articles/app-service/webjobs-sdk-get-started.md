@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: d0afc8b6f8e0b7ef73e5d1c3cbabf2e1542f47f4
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 5a3070582a32adeda45dff233782c3a971885c14
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234517"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018454"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Erste Schnitte mit dem Azure WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
@@ -66,6 +66,9 @@ In diesem Artikel wird vorausgesetzt, dass Sie über [ein Azure-Konto](https://a
 2. Wählen Sie **Klassischer Windows-Desktop > Konsolen-App (.NET Framework)** aus.
 
    Wenn Sie ein 3.x-Projekt erstellen möchten, wählen Sie **.NET Core > Konsolen-App (.NET Core)** aus.
+   
+   > [!NOTE]
+   > 3.x befindet sich noch in der Vorschau und in der Entwicklung. Die Anweisungen für 3.x in diesem Artikel sind unvollständig. Aktuelle Informationen finden Sie unter den GitHub-Problemen am Ende der Seite.
 
 3. Weisen Sie dem Projekt den Namen *WebJobsSDKSample* zu, und wählen Sie dann **OK** aus.
 

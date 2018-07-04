@@ -15,40 +15,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2017
 ms.author: celested
-ms.reviewer: celested
+ms.reviewer: elisol, jmprieur, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c2af2e9f7ab87edcb9ac2b074514c36ac8fec2b6
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 1d82f9a8c9ba6bcdf9914337c7ca0eadaccf17a0
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156805"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318473"
 ---
 # <a name="whats-different-about-the-v20-endpoint"></a>Wo liegen die Unterschiede beim v2.0-Endpunkt?
-Wenn Sie mit Azure Active Directory vertraut sind oder in der Vergangenheit Apps in Azure AD integriert haben, gibt es möglicherweise einige Unterschiede im v2.0-Endpunkt, die Sie nicht erwarten. In diesem Dokument werden die Unterschiede zu Ihrem Verständnis erläutert.
+
+Wenn Sie mit Azure Active Directory (Azure AD) vertraut sind oder in der Vergangenheit Apps in Azure AD integriert haben, gibt es möglicherweise einige Unterschiede im v2.0-Endpunkt, die Sie nicht erwarten. In diesem Artikel werden die Unterschiede zu Ihrem Verständnis erläutert.
 
 > [!NOTE]
-> Nicht alle Szenarien und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
+> Nicht alle Szenarien und Features von Azure AD werden vom v2.0-Endpunkt unterstützt. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
 >
 
 ## <a name="microsoft-accounts-and-azure-ad-accounts"></a>Microsoft-Konten und Azure AD-Konten
-Der v2.0-Endpunkt ermöglicht Entwicklern das Schreiben von Apps, die eine Anmeldung sowohl von Microsoft-Konten als auch von Azure AD-Konten akzeptieren. Dazu wird ein einziger Endpunkt zur Authentifizierung genutzt. Dadurch können Sie die App so schreiben, dass sie Konten komplett ignoriert, und auch die Art des Kontos ignorieren kann, mit dem sich der Benutzer anmeldet. Natürlich *können* Sie die App so einrichten, dass Sie die Art des Kontos erkennt, das in einer bestimmten Sitzung verwendet wird, dies ist aber nicht erforderlich.
+
+Der v2.0-Endpunkt ermöglicht Entwicklern das Schreiben von Apps, die eine Anmeldung sowohl von Microsoft-Konten als auch von Azure AD-Konten akzeptieren. Dazu wird ein einziger Endpunkt zur Authentifizierung genutzt. Dadurch können Sie Ihre App so schreiben, dass sie Konten komplett ignoriert und auch die Art des Kontos ignorieren kann, mit dem sich der Benutzer anmeldet. Sie können die App so einrichten, dass sie die Art des Kontos erkennt, das in einer bestimmten Sitzung verwendet wird. Dies ist aber nicht erforderlich.
 
 Wenn Ihre App beispielsweise [Microsoft Graph](https://graph.microsoft.io) aufruft, sind einige zusätzliche Funktionen und Daten für Unternehmensbenutzer verfügbar, z.B. SharePoint-Websites oder Verzeichnisdaten. Der Code kann jedoch für viele Vorgänge wie das [Lesen von Nachrichten eines Benutzers](https://graph.microsoft.io/docs/api-reference/v1.0/resources/message) gleich geschrieben werden, egal ob für Microsoft-Konten oder Azure AD-Konten. 
 
 Das Integrieren Ihrer App mit Microsoft-Konten und Azure AD-Konten ist nun ein einfacher Prozess. Sie können einen einzelnen Satz von Endpunkten, eine einzelne Bibliothek und eine einzelne App-Registrierung verwenden, um Zugriff auf die Verbraucher- und Unternehmens-Welten zu erhalten. Weitere Informationen zum v2.0-Endpunkt finden Sie in [der Übersicht](active-directory-appmodel-v2-overview.md).
 
 ## <a name="new-app-registration-portal"></a>Das neue App-Registrierungsportal
-Um eine App zu registrieren, die mit dem v2.0-Endpunkt arbeitet, müssen Sie das neue App-Registrierungsportal [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) verwenden. In diesem Portal, in dem Sie eine Anwendungs-ID erhalten, können Sie u.a. die Darstellung der Anmeldeseite Ihrer App anpassen. Für den Zugriff auf das Portal brauchen Sie nur ein von Microsoft unterstütztes Konto – entweder ein persönliches oder ein Geschäfts-, Uni- oder Schulkonto.
+
+Um eine App zu registrieren, die mit dem v2.0-Endpunkt arbeitet, müssen Sie das Microsoft App-Registrierungsportal [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) verwenden. In diesem Portal, in dem Sie eine Anwendungs-ID erhalten, können Sie u.a. die Darstellung der Anmeldeseite Ihrer App anpassen. Für den Zugriff auf das Portal brauchen Sie nur ein von Microsoft unterstütztes Konto – entweder ein persönliches oder ein Geschäfts-, Uni- oder Schulkonto.
 
 ## <a name="one-app-id-for-all-platforms"></a>Eine App-ID für alle Plattformen
-Wenn Sie den Azure Active Directory-Dienst verwendet haben, haben Sie möglicherweise mehrere unterschiedliche Apps für ein einziges Projekt registriert. Wenn Sie z. B. sowohl eine Website als auch eine iOS-App erstellt haben, mussten Sie diese separat mit zwei verschiedenen Anwendungs-IDs registrieren. Das Azure AD-App-Registrierungsportal zwang Sie zu dieser Unterscheidung während der Registrierung:
+
+Wenn Sie den Azure AD-Dienst verwendet haben, haben Sie möglicherweise mehrere unterschiedliche Apps für ein einziges Projekt registriert. Wenn Sie z. B. sowohl eine Website als auch eine iOS-App erstellt haben, mussten Sie diese separat mit zwei verschiedenen Anwendungs-IDs registrieren. Das Azure AD-App-Registrierungsportal zwang Sie zu dieser Unterscheidung während der Registrierung:
 
 ![Benutzeroberfläche für die Registrierung der alten Anwendung](../../media/active-directory-v2-flows/old_app_registration.PNG)
 
 Wenn Sie vergleichbar eine Website und eine Back-End-Web-API hatten, haben Sie diese möglicherweise als separate Apps in Azure AD registriert. Oder wenn Sie eine App für iOS und eine für Android hatten, konnte dies ebenfalls der Fall sein. Das Registrieren jeder Komponente einer Anwendung führte zu unerwarteten Verhalten für Entwickler und ihre Kunden:
 
-* Jede Komponente wurde im Azure Active Directory-Mandanten jedes Kunden als separate App aufgeführt.
+* Jede Komponente wurde im Azure AD-Mandanten jedes Kunden als separate App aufgeführt.
 * Wenn ein Mandantenadministrator versuchte, eine Richtlinie auf eine App anzuwenden, den Zugriff darauf zu verwalten oder sie zu löschen, musste diese Aufgabe für jede Komponente der App erfolgen.
 * Wenn Kunden eine Anwendung genehmigt hatten, wurde jede Komponente auf dem Genehmigungsbildschirm als eigene Anwendung angezeigt.
 
@@ -57,7 +61,8 @@ Mit dem v2.0-Endpunkt können Sie nun alle Komponenten Ihres Projekts als einzel
 Unser Ziel ist es, dass dies zu einer vereinfachten App-Verwaltung und Entwicklungserfahrung führt, und sich eine konsolidiertere Ansicht eines einzelnen Projekts ergibt, an dem Sie möglicherweise arbeiten.
 
 ## <a name="scopes-not-resources"></a>Bereiche, keine Ressourcen
-In Azure Active Directory kann sich eine App als **Ressource** oder Empfänger von Token verhalten. Eine Ressource kann eine Anzahl von **Bereichen** oder **OAuth 2.0-Berechtigungen** definieren, die sie versteht, sodass Client-Apps Token für diese Ressource für einen bestimmten Satz von Bereichen anfordern können. Betrachten Sie als Beispiel für eine Ressource die Azure AD Graph-API:
+
+In Azure AD kann sich eine App als **Ressource** oder Empfänger von Token verhalten. Eine Ressource kann eine Anzahl von **Bereichen** oder **OAuth 2.0-Berechtigungen** definieren, die sie versteht, sodass Client-Apps Token für diese Ressource für einen bestimmten Satz von Bereichen anfordern können. Betrachten Sie als Beispiel für eine Ressource die Azure AD Graph-API:
 
 * Ressourcenbezeichner, oder `AppID URI`: `https://graph.windows.net/`
 * Bereiche, oder `OAuth2Permissions`: `Directory.Read`, `Directory.Write`, usw. 
@@ -80,18 +85,19 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 ...
 ```
 
-wo der **Bereichs** -Parameter angibt, für welche Ressourcen und Berechtigungen die App eine Autorisierung anfordert. Die gewünschte Ressource ist immer noch in der Anforderung vorhanden – sie ist nun einfach von den einzelnen Werten des Bereichsparameters umgeben. Wenn der Bereichsparameter auf diese Weise verwendet wird, entspricht der v2.0-Endpunkt eher der OAuth 2.0-Spezifikation und richtet sich mehr nach den gängigen Methoden der Branche. Dadurch können Apps auch eine [inkrementelle Zustimmung](#incremental-and-dynamic-consent)ausführen, die im nächsten Abschnitt beschrieben wird.
+wo der **Bereichs** -Parameter angibt, für welche Ressourcen und Berechtigungen die App eine Autorisierung anfordert. Die gewünschte Ressource ist noch in der Anforderung vorhanden – sie ist nun einfach von den einzelnen Werten des Bereichsparameters umgeben. Wenn der Bereichsparameter auf diese Weise verwendet wird, entspricht der v2.0-Endpunkt eher der OAuth 2.0-Spezifikation und richtet sich mehr nach den gängigen Methoden der Branche. Dadurch können Apps auch eine [inkrementelle Zustimmung](#incremental-and-dynamic-consent)ausführen, die im nächsten Abschnitt beschrieben wird.
 
 ## <a name="incremental-and-dynamic-consent"></a>Inkrementelle und dynamische Zustimmung
+
 Apps, die zuvor in Azure AD registriert wurden, mussten die erforderlichen OAuth 2.0-Berechtigungen zum Erstellungszeitpunkt der App im Azure-Portal angeben:
 
 ![Benutzeroberfläche für die Registrierung von Berechtigungen](../../media/active-directory-v2-flows/app_reg_permissions.PNG)
 
-Die für eine App erforderlichen Berechtigungen wurden **statisch**konfiguriert. Während die Konfiguration der App dadurch im Azure Portal existieren kann und der Code sauber und einfach bleibt, stellt es den Entwickler vor ein paar Probleme:
+Die für eine App erforderlichen Berechtigungen wurden **statisch**konfiguriert. Obwohl die Konfiguration der App dadurch im Azure-Portal existieren kann und der Code übersichtlich und einfach bleibt, stellt es den Entwickler vor ein paar Probleme:
 
 * Eine App musste zum Erstellungszeitpunkt alle Berechtigungen kennen, die jemals von der App benötigt wurde. Das Hinzufügen von Berechtigungen mit der Zeit war ein schwieriger Prozess.
 * Eine App musste frühzeitig alle Ressourcen kennen, auf die sie je zugreifen wollte. Es war schwierig, Apps zu erstellen, die auf eine beliebige Anzahl von Ressourcen zugreifen konnten.
-* Eine App mussten alle Berechtigungen anfordern, die je nach der ersten Anmeldung des Benutzers benötigt wurden. In einigen Fällen führte dies zu einer sehr langen Liste von Berechtigungen, was Endbenutzer davon abhielt, bei der ersten Anmeldung den Zugriff der App zu genehmigen.
+* Eine App mussten alle Berechtigungen anfordern, die je nach der ersten Anmeldung des Benutzers benötigt wurden. In einigen Fällen führte dies zu einer langen Liste von Berechtigungen, was Endbenutzer davon abhielt, bei der ersten Anmeldung den Zugriff der App zu genehmigen.
 
 Beim v2.0-Endpunkt können Sie die von Ihrer App benötigten Berechtigungen **dynamisch**zur Laufzeit angeben, während Ihre App normal genutzt wird. Zu diesem Zweck können Sie die Bereiche angeben, die Ihre App zu einem bestimmten Zeitpunkt benötigt, indem Sie sie in den `scope` -Parameter einer Autorisierungsanforderung einschließen:
 
@@ -102,29 +108,36 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 ...
 ```
 
-Mit der oben genannten Anforderungsberechtigung kann die App die Verzeichnisdaten des Benutzers in Azure AD lesen sowie Daten in das Verzeichnis schreiben. Wenn der Benutzer diesen Berechtigungen in der Vergangenheit für diese spezielle App zugestimmt hat, gibt er einfach seine Anmeldeinformationen ein und meldet sich in der App an. Wenn der Benutzer keiner Berechtigung zugestimmt hat, fordert der v2.0-Endpunkt ihn dazu auf, diesen Berechtigungen zuzustimmen. Weitere Informationen dazu finden Sie unter [Berechtigungen, Zustimmung und Bereiche](active-directory-v2-scopes.md).
+Mit der oben genannten Anforderungsberechtigung kann die App die Verzeichnisdaten des Benutzers in Azure AD lesen sowie Daten in das Verzeichnis schreiben. Wenn der Benutzer diesen Berechtigungen in der Vergangenheit für diese spezielle App zugestimmt hat, gibt er seine Anmeldeinformationen ein und meldet sich bei der App an. Wenn der Benutzer keiner Berechtigung zugestimmt hat, fordert der v2.0-Endpunkt ihn dazu auf, diesen Berechtigungen zuzustimmen. Weitere Informationen dazu finden Sie unter [Berechtigungen, Zustimmung und Bereiche](active-directory-v2-scopes.md).
 
-Wenn Sie einer App erlauben, Berechtigungen dynamisch über den `scope` -Parameter anzufordern, erhalten Sie die vollständige Kontrolle über die Erfahrung des Benutzers. Falls gewünscht, können Sie die Zustimmungserfahrung auch vorziehen und alle Berechtigungen in einer ersten Autorisierungsanforderung erfragen. Wenn Ihre App eine große Anzahl von Berechtigungen erfordert, können Sie auch die Berechtigungen des Benutzers inkrementell erfassen, während er über die Zeit bestimmte Features Ihrer App verwendet.
+Wenn Sie einer App erlauben, Berechtigungen dynamisch über den `scope`-Parameter anzufordern, erhalten Sie die vollständige Kontrolle über die Erfahrung des Benutzers. Falls gewünscht, können Sie die Zustimmungserfahrung auch vorziehen und alle Berechtigungen in einer ersten Autorisierungsanforderung erfragen. Wenn Ihre App eine große Anzahl von Berechtigungen erfordert, können Sie auch die Berechtigungen des Benutzers inkrementell erfassen, während er über die Zeit bestimmte Features Ihrer App verwendet.
 
 ## <a name="well-known-scopes"></a>Bekannte Bereiche
-#### <a name="offline-access"></a>Offlinezugriff
+
+### <a name="offline-access"></a>Offlinezugriff
+
 Für Apps, die den v2.0-Endpunkt verwenden, muss möglicherweise eine neue bekannte Berechtigung für Apps verwendet werden: der Bereich `offline_access`. Alle Apps müssen diese Berechtigung anfordern, wenn sie im Auftrag eines Benutzers für einen längeren Zeitraum auf Ressourcen zugreifen wollen, selbst, wenn der Benutzer die App nicht aktiv verwendet. Der `offline_access`-Bereich wird dem Benutzer in den Zustimmungsdialogfeldern als "Auf Ihre Daten offline zugreifen" angezeigt, wofür der Benutzer seine Zustimmung gewähren muss. Durch Anfordern der `offline_access`-Berechtigung kann Ihre Web-App OAuth 2.0-Aktualisierungstoken vom v2. 0-Endpunkt erhalten. Aktualisierungstoken sind langlebig und können durch neue OAuth 2.0-Zugriffstoken für längere Zugriffszeiten ausgetauscht werden. 
 
-Wenn die App den `offline_access`-Bereich nicht anfordert, werden auch keine Aktualisierungstoken empfangen. Dies bedeutet, dass Sie beim Einlösen eines Autorisierungscodes im OAuth 2.0-Autorisierungscodefluss nur ein Zugriffstoken vom `/token`-Endpunkt erhalten. Dieses Zugriffstoken bleibt für einen kurzen Zeitraum (in der Regel eine Stunde) gültig, läuft aber anschließend ab. Zu diesem Zeitpunkt muss Ihre App den Benutzer zurück auf den `/authorize`-Endpunkt leiten, um einen neuen Autorisierungscode abzurufen. Während dieser Umleitung muss der Benutzer möglicherweise seine Anmeldeinformationen erneut eingeben oder den Berechtigungen erneut zustimmen, je nach Apptyp.
+Wenn die App den `offline_access`-Bereich nicht anfordert, werden auch keine Aktualisierungstoken empfangen. Dies bedeutet, dass Sie beim Einlösen eines Autorisierungscodes im OAuth 2.0-Autorisierungscodefluss nur ein Zugriffstoken vom `/token`-Endpunkt erhalten. Dieses Zugriffstoken bleibt für einen kurzen Zeitraum (in der Regel eine Stunde) gültig, läuft aber anschließend ab. Zu diesem Zeitpunkt muss Ihre App den Benutzer zurück auf den `/authorize`-Endpunkt leiten, um einen neuen Autorisierungscode abzurufen. Während dieser Umleitung muss der Benutzer möglicherweise seine Anmeldeinformationen erneut eingeben oder den Berechtigungen erneut zustimmen, je nach App-Typ.
 
 Um mehr über OAuth 2.0, Aktualisierungstoken und Zugriffstoken zu erfahren, lesen Sie die [v2.0-Protokollreferenz](active-directory-v2-protocols.md).
 
-#### <a name="openid-profile-and-email"></a>OpenID, Profil und E-Mail
-Bislang wurden im grundlegenden OpenID Connect-Anmeldefluss mit Azure Active Directory zahlreiche Benutzerinformationen im resultierenden ID-Token bereitgestellt. Die Ansprüche in einem ID-Token können u. a. Name, bevorzugten Benutzernamen, E-Mail-Adresse, Objekt-ID eines Benutzers enthalten.
+### <a name="openid-profile-and-email"></a>OpenID, Profil und E-Mail
 
-Die Informationen, auf die der Bereich `openid` Ihrer App Zugriff gewährt, werden nun beschränkt. Der Bereich „openid“ erlaubt Ihrer App nur das Anmelden des Benutzers und das Empfangen eines App-spezifischen Bezeichners für den Benutzer. Falls Sie personenbezogene Informationen (Personally Identifiable Information, PII) über den Benutzer in Ihrer App erhalten möchten, müssen Sie über Ihre App zusätzliche Berechtigungen vom Benutzer einholen. Zu diesem Zweck führen wir zwei neue Bereiche ein: `email` und `profile`.
+Bislang wurden im grundlegenden OpenID Connect-Anmeldefluss mit Azure AD zahlreiche Benutzerinformationen im resultierenden „id_token“ bereitgestellt. Die Ansprüche in einem ID-Token können u. a. Name, bevorzugten Benutzernamen, E-Mail-Adresse, Objekt-ID eines Benutzers enthalten.
 
-Der Bereich `email` ist sehr einfach aufgebaut. Ihre App hat damit über den Anspruch `email` im ID-Token Zugriff auf die primäre E-Mail-Adresse des Benutzers. Der Bereich `profile` ermöglicht Ihrer App den Zugriff auf alle anderen grundlegenden Informationen zum Benutzer: Name, bevorzugter Benutzername, Objekt-ID usw.
+Die Informationen, auf die der Bereich `openid` Ihrer App Zugriff gewährt, sind nun beschränkt. Der Bereich `openid` erlaubt Ihrer App nur das Anmelden des Benutzers und das Empfangen eines App-spezifischen Bezeichners für den Benutzer. Falls Sie personenbezogene Daten über den Benutzer in Ihrer App erhalten möchten, müssen Sie über Ihre App zusätzliche Berechtigungen vom Benutzer einholen. Über zwei neue Bereiche – die Bereiche `email` und `profile` – können Sie weitere Berechtigungen anfordern.
+
+Der Bereich `email` gewährt Ihrer App mithilfe des Anspruchs `email` im „id_token“ Zugriff auf die primäre E-Mail-Adresse des Benutzers. 
+
+Der Bereich `profile` ermöglicht Ihrer App den Zugriff auf alle anderen grundlegenden Informationen zum Benutzer: Name, bevorzugter Benutzername, Objekt-ID usw.
 
 Hiermit können Sie für Ihre App den Weg der minimalen Offenlegung einschlagen. Sie können Benutzer nur um die Daten bitten, die für die Funktionsweise der App erforderlich sind. Weitere Informationen zu diesen Bereichen finden Sie in der [v2.0-Bereichsreferenz](active-directory-v2-scopes.md).
 
 ## <a name="token-claims"></a>Tokenansprüche
-Die Ansprüche in den Token, die vom v2.0-Endpunkt ausgegeben werden, sind nicht identisch mit denen, die von den allgemein verfügbaren Azure AD-Endpunkten ausgegeben werden. Apps, die auf den neuen Dienst migriert werden, sollten nicht davon ausgehen, dass in ID-Token oder Zugriffstoken ein besonderer Anspruch vorhanden ist. Weitere Informationen zu den spezifischen Ansprüchen, die in v2.0-Token ausgegeben werden, finden Sie in der [v2.0-Tokenreferenz](active-directory-v2-tokens.md).
+
+Die Ansprüche in Token, die vom v2.0-Endpunkt ausgestellt werden, sind nicht mit den Token identisch, die von den allgemein verfügbaren Azure AD-Endpunkten ausgestellt werden. Apps, die zum neuen Dienst migriert werden und keinen bestimmten Anspruch erfordern, sind in „id_tokens“ oder „access_tokens“ vorhanden. Weitere Informationen zu den spezifischen Ansprüchen, die in v2.0-Token ausgegeben werden, finden Sie in der [v2.0-Tokenreferenz](active-directory-v2-tokens.md).
 
 ## <a name="limitations"></a>Einschränkungen
-Es gibt einige Einschränkungen, die Sie bei Verwendung des v2.0-Endpunkts kennen sollten. Sehen Sie im [Dokument zu den v2.0-Einschränkungen](active-directory-v2-limitations.md) nach, ob diese Einschränkungen für Ihr spezielles Szenario gelten.
+
+Es gibt einige Einschränkungen, die Sie bei Verwendung des v2.0-Endpunkts kennen sollten. Um zu erfahren, ob diese Einschränkungen für Ihr spezielles Szenario gelten, sehen Sie im [Dokument zu den v2.0-Einschränkungen](active-directory-v2-limitations.md) nach.

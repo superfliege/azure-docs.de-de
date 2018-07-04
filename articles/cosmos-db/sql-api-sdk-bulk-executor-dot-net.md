@@ -11,14 +11,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 203e12ddc220651653625fc596eafa2e8365e4c1
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 5f2bc50a59219a38c2fcf4d501de4d8a11f6fbf1
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797742"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300753"
 ---
-# <a name="net-bulkexecutor-library-download-information"></a>BulkExecutor-Bibliothek für .NET: Informationen zum Download 
+# <a name="net-bulk-executor-library-download-information"></a>BulkExecutor-Bibliothek für .NET: Informationen zum Download 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
@@ -31,8 +31,8 @@ ms.locfileid: "34797742"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-Ressourcenanbieter](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-> * [BulkExecutor: .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [BulkExecutor: Java](sql-api-sdk-bulk-executor-java.md)
+> * [BulkExecutor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [BulkExecutor – Java](sql-api-sdk-bulk-executor-java.md)
 
 <table>
 

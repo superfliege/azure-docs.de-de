@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a929149f115d716bf7f9d850abe5ba97bd5a8189
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a79184a5e08aa43a4675194adf5f10b9807418db
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30198093"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36329551"
 ---
 ### <a name="gwipnoconnection"></a> So ändern Sie die IP-Adresse des lokalen Netzwerkgateways (ohne Gatewayverbindung)
 
@@ -23,7 +23,7 @@ ms.locfileid: "30198093"
 2. Ändern Sie im Feld **IP-Adresse** die IP-Adresse.
 3. Klicken Sie auf **Speichern** , um die Einstellungen zu speichern.
 
-### <a name="gwipwithconnection"></a> So ändern Sie die IP-Adresse des lokalen Netzwerkgateways (vorhandene Gatewayverbindung)
+### <a name="gwipwithconnection"></a>So ändern Sie die IP-Adresse des lokalen Netzwerkgateways (vorhandene Gatewayverbindung)
 
 Um ein lokales Netzwerkgateway mit einer Verbindung zu ändern, müssen Sie zuerst die Verbindung entfernen. Nachdem die Verbindung entfernt wurde, können Sie die Gateway-IP-Adresse ändern und eine neue Verbindung erstellen. Bei dieser Gelegenheit können Sie auch die Adresspräfixe ändern. Dies führt zu Ausfallzeiten bei Ihrer VPN-Verbindung. Beim Ändern der Gateway-IP-Adresse müssen Sie das VPN-Gateway nicht löschen. Sie müssen nur die Verbindung entfernen.
  

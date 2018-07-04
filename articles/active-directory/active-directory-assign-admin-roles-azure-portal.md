@@ -14,12 +14,12 @@ ms.date: 06/07/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 0bb4a57bcc31cffba3c0e7dc50d0e2b214c50838
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 1de2482b7795bbed82874b6eea29f89f1ff52560
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260412"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36939816"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Zuweisen von Administratorrollen in Azure Active Directory
 
@@ -29,12 +29,18 @@ Mithilfe von Azure Active Directory (Azure AD) können Sie verschiedene Administ
 Der globale Administrator hat Zugriff auf alle administrativen Funktionen. Standardmäßig wird der Person, die sich für ein Azure-Abonnement registriert, die globale Administratorrolle für das Verzeichnis zugewiesen. Nur globale Administratoren können weitere Administratorrollen zuweisen.
 
 ## <a name="assign-or-remove-administrator-roles"></a>Zuweisen oder Entfernen von Administratorrollen
-Um zu erfahren, wie in Azure Active Directory einem Benutzer Administratorrollen zugewiesen werden, lesen Sie [Zuweisen von Administratorrollen zu einem Benutzer in Azure Active Directory](active-directory-users-assign-role-azure-portal.md).
+Um zu erfahren, wie in Azure Active Directory einem Benutzer Administratorrollen zugewiesen werden, lesen Sie [Zuweisen von Administratorrollen zu einem Benutzer in Azure Active Directory](fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="available-roles"></a>Verfügbare Rollen
 Die folgenden Administratorrollen sind verfügbar:
 
+* **Anwendungsadministrator**: Benutzer mit dieser Rolle können alle Aspekte von Unternehmensanwendungen, Anwendungsregistrierungen und Anwendungsproxy-Einstellungen erstellen und verwalten. Diese Rolle ermöglicht auch die Zustimmung zu delegierten Berechtigungen und Anwendungsberechtigungen mit Ausnahme von Microsoft Graph und Azure AD Graph. Mitglieder dieser Rolle werden bei der Erstellung neuer Anwendungsregistrierungen oder Unternehmensanwendungen nicht als Besitzer hinzugefügt.
+
+* **Anwendungsentwickler**: Benutzer mit dieser Rolle können Anwendungsregistrierungen erstellen, wenn die Einstellung „Benutzer können Anwendungen registrieren“ auf „Nein“ gesetzt ist. Diese Rolle erlaubt es den Mitgliedern auch, in ihrem eigenen Namen zuzustimmen, wenn die Einstellung „Benutzer können Apps zustimmen, die in ihrem Namen auf Unternehmensdaten zugreifen“ auf „Nein“ gesetzt ist. Mitglieder dieser Rolle werden bei der Erstellung neuer Anwendungsregistrierungen oder Unternehmensanwendungen als Besitzer hinzugefügt.
+
 * **Rechnungsadministrator**: Tätigt Käufe, verwaltet Abonnements und Supporttickets und überwacht die Dienstintegrität.
+
+* **Cloudanwendungsadministrator**: Benutzer in dieser Rolle haben die gleichen Berechtigungen wie die Rolle des Anwendungsadministrators, mit Ausnahme der Möglichkeit, den Anwendungsproxy zu verwalten. Diese Rolle ermöglicht die Erstellung und Verwaltung aller Aspekte von Unternehmensanwendungen und Anwendungsregistrierungen. Diese Rolle ermöglicht auch die Zustimmung zu delegierten Berechtigungen und Anwendungsberechtigungen mit Ausnahme von Microsoft Graph und Azure AD Graph. Mitglieder dieser Rolle werden bei der Erstellung neuer Anwendungsregistrierungen oder Unternehmensanwendungen nicht als Besitzer hinzugefügt.
 
 * **Complianceadministrator**: Benutzer mit dieser Rolle verfügen über Verwaltungsberechtigungen innerhalb von Office 365 Security &amp; Compliance Center und Exchange Admin Center. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
@@ -86,7 +92,7 @@ Die folgenden Administratorrollen sind verfügbar:
 
 * **Administrator für privilegierte Rollen**: Benutzer mit dieser Rolle können Rollenzuweisungen in Azure Active Directory und in Azure AD Privileged Identity Management vornehmen. Überdies ermöglicht diese Rolle die vollumfängliche Verwaltung von Privileged Identity Management.
 
-* **Berichte lesen**: Benutzer mit dieser Rolle können Verwendungsberichtsdaten und das Berichtsdashboard in Office 365 Admin Center und das Anpassungskontextpaket in Power BI anzeigen. Darüber hinaus stellt die Rolle Zugriff auf Anmeldeberichte und -aktivitäten in Azure AD und von der Microsoft Graph-Berichterstellungs-API zurückgegebene Daten zur Verfügung. Ein Benutzer, dem die Rolle „Berichte lesen“ zugewiesen ist, kann nur auf relevante Nutzungs- und Anpassungsmetriken zugreifen. Sie verfügen nicht über Administratorrechte, um Einstellungen zu konfigurieren oder auf produktspezifische Verwaltungskonsolen wie das Exchange Admin Center zuzugreifen. 
+* **Meldet Reader**: Benutzer mit dieser Rolle können Verwendungsberichtsdaten und das Berichtsdashboard in Office 365 Admin Center und das Anpassungskontextpaket in Power BI anzeigen. Darüber hinaus stellt die Rolle Zugriff auf Anmeldeberichte und -aktivitäten in Azure AD und von der Microsoft Graph-Berichterstellungs-API zurückgegebene Daten zur Verfügung. Ein Benutzer, dem die Rolle „Meldet Reader“ zugewiesen ist, kann nur auf relevante Nutzungs- und Anpassungsmetriken zugreifen. Sie verfügen nicht über Administratorrechte, um Einstellungen zu konfigurieren oder auf produktspezifische Verwaltungskonsolen wie das Exchange Admin Center zuzugreifen. 
 
 * **Sicherheitsadministrator**: Benutzer mit dieser Rolle verfügen über alle Leseberechtigungen der Rolle „Sicherheit lesen“ sowie die Möglichkeit, die Konfiguration für sicherheitsrelevante Dienste zu verwalten (z.B. Azure Active Directory Identity Protection, Azure Information Protection, Privileged Identity Management und Office 365 Security &amp; Compliance Center). Weitere Informationen zu Office 365-Berechtigungen finden Sie unter [Berechtigungen im Office 365 Security & Compliance Center](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
@@ -107,11 +113,29 @@ Die folgenden Administratorrollen sind verfügbar:
 
 ## <a name="administrator-permissions"></a>Administratorberechtigungen
 
+### <a name="application-administrator"></a>Anwendungsadministrator
+
+| Möglich | Nicht möglich |
+| --- | --- |
+| Lesen aller Verzeichnisinformationen<br>Erstellen von Anwendungsregistrierungen<br>Aktualisieren von Anwendungsregistrierungseigenschaften<br>Erfassen von Unternehmensanwendungen<br>Verwalten von Anwendungsregistrierungsberechtigungen<br>Löschen von Anwendungsregistrierungen<br>Verwalten der Einstellungen für einmaliges Anmelden für Unternehmensanwendungen<br>Verwalten von Bereitstellungseinstellungen für Unternehmensanwendungen<br>Verwalten von Self-Service-Einstellungen für Unternehmensanwendungen<br>Verwalten von Berechtigungseinstellungen für Unternehmensanwendungen<br>Verwalten des Anwendungszugriffs<br>Verwalten der Bereitstellungseinstellungen<br>Löschen von Unternehmensanwendungen<br>Zustimmen in jedermanns Namen für alle delegierten Berechtigungsanforderungen<br>Zustimmen in jedermanns Namen für alle Anwendungsberechtigungsanforderungen ausgenommen Azure AD Graph oder Microsoft Graph<br>Verwalten von Anwendungsproxyeinstellungen<br>Zugreifen auf Serviceeinstellungen<br>Überwachen der Dienstintegrität<br>Verwalten von Supporttickets<br>Lesen ausgeblendeter Gruppenmitgliedschaften | Erstellen, Bearbeiten und Löschen von Gruppen<br>Verwalten von Benutzerlizenzen<br>Verwenden der Verzeichnissynchronisierung<br>Anzeigen von Anmeldeberichten und Überwachungsprotokollen | 
+
+### <a name="application-developer"></a>Anwendungsentwickler
+
+| Möglich | Nicht möglich |
+| --- | --- |
+| Lesen aller Verzeichnisinformationen<br>Erstellen von Anwendungsregistrierungen<br>Zustimmen im eigenen Namen | Anzeigen von Anmelde- und Überwachungsprotokollen<br>Lesen ausgeblendeter Gruppenmitgliedschaften |
+
 ### <a name="billing-administrator"></a>Abrechnungsadministrator
 
 | Möglich | Nicht möglich |
 | --- | --- |
-|<p>Anzeigen von Unternehmens- und Benutzerinformationen</p><p>Verwalten von Office-Supporttickets</p><p>Durchführen von Abrechnungs- und Kaufvorgängen für Office-Produkte</p> |<p>Zurücksetzen von Benutzerkennwörtern</p><p>Erstellen und Verwalten von Benutzeransichten</p><p>Erstellen, Bearbeiten und Löschen von Benutzern und Gruppen und Verwalten von Benutzerlizenzen</p><p>Verwalten von Domänen</p><p>Verwalten von Unternehmensinformationen</p><p>Delegieren von Administratorrollen an andere Benutzer</p><p>Verwenden der Verzeichnissynchronisierung</p><p>Anzeigen von Überwachungsprotokollen</p>|
+|<p>Anzeigen von Unternehmens- und Benutzerinformationen</p><p>Verwalten von Office-Supporttickets</p><p>Durchführen von Abrechnungs- und Kaufvorgängen für Office-Produkte</p> |<p>Zurücksetzen von Benutzerkennwörtern</p><p>Erstellen und Verwalten von Benutzeransichten</p><p>Erstellen, Bearbeiten und Löschen von Benutzern und Gruppen und Verwalten von Benutzerlizenzen</p><p>Verwalten von Domänen</p><p>Verwalten von Unternehmensinformationen</p><p>Delegieren von Administratorrollen an andere Benutzer</p><p>Verwenden der Verzeichnissynchronisierung</p><p>Anzeigen von Überwachungsprotokollen</p> |
+
+### <a name="cloud-application-administrator"></a>Cloudanwendungsadministrator
+
+| Möglich | Nicht möglich |
+| --- | --- |
+| Lesen aller Verzeichnisinformationen<br>Erstellen von Anwendungsregistrierungen<br>Aktualisieren von Anwendungsregistrierungseigenschaften<br>Erfassen von Unternehmensanwendungen<br>Verwalten von Anwendungsregistrierungsberechtigungen<br>Löschen von Anwendungsregistrierungen<br>Verwalten der Einstellungen für einmaliges Anmelden für Unternehmensanwendungen<br>Verwalten von Bereitstellungseinstellungen für Unternehmensanwendungen<br>Verwalten von Self-Service-Einstellungen für Unternehmensanwendungen<br>Verwalten von Berechtigungseinstellungen für Unternehmensanwendungen<br>Verwalten des Anwendungszugriffs<br>Verwalten der Bereitstellungseinstellungen<br>Löschen von Unternehmensanwendungen<br>Zustimmen in jedermanns Namen für alle delegierten Berechtigungsanforderungen<br>Zustimmen in jedermanns Namen für alle Anwendungsberechtigungsanforderungen ausgenommen Azure AD Graph oder Microsoft Graph<br>Zugreifen auf Serviceeinstellungen<br>Überwachen der Dienstintegrität<br>Verwalten von Supporttickets<br>Lesen ausgeblendeter Gruppenmitgliedschaften | Verwalten von Anwendungsproxyeinstellungen<br>Erstellen, Bearbeiten und Löschen von Gruppen<br>Verwalten von Benutzerlizenzen<br>Verwenden der Verzeichnissynchronisierung<br>Anzeigen von Anmeldeberichten und Überwachungsprotokollen |
 
 ### <a name="conditional-access-administrator"></a>Administrator für den bedingten Zugriff
 
@@ -130,24 +154,24 @@ Die folgenden Administratorrollen sind verfügbar:
 | <p>Anzeigen von Unternehmens- und Benutzerinformationen</p><p>Verwalten von Office-Supporttickets</p><p>Ändern von Kennwörtern ausschließlich für Benutzer und andere Helpdeskadministratoren</p>|<p>Durchführen von Abrechnungs- und Kaufvorgängen für Office-Produkte</p><p>Erstellen und Verwalten von Benutzeransichten</p><p>Erstellen, Bearbeiten und Löschen von Benutzern und Gruppen und Verwalten von Benutzerlizenzen</p><p>Verwalten von Domänen</p><p>Verwalten von Unternehmensinformationen</p><p>Delegieren von Administratorrollen an andere Benutzer</p><p>Verwenden der Verzeichnissynchronisierung</p><p>Anzeigen von Berichten</p>|
 
 ### <a name="information-protection-administrator"></a>Information Protection-Administrator
-In | Möglich
+Geben Sie in | Möglich
 -------- | ---------
 Azure Information Protection | <li>Konfigurieren von Bezeichnungen und Einstellungen in globalen und bereichsbezogenen Richtlinien<li>Konfigurieren und Verwalten von Schutzvorlagen<li>Aktivieren oder Deaktivieren des Schutzes
  
-### <a name="reports-reader"></a>Berichte lesen 
+### <a name="reports-reader"></a>Meldet Reader 
 Möglich | Nicht möglich
 ------ | ----------
 Anzeigen von Azure AD-Anmeldeberichten und -Überwachungsprotokollen<br>Anzeigen von Unternehmens- und Benutzerinformationen<br>Zugreifen auf das Office 365-Nutzungsdashboard | Erstellen und Verwalten von Benutzeransichten<br>Erstellen, Bearbeiten und Löschen von Benutzern und Gruppen und Verwalten von Benutzerlizenzen<br>Delegieren von Administratorrollen an andere Benutzer<br>Verwalten von Unternehmensinformationen
 
 ### <a name="security-reader"></a>Sicherheit lesen
-| In | Möglich |
+| Geben Sie in | Möglich |
 | --- | --- |
 | Identity Protection Center |Lesen von allen Sicherheitsberichten und Einstellungsinformationen für die Sicherheitsfunktionen<ul><li>Antispam<li>Verschlüsselung<li>Verhindern von Datenverlusten<li>Antischadsoftware<li>Erweiterter Schutz vor Bedrohungen<li>Antiphishing<li>Nachrichtenflussregeln |
 | Privileged Identity Management |<p>Verfügt über schreibgeschützten Zugriff auf alle eingeblendeten Informationen in Azure AD PIM: Richtlinien und Berichte für Azure AD-Rollenzuweisungen, Sicherheitsüberprüfungen und in Zukunft Lesezugriff auf Richtliniendaten und Berichte für Szenarios zusätzlich zur Azure AD-Rollenzuweisung.<p>**Kann sich nicht** für Azure AD PIM registrieren oder Änderungen durchführen. Im PIM-Portal oder über PowerShell können Personen mit dieser Rolle zusätzliche Rollen (z.B. globaler Administrator oder Administrator für privilegierte Rollen) aktivieren, wenn der Benutzer für sie geeignet ist. |
 | <p>Überwachen der Office 365-Dienstintegrität</p><p>Office 365 Security & Compliance Center</p> |<ul><li>Lesen und Verwalten von Warnungen<li>Lesen von Sicherheitsrichtlinien<li>Lesen von Bedrohungsanalysen, Cloud App Discovery und Quarantäne in Suchen und Untersuchungen<li>Lesen aller Berichte |
 
 ### <a name="security-administrator"></a>Sicherheitsadministrator
-| In | Möglich |
+| Geben Sie in | Möglich |
 | --- | --- |
 | Identity Protection Center |<ul><li>Alle Berechtigungen der Rolle „Sicherheit lesen“<li>Darüber hinaus die Möglichkeit, alle IPC-Vorgänge außer des Zurücksetzens von Kennwörtern auszuführen. |
 | Privileged Identity Management |<ul><li>Alle Berechtigungen der Rolle „Sicherheit lesen“<li>**nicht** verwalten. |
@@ -169,17 +193,19 @@ Anzeigen von Azure AD-Anmeldeberichten und -Überwachungsprotokollen<br>Anzeigen
 
    ![Öffnen des Azure AD Admin Center](./media/active-directory-assign-admin-roles-azure-portal/active-directory-admin-center.png)
 
-2. Wählen Sie **Benutzer und Gruppen &gt; Alle Benutzer** aus.
+2. Wählen Sie **Benutzer** > **Alle Benutzer** aus.
 
-3. Suchen Sie den Benutzer, der als globaler Administrator festgelegt werden soll, und öffnen Sie das Blatt für diesen Benutzer.
+3. Öffnen Sie die Seite des Benutzers, der als globaler Administrator festgelegt werden soll.
 
-4. Wählen Sie auf dem Blatt „Benutzer“ die Option **Verzeichnisrolle** aus.
- 
-5. Wählen Sie auf dem Blatt „Verzeichnisrolle“ die Rolle **Globaler Administrator** aus, und speichern Sie sie.
+4. Wählen Sie in der Befehlsleiste **Verzeichnisrolle** aus.
+
+5. Wählen Sie **Rolle hinzufügen** aus.
+
+6. Wählen Sie auf der Seite „Verzeichnisrolle“ die Rolle **Globaler Administrator** aus, und klicken Sie zum Speichern auf **Auswählen**.
 
 ## <a name="deprecated-roles"></a>Veraltete Rollen
 
-Die folgenden Rollen sollten nicht verwendet werden. Sie wurden als veraltet markiert und werden aus Azure AD entfernt.
+Die folgenden Rollen sollten nicht verwendet werden. Sie sind veraltet und werden aus Azure AD entfernt.
 
 * Ad-hoc-Lizenzadministrator
 * Benutzererstellung mit E-Mail-Überprüfung
@@ -190,9 +216,9 @@ Die folgenden Rollen sollten nicht verwendet werden. Sie wurden als veraltet mar
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum Ändern von Administratoren für ein Azure-Abonnement finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](../billing-add-change-azure-subscription-administrator.md)
+* Weitere Informationen zum Ändern von Administratoren für ein Azure-Abonnement finden Sie unter [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](../billing-add-change-azure-subscription-administrator.md).
 * Informationen dazu, wie der Zugriff auf Ressourcen in Microsoft Azure gesteuert wird, finden Sie unter [Grundlegendes zum Zugriff auf Ressourcen in Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* Weitere Informationen zur Beziehung zwischen Azure Active Directory und Ihrem Azure-Abonnement finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
+* Weitere Informationen zur Beziehung zwischen Azure Active Directory und Ihrem Azure-Abonnement finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [Verwalten von Benutzern](active-directory-create-users.md)
 * [Verwalten von Kennwörtern](active-directory-manage-passwords.md)
-* [Gruppen verwalten](active-directory-manage-groups.md)
+* [Gruppen verwalten](fundamentals/active-directory-manage-groups.md)

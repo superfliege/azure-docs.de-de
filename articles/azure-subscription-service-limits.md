@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: byvinyal
-ms.openlocfilehash: 9e4ea16193824e63298b19d4401c110385fa7feb
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 1d67266bf599a4dc57fc2e9e0d1c5f9f2562346c
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700191"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318961"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 In diesem Dokument sind einige der gängigsten Einschränkungen in Microsoft Azure aufgeführt, die bisweilen auch als „Kontingente“ bezeichnet werden. Dieses Dokument behandelt derzeit nicht alle Azure-Dienste. Mit der Zeit wird diese Liste erweitert, um größere Teile der Plattform abzudecken.
@@ -40,8 +40,7 @@ In den folgenden Grenzwerten wurde eine neue Tabelle hinzugefügt, um alle abwei
 
 > [!NOTE]
 > Wichtig ist, dass der Zugriff Ihres Abonnements auf Kontingente für Ressourcen in Azure-Ressourcengruppen pro Region erfolgt und nicht pro Abonnement wie bei Dienstverwaltungskontingenten. Verwenden wir vCPU-Kontingente als Beispiel. Wenn Sie eine Erhöhung des Kontingents mit Unterstützung für vCPUs anfordern müssen, müssen Sie entscheiden, wie viele vCPUs Sie in den einzelnen Regionen verwenden möchten, und anschließend eine spezifische Anforderung für Azure-Ressourcengruppen-vCPUs-Kontingente für die gewünschten Beträge und Regionen vornehmen. Wenn Sie für die Ausführung Ihrer Anwendung 30 vCPUs in „Europa, Westen“ benötigen, sollten Sie daher 30 vCPUs in „Europa, Westen“ anfordern. In anderen Regionen erfolgt jedoch keine Erhöhung des vCPU-Kontingents. Das Kontingent von 30 vCPUs gilt nur für „Europa, Westen“.
-> <!-- -->
-> Daher sollten Sie gegebenenfalls überlegen, wie hoch Ihre Azure-Ressourcengruppenkontingente für Ihre Workload in jeder Region sein müssen, und diesen Betrag in jeder Region anfordern, in der Sie eine Bereitstellung in Betracht ziehen. Weitere Informationen zum Ermitteln Ihrer aktuellen Kontingente für bestimmte Regionen finden Sie unter [Problembehandlung bei der Bereitstellung](resource-manager-common-deployment-errors.md) .
+> <!-- --> Daher sollten Sie gegebenenfalls überlegen, wie hoch Ihre Azure-Ressourcengruppenkontingente für Ihre Workload in jeder Region sein müssen, und diesen Betrag in jeder Region anfordern, in der Sie eine Bereitstellung in Betracht ziehen. Weitere Informationen zum Ermitteln Ihrer aktuellen Kontingente für bestimmte Regionen finden Sie unter [Problembehandlung bei der Bereitstellung](resource-manager-common-deployment-errors.md) .
 >
 >
 
@@ -325,7 +324,7 @@ Detailliertere Informationen zu Grenzwerten wie etwa für Dokumentgröße, Abfra
 [!INCLUDE [role-based-access-control-limits](../includes/role-based-access-control-limits.md)]
 
 ### <a name="sql-database-limits"></a>Grenzwerte für SQL-Datenbanken
-Einschränkungen für SQL-Datenbanken finden Sie unter [Ressourceneinschränkungen für SQL-Datenbank](sql-database/sql-database-resource-limits.md).
+Weitere Informationen zu Limits von SQL-Datenbank finden Sie unter [Ressourcenlimits von SQL-Datenbank für Einzeldatenbanken](sql-database/sql-database-vcore-resource-limits-single-databases.md) und [Ressourcenlimits von SQL-Datenbank für Pools für elastische Datenbanken und in einem Pool zusammengefasste Datenbanken](sql-database/sql-database-vcore-resource-limits-elastic-pools.md).
 
 ### <a name="sql-data-warehouse-limits"></a>Einschränkungen zu SQL Data Warehouse
 Einschränkungen zu SQL Data Warehouse finden Sie unter [Ressourceneinschränkungen zu SQL Data Warehouse](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).

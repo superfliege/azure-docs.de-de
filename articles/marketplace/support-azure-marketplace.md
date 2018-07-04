@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/07/2018
 ms.author: ellacroi
-ms.openlocfilehash: 6ad1c226246bc1523daca84235591afc27a3b132
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: a2962f50258bb3f65f574882ce2ea46ff006aac3
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826068"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309349"
 ---
 # <a name="support-for-azure-marketplace"></a>Support für Azure Marketplace  
 Die Supportoptionen für Azure Marketplace  
@@ -50,7 +50,7 @@ Die Supportoptionen für Azure Marketplace
 |:--- |:--- |  
 | Slack: [join.marketplace.azure.com](https://join.marketplace.azure.com) | Slack-Umgebung zur Unterstützung von Partnern bei technischen Problemen. In dieser Umgebung arbeiten derzeit mehr als 350 Partner. |  
 | MSDN-Foren: Marketplace unter [social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Microsoft Developer Network-Forum. |  
-| Stack Overflow: Azure unter [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | Stack Overflow-Umgebung für Lösungen und Antworten auf allgemeine Fragen zu Azure Marketplace<ul> <li>Stack Overflow: Azure Marketplace unter [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Stack Overflow: Azure Resource Manager unter [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Stack Overflow: Azure Virtual Machines unter [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li><li>[Container in Azure](https://stackoverflow.com/search?q=azure+container)</li></ul> |
+| Stack Overflow: Azure unter [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | Stack Overflow-Umgebung für Lösungen und Antworten auf allgemeine Fragen zu Azure Marketplace<ul> <li>Stack Overflow: Azure Marketplace unter [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Stack Overflow: Azure Resource Manager unter [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Stack Overflow: Virtuelle Computer in Azure unter [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Stack Overflow: Container in Azure unter [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
 
 ## <a name="marketing-resources"></a>Marketingressourcen  
 
@@ -61,6 +61,6 @@ Die Supportoptionen für Azure Marketplace
 | E-Mail: [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Antworten auf Fragen zur Nutzung für Azure-Logos und zum Branding. |  |  
 
 ## <a name="next-steps"></a>Nächste Schritte
-*   Besuchen Sie die Seite mit dem [Herausgeberleitfaden für Azure Marketplace und AppSource](./marketplace-publishers-guide.md).  
+*   Besuchen Sie die Seite [Herausgeberleitfaden für Azure Marketplace und AppSource](./marketplace-publishers-guide.md).  
  
 ---  

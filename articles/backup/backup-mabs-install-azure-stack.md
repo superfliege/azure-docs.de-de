@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/5/2018
 ms.author: markgal
-ms.openlocfilehash: f39f8571d4256a14f64ee2a66788cac8fa524eec
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: c9dd6a1818b0afeb5e577724568a8254a70c8228
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248893"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753352"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Installieren von Azure Backup Server in Azure Stack
 
@@ -42,18 +42,9 @@ Azure Backup Server schützt die folgenden Workloads für virtuelle Azure Stack-
 | SQL Server 2016 | Datenbank |
 | SQL Server 2014 | Datenbank |
 | SQL Server 2012 SP1 | Datenbank |
+| SharePoint 2016 | Farm, Datenbank, Front-End, Webserver |
 | SharePoint 2013 | Farm, Datenbank, Front-End, Webserver |
 | SharePoint 2010 | Farm, Datenbank, Front-End, Webserver |
-
-
-### <a name="host-vs-guest-backup"></a>Sicherung auf Host- oder Gastebene
-
-Azure Backup Server führt Sicherungen virtueller Computer auf Host- oder Gastebene durch. Auf Hostebene wird der Azure Backup-Agent auf dem virtuellen Computer oder im Cluster installiert und schützt somit den gesamten virtuellen Computer und die auf dem Host ausgeführten Datendateien. Auf Gastebene wird der Azure Backup-Agent auf allen virtuellen Computern installiert und schützt somit die auf der jeweiligen VM vorhandene Workload.
-
-Beide Methoden haben Vor- und Nachteile:
-
-   * Sicherungen auf Hostebene funktionieren unabhängig vom Betriebssystem auf den Gast-VMs und erfordern nicht, dass der Azure Backup-Agent auf jeder VM installiert wird. Wenn Sie Sicherungen auf Hostebene bereitstellen, stellen Sie einen kompletten virtuellen Computer oder Dateien und Ordner wieder her (Wiederherstellung auf Elementebene).
-   * Die Sicherung auf Gastebene ist für den Schutz bestimmter Workloads auf einem virtuellen Computer von Vorteil. Auf Hostebene können Sie eine gesamte VM oder bestimmte Dateien wiederherstellen, jedoch keine Daten im Kontext einer bestimmten Anwendung. Um beispielsweise bestimmte SharePoint-Dateien von einem geschützten virtuellen Computer wiederherzustellen, müssen Sie diesen auf Gastebene schützen. Wenn Sie auf Pass-Through-Datenträgern gespeicherte Daten schützen möchten, müssen Sie die Sicherung auf Gastebene wählen. Die Pass-Through-Technologie ermöglicht dem virtuellen Computer den Direktzugriff auf das Speichergerät und speichert keine virtuellen Volumedaten in einer VHD-Datei.
 
 ## <a name="prerequisites-for-the-azure-backup-server-environment"></a>Voraussetzungen für die Azure Backup Server-Umgebung
 
@@ -84,13 +75,10 @@ Durch das Speichern von Sicherungsdaten in Azure wird die Sicherungsinfrastruktu
 
 Erstellen bzw. verwenden Sie einen Recovery Services-Tresor, um Sicherungsdaten in Azure zu speichern. Beim Vorbereiten einer Sicherung der Azure Backup Server-Workload [konfigurieren Sie den Recovery Services-Tresor](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault). Nach der Konfiguration wird bei jeder Ausführung eines Sicherungsauftrags im Tresor ein Wiederherstellungspunkt erstellt. Jeder Recovery Services-Tresor enthält bis zu 9999 Wiederherstellungspunkte. Je nach Anzahl von erstellten Wiederherstellungspunkten und Dauer ihrer Aufbewahrung können Sie Sicherungsdaten viele Jahre lang vorhalten. Beispielsweise können Sie monatliche Wiederherstellungspunkte erstellen und fünf Jahre lang aufbewahren.
  
-### <a name="using-sql-server"></a>Verwenden von SQL Server
-Wenn Sie eine SQL Server-Remoteinstanz für die Azure Backup Server-Datenbank verwenden, sollten Sie nur eine Azure Stack-VM mit Ausführung von SQL Server auswählen.
-
 ### <a name="scaling-deployment"></a>Skalieren der Bereitstellung
 Wenn Sie Ihre Bereitstellung skalieren möchten, haben Sie die folgenden Optionen:
   - Zentral hochskalieren: Erhöhen Sie die Größe des virtuellen Azure Backup Server-Computers von der A-Serie auf die D-Serie, und erhöhen Sie den lokalen Speicher [gemäß der Anleitung zum virtuellen Azure Stack-Computer](../azure-stack/user/azure-stack-manage-vm-disks.md).
-  - Daten auslagern: Senden Sie ältere Daten an Azure Backup Server, und behalten Sie nur die neuesten Daten in dem Speicher bei, der an den Azure Backup Server angefügt ist.
+  - Daten auslagern: Senden Sie ältere Daten an Azure, und behalten Sie nur die neuesten Daten in dem Speicher bei, der dem Azure Backup Server angefügt ist.
   - Horizontal hochskalieren: Fügen Sie weitere Azure Backup Server-Instanzen hinzu, um die Workloads zu schützen.
 
 ### <a name="net-framework"></a>.NET Framework
@@ -138,7 +126,7 @@ Es gibt zwei Möglichkeiten zum Herunterladen des Azure Backup Server-Installati
 
     ![Auswählen der Option „Alle Dienste“ im Hauptmenü](./media/backup-mabs-install-azure-stack/click-all-services.png)
 
-3. Geben Sie *Recovery Services*  im Dialogfeld **Alle Dienste** ein. Sobald Sie mit der Eingabe beginnen, wird die Ressourcenliste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Recovery Services-Tresore** aus, sobald der Eintrag angezeigt wird.
+3. Geben Sie *Recovery Services*  im Dialogfeld **Alle Dienste** ein. Sobald Sie mit der Eingabe beginnen, wird die Ressourcenliste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Recovery Services-Tresore** aus, wenn der Eintrag angezeigt wird.
 
     ![Eingeben von Recovery Services im Dialogfeld „Alle Dienste“](./media/backup-mabs-install-azure-stack/all-services.png)
 
@@ -216,7 +204,7 @@ Im vorherigen Schritt haben Sie auf **Fertig stellen** geklickt, um die Extrahie
 
 ![Setup-Assistent von Microsoft Azure Backup](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5.png)
 
-Azure Backup Server und Data Protection Manager teilen sich Code. Deshalb finden Sie im Installationsprogramm von Azure Backup Server Verweise auf Data Protection Manager und DPM. Azure Backup Server und Data Protection Manager sind zwar getrennte Produkte, aber eng miteinander verknüpft. In der Dokumentation zu Azure Backup Server gelten alle Verweise auf Data Protection Manager und DPM auch für Azure Backup Server.
+Azure Backup Server und Data Protection Manager teilen sich Code. Deshalb finden Sie im Installationsprogramm von Azure Backup Server Verweise auf Data Protection Manager und DPM. Azure Backup Server und Data Protection Manager sind zwar getrennte Produkte, aber eng miteinander verknüpft.
 
 1. Klicken Sie auf **Microsoft Azure Backup Server**, um den Setup-Assistenten zu starten.
 
@@ -322,7 +310,7 @@ Azure Backup Server und Data Protection Manager teilen sich Code. Deshalb finden
 
 ## <a name="add-backup-storage"></a>Hinzufügen von Backup Storage
 
-Die erste Sicherungskopie wird in einem Speicherbereich vorgehalten, der dem Azure Backup Server-Computer zugeordnet ist. Weitere Informationen zum Hinzufügen von Datenträgern finden Sie unter [Konfigurieren von Speicherpools und Datenträgerspeicher](https://technet.microsoft.com/library/hh758075.aspx).
+Die erste Sicherungskopie wird in einem Speicherbereich vorgehalten, der dem Azure Backup Server-Computer zugeordnet ist. Weitere Informationen zum Hinzufügen von Datenträgern finden Sie unter [Hinzufügen von Speicher zu DPM 2016](https://docs.microsoft.com/en-us/system-center/dpm/add-storage?view=sc-dpm-1801).
 
 > [!NOTE]
 > Sie müssen auch dann Backup Storage hinzufügen, wenn Sie Daten an Azure senden möchten. In der Architektur von Azure Backup Server enthält der Recovery Services-Tresor die *zweite* Kopie der Daten, während der lokale Speicher die erste (obligatorische) Sicherungskopie enthält.
@@ -333,7 +321,7 @@ Die erste Sicherungskopie wird in einem Speicherbereich vorgehalten, der dem Azu
 
 Azure Backup Server muss mit dem Azure Backup-Dienst verbunden sein, um erfolgreich ausgeführt werden zu können. Verwenden Sie zum Überprüfen, ob der Computer über eine Verbindung mit Azure verfügt, das Cmdlet ```Get-DPMCloudConnection``` in der Azure Backup Server-PowerShell-Konsole. Wenn die Ausgabe des Cmdlets „TRUE“ lautet, besteht eine Verbindung, andernfalls nicht.
 
-Gleichzeitig muss das Azure-Abonnement einen fehlerfreien Zustand aufweisen. Um den Zustand Ihres Abonnements zu ermitteln und es zu verwalten, melden Sie sich beim [Abonnementportal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) an.
+Gleichzeitig muss das Azure-Abonnement einen fehlerfreien Zustand aufweisen. Um den Status Ihres Abonnements zu ermitteln und es zu verwalten, melden Sie sich beim [Abonnementportal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)an.
 
 Nachdem Sie den Status der Azure-Verbindung und des Azure-Abonnements kennen, können Sie anhand der Tabelle unten ermitteln, welche Auswirkungen mit einer Sicherungs-/Wiederherstellungsfunktion verbunden sind.
 
@@ -358,7 +346,7 @@ Wenn eine Firewall oder ein Proxy den Zugriff auf Azure verhindert, setzen Sie i
 
 Sobald die Verbindung mit Azure für den Computer mit Azure Backup Server wiederhergestellt ist, bestimmt der Azure-Abonnementzustand, welche Vorgänge ausgeführt werden können. Wenn für den Server **Verbunden** angezeigt wird, verwenden Sie die Tabelle in [Netzwerkkonnektivität](backup-mabs-install-azure-stack.md#network-connectivity), um die verfügbaren Vorgänge zu sichten.
 
-### <a name="handling-subscription-states"></a>Behandeln von Abonnementzuständen
+### <a name="handling-subscription-states"></a>Behandeln von Abonnementstatus
 
 Es ist möglich, den Zustand eines Azure-Abonnements von *Abgelaufen* oder *Bereitstellung aufgehoben* in *Aktiv* zu ändern. Wenn der Abonnementzustand nicht *Aktiv* ist:
 
@@ -372,10 +360,10 @@ Sie können auch [Azure Backup – Häufig gestellte Fragen](backup-azure-backup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Der Artikel [Vorbereiten der Umgebung für DPM](https://technet.microsoft.com/library/hh758176.aspx) enthält Informationen zu unterstützten Azure Backup Server-Konfigurationen.
+Der Artikel [Vorbereiten der Umgebung für DPM](https://docs.microsoft.com/en-us/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801) enthält Informationen zu unterstützten Azure Backup Server-Konfigurationen.
 
 In den folgenden Artikeln finden Sie weiteführende Informationen zum Schutz von Workloads mit Microsoft Azure Backup Server.
 
-- [SQL Server-Sicherung](backup-azure-backup-sql.md)
-- [SharePoint Server-Sicherung](backup-azure-backup-sharepoint.md)
+- [SQL Server-Sicherung](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sql-azure-stack)
+- [SharePoint Server-Sicherung](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sharepoint-azure-stack)
 - [Sicherung eines anderen Servers](backup-azure-alternate-dpm-server.md)

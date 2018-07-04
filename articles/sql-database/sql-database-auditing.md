@@ -2,19 +2,19 @@
 title: Erste Schritte bei der Überwachung von Azure SQL-Datenbank | Microsoft-Dokumentation
 description: Verwenden Sie die Azure SQL-Datenbanküberwachung, um Datenbankereignisse in einem Überwachungsprotokoll nachzuverfolgen.
 services: sql-database
-author: giladm
+author: giladmit
 manager: craigg
 ms.service: sql-database
 ms.custom: security
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 06/24/2018
 ms.author: giladm
-ms.openlocfilehash: 62c6e576a5ef7fa953618dcba4ddd158df131148
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0646667caab594556cc3c2043bc36905acef6e54
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644588"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751042"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Erste Schritte bei der Überwachung von SQL-Datenbank
 Die SQL-Datenbank-Überprüfung in Azure verfolgt Datenbankereignisse und schreibt diese in ein Überwachungsprotokoll in Ihrem Azure-Speicherkonto. Die Überwachung ermöglicht außerdem Folgendes:
@@ -200,12 +200,17 @@ Ein Skriptbeispiel finden Sie unter [Konfigurieren von Überwachung von SQL-Date
 
 **REST-API – Blobüberwachung**:
 
-* [Erstellen oder Aktualisieren einer Richtlinie für die Überwachung von Datenbankblobs](https://msdn.microsoft.com/library/azure/mt695939.aspx)
-* [Erstellen oder Aktualisieren einer Richtlinie für die Überwachung von Serverblobs](https://msdn.microsoft.com/library/azure/mt771861.aspx)
-* [Abrufen einer Richtlinie für die Überwachung von Datenbankblobs](https://msdn.microsoft.com/library/azure/mt695938.aspx)
-* [Abrufen einer Richtlinie für die Überwachung von Serverblobs](https://msdn.microsoft.com/library/azure/mt771860.aspx)
+* [Erstellen oder Aktualisieren einer Richtlinie für die Überwachung von Datenbankblobs](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/createorupdate)
+* [Erstellen oder Aktualisieren einer Richtlinie für die Überwachung von Serverblobs](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/createorupdate)
+* [Abrufen einer Richtlinie für die Überwachung von Datenbankblobs](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/get)
+* [Abrufen einer Richtlinie für die Überwachung von Serverblobs](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/get)
 * [Abrufen des Ergebnisses eines Überwachungsvorgangs für Serverblobs](https://msdn.microsoft.com/library/azure/mt771862.aspx)
 
+Erweiterte Richtlinie mit Unterstützung der WHERE-Klausel für zusätzliche Filterung:
+* [Erstellen oder Aktualisieren einer *erweiterten* Richtlinie für die Überwachung von Datenbankblobs](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+* [Erstellen oder Aktualisieren einer *erweiterten* Richtlinie für die Überwachung von Serverblobs](https://docs.microsoft.com/en-us/rest/api/sql/server%20extended%20auditing%20settings/createorupdate)
+* [Abrufen einer *erweiterten* Richtlinie für die Überwachung von Datenbankblobs](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/get)
+* [Abrufen einer *erweiterten* Richtlinie für die Überwachung von Serverblobs](https://docs.microsoft.com/en-us/rest/api/sql/server%20extended%20auditing%20settings/get)
 
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1

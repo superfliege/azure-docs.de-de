@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 3feed9c1c8903db66a0506f09161982dadaa79ba
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: ddbac24020110e32792286a1ac64070316cfb081
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284963"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332713"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>Ausführen von PowerShell-Skripts in Ihrer Windows-VM mit „Befehl ausführen“
 
@@ -33,9 +33,10 @@ Die Verwendung von „Befehl ausführen“ unterliegt den folgenden Einschränku
 * Der Mindestzeitraum für die Ausführung eines Skripts liegt bei etwa 20 Sekunden
 * Skripts werden unter Windows als „System“ ausgeführt
 * Es kann zu jeder Zeit jeweils nur ein Skript ausgeführt werden
-* Skripts, die Informationen anfordern (interaktiver Modus), werden nicht unterstützt.
 * Die Ausführung von Skripts kann nicht abgebrochen werden
 * Der Maximalzeitraum beim Ausführen von Skripts ist auf 90 Minuten beschränkt, danach tritt ein Timeout auf
+
+**PermissionsConfig-OrchestratorUsersGroup***GroupName***-OrchestratorUser***UserName***\-remote** 
 
 ## <a name="run-a-command"></a>Ausführen eines Befehls
 

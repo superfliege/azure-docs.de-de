@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/15/2018
+ms.date: 06/22/2018
 ms.author: rithorn
-ms.openlocfilehash: 822a2df113b848f07e616f155881f345028cee1d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0a13627232904f4b14cdb5cbf5c3ca927d9ea167
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195793"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754282"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Verwalten von Ressourcen mit Verwaltungsgruppen 
 Bei Verwaltungsgruppen handelt es sich um Container, mit denen Sie Zugriff, Richtlinien und Konformität abonnementübergreifend verwalten können. Sie können diese Container ändern, löschen und verwalten, um Hierarchien zu erhalten, die mit [Azure Policy](../azure-policy/azure-policy-introduction.md) und mit der [rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure](../role-based-access-control/overview.md) verwendet werden können. Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organize your resources with Azure Management Groups](management-groups-overview.md) (Organisieren von Ressourcen mit Azure-Verwaltungsgruppen).
@@ -56,8 +56,8 @@ C:\> Update-AzureRmManagementGroup -GroupName ContosoIt -DisplayName "Contoso Gr
 
 Verwenden Sie für die Azure CLI den Aktualisierungsbefehl. 
 
-```azure-cli
-C:\> az account management-group update --group-name Contoso --display-name "Contoso Group" 
+```azurecli-interactive
+az account management-group update --name Contoso --display-name "Contoso Group" 
 ```
 
 ---
@@ -95,8 +95,8 @@ Remove-AzureRmManagementGroup -GroupName Contoso
 ### <a name="delete-in-azure-cli"></a>Löschen über die Azure-Befehlszeilenschnittstelle
 Verwenden Sie bei der Azure CLI den Befehl „az account management-group delete“. 
 
-```azure-cli
-C:\> az account management-group delete --group-name Contoso
+```azurecli-interactive
+az account management-group delete --name Contoso
 ```
 ---
 
@@ -125,13 +125,13 @@ Get-AzureRmManagementGroup -GroupName Contoso
 ### <a name="view-in-azure-cli"></a>Anzeigen in der Azure CLI
 Verwenden Sie den Befehl „list“, um alle Gruppen abzurufen.  
 
-```azure-cli
+```azurecli-interactive
 az account management-group list
 ```
 Verwenden Sie den Befehl „show“, um die Informationen einer einzelnen Verwaltungsgruppe anzuzeigen.
 
-```azurepowershell-interactive
-az account management-group show --group-name Contoso
+```azurecli-interactive
+az account management-group show --name Contoso
 ```
 ---
 
@@ -160,7 +160,7 @@ Wählen Sie zum Anzeigen der Ihnen zugewiesenen Berechtigungen die Verwaltungsgr
 **Entfernen eines Abonnements aus einer Verwaltungsgruppe**
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf **Alle Dienste** > **Verwaltungsgruppen**. 
-3. Wählen Sie die geplante Verwaltungsgruppe aus. (Hierbei handelt es sich um die aktuelle übergeordnete Gruppe.)  
+3. Wählen Sie die geplante Verwaltungsgruppe aus. Hierbei handelt es sich um die aktuelle übergeordnete Gruppe.  
 4. Klicken Sie in der Liste am Ende der Zeile des zu verschiebenden Abonnements auf die Ellipse.
 
     ![Move](media/management-groups/move_small.png)
@@ -186,14 +186,14 @@ Remove-AzureRmManagementGroupSubscription -GroupName Contoso -SubscriptionId 123
 ### <a name="move-subscriptions-in-azure-cli"></a>Verschieben von Abonnements in der Azure CLI
 Verwenden Sie zum Verschieben eines Abonnements in der CLI den Befehl „add“. 
 
-```azure-cli
-C:\> az account management-group add --group-name Contoso --subscription 12345678-1234-1234-1234-123456789012
+```azurecli-interactive
+az account management-group subscription add --name Contoso --subscription 12345678-1234-1234-1234-123456789012
 ```
 
 Verwenden Sie zum Entfernen des Abonnements aus der Verwaltungsgruppe den Befehl „remove“.  
 
-```azure-cli
-C:\> az account management-group remove --group-name Contoso --subscription 12345678-1234-1234-1234-123456789012
+```azurecli-interactive
+az account management-group subscription remove --name Contoso --subscription 12345678-1234-1234-1234-123456789012
 ```
 
 ---
@@ -207,7 +207,7 @@ Wenn Sie eine übergeordnete Verwaltungsgruppe verschieben, werden auch alle unt
 2. Klicken Sie auf **Alle Dienste** > **Verwaltungsgruppen**. 
 3. Wählen Sie die Verwaltungsgruppe aus, die als übergeordnete Gruppe festgelegt werden soll.      
 5. Klicken Sie am oberen Rand der Seite auf **Vorhandene hinzufügen**.
-6. Wählen Sie im angezeigten Menü den **Ressourcentyp** des Elements aus, das Sie verschieben möchten (d.h. **Verwaltungsgruppe**).
+6. Wählen Sie im angezeigten Menü den **Ressourcentyp** des Elements aus, das Sie verschieben möchten, d.h. die **Verwaltungsgruppe**.
 7. Wählen Sie die Verwaltungsgruppe mit der richtigen ID und dem entsprechenden Namen aus.
 
     ![Verschieben](media/management-groups/add_context.png)
@@ -217,13 +217,13 @@ Wenn Sie eine übergeordnete Verwaltungsgruppe verschieben, werden auch alle unt
 Verwenden Sie den Befehl „Update-AzureRmManagementGroup“ in PowerShell, um eine Verwaltungsgruppe in eine andere Gruppe zu verschieben.  
 
 ```powershell
-C:\> Update-AzureRmManagementGroup -GroupName Contoso  -ParentName ContosoIT
+Update-AzureRmManagementGroup -GroupName Contoso  -ParentName ContosoIT
 ```  
 ### <a name="move-management-groups-in-azure-cli"></a>Verschieben von Verwaltungsgruppen in der Azure CLI
 Verwenden Sie den Befehl „update“, um eine Verwaltungsgruppe mit der Azure CLI zu verschieben. 
 
-```azure-cli
-C:/> az account management-group udpate --group-name Contoso --parent-id "Contoso Tenant" 
+```azurecli-interactive
+az account management-group update --name Contoso --parent "Contoso Tenant" 
 ``` 
 
 ---

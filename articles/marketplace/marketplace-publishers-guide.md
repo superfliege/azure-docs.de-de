@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/11/2018
 ms.author: ellacroi
-ms.openlocfilehash: 4b7d861ee0207c6a16c83e23d259411f7e874354
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: e40b3a9f1454e892e07f7749ba900cd74c42c339
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823383"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309230"
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Herausgeberleitfaden für Azure Marketplace und AppSource  
 
@@ -112,13 +112,13 @@ Jede Storefront bietet spezielle Optionen, die bewirken sollen, dass sich Ihre I
 | Zielgruppe | Branchenentscheidungsträger<table> <tr> <th>Spezialistenrollen </th> </tr> <tr> <td>Buchhaltung</td> </tr> <tr> <td>Beschaffung</td> </tr> <tr> <td>Herstellung</td> </tr> </table> | IT-Experten und Entwickler<table> <tr> <th>Spezialistenrollen </th> </tr> <tr> <td>DevOps</td> </tr> <tr> <td>DBAs</td> </tr> <tr> <td>SecOps</td> </tr> </table> |  
 | Erstellt mit oder zum Erweitern von | Azure<br />Dynamics 365<br />Office 365<br />Power BI<br />PowerApps | Azure |  
 | Typen von Lösungen und Diensten | Fertige Branchen-Cloud-Apps<br />Office 365-Add-Ins | Infrastrukturlösungen<br />Dienstleistungsunternehmen |  
-| Angebotstyp | Beratungsdienste<br />Kontakt mit mir aufnehmen<br />Kostenlose Testversion<br />Jetzt anfordern<br />Testversion | Azure-Apps: verwaltete Apps<br />Azure-Apps: Lösungsvorlagen<br />Beratungsdienste<br />Kontakt mit mir aufnehmen<br />Testversion<br />Virtueller Computer |  
+| Angebotstyp | Beratungsdienste<br />Kontaktformular<br />Kostenlose Testversion<br />Jetzt anfordern<br />Testversion | Azure-Apps: verwaltete Apps<br />Azure-Apps: Lösungsvorlagen<br />Beratungsdienste<br />Kontaktformular<br />Testversion<br />Virtueller Computer |  
 | Möglichkeit in der App zum Zugreifen auf<br />Apps und Dienste im Kontext<br />Ihrer App | Dynamics 365<br />Office 365<br />Office-Client-Apps<br />Power BI | Azure-Portal<br />Befehlszeilenschnittstelle des Azure Resource Manager |  
 
 ---   
 
 ## <a name="how-to-publish-in-the-storefronts-on-the-marketplace"></a>Veröffentlichen in den Storefronts in Marketplace  
-Die folgenden Abschnitte helfen Ihnen dabei, in den Veröffentlichungsoptionen von AppSource und Azure Marketplace zu navigieren.  
+Die folgenden Seiten helfen Ihnen dabei, in den Veröffentlichungsoptionen von AppSource und Azure Marketplace zu navigieren.  
 
 Werden Sie in drei einfachen Schritten zu einem Herausgeber in den Storefronts im Marketplace.  
 1.  Besuchen Sie die Seite [Bestimmen des Listingtyps für Ihre Lösung](./determine-your-listing-type.md).  
@@ -135,7 +135,6 @@ Werden Sie in drei einfachen Schritten zu einem Herausgeber in den Storefronts i
 ---  
 
 ## <a name="support"></a>Support  
-
 *   Besuchen Sie die Seite [Support für AppSource](./support-appsource.md).  
 *   Besuchen Sie die Seite [Support für Azure Marketplace](./support-azure-marketplace.md).  
 
@@ -147,6 +146,7 @@ Werden Sie in drei einfachen Schritten zu einem Herausgeber in den Storefronts i
 
 ## <a name="guidelines"></a>Richtlinien  
 *   Besuchen Sie die Seite [Richtlinien](./guidelines.md).  
+    *   Lesen Sie den Abschnitt [Richtlinien für die Erstellung einer Microsoft-ID zur Verwaltung eines Marketplace-Kontos](./guidelines.md#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account).  
 *   Besuchen Sie die Seite [Registrieren in Dev Center](./register-dev-center.md).  
 *   Besuchen Sie die Seite [Hinzufügen von Bank- und Steuerinformationen](./add-bank-tax-info.md).  
 *   Besuchen Sie die Seite [Aktivieren der Testversion mithilfe von Azure AD](./enable-trial-using-azure-ad.md).  

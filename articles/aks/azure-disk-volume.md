@@ -6,14 +6,15 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 05/21/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: b790213e19b9f2aaef74a3f670c89246f54fd6d7
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 4af4620ff7a17cae76c4d5f2cf1a30ce4a3dccd8
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34597066"
 ---
 # <a name="volumes-with-azure-disks"></a>Volumes mit Azure-Datenträgern
 
@@ -23,34 +24,27 @@ Weitere Informationen zu Kubernetes-Volumes finden Sie unter [Kubernetes-Volumes
 
 ## <a name="create-an-azure-disk"></a>Erstellen eines Azure-Datenträgers
 
-Vor dem Einbinden eines verwalteten Azure-Datenträgers als Kubernetes-Volume muss der Datenträger in derselben Ressourcengruppe wie die AKS-Clusterressourcen vorhanden sein. Um diese Ressourcengruppe zu finden, verwenden Sie den Befehl [az group list][az-group-list].
+Vor dem Einbinden eines verwalteten Azure-Datenträgers als Kubernetes-Volume muss der Datenträger in derselben Ressourcengruppe des AKS-**Knotens** vorhanden sein. Rufen Sie den Namen der Ressourcengruppe mit dem Befehl [az resource show][az-resource-show] ab.
 
 ```azurecli-interactive
-az group list --output table
-```
+$ az resource show --resource-group myResourceGroup --name myAKSCluster --resource-type Microsoft.ContainerService/managedClusters --query properties.nodeResourceGroup -o tsv
 
-Sie suchen eine Ressourcengruppe mit einem ähnlichen Namen wie `MC_clustername_clustername_locaton`, wobei „clustername“ der Name Ihres AKS-Clusters ist und „location“ die Azure-Region, in der der Cluster bereitgestellt wurde.
-
-```console
-Name                                 Location    Status
------------------------------------  ----------  ---------
-MC_myAKSCluster_myAKSCluster_eastus  eastus      Succeeded
-myAKSCluster                         eastus      Succeeded
+MC_myResourceGroup_myAKSCluster_eastus
 ```
 
 Verwenden Sie den Befehl [az disk create][az-disk-create], um den Azure-Datenträger zu erstellen.
 
-Ersetzen Sie in diesem Beispiel den Wert von `--resource-group` durch den Namen der Ressourcengruppe und den Wert von `--name` durch einen Namen Ihrer Wahl.
+Ersetzen Sie `--resource-group` durch den Namen der Ressourcengruppe aus dem letzten Schritt und `--name` durch einen Namen Ihrer Wahl.
 
 ```azurecli-interactive
 az disk create \
-  --resource-group MC_myAKSCluster_myAKSCluster_eastus \
+  --resource-group MC_myResourceGroup_myAKSCluster_eastus \
   --name myAKSDisk  \
   --size-gb 20 \
   --query id --output tsv
 ```
 
-Nachdem der Datenträger erstellt wurde, sollte eine Ausgabe ähnlich der folgenden angezeigt werden. Dieser Wert ist die Datenträger-ID, die beim Einbinden des Datenträgers in einen Kubernetes-Pod verwendet wird.
+Nachdem der Datenträger erstellt wurde, sollte eine Ausgabe ähnlich der folgenden angezeigt werden. Dieser Wert ist die Datenträger-ID, die beim Einbinden des Datenträgers verwendet wird.
 
 ```console
 /subscriptions/<subscriptionID>/resourceGroups/MC_myAKSCluster_myAKSCluster_eastus/providers/Microsoft.Compute/disks/myAKSDisk
@@ -105,3 +99,4 @@ Erfahren Sie mehr über Kubernetes-Volumes mit Azure-Datenträgern.
 [az-disk-list]: /cli/azure/disk#az_disk_list
 [az-disk-create]: /cli/azure/disk#az_disk_create
 [az-group-list]: /cli/azure/group#az_group_list
+[az-resource-show]: /cli/azure/resource#az-resource-show

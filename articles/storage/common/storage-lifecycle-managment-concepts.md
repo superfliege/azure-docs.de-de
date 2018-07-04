@@ -9,12 +9,12 @@ ms.workload: storage
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
-ms.openlocfilehash: bd36cfd0cd03592396a2aa9a977124880f47ec90
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 9721935f005bbd9a5dc261fe801ecc14744b004f
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248468"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752791"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Verwalten des Azure Blob Storage-Lebenszyklus (Vorschau)
 
@@ -118,7 +118,7 @@ Eine Richtlinie zur Lebenszyklusverwaltung ist eine Sammlung von Regeln in einem
 
 In einer Richtlinie sind zwei Parameter erforderlich:
 
-| Parametername | Parametertyp | Hinweise |
+| Parametername | Parametertyp | Notizen |
 |----------------|----------------|-------|
 | Version        | Eine Zeichenfolge, die als `x.x` ausgedrückt ist. | Die Versionsnummer der Vorschau ist 0.5. |
 | Regeln          | Ein Array von Regelobjekten | Jede Richtlinie muss mindestens eine Regel enthalten. In der Vorschauphase können Sie bis zu vier Regeln pro Richtlinie angeben. |
@@ -175,7 +175,7 @@ Filter schränken Regelaktionen auf eine Teilmenge der Blobs innerhalb des Speic
 
 Diese Filter sind in der Vorschauphase gültig:
 
-| Filtername | Filtertyp | Hinweise | Ist erforderlich |
+| Filtername | Filtertyp | Notizen | Ist erforderlich |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Ein Array von vordefinierten Enumerationswerten. | In der Vorschauversion wird nur `blockBlob` unterstützt. | Ja |
 | prefixMatch | Ein Array von Zeichenfolgen für Präfixe, mit denen Übereinstimmung erzielt werden soll. | Wenn es nicht definiert ist, gilt diese Regel für alle Blobs im Konto. | Nein  |

@@ -10,12 +10,12 @@ editor: jasonwhowell
 ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: conceptual
 ms.date: 06/02/2018
-ms.openlocfilehash: 4900be6e135cd9a415b8304e77865525c4f34dd3
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 560f36dc64480fd6aceaa50226b191ee40d2486f
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34735091"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959847"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Verwalten von Azure Data Lake Analytics mithilfe von Azure PowerShell
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -68,7 +68,7 @@ Save-AzureRmProfile -Path D:\profile.json
 Select-AzureRmProfile -Path D:\profile.json 
 ```
 
-### <a name="log-in-using-a-service-principle-identity-spi"></a>Anmelden per Service Principle Identity (SPI)
+### <a name="log-in-using-a-service-principal-identity-spi"></a>Anmelden per Service Principal Identity (SPI)
 
 ```powershell
 $tenantid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"  
@@ -80,7 +80,7 @@ $pscredential = New-Object System.Management.Automation.PSCredential ($spi_appid
 Login-AzureRmAccount -ServicePrincipal -TenantId $tenantid -Credential $pscredential -Subscription $subid
 ```
 
-## <a name="manage-accounts"></a>Verwalten von Konten
+## <a name="manage-accounts"></a>Konten verwalten
 
 
 ### <a name="list-accounts"></a>Auflisten von Konten

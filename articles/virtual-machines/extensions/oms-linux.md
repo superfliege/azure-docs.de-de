@@ -1,6 +1,6 @@
 ---
-title: OMS-Azure-VM-Erweiterung für Linux | Microsoft-Dokumentation
-description: Stellen Sie den OMS-Agent mithilfe einer VM-Erweiterung auf einem virtuellen Linux-Computer bereit.
+title: Azure Log Analytics-VM-Erweiterung für Linux | Microsoft-Dokumentation
+description: Stellen Sie den Log Analytics-Agent mithilfe einer VM-Erweiterung auf einem virtuellen Linux-Computer bereit.
 services: virtual-machines-linux
 documentationcenter: ''
 author: danielsollondon
@@ -15,24 +15,24 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/21/2018
 ms.author: danis
-ms.openlocfilehash: f0d8224e5578a5ae46245e6c70792e962a44c933
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cc8b3f6a4ff6b683fc4ed2777adf6ab0b17f05be
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652854"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301484"
 ---
-# <a name="oms-virtual-machine-extension-for-linux"></a>OMS-Azure-VM-Erweiterung für Linux
+# <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics-VM-Erweiterung für Linux
 
 ## <a name="overview"></a>Übersicht
 
-Log Analytics bietet Überwachungs- und Warnungsfunktionen sowie Funktionen zum Beheben von Warnungen für cloudbasierte und lokale Ressourcen. Die OMS-Agent-VM-Erweiterung für Linux wird von Microsoft veröffentlicht und unterstützt. Die Erweiterung installiert den OMS-Agent auf virtuellen Azure-Computern und registriert virtuelle Computer in einem vorhandenen Log Analytics-Arbeitsbereich. Dieses Dokument enthält ausführliche Informationen zu den unterstützten Plattformen, Konfigurationen und Bereitstellungsoptionen für die OMS-VM-Erweiterung für Linux.
+Log Analytics bietet Überwachungs- und Warnungsfunktionen sowie Funktionen zum Beheben von Warnungen für cloudbasierte und lokale Ressourcen. Die Log Analytics-Agent-VM-Erweiterung für Linux wird von Microsoft veröffentlicht und unterstützt. Die Erweiterung installiert den Log Analytics-Agent auf virtuellen Azure-Computern und registriert virtuelle Computer in einem vorhandenen Log Analytics-Arbeitsbereich. Dieses Dokument enthält ausführliche Informationen zu den unterstützten Plattformen, Konfigurationen und Bereitstellungsoptionen für die Log Analytics-VM-Erweiterung für Linux.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 ### <a name="operating-system"></a>Betriebssystem
 
-Die OMS-Agent-Erweiterung kann für folgende Linux-Distributionen ausgeführt werden:
+Die Log Analytics-Agent-Erweiterung kann für folgende Linux-Distributionen ausgeführt werden.
 
 | Distribution | Version |
 |---|---|
@@ -44,9 +44,9 @@ Die OMS-Agent-Erweiterung kann für folgende Linux-Distributionen ausgeführt we
 | SUSE Linux Enterprise Server | 11 und 12 (x86/x64) |
 
 ### <a name="agent-and-vm-extension-version"></a>Version des Agents und der VM-Erweiterung
-Die folgende Tabelle enthält eine Zuordnung der Version der OMS-VM-Erweiterung und des OMS-Agent-Pakets für jede Version. Ein Link zu den Anmerkungen zur jeweiligen OMS-Agent-Paketversion ist enthalten. Anmerkungen zur Version enthalten Details zu Fehlerbehebungen und neuen Features, die für eine bestimmte Agentversion verfügbar sind.  
+Die folgende Tabelle enthält eine Zuordnung der Version der Log Analytics-VM-Erweiterung und des Log Analytics-Agent-Pakets für jede Version. Ein Link zu den Anmerkungen zur jeweiligen Log Analytics-Agent-Paketversion ist enthalten. Anmerkungen zur Version enthalten Details zu Fehlerbehebungen und neuen Features, die für eine bestimmte Agentversion verfügbar sind.  
 
-| Version der OMS-VM-Erweiterung unter Linux | OMS-Agent-Paketversion | 
+| Version der Log Analytics-VM-Erweiterung unter Linux | Log Analytics-Agent-Paketversion | 
 |--------------------------------|--------------------------|
 | 1.6.42.0 | [1.6.0-42](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.0-42)| 
 | 1.4.60.2 | [1.4.4-210](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.4-210)| 
@@ -62,15 +62,15 @@ Die folgende Tabelle enthält eine Zuordnung der Version der OMS-VM-Erweiterung 
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
-Azure Security Center stellt den OMS-Agent automatisch bereit und verbindet ihn mit einem Standardarbeitsbereich von Log Analytics, der von ASC in Ihrem Azure-Abonnement erstellt wird. Wenn Sie Azure Security Center verwenden, führen Sie nicht die Schritte in diesem Dokument aus. Andernfalls überschreiben Sie den konfigurierten Arbeitsbereich und unterbrechen die Verbindung mit Azure Security Center.
+Azure Security Center stellt den Log Analytics-Agent automatisch bereit und verbindet ihn mit einem Standardarbeitsbereich von Log Analytics, der von ASC in Ihrem Azure-Abonnement erstellt wird. Wenn Sie Azure Security Center verwenden, führen Sie nicht die Schritte in diesem Dokument aus. Andernfalls überschreiben Sie den konfigurierten Arbeitsbereich und unterbrechen die Verbindung mit Azure Security Center.
 
 ### <a name="internet-connectivity"></a>Internetkonnektivität
 
-Um die OMS-Agent-Erweiterung für Linux verwenden zu können, muss der virtuelle Zielcomputer mit dem Internet verbunden sein. 
+Um die Log Analytics-Agent-Erweiterung für Linux verwenden zu können, muss der virtuelle Zielcomputer mit dem Internet verbunden sein. 
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
-Der folgende JSON-Code zeigt das Schema für die OMS Agent-Erweiterung. Für die Erweiterung werden die Arbeitsbereichs-ID und der Arbeitsbereichsschlüssel aus dem Log Analytics-Zielarbeitsbereich benötigt. Diese Werte sind [im Log Analytics-Arbeitsbereich](../../log-analytics/log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key) im Azure-Portal zu finden. Da der Arbeitsbereichsschlüssel als vertrauliche Information behandelt werden muss, sollte er in einer geschützten Einstellungskonfiguration gespeichert werden. Die geschützten Einstellungsdaten der Azure-VM-Erweiterung werden verschlüsselt und nur auf dem virtuellen Zielcomputer entschlüsselt. Bitte beachten Sie, dass bei **workspaceId** und **workspaceKey** die Groß-/Kleinschreibung beachtet wird.
+Der folgende JSON-Code zeigt das Schema für die Log Analytics-Agent-Erweiterung. Für die Erweiterung werden die Arbeitsbereichs-ID und der Arbeitsbereichsschlüssel aus dem Log Analytics-Zielarbeitsbereich benötigt. Diese Werte sind [im Log Analytics-Arbeitsbereich](../../log-analytics/log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key) im Azure-Portal zu finden. Da der Arbeitsbereichsschlüssel als vertrauliche Information behandelt werden muss, sollte er in einer geschützten Einstellungskonfiguration gespeichert werden. Die geschützten Einstellungsdaten der Azure-VM-Erweiterung werden verschlüsselt und nur auf dem virtuellen Zielcomputer entschlüsselt. Bitte beachten Sie, dass bei **workspaceId** und **workspaceKey** die Groß-/Kleinschreibung beachtet wird.
 
 ```json
 {
@@ -109,7 +109,7 @@ Der folgende JSON-Code zeigt das Schema für die OMS Agent-Erweiterung. Für die
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
 
-Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Vorlagen sind ideal, wenn Sie virtuelle Computer bereitstellen, die nach der Bereitstellung konfiguriert werden müssen (beispielsweise, um sie in Log Analytics zu integrieren). Eine Resource Manager-Beispielvorlage mit der OMS-Agent-VM-Erweiterung finden Sie im [Azure-Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
+Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Vorlagen sind ideal, wenn Sie virtuelle Computer bereitstellen, die nach der Bereitstellung konfiguriert werden müssen (beispielsweise, um sie in Log Analytics zu integrieren). Eine Resource Manager-Beispielvorlage mit der Log Analytics-Agent-VM-Erweiterung finden Sie im [Azure-Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
 
 Die JSON-Konfiguration für eine VM-Erweiterung kann innerhalb der VM-Ressource geschachtelt oder im Stamm bzw. auf der obersten Ebene einer Resource Manager-JSON-Vorlage platziert werden. Die Platzierung der JSON-Konfiguration wirkt sich auf den Wert von Name und Typ der Ressource aus. Weitere Informationen finden Sie unter [Set name and type for child resources](../../azure-resource-manager/resource-manager-templates-resources.md#child-resources) (Festlegen von Name und Typ für untergeordnete Ressourcen). 
 
@@ -165,7 +165,7 @@ Beim Platzieren des JSON-Codes für die Erweiterung im Stamm der Vorlage enthäl
 
 ## <a name="azure-cli-deployment"></a>Bereitstellung mithilfe der Azure-Befehlszeilenschnittstelle
 
-Sie können die OMS-Agent-VM-Erweiterung mithilfe der Azure-Befehlszeilenschnittstelle auf einem vorhandenen virtuellen Computer bereitstellen. Ersetzen Sie *workspaceId* und *workspaceKey* durch die ID und den Schlüssel aus Ihrem Log Analytics-Arbeitsbereich. 
+Sie können die Log Analytics-Agent-VM-Erweiterung mithilfe der Azure-Befehlszeilenschnittstelle auf einem vorhandenen virtuellen Computer bereitstellen. Ersetzen Sie *workspaceId* und *workspaceKey* durch die ID und den Schlüssel aus Ihrem Log Analytics-Arbeitsbereich. 
 
 ```azurecli
 az vm extension set \

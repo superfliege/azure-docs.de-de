@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/12/2018
 ms.author: tarcher
 ms.custom: Jenkins
-ms.openlocfilehash: 552e93e9bd1b17c73fb1638fbae2ac30b051c261
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d5a832909f060ad8c8b3f0e7c7ea4504e5e5aadb
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29957548"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36943469"
 ---
 1. Öffnen Sie in Ihrem Browser das [Azure Marketplace-Image für Jenkins](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview).
 
@@ -33,7 +33,7 @@ ms.locfileid: "29957548"
 1. Geben Sie auf der Registerkarte **Grundlagen** die folgenden Werte an:
 
     - **Name**: Geben Sie `Jenkins` ein.
-    - **Benutzername**: Geben Sie den Benutzernamen ein, der für die Anmeldung auf dem virtuellen Computer verwendet wird, auf dem Jenkins ausgeführt wird. Der Benutzername muss [bestimmte Anforderungen](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm) erfüllen.
+    - **Benutzername**: Geben Sie den Benutzernamen ein, der für die Anmeldung bei dem virtuellen Computer verwendet wird, auf dem Jenkins ausgeführt wird. Der Benutzername muss [bestimmte Anforderungen](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm) erfüllen.
     - **Authentifizierungstyp**: Wählen Sie **Öffentlicher SSH-Schlüssel** aus.
     - **Öffentlicher SSH-Schlüssel**: Kopieren Sie einen öffentlichen RSA-Schlüssel im einzeiligen Format (beginnend mit `ssh-rsa`) oder im mehrzeiligen PEM-Format, und fügen Sie ihn ein. Sie können die SSH-Schlüssel mithilfe von „ssh-keygen“ unter Linux und macOS oder „PuTTYGen“ unter Windows generieren. Weitere Informationen zu SSH-Schlüsseln und Azure finden Sie im Artikel [Verwenden von SSH-Schlüsseln mit Windows in Azure](/azure/virtual-machines/linux/ssh-from-windows).
     - **Abonnement**: Wählen Sie das Azure-Abonnement aus, für das Jenkins installiert werden soll.

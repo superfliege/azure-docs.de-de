@@ -14,7 +14,7 @@ Sie können die Anzahl von Agent-Knoten in einem DC/OS-, Docker Swarm- oder Kube
 
 ## <a name="scale-with-the-azure-cli-20"></a>Skalieren mit Azure CLI 2.0
 
-Stellen Sie sicher, dass Sie die aktuelle Version von Azure CLI 2.0 [installiert](/cli/azure/install-az-cli2) haben und an einem Azure-Konto (`az login`) angemeldet sind.
+Stellen Sie sicher, dass Sie die aktuelle Version von Azure CLI 2.0 [installiert](/cli/azure/install-az-cli2) haben und bei einem Azure-Konto (`az login`) angemeldet sind.
 
 ### <a name="see-the-current-agent-count"></a>Anzeigen der aktuellen Agent-Anzahl
 Um die Anzahl der Agents anzuzeigen, die sich derzeit im Cluster befinden, führen Sie den Befehl `az acs show` aus. Damit wird die Clusterkonfiguration angezeigt. Der folgende Befehl zeigt z.B. die Konfiguration des Containerdiensts namens `containerservice-myACSName` in der Ressourcengruppe `myResourceGroup`:

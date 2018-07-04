@@ -10,12 +10,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: 780a7cb3035dbe19c45b5fe9c6dfae54fccafd03
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 8b1fe447cb673b9bc1f4fe4e73f7412a21f701a5
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293647"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330861"
 ---
 # <a name="how-to-add-an-event-hub-event-source-to-time-series-insights-environment"></a>Gewusst wie: Hinzufügen einer Event Hub-Ereignisquelle zu einer Time Series Insights-Umgebung
 
@@ -26,6 +26,22 @@ In diesem Artikel wird beschrieben, wie im Azure-Portal eine Ereignisquelle hinz
 - Erstellen Sie einen Event Hub. Weitere Informationen zu Event Hubs finden Sie unter [Erstellen eines Event Hubs-Namespace und eines Event Hubs mithilfe des Azure-Portals](../event-hubs/event-hubs-create.md).
 - An den Event Hub müssen aktive Nachrichtenereignisse gesendet werden. Weitere Informationen finden Sie unter [Senden von Ereignissen an Azure Event Hubs mithilfe von .NET Framework](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md).
 - Erstellen Sie eine dedizierte Consumergruppe in Event Hub, die die Time Series Insight-Umgebung verwenden kann. Jede Time Series Insights-Ereignisquelle benötigt eine eigene dedizierte Consumergruppe, die nicht mit anderen Consumern gemeinsam genutzt wird. Wenn mehrere Leser Ereignisse aus der gleichen Consumergruppe nutzen, werden allen Lesern wahrscheinlich Fehler angezeigt. Beachten Sie, dass darüber hinaus ein Grenzwert von 20 Consumergruppen pro Event Hub gilt. Weitere Informationen finden Sie im [Programmierleitfaden für Event Hubs](../event-hubs/event-hubs-programming-guide.md).
+
+### <a name="add-a-consumer-group-to-your-event-hub"></a>Hinzufügen einer Consumergruppe zum Event Hub
+Consumergruppen werden von Anwendungen verwendet, um Daten aus Azure Event Hubs abzurufen. Geben Sie eine dedizierte Consumergruppe an, die nur von dieser Time Series Insights-Umgebung verwendet wird, um zuverlässig Daten aus Ihren Event Hub zu lesen.
+
+Gehen Sie folgendermaßen vor, um Ihrem Event Hub eine Consumergruppe hinzuzufügen:
+1. Suchen Sie im Azure-Portal den Event Hub, und öffnen Sie ihn.
+
+2. Wählen Sie unter der Überschrift **Entitäten** den Eintrag **Consumergruppen** aus.
+
+   ![Event Hub – Consumergruppe hinzufügen](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)
+
+3. Wählen Sie **+ Consumergruppe** aus, um eine neue Consumergruppe hinzuzufügen. 
+
+4. Geben Sie auf der Seite **Consumergruppen** einen neuen eindeutigen **Namen** an.  Verwenden Sie diesen Namen, wenn Sie eine neue Ereignisquelle in der Time Series Insights-Umgebung erstellen.
+
+5. Wählen Sie **Erstellen** aus, um die neue Consumergruppe zu erstellen.
 
 ## <a name="add-a-new-event-source"></a>Hinzufügen einer neuen Ereignisquelle
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
@@ -78,29 +94,14 @@ In diesem Artikel wird beschrieben, wie im Azure-Portal eine Ereignisquelle hinz
    | Ereignisserialisierungsformat | Zurzeit ist JSON die einzige verfügbare Serialisierung. Die Ereignismeldungen müssen in diesem Format vorliegen, damit Daten gelesen werden können. |
    | Name der Timestamp-Eigenschaft | Um diesen Wert zu bestimmen, müssen Sie das Nachrichtenformat der Nachrichtendaten kennen, die an Event Hub gesendet werden. Dieser Wert entspricht **name** der spezifischen Ereigniseigenschaft in den Nachrichtendaten, die Sie als Ereigniszeitstempel verwenden möchten. Bei dem Wert wird die Groß-/Kleinschreibung beachtet. Wenn dieser Wert nicht angegeben wird, wird der Zeitpunkt der **Einreihung des Ereignisses** in die Warteschlange in der Ereignisquelle als Ereigniszeitstempel verwendet. |
 
+10. Fügen Sie den dedizierten TSI-Consumergruppennamen hinzu, den Sie Ihrem Event Hub hinzugefügt haben.
 
-10. Wählen Sie **Erstellen** aus, um die neue Ereignisquelle hinzuzufügen.
+11. Wählen Sie **Erstellen** aus, um die neue Ereignisquelle hinzuzufügen.
    
    ![Klicken Sie auf „Erstellen“.](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)
 
    Nach der Erstellung der Ereignisquelle beginnt Time Series Insights automatisch damit, Daten in Ihre Umgebung zu streamen.
 
-
-### <a name="add-a-consumer-group-to-your-event-hub"></a>Hinzufügen einer Consumergruppe zum Event Hub
-Consumergruppen werden von Anwendungen verwendet, um Daten aus Azure Event Hubs abzurufen. Geben Sie eine dedizierte Consumergruppe an, die nur von dieser Time Series Insights-Umgebung verwendet wird, um zuverlässig Daten aus Ihren Event Hub zu lesen.
-
-Gehen Sie folgendermaßen vor, um Ihrem Event Hub eine Consumergruppe hinzuzufügen:
-1. Suchen Sie im Azure-Portal den Event Hub, und öffnen Sie ihn.
-
-2. Wählen Sie unter der Überschrift **Entitäten** den Eintrag **Consumergruppen** aus.
-
-   ![Event Hub – Consumergruppe hinzufügen](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)
-
-3. Wählen Sie **+ Consumergruppe** aus, um eine neue Consumergruppe hinzuzufügen. 
-
-4. Geben Sie auf der Seite **Consumergruppen** einen neuen eindeutigen **Namen** an.  Verwenden Sie diesen Namen, wenn Sie eine neue Ereignisquelle in der Time Series Insights-Umgebung erstellen.
-
-5. Wählen Sie **Erstellen** aus, um die neue Consumergruppe zu erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Definieren von Datenzugriffsrichtlinien](time-series-insights-data-access.md) zum Schützen der Daten

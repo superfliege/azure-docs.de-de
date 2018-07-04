@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: c8b0529b0ae45d7bcee5574991551a424c13ba70
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 60b77f5956cb627905eb955995652098337c4dea
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34713863"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36311114"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
@@ -44,7 +44,7 @@ ms.locfileid: "34713863"
 **F: Ich habe das Gerät vor kurzem registriert. Warum kann ich das Gerät nicht in meinen Benutzerinformationen im Azure-Portal sehen?**
 
 **A:** Windows 10-Geräte, die in Azure AD eingebundene Hybridgeräte sind, werden nicht unter den BENUTZER-Geräten angezeigt.
-Mit PowerShell können Sie alle Geräte anzeigen. 
+Sie müssen die Ansicht „Alle Geräte“ im Azure-Portal verwenden. Sie können auch das PowerShell-Cmdlet [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) verwenden.
 
 Nur die folgenden Geräte werden unter den BENUTZER-Geräten aufgeführt:
 
@@ -52,25 +52,24 @@ Nur die folgenden Geräte werden unter den BENUTZER-Geräten aufgeführt:
 - Alle Geräte, die keine Windows 10/Windows Server 2016-Geräte sind.
 - Alle Geräte ohne Windows 
 
----
-
-**F: Warum kann ich im Azure-Portal nicht alle Geräte sehen, die in Azure Active Directory registriert sind?** 
-
-**A:** Sie können diese jetzt unter „Azure AD-Verzeichnis“ -> Menü „Alle Geräte“ sehen. Sie können auch Azure PowerShell verwenden, um nach allen Geräten zu suchen. Weitere Informationen finden Sie im [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0)-Cmdlet.
-
 --- 
 
 **F: Wie ermittle ich den Geräteregistrierungsstatus des Clients?**
 
-**A:** Führen Sie für Geräte mit Windows 10, Windows Server 2016 oder höher „dsregcmd.exe/status“.
+**A**: Sie können im Azure-Portal zu „Alle Geräte“ navigieren und mithilfe der Geräte-ID nach dem Gerät suchen. Überprüfen Sie den Wert in der Spalte „Jointyp“.
 
-Führen Sie für frühere Betriebssystemversionen das Programm „%programFiles%\Microsoft Workplace Join\autoworkplace.exe“ aus.
+Wenn Sie den Registrierungsstatus eines lokalen Geräts über ein registriertes Gerät überprüfen möchten, gehen Sie wie folgt vor:
+
+- Führen Sie für Geräte mit Windows 10, Windows Server 2016 oder höher „dsregcmd.exe /status“ aus.
+- Führen Sie für frühere Betriebssystemversionen das Programm „%programFiles%\Microsoft Workplace Join\autoworkplace.exe“ aus.
 
 ---
 
-**F: Warum ist ein Gerät, das ich im Azure-Portal oder mit Windows PowerShell gelöscht habe, immer noch als registriert aufgeführt?**
+**F: Ich habe im Azure-Portal oder mithilfe von Windows PowerShell ein Gerät gelöscht, aber der lokale Status für das Gerät besagt, dass es weiterhin registriert ist. Ist dies in Ordnung?**
 
-**A:** Dies ist beabsichtigt. Das Gerät hat keinen Zugriff auf Ressourcen in der Cloud. Wenn Sie das Gerät registrieren möchten, muss dies manuell auf dem Gerät erfolgen. 
+**A:** Dies ist beabsichtigt. Das Gerät hat keinen Zugriff auf Ressourcen in der Cloud. 
+
+Wenn Sie das Gerät registrieren möchten, muss dies manuell auf dem Gerät erfolgen. 
 
 So bereinigen Sie den Verknüpfungsstatus aus Windows 10 und Windows Server 2016, die in die lokale AD-Domäne eingebunden sind:
 
@@ -85,6 +84,13 @@ Für früherer Windows-Versionen, die in die lokale AD-Domäne eingebunden sind:
 1.  Öffnen Sie die Eingabeaufforderung als Administrator.
 2.  Geben Sie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`ein.
 3.  Geben Sie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`ein.
+
+---
+**F: Wie entferne ich ein in Azure AD eingebundenes Gerät lokal auf dem Gerät?
+**A:** 
+- Stellen Sie bei in Hybrid-Azure AD eingebundenen Geräten sicher, dass die automatische Registrierung deaktiviert ist, damit das Gerät im Zuge des geplanten Task nicht erneut registriert wird. Öffnen Sie als Nächstes eine Eingabeaufforderung als Administrator, und geben Sie `dsregcmd.exe /debug /leave` ein. Dieser Befehl kann alternativ auf mehreren Geräten als Skript ausgeführt werden, um eine Verknüpfung als Massenoperation aufzuheben.
+
+- Stellen Sie bei ausschließlich in Azure AD eingebundenen Geräten sicher, dass Sie über ein lokales Offlineadministratorkonto verfügen, oder erstellen Sie eines, da Sie sich nicht mit Azure AD-Benutzeranmeldeinformationen anmelden werden können. Navigieren Sie als Nächstes zu **Einstellungen** > **Konten** > **Auf Geschäfts-, Schul- oder Unikonto zugreifen**. Markieren Sie Ihr Konto, und klicken Sie auf **Trennen**. Befolgen Sie die Anweisungen, und geben Sie die Anmeldeinformationen für den lokalen Administrator an, wenn Sie aufgefordert werden. Starten Sie das Gerät neu, um den Vorgang zur Aufhebung einer Verknüpfung abzuschließen.
 
 ---
 
@@ -119,7 +125,7 @@ Für früherer Windows-Versionen, die in die lokale AD-Domäne eingebunden sind:
 ---
 
 
-**F: Ich sehe den Gerätedatensatz im Azure-Portal in den Informationen unter BENUTZER und sehe, dass der Status auf dem Client „registriert“ lautet. Sind diese Einstellungen für den bedingten Zugriff richtig?**
+**F: Ich sehe den Gerätedatensatz im Azure-Portal in den Informationen unter BENUTZER und sehe, dass der Status auf dem Gerät „registriert“ lautet. Sind diese Einstellungen für den bedingten Zugriff richtig?**
 
 **A:** Der Verknüpfungsstatus des Geräts, der in „deviceID“ festgehalten ist, muss mit dem Status in Azure AD übereinstimmen und alle Bewertungskriterien für bedingten Zugriff erfüllen. Weitere Details finden Sie unter [Erste Schritte bei der Azure Active Directory-Geräteregistrierung](active-directory-device-registration.md).
 
@@ -137,6 +143,8 @@ Für früherer Windows-Versionen, die in die lokale AD-Domäne eingebunden sind:
 
 - Für Verbundanmeldungen muss der Verbundserver einen aktiven WS-Trust-Endpunkt unterstützen. 
 
+- Sie haben die Passthrough-Authentifizierung aktiviert, und dem Benutzer ist ein temporäres Kennwort zugewiesen, das bei der Anmeldung geändert werden muss.
+
 ---
 
 **F: Warum sehe ich das Dialogfeld „Leider ist ein Fehler aufgetreten“, wenn ich versuche, meinen PC in Azure AD einzubinden?**
@@ -147,7 +155,7 @@ Für früherer Windows-Versionen, die in die lokale AD-Domäne eingebunden sind:
 
 **F: Warum konnte ich meinen PC nicht einbinden, obwohl ich keine Fehlerinformationen erhalten habe?**
 
-**A:** Wahrscheinlich ist der Benutzer mit dem integrierten Administratorkonto beim Gerät angemeldet. Erstellen Sie ein anderes lokales Konto, bevor Sie Azure Active Directory Join verwenden, um die Einrichtung abzuschließen. 
+**A**: Wahrscheinlich ist der Benutzer mit dem lokalen integrierten Administratorkonto beim Gerät angemeldet. Erstellen Sie ein anderes lokales Konto, bevor Sie Azure Active Directory Join verwenden, um die Einrichtung abzuschließen. 
 
 ---
 

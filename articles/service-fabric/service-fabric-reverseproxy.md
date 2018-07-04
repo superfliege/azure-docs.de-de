@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 21e1e3041d7b1f4dc205355f6c0b8d4fd2e82775
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a72873678323d31181654923caf07ba509c9ab81
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212274"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301579"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverseproxy in Azure Service Fabric
 Über den in Azure Service Fabric integrierten Reverseproxy können die in einem Service Fabric-Cluster ausgeführten Microservices andere Dienste mit HTTP-Endpunkten ermitteln und mit ihnen kommunizieren.
@@ -57,8 +57,13 @@ Statt den Port eines einzelnen Diensts in Load Balancer zu konfigurieren, reicht
 ![Externe Kommunikation][0]
 
 > [!WARNING]
-> Wenn Sie den Port des Reverseproxys in Load Balancer konfigurieren, können alle Microservices im Cluster, die einen HTTP-Endpunkt verfügbar machen, von außerhalb des Clusters adressiert werden.
+> Wenn Sie den Port des Reverseproxys in Load Balancer konfigurieren, können alle Microservices im Cluster, die einen HTTP-Endpunkt verfügbar machen, von außerhalb des Clusters adressiert werden. Dies bedeutet, dass Microservices, die intern gedacht sind, von einem bestimmten böswilligen Benutzer entdeckt werden können. Dies legt potenziell schwerwiegende Schwachstellen offen, die ausgenutzt werden können:
 >
+> * Ein böswilliger Benutzer könnte zum Beispiel einen Denial-of-Service-Angriff starten, indem er wiederholt einen internen Dienst aufruft, der keine ausreichend geschützte Angriffsfläche hat.
+> * Ein böswilliger Benutzer könnte fehlerhafte Pakete an einen internen Dienst senden, was zu unbeabsichtigtem Verhalten führt.
+> * Ein interner Dienst könnte private oder vertrauliche Informationen zurückgeben, die nicht für Dienste außerhalb des Clusters bestimmt sind, wodurch diese vertraulichen Informationen einem böswilligen Benutzer zugänglich gemacht werden könnten. 
+>
+> Stellen Sie sicher, dass Sie alle potenziellen Auswirkungen auf die Sicherheit Ihres Clusters und der darauf laufenden Apps kennen und verringern, bevor Sie den Reverseproxyport veröffentlichen. 
 >
 
 

@@ -7,14 +7,14 @@ manager: cshepard
 keywords: Azure Backup; VM-Agent; Netzwerkkonnektivität;
 ms.service: backup
 ms.topic: troubleshooting
-ms.date: 01/09/2018
+ms.date: 06/25/2018
 ms.author: genli
-ms.openlocfilehash: 63cded007af499455e7bb4fc23d26d56caf96678
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 09cfda3c2c790297b0961ecac92cba61c9e6de6f
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606357"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754204"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Beheben von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -84,15 +84,15 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 ### <a name="the-vm-has-no-internet-access"></a>Der virtuelle Computer verfügt nicht über Internetzugriff
 Gemäß Bereitstellungsanforderung verfügt der virtuelle Computer nicht über Internetzugriff. Möglicherweise gelten auch Einschränkungen für den Computer, die einen Zugriff auf die Azure-Infrastruktur verhindern.
 
-Die Sicherungserweiterung muss eine Verbindung mit öffentlichen Azure-IP-Adressen herstellen können, damit sie richtig funktioniert. Die Erweiterung sendet Befehle an einen Azure Storage-Endpunkt (HTTP-URL), um die Momentaufnahmen des virtuellen Computers zu verwalten. Wenn die Erweiterung keinen Zugriff auf das öffentliche Internet hat, tritt bei der Sicherung letztendlich ein Fehler auf.
+Die Sicherungserweiterung muss eine Verbindung mit öffentlichen Azure-IP-Adressen herstellen können, damit sie richtig funktioniert. Die Erweiterung sendet Befehle an einen Azure Storage-Endpunkt (HTTPs-URL), um die Momentaufnahmen des virtuellen Computers zu verwalten. Wenn die Erweiterung keinen Zugriff auf das öffentliche Internet hat, tritt bei der Sicherung letztendlich ein Fehler auf.
 
 Sie können einen Proxyserver bereitstellen, um den VM-Datenverkehr weiterzuleiten.
-##### <a name="create-a-path-for-http-traffic"></a>Erstellen eines Pfads für HTTP-Datenverkehr
+##### <a name="create-a-path-for-https-traffic"></a>Erstellen eines Pfads für HTTPs-Datenverkehr
 
-1. Wenn Netzwerkeinschränkungen bestehen (beispielsweise in Form einer Netzwerksicherheitsgruppe), ist es ratsam, einen HTTP-Proxyserver zum Weiterleiten des Datenverkehrs bereitzustellen.
-2. Um den Zugriff auf das Internet über den HTTP-Proxyserver zuzulassen, fügen Sie der Netzwerksicherheitsgruppe, falls vorhanden, Regeln hinzu.
+1. Wenn Netzwerkeinschränkungen bestehen (beispielsweise in Form einer Netzwerksicherheitsgruppe), ist es ratsam, einen HTTPs-Proxyserver zum Weiterleiten des Datenverkehrs bereitzustellen.
+2. Um den Zugriff auf das Internet über den HTTPs-Proxyserver zuzulassen, fügen Sie der Netzwerksicherheitsgruppe, falls vorhanden, Regeln hinzu.
 
-Informationen dazu, wie Sie einen HTTP-Proxy für VM-Sicherungen einrichten, finden Sie unter [Vorbereiten der Umgebung für die Sicherung virtueller Azure-Computer](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
+Informationen dazu, wie Sie einen HTTPs-Proxy für VM-Sicherungen einrichten, finden Sie unter [Vorbereiten der Umgebung für die Sicherung virtueller Azure-Computer](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 Der gesicherte virtuelle Computer oder der Proxyserver, über den der Datenverkehr weitergeleitet wird, benötigt Zugriff auf öffentliche IP-Adressen in Azure.
 

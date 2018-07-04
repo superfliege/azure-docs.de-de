@@ -24,7 +24,7 @@ Sie erhalten den folgenden Informationstyp:
 ### <a name="set-your-azure-account-and-subscription"></a>Festlegen Ihres Azure-Kontos und -Abonnements
 Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) registrieren.
 
-Öffnen Sie eine Azure PowerShell-Eingabeaufforderung und melden Sie sich mit diesem Befehl bei Azure an.
+Öffnen Sie eine Azure PowerShell-Eingabeaufforderung, und melden Sie sich mit diesem Befehl bei Azure an.
 
     Connect-AzureRmAccount
 

@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/18/2018
+ms.date: 06/20/2018
 ms.author: sngun
-ms.openlocfilehash: 4b12652783c94d132a5c1f4d4aa352d4e2318edf
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: e4a3b3a482f56065c54525a4d9cd7971f50f5b2a
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797667"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300678"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Async Java SDK für SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -53,6 +53,16 @@ Das Async Java SDK für die SQL-API unterscheidet sich vom Java SDK für die SQL
 
 ## <a name="release-notes"></a>Versionshinweise
 
+### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+* Die org.json-Abhängigkeit wurde aufgrund der Leistung und Lizenzierung durch jackson ersetzt ([Github Nr. 29](https://github.com/Azure/azure-cosmosdb-java/issues/29)).
+* Die veraltete OfferV2-Klasse wurde entfernt.
+* Die Zugriffsmethode wurde für die Offer-Klasse für Durchsatzinhalte hinzugefügt.
+* Alle Methoden in „Document/Resource“, die org.json-Typen zurückgeben, wurden geändert, um einen jackson-Objekttyp zurückzugeben.
+* getObject(.)-Methode von Klassen, die „JsonSerializable“ erweitern, wurde geändert, um einen jackson-ObjectNode-Typ zurückzugeben.
+* getCollection(.)-Methode wurde geändert, um eine Sammlung von „ObjectNode“ zurückzugeben.
+* Konstruktoren für JsonSerializable-Unterklassen mit org.json.JSONObject-Argumenten wurden entfernt.
+* JsonSerializable.toJson (SerializationFormattingPolicy.Indented) verwendet nun zwei Leerzeichen für die Einrückung.
+  
 ### <a name="a-name102102"></a><a name="1.0.2"/>1.0.2
 * Unterstützung für die Richtlinie des eindeutigen Index wurde hinzugefügt.
 * Unterstützung für die Begrenzung der Antwort bezüglich der Größe von Fortsetzungstoken in Feedoptionen wurde hinzugefügt.
@@ -89,6 +99,7 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.0.0](#2.0.0) |20. Juni 2018|--- |
 | [1.0.2](#1.0.2) |18. Mai 2018|--- |
 | [1.0.1](#1.0.1) |20. April 2018|--- |
 | [1.0.0](#1.0.0) |27. Februar 2018|--- |

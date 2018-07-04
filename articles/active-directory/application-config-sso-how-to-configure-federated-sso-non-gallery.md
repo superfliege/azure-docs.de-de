@@ -3,21 +3,23 @@ title: Konfigurieren des einmaligen Anmeldens im Verbund für eine nicht im Kata
 description: Konfigurieren des einmaligen Anmeldens im Verbund für eine benutzerdefinierte, nicht im Katalog enthaltene Anwendung, die in Azure AD integriert werden soll
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 65df07b6fca62476953ad98dc9e17d9a82c97a53
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: barbkess
+ms.openlocfilehash: 916261de1f53c7b859378e83e423dea44b58af9b
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331941"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>Konfigurieren des einmaligen Anmeldens im Verbund für eine nicht im Katalog enthaltene Anwendung
 
@@ -136,7 +138,7 @@ Führen Sie zum Herunterladen der Metadaten für die Anwendung oder des Zertifik
 
 8.  Wechseln Sie zum Abschnitt **SAML-Signaturzertifikat**, und klicken Sie auf den Spaltenwert **Herunterladen**. Abhängig davon, welche Werte die Anwendung für die Konfiguration des einmaligen Anmeldens benötigt, wird die Option zum Herunterladen des Metadaten-XML oder des Zertifikats angezeigt.
 
-Azure AD stellt keine URL zum Abrufen der Metadaten bereit. Die Metadaten können nur als XML-Datei abgerufen werden.
+Azure AD stellt auch eine URL zum Abrufen der Metadaten bereit. Folgen Sie diesem Muster, um die spezifische Metadaten-URL für die Anwendung abzurufen: https://login.microsoftonline.com/ <Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>.
 
 ## <a name="assign-users-to-the-application"></a>Zuweisen von Benutzern zur Anwendung
 

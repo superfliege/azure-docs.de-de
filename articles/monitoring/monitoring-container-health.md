@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/19/2018
+ms.date: 06/22/2018
 ms.author: magoedte
-ms.openlocfilehash: 7c4294947cba72b1638e77c2dd8de1f5ee37b62a
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 23109a74fa707759cc3300896392dcc129f3e28c
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285989"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335753"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Überwachen der Integrität von Azure Kubernetes Service-Containern (AKS) (Vorschauversion)
 
@@ -37,7 +37,7 @@ Wenn Sie mehr über die Überwachung und Verwaltung Ihrer Docker- und Windows-Co
 ## <a name="requirements"></a>Requirements (Anforderungen) 
 Bevor Sie beginnen, überprüfen Sie die folgenden Details, um sich einen Überblick über die geforderten Voraussetzungen zu verschaffen.
 
-- Die folgenden AKS-Clusterversionen werden unterstützt: 1.7.7 bis 1.9.6.
+- Ein neuer oder vorhandener AKS-Cluster
 - Ein containerbasierter OMS-Agent für Linux-Version microsoft/oms:ciprod04202018 und höher. Dieser Agent wird automatisch beim Onboardingvorgang der Containerintegrität installiert.  
 - Einen Log Analytics-Arbeitsbereich  Sie können diesen bei der Aktivierung der Überwachung des neuen AKS-Clusters erstellen oder über den [Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md), [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json) oder das [Azure-Portal](../log-analytics/log-analytics-quick-create-workspace.md) erstellen.
 - Ein Mitglied der Mitwirkendenrolle in Log Analytics, um Containerüberwachung zu aktivieren.  Weitere Informationen zum Steuern des Zugriffs auf einen Log Analytics-Arbeitsbereich finden Sie unter [Verwalten von Arbeitsbereichen](../log-analytics/log-analytics-manage-access.md).
@@ -244,7 +244,7 @@ Wenn Sie die Azure CLI verwenden möchten, müssen Sie zuerst die CLI installier
 Nachdem die Überwachung aktiviert wurde, dauert es ungefähr 15 Minuten, bis operative Daten für den Cluster angezeigt werden.  
 
 ## <a name="verify-agent-deployed-successfully"></a>Überprüfen der erfolgreichen Bereitstellung des Agents
-Um zu überprüfen, ob der OMS-Agent ordnungsgemäß bereitgestellt wurde, führen Sie den folgenden Befehl aus: ` kubectl get ds omsagent --namespace=kube-system`.
+Um zu überprüfen, ob der OMS-Agent ordnungsgemäß bereitgestellt wurde, führen Sie den folgenden Befehl aus: `kubectl get ds omsagent --namespace=kube-system`.
 
 Die Ausgabe sollte ungefähr wie im folgenden Beispiel aussehen, um sicherzustellen, dass er ordnungsgemäß bereitgestellt wurde:
 

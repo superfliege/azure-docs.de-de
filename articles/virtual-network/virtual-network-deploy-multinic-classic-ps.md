@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/02/2016
+ms.date: 05/22/2018
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 09c85a9badaad45816a9160d09cb3c4a726426e8
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ca4e9e77d0e0ca62c04fbbfe132a41fb3e01df46
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34658773"
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a>Erstellen eines virtuellen Computers (VM) (klassisch) mit mehreren Netzwerkkarten über PowerShell
 
@@ -198,4 +199,10 @@ Führen Sie das Skript aus, nachdem sie es heruntergeladen und angepasst haben, 
 
 ### <a name="step-5---configure-routing-within-the-vms-operating-system"></a>Schritt 5: Konfigurieren des Routings im Betriebssystem des virtuellen Computers
 
-Azure DHCP weist der ersten (primären) Netzwerkschnittstelle, die an den virtuellen Computer angefügt ist, ein Standardgateway zu. Azure weist zusätzlichen (sekundären) Netzwerkschnittstellen, die an einen virtuellen Computer angefügt sind, kein Standardgateway zu. Daher können Sie standardmäßig nicht mit Ressourcen außerhalb des Subnetzes kommunizieren, in dem sich eine sekundäre Netzwerkschnittstelle befindet. Sekundäre Netzwerkschnittstellen können jedoch mit Ressourcen außerhalb ihres Subnetzes kommunizieren. Informationen zum Konfigurieren des Routings für sekundäre Netzwerkschnittstellen finden Sie unter [Routing innerhalb des Betriebssystems eines virtuellen Computers mit mehreren Netzwerkschnittstellen](virtual-network-network-interface-vm.md).
+Azure DHCP weist der ersten (primären) Netzwerkschnittstelle, die an den virtuellen Computer angefügt ist, ein Standardgateway zu. Azure weist zusätzlichen (sekundären) Netzwerkschnittstellen, die an einen virtuellen Computer angefügt sind, kein Standardgateway zu. Daher können Sie standardmäßig nicht mit Ressourcen außerhalb des Subnetzes kommunizieren, in dem sich eine sekundäre Netzwerkschnittstelle befindet. Sekundäre Netzwerkschnittstellen können jedoch mit Ressourcen außerhalb ihres Subnetzes kommunizieren. Informationen zum Konfigurieren für sekundäre Netzwerkschnittstellen finden Sie in den folgenden Artikeln:
+
+- [Konfigurieren von Gastbetriebssystem für mehrere Netzwerkadapter (Windows)](../virtual-machines/windows/multiple-nics.md#configure-guest-os-for-multiple-nics
+)
+
+- [Konfigurieren von Gastbetriebssystem für mehrere Netzwerkadapter (Linux)](../virtual-machines/linux/multiple-nics.md#configure-guest-os-for-multiple-nics
+)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/28/2018
 ms.author: liydu
-ms.openlocfilehash: b65888ced67ba3c236c31678cf452d40489bf028
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ba2325272552a13d6e464797b1fb523415393100
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631777"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36945937"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-function-and-cognitive-services-to-make-a-language-translator"></a>Verwenden von IoT DevKit AZ3166 mit Azure Functions und Cognitive Services zum Erstellen eines Sprachübersetzers
 
@@ -38,13 +38,16 @@ Ein aktives Azure-Abonnement. Wenn Sie kein Abonnement haben, können Sie sich m
 
 ### <a name="a-start-vs-code"></a>A. Starten von Visual Studio Code
 
-- Stellen Sie sicher, dass DevKit nicht mit Ihrem Computer verbunden ist.
+- Stellen Sie sicher, dass Ihr DevKit mit Ihrem Computer verbunden ist.
 - Starten von Visual Studio Code
 - Verbinden Sie das DevKit mit Ihrem Computer.
 
 ### <a name="b-open-the-arduino-examples-folder"></a>B: Öffnen des Ordners „Arduino-Beispiele“
 
-Erweitern Sie auf der linken Seite **ARDUINO-BEISPIELE > Beispiele für MXCHIP AZ3166 > AzureIoT**, und wählen Sie **DevKitTranslator** aus. Daraufhin wird ein neues Visual Studio Code-Fenster mit dem Projektordner „DEVKITTRANSLATOR“ geöffnet.
+Erweitern Sie auf der linken Seite **ARDUINO-BEISPIELE > Beispiele für MXCHIP AZ3166 > AzureIoT**, und wählen Sie **DevKitTranslator** aus. Daraufhin wird ein neues Visual Studio Code-Fenster mit dem Projektordner „DEVKITTRANSLATOR“ geöffnet.  
+
+> [!NOTE]
+> Wenn Sie die Beispiele für den Abschnitt „MXCHIP AZ3166“ nicht anzeigen können, stellen Sie sicher, dass Ihr Gerät ordnungsgemäß verbunden ist, und starten Sie Visual Studio Code neu.  
 
 ![IoT DevKit-Beispiele](media/iot-hub-arduino-iot-devkit-az3166-translator/vscode_examples.png)
 

@@ -10,21 +10,21 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 84734b89aeb95745d237c062e5654afc4d49f966
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 00f1dc8c9cffbff240f96fed3d2f09888c041301
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711143"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754199"
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C: Anpassen der Azure AD B2C-Benutzeroberfläche (UI)
 
 Benutzerfreundlichkeit ist in einer kundenorientierten Anwendung entscheidend.  Vergrößern Sie Ihren Kundenstamm, indem Sie zu Ihrem Unternehmen passende Benutzeroberflächen entwickeln. Azure Active Directory B2C (Azure AD B2C) ermöglicht Ihnen, die Seiten für Registrierung und Anmeldung, Profilbearbeitung und Kennwortzurücksetzung mit präziser Kontrolle anzupassen.
 
 > [!NOTE]
-> Das in diesem Artikel beschriebene Feature „Seite für die Benutzeroberflächenanpassung“ gilt nicht für die Anmeldungsrichtlinie, die dazugehörige Seite zum Zurücksetzen des Kennworts und Bestätigungs-E-Mails.  Für diese Features wird stattdessen das [Unternehmensbrandingfeature](../active-directory/customize-branding.md) verwendet.
+> Das in diesem Artikel beschriebene Feature „Seite für die Benutzeroberflächenanpassung“ gilt nicht für die Anmeldungsrichtlinie, die dazugehörige Seite zum Zurücksetzen des Kennworts und Bestätigungs-E-Mails.  Für diese Features wird stattdessen das [Unternehmensbrandingfeature](../active-directory/fundamentals/customize-branding.md) verwendet.
 >
-> Entsprechend gilt: Wenn ein Benutzer eine Richtlinie zum Bearbeiten des Profils *vor* der Anmeldung startet, wird der Benutzer auf eine Seite umgeleitet, die mit dem [Unternehmensbrandingfeature](../active-directory/customize-branding.md) angepasst werden kann.
+> Entsprechend gilt: Wenn ein Benutzer eine Richtlinie zum Bearbeiten des Profils *vor* der Anmeldung startet, wird der Benutzer auf eine Seite umgeleitet, die mit dem [Unternehmensbrandingfeature](../active-directory/fundamentals/customize-branding.md) angepasst werden kann.
 
 In diesem Artikel werden die folgenden Themen behandelt:
 

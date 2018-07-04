@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 3c0ad4a0e1a5f4f2fd6def4f29599e2e55eb1a9d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fe75781629e8d6416405cc9eec9ce14e61a00b14
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364453"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301426"
 ---
 # <a name="enable-network-security-groups-in-azure-security-center"></a>Aktivieren von Netzwerksicherheitsgruppen in Azure Security Center
 Azure Security Center empfiehlt die Aktivierung einer Netzwerksicherheitsgruppe (NSG), sofern noch keine aktiviert ist. NSGs enthalten eine Zugriffssteuerungsliste (Access Control List, ACL) zum Zulassen oder Verweigern von eingehendem Netzwerkdatenverkehr für Ihre VM-Instanzen in einem virtuellen Netzwerk. NSGs können Subnetzen oder einzelnen VM-Instanzen innerhalb dieses Subnetzes zugeordnet werden. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die ACL-Regeln für alle VM-Instanzen in diesem Subnetz. Darüber hinaus kann Datenverkehr zu einem einzelnen virtuellen Computer weiter beschränkt werden, indem eine NSG direkt diesem virtuellen Computer zugewiesen wird. Weitere Informationen finden Sie unter [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/security-overview.md)
@@ -43,7 +43,7 @@ Sollten keine Netzwerksicherheitsgruppen aktiviert sein, stellt Security Center 
 
    ![Netzwerksicherheitsgruppe auswählen][4]
 
-Falls Sie eine NSG erstellen möchten, führen Sie die Schritte unter [Verwalten von NSGs mithilfe des Azure-Portals](../virtual-network/virtual-networks-create-nsg-arm-pportal.md) aus, um eine NSG zu erstellen und Sicherheitsregeln festzulegen.
+Falls Sie eine NSG erstellen möchten, führen Sie die Schritte unter [Verwalten einer Netzwerksicherheitsgruppe](../virtual-network/manage-network-security-group.md) aus, um eine NSG zu erstellen und Sicherheitsregeln festzulegen.
 
 ## <a name="see-also"></a>Weitere Informationen
 In diesem Artikel haben Sie erfahren, wie Sie die von Security Center empfohlene Aktivierung von Netzwerksicherheitsgruppen für Subnetze oder virtuelle Computer implementieren. Weitere Informationen zu NSGs finden Sie hier:

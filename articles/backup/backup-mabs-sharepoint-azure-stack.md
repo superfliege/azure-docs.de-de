@@ -1,5 +1,5 @@
 ---
-title: Sichern einer SharePoint-Farm auf Azure Stack in Azure
+title: Sichern einer SharePoint-Farm in Azure Stack
 description: Verwenden Sie Azure Backup Server zum Sichern und Wiederherstellen Ihrer SharePoint-Daten auf Azure Stack. Dieser Artikel stellt die benötigten Informationen bereit, um Ihre SharePoint-Farm so zu konfigurieren, dass Sie die gewünschten Daten in Azure speichern können. Sie können geschützte SharePoint-Daten vom Datenträger oder aus Azure wiederherstellen.
 services: backup
 author: pvrk
@@ -8,18 +8,18 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: pullabhk
-ms.openlocfilehash: da8421441863c8d7f840630614f4f35c16f184d5
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 309e817426fff1eb877ab02ae9aa16ddc8f5cf16
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248945"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751896"
 ---
-# <a name="back-up-a-sharepoint-farm-on-azure-stack-to-azure"></a>Sichern einer SharePoint-Farm auf Azure Stack in Azure
+# <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Sichern einer SharePoint-Farm in Azure Stack
 Die Vorgehensweise zum Sichern einer SharePoint-Farm auf Azure Stack mithilfe von Microsoft Azure Backup Server (MABS) in Microsoft Azure ähnelt der Vorgehensweise zum Sichern anderer Datenquellen. Azure Backup ermöglicht die Verwendung eines flexiblen Sicherungszeitplans, mit dem Sie tägliche, wöchentliche, monatliche oder jährliche Sicherungspunkte erstellen und Aufbewahrungsrichtlinienoptionen für unterschiedliche Sicherungspunkte konfigurieren können. Mit MABS können Sie zudem lokale Festplattenkopien speichern, um die Wiederherstellung zu beschleunigen. Außerdem können Sie Kopien zur kostengünstigen, langfristigen Aufbewahrung in Azure speichern.
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>Von SharePoint unterstützte Versionen und entsprechende Sicherungsszenarien
-Azure Backup für DPM unterstützt folgende Szenarios:
+Azure Backup für MABS unterstützt folgende Szenarios:
 
 | Workload | Version | SharePoint-Bereitstellung | Schutz und Wiederherstellung |
 | --- | --- | --- | --- | --- | --- |
@@ -38,12 +38,9 @@ Der Azure Backup-Agent muss auf dem Server, auf dem SharePoint ausgeführt wird,
 Pro zehn Millionen Farmelemente müssen mindestens 2 GB Speicherplatz auf dem Volume verfügbar sein, auf dem sich der MABS-Ordner befindet. Dieser Speicherplatz wird für die Kataloggenerierung benötigt. Für die Wiederherstellung bestimmter Elemente (Websitesammlungen, Websites, Listen, Dokumentbibliotheken, Ordner, einzelne Dokumente und Listenelemente) durch MABS erstellt die Kataloggenerierung eine Liste mit den URLs aus den einzelnen Inhaltsdatenbanken. Sie können die URL-Liste im Bereich für wiederherstellbare Elemente (im Aufgabenbereich **Wiederherstellung** der MABS-Administratorkonsole) anzeigen.
 
 ### <a name="sql-server"></a>SQL Server
-Azure Backup Server wird als lokales Systemkonto ausgeführt. Zum Sichern von SQL Server-Datenbanken benötigt MABS Systemadministratorberechtigungen für dieses Konto für den Server, auf dem SQL Server ausgeführt wird. Legen Sie für NT AUTHORITY\SYSTEM *sysadmin* auf dem Server fest, auf dem SQL Server ausgeführt wird, bevor Sie ihn sichern.
+Azure Backup Server wird als ein „LocalSystem“-Konto ausgeführt. Zum Sichern von SQL Server-Datenbanken benötigt MABS Systemadministratorberechtigungen für dieses Konto für den Server, auf dem SQL Server ausgeführt wird. Legen Sie für NT AUTHORITY\SYSTEM *sysadmin* auf dem Server fest, auf dem SQL Server ausgeführt wird, bevor Sie ihn sichern.
 
 Falls die SharePoint-Farm über SQL Server-Datenbanken verfügt, die mit SQL Server-Aliasnamen konfiguriert sind, installieren Sie die SQL Server-Clientkomponenten auf dem Front-End-Webserver, der von MABS geschützt wird.
-
-### <a name="sharepoint-server"></a>SharePoint Server
-Die Leistung hängt von zahlreichen Faktoren ab – unter anderem von der Größe der SharePoint-Farm. Grundsätzlich gilt: Mit einer einzelnen MABS-Instanz kann eine SharePoint-Farm mit einem Volumen von 25 TB geschützt werden.
 
 ### <a name="whats-not-supported"></a>Nicht unterstützte Funktionen
 * Der MABS-Schutz einer SharePoint-Farm erstreckt sich nicht auf Suchindizes oder Anwendungsdienstdatenbanken. Für diese Datenbanken muss der Schutz separat konfiguriert werden.

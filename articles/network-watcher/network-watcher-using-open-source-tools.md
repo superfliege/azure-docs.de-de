@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 61abda6053fe743e294f309df3a6e1041052ec6e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b1e1383e8e244a7cdb30be1e08514a6a4dd7b14
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23036395"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36302232"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Visualisieren von Mustern im eingehenden und ausgehenden VM-Datenverkehr mithilfe von Open Source-Tools
 
 Paketerfassungen enthalten Netzwerkdaten, die Ihnen das Durchführen von Maßnahmen zur Netzwerkforensik und eingehende Paketuntersuchungen ermöglichen. Sie können viele verschiedene Open Source-Tools zum Analysieren von Paketerfassungen verwenden, um Erkenntnisse zu Ihrem Netzwerk zu gewinnen. Ein Open Source-Tool dieser Art, mit dem die Paketerfassung visualisiert werden kann, ist CapAnalysis. Die Visualisierung von Paketerfassungsdaten ist eine nützliche Möglichkeit, um sich schnell einen Überblick über Muster und Anomalien in Ihrem Netzwerk zu verschaffen. Außerdem ist es mit Visualisierungen möglich, Erkenntnisse dieser Art auf einfache Weise zu teilen.
 
-Mit Network Watcher von Azure können Sie diese wertvollen Daten erfassen, indem Sie im Netzwerk Paketerfassungen durchführen. Dieser Artikel enthält eine exemplarische Vorgehensweise dazu, wie Sie Erkenntnisse aus Paketerfassungen visualisieren und gewinnen, indem Sie CapAnalysis mit Network Watcher verwenden.
+Mit Network Watcher von Azure können Sie Daten erfassen, indem Sie im Netzwerk Paketerfassungen durchführen. Dieser Artikel enthält eine exemplarische Vorgehensweise dazu, wie Sie Erkenntnisse aus Paketerfassungen visualisieren und gewinnen, indem Sie CapAnalysis mit Network Watcher verwenden.
 
 ## <a name="scenario"></a>Szenario
 
@@ -37,19 +37,19 @@ Sie haben eine einfache Webanwendung auf einem virtuellen Computer in Azure bere
 
 ### <a name="install-capanalysis"></a>Installieren von CapAnalysis
 
-Zum Installieren von CapAnalysis auf einem virtuellen Computer können Sie die offizielle Anleitung unter „https://www.capanalysis.net/ca/how-to-install-capanalysis“ verwenden.
-Um per Remoteverbindung auf CapAnalysis zuzugreifen, muss Port 9877 auf Ihrer VM geöffnet werden, indem eine neue Sicherheitsregel für eingehenden Datenverkehr hinzugefügt wird. Weitere Informationen zur Erstellung von Regeln in Netzwerksicherheitsgruppen finden Sie unter [Erstellen von Regeln in einer vorhandenen NSG](../virtual-network/virtual-networks-create-nsg-arm-pportal.md#create-rules-in-an-existing-nsg). Nachdem die Regel erfolgreich hinzugefügt wurde, sollten Sie über `http://<PublicIP>:9877` auf CapAnalysis zugreifen können.
+Zum Installieren von CapAnalysis auf einem virtuellen Computer finden Sie die offizielle Anleitung unter https://www.capanalysis.net/ca/how-to-install-capanalysis.
+Um per Remoteverbindung auf CapAnalysis zuzugreifen, muss Port 9877 auf Ihrer VM geöffnet werden, indem eine neue Sicherheitsregel für eingehenden Datenverkehr hinzugefügt wird. Weitere Informationen zur Erstellung von Regeln in Netzwerksicherheitsgruppen finden Sie unter [Erstellen von Regeln in einer vorhandenen NSG](../virtual-network/manage-network-security-group.md#create-a-security-rule). Nachdem die Regel erfolgreich hinzugefügt wurde, sollten Sie über `http://<PublicIP>:9877` auf CapAnalysis zugreifen können.
 
 ### <a name="use-azure-network-watcher-to-start-a-packet-capture-session"></a>Verwenden von Azure Network Watcher zum Starten einer Paketerfassungssitzung
 
-Mit Network Watcher können Sie Pakete erfassen, um den eingehenden und ausgehenden Datenverkehr eines virtuellen Computers nachzuverfolgen. Unter [Verwalten von Paketerfassungen mit Azure Network Watcher über das Portal](network-watcher-packet-capture-manage-portal.md) finden Sie eine Anleitung zum Starten einer Paketerfassungssitzung. Diese Paketerfassung kann in einem Speicherblob gespeichert werden, auf das der Zugriff mit CapAnalysis möglich ist.
+Mit Network Watcher können Sie Pakete erfassen, um den eingehenden und ausgehenden Datenverkehr eines virtuellen Computers nachzuverfolgen. Unter [Verwalten von Paketerfassungen mit Azure Network Watcher über das Portal](network-watcher-packet-capture-manage-portal.md) finden Sie eine Anleitung zum Starten einer Paketerfassungssitzung. Eine Paketerfassung kann in einem Speicherblob gespeichert werden, auf das der Zugriff mit CapAnalysis möglich ist.
 
 ### <a name="upload-a-packet-capture-to-capanalysis"></a>Hochladen einer Paketerfassung in CapAnalysis
 Sie können eine mit Network Watcher erstellte Paketerfassung direkt hochladen, indem Sie die Registerkarte „Aus URL importieren” verwenden und einen Link zu dem Speicherblob angeben, in dem die Paketerfassung gespeichert ist.
 
-Achten Sie beim Angeben eines Links zu CapAnalysis darauf, ein SAS-Token an die Speicherblob-URL anzufügen.  Navigieren Sie hierzu vom Speicherkonto zu „Shared Access Signature“, geben Sie die zulässigen Berechtigungen an, und klicken Sie auf die Schaltfläche „SAS generieren“, um ein Token zu erstellen. Anschließend können Sie dieses SAS-Token an die Speicherblob-URL der Paketerfassung anfügen.
+Achten Sie beim Angeben eines Links zu CapAnalysis darauf, ein SAS-Token an die Speicherblob-URL anzufügen.  Navigieren Sie hierzu vom Speicherkonto zu „Shared Access Signature“, geben Sie die zulässigen Berechtigungen an, und klicken Sie auf die Schaltfläche „SAS generieren“, um ein Token zu erstellen. Anschließend können Sie das SAS-Token an die Speicherblob-URL der Paketerfassung anfügen.
 
-Die sich ergebende URL sieht etwa wie folgt aus: http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere
+Die sich ergebende URL sieht dann in etwa wie folgt aus: http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere
 
 
 ### <a name="analyzing-packet-captures"></a>Analysieren von Paketerfassungen
@@ -86,7 +86,7 @@ CapAnalysis umfasst verschiedene Optionen zum Visualisieren Ihrer Paketerfassung
 
     ![Filter][11]
 
-    Weitere Informationen zu allen Funktionen von CapAnalysis finden Sie unter [https://www.capanalysis.net/ca/#about](https://www.capanalysis.net/ca/#about).
+    Besuchen Sie [https://www.capanalysis.net/ca/#about](https://www.capanalysis.net/ca/#about), um mehr zu den CapAnalysis-Funktionen zu erfahren.
 
 ## <a name="conclusion"></a>Zusammenfassung
 
@@ -96,8 +96,8 @@ Mit der Paketerfassungsfunktion von Network Watcher können Sie die Daten erfass
 
 Weitere Informationen zu NSG-Datenflussprotokollen finden Sie unter [Introduction to flow logging for Network Security Groups](network-watcher-nsg-flow-logging-overview.md) (Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen).
 
-Erfahren Sie unter [Visualisieren der Datenflussprotokolle von Netzwerksicherheitsgruppen mit Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md), wie Sie Ihre NSG-Datenflussprotokolle mit Power BI visualisieren.
-<!--Image references-->
+Erfahren Sie unter [Visualisieren der Datenflussprotokolle von Netzwerksicherheitsgruppen mit Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+<!--Image references-->, wie Sie Ihre NSG-Datenflussprotokolle mit Power BI visualisieren.
 
 [1]: ./media/network-watcher-using-open-source-tools/figure1.png
 [2]: ./media/network-watcher-using-open-source-tools/figure2.png

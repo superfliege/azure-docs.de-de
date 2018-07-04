@@ -7,7 +7,7 @@ Zuallererst muss die aktuelle Version der [Azure PowerShell](http://msdn.microso
 > 
 > 
 
-Führen Sie das Cmdlet [**Connect-AzureRmAccount**](http://msdn.microsoft.com/library/mt619267.aspx) aus. Daraufhin wird eine Anmeldeseite angezeigt, auf der Sie Ihre Anmeldeinformationen eingeben müssen. Verwenden Sie die gleichen Anmeldeinformationen wie für die Anmeldung beim Azure-Portal.
+Führen Sie das Cmdlet [**Connect-AzureRmAccount**](http://msdn.microsoft.com/library/mt619267.aspx) aus. Daraufhin wird eine Anmeldeseite angezeigt, in der Sie Ihre Anmeldeinformationen eingeben müssen. Verwenden Sie die gleichen Anmeldeinformationen wie für die Anmeldung beim Azure-Portal.
 
     Connect-AzureRmAccount
 

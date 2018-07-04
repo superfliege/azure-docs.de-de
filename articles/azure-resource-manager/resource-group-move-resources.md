@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/14/2018
+ms.date: 06/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2326f37afcb845b8c484bdf57db0876026f8e8a1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7bee84e1ce473c27730b3fe84aa0a580baeba7c2
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34602719"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36940166"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie Ressourcen in ein neues Abonnement oder 
 
 Beim Verschieben von Ressourcen werden die Quell- und Zielgruppe für die Dauer des Vorgangs gesperrt. Schreib- und Löschvorgänge in den Ressourcengruppen werden bis zum Abschluss der Verschiebung blockiert. Diese Sperre bedeutet, dass Sie in Ressourcengruppen keinen Ressourcen hinzufügen, aktualisieren oder löschen können. Es heißt aber nicht, dass die Ressourcen eingefroren sind. Wenn Sie beispielsweise eine SQL Server-Instanz und ihre Datenbank in eine neue Ressourcengruppe verschieben, weist eine Anwendung, die die Datenbank nutzt, keine Ausfallzeiten auf. Sie hat weiterhin Lese- und Schreibzugriff auf die Datenbank.
 
-Sie können nicht den Speicherort der Ressource ändern. Wenn Sie ein Ressource verschieben, wird sie nur in eine neue Ressourcengruppe verschoben. Die neue Ressourcengruppe hat möglicherweise einen anderen Speicherort, das heißt jedoch nicht, dass der Speicherort der Ressource geändert wird.
+Sie können den Speicherort der Ressource nicht ändern. Wenn Sie ein Ressource verschieben, wird sie nur in eine neue Ressourcengruppe verschoben. Die neue Ressourcengruppe hat möglicherweise einen anderen Speicherort, das heißt jedoch nicht, dass der Speicherort der Ressource geändert wird.
 
 > [!NOTE]
 > In diesem Artikel wird beschrieben, wie Sie Ressourcen in einem vorhandenen Azure-Kontoangebot verschieben. Falls Sie Ihr Azure-Kontoangebot ändern (z.B. ein Upgrade von nutzungsbasierter Bezahlung auf einen Pre-Pay-Tarif) und Ihre vorhandenen Ressourcen weiterverwenden möchten, helfen Ihnen die Informationen unter [Umstellen Ihres Azure-Abonnements auf ein anderes Angebot](../billing/billing-how-to-switch-azure-offer.md) weiter.
@@ -54,10 +54,10 @@ Beim Verschieben einer Ressource sollten Sie einige wichtige Schritte ausführen
   az account show --subscription <your-destination-subscription> --query tenantId
   ```
 
-  Wenn die Mandanten-IDs für das Quell- und das Zielabonnement nicht gleich sind, verwenden Sie die folgenden Methoden, um die Mandanten IDs aufeinander abzustimmen:
+  Wenn die Mandanten-IDs für das Quell- und das Zielabonnement nicht gleich sind, verwenden Sie die folgenden Methoden, um die Mandanten-IDs aufeinander abzustimmen:
 
   * [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../billing/billing-subscription-transfer.md)
-  * [Zuweisen oder Hinzufügen eines Azure-Abonnements zu Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md)
+  * [Zuweisen oder Hinzufügen eines Azure-Abonnements zu Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
 2. Der Dienst muss die Möglichkeit bieten, Ressourcen zu verschieben. In diesem Artikel wird erläutert, welche Dienste das Verschieben von Ressourcen ermöglichen und welche nicht.
 3. Das Zielabonnement muss für den Ressourcenanbieter der verschobenen Ressource registriert sein. Andernfalls erhalten Sie eine Fehlermeldung, die besagt, dass das **Abonnement nicht für einen Ressourcentyp registriert ist**. Dieses Problem kann auftreten, wenn eine Ressource zu einem neuen Abonnement verschoben wird, dieses aber noch nie mit diesem Ressourcentyp verwendet wurde.
@@ -93,6 +93,8 @@ Beim Verschieben einer Ressource sollten Sie einige wichtige Schritte ausführen
    * **Microsoft.Resources/subscriptions/resourceGroups/moveResources/action** für die Quellressourcengruppe.
    * **Microsoft.Resources/subscriptions/resourceGroups/write** für die Zielressourcengruppe.
 
+5. Überprüfen Sie vor dem Verschieben der Ressource die Abonnementkontingente für das Abonnement, zu dem Sie die Ressourcen verschieben. Wenn das Verschieben der Ressourcen bedeutet, dass das Abonnement seine Einschränkungen überschreitet, müssen Sie prüfen, ob Sie eine Erhöhung des Kontingents anfordern können. Eine vollständige Liste zu diesen Einschränkungen und Informationen zur Anforderung einer Kontingenterhöhung finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
+
 5. Unterteilen Sie große Verschiebevorgänge nach Möglichkeit in separate Verschiebevorgänge. Resource Manager gibt bei Versuchen, mehr als 800 Ressourcen in einem einzigen Vorgang zu verschieben, sofort einen Fehler aus. Beim Verschieben von weniger als 800 Ressourcen kann jedoch ebenfalls ein Fehler durch ein Timeout auftreten.
 
 ## <a name="when-to-call-support"></a>Kontaktaufnahme mit dem Support
@@ -115,6 +117,7 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * App Service-Apps (Web-Apps) – siehe [App Service-Einschränkungen](#app-service-limitations)
 * App Service-Zertifikate
 * Application Insights
+* Analysis Services
 * Automation
 * Azure Cosmos DB
 * Azure Relay
@@ -125,7 +128,7 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * Cognitive Services
 * Content Moderator
 * Data Catalog
-* Data Factory: V1 kann verschoben werden. Das Verschieben von V2 (Vorschauversion) wird jedoch nicht unterstützt.
+* Data Factory – V1 kann verschoben werden. Das Verschieben von V2 (Vorschauversion) wird jedoch nicht unterstützt.
 * Data Lake Analytics
 * Data Lake Store
 * DNS
@@ -153,7 +156,8 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * Speicher
 * Speicher (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 * Stream Analytics – Stream Analytics-Aufträge können nicht verschoben werden, wenn sie ausgeführt werden.
-* SQL-Datenbankserver – Die Datenbank und der Server müssen sich in derselben Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle ihre Datenbanken verschoben. Dieses Verhalten gilt für Azure SQL-Datenbank und Azure SQL Data Warehouse-Datenbanken. 
+* SQL-Datenbankserver – Die Datenbank und der Server müssen sich in derselben Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle ihre Datenbanken verschoben. Dieses Verhalten gilt für Azure SQL-Datenbank und Azure SQL Data Warehouse-Datenbanken.
+* Time Series Insights
 * Traffic Manager
 * Virtual Machines – Virtuelle Computer mit verwalteten Datenträgern können nicht verschoben werden. Weitere Informationen finden Sie unter [Einschränkungen von virtuellen Computern](#virtual-machines-limitations).
 * Virtual Machines (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
@@ -174,7 +178,8 @@ Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht
 * Azure Migrate
 * BizTalk Services
 * Certificates – App Service Certificates kann verschoben werden, hochgeladene Zertifikate haben jedoch [Einschränkungen](#app-service-limitations).
-* DevTest-Labs: Das Verschieben in eine neue Ressourcengruppe im gleichen Abonnement ist möglich, ein abonnementübergreifendes Verschieben jedoch nicht.
+* Container Service
+* DevTest-Labs – Das Verschieben in eine neue Ressourcengruppe im gleichen Abonnement ist möglich, ein abonnementübergreifendes Verschieben jedoch nicht.
 * Dynamics LCS
 * ExpressRoute
 * Kubernetes Service
@@ -182,7 +187,7 @@ Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht
 * Verwaltete Anwendungen
 * Managed Disks – siehe [Einschränkungen von virtuellen Computern](#virtual-machines-limitations)
 * Öffentliche IP-Adresse – siehe [Einschränkungen der öffentlichen IP-Adresse](#pip-limitations)
-* Recovery Services-Tresor – verschieben Sie außerdem nicht die dem Recovery Services-Tresor zugeordneten Compute-, Netzwerk- und Speicherressourcen. Siehe [Einschränkungen von Recovery Services](#recovery-services-limitations).
+* Recovery Services-Tresor – Verschieben Sie außerdem nicht die dem Recovery Services-Tresor zugeordneten Compute-, Netzwerk- und Speicherressourcen. Siehe [Einschränkungen von Recovery Services](#recovery-services-limitations).
 * Sicherheit
 * StorSimple-Geräte-Manager
 * Virtual Networks (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)

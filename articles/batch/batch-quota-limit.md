@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2018
+ms.date: 06/20/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19cdf81a355bae4d59cb49c1c588b995b040309b
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 12880ba3aa918873343ee8eb98e92130106e8362
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32310535"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36304021"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch-Dienst – Kontingente und Limits
 
@@ -51,14 +51,10 @@ Wenn Sie ein Batch-Konto erstellen, bei dem der Poolzuordnungsmodus auf **Benutz
 | [Gleichzeitige Aufgaben](batch-parallel-node-tasks.md) pro Computeknoten |4 x Anzahl der Kerne des Knotens |
 | [Anwendungen](batch-application-packages.md) pro Batch-Konto |20 |
 | Anwendungspakete pro Anwendung. |40 |
-| Anwendungspaketgröße (jeweils) |Ca. 195 GB<sup>1</sup> |
-| Maximale Größe des Starttasks | 32.768 Zeichen<sup>2</sup> |
-| Maximale Lebensdauer von Tasks | 7 Tage<sup>3</sup> |
+| Maximale Lebensdauer von Tasks | 7 Tage<sup>1</sup> |
 | Serverknoten im Pool mit aktivierter Kommunikation zwischen den Knoten | 100 |
 
-<sup>1</sup> Azure Storage-Limit für die maximale Blockblobgröße<br />
-<sup>2</sup> Einschließlich Ressourcendateien und Umgebungsvariablen<br />
-<sup>3</sup> Die maximale Lebensdauer eines Tasks (vom Hinzufügen zum Auftrag bis zum Abschluss) beträgt sieben Tage. Abgeschlossene Tasks bleiben unbegrenzt lange erhalten. Daten für Tasks, die nicht innerhalb der maximalen Lebensdauer abgeschlossen wurden, stehen hingegen nicht zur Verfügung.
+<sup>1</sup> Die maximale Lebensdauer eines Tasks (vom Hinzufügen zum Auftrag bis zum Abschluss) beträgt sieben Tage. Abgeschlossene Tasks bleiben unbegrenzt lange erhalten. Daten für Tasks, die nicht innerhalb der maximalen Lebensdauer abgeschlossen wurden, stehen hingegen nicht zur Verfügung.
 
 
 ## <a name="view-batch-quotas"></a>Anzeigen von Batch-Kontingenten

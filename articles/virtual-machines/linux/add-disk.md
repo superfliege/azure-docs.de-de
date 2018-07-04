@@ -1,93 +1,57 @@
 ---
-title: Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer mithilfe der Azure-Befehlszeilenschnittstelle | Microsoft Docs
-description: Erfahren Sie, wie Sie Ihrem virtuellen Linux-Computer mithilfe von Azure CLI 1.0 und 2.0 einen persistenten Datenträger hinzufügen.
-keywords: virtueller Linux-Computer,Ressourcendatenträger hinzufügen
+title: Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer mithilfe der Azure CLI | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Ihrem virtuellen Linux-Computer mithilfe von Azure einen persistenten Datenträger hinzufügen.
 services: virtual-machines-linux
 documentationcenter: ''
-author: rickstercdn
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 3005a066-7a84-4dc5-bdaa-574c75e6e411
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
-ms.date: 02/02/2017
-ms.author: rclaus
+ms.date: 06/13/2018
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c3d3e3468b491f366473899f5d073704ea9a95ea
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c41090943e4053ddf0ea46e9da1b3b5c7dbbf132
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30837005"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331222"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer
 In diesem Artikel wird gezeigt, wie Sie einen persistenten Datenträger an Ihren virtuellen Computer anfügen, um Ihre Daten beizubehalten, auch wenn der virtuelle Computer aufgrund einer Wartung oder Größenänderung neu bereitgestellt wird. 
 
 
-## <a name="use-managed-disks"></a>Verwenden von verwalteten Datenträgern
-Azure Managed Disks vereinfacht die Datenträgerverwaltung für Azure-VMs, indem die Speicherkonten verwaltet werden, die den VM-Datenträgern zugeordnet sind. Sie müssen nur die Art (Premium oder Standard) und die Größe des von Ihnen benötigten Datenträgers angeben. Azure erstellt und verwaltet den Datenträger dann für Sie. Weitere Informationen finden Sie in der [Managed Disks overview (Übersicht über verwaltete Datenträger)](managed-disks-overview.md).
+## <a name="attach-a-new-disk-to-a-vm"></a>Anfügen eines neuen Datenträgers an einen virtuellen Computer
 
-
-### <a name="attach-a-new-disk-to-a-vm"></a>Anfügen eines neuen Datenträgers an einen virtuellen Computer
-Wenn Sie nur einen neuen Datenträger für Ihren virtuellen Computer benötigen, verwenden Sie den Befehl [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) mit dem `--new`-Parameter. Wenn Ihr virtueller Computer in einer Verfügbarkeitszone ist, wird der Datenträger automatisch in derselben Zone wie der virtuelle Computer erstellt. Weitere Informationen finden Sie in der [Overview of Availability Zones (Übersicht über Verfügbarkeitszonen)](../../availability-zones/az-overview.md). Das folgende Beispiel erstellt einen Datenträger mit dem Namen *myDataDisk* mit einer Größe von *50* GB:
+Wenn Sie einen neuen, leeren Datenträger für Ihren virtuellen Computer hinzufügen möchten, verwenden Sie den Befehl [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) mit dem `--new`-Parameter. Wenn Ihr virtueller Computer in einer Verfügbarkeitszone ist, wird der Datenträger automatisch in derselben Zone wie der virtuelle Computer erstellt. Weitere Informationen finden Sie in der [Overview of Availability Zones (Übersicht über Verfügbarkeitszonen)](../../availability-zones/az-overview.md). Das folgende Beispiel erstellt einen Datenträger mit dem Namen *myDataDisk* mit einer Größe von 50GB:
 
 ```azurecli
-az vm disk attach -g myResourceGroup --vm-name myVM --disk myDataDisk \
-  --new --size-gb 50
+az vm disk attach \
+   -g myResourceGroup \
+   --vm-name myVM \
+   --disk myDataDisk \
+   --new \
+   --size-gb 50
 ```
 
-### <a name="attach-an-existing-disk"></a>Anfügen eines vorhandenen Datenträgers 
-In vielen Fällen fügen Sie Datenträger an, die bereits erstellt wurden. Um einen vorhandenen Datenträger anzufügen, suchen Sie die Datenträger-ID, und übergeben Sie die ID an den Befehl [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach). Das folgende Beispiel fragt einen Datenträger mit dem Namen *MyDataDisk* in *MyResourceGroup* ab, und fügt ihn dann dem virtuellen Computer mit dem Namen *myVM* hinzu:
+## <a name="attach-an-existing-disk"></a>Anfügen eines vorhandenen Datenträgers 
+
+Um einen vorhandenen Datenträger anzufügen, suchen Sie die Datenträger-ID, und übergeben Sie die ID an den Befehl [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach). Das folgende Beispiel fragt einen Datenträger mit dem Namen *MyDataDisk* in *MyResourceGroup* ab, und fügt ihn dann dem virtuellen Computer mit dem Namen *myVM* hinzu:
 
 ```azurecli
-# find the disk id
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
+
 az vm disk attach -g myResourceGroup --vm-name myVM --disk $diskId
-```
-
-Die Ausgabe sieht in etwa wie folgt aus (Sie können die Option `-o table` bei jedem Befehl zum Formatieren der Ausgabe verwenden):
-
-```json
-{
-  "accountType": "Standard_LRS",
-  "creationData": {
-    "createOption": "Empty",
-    "imageReference": null,
-    "sourceResourceId": null,
-    "sourceUri": null,
-    "storageAccountId": null
-  },
-  "diskSizeGb": 50,
-  "encryptionSettings": null,
-  "id": "/subscriptions/<guid>/resourceGroups/rasquill-script/providers/Microsoft.Compute/disks/myDataDisk",
-  "location": "westus",
-  "name": "myDataDisk",
-  "osType": null,
-  "ownerId": null,
-  "provisioningState": "Succeeded",
-  "resourceGroup": "myResourceGroup",
-  "tags": null,
-  "timeCreated": "2017-02-02T23:35:47.708082+00:00",
-  "type": "Microsoft.Compute/disks"
-}
-```
-
-
-## <a name="use-unmanaged-disks"></a>Verwenden von nicht verwalteten Datenträgern
-Nicht verwaltete Datenträger bedürfen eines Mehraufwands, um die zugrundeliegenden Speicherkonten zu erstellen und zu verwalten. Nicht verwaltete Datenträger werden im gleichen Speicherkonto wie Ihr Betriebssystemdatenträger erstellt. Verwenden Sie zum Erstellen und Anfügen eines nicht verwalteten Datenträgers den Befehl [az vm unmanaged-disk attach](/cli/azure/vm/unmanaged-disk?view=azure-cli-latest#az_vm_unmanaged_disk_attach). Im folgenden Beispiel wird ein *50* GB großer nicht verwalteter Datenträger dem virtuellen Computer mit dem Namen *myVM* in der Ressourcengruppe mit dem Namen *myResourceGroup* hinzugefügt:
-
-```azurecli
-az vm unmanaged-disk attach -g myResourceGroup -n myUnmanagedDisk --vm-name myVM \
-  --new --size-gb 50
 ```
 
 
 ## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Herstellen einer Verbindung mit dem virtuellen Linux-Computer zum Bereitstellen des neuen Datenträgers
-Sie benötigen SSH für Ihren virtuellen Azure-Computer, um den neuen Datenträger zu partitionieren, zu formatieren und bereitzustellen, damit er von Ihrem virtuellen Linux-Computer verwendet werden kann. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux auf Azure](mac-create-ssh-keys.md). Im folgenden Beispiel wird eine Verbindung mit einem virtuellen Computer mit dem öffentlichen DNS-Eintrag von *mypublicdns.westus.cloudapp.azure.com* mit dem Benutzernamen *azureuser* erstellt: 
+Sie benötigen SSH für Ihren virtuellen Computer, um den neuen Datenträger zu partitionieren, zu formatieren und bereitzustellen, damit er von Ihrem virtuellen Linux-Computer verwendet werden kann. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux auf Azure](mac-create-ssh-keys.md). Im folgenden Beispiel wird eine Verbindung mit einem virtuellen Computer mit dem öffentlichen DNS-Eintrag von *mypublicdns.westus.cloudapp.azure.com* mit dem Benutzernamen *azureuser* erstellt: 
 
 ```bash
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
@@ -115,7 +79,7 @@ Hier ist *sdc* der Datenträger, den wir möchten. Partitionieren Sie nun den Da
 sudo fdisk /dev/sdc
 ```
 
-Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
+Verwenden Sie den Befehl `n`, um eine neue Partition hinzuzufügen. In diesem Beispiel haben wir auch `p` als primäre Partition ausgewählt und akzeptieren den Rest der Standardwerte. Die Ausgabe entspricht etwa folgendem Beispiel:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -137,7 +101,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-Erstellen Sie die Partition durch Eingabe von `p` bei der Eingabeaufforderung wie folgt:
+Drucken Sie die Partitionstabelle durch Eingabe von `p`, schreiben Sie dann mit `w` die Tabelle auf den Datenträger, und beenden Sie den Vorgang. Die Ausgabe sollte etwa folgendem Beispiel entsprechen:
 
 ```bash
 Command (m for help): p
@@ -225,7 +189,7 @@ Die Ausgabe sieht in etwa wie im folgenden Beispiel aus:
 sudo vi /etc/fstab
 ```
 
-In diesem Beispiel verwenden wir den UUID-Wert für das Gerät */dev/sdc1*, das in den vorherigen Schritten erstellt wurde, und den Einbindungspunkt */datadrive*. Fügen Sie am Ende der Datei */etc/fstab* die folgende Zeile hinzu:
+In diesem Beispiel verwenden Sie den UUID-Wert für das Gerät */dev/sdc1*, das in den vorherigen Schritten erstellt wurde, und den Einbindungspunkt */datadrive*. Fügen Sie am Ende der Datei */etc/fstab* die folgende Zeile hinzu:
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
@@ -266,7 +230,6 @@ Es gibt zwei Methoden, TRIM-Unterstützung auf Ihrem virtuellen Linux-Computer z
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Beachten Sie, dass der neue Datenträger bei einem Neustart nicht für den virtuellen Computer zur Verfügung steht, sofern Sie diese Informationen nicht in Ihre [fstab-Datei](http://en.wikipedia.org/wiki/Fstab) geschrieben haben.
 * Lesen Sie die Empfehlungen unter [Optimieren virtueller Linux-Computer in Azure](optimization.md) , um sicherzustellen, dass Ihr virtueller Linux-Computer richtig konfiguriert ist.
 * Erweitern Sie die Speicherkapazität durch Hinzufügen zusätzlicher Datenträger, und [konfigurieren Sie RAID](configure-raid.md) für zusätzliche Leistung.
 

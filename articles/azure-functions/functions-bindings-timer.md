@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: tdykstra
 ms.custom: ''
-ms.openlocfilehash: 4da1ed4e9424950c39f3eb255ead2b39094597fd
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: a4895c0c58d1cdb0430b7418ba24dd85157ecdd3
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725444"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308158"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger mit Timer für Azure Functions 
 
@@ -280,6 +280,10 @@ Wenn Sie ein Speicherkonto für mehrere Funktionen-Apps verwenden, stellen Sie s
 ## <a name="retry-behavior"></a>Wiederholungsverhalten
 
 Im Gegensatz zum Warteschlangentrigger führt der Trigger mit Timer nach dem Fehlschlagen einer Funktion keine Wiederholung aus. Wenn eine Funktion fehlerhaft ist, wird sie erst beim nächsten Termin im Zeitplan erneut aufgerufen.
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+Informationen zur Behebung bei Problemen mit dem Zeitgebertrigger finden Sie unter [Investigating and reporting issues with timer triggered functions not firing](https://github.com/Azure/azure-functions-host/wiki/Investigating-and-reporting-issues-with-timer-triggered-functions-not-firing) (Untersuchen und Melden von Problemen beim Auslösen zeitgesteuerter Triggerfunktionen).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

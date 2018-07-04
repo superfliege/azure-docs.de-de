@@ -5,27 +5,22 @@ services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: e756c15d-31fc-45c0-8df4-0bca0da10bb2
 ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 06/05/2018
+ms.date: 06/14/2018
 ms.author: sethm
-ms.openlocfilehash: e6762d988da7d34893852505d8ce0fd30622eaaf
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: e168dcab182f9eb30291b58bdde252ec66d18e8c
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802543"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301800"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus Messaging
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure Service Bus die Leistung beim Austausch von im Broker gespeicherten Nachrichten optimieren. Der erste Teil befasst sich mit den verschiedenen Mechanismen zur Leistungssteigerung. Der zweite Teil bietet eine Anleitung zur Verwendung von Service Bus auf eine Weise, die die beste Leistung in einem bestimmten Szenario ermöglichen kann.
 
-Im Rahmen dieses Themas bezieht sich der Begriff „Client“ auf eine Entität, die auf Service Bus zugreift. Ein Client kann die Rolle eines Absenders oder eines Empfängers annehmen. Der Begriff „Absender“ wird für einen Service Bus-Warteschlangenclient oder für einen Service Bus-Themenclient verwendet, der Nachrichten an eine Service Bus-Warteschlange oder an ein Service Bus-Themenabonnement sendet. Der Begriff „Empfänger“ bezieht sich auf einen Service Bus-Warteschlangenclient oder einen auf einen Service Bus-Abonnementclient, der Nachrichten von einer Service Bus-Warteschlange oder einem Service Bus-Abonnement empfängt.
+Im Rahmen dieses Artikels bezieht sich der Begriff „Client“ auf eine Entität, die auf Service Bus zugreift. Ein Client kann die Rolle eines Absenders oder eines Empfängers annehmen. Der Begriff „Absender“ wird für einen Service Bus-Warteschlangenclient oder für einen Service Bus-Themenclient verwendet, der Nachrichten an eine Service Bus-Warteschlange oder an ein Service Bus-Themenabonnement sendet. Der Begriff „Empfänger“ bezieht sich auf einen Service Bus-Warteschlangenclient oder einen auf einen Service Bus-Abonnementclient, der Nachrichten von einer Service Bus-Warteschlange oder einem Service Bus-Abonnement empfängt.
 
 In diesen Abschnitten werden einige Konzepte erläutert, die Service Bus verwendet, um die Performance zu steigern.
 
@@ -37,7 +32,7 @@ Service Bus ermöglicht Clients das Senden und Empfangen von Nachrichten über e
 2. Service Bus Messaging Protocol (SBMP)
 3. HTTP
 
-AMQP und SBMP sind effizienter, da sie die Verbindung mit Service Bus aufrechterhalten, solange die Messagingfactory vorhanden ist. Außerdem implementiert es die Batchverarbeitung und Vorabrufe. Sofern nicht anders angegeben, wird für alle Inhalte in diesem Thema AMQP oder SBMP verwendet.
+AMQP und SBMP sind effizienter, da sie die Verbindung mit Service Bus aufrechterhalten, solange die Messagingfactory vorhanden ist. Außerdem implementiert es die Batchverarbeitung und Vorabrufe. Sofern nicht anders angegeben, wird für alle Inhalte in diesem Artikel AMQP oder SBMP verwendet.
 
 ## <a name="reusing-factories-and-clients"></a>Wiederverwenden von Factorys und Clients
 
@@ -45,13 +40,13 @@ Service Bus-Clientobjekte wie [QueueClient][QueueClient] oder [MessageSender][Me
 
 ## <a name="concurrent-operations"></a>Parallele Vorgänge
 
-Das Ausführen eines Vorgangs (Senden, Empfangen, Löschen usw.) nimmt einige Zeit in Anspruch. Dieser Zeitraum umfasst die Verarbeitung des Vorgangs durch den Service Bus-Dienst sowie die Latenz der Anforderung und der Antwort. Die Vorgänge müssen parallel ausgeführt werden, um die Anzahl von Vorgängen pro Zeitraum zu erhöhen. Hierzu können Sie wie folgt vorgehen:
+Das Ausführen eines Vorgangs (Senden, Empfangen, Löschen usw.) nimmt einige Zeit in Anspruch. Dieser Zeitraum umfasst die Verarbeitung des Vorgangs durch den Service Bus-Dienst sowie die Latenz der Anforderung und der Antwort. Die Vorgänge müssen parallel ausgeführt werden, um die Anzahl von Vorgängen pro Zeitraum zu erhöhen. 
 
-* **Asynchrone Vorgänge**: Der Client plant Vorgänge durch Ausführen von asynchronen Vorgängen. Die nächste Anforderung wird gestartet, bevor die vorherige Anforderung abgeschlossen ist. Im folgenden Codeausschnitt sehen Sie ein Beispiel für einen asynchronen Sendevorgang:
+Der Client plant gleichzeitige Vorgänge durch Ausführen von asynchronen Vorgängen. Die nächste Anforderung wird gestartet, bevor die vorherige Anforderung abgeschlossen ist. Im folgenden Codeausschnitt sehen Sie ein Beispiel für einen asynchronen Sendevorgang:
   
  ```csharp
-  BrokeredMessage m1 = new BrokeredMessage(body);
-  BrokeredMessage m2 = new BrokeredMessage(body);
+  Message m1 = new BrokeredMessage(body);
+  Message m2 = new BrokeredMessage(body);
   
   Task send1 = queueClient.SendAsync(m1).ContinueWith((t) => 
     {
@@ -65,25 +60,14 @@ Das Ausführen eines Vorgangs (Senden, Empfangen, Löschen usw.) nimmt einige Ze
   Console.WriteLine("All messages sent");
   ```
   
-  Im folgenden Code sehen Sie ein Beispiel für einen asynchronen Empfangsvorgang:
+  Im folgenden Code sehen Sie ein Beispiel für einen asynchronen Empfangsvorgang. Das vollständig Programm finden Sie [hier](https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues):
   
   ```csharp
-  Task receive1 = queueClient.ReceiveAsync().ContinueWith(ProcessReceivedMessage);
-  Task receive2 = queueClient.ReceiveAsync().ContinueWith(ProcessReceivedMessage);
-  
-  Task.WaitAll(receive1, receive2);
-  Console.WriteLine("All messages received");
-  
-  async void ProcessReceivedMessage(Task<BrokeredMessage> t)
-  {
-    BrokeredMessage m = t.Result;
-    Console.WriteLine("{0} received", m.Label);
-    await m.CompleteAsync();
-    Console.WriteLine("{0} complete", m.Label);
-  }
-  ```
+  var receiver = new MessageReceiver(connectionString, queueName, ReceiveMode.PeekLock);
+  var doneReceiving = new TaskCompletionSource<bool>();
 
-* **Mehrere Factorys**: Alle Clients (Absender und Empfänger), die von der gleichen Factory erstellt werden, verwenden die gleiche TCP-Verbindung. Der maximale Nachrichtendurchsatz wird durch die Anzahl der Vorgänge beschränkt, die diese TCP-Verbindung durchlaufen können. Der Durchsatz, der mit einer einzelnen Factory erzielt werden kann, hängt stark von der TCP-Roundtripzeit und der Nachrichtengröße ab. Um bessere Durchsatzraten zu erzielen, sollten Sie mehrere Messagingfactorys verwenden.
+  receiver.RegisterMessageHandler(
+  ```
 
 ## <a name="receive-mode"></a>Empfangsmodus
 
@@ -108,7 +92,7 @@ mfs.NetMessagingTransportSettings.BatchFlushInterval = TimeSpan.FromSeconds(0.05
 MessagingFactory messagingFactory = MessagingFactory.Create(namespaceUri, mfs);
 ```
 
-Die Batchverarbeitung wirkt sich nicht auf die Anzahl der abrechenbaren Messagingvorgänge aus und ist nur für das Service Bus-Clientprotokoll verfügbar. Das HTTP-Protokoll unterstützt keine Batchverarbeitung.
+Die Batchverarbeitung wirkt sich nicht auf die Anzahl der abrechenbaren Messagingvorgänge aus und ist nur für das Service Bus-Clientprotokoll unter Verwendung der [Microsoft.ServiceBus.Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/)-Bibliothek verfügbar. Das HTTP-Protokoll unterstützt keine Batchverarbeitung.
 
 ## <a name="batching-store-access"></a>Batchverarbeitung des Speicherzugriffs
 
@@ -133,9 +117,9 @@ Der Speicherzugriff als Batch wirkt sich nicht auf die Anzahl abrechenbarer Mess
 
 [Vorabrufe](service-bus-prefetch.md) ermöglichen es dem Warteschlangen- oder Abonnementclient, weitere Nachrichten aus dem Dienst zu laden, wenn er einen Empfangsvorgang ausführt. Der Client speichert diese Nachrichten in einem lokalen Cache. Die Größe des Cache wird durch die Eigenschaften [QueueClient.PrefetchCount][QueueClient.PrefetchCount] oder [SubscriptionClient.PrefetchCount][SubscriptionClient.PrefetchCount] bestimmt. Jeder Client, der Vorabrufe ermöglicht, verwaltet seinen eigenen Cache. Ein Cache wird nicht für andere Clients freigegeben. Wenn der Client einen Empfangsvorgang initiiert und sein Cache leer ist, überträgt der Dienst ein Nachrichtenbatch. Die Größe des Batches entspricht der Größe des Caches oder 256 KB, je nachdem, welcher Wert kleiner ist. Wenn der Client einen Empfangsvorgang initiiert und der Cache eine Nachricht enthält, wird die Nachricht aus dem Cache abgerufen.
 
-Wenn eine Nachricht vorab abgerufen wird, sperrt der Dienst die vorab abgerufene Nachricht. Durch die Sperre kann die vorabgerufene Nachricht nicht von einem anderen Empfänger empfangen werden. Wenn der Empfänger die Nachricht nicht abschließen kann, bevor die Sperre abläuft, wird die Nachricht für andere Empfänger verfügbar gemacht. Die vorab abgerufene Kopie der Nachricht verbleibt im Cache. Der Empfänger, der die abgelaufene Kopie aus dem Cache verarbeitet, empfängt eine Ausnahme, wenn er versucht, diese Nachricht abzuschließen. Standardmäßig läuft die Nachrichtensperre nach 60 Sekunden ab. Dieser Wert kann auf 5 Minuten erhöht werden. Um die Nutzung abgelaufener Nachrichten zu verhindern, sollten die Cachegröße immer kleiner als die Anzahl der Nachrichten sein, die von einem Client innerhalb des Sperrintervalls genutzt werden können.
+Wenn eine Nachricht vorab abgerufen wird, sperrt der Dienst die vorab abgerufene Nachricht. Durch die Sperre kann die vorabgerufene Nachricht nicht von einem anderen Empfänger empfangen werden. Wenn der Empfänger die Nachricht nicht abschließen kann, bevor die Sperre abläuft, wird die Nachricht für andere Empfänger verfügbar gemacht. Die vorab abgerufene Kopie der Nachricht verbleibt im Cache. Der Empfänger, der die abgelaufene Kopie aus dem Cache verarbeitet, empfängt eine Ausnahme, wenn er versucht, diese Nachricht abzuschließen. Standardmäßig läuft die Nachrichtensperrre nach 60 Sekunden ab. Dieser Wert kann auf 5 Minuten erhöht werden. Um die Nutzung abgelaufener Nachrichten zu verhindern, sollten die Cachegröße immer kleiner als die Anzahl der Nachrichten sein, die von einem Client innerhalb des Sperrintervalls genutzt werden können.
 
-Bei Verwendung der Standarddauer für die Sperre (60 Sekunden) hat sich als Wert für [SubscriptionClient.PrefetchCount][SubscriptionClient.PrefetchCount] das 20-Fache der maximalen Verarbeitungsraten aller Empfänger der Factory bewährt. Beispiel: Eine Factory erstellt 10 Empfänger, und jeder Empfänger kann bis zu 10 Nachrichten pro Sekunde verarbeiten. Der Wert für den Vorabruf sollte 20 × 3 × 10 = 600 nicht überschreiten. Standardmäßig ist [QueueClient.PrefetchCount][QueueClient.PrefetchCount] auf 0 festgelegt, was bedeutet, dass keine weiteren Nachrichten vom Dienst abgerufen werden.
+Bei Verwendung der Standarddauer für die Sperre (60 Sekunden) hat sich als Wert für [PrefetchCount][SubscriptionClient.PrefetchCount] das 20-Fache der maximalen Verarbeitungsraten aller Empfänger der Factory bewährt. Beispiel: Eine Factory erstellt 10 Empfänger, und jeder Empfänger kann bis zu 10 Nachrichten pro Sekunde verarbeiten. Der Wert für den Vorabruf sollte 20 × 3 × 10 = 600 nicht überschreiten. Standardmäßig ist [PrefetchCount][QueueClient.PrefetchCount] auf 0 festgelegt, was bedeutet, dass keine weiteren Nachrichten vom Dienst abgerufen werden.
 
 Der Vorabruf von Nachrichten vergrößert den Gesamtdurchsatz für eine Warteschlange oder ein Abonnement, da sich dadurch die Gesamtzahl von Nachrichtenvorgängen bzw. Roundtrips verringert. Das Abrufen der ersten Nachricht dauert jedoch länger (aufgrund der gestiegenen Nachrichtengröße). Das Empfangen vorab abgerufener Nachrichten ist schneller, weil diese Nachrichten bereits vom Client heruntergeladen wurden.
 
@@ -158,12 +142,12 @@ Wenn eine Nachricht, die wichtige Informationen enthält, die nicht verloren geh
 > [!NOTE]
 > Expressentitäten unterstützen keine Transaktionen.
 
-## <a name="use-of-partitioned-queues-or-topics"></a>Verwenden partitionierter Warteschlangen oder Themen
+## <a name="partitioned-queues-or-topics"></a>Partitionierte Warteschlangen oder Themen
 
 Intern verwendet Service Bus den gleichen Knoten und den gleichen Messagingspeicher, um sämtliche Nachrichten für eine Messagingentität (Warteschlange oder Thema) zu verarbeiten und zu speichern. [Partitionierte Warteschlangen oder Themen](service-bus-partitioning.md) sind hingegen auf mehrere Knoten und Messagingspeicher verteilt. Sie bieten einen höheren Durchsatz als reguläre Warteschlangen und Themen und zeichnen sich zudem durch eine höhere Verfügbarkeit aus. Um eine partitionierte Entität zu erstellen, legen Sie die [EnablePartitioning][EnablePartitioning]-Eigenschaft auf **TRUE** fest, wie im folgenden Beispiel gezeigt. Weitere Informationen zu partitionierten Entitäten finden Sie unter [Partitionierte Messagingentitäten][Partitioned messaging entities].
 
 > [!NOTE]
-> Partitionierte Entitäten werden in der [Premium-SKU](service-bus-premium-messaging.md) nicht mehr unterstützt. 
+> Partitionierte Entitäten werden in der [Premium-SKU](service-bus-premium-messaging.md) nicht unterstützt. 
 
 ```csharp
 // Create partitioned queue.
@@ -172,7 +156,7 @@ qd.EnablePartitioning = true;
 namespaceManager.CreateQueue(qd);
 ```
 
-## <a name="use-of-multiple-queues"></a>Verwenden mehrerer Warteschlangen
+## <a name="multiple-queues"></a>Mehrere Warteschlangen
 
 Falls keine partitionierten Warteschlangen oder Themen verwendet werden können oder die erwartete Last nicht von einer partitionierten Warteschlange oder von einem partitionierten Thema bewältigt werden kann, müssen mehrere Messagingentitäten verwendet werden. Wenn Sie mehrere Entitäten verwenden, erstellen Sie einen dedizierten Client für jede Entität, statt den gleichen Client für alle Entitäten zu nutzen.
 
@@ -240,7 +224,7 @@ Gehen Sie wie folgt vor, um den Durchsatz zu maximieren:
 * Wenn sich jeder Empfänger in einem anderen Prozess befindet, verwenden Sie nur eine Factory pro Prozess.
 * Empfänger können synchrone oder asynchrone Vorgänge verwenden. Bei der mittleren Empfangsrate eines einzelnen Empfängers wirkt sich die clientseitige Batchverarbeitung einer Anforderung zum Abschließen nicht auf den Empfängerdurchsatz aus.
 * Lassen Sie den Speicherzugriff als Batch aktiviert. Dies verringert die Gesamtlast der Entität. Es verringert zudem die Gesamtrate, mit der Nachrichten in die Warteschlange oder in das Thema geschrieben werden können.
-* Legen Sie den Wert für den Vorabruf auf einen kleinen Wert fest (z.B. "PrefetchCount" = 10). Dadurch wird verhindert, dass Empfänger über freie Kapazitäten verfügen, während andere Empfänger eine große Anzahl von Nachrichten zwischengespeichert haben.
+* Legen Sie den Wert für den Vorabruf auf einen kleinen Wert fest (z. B. "PrefetchCount" = 10). Dadurch wird verhindert, dass Empfänger über freie Kapazitäten verfügen, während andere Empfänger eine große Anzahl von Nachrichten zwischengespeichert haben.
 * Verwenden Sie eine partitionierte Warteschlange für verbesserte Leistung und Verfügbarkeit.
 
 ### <a name="topic-with-a-small-number-of-subscriptions"></a>Thema mit einer geringen Anzahl von Abonnements

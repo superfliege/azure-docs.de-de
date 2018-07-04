@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: e0a04d44edf39c90533c59d67ea2dfce69f092cd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3d4b93a604170cb3b8396562a15483923330f467
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33771091"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754294"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Anleitung mit den ersten Schritten für Azure-Entwickler
 
@@ -205,7 +205,7 @@ Einer der Vorteile der Verwendung von Azure ist, dass Sie Ihre Anwendungen in ve
 
 Es ist zwar unwahrscheinlich aber nicht unmöglich, dass ein gesamtes Rechenzentrum aufgrund eines Ereignisses, z.B. eine Naturkatastrophe oder ein Ausfall des Internets, offline geschaltet wird. Es wird empfohlen, wichtige Geschäftsanwendungen in mehreren Rechenzentren zu hosten, um maximale Verfügbarkeit zu gewährleisten. Die Verwendung von mehreren Regionen kann zudem die Wartezeit für globale Benutzer verringern und bietet zusätzliche Flexibilität beim Aktualisieren von Anwendungen.
 
-Einige Dienste, wie VM und App Services, verwenden [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md), um die Unterstützung in mehreren Regionen mit Failover zwischen Regionen zu ermöglichen, um Unternehmensanwendungen mit hoher Verfügbarkeit zu unterstützen. Ein Beispiel finden Sie unter [Azure-Referenzarchitektur: Webanwendung mit Hochverfügbarkeit](../../guidance/guidance-web-apps-multi-region.md).
+Einige Dienste, wie VM und App Services, verwenden [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md), um die Unterstützung in mehreren Regionen mit Failover zwischen Regionen zu ermöglichen, um Unternehmensanwendungen mit hoher Verfügbarkeit zu unterstützen. Ein Beispiel finden Sie unter [Azure-Referenzarchitektur: Ausführen einer Webanwendung in mehreren Regionen](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region).
 
 >**Verwendung**: Wenn Sie über Unternehmensanwendungen und Anwendungen mit hoher Verfügbarkeit verfügen, die vom Failover und der Replikation profitieren.
 
@@ -263,9 +263,9 @@ Als Entwickler tauchen wir gern direkt in den Code ein und möchten so schnell w
 
 Um ein Azure-Abonnement erstellen zu können oder damit arbeiten zu können, müssen Sie über ein Azure-Konto verfügen. Ein Azure-Konto ist einfach eine Identität in Azure AD oder in einem Verzeichnis wie einer Geschäfts- oder Schulorganisation, die von Azure AD als vertrauenswürdig angesehen wird. Wenn Sie nicht einer solchen Organisation angehören, können Sie immer ein Abonnement erstellen, indem Sie Ihr Microsoft-Konto verwenden, das von Azure AD als vertrauenswürdig angesehen wird. Weitere Informationen zum Integrieren von lokalem Windows Server Active Directory in Azure AD finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](../../active-directory/active-directory-aadconnect.md).
 
-Jedes Azure-Abonnement weist eine Vertrauensstellung mit einer Azure AD-Instanz auf. Dies bedeutet, dass es diesem Verzeichnis bei der Authentifizierung von Benutzern, Diensten und Geräten vertraut. Mehrere Abonnements können dem gleichen Verzeichnis vertrauen, ein Abonnement vertraut jedoch nur einem Verzeichnis. Weitere Information finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](../../active-directory/active-directory-how-subscriptions-associated-directory.md).
+Jedes Azure-Abonnement weist eine Vertrauensstellung mit einer Azure AD-Instanz auf. Dies bedeutet, dass es diesem Verzeichnis bei der Authentifizierung von Benutzern, Diensten und Geräten vertraut. Mehrere Abonnements können dem gleichen Verzeichnis vertrauen, ein Abonnement vertraut jedoch nur einem Verzeichnis. Weitere Information finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-Zusätzlich zum Definieren individueller Azure-Kontoidentitäten, auch *Benutzer* genannt, können Sie in Azure AD auch *Gruppen* definieren. Das Erstellen von Benutzergruppen ist eine gute Methode zum Verwalten des Zugriffs auf Ressourcen in einem Abonnement mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC). Informationen zum Erstellen von Gruppen finden Sie unter [Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](../../active-directory/active-directory-groups-create-azure-portal.md). Sie können Gruppen auch [mithilfe von PowerShell](../../active-directory/active-directory-accessmanagement-groups-settings-v2-cmdlets.md) erstellen und verwalten.
+Zusätzlich zum Definieren individueller Azure-Kontoidentitäten, auch *Benutzer* genannt, können Sie in Azure AD auch *Gruppen* definieren. Das Erstellen von Benutzergruppen ist eine gute Methode zum Verwalten des Zugriffs auf Ressourcen in einem Abonnement mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC). Informationen zum Erstellen von Gruppen finden Sie unter [Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Sie können Gruppen auch [mithilfe von PowerShell](../../active-directory/active-directory-accessmanagement-groups-settings-v2-cmdlets.md) erstellen und verwalten.
 
 ### <a name="manage-your-subscriptions"></a>Verwalten Ihrer Abonnements
 

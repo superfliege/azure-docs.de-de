@@ -1,5 +1,5 @@
 ---
-title: Sichern von Azure-Stack-Dateien und -Anwendungen
+title: Sichern von Dateien in Azure Stack-VMs
 description: Verwenden Sie Azure Backup, um Azure Stack-Dateien und -Anwendungen in Ihrer Azure Stack-Umgebung zu sichern und wiederherzustellen.
 services: backup
 author: adiganmsft
@@ -8,26 +8,26 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/5/2018
 ms.author: adigan
-ms.openlocfilehash: 7baaa29d205c09daaeeebf44a4bad338913dcad9
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 2fb3bad56de781dd81d4c5f82b734c9420c75dee
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248859"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751703"
 ---
-# <a name="back-up-files-and-applications-on-azure-stack"></a>Sichern von Dateien und Anwendungen in Azure Stack
-Sie können Azure Backup verwenden, um Dateien und Anwendungen in Azure Stack zu schützen (oder zu sichern). Installieren Sie Microsoft Azure Backup Server als virtuellen Computer, der unter Azure Stack ausgeführt wird, um Dateien und Anwendungen zu sichern. Sie können alle Anwendungen schützen, die auf einem beliebigen Azure Stack-Server in demselben Netzwerk ausgeführt werden. Nachdem Sie Azure Backup Server installiert haben, fügen Sie Azure-Datenträger hinzu, um den lokalen Speicher zu vergrößern, der für die kurzfristige Sicherung von Daten verfügbar ist. Azure Backup Server nutzt Azure-Speicher für die langfristige Aufbewahrung.
+# <a name="back-up-files-on-azure-stack"></a>Sichern von Dateien in Azure Stack
+Sie können Azure Backup verwenden, um Dateien und Anwendungen in Azure Stack zu schützen (oder zu sichern). Installieren Sie Microsoft Azure Backup Server als virtuellen Computer, der unter Azure Stack ausgeführt wird, um Dateien und Anwendungen zu sichern. Sie können die Dateien schützen, die auf einem beliebigen Azure Stack-Server in demselben virtuellen Netzwerk ausgeführt werden. Nachdem Sie Azure Backup Server installiert haben, fügen Sie Azure-Datenträger hinzu, um den lokalen Speicher zu vergrößern, der für die kurzfristige Sicherung von Daten verfügbar ist. Azure Backup Server nutzt Azure-Speicher für die langfristige Aufbewahrung.
 
 > [!NOTE]
 > Azure Backup Server und System Center Data Protection Manager (DPM) sind zwar ähnlich, aber DPM wird für die Verwendung mit Azure Stack nicht unterstützt.
 >
 
-In diesem Artikel wird nicht die Installation von Azure Backup Server in der Azure Stack-Umgebung behandelt. Informationen zur Installation von Azure Backup Server in Azure Stack finden Sie im Artikel [Vorbereiten der Sicherung von Workloads per Azure Backup Server](backup-mabs-install-azure-stack.md).
+In diesem Artikel wird nicht die Installation von Azure Backup Server in der Azure Stack-Umgebung behandelt. Informationen zur Installation von Azure Backup Server in Azure Stack finden Sie im Artikel [Installieren von Azure Backup Server in Azure Stack](backup-mabs-install-azure-stack.md).
 
 
-## <a name="back-up-azure-stack-vm-file-data-to-azure"></a>Sichern von Azure Stack-VM-Dateidaten in Azure
+## <a name="back-up-files-and-folders-in-azure-stack-vms-to-azure"></a>Sichern von Dateien und Ordnern in Azure Stack-VMs in Azure
 
-Um Azure Backup Server zum Schutz virtueller IaaS-Computer zu konfigurieren, öffnen Sie die Azure Backup Server-Konsole. Sie verwenden die Konsole, um Schutzgruppen zu konfigurieren und die Daten auf Ihren virtuellen Computern zu schützen.
+Um Azure Backup Server zum Schutz von Dateien in Azure Stack-VMs zu konfigurieren, öffnen Sie die Azure Backup Server-Konsole. Sie verwenden die Konsole, um Schutzgruppen zu konfigurieren und die Daten auf Ihren virtuellen Computern zu schützen.
 
 1. Klicken Sie in der Azure Backup Server-Konsole auf **Schutz** und dann auf der Symbolleiste auf **Neu**, um den**Assistenten zum Erstellen einer neuen Schutzgruppe zu** öffnen.
 
@@ -47,15 +47,15 @@ Um Azure Backup Server zum Schutz virtueller IaaS-Computer zu konfigurieren, öf
 
 3. Klicken Sie auf dem Bildschirm **Gruppenmitglieder auswählen** auf **+**, um die Liste mit Unterelementen zu erweitern. Aktivieren Sie das Kontrollkästchen für alle Elemente, die Sie schützen möchten. Nachdem alle Elemente ausgewählt wurden, klicken Sie auf **Weiter**.
 
-    ![Der Assistent zum Erstellen einer neuen Schutzgruppe wird geöffnet](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
+    ![Der Assistent zum Erstellen einer neuen Schutzgruppe wird geöffnet.](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
-    Microsoft empfiehlt, alle virtuellen Computer, für die eine gemeinsame Schutzrichtlinie gilt, in einer Schutzgruppe zusammenzufassen. Ausführliche Informationen zur Planung und Bereitstellung von Schutzgruppen finden Sie im System Center DPM-Artikel [Bereitstellen von Schutzgruppen](https://docs.microsoft.com/en-us/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801).
+    Microsoft empfiehlt, alle Daten, für die eine gemeinsame Schutzrichtlinie gilt, in einer Schutzgruppe zusammenzufassen. Ausführliche Informationen zur Planung und Bereitstellung von Schutzgruppen finden Sie im System Center DPM-Artikel [Bereitstellen von Schutzgruppen](https://docs.microsoft.com/en-us/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801).
 
 4. Geben Sie auf dem Bildschirm **Datenschutzmethode auswählen** einen Namen für die Schutzgruppe ein. Aktivieren Sie das Kontrollkästchen **Ich möchte kurzfristigen Schutz per:** und **Ich möchte Onlineschutz**. Klicken Sie auf **Weiter**.
 
-    ![Der Assistent zum Erstellen einer neuen Schutzgruppe wird geöffnet](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
+    ![Der Assistent zum Erstellen einer neuen Schutzgruppe wird geöffnet.](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
-    Um **Ich möchte Onlineschutz** auszuwählen, müssen Sie zuerst **Ich möchte kurzfristigen Schutz per: Datenträger** auswählen. Azure Backup Server kann nicht mittels Bandtechnologie für Schutz sorgen, weshalb ein Datenträger die einzige Wahl für kurzfristigen Schutz ist.
+    Um **Ich möchte Onlineschutz** auszuwählen, müssen Sie zuerst **Ich möchte kurzfristigen Schutz per: Datenträger** auswählen. Azure Backup Server sorgt nicht mittels Bandtechnologie für Schutz, weshalb ein Datenträger die einzige Wahl für kurzfristigen Schutz ist.
 
 5. Wählen Sie auf dem Bildschirm **Kurzfristige Ziele angeben**, wie lange die auf dem Datenträger gespeicherten Wiederherstellungspunkte beibehalten und wann inkrementelle Sicherungen gespeichert werden sollen. Klicken Sie auf **Weiter**.
 
@@ -73,7 +73,7 @@ Um Azure Backup Server zum Schutz virtueller IaaS-Computer zu konfigurieren, öf
 
     **Gesamtdatengröße** ist die Größe der Daten, die Sie sichern möchten. **Bereitzustellender Speicherplatz** für Azure Backup Server ist der für die Schutzgruppe empfohlene Speicherplatz. Azure Backup Server wählt auf Grundlage der Einstellungen das ideale Sicherungsvolume. Sie können jedoch in „Details zur Datenträgerzuordnung“ das gewählte Sicherungsvolume ändern. Wählen Sie für die Workloads im Dropdownmenü den bevorzugten Speicher aus. Durch Ihre Änderungen verändern sich im Bereich „Verfügbarer Speicherplatz“ die Werte für „Gesamtspeicher“ und „Freier Speicher“. Nicht ausreichend bereitgestellter Speicherplatz ist die Menge an Speicher, die laut Vorschlag von Azure Backup Server zum Sicherstellen künftiger reibungsloser Sicherungen dem Volume hinzugefügt werden sollte.
 
-7. Wählen Sie unter **Replikaterstellungsmethode auswählen** aus, wie die erste vollständige Datenreplikation erfolgen soll. Wenn Sie sich für die Replikation über das Netzwerk entscheiden, empfiehlt Azure, hierfür eine Nebenzeit auszuwählen. Ziehen Sie bei großen Datenmengen oder nicht optimalen Netzwerkbedingungen die Offlinereplikation der Daten mit Wechselmedien in Betracht.
+7. Wählen Sie unter **Replikaterstellungsmethode auswählen** aus, wie die erste vollständige Datenreplikation erfolgen soll. Wenn Sie sich für die Replikation über das Netzwerk entscheiden, empfiehlt Azure, hierfür eine Nebenzeit auszuwählen. Ziehen Sie bei großen Datenmengen oder nicht optimalen Netzwerkbedingungen die Replikation der Daten mit Wechselmedien in Betracht.
 
 8. Legen Sie unter **Konsistenzprüfungsoptionen auswählen** fest, wie Konsistenzprüfungen automatisiert werden sollen. Aktivieren Sie für Konsistenzprüfungen die Ausführung nur bei inkonsistenter Datenreplikation oder nach einem Zeitplan. Wenn Sie keine automatische Konsistenzprüfung konfigurieren möchten, können Sie jederzeit eine manuelle Überprüfung wie folgt ausführen:
     * Klicken Sie im Bereich **Schutz** der Azure Backup Server-Konsole mit der rechten Maustaste auf die Schutzgruppe, und wählen Sie **Konsistenzprüfung ausführen** aus.
@@ -87,8 +87,6 @@ Um Azure Backup Server zum Schutz virtueller IaaS-Computer zu konfigurieren, öf
 11. Wählen Sie auf der Seite **Onlineaufbewahrungsrichtlinie angeben** aus, wie die Wiederherstellungspunkte aus den täglichen, wöchentlichen, monatlichen und jährlichen Sicherungen in Azure aufbewahrt werden.
 
 12. Geben Sie auf der Seite **Onlinereplikation wählen** an, wie die erste vollständige Replikation der Daten erfolgt. 
-
-    Sie können eine Replikation über das Netzwerk wählen oder eine Offlinesicherung (sog. Offlineseeding) durchführen. Die Offlinesicherung erfolgt mithilfe der [Importfunktion von Azure](./backup-azure-backup-import-export.md).
 
 13. Überprüfen Sie unter **Zusammenfassung** Ihre Einstellungen. Wenn Sie auf **Gruppe erstellen** klicken, erfolgt die erstmalige Datenreplikation. Nach Abschluss der Datenreplikation wird der Status der Schutzgruppe auf der Seite **Status** als **OK** angezeigt. Der erstmalige Sicherungsauftrag erfolgt entsprechend den Einstellungen der Schutzgruppe.
 
@@ -116,7 +114,6 @@ Verwenden Sie die Azure Backup Server-Konsole, um Daten auf dem virtuellen Compu
     * Wählen Sie für **Wiederherstellungsverhalten für vorhandene Versionen** entweder **Kopie erstellen**, **Überspringen** oder **Überschreiben** aus. „Überschreiben“ ist nur für das Wiederherstellen am ursprünglichen Speicherort verfügbar.
     * Wählen Sie für **Sicherheit wiederherstellen** entweder **Sicherheitseinstellungen des Zielcomputers anwenden** oder **Sicherheitseinstellungen der Wiederherstellungspunktversion anwenden**.
     * Klicken Sie für **Netzwerk-Bandbreiteneinschränkung** auf **Ändern**, um die Netzwerk-Bandbreiteneinschränkung zu aktivieren.
-    * Wählen Sie **SAN-basierte Wiederherstellung mithilfe von Hardwaresnapshots aktivieren** aus, um SAN-basierte Hardwaresnapshots für eine schnellere Wiederherstellung zu verwenden. Diese Option gilt nur dann, wenn beim verwendeten Speichernetzwerk (SAN) die Hardwaresnapshot-Funktionalität aktiviert ist. Um den Wiederherstellungspunkt beschreibbar zu machen, muss das SAN einen Klon erstellen und teilen können. Die geschützte VM und Azure Backup Server müssen mit demselben SAN verbunden sein.
     * **Benachrichtigung**: Klicken Sie auf **Eine E-Mail senden, wenn diese Wiederherstellung abgeschlossen ist**, und geben Sie dann die Empfänger an, die die Benachrichtigung erhalten sollen. Trennen Sie die E-Mail-Adressen durch Kommas.
     * Klicken Sie auf **Weiter**, nachdem Sie Ihre Auswahl getroffen haben.
 
@@ -132,16 +129,13 @@ Wenn Sie Modern Backup Storage(MBS) verwenden, wird die Wiederherstellung durch 
 
 2. Klicken Sie im Menü **Eigenschaften** auf **Vorherige Versionen**, und wählen Sie die Version, die Sie wiederherstellen möchten.
 
-
-
-## <a name="register-azure-backup-server-with-a-vault"></a>Registrieren von Azure Backup Server bei einem Tresor
-Die Schritte hierfür sind wie folgt:
-
+## <a name="view-azure-backup-server-with-a-vault"></a>Anzeigen von Azure Backup Server mit einem Tresor
+Mit folgenden Schritten können Sie Azure Backup Server-Entitäten im Azure-Portal anzeigen:
 1. Recovery Services-Tresor öffnen
 2. Auf „Sicherungsinfrastruktur“ klicken
 3. Sicherungsverwaltungsserver anzeigen
 
 ## <a name="see-also"></a>Weitere Informationen
 Informationen zur Verwendung von Azure Backup Server zum Schützen anderer Workloads finden Sie in einem der folgenden Artikel:
-- [Sichern einer SharePoint-Farm](backup-azure-backup-sharepoint-mabs.md)
-- [Sichern einer SQL Server-Instanz](backup-azure-sql-mabs.md)
+- [Sichern einer SharePoint-Farm](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sharepoint-azure-stack)
+- [Sichern einer SQL Server-Instanz](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sql-azure-stack)

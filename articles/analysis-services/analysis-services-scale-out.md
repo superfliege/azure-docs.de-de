@@ -3,16 +3,17 @@ title: Horizontales Hochskalieren von Azure Analysis Services | Microsoft-Dokume
 description: Replizieren von Azure Analysis Services-Servern mittels horizontalem Hochskalieren
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/16/2018
+ms.date: 05/24/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ee9210953306fbe317e9ed63c02fb90452ffbd15
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 5d1d55a1cf29d6dc3574099cd468c42ccfc72f5b
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34597126"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Horizontales Hochskalieren von Azure Analysis Services
 
@@ -33,6 +34,22 @@ Nach Abschluss von Verarbeitungsvorgängen ist eine Synchronisierung zwischen de
 
 > [!NOTE]
 > Durch horizontales Hochskalieren erhöht sich nicht die Menge an verfügbarem Arbeitsspeicher für Ihren Server. Zur Erhöhung des Arbeitsspeichers müssen Sie Ihren Plan upgraden.
+
+## <a name="region-limits"></a>Regionale Einschränkungen
+
+Die Anzahl der von Ihnen konfigurierbaren Abfragereplikate ist durch die Region, in der sich Ihr Server befindet, eingeschränkt. Es gelten die folgenden Einschränkungen:
+
+|Region  |Maximale Anzahl von Replikaten  |
+|---------|---------|
+|USA (Ost) 2    |    7     |
+|USA, Westen-Mitte     |    7     |
+|Europa, Westen     |    7     |
+|USA (Westen)     |     7    |
+|USA (Mitte)     |     3    |
+|Asien, Südosten    |     3    |
+|Alle anderen Regionen  |   1    |
+
+
 
 ## <a name="monitor-qpu-usage"></a>Überwachen der QPU-Nutzung
 

@@ -8,21 +8,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/03/2018
+ms.date: 06/21/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d724de8d5252318b37ae539ba2513faaf2313a76
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 76308bbb06d6bf1cdc9147258f7c26babae371a9
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36267872"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750484"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Anpassen des Setups für Azure-SSIS Integration Runtime
 
-Mit der Schnittstelle für das benutzerdefinierte Setup von Azure-SSIS Integration Runtime (IR) können Sie während der Bereitstellung oder Neukonfiguration von Azure-SSIS IR eigene Setupschritte hinzufügen. Durch benutzerdefiniertes Setup können Sie die Standardkonfiguration oder -umgebung für den Betrieb ändern (z. B. zusätzliche Windows-Dienste starten). Sie können aber auch für jeden Knoten von Azure-SSIS IR zusätzliche Komponenten (z. B. Assemblys, Treiber oder Erweiterungen) installieren.
+Mit der Schnittstelle für das benutzerdefinierte Setup von Azure-SSIS Integration Runtime (IR) können Sie während der Bereitstellung oder Neukonfiguration von Azure-SSIS IR eigene Setupschritte hinzufügen. Durch benutzerdefiniertes Setup können Sie die Standardkonfiguration oder -umgebung für den Betrieb ändern (z.B. zusätzliche Windows-Dienste starten oder Anmeldeinformationen für den Zugriff auf Dateifreigaben beibehalten). Sie können aber auch für jeden Knoten von Azure-SSIS IR zusätzliche Komponenten (z.B. Assemblys, Treiber oder Erweiterungen) installieren.
 
 Zur Konfiguration des benutzerdefinierten Setups müssen Sie ein Skript und die zugehörigen Dateien vorbereiten und diese in einen Blobcontainer in Ihrem Azure Storage-Konto hochladen. Sie müssen einen SAS-URI (Shared Access Signature-Uniform Resource Identifier) für den Container bereitstellen, wenn Sie Azure-SSIS IR bereitstellen oder neu konfigurieren. Anschließend lädt jeder Knoten von Azure-SSIS IR das Skript und die zugehörigen Dateien aus dem Container herunter, und führt das benutzerdefinierte Setup mit erhöhten Rechten aus. Wenn das benutzerdefinierte Setup abgeschlossen ist, lädt jeder Knoten die standardmäßige Ausgabe der Ausführung und andere Protokolle in den Container hoch.
 
@@ -87,7 +87,10 @@ Zum Anpassen von Azure-SSIS IR benötigen Sie Folgendes:
 
        ![Abrufen der Shared Access Signature für den Container](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image6.png)
 
-    7.  Erstellen Sie den SAS-URI für den Container mit einer ausreichend langen Ablaufzeit und mit Lese-, Schreib- und Auflistungsberechtigungen. Den SAS-URI benötigen Sie jedes Mal, wenn für einen Knoten von Azure-SSIS IR ein Reimaging ausgeführt wird, zum Herunterladen und Ausführen Ihres benutzerdefinierten Setupskripts und der zugehörigen Dateien. Schreibberechtigungen sind zum Hochladen der Setupausführungsprotokolle erforderlich.
+    7.  Erstellen Sie den SAS-URI für den Container mit einer ausreichend langen Ablaufzeit und mit Lese-, Schreib- und Auflistungsberechtigungen. Den SAS-URI benötigen Sie jedes Mal, wenn für einen Knoten von Azure-SSIS IR ein Reimaging ausgeführt / er neu gestartet wird, zum Herunterladen und Ausführen Ihres benutzerdefinierten Setupskripts und der zugehörigen Dateien. Schreibberechtigungen sind zum Hochladen der Setupausführungsprotokolle erforderlich.
+
+        > [!IMPORTANT]
+        > Stellen Sie sicher, dass der SAS-URI nicht abläuft und benutzerdefinierte Installationsressourcen während des gesamten Lebenszyklus Ihres Azure-SSIS IR vom Erstellen bis zum Löschen stets verfügbar sind, vor allem, wenn Sie Ihren Azure-SSIS IR während dieses Zeitraums regelmäßig beenden und starten.
 
        ![Generieren der Shared Access Signature für den Container](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image7.png)
 
@@ -124,7 +127,7 @@ Zum Anpassen von Azure-SSIS IR benötigen Sie Folgendes:
 
     c. Wählen Sie den verbundenen Container „Öffentliche Vorschau“ aus, und doppelklicken Sie auf den Ordner `CustomSetupScript`. In diesem Ordner befinden sich die folgenden Elemente:
 
-       1. Ein Ordner `Sample` mit einem benutzerdefinierten Setup zum Installieren eines einfachen Tasks auf jedem Knoten des Azure-SSIS IR. Der Task hat keine Funktion, bleibt aber ein paar Sekunden im Standbymodus. Der Ordner enthält auch den Ordner `gacutil` mit `gacutil.exe`.
+       1. Ein Ordner `Sample` mit einem benutzerdefinierten Setup zum Installieren eines einfachen Tasks auf jedem Knoten des Azure-SSIS IR. Der Task hat keine Funktion, bleibt aber ein paar Sekunden im Standbymodus. Der Ordner enthält auch den Ordner `gacutil` mit `gacutil.exe`. Darüber hinaus enthält `main.cmd` Kommentare zum Beibehalten von Anmeldeinformationen für den Zugriff auf Dateifreigaben.
 
        2. Der Ordner `UserScenarios` mit mehreren benutzerdefinierten Setups für echte Benutzerszenarios.
 
@@ -138,7 +141,7 @@ Zum Anpassen von Azure-SSIS IR benötigen Sie Folgendes:
 
        3. Ein Ordner `EXCEL` mit einem benutzerdefinierten Setup zum Installieren von Open Source-Assemblys (`DocumentFormat.OpenXml.dll`, `ExcelDataReader.DataSet.dll` und `ExcelDataReader.dll`) auf jedem Knoten von Azure-SSIS IR.
 
-       4. Ein Ordner `MSDTC` mit einem benutzerdefinierten Setup zum Ändern der Netz- und Sicherheitskonfigurationen des Microsoft Distributed Transaction Coordinator (MSDTC)-Diensts auf jedem Knoten von Azure-SSIS IR.
+       4. Ein `MSDTC`-Ordner mit einem benutzerdefinierten Setup zum Ändern der Netz- und Sicherheitskonfigurationen des Microsoft Distributed Transaction Coordinator (MSDTC)-Diensts auf jedem Knoten Ihres Azure-SSIS IR. Um sicherzustellen, dass MSDTC gestartet wird, fügen Sie „Execute Process Task“ am Anfang der Ablaufsteuerung in Ihre Pakete ein, um folgenden Befehl auszuführen: `%SystemRoot%\system32\cmd.exe /c powershell -Command "Start-Service MSDTC"`. 
 
        5. Ein Ordner namens `ORACLE ENTERPRISE` mit einem benutzerdefinierten Setupskript (`main.cmd`) und einer Konfigurationsdatei für die unbeaufsichtigte Installation (`client.rsp`) zum Installieren des Oracle OCI-Treibers auf jedem Knoten von Azure-SSIS IR, Enterprise Edition. Bei diesem Setup können Sie Oracle Connection Manager, Quelle und Ziel verwenden. Laden Sie zunächst den aktuellen Oracle-Client – z.B. `winx64_12102_client.zip` – von [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) herunter, und laden Sie ihn anschließend zusammen mit `main.cmd` und `client.rsp` in Ihren Container hoch. Wenn Sie bei der Herstellung einer Verbindung mit Oracle TNS verwenden, müssen Sie auch `tnsnames.ora` herunterladen, bearbeiten und in Ihren Container hochladen, damit die Datei während des Setups in den Oracle-Installationsordner kopiert werden kann.
 

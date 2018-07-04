@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: jeconnoc
 ms.custom: include file
-ms.openlocfilehash: 8b007c4658d3ca168c4c1a86a72a737c75ca33db
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 629cdf3907f45419ecfa5fce59430a163767c8fb
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34371336"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36943265"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plattformgestützte Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
-In diesem Artikel erfahren Sie, wie wir die Migration von IaaS-Ressourcen (Infrastructure-as-a-Service) vom klassischen zum Resource Manager-Bereitstellungsmodell ermöglichen. Informieren Sie sich weiter über [Features und Vorteile von Azure Resource Manager](../articles/azure-resource-manager/resource-group-overview.md). Es wird ausführlich beschrieben, wie Sie mit den beiden in Ihrem Abonnement parallel vorhandenen Bereitstellungsmodellen Verbindungen mit Ressourcen herstellen, indem Sie Standort-zu-Standort-Gateways für virtuelle Netzwerke verwenden.
+Dieser Artikel beschreibt, wie Sie IaaS-Ressourcen (Infrastructure-as-a-Service) vom klassischen Bereitstellungsmodell zum Resource Manager-Bereitstellungsmodell migrieren. Der Artikel enthält zudem Informationen dazu, wie Sie Ressourcen aus den beiden Bereitstellungsmodellen, die in Ihrem Abonnement nebeneinander existieren, mithilfe von Standort-zu-Standort-Gateways miteinander verbinden. Informieren Sie sich weiter über [Features und Vorteile von Azure Resource Manager](../articles/azure-resource-manager/resource-group-overview.md). 
 
 ## <a name="goal-for-migration"></a>Ziel der Migration
 Resource Manager ermöglicht die Bereitstellung komplexer Anwendungen über Vorlagen, konfiguriert virtuelle Computer mit VM-Erweiterungen und bietet Möglichkeiten zur Zugriffsverwaltung und Markierung. Azure Resource Manager umfasst die skalierbare, parallele Bereitstellung für virtuelle Computer in Verfügbarkeitsgruppen. Das neue Bereitstellungsmodell bietet auch die unabhängige Lebenszyklusverwaltung der Bereiche Compute, Netzwerk und Speicher. Zudem liegt ein Schwerpunkt auf der standardmäßigen Sicherstellung der Sicherheit, indem virtuelle Computer in einem virtuellen Netzwerk verwendet werden.
@@ -38,12 +38,12 @@ Bei der Migration werden folgende klassische IaaS-Ressourcen unterstützt:
 * Reservierte IP-Adressen
 
 ## <a name="supported-scopes-of-migration"></a>Unterstützte Migrationsbereiche
-Compute-, Netzwerk- und Speicherressourcen können auf vier Arten migriert werden. Folgende Optionen stehen zur Verfügung:
+Es gibt vier verschiedene Möglichkeiten, Compute-, Netzwerk- und Speicherressourcen zu migrieren:
 
-* Migration virtueller Computer (NICHT in einem virtuellen Netzwerk)
-* Migration virtueller Computer (in einem virtuellen Netzwerk)
-* Migration von Speicherkonten
-* Nicht zugeordnete Ressourcen (Netzwerksicherheitsgruppen, Routingtabellen und reservierte IP-Adressen)
+* [Migration virtueller Computer (NICHT in einem virtuellen Netzwerk)](#migration-of-virtual-machines-not-in-a-virtual-network)
+* [Migration virtueller Computer (in einem virtuellen Netzwerk)](#migration-of-virtual-machines-in-a-virtual-network)
+* [Migration von Speicherkonten](#migration-of-storage-accounts)
+* [Migration von nicht zugewiesenen Ressourcen](#migration-of-unattached-resources)
 
 ### <a name="migration-of-virtual-machines-not-in-a-virtual-network"></a>Migration virtueller Computer (NICHT in einem virtuellen Netzwerk)
 Beim Resource Manager-Bereitstellungsmodell wird die Sicherheit Ihrer Anwendungen standardmäßig erzwungen. Beim Resource Manager-Modell müssen sich alle virtuellen Computer in einem virtuellen Netzwerk befinden. Die Azure-Plattform startet die virtuellen Computer im Rahmen der Migration neu (`Stop`, `Deallocate` und `Start`). Bei den virtuellen Netzwerken, in die die virtuellen Computer migriert werden, haben Sie zwei Möglichkeiten:
@@ -53,7 +53,6 @@ Beim Resource Manager-Bereitstellungsmodell wird die Sicherheit Ihrer Anwendunge
 
 > [!NOTE]
 > In diesem Migrationsbereich sind die Vorgänge auf Verwaltungsebene und Datenebene für einen Zeitraum während der Migration unter Umständen nicht zulässig.
->
 >
 
 ### <a name="migration-of-virtual-machines-in-a-virtual-network"></a>Migration virtueller Computer (in einem virtuellen Netzwerk)
@@ -67,23 +66,25 @@ Die folgenden Konfigurationen werden derzeit nicht unterstützt: Wenn die Unters
 > [!NOTE]
 > In diesem Migrationsbereich ist die Verwaltungsebene für einen Zeitraum während der Migration unter Umständen nicht zulässig. Für bestimmte Konfigurationen kann, wie zuvor beschrieben, eine Downtime der Datenebene auftreten.
 >
->
 
-### <a name="storage-accounts-migration"></a>Migration von Speicherkonten
+### <a name="migration-of-storage-accounts"></a>Migration von Speicherkonten
 Um eine nahtlose Migration zu ermöglichen, können Sie Resource Manager-VMs in einem klassischen Speicherkonto bereitstellen. Mit dieser Funktion können und sollen Compute- und Netzwerkressourcen unabhängig von Speicherkonten migriert werden. Sobald Sie Ihre virtuellen Computer und das virtuelle Netzwerk migrieren, müssen Sie Ihre Speicherkonten migrieren, um den Migrationsprozess abzuschließen.
+
+Wenn Ihrem Speicherkonto weder Datenträger noch VM-Daten zugeordnet sind und das Konto nur Blobs, Dateien, Tabellen und Warteschlangen enthält, dann kann die Migration zu Azure Resource Manager als eigenständige Migration ohne Abhängigkeiten erfolgen.
 
 > [!NOTE]
 > Beim Resource Manager-Bereitstellungsmodell gilt das Konzept von klassischen Images und Datenträgern nicht. Wenn das Speicherkonto migriert wird, sind klassische Images und Datenträger im Resource Manager-Stapel nicht sichtbar, die Sicherungs-VHDs bleiben jedoch im Speicherkonto.
 >
->
 
-### <a name="unattached-resources-network-security-groups-route-tables--reserved-ips"></a>Nicht zugeordnete Ressourcen (Netzwerksicherheitsgruppen, Routingtabellen und reservierte IP-Adressen)
+### <a name="migration-of-unattached-resources"></a>Migration nicht zugeordneter Ressourcen
+Speicherkonten ohne zugeordnete Datenträger oder virtuelle Computer können unabhängig migriert werden.
+
 Netzwerksicherheitsgruppen, Routingtabellen und reservierte IP-Adressen, die keinem virtuellen Computer und keinem virtuellen Netzwerk zugeordnet sind, können unabhängig migriert werden.
 
 <br>
 
 ## <a name="unsupported-features-and-configurations"></a>Nicht unterstützte Features und Konfigurationen
-Derzeit werden einige Features und Konfigurationen nicht unterstützt. In den folgenden Abschnitten wird beschrieben, was wir diesbezüglich empfehlen.
+Einige Features und Konfigurationen werden derzeit nicht unterstützt. In den folgenden Abschnitten werden die Empfehlungen von Microsoft für diese Features und Konfigurationen erläutert.
 
 ### <a name="unsupported-features"></a>Nicht unterstützte Funktionen
 Die folgenden Funktionen werden derzeit nicht unterstützt: Optional können Sie diese Einstellungen entfernen, die virtuellen Computer migrieren und die Einstellungen dann im Resource Manager-Bereitstellungsmodell wieder aktivieren.
@@ -109,13 +110,13 @@ Die folgenden Konfigurationen werden derzeit nicht unterstützt:
 | Compute |Startdiagnose mit Storage Premium |Deaktivieren Sie die Funktion „Startdiagnose“ für die virtuellen Computer, bevor Sie mit der Migration fortfahren. Sobald die Migration abgeschlossen ist, können Sie die Startdiagnose im Resource Manager-Stapel erneut aktivieren. Darüber hinaus sollten für Screenshots und serielle Protokolle verwendete Blobs gelöscht werden, damit diese Blobs nicht mehr berechnet werden. |
 | Compute | Clouddienste, die Web-/Workerrollen enthalten | Dies wird derzeit nicht unterstützt. |
 | Compute | Clouddienste mit mehreren Verfügbarkeitsgruppen. |Dies wird derzeit nicht unterstützt. Verschieben Sie die virtuellen Computer vor der Migration in dieselbe Verfügbarkeitsgruppe. |
-| Compute | Virtueller Computer mit Azure Security Center-Erweiterung | Azure Security Center installiert die Erweiterungen automatisch auf Ihren virtuellen Computern, um deren Sicherheit zu überwachen und Warnungen auszulösen. Diese Erweiterungen werden in der Regel automatisch installiert, wenn die Azure Security Center-Richtlinie für das Abonnement aktiviert ist. Um die virtuellen Computer zu migrieren, deaktivieren Sie die Security Center-Richtlinie in dem Abonnement, mit dem die Security Center-Überwachungserweiterung von den virtuellen Computern entfernt wird. |
+| Compute | Virtueller Computer mit Azure Security Center-Erweiterung | Azure Security Center installiert die Erweiterungen automatisch auf Ihren virtuellen Computern, um deren Sicherheit zu überwachen und Warnungen auszulösen. Diese Erweiterungen werden in der Regel automatisch installiert, wenn die Azure Security Center-Richtlinie für das Abonnement aktiviert ist. Um die virtuellen Computer zu migrieren, deaktivieren Sie die Security Center-Richtlinie in dem Abonnement, in dem die Security Center-Überwachungserweiterung von den virtuellen Computern entfernt wird. |
 | Compute | Virtueller Computer mit Sicherungs- oder Momentaufnahmeerweiterung | Diese Erweiterungen werden auf einem virtuellen Computer installiert, der mit dem Azure Backup-Dienst konfigurierten wurde. Auch wenn die Migration dieser virtuellen Computer nicht unterstützt wird, befolgen Sie [diese Anleitung](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#vault), um Sicherungen beizubehalten, die vor der Migration ausgeführt wurden.  |
 | Netzwerk |Virtuelle Netzwerke, die virtuelle Computer und Web-/Workerrollen enthalten |Dies wird derzeit nicht unterstützt. Verschieben Sie die Web-/Workerrollen vor der Migration in ein eigenes virtuelles Netzwerk. Nach der Migration des klassischen virtuellen Netzwerks kann ein Peering des migrierten virtuellen Azure Resource Manager-Netzwerks mit dem klassischen virtuellen Netzwerk eingerichtet werden, um eine ähnliche Konfiguration wie zuvor zu erhalten.|
-| Netzwerk | Klassische ExpressRoute-Verbindungen |Dies wird derzeit nicht unterstützt. Diese Verbindungen müssen vor dem Beginn der IaaS-Migration zu Azure Resource Manager migriert werden. Weitere Informationen dazu finden Sie unter [Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell](../articles/expressroute/expressroute-move.md).|
+| Netzwerk | Klassische ExpressRoute-Verbindungen |Dies wird derzeit nicht unterstützt. Diese Verbindungen müssen vor dem Beginn der IaaS-Migration zu Azure Resource Manager migriert werden. Weitere Informationen finden Sie unter [Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell](../articles/expressroute/expressroute-move.md).|
 | Azure App Service |Virtuelle Netzwerke, die App Service-Umgebungen enthalten |Dies wird derzeit nicht unterstützt. |
 | Azure HDInsight |Virtuelle Netzwerke, die HDInsight-Dienste enthalten |Dies wird derzeit nicht unterstützt. |
 | Microsoft Dynamics Lifecycle Services |Virtuelle Netzwerke, die virtuelle Computer enthalten, die von Dynamics Lifecycle Services verwaltet werden |Dies wird derzeit nicht unterstützt. |
 | Azure AD Domain Services |Virtuelle Netzwerke, die Azure AD Domain Services enthalten |Dies wird derzeit nicht unterstützt. |
 | Azure RemoteApp |Virtuelle Netzwerke, die Azure RemoteApp-Bereitstellungen enthalten |Dies wird derzeit nicht unterstützt. |
-| Azure API Management |Virtuelle Netzwerke, die Azure API Management-Bereitstellungen enthalten |Dies wird derzeit nicht unterstützt. Um das IaaS-VNET zu migrieren, ändern Sie das VNET der API Management-Bereitstellung (hierfür fällt keine Ausfallzeit an). |
+| Azure API Management |Virtuelle Netzwerke, die Azure API Management-Bereitstellungen enthalten |Dies wird derzeit nicht unterstützt. Um das IaaS-VNET zu migrieren, ändern Sie das VNET der API Management-Bereitstellung – hierbei treten keine Ausfallzeiten auf. |

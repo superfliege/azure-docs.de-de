@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: d81f7889122bcf887676496a056df2148cdff6e9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 35f8937ddef54d407a6e3c83566225ca8ede8bd9
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31593711"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960126"
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>Analysieren von Twitter-Daten mit Hive in HDInsight
 Soziale Netzwerke sind einer der Hauptfaktoren für die Akzeptanz von Big Data. Öffentliche APIs von Websites wie Twitter sind eine nützliche Datenquelle für Analyse und Verständnis beliebter Trends.
@@ -68,7 +68,7 @@ In diesem Tutorial verwenden Sie die [Twitter-Streaming-APIs][twitter-streaming-
 > [!NOTE]
 > Eine Datei mit 10.000 Tweets und die Hive-Skriptdatei (siehe nächster Abschnitt) wurden in einen öffentlichen Blobcontainer hochgeladen. Wenn Sie die hochgeladenen Dateien verwenden möchten, können Sie diesen Abschnitt überspringen.
 
-[Tweets-Daten](https://dev.twitter.com/docs/platform-objects/tweets) werden im JSON-Format (JavaScript Object Notation) in einer komplex verschachtelten Struktur gespeichert. Anstatt viele Codezeilen in einer herkömmlichen Programmiersprache zu schreiben, können Sie diese verschachtelte Struktur in eine Hive-Tabelle transformieren, die anschließend mit einer SQL-ähnlichen Sprache (Structured Query Language) namens HiveQL abgefragt werden kann.
+Tweets-Daten werden im JSON-Format (JavaScript Object Notation) in einer komplex verschachtelten Struktur gespeichert. Anstatt viele Codezeilen in einer herkömmlichen Programmiersprache zu schreiben, können Sie diese verschachtelte Struktur in eine Hive-Tabelle transformieren, die anschließend mit einer SQL-ähnlichen Sprache (Structured Query Language) namens HiveQL abgefragt werden kann.
 
 Twitter ermöglicht über OAuth den autorisierten Zugriff auf seine API. OAuth ist ein Authentifizierungsprotokoll, mit dem Benutzer es Anwendungen gestatten können, in ihrem Namen zu handeln, ohne ihr Kennwort weitergeben zu müssen. Weitere Informationen finden Sie unter [oauth.net](http://oauth.net/) oder im ausgezeichneten [Beginner's Guide to OAuth](http://hueniverse.com/oauth/) (OAuth-Einführungshandbuch) von Hueniverse.
 

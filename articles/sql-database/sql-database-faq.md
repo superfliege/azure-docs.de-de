@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 06/20/2018
 ms.author: carlrab
-ms.openlocfilehash: 9bb79a2054a0e51ce435f51a52f964062427cea4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2aff7d98fde50c89e637572437a7c572911bce76
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647995"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309128"
 ---
 # <a name="sql-database-faq"></a>SQL-Datenbank – Häufig gestellte Fragen
 
@@ -24,9 +24,9 @@ Die aktuelle Version von SQL-Datenbank ist V12. Version V11 wurde eingestellt.
 ## <a name="what-is-the-sla-for-sql-database"></a>Wie lautet die Vereinbarung zum Servicelevel (SLA) für SQL-Datenbank?
 Wir garantieren für die Konnektivität zwischen Ihrer Microsoft Azure SQL-Datenbank und unserem Internetgateway unabhängig von Ihrem Diensttarif eine Betriebszeit von mindestens 99,99%. Weitere Informationen finden Sie unter [SLA](http://azure.microsoft.com/support/legal/sla/).
 
-## <a name="whatis-the-new-vcore-based-purchasing-model-preview-for-azure-sql-database"></a>Was ist das neue V-Kern-basierte Kaufmodell (Vorschau) für Azure SQL-Datenbank?
+## <a name="what-is-the-new-vcore-based-purchasing-model-preview-for-azure-sql-database"></a>Was ist das neue V-Kern-basierte Kaufmodell (Vorschau) für Azure SQL-Datenbank?
 
-Das neue Kaufmodell gilt zusätzlich zum vorhandenen DTU-basierten Modell. Das V-Kern-basierte Modell soll Kunden Flexibilität, Kontrolle, Transparenz und eine einfache Möglichkeit zum Übertragen der lokalen Workloadanforderungen in die Cloud bieten. Außerdem können Kunden die Compute- und Speicherressourcen basierend auf ihren jeweiligen Workloadanforderungen skalieren. Bei den Optionen des V-Kern-Modells für Einzeldatenbanken und Pools für elastische Datenbanken können mit dem [Azure-Hybridnutzungsvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) ebenfalls Einsparungen von bis zu 30 Prozent erzielt werden. Weitere Informationen finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [V-Kern-basiertes Kaufmodell (Vorschau)](sql-database-service-tiers-vcore.md). 
+Das neue Kaufmodell gilt zusätzlich zum vorhandenen DTU-basierten Modell. Das V-Kern-basierte Modell soll Kunden Flexibilität, Kontrolle, Transparenz und eine einfache Möglichkeit zum Übertragen der lokalen Workloadanforderungen in die Cloud bieten. Außerdem können Kunden ihre Compute- und Speicherressourcen basierend auf ihren jeweiligen Workloadanforderungen skalieren. Bei den Optionen des V-Kern-Modells für Einzeldatenbanken und Pools für elastische Datenbanken können mit dem [Azure-Hybridnutzungsvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) ebenfalls Einsparungen von bis zu 30 Prozent erzielt werden. Weitere Informationen finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [V-Kern-basiertes Kaufmodell (Vorschau)](sql-database-service-tiers-vcore.md). 
 
 ## <a name="what-is-a-vcore"></a>Was ist ein V-Kern (virtueller Kern)? 
 Ein virtueller Kern repräsentiert die logische CPU. Virtuelle Kerne werden für verschiedene Hardwaregenerationen angeboten. Logische CPUs der 4. Generation basieren auf Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz, und logische CPUs der 5. Generation basieren auf Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz.
@@ -36,7 +36,7 @@ Nein. Mit der Einführung des V-Kern-basierten Modells bei den Bereitstellungsop
 
 In vielen Fällen können Anwendungen von der Einfachheit eines vorkonfigurierten Pakets mit Ressourcen profitieren. Aus diesem Grund bieten wir diese DTU-basierten Optionen weiterhin für unsere Kunden an. Falls Sie diese Optionen nutzen und Ihre Geschäftsanforderungen damit erfüllt werden, sollten Sie sie weiter verwenden.
 
-Das DTU-basierte Modell und das V-Kern-basierte Modell werden weiterhin parallel angeboten. Wir führen das V-Kern-basierte Modell als Reaktion auf Kundenanfragen nach mehr Transparenz in Bezug auf die Datenbankressourcen und die Möglichkeit zur separaten Skalierung von Compute- und Speicherressourcen ein. Das V-Kern-basierte Modell ermöglicht dank des Azure-Hybridvorteils für SQL Server darüber hinaus zusätzliche Einsparungen für Kunden mit aktiver Software Assurance.
+Das DTU-basierte Modell und das V-Kern-basierte Modell werden weiterhin parallel angeboten. Wir führen das V-Kern-basierte Modell als Reaktion auf Kundenanfragen nach mehr Transparenz in Bezug auf die Datenbankressourcen und die Möglichkeit zur separaten Skalierung ihrer Compute- und Speicherressourcen ein. Das V-Kern-basierte Modell ermöglicht dank des Azure-Hybridvorteils für SQL Server darüber hinaus zusätzliche Einsparungen für Kunden mit aktiver Software Assurance.
 
 ## <a name="how-should-i-choose-between-the-dtu-based-purchasing-model-vs-the-vcore-based-purchasing-model-preview"></a>Was sollte ich bei der Entscheidung zwischen dem DTU-basierten Kaufmodell und dem V-Kern-basierten Kaufmodell (Vorschau) beachten? 
 Die DTU (Database Transaction Unit) basiert auf einer Mischung aus den Werten für CPU, Speicher, Lesevorgänge und Schreibvorgänge. Die auf DTUs basierenden Leistungsstufen stellen vorkonfigurierte Ressourcenpakete gemäß den unterschiedlichen Stufen der Anwendungsleistung dar. Wenn Kunden die zugrunde liegenden Ressourcen außen vor lassen möchten und den Komfort eines vorkonfigurierten Pakets mit der Möglichkeit zur Zahlung eines monatlichen Festbetrags bevorzugen, ist das DTU-basierte Modell für ihre Anforderungen eventuell besser geeignet. Falls Kunden aber einen umfassenderen Einblick in die zugrunde liegenden Ressourcen benötigen oder diese aus Gründen der Leistungsoptimierung unabhängig voneinander skalieren möchten, ist das V-Kern-basierte Modell die ideale Wahl.  Wenn ein Kunde darüber hinaus über eine aktive Software Assurance (SA) für SQL Server verfügt, kann er seine getätigten Investitionen nutzen und mit dem [Azure-Hybridnutzungsvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) bis zu 30% sparen.  Die Optionen beider Kaufmodelle bieten die Vorteile eines vollständig verwalteten Diensts, z.B. automatisierte Sicherungen, Softwareupdates und Patches. 
@@ -49,10 +49,10 @@ Sie verfügen für die Lizenz 180 Tage lang über Dualnutzungsrechte, um sicherz
 
 
 ## <a name="how-does-azure-hybrid-benefit-for-sql-server-differ-from-license-mobility"></a>Wie unterscheidet sich der Azure-Hybridvorteil für SQL Server von der License Mobility?
-Derzeit bieten wir für SQL Server-Kunden mit Software Assurance License Mobility-Vorteile an, in deren Rahmen die Neuzuweisung von Lizenzen zu freigegebenen Drittanbieterservern möglich ist. Dieser Vorteil kann für Azure IaaS und AWS EC2 verwendet werden.
+Derzeit bieten wir License Mobility-Vorteile für SQL Server-Kunden mit Software Assurance an, in deren Rahmen die Neuzuweisung von Lizenzen zu freigegebenen Drittanbieterservern möglich ist. Dieser Vorteil kann für Azure IaaS und AWS EC2 verwendet werden.
 Der Azure-Hybridvorteil für SQL Server unterscheidet sich in zwei wichtigen Bereichen von License Mobility:
 - Er ist mit wirtschaftlichen Vorteilen in Bezug auf das Verlagern von hochgradig virtualisierten Workloads nach Azure verbunden. SQL EE-Kunden können in Azure für die SKU „Universell“ für jeden Kern, der lokal vorhanden ist, vier Kerne für hochgradig virtualisierte Anwendungen erhalten. Bei License Mobility ergeben sich bei der Verlagerung von virtualisierten Workloads in die Cloud keine besonderen Kostenvorteile.
-- Hierbei ist ein PaaS-Ziel in Azure vorhanden, das mit der lokalen SQL Server-Instanz (verwaltete SQL-Datenbank-Instanz) hochgradig kompatibel ist.
+- Hierbei ist ein PaaS-Ziel in Azure (eine verwaltete SQL-Datenbank-Instanz) vorhanden, das mit der lokalen SQL Server-Instanz hochgradig kompatibel ist.
 
 ## <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>Welche spezifischen Rechte gelten für den Azure-Hybridvorteil für SQL Server?
 SQL-Datenbank-Kunden sind beim Azure-Hybridvorteil für SQL Server die folgenden Rechte zugeordnet:
@@ -93,15 +93,15 @@ Sie können die Sicherungsaufbewahrung für PITR auf einen Wert zwischen 7 und 3
 Unser Ziel ist maximale Flexibilität, damit Sie eine Leistungskonfiguration wählen können, die möglichst gut zu den Anforderungen der Anwendung passt. In der obigen Tabelle sind die Unterschiede zwischen Gen4 und Gen5 dargestellt. Vor allem Gen4-Hardware verfügt über deutlich mehr Arbeitsspeicher pro V-Kern. Bei Gen5-Hardware können die Computeressourcen aber viel stärker zentral hochskaliert werden. Wir möchten diese Unterschiede transparent machen, damit Sie für Ihre Anwendung das optimale Preis-Leistungs-Verhältnis erzielen können.
 
 ## <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-database-to-a-vcore-based-service-tier"></a>Muss ich meine Anwendung offline schalten, um von einer auf DTUs basierenden Datenbank auf einen V-Kern-basierten Diensttarif umzustellen? 
-Die neuen Diensttarife bieten eine einfache Onlinekonvertierungsmethode, die dem bestehenden Prozess zur Durchführung eines Upgrades für Datenbanken vom Diensttarif „Standard“ auf „Premium“ und umgekehrt ähnelt. Diese Konvertierung kann mit dem Portal, mit ARM, PowerShell, der Azure CLI oder mit T-SQL initiiert werden. Weitere Informationen finden Sie unter [Verwalten von Ressourcen für eine einzelne Datenbank in Azure SQL-Datenbank](sql-database-single-database-resources.md) und [Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren mehrerer Azure SQL-Datenbank-Instanzen](sql-database-elastic-pool.md).
+Die neuen Diensttarife bieten eine einfache Onlinekonvertierungsmethode, die dem bestehenden Prozess zur Durchführung eines Upgrades für Datenbanken vom Diensttarif „Standard“ auf „Premium“ und umgekehrt ähnelt. Diese Konvertierung kann mit dem Azure-Portal, mit PowerShell, der Azure CLI, T-SQL oder der REST-API initiiert werden. Weitere Informationen finden Sie unter [Verwalten von Ressourcen für eine einzelne Datenbank in Azure SQL-Datenbank](sql-database-single-database-scale.md) und [Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren mehrerer Azure SQL-Datenbank-Instanzen](sql-database-elastic-pool.md).
 
 ## <a name="can-i-convert-a-database-from-a-vcore-based-service-tier-to-a-dtu-based-one"></a>Kann ich eine Datenbank von einem V-Kern-basierten Diensttarif auf einen DTU-basierten Diensttarif umstellen? 
-Ja. Sie können Ihre Datenbank leicht auf ein beliebiges unterstütztes Leistungsziel umstellen, indem Sie das Portal verwenden oder per Portal, ARM, PowerShell, Azure CLI oder T-SQL programmgesteuert vorgehen. Weitere Informationen finden Sie unter [Verwalten von Ressourcen für eine einzelne Datenbank in Azure SQL-Datenbank](sql-database-single-database-resources.md) und [Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren mehrerer Azure SQL-Datenbank-Instanzen](sql-database-elastic-pool.md).
+Ja. Sie können Ihre Datenbank leicht auf ein beliebiges unterstütztes Leistungsziel umstellen, indem Sie das Azure-Portal, PowerShell, die Azure CLI, T-SQL oder die REST-API verwenden. Weitere Informationen finden Sie unter [Verwalten von Ressourcen für eine einzelne Datenbank in Azure SQL-Datenbank](sql-database-single-database-scale.md) und [Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren mehrerer Azure SQL-Datenbank-Instanzen](sql-database-elastic-pool.md).
 
 ## <a name="can-i-upgrade-or-downgrade-between-the-general-purpose-and-business-critical-service-tiers"></a>Kann ich zwischen den Diensttarifen „Universell“ und „Unternehmenskritisch“ ein Upgrade oder Downgrade durchführen? 
 Ja, mit einigen Einschränkungen. Ihre Ziel-SKU muss die maximale Größe für die Datenbank oder den Pool für elastische Datenbanken einhalten, die Sie für Ihre vorhandene Bereitstellung konfiguriert haben. Bei Verwendung des [Azure-Hybridnutzungsvorteils für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) ist die SKU „Unternehmenskritisch“ nur für Kunden mit Enterprise Edition-Lizenzen verfügbar. Nur Kunden, die eine Migration von der lokalen Umgebung zu „Universell“ durchgeführt haben, indem sie den Azure-Hybridvorteil für SQL Server mit Enterprise Edition-Lizenzen verwendet haben, können ein Upgrade auf „Unternehmenskritisch“ durchführen. Ausführliche Informationen finden Sie unter [Azure-Hybridvorteil für Windows Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
 
-Diese Umstellung führt nicht zu Ausfallzeit und kann per Portal, ARM, PowerShell, Azure CLI oder T-SQL initiiert werden. Weitere Informationen finden Sie unter [Verwalten von Ressourcen für eine einzelne Datenbank in Azure SQL-Datenbank](sql-database-single-database-resources.md) und [Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren mehrerer Azure SQL-Datenbank-Instanzen](sql-database-elastic-pool.md).
+Diese Umstellung führt nicht zu Ausfallzeit und kann per Azure-Portal, PowerShell, Azure CLI, T-SQL oder REST-API initiiert werden. Weitere Informationen finden Sie unter [Verwalten von Ressourcen für eine einzelne Datenbank in Azure SQL-Datenbank](sql-database-single-database-scale.md) und [Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren mehrerer Azure SQL-Datenbank-Instanzen](sql-database-elastic-pool.md).
 
 ## <a name="i-am-using-a-premium-rs-database-that-will-not-be-generally-available---can-i-upgrade-it-to-a-new-tier-and-achieve-a-similar-priceperformance-benefit"></a>Ich verwende eine Premium RS-Datenbank, die nicht allgemein verfügbar ist. Kann ich ein Upgrade auf einen neuen Tarif durchführen und einen ähnlichen Vorteil in Bezug auf das Preis-Leistungs-Verhältnis erzielen?
 Da beim V-Kern-Modell eine unabhängige Steuerung der bereitgestellten Compute- und Speichermenge möglich ist, können Sie die sich ergebenden Kosten effektiv verwalten. Dies ist somit ein attraktives Ziel für Premium RS-Datenbanken. Zusätzlich ist der [Azure-Hybridnutzungsvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) mit einem beträchtlichem Rabatt verbunden, wenn das V-Kern-basierte Modell verwendet wird. 
@@ -193,3 +193,4 @@ Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **SQL-Datenbanken**,
 
 ## <a name="to-move-a-database-between-subscriptions"></a>So verschieben Sie eine Datenbank zwischen Abonnements
 Klicken Sie im [Azure-Portal](https://portal.azure.com)auf **SQL-Server**, und wählen Sie in der Liste den Server aus, der die Datenbank hostet. Klicken Sie auf **Verschieben**, und wählen Sie die zu verschiebenden Ressourcen und das Abonnement aus, in das dieser Vorgang erfolgen soll.
+

@@ -2,19 +2,19 @@
 title: Beschränkungen in Azure Database for MySQL
 description: Dieser Artikel beschreibt die Einschränkungen in Azure Database for MySQL, z.B. die Anzahl der Verbindungs- und Speichermoduloptionen.
 services: mysql
-author: kamathsun
-ms.author: sukamat
+author: ajlam
+ms.author: andrela
 manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/04/2018
-ms.openlocfilehash: 3ec78b9aad45500a92a8f46f4bb2e654f97da8cb
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 06/21/2018
+ms.openlocfilehash: 2fc224445f89a0b0b4afdc0ef1d0eb1b25b45f36
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264883"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36311194"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Beschränkungen in Azure Database for MySQL
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen sowie Beschränkungen bei der Unterstützung der Speicher-Engine und von Datenmanipulationsanweisungen im Datenbankdienst beschrieben. Sehen Sie sich auch die [allgemeinen Einschränkungen](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) an, die für die MySQL-Datenbank-Engine gelten.
@@ -60,29 +60,29 @@ Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den f
 ## <a name="data-manipulation-statement-support"></a>Unterstützung von Datenmanipulationsanweisungen
 
 ### <a name="supported"></a>Unterstützt
-- LOAD DATA INFILE – Unterstützt, es muss aber der Parameter [LOCAL] angegeben werden, der auf einen UNC-Pfad (über XSMB bereitgestellter Azure Storage) weitergeleitet wird.
+- `LOAD DATA INFILE` wird unterstützt, jedoch muss der Parameter `[LOCAL]` angegeben und an einen UNC-Pfad (über das SMB-Protokoll eingebundene Azure Storage-Instanz) weitergeleitet werden.
 
 ### <a name="unsupported"></a>Nicht unterstützt
-- SELECT ... INTO OUTFILE
+- `SELECT ... INTO OUTFILE`
 
 ## <a name="functional-limitations"></a>Funktionale Beschränkungen
 
 ### <a name="scale-operations"></a>Skalierungsvorgänge
-- Die dynamische Skalierung von Servern über verschiedene Tarife hinweg wird zurzeit nicht unterstützt. Wechsel zwischen den Tarifen „Basic“, „Universell“ und „Arbeitsspeicheroptimiert“ werden also nicht unterstützt.
+- Die dynamische Skalierung auf den oder vom Basic-Tarif aus wird zurzeit nicht unterstützt.
 - Die Verringerung der Größe des Serverspeichers wird nicht unterstützt.
 
 ### <a name="server-version-upgrades"></a>Upgrades von Serverversionen
 - Die automatisierte Migration zwischen Hauptversionen von Datenbank-Engines wird derzeit nicht unterstützt.
 
 ### <a name="point-in-time-restore"></a>Point-in-Time-Wiederherstellung
-- Die Wiederherstellung in anderen Diensttarifen und/oder Compute-Einheiten und Speichergrößen ist nicht zulässig.
+- Wenn Sie das PITR-Feature verwenden, wird der neue Server mit den gleichen Konfigurationen erstellt wie der Server, auf dem er basiert.
 - Die Wiederherstellung eines gelöschten Servers wird nicht unterstützt.
 
 ### <a name="subscription-management"></a>Abonnementverwaltung
 - Die dynamische Verschiebung von vorab erstellten Servern zwischen Abonnement- und Ressourcengruppen wird derzeit nicht unterstützt.
 
 ## <a name="current-known-issues"></a>Aktuelle bekannte Probleme
-- Die MySQL-Serverinstanz zeigt die falsche Serverversion an, nachdem die Verbindung hergestellt wurde. Um die richtige Serverinstanzversion abzurufen, verwenden Sie den Befehl „select version();“ an einer MySQL-Eingabeaufforderung.
+- Die MySQL-Serverinstanz zeigt die falsche Serverversion an, nachdem die Verbindung hergestellt wurde. Um die richtige Engine-Version der Serverinstanzen abzurufen, verwenden Sie den Befehl `select version();`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Verfügbaren Funktionen auf den einzelnen Dienstebenen](concepts-pricing-tiers.md)

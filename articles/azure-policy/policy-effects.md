@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 23bbbe9cf86268f93ae1f8fcec9303efa8a673de
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 1566cf2b61749121c4eaff5a32b0a940f3341f7e
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796715"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751777"
 ---
 # <a name="understanding-policy-effects"></a>Grundlegendes zu Richtlinienauswirkungen
 
@@ -22,11 +22,11 @@ Jede Richtliniendefinition in Azure Policy hat eine einzelne Auswirkung. Diese b
 
 Aktuell werden in einer Richtliniendefinition fünf Auswirkungen unterstützt:
 
-- Append
+- Anfügen
 - Audit
-- AuditIfNotExists
+- Auswirkung „AuditIfNotExists“
 - Verweigern
-- DeployIfNotExists
+- Auswirkung „DeployIfNotExists“
 
 ## <a name="order-of-evaluation"></a>Reihenfolge der Auswertung
 
@@ -39,7 +39,7 @@ Auf diese Weise wird eine unnötige Verarbeitung durch einen Ressourcenanbieter 
 
 Sobald die Anforderung an den Ressourcenanbieter übergeben wurde und der Ressourcenanbieter einen Erfolgsstatuscode zurückgibt, werden **AuditIfNotExists** und **DeployIfNotExists** ausgewertet, um zu bestimmen, ob eine anschließende Konformitätsprotokollierung oder -aktion erforderlich ist.
 
-## <a name="append"></a>Auswirkung „append“
+## <a name="append"></a>Anfügen
 
 „append“ wird verwendet, um der angeforderten Ressource während der Erstellung oder Aktualisierung zusätzliche Felder hinzuzufügen. Dies kann nützlich sein, um Ressourcen Tags wie z.B. „costCenter“ hinzuzufügen oder zugelassene IP-Adressen für eine Speicherressource anzugeben.
 
@@ -90,7 +90,7 @@ Beispiel 3: Einzelnes **field/value**-Paar mit einem [alias](policy-definition.m
 "then": {
     "effect": "append",
     "details": [{
-        "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]",
+        "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
         "value": [{
             "action": "Allow",
             "value": "134.5.0.0/21"
@@ -99,7 +99,7 @@ Beispiel 3: Einzelnes **field/value**-Paar mit einem [alias](policy-definition.m
 }
 ```
 
-## <a name="deny"></a>Auswirkung „deny“
+## <a name="deny"></a>Verweigern
 
 Mit „deny“ werden Ressourcenanforderungen abgelehnt, welche die über eine Richtliniendefinition festgelegten gewünschten Standards nicht erfüllen. Für die Anforderung wird anschließend ein Fehler ausgegeben.
 
@@ -123,7 +123,7 @@ Beispiel zur Verwendung der Auswirkung „deny“
 }
 ```
 
-## <a name="audit"></a>Auswirkung „audit“
+## <a name="audit"></a>Audit
 
 Die Auswirkung „audit“ wird verwendet, um ein Warnungsereignis im Überwachungsprotokoll zu erstellen, wenn eine nicht konforme Ressource ausgewertet wird. Die Anforderung wird jedoch nicht beendet.
 
@@ -304,7 +304,7 @@ Beispiel: Mithilfe einer Auswertung von SQL Server-Datenbanken wird bestimmt, ob
 
 ## <a name="layering-policies"></a>Mehrere Richtlinien
 
-Eine Ressource kann durch mehrere Zuweisungen beeinflusst werden. Diese Zuweisungen können für denselben Bereich (eine bestimmte Ressource, Ressourcengruppe, ein bestimmtes Abonnement oder eine Verwaltungsgruppe) oder verschiedene Bereiche gelten. Für jede dieser Zuweisungen ist wahrscheinlich auch eine andere Auswirkung definiert. Trotzdem werden die Bedingung und die Auswirkung für jede Richtlinie (direkt oder als Teil einer Initiative zugewiesen) unabhängig ausgewertet. Wenn beispielsweise Richtlinie 1 eine Bedingung enthält, durch die das Abonnement A mittels Auswirkung „deny“ auf die Erstellung am Standort „USA, Westen“ beschränkt wird und Richtlinie 2 über die Auswirkung „audit“ Ressourcen in Ressourcengruppe B (die sich im Abonnement A befindet) auf eine Erstellung am Standort „USA, Osten“ beschränkt, würde die Zuweisung beider Richtlinien zu folgendem Ergebnis führen:
+Eine Ressource kann durch mehrere Zuweisungen beeinflusst werden. Diese Zuweisungen können für denselben Bereich (eine bestimmte Ressource, Ressourcengruppe, ein bestimmtes Abonnement oder eine Verwaltungsgruppe) oder verschiedene Bereiche gelten. Für jede dieser Zuweisungen ist wahrscheinlich auch eine andere Auswirkung definiert. Trotzdem werden die Bedingung und die Auswirkung für jede Richtlinie (direkt oder als Teil einer Initiative zugewiesen) unabhängig ausgewertet. Wenn beispielsweise Richtlinie 1 eine Bedingung enthält, durch die das Erstellen des Ressourcenspeicherorts für Abonnement A mittels Auswirkung „deny“ auf „USA, Westen“ beschränkt wird, und Richtlinie 2 eine Bedingung enthält, die das Erstellen des Ressourcenspeicherorts für Ressourcengruppe B (die sich im Abonnement A befindet) mittels Auswirkung „audit“ auf „USA, Osten“ beschränkt, würde die Zuweisung beider Richtlinien zu folgendem Ergebnis führen:
 
 - Jede Ressource, die sich bereits in Ressourcengruppe B und am Standort „USA, Osten“ befindet, ist gemäß Richtlinie 2 konform, aber wird gemäß Richtlinie 1 als nicht konform markiert.
 - Jede Ressource, die sich bereits in Ressourcengruppe B und nicht am Standort „USA, Osten“ befindet, wird gemäß Richtlinie 2 als nicht konform markiert. Die Ressource wird auch durch Richtlinie 1 als nicht konform markiert, wenn sie sich nicht am Standort „USA, Westen“ befindet.

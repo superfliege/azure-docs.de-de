@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: a94d97fb90e65fd569047a3d55945437002d97ab
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 9537380daab80529c3ba6307f1b2cd82a8c0ca41
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867390"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334668"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Aktualisieren des Azure Multi-Factor Authentication-Servers
 
@@ -48,21 +48,12 @@ Wenn Sie ein Upgrade von v6.x oder niedriger auf v7.x oder höher durchführen, 
 
 Wenn sich Ihr Benutzerportal auf mehreren Servern befindet, wiederholen Sie die Installation auf allen diesen Servern. 
 
-
 ## <a name="upgrade-the-mobile-app-web-service"></a>Upgrade des Webdiensts der mobilen App
 
-1. Erstellen Sie eine Sicherung der Datei „web.config“, die sich im virtuellen Verzeichnis am Installationsspeicherort des Webdiensts der mobilen App befindet (z.B. „C:\inetpub\wwwroot\app oder C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService“).
-2. Kopieren Sie die Datei „MultiFactorAuthenticationMobileAppWebServiceSetup64.msi“ aus dem Installationsspeicherort der MFA-Server und fügen Sie sie in einen der Webserver der Registrierung der mobilen App wieder ein.
-3. Führen Sie das Installationsprogramm aus. 
-
-  Falls ein Fehler mit der Nachricht auftritt, dass Microsoft Visual C++ 2015 Redistributable Update 1 oder höher benötigt wird, können Sie das aktuellste Updatepaket aus dem [Microsoft Download Center](https://www.microsoft.com/download/) herunterladen und installieren. Installieren Sie sowohl die x86- als auch die x64-Version.
-
-4. Nachdem die aktualisierte Software für den Webdienst der mobilen App installiert ist, vergleichen Sie die Datei „web.config“, für die Sie in Schritt 1 eine Sicherung erstellt haben, mit der neuen Datei „web.config“. Wenn sich in der neuen Datei „web.config“ keine neuen Attribute befinden, können Sie Ihre gespeicherte Datei „web.config“ zurück in das virtuelle Verzeichnis kopieren und die neue Datei überschreiben. Eine andere Möglichkeit besteht darin, die Werte von appSettings und die Webdienst-SDK-URL durch Kopieren/Einfügen aus der Sicherungsdatei in die neue Datei „web.config“ einzufügen.
-
-Wenn sich Ihr Webdienst der mobilen App auf mehreren Servern befindet, wiederholen sie die Installation auf allen diesen Servern. 
+> [!NOTE]
+> Wenn Sie für eine Azure MFA-Server-Version vor 8.0 ein Upgrade auf eine höhere Version als 8.0 durchführen, kann der Webdienst der mobilen App nach dem Upgrade deinstalliert werden.
 
 ## <a name="upgrade-the-ad-fs-adapters"></a>Aktualisieren des AD FS-Adapters
-
 
 ### <a name="if-mfa-runs-on-different-servers-than-ad-fs"></a>Falls MFA auf anderen Servern als AD FS ausgeführt wird
 

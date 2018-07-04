@@ -8,21 +8,21 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: pullabhk
-ms.openlocfilehash: 5541a2fff6bb54f5d62518e7edf54fb9150e3109
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: ca7da7ab048b6f7bfdba81aac9bc7702b20ff967
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248941"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751796"
 ---
-# <a name="back-up-sql-server-on-azure-stack"></a>Sichern von SQL Server auf Azure Stack
+# <a name="back-up-sql-server-on-stack"></a>Sichern von SQL Server in Stack
 Verwenden Sie diesen Artikel, um Microsoft Azure Backup Server (MABS) zum Schutz von SQL Server-Datenbanken auf Azure Stack zu konfigurieren.
 
 Die Verwaltung der Sicherung und Wiederherstellung von SQL-Datenbanken in und aus Azure umfasst drei Schritte:
 
-1. Erstellen einer Sicherungsrichtlinie zum Schutz von SQL Server-Datenbanken mithilfe von Azure
-2. Bedarfsgesteuertes Erstellen von Sicherungskopien in Azure
-3. Wiederherstellen der Datenbank aus Azure
+1. Erstellen einer Sicherungsrichtlinie zum Schutz von SQL Server-Datenbanken
+2. Bedarfsgesteuertes Erstellen von Sicherungskopien
+3. Wiederherstellen der Datenbank vom Datenträger und aus Azure
 
 ## <a name="before-you-start"></a>Vorbereitung
 
@@ -63,12 +63,6 @@ Die Verwaltung der Sicherung und Wiederherstellung von SQL-Datenbanken in und au
    >
 
 7. Überprüfen Sie auf dem Bildschirm **Datenträgerzuordnung überprüfen** den gesamten verfügbaren Speicherplatz und den möglichen Speicherplatz. Klicken Sie auf **Weiter**.
-
-    ![Datenträgerzuordnung](./media/backup-azure-backup-sql/pg-storage.png)
-
-    Azure Backup Server erstellt standardmäßig ein Volume pro Datenquelle (SQL Server-Datenbank), das zum Erstellen der anfänglichen Sicherungskopie verwendet wird. Bei diesem Ansatz ist der Azure Backup-Schutz durch die Verwaltung logischer Datenträger auf maximal 300 Datenquellen (SQL Server-Datenbanken) beschränkt. Um diese Einschränkung zu umgehen, wählen Sie **Daten im DPM-Speicherpool zusammenstellen** aus. Durch die Zusammenstellung verwendet Azure Backup Server ein einzelnes Volume für mehrere Datenquellen und kann bis zu 2.000 SQL Server-Datenbanken schützen.
-
-    Wenn Sie die Option **Volumes automatisch erweitern** auswählen, kann Azure Backup Server der Anforderung nach größeren Sicherungsvolumes aufgrund steigender Produktionsdaten Rechnung tragen. Wenn Sie diese Option nicht auswählen, beschränkt Azure Backup Server den verwendeten Sicherungsspeicher auf die Datenquellen in der Schutzgruppe.
 
 8. Wählen Sie unter **Replikaterstellungsmethode auswählen** aus, wie der erste Wiederherstellungspunkt erstellt werden soll. Sie können diese anfängliche Sicherung manuell (nicht über das Netzwerk) übertragen, um nicht zu viel Bandbreite zu belegen, oder die Daten über das Netzwerk senden. Wenn Sie mit der Übertragung der ersten Sicherung warten möchten, können Sie den Zeitpunkt der ersten Übertragung angeben. Klicken Sie auf **Weiter**.
 
@@ -111,12 +105,7 @@ Die Verwaltung der Sicherung und Wiederherstellung von SQL-Datenbanken in und au
     * Die Sicherung am Samstag um 12:00 Uhr wird 104 Wochen lang beibehalten.
     * Die Sicherung am letzten Samstag um 12:00 Uhr wird 60 Monate lang beibehalten.
     * Die Sicherung am letzten Samstag im März um 12:00 Uhr wird 10 Jahre lang beibehalten.
-13. Klicken Sie auf **Weiter** , und wählen Sie die geeignete Option zum Übertragen der anfänglichen Sicherung nach Azure aus. Sie können zwischen den Optionen **Automatisch über das Netzwerk** und **Offlinesicherung** wählen.
-
-    * **Automatisch über das Netzwerk** werden die Sicherungsdaten gemäß dem für die Sicherung ausgewählten Zeitplan nach Azure übertragen.
-    * Die Funktionsweise der **Offlinesicherung** wird unter [Workflow zur Offlinesicherung in Azure Backup](backup-azure-backup-import-export.md) beschrieben.
-
-    Wählen Sie die geeignete Übertragungsmethode zum Senden der anfänglichen Sicherungskopie an Azure, und klicken Sie auf **Weiter**.
+13. Klicken Sie auf **Weiter** , und wählen Sie die geeignete Option zum Übertragen der anfänglichen Sicherung nach Azure aus. Sie können **Automatisch über das Netzwerk** wählen.
 
 14. Nachdem Sie die Richtliniendetails auf dem Bildschirm **Zusammenfassung** überprüft haben, klicken Sie auf **Gruppe erstellen**, um den Workflow abzuschließen. Sie können anschließend auf **Schließen** klicken und den Auftragsfortschritt im Arbeitsbereich „Überwachung“ verfolgen.
 
@@ -147,11 +136,11 @@ Die folgenden Schritte sind erforderlich, um eine geschützte Entität (SQL Serv
 2. Klicken Sie mit der rechten Maustaste auf den Datenbanknamen und anschließend auf **Wiederherstellen**.
 
     ![Wiederherstellen aus Azure](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-3. DPM zeigt die Details zum Wiederherstellungspunkt an. Klicken Sie auf **Weiter**. Um die Datenbank zu überschreiben, wählen Sie den Wiederherstellungstyp **In ursprünglicher Instanz von SQL Server wiederherstellen**aus. Klicken Sie auf **Weiter**.
+3. MABS zeigt die Details zum Wiederherstellungspunkt an. Klicken Sie auf **Weiter**. Um die Datenbank zu überschreiben, wählen Sie den Wiederherstellungstyp **In ursprünglicher Instanz von SQL Server wiederherstellen**aus. Klicken Sie auf **Weiter**.
 
     ![Wiederherstellung am ursprünglichen Speicherort](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
-    In diesem Beispiel stellt DPM die Datenbank in einer anderen SQL Server-Instanz oder in einem eigenständigen Netzwerkordner wieder her.
+    In diesem Beispiel stellt MABS die Datenbank in einer anderen SQL Server-Instanz oder in einem eigenständigen Netzwerkordner wieder her.
 
 4. Auf dem Bildschirm **Wiederherstellungsoptionen angeben** können Sie Optionen auswählen, z.B. „Netzwerk-Bandbreiteneinschränkung“, um die Bandbreitenbelegung bei der Wiederherstellung zu drosseln. Klicken Sie auf **Weiter**.
 

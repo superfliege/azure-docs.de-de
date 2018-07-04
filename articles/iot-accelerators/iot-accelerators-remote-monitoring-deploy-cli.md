@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 603ce00a036822fd0c7411b47cf3fe630671cc5a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 736d0394b61bd2830a155d6ad714a2a8d19af82b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628122"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017508"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Bereitstellen des Solution Accelerators für die Remoteüberwachung mithilfe der CLI
 
@@ -68,7 +68,7 @@ Bei der Erstellung einer Basic-Lösung werden folgende Azure-Dienste kostenpflic
 | Count | Ressource                       | Typ         | Verwendung |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Virtueller Linux-Computer](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 v2  | Hosten von Microservices |
-| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 (Basic-Tarif) | Geräteverwaltung und Kommunikation |
+| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1: Tarif „Standard“ | Geräteverwaltung und Kommunikation |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standard        | Speichern von Konfigurationsdaten und Gerätetelemetrie wie Regeln, Warnungen und Meldungen |  
 | 1     | [Azure Storage-Konto](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | Speicher für VM und Streamingprüfpunkte |
 | 1     | [Webanwendung](https://azure.microsoft.com/services/app-service/web/)        |                 | Hosten der Front-End-Webanwendung |
@@ -82,7 +82,7 @@ Bei der Erstellung einer Standard-Lösung werden folgende Azure-Dienste kostenpf
 |-------|----------------------------------------------|-----------------|----------|
 | 4     | [Virtuelle Linux-Computer](https://azure.microsoft.com/services/virtual-machines/)   | Standard D2 v2  | Ein Master und drei Agents zum Hosten von Microservices mit Redundanz |
 | 1     | [Azure Container Service](https://azure.microsoft.com/services/container-service/) |                 | Orchestrator [Kubernetes](https://kubernetes.io) |
-| 1     | [Azure IoT Hub][https://azure.microsoft.com/services/iot-hub/]                     | S1 (Basic-Tarif) | Geräteverwaltung und -steuerung |
+| 1     | [Azure IoT Hub][https://azure.microsoft.com/services/iot-hub/]                     | S2: Tarif „Standard“ | Geräteverwaltung und -steuerung |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standard        | Speichern von Konfigurationsdaten und Gerätetelemetrie wie Regeln, Warnungen und Meldungen |
 | 5     | [Azure-Speicherkonten](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standard        | Vier für VM-Speicher, eins für die Streamingprüfpunkte |
 | 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | S1 Standard     | Application Gateway über SSL |

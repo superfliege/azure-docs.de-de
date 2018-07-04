@@ -8,19 +8,18 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 0410456a-76f7-42a7-9bb5-f767de75a0e0
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 37409ee72591d943a834ff38f077a002a1724ab9
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 18c3dbdcf85c5b06b4f0f20c85b9fe751a3719fe
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215391"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317981"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>Tutorial: Azure Active Directory-Integration mit PagerDuty
 
@@ -60,14 +59,14 @@ Zum Konfigurieren der Integration von PagerDuty in Azure AD müssen Sie PagerDut
 
 **Um PagerDuty aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
     ![Schaltfläche „Azure Active Directory“][1]
 
 2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“][2]
-    
+
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
@@ -102,8 +101,8 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+
     ![Dialogfeld „Einmaliges Anmelden“](./media/pagerduty-tutorial/tutorial_pagerduty_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für PagerDuty** die folgenden Schritte aus:
@@ -114,12 +113,12 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<tenant-name>.pagerduty.com`
 
-    > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den PagerDuty-Client](https://www.pagerduty.com/support/), um diese Werte zu erhalten. 
+    > [!NOTE]
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den PagerDuty-Client](https://www.pagerduty.com/support/), um diese Werte zu erhalten.
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Downloadlink für das Zertifikat](./media/pagerduty-tutorial/tutorial_pagerduty_certificate.png) 
+    ![Downloadlink für das Zertifikat](./media/pagerduty-tutorial/tutorial_pagerduty_certificate.png)
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
@@ -127,34 +126,33 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 6. Klicken Sie im Abschnitt **PagerDuty-Konfiguration** auf **PagerDuty konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![PagerDuty-Konfiguration](./media/pagerduty-tutorial/tutorial_pagerduty_configure.png) 
+    ![PagerDuty-Konfiguration](./media/pagerduty-tutorial/tutorial_pagerduty_configure.png)
 
 7. Melden Sie sich in einem anderen Webbrowserfenster bei der PagerDuty-Unternehmenswebsite als Administrator an.
 
 8. Klicken Sie im oberen Menü auf **Kontoeinstellungen**.
-   
+
     ![Konteneinstellungen](./media/pagerduty-tutorial/ic778535.png "Konteneinstellungen")
 
 9. Klicken Sie auf **Einmaliges Anmelden**.
-   
+
     ![Einmaliges Anmelden](./media/pagerduty-tutorial/ic778536.png "Einmaliges Anmelden")
 
 10. Führen Sie auf der Seite **Einmaliges Anmelden aktivieren** die folgenden Schritte aus:
-   
+
     ![Einmaliges Anmelden aktivieren](./media/pagerduty-tutorial/ic778537.png "Einmaliges Anmelden aktivieren")
-   
+
     a. Öffnen Sie in Editor das Base64-codierte Zertifikat, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **X.509 Certificate** ein.
   
     b. Fügen Sie im Textfeld **Login URL** die **URL für den SAML-SSO-Dienst** ein, die Sie aus dem Azure-Portal kopiert haben.
   
     c. Fügen Sie im Textfeld **Logout URL** die **Abmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
- 
-    d. Wählen Sie **Einmaliges Anmelden aktivieren**.
- 
-    e. Klicken Sie auf **Änderungen speichern**.
 
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+    d. Wählen Sie **Allow username/password login** (Anmeldung mit Benutzernamen/Kennwort zulassen) aus.
+
+    e. Aktivieren Sie das Kontrollkästchen **Require EXACT authentication context comparison** (EXAKTER Authentifizierungskontextvergleich erforderlich).
+
+    f. Klicken Sie auf **Änderungen speichern**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -262,8 +260,6 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-
-
 <!--Image references-->
 
 [1]: ./media/pagerduty-tutorial/tutorial_general_01.png
@@ -277,4 +273,3 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 [201]: ./media/pagerduty-tutorial/tutorial_general_201.png
 [202]: ./media/pagerduty-tutorial/tutorial_general_202.png
 [203]: ./media/pagerduty-tutorial/tutorial_general_203.png
-
