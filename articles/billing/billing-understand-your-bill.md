@@ -1,5 +1,5 @@
 ---
-title: Erläuterungen zur Rechnung für Azure
+title: Informationen zu Ihrer Rechnung für Azure | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie die Nutzung und Abrechnung Ihres Azure-Abonnements anzeigen und besser verstehen können.
 services: ''
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 06/14/2018
 ms.author: tonguyen
-ms.openlocfilehash: f3e0e3eeab88ad8ad0c4a21eb69a6340dbbe0441
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 689ea9e0d029bb65bc579fc914c6ed3073b4a96b
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33204890"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064403"
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Informationen zu Ihrer Rechnung für Microsoft Azure
 Um Ihre Azure-Rechnung besser zu verstehen, können Sie Ihre Rechnung mit der Datei mit den ausführlichen Daten zur täglichen Nutzung und den Kostenverwaltungsberichten im Azure-Portal vergleichen.
@@ -101,6 +101,40 @@ Wenn Sie [auf Rechnung zahlen](billing-how-to-pay-by-invoice.md), senden Sie Ihr
 ## <a name="how-do-i-check-the-status-of-a-payment-made-by-credit-card"></a>Wie überprüfe ich den Status einer per Kreditkarte erfolgten Zahlung?
 
 [Erstellen Sie ein Supportticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um den Status Ihrer Zahlung zu erfragen. 
+
+## <a name="are-there-different-azure-customer-types-how-do-i-know-what-customer-type-i-am"></a>Gibt es verschiedene Azure-Kundentypen? Wie finde ich heraus, welcher Kundentyp ich bin?
+Es gibt verschiedene Typen von Azure-Kunden. Lesen Sie die folgenden Kundentypbeschreibungen, um die Preise und Ihre Rechnung besser zu verstehen.
+
+- **Enterprise**: Enterprise-Kunden haben ein Enterprise Agreement mit Azure unterzeichnet, um ausgehandelte finanzielle Verpflichtungen einzugehen und Zugang zu benutzerdefinierten Preisen für Azure-Ressourcen zu erhalten.
+- **Web Direct**: Web Direct-Kunden haben keine benutzerdefinierte Vereinbarung mit Azure unterzeichnet. Diese Kunden haben sich über azure.com für Azure registriert und erhalten öffentlich zugängliche Preise für alle Azure-Ressourcen.
+- **Clouddienstanbieter**: Bei Clouddienstanbietern handelt es sich in der Regel um Unternehmen, die von einem Endkunden beauftragt wurden, auf Azure basierende Lösungen zu erstellen.
+
+## <a name="why-dont-i-see-the-cost-the-resource-i-have-created-in-my-bill"></a>Warum werden die Kosten für die von mir erstellte Ressource nicht in meiner Rechnung angezeigt?
+Die Azure-Abrechnung erfolgt nicht direkt basierend auf den Ressourcenkosten. Die Abrechnung erfolgt basierend auf einer oder mehreren Verbrauchseinheiten, mit denen die Nutzung einer Ressource während ihrer gesamten Lebensdauer nachverfolgt wird. Diese Verbrauchseinheiten werden dann zum Berechnen der Rechnung verwendet. Weitere Informationen zur Messung (der Verbrauchseinheiten) in Azure finden Sie unten.
+
+## <a name="how-does-azure-charge-metering-work"></a>Wie funktioniert die Azure-Gebührenermittlung?
+Wenn Sie eine einzelne Azure-Ressource (z. B. einen virtuellen Computer) starten, wird auch mindestens eine Verbrauchseinheiteninstanz erstellt. Diese Verbrauchseinheiten werden verwendet, um die Nutzung der Ressource im zeitlichen Verlauf nachzuverfolgen. Jede Verbrauchseinheit gibt Nutzungsdatensätze aus, die dann von Azure in unserem Kostenermittlungssystem verwendet werden, um die Rechnung zu berechnen. 
+
+Für einen in Azure erstellten einzelnen virtuellen Computer können beispielsweise die folgenden Verbrauchseinheiten erstellt werden, um seine Verwendung nachzuverfolgen:
+
+- Computestunden
+- IP-Adressstunden
+- Eingehende Datenübertragung
+- Ausgehende Datenübertragung
+- Verwalteter Datenträger Standard
+- Managed Disks Standard-Vorgänge
+- Standard-E/A – Datenträger
+- Standard-E/A – Blockblob-Lesevorgangseinheiten
+- Standard-E/A – Blockblob-Schreibvorgangseinheiten
+- Standard-E/A – Blockblob-Löschvorgangseinheiten
+
+Sobald der virtuelle Computer erstellt wurde, beginnen die einzelnen oben aufgeführten Verbrauchseinheiten mit der Ausgabe von Nutzungsdatensätzen. Diese Nutzung wird dann im Azure-Ermittlungssystem zusammen mit dem Preis der jeweiligen Verbrauchseinheit verwendet, um zu ermitteln, wie viel einem Kunden in Rechnung gestellt wird.
+
+> [!Note]
+> Die oben aufgeführten Beispielverbrauchseinheiten stellen nur eine Teilmenge der Verbrauchseinheiten dar, die für einen erstellten virtuellen Computer erstellt werden.
+
+## <a name="what-is-the-difference-between-azure-1st-party-charges-and-azure-marketplace-charges"></a>Was ist der Unterschied zwischen Azure-Erstanbietergebühren und Azure Marketplace-Gebühren?
+Azure-Erstanbietergebühren gelten für Ressourcen, die direkt von Azure entwickelt und angeboten werden. Azure Marketplace-Gebühren gelten für Ressourcen, die von Drittanbietern erstellt wurden und über Azure Marketplace zur Verfügung stehen. Eine Barracuda-Firewall ist z. B. eine von einem Drittanbieter angebotene Azure Marketplace-Ressource. Alle Gebühren für die Firewall und die entsprechenden Verbrauchseinheiten werden als Marketplace-Gebühren angezeigt. 
 
 ## <a name="tips-for-cost-management"></a>Tipps für das Kostenmanagement
 - Schätzen Sie die Kosten, indem Sie den [Preisrechner](https://azure.microsoft.com/pricing/calculator/) und den [Gesamtkosten-Rechner](https://aka.ms/azure-tco-calculator) nutzen, und rufen Sie die [ausführlichen Preisinformationen zu den einzelnen Diensten](https://azure.microsoft.com/pricing/) ab.

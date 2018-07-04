@@ -8,7 +8,7 @@ Azure IoT Edge ermöglicht die cloudgesteuerte Bereitstellung von Azure-Diensten
 Die für die Bereitstellung und Überwachung von Modulen zuständige Komponente der IoT Edge-Laufzeit.
 
 ## <a name="iot-edge-device"></a>IoT Edge-Gerät
-IoT Edge-Geräte verfügen über eine Installation der IoT Edge-Laufzeit und sind in den Gerätedetails als „IoT Edge device“ (IoT Edge-Gerät) gekennzeichnet. Informationen zum Bereitstellen von Azure IoT Edge auf einem simulierten Gerät unter Linux finden Sie [hier](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux).
+Auf IoT Edge-Geräten ist die IoT Edge-Runtime installiert, und diese Geräte sind in den Gerätedetails als **IoT Edge-Gerät** gekennzeichnet. Informationen zum Bereitstellen von Azure IoT Edge auf einem simulierten Gerät unter Linux finden Sie [hier](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux).
 
 ## <a name="iot-edge-automatic-deployment"></a>Automatische IoT Edge-Bereitstellung
 Eine automatische IoT Edge-Bereitstellung konfiguriert eine Zielgruppe von IoT Edge-Geräten für die Ausführung einer Gruppe von IoT Edge-Modulen. Jede Bereitstellung stellt kontinuierlich sicher, dass alle Geräte, die der Zielbedingung entsprechen, die angegebene Gruppe von Modulen ausführen. Das gilt auch, wenn neue Geräte erstellt oder geändert werden, um der Zielbedingung zu entsprechen. Jedes IoT Edge-Gerät erhält nur die Bereitstellung mit der höchsten Priorität, deren Zielbedingung es erfüllt. Erfahren Sie mehr zur [automatischen IoT Edge-Bereitstellung](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
@@ -41,10 +41,10 @@ Ein in der IoT Hub-Instanz gespeichertes JSON-Dokument mit den Zustandsinformati
 Wenn zwei IoT Edge-Bereitstellungen das gleiche Gerät als Ziel haben, wird die Bereitstellung mit der höheren Priorität angewendet. Wenn zwei Bereitstellungen die gleiche Priorität haben, wird die Bereitstellung mit dem späteren Erstellungsdatum angewendet. Weitere Informationen zur Priorität finden Sie [hier](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#priority).
 
 ## <a name="iot-edge-runtime"></a>IoT Edge-Laufzeit
-Die IoT Edge-Laufzeit enthält alles, was Microsoft für die Installation auf einem IoT Edge-Gerät bereitstellt. Sie umfasst den Edge-Agent, den Edge-Hub und das Edge-CTL-Tool.
+Die IoT Edge-Laufzeit enthält alles, was Microsoft für die Installation auf einem IoT Edge-Gerät bereitstellt. Sie enthält den Edge-Agent, den Edge-Hub und den IoT Edge-Sicherheitsdaemon.
 
 ## <a name="iot-edge-set-modules-to-a-single-device"></a>Festlegen von IoT Edge-Modulen auf ein einzelnes Gerät
 Ein Vorgang, der den Inhalt eines IoT Edge-Manifests auf dem Gerätezwilling eines einzelnen Geräts kopiert. Die zugrunde liegende API ist ein generischer Vorgang vom Typ „Konfiguration anwenden“, der einfach ein IoT Edge-Manifest als Eingabe akzeptiert.
 
 ## <a name="iot-edge-target-condition"></a>IoT Edge-Zielbedingung
-In einer IoT Edge-Bereitstellung ist die Zielbedingung eine beliebige boolesche Bedingung für Gerätezwillingstags zur Wahl der Zielgeräte für die Bereitstellung (beispielsweise „tag.environment = prod“). Die Zielbedingung wird kontinuierlich ausgewertet, um jedes neue Gerät einzubeziehen, das die Anforderungen erfüllt, bzw. Geräte zu entfernen, die die Bedingung nicht mehr erfüllen. Weitere Informationen zur Zielbedingung finden Sie [hier](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition).
+In einer IoT Edge-Bereitstellung ist die Zielbedingung eine beliebige boolesche Bedingung für Gerätezwillingstags zur Auswahl der Zielgeräte für die Bereitstellung, beispielsweise **tag.environment = prod**. Die Zielbedingung wird kontinuierlich ausgewertet, um jedes neue Gerät einzubeziehen, das die Anforderungen erfüllt, bzw. Geräte zu entfernen, die die Bedingung nicht mehr erfüllen. Weitere Informationen zur Zielbedingung finden Sie [hier](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition).

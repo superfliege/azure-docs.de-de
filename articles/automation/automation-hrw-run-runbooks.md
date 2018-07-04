@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a4cf32ea7b77db3fc78a404063b8a4d69ecebf58
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 32cc1a436521574917c8e52b2fa4e045d32a4f09
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195708"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062573"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Ausführen von Runbooks auf einem Hybrid Runbook Worker
 
@@ -157,13 +157,9 @@ Speichern Sie das *Export-RunAsCertificateToHybridWorker*-Runbook mit der Erweit
 
 Aufträge werden auf Hybrid Runbook Workers etwas anders behandelt als bei der Ausführung in Azure Sandboxes. Ein Hauptunterschied besteht darin, dass es keine Beschränkung der Auftragsdauer auf Hybrid Runbook Workers gibt. Wenn Sie über ein Runbook mit langer Ausführungsdauer verfügen, stellen Sie sicher, dass es mögliche Neustarts überlebt (wenn z.B. der Computer, der den Hybridworker hostet, neu gestartet wird). Wenn der Hostcomputer des Hybridworkers neu gestartet wird, werden alle ausgeführten Runbookaufträge von vorne oder – im Fall von PowerShell-Workflow-Runbooks – beim letzten Prüfpunkt neu gestartet. Wenn ein Runbookauftrag mehr als drei Mal neu gestartet wird, wird er angehalten.
 
-## <a name="troubleshooting-runbooks-on-hybrid-runbook-worker"></a>Problembehandlung bei Runbooks auf Hybrid Runbook Worker
+## <a name="troubleshoot"></a>Problembehandlung
 
-Protokolle werden lokal auf jedem Hybridworker unter "C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes" gespeichert. Hybridworker zeichnen auch Fehler und Ereignisse im Windows-Ereignisprotokoll unter **Anwendungs- und Dienstprotokolle\Microsoft-SMA\Betriebsbereit** auf. Auf Runbooks bezogene Ereignisse, die auf dem Worker ausgeführt werden, werden in **Anwendungs- und Dienstprotokolle\Microsoft-Automation\Betriebsbereit** geschrieben. Das Protokoll **Microsoft-SMA** enthält viele weitere Ereignisse zu dem Runbookauftrag, der an den Worker übermittelt wird, und zur Verarbeitung des Runbooks. Das Ereignisprotokoll **Microsoft-Automation** verfügt zwar nicht über viele Ereignisse mit Details, die für die Problembehandlung der Runbookausführung hilfreich sind, aber es enthält die Ergebnisse des Runbookauftrags.
-
-[Runbookausgabe und -meldungen](automation-runbook-output-and-messages.md) werden von Hybridworkern an Azure Automation gesendet, genau wie Runbookaufträge, die in der Cloud ausgeführt werden. Sie können auch die Verbose- und Progress-Streams auf dieselbe Weise aktivieren wie für andere Runbooks.
-
-Wenn Ihre Runbooks nicht erfolgreich ausgeführt werden und in der Auftragsübersicht der Status **Angehalten** angezeigt wird, lesen Sie den Artikel zur Problembehandlung [Hybrid Runbook Worker: Ein Runbookauftrag wird mit dem Status „Angehalten“ beendet](automation-troubleshooting-hybrid-runbook-worker.md#a-runbook-job-terminates-with-a-status-of-suspended).
+Wenn Ihre Runbooks nicht erfolgreich ausgeführt werden und in der Auftragsübersicht der Status **Angehalten** angezeigt wird, lesen Sie den Problembehandlungsleitfaden zu [Runbookausführungsfehlern](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

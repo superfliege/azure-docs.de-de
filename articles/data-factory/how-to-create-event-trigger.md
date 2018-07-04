@@ -10,26 +10,29 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 06/27/2018
 ms.author: douglasl
-ms.openlocfilehash: 457983021034d83e0eed05bd91eae1ac30c046da
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: a9c15b239ee0bd0dde0b1f11691565b2676e3d07
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296877"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062120"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Erstellen eines Triggers, der eine Pipeline als Reaktion auf ein Ereignis ausführt
 
 Dieser Artikel beschreibt die ereignisbasierten Trigger, die Sie in Ihren Data Factory-Pipelines erstellen können.
 
-Die ereignisgesteuerte Architektur (EDA) ist ein allgemeines Datenintegrationsmuster, das die Produktion, Erkennung, Verbrauch und Reaktion auf Ereignisse beinhaltet. In Datenintegrationsszenarien müssen Data Factory-Kunden häufig Pipelines basierend auf Ereignissen auslösen.
+Die ereignisgesteuerte Architektur (EDA) ist ein allgemeines Datenintegrationsmuster, das die Produktion, Erkennung, Verbrauch und Reaktion auf Ereignisse beinhaltet. In Datenintegrationsszenarien müssen Data Factory-Kunden häufig Pipelines basierend auf Ereignissen auslösen. Data Factory und [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) sind jetzt integriert, sodass Sie bei einem Ereignis Pipelines auslösen können.
 
 ## <a name="data-factory-ui"></a>Data Factory-Benutzeroberfläche
 
 ### <a name="create-a-new-event-trigger"></a>Erstellen eines neuen Triggers
 
 Ein typisches Ereignis ist der Eingang einer Datei oder das Löschen einer Datei in Ihrem Azure-Speicherkonto. Sie können einen Trigger erstellen, der auf dieses Ereignis in Ihrer Data Factory-Pipeline reagiert.
+
+> [!NOTE]
+> Diese Integration unterstützt nur Storage-Konten der Version 2 (Universell).
 
 ![Erstellen eines neuen Triggers](media/how-to-create-event-trigger/event-based-trigger-image1.png)
 
@@ -61,11 +64,20 @@ Die folgende Tabelle enthält eine Übersicht über die Schemaelemente, die mit 
 Dieser Abschnitt enthält Beispiele für die Einstellungen für ereignisbasierte Trigger.
 
 -   **Blobpfad beginnt mit**(„/cntainername/") –empfängt Ereignisse für einen beliebigen Blob im Container.
--   **Blobpfad beginnt mit**(„/containername/foldername“) – empfängt Ereignisse für beliebige Blobs im Container „containername“ im Ordner „foldername“.
--   **Blobpfad beginnt mit**(„/containername/foldername/file.txt“) – empfängt Ereignisse für einen Blob mit der Bezeichnung datei.txt im Container „containername“ im Ordner „foldername“.
+-   **Blobpfad beginnt mit**(„/Containername/Blobs/Ordnername“): Empfängt Ereignisse für beliebige Blobs im Container „Containername“ im Ordner „Ordnername“.
+-   **Blobpfad beginnt mit**(„/Containername/Blobs/Ordnername/datei.txt“): Empfängt Ereignisse für ein Blob mit der Bezeichnung „datei.txt“ im Container „Containername“ im Ordner „Ordnername“.
 -   **Blobpfad endet mit**("file.txt") – empfängt Ereignisse für einen Blob mit der Bezeichnung datei.txt in einem beliebigen Pfad.
--   **Blobpfad endet mit**(„/containername/file.txt“) – empfängt Ereignisse für einen Blob mit der Bezeichnung datei.txt im Container „containername“.
+-   **Blobpfad endet mit**(„/Containername/Blobs/datei.txt“): Empfängt Ereignisse für ein Blob mit der Bezeichnung „datei.txt“ im Container „Containername“.
 -   **Blobpfad endet mit**(„/foldername/file.txt“) – empfängt Ereignisse für einen Blob mit der Bezeichnung datei.txt im Ornder „foldername“ in einem beliebigen Container.
+
+> [!NOTE]
+> Sie müssen das Segment `/blobs/` des Pfads immer dann einbeziehen, wenn Sie Container und Ordner, Container und Datei oder Container, Ordner und Datei angeben.
+
+## <a name="using-blob-events-trigger-properties"></a>Verwenden von Eigenschaften von Triggern für Blobereignisse
+
+Wenn ein Trigger für Blobereignisse ausgelöst wird, werden Ihrer Pipeline zwei Variablen zur Verfügung gestellt: *FolderPath* und *FileName*. Verwenden Sie diese Variablen für den Zugriff auf die Ausdrücke `@triggerBody().fileName` und `@triggerBody().folderPath`.
+
+Angenommen, ein Trigger ist so konfiguriert, dass er ausgelöst wird, wenn ein Blob mit `.csv` als Wert von `blobPathEndsWith` erstellt wird. Wenn eine CSV-Datei im Speicherkonto abgelegt wird, bestimmen die Ordner *folderPath* und *fileName* den Speicherort der CSV-Datei. Beispielsweise hat *folderPath* den Wert `/containername/foldername/nestedfoldername` und *fileName* den Wert `filename.csv`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Detaillierte Informationen zu Triggern finden Sie unter [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md#triggers).

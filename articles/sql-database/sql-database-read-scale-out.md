@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 04/23/2018
+ms.date: 06/27/2018
 ms.author: sashan
-ms.openlocfilehash: 8de70c01f4c04d6df85c2f5acfe9efe18ff59c0b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7b504306e32f97a0392239f9e6adc6c460848580
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649685"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060007"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Verwenden von schreibgeschützten Replikaten für den Lastenausgleich schreibgeschützter Abfrageworkloads (Vorschau)
 
@@ -22,7 +22,7 @@ ms.locfileid: "34649685"
 
 ## <a name="overview-of-read-scale-out"></a>Übersicht über die horizontale Leseskalierung
 
-Jede Datenbank im Premium-Tarif ([DTU-basiertes Einkaufsmodell](sql-database-service-tiers-dtu.md)) oder im unternehmenskritischen Tarif ([auf virtuellen Kernen basierendes Einkaufsmodell [Vorschau]](sql-database-service-tiers-vcore.md)) wird automatisch mit verschiedenen Always On-Replikaten bereitgestellt, um die Verfügbarkeits-SLA zu unterstützen. Diese Replikate werden mit der gleichen Leistungsstufe bereitgestellt wie das Replikat mit Lese-/Schreibzugriff, das von den regulären Datenbankverbindungen verwendet wird. Das Feature der **horizontalen Leseskalierung** ermöglicht es Ihnen, einen Lastenausgleich für schreibgeschützte SQL-Datenbank-Workloads durchzuführen, indem Sie die Kapazität der schreibgeschützten Replikate verwenden anstatt das Replikat mit Lese-/Schreibzugriff freizugeben. Auf diese Weise wird die schreibgeschützte Workload von der Hauptworkload für Lesen und Schreiben isoliert und beeinträchtigen deren Leistung nicht. Das Feature ist für Anwendungen konzipiert, die logisch getrennte schreibgeschützte Workloads – z.B. zur Analyse – umfassen und daher mit dieser zusätzlichen Kapazität ohne zusätzliche Kosten Leistungsvorteile erzielen könnten.
+Jede Datenbank im Premium-Tarif ([DTU-basiertes Einkaufsmodell](sql-database-service-tiers-dtu.md)) oder im unternehmenskritischen Tarif ([auf virtuellen Kernen basierendes Einkaufsmodell [Vorschau]](sql-database-service-tiers-vcore.md)) wird automatisch mit mehreren Always On-Replikaten bereitgestellt, um die Verfügbarkeits-SLA zu unterstützen. Diese Replikate werden mit der gleichen Leistungsstufe bereitgestellt wie das Replikat mit Lese-/Schreibzugriff, das von den regulären Datenbankverbindungen verwendet wird. Das Feature **Horizontale Leseskalierung** ermöglicht es Ihnen, einen Lastenausgleich für schreibgeschützte SQL-Datenbank-Workloads vorzunehmen, indem Sie die Kapazität eines der schreibgeschützten Replikate verwenden, statt das Replikat mit Lese-/Schreibzugriff freizugeben. Auf diese Weise wird die schreibgeschützte Workload von der Hauptworkload für Lesen und Schreiben isoliert und beeinträchtigen deren Leistung nicht. Das Feature ist für Anwendungen konzipiert, die logisch getrennte schreibgeschützte Workloads – z.B. zur Analyse – umfassen und daher mit dieser zusätzlichen Kapazität ohne zusätzliche Kosten Leistungsvorteile erzielen könnten.
 
 Um die horizontale Leseskalierung mit einer bestimmten Datenbank zu verwenden, müssen Sie das Feature explizit beim Erstellen der Datenbank aktivieren. Sie können es auch später aktivieren, indem Sie die Konfiguration ändern. Hierzu rufen Sie in PowerShell die Cmdlets [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) oder [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) auf oder verwenden die Methode [Datenbanken – Erstellen oder Aktualisieren](/rest/api/sql/databases/createorupdate) in der Azure Resource Manager-REST-API. 
 
@@ -61,9 +61,12 @@ Server=tcp:<server>.database.windows.net;Database=<mydatabase>;User ID=<myLogin>
 
 Sie können durch Ausführen der folgenden Abfrage überprüfen, ob Sie mit einem schreibgeschützten Replikat verbunden sind. Bei Verbindung mit einem schreibgeschützten Replikat wird READ_ONLY zurückgegeben.
 
+
 ```SQL
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 ```
+> [!NOTE]
+> Es ist jeweils nur eines der Always On-Replikate für die schreibgeschützten Sitzungen verfügbar.
 
 ## <a name="enable-and-disable-read-scale-out-using-azure-powershell"></a>Aktivieren und Deaktivieren der horizontalen Leseskalierung mithilfe von Azure PowerShell
 
@@ -106,6 +109,14 @@ Body:
 ```
 
 Weitere Informationen finden Sie unter [Databanken – Erstellen oder Aktualisieren](/rest/api/sql/databases/createorupdate).
+
+## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Verwenden der horizontalen Leseskalierung mit georeplizierten Datenbanken
+
+Wenn Sie die horizontale Leseskalierung verwenden, um einen Lastenausgleich für schreibgeschützte Workloads in einer Datenbank vorzunehmen, die (z. B. als Mitglied einer Failovergruppe) georepliziert ist, stellen Sie sicher, dass die horizontale Leseskalierung sowohl für die primäre Datenbank als auch für die georeplizierte sekundäre Datenbank aktiviert ist. Dadurch wird dieselbe Lastenausgleichswirkung sichergestellt, wenn Ihre Anwendung nach einem Failover eine Verbindung mit der neuen primären Datenbank herstellt. Wenn Sie eine Verbindung mit der georeplizierten sekundären Datenbank mit aktivierter horizontaler Leseskalierung herstellen, werden Ihre Sitzungen mit `ApplicationIntent=ReadOnly` auf die gleiche Weise an eines der Replikate weitergeleitet wie Verbindungen in der primären Datenbank weitergeleitet werden.  Die Sitzungen ohne `ApplicationIntent=ReadOnly` werden an das primäre Replikat der georeplizierten sekundären Datenbank weitergeleitet, das ebenfalls schreibgeschützt ist. Weil die georeplizierte sekundäre Datenbank einen anderen Endpunkt als die primäre Datenbank aufweist, musste `ApplicationIntent=ReadOnly` in der Vergangenheit nicht festgelegt werden, um auf die sekundäre Datenbank zuzugreifen. Um die Abwärtskompatibilität sicherzustellen, zeigt die `sys.geo_replication_links`-DMV `secondary_allow_connections=2` (jede Clientverbindung ist zulässig) an.
+
+> [!NOTE]
+> Während der Vorschau führen wir kein Roundrobin- oder Lastenausgleichsrouting zwischen den lokalen Replikaten der sekundären Datenbank durch. 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

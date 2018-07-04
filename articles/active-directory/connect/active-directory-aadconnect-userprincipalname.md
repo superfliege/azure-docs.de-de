@@ -4,17 +4,17 @@ description: Im folgenden Dokument wird beschrieben, wie das UserPrincipalName-A
 author: billmath
 ms.component: hybrid
 ms.author: billmath
-ms.date: 02/02/2018
+ms.date: 06/26/2018
 ms.topic: article
 ms.workload: identity
 ms.service: active-Directory
 manager: mtillman
-ms.openlocfilehash: 73238b1f79e639f832499eed15ac1e4499eb6e84
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6b3fddcdf6ff9c35d5932b9b83da02f60f9e081e
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593395"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064331"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Auffüllung des UserPrincipalName-Attributs in Azure AD
 
@@ -30,24 +30,24 @@ In diesem Artikel wird die folgende Terminologie verwendet:
 |Microsoft Online Email Routing Address (MOERA)|Azure AD berechnet die MOERA anhand des MailNickName-Attributs in Azure AD und der Azure AD-Anfangsdomäne als &lt;MailNickName&gt;&#64;&lt;Anfangsdomäne&gt;.|
 |Lokales mailNickName-Attribut|Ein Attribut in Active Directory, dessen Wert den Alias eines Benutzers in einer Exchange-Organisation darstellt|
 |Lokales mail-Attribut|Ein Attribut in Active Directory, dessen Wert die E-Mail-Adresse eines Benutzers darstellt|
-|Primäre SMTP-Adresse|Die primäre E-Mail-Adresse eines Exchange-Empfängerobjekts Beispiel: SMTP:user@contoso.com.|
+|Primäre SMTP-Adresse|Die primäre E-Mail-Adresse eines Exchange-Empfängerobjekts Beispiel: SMTP:user\@contoso.com.|
 |Alternative Anmelde-ID|Ein anderes lokales Attribut als UserPrincipalName, z.B. das für die Anmeldung verwendete mail-Attribut|
 
 ## <a name="what-is-userprincipalname"></a>Was ist UserPrincipalName?
 UserPrincipalName ist ein Attribut, d.h. ein Anmeldename im Internetformat für einen Benutzer basierend auf dem Internetstandard [RFC 822](http://www.ietf.org/rfc/rfc0822.txt). 
 
 ### <a name="upn-format"></a>UPN-Format
-Ein UPN besteht aus einem UPN-Präfix (dem Benutzerkontonamen) und einem UPN-Suffix (einem DNS-Domänennamen). Das Präfix wird mithilfe des @-Symbols mit dem Suffix verknüpft. Beispiel: „someone@example.com“. Ein UPN muss für alle Sicherheitsprinzipalobjekte innerhalb einer Verzeichnisgesamtstruktur eindeutig sein. 
+Ein UPN besteht aus einem UPN-Präfix (dem Benutzerkontonamen) und einem UPN-Suffix (einem DNS-Domänennamen). Das Präfix wird mithilfe des „\@“-Symbols mit dem Suffix verknüpft. Beispiel: jemand\@example.com. Ein UPN muss für alle Sicherheitsprinzipalobjekte innerhalb einer Verzeichnisgesamtstruktur eindeutig sein. 
 
 ## <a name="upn-in-azure-ad"></a>UPN in Azure AD 
 Der UPN wird von Azure AD verwendet, um Benutzern die Anmeldung zu ermöglichen.  Die Auswahl der UPNs, die ein Benutzer verwenden kann, hängt davon ab, ob die Domäne überprüft wurde.  Wenn die Domäne überprüft wurde, kann sich ein Benutzer mit diesem Suffix bei Azure AD anmelden.  
 
-Das Attribut wird durch Azure AD Connect synchronisiert.  Bei der Installation können Sie die Domänen anzeigen, die bestätigt und nicht bestätigt wurden.
+Das Attribut wird durch Azure AD Connect synchronisiert.  Bei der Installation können Sie die Domänen anzeigen, die überprüft und nicht überprüft wurden.
 
    ![Nicht überprüfte Domänen](./media/active-directory-aadconnect-get-started-express/unverifieddomain.png) 
 
 ## <a name="alternate-login-id"></a>Alternative Anmelde-ID
-In einigen Umgebungen können Endbenutzer aufgrund von Unternehmensrichtlinien oder Abhängigkeiten von lokalen Branchenanwendungen nur ihre E-Mail-Adresse und nicht ihren UPN beachten.
+In einigen Umgebungen kennen Endbenutzer ggf. nur ihre E-Mail-Adresse und nicht ihren UPN.  Die Verwendung der E-Mail-Adresse kann aufgrund einer Unternehmensrichtlinie oder einer lokalen Branchenanwendungsabhängigkeit erfolgen.
 
 Alternative Anmelde-IDs bieten die Möglichkeit, eine Anmeldeumgebung zu konfigurieren, in der sich Benutzer mit anderen Attributen als dem UPN anmelden können, z.B. mit der E-Mail-Adresse.
 
@@ -66,7 +66,7 @@ Wenn das lokale UserPrincipalName-Attribut bzw. das Suffix für die alternative 
 ## <a name="azure-ad-mailnickname-attribute-value-calculation"></a>Berechnung des MailNickName-Attributwerts in Azure AD
 Da der Wert des UserPrincipalName-Attributs in Azure AD auf die MOERA festgelegt werden konnte, muss in jedem Fall erläutert werden, wie der MailNickName-Attributwert in Azure AD, d.h. das MOERA-Präfix, berechnet wird.
 
-Wenn ein Benutzerobjekt zum ersten Mal mit einem Azure AD-Mandanten synchronisiert wurde, überprüft Azure AD Folgendes in der angegebenen Reihenfolge und legt den Wert des MailNickName-Attributs auf den ersten vorhandenen Wert fest:
+Wenn ein Benutzerobjekt zum ersten Mal mit einem Azure AD-Mandanten synchronisiert wurde, überprüft Azure AD die folgenden Elemente in der angegebenen Reihenfolge und legt den Wert des MailNickName-Attributs auf den ersten vorhandenen Wert fest:
 
 - Lokales mailNickName-Attribut
 - Präfix der primären SMTP-Adresse
@@ -86,6 +86,8 @@ Die folgenden Beispielszenarien zeigen, wie der UPN basierend auf dem vorgegeben
 
 ### <a name="scenario-1-non-verified-upn-suffix--initial-synchronization"></a>Szenario 1: Nicht überprüftes UPN-Suffix – Erstsynchronisierung
 
+![Szenario1](media/active-directory-aadconnect-userprincipalname/example1.png)
+
 Lokales Benutzerobjekt:
 - mailNickName      : &lt;nicht festgelegt&gt;
 - proxyAddresses        : {SMTP:us1@contoso.com}
@@ -104,6 +106,8 @@ Benutzerobjekt des Azure AD-Mandanten:
 
 ### <a name="scenario-2-non-verified-upn-suffix--set-on-premises-mailnickname-attribute"></a>Szenario 2: Nicht überprüftes UPN-Suffix – Festlegen eines lokalen mailNickName-Attributs
 
+![Szenario2](media/active-directory-aadconnect-userprincipalname/example2.png)
+
 Lokales Benutzerobjekt:
 - mailNickName      : us4
 - proxyAddresses        : {SMTP:us1@contoso.com}
@@ -119,6 +123,8 @@ Benutzerobjekt des Azure AD-Mandanten:
 - UserPrincipalName : us1@contoso.onmicrosoft.com
 
 ### <a name="scenario-3-non-verified-upn-suffix--update-on-premises-userprincipalname-attribute"></a>Szenario 3: Nicht überprüftes UPN-Suffix – Aktualisieren des lokalen userPrincipalName-Attributs
+
+![Szenario3](media/active-directory-aadconnect-userprincipalname/example3.png)
 
 Lokales Benutzerobjekt:
 - mailNickName      : us4
@@ -137,6 +143,8 @@ Benutzerobjekt des Azure AD-Mandanten:
 
 ### <a name="scenario-4-non-verified-upn-suffix--update-primary-smtp-address-and-on-premises-mail-attribute"></a>Szenario 4: nicht überprüftes UPN-Suffix – Aktualisieren der primären SMTP-Adresse und des lokalen mail-Attributs
 
+![Szenario4](media/active-directory-aadconnect-userprincipalname/example4.png)
+
 Lokales Benutzerobjekt:
 - mailNickName      : us4
 - proxyAddresses        : {SMTP:us6@contoso.com}
@@ -151,6 +159,8 @@ Benutzerobjekt des Azure AD-Mandanten:
 - UserPrincipalName : us4@contoso.onmicrosoft.com
 
 ### <a name="scenario-5-verified-upn-suffix--update-on-premises-userprincipalname-attribute-suffix"></a>Szenario 5: Nicht überprüftes UPN-Suffix – Aktualisieren des lokalen userPrincipalName-Attributsuffixes
+
+![Szenario5](media/active-directory-aadconnect-userprincipalname/example5.png)
 
 Lokales Benutzerobjekt:
 - mailNickName      : us4

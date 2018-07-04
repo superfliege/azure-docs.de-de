@@ -1,5 +1,5 @@
 ---
-title: Überwachen und Nachverfolgen der Verwendung kostenloser Dienste – Azure | Microsoft-Dokumentation
+title: Überwachen und Nachverfolgen der Verwendung kostenloser Azure-Dienste | Microsoft Docs
 description: Erfahren Sie, wie Sie die Nutzung von kostenlosen Diensten überprüfen. Verwenden Sie das Azure-Portal und die Nutzungs-CSV-Datei.
 services: ''
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: amberb
-ms.openlocfilehash: 560137d92491da46fda950dec84a0a7caa3ed720
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 7fa0196b7a44ef20ecd63797869dffea55f92c3d
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33205889"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061315"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Überprüfen der Verwendung der kostenlosen Dienste, die in Ihrem kostenlosen Azure-Konto enthalten sind 
 

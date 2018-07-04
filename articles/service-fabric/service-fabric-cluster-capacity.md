@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2018
+ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: 78cff3ba5bd2f8bc80f302a232e45864159ca88f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: aca03452ff5655d3a7180009f42df14c9459a9ff
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641882"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061557"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster
 Die Kapazitätsplanung ist ein wichtiger Schritt bei jeder Produktionsbereitstellung. Nachfolgend sind einige Aspekte aufgeführt, die Sie dabei berücksichtigen müssen.
@@ -27,6 +27,10 @@ Die Kapazitätsplanung ist ein wichtiger Schritt bei jeder Produktionsbereitstel
 * Die Anzahl von Knotentypen, über die Ihr Cluster anfänglich verfügen muss
 * Die Eigenschaften der einzelnen Knotentypen (Größe, primärer Knotentyp, Internetzugriff, Anzahl von VMs usw.)
 * Die Zuverlässigkeits- und Dauerhaftigkeitsmerkmale des Clusters
+
+> [!NOTE]
+> Sie müssen mindestens alle Werte der Upgraderichtlinie **Unzulässig** während der Planung überprüfen. Damit stellen Sie sicher, dass Sie die Werte richtig festlegen und ein späteres Abbrechen Ihres Clusters aufgrund unveränderlicher Systemkonfigurationseinstellungen verhindern. 
+> 
 
 Im Folgenden gehen wir kurz auf diese Aspekte ein.
 
@@ -46,6 +50,8 @@ Der **Knotentyp** kann als Äquivalent zu Rollen in Cloud Services betrachtet we
 Jeder Knotentyp ist eine separate Skalierungsgruppe und kann einzeln zentral hoch- oder herunterskaliert werden. Bei jedem Typ können unterschiedliche Portgruppen geöffnet sein, und die Typen weisen verschiedene Kapazitätsmetriken auf. Weitere Informationen über die Beziehungen zwischen Knotentypen und VM-Skalierungsgruppen, über den Zugriff per RDP auf eine der Instanzen, über das Öffnen neuer Ports usw. finden Sie unter [Service Fabric-Clusterknotentypen](service-fabric-cluster-nodetypes.md).
 
 Ein Service Fabric-Cluster kann mehrere Knotentypen enthalten. In diesem Fall besteht der Cluster aus einem primären Knotentyp und einem oder mehreren nicht primären Knotentypen.
+
+Ein einzelner Knotentyp kann nicht ohne Weiteres 100 Knoten pro VM-Skalierungsgruppe überschreiten. Sie müssen ggf. VM-Skalierungsgruppen hinzufügen, um die angestrebte Skalierung zu erreichen. Außerdem können über die automatische Skalierung keine VM-Skalierungsgruppen hinzugefügt werden. Das Hinzufügen von VM-Skalierungsgruppen zu einem aktiven Cluster ist eine anspruchsvolle Aufgabe, die in der Regel dazu führt, dass Benutzer neue Cluster mit den entsprechenden Knotentypen bereitstellen, die zum Zeitpunkt der Erstellung bereitgestellt werden. 
 
 ### <a name="primary-node-type"></a>Primärer Knotentyp
 
@@ -188,7 +194,7 @@ Diese Anleitung gilt für zustandslose Workloads, die Sie auf dem nicht primäre
 
 **Anzahl von VM-Instanzen:** Für zustandslose Produktionsworkloads wird die Mindestgröße 2 für den nicht primären Knotentyp unterstützt. So können Sie zwei zustandslose Instanzen Ihrer Anwendung ausführen und stellen sicher, dass Ihr Dienst auch beim Ausfall einer VM-Instanz weiter funktioniert. 
 
-**VM-SKU**: Dies ist der Knotentyp, in dem Ihre Anwendungsdienste ausgeführt werden. Daher muss die ausgewählte VM-SKU die Spitzenlast verarbeiten können, die Sie für jeden Knoten planen. Die Kapazitätsanforderungen des Knotentyps sind von der Workload abhängig, die Sie für die Ausführung im Cluster planen. Daher können wir Ihnen keine detaillierten Anleitungen für Ihre spezifische Workload bereitstellen. Im Folgenden finden Sie eine allgemeine Übersicht, um Ihnen beim Einstieg zu helfen
+**VM-SKU**: Dies ist der Knotentyp, in dem Ihre Anwendungsdienste ausgeführt werden. Daher muss die ausgewählte VM-SKU die Spitzenlast verarbeiten können, die Sie für jeden Knoten planen. Die Kapazitätsanforderungen des Knotentyps sind von der Workload abhängig, die Sie für die Ausführung im Cluster planen. Daher können wir Ihnen keine detaillierten Anleitungen für Ihre spezifische Workload bereitstellen. Im Folgenden finden Sie eine allgemeine Übersicht, um Ihnen beim Einstieg zu helfen.
 
 Für Produktionsworkloads 
 

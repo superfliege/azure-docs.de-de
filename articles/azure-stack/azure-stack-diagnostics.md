@@ -7,15 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/27/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: b966ed4f1a9a8e659fbce185a807573d5321b251
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 50fef25a3b7b71821e64638729eb8d93f65b9e31
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801652"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064171"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack-Diagnosetools
 
@@ -46,6 +46,35 @@ Es folgen einige Beispiele für die gesammelten Protokolltypen:
 *   **ETW-Protokolle**
 
 Diese Dateien werden vom Collector der Ablaufverfolgung gesammelt und in einer Freigabe gespeichert. Das PowerShell-Cmdlet **Get-AzureStackLog** kann dann verwendet werden, um sie bei Bedarf zu sammeln.
+
+### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems"></a>So führen Sie „Get-AzureStackLog“ in integrierten Azure Stack-Systemen aus 
+Um das Protokollerfassungstool in einem integrierten System auszuführen, benötigen Sie Zugriff auf den privilegierten Endpunkt (PEP). Das folgende Beispielskript können Sie mit dem PEP ausführen, um Protokolle in einem integrierten System zu sammeln:
+
+```powershell
+$ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
+ 
+$pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
+$cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
+ 
+$shareCred = Get-Credential
+ 
+$s = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred
+
+$fromDate = (Get-Date).AddHours(-8)
+$toDate = (Get-Date).AddHours(-2)  #provide the time that includes the period for your issue
+ 
+Invoke-Command -Session $s {    Get-AzureStackLog -OutputSharePath "<EXTERNAL SHARE ADDRESS>" -OutputShareCredential $using:shareCred  -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate}
+
+if($s)
+{
+    Remove-PSSession $s
+}
+```
+
+- Die Parameter **OutputSharePath** und **OutputShareCredential** werden verwendet, um Protokolle in einen externen freigegebenen Ordner hochzuladen.
+- Wie im vorherigen Beispiel gezeigt, können die Parameter **FromDate** und **ToDate** zum Sammeln von Protokollen für einen bestimmten Zeitraum verwendet werden. Dies kann für Szenarien wie das Sammeln von Protokollen nach dem Anwenden von Updatepaketen in einem integrierten System hilfreich sein.
+
+
  
 ### <a name="to-run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>So führen Sie Get-AzureStackLog in einem System mit dem Azure Stack Development Kit (ASDK) aus
 1. Melden Sie sich auf dem Host als **AzureStack\CloudAdmin** an.
@@ -77,65 +106,6 @@ Diese Dateien werden vom Collector der Ablaufverfolgung gesammelt und in einer F
   ```powershell
   Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
   ```
-
-### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems-version-1804-and-later"></a>So führen Sie Get-AzureStackLog in integrierten Azure Stack-Systemen mit Version 1804 und höher aus
-
-Um das Protokollerfassungstool in einem integrierten System auszuführen, benötigen Sie Zugriff auf den privilegierten Endpunkt (PEP). Das folgende Beispielskript können Sie mit dem PEP ausführen, um Protokolle in einem integrierten System zu sammeln:
-
-```powershell
-$ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
- 
-$pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
-$cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
- 
-$shareCred = Get-Credential
- 
-$s = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred
-
-$fromDate = (Get-Date).AddHours(-8)
-$toDate = (Get-Date).AddHours(-2)  #provide the time that includes the period for your issue
- 
-Invoke-Command -Session $s {    Get-AzureStackLog -OutputSharePath "<EXTERNAL SHARE ADDRESS>" -OutputShareCredential $using:shareCred  -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate}
-
-if($s)
-{
-    Remove-PSSession $s
-}
-```
-
-- Die Parameter **OutputSharePath** und **OutputShareCredential** werden verwendet, um Protokolle in einen externen freigegebenen Ordner hochzuladen.
-- Wie im vorherigen Beispiel gezeigt, können die Parameter **FromDate** und **ToDate** zum Sammeln von Protokollen für einen bestimmten Zeitraum verwendet werden. Dies kann für Szenarien wie das Sammeln von Protokollen nach dem Anwenden von Updatepaketen in einem integrierten System hilfreich sein.
-
-
-### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems-version-1803-and-earlier"></a>So führen Sie Get-AzureStackLog in integrierten Azure Stack-Systemen mit Version 1803 und früher aus
-
-Um das Protokollerfassungstool in einem integrierten System auszuführen, benötigen Sie Zugriff auf den privilegierten Endpunkt (PEP). Das folgende Beispielskript können Sie mit dem PEP ausführen, um Protokolle in einem integrierten System zu sammeln:
-
-```powershell
-$ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
- 
-$pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
-$cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
- 
-$shareCred = Get-Credential
- 
-$s = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred
-
-$fromDate = (Get-Date).AddHours(-8)
-$toDate = (Get-Date).AddHours(-2)  #provide the time that includes the period for your issue
- 
-Invoke-Command -Session $s {    Get-AzureStackLog -OutputPath "\\<HLH MACHINE ADDRESS>\c$\logs" -OutputSharePath "<EXTERNAL SHARE ADDRESS>" -OutputShareCredential $using:shareCred  -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate}
-
-if($s)
-{
-    Remove-PSSession $s
-}
-```
-
-- Geben Sie beim Sammeln von Protokollen vom PEP für den **OutputPath**-Parameter einen Speicherort auf dem HLH-Computer (Hardware Lifecycle Host) an. Stellen Sie außerdem sicher, dass der Speicherort verschlüsselt ist.
-- Die Parameter **OutputSharePath** und **OutputShareCredential** sind optional und werden verwendet, wenn Sie Protokolle in einen externen freigegebenen Ordner hochladen. Verwenden Sie diese Parameter *zusätzlich* zu **OutputPath**. Wenn **OutputPath** nicht angegeben ist, verwendet das Protokollsammlungstool das Systemlaufwerk der PEP-VM für die Speicherung. Dies kann zu einem Fehler beim Skript führen, da der Speicherplatz auf dem Laufwerk begrenzt ist.
-- Wie im vorherigen Beispiel gezeigt, können die Parameter **FromDate** und **ToDate** zum Sammeln von Protokollen für einen bestimmten Zeitraum verwendet werden. Dies kann für Szenarien wie das Sammeln von Protokollen nach dem Anwenden von Updatepaketen in einem integrierten System hilfreich sein.
-
 
 ### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>Überlegungen zu den Parametern für das ASDK und integrierte Systeme
 

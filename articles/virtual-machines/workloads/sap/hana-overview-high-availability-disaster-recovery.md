@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/30/2018
+ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9c4c126663d34d65cc7e0aa641bf93b848a5dcae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d2445713aa5d6a839950ca0fe9567133c06d1ffa
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658314"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062240"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) 
 
@@ -44,10 +44,12 @@ Die folgende Tabelle gibt Aufschluss über die derzeit unterstützten Hochverfü
 | In HANA (große Instanzen) unterstütztes Szenario | Hochverfügbarkeit | Notfallwiederherstellung | Kommentare |
 | --- | --- | --- | --- |
 | Einzelner Knoten | Nicht verfügbar. | Dedizierte Notfallwiederherstellungseinrichtung.<br /> Mehrzweck-Notfallwiederherstellungseinrichtung. | |
-| Automatisches Hostfailover: N + M<br /> einschließlich 1 + 1 | Möglich durch Übernahme der aktiven Rolle durch den Standbyknoten.<br /> Steuerung des Rollenwechsels durch HANA. | Dedizierte Notfallwiederherstellungseinrichtung.<br /> Mehrzweck-Notfallwiederherstellungseinrichtung.<br /> Synchronisierung der Notfallwiederherstellung mithilfe der Speicherreplikation. | An alle Knoten (N + M) angefügte HANA-Volumesätze.<br /> Standort für die Notfallwiederherstellung muss über gleiche Anzahl von Knoten verfügen. |
+| Automatisches Hostfailover: Horizontale Skalierung (mit oder ohne Standby)<br /> einschließlich 1 + 1 | Möglich durch Übernahme der aktiven Rolle durch den Standbyknoten.<br /> Steuerung des Rollenwechsels durch HANA. | Dedizierte Notfallwiederherstellungseinrichtung.<br /> Mehrzweck-Notfallwiederherstellungseinrichtung.<br /> Synchronisierung der Notfallwiederherstellung mithilfe der Speicherreplikation. | HANA-Volumesätze werden an alle Knoten angefügt.<br /> Standort für die Notfallwiederherstellung muss über gleiche Anzahl von Knoten verfügen. |
 | HANA-Systemreplikation | Möglich mit Primär-/Sekundäreinrichtung.<br /> Bei einem Failover übernimmt das sekundäre Replikat die Rolle des primären Replikats.<br /> Failoversteuerung durch HANA-Systemreplikation und Betriebssystem. | Dedizierte Notfallwiederherstellungseinrichtung.<br /> Mehrzweck-Notfallwiederherstellungseinrichtung.<br /> Synchronisierung der Notfallwiederherstellung mithilfe der Speicherreplikation.<br /> Die Notfallwiederherstellung mithilfe der HANA-Systemreplikation ist noch nicht ohne Drittanbieterkomponenten möglich. | Separater Satz angefügter Datenträgervolumes für die einzelnen Knoten.<br /> Nur Datenträgervolumes des sekundären Replikats am Produktionsstandort werden am Standort für die Notfallwiederherstellung repliziert.<br /> Am Standort für die Notfallwiederherstellung wird ein einzelner Volumesatz benötigt. | 
 
 Eine dedizierte Notfallwiederherstellungseinrichtung ist eine Einrichtung, bei der die große HANA-Instanzeinheit am Standort für die Notfallwiederherstellung nicht zum Ausführen einer anderen Workload oder eines produktionsfremden Systems verwendet wird. Die Einheit ist passiv und wird nur dann bereitgestellt, wenn eine Notfallwiederherstellung ausgeführt wird. Für viele Kunden stellt dieses Setup jedoch nicht die bevorzugte Option dar.
+
+Speicherlayout- und Ethernet-Details für Ihre Architektur finden Sie unter [Unterstützte HLI-Szenarien](hana-supported-scenario.md).
 
 > [!NOTE]
 > [MCOD-Bereitstellungen von SAP HANA](https://launchpad.support.sap.com/#/notes/1681092) (mehrere HANA-Instanzen an einer Einheit) als Grundszenarien funktionieren mit den in der Tabelle aufgeführten Methoden für Hochverfügbarkeit und Notfallwiederherstellung. Eine Ausnahme bildet die Verwendung der HANA-Systemreplikation mit einem automatischen Pacemaker-Failovercluster. In einem solchen Fall wird nur eine HANA-Instanz pro Einheit unterstützt. In [SAP HANA MDC](https://launchpad.support.sap.com/#/notes/2096000)-Bereitstellungen funktionieren nur Hochverfügbarkeits- und Notfallwiederherstellungsmethoden ohne Speicher, wenn mehrere Mandanten bereitgestellt werden. Bei der Bereitstellung von nur einem Mandanten sind alle genannten Methoden gültig.  
@@ -60,7 +62,7 @@ Weitere Informationen zur Hochverfügbarkeit von SAP HANA finden Sie in den folg
 - [Whitepaper zur Hochverfügbarkeit von SAP HANA](http://go.sap.com/documents/2016/05/f8e5eeba-737c-0010-82c7-eda71af511fa.html)
 - [SAP HANA-Administratorhandbuch](http://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf)
 - [SAP HANA Academy-Video zur SAP HANA-Systemreplikation](http://scn.sap.com/community/hana-in-memory/blog/2015/05/19/sap-hana-system-replication)
-- [SAP Support Note #1999880 – FAQ on SAP HANA System Replication](https://bcs.wdf.sap.corp/sap/support/notes/1999880)
+- [SAP Support Note #1999880 – FAQ on SAP HANA System Replication](https://apps.support.sap.com/sap/support/knowledge/preview/en/1999880)
 - [Hinweis zur SAP-Unterstützung #2165547 – Sichern und Wiederherstellen mit SAP HANA in einer SAP HANA-Systemreplikationsumgebung](https://websmp230.sap-ag.de/sap(bD1lbiZjPTAwMQ==)/bc/bsp/sno/ui_entry/entry.htm?param=69765F6D6F64653D3030312669765F7361706E6F7465735F6E756D6265723D3231363535343726)
 - [SAP Support Note #1984882 – Using SAP HANA System Replication for Hardware Exchange with Minimum/Zero Downtime](https://websmp230.sap-ag.de/sap(bD1lbiZjPTAwMQ==)/bc/bsp/sno/ui_entry/entry.htm?param=69765F6D6F64653D3030312669765F7361706E6F7465735F6E756D6265723D3139383438383226)
 

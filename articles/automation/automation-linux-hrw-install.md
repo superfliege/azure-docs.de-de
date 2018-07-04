@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8507cf99ea22b24aa3026565cb7c4139e4c3742d
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: d37dbb85dc85ee8bae0447f18f771dc658de18e3
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36267862"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060237"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Bereitstellen eines Linux-Hybrid Runbook Workers
 
@@ -109,41 +109,9 @@ Die folgenden Runbooktypen werden auf einem Linux Hybrid Worker nicht unterstüt
 * Grafisch
 * Grafischer PowerShell-Workflow
 
-## <a name="troubleshooting"></a>Problembehandlung
+## <a name="troubleshoot"></a>Problembehandlung
 
-Der Linux Hybrid Runbook Worker ist abhängig vom OMS-Agent für Linux, um mit Ihrem Automation-Konto für die Registrierung des Workers zu kommunizieren, Runbook-Aufträge zu erhalten und den Status zu melden. Wenn bei der Registrierung des Workers ein Fehler auftritt, kommen hierfür mehrere Gründe infrage.
-
-### <a name="the-oms-agent-for-linux-isnt-running"></a>Der OMS-Agent für Linux wird nicht ausgeführt.
-
-Wenn der OMS-Agent für Linux nicht ausgeführt wird, kann der Linux Hybrid Runbook Worker nicht mit Azure Automation kommunizieren. Überprüfen Sie, ob der Agent ausgeführt wird, indem Sie den Befehl `ps -ef | grep python` eingeben. 
-
-Die Ausgabe sollte in etwa folgendermaßen aussehen (die Python-Prozesse mit dem **nxautomation**-Benutzerkonto). Wenn die Updateverwaltung oder Azure Automation-Lösung nicht aktiviert ist, wird keiner der folgenden Prozesse ausgeführt.
-
-```bash
-nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
-nxautom+   8593      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/state/automationworker/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
-nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/<workspaceId>/state/automationworker/diy/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
-```
-
-Die folgenden Prozesse werden für einen Linux Hybrid Runbook Worker gestartet. Sie befinden sich alle im Verzeichnis `/var/opt/microsoft/omsagent/state/automationworker/`.
-
-* **OMS.conf**: Dies ist der Worker-Manager-Prozess. Er wird direkt von Desired State Configuration (DSC) gestartet.
-
-* **worker.conf**: Dies ist der automatisch registrierte Hybrid Worker-Prozess. Er wird vom Worker-Manager gestartet. Dieser Prozess dient der Updateverwaltung und ist für den Benutzer transparent. Dieser Prozess ist nur vorhanden, wenn die Updateverwaltungslösung auf dem Computer aktiviert ist.
-
-* **diy/worker.conf**: Dies ist der DIY-Hybrid Worker-Prozess. Der eigenständige Hybrid Worker-Prozess wird verwendet, um Benutzerrunbooks auf dem Hybrid Runbook Worker auszuführen. Er unterscheidet sich vom automatisch registrierten Hybrid Worker-Prozess nur darin, dass eine andere Konfiguration verwendet wird. Dieser Prozess ist nur vorhanden, wenn die Azure Automation-Lösung aktiviert und der DIY-Linux Hybrid Worker registriert ist.
-
-Wenn der OMS-Agent für Linux nicht ausgeführt wird, führen Sie zum Starten des Diensts den folgenden Befehl aus: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
-
-### <a name="the-specified-class-doesnt-exist"></a>Die angegebene Klasse ist nicht vorhanden.
-
-Wenn die Fehlermeldung „Die angegebene Klasse ist nicht vorhanden.“ in `/var/opt/microsoft/omsconfig/omsconfig.log` angezeigt wird, muss der OMS-Agent für Linux aktualisiert werden. Führen Sie den folgenden Befehl aus, um den OMS-Agent neu zu installieren:
-
-```bash
-wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
-```
-
-Zusätzliche Schritte zum Beheben von Problemen mit der Updateverwaltung finden Sie unter [Updateverwaltung: Problembehandlung](automation-update-management.md#troubleshooting).
+Informationen zur Problembehandlung Ihrer Hybrid Runbook Worker finden Sie unter [Problembehandlung von Linux Hybrid Runbook Workers](troubleshoot/hybrid-runbook-worker.md#linux).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

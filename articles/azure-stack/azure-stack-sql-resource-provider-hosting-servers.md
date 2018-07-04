@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/18/2018
+ms.date: 06/27/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 183d9479ae18e557b00d0867cad79600145da7bd
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: af820f90c5d8822dbdaa768b16360d534fd47828
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265227"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060041"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Hinzufügen von Hostservern für den SQL-Ressourcenanbieter
 
@@ -26,20 +26,24 @@ Sie können eine SQL-Instanz auf einem virtuellen Computer (VM) in [Azure Stack]
 
 ## <a name="overview"></a>Übersicht
 
-Es gelten die folgenden allgemeinen Anforderungen für SQL-Hostserver:
+Überprüfen Sie vor dem Hinzufügen eines SQL-Hostservers die folgenden obligatorischen und allgemeinen Anforderungen.
 
-* Die SQL-Instanz muss für die Verwendung durch den Ressourcenanbieter und durch Benutzerworkloads vorgesehen sein. Sie können keine SQL-Instanz verwenden, die durch andere Consumer verwendet wird. Diese Einschränkung gilt auch für App Services.
-* Die VM eines SQL-Ressourcenanbieters ist nicht in eine Domäne eingebunden und kann nur per SQL-Authentifizierung eine Verbindung herstellen.
-* Sie müssen ein Konto mit entsprechenden Berechtigungen für die Verwendung durch den Ressourcenanbieter konfigurieren.
-* Der Ressourcenanbieter und die Benutzer (z.B. Web-Apps) verwenden das Benutzernetzwerk, sodass in diesem Netzwerk Konnektivität mit der SQL-Instanz erforderlich ist. Diese Anforderung bedeutet normalerweise, dass sich die IP-Adressen der SQL-Instanzen in einem öffentlichen Netzwerk befinden müssen.
-* Die Verwaltung der SQL-Instanzen und ihrer Hosts liegt bei Ihnen. Beispielsweise wendet der Ressourcenanbieter keine Updates an, führt keine Sicherungen aus oder rotiert Anmeldeinformationen.
-* Sie können SKUs verwenden, die verschiedene Klassen von SQL-Fähigkeiten, z.B. Leistung und Hochverfügbarkeit, mit AlwaysOn unterstützen.
+**Obligatorische Anforderungen**
+
+* Aktivieren Sie die SQL-Authentifizierung auf der SQL Server-Instanz. Weil der virtuelle Computer eines SQL-Ressourcenanbieters nicht in eine Domäne eingebunden ist, kann er nur über die SQL-Authentifizierung eine Verbindung mit einem Hostserver herstellen.
+* Konfigurieren Sie die IP-Adressen für die SQL-Instanzen als „Öffentlich“. Der Ressourcenanbieter und die Benutzer (z. B. Web-Apps) kommunizieren über das Benutzernetzwerk, sodass in diesem Netzwerk Konnektivität mit der SQL-Instanz erforderlich ist.
+
+**Allgemeine Anforderungen**
+
+* Weisen Sie die SQL-Instanz für die Verwendung durch den Ressourcenanbieter und durch Benutzerworkloads zu. Sie können keine SQL-Instanz verwenden, die durch andere Consumer verwendet wird. Diese Einschränkung gilt auch für App Services.
+* Konfigurieren Sie ein Konto mit den entsprechenden Berechtigungsstufen für den Ressourcenanbieter.
+* Sie sind für die Verwaltung der SQL-Instanzen und deren Hosts verantwortlich.  Beispielsweise wendet der Ressourcenanbieter keine Updates an, führt keine Sicherungen aus oder rotiert Anmeldeinformationen.
 
 ### <a name="sql-server-virtual-machine-images"></a>Images virtueller SQL Server-Computer
 
 Images für SQL-IaaS-VMs sind über das Marketplace-Verwaltungsfeature verfügbar. Diese Images sind mit den in Azure verfügbaren SQL-VMs identisch.
 
-Achten Sie darauf, immer die neueste Version der **SQL-IaaS-Erweiterung** herunterzuladen, bevor Sie eine VM mit einem Marketplace-Artikel bereitstellen.  Die IaaS-Erweiterung und die zugehörigen Portalerweiterungen stellen zusätzliche Features wie das automatische Patchen und Sicherungen bereit.
+Laden Sie vor dem Bereitstellen eines virtuellen SQL-Computers mit einem Marketplace-Element unbedingt immer die neueste Version der **SQL-IaaS-Erweiterung** herunter. Die IaaS-Erweiterung und die zugehörigen Portalerweiterungen stellen zusätzliche Features wie das automatische Patchen und Sicherungen bereit. Weitere Informationen zu dieser Erweiterung finden Sie unter [Automatisieren von Verwaltungsaufgaben auf virtuellen Azure-Computern mit der SQL Server-Agent-Erweiterung](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
 
 Es gibt noch weitere Optionen für die Bereitstellung von SQL-VMs, einschließlich Vorlagen im [Schnellstartkatalog für Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates).
 
@@ -48,18 +52,18 @@ Es gibt noch weitere Optionen für die Bereitstellung von SQL-VMs, einschließli
 
 ### <a name="required-privileges"></a>Erforderliche Berechtigungen
 
-Sie können einen Administrator erstellen, der weniger Rechte als ein SQL-Systemadministrator hat. Der Benutzer benötigt lediglich Rechte für die folgenden Vorgänge:
+Sie können einen Administrator erstellen, der über weniger Berechtigungen verfügt als ein SQL-Systemadministrator. Der Benutzer benötigt lediglich Rechte für die folgenden Vorgänge:
 
-- Datenbank: erstellen, ändern, mit Kapselung (nur AlwaysOn), ablegen, sichern
-- Verfügbarkeitsgruppe: ändern, verknüpfen, Datenbank hinzufügen/entfernen
-- Anmeldung: erstellen, auswählen, ändern, ablegen, widerrufen
-- Select-Vorgänge: \[master\].\[sys\].\[availability_group_listeners\] (Always On), sys.availability_replicas (Always On), sys.databases, \[master\].\[sys\].\[dm_os_sys_memory\], SERVERPROPERTY, \[master\].\[sys\].\[availability_groups\] (Always On), sys.master_files
+* Datenbank: erstellen, ändern, mit Kapselung (nur AlwaysOn), ablegen, sichern
+* Verfügbarkeitsgruppe: ändern, verknüpfen, Datenbank hinzufügen/entfernen
+* Anmeldung: erstellen, auswählen, ändern, ablegen, widerrufen
+* Select-Vorgänge: \[master\].\[sys\].\[availability_group_listeners\] (Always On), sys.availability_replicas (Always On), sys.databases, \[master\].\[sys\].\[dm_os_sys_memory\], SERVERPROPERTY, \[master\].\[sys\].\[availability_groups\] (Always On), sys.master_files
 
 ## <a name="provide-capacity-by-connecting-to-a-standalone-hosting-sql-server"></a>Bereitstellen von Kapazität durch Herstellen einer Verbindung mit einem eigenständigen SQL-Hostserver
 
 Sie können eigenständige SQL Server-Instanzen (ohne hohe Verfügbarkeit) mit einer beliebigen Edition von SQL Server 2014 oder SQL Server 2016 verwenden. Stellen Sie sicher, dass Sie über die Anmeldeinformationen für ein Konto mit Systemadministratorrechten verfügen.
 
-Zum Hinzufügen eines eigenständigen Hostservers, der bereits eingerichtet wurde, führen Sie die folgenden Schritte aus:
+Führen Sie die folgenden Schritte aus, um einen eigenständigen Hostserver hinzuzufügen, der bereits eingerichtet wurde:
 
 1. Melden Sie sich beim Azure Stack-Operatorportal als Dienstadministrator an.
 
@@ -71,36 +75,45 @@ Zum Hinzufügen eines eigenständigen Hostservers, der bereits eingerichtet wurd
 
    ![Dashboard „SQL-Adapter“](./media/azure-stack-sql-rp-deploy/sqladapterdashboard.png)
 
-3. Füllen Sie das Formular mit den Verbindungsdetails für Ihre SQL Server-Instanz aus.
+3. Geben Sie auf dem Formular **SQL-Hostserver hinzufügen** die Verbindungsdetails für Ihre SQL Server-Instanz an.
 
    ![Hinzufügen eines SQL-Hostservers](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
 
-    Sie können optional einen Instanznamen einschließen und eine Portnummer angeben, wenn die Instanz nicht dem Standardport 1433 zugewiesen ist.
+    Geben Sie optional einen Instanznamen an, und geben Sie eine Portnummer an, wenn die Instanz nicht dem Standardport 1433 zugewiesen ist.
 
    > [!NOTE]
    > Sofern die SQL-Instanz für den Azure Resource Manager-Benutzer und -Administrator zugänglich ist, kann sie vom Ressourcenanbieter gesteuert werden. Die SQL-Instanz __muss__ ausschließlich dem Ressourcenanbieter zugeordnet sein.
 
-4. Wenn Sie Server hinzufügen, müssen Sie diese einer neuen oder vorhandenen SKU hinzufügen, um Dienstangebote zu unterscheiden. Beispielsweise können Sie über eine SQL Enterprise-Instanz Folgendes bereitstellen:
+4. Beim Hinzufügen von Servern müssen Sie den Servern eine vorhandene SKU zuweisen oder eine neue SKU erstellen. Wählen Sie unter **SQL-Hostserver hinzufügen** die Option **SKUs** aus.
+
+   * Wenn Sie eine vorhandene SKU verwenden möchten, wählen Sie eine verfügbare SKU aus, und wählen Sie dann **Erstellen** aus.
+   * Wenn Sie eine SKU erstellen möchten, wählen Sie **+ Neue SKU erstellen** aus. Geben Sie unter **SKU erstellen** die erforderlichen Informationen ein, und wählen Sie dann **OK** aus.
+
+     > [!IMPORTANT]
+     > Im Feld **Name** werden Sonderzeichen, einschließlich Leerzeichen und Punkte, nicht unterstützt. Verwenden Sie die Beispiele in der folgenden Bildschirmaufnahme, um Werte für die Felder **Familie**, **Tarif** und **Edition** einzugeben.
+
+     ![SKU erstellen](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
+
+      Es kann bis zu einer Stunde dauern, bis SKUs im Portal angezeigt werden. Benutzer können erst eine Datenbank erstellen, wenn die SKU vollständig erstellt wurde.
+
+### <a name="sku-notes"></a>Hinweise zu SKUs
+
+Mithilfe von SKUs können Sie Dienstangebote unterscheiden. Beispielsweise können Sie über eine SQL Enterprise-Instanz verfügen, die folgende Merkmale aufweist:
   
-   - Datenbankkapazität
-   - Automatische Sicherungen
-   - Reservieren von Hochleistungsservern für einzelne Abteilungen
+* Hohe Kapazität
+* Hohe Leistung
+* Hochverfügbarkeit
 
-   Alle Hostserver in einer SKU sollten die gleichen Funktionen aufweisen. Der **Name** sollte die Eigenschaften der SKU widerspiegeln, sodass Benutzer ihre Datenbanken für die entsprechende SKU bereitstellen können.
+Sie können eine SKU für das vorherige Beispiel erstellen und dabei den Zugriff auf bestimmte Gruppen begrenzen, die eine leistungsstarke Datenbank benötigen.
 
-   > [!IMPORTANT]
-   > Sonderzeichen, einschließlich Leerzeichen und Interpunktion, werden in den Namen für die **Familie** oder **Ebene** nicht unterstützt, wenn Sie die SKU für die SQL- und MySQL-Ressourcenanbieter erstellen.
+>[!TIP]
+>Verwenden Sie einen SKU-Namen, der die Funktionen der Server in der SKU beschreibt, wie z. B. Kapazität und Leistung. Der Name soll Benutzer dabei unterstützen, ihre Datenbanken für die entsprechende SKU bereitzustellen.
 
-   Beispiel: 
-
-   ![Erstellen einer SKU](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
-
-   >[!NOTE]
-   > Es kann bis zu einer Stunde dauern, bis SKUs im Portal angezeigt werden. Benutzer können erst eine Datenbank erstellen, wenn die SKU vollständig erstellt wurde.
+Als Best Practice sollten alle Hostserver in einer SKU die gleichen Ressourcen- und Leistungsmerkmale aufweisen.
 
 ## <a name="provide-high-availability-using-sql-always-on-availability-groups"></a>Bereitstellen von Hochverfügbarkeit mithilfe von SQL-AlwaysOn-Verfügbarkeitsgruppen
 
-Für das Konfigurieren von SQL-AlwaysOn-Instanzen sind zusätzliche Schritte und mindestens drei virtuelle (oder physische) Computer erforderlich. In diesem Artikel wird davon ausgegangen, dass Sie bereits über solide Kenntnisse zu AlwaysOn-Verfügbarkeitsgruppen verfügen. Weitere Informationen finden Sie unter 
+Für das Konfigurieren von SQL-AlwaysOn-Instanzen sind zusätzliche Schritte und drei virtuelle (oder physische) Computer erforderlich. In diesem Artikel wird davon ausgegangen, dass Sie bereits über solide Kenntnisse zu AlwaysOn-Verfügbarkeitsgruppen verfügen. Weitere Informationen finden Sie in den folgenden Artikeln:
 
 * [Einführung in SQL Server Always On-Verfügbarkeitsgruppen auf virtuellen Azure-Computern](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
 * [Always On-Verfügbarkeitsgruppen (SQL Server)](https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017)
@@ -108,7 +121,7 @@ Für das Konfigurieren von SQL-AlwaysOn-Instanzen sind zusätzliche Schritte und
 > [!NOTE]
 > Der SQL-Adapterressourcenanbieter unterstützt _ausschließlich_ SQL 2016 SP1 Enterprise oder spätere Instanzen für AlwaysOn. Diese Adapterkonfiguration erfordert neue SQL-Features wie z.B. automatisches Seeding.
 
-Zusätzlich zur vorangehenden Liste der Anforderungen müssen Sie das [automatische Seeding](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) in jeder Verfügbarkeitsgruppe für jede Instanz von SQL Server aktivieren.
+Darüber hinaus müssen Sie das [automatische Seeding](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) in jeder Verfügbarkeitsgruppe für jede Instanz von SQL Server aktivieren.
 
 Um das automatische Seeding auf allen Instanzen zu aktivieren, bearbeiten Sie den folgenden SQL-Befehl für jede Instanz und führen ihn dann aus:
 
