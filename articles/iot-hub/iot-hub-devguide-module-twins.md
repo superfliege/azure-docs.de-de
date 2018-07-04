@@ -319,7 +319,7 @@ Versionen sind auch nützlich, wenn ein beobachtender Agent (beispielsweise die 
 ## <a name="next-steps"></a>Nächste Schritte
 Um einige der in diesem Artikel beschriebenen Konzepte auszuprobieren, sehen Sie sich die folgenden IoT Hub-Tutorials an:
 
-* [Get started with IoT Hub module identity and module twin using .NET backup and .NET device][lnk-module-twin-tutorial] (Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub unter Verwendung von .NET-Back-End und .NET-Gerät)
+* [Get started with IoT Hub module identity and module twin using .NET back end and .NET device][lnk-module-twin-tutorial] (Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub unter Verwendung von .NET-Back-End und .NET-Gerät)
 
 <!-- links and images -->
 
