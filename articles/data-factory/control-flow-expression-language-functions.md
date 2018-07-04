@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: ea612f0c58b92e37d405f9a57611610fa187f7db
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 81392cc8b6225302d6835cdb3d23e9bab7d9c930
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619319"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055701"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Ausdrücke und Funktionen in Azure Data Factory | Microsoft-Dokumentation
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: allgemein verfügbar](v1/data-factory-functions-variables.md)
-> * [Version 2 – Vorschauversion](control-flow-expression-language-functions.md)
+> * [Version 1](v1/data-factory-functions-variables.md)
+> * [Aktuelle Version](control-flow-expression-language-functions.md)
 
-Dieser Artikel enthält Informationen zu von Azure Data Factory (Version 2) unterstützten Ausdrücken und Funktionen. 
+Dieser Artikel enthält Informationen zu von Azure Data Factory unterstützten Ausdrücken und Funktionen. 
 
 ## <a name="introduction"></a>Einführung
 Bei den JSON-Werten in der Definition kann es sich um Literalwerte oder um Ausdrücke handeln, die zur Laufzeit ausgewertet werden. Beispiel:   
@@ -40,20 +40,15 @@ Bei den JSON-Werten in der Definition kann es sich um Literalwerte oder um Ausdr
 "name": "@pipeline().parameters.password"
 ```
 
-
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (GA) ist, lesen Sie [Funktionen und Variablen in Data Factory V1](v1/data-factory-functions-variables.md).
-
-
 ## <a name="expressions"></a>Ausdrücke  
-Ausdrücke können an beliebiger Stelle in einem JSON-Zeichenfolgenwert verwendet werden und ergeben immer einen anderen JSON-Wert. Wenn ein JSON-Wert ein Ausdruck ist, wird der Text des Ausdrucks durch Entfernen des @-Zeichens extrahiert. Falls Sie ein Zeichenfolgenliteral benötigen, das mit einem @-Zeichen beginnt, muss es wie folgt mit einem Escapezeichen versehen werden: @. Die folgenden Beispiele veranschaulichen die Auswertung von Ausdrücken.  
+Ausdrücke können an beliebiger Stelle in einem JSON-Zeichenfolgenwert verwendet werden und ergeben immer einen anderen JSON-Wert. Wenn ein JSON-Wert ein Ausdruck ist, wird der Text des Ausdrucks durch Entfernen des \@-Zeichens extrahiert. Falls Sie ein Zeichenfolgenliteral benötigen, das mit einem @-Zeichen beginnt, muss es wie folgt mit einem Escapezeichen versehen werden: @. Die folgenden Beispiele veranschaulichen die Auswertung von Ausdrücken.  
   
 |JSON-Wert|Ergebnis|  
 |----------------|------------|  
 |"parameters"|Die Zeichenfolge „parameters“ wird zurückgegeben.|  
 |"parameters[1]"|Die Zeichenfolge „parameters[1]“ wird zurückgegeben.|  
-|"@@"|Eine Zeichenfolge, die \„\@\“ enthält, wird zurückgegeben (einzelnes Zeichen).|  
-|\" \@\"|Eine Zeichenfolge, die \„  \@ \“ enthält, wird zurückgegeben (zwei Zeichen).|  
+|"\@@"|Eine Zeichenfolge, die \„\@\“ enthält, wird zurückgegeben (einzelnes Zeichen).|  
+|" \@"|Eine Zeichenfolge, die \„  \@ \“ enthält, wird zurückgegeben (zwei Zeichen).|  
   
  Mit der *Zeichenfolgeninterpolation* können Ausdrücke auch innerhalb von Zeichenfolgen verwendet werden. Dabei werden die Ausdrücke in `@{ ... }` eingeschlossen. Beispiel: `"name" : "First Name: @{pipeline().parameters.firstName} Last Name: @{pipeline().parameters.lastName}"`  
   
@@ -61,13 +56,13 @@ Ausdrücke können an beliebiger Stelle in einem JSON-Zeichenfolgenwert verwende
   
 |JSON-Wert|Ergebnis|  
 |----------------|------------|  
-|"@pipeline().parameters.myString"| Gibt `foo` als Zeichenfolge zurück.|  
-|"@{pipeline().parameters.myString}"| Gibt `foo` als Zeichenfolge zurück.|  
-|"@pipeline().parameters.myNumber"| Gibt `42` als *Zahl* zurück.|  
-|"@{pipeline().parameters.myNumber}"| Gibt `42` als *Zeichenfolge* zurück.|  
+|"\@pipeline().parameters.myString"| Gibt `foo` als Zeichenfolge zurück.|  
+|"\@{pipeline().parameters.myString}"| Gibt `foo` als Zeichenfolge zurück.|  
+|"\@pipeline().parameters.myNumber"| Gibt `42` als *Zahl* zurück.|  
+|"\@{pipeline().parameters.myNumber}"| Gibt `42` als *Zeichenfolge* zurück.|  
 |"Answer is: @{pipeline().parameters.myNumber}"| Gibt die Zeichenfolge `Answer is: 42` zurück.|  
-|"@concat('Answer is: ', string(pipeline().parameters.myNumber))"| Gibt die Zeichenfolge `Answer is: 42` zurück.|  
-|"Answer is: @@{pipeline().parameters.myNumber}"| Gibt die Zeichenfolge `Answer is: @{pipeline().parameters.myNumber}` zurück.|  
+|"\@concat('Answer is: ', string(pipeline().parameters.myNumber))"| Gibt die Zeichenfolge `Answer is: 42` zurück.|  
+|"Answer is: \@@{pipeline().parameters.myNumber}"| Gibt die Zeichenfolge `Answer is: @{pipeline().parameters.myNumber}` zurück.|  
   
 ### <a name="examples"></a>Beispiele
 

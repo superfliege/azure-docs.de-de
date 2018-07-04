@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b71ad5701cfd1f8a274318c69d3464cf4fa34708
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3f234e49f1a28fd0881e47ede13ae72483ed31f3
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621087"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053115"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Überwachen und Verwalten von Azure Data Factory-Pipelines mit der App „Überwachung und Verwaltung“
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "34621087"
 >
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Wenn Sie Version 2 des Data Factory-Diensts verwenden, die sich derzeit in der Vorschauphase befindet, finden Sie weitere Informationen unter [monitor and manage Data Factory pipelines in version 2 (Überwachen und Verwalten von Data Factory-Pipelines in Version 2)](../monitor-visually.md).
+> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [Überwachen und Verwalten von Data Factory-Pipelines](../monitor-visually.md).
 
 In diesem Artikel wird beschrieben, wie Sie mithilfe der App „Überwachung und Verwaltung“ Ihre Data Factory-Pipelines überwachen, verwalten und debuggen. Machen Sie sich zunächst mit der Anwendung vertraut, indem Sie sich das folgende Video ansehen:
 

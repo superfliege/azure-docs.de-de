@@ -1,26 +1,23 @@
 ---
-title: Erste Schritte mit Azure Data Lake Store unter Verwendung der Azure-Befehlszeilenschnittstelle 2.0 | Microsoft-Dokumentation
-description: "Erstellen Sie mithilfe der plattformübergreifenden Befehlszeile 2.0 ein Data Lake Store-Konto, und führen Sie einfache Vorgänge aus."
+title: Erste Schritte mit Azure Data Lake Storage Gen1 unter Verwendung der Azure-Befehlszeilenschnittstelle 2.0 | Microsoft-Dokumentation
+description: Erstellen Sie mithilfe der plattformübergreifenden Befehlszeile 2.0 ein Data Lake Store-Konto, und führen Sie einfache Vorgänge aus.
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: 4ffa0f4a-1cca-46ac-803d-1fc8538c685b
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/09/2018
+ms.topic: conceptual
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: b93b9a801b3e5e1fd869cda7f3d67554e2d03195
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: acd1182fdc66374e9abbc4964207417a7de3aadb
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37035009"
 ---
-# <a name="get-started-with-azure-data-lake-store-using-azure-cli-20"></a>Erste Schritte mit Azure Data Lake Store mithilfe der Azure CLI 2.0
+# <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-cli-20"></a>Erste Schritte mit Azure Data Lake Storage Gen1 mithilfe der Azure CLI 2.0
 > [!div class="op_single_selector"]
 > * [Portal](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -28,7 +25,9 @@ ms.lasthandoff: 03/09/2018
 >
 > 
 
-Hier erfahren Sie, wie Sie mit Azure CLI 2.0 ein Azure Data Lake Store-Konto erstellen und einfache Vorgänge wie das Erstellen von Ordnern, das Hoch- und Herunterladen von Dateien oder das Löschen Ihres Kontos ausführen. Weitere Informationen zu Data Lake Store finden Sie unter [Übersicht über Data Lake Store](data-lake-store-overview.md).
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
+Hier erfahren Sie, wie Sie mit Azure CLI 2.0 ein Azure Data Lake Store-Konto erstellen und einfache Vorgänge wie das Erstellen von Ordnern, das Hoch- und Herunterladen von Dateien oder das Löschen Ihres Kontos ausführen. Weitere Informationen zu Data Lake Store finden Sie unter [Übersicht über Data Lake Storage Gen1](data-lake-store-overview.md).
 
 Azure CLI 2.0 ist die neue Befehlszeilenumgebung von Azure und dient zum Verwalten von Azure-Ressourcen. Sie kann unter macOS, Linux und Windows verwendet werden. Weitere Informationen finden Sie in der [Übersicht über Azure CLI 2.0](https://docs.microsoft.com/cli/azure). In der [Referenz für Azure Data Lake Store CLI 2.0](https://docs.microsoft.com/cli/azure/dls) finden Sie außerdem eine umfassende Liste mit Befehlen und Syntax.
 
@@ -53,7 +52,7 @@ In diesem Artikel wird ein einfacheres Authentifizierungskonzept mit Data Lake S
     az login
     ```
 
-    Sie erhalten einen Code, den Sie im nächsten Schritt benötigen. Öffnen Sie „https://aka.ms/devicelogin“ in einem Webbrowser, und geben Sie zur Authentifizierung den Code ein. Sie werden aufgefordert, sich mit Ihren Anmeldeinformationen anzumelden.
+    Sie erhalten einen Code, den Sie im nächsten Schritt benötigen. Verwenden Sie zum Öffnen der Seite https://aka.ms/devicelogin einen Webbrowser, und geben Sie dann zur Authentifizierung den Code ein. Sie werden aufgefordert, sich mit Ihren Anmeldeinformationen anzumelden.
 
 2. Nach der Anmeldung werden in dem Fenster alle mit Ihrem Konto verknüpften Azure-Abonnements aufgelistet. Verwenden Sie den folgenden Befehl, um ein bestimmtes Abonnement zu verwenden:
    

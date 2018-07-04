@@ -13,23 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 94312edaa97a5d9a7502eed4c0551151ce2a06cc
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: a0095ae4aa50845a24cabb981399ac4035afdebe
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235276"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051449"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Kopieren von Daten aus Cassandra mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: allgemein verfügbar](v1/data-factory-onprem-cassandra-connector.md)
-> * [Version 2 – Vorschauversion](connector-cassandra.md)
+> * [Version 1](v1/data-factory-onprem-cassandra-connector.md)
+> * [Aktuelle Version](connector-cassandra.md)
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer Cassandra-Datenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
-
-
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (General Availability, GA) ist, lesen Sie [Cassandra-Connector in V1](v1/data-factory-onprem-cassandra-connector.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -41,7 +37,7 @@ Der Cassandra-Connector unterstützt insbesondere Folgendes:
 - Kopieren von Daten unter Verwendung der **Standard**- oder **anonymen** Authentifizierung
 
 >[!NOTE]
->Für Aktivitäten, die auf einer selbst gehosteten Integration Runtime ausgeführt werden, wird Cassandra 3.x seit IR-Version 3.7 oder höher unterstützt.
+>Für Aktivitäten auf einer selbst gehosteten Integration Runtime wird seit IR-Version 3.7 Cassandra 3.x unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -68,7 +64,7 @@ Folgende Eigenschaften werden für den mit Cassandra verknüpften Dienst unterst
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
 
 >[!NOTE]
->Verbindungen mit Cassandra über SSL werden zurzeit nicht unterstützt.
+>Verbindungen mit Cassandra über SSL werden derzeit nicht unterstützt.
 
 **Beispiel:**
 
@@ -138,7 +134,7 @@ Legen Sie zum Kopieren von Daten aus Cassandra den Quelltyp in der Kopieraktivit
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **CassandraSource** festgelegt werden. | Ja |
 | query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-92-Abfrage oder CQL-Abfrage. Weitere Informationen finden Sie in der [Referenz zu CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Geben Sie beim Verwenden der SQL-Abfrage **keyspace name.table name** für die Tabelle an, die Sie abfragen möchten. |Nein (wenn „tableName“ und „keyspace“ im Dataset angegeben sind) |
-| consistencyLevel |Mit der Konsistenzebene (consistencyLevel) wird angegeben, wie viele Replikate auf eine Leseanforderung reagieren müssen, bevor Daten an die Clientanwendung zurückgegeben werden. Cassandra überprüft die angegebene Anzahl von Replikaten auf Daten, um die Leseanforderung zu erfüllen. Ausführliche Informationen finden Sie unter [Configuring data consistency](http://docs.datastax.com/en//cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) (Konfigurieren der Datenkonsistenz).<br/><br/>Zulässige Werte: **ONE**, **TWO**, **THREE**, **QUORUM**, **ALL**, **LOCAL_QUORUM**, **EACH_QUORUM** und **LOCAL_ONE**. |Nein (Standard = `ONE`) |
+| consistencyLevel |Mit der Konsistenzebene (consistencyLevel) wird angegeben, wie viele Replikate auf eine Leseanforderung reagieren müssen, bevor Daten an die Clientanwendung zurückgegeben werden. Cassandra überprüft die angegebene Anzahl von Replikaten auf Daten, um die Leseanforderung zu erfüllen. Ausführliche Informationen finden Sie unter [Configuring data consistency](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) (Konfigurieren der Datenkonsistenz).<br/><br/>Zulässige Werte: **ONE**, **TWO**, **THREE**, **QUORUM**, **ALL**, **LOCAL_QUORUM**, **EACH_QUORUM** und **LOCAL_ONE**. |Nein (Standard = `ONE`) |
 
 **Beispiel:**
 

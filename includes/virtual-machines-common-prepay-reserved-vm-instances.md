@@ -1,17 +1,17 @@
 ---
 ms.topic: include
-ms.openlocfilehash: 99eaa667e4c6a9d63b4cc43ada8c6e36f7365610
-ms.sourcegitcommit: 39f4911b5933f7062dcf5d57af94eab8a0740b2b
+ms.openlocfilehash: 509d2bc3f58c57a3e2e15eed2ea2c70ed17856f3
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2018
-ms.locfileid: "35683048"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063696"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Vorauszahlen für virtuelle Computer mit Azure Reserved VM Instances
 
-Sie können für virtuelle Computer mit Azure Reserved VM Instances im Voraus bezahlen und Kosten sparen. Weitere Informationen finden Sie unter [Angebot – Azure Reserved Instances](https://azure.microsoft.com/pricing/reserved-vm-instances/).
+Sie können für virtuelle Computer mit Azure Reserved VM Instances im Voraus bezahlen und Kosten sparen. Weitere Informationen finden Sie unter [Angebot – Azure Reserved VM Instances](https://azure.microsoft.com/pricing/reserved-vm-instances/).
 
-Sie können Azure Reserved Instances im [Azure-Portal](https://portal.azure.com) kaufen. So kaufen Sie eine Reserved Instance
+Sie können Azure Reserved VM Instances im [Azure-Portal](https://portal.azure.com) kaufen. So kaufen Sie eine Reserved Instance
 -   Ihnen muss die Besitzerrolle für mindestens ein Enterprise-Abonnement oder ein Abonnement mit nutzungsbasierter Zahlung zugeordnet sein.
 -   In Enterprise-Abonnements muss der Kauf von Reserved Instances im [EA-Portal](https://ea.azure.com) aktiviert werden.
 -   Für das Cloud Solution Provider-Programm (CSP) können nur die Administrator- oder Vertriebs-Agents Reserved Instances kaufen.
@@ -24,7 +24,7 @@ Ermitteln Sie die passende VM-Größe beim Reservierungskauf mithilfe einer der 
 2. Sie können auch mithilfe von PowerShell, Azure Resource Manager oder VM-Details im Azure-Portal umfassende Informationen zur VM-Größe erhalten.
 
 ## <a name="buy-a-reserved-virtual-machine-instance"></a>Erwerben einer reservierten VM-Instanz
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf **Alle Dienste** > **Reservierungen**.
 3. Klicken Sie auf **Hinzufügen**, um eine neue Reserved Instance zu kaufen.
 4. Füllen Sie die erforderlichen Felder aus. Ausgeführte VM-Instanzen, die den ausgewählten Attributen entsprechen, sind für den Reserved Instance-Rabatt berechtigt. Die tatsächliche Anzahl der VM-Instanzen, die den Rabatt erhalten, hängt vom ausgewählten Bereich und von der ausgewählten Menge ab.
@@ -50,17 +50,17 @@ Ermitteln Sie die passende VM-Größe beim Reservierungskauf mithilfe einer der 
 ## <a name="next-steps"></a>Nächste Schritte 
 Der Reserved Instance-Rabatt wird automatisch auf die Anzahl der ausgeführten virtuellen Computer angewendet, die dem Bereich und den Attributen der Reserved Instance entspricht. Sie können den Bereich der Reserved Instance über das [Azure-Portal](https://portal.azure.com), PowerShell, die Befehlszeilenschnittstelle oder die API aktualisieren. 
 
-Informationen zum Verwalten einer Reserved Instance finden Sie unter [Verwalten von Azure Reserved Instances](../articles/billing/billing-manage-reserved-vm-instance.md).
+Informationen zum Verwalten einer Reserved Instance finden Sie unter [Verwalten von Reserved Instances in Azure](../articles/billing/billing-manage-reserved-vm-instance.md).
 
-Weitere Informationen zu Azure Reserved Instances finden Sie in den folgenden Artikeln:
+Weitere Informationen zu Azure Reserved VM Instances finden Sie in den folgenden Artikeln:
 
-- [Einsparen von Kosten für virtuelle Computer mit Reserved Instances](../articles/billing/billing-save-compute-costs-reservations.md)
-- [Verwalten von Azure Reserved Instances](../articles/billing/billing-manage-reserved-vm-instance.md)
+- [Was sind Azure Reserved VM Instances?](../articles/billing/billing-save-compute-costs-reservations.md)
+- [Verwalten von reservierten Instanzen in Azure](../articles/billing/billing-manage-reserved-vm-instance.md)
 - [Grundlegendes zur Anwendung des Rabatts für reservierte VM-Instanzen](../articles/billing/billing-understand-vm-reservation-charges.md)
 - [Grundlagen zur Verwendung reservierter Azure-Instanzen für Ihr Abonnement mit nutzungsbasierter Zahlung](../articles/billing/billing-understand-reserved-instance-usage.md)
 - [Grundlegendes zur Nutzung reservierter Instanzen für die Enterprise-Registrierung](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
 - [Nicht in reservierten Instanzen enthaltene Windows-Softwarekosten](../articles/billing/billing-reserved-instance-windows-software-costs.md)
-- [Reservierte Instanzen im Partner Center Cloud Solution Provider (CSP)-Programm](https://docs.microsoft.com/partner-center/azure-reservations)
+- [Reservierte Instanzen im Partner Center Cloud Solution Provider-Programm (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 

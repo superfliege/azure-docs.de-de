@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: seguler
-ms.openlocfilehash: 80b112de1fd8417dd64d9d95b7a037ec876d18c7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3ed449912df1e16b5c8f1dfa3c83b81eaf635227
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32194667"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37034856"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Übertragen von Daten mit AzCopy unter Linux
 
@@ -35,7 +35,9 @@ Es gibt zwei Versionen von AzCopy, die Sie herunterladen können. AzCopy unter L
 ### <a name="installation-on-linux"></a>Installation unter Linux
 
 > [!NOTE]
-> Abhängig von Ihrer Distribution müssen Sie unter Umständen .NET Core 2.1-Abhängigkeiten installieren. Diese sind im Artikel [Voraussetzungen für .NET Core unter Linux](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) aufgeführt. Für gängige Distributionen wie Ubuntu 16.04 und RHEL 7 ist dies in der Regel nicht erforderlich.
+> Abhängig von Ihrer Distribution müssen Sie unter Umständen .NET Core 2.1-Abhängigkeiten installieren. Diese sind im Artikel [Voraussetzungen für .NET Core unter Linux](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) aufgeführt. 
+>
+> Installieren Sie bei RHEL 7-Distributionen ICU- und libunwind-Abhängigkeiten: ```yum install -y libunwind icu```
 
 Die Installation von AzCopy unter Linux (v7.2 oder höher) ist ganz einfach: Extrahieren Sie einfach das TAR-Paket, und führen Sie das Installationsskript aus. 
 
@@ -723,4 +725,3 @@ Weitere Informationen zu Azure Storage und zu AzCopy finden Sie in den folgenden
 * [AzCopy: Transfer data with restartable mode and SAS token (AzCopy: Übertragen von Daten mit neu startbarem Modus und SAS-Token)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
 * [AzCopy: Verwenden des kontoübergreifenden Kopierblobs](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 * [AzCopy: Hochladen/Herunterladen von Dateien für Microsoft Azure-Blobs](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
-

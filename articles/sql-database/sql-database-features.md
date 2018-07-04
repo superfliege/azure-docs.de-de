@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: d49cd0096eb173c0f483a7b7ab1f3def745f56a6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c48a0f078da8e56038ec74ee398bd26fe1dc2718
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231609"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054754"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Funktionsvergleich: Azure SQL-Datenbank und SQL Server 
 
@@ -121,7 +121,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Nein – siehe [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) | Nein (siehe [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/)) |
 | [SQL Server-Überwachung](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | Nein (siehe [SQL-Datenbank-Überwachung](sql-database-auditing.md)) | Ja – siehe [Überwachung](sql-database-managed-instance-transact-sql-information.md#auditing) |
 | [SQL Server Data Tools (SSDT)] (https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) | Ja | Ja |
-| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Ja, mit einer verwalteten SSIS in Azure Data Factory-Umgebung (ADF), bei der Pakete in der von Azure SQL-Datenbank gehosteten SSISDB gespeichert und in [Azure SSIS Integration Runtime](../data-factory/tutorial-deploy-ssis-packages-azure-powershell.md) ausgeführt werden. | Ja, mit einer verwalteten SSIS in Azure Data Factory-Umgebung (ADF), bei der Pakete in der von Azure SQL-Datenbank gehosteten verwalteten Instanz gespeichert und in [Azure SSIS Integration Runtime](../data-factory/tutorial-deploy-ssis-packages-azure-powershell.md) ausgeführt werden. |
+| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Ja, mit einer verwalteten SSIS in Azure Data Factory-Umgebung (ADF), bei der Pakete in der von Azure SQL-Datenbank gehosteten SSISDB gespeichert und in Azure SSIS Integration Runtime (IR) ausgeführt werden. Siehe dazu [Erstellen der Azure SSIS Integration Runtime in Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime). | Ja, mit einer verwalteten SSIS in Azure Data Factory-Umgebung (ADF), bei der Pakete in der von einer verwalteten Instanz gehosteten SSISDB gespeichert und in Azure SSIS Integration Runtime (IR) ausgeführt werden. Siehe dazu [Erstellen der Azure SSIS Integration Runtime in Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime). |
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Ja | Ja |
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Ja | Ja |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Nein (siehe [Erweiterte Ereignisse](sql-database-xevent-db-diff-from-svr.md)) | Ja |

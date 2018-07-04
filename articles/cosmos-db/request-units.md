@@ -2,19 +2,19 @@
 title: Anforderungseinheiten und Schätzen des Durchsatzes – Azure Cosmos DB | Microsoft-Dokumentation
 description: Enthält Informationen zu den Grundlagen von Anforderungseinheiten in Azure Cosmos DB sowie zur Angabe und zur Schätzung des Bedarfs an Anforderungseinheiten.
 services: cosmos-db
-author: SnehaGunda
+author: rimman
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 06/26/2018
 ms.author: rimman
-ms.openlocfilehash: 16ccda120aef0aa892bf365403f3f0bdc1209ca3
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 160ff4e09f70036fd261c07fa59e13772bc00660
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823722"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053326"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Anforderungseinheiten in Azure Cosmos DB
 
@@ -41,7 +41,7 @@ Azure Cosmos DB bietet eine schnelle, vorhersagbare Leistung durch die Reservier
 
 Bei Azure Cosmos DB wird der reservierte Durchsatz in verarbeiteten Anforderungseinheiten pro Sekunde angegeben. Sie können sich Anforderungseinheiten als Währung für den Durchsatz vorstellen. Sie reservieren eine bestimmte Anzahl von Anforderungseinheiten, die Ihrer Anwendung garantiert pro Sekunde zur Verfügung stehen. Jeder Vorgang in Azure Cosmos DB – beispielsweise das Schreiben eines Dokuments, das Durchführen einer Abfrage oder das Aktualisieren eines Dokuments – verbraucht CPU, Arbeitsspeicher und IOPS. Mit anderen Worten: Für jeden Vorgang fällt eine Anforderungsgebühr an, die in Anforderungseinheiten ausgedrückt wird. Wenn Sie die Faktoren, die sich auf die Gebühren für Anforderungseinheiten auswirken, sowie die Durchsatzanforderungen Ihrer Anwendung genau kennen, können Sie Ihre Anwendung so kosteneffektiv wie möglich ausführen. 
 
-Um Ihnen den Einstieg zu erleichtern, erläutert Azure Cosmos DB-Programm-Manager Andrew Liu in folgendem Video das Konzept der Anforderungseinheiten: <br /><br />
+Um Ihnen den Einstieg zu erleichtern, erläutert Azure Cosmos DB-Programm-Manager Andrew Liu im folgenden Video das Konzept der Anforderungseinheiten (das Video enthält einen Tippfehler im Beispiel für Anforderungseinheiten – wenn 1 KB Daten mit 100.000 Datensätzen verwendet werden, wird insgesamt ein Speicherplatz von 100 MB verbraucht, nicht 100 GB): <br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/stk5WSp5uX0]
 > 
@@ -111,7 +111,7 @@ So verwenden Sie das Tool:
 > 
 
 ### <a name="use-the-azure-cosmos-db-request-charge-response-header"></a>Verwenden des Azure Cosmos DB-Antwortheaders „request-charge“
-Jede Antwort des Azure Cosmos DB-Diensts enthält einen benutzerdefinierten Header (`x-ms-request-charge`), der die für eine bestimmte Anforderung verbrauchten Anforderungseinheiten enthält. Sie können auch über die Azure Cosmos DB SDKs auf diesen Header zugreifen. Im .NET SDK ist **RequestCharge** eine Eigenschaft des **ResourceResponse**-Objekts. Für Abfragen stellt der Azure Cosmos DB-Daten-Explorer im Azure-Portal Informationen zu Anforderungsgebühren für ausgeführten Abfragen bereit.
+Jede Antwort des Azure Cosmos DB-Diensts enthält einen benutzerdefinierten Header (`x-ms-request-charge`), der die für eine bestimmte Anforderung verbrauchten Anforderungseinheiten enthält. Sie können auch über die Azure Cosmos DB SDKs auf diesen Header zugreifen. Im .NET SDK ist **RequestCharge** eine Eigenschaft des **ResourceResponse**-Objekts. Für Abfragen stellt der Azure Cosmos DB-Daten-Explorer im Azure-Portal Informationen zu Anforderungsgebühren für ausgeführten Abfragen bereit. Weitere Informationen zum Abrufen und Festlegen des Durchsatzes mit unterschiedlichen APIs mit mehreren Modellen finden Sie im Artikel [Festlegen und Abrufen des Durchsatzes in Azure Cosmos DB](set-throughput.md).
 
 Eine Methode zum Einschätzen des von Ihrer Anwendung benötigten reservierten Durchsatzes besteht darin, die Gebühren für Anforderungseinheiten für die Ausführung typischer Vorgänge aufzuzeichnen und sie mit einem repräsentativen Element zu vergleichen, das von Ihrer Anwendung verwendet wird. Danach schätzen Sie die Anzahl von Vorgängen, deren Ausführung Sie pro Sekunde erwarten. Stellen Sie sicher, dass auch typische Abfragen und die Nutzung von Azure Cosmos DB-Skripts gemessen und berücksichtigt werden.
 
@@ -122,10 +122,10 @@ Eine Methode zum Einschätzen des von Ihrer Anwendung benötigten reservierten D
 
 Sie können beispielsweise die folgenden Schritte ausführen:
 
-1. Notieren Sie sich die Gebühren für die Anforderungseinheiten für das Erstellen (Einfügen) eines typischen Elements. 
-2. Notieren Sie sich die Gebühren für die Anforderungseinheiten für das Lesen eines typischen Elements.
-3. Notieren Sie sich die Gebühren für die Anforderungseinheiten für das Aktualisieren eines typischen Elements.
-4. Notieren Sie sich die Gebühren für die Anforderungseinheiten für typische, häufig ausgeführte Elementabfragen.
+1. Notieren Sie die berechneten Anforderungseinheiten für das Erstellen (Einfügen) eines typischen Elements. 
+2. Notieren Sie die berechneten Anforderungseinheiten für das Lesen eines typischen Elements.
+3. Notieren Sie die berechneten Anforderungseinheiten für das Aktualisieren eines typischen Elements.
+4. Notieren Sie die berechneten Anforderungseinheiten für typische, häufig ausgeführte Elementabfragen.
 5. Notieren Sie sich die Gebühren für die Anforderungseinheiten für benutzerdefinierte Skripts (gespeicherte Prozeduren, Trigger, benutzerdefinierte Funktionen), die von der Anwendung genutzt werden.
 6. Berechnen Sie die erforderlichen Anforderungseinheiten anhand der geschätzten Anzahl von Vorgängen, die erwartungsgemäß pro Sekunde ausgeführt werden.
 

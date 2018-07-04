@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 06/04/2018
 ms.author: danlep
-ms.openlocfilehash: 4ee8425bb5c3830b029b766aad464df0ffb15f41
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 8ef9d5a8e5212f6715769eecf4fde92a6d0b9d44
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801114"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060516"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Ausführen von Containeranwendungen in Azure Batch
 
@@ -25,7 +25,7 @@ Sie sollten mit Containerkonzepten sowie dem Erstellen von Batch-Pools und -auft
 
 ## <a name="why-use-containers"></a>Gründe für die Verwendung von Containern
 
-Die Verwendung von Containern bietet eine einfache Möglichkeit zum Ausführen von Batch-Aufgaben, ohne eine Umgebung und Abhängigkeiten zum Ausführen von Anwendungen verwalten zu müssen. Container stellen Anwendungen als einfache, portable, eigenständige Einheiten bereit, die in vielen verschiedenen Umgebungen ausgeführt werden können. Sie können z. B. einen Container lokal erstellen und testen und dann das Containerimage in eine Registrierung in Azure oder an anderer Stelle hochladen. Das Containerbereitstellungsmodell stellt sicher, dass die Laufzeitumgebung der Anwendung immer ordnungsgemäß installiert und konfiguriert ist, und zwar ganz unabhängig davon, wo Sie die Anwendung hosten. Containerbasierte Vorgänge in Batch können auch Funktionen von Nicht-Containeraufgaben nutzen, z.B. Anwendungspakete und die Verwaltung von Ressourcendateien und Ausgabedateien. 
+Die Verwendung von Containern bietet eine einfache Möglichkeit zum Ausführen von Batch-Aufgaben, ohne eine Umgebung und Abhängigkeiten zum Ausführen von Anwendungen verwalten zu müssen. Container stellen Anwendungen als einfache, portable, eigenständige Einheiten bereit, die in vielen verschiedenen Umgebungen ausgeführt werden können. Sie können z.B. einen Container lokal erstellen und testen und dann das Containerimage in eine Registrierung in Azure oder an anderer Stelle hochladen. Das Containerbereitstellungsmodell stellt sicher, dass die Laufzeitumgebung der Anwendung immer ordnungsgemäß installiert und konfiguriert ist, und zwar ganz unabhängig davon, wo Sie die Anwendung hosten. Containerbasierte Vorgänge in Batch können auch Funktionen von Nicht-Containeraufgaben nutzen, z.B. Anwendungspakete und die Verwaltung von Ressourcendateien und Ausgabedateien. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -229,7 +229,13 @@ Verwenden Sie die `ContainerSettings`-Eigenschaft der Aufgabenklassen zum Konfig
 
 Wenn Sie Aufgaben in Containerimages ausführen, sind für die [Cloudaufgabe](/dotnet/api/microsoft.azure.batch.cloudtask) und die [Auftrags-Manager-Aufgabe](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) Containereinstellungen erforderlich. Die [Startaufgabe](/dotnet/api/microsoft.azure.batch.starttask), die [Auftragsvorbereitungsaufgabe](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask) und die [Auftragsfreigabeaufgabe](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) benötigen jedoch keine Containereinstellungen (diese können in einem Containerkontext oder direkt auf dem Knoten ausgeführt werden).
 
-Beim Konfigurieren der Containereinstellungen werden alle Verzeichnisse rekursiv unter dem `AZ_BATCH_NODE_ROOT_DIR` (Stamm der Azure Batch-Verzeichnisse auf dem Knoten) dem Container zugeordnet, alle Variablen der Aufgabenumgebung werden dem Container zugeordnet, und die Befehlszeile für die Aufgabe wird im Container ausgeführt.
+Die Befehlszeile für eine Azure Batch-Containeraufgabe wird in einem Arbeitsverzeichnis in dem Container ausgeführt, der sehr stark der Umgebung ähnelt, die von Batch für eine normale Aufgabe (Nicht-Containeraufgabe) eingerichtet wird:
+
+* Alle Verzeichnisse rekursiv unter dem `AZ_BATCH_NODE_ROOT_DIR` (Stamm der Azure Batch-Verzeichnisse auf dem Knoten) werden dem Container zugeordnet.
+* Alle Variablen der Aufgabenumgebung werden dem Container zugeordnet.
+* Das Arbeitsverzeichnis der Anwendung ist wie für eine normale Aufgabe festgelegt, sodass Sie Funktionen wie Anwendungspakete und Ressourcendateien verwenden können.
+
+Da Batch das Standardarbeitsverzeichnis im Container ändert, wird die Aufgabe an einem anderen Speicherort als dem üblichen Containereinstiegspunkt ausgeführt (z.B. standardmäßig `c:\` in einem Windows-Container oder `/` unter Linux). Stellen Sie sicher, dass die Aufgabenbefehlszeile oder der Containereinstiegspunkt einen absoluten Pfad angibt, sofern nicht bereits eine entsprechende Konfiguration vorliegt.
 
 Der folgende Python-Codeausschnitt zeigt eine grundlegende Befehlszeile, die in einem aus Docker Hub gepullten Ubuntu-Container ausgeführt wird. Die Optionen für die Containerausführung sind zusätzliche Argumente für den von der Aufgabe ausgeführten `docker create`-Befehl. Hier entfernt die Option `--rm` den Container, nachdem die Aufgabe abgeschlossen ist.
 
@@ -240,7 +246,7 @@ task_container_settings = batch.models.TaskContainerSettings(
     container_run_options='--rm')
 task = batch.models.TaskAddParameter(
     id=task_id,
-    command_line='echo hello',
+    command_line='/bin/echo hello',
     container_settings=task_container_settings
 )
 
@@ -251,7 +257,7 @@ Im folgenden Beispiel C# werden die grundlegenden Containereinstellungen für ei
 ```csharp
 // Simple container task command
 
-string cmdLine = "<my-command-line>";
+string cmdLine = "c:\myApp.exe";
 
 TaskContainerSettings cmdContainerSettings = new TaskContainerSettings (
     imageName: "tensorflow/tensorflow:latest-gpu",

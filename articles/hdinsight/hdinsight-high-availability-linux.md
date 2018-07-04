@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 974ed70fbda88dfcb775e021474583f7afb0576b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 835e649959164aee5cc8edb1f2e34170d8a321f1
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31404959"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046678"
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>Verfügbarkeit und Zuverlässigkeit von Hadoop-Clustern in HDInsight
 
@@ -63,9 +63,9 @@ Workerknoten führen die eigentliche Analyse aus, wenn ein Auftrag an den Cluste
 
 Ein Edgeknoten nimmt nicht aktiv an der Datenanalyse innerhalb des Clusters teil. Er wird von Entwicklern oder Datenspezialisten bei der Arbeit mit Hadoop verwendet. Der Edgeknoten befindet sich im gleichen virtuellen Azure-Netzwerk wie die anderen Knoten im Cluster und kann direkt auf alle anderen Knoten zugreifen. Der Edgeknoten kann verwendet werden, ohne dass er Ressourcen von wichtigen Hadoop-Diensten oder Analyseaufträgen verbraucht.
 
-Zurzeit ist R Server auf HDInsight der einzige Clustertyp, der standardmäßig einen Edgeknoten bereitstellt. Für R Server auf HDInsight wird der Edgeknoten verwendet, um R-Code lokal auf dem Knoten zu testen, bevor der Code zur verteilten Verarbeitung an den Cluster übermittelt wird.
+Zurzeit ist ML Services in HDInsight der einzige Clustertyp, der standardmäßig einen Edgeknoten bereitstellt. Für ML Services in HDInsight wird der Edgeknoten verwendet, um R-Code lokal auf dem Knoten zu testen, bevor er zur verteilten Verarbeitung an den Cluster übermittelt wird.
 
-Informationen zur Verwendung eines Edgeknotens mit anderen Clustertypen als R Server finden Sie im Dokument [Verwenden leerer Edgeknoten in HDInsight](hdinsight-apps-use-edge-node.md).
+Informationen zur Verwendung eines Edgeknotens mit anderen Clustertypen finden Sie im Dokument [Verwenden von Edgeknoten in HDInsight](hdinsight-apps-use-edge-node.md).
 
 ## <a name="accessing-the-nodes"></a>Zugreifen auf die Knoten
 

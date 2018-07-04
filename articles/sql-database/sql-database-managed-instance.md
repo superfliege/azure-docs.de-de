@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: f07ce542c176f4038378d54497d7114109ac5bd3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e606b38c626c1a4dd335c40926e89a7cf0cec17a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215523"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054652"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Was ist eine verwaltete Instanz (Vorschauversion)?
 
@@ -210,7 +210,8 @@ Die verwaltete Instanz ist in der Cloud immer auf dem neuesten Stand, d.h., eini
 - In einer verwalteten Instanz können keine vollständigen physischen Pfade angegeben werden. Daher müssen alle entsprechenden Szenarien unterschiedlich unterstützt werden: RESTORE DB unterstützt WITH MOVE nicht; CREATE DB lässt keine physischen Pfade zu; BULK INSERT kann nur mit Azure-Blobs ausgeführt werden usw. 
 - Eine verwaltete Instanz unterstützt die [Azure AD-Authentifizierung](sql-database-aad-authentication.md) als Cloudalternative zur Windows-Authentifizierung. 
 - Eine verwaltete Instanz verwaltet automatisch XTP-Dateigruppen und -Dateien für Datenbanken mit In-Memory-OLTP-Objekten.
- 
+- Eine verwaltete Instanz unterstützt SQL Server Integration Services (SSIS) und kann den SSIS-Katalog (SSISDB) hosten, in dem SSIS-Pakete gespeichert werden, sie wird jedoch in einer verwalteten Azure SSIS Integration Runtime (IR) in Azure Data Factory (ADF) ausgeführt. Siehe dazu [Erstellen der Azure SSIS Integration Runtime in Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime).
+
 ### <a name="managed-instance-administration-features"></a>Features zur Verwaltung einer verwalteten Instanz  
 
 In einer verwalteten Instanz können Systemadministratoren sich auf die für das Unternehmen wichtigsten Aspekte konzentrieren. Viele durch Systemadministratoren oder DBA durchgeführte Aktivitäten sind nicht erforderlich oder lassen sich einfach ausführen, z.B. Installation und Patches des Betriebssystems und von RDBMS, dynamische Größenänderung und Konfiguration von Instanzen, Sicherungen, Datenbankreplikation (einschließlich Systemdatenbanken), Konfiguration der Hochverfügbarkeit und der Integrität und Leistungsüberwachung der Datenströme. 

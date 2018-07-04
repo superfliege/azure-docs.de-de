@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: c8966c70fba1cbb17d377223ed5348075ebb7adc
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: f953e1dc15e12c37c30a86ebd7536b1126bf18f7
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34266896"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061999"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Benutzeroberflächenelement „Microsoft.Common.DropDown“
 Ein Auswahlsteuerelement mit einer Dropdownliste.
@@ -31,8 +31,8 @@ Ein Auswahlsteuerelement mit einer Dropdownliste.
 {
   "name": "element1",
   "type": "Microsoft.Common.DropDown",
-  "label": "Some drop down",
-  "defaultValue": "my value",
+  "label": "Example drop down",
+  "defaultValue": "Value two",
   "toolTip": "",
   "constraints": {
     "allowedValues": [
@@ -44,21 +44,23 @@ Ein Auswahlsteuerelement mit einer Dropdownliste.
         "label": "Value two",
         "value": "two"
       }
-    ]
+    ],
+    "required": true
   },
   "visible": true
 }
 ```
 
 ## <a name="remarks"></a>Anmerkungen
+
 - Die Bezeichnung für `constraints.allowedValues` ist der Anzeigetext für ein Element, und sein Wert ist der Ausgabewert des Elements bei der Auswahl.
 - Falls angegeben, muss der Standardwert einer in `constraints.allowedValues` vorhandenen Bezeichnung entsprechen. Ohne Angabe wird das erste Element in `constraints.allowedValues` ausgewählt. Der Standardwert lautet **null**.
-- `constraints.allowedValues` muss mindestens ein Element enthalten.
-- Dieses Element unterstützt die `constraints.required`-Eigenschaft nicht. Fügen Sie zum Emulieren dieses Verhaltens `constraints.allowedValues` ein Element mit einer Bezeichnung und dem Wert `""` (leere Zeichenfolge) hinzu.
+- `constraints.allowedValues` muss mindestens ein Element aufweisen.
+- Fügen Sie zum Emulieren eines nicht benötigten Werts `constraints.allowedValues` ein Element mit einer Bezeichnung und dem Wert `""` (leere Zeichenfolge) hinzu.
 
 ## <a name="sample-output"></a>Beispielausgabe
 ```json
-"Bar"
+"two"
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,0 +1,43 @@
+---
+title: Grundlagen der Konzepte zur Datenkonvertierung in LUIS – Azure | Microsoft Docs
+description: Erfahren Sie, wie Äußerungen vor der Vorhersage in Language Understanding (LUIS) geändert werden können.
+services: cognitive-services
+author: v-geberr
+manager: kaiqb
+ms.service: cognitive-services
+ms.technology: luis
+ms.topic: article
+ms.date: 06/27/2018
+ms.author: v-geberr;
+ms.openlocfilehash: 16b0df4b81220885e2c3747470272cee9536e10c
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063560"
+---
+# <a name="data-conversion-concepts-in-luis"></a>Konzepte zur Datenkonvertierung in LUIS
+LUIS stellt ein Verfahren zum Konvertieren von Äußerungen vor der Vorhersage aus gesprochenen Äußerungen in Textäußerungen zur Verfügung. 
+
+## <a name="speech-to-intent-conversion-concepts"></a>Konzepte zur Sprache-Absichts-Umsetzung
+Die Sprache-Absichts-Umsetzung in LUIS ermöglicht es Ihnen, gesprochene Äußerungen an einen Endpunkt zu senden und als Antwort eine LUIS-Vorhersage zu erhalten. Dieser Vorgang stellt eine Integration des [Sprachverständnis](https://docs.microsoft.com/azure/cognitive-services/Speech)-Diensts in LUIS dar. 
+
+### <a name="key-requirements"></a>Schlüsselanfoderungen
+Sie brauchen für diese Integration keinen Schlüssel für eine **Bing-Sprach-API** zu erstellen. Ein im Azure-Portal erstellter **Language Understanding**-Schlüssel funktioniert bei dieser Integration. Verwenden Sie nicht den LUIS-Startschlüssel, er funktioniert bei dieser Integration nicht.
+
+### <a name="new-endpoint"></a>Neuer Endpunkt 
+Diese Integration erstellt einen neuen Endpunkt und ein neues [Preismodell](luis-boundaries.md#key-limits). Der Endpunkt kann mithilfe des [Spracherkennungs-SDKs](https://github.com/Azure-Samples/cognitive-services-speech-sdk) Äußerungen sowohl in gesprochener als auch in Textform empfangen und daher als einzelner Endpunkt verwendet werden. 
+
+### <a name="quota-usage"></a>Kontingentverbrauch
+Informationen finden Sie unter [Schlüsselgrenzwerte](luis-boundaries.md#key-limits). 
+
+### <a name="data-retention"></a>Beibehaltung von Daten
+Die mithilfe des Spracherkennungs-SDKs an den Endpunkt gesendeten Daten werden nur zur Verbesserung Ihres Sprachmodells verwendet, ganz gleich, ob sie als Sprache oder Text vorliegen. Sie werden nicht außerhalb Ihres Modells verwendet, um die allgemeinen Fähigkeiten der Spracherkennung oder von LUIS zu verbessern. Wenn die LUIS-App gelöscht wird, werden die gespeicherten Daten ebenfalls gelöscht.
+
+<!-- TBD: Machine translation conversion concepts -->
+
+## <a name="next-steps"></a>Nächste Schritte
+
+> [!div class="nextstepaction"]
+> [Verwenden der Spracherkennung](luis-tutorial-speech-to-intent.md)
+

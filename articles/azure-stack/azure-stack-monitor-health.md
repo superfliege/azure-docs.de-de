@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: mabrigg
-ms.openlocfilehash: 446df7922422ccfcf3fbb92ecf153c6dec2f6197
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: e20670476f4549a06d80d5f85e2ebd8ab1f50b05
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26640377"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047240"
 ---
 # <a name="monitor-health-and-alerts-in-azure-stack"></a>Überwachen von Integrität und Warnungen in Azure Stack
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Azure Stack umfasst Funktionen zur Infrastrukturüberwachung, mit denen Sie Informationen zu Integrität und Warnungen für eine Azure Stack-Region anzeigen können. Auf der Kachel **Regionsverwaltung**, die standardmäßig im Administratorportal für das Standardanbieterabonnement angeheftet ist, werden alle bereitgestellten Regionen von Azure Stack aufgelistet. Die Kachel enthält die Anzahl aktiver kritischer Warnungen und Warnbenachrichtigungen für jede Region und ist Ihr Einstiegspunkt in die Integritäts- und Warnfunktion von Azure Stack.
 
@@ -32,6 +32,17 @@ Azure Stack umfasst Funktionen zur Infrastrukturüberwachung, mit denen Sie Info
  ## <a name="understand-health-in-azure-stack"></a>Grundlegendes zur Integrität in Azure Stack
 
  Die Integrität und Warnungen werden vom Integritätsressourcenanbieter verwaltet. Azure Stack-Infrastrukturkomponenten werden bei der Bereitstellung und Konfiguration von Azure Stack beim Integritätsressourcenanbieter registriert. Nach der Registrierung können die Integrität und Warnungen für jede Komponente angezeigt werden. Die Integrität in Azure Stack basiert auf einem einfachen Konzept. Wenn Warnungen für eine registrierte Instanz einer Komponente vorhanden sind, gibt der Integritätsstatus dieser Komponente den schlechtesten aktiven Warnungsschweregrad an, nämlich „Warnung“ oder „Kritisch“.
+
+## <a name="alert-severity-definition"></a>Definition des Warnungsschweregrads
+
+In Azure Stack werden Warnungen mit nur zwei Schweregraden ausgelöst: **Warnung** und **Kritisch**.
+
+**Warning**  
+Ein Operator kann die Warnung auf geplante Weise bearbeiten. Die Warnung wirkt sich in der Regel nicht auf Benutzerworkloads aus.
+
+**Critical** (Kritisch)  
+Ein Operator sollte kritische Warnungen mit Dringlichkeit bearbeiten. Hierbei handelt es sich um Probleme, die sich derzeit oder in Kürze auf Azure Stack-Benutzer auswirken. 
+
  
  ## <a name="view-and-manage-component-health-state"></a>Anzeigen und Verwalten des Integritätsstatus von Komponenten
  
@@ -75,4 +86,4 @@ Nachdem die Infrastrukturrolleninstanz wieder online geschaltet wurde, wird dies
 
 [Verwalten von Updates in Azure Stack](azure-stack-updates.md)
 
-[Regionsverwaltung in Azure Stack](azure-stack-region-management.md)
+[Region management in Azure Stack](azure-stack-region-management.md) (Regionsverwaltung in Azure Stack)

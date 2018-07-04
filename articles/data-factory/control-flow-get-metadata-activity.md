@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: shlo
-ms.openlocfilehash: 56128a7fe28f1599b74ba9f1475ef636e0e8718c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c07199887faf073d19007f1ef410c193bbdbf3ee
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617979"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049365"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Aktivität „Metadaten abrufen“ in Azure Data Factory
-Die Aktivität „Metadaten abrufen“ kann zum Abrufen von **Metadaten** für alle Daten in Azure Data Factory verwendet werden. Diese Aktivität wird nur für Data Factorys der Version 2 unterstützt. Sie kann in folgenden Szenarien verwendet werden:
+Die Aktivität „Metadaten abrufen“ kann zum Abrufen von **Metadaten** für alle Daten in Azure Data Factory verwendet werden. Diese Aktivität kann in folgenden Szenarien verwendet werden:
 
 - Überprüfen der Metadateninformationen von Daten
 - Auslösen einer Pipeline, wenn Daten bereit/verfügbar sind
@@ -31,9 +31,6 @@ Die folgende Funktionalität ist in der Ablaufsteuerung verfügbar:
 
 - Die Ausgabe der Aktivität „Metadaten abrufen“ kann in bedingten Ausdrücken zur Validierung verwendet werden.
 - Eine Pipeline kann über eine „Wiederholen bis“-Schleife ausgelöst werden, wenn die Bedingung erfüllt ist.
-
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (GA) ist, lesen Sie die [Dokumentation zur Version 1 von Data Factory](v1/data-factory-introduction.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -48,12 +45,16 @@ Die Aktivität „Metadaten abrufen“ nutzt ein Dataset als erforderliche Einga
 
 | Connector/Metadaten | itemName<br>(Datei/Ordner) | itemType<br>(Datei/Ordner) | size<br>(Datei) | created<br>(Datei/Ordner) | lastModified<br>(Datei/Ordner) |childItems<br>(Ordner) |contentMD5<br>(Datei) | structure<br/>(Datei) | columnCount<br>(Datei) | exists<br>(Datei/Ordner) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| Azure Blob | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
+| Amazon S3 | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
+| Azure Blob | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
 | Azure Data Lake Store | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | Dateisystem | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | FTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+
+- Für Amazon S3 gilt `lastModified` für Bucket und Schlüssel, aber nicht für den virtuellen Ordner. `exists` gilt für Bucket und Schlüssel, aber nicht für das Präfix oder den virtuellen Ordner.
+- Für Azure Blob Storage gilt `lastModified` für Container und Blob, aber nicht für den virtuellen Ordner.
 
 **Relationale Datenbank**:
 

@@ -1,6 +1,6 @@
 ---
-title: Einrichten von Clustern für Hadoop, Spark, Kafka, HBase oder R Server – Azure HDInsight | Microsoft-Dokumentation
-description: Richten Sie Hadoop-, Kafka-, Spark-, HBase-, R Server- oder Storm-Cluster für HDInsight über einen Browser, die Azure-Befehlszeilenschnittstelle, Azure PowerShell, REST oder ein SDK ein.
+title: Einrichten von Clustern für Hadoop, Spark, Kafka, HBase oder ML Services – Azure HDInsight | Microsoft-Dokumentation
+description: Richten Sie Hadoop-, Kafka-, Spark-, HBase-, ML Services- oder Storm-Cluster für HDInsight über einen Browser, die Azure-Befehlszeilenschnittstelle, Azure PowerShell, REST oder ein SDK ein.
 keywords: Hadoop-Cluster einrichten, Kafka-Cluster einrichten, Spark-Cluster einrichten, was ist ein Hadoop-Cluster?
 services: hdinsight
 documentationcenter: ''
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: 2afe1e91465c92c6f6cba00c4383456ef78d225c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: eddbd3f171cee9df9ff306368df47501ff9dcfca
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200196"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051592"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw.
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Erfahren Sie, wie Sie Cluster in HDInsight mit Hadoop, Spark, Kafka, Interactive Query, HBase, R Server oder Storm einrichten und konfigurieren. Darüber hinaus lernen Sie Cluster anzupassen und Sicherheit hinzuzufügen, indem Sie sie mit einer Domäne verknüpfen.
+Erfahren Sie, wie Sie Cluster in HDInsight mit Hadoop, Spark, Kafka, Interactive Query, HBase, ML Services oder Storm einrichten und konfigurieren. Darüber hinaus lernen Sie Cluster anzupassen und Sicherheit hinzuzufügen, indem Sie sie mit einer Domäne verknüpfen.
 
 Ein Hadoop-Cluster besteht aus mehreren virtuellen Computern (Knoten), die zur verteilten Verarbeitung von Aufgaben verwendet werden. Azure HDInsight verwaltet die Implementierungsdetails der Installation und Konfiguration einzelner Knoten, sodass Sie nur allgemeine Konfigurationsinformationen bereitstellen müssen. 
 
@@ -81,7 +81,7 @@ Azure HDInsight bietet derzeit die folgenden Typen von Clustern mit je einer Rei
 | [HBase](hbase/apache-hbase-overview.md) |Verarbeitung großen Mengen von schemalosen NoSQL-Daten |
 | [Interactive Query](./interactive-query/apache-interactive-query-get-started.md) |Interaktive und schnellere Hive-Abfragen durch speicherinternes Caching |
 | [Kafka](kafka/apache-kafka-introduction.md) | Dies ist eine verteilte Open-Source-Streamingplattform, die zum Erstellen von Datenpipelines und Anwendungen mit Echtzeitstreaming verwendet werden kann. |
-| [R Server](r-server/r-server-overview.md) |Verschiedene Funktionen für Big Data-Statistiken, Vorhersagemodellierung und Machine Learning |
+| [ML Services](r-server/r-server-overview.md) |Verschiedene Funktionen für Big Data-Statistiken, Vorhersagemodellierung und Machine Learning |
 | [Spark](spark/apache-spark-overview.md) |Arbeitsspeicherinterne Verarbeitung, interaktive Abfragen, Microbatch-Datenstromverarbeitung |
 | [Storm](storm/apache-storm-overview.md) |Ereignisverarbeitung in Echtzeit |
 

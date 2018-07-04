@@ -12,16 +12,16 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/07/2018
 ms.author: ellacroi
-ms.openlocfilehash: d93f66282e3f735565389904c65436ed2ad79480
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: f39392518f89ac51afd9a18fe59bcef46840478d
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826101"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054173"
 ---
-# <a name="grow-your-business-with-appsource"></a>Ausbauen Ihres Business mit AppSource  
+# <a name="grow-your-business-with-appsource"></a>Ausbauen Ihres Geschäfts mit AppSource  
 Nutzen Sie AppSource, wenn Sie bei Geschäftsbenutzern das Interesse an branchenspezifischen SaaS-Apps und Implementierungsdiensten wecken möchten – so erzielen Sie maximale Geschäftsergebnisse und reduzieren die Time-to-Value.  
 
 | Kundenanforderung | Funktionalität |  
@@ -32,8 +32,7 @@ Nutzen Sie AppSource, wenn Sie bei Geschäftsbenutzern das Interesse an branchen
 | ***Apps zur Optimierung der Produktivität, Effizienz und geschäftlichen Einblicke*** | Bietet Apps für verschiedene Abteilungen, z.B. Kundendienst, Personalwesen, Betriebsprozesse und viele mehr. |  
 | ***Erfahrener Implementierungspartner zur Unterstützung bei der Anpassung von Apps auf die spezifische Situation Ihres Kunden*** | Stellt einen Katalog mit Angeboten zu Beratungsdiensten für Lösungen basierend auf Dynamics 365, Power BI, PowerApps und Partner-Apps bereit, damit Geschäftsbenutzer vorhersagbare Ergebnisse erzielen können. |  
 
-<!-- # Grow your business with AppSource  -->
-Azure Marketplace und AppSource sind die Ausgangspunkte für gemeinsame Markteinführungsaktivitäten mit Microsoft und fördern das Geschäftswachstum. Mit Einführungsaktionen, Nachfragegenerierung und gemeinsamem Verkauf und Marketing kann Ihr Marketplace-Angebot das Kernstück Ihres Cloudgeschäftsmodells sein. Es fallen keine Teilnahmegebühren an. Microsoft-Kunden besuchen die Storefronts im Marketplace jeden Tag, um die richtigen Apps und Dienste zu finden, mit denen sie ihr Business ankurbeln können. Unser Ziel ist es, Organisationen mit den Lösungen und Diensten von Microsoft und den Microsoft-Partnern zu verbinden.  
+<!-- # Grow your business with AppSource  --> Azure Marketplace und AppSource sind die Ausgangspunkte für gemeinsame Markteinführungsaktivitäten mit Microsoft und fördern das Geschäftswachstum. Mit Einführungsaktionen, Nachfragegenerierung und gemeinsamem Verkauf und Marketing kann Ihr Marketplace-Angebot das Kernstück Ihres Cloudgeschäftsmodells sein. Es fallen keine Teilnahmegebühren an. Microsoft-Kunden besuchen die Storefronts im Marketplace jeden Tag, um die richtigen Apps und Dienste zu finden, mit denen sie ihr Business ankurbeln können. Unser Ziel ist es, Organisationen mit den Lösungen und Diensten von Microsoft und den Microsoft-Partnern zu verbinden.  
 
 ## <a name="business-benefits-of-joining-a-cloud-marketplace"></a>Geschäftsvorteile durch die Teilnahme an einem Cloud-Marketplace  
 Es gibt viele überzeugende Gründe dafür, bei den Storefronts im Marketplace dabei zu sein. Es folgen die spezifischen Vorteile der Listung Ihrer Angebote auf AppSource, damit Sie Ihr Geschäft ausbauen können:  
@@ -68,7 +67,7 @@ Die Qualität Ihrer App-Veröffentlichung und die Verpflichtung zu kundenzentrie
 Die folgende Checkliste enthält bewährte Marketingmethoden und Ressourcen, die bei der Erstellung von Angeboten, die auf AppSource veröffentlicht werden sollen, berücksichtigt werden müssen:  
 *   **Beachten der Microsoft-Markenrichtlinien.**  
     Befolgen Sie bei der Benennung Ihrer App und beim Verweisen auf Microsoft-Marken sowie auf Namen von Microsoft-Software, -Produkten und -Diensten die Microsoft-Markenrichtlinien sowie die entsprechenden produktspezifischen Richtlinien.  
-    *   Weitere Informationen zu Marken und Branding finden Sie auf der Seite mit den Microsoft-Richtlinien zu Marken und Branding unter [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx).  
+    *   Weitere Informationen zu Marken und Branding finden Sie auf der Seite mit den Microsoft-Richtlinien zu Marken und Branding unter [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx).  
 *   **Aktivieren einer sofort verfügbaren Umgebung oder einer kostenlosen Testversion Ihrer App.**  
     Geschäftliche Benutzer möchten Ihre App selbst ausprobieren.  
 *   **Formulieren eines überzeugenden Nutzenversprechens.**  
@@ -105,14 +104,14 @@ In den folgenden Tabellen sind die einzelnen Schritte zum Ausfüllen Ihrer Angeb
 
 | Angebotseinstellung | Bewährte Methoden | 
 |:---------------------------------------- |:----------------------------------------------------- |
-| **Name** | **Benennen Ihres Angebots**<br />Die Wahl des Namens für Ihre App ist eine wichtige Entscheidung. Auf den Nutzen bezogene Namen sind effektiver als beschreibende Namen. Der Name Ihrer App muss den Mehrwert vermitteln, den Kunden erhalten. Das Einbinden von Suchbegriffen in den Titel Ihrer App kann auch dazu beitragen, dass Ihre App in Suchmaschinenergebnissen höher eingestuft wird. Befolgen Sie beim Verweisen auf Microsoft-Marken sowie auf Namen von Microsoft-Software, -Produkten und -Diensten die Microsoft-Markenrichtlinien sowie die entsprechenden produktspezifischen Richtlinien.<ul> <li>Weitere Informationen zu Marken und Branding finden Sie auf der Seite mit den Microsoft-Richtlinien zu Marken und Branding unter [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx).</li> </ul> |
+| **Name** | **Benennen Ihres Angebots**<br />Die Wahl des Namens für Ihre App ist eine wichtige Entscheidung. Auf den Nutzen bezogene Namen sind effektiver als beschreibende Namen. Der Name Ihrer App muss den Mehrwert vermitteln, den Kunden erhalten. Das Einbinden von Suchbegriffen in den Titel Ihrer App kann auch dazu beitragen, dass Ihre App in Suchmaschinenergebnissen höher eingestuft wird. Befolgen Sie beim Verweisen auf Microsoft-Marken sowie auf Namen von Microsoft-Software, -Produkten und -Diensten die Microsoft-Markenrichtlinien sowie die entsprechenden produktspezifischen Richtlinien.<ul> <li>Weitere Informationen zu Marken und Branding finden Sie auf der Seite mit den Microsoft-Richtlinien zu Marken und Branding unter [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx).</li> </ul> |
 
 **Details der digitalen Ladenzeile: Angebotsdetails**  
 
 | Einstellungen der digitalen Ladenzeile | Bewährte Methoden | 
 |:---------------------------------------- |:----------------------------------------------------- |
 | **Angebotsname** | Die Angebotsübersicht wird auf der Suchseite des Angebots auf der AppSource-Homepage und im App-Katalog angezeigt. Binden Sie Suchbegriffe in Ihre Angebotsübersicht ein, um das Ranking Ihrer App in Suchmaschinenergebnissen zu verbessern. |
-| **Beschreibung des Angebots** | **Bereitstellen einer aussagekräftigen Angebotsbeschreibung.**<br />Schildern Sie in den ersten Sätzen Ihrer Beschreibung deutlich das Nutzenversprechen Ihres Angebots. Beachten Sie, dass die ersten Sätze in Suchmaschinenergebnissen angezeigt werden können.<br />Setzen Sie sich nicht nur auf Features und Funktionen, um Ihr Produkt zu verkaufen. Konzentrieren Sie stattdessen auf den Nutzen, den Sie bieten. Verwenden Sie möglichst viel branchenspezifisches Vokabular oder eine nutzenorientierte Formulierung.<br />Die Kernbestandteile Ihres Nutzenversprechens müssen Antworten auf diese Fragen bieten:<br />• Wobei handelt es sich bei dem Produkt?<br />• Wer profitiert am meisten davon?<br />• Für welche Anforderungen ist es gedacht?<br />Erzählen Sie Ihren Kunden, wie Ihre Lösung das Geschäfts- oder Arbeitsleben verbessern kann.<br />Binden Sie Suchbegriffe und Stichwortvariationen in Ihre Angebotsbeschreibung ein, um das Ranking Ihres Angebots in Suchmaschinenergebnissen zu verbessern.<br />Geben Sie die Angebotsbeschreibung in einfacher HTML-Form an.<br />Hier ist ein Beispiel einer einfachen Angebotsseite (wie im oben gezeigten Beispiel), die eine Angebotsübersicht und eine Liste der wichtigsten Funktionen enthält. Die maximale Anzahl von Zeichen ist 3.000.<br />_Beispiel-HTML_<br /><p>Organization Insights für Dynamics 365 (online) bietet wichtige Metriken zur Akzeptanz und Nutzung Ihrer Dynamics 365-Organisation sowie Tools, die Ihnen helfen, Antworten auf Fragen zu Leistung und Support zu finden.</p> <ul><li><strong>Anpassen von Dashboards</strong><br /> Richten Sie Ihr Dashboard so ein, dass es eine komfortable Benutzeroberfläche und Momentaufnahmen Ihrer wichtigen Daten bietet.<ul> <li><strong>Überwachen von Akzeptanz und Nutzung</strong>: Identifizieren Sie Ihre aktivsten Benutzer, die Anzahl von Seitenanforderungen, die am meisten genutzten Entitäten, Workflows und vieles mehr.</li> </ul><p>Unterstützte Mindestversion der Plattform: 8.1.1</p> |
+| **Beschreibung des Angebots** | **Bereitstellen einer aussagekräftigen Angebotsbeschreibung.**<br />Schildern Sie in den ersten Sätzen Ihrer Beschreibung deutlich das Nutzenversprechen Ihres Angebots. Beachten Sie, dass die ersten Sätze in Suchmaschinenergebnissen angezeigt werden können.<br />Setzen Sie sich nicht nur auf Features und Funktionen, um Ihr Produkt zu verkaufen. Konzentrieren Sie stattdessen auf den Nutzen, den Sie bieten. Verwenden Sie möglichst viel branchenspezifisches Vokabular oder eine nutzenorientierte Formulierung.<br />Die Kernbestandteile Ihres Nutzenversprechens müssen Antworten auf diese Fragen bieten:<ul> <li>Worum handelt es sich bei dem Produkt?</li>  <li>Wer profitiert am meisten davon?</li> <li>Für welche Anforderungen ist es gedacht?</li> </ul>Erzählen Sie Ihren Kunden, wie Ihre Lösung das Geschäfts- oder Arbeitsleben verbessern kann.<br />Binden Sie Suchbegriffe und Stichwortvariationen in Ihre Angebotsbeschreibung ein, um das Ranking Ihres Angebots in Suchmaschinenergebnissen zu verbessern.<br />Geben Sie die Angebotsbeschreibung in einfacher HTML-Form an.<br />Hier ist ein Beispiel einer einfachen Angebotsseite (wie im oben gezeigten Beispiel), die eine Angebotsübersicht und eine Liste der wichtigsten Funktionen enthält. Die maximale Anzahl von Zeichen ist 3.000.<br />*Beispiel-HTML*<br />Organization Insights für Dynamics 365 (online) bietet wichtige Metriken zur Akzeptanz und Nutzung Ihrer Dynamics 365-Organisation sowie Tools, die Ihnen helfen, Antworten auf Fragen zu Leistung und Support zu finden. <ul> <li>**Anpassen von Dashboards**<br />Richten Sie Ihr Dashboard so ein, dass es eine komfortable Benutzeroberfläche und Momentaufnahmen Ihrer wichtigen Daten bietet.<ul> <li>**Überwachen von Akzeptanz und Nutzung**<br />Identifizieren Sie Ihre aktivsten Benutzer, die Anzahl von Seitenanforderungen, die am meisten genutzten Entitäten, Workflows und vieles mehr.</li> </ul></li> </ul>Unterstützte Mindestversion der Plattform: `8.1.1` |
 
 **Details der digitalen Ladenzeile: Listungsdetails**  
 
@@ -134,7 +133,7 @@ In den folgenden Tabellen sind die einzelnen Schritte zum Ausfüllen Ihrer Angeb
 | **Screenshots** | Fügen Sie bis zu fünf Screenshots hinzu, und binden Sie Suchbegriffe in die Namen ein. |
 
 ### <a name="promote-the-availability-of-your-offer-on-appsource"></a>Bewerben der Verfügbarkeit Ihres Angebots in AppSource  
-Wenn Ihr Angebot in AppSource gelistet ist, haben Sie das Recht, den Badge „In AppSource verfügbar“ auf Ihrer Seite anzuzeigen. 
+Wenn Ihr Angebot in AppSource gelistet ist, haben Sie das Recht, den Badge ***In AppSource verfügbar*** auf Ihrer Seite anzuzeigen. 
 
  ![AppSource-Badge](./media/marketplace-appsource/appsourcebadge.png)
     

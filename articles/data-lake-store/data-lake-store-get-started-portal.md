@@ -1,26 +1,24 @@
 ---
-title: Verwenden des Azure-Portals für die ersten Schritte mit Data Lake Store | Microsoft-Dokumentation
-description: Verwenden des Azure-Portals zum Erstellen eines Data Lake Store-Kontos und Ausführen grundlegender Vorgänge im Data Lake Store
+title: Erste Schritte mit Data Lake Storage Gen1 unter Verwendung des Azure-Portals | Microsoft-Dokumentation
+description: Verwenden des Azure-Portals zum Erstellen eines Data Lake Store-Kontos und Ausführen grundlegender Vorgänge in Data Lake Store
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: fea324d0-ad1a-4150-81f0-8682ddb4591c
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/26/2018
+ms.topic: conceptual
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 91ed55e5f12c10e67653bdadfca80bd072779711
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e23b2496ccb69bb530bd825a1feb99abcc4ab35b
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37035106"
 ---
-# <a name="get-started-with-azure-data-lake-store-using-the-azure-portal"></a>Erste Schritte mit Azure Data Lake Store über das Azure-Portal
+# <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Erste Schritte mit Data Lake Storage Gen1 unter Verwendung des Azure-Portals
+
 > [!div class="op_single_selector"]
 > * [Portal](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -28,7 +26,9 @@ ms.lasthandoff: 03/28/2018
 >
 > 
 
-Hier erfahren Sie, wie Sie im Azure-Portal ein Azure Data Lake Store-Konto erstellen und grundlegende Vorgänge (Ordner erstellen, Datendateien hoch- und herunterladen, Ihr Konto löschen usw.) ausführen. Weitere Informationen finden Sie in der [Übersicht über Azure Data Lake Store](data-lake-store-overview.md).
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
+Hier erfahren Sie, wie Sie im Azure-Portal ein Azure Data Lake Store-Konto erstellen und grundlegende Vorgänge (Ordner erstellen, Datendateien hoch- und herunterladen, Ihr Konto löschen usw.) ausführen. Weitere Informationen finden Sie in der [Übersicht über Azure Data Lake Storage Gen1](data-lake-store-overview.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:

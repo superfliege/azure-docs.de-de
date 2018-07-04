@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: e982fa2bec3cbc4845ecebb45db76f019e2178ff
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 27473ce4057fdb06ab9faf0f46dede62b4ee2246
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32157389"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048838"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Hinzufügen von Mandanten für Nutzung und Abrechnung zu Azure Stack
 
@@ -64,7 +64,7 @@ Aktualisieren Sie Ihre Registrierung mit dem Abonnement des neuen Kunden. Azure 
 3. Führen Sie in der PowerShell-Sitzung Folgendes aus:
 
 ```powershell
-    New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties
+    New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties <PSObject>
 ```
 ### <a name="new-azurermresource-powershell-parameters"></a>PowerShell-Parameter New-AzureRmResource
 | Parameter | BESCHREIBUNG |
@@ -73,6 +73,7 @@ Aktualisieren Sie Ihre Registrierung mit dem Abonnement des neuen Kunden. Azure 
 | customerSubscriptionID | Das Azure-Abonnement (nicht Azure Stack), das zu dem Kunden gehört, der registriert werden soll. Muss im CSP-Angebot erstellt werden – in der Praxis über das Partner Center. Wenn ein Kunde über mehrere Azure Active Directory-Mandanten verfügt, muss dieses Abonnement in dem Mandanten erstellt werden, der zum Anmelden bei Azure Stack verwendet wird.
 | Ressourcengruppe | Die Ressourcengruppe in Azure, in dem Ihre Registrierung gespeichert ist. 
 | registrationName | Der Name der Registrierung Ihrer Azure Stack-Instanz. Dies ist ein in Azure gespeichertes Objekt. | 
+| Eigenschaften | Gibt die Eigenschaften für die Ressource an. Verwenden Sie diesen Parameter, um Werte für die Eigenschaften anzugeben, die speziell für diesen Ressourcentyp gelten.
 
 
 > [!Note]  

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 51a0f43587b9d34a3693eb4a2927d10c71bd95d1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59631ee0115c817da1b0588c1ad37d2f8b34db67
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621750"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053660"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Azure Data Factory, die allgemein verfügbar (GA) ist. Falls Sie die (Vorschau-)Version 2 des Data Factory-Diensts verwenden, lesen Sie unter [Von Azure Data Factory unterstützte Compute-Umgebungen](../compute-linked-services.md) weiter.
+> Dieser Artikel bezieht sich auf Version 1 von Azure Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [Verknüpfte Compute Services](../compute-linked-services.md).
 
 In diesem Artikel werden die Compute-Umgebungen beschrieben, mit denen Sie Daten verarbeiten oder transformieren können. Darüber hinaus werden Einzelheiten zu verschiedenen Konfigurationen beschrieben (bedarfsgesteuerte Compute-Umgebung im Vergleich zu einer eigenen Compute-Umgebung), die Data Factory unterstützt, wenn Sie verknüpfte Dienste konfigurieren, um diese Compute-Umgebungen mit Azure Data Factory zu verknüpfen.
 
@@ -66,7 +66,7 @@ Nach dem 31. Juli 2018:
 - Wenn Sie zum Ausführen der benutzerdefinierten .NET-Aktivität der Data Factory-Version 1 einen verknüpften bedarfsgesteuerten HDInsight-Dienst verwenden, aktualisieren Sie die JSON-Definition der benutzerdefinierten .NET-Aktivität so, dass stattdessen ein verknüpfter Azure Batch-Dienst verwendet wird. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities). 
 
 > [!Note]
-> Bei Verwendung eines eigenen, mit HDInsight verknüpften Geräts mit eigenem Cluster in der Data Factory-Version 1 oder eines eigenen bedarfsgesteuerten verknüpften HDInsight-Diensts in der Azure Data Factory-Version 2 ist keine Aktion erforderlich. In diesen Szenarien wird die Richtlinie zur Unterstützung der neuesten Version von HDInsight-Clustern bereits erzwungen. 
+> Bei Verwendung eines eigenen, mit HDInsight verknüpften Geräts mit eigenem Cluster in der Data Factory, Version 1 oder eines eigenen bedarfsgesteuerten verknüpften HDInsight-Diensts in Azure Data Factory ist keine Aktion erforderlich. In diesen Szenarien wird die Richtlinie zur Unterstützung der neuesten Version von HDInsight-Clustern bereits erzwungen. 
 >
 > 
 

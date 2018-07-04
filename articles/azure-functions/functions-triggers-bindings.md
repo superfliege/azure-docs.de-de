@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/24/2018
 ms.author: tdykstra
-ms.openlocfilehash: c5211b43a85383c7c9f42a1d56271addae6d956e
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 5e7e6608003b365d5516ca2e94a51c0710ad1125
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725342"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061352"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Konzepte für Azure Functions-Trigger und -Bindungen
 
@@ -46,48 +46,53 @@ Informationen darüber, welche Bindungen sich in der Vorschauversion befinden od
 
 ## <a name="register-binding-extensions"></a>Registrieren von Bindungserweiterungen
 
-In Version 2.x der Azure Functions Runtime müssen Sie die in Ihrer Funktions-App verwendeten Bindungserweiterungen (Bindungstypen) explizit registrieren. 
+In einigen Entwicklungsumgebungen müssen Sie eine zu verwendende Bindung explizit *registrieren*. Bindungserweiterungen werden in NuGet-Paketen bereitgestellt, und zum Registrieren einer Erweiterung installieren Sie ein Paket. In der folgenden Tabelle ist angegeben, wann und wie Sie Bindungserweiterungen registrieren.
 
-Version 2.x der Functions Runtime ist derzeit als Vorschau verfügbar. Informationen dazu, wie Sie eine Functions-App so einrichten, dass sie die Version 2.x der Functions Runtime verwendet, finden Sie unter [Einstellen von Runtimeversionen von Azure Functions als Ziel](set-runtime-version.md).
+|Entwicklungsumgebung |Registrierung<br/> in Functions 1.x  |Registrierung<br/> in Functions 2.x  |
+|---------|---------|---------|
+|Azure-Portal|Automatisch|[Automatisch mit Eingabeaufforderung](#azure-portal-development)|
+|Lokal mit Azure Functions Core Tools|Automatisch|[Verwendung von Core Tools-CLI-Befehlen](#local-development-azure-functions-core-tools)|
+|C#-Klassenbibliothek mit Visual Studio 2017|[Verwendung von NuGet-Tools](#c-class-library-with-visual-studio-2017)|[Verwendung von NuGet-Tools](#c-class-library-with-visual-studio-2017)|
+|C#-Klassenbibliothek mit Visual Studio Code|N/V|[Verwendung der .NET Core-CLI](#c-class-library-with-visual-studio-code)|
 
-Ein Kernsatz von Bindungen in Version 2.x wird automatisch registriert, sodass Sie ihn nicht explizit registrieren müssen: HTTP, Timer und Azure Storage (Blobs, Warteschlangen und Tabellen). 
+Die folgenden Bindungstypen sind Ausnahmen, für die keine explizite Registrierung erforderlich ist, da sie in allen Versionen und Umgebungen automatisch registriert werden: HTTP, Timer und Azure Storage (Blobs, Warteschlangen und Tabellen). 
 
-Erweiterungen werden als NuGet-Pakete bereitgestellt. Der Paketnamen beginnt in der Regel mit [microsoft.azure.webjobs.extensions](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions).  Das Registrieren Ihrer Bindungserweiterungen hängt davon ab, wie Sie Ihre Funktionen entwickeln: 
+### <a name="azure-portal-development"></a>Entwicklung im Azure-Portal
 
-+ [Lokal in C# mit Visual Studio oder VS Code](#local-c-development-using-visual-studio-or-vs-code)
-+ [Lokal mit Azure Functions Core Tools](#local-development-azure-functions-core-tools)
-+ [Im Azure-Portal](#azure-portal-development) 
+Wenn Sie eine Funktion erstellen oder eine Bindung hinzufügen, erhalten Sie eine Meldung, wenn die Erweiterung für den Trigger bzw. die Bindung eine Registrierung erfordert. Reagieren Sie auf die Meldung, indem Sie auf **Installieren** klicken, um die Erweiterung zu registrieren. Die Installation kann bis zu 10 Minuten eines Verbrauchstarifs aufbrauchen.
 
-Die in diesem Abschnitt gezeigten Paketversionen dienen nur als Beispiele. Auf der [NuGet.org-Website](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions) können Sie ermitteln, welche Version einer bestimmten Erweiterung für die anderen Abhängigkeiten in Ihrer Funktions-App erforderlich sind.    
-
-### <a name="local-csharp"></a> Lokale Entwicklung in C# mit Visual Studio oder Visual Studio-Code
-
-Wenn Sie Funktionen lokal in C# mit Visual Studio oder Visual Studio Code entwickeln, installieren Sie das NuGet-Paket für die Erweiterung. 
-
-+ **Visual Studio**: Verwenden Sie die NuGet-Paket-Manager-Tools. Der folgende Befehl [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) installiert die Azure Cosmos DB-Erweiterung aus der Paket-Manager-Konsole:
-
-    ```powershell
-    Install-Package Microsoft.Azure.WebJobs.Extensions.CosmosDB -Version 3.0.0-beta6 
-    ```
-
-+ **Visual Studio Code**: Sie können Pakete über die Eingabeaufforderung installieren. Verwenden Sie dazu wie folgt den Befehl [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) in der .NET-Befehlszeilenschnittstelle:
-
-    ```terminal
-    dotnet add package Microsoft.Azure.WebJobs.Extensions.CosmosDB --version 3.0.0-beta6 
-    ```
+Sie müssen jede Erweiterung nur ein Mal für eine bestimmte Funktions-App installieren. 
 
 ### <a name="local-development-azure-functions-core-tools"></a>Lokale Entwicklung mit Azure Functions Core Tools
 
 [!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
-### <a name="azure-portal-development"></a>Entwicklung im Azure-Portal
+<a name="local-csharp"></a>
+### <a name="c-class-library-with-visual-studio-2017"></a>C#-Klassenbibliothek mit Visual Studio 2017
 
-Wenn Sie eine Funktion erstellen oder einer vorhandenen Funktion eine Bindung hinzufügen, erhalten Sie möglicherweise eine Meldung, dass zum Hinzufügen der Erweiterung für den Trigger bzw. die Bindung eine Registrierung erforderlich ist.   
+In **Visual Studio 2017** können Sie Pakete mithilfe des Befehls [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) aus der Paket-Manager-Konsole installieren, wie es im folgenden Beispiel gezeigt wird:
 
-Nachdem eine Warnung zur Installation der spezifischen Erweiterung angezeigt wurde, klicken Sie auf **Installieren**, um die Erweiterung zu registrieren. Sie müssen jede Erweiterung nur ein Mal für eine bestimmte Funktions-App installieren. 
+```powershell
+Install-Package Microsoft.Azure.WebJobs.ServiceBus --Version <target_version>
+```
 
->[!Note] 
->Der Installationsvorgang im Portal kann bis zu 10 Minuten eines Verbrauchstarifs aufbrauchen.
+Der Name des Pakets, das für eine bestimmte Bindung verwendet werden muss, ist im Referenzartikel für diese Bindung angegeben. Ein Beispiel finden Sie im [Referenzartikel zur Service Bus-Bindung im Abschnitt „Pakete“](functions-bindings-service-bus.md#packages---functions-1x).
+
+Ersetzen Sie `<target_version>` im Beispiel durch eine bestimmte Version des Pakets, z.B. `3.0.0-beta5`. Gültige Versionen sind auf den Seiten der einzelnen Pakete auf [NuGet.org](https://nuget.org) aufgeführt. Die Hauptversionen, die Functions Runtime 1.x oder 2.x entsprechen, sind im Referenzartikel für die Bindung angegeben.
+
+### <a name="c-class-library-with-visual-studio-code"></a>C#-Klassenbibliothek mit Visual Studio Code
+
+In **Visual Studio Code** können Sie Pakete über die Eingabeaufforderung installieren. Verwenden Sie dazu den Befehl [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) in der .NET Core-CLI, wie es im folgenden Beispiel gezeigt wird:
+
+```terminal
+dotnet add package Microsoft.Azure.WebJobs.ServiceBus --version <target_version>
+```
+
+Die .NET Core-CLI kann nur für die Entwicklung in Azure Functions 2.x verwendet werden.
+
+Der Name des Pakets, das für eine bestimmte Bindung verwendet werden muss, ist im Referenzartikel für diese Bindung angegeben. Ein Beispiel finden Sie im [Referenzartikel zur Service Bus-Bindung im Abschnitt „Pakete“](functions-bindings-service-bus.md#packages---functions-1x).
+
+Ersetzen Sie `<target_version>` im Beispiel durch eine bestimmte Version des Pakets, z.B. `3.0.0-beta5`. Gültige Versionen sind auf den Seiten der einzelnen Pakete auf [NuGet.org](https://nuget.org) aufgeführt. Die Hauptversionen, die Functions Runtime 1.x oder 2.x entsprechen, sind im Referenzartikel für die Bindung angegeben.
 
 ## <a name="example-trigger-and-binding"></a>Beispiele für Trigger und Bindungen
 

@@ -1,6 +1,6 @@
 ---
 title: Lesen oder Schreiben partitionierter Daten in Azure Data Factory | Microsoft-Dokumentation
-description: Erfahren Sie, wie partitionierte Daten in Azure Data Factory, Version 2, gelesen oder geschrieben werden.
+description: Erfahren Sie, wie partitionierte Daten in Azure Data Factory gelesen oder geschrieben werden.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: shlo
-ms.openlocfilehash: cdf305e3607d7483186185a014883cff5458b89f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59644f3318e2bf9c4f0ea6c3f5699fe1d19f2089
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619081"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053709"
 ---
-# <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory-version-2"></a>Lesen oder Schreiben partitionierter Daten in Azure Data Factory, Version 2
-In Version 1 unterstützte Azure Data Factory das Lesen oder Schreiben von partitionierten Daten mithilfe der Systemvariablen SliceStart/SliceEnd/WindowStart/WindowEnd. In Version 2 können Sie dieses Verhalten mithilfe eines Pipelineparameters und der Anfangszeit/geplanten Zeit eines Triggers als Wert des Parameters erreichen. 
+# <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory"></a>Lesen oder Schreiben partitionierter Daten in Azure Data Factory
+In Version 1 unterstützte Azure Data Factory das Lesen oder Schreiben von partitionierten Daten mithilfe der Systemvariablen SliceStart/SliceEnd/WindowStart/WindowEnd. In der aktuellen Version von Data Factory können Sie dieses Verhalten mithilfe eines Pipelineparameters und der Anfangszeit/geplanten Zeit eines Triggers als Wert des Parameters erreichen. 
 
 ## <a name="use-a-pipeline-parameter"></a>Verwenden eines Pipelineparameters 
 In Version 1 konnten Sie die partitionedBy-Eigenschaft und die SliceStart-Systemvariable wie im folgenden Beispiel dargestellt verwenden: 
@@ -37,7 +37,7 @@ In Version 1 konnten Sie die partitionedBy-Eigenschaft und die SliceStart-System
 
 Weitere Informationen über die partitonedBy-Eigenschaft finden Sie im Artikel [Azure-Blob-Connector, Version 1](v1/data-factory-azure-blob-connector.md#dataset-properties). 
 
-In Version 2 besteht eine Möglichkeit zum Erreichen dieses Verhaltens im Ausführen der folgenden Aktionen: 
+In der aktuellen Version von Data Factory besteht eine Möglichkeit zum Erreichen dieses Verhaltens im Ausführen der folgenden Aktionen: 
 
 1. Definieren Sie einen **Pipelineparameter** vom Typ Zeichenfolge. Im folgenden Beispiel lautet der Name des Pipelineparameters **windowStartTime**. 
 2. Legen Sie in der Datasetdefinition **folderPath** als Verweis auf den Wert des Pipelineparameters fest. 

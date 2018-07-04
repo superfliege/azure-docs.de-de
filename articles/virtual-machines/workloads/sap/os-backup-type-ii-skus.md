@@ -11,24 +11,24 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/31/2017
+ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0d5caf5836b96555e01b55d408e51f3df2407d35
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f01a32612b335003856a372ece15ef300b9d93db
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657603"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063273"
 ---
 # <a name="os-backup-and-restore-for-type-ii-skus"></a>OS-Sicherung und -Wiederherstellung für Typ-II-SKUs
 
-Dieses Dokument beschreibt die Schritte zum Durchführen einer Betriebssystemsicherung und -wiederherstellung für die **Typ-II-SKUs** großer HANA-Instanzen. 
+Dieses Dokument beschreibt die Schritte zum Durchführen einer Betriebssystemsicherung und -wiederherstellung auf Dateiebene für die **Typ-II-SKUs** großer HANA-Instanzen. 
 
 >[!NOTE]
 >In den Skripts zum Sichern des Betriebssystems wird die auf dem Server vorinstallierte ReaR-Software verwendet.  
 
-Nach Abschluss der Bereitstellung durch das Microsoft Service Management-Team ist der Server standardmäßig mit zwei geplanten Sicherungen zum Sichern des gesamten Betriebssystems konfiguriert. Der Zeitplan des Sicherung kann mithilfe des folgenden Befehls geprüft werden:
+Nach Abschluss der Bereitstellung durch das Microsoft Service Management-Team ist der Server standardmäßig mit zwei geplanten Sicherungen zum Sichern des Betriebssystems auf Dateisystemebene konfiguriert. Der Zeitplan des Sicherung kann mithilfe des folgenden Befehls geprüft werden:
 ```
 #crontab –l
 ```
@@ -38,7 +38,7 @@ Sie können den Sicherungszeitplan jederzeit mithilfe des folgenden Befehls änd
 ```
 ## <a name="how-to-take-a-manual-backup"></a>Erstellen einer manuellen Sicherung
 
-Die Sicherung des Betriebssystems wird bereits mithilfe eines **cron-Auftrags** geplant. Sie können die Sicherung des Betriebssystems jedoch auch manuell ausführen. Führen Sie für eine manuelle Sicherung den folgenden Befehl aus:
+Die Sicherung des Betriebssystems auf Dateisystemebene wird bereits mithilfe eines **cron-Auftrags** geplant. Sie können die Sicherung des Betriebssystems auf Dateisystemebene jedoch auch manuell ausführen. Führen Sie für eine manuelle Sicherung den folgenden Befehl aus:
 
 ```
 #rear -v mkbackup

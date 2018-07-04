@@ -9,23 +9,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 4749e79b79cec7172ddd764593939d6f82f5f5ab
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 3fdece082401ca57beabe6334a0ea0ca292ba298
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36291945"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052349"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Blob Storage mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1 – allgemein verfügbar](v1/data-factory-azure-blob-connector.md)
-> * [Version 2 – Vorschauversion](connector-azure-blob-storage.md)
+> * [Version 1](v1/data-factory-azure-blob-connector.md)
+> * [Aktuelle Version](connector-azure-blob-storage.md)
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten nach und aus Azure Blob Storage zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
-
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die Data Factory-Version 1 verwenden, die allgemein verfügbar ist, lesen Sie [Blob Storage-Connector in Version 1](v1/data-factory-azure-blob-connector.md).
-
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 

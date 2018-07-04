@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 84d81dd9e1ef51a2a1705210cd7002a685bdf8fb
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 3758b04fc9b5ecd5dc69c82a8bd07999a9f1074a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266820"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050606"
 ---
 # <a name="how-to-start-and-stop-the-azure-ssis-integration-runtime-on-a-schedule"></a>Starten und Beenden der Azure SSIS Integration Runtime nach einem Zeitplan
 Dieser Artikel beschreibt die Planung des Startens und Beendens einer Azure-SSIS-Integration Runtime (IR) mithilfe von Azure Automation und Azure Data Factory. Das Ausführen einer Azure SSIS (SQL Server Integration Services) Integration Runtime (IR) ist mit einer Gebühr verbunden. Sie sollten die IR daher in der Regel nur ausführen, wenn Sie SSIS-Pakete in Azure ausführen müssen, und die IR andernfalls beenden. Sie können die Data Factory-Benutzeroberfläche oder Azure PowerShell zum [manuellen Starten oder Beenden einer Azure SSIS-IR](manage-azure-ssis-integration-runtime.md) verwenden.
@@ -34,10 +34,6 @@ Folgende allgemeine Schritte werden in diesem Artikel beschrieben:
 3. **Erstellen Sie zwei Webhooks für das Runbook** – einen für den Startvorgang und den anderen für den Stoppvorgang. Sie verwenden die URLs dieser Webhooks beim Konfigurieren von Webaktivitäten in einer Data Factory-Pipeline. 
 4. **Erstellen einer Data Factory-Pipeline.** Die erstellte Pipeline umfasst drei Aktivitäten. Die erste **Web**-Aktivität ruft den ersten Webhook auf, um die Azure SSIS-IR zu starten. Die Aktivität **Gespeicherte Prozedur** führt ein SQL-­Skript aus, das wiederum das SSIS-Paket ausführt. Die zweite **Web**-Aktivität beendet die Azure SSIS-IR. Weitere Informationen zum Aufrufen eines SSIS-Pakets aus einer Data Factory-Pipeline mit der „Gespeicherte Prozedur“-Aktivität finden Sie unter [Aufrufen eines SSIS-Pakets](how-to-invoke-ssis-package-stored-procedure-activity.md). Anschließend erstellen Sie einen Zeitplantrigger zum Planen der Pipeline für die Ausführung im angegebenen Rhythmus.
 
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, die allgemein verfügbar (GA) ist, lesen Sie [Invoke SSIS packages using stored procedure activity in version 1](v1/how-to-invoke-ssis-package-stored-procedure-activity.md) (Aufrufen von SSIS-Paketen mithilfe einer Aktivität einer gespeicherten Prozedur in Version 1).
-
- 
 ## <a name="prerequisites"></a>Voraussetzungen
 Wenn Sie noch keine Azure SSIS-Integration Runtime bereitgestellt haben, stellen Sie sie mithilfe der folgenden Anweisungen im [Tutorial](tutorial-create-azure-ssis-runtime-portal.md) bereit. 
 
@@ -254,7 +250,7 @@ Nachdem Sie die Pipeline erstellt und getestet haben, erstellen Sie einen Zeitpl
       - Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein.   
          
       Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).  
-4. Wählen Sie **V2 (Vorschau)** als **Version** aus.
+4. Wählen Sie **V2** als **Version** aus.
 5. Wählen Sie den **Standort** für die Data Factory aus. Die Liste enthält nur Standorte, die für die Erstellung von Data Factorys geeignet sind.
 6. Wählen Sie die Option **An Dashboard anheften** aus.     
 7. Klicken Sie auf **Create**.

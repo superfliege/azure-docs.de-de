@@ -1,51 +1,58 @@
 ---
 title: Lösung für die Updateverwaltung in Azure
-description: In diesem Artikel soll vermittelt werden, wie Sie diese Lösung zum Verwalten von Updates für Ihre Windows- und Linux-Computer verwenden.
+description: In diesem Artikel soll vermittelt werden, wie Sie die Lösung für die Azure-Updateverwaltung zum Verwalten von Updates für Ihre Windows- und Linux-Computer verwenden können.
 services: automation
 ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/23/2018
+ms.date: 06/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d93f79874ff65a1b6bb7ddd75932111c5caa6072
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a8ac62986eb7eb184ae6d102a956ee051e3aa88a
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195844"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063509"
 ---
 # <a name="update-management-solution-in-azure"></a>Lösung für die Updateverwaltung in Azure
 
-Mithilfe der Lösung für die Updateverwaltung in Azure Automation können Sie Betriebssystemupdates für Ihre Windows- und Linux-Computer verwalten, die in Azure, in lokalen Umgebungen oder bei anderen Cloudanbietern bereitgestellt wurden. Sie können den Status der verfügbaren Updates auf allen Agent-Computern schnell auswerten und die Installation der für den Server erforderlichen Updates initiieren.
+Sie können die Lösung für die Updateverwaltung in Azure Automation für Betriebssystemupdates für Ihre Windows- und Linux-Computer verwalten, die in Azure, in lokalen Umgebungen oder bei anderen Cloudanbietern bereitgestellt werden. Sie können den Status der verfügbaren Updates auf allen Agent-Computern schnell auswerten und die Installation der für den Server erforderlichen Updates initiieren.
 
-Die Updateverwaltung für virtuelle Computer kann direkt in Ihrem Azure Automation-Konto aktiviert werden.
-Informationen zum Aktivieren der Updateverwaltung für virtuelle Computer über das Automation-Konto finden Sie unter [Verwalten von Updates für mehrere virtuelle Azure-Computer](manage-update-multi.md). Sie können die Updateverwaltung im Azure-Portal auf der Seite des virtuellen Computers auch für einen einzelnen virtuellen Computer aktivieren. Dieses Szenario ist sowohl für virtuelle [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management)- als auch [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management)-Computer verfügbar.
+Die Updateverwaltung für virtuelle Computer kann direkt in Ihrem Azure Automation-Konto aktiviert werden. Informationen zum Aktivieren der Updateverwaltung für virtuelle Computer über das Automation-Konto finden Sie unter [Verwalten von Updates für mehrere virtuelle Azure-Computer](manage-update-multi.md). Sie können die Updateverwaltung im Azure-Portal im Bereich des virtuellen Computers auch für einen einzelnen virtuellen Computer aktivieren. Dieses Szenario ist für virtuelle [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management)- und [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management)-Computer verfügbar.
 
 ## <a name="solution-overview"></a>Lösungsübersicht
 
 Verwenden Sie für Computer, die mit der Updateverwaltung verwaltet werden, die folgenden Konfigurationen, um Bewertungen und Updatebereitstellungen durchzuführen:
 
-* Microsoft Monitoring Agent für Windows oder Linux
+* Microsoft Monitoring Agent (MMA) für Windows oder Linux
 * PowerShell Desired State Configuration (DSC) für Linux
 * Automation Hybrid Runbook Worker
-* Microsoft Update oder Windows Server Update Services für Windows-Computer
+* Microsoft Update oder Windows Server Update Services (WSUS) für Windows-Computer
 
-Das folgende Diagramm enthält eine konzeptionelle Darstellung des Verhaltens und Datenflusses, und zeigt, wie die Lösung alle verbundenen Windows Server- und Linux-Computer eines Arbeitsbereichs bewertet und Sicherheitsupdates darauf anwendet.
+Das folgende Diagramm enthält eine konzeptionelle Darstellung des Verhaltens und Datenflusses und zeigt, wie die Lösung alle verbundenen Windows Server- und Linux-Computer eines Arbeitsbereichs bewertet und Sicherheitsupdates darauf anwendet:
 
 ![Ablauf des Updateverwaltungsprozesses](media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Nachdem ein Computer einen Scanvorgang durchgeführt hat, um die Konformität für das Update zu überprüfen, leitet der Agent die Informationen gesammelt an Log Analytics weiter. Auf einem Windows-Computer wird der Konformitätsscan standardmäßig alle zwölf Stunden durchgeführt. Zusätzlich zum Scanzeitplan wird der Update-Konformitätsscan innerhalb von 15 Minuten initiiert, wenn der Microsoft Monitoring Agent (MMA) neu gestartet wird – jeweils vor und nach der Updateinstallation. Bei einem Linux-Computer wird der Konformitätsscan standardmäßig alle drei Stunden durchgeführt, und bei einem MMA-Neustart erfolgt innerhalb von 15 Minuten ein Konformitätsscan.
+Nachdem ein Computer einen Scanvorgang ausgeführt hat, um die Konformität für das Update zu überprüfen, leitet der Agent die Informationen gesammelt an Azure Log Analytics weiter. Auf einem Windows-Computer wird der Konformitätsscan standardmäßig alle 12 Stunden ausgeführt. 
 
-Die Lösung meldet basierend darauf, welche Quelle für die Synchronisierung konfiguriert ist, wie aktuell der Computer ist. Wenn der Windows-Computer für das Senden von Meldungen an WSUS konfiguriert ist, können sich die Ergebnisse von den angezeigten Microsoft Update-Ergebnissen unterscheiden. Dies hängt davon ab, wann WSUS zuletzt mit Microsoft Update synchronisiert wurde. Dasselbe gilt für Linux-Computer, die für das Melden an ein lokales Repository konfiguriert sind, anstatt an ein öffentliches Repository.
+Zusätzlich zum Scanzeitplan wird der Update-Konformitätsscan innerhalb von 15 Minuten initiiert, wenn der MMA neu gestartet wird (jeweils vor und nach der Updateinstallation). 
+
+Für einen Linux-Computer wird der Konformitätsscan standardmäßig alle drei Stunden ausgeführt. Wenn der MMA-Agent neu gestartet wird, wird ein Konformitätsscan innerhalb von 15 Minuten eingeleitet.
+
+Die Lösung meldet basierend auf der für die Synchronisierung konfigurierten Quelle, wie aktuell der Computer ist. Wenn der Windows-Computer für das Senden von Meldungen an WSUS konfiguriert ist, können sich die Ergebnisse von den angezeigten Microsoft Update-Ergebnissen unterscheiden. Dies hängt davon ab, wann WSUS zuletzt mit Microsoft Update synchronisiert wurde. Dasselbe gilt für Linux-Computer, die für Meldungen an ein lokales Repository konfiguriert sind (anstatt an ein öffentliches Repository).
 
 > [!NOTE]
-> Für die Updateverwaltung müssen bestimmte URLs und Ports aktiviert werden, damit der Dienst ordnungsgemäß Berichte erstellt. Informationen zu diesen Anforderungen finden Sie unter [Netzwerkplanung für Hybrid Worker](automation-hybrid-runbook-worker.md#network-planning).
+> Damit Meldungen an den Dienst ordnungsgemäß erfolgen können, erfordert die Updateverwaltung, dass bestimmte URLs und Ports aktiviert werden. Weitere Informationen zu diesen Anforderungen finden Sie unter [Netzwerkplanung für Hybrid Worker](automation-hybrid-runbook-worker.md#network-planning).
 
-Sie können Softwareupdates auf Computern bereitstellen und installieren, für die die Updates erforderlich sind, indem Sie einen geplante Bereitstellung erstellen. Updates, die als *Optional* klassifiziert sind, sind im Bereitstellungsumfang von Windows-Computern nicht enthalten, sondern nur erforderliche Updates. Bei der geplanten Bereitstellung wird definiert, welche Zielcomputer die jeweiligen Updates erhalten – entweder durch das explizite Angeben von Computern oder das Auswählen einer [Computergruppe](../log-analytics/log-analytics-computer-groups.md), die auf Protokollsuchen einer bestimmten Gruppe von Computern basiert. Außerdem geben Sie einen Zeitplan an, um einen Zeitraum zu genehmigen und festzulegen, in dem Updates installiert werden dürfen. Updates werden mit Runbooks in Azure Automation installiert. Sie können diese Runbooks nicht anzeigen, und für die Runbooks ist keine Konfiguration erforderlich. Bei der Erstellung einer Updatebereitstellung wird ein Zeitplan erstellt, nach dem für die einbezogenen Computer zur angegebenen Zeit ein Masterrunbook für das Update gestartet wird. Über dieses Masterrunbook wird ein untergeordnetes Runbook auf jedem Agent gestartet, mit dem die Installation von erforderlichen Updates durchgeführt wird.
+Sie können Softwareupdates auf Computern bereitstellen und installieren, für die die Updates erforderlich sind, indem Sie einen geplante Bereitstellung erstellen. Updates, die als *Optional* klassifiziert sind, sind im Bereitstellungsumfang von Windows-Computern nicht enthalten. Nur erforderliche Updates sind im Bereitstellungsumfang enthalten. 
 
-Wenn die Datums- bzw. Uhrzeitangabe der Updatebereitstellung erreicht ist, führt der Zielcomputer die Bereitstellung parallel aus. Zuerst wird ein Scanvorgang durchgeführt, um sicherzustellen, dass die Updates weiterhin erforderlich sind, und anschließend werden sie installiert. Für WSUS-Clientcomputer schlägt die Updatebereitstellung fehl, wenn die Updates in WSUS nicht genehmigt sind.
+Bei der geplanten Bereitstellung wird definiert, welche Zielcomputer die jeweiligen Updates erhalten: entweder durch das explizite Angeben von Computern oder das Auswählen einer [Computergruppe](../log-analytics/log-analytics-computer-groups.md), die auf Protokollsuchen einer bestimmten Gruppe von Computern basiert. Außerdem geben Sie einen Zeitplan an, um einen Zeitraum zu genehmigen und festzulegen, in dem Updates installiert werden dürfen. 
+
+Updates werden mit Runbooks in Azure Automation installiert. Sie können diese Runbooks nicht anzeigen, und für die Runbooks ist keine Konfiguration erforderlich. Wenn eine Updatebereitstellung erstellt wird, erstellt die Updatebereitstellung einen Zeitplan, nach dem für die einbezogenen Computer zur angegebenen Zeit ein Masterrunbook für das Update gestartet wird. Das Masterrunbook startet ein untergeordnetes Runbook für jeden Agent, um die Installation von erforderlichen Updates auszuführen.
+
+Wenn die Datums- bzw. Uhrzeitangabe der Updatebereitstellung erreicht ist, führen die Zielcomputer die Bereitstellung parallel aus. Vor der Installation wird ein Scanvorgang ausgeführt, um sicherzustellen, dass die Updates weiterhin erforderlich sind. Für WSUS-Clientcomputer tritt ein Fehler bei der Updatebereitstellung auf, wenn die Updates in WSUS nicht genehmigt sind.
 
 ## <a name="clients"></a>Clients
 
@@ -55,12 +62,12 @@ In der folgenden Tabelle sind die unterstützten Betriebssysteme aufgeführt:
 
 |Betriebssystem  |Notizen  |
 |---------|---------|
-|Windows Server 2008, Windows Server 2008 R2 RTM    | Unterstützt nur Updatebewertungen         |
-|Windows Server 2008 R2 SP1 und höher     |Windows PowerShell 4.0 oder höher erforderlich ([WMF 4.0 herunterladen](https://www.microsoft.com/download/details.aspx?id=40855)).</br> Für eine höhere Zuverlässigkeit wird Windows PowerShell 5.1 ([WMF 5.1 herunterladen](https://www.microsoft.com/download/details.aspx?id=54616)) empfohlen.         |
-|CentOS 6 (x86/x64) und 7 (x64)      | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
+|Windows Server 2008, Windows Server 2008 R2 RTM    | Unterstützt nur Updatebewertungen.         |
+|Windows Server 2008 R2 SP1 und höher     |.NET Framework 4.5 oder höher ist erforderlich. ([.NET Framework herunterladen](/dotnet/framework/install/guide-for-developers))<br/> WindowsPowerShell 4.0 oder höher ist erforderlich. ([WMF 4.0 herunterladen](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Für eine höhere Zuverlässigkeit wird Windows PowerShell 5.1 empfohlen.  ([WMF 5.1 herunterladen](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|CentOS 6 (x86/x64) und 7 (x64)      | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen. Für klassifizierungsbasiertes Patchen muss „yum“ Sicherheitsdaten zurückgeben, über die CentOS nicht standardmäßig verfügt.         |
 |Red Hat Enterprise 6 (x86/x64) und 7 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) und 12 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
-|Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)      |Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.         |
+|Ubuntu 14.04 LTS und 16.04 LTS (x86/x64)      |Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.         |
 
 ### <a name="unsupported-client-types"></a>Nicht unterstützte Clienttypen
 
@@ -68,34 +75,36 @@ In der folgenden Tabelle werden die Betriebssysteme aufgelistet, die nicht unter
 
 |Betriebssystem  |Notizen  |
 |---------|---------|
-|Windows-Client     | Clientbetriebssysteme (Windows 7, Windows 10 usw.) werden nicht unterstützt.        |
-|Windows Server 2016 Nano Server     | Nicht unterstützt       |
+|Windows-Client     | Clientbetriebssysteme (z.B. Windows 7 und Windows 10) werden nicht unterstützt.        |
+|Windows Server 2016 Nano Server     | Nicht unterstützt.       |
 
 ### <a name="client-requirements"></a>Clientanforderungen
 
 #### <a name="windows"></a>Windows
 
-Windows-Agents müssen entweder für die Kommunikation mit einem WSUS-Server (Windows Server Update Services) konfiguriert sein oder über Zugriff auf Microsoft Update verfügen. Die Updateverwaltung kann mit System Center Configuration Manager verwendet werden. Weitere Informationen zu den Integrationsszenarien erhalten Sie unter [Integrieren von System Center Configuration Manager in die Updateverwaltung](oms-solution-updatemgmt-sccmintegration.md#configuration). Der [Windows-Agent](../log-analytics/log-analytics-agent-windows.md) ist erforderlich. Dieser Agent wird automatisch installiert, wenn Sie einen virtuellen Azure-Computer integrieren.
+Windows-Agents müssen für die Kommunikation mit einem WSUS-Server konfiguriert sein oder über Zugriff auf Microsoft Update verfügen. Sie können die Updateverwaltung mit System Center Configuration Manager verwenden. Weitere Informationen zu den Integrationsszenarien finden Sie unter [Integrieren von System Center Configuration Manager in die Updateverwaltung](oms-solution-updatemgmt-sccmintegration.md#configuration). Der [Windows-Agent](../log-analytics/log-analytics-agent-windows.md) ist erforderlich. Dieser Agent wird automatisch installiert, wenn Sie das Onboarding eines virtuellen Azure-Computer ausführen.
 
 #### <a name="linux"></a>Linux
 
-Bei Linux muss der Computer Zugriff auf ein Updaterepository haben, das entweder privat oder öffentlich sein kann. Ein OMS-Agent für Linux, der für die Berichterstattung an mehrere Log Analytics-Arbeitsbereiche konfiguriert ist, wird für diese Lösung nicht unterstützt.
+Für Linux muss der Computer über Zugriff auf ein Updaterepository verfügen. Das Updaterepository kann privat oder öffentlich sein. Ein OMS-Agent (Operations Management Suite) für Linux, der für die Berichterstattung an mehrere Log Analytics-Arbeitsbereiche konfiguriert ist, wird für diese Lösung nicht unterstützt.
 
-Weitere Informationen zum Installieren des OMS-Agents für Linux und zum Herunterladen der aktuellen Version finden Sie unter [Operations Management Suite-Agent für Linux](https://github.com/microsoft/oms-agent-for-linux). Informationen zur Installation des OMS-Agents für Windows finden Sie unter [Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure](../log-analytics/log-analytics-windows-agent.md).
+Weitere Informationen zum Installieren des OMS-Agents für Linux und zum Herunterladen der aktuellen Version finden Sie unter [Operations Management Suite-Agent für Linux](https://github.com/microsoft/oms-agent-for-linux). Informationen zur Installation des OMS-Agents für Windows finden Sie unter [Operations Management Suite-Agent für Windows](../log-analytics/log-analytics-windows-agent.md).
 
 ## <a name="permissions"></a>Berechtigungen
 
-Zum Erstellen und Verwalten von Updatebereitstellungen benötigen Sie bestimmte Berechtigungen. Weitere Informationen zu diesen Berechtigungen finden Sie unter [Rollenbasierter Zugriff – Updateverwaltung](automation-role-based-access-control.md#update-management).
+Zum Erstellen und Verwalten von Updatebereitstellungen benötigen Sie bestimmte Berechtigungen. Weitere Informationen zu diesen Berechtigungen finden Sie unter [Rollenbasierter Zugriff: Updateverwaltung](automation-role-based-access-control.md#update-management).
 
 ## <a name="solution-components"></a>Lösungskomponenten
 
-Diese Lösung besteht aus den folgenden Ressourcen, die Ihrem Automation-Konto hinzugefügt werden, und direkt verbundenen Agents oder mit Operations Manager verbundenen Verwaltungsgruppen.
+Die Lösung besteht aus den folgenden Ressourcen. Die Ressourcen werden Ihrem Automation-Konto hinzugefügt. Es handelt sich um direkt verbundene Agents oder um Agents in einer durch Operations Manager verbundenen Verwaltungsgruppe.
 
 ### <a name="hybrid-worker-groups"></a>Hybrid Worker-Gruppen
 
-Nachdem Sie diese Lösung aktiviert haben, werden alle direkt mit dem Log Analytics-Arbeitsbereich verbundenen Windows-Computer automatisch als Hybrid Runbook Worker konfiguriert, um die in dieser Lösung enthaltenen Runbooks zu unterstützen. Jeder von der Lösung verwaltete Windows-Computer wird auf der Seite mit den Hybrid Worker-Gruppen als Hybrid Worker-Systemgruppe für das Automation-Konto aufgeführt. Die Benennungskonvention lautet *Hostname FQDN_GUID*. Es ist nicht möglich, diese Gruppen mit Runbooks in Ihrem Konto zu erreichen, da der Vorgang fehlschlägt. Diese Gruppen sind nur für die Unterstützung der Verwaltungslösung bestimmt.
+Nachdem Sie diese Lösung aktiviert haben, werden alle direkt mit dem Log Analytics-Arbeitsbereich verbundenen Windows-Computer automatisch als Hybrid Runbook Worker konfiguriert, um die in dieser Lösung enthaltenen Runbooks zu unterstützen.
 
-Aber Sie können die Windows-Computer einer Hybrid Runbook Worker-Gruppe in Ihrem Automation-Konto hinzufügen, um Automation-Runbooks zu unterstützen, solange Sie sowohl für die Lösung als auch die Mitgliedschaft in der Hybrid Runbook Worker-Gruppe dasselbe Konto verwenden. Diese Funktionalität wurde Version 7.2.12024.0 des Hybrid Runbook Worker hinzugefügt.
+Jeder von der Lösung verwaltete Windows-Computer wird im Bereich **Hybrid Worker-Gruppen** als **Hybrid Worker-Systemgruppe** für das Automation-Konto aufgeführt. Die Lösungen verwenden die Benennungskonvention *Hostname FQDN_GUID*. Es ist nicht möglich, diese Gruppen mit Runbooks in Ihrem Konto zu erreichen. Dieser Versuch führt zu einem Fehler. Diese Gruppen sind nur für die Unterstützung der Verwaltungslösung bestimmt.
+
+Sie können die Windows-Computer einer Hybrid Runbook Worker-Gruppe in Ihrem Automation-Konto hinzufügen, um Automation-Runbooks zu unterstützen, wenn Sie für die Lösung und die Mitgliedschaft in der Hybrid Runbook Worker-Gruppe dasselbe Konto verwenden. Diese Funktionalität wurde in Version 7.2.12024.0 des Hybrid Runbook Worker hinzugefügt.
 
 ### <a name="management-packs"></a>Management Packs
 
@@ -107,9 +116,9 @@ Wenn Ihre System Center Operations Manager-Verwaltungsgruppe mit einem Log Analy
 
 Weitere Informationen zur Aktualisierung von Management Packs finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](../log-analytics/log-analytics-om-agents.md).
 
-### <a name="confirm-non-azure-machines-are-onboarded"></a>Bestätigen der Integration von Nicht-Azure-Computern
+### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Bestätigen der Integration von Nicht-Azure-Computern
 
-Nach einigen Minuten können Sie die folgende Protokollsuche durchführen, um zu bestätigen, dass direkt verbundene Computer mit Log Analytics kommunizieren:
+Nach einigen Minuten können Sie eine der folgenden Protokollsuchen ausführen, um zu bestätigen, dass direkt verbundene Computer mit Log Analytics kommunizieren.
 
 #### <a name="linux"></a>Linux
 
@@ -122,21 +131,23 @@ Heartbeat
 
 ```
 Heartbeat
-| where OSType == "Windows" | summarize arg_max(TimeGenerated, *) by SourceComputerId | top 500000 by Computer asc | render table`
+| where OSType == "Windows" | summarize arg_max(TimeGenerated, *) by SourceComputerId | top 500000 by Computer asc | render table
 ```
 
-Auf einem Windows-Computer können Sie Folgendes überprüfen, um für den Agent die Log Analytics-Konnektivität zu bestätigen:
+Auf einem Windows-Computer können Sie die folgenden Informationen überprüfen, um für den Agent die Log Analytics-Konnektivität zu bestätigen:
 
-1. Öffnen Sie in der Systemsteuerung den Microsoft Monitoring Agent. Auf der Registerkarte **Azure Log Analytics** wird vom Agent folgende Meldung angezeigt: **The Microsoft Monitoring Agent has successfully connected to Log Analytics** (Für den Microsoft Monitoring Agent wurde die Verbindung mit Log Analytics erfolgreich hergestellt).
-2. Öffnen Sie das Windows-Ereignisprotokoll, navigieren Sie zu **Anwendungs- und Dienstprotokolle\Operations Manager**, und suchen Sie nach der Ereignis-ID 3000 und 5002 (Service Connector-Quellinstanz). Mit diesen Ereignissen wird angegeben, dass für den Computer die Registrierung beim Log Analytics-Arbeitsbereich und die Konfiguration durchgeführt wurden.
+1. Öffnen Sie in der Systemsteuerung **Microsoft Monitoring Agent**. Auf der Registerkarte **Azure Log Analytics** wird vom Agent die folgende Meldung angezeigt: **The Microsoft Monitoring Agent has successfully connected to Log Analytics** (Für den Microsoft Monitoring Agent wurde die Verbindung mit Log Analytics erfolgreich hergestellt).
+2. Öffnen Sie das Windows-Ereignisprotokoll. Navigieren Sie zu **Anwendungs- und Dienstprotokolle\Operations Manager**, und suchen Sie nach der Ereignis-ID 3000 und der Ereignis-ID 5002 aus der Quelle **Service Connector**. Mit diesen Ereignissen wird angegeben, dass für den Computer die Registrierung beim Log Analytics-Arbeitsbereich und die Konfiguration ausgeführt wurden.
 
-Falls der Agent nicht mit Log Analytics kommunizieren kann und für die Kommunikation mit dem Internet über eine Firewall oder einen Proxyserver konfiguriert ist, sollten Sie für die Firewall bzw. den Proxyserver die Richtigkeit der Konfiguration sicherstellen, indem Sie die Informationen zur [Netzwerkkonfiguration für Windows-Agent](../log-analytics/log-analytics-agent-windows.md) bzw. die Informationen zur [Netzwerkkonfiguration für Linux-Agent](../log-analytics/log-analytics-agent-linux.md) durchgehen.
+Falls der Agent nicht mit dem OMS-Dienst kommunizieren kann und für die Kommunikation mit dem Internet über eine Firewall oder einen Proxyserver konfiguriert ist, sollten Sie für die Firewall bzw. den Proxyserver die Richtigkeit der Konfiguration sicherstellen. Weitere Informationen dazu, wie sie sicherstellen können, dass die Firewall oder der Proxyserver ordnungsgemäß konfiguriert ist, finden Sie unter [Netzwerkkonfiguration für den Windows-Agent](../log-analytics/log-analytics-agent-windows.md) oder [Netzwerkkonfiguration für den Linux-Agent](../log-analytics/log-analytics-agent-linux.md).
 
 > [!NOTE]
-> Wenn Ihre Linux-Systeme für die Kommunikation mit einem Proxy oder OMS-Gateway konfiguriert sind und Sie diese Lösung integrieren, aktualisieren Sie die *proxy.conf*-Berechtigungen, um der Gruppe „omiuser“ Leseberechtigungen für die Datei zu erteilen. Führen Sie hierzu die folgenden Befehle aus: `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`
+> Wenn Ihre Linux-Systeme für die Kommunikation mit einem Proxy oder OMS-Gateway konfiguriert sind und Sie diese Lösung integrieren, aktualisieren Sie die *proxy.conf*-Berechtigungen, um der Gruppe „omiuser“ Leseberechtigungen für die Datei zu erteilen. Führen Sie zu diesem Zweck die folgenden Befehle aus:
+>
+> `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`
 > `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`
 
-Für neu hinzugefügte Linux-Agents wird der Status **Aktualisiert** angezeigt, nachdem eine Bewertung durchgeführt wurde. Dieser Vorgang kann bis zu sechs Stunden dauern.
+Für neu hinzugefügte Linux-Agents wird der Status **Aktualisiert** angezeigt, nachdem eine Bewertung ausgeführt wurde. Dieser Vorgang kann bis zu sechs Stunden dauern.
 
 Wenn Sie bestätigen möchten, dass eine Operations Manager-Verwaltungsgruppe mit Log Analytics kommuniziert, helfen Ihnen die Informationen unter [Überprüfen der Operations Manager-Integration für Log Analytics](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-log-analytics) weiter.
 
@@ -144,66 +155,71 @@ Wenn Sie bestätigen möchten, dass eine Operations Manager-Verwaltungsgruppe mi
 
 ### <a name="supported-agents"></a>Unterstützte Agents
 
-In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der Lösung unterstützt werden.
+In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der Lösung unterstützt werden:
 
 | Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 | --- | --- | --- |
-| Windows-Agents |Ja |Die Lösung sammelt Informationen zu Systemupdates aus Windows-Agents und initiiert die Installation von erforderlichen Updates. |
-| Linux-Agents |Ja |Die Lösung sammelt Informationen zu Systemupdates von Linux-Agents und initiiert die Installation von erforderlichen Updates für unterstützte Distributionen. |
-| Operations Manager-Verwaltungsgruppe |Ja |Die Lösung sammelt Informationen zu Systemupdates von Agents in einer verbundenen Verwaltungsgruppe.</br>Es ist keine direkte Verbindung von Operations Manager mit Log Analytics erforderlich. Daten werden von der Verwaltungsgruppe an den Log Analytics-Arbeitsbereich weitergeleitet. |
+| Windows-Agents |Ja |Die Lösung sammelt Informationen zu Systemupdates aus Windows-Agents und initiiert dann die Installation von erforderlichen Updates. |
+| Linux-Agents |Ja |Die Lösung sammelt Informationen zu Systemupdates von Linux-Agents und initiiert dann die Installation von erforderlichen Updates für unterstützte Distributionen. |
+| Operations Manager-Verwaltungsgruppe |Ja |Die Lösung sammelt Informationen zu Systemupdates von Agents in einer verbundenen Verwaltungsgruppe.<br/>Es ist keine direkte Verbindung zwischen dem Operations Manager-Agent und Log Analytics erforderlich. Daten werden von der Verwaltungsgruppe an den Log Analytics-Arbeitsbereich weitergeleitet. |
 
 ### <a name="collection-frequency"></a>Sammlungshäufigkeit
 
-Für jeden verwalteten Windows-Computer wird zweimal pro Tag ein Scanvorgang durchgeführt. Alle 15 Minuten wird die Windows-API aufgerufen, um den letzten Updatezeitpunkt abzufragen und zu ermitteln, ob sich der Status geändert hat. Wenn ja, wird ein Konformitätsscan initiiert. Für jeden verwalteten Linux-Computer wird alle drei Stunden ein Scanvorgang durchgeführt.
+Für jeden verwalteten Windows-Computer wird zwei Mal pro Tag ein Scanvorgang ausgeführt. Alle 15 Minuten wird die Windows-API aufgerufen, um den letzten Updatezeitpunkt abzufragen und zu ermitteln, ob sich der Status geändert hat. Wenn sich der Status geändert hat, wird eine Konformitätsprüfung eingeleitet. 
+
+Für jeden verwalteten Linux-Computer wird alle drei Stunden ein Scanvorgang ausgeführt.
 
 Es kann zwischen 30 Minuten und sechs Stunden dauern, bis im Dashboard aktualisierte Daten von verwalteten Computern angezeigt werden.
 
-## <a name="viewing-update-assessments"></a>Anzeigen von Updatebewertungen
+## <a name="viewing-update-assessments"></a>Anzeigen der Updatebewertungen
 
-Klicken Sie in Ihrem Automation-Konto auf **Updateverwaltung**, um den Status Ihrer Computer anzuzeigen.
+Wählen Sie in Ihrem Automation-Konto **Updateverwaltung** aus, um den Status Ihrer Computer anzuzeigen.
 
-Diese Ansicht enthält Informationen zu Ihren Computern, zu fehlenden Updates, zu Updatebereitstellungen und geplanten Updatebereitstellungen.
+Diese Ansicht enthält Informationen zu Ihren Computern, zu fehlenden Updates, zu Updatebereitstellungen und geplanten Updatebereitstellungen. In der Spalte **KONFORMITÄT** können Sie sehen, wann der Computer zuletzt bewertet wurde. In der Spalte **UPDATE-AGENT-BEREITSCHAFT** können Sie die Integrität des Update-Agents anzeigen. Wenn ein Problem vorliegt, wählen Sie den Link aus, um zur Dokumentation für die Problembehandlung zu navigieren und zu erfahren, welche Schritte zum Beheben des Problems erforderlich sind.
 
-Sie können eine Protokollsuche ausführen, die Informationen zum Computer, zu Updates oder zu Bereitstellungen zurückgibt, indem Sie das Element in der Liste auswählen. Daraufhin wird die Seite **Protokollsuche** mit einer Abfrage für das ausgewählte Element geöffnet.
+Um eine Protokollsuche auszuführen, die Informationen zum Computer, zu Updates oder zu Bereitstellungen zurückgibt, wählen Sie das Element in der Liste aus. Der Bereich **Protokollsuche** wird mit einer Abfrage für das ausgewählte Element geöffnet:
 
-## <a name="installing-updates"></a>Installieren von Updates
+![Standardansicht der Updateverwaltung](media/automation-update-management/update-management-view.png)
 
-Nachdem die Updates für alle Linux- und Windows-Computer des Arbeitsbereichs bewertet wurden, installieren Sie die erforderlichen Updates, indem Sie eine *Updatebereitstellung* erstellen. Eine Updatebereitstellung ist eine geplante Installation von erforderlichen Updates für mindestens einen Computer. Sie geben das Datum und die Uhrzeit für die Bereitstellung und einen Computer bzw. eine Gruppe von Computern an, die in den Umfang der Bereitstellung einbezogen werden sollen. Weitere Informationen zu Computergruppen finden Sie unter [Computergruppen in Log Analytics](../log-analytics/log-analytics-computer-groups.md). Wenn Sie Computergruppen in Ihre Updatebereitstellung einbinden, wird die Gruppenmitgliedschaft nur einmal beim Erstellen des Zeitplans ausgewertet. Nachfolgende Änderungen einer Gruppe werden nicht widergespiegelt. Löschen Sie die geplante Updatebereitstellung, und erstellen Sie sie neu, um dieses Problem zu umgehen.
+## <a name="install-updates"></a>Installieren von Updates
+
+Nachdem die Updates für alle Linux- und Windows-Computer des Arbeitsbereichs bewertet wurden, können Sie die erforderlichen Updates installieren, indem Sie eine *Updatebereitstellung* erstellen. Eine Updatebereitstellung ist eine geplante Installation von erforderlichen Updates für mindestens einen Computer. Sie geben das Datum und die Uhrzeit für die Bereitstellung und einen Computer bzw. eine Gruppe von Computern an, die in den Umfang der Bereitstellung einbezogen werden sollen. Weitere Informationen zu Computergruppen finden Sie unter [Computergruppen in Log Analytics](../log-analytics/log-analytics-computer-groups.md).
+
+ Wenn Sie Computergruppen in Ihre Updatebereitstellung einbinden, wird die Gruppenmitgliedschaft nur ein Mal beim Erstellen des Zeitplans ausgewertet. Nachfolgende Änderungen einer Gruppe werden nicht widergespiegelt. Löschen Sie die geplante Updatebereitstellung, und erstellen Sie sie dann erneut, um dieses Problem zu umgehen.
 
 > [!NOTE]
-> Über den Azure Marketplace bereitgestellte Windows-VMs sind standardmäßig so konfiguriert, dass sie automatisch Updates von Windows Update Service erhalten. Dieses Verhalten ändert sich nicht, nachdem Sie Ihrem Arbeitsbereich diese Lösung oder Windows-VMs hinzugefügt haben. Wenn Sie Updates für diese Lösung nicht aktiv verwalten, gilt das Standardverhalten (Updates werden automatisch angewendet).
+> Über Azure Marketplace bereitgestellte virtuelle Windows-Computer sind standardmäßig so konfiguriert, dass sie automatisch Updates von Windows Update Service erhalten. Dieses Verhalten ändert sich nicht, wenn Sie diese Lösung hinzufügen oder Ihrem Arbeitsbereich virtuelle Windows-Computer hinzufügen. Wenn Sie Updates mithilfe dieser Lösung nicht aktiv verwalten, gilt das Standardverhalten (Updates werden automatisch angewendet).
 
-Damit unter Ubuntu keine Updates außerhalb der Wartungsfenster angewendet werden, konfigurieren Sie das „Unattended-Upgrade“-Paket erneut, um automatische Updates zu deaktivieren. Informationen zu dieser Konfiguration finden Sie im [Thema zu automatischen Updates im Ubuntu-Serverhandbuch](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
+Damit unter Ubuntu keine Updates außerhalb der Wartungsfenster angewendet werden, konfigurieren Sie das „Unattended-Upgrade“-Paket erneut, um automatische Updates zu deaktivieren. Informationen zur Konfiguration dieses Pakets finden Sie im [Thema zu automatischen Updates im Ubuntu-Serverhandbuch](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
 
-Für virtuelle Computer, die basierend auf den über den Azure Marketplace erhältlichen On-Demand-RHEL-Images (Red Hat Enterprise Linux) erstellt werden, werden sie für den Zugriff auf die in Azure bereitgestellte [Red Hat-Updateinfrastruktur (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) registriert. Alle anderen Linux-Distributionen müssen über das Onlinedateirepository der Distributionen gemäß den unterstützten Methoden aktualisiert werden.
+Virtuelle Computer, die auf der Grundlage der über Azure Marketplace erhältlichen On-Demand-RHEL-Images (Red Hat Enterprise Linux) erstellt werden, werden für den Zugriff auf die in Azure bereitgestellte [Red Hat-Updateinfrastruktur (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) registriert. Alle anderen Linux-Distributionen müssen über das Onlinedateirepository der Distributionen gemäß den unterstützten Methoden der jeweiligen Distribution aktualisiert werden.
 
-## <a name="viewing-missing-updates"></a>Anzeigen fehlender Updates
+## <a name="view-missing-updates"></a>Anzeigen fehlender Updates
 
-Klicken Sie auf **Fehlende Updates**, um eine Liste der Updates anzuzeigen, die auf Ihrem Computer nicht vorhanden sind. Jedes Update wird aufgeführt und enthält Informationen zur Anzahl der Computer, die das Update benötigen, und zum Betriebssystem sowie einen Link für weitere Informationen. Jedes Update kann ausgewählt werden. Daraufhin wird die Seite **Protokollsuche** angezeigt, die weitere Details zu den Updates enthält.
+Wählen Sie **Fehlende Updates** aus, um eine Liste der Updates anzuzeigen, die auf Ihrem Computer nicht vorhanden sind. Jedes Update wird aufgeführt und kann ausgewählt werden. Es werden Informationen zur Anzahl der Computer, die das Update benötigen, und zum Betriebssystem sowie ein Link zu weiteren Informationen angezeigt. Der Bereich **Protokollsuche** zeigt weitere Details zu den Updates an.
 
-## <a name="viewing-update-deployments"></a>Anzeigen von Updatebereitstellungen
+## <a name="view-update-deployments"></a>Anzeigen von Updatebereitstellungen
 
-Klicken Sie auf die Registerkarte **Bereitstellung aktualisieren**, um die Liste mit den vorhandenen Updatebereitstellungen anzuzeigen. Wenn Sie in der Tabelle auf eine Updatebereitstellung klicken, wird die Seite **Updatebereitstellungsausführung** für diese Updatebereitstellung geöffnet.
+Wählen Sie die Registerkarte **Bereitstellung aktualisieren** aus, um die Liste mit den vorhandenen Updatebereitstellungen anzuzeigen. Wenn Sie in der Tabelle eine Updatebereitstellung auswählen, wird der Bereich **Updatebereitstellungsausführung** für diese Updatebereitstellung geöffnet.
 
 ![Übersicht über Ergebnisse der Updatebereitstellung](./media/automation-update-management/update-deployment-run.png)
 
-## <a name="creating-an-update-deployment"></a>Erstellen einer Updatebereitstellung
+## <a name="create-or-edit-an-update-deployment"></a>Erstellen oder Bearbeiten einer Updatebereitstellung
 
-Erstellen Sie eine neue Updatebereitstellung, indem Sie auf die Schaltfläche **Updatebereitstellung planen** oben im Bildschirm klicken, um die Seite **Neue Updatebereitstellung** zu öffnen. Für die Eigenschaften in der folgenden Tabelle müssen Sie Werte angeben:
+Wählen Sie zum Erstellen einer neuen Updatebereitstellung **Updatebereitstellung planen** aus. Der Bereich **Neue Updatebereitstellung** wird geöffnet. Geben Sie Werte für die Eigenschaften ein, die in der folgenden Tabelle beschrieben werden:
 
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |
-| NAME |Eindeutiger Name zum Identifizieren der Updatebereitstellung |
-|Betriebssystem| Linux oder Windows|
-| Zu aktualisierende Computer |Wählen Sie eine gespeicherte Suche aus, oder wählen Sie im Dropdownmenü „Computer“ und dann einzelne Computer aus |
-|Updateklassifizierungen|Wählen Sie alle benötigten Updateklassifizierungen aus|
-|Auszuschließende Updates|Geben Sie alle auszuschließenden KBs ohne das Präfix "KB" ein|
-|Zeitplaneinstellungen|Wählen Sie den Startzeitpunkt aus, und geben Sie unter „Wiederholung“ entweder „Einmal“ oder „Serie“ an|
-| Wartungsfenster |Festgelegte Minutenanzahl für Updates Der Wert darf nicht weniger als 30 Minuten und nicht mehr als 6 Stunden betragen |
+|NAME |Eindeutiger Name zum Identifizieren der Updatebereitstellung |
+|Betriebssystem| Wählen Sie zwischen **Linux** und **Windows** aus.|
+|Zu aktualisierende Computer |Wählen Sie eine gespeicherte Suche aus, oder wählen Sie in der Dropdownliste **Computer** und dann einzelne Computer aus. |
+|Updateklassifizierungen|Wählen Sie alle benötigten Updateklassifizierungen aus. CentOS unterstützt dies nicht standardmäßig.|
+|Auszuschließende Updates|Geben Sie die auszuschließenden Updates ein. Geben Sie für Windows den KB-Artikel ohne das Präfix **KB** ein. Geben Sie für Linux den Paketnamen ein, oder verwenden Sie ein Platzhalterzeichen.  |
+|Zeitplaneinstellungen|Wählen Sie den Startzeitpunkt aus, und wählen Sie dann unter „Wiederholung“ **Einmal** oder **Serie** aus.|| Wartungsfenster |Festgelegte Minutenanzahl für Updates Der Wert darf nicht kleiner als 30 Minuten oder größer als 6 Stunden sein. |
 
 ## <a name="update-classifications"></a>Updateklassifizierungen
 
-Die folgenden Tabellen enthalten eine Liste der Updateklassifizierungen in der Updateverwaltung, zusammen mit einer Definition für jede Klassifikation.
+Die folgenden Tabellen enthalten eine Liste der Updateklassifizierungen in der Updateverwaltung sowie eine Definition für jede Klassifikation.
 
 ### <a name="windows"></a>Windows
 
@@ -215,15 +231,23 @@ Die folgenden Tabellen enthalten eine Liste der Updateklassifizierungen in der U
 |Feature Packs     | Neue Produktfeatures, die nicht im Rahmen eines Produktreleases verteilt werden.        |
 |Service Packs     | Eine kumulative Gruppe von Hotfixes, die auf eine Anwendung angewendet werden.        |
 |Definitionsupdates     | Ein Update für virenbehaftete oder andere Definitionsdateien.        |
-|Tools     | Ein Hilfsprogramm oder Feature, mit dem eine oder mehrere Aufgaben ausgeführt werden können.        |
-|Aktualisierungen     | Ein Update für eine Anwendung oder Datei, die derzeit installiert ist.        |
+|Tools     | Ein Hilfsprogramm oder Feature, mit dem mindestens eine Aufgabe ausgeführt werden kann.        |
+|Aktualisierungen     | Ein Update für eine Anwendung oder Datei, die zurzeit installiert ist.        |
 
 ### <a name="linux"></a>Linux
 
 |Classification  |BESCHREIBUNG  |
 |---------|---------|
 |Kritische Updates und Sicherheitsupdates     | Updates für ein spezielles oder produktspezifisches, sicherheitsrelevantes Problem.         |
-|Andere Updates     | Alle anderen Updates, die nicht von entscheidender Bedeutung sind oder bei denen es sich nicht um Sicherheitsupdates handelt.        |
+|Andere Updates     | Alle anderen Updates, die nicht kritisch sind oder bei denen es sich nicht um Sicherheitsupdates handelt.        |
+
+Für Linux kann die Updateverwaltung zwischen kritischen und Sicherheitsupdates in der Cloud unterscheiden. Sie zeigt Bewertungsdaten aufgrund der Datenanreicherung in der Cloud an. Für das Patchen verwendet die Updateverwaltung Klassifizierungsdaten, die auf dem Computer verfügbar sind. Im Gegensatz zu anderen Distributionen verfügt CentOS nicht standardmäßig über diese Informationen. Wenn Sie CentOS-Computer für das Zurückgeben von Sicherheitsdaten für den folgenden Befehl konfiguriert haben, kann die Updateverwaltung basierend auf Klassifizierungen Patchvorgänge ausführen.
+
+```bash
+sudo yum -q --security check-update
+```
+
+Es gibt zurzeit keine unterstützte Methode zum Aktivieren nativer Klassifizierungsdatenverfügbarkeit unter CentOS. Zu diesem Zeitpunkt wird nur Unterstützung nach bestem Wissen für Kunden bereitgestellt, die dies möglicherweise auf eigene Weise aktiviert haben.
 
 ## <a name="ports"></a>Ports
 
@@ -235,65 +259,255 @@ Die folgenden Adressen sind speziell für die Updateverwaltung erforderlich. Die
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 
-Weitere Informationen zu Ports, die der Hybrid Runbook Worker benötigt, finden Sie unter [Ports für Hybrid Worker-Rollen](automation-hybrid-runbook-worker.md#hybrid-worker-role).
+Weitere Informationen zu Ports, die für den Hybrid Runbook Worker erforderlich sind, finden Sie unter [Ports für Hybrid Worker-Rollen](automation-hybrid-runbook-worker.md#hybrid-worker-role).
 
 ## <a name="search-logs"></a>Protokollsuche
 
-Zusätzlich zu den Details, die im Portal bereitgestellt werden, können Sie auch die Protokolle durchsuchen. Öffnen Sie die Seite **Änderungsnachverfolgung**, und klicken Sie auf **Log Analytics**; daraufhin wird die Seite **Protokollsuche** geöffnet.
+Zusätzlich zu den Details, die im Azure-Portal bereitgestellt werden, können Sie auch die Protokolle durchsuchen. Wählen Sie auf den Lösungsseiten **Log Analytics** aus. Der Bereich **Protokollsuche** wird geöffnet.
+
+Weitere Informationen (z.B. zum Anpassen der Abfragen oder Verwenden der Abfragen mit anderen Clients) finden Sie hier: [Dokumentation zur Such-API von Log Analytics](
+https://dev.loganalytics.io/).
 
 ### <a name="sample-queries"></a>Beispielabfragen
 
-Die folgende Tabelle enthält Beispiele für Protokollsuchen nach Updatedatensätzen, die mit dieser Lösung erfasst wurden:
+Die folgenden Abschnitte enthalten Beispielprotokollabfragen für Updatedatensätze, die von dieser Lösung erfasst werden:
 
-| Abfragen | BESCHREIBUNG |
-| --- | --- |
-|Aktualisieren</br>&#124; where UpdateState == "Needed" and Optional == false</br>&#124; project Computer, Title, KBID, Classification, PublishedDate |Alle Computer, auf denen Updates fehlen</br>Fügen Sie eine der folgenden Angaben hinzu, um das Betriebssystem einzugrenzen:</br>OSType = "Windows"</br>OSType == "Linux" |
-| Aktualisieren</br>&#124; where UpdateState == "Needed" and Optional == false</br>&#124; where Computer == "ContosoVM1.contoso.com"</br>&#124; project Computer, Title, KBID, Product, PublishedDate |Fehlende Updates für einen bestimmten Computer (Ersetzen Sie den Wert durch den Namen Ihres eigenen Computers.)|
-| Ereignis</br>&#124; where EventLevelName == "error" and Computer in ((Update &#124; where (Classification == "Security Updates" or Classification == "Critical Updates")</br>&#124; where UpdateState == "Needed" and Optional == false </br>&#124; distinct Computer)) |Fehlerereignisse für Computer, auf denen erforderliche kritische oder Sicherheitsupdates fehlen |
-| Aktualisieren</br>&#124; where UpdateState == "Needed" and Optional == false</br>&#124; distinct Title |Eindeutig identifizierbare fehlende Updates auf allen Computern |
-| UpdateRunProgress</br>&#124; where InstallationStatus == "failed" </br>&#124; summarize AggregatedValue = count() by Computer, Title, UpdateRunName |Computer mit Updates, bei denen während einer Updateausführung ein Fehler aufgetreten ist</br>Fügen Sie eine der folgenden Angaben hinzu, um das Betriebssystem einzugrenzen:</br>OSType = "Windows"</br>OSType == "Linux" |
-| Aktualisieren</br>&#124; where OSType == "Linux"</br>&#124; where UpdateState != "Not needed" and (Classification == "Critical Updates" or Classification == "Security Updates")</br>&#124; summarize AggregatedValue = count() by Computer |Liste aller Linux-Computer, für die ein Paketupdate zur Behebung von kritischen oder sicherheitsrelevanten Sicherheitsrisiken verfügbar ist |
-| UpdateRunProgress</br>&#124; where UpdateRunName == "DeploymentName"</br>&#124; summarize AggregatedValue = count() by Computer|Computer, die bei dieser Updateausführung aktualisiert wurden (Ersetzen Sie den Wert durch den Namen Ihrer Updatebereitstellung.) |
+#### <a name="single-azure-vm-assessment-queries-windows"></a>Bewertungsabfragen für einzelne virtuelle Azure-Computer (Windows)
+
+Ersetzen Sie den VMUUID-Wert durch die VM-GUID des virtuellen Computers, den Sie abfragen. Sie können die VMUUID ermitteln, die verwendet werden soll, indem Sie die folgende Abfrage in Log Analytics ausführen: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+
+##### <a name="missing-updates-summary"></a>Zusammenfassung fehlender Updates
+
+```
+Update
+| where TimeGenerated>ago(14h) and OSType!="Linux" and (Optional==false or Classification has "Critical" or Classification has "Security") and VMUUID=~"b08d5afa-1471-4b52-bd95-a44fea6e4ca8"
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Approved) by Computer, SourceComputerId, UpdateID
+| where UpdateState=~"Needed" and Approved!=false
+| summarize by UpdateID, Classification
+| summarize allUpdatesCount=count(), criticalUpdatesCount=countif(Classification has "Critical"), securityUpdatesCount=countif(Classification has "Security"), otherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security"
+```
+
+##### <a name="missing-updates-list"></a>Liste fehlender Updates
+
+```
+Update
+| where TimeGenerated>ago(14h) and OSType!="Linux" and (Optional==false or Classification has "Critical" or Classification has "Security") and VMUUID=~"8bf1ccc6-b6d3-4a0b-a643-23f346dfdf82"
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Title, KBID, PublishedDate, Approved) by Computer, SourceComputerId, UpdateID
+| where UpdateState=~"Needed" and Approved!=false
+| project-away UpdateState, Approved, TimeGenerated
+| summarize computersCount=dcount(SourceComputerId, 2), displayName=any(Title), publishedDate=min(PublishedDate), ClassificationWeight=max(iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1))) by id=strcat(UpdateID, "_", KBID), classification=Classification, InformationId=strcat("KB", KBID), InformationUrl=iff(isnotempty(KBID), strcat("https://support.microsoft.com/kb/", KBID), ""), osType=2
+| sort by ClassificationWeight desc, computersCount desc, displayName asc
+| extend informationLink=(iff(isnotempty(InformationId) and isnotempty(InformationUrl), toobject(strcat('{ "uri": "', InformationUrl, '", "text": "', InformationId, '", "target": "blank" }')), toobject('')))
+| project-away ClassificationWeight, InformationId, InformationUrl
+```
+
+#### <a name="single-azure-vm-assessment-queries-linux"></a>Bewertungsabfragen für einzelne virtuelle Azure-Computer (Linux)
+
+Für einige Linux-Distributionen besteht ein [Endianness](https://en.wikipedia.org/wiki/Endianness)-Konflikt mit dem VMUUID-Wert, der auf Azure Resource Manager und die in Log Analytics gespeicherten Daten zurückzuführen ist. Die folgende Abfrage überprüft, ob eine Übereinstimmung für einen der Endianness-Werte vorliegt. Ersetzen Sie die VMUUID-Werte durch das big-endian- bzw. little-endian-Format der GUID, um die Ergebnisse ordnungsgemäß zurückzugeben. Sie können die VMUUID ermitteln, die verwendet werden soll, indem Sie die folgende Abfrage in Log Analytics ausführen: `Update | where Computer == "<machine name>"
+| summarize by Computer, VMUUID`
+
+##### <a name="missing-updates-summary"></a>Zusammenfassung fehlender Updates
+
+```
+Update
+| where TimeGenerated>ago(5h) and OSType=="Linux" and (VMUUID=~"625686a0-6d08-4810-aae9-a089e68d4911" or VMUUID=~"a0865662-086d-1048-aae9-a089e68d4911")
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification) by Computer, SourceComputerId, Product, ProductArch
+| where UpdateState=~"Needed"
+| summarize by Product, ProductArch, Classification
+| summarize allUpdatesCount=count(), criticalUpdatesCount=countif(Classification has "Critical"), securityUpdatesCount=countif(Classification has "Security"), otherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security")
+```
+
+##### <a name="missing-updates-list"></a>Liste fehlender Updates
+
+```
+Update
+| where TimeGenerated>ago(5h) and OSType=="Linux" and (VMUUID=~"625686a0-6d08-4810-aae9-a089e68d4911" or VMUUID=~"a0865662-086d-1048-aae9-a089e68d4911")
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, BulletinUrl, BulletinID) by Computer, SourceComputerId, Product, ProductArch
+| where UpdateState=~"Needed"
+| project-away UpdateState, TimeGenerated
+| summarize computersCount=dcount(SourceComputerId, 2), ClassificationWeight=max(iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1))) by id=strcat(Product, "_", ProductArch), displayName=Product, productArch=ProductArch, classification=Classification, InformationId=BulletinID, InformationUrl=tostring(split(BulletinUrl, ";", 0)[0]), osType=1
+| sort by ClassificationWeight desc, computersCount desc, displayName asc
+| extend informationLink=(iff(isnotempty(InformationId) and isnotempty(InformationUrl), toobject(strcat('{ "uri": "', InformationUrl, '", "text": "', InformationId, '", "target": "blank" }')), toobject('')))
+| project-away ClassificationWeight, InformationId, InformationUrl
+
+```
+
+#### <a name="multi-vm-assessment-queries"></a>Bewertungsabfragen für mehrere virtuelle Computer
+
+##### <a name="computers-summary"></a>Computerzusammenfassung
+
+```
+Heartbeat
+| where TimeGenerated>ago(12h) and OSType=~"Windows" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+| where Solutions has "updates"
+| distinct SourceComputerId
+| join kind=leftouter
+(
+    Update
+    | where TimeGenerated>ago(14h) and OSType!="Linux"
+    | summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Approved, Optional, Classification) by SourceComputerId, UpdateID
+    | distinct SourceComputerId, Classification, UpdateState, Approved, Optional
+    | summarize WorstMissingUpdateSeverity=max(iff(UpdateState=~"Needed" and (Optional==false or Classification has "Critical" or Classification has "Security") and Approved!=false, iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1)), 0)) by SourceComputerId
+)
+on SourceComputerId
+| extend WorstMissingUpdateSeverity=coalesce(WorstMissingUpdateSeverity, -1)
+| summarize computersBySeverity=count() by WorstMissingUpdateSeverity
+| union (Heartbeat
+| where TimeGenerated>ago(12h) and OSType=="Linux" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+| where Solutions has "updates"
+| distinct SourceComputerId
+| join kind=leftouter
+(
+    Update
+    | where TimeGenerated>ago(5h) and OSType=="Linux"
+    | summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification) by SourceComputerId, Product, ProductArch
+    | distinct SourceComputerId, Classification, UpdateState
+    | summarize WorstMissingUpdateSeverity=max(iff(UpdateState=~"Needed", iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1)), 0)) by SourceComputerId
+)
+on SourceComputerId
+| extend WorstMissingUpdateSeverity=coalesce(WorstMissingUpdateSeverity, -1)
+| summarize computersBySeverity=count() by WorstMissingUpdateSeverity)
+| summarize assessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity>-1), notAssessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==-1), computersNeedCriticalUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==4), computersNeedSecurityUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==2), computersNeeedOtherUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==1), upToDateComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==0)
+| summarize assessedComputersCount=sum(assessedComputersCount), computersNeedCriticalUpdatesCount=sum(computersNeedCriticalUpdatesCount),  computersNeedSecurityUpdatesCount=sum(computersNeedSecurityUpdatesCount), computersNeeedOtherUpdatesCount=sum(computersNeeedOtherUpdatesCount), upToDateComputersCount=sum(upToDateComputersCount), notAssessedComputersCount=sum(notAssessedComputersCount)
+| extend allComputersCount=assessedComputersCount+notAssessedComputersCount
+
+
+```
+
+##### <a name="missing-updates-summary"></a>Zusammenfassung fehlender Updates
+
+```
+Update
+| where TimeGenerated>ago(5h) and OSType=="Linux" and SourceComputerId in ((Heartbeat
+| where TimeGenerated>ago(12h) and OSType=="Linux" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+| where Solutions has "updates"
+| distinct SourceComputerId))
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification) by Computer, SourceComputerId, Product, ProductArch
+| where UpdateState=~"Needed"
+| summarize by Product, ProductArch, Classification
+| union (Update
+| where TimeGenerated>ago(14h) and OSType!="Linux" and (Optional==false or Classification has "Critical" or Classification has "Security") and SourceComputerId in ((Heartbeat
+| where TimeGenerated>ago(12h) and OSType=~"Windows" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+| where Solutions has "updates"
+| distinct SourceComputerId))
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Approved) by Computer, SourceComputerId, UpdateID
+| where UpdateState=~"Needed" and Approved!=false
+| summarize by UpdateID, Classification )
+| summarize allUpdatesCount=count(), criticalUpdatesCount=countif(Classification has "Critical"), securityUpdatesCount=countif(Classification has "Security"), otherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security"
+```
+
+##### <a name="computers-list"></a>Computerliste
+
+```
+Heartbeat
+| where TimeGenerated>ago(12h) and OSType=="Linux" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions, Computer, ResourceId, ComputerEnvironment, VMUUID) by SourceComputerId
+| where Solutions has "updates"
+| extend vmuuId=VMUUID, azureResourceId=ResourceId, osType=1, environment=iff(ComputerEnvironment=~"Azure", 1, 2), scopedToUpdatesSolution=true, lastUpdateAgentSeenTime=""
+| join kind=leftouter
+(
+    Update
+    | where TimeGenerated>ago(5h) and OSType=="Linux" and SourceComputerId in ((Heartbeat
+    | where TimeGenerated>ago(12h) and OSType=="Linux" and notempty(Computer)
+    | summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+    | where Solutions has "updates"
+    | distinct SourceComputerId))
+    | summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Product, Computer, ComputerEnvironment) by SourceComputerId, Product, ProductArch
+    | summarize Computer=any(Computer), ComputerEnvironment=any(ComputerEnvironment), missingCriticalUpdatesCount=countif(Classification has "Critical" and UpdateState=~"Needed"), missingSecurityUpdatesCount=countif(Classification has "Security" and UpdateState=~"Needed"), missingOtherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security" and UpdateState=~"Needed"), lastAssessedTime=max(TimeGenerated), lastUpdateAgentSeenTime="" by SourceComputerId
+    | extend compliance=iff(missingCriticalUpdatesCount > 0 or missingSecurityUpdatesCount > 0, 2, 1)
+    | extend ComplianceOrder=iff(missingCriticalUpdatesCount > 0 or missingSecurityUpdatesCount > 0 or missingOtherUpdatesCount > 0, 1, 3)
+)
+on SourceComputerId
+| project id=SourceComputerId, displayName=Computer, sourceComputerId=SourceComputerId, scopedToUpdatesSolution=true, missingCriticalUpdatesCount=coalesce(missingCriticalUpdatesCount, -1), missingSecurityUpdatesCount=coalesce(missingSecurityUpdatesCount, -1), missingOtherUpdatesCount=coalesce(missingOtherUpdatesCount, -1), compliance=coalesce(compliance, 4), lastAssessedTime, lastUpdateAgentSeenTime, osType=1, environment=iff(ComputerEnvironment=~"Azure", 1, 2), ComplianceOrder=coalesce(ComplianceOrder, 2)
+| union(Heartbeat
+| where TimeGenerated>ago(12h) and OSType=~"Windows" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions, Computer, ResourceId, ComputerEnvironment, VMUUID) by SourceComputerId
+| where Solutions has "updates"
+| extend vmuuId=VMUUID, azureResourceId=ResourceId, osType=2, environment=iff(ComputerEnvironment=~"Azure", 1, 2), scopedToUpdatesSolution=true, lastUpdateAgentSeenTime=""
+| join kind=leftouter
+(
+    Update
+    | where TimeGenerated>ago(14h) and OSType!="Linux" and SourceComputerId in ((Heartbeat
+    | where TimeGenerated>ago(12h) and OSType=~"Windows" and notempty(Computer)
+    | summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+    | where Solutions has "updates"
+    | distinct SourceComputerId))
+    | summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Title, Optional, Approved, Computer, ComputerEnvironment) by Computer, SourceComputerId, UpdateID
+    | summarize Computer=any(Computer), ComputerEnvironment=any(ComputerEnvironment), missingCriticalUpdatesCount=countif(Classification has "Critical" and UpdateState=~"Needed" and Approved!=false), missingSecurityUpdatesCount=countif(Classification has "Security" and UpdateState=~"Needed" and Approved!=false), missingOtherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security" and UpdateState=~"Needed" and Optional==false and Approved!=false), lastAssessedTime=max(TimeGenerated), lastUpdateAgentSeenTime="" by SourceComputerId
+    | extend compliance=iff(missingCriticalUpdatesCount > 0 or missingSecurityUpdatesCount > 0, 2, 1)
+    | extend ComplianceOrder=iff(missingCriticalUpdatesCount > 0 or missingSecurityUpdatesCount > 0 or missingOtherUpdatesCount > 0, 1, 3)
+)
+on SourceComputerId
+| project id=SourceComputerId, displayName=Computer, sourceComputerId=SourceComputerId, scopedToUpdatesSolution=true, missingCriticalUpdatesCount=coalesce(missingCriticalUpdatesCount, -1), missingSecurityUpdatesCount=coalesce(missingSecurityUpdatesCount, -1), missingOtherUpdatesCount=coalesce(missingOtherUpdatesCount, -1), compliance=coalesce(compliance, 4), lastAssessedTime, lastUpdateAgentSeenTime, osType=2, environment=iff(ComputerEnvironment=~"Azure", 1, 2), ComplianceOrder=coalesce(ComplianceOrder, 2) )
+| order by ComplianceOrder asc, missingCriticalUpdatesCount desc, missingSecurityUpdatesCount desc, missingOtherUpdatesCount desc, displayName asc
+| project-away ComplianceOrder
+```
+
+##### <a name="missing-updates-list"></a>Liste fehlender Updates
+
+```
+Update
+| where TimeGenerated>ago(5h) and OSType=="Linux" and SourceComputerId in ((Heartbeat
+| where TimeGenerated>ago(12h) and OSType=="Linux" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+| where Solutions has "updates"
+| distinct SourceComputerId))
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, BulletinUrl, BulletinID) by SourceComputerId, Product, ProductArch
+| where UpdateState=~"Needed"
+| project-away UpdateState, TimeGenerated
+| summarize computersCount=dcount(SourceComputerId, 2), ClassificationWeight=max(iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1))) by id=strcat(Product, "_", ProductArch), displayName=Product, productArch=ProductArch, classification=Classification, InformationId=BulletinID, InformationUrl=tostring(split(BulletinUrl, ";", 0)[0]), osType=1
+| union(Update
+| where TimeGenerated>ago(14h) and OSType!="Linux" and (Optional==false or Classification has "Critical" or Classification has "Security") and SourceComputerId in ((Heartbeat
+| where TimeGenerated>ago(12h) and OSType=~"Windows" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+| where Solutions has "updates"
+| distinct SourceComputerId))
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Title, KBID, PublishedDate, Approved) by Computer, SourceComputerId, UpdateID
+| where UpdateState=~"Needed" and Approved!=false
+| project-away UpdateState, Approved, TimeGenerated
+| summarize computersCount=dcount(SourceComputerId, 2), displayName=any(Title), publishedDate=min(PublishedDate), ClassificationWeight=max(iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1))) by id=strcat(UpdateID, "_", KBID), classification=Classification, InformationId=strcat("KB", KBID), InformationUrl=iff(isnotempty(KBID), strcat("https://support.microsoft.com/kb/", KBID), ""), osType=2)
+| sort by ClassificationWeight desc, computersCount desc, displayName asc
+| extend informationLink=(iff(isnotempty(InformationId) and isnotempty(InformationUrl), toobject(strcat('{ "uri": "', InformationUrl, '", "text": "', InformationId, '", "target": "blank" }')), toobject('')))
+| project-away ClassificationWeight, InformationId, InformationUrl
+```
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integrieren in System Center Configuration Manager
 
-Kunden, die in System Center Configuration Manager investiert haben, um PCs, Server und Mobilgeräte zu verwalten, profitieren auch von der Leistungsstärke und dem Funktionsumfang dieser Lösung bei der Verwaltung von Softwareupdates im Rahmen des Softwareupdateverwaltungs-Zyklus.
+Kunden, die in System Center Configuration Manager investiert haben, um PCs, Server und mobile Geräte zu verwalten, profitieren auch von der Leistungsstärke und dem Funktionsumfang von Configuration Manager bei der Verwaltung von Softwareupdates. Configuration Manager ist Teil ihres Softwareupdateverwaltungs-Zyklus.
 
 Wie Sie die Verwaltungslösung in System Center Configuration Manager integrieren, erfahren Sie unter [Integrieren von System Center Configuration Manager und Updateverwaltung](oms-solution-updatemgmt-sccmintegration.md).
 
-## <a name="patching-linux-machines"></a>Patchen von Linux-Computern
+## <a name="patch-linux-machines"></a>Patchen von Linux-Computern
 
 In den folgenden Abschnitten werden mögliche Probleme beim Patchen von Linux-Computern erläutert.
 
-### <a name="package-exclusion"></a>Paketausschluss
+### <a name="unexpected-os-level-upgrades"></a>Unerwartete Upgrades auf Betriebssystemebene
 
-Bei einigen Linux-Varianten (z. B. Red Hat Enterprise Linux) können Upgrades auf Betriebssystemebene über Pakete erfolgen. Dies kann zur Ausführung der Updateverwaltung führen, wodurch sich die Versionsnummer des Betriebssystems ändert. Dieses Verhalten ist beabsichtigt, da die Updateverwaltung die gleichen Methoden für Updatepakete verwendet, die auch ein Administrator lokal auf dem Linux-Computer nutzt.
+Bei einigen Linux-Varianten (z.B. Red Hat Enterprise Linux) können Upgrades auf Betriebssystemebene über Pakete erfolgen. Dies kann ggf. zur Ausführung der Updateverwaltung führen, wodurch sich die Versionsnummer des Betriebssystems ändert. Dieses Verhalten ist beabsichtigt, da die Updateverwaltung die gleichen Methoden für Updatepakete verwendet, die auch ein Administrator lokal auf dem Linux-Computer nutzt.
 
-Um zu vermeiden, dass die Betriebssystemversion durch die Ausführung der Updateverwaltung aktualisiert wird, verwenden Sie die **Ausschluss**-Funktion.
+Um zu vermeiden, dass die Betriebssystemversion durch die Ausführung der Updateverwaltung aktualisiert wird, verwenden Sie das **Ausschluss**-Feature.
 
-In Red Hat Enterprise Linux würde der Name des auszuschließenden Pakets „redhat-release-server.x86_64“ lauten.
+In Red Hat Enterprise Linux lautet der Name des auszuschließenden Pakets „redhat-release-server.x86_64“.
 
 ![Auszuschließende Pakete für Linux](./media/automation-update-management/linuxpatches.png)
 
-### <a name="security-patches-not-being-applied"></a>Sicherheitspatches werden nicht angewendet
+### <a name="critical--security-patches-arent-applied"></a>Kritische/Sicherheitspatches werden nicht angewendet
 
-Beim Bereitstellen von Updates für einen Linux-Computer können Sie die Updateklassifizierungen auswählen. Dadurch werden die Updates gefiltert, die auf die Computer angewendet werden, welche die definierten Kriterien erfüllen. Dieser Filter wird lokal auf dem Computer angewendet, wenn das Update bereitgestellt wird. Da die Updateverwaltung die Updateergänzung in der Cloud ausführt, werden einige Updates in der Updateverwaltung möglicherweise als Update mit Sicherheitsauswirkung gekennzeichnet, obwohl der lokale Computer nicht über diese Informationen verfügt. Daher gibt es beim Anwenden kritischer Updates auf einem Linux-Computer möglicherweise Updates, die nicht als Update mit Sicherheitsauswirkung auf diesen Computer gekennzeichnet sind. Diese werden dann nicht angewendet. Allerdings wird die Updateverwaltung diesen Computer wahrscheinlich weiterhin als nicht kompatibel melden, da sie über zusätzliche Informationen zu dem relevanten Update verfügt.
+Beim Bereitstellen von Updates für einen Linux-Computer können Sie Updateklassifizierungen auswählen. Dadurch werden die Updates gefiltert, die auf die Computer angewendet werden, welche die definierten Kriterien erfüllen. Dieser Filter wird lokal auf dem Computer angewendet, wenn das Update bereitgestellt wird.
 
-Das Bereitstellen von Updates nach Updateklassifizierung funktioniert aufgrund des unterschiedlichen Patchmodells bei OpenSUSE Linux möglicherweise nicht.
+Da die Updateverwaltung die Updateergänzung in der Cloud ausführt, werden einige Updates in der Updateverwaltung möglicherweise als Update mit Sicherheitsauswirkung gekennzeichnet, obwohl der lokale Computer nicht über diese Informationen verfügt. Daher gibt es beim Anwenden kritischer Updates auf einem Linux-Computer möglicherweise Updates, die nicht als Update mit Sicherheitsauswirkung auf diesen Computer gekennzeichnet sind. Diese Updates werden dann nicht angewendet.
 
-## <a name="troubleshooting"></a>Problembehandlung
+Allerdings wird die Updateverwaltung diesen Computer wahrscheinlich weiterhin als nicht kompatibel melden, da sie über zusätzliche Informationen zum relevanten Update verfügt.
 
-Dieser Abschnitt enthält Informationen zum Durchführen der Problembehandlung mit der Lösung für die Updateverwaltung.
+Das Bereitstellen von Updates nach Updateklassifizierung funktioniert unter CentOS nicht standardmäßig. Für SUSE kann die Auswahl *nur* von „Other Updates“ als Klassifizierung möglicherweise dazu führen, dass einige Sicherheitsupdates installiert werden, wenn zuerst Sicherheitsupdates im Zusammenhang mit zypper (Paket-Manager) oder dessen Abhängigkeiten erforderlich sind. Dies ist eine Einschränkung von zypper. In einigen Fällen ist es möglicherweise erforderlich, die Updatebereitstellung erneut ausführen. Um dies zu überprüfen, überprüfen Sie das Updateprotokoll.
 
-Sollten Sie Probleme beim Onboarding der Lösung oder eines virtuellen Computers haben, suchen Sie im Ereignisprotokoll **Anwendungs- und Dienstprotokolle\Operations Manager** nach Ereignissen mit der Ereignis-ID 4502 und einer Ereignisnachricht, die **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** enthält. Die folgende Tabelle enthält spezifische Fehlermeldungen und passende Lösungsvorschläge.
+## <a name="troubleshoot"></a>Problembehandlung
 
-| Message | Grund | Lösung |
-|----------|----------|----------|
-| Unable to Register Machine for Patch Management,</br>Registration Failed with Exception</br>System.InvalidOperationException: {"Message":"Machine is already</br>registered to a different account. "} (Der Computer konnte nicht für die Patchverwaltung registriert werden. Ausnahme "System.InvalidOperationException" bei der Registrierung: {"Meldung":"Der Computer ist bereits für ein anderes Konto registriert."} | Der Computer ist bereits in einen Arbeitsbereich für die Updateverwaltung integriert. | Bereinigen Sie alte Artefakte durch [Löschen der Hybrid-Runbook-Gruppe](automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups).|
-| Der Computer konnte nicht für die Patchverwaltung registriert werden. Fehler beim Registrieren. Ausnahme:</br>System.Net.Http.HttpRequestException: An error occurred while sending the request. ---></br>System.Net.WebException: The underlying connection</br>was closed: An unexpected error</br>occurred on a receive. ---> System.ComponentModel.Win32Exception:</br>The client and server cannot communicate,</br>because they do not possess a common algorithm (Der Computer konnte nicht für die Patchverwaltung registriert werden. Ausnahme "System.Net.Http.HttpRequestException" bei der Registrierung: Fehler beim Senden der Anforderung. System.Net.WebException: Die zugrunde liegende Verbindung wurde getrennt. Unerwarteter Fehler bei einem Empfangsvorgang. ---> System.ComponentModel.Win32Exception: Client und Server können nicht kommunizieren, da sie keinen gemeinsamen Algorithmus besitzen.) | Proxy/Gateway/Kommunikation durch Firewall blockiert | [Prüfen Sie die Netzwerkanforderungen.](automation-hybrid-runbook-worker.md#network-planning)|
-| Unable to Register Machine for Patch Management,</br>Registration Failed with Exception</br>Newtonsoft.Json.JsonReaderException: Error parsing positive infinity value. (Der Computer konnte nicht für die Patchverwaltung registriert werden. Ausnahme "Newtonsoft.Json.JsonReaderException" bei der Registrierung: Fehler beim Analysieren des positiven Unendlichkeitswerts.) | Proxy/Gateway/Kommunikation durch Firewall blockiert | [Prüfen Sie die Netzwerkanforderungen.](automation-hybrid-runbook-worker.md#network-planning)|
-| Das durch den Dienst „\<wsid\>.oms.opinsights.azure.com“ vorgelegte Zertifikat</br>wurde nicht durch eine für Microsoft-Dienste verwendete</br>Zertifizierungsstelle ausgestellt. Kontakt</br>Ihren Netzwerkadministrator überprüfen, ob ein Proxy die</br>TLS/SSL-Kommunikation abfängt. |Proxy/Gateway/Kommunikation durch Firewall blockiert | [Prüfen Sie die Netzwerkanforderungen.](automation-hybrid-runbook-worker.md#network-planning)|
-| Unable to Register Machine for Patch Management,</br>Registration Failed with Exception</br>AgentService.HybridRegistration.</br>PowerShell.Certificates.CertificateCreationException:</br>Failed to create a self-signed certificate. ---></br>System.UnauthorizedAccessException: Access is denied. (Der Computer konnte nicht für die Patchverwaltung registriert werden. Ausnahme "AgentService.HybridRegistration.PowerShell.Certificates.CertificateCreationException" bei der Registrierung: Fehler beim Erstellen eines selbstsignierten Zertifikats. System.UnauthorizedAccessException: Zugriff verweigert.) | Fehler beim Erstellen eines selbstsignierten Zertifikats | Vergewissern Sie sich, dass das Systemkonto</br>Lesezugriff auf den folgenden Ordner hat:</br>**C:\ProgramData\Microsoft\**</br>** Crypto\RSA**|
+Informationen zur Problembehandlung der Updateverwaltung finden Sie unter [Problembehandlung der Updateverwaltung](troubleshoot/update-management.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -303,4 +517,4 @@ Fahren Sie mit dem Tutorial fort, um zu erfahren, wie Updates für Ihre virtuell
 > [Verwalten von Updates und Patches für Ihre virtuellen Azure Windows-Computer](automation-tutorial-update-management.md)
 
 * Verwenden Sie die Protokollsuche in [Log Analytics](../log-analytics/log-analytics-log-searches.md), um ausführliche Daten zu Updates anzuzeigen.
-* [Erstellen Sie Warnungen](../log-analytics/log-analytics-alerts.md), wenn kritische Updates für Computer als fehlend erkannt werden oder für einen Computer die automatischen Updates deaktiviert sind.
+* [Erstellen Sie Warnungen](../log-analytics/log-analytics-alerts.md), wenn kritische Updates für Computer als fehlend erkannt werden oder für einen Computer automatische Updates deaktiviert sind.

@@ -12,19 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: jingwang
-ms.openlocfilehash: f4ce76385897c24bd5259d5a39aa1756769fe2aa
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: ba965b0610525f66c24dd6d5bad3fd113a6b6758
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284479"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050864"
 ---
 # <a name="azure-data-factory-service-identity"></a>Azure Data Factory-Dienstidentität
 
 Dieser Artikel hilft Ihnen zu verstehen, was die Data Factory-Dienstidentität ist und wie diese funktioniert.
-
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 (GA) des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Dokumentation zur Version 1 von Data Factory](v1/data-factory-introduction.md) weiter.
 
 ## <a name="overview"></a>Übersicht
 
@@ -39,7 +36,7 @@ Die Data Factory-Dienstidentität profitiert von den folgenden beiden Features:
 
 Die Data Factory-Dienstidentität wird wie folgt generiert:
 
-- Beim Erstellen einer Data Factory über das **Azure-Portal oder PowerShell** wird seit der öffentlichen ADF V2-Vorschauversion die Dienstidentität immer automatisch erstellt.
+- Beim Erstellen einer Data Factory über das **Azure-Portal oder PowerShell** wird die Dienstidentität immer automatisch erstellt.
 - Wenn Sie eine Data Factory über das **SDK** erstellen, wird die Dienstidentität nur erstellt, wenn Sie im Factory-Objekt für die Erstellung „Identity = new FactoryIdentity()“ angeben. Sehen Sie sich das Beispiel unter [.NET-Schnellstart – Erstellen einer Data Factory](quickstart-create-data-factory-dot-net.md#create-a-data-factory) an.
 - Beim Erstellen einer Data Factory mithilfe der **REST-API** wird die Dienstidentität nur erstellt, wenn Sie im Anforderungstext den Abschnitt „identity“ angeben. Sehen Sie sich das Beispiel unter [REST-Schnellstart – Erstellen einer Data Factory](quickstart-create-data-factory-rest-api.md#create-a-data-factory) an.
 

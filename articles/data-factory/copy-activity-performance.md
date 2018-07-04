@@ -13,23 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 6b0f576538f159155dcf602fe39b0ea67254e4c7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b6de6331b4d829f183c8b5dc03d6a29095a47479
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619251"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049331"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Handbuch zur Leistung und Optimierung der Kopieraktivität
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: allgemein verfügbar](v1/data-factory-copy-activity-performance.md)
-> * [Version 2 – Vorschauversion](copy-activity-performance.md)
+> * [Version 1](v1/data-factory-copy-activity-performance.md)
+> * [Aktuelle Version](copy-activity-performance.md)
 
 
 Die Azure Data Factory-Kopieraktivität bietet eine erstklassige, sichere und zuverlässige Lösung zum Laden von Daten mit hoher Leistung. Sie können Dutzende von Terabytes an Daten täglich zwischen einer großen Vielzahl von Cloud- und lokalen Datenspeichern kopieren. Blitzschnelles Datenladen ist wesentlich, um sicherzustellen, dass Sie sich auf das „Big Data“-Kernproblem konzentrieren können: Erstellen erweiterter Analyselösungen und tiefe Einblicke in all diese Daten.
-
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (GA) ist, finden Sie unter [Leistung der Kopieraktivität in Version 1 von Data Factory](v1/data-factory-copy-activity-performance.md) weitere Informationen.
 
 Azure bietet eine Reihe von Datenspeicher- und Data Warehouse-Lösungen der Unternehmensklasse, und mit der Kopieraktivität führen Sie ein hochgradig optimiertes und benutzerfreundliches Datenladen durch, das Sie mühelos konfigurieren und einrichten können. Mit einer einzelnen Kopieraktivität können Sie Folgendes erreichen:
 
@@ -40,7 +37,7 @@ Azure bietet eine Reihe von Datenspeicher- und Data Warehouse-Lösungen der Unte
 Dieser Artikel beschreibt Folgendes:
 
 * [Leistungsreferenznummern](#performance-reference) für unterstützte Quellen- und Senkendatenspeicher, die Ihnen bei der Projektplanung helfen;
-* Features, die den Kopierdurchsatz in verschiedenen Szenarien verbessern können, einschließlich [Cloud-Datenverschiebungseinheiten](#cloud-data-movement-units), [paralleler Kopien](#parallel-copy) und [gestaffeltem Kopieren](#staged-copy);
+* Features, die den Kopierdurchsatz in verschiedenen Szenarien verbessern können, einschließlich [Datenintegrationseinheiten](#data-integration-units), [paralleler Kopien](#parallel-copy) und [gestaffeltem Kopieren](#staged-copy);
 * [Leitfaden zur Leistungsoptimierung](#performance-tuning-steps) zum Optimieren der Leistung und der Schlüsselfaktoren, die die Kopierleistung beeinflussen können.
 
 > [!NOTE]
@@ -49,12 +46,12 @@ Dieser Artikel beschreibt Folgendes:
 
 ## <a name="performance-reference"></a>Leistungsreferenz
 
-Als Referenz ist in der nachfolgenden Tabelle der Durchsatzwert beim Kopieren **in MBit/s** für die angegebenen Paare aus Quelle und Senke **in einer einzelnen Kopieraktivitätsausführung** basierend auf internen Tests aufgeführt. Zu Vergleichszwecken wird zudem veranschaulicht, wie unterschiedliche Einstellungen der [Einheiten für Clouddatenverschiebungen](#cloud-data-movement-units) oder der [Skalierbarkeit der selbstgehosteten Integration Runtime-Infrastruktur](concepts-integration-runtime.md#self-hosted-integration-runtime) (mehrere Knoten) zu einer verbesserten Kopierleistung beitragen können.
+Als Referenz ist in der nachfolgenden Tabelle der Durchsatzwert beim Kopieren **in MBit/s** für die angegebenen Paare aus Quelle und Senke **in einer einzelnen Kopieraktivitätsausführung** basierend auf internen Tests aufgeführt. Zu Vergleichszwecken wird zudem veranschaulicht, wie unterschiedliche Einstellungen der [Datenintegrationseinheiten](#data-integration-units) oder der [Skalierbarkeit der selbstgehosteten Integration Runtime](concepts-integration-runtime.md#self-hosted-integration-runtime) (mehrere Knoten) zu einer verbesserten Kopierleistung beitragen können.
 
 ![Leistungsmatrix](./media/copy-activity-performance/CopyPerfRef.png)
 
->[!IMPORTANT]
->Wenn in Version 2 von Azure Data Factory die Kopieraktivität in einer Azure Integration Runtime ausgeführt wird, sind mindestens zwei Einheiten der Clouddatenverschiebungen erforderlich. Wenn keine Angabe erfolgt, finden Sie unter [Einheiten für Clouddatenverschiebungen](#cloud-data-movement-units) die verwendeten Standardeinheiten für Clouddatenverschiebungen.
+> [!IMPORTANT]
+> Wenn die Kopieraktivität in einer Azure Integration Runtime ausgeführt wird, sind mindestens zwei Datenintegrationseinheiten (früher als Einheiten der Clouddatenverschiebungen bezeichnet) erforderlich. Wenn keine Angabe erfolgt, finden Sie unter [Datenintegrationseinheiten](#data-integration-units) Informationen zu den Standard-Datenintegrationseinheiten.
 
 Beachten Sie Folgendes:
 
@@ -79,25 +76,25 @@ Beachten Sie Folgendes:
 
 
 > [!TIP]
-> Sie können einen höheren Durchsatz erzielen, indem Sie mehr Einheiten für Datenverschiebungen (DMUs) als der standardmäßig zulässige DMU-Höchstwert verwenden, der für die Ausführung einer Cloud-zu-Cloud-Kopieraktivität 32 beträgt. Beispielsweise können Sie mit 100 DMUs Daten mit einer Rate von **1,0 GB/s** aus dem Azure-Blob nach Azure Data Lake Store kopieren. Informationen zu diesem Feature und das unterstützte Szenario finden Sie im Abschnitt [Einheiten für Clouddatenverschiebungen](#cloud-data-movement-units). Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/), um weitere DMUs anzufordern.
+> Sie können einen höheren Durchsatz erzielen, indem Sie mehr Datenintegrationseinheiten (DIUs) als laut standardmäßig zulässigem DIU-Höchstwert verwenden. Dieser beträgt für die Ausführung einer Cloud-zu-Cloud-Kopieraktivität 32. Beispielsweise können Sie mit 100 DIUs Daten mit einer Rate von **1,0 GB/s** aus Azure Blob Storage nach Azure Data Lake Store kopieren. Informationen zu diesem Feature und dem unterstützten Szenario finden Sie im Abschnitt [Datenintegrationseinheiten](#data-integration-units). Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/), um zusätzliche DIUs anzufordern.
 
-## <a name="cloud-data-movement-units"></a>Einheiten für Clouddatenverschiebungen
+## <a name="data-integration-units"></a>Datenintegrationseinheiten
 
-Eine **Einheit für Clouddatenverschiebungen** (Data Movement Unit, DMU) ist eine Messgröße für die Leistungsfähigkeit (Kombination aus zugeteilten CPU-, Speicher- und Netzwerkressourcen) einer einzelnen Einheit in Data Factory. **Nur DMU gilt für [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)**, aber nicht für [selbstgehostete Integration Runtime-Infrastruktur](concepts-integration-runtime.md#self-hosted-integration-runtime).
+Eine **Datenintegrationseinheit** (Data Integration Unit, DIU – früher als Cloud Data Movement Unit, DMU, Einheit für Clouddatenverschiebungen bezeichnet) ist eine Messgröße für die Leistungsfähigkeit (Kombination aus zugeteilten CPU-, Speicher- und Netzwerkressourcen) einer einzelnen Einheit in Data Factory. **Die DIU gilt nur für die [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)**, aber nicht für [selbstgehostete Integration Runtimes](concepts-integration-runtime.md#self-hosted-integration-runtime).
 
-**Es sind mindestens zwei Einheiten der Clouddatenverschiebungen für die Kopieraktivität erforderlich.** Wenn keine Angabe erfolgt, finden Sie in der folgenden Tabelle die Standard-DMUs, die in verschiedenen Kopierszenarien verwendet werden:
+**Es sind mindestens zwei Datenintegrationseinheiten für die Kopieraktivität erforderlich.** Wenn keine Angabe erfolgt, finden Sie in der folgenden Tabelle die Standard-DIUs, die in verschiedenen Kopierszenarien verwendet werden:
 
-| Kopierszenario | Vom Dienst bestimmte Standard-DMUs |
+| Kopierszenario | Vom Dienst bestimmte Standard-DIUs |
 |:--- |:--- |
 | Kopieren von Daten zwischen dateibasierten Speichern | Zwischen 4 und 32, abhängig von der Anzahl und Größe der Dateien. |
 | Alle anderen Kopierszenarios | 4 |
 
-Sie können diese Standardeinstellung überschreiben, indem Sie wie im Anschluss beschrieben einen Wert für die **cloudDataMovementUnits** -Eigenschaft angeben. Als **zulässige Werte** für die Eigenschaft **cloudDataMovementUnits** können Werte **bis 256** angegeben werden. Die **tatsächliche Anzahl von Cloud-DMUs**, die der Kopiervorgang zur Laufzeit verwendet, entspricht maximal dem konfigurierten Wert. Dies ist abhängig von Ihrem Datenmuster. Informationen zum Umfang des möglichen Leistungsgewinns durch Konfigurieren weiterer Einheiten für eine bestimmte Kopierquelle und -senke finden Sie in der [Leistungsreferenz](#performance-reference).
+Sie können diese Standardeinstellung überschreiben, indem Sie wie folgt einen Wert für die **dataIntegrationUnits**-Eigenschaft angeben. Als **zulässige Werte** für die **dataIntegrationUnits**-Eigenschaft können Werte **bis 256** angegeben werden. Die **tatsächliche Anzahl von DIUs**, die der Kopiervorgang zur Laufzeit verwendet, entspricht maximal dem konfigurierten Wert. Dies ist abhängig von Ihrem Datenmuster. Informationen zum Umfang des möglichen Leistungsgewinns durch Konfigurieren weiterer Einheiten für eine bestimmte Kopierquelle und -senke finden Sie in der [Leistungsreferenz](#performance-reference).
 
-Sie können die tatsächlich verwendeten Einheiten der Clouddatenverschiebungen für jede Kopierausführung in der Kopieraktivitätsausgabe anzeigen, wenn Sie eine Aktivitätsausführung überwachen. Weitere Informationen finden Sie unter [Copy activity monitoring (Überwachung der Kopieraktivität)](copy-activity-overview.md#monitoring).
+Sie können die tatsächlich verwendeten Datenintegrationseinheiten für jede Kopierausführung in der Kopieraktivitätsausgabe anzeigen, wenn Sie eine Aktivitätsausführung überwachen. Weitere Informationen finden Sie unter [Copy activity monitoring (Überwachung der Kopieraktivität)](copy-activity-overview.md#monitoring).
 
 > [!NOTE]
-> Sollten Sie zur Steigerung des Durchsatzes weitere Cloud-DMUs benötigen, wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/). Der Wert 8 und höher kann derzeit nur verwendet werden, wenn Sie **mehrere Dateien aus Blob Storage/Data Lake Store/Amazon S3/Cloud-FTP/Cloud-SFTP in einen beliebigen anderen Clouddatenspeicher kopieren**.
+> Sollten Sie zur Steigerung des Durchsatzes zusätzliche DIUs benötigen, wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/). Der Wert 8 und höher kann derzeit nur verwendet werden, wenn Sie **mehrere Dateien aus Blob Storage/Data Lake Store/Amazon S3/Cloud-FTP/Cloud-SFTP in einen beliebigen anderen Clouddatenspeicher kopieren**.
 >
 
 **Beispiel:**
@@ -116,15 +113,15 @@ Sie können die tatsächlich verwendeten Einheiten der Clouddatenverschiebungen 
             "sink": {
                 "type": "AzureDataLakeStoreSink"
             },
-            "cloudDataMovementUnits": 32
+            "dataIntegrationUnits": 32
         }
     }
 ]
 ```
 
-### <a name="cloud-data-movement-units-billing-impact"></a>Auswirkungen auf die Abrechnung der Einheiten für Clouddatenverschiebungen
+### <a name="data-integration-units-billing-impact"></a>Auswirkungen von Datenintegrationseinheiten auf die Abrechnung
 
-**Wichtig:** Die Berechnung der Gebühren basiert auf der Gesamtdauer des Kopiervorgangs. Die Gesamtdauer, die Ihnen für die Datenverschiebungen in Rechnung gestellt wird, ist die Summe der DMU-übergreifenden Dauer. Wenn ein Kopierauftrag mit zwei Cloudeinheiten bislang eine Stunde gedauert hat und nun mit acht Cloudeinheiten 15 Minuten dauert, fällt die Gesamtrechnung in etwa gleich hoch aus.
+**Wichtig:** Die Berechnung der Gebühren basiert auf der Gesamtdauer des Kopiervorgangs. Die Gesamtdauer, die Ihnen für die Datenverschiebungen in Rechnung gestellt wird, ist die Summe der DIU-übergreifenden Dauer. Wenn ein Kopierauftrag mit zwei Cloudeinheiten bislang eine Stunde gedauert hat und nun mit acht Cloudeinheiten 15 Minuten dauert, fällt die Gesamtrechnung in etwa gleich hoch aus.
 
 ## <a name="parallel-copy"></a>Parallele Kopie
 
@@ -134,7 +131,7 @@ Für jede Kopieraktivitätsausführung ermittelt Data Factory die Anzahl paralle
 
 | Kopierszenario | Standardanzahl der vom Dienst ermittelten parallelen Kopien |
 | --- | --- |
-| Kopieren von Daten zwischen dateibasierten Speichern |Dies ist abhängig von der Größe der Dateien und der Anzahl von Einheiten für Clouddatenverschiebungen (DMUs), die zum Kopieren von Daten zwischen zwei Clouddatenspeichern verwendet werden, oder von der physischen Konfiguration des Computers der selbstgehosteten Integration Runtime-Infrastruktur. |
+| Kopieren von Daten zwischen dateibasierten Speichern |Dies ist abhängig von der Größe der Dateien und der Anzahl von Datenintegrationseinheiten (DIUs), die zum Kopieren von Daten zwischen zwei Clouddatenspeichern verwendet werden, oder von der physischen Konfiguration des Computers der selbstgehosteten Integration Runtime-Infrastruktur. |
 | Kopieren von Daten aus einem beliebigen Quelldatenspeicher im Azure-Tabellenspeicher |4 |
 | Alle anderen Kopierszenarios |1 |
 
@@ -168,7 +165,7 @@ Beachten Sie Folgendes:
 * Beim Kopieren von Daten zwischen dateibasierten Speichern bestimmt **parallelCopies** die Parallelität auf Dateiebene. Die Segmentierung innerhalb einer einzelnen Datei erfolgt automatisch und transparent. Dadurch wird die am besten geeignete Segmentgröße für einen angegebenen Quelldatenspeichertyp verwendet, um Daten parallel und orthogonal in parallelCopies zu laden. Die tatsächliche Anzahl paralleler Kopien, die der Datenverschiebungsdienst zur Laufzeit für den Kopiervorgang verwendet, entspricht maximal der Anzahl vorhandener Dateien. Bei Verwendung des Kopierverhaltens **mergeFile** kann die Kopieraktivität keine Parallelität auf Dateiebene nutzen.
 * Wenn Sie einen Wert für die Eigenschaft **parallelCopies** angeben, bedenken Sie den Anstieg der Auslastung in Ihren Quell- und Senkendatenspeichern und für die selbstgehostete Integration Runtime-Infrastruktur, wenn die Kopieraktivität z.B. für Hybridkopien durch sie unterstützt wird. Dies gilt insbesondere, wenn Sie über mehrere Aktivitäten oder gleichzeitige Ausführungen der gleichen Aktivitäten verfügen, die für den gleichen Datenspeicher ausgeführt werden. Sollten Sie eine Überlastung des Datenspeichers oder der selbstgehosteten Integration Runtime-Infrastruktur feststellen, verringern Sie den Wert **parallelCopies**, um die Last zu reduzieren.
 * Beim Kopieren von Daten aus nicht dateibasierten Speichern in dateibasierte Speicher ignoriert der Datenverschiebungsdienst die **parallelCopies** -Eigenschaft. Die Parallelität wird in diesem Fall also nicht angewendet, auch wenn sie angegeben wurde.
-* **parallelCopies** ist orthogonal zu **cloudDataMovementUnits**. Die vorherige Eigenschaft wird für alle Einheiten der Clouddatenverschiebungen gezählt.
+* **parallelCopies** ist orthogonal zu **dataIntegrationUnits**. Die erste Eigenschaft wird für alle Datenintegrationseinheiten gezählt.
 
 ## <a name="staged-copy"></a>gestaffeltem Kopieren
 
@@ -246,7 +243,7 @@ Wir empfehlen, die folgenden Schritte auszuführen, um die Leistung des Data Fac
 
    * Leistungsfeatures:
      * [Parallele Kopie](#parallel-copy)
-     * [Einheiten für Clouddatenverschiebungen](#cloud-data-movement-units)
+     * [Datenintegrationseinheiten](#data-integration-units)
      * [Gestaffeltes Kopieren](#staged-copy)
      * [Skalierbarkeit der selbstgehosteten Integration Runtime-Infrastruktur](concepts-integration-runtime.md#self-hosted-integration-runtime)
    * [Selbstgehostete Integration Runtime-Infrastruktur](#considerations-for-self-hosted-integration-runtime)

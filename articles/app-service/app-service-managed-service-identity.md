@@ -9,24 +9,22 @@ ms.service: app-service
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/12/2018
+ms.date: 06/25/2018
 ms.author: mahender
-ms.openlocfilehash: ed2db5fd48c60601b90fc7ffb1094b8d89573b1f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8305a447ac75cf4c72a332910c9c4c90c1d8eac6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153658"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061436"
 ---
-# <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>Informationen zum Verwenden der verwalteten Azure-Dienstidentität (öffentliche Vorschau) in App Service und Azure Functions
+# <a name="how-to-use-azure-managed-service-identity-in-app-service-and-azure-functions"></a>Informationen zum Verwenden der verwalteten Azure-Dienstidentität in App Service und Azure Functions
 
 > [!NOTE] 
-> Die verwaltete Dienstidentität für App Service und Azure Functions befindet sich derzeit in der Vorschauversion. App Service unter Linux und Web-App für Container werden derzeit nicht unterstützt.
-
+> App Service unter Linux und Web-App für Container bieten derzeit keine Unterstützung für die verwaltete Dienstidentität.
 
 > [!Important] 
-> Die verwaltete Dienstidentität für App Service und Azure Functions verhält sich nicht wie erwartet, wenn Ihre App von einem zum anderen Abonnement/Mandanten migriert wird. Die App muss eine neue Identität erhalten, und die vorhandene Identität kann nicht ordnungsgemäß gelöscht werden, ohne dass die Site selbst gelöscht wird. Ihre App muss mit einer neuen Identität neu erstellt werden, und bei den nachgeschalteten Ressourcen müssen die Zugriffsrichtlinien für die Verwendung der neuen Identität aktualisiert werden.
-
+> Die verwaltete Dienstidentität für App Service und Azure Functions verhält sich nicht wie erwartet, wenn Ihre App von einem zum anderen Abonnement/Mandanten migriert wird. Die App muss eine neue Identität abrufen. Zu diesem Zweck kann die Funktion deaktiviert und dann erneut aktiviert werden. Weitere Informationen finden Sie im Abschnitt [Entfernen einer Identität](#remove) weiter unten. Für nachgeschaltete Ressourcen müssen außerdem die Zugriffsrichtlinien für die Verwendung der neuen Identität aktualisiert werden.
 
 In diesem Thema erfahren Sie, wie eine verwaltete App-Identität für App Service- und Azure Functions-Anwendungen erstellt und für den Zugriff auf andere Ressourcen verwendet wird. Durch eine verwaltete Dienstidentität von Azure Active Directory kann Ihre App mühelos auf andere mit AAD geschützte Ressourcen wie Azure Key Vault zugreifen. Da die Identität von der Azure-Plattform verwaltet wird, müssen Sie keine Geheimnisse bereitstellen oder rotieren. Weitere Informationen zur verwalteten Dienstidentität finden Sie in der [Übersicht über die verwaltete Dienstidentität](../active-directory/managed-service-identity/overview.md).
 
@@ -77,6 +75,31 @@ In den folgenden Schritten werden Sie durch das Erstellen einer Web-App und das 
     az webapp identity assign --name myApp --resource-group myResourceGroup
     ```
 
+### <a name="using-azure-powershell"></a>Verwenden von Azure PowerShell
+
+In den folgenden Schritten werden Sie durch das Erstellen einer Web-App und das Zuweisen einer Identität zur App mithilfe von Azure PowerShell geleitet:
+
+1. Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Login-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen.
+
+2. Erstellen Sie eine Webanwendung mithilfe von Azure PowerShell. Weitere Beispiele zum Verwenden von Azure PowerShell mit App Service finden Sie unter [Azure PowerShell-Beispiele](../app-service/app-service-powershell-samples.md):
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzureRmResourceGroup -Name myResourceGroup -Location $location
+    
+    # Create an App Service plan in Free tier.
+    New-AzureRmAppServicePlan -Name $webappname -Location $location -ResourceGroupName myResourceGroup -Tier Free
+    
+    # Create a web app.
+    New-AzureRmWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
+    ```
+
+3. Führen Sie den `identity assign` Befehl aus, um die Identität für diese Anwendung zu erstellen:
+
+    ```azurepowershell-interactive
+    Set-AzureRmWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
+    ```
+
 ### <a name="using-an-azure-resource-manager-template"></a>Verwenden einer Azure Resource Manager-Vorlage
 
 Mithilfe einer Azure Resource Manager-Vorlage kann die Bereitstellung Ihrer Azure-Ressourcen automatisiert werden. Weitere Informationen zum Bereitstellen von App Service und Azure Functions finden Sie unter [Automatisieren der Ressourcenbereitstellung in App Service](../app-service/app-service-deploy-complex-application-predictably.md) und [Automatisieren der Ressourcenbereitstellung in Azure Functions](../azure-functions/functions-infrastructure-as-code.md).
@@ -121,7 +144,7 @@ Wenn die Website erstellt wurde, weist sie folgende zusätzliche Eigenschaften a
 }
 ```
 
-Hierbei werden `<TENANTID>` und `<PRINCIPALID>` durch GUIDs ersetzt. Die Eigenschaft „tenantId“ kennzeichnet, zu welchem AAD-Mandanten die Anwendung gehört. Die Eigenschaft „principalId“ ist ein eindeutiger Bezeichner für die neue Identität der Anwendung. In AAD weist die Anwendung denselben Namen auf, den Sie für Ihre App Service- oder Azure Functions-Instanz vergeben haben.
+Hierbei werden `<TENANTID>` und `<PRINCIPALID>` durch GUIDs ersetzt. Die Eigenschaft „tenantId“ kennzeichnet, zu welchem AAD-Mandanten die Identität gehört. Die Eigenschaft „principalId“ ist ein eindeutiger Bezeichner für die neue Identität der Anwendung. In AAD weist der Dienstprinzipal denselben Namen auf, den Sie für Ihre App Service- oder Azure Functions-Instanz vergeben haben.
 
 ## <a name="obtaining-tokens-for-azure-resources"></a>Abrufen von Tokens für Azure-Ressourcen
 
@@ -205,7 +228,7 @@ Content-Type: application/json
 ```
 
 ### <a name="code-examples"></a>Codebeispiele
-So erstellen Sie diese Anforderung in C#
+<a name="token-csharp"></a>So erstellen Sie diese Anforderung in C#:
 ```csharp
 public static async Task<HttpResponseMessage> GetToken(string resource, string apiversion)  {
     HttpClient client = new HttpClient();
@@ -216,7 +239,7 @@ public static async Task<HttpResponseMessage> GetToken(string resource, string a
 > [!TIP]
 > Für .NET-Sprachen können Sie auch [Microsoft.Azure.Services.AppAuthentication](#asal) verwenden, statt diese Anforderung selbst zu entwerfen.
 
-Gehen Sie in Node.js folgendermaßen vor:
+<a name="token-js"></a>Gehen Sie in Node.js folgendermaßen vor:
 ```javascript
 const rp = require('request-promise');
 const getToken = function(resource, apiver, cb) {
@@ -231,7 +254,7 @@ const getToken = function(resource, apiver, cb) {
 }
 ```
 
-PowerShell:
+<a name="token-powershell"></a>Gehen Sie in PowerShell folgendermaßen vor:
 ```powershell
 $apiVersion = "2017-09-01"
 $resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"
@@ -239,6 +262,21 @@ $tokenAuthURI = $env:MSI_ENDPOINT + "?resource=$resourceURI&api-version=$apiVers
 $tokenResponse = Invoke-RestMethod -Method Get -Headers @{"Secret"="$env:MSI_SECRET"} -Uri $tokenAuthURI
 $accessToken = $tokenResponse.access_token
 ```
+
+## <a name="remove"></a>Entfernen einer Identität
+
+Eine Identität kann entfernt werden, indem die Funktion über das Portal, PowerShell oder die Befehlszeilenschnittstelle auf gleiche Weise wie bei der Erstellung deaktiviert wird. Im REST/ARM-Vorlage-Protokoll erfolgt dies durch Festlegen des Typs auf „None“:
+
+```json
+"identity": {
+    "type": "None"
+}    
+```
+
+Bei dieser Methode zum Entfernen der Identität wird auch der Prinzipal aus AAD gelöscht. Vom System zugewiesene Identitäten werden automatisch aus AAD entfernt, sobald die App-Ressource gelöscht wird.
+
+> [!NOTE] 
+> Es gibt auch eine Anwendungseinstellung, die festgelegt werden kann (WEBSITE_DISABLE_MSI). Hierdurch wird nur der lokale Tokendienst deaktiviert. Die Identität bleibt jedoch erhalten, und in den Tools wird MSI weiterhin als „Ein“ oder „Aktiviert“ angezeigt. Daher wird die Verwendung dieser Einstellung nicht empfohlen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

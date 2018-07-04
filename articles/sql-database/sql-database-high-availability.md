@@ -2,75 +2,49 @@
 title: Hochverfügbarkeit – Azure SQL-Datenbankdienst | Microsoft Docs
 description: Erfahren Sie mehr über die Hochverfügbarkeitsfunktionen des Azure SQL-Datenbankdiensts.
 services: sql-database
-author: anosov1960
+author: jovanpop-msft
 manager: craigg
 ms.service: sql-database
 ms.topic: conceptual
-ms.date: 04/24/2018
-ms.author: sashan
-ms.reviewer: carlrab
-ms.openlocfilehash: 27f0c49913b424a6bd77b7cb6f7d6e97598c2157
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.date: 06/20/2018
+ms.author: jovanpop
+ms.reviewer: carlrab, sashan
+ms.openlocfilehash: a9874681d59d193fc3c3d0fd4271e2a6a0fb0dc6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839808"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060382"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Hochverfügbarkeit und Azure SQL-Datenbank
-Seit der Einführung des PaaS-Angebots von Azure SQL-Datenbank hat Microsoft seinen Kunden zugesichert, Hochverfügbarkeit (High Availability, HA) direkt in den Dienst zu integrieren. So sind auf Kundenseite weder Maßnahmen oder Entscheidungen rund um HA erforderlich, noch muss spezielle Logik implementiert werden. Microsoft bietet Kunden eine Vereinbarung zum Servicelevel (SLA) und behält die vollständige Kontrolle über die Konfiguration und den Betrieb des Hochverfügbarkeitssystems. Die SLA zur Hochverfügbarkeit gilt für eine SQL-Datenbank in einer Region und bietet keinen Schutz vor Totalausfällen einer Region aufgrund von Faktoren, die außerhalb der Kontrolle von Microsoft liegen (z.B. Naturkatastrophen, Kriege, Terroranschläge, Aufstände, staatliche Maßnahmen, Netzwerk- oder Geräteausfälle außerhalb der Rechenzentren von Microsoft, u.a. am Kundenstandort oder zwischen dem Kundenstandort und dem Microsoft-Rechenzentrum).
 
-Zur Vereinfachung des Problemraums von HA geht Microsoft von folgenden Annahmen aus:
-1.  Hardware- und Softwarefehler sind unvermeidlich.
-2.  Operative Mitarbeiter begehen Fehler, die zu Ausfällen führen.
-3.  Planmäßige Wartungsvorgänge verursachen Ausfälle. 
+Azure SQL-Datenbank ist eine hochverfügbare PaaS-Datenbank (Platform as a Service), die sicherstellt, dass Ihre Datenbank ohne Beeinträchtigung durch Wartungs- und Ausfallzeiten zu 99,99 % der Zeit ausgeführt wird. Es handelt sich um einen vollständig verwalteten, in der Azure-Cloud gehosteten SQL Server-Datenbank-Engine-Prozess, der sicherstellt, dass Ihre SQL Server-Datenbank immer aktualisiert und gepatcht wird, ohne Ihre Workload zu beeinträchtigen. Azure SQL-Datenbank kann auch unter den kritischsten Umständen schnell wiederhergestellt werden. So wird sichergestellt, dass Ihre Daten immer verfügbar sind.
 
-Während Einzelvorfälle selten sind, können sie in einem größeren Maßstab – z. B. auf Cloudebene – wöchentlich und sogar täglich auftreten. 
+Die Azure Platform führt eine vollständige Verwaltung jeder Azure SQL-Datenbank durch und garantiert, dass keine Datenverluste auftreten und die Datenverfügbarkeit einen hohen Prozentsatz aufweist. In Azure werden Bereiche wie Patchen, Sicherungen, Replikation, Fehlererkennung, zugrunde liegende potenzielle Hardware-, Software- oder Netzwerkfehler, Bereitstellung von Fehlerbehebungen, Failover, Datenbankupgrades und andere Wartungsaufgaben automatisch durchgeführt. SQL Server-Techniker haben die am besten bekannten Methoden implementiert, sodass sichergestellt ist, dass alle Wartungsvorgänge in weniger als 0,01 % der Zeit des Datenbanklebenszyklus abgeschlossen werden. Mit dieser Architektur wird sichergestellt, dass Daten, die bereits committet wurden, niemals verloren gehen und dass Wartungsvorgänge ohne Beeinträchtigung der Workload ausgeführt werden. Es gibt keine Wartungsfenster oder Ausfallzeiten, aufgrund derer Sie die Workload während der Aktualisierung oder Wartung der Datenbank beenden müssen. Die in Azure SQL-Datenbank integrierte Hochverfügbarkeit garantiert, dass die Datenbank niemals zu einem Single Point of Failure in der Softwarearchitektur wird.
 
-## <a name="fault-tolerant-sql-databases"></a>Fehlertolerante SQL-Datenbanken
-Kunden kommt es mehr auf die Resilienz ihrer eigenen Datenbanken an und nicht auf die Resilienz des SQL-Datenbankdienst als Ganzes. Eine Betriebszeit von 99,99 % für einen Dienst ist bedeutungslos, wenn meine Datenbank zu den 0,01 % gehört, die ausgefallen sind. Jede Datenbank muss fehlertolerant sein, und die Fehlerminderung darf niemals zum Verlust von Transaktionen führen, die bereits committed wurden. 
+In Azure SQL werden zwei Hochverfügbarkeitsmodelle angewandt:
 
-Für Daten verwendet SQL-Datenbank sowohl lokalen Speicher (LS), der auf direkt zugeordneten Datenträgern/VHDs basiert, als auch Remotespeicher (RS), der auf Azure Storage Premium-Seitenblobs basiert. 
-- Lokaler Speicher wird in Datenbanken und Pools für elastische Datenbanken der Dienstebenen „Premium“ oder „Unternehmenskritisch“ (Vorschau) eingesetzt, die für geschäftskritische OLTP-Anwendungen mit hohen IOPS-Anforderungen ausgelegt sind. 
-- Remotespeicher wird für die Dienstebenen „Basic“, „Standard“ und „Universell“ verwendet, die für budgetorientierte Unternehmensworkloads ausgelegt sind, die Speicher- und Computeleistung für die unabhängige Skalierung benötigen. Sie verwenden ein einzelnes Seitenblob für Datenbank- und Protokolldateien sowie die integrierte Speicherreplikation und Failovermechanismen.
+- Modell des Typs „Standard/Universell“ mit einer Verfügbarkeit von 99,99 %, jedoch mit möglicher Leistungsbeeinträchtigung während Wartungsaktivitäten.
+- Modell des Typs „Premium/Geschäftskritisch“, ebenfalls mit einer Verfügbarkeit von 99.99 % und mit minimaler Leistungsbeeinträchtigung der Workload, selbst während Wartungsaktivitäten.
 
-Die Replikations-, Fehlererkennungs- und Failovermechanismen von SQL-Datenbank sind in beiden Fällen vollständig automatisiert und funktionieren ohne Benutzereingriffe. Diese Architektur stellt sicher, dass Daten, die bereits committed wurden, niemals verloren gehen und dass die Dauerhaftigkeit von Daten absoluten Vorrang hat.
+In Azure werden das zugrunde liegende Betriebssystem, Treiber und die SQL Server-Datenbank-Engine transparent mit minimaler Ausfallzeit für Endbenutzer aktualisiert und gepatcht. Azure SQL-Datenbank wird auf der neuesten stabilen Version der SQL Server-Datenbank-Engine und des Windows-Betriebssystems ausgeführt. Die meisten Benutzer bemerken nicht, dass die Upgrades kontinuierlich ausgeführt werden.
 
-Hauptvorteile:
-- Kunden profitieren von den Vorteilen replizierter Datenbanken, ohne dass sie komplizierte Hardware-, Software-, Betriebssystem- oder Virtualisierungsumgebungen konfigurieren oder verwalten müssen.
-- Die ACID-Eigenschaften relationaler Datenbanken werden vollständig vom System verwaltet.
-- Failover sind voll automatisiert und verhindern den Verlust von Daten, für die ein Commit ausgeführt wurde.
-- Das Verbindungsrouting zum primären Replikat wird dynamisch durch den Dienst verwaltet und kommt ohne Anwendungslogik aus.
-- Die hohe Redundanz aufgrund von Automatisierung verursacht keine zusätzlichen Kosten.
+## <a name="standard-availability"></a>Standard-Verfügbarkeit
 
-> [!NOTE]
-> Die beschriebenen Architektur für Hochverfügbarkeit kann ohne vorherige Ankündigung geändert werden. 
+Die Standard-Verfügbarkeit bezieht sich auf eine SLA von 99,99 %, die in den Tarifen „Standard“, „Basic“ und „Universell“ angewandt wird. Die Verfügbarkeit wird durch die Unterteilung in Compute- und Speicherebenen erreicht. Das Standard-Verfügbarkeitsmodell umfasst zwei Ebenen:
 
-## <a name="data-redundancy"></a>Datenredundanz
+- Eine zustandslose Computeebene, auf der der Prozess „sqlserver.exe“ ausgeführt wird und die nur temporäre und zwischengespeicherte Daten (z.B. Plancache Pufferpool, Spaltenspeicherpool) enthält. Dieser zustandslose SQL Server-Knoten wird von der Azure Service Fabric-Plattform gesteuert, die Prozesse initialisiert, die Integrität des Knotens steuert und bei Bedarf ein Failover zu einer anderen Stelle durchführt.
+- Eine zustandsbehaftete Datenebene mit Datenbankdateien (MDF- und LDF-Dateien), die auf Azure Storage Premium-Datenträgern gespeichert werden. Azure Storage garantiert die Vermeidung von Datenverlusten jeglicher Datensätze, die in Datensatzdateien platziert werden. Azure Storage verfügt über integrierte Datenverfügbarkeit und -redundanz, die sicherstellen, dass jeder Datensatz in einer Protokolldatei und jede Seite in einer Datendatei beibehalten wird, auch wenn der SQL Server-Prozess abstürzt.
 
-Die Hochverfügbarkeitslösung in SQL-Datenbank basiert auf [Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)-Technologie von SQL Server und sorgt dafür, dass diese mit minimalen Unterschieden sowohl für LS- als auch für RS-Datenbanken funktioniert. In LS-Konfigurationen soll die Always On-Verfügbarkeitsgruppen-Technologie Persistenz gewährleisten und in RS-Konfigurationen für Verfügbarkeit sorgen (niedrige RTO durch aktive Georeplikation). 
+Bei jeder Aktualisierung der Datenbank-Engine oder des Betriebssystems oder wenn im SQL Server-Prozess ein schwerwiegendes Problem erkannt wird, wird der zustandslose SQL Server-Prozess in Azure Service Fabric zu einem anderen zustandslosen Serverknoten verschoben. Daten in der Azure Storage-Ebene sind nicht betroffen, und Daten- und Protokolldateien werden an den neu initialisierten SQL Server-Prozess angefügt. Die erwartete Failoverzeit kann in Sekunden gemessen werden. Dieser Prozess garantiert eine Verfügbarkeit von 99,99 %, kann jedoch aufgrund der Übergangszeit und der Tatsache, dass der neue SQL Server-Knoten mit „kaltem“ Cache gestartet wird, Leistungsauswirkungen auf hohe Workloads haben.
 
-## <a name="local-storage-configuration"></a>Konfiguration mit lokalem Speicher
+## <a name="premium-availability"></a>Premium-Verfügbarkeit
 
-Bei dieser Konfiguration wird jede Datenbank vom Verwaltungsdienst innerhalb des Steuerrings online geschaltet. Ein primäres Replikat und mindestens zwei sekundäre Replikate (Quorumssatz) befinden sich in einem Mandantenring, der drei unabhängige physische Subsysteme innerhalb desselben Rechenzentrums umfasst. Alle Lese- und Schreibvorgänge werden vom Gateway (GW) an das primäre Replikat gesendet. Die Schreibvorgänge werden asynchron an die sekundären Replikate repliziert. SQL-Datenbank verwendet ein quorumbasiertes Commitschema, bei dem Daten auf das primäre sowie mindestens auf ein sekundäres Replikat geschrieben werden, bevor für die Transaktion ein Commit ausgeführt wird.
+Die Premium-Verfügbarkeit wird im Premium-Tarif von Azure SQL-Datenbank aktiviert und ist für hohe Workloads vorgesehen, bei denen keine Leistungsbeeinträchtigung aufgrund laufender Wartungsvorgänge toleriert werden kann.
 
-Das Failoversystem der [Service Fabric](../service-fabric/service-fabric-overview.md) erstellt Replikate bei Knotenausfällen automatisch neu und sorgt beim Ausfall und beim Beitritt von Knoten zum System dafür, dass der Quorumssatz ausgeglichen bleibt. Planmäßige Wartungen werden sorgfältig koordiniert, um zu verhindern, dass der Quorumssatz unter die minimale Replikatanzahl fällt (in der Regel zwei Replikate). Dieses Modell eignet sich besonders für Datenbanken der Dienstebenen „Premium“ und „Unternehmenskritisch“ (Vorschau), erfordert jedoch Redundanz sowohl der Compute- als auch der Speicherkomponenten und verursacht höhere Kosten.
+Im Premium-Modell werden in Azure SQL-Datenbank der Compute- und Speicherbereich auf dem einzelnen Knoten integriert. Der SQL Server-Datenbank-Engine-Prozess sowie die zugrunde liegenden MDF- und LDF-Dateien werden mit lokal angefügtem SSD-Speicher auf demselben Knoten platziert und bieten eine geringe Latenz für die Workload.
 
-## <a name="remote-storage-configuration"></a>Remotespeicherkonfiguration
-
-Für Remotespeicherkonfigurationen (Ebenen „Basic“, „Standard“ und „Universell“) wird genau eine Kopie im Remote Blob Storage vorgehalten. Dadurch werden die Funktionen des Speichersystems genutzt, um Dauerhaftigkeit, Redundanz und Bit-Rot-Erkennung zu gewährleisten. 
-
-Die Hochverfügbarkeitsarchitektur wird im folgenden Diagramm veranschaulicht:
- 
-![Hochverfügbarkeitsarchitektur](./media/sql-database-high-availability/high-availability-architecture.png)
-
-## <a name="failure-detection-and-recovery"></a>Fehlererkennung und Wiederherstellung 
-Ein weit verteiltes System benötigt ein sehr zuverlässiges Fehlererkennungssystem, das Fehler zuverlässig, schnell und so kundennah wie möglich ermitteln kann. Bei SQL-Datenbank basiert dieses System auf Azure Service Fabric. 
-
-Das primäre Replikat lässt sofort erkennen, ob und wann das primäre Replikat ausgefallen ist und der Betrieb nicht fortgesetzt werden kann, da alle Lese- und Schreibvorgänge zuerst auf dem primären Replikat stattfinden. Der Prozess, bei dem ein sekundäres Replikat auf den Status eines primären Replikats höher gestuft wird, hat ein RTO (Recovery Time Objective) von 30 Sekunden und ein RPO (Recovery Point Objective) von 0 Sekunden. Um die Auswirkungen des RTOs von 30 Sekunden zu minimieren, empfiehlt es sich, mehrmals erneute Verbindungsversuche mit kürzeren Wartezeiten für fehlgeschlagene Verbindungsversuche auszuführen.
-
-Wenn ein sekundäres Replikat ausfällt, fällt die Datenbank auf einen minimalen Quorumssatz ohne Ersatzreplikate zurück. Service Fabric initiiert die Neukonfiguration auf ähnliche Weise wie den Prozess, der auf einen Ausfall des primären Replikats folgt: Nachdem kurz gewartet und entschieden wurde, ob es sich um einen dauerhaften Fehler handelt, wird ein weiteres sekundäres Replikat erstellt. Bei vorübergehenden Dienstausfällen, z. B. bei einem Betriebssystemfehler oder einem Upgrade, wird nicht sofort ein neues Replikat erstellt, um dem fehlerhaften Knoten stattdessen einen Neustart zu ermöglichen. 
-
-Für Remotespeicherkonfigurationen verwendet SQL-Datenbank Always On-Funktionen, um für Datenbanken während Upgrades ein Failover auszuführen. Dazu wird im Rahmen des planmäßigen Upgrades eine neue SQL-Instanz im Voraus bereitgestellt, um die Datenbankdatei anzufügen und vom Remotespeicher wiederherzustellen. Bei Prozessabstürzen oder anderen ungeplanten Ereignissen wird die Instanzverfügbarkeit von Windows Fabric verwaltet. Dabei wird in einem letzten Wiederherstellungsschritt die Remotedatenbankdatei angefügt.
+Hochverfügbarkeit wird mithilfe von standardmäßigen [AlwaysOn-Verfügbarkeitsgruppen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) implementiert. Jede Datenbank ist ein Cluster von Datenbankknoten mit einer primären Datenbank, die für die Kundenworkload zugänglich ist, und einigen sekundären Prozessen, die Kopien der Daten enthalten. Der primäre Knoten überträgt die Änderungen kontinuierlich zu sekundären Knoten, um sicherzustellen, dass die Daten auf sekundären Replikaten verfügbar sind, wenn der primäre Knoten aus bestimmten Gründen ausfällt. Ein Failover wird von der SQL Server-Datenbank-Engine verarbeitet: Ein sekundäres Replikat wird zum primären Knoten, und ein neues sekundäres Replikat wird erstellt, um sicherzustellen, dass ausreichend Knoten im Cluster vorhanden sind. Die Workload wird automatisch zum neuen primären Knoten umgeleitet. Die Failoverzeit wird in Millisekunden gemessen. Die neue primäre Instanz ist sofort einsatzbereit, sodass Anforderungen weiterhin bearbeitet werden können.
 
 ## <a name="zone-redundant-configuration-preview"></a>Zonenredundante Konfiguration (Vorschau)
 
@@ -100,7 +74,7 @@ Wenn horizontale Leseskalierung deaktiviert ist, oder Sie die ReadScale-Eigensch
 Das Feature der horizontalen Leseskalierung unterstützt Konsistenz auf Sitzungsebene. Wenn die schreibgeschützte Sitzung nach einem Verbindungsfehler, der durch die Nichtverfügbarkeit eines Replikats verursacht wurde, die Verbindung wiederherstellt, wird sie möglicherweise an ein anderes Replikat weitergeleitet. Obwohl dieser Fall unwahrscheinlich ist, kann dies dazu führen, dass ein veraltetes Dataset verarbeitet wird. Gleiches gilt in diesem Fall: Wenn eine Anwendung Daten mithilfe einer Sitzung mit Lese-/Schreibzugriff schreibt und sie mithilfe einer schreibgeschützten Sitzung sofort liest, ist es möglich, dass die neuen Daten nicht sofort sichtbar sind.
 
 ## <a name="conclusion"></a>Zusammenfassung
-Azure SQL-Datenbank ist nahtlos in die Azure-Plattform integriert und bei der Fehlererkennung und Wiederherstellung in hohem Maße von Service Fabric, in Verbindung mit dem Datenschutz von Azure Storage Blobs und für höhere Fehlertoleranz von Verfügbarkeitszonen abhängig. Gleichzeitig nutzt Azure SQL-Datenbank in vollem Umfang die Always On-Technologie des SQL Server-Standardprodukts für Replikation und Failover. Dank der Kombination dieser Technologien können Anwendungen die Vorteile eines gemischten Speichermodells voll ausschöpfen und sehr anspruchsvolle SLAs unterstützen. 
+Azure SQL-Datenbank ist nahtlos in die Azure-Plattform integriert und bei der Fehlererkennung und Wiederherstellung in hohem Maße von Service Fabric, in Verbindung mit dem Datenschutz von Azure Storage Blobs und für höhere Fehlertoleranz von Verfügbarkeitszonen abhängig. Gleichzeitig nutzt Azure SQL-Datenbank in vollem Umfang die Technologie der AlwaysOn-Verfügbarkeitsgruppen des SQL Server-Standardprodukts für Replikation und Failover. Dank der Kombination dieser Technologien können Anwendungen die Vorteile eines gemischten Speichermodells voll ausschöpfen und sehr anspruchsvolle SLAs unterstützen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

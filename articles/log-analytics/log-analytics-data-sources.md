@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/19/2018
+ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 5201d02b4f70f964f39b4fe135e4715732b9741a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e0366e6a2403f7cea83efde35c7b3b42565a1cf2
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792547"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062778"
 ---
 # <a name="data-sources-in-log-analytics"></a>Datenquellen in Log Analytics
 Log Analytics sammelt Daten aus Ihren verbundenen Quellen und speichert diese in Ihrem Log Analytics-Arbeitsbereich.  Welche Daten gesammelt werden, wird durch die von Ihnen konfigurierten Datenquellen definiert.  Daten in Log Analytics werden als Datensatzgruppe gespeichert.  Jede Datenquelle erstellt Datensätze eines bestimmten Typs, von denen jeder über einen eigenen Satz von Eigenschaften verfügt.
@@ -30,14 +30,14 @@ Datenquellen unterscheiden sich von [Verwaltungslösungen](log-analytics-add-sol
 
 
 ## <a name="summary-of-data-sources"></a>Übersicht über Datenquellen
-In der folgenden Tabelle werden die zurzeit in Log Analytics verfügbaren Datenquellen aufgeführt.  In den Links zu den Datenquellen finden Sie weitere Informationen zur jeweiligen Datenquelle.   Dort finden Sie außerdem Informationen zur jeweiligen Methode und Häufigkeit der Datensammlung in Log Analytics.  Sie können anhand der Informationen in diesem Artikel die verschiedenen verfügbaren Lösungen ermitteln sowie den Datenfluss und die Verbindungsanforderungen für unterschiedliche Verwaltungslösungen nachvollziehen. Erläuterungen zu den einzelnen Spalten finden Sie unter [Data collection details for management solutions in Azure](../monitoring/monitoring-solutions-inventory.md) (Ausführliche Informationen zu Datensammlungen für Verwaltungslösungen in Azure).
+In der folgenden Tabelle werden die zurzeit in Log Analytics verfügbaren Datenquellen aufgeführt.  In den Links zu den Datenquellen finden Sie weitere Informationen zur jeweiligen Datenquelle.   Außerdem finden Sie hier Informationen zur jeweiligen Methode und Häufigkeit der Datensammlung in Log Analytics.  Sie können anhand der Informationen in diesem Artikel die verschiedenen verfügbaren Lösungen ermitteln sowie den Datenfluss und die Verbindungsanforderungen für unterschiedliche Verwaltungslösungen nachvollziehen. Erläuterungen zu den einzelnen Spalten finden Sie unter [Data collection details for management solutions in Azure](../monitoring/monitoring-solutions-inventory.md) (Ausführliche Informationen zu Datensammlungen für Verwaltungslösungen in Azure).
 
 
 | Datenquelle | Plattform | Microsoft Monitoring Agent | Operations Manager-Agent | Azure-Speicher | Operations Manager erforderlich? | Daten vom Operations Manager-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Benutzerdefinierte Protokolle](log-analytics-data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | Bei der Ankunft |
 | [Benutzerdefinierte Protokolle](log-analytics-data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | Bei der Ankunft |
-| [IIS-Protokolle](log-analytics-data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |5 Minuten |
+| [IIS-Protokolle](log-analytics-data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |richtet sich nach Einstellung „Protokolldateirollover“ |
 | [Leistungsindikatoren](log-analytics-data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |Gemäß Zeitplan, mindestens 10 Sekunden |
 | [Leistungsindikatoren](log-analytics-data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |Gemäß Zeitplan, mindestens 10 Sekunden |
 | [Syslog](log-analytics-data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |Von Azure-Speicher: 10 Minuten; von Agent: bei Ankunft |
