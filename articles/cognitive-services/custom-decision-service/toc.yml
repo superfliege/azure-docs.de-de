@@ -31,13 +31,15 @@
       href: custom-decision-service-log-downloader-reference.md
 - name: angeben
   items:
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/'
     - name: Preise (kostenlos)
       href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/custom-decision-service/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/598138-custom-decision-service'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
-    - name: Knowledge Base
+    - name: Wissensdatenbank
       href: 'https://cognitive.uservoice.com/knowledgebase'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

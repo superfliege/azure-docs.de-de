@@ -5,7 +5,6 @@
 ### Storefronts  
 #### [Vergleich von AppSource und Marketplace](./comparing-appsource-azure-marketplace.md)  
 #### [Steigern des Wachstums mit AppSource](./grow-your-business-with-appsource.md) 
-#### [Bevorzugte Lösungen](./preferred-solutions.md)
 ##### [Erstellen Ihrer Angebotsseite](./build-your-landing-page.md)  
 ##### [Aktivieren des gemeinsamen Zugriffs auf Leads](./enable-lead-sharing.md)  
 ##### [GTM-Vorteile in Marketplace](./gtm-benefits.md)  
@@ -19,17 +18,17 @@
 ### Veröffentlichen in den Storefronts in Marketplace  
 #### [Bestimmen des Listingtyps für Ihre Lösung](./determine-your-listing-type.md)  
 #### [Herausgeber in den Storefronts in Marketplace werden](./become-publisher.md)  
-#### [Anforderungen nach Listingtyp](./listing-type-requirements.md)  
+#### [Anforderungen nach Listingtyp](./listing-type-requirements.md) 
+#### [Bevorzugte Lösungen](./preferred-solutions.md) 
 
 ### Veröffentlichungsprüflisten  
 #### [Veröffentlichungsprüfliste für AppSource](./publishing-checklist-appsource.md)  
 #### [Veröffentlichungsprüfliste für Azure Marketplace](./publishing-checklist-azure-marketplace.md)  
 
 ### Support  
-#### [Support für AppSource](./support-appsource.md)  
-#### [Support für Azure Marketplace](./support-azure-marketplace.md)  
+#### [Support für Azure Marketplace und AppSource](./support-azure-marketplace.md)  
 
-### Anleitungen  
+### Veröffentlichungsleitfäden  
 #### [Azure Marketplace-Beratungsdienst](consulting-services.md)  
 #### [Technischer Veröffentlichungsleitfaden für Azure Marketplace-SaaS-Apps](marketplace-saas-applications-technical-publishing-guide.md) 
 

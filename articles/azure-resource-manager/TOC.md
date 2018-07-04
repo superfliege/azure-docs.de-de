@@ -2,15 +2,17 @@
 
 # Übersicht
 ## [Was ist Resource Manager?](resource-group-overview.md)
-## [Ressourcenanbieter und -typen](resource-manager-supported-services.md)
 ## [Resource Manager-Bereitstellung und klassische Bereitstellung](resource-manager-deployment-model.md)
-## [Abonnementgovernance](/azure/architecture/cloud-adoption-guide/subscription-governance)
-## [Organisieren von Ressourcen mit Verwaltungsgruppen](management-groups-overview.md)
 
 # Erste Schritte
 ## [Erstellen und Bereitstellen der Vorlage](resource-manager-create-first-template.md)
 ## [VS-Codeerweiterung für Vorlagen](resource-manager-vscode-extension.md)
 ## [Visual Studio mit Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
+
+# Konzepte
+## [Ressourcenanbieter und -typen](resource-manager-supported-services.md)
+## [Verwaltungsgruppen](management-groups-overview.md)
+## [Abonnementgovernance](/azure/architecture/cloud-adoption-guide/subscription-governance?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 
 # Anleitung
 ## Erstellen von Vorlagen

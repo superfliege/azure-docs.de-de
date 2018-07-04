@@ -118,6 +118,8 @@
       href: glossary.md
 - name: angeben
   items:
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Preise

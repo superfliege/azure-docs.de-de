@@ -1,6 +1,6 @@
 ---
-title: Häufig gestellte Fragen zu Azure-Datenverkehrsanalysen | Microsoft-Dokumentation
-description: Hier finden Sie Antworten auf einige der am häufigsten gestellten Fragen zu Datenverkehrsanalysen.
+title: Häufig gestellte Fragen zu Azure Traffic Analytics | Microsoft-Dokumentation
+description: Hier finden Sie Antworten auf einige der am häufigsten gestellten Fragen zu Traffic Analytics.
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -13,152 +13,259 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 99b1e39b764f27d4638e8bb0f0d210043fde8643
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: a4b87d92751c84d96bc70915d16adae7943c145e
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236398"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062876"
 ---
-# <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Datenverkehrsanalysen
+# <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Traffic Analytics
 
-1.  Welche Voraussetzungen müssen zur Verwendung von Datenverkehrsanalysen erfüllt sein?
+In diesem Artikel werden an zentraler Stelle viele der am häufigsten gestellten Fragen zu Traffic Analytics in Azure Network Watcher beantwortet.
 
-    Für Traffic Analytics gelten die folgenden Voraussetzungen:
+## <a name="what-are-the-prerequisites-to-use-traffic-analytics"></a>Welche Voraussetzungen gelten für die Verwendung von Traffic Analytics?
 
-    - Ein Abonnement mit aktiviertem Network Watcher
-    - Für die zu überwachenden Netzwerksicherheitsgruppen aktivierte NSG-Datenflussprotokolle
-    - Ein Azure Storage-Konto zum Speichern von unformatierte Datenflussprotokollen
-    - Ein Log Analytics (OMS)-Arbeitsbereich mit Lese- und Schreibzugriff
-    - Benutzern muss eine der folgenden Rollen auf Abonnementebene zugewiesen sein:
-    
-            All permissions *
-            All Read permissions */read
-            All network permissions Microsoft.Network/*
-            All network read permissions Microsoft.Network/*/read
+Für Traffic Analytics gelten folgende Voraussetzungen:
 
-    Alternativ müssen Benutzern alle der folgenden Rollen auf Abonnementebene zugewiesen sein: 
+- Ein Abonnement mit aktiviertem Network Watcher
+- Für die zu überwachenden Netzwerksicherheitsgruppen (NSG) aktivierte NSG-Datenflussprotokolle
+- Ein Azure Storage-Konto zum Speichern unformatierter Datenflussprotokolle
+- Ein Azure Log Analytics-Arbeitsbereich mit Lese- und Schreibzugriff
 
-        - Microsoft.Network/applicationGateways/read
-        - Microsoft.Network/connections/read
-        - Microsoft.Network/loadBalancers/read 
-        - Microsoft.Network/localNetworkGateways/read 
-        - Microsoft.Network/networkInterfaces/read 
-        - Microsoft.Network/networkSecurityGroups/read 
-        - Microsoft.Network/publicIPAddresses/read
-        - Microsoft.Network/routeTables/read
-        - Microsoft.Network/virtualNetworkGateways/read 
-        - Microsoft.Network/virtualNetworks/read
+Ihr Konto muss eine der folgenden Voraussetzungen erfüllen, um Traffic Analytics aktivieren zu können:
+
+- Ihrem Konto muss eine der folgenden Rollen auf Abonnementebene zugeordnet sein: Kontoadministrator, Dienstadministrator oder Co-Administrator.
+- Ihr Konto muss eine der folgenden Rollen für die rollenbasierte Zugriffssteuerung (RBAC) im Abonnementumfang haben: Besitzer, Mitwirkender, Leser oder Netzwerkmitwirkender.
+- Wenn Ihr Konto nicht einer der zuvor genannten Rollen zugewiesen ist, müssen Sie es einer benutzerdefinierten Rolle zuweisen, der auf Abonnementebene die folgenden Aktionen zugewiesen sind.
+            
+    - Microsoft.Network/applicationGateways/read
+    - Microsoft.Network/connections/read
+    - Microsoft.Network/loadBalancers/read 
+    - Microsoft.Network/localNetworkGateways/read 
+    - Microsoft.Network/networkInterfaces/read 
+    - Microsoft.Network/networkSecurityGroups/read 
+    - Microsoft.Network/publicIPAddresses/read
+    - Microsoft.Network/routeTables/read
+    - Microsoft.Network/virtualNetworkGateways/read 
+    - Microsoft.Network/virtualNetworks/read
         
-Um die einem Benutzer für ein Abonnement zugewiesenen Rollen zu überprüfen, führen Sie die folgenden Schritte aus:
+So überprüfen Sie die einem Benutzer für ein Abonnement zugewiesenen Rollen
 
-Melden Sie sich mit „Login-AzureRmAccount“ bei Azure an. 
+1. Melden Sie sich mit **Login-AzureRmAccount** bei Azure an. 
 
-Wählen Sie mit „Select-AzureRmSubscription“ das richtige Abonnement aus. 
+2. Wählen Sie mit **Select-AzureRmSubscription** das gewünschte Abonnement aus. 
 
-Listen Sie nun mit „Get-AzureRmRoleAssignment -SignInName <user email> -IncludeClassicAdministrators“ alle Rollen auf, die einem bestimmten Benutzer zugewiesen sind. 
+3. Listen Sie mit **Get-AzureRmRoleAssignment -SignInName [E-Mail-Adresse des Benutzers] -IncludeClassicAdministrators** alle Rollen auf, die einem bestimmten Benutzer zugewiesen sind. 
 
-Falls nach dem Ausführen der Befehle keine Ausgabe angezeigt wird, wenden Sie sich bitte an den betreffenden Abonnementadministrator, um den zur Ausführung der Befehle erforderlichen Zugriff zu erhalten.  
-
-Weitere Informationen finden Sie unter [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell).
+Falls keine Ausgabe erfolgt, wenden Sie sich an den zuständigen Abonnementadministrator, um den zur Ausführung der Befehle erforderlichen Zugriff zu erhalten. Weitere Informationen finden Sie unter [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell).
 
 
-2.  In welchen Azure-Regionen sind Datenverkehrsanalysen verfügbar?
+## <a name="in-which-azure-regions-are-traffic-analytics-available"></a>In welchen Azure-Regionen ist Traffic Analytics verfügbar?
 
-    Während der Vorschauphase können Sie Datenverkehrsanalysen für Netzwerksicherheitsgruppen in folgenden **unterstützten Regionen** verwenden: „USA, Westen-Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Norden-Mitte“, „USA, Süden-Mitte“, „USA, Mitte“, „USA, Westen“, „USA, Westen 2“, „Europa, Westen“, „Europa, Norden“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“, „Australien, Osten“, „Australien, Südosten“. Der Log Analytics-Arbeitsbereich muss in einer der folgenden Regionen vorhanden sein: USA, Westen-Mitte; USA, Osten; Europa, Westen; Australien, Südosten; Vereinigtes Königreich, Süden.
+Sie können Traffic Analytics für Netzwerksicherheitsgruppen in einer der folgenden Regionen verwenden: „USA, Westen-Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Norden-Mitte“, „USA, Süden-Mitte“, „USA, Mitte“, „USA, Westen“, „USA, Westen 2“, „Europa, Westen“, „Europa, Norden“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“, „Australien, Osten“, „Australien, Südosten“ und „Asien, Südosten“. Der Log Analytics-Arbeitsbereich muss sich in einer der folgenden Regionen befinden: „USA, Westen-Mitte“; „USA, Osten“; „Europa, Westen“; „Vereinigtes Königreich, Süden“; „Australien, Südosten“ oder „Asien, Südosten“.
 
-3.  Können sich die Netzwerksicherheitsgruppen, für die ich Datenflussprotokolle aktiviere, in anderen Regionen befinden als mein OMS-Arbeitsbereich?
+## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>Können sich die Netzwerksicherheitsgruppen, für die ich Datenflussprotokolle aktiviere, in anderen Regionen befinden als mein Arbeitsbereich?
 
-    Ja
+Ja, diese Netzwerksicherheitsgruppen können sich in anderen Regionen als Ihr Log Analytics-Arbeitsbereich befinden.
 
-4.  Können mehrere Netzwerksicherheitsgruppen in einem einzigen Arbeitsbereich konfiguriert werden?
+## <a name="can-multiple-nsgs-be-configured-within-a-single-workspace"></a>Können mehrere Netzwerksicherheitsgruppen in einem einzigen Arbeitsbereich konfiguriert werden?
 
-    Ja
+Ja.
 
-5.  Kann ich einen bestehenden OMS-Arbeitsbereich verwenden?
+## <a name="can-i-use-an-existing-workspace"></a>Kann ich einen bestehenden Arbeitsbereich verwenden?
 
-    Ja, wenn Sie einen bestehenden Arbeitsbereich auswählen, vergewissern Sie sich, dass dieser zur neuen Abfragesprache migriert wurde. Wenn Sie kein Upgrade des Arbeitsbereichs ausführen möchten, müssen Sie einen neuen Arbeitsbereich anlegen. Weitere Informationen über die neue Abfragesprache finden Sie unter [Upgrade von Azure Log Analytics auf die neue Protokollsuche](../log-analytics/log-analytics-log-search-upgrade.md).
+Ja. Wenn Sie einen bestehenden Arbeitsbereich auswählen, vergewissern Sie sich, dass dieser in die neue Abfragesprache geändert wurde. Wenn Sie kein Upgrade des Arbeitsbereichs ausführen möchten, müssen Sie einen neuen Arbeitsbereich anlegen. Weitere Informationen über die neue Abfragesprache finden Sie unter [Upgrade von Azure Log Analytics auf die neue Protokollsuche](../log-analytics/log-analytics-log-search-upgrade.md).
 
-6.  Kann mein Azure Storage-Konto zu einem Abonnement und mein OMS-Arbeitsbereich zu einem anderen Abonnement gehören?
+## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-operations-management-suite-workspace-be-in-a-different-subscription"></a>Kann mein Azure Storage-Konto zu einem Abonnement und mein Operations Management Suite-Arbeitsbereich zu einem anderen Abonnement gehören?
 
-    Ja
+Ja, Ihr Azure Storage-Konto kann zu einem Abonnement und Ihr Operations Management Suite-Arbeitsbereich zu einem anderen Abonnement gehören.
 
-7.  Kann ich unformatierte Protokolle in unterschiedlichen Storage-Accounts in verschiedenen Abonnements speichern?
+## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>Kann ich unformatierte Protokolle in einem anderen Abonnement speichern?
 
-    Nein. Sie können unformatierte Protokolle in jedem beliebigen Storage-Konto speichern, in dem eine Netzwerksicherheitsgruppe für Datenflussprotokolle aktiviert ist, jedoch müssen sich sowohl das Storage-Konto als auch die unformatierten Protokolle im selben Abonnement und in derselben Region befinden.
+Nein. Sie können unformatierte Protokolle in jedem Speicherkonto speichern, in dem eine NSG für Datenflussprotokolle aktiviert ist. Allerdings müssen sich sowohl das Speicherkonto als auch die unformatierten Protokolle im selben Abonnement und in derselben Region befinden.
 
-8.  Wie kann ich den Fehler „Nicht gefunden“ beheben, wenn mir dieser beim Konfigurieren einer Netzwerksicherheitsgruppe für Datenverkehrsanalysen angezeigt wird?
+## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>Was ist, wenn ich eine NSG aufgrund der Fehlermeldung „Nicht gefunden“ nicht für Traffic Analytics konfigurieren kann?
 
-    Wählen Sie eine unterstützte Region aus, die in Frage 2 aufgelistet ist. Wenn Sie eine nicht unterstützte Region auswählen, erhalten Sie die Fehlermeldung „Nicht gefunden“.
+Wählen Sie eine unterstützte Region aus. Wenn Sie eine nicht unterstützte Region auswählen, erhalten Sie die Fehlermeldung „Nicht gefunden“. Die unterstützten Regionen sind weiter oben in diesem Artikel aufgeführt.
 
-9.  Unter den NSG-Datenflussprotokollen wird der NSG-Status „Fehler beim Laden“ angezeigt. Was kann ich als Nächstes tun?
+## <a name="what-if-i-am-getting-the-status-failed-to-load-under-the-nsg-flow-logs-page"></a>Was ist, wenn ich den Status „Fehler beim Laden“ unter der Seite mit den NSG-Datenflussprotokollen erhalte?
 
-    Der Microsoft.Insights-Anbieter muss registriert sein, damit die Datenflussprotokollierung ordnungsgemäß funktioniert. Wenn Sie sich nicht sicher sind, ob der Microsoft.Insights-Anbieter für Ihr Abonnement registriert ist oder nicht, ersetzen Sie *xxxxx-xxxx-xxxxx-xxxxxxxx-xxxxxx-xxxxxx* im folgenden Befehl und führen dann die folgenden Befehle über PowerShell aus:
+Der Microsoft.Insights-Anbieter muss registriert sein, damit die Datenflussprotokollierung ordnungsgemäß funktioniert. Wenn Sie sich nicht sicher sind, ob der Anbieter „Microsoft.Insights“ für Ihr Abonnement registriert ist, ersetzen Sie *xxxxx-xxxxx-xxxxxx-xxxx* im folgenden Befehl und führen dann die folgenden Befehle über PowerShell aus:
 
-    ```powershell-interactive
-    **Select-AzureRmSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
-    **Register-AzureRmResourceProvider** -ProviderNamespace Microsoft.Insights
-    ```
+```powershell-interactive
+**Select-AzureRmSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
+**Register-AzureRmResourceProvider** -ProviderNamespace Microsoft.Insights
+```
 
-10. Ich habe die Lösung konfiguriert. Warum sehe ich davon nichts im Dashboard?
+## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>Ich habe die Lösung konfiguriert. Warum sehe ich davon nichts im Dashboard?
 
-    Es kann bis zu 30 Minuten dauern, bis das aktualisierte Dashboard zum ersten Mal erscheint. Die Lösung muss zunächst genügend Daten aggregieren, um aussagekräftige Erkenntnisse zu gewinnen, bevor Berichte generiert werden. 
+Es kann bis zu 30 Minuten dauern, bis es zum ersten Mal angezeigt wird. Die Lösung muss zunächst genügend Daten aggregieren, um aussagekräftige Erkenntnisse zu gewinnen. Erst dann werden Berichte generiert. 
 
-11.  Ich erhalte die folgende Meldung: „Es wurden für den ausgewählten Zeitraum keine Daten in diesem Arbeitsbereich gefunden. Ändern Sie den Zeitraum, oder wählen Sie einen anderen Arbeitsbereich aus.“ Wie kann ich das Problem lösen?
+## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>Was ist, wenn ich die folgende Meldung erhalte: „Es wurden für den ausgewählten Zeitraum keine Daten in diesem Arbeitsbereich gefunden. Ändern Sie das Zeitintervall, oder wählen Sie einen anderen Arbeitsbereich aus.“?
 
-        Versuchen Sie Folgendes:
-        - Versuchen Sie, den Zeitraum in der oberen Leiste zu ändern.
-        - Wählen Sie in der oberen Leiste einen anderen Log Analytics-Arbeitsbereich aus.
-        - Versuchen Sie, nach 30 Minuten auf Traffic Analytics zuzugreifen, wenn es kürzlich aktiviert wurde.
+Versuchen Sie Folgendes:
+- Ändern Sie auf der oberen Leiste den Zeitraum.
+- Wählen Sie auf der oberen Leiste einen anderen Log Analytics-Arbeitsbereich aus.
+- Versuchen Sie, nach 30 Minuten auf Traffic Analytics zuzugreifen, wenn es vor Kurzem aktiviert wurde.
     
-        Wenn das Problem weiterhin auftritt, wenden Sie sich an das [User Voice-Forum](https://feedback.azure.com/forums/217313-networking?category_id=195844).
+Wenn das Problem bestehen bleibt, wenden Sie sich an das [User Voice-Forum](https://feedback.azure.com/forums/217313-networking?category_id=195844).
 
-12.  Ich erhalte die folgende Meldung: „1) Ihre NSG-Datenflussprotokolle werden zum ersten Mal analysiert. Dieser Vorgang kann 20 bis 30 Minuten in Anspruch nehmen. Schauen Sie später wieder vorbei. 2) Wenn der oben genannte Schritt nicht funktioniert und sich Ihr Arbeitsbereich unter der SKU „Free“ befindet, überprüfen Sie hier die Nutzung Ihres Arbeitsbereichs, um das Kontingent zu prüfen, oder suchen Sie in den häufig gestellten Fragen nach weiteren Informationen.“ Wie behebe ich dieses Problem?
+## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>Was ist, wenn ich die folgende Meldung erhalte: „Ihre NSG-Datenflussprotokolle werden zum ersten Mal analysiert. Dieser Vorgang kann 20 bis 30 Minuten in Anspruch nehmen. Schauen Sie später wieder vorbei. 2) Wenn der oben genannte Schritt nicht funktioniert und sich Ihr Arbeitsbereich unter der SKU „Free“ befindet, überprüfen Sie hier die Nutzung Ihres Arbeitsbereichs, um das Kontingent zu prüfen, oder suchen Sie in den häufig gestellten Fragen nach weiteren Informationen.“?
 
-        Es gibt folgende Gründe für diese Fehlermeldung:
-        - Datenverkehrsanalysen wurden möglicherweise erst kürzlich aktiviert und haben noch keine ausreichende Datenmenge aggregiert, um aussagekräftige Erkenntnisse zu gewinnen.
-        - Ihr OMS-Arbeitsbereich befindet sich unter der SKU „Free“ und hat die Kontingentgrenzen überschritten. In diesem Fall kann es erforderlich sein, einen Arbeitsbereich in einer SKU mit größerer Kapazität zu verwenden.
+Ggf. wird diese Meldung auf folgenden Gründen angezeigt:
+- Traffic Analytics wurde vor Kurzem aktiviert, und es wurde ggf. noch keine ausreichende Datenmenge aggregiert, um aussagekräftige Erkenntnisse zu gewinnen.
+- Sie verwenden die kostenlose Version des Operations Management Suite-Arbeitsbereichs, dessen Kontingentgrenzwerte überschritten wurden. Sie benötigen möglicherweise einen Arbeitsbereich mit größerer Kapazität.
     
-        Wenn das Problem weiterhin auftritt, wenden Sie sich an das [User Voice-Forum](https://feedback.azure.com/forums/217313-networking?category_id=195844).
+Wenn das Problem bestehen bleibt, wenden Sie sich an das [User Voice-Forum](https://feedback.azure.com/forums/217313-networking?category_id=195844).
     
-13.  Ich erhalte die folgende Meldung: „Es sieht so aus, als wären Ressourcendaten (Topologie), aber keine Datenflussinformationen verfügbar. Klicken Sie in der Zwischenzeit hier, um Ressourcendaten anzuzeigen, und lesen Sie die häufig gestellten Fragen für weitere Informationen.“ Wie behebe ich das Problem?
+## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>Was ist, wenn ich die folgende Meldung erhalte: „Es sieht so aus, als wären Ressourcendaten (Topologie), aber keine Datenflussinformationen verfügbar. Klicken Sie in der Zwischenzeit hier, um Ressourcendaten anzuzeigen, und lesen Sie die häufig gestellten Fragen, um weitere Informationen zu erhalten.“?
 
-        Sie sehen die Ressourceninformationen im Dashboard, aber es gibt keine datenflussbezogenen Statistiken. Es dürfen keine Daten, da keine Kommunikationsdatenflüsse zwischen den Ressourcen stattfindet. Warten Sie 60 Minuten, und überprüfen Sie dann den Status erneut. Wenn Sie sicher sind, dass es Kommunikationsdatenflüsse zwischen Ressourcen gibt, dann wenden Sie sich an das [User Voice-Forum](https://feedback.azure.com/forums/217313-networking?category_id=195844).
+Sie sehen die Ressourceninformationen im Dashboard, aber es gibt keine datenflussbezogenen Statistiken. Es sind ggf. keine Daten vorhanden, da keine Kommunikation zwischen den Ressourcen erfolgt. Warten Sie 60 Minuten, und überprüfen Sie dann den Status erneut. Wenn das Problem bestehen bleibt und Sie sicher sind, dass es Kommunikationsdatenflüsse zwischen Ressourcen gibt, wenden Sie sich an das [User Voice-Forum](https://feedback.azure.com/forums/217313-networking?category_id=195844).
 
-14. Kann ich Datenverkehrsanalysen mithilfe von PowerShell oder einer Azure Resource Manager-Vorlage konfigurieren?
+## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>Kann ich Traffic Analytics mithilfe von PowerShell oder einer Azure Resource Manager-Vorlage bzw. einem ARM-Client konfigurieren?
 
-Ja, die Konfiguration von Datenverkehrsanalysen mithilfe von Windows PowerShell wird ab Version 6.2.1 oder höher unterstützt. Unterstützung für Azure Resource Manager-Vorlagen ist zurzeit jedoch nicht verfügbar. Weitere Informationen dazu, wie Sie mit PowerShell Datenverkehrsanalysen konfigurieren können, finden Sie in der folgenden [Dokumentation](https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog?view=azurermps-6.2.0). 
+Sie können Traffic Analytics mithilfe von Windows PowerShell ab Version 6.2.1 konfigurieren. Informationen zum Konfigurieren der Datenflussprotokollierung und von Traffic Analytics für eine bestimmte Netzwerksicherheitsgruppe (NSG) mithilfe des Cmdlets „Set“ finden Sie unter [Set-AzureRmNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog?view=azurermps-6.3.0). Informationen zum Abrufen des Status der Datenflussprotokollierung und von Traffic Analytics für eine bestimmte NSG finden Sie unter [Get-AzureRmNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkwatcherflowlogstatus?view=azurermps-6.3.0).
 
-15.  Was kosten Datenverkehrsanalysen?
+Derzeit können Sie keine Azure Resource Manager-Vorlage verwenden, um Traffic Analytics zu konfigurieren.
 
-Entscheidend sind die Flussprotokolldaten, die vom Dienst verarbeitet werden, und der Speicherplatz der resultierenden verbesserten Protokolle in einem Log Analytics-Arbeitsbereich. Um weitere Informationen zu Preisen zu erhalten, [klicken Sie hier](https://azure.microsoft.com/en-us/pricing/details/network-watcher/). 
+Informationen zur Konfiguration von Traffic Analytics mit einem Azure Resource Manager-Client finden Sie in den folgenden Beispielen.
 
-16.  Wie kann ich mit einer Tastatur in der Kartenansicht navigieren?
+**Beispiel für das Cmdlet „Set“:**
+```
+#Requestbody parameters
+$TAtargetUri ="/subscriptions/<NSG subscription id>/resourceGroups/<NSG resource group name>/providers/Microsoft.Network/networkSecurityGroups/<name of NSG>"
+$TAstorageId = "/subscriptions/<storage subscription id>/resourcegroups/<storage resource group name> /providers/microsoft.storage/storageaccounts/<storage account name>"
+$networkWatcherResourceGroupName = "<network watcher resource group name>"
+$networkWatcherName = "<network watcher name>"
 
-        Die Seite mit der Kartenansicht enthält zwei Hauptbereiche:
-    
-        - **Banner**: Das Banner im oberen Bereich der Kartenansicht bietet die Möglichkeit, Filter für die Datenverkehrverteilung über Schaltflächen auszuwählen. Hierzu gehören: Bereitstellung/Keine Bereitstellung/Aktiv/Inaktiv/Datenverkehrsanalyse aktiviert/Datenverkehrsanalyse nicht aktiviert/Datenverkehr aus/Gutartiger/Bösartiger/Zulässiger bösartiger Datenverkehr und Legendeninformationen. Bei Auswahl der definierten Schaltflächen wird der entsprechende Filter auf die Karte angewendet. Wenn ein Benutzer unter dem Banner z.B. den Filter „Aktiv“ wählt, dann werden die „aktiven“ Rechenzentren Ihrer Bereitstellung in der Karte hervorgehoben.
-        - **Karte**: Der Kartenbereich befindet sich unter dem Banner und zeigt die Verteilung des Datenverkehrs für Azure-Rechenzentren und Länder.
-    
-        **Tastaturnavigation im Banner**
-    
-        - Standardmäßig ist auf der Kartenseite für das Banner der Filter „Azure-Rechenzentren“ ausgewählt.
-        - Um zu einer anderen Filterschaltfläche vorwärts zu navigieren, können Sie entweder die Taste `Tab` oder `Right arrow` verwenden. Um rückwärts zu navigieren, verwenden Sie entweder die Taste `Shift+Tab` oder `Left arrow`. Die Navigationsrichtung ist von links nach rechts, und dann von oben nach unten.
-        - Drücken Sie `Enter` oder die Pfeiltaste `Down`, um den ausgewählten Filter anzuwenden. Je nach Filterauswahl und Bereitstellung werden ein oder mehrere Knoten unter dem Kartenbereich hervorgehoben.
-            - Um zwischen **Banner** und **Karte** zu wechseln, drücken Sie `Ctrl+F6`.
+$requestBody = 
+@"
+{
+    'targetResourceId': '${TAtargetUri}',
+    'properties': 
+    {
+        'storageId': '${TAstorageId}',
+        'enabled': '<true to enable flow log or false to disable flow log>',
+        'retentionPolicy' : 
+        {
+            days: <enter number of days like to retail flow logs in storage account>,
+            enabled: <true to enable retention or false to disable retention>
+        }
+    },
+    'flowAnalyticsConfiguration':
+    {
+                'networkWatcherFlowAnalyticsConfiguration':
+      {
+        'enabled':,<true to enable traffic analytics or false to disable traffic analytics>
+        'workspaceId':'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb',
+        'workspaceRegion':'<workspace region>',
+        'workspaceResourceId':'/subscriptions/<workspace subscription id>/resourcegroups/<workspace resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>'
         
-        **Tastaturnavigation in der Karte**
+      }
+
+    }
+}
+"@
+$apiversion = "2016-09-01"
+
+armclient login
+armclient post "https://management.azure.com/subscriptions/<NSG subscription id>/resourceGroups/<network watcher resource group name>/providers/Microsoft.Network/networkWatchers/<network watcher name>/configureFlowlog?api-version=${apiversion}" $requestBody
+```
+**Beispiel für das Cmdlet „Get“:**
+```
+#Requestbody parameters
+$TAtargetUri ="/subscriptions/<NSG subscription id>/resourceGroups/<NSG resource group name>/providers/Microsoft.Network/networkSecurityGroups/<NSG name>"
+
+
+$requestBody = 
+@"
+{
+    'targetResourceId': '${TAtargetUri}'
+}
+“@
+
+
+armclient login
+armclient post "https://management.azure.com/subscriptions/<NSG subscription id>/resourceGroups/<network watcher resource group name>/providers/Microsoft.Network/networkWatchers/<network watcher name>/queryFlowLogStatus?api-version=${apiversion}" $requestBody
+```
+
+
+
+## <a name="how-is-traffic-analytics-priced"></a>Was kostet Traffic Analytics?
+
+Traffic Analytics ist getaktet. Die Taktung basiert auf der Verarbeitung von Flussprotokolldaten durch den Dienst und der Speicherung der resultierenden verbesserten Protokolle in einem Log Analytics-Arbeitsbereich. Weitere Informationen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/en-us/pricing/details/network-watcher/). 
+
+## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Wie kann ich mit der Tastatur in der geografischen Kartenansicht navigieren?
+
+Die Seite mit der geografischen Karte enthält zwei Hauptbereiche:
     
-        - Nachdem Sie einen beliebigen Filter im Banner ausgewählt und `Ctrl+F6` gedrückt haben, bewegt sich der Fokus auf einen der hervorgehobenen Knoten (**Azure-Rechenzentrum** oder **Land/Region**) in der Kartenansicht.
-        - Um zu anderen hervorgehobenen Knoten in der Karte zu navigieren, können Sie entweder die Taste `Tab` oder `Right arrow` für die Vorwärtsbewegung und die Taste `Shift+Tab` oder `Left arrow` für die Rückwärtsbewegung verwenden.
-        - Zur Auswahl eines markierten Knotens in der Karte verwenden Sie `Enter` oder die Taste `Down arrow`.
-        - Bei Auswahl eines solchen Knotens wird der Fokus auf die **Infotoolbox** des Knotens verschoben. Standardmäßig wird der Fokus auf die geschlossene Schaltfläche in der **Infotoolbox** verschoben. Zur weiteren Navigation in der Ansicht **Box** drücken Sie auf die Tasten `Right` und `Left arrow`, um vorwärts bzw. rückwärts zu navigieren. Das Drücken von `Enter` hat die gleiche Wirkung wie die Auswahl der fokussierten Schaltfläche in der **Infotoolbox**.
-        - Wenn Sie `Tab` drücken, während der Fokus auf der **Infotoolbox** liegt, bewegt sich der Fokus zu den Endpunkten auf demselben Kontinent wie der ausgewählte Knoten. Mit den Tasten `Right` und `Left arrow` können Sie durch diese Endpunkte navigieren.
-        - Um zu anderen Clustern von Datenflussendpunkten bzw. Kontinenten zu navigieren, verwenden Sie `Tab` für eine Vorwärtsbewegung und `Shift+Tab` für eine Rückwärtsbewegung.
-        - Sobald der Fokus auf `Continent clusters` liegt, können Sie mit `Enter` oder der Pfeiltaste `Down` die Endpunkte innerhalb des Kontinentclusters markieren. Um im Informationsfeld des Kontinentclusters durch die Endpunkte und die Schaltfläche zum Schließen zu navigieren, verwenden Sie die Tasten `Right` und `Left arrow` für die Vorwärts- bzw. Rückwärtsbewegung. An jedem beliebigen Endpunkt können Sie mit `Shift+L` zur Verbindungslinie vom ausgewählten Knoten zum Endpunkt wechseln. Durch erneutes Drücken von `Shift+L` gelangen Sie zum ausgewählten Endpunkt.
+- **Banner**: Das Banner am oberen Rand der geografischen Karte enthält Schaltflächen zur Auswahl von Verteilungsfiltern für Datenverkehr (z.B. Bereitstellung, Datenverkehr aus Ländern und schädliche Daten). Wenn Sie auf eine Schaltfläche klicken, wird der entsprechende Filter auf die Karte angewendet. Wenn Sie beispielsweise auf die Schaltfläche „Aktiv“ klicken, werden die aktiven Rechenzentren in Ihrer Bereitstellung auf der Karte hervorgehoben.
+- **Karte**: Im Kartenbereich unter dem Banner wird die Verteilung des Datenverkehrs für Azure-Rechenzentren und Länder gezeigt.
+    
+### <a name="keyboard-navigation-on-the-banner"></a>Tastaturnavigation im Banner
+    
+- Standardmäßig ist auf der Seite mit der geografischen Karte für das Banner der Filter „Azure-Rechenzentren“ ausgewählt.
+- Um zu einem anderen Filter zu wechseln, drücken Sie die Taste `Tab` oder `Right arrow`. Um wieder zum vorherigen Filter zu wechseln, drücken Sie `Shift+Tab` oder die Taste `Left arrow`. Die Navigationsrichtung ist von links nach rechts und dann von oben nach unten.
+- Drücken Sie `Enter` oder die Pfeiltaste `Down`, um den ausgewählten Filter anzuwenden. Je nach Filterauswahl und Bereitstellung werden ein oder mehrere Knoten unter dem Kartenbereich hervorgehoben.
+- Um zwischen Banner und Karte zu wechseln, drücken Sie `Ctrl+F6`.
         
-        Zu jedem Zeitpunkt:
+### <a name="keyboard-navigation-on-the-map"></a>Tastaturnavigation auf der Karte
     
-        - `ESC` klappt die erweiterte Auswahl zu.
-        - Die Taste `UP Arrow` führt die gleiche Aktion wie `ESC` aus. Die Taste `Down arrow` führt die gleiche Aktion wie `Enter` aus.
-        - Verwenden Sie `Shift+Plus` zum Vergrößern und `Shift+Minus` zum Verkleinern.
+- Nachdem Sie einen beliebigen Filter im Banner ausgewählt und `Ctrl+F6` gedrückt haben, bewegt sich der Fokus zu einem der hervorgehobenen Knoten (**Azure-Rechenzentrum** oder **Land/Region**) in der Kartenansicht.
+- Um zu anderen hervorgehobenen Knoten auf der Karte zu gelangen, drücken Sie für die Vorwärtsbewegung entweder die Taste `Tab` oder `Right arrow`. Drücken Sie für die Rückwärtsbewegung `Shift+Tab` oder die Taste `Left arrow`.
+- Zur Auswahl eines markierten Knotens in der Karte drücken Sie `Enter` oder die Taste `Down arrow`.
+- Bei Auswahl eines solchen Knotens wird der Fokus zur **Infotoolbox** des Knotens verschoben. Standardmäßig wird der Fokus zur Schaltfläche „Schließen“ in der **Infotoolbox** verschoben. Zur weiteren Navigation in der Ansicht **Box** drücken Sie die Taste `Right arrow` und `Left arrow`, um vorwärts bzw. rückwärts zu navigieren. Das Drücken von `Enter` hat die gleiche Wirkung wie die Auswahl der fokussierten Schaltfläche in der **Infotoolbox**.
+- Wenn Sie `Tab` drücken, während der Fokus auf der **Infotoolbox** liegt, bewegt sich der Fokus zu den Endpunkten auf demselben Kontinent wie der ausgewählte Knoten. Mit den Tasten `Right arrow` und `Left arrow` können Sie durch diese Endpunkte navigieren.
+- Um zu anderen Clustern von Datenflussendpunkten bzw. Kontinenten zu wechseln, drücken Sie `Tab` für die Vorwärtsbewegung und `Shift+Tab` für die Rückwärtsbewegung.
+- Sobald der Fokus auf **Kontinentcluster** liegt, können Sie mit `Enter` oder der Pfeiltaste `Down` die Endpunkte innerhalb des Kontinentclusters markieren. Um im Informationsfeld des Kontinentclusters zu den Endpunkten und zur Schaltfläche zum Schließen zu navigieren, drücken Sie die Taste `Right arrow` oder `Left arrow` für die Vorwärts- bzw. Rückwärtsbewegung. An jedem beliebigen Endpunkt können Sie mit `Shift+L` zur Verbindungslinie vom ausgewählten Knoten zum Endpunkt wechseln. Sie können erneut `Shift+L` drücken, um zum ausgewählten Endpunkt zu navigieren.
+        
+### <a name="keyboard-navigation-at-any-stage"></a>Tastaturnavigation in beliebiger Phase
+    
+- `Esc` klappt die erweiterte Auswahl zu.
+- Die Taste `Up arrow` führt die gleiche Aktion wie `Esc` aus. Die Taste `Down arrow` führt die gleiche Aktion wie `Enter` aus.
+- Verwenden Sie `Shift+Plus` zum Vergrößern und `Shift+Minus` zum Verkleinern.
+
+## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-virtual-network-topology-view"></a>Wie kann ich mit der Tastatur in der Ansicht der Topologie der virtuellen Netzwerke navigieren?
+
+Die Seite mit der Topologie der virtuellen Netzwerke hat zwei Hauptabschnitte:
+    
+- **Banner**: Das Banner in der Topologie der virtuellen Netzwerke bietet Schaltflächen zum Auswählen von Filtern für die Datenverkehrsverteilung (z.B. Verbundene virtuelle Netzwerke, Getrennte virtuelle Netzwerke und Öffentliche IP-Adressen). Wenn Sie auf eine Schaltfläche klicken, wird der entsprechende Filter auf die Topologie angewendet. Wenn Sie beispielsweise auf die Schaltfläche „Aktiv“ klicken, werden in der Topologie die aktiven virtuellen Netzwerke in Ihrer Bereitstellung hervorgehoben.
+- **Topologie**: Im Topologiebereich unter dem Banner wird die Verteilung des Datenverkehrs unter virtuellen Netzwerken gezeigt.
+    
+### <a name="keyboard-navigation-on-the-banner"></a>Tastaturnavigation im Banner
+    
+- Standardmäßig ist die Auswahl auf der Seite mit der Topologie der virtuellen Netzwerke für das Banner der Filter „Verbundene VNets“.
+- Um zu einem anderen Filter zu wechseln, drücken Sie die Taste `Tab` für die Vorwärtsbewegung. Um wieder zum vorherigen Filter zu wechseln, drücken Sie `Shift+Tab`. Die Navigationsrichtung ist von links nach rechts und dann von oben nach unten.
+- Drücken Sie `Enter`, um den ausgewählten Filter anzuwenden. Je nach Filterauswahl und Bereitstellung werden ein oder mehrere Knoten (virtuelle Netzwerke) unter dem Topologiebereich hervorgehoben.
+- Um zwischen dem Banner und der Topologie zu wechseln, drücken Sie `Ctrl+F6`.
+        
+### <a name="keyboard-navigation-on-the-topology"></a>Tastaturnavigation in der Topologie
+    
+- Nachdem Sie einen beliebigen Filter im Banner ausgewählt und `Ctrl+F6` gedrückt haben, bewegt sich der Fokus zum hervorgehobenen Knoten (**VNet**) in der Topologieansicht.
+- Um zu anderen hervorgehobenen Knoten in der Topologieansicht zu gelangen, drücken Sie für die Vorwärtsbewegung `Shift+Right arrow`. 
+- Bei hervorgehobenen Knoten wird der Fokus zur **Infotoolbox** des Knotens verschoben. Standardmäßig wird der Fokus zur Schaltfläche **Weitere Details** in der **Infotoolbox** verschoben. Zur weiteren Navigation in der Ansicht **Box** drücken Sie die Taste `Right arrow` oder `Left arrow`, um vorwärts bzw. rückwärts zu navigieren. Das Drücken von `Enter` hat die gleiche Wirkung wie die Auswahl der fokussierten Schaltfläche in der **Infotoolbox**.
+- Wenn Sie einen solchen Knoten auswählen, können Sie alle seine Verbindungen nacheinander aufrufen, indem Sie `Shift+Left arrow` drücken. Der Fokus wird zur **Infotoolbox** dieser Verbindung verschoben. Jederzeit kann der Fokus durch erneutes Drücken von `Shift+Right arrow` zurück zum Knoten verschoben werden.
+    
+
+## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-subnet-topology-view"></a>Wie kann ich mit der Tastatur in der Ansicht der Topologie der Subnetze navigieren?
+
+Die Seite mit der Topologie der Subnetze hat zwei Hauptabschnitte:
+    
+- **Banner**: Das Banner in der Topologie der Subnetze bietet Schaltflächen zum Auswählen von Filtern für die Datenverkehrsverteilung (z. B. Aktiv, Mittel und Gatewaysubnetze). Wenn Sie auf eine Schaltfläche klicken, wird der entsprechende Filter auf die Topologie angewendet. Wenn Sie beispielsweise auf die Schaltfläche „Aktiv“ klicken, werden in der Topologie die aktiven Subnetze in Ihrer Bereitstellung hervorgehoben.
+- **Topologie**: Im Topologiebereich unter dem Banner wird die Verteilung des Datenverkehrs unter virtuellen Subnetzen gezeigt.
+    
+### <a name="keyboard-navigation-on-the-banner"></a>Tastaturnavigation im Banner
+    
+- Standardmäßig ist die Auswahl auf der Seite mit der Topologie der virtuellen Subnetze für das Banner der Filter „Subnetze“.
+- Um zu einem anderen Filter zu wechseln, drücken Sie die Taste `Tab` für die Vorwärtsbewegung. Um wieder zum vorherigen Filter zu wechseln, drücken Sie `Shift+Tab`. Die Navigationsrichtung ist von links nach rechts und dann von oben nach unten.
+- Drücken Sie `Enter`, um den ausgewählten Filter anzuwenden. Je nach Filterauswahl und Bereitstellung werden ein oder mehrere Knoten (Subnetze) unter dem Topologiebereich hervorgehoben.
+- Um zwischen dem Banner und der Topologie zu wechseln, drücken Sie `Ctrl+F6`.
+        
+### <a name="keyboard-navigation-on-the-topology"></a>Tastaturnavigation in der Topologie
+    
+- Nachdem Sie einen beliebigen Filter im Banner ausgewählt und `Ctrl+F6` gedrückt haben, bewegt sich der Fokus zu einem der hervorgehobenen Knoten (**Subnetz**) in der Topologieansicht.
+- Um zu anderen hervorgehobenen Knoten in der Topologieansicht zu gelangen, drücken Sie für die Vorwärtsbewegung `Shift+Right arrow`. 
+- Bei hervorgehobenen Knoten wird der Fokus zur **Infotoolbox** des Knotens verschoben. Standardmäßig wird der Fokus zur Schaltfläche **Weitere Details** in der **Infotoolbox** verschoben. Zur weiteren Navigation in der Ansicht **Box** drücken Sie die Taste `Right arrow` und `Left arrow`, um vorwärts bzw. rückwärts zu navigieren. Das Drücken von `Enter` hat die gleiche Wirkung wie die Auswahl der fokussierten Schaltfläche in der **Infotoolbox**.
+- Wenn Sie einen solchen Knoten auswählen, können Sie alle seine Verbindungen nacheinander aufrufen, indem Sie `Shift+Left arrow` drücken. Der Fokus wird zur **Infotoolbox** dieser Verbindung verschoben. Jederzeit kann der Fokus durch erneutes Drücken von `Shift+Right arrow` zurück zum Knoten verschoben werden.    
+

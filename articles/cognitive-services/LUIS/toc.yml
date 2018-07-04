@@ -63,7 +63,7 @@
           href: luis-quickstart-primary-and-secondary-data.md
         - name: 7. Hinzufügen der keyPhrase-Entität
           href: luis-quickstart-intent-and-key-phrase.md
-        - name: 8. Hinzufügen der Stimmungsanalyse
+        - name: 8. Hinzufügen einer Standpunktanalyse
           href: luis-quickstart-intent-and-sentiment-analysis.md
     - name: Verbessern der Vorhersage
       items:
@@ -136,7 +136,7 @@
 - name: Anleitungen
   items:
     - name: Planen der App
-      href: Plan-your-app.md
+      href: luis-how-plan-your-app.md
     - name: Starten einer neuen App
       href: Create-new-app.md
     - name: Erstellen von Modellen
@@ -200,7 +200,7 @@
         - name: Verwenden von vordefinierten Domänen
           href: luis-how-to-use-prebuilt-domains.md
         - name: Verwenden der vorgefertigten Cortana-App
-          href: Cortana-Prebuilt-App.md
+          href: luis-how-to-cortana-prebuilt-app.md
     - name: Verwalten Ihrer LUIS-App
       items:
         - name: Verwenden des Dashboards
@@ -309,6 +309,8 @@
       href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
     - name: Textanalyse
       href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
+    - name: Recognizers-Text
+      href: 'https://github.com/Microsoft/Recognizers-Text'
 - name: angeben
   items:
     - name: Azure-Roadmap

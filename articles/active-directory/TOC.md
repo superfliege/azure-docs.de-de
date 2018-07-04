@@ -83,8 +83,8 @@
 ## [Verwalten von Gruppen und Mitgliedern](fundamentals/active-directory-manage-groups.md)
 ### Verwalten von Gruppen
 #### [Azure-Portal](fundamentals/active-directory-groups-create-azure-portal.md)
-#### [Azure AD PowerShell für Graph (v2)](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
-#### [Azure AD PowerShell MSOnline](active-directory-accessmanagement-groups-settings-cmdlets.md)
+#### [Azure AD PowerShell für Graph (v2)](users-groups-roles/groups-settings-v2-cmdlets.md)
+#### [Azure AD PowerShell MSOnline](users-groups-roles/groups-settings-cmdlets.md)
 ### [Verwalten von Gruppenmitgliedern](fundamentals/active-directory-groups-members-azure-portal.md)
 ### [Verwalten von Gruppenbesitzern](fundamentals/active-directory-accessmanagement-managing-group-owners.md)
 ### [Verwalten der Gruppenmitgliedschaft](fundamentals/active-directory-groups-membership-azure-portal.md)
@@ -99,13 +99,13 @@
 ### [Einrichten des Office 365-Gruppenablaufs](active-directory-groups-lifecycle-azure-portal.md)
 ### [Erzwingen einer Benennungsrichtlinie für Gruppen](groups-naming-policy.md)
 ### [Anzeigen aller Gruppen](fundamentals/active-directory-groups-view-azure-portal.md)
-### [Hinzufügen des Gruppenzugriffs auf SaaS-Apps](active-directory-accessmanagement-group-saasapps.md)
+### [Hinzufügen des Gruppenzugriffs auf SaaS-Apps](users-groups-roles/groups-saasapps.md)
 ### [Wiederherstellen einer gelöschten Office 365-Gruppe](fundamentals/active-directory-groups-restore-azure-portal.md)
 ### [Verwalten von Gruppeneinstellungen](fundamentals/active-directory-groups-settings-azure-portal.md) 
 ### Erstellen erweiterter Regeln
 #### [Azure-Portal](active-directory-groups-dynamic-membership-azure-portal.md)
-### [Einrichten von Self-Service-Gruppen](active-directory-accessmanagement-self-service-group-management.md)
-### [Problembehandlung](active-directory-accessmanagement-troubleshooting.md)
+### [Einrichten von Self-Service-Gruppen](users-groups-roles/groups-self-service-management.md)
+### [Problembehandlung](users-groups-roles/groups-troubleshooting.md)
 
 ## [Verwalten von Berichten](active-directory-reporting-azure-portal.md)
 ### [Anmeldungsaktivität](active-directory-reporting-activity-sign-ins.md)
@@ -363,7 +363,7 @@
 ### [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ### Benutzerdefinierte Domänennamen
 #### [Schnellstart](fundamentals/add-custom-domain.md)
-#### [Hinzufügen benutzerdefinierter Domänennamen](active-directory-domains-manage-azure-portal.md)
+#### [Hinzufügen benutzerdefinierter Domänennamen](users-groups-roles/domains-manage.md)
 ### [Verwalten Ihres Verzeichnisses](fundamentals/active-directory-administer.md)
 ### [Löschen eines Verzeichnisses](directory-delete-howto.md)
 ### [Mehrere Verzeichnisse](active-directory-licensing-directory-independence.md)
@@ -381,12 +381,12 @@
 
 ## Delegieren des Zugriffs auf Ressourcen
 ### [Anzeigen der Mitglieder einer Administratorrolle](directory-manage-roles-portal.md)
-### [Administratorrollen](active-directory-assign-admin-roles-azure-portal.md)
+### [Administratorrollen](users-groups-roles/directory-assign-admin-roles.md)
 #### [Zuweisen der Administratorrolle zu einem Benutzer](fundamentals/active-directory-users-assign-role-azure-portal.md)
 #### [Vergleichen der Berechtigungen für Mitglieder und Gastbenutzer](fundamentals/users-default-permissions.md)
 ### [Härten der Administratorrollensicherheit](admin-roles-best-practices.md)  
-#### [Erstellen von Administratorkonten mit Notfallzugriff](active-directory-admin-manage-emergency-access-accounts.md)
-### [Verwaltungseinheiten](active-directory-administrative-units-management.md)
+#### [Erstellen von Administratorkonten mit Notfallzugriff](users-groups-roles/directory-emergency-access.md)
+### [Verwaltungseinheiten](users-groups-roles/directory-administrative-units.md)
 ### [Konfigurieren der Tokengültigkeitsdauer](active-directory-configurable-token-lifetimes.md)
 
 ## Zugriffsüberprüfungen
@@ -406,6 +406,7 @@
 #### Schnellstarts
 ##### [Konfigurieren der Cloud-App-spezifischen MFA](active-directory-conditional-access-app-based-mfa.md)
 ##### [Festlegen, dass die Nutzungsbedingungen akzeptiert werden müssen](active-directory-conditional-access-tou.md)
+##### [Blockieren des Zugriffs bei erkanntem Sitzungsrisiko](active-directory-conditional-access-app-sign-in-risk.md)
 #### Tutorials
 ##### [Migrieren der klassischen MFA-Richtlinie](active-directory-conditional-access-migration-mfa.md)
 #### Konzepte
