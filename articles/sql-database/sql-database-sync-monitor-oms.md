@@ -1,22 +1,22 @@
 ---
-title: Überwachen der Azure SQL-Datensynchronisierung (Vorschauversion) mit Log Analytics | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie die Azure SQL-Datensynchronisierung (Vorschauversion) mithilfe von Log Analytics überwachen.
+title: Überwachen der Azure SQL-Datensynchronisierung mit Log Analytics | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie die Azure SQL-Datensynchronisierung mithilfe von Log Analytics überwachen.
 services: sql-database
 ms.date: 04/01/2018
 ms.topic: conceptual
 ms.service: sql-database
-author: douglaslMS
-ms.author: douglasl
+author: allenwux
+ms.author: xiwu
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 4c684337a904fe6984e6b5cd5cf88ef8eb976cb6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9b64a5e913748cda7927877c50a964ede587ae30
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650246"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025414"
 ---
-# <a name="monitor-sql-data-sync-preview-with-log-analytics"></a>Überwachen der SQL-Datensynchronisierung (Vorschauversion) mit Log Analytics 
+# <a name="monitor-sql-data-sync-with-log-analytics"></a>Überwachen der SQL-Datensynchronisierung mit Log Analytics 
 
 Zur Überprüfung des Aktivitätsprotokolls der SQL-Datensynchronisierung sowie zur Erkennung von Fehlern und Warnungen mussten Sie bislang die SQL-Datensynchronisierung manuell im Azure-Portal überprüfen oder hierfür PowerShell oder die REST-API verwenden. Mit den Schritten in diesem Artikel können Sie eine benutzerdefinierte Lösung konfigurieren, die die Überwachung der Datensynchronisierung verbessert. Diese Lösung kann an Ihr individuelles Szenario angepasst werden.
 

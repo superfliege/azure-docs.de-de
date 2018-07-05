@@ -8,23 +8,20 @@ ms.date: 10/05/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: effe33182435d2a4afbad3356c6840070ba96325
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f198efe9ff5e4862a3bbe872ab50e5848c9dbb5c
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631427"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030579"
 ---
-# <a name="securing-azure-iot-edge---preview"></a>Sichern von Azure IoT Edge – Vorschau
+# <a name="securing-azure-iot-edge"></a>Sichern von Azure IoT Edge
 
 Das intelligente Edge muss gesichert werden, um Vertrauen in den Betrieb einer End-to-End-IoT-Lösung aufzubauen. Azure IoT Edge wurde im Hinblick auf ein Sicherheitskonzept entwickelt, das sich auf verschiedene Risikoprofile und Bereitstellungsszenarien ausweiten lässt, und bietet denselben umfangreichen Schutz, den Sie von allen Azure-Diensten kennen.
 
 Azure IoT Edge kann auf verschiedenen Hardwaregeräten ausgeführt werden, unterstützt sowohl Linux als auch Windows und lässt sich auf verschiedene Bereitstellungsszenarien anwenden.  Bei der Risikobewertung spielen verschiedene Faktoren eine Rolle, z.B. die Besitzrechte für die Lösung, die geografische Region für die Bereitstellung, die Vertraulichkeit der Daten, die Branche, in der die Anwendung eingesetzt wird, sowie gesetzliche Vorgaben.  Anstatt konkrete Lösungen für bestimmte Szenarien anzubieten, ist es sinnvoller, ein erweiterbares Sicherheitsframework zu entwerfen, das auf fundierten Prinzipien fußt und für den Einsatz im großen Maßstab konzipiert wird. 
  
 Dieser Artikel bietet eine Übersicht über das Sicherheitsframework. Weitere Informationen finden Sie unter [Securing the intelligent edge][lnk-edge-blog] (Sichern des intelligenten Edge).
-
->[!NOTE]
->Das im Folgenden beschriebene Sicherheitsframework wird derzeit zum Produkt hinzugefügt und wird mit dem allgemein verfügbaren Release von Azure IoT Edge zur Verfügung stehen. Das Produkt befindet sich zurzeit in der öffentlichen Vorschau – dieses Release dient zur Entwicklung und zum Erstellen von Prototypen von Edgelösungen und ist nicht für vollständige Produktionsentwicklungen gedacht, für die das vollständige Sicherheitsframework erforderlich ist.   
 
 ## <a name="standards"></a>Standards
 

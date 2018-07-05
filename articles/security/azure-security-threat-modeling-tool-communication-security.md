@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 71bbe53595f2afab50d6220f335d615ada957a85
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: c361f74147862585074f3c4475209ba6eb0c1e0c
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019482"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029797"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Sicherheitsrahmen: Kommunikationssicherheit | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -28,7 +28,7 @@ ms.locfileid: "28019482"
 | **Dynamics CRM** | <ul><li>[Überprüfen Sie die Dienstkontoberechtigungen, und vergewissern Sie sich, dass die benutzerdefinierten Dienste oder ASP.NET-Seiten die CRM-Sicherheit respektieren.](#priv-aspnet)</li></ul> |
 | **Azure Data Factory** | <ul><li>[Verwenden Sie das Datenverwaltungsgateway, um eine Verbindung zwischen einer lokalen SQL Server-Instanz und Azure Data Factory herzustellen.](#sqlserver-factory)</li></ul> |
 | **Identity Server** | <ul><li>[Stellen Sie sicher, dass der gesamte an Identity Server gerichtete Datenverkehr über eine HTTPS-Verbindung abgewickelt wird.](#identity-https)</li></ul> |
-| **Webanwendung** | <ul><li>[Überprüfen Sie die X.509 Zertifikate, die zum Authentifizieren von SSL-, TLS- und DTLS-Verbindungen verwendet werden.](#x509-ssltls)</li><li>[Konfigurieren Sie ein SSL-Zertifikat für eine benutzerdefinierte Domäne in Azure App Service.](#ssl-appservice)</li><li>[Erzwingen Sie, dass der gesamte an Azure App Service gerichtete Datenverkehr über eine HTTPS-Verbindung abgewickelt wird.](#appservice-https)</li><li>[Aktivieren Sie HSTS (HTTP Strict Transport Security).](#http-hsts)</li></ul> |
+| **Web Application** | <ul><li>[Überprüfen Sie die X.509 Zertifikate, die zum Authentifizieren von SSL-, TLS- und DTLS-Verbindungen verwendet werden.](#x509-ssltls)</li><li>[Konfigurieren Sie ein SSL-Zertifikat für eine benutzerdefinierte Domäne in Azure App Service.](#ssl-appservice)</li><li>[Erzwingen Sie, dass der gesamte an Azure App Service gerichtete Datenverkehr über eine HTTPS-Verbindung abgewickelt wird.](#appservice-https)</li><li>[Aktivieren Sie HSTS (HTTP Strict Transport Security).](#http-hsts)</li></ul> |
 | **Datenbank** | <ul><li>[Verwenden Sie SQL Server-Verbindungsverschlüsselung und Zertifikatüberprüfung.](#sqlserver-validation)</li><li>[Erzwingen Sie die Verschlüsselung der Kommunikation mit SQL Server.](#encrypted-sqlserver)</li></ul> |
 | **Azure Storage** | <ul><li>[Stellen Sie sicher, dass die Kommunikation mit Azure Storage über HTTPS abgewickelt wird.](#comm-storage)</li><li>[Überprüfen Sie nach dem Herunterladen eines Blobs den MD5-Hash, falls HTTPS nicht aktiviert werden kann.](#md5-https)</li><li>[Verwenden Sie einen SMB 3.0-kompatiblen Client, um die Verschlüsselung von Daten während der Übertragung an Azure-Dateifreigaben zu gewährleisten.](#smb-shares)</li></ul> |
 | **Mobiler Client** | <ul><li>[Implementieren Sie das Anheften von Zertifikaten.](#cert-pinning)</li></ul> |
@@ -135,7 +135,7 @@ Das folgende Beispiel enthält eine einfache URL-Rewrite-Regel, die für sämtli
   </system.webServer>
 </configuration>
 ```
-Diese Regel funktioniert durch die Rückgabe eines HTTP-Statuscode von 301 (Permanent Redirect), wenn der Benutzer eine Seite mit HTTP anfragt. Der Code 301 leitet die Anfrage an die gleiche URL weiter, die der Besucher angefragt hat, aber ersetzt den HTTP-Teil der Anfrage mit HTTPS. HTTP://contoso.com würde beispielsweise zu HTTPS://contoso.com weitergeleitet werden. 
+Diese Regel funktioniert durch die Rückgabe eines HTTP-Statuscode von 301 (Permanent Redirect), wenn der Benutzer eine Seite mit HTTP anfragt. Der Code 301 leitet die Anfrage an die gleiche URL weiter, die der Besucher angefragt hat, aber ersetzt den HTTP-Teil der Anfrage mit HTTPS. HTTP://contoso.com wird beispielsweise an HTTPS://contoso.com umgeleitet. 
 
 ## <a id="http-hsts"></a>Aktivieren Sie HSTS (HTTP Strict Transport Security).
 
@@ -146,7 +146,7 @@ Diese Regel funktioniert durch die Rückgabe eines HTTP-Statuscode von 301 (Perm
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
 | **Referenzen**              | [OWASP HTTP Strict Transport Security Cheat Sheet](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) (OWASP-Cheat Sheet zu HTTP Strict Transport Security) |
-| **Schritte** | <p>Bei HSTS (HTTP Strict Transport Security) handelt es sich um eine optionale Sicherheitserweiterung, die von einer Webanwendung mithilfe eines speziellen Antwortheaders angegeben wird. Wenn ein unterstützter Browser diesen Header empfängt, verhindert er, dass die Kommunikation über HTTP an die angegebene Domäne gesendet wird, und sendet die gesamte Kommunikation stattdessen über HTTPS. Darüber hinaus werden in Browsern auch HTTPS-Clickthrough-Aufforderungen verhindert.</p><p>Zur Implementierung von HSTS muss der folgende Antwortheader global für eine Website konfiguriert werden (entweder im Code oder in der Konfiguration): Strict-Transport-Security: max-age=300; includeSubDomains. HSTS dient zur Abwehr folgender Bedrohungen:</p><ul><li>Ein Benutzer erstellt ein Lesezeichen für „http://example.com“ oder gibt die Adresse manuell ein und wird Opfer eines Man-in-the-Middle-Angriffs: HSTS leitet HTTP-Anforderungen für die Zieldomäne automatisch an HTTPS um.</li><li>Eine Webanwendung, die eigentlich als reine HTTPS-Anwendung konzipiert ist, enthält unbeabsichtigt HTTP-Links oder stellt Inhalt über HTTP bereit: HSTS leitet HTTP-Anforderungen für die Zieldomäne automatisch an HTTPS um.</li><li>Bei einem Man-in-the-Middle-Angriff wird versucht, Datenverkehr des betroffenen Benutzers mithilfe eines ungültigen Zertifikats abzufangen (in der Hoffnung, dass der Benutzer das falsche Zertifikat akzeptiert): HSTS lässt nicht zu, dass ein Benutzer die Meldung mit dem Hinweis auf ein ungültiges Zertifikat außer Kraft setzt.</li></ul>|
+| **Schritte** | <p>Bei HSTS (HTTP Strict Transport Security) handelt es sich um eine optionale Sicherheitserweiterung, die von einer Webanwendung mithilfe eines speziellen Antwortheaders angegeben wird. Wenn ein unterstützter Browser diesen Header empfängt, verhindert er, dass die Kommunikation über HTTP an die angegebene Domäne gesendet wird, und sendet die gesamte Kommunikation stattdessen über HTTPS. Darüber hinaus werden in Browsern auch HTTPS-Clickthrough-Aufforderungen verhindert.</p><p>Zur Implementierung von HSTS muss der folgende Antwortheader global für eine Website konfiguriert werden (entweder im Code oder in der Konfiguration): Strict-Transport-Security: max-age=300; includeSubDomains. HSTS dient zur Abwehr folgender Bedrohungen:</p><ul><li>Ein Benutzer erstellt ein Lesezeichen für http://example.com oder gibt die Adresse manuell ein und wird Opfer eines Man-in-the-Middle-Angriffs: HSTS leitet HTTP-Anforderungen für die Zieldomäne automatisch an HTTPS um.</li><li>Eine Webanwendung, die eigentlich als reine HTTPS-Anwendung konzipiert ist, enthält unbeabsichtigt HTTP-Links oder stellt Inhalt über HTTP bereit: HSTS leitet HTTP-Anforderungen für die Zieldomäne automatisch an HTTPS um.</li><li>Bei einem Man-in-the-Middle-Angriff wird versucht, Datenverkehr des betroffenen Benutzers mithilfe eines ungültigen Zertifikats abzufangen (in der Hoffnung, dass der Benutzer das falsche Zertifikat akzeptiert): HSTS lässt nicht zu, dass ein Benutzer die Meldung mit dem Hinweis auf ein ungültiges Zertifikat außer Kraft setzt.</li></ul>|
 
 ## <a id="sqlserver-validation"></a>Verwenden Sie SQL Server-Verbindungsverschlüsselung und Zertifikatüberprüfung.
 
@@ -288,7 +288,7 @@ namespace CertificatePinningExample
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | .NET Framework 3 |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_transport_security_enabled) |
 | **Schritte** | Die Anwendungskonfiguration muss sicherstellen, dass bei jedem Zugriff auf sensible Daten HTTPS verwendet wird.<ul><li>**ERLÄUTERUNG:** Wenn eine Anwendung sensible Informationen enthält und keine Verschlüsselung auf Nachrichtenebene verwendet, darf sie ausschließlich über einen verschlüsselten Transportkanal kommunizieren.</li><li>**EMPFEHLUNGEN:** Stellen Sie sicher, dass der HTTP-Transport deaktiviert ist, und aktivieren Sie stattdessen den HTTPS-Transport. Ersetzen Sie beispielsweise `<httpTransport/>` durch das Tag `<httpsTransport/>`. Verlassen Sie sich nicht auf eine Netzwerkkonfiguration (Firewall), um zu gewährleisten, dass auf die Anwendung nur über einen sicheren Kanal zugegriffen werden kann. In der Theorie darf die Sicherheit der Anwendung nicht vom Netzwerk abhängig sein.</li></ul><p>In der Praxis sind die für den Schutz des Netzwerks zuständigen Personen bei den Sicherheitsanforderungen der Anwendung nicht immer auf dem neuesten Stand.</p>|
 
 ## <a id="message-protection"></a>WCF: Legen Sie die Schutzebene für die Nachrichtensicherheit auf „EncryptAndSign“ fest.

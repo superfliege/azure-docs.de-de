@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 05abd943d85fcdd709143bf7fce221dcdfb86011
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f6196c1403ded7bb8a72ee5483c2c2056b0e8020
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215098"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030708"
 ---
-# <a name="service-endpoint-monitor"></a>Dienstendpunktmonitor
+# <a name="service-connectivity-monitor"></a>Dienstkonnektivitätsmonitor
 
-Mit der Dienstendpunktmonitor-Funktion des [Netzwerkleistungsmonitors](log-analytics-network-performance-monitor.md) können Sie die Netzwerkkonnektivität an einem beliebigen Endpunkt überwachen, der über einen geöffneten TCP-Port verfügt. Zu solchen Endpunkten zählen Websites, SaaS-Anwendungen, PaaS-Anwendungen und SQL-Datenbanken. 
+Mit dem Dienstkonnektivitätsmonitor von [Netzwerkleistungsmonitor](log-analytics-network-performance-monitor.md) können Sie die Netzwerkkonnektivität an einem beliebigen Endpunkt überwachen, der über einen geöffneten TCP-Port verfügt. Zu solchen Endpunkten zählen Websites, SaaS-Anwendungen, PaaS-Anwendungen und SQL-Datenbanken. 
 
-Der Dienstendpunktmonitor ermöglicht folgende Funktionen: 
+Der Dienstkonnektivitätsmonitor ermöglicht Folgendes: 
 
 - Überwachen der Netzwerkkonnektivität Ihrer Anwendungen und Netzwerkdienste von mehreren Zweigstellen oder Standorten. Zu den Anwendungen und Netzwerkdiensten gehören Office 365, Dynamics CRM, interne Line-of-Business-Anwendungen und SQL-Datenbanken.
 - Ausführen integrierter Tests zur Überwachung der Netzwerkkonnektivität mit Office 365- und Dynamics 365-Endpunkten 
@@ -34,7 +34,7 @@ Der Dienstendpunktmonitor ermöglicht folgende Funktionen:
 - Erkennen von Hotspots im Netzwerk, die möglicherweise die Leistung der Anwendung beeinträchtigen, durch Betrachtung der Hop-spezifischen Wartezeiten auf einer Topologiekarte
 
 
-![Dienstendpunktmonitor](media/log-analytics-network-performance-monitor/service-endpoint-intro.png)
+![Dienstkonnektivitätsmonitor](media/log-analytics-network-performance-monitor/service-endpoint-intro.png)
 
 
 ## <a name="configuration"></a>Konfiguration 
@@ -55,11 +55,11 @@ netsh advfirewall firewall add rule name="NPMDICMPV4TimeExceeded" protocol="icmp
 netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmpv6:3,any" dir=in action=allow 
 ```
 
-### <a name="create-service-endpoint-monitor-tests"></a>Erstellen von Dienstendpunktmonitor-Tests 
+### <a name="create-service-connectivity-monitor-tests"></a>Erstellen von Tests für den Dienstkonnektivitätsmonitor 
 
 Beginnen Sie mit der Erstellung Ihrer Tests zur Überwachung der Netzwerkkonnektivität mit den Dienstendpunkten.
 
-1. Wählen Sie die Registerkarte **Service Endpoint Monitor** (Dienstendpunktmonitor) aus.
+1. Klicken Sie auf die Registerkarte **Dienstkonnektivitätsmonitor**.
 2. Klicken Sie auf **Test hinzufügen**, und geben Sie einen Namen und eine Beschreibung für den Test ein. 
 3. Wählen Sie die Art des Tests aus:<br>
 
@@ -84,7 +84,7 @@ Beginnen Sie mit der Erstellung Ihrer Tests zur Überwachung der Netzwerkkonnekt
 
 ## <a name="walkthrough"></a>Exemplarische Vorgehensweise 
 
-Wechseln Sie zur Dashboardansicht des Netzwerkleistungsmonitors. Auf der Seite **Service Endpoint Monitor** (Dienstendpunktmonitor) erhalten Sie eine Zusammenfassung der Integrität der verschiedenen erstellten Tests. 
+Wechseln Sie zur Dashboardansicht des Netzwerkleistungsmonitors. Auf der Seite **Dienstkonnektivitätsmonitor** erhalten Sie eine Zusammenfassung der Integrität der verschiedenen erstellten Tests. 
 
 ![Seite „Service Endpoint Monitor“ (Dienstendpunktmonitor)](media/log-analytics-network-performance-monitor/service-endpoint-blade.png)
 

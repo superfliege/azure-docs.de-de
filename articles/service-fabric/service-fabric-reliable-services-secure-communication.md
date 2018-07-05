@@ -1,6 +1,6 @@
 ---
-title: Schützen der Dienstremotingkommunikation in Azure Service Fabric | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie die dienstremotingbasierte Kommunikation für Reliable Services schützen, die in einem Azure Service Fabric-Cluster ausgeführt werden.
+title: Schützen der Dienstremotingkommunikation mit C# in Azure Service Fabric | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie die dienstremotingbasierte Kommunikation für in C# geschriebene Reliable Services schützen, die in einem Azure Service Fabric-Cluster ausgeführt werden.
 services: service-fabric
 documentationcenter: .net
 author: suchiagicha
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: cd7211ecda61ab2cca0f97e292d9ce2c47ed6933
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: be5dab7b9714f13a4bd30e6ab33a5a0e2016212d
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210272"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020018"
 ---
-# <a name="secure-service-remoting-communications-for-a-service"></a>Schützen der Dienstremotingkommunikation für einen Dienst
+# <a name="secure-service-remoting-communications-in-a-c-service"></a>Schützen der Dienstremotingkommunikation in einem C#-Dienst
 > [!div class="op_single_selector"]
 > * [C# unter Windows](service-fabric-reliable-services-secure-communication.md)
 > * [Java unter Linux](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
 
-Sicherheit ist einer der wichtigsten Aspekte der Kommunikation. Das Reliable Services-Anwendungsframework stellt einige fertige Kommunikationsstapel und Tools bereit, die Sie verwenden können, um die Sicherheit zu verbessern. In diesem Artikel erfahren Sie, wie Sie die Sicherheit bei Verwendung von Dienstremoting verbessern können.
+Sicherheit ist einer der wichtigsten Aspekte der Kommunikation. Das Reliable Services-Anwendungsframework stellt einige fertige Kommunikationsstapel und Tools bereit, die Sie verwenden können, um die Sicherheit zu verbessern. In diesem Artikel erfahren Sie, wie Sie die Sicherheit bei Verwendung von Dienstremoting in einem C#-Dienst verbessern können. Der Artikel erläutert anhand eines [Beispiels](service-fabric-reliable-services-communication-remoting.md), wie das Remoting für in C# geschriebene Reliable Services eingerichtet wird. 
 
-Wir verwenden ein vorhandenes [Beispiel](service-fabric-reliable-services-communication-remoting.md), um zu erläutern, wie das Remoting für Reliable Services eingerichtet wird. Um die Sicherung eines Diensts bei der Verwendung von Dienstremoting zu unterstützen, befolgen Sie diese Schritte:
+Gehen Sie wie folgt vor, um zum Schutz eines Diensts beizutragen, wenn Sie Dienstremoting mit C#-Diensten verwenden:
 
 1. Erstellen Sie eine Schnittstelle, `IHelloWorldStateful`, die definiert, welche Methoden für einen Remoteprozeduraufruf Ihres Diensts verfügbar sind. Ihr Dienst verwendet `FabricTransportServiceRemotingListener`, der im Namespace `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` deklariert wird. Dies ist eine `ICommunicationListener` -Implementierung, die Remotingfunktionen bereitstellt.
 
@@ -57,7 +57,12 @@ Wir verwenden ein vorhandenes [Beispiel](service-fabric-reliable-services-commun
     ```
 2. Fügen Sie Listenereinstellungen und Sicherheitsanmeldeinformationen hinzu.
 
-    Stellen Sie sicher, dass das Zertifikat, das Sie zum Schützen Ihrer Dienstkommunikation verwenden möchten, auf allen Knoten im Cluster installiert wird. Es gibt zwei Möglichkeiten, wie Sie Listenereinstellungen und Sicherheitsanmeldeinformationen bereitstellen können:
+    Stellen Sie sicher, dass das Zertifikat, das Sie zum Schutz Ihrer Dienstkommunikation verwenden möchten, auf allen Knoten im Cluster installiert ist. 
+    
+    > [!NOTE]
+    > Auf Linux-Knoten muss das Zertifikat in Form von Dateien im PEM-Format im Verzeichnis */var/lib/sfcerts* vorgelegt werden. Weitere Informationen finden Sie unter [Speicherort und Format von X.509-Zertifikaten auf Linux-Knoten](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes). 
+
+    Es gibt zwei Möglichkeiten, wie Sie Listenereinstellungen und Sicherheitsanmeldeinformationen bereitstellen können:
 
    1. Direkte Bereitstellung im Dienstcode:
 
@@ -94,7 +99,7 @@ Wir verwenden ein vorhandenes [Beispiel](service-fabric-reliable-services-commun
        ```
    2. Bereitstellung mithilfe eines [Konfigurationspakets](service-fabric-application-and-service-manifests.md):
 
-       Fügen Sie in der Datei „settings.xml“ den Abschnitt `TransportSettings` hinzu.
+       Fügen Sie in der Datei „settings.xml“ einen Abschnitt namens `TransportSettings` hinzu.
 
        ```xml
        <Section Name="HelloWorldStatefulTransportSettings">
@@ -202,5 +207,6 @@ Wir verwenden ein vorhandenes [Beispiel](service-fabric-reliable-services-commun
     string message = await client.GetHelloWorld();
 
     ```
+
 
 Lesen Sie als Nächstes den Artikel [Web-API mit OWIN in Reliable Services](service-fabric-reliable-services-communication-webapi.md).

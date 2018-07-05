@@ -1,37 +1,37 @@
 ---
 title: Azure IoT Edge-Modulzusammenstellung | Microsoft Docs
-description: Erfahren Sie, was in Azure IoT Edge-Module aufgenommen wird und wie sie wiederverwendet werden können.
+description: Hier erfahren Sie, wie ein Bereitstellungsmanifest deklariert, welche Module auf welche Weise bereitgestellt werden sollen und wie Nachrichtenrouten zwischen ihnen erstellt werden.
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 03/23/2018
+ms.date: 06/06/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c886d1d9dea120a243693c12ae861a58126daadc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 84a0698a61e68c141cc79dbc779f352aab528afa
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631682"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031480"
 ---
-# <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>Verstehen, wie IoT Edge-Module verwendet, konfiguriert und wiederverwendet werden können – Vorschau
+# <a name="learn-how-to-use-deployment-manifests-to-deploy-modules-and-establish-routes"></a>Bereitstellen von Modulen und Einrichten von Routen mithilfe von Bereitstellungsmanifesten
 
 Jedes IoT Edge-Gerät führt mindestens zwei Module aus, die die IoT Edge-Runtime bilden: „$edgeAgent“ und „$edgeHub“. Zusätzlich zu diesen zwei Standardmodulen kann jedes IoT Edge-Gerät mehrere Module ausführen, um eine beliebige Anzahl von Prozessen auszuführen. Wenn Sie all diese Module gleichzeitig auf einem Gerät bereitstellen, müssen Sie deklarieren, welche Module enthalten sind und wie sie miteinander interagieren. 
 
 Das *Bereitstellungsmanifest* ist ein JSON-Dokument, das Folgendes beschreibt:
 
-* Welche IoT Edge-Module bereitgestellt werden müssen sowie die zugehörigen Erstellungs- und Verwaltungsoptionen
+* Die Konfiguration des Edge-Agents mit dem Containerimage für das jeweilige Modul, den Anmeldeinformationen für den Zugriff auf private Containerregistrierungen und Anweisungen zur Erstellung und Verwaltung des jeweiligen Moduls
 * Die Konfiguration des Edge-Hubs, die u. a. definiert, wie Nachrichten zwischen Modulen und schließlich an IoT Hub gesendet werden
-* Optional die Werte, die in den gewünschten Eigenschaften der Modulzwillinge festgelegt werden, um die einzelnen Modulanwendungen zu konfigurieren
+* Die gewünschten Eigenschaften der Modulzwillinge (optional)
 
 Alle IoT Edge-Geräte müssen mit einem Bereitstellungsmanifest konfiguriert werden. Eine neu installierte IoT Edge-Runtime meldet einen Fehlercode, solange kein gültiges Manifest konfiguriert ist. 
 
-In den Azure IoT Edge-Tutorials erstellen Sie ein Bereitstellungsmanifest mithilfe eines Assistenten im Azure IoT Edge-Portal. Sie können auch ein Bereitstellungsmanifest programmgesteuert mithilfe von REST oder des IoT Hub Service SDK anwenden. Weitere Informationen zu IoT Edge-Bereitstellungen finden Sie unter [Bereitstellen und Überwachen][lnk-deploy].
+In den Azure IoT Edge-Tutorials erstellen Sie ein Bereitstellungsmanifest mithilfe eines Assistenten im Azure IoT Edge-Portal. Sie können auch ein Bereitstellungsmanifest programmgesteuert mithilfe von REST oder des IoT Hub Service SDK anwenden. Weitere Informationen finden Sie unter [Grundlegendes zu IoT Edge-Bereitstellungen für einzelne Geräte oder bedarfsabhängig (Vorschau)][lnk-deploy].
 
 ## <a name="create-a-deployment-manifest"></a>Erstellen eines Bereitstellungsmanifests
 
-Allgemein beschrieben konfiguriert das Bereitstellungsmanifest die gewünschten Eigenschaften eines Modulzwillings für IoT Edge-Module, die auf einem IoT Edge-Gerät bereitgestellt werden. Zwei dieser Module sind immer vorhanden: der Edge-Agent und der Edge-Hub.
+Allgemein beschrieben konfiguriert das Bereitstellungsmanifest die gewünschten Eigenschaften eines Modulzwillings für IoT Edge-Module, die auf einem IoT Edge-Gerät bereitgestellt werden. Zwei dieser Module sind immer vorhanden: `$edgeAgent` und `$edgeHub`.
 
 Ein Bereitstellungsmanifest, das nur die IoT Edge-Runtime (Agent und Hub) enthält, ist gültig.
 
@@ -44,6 +44,7 @@ Das Manifest folgt dieser Struktur:
             "properties.desired": {
                 // desired properties of the Edge agent
                 // includes the image URIs of all modules
+                // includes container registry credentials
             }
         },
         "$edgeHub": {
@@ -67,7 +68,7 @@ Das Manifest folgt dieser Struktur:
 
 ## <a name="configure-modules"></a>Konfigurieren von Modulen
 
-Zusätzlich zum Einrichten der gewünschten Eigenschaften aller Module, die Sie bereitstellen möchten, müssen Sie die IoT Edge-Runtime anweisen, wie die Module installiert werden sollen. Die Konfigurations- und Verwaltungsinformationen für alle Module werden in den gewünschten **$edgeAgent**-Eigenschaften festgelegt. Zu diesen Informationen zählen die Konfigurationsparameter für den Edge-Agent selbst. 
+Sie müssen der IoT Edge-Runtime mitteilen, wie die Module in Ihrer Bereitstellung installiert werden sollen. Die Konfigurations- und Verwaltungsinformationen für alle Module werden in den gewünschten **$edgeAgent**-Eigenschaften festgelegt. Zu diesen Informationen zählen die Konfigurationsparameter für den Edge-Agent selbst. 
 
 Eine vollständige Liste der Eigenschaften, die hinzugefügt werden können oder müssen, finden Sie unter [Properties of the Edge agent and Edge hub](module-edgeagent-edgehub.md) (Eigenschaften des Edge-Agents und Edge-Hubs).
 
@@ -78,6 +79,11 @@ Die $edgeAgent-Eigenschaften weisen die folgende Struktur auf:
     "properties.desired": {
         "schemaVersion": "1.0",
         "runtime": {
+            "settings":{
+                "registryCredentials":{ // give the edge agent access to container images that aren't public
+                    }
+                }
+            }
         },
         "systemModules": {
             "edgeAgent": {
@@ -88,7 +94,7 @@ Die $edgeAgent-Eigenschaften weisen die folgende Struktur auf:
             }
         },
         "modules": {
-            "{module1}": { //optional
+            "{module1}": { // optional
                 // configuration and management details
             },
             "{module2}": { // optional
@@ -158,7 +164,7 @@ Die Senke definiert, wohin die Nachrichten gesendet werden. Dabei kann es sich u
 | `$upstream` | Sendet die Nachricht an IoT Hub |
 | `BrokeredEndpoint("/modules/{moduleId}/inputs/{input}")` | Sendet die Nachricht an Eingang `{input}` von Modul `{moduleId}` |
 
-Beachten Sie, dass der Edge-Hub At-Least-Once-Garantien bietet. Dies bedeutet, dass Nachrichten lokal gespeichert werden, wenn eine Route die Nachricht nicht an ihre Senke übermitteln kann. Dies kann beispielsweise der Fall sein, wenn der Edge-Hub keine Verbindung mit IoT Hub herstellen kann oder das Zielmodul nicht verbunden ist.
+IoT Edge bietet At-Least-Once-Garantien. Der Edge-Hub speichert Nachrichten lokal, falls eine Route die Nachricht nicht an die entsprechende Senke übermitteln kann. Dieser Fall kann beispielsweise eintreten, wenn der Edge-Hub keine Verbindung mit der IoT Hub-Instanz herstellen kann oder das Zielmodul nicht verbunden ist.
 
 Der Edge-Hub speichert die Nachrichten bis zu dem Zeitpunkt, der in der `storeAndForwardConfiguration.timeToLiveSecs`-Eigenschaft in den gewünschten [Edge-Hubeigenschaften](module-edgeagent-edgehub.md) angegeben ist.
 
@@ -168,7 +174,7 @@ Im Bereitstellungsmanifest können gewünschte Eigenschaften für den Modulzwill
 
 Wenn Sie die gewünschten Eigenschaften eines Modulzwillings nicht im Bereitstellungsmanifest angeben, ändert IoT Hub den Modulzwilling nicht ab, und Sie können die gewünschten Eigenschaften programmgesteuert festlegen.
 
-Die gleichen Verfahren, mit denen Sie Gerätezwillinge ändern, werden auch zum Ändern von Modulzwillingen verwendet. Weitere Informationen finden Sie im [Entwicklerhandbuch für Gerätezwillinge](../iot-hub/iot-hub-devguide-device-twins.md).   
+Die gleichen Verfahren, mit denen Sie Gerätezwillinge ändern, werden auch zum Ändern von Modulzwillingen verwendet. Weitere Informationen finden Sie unter [Verstehen und Verwenden von Gerätezwillingen in IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).   
 
 ## <a name="deployment-manifest-example"></a>Beispiel für ein Bereitstellungsmanifest
 
@@ -176,72 +182,79 @@ Dies ist ein Beispiel für das JSON-Dokument eines Bereitstellungsmanifests.
 
 ```json
 {
-"moduleContent": {
+  "moduleContent": {
     "$edgeAgent": {
-        "properties.desired": {
-            "schemaVersion": "1.0",
-            "runtime": {
-                "type": "docker",
-                "settings": {
-                    "minDockerVersion": "v1.25",
-                    "loggingOptions": ""
-                }
-            },
-            "systemModules": {
-                "edgeAgent": {
-                    "type": "docker",
-                    "settings": {
-                    "image": "microsoft/azureiotedge-agent:1.0-preview",
-                    "createOptions": ""
-                    }
-                },
-                "edgeHub": {
-                    "type": "docker",
-                    "status": "running",
-                    "restartPolicy": "always",
-                    "settings": {
-                    "image": "microsoft/azureiotedge-hub:1.0-preview",
-                    "createOptions": ""
-                    }
-                }
-            },
-            "modules": {
-                "tempSensor": {
-                    "version": "1.0",
-                    "type": "docker",
-                    "status": "running",
-                    "restartPolicy": "always",
-                    "settings": {
-                    "image": "microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview",
-                    "createOptions": "{}"
-                    }
-                },
-                "filtermodule": {
-                    "version": "1.0",
-                    "type": "docker",
-                    "status": "running",
-                    "restartPolicy": "always",
-                    "settings": {
-                    "image": "myacr.azurecr.io/filtermodule:latest",
-                    "createOptions": "{}"
-                    }
-                }
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "runtime": {
+          "type": "docker",
+          "settings": {
+            "minDockerVersion": "v1.25",
+            "loggingOptions": "",
+            "registryCredentials": {
+              "ContosoRegistry": {
+                "username": "myacr",
+                "password": "{password}",
+                "address": "myacr.azurecr.io"
+              }
             }
+          }
+        },
+        "systemModules": {
+          "edgeAgent": {
+            "type": "docker",
+            "settings": {
+              "image": "microsoft/azureiotedge-agent:1.0-preview",
+              "createOptions": ""
+            }
+          },
+          "edgeHub": {
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "microsoft/azureiotedge-hub:1.0-preview",
+              "createOptions": ""
+            }
+          }
+        },
+        "modules": {
+          "tempSensor": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
+              "createOptions": "{}"
+            }
+          },
+          "filtermodule": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "myacr.azurecr.io/filtermodule:latest",
+              "createOptions": "{}"
+            }
+          }
         }
+      }
     },
     "$edgeHub": {
-        "properties.desired": {
-            "schemaVersion": "1.0",
-            "routes": {
-                "sensorToFilter": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
-                "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
-            },
-            "storeAndForwardConfiguration": {
-                "timeToLiveSecs": 10
-            }
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "routes": {
+          "sensorToFilter": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
+          "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
+        },
+        "storeAndForwardConfiguration": {
+          "timeToLiveSecs": 10
         }
+      }
     }
-}
+  }
 }
 ```
 

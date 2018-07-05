@@ -10,25 +10,25 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 06/08/2018
-ms.openlocfilehash: 0e10907ac3db2d792b73e0a37aa2d0f6a916d746
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.date: 06/19/2018
+ms.openlocfilehash: 2fd5049b8b65620087e3c1ec42b6a5dcb0e0741a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850071"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214102"
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Häufig gestellte Fragen zu Azure Database Migration Service
 Dieser Artikel enthält häufig gestellte Fragen zur Verwendung von Azure Database Migration Service sowie entsprechende Antworten.
 
 ### <a name="q-what-is-azure-database-migration-service"></a>F: Was ist Azure Database Migration Service?
-Azure Database Migration Service ist ein vollständig verwalteter Dienst, der die nahtlose Migration von mehreren Datenbankquellen zu Azure-Datenplattformen mit minimaler Downtime ermöglicht. Der Dienst ist derzeit in Public Preview, und bei der Entwicklung wurden folgende Schwerpunkte berücksichtigt:
+Azure Database Migration Service ist ein vollständig verwalteter Dienst, der die nahtlose Migration von mehreren Datenbankquellen zu Azure-Datenplattformen mit minimaler Downtime ermöglicht. Der Dienst ist derzeit allgemein verfügbar, wobei laufende Entwicklungsarbeiten sich auf Folgendes konzentrieren:
 - Zuverlässigkeit und Leistung
 - Iteratives Hinzufügen von Quelle-Ziel-Paaren
 - Kontinuierliche Investition in reibungslose Migrationen
 
 ### <a name="q-what-source-target-pairs-does-the-azure-database-migration-service-currently-support"></a>F: Welche Quelle-Ziel-Paare werden derzeit von Azure Database Migration Service unterstützt?
-Der als Public Preview erhältliche Dienst unterstützt derzeit die Migration von SQL Server zu Azure SQL-Datenbank, und Sie können nun zum Azure-Portal wechseln, um Azure Database Migration Service für dieses Szenario zu verwenden. Weitere Quelle-Ziel-Paare (beispielsweise SQL Server zu verwalteter Azure SQL-Datenbank-Instanz oder Oracle zu Azure SQL-Datenbank) sind im Rahmen einer eingeschränkten privaten Vorschauversion verfügbar. Interessenten für die eingeschränkte private Vorschauversion können sich [hier](https://sqldatabase-migrationpreview.azurewebsites.net/) registrieren.
+Der Dienst unterstützt derzeit die Migration von SQL Server zu Azure SQL-Datenbank, und Sie können nun zum Azure-Portal wechseln, um Azure Database Migration Service für dieses Szenario zu verwenden. Weitere Quelle-Ziel-Paare wie Oracle zu Azure SQL-Datenbank sind im Rahmen einer eingeschränkten privaten Vorschauversion verfügbar. Interessenten für die eingeschränkte private Vorschauversion können sich [hier](https://aka.ms/dms-preview/) registrieren.
 
 ### <a name="q-how-does-the-azure-database-migration-service-compare-to-other-microsoft-database-migration-tools-such-as-the-database-migration-assistant-dma-or-sql-server-migration-assistant-ssma"></a>F: Inwiefern unterscheidet sich Azure Database Migration Service von anderen Microsoft-Datenbankmigrationstools wie DBA (Database Migration Assistant) oder SSMA (SQL Server Migration Assistant)?
 Azure Database Migration Service ist die bevorzugte Methode für bedarfsorientierte Datenbankmigrationen zu Microsoft Azure. Ausführlichere Informationen zu den Unterschieden zwischen Azure Database Migration Service und anderen Microsoft-Datenbankmigrationstools sowie Empfehlungen für die Verwendung des Diensts in verschiedenen Szenarien finden Sie im Blogbeitrag [Differentiating Microsoft’s Database Migration Tools and Services](https://blogs.msdn.microsoft.com/datamigration/2017/10/13/differentiating-microsofts-database-migration-tools-and-services/) (Abgrenzung der Datenbankmigrationstools und -dienste von Microsoft).
@@ -93,4 +93,4 @@ Wenn der Benutzer den Azure Database Migration Service (DMS) explizit beendet od
 Teilen Sie uns Ihre Meinung mit! Feedback und Vorschläge für Azure Database Migration Service können Sie uns über [UserVoice](https://feedback.azure.com/forums/906100-azure-database-migration-service) zukommen lassen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Übersicht über Azure Database Migration Service sowie Informationen zur regionalen Verfügbarkeit als Public Preview finden Sie im Artikel [Was ist die Vorschauversion von Azure Database Migration Service?](dms-overview.md). 
+Eine Übersicht über Azure Database Migration Service und Informationen zur regionalen Verfügbarkeit finden Sie im Artikel [Was ist Azure Database Migration Service?](dms-overview.md). 

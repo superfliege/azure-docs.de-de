@@ -17,12 +17,12 @@ ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 276e53784b30c2196ad7455cf9fd801a103fdc30
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 719506e35e6abe5ac573c7ceedc1668fd2704bd4
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34590853"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961688"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Verwaltung und Anpassung der Active Directory-Verbunddienste mit Azure AD Connect
 In diesem Artikel wird beschrieben, wie Active Directory-Verbunddienste (AD FS) mit Azure Active Directory (Azure AD) Connect verwaltet und angepasst werden. Darüber hinaus werden andere gängige AD FS-Aufgaben behandelt, die Sie möglicherweise zur vollständigen Konfiguration einer AD FS-Farm benötigen.
@@ -246,31 +246,8 @@ In dieser Regel überprüfen Sie einfach das temporäre Flag **idflag**. Sie ent
 > Die Reihenfolge dieser Regeln ist wichtig.
 
 ### <a name="sso-with-a-subdomain-upn"></a>SSO mit Unterdomänen-UPN
-Mit Azure AD Connect können Sie mehrere Domänen für den Verbund hinzufügen. Dies ist unter [Hinzufügen einer neuen Verbunddomäne](active-directory-aadconnect-federation-management.md#addfeddomain) beschrieben. Sie müssen den UPN-Anspruch (User Principal Name, Benutzerprinzipalname) ändern, damit die Aussteller-ID der Stammdomäne entspricht und nicht der Unterdomäne, da die Verbundstammdomäne auch das untergeordnete Element abdeckt.
 
-Standardmäßig wird die Anspruchsregel für die Aussteller-ID wie folgt festgelegt:
-
-    c:[Type
-    == “http://schemas.xmlsoap.org/claims/UPN“]
-
-    => issue(Type = “http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(c.Value, “.+@(?<domain>.+)“, “http://${domain}/adfs/services/trust/“));
-
-![Aussteller-ID-Standardanspruch](media/active-directory-aadconnect-federation-management/issuer_id_default.png)
-
-Die Standardregel verwendet einfach das UPN-Suffix im Anspruch der Aussteller-ID. John ist z.B. ein Benutzer in „sub.contoso.com“, und „contoso.com“ bildet mit Azure AD einen Verbund. John gibt bei der Anmeldung bei Azure AD john@sub.contoso.com als Benutzernamen ein. Die Standardanspruchsregel für die Aussteller-ID verarbeitet diesen wie folgt:
-
-    c:[Type
-    == “http://schemas.xmlsoap.org/claims/UPN“]
-
-    => issue(Type = “http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(john@sub.contoso.com, “.+@(?<domain>.+)“, “http://${domain}/adfs/services/trust/“));
-
-**Anspruchswert:** http://sub.contoso.com/adfs/services/trust/
-
-Damit nur die Stammdomäne im Ausstelleranspruchswert enthalten ist, ändern Sie die Anspruchsregel wie folgt:
-
-    c:[Type == “http://schemas.xmlsoap.org/claims/UPN“]
-
-    => issue(Type = “http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(c.Value, “^((.*)([.|@]))?(?<domain>[^.]*[.].*)$”, “http://${domain}/adfs/services/trust/“));
+Mit Azure AD Connect können Sie mehrere Domänen für den Verbund hinzufügen. Dies ist unter [Hinzufügen einer neuen Verbunddomäne](active-directory-aadconnect-federation-management.md#addfeddomain) beschrieben. Ab der Azure AD Connect-Version 1.1.553.0 wird automatisch die korrekte Anspruchsregel für „issuerID“ erstellt. Sollten Sie die Azure AD Connect-Version 1.1.553.0 (oder eine höhere Version) nicht verwenden können, verwenden Sie das Tool [Azure AD RPT Claim Rules](https://aka.ms/aadrptclaimrules), um korrekte Anspruchsregeln für die Azure AD-Vertrauensstellung der vertrauenden Seite zu generieren und festzulegen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Erfahren Sie mehr über [Azure AD Connect-Optionen für die Benutzeranmeldung](active-directory-aadconnect-user-signin.md).

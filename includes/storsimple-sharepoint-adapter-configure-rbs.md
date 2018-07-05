@@ -38,7 +38,7 @@
 
 4. Überprüfen Sie die Konfiguration:
    
-   1. Melden Sie sich bei der SharePoint-Zentraladministrationswebsite an, und navigieren Sie zur Seite **StorSimple-Adapter konfigurieren** .
+   1. Melden Sie sich bei der SharePoint-Zentraladministrationswebsite an, und navigieren Sie zur Seite **StorSimple-Adapter konfigurieren**.
    2. Vergewissern Sie sich, dass die Konfigurationsdetails den eingegebenen Einstellungen entsprechen. 
 5. Vergewissern Sie sich, dass RBS ordnungsgemäß funktioniert:
    

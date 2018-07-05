@@ -11,22 +11,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/16/2018
+ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 234dacca152dca6e8e212a86f3921c9355f640e4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1d1b21897975717db7b733e33b7700bc76e3e065
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620339"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046546"
 ---
-# <a name="monitor-data-factories-using-azure-monitor"></a>Überwachen von Data Factorys mit Azure Monitor  
+# <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Benachrichtigen und Überwachen von Data Factorys mithilfe von Azure Monitor
 Cloudanwendungen sind komplexe Systeme mit zahlreichen Variablen. Die Überwachung stellt Daten bereit, auf deren Grundlage die ordnungsgemäße Ausführung der Anwendung sichergestellt werden kann. Sie trägt auch zur Vermeidung potenzieller Probleme bei und hilft bei der Behandlung bereits aufgetretener Probleme. Darüber hinaus können Sie auf der Grundlage von Überwachungsdaten umfassende Erkenntnisse über Ihre Anwendung gewinnen. Mithilfe dieser Kenntnisse können Sie die Leistung oder Wartungsfreundlichkeit der Anwendung verbessern oder Aktionen automatisieren, die andernfalls manuell ausgeführt werden müssten.
 
-Azure Monitor stellt Infrastrukturmetriken auf Basisebene und Protokolle für die meisten Dienste in Microsoft Azure bereit. Weitere Informationen finden Sie in der [Übersicht über Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor). Azure-Diagnoseprotokolle sind von einer Ressource ausgegebene Protokolle mit umfangreichen, in kurzen Abständen erfassten Betriebsdaten der Ressource. Data Factory gibt die Diagnoseprotokolle in Azure Monitor. 
+Azure Monitor stellt Infrastrukturmetriken auf Basisebene und Protokolle für die meisten Dienste in Microsoft Azure bereit. Weitere Informationen finden Sie in der [Übersicht über Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor). Azure-Diagnoseprotokolle sind von einer Ressource ausgegebene Protokolle mit umfangreichen, in kurzen Abständen erfassten Betriebsdaten der Ressource. Data Factory gibt die Diagnoseprotokolle in Azure Monitor.
 
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts in der allgemein verfügbaren Version (GA) verwenden, lesen Sie den Artikel [Überwachen und Verwalten von Azure Data Factory-Pipelines mit dem Azure-Portal und PowerShell](v1/data-factory-monitor-manage-pipelines.md).
+## <a name="persist-data-factory-data"></a>Dauerhaftes Speichern von Data Factory-Daten
+Data Factory speichert nur Pipelineausführungsdaten 45 Tage lang. Wenn Sie Pipelineausführungsdaten bei Verwendung von Azure Monitor länger als 45 Tage speichern möchten, können Sie nicht nur Diagnoseprotokolle zu Analysezwecken weiterleiten, sondern sie auch in einem Speicherkonto speichern, um Factoryinformationen für einen Zeitraum Ihrer Wahl aufzubewahren.
 
 ## <a name="diagnostic-logs"></a>Diagnoseprotokolle
 
@@ -101,15 +101,15 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
             ]
     },
     "location": ""
-} 
+}
 ```
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | --- | --- | --- |
 | storageAccountId |Zeichenfolge | Die Ressourcen-ID des Speicherkontos, an das Diagnoseprotokolle gesendet werden sollen. |
-| serviceBusRuleId |Zeichenfolge | Die Service Bus-Regel-ID des Service Bus-Namespace, in dem Event Hubs für das Streaming von Diagnoseprotokollen erstellt werden sollen. Die Regel-ID hat dieses Format: „{Service Bus-Ressourcen-ID}/authorizationrules/{Schlüsselname}“.|
+| serviceBusRuleId |Zeichenfolge | Die Service Bus-Regel-ID des Service Bus-Namespace, in dem Event Hubs für das Streaming von Diagnoseprotokollen erstellt werden sollen. Die Regel-ID hat folgendes Format: "{Service Bus-Ressourcen-ID}/authorizationrules/{Schlüsselname}".|
 | workspaceId | Komplexer Typ | Array metrischer Zeiteinheiten und ihrer Aufbewahrungsrichtlinien. Diese Eigenschaft ist derzeit leer. |
-|Metriken| Parameterwerte der Pipelineausführung, die an die aufgerufene Pipeline übergeben werden sollen| Ein JSON-Objekt, das Parameternamen Argumentwerten zuordnet | 
+|Metriken| Parameterwerte der Pipelineausführung, die an die aufgerufene Pipeline übergeben werden sollen| Ein JSON-Objekt, das Parameternamen Argumentwerten zuordnet |
 | Protokolle| Komplexer Typ| Der Name einer Diagnoseprotokollkategorie für einen Ressourcentyp. Um die Liste der Diagnoseprotokollkategorien für eine Ressource zu erhalten, führen Sie zuerst einen GET-Vorgang zum Abrufen von Diagnoseeinstellungen aus. |
 | category| Zeichenfolge| Array von Protokollkategorien und ihrer Aufbewahrungsrichtlinien |
 | timeGrain | Zeichenfolge | Die Granularität von Metriken, die im Zeitformat ISO 8601 erfasst werden. Muss „PT1M“ (eine Minute) sein|
@@ -231,14 +231,14 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     "identity": null
 }
 ```
-[Weitere Informationen](https://msdn.microsoft.com/library/azure/dn931932.aspx)
+[Weitere Informationen](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings)
 
 ## <a name="schema-of-logs--events"></a>Schema von Protokollen und Ereignissen
 
 ### <a name="activity-run-logs-attributes"></a>Attribute der Protokolle von Aktivitätsausführungen
 
 ```json
-{  
+{
    "Level": "",
    "correlationId":"",
    "time":"",
@@ -252,7 +252,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
    "activityName":"",
    "start":"",
    "end":"",
-   "properties:" 
+   "properties:"
        {
           "Input": "{
               "source": {
@@ -294,7 +294,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ### <a name="pipeline-run-logs-attributes"></a>Attribute der Protokolle von Pipelineausführungen
 
 ```json
-{  
+{
    "Level": "",
    "correlationId":"",
    "time":"",
@@ -307,7 +307,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
    "start":"",
    "end":"",
    "status":"",
-   "properties": 
+   "properties":
     {
       "Parameters": {
         "<parameter1Name>": "<parameter1Value>"
@@ -340,7 +340,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ### <a name="trigger-run-logs-attributes"></a>Attribute der Protokolle von Triggerausführungen
 
 ```json
-{ 
+{
    "Level": "",
    "correlationId":"",
    "time":"",
@@ -362,7 +362,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
       },
       "SystemParameters": {}
     }
-} 
+}
 
 ```
 
@@ -397,7 +397,7 @@ ADFV2 gibt die folgenden Metriken aus.
 | TriggerSucceededRuns | Metriken zu erfolgreichen Triggerausführungen  | Count    | Gesamt                | Insgesamt erfolgreiche Triggerausführungen in einem Zeitfenster von einer Minute   |
 | TriggerFailedRuns    | Metriken zu fehlerhaften Triggerausführungen     | Count    | Gesamt                | Insgesamt fehlerhafte Triggerausführungen in einem Zeitfenster von einer Minute      |
 
-Eine Anleitung für den Zugriff auf die Metriken finden Sie im folgenden Artikel: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics 
+Eine Anleitung für den Zugriff auf die Metriken finden Sie im folgenden Artikel: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics
 
 ## <a name="alerts"></a>Alerts
 
@@ -445,4 +445,4 @@ Sie können sich auch beim Azure-Portal anmelden und auf **Überwachen &gt; Warn
     ![Aktionsgruppe, Bildschirm 4 von 4](media/monitor-using-azure-monitor/alerts_image12.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Im Artikel [Programmgesteuertes Überwachen und Verwalten von Pipelines](monitor-programmatically.md) erfahren Sie mehr zum Überwachen und Verwalten von Pipelines. 
+Im Artikel [Programmgesteuertes Überwachen und Verwalten von Pipelines](monitor-programmatically.md) erfahren Sie mehr zum Überwachen und Verwalten von Pipelines.

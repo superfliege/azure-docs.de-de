@@ -1,24 +1,26 @@
 ---
-title: Bewährte Methoden zur Verwendung von Azure Data Lake Store | Microsoft-Dokumentation
-description: Enthält eine Beschreibung der bewährten Methoden zur Datenerfassung, Datensicherheit und Leistung in Bezug auf die Verwendung von Azure Data Lake Store.
+title: Bewährte Methoden zur Verwendung von Azure Data Lake Storage Gen1 | Microsoft-Dokumentation
+description: Enthält eine Beschreibung der bewährten Methoden zur Datenerfassung, Datensicherheit und Leistung in Bezug auf die Verwendung von Azure Data Lake Storage Gen1 (ehemals Azure Data Lake Store).
 services: data-lake-store
 documentationcenter: ''
 author: sachinsbigdata
 manager: jhubbard
-editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2018
+ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 9fd6b72a7d09f85f7a6e60e5af4035ffc3862d2c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 00eb2b6b60aa6c3224b58556f6dad64d4294c308
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625337"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37034801"
 ---
-# <a name="best-practices-for-using-azure-data-lake-store"></a>Bewährte Methoden für die Verwendung von Azure Data Lake Store
+# <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Bewährte Methoden zur Verwendung von Azure Data Lake Storage Gen1
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
 In diesem Artikel erfahren Sie mehr zu den bewährten Methoden und Aspekten in Bezug auf die Arbeit mit Azure Data Lake Store. Der Artikel enthält Informationen zu den Bereichen Sicherheit, Leistung, Resilienz und Überwachung für Data Lake Store. Vor der Einführung von Data Lake Store war die Arbeit mit wirklich großen Datenmengen (Big Data) in Diensten wie Azure HDInsight sehr komplex. Daten mussten per Sharding auf mehrere Blobspeicherkonten verteilt werden, um die Speicherung im Petabyte-Bereich und eine entsprechende optimale Leistung zu erzielen. Dank Data Lake Store gelten die meisten festen Grenzwerte im Hinblick auf die Größe und Leistung nicht mehr. In diesem Artikel werden aber trotzdem noch einige Aspekte beschrieben, damit Sie für Data Lake Store die bestmögliche Leistung erzielen können. 
 
 ## <a name="security-considerations"></a>Sicherheitshinweise
@@ -114,7 +116,7 @@ Kopieraufträge können von Apache Oozie-Workflows ausgelöst werden, indem Häu
 
 ### <a name="use-azure-data-factory-to-schedule-copy-jobs"></a>Verwenden von Azure Data Factory zum Planen von Kopieraufträgen 
 
-Azure Data Factory kann auch verwendet werden, um Kopieraufträge mit einer **Kopieraktivität** zu planen, und über den **Kopier-Assistenten** kann sogar eine Häufigkeit dafür eingerichtet werden. Beachten Sie hierbei, dass für Azure Data Factory eine Begrenzung in Bezug auf die Einheiten der Clouddatenverschiebung (Data Movement Units, DMUs) gilt und für große Datenworkloads irgendwann eine Durchsatz-/Computebeschränkung greift. Außerdem sind mit Azure Data Factory derzeit keine Deltaupdates zwischen Data Lake Store-Konten möglich, sodass für Ordner wie Hive-Tabellen für die Replikation eine vollständige Kopie erforderlich ist. Weitere Informationen zum Kopieren mit Data Factory finden Sie im [Handbuch zur Leistung und Optimierung der Kopieraktivität](../data-factory/v1/data-factory-copy-activity-performance.md). 
+Azure Data Factory kann auch verwendet werden, um Kopieraufträge mit einer **Kopieraktivität** zu planen, und über den **Kopier-Assistenten** kann sogar eine Häufigkeit dafür eingerichtet werden. Beachten Sie hierbei, dass für Azure Data Factory eine Begrenzung in Bezug auf die Einheiten der Clouddatenverschiebung (Data Movement Units, DMUs) gilt und für große Datenworkloads irgendwann eine Durchsatz-/Computebeschränkung greift. Außerdem sind mit Azure Data Factory derzeit keine Deltaupdates zwischen Data Lake Store-Konten möglich, sodass für Ordner wie Hive-Tabellen für die Replikation eine vollständige Kopie erforderlich ist. Weitere Informationen zum Kopieren mit Data Factory finden Sie im [Handbuch zur Leistung und Optimierung der Kopieraktivität](../data-factory/copy-activity-performance.md). 
 
 ### <a name="adlcopy"></a>AdlCopy
 

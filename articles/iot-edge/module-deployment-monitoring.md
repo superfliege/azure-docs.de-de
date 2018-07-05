@@ -4,18 +4,18 @@ description: Hier erfahren Sie, wie Module auf Edge-Geräten bereitgestellt werd
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 10/05/2017
+ms.date: 06/06/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 880a17b6029dafec9ed41e3a32802dc42b872e77
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: f64e6db576b7b1605cc070948a021184fc6ee8ad
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725325"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029259"
 ---
-# <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale---preview"></a>Grundlegendes zu IoT Edge-Bereitstellungen für einzelne Geräte oder bedarfsabhängig (Vorschau)
+# <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale"></a>Grundlegendes zu IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf
 
 Für Azure IoT Edge-Geräte gilt ein [Gerätelebenszyklus][lnk-lifecycle], der weitgehend dem von anderen Typen von IoT-Geräten entspricht:
 
@@ -23,7 +23,7 @@ Für Azure IoT Edge-Geräte gilt ein [Gerätelebenszyklus][lnk-lifecycle], der w
 1. Die Geräte werden zum Ausführen von [IoT Edge-Modulen][lnk-modules] konfiguriert, und ihre Integrität wird überwacht. 
 1. Schließlich können Geräte außer Kraft gesetzt werden, wenn sie ersetzt werden oder veraltet sind.  
 
-Azure IoT Edge bietet zwei Möglichkeiten zum Konfigurieren der Module, die auf IoT Edge-Geräten ausgeführt werden: eine für die Entwicklung und schnelle Iterationen auf einem einzelnen Gerät (die Sie in den Azure IoT Edge-Lernprogrammen verwendet haben) und eine zum Verwalten großer Bestände von IoT Edge-Geräten. Beide Ansätze sind im Azure-Portal und programmgesteuert verfügbar.
+Azure IoT Edge bietet zwei Möglichkeiten zum Konfigurieren der Module, die auf IoT Edge-Geräten ausgeführt werden: eine für Entwicklungsarbeiten und schnelle Iterationen auf einem einzelnen Gerät (diese Methode wurde in den Azure IoT Edge-Tutorials verwendet) und eine für die Verwaltung umfangreicher IoT Edge-Gerätebestände. Beide Ansätze sind im Azure-Portal und programmgesteuert verfügbar.
 
 Der Schwerpunkt dieses Artikels liegt auf der Konfigurations- und Überwachungsphase für größere Gerätebestände, die zusammen als automatische IoT Edge-Bereitstellungen bezeichnet werden. Die allgemeinen Schritte zur Bereitstellung lauten wie folgt:   
 
@@ -32,15 +32,15 @@ Der Schwerpunkt dieses Artikels liegt auf der Konfigurations- und Überwachungsp
 1. Der IoT Hub-Dienst ruft den Status von den IoT Edge-Geräten ab und gibt diese für den Operator zur Überwachung aus.  Beispielsweise kann ein Operator sehen, wenn ein Edge-Gerät nicht erfolgreich konfiguriert wurde oder wenn bei einem Modul während der Laufzeit ein Fehler auftritt. 
 1. Zu jedem Zeitpunkt werden neue IoT Edge-Geräte, die die Zielbedingungen erfüllen, für die Bereitstellung konfiguriert. Eine Bereitstellung, die auf alle IoT Edge-Geräte in Washington State ausgerichtet ist, konfiguriert ein neues IoT Edge-Gerät beispielsweise automatisch, sobald es bereitgestellt und der Gerätegruppe für Washington State hinzugefügt wurde. 
  
-In diesem Artikel werden die einzelnen Komponenten erläutert, die beim Konfigurieren und Überwachen einer Bereitstellung verwendet werden. Eine exemplarische Vorgehensweise zum Erstellen und Aktualisieren einer Bereitstellung finden Sie unter [Deploy and monitor IoT Edge modules at scale][lnk-howto] (Bedarfsabhängiges Bereitstellen und Überwachen von IoT Edge-Modulen).
+In diesem Artikel werden die einzelnen Komponenten beschrieben, die beim Konfigurieren und Überwachen einer Bereitstellung verwendet werden. Eine exemplarische Vorgehensweise zum Erstellen und Aktualisieren einer Bereitstellung finden Sie unter [Deploy and monitor IoT Edge modules at scale][lnk-howto] (Bedarfsabhängiges Bereitstellen und Überwachen von IoT Edge-Modulen).
 
 ## <a name="deployment"></a>Bereitstellung
 
-Bei einer automatischen IoT Edge-Bereitstellung werden IoT Edge-Modulimages zugewiesen, die als Instanzen auf einem bestimmten Satz von IoT Edge-Geräten ausgeführt werden. Hierfür wird ein IoT Edge-Bereitstellungsmanifest konfiguriert, das eine Liste von Modulen mit den entsprechenden Initialisierungsparametern enthält. Eine Bereitstellung kann einem einzelnen Gerät (in der Regel basierend auf der Geräte-ID) oder einer Gruppe von Geräten (basierend auf Tags) zugewiesen werden. Nachdem ein IoT Edge-Gerät ein Bereitstellungsmanifest erhalten hat, lädt es die Modul-Containerimages aus den entsprechenden Containerrepositorys herunter, installiert und konfiguriert sie. Sobald eine Bereitstellung erstellt wurde, kann der Operator den Bereitstellungsstatus überwachen und so erkennen, ob die Zielgeräte ordnungsgemäß konfiguriert wurden.   
+Bei einer automatischen IoT Edge-Bereitstellung werden IoT Edge-Modulimages zugewiesen, die als Instanzen auf einem bestimmten Satz von IoT Edge-Geräten ausgeführt werden. Hierfür wird ein IoT Edge-Bereitstellungsmanifest konfiguriert, das eine Liste von Modulen mit den entsprechenden Initialisierungsparametern enthält. Eine Bereitstellung kann einem einzelnen Gerät (basierend auf der Geräte-ID) oder einer Gruppe von Geräten (basierend auf Tags) zugewiesen werden. Nachdem ein IoT Edge-Gerät ein Bereitstellungsmanifest erhalten hat, lädt es die Modul-Containerimages aus den entsprechenden Containerrepositorys herunter, installiert und konfiguriert sie. Sobald eine Bereitstellung erstellt wurde, kann der Operator den Bereitstellungsstatus überwachen und so erkennen, ob die Zielgeräte ordnungsgemäß konfiguriert wurden.   
 
-Geräte müssen als IoT Edge-Geräte bereitgestellt werden, um mit einer Bereitstellung konfiguriert werden zu können. Folgende Komponenten werden vorausgesetzt und sind nicht in der Bereitstellung enthalten:
+Geräte müssen als IoT Edge-Geräte bereitgestellt werden, um mit einer Bereitstellung konfiguriert werden zu können. Auf dem Gerät muss Folgendes vorhanden sein, um die Bereitstellung zu ermöglichen:
 * Das Basisbetriebssystem
-* Docker 
+* Ein Containerverwaltungssystem (beispielsweise Moby oder Docker)
 * Bereitstellung der IoT Edge-Laufzeit 
 
 ### <a name="deployment-manifest"></a>Bereitstellungsmanifest
@@ -52,12 +52,16 @@ Die Konfigurationsmetadaten für jedes Modul enthalten Folgendes:
 * Typ 
 * Status (z.B. „wird ausgeführt“ oder „beendet“) 
 * Richtlinien für den Neustart 
-* Image- und Containerrepository 
+* Image- und Containerregistrierung
 * Routen für Dateneingabe und -ausgabe 
+
+Wenn das Modulimage in einer privaten Containerregistrierung gespeichert ist, befinden sich die Anmeldeinformationen für die Registrierung im IoT Edge-Agent. 
 
 ### <a name="target-condition"></a>Zielbedingung
 
-Die Zielbedingung wird während der Lebensdauer der Bereitstellung kontinuierlich ausgewertet, um jedes neue Gerät einzubeziehen, das die Anforderungen erfüllt, bzw. Geräte zu entfernen, die die Bedingung nicht mehr erfüllen. Die Bereitstellung wird reaktiviert, wenn der Dienst Änderungen an der Zielbedingung feststellt. Nehmen wir an, Sie verfügen über eine Bereitstellung A mit der Zielbedingung „tags.environment = 'prod'“. Zum Zeitpunkt, da Sie die Bereitstellung starten, gibt es 10 Geräte in der Produktionsumgebung. Die Module werden erfolgreich auf diesen 10 Geräten installiert. Der Status des IoT Edge-Agents wird als 10 Geräte insgesamt, 10 erfolgreiche Antworten, 0 Fehlerantworten und 0 ausstehende Antworten angezeigt. Jetzt fügen Sie 5 weitere Geräte mit „tags.environment = 'prod'“ hinzu. Der Dienst erkennt die Änderung, und der Status des IoT Edge-Agents ist zu dem Zeitpunkt, da er die Bereitstellung auf den fünf neuen Geräten versucht, 15 Geräte insgesamt, 10 erfolgreiche Antworten, 0 Fehlerantworten und 5 ausstehende Antworten.
+Die Zielbedingung wird während der Lebensdauer der Bereitstellung kontinuierlich ausgewertet, um jedes neue Gerät einzubeziehen, das die Anforderungen erfüllt, bzw. Geräte zu entfernen, die die Bedingung nicht mehr erfüllen. Die Bereitstellung wird reaktiviert, wenn der Dienst Änderungen an der Zielbedingung feststellt. 
+
+Angenommen, Sie verfügen über eine Bereitstellung A mit der Zielbedingung „tags.environment = 'prod'“. Wenn Sie die Bereitstellung starten, sind zehn Produktionsgeräte vorhanden. Die Module werden erfolgreich auf diesen zehn Geräten installiert. Der Status des IoT Edge-Agents wird mit insgesamt zehn Geräten, zehn erfolgreichen Antworten, null Fehlerantworten und null ausstehenden Antworten angezeigt. Nun fügen Sie fünf weitere Geräte mit „tags.environment = 'prod'“ hinzu. Der Dienst erkennt die Änderung, und der Status des IoT Edge-Agents wird mit insgesamt 15 Geräten, zehn erfolgreichen Antworten, null Fehlerantworten und fünf ausstehenden Antworten angezeigt, wenn der Agent versucht, die fünf neuen Geräte bereitzustellen.
 
 Verwenden Sie eine beliebige boolesche Bedingung auf Tags von Gerätezwillingen oder die Geräte-ID, um die Zielgeräte auszuwählen. Wenn Sie eine Bedingung mit Tags verwenden möchten, müssen Sie auf dem Gerätezwilling einen Abschnitt „"tags":{}“ auf der gleichen Ebene wie die Eigenschaften hinzufügen. [Weitere Informationen über Tags in Gerätezwillingen](../iot-hub/iot-hub-devguide-device-twins.md)
 
@@ -73,7 +77,7 @@ Beim Erstellen einer Zielbedingung gelten die folgenden Einschränkungen:
 * Sie können auf einem Gerätezwilling nur eine Zielbedingung mithilfe von Tags oder der Geräte-ID erstellen.
 * Doppelte Anführungszeichen sind in keinem Teil der Zielbedingung zulässig. Verwenden Sie einfache Anführungszeichen.
 * Einfache Anführungszeichen werden für die Werte der Zielbedingung verwendet. Daher müssen Sie für ein einfaches Anführungszeichen ein weiteres einfaches Anführungszeichen als Escapezeichen verwenden, wenn es Teil des Gerätenamens ist. Beispielsweise müsste die Zielbedingung für „operator'sDevice“ in der Form „deviceId='operator''sDevice'“ geschrieben werden.
-* Zahlen, Buchstaben und die folgenden Zeichen sind in Werten für Zielbedingungen zulässig:-:.+%_#*? (),=@;$
+* In Werten für Zielbedingungen sind Zahlen, Buchstaben und folgende Zeichen zulässig: `-:.+%_#*?!(),=@;$`.
 
 ### <a name="priority"></a>Priorität
 

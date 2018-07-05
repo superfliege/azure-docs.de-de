@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/12/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: faccaa4496eb1deda23bbfcf335088a023d229d6
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 5011dfbe496472e21a85dee9fa4901dad429a984
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293176"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031728"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Tutorial: Meldung zur automatischen Benutzerkontobereitstellung
 
@@ -30,9 +30,9 @@ In diesem Artikel wird beschrieben, wie der Status von Bereitstellungsaufträgen
 
 ## <a name="overview"></a>Übersicht
 
-Bereitstellungsconnectors werden in erster Linie mithilfe des [Azure-Verwaltungsportals](https://portal.azure.com) unter Zuhilfenahme der [bereitgestellten Dokumentation](active-directory-saas-tutorial-list.md) für die Anwendung, bei der die Benutzerkontobereitstellung durchgeführt werden soll, eingerichtet und konfiguriert. Nachdem Bereitstellungsaufträge für eine Anwendung konfiguriert und ausgeführt wurden, können sie über eine der beiden Methoden gemeldet werden:
+Bereitstellungsconnectors werden über das [Azure-Portal](https://portal.azure.com) gemäß der [bereitgestellten Dokumentation](saas-apps/tutorial-list.md) für die unterstützte Anwendung eingerichtet und konfiguriert. Sobald sie konfiguriert wurden und ausgeführt werden, können mit einer der beiden folgenden Methoden Berichte für Bereitstellungsaufträge genutzt werden:
 
-* **Azure-Verwaltungsportal** – In diesem Artikel wird vorrangig das Abrufen von Berichtsinformationen aus dem [Azure-Verwaltungsportal](https://portal.azure.com) beschrieben, das einen Zusammenfassungsbericht für die Bereitstellung sowie ausführliche Überwachungsprotokolle für die Bereitstellung für eine bestimmte Anwendung bietet.
+* **Azure-Verwaltungsportal** – In diesem Artikel wird in erster Linie das Abrufen von Berichtsinformationen über das [Azure-Portal](https://portal.azure.com) beschrieben, das einen Zusammenfassungsbericht für die Bereitstellung sowie ausführliche Bereitstellungsüberwachungsprotokolle für eine bestimmte Anwendung bietet.
 
 * **Überwachungs-API** – Azure Active Directory stellt auch eine Überwachungs-API bereit, die den programmgesteuerten Abruf von detaillierten Überwachungsprotokollen für die Bereitstellung ermöglicht. Dokumentation speziell für die Verwendung dieser API finden Sie unter [Referenz zur Überwachungs-API von Azure Active Directory](active-directory-reporting-api-audit-reference.md). Zwar wird in diesem Artikel nicht speziell die Verwendung der API behandelt, jedoch werden die Arten von Bereitstellungsereignissen, die im Überwachungsprotokoll erfasst werden, erläutert.
 
@@ -54,28 +54,28 @@ Um Informationen zu Bereitstellungsberichten für eine bestimmte Anwendung abzur
 Über diese Ansicht können Sie sowohl auf den Zusammenfassungsbericht für die Bereitstellung als auch die Überwachungsprotokolle für die Bereitstellung zugreifen, wie im Folgenden beschrieben wird.
 
 
-### <a name="provisioning-summary-report"></a>Zusammenfassungsbericht für die Bereitstellung
+## <a name="provisioning-summary-report"></a>Zusammenfassungsbericht für die Bereitstellung
 
-Der Zusammenfassungsbericht für die Bereitstellung wird auf der Registerkarte **Bereitstellung** für die jeweilige Anwendung angezeigt. Diese befindet sich im Abschnitt „Synchronisierungsdetails“ unterhalb der **Einstellungen**, und enthält folgende Informationen:
+Der Zusammenfassungsbericht für die Bereitstellung wird auf der Registerkarte **Bereitstellung** für die jeweilige Anwendung angezeigt. Diese befindet sich im Abschnitt **Synchronisierungsdetails** unterhalb von **Einstellungen** und enthält folgende Informationen:
 
 * Die Gesamtanzahl von Benutzern und/oder -gruppen, die synchronisiert wurden und derzeit von der Bereitstellung zwischen dem Quell- und Zielsystem eingeschlossen werden.
 
-* Der Zeitpunkt, an dem die Synchronisierung zuletzt ausgeführt wurde. Synchronisierungen werden in der Regel alle 20-40 Minuten nach einer vollständigen Synchronisierung durchgeführt.
+* Der Zeitpunkt, an dem die Synchronisierung zuletzt ausgeführt wurde. Synchronisierungen werden nach Abschluss einer [Erstsynchronisierung](active-directory-saas-app-provisioning.md#what-happens-during-provisioning) in der Regel alle 20 bis 40 Minuten durchgeführt.
 
-* Es spielt keine Rolle, ob eine vollständige Erstsynchronisierung durchgeführt wurde.
+* Die Angabe, ob eine [Erstsynchronisierung](active-directory-saas-app-provisioning.md#what-happens-during-provisioning) durchgeführt wurde.
 
-* Es spielt keine Rolle, ob der Bereitstellungsprozess in Quarantäne versetzt wurde, und wie der Grund für den Quarantänestatus lautet (z.B. Fehler bei der Kommunikation mit dem Zielsystem aufgrund ungültiger Administratoranmeldeinformationen).
+* Die Angabe, ob der Bereitstellungsprozess in Quarantäne versetzt wurde, und den Grund für den Quarantänestatus (etwa Fehler bei der Kommunikation mit dem Zielsystem aufgrund von ungültigen Administratoranmeldeinformationen).
 
 Um die Betriebsintegrität des Zusammenfassungsberichts für die Bereitstellung zu überprüfen, sollten Administratoren zuerst im Zusammenfassungsbericht für die Bereitstellung nachsehen.
 
  ![Zusammenfassungsbericht](./media/active-directory-saas-provisioning-reporting/summary_report.PNG)
 
-### <a name="provisioning-audit-logs"></a>Bereitstellung von Überwachungsprotokollen
+## <a name="provisioning-audit-logs"></a>Bereitstellung von Überwachungsprotokollen
 Alle Aktivitäten, die vom Bereitstellungsdienst ausgeführt werden, werden in den Azure AD-Überwachungsprotokollen erfasst. Diese können über die Registerkarte **Überwachungsprotokolle** in der Kategorie **Kontobereitstellung** angezeigt werden. Zu den protokollierten Aktivitätsereignistypen zählen Folgende:
 
 * **Ereignisse importieren** – Ein Importereignis wird immer dann erfasst, wenn der Azure AD-Bereitstellungsdienst Informationen über einen einzelnen Benutzer oder eine Gruppe aus einem Quell- oder Zielsystem abruft. Während der Synchronisierung werden Benutzer zuerst aus dem Quellsystem abgerufen, wobei die aufgezeichneten Ergebnisse als Importereignisse erfasst werden. Die übereinstimmenden IDs der abgerufenen Benutzer werden dann mit dem Zielsystem abgeglichen, um zu überprüfen, ob sie vorhanden sind. Die Ergebnisse werden ebenfalls als Importereignisse erfasst. Diese Ereignisse erfassen alle zugeordneten Benutzerattribute und deren Werte, die vom Azure AD-Bereitstellungsdienst zum Zeitpunkt des Ereignisses aufgetreten sind. 
 
-* **Synchronisierungsregelsereignisse** – Diese Ereignisse melden die Ergebnisse der Attributzuordnungsregeln und aller konfigurierten Bereichsfilter, nachdem Benutzerdaten aus dem Quell- und Zielsystem importiert und ausgewertet wurden. Wenn ein Benutzer in einem Quellsystem beispielsweise als für die Bereitstellung einzuschließen gilt und nicht im Zielsystem vorhanden ist, meldet dieses Ereignis dann, dass der Benutzer im Zielsystem bereitgestellt wird. 
+* **Synchronisierungsregelereignisse** – Diese Ereignisse melden die Ergebnisse der Attributzuordnungsregeln und aller konfigurierten Bereichsfilter, nachdem Benutzerdaten aus dem Quell- und Zielsystem importiert und ausgewertet wurden. Wenn ein Benutzer in einem Quellsystem beispielsweise als für die Bereitstellung einzuschließen gilt und nicht im Zielsystem vorhanden ist, meldet dieses Ereignis dann, dass der Benutzer im Zielsystem bereitgestellt wird. 
 
 * **Ereignisse exportieren** – Ein Exportereignis wird immer dann erfasst, wenn der Azure AD-Bereitstellungsdienst ein Benutzerkonto- oder -gruppenobjekt in ein Zielsystem schreibt. Diese Ereignisse erfassen alle Benutzerattribute und deren Werte, die vom Azure AD-Bereitstellungsdienst zum Zeitpunkt des Ereignisses geschrieben wurden. Wenn beim Schreiben des Benutzerkonto- oder -gruppenobjekts in das Zielsystem ein Fehler aufgetreten ist, wird dieser hier angezeigt.
 
@@ -87,9 +87,9 @@ Bei Bereitstellungsereignissen für einen einzelnen Benutzer treten die Ereignis
 
 2. Importereignis: Das Zielsystem wird abgefragt, um das Vorhandensein des abgerufenen Benutzers zu überprüfen.
 
-3. Synchronisierungsregelereignis: Anhand der konfigurierten Attributzuordnungsregeln und Bereichsfilter werden Benutzerdaten aus Quell- und Zielsystem ausgewertet, um festzustellen, welche Aktion ggf. durchgeführt werden soll.
+3. Synchronisierungsregelereignis: Anhand der konfigurierten Attributzuordnungsregeln und Bereichsfilter werden Benutzerdaten aus Quell- und Zielsystem ausgewertet, um festzustellen, welche Aktion ggf. ausgeführt werden soll.
 
-4. Exportereignis: Wenn das Synchronisierungsregelereignis vorschreibt, dass eine Aktion durchgeführt werden soll (z.B. Hinzufügen, Aktualisieren, Löschen), werden die Ergebnisse der Aktion als Exportereignis erfasst.
+4. Exportereignis: Wenn das Synchronisierungsregelereignis vorschreibt, dass eine Aktion ausgeführt werden soll (Hinzufügen, Aktualisieren, Löschen), werden die Ergebnisse der Aktion als Exportereignis erfasst.
 
 ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-provisioning-reporting/audit_logs.PNG)
 
@@ -104,7 +104,7 @@ Der häufigste Anwendungsfall für Überwachungsprotokolle für Bereitstellungen
 
 3. Wählen Sie im Menü **Datumsbereich** den Datumsbereich aus, in dem die Suche durchgeführt werden soll.
 
-4. Geben Sie in die **Suchleiste** die Benutzer-ID des Benutzers ein, nach dem gesucht werden soll. Das Format des ID-Werts sollte dem Wert entsprechen, den Sie als primäre passende ID in der Attributzuordnungskonfiguration (z.B. „userPrincipalName“ oder Personalnummer des Mitarbeiters) ausgewählt haben. Der erforderliche ID-Wert wird in der Spalte „Ziel(e)“ angezeigt.
+4. Geben Sie in die **Suchleiste** die Benutzer-ID des Benutzers ein, nach dem gesucht werden soll. Das Format des ID-Werts muss dem Wert entsprechen, den Sie als entsprechende primäre ID in der Attributzuordnungskonfiguration (etwa „userPrincipalName“ oder Personalnummer des Mitarbeiters) ausgewählt haben. Der erforderliche ID-Wert wird in der Spalte „Ziel(e)“ angezeigt.
 
 5. Drücken Sie die Eingabetaste, um den Suchvorgang zu starten. Die neuesten Bereitstellungsereignisse werden zuerst zurückgegeben.
 
@@ -112,6 +112,9 @@ Der häufigste Anwendungsfall für Überwachungsprotokolle für Bereitstellungen
 
 7. Klicken Sie auf die einzelnen Ereignisse, um erweiterte Details anzuzeigen, einschließlich aller Benutzereigenschaften, die im Rahmen des Ereignisses abgerufen, ausgewertet oder geschrieben wurden.
 
+Die Verwendung der Überwachungsprotokolle wird im folgenden Video veranschaulicht. Überwachungsprotokolle werden ca. ab 5:30 präsentiert:
+
+> [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 
 ### <a name="tips-for-viewing-the-provisioning-audit-logs"></a>Tipps zum Anzeigen der Überwachungsprotokolle für die Bereitstellung
 

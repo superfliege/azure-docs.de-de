@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 924c41b060f56b4a21e4d29e059eb2968fa19330
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: dc1e3fd3984d0ccbfb0565a3216ec907894e88ea
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232022"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028947"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Was sind die Zugriffssteuerungen beim bedingten Zugriff mit Azure Active Directory? 
 
@@ -77,7 +77,7 @@ Die mehrstufige Authentifizierung unterstützt den Schutz Ihrer Ressourcen vor d
 
 ### <a name="compliant-device"></a>Kompatibles Gerät
 
-Sie können die Richtlinien für den bedingten Zugriff auf Geräteebene festlegen. Das Ziel einer gerätebasierten Richtlinie für den bedingten Zugriff ist, den Zugriff auf die konfigurierten Ressourcen nur von [verwalteten Geräten](active-directory-conditional-access-policy-connected-applications.md#managed-devices) aus zuzulassen. Eine Möglichkeit, zu definieren, was ein verwaltetes Gerät ist, besteht darin, ein konformes Gerät vorauszusetzen. Wenn diese Option ausgewählt ist, gewährt die Richtlinie für bedingten Zugriff den Zugriff bei Zugriffsversuchen von Geräten, die bei Ihrem Azure Active Directory-Verzeichnis [registriert](device-management-introduction.md) und von Ihrer MDM-Lösung als konform gekennzeichnet sind.
+Sie können die Richtlinien für den bedingten Zugriff auf Geräteebene festlegen. Das Ziel einer gerätebasierten Richtlinie für den bedingten Zugriff ist, den Zugriff auf die konfigurierten Ressourcen nur von [verwalteten Geräten](active-directory-conditional-access-policy-connected-applications.md#managed-devices) aus zuzulassen. Eine Möglichkeit, zu definieren, was ein verwaltetes Gerät ist, besteht darin, ein konformes Gerät vorauszusetzen. Bei Verwendung dieser Option lässt die Richtlinie für bedingten Zugriff Zugriffsversuche mit Geräten zu, die bei Ihrem Azure Active Directory-Verzeichnis [registriert](device-management-introduction.md) und von Intune (für ein beliebiges Gerätebetriebssystem) oder von Ihrer MDM-Drittanbieterlösung als mit Windows 10-Geräten kompatibel gekennzeichnet sind. MDM-Systeme von Drittanbietern für andere Arten von Gerätebetriebssystemen als Windows 10 werden nicht unterstützt.
 
 Weitere Informationen finden Sie unter [Einrichten von Richtlinien für den gerätebasierten bedingten Zugriff für Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
 

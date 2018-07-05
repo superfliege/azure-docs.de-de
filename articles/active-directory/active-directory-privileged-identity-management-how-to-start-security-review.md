@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.component: protection
-ms.date: 05/04/2017
+ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 699076a8e651dd8dbbab08b518d7be7e60a0ac47
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: a4ef91f7055db8f202e3a4e48375427c85964781
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233671"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020946"
 ---
 # <a name="how-to-start-an-access-review-in-azure-ad-privileged-identity-management"></a>Starten einer Zugriffsüberprüfung in Azure AD Privileged Identity Management
-Rollenzuweisungen „veralten“, wenn Benutzer über privilegierten Zugriff verfügen, den sie nicht mehr benötigen. Um die Risiken im Zusammenhang mit diesen „veralteten“ Rollenzuweisungen zu verringern, sollten Administratoren für privilegierte Rollen die den Benutzern zugewiesenen Rollen regelmäßig überprüfen. Dieses Dokument beschreibt die Schritte zum Starten einer Zugriffsüberprüfung in Azure AD Privileged Identity Management (PIM).
+Rollenzuweisungen „veralten“, wenn Benutzer über privilegierten Zugriff verfügen, den sie nicht mehr benötigen. Um die Risiken im Zusammenhang mit diesen veralteten Rollenzuweisungen zu verringern, sollten Administratoren für privilegierte Rollen oder globale Administratoren regelmäßig Zugriffsüberprüfung erstellen, um Administratoren zur Überprüfung der Rollen aufzufordern, die den Benutzern zugewiesen wurden. Dieses Dokument beschreibt die Schritte zum Starten einer Zugriffsüberprüfung in Azure AD Privileged Identity Management (PIM).
 
 ## <a name="start-an-access-review"></a>Starten einer Zugriffsüberprüfung
 > [!NOTE]

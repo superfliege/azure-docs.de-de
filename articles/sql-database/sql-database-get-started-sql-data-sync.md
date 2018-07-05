@@ -1,23 +1,23 @@
 ---
-title: Einrichten der Azure SQL-Datensynchronisierung (Vorschauversion) | Microsoft-Dokumentation
-description: In diesem Tutorial erfahren Sie, wie Sie die Azure SQL-Datensynchronisierung (Vorschauversion) einrichten.
+title: Einrichten der Azure SQL-Datensynchronisierung | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie die Azure SQL-Datensynchronisierung einrichten.
 services: sql-database
-author: douglaslms
+author: allenwux
 manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
 ms.topic: conceptual
 ms.date: 04/10/2018
-ms.author: douglasl
+ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 7598484a20d2d719c84e1789664ac2b40c2d0639
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: df7ca91d403374e8d320822f5fa384a866fac0ae
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647849"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025526"
 ---
-# <a name="set-up-sql-data-sync-preview"></a>Einrichten der SQL-Datensynchronisierung (Vorschauversion)
+# <a name="set-up-sql-data-sync"></a>Einrichten der SQL-Datensynchronisierung
 In diesem Tutorial erfahren Sie, wie sie Azure SQL-Datensynchronisierung einrichten können, indem Sie eine hybride Synchronisierungsgruppe erstellen, die Azure SQL-Datenbank und SQL Server-Instanzen enthält. Die neue Synchronisierungsgruppe ist vollständig konfiguriert und synchronisiert mit dem von Ihnen festgelegten Zeitplan.
 
 In diesem Tutorial wird davon ausgegangen, dass Sie über eine gewisse Erfahrung mit SQL-Datenbank und SQL Server verfügen. 
@@ -199,7 +199,7 @@ Die Mindesthäufigkeit ist alle fünf Minuten.
 
 ### <a name="does-sql-data-sync-fully-create-and-provision-tables"></a>Werden von der SQL-Datensynchronisierung Tabellen vollständig erstellt und bereitgestellt?
 
-Wenn die Synchronisierungsschematabellen in der Zieldatenbank noch nicht erstellt wurden, werden sie von der SQL-Datensynchronisierung-Vorschauversion mit den von Ihnen ausgewählten Spalten erstellt. Allerdings wird dabei aus den folgenden Gründen kein vollständig identisches Schema erstellt:
+Wenn die Synchronisierungsschematabellen in der Zieldatenbank noch nicht erstellt wurden, werden sie von der SQL-Datensynchronisierung mit den von Ihnen ausgewählten Spalten erstellt. Allerdings wird dabei aus den folgenden Gründen kein vollständig identisches Schema erstellt:
 
 -   In der Zieltabelle werden nur die von Ihnen ausgewählten Spalten erstellt. Falls also einige Spalten in der Quelltabelle nicht Teil der Synchronisierungsgruppe sind, werden sie nicht in den Zieltabellen bereitgestellt.
 
@@ -215,7 +215,7 @@ Wenn die Synchronisierungsschematabellen in der Zieldatenbank noch nicht erstell
 
 Aufgrund dieser Einschränkungen wird Folgendes empfohlen:
 -   Stellen Sie für Produktionsumgebungen das vollständig identische Schema selbst bereit.
--   Zum Testen des Diensts ist die Funktion für die automatische Bereitstellung der SQL-Datensynchronisierung (Vorschauversion) gut geeignet.
+-   Zum Testen des Diensts ist die Funktion für die automatische Bereitstellung der SQL-Datensynchronisierung gut geeignet.
 
 ### <a name="why-do-i-see-tables-that-i-did-not-create"></a>Warum sehe ich Tabellen, die ich nicht erstellt habe?  
 Bei der Datensynchronisierung werden Nebentabellen für die Änderungsnachverfolgung erstellt. Löschen Sie diese nicht, da ansonsten die Datensynchronisierung nicht mehr funktioniert.
@@ -246,7 +246,7 @@ Nachdem Sie eine Datenbank als `.bacpac`-Datei exportiert und die Datei zum Erst
 
 ### <a name="why-do-i-need-a-client-agent"></a>Wozu benötige ich einen Client-Agent?
 
-Der Dienst der SQL-Datensynchronisierung-Vorschauversion kommuniziert über den Client-Agent mit SQL Server-Datenbanken. Diese Sicherheitsfunktion verhindert die direkte Kommunikation mit Datenbanken hinter einer Firewall. Bei der Kommunikation des Diensts der SQL-Datensynchronisierung-Vorschauversion mit dem Agent werden verschlüsselte Verbindungen und ein eindeutiges Token bzw. ein eindeutiger *Agent-Schlüssel* verwendet. Die SQL Server-Datenbanken authentifizieren den Agent mit der Verbindungszeichenfolge und dem Agent-Schlüssel. Diese Vorgehensweise bietet ein hohes Maß an Sicherheit für Ihre Daten.
+Der Dienst der SQL-Datensynchronisierung kommuniziert über den Client-Agent mit SQL Server-Datenbanken. Diese Sicherheitsfunktion verhindert die direkte Kommunikation mit Datenbanken hinter einer Firewall. Bei der Kommunikation des Diensts der SQL-Datensynchronisierung mit dem Agent werden verschlüsselte Verbindungen und ein eindeutiges Token bzw. ein eindeutiger *Agent-Schlüssel* verwendet. Die SQL Server-Datenbanken authentifizieren den Agent mit der Verbindungszeichenfolge und dem Agent-Schlüssel. Diese Vorgehensweise bietet ein hohes Maß an Sicherheit für Ihre Daten.
 
 ### <a name="how-many-instances-of-the-local-agent-ui-can-be-run"></a>Wie viele Instanzen der lokalen Agent-Benutzeroberfläche können ausgeführt werden?
 
@@ -258,7 +258,7 @@ Nach der Installation eines Client-Agents besteht die einzige Möglichkeit zum �
 
 ### <a name="how-do-i-change-my-agent-key"></a>Wie ändere ich meinen Agent-Schlüssel?
 
-Ein Agent-Schlüssel kann nur einmal von einem Agent verwendet werden. Er kann nicht wiederverwendet werden, wenn Sie einen Agent entfernen und dann einen neuen Agent installieren, und er kann nicht von mehreren Agents verwendet werden. Wenn Sie einen neuen Schlüssel für einen vorhandenen Agent erstellen müssen, müssen Sie sicherstellen, dass derselbe Schlüssel beim Client-Agent und beim Dienst der SQL-Datensynchronisierung-Vorschauversion hinterlegt wird.
+Ein Agent-Schlüssel kann nur einmal von einem Agent verwendet werden. Er kann nicht wiederverwendet werden, wenn Sie einen Agent entfernen und dann einen neuen Agent installieren, und er kann nicht von mehreren Agents verwendet werden. Wenn Sie einen neuen Schlüssel für einen vorhandenen Agent erstellen müssen, müssen Sie sicherstellen, dass derselbe Schlüssel beim Client-Agent und beim Dienst der SQL-Datensynchronisierung hinterlegt wird.
 
 ### <a name="how-do-i-retire-a-client-agent"></a>Wie setze ich einen Client-Agent außer Kraft?
 
@@ -270,7 +270,7 @@ Wenn Sie den lokalen Agent auf einem anderen Computer als dem ausführen möchte
 
 1. Installieren Sie den Agent auf dem gewünschten Computer.
 
-2. Melden Sie sich beim Portal der SQL-Datensynchronisierung-Vorschauversion an, und generieren Sie erneut einen Agent-Schlüssel für den neuen Agent.
+2. Melden Sie sich beim Portal der SQL-Datensynchronisierung an, und generieren Sie erneut einen Agent-Schlüssel für den neuen Agent.
 
 3. Übergeben Sie den neuen Agent-Schlüssel über die Benutzeroberfläche des neuen Agents.
 

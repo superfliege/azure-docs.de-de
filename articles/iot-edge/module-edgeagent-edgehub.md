@@ -8,12 +8,12 @@ ms.date: 03/14/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0b9e7421bb09e619b4a820910db5faa9edfcc5d5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2858179d42ebf51cbb24d95d2e0093f8577bacef
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632906"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030562"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Eigenschaften der Modulzwillinge „Edge-Agent“ und „Edge-Hub“
 
@@ -31,22 +31,25 @@ Der Modulzwilling für den Edge-Agent heißt `$edgeAgent` und koordiniert die Ko
 | runtime.type | Muss „Docker“ sein. | Ja |
 | runtime.settings.minDockerVersion | Legen Sie hier die für dieses Bereitstellungsmanifest mindestens erforderliche Docker-Version fest. | Ja |
 | runtime.settings.loggingOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Protokollierungsoptionen für den Edge-Agent-Container. [Docker-Protokollierungsoptionen][lnk-docker-logging-options] | Nein  |
+| runtime.settings.registryCredentials<br>.{registryId}.username | Der Benutzername der Containerregistrierung. Für Azure Container Registry entspricht der Benutzername in der Regel dem Namen der Registrierung.<br><br> Registrierungsanmeldeinformationen werden für jedes nicht öffentliche Modulimage benötigt. | Nein  |
+| runtime.settings.registryCredentials<br>.{registryId}.password | Das Kennwort der Containerregistrierung. | Nein  |
+| runtime.settings.registryCredentials<br>.{registryId}.address | Die Adresse der Containerregistrierung. Für Azure Container Registry lautet die Adresse in der Regel *{registryname}.azurecr.io*. | Nein  |  
 | systemModules.edgeAgent.type | Muss „Docker“ sein. | Ja |
 | systemModules.edgeAgent.settings.image | Der URI des Edge-Agent-Image. Der Edge-Agent ist gegenwärtig nicht in der Lage, sich selbst zu aktualisieren. | Ja |
-| systemModules.edgeAgent.settings.createOptions | In eine Zeichenfolge umgewandelter JSON-Code, der die Optionen für die Erstellung des Edge-Agent-Containers enthält. [Optionen zum Erstellen von Docker][lnk-docker-create-options] | Nein  |
-| systemModules.edgeAgent.configuration.id | Die ID der Bereitstellung, von der dieses Modul bereitgestellt wurde. | Sie wird von IoT Hub festgelegt, wenn dieses Manifest mithilfe einer Bereitstellung angewendet wird. Nicht Teil eines Bereitstellungsmanifests. |
+| systemModules.edgeAgent.settings<br>.createOptions | In eine Zeichenfolge umgewandelter JSON-Code, der die Optionen für die Erstellung des Edge-Agent-Containers enthält. [Optionen zum Erstellen von Docker][lnk-docker-create-options] | Nein  |
+| systemModules.edgeAgent.configuration.id | Die ID der Bereitstellung, von der dieses Modul bereitgestellt wurde. | Diese Eigenschaft wird von IoT Hub festgelegt, wenn dieses Manifest mithilfe einer Bereitstellung angewendet wird. Nicht Teil eines Bereitstellungsmanifests. |
 | systemModules.edgeHub.type | Muss „Docker“ sein. | Ja |
 | systemModules.edgeHub.type | Muss „running“ sein. | Ja |
 | systemModules.edgeHub.restartPolicy | Muss „always“ sein. | Ja |
 | systemModules.edgeHub.settings.image | Der URI des Image des Edge-Hubs. | Ja |
-| systemModules.edgeHub.settings.createOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Optionen für die Erstellung des Edge-Hubcontainers. [Optionen zum Erstellen von Docker][lnk-docker-create-options] | Nein  |
-| systemModules.edgeHub.configuration.id | Die ID der Bereitstellung, von der dieses Modul bereitgestellt wurde. | Sie wird von IoT Hub festgelegt, wenn dieses Manifest mithilfe einer Bereitstellung angewendet wird. Nicht Teil eines Bereitstellungsmanifests. |
+| systemModules.edgeHub.settings<br>.createOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Optionen für die Erstellung des Edge-Hubcontainers. [Optionen zum Erstellen von Docker][lnk-docker-create-options] | Nein  |
+| systemModules.edgeHub.configuration.id | Die ID der Bereitstellung, von der dieses Modul bereitgestellt wurde. | Diese Eigenschaft wird von IoT Hub festgelegt, wenn dieses Manifest mithilfe einer Bereitstellung angewendet wird. Nicht Teil eines Bereitstellungsmanifests. |
 | modules.{moduleId}.version | Benutzerdefinierte Zeichenfolge, die die Version des Moduls darstellt. | Ja |
 | modules.{moduleId}.type | Muss „Docker“ sein. | Ja |
 | modules.{moduleId}.restartPolicy | {"never" \| "on-failed" \| "on-unhealthy" \| "always"} | Ja |
 | modules.{moduleId}.settings.image | URI des Modulimage. | Ja |
 | modules.{moduleId}.settings.createOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Optionen für die Erstellung des Modulcontainers. [Optionen zum Erstellen von Docker][lnk-docker-create-options] | Nein  |
-| modules.{moduleId}.configuration.id | Die ID der Bereitstellung, von der dieses Modul bereitgestellt wurde. | Sie wird von IoT Hub festgelegt, wenn dieses Manifest mithilfe einer Bereitstellung angewendet wird. Nicht Teil eines Bereitstellungsmanifests. |
+| modules.{moduleId}.configuration.id | Die ID der Bereitstellung, von der dieses Modul bereitgestellt wurde. | Diese Eigenschaft wird von IoT Hub festgelegt, wenn dieses Manifest mithilfe einer Bereitstellung angewendet wird. Nicht Teil eines Bereitstellungsmanifests. |
 
 ## <a name="edgeagent-reported-properties"></a>Gemeldete EdgeAgent-Eigenschaften
 
@@ -59,7 +62,7 @@ Zu den vom Edge-Agent gemeldeten Eigenschaften gehören im Wesentlichen drei Inf
 Diese letzte Information ist nützlich für den Fall, dass die letzten gewünschten Eigenschaften nicht erfolgreich von der Runtime angewendet wurden und das Gerät demzufolge noch ein vorheriges Bereitstellungsmanifest ausführt.
 
 > [!NOTE]
-> Die gemeldeten Eigenschaften des Edge-Agents sind hilfreich, da sie mit der [IoT Hub-Abfragesprache][lnk-iothub-query] abgefragt werden können, um den Status der Bereitstellungen großflächig zu untersuchen. Weitere Informationen zur Verwendung dieses Features finden Sie unter [Bereitstellungen][lnk-deploy].
+> Die gemeldeten Eigenschaften des Edge-Agents sind hilfreich, da sie mit der [IoT Hub-Abfragesprache][lnk-iothub-query] abgefragt werden können, um den Status der Bereitstellungen großflächig zu untersuchen. Weitere Informationen zur Verwendung der Edge-Agent-Eigenschaften für den Status finden Sie unter [Grundlegendes zu IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf][lnk-deploy].
 
 In der folgenden Tabelle sind die aus den gewünschten Eigenschaften kopierten Informationen nicht enthalten.
 

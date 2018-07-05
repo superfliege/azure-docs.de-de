@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 9dd63e1f3ec381dd99495ebc6193198611c76c88
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8b4584e9ccd17eba385f2068709f5bbaea6df20b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31417035"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019955"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>Bereitstellen und Verwalten von Apache Storm-Topologien in HDInsight
 
@@ -40,9 +40,9 @@ Dieses Dokument enthält die Grundlagen zur Verwaltung und Überwachung von Stor
 
     Eine der folgenden Versionen von Visual Studio:
 
-  * Visual Studio 2012 mit [Update 4](http://www.microsoft.com/download/details.aspx?id=39305)
+  * Visual Studio 2012 mit Update 4
 
-  * Visual Studio 2013 mit [Update 4](http://www.microsoft.com/download/details.aspx?id=44921) oder [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
+  * Visual Studio 2013 mit Update 4 oder [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
   * [Visual Studio 2015](https://www.visualstudio.com/downloads/)
 
   * Visual Studio 2015 (beliebige Edition)

@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.component: compliance-reports
-ms.date: 05/16/2018
+ms.date: 06/21/2018
 ms.author: rolyon
-ms.openlocfilehash: dbb139081e1eb84ea64a187b7fec0d9cb159653c
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 8eb7e4bc79ee50982dae5751968eb732ef39e00d
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235004"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017779"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen
 
@@ -42,7 +42,7 @@ Wenn Sie Gastbenutzer bitten möchten, ihren eigenen Zugriff zu überprüfen, le
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Erstellen und Durchführen einer Zugriffsüberprüfung für Gäste
 
-Aktivieren Sie zunächst Zugriffsüberprüfungen, damit diese in den Zugriffsbereichen eines Prüfers angezeigt werden. Navigieren Sie als globaler Administrator zur Seite [Zugriffsüberprüfungen](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/). 
+Aktivieren Sie zunächst Zugriffsüberprüfungen, damit diese in den Zugriffsbereichen eines Prüfers angezeigt werden. Als globaler Administrator oder Benutzerkontoadministrator navigieren Sie zur Seite [Zugriffsüberprüfungen](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/). 
 
 Azure AD ermöglicht mehrere Szenarien für die Überprüfung von Gastbenutzern.
 

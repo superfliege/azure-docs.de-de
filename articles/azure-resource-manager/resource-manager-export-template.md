@@ -6,20 +6,19 @@ documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 5f5ca940-eef8-4125-b6a0-f44ba04ab5ab
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/23/2018
+ms.date: 06/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 14aa54277cac3369df739a1d84580624f2d3b401
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3e1dd8ad49ceb126a14070ed641146d91419640a
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359474"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025337"
 ---
 # <a name="export-an-azure-resource-manager-template-from-existing-resources"></a>Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen
 In diesem Artikel erfahren Sie, wie Sie eine Resource Manager-Vorlage aus vorhandenen Ressourcen in Ihrem Abonnement exportieren. Anhand dieser generierten Vorlage können Sie sich näher mit der Vorlagensyntax befassen.
@@ -65,8 +64,7 @@ Die Bereitstellung kann etwas dauern. Nach Abschluss des Bereitstellungsvorgangs
    
    1. **Vorlage** : Die Vorlage, mit der die Infrastruktur für Ihre Lösung definiert wird. Wenn Sie das Speicherkonto über das Portal erstellt haben, hat Resource Manager eine Vorlage für die Bereitstellung verwendet und die Vorlage zur späteren Verwendung gespeichert.
    2. **Parameter**: Eine Parameterdatei, die Sie zum Übergeben von Werten während der Bereitstellung verwenden können. Sie enthält die Werte, die Sie im Rahmen der ersten Bereitstellung angegeben haben. Diese Werte können Sie ändern, wenn Sie die Vorlage erneut bereitstellen.
-   3. **CLI** : Eine Skriptdatei der Azure-Befehlszeilenschnittstelle, die Sie zum Bereitstellen der Vorlage verwenden können.
-   3. **CLI 2.0:** Eine Skriptdatei der Azure-Befehlszeilenschnittstelle, die Sie zum Bereitstellen der Vorlage verwenden können.
+   3. **CLI**: Eine Azure CLI-Skriptdatei, die Sie zum Bereitstellen der Vorlage verwenden können.
    4. **PowerShell** : Eine Azure PowerShell-Skriptdatei, die Sie zum Bereitstellen der Vorlage verwenden können.
    5. **.NET** : Eine .NET-Klasse, die Sie zum Bereitstellen der Vorlage verwenden können.
    6. **Ruby** : Eine Ruby-Klasse, die Sie zum Bereitstellen der Vorlage verwenden können.
@@ -121,7 +119,7 @@ Die exportierte Vorlage eignet sich bestens, wenn Sie für jede Bereitstellung d
 2. Wählen Sie die Vorlage aus.
    
      ![Bearbeiten der Vorlage](./media/resource-manager-export-template/select-added-template.png)
-3. Fügen Sie dem Abschnitt **parameters** in der Vorlage die beiden folgenden Parameter hinzu, um die Übergabe der Werte zu ermöglichen, die Sie ggf. bei der Bereitstellung angeben möchten:
+3. Fügen Sie dem Abschnitt **parameters** in der Vorlage die beiden folgenden Parameter hinzu, um Werte zu übergeben, die Sie ggf. bei der Bereitstellung angeben möchten:
 
    ```json
    "administratorLogin": {
@@ -152,7 +150,7 @@ Die exportierte Vorlage eignet sich bestens, wenn Sie für jede Bereitstellung d
    },
    ```
 
-6. Wählen Sie **OK** aus, wenn Sie mit der Bearbeitung der Vorlage fertig sind.
+6. Klicken Sie auf **OK**, wenn Sie mit der Bearbeitung der Vorlage fertig sind.
 7. Wählen Sie **Speichern** aus, um die Änderungen an der Vorlage zu speichern.
    
      ![Vorlage speichern](./media/resource-manager-export-template/save-template.png)
@@ -163,12 +161,11 @@ Die exportierte Vorlage eignet sich bestens, wenn Sie für jede Bereitstellung d
 
 
 ## <a name="fix-export-issues"></a>Beheben von Exportproblemen
-Nicht alle Ressourcentypen unterstützen die Funktion zum Exportieren von Vorlagen. Beheben Sie dieses Problem, indem Sie die fehlenden Ressourcen der Vorlage manuell erneut hinzufügen. Die Fehlermeldung enthält die Ressourcentypen, die nicht exportiert werden können. Suchen Sie den entsprechenden Ressourcentyp in der [Vorlagenreferenz](/azure/templates/). Informationen zum manuellen Hinzufügen eines virtuellen Netzwerkgateways finden Sie beispielsweise unter [Microsoft.Network/virtualNetworkGateways template reference](/azure/templates/microsoft.network/virtualnetworkgateways) (Microsoft.Network/virtualNetworkGateways – Vorlagenreferenz).
+Nicht alle Ressourcentypen unterstützen die Funktion zum Exportieren von Vorlagen. Exportprobleme treten nur dann auf, wenn Sie aus einer Ressourcengruppe exportieren anstatt aus Ihrem Bereitstellungsverlauf. Falls die letzte Bereitstellung genau den aktuellen Status der Ressourcengruppe widerspiegelt, sollten Sie die Vorlage nicht aus der Ressourcengruppe, sondern aus dem Bereitstellungsverlauf exportieren. Führen Sie den Export aus einer Ressourcengruppe nur dann durch, wenn Sie Änderungen an der Ressourcengruppe vorgenommen haben, die in nicht einer einzelnen Vorlage definiert sind.
 
-> [!NOTE]
-> Exportprobleme treten nur dann auf, wenn Sie aus einer Ressourcengruppe exportieren, anstatt aus Ihrem Bereitstellungsverlauf. Falls die letzte Bereitstellung genau den aktuellen Status der Ressourcengruppe widerspiegelt, sollten Sie die Vorlage nicht aus der Ressourcengruppe, sondern aus dem Bereitstellungsverlauf exportieren. Führen Sie den Export aus einer Ressourcengruppe nur dann durch, wenn Sie Änderungen an der Ressourcengruppe vorgenommen haben, die in einer einzelnen Vorlage nicht definiert sind.
-> 
-> 
+Beheben Sie Exportprobleme, indem Sie der Vorlage die fehlenden Ressourcen manuell hinzufügen. Die Fehlermeldung enthält die Ressourcentypen, die nicht exportiert werden konnten. Suchen Sie den entsprechenden Ressourcentyp in der [Vorlagenreferenz](/azure/templates/). Informationen zum manuellen Hinzufügen eines virtuellen Netzwerkgateways finden Sie beispielsweise unter [Microsoft.Network/virtualNetworkGateways template reference](/azure/templates/microsoft.network/virtualnetworkgateways) (Microsoft.Network/virtualNetworkGateways – Vorlagenreferenz). Der Vorlagenverweis liefert den JSON-Code, um die Ressource zu Ihrer Vorlage hinzuzufügen.
+
+Nachdem Sie das JSON-Format für die Ressource abgerufen haben, müssen Sie die Ressourcenwerte abrufen. Verwenden Sie zum Anzeigen der Werte für die Ressource den GET-Vorgang in der REST-API für den Ressourcentyp. Informationen zum Abrufen der Werte für Ihr Gateway für virtuelle Netzwerke finden Sie beispielsweise unter [Virtual Network Gateways - Get](/rest/api/network-gateway/virtualnetworkgateways/get) (Gateways für virtuelle Netzwerke – Abrufen).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.component: compliance-reports
-ms.date: 05/14/2018
+ms.date: 06/21/2018
 ms.author: rolyon
-ms.openlocfilehash: 6a1d4a55074630cc20c98202d2e94ec682c323f4
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 2c4e26bb6f2cd144d00d9e4ada92d756fe68418b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234072"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020405"
 ---
 # <a name="create-an-access-review-of-group-members-or-application-access-with-azure-ad"></a>Erstellen einer Zugriffsüberprüfung von Gruppenmitgliedern oder dem Anwendungszugriff mit Azure AD
 
@@ -26,7 +26,7 @@ Zugriffszuweisungen sind „veraltet“, wenn Benutzer über Zugriff verfügen, 
 
 ## <a name="create-an-access-review"></a>Erstellen einer Zugriffsüberprüfung
 
-1. Als globaler Administrator navigieren Sie zur Seite [Zugriffsüberprüfungen](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) und wählen dann **Programme**.
+1. Navigieren Sie als globaler Administrator oder Benutzerkontoadministrator zur Seite [Zugriffsüberprüfungen](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/), und klicken Sie auf **Programme**.
 
 2. Wählen Sie das Programm, das das Zugriffsüberprüfungs-Steuerelement enthält, das Sie erstellen möchten. Das **Standardprogramm** ist immer vorhanden. Sie können aber auch ein anderes Programm erstellen. Sie können z.B. ein Programm für jede Konformitätsinitiative oder für jedes Geschäftsziel verwenden.
 
@@ -38,7 +38,7 @@ Zugriffszuweisungen sind „veraltet“, wenn Benutzer über Zugriff verfügen, 
 
 6. Um die Zugriffsüberprüfung wiederholt auszuführen, ändern Sie die Häufigkeit von „Einmal“ in „Wöchentlich“, „Monatlich“, „Vierteljährlich“ oder „Jährlich“. Definieren Sie mithilfe des Schiebereglers oder im Textfeld die Anzahl der Tage, an denen jeweils Eingaben der Prüfer in den einzelnen periodischen Überprüfungen in der Serie möglich sind. Die maximale Dauer, die Sie beispielsweise für eine monatliche Überprüfung festlegen können, beträgt 27 Tage, um überlappende Überprüfungen zu vermeiden. 
 
-7.  Die Serienzugriffsüberprüfungen können auf dreierlei Weise enden: Die Serie wird unendlich ausgeführt, um Überprüfungen auf unbestimmte Zeit zu starten, die Serie wird bis zu einem bestimmten Datum ausgeführt, oder sie wird nach einer bestimmten Anzahl von Vorkommen beendet. Sie oder ein anderer globaler Administrator kann die Serie nach ihrer Erstellung beenden, indem er in den Einstellungen das Datum ändert, sodass sie an diesem Datum beendet wird.
+7.  Die Serienzugriffsüberprüfungen können auf dreierlei Weise enden: Die Serie wird unendlich ausgeführt, um Überprüfungen auf unbestimmte Zeit zu starten, die Serie wird bis zu einem bestimmten Datum ausgeführt, oder sie wird nach einer bestimmten Anzahl von Vorkommen beendet. Sie (oder ein anderer Benutzerkontoadministrator oder globaler Administrator) können die Serie nach der Erstellung beenden, indem Sie in den Einstellungen das Datum ändern, sodass die Serie an diesem Datum beendet wird.
 
 8. Zugriffsüberprüfungen können für die Mitglieder einer Gruppe oder für Benutzer erfolgen, die einer Anwendung zugewiesen wurden. Sie können die Zugriffsüberprüfung weiter anpassen, um nur die Gastbenutzer zu überprüfen, die Mitglieder (oder der App zugewiesen) sind, anstatt alle Benutzer zu überprüfen, die Mitglieder sind oder Zugriff auf die Anwendung haben.
 

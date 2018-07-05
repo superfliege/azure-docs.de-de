@@ -10,23 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/10/2018
+ms.topic: conceptual
+ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 64e8a20f72d451908c12751c0f8062bf4ae86370
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fe1ca45b0f79781b2fa17bfb605df03d334cc8d1
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046712"
 ---
 # <a name="copy-data-tofrom-on-premises-oracle-using-azure-data-factory"></a>Kopieren von Daten in lokales/aus lokalem Oracle mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: allgemein verfügbar](data-factory-onprem-oracle-connector.md)
-> * [Version 2 – Vorschauversion](../connector-oracle.md)
+> * [Version 1](data-factory-onprem-oracle-connector.md)
+> * [Version 2 (aktuelle Version)](../connector-oracle.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from and to Oracle using Azure Data Factory](../connector-oracle.md) (Kopieren von Daten aus und in Oracle mit Azure Data Factory).
+> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [Oracle-Connector in V2](../connector-oracle.md).
 
 
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten in und aus einer lokalen Oracle-Datenbank zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
@@ -57,6 +58,9 @@ Dieser Connector für Oracle unterstützt zwei Treiberversionen:
     - Oracle 10g R1, R2 (10.1, 10.2)
     - Oracle 9i R1, R2 (9.0.1, 9.2)
     - Oracle 8i R3 (8.1.7)
+
+> [!NOTE]
+> Der Oracle-Proxyserver wird nicht unterstützt.
 
 > [!IMPORTANT]
 > Derzeit unterstützt der Microsoft-Treiber für Oracle nur das Kopieren von Daten aus Oracle, nicht jedoch das Schreiben in Oracle. Beachten Sie, dass die Funktion zum Testen der Verbindung auf der Registerkarte für die Datenverwaltungsgateway-Diagnose diesen Treiber nicht unterstützt. Alternativ können Sie den Assistenten zum Kopieren verwenden, um die Konnektivität zu überprüfen.
@@ -96,7 +100,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 | type |Die "type"-Eigenschaft muss auf **OnPremisesOracle** |Ja |
 | driverType | Legen Sie fest, welcher Treiber für das Kopieren von Daten aus/in Oracle Database verwendet wird. Zulässige Werte sind **Microsoft** oder **ODP** (Standard). Details zu den Treibern finden Sie unter [Unterstützte Versionen und Installation](#supported-versions-and-installation). | Nein  |
 | connectionString | Geben Sie Informationen, die zur Verbindung mit der Oracle Databaseinstanz erforderlich sind, für die Eigenschaft "connectionString" an. | Ja |
-| gatewayName | Der Name des Gateways, das zum Herstellen einer Verbindung mit dem lokalen Oracle-Server verwendet wird. |Ja |
+| gatewayName | Name des Gateways, das zum Herstellen einer Verbindung mit dem lokalen Oracle-Server verwendet wird |Ja |
 
 **Beispiel: Verwenden des Microsoft-Treibers**
 ```json

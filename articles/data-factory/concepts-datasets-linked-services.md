@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 93729646cf1a501b5502e2666ed68944fe474f72
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d5cf4005ad50c9c75f22b2fa2719925afbe69f26
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616004"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37044975"
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Datasets und verknüpfte Dienste in Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: allgemein verfügbar](v1/data-factory-create-datasets.md)
-> * [Version 2 – Vorschauversion](concepts-datasets-linked-services.md)
+> * [Version 1](v1/data-factory-create-datasets.md)
+> * [Aktuelle Version](concepts-datasets-linked-services.md)
 
-In diesem Artikel wird beschrieben, was Datasets sind, wie sie im JSON-Format definiert werden, und wie sie in Azure Data Factory V2-Pipelines verwendet werden. 
-
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (GA) ist, lesen Sie [Datasets in Azure Data Factory](v1/data-factory-create-datasets.md).
+In diesem Artikel ist beschrieben, was Datasets sind, wie sie im JSON-Format definiert werden, und wie sie in Azure Data Factory-Pipelines verwendet werden. 
 
 Wenn Sie noch nicht mit Data Factory vertraut sind, sollten Sie [Einführung in Azure Data Factory](introduction.md) lesen, um eine Übersicht zu erhalten. 
 
@@ -220,13 +217,13 @@ Anhand der folgenden Anleitungen können Sie erkennen, wann der Abschnitt **stru
 ## <a name="create-datasets"></a>Erstellen von Datasets
 Datasets können Sie mit einem dieser Tools oder SDKs erstellen: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST-API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager-Vorlage und Azure-Portal
 
-## <a name="v1-vs-v2-datasets"></a>V1- im Vergleich zu V2-Datasets
+## <a name="current-version-vs-version-1-datasets"></a>Gegenüberstellung von Datasets der aktuellen Version und Datasets der Version 1
 
-Hier sind einige Unterschiede zwischen Data Factory v1- und Data Factory v2-Datasets: 
+Im Anschluss sind einige Unterschiede zwischen Data Factory-Datasets und Data Factory-Datasets der Version 1aufgeführt: 
 
-- Die externe Eigenschaft wird in V2 nicht unterstützt. Sie wird durch einen [Trigger](concepts-pipeline-execution-triggers.md) ersetzt.
-- Die Richtlinien- und Verfügbarkeitseigenschaften werden in V2 nicht unterstützt. Die Startzeit für eine Pipeline hängt von [Triggern](concepts-pipeline-execution-triggers.md) ab.
-- Bereichsbezogene (in einer Pipeline definierte) Datasets werden in V2 nicht unterstützt. 
+- Die externe Eigenschaft wird in der aktuellen Version nicht unterstützt. Sie wird durch einen [Trigger](concepts-pipeline-execution-triggers.md) ersetzt.
+- Die Richtlinien- und Verfügbarkeitseigenschaften werden in der aktuellen Version nicht unterstützt. Die Startzeit für eine Pipeline hängt von [Triggern](concepts-pipeline-execution-triggers.md) ab.
+- Bereichsbezogene (in einer Pipeline definierte) Datasets werden in der aktuellen Version nicht unterstützt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Im folgenden Tutorial finden Sie schrittweise Anleitungen zum Erstellen von Pipelines und Datasets mit einem dieser Tools oder SDKs. 

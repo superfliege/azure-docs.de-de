@@ -1,25 +1,25 @@
 ---
-title: Bewährte Methoden für die Azure SQL-Datensynchronisierung (Vorschauversion) | Microsoft-Dokumentation
-description: Hier können Sie sich über bewährte Methoden zum Konfigurieren und Ausführen der Azure SQL-Datensynchronisierung (Vorschauversion) informieren.
+title: Bewährte Methoden für die Azure SQL-Datensynchronisierung | Microsoft-Dokumentation
+description: Hier können Sie sich über bewährte Methoden beim Konfigurieren und Ausführen der Azure SQL-Datensynchronisierung informieren.
 services: sql-database
 ms.date: 04/01/2018
 ms.topic: conceptual
 ms.service: sql-database
-author: douglaslMS
-ms.author: douglasl
+author: allenwux
+ms.author: xiwu
 manager: craigg
-ms.openlocfilehash: 683cf1426f01b3ab495b2380612dbf37342fc27a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b53c72f1df4f2fc2509d91220d08aff4682b6620
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646006"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025350"
 ---
-# <a name="best-practices-for-sql-data-sync-preview"></a>Bewährte Methoden für die SQL-Datensynchronisierung (Vorschauversion) 
+# <a name="best-practices-for-sql-data-sync"></a>Bewährte Methoden für die SQL-Datensynchronisierung 
 
-Dieser Artikel enthält bewährte Methoden für die Azure SQL-Datensynchronisierung (Vorschauversion).
+Dieser Artikel enthält bewährte Methoden für die Azure SQL-Datensynchronisierung.
 
-Eine Übersicht über die SQL-Datensynchronisierung (Vorschauversion) finden Sie unter [Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung (Vorschauversion)](sql-database-sync-data.md).
+Eine Übersicht über die SQL-Datensynchronisierung finden Sie unter [Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung](sql-database-sync-data.md).
 
 ## <a name="security-and-reliability"></a> Sicherheit und Zuverlässigkeit
 
@@ -50,10 +50,10 @@ Azure SQL-Datenbank unterstützt nur einen Satz von Anmeldeinformationen. Sie k�
 
 #### <a name="sql-database-instance-size"></a>Größe der SQL-Datenbankinstanz
 
-Legen Sie beim Erstellen einer neuen SQL-Datenbankinstanz die maximale Größe immer auf einen Wert fest, der größer als die bereitgestellte Datenbank ist. Wenn Sie die maximale Größe nicht auf einen höheren Wert als die bereitgestellte Datenbank festlegen, ist die Synchronisierung nicht erfolgreich. Die SQL-Datensynchronisierung (Vorschauversion) ermöglicht zwar keine automatische Vergrößerung, aber Sie können den Befehl `ALTER DATABASE` ausführen, um die Größe der Datenbank nach der Erstellung zu erhöhen. Stellen Sie sicher, dass die Größenlimits der SQL-Datenbankinstanz nicht überschritten werden.
+Legen Sie beim Erstellen einer neuen SQL-Datenbankinstanz die maximale Größe immer auf einen Wert fest, der größer als die bereitgestellte Datenbank ist. Wenn Sie die maximale Größe nicht auf einen höheren Wert als die bereitgestellte Datenbank festlegen, ist die Synchronisierung nicht erfolgreich. Die SQL-Datensynchronisierung ermöglicht zwar keine automatische Vergrößerung, Sie können jedoch den Befehl `ALTER DATABASE` ausführen, um die Größe der Datenbank nach der Erstellung zu erhöhen. Stellen Sie sicher, dass die Größenlimits der SQL-Datenbankinstanz nicht überschritten werden.
 
 > [!IMPORTANT]
-> Die SQL-Datensynchronisierung (Vorschauversion) speichert mit jeder Datenbank zusätzliche Metadaten. Stellen Sie sicher, dass Sie diese Metadaten bei der Berechnung des Speicherbedarfs berücksichtigen. Der zusätzlich benötigte Platz ist abhängig von der Breite der Tabellen (schmale Tabellen benötigen beispielsweise weniger zusätzlichen Platz) sowie vom Umfang des Datenverkehrs.
+> Die SQL-Datensynchronisierung speichert mit jeder Datenbank zusätzliche Metadaten. Stellen Sie sicher, dass Sie diese Metadaten bei der Berechnung des Speicherbedarfs berücksichtigen. Der zusätzlich benötigte Platz ist abhängig von der Breite der Tabellen (schmale Tabellen benötigen beispielsweise weniger zusätzlichen Platz) sowie vom Umfang des Datenverkehrs.
 
 ### <a name="table-considerations-and-constraints"></a> Überlegungen und Einschränkungen für Tabellen
 
@@ -63,19 +63,19 @@ Sie müssen nicht alle Tabellen, die in einer Datenbank enthalten sind, in eine 
 
 #### <a name="primary-keys"></a>Primärschlüssel
 
-Jede Tabelle in einer Synchronisierungsgruppe muss über einen Primärschlüssel verfügen. Mit dem Dienst „SQL-Datensynchronisierung“ (Vorschauversion) kann keine Tabelle synchronisiert werden, die nicht über einen Primärschlüssel verfügt.
+Jede Tabelle in einer Synchronisierungsgruppe muss über einen Primärschlüssel verfügen. Tabellen ohne Primärschlüssel können vom SQL-Datensynchronisierungsdienst nicht synchronisiert werden.
 
-Testen Sie die anfängliche und fortlaufende Synchronisierungsleistung, bevor Sie die SQL-Datensynchronisierung (Vorschauversion) in der Produktion verwenden.
+Testen Sie die anfängliche und fortlaufende Synchronisierungsleistung, bevor Sie die SQL-Datensynchronisierung in der Produktion verwenden.
 
 ### <a name="provisioning-destination-databases"></a> Bereitstellen von Zieldatenbanken
 
-Die Vorschauversion der SQL-Datensynchronisierung ermöglicht eine grundlegende automatische Datenbankbereitstellung.
+Die SQL-Datensynchronisierung bietet eine grundlegende automatische Datenbankbereitstellung.
 
-In diesem Abschnitt werden die Einschränkungen beschrieben, die für die Bereitstellung der SQL-Datensynchronisierung (Vorschauversion) gelten.
+In diesem Abschnitt werden die Einschränkungen im Zusammenhang mit der Bereitstellung in der SQL-Datensynchronisierung beschrieben.
 
 #### <a name="autoprovisioning-limitations"></a>Einschränkungen der automatischen Bereitstellung
 
-Für die SQL-Datensynchronisierung (Vorschauversion) gelten in Bezug auf die automatische Bereitstellung die folgenden Einschränkungen:
+Für die SQL-Datensynchronisierung gelten in Bezug auf die automatische Bereitstellung die folgenden Einschränkungen:
 
 -   Wählen Sie nur die Spalten aus, die in der Zieltabelle erstellt werden.  
     Alle Spalten, die nicht Teil der Synchronisierungsgruppe sind, werden in Zieltabellen bereitgestellt.
@@ -88,7 +88,7 @@ Für die SQL-Datensynchronisierung (Vorschauversion) gelten in Bezug auf die aut
 
 #### <a name="recommendations"></a>Empfehlungen
 
--   Verwenden Sie die automatische Bereitstellungsfunktion der SQL-Datensynchronisierung (Vorschauversion) nur während der Testphase des Diensts.  
+-   Verwenden Sie die automatische Bereitstellungsfunktion der SQL-Datensynchronisierung nur während der Testphase des Diensts.  
 -   Stellen Sie für eine Produktionsumgebung das Datenbankschema bereit.
 
 ### <a name="locate-hub"></a> Standort für die Hub-Datenbank
@@ -114,7 +114,7 @@ In diesem Abschnitt wird die erste Synchronisierung einer Synchronisierungsgrupp
 
 #### <a name="how-initial-sync-works"></a>Ablauf der ersten Synchronisierung
 
-Beginnen Sie beim Erstellen einer Synchronisierungsgruppe mit Daten in einer einzelnen Datenbank. Wenn Sie über Daten in mehreren Datenbanken verfügen, behandelt die SQL-Datensynchronisierung-Vorschauversion jede Zeile als Konflikt, der gelöst werden muss. Diese Lösung von Konflikten führt dazu, dass die erste Synchronisierung langsam abläuft. Wenn Sie über Daten in mehreren Datenbanken verfügen, kann die erste Synchronisierung je nach Datenbankgröße ggf. zwischen mehreren Tagen und mehreren Monaten dauern.
+Beginnen Sie beim Erstellen einer Synchronisierungsgruppe mit Daten in einer einzelnen Datenbank. Wenn Sie über Daten in mehreren Datenbanken verfügen, behandelt die SQL-Datensynchronisierung jede Zeile als Konflikt, der gelöst werden muss. Diese Lösung von Konflikten führt dazu, dass die erste Synchronisierung langsam abläuft. Wenn Sie über Daten in mehreren Datenbanken verfügen, kann die erste Synchronisierung je nach Datenbankgröße ggf. zwischen mehreren Tagen und mehreren Monaten dauern.
 
 Falls sich die Datenbanken in unterschiedlichen Datencentern befinden, muss jede Zeile zwischen den einzelnen Datencentern übertragen werden. Dies erhöht die Kosten für eine erste Synchronisierung.
 
@@ -209,16 +209,16 @@ Entfernen Sie stattdessen zuerst eine Datenbank aus einer Synchronisierungsgrupp
 Wenn Sie versuchen, eine Datenbank zu entfernen und dann eine Synchronisierungsgruppe zu bearbeiten, ohne zuerst eine der Änderungen bereitzustellen, schlägt einer der Vorgänge fehl. Die Portaloberfläche wird unter Umständen inkonsistent. Aktualisieren Sie in diesem Fall die Seite, um den korrekten Zustand wiederherzustellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur SQL-Datensynchronisierung (Vorschauversion) finden Sie unter:
+Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter:
 
--   [Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung (Vorschauversion)](sql-database-sync-data.md)
--   [Einrichten der Azure SQL-Datensynchronisierung (Vorschauversion)](sql-database-get-started-sql-data-sync.md)
--   [Überwachen der Azure SQL-Datensynchronisierung (Vorschauversion) mit Log Analytics](sql-database-sync-monitor-oms.md)
--   [Behandeln von Problemen mit der Azure SQL-Datensynchronisierung-Vorschauversion](sql-database-troubleshoot-data-sync.md)  
--   Vollständige PowerShell-Beispiele, die die Konfiguration der SQL-Datensynchronisierung (Vorschauversion) veranschaulichen:  
+-   [Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung](sql-database-sync-data.md)
+-   [Einrichten von Azure SQL-Datensynchronisierung](sql-database-get-started-sql-data-sync.md)
+-   [Überwachen der Azure SQL-Datensynchronisierung mit Log Analytics](sql-database-sync-monitor-oms.md)
+-   [Troubleshoot issues with SQL Data Sync (Preview)](sql-database-troubleshoot-data-sync.md) (Behandeln von Problemen mit der Azure SQL-Datensynchronisierung-Vorschauversion)  
+-   Vollständige PowerShell-Beispiele, die die Konfiguration der SQL-Datensynchronisierung veranschaulichen:  
     -   [Verwenden von PowerShell zum Synchronisieren zwischen mehreren Azure SQL-Datenbanken](scripts/sql-database-sync-data-between-sql-databases.md)  
     -   [Verwenden von PowerShell zum Synchronisieren zwischen einer Azure SQL-Datenbank und einer lokalen SQL Server-Datenbank](scripts/sql-database-sync-data-between-azure-onprem.md)  
--   [Herunterladen der Dokumentation zur REST-API der SQL-Datensynchronisierung (Vorschauversion)](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)  
+-   [Download the SQL Data Sync REST API documentation (Herunterladen der Dokumentation zur REST-API von SQL-Datensynchronisierung)](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)  
 
 Weitere Informationen zu SQL-Datenbank finden Sie hier:
 

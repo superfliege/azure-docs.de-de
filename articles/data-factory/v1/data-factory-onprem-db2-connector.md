@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fc4ce0a2ae33e99ecede371d9f17fb9a63851f64
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 88e56f522545f9c1f38bf0d0fdbcebdc171c294b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622022"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046529"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Verschieben von Daten aus DB2 mithilfe der Kopieraktivität von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: allgemein verfügbar](data-factory-onprem-db2-connector.md)
-> * [Version 2 – Vorschauversion](../connector-db2.md)
+> * [Version 1](data-factory-onprem-db2-connector.md)
+> * [Version 2 (aktuelle Version)](../connector-db2.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from DB2 using Azure Data Factory](../connector-db2.md) (Kopieren von Daten aus DB2 mit Azure Data Factory).
+> Dieser Artikel gilt für Version 1 von Data Factory. Bei Verwendung der aktuellen Version des Data Factory-Diensts finden Sie weitere Informationen unter [DB2 connector in V2](../connector-db2.md) (DB2-Connector in V2).
 
 
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer lokalen DB2-Datenbank in einen anderen Datenspeicher zu verschieben. Sie können Daten in einen beliebigen Speicher kopieren, der als unterstützte Senke im Artikel [Aktivitäten zur Datenverschiebung in Data Factory](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführt wird. Dieser Artikel baut auf dem Artikel zu Data Factory auf, der eine Übersicht zur Datenverschiebung mit der Kopieraktivität und unterstützten Datenspeicherkombinationen bietet. 

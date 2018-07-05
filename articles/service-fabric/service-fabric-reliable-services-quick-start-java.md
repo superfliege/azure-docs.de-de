@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 48546e84b94ad0c11a159b2f88f7e21f7eb6ae0e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7e83f141791bb49130f7cf01086537f8ae08c406
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208300"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019694"
 ---
 # <a name="get-started-with-reliable-services"></a>Erste Schritte mit Reliable Services
 > [!div class="op_single_selector"]
@@ -119,7 +119,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 In diesem Tutorial geht es um die Einstiegspunktmethode `runAsync()`. Hiermit können Sie sofort mit der Ausführung des Codes beginnen.
 
 ### <a name="runasync"></a>RunAsync
-Die Plattform ruft diese Methode auf, wenn eine Instanz des Diensts platziert wurde und zur Ausführung bereit ist. Bei zustandslosen Diensten ist dies einfach der Fall, wenn die Dienstinstanz geöffnet wird. Ein Abbruchtoken koordiniert, wann die Dienstinstanz geschlossen werden muss. In Service Fabric kann dieser Offen/Geschlossen-Zyklus einer Dienstinstanz über die gesamte Lebensdauer des Diensts häufig auftreten. Dies kann aus unterschiedlichen Gründen geschehen, z. B.:
+Die Plattform ruft diese Methode auf, wenn eine Instanz des Diensts platziert wurde und zur Ausführung bereit ist. Bei zustandslosen Diensten ist dies der Fall, wenn die Dienstinstanz geöffnet wird. Ein Abbruchtoken koordiniert, wann die Dienstinstanz geschlossen werden muss. In Service Fabric kann dieser Offen/Geschlossen-Zyklus einer Dienstinstanz über die gesamte Lebensdauer des Diensts häufig auftreten. Dies kann aus unterschiedlichen Gründen geschehen, z. B.:
 
 * Das System verschiebt Ihre Dienstinstanzen, um einen Lastenausgleich für Ressourcen durchzuführen.
 * In Ihrem Code treten Fehler auf.
@@ -201,16 +201,16 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) ist eine Wörterbuchimplementierung, die Sie nutzen können, um den Zustand im Dienst zuverlässig zu speichern. Mit Service Fabric und Reliable Hashmaps können Sie Daten direkt in Ihrem Dienst speichern. Ein externer persistenter Speicher ist nicht erforderlich. Reliable Hashmaps stellen die hohe Verfügbarkeit Ihrer Daten her. Service Fabric erreicht dies, indem mehrere *Replikate* Ihres Diensts für Sie erstellt und verwaltet werden. Außerdem wird eine API bereitgestellt, mit der die komplexen Verwaltungsanforderungen dieser Replikate und der damit verbundenen Zustandsübergänge beseitigt werden.
+[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) ist eine Wörterbuchimplementierung, die Sie nutzen können, um den Zustand im Dienst zuverlässig zu speichern. Mit Service Fabric und Reliable HashMaps können Sie Daten direkt in Ihrem Dienst speichern. Ein externer persistenter Speicher ist nicht erforderlich. Mit Reliable HashMaps kann die Hochverfügbarkeit Ihrer Daten ermöglicht werden. Service Fabric erreicht dies, indem mehrere *Replikate* Ihres Diensts für Sie erstellt und verwaltet werden. Außerdem wird eine API bereitgestellt, mit der die komplexen Verwaltungsanforderungen dieser Replikate und der damit verbundenen Zustandsübergänge beseitigt werden.
 
 Reliable Collections können mit gewissen Einschränkungen beliebige Java-Typen – einschließlich benutzerdefinierten Typen – speichern:
 
-* Service Fabric macht Ihren Zustand hoch verfügbar, indem der Zustand über verschiedene Knoten *repliziert* wird und Reliable Hashmap Ihre Daten an jedem Replikat auf einem lokalen Datenträger speichert. Dies bedeutet, dass alle Elemente, die in Reliable Hashmaps gespeichert werden, *serialisierbar* sein müssen. 
-* Objekte werden zum Zweck der Hochverfügbarkeit repliziert, wenn Sie Transaktionen auf Reliable Hashmaps anwenden. In Reliable Hashmaps gespeicherte Objekte werden in Ihrem Dienst im lokalen Speicher vorgehalten. Dies bedeutet, dass Sie über einen lokalen Verweis auf das Objekt verfügen.
+* Service Fabric macht Ihren Zustand hoch verfügbar, indem der Zustand knotenübergreifend *repliziert* wird und Reliable HashMap Ihre Daten für jedes Replikat auf einem lokalen Datenträger speichert. Dies bedeutet, dass alle Elemente, die in Reliable HashMaps gespeichert werden, *serialisierbar* sein müssen. 
+* Objekte werden zum Zweck der Hochverfügbarkeit repliziert, wenn Sie Transaktionen für Reliable HashMaps committen. In Reliable HashMaps gespeicherte Objekte werden in Ihrem Dienst im lokalen Speicher vorgehalten. Dies bedeutet, dass Sie über einen lokalen Verweis auf das Objekt verfügen.
   
-   Es ist wichtig, dass Sie lokale Instanzen dieser Objekte nicht ändern, ohne ein Update für die Reliable Collection in einer Transaktion durchzuführen. Das liegt daran, dass Änderungen an lokalen Instanzen von Objekten nicht automatisch repliziert werden. Sie müssen das Objekt wieder zurück in das Wörterbuch einfügen oder eine der Methoden zur *Aktualisierung* auf das Wörterbuch anwenden.
+   Es ist wichtig, dass Sie lokale Instanzen dieser Objekte nicht ändern, ohne ein Update für die Reliable Collection in einer Transaktion durchzuführen. Das liegt daran, dass Änderungen an lokalen Instanzen von Objekten nicht automatisch repliziert werden. Sie müssen das Objekt wieder ins Wörterbuch einfügen oder eine der Methoden zur *Aktualisierung* auf das Wörterbuch anwenden.
 
-Reliable State Manager verwaltet Reliable Hashmaps für Sie. Sie können über Reliable State Manager jederzeit und von jedem Ort in Ihrem Dienst aus anhand des Namens eine zuverlässige Auflistung anfordern. Der Reliable State Manager stellt sicher, dass Sie einen Verweis zurückerhalten. Es ist nicht ratsam, Verweise auf Reliable Collection-Instanzen in Klassenmembervariablen oder -eigenschaften zu speichern. Achten Sie besonders darauf sicherzustellen, dass der Verweis während des Dienstlebenszyklus jederzeit auf eine Instanz festgelegt ist. Der Reliable State Manager übernimmt diesen Schritt für Sie. Er ist für wiederholte Besuche optimiert.
+Reliable State Manager verwaltet Reliable HashMaps für Sie. Sie können über Reliable State Manager jederzeit und von jedem Ort in Ihrem Dienst aus anhand des Namens eine zuverlässige Auflistung anfordern. Der Reliable State Manager stellt sicher, dass Sie einen Verweis zurückerhalten. Es ist nicht ratsam, Verweise auf Instanzen zuverlässiger Sammlungen in Klassenmembervariablen oder -eigenschaften zu speichern. Achten Sie besonders darauf sicherzustellen, dass der Verweis während des Dienstlebenszyklus jederzeit auf eine Instanz festgelegt ist. Der Reliable State Manager übernimmt diesen Schritt für Sie. Er ist für wiederholte Besuche optimiert.
 
 
 ### <a name="transactional-and-asynchronous-operations"></a>Transaktionale und asynchrone Vorgänge
@@ -231,12 +231,12 @@ return map.computeAsync(tx, "counter", (k, v) -> {
 });
 ```
 
-Vorgänge für Reliable Hashmaps sind asynchron. Das liegt daran, dass Schreibvorgänge mit Reliable Collections E/A-Vorgänge ausführen, um Replikationen der Daten und ihre persistente Speicherung auf dem Datenträger vorzunehmen.
+Vorgänge für Reliable HashMaps sind asynchron. Das liegt daran, dass Schreibvorgänge mit Reliable Collections E/A-Vorgänge ausführen, um Replikationen der Daten und ihre persistente Speicherung auf dem Datenträger vorzunehmen.
 
-Reliable Hashmap-Vorgänge sind *transaktional*, damit Sie den Zustand über mehrere Reliable Hashmaps und Vorgänge hinweg beibehalten können. Sie können beispielsweise eine Arbeitsaufgabe aus einem Reliable Dictionary abrufen, einen Vorgang daran ausführen und das Ergebnis in einer anderen Reliable Hashmap-Instanz speichern – alles in einer Transaktion. Dies wird als atomischer Vorgang behandelt und es wird sichergestellt, dass entweder der gesamte Vorgang erfolgreich ist oder ein Rollback für den gesamten Vorgang ausgeführt wird. Wenn nach dem Entfernen des Elements aus der Warteschlange und vor dem Speichern des Ergebnisses ein Fehler auftritt, wird für die gesamte Transaktion ein Rollback ausgeführt, und das Element bleibt zur Verarbeitung in der Warteschlange enthalten.
+Reliable HashMaps-Vorgänge sind *transaktional*, damit Sie den Zustand über mehrere Reliable HashMaps und Vorgänge hinweg beibehalten können. Sie können beispielsweise eine Arbeitsaufgabe aus einem zuverlässigen Wörterbuch abrufen, einen Vorgang dafür ausführen und das Ergebnis in einer anderen Reliable HashMap-Instanz speichern – alles in einer Transaktion. Dies wird als atomischer Vorgang behandelt und es wird sichergestellt, dass entweder der gesamte Vorgang erfolgreich ist oder ein Rollback für den gesamten Vorgang ausgeführt wird. Wenn nach dem Entfernen des Elements aus der Warteschlange und vor dem Speichern des Ergebnisses ein Fehler auftritt, wird für die gesamte Transaktion ein Rollback ausgeführt, und das Element bleibt zur Verarbeitung in der Warteschlange enthalten.
 
 
-## <a name="run-the-application"></a>Ausführen der Anwendung
+## <a name="build-the-application"></a>Erstellen der Anwendung
 
 Das Yeoman-Gerüst enthält ein Gradle-Skript zum Erstellen der Anwendung sowie Bash-Skripts zum Bereitstellen und Entfernen der Anwendung. Um die Anwendung auszuführen, erstellen Sie diese zunächst mit Gradle:
 
@@ -246,13 +246,31 @@ $ gradle
 
 Dadurch wird ein Service Fabric-Anwendungspaket generiert, das mithilfe der Service Fabric CLI bereitgestellt werden kann.
 
-### <a name="deploy-with-service-fabric-cli"></a>Bereitstellen mit der Service Fabric CLI
+## <a name="deploy-the-application"></a>Bereitstellen der Anwendung
 
-Das Skript „install.sh“ enthält die erforderlichen Befehle der Service Fabric-Befehlszeilenschnittstelle zum Bereitstellen des Anwendungspakets. Führen Sie das Skript „install.sh“ aus, um die Anwendung bereitzustellen.
+Die erstellte Anwendung kann im lokalen Cluster bereitgestellt werden.
 
-```bash
-$ ./install.sh
-```
+1. Stellen Sie eine Verbindung mit dem lokalen Service Fabric-Cluster her.
+
+    ```bash
+    sfctl cluster select --endpoint http://localhost:19080
+    ```
+
+2. Führen Sie das in der Vorlage bereitgestellte Installationsskript aus, um das Anwendungspaket in den Imagespeicher des Clusters zu kopieren, den Anwendungstyp zu registrieren und eine Instanz der Anwendung zu erstellen.
+
+    ```bash
+    ./install.sh
+    ```
+
+Bei der Bereitstellung der erstellten Anwendung wird genau wie bei anderen Service Fabric-Anwendungen vorgegangen. Ausführliche Anweisungen finden Sie in der Dokumentation zum [Verwalten einer Service Fabric-Anwendung mit der Service Fabric-Befehlszeilenschnittstelle](service-fabric-application-lifecycle-sfctl.md).
+
+Parameter für diesen Befehl finden Sie in den erstellten Manifesten im Anwendungspaket.
+
+Öffnen Sie nach der Bereitstellung der Anwendung einen Browser, und navigieren Sie zu [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) unter [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Erweitern Sie dann den Knoten **Anwendungen**. Hier finden Sie nun einen Eintrag für Ihren Anwendungstyp und einen weiteren für die erste Instanz dieses Typs.
+
+> [!IMPORTANT]
+> Um die Anwendung in einem sicheren Linux-Cluster in Azure bereitzustellen, müssen Sie ein Zertifikat konfigurieren, um Ihre Anwendung mit der Service Fabric-Runtime zu überprüfen. Dadurch wird Ihren Reliable Services-Diensten die Kommunikation mit den zugrunde liegenden Service Fabric-Runtime-APIs ermöglicht. Weitere Informationen finden Sie unter [Konfigurieren einer Reliable Services-App zur Ausführung in Linux-Clustern](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+>
 
 ## <a name="next-steps"></a>Nächste Schritte
 

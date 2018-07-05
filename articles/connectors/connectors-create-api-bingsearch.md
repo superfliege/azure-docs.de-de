@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 87045d5dbbc1221a770e44bd9e9cf2451a9ac522
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 8ac67f9df0e5baccc668c2aeb70f65d96e574df5
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295535"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021284"
 ---
 # <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Suchen von Nachrichten mit der Bing-Suche und Azure Logic Apps 
 
@@ -102,7 +102,7 @@ Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
    | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
    |----------|----------|-------|-------------| 
-   | Suchabfrage | Ja | <*Suchausdruck*> | Geben Sie einen Ausdruck für die Abfrage der Triggerergebnisse ein. Sie können aus den Feldern der dynamischen Inhaltsliste wählen oder mit dem Ausdrucks-Generator einen Ausdruck erstellen. |
+   | Suchabfrage | Ja | <*Suchausdruck*> | Geben Sie einen Ausdruck für die Abfrage der Triggerergebnisse ein. Sie können aus den Feldern der Liste mit dynamischen Inhalten wählen oder mit dem Ausdrucks-Generator einen Ausdruck erstellen. |
    | Markt | Ja | <*Gebietsschema*> | Das Gebietsschema für die Suche. Die Standardeinstellung ist „en-US“, aber Sie können einen anderen Wert auswählen. | 
    | Sichere Suche | Ja | <*Suchebene*> | Die Filterebene zum Ausschließen nicht jugendfreier Inhalte. Die Standardeinstellung ist „Mittel“, aber Sie können eine andere Ebene auswählen. | 
    | Count | Nein  | <*Ergebnisanzahl*> | Hiermit wird die angegebene Anzahl von Ergebnissen zurückgegeben. Der Standardwert ist 20, aber Sie können einen anderen Wert angeben. Die tatsächliche Anzahl zurückgegebener Ergebnisse ist möglicherweise kleiner als die angegebene Anzahl. | 
@@ -149,7 +149,7 @@ Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
    | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
    |----------|----------|-------|-------------| 
-   | Verbindungsname | Ja | <*Verbindungsname*> | Der Name, der für Ihre Verbindung erstellt werden soll |
+   | Verbindungsname | Ja | <*verbindungsname*> | Der Name, der für Ihre Verbindung erstellt werden soll |
    | API-Version | Ja | <*API-Version*> | Standardmäßig wird die Version der Bing-Suche-API auf die aktuelle Version festgelegt. Sie können nach Bedarf eine frühere Version auswählen. | 
    | API-Schlüssel | Ja | <*API-Schlüssel*> | Der Schlüssel der Bing-Suche-API, den Sie zuvor erhalten haben. Wenn Sie keinen Schlüssel besitzen, können Sie Ihren [API-Schlüssel jetzt abrufen](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
    |||||  

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 2fbae15c1c6a9ec886f57f9df903612ae10d8e12
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: df9f53694cd72a700d593550bfde13a4f25180db
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
-ms.locfileid: "27779090"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021752"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurieren von MPIO auf einem StorSimple-Host mit CentOS
 In diesem Artikel werden die Schritte erläutert, die zum Konfigurieren von Multipfad-E/A (Multipathing IO, MPIO) auf Ihrem CentOS 6.6-Hostserver ausgeführt werden müssen. Der Hostserver ist zur Gewährleistung von Hochverfügbarkeit über iSCSI-Initiatoren mit Ihrem Microsoft Azure StorSimple-Gerät verbunden. Nachfolgend wird im Detail beschrieben, wie Multipfadgeräte automatisch erkannt und wie die Einrichtung für StorSimple-Volumes durchgeführt wird.
@@ -58,7 +58,7 @@ Die Datei "multipath.conf" enthält fünf Abschnitte:
 
 - **Standardeinstellungen auf Systemebene***(defaults)*: Sie können die Standardwerte auf Systemebene überschreiben.
 - **Gesperrte Geräte***(blacklist)*: Sie können eine Liste der Geräte konfigurieren, die nicht über "device-mapper" gesteuert werden sollen.
-- **Blockliste***(blacklist_exceptions)*: Sie können festlegen, dass bestimmte Geräte als Multipfadgeräte behandelt werden, selbst wenn sie in der Blockliste aufgeführt sind.
+- **Ausnahmen für schwarze Liste***(blacklist_exceptions)*: Sie können festlegen, dass bestimmte Geräte als Multipfadgeräte behandelt werden, selbst wenn sie in der schwarzen Liste aufgeführt sind.
 - **Einstellungen für den Speichercontroller***(devices)*: Sie können Konfigurationseinstellungen festlegen, die auf Geräte mit Hersteller- und Produktinformationen angewendet werden.
 - **Gerätespezifische Einstellungen***(multipaths)*: Sie können diesen Abschnitt dazu verwenden, die Konfigurationseinstellungen für einzelne LUNs zu optimieren.
 
@@ -335,17 +335,17 @@ In diesem Abschnitt werden einige nützliche Tipps bereitgestellt, um mögliche 
 
 F: Änderungen, die an der Datei `multipath.conf` vorgenommen wurden, treten nicht in Kraft.
 
-A: Wenn Sie Änderungen an der Datei `multipath.conf` vornehmen, müssen Sie den Multipfaddienst neu starten. Geben Sie folgenden Befehl ein:
+A. Wenn Sie Änderungen an der Datei `multipath.conf` vornehmen, müssen Sie den Multipfaddienst neu starten. Geben Sie folgenden Befehl ein:
 
     service multipathd restart
 
 F: Ich habe zwei Netzwerkschnittstellen auf dem StorSimple-Gerät und zwei Netzwerkschnittstellen auf dem Host aktiviert. Wenn ich die verfügbaren Pfade aufliste, werden nur zwei Pfade angezeigt. Ich habe erwartet, dass vier verfügbare Pfade angezeigt werden.
 
-A: Stellen Sie sicher, dass die zwei Pfade sich im selben Subnetz befinden und routingfähig sind. Wenn sich die zwei Netzwerkschnittstellen in unterschiedlichen vLANs befinden und nicht routingfähig sind, werden nur zwei Pfade angezeigt. Eine Möglichkeit der Überprüfung besteht darin sicherzustellen, dass Sie beide Hostschnittstellen über eine Netzwerkschnittstelle auf dem StorSimple-Gerät erreichen können. Hierzu müssen Sie sich an den [Microsoft Support](storsimple-8000-contact-microsoft-support.md) wenden, da diese Überprüfung nur über eine Supportsitzung durchgeführt werden kann.
+A. Stellen Sie sicher, dass die zwei Pfade sich im selben Subnetz befinden und routingfähig sind. Wenn sich die zwei Netzwerkschnittstellen in unterschiedlichen vLANs befinden und nicht routingfähig sind, werden nur zwei Pfade angezeigt. Eine Möglichkeit der Überprüfung besteht darin sicherzustellen, dass Sie beide Hostschnittstellen über eine Netzwerkschnittstelle auf dem StorSimple-Gerät erreichen können. Hierzu müssen Sie sich an den [Microsoft Support](storsimple-8000-contact-microsoft-support.md) wenden, da diese Überprüfung nur über eine Supportsitzung durchgeführt werden kann.
 
 F: Wenn ich die verfügbaren Pfade aufliste, wird keine Ausgabe angezeigt.
 
-A: Wenn keinerlei Pfade für Multipfad angezeigt werden, deutet dies auf ein Problem mit dem Multipfaddaemon hin. Wahrscheinlich liegt ein Problem in der Datei `multipath.conf` vor.
+A. Wenn keinerlei Pfade für Multipfad angezeigt werden, deutet dies auf ein Problem mit dem Multipfaddaemon hin. Wahrscheinlich liegt ein Problem in der Datei `multipath.conf` vor.
 
 Sie sollten möglicherweise auch prüfen, ob nach der Verbindungsherstellung mit dem Ziel überhaupt Datenträger angezeigt werden. Eine fehlende Antwort von der Multipfadauflistung kann auch bedeuten, dass keine Datenträger vorhanden sind.
 
@@ -378,7 +378,7 @@ Wiederholen Sie diesen Befehl für alle verbundenen Netzwerkschnittstellen auf d
 
 F: Ich bin nicht sicher, ob mein Gerät auf der Zulassungsliste befindet.
 
-A: Um zu überprüfen, ob sich Ihr Gerät auf der Zulassungsliste befindet, verwenden Sie den folgenden interaktiven Befehl für die Problembehandlung:
+A. Um zu überprüfen, ob sich Ihr Gerät auf der Zulassungsliste befindet, verwenden Sie den folgenden interaktiven Befehl für die Problembehandlung:
 
     multipathd –k
     multipathd> show devices

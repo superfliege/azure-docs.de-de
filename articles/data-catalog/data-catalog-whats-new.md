@@ -1,25 +1,24 @@
 ---
 title: Neuerungen in Azure Data Catalog | Microsoft Docs
-description: "Dieser Artikel bietet eine Übersicht über die neu hinzugefügten Funktionen von Azure Data Catalog."
+description: Dieser Artikel bietet eine Übersicht über die neu hinzugefügten Funktionen von Azure Data Catalog.
 services: data-catalog
-documentationcenter: 
+documentationcenter: ''
 author: steelanddata
 manager: NA
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 1201f8d4-6f26-4182-af3f-91e758a12303
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 9fb7814a8412200f6d31cfb9dcaee4663d7cea97
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 780ab56df19e8d6761fcf88fa7fbed3e8002fbe8
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025358"
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Neuerungen in Azure Data Catalog
 Updates für **Azure Data Catalog** werden in regelmäßigen Abständen veröffentlicht. Nicht jede Version umfasst neue Funktionen für Benutzer, da sich einige Versionen auf Back-End-Dienstfunktionen konzentrieren. Auf dieser Seite werden neue Funktionen für Benutzer aufgezeigt, die dem Dienst Azure Data Catalog hinzugefügt wurden.
@@ -99,7 +98,7 @@ Januar 2017 wurden Azure Data Catalog folgende Funktionen hinzugefügt:
 
 ## <a name="whats-new-for-december-2016"></a>Neuerungen im Dezember 2016
 Dezember 2016 wurden Azure Data Catalog die folgenden Funktionen hinzugefügt:
-*   Azure Data Catalog ist jetzt mit [HIPAA](https://www.microsoft.com/trustcenter/Compliance/HIPAA) und [EU-Modellklauseln](https://www.microsoft.com/TrustCenter/Compliance/EU-Model-Clauses) konform.
+*   Azure Data Catalog ist jetzt mit [HIPAA](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) und [EU-Modellklauseln](https://www.microsoft.com/en-us/TrustCenter/Compliance/EU-Model-Clauses) konform.
 *   Unterstützung für die Bearbeitung der Verbindungsinformationen für Datenquellen. Besitzer von Datenobjekten und Data Catalog-Administratoren können nun die Verbindungsinformationen für registrierte Datenquellen bearbeiten, ohne die Datenquellen erneut registrieren zu müssen.
 *   Unterstützung für Salesforce.com-Datenquellen. Benutzer können nun Salesforce-Objekte registrieren und ermitteln.
 

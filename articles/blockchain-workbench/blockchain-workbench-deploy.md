@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: bcd08ac8563edfaf4297e26ad42ed8bc62d86918
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: e226aadbe499d5905b1814bec5d042f67d898c18
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831634"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294848"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Bereitstellen von Azure Blockchain Workbench
 
@@ -48,7 +48,10 @@ Vor der Bereitstellung von Azure Blockchain Workbench müssen mehrere Voraussetz
 
 ### <a name="blockchain-workbench-api-app-registration"></a>Blockchain Workbench-API-App-Registrierung
 
-Die Blockchain Workbench-Bereitstellung erfordert die Registrierung einer Azure AD-Anwendung. Sie benötigen einen Azure Active Directory (Azure AD)-Mandanten, um die App zu registrieren. Sie können einen bestehenden Mandanten verwenden oder einen neuen Mandanten anlegen. Wenn Sie einen bestehenden Azure AD-Mandanten verwenden, benötigen Sie ausreichende Berechtigungen, um Anwendungen innerhalb eines Azure AD-Mandanten zu registrieren. Die Anwendungsregistrierungen müssen sich im Mandanten des Abonnementadministrators befinden, in dem die Workbench bereitgestellt ist. Weitere Informationen über Azure AD-Mandanten finden Sie unter [Einrichten eines Azure Active Directory-Mandanten](../active-directory/develop/active-directory-howto-tenant.md) und [Integrieren von Anwendungen in Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md).
+Die Blockchain Workbench-Bereitstellung erfordert die Registrierung einer Azure AD-Anwendung. Sie benötigen einen Azure Active Directory (Azure AD)-Mandanten, um die App zu registrieren. Sie können einen bestehenden Mandanten verwenden oder einen neuen Mandanten anlegen. Wenn Sie einen bestehenden Azure AD-Mandanten verwenden, benötigen Sie ausreichende Berechtigungen, um innerhalb eines Azure AD-Mandanten Anwendungen zu registrieren und Berechtigungen für die Graph-API zu erteilen. Wenn Sie in einem vorhandenen Azure AD-Mandanten nicht über ausreichende Berechtigungen verfügen, erstellen Sie einen neuen Mandanten. 
+
+> [!IMPORTANT]
+> Workbench muss nicht in demselben Mandanten bereitgestellt werden, den Sie zum Registrieren einer Azure AD-Anwendung verwenden. Workbench muss in einem Mandanten bereitgestellt werden, in dem Sie über ausreichende Berechtigungen zum Bereitstellen von Ressourcen verfügen. Weitere Informationen über Azure AD-Mandanten finden Sie unter [Einrichten eines Azure Active Directory-Mandanten](../active-directory/develop/active-directory-howto-tenant.md) und [Integrieren von Anwendungen in Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md).
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie oben rechts Ihr Konto aus, und wechseln Sie zum gewünschten Azure AD-Mandanten. Der Mandant sollte der Mandant des Abonnementadministrators sein, in dem die Workbench installiert ist. Zudem müssen Sie über ausreichende Berechtigungen verfügen, um Anwendungen zu registrieren.

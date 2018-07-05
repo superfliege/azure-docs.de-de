@@ -7,14 +7,14 @@ manager: carmonm
 keywords: Sicherung; Sichern;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 3/1/2018
+ms.date: 6/21/2018
 ms.author: markgal
-ms.openlocfilehash: 3727fab8f5d19e8f9178c9029177a2c1479422ae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 06898877a4f13182230c6d5fb12544f90525d84d
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606635"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960167"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Vorbereiten der Umgebung für die Sicherung von mit Resource Manager bereitgestellten virtuellen Computern
 
@@ -34,11 +34,14 @@ Bevor Sie einen mit dem Resource Manager bereitgestellten virtuellen Computer sc
 Wenn diese Bedingungen in Ihrer Umgebung bereits erfüllt sind, fahren Sie mit dem Artikel [Sichern von virtuellen Azure-Computern](backup-azure-arm-vms.md)fort. Wenn Sie mindestens eine dieser Voraussetzungen einrichten oder überprüfen müssen, führt dieser Artikel Sie durch die jeweiligen Schritte.
 
 ## <a name="supported-operating-systems-for-backup"></a>Unterstützte Betriebssystems für die Sicherung
- * **Linux**: Azure Backup unterstützt [eine Liste mit von Azure empfohlenen Verteilungen](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) mit Ausnahme von CoreOS Linux. 
- 
+
+ * **Linux**: Azure Backup unterstützt [eine Liste mit von Azure empfohlenen Verteilungen](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) mit Ausnahme von CoreOS Linux. Eine Liste mit den Linux-Betriebssystemen, die die Dateiwiederherstellung unterstützen, finden Sie unter [Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern](backup-azure-restore-files-from-vm.md#for-linux-os).
+
     > [!NOTE] 
     > Andere Bring-Your-Own-Linux-Distributionen sollten funktionieren, sofern der VM-Agent auf dem virtuellen Computer verfügbar ist und Python unterstützt wird. Allerdings werden diese Distributionen nicht unterstützt.
- * **Windows Server**: Versionen, die älter als Windows Server 2008 R2 sind, werden nicht unterstützt.
+    >
+ * **Windows Server**, **Windows-Client**: Versionen vor Windows Server 2008 R2 oder Windows 7 werden nicht unterstützt.
+
 
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Einschränkungen beim Sichern und Wiederherstellen eines virtuellen Computers
 Machen Sie sich vor der Vorbereitung der Umgebung mit diesen Einschränkungen vertraut:

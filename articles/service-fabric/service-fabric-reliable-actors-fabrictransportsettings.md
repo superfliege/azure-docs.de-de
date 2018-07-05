@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: 5ba13aeb63a72b738aac435b63ebbcfd4eeb7fa9
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f196859500d5de883a4de3f21b803c8f83e2f0b2
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213213"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021411"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Konfigurieren von FabricTransport-Einstellungen für Reliable Actors
 
@@ -51,6 +51,10 @@ Das folgende Beispiel zeigt, wie der Standardwert der Einstellungen „FabricTra
 ## <a name="config-package"></a>Konfigurationspaket
 
 Sie können ein [Konfigurationspaket](service-fabric-application-and-service-manifests.md) verwenden, um die Standardkonfiguration zu ändern.
+
+> [!IMPORTANT]
+> Für Linux-Knoten müssen Zertifikate das PEM-Format aufweisen. Weitere Informationen zum Ermitteln und Konfigurieren von Zertifikaten für Linux finden Sie unter [Certificates and security on Linux clusters](./service-fabric-configure-certificates-linux.md) (Zertifikate und Sicherheit in Linux-Clustern). 
+> 
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>Konfigurieren der FabricTransport-Einstellungen für den Akteurdienst
 

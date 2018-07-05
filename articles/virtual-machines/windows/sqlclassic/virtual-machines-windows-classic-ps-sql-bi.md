@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: maghan
-ms.openlocfilehash: 6f1a95e52def9154253192ab9d43d1e7d621cee7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e9d43d46f1979e985a5da96fda608eec55ad7830
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31425611"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031055"
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>SQL Server-Business Intelligence in Azure Virtual Machines
 > [!IMPORTANT] 
@@ -34,13 +34,13 @@ Es gibt zwei Möglichkeiten, SQL Server auf Microsoft Azure Virtual Machines zu 
 1. Lizenzmobilitätsvorteile, die Teil der Software Assurance sind. Weitere Informationen finden Sie unter [Lizenzmobilität durch Software Assurance für Azure](https://azure.microsoft.com/pricing/license-mobility/).
 2. Stundenbasierte Abrechnung für Azure Virtual Machines mit Installation von SQL Server. Siehe Abschnitt "SQL Server" unter [Virtuelle Computer Preise](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql).
 
-Weitere Informationen zur Lizenzierung und zu aktuellen Preisen finden Sie unter [Häufig gestellte Fragen zur Lizenzierung von Virtual Machines](https://azure.microsoft.com/pricing/licensing-faq/%20/).
+Weitere Informationen zur Lizenzierung und zu aktuellen Preisen finden Sie unter [Häufig gestellte Fragen zur Lizenzierung von Virtual Machines](https://azure.microsoft.com/pricing/licensing-faq/).
 
 ## <a name="sql-server-images-available-in-azure-virtual-machine-gallery"></a>Im Azure Virtual Machine-Katalog verfügbare SQL Server-Images
 Im Microsoft Azure Virtual Machine-Katalog sind verschiedene Images zu finden, die Microsoft SQL Server enthalten. Die Software, die auf den Images für die virtuellen Computer installiert ist, variiert je nach Version des Betriebssystems und der Version von SQL Server. Die Liste der Images, die im Katalog mit den virtuellen Azure-Computern verfügbar ist, ändert sich häufig.
 
 <!--![SQL image in azure VM gallery](./media/virtual-machines-windows-classic-ps-sql-bi/IC741367.png)-->
-![SQL-Image in einem Azure VM-Katalog](./media/virtual-machines-windows-classic-ps-sql-bi/vm-sql-images.png)
+![SQL-Image im Azure-VM-Katalog](./media/virtual-machines-windows-classic-ps-sql-bi/vm-sql-images.png)
 
 ![PowerShell](./media/virtual-machines-windows-classic-ps-sql-bi/IC660119.gif) Mit dem folgenden PowerShell-Skript wird die Liste mit den Azure-Images zurückgegeben, bei denen "SQL-Server" Teil des Namens ("ImageName") ist:
 
@@ -351,5 +351,5 @@ Im folgenden Diagramm sind die Ports dargestellt, die in der Firewall des virtue
 > [Übermitteln von Feedback und Kontaktinformationen über Microsoft SQL Server Connect](https://connect.microsoft.com/SQLServer/Feedback)
 
 ### <a name="community-content"></a>Community-Inhalte
-* [Verwalten von Azure SQL-Datenbank mit PowerShell](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
+* [Verwalten von Azure SQL-Datenbank mit PowerShell](https://azure.microsoft.com/blog/windows-azure-sql-database-management-with-powershell/)
 

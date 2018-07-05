@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/07/2018
+ms.date: 06/26/2018
 ms.author: asmalser
-ms.openlocfilehash: fce7ea66f5e10aae4f1a0a3f0ed92ca57e6112c7
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c7a18132a797bd7411487c233fc41647cc20dfb4
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293295"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025438"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Was ist eine automatisierte Benutzerbereitstellung für SaaS-Apps?
@@ -50,7 +50,6 @@ Nachfolgend werden einige Gründe aufgeführt, die für die Verwendung dieser Fu
 * Einfaches Importieren einer großen Zahl von Benutzern in eine bestimmte SaaS-Anwendung oder ein bestimmtes System.
 * Vorteil eines einzelnen Richtliniensatzes für die Ermittlung, wer bereitgestellt wird und wer sich an einer App anmelden kann.
 
-
 ## <a name="how-does-automatic-provisioning-work"></a>Funktionsweise der automatischen Bereitstellung
     
 Der **Azure AD-Bereitstellungsdienst** stellt Benutzer für SaaS-Apps und andere Systeme bereit, indem er eine Verbindung mit Endpunkten der Benutzerverwaltungs-API herstellt, die von den jeweiligen Anwendungsanbietern zur Verfügung gestellt werden. Diese Endpunkte der Benutzerverwaltungs-API ermöglichen Azure AD das programmgesteuerte Erstellen, Aktualisieren und Entfernen von Benutzern. Bei bestimmten Anwendungen kann der Bereitstellungsdienst auch zusätzliche identitätsbezogene Objekte wie Gruppen und Rollen erstellen, aktualisieren und entfernen. 
@@ -69,15 +68,17 @@ Der **Azure AD-Bereitstellungsdienst** stellt Benutzer für SaaS-Apps und andere
 
 Azure AD unterstützt standardmäßig verschiedene beliebte SaaS-Apps und Personalsysteme und bietet allgemeine Unterstützung für Apps, die bestimmte Teile des SCIM 2.0-Standards implementieren.
 
-Eine Aufstellung aller Anwendungen, für die Azure AD einen vorab integrierten Bereitstellungsconnector unterstützt, finden Sie in der [Liste mit den Anwendungstutorials zur Benutzerbereitstellung](active-directory-saas-tutorial-list.md).
+### <a name="pre-integrated-applications"></a>Vorab integrierte Anwendungen
+Eine Aufstellung aller Anwendungen, für die Azure AD einen vorab integrierten Bereitstellungsconnector unterstützt, finden Sie in der [Liste mit den Anwendungstutorials zur Benutzerbereitstellung](saas-apps/tutorial-list.md).
 
-Informationen dazu, wie Sie einer Anwendung die Unterstützung für die Azure AD-Benutzerbereitstellung hinzufügen, finden Sie unter [Verwenden von SCIM (System for Cross-domain Identity Management) für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](manage-apps/use-scim-to-provision-users-and-groups.md).
-
-Wenn Sie das Azure AD-Entwicklungsteam kontaktieren möchten, um Bereitstellungsunterstützung für zusätzliche Anwendungen anzufordern, senden Sie uns eine Nachricht über das [Azure Active Directory-Feedbackforum](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035).    
+Wenn Sie das Azure AD-Entwicklungsteam kontaktieren möchten, um Bereitstellungsunterstützung für zusätzliche Anwendungen anzufordern, senden Sie uns eine Nachricht über das [Azure Active Directory-Feedbackforum](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035).
 
 > [!NOTE]
 > Damit eine Anwendung die automatisierte Benutzerbereitstellung unterstützt, müssen zunächst die erforderlichen APIs für die Benutzerverwaltung bereitgestellt werden, die externen Programmen die Automatisierung der Erstellung, Wartung und Entfernung von Benutzern ermöglichen. Daher sind nicht alle SaaS-Apps mit diesem Feature kompatibel. Für Apps, die Benutzerverwaltungs-APIs unterstützen, kann das Azure AD-Entwicklerteam anschließend einen Bereitstellungsconnector erstellen. Diese Tätigkeit wird in Abhängigkeit von den Anforderungen bestehender und potenzieller Kunden priorisiert. 
-    
+
+### <a name="connecting-applications-that-support-scim-20"></a>Verbinden von Anwendungen mit SCIM 2.0-Unterstützung
+Informationen zum generischen Verbinden von Anwendungen, die SCIM 2.0-basierte APIs für die Benutzerverwaltung implementieren, finden Sie unter [Verwenden von SCIM (System for Cross-domain Identity Management) für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](manage-apps/use-scim-to-provision-users-and-groups.md).
+
     
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Wie richte ich die automatische Bereitstellung für eine Anwendung ein?
 
@@ -85,7 +86,7 @@ Wenn Sie das Azure AD-Entwicklungsteam kontaktieren möchten, um Bereitstellungs
 
 Die Konfiguration des Azure AD-Bereitstellungsdiensts für eine bestimmte Anwendung beginnt im **[Azure-Portal](https://portal.azure.com)**. Klicken Sie im Abschnitt **Azure Active Directory > Unternehmensanwendungen** auf **Hinzufügen**. Klicken Sie anschließend auf **Alle**, und fügen Sie dann abhängig von Ihrem Szenario eine der folgenden Optionen hinzu:
 
-* Alle Anwendungen im Abschnitt **Ausgewählte Anwendungen** unterstützen die automatische Bereitstellung. Weitere Anwendungen finden Sie in der [Liste mit den Anwendungstutorials zur Benutzerbereitstellung](active-directory-saas-tutorial-list.md).
+* Alle Anwendungen im Abschnitt **Ausgewählte Anwendungen** unterstützen die automatische Bereitstellung. Weitere Anwendungen finden Sie in der [Liste mit den Anwendungstutorials zur Benutzerbereitstellung](saas-apps/tutorial-list.md).
 
 * Verwenden Sie die Option „Nicht-Kataloganwendung“ für benutzerdefiniert entwickelte SCIM-Integrationen.
 
@@ -152,7 +153,7 @@ Nach der ersten Synchronisierung gilt für alle nachfolgenden Synchronisierungen
 >[!NOTE]
 > Sie können Erstellungs-, Aktualisierungs- und Löschvorgänge optional deaktivieren, indem Sie die Kontrollkästchen für **Zielobjektaktionen** im Abschnitt [Attributzuordnungen](active-directory-saas-customizing-attribute-mappings.md) verwenden. Die Logik zum Deaktivieren eines Benutzers während eines Updates wird ebenfalls per Attributzuordnung über ein Feld wie „accountEnabled“ gesteuert.
 
-Der Bereitstellungsdienst fährt damit fort, so lange nacheinander inkrementelle Synchronisierungen durchzuführen (die Intervalle sind in den [einzelnen Tutorials der Anwendungen](active-directory-saas-tutorial-list.md) angegeben), bis eines der folgenden Ereignisse eintritt:
+Der Bereitstellungsdienst fährt damit fort, so lange nacheinander inkrementelle Synchronisierungen durchzuführen (die Intervalle sind in den [einzelnen Tutorials der Anwendungen](saas-apps/tutorial-list.md) angegeben), bis eines der folgenden Ereignisse eintritt:
 
 * Der Dienst wird mit dem Azure-Portal oder mit dem entsprechenden Graph-API-Befehl manuell beendet. 
 * Eine neue erste Synchronisierung wird ausgelöst, indem im Azure-Portal die Option **Clear state and restart** (Status löschen und neu starten) oder der entsprechende Graph-API-Befehl verwendet wird. Hierdurch werden alle gespeicherten Grenzwerte gelöscht, und alle Quellobjekte erneut ausgewertet.
@@ -216,33 +217,31 @@ Zusammenfassung der Faktoren, die sich auf die Dauer bis zum Abschluss einer **e
 * Fordern Sie die Einschränkung der Datenübertragungsrate an, die vom Zielsystem implementiert wird. Einige Zielsysteme implementieren Anforderungen von Grenzwerten und Einschränkungen der Datenübertragungsrate, die die Leistung bei umfangreichen Synchronisierungsvorgängen beeinträchtigen können. Unter diesen Bedingungen kann eine App, die zu viele Anforderungen zu schnell empfängt, ihre Antwortrate verlangsamen oder die Verbindung trennen. Zur Leistungssteigerung muss der Connector angepasst werden, sodass er die App-Anforderungen nicht schneller sendet, als die App sie verarbeiten kann. Diese Anpassung ist durch die Bereitstellung von Connectors möglich, die von Microsoft erstellt wurden. 
 
 * Die Anzahl und Größe der zugewiesenen Gruppen. Das Synchronisieren zugewiesener Gruppen dauert länger als das Synchronisieren von Benutzern. Sowohl die Anzahl als auch die Größe der zugewiesenen Gruppen beeinflussen die Leistung. Wenn für eine Anwendung [Zuordnungen für die Synchronisierung von Gruppenobjekten aktiviert sind](active-directory-saas-customizing-attribute-mappings.md#editing-group-attribute-mappings), werden zusätzlich zu den Benutzern auch Gruppeneigenschaften wie Gruppennamen und Mitgliedschaften synchronisiert. Diese zusätzlichen Synchronisierungen dauern länger als die ausschließliche Synchronisierung von Benutzerobjekten.
- 
 
-## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
-**Wie kann ich den Fortschritt des aktuellen Bereitstellungsauftrags verfolgen?**
+##<a name="how-can-i-tell-if-users-are-being-provisioned-properly"></a>Wie kann ich feststellen, ob Benutzer ordnungsgemäß bereitgestellt werden?
 
-Informationen finden Sie in der [Anleitung zur Erstellung von Bereitstellungsberichten](active-directory-saas-provisioning-reporting.md).
+Alle vom Benutzerbereitstellungsdienst ausgeführten Vorgänge werden in den Azure AD-Überwachungsprotokollen erfasst. Dazu zählen alle Lese- und Schreibvorgänge in den Quell- und Zielsystemen sowie die Angabe, welche Benutzerdaten im Rahmen des jeweiligen Vorgangs gelesen oder geschrieben wurden.
 
-**Woher weiß ich, dass Benutzer nicht ordnungsgemäß bereitgestellt wurden?**
+Informationen zum Lesen der Überwachungsprotokolle im Azure-Portal finden Sie in der [Anleitung zur Erstellung von Bereitstellungsberichten](active-directory-saas-provisioning-reporting.md).
 
-Alle Fehler werden in den Überwachungsprotokollen von Azure AD erfasst. Weitere Informationen finden Sie in der [Anleitung zur Erstellung von Bereitstellungsberichten](active-directory-saas-provisioning-reporting.md).
 
-**Wie kann ich eine Anwendung erstellen, die mit dem Bereitstellungsdienst funktioniert?**
+##<a name="how-do-i-troubleshoot-issues-with-user-provisioning"></a>Wie kann ich Probleme bei der Benutzerbereitstellung behandeln?
 
-Weitere Informationen finden Sie unter [Verwenden von SCIM (System for Cross-domain Identity Management) für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning).
+Einen szenariobasierten Leitfaden zur Problembehandlung bei der automatischen Benutzerbereitstellung finden Sie unter [Probleme bei der Konfiguration und Bereitstellung von Benutzern für eine Anwendung](active-directory-application-provisioning-content-map.md).
 
-**Wie kann ich Feedback an das Entwicklerteam senden?**
 
-Setzen Sie über das [Azure Active Directory-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory/) mit uns in Verbindung.
+##<a name="what-are-the-best-practices-for-rolling-out-automatic-user-provisioning"></a>Welche Best Practices gibt es für das Rollout der automatischen Benutzerbereitstellung?
+
+> [!VIDEO https://www.youtube.com/embed/MAy8s5WSe3A]
+
+Einen ausführlichen exemplarischen Bereitstellungsplan für die ausgehende Benutzerbereitstellung einer Anwendung finden Sie im [Identitätsbereitstellungsleitfaden für die Benutzerbereitstellung](https://aka.ms/userprovisioningdeploymentplan)/.
 
 
 ## <a name="related-articles"></a>Verwandte Artikel
-* [Liste der Tutorials zur Integration von SaaS-Apps](active-directory-saas-tutorial-list.md)
+* [Liste der Tutorials zur Integration von SaaS-Apps](saas-apps/tutorial-list.md)
 * [Anpassen von Attributzuordnungen für die Benutzerbereitstellung](active-directory-saas-customizing-attribute-mappings.md)
 * [Schreiben von Ausdrücken für Attributzuordnungen](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Bereichsfilter für die Benutzerbereitstellung](active-directory-saas-scoping-filters.md)
 * [Verwenden von SCIM für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Azure AD synchronization API overview](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) (Azure AD-Synchronisierung – API-Übersicht)
-* [Ausführlicher Bereitstellungsplan für die ausgehende Benutzerbereitstellung einer Anwendung](https://aka.ms/userprovisioningdeploymentplan)
-
