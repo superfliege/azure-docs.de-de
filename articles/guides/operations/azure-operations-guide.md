@@ -3,7 +3,7 @@ title: Leitfaden zu den ersten Schritten für Azure-IT-Bediener | Microsoft-Doku
 description: Leitfaden zu den ersten Schritten für Azure-IT-Bediener
 services: ''
 documentationcenter: ''
-author: neilpeterson
+author: iainfoulds
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: ''
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/12/2017
-ms.author: nepeters
-ms.openlocfilehash: b63beffdd3b10071c6d18128e78a949374c171b2
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.author: iainfou
+ms.openlocfilehash: f79f727ed46f85866f59468be418ba8975c17bd8
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361649"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099492"
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>Einführung in Cloud Computing und Microsoft Azure
 
@@ -61,7 +61,7 @@ Bei SaaS handelt es sich um Software, die zentral gehostet und verwaltet wird. N
 
 Microsoft Office 365 ist ein gutes Beispiel für ein SaaS-Angebot. Abonnenten zahlen eine monatliche oder jährliche Abonnementgebühr und können Microsoft Exchange, Microsoft OneDrive und die restlichen Anwendungen der Microsoft Office Suite als Dienst nutzen. Die Abonnenten erhalten immer die aktuelle Version, und die Verwaltung des Exchange-Servers ist inbegriffen. Verglichen mit der jährlichen Office-Installation und -Aktualisierung ist dies kostengünstiger und weniger aufwändig.
 
-#### <a name="paas-platform-as-a-service"></a>PaaS: Platform-as-a-Service 
+#### <a name="paas-platform-as-a-service"></a>PaaS: Platform-as-a-Service
 
 Bei PaaS stellen Sie Ihre Anwendung in einer Umgebung des Clouddienstanbieters bereit. Der Anbieter übernimmt die gesamte Infrastrukturverwaltung, damit Sie sich auf die Anwendungsentwicklung konzentrieren können.
 
@@ -381,11 +381,11 @@ Azure-Speicherkonten können mit unterschiedlichen Redundanzebenen konfiguriert 
 
 -   Bei **georedundantem Speicher mit Lesezugriff** handelt es sich um georedundanten Speicher, der zusätzlich über die Möglichkeit verfügt, dass Daten in der sekundären Region gelesen werden. Hierdurch ist der Speicher für Teilnotfallwiederherstellungen geeignet. Wenn ein Problem mit der primären Region besteht, können Sie Ihre Anwendung so ändern, dass sie über schreibgeschützten Zugriff auf die verknüpfte Region verfügt.
 
-### <a name="use-cases"></a>Anwendungsfälle 
+### <a name="use-cases"></a>Anwendungsfälle
 
 Für jeden Speichertyp gilt ein anderer Anwendungsfall.
 
-**Blob Storage** 
+**Blob Storage**
 
 Der Ausdruck *Blob* ist ein Akronym für *Binary Large Object*. Blobs sind unstrukturierte Dateien, also beispielsweise die Dateien, die Sie auf Ihrem Computer speichern. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet. Azure Blob Storage umfasst auch Azure Virtual Machines-Datenträger für Daten.
 
@@ -445,7 +445,7 @@ Sie können die Azure CLI auch nutzen, um eine Azure Resource Manager-Vorlage be
 
 ### <a name="access-and-security-for-azure-storage"></a>Zugriff und Sicherheit für Azure Storage
 
-Der Zugriff auf Azure Storage ist auf verschiedene Arten möglich, z.B. über das Azure-Portal, während der Erstellung und des Betriebs der VM und über Speicherclientbibliotheken. 
+Der Zugriff auf Azure Storage ist auf verschiedene Arten möglich, z.B. über das Azure-Portal, während der Erstellung und des Betriebs der VM und über Speicherclientbibliotheken.
 
 **VM-Datenträger**
 

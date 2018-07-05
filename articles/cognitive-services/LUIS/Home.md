@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: v-geberr
-ms.openlocfilehash: bbd0a532e54f9b221739c8ae9ff097fe44fdc4df
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: da8ea6dead6b22d97e7338b2aa57a892be475417
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751594"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344830"
 ---
 # <a name="what-is-language-understanding-luis"></a>Worum handelt es sich bei Language Understanding (LUIS)?
 Language Understanding (LUIS) ist ein cloudbasierter Dienst, der benutzerdefiniertes Machine Learning auf natürliche Konversationssprachtexte eines Benutzers anwendet, um die allgemeine Bedeutung vorherzusagen sowie relevante und detaillierte Informationen abzurufen. 
@@ -82,7 +82,7 @@ Nachdem LUIS die in der Äußerung des Benutzers gefundenen Entitäten zurückge
 
 LUIS bietet verschiedene Methoden zum Identifizieren und Kategorisieren von Entitäten.
 
-* **Vordefinierte Entitäten**: LUIS verfügt über eine Vielzahl vordefinierter Domänenmodelle, einschließlich Absichten, Äußerungen und [vordefinierter Entitäten](pre-builtentities.md). Sie können die vordefinierten Entitäten nutzen, ohne die Absichten und Äußerungen des vordefinierten Modells verwenden zu müssen. Die vordefinierten Entitäten ersparen Ihnen Zeit.
+* **Vordefinierte Entitäten**: LUIS verfügt über eine Vielzahl vordefinierter Domänenmodelle, einschließlich Absichten, Äußerungen und [vordefinierter Entitäten](luis-prebuilt-entities.md). Sie können die vordefinierten Entitäten nutzen, ohne die Absichten und Äußerungen des vordefinierten Modells verwenden zu müssen. Die vordefinierten Entitäten ersparen Ihnen Zeit.
 
 * **Benutzerdefinierte Entitäten**: LUIS bietet Ihnen mehrere Möglichkeiten zum Festlegen eigener benutzerdefinierter [Entitäten](luis-concept-entity-types.md), einschließlich auf maschinellem Lernen basierender Entitäten, bestimmter oder literaler Entitäten sowie einer Kombination von literalen und auf maschinellem Lernen basierenden Entitäten.
 

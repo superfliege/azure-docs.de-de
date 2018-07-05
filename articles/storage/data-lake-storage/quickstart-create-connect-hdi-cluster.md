@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 6707610fc3410eab6eb2985c7d8a0ef821354689
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 9c037b35af19b94b6655cf7d1d45ba6b6182879c
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062078"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346585"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>Schnellstart: Einrichten von Hadoop-Clustern in HDInsight
 
@@ -55,7 +55,7 @@ Befolgen Sie die Anweisungen auf dem Bildschirm, um eine grundlegenden Clusterei
 
 * [Ressourcengruppenname](#resource-group-name)
 * [Clustertypen und Konfiguration](#cluster-types) 
-* [Clusteranmeldung und SSH-Benutzername](#cluster-login-and-ssh-username)
+* [Clusteranmeldung und SSH-Benutzername](#cluster-login-and-ssh-user-name)
 * [Location](#location)
 
 > [!IMPORTANT]
@@ -117,7 +117,7 @@ Obwohl eine lokale Installation von Hadoop das Hadoop Distributed File System (H
 
 Während der Konfiguration geben Sie als Standardspeicherendpunkt Data Lake Storage an. Der Standardspeicher enthält Anwendungs- und Systemprotokolle. Optional können Sie zusätzliche verknüpfte Azure Data Lake Storage-Konten angeben, auf die der Cluster zugreifen kann. Der HDInsight-Cluster und die abhängigen Speicherkonten müssen sich an demselben Azure-Standort befinden.
 
-![Clusterspeichereinstellungen: HDFS-kompatible Speicherendpunkte](media/quickstart-create-connect-hdi-cluster/hdinsight-cluster-creation-storage-TEMP.png)
+![Clusterspeichereinstellungen: HDFS-kompatible Speicherendpunkte](media/quickstart-create-connect-hdi-cluster/hdinsight-cluster-creation-storage2.png)
 
 > [!IMPORTANT]
 > Vergessen Sie nicht, den **Zugriff auf Data Lake Store zu deaktivieren**. Diese Einstellungen beziehen sich auf die alte *Data Lake Store*-Funktionalität und müssen deaktiviert werden, damit *Data Lake Storage*-Funktionen einwandfrei arbeiten.

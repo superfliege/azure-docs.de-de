@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: ad56580e73c06acff95b3146f6dc2d83ab2ba3ae
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: 7afa50484c3ebf258bbdd2b7f16c9cd051710d28
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36945971"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437891"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Dienstremoting in C# mit Reliable Services
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "36945971"
 >
 >
 
-Für WebAPI, WCF (Windows Communication Foundation) und andere Dienste, die nicht an ein bestimmtes Kommunikationsprotokoll oder einen bestimmten Kommunikationsstapel gebunden sind, stellt das Reliable Services-Framework einen Remotingmechanismus dar, mit dem sich Remoteprozeduraufrufe für Dienste schnell und einfach einrichten lassen. Dieser Artikel beschreibt das Einrichten von Remoteprozeduraufrufen für Dienste, die in C# geschrieben wurden.
+Für WebAPI, WCF (Windows Communication Foundation) und andere Dienste, die nicht an ein bestimmtes Kommunikationsprotokoll oder einen bestimmten Kommunikationsstapel gebunden sind, stellt das Reliable Services-Framework einen Remotingmechanismus für das schnelle, einfache Einrichten von Remoteprozeduraufrufen für Dienste bereit. Dieser Artikel beschreibt das Einrichten von Remoteprozeduraufrufen für Dienste, die in C# geschrieben wurden.
 
 ## <a name="set-up-remoting-on-a-service"></a>Einrichten von Remoting für einen Dienst
 Die Einrichtung von Remoting für einen Dienst erfolgt in zwei einfachen Schritten:

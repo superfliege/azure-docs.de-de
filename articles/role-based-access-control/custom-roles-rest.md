@@ -11,16 +11,16 @@ ms.service: role-based-access-control
 ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8267846fed30baf2c37dcddd453ae9ead9341da9
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 8a1bbe8217e2d4a9846f56124e248e19cbe70b19
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36323395"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436061"
 ---
 # <a name="create-custom-roles-using-the-rest-api"></a>Erstellen benutzerdefinierter Rollen mithilfe der REST-API
 
@@ -77,7 +77,7 @@ Informationen zum Abrufen von Informationen zu einer einzelnen Rolle über den A
 
 ## <a name="create-a-custom-role"></a>Erstellen einer benutzerdefinierten Rolle
 
-Um eine benutzerdefinierte Rolle zu erstellen, verwenden Sie die [Rollendefinitionen – Erstellen oder Aktualisieren](/rest/api/authorization/roledefinitions/createorupdate)-REST-API. Zum Aufrufen dieser API benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/write` für alle `assignableScopes`. Von den integrierten Rollen verfügen nur [Besitzer](built-in-roles.md#owner) und [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) über Zugriff auf diesen Vorgang. 
+Um eine benutzerdefinierte Rolle zu erstellen, verwenden Sie die [Rollendefinitionen – Erstellen oder Aktualisieren](/rest/api/authorization/roledefinitions/createorupdate)-REST-API. Zum Aufrufen dieser API benötigen Sie Zugriff auf den `Microsoft.Authorization/roleDefinitions/write`-Vorgang für alle `assignableScopes`. Von den integrierten Rollen verfügen nur [Besitzer](built-in-roles.md#owner) und [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) über Zugriff auf diesen Vorgang. 
 
 1. Überprüfen Sie die Liste der [Ressourcenanbietervorgänge](resource-provider-operations.md), die zum Erstellen von Berechtigungen für die benutzerdefinierte Rolle verfügbar sind.
 
@@ -167,7 +167,7 @@ Um eine benutzerdefinierte Rolle zu erstellen, verwenden Sie die [Rollendefiniti
 
 ## <a name="update-a-custom-role"></a>Aktualisieren einer benutzerdefinierten Rolle
 
-Um eine benutzerdefinierte Rolle zu aktualisieren, verwenden Sie die [Rollendefinitionen – Erstellen oder Aktualisieren](/rest/api/authorization/roledefinitions/createorupdate)-REST-API. Zum Aufrufen dieser API benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleDefinitions/write` für alle `assignableScopes`. Von den integrierten Rollen verfügen nur [Besitzer](built-in-roles.md#owner) und [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) über Zugriff auf diesen Vorgang. 
+Um eine benutzerdefinierte Rolle zu aktualisieren, verwenden Sie die [Rollendefinitionen – Erstellen oder Aktualisieren](/rest/api/authorization/roledefinitions/createorupdate)-REST-API. Zum Aufrufen dieser API benötigen Sie Zugriff auf den `Microsoft.Authorization/roleDefinitions/write`-Vorgang für alle `assignableScopes`. Von den integrierten Rollen verfügen nur [Besitzer](built-in-roles.md#owner) und [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) über Zugriff auf diesen Vorgang. 
 
 1. Verwenden Sie die [Rollendefinitionen – Liste](/rest/api/authorization/roledefinitions/list)- oder [Rollendefinitionen – Abrufen](/rest/api/authorization/roledefinitions/get)-REST-API zum Abrufen von Informationen zu der benutzerdefinierten Rolle. Weitere Informationen finden Sie im vorherigen Abschnitt [Auflisten der Rollen](custom-roles-rest.md#list-roles).
 

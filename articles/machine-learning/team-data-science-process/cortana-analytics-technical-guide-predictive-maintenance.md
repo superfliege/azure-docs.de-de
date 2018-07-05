@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
-ms.openlocfilehash: 2916252c08c599d2e528595a8cdf2abca8ea89a3
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 3715dcceb4330f6eaab01f49aee9d4d19663b62e
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939815"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099659"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Technische Anleitung für die Cortana Intelligence-Lösungsvorlage zur Vorhersage des Wartungsbedarfs in der Luft- und Raumfahrt sowie weiteren Branchen
 
@@ -54,7 +54,7 @@ In den folgenden Abschnitten werden die Komponenten der Lösung beschrieben.
 ### <a name="synthetic-data-source"></a>Synthetische Datenquelle
 Die für diese Vorlage verwendete Datenquelle wird mit einer Desktopanwendung generiert. Sie laden diese Anwendung nach dem erfolgreichen Bereitstellen der Vorlage herunter und führen sie aus.
 
-Wählen Sie zum Zugreifen auf die Anweisungen zum Herunterladen und Installieren dieser Anwendung im Lösungsvorlagendiagramm den ersten Knoten für den Datengenerator für Predictive Maintenance. Die Anweisungen befinden sich in der Eigenschaftenleiste. Diese Anwendung fügt dem [Azure Event Hub](#azure-event-hub)-Dienst Datenpunkte bzw. Ereignisse hinzu, die für den gesamten weiteren Lösungsablauf verwendet werden. Die Datenquelle ist von öffentlich zugänglichen Daten aus dem [Datenrepository der NASA](https://c3.nasa.gov/dashlink/resources/139/) (und dort konkret aus dem [Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan)) abgeleitet.
+Wählen Sie zum Zugreifen auf die Anweisungen zum Herunterladen und Installieren dieser Anwendung im Lösungsvorlagendiagramm den ersten Knoten für den Datengenerator für Predictive Maintenance. Die Anweisungen befinden sich in der Eigenschaftenleiste. Diese Anwendung fügt dem [Azure Event Hub](#azure-event-hub)-Dienst Datenpunkte bzw. Ereignisse hinzu, die für den gesamten weiteren Lösungsablauf verwendet werden. Die Datenquelle ist von öffentlich zugänglichen Daten aus dem [Datenrepository der NASA](https://c3.nasa.gov/dashlink/resources/139/) (und dort konkret aus dem [Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan)) abgeleitet.
 
 Die Ereignisgenerierungsanwendung füllt Azure Event Hub nur, solange sie auf dem Computer ausgeführt wird.  
 
@@ -82,7 +82,7 @@ Zeigen Sie mit [Power BI](https://powerbi.microsoft.com) ein Dashboard an, das d
 ## <a name="how-to-bring-in-your-own-data"></a>Einbringen Ihrer eigenen Daten
 Dieser Abschnitt beschreibt, wie Sie Ihre eigenen Daten zu Azure übertragen und in welchen Bereichen die in diese Architektur eingebrachten eigenen Daten Änderungen erfordern.
 
-Es ist unwahrscheinlich, dass Ihr Dataset mit dem für diese Vorlage verwendeten Dataset aus dem [Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan) übereinstimmt. Daher ist es entscheidend, dass Sie Ihre Daten und die Anforderungen genau verstehen. Nur dann können Sie diese Vorlage so abändern, dass sie mit Ihren eigenen Daten ordnungsgemäß funktioniert. 
+Es ist unwahrscheinlich, dass Ihr Dataset mit dem für diese Vorlage verwendeten Dataset aus dem [Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan) übereinstimmt. Daher ist es entscheidend, dass Sie Ihre Daten und die Anforderungen genau verstehen. Nur dann können Sie diese Vorlage so abändern, dass sie mit Ihren eigenen Daten ordnungsgemäß funktioniert. 
 
 In den folgenden Abschnitten werden die Teile der Vorlage erläutert, die beim Verwenden eines neuen Datasets geändert werden müssen.
 

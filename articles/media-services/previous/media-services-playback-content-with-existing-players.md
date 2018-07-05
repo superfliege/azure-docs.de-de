@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 07/02/2018
 ms.author: juliako
-ms.openlocfilehash: a64d32747371aab2bd927e53c5d43e30de9108f9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3fe82b98163182c73a144b72da371e8aa195e8cf
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783159"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435856"
 ---
 # <a name="playing-your-content-with-existing-players"></a>Wiedergabe Ihrer Inhalte mit vorhandenen Playern
 Azure Media Services unterstützt zahlreiche gängige Streamingformate wie Smooth Streaming, HTTP Live Streaming und MPEG-Dash. In diesem Thema finden Sie Verweise auf vorhandene Player, die Sie zum Testen von Datenströmen verwenden können.
@@ -48,8 +48,6 @@ Verwenden Sie [Azure Media Player](http://amsplayer.azurewebsites.net/azuremedia
 [http://aestoken.azurewebsites.net](http://aestoken.azurewebsites.net)
 
 ### <a name="silverlight-players"></a>Silverlight-Player
-#### <a name="monitoring"></a>Überwachung
-[http://smf.cloudapp.net/healthmonitor](http://smf.cloudapp.net/healthmonitor)
 
 #### <a name="playready-with-token"></a>PlayReady mit Token
 [http://sltoken.azurewebsites.net](http://sltoken.azurewebsites.net)

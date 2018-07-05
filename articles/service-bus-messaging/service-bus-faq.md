@@ -8,16 +8,16 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: sethm
-ms.openlocfilehash: df60862b6a835340534be4ed43a27267c33b64f5
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: b3171ca264afdbdbddeb26eff8744ee67f336dfe
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802264"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109519"
 ---
 # <a name="service-bus-faq"></a>Service Bus – Häufig gestellte Fragen
 
-In diesem Artikel werden einige häufig gestellte Fragen zu Microsoft Azure Service Bus behandelt. Sie können auch [Häufig gestellte Fragen zum Azure-Support](http://go.microsoft.com/fwlink/?LinkID=185083) aufrufen, wenn Sie nach allgemeinen Informationen zu Azure-Preisen und zum Support suchen.
+In diesem Artikel werden einige häufig gestellte Fragen zu Microsoft Azure Service Bus behandelt. Sie können auch [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/en-us/support/faq/) aufrufen, wenn Sie nach allgemeinen Informationen zu Azure-Preisen und zum Support suchen.
 
 ## <a name="general-questions-about-azure-service-bus"></a>Allgemeine Fragen zu Azure Service Bus
 ### <a name="what-is-azure-service-bus"></a>Was ist Azure Service Bus?
@@ -56,7 +56,7 @@ In diesem Abschnitt werden einige häufig gestellte Fragen zur Service Bus-Preis
 
 Im Artikel [Service Bus – Preise und Abrechnung](service-bus-pricing-billing.md) werden die Abrechnungseinheiten in Service Bus erläutert. Detailliertere Informationen zu den Service Bus-Preisoptionen finden Sie unter [Service Bus – Preise](https://azure.microsoft.com/pricing/details/service-bus/).
 
-Sie können auch [Häufig gestellte Fragen zum Azure-Support](http://go.microsoft.com/fwlink/?LinkID=185083) aufrufen, wenn Sie nach allgemeinen Azure-Preisinformationen suchen. 
+Sie können auch [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/en-us/support/faq/) aufrufen, wenn Sie nach allgemeinen Azure-Preisinformationen suchen. 
 
 ### <a name="how-do-you-charge-for-service-bus"></a>Wie werden die Kosten für Service Bus berechnet?
 Vollständige Informationen zu Service Bus-Preisen finden Sie unter [Service Bus-Preise][Pricing overview]. Neben den aufgeführten Preisen werden Ihnen die damit verbundenen aus dem Rechenzentrum ausgehenden Datenübertragungen berechnet, mit denen Ihre Anwendung bereitgestellt wird.

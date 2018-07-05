@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: japere,asteen
-ms.openlocfilehash: da44fb2982c76b849181683f308e414c3d3f0b7a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8eb12764cf5df539f61842ba3602c6265c1e2b86
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331205"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441208"
 ---
 # <a name="how-to-use-self-service-application-access"></a>Verwenden des Self-Service-Anwendungszugriffs
 
@@ -85,4 +85,4 @@ Nachdem Sie die Self-Service-Anwendungskonfiguration abgeschlossen haben, könne
 Diese Genehmigungen unterstützen nur Workflows mit einzelnen Genehmigungen. Das bedeutet, dass bei der Angabe mehrerer genehmigender Personen jede einzelne genehmigende Person den Zugriff auf die Anwendung genehmigen kann.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Einrichten von Azure Active Directory zur Self-Service-Gruppenverwaltung](active-directory-accessmanagement-self-service-group-management.md)
+[Einrichten von Azure Active Directory zur Self-Service-Gruppenverwaltung](users-groups-roles/groups-self-service-management.md)

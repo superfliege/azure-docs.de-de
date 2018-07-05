@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 3483ee01-8177-49e7-b337-4d5cb14f5e32
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b1df50c73497e3f5ad64a7ba7210079871b155e0
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 3b5d18a3e0bf846137dfdf68b8e5dd9e2db58792
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36324175"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437255"
 ---
 # <a name="create-custom-roles-using-azure-cli"></a>Erstellen benutzerdefinierter Rollen mithilfe der Azure CLI
 
@@ -27,7 +27,7 @@ Wenn die [integrierten Rollen](built-in-roles.md) den Ansprüchen Ihrer Organisa
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Erstellen von benutzerdefinierten Rollen in Azure benötigen Sie:
+Zum Erstellen von benutzerdefinierten Rollen benötigen Sie Folgendes:
 
 - Berechtigungen zum Erstellen benutzerdefinierter Rollen, etwa [Besitzer](built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator)
 - [Azure CLI](/cli/azure/install-azure-cli) (lokal installiert)
@@ -162,6 +162,6 @@ az role definition delete --name "Virtual Machine Operator"
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Tutorial: Erstellen einer benutzerdefinierten Rolle mithilfe der Azure-Befehlszeilenschnittstelle](tutorial-custom-role-cli.md)
+- [Tutorial: Erstellen einer benutzerdefinierten Rolle mithilfe der Azure CLI](tutorial-custom-role-cli.md)
 - [Benutzerdefinierte Rollen in Azure](custom-roles.md)
 - [Vorgänge für Azure Resource Manager-Ressourcenanbieter](resource-provider-operations.md)
