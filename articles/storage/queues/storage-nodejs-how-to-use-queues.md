@@ -14,11 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: cshoe
-ms.openlocfilehash: 2565f56324a070368c499a62ab54bb98830d8c20
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: c19ac5f45504e3c19b0b300dbc3ea157861d05ed
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "34653024"
 ---
 # <a name="how-to-use-queue-storage-from-nodejs"></a>Verwenden des Warteschlangenspeichers mit Node.js
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -66,8 +67,6 @@ var azure = require('azure-storage');
 
 ## <a name="setup-an-azure-storage-connection"></a>Einrichten einer Azure-Speicherverbindung
 Das Azure-Modul liest die Umgebungsvariablen AZURE\_STORAGE\_ACCOUNT und AZURE\_STORAGE\_ACCESS\_KEY oder AZURE\_STORAGE\_CONNECTION\_STRING nach Informationen aus, die erforderlich sind, um eine Verbindung mit dem Azure-Speicherkonto herzustellen. Falls diese Umgebungsvariablen nicht gesetzt sind, müssen Sie die Kontoinformationen beim Aufruf von **createQueueService**angeben.
-
-Ein Beispiel zum Festlegen der Umgebungsvariablen für eine Azure-Website im [Azure-Portal](https://portal.azure.com) finden Sie unter [Node.js-Web-App mit Azure-Tabellenspeicherdienst](../../cosmos-db/table-storage-cloud-service-nodejs.md).
 
 ## <a name="how-to-create-a-queue"></a>Erstellen einer Warteschlange
 Durch folgenden Code wird ein **QueueService** -Objekt erstellt, das Ihnen das Arbeiten mit Warteschlangen ermöglicht.

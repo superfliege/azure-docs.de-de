@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: 2868ebd459f937f8621086b16c63f89842f376be
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 61ee84ccfccfa49ff2e106e7036d072c1b21ca03
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "34652541"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Skalieren eines Azure Stream Analytics-Auftrags zur Erhöhung des Durchsatzes
 In diesem Artikel erfahren Sie, wie Sie eine Stream Analytics-Abfrage zur Steigerung des Durchsatzes für Stream Analytics-Aufträge optimieren. Im folgenden Leitfaden wird erläutert, wie Sie Ihren Auftrag zur Verarbeitung höherer Lasten skalieren und von einer größeren Menge an Systemressourcen (z.B. Bandbreite, CPU-Ressourcen, Arbeitsspeicher) profitieren können.
@@ -76,72 +77,6 @@ In bestimmten Anwendungsfällen mit ISVs ist es kosteneffizienter, Daten von meh
 > Dieses Abfragemuster weist häufig eine große Anzahl von Unterabfragen auf und führt zu einer sehr großen und komplexen Topologie. Der Controller des Auftrags ist dann eventuell nicht in der Lage, eine derart große Topologie zu verarbeiten. Als Faustregel gilt daher, maximal 40 Mandanten bei einem 1-SU-Auftrag und 60 Mandanten bei Aufträgen mit 3 SUs und 6 SUs aufzunehmen. Wenn Sie die Kapazität des Controllers überschreiten, wird der Auftrag nicht erfolgreich gestartet.
 
 
-## <a name="an-example-of-stream-analytics-throughput-at-scale"></a>Beispiel für einen skalierten Stream Analytics-Durchsatz
-Um die Skalierung von Stream Analytics-Aufträgen zu veranschaulichen, haben wir basierend auf der Eingabe eines Raspberry Pi-Geräts ein Experiment durchgeführt. Dieses Experiment führt vor Augen, welche Auswirkungen sich für den Durchsatz mehrerer Streamingeinheiten und Partitionen ergeben.
-
-In diesem Szenario sendet das Gerät Sensordaten (Clients) an einen Event Hub. Stream Analytics verarbeitet die Daten und sendet eine Warnung oder Statistiken als Ausgabe an einen anderen Event Hub. 
-
-Der Client sendet Sensordaten im JSON-Format. Die Datenausgabe erfolgt ebenfalls im JSON-Format. Die Daten sehen wie folgt aus:
-
-    {"devicetime":"2014-12-11T02:24:56.8850110Z","hmdt":42.7,"temp":72.6,"prss":98187.75,"lght":0.38,"dspl":"R-PI Olivier's Office"}
-
-Mit der folgenden Abfrage wird eine Warnung gesendet, wenn ein Licht ausgeschaltet wird:
-
-    SELECT AVG(lght), "LightOff" as AlertText
-    FROM input TIMESTAMP BY devicetime 
-    PARTITION BY PartitionID
-    WHERE lght< 0.05 GROUP BY TumblingWindow(second, 1)
-
-### <a name="measure-throughput"></a>Messen des Durchsatzes
-
-In diesem Kontext ist der Durchsatz die Menge der von Stream Analytics in einem festen Zeitraum verarbeiteten Eingabedaten. (Die Messung dauerte 10 Minuten.) Um den optimalen Verarbeitungsdurchsatz für die Eingabedaten zu erzielen, wurden sowohl die Datenstromeingabe als auch die Abfrage partitioniert. In die Abfrage wurde **COUNT()** eingefügt, um zu messen, wie viele Eingabeereignisse verarbeitet wurden. Um sicherzustellen, dass der Auftrag nicht einfach auf eingehende Eingabeereignisse wartet, wurde jede Event Hub-Partition der Eingabe im Voraus mit ca. 300 MB Eingabedaten geladen.
-
-Die folgende Tabelle enthält die Ergebnisse, die sich ergeben haben, nachdem die Anzahl der Streamingeinheiten und die entsprechende Anzahl von Partitionen in Event Hubs erhöht wurden.  
-
-<table border="1">
-<tr><th>Eingabepartitionen</th><th>Ausgabepartitionen</th><th>Streaming-Einheiten</th><th>Anhaltender Durchsatz
-</th></td>
-
-<tr><td>12</td>
-<td>12</td>
-<td>6</td>
-<td>4,06 MB/s</td>
-</tr>
-
-<tr><td>12</td>
-<td>12</td>
-<td>12</td>
-<td>8,06 MB/s</td>
-</tr>
-
-<tr><td>48</td>
-<td>48</td>
-<td>48</td>
-<td>38,32 MB/s</td>
-</tr>
-
-<tr><td>192</td>
-<td>192</td>
-<td>192</td>
-<td>172,67 MB/s</td>
-</tr>
-
-<tr><td>480</td>
-<td>480</td>
-<td>480</td>
-<td>454,27 MB/s</td>
-</tr>
-
-<tr><td>720</td>
-<td>720</td>
-<td>720</td>
-<td>609,69 MB/s</td>
-</tr>
-</table>
-
-Im folgenden Diagramm wird die Beziehung zwischen SUs und dem Durchsatz visualisiert.
-
-![img.stream.analytics.perfgraph][img.stream.analytics.perfgraph]
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
