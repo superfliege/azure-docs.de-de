@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 5fbb4f8a15ee7ee8b6cecbe76391e2b2a7e4be1b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 1b6aea5152e9eb5152b400d74d834e31eb883458
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31515348"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110226"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management-Richtlinien für die Zugriffsbeschränkung
 Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -40,7 +40,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
 ### <a name="policy-statement"></a>Richtlinienanweisung  
   
 ```xml  
-<check-header name="header name" failed-check-httpcode="code" failed-check-error-message="message" ignore-case="True">  
+<check-header name="header name" failed-check-httpcode="code" failed-check-error-message="message" ignore-case="true">  
     <value>Value1</value>  
     <value>Value2</value>  
 </check-header>  

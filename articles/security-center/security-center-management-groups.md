@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2018
 ms.author: terrylan
-ms.openlocfilehash: 2c95b06ce34b850d1bfaf60e47d6e5fede148a38
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 05504f94d72f39762672d0e79669dd50d8e6435e
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025334"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441494"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Erzielen der mandantenweiten Sichtbarkeit für Azure Security Center
 Dieser Artikel erleichtert Ihnen den Einstieg, indem Sie mehrere Aktionen durchführen, mit denen die Vorteile von Azure Security Center maximiert werden. Mit diesen Aktionen können Sie Sichtbarkeit für alle Azure-Abonnements erzielen, die mit Ihrem Azure Active Directory-Mandanten verknüpft sind, und den Sicherheitsstatus Ihrer Organisation bedarfsabhängig effektiv verwalten. Hierzu wenden Sie auf aggregierende Weise Sicherheitsrichtlinien übergreifend auf mehrere Abonnements an.
@@ -86,7 +86,7 @@ Ein Azure Active Directory-Mandantenadministrator hat keinen direkten Zugriff au
 5. Führen Sie die Aufgaben durch, für die Sie erhöhte Zugriffsrechte benötigen. Wenn Sie fertig sind, können Sie wieder **Nein** festlegen.
 
 ### <a name="assign-rbac-roles-to-users"></a>Zuweisen von RBAC-Rollen für Benutzer
-Nachdem ein Mandantenadministrator die Erhöhung der Rechte durchgeführt hat, kann er auf Ebene der Stammverwaltungsgruppe eine RBAC-Rolle für relevante Benutzer zuweisen. Die empfohlene Rolle für die Zuweisung ist [**Leser**](../role-based-access-control/built-in-roles.md#reader). Diese Rolle ist erforderlich, um die Sichtbarkeit auf Mandantenebene zu ermöglichen. Die zugewiesene Rolle wird automatisch auf alle Verwaltungsgruppen und Abonnements verteilt, die unter der Stammverwaltungsgruppe angeordnet sind. Weitere Informationen zu RBAC-Rollen finden Sie unter [Verfügbare Rollen](../active-directory/active-directory-assign-admin-roles-azure-portal.md#available-roles).
+Nachdem ein Mandantenadministrator die Erhöhung der Rechte durchgeführt hat, kann er auf Ebene der Stammverwaltungsgruppe eine RBAC-Rolle für relevante Benutzer zuweisen. Die empfohlene Rolle für die Zuweisung ist [**Leser**](../role-based-access-control/built-in-roles.md#reader). Diese Rolle ist erforderlich, um die Sichtbarkeit auf Mandantenebene zu ermöglichen. Die zugewiesene Rolle wird automatisch auf alle Verwaltungsgruppen und Abonnements verteilt, die unter der Stammverwaltungsgruppe angeordnet sind. Weitere Informationen zu RBAC-Rollen finden Sie unter [Verfügbare Rollen](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles).
 
 1. Installieren Sie [Azure PowerShell](/powershell/azure/install-azurerm-ps).
 2. Führen Sie die folgenden Befehle aus: 

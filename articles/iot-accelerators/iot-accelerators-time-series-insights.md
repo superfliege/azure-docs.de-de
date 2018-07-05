@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: ed1a55c26ab1ef2aadb4906757205df0ca09d866
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7a0a5d4f1fbba5d7bd2813e8b9c300a37853e06c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659434"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111475"
 ---
 # <a name="visualize-remote-monitoring-data-with-time-series-insights"></a>Visualisieren von Remoteüberwachungsdaten mit Time Series Insights
 
@@ -145,4 +145,4 @@ Der Time Series Insights-Explorer ist eine Web-App, mit der Sie Visualisierungen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Durchsuchen und Abfragen von Daten im Time Series Insights-Explorer finden Sie unter [Azure Time Series Insights-Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-dashboard.png).
+Informationen zum Durchsuchen und Abfragen von Daten im Time Series Insights-Explorer finden Sie unter [Azure Time Series Insights-Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer).

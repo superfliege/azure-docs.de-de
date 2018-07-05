@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 86e018a3f8eedecbb60614b0f1226b088ebb18fc
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 0f22f22d40410b258b3945d9e78938384ce64767
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837931"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128394"
 ---
 # <a name="deploy-an-azure-machine-learning-web-service"></a>Bereitstellen eines Azure Machine Learning-Webdiensts
 Azure Machine Learning ermöglicht es Ihnen, Vorhersageanalyselösungen zu erstellen, zu testen und bereitzustellen.
@@ -187,8 +187,8 @@ Eine Option zum Aktualisieren des Webdiensts ist das programmgesteuerte erneute 
 [Erstellen eines Trainingsexperiments]: #create-a-training-experiment
 [Konvertierten in ein Vorhersageexperiment]: #convert-the-training-experiment-to-a-predictive-experiment
 [Bereitstellen des Experiments als Webdienst]: #deploy-it-as-a-web-service
-[neuen]: #deploy-the-predictive-experiment-as-a-new-Web-service
-[Klassisch]: #deploy-the-predictive-experiment-as-a-new-Web-service
+[neuen]: #deploy-the-predictive-experiment-as-a-new-web-service
+[Klassisch]: #deploy-the-predictive-experiment-as-a-classic-web-service
 [Access]: #access-the-Web-service
 [Manage]: #manage-the-Web-service-in-the-azure-management-portal
 [Update]: #update-the-Web-service

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: ed1a307cb2a2613fc7701392cd7b408715f10910
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: fc0bb56e85c2a9cf7a458b0f6d97887d392ee65f
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207297"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114315"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Einführung in die Service Fabric-Integritätsüberwachung
 Mit Azure Service Fabric wird ein Integritätsmodell eingeführt, das eine umfassende, flexible und erweiterbare Integritätsevaluierung und -berichterstellung bietet. Mithilfe dieses Modells lässt sich der Zustand des Clusters und der darin ausgeführten Dienste nahezu in Echtzeit überwachen. Sie können mühelos Integritätsdaten ermitteln und potenzielle Probleme beheben, bevor sie sich ausbreiten und umfangreiche Ausfälle verursachen. In einem typischen Modell senden die Dienste Berichte basierend auf ihren lokalen Informationen. Anhand dieser Informationen wird ein Gesamtüberblick auf Clusterebene erstellt.
@@ -117,7 +117,7 @@ Das folgende Beispiel zeigt einen Auszug aus einem Clustermanifest. Ordnen Sie d
 Die [Anwendungsintegritätsrichtlinie](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy) beschreibt, wie die Auswertung von Ereignissen und Aggregationen der Zustände von untergeordneten Elementen für eine Anwendung und ihre untergeordneten Elemente erfolgen soll. Diese Richtlinie kann im Anwendungsmanifest ( **ApplicationManifest.xml**) im Anwendungspaket definiert werden. Wenn keine Richtlinien angegeben sind, geht Service Fabric davon aus, dass die Entität fehlerhaft ist, sofern sie über einen Integritätsbericht oder ein untergeordnetes Element mit dem Integritätsstatus „Warning“ oder „Error“ verfügt.
 Die folgenden Richtlinien sind konfigurierbar:
 
-* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.considerwarningaserror.aspx). Gibt an, ob während der Integritätsevaluierung Integritätsberichte mit dem Ergebnis „Warning“ als Fehler zu behandeln sind. Standardwert: false.
+* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Gibt an, ob während der Integritätsevaluierung Integritätsberichte mit dem Ergebnis „Warning“ als Fehler zu behandeln sind. Standardwert: false.
 * [MaxPercentUnhealthyDeployedApplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications). Gibt den maximal tolerierten Prozentsatz an bereitgestellten Anwendungen an, die fehlerhaft sein können, bevor eine Anwendung als fehlerhaft behandelt wird. Zur Berechnung dieses Prozentsatzes wird die Anzahl fehlerhafter bereitgestellter Anwendungen durch die Anzahl von Knoten geteilt, auf denen die Anwendungen derzeit im Cluster bereitgestellt sind. Die Berechnung wird aufgerundet, um einen Fehler auf einer kleinen Anzahl von Knoten zu tolerieren. Standardprozentsatz : null.
 * [DefaultServiceTypeHealthPolicy](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy). Gibt die standardmäßige Diensttyp-Integritätsrichtlinie an, die die Standardintegritätsrichtlinie für alle Diensttypen in der Anwendung ersetzt.
 * [ServiceTypeHealthPolicyMap](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap). Bietet eine Übersicht über Dienstintegritätsrichtlinien pro Diensttyp. Diese Richtlinien ersetzen die standardmäßigen Diensttyp-Integritätsrichtlinien für die angegebenen Diensttypen. Wenn also beispielsweise eine Anwendung einen zustandslosen Gatewaydiensttyp und einen zustandsbehafteten Engine-Diensttyp besitzt, können Sie für deren Evaluierung unterschiedliche Integritätsrichtlinien konfigurieren. Wenn Sie die Richtlinie pro Diensttyp angeben, können Sie die Integrität des Diensts genauer steuern.

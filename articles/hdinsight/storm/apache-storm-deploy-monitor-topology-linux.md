@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 8b4584e9ccd17eba385f2068709f5bbaea6df20b
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 53433e6a677a2576a11209075f397bb5f246b875
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37019955"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129284"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>Bereitstellen und Verwalten von Apache Storm-Topologien in HDInsight
 
@@ -212,7 +212,7 @@ Wenn Sie im Abschnitt **Spouts** oder **Bolts** einen Spout auswählen, werden d
 
 Die Storm-Benutzeroberfläche baut auf der REST-API auf, sodass Sie mithilfe der REST-API ähnliche Verwaltungs- und Überwachungsfunktionen ausführen können. Mithilfe der REST-API können Sie benutzerdefinierte Tools zum Verwalten und Überwachen von Storm-Topologien erstellen.
 
-Weitere Informationen finden Sie unter [Storm UI REST API](http://storm.apache.org/releases/0.9.6/STORM-UI-REST-API.html)(in englischer Sprache). Die folgenden Informationen gelten für die Verwendung der REST-API mit Apache Storm in HDInsight.
+Weitere Informationen finden Sie unter [Storm UI REST API](http://storm.apache.org/releases/current/STORM-UI-REST-API.html)(in englischer Sprache). Die folgenden Informationen gelten für die Verwendung der REST-API mit Apache Storm in HDInsight.
 
 > [!IMPORTANT]
 > Die Storm-REST-API ist nicht öffentlich über das Internet verfügbar. Der Zugriff muss über einen SSH-Tunnel zum Hauptknoten des HDInsight-Clusters erfolgen. Weitere Informationen zum Erstellen und Verwenden eines SSH-Tunnels finden Sie unter [Verwenden von SSH-Tunneling zum Zugriff auf die Ambari-Webbenutzeroberfläche, ResourceManager, JobHistory, NameNode, Oozie und andere Webbenutzeroberflächen](../hdinsight-linux-ambari-ssh-tunnel.md).

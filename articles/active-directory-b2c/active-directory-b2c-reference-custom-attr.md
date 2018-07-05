@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 61931be8e50cdc3132e36a63a2fdb059d62ba947
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 893dfbae96d2cfea01b1f281f888e9281bf582f9
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711874"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441915"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-to-collect-information-about-your-consumers"></a>Azure Active Directory B2C: Verwenden benutzerdefinierter Attribute zum Erfassen von Informationen über Ihre Kunden
 Das Azure Active Directory (Azure AD) B2C-Verzeichnis bietet einen integrierten Satz von Informationen (Attributen): Vorname, Nachname, Ort, Postleitzahl und weitere Attribute. Allerdings hat jede kundenorientierte Anwendung eigene Anforderungen an die Attribute, die von Kunden erfasst werden sollen. Mit Azure AD B2C haben Sie die Möglichkeit, den für die einzelnen Kundenkonten gespeicherten Satz von Attributen zu erweitern. Im [Azure-Portal](https://portal.azure.com/) können Sie benutzerdefinierte Attribute erstellen und wie unten dargestellt in den Registrierungsrichtlinien verwenden. Außerdem können Sie diese Attribute mit der [Azure AD Graph-API](active-directory-b2c-devquickstarts-graph-dotnet.md)lesen und schreiben.

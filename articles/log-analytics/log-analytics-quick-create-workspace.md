@@ -3,7 +3,7 @@ title: Erstellen eines Arbeitsbereichs in Azure Log Analytics | Microsoft-Dokume
 description: Hier erfahren Sie, wie Sie einen Log Analytics-Arbeitsbereich erstellen, um Verwaltungslösungen und die Datensammlung in Ihren cloudbasierten und lokalen Umgebungen zu aktivieren.
 services: log-analytics
 documentationcenter: log-analytics
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptal
 ms.date: 04/02/2018
 ms.author: magoedte
-ms.openlocfilehash: e05d620a457edf427c946366a9caca471ac8531e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: na
+ms.openlocfilehash: eff79e8ccf0b878b4c083753f245aae993be72de
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30833131"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127566"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal
 Im Azure-Portal können Sie einen Log Analytics-Arbeitsbereich einrichten. Dabei handelt es sich um eine einzigartige Log Analytics-Umgebung mit eigenem Datenrepository, eigenen Datenquellen und eigenen Lösungen.  Die in diesem Artikel beschriebenen Schritte sind erforderlich, wenn Sie Daten aus den folgenden Quellen sammeln möchten:

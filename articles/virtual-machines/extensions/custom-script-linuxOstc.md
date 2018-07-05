@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: danis
-ms.openlocfilehash: eac64a5b456eb040bcb1ac01c3c86dfde0847e57
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 526021ca238be7bc934e639c34d3e49879279a6a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944922"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127651"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Verwenden von Version 1 der Azure-Erweiterung für benutzerdefinierte Skripts mit virtuellen Linux-Computern
 Version 1 der Erweiterung für benutzerdefinierte Skripts lädt Skripts auf virtuelle Azure-Computer herunter und führt sie dort aus. Diese Erweiterung ist hilfreich bei der Konfiguration nach der Bereitstellung, bei der Softwareinstallation oder bei anderen Konfigurations-/Verwaltungsaufgaben. Sie können Skripts von Azure Storage oder einem anderen zugänglichen Speicherort im Internet herunterladen oder sie für die Erweiterungsruntime bereitstellen. 
@@ -34,7 +34,7 @@ Die Erweiterung für benutzerdefinierte Linux-Skripts ist in zwei Versionen verf
 * Version 1: Microsoft.OSTCExtensions.CustomScriptForLinux
 * Version 2: Microsoft.Azure.Extensions.CustomScript
 
-Stellen Sie neue und bereits vorhandene Bereitstellungen auf die neue Version ([Microsoft.Azure.Extensions.CustomScript](\custom-script-linux.md)) um. Die neue Version ist als direkter Ersatz konzipiert. Für die Migration müssen daher lediglich Name und Version geändert werden. Änderungen an der Erweiterungskonfiguration sind nicht erforderlich.
+Stellen Sie neue und bereits vorhandene Bereitstellungen auf die neue Version ([Microsoft.Azure.Extensions.CustomScript](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-linux)) um. Die neue Version ist als direkter Ersatz konzipiert. Für die Migration müssen daher lediglich Name und Version geändert werden. Änderungen an der Erweiterungskonfiguration sind nicht erforderlich.
 
  
 
@@ -55,9 +55,9 @@ Unterstützte Linux-Distributionen:
 Mit der Erweiterung können Sie unter Verwendung Ihrer Azure Blob Storage-Anmeldeinformationen auf Azure Blob Storage zugreifen. Alternativ kann das Skript an einem beliebigen Ort gespeichert sein, solange der virtuelle Computer ein Routing an diesen Endpunkt (GitHub, interner Dateiserver oder Ähnliches) durchführen kann.
 
 ### <a name="internet-connectivity"></a>Internetverbindung
-Wenn Sie ein Skript extern herunterladen möchten (etwa im Falle von GitHub oder Azure Storage), müssen zusätzliche Firewall-/Netzwerksicherheitsgruppen-Ports geöffnet werden. Wenn sich Ihr Skript also beispielsweise in Azure Storage befindet, können Sie Zugriff über Azure-NSG-Diensttags für [Storage](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags) gewähren.
+Wenn Sie ein Skript extern herunterladen möchten (etwa im Fall von GitHub oder Azure Storage), müssen zusätzliche Firewall-/Netzwerksicherheitsgruppen-Ports geöffnet werden. Wenn sich Ihr Skript also beispielsweise in Azure Storage befindet, können Sie Zugriff über Azure-NSG-Diensttags für [Storage](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags) gewähren.
 
-Befindet sich Ihr Skript auf einem lokalen Server, müssen ggf. noch weitere Firewall-/Netzwerksicherheitsgruppen-Ports geöffnet werden.
+Befindet sich Ihr Skript auf einem lokalen Server, müssen gegebenenfalls noch weitere Firewall-/Netzwerksicherheitsgruppen-Ports geöffnet werden.
 
 ### <a name="tips-and-tricks"></a>Tipps und Tricks
 * Die meisten Fehler für diese Erweiterung sind auf Syntaxfehler im Skript zurückzuführen. Vergewissern Sie sich, dass das Skript fehlerfrei ausgeführt wird, und versehen Sie es zusätzlich mit einer Protokollierung, um die Fehlersuche zu erleichtern.
@@ -65,12 +65,12 @@ Befindet sich Ihr Skript auf einem lokalen Server, müssen ggf. noch weitere Fir
 * Stellen Sie sicher, dass während der Skriptausführung keine Benutzereingaben erforderlich sind.
 * Die Skriptausführung darf maximal 90 Minuten dauern. Danach gilt die Bereitstellung der Erweiterung als nicht erfolgreich.
 * Das Skript darf keine Systemneustarts enthalten, da diese zu Problemen mit anderen Erweiterungen führen, die installiert werden. Außerdem wird die Erweiterung nach dem Neustart nicht fortgesetzt. 
-* Wenn Sie ein Skript haben, das einen Neustart des Systems bewirkt, installieren Sie Anwendungen, und führen Sie Skripts usw. aus. Planen Sie den Neustart des Systems mithilfe eines Cron-Auftrags oder mit einem Tool wie DSC oder Chef oder mit Puppet-Erweiterungen.
+* Wenn Sie über ein Skript verfügen, das einen Neustart des Systems bewirkt, installieren Sie Anwendungen, und führen Sie Skripts usw. aus. Planen Sie den Neustart des Systems mithilfe eines Cron-Auftrags oder mit einem Tool wie DSC oder Chef oder mit Puppet-Erweiterungen.
 * Die Erweiterung führt jedes Skript nur einmal aus. Soll ein Skript bei jedem Neustart des Systems ausgeführt werden, können Sie [cloud-init image](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/using-cloud-init) und ein Modul vom Typ [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) (Skripts pro Boot) verwenden. Alternativ können Sie mithilfe des Skripts eine Systemdiensteinheit erstellen.
 * Wenn Sie den Ausführungszeitpunkt eines Skripts planen möchten, erstellen Sie mithilfe der Erweiterung einen Cron-Auftrag. 
 * Während der Skriptausführung wird im Azure-Portal sowie in der CLI nur ein Übergangsstatus für die Erweiterung angezeigt. Sollten Sie häufigere Statusaktualisierungen für ein ausgeführtes Skript benötigen, müssen Sie eine eigene Lösung erstellen.
-* Die Erweiterung für benutzerdefinierte Skripts verfügt über keine native Proxyserverunterstützung. Sie können innerhalb Ihres Skripts jedoch ein Dateiübertragungstool mit Proxyserverunterstützung verwenden (beispielsweise *Curl*). 
-* Achten Sie auf nicht standardmäßige Verzeichnispfade, von denen Ihre Skripts oder Befehle ggf. abhängen, und verwenden Sie eine entsprechende Logik, um diese zu behandeln.
+* Die Erweiterung für benutzerdefinierte Skripts verfügt über keine native Proxyserverunterstützung. Sie können innerhalb Ihres Skripts jedoch ein Dateiübertragungstool mit Proxyserverunterstützung verwenden (beispielsweise *cURL*). 
+* Achten Sie auf nicht standardmäßige Verzeichnispfade, von denen Ihre Skripts oder Befehle gegebenenfalls abhängen, und verwenden Sie eine entsprechende Logik, um diese zu behandeln.
 
 
 
@@ -140,7 +140,7 @@ Die folgenden Werte können in öffentlichen oder geschützten Einstellungen fes
 
 Die Verwendung öffentlicher Einstellungen kann zwar beim Debuggen hilfreich sein, es wird jedoch dringend empfohlen, geschützte Einstellungen zu verwenden.
 
-Öffentliche Einstellungen werden in Klartext an den virtuellen Computer gesendet, auf dem das Skript ausgeführt wird.  Geschützte Einstellungen werden mit einem Schlüssel verschlüsselt, der nur Azure und dem virtuellen Computer bekannt ist. Die Einstellungen werden unverändert auf dem virtuellen Computer gespeichert. Waren die Einstellungen also verschlüsselt, werden sie auch verschlüsselt auf dem virtuellen Computer gespeichert. Das Zertifikat zum Entschlüsseln der verschlüsselten Werte wird auf dem virtuellen Computer gespeichert und ggf. zur Laufzeit zum Entschlüsseln der Einstellungen verwendet.
+Öffentliche Einstellungen werden in Klartext an den virtuellen Computer gesendet, auf dem das Skript ausgeführt wird.  Geschützte Einstellungen werden mit einem Schlüssel verschlüsselt, der nur in Azure und auf dem virtuellen Computer bekannt ist. Die Einstellungen werden unverändert auf dem virtuellen Computer gespeichert. Waren die Einstellungen also verschlüsselt, werden sie auch verschlüsselt auf dem virtuellen Computer gespeichert. Das Zertifikat zum Entschlüsseln der verschlüsselten Werte wird auf dem virtuellen Computer gespeichert und gegebenenfalls zur Laufzeit zum Entschlüsseln der Einstellungen verwendet.
 
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
@@ -180,7 +180,7 @@ Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bere
 >Bei Eigenschaftennamen wird zwischen Groß- und Kleinschreibung unterschieden. Um Bereitstellungsprobleme zu vermeiden, verwenden Sie die Namen wie hier gezeigt.
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-Wenn Sie die Azure-Befehlszeilenschnittstelle zum Ausführen der Erweiterung für benutzerdefinierte Skripts verwenden, erstellen Sie eine Konfigurationsdatei oder mehrere Konfigurationsdateien. Sie müssen mindestens über „commandToExecute“ verfügen.
+Wenn Sie die Azure-Befehlszeilenschnittstelle zum Ausführen der Erweiterung für benutzerdefinierte Skripts verwenden, erstellen Sie eine Konfigurationsdatei oder mehrere Konfigurationsdateien. Es muss mindestens commandToExecute festgelegt sein.
 
 ```azurecli
 az vm extension set -n VMAccessForLinux \
@@ -322,9 +322,9 @@ Suchen Sie nach der jeweiligen Ausführung. Diese sieht in etwa wie folgt aus:
 2018/04/26 15:29:47 
 ```
 Darin sind folgende Informationen enthalten:
-* Der Enable-Befehl zum Starten dieses Protokolls.
+* Der Befehl „Enable“ zum Starten dieses Protokolls.
 * Die an die Erweiterung übergebenen Einstellungen.
-* Die Downloaddatei der Erweiterung und das Ergebnis.
+* Die Downloaddatei der Erweiterung und das entsprechende Ergebnis.
 * Der ausgeführte Befehl und das Ergebnis.
 
 Sie können den Ausführungsstatus der Erweiterung für benutzerdefinierte Skripts auch über die Azure-Befehlszeilenschnittstelle abrufen:

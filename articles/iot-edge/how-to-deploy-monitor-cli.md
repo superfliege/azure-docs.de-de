@@ -9,12 +9,12 @@ ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 705f7bfa62154bff62b2357bd8f33c01e97404d1
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 3dfb0fe0227fdd0ff1a43cb7b0a89eb9d3e066f4
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034968"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097936"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe der Azure CLI
 
@@ -31,7 +31,7 @@ In diesem Artikel richten Sie die Azure CLI 2.0 und die IoT-Erweiterung ein. Ans
 * Ein [IoT-Hub](../iot-hub/iot-hub-create-using-cli.md) in Ihrem Azure-Abonnement 
 * [IoT Edge-Geräte](how-to-register-device-cli.md) mit installierter IoT Edge-Runtime
 * [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) in Ihrer Umgebung. Ihre Azure CLI 2.0-Version muss mindestens 2.0.24 lauten. Verwenden Sie `az –-version`, um dies zu überprüfen. Diese Version unterstützt az-Erweiterungsbefehle, und das Framework für Knack-Befehle wird eingeführt. 
-* Die [IoT-Erweiterung für Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension)
+* Die [IoT-Erweiterung für Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension).
 
 ## <a name="configure-a-deployment-manifest"></a>Konfigurieren eines Bereitstellungsmanifests
 
@@ -65,7 +65,7 @@ Hier sehen Sie ein Beispiel für ein grundlegendes Bereitstellungsmanifest mit e
                  "edgeAgent": {
                    "type": "docker",
                    "settings": {
-                     "image": "microsoft/azureiotedge-agent:1.0-preview",
+                     "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
                      "createOptions": "{}"
                    }
                  },
@@ -74,7 +74,7 @@ Hier sehen Sie ein Beispiel für ein grundlegendes Bereitstellungsmanifest mit e
                    "status": "running",
                    "restartPolicy": "always",
                    "settings": {
-                     "image": "microsoft/azureiotedge-hub:1.0-preview",
+                     "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
                      "createOptions": "{}"
                    }
                  }
@@ -145,7 +145,7 @@ Verwenden Sie den folgenden Befehl, um eine Bereitstellung zu erstellen:
 * **--content**: Dateipfad zur JSON-Datei mit dem Bereitstellungsmanifest 
 * **--hub-name**: Name des IoT-Hubs, in dem die Bereitstellung erstellt wird. Der Hub muss aus dem aktuellen Abonnement stammen. Wechseln Sie mit dem Befehl `az account set -s [subscription name]` zum gewünschten Abonnement.
 * **--target-condition**: Geben Sie eine Zielbedingung ein, um festzulegen, auf welche Geräte diese Bereitstellung ausgerichtet werden soll. Die Bedingung basiert auf den Gerätezwillingstags oder auf den gewünschten Eigenschaften des Gerätezwillings und muss dem Ausdrucksformat entsprechen. Beispiel: `tags.environment='test'` oder `properties.desired.devicemodel='4000x'`. 
-* **--priority**: Ein positiver Integer. Wenn mindestens zwei Bereitstellungen auf dasselbe Gerät ausgerichtet sind, wird die Bereitstellung mit dem höchsten numerischen Wert für die Priorität angewendet.
+* **--priority** – ein positiver Integer. Wenn mindestens zwei Bereitstellungen auf dasselbe Gerät ausgerichtet sind, wird die Bereitstellung mit dem höchsten numerischen Wert für die Priorität angewendet.
 
 ## <a name="monitor-a-deployment"></a>Überwachen einer Bereitstellung
 
@@ -171,7 +171,7 @@ az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [
 
 * **--deployment-id**: Der Name der Bereitstellung, die im IoT-Hub vorhanden ist
 * **--metric-id**: Der Name der Metrik, für die Sie eine Liste der Geräte-IDs anzeigen möchten, z.B. `reportedFailedCount`.
-* **--hub-name**: Der Name des IoT-Hubs, in dem die Bereitstellung vorhanden ist. Der Hub muss aus dem aktuellen Abonnement stammen. Wechseln Sie mit dem Befehl `az account set -s [subscription name]` zum gewünschten Abonnement.
+* **--hub-name** – Name des IoT Hub, in dem die Bereitstellung vorhanden ist. Der Hub muss aus dem aktuellen Abonnement stammen. Wechseln Sie mit dem Befehl `az account set -s [subscription name]` zum gewünschten Abonnement.
 
 ## <a name="modify-a-deployment"></a>Ändern einer Bereitstellung
 
@@ -190,7 +190,7 @@ az iot edge deployment update --deployment-id [deployment id] --hub-name [hub na
 * **--deployment-id**: Der Name der Bereitstellung, die im IoT-Hub vorhanden ist
 * **--hub-name**: Der Name des IoT-Hubs, in dem die Bereitstellung vorhanden ist. Der Hub muss aus dem aktuellen Abonnement stammen. Wechseln Sie mit dem Befehl `az account set -s [subscription name]` zum gewünschten Abonnement.
 * **--set**: Aktualisieren einer Eigenschaft in der Bereitstellung. Sie können die folgenden Eigenschaften aktualisieren:
-    * targetCondition, etwa `targetCondition=tags.location.state='Oregon'`
+    * targetCondition – z.B. `targetCondition=tags.location.state='Oregon'`
     * Bezeichnungen 
     * priority
 
