@@ -1,8 +1,8 @@
-- name: Dokumentation zu Project Answer Search
+- name: 'Dokumentation zu „Projekt: Suche nach Antworten“'
 - name: Übersicht
   expanded: true
   items:
-    - name: Worum handelt es sich bei Project Answer Search?
+    - name: 'Worum handelt es sich bei „Projekt: Suche nach Antworten“?'
       href: overview.md
 - name: Schnellstarts
   expanded: true
@@ -25,5 +25,5 @@
   items:
     - name: Verwenden und Anzeigen von Anforderungen
       href: use-display-requirements.md
-    - name: Referenz zu Project Answer Search
+    - name: 'Referenz zu „Projekt: Suche nach Antworten“'
       href: reference.md

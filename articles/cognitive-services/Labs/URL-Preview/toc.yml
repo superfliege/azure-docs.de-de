@@ -1,8 +1,8 @@
-- name: Dokumentation zur Vorschau der Projekt-URL
+- name: 'Dokumentation zu „Projekt: URL-Vorschau“'
 - name: Übersicht
   expanded: true
   items:
-    - name: Worum handelt es sich bei der Vorschau der Projekt-URL?
+    - name: 'Worum handelt es sich bei „Projekt: URL-Vorschau“?'
       href: overview.md
     - name: Endpunkt für URL-Vorschau
       href: endpoint.md

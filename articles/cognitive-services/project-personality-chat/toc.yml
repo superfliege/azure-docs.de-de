@@ -1,8 +1,8 @@
-- name: Dokumentation zu Project Personality Chat
+- name: 'Dokumentation zu „Projekt: Chat mit Profil“'
 - name: Übersicht
   expanded: true
   items:
-    - name: Was ist Project Personality Chat?
+    - name: 'Was ist „Projekt: Chat mit Profil“?'
       href: overview.md
 - name: angeben
   expanded: true
