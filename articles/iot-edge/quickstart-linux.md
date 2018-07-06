@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 86bf28249321a705e8855de35121611b05009854
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 27e5b7fed227248d9d60c8ede460c9ecc65ca52d
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063492"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096273"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Schnellstart: Bereitstellen des ersten IoT Edge-Moduls auf einem Linux-basierten x64-Gerät
 
@@ -46,7 +46,7 @@ Fügen Sie die Azure IoT-Erweiterung der Cloud Shell-Instanz hinzu.
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
 
-Beginnen Sie mit der Schnellstartanleitung, indem Sie Ihren IoT Hub im Azure-Portal erstellen.
+Beginnen Sie mit der Schnellstartanleitung, indem Sie Ihre IoT Hub-Instanz im Azure-Portal erstellen.
 ![Erstellen des IoT Hubs][3]
 
 Der kostenlose IoT Hub kann für diesen Schnellstart verwendet werden. Wenn Sie den IoT Hub schon einmal genutzt und bereits einen kostenlosen Hub erstellt haben, können Sie diesen IoT Hub verwenden. Jedes Abonnement kann nur über einen kostenlosen IoT Hub verfügen. 
@@ -90,7 +90,7 @@ Erstellen Sie eine Geräteidentität für das simulierte Gerät, sodass es mit d
 Installieren und starten Sie die Azure IoT Edge-Runtime auf Ihrem Gerät. 
 ![Registrieren eines Geräts][5]
 
-Die IoT Edge-Runtime wird auf allen IoT Edge-Geräten bereitgestellt. Sie besteht aus drei Komponenten. Der **Daemon für die IoT Edge-Sicherheit** wird jedes Mal gestartet, wenn ein Edge-Gerät gestartet wird, und führt für das Gerät einen Bootstrap durch, indem der IoT Edge-Agent gestartet wird. Der **IoT Edge-Agent** erleichtert die Bereitstellung und Überwachung von Modulen auf dem IoT Edge-Gerät, einschließlich des IoT Edge-Hub. Der **IoT Edge-Hub** verwaltet die Kommunikation zwischen Modulen auf dem IoT Edge-Gerät sowie zwischen dem Gerät und IoT Hub. 
+Die IoT Edge-Runtime wird auf allen IoT Edge-Geräten bereitgestellt. Sie besteht aus drei Komponenten. Der **Daemon für die IoT Edge-Sicherheit** wird jedes Mal gestartet, wenn ein Edge-Gerät gestartet wird, und startet den IoT Edge-Agent, um einen Bootstrapvorgang durchzuführen. Der **IoT Edge-Agent** erleichtert die Bereitstellung und Überwachung von Modulen auf dem IoT Edge-Gerät, einschließlich des IoT Edge-Hubs. Der **IoT Edge-Hub** verwaltet die Kommunikation zwischen Modulen auf dem IoT Edge-Gerät sowie zwischen dem Gerät und IoT Hub. 
 
 ### <a name="register-your-device-to-use-the-software-repository"></a>Registrieren Ihres Geräts zur Verwendung des Softwarerepositorys
 
@@ -171,14 +171,16 @@ Der Daemon für die Sicherheit wird als Systemdienst installiert, sodass die IoT
 6. Zeigen Sie die Module an, die auf Ihrem Gerät ausgeführt werden: 
 
    ```bash
-   iotedge list
+   sudo iotedge list
    ```
+
+   Nach einer Ab- und Anmeldung ist *sudo* für den obigen Befehl nicht erforderlich.
 
    ![Anzeigen eines Moduls auf Ihrem Gerät](./media/quickstart-linux/iotedge-list-1.png)
 
 ## <a name="deploy-a-module"></a>Bereitstellen eines Moduls
 
-Verwalten Sie Ihr Azure IoT Edge-Gerät über die Cloud, um ein Modul bereitzustellen, das Telemetriedaten an den IoT Hub sendet.
+Verwalten Sie Ihr Azure IoT Edge-Gerät über die Cloud, um ein Modul bereitzustellen, das Telemetriedaten an die IoT Hub-Instanz sendet.
 ![Registrieren eines Geräts][6]
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
@@ -190,8 +192,9 @@ In diesem Schnellstart haben Sie ein neues IoT Edge-Gerät erstellt und die IoT 
 Öffnen Sie erneut eine Eingabeaufforderung auf dem Computer, auf dem das simulierte Gerät ausgeführt wird. Vergewissern Sie sich, dass das über die Cloud bereitgestellte Modul auf dem IoT Edge-Gerät ausgeführt wird:
 
    ```bash
-   iotedge list
+   sudo iotedge list
    ```
+   Nach einer Ab- und Anmeldung ist *sudo* für den obigen Befehl nicht erforderlich.
 
    ![Anzeigen von drei Modulen auf dem Gerät](./media/quickstart-linux/iotedge-list-2.png)
 

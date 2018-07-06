@@ -3,7 +3,7 @@ title: Azure PowerShell-Skriptbeispiel – Docker | Microsoft-Dokumentation
 description: Azure PowerShell-Skriptbeispiel – Docker
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,18 +14,18 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/02/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 87b87734ebf2eaa266447cab0083c24399844f55
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cfa42180d0cc25b3ee4da3f79b51775e8e62db81
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653391"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096661"
 ---
 # <a name="create-a-docker-host-with-powershell"></a>Erstellen eines Docker-Hosts mit PowerShell
 
-Dieses Skript erstellt den virtuellen Computer mit aktiviertem Docker und startet einen Container, in dem NGINX ausgeführt wird. Nach dem Ausführen des Skripts können Sie über den FQDN des virtuellen Azure-Computers auf den NGINX-Webserver zugreifen. 
+Dieses Skript erstellt den virtuellen Computer mit aktiviertem Docker und startet einen Container, in dem NGINX ausgeführt wird. Nach dem Ausführen des Skripts können Sie über den FQDN des virtuellen Azure-Computers auf den NGINX-Webserver zugreifen.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
@@ -35,7 +35,7 @@ Dieses Skript erstellt den virtuellen Computer mit aktiviertem Docker und starte
 
 [!code-powershell[main](../../../powershell_scripts/virtual-machine/create-docker-host/create-docker-host.ps1 "Create Docker host")]
 
-## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
+## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
 Führen Sie den folgenden Befehl aus, um die Ressourcengruppe, den virtuellen Computer und alle zugehörigen Ressourcen zu entfernen.
 

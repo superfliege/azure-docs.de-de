@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ad2895a457a20632823260f2429ac95fad82089c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 0790f504c978b4302812cffc9b655e817c156da3
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060194"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081386"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Tutorial: Bereitstellen von Azure Stream Analytics als IoT Edge-Modul (Vorschauversion)
 
@@ -128,7 +128,7 @@ Sie können den Azure Stream Analytics-Auftrag jetzt auf Ihrem IoT Edge-Gerät b
    Wenn Sie zuvor das tempSensor-Modul auf diesem Gerät bereitgestellt haben, wird es unter Umständen automatisch aufgefüllt. Gehen Sie andernfalls wie folgt vor, um das Modul hinzuzufügen:
 
    1. Klicken Sie auf **Hinzufügen** und anschließend auf **IoT Edge-Modul**.
-   2. Geben Sie als Name **tempsensor** ein.
+   2. Geben Sie für den Namen **tempSensor** ein.
    3. Geben Sie als Bild-URI **mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0** ein. 
    4. Behalten Sie die restlichen Einstellungen unverändert bei.
    5. Wählen Sie **Speichern**aus.
@@ -190,7 +190,7 @@ Sie sollten beobachten können, wie die Temperatur des Computers allmählich ste
 
 <!--[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)] -->
 
-Falls Sie mit dem nächsten empfohlenen Artikel fortfahren möchten, können Sie die bereits erstellten Ressourcen und Konfigurationen behalten und wiederverwenden.
+Falls Sie mit dem nächsten empfohlenen Artikel fortfahren möchten, können Sie die bereits erstellten Ressourcen und Konfigurationen beibehalten und wiederverwenden.
 
 Andernfalls können Sie die in diesem Artikel erstellten lokalen Konfigurationen und Azure-Ressourcen löschen, um Kosten zu vermeiden. 
 
@@ -205,7 +205,7 @@ az iot hub delete --name MyIoTHub --resource-group TestResources
 ```
 
 
-So löschen Sie die gesamte Ressourcengruppe anhand des Namens:
+Löschen Sie die gesamte Ressourcengruppe wie folgt anhand des Namens:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen**.
 

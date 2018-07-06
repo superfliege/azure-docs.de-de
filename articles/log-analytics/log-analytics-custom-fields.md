@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: 31572b51-6b57-4945-8208-ecfc3b5304fc
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: bwren
-ms.openlocfilehash: 59dbc4134ee11999e54d2eba51804939e7e14229
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.component: na
+ms.openlocfilehash: 164b071a47c13f7c5586bd287adc41bea54a1198
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37020731"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129616"
 ---
 # <a name="custom-fields-in-log-analytics"></a>Benutzerdefinierte Felder in Log Analytics
 Mit dem Feature **Benutzerdefinierte Felder** von Log Analytics können Sie vorhandene Datensätze in Log Analytics durch eigene durchsuchbare Felder erweitern.  Benutzerdefinierte Felder werden automatisch auf der Grundlage von Daten aufgefüllt, die aus anderen Eigenschaften im gleichen Datensatz extrahiert wurden.
@@ -45,9 +46,9 @@ In den folgenden Abschnitten wird die Vorgehensweise zum Erstellen eines benutze
 > 
 
 ### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>Schritt 1: Angeben der Datensätze, die über das benutzerdefinierte Feld verfügen sollen
-Als Erstes müssen die Datensätze angegeben werden, die über das benutzerdefinierte Feld verfügen sollen.  Hierzu führen Sie zunächst eine [Standard-Protokollsuche](log-analytics-log-searches.md) durch wählen dann einen Datensatz aus, der Log Analytics als Modell für die Ermittlung dient.  Wenn Sie angeben, dass Sie Daten in ein benutzerdefiniertes Feld extrahieren möchten, wird der **Feldextraktions-Assistent** geöffnet, in dem Sie die Kriterien überprüfen und anpassen können.
+Als Erstes müssen die Datensätze angegeben werden, die über das benutzerdefinierte Feld verfügen sollen.  Hierzu führen Sie zunächst eine [Standard-Protokollsuche](log-analytics-log-searches.md) durch wählen dann einen Datensatz aus, der Log Analytics als Modell für die Ermittlung dient.  Wenn Sie angeben, dass Sie Daten in ein benutzerdefiniertes **Feld extrahieren möchten, wird der Feldextraktions-Assistent** geöffnet, in dem Sie die Kriterien überprüfen und anpassen können.
 
-1. Wechseln Sie zur **Protokollsuche** und verwenden Sie eine [Abfrage zum Abrufen der Datensätze](log-analytics-log-searches.md) die über das benutzerdefinierte Feld verfügen sollen.
+1. Wechseln **Sie zur Protokollsuche**, und verwenden Sie eine [Abfrage zum Abrufen der Datensätze](log-analytics-log-searches.md) , die über das benutzerdefinierte Feld verfügen sollen.
 2. Wählen Sie einen Datensatz aus, der Log Analytics als Modell für die Extraktion von Daten zur Auffüllung des benutzerdefinierten Felds dienen soll.  Nachdem Sie die Daten angegeben haben, die aus diesem Datensatz extrahiert werden sollen, ermittelt Log Analytics auf der Grundlage dieser Informationen die Logik, mit der das benutzerdefinierte Felds für alle ähnlichen Datensätze aufgefüllt werden kann.
 3. Klicken Sie auf die Schaltfläche links neben einer beliebigen Texteigenschaft des Datensatzes, und wählen Sie **Extract fields from**(Felder extrahieren aus).
 4. Der **Feldextraktions-Assistent** wird geöffnet, und der ausgewählte Datensatz wird in der Spalte **Hauptbeispiel** angezeigt.  Das benutzerdefinierte Feld wird für Datensätze mit den gleichen Werten in den ausgewählten Eigenschaften definiert.  
@@ -63,7 +64,7 @@ Nach Angabe der Datensätze, die über das benutzerdefinierte Feld verfügen sol
 ### <a name="step-3--verify-accuracy-of-the-extract-and-create-custom-field"></a>Schritt 3: Überprüfen der Extraktion und Erstellen des benutzerdefinierten Felds
 Im Anschluss an die erste Extraktion zeigt Log Analytics die Ergebnisse an, die auf der Grundlage bereits gesammelter Daten ermittelt wurden.  Wenn die Ergebnisse Ihren Vorstellungen entsprechen, können Sie das benutzerdefinierte Feld ohne weitere Schritte erstellen.  Andernfalls können Sie die Ergebnisse optimieren, damit Log Analytics seine Logik verbessern kann.
 
-1. Sollte die erste Extraktion falsche Werte enthalten, klicken Sie neben einem falschen Datensatz auf das **Bearbeitungssymbol** und wählen Sie **Diese Markierung ändern** aus, um die Auswahl zu ändern.
+1. Sollte die erste Extraktion falsche Werte enthalten, klicken Sie neben einem falschen Datensatz auf das **Bearbeitungssymbol**, und wählen Sie **Diese Markierung ändern** aus, um die Auswahl zu ändern.
 2. Der Eintrag wird in den Abschnitt **Zusätzliche Beispiele** kopiert, der sich unter dem Abschnitt **Hauptbeispiel** befindet.  Hier können Sie die Markierung anpassen, um Log Analytics mitzuteilen, wie die Auswahl hätte aussehen sollen.
 3. Klicken Sie auf **Extrahieren** , um alle vorhandenen Datensätze auf der Grundlage dieser neuen Informationen zu untersuchen.  Dadurch ändern sich unter Umständen auch die Ergebnisse anderer Datensätze.
 4. Nehmen Sie weitere Korrekturen vor, bis für alle Datensätze in der Extraktion genau die Daten angeben werden, mit denen das neue benutzerdefinierte Feld aufgefüllt werden soll.

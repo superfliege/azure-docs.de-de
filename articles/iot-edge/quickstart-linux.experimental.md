@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 6b63c10a8c092d6568f8caf9842f007a5dc9c027
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 0e0d22b3363b00c81be5091fd12773f9e486c09e
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049161"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099184"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Schnellstart: Bereitstellen des ersten IoT Edge-Moduls auf einem Linux-basierten x64-Gerät
 
@@ -22,7 +22,7 @@ Mit Azure IoT Edge können Sie Analysen und die Datenverarbeitung auf Ihren Ger�
 
 In dieser Schnellstartanleitung wird Folgendes vermittelt:
 
-1. Erstellen eines IoT Hub
+1. Erstellen Sie einen IoT Hub.
 2. Registrieren eines IoT Edge-Geräts für Ihren IoT Hub
 3. Starten der IoT Edge-Runtime
 4. Durchführen der Remotebereitstellung eines Moduls auf einem IoT Edge-Gerät
@@ -35,7 +35,7 @@ Wenn Sie nicht über ein aktives Azure-Abonnement verfügen, können Sie ein [ko
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
 
-Beginnen Sie mit der Schnellstartanleitung, indem Sie Ihren IoT Hub im Azure-Portal erstellen.
+Beginnen Sie mit der Schnellstartanleitung, indem Sie Ihre IoT Hub-Instanz im Azure-Portal erstellen.
 ![Erstellen des IoT Hubs][3]
 
 [!INCLUDE [iot-hub-create-hub](../../includes/iot-hub-create-hub.md)]
@@ -53,7 +53,7 @@ Registrieren Sie ein IoT Edge-Gerät bei Ihrem neu erstellten IoT Hub.
 Installieren und starten Sie die Azure IoT Edge-Runtime auf Ihrem Gerät. 
 ![Registrieren eines Geräts][5]
 
-Die IoT Edge-Runtime wird auf allen IoT Edge-Geräten bereitgestellt. Sie besteht aus drei Komponenten. Der **Daemon für die IoT Edge-Sicherheit** wird jedes Mal gestartet, wenn ein Edge-Gerät gestartet wird, und führt für das Gerät einen Bootstrap durch, indem der IoT Edge-Agent gestartet wird. Der **IoT Edge-Agent** erleichtert die Bereitstellung und Überwachung von Modulen auf dem IoT Edge-Gerät, einschließlich des IoT Edge-Hub. Der **IoT Edge-Hub** verwaltet die Kommunikation zwischen Modulen auf dem IoT Edge-Gerät sowie zwischen dem Gerät und IoT Hub. 
+Die IoT Edge-Runtime wird auf allen IoT Edge-Geräten bereitgestellt. Sie besteht aus drei Komponenten. Der **Daemon für die IoT Edge-Sicherheit** wird jedes Mal gestartet, wenn ein Edge-Gerät gestartet wird, und startet den IoT Edge-Agent, um einen Bootstrapvorgang durchzuführen. Der **IoT Edge-Agent** erleichtert die Bereitstellung und Überwachung von Modulen auf dem IoT Edge-Gerät, einschließlich des IoT Edge-Hubs. Der **IoT Edge-Hub** verwaltet die Kommunikation zwischen Modulen auf dem IoT Edge-Gerät sowie zwischen dem Gerät und IoT Hub. 
 
 ### <a name="register-your-device-to-use-the-software-repository"></a>Registrieren Ihres Geräts zur Verwendung des Softwarerepositorys
 
@@ -134,14 +134,15 @@ Der Daemon für die Sicherheit wird als Systemdienst installiert, sodass die IoT
 6. Zeigen Sie die Module an, die auf Ihrem Gerät ausgeführt werden: 
 
    ```bash
-   iotedge list
+   sudo iotedge list
    ```
+Nach einer Ab- und Anmeldung ist *sudo* für den obigen Befehl nicht erforderlich.
 
    ![Anzeigen eines Moduls auf Ihrem Gerät](./media/quickstart-linux/iotedge-list-1.png)
 
 ## <a name="deploy-a-module"></a>Bereitstellen eines Moduls
 
-Verwalten Sie Ihr Azure IoT Edge-Gerät über die Cloud, um ein Modul bereitzustellen, das Telemetriedaten an den IoT Hub sendet.
+Verwalten Sie Ihr Azure IoT Edge-Gerät über die Cloud, um ein Modul bereitzustellen, das Telemetriedaten an die IoT Hub-Instanz sendet.
 ![Registrieren eines Geräts][6]
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
@@ -154,16 +155,19 @@ In diesem Schnellstart haben Sie ein neues IoT Edge-Gerät erstellt und die IoT 
 Öffnen Sie erneut eine Eingabeaufforderung auf dem Computer, auf dem das simulierte Gerät ausgeführt wird. Vergewissern Sie sich, dass das über die Cloud bereitgestellte Modul auf dem IoT Edge-Gerät ausgeführt wird:
 
    ```bash
-   iotedge list
+   sudo iotedge list
    ```
+Nach einer Ab- und Anmeldung ist *sudo* für den obigen Befehl nicht erforderlich.
 
    ![Anzeigen von drei Modulen auf dem Gerät](./media/quickstart-linux/iotedge-list-2.png)
 
 Zeigen Sie die vom tempSensor-Modul gesendeten Nachrichten an:
 
-   ```bash
-   iotedge logs tempSensor -f 
+  ```bash
+   sudo iotedge logs tempSensor -f 
    ```
+
+Nach einer Ab- und Anmeldung ist *sudo* für den obigen Befehl nicht erforderlich.
 
 ![Anzeigen der Daten von Ihrem Modul](./media/quickstart-linux/iotedge-logs.png)
 
@@ -193,7 +197,7 @@ Entfernen Sie die Containerruntime.
    sudo apt-get remove --purge moby
    ```
 
-Wenn Sie den Azure IoT-Hub oder das IoT Edge-Gerät, das Sie in dieser Schnellstartanleitung erstellt haben, nicht mehr benötigen, können Sie diese Komponenten im Azure-Portal löschen. Navigieren Sie zur Übersichtsseite Ihres IoT Hub, und wählen Sie **Löschen**. 
+Wenn Sie den Azure IoT-Hub oder das IoT Edge-Gerät, das Sie in dieser Schnellstartanleitung erstellt haben, nicht mehr benötigen, können Sie diese Komponenten im Azure-Portal löschen. Navigieren Sie zur Übersichtsseite Ihrer IoT Hub-Instanz, und klicken Sie auf **Löschen**. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
