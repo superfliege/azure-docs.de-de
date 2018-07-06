@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: ae8751f429cb4b11199bd8da9d8c2e08c0b98b35
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8ba187fd82fa6a698905313bfda2802324a9034d
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628282"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097079"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>Integrieren von SIM-Daten in die Remoteüberwachungslösung
 
@@ -33,9 +33,9 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Diese zusätzliche Remoteüberwachungsfunktion ist derzeit als Vorschau verfügbar. Gehen Sie wie folgt vor, um Ihre Verbindungsdaten mit der Azure-Remoteüberwachungslösung zu synchronisieren:
 
-1. Füllen Sie auf der [Telefónica-Website](https://iot.Telefónica.com/contact) eine Anforderung aus, wählen Sie die Option **Azure Remote Monitoring** (Remoteüberwachung für Azure) aus, und geben Sie zudem Ihre Kontaktdaten ein.
+1. Füllen Sie auf der [Telefónica-Website](https://iot.telefonica.com/contact) eine Anforderung aus, wählen Sie die Option **Azure Remote Monitoring** (Remoteüberwachung für Azure) aus, und geben Sie zudem Ihre Kontaktdaten ein.
 2. Telefónica aktiviert Ihr Konto.
-3. Wenn Sie noch kein Telefónica-Kunde sind und die Vorteile von diesem oder einem anderen cloudfähigen Dienst für die IoT-Konnektivität nutzen möchten, besuchen Sie die [Telefónica-Website](https://iot.Telefónica.com/contact), und wählen Sie die Option **Connectivity** (Konnektivität) aus.
+3. Wenn Sie noch kein Telefónica-Kunde sind und die Vorteile von diesem oder einem anderen cloudfähigen Dienst für die IoT-Konnektivität nutzen möchten, besuchen Sie die [Telefónica-Website](https://iot.telefonica.com/), und wählen Sie die Option **Connectivity** (Konnektivität) aus.
 
 ### <a name="telefnica-sim-setup"></a>Einrichten der Telefónica-SIM
 Die Zuordnung der Geräte-ID von Telefónica-SIM und Azure Twin basiert auf der IoT-Eigenschaft „Alias“ der Telefónica-SIM. 

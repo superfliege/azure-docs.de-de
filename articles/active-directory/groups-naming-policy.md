@@ -14,12 +14,12 @@ ms.date: 05/21/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: fb4f43dd85f887fa051aaa8050ddf6b37313e376
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 71367737a1364925f49c79f5c9562989752d26bc
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594549"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37449103"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Erzwingen einer Benennungsrichtlinie für Office 365-Gruppen in Azure Active Directory (Vorschau)
 
@@ -102,7 +102,7 @@ Wenn Sie über den Zugriff auf ein nicht vertrauenswürdiges Repository informie
   ````
   Geben Sie auf dem angezeigten Bildschirm **Bei Ihrem Konto anmelden** Ihr Administratorkonto und das zugehörige Kennwort ein, um eine Verbindung mit dem Dienst herzustellen, und wählen Sie **Anmelden** aus.
 
-3. Um Gruppeneinstellungen für diesen Mandanten zu erstellen, führen Sie die Schritte in [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](active-directory-accessmanagement-groups-settings-cmdlets.md) aus.
+3. Um Gruppeneinstellungen für diesen Mandanten zu erstellen, führen Sie die Schritte in [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](users-groups-roles/groups-settings-cmdlets.md) aus.
 
 ### <a name="view-the-current-settings"></a>Anzeigen der aktuellen Einstellungen
 
@@ -142,7 +142,7 @@ Das ist alles. Sie haben Ihre Benennungsrichtlinie festgelegt und eigene blockie
 
 ## <a name="export-or-import-the-list-of-custom-blocked-words"></a>Exportieren oder Importieren der Liste benutzerdefinierter blockierter Wörter
 
-Weitere Informationen finden Sie im Artikel [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](active-directory-accessmanagement-groups-settings-cmdlets.md).
+Weitere Informationen finden Sie im Artikel [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](users-groups-roles/groups-settings-cmdlets.md).
 
 Hier ist ein PowerShell-Beispielskript zum Exportieren mehrerer blockierter Wörter:
 
@@ -200,9 +200,9 @@ Office 365 Admin Center | Office 365 Admin Center ist mit der Benennungsrichtlin
 ## <a name="next-steps"></a>Nächste Schritte
 Diese Artikel enthalten zusätzliche Informationen zu Azure AD-Gruppen.
 
-* [Anzeigen vorhandener Gruppen](active-directory-groups-view-azure-portal.md)
+* [Anzeigen vorhandener Gruppen](fundamentals/active-directory-groups-view-azure-portal.md)
 * [Ablaufrichtlinie für Office 365-Gruppen](active-directory-groups-lifecycle-azure-portal.md)
-* [Verwalten der Einstellungen einer Gruppe](active-directory-groups-settings-azure-portal.md)
-* [Verwalten der Mitglieder einer Gruppe](active-directory-groups-members-azure-portal.md)
-* [Verwalten der Mitgliedschaften einer Gruppe](active-directory-groups-membership-azure-portal.md)
+* [Verwalten der Einstellungen einer Gruppe](fundamentals/active-directory-groups-settings-azure-portal.md)
+* [Verwalten der Mitglieder einer Gruppe](fundamentals/active-directory-groups-members-azure-portal.md)
+* [Verwalten der Mitgliedschaften einer Gruppe](fundamentals/active-directory-groups-membership-azure-portal.md)
 * [Verwalten dynamischer Regeln für Benutzer in einer Gruppe](active-directory-groups-dynamic-membership-azure-portal.md)

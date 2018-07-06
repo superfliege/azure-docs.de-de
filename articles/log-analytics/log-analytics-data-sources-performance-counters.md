@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: 20e145e4-2ace-4cd9-b252-71fb4f94099e
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 0f7119f280f2eb51222ade2ea7984b560a02f667
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.component: na
+ms.openlocfilehash: b23c170e557d019abf2b9aab8edcb74728bc872d
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26783161"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128774"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Windows- und Linux-Leistungsindikatoren in Log Analytics
 Leistungsindikatoren in Windows und Linux bieten Einblick in die Leistung von Hardwarekomponenten, Betriebssystemen und Anwendungen.  Log Analytics kann in sehr kurzen Intervallen Leistungsindikatoren abrufen, um Analysen nahezu in Echtzeit zu ermöglichen. Darüber hinaus kann Log Analytics Leistungsdaten zusammenstellen, um längerfristige Analysen und Berichte zu ermöglichen.
@@ -84,7 +85,7 @@ Die in diesem Element verwendeten Parameter werden in der folgenden Tabelle besc
 | Parameter | BESCHREIBUNG |
 |:--|:--|
 | object\_name | Der Objektname für die Sammlung. |
-| instance\_regex |  Ein *regulärer Ausdruck*, der definiert, welche Instanzen gesammelt werden sollen. Der Wert `.*` gibt alle Instanzen an. Sie können `_Total` angeben, um die Prozessormetriken nur für die Instanz „\_Total“ zu sammeln. Um die Prozessmetriken nur für die crond- und sshd-Instanzen zu sammeln, können Sie `(crond\|sshd)` angeben. |
+| instance\_regex |  Ein *regulärer Ausdruck*, der definiert, welche Instanzen gesammelt werden sollen. Der Wert `.*` gibt alle Instanzen an. Sie können `_Total` angeben, um die Prozessormetriken nur für die Instanz „\_Total“ zu sammeln. Sie können `(crond\|sshd)`angeben, um die Prozessmetriken nur für die „crond“- oder „sshd“-Instanzen zu sammeln. |
 | counter\_name\_regex | Ein *regulärer Ausdruck* für die zu sammelnden Leistungsindikatoren (für das Objekt). Geben Sie `.*`an, um alle Indikatoren für das Objekt zu sammeln. Um nur Indikatoren für Speicherauslagerungsbereiche zu sammeln, können Sie beispielsweise `.+Swap.+` angeben |
 | interval | Häufigkeit, mit der die Indikatoren des Objekts gesammelt werden. |
 

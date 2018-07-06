@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 729cb89fbe63dbecb65c6f948052b920bf6e70fe
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 4facc88aad5338362f2220148f1b1870ade5fe7e
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937451"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445482"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
@@ -117,7 +117,7 @@ Stellen Sie sicher, dass Sie nicht in eine Situation geraten, in der sie versehe
 
 Konten für den Notfallzugriff unterstützen Organisationen dabei, den privilegierten Zugriff innerhalb einer vorhandenen Azure Active Directory-Umgebung einzuschränken. Diese Konten verfügen über weitreichende Privilegien und werden keinen Einzelpersonen zugewiesen. Konten für den Notfallzugriff sind auf Notfallsituationen oder Szenarios beschränkt, in denen normale Administratorkonten nicht verwendet werden können. Organisationen müssen das Ziel der Kontrolle sicherstellen, und dass die Verwendung der Notfallkonten ausschließlich auf Zeiten beschränkt wird, in denen dies notwendig ist. 
 
-Bewerten Sie die Konten, die zugewiesen werden oder für die Rolle „globaler Administrator“ berechtigt sind. Wenn Ihnen keine ausschließlichen Cloudkonten mit der *.onmicrosoft.com-Domäne (vorgesehen für den Notfallzugriff) angezeigt werden, erstellen Sie sie. Weitere Informationen finden Sie unter [Verwalten von Administratorkonten für den Notfallzugriff in Azure AD](active-directory-admin-manage-emergency-access-accounts.md).
+Bewerten Sie die Konten, die zugewiesen werden oder für die Rolle „globaler Administrator“ berechtigt sind. Wenn Ihnen keine ausschließlichen Cloudkonten mit der *.onmicrosoft.com-Domäne (vorgesehen für den Notfallzugriff) angezeigt werden, erstellen Sie sie. Weitere Informationen finden Sie unter [Verwalten von Administratorkonten für den Notfallzugriff in Azure AD](users-groups-roles/directory-emergency-access.md).
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Aktivieren der mehrstufigen Authentifizierung und Registrieren aller anderen nicht verbundenen Einzelbenutzer-Administratorkonten mit hohen Privilegien 
 
@@ -345,7 +345,7 @@ Diese letzte laufende Phase der Roadmap für geschützten privilegierten Zugriff
 
 #### <a name="review-admin-roles-in-azure-active-directory"></a>Überprüfen der Administratorrollen in Azure Active Directory 
 
-Bestimmen Sie, ob die aktuellen integrierten Azure AD-Administratorrollen weiterhin auf dem neuesten Stand sind, und stellen Sie sicher, dass die Benutzer sich nur in den Rollen und Delegierungen befinden, die sie für die entsprechenden Berechtigungen benötigen. Mithilfe von Azure AD können Sie verschiedene Administratoren bestimmen, um unterschiedliche Funktionen zu erfüllen. Weitere Informationen finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](active-directory-assign-admin-roles-azure-portal.md).
+Bestimmen Sie, ob die aktuellen integrierten Azure AD-Administratorrollen weiterhin auf dem neuesten Stand sind, und stellen Sie sicher, dass die Benutzer sich nur in den Rollen und Delegierungen befinden, die sie für die entsprechenden Berechtigungen benötigen. Mithilfe von Azure AD können Sie verschiedene Administratoren bestimmen, um unterschiedliche Funktionen zu erfüllen. Weitere Informationen finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](users-groups-roles/directory-assign-admin-roles.md).
 
 #### <a name="review-users-who-have-administration-of-azure-ad-joined-devices"></a>Überprüfen von Benutzern, die in Azure AD eingebundene Geräte verwalten
 

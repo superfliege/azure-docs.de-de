@@ -14,12 +14,12 @@ ms.date: 11/13/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 7a58fca716389f35db7312948674e86b3104fe62
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: c8d7f1f5b793fcb684e9896bb93213a23d489860
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36307995"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448542"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Freigeben von Konten in Azure AD
 ## <a name="overview"></a>Übersicht
@@ -53,7 +53,7 @@ Zu den Azure AD-Features zur gemeinsamen Nutzung von Konten gehören folgende F
 
 * [Einmaliges Anmelden per Kennwort](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on)
 * Agent für einmaliges Anmelden per Kennwort
-* [Gruppenzuweisung](active-directory-accessmanagement-self-service-group-management.md)
+* [Gruppenzuweisung](users-groups-roles/groups-self-service-management.md)
 * Apps mit benutzerdefinierten Kennwörtern
 * [Dashboard für Anwendungsnutzung/Berichte](active-directory-passwords-get-insights.md)
 * Zugriffsportale für Endbenutzer
@@ -65,13 +65,13 @@ Folgende Schritte sind erforderlich, um Azure AD zum Freigeben eines Kontos zu v
 
 * Hinzufügen einer Anwendung aus dem [App-Katalog](https://azure.microsoft.com/marketplace/active-directory/) oder einer [benutzerdefinierten Anwendung](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/).
 * Konfigurieren der Anwendung für einmaliges Anmelden per Kennwort (SSO)
-* Verwenden einer [gruppenbasierten Zuweisung](active-directory-accessmanagement-group-saasapps.md) mit der Option „Gemeinsam genutzte Anmeldeinformationen“
+* Verwenden einer [gruppenbasierten Zuweisung](users-groups-roles/groups-saasapps.md) mit der Option „Gemeinsam genutzte Anmeldeinformationen“
 * Optional: In einigen Anwendungen wie Facebook, Twitter oder LinkedIn lässt sich die Option zur automatisierten Kennwortaktualisierung aktivieren: [Azure AD automated password roll-over for Facebook, Twitter and LinkedIn now in preview!](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/)
 
-Mithilfe von Azure AD lassen sich gemeinsam genutzte Konten durch Multi-Factor Authentication (MFA) sicherer gestalten (siehe [Sichern von Anwendungen mit Azure AD](authentication/concept-mfa-whichversion.md)), und Sie können die Verwaltungsrechte über den Zugriff auf die Anwendung mithilfe der [Azure AD Self-Service](active-directory-accessmanagement-self-service-group-management.md)-Gruppenverwaltung delegieren.
+Mithilfe von Azure AD lassen sich gemeinsam genutzte Konten durch Multi-Factor Authentication (MFA) sicherer gestalten (siehe [Sichern von Anwendungen mit Azure AD](authentication/concept-mfa-whichversion.md)), und Sie können die Verwaltungsrechte über den Zugriff auf die Anwendung mithilfe der [Azure AD Self-Service](users-groups-roles/groups-self-service-management.md)-Gruppenverwaltung delegieren.
 
 ## <a name="related-articles"></a>Verwandte Artikel
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 * [Schützen von Apps durch bedingten Zugriff](active-directory-conditional-access-azure-portal.md)
-* [Self-Service-Gruppenverwaltung/SSAA](active-directory-accessmanagement-self-service-group-management.md)
+* [Self-Service-Gruppenverwaltung/SSAA](users-groups-roles/groups-self-service-management.md)
 

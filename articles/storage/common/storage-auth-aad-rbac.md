@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: tamram
-ms.openlocfilehash: cb77bd4418e105c877202f0f1725350380ea2308
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 241808e0a7bde1d2c53cd0af1de677275c169214
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659698"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082229"
 ---
 # <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>Verwalten von Zugriffsrechten für Azure Storage-Daten mit RBAC (Vorschau)
 
@@ -35,7 +35,7 @@ Weitere Informationen dazu, wie integrierte Rollen für Azure Storage definiert 
 Sie können für die Verwendung mit Containern und Warteschlangen auch eigene Rollen definieren. Weitere Informationen finden Sie unter [Erstellen benutzerdefinierter Rollen für die rollenbasierte Zugriffssteuerung in Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles.md). 
 
 > [!IMPORTANT]
-> Diese Vorschau ist nur für die Verwendung außerhalb der Produktion bestimmt. Produktions-SLAs (Service Level Agreements) sind erst dann verfügbar, wenn die Azure AD-Integration für Azure Storage als allgemein verfügbar deklariert wird. Wenn die Azure AD-Integration für Ihr Szenario noch nicht unterstützt wird, verwenden Sie weiterhin in Ihren Anwendungen die Autorisierung mit gemeinsam verwendetem Schlüssel oder SAS-Token. Weitere Informationen zur Vorschau finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory (Vorschau)](storage-auth-aad.md).
+> Diese Vorschau ist nur für die Verwendung außerhalb der Produktion bestimmt. Produktions-SLAs (Service Level Agreements, Vereinbarungen zum Servicelevel) sind erst dann verfügbar, wenn die Azure AD-Integration für Azure Storage als allgemein verfügbar deklariert wird. Wenn die Azure AD-Integration für Ihr Szenario noch nicht unterstützt wird, verwenden Sie in Ihren Anwendungen weiterhin die Autorisierung mit gemeinsam verwendetem Schlüssel oder SAS-Token. Weitere Informationen zur Vorschau finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory (Vorschau)](storage-auth-aad.md).
 >
 > In der Vorschauphase können RBAC-Rollenzuweisungen bis zu fünf Minuten dauern.
 
@@ -61,7 +61,7 @@ In den folgenden Abschnitten wird gezeigt, wie Sie dem Speicherkonto eine Rolle 
 
 So weisen Sie im Azure-Portal eine integrierte Rolle zu, die Zugriff auf alle Container oder Warteschlangen im Speicherkonto gewährt
 
-1. Navigieren Sie im [Azure-Portal](https://azure.portal.com/) zu Ihrem Speicherkonto.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto.
 2. Wählen Sie Ihr Speicherkonto und dann **Zugriffssteuerung (IAM)** aus, um Zugriffssteuerungseinstellungen für das Konto anzuzeigen. Klicken Sie auf die Schaltfläche **Hinzufügen**, um eine neue Rolle hinzuzufügen.
 
     ![Screenshot mit Zugriffssteuerungseinstellungen für Speicher](media/storage-auth-aad-rbac/portal-access-control.png)
@@ -78,7 +78,7 @@ So weisen Sie im Azure-Portal eine integrierte Rolle zu, die Zugriff auf alle Co
 
 Die Schritte zum Zuweisen einer auf einen Container oder eine Warteschlange begrenzten integrierten Rolle sind ähnlich. Die hier gezeigte Vorgehensweise weist eine auf einen Container begrenzte Rolle zu, aber Sie können die gleichen Schritte ausführen, um eine auf eine Warteschlange begrenzte Rolle zuzuweisen: 
 
-1. Navigieren Sie im [Azure-Portal](https://azure.portal.com/) zu Ihrem Speicherkonto, und zeigen Sie die **Übersicht** für das Konto an.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, und zeigen Sie die **Übersicht** für das Konto an.
 2. Wählen Sie unter „Blob-Dienst“ die Option **Blobs durchsuchen** aus. 
 3. Navigieren Sie zum Container, dem Sie eine Rolle zuweisen möchten, und zeigen Sie die Einstellungen des Containers an. 
 4. Wählen Sie **Zugriffssteuerung (IAM)** aus, um Zugriffssteuerungseinstellungen für den Container anzuzeigen.

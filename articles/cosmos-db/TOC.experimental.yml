@@ -118,8 +118,6 @@ items:
                         href: sql-api-java-get-started.md
                       - name: Node.js
                         href: sql-api-nodejs-get-started.md
-                      - name: C++
-                        href: sql-api-cpp-get-started.md
                   - name: Erstellen einer Web-App
                     items:
                       - name: .NET
@@ -144,10 +142,6 @@ items:
                     href: local-emulator.md
                   - name: Exportieren von Zertifikaten
                     href: local-emulator-export-ssl-certificates.md
-              - name: '6: Integrieren in Funktionen'
-                items:
-                  - name: HTTP-Trigger
-                    href: tutorial-functions-http-trigger.md
           - name: Beispiele
             items:
               - name: Azure-Befehlszeilenschnittstelle
@@ -346,26 +340,14 @@ items:
                 href: gremlin-support.md
           - name: Tutorials
             items:
-              - name: '1: Erstellen'
-                href: tutorial-develop-graph-dotnet.md
-              - name: '2: Abfragen'
+              - name: '1: Abfragen'
                 href: tutorial-query-graph.md
-              - name: '3: Global verteilen'
-                href: tutorial-global-distribution-graph.md
           - name: Anleitungen
             items:
               - name: Graphpartitionierung
                 href: graph-partitioning.md
               - name: Verwalten mithilfe des Storage-Explorers
                 href: storage-explorer.md
-              - name: Integrieren
-                items:
-                  - name: Herstellen einer Verbindung mit Spark GraphX
-                    href: spark-connector-graph.md
-          - name: Verweis
-            items:
-              - name: .NET
-                href: graph-sdk-dotnet.md
           - name: angeben
             items:
               - name: Verwalten mithilfe des Storage-Explorers

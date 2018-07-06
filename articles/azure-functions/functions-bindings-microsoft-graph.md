@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: mahender
-ms.openlocfilehash: 3b9a7d998e7153318b21adcada7c143b428e591f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: af748f234a27ed9b37ac50438d7497fd680bc193
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724773"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085571"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph-Bindungen für Azure Functions
 
@@ -976,7 +976,7 @@ Mit Webhooks können Sie auf Ereignisse in Microsoft Graph reagieren. Zur Unters
 - Eine [Microsoft Graph-Webhookabonnement-Eingabebindung](#webhook-input) ermöglicht Ihnen das Auflisten und optionale Aktualisieren von vorhandenen Abonnements.
 - Eine [Microsoft Graph-Webhookabonnement-Ausgabebindung](#webhook-output) ermöglicht Ihnen das Erstellen und Löschen von Webhookabonnements.
 
-Für die eigentlichen Bindungen sind keine Azure AD-Berechtigungen erforderlich, aber Sie benötigen die entsprechenden Berechtigungen für den Ressourcentyp, auf den Sie reagieren möchten. Eine Liste der für jeden Ressourcentyp erforderlichen Berechtigungen finden Sie unter [Abonnementberechtigungen](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/subscription_post_subscriptions#permissions).
+Für die eigentlichen Bindungen sind keine Azure AD-Berechtigungen erforderlich, aber Sie benötigen die entsprechenden Berechtigungen für den Ressourcentyp, auf den Sie reagieren möchten. Eine Liste der für jeden Ressourcentyp erforderlichen Berechtigungen finden Sie unter [Abonnementberechtigungen](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/subscription_post_subscriptions).
 
 Weitere Informationen über Webhooks finden Sie unter [Arbeiten mit Webhooks in Microsoft Graph].
 

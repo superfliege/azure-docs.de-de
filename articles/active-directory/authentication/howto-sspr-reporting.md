@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: efdef681dd94cdb97d84de657668c49022b72d95
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: df46a4de32482f9da46b81e6b0fbc55c2cc1af35
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751495"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444241"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD
 
@@ -26,7 +26,7 @@ Nach einer Bereitstellung möchten viele Organisationen wissen, wie oder ob Self
 Die folgenden Fragen können mit den Berichten beantwortet werden, die im [Azure-Portal] (https://portal.azure.com/): vorhanden sind:
 
 > [!NOTE]
-> Sie müssen [ein globaler Administrator](../active-directory-assign-admin-roles-azure-portal.md) sein, und Sie müssen zustimmen, dass diese Daten im Auftrag Ihres Unternehmens erfasst werden. Um zuzustimmen, müssen Sie die Registerkarte **Berichterstellung** oder die Überwachungsprotokolle mindestens ein Mal öffnen. Bis dahin werden keine Daten für Ihre Organisation erfasst.
+> Sie müssen [ein globaler Administrator](../users-groups-roles/directory-assign-admin-roles.md) sein, und Sie müssen zustimmen, dass diese Daten im Auftrag Ihres Unternehmens erfasst werden. Um zuzustimmen, müssen Sie die Registerkarte **Berichterstellung** oder die Überwachungsprotokolle mindestens ein Mal öffnen. Bis dahin werden keine Daten für Ihre Organisation erfasst.
 >
 
 * Wie viele Personen haben sich für die Kennwortzurücksetzung registriert?

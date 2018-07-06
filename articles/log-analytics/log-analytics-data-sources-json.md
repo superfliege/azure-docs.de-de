@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: 800ee1269556e7c2d56fbbf2b497c10509b5c78c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: na
+ms.openlocfilehash: d3c8807b7624e68ff55557922f97d51e24fc2c19
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23020895"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131802"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-oms-agent-for-linux-in-log-analytics"></a>Erfassen benutzerdefinierter JSON-Datenquellen mit dem OMS-Agent für Linux in Log Analytics
 Benutzerdefinierte JSON-Datenquellen können in Log Analytics unter Verwendung des OMS-Agents für Linux erfasst werden.  Diese benutzerdefinierten Datenquellen können einfache Skripts sein, die JSON zurückgeben, wie z.B. [Curl](https://curl.haxx.se/) oder eines von mehr als [300 FluentD-Plug-Ins](http://www.fluentd.org/plugins/all). Dieser Artikel beschreibt die Konfiguration, die für diese Datenerfassung erforderlich ist.
@@ -84,7 +85,7 @@ Starten Sie den OMS-Agent für den Linux-Dienst mit dem folgenden Befehl neu.
 
     sudo /opt/microsoft/omsagent/bin/service_control restart 
 
-## <a name="output"></a>Ausgabe
+## <a name="output"></a>Output
 Die Daten werden in die Log Analytics mit einem Datensatz vom Typ `<FLUENTD_TAG>_CL` erfasst.
 
 Beispiel: Das benutzerdefinierte Tag `tag oms.api.tomcat` in Log Analytics mit einem Datensatz vom Typ `tomcat_CL`.  Sie können alle Datensätze dieses Typs mit der folgenden Protokollsuche abrufen.

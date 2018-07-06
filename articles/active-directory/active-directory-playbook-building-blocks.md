@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 056821bd26e9c6c110b23a048df4aa13bc4ab8fa
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: c5f3904621dcc4fe992b2c2f8293ad706b01f713
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36754288"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446774"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory-PoC-Playbook: Bausteine
 
@@ -45,7 +45,7 @@ Diese Voraussetzungen gelten für Azure AD Premium-PoC in jedem Fall.
 | Definierte und überprüfte Domäne | [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**Hinweis:** Einige Workloads wie Power BI können einen Azure AD-Mandanten unbemerkt bereitgestellt haben. Navigieren Sie zu https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration, um zu prüfen, ob eine bestimmte Domäne einem Mandanten zugeordnet ist. Bei Erfolg ist die Domäne bereits einem Mandanten zugeordnet. Dann ist möglicherweise eine Übernahme nötig. Wenn dies der Fall ist, hilft Microsoft Ihnen gerne weiter. Weitere Informationen zu den Übernahmeoptionen finden Sie unter: [Was ist die Self-Service-Registrierung für Azure?](active-directory-self-service-signup.md) |
 | Aktivierte Testversion von Azure AD Premium oder EMS | [Azure Active Directory Premium einen Monat lang gratis](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | PoC-Benutzern zugewiesene Azure AD Premium- oder EMS-Lizenzen | [Lizenzieren von sich selbst und Ihrer Benutzer in Azure Active Directory](active-directory-licensing-get-started-azure-portal.md) |
-| Anmeldeinformationen eines globalen Azure AD-Administrators | [Zuweisen von Administratorrollen in Azure Active Directory](active-directory-assign-admin-roles-azure-portal.md) |
+| Anmeldeinformationen eines globalen Azure AD-Administrators | [Zuweisen von Administratorrollen in Azure Active Directory](users-groups-roles/directory-assign-admin-roles.md) |
 | Optional, jedoch dringend empfohlen: parallele Laborumgebung als Fallback | [Voraussetzungen für Azure AD Connect](./connect/active-directory-aadconnect-prerequisites.md) |
 
 ## <a name="directory-synchronization---password-hash-sync-phs---new-installation"></a>Verzeichnissynchronisierung – Kennworthashsynchronisierung – Neue Installation
@@ -428,7 +428,7 @@ Geschätzter Zeitaufwand: 10 Minuten
 ### <a name="considerations"></a>Überlegungen
 
 1. Mit den PoC-Schritten in diesem Baustein aktivieren Sie MFA für den Benutzer bei allen Anmeldungen. Es gibt andere Tools wie „Bedingter Zugriff“ und „Schutz der Identität“, die MFA bei zielgerichteteren Szenarien verwenden. Darauf ist zu achten, wenn Sie vom PoC zur Produktion übergehen.
-2. Die PoC-Schritte in diesem Baustein verwenden Telefonanrufe explizit aus Gründen der MFA-Zweckmäßigkeit. Beim Übergang vom PoC zur Produktion wird empfohlen, möglichst Anwendungen wie den [Microsoft Authenticator](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) als zweiten Faktor zu verwenden.
+2. Die PoC-Schritte in diesem Baustein verwenden Telefonanrufe explizit aus Gründen der MFA-Zweckmäßigkeit. Beim Übergang vom PoC zur Produktion wird empfohlen, möglichst Anwendungen wie den [Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) als zweiten Faktor zu verwenden.
 Weitere Informationen: [DRAFT NIST Special Publication 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html)
 
 ## <a name="mfa-conditional-access-for-saas-applications"></a>Bedingter MFA-Zugriff für SaaS-Anwendungen
@@ -553,7 +553,7 @@ Geschätzter Zeitaufwand: 20 Minuten
 | --- | --- |
 | Gerät mit Benutzerzertifikat (Windows, iOS oder Android) über Unternehmens-PKI bereitgestellt | [Bereitstellen von Benutzerzertifikaten](https://msdn.microsoft.com/library/cc770857.aspx) |
 | Azure AD-Domäne im Verbund mit AD FS | [Azure AD Connect und Verbund](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Active Directory-Zertifikatdienste: Übersicht](https://technet.microsoft.com/library/hh831740.aspx)|
-| iOS-Geräte: Microsoft Authenticator-App installiert | [Erste Schritte mit der Microsoft Authenticator-App](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |
+| iOS-Geräte: Microsoft Authenticator-App installiert | [Erste Schritte mit der Microsoft Authenticator-App](authentication/end-user/current/microsoft-authenticator-app-how-to.md) |
 
 ### <a name="steps"></a>Schritte
 

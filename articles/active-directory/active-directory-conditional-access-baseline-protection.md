@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/21/2018
+ms.date: 07/02/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 86b57a82573760ac73975e851b2bb4caf769845b
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 1e7eb3a0098dc27b6f3c47d8d4848b2b9b5f7e61
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308559"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447539"
 ---
 # <a name="what-is-baseline-protection---preview"></a>Was ist Baselineschutz? – Vorschauversion  
 
@@ -51,7 +51,7 @@ Beim **Anfordern von MFA für Administratoren** handelt es sich um eine Basisric
 
 ![Azure Active Directory](./media/active-directory-conditional-access-baseline-protection/01.png)
 
-In dieser Basisrichtlinie haben Sie die Möglichkeit, Benutzer und Gruppen auszuschließen. Möglicherweise möchten Sie ein *[Administratorkonto für den Notfallzugriff](active-directory-admin-manage-emergency-access-accounts.md)* ausschließen, um sicherzustellen, dass Sie für den Mandanten nicht gesperrt werden.
+In dieser Basisrichtlinie haben Sie die Möglichkeit, Benutzer und Gruppen auszuschließen. Möglicherweise möchten Sie ein *[Administratorkonto für den Notfallzugriff](users-groups-roles/directory-emergency-access.md)* ausschließen, um sicherzustellen, dass Sie für den Mandanten nicht gesperrt werden.
 
 
 ## <a name="enable-a-baseline-policy"></a>Aktivieren einer Basisrichtlinie 
@@ -67,9 +67,9 @@ Solange sich die Basisrichtlinien in der Vorschau befinden, sind sie standardmä
 
     ![Azure Active Directory](./media/active-directory-conditional-access-baseline-protection/02.png)
 
-3. Klicken Sie auf der Seite **Azure Active Directory** im Abschnitt **Verwalten** auf **Bedingter Zugriff**.
+3. Klicken Sie auf der Seite **Azure Active Directory** im Abschnitt **Sicherheit** auf **Bedingter Zugriff**.
 
-    ![Bedingter Zugriff](./media/active-directory-conditional-access-baseline-protection/03.png)
+    ![Bedingter Zugriff](./media/active-directory-conditional-access-baseline-protection/05.png)
 
 4. Klicken Sie in der Liste der Richtlinien auf eine Richtlinie, die mit **Basisrichtlinie:** beginnt. 
 

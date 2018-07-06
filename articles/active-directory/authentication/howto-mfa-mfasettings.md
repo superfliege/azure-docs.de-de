@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 509df5274a5e44342390036511689fa8f8146807
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: bf25ae5703a632005dd73820fc05347f7b5e16a6
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869800"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097494"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 
@@ -292,7 +292,7 @@ Standardmäßig können Benutzer keine App-Kennwörter erstellen. Das Feature f�
 
 Benutzer können App-Kennwörter während ihrer ersten Registrierung erstellen. Am Ende des Registrierungsvorgangs haben Benutzer die Möglichkeit, App-Kennwörter zu erstellen.
 
-Benutzer können auch App-Kennwörter nach der Registrierung erstellen. Die App-Kennwörter können über die Einstellungen im Azure-Portal oder im Office 365-Portal geändert werden. Weitere Informationen und detaillierte Schritte für Ihre Benutzer finden Sie unter [Welchen Zweck erfüllen App-Kennwörter bei Azure Multi-Factor Authentication?](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-app-passwords.md)
+Benutzer können auch App-Kennwörter nach der Registrierung erstellen. Die App-Kennwörter können über die Einstellungen im Azure-Portal oder im Office 365-Portal geändert werden. Weitere Informationen und detaillierte Schritte für Ihre Benutzer finden Sie unter [Welchen Zweck erfüllen App-Kennwörter bei Azure Multi-Factor Authentication?](end-user/current/multi-factor-authentication-end-user-app-passwords.md)
 
 <a name="remember-multi-factor-authentication-for-devices-that-users-trust"></a>
 ## <a name="remember-multi-factor-authentication-for-trusted-devices"></a>Speichern von Multi-Factor Authentication für vertrauenswürdige Geräte
@@ -301,7 +301,7 @@ Das Feature _Multi-Factor Authentication speichern_ für Geräte und Browser, di
 >[!IMPORTANT]
 >Wenn ein Konto oder Gerät gefährdet ist, kann das Speichern von Multi-Factor Authentication für vertrauenswürdige Geräte die Sicherheit beeinträchtigen. Wenn ein Unternehmenskonto kompromittiert wird oder ein vertrauenswürdiges Gerät verloren geht oder gestohlen wird, sollten Sie die [Multi-Factor Authentication auf allen Geräten wiederherstellen](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user).
 >
->Durch die Wiederherstellungsaktion wird der vertrauenswürdige Status aller Geräte widerrufen, und der Benutzer muss wieder die zweistufige Überprüfung ausführen. Sie können Ihre Benutzer auch anweisen, Multi-Factor Authentication auf ihren eigenen Geräten anhand der Anweisungen unter [Verwalten der Einstellungen für die zweistufige Überprüfung](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted) wiederherzustellen.
+>Durch die Wiederherstellungsaktion wird der vertrauenswürdige Status aller Geräte widerrufen, und der Benutzer muss wieder die zweistufige Überprüfung ausführen. Sie können Ihre Benutzer auch anweisen, Multi-Factor Authentication auf ihren eigenen Geräten anhand der Anweisungen unter [Verwalten der Einstellungen für die zweistufige Überprüfung](end-user/current/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted) wiederherzustellen.
 >
 
 ### <a name="how-the-feature-works"></a>Funktionsweise des Features
@@ -341,7 +341,7 @@ Nachdem Sie das Feature „Multi-Factor Authentication speichern“ aktiviert ha
 
 Mithilfe des Features _Selectable verification methods_ (Auswählbare Überprüfungsmethoden) können Sie die Überprüfungsmethoden auswählen, die den Benutzern zur Verfügung stehen. In der folgenden Tabelle finden Sie eine kurze Übersicht über die einzelnen Methoden.
 
-Wenn Ihre Benutzer ihre Konten für Azure Multi-Factor Authentication registrieren, wählen sie ihre bevorzugte Überprüfungsmethode aus den Optionen aus, die Sie aktiviert haben. Anleitungen zum Benutzerregistrierungsprozess finden Sie unter [Einrichten meines Kontos für die zweistufige Überprüfung](../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-first-time.md).
+Wenn Ihre Benutzer ihre Konten für Azure Multi-Factor Authentication registrieren, wählen sie ihre bevorzugte Überprüfungsmethode aus den Optionen aus, die Sie aktiviert haben. Anleitungen zum Benutzerregistrierungsprozess finden Sie unter [Einrichten meines Kontos für die zweistufige Überprüfung](end-user/current/multi-factor-authentication-end-user-first-time.md).
 
 | Methode | BESCHREIBUNG |
 |:--- |:--- |

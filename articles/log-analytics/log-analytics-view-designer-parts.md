@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
-ms.openlocfilehash: a2573eef3c90c1840c0d53b2f8aa2cfe2d3a7242
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.component: na
+ms.openlocfilehash: b560022f1f727949021a599e1ab342551f64c084
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29949530"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129131"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Referenzleitfaden zu Ansicht-Designer-Visualisierungsteilen in Log Analytics
 Mit dem Ansicht-Designer in Azure Log Analytics können Sie benutzerdefinierte Ansichten im Azure-Portal erstellen, mit denen Sie verschiedene Datenvisualisierungen aus Ihrem Log Analytics-Arbeitsbereich darstellen können. Dieser Artikel ist ein Referenzleitfaden zu den Einstellungen für die in Ihren benutzerdefinierten Ansichten verfügbaren Visualisierungsteilen.
@@ -327,11 +328,11 @@ Mit der Navigation per Klick wird definiert, welche Aktion durchgeführt wird, w
 
 In der folgenden Tabelle sind die Einstellungen für die Navigation per Klick beschrieben.
 
-| Einstellung           | Beschreibung |
+| Einstellung           | BESCHREIBUNG |
 |:--|:--|
 | Protokollsuche (Automatisch) | Protokollsuche, die durchgeführt wird, wenn Sie ein Headerelement auswählen.  Dies ist die gleiche Protokollsuche, auf der das Element basiert.
 | Protokollsuche        | Die Protokollsuche, die durchgeführt wird, wenn Sie in einer Liste einen Eintrag auswählen.  Geben Sie die Abfrage im Feld **Navigationsabfrage** ein.   Verwenden Sie *{ausgewähltes Element}*, um die Syntax für das Element einzubinden, das der Benutzer ausgewählt hat.  Beispiel: Wenn die Abfrage eine Spalte namens *Computer* aufweist und die Navigationsabfrage *{ausgewähltes Element}* ist, wird eine Abfrage wie *Computer="MeinComputer"* ausgeführt, wenn der Benutzer einen Computer auswählt. Wenn die Navigationsabfrage *Type=Event {ausgewähltes Element}* ist, wird *Type=Event Computer="MeinComputer"* ausgeführt. |
-| Ansicht              | Die zu öffnende Ansicht, wenn Sie ein Headerelement oder einen Eintrag einer Liste auswählen.  Wählen Sie den Namen einer Ansicht Ihres Arbeitsbereichs im Feld **Ansichtsname** aus. |
+| Sicht              | Die zu öffnende Ansicht, wenn Sie ein Headerelement oder einen Eintrag einer Liste auswählen.  Wählen Sie den Namen einer Ansicht Ihres Arbeitsbereichs im Feld **Ansichtsname** aus. |
 
 
 

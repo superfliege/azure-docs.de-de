@@ -14,25 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/27/2018
 ms.author: aljo
-ms.openlocfilehash: 6783c2b3b431e99050bc6762c1855b22e0701686
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 84f8827a58d7f3c5dcc32943d2ba891b02c1e1ab
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062278"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083191"
 ---
-# <a name="description-of-the-different-upgrade-policies"></a>Beschreibung der verschiedenen Upgraderichtlinien
-
-- **Dynamisch**: Änderungen an einer dynamischen Konfiguration führen weder zu einem Neustart von Service Fabric-Prozessen noch von Diensthostprozessen. 
-- **Statisch**: Änderungen an einer statischen Konfiguration führen zum Neustart des Service Fabric-Knotens, um die Änderung zu übernehmen. Dienste auf den Knoten werden neu gestartet.
-- **Unzulässig**. Diese Einstellungen können nicht geändert werden. Um diese Einstellungen zu ändern, muss der Cluster gelöscht und ein neuer Cluster angelegt werden. 
-
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Anpassen von Service Fabric-Clustereinstellungen und der Fabric-Upgraderichtlinie
 In diesem Dokument erfahren Sie, wie Sie die verschiedenen Fabric-Einstellungen und die Fabric-Upgraderichtlinie für Ihren Service Fabric-Cluster anpassen. Die Anpassungen können über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage vorgenommen werden.
 
 > [!NOTE]
 > Im Portal sind nicht alle Einstellungen verfügbar. Falls eine der unten aufgeführten Einstellungen nicht über das Portal verfügbar sein sollte, passen Sie dies mithilfe einer Azure Resource Manager-Vorlage an.
 > 
+
+## <a name="description-of-the-different-upgrade-policies"></a>Beschreibung der verschiedenen Upgraderichtlinien
+
+- **Dynamisch**: Änderungen an einer dynamischen Konfiguration führen weder zu einem Neustart von Service Fabric-Prozessen noch von Diensthostprozessen. 
+- **Statisch**: Änderungen an einer statischen Konfiguration führen zum Neustart des Service Fabric-Knotens, um die Änderung zu übernehmen. Dienste auf den Knoten werden neu gestartet.
+- **Unzulässig**. Diese Einstellungen können nicht geändert werden. Um diese Einstellungen zu ändern, muss der Cluster gelöscht und ein neuer Cluster angelegt werden. 
 
 ## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Anpassen von Clustereinstellungen mithilfe von Resource Manager-Vorlagen
 In den folgenden Schritten wird beschrieben, wie die neue Einstellung *MaxDiskQuotaInMB* zum Abschnitt *Diagnose* hinzugefügt wird.

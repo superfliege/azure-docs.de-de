@@ -2,19 +2,19 @@
 title: Bereitstellen von Gruppen mit mehreren Containern in Azure Container Instances
 description: Hier erfahren Sie, wie Sie eine Containergruppe mit mehreren Containern in Azure Container Instances bereitstellen.
 services: container-instances
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: db3f616d85c21f01c751fd82532289593a6e7e45
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 6d337c9ed23ac9af884f4113b046a8e9756fd441
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850568"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097103"
 ---
 # <a name="deploy-a-container-group"></a>Bereitstellen einer Containergruppe
 
@@ -154,13 +154,13 @@ Innerhalb weniger Sekunden sollten Sie eine erste Antwort von Azure erhalten.
 
 ## <a name="view-deployment-state"></a>Zusammenfassung der Bereitstellungen anzeigen
 
-Verwenden Sie zum Anzeigen des Status der Bereitstellung den folgenden [az container show][az-container-show]-Befehl:
+Um den Bereitstellungsstatus anzuzeigen, verwenden Sie den folgenden Befehl [az container show][az-container-show]:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name myContainerGroup --output table
 ```
 
-Zum Anzeigen der ausgeführten Anwendung navigieren Sie im Browser zur IP-Adresse. In dieser Beispielausgabe lautet die IP `52.168.26.124`:
+Wenn Sie die laufende Anwendung anzeigen möchten, navigieren Sie zu ihrer IP-Adresse in Ihrem Browser. In dieser Beispielausgabe lautet die IP `52.168.26.124`:
 
 ```bash
 Name              ResourceGroup    ProvisioningState    Image                                                           IP:ports               CPU/Memory       OsType    Location
