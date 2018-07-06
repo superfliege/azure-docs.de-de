@@ -17,12 +17,12 @@ ms.date: 06/25/2018
 ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 786757293e2ad2c47f80745f6bdd9bb5a65add80
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 3b0fbbe466f51a6216716d274f238497a8a79294
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936954"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441633"
 ---
 # <a name="permissions-in-azure-active-directory"></a>Berechtigungen in Azure Active Directory
 
@@ -36,7 +36,7 @@ Azure AD definiert zwei Arten von Berechtigungen:
 
 Effektive Berechtigungen sind die Berechtigungen, über die Ihre App verfügt, wenn Anforderungen an eine API gesendet werden. 
 
-* Bei delegierten Berechtigungen verfügt Ihre App über die folgenden Berechtigungen: Die jeweils geringsten Rechte, die sich zusammen genommen aus den delegierten Berechtigungen, die der App (per Zustimmung) gewährt wurden, und den Berechtigungen des derzeit angemeldeten Benutzers ergeben. Ihre App kann niemals über mehr Berechtigungen als der angemeldete Benutzer verfügen. In Organisationen können die Berechtigungen des angemeldeten Benutzers anhand einer Richtlinie oder der Mitgliedschaft in einer oder mehreren Administratorrollen bestimmt werden. Weitere Informationen zu Administratorrollen finden Sie unter [Zuweisen von Administratorrollen in Azure AD](/azure/active-directory/active-directory-assign-admin-roles-azure-portal.md).
+* Bei delegierten Berechtigungen verfügt Ihre App über die folgenden Berechtigungen: Die jeweils geringsten Rechte, die sich zusammen genommen aus den delegierten Berechtigungen, die der App (per Zustimmung) gewährt wurden, und den Berechtigungen des derzeit angemeldeten Benutzers ergeben. Ihre App kann niemals über mehr Berechtigungen als der angemeldete Benutzer verfügen. In Organisationen können die Berechtigungen des angemeldeten Benutzers anhand einer Richtlinie oder der Mitgliedschaft in einer oder mehreren Administratorrollen bestimmt werden. Weitere Informationen zu Administratorrollen finden Sie unter [Zuweisen von Administratorrollen in Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
     Angenommen, für Ihre App wurde in Microsoft Graph die delegierte Berechtigung `User.ReadWrite.All` gewährt. Mit dieser Berechtigung wird Ihrer App nominell die Berechtigung zum Lesen und Aktualisieren des Profils jedes Benutzers einer Organisation gewährt. Wenn es sich beim angemeldeten Benutzer um einen globalen Administrator handelt, kann Ihre App das Profil jedes Benutzers in der Organisation aktualisieren. Falls der angemeldete Benutzer aber keine Administratorrolle innehat, kann Ihre App nur das Profil des angemeldeten Benutzers aktualisieren. Sie kann die Profile von anderen Benutzern der Organisation nicht aktualisieren, da der Benutzer, für den die App die Berechtigung zum Durchführen von Aktionen in dessen Namen hat, nicht über diese Berechtigungen verfügt.
 * Für Anwendungsberechtigungen umfassen die geltenden Rechte Ihrer App die vollständige Berechtigungsebene, die mit der Berechtigung verbunden ist. Beispielsweise kann eine App, die über die Anwendungsberechtigung `User.ReadWrite.All` verfügt, das Profil aller Benutzer der Organisation aktualisieren. 
 
@@ -69,7 +69,8 @@ Berechtigungen in Azure AD weisen eine Reihe von Eigenschaften auf, mit deren Hi
 ## <a name="types-of-consent"></a>Arten der Zustimmung
 Für Anwendungen in Azure AD ist eine Zustimmung erforderlich, um Zugriff auf benötigte Ressourcen oder APIs zu erhalten. Es gibt verschiedene Arten von Zustimmungen, über die Ihre App ggf. Informationen benötigt, um erfolgreich arbeiten zu können. Beim Definieren von Berechtigungen müssen Sie auch wissen, wie Ihre Benutzer Zugriff auf Ihre App oder die API erhalten.
 
-* **Statische Benutzerzustimmung:** Erfolgt automatisch während des [OAuth 2.0-Autorisierungsdatenflusses](/azure/active-directory/develop/active-directory-protocols-oauth-code.md#request-an-authorization-code), wenn Sie die Ressource angeben, mit der Ihre App interagieren möchte. Beim Szenario mit statischer Benutzerzustimmung müssen für Ihre App alle erforderlichen Berechtigungen bereits im Azure-Portal in der Konfiguration der App angegeben werden. Wenn der Benutzer (bzw. Administrator) die Zustimmung für diese App nicht erteilt hat, wird der Benutzer von Azure AD aufgefordert, die Zustimmung jetzt zu erteilen. 
+* 
+  **Statische Benutzerzustimmung:** Erfolgt automatisch während des [OAuth 2.0-Autorisierungsdatenflusses](/azure/active-directory/develop/active-directory-protocols-oauth-code.md#request-an-authorization-code), wenn Sie die Ressource angeben, mit der Ihre App interagieren möchte. Beim Szenario mit statischer Benutzerzustimmung müssen für Ihre App alle erforderlichen Berechtigungen bereits im Azure-Portal in der Konfiguration der App angegeben werden. Wenn der Benutzer (bzw. Administrator) die Zustimmung für diese App nicht erteilt hat, wird der Benutzer von Azure AD aufgefordert, die Zustimmung jetzt zu erteilen. 
 
     Informieren Sie sich weiter über die Registrierung einer Azure AD-App, die den Zugriff auf eine statische Gruppe mit APIs anfordert.
 * **Dynamische Benutzerzustimmung:** Dies ist ein Feature der Version 2 (v2) des Azure AD-App-Modells. In diesem Szenario fordert Ihre App eine benötigte Gruppe von Berechtigungen im [OAuth 2.0-Autorisierungsdatenfluss für v2-Apps](/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent) an. Wenn der Benutzer nicht bereits zugestimmt hat, wird er aufgefordert, dies jetzt nachzuholen. [Informieren Sie sich weiter über die dynamische Zustimmung](/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent).

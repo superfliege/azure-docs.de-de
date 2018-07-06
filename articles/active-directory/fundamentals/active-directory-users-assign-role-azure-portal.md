@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 06/25/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.openlocfilehash: 7ed564d5954841f96109568b33183908d25bb8be
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: ec30f1507bfa45c29709a7f4b7dc1e91aa25ca57
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939519"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440747"
 ---
 # <a name="assign-a-user-to-administrator-roles-in-azure-active-directory"></a>Zuweisen eines Benutzers zu Administratorrollen in Azure Active Directory
 In diesem Artikel wird erläutert, wie Sie einem Benutzer in Azure Active Directory eine Administratorrolle zuweisen. Informationen dazu, wie Sie neue Benutzer in Ihrer Organisation hinzufügen, finden Sie unter [Hinzufügen neuer Benutzer zu Azure Active Directory](../add-users-azure-active-directory.md). Hinzugefügte Benutzer verfügen nicht standardmäßig über Administratorberechtigungen, aber Sie können ihnen jederzeit Rollen zuweisen.
@@ -30,7 +30,7 @@ In diesem Artikel wird erläutert, wie Sie einem Benutzer in Azure Active Direct
 
     ![Öffnen der Benutzerverwaltung](./media/active-directory-users-assign-role-azure-portal/create-users-user-management.png)
 
-3. Wählen Sie für den ausgewählten Benutzer **Verzeichnisrolle**, **Rolle hinzufügen** und dann die entsprechenden Administratorrollen in der Liste mit den **Verzeichnisrollen** aus, z.B. **Administrator für bedingten Zugriff**. Weitere Informationen zu Administratorrollen finden Sie unter [Zuweisen von Administratorrollen in Azure AD](../active-directory-assign-admin-roles-azure-portal.md). 
+3. Wählen Sie für den ausgewählten Benutzer **Verzeichnisrolle**, **Rolle hinzufügen** und dann die entsprechenden Administratorrollen in der Liste mit den **Verzeichnisrollen** aus, z.B. **Administrator für bedingten Zugriff**. Weitere Informationen zu Administratorrollen finden Sie unter [Zuweisen von Administratorrollen in Azure AD](../users-groups-roles/directory-assign-admin-roles.md). 
 
     ![Zuweisen einer Rolle zu einem Benutzer](./media/active-directory-users-assign-role-azure-portal/create-users-assign-role.png)
 
