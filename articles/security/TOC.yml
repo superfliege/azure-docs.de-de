@@ -164,8 +164,16 @@
           href: azure-operational-security-checklist.md
 - name: Governance und Einhaltung
   items:
-    - name: Finanzdienstleistungen für regulierte Workloads
-      href: ./blueprints/financial-services-regulated-workloads.md
+    - name: FFIEC
+      items:
+        - name: Datenanalysen
+          href: ./blueprints/ffiec-analytics-overview.md
+        - name: Data Warehouse
+          href: ./blueprints/ffiec-dw-overview.md
+        - name: IaaS-Webanwendung
+          href: ./blueprints/ffiec-iaaswa-overview.md
+        - name: PaaS-Webanwendung
+          href: ./blueprints/ffiec-paaswa-overview.md
     - name: GDPR
       items:
         - name: Datenanalysen
@@ -187,34 +195,15 @@
         - name: PaaS-Webanwendung
           href: ./blueprints/fedramp-paaswa-overview.md
     - name: PCI-DSS
-      href: ./blueprints/payment-processing-blueprint.md
       items:
-        - name: Anforderungsübersicht
-          href: ./blueprints/pci-dss-requirements-overview.md
-        - name: 'Anforderung 1: Firewalls'
-          href: ./blueprints/pci-dss-requirement-1-firewall.md
-        - name: 'Anforderung 2: Kennwörter'
-          href: ./blueprints/pci-dss-requirement-2-password.md
-        - name: 'Anforderung 3: CHD'
-          href: ./blueprints/pci-dss-requirement-3-chd.md
-        - name: 'Anforderung 4: Verschlüsselung'
-          href: ./blueprints/pci-dss-requirement-4-encryption.md
-        - name: 'Anforderung 5: Schadsoftware'
-          href: ./blueprints/pci-dss-requirement-5-malware.md
-        - name: 'Anforderung 6: sichere Systeme'
-          href: ./blueprints/pci-dss-requirement-6-secure-system.md
-        - name: 'Anforderung 7: Zugriff'
-          href: ./blueprints/pci-dss-requirement-7-access.md
-        - name: 'Anforderung 8: Identität'
-          href: ./blueprints/pci-dss-requirement-8-identity.md
-        - name: 'Anforderung 9: physischer Zugriff'
-          href: ./blueprints/pci-dss-requirement-9-physical-access.md
-        - name: 'Anforderung 10: Überwachung'
-          href: ./blueprints/pci-dss-requirement-10-monitoring.md
-        - name: 'Anforderung 11: Testen'
-          href: ./blueprints/pci-dss-requirement-11-testing.md
-        - name: 'Anforderung 12: Richtlinie'
-          href: ./blueprints/pci-dss-requirement-12-policy.md
+        - name: Datenanalysen
+          href: ./blueprints/pcidss-analytics-overview.md
+        - name: Data Warehouse
+          href: ./blueprints/pcidss-dw-overview.md
+        - name: IaaS-Webanwendung
+          href: ./blueprints/pcidss-iaaswa-overview.md
+        - name: PaaS-Webanwendung
+          href: ./blueprints/pcidss-paaswa-overview.md
     - name: NHS (Vereinigtes Königreich)
       items:
         - name: Datenanalysen
