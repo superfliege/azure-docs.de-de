@@ -4,22 +4,11 @@
 ### Übersicht und Vorteile  
 ### Storefronts  
 #### [Vergleich von AppSource und Marketplace](./comparing-appsource-azure-marketplace.md)  
-#### [Steigern des Wachstums mit AppSource](./grow-your-business-with-appsource.md) 
-##### [Erstellen Ihrer Angebotsseite](./build-your-landing-page.md)  
-##### [Aktivieren des gemeinsamen Zugriffs auf Leads](./enable-lead-sharing.md)  
-##### [GTM-Vorteile in Marketplace](./gtm-benefits.md)  
-##### [Steigern Ihres Wachstums mit Microsoft](./promote-your-business-with-microsoft.md)  
-#### [Fördern des Unternehmenswachstums mit Azure Marketplace](./grow-your-business-with-azure-marketplace.md)  
-##### [Erstellen Ihrer Angebotsseite](./build-your-landing-page.md)  
-##### [Aktivieren des gemeinsamen Zugriffs auf Leads](./enable-lead-sharing.md)  
-##### [GTM-Vorteile in Marketplace](./gtm-benefits.md)  
-##### [Steigern Ihres Wachstums mit Microsoft](./promote-your-business-with-microsoft.md)  
 
 ### Veröffentlichen in den Storefronts in Marketplace  
 #### [Bestimmen des Listingtyps für Ihre Lösung](./determine-your-listing-type.md)  
 #### [Herausgeber in den Storefronts in Marketplace werden](./become-publisher.md)  
 #### [Anforderungen nach Listingtyp](./listing-type-requirements.md) 
-#### [Bevorzugte Lösungen](./preferred-solutions.md) 
 
 ### Veröffentlichungsprüflisten  
 #### [Veröffentlichungsprüfliste für AppSource](./publishing-checklist-appsource.md)  
@@ -38,6 +27,9 @@
 #### [Hinzufügen der Bank- und Steuerinformationen](./add-bank-tax-info.md)  
 #### [Aktivieren der Testversion mithilfe von Azure AD](./enable-trial-using-azure-ad.md)  
 #### [Abrechnungsoptionen für Azure Marketplace](./billing-options-azure-marketplace.md)  
+
+### [Fördern Ihres Unternehmenswachstums mit Marketplace](./grow-your-business-with-azure-marketplace.md)  
+#### [Bevorzugte Lösungen](./preferred-solutions.md) 
 
 ## [Cloudpartnerportal](./cloud-partner-portal/cloud-partner-portal-what-is-the-cloud-partner-portal.md)  
 

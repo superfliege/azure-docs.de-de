@@ -96,8 +96,10 @@
           href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Konfigurieren von Firewalls und virtuellen Netzwerken
           href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Aktivieren der sicheren TLS-Verbindung für Azure Storage-Client
+        - name: Aktivieren der sicheren TLS-Verbindung für den Azure Storage-Client
           href: ../common/storage-security-tls.md
+        - name: Complianceangebote
+          href: ../common/storage-compliance-offerings.md
         - name: Clientseitige Verschlüsselung
           items:
             - name: .NET

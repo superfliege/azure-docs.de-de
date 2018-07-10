@@ -40,12 +40,11 @@
 #### [Cognitive-Erweiterungen](data-lake-analytics-u-sql-cognitive.md)
 #### [Programmierbarkeitshandbuch](data-lake-analytics-u-sql-programmability-guide.md)
 
-### U-SQL SDK
-#### [Lokales Ausführen und Debuggen](data-lake-analytics-data-lake-tools-local-run.md)
-#### [Ausführen und Testen](data-lake-analytics-u-sql-sdk.md) 
-
 ### Visual Studio
 #### [Installieren](data-lake-analytics-data-lake-tools-install.md)
+#### [Lokaler Testlauf](data-lake-analytics-data-lake-tools-local-run.md)
+#### [Lokales Debuggen](data-lake-analytics-data-lake-tools-local-debug.md)
+#### [Entwickeln von U-SQL-Datenbanken](data-lake-analytics-data-lake-tools-develop-usql-database.md)
 #### [Durchsuchen und Anzeigen von Aufträgen](data-lake-analytics-data-lake-tools-view-jobs.md)
 #### [Debuggen von benutzerdefiniertem C#-Code](data-lake-analytics-debug-u-sql-jobs.md)
 #### [Problembehandlung für periodische Aufträge](data-lake-analytics-data-lake-tools-debug-recurring-job.md)
@@ -59,6 +58,11 @@
 #### [Erstellung](data-lake-analytics-data-lake-tools-for-vscode.md)
 #### [Benutzerdefinierter Code](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 #### [Lokales Ausführen und Debuggen](data-lake-tools-for-vscode-local-run-and-debug.md)
+
+### Kontinuierliche Integration und kontinuierliche Bereitstellung
+#### [Übersicht](data-lake-analytics-cicd-overview.md)
+#### [Einrichten von Tests](data-lake-analytics-cicd-test.md)
+#### [U-SQL-SDK](data-lake-analytics-u-sql-sdk.md)
 
 # Verweis
 ## [Azure PowerShell](/powershell/module/azurerm.datalakeanalytics)

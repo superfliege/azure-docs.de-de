@@ -65,8 +65,10 @@
           href: luis-quickstart-intent-and-key-phrase.md
         - name: 8. Hinzufügen einer Standpunktanalyse
           href: luis-quickstart-intent-and-sentiment-analysis.md
-    - name: Verbessern der Vorhersage
+    - name: Verbessern der App
       items:
+        - name: Überprüfen von Endpunktäußerungen
+          href: luis-tutorial-review-endpoint-utterances.md
         - name: Mit Mustern
           href: luis-tutorial-pattern.md
         - name: Mit einer Begriffsliste
@@ -313,6 +315,8 @@
       href: 'https://github.com/Microsoft/Recognizers-Text'
 - name: angeben
   items:
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Azure-Roadmap
       href: 'https://aka.ms/luis-roadmap'
     - name: Glossar
@@ -326,7 +330,7 @@
     - name: UserVoice
       href: 'https://aka.ms/luis-uservoice-forum'
     - name: 'Suchen,'
-      href: 'https://docs.microsoft.com/en-us/search/index?search=LUIS'
+      href: 'https://docs.microsoft.com/search/index?search=LUIS'
     - name: Blog
       href: 'https://blog.botframework.com/category/luis/'
     - name: Wissensdatenbank

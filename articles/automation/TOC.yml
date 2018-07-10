@@ -47,6 +47,8 @@
       items:
         - name: Übersicht über die Änderungsnachverfolgung
           href: automation-change-tracking.md
+        - name: Anzeigen der Inhalte von nachverfolgten Dateien
+          href: change-tracking-file-contents.md
     - name: Inventory
       items:
         - name: Verwalten eines virtuellen Computers mit Inventursammlung
