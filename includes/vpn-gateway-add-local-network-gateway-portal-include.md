@@ -16,7 +16,7 @@ ms.lasthandoff: 04/06/2018
 ms.locfileid: "30921428"
 ---
 1. Klicken Sie im Portal auf **Ressource erstellen**.
-2. Geben Sie im Suchfeld den Text **Lokales Netzwerkgateway** ein, und drücken Sie die**** EINGABETASTE. Daraufhin wird eine Liste mit Ergebnissen zurückgegeben. Klicken Sie auf **Lokales Netzwerkgateway** und anschließend auf die Schaltfläche **Erstellen**, um die Seite **Lokales Netzwerkgateway erstellen** zu öffnen.
+2. Geben Sie im Suchfeld den Text **Lokales Netzwerkgateway** ein, und drücken Sie die **EINGABETASTE**. Daraufhin wird eine Liste mit Ergebnissen zurückgegeben. Klicken Sie auf **Lokales Netzwerkgateway** und anschließend auf die Schaltfläche **Erstellen**, um die Seite **Lokales Netzwerkgateway erstellen** zu öffnen.
 
   ![Erstellen des lokalen Netzwerkgateways](./media/vpn-gateway-add-local-network-gateway-portal-include/create-local-network-gateway.png "Erstellen des lokalen Netzwerkgateways")
 
