@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: tutorial
 ms.date: 6/27/2018
 ms.author: dineshm
-ms.openlocfilehash: 013369c84ca7f2ec232f542549c22260eca46980
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 27ed860c7dd3b979a25860d453231de74d3f46be
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062533"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096915"
 ---
 # <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-databricks-using-spark"></a>Tutorial: Zugreifen auf Azure-Daten vom Typ „Data Lake Storage Gen2“ (Vorschauversion) mit Databricks unter Verwendung von Spark
 
@@ -61,7 +61,7 @@ Der nächste Schritt ist die Erstellung eines [Databricks-Clusters](https://docs
 8. Klicken Sie oben auf der Seite auf **Cluster erstellen** (dieser Prozess kann bis zu fünf Minuten dauern).
 9. Nachdem der Prozess abgeschlossen ist, können Sie oben links in der Navigationsleiste **Azure Databricks** wählen.
 10. Wählen Sie in der unteren Hälfte der Seite im Abschnitt **Neu** die Option **Notebook**.
-11. Geben Sie im Feld **Name** den gewünschten Namen ein.
+11. Geben Sie im Feld **Name** den gewünschten Namen ein, und wählen Sie **Python** als Sprache aus.
 12. Für alle anderen Felder können die Standardwerte übernommen werden.
 13. Klicken Sie auf **Erstellen**.
 14. Fügen Sie den folgenden Code in die Zelle **Cmd 1** ein, und ersetzen Sie die Werte durch die Werte, die Sie sich für Ihr Speicherkonto notiert haben.
@@ -96,7 +96,7 @@ azcopy cp "<DOWNLOAD_FILE_PATH>" https://<ACCOUNT_NAME>.dfs.core.windows.net/dbr
 5. Klicken Sie auf **Erstellen**.
 6. Fügen Sie den folgenden Code in die Zelle **Cmd 1** ein (mit diesem Code wird im Editor das automatische Speichern durchgeführt).
 
-    ```
+    ```python
     #mount Azure Blob Storage as an HDFS file system to your databricks cluster
     #you need to specify a storage account and container to connect to. 
     #use a SAS token or an account key to connect to Blob Storage.  

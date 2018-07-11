@@ -1,115 +1,168 @@
 ---
-title: Geräteverwaltung in der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
-description: In diesem Tutorial wird veranschaulicht, wie Sie die mit der Remoteüberwachungslösung verbundenen Geräte verwalten.
+title: Verwalten von Geräten in einer Azure-basierten Lösung für die Remoteüberwachung | Microsoft-Dokumentation
+description: In diesem Tutorial wird veranschaulicht, wie Sie die Geräte verwalten, die mit dem Solution Accelerator für die Remoteüberwachung verbunden sind.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 05/01/2018
-ms.topic: conceptual
-ms.openlocfilehash: 0f177c3a8746f801e52cdac6cb2189e9cc28e1e8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 06/12/2018
+ms.topic: tutorial
+ms.custom: mvc
+ms.openlocfilehash: 63baf6397b2542311525bac740c50b5eacbd35cf
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627278"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097426"
 ---
-# <a name="manage-and-configure-your-devices"></a>Verwalten und Konfigurieren von Geräten
+# <a name="tutorial-configure-and-manage-devices-connected-to-your-monitoring-solution"></a>Tutorial: Konfigurieren und Verwalten von Geräten, die mit der Überwachungslösung verbunden sind
 
-In diesem Tutorial werden die Geräteverwaltungsfunktionen der Remoteüberwachungslösung erläutert. Zur Einführung dieser Funktionen wird in diesem Tutorial ein Szenario in der Contoso IoT-Anwendung verwendet.
+In diesem Tutorial verwenden Sie den Solution Accelerator für die Remoteüberwachung zum Konfigurieren und Verwalten Ihrer verbundenen IoT-Geräte. Sie fügen dem Solution Accelerator ein neues Gerät hinzu, konfigurieren das Gerät und aktualisieren die Firmware des Geräts.
 
-Contoso hat neue Maschinen geordert, um eine seiner Betriebsstätten zu erweitern und die Produktion zu erhöhen. Während Sie auf die Lieferung der neuen Maschinen warten, möchten Sie eine Simulation ausführen, um das Verhalten der Lösung zu überprüfen. Als Bediener möchten Sie die Geräte in der Remoteüberwachungslösung verwalten und konfigurieren.
+Contoso hat neue Maschinen bestellt, um eine seiner Betriebsstätten zu erweitern. Während Sie auf die Lieferung der neuen Maschinen warten, möchten Sie eine Simulation ausführen, um das Verhalten der Lösung zu testen. Zum Ausführen der Simulation fügen Sie dem Solution Accelerator für die Remoteüberwachung ein neues simuliertes Engine-Gerät hinzu und testen, ob dieses simulierte Gerät richtig auf Aktionen und Konfigurationsupdates reagiert.
 
-Um ein breites Spektrum an Möglichkeiten zum Verwalten und Konfigurieren von Geräten zu bieten, werden in der Remoteüberwachungslösung IoT Hub-Features wie [Aufträge](../iot-hub/iot-hub-devguide-jobs.md) und [direkte Methoden](../iot-hub/iot-hub-devguide-direct-methods.md) verwendet. Informationen dazu, wie ein Geräteentwickler Methoden auf einem physischen Gerät implementiert, finden Sie unter [Anpassen des Solution Accelerators für die Remoteüberwachung](iot-accelerators-remote-monitoring-customize.md).
+Um ein breites Spektrum an Möglichkeiten zum Konfigurieren und Verwalten von Geräten zu bieten, werden im Solution Accelerator für die Remoteüberwachung IoT Hub-Features wie [Aufträge](../iot-hub/iot-hub-devguide-jobs.md) und [direkte Methoden](../iot-hub/iot-hub-devguide-direct-methods.md) verwendet. In diesem Tutorial werden simulierte Geräte genutzt, aber ein Geräteentwickler kann direkte Methoden auch auf einem [physischen Gerät implementieren, das mit dem Solution Accelerator für die Remoteüberwachung verbunden ist](iot-accelerators-connecting-devices.md).
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial führen Sie Folgendes durch:
 
 >[!div class="checklist"]
 > * Bereitstellen eines simulierten Geräts
-> * Testen des simulierten Geräts
-> * Aufrufen von Gerätemethoden aus der Lösung
+> * Testen eines simulierten Geräts
+> * Aktualisieren der Firmware eines Geräts
 > * Neukonfigurieren eines Geräts
+> * Organisieren Ihrer Geräte
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial benötigen Sie eine bereitgestellte Instanz der Remoteüberwachungslösung in Ihrem Azure-Abonnement.
+Für dieses Tutorial benötigen Sie eine bereitgestellte Instanz des Solution Accelerators für die Remoteüberwachung in Ihrem Azure-Abonnement.
 
-Falls Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, absolvieren Sie zuerst das Tutorial [Bereitstellen des Solution Accelerators für die Remoteüberwachung](iot-accelerators-remote-monitoring-deploy.md).
+Falls Sie den Solution Accelerator für die Remoteüberwachung noch nicht bereitgestellt haben, sollten Sie die Schnellstartanleitung [Bereitstellen einer cloudbasierten Lösung für die Remoteüberwachung](quickstart-remote-monitoring-deploy.md) durcharbeiten.
 
 ## <a name="add-a-simulated-device"></a>Hinzufügen eines simulierten Geräts
 
-Navigieren Sie in der Lösung zur Seite **Devices** (Geräte), und wählen Sie **+ New Device** (Neues Gerät) aus. Wählen Sie im Bereich **New Device** (Neues Gerät) die Option **Simulated** (Simuliert) aus:
+Navigieren Sie in der Lösung zur Seite **Devices** (Geräte), und klicken Sie dann auf **+ New Device** (+ Neues Gerät):
 
-![Bereitstellen eines simulierten Geräts](./media/iot-accelerators-remote-monitoring-manage/devicesprovision.png)
+[![Bereitstellen eines simulierten Geräts](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-expanded.png#lightbox)
 
-Behalten Sie die auf **1** festgelegte Anzahl der bereitzustellenden Geräte bei. Wählen Sie das Gerätemodell **Faulty Engine** (Fehlerhafte Engine) und dann **Apply** (Übernehmen) aus, um das simulierte Gerät zu erstellen:
+Wählen Sie im Panel **New device** (Neues Gerät) die Option **Simulated** (Simuliert), behalten Sie für die Anzahl von bereitzustellenden Geräten **1** bei, wählen Sie das Gerätemodell **Faulty Engine** (Fehlerhafte Engine), und wählen Sie dann **Apply** (Übernehmen):
 
-![Bereitstellen eines simulierten Engine-Geräts](./media/iot-accelerators-remote-monitoring-manage/devicesprovisionengine.png)
-
-Informationen zum Bereitstellen eines *physischen* Geräts finden Sie unter [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung (Node.js)](iot-accelerators-connecting-devices-node.md).
+[![Bereitstellen eines simulierten Engine-Geräts](./media/iot-accelerators-remote-monitoring-manage/devicesprovisionengine-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesprovisionengine-expanded.png#lightbox)
 
 ## <a name="test-the-simulated-device"></a>Testen des simulierten Geräts
 
-Um Details zu dem neuen simulierten Gerät anzuzeigen, wählen Sie es in der Geräteliste auf der Seite **Devices** (Geräte) aus. Informationen zu dem Gerät werden im Bereich **Device detail** (Gerätedetails) angezeigt:
+Um zu testen, ob das simulierte Gerät Telemetriedaten sendet und Eigenschaftswerte meldet, wählen Sie es auf der Seite **Devices** (Geräte) in der Liste mit den Geräten aus. Live-Informationen zum Gerät werden im Bereich **Device Details** (Gerätedetails) angezeigt:
 
-![Anzeigen des simulierten Engine-Geräts](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew.png)
+[![Anzeigen des neuen simulierten Engine-Geräts](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-expanded.png#lightbox)
 
-Überprüfen Sie in **Device detail** (Gerätedetails), ob das neue Gerät Telemetriedaten sendet. Um die verschiedenen Telemetriedatenströme von Ihrem Gerät anzuzeigen, wählen Sie einen Telemetrienamen wie z.B. **vibration** aus:
+Überprüfen Sie unter **Device Details** (Gerätedetails), ob das neue Gerät Telemetriedaten sendet. Klicken Sie auf **Vibration**, um die gestreamten Telemetriedaten zur Vibration Ihres Geräts anzuzeigen:
 
-![Auswählen eines anzuzeigenden Telemetriedatenstroms](./media/iot-accelerators-remote-monitoring-manage/devicesvibration.png)
+[![Auswählen eines anzuzeigenden Telemetriedatenstroms](./media/iot-accelerators-remote-monitoring-manage/devicesvibration-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesvibration-expanded.png#lightbox)
 
-Im Bereich **Device detail** (Gerätedetails) werden weitere Informationen zum Gerät angezeigt, z.B. Tagwerte, die unterstützten Methoden und die vom Gerät gemeldeten Eigenschaften.
+Im Bereich **Device Details** (Gerätedetails) werden weitere Informationen zum Gerät angezeigt, z.B. Tagwerte, die unterstützten Methoden und die vom Gerät gemeldeten Eigenschaften.
 
-Scrollen Sie zum Anzeigen von detaillierten Diagnosedaten nach unten, um **Diagnostics** (Diagnose) anzuzeigen.
+Scrollen Sie zum Anzeigen von detaillierten Diagnosedaten nach unten, um **Diagnostics** (Diagnose) anzuzeigen:
+
+[![Anzeigen der Gerätediagnose](./media/iot-accelerators-remote-monitoring-manage/devicediagnostics-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicediagnostics-expanded.png#lightbox)
 
 ## <a name="act-on-a-device"></a>Aktionen für ein Gerät
 
-Um Aktionen für ein oder mehrere Geräte auszuführen, wählen Sie sie in der Geräteliste aus, und wählen Sie dann **Jobs** (Aufträge) aus. Das Gerätemodell **Engine** gibt drei Methoden an, die ein Gerät unterstützen muss:
+Führen Sie die **FirmwareUpdate**-Methode aus, um zu testen, ob das simulierte Engine-Gerät richtig auf die vom Solution Accelerator initiierten Aktionen reagiert. Um für ein Gerät per Ausführung einer Methode tätig zu werden, wählen Sie das Gerät in der Liste mit den Geräten aus und klicken dann auf **Jobs** (Aufträge). Sie können auch mehr als ein Gerät auswählen, falls Sie für mehrere Geräte tätig werden möchten. Wählen Sie im Panel **Jobs** (Aufträge) die Option **Run method** (Methode ausführen). Für das Gerätemodell **Engine** werden drei Methoden angegeben: **FirmwareUpdate**, **FillTank** und **EmptyTank**:
 
-![Engine-Methoden](./media/iot-accelerators-remote-monitoring-manage/devicesmethods.png)
+[![Engine-Methoden](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-expanded.png#lightbox)
 
-Wählen Sie **FillTank**, legen Sie für den Auftragsnamen **FillEngineTank** fest, und wählen Sie dann **Apply (Übernehmen)**:
+Wählen Sie **FirmwareUpdate**, legen Sie den Auftragsnamen auf **UpdateEngineFirmware**, die Firmwareversion auf **2.0.0** und den Firmware-URI auf **http://contoso.com/engine.bin** fest, und klicken Sie dann auf **Apply** (Übernehmen):
 
-![Planen der Neustartmethode](./media/iot-accelerators-remote-monitoring-manage/devicesrestartengine.png)
+[![Planen der Methode für Firmwareupdates](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatejob-inline.png)](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatejob-expanded.png#lightbox)
 
-Um den Status des Auftrags auf der Seite **Maintenance** (Wartung) nachzuverfolgen, wählen Sie **Jobs** (Aufträge) aus.
+Klicken Sie auf **View job status** (Auftragsstatus anzeigen), um den Status des Auftrags nachzuverfolgen:
 
-![Überwachen des geplanten Auftrags](./media/iot-accelerators-remote-monitoring-manage/maintenancerestart.png)
+[![Überwachen des geplanten Auftrags für das Firmwareupdate](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatestatus-inline.png)](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatestatus-expanded.png#lightbox)
 
-### <a name="methods-in-other-devices"></a>Methoden in anderen Geräten
+Navigieren Sie nach Abschluss des Auftrags zurück auf die Seite **Devices** (Geräte). Die neue Firmwareversion für das Engine-Gerät wird angezeigt.
 
-Wenn Sie sich die verschiedenen simulierten Gerätetypen ansehen, werden Sie feststellen, dass andere Gerätetypen andere Methoden unterstützen. In einer Bereitstellung mit physischen Geräten gibt das Gerätemodell die Methoden an, die das Gerät unterstützen muss. In der Regel ist der Geräteentwickler für die Entwicklung des Codes zuständig, über den das Gerät auf einen Methodenaufruf reagiert.
-
-Um eine Methode für die Ausführung auf mehreren Geräten zu planen, können Sie mehrere Geräte in der Liste auf der Seite **Devices** (Geräte) auswählen. Im Bereich **Jobs** (Aufträge) werden die für alle ausgewählten Geräte gemeinsamen Methodentypen angezeigt.
+Wenn Sie auf der Seite **Devices** (Geräte) mehrere Geräte unterschiedlichen Typs auswählen, können Sie trotzdem einen Auftrag erstellen, um für diese Geräte eine Methode auszuführen. Im Panel **Jobs** (Aufträge) werden nur die Methoden angezeigt, die für alle ausgewählten Geräte gelten.
 
 ## <a name="reconfigure-a-device"></a>Neukonfigurieren eines Geräts
 
-Um die Konfiguration eines Geräts zu ändern, wählen Sie es in der Geräteliste auf der Seite **Devices** (Geräte) aus, wählen Sie dann **Jobs** (Aufträge) und dann **Reconfigure** (Neu konfigurieren) aus. Im Bereich „Jobs“ (Aufträge) werden die Eigenschaftswerte für das ausgewählte Gerät angezeigt, die Sie ändern können:
+Um zu testen, ob Sie die Konfigurationseigenschaften der Engine aktualisieren können, wählen Sie sie auf der Seite **Devices** (Geräte) in der Liste mit den Geräten aus. Klicken Sie anschließend auf **Jobs** (Aufträge), und wählen Sie **Reconfigure** (Neu konfigurieren). Im Panel „Jobs“ (Aufträge) werden die aktualisierbaren Eigenschaftswerte für das ausgewählte Gerät angezeigt:
 
-![Neukonfigurieren eines Geräts](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure.png)
+[![Neukonfigurieren eines Geräts](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-expanded.png#lightbox)
 
-Um eine Änderung vorzunehmen, fügen Sie einen Namen für den Auftrag hinzu, aktualisieren Sie die Eigenschaftswerte, und wählen Sie **Apply** (Übernehmen) aus:
+Um den Standort der Engine zu aktualisieren, legen Sie den Auftragsnamen auf **UpdateEngineLocation**, den Längengrad auf **-122,15**, den Standort auf **Factory 2** und den Breitengrad auf **47,62** fest und klicken anschließend auf **Apply** (Übernehmen):
 
-![Aktualisieren des Eigenschaftswerts eines Geräts](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical.png)
+[![Aktualisieren des Eigenschaftswerts eines Geräts](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-expanded.png#lightbox)
 
-Um den Status des Auftrags auf der Seite **Maintenance** (Wartung) nachzuverfolgen, wählen Sie **Jobs** (Aufträge) aus.
+Klicken Sie auf **View job status** (Auftragsstatus anzeigen), um den Status des Auftrags nachzuverfolgen:
+
+[![Aktualisieren des Eigenschaftswerts eines Geräts](./media/iot-accelerators-remote-monitoring-manage/locationjobstatus-inline.png)](./media/iot-accelerators-remote-monitoring-manage/locationjobstatus-expanded.png#lightbox)
+
+Nachdem der Auftrag abgeschlossen ist, können Sie zur Seite **Dashboard** navigieren. Das Engine-Gerät wird auf der Karte am neuen Standort angezeigt:
+
+[![Anzeigen des Engine-Standorts](./media/iot-accelerators-remote-monitoring-manage/enginelocation-inline.png)](./media/iot-accelerators-remote-monitoring-manage/enginelocation-expanded.png#lightbox)
+
+## <a name="organize-your-devices"></a>Organisieren Ihrer Geräte
+
+Um für Sie als Bediener das Organisieren und Verwalten Ihrer Geräte zu vereinfachen, möchten Sie die Teams mit dem entsprechenden Teamnamen kennzeichnen. Contoso verfügt über zwei unterschiedliche Teams für Außendienstaktivitäten:
+
+* Das Team „Smart Vehicle“ (Intelligentes Fahrzeug) verwaltet LKW und Geräte für die Prototyperstellung.
+* Das Team „Smart Building“ (Intelligentes Gebäude) verwaltet Kältemaschinen, Aufzüge und Motoren.
+
+Navigieren Sie zum Anzeigen Ihrer gesamten Geräte zur Seite **Devices** (Geräte), und wählen Sie den Filter **All devices** (Alle Geräte):
+
+[![Anzeigen aller Geräte](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-expanded.png#lightbox)
+
+### <a name="add-tags"></a>Hinzufügen von Tags
+
+Wählen Sie alle Geräte vom Typ **Trucks** (LKW) und **Prototyping** (Prototyperstellung) aus. Klicken Sie dann auf **Jobs** (Aufträge):
+
+[![Auswählen von Geräten vom Typ „Prototyp“ und „LKW“](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect-expanded.png#lightbox)
+
+Wählen Sie die Option **Tag**, legen Sie den Auftragsnamen auf **AddConnectedVehicleTag** fest, und fügen Sie dann ein Texttag mit dem Namen **FieldService** und dem Wert **ConnectedVehicle** hinzu. Klicken Sie anschließend auf **Übernehmen**:
+
+[![Hinzufügen von Tags zu Prototyp- und LKW-Geräten](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-expanded.png#lightbox)
+
+Wählen Sie auf der Geräteseite alle Geräte vom Typ **Chiller** (Kältemaschine), **Elevator** (Aufzug) und **Engine** aus. Klicken Sie dann auf **Jobs** (Aufträge):
+
+[![Auswählen von Geräten vom Typ Kältemaschine, Aufzug und Engine](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect2-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect2-expanded.png#lightbox)
+
+Wählen Sie die Option **Tag**, legen Sie den Auftragsnamen auf **AddSmartBuildingTag** fest, und fügen Sie dann ein Texttag mit dem Namen **FieldService** und dem Wert **SmartBuilding** hinzu. Klicken Sie anschließend auf **Übernehmen**:
+
+[![Hinzufügen eines Tags zu Geräten vom Typ „Kältemaschine“, „Aufzug“ und „Engine“](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-expanded.png#lightbox)
+
+### <a name="create-filters"></a>Erstellen von Filtern
+
+Sie können jetzt die Tagwerte zum Erstellen von Filtern verwenden. Klicken Sie auf der Seite **Devices** (Geräte) auf **Manage device groups** (Gerätegruppen verwalten):
+
+[![Verwalten von Gerätegruppen](./media/iot-accelerators-remote-monitoring-manage/devicesmanagefilters-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmanagefilters-expanded.png#lightbox)
+
+Erstellen Sie einen Textfilter, für den in der Bedingung der Tagname **FieldService** und der Wert **SmartBuilding** verwendet werden. Speichern Sie den Filter unter dem Namen **Smart Building**:
+
+[![Erstellen des Filters „Smart Building“](./media/iot-accelerators-remote-monitoring-manage/smartbuildingfilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/smartbuildingfilter-expanded.png#lightbox)
+
+Erstellen Sie einen Textfilter, für den in der Bedingung der Tagname **FieldService** und der Wert **ConnectedVehicle** verwendet werden. Speichern Sie den Filter unter dem Namen **Connected Vehicle**.
+
+[![Erstellen des Filters „Connected Vehicle“](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-expanded.png#lightbox)
+
+Der Contoso-Bediener kann Geräte jetzt basierend auf dem Betriebsteam abfragen:
+
+[![Erstellen des Filters „Connected Vehicle“](./media/iot-accelerators-remote-monitoring-manage/filterinaction-inline.png)](./media/iot-accelerators-remote-monitoring-manage/filterinaction-expanded.png#lightbox)
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie mit dem nächsten Tutorial fortfahren möchten, können Sie die Bereitstellung des Solution Accelerators für die Remoteüberwachung beibehalten. Zum Reduzieren der Kosten für die Ausführung des Solution Accelerators, wenn Sie ihn nicht nutzen, können Sie die simulierten Geräte im Panel mit den Einstellungen beenden:
+
+[![Anhalten der Telemetrie](./media/iot-accelerators-remote-monitoring-manage/togglesimulation-inline.png)](./media/iot-accelerators-remote-monitoring-manage/togglesimulation-expanded.png#lightbox)
+
+Sie können die simulierten Geräte neu starten, wenn Sie mit dem nächsten Tutorial beginnen möchten.
+
+Falls Sie den Solution Accelerator nicht mehr benötigen, können Sie ihn auf der Seite [Bereitgestellte Lösungen](https://www.azureiotsolutions.com/Accelerators#dashboard) löschen:
+
+![Löschen der Lösung](media/iot-accelerators-remote-monitoring-manage/deletesolution.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde Folgendes veranschaulicht:
+In diesem Tutorial wurde veranschaulicht, wie Sie die Geräte konfigurieren und verwalten, die mit dem Solution Accelerator für die Remoteüberwachung verbunden sind. Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie den Solution Accelerator zum Identifizieren und Beheben von Problemen mit Ihren verbundenen Geräten verwenden.
 
-<!-- Repeat task list from intro -->
->[!div class="checklist"]
-> * Bereitstellen eines simulierten Geräts
-> * Testen des simulierten Geräts
-> * Aufrufen von Gerätemethoden aus der Lösung
-> * Neukonfigurieren eines Geräts
-
-Sie wissen nun, wie Sie Ihre Geräte verwalten können. In den nächsten empfohlenen Schritten erfahren Sie Folgendes:
-
-* [Beheben von Geräteproblemen](iot-accelerators-remote-monitoring-maintain.md)
-* [Testen der Lösung mit simulierten Geräten](iot-accelerators-remote-monitoring-test.md)
-* [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung (Node.js)](iot-accelerators-connecting-devices-node.md)
-
-<!-- Next tutorials in the sequence -->
+> [!div class="nextstepaction"]
+> [Verwenden von Gerätewarnungen zum Identifizieren und Beheben von Problemen mit Geräten, die mit Ihrer Überwachungslösung verbunden sind](iot-accelerators-remote-monitoring-maintain.md)

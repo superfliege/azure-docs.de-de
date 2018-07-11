@@ -3,7 +3,7 @@ title: 'Schnellstart: Erstellen eines virtuellen Linux-Computers im Azure-Portal
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe des Azure-Portals einen virtuellen Linux-Computer erstellen.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/24/2018
-ms.author: iainfou
+ms.date: 07/03/2018
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 18ac0291bff2c0fbfffdd5dfa3097f8a6acb561f
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 03d4ad081a788299bab563ca6b956edc347732da
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012882"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447957"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Schnellstart: Erstellen eines virtuellen Linux-Computers im Azure-Portal
 
-Virtuelle Azure-Computer (VMs) können über das Azure-Portal erstellt werden. Bei dieser Methode können Sie die browserbasierte Benutzeroberfläche nutzen, um virtuelle Computer und ihre dazugehörigen Ressourcen zu erstellen. In dieser Schnellstartanleitung wird gezeigt, wie Sie über das Azure-Portal einen virtuellen Linux-Computer unter Ubuntu in Azure bereitstellen. Um den virtuellen Computer in Aktion zu sehen, stellen Sie anschließend eine SSH-Verbindung mit dem virtuellen Computer her und installieren den NGINX-Webserver.
+Virtuelle Azure-Computer (VMs) können über das Azure-Portal erstellt werden. Bei dieser Methode können Sie die browserbasierte Benutzeroberfläche nutzen, um virtuelle Computer und ihre dazugehörigen Ressourcen zu erstellen. In dieser Schnellstartanleitung wird gezeigt, wie Sie über das Azure-Portal einen virtuellen Linux-Computer unter Ubuntu in Azure bereitstellen. Wenn Sie den virtuellen Computer in Aktion sehen möchten, stellen Sie anschließend eine SSH-Verbindung mit dem virtuellen Computer her und installieren den NGINX-Webserver.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -63,7 +63,7 @@ Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
     ![Screenshot: VM-Größen](./media/quick-create-portal/create-linux-vm-portal-sizes.png)
 
-5. Übernehmen Sie unter **Einstellungen** die Standardwerte, und klicken Sie auf **OK**.
+5. Wählen Sie auf der Seite **Einstellungen** unter **Netzwerk** > **Netzwerksicherheitsgruppe** > **Öffentliche Eingangsports hinzufügen** die Optionen **HTTP** und **SSH (22)**. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **OK**.
 
 6. Wählen Sie auf der Seite „Zusammenfassung“ die Option **Erstellen** aus, um die Bereitstellung des virtuellen Computers zu starten.
 
@@ -99,14 +99,6 @@ sudo apt-get -y install nginx
 
 Verwenden Sie nach Abschluss des Vorgangs `exit` zum Beenden der SSH-Sitzung, und wechseln Sie zurück zu den VM-Eigenschaften im Azure-Portal.
 
-## <a name="open-port-80-for-web-traffic"></a>Öffnen von Port 80 für Webdatenverkehr
-
-Mit einer Netzwerksicherheitsgruppe (NSG) wird eingehender und ausgehender Datenverkehr geschützt. Wenn im Azure-Portal eine VM erstellt wird, wird für SSH-Verbindungen an Port 22 eine Regel für eingehenden Datenverkehr erstellt. Da dieser virtuelle Computer einen Webserver hostet, muss für Port 80 eine NSG-Regel erstellt werden.
-
-1. Klicken Sie auf der Übersichtsseite des virtuellen Computers auf **Netzwerk**.
-2. Die Liste der Regeln für eingehenden und ausgehenden Datenverkehr wird angezeigt. Klicken Sie auf **Add inbound port rule** (Regel für Eingangsport hinzufügen).
-3. Wählen Sie oben die Option **Basic** und anschließend in der Liste der verfügbaren Dienste *HTTP* aus. Port 80, eine Priorität und ein Name werden für Sie bereitgestellt.
-4. Klicken Sie zum Erstellen der Regel auf **Hinzufügen**.
 
 ## <a name="view-the-web-server-in-action"></a>Anzeigen des Webservers in Aktion
 

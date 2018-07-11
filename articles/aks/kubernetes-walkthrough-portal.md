@@ -2,19 +2,19 @@
 title: Schnellstart – Schnellstart für Azure Kubernetes-Cluster im Portal
 description: Hier lernen Sie schnell, wie Sie einen Kubernetes-Cluster für Linux-Container in AKS mit dem Azure-Portal erstellen.
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 04/29/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 90d01ed7cc2483c8467d646ebf9ad056ea1a4baf
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: aa8a1cccd4eeb45e829cd8df73f128dd6cca416d
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286595"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344473"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Schnellstart: Bereitstellen eines Azure Kubernetes Service-Clusters (AKS)
 
@@ -28,11 +28,9 @@ Für diese Schnellstartanleitung werden Grundkenntnisse in Bezug auf die Kuberne
 
 Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
-
-
 ## <a name="create-aks-cluster"></a>Erstellen eines ACS-Clusters
 
-Klicken Sie auf **Ressource erstellen** und dann auf **Kubernetes Service** > **Erstellen**.
+Klicken Sie auf **Ressource erstellen**, und wählen Sie dann die Option **Kubernetes-Dienst**.
 
 Führen Sie unter jeder Überschrift des Formulars zur Erstellung des AKS-Clusters die folgenden Schritte aus.
 

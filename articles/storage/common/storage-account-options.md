@@ -7,14 +7,14 @@ manager: jwillis
 ms.service: storage
 ms.workload: storage
 ms.topic: get-started-article
-ms.date: 06/22/2018
+ms.date: 07/03/2018
 ms.author: hux
-ms.openlocfilehash: 3f1dfa09c0f123d20a7be043aa8d0033a5b6bd72
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6efc50bfee54c38511fb3346f1341f81741d14eb
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335770"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445421"
 ---
 # <a name="azure-storage-account-options"></a>Optionen für Azure Storage-Konten
 
@@ -46,7 +46,10 @@ GPv2-Speicherkonten machen das Attribut **Access Tier** (Zugriffsebene) auf Kont
 
 ### <a name="upgrade-a-storage-account-to-gpv2"></a>Aktualisieren eines Speicherkontos auf GPv2
 
-Benutzer können ein GPv1- oder Blob-Speicherkonto jederzeit mithilfe von PowerShell oder über die Azure CLI auf ein GPv2-Konto upgraden. Diese Änderung kann nicht rückgängig gemacht werden, und es sind keine anderen Änderungen zulässig.
+Benutzer können ein GPv1- oder Blob-Speicherkonto jederzeit mit dem Azure-Portal, PowerShell oder der Azure CLI auf ein GPv2-Konto aktualisieren. Diese Änderung kann nicht rückgängig gemacht werden, und es sind keine anderen Änderungen zulässig.
+
+#### <a name="upgrade-with-azure-portal"></a>Aktualisieren mit dem Azure-Portal
+Um für ein GPv1- oder Blob-Speicherkonto mit dem Azure-Portal ein Upgrade auf ein GPv2-Konto durchzuführen, melden Sie sich zuerst am [Azure-Portal](https://portal.azure.com) an und wählen Ihr Speicherkonto aus. Wählen Sie **Einstellungen** > **Konfiguration** aus. Die Schaltfläche **Aktualisieren** wird zusammen mit einem Hinweis zum Upgradeprozess angezeigt.
 
 #### <a name="upgrade-with-powershell"></a>Aktualisieren mit PowerShell
 
@@ -262,9 +265,9 @@ Bei Verwendung eines GRS- oder RA-GRS-Speicherkontos können die Datenübertragu
 
 ## <a name="migrating-existing-data"></a>Migrieren vorhandener Daten
 
-Ein GPv1-Konto kann problemlos auf GPv2 aktualisiert werden, ohne dass es zu Ausfallzeiten oder API-Änderungen kommt oder Daten migriert werden müssen. Aus diesem Grund sollten Sie GPv1-Konten unbedingt zu GPv2-Konten (nicht zu Blob-Speicherkonten) migrieren.
+Ein GPv1- oder Blob-Speicherkonto kann problemlos auf GPv2 aktualisiert werden, ohne dass es zu Ausfallzeiten oder API-Änderungen kommt oder Daten migriert werden müssen. Aus diesem Grund sollten Sie GPv1-Konten unbedingt zu GPv2-Konten (nicht zu Blob-Speicherkonten) migrieren. Weitere Informationen zum Upgrade auf GPv2 finden Sie unter [Aktualisieren eines Speicherkontos auf GPv2](#upgrade-a-storage-account-to-gpv2).
 
-Falls Sie keine GPv2-Konten verwenden können und eine Migration zu einem Blob-Speicherkonto durchführen müssen, können Sie die unten angegebene Anleitung verwenden. 
+Falls Sie keine GPv2-Konten verwenden können und eine Migration von GPv1 zu einem Blob-Speicherkonto durchführen müssen, können Sie die unten angegebene Anleitung verwenden. 
 
 Ein Blob-Speicherkonto ist ein spezielles Konto, in dem nur Blockblobs und Anfügeblobs gespeichert werden. Bereits vorhandene allgemeine Speicherkonten, die Ihnen das Speichern von Tabellen, Warteschlangen, Dateien und Datenträgern sowie Blobs ermöglichen, können nicht in Blob-Speicherkonten konvertiert werden. Zum Verwenden der Speicherebenen müssen Sie neue Blob-Speicherkonten erstellen und Ihre vorhandenen Daten zu den neu erstellten Konten migrieren. 
 

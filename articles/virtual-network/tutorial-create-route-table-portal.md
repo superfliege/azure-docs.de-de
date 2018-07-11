@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 7254e9336fca14daee2021d5bde4c5538509fe35
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 81478ace72a538f4970e114cd704fd64ceb94aa6
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30842321"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344891"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Tutorial: Weiterleiten von Netzwerkdatenverkehr unter Verwendung des Azure-Portals
 
@@ -195,20 +195,20 @@ Sie können die VM *myVmPrivate* erstellen, während Azure die VM *myVmPublic* e
     Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters -Name IpEnableRouter -Value 1
     ```
     
-    Starten Sie den virtuellen Computer *myVmNva* neu. Dadurch wird auch die Remotedesktopsitzung getrennt.
-8. Erstellen Sie nach dem Neustart des virtuellen Computers *myVmNva* bei bestehender Verbindung mit dem virtuellen Computer *myVmPrivate* eine Remotedesktopsitzung mit dem virtuellen Computer *myVmPublic*:
+    Starten Sie die VM *myVmNva* neu. Dadurch wird auch die Remotedesktopsitzung getrennt.
+8. Erstellen Sie nach dem Neustart der VM *myVmNva* bei bestehender Verbindung mit der VM *myVmPrivate* eine Remotedesktopsitzung mit der VM *myVmPublic*:
 
     ``` 
     mstsc /v:myVmPublic
     ```
     
-    Geben Sie auf dem virtuellen Computer *myVmPublic* in PowerShell den folgenden Befehl ein, um ICMP in der Windows-Firewall zuzulassen:
+    Geben Sie auf der VM *myVmPublic* in PowerShell den folgenden Befehl ein, um ICMP-Datenverkehr in der Windows-Firewall zuzulassen:
 
     ```powershell
     New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
     ```
 
-9. Geben Sie auf dem virtuellen Computer *myVmPublic* in PowerShell den folgenden Befehl ein, um die Weiterleitung von Netzwerkdatenverkehr des virtuellen Computers *myVmPublic* an den virtuellen Computer *myVmPrivate* zu testen:
+9. Geben Sie auf der VM *myVmPublic* in PowerShell den folgenden Befehl ein, um die Weiterleitung von Netzwerkdatenverkehr der VM *myVmPublic* an der VM *myVmPrivate* zu testen:
 
     ```
     tracert myVmPrivate
@@ -228,7 +228,7 @@ Sie können die VM *myVmPrivate* erstellen, während Azure die VM *myVmPublic* e
       
     Wie Sie sehen können, ist der erste Hop 10.0.2.4, die private IP-Adresse des virtuellen Netzwerksgeräts. Der zweite Hop ist 10.0.1.4, die private IP-Adresse der VM *myVmPrivate*. Die Route, die der Routingtabelle *myRouteTablePublic* hinzugefügt und dem Subnetz *Public* zugeordnet wurde, hat bewirkt, dass Azure Datenverkehr über das virtuelle Netzwerkgerät weiterleitet und nicht direkt an das Subnetz *Private*.
 10.  Schließen Sie die Remotedesktopsitzung mit der VM *myVmPublic*, sodass Sie nur noch mit der VM *myVmPrivate* verbunden sind.
-11. Geben Sie auf dem virtuellen Computer *myVmPrivate* an einer Eingabeaufforderung den folgenden Befehl ein, um die Weiterleitung von Netzwerkdatenverkehr des virtuellen Computers *myVmPrivate* an den virtuellen Computer *myVmPublic* zu testen:
+11. Geben Sie auf der VM *myVmPrivate* an einer Eingabeaufforderung den folgenden Befehl ein, um die Weiterleitung von Netzwerkdatenverkehr der VM *myVmPrivate* an der VM *myVmPublic* zu testen:
 
     ```
     tracert myVmPublic

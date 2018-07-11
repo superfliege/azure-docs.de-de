@@ -7,16 +7,16 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/26/2018
+ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: b718ed505babd2df6487aecd3a87f17590aef2b9
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: e6ab9d1db0144ffa68fe9dc3381ba31d57aa0cae
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061246"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130891"
 ---
-# <a name="tutorial-create-app-that-uses-simple-entity"></a>Tutorial: Erstellen einer App, die eine Entität vom Typ „Einfach“ verwendet
+# <a name="tutorial-6-add-simple-entity-and-phrase-list"></a>Tutorial: 6. Hinzufügen einer Entität vom Typ „Einfach“ sowie einer Begriffsliste
 In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie mithilfe der Entität vom Typ **Einfach** ML-Daten aus einer Äußerung extrahiert werden.
 
 <!-- green checkmark -->
@@ -29,7 +29,7 @@ In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie mithilfe der
 > * Hinzufügen einer Begriffsliste, um das Signal von Stellenwörtern zu verstärken
 > * Trainieren und Veröffentlichen der App und erneutes Abfragen des Endpunkts
 
-Für diesen Artikel benötigen Sie ein kostenloses [LUIS](luis-reference-regions.md#luis-website)-Konto, um die LUIS-Anwendung erstellen zu können.
+Für diesen Artikel benötigen Sie ein kostenloses [LUIS](luis-reference-regions.md#luis-website)-Konto für die Erstellung Ihrer LUIS-Anwendung.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 Falls Sie nicht über die Personal-App aus dem [Tutorial zur hierarchischen Entität](luis-quickstart-intent-and-hier-entity.md) verfügen, [importieren](create-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-hier-HumanResources.json).
@@ -45,16 +45,16 @@ Diese App veranschaulicht, wie Sie Daten aus einer Äußerung extrahieren. Sehen
 |Please submit my resume for the engineering position. (Ich möchte meinen Lebenslauf für die Stelle als Techniker übermitteln.)|engineering (Techniker)|
 |Fill out application for job 123456 (Bewerbungsbogen für die Stelle 123456 ausfüllen)|123456|
 
-In diesem Tutorial wird eine neue Entität hinzugefügt, um den Stellennamen zu extrahieren. Wie Sie eine bestimmte Stellennummer extrahieren, erfahren Sie im [Tutorial zu regulären Ausdrücken](luis-quickstart-intents-regex-entity.md). 
+In diesem Tutorial wird eine neue Entität hinzugefügt, um den Stellennamen zu extrahieren. 
 
 ## <a name="purpose-of-the-simple-entity"></a>Zweck der Entität vom Typ „Einfach“
 Mithilfe der Entität vom Typ „Einfach“ für diese LUIS-App wird LUIS beigebracht, was ein Stellenname ist und wie er in einer Äußerung ermittelt werden kann. Der Teil der Äußerung, der die Stelle darstellt, kann sich basierend auf der Wortwahl und der Länge der Äußerung bei den einzelnen Äußerungen unterscheiden. LUIS benötigt Beispiele für Stellen in jeder Äußerung und für alle Absichten.  
 
-Der Stellenname ist nicht ganz einfach zu ermitteln, da es sich dabei um ein Substantiv, um ein Verb oder um einen Ausdruck mit mehreren Wörtern handeln kann. Beispiele: 
+Der Stellenname ist nicht ganz einfach zu ermitteln, da es sich dabei um ein Substantiv, um ein Verb oder um einen Ausdruck mit mehreren Wörtern handeln kann. Beispiel: 
 
-|Stellen|
+|Aufträge|
 |--|
-|engineer (Techniker)|
+|mitzuteilen.|
 |software engineer (Softwareentwickler)|
 |senior software engineer (leitender Softwareentwickler)|
 |engineering team lead (Leiter des Technikerteams) |
@@ -85,7 +85,7 @@ Diese LUIS-App verfügt über Stellennamen in verschiedenen Absichten. Durch die
 
     ![Modales Popupdialogfeld zum Erstellen einer einfachen Entität mit dem Namen „Job“ und dem Typ „Simple“](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
 
-5. Kennzeichnen Sie in der Äußerung `Submit resume for engineering position` das Wort „engineering“ als Entität „Job“. Wählen Sie das Wort „engineering“ und anschließend im Popupmenü die Option „Job“ aus. 
+5. Kennzeichnen Sie in der Äußerung `Submit resume for engineering position` das Wort `engineering` als Entität „Job“. Wählen Sie das Wort `engineering` und anschließend im Popupmenü die Option **Job** aus. 
 
     [![](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Screenshot: LUIS mit hervorgehobener Entitätskennzeichnung „Job“")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
@@ -107,7 +107,7 @@ Diese LUIS-App verfügt über Stellennamen in verschiedenen Absichten. Durch die
     |I'm a registered nurse. Here is my resume. (Ich bin ausgebildete Krankenschwester. Hier ist mein Lebenslauf.)|registered nurse (ausgebildete Krankenschwester)|
     |I would like to submit my paperwork for the teaching position I saw in the paper. (Hiermit möchte ich Ihnen meine Unterlagen für die ausgeschriebene Stelle als Lehrkraft zukommen lassen.)|teaching (Lehrkraft)|
     |This is my c.v. for the stocker post in fruits and vegetables. (Hier ist mein Lebenslauf für die Stelle als Auffüller in der Obst- und Gemüseabteilung.)|stocker (Auffüller)|
-    |Apply for tile work. (Bewerbung als Fliesenleger.)|tile (Fliesen)|
+    |Apply for tile work. (Bewerbung als Fliesenleger.)|Kachel|
     |Attached resume for landscape architect. (Anbei mein Lebenslauf für die Position als Landschaftsarchitekt.)|landscape architect (Landschaftsarchitekt)|
     |My curriculum vitae for professor of biology is enclosed. (Anbei finden Sie mein Curriculum Vitae für die Stelle als Biologieprofessor.)|professor of biology (Biologieprofessor)|
     |I would like to apply for the position in photography. (Ich möchte mich gerne als Fotograf bewerben.)|photography (Fotografie)|Git 
@@ -121,7 +121,7 @@ Diese LUIS-App verfügt über Stellennamen in verschiedenen Absichten. Durch die
 
     |Äußerung|Entität „Job“|
     |:--|:--|
-    |Is there any work in databases? (Gibt es offene Stellen im Datenbankbereich?)|databases (Datenbanken)|
+    |Is there any work in databases? (Gibt es offene Stellen im Datenbankbereich?)|Datenbanken|
     |Looking for a new situation with responsibilities in accounting (Ich möchte mich beruflich neu orientieren und suche nach Aufgaben in der Buchhaltung.)|accounting (Buchhaltung)|
     |What positions are available for senior engineers? (Welche Positionen sind für Oberingenieure verfügbar?)|senior engineers (Oberingenieure)|
 
@@ -292,7 +292,7 @@ Da ein Name eine beliebige Zeichenfolge sein kann, sagt LUIS Entitäten präzise
 
     [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Screenshot: Popupdialogfeld zum Erstellen einer neuen Begriffsliste")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
-    Wenn Sie der Begriffsliste weitere Wörter hinzufügen möchten, prüfen Sie die empfohlenen Wörter, und fügen Sie alle hinzu, die für Sie relevant sind. 
+    Wenn Sie der Begriffsliste weitere Wörter hinzufügen möchten, können Sie sich die verwandten Werte (**Related Values**) ansehen und alle Wörter hinzufügen, die für Sie relevant sind. 
 
 4. Klicken Sie auf **Speichern**, um die Begriffsliste zu aktivieren.
 
@@ -369,7 +369,7 @@ Da ein Name eine beliebige Zeichenfolge sein kann, sagt LUIS Entitäten präzise
 Durch Hinzufügen der Begriffsliste wurde das Signal der Wörter in der Liste verstärkt. Sie wird jedoch **nicht** für exakte Übereinstimmungen verwendet. Die Begriffsliste enthält sowohl mehrere Stellen, die mit dem Wort `lead` beginnen, als auch die Stelle `welder`, aber nicht die Stelle `lead welder`. Diese Begriffsliste für Stellen ist wahrscheinlich nicht vollständig. Fügen Sie Ihrer Begriffsliste daher nach und nach weitere Stellenwörter hinzu, die Sie im Zuge der regelmäßigen [Überprüfung von Endpunktäußerungen](label-suggested-utterances.md) ermitteln. Trainieren und veröffentlichen Sie die App anschließend erneut.
 
 ## <a name="what-has-this-luis-app-accomplished"></a>Was wurde mit dieser LUIS-App erreicht?
-Diese App mit einer einfachen Entität und einer Begriffsliste mit Wörtern hat eine Abfrageabsicht in natürlicher Sprache ermittelt und die Nachrichtendaten zurückgegeben. 
+Diese App mit einer einfachen Entität und einer Begriffsliste mit Wörtern hat eine Abfrageabsicht in natürlicher Sprache ermittelt und die Auftragsdaten zurückgegeben. 
 
 Ihr Chatbot verfügt nun über genügend Informationen, um die primäre Aktion (Stellenbewerbung) zu ermitteln, sowie über einen Parameter für diese Aktion (um welche Stelle es geht). 
 
@@ -377,9 +377,9 @@ Ihr Chatbot verfügt nun über genügend Informationen, um die primäre Aktion (
 LUIS hat diese Anforderung abgeschlossen. Die aufrufende Anwendung (etwa ein Chatbot) kann das Ergebnis für „topScoringIntent“ und die Daten aus der Entität verwenden, um die Stelleninformationen über eine Drittanbieter-API an einen Mitarbeiter der Personalabteilung zu senden. Sind andere programmgesteuerte Optionen für den Bot oder die aufrufende Anwendung vorhanden, werden sie nicht von LUIS verwendet. LUIS bestimmt lediglich die Absicht des Benutzers. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Klicken Sie dazu in der Liste rechts vom App-Namen auf die drei Punkte (...) und anschließend auf **Löschen**. Klicken Sie im Popupdialogfenster **Delete app?** (App löschen?) auf **OK**.
+Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Wählen Sie im Menü oben links die Option **Meine Apps**. Klicken Sie in der Liste rechts vom App-Namen auf die drei Punkte (...) und anschließend auf **Löschen**. Klicken Sie im Popupdialogfenster **Delete app?** (App löschen?) auf **OK**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> Informieren Sie sich über das [Hinzufügen einer vorgefertigten keyPhrase-Entität](luis-quickstart-intent-and-key-phrase.md).
+> [Hinzufügen einer vorgefertigten keyPhrase-Entität](luis-quickstart-intent-and-key-phrase.md)

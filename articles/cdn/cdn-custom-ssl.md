@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/01/2018
+ms.date: 06/29/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 3f0ba3034c1ba9e68f83caaaf9aacb96134ca74b
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 5d13c565302ae16b6fb2894f6a5a3843f47f9547
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235497"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342224"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne
 
@@ -177,7 +177,7 @@ Ihr CNAME-Eintrag sollte im folgenden Format vorliegen, wobei *Name* Ihr benutze
 
 Weitere Informationen über CNAME-Einträge finden Sie unter [Erstellen Sie die CNAME-DNS-Einträge](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain#create-the-cname-dns-records).
 
-Wenn Ihr CNAME-Eintrag im richtigen Format vorliegt, überprüft DigiCert automatisch Ihren benutzerdefinierten Domänennamen und fügt ihn dem SAN-Zertifikat hinzu. DigiCert sendet Ihnen keine Bestätigungs-E-Mail, und Sie müssen Ihre Anforderung nicht genehmigen. Das Zertifikat ist ein Jahr lang gültig und wird automatisch verlängert, bevor es abläuft. Fahren Sie mit [Warten auf die Weitergabe](#wait-for-propagation) fort. 
+Wenn Ihr CNAME-Eintrag im richtigen Format vorliegt, überprüft DigiCert automatisch Ihren benutzerdefinierten Domänennamen und erstellt ein dediziertes Zertifikat für Ihren Domänennamen. DigiCert sendet Ihnen keine Bestätigungs-E-Mail, und Sie müssen Ihre Anforderung nicht genehmigen. Das Zertifikat ist ein Jahr lang gültig und wird automatisch verlängert, bevor es abläuft. Fahren Sie mit [Warten auf die Weitergabe](#wait-for-propagation) fort. 
 
 Die automatische Überprüfung dauert normalerweise einige Minuten. Öffnen Sie ein Supportticket, falls Ihre Domäne nicht innerhalb einer Stunde validiert wurde.
 
@@ -214,7 +214,7 @@ Befolgen Sie die Anweisungen im Formular. Sie haben zwei Möglichkeiten zur Gene
 
 - Sie können lediglich den spezifischen Hostnamen aus dieser Anforderung genehmigen. Für nachfolgende Anforderungen ist eine zusätzliche Genehmigung erforderlich.
 
-Nach der Genehmigung fügt DigiCert Ihren benutzerdefinierten Domänennamen dem SAN-Zertifikat hinzu. Das Zertifikat ist ein Jahr lang gültig und wird automatisch verlängert, bevor es abläuft.
+Nach der Genehmigung führt DigiCert die Erstellung des Zertifikats für Ihren benutzerdefinierten Domänennamen durch. Das Zertifikat ist ein Jahr lang gültig und wird automatisch verlängert, bevor es abläuft.
 
 ## <a name="wait-for-propagation"></a>Warten auf die Weitergabe
 
@@ -288,11 +288,11 @@ Die folgende Tabelle zeigt den Status des Vorgangs zum Deaktivieren von HTTPS. N
 
 1. *Wer ist der Zertifikatanbieter, und welche Art von Zertifikat wird verwendet?*
 
-    Bei **Azure CDN von Verizon** wird ein SAN-Zertifikat (Subject Alternative Names; alternative Antragstellernamen) von DigiCert verwendet. Ein SAN-Zertifikat kann mehrere vollqualifizierte Domänennamen mit einem einzelnen Zertifikat schützen. Bei **Azure CDN Standard von Microsoft** wird ein einzelnes Zertifikat von DigiCert verwendet.
+    Sowohl für **Azure CDN von Verizon** als auch für **Azure CDN von Microsoft** wird ein dediziertes/einzelnes Zertifikat, das von Digicert bereitgestellt wird, für Ihre benutzerdefinierte Domäne verwendet. 
 
-2. Basiert TLS/SSL auf IP oder auf SNI?
+2. *Basiert TLS/SSL auf IP oder auf SNI?*
 
-    Bei **Azure CDN von Verizon** ist TLS/SSL IP-basiert. Bei **Azure CDN Standard von Microsoft** ist TLS/SSL SNI-basiert.
+    Sowohl für **Azure CDN von Verizon** als auch für **Azure CDN Standard von Microsoft** wird SNI-basiertes TLS/SSL verwendet.
 
 3. *Was passiert, wenn ich die Domänenüberprüfungs-E-Mail von DigiCert nicht erhalte?*
 
@@ -309,6 +309,10 @@ Die folgende Tabelle zeigt den Status des Vorgangs zum Deaktivieren von HTTPS. N
 6. *Benötige ich einen CAA-Datensatz (Certificate Authority Authorization) bei meinem DNS-Anbieter?*
 
     Nein. Ein CAA-Datensatz ist momentan nicht erforderlich. Wenn Sie allerdings über einen solchen Datensatz verfügen, muss er DigiCert als gültige Zertifizierungsstelle enthalten.
+
+7. *Am 20. Juni 2018 wurde für Azure CDN von Verizon mit der standardmäßigen Nutzung eines dedizierten Zertifikats mit SNI-basiertem TLS/SSL begonnen. Was passiert mit meinen vorhandenen benutzerdefinierten Domänen, für die ein Zertifikat vom Typ „Alternativer Antragstellername“ (Subject Alternative Names, SAN) und IP-basiertes TLS/SSL verwendet wird?*
+
+    Ihre vorhandenen Domänen werden in den kommenden Monaten nach und nach zur Verwendung eines einzelnen Zertifikats migriert, wenn von Microsoft analysiert wird, dass nur SNI-Clientanforderungen für Ihre Anwendung erfolgen. Falls Microsoft erkennt, dass für Ihre Anwendung auch einige andere Anforderungen als SNI-Clientanforderungen durchgeführt werden, wird für Ihre Domänen weiterhin das SAN-Zertifikat mit IP-basiertem TLS/SSL verwendet. Auf keinen Fall kommt es zu Unterbrechungen Ihres Diensts oder der Unterstützung Ihrer Clientanforderungen – unabhängig davon, ob es sich dabei um SNI-basierte oder nicht SNI-basierte Anforderungen handelt.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

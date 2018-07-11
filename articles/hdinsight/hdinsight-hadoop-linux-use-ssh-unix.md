@@ -17,12 +17,12 @@ ms.workload: big-data
 ms.date: 04/26/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: a76dbb9a232d99615629d1a3fec6010b37e73247
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 2750ddaba4b3fe25e18b6d3b7e9a65656165818f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046777"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446604"
 ---
 # <a name="connect-to-hdinsight-hadoop-using-ssh"></a>Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH
 
@@ -137,7 +137,19 @@ Informationen zum Ändern des Kennworts für das SSH-Benutzerkonto finden Sie im
 
 ## <a id="domainjoined"></a>Authentifizierung: In die Domäne eingebundener HDInsight-Cluster
 
-Wenn Sie einen __in die Domäne eingebundenen HDInsight-Cluster__ verwenden, müssen Sie nach dem Herstellen der Verbindung per SSH den Befehl `kinit` verwenden. Bei diesem Befehl werden Sie zum Eingeben eines Benutzers und Kennworts für die Domäne aufgefordert, und Ihre Sitzung wird anhand der Azure Active Directory-Domäne authentifiziert, die dem Cluster zugeordnet ist.
+Wenn Sie einen __in die Domäne eingebundenen HDInsight-Cluster__ verwenden, müssen Sie nach dem Herstellen der Verbindung mit dem lokalen SSH-Benutzer den Befehl `kinit` verwenden. Bei diesem Befehl werden Sie zum Eingeben eines Benutzers und Kennworts für die Domäne aufgefordert, und Ihre Sitzung wird anhand der Azure Active Directory-Domäne authentifiziert, die dem Cluster zugeordnet ist.
+
+Sie können auch auf jedem in die Domäne eingebundenen Knoten (z.B. Hauptknoten, Edgeknoten) die Kerberos-Authentifizierung aktivieren, um mit dem Domänenkonto eine SSH-Verbindung herzustellen. Bearbeiten Sie hierzu die sshd-Konfigurationsdatei:
+```bash
+sudo vi /etc/ssh/sshd_config
+```
+Heben Sie die Auskommentierung auf, und ändern Sie `KerberosAuthentication` in `yes`.
+
+```bash
+sudo service sshd restart
+```
+
+Sie können jederzeit den Befehl `klist` verwenden, um zu überprüfen, ob die Kerberos-Authentifizierung erfolgreich war.
 
 Weitere Informationen finden Sie unter [Configure Domain-joined HDInsight clusters (Preview)](./domain-joined/apache-domain-joined-configure.md) (Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern (Vorschau)).
 

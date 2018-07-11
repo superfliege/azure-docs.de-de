@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dastanfo
 ms.custom: mvc
-ms.openlocfilehash: 85e6efcc4e213da4d6c650f7543403dd52e8337c
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 7ba5fa1d4c5b87d1c4828ee98dae36f415d37c20
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248434"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344154"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Tutorial: Installieren und Erstellen eines Service Fabric-Clusters
 
@@ -61,13 +61,7 @@ Die aktualisierten Knoten sehen wie folgt aus:
         }
 ```
 
-Nun müssen einige der Eigenschaften aktualisiert werden.  Ändern Sie in Zeile 34 die Verbindungszeichenfolge für den Diagnosespeicher. Die geänderte Verbindungszeichenfolge sollte wie folgt aussehen (mit Ihrer IP-Adresse anstelle der hier angegebenen): `"connectionstring": "\\\\172.31.27.1\\c$\\DiagnosticsStore"`
-
-Erstellen Sie nach dem Aktualisieren der Verbindungszeichenfolge den Ordner.  Hierzu können Sie den folgenden Befehl verwenden. Ersetzen Sie dabei die unten angegebene IP-Adresse durch die IP-Adresse, die Sie in die Verbindungszeichenfolge eingefügt haben:
-
-```powershell
-mkdir \\172.31.27.1\c$\DiagnosticsStore
-```
+Nun müssen einige der Eigenschaften aktualisiert werden.  In Zeile 34 müssen Sie die Verbindungszeichenfolge für den Diagnosespeicher so ändern, dass sie wie folgt aussieht: `"connectionstring": "C:\\ProgramData\\SF\\DiagnosticsStore"`.
 
 Fügen Sie abschließend im Konfigurationsabschnitt `nodeTypes` einen neuen Abschnitt hinzu, um die kurzlebigen Ports zuzuordnen, die von Windows verwendet werden.  Die Konfigurationsdatei sollte wie folgt aussehen:
 

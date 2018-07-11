@@ -1,11 +1,28 @@
+---
+title: Includedatei
+description: Includedatei
+services: service-bus-messaging
+author: sethmanheim
+ms.service: service-bus-messaging
+ms.topic: include
+ms.date: 07/03/2018
+ms.author: sethm
+ms.custom: include file
+ms.openlocfilehash: a110998505ed49c36e1ec722b1dfbf0969def060
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37449557"
+---
 Um mit der Verwendung von Service Bus-Nachrichtenentitäten in Azure beginnen zu können, müssen Sie zuerst einen Namespace mit einem in Azure eindeutigen Namen erstellen. Ein Namespace ist ein Bereichscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung.
 
 So erstellen Sie einen Namespace
 
 1. Melden Sie sich beim [Azure-Portal][Azure portal] an.
-2. Klicken Sie im linken Navigationsbereich des Portals auf **+ Ressource erstellen**, und klicken Sie anschließend auf **Enterprise Integration** > **Service Bus**.
+2. Klicken Sie im linken Navigationsbereich des Portals auf **+ Ressource erstellen** und dann auf **Integration** und **Service Bus**.
 3. Geben Sie im Dialogfeld **Namespace erstellen** einen Namen für den Namespace ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
-4. Ist der Name verfügbar, wählen Sie den Tarif („Basic“, „Standard“ oder Premium“) aus.
+4. Ist der Name verfügbar, wählen Sie den Tarif („Basic“, „Standard“ oder Premium“) aus. Wenn Sie [Themen und Abonnements](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions) nutzen möchten, sollten Sie entweder Standard oder Premium wählen. Themen/Abonnements werden für den Basic-Tarif nicht unterstützt.
 5. Wählen Sie im Feld **Abonnement** ein Azure-Abonnement aus, in dem der Namespace erstellt werden soll.
 6. Wählen Sie im Feld **Ressourcengruppe** eine vorhandene Ressourcengruppe für den Namespace aus, oder erstellen Sie eine neue Ressourcengruppe.      
 7. Wählen Sie im Feld **Standort** das Land oder die Region aus, in dem bzw. in der Ihr Namespace gehostet werden soll.
@@ -14,9 +31,10 @@ So erstellen Sie einen Namespace
 8. Klicken Sie auf **Create**. Ihr Dienstnamespace wird nun erstellt und aktiviert. Ggf. müssen Sie einige Minuten warten, bis die Ressourcen für Ihr Konto durch das System bereitgestellt werden.
 
 ### <a name="obtain-the-management-credentials"></a>Abrufen der Verwaltungsanmeldeinformationen
+
 Beim Erstellen eines neuen Namespace wird automatisch eine SAS-Regel (Shared Access Signature) mit einem zugeordneten Paar aus primären und sekundären Schlüsseln generiert, mit denen Sie jeweils die volle Kontrolle über sämtliche Aspekte des Namespace haben. Unter [Service Bus-Authentifizierung und -Autorisierung](../articles/service-bus-messaging/service-bus-authentication-and-authorization.md) erfahren Sie, wie Sie weitere Regeln mit stärker eingeschränkten Rechten für reguläre Absender und Empfänger erstellen. Führen Sie diese Schritte aus, um die erste Regel zu kopieren: 
 
-1.  Klicken Sie auf **Alle Ressourcen** und dann auf den neu erstellten Namespacenamen.
+1. Klicken Sie auf **Alle Ressourcen** und dann auf den neu erstellten Namespacenamen.
 2. Klicken Sie im Namespacefenster auf **Richtlinien für gemeinsamen Zugriff**.
 3. Klicken Sie im Bildschirm **Richtlinien für gemeinsamen Zugriff** auf **RootManageSharedAccessKey**.
    

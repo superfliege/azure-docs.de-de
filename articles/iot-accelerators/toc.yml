@@ -10,6 +10,8 @@
   items:
     - name: Bereitstellen einer Lösung für die Remoteüberwachung
       href: quickstart-remote-monitoring-deploy.md
+    - name: Bereitstellen einer Gerätesimulationslösung
+      href: quickstart-device-simulation-deploy.md
 - name: Tutorials
   items:
     - name: Überwachen von IoT-Geräten
@@ -149,10 +151,10 @@
           href: iot-accelerators-connected-factory-customize.md
     - name: Gerätesimulation
       items:
-        - name: Bereitstellen eines Solution Accelerators
-          href: iot-accelerators-device-simulation-deploy.md
-        - name: Ausführen einer Simulation
-          href: iot-accelerators-device-simulation-explore.md
+        - name: Vorhandenen IoT Hub verwenden
+          href: iot-accelerators-device-simulation-choose-hub.md
+        - name: Benutzerdefiniertes Gerätemodell verwenden
+          href: iot-accelerators-device-simulation-custom-model.md
 - name: Verweis
   items:
     - name: Referenzhandbuch für Entwickler

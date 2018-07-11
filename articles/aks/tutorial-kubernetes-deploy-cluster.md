@@ -2,50 +2,88 @@
 title: Tutorial zu Kubernetes in Azure – Bereitstellen von Clustern
 description: AKS-Tutorial – Bereitstellen eines Clusters
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 02/24/2018
-ms.author: nepeters
+ms.date: 06/29/2018
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c793aa02e614ead146806888d26a18867ff2eebb
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: c8698f16138e9baeb9c9c1142a5d0c8937a69d1b
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341398"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Tutorial: Bereitstellen eines Azure Kubernetes Service-Clusters (AKS)
 
-Kubernetes bietet eine verteilte Plattform für containerbasierte Anwendungen. Mit AKS ist die Bereitstellung eines produktionsbereiten Kubernetes-Clusters schnell und einfach. In diesem Tutorial – Teil 3 von 8 – wird ein Kubernetes-Cluster in AKS bereitgestellt. Folgende Schritte werden ausgeführt:
+Kubernetes bietet eine verteilte Plattform für containerbasierte Anwendungen. Mit AKS können Sie schnell einen Kubernetes-Cluster bereitstellen, der für die Produktion bereit ist. In diesem Tutorial (Teil 3 von 7) wird ein Kubernetes-Cluster in AKS bereitgestellt. Folgende Schritte werden ausgeführt:
 
 > [!div class="checklist"]
+> * Erstellen eines Dienstprinzipals für Ressourceninteraktionen
 > * Bereitstellen eines Kubernetes-AKS-Clusters
 > * Installation der Kubernetes-Befehlszeilenschnittstelle (kubectl)
 > * Konfiguration von kubectl
 
-In den nachfolgenden Tutorials wird die Azure Vote-Anwendung im Cluster bereitgestellt, skaliert und aktualisiert. Außerdem wird Log Analytics für die Überwachung des Kubernetes-Clusters konfiguriert.
+In den nachfolgenden Tutorials wird die Anwendung Azure Vote im Cluster bereitgestellt, skaliert und aktualisiert.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 In vorherigen Tutorials wurde ein Containerimage erstellt und in eine Azure Container Registry-Instanz hochgeladen. Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, kehren Sie zum [Tutorial 1 – Erstellen von Containerimages][aks-tutorial-prepare-app] zurück.
 
-## <a name="enable-aks-preview"></a>Aktivieren von AKS (Vorschau)
+## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
 
-Während AKS in der Vorschau ist, erfordert das Erstellen neuer Cluster ein Featureflag für Ihr Abonnement. Sie können dieses Feature für eine beliebige Anzahl von Abonnements anfordern, die Sie verwenden möchten. Verwenden Sie den Befehl `az provider register` zum Registrieren des AKS-Anbieters:
+Damit ein AKS-Cluster mit anderen Azure-Ressourcen interagieren kann, wird ein Azure Active Directory-Dienstprinzipal verwendet. Dieser Dienstprinzipal kann automatisch über die Azure CLI oder das Azure-Portal erstellt werden, oder Sie können vorab einen Dienstprinzipal erstellen und dann weitere Berechtigungen zuweisen. In diesem Tutorial erstellen Sie einen Dienstprinzipal, gewähren Zugriff auf die ACR-Instanz (Azure Container Registry), die im vorherigen Tutorial erstellt wurde, und erstellen anschließend einen AKS-Cluster.
+
+Erstellen Sie mit [az ad sp create-for-rbac][] einen Dienstprinzipal. Mit dem Parameter `--skip-assignment` wird die Zuweisung zusätzlicher Berechtigungen eingeschränkt.
 
 ```azurecli
-az provider register -n Microsoft.ContainerService
+az ad sp create-for-rbac --skip-assignment
 ```
 
-Nach dem Registrieren können Sie jetzt einen Kubernetes-Cluster mit AKS erstellen.
+Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
+
+```
+{
+  "appId": "e7596ae3-6864-4cb8-94fc-20164b1588a9",
+  "displayName": "azure-cli-2018-06-29-19-14-37",
+  "name": "http://azure-cli-2018-06-29-19-14-37",
+  "password": "52c95f25-bd1e-4314-bd31-d8112b293521",
+  "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db48"
+}
+```
+
+Notieren Sie sich die App-ID (*appId*) und das Kennwort (*password*). Diese Werte werden in den folgenden Schritten verwendet.
+
+## <a name="configure-acr-authentication"></a>Konfigurieren der ACR-Authentifizierung
+
+Für den Zugriff auf Images, die in ACR gespeichert sind, müssen Sie dem AKS-Dienstprinzipal die richtigen Rechte gewähren, mit denen für Images der Pullvorgang aus ACR möglich ist.
+
+Rufen Sie zuerst mit [az acr show][] die ACR-Ressourcen-ID ab. Aktualisieren Sie den Registrierungsnamen `<acrName>` auf den Namen Ihrer ACR-Instanz und der Ressourcengruppe, in der sich die ACR-Instanz befindet.
+
+```azurecli
+az acr show --name <acrName> --resource-group myResourceGroup --query "id" --output tsv
+```
+
+Erstellen Sie mit [az role assignment create][] eine Rollenzuweisung, um den richtigen Zugriff für den AKS-Cluster zu gewähren und die Nutzung der in ACR gespeicherten Images zu ermöglichen. Ersetzen Sie `<appId`> und `<acrId>` durch die Werte, die in den beiden vorherigen Schritten erfasst wurden.
+
+```azurecli
+az role assignment create --assignee <appId> --role Reader --scope <acrId>
+```
 
 ## <a name="create-kubernetes-cluster"></a>Erstellen eines Kubernetes-Clusters
 
-Das folgende Beispiel erstellt einen Cluster mit dem Namen `myAKSCluster` in einer Ressourcengruppe namens `myResourceGroup`. Diese Ressourcengruppe wurde im [vorherigen Tutorial][aks-tutorial-prepare-acr] erstellt.
+Erstellen Sie nun mit [az aks create][] einen AKS-Cluster. Im folgenden Beispiel wird ein Cluster mit dem Namen *myAKSCluster* in einer Ressourcengruppe mit dem Namen *myResourceGroup* erstellt. Diese Ressourcengruppe wurde im [vorherigen Tutorial][aks-tutorial-prepare-acr] erstellt. Geben Sie Ihre eigenen Angaben für `<appId>` und `<password>` aus dem vorherigen Schritt an, in dem Sie den Dienstprinzipal erstellt haben.
 
 ```azurecli
-az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
+az aks create \
+    --name myAKSCluster \
+    --resource-group myResourceGroup \
+    --node-count 1 \
+    --generate-ssh-keys \
+    --service-principal <appId> \
+    --client-secret <password>
 ```
 
 Nach einigen Minuten ist die Bereitstellung abgeschlossen, und es werden Informationen zur AKS-Bereitstellung im JSON-Format zurückgegeben.
@@ -54,7 +92,7 @@ Nach einigen Minuten ist die Bereitstellung abgeschlossen, und es werden Informa
 
 Zum Herstellen der Verbindung mit dem Kubernetes-Cluster auf Ihrem Clientcomputer verwenden Sie den Kubernetes-Befehlszeilenclient [kubectl][kubectl].
 
-Bei Verwendung von Azure Cloud Shell ist „kubectl“ bereits installiert. Führen Sie für eine lokale Installation den folgenden Befehl aus:
+Wenn Sie Azure Cloud Shell verwenden, ist „kubectl“ bereits installiert. Sie können auch [az aks install-cli][] verwenden, um die lokale Installation durchzuführen:
 
 ```azurecli
 az aks install-cli
@@ -62,10 +100,10 @@ az aks install-cli
 
 ## <a name="connect-with-kubectl"></a>Verbinden mit kubectl
 
-Führen Sie den folgenden Befehl aus, um „kubectl“ für die Verbindungsherstellung mit Ihrem Kubernetes-Cluster zu konfigurieren:
+Mit [az aks get-credentials][] können Sie „kubectl“ für die Verbindungsherstellung mit Ihrem Kubernetes-Cluster konfigurieren. Im folgenden Beispiel werden Anmeldeinformationen für den AKS-Clusternamen *myAKSCluster* in *myResourceGroup* abgerufen:
 
 ```azurecli
-az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+az aks get-credentials --name myAKSCluster --resource-group myResourceGroup
 ```
 
 Um die Verbindung mit dem Cluster zu überprüfen, führen Sie den Befehl [kubectl get nodes][kubectl-get] aus.
@@ -77,32 +115,8 @@ kubectl get nodes
 Ausgabe:
 
 ```
-NAME                          STATUS    AGE       VERSION
-k8s-myAKSCluster-36346190-0   Ready     49m       v1.7.9
-```
-
-Nach Abschluss des Tutorials verfügen Sie über einen AKS-Cluster, der für die Verarbeitung von Workloads bereit ist. In nachfolgenden Tutorials wird in diesem Cluster eine Anwendung mit mehreren Containern bereitgestellt, horizontal hochskaliert, aktualisiert und überwacht.
-
-## <a name="configure-acr-authentication"></a>Konfigurieren der ACR-Authentifizierung
-
-Die Authentifizierung muss zwischen dem AKS-Cluster und der ACR konfiguriert werden. Dies umfasst auch das Gewähren der richtigen Rechte zum Pullen von Images aus der ACR für die AKS-Identität.
-
-Rufen Sie zuerst die ID des Dienstprinzipals ab, das für den AKS konfiguriert ist. Aktualisieren Sie den Namen der Ressourcengruppe und den Namen des AKS-Clusters auf die Werte für Ihre Umgebung.
-
-```azurecli
-CLIENT_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId" --output tsv)
-```
-
-Rufen Sie die Ressourcen-ID für die ACR ab. Aktualisieren Sie den Registrierungsnamen auf den Namen Ihrer ACR und die Ressourcengruppe auf die Ressourcengruppe, in der sich die ACR befindet.
-
-```azurecli
-ACR_ID=$(az acr show --name <acrName> --resource-group myResourceGroup --query "id" --output tsv)
-```
-
-Erstellen Sie die Rollenzuweisung, mit der der richtige Zugriff gewährt wird.
-
-```azurecli
-az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
+NAME                       STATUS    ROLES     AGE       VERSION
+aks-nodepool1-66427764-0   Ready     agent     9m        v1.9.6
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -110,6 +124,7 @@ az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
 In diesem Tutorial wurde ein Kubernetes-Cluster in AKS bereitgestellt. Die folgenden Schritte wurden durchgeführt:
 
 > [!div class="checklist"]
+> * Erstellen eines Dienstprinzipals für Ressourceninteraktionen
 > * Bereitstellen eines Kubernetes-AKS-Clusters
 > * Installieren der Kubernetes-Befehlszeilenschnittstelle (kubectl)
 > * Konfigurieren von kubectl
@@ -127,3 +142,9 @@ Fahren Sie mit dem nächsten Tutorial fort, um mehr über die Ausführung von An
 [aks-tutorial-deploy-app]: ./tutorial-kubernetes-deploy-application.md
 [aks-tutorial-prepare-acr]: ./tutorial-kubernetes-prepare-acr.md
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
+[az ad sp create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
+[az acr show]: /cli/azure/acr#az-acr-show
+[az role assignment create]: /cli/azure/role/assignment#az-role-assignment-create
+[az aks create]: /cli/azure/aks#az-aks-create
+[az aks install-cli]: /cli/azure/aks#az-aks-install-cli
+[az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials

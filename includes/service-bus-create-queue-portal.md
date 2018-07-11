@@ -1,3 +1,20 @@
+---
+title: Includedatei
+description: Includedatei
+services: service-bus-messaging
+author: sethmanheim
+ms.service: service-bus-messaging
+ms.topic: include
+ms.date: 06/29/2018
+ms.author: sethm
+ms.custom: include file
+ms.openlocfilehash: bad7e87cb194fb7d8846e7e675881658a1d33b1e
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37138159"
+---
 Vergewissern Sie sich, dass Sie bereits wie [hier][namespace-how-to] gezeigt einen Service Bus-Namespace erstellt haben.
 
 1. Melden Sie sich beim [Azure-Portal][azure-portal] an.
