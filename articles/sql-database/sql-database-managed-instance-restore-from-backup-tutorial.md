@@ -8,15 +8,15 @@ ms.reviewer: carlrab, srbozovi
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: tutorial
-ms.date: 06/07/2018
+ms.date: 07/06/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: c6f397c2cfcfd9fbd4a5cc8f70a99f4abc86ba21
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 1d8db471a3f8ebf9dbcce77b101a2688f2570fd6
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34850677"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37949883"
 ---
 # <a name="restore-a-database-backup-to-an-azure-sql-database-managed-instance"></a>Wiederherstellen einer Datenbanksicherung in einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -140,7 +140,7 @@ Verwenden Sie in SSMS die folgenden Schritte, um die Wide World Importers-Datenb
 
     ![Dateiliste](./media/sql-database-managed-instance-tutorial/file-list.png)
 
-4. Verwenden Sie das folgende Skript, um die Adventure Works 2012-Datenbank aus einer Sicherungsdatei wiederherzustellen. Geben Sie die URL für den Container mit der Sicherungsdatei an:
+4. Verwenden Sie das folgende Skript, um die Wide World Importers-Datenbank aus einer Sicherungsdatei wiederherzustellen. Geben Sie die URL für den Container mit der Sicherungsdatei an:
 
    ```sql
    RESTORE DATABASE [Wide World Importers] FROM URL =
