@@ -14,12 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/01/2018
   ms.author: carlrab
-  ms.openlocfilehash: c159eec7a8674e57e6f7a815040527ed60966f46
-  ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+  ms.openlocfilehash: 5fcfe7b12acc943224d3c3158f2b39b4c35de1ee
+  ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/06/2018
-  ms.locfileid: "37887282"
+  ms.lasthandoff: 07/09/2018
+  ms.locfileid: "37916148"
 abstract:
   description: Azure SQL-Datenbank ist eine DBaaS-Lösung (Database-as-a-Service) und basiert auf der neuesten stabilen Version der Microsoft SQL Server-Datenbank-Engine. SQL-Datenbank ist eine zuverlässige und sichere Hochleistungsdatenbank, mit der Sie datengesteuerte Anwendungen und Websites in der Programmiersprache Ihrer Wahl erstellen können, ohne dass eine Infrastruktur verwaltet werden muss. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie SQL-Datenbank verwenden.
   aside:
@@ -48,12 +48,12 @@ sections:
       image:
         src: media/index/i_perftier.svg
       title: Preis-/Leistungsstufen
-    - href: /azure/sql-database/sql-database-single-database-scale
+    - href: /azure/sql-database/sql-database-scale-resources
       html: <p>Sie können Ihre Datenbanken problemlos je nach Bedarf <a href="/azure/sql-database/sql-database-single-database-scale">zentral hochskalieren</a>, <a href="/azure/sql-database/sql-database-read-scale-out">horizontal hochskalieren</a> oder einen Shard dafür konfigurieren, um die Leistung Ihrer Anwendung zu verbessern.</p>
       image:
         src: media/index/i_scale.svg
       title: Skalierbarkeit und Elastizität
-    - href: /azure/sql-database/sql-database-automatic-tuning
+    - href: /azure/sql-database/sql-database-technical-overview#built-in-intelligence
       html: <p>Lassen Sie die in den Dienst integrierte Intelligenz <a href="/azure/sql-database/sql-database-automatic-tuning">automatisch ihre Datenbankleistung optimieren</a> sowie <a href="/azure/sql-database/sql-advanced-threat-protection">Bedrohungen</a> und <a href="/azure/sql-database/sql-vulnerability-assessment">Sicherheitsrisiken</a> in Ihren Datenbanken erkennen.</p>
       image:
         src: media/index/i_intelligence.svg

@@ -55,10 +55,6 @@
           href: tutorial-autoscale-powershell.md
         - name: Vorlage
           href: tutorial-autoscale-template.md
-    - name: Bereitstellen von Apps in einer Azure-VM-Skalierungsgruppe mit einem benutzerdefinierten Packer-Image
-      items:
-        - name: Azure CLI 2.0
-          href: 'https://docs.microsoft.com/learn/deploy-custom-vmss-app/index'
 - name: Beispiele
   items:
     - name: Azure CLI 2.0
