@@ -1,4 +1,4 @@
-| SKU | Beschreibung |
+| SKU | BESCHREIBUNG |
 |---|---|
 | Basic | Ein kostenoptimierter Einstiegspunkt für Entwickler, die sich mit Azure Container Registry vertraut machen. Basic-Registrierungen verfügen über die gleichen Programmfunktionen wie Standard- und Premium-Registrierungen (Azure Active Directory-Authentifizierungsintegration, Löschen von Images sowie Webhooks). Allerdings bestehen Einschränkungen bei Größe und Nutzung. |
 | Standard | Die Standard-Registrierung bietet die gleichen Funktionen wie Basic. In der Standard-Registrierung gibt es jedoch erweiterte Speicherlimits und einen erhöhten Imagedurchsatz. Standard-Registrierungen erfüllen üblicherweise die Bedürfnisse der meisten Produktionsszenarios. |

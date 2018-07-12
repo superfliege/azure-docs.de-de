@@ -1,5 +1,5 @@
 
-## <a name="analytics"></a>Analyse
+## <a name="analytics"></a>Analytics
 * [Übersicht](../articles/application-insights/app-insights-analytics.md)
 * [Überblick über Analytics](../articles/application-insights/app-insights-analytics-tour.md)
   * Beginnen Sie hier Dieses Tutorial behandelt die wichtigsten Funktionen.

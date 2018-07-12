@@ -4,7 +4,7 @@ Verwenden Sie zum Registrieren der Webanwendung die in der Tabelle angegebenen E
 
 ![Beispielregistrierungseinstellungen für neue Web-App](./media/active-directory-b2c-register-web-app/b2c-new-app-settings.png)
 
-| Einstellung      | Beispielwert  | Beschreibung                                        |
+| Einstellung      | Beispielwert  | BESCHREIBUNG                                        |
 | ------------ | ------- | -------------------------------------------------- |
 | **Name** | Contoso B2C-App | Geben Sie einen **Namen** für die Anwendung ein, der die Funktion der Anwendung für Kunden beschreibt. | 
 | **Web-App/Web-API einschließen** | Ja | Wählen Sie **Ja** für eine Webanwendung. |
