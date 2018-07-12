@@ -16,11 +16,11 @@ ms.workload: integration
 ms.date: 09/19/2016
 ms.author: estfan; ladocs
 ms.openlocfilehash: 8bcf69a7c8e04cb45d795fd0d6f20d477c15865d
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296134"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38652004"
 ---
 # <a name="get-started-with-the-twilio-connector"></a>Erste Schritte mit dem Twilio-Connector
 Stellen Sie eine Verbindung mit Twilio her, um global SMS, MMS und IP-Nachrichten zu senden und zu empfangen. Mit Twilio können Sie folgende Aktionen ausführen:

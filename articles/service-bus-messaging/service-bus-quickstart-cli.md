@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 05/22/2018
 ms.author: sethm
 ms.openlocfilehash: 717ac3c61ba4e362f01bad91f52ecb217cdbe1cd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660553"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38630384"
 ---
 # <a name="quickstart-send-and-receive-messages-using-azure-cli-and-java"></a>Schnellstart: Senden und Empfangen von Nachrichten mit der Azure CLI und Java
 
@@ -30,7 +30,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][] e
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="log-in-to-azure"></a>Anmelden bei Azure
 
 Klicken Sie im Menü oben rechts im Azure-Portal auf die Schaltfläche „Cloud Shell“, und wählen Sie in der Dropdownliste **Umgebung auswählen** die Option **Bash**. 
 
@@ -268,7 +268,7 @@ In diesem Artikel haben Sie einen Service Bus-Namespace und weitere erforderlich
 > [!div class="nextstepaction"]
 > [Aktualisieren des Bestands mit der CLI und Java](./service-bus-tutorial-topics-subscriptions-cli.md)
 
-[Kostenloses Konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[kostenloses Konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Install Azure CLI 2.0]: /cli/azure/install-azure-cli
 [az group create]: /cli/azure/group#az_group_create

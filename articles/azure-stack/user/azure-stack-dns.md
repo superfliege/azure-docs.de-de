@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4e854a2751ce366e3ca3a353487f2c972401c248
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8459a5f88bf660ac460f778f67618e9805afa29d
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196524"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970704"
 ---
 # <a name="using-dns-in-azure-stack"></a>Verwenden von DNS in Azure Stack
 
@@ -35,7 +35,7 @@ Sie können eine DNS-Domänennamenbezeichnung für öffentliche IP-Ressourcen an
 
 Wenn Sie beispielsweise eine öffentliche IP-Ressource mit **contoso** als Domänennamenbezeichnung im Speicherort „Lokaler Azure Stack“ erstellen, wird der [vollqualifizierte Domänenname](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN) **contoso.local.cloudapp.azurestack.external** in die öffentliche IP-Adresse der Ressource aufgelöst. Mit diesem FQDN können Sie einen benutzerdefinierten CNAME-Domäneneintrag erstellen, der auf die öffentliche IP-Adresse in Azure Stack verweist.
 
-Weitere Informationen zur Namensauflösung finden Sie im Artikel [DNS-Auflösung](https://docs.microsoft.com/en-us/azure/dns/dns-for-azure-services?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Weitere Informationen zur Namensauflösung finden Sie im Artikel [DNS-Auflösung](https://docs.microsoft.com/azure/dns/dns-for-azure-services?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 > [!IMPORTANT]
 > Jede erstellte Domänennamenbezeichnung muss für den Azure Stack-Speicherort eindeutig sein.

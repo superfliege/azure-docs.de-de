@@ -16,11 +16,11 @@ ms.date: 05/23/2018
 ms.author: wesmc
 ms.custom: mvc
 ms.openlocfilehash: f76f9f6280120f5c05cb304a0b87bba9ffaee043
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639757"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38703714"
 ---
 # <a name="quickstart-how-to-use-azure-redis-cache-with-java"></a>Schnellstart: Verwenden von Azure Redis Cache mit Java
 
@@ -143,7 +143,7 @@ Führen Sie den folgenden Maven-Befehl aus, um die App zu erstellen und auszufü
 mvn exec:java -D exec.mainClass=example.demo.App
 ```
 
-Im folgenden Beispiel sehen Sie, dass der Schlüssel `Message` zuvor einen zwischengespeicherten Wert besaß. Dieser wurde im Azure-Portal über die Redis-Konsole festgelegt. Die App hat diesen zwischengespeicherten Wert aktualisiert. Außerdem hat die App die Befehle `PING` und `CLIENT LIST` ausgeführt.
+Im folgenden Beispiel können Sie sehen, dass der `Message`-Schlüssel zuvor einen zwischengespeicherten Wert aufgewiesen hat, der im Azure-Portal über die Redis-Konsole festgelegt wurde. Die App hat diesen zwischengespeicherten Wert aktualisiert. Außerdem hat die App die Befehle `PING` und `CLIENT LIST` ausgeführt.
 
 ![Fertige Cache-App](./media/cache-java-get-started/cache-app-complete.png)
 

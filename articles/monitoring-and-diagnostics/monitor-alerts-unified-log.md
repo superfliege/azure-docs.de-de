@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: aab3c843493048291583bea111a52fe3356dc0f0
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: f36f05789424cfd3213525dd501333f852a0d9c2
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264373"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971719"
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Protokollwarnungen in Azure Monitor – Warnungen 
 Dieser Artikel enthält Details zu Protokollwarnungen. Dies ist einer der Typen von Warnungen, die im Rahmen der neuen [Azure-Warnungen](monitoring-overview-unified-alerts.md) unterstützt werden. Sie ermöglichen es Benutzern, die Analyseplattform von Azure als Basis für die Bereitstellung von Warnungen zu verwenden. Details zu Metrikwarnungen, die Protokolle verwenden, finden Sie unter [Metrikwarnungen nahezu in Echtzeit](monitoring-near-real-time-metric-alerts.md).
@@ -120,7 +120,7 @@ Für Protokollwarnungen bereitgestellte APIs sind „RESTful“, und es kann üb
 
 Ausführliche Informationen und Beispiele für die Verwendung der REST-API finden Sie unter:
 - [Erstellen und Verwalten von Warnungsregeln in Log Analytics mithilfe der REST-API](../log-analytics/log-analytics-api-alerts.md): Enthält eine Beschreibung, wie Sie Warnungsregeln der Protokollsuche für Azure Log Analytics erstellen und verwalten.
-- [Azure Monitor Scheduled Query Rules REST API](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) (Azure Monitor-Regeln für geplante Abfragen – REST-API): Enthält eine Beschreibung, wie Sie Warnungsregeln der Protokollsuche für Azure Application Insights erstellen und verwalten.
+- [Azure Monitor Scheduled Query Rules REST API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) (Azure Monitor-Regeln für geplante Abfragen – REST-API): Enthält eine Beschreibung, wie Sie Warnungsregeln der Protokollsuche für Azure Application Insights erstellen und verwalten.
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage
 Benutzer können auch die Flexibilität von [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) nutzen, um Ressourcen zu erstellen und zu aktualisieren, die für die Erstellung oder Aktualisierung von Protokollwarnungen dienen.

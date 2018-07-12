@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: mbullwin
-ms.openlocfilehash: 261bc78bfe427173ba81eef731e33eddd2ec379b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: f9ab9b9af81bf1827c2da646908e204bd051706b
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294274"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970933"
 ---
 # <a name="application-insights-for-aspnet-core"></a>Application Insights für ASP.NET Core
 
@@ -48,7 +48,7 @@ In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie in Visual Studio ei
 
 ## <a name="application-insights-search"></a>Application Insights-Suche
 
-Standardmäßig können Sie in Visual Studio 2015 Update 2 oder höher bei einem auf ASP.NET Core 2+ basierenden Projekt die [Application Insights-Suche](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-visual-studio) nutzen, noch bevor Sie Application Insights explizit zu Ihrem Projekt hinzugefügt haben.
+Standardmäßig können Sie in Visual Studio 2015 Update 2 oder höher bei einem auf ASP.NET Core 2+ basierenden Projekt die [Application Insights-Suche](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio) nutzen, noch bevor Sie Application Insights explizit zu Ihrem Projekt hinzugefügt haben.
 
 So testen Sie diese Funktionalität:
 
@@ -410,4 +410,4 @@ Das Problem bei der Verwendung dieser Methoden ist, dass nicht nur Application I
 * [Untersuchen Sie Benutzerabläufe](app-insights-usage-flows.md), um die Benutzernavigation in Ihrer App nachzuvollziehen.
 * [Konfigurieren Sie die Momentaufnahmensammlung](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications), um den Status des Quellcodes und der Variablen zu dem Zeitpunkt anzuzeigen, zu dem eine Ausnahme ausgelöst wurde.
 * [Verwenden Sie die API](app-insights-api-custom-events-metrics.md) , um Ihre eigenen Ereignisse und Metriken für eine detailliertere Ansicht der Leistung und Nutzung Ihrer App zu senden.
-* Mit [Verfügbarkeitstests](app-insights-monitor-web-app-availability.md) wird Ihre App fortwährend an Standorten auf der ganzen Welt überprüft.
+* [Availability tests](app-insights-monitor-web-app-availability.md) wird Ihre App fortwährend an Standorten auf der ganzen Welt überprüft.

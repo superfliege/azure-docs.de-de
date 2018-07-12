@@ -13,11 +13,11 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
 ms.openlocfilehash: 7434de9fa176f608655606772e079cb7631dde93
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31600419"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38698651"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>Erstellen eines virtuellen Computers und eines Speicherkontos für eine skalierbare Anwendung
 

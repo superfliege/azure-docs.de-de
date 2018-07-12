@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
 ms.openlocfilehash: 1b599e5b88026c06a6912ede9952497c489b0269
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31593541"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38697303"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Erstellen eines internen Lastenausgleichs mit dem Azure PowerShell-Modul
 
@@ -90,7 +90,7 @@ Erstellen Sie eine neue Ressourcengruppe für den Lastenausgleich. Überspringen
 New-AzureRmResourceGroup -Name NRP-RG -location "West US"
 ```
 
-Der Azure Resource Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Der Standort wird als Standardstandort für alle Ressourcen der Ressourcengruppe verwendet. Verwenden Sie immer dieselbe Ressourcengruppe für alle Befehle, die sich auf die Erstellung des Lastenausgleichs beziehen.
+Azure Resource Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Der Standort wird als Standardstandort für alle Ressourcen der Ressourcengruppe verwendet. Verwenden Sie immer dieselbe Ressourcengruppe für alle Befehle, die sich auf die Erstellung des Lastenausgleichs beziehen.
 
 Im Beispiel haben wir eine Ressourcengruppe mit dem Namen **NRP-RG** und dem Standort „USA, Westen“ erstellt.
 

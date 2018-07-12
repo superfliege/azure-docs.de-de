@@ -10,11 +10,11 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: 0445817f9ff403156025e38a1e14a3892a9a292b
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031191"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38667021"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules---preview"></a>Tutorial: Bereitstellen von Azure Functions als IoT Edge-Module (Vorschau)
 
@@ -42,7 +42,7 @@ Auf dem Entwicklungscomputer müssen die folgenden Komponenten vorhanden sein:
 * [C#-Erweiterung für Visual Studio Code (unterstützt von OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 * [Azure IoT Edge-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) für Visual Studio Code 
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)
-* [Docker CE](https://docs.docker.com/install/) auf dem Entwicklungscomputer 
+* [Docker CE](https://docs.docker.com/install/) auf dem Entwicklungscomputer. 
 
 ## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung
 In diesem Tutorial verwenden Sie die Azure IoT Edge-Erweiterung für VSCode zum Entwickeln eines Moduls und zum Erstellen eines **Containerimages** aus den Dateien. Danach pushen Sie dieses Image in ein **Repository**, in dem Ihre Images gespeichert und verwaltet werden. Abschließend stellen Sie Ihr Image aus der Registrierung zur Ausführung auf dem IoT Edge-Gerät bereit.  

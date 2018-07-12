@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2018
 ms.author: weig
-ms.openlocfilehash: de1ed0b85957413a254503fc72375866dfd1bea1
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7d9d63d6c3d5c8ccf1777a46832457670d307d4a
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837156"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970858"
 ---
 # <a name="data-science-code-testing-with-the-uci-adult-income-prediction-dataset"></a>Data Science-Codetests in Azure mit dem Datensatz der UCI zur Vorhersage des Einkommens von Erwachsenen
 Dieser Artikel ist ein vorläufiger Leitfaden für das Testen von Code in einem Data Science-Workflow. Solche Tests bieten Data Scientists eine systematische und effiziente Möglichkeit, die Qualität und das erwartete Ergebnis ihres Codes zu überprüfen. Wir verwenden ein TDSP-Projekt (Team Data Science-Prozess) mit dem [UCI Adult Income-Dataset](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome). Dieses Projekt wurde zu einem früheren Zeitpunkt veröffentlicht, um zu zeigen, wie das Codetesting funktioniert. 
@@ -128,7 +128,7 @@ Führen Sie die folgenden Schritte aus, um Codetests und einen automatischen Bui
 
        ![Liste der Vorlagen und Schaltfläche „Leerer Prozess“](./media/code-test/start_empty_process_template.PNG)
 
-    d. Benennen Sie den Build, und wählen Sie den Agent aus. Sie können hier den Standard-Agent verwenden, wenn Sie eine DSVM zum Abschließen des Buildprozesses verwenden möchten. Weitere Informationen zum Einrichten von Agents finden Sie unter [Build- und Release-Agents](https://docs.microsoft.com/en-us/vsts/build-release/concepts/agents/agents?view=vsts).
+    d. Benennen Sie den Build, und wählen Sie den Agent aus. Sie können hier den Standard-Agent verwenden, wenn Sie eine DSVM zum Abschließen des Buildprozesses verwenden möchten. Weitere Informationen zum Einrichten von Agents finden Sie unter [Build- und Release-Agents](https://docs.microsoft.com/vsts/build-release/concepts/agents/agents?view=vsts).
     
        ![Auswahloptionen für Build und Agent](./media/code-test/select_agent.PNG)
 

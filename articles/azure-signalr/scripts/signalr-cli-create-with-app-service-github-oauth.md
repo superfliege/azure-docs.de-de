@@ -16,15 +16,15 @@ ms.date: 04/22/2018
 ms.author: wesmc
 ms.custom: mvc
 ms.openlocfilehash: ec095572dc8fe20c913d543ffcf926355b5715df
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33766443"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38600127"
 ---
 # <a name="create-a-web-app-that-uses-signalr-service-and-github-authentication"></a>Erstellen einer Web-App mit dem SignalR-Dienst und GitHub-Authentifizierung
 
-In diesem Beispielskript wird eine neue Azure SignalR-Dienstressource erstellt, mit der Echtzeitinhaltsupdates mithilfe von Push an Clients übertragen werden. Dieses Skript fügt auch eine neue Web-App und einen neuen App Service-Plan zum Hosten Ihrer ASP.NET Core-Web-App hinzu, die den SignalR-Dienst verwendet. Die Web-App ist mit App-Einstellungen konfiguriert, um eine Verbindung mit der neuen SignalR-Dienstressource herzustellen und mit [GitHub-Authentifizierung](https://developer.github.com/v3/guides/basics-of-authentication/) zu authentifizieren. Die Web-App ist zudem für die Verwendung einer Bereitstellungsquelle für ein lokales Git-Repository konfiguriert.
+In diesem Beispielskript wird eine neue Azure SignalR-Dienstressource erstellt, mit der Echtzeitinhaltsupdates mithilfe von Push an Clients übertragen werden. Dieses Skript fügt auch eine neue Web-App und einen neuen App Service-Plan zum Hosten Ihrer ASP.NET Core-Web-App hinzu, die den SignalR-Dienst verwendet. Die Web-App ist mit App-Einstellungen konfiguriert, um eine Verbindung mit der neuen SignalR-Dienstressource herzustellen und mit [GitHub-Authentifizierung](https://developer.github.com/v3/guides/basics-of-authentication/) zu authentifizieren. Die Web-App ist auch für die Verwendung eines lokalen Git-Repositorys als Bereitstellungsquelle konfiguriert.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -53,7 +53,7 @@ Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft. D
 | Get-Help | Notizen |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az signalr create](/cli/azure/signalr#az-signalr-create) | Erstellt eine Azure-SignalR-Dienstressource. |
+| [az signalr create](/cli/azure/signalr#az-signalr-create) | Erstellt eine Azure SignalR Service-Ressource. |
 | [az signalr key list](/cli/azure/signalr/key#az-signalr-key-list) | Listet die Schlüssel auf, die von Ihrer Anwendung bei der Übertragung von Echtzeitinhaltsupdates mit SignalR mithilfe von Push verwendet werden. |
 | [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) | Erstellt einen Azure App Service-Plan zum Hosten von Web-Apps. |
 | [az webapp create](/cli/azure/webapp#az-webapp-create) | Erstellt eine Azure-Web-App mithilfe des App Service-Hostingplans. |
@@ -65,4 +65,4 @@ Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft. D
 
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
-Weitere CLI-Skriptbeispiele zum Azure-SignalR-Dienst finden Sie in der [Dokumentation zum Azure-SignalR-Dienst](../signalr-cli-samples.md).
+Weitere CLI-Skriptbeispiele zum Azure SignalR Service finden Sie in der [Dokumentation zum Azure SignalR Service](../signalr-cli-samples.md).

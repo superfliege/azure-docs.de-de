@@ -16,11 +16,11 @@ ms.date: 05/21/2018
 ms.author: wesmc
 ms.custom: mvc
 ms.openlocfilehash: 8f71feb610884af29bdfbf170cfc411f32c50233
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640847"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38700781"
 ---
 # <a name="quickstart-how-to-use-azure-redis-cache-with-nodejs"></a>Schnellstart: Verwenden von Azure Redis Cache mit Node.js
 
@@ -124,7 +124,7 @@ Führen Sie das Skript mit Node.js aus.
 node redistest.js
 ```
 
-Im folgenden Beispiel sehen Sie, dass der Schlüssel `Message` zuvor einen zwischengespeicherten Wert besaß. Dieser wurde im Azure-Portal über die Redis-Konsole festgelegt. Die App hat diesen zwischengespeicherten Wert aktualisiert. Außerdem hat die App die Befehle `PING` und `CLIENT LIST` ausgeführt.
+Im folgenden Beispiel können Sie sehen, dass der `Message`-Schlüssel zuvor einen zwischengespeicherten Wert aufgewiesen hat, der im Azure-Portal über die Redis-Konsole festgelegt wurde. Die App hat diesen zwischengespeicherten Wert aktualisiert. Außerdem hat die App die Befehle `PING` und `CLIENT LIST` ausgeführt.
 
 ![Fertige Cache-App](./media/cache-nodejs-get-started/cache-app-complete.png)
 

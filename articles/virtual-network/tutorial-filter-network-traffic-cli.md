@@ -18,11 +18,11 @@ ms.date: 03/30/2018
 ms.author: jdial
 ms.custom: ''
 ms.openlocfilehash: 11dc0e5f6ee398b2a745ed60cbc166e2a1697c3e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31423176"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38721066"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe über die Azure-Befehlszeilenschnittstelle
 
@@ -54,7 +54,7 @@ az group create \
   --location eastus
 ```
 
-Erstellen Sie mit [az network asg create](/cli/azure/network/asg#az_network_asg_create) eine Anwendungssicherheitsgruppe. Mit einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Anforderungen an die Portfilterung gruppieren. Das folgende Beispiel erstellt zwei Anwendungssicherheitsgruppen:
+Erstellen Sie mit [az network asg create](/cli/azure/network/asg#az_network_asg_create) eine Anwendungssicherheitsgruppe. Mit einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Anforderungen an die Portfilterung gruppieren. Das folgende Beispiel erstellt zwei Anwendungssicherheitsgruppen.
 
 ```azurecli-interactive
 az network asg create \
@@ -128,7 +128,7 @@ az network vnet create \
   --address-prefixes 10.0.0.0/16
 ```
 
-Fügen Sie einem virtuellen Netzwerk mit [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) ein Subnetz hinzu. Das folgende Beispiel fügt dem virtuellen Netzwerk ein Subnetz namens *mySubnet* hinzu und weist ihm die Netzwerksicherheitsgruppe *myNsg* zu:
+Fügen Sie einem virtuellen Netzwerk mit [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) ein Subnetz hinzu. Das folgende Beispiel fügt dem virtuellen Netzwerk ein Subnetz namens *mySubnet* hinzu und weist diesem die Netzwerksicherheitsgruppe *myNsg* zu:
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -141,9 +141,9 @@ az network vnet subnet create \
 
 ## <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
-Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk, im in einem späteren Schritt die Datenverkehrsfilterung überprüfen zu können. 
+Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk, sodass Sie in einem späteren Schritt die Datenverkehrsfilterung überprüfen können. 
 
-Erstellen Sie mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. Das folgende Beispiel erstellt einen virtuellen Computer, der als Webserver fungiert. Durch die `--asgs myAsgWebServers`-Option fügt Azure die für den virtuellen Computer erstellte Netzwerkschnittstelle als Mitglied der Anwendungssicherheitsgruppe *myAsgWebServers* hinzu.
+Erstellen Sie mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. Das folgende Beispiel erstellt einen virtuellen Computer, der als Webserver dienen wird. Durch die `--asgs myAsgWebServers`-Option fügt Azure die für den virtuellen Computer erstellte Netzwerkschnittstelle als Mitglied der Anwendungssicherheitsgruppe *myAsgWebServers* hinzu.
 
 Die `--nsg ""`-Option wird angegeben, um zu verhindern, dass Azure eine standardmäßige Netzwerksicherheitsgruppe für die Netzwerkschnittstelle erstellt, die Azure während der Erstellung des virtuellen Computers erstellt. Zur Vereinfachung dieses Artikels wird ein Kennwort verwendet. Schlüssel werden in der Regel in Produktionsbereitstellungen verwendet. Wenn Sie Schlüssel verwenden, müssen Sie für die verbleibenden Schritte außerdem die SSH-Agent-Weiterleitung konfigurieren. Weitere Informationen finden Sie in der Dokumentation Ihres SSH-Clients. Ersetzen Sie `<replace-with-your-password>` im folgenden Befehl durch ein Kennwort Ihrer Wahl.
 
@@ -177,7 +177,7 @@ Die Erstellung des virtuellen Computers dauert einige Minuten. Nachdem der virtu
 }
 ```
 
-Notieren Sie sich **publicIpAddress**. Über diese Adresse wird in einem späteren Schritt über das Internet auf den virtuellen Computer zugegriffen.  Erstellen Sie einen virtuellen Computer, der als Verwaltungsserver fungiert:
+Notieren Sie sich **publicIpAddress**. Diese Adresse wird in einem späteren Schritt für den Zugriff auf den virtuellen Computer über das Internet verwendet.  Erstellen Sie einen virtuellen Computer, der als Verwaltungsserver dient:
 
 ```azurecli-interactive
 az vm create \

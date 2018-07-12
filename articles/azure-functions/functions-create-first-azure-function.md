@@ -17,11 +17,11 @@ ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, cc996988-fb4f-47
 ms.openlocfilehash: 86cc435a7d632f1cc1b9a0e4a2e6508059d4d675
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30283760"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38602817"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Erstellen Ihrer ersten Funktion im Azure-Portal
 
@@ -31,7 +31,7 @@ Mit Azure Functions können Sie Code in einer [serverlosen](https://azure.micros
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="log-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich unter <http://portal.azure.com> mit Ihrem Azure-Konto beim Azure-Portal an.
 

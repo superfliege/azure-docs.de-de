@@ -3,17 +3,18 @@ title: Tutorial zu Azure Container Registry – Aktualisiertes Image per Push f�
 description: Übertragen Sie ein geändertes Docker-Image per Push zu Ihrer georeplizierten Azure Container Registry. Betrachten Sie dann die automatische Bereitstellung der Änderungen für Web-Apps, die in mehreren Regionen ausgeführt werden. Dieses Tutorial ist der dritte Teil einer dreiteiligen Reihe.
 services: container-registry
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 10/24/2017
+ms.date: 04/30/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: f8eab93d1e6633ae4f17c5bb4836d96629d55cd4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8edb35b91327bde1fa824ec456b8a98962adb7ce
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38634086"
 ---
 # <a name="tutorial-push-an-updated-image-to-regional-deployments"></a>Tutorial: Pushübertragung eines aktualisierten Images an regionale Bereitstellungen
 
@@ -70,7 +71,7 @@ Ihre geänderte `Index.cshtml`-Datei sollte in etwa wie folgt aussehen:
 
 ## <a name="rebuild-the-image"></a>Neuerstellen des Images
 
-Nachdem Sie die Webanwendung aktualisiert haben, erstellen Sie deren Containerimage neu. Verwenden Sie wie zuvor den vollqualifizierten Imagenamen, einschließlich der Anmeldeserver-URL für das Tag:
+Nachdem Sie die Webanwendung aktualisiert haben, erstellen Sie deren Containerimage neu. Verwenden Sie wie zuvor den vollqualifizierten Imagenamen, einschließlich des vollqualifizierten Domänennamens des Anmeldeservers (FQDN) für das Tag:
 
 ```bash
 docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-helloworld:v1
@@ -78,15 +79,16 @@ docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-hellowo
 
 ## <a name="push-image-to-azure-container-registry"></a>Übertragen des Images zu Azure Container Registry mithilfe von Push
 
-Übertragen Sie jetzt das aktualisierte *acr-helloworld*-Containerimage per Push zu Ihrer georeplizierten Registrierung. Hier führen Sie einen einzelnen `docker push`-Befehl aus, um das aktualisierte Image für die Registrierungsreplikate in den Regionen *USA, Westen* und *USA, Osten* bereitzustellen.
+Übertragen Sie anschließend das aktualisierte *acr-helloworld*-Containerimage per Push zu Ihrer georeplizierten Registrierung. Hier führen Sie einen einzelnen `docker push`-Befehl aus, um das aktualisierte Image für die Registrierungsreplikate in den Regionen *USA, Westen* und *USA, Osten* bereitzustellen.
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-Die Ausgabe sollte in etwa folgendermaßen aussehen:
+Die `docker push`-Ausgabe sollte in etwa wie folgt aussehen:
 
-```bash
+```console
+$ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1
 The push refers to a repository [uniqueregistryname.azurecr.io/acr-helloworld]
 5b9454e91555: Pushed
 d6803756744a: Layer already exists
@@ -126,19 +128,17 @@ Stellen Sie sicher, dass das aktualisierte Containerimage auch in der Region *US
 
 ![Browseransicht zur Ausführung der geänderten Web-App in der Region USA (Osten)][deployed-app-eastus-modified]
 
-Mit einem einzelnen `docker push` haben Sie beide regionalen Web-App-Bereitstellungen aktualisiert, und Azure Container Registry hat die Containerimages über netzwerknahe Repositorys bereitgestellt.
+Mit einem einzelnen `docker push` haben Sie die in beiden regionalen Web-App-Bereitstellungen ausgeführte Webanwendung automatisch aktualisiert. Zudem hat Azure Container Registry die Containerimages aus den jeder Bereitstellung am nächsten gelegenen Repositorys bereitgestellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine Version des Containers der Webanwendung aktualisiert und die neue Version per Push an Ihre georeplizierte Registrierung übertragen. Web-App für Container wurde von Webhooks in Azure Container Registry über das Update benachrichtigt, sodass ein lokaler Pullvorgang von den replizierten Registrierungen ausgelöst wurde.
+In diesem Tutorial haben Sie eine Version des Containers der Webanwendung aktualisiert und die neue Version per Push an Ihre georeplizierte Registrierung übertragen. Web-App für Container wurde von Webhooks in Azure Container Registry über das Update benachrichtigt, sodass ein lokaler Pullvorgang von den nächstgelegenen replizierten Registrierungen ausgelöst wurde.
 
-In diesem letzten Teil der Tutorialreihe haben Sie Folgendes erreicht:
+### <a name="acr-build-automated-image-build-and-patch"></a>ACR Build: Build und Patch des automatisierten Images
 
-> [!div class="checklist"]
-> * HTML-Code der Webanwendung aktualisiert
-> * Docker-Image erstellt und gekennzeichnet
-> * Änderung per Push zu Azure Container Registry übertragen
-> * Aktualisierte App in zwei verschiedenen Regionen angezeigt
+Zusätzlich zur geografischen Replikation ist ACR Build ein weiteres Feature von Azure Container Registry, das Ihnen hilft, Ihre Containerbereitstellungspipeline zu optimieren. Starten Sie mit der Übersicht über ACR Build, um eine Vorstellung der Möglichkeiten zu erhalten:
+
+[Automatisieren von Betriebssystem- und Frameworkpatching mit ACR Build](container-registry-build-overview.md)
 
 <!-- IMAGES -->
 [deployed-app-eastus-modified]: ./media/container-registry-tutorial-deploy-update/deployed-app-eastus-modified.png

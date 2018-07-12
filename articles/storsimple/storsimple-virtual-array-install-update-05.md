@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
 ms.openlocfilehash: c47da5b90c16e2d5b5709e2a6affc026238b9468
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109588"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38704520"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>Installieren von Update 0.5 in StorSimple Virtual Array
 
@@ -94,7 +94,7 @@ Verwenden Sie diese Methode zum Installieren von Updates auf einem Gerät, auf d
    
     ![Gerät aktualisieren](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
-2. Geben Sie in **Updatedateipfad**den Dateinamen für das Update oder den Hotfix ein. Sie können auch zur Installationsdatei des Updates oder Hotfixes navigieren, sofern sie auf einer Netzwerkfreigabe abgelegt wurde. Klicken Sie auf **Übernehmen**.
+2. Geben Sie in **Updatedateipfad**den Dateinamen für das Update oder den Hotfix ein. Sie können auch zur Installationsdatei des Updates oder Hotfixes navigieren, sofern sie auf einer Netzwerkfreigabe abgelegt wurde. Klicken Sie auf **Anwenden**.
    
     ![Gerät aktualisieren](./media/storsimple-virtual-array-install-update-05/update2m.png)
 

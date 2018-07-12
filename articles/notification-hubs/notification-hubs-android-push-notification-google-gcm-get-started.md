@@ -17,11 +17,11 @@ ms.custom: mvc
 ms.date: 04/05/2018
 ms.author: dimazaid
 ms.openlocfilehash: efad7353a477577e5b5ac862b418ce78b1c4c304
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778476"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38697251"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging"></a>Tutorial: Senden von Pushbenachrichtigungen an Android-Geräte mit Azure Notification Hubs und Google Cloud Messaging
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -58,7 +58,7 @@ In diesem Tutorial führen Sie die folgenden Aktionen aus:
 
 1. Klicken Sie unter **BENACHRICHTIGUNGSEINSTELLUNGEN** auf **Google (GCM)**. 
 2. Geben Sie den **API-Schlüssel** ein, den Sie aus Google Cloud Console abgerufen haben. 
-3. Klicken Sie auf der Symbolleiste auf **Speichern**. 
+3. Wählen Sie auf der Symbolleiste **Speichern** aus. 
 
     ![Azure Notification Hubs – Google (GCM)](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
