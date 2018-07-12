@@ -13,6 +13,7 @@
 ## [Ressourcenanbieter und -typen](resource-manager-supported-services.md)
 ## [Verwaltungsgruppen](management-groups-overview.md)
 ## [Abonnementgovernance](/azure/architecture/cloud-adoption-guide/subscription-governance?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+## [Vorlagen für Cloudkonsistenz](templates-cloud-consistency.md)
 
 # Anleitung
 ## Erstellen von Vorlagen

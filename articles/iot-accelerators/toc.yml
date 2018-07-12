@@ -10,6 +10,8 @@
   items:
     - name: Bereitstellen einer Lösung für die Remoteüberwachung
       href: quickstart-remote-monitoring-deploy.md
+    - name: Bereitstellen einer Predictive Maintenance-Lösung
+      href: quickstart-predictive-maintenance-deploy.md
     - name: Bereitstellen einer Gerätesimulationslösung
       href: quickstart-device-simulation-deploy.md
 - name: Tutorials

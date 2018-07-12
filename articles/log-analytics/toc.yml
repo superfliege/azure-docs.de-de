@@ -35,6 +35,8 @@
           href: log-analytics-oms-portal-faq.md
     - name: Häufig gestellte Fragen zu Log Analytics
       href: log-analytics-faq.md
+    - name: Datenerfassungszeit
+      href: log-analytics-data-ingestion-time.md
     - name: Datensicherheit
       href: log-analytics-data-security.md
     - name: Verwalten des Zugriffs

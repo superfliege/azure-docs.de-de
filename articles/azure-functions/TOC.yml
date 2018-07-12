@@ -11,12 +11,12 @@
   items:
     - name: Erstellen von Funktionen – Portal
       href: functions-create-first-azure-function.md
-    - name: Erstellen von Funktionen – Azure-CLI
-      href: functions-create-first-azure-function-azure-cli.md
     - name: Erstellen von Funktionen – Visual Studio
       href: functions-create-your-first-function-visual-studio.md
     - name: Erstellen von Funktionen – Java/Maven
       href: functions-create-first-java-maven.md
+    - name: Erstellen von Funktionen – Azure-CLI
+      href: functions-create-first-azure-function-azure-cli.md
     - name: Erstellen von Funktionen – Linux
       href: functions-create-first-azure-function-azure-cli-linux.md
     - name: Trigger
@@ -97,6 +97,8 @@
       items:
         - name: Übersicht
           href: durable-functions-overview.md
+        - name: Funktionstypen und Features
+          href: durable-functions-types-features-overview.md
         - name: Bindungen
           href: durable-functions-bindings.md
         - name: Prüfpunkt und Wiedergabe
