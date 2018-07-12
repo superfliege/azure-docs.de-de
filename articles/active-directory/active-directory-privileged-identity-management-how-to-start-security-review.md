@@ -13,12 +13,12 @@ ms.component: protection
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 28a998647dacdf57390638b8ce1629a76077b450
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 38386de86c83733e3539048de9e263ed6225eee5
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446893"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952159"
 ---
 # <a name="how-to-start-an-access-review-in-azure-ad-privileged-identity-management"></a>Starten einer Zugriffsüberprüfung in Azure AD Privileged Identity Management
 Rollenzuweisungen „veralten“, wenn Benutzer über privilegierten Zugriff verfügen, den sie nicht mehr benötigen. Um die Risiken im Zusammenhang mit diesen veralteten Rollenzuweisungen zu verringern, sollten Administratoren für privilegierte Rollen oder globale Administratoren regelmäßig Zugriffsüberprüfung erstellen, um Administratoren zur Überprüfung der Rollen aufzufordern, die den Benutzern zugewiesen wurden. Dieses Dokument beschreibt die Schritte zum Starten einer Zugriffsüberprüfung in Azure AD Privileged Identity Management (PIM).
@@ -37,12 +37,12 @@ Eine Zugriffsüberprüfung kann auf der Hauptseite der PIM-Anwendung auf drei Ar
 
 Wenn Sie auf die Schaltfläche **Überprüfen** klicken, wird das Blatt **Zugriffsüberprüfung starten** angezeigt. Auf diesem Blatt konfigurieren Sie die Überprüfung mit einem Namen und einem Zeitlimit, wählen eine zu überprüfende Rolle aus und entscheiden, wer die Überprüfung durchführen soll.
 
-![Zugriffsüberprüfung starten – Screenshot][1]
+![Zugriffsüberprüfung starten – Screenshot](./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_start_review.png)
 
 ### <a name="configure-the-review"></a>Konfigurieren der Überprüfung
 Um eine Zugriffsüberprüfung zu erstellen, müssen Sie ihr einen Namen geben und ein Start- und Enddatum festlegen.
 
-![Überprüfung konfigurieren – Screenshot][2]
+![Überprüfung konfigurieren – Screenshot](./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_configure.png)
 
 Wählen Sie eine ausreichende Länge für die Überprüfung aus, damit Benutzer sie abschließen können. Wenn Sie vor dem Enddatum fertig sind, können Sie die Überprüfung frühzeitig beenden.
 
@@ -51,7 +51,7 @@ Jede Überprüfung konzentriert sich nur auf eine Rolle. Wenn Sie die Zugriffsü
 
 1. Navigieren Sie zu **Rollenmitgliedschaft überprüfen**
    
-    ![Rollenmitgliedschaft überprüfen – Screenshot][3]
+    ![Rollenmitgliedschaft überprüfen – Screenshot](./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_role.png)
 2. Wählen Sie eine Rolle aus der Liste aus.
 
 ### <a name="decide-who-will-perform-the-review"></a>Entscheiden, wer die Überprüfung durchführen soll
@@ -59,7 +59,7 @@ Bei der Durchführung einer Überprüfung gibt es drei Möglichkeiten: Sie könn
 
 1. Navigieren Sie zu **Prüfer auswählen**
    
-    ![Prüfer auswählen – Screenshot][4]
+    ![Prüfer auswählen – Screenshot](./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_reviewers.png)
 2. Wählen Sie eine der Optionen aus:
    
    * **Prüfer auswählen**: Verwenden Sie diese Option, wenn Sie nicht wissen, wer Zugriff benötigt. Mit dieser Option können Sie die Überprüfungsdurchführung einem Ressourcenbesitzer oder Gruppen-Manager zuweisen.
@@ -79,10 +79,3 @@ Bis der Überprüfungszeitraum beendet ist, können Sie die Benutzer daran erinn
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="pim-table-of-contents"></a>Inhaltsverzeichnis zu PIM
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_start_review.png
-[2]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_configure.png
-[3]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_role.png
-[4]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_reviewers.png

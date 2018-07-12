@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: daveba
-ms.openlocfilehash: 62b8504f5c10f338539d263bb231cf96eb405ba6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9d9c18d576f3975d4c8272efff7161366f3f53fe
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33930339"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901356"
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-the-azure-portal"></a>Konfigurieren einer VM-MSI (Managed Service Identity, verwaltete Dienstidentität) über das Azure-Portal
 
@@ -34,7 +34,7 @@ In diesem Artikel erfahren Sie, wie Sie die vom System zugewiesene Identität f�
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Falls Sie nicht mit der verwalteten Dienstidentität vertraut sind, helfen Ihnen die Informationen in dieser [Übersicht](overview.md) weiter.
+- Wenn Sie nicht mit „Verwaltete Dienstidentität“ vertraut sind, helfen Ihnen die Informationen in dieser [Übersicht](overview.md) weiter.
 - Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
 
 ## <a name="managed-service-identity-during-creation-of-an-azure-vm"></a>Verwaltete Dienstidentität während der Erstellung einer Azure-VM
@@ -48,7 +48,7 @@ Fahren Sie anschließend mit dem nächsten Abschnitt fort, um ausführlichere In
 
 ## <a name="enable-managed-service-identity-on-an-existing-azure-vm"></a>Aktivieren der verwalteten Dienstidentität für eine vorhandene Azure-VM
 
-Aktivieren Sie wie folgt die vom System zugewiesene Identität auf einem virtuellen Computer, der ursprünglich ohne sie bereitgestellt wurde:
+So aktivieren Sie die vom System zugewiesene Identität auf einem virtuellen Computer, der ursprünglich ohne sie bereitgestellt wurde
 
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) mit einem Konto an, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält. Stellen Sie außerdem sicher, dass Ihr Konto zu einer Rolle gehört, die Ihnen Schreibberechtigungen auf dem virtuellen Computer erteilt, z. B. „Mitwirkender für virtuelle Computer“.
 
@@ -78,7 +78,7 @@ Bei einem virtuellen Computer, für den die vom System zugewiesene Identität ni
 
 ## <a name="related-content"></a>Verwandte Inhalte
 
-- Einen Überblick über die verwaltete Dienstidentität finden Sie in dieser [Übersicht](overview.md).
+- Eine Übersicht über die verwaltete Dienstidentität finden Sie in dieser [Übersicht](overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

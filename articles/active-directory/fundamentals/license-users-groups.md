@@ -17,12 +17,12 @@ ms.date: 08/22/2017
 ms.author: lizross
 ms.reviewer: jeffgilb
 custom: it-pro
-ms.openlocfilehash: 738e96bf631833b8d35847114ee08fc3f5bec2a4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6fc1d808fb712f7acb60e490663cb7301e22153c
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767390"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856088"
 ---
 # <a name="quickstart-license-users-in-azure-active-directory"></a>Schnellstart: Lizenzbenutzer in Azure Active Directory
 Bei lizenzbasierten Azure AD-Diensten wird ein Azure Active Directory-Abonnement (Azure AD) in Ihrem Azure-Mandanten aktiviert. Nach Aktivierung des Abonnements werden Dienstfunktionen von Azure AD-Administratoren verwaltet und von lizenzierten Benutzern verwendet. Wenn Sie Enterprise Mobility + Security, Azure AD Premium oder Azure AD Basic erwerben, wird Ihr Mandant mit dem Abonnement aktualisiert, einschließlich der Gültigkeitsdauer und der vorausbezahlten Lizenzen. Ihre Abonnementinformationen (einschließlich der Anzahl zugewiesener oder verfügbarer Lizenzen) stehen über das Azure-Portal unter **Azure Active Directory** zur Verfügung, indem Sie die Kachel **Lizenzen** öffnen. Das Blatt **Lizenzen** ist auch der beste Ort für die Verwaltung Ihrer Lizenzzuweisungen.
@@ -35,7 +35,7 @@ Mit [gruppenbasierter Lizenzzuweisung](active-directory-licensing-whatis-azure-p
 * Sie können die Entscheidung an andere Manager in der Organisation (mit [Self-Service-Gruppen](../users-groups-roles/groups-self-service-management.md)) delegieren.
 
 > [!TIP]
-> Ausführliche Informationen zur Lizenzzuweisung zu Gruppen (einschließlich erweiterter Szenarien und Office 365-Lizenzierungsszenarien) finden Sie unter [Zuweisen von Lizenzen zu einer Gruppe von Benutzern in Azure Active Directory](../active-directory-licensing-group-assignment-azure-portal.md).
+> Ausführliche Informationen zur Lizenzzuweisung zu Gruppen (einschließlich erweiterter Szenarien und Office 365-Lizenzierungsszenarien) finden Sie unter [Zuweisen von Lizenzen zu einer Gruppe von Benutzern in Azure Active Directory](../users-groups-roles/licensing-groups-assign.md).
 
 ## <a name="assign-licenses-to-users-and-groups"></a>Zuweisen von Lizenzen zu Benutzern und Gruppen
 Sie sollten zunächst bei aktivem Abonnement sich selbst eine Lizenz zuweisen und Ihren Browser aktualisieren, um sicherzustellen, dass Sie alle in Ihrem Abonnement enthaltenen, erwarteten Funktionen sehen können. Im nächsten Schritt weisen Sie den Benutzern Lizenzen zu, die auf kostenpflichtige Azure AD-Features zugreifen müssen. Eine einfache Möglichkeit zum Zuweisen von Lizenzen besteht darin, Benutzergruppen statt einzelnen Benutzern Lizenzen zuzuweisen. Wenn Sie einer Gruppe Lizenzen zuweisen, wird allen Mitgliedern der Gruppe eine Lizenz zugewiesen. Wenn Benutzer der Gruppe hinzugefügt oder aus der Gruppe entfernt werden, wird die entsprechende Lizenz automatisch zugewiesen oder entfernt. 

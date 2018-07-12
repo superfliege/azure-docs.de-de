@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 1b70fc3d199d7f1521acb534dafec8fb3e69500e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aaa7028bb37ac4c2c313efce2afebc1dc5e814d2
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22998845"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37860077"
 ---
 # <a name="migrating-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>Migrieren von BizTalk Server-EDI-Lösungen zu BizTalk Services: technische Anleitung
 
@@ -104,7 +104,7 @@ Sie können sich auch das Beispiel von BizTalk-MVP Sandro Pereira zum [Migrieren
 ## <a name="orchestrations"></a>Orchestrierungen
 Wenn Sie BizTalk Server-Orchestrierungen zu Microsoft Azure migrieren möchten, müssen die Orchestrierungen neu geschrieben werden, da Microsoft Azure die Ausführung von BizTalk Server-Orchestrierungen nicht unterstützt.  Die Orchestrierungsfunktion kann zu einem Windows Workflow Foundation 4.0 (WF4)-Dienst umgeschrieben werden.  Dies wäre eine vollständige Überarbeitung, da derzeit keine Migration von BizTalk Server-Orchestrierungen zu WF4 zur Verfügung steht. Im Anschluss finden Sie einige Ressourcen für Windows Workflow:
 
-* [*How to integrate a WCF Workflow Service with Service Bus Queues and Topics (in englischer Sprache)*](https://msdn.microsoft.com/library/azure/hh709041.aspx) von Paolo Salvatori. 
+* [*How to integrate a WCF Workflow Service with Service Bus Queues and Topics (in englischer Sprache)*](https://blogs.msdn.microsoft.com/paolos/2013/04/09/how-to-integrate-a-wcf-workflow-service-with-service-bus-queues-and-topics/) von Paolo Salvatori. 
 * [*Erstellen von Apps mit Windows Workflow Foundation und Azure*](http://go.microsoft.com/fwlink/p/?LinkId=237314) von der Build 2011-Konferenz.
 * [*Windows Workflow Foundation Developer Center*](http://go.microsoft.com/fwlink/p/?LinkId=237315) auf MSDN.
 * [*Dokumentation zu Windows Workflow Foundation 4 (WF4)*](https://msdn.microsoft.com/library/dd489441.aspx) auf MSDN.
@@ -121,7 +121,7 @@ BizTalk Services-Bridges unterstützen derzeit kein Routing von Nachrichten an 
 ## <a name="conclusion"></a>Zusammenfassung
 Microsoft Azure BizTalk Services wird regelmäßig mit weiteren Features und Funktionen aktualisiert. Mit jeder Aktualisierung werden umfangreichere Funktionen unterstützt, um die Erstellung von End-to-End-Lösungen mit BizTalk Services und anderen Azure-Technologien zu vereinfachen.
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 [Entwickeln von Enterprise-Anwendungen mit Azure](https://msdn.microsoft.com/library/azure/hh674490.aspx)
 
 [EDImessageflow]: ./media/biztalk-migrating-to-edi-guide/IC719455.png

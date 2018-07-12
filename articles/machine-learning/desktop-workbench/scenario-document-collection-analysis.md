@@ -7,16 +7,16 @@ ms.author: kehuan
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, MicrosoftDocs/mlreview, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 60d65b17d4cbe8a45ff3fb62b06852d7b945e8f1
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 29f493449d48df26919a98452fa7f832d653d45e
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832858"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37861256"
 ---
 # <a name="document-collection-analysis"></a>Analysieren von Dokumentsammlungen
 
@@ -75,7 +75,7 @@ Erstellen Sie ein neues Projekt mit diesem Beispiel als Vorlage:
 
 ## <a name="data-description"></a>Datenbeschreibung
 
-Das in diesem Szenario verwendete DataSet enthält Textzusammenfassungen und die zugehörigen Metadaten für jede gesetzgebende Handlung des US-Kongresses. Die Datenerfassung erfolgt durch [GovTrack.us](https://www.govtrack.us/). Die Site verfolgt alle Aktivitäten des United States Congress und hilft US-Bürgern damit, an der nationalen Gesetzgebung teilzuhaben. Die Massendaten können über [diesen Link](https://www.govtrack.us/data/congress/) mithilfe eines manuellen Skripts heruntergeladen werden, das in diesem Szenario nicht enthalten ist. Informationen zum Herunterladen der Daten finden Sie in der [GovTrack-API-Dokumentation](https://www.govtrack.us/developers/api).
+Das in diesem Szenario verwendete DataSet enthält Textzusammenfassungen und die zugehörigen Metadaten für jede gesetzgebende Handlung des US-Kongresses. Die Datenerfassung erfolgt durch [GovTrack.us](https://www.govtrack.us/). Die Site verfolgt alle Aktivitäten des United States Congress und hilft US-Bürgern damit, an der nationalen Gesetzgebung teilzuhaben. Die Massendaten können über [diesen Link](https://www.govtrack.us/data/congress/) mithilfe eines manuellen Skripts heruntergeladen werden, das in diesem Szenario nicht enthalten ist. Informationen zum Herunterladen der Daten finden Sie in der [GovTrack-API-Dokumentation](https://www.govtrack.us/developers).
 
 ### <a name="data-source"></a>Datenquelle
 

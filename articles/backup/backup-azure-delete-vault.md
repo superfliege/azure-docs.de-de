@@ -1,19 +1,19 @@
 ---
 title: Löschen eines Recovery Services-Tresors in Azure
 description: In diesem Artikel erfahren Sie, wie Sie einen Recovery Services-Tresor löschen. Für den Fall, dass beim Löschen eines Tresors Probleme auftreten, enthält der Artikel entsprechende Schritte zur Problembehandlung.
-services: service-name
+services: backup
 author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/21/2018
+ms.date: 7/6/2018
 ms.author: markgal
-ms.openlocfilehash: d8169eba6790e49a85d69434663faabe7430942e
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 5a3a67a41525d30b73bb203eeeacbdf49bb35193
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937599"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901849"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Löschen eines Recovery Services-Tresors
 
@@ -77,7 +77,7 @@ So löschen Sie einen Recovery Services-Tresor:
 
 4. Führen Sie den folgenden Befehl aus, um das Azure Resource Manager-Clientpaket von chocolately.org herunterzuladen.
 
-    `iex ((New-Object System.Net.WebClient) DownloadString('https://chocolatey.org/install.ps1))`
+    `iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))`
 
 5. Verwenden Sie den folgenden Befehl aus, um den Azure Resource Manager-API-Client zu installieren.
 

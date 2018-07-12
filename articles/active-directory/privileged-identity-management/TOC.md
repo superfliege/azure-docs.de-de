@@ -1,27 +1,27 @@
 # Übersicht
-## [Was ist Azure AD PIM?](../active-directory-privileged-identity-management-configure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [Was ist Azure AD PIM?](pim-configure.md)
 ## [Schützen des privilegierten Zugriffs](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [Verzeichnisrollen in PIM](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [Verzeichnisrollen in PIM](pim-roles.md)
 ## [PIM für Azure-Ressourcen](azure-pim-resource-rbac.md)
 ## [PIM-Genehmigungsworkflow](azure-ad-pim-approval-workflow.md)
 
 # Erste Schritte
 ## [Abonnementanforderungen](subscription-requirements.md)
-## [Erste Schritte im Azure-Portal](../active-directory-privileged-identity-management-getting-started.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [Sicherheits-Assistent](../active-directory-privileged-identity-management-security-wizard.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [Gewähren von Zugriff auf PIM](../active-directory-privileged-identity-management-how-to-give-access-to-pim.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [Erste Schritte im Azure-Portal](pim-getting-started.md)
+## [Sicherheits-Assistent](pim-security-wizard.md)
+## [Gewähren von Zugriff auf PIM](pim-how-to-give-access-to-pim.md)
 ## [Aktivieren der Abonnementverwaltung](pim-resource-roles-enable-subscription-management.md)
 ## [Ermitteln von Ressourcen](pim-resource-roles-discover-resources.md)
 ## [Übersichtsdashboards](pim-resource-roles-overview-dashboards.md)
 
 # Anleitung
 ## Verwenden von PIM für Verzeichnisrollen
-### [Aktivieren Ihrer Rollen](../active-directory-privileged-identity-management-how-to-activate-role.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [Zuweisen von Rollen](../active-directory-privileged-identity-management-how-to-add-role-to-user.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [Ändern der Rolleneinstellungen](../active-directory-privileged-identity-management-how-to-change-default-settings.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [Konfigurieren von Warnungen](../active-directory-privileged-identity-management-how-to-configure-security-alerts.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [Anfordern von MFA](../active-directory-privileged-identity-management-how-to-require-mfa.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [Verwenden des Überwachungsprotokolls](../active-directory-privileged-identity-management-how-to-use-audit-log.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+### [Aktivieren Ihrer Rollen](pim-how-to-activate-role.md)
+### [Zuweisen von Rollen](pim-how-to-add-role-to-user.md)
+### [Ändern der Rolleneinstellungen](pim-how-to-change-default-settings.md)
+### [Konfigurieren von Warnungen](pim-how-to-configure-security-alerts.md)
+### [Anfordern von MFA](pim-how-to-require-mfa.md)
+### [Verwenden des Überwachungsprotokolls](pim-how-to-use-audit-log.md)
 ## Verwenden von PIM für Ressourcenrollen
 ### [Aktivieren Ihrer Rollen](pim-resource-roles-activate-your-roles.md)
 ### [Zuweisen von Rollen](pim-resource-roles-assign-roles.md)
@@ -34,9 +34,9 @@
 
 # Überprüfen des Zugriffs
 ## PIM für Verzeichnisrollen
-### [Durchführen einer Zugriffsüberprüfung](../active-directory-privileged-identity-management-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [Starten einer Zugriffsüberprüfung](../active-directory-privileged-identity-management-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [Beenden einer Zugriffsüberprüfung](../active-directory-privileged-identity-management-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+### [Durchführen einer Zugriffsüberprüfung](pim-how-to-perform-security-review.md)
+### [Starten einer Zugriffsüberprüfung](pim-how-to-start-security-review.md)
+### [Beenden einer Zugriffsüberprüfung](pim-how-to-complete-review.md)
 ## PIM für Ressourcenrollen
 ### [Durchführen einer Zugriffsüberprüfung](pim-resource-roles-perform-access-review.md)
 ### [Starten einer Zugriffsüberprüfung](pim-resource-roles-start-access-review.md)

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: v-geberr
-ms.openlocfilehash: da8ea6dead6b22d97e7338b2aa57a892be475417
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1c68c586fb799a540f70804d181aa66b2bda9e97
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344830"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952537"
 ---
 # <a name="what-is-language-understanding-luis"></a>Worum handelt es sich bei Language Understanding (LUIS)?
 Language Understanding (LUIS) ist ein cloudbasierter Dienst, der benutzerdefiniertes Machine Learning auf natürliche Konversationssprachtexte eines Benutzers anwendet, um die allgemeine Bedeutung vorherzusagen sowie relevante und detaillierte Informationen abzurufen. 
@@ -99,7 +99,7 @@ Eine [Beispieläußerung](luis-how-to-add-example-utterances.md) ist eine Textei
 Sobald die LUIS-App veröffentlicht wurde und echte Benutzeräußerungen empfängt, bietet LUIS mehrere Methoden zum Verbessern der Vorhersagegenauigkeit: [Aktives Lernen](#active-learning) von Endpunktäußerungen, [Begriffslisten](#phrase-lists) für die Einbeziehung von Domänenwörtern und [Muster](#patterns) zum Reduzieren der Anzahl erforderlicher Äußerungen.
 
 ### <a name="active-learning"></a>Aktives Lernen
-Beim Prozess des [aktiven Lernens](label-suggested-utterances.md) ermöglicht Ihnen LUIS die Anpassung Ihrer LUIS-App an reale Äußerungen, indem Äußerungen, die am Endpunkt empfangen wurden, für Sie zur Überprüfung ausgewählt werden. Sie können die Endpunktvorhersage akzeptieren oder korrigieren, neu trainieren und erneut veröffentlichen. Dieser iterative Prozess ermöglicht LUIS ein schnelles Lernen und bedeutet für Sie minimalen Zeit- und Arbeitsaufwand. 
+Beim Prozess des [aktiven Lernens](luis-how-to-review-endoint-utt.md) ermöglicht Ihnen LUIS die Anpassung Ihrer LUIS-App an reale Äußerungen, indem Äußerungen, die am Endpunkt empfangen wurden, für Sie zur Überprüfung ausgewählt werden. Sie können die Endpunktvorhersage akzeptieren oder korrigieren, neu trainieren und erneut veröffentlichen. Dieser iterative Prozess ermöglicht LUIS ein schnelles Lernen und bedeutet für Sie minimalen Zeit- und Arbeitsaufwand. 
 
 ### <a name="phrase-lists"></a>Begriffslisten 
 LUIS enthält [Begriffslisten](luis-concept-feature.md), mit denen Sie wichtige Wörter oder Ausdrücke für Ihre Modelldomäne angeben können. LUIS verwendet diese Listen, um den Wörtern und Ausdrücken, die andernfalls nicht im Modell gefunden würden, eine größere Bedeutung beizumessen.

@@ -14,11 +14,11 @@ ms.topic: hero-article
 ms.date: 05/25/2018
 ms.author: crdun
 ms.openlocfilehash: b2dafbcf0e41e7387157590e145f74430686321c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597670"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38307118"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Erstellen einer Xamarin.Forms-App mit Azure
 
@@ -185,7 +185,7 @@ Sollten beim Erstellen der Projektmappe Probleme auftreten, führen Sie den NuGe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Hinzufügen von Authentifizierung zu Ihrer App:](app-service-mobile-xamarin-forms-get-started-users.md) Informationen zur Authentifizierung von Benutzern Ihrer App bei einem Identitätsanbieter
+* [Hinzufügen von Authentifizierung zu Ihrer App](app-service-mobile-xamarin-forms-get-started-users.md): Erfahren Sie, wie Sie Benutzer Ihrer App bei einem Identitätsanbieter authentifizieren.
 
 * [Hinzufügen von Pushbenachrichtigungen zu Ihrer App:](app-service-mobile-xamarin-forms-get-started-push.md) Hier erfahren Sie, wie Sie Ihrer App die Unterstützung von Pushbenachrichtigungen hinzufügen und Ihr Mobile Apps-Back-End für die Verwendung von Azure Notification Hubs zum Senden der Pushbenachrichtigungen konfigurieren.
 

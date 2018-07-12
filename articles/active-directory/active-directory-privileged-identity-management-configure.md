@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 03/07/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 927d2ccef6a250d489273a17b070a4a0aa820bee
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9e5039623b1f9b53c636ebaeb1e956d852185577
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767438"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952051"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Was ist Azure AD Privileged Identity Management?
 
@@ -101,13 +101,13 @@ Azure AD Privileged Identity Manager bietet ein Administratoren-Dashboard, das w
 *   Benutzer und Gruppen mit neuen Rollenzuweisungen in den letzten 30 Tagen (Azure-Ressourcenrollen)
 
 
-![PIM-Dashboard – Screenshot][2]
+![PIM-Dashboard – Screenshot](./media/active-directory-privileged-identity-management-configure/PIM_Admin_Overview.png)
 
 ## <a name="privileged-role-management"></a>Verwaltung privilegierter Rollen
 
 Mit Azure AD Privileged Identity Management können Sie die Administratoren verwalten, indem Sie den einzelnen Rollen permanente oder berechtigte Administratoren für Azure AD-Verzeichnisrollen hinzufügen oder selbige entfernen. Mit PIM für Azure-Ressourcen (Vorschauversionen) können Besitzer, Benutzerzugriffsadministratoren und globale Administratoren, die die Verwaltung von Abonnements in ihrem Mandanten ermöglichen, Azure-Ressourcenrollen Benutzer oder Gruppen als berechtigt (Just-In-Time-Zugriff) oder zeitgebunden (keine Aktivierung erforderlich) zuweisen – entweder mit einem Start- oder Endzeitpunkt (Datum und Uhrzeit) oder dauerhaft (sofern in den Rolleneinstellungen aktiviert).
 
-![Hinzufügen/Entfernen von PIM-Administratoren – Screenshot][3]
+![Hinzufügen/Entfernen von PIM-Administratoren – Screenshot](./media/active-directory-privileged-identity-management-configure/PIM_AddRemove.png)
 
 ## <a name="configure-the-role-activation-settings"></a>Konfigurieren der Rollenaktivierungseinstellungen
 
@@ -119,7 +119,7 @@ Mithilfe der [Rolleneinstellungen](active-directory-privileged-identity-manageme
 * Dienstticket oder Vorfallnummer
 * [Anforderungen an den Genehmigungsworkflow – Vorschauversion](./privileged-identity-management/azure-ad-pim-approval-workflow.md)
 
-![PIM-Einstellungen – Administratoraktivierung – Screenshot][4]
+![PIM-Einstellungen – Administratoraktivierung – Screenshot](./media/active-directory-privileged-identity-management-configure/PIM_Settings_w_Approval_Disabled.png)
 
 Beachten Sie, dass in der Abbildung die Schaltflächen für **Multi-Factor Authentication** deaktiviert sind. Für bestimmte, sehr privilegierte Rollen ist MFA für erhöhten Schutz erforderlich.
 
@@ -140,13 +140,13 @@ Ein Administrator, der eine Rolle aktivieren möchte, muss Azure AD Privileged I
 
 Die Rollenaktivierung ist anpassbar. In den PIM-Einstellungen können Sie die Dauer der Aktivierung sowie die Informationen festlegen, die der Administrator angeben muss, um die Rolle zu aktivieren.
 
-![Anforderung der Rollenaktivierung durch PIM-Administrator – Screenshot][5]
+![Anforderung der Rollenaktivierung durch PIM-Administrator – Screenshot](./media/active-directory-privileged-identity-management-configure/PIM_RequestActivation.png)
 
 ## <a name="review-role-activity"></a>Überprüfen der Rollenaktivität
 
 Ihnen stehen zwei Möglichkeiten zur Verfügung, um nachzuverfolgen, wie Ihre Mitarbeiter und Administratoren privilegierte Rollen nutzen. Die erste Option verwendet den [Verlauf der Verzeichnisrollenüberwachung](active-directory-privileged-identity-management-how-to-use-audit-log.md). Im Überwachungsverlauf werden Änderungen an privilegierten Rollenzuweisungen, der Rollenaktivierungsverlauf sowie Änderungen an Einstellungen für Azure-Ressourcenrollen (Vorschauversion) nachverfolgt. 
 
-![PIM-Aktivierungsverlauf – Screenshot][6]
+![PIM-Aktivierungsverlauf – Screenshot](./media/active-directory-privileged-identity-management-configure/PIM_ActivationHistory.png)
 
 Die zweite Option besteht darin, regelmäßige [Zugriffsüberprüfungen](active-directory-privileged-identity-management-how-to-start-security-review.md)einzurichten. Diese Zugriffsüberprüfungen können von einem zugewiesenen Prüfer (wie etwa einem Teamleiter) durchgeführt werden, oder die Mitarbeiter führen die Überprüfung selbst durch. Dies ist die beste Möglichkeit, um zu prüfen, wer noch Zugriff benötigt und wer nicht mehr.
 
@@ -158,12 +158,3 @@ Wenn Ihre Organisation Azure AD Premium P2 nicht verlängert oder der Testzeitra
 ## <a name="next-steps"></a>Nächste Schritte
 
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-configure/PIM_EnablePim.png
-[2]: ./media/active-directory-privileged-identity-management-configure/PIM_Admin_Overview.png
-[3]: ./media/active-directory-privileged-identity-management-configure/PIM_AddRemove.png
-[4]: ./media/active-directory-privileged-identity-management-configure/PIM_Settings_w_Approval_Disabled.png
-[5]: ./media/active-directory-privileged-identity-management-configure/PIM_RequestActivation.png
-[6]: ./media/active-directory-privileged-identity-management-configure/PIM_ActivationHistory.png

@@ -15,15 +15,15 @@ ms.date: 06/20/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
 ms.openlocfilehash: ad899739dab1dc51d64368d2136ab87f73f6f3a0
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
+ms.lasthandoff: 07/11/2018
 ms.locfileid: "36300909"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>Wartungsvorgänge von SQL-Ressourcenanbietern
 
-Der SQL-Ressourcenanbieter führt einen gesperrten virtuellen Computer aus. Damit Wartungen durchgeführt werden können, müssen Sie die Sicherheit einer VM aktualisieren. Dies kann nach dem Prinzip der letzten Berechtigung über den [PowerShell JEA](https://docs.microsoft.com/en-us/powershell/jea/overview)-Endpunkt (Just Enough Administration) *DBAdapterMaintenance* erfolgen. Das Ressourcenanbieter-Installationspaket enthält ein Skript für diese Vorgänge.
+Der SQL-Ressourcenanbieter führt einen gesperrten virtuellen Computer aus. Damit Wartungen durchgeführt werden können, müssen Sie die Sicherheit einer VM aktualisieren. Dies kann nach dem Prinzip der letzten Berechtigung über den [PowerShell JEA](https://docs.microsoft.com/powershell/jea/overview)-Endpunkt (Just Enough Administration) *DBAdapterMaintenance* erfolgen. Das Ressourcenanbieter-Installationspaket enthält ein Skript für diese Vorgänge.
 
 ## <a name="patching-and-updating"></a>Patchen und Aktualisieren
 

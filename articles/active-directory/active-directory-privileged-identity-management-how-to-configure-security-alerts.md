@@ -13,18 +13,18 @@ ms.component: protection
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: d054ca015fd97b3ec45f18b2d3a795eccf606993
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: fee4344be2875140a2e9c35bd83eb668bd1efa3f
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447556"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952458"
 ---
 # <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>Konfigurieren von Sicherheitswarnungen in Azure AD Privileged Identity Management
 ## <a name="security-alerts"></a>Sicherheitswarnungen
 Azure Privileged Identity Management (PIM) generiert bei verdächtigen oder nicht sicheren Aktivitäten in Ihrer Umgebung Warnungen. Wenn eine Warnung ausgelöst wird, wird sie im PIM-Dashboard angezeigt. Wählen Sie die Warnung aus, um einen Bericht mit allen Benutzern oder Rollen anzuzeigen, die die Warnung ausgelöst haben.
 
-![Sicherheitswarnungen im PIM-Dashboard – Screenshot][1]
+![Sicherheitswarnungen im PIM-Dashboard – Screenshot](./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_dash.png)
 
 | Warnung | Severity | Trigger | Empfehlung |
 | --- | --- | --- | --- |
@@ -45,7 +45,7 @@ Sie können einige der Sicherheitswarnungen in PIM so anpassen, dass sie in der 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und wählen Sie auf dem Dashboard die Kachel **Azure AD Privileged Identity Management** aus.
 2. Wählen Sie **Privilegierte Rollen verwalten** > **Einstellungen** > **Warnungseinstellungen** aus.
    
-    ![Navigieren zu den Einstellungen für Sicherheitswarnungen][2]
+    ![Navigieren zu den Einstellungen für Sicherheitswarnungen](./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_settings.png)
 
 ### <a name="roles-are-being-activated-too-frequently-alert"></a>Warnung „Rollen werden zu häufig aktiviert“
 Diese Warnung wird ausgelöst, wenn ein Benutzer mehrmals innerhalb eines bestimmten Zeitraums dieselbe privilegierte Rolle aktiviert. Sie können den Zeitraum und die Anzahl der Aktivierungen konfigurieren.
@@ -66,8 +66,3 @@ Diese Warnung wird auslöst, wenn ein Benutzer für eine bestimmte Zeit eine Rol
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_dash.png
-[2]: ./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_settings.png

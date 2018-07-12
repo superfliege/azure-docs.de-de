@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
 ms.openlocfilehash: 824235cfdae6df9d852875281346e35a18277f74
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651475"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38531659"
 ---
 # <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>Tutorial: Aktualisieren des Bestands mit PowerShell und Themen/Abonnements
 
@@ -47,7 +47,7 @@ Für dieses Tutorial ist die Ausführung der aktuellen Version von Azure PowerSh
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="log-in-to-azure"></a>Anmelden bei Azure
 
 Führen Sie die folgenden Befehle aus, um sich an Azure anzumelden. Diese Schritte sind nicht erforderlich, wenn Sie PowerShell-Befehle in Cloud Shell ausführen: 
 
@@ -92,7 +92,7 @@ Kopieren Sie nach der Ausführung des `Get-AzureRmServiceBusKey`-Cmdlets die Ver
 
 ## <a name="send-and-receive-messages"></a>Senden und Empfangen von Nachrichten
 
-Nachdem der Namespace und die Warteschlange erstellt wurden und Sie über die erforderlichen Anmeldeinformationen verfügen, sind Sie zum Senden und Empfangen von Nachrichten bereit. Sie können sich den Code in [diesem GitHub-Ordner mit Beispielen](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart) ansehen.
+Wenn der Namespace und die Warteschlange erstellt wurden und Sie über die erforderlichen Anmeldeinformationen verfügen, sind Sie zum Senden und Empfangen von Nachrichten bereit. Sie können sich den Code in [diesem GitHub-Ordner mit Beispielen](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart) ansehen.
 
 Gehen Sie wie folgt vor, um den Code auszuführen:
 
@@ -117,7 +117,7 @@ Gehen Sie wie folgt vor, um den Code auszuführen:
    dotnet build
    ```
 6.  Navigieren Sie zum Ordner `\bin\Debug\netcoreapp2.0`.
-7.  Geben Sie den folgenden Befehl ein, um das Programm auszuführen. Ersetzen Sie `myConnectionString` durch den abgerufenen Wert und `myQueueName` durch den Namen der von Ihnen erstellten Warteschlange:
+7.  Geben Sie den folgenden Befehl ein, um das Programm auszuführen. Ersetzen Sie `myConnectionString` durch den zuvor abgerufenen Wert und `myQueueName` durch den Namen der von Ihnen erstellten Warteschlange:
 
    ```shell
    dotnet BasicSendReceiveQuickStart.dll -ConnectionString "myConnectionString" -QueueName "myQueueName"
@@ -285,5 +285,5 @@ Fahren Sie mit dem nächsten Tutorial fort, um weitere Informationen zur Verwend
 > [!div class="nextstepaction"]
 > [Aktualisieren des Bestands mit PowerShell und Themen/Abonnements](service-bus-tutorial-topics-subscriptions-cli.md)
 
-[Kostenloses Konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[kostenloses Konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Installieren und Konfigurieren von Azure PowerShell]: /powershell/azure/install-azurerm-ps
