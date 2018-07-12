@@ -1,6 +1,6 @@
 <!-- Guidance on technologies used to move data to and/or from Azure Blob storage are linked here:
 -->
-Dieses Menü enthält Links zu Technologien, die Sie verwenden können, um Daten in und aus Azure Blob-Speicher zu verschieben:
+Dieses Menü enthält Links zu Technologien, die Sie verwenden können, um Daten in und aus Azure Blob Storage zu verschieben:
 
 > [!div class="op_single_selector" title1="Blob storage tools"]
 > * [Übersicht](../articles/machine-learning/team-data-science-process/move-azure-blob.md)

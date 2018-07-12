@@ -9,11 +9,11 @@ ms.date: 5/14/2018
 ms.author: markgal
 ms.custom: include file
 ms.openlocfilehash: 5590da80a1c217e7902e8e010688e40f5624898c
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34664926"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38730497"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 Bei einem Recovery Services-Tresor handelt es sich um eine Entität, in der alle Sicherungen und Wiederherstellungspunkte gespeichert werden, die im Laufe der Zeit erstellt wurden. Der Recovery Services-Tresor enthält auch die Sicherungsrichtlinien, die den geschützten virtuellen Computern zugeordnet sind.

@@ -16,7 +16,7 @@ Sie können die Sammlung von [Diagnosedaten](https://docs.microsoft.com/cli/azur
 
     Mit den gesammelten Diagnosedaten können Sie für Ihre VMs die automatische Skalierung konfigurieren. Sie können auch Protokolle zum Speichern der Daten konfigurieren und Warnungen einrichten, damit Sie benachrichtigt werden, wenn die Leistung nicht optimal ist.
 
-## <a name="alerts"></a>Warnungen
+## <a name="alerts"></a>Alerts
 
 Sie können [Warnungen](../articles/monitoring-and-diagnostics/monitoring-overview-alerts.md) auf Grundlage von bestimmten Leistungsmetriken erstellen. Beispiele für die Probleme, über die Sie benachrichtigt werden können, sind das Überschreiten eines bestimmten Schwellenwerts für die durchschnittliche CPU-Auslastung oder das Fallen des verfügbaren freien Datenträger-Speicherplatzes unter einen bestimmten Wert. Warnungen können im [Azure-Portal](../articles/monitoring-and-diagnostics/insights-alerts-portal.md), mit [Azure PowerShell](../articles/monitoring-and-diagnostics/insights-alerts-powershell.md) oder mit der [Azure CLI](../articles/monitoring-and-diagnostics/insights-alerts-command-line-interface.md) konfiguriert werden.
 

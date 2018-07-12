@@ -9,11 +9,11 @@ ms.date: 06/05/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9a17f34333503436d3da340670abdde154e45ef6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36336025"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38727525"
 ---
 Ab dem 1. Juli 2018 wird die Unterstützung für TLS 1.0 und 1.1 vom Azure-VPN-Gateway entfernt. Das VPN-Gateway unterstützt dann nur noch TLS 1.2. Um TLS-Unterstützung und Konnektivität für Windows 7- und Windows 8-Point-to-Site-Clients, die TLS verwenden, aufrechtzuerhalten, wird empfohlen, die folgenden Updates zu installieren:
 
