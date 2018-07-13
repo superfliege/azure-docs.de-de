@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 4b90d1b9b2ee64722d3c92bcbd8fa205c9b59ebd
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: d46c55f809d24529ea5deeb4d84de44dae876a4b
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809606"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968985"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Sicherung und Wiederherstellung für SQL Server auf virtuellen Azure-Computern
 
@@ -84,8 +84,8 @@ Diese Azure Backup-Lösung für SQL-VMs befindet sich derzeit in der öffentlich
 
 Wenn Sie Sicherungs- und Wiederherstellungsvorgänge auf Ihren SQL-VMs manuell verwalten möchten, stehen Ihnen je nach SQL Server-Version verschiedene Optionen zur Verfügung. Eine Übersicht über die Sicherung und Wiederherstellung finden Sie in einem der folgenden Artikel, je nachdem, welche Version von SQL Server Sie verwenden:
 
-- SQL Server 2016 und höher: [Sichern und Wiederherstellen von SQL Server-Datenbanken](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)
-- SQL Server 2014: [Sichern und Wiederherstellen von SQL Server-Datenbanken](https://msdn.microsoft.com/en-us/library/ms187048%28v=sql.120%29.aspx)
+- SQL Server 2016 und höher: [Sichern und Wiederherstellen von SQL Server-Datenbanken](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)
+- SQL Server 2014: [Sichern und Wiederherstellen von SQL Server-Datenbanken](https://msdn.microsoft.com/library/ms187048%28v=sql.120%29.aspx)
 - SQL Server 2012: [Sichern und Wiederherstellen von SQL Server-Datenbanken](https://msdn.microsoft.com/library/ms187048%28v=sql.110%29.aspx)
 - SQL Server 2008 R2: [Sichern und Wiederherstellen von Datenbanken in SQL Server](https://msdn.microsoft.com/library/ms187048%28v=sql.105%29.aspx)
 - SQL Server 2008: [Sichern und Wiederherstellen von Datenbanken in SQL Server](https://msdn.microsoft.com/library/ms187048%28v=sql.100%29.aspx)
@@ -105,7 +105,7 @@ Ab SQL Server 2012 SP1 CU2 können Sie Sicherungen und Wiederherstellungen direk
 | 2016-Erweiterung | Details |
 | --- | --- |
 | **Striping** |Für Sicherungen in Microsoft Azure Blob Storage unterstützt SQL Server 2016 das Sichern in mehreren Blobs, um die Sicherung großer Datenbanken mit bis zu 12,8 TB zu ermöglichen. |
-| **Momentaufnahmesicherung** |Durch die Verwendung von Azure-Momentaufnahmen ermöglicht die Dateimomentaufnahme-Sicherung von SQL Server nahezu sofortige Backups und schnelle Wiederherstellungen für Datenbankdateien, die mit dem Azure Blob Storage-Dienst gespeichert werden. Sicherungs- und Wiederherstellungsrichtlinien lassen sich dank dieser Funktion vereinfachen. Die Dateimomentaufnahme-Sicherung unterstützt auch Point-in-Time-Wiederherstellungen. Weitere Informationen finden Sie im Artikel zu [Momentaufnahmesicherungen für Datenbankdateien in Azure](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure). |
+| **Momentaufnahmesicherung** |Durch die Verwendung von Azure-Momentaufnahmen ermöglicht die Dateimomentaufnahme-Sicherung von SQL Server nahezu sofortige Backups und schnelle Wiederherstellungen für Datenbankdateien, die mit dem Azure Blob Storage-Dienst gespeichert werden. Sicherungs- und Wiederherstellungsrichtlinien lassen sich dank dieser Funktion vereinfachen. Die Dateimomentaufnahme-Sicherung unterstützt auch Point-in-Time-Wiederherstellungen. Weitere Informationen finden Sie im Artikel zu [Momentaufnahmesicherungen für Datenbankdateien in Azure](https://docs.microsoft.com/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure). |
 
 Weitere Informationen finden Sie in einem der folgenden Artikel, je nachdem, welche Version von SQL Server Sie verwenden:
 

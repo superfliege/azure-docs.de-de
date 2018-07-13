@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 06/07/2017
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: eb1c769e034f37d05de63896f65290db79103637
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 44c3f8ce05854e993ad551a025eec447d882c326
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293903"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969543"
 ---
 # <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>Erstellen einer Node.js-Web-App in Azure App Service unter Linux
 
@@ -28,7 +28,7 @@ ms.locfileid: "35293903"
 > In diesem Artikel wird eine App in App Service unter Linux bereitgestellt. Informationen zur Bereitstellung in App Service unter _Windows_ finden Sie unter [Erstellen einer Node.js-Web-App in Azure](../app-service-web-get-started-nodejs.md).
 >
 
-[App Service unter Linux](app-service-linux-intro.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching unter Linux-Betriebssystemen. Diese Schnellstartanleitung veranschaulicht, wie Sie unter Linux mithilfe von [Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) eine Node.js-App in App Service bereitstellen.
+[App Service unter Linux](app-service-linux-intro.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching unter Linux-Betriebssystemen. Diese Schnellstartanleitung veranschaulicht, wie Sie unter Linux mithilfe von [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) eine Node.js-App in App Service bereitstellen.
 
 In dieser Schnellstartanleitung wird Cloud Shell verwendet. Die Befehle können aber auch lokal über die [Azure CLI](/cli/azure/install-azure-cli) ausgeführt werden.
 
@@ -40,7 +40,7 @@ In dieser Schnellstartanleitung wird Cloud Shell verwendet. Die Befehle können 
 
 ## <a name="install-web-app-extension-for-cloud-shell"></a>Installieren der Web-App-Erweiterung für Cloud Shell
 
-Für diese Schnellstartanleitung müssen Sie die [az-Web-App-Erweiterung](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az-extension-add) hinzufügen. Falls die Erweiterung bereits installiert ist, sollten Sie sie auf die neueste Version aktualisieren. Geben Sie zum Aktualisieren der Web-App-Erweiterung Folgendes ein: `az extension update -n webapp`.
+Für diese Schnellstartanleitung müssen Sie die [az-Web-App-Erweiterung](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) hinzufügen. Falls die Erweiterung bereits installiert ist, sollten Sie sie auf die neueste Version aktualisieren. Geben Sie zum Aktualisieren der Web-App-Erweiterung Folgendes ein: `az extension update -n webapp`.
 
 Führen Sie zum Installieren der Web-App-Erweiterung den folgenden Befehl aus:
 
@@ -136,7 +136,7 @@ Der Befehl `az webapp up` bewirkt Folgendes:
 
 - Erstellen einer App mit dem angegebenen Namen
 
-- [Bereitstellen von ZIP-Dateien](https://docs.microsoft.com/en-us/azure/app-service/app-service-deploy-zip) aus dem aktuellen Arbeitsverzeichnis für die Web-App
+- [Bereitstellen von ZIP-Dateien](https://docs.microsoft.com/azure/app-service/app-service-deploy-zip) aus dem aktuellen Arbeitsverzeichnis für die Web-App
 
 ## <a name="browse-to-the-app"></a>Navigieren zur App
 

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: studio
 ms.topic: conceptual
 ms.date: 05/25/2018
-ms.openlocfilehash: 6317d4baba5775c1e5a4fda66de80dd8299d8fed
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2ebd777a9723732de6ebbdf07020802190cb4b61
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659507"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969281"
 ---
 # <a name="export-and-delete-in-product-user-data-from-machine-learning-studio"></a>Exportieren und Löschen von im Produkt enthaltenen Benutzerdaten aus Machine Learning Studio
 
@@ -74,4 +74,4 @@ Verwenden Sie PowerShell, um alle Informationen aus Azure Machine Learning Studi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Dokumentation zur Abrechnung von Webdiensten und Vertragsplänen finden Sie unter [REST-API-Referenz für Azure Machine Learning](https://docs.microsoft.com/en-us/rest/api/machinelearning/). 
+Eine Dokumentation zur Abrechnung von Webdiensten und Vertragsplänen finden Sie unter [REST-API-Referenz für Azure Machine Learning](https://docs.microsoft.com/rest/api/machinelearning/). 

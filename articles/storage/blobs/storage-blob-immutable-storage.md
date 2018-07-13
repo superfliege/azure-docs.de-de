@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: sangsinh
-ms.openlocfilehash: 4a83ebbcf045ac2b74957effceadfe80609e960c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 195537b271c442b954d6d6e6fa8d1491c07822e8
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36237427"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970243"
 ---
 # <a name="immutable-storage-feature-of-azure-blob-storage-preview"></a>Funktion „Unveränderlicher Speicher“ von Azure-Blobspeicher (Vorschauversion)
 
@@ -42,7 +42,7 @@ Die Funktion „Unveränderlicher Speicher“ ermöglicht Folgendes:
 
 - **Konfiguration auf Containerebene**: Mit der Funktion „Unveränderlicher Speicher“ können Benutzer zeitbasierte Aufbewahrungsrichtlinien und Tags für gesetzliche Aufbewahrungspflichten auf Containerebene konfigurieren.  Benutzer können zeitbasierte Aufbewahrungsrichtlinien erstellen und sperren, Aufbewahrungszeiträume verlängern, Zeiträume für gesetzliche Aufbewahrungspflichten festlegen und aufheben usw., indem sie einfache Einstellungen auf Containerebene vornehmen.  Diese Richtlinien gelten für alle Blobs im Container (vorhandene und neue).
 
-- **Unterstützung für Überwachungsprotokolle:** Jeder Container enthält ein Überwachungsprotokoll, in dem bis zu fünf zeitbasierte Aufbewahrungsbefehle für gesperrte zeitbasierte Aufbewahrungsrichtlinien mit maximal drei Protokollen zur Verlängerung von Aufbewahrungszeiträumen angezeigt werden.  Für die zeitbasierte Aufbewahrung enthält das Protokoll die Benutzer-ID, den Befehlstyp, Zeitstempel und den Aufbewahrungszeitraum. Für Zeiträume zur gesetzlichen Aufbewahrungspflicht enthält das Protokoll die Benutzer-ID, den Befehlstyp, Zeitstempel und die entsprechenden Tags. Dieses Protokoll wird für die Lebensdauer des Containers gemäß den SEC 17a-4(f)-Bestimmungsrichtlinien aufbewahrt. Ein umfassenderes Protokoll mit allen Aktivitäten der Steuerebene finden Sie unter [Azure-Aktivitätsprotokoll](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Der Benutzer ist für die dauerhafte Speicherung dieser Protokolle verantwortlich, die aus gesetzlichen oder anderen Gründen ggf. erforderlich ist.
+- **Unterstützung für Überwachungsprotokolle:** Jeder Container enthält ein Überwachungsprotokoll, in dem bis zu fünf zeitbasierte Aufbewahrungsbefehle für gesperrte zeitbasierte Aufbewahrungsrichtlinien mit maximal drei Protokollen zur Verlängerung von Aufbewahrungszeiträumen angezeigt werden.  Für die zeitbasierte Aufbewahrung enthält das Protokoll die Benutzer-ID, den Befehlstyp, Zeitstempel und den Aufbewahrungszeitraum. Für Zeiträume zur gesetzlichen Aufbewahrungspflicht enthält das Protokoll die Benutzer-ID, den Befehlstyp, Zeitstempel und die entsprechenden Tags. Dieses Protokoll wird für die Lebensdauer des Containers gemäß den SEC 17a-4(f)-Bestimmungsrichtlinien aufbewahrt. Ein umfassenderes Protokoll mit allen Aktivitäten der Steuerebene finden Sie unter [Azure-Aktivitätsprotokoll](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Der Benutzer ist für die dauerhafte Speicherung dieser Protokolle verantwortlich, die aus gesetzlichen oder anderen Gründen ggf. erforderlich ist.
 
  Die Funktion ist in allen öffentlichen Azure-Regionen aktiviert.
 
@@ -68,7 +68,7 @@ Ausführliche Informationen zum Festlegen und Aufheben von Zeiträumen für die 
 
 Für einen Container können gleichzeitig eine gesetzliche Aufbewahrungspflicht und eine zeitbasierte Aufbewahrungsrichtlinie gelten. Alle Blobs in diesem Container verbleiben so lange im unveränderlichen Zustand, bis alle gesetzlichen Aufbewahrungspflichten aufgehoben wurden. Dies gilt auch, wenn die effektive Aufbewahrungsdauer bereits abgelaufen ist. Dagegen verbleibt ein Blob auch dann so lange im unveränderlichen Zustand, bis der effektive Aufbewahrungszeitraum abgelaufen ist, wenn alle Zeiträume für die gesetzliche Aufbewahrungspflicht aufgehoben wurden.
 In der folgenden Tabelle sind die Arten von Blobvorgängen angegeben, die für die unterschiedlichen Szenarien der unveränderlichen Speicherung deaktiviert sind.
-Ausführliche Informationen zur Blob-REST-API finden Sie in der Dokumentation zur [Azure Blob-Dienst-API](https://docs.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api).
+Ausführliche Informationen zur Blob-REST-API finden Sie in der Dokumentation zur [Azure Blob-Dienst-API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api).
 
 |Szenario  |Blobzustand  |Blobvorgänge sind nicht zulässig  |
 |---------|---------|---------|
@@ -79,7 +79,7 @@ Ausführliche Informationen zur Blob-REST-API finden Sie in der Dokumentation zu
 
 > [!NOTE]
 > Der erste „Put Blob“-Vorgang und die Vorgänge „Put Block List“ und „Put Block“, die für das Erstellen eines Blobs erforderlich sind, sind in den ersten beiden Szenarien der obigen Tabelle zulässig. Alle anderen Vorgänge sind nicht zulässig.
-> Die Funktion „Unveränderliche Speicherung“ ist nur für GPv2 verfügbar, und die Blobspeicherkonten müssen über den [Azure Resource Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview) erstellt werden.
+> Die Funktion „Unveränderliche Speicherung“ ist nur für GPv2 verfügbar, und die Blobspeicherkonten müssen über den [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) erstellt werden.
 
 ## <a name="pricing"></a>Preise
 
@@ -94,7 +94,7 @@ Während der öffentlichen Vorschauphase gelten die folgenden Einschränkungen:
 
 ## <a name="getting-started"></a>Erste Schritte
 
-Unveränderlicher Azure-Speicher für Azure-Blobs wird für die aktuellen Releases des [Azure-Portals](http://portal.azure.com), von Azure [CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) und von Azure [PowerShell](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018) unterstützt.
+Unveränderlicher Azure-Speicher für Azure-Blobs wird für die aktuellen Releases des [Azure-Portals](http://portal.azure.com), von Azure [CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) und von Azure [PowerShell](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018) unterstützt.
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -130,7 +130,7 @@ Unveränderlicher Azure-Speicher für Azure-Blobs wird für die aktuellen Releas
 
 ### <a name="cli-20"></a>CLI 2.0
 
-Installieren Sie die [CLI-Erweiterung](http://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) mit `az extension add -n storage-preview`.
+Installieren Sie die [CLI-Erweiterung](http://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) mit `az extension add -n storage-preview`.
 
 Wenn Sie die Erweiterung bereits installiert haben, können Sie den folgenden Befehl verwenden, um die Funktion „Unveränderlicher Speicher“ zu aktivieren: `az extension update -n storage-preview`.
 

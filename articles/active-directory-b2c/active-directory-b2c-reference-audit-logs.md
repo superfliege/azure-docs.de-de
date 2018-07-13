@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0024f8ab914eba83effe8f5787cfb252775b5f0f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 1697830f699c9cd50548bcfcdd038348db314020
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443384"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969658"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Zugriff auf Active Directory B2C-Überwachungsprotokolle
 
@@ -63,7 +63,7 @@ Sie sehen eine Liste der Aktivitäten, die in den letzten sieben Tagen protokoll
 - Klicken Sie auf **Herunterladen**, um die Aktivitäten als CSV-Datei herunterzuladen.
 
 ##<a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>Zugriff auf Überwachungsprotokolle über die Azure AD-Berichterstellungs-API
-Überwachungsprotokolle werden in der gleichen Pipeline wie andere Aktivitäten für Azure Active Directory veröffentlicht, sodass auf sie über die [Azure Active Directory-Berichterstellungs-API](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-api-audit-reference) zugegriffen werden kann. 
+Überwachungsprotokolle werden in der gleichen Pipeline wie andere Aktivitäten für Azure Active Directory veröffentlicht, sodass auf sie über die [Azure Active Directory-Berichterstellungs-API](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference) zugegriffen werden kann. 
 
 ###<a name="prerequisites"></a>Voraussetzungen
 Um den Azure AD-Berichterstellungs-API zu authentifizieren, müssen Sie zunächst eine Anwendung registrieren. Führen Sie in jedem Fall die Schritte unter [Voraussetzungen zum Zugriff auf die Azure AD-Berichterstellungs-API](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/) aus.

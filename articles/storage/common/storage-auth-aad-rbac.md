@@ -8,27 +8,27 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: tamram
-ms.openlocfilehash: 241808e0a7bde1d2c53cd0af1de677275c169214
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: cee319c4fb158e95b4a6d996f846038f0654dd32
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082229"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969152"
 ---
 # <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>Verwalten von Zugriffsrechten für Azure Storage-Daten mit RBAC (Vorschau)
 
 Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf abgesicherte Ressourcen über die [rollenbasierte Zugriffssteuerung (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview). Azure Storage bietet eine Reihe integrierter RBAC-Rollen mit üblichen Berechtigungssätzen für den Zugriff auf Container und Warteschlangen. Wenn einer Azure AD-Identität eine RBAC-Rolle zugewiesen wird, wird dieser Identität Zugriff auf die jeweiligen Ressourcen gemäß dem angegebenen Umfang gewährt. Der Zugriff kann auf die Ebene des Abonnements, der Ressourcengruppe, des Speicherkontos oder eines einzelnen Containers oder einer Warteschlange begrenzt werden. Sie können diese Zugriffsrechte für Azure Storage-Ressourcen über das Azure-Portal, Azure-Befehlszeilentools und Azure-Verwaltungs-APIs zuweisen. 
 
-Eine Azure AD-Identität kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine *verwaltete Dienstidentität* sein. Ein Sicherheitsprinzipal kann ein Benutzer, eine Gruppe oder ein Anwendungsdienstprinzipal sein. Eine [verwaltete Dienstidentität](../../active-directory/managed-service-identity/overview.md) ist eine automatisch verwaltete Identität, die zur Authentifizierung von Anwendungen dient, die in u.a. virtuellen Azure-Computern, Funktions-Apps und VM-Skalierungsgruppen ausgeführt werden. Einen Überblick über Identität in Azure AD finden Sie unter [Grundlegendes zu Azure-Identitätslösungen](https://docs.microsoft.com/en-us/azure/active-directory/understand-azure-identity-solutions).
+Eine Azure AD-Identität kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine *verwaltete Dienstidentität* sein. Ein Sicherheitsprinzipal kann ein Benutzer, eine Gruppe oder ein Anwendungsdienstprinzipal sein. Eine [verwaltete Dienstidentität](../../active-directory/managed-service-identity/overview.md) ist eine automatisch verwaltete Identität, die zur Authentifizierung von Anwendungen dient, die in u.a. virtuellen Azure-Computern, Funktions-Apps und VM-Skalierungsgruppen ausgeführt werden. Einen Überblick über Identität in Azure AD finden Sie unter [Grundlegendes zu Azure-Identitätslösungen](https://docs.microsoft.com/azure/active-directory/understand-azure-identity-solutions).
 
 ## <a name="rbac-roles-for-azure-storage"></a>RBAC-Rollen für Azure Storage
 
 Azure Storage unterstützt integrierte und benutzerdefinierte RBAC-Rollen. Azure Storage bietet diese integrierten RBAC-Rollen für die Verwendung mit Azure AD:
 
-- [Mitwirkender an Storage-Blobdaten (Vorschau)](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor-preview)
-- [Storage-Blobdatenleser (Vorschau)](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#storage-blob-data-reader-preview)
-- [Mitwirkender an Storage-Warteschlangendaten (Vorschau)](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor-preview)
-- [Storage-Warteschlangendatenleser (Vorschau)](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#storage-queue-data-reader-preview)
+- [Mitwirkender an Storage-Blobdaten (Vorschau)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor-preview)
+- [Storage-Blobdatenleser (Vorschau)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader-preview)
+- [Mitwirkender an Storage-Warteschlangendaten (Vorschau)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor-preview)
+- [Storage-Warteschlangendatenleser (Vorschau)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-reader-preview)
 
 Weitere Informationen dazu, wie integrierte Rollen für Azure Storage definiert sind, finden Sie unter [Grundlegendes zu Rollendefinitionen](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#management-and-data-operations-preview).
 

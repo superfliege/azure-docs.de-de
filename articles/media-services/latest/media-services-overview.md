@@ -16,12 +16,12 @@ ms.workload: media
 ms.date: 06/14/2018
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 489801852202163ef40d57da0082e39793196d85
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 5205a6746f6a698768a60375e2e77db9cb535a71
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264093"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971906"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Was ist Azure Media Services v3?
 
@@ -45,7 +45,7 @@ Media Services ermöglicht es Ihnen, eine Vielzahl von Medienworkflows in der Cl
 * Erstellen Sie einen Abonnementvideodienst, und streamen Sie durch DRM geschützte Inhalte, wenn ein Kunde (z.B. ein Filmstudio) den Zugriff und die Nutzung von urheberrechtlich geschützten Werken einschränken muss.
 * Stellen Sie Offlineinhalte für die Wiedergabe in Flugzeugen, Zügen und Autos bereit. Möglicherweise muss ein Kunde Inhalte zur Wiedergabe auf sein Smartphone oder Tablet herunterladen, wenn er eine Trennung vom Netzwerk erwartet.
 * Fügen Sie Untertitel zu Videos hinzu, um ein breiteres Publikum anzusprechen (z.B. Menschen mit Hörbehinderungen oder Menschen, die in einer anderen Sprache mitlesen möchten). 
-* Implementieren Sie eine E-Learning-Videoplattform mit Azure Media Services und [Azure Cognitive Services-APIs](https://docs.microsoft.com/en-us/azure/#pivot=products&panel=ai) für Sprache-in-Text-Untertitel, Übersetzung in mehrere Sprachen usw.
+* Implementieren Sie eine E-Learning-Videoplattform mit Azure Media Services und [Azure Cognitive Services-APIs](https://docs.microsoft.com/azure/#pivot=products&panel=ai) für Sprache-in-Text-Untertitel, Übersetzung in mehrere Sprachen usw.
 * Aktivieren Sie Azure CDN, um eine große Skalierung zu erreichen und hohe Auslastungen besser zu bewältigen (z.B. den Beginn einer Produkteinführung). 
 
 ## <a name="v3-capabilities"></a>v3-Funktionen

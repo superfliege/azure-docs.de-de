@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: juliako
-ms.openlocfilehash: b8c9375d8ad915200cbc8b2e1a62979fd1b7d179
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: e9ecf1ba3022ca057fa09bad2413aa19d902ae23
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35237087"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972178"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Livestreaming mit Azure Media Services v3
 
@@ -32,7 +32,7 @@ Dieser Artikel bietet einen detaillierten Überblick und enthält Diagramme der 
 
 ## <a name="overview-of-main-components"></a>Übersicht über die wichtigsten Komponenten
 
-In Media Services sind [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) für die Verarbeitung von Livestreaminginhalten zuständig. Ein LiveEvent (Liveereignis) stellt einen Eingabeendpunkt (Erfassungs-URL) bereit, den Sie dann einem lokalen Liveencoder bereitstellen. Das LiveEvent empfängt vom Liveencoder Liveeingabestreams im RTMP- oder Smooth Streaming-Format und stellt diese zum Streamen über einen oder mehrere [StreamingEndpoints](https://docs.microsoft.com/rest/api/media/streamingendpoints) (Streamingendpunkte) zur Verfügung. Ein [LiveOutput](https://docs.microsoft.com/en-us/rest/api/media/liveoutputs) (Liveausgabe) ermöglicht Ihnen die Steuerung der Veröffentlichung, Aufzeichnung und DVR-Fenstereinstellungen des Livestreams. Zudem stellt das LiveEvent einen Vorschauendpunkt (Vorschau-URL) bereit, mit dem Sie eine Vorschau des Streams anzeigen und prüfen können, bevor Sie ihn weiter verarbeiten und übermitteln. 
+In Media Services sind [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) für die Verarbeitung von Livestreaminginhalten zuständig. Ein LiveEvent (Liveereignis) stellt einen Eingabeendpunkt (Erfassungs-URL) bereit, den Sie dann einem lokalen Liveencoder bereitstellen. Das LiveEvent empfängt vom Liveencoder Liveeingabestreams im RTMP- oder Smooth Streaming-Format und stellt diese zum Streamen über einen oder mehrere [StreamingEndpoints](https://docs.microsoft.com/rest/api/media/streamingendpoints) (Streamingendpunkte) zur Verfügung. Ein [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) (Liveausgabe) ermöglicht Ihnen die Steuerung der Veröffentlichung, Aufzeichnung und DVR-Fenstereinstellungen des Livestreams. Zudem stellt das LiveEvent einen Vorschauendpunkt (Vorschau-URL) bereit, mit dem Sie eine Vorschau des Streams anzeigen und prüfen können, bevor Sie ihn weiter verarbeiten und übermitteln. 
 
 Media Services bietet eine **dynamische Paketerstellung**, die Ihnen das Anzeigen einer Vorschau und Senden Ihrer Inhalte in den folgenden Streamingformaten ermöglicht: MPEG DASH, HLS und Smooth Streaming. Dabei ist es nicht erforderlich, für diese Streamingformate eine erneute Paketerstellung durchzuführen. Die Wiedergabe ist mit allen Playern möglich, die mit HLS, DASH oder Smooth kompatibel sind. Sie können auch [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) verwenden, um Ihren Stream zu testen.
 
@@ -49,7 +49,7 @@ Für ein [LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) ist e
 
 ![Livecodierung](./media/live-streaming/live-encoding.png)
 
-Ein lokaler Liveencoder sendet einen Stream mit Einzelbitrate an das LiveEvent, das zum Ausführen einer Livecodierung mit Media Services in einem der folgenden Protokolle aktiviert ist: RTMP oder Smooth Streaming (fragmentiertes MP4). Vom LiveEvent wird dann eine Livecodierung des Eingabestreams mit Einzelbitrate in einen (adaptiven) Videostream mit Mehrfachbitrate ausgeführt. Auf Anforderung wird der Stream den Kunden von Media Services bereitgestellt.
+Ein lokaler Liveencoder sendet einen Stream mit Einzelbitrate an das LiveEvent, das zum Ausführen einer Livecodierung mit Media Services in einem der folgenden Protokolle aktiviert ist: RTMP oder Smooth Streaming (fragmentiertes MP4). Vom LiveEvent wird dann eine Livecodierung des Eingabestreams mit Einzelbitrate in einen (adaptiven) Videostream mit Mehrfachbitrate ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 
 Geben Sie beim Erstellen dieses LiveEvent-Typs **Basic** (LiveEventEncodingType.Basic) ein.
 
@@ -73,7 +73,7 @@ In der folgenden Tabelle werden die Features der beiden LiveEvent-Typen verglich
 
 | Feature | LiveEvent „Pass-Through“ | LiveEvent „Basic“ |
 | --- | --- | --- |
-| Die Eingabe in Form einer Einzelbitrate wird in der Cloud in mehrere Bitraten codiert. |Nein  |Ja |
+| Die Single-Bitrate-Eingabe wird in mehreren Bitraten in der Cloud codiert. |Nein  |Ja |
 | Maximale Auflösung, Anzahl der Ebenen |4Kp30  |720p, 6 Ebenen, 30 fps |
 | Eingabeprotokolle |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
 | Preis |Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/media-services/) , und klicken Sie auf die Registerkarte „Live-Video“. |Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/media-services/) |
@@ -93,16 +93,16 @@ Der aktuelle Zustand eines LiveEvents. Mögliche Werte sind:
 
 |State (Zustand)|BESCHREIBUNG|
 |---|---|
-|**Beendet**| Dies ist der anfängliche Status des LiveEvents nach seiner Erstellung (es sei denn, im Portal wurde automatisches Starten gewählt). In diesem Zustand fallen keine Gebühren an. In diesem Zustand können die LiveEvent-Eigenschaften aktualisiert werden, aber Streaming ist nicht zulässig.|
-|**Wird gestartet**| Das LiveEvent wird gestartet. In diesem Zustand fallen keine Gebühren an. In diesem Zustand sind weder Aktualisierungen noch Streaming zulässig. Wenn ein Fehler auftritt, wird das LiveEvent in den Zustand „Stopped“ (Angehalten) zurückgesetzt.|
+|**Beendet**| Dies ist der anfängliche Status des LiveEvents nach seiner Erstellung (es sei denn, im Portal wurde automatisches Starten gewählt). In diesem Status werden keine Gebühren berechnet. In diesem Zustand können die LiveEvent-Eigenschaften aktualisiert werden, aber Streaming ist nicht zulässig.|
+|**Wird gestartet**| Das LiveEvent wird gestartet. In diesem Status werden keine Gebühren berechnet. In diesem Status sind weder Updates noch Streaming zulässig. Wenn ein Fehler auftritt, wird das LiveEvent in den Zustand „Stopped“ (Angehalten) zurückgesetzt.|
 |**Wird ausgeführt**| Das LiveEvent kann Livestreams verarbeiten. Die Nutzung wird jetzt berechnet. Sie müssen das LiveEvent beenden, um zu verhindern, dass weitere Gebühren anfallen.|
-|**Wird beendet**| Das LiveEvent wird beendet. In diesem Übergangszustand erfolgt keine Berechnung. In diesem Zustand sind weder Aktualisierungen noch Streaming zulässig.|
-|**Wird gelöscht**.| Das LiveEvent wird gelöscht. In diesem Übergangszustand erfolgt keine Berechnung. In diesem Zustand sind weder Aktualisierungen noch Streaming zulässig.|
+|**Wird beendet**| Das LiveEvent wird beendet. In diesem Übergangszustand erfolgt keine Berechnung. In diesem Status sind weder Updates noch Streaming zulässig.|
+|**Wird gelöscht**.| Das LiveEvent wird gelöscht. In diesem Übergangszustand erfolgt keine Berechnung. In diesem Status sind weder Updates noch Streaming zulässig.|
 
 ## <a name="liveoutput"></a>LiveOutput
 
-Ein [LiveOutput](https://docs.microsoft.com/en-us/rest/api/media/liveoutputs) (Liveausgabe) ermöglicht Ihnen die Steuerung der Veröffentlichung, Aufzeichnung und DVR-Fenstereinstellungen des Livestreams. Die Beziehung zwischen LiveEvent und LiveOutput ähnelt herkömmlichen Medien, bei denen ein Kanal (LiveEvent) einen konstanten Stream von Inhalten aufweist und ein Programm (LiveOutput) auf ein zeitlich festgelegtes Ereignis in diesem LiveEvent ausgerichtet ist.
-Mithilfe der Eigenschaft **ArchiveWindowLength** können Sie die Anzahl der Stunden festlegen, für die Sie den aufgezeichneten Inhalt für den LiveOutput beibehalten möchten. **ArchiveWindowLength** ist eine gemäß ISO-8601 definierte Zeitraumlänge des Archivfensters (Digitaler Videorekorder bzw. DVR). Dieser Wert kann von mindestens 5 Minuten bis auf einen Höchstwert von 25 Stunden festgelegt werden. 
+Ein [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) (Liveausgabe) ermöglicht Ihnen die Steuerung der Veröffentlichung, Aufzeichnung und DVR-Fenstereinstellungen des Livestreams. Die Beziehung zwischen LiveEvent und LiveOutput ähnelt herkömmlichen Medien, bei denen ein Kanal (LiveEvent) einen konstanten Stream von Inhalten aufweist und ein Programm (LiveOutput) auf ein zeitlich festgelegtes Ereignis in diesem LiveEvent ausgerichtet ist.
+Mithilfe der Eigenschaft **ArchiveWindowLength** können Sie die Anzahl der Stunden festlegen, für die Sie den aufgezeichneten Inhalt für den LiveOutput beibehalten möchten. **ArchiveWindowLength** ist eine gemäß ISO-8601 definierte Zeitraumlänge des Archivfensters (Digitaler Videorekorder bzw. DVR). Dieser Wert kann von mindestens 5 Minuten bis zu einem Höchstwert von 25 Stunden eingestellt werden. 
 
 **ArchiveWindowLength** bestimmt außerdem die maximale Häufigkeit, mit der Clients von der aktuellen Liveposition aus rückwärts suchen können. LiveOutputs können über den angegebenen Zeitraum laufen. Inhalte, die über das Zeitfenster hinausgehen, werden jedoch fortlaufend verworfen. Der Wert dieser Eigenschaft legt außerdem fest, auf welche Länge Clientmanifeste anwachsen können.
 

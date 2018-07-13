@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.openlocfilehash: fe9292459134972b44037a58235cdd817030a956
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659692"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968931"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Importieren von Daten in Azure Blob Storage
 
@@ -23,12 +23,12 @@ Dieser Artikel enthält schrittweise Anweisungen zum Verwenden des Azure Import/
 
 Vor dem Erstellen eines Importauftrags zum Übertragen von Daten in Azure Blob Storage überprüfen Sie sorgfältig die folgende Liste, ob alle Voraussetzungen für diesen Dienst erfüllt sind. Die Voraussetzungen lauten wie folgt:
 
-- Ein aktives Azure-Abonnement, das für den Import/Export-Dienst verwendet werden kann.
-- Mindestens ein Azure Storage-Konto mit einem Speichercontainer. Hier finden Sie die Liste der [für den Import/Export-Dienst unterstützten Speicherkonten und Speichertypen](storage-import-export-requirements.md). Informationen zum Erstellen eines neuen Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](storage-create-storage-account.md#create-a-storage-account). Informationen zu Speichercontainern finden Sie unter [Erstellen eines Speichercontainers](../blobs/storage-quickstart-blobs-portal.md#create-a-container).
+- Ein aktives Azure-Abonnement, das für den Import/Export-Dienst verwendet werden kann
+- Mindestens ein Azure Storage-Konto mit einem Speichercontainer. Hier finden Sie die Liste der [für den Import/Export-Dienst unterstützten Speicherkonten und Speichertypen](storage-import-export-requirements.md). Weitere Informationen zum Erstellen eines neuen Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](storage-create-storage-account.md#create-a-storage-account). Informationen zu Speichercontainern finden Sie unter [Erstellen eines Speichercontainers](../blobs/storage-quickstart-blobs-portal.md#create-a-container).
 - Eine angemessene Anzahl von Datenträgern der [unterstützten Typen](storage-import-export-requirements.md#supported-disks). 
 - Ein Windows-System, auf dem eine [unterstützte Betriebssystemversion](storage-import-export-requirements.md#supported-operating-systems) ausgeführt wird. 
 - Aktivierte BitLocker-Verschlüsselung auf dem Windows-System. Lesen Sie hierzu die [Schrittweise Anleitung zur Windows BitLocker-Laufwerkverschlüsselung](http://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
-- [Laden Sie Version 1 von WAImportExport](https://www.microsoft.com/en-us/download/details.aspx?id=42659) auf das Windows-System herunter. Entzippen Sie die Dateien in den Standardordner „`waimportexportv1`“. Beispiel: `C:\WaImportExportV1`.
+- [Laden Sie Version 1 von WAImportExport](https://www.microsoft.com/en-us/download/details.aspx?id=42659) auf das Windows-System herunter. Entzippen Sie die Dateien in den Standardordner `waimportexportv1`. Beispiel: `C:\WaImportExportV1`.
 
 
 ## <a name="step-1-prepare-the-drives"></a>Schritt 1: Vorbereiten der Laufwerke
@@ -56,7 +56,7 @@ Führen Sie zum Vorbereiten der Laufwerke die folgenden Schritte aus.
     
     Die verwendeten Parameter werden in der folgenden Tabelle beschrieben:
 
-    |Option  |Beschreibung  |
+    |Option  |BESCHREIBUNG  |
     |---------|---------|
     |/j:     |Der Name der Journaldatei mit der Erweiterung „.jrn“. Eine Journaldatei wird pro Laufwerk generiert. Es wird empfohlen, die Seriennummer des Datenträgers als Journaldateinamen zu verwenden.         |
     |/id:     |Die Sitzungs-ID. Verwenden Sie für jede Instanz des Befehls eine eindeutige Sitzungsnummer.      |
@@ -78,7 +78,7 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
 1. Melden Sie sich bei https://portal.azure.com/ an.
 2. Wechseln Sie zu **Alle Dienste > Speicher > Import-/Exportaufträge**. 
     
-    ![Zu „Import/Exportaufträge“ wechseln](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
+    ![Wechseln zu „Import/Exportaufträge“](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
 3. Klicken Sie auf **Import-/Exportauftrag erstellen**.
 
@@ -130,7 +130,7 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Anzeigen von Auftrags- und Laufwerksstatus](storage-import-export-view-drive-status.md)
+* [Anzeigen von Auftrags- und Laufwerkstatus](storage-import-export-view-drive-status.md)
 * [Überprüfen der Import/Export-Anforderungen](storage-import-export-requirements.md)
 
 

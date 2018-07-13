@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 584e7a211cde83d7785c7fa0962c004af2b76968
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: a5c459fa9bafa48bb8731009a0813cdff7a900d8
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128910"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970801"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Containerüberwachungslösung in Log Analytics
 
@@ -130,7 +130,7 @@ Verwenden Sie nach dem Installieren von Docker die folgenden Einstellungen für 
 Starten Sie den Container, den Sie überwachen möchten. Verwenden Sie das folgende Beispiel, und passen Sie es an:
 
 ```
-sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e WSID="your workspace id" -e KEY="your key" -h=`hostname` -p 127.0.0.1:25225:25225 --name="omsagent" --restart=always microsoft/oms
+sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/containers:/var/lib/docker/containers -e WSID="your workspace id" -e KEY="your key" -h=`hostname` -p 127.0.0.1:25225:25225 --name="omsagent" --restart=always microsoft/oms
 ```
 
 **Für alle Azure Government-Linux-Containerhosts mit CoreOS:**
@@ -138,7 +138,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e 
 Starten Sie den Container, den Sie überwachen möchten. Verwenden Sie das folgende Beispiel, und passen Sie es an:
 
 ```
-sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/log:/var/log -e WSID="your workspace id" -e KEY="your key" -e DOMAIN="opinsights.azure.us" -p 127.0.0.1:25225:25225 -p 127.0.0.1:25224:25224/udp --name="omsagent" -h=`hostname` --restart=always microsoft/oms
+sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/log:/var/log -v /var/lib/docker/containers:/var/lib/docker/containers -e WSID="your workspace id" -e KEY="your key" -e DOMAIN="opinsights.azure.us" -p 127.0.0.1:25225:25225 -p 127.0.0.1:25224:25224/udp --name="omsagent" -h=`hostname` --restart=always microsoft/oms
 ```
 
 **Wechseln von der Verwendung eines installierten Linux-Agents zu einem in einem Container enthaltenen**
@@ -152,7 +152,7 @@ Sie können den OMS-Agent als globalen Dienst in Docker Swarm ausführen. Erstel
 - Führen Sie auf dem Masterknoten Folgendes aus.
 
     ```
-    sudo docker service create  --name omsagent --mode global  --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock  -e WSID="<WORKSPACE ID>" -e KEY="<PRIMARY KEY>" -p 25225:25225 -p 25224:25224/udp  --restart-condition=on-failure microsoft/oms
+    sudo docker service create  --name omsagent --mode global  --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock --mount type=bind,source=/var/lib/docker/containers,destination=/var/lib/docker/containers -e WSID="<WORKSPACE ID>" -e KEY="<PRIMARY KEY>" -p 25225:25225 -p 25224:25224/udp  --restart-condition=on-failure microsoft/oms
     ```
 
 ##### <a name="secure-secrets-for-docker-swarm"></a>Sichern von Geheimnissen für Docker Swarm

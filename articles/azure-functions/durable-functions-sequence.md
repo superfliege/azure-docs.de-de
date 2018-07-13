@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e53b38bf336816ca670fad3ab70a43e5cc8b3437
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a5b337e5318154e299f82b1102ca832303d752f7
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33763559"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970053"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Funktionsverkettung in Durable Functions – „Hello Sequence“-Beispiel
 
@@ -71,7 +71,7 @@ Hier ist der Quellcode angegeben:
 
 Alle JavaScript-Orchestrierungsfunktionen müssen das Modul `durable-functions` enthalten. Dabei handelt es sich um eine JavaScript-Bibliothek, die die Aktionen der Orchestrierungsfunktion in das Ausführungsprotokoll von Durable Functions für vorgangsexterne Sprachen überträgt. Zwischen einer Orchestrierungsfunktion und anderen JavaScript-Funktionen bestehen drei wesentliche Unterschiede:
 
-1. Die Funktion ist eine [Generatorfunktion](https://docs.microsoft.com/en-us/scripting/javascript/advanced/iterators-and-generators-javascript).
+1. Die Funktion ist eine [Generatorfunktion](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript).
 2. Die Funktion wird von einem Aufruf des Moduls `durable-functions` umschlossen (hier `df`).
 3. Die Funktion wird mit dem Aufruf von `return` und nicht von `context.done` beendet.
 

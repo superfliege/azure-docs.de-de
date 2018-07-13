@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/21/2018
-ms.openlocfilehash: d42fa432f57def5e4f80480e41c2299098e20d7d
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.date: 07/11/2018
+ms.openlocfilehash: 547839234e15455f3e268bad4d92972ea1f47e4c
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37020690"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971936"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL – Tarife
 
@@ -37,7 +37,7 @@ Um einen Tarif auszuwählen, verwenden Sie die folgende Tabelle als Ausgangspunk
 | Allgemeiner Zweck | Geeignet für die meisten Unternehmensworkloads mit gängigen Compute- und Arbeitsspeicheranforderungen und skalierbarem E/A-Durchsatz. Hierzu zählen beispielsweise zum Hosten von Web- und mobilen Apps verwendete Server und andere Unternehmensanwendungen.|
 | Arbeitsspeicheroptimiert | Geeignet für Hochleistungs-Datenbankworkloads, für die In-Memory-Leistung erforderlich ist, um eine schnellere Transaktionsverarbeitung und höhere Parallelität zu erzielen. Hierzu zählen beispielsweise Server für die Verarbeitung von Echtzeitdaten und leistungsstarke Transaktions- oder Analyse-Apps.|
 
-Nach der Servererstellung können die Anzahl von virtuellen Kernen, die Hardwaregeneration und der Tarif (mit Ausnahme eines Wechsels zu oder von Basic) innerhalb weniger Sekunden geändert werden. Außerdem haben Sie die Möglichkeit, die Speichermenge einzeln zu erhöhen und den Aufbewahrungszeitraum für Sicherungen zu erhöhen oder zu verringern, ohne dass bei der Anwendung Ausfallzeiten auftreten. Der Sicherungsspeichertyp kann nach der Servererstellung nicht mehr geändert werden. Weitere Informationen finden Sie im Abschnitt [Skalieren von Ressourcen](#scale-resources).
+Nach der Servererstellung können Sie die Anzahl von virtuellen Kernen, die Hardwaregeneration und den Tarif (mit Ausnahme eines Wechsels zu oder von Basic) innerhalb weniger Sekunden ändern. Außerdem haben Sie die Möglichkeit, die Speichermenge einzeln zu erhöhen und den Aufbewahrungszeitraum für Sicherungen zu erhöhen oder zu verringern, ohne dass bei der Anwendung Ausfallzeiten auftreten. Der Sicherungsspeichertyp kann nach der Servererstellung nicht mehr geändert werden. Weitere Informationen finden Sie im Abschnitt [Skalieren von Ressourcen](#scale-resources).
 
 ## <a name="compute-generations-and-vcores"></a>Computegenerationen und V-Kerne
 
@@ -63,6 +63,8 @@ Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und reprä
 | Asien, Osten | X | X |
 | Asien, Südosten | X | X |
 | Australien (Osten) |  | X |
+| Australien, Mitte |  | X |
+| Australien, Mitte 2 |  | X |
 | Australien, Südosten |  | X |
 | Indien, Mitte | X | X |
 | Indien, Westen | X | X |

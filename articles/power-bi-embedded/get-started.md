@@ -15,12 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 01/11/2018
 ms.author: maghan
-ms.openlocfilehash: 7a860742192227e92a14d9bb5622dc9b61f6cb99
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 33d948ee283ff3ee873e2f17ee07a7a889889925
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716022"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969492"
 ---
 # <a name="get-started-with-microsoft-power-bi-embedded"></a>Erste Schritte mit Microsoft Power BI Embedded
 
@@ -49,7 +49,7 @@ Wir stellen Beispiele zur Verfügung, um Ihnen den Einstieg zu erleichtern. Eine
 Erstellen Sie Power BI Embedded-Kapazität in Microsoft Azure, um die Produktion Ihrer Anwendung vorzubereiten. Informationen zur Kapazitätserstellung finden Sie unter [Erstellen von Power BI Embedded-Kapazität im Azure-Portal](create-capacity.md).
 
 > [!IMPORTANT]
-> Da Einbettungstoken nur für Entwicklertests vorgesehen sind, ist die Anzahl von Einbettungstoken, die für ein Power BI-Hauptkonto generiert werden können, begrenzt. Für Einbettungen in die Produktion muss [Kapazität erworben werden](https://docs.microsoft.com/power-bi/developer/embedded-faq#technical). Wenn eine dedizierte Kapazität erworben wird, ist die Generierung von Einbettungstoken nicht beschränkt. Wechseln Sie zu [Verfügbare Features abrufen](https://msdn.microsoft.com/en-us/library/mt846473.aspx), um die aktuelle eingebettete Auslastung in Prozent zu überprüfen.
+> Da Einbettungstoken nur für Entwicklertests vorgesehen sind, ist die Anzahl von Einbettungstoken, die für ein Power BI-Hauptkonto generiert werden können, begrenzt. Für Einbettungen in die Produktion muss [Kapazität erworben werden](https://docs.microsoft.com/power-bi/developer/embedded-faq#technical). Wenn eine dedizierte Kapazität erworben wird, ist die Generierung von Einbettungstoken nicht beschränkt. Wechseln Sie zu [Verfügbare Features abrufen](https://msdn.microsoft.com/library/mt846473.aspx), um die aktuelle eingebettete Auslastung in Prozent zu überprüfen.
 
 Verwalten Sie die Kapazität über das Power BI-Verwaltungsportal. Weisen Sie einen Arbeitsbereichsadministrator zu, der Sie bei Ihren App-Arbeitsbereichen unterstützt. Weitere Informationen finden Sie unter [Verwalten von Kapazitäten in Power BI Premium und Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-admin-premium-manage/).
 

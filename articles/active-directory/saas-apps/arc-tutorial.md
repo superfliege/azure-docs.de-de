@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: bf811d789c0c6effd6f8940ad433092ea9ba04cb
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c1bf5ba68d8242a0ef0831987ac6fd041c62ace9
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210070"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969366"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>Tutorial: Azure Active Directory-Integration in Arc Publishing - SSO
 
@@ -53,7 +53,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Arc Publishing - SSO aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-arc-publishing---sso-from-the-gallery"></a>Hinzufügen von Arc Publishing - SSO aus dem Katalog
 Zum Konfigurieren der Integration von Arc Publishing - SSO in Azure AD müssen Sie Arc Publishing - SSO aus dem Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
@@ -64,15 +64,15 @@ Zum Konfigurieren der Integration von Arc Publishing - SSO in Azure AD müssen S
 
     ![Schaltfläche „Azure Active Directory“][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie im Suchfeld **Arc Publishing - SSO** ein, wählen Sie im Ergebnisbereich **Arc Publishing - SSO** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Geben Sie im Suchfeld **Arc Publishing - SSO** ein, wählen Sie im Ergebnisbereich **Arc Publishing - SSO** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Arc Publishing - SSO in der Ergebnisliste](./media/arc-tutorial/tutorial_arc_addfromgallery.png)
 
@@ -85,10 +85,10 @@ Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutze
 Zum Konfigurieren und Testen des einmaligen Anmeldens mit Azure AD bei Arc Publishing - SSO müssen die folgenden Schritte ausgeführt werden:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Arc Publishing - SSO-Testbenutzers](#create-an-arc-publishing---sso-test-user)**, um in Arc Publishing - SSO eine Entsprechung von Britta Simon zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Erstellen eines Arc Publishing - SSO-Testbenutzers](#create-an-arc-publishing---sso-test-user)**, um in Arc Publishing - SSO eine Entsprechung von Britta Simon zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -100,19 +100,19 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
     ![Dialogfeld „Einmaliges Anmelden“](./media/arc-tutorial/tutorial_arc_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für Arc Publishing - SSO** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
+1. Führen Sie im Abschnitt **Domäne und URLs für Arc Publishing - SSO** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
 
     ![SSO-Informationen zur Domäne und zu den URLs für Arc Publishing - SSO](./media/arc-tutorial/tutorial_arc_url.png)
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://www.okta.com/saml2/service-provider/<Unique ID>`
+    1. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://www.okta.com/saml2/service-provider/<Unique ID>`
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://arcpublishing-<Customer>.okta.com/sso/saml2/<Unique ID>`
+    1. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://arcpublishing-<Customer>.okta.com/sso/saml2/<Unique ID>`
 
-4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, und führen Sie die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+1. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, und führen Sie die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
     ![SSO-Informationen zur Domäne und zu den URLs für Arc Publishing - SSO](./media/arc-tutorial/tutorial_arc_url1.png)
 
@@ -121,11 +121,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die Antwort-URL und die Anmelde-URL. Wenden Sie sich an das [Supportteam für Arc Publishing - SSO](mailto:inf@washpost.com), um diese Werte zu erhalten. 
 
-5. Die Arc Publishing - SSO-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
+1. Die Arc Publishing - SSO-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
     
     ![Configure Single Sign-On](./media/arc-tutorial/tutorial_arc_attribute.png)
 
-6. Konfigurieren Sie das SAML-Tokenattribut im Dialogfeld **Einmaliges Anmelden** im Abschnitt **Benutzerattribute**, wie im obigen Bild gezeigt, und führen Sie die folgenden Schritte aus:
+1. Konfigurieren Sie das SAML-Tokenattribut im Dialogfeld **Einmaliges Anmelden** im Abschnitt **Benutzerattribute**, wie im obigen Bild gezeigt, und führen Sie die folgenden Schritte aus:
     
     | Attributname | Attributwert |
     | ---------------| --------------- |    
@@ -134,36 +134,36 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     | E-Mail | user.mail |
     | groups | user.assignedroles |
 
-    a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
+    1. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
      ![Configure Single Sign-On](./media/arc-tutorial/tutorial_attribute_04.png)
 
      ![Configure Single Sign-On](./media/arc-tutorial/tutorial_attribute_05.png)
     
-    b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
+    1. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
     
-    c. Geben Sie in der Liste **Wert** den für diese Zeile angezeigten Wert ein.
+    1. Geben Sie in der Liste **Wert** den für diese Zeile angezeigten Wert ein.
 
-    d. Lassen Sie den **Namespace** leer.
+    1. Lassen Sie den **Namespace** leer.
     
-    d. Klicken Sie auf **OK**.
+    1. Klicken Sie auf **OK**.
 
     > [!NOTE]
-    > Hier wird **user.assignedroles** das Attribut **groups** zugeordnet. Dabei handelt es sich um in Azure AD erstellte benutzerdefinierte Rollen für die Zuordnung von Gruppennamen in der Anwendung. Weitere Informationen zum Erstellen von benutzerdefinierten Rollen in Azure AD finden Sie [hier](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-enterprise-app-role-management). 
+    > Hier wird **user.assignedroles** das Attribut **groups** zugeordnet. Dabei handelt es sich um in Azure AD erstellte benutzerdefinierte Rollen für die Zuordnung von Gruppennamen in der Anwendung. Weitere Informationen zum Erstellen von benutzerdefinierten Rollen in Azure AD finden Sie [hier](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management). 
 
-7. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](./media/arc-tutorial/tutorial_arc_certificate.png) 
 
-8. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/arc-tutorial/tutorial_general_400.png)
     
-9. Klicken Sie im Abschnitt **Arc Publishing - SSO-Konfiguration** auf **Arc Publishing - SSO konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+1. Klicken Sie im Abschnitt **Arc Publishing - SSO-Konfiguration** auf **Arc Publishing - SSO konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
     ![Arc Publishing - SSO-Konfiguration](./media/arc-tutorial/tutorial_arc_configure.png) 
 
-10. Zum Konfigurieren des einmaligen Anmeldens bei **Arc Publishing - SSO** müssen Sie das heruntergeladene **Zertifikat (Base64), Abmelde-URL, SAML-Entitäts-ID und SAML-Dienst-URL für einmaliges Anmelden** an das [Supportteam von Arc Publishing - SSO](mailto:inf@washpost.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+1. Zum Konfigurieren des einmaligen Anmeldens bei **Arc Publishing - SSO** müssen Sie das heruntergeladene **Zertifikat (Base64), Abmelde-URL, SAML-Entitäts-ID und SAML-Dienst-URL für einmaliges Anmelden** an das [Supportteam von Arc Publishing - SSO](mailto:inf@washpost.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -177,25 +177,25 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Schaltfläche „Azure Active Directory“](./media/arc-tutorial/create_aaduser_01.png)
 
-2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+1. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/arc-tutorial/create_aaduser_02.png)
 
-3. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
 
     ![Schaltfläche „Hinzufügen“](./media/arc-tutorial/create_aaduser_03.png)
 
-4. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
 
     ![Dialogfeld „Benutzer“](./media/arc-tutorial/create_aaduser_04.png)
 
-    a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
+    1. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
 
-    b. Geben Sie im Feld **Benutzername** die E-Mail-Adresse des Benutzers Britta Simon ein.
+    1. Geben Sie im Feld **Benutzername** die E-Mail-Adresse des Benutzers Britta Simon ein.
 
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
+    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    1. Klicken Sie auf **Create**.
  
 ### <a name="create-an-arc-publishing---sso-test-user"></a>Erstellen eines Arc Publishing - SSO-Testbenutzers
 
@@ -216,23 +216,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **Arc Publishing - SSO** aus.
+1. Wählen Sie in der Anwendungsliste **Arc Publishing - SSO** aus.
 
     ![Arc Publishing - SSO-Link in der Anwendungsliste](./media/arc-tutorial/tutorial_arc_app.png)  
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Link „Benutzer und Gruppen“][202]
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

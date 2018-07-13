@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: tamram
-ms.openlocfilehash: 83d3a2d973604e3b8a709b24cabcb3abba1e304c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 080cb3ee536227e5ddce3fac856de79b2b061dcf
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659681"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970767"
 ---
 # <a name="authenticate-with-azure-ad-from-an-azure-managed-service-identity-preview"></a>Authentifizieren mit Azure AD über eine verwaltete Azure-Dienstidentität (Vorschau)
 
@@ -22,7 +22,7 @@ Azure Storage unterstützt die Azure AD-Authentifizierung (Azure Active Director
 Um einer verwalteten Dienstidentität (MSI) die Berechtigungen für Speichercontainer oder Warteschlangen zu gewähren, weisen Sie dieser eine RBAC-Rolle zu, welche die MSI-Speicherberechtigungen beinhaltet. Weitere Informationen zu RBAC-Rollen in Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Speicherdaten mit RBAC (Vorschau)](storage-auth-aad-rbac.md). 
 
 > [!IMPORTANT]
-> Diese Vorschau ist nur für die Verwendung außerhalb der Produktion bestimmt. Produktions-SLAs (Service Level Agreements) sind erst dann verfügbar, wenn die Azure AD-Integration für Azure Storage als allgemein verfügbar deklariert wird. Wenn die Azure AD-Integration für Ihr Szenario noch nicht unterstützt wird, verwenden Sie weiterhin in Ihren Anwendungen die Autorisierung mit gemeinsam verwendetem Schlüssel oder SAS-Token. Weitere Informationen zur Vorschau finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory (Vorschau)](storage-auth-aad.md).
+> Diese Vorschau ist nur für die Verwendung außerhalb der Produktion bestimmt. Produktions-SLAs (Service Level Agreements, Vereinbarungen zum Servicelevel) sind erst dann verfügbar, wenn die Azure AD-Integration für Azure Storage als allgemein verfügbar deklariert wird. Wenn die Azure AD-Integration für Ihr Szenario noch nicht unterstützt wird, verwenden Sie in Ihren Anwendungen weiterhin die Autorisierung mit gemeinsam verwendetem Schlüssel oder SAS-Token. Weitere Informationen zur Vorschau finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory (Vorschau)](storage-auth-aad.md).
 >
 > Während der Vorschau können RBAC-Rollenzuweisungen bis zu fünf Minuten dauern.
 
@@ -32,7 +32,7 @@ Dieser Artikel zeigt die Authentifizierung bei Azure Storage mit einer verwaltet
 
 Bevor Sie MSI zum Authentifizieren bei Azure Storage vom virtuellen Computer aus verwenden können, müssen Sie die verwaltete Dienstidentität zuerst auf dem virtuellen Computer aktivieren. Lesen Sie einen der folgenden Artikel, um zu erfahren, wie Sie MSI aktivieren:
 
-- [Azure-Portal](https://docs.microsoft.com/en-us/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
+- [Azure-Portal](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
 - [Azure PowerShell](../../active-directory/managed-service-identity/qs-configure-powershell-windows-vm.md)
 - [Azure-CLI](../../active-directory/managed-service-identity/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager-Vorlage](../../active-directory/managed-service-identity/qs-configure-template-windows-vm.md)
@@ -48,7 +48,7 @@ Im Codebeispiel wird davon ausgegangen, dass Sie ein MSI-Zugriffstoken haben. Da
 
 ### <a name="add-references-and-using-statements"></a>Hinzufügen von Verweisen und Verwenden von Anweisungen  
 
-Installieren Sie in Visual Studio die Vorschauversion der Azure Storage-Clientbibliothek. Wählen Sie im Menü **Extras** den Eintrag **NuGet Package Manager** und danach **Paket-Manager-Konsole** aus. Geben Sie an der Konsole folgenden Befehl ein:
+Installieren Sie in Visual Studio die Vorschauversion der Azure Storage-Clientbibliothek. Wählen Sie im Menü **Extras** den Eintrag **NuGet-Paket-Manager** und danach **Paket-Manager-Konsole** aus. Geben Sie an der Konsole folgenden Befehl ein:
 
 ```
 Install-Package https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0  
@@ -74,11 +74,11 @@ CloudBlockBlob blob = new CloudBlockBlob(new Uri("https://storagesamples.blob.co
 ``` 
 
 > [!NOTE]
-> Für die Azure AD-Integration mit Azure Storage ist es erforderlich, dass Sie HTTPS für Azure Storage-Vorgänge verwenden.
+> Für die Azure AD-Integration mit Azure Storage müssen Sie HTTPS für Azure Storage-Vorgänge verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu RBAC-Rollen für Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Speicherdaten mit RBAC (Vorschau)](storage-auth-aad-rbac.md).
+- Weitere Informationen zu RBAC-Rollen für Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Azure Storage-Daten mit RBAC (Vorschau)](storage-auth-aad-rbac.md).
 - Informationen zum Autorisieren des Zugriffs auf Container und Warteschlangen aus Ihren Speicheranwendungen finden Sie unter [Verwenden von Azure AD mit Speicheranwendungen](storage-auth-aad-app.md).
 - Informationen zum Anmelden bei der Azure-Befehlszeilenschnittstelle (CLI) und bei PowerShell mit einer Azure AD-Identität finden Sie unter [Verwenden einer Azure AD-Identität für den Zugriff auf Azure Storage über die Befehlszeilenschnittstelle oder PowerShell (Vorschau)](storage-auth-aad-script.md).
 - Weitere Informationen zur Azure AD-Integration für Azure-Blobs und -Warteschlangen finden Sie im Blogbeitrag des Azure Storage-Teams [Announcing the Preview of Azure AD Authentication for Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/) (Ankündigung der Vorschau der Azure AD-Authentifizierung für Azure Storage).

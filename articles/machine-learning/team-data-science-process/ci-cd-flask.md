@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: jainr
-ms.openlocfilehash: 233da393bb9e030d885ce588f4841dc1c707c1cb
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 4d95fc25ed6f2f2efec8313e5b208b3cccbb619f
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836265"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968790"
 ---
 # <a name="devops-for-artificial-intelligence-ai-applications-creating-continuous-integration-pipeline-on-azure-using-docker-and-kubernetes"></a>DevOps für Anwendungen der Künstlichen Intelligenz (KI): Erstellen einer Continuous Integration-Pipeline in Azure mit der Docker und Kubernetes
 Für eine KI-Anwendung gibt es häufig zwei Arbeitsbereiche: Data Scientists, die Modelle für maschinelles Lernen erstellen, und App-Entwickler, die die Anwendung programmieren und den Endbenutzern zur Verfügung stellen. In diesem Artikel wird veranschaulicht, wie Sie eine Pipeline für Continuous Integration (CI) bzw. Continuous Delivery (CD) für eine KI-Anwendung implementieren. Eine KI-Anwendung ist eine Kombination aus Anwendungscode, der mit einem vortrainierten Modell für maschinelles Lernen (MK) eingebettet ist. In diesem Artikel wird ein vortrainiertes Modell aus einem privaten Azure Blob Storage-Konto genutzt, wobei auch ein AWS S3-Konto verwendet werden könnte. Zudem wird eine einfache Python Flask-Webanwendung in diesem Artikel verwendet.
@@ -35,10 +35,10 @@ Sie können den Quellcode von [GitHub](https://github.com/Azure/DevOps-For-AI-Ap
 
 ## <a name="pre-requisites"></a>Voraussetzungen
 Im Folgenden sind die Voraussetzungen für die nachfolgend beschriebene CI/CD-Pipeline aufgeführt:
-* [Visual Studio Team Services-Konto](https://docs.microsoft.com/en-us/vsts/accounts/create-account-msa-or-work-student)
-* [Azure-CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
-* [Azure Container Service (AKS)-Cluster mit Kubernetes](https://docs.microsoft.com/en-us/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
-* [Azure Container Registy (ACR)-Konto](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)
+* [Visual Studio Team Services-Konto](https://docs.microsoft.com/vsts/accounts/create-account-msa-or-work-student)
+* [Azure-CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Azure Container Service (AKS)-Cluster mit Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
+* [Azure Container Registy (ACR)-Konto](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal)
 * [Installation von Kubectl zum Ausführen von Befehlen für den Kubernetes-Cluster](https://kubernetes.io/docs/tasks/tools/install-kubectl/). Dies ist erforderlich, um die Konfiguration aus dem ACS-Cluster abzurufen. 
 * Fork des Repositorys zu Ihrem GitHub-Konto
 
@@ -69,6 +69,6 @@ Unten sehen Sie die Pipelinearchitektur.
 
 ## <a name="references"></a>Referenzen
 * [Team Data Science-Prozess (TDSP)](https://aka.ms/tdsp)
-* [Azure Machine Learning (AML)](https://docs.microsoft.com/en-us/azure/machine-learning/service/)
+* [Azure Machine Learning (AML)](https://docs.microsoft.com/azure/machine-learning/service/)
 * [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/vso/)
-* [Azure Kubernetes Services (AKS)](https://docs.microsoft.com/en-us/azure/aks/intro-kubernetes)
+* [Azure Kubernetes Services (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes)

@@ -7,14 +7,14 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 06/04/2018
 ms.topic: article
-ms.openlocfilehash: b7cd9ad90198ead7c68d838547232429dbd1289f
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 5922bad24c50a9d315aae42ce11a33801b9dbcaf
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757319"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971832"
 ---
-# <a name="use-terraform-to-create-an-azure-virtual-machine-scale"></a>Erstellen einer Azure-VM-Skalierungsgruppe mithilfe von Terraform
+# <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Erstellen einer Azure-VM-Skalierungsgruppe mithilfe von Terraform
 
 Mithilfe von [Azure-VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets) können Sie eine Gruppe identischer, virtueller Computer mit Lastenausgleich erstellen und verwalten, wobei sich die Zahl der VM-Instanzen je nach Bedarf oder definiertem Zeitplan automatisch erhöhen oder verringern kann. 
 
@@ -58,7 +58,7 @@ In diesem Tutorial erfahren Sie, wie Sie [Azure Cloud Shell](/azure/cloud-shell/
     mkdir vmss
     ```
 
-1. Wechseln Sie zum neuen Verzeichnis.
+1. Wechseln Sie zum neuen Verzeichnis:
 
     ```bash
     cd vmss
@@ -99,7 +99,7 @@ Führen Sie in der Azure Cloud Shell-Instanz die folgenden Schritte aus:
   }
   ```
 
-1. Drücken Sie die ESC-TASTE, um den Einfügemodus zu beenden.
+1. Drücken Sie die ESC-TASTE, um den Anfügemodus zu beenden.
 
 1. Speichern Sie die Datei, und geben Sie den folgenden Befehl ein, um den vi-Editor zu schließen:
 
@@ -128,7 +128,7 @@ Führen Sie in der Azure Cloud Shell-Instanz die folgenden Schritte aus:
     }
   ```
 
-1. Drücken Sie die ESC-TASTE, um den Einfügemodus zu beenden.
+1. Drücken Sie die ESC-TASTE, um den Anfügemodus zu beenden.
 
 1. Speichern Sie die Datei, und geben Sie den folgenden Befehl ein, um den vi-Editor zu schließen:
 
@@ -194,7 +194,7 @@ Führen Sie in der Azure Cloud Shell-Instanz die folgenden Schritte aus:
   }
   ```
 
-1. Drücken Sie die ESC-TASTE, um den Einfügemodus zu beenden.
+1. Drücken Sie die ESC-TASTE, um den Anfügemodus zu beenden.
 
 1. Speichern Sie die Datei, und geben Sie den folgenden Befehl ein, um den vi-Editor zu schließen:
 
@@ -372,7 +372,7 @@ Führen Sie in Cloud Shell die folgenden Schritte aus:
     - nginx
   ```
 
-1. Drücken Sie die ESC-TASTE, um den Einfügemodus zu beenden.
+1. Drücken Sie die ESC-TASTE, um den Anfügemodus zu beenden.
 
 1. Speichern Sie die Datei, und geben Sie den folgenden Befehl ein, um den vi-Editor zu schließen:
 

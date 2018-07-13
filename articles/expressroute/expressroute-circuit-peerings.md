@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: ganesr,cherylmc
-ms.openlocfilehash: be04a1cd723cf27e764daa468607d6495baf0291
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 563ee61b56af22ada662fcfff9f47ae58f3f32ba
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849929"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969094"
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>ExpressRoute-Verbindungen und Routingdomänen
  Für eine Verbindung Ihrer lokalen Infrastruktur mit Microsoft über einen Konnektivitätsanbieter müssen Sie eine *ExpressRoute-Verbindung* anfordern. Die folgende Abbildung zeigt eine logische Darstellung der Konnektivität zwischen Ihrem WAN und Microsoft.
@@ -89,7 +89,7 @@ Sie können mehrere Routingdomänen als Teil der ExpressRoute-Verbindung aktivie
 Wenn Sie sich für alle drei Peeringsitzungen entscheiden, müssen Sie über drei BGP-Sitzungspaare (ein Paar für jeden Peeringtyp) verfügen. Die BGP-Sitzungspaare bieten einen hoch verfügbaren Link. Wenn Sie die Verbindung über Layer-2-Konnektivitätsanbieter herstellen, sind Sie für das Konfigurieren und Verwalten des Routings verantwortlich. Weitere Informationen erhalten Sie, wenn Sie sich [Workflows](expressroute-workflows.md) zum Einrichten von ExpressRoute anschauen.
 
 ## <a name="expressroute-health"></a>ExpressRoute-Integrität
-ExpressRoute-Leitungen können mit dem [Netzwerkleistungsmonitor](https://docs.microsoft.com/en-us/azure/networking/network-monitoring-overview) auf Verfügbarkeit, Konnektivität zu VNETs und Bandbreitennutzung überwacht werden.
+ExpressRoute-Leitungen können mit dem [Netzwerkleistungsmonitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) auf Verfügbarkeit, Konnektivität zu VNETs und Bandbreitennutzung überwacht werden.
 
 Der Netzwerkleistungsmonitor überwacht die Integrität von privatem Azure-Peering und Microsoft-Peering.  Weitere Informationen finden Sie in unserem [Blogbeitrag](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/).
 
