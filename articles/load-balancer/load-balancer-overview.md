@@ -121,7 +121,7 @@ Eigenständige virtuelle Computer, Verfügbarkeitsgruppen und VM-Skalierungsgrup
 _Es ist eine bewährte Methode, SKUs explizit anzugeben, obwohl dies noch nicht obligatorisch ist._  Zu diesem Zeitpunkt werden notwendige Änderungen auf ein Minimum beschränkt. Ist keine SKU angegeben, wird dies so interpretiert, dass die Basic-SKU in der API-Version vom 1.8.2017 verwendet werden soll.
 
 >[!IMPORTANT]
->Standard Load Balancer ist ein neues Load Balancer-Produkt und zum größten Teil eine Obermenge von Basic Load Balancer. Es gibt wichtige und behutsame Unterschiede zwischen den beiden Produkten. Jedes End-to-End-Szenario, das mit dem Basic-Load Balancer möglich ist, kann auch mit dem Standard-Load Balancer erstellt werden. Wenn Sie den Basic-Load Balancer bereits kennen, sollten Sie sich mit dem Standard-Load Balancer vertraut machen, um die neusten Änderungen im Verhalten zwischen Standard und Basic und deren Auswirkungen zu verstehen. Lesen Sie diesem Abschnitt sorgfältig.
+>Standard Load Balancer ist ein neues Load Balancer-Produkt und zum größten Teil eine Obermenge von Basic Load Balancer. Es gibt wichtige und wohl durchdachte Unterschiede zwischen den beiden Produkten. Jedes End-to-End-Szenario, das mit dem Basic-Load Balancer möglich ist, kann auch mit dem Standard-Load Balancer erstellt werden. Wenn Sie den Basic-Load Balancer bereits kennen, sollten Sie sich mit dem Standard-Load Balancer vertraut machen, um die neusten Änderungen im Verhalten zwischen Standard und Basic und deren Auswirkungen zu verstehen. Lesen Sie diesem Abschnitt sorgfältig.
 
 | | [Standard-SKU](load-balancer-standard-overview.md) | Basic-SKU |
 | --- | --- | --- |
