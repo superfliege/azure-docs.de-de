@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: 3526871f126ac975f323fe84b14883b361b684ae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dbcbdb0f806241c015e6fbc160465390bead7c37
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35378531"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340772"
 ---
 # <a name="manage-azure-endpoint-subscription-keys"></a>Verwalten von Azure-Endpunkt-Abonnementschlüsseln
 
@@ -40,7 +40,7 @@ Verwenden Sie den Free-Tarif (F0) ausschließlich für Tests und Prototypen. Ver
     ![Azure-Schlüssel](./media/luis-azure-subscription/azure-keys.png)
 
     > [!Note] 
-    > * Melden Sie sich bei der [LUIS](luis-reference-regions.md)-Website für Ihre Region an, und [fügen Sie den neuen LUIS-Endpunktschlüssel hinzu](Manage-Keys.md#assign-endpoint-key). 
+    > * Melden Sie sich bei der [LUIS](luis-reference-regions.md)-Website für Ihre Region an, und [fügen Sie den neuen LUIS-Endpunktschlüssel hinzu](luis-how-to-manage-keys.md#assign-endpoint-key). 
     > * Sie müssen sich den Namen des erstellten Azure-Diensts merken, damit Sie ihn auf der [LUIS](luis-reference-regions.md)-Veröffentlichungsseite der Region auswählen können.  
 
 ## <a name="change-luis-pricing-tier"></a>Ändern des LUIS-Tarifs
@@ -53,7 +53,7 @@ Verwenden Sie den Free-Tarif (F0) ausschließlich für Tests und Prototypen. Ver
     ![Ändern Ihres LUIS-Tarifs](./media/luis-usage-tiers/plans.png)
 4.  Wenn die Änderung des Tarifs abgeschlossen ist, wird der neue Tarif in einem Popupfenster bestätigt. 
     ![Überprüfen Ihres LUIS-Tarifs](./media/luis-usage-tiers/updated.png)
-5. Denken Sie daran, [diesen Endpunktschlüssel](manage-keys.md#assign-endpoint-key) auf der Seite **Publish** (Veröffentlichen) zuzuweisen und für alle Endpunktabfragen zu verwenden. 
+5. Denken Sie daran, [diesen Endpunktschlüssel](luis-how-to-manage-keys.md#assign-endpoint-key) auf der Seite **Publish** (Veröffentlichen) zuzuweisen und für alle Endpunktabfragen zu verwenden. 
 
 ## <a name="exceed-pricing-tier-usage"></a>Überschreitung der Nutzung im Tarif
 Jeder Tarif ermöglicht Endpunktanforderungen für Ihr LUIS-Konto mit einer bestimmten Rate. Wenn die Anforderungsrate höher als die zulässige Rate für Ihr gemessenes Konto pro Minute oder pro Monat ist, lösen Anforderungen den HTTP-Fehler „429: zu viele Anfragen“ aus.

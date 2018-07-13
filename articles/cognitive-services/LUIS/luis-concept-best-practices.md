@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr;
-ms.openlocfilehash: f68e05ba40827375fbd76448e38916c682075228
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 6c4e4c7acb5083e758aa7c6b94e2464a85ae8e9e
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264008"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951112"
 ---
 # <a name="best-practices"></a>Bewährte Methoden
 Verwenden Sie den App-Erstellungsprozess zur Erstellung der LUIS-App. 
@@ -25,7 +25,7 @@ Verwenden Sie den App-Erstellungsprozess zur Erstellung der LUIS-App.
 * Testen am Endpunkt 
 * Hinzufügen von Features
 
-Nachdem die App [veröffentlicht](publishapp.md) wurde, können Sie über den Erstellungszyklus Features hinzufügen, die Veröffentlichung durchführen und Tests am Endpunkt durchführen. Beginnen Sie den nächsten Erstellungszyklus nicht durch das Hinzufügen weiterer Beispieläußerungen. Damit lernt LUIS Ihr Modell nicht durch reale Benutzeräußerungen kennen. 
+Nachdem die App [veröffentlicht](luis-how-to-publish-app.md) wurde, können Sie über den Erstellungszyklus Features hinzufügen, die Veröffentlichung durchführen und Tests am Endpunkt durchführen. Beginnen Sie den nächsten Erstellungszyklus nicht durch das Hinzufügen weiterer Beispieläußerungen. Damit lernt LUIS Ihr Modell nicht durch reale Benutzeräußerungen kennen. 
 
 Damit LUIS effizient lernen kann, erweitern Sie die Äußerungen erst, wenn der aktuelle Satz von Beispiel- und Endpunktäußerungen angemessene Zuverlässigkeits- und Vorhersagebewertungen aufweist. Verbessern Sie die Bewertungen durch aktives Lernen, [Muster](luis-concept-patterns.md) und [Ausdruckslisten](luis-concept-feature.md). 
 
@@ -77,7 +77,7 @@ Wenden Sie diese Methoden nicht an, bevor Ihre App Endpunktanforderungen empfang
 Dies ist die Fallbackabsicht, die alles außerhalb der Anwendung angibt. Fügen Sie der Absicht „None“ eine Beispieläußerung für jeweils 10 Beispieläußerungen im Rest der LUIS-App hinzu.
 
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>Verwenden Sie das Vorschlagfeature für das aktive Lernen
-Verwenden Sie beim [aktiven Lernen](label-suggested-utterances.md) regelmäßig das **Überprüfen von Endpunktäußerungen**, anstatt Absichten zusätzliche Beispieläußerungen hinzuzufügen. Da die App ständig Endpunktäußerungen empfängt, nimmt diese Liste fortlaufend zu und ändert sich.
+Verwenden Sie beim [aktiven Lernen](luis-how-to-review-endoint-utt.md) regelmäßig das **Überprüfen von Endpunktäußerungen**, anstatt Absichten zusätzliche Beispieläußerungen hinzuzufügen. Da die App ständig Endpunktäußerungen empfängt, nimmt diese Liste fortlaufend zu und ändert sich.
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>Überwachen Sie die Leistung Ihrer App.
 Überwachen Sie die Vorhersagegenauigkeit mithilfe eines Testsatzes. 
@@ -113,6 +113,4 @@ Fügen Sie vor dem Training und der Veröffentlichung 10–15 Äußerungen hinzu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, wie Sie in der LUIS-App [Ihre App planen](plan-your-app.md).
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
+* Erfahren Sie, wie Sie in der LUIS-App [Ihre App planen](luis-how-plan-your-app.md).

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: v-geberr
-ms.openlocfilehash: b7f8dd46dc8289322726934f330761b0f1ab94bd
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: e0467e4c41209c937f548edc0c40c05cae588f4c
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265936"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888247"
 ---
 # <a name="authoring-cycle"></a>Erstellungszyklus
 LUIS lernt am besten in einem iterativen Zyklus aus Modelländerungen, Äußerungsbeispielen, Veröffentlichungen und dem Sammeln von Daten aus Endpunktabfragen. 
@@ -40,7 +40,7 @@ Do not add features such as a [phrase list](luis-concept-feature.md) feature in 
 Wenn Sie zu jeder Absicht 10 bis 15 Äußerungen haben und die erforderlichen Entitäten mit Bezeichnungen versehen sind, trainieren Sie LUIS und führen dann die Veröffentlichung durch, um Ihre Endpunkte zu erhalten. Stellen Sie sicher, dass Ihre App erstellt und veröffentlicht wurde, damit sie in den [Endpunktregionen](luis-reference-regions.md) verfügbar ist. 
 
 ## <a name="https-endpoint-testing"></a>HTTPS-Tests an Endpunkten
-Sie können Ihre LUIS-App von dem auf der Seite **[Veröffentlichen](publishapp.md)** aufgeführten HTTPS-Endpunkt aus testen. Durch Tests vom Endpunkt kann LUIS alle Äußerungen mit niedrigen Zuverlässigkeitswerten zur Überprüfung auswählen.  
+Sie können Ihre LUIS-App von dem auf der Seite **[Veröffentlichen](luis-how-to-publish-app.md)** aufgeführten HTTPS-Endpunkt aus testen. Durch Tests vom Endpunkt kann LUIS alle Äußerungen mit niedrigen Zuverlässigkeitswerten zur Überprüfung auswählen.  
 
 ## <a name="recycle"></a>Recyceln
 Wenn Sie einen Erstellungszyklus abgeschlossen haben, können Sie erneut beginnen. Starten Sie mit dem Überprüfen der Endpunktäußerungen, die LUIS mit niedrigen Zuverlässigkeitswerten gekennzeichnet hat. Überprüfen Sie diese Äußerungen auf Absichten und Entitäten. Nach dem Überprüfen der Äußerungen sollte die Prüfliste leer sein.  
@@ -51,5 +51,3 @@ Durch das Testen in Batches können Sie sehen, wie viele Beispieläußerungen vo
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informieren Sie sich über die Konzepte der [Zusammenarbeit](luis-concept-collaborator.md).
-
-[luis-reference-prebuilt-domains]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-domains

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: v-geberr
-ms.openlocfilehash: 7aec5d5b90ac7145ce9f337ec74c590b4b88c6b1
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: c67a2c16077c9033b52a909360b21cb7f88a5a9d
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266361"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344987"
 ---
 # <a name="plan-your-luis-app"></a>Planen Ihrer LUIS-App
 
@@ -61,7 +61,7 @@ Eine zusammengesetzte Entität besteht aus anderen Entitäten, die Teile eines g
 Weitere Informationen zum Extrahieren der zusammengesetzten Entität aus der Antwort der JSON-Endpunktabfrage finden Sie unter [Datenextraktion](luis-concept-data-extraction.md#composite-entity-data). Probieren Sie das [Tutorial](luis-tutorial-composite-entity.md) für zusammengesetzte Entitäten aus, um mehr über das Verwenden einer zusammengesetzten Entität zu erfahren.
 
 ### <a name="prebuilt-entity"></a>Vordefinierte Entität
-LUIS bietet [vordefinierte Entitäten](Pre-builtEntities.md) für allgemeine Typen wie `Number`, die Sie für die Anzahl von Tickets in einer Ticketbestellung verwenden können.
+LUIS bietet [vordefinierte Entitäten](luis-prebuilt-entities.md) für allgemeine Typen wie `Number`, die Sie für die Anzahl von Tickets in einer Ticketbestellung verwenden können.
 
 ![Vordefinierte Entität „number“](./media/luis-plan-your-app/number-entity.png)
 

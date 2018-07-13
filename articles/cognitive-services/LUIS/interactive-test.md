@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: fb4c3bb117d1ea60c9cc28d2b193ee3c01f6c945
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 927d95f6b6fac922d2c3701b8a5124efb18825f6
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221630"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951236"
 ---
 # <a name="test-your-luis-app"></a>Testen Ihrer LUIS-App
 <a name="train-your-app"></a>
@@ -65,7 +65,7 @@ Sie überprüfen die Details des Testergebnisses im Bereich **Überprüfen**.
 
 ## <a name="view-sentiment-results"></a>Anzeigen von Standpunktergebnissen
 
-Wenn die **Standpunktanalyse** auf der Seite **[Publish](publishapp.md#enable-sentiment-analysis)** (Veröffentlichen) konfiguriert wird, schließen die Testergebnisse den in der Äußerung gefundenen Standpunkt ein. 
+Wenn die **Standpunktanalyse** auf der Seite **[Publish](luis-how-to-publish-app.md#enable-sentiment-analysis)** (Veröffentlichen) konfiguriert wird, schließen die Testergebnisse den in der Äußerung gefundenen Standpunkt ein. 
 
 ![Abbildung des Testbereichs mit Standpunktanalyse](./media/luis-how-to-interactive-test/sentiment.png)
 
@@ -129,5 +129,5 @@ Weitere Informationen finden Sie in den [Konzepten](luis-concept-batch-test.md) 
 
 Wenn sich in Tests herausstellt, dass Ihre LUIS-App nicht die richtigen Absichten und Entitäten erkennt, können Sie die Genauigkeit Ihrer LUIS-App verbessern, indem Sie aktiv weitere Äußerungen bezeichnen oder Features hinzufügen. 
 
-* [Bezeichnen von vorgeschlagenen Äußerungen mit LUIS](Label-Suggested-Utterances.md) 
+* [Bezeichnen von vorgeschlagenen Äußerungen mit LUIS](luis-how-to-review-endoint-utt.md) 
 * [Verwenden von Features zum Verbessern der Leistung Ihrer LUIS-App](luis-how-to-add-features.md) 
