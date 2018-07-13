@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/17/2017
 ms.author: crdun
 ms.openlocfilehash: 9e9f7aba49c53a1a6fcc611ed771f266eb49c883
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27593027"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38547174"
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>Hinzufügen von Pushbenachrichtigungen zu Ihrer Android-App
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -59,7 +59,7 @@ In diesem Abschnitt aktualisieren Sie Ihre Android-Client-App, um Pushbenachrich
 
 Als Nächstes installieren Sie Google Play Services. Firebase Cloud Messaging weist einige Mindestanforderungen an die API-Ebene für Entwicklung und Tests auf, denen die Eigenschaft **minSdkVersion** im Manifest entsprechen muss.
 
-Wenn Sie auf einem älteren Gerät testen, lesen Sie unter [Add Firebase to Your Android Project] (Hinzufügen von Firebase zu Android-Projekten) die Informationen zum Festlegen des Werts, und legen Sie ihn entsprechend fest.
+Wenn Sie auf einem älteren Gerät testen, lesen Sie unter [Hinzufügen von Firebase zu Ihrem Android-Projekt] (Hinzufügen von Firebase zu Android-Projekten) die Informationen zum Festlegen des Werts, und legen Sie ihn entsprechend fest.
 
 ### <a name="add-firebase-cloud-messaging-to-the-project"></a>Hinzufügen von Firebase Cloud Messaging zum Projekt
 [!INCLUDE [Add Firebase Cloud Messaging](../../includes/app-service-mobile-add-firebase-cloud-messaging.md)]
@@ -80,4 +80,4 @@ Nachdem Sie dieses Tutorial abgeschlossen haben, können Sie mit den folgenden T
 
 <!-- URLs -->
 [Android-Schnellstartprojekt]: app-service-mobile-android-get-started.md
-[Add Firebase to Your Android Project]:https://firebase.google.com/docs/android/setup
+[Hinzufügen von Firebase zu Ihrem Android-Projekt]:https://firebase.google.com/docs/android/setup

@@ -3,7 +3,7 @@ title: Erstellen einer vollständigen Linux-Umgebung mit der Azure CLI 1.0 | Mic
 description: Erfahren Sie, wie Sie Speicher, einen virtuellen Linux-Computer, ein virtuelles Netzwerk mitsamt Subnetz, einen Load Balancer, eine Netzwerkschnittstellenkarte, eine öffentliche IP-Adresse und eine Netzwerksicherheitsgruppe über die Azure-Befehlszeilenschnittstelle 1.0 von Grund auf neu erstellen.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
-ms.author: iainfou
-ms.openlocfilehash: 4a43e138d3497e01fe9e0e5c55a4a66adac767c6
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: cynthn
+ms.openlocfilehash: 1fb5542af77fbb584effca24a74b9e233359cf0e
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30910763"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932339"
 ---
 # <a name="create-a-complete-linux-environment-with-the-azure-cli-10"></a>Erstellen einer vollständigen Linux-Umgebung mit der Azure CLI 1.0
 In diesem Artikel erstellen wir ein einfaches Netzwerk mit einem Load Balancer und zwei virtuellen Computern, die zu Entwicklungszwecken und für einfache Berechnungen nützlich sind. Wir führen Sie Befehl für Befehl durch den Prozess, bis Sie über zwei funktionierende, sichere virtuelle Linux-Computer verfügen, mit denen Sie über das Internet von jedem Ort aus eine Verbindung herstellen können. Anschließend können Sie sich mit komplexeren Netzwerken und Umgebungen beschäftigen.
@@ -1277,7 +1277,7 @@ Nachdem Sie nun diese Umgebung erstellt haben, möchten Sie vielleicht eine weit
 azure group export --name myResourceGroup
 ```
 
-Dieser Befehl erstellt die `myResourceGroup.json`-Datei in Ihrem aktuellen Arbeitsverzeichnis. Wenn Sie eine Umgebung aus dieser Vorlage erstellen, werden Sie aufgefordert, alle Ressourcennamen, beispielsweise die Namen für Load Balancer, Netzwerkschnittstellen oder virtuelle Computer einzugeben. Sie können diese Namen in Ihre Vorlagendatei eintragen, indem Sie die Parameter `-p` oder `--includeParameterDefaultValue` dem Befehl `azure group export` hinzufügen, der zuvor gezeigt wurde. Bearbeiten Sie die JSON-Vorlage zum Angeben der Ressourcennamen, oder [erstellen Sie eine Datei „parameters.json“](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , die die Ressourcennamen angibt.
+Dieser Befehl erstellt die `myResourceGroup.json`-Datei in Ihrem aktuellen Arbeitsverzeichnis. Wenn Sie eine Umgebung aus dieser Vorlage erstellen, werden Sie aufgefordert, alle Ressourcennamen, beispielsweise die Namen für Load Balancer, Netzwerkschnittstellen oder virtuelle Computer einzugeben. Sie können diese Namen in Ihre Vorlagendatei eintragen, indem Sie die Parameter `-p` oder `--includeParameterDefaultValue` dem Befehl `azure group export` hinzufügen, der zuvor gezeigt wurde. Bearbeiten Sie die JSON-Vorlage zum Angeben der Ressourcennamen, oder [erstellen Sie eine Datei „parameters.json“](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), die die Ressourcennamen angibt.
 
 Erstellen Sie wie folgt eine Umgebung aus Ihrer Vorlage:
 

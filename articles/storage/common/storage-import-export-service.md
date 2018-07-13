@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.openlocfilehash: 83ba437e699eb150e86e6c89e478377394966419
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809541"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38232676"
 ---
 # <a name="what-is-azure-importexport-service"></a>Was ist der Azure Import/Export-Dienst?
 
@@ -113,7 +113,7 @@ Der Azure Import/Export-Dienst unterstützt das Kopieren von Daten von bzw. in a
 
 |Country  |Country  |Country  |Country  |
 |---------|---------|---------|---------|
-|USA (Ost)    | Nordeuropa        | Indien, Mitte        |US Government, Iowa         |
+|USA (Ost)    | Nordeuropa        | Indien, Mitte        |US Gov Iowa         |
 |USA (Westen)     |Europa, Westen         | Indien (Süden)        | US DoD, Osten        |
 |USA (Ost) 2    | Asien, Osten        |  Indien, Westen        | US DoD, Mitte        |
 |USA, Westen 2     | Asien, Südosten        | Kanada, Mitte        | China, Osten         |

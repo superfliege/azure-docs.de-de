@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 07/06/2018
 ms.author: genli
-ms.openlocfilehash: 294bb6dd780d1df642d6e793b29267da1e8b8336
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 6777842f3ca336eb4ae0d134cbc7ffd062bc6f29
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32774912"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37890804"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Beheben von Problemen mit Azure Load Balancer
 
@@ -127,7 +127,6 @@ Wenn eine ILB-VIP in einem VNET konfiguriert ist und eine der beteiligten Back-E
 ## <a name="additional-network-captures"></a>Zusätzliche Netzwerkerfassungen
 Wenn Sie eine Supportanfrage öffnen möchten, erfassen Sie die folgenden Informationen, um eine schnellere Lösung zu ermöglichen. Wählen Sie eine einzelne Back-End-VM für die Durchführung der folgenden Tests aus:
 - Verwenden Sie „Psping“ von einer der Back-End-VMs im VNET, um die Testportantwort zu testen (Beispiel: psping 10.0.0.4:3389), und zeichnen Sie die Ergebnisse auf. 
-- Verwenden Sie „TCPing“ von einer der Back-End-VMs im VNET, um die Testportantwort zu testen (Beispiel: psping 10.0.0.4:3389), und zeichnen Sie die Ergebnisse auf.
 - Wenn bei diesen Pingtests keine Antwort empfangen wird, führen Sie beim Ausführen von „PsPing“ eine gleichzeitige Netsh-Ablaufverfolgung auf der Back-End-VM und der VNET-Test-VM aus, und beenden Sie dann die Netsh-Ablaufverfolgung. 
   
 ## <a name="next-steps"></a>Nächste Schritte

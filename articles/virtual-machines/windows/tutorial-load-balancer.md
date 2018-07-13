@@ -3,7 +3,7 @@ title: Tutorial – Durchführen eines Lastenausgleichs bei virtuellen Windows-C
 description: In diesem Tutorial erfahren Sie, wie Sie Azure PowerShell zum Erstellen eines Load Balancers für eine hoch verfügbare und sichere Anwendung über drei virtuelle Windows-Computer verwenden.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,24 +14,24 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/09/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 35de71f3cc7d865cf2235a21bebf1cfcd7f1850d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6d4dd900888e229c86685549c84b724044249429
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32191620"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932567"
 ---
 # <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>Tutorial: Durchführen eines Lastenausgleichs bei virtuellen Windows-Computern in Azure zum Erstellen einer hoch verfügbaren Anwendung mit Azure PowerShell
-Durch die Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer bietet ein Lastenausgleich ein höheres Maß an Verfügbarkeit. In diesem Tutorial lernen Sie die verschiedenen Komponenten von Azure Load Balancer kennen, die den Datenverkehr verteilen und Hochverfügbarkeit bereitstellen. Folgendes wird vermittelt:
+Lastenausgleich bietet ein höheres Maß an Verfügbarkeit durch Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer. In diesem Tutorial lernen Sie die verschiedenen Komponenten von Azure Load Balancer kennen, die den Datenverkehr verteilen und Hochverfügbarkeit bereitstellen. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Erstellen einer Azure Load Balancer-Instanz
 > * Erstellen des Integritätstests für den Load Balancer
-> * Erstellen von Load Balancer-Regeln
+> * Erstellen von Regeln für den Lastenausgleich
 > * Verwenden der Benutzerdefinierten Skripterweiterung zum Erstellen einer einfachen IIS-Website
-> * Erstellen und Anfügen von virtuellen Computern an einen Load Balancer
+> * Erstellen und Anfügen von virtuellen Computern an einen Lastenausgleich
 > * Anzeigen eines Load Balancers im Betrieb
 > * Hinzufügen und Entfernen von virtuellen Computern zu bzw. aus einem Load Balancer
 
@@ -85,7 +85,7 @@ Erstellen Sie einen Back-End-Adresspool mit [New-AzureRmLoadBalancerBackendAddre
 $backendPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name "myBackEndPool"
 ```
 
-Erstellen Sie nun mit [New-AzureRmLoadBalancer](/powershell/module/azurerm.network/new-azurermloadbalancer) den Load Balancer. Im folgenden Beispiel wird mithilfe der in den vorherigen Schritten erstellten Front-End- und Back-End-IP-Pools ein Load Balancer namens *myLoadBalancer* erstellt:
+Erstellen Sie nun mit [New-AzureRmLoadBalancer](/powershell/module/azurerm.network/new-azurermloadbalancer) den Load Balancer. Im folgenden Beispiel wird mithilfe der in den vorherigen Schritten erstellten Front-End- und Back-End-IP-Pools ein Lastenausgleich namens *myLoadBalancer* erstellt:
 
 ```azurepowershell-interactive
 $lb = New-AzureRmLoadBalancer `
@@ -113,7 +113,7 @@ Add-AzureRmLoadBalancerProbeConfig `
   -ProbeCount 2
 ```
 
-Aktualisieren Sie zum Anwenden des Integritätstests den Load Balancer mit [Set-AzureRmLoadBalancer](/powershell/module/azurerm.network/set-azurermloadbalancer):
+Aktualisieren Sie zum Anwenden des Integritätstests den Lastenausgleich mit [Set-AzureRmLoadBalancer](/powershell/module/azurerm.network/set-azurermloadbalancer):
 
 ```azurepowershell-interactive
 Set-AzureRmLoadBalancer -LoadBalancer $lb
@@ -122,7 +122,7 @@ Set-AzureRmLoadBalancer -LoadBalancer $lb
 ### <a name="create-a-load-balancer-rule"></a>Erstellen einer Load Balancer-Regel
 Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virtuellen Computer verteilt werden soll. Sie definieren die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport. Um sicherzustellen, dass nur fehlerfreie VMs Datenverkehr empfangen, definieren Sie auch den zu verwendenden Integritätstest.
 
-Erstellen Sie mit [Add-AzureRmLoadBalancerRuleConfig](/powershell/module/azurerm.network/add-azurermloadbalancerruleconfig) eine Load Balancer-Regel. Im folgenden Beispiel wird eine Load Balancer-Regel mit dem Namen *myLoadBalancerRule* erstellt und der Datenverkehr an *TCP*-Port *80* ausgeglichen:
+Erstellen Sie mit [Add-AzureRmLoadBalancerRuleConfig](/powershell/module/azurerm.network/add-azurermloadbalancerruleconfig) eine Load Balancer-Regel. Im folgenden Beispiel wird eine Lastenausgleichsregel mit dem Namen *myLoadBalancerRule* erstellt und der Datenverkehr an *TCP*-Port *80* ausgeglichen:
 
 ```azurepowershell-interactive
 $probe = Get-AzureRmLoadBalancerProbeConfig -LoadBalancer $lb -Name "myHealthProbe"
@@ -295,11 +295,11 @@ In diesem Tutorial haben Sie einen Load Balancer erstellt und ihm einen virtuell
 > [!div class="checklist"]
 > * Erstellen einer Azure Load Balancer-Instanz
 > * Erstellen des Integritätstests für den Load Balancer
-> * Erstellen von Load Balancer-Regeln
+> * Erstellen von Regeln für den Lastenausgleich
 > * Verwenden der Benutzerdefinierten Skripterweiterung zum Erstellen einer einfachen IIS-Website
-> * Erstellen und Anfügen von virtuellen Computern an einen Load Balancer
+> * Erstellen und Anfügen von virtuellen Computern an einen Lastenausgleich
 > * Anzeigen eines Load Balancers im Betrieb
-> * Hinzufügen und Entfernen von virtuellen Computern zu bzw. aus einem Load Balancer
+> * Hinzufügen und Entfernen von virtuellen Computern zu bzw. aus einem Lastenausgleich
 
 Im nächsten Tutorial erfahren Sie, wie Sie VM-Netzwerke verwalten.
 

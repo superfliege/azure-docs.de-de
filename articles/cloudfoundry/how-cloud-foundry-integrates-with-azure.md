@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: 0959617185694d48c593996d5cd8c836098dd1cd
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 0aac3eab8a60dc1e1e15b4656fad9ffea062c08e
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062205"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968618"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Integrieren von Cloud Foundry in Azure
 
@@ -77,7 +77,7 @@ Azure Log Analytics Nozzle ist eine Cloud Foundry-Komponente, die Metriken aus d
 ## <a name="7-cost-saving"></a>7. Kosteneinsparungen
 ### <a name="cost-saving-for-devtest-environments"></a>Kosteneinsparungen für Dev/Test-Umgebungen
 #### <a name="b-series-"></a>B-Serie: *
-Während die F- und D-Serien für VMs allgemein für Pivotal Cloud Foundry-Produktionsumgebungen empfohlen werden, enthält die neue „burstfähige“ [B-Serie](https://azure.microsoft.com/blog/introducing-b-series-our-new-burstable-vm-size/) neue Optionen bereit. Virtuelle Burst-fähige Computer der B-Serie sind ideal für Workloads geeignet, die nicht kontinuierlich die volle Leistung der CPU benötigen. Hierzu zählen beispielsweise Webserver, kleine Datenbanken sowie Entwicklungs- und Testumgebungen. Diese Workloads haben in der Regel kurzfristige Leistungsanforderungen. Im Vergleich zu F1 mit 0,05 USD pro Stunde kostet B1 nur 0,012 USD pro Stunde. Weitere Informationen dazu finden Sie in der vollständigen Liste der [VM-Größen](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-general) und [Preise](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). 
+Während die F- und D-Serien für VMs allgemein für Pivotal Cloud Foundry-Produktionsumgebungen empfohlen werden, enthält die neue „burstfähige“ [B-Serie](https://azure.microsoft.com/blog/introducing-b-series-our-new-burstable-vm-size/) neue Optionen bereit. Virtuelle Burst-fähige Computer der B-Serie sind ideal für Workloads geeignet, die nicht kontinuierlich die volle Leistung der CPU benötigen. Hierzu zählen beispielsweise Webserver, kleine Datenbanken sowie Entwicklungs- und Testumgebungen. Diese Workloads haben in der Regel kurzfristige Leistungsanforderungen. Im Vergleich zu F1 mit 0,05 USD pro Stunde kostet B1 nur 0,012 USD pro Stunde. Weitere Informationen dazu finden Sie in der vollständigen Liste der [VM-Größen](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general) und [Preise](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). 
 #### <a name="managed-standard-disk"></a>Verwalteter Standarddatenträger: 
 Premium-Datenträger wurden für die zuverlässige Leistung in der Produktion empfohlen.  Mithilfe [verwalteter Datenträger](https://azure.microsoft.com/services/managed-disks/) bietet der Standardspeicher ebenfalls ähnliche Zuverlässigkeit bei unterschiedlicher Leistung. Standarddatenträger bieten für eine nicht leistungsabhängige Workload wie DevTest oder eine weniger wichtige Umgebung eine Alternative mit niedrigerem Kostenfaktor.  
 ### <a name="cost-saving-in-general"></a>Allgemeines zu Kosteneinsparungen 

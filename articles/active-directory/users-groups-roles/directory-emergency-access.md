@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
-ms.openlocfilehash: 185f6730babe077332be9f054ba338ff48295eca
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 4f3772abc1cdbd3b35b8b1f16e7a47c0f1a17783
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448955"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38595653"
 ---
 # <a name="manage-emergency-access-administrative-accounts-in-azure-ad"></a>Verwalten von Administratorkonten für den Notfallzugriff in Azure AD 
 
@@ -82,6 +82,6 @@ Führen Sie die folgenden Schritte aus, um die Mitarbeiter zur Verwendung der Ko
 - [Registrieren Sie sich für Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md), sofern nicht bereits geschehen.
 - [Erzwingen Sie Azure Multi-Factor Authentication für Einzelbenutzer, die als Administratoren fungieren](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-user-states).
 - [Konfigurieren Sie zusätzlichen Schutz für globale Administratoren in Office 365](https://support.office.com/article/Protect-your-Office-365-global-administrator-accounts-6b4ded77-ac8d-42ed-8606-c014fd947560), wenn Sie Office 365 verwenden.
-- [Führen Sie eine Zugriffsüberprüfung für globale Administratoren durch](../active-directory-privileged-identity-management-how-to-start-security-review.md), und [stellen sie vorhandene globale Administratoren auf spezifischere Administratorrollen um](directory-assign-admin-roles.md).
+- [Führen Sie eine Zugriffsüberprüfung für globale Administratoren durch](../privileged-identity-management/pim-how-to-start-security-review.md), und [stellen sie vorhandene globale Administratoren auf spezifischere Administratorrollen um](directory-assign-admin-roles.md).
 
 

@@ -10,11 +10,11 @@ ms.date: 3/22/2018
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 5e6b3d8630268d68691a68eee6c3aadc408b78f4
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34356102"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38586949"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Erstellen eines Anwendungsgateways, mit dem mehrere Websites gehostet werden, mit Azure PowerShell
 
@@ -26,7 +26,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Einrichten des Netzwerks
 > * Erstellen eines Anwendungsgateways
 > * Erstellen von Back-End-Listenern
-> * Erstellen von Weiterleitungsregeln
+> * Erstellen von Routingregeln
 > * Erstellen von VM-Skalierungsgruppen mit den Back-End-Pools
 > * Erstellen eines CNAME-Eintrags in Ihrer Domäne
 
@@ -305,7 +305,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Einrichten des Netzwerks
 > * Erstellen eines Anwendungsgateways
 > * Erstellen von Back-End-Listenern
-> * Erstellen von Weiterleitungsregeln
+> * Erstellen von Routingregeln
 > * Erstellen von VM-Skalierungsgruppen mit den Back-End-Pools
 > * Erstellen eines CNAME-Eintrags in Ihrer Domäne
 

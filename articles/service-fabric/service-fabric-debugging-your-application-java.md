@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 0e9e816fa84816b1b5d12f066dc65aee7b4930f7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 78483a5a5d78b539415aeeb0e28c1dbaf3680173
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205452"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38619339"
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Debuggen der Service Fabric-Anwendung in Java mithilfe von Eclipse
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "34205452"
 2. Aktualisieren Sie „entryPoint.sh“ für den Dienst, den Sie debuggen möchten, sodass sie den Java-Prozess mit Remotedebugparametern startet. Sie finden diese Datei am folgenden Speicherort: ``ApplicationName\ServiceNamePkg\Code\entrypoint.sh``. In diesem Beispiel wurde für das Debuggen Port 8001 festgelegt.
 
     ```sh
-    java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=y -Djava.library.path=$LD_LIBRARY_PATH -jar myapp.jar
+    java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar myapp.jar
     ```
 3. Aktualisieren Sie das Anwendungsmanifest, indem die Instanz- oder Replikatanzahl für den zu debuggenden Dienst auf 1 festlegen. Diese Einstellung vermiedet Konflikte an dem Port, der für das Debuggen verwendet wird. Legen Sie für zustandslose Dienste z.B. ``InstanceCount="1"`` und für zustandsbehaftete Dienste die Ziel- und Mindestgröße für Replikatgruppen wie folgt auf 1 fest: `` TargetReplicaSetSize="1" MinReplicaSetSize="1"``.
 

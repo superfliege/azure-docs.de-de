@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/14/2018
 ms.author: mikhegn
-ms.openlocfilehash: bca33fe187668d38d4451b2de5b9e54d86e40ba9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 437c38a8e674fcdf06e26a7191ceecef9d901470
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659651"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968319"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2017"></a>Anleitung: Debuggen von Windows-Containern in Azure Service Fabric mit Visual Studio 2017
 
@@ -26,9 +26,9 @@ Mit Visual Studio 2017 Update 7 (15.7) können Sie .NET-Anwendungen in Container
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Folgen Sie bei Windows 10 zum [Konfigurieren von Windows 10 zum Ausführen von Windows-Containern](https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-10) dieser Schnellstartanleitung
-* Folgen Sie bei Windows Server 2016 zum [Konfigurieren von Windows 2016 zum Ausführen von Windows-Containern](https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-server) dieser Schnellstartanleitung
-* Richten Sie Ihre lokale Service Fabric-Umgebung ein, indem Sie die unter [Vorbereiten Ihrer Entwicklungsumgebung unter Windows](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started) beschriebenen Anweisungen ausführen.
+* Folgen Sie bei Windows 10 zum [Konfigurieren von Windows 10 zum Ausführen von Windows-Containern](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10) dieser Schnellstartanleitung
+* Folgen Sie bei Windows Server 2016 zum [Konfigurieren von Windows 2016 zum Ausführen von Windows-Containern](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) dieser Schnellstartanleitung
+* Richten Sie Ihre lokale Service Fabric-Umgebung ein, indem Sie die unter [Vorbereiten Ihrer Entwicklungsumgebung unter Windows](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started) beschriebenen Anweisungen ausführen.
 
 ## <a name="configure-your-developer-environment-to-debug-containers"></a>Konfigurieren der Entwicklerumgebung zum Debuggen von Containern
 
@@ -47,7 +47,7 @@ Mit Visual Studio 2017 Update 7 (15.7) können Sie .NET-Anwendungen in Container
     > Sie können `-CreateOneNodeCluster` zum Einrichten eines Einzelknotenclusters verwenden. Mit dem Standardwert wird ein lokaler Cluster mit fünf Knoten erstellt.
     >
 
-    Weitere Informationen zum DNS-Dienst in Service Fabric finden Sie unter [DNS-Dienst in Azure Service Fabric](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-dnsservice).
+    Weitere Informationen zum DNS-Dienst in Service Fabric finden Sie unter [DNS-Dienst in Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice).
 
 ### <a name="known-limitations-when-debugging-containers-in-service-fabric"></a>Bekannte Einschränkungen beim Debuggen von Containern in Service Fabric
 

@@ -15,12 +15,12 @@ ms.component: compliance-reports
 ms.date: 05/02/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 0180968d85fffcaf1ee5e224e72864d2ab0511ca
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: d2e0f1ecea84398f9e4d43af07b9871f36e8dd48
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446049"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38295008"
 ---
 # <a name="azure-ad-access-reviews"></a>Azure AD-Zugriffsüberprüfungen
 
@@ -43,4 +43,4 @@ Mithilfe von Azure AD-Zugriffsüberprüfungen (Azure Active Directory) können U
 - [Manage guest access with Azure AD access reviews](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md) (Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen)
 - [Manage programs and controls for Azure AD access reviews](active-directory-azure-ad-controls-manage-programs-controls.md) (Verwalten der Programme und Kontrollen für Azure AD-Zugriffsüberprüfungen)
 - [Erstellen einer Zugriffsüberprüfung für Mitglieder einer Gruppe oder den Zugriff auf eine Anwendung](active-directory-azure-ad-controls-create-access-review.md)
-- [Erstellen einer Zugriffsüberprüfung von Benutzern in der Azure AD-Administratorrolle](active-directory-privileged-identity-management-how-to-start-security-review.md)
+- [Erstellen einer Zugriffsüberprüfung von Benutzern in der Azure AD-Administratorrolle](privileged-identity-management/pim-how-to-start-security-review.md)

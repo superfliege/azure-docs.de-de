@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/19/2017
 ms.author: alkohli
 ms.openlocfilehash: 0f8e00d6d07224f56625482f339e612e68914be2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108238"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38606588"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-volume-containers"></a>Verwalten von StorSimple-Volumecontainern mithilfe des StorSimple-Geräte-Manager-Diensts
 
@@ -58,5 +58,5 @@ In einem Volumecontainer sind Volumes enthalten. Er kann nur gelöscht werden, n
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über das [Verwalten von StorSimple-Volumes](storsimple-8000-manage-volumes-u2.md). 
-* Weitere Informationen zum [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-manager-service-administration.md).
+* Erfahren Sie mehr [Verwalten von StorSimple-Geräten mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-manager-service-administration.md).
 

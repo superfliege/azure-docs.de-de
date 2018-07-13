@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 57d6d63c55f8ad4da5d1905a1e209da454b0491c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108388"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38630193"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>Installieren von Update 4 auf Ihrem StorSimple-Gerät
 
@@ -74,7 +74,7 @@ Das Hotfixverfahren umfasst die folgenden drei Schritte:
 
 Sie müssen die folgenden Hotfixes in der vorgeschriebenen Reihenfolge und in die vorgeschlagenen Ordner herunterladen und installieren:
 
-| Reihenfolge | KB | Beschreibung | Updatetyp | Installationszeit |Installationsordner|
+| Reihenfolge | KB | BESCHREIBUNG | Updatetyp | Installationszeit |Installationsordner|
 | --- | --- | --- | --- | --- | --- |
 | 1. |KB4011839 |Softwareupdate |Regulär  <br></br>Unterbrechungsfrei |ca. 25 Min. |FirstOrderUpdate|
 | 2A. |KB4011841 <br> KB4011842 |Updates von LSI-Treiber und -Firmware <br> Update der USM-Firmware (Version 3.38) |Regulär  <br></br>Unterbrechungsfrei |ca. 3 Stunden <br> (enthält 2A. + 2B. + 2C.)|SecondOrderUpdate|
@@ -83,7 +83,7 @@ Sie müssen die folgenden Hotfixes in der vorgeschriebenen Reihenfolge und in di
 
 Sie müssen zusätzlich zu den in den vorhergehenden Tabellen enthaltenen Updates ggf. auch Updates der Firmware von Datenträgern installieren. Sie können überprüfen, ob Sie Updates für die Datenträgerfirmware benötigen, indem Sie das Cmdlet `Get-HcsFirmwareVersion` ausführen. Wenn Sie die Firmwareversionen `XMGJ`, `XGEG`, `KZ50`, `F6C2`, `VR08`, `N002`, `0106` ausführen, müssen Sie diese Updates nicht installieren.
 
-| Reihenfolge | KB | Beschreibung | Updatetyp | Installationszeit | Installationsordner|
+| Reihenfolge | KB | BESCHREIBUNG | Updatetyp | Installationszeit | Installationsordner|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB3121899 |Datenträgerfirmware |Wartung  <br></br>Mit Unterbrechung |~ 30 Min. | ThirdOrderUpdate |
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: v-jysur
 ms.component: na
-ms.openlocfilehash: 15626a9dd2e889470477e34d6f1ebd47cce1411b
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 0fe987b00da669daf3830e903d53793d9d1edab6
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128655"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950123"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Erstellen einer Service Manager-Web-App mithilfe des automatisierten Skripts
 
@@ -42,7 +42,7 @@ Speichern Sie diese Werte, die Sie benötigen, wenn Sie eine Verbindung mit dem 
 ## <a name="prerequisites"></a>Voraussetzungen
 
  Windows Management Framework 5.0 oder höher.
-Windows 10 verfügt standardmäßig über Version 5.1. Sie können das Framework [hier](https://www.microsoft.com/download/details.aspx?id=53347) herunterladen:
+Windows 10 verfügt standardmäßig über Version 5.1. Sie können das Framework [hier](https://www.microsoft.com/download/details.aspx?id=50395) herunterladen:
 
 Führen Sie das folgende Skript aus:
 

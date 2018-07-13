@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 05/31/2018
+ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: aa6f3560d3939eb448c4193e3b3301073c601904
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: c72ae695c33bf9147bce7f326e8501ce2a88bb33
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284036"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916601"
 ---
 # <a name="replicate-an-azure-vm-to-another-azure-region"></a>Replizieren eines virtuellen Azure-Computers in einer anderen Azure-Region
 
@@ -26,7 +26,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="log-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 149f91f3091f08da2e54458d708a17da928c1972
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 7a314ada1c25b57b6d1701bf414a42a58397e1f0
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131734"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903131"
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>Schreiben in HDFS aus Apache Storm auf HDInsight
 
@@ -69,7 +69,7 @@ Weitere Informationen finden Sie unter Apache.org in dem Verweis auf [HdfsBolt](
 
 ### <a name="example-configuration"></a>Beispielkonfiguration
 
-Der folgende YAML-Code ist ein Auszug aus der im Beispiel enthaltenen `resources/writetohdfs.yaml`-Datei. Diese Datei definiert die Storm-Topologie mit dem [Flux](https://storm.apache.org/releases/1.1.0/flux.html)-Framework für Apache Storm.
+Der folgende YAML-Code ist ein Auszug aus der im Beispiel enthaltenen `resources/writetohdfs.yaml`-Datei. Diese Datei definiert die Storm-Topologie mit dem [Flux](https://storm.apache.org/releases/1.1.2/flux.html)-Framework für Apache Storm.
 
 ```yaml
 components:
@@ -133,7 +133,7 @@ Dieser YAML-Code definiert die folgenden Elemente:
 * `rotationPolicy`: Definiert das Rotieren der Dateien. In diesem Beispiel erfolgt keine Rotation.
 * `hdfs-bolt`: Verwendet die vorherigen Komponenten als Konfigurationsparameter für die `HdfsBolt`-Klasse.
 
-Weitere Informationen zum Flux-Framework finden Sie unter [https://storm.apache.org/releases/1.1.0/flux.html](https://storm.apache.org/releases/1.1.0/flux.html).
+Weitere Informationen zum Flux-Framework finden Sie unter [https://storm.apache.org/releases/1.1.2/flux.html](https://storm.apache.org/releases/1.1.2/flux.html).
 
 ## <a name="configure-the-cluster"></a>Konfigurieren des Clusters
 

@@ -16,11 +16,11 @@ ms.date: 05/18/2018
 ms.author: wesmc
 ms.custom: mvc
 ms.openlocfilehash: 63bab0e5c77204ea1e122c32a508e31ed9bcd114
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660536"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38696958"
 ---
 # <a name="quickstart-use-azure-redis-cache-with-a-net-core-app"></a>Schnellstart: Verwenden von Azure Redis Cache mit einer .NET Core-App
 
@@ -330,7 +330,7 @@ Daraufhin werden die Ressourcengruppe und alle darin enthaltenen Ressourcen gel�
 In dieser Schnellstartanleitung wurde beschrieben, wie Sie Azure Redis Cache für eine .NET Core-Anwendung verwenden. Fahren Sie mit der nächsten Schnellstartanleitung zur Nutzung von Redis Cache mit einer ASP.NET-Web-App fort.
 
 > [!div class="nextstepaction"]
-> [Erstellen einer ASP.NET-Web-App mit Redis Cache](./cache-web-app-howto.md)
+> [Schnellstart: Erstellen einer ASP.NET-Web-App mit Redis Cache](./cache-web-app-howto.md)
 
 
 

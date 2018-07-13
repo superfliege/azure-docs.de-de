@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 80cdd2bdad5962a9d5f6a0e20f34ac3db1942741
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 578fb3f8bfe68ccd9bbade0ad04f3a811a249c08
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650936"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37906386"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple-Sicherheit und -Datenschutz
 
@@ -43,7 +43,7 @@ In den folgenden Abschnitten werden die in der StorSimple-Sicherheitsfunktionen 
 
 Der StorSimple-Geräte-Manager-Dienst ist ein in Microsoft Azure gehosteter Verwaltungsdienst, der zum Verwalten aller StorSimple-Geräte verwendet wird, die Ihre Organisation beschafft hat. Sie können auf den StorSimple-Geräte-Manager-Dienst zugreifen, indem Sie sich beim Azure-Portal mithilfe eines Webbrowsers unter Verwendung Ihrer Organisationsanmeldeinformationen anmelden.
 
-Für den Zugriff auf den StorSimple-Geräte-Manager-Dienst ist es erforderlich, dass Ihre Organisation über ein Azure-Abonnement verfügt, das StorSimple einschließt. Ihr Abonnement bestimmt die Features, auf die Sie im Azure-Portal zugreifen können. Wenn Ihre Organisation kein Azure-Abonnement besitzt, und Sie weitere Informationen dazu erhalten möchten, lesen Sie [Als Unternehmen für Azure registrieren](../active-directory/sign-up-organization.md).
+Für den Zugriff auf den StorSimple-Geräte-Manager-Dienst ist es erforderlich, dass Ihre Organisation über ein Azure-Abonnement verfügt, das StorSimple einschließt. Ihr Abonnement bestimmt die Features, auf die Sie im Azure-Portal zugreifen können. Wenn Ihre Organisation kein Azure-Abonnement besitzt, und Sie weitere Informationen dazu erhalten möchten, lesen Sie [Als Unternehmen für Azure registrieren](../active-directory/fundamentals/sign-up-organization.md).
 
 Da der StorSimple-Geräte-Manager-Dienst in Azure gehostet wird, ist er durch die Azure-Sicherheitsfeatures geschützt. Weitere Informationen zu den Sicherheitsfeatures von Microsoft Azure finden Sie im [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/security/).
 
@@ -267,7 +267,7 @@ Die folgenden Fragen und Antworten beziehen sich auf die Sicherheit und Microsof
 
 **A:** Sie können das neue Zertifikat aus dem StorSimple-Geräte-Manager-Dienst herunterladen und dann für die Installation im Zertifikatspeicher der Remotezugriffsclients bereitstellen. Anweisungen dazu finden Sie unter:
 
-* [Cmdlet "Import-Certificate"](https://technet.microsoft.com/library/hh848630.aspx)
+* [Cmdlet "Import-Certificate"](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate)
 
 **F:** Sind meine Daten im Fall einer Gefährdung des StorSimple-Geräte-Manager-Diensts geschützt?
 

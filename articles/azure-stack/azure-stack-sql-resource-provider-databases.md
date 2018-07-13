@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 56d21b76268f94f4254985a6924c4ca2d778a9cd
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 2f286c48822956c82f99808092c26f6637be5cb1
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300821"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968825"
 ---
 # <a name="create-sql-databases"></a>Erstellen von SQL-Datenbanken
 
@@ -60,7 +60,7 @@ Notieren Sie sich die **Verbindungszeichenfolge** aus der **Zusammenfassung**, d
 
 ## <a name="sql-always-on-databases"></a>SQL Always On-Datenbanken
 
-Entwurfsbedingt werden Always On-Datenbanken anders behandelt als in einer eigenständigen Serverumgebung. Weitere Informationen finden Sie unter [Einführung in SQL Server Always On-Verfügbarkeitsgruppen auf virtuellen Azure-Computern](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview).
+Entwurfsbedingt werden Always On-Datenbanken anders behandelt als in einer eigenständigen Serverumgebung. Weitere Informationen finden Sie unter [Einführung in SQL Server Always On-Verfügbarkeitsgruppen auf virtuellen Azure-Computern](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview).
 
 ### <a name="verify-sql-always-on-databases"></a>Überprüfen von SQL Always On-Datenbanken
 

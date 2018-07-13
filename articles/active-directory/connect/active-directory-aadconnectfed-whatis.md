@@ -3,7 +3,7 @@ title: Azure AD Connect und Verbund | Microsoft-Dokumentation
 description: Diese Seite ist der zentrale Speicherort für die gesamte Dokumentation zu AD FS-Vorgängen mit Azure AD Connect.
 services: active-directory
 documentationcenter: ''
-author: anandyadavmsft
+author: billmath
 manager: mtillman
 editor: ''
 ms.assetid: f9107cf5-0131-499a-9edf-616bf3afef4d
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.component: hybrid
-ms.author: anandy
-ms.openlocfilehash: 6c14b673bd9664aad54ea8002175999470661e34
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: billmath
+ms.openlocfilehash: ce6b889d23959e9d04b95ec2bc5847340b596448
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593852"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915835"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect und Verbund
 Mit Azure Active Directory (Azure AD) Connect können Sie einen Verbund mit lokalen Active Directory-Verbunddiensten (AD FS) und Azure AD konfigurieren. Mit der Verbundanmeldung können sich Benutzer mit ihren lokalen Kennwörtern bei Azure AD-basierten Diensten anmelden, während sie in ihrem Unternehmensnetzwerk angemeldet sind - und das, ohne ihre Kennwörter erneut eingeben zu müssen. Mithilfe der Verbundoption mit AD FS können Sie eine neue Installation von AD FS bereitstellen oder eine vorhandene Installation in einer Windows Server 2012 R2-Farm angeben.
