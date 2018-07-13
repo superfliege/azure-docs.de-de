@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 569dbfdeb7dcd526cb5a54b487ea1bfb59b13cc6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108278"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38681587"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>Verwenden des StorSimple-Geräte-Manager-Diensts im Azure-Portal zum Verwalten von Sicherungsrichtlinien
 
@@ -56,13 +56,13 @@ Mithilfe der Tabelle mit den Sicherungsrichtlinien können Sie außerdem die vor
 
 Für Sicherungsrichtlinien können die folgenden allgemeinen Vorgänge ausgeführt werden:
 
-* Hinzufügen einer Sicherungsrichtlinie
+* Sicherungsrichtlinie hinzufügen
 * Hinzufügen oder Ändern eines Zeitplans
 * Hinzufügen oder Entfernen eines Volumes
 * Löschen einer Sicherungsrichtlinie
 * Erstellen einer manuellen Sicherung
 
-## <a name="add-a-backup-policy"></a>Hinzufügen einer Sicherungsrichtlinie
+## <a name="add-a-backup-policy"></a>Sicherungsrichtlinie hinzufügen
 
 Fügen Sie eine Sicherungsrichtlinie zum automatischen Planen Ihrer Sicherungen hinzu. Wenn Sie ein Volume erstmals erstellen, ist diesem keine standardmäßige Sicherungsrichtlinie zugeordnet. Zum Schutz von Daten auf dem Volume müssen Sie eine Sicherungsrichtlinie hinzufügen und zuweisen.
 
@@ -98,5 +98,5 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um bei Bedarf eine (manu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-manager-service-administration.md).
+Erfahren Sie mehr [Verwalten von StorSimple-Geräten mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-manager-service-administration.md).
 

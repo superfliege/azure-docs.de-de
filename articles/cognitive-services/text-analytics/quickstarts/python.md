@@ -1,0 +1,319 @@
+---
+title: Python-Schnellstart für Azure Cognitive Services, Textanalyse-API | Microsoft-Dokumentation
+description: Informationen und Codebeispiele für die ersten Schritte mit der Textanalyse-API in Microsoft Cognitive Services in Azure
+services: cognitive-services
+author: ashmaka
+ms.service: cognitive-services
+ms.component: text-analytics
+ms.topic: article
+ms.date: 05/02/2018
+ms.author: ashmaka
+ms.openlocfilehash: b4c02767320b71912050ad511811767e6b5decf4
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "35374515"
+---
+# <a name="quickstart-for-text-analytics-api-with-python"></a>Schnellstart für die Textanalyse-API mit Python 
+<a name="HOLTop"></a>
+
+Diese Anleitung veranschaulicht, wie Sie mithilfe der [Textanalyse-APIs](//go.microsoft.com/fwlink/?LinkID=759711) mit Python [Sprachen erkennen](#Detect), [Stimmungen analysieren](#SentimentAnalysis) und [Schlüsselbegriffe extrahieren](#KeyPhraseExtraction).
+
+Sie können dieses Beispiel als Jupyter Notebook in [MyBinder](https://mybinder.org) ausführen, indem Sie auf das Binder-Badge klicken: 
+
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=TextAnalytics.ipynb)
+
+Die technische Dokumentation für die APIs finden Sie in den [API-Definitionen](//go.microsoft.com/fwlink/?LinkID=759346).
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Sie benötigen ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit einer **Textanalyse-API**. Sie können diese Anleitung mit dem **Free-Tarif für 5.000 Transaktionen/Monat** abschließen.
+
+Außerdem benötigen Sie den [Endpunkt und den Zugriffsschlüssel](../How-tos/text-analytics-how-to-access-key.md) – beide wurden der Registrierung für Sie generiert. 
+
+Um mit dieser Anleitung fortzufahren, ersetzen Sie `subscription_key` durch einen gültigen Abonnementschlüssel, den Sie zuvor erhalten haben.
+
+
+```python
+subscription_key = None
+assert subscription_key
+```
+
+Überprüfen Sie dann, ob die Region in `text_analytics_base_url` der Region entspricht, für die Sie den Dienst eingerichtet haben. Wenn Sie einen Schlüssel für die kostenlose Testversion verwenden, müssen Sie keine Änderungen vornehmen.
+
+
+```python
+text_analytics_base_url = "https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/"
+```
+
+<a name="Detect"></a>
+
+## <a name="detect-languages"></a>Sprachenerkennung
+
+Die Sprachenerkennungs-API erfasst die Sprache eines Textdokuments mithilfe der [Sprachenerkennungsmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7). Der Dienstendpunkt der Sprachenerkennungs-API für Ihre Region ist unter der folgenden URL verfügbar:
+
+
+```python
+language_api_url = text_analytics_base_url + "languages"
+print(language_api_url)
+```
+
+    https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/languages
+
+
+Die Nutzlast an die API besteht aus einer Liste von `documents`, die jeweils eine `id` und ein `text`-Attribut enthalten. Das `text`-Attribut speichert den Text, der analysiert werden soll. 
+
+Ersetzen Sie das `documents`-Wörterbuch durch einen beliebigen Text zur Sprachenerkennung. 
+
+
+```python
+documents = { 'documents': [
+    { 'id': '1', 'text': 'This is a document written in English.' },
+    { 'id': '2', 'text': 'Este es un document escrito en Español.' },
+    { 'id': '3', 'text': '这是一个用中文写的文件' }
+]}
+```
+
+Die nächsten Codezeilen rufen die Sprachenerkennungs-API über die `requests`-Bibliothek in Python auf, um die Sprache der Dokumente zu ermitteln.
+
+
+```python
+import requests
+from pprint import pprint
+headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
+response  = requests.post(language_api_url, headers=headers, json=documents)
+languages = response.json()
+pprint(languages)
+```
+
+    {'documents': [{'detectedLanguages': [{'iso6391Name': 'en',
+                                           'name': 'English',
+                                           'score': 1.0}],
+                    'id': '1'},
+                   {'detectedLanguages': [{'iso6391Name': 'es',
+                                           'name': 'Spanish',
+                                           'score': 1.0}],
+                    'id': '2'},
+                   {'detectedLanguages': [{'iso6391Name': 'zh_chs',
+                                           'name': 'Chinese_Simplified',
+                                           'score': 1.0}],
+                    'id': '3'}],
+     'errors': []}
+
+
+Die folgenden Codezeilen rendern die JSON-Daten als eine HTML-Tabelle.
+
+
+```python
+from IPython.display import HTML
+table = []
+for document in languages["documents"]:
+    text  = next(filter(lambda d: d["id"] == document["id"], documents["documents"]))["text"]
+    langs = ", ".join(["{0}({1})".format(lang["name"], lang["score"]) for lang in document["detectedLanguages"]])
+    table.append("<tr><td>{0}</td><td>{1}</td>".format(text, langs))
+HTML("<table><tr><th>Text</th><th>Detected languages(scores)</th></tr>{0}</table>".format("\n".join(table)))
+```
+
+<a name="SentimentAnalysis"></a>
+
+## <a name="analyze-sentiment"></a>Analysieren von Stimmungen
+
+Die Standpunktanalyse-API erkennt die Stimmung eines Textdatensatzes mithilfe der [Stimmungsmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Im folgende Beispiel werden zwei Dokumente bewertet, ein englisches und ein spanisches.
+
+Der Dienstendpunkt für die Standpunktanalyse ist für Ihre Region unter der folgenden URL verfügbar:
+
+
+```python
+sentiment_api_url = text_analytics_base_url + "sentiment"
+print(sentiment_api_url)
+```
+
+    https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment
+
+
+Wie im Sprachenerkennungsbeispiel wird der Dienst mit einem Wörterbuch mit einem `documents`-Schlüssel bereitgestellt, der aus einer Dokumentenliste besteht. Jedes Dokument ist ein Tupel aus der `id`, dem zu analysierenden `text` und der `language` des Texts. Sie können dieses Feld mithilfe der Sprachenerkennungs-API aus dem vorherigen Abschnitt auffüllen. 
+
+
+```python
+documents = {'documents' : [
+  {'id': '1', 'language': 'en', 'text': 'I had a wonderful experience! The rooms were wonderful and the staff was helpful.'},
+  {'id': '2', 'language': 'en', 'text': 'I had a terrible time at the hotel. The staff was rude and the food was awful.'},  
+  {'id': '3', 'language': 'es', 'text': 'Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos.'},  
+  {'id': '4', 'language': 'es', 'text': 'La carretera estaba atascada. Había mucho tráfico el día de ayer.'}
+]}
+```
+
+Mit der Standpunktanalyse-API lässt sich nun die Stimmung von Dokumenten analysieren.
+
+
+```python
+headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
+response  = requests.post(sentiment_api_url, headers=headers, json=documents)
+sentiments = response.json()
+pprint(sentiments)
+```
+
+    {'documents': [{'id': '1', 'score': 0.7673527002334595},
+                   {'id': '2', 'score': 0.18574094772338867},
+                   {'id': '3', 'score': 0.5}],
+     'errors': []}
+
+
+Die Stimmungspunktzahl eines Dokuments liegt zwischen $0$ und $1$, dabei gilt: Je höher der Wert, umso positiver die Stimmung.
+
+<a name="KeyPhraseExtraction"></a>
+
+## <a name="extract-key-phrases"></a>Extrahieren von Schlüsselbegriffen
+
+Die Schlüsselbegriffserkennungs-API extrahiert Schlüsselbegriffe aus einem Textdokument mithilfe der [Schlüsselbegriffmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). In diesem Abschnitt der Anleitung werden Schlüsselbegriffe für englische und spanische Dokumente extrahiert.
+
+Der Dienstendpunkt für den Schlüsselbegriffserkennungs-Dienst ist unter der folgenden URL verfügbar:
+
+
+```python
+key_phrase_api_url = text_analytics_base_url + "keyPhrases"
+print(key_phrase_api_url)
+```
+
+    https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases
+
+
+Die Sammlung der Dokumente entspricht der Sammlung, die für die Stimmungsanalyse verwendet wurde.
+
+
+```python
+documents = {'documents' : [
+  {'id': '1', 'language': 'en', 'text': 'I had a wonderful experience! The rooms were wonderful and the staff was helpful.'},
+  {'id': '2', 'language': 'en', 'text': 'I had a terrible time at the hotel. The staff was rude and the food was awful.'},  
+  {'id': '3', 'language': 'es', 'text': 'Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos.'},  
+  {'id': '4', 'language': 'es', 'text': 'La carretera estaba atascada. Había mucho tráfico el día de ayer.'}
+]}
+headers   = {'Ocp-Apim-Subscription-Key': subscription_key}
+response  = requests.post(key_phrase_api_url, headers=headers, json=documents)
+key_phrases = response.json()
+pprint(key_phrases)
+```
+
+
+    {'documents': [
+        {'keyPhrases': ['wonderful experience', 'staff', 'rooms'], 'id': '1'},
+        {'keyPhrases': ['food', 'terrible time', 'hotel', 'staff'], 'id': '2'},
+        {'keyPhrases': ['Monte Rainier', 'caminos'], 'id': '3'},
+        {'keyPhrases': ['carretera', 'tráfico', 'día'], 'id': '4'}],
+     'errors': []
+    }
+
+
+Das JSON-Objekt kann als eine HTML-Tabelle mit den folgenden Codezeilen erneut gerendert werden:
+
+
+```python
+from IPython.display import HTML
+table = []
+for document in key_phrases["documents"]:
+    text    = next(filter(lambda d: d["id"] == document["id"], documents["documents"]))["text"]    
+    phrases = ",".join(document["keyPhrases"])
+    table.append("<tr><td>{0}</td><td>{1}</td>".format(text, phrases))
+HTML("<table><tr><th>Text</th><th>Key phrases</th></tr>{0}</table>".format("\n".join(table)))
+```
+
+## <a name="identify-linked-entities"></a>Erkennen von Entitätsverknüpfungen
+
+Die Entitätsverknüpfungs-API erkennt bekannte Entitäten in einem Textdokument mithilfe der [Entitätsverknüpfungsmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634). Im folgenden Beispiel werden Entitäten für englische Dokumente erkannt.
+
+Der Dienstendpunkt für den Entitätsverknüpfungsdienst ist unter der folgenden URL verfügbar:
+
+
+```python
+entity_linking_api_url = text_analytics_base_url + "entities"
+print(entity_linking_api_url)
+```
+
+    https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/entities
+
+
+Die Sammlung der Dokumente wird unten angezeigt:
+
+
+```python
+documents = {'documents' : [
+  {'id': '1', 'text': 'I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.'},
+  {'id': '2', 'text': 'The Seattle Seahawks won the Super Bowl in 2014.'}
+]}
+```
+
+Jetzt können die Dokumente an die Textanalyse-API gesendet werden, um die Antwort zu erhalten.
+
+```python
+headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
+response  = requests.post(entity_linking_api_url, headers=headers, json=documents)
+entities = response.json()
+```
+    {
+        "documents": [
+            {
+                "id": "1",
+                "entities": [
+                    {
+                        "name": "Xbox One",
+                        "matches": [
+                            {
+                                "text": "XBox One",
+                                "offset": 23,
+                                "length": 8
+                            }
+                        ],
+                        "wikipediaLanguage": "en",
+                        "wikipediaId": "Xbox One",
+                        "wikipediaUrl": "https://en.wikipedia.org/wiki/Xbox_One",
+                        "bingId": "446bb4df-4999-4243-84c0-74e0f6c60e75"
+                    },
+                    {
+                        "name": "Ultra-high-definition television",
+                        "matches": [
+                            {
+                                "text": "4K",
+                                "offset": 63,
+                                "length": 2
+                            }
+                        ],
+                        "wikipediaLanguage": "en",
+                        "wikipediaId": "Ultra-high-definition television",
+                        "wikipediaUrl": "https://en.wikipedia.org/wiki/Ultra-high-definition_television",
+                        "bingId": "7ee02026-b6ec-878b-f4de-f0bc7b0ab8c4"
+                    }
+                ]
+            },
+            {
+                "id": "2",
+                "entities": [
+                    {
+                        "name": "2013 Seattle Seahawks season",
+                        "matches": [
+                            {
+                                "text": "Seattle Seahawks",
+                                "offset": 4,
+                                "length": 16
+                            }
+                        ],
+                        "wikipediaLanguage": "en",
+                        "wikipediaId": "2013 Seattle Seahawks season",
+                        "wikipediaUrl": "https://en.wikipedia.org/wiki/2013_Seattle_Seahawks_season",
+                        "bingId": "eb637865-4722-4eca-be9e-0ac0c376d361"
+                    }
+                ]
+            }
+        ],
+        "errors": []
+    }
+
+## <a name="next-steps"></a>Nächste Schritte
+
+> [!div class="nextstepaction"]
+> [Textanalyse mit Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
+
+## <a name="see-also"></a>Weitere Informationen 
+
+ [Übersicht über die Textanalyse](../overview.md)  
+ [Häufig gestellte Fragen (FAQ)](../text-analytics-resource-faq.md)

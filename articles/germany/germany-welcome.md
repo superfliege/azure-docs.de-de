@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: ba13298654a5f73fcdfcb6e09b06bcbf08159bfc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2676df7c83f5fc12ab49cc4d0d8f7144ff0d6241
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22647082"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37855564"
 ---
 # <a name="welcome-to-azure-germany"></a>Willkommen bei Azure Deutschland
 ## <a name="overview"></a>Übersicht
@@ -32,7 +32,7 @@ Azure Deutschland unterstützt im Wesentlichen dieselben hervorragenden Funktion
 ## <a name="azure-germany-documentation"></a>Azure Deutschland-Dokumentation
 Diese Website beschreibt den Funktionsumfang der Dienste von [Microsoft Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/) und enthält allgemeine Informationen für alle Kunden. Bevor Sie speziell regulierte Daten in Ihr Azure Deutschland-Abonnement einfügen, sollten Sie sich mit den Funktionen von Azure Deutschland vertraut machen.
 
-Auf der [Complianceseite von Microsoft Azure Trust Center](http://www.microsoft.com/TrustCenter/Compliance/default.aspx) finden Sie aktuelle Informationen zu den Azure Deutschland-Diensten, die spezifischen Akkreditierungen und Regulierungen unterliegen. Gegebenenfalls sind weitere Microsoft-Dienste verfügbar, die jedoch nicht zu den in Azure Deutschland vorhandenen Diensten gehören oder Gegenstand dieser Dokumentation sind. Azure Deutschland-Dienste ermöglichen unter anderem die Verwendung verschiedener zusätzlicher Ressourcen, Anwendungen oder Dienste, die von Drittanbietern (oder von Microsoft im Rahmen separater Nutzungsbedingungen und Datenschutzrichtlinien) bereitgestellt werden. Auch diese sind nicht Gegenstand dieser Dokumentation. Die Bedingungen solcher (etwa über den Azure Marketplace angebotenen) Zusatzangebote müssen von Ihnen eigenverantwortlich geprüft werden, um sicherzustellen, dass sie Ihre Complianceanforderungen erfüllen.
+Auf der [Complianceseite von Microsoft Azure Trust Center](http://www.microsoft.com/en-us/TrustCenter/Compliance/default.aspx) finden Sie aktuelle Informationen zu den Azure Deutschland-Diensten, die spezifischen Akkreditierungen und Regulierungen unterliegen. Gegebenenfalls sind weitere Microsoft-Dienste verfügbar, die jedoch nicht zu den in Azure Deutschland vorhandenen Diensten gehören oder Gegenstand dieser Dokumentation sind. Azure Deutschland-Dienste ermöglichen unter anderem die Verwendung verschiedener zusätzlicher Ressourcen, Anwendungen oder Dienste, die von Drittanbietern (oder von Microsoft im Rahmen separater Nutzungsbedingungen und Datenschutzrichtlinien) bereitgestellt werden. Auch diese sind nicht Gegenstand dieser Dokumentation. Die Bedingungen solcher (etwa über den Azure Marketplace angebotenen) Zusatzangebote müssen von Ihnen eigenverantwortlich geprüft werden, um sicherzustellen, dass sie Ihre Complianceanforderungen erfüllen.
 
 Azure Deutschland ist für Kunden und Partner weltweit verfügbar, die in der EU/EFTA, einschließlich Großbritannien, geschäftlich tätig sind.
 
