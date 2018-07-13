@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 79857f05505a59de94d7a6926afe38cceeac34f3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5505ec8dd25e5468fad81d4eb26980202425969a
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "35628124"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -27,21 +28,22 @@ Azure Cost Management zeigt die Nutzung und Kosten auf, sodass Sie Trends nachve
 > * Nachverfolgen der Nutzung und der Kosten
 > * Erkennen von Ineffizienz bei der Nutzung
 > * Erstellen von Warnungen für ungewöhnliche oder zu hohe Ausgaben
+> * Exportieren von Daten
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Sie benötigen ein Azure-Abonnement.
+- Sie benötigen ein Azure-Konto.
 - Sie müssen entweder über eine Registrierung für die Testversion oder ein kostenpflichtiges Abonnement für Azure Cost Management verfügen.
 
 ## <a name="open-the-cloudyn-portal"></a>Öffnen des Cloudyn-Portals
 
-Die Nutzung und die Kosten werden generell im Cloudyn-Portal überprüft. Öffnen Sie das Cloudyn-Portal aus dem Azure-Portal, oder navigieren Sie zu https://azure.cloudyn.com, und melden Sie sich dort an.
+Die Nutzung und die Kosten werden generell im Cloudyn-Portal überprüft. Öffnen Sie im Azure-Portal das Cloudyn-Portal, oder navigieren Sie zu https://azure.cloudyn.com, und melden Sie sich an.
 
 ## <a name="track-usage-and-cost-trends"></a>Nachverfolgen der Nutzung und der Kosten
 
-Sie verfolgen die tatsächlich für die Nutzung getätigten Ausgaben und die Kosten mit Berichten über den Lauf der Zeit, um Trends zu erkennen. Betrachten Sie Trends ausgehend vom Bericht über die tatsächlichen Kosten im Zeitverlauf. Klicken Sie im Menü oben im Portal auf **Cost** (Kosten) > **Cost Analysis** (Kostenanalyse) > **Actual Cost Over Time** (Tatsächliche Kosten im Zeitverlauf). Beim erstmaligen Öffnen des Berichts sind keine Gruppen oder Filter darauf angewendet.
+Sie verfolgen die tatsächlich für die Nutzung getätigten Ausgaben und die Kosten mit Berichten über den Lauf der Zeit, um Trends zu erkennen. Betrachten Sie Trends ausgehend vom Bericht über die tatsächlichen Kosten im Zeitverlauf. Klicken Sie im Menü oben links im Portal auf **Costs** > **Cost Analysis** > **Actual Cost Over Time** (Kosten > Kostenanalyse > Tatsächliche Kosten im Zeitverlauf). Beim erstmaligen Öffnen des Berichts sind keine Gruppen oder Filter darauf angewendet.
 
 Dies ist ein Beispiel für einen Bericht:
 
@@ -51,7 +53,7 @@ Im Bericht werden alle Ausgaben in den letzten 30 Tagen aufgeführt. Wenn nur di
 
 ![Gefilterte Dienste](./media/tutorial-review-usage/actual-cost02.png)
 
-Im vorherigen Beispiel fielen ab dem 31.08.2017 geringere Ausgaben als davor an. Dieser Kostentrend setzt sich für die verschiedenen Dienste über etwa neun Tage fort. Anschließend fallen wie zuvor zusätzliche Ausgaben an. Eine zu große Anzahl von Spalten kann jedoch einen offensichtlichen Trend verdecken. Sie können die Berichtsanzeige in ein Linien- oder Flächendiagramm ändern, um die Daten in anderen Darstellungen zu untersuchen. In der folgenden Abbildung ist der Trend deutlicher erkennbar.
+Im vorherigen Beispiel fielen ab dem 31.8.2017 geringere Ausgaben als davor an. Dieser Kostentrend setzt sich für die verschiedenen Dienste über etwa neun Tage fort. Anschließend fallen wie zuvor zusätzliche Ausgaben an. Eine zu große Anzahl von Spalten kann jedoch einen offensichtlichen Trend verdecken. Sie können die Berichtsanzeige in ein Linien- oder Flächendiagramm ändern, um die Daten in anderen Darstellungen zu untersuchen. In der folgenden Abbildung ist der Trend deutlicher erkennbar.
 
 ![Trend im Bericht](./media/tutorial-review-usage/actual-cost03.png)
 
@@ -89,12 +91,15 @@ Sie können Beteiligte automatisch über Anomalien bei den Ausgaben und Risiken 
 
 Für Ausgaben erstellen Sie eine Warnung anhand eines Kostenberichts. In diesem Beispiel wird mithilfe des Berichts über die tatsächlichen Kosten im Zeitverlauf eine Benachrichtigung an Sie ausgegeben, wenn sich die Azure VM-Ausgaben Ihrem Gesamtbudget nähern. Zum Erstellen der Warnung sind folgende Schritte erforderlich: Klicken Sie im Menü oben im Portal auf **Cost** (Kosten) > **Cost Analysis** (Kostenanalyse) > **Actual Cost Over Time** (Tatsächliche Kosten im Zeitverlauf). Legen Sie **Groups** (Gruppen) auf **Service** (Dienst) und **Filter on the service** (Filtern nach Dienst) auf **Azure/VM** fest. Klicken Sie in der oberen rechten Ecke des Berichts auf **Actions** (Aktionen), und wählen Sie anschließend **Schedule report** (Bericht planen) aus.
 
-Verwenden Sie die Registerkarte **Scheduling** (Planung), um sich den Bericht in den gewünschten Intervallen per E-Mail zusenden zu lassen. Wählen Sie unbedingt **Send via email** (Per E-Mail senden). Sämtliche verwendeten Tags, Gruppierungen und Filter sind in dem per E-Mail versendeten Bericht enthalten. Klicken Sie auf die Registerkarte **Threshold** (Schwellenwert), und wählen Sie **Actual Cost vs. Threshold** (Tatsächliche Kosten im Vergleich zu Schwellenwert) aus. Wenn Sie über ein Gesamtbudget von 500.000 USD verfügen und eine Benachrichtigung wünschen, wenn sich die Kosten der Hälfte des Budgetbetrags annähern, erstellen Sie eine **rote Warnung** bei 250.000 USD und eine **gelbe Warnung** bei 240.000 USD. Verwenden Sie keine Kommas in eingegebenen Werten. Wählen Sie anschließend die Anzahl der aufeinanderfolgenden Warnungen aus. Wenn Sie die festgelegte Gesamtzahl von Warnungen erhalten haben, werden keine weiteren Warnungen mehr versendet. Speichern Sie den geplanten Bericht.
+Verwenden Sie im Feld „Save or Schedule this report“ (Diesen Bericht speichern oder planen) die Registerkarte **Scheduling** (Planung), um sich den Bericht in den gewünschten Intervallen per E-Mail zusenden zu lassen. Achten Sie darauf, dass Sie **Send via email** (Per E-Mail senden) auswählen. Sämtliche verwendeten Tags, Gruppierungen und Filter sind in dem per E-Mail versendeten Bericht enthalten. Klicken Sie auf die Registerkarte **Threshold** (Schwellenwert), und wählen Sie **Actual Cost vs. Threshold** (Tatsächliche Kosten im Vergleich zu Schwellenwert) aus. Wenn Sie über ein Gesamtbudget von 500.000 USD verfügen und eine Benachrichtigung wünschen, wenn sich die Kosten der Hälfte des Budgetbetrags annähern, erstellen Sie eine **rote Warnung** bei 250.000 USD und eine **gelbe Warnung** bei 240.000 USD. Verwenden Sie keine Kommas in eingegebenen Werten. Wählen Sie anschließend die Anzahl der aufeinanderfolgenden Warnungen aus. Wenn Sie die festgelegte Gesamtzahl von Warnungen erhalten haben, werden keine weiteren Warnungen mehr versendet. Speichern Sie den geplanten Bericht.
 
 ![Beispielbericht](./media/tutorial-review-usage/schedule-alert01.png)
 
 Sie können auch die Schwellenwertmetrik „Cost Percentage vs. Budget“ (Prozentuale Kosten im Vergleich zu Budget) verwenden, um Warnungen zu erstellen. Mit dieser Metrik können Sie Budgetprozentsätze anstelle von Geldbeträgen verwenden.
 
+## <a name="export-data"></a>Exportieren von Daten
+
+Sie können auf ähnliche Weise Warnungen für Berichte erstellen. Außerdem können Sie Daten aus jedem beliebigen Bericht exportieren. Sie können beispielsweise eine Liste von Cloudyn-Konten oder anderen Benutzerdaten exportieren. Zum Exportieren eines Bericht öffnen Sie den Bericht und klicken Sie oben rechts im Bericht auf **Actions** (Aktionen). Zu den Aktionen, die Sie ausführen können, gehört **Export all report data** (Alle Berichtsdaten exportieren). Mit dieser Aktion können Sie die Informationen herunterladen oder ausdrucken. Alternativ können Sie **Schedule report** (Bericht planen) auswählen, um das Senden des Berichts als E-Mail zu planen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -104,9 +109,10 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Nachverfolgen der Nutzung und der Kosten
 > * Erkennen von Ineffizienz bei der Nutzung
 > * Erstellen von Warnungen für ungewöhnliche oder zu hohe Ausgaben
+> * Exportieren von Daten
 
 
 Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie anhand von Verlaufsdaten Ausgaben vorhersagen.
 
 > [!div class="nextstepaction"]
-> [Vorhersage zukünftiger Ausgaben](tutorial-forecast-spending.md)
+> [Prognostizieren zukünftiger Ausgaben](tutorial-forecast-spending.md)

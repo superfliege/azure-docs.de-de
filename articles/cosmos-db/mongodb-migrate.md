@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: cacda277082f62c9d98a7459cb5dbf74375bfd87
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: bdaead6fe739d62340ca225aa1a6d8adf9e86cb9
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795345"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100295"
 ---
 # <a name="azure-cosmos-db-import-mongodb-data"></a>Azure Cosmos DB: Importieren von MongoDB-Daten 
 
@@ -82,7 +82,7 @@ Beispiel:
         
     * Standardmäßig stellt Azure Cosmos DB eine neue MongoDB-Sammlung mit 1.000 Anforderungseinheiten pro Sekunde (RU/s) bereit. Erstellen Sie vor der Migration mithilfe von „mongoimport“, „mongorestore“ oder „mongomirror“ alle Sammlungen aus dem [Azure-Portal](https://portal.azure.com) oder von MongoDB-Treibern und Tools. Wenn Ihre Sammlung größer als 10 GB ist, müssen Sie eine [Shard-/partitionierte Sammlung](partition-data.md) mit einem entsprechenden Shardschlüssel erstellen.
 
-    * Über das [Azure-Portal](https://portal.azure.com) können Sie den Durchsatz Ihrer Sammlungen von 1.000 RUs pro Sekunde für eine einzelne partitionierte Sammlung und 2.500 RUs pro Sekunde für eine Shard-Sammlung speziell für die Migration erhöhen. Mit dem höheren Durchsatz können Sie Einschränkungen vermeiden und in kürzerer Zeit migrieren. Mit der stündlichen Abrechnung in Azure Cosmos DB können Sie den Durchsatz sofort nach der Migration verringern, um Kosten zu sparen.
+    * Über das [Azure-Portal](https://portal.azure.com) können Sie den Durchsatz Ihrer Sammlungen von 1.000 RUs pro Sekunde für eine einzelne partitionierte Sammlung und 2.500 RUs pro Sekunde für eine Shard-Sammlung speziell für die Migration erhöhen. Mit dem höheren Durchsatz können Sie eine Ratenbegrenzung vermeiden und in kürzerer Zeit migrieren. Mit der stündlichen Abrechnung in Azure Cosmos DB können Sie den Durchsatz sofort nach der Migration verringern, um Kosten zu sparen.
 
     * Zusätzlich zur Bereitstellung von RU/s auf Ebene der Sammlungen können Sie zudem RU/s für eine Gruppe von Sammlungen auf der übergeordneten Datenbankebene bereitstellen. Dazu müssen vorab die Datenbank und die Sammlungen erstellt sowie jeweils ein Shardschlüssel für die einzelnen Sammlungen definiert werden.
 

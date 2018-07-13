@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.date: 03/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 438aeda39c6ba9246f75f96214bb0ffa1d4d31e9
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: c3774774ff220153d1af9ec9f9807414efb3f7ce
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047807"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081807"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Ausführen eines Databricks-Notebooks mit der Databricks-Notebook-Aktivität in Azure Data Factory
 
@@ -72,7 +72,7 @@ Das folgende Video enthält eine 11-minütige Einführung und Demonstration dies
 
 2.  Wählen Sie unter **Standort** den Standort für die Data Factory aus.
 
-    Derzeit können Sie mit Data Factory V2 nur in den Regionen „USA, Osten“, „USA, Osten 2“ und „Europa, Westen“ Data Factorys erstellen. Die von Data Factory verwendeten Datenspeicher (etwa Azure Storage und Azure SQL-Datenbank) und Computedienste (etwa HDInsight) können sich in anderen Regionen befinden.
+    Eine Liste der Azure-Regionen, in denen Data Factory derzeit verfügbar ist, finden Sie, indem Sie die für Sie interessanten Regionen auf der folgenden Seite auswählen und dann **Analysen** erweitern, um **Data Factory** zu finden: [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/). Die von Data Factory verwendeten Datenspeicher (etwa Azure Storage und Azure SQL-Datenbank) und Computedienste (etwa HDInsight) können sich in anderen Regionen befinden.
 
 3.  Wählen Sie die Option **An Dashboard anheften** aus.
 
@@ -154,7 +154,7 @@ In diesem Abschnitt erstellen Sie einen verknüpften Databricks-Dienst. Dieser v
 
           ![Erstellen eines neuen Ordners](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       3. [Erstellen Sie ein neues Notebook](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python), und geben Sie ihm den Namen **mynotebook**. Klicken Sie im Ordner **adftutorial** auf **Erstellen**.
+       3. [Erstellen Sie ein neues Notebook](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python), und geben Sie ihm den Namen **mynotebook**. Klicken Sie im Ordner **adftutorial**** auf **Erstellen**.
 
           ![Erstellen eines neuen Notebooks](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 

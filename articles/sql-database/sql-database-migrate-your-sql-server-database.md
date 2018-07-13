@@ -2,19 +2,19 @@
 title: Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank mithilfe von DMA | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie mithilfe von DMA eine SQL Server-Datenbank zu Azure SQL-Datenbank migrieren.
 services: sql-database
-author: CarlRabeler
+author: sachinpMSFT
 manager: craigg
 ms.service: sql-database
 ms.custom: mvc,migrate
 ms.topic: tutorial
-ms.date: 06/20/2018
+ms.date: 07/02/2018
 ms.author: carlrab
-ms.openlocfilehash: d0954627978c7725059e0b678783c8c6ffb9e827
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: ceab627d98149774a3eb767ee56d688f9c11ff99
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308882"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346840"
 ---
 # <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dma"></a>Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank mithilfe von DMA
 
@@ -88,7 +88,7 @@ Führen Sie die folgenden Schritte aus, um eine leere SQL-­Datenbank zu erstell
 8. Akzeptieren Sie die Nutzungsbedingungen für die Vorschauversion, um die Option **Add-On-Speicher** zu verwenden. 
 
    > [!IMPORTANT]
-   > Mehr als 1 TB Speicher im Premium-Tarif ist derzeit in allen Regionen verfügbar, mit Ausnahme von: „Vereinigtes Königreich, Norden“, „USA, Westen-Mitte“, „Vereinigtes Königreich, Süden2“, „China, Osten“, „US DoD, Mitte“, „Deutschland, Mitte“, „US DoD, Osten“, „US Gov, Südwesten“, „US Gov, Süden-Mitte“, „Deutschland, Nordosten“, „China, Norden“, „US Gov, Osten“. In anderen Regionen ist der Speicher im Premium-Tarif auf 1 TB begrenzt. Siehe [Aktuelle Einschränkungen für P11–P15]( sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   > Mehr als 1 TB Speicher im Premium-Tarif ist derzeit in allen Regionen verfügbar, mit Ausnahme von: „USA, Westen-Mitte“, „China, Osten“, „US DoD, Mitte“, „USGov Iowa“, „Deutschland, Mitte“, „US DoD, Osten“, „US Gov, Südwesten“, „Deutschland, Nordosten“, „China, Norden“. In anderen Regionen ist der Speicher im Premium-Tarif auf 1 TB begrenzt. Siehe [Aktuelle Einschränkungen für P11–P15]( sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 9. Klicken Sie auf **Übernehmen**, wenn Sie die Dienstebene, die Anzahl von DTUs und die Menge an Speicherplatz ausgewählt haben.  
 

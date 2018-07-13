@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/30/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 7f8e8d920884c611965ff760bb0369e08163356e
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 52d5977b2a454dec803ad1233fcb12cc9573521c
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029603"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100350"
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: Datenmigrationstool
 
@@ -55,7 +55,7 @@ Das Datenmigrationstool ist eine Open-Source-Lösung, mit der Daten aus verschie
 * hbase
 * Azure Cosmos DB-Sammlungen
 
-Das Importtool verfügt zwar über eine grafische Benutzeroberfläche (dtui.exe), kann aber auch über die Befehlszeile (dt.exe) gesteuert werden. In der Tat gibt es eine Option, mit der nach dem Einrichten eines Imports über die Benutzeroberfläche zugeordnete Befehl ausgegeben werden kann. Quelldateien in Tabellenformat (z. B. SQL Server- oder CSV-Dateien) können so umgewandelt werden, dass während des Imports hierarchische Beziehungen (Filialdokumente) erstellt werden können. Hier erhalten Sie weitere Informationen zu Quelloptionen, zu Beispielbefehlen für den Import aus den einzelnen Quellen, zu Zieloptionen sowie zum Anzeigen der Importergebnisse.
+Das Importtool verfügt zwar über eine grafische Benutzeroberfläche (dtui.exe), kann aber auch über die Befehlszeile (dt.exe) gesteuert werden. In der Tat gibt es eine Option, mit der nach dem Einrichten eines Imports über die Benutzeroberfläche zugeordnete Befehl ausgegeben werden kann. Quelldateien in Tabellenformat (z.B. SQL Server- oder CSV-Dateien) können so umgewandelt werden, dass während des Imports hierarchische Beziehungen (Filialdokumente) erstellt werden können. Hier erhalten Sie weitere Informationen zu Quelloptionen, zu Beispielbefehlen für den Import aus den einzelnen Quellen, zu Zieloptionen sowie zum Anzeigen der Importergebnisse.
 
 ## <a id="Install"></a>Installation
 Der Quellcode des Migrationstools ist auf GitHub in [diesem Repository](https://github.com/azure/azure-documentdb-datamigrationtool) verfügbar. Sie können die Lösung herunterladen und lokal kompilieren oder eine [vorkompilierte Binärdatei herunterladen](https://cosmosdbportalstorage.blob.core.windows.net/datamigrationtool/2018.02.28-1.8.1/dt-1.8.1.zip), und dann eine der folgenden Dateien ausführen:
@@ -450,7 +450,7 @@ Während des Imports steht eine Reihe von erweiterten Optionen zur Verfügung. B
 
 Das Programm für den Import von sequenziellen Azure Cosmos DB-Datensätzen weist die folgenden erweiterten Optionen auf:
 
-1. „Number of Parallel Requests“ (Anzahl paralleler Anforderungen): Das Programm verwendet standardmäßig zwei parallele Anforderungen. Wenn die zu importierenden Dokumente klein sind, erwägen Sie, die Anzahl paralleler Anforderungen zu erhöhen. Ist die Anzahl zu groß, wird der Importvorgang unter Umständen gedrosselt.
+1. „Number of Parallel Requests“ (Anzahl paralleler Anforderungen): Das Programm verwendet standardmäßig zwei parallele Anforderungen. Wenn die zu importierenden Dokumente klein sind, erwägen Sie, die Anzahl paralleler Anforderungen zu erhöhen. Ist die Anzahl zu groß, wird für den Importvorgang unter Umständen eine Ratenbegrenzung festgelegt.
 2. Automatische ID-Generierung deaktivieren: Wenn jedes zu importierende Dokument ein ID-Feld enthält, kann durch Auswahl dieser Option die Leistung erhöht werden. Dokumente ohne Feld für eine eindeutige ID werden nicht importiert.
 3. Aktualisieren vorhandener Dokumente: Das Tool ersetzt standardmäßig vorhandene Dokumente mit ID-Konflikten nicht. Durch Aktivieren dieser Option können bereits vorhandene Dokumente mit entsprechenden IDs überschrieben werden. Diese Funktion ist hilfreich für geplante Datenmigrationen, die vorhandene Dokumente aktualisieren.
 4. „Number of Retries on Failure“ (Anzahl der Wiederholungsversuche bei Fehler): Gibt an, wie häufig bei einem vorübergehenden Fehler (beispielsweise bei einer Unterbrechung der Netzwerkverbindung) versucht werden soll, eine Verbindung mit Azure Cosmos DB herzustellen.

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: afc9e7c0635f9920aa3ec7c9e6012aa4e41edb9d
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 8e6873f45beac281adbc7a9669504f1703a9eaf5
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062040"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345490"
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Bereitstellen von Azure Machine Learning als IoT Edge-Modul – Vorschau
 
@@ -60,14 +60,14 @@ Bearbeiten Sie die Konfigurationsdatei für den IoT Edge-Daemon:
 sudo nano /etc/iotedge/config.yaml
 ```
 
-Aktualisieren Sie den Abschnitt **connect** der Konfiguration. Beispiel: 
+Aktualisieren Sie den Abschnitt **connect** der Konfiguration mit Ihrer IP-Adresse. Beispiel:
 ```yaml
 connect:
   management_uri: "http://172.17.0.1.1:15580"
   workload_uri: "http://172.17.0.1:15581"
 ```
 
-Geben Sie die gleichen Adressen in den Konfigurationsabschnitt **listen** ein. Beispiel: 
+Geben Sie die gleichen Adressen in den Konfigurationsabschnitt **listen** ein. Beispiel:
 
 ```yaml
 listen:
@@ -125,7 +125,7 @@ az ml service create realtime --model-file model.pkl -f iot_score.py -n machinel
 1. Wenn Sie zuvor das tempSensor-Modul auf Ihrem IoT Edge-Gerät bereitgestellt haben, wird es unter Umständen automatisch aufgefüllt. Wenn es nicht bereits in Ihrer Liste der Module enthalten ist, fügen Sie es hinzu.
 
     1. Klicken Sie auf **Hinzufügen** und anschließend auf **IoT Edge-Modul**.
-    2. Geben Sie im Feld **Name** die Zeichenfolge `tempsensor` ein.
+    2. Geben Sie im Feld **Name** die Zeichenfolge `tempSensor` ein.
     3. Geben Sie im Feld **Image-URI** die Zeichenfolge `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0` ein.
     4. Wählen Sie **Speichern**aus.
 
@@ -201,7 +201,7 @@ Die folgenden Schritte zeigen, wie Sie Visual Studio Code einrichten, um Gerät-
 
 <!--[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)] -->
 
-Falls Sie mit dem nächsten empfohlenen Artikel fortfahren möchten, können Sie die bereits erstellten Ressourcen und Konfigurationen behalten und wiederverwenden.
+Falls Sie mit dem nächsten empfohlenen Artikel fortfahren möchten, können Sie die bereits erstellten Ressourcen und Konfigurationen beibehalten und wiederverwenden.
 
 Andernfalls können Sie die in diesem Artikel erstellten lokalen Konfigurationen und Azure-Ressourcen löschen, um Kosten zu vermeiden. 
 
@@ -216,7 +216,7 @@ az iot hub delete --name MyIoTHub --resource-group TestResources
 ```
 
 
-So löschen Sie die gesamte Ressourcengruppe anhand des Namens:
+Löschen Sie die gesamte Ressourcengruppe wie folgt anhand des Namens:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen**.
 

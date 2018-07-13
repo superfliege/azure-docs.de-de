@@ -8,12 +8,12 @@ ms.date: 2/21/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 7429516538c892bea04d38a98abcfb13ba960d22
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: de91559d9c3626bdd07c2e497a8aa0b124f00b57
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286399"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37434839"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Fragen zum Sichern von Azure Files
 In diesem Artikel werden allgemeine Fragen zum Sichern von Azure Files beantwortet. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
@@ -68,7 +68,7 @@ Die Sicherung für Azure-Dateifreigaben befindet sich derzeit in der Vorschaupha
 Schreiben Sie an [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com), wenn Sie die Version an einem bestimmten geografischen Standort verwenden müssen, der oben nicht aufgeführt ist.
 
 ### <a name="how-many-azure-file-shares-can-i-protect-in-a-vaultbr"></a>Wie viele Azure-Dateifreigaben kann ich in einem Tresor schützen?<br/>
-Während der Vorschauphase können Sie Azure-Dateifreigaben aus bis zu 25 Speicherkonten pro Tresor schützen. Sie können auch bis zu 200 Azure-Dateifreigaben in einem einzelnen Tresor schützen.
+Während der Vorschauphase können Sie Azure-Dateifreigaben aus bis zu 50 Speicherkonten pro Tresor schützen. Sie können auch bis zu 200 Azure-Dateifreigaben in einem einzelnen Tresor schützen.
 
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>Kann ich zwei verschiedene Dateifreigaben im gleichen Speicherkonto in verschiedenen Tresoren schützen?
 Nein. Alle Dateifreigaben in einem Speicherkonto können nur durch denselben Tresor geschützt werden.
@@ -81,7 +81,7 @@ Für eine Dateifreigabe können jeweils bis zu 200 Momentaufnahmen vorhanden sei
 ### <a name="after-enabling-virtual-networks-on-my-storage-account-the-backup-of-file-shares-in-the-account-started-failing-why"></a>Nach dem Aktivieren von virtuellen Netzwerken in meinem Speicherkonto ist beim Sichern der Dateifreigaben im Konto ein Fehler aufgetreten. Warum?
 Für die Sicherung für Azure-Dateifreigaben werden keine Speicherkonten unterstützt, für die virtuelle Netzwerke aktiviert sind. Deaktivieren Sie virtuelle Netzwerke in Speicherkonten, um erfolgreiche Sicherungen zu ermöglichen. 
 
-## <a name="restore"></a>Restore 
+## <a name="restore"></a>Restore
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share-br"></a>Kann die Wiederherstellung auf der Grundlage einer gelöschten Azure-Dateifreigabe erfolgen? <br/>
 Beim Löschen einer Azure-Dateifreigabe wird die Liste mit den Sicherungen angezeigt, die gelöscht werden, und Sie werden zum Bestätigen aufgefordert. Eine gelöschte Azure-Dateifreigabe kann nicht wiederhergestellt werden.

@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen einer Azure Service Fabric-Anwendung mit Continuous Integration (Team Services) | Microsoft-Dokumentation
-description: In diesem Tutorial erfahren Sie, wie Sie Continuous Integration und Continuous Deployment mithilfe von Visual Studio Team Services für eine Service Fabric-Anwendung einrichten.  Stellen Sie eine Anwendung in einem Service Fabric-Cluster in Azure bereit.
+title: Bereitstellen einer Service Fabric-App mit Continuous Integration (Team Services) in Azure | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie Continuous Integration und Continuous Deployment mithilfe von Visual Studio Team Services für eine Service Fabric-Anwendung einrichten.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -15,14 +15,15 @@ ms.workload: NA
 ms.date: 12/13/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 543b75fbc1e080d13654df06cf36874e3833e851
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: f3cc4f518278cca915e40bd691c6a7674219916e
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018398"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109391"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Tutorial: Bereitstellen einer Anwendung mit CI/CD in einem Service Fabric-Cluster
+
 Dieses Tutorial ist der vierte Teil einer Reihe und beschreibt die Einrichtung von Continuous Integration und Continuous Deployment für eine Azure Service Fabric-Anwendung mithilfe von Visual Studio Team Services.  Es ist eine vorhandene Service Fabric-Anwendung erforderlich. Die im Artikel [Erstellen einer .NET-Anwendung](service-fabric-tutorial-create-dotnet-app.md) erstellte Anwendung wird als Beispiel verwendet.
 
 Im dritten Teil der Serie lernen Sie Folgendes:
@@ -42,31 +43,36 @@ In dieser Tutorialserie lernen Sie Folgendes:
 > * [Einrichten der Überwachung und Diagnose für die Anwendung](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
-- Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Installieren Sie Visual Studio 2017](https://www.visualstudio.com/) und die Workloads **Azure-Entwicklung** und **ASP.NET und Webentwicklung**.
-- [Installieren Sie das Service Fabric SDK](service-fabric-get-started.md).
-- Erstellen Sie einen Windows Service Fabric-Cluster in Azure, z.B. durch das [Ausführen der Schritte in diesem Tutorial](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
-- Erstellen Sie ein [Team Services-Konto](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services).
+
+* Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* [Installieren Sie Visual Studio 2017](https://www.visualstudio.com/) und die Workloads **Azure-Entwicklung** und **ASP.NET und Webentwicklung**.
+* [Installieren Sie das Service Fabric SDK](service-fabric-get-started.md).
+* Erstellen Sie einen Windows Service Fabric-Cluster in Azure, z.B. durch das [Ausführen der Schritte in diesem Tutorial](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
+* Erstellen Sie ein [Team Services-Konto](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services).
 
 ## <a name="download-the-voting-sample-application"></a>Laden Sie die Beispielanwendung „Voting“ herunter.
+
 Falls Sie die Beispielanwendung „Voting“ aus [Teil 1 dieser Tutorialreihe](service-fabric-tutorial-create-dotnet-app.md) nicht erstellt haben, können Sie sie herunterladen. Führen Sie in einem Befehlsfenster den folgenden Befehl aus, um das Beispiel-App-Repository auf Ihren lokalen Computer zu klonen.
 
-```
+```git
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 ```
 
 ## <a name="prepare-a-publish-profile"></a>Erstellen eines Veröffentlichungsprofils
+
 Nachdem Sie [eine Anwendung erstellt](service-fabric-tutorial-create-dotnet-app.md) und [die Anwendung in Azure bereitgestellt](service-fabric-tutorial-deploy-app-to-party-cluster.md) haben, können Sie Continuous Integration einrichten.  Erstellen Sie zunächst in der Anwendung ein Veröffentlichungsprofil für den Bereitstellungsprozess, der in Team Services ausgeführt wird.  Das Veröffentlichungsprofil muss für den Cluster konfiguriert werden, den Sie zuvor erstellt haben.  Starten Sie Visual Studio, und öffnen Sie ein vorhandenes Service Fabric-Anwendungsprojekt.  Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Anwendung, und wählen Sie **Veröffentlichen** aus.
 
-Wählen Sie ein Zielprofil im Anwendungsprojekt aus, das Sie für den Continuous Integration-Workflow verwenden möchten, z.B. „Cloud“.  Geben Sie den Clusterverbindungsendpunkt an.  Aktivieren Sie das Kontrollkästchen **Upgrade der Anwendung ausführen**, damit für jede Bereitstellung in Team Services ein Upgrade der Anwendung erfolgt.  Klicken Sie auf den Link **Speichern**, um die Einstellungen im Veröffentlichungsprofil zu speichern, und klicken Sie dann auf **Abbrechen**, um das Dialogfeld zu schließen.  
+Wählen Sie ein Zielprofil im Anwendungsprojekt aus, das Sie für den Continuous Integration-Workflow verwenden möchten, z.B. „Cloud“.  Geben Sie den Clusterverbindungsendpunkt an.  Aktivieren Sie das Kontrollkästchen **Upgrade der Anwendung ausführen**, damit für jede Bereitstellung in Team Services ein Upgrade der Anwendung erfolgt.  Klicken Sie auf den Link **Speichern**, um die Einstellungen im Veröffentlichungsprofil zu speichern, und klicken Sie dann auf **Abbrechen**, um das Dialogfeld zu schließen.
 
 ![Profil pushen][publish-app-profile]
 
 ## <a name="share-your-visual-studio-solution-to-a-new-team-services-git-repo"></a>Freigeben der Visual Studio-Projektmappe in einem neuen Git-Repository von Team Services
-Geben Sie die Anwendungsquelldateien in einem Teamprojekt in Team Services frei, damit Sie Builds generieren können.  
 
-Erstellen Sie ein neues lokales Git-Repository für das Projekt, indem Sie auf der Statusleiste in der unteren rechten Ecke von Visual Studio **Zur Quellcodeverwaltung hinzufügen** -> **Git** auswählen. 
+Geben Sie die Anwendungsquelldateien in einem Teamprojekt in Team Services frei, damit Sie Builds generieren können.
+
+Erstellen Sie ein neues lokales Git-Repository für das Projekt, indem Sie auf der Statusleiste in der unteren rechten Ecke von Visual Studio **Zur Quellcodeverwaltung hinzufügen** -> **Git** auswählen.
 
 Klicken Sie in der Ansicht **Push** in **Team Explorer** unter **Per Push in Visual Studio Team Services übertragen** auf die Schaltfläche **Git-Repository veröffentlichen**.
 
@@ -79,30 +85,32 @@ Klicken Sie in der Ansicht **Push** in **Team Explorer** unter **Per Push in Vis
 Durch das Veröffentlichen des Repositorys wird in Ihrem Konto ein neues Teamprojekt mit dem gleichen Namen wie das lokale Repository erstellt. Um das Repository in einem vorhandenen Teamprojekt zu erstellen, klicken Sie neben **Repositoryname** auf **Erweitert**, und wählen Sie ein Teamprojekt aus. Sie können den Code im Web anzeigen, indem Sie **Im Web anzeigen** auswählen.
 
 ## <a name="configure-continuous-delivery-with-vsts"></a>Konfigurieren von Continuous Delivery mit VSTS
+
 Eine Team Services-Builddefinition beschreibt einen Workflow, der aus verschiedenen Buildschritten besteht, die nacheinander ausgeführt werden. Erstellen Sie eine Builddefinition, die ein Service Fabric-Anwendungspaket und andere Elemente erzeugt, um sie in einem Service Fabric-Cluster bereitzustellen. Weitere Informationen zu [Team Services-Builddefinitionen](https://www.visualstudio.com/docs/build/define/create). 
 
 Eine Team Services-Releasedefinition beschreibt einen Workflow, der ein Anwendungspaket in einem Cluster bereitstellt. Bei gemeinsamer Verwendung führen die Builddefinition und Releasedefinition den gesamten Workflow aus, und zwar beginnend mit den Quelldateien und endend mit einer im Cluster ausgeführten Anwendung. Erfahren Sie mehr zu Team Services- [Releasedefinitionen](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
 
 ### <a name="create-a-build-definition"></a>Erstellen einer Builddefinition
-Navigieren Sie in einem Webbrowser zu Ihrem neuen Teamprojekt: [https://&lt;IhrKonto&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting). 
 
-Wählen Sie auf der Registerkarte **Build und Release** die Option **Builds** und anschließend **+ Neue Definition** aus.  Wählen Sie unter **Vorlage auswählen** die Vorlage **Azure Service Fabric-Anwendung** aus, und klicken Sie anschließend auf **Übernehmen**. 
+Navigieren Sie in einem Webbrowser zu Ihrem neuen Teamprojekt: [https://&lt;IhrKonto&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting).
 
-![Auswählen der Buildvorlage][select-build-template] 
+Wählen Sie auf der Registerkarte **Build und Release** die Option **Builds** und anschließend **+ Neue Definition** aus.  Wählen Sie unter **Vorlage auswählen** die Vorlage **Azure Service Fabric-Anwendung** aus, und klicken Sie anschließend auf **Übernehmen**.
 
-Geben Sie unter **Aufgaben** für **Agent-Warteschlange** die Zeichenfolge „Hosted VS2017“ ein. 
+![Auswählen der Buildvorlage][select-build-template]
+
+Geben Sie unter **Aufgaben** für **Agent-Warteschlange** die Zeichenfolge „Hosted VS2017“ ein.
 
 ![Auswählen von Aufgaben][save-and-queue]
 
-Aktivieren Sie unter **Trigger** Continuous Integration durch Festlegen von **Triggerstatus**.  Klicken Sie auf **Speichern und in Warteschlange einreihen**, um manuell einen Buildvorgang zu starten.  
+Aktivieren Sie unter **Trigger** Continuous Integration durch Festlegen von **Triggerstatus**.  Klicken Sie auf **Speichern und in Warteschlange einreihen**, um manuell einen Buildvorgang zu starten.
 
 ![Auswählen von Triggern][save-and-queue2]
 
-Buildvorgänge werden auch bei Push- oder Eincheckvorgängen ausgelöst. Wechseln Sie zum Überprüfen des Buildstatus zur Registerkarte **Builds**.  Nachdem Sie überprüft haben, ob der Build erfolgreich ausgeführt wird, legen Sie eine Releasedefinition fest, mit der die Anwendung in einem Cluster bereitgestellt wird. 
+Buildvorgänge werden auch bei Push- oder Eincheckvorgängen ausgelöst. Wechseln Sie zum Überprüfen des Buildstatus zur Registerkarte **Builds**.  Nachdem Sie überprüft haben, ob der Build erfolgreich ausgeführt wird, legen Sie eine Releasedefinition fest, mit der die Anwendung in einem Cluster bereitgestellt wird.
 
-### <a name="create-a-release-definition"></a>Erstellen einer Releasedefinition  
+### <a name="create-a-release-definition"></a>Erstellen einer Releasedefinition
 
-Wählen Sie auf der Registerkarte **Build und Release** die Option **Releases** und anschließend **+ Neue Definition** aus.  Wählen Sie in der Liste unter **Vorlage auswählen** die Vorlage **Azure Service Fabric-Bereitstellung** aus, und klicken Sie auf **Anwenden**.  
+Wählen Sie auf der Registerkarte **Build und Release** die Option **Releases** und anschließend **+ Neue Definition** aus.  Wählen Sie in der Liste unter **Vorlage auswählen** die Vorlage **Azure Service Fabric-Bereitstellung** aus, und klicken Sie auf **Anwenden**.
 
 ![Auswählen der Releasevorlage][select-release-template]
 
@@ -110,11 +118,11 @@ Klicken Sie auf **Aufgaben**->**Umgebung 1** und anschließend auf **+Neu**, um 
 
 ![Hinzufügen der Clusterverbindung][add-cluster-connection]
 
-Wählen Sie in der Ansicht **Add new Service Fabric Connection** (Neue Service Fabric-Verbindung hinzufügen) die Authentifizierung **Zertifikatbasiert** oder **Azure Active Directory** aus.  Nennen Sie die Verbindung „mysftestcluster“, und geben Sie als Clusterendpunkt entweder „tcp://mysftestcluster.southcentralus.cloudapp.azure.com:19000“ (oder den Endpunkt des Zielclusters Ihrer Bereitstellung) an. 
+Wählen Sie in der Ansicht **Add new Service Fabric Connection** (Neue Service Fabric-Verbindung hinzufügen) die Authentifizierung **Zertifikatbasiert** oder **Azure Active Directory** aus.  Nennen Sie die Verbindung „mysftestcluster“, und geben Sie als Clusterendpunkt entweder „tcp://mysftestcluster.southcentralus.cloudapp.azure.com:19000“ (oder den Endpunkt des Zielclusters Ihrer Bereitstellung) an.
 
-Fügen Sie bei Verwendung der zertifikatbasierten Authentifizierung den **Zertifikatfingerabdruck des Servers** für das Serverzertifikat hinzu, das bei der Erstellung des Clusters verwendet wurde.  Fügen Sie unter **Clientzertifikat** die Base64-Codierung der Clientzertifikatdatei hinzu. Die Vorgehensweise zum Ermitteln der Base64-codierten Darstellung des Zertifikats wird in der kontextbezogenen Hilfe zu diesem Feld beschrieben. Fügen Sie auch das **Kennwort** für das Zertifikat hinzu.  Sollten Sie über kein separates Clientzertifikat verfügen, können Sie auch das Cluster- oder Serverzertifikat verwenden. 
+Fügen Sie bei Verwendung der zertifikatbasierten Authentifizierung den **Zertifikatfingerabdruck des Servers** für das Serverzertifikat hinzu, das bei der Erstellung des Clusters verwendet wurde.  Fügen Sie unter **Clientzertifikat** die Base64-Codierung der Clientzertifikatdatei hinzu. Die Vorgehensweise zum Ermitteln der Base64-codierten Darstellung des Zertifikats wird in der kontextbezogenen Hilfe zu diesem Feld beschrieben. Fügen Sie auch das **Kennwort** für das Zertifikat hinzu.  Sollten Sie über kein separates Clientzertifikat verfügen, können Sie auch das Cluster- oder Serverzertifikat verwenden.
 
-Fügen Sie bei Verwendung von Azure Active Directory-Anmeldeinformationen den **Zertifikatfingerabdruck des Servers** für das Serverzertifikat hinzu, das bei der Erstellung des Clusters verwendet wurde, und geben Sie in den Feldern **Benutzername** und **Kennwort** die Anmeldeinformationen an, die beim Herstellen der Clusterverbindung verwendet werden sollen. 
+Fügen Sie bei Verwendung von Azure Active Directory-Anmeldeinformationen den **Zertifikatfingerabdruck des Servers** für das Serverzertifikat hinzu, das bei der Erstellung des Clusters verwendet wurde, und geben Sie in den Feldern **Benutzername** und **Kennwort** die Anmeldeinformationen an, die beim Herstellen der Clusterverbindung verwendet werden sollen.
 
 Klicken Sie auf **Hinzufügen**, um die Clusterverbindung zu speichern.
 
@@ -126,10 +134,11 @@ Aktivieren Sie einen Continuous Deployment-Trigger, damit nach Abschluss des Bui
 
 ![Aktivieren des Triggers][enable-trigger]
 
-Wählen Sie **+ Release** -> **Release erstellen** -> **Erstellen** aus, um manuell ein Release zu erstellen.  Überprüfen Sie, ob die Bereitstellung erfolgreich war und die Anwendung im Cluster ausgeführt wird.  Öffnen Sie einen Webbrowser, und navigieren Sie zu [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Beachten Sie, dass die Anwendungsversion in diesem Beispiel „1.0.0.20170616.3“ lautet. 
+Wählen Sie **+ Release** -> **Release erstellen** -> **Erstellen** aus, um manuell ein Release zu erstellen.  Überprüfen Sie, ob die Bereitstellung erfolgreich war und die Anwendung im Cluster ausgeführt wird.  Öffnen Sie einen Webbrowser, und navigieren Sie zu [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Beachten Sie, dass die Anwendungsversion in diesem Beispiel „1.0.0.20170616.3“ lautet.
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>Committen und Pushen von Änderungen, Auslösen eines Release
-Wir checken einige Codeänderungen in Team Services ein, um zu überprüfen, ob die Continuous Integration-Pipeline ordnungsgemäß ausgeführt wird.    
+
+Wir checken einige Codeänderungen in Team Services ein, um zu überprüfen, ob die Continuous Integration-Pipeline ordnungsgemäß ausgeführt wird.
 
 Während Sie den Code schreiben, werden Ihre Änderungen automatisch von Visual Studio nachverfolgt. Führen Sie den Commit der Änderungen in das lokale Git-Repository aus, indem Sie auf der Statusleiste unten rechts das Symbol „Ausstehende Änderungen“ (![Ausstehend][pending]) auswählen.
 
@@ -150,6 +159,7 @@ Um den Buildstatus zu überprüfen, wechseln Sie in Visual Studio in **Team Expl
 ![Service Fabric Explorer][sfx1]
 
 ## <a name="update-the-application"></a>Aktualisieren der Anwendung
+
 Nehmen Sie in der Anwendung Codeänderungen vor.  Speichern und committen Sie die Änderungen, indem Sie die vorherigen Schritte ausführen.
 
 Sobald das Upgrade der Anwendung gestartet wird, können Sie in Service Fabric Explorer den Upgradestatus beobachten:
@@ -161,6 +171,7 @@ Das Anwendungsupgrade kann mehrere Minuten dauern. Wenn das Upgrade abgeschlosse
 ![Service Fabric Explorer][sfx3]
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
@@ -171,8 +182,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 Fahren Sie mit dem nächsten Tutorial fort:
 > [!div class="nextstepaction"]
-> [Einrichten der Überwachung und Diagnose für die Anwendung](service-fabric-tutorial-monitoring-aspnet.md) 
-
+> [Einrichten der Überwachung und Diagnose für die Anwendung](service-fabric-tutorial-monitoring-aspnet.md)
 
 <!-- Image References -->
 [publish-app-profile]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishAppProfile.png

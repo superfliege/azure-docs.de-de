@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
 manager: douge
-ms.openlocfilehash: 93c1c9cb27e5eb2d56583dccaffe92e9d50ecc2d
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: c2d92f26bec2045e7f1e8afff189d58d8c29f25a
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36959273"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099475"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Erste Schritte in Azure Dev Spaces mit .NET Core und Visual Studio
 
@@ -35,7 +35,7 @@ In diesem Leitfaden lernen Sie Folgendes:
 1. Installieren Sie die aktuelle Version von [Visual Studio 2017](https://www.visualstudio.com/vs/).
 1. Wählen Sie im Visual Studio-Installer unbedingt die folgende Workload aus:
     * ASP.NET und Webentwicklung
-1. Installieren Sie die [Visual Studio-Erweiterung für Azure Dev Spaces](https://aka.ms/get-azds-visualstudio).
+1. Installieren von [Visual Studio-Tools für Kubernetes](https://aka.ms/get-azds-visualstudio)
 
 ## <a name="create-a-web-app-running-in-a-container"></a>Erstellen einer Web-App, die in einem Container ausgeführt wird
 

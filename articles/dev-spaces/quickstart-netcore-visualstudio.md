@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
 manager: douge
-ms.openlocfilehash: 3b0e03d47a03411e3e6dc2d073d5087bcb42e03e
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 43b232e612f2ea4b47789e29a7f241bf4c35271d
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960422"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100120"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-visual-studio"></a>Schnellstart: Erstellen eines Kubernetes-Entwicklungsbereichs mit Azure Dev Spaces (.NET Core und Visual Studio)
 
@@ -39,7 +39,7 @@ In diesem Leitfaden lernen Sie Folgendes:
 
 ## <a name="set-up-azure-dev-spaces"></a>Einrichten von Azure Dev Spaces
 
-Installieren Sie die [Visual Studio-Erweiterung für Azure Dev Spaces](https://aka.ms/get-azds-visualstudio).
+Installieren von [Visual Studio-Tools für Kubernetes](https://aka.ms/get-azds-visualstudio)
 
 ## <a name="connect-to-a-cluster"></a>Herstellen der Verbindung zu einem Cluster
 
@@ -71,7 +71,7 @@ Wenn Sie einen Cluster auswählen, der nicht für die Verwendung mit Azure Dev S
 
 ![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
-Wählen Sie **OK**. 
+Klicken Sie auf **OK**. 
 
 ### <a name="look-at-the-files-added-to-project"></a>Anzeigen der zum Projekt hinzugefügten Dateien
 Während Sie auf die Erstellung des Entwicklungsbereichs warten, sehen Sie sich die Dateien an, die Ihrem Projekt hinzugefügt wurden, als Sie sich für die Verwendung von Azure Dev Spaces entschieden haben.

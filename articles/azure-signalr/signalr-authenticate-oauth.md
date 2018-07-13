@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/17/2018
+ms.date: 06/13/2018
 ms.author: wesmc
-ms.openlocfilehash: 748e5839233b9d71b9ed072d0cfe45f018471c52
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c24e3045640471ed6ee7052f877850acd8e8cf00
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869698"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37101017"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>Tutorial: Azure SignalR-Dienstauthentifizierung
 
@@ -71,7 +71,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 3. Verwenden Sie die folgenden Einstellungen für die neue OAuth-App, und klicken Sie dann auf **Register application** (Anwendung registrieren):
 
-    | Einstellungsname | Empfohlener Wert | BESCHREIBUNG |
+    | Einstellungsname | Empfohlener Wert | Beschreibung |
     | ------------ | --------------- | ----------- |
     | Anwendungsname | *Azure SignalR Chat* (Azure SignalIR-Chat) | Der GitHub-Benutzer sollte in der Lage sein, die Anwendung, mit der er sich authentifiziert, zu erkennen und zu vertrauen.   |
     | Homepage URL (URL für Startseite) | *http://localhost:5000/home* | |
@@ -88,9 +88,10 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 ### <a name="update-the-startup-class-to-support-github-authentication"></a>Aktualisieren der Startklasse zur Unterstützung der GitHub-Authentifizierung
 
-1. Fügen Sie einen Verweis auf das neueste *Microsoft.AspNetCore.Authentication.Cookies*-Paket hinzu, und stellen Sie alle Pakete wieder her.
+1. Fügen Sie einen Verweis auf das neueste *Microsoft.AspNetCore.Authentication.Cookies*- und *AspNet.Security.OAuth.GitHub*-Paket hinzu, und stellen Sie alle Pakete wieder her.
 
         dotnet add package Microsoft.AspNetCore.Authentication.Cookies -v 2.1.0-rc1-30656
+        dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
         dotnet restore
 
 1. Öffnen Sie *Startup.cs*, und fügen Sie `using`-Anweisungen für die folgenden Namespaces hinzu:
@@ -128,8 +129,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
         });
     ```
 
-4. Fügen Sie die Hilfsmethode `GetUserCompanyInfoAsync` zur Klasse `Startup` hinzu.
-    
+4. Fügen Sie die Hilfsmethode `GetUserCompanyInfoAsync` zur Klasse `Startup` hinzu.    
 
     ```csharp
     private static async Task GetUserCompanyInfoAsync(OAuthCreatingTicketContext context)
@@ -433,7 +433,7 @@ az webapp create --name $WebAppName --resource-group $ResourceGroupName \
 ```
 
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | -------------------- | --------------- |
 | ResourceGroupName | Dieser Ressourcengruppenname wurde in vorherigen Tutorials vorgeschlagen. Es ist ratsam, alle Tutorialressourcen zu gruppieren. Verwenden Sie dieselbe Ressourcengruppe wie in den vorherigen Tutorials. | 
 | WebAppPlan | Geben Sie einen neuen, eindeutigen Namen für den App Service-Plan ein. | 
@@ -479,7 +479,7 @@ connstring="Endpoint=https://$signalRhostname;AccessKey=$signalRprimarykey;"
 #Add an app setting to the web app for the SignalR connection
 az webapp config appsettings set --name $WebAppName \
     --resource-group $ResourceGroupName \
-    --settings "Azure:SignalR:ConnectionString=$connstring" 
+    --settings "Azure__SignalR__ConnectionString=$connstring" 
 
 #Add the app settings to use with GitHub authentication
 az webapp config appsettings set --name $WebAppName \
@@ -491,7 +491,7 @@ az webapp config appsettings set --name $WebAppName \
 
 ```
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | -------------------- | --------------- |
 | GitHubClientId | Weisen Sie dieser Variablen die geheime Client-ID für Ihre GitHub-OAuth-App zu. |
 | GitHubClientSecret | Weisen Sie dieser Variablen das geheime Kennwort für Ihre GitHub-OAuth-App zu. |
@@ -529,7 +529,7 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 ```
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | -------------------- | --------------- |
 | DeploymentUserName | Wählen Sie einen neuen Namen für den Bereitstellungsbenutzer. |
 | DeploymentUserPassword | Wählen Sie ein Kennwort für den neuen Bereitstellungsbenutzer. |
@@ -589,7 +589,7 @@ Falls Sie mit dem nächsten Tutorial fortfahren möchten, können Sie die in die
 Wenn Sie die Schnellstart-Beispielanwendung nicht mehr benötigen, können Sie die in dieser Schnellstartanleitung erstellten Azure-Ressourcen löschen, um das Anfallen von Kosten zu vermeiden. 
 
 > [!IMPORTANT]
-> Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden also unwiederbringlich gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. Falls Sie die Ressourcen zum Hosten dieses Beispiels in einer vorhandenen Ressourcengruppe erstellt haben, die beizubehaltende Ressourcen enthält, können Sie die Ressourcen einzeln über das jeweilige Blatt löschen, anstatt die gesamte Ressourcengruppe.
+> Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden also dauerhaft gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. Falls Sie die Ressourcen zum Hosten dieses Beispiels in einer vorhandenen Ressourcengruppe erstellt haben, die beizubehaltende Ressourcen enthält, können Sie die Ressourcen einzeln über das jeweilige Blatt löschen, statt die Ressourcengruppe zu löschen.
 > 
 > 
 

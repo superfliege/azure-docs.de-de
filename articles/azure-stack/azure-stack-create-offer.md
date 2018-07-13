@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/07/2018
+ms.date: 07/2/2018
 ms.author: brenduns
-ms.openlocfilehash: e5b96a9464bf4d0e3b69d2f635da32c6648ce793
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: eed715a7c2cb967f6c9ea0b7d4442a4f9976bd17
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35247516"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345888"
 ---
 # <a name="create-an-offer-in-azure-stack"></a>Erstellen von Angeboten in Azure Stack
 
@@ -59,7 +59,7 @@ ms.locfileid: "35247516"
      Klicken Sie auf **Alle Ressourcen**, suchen Sie nach Ihrem neuen Angebot, und wählen Sie es aus. Klicken Sie auf **Status ändern**, und wählen Sie **Öffentlich** aus.
 
    > [!NOTE]
-   > Sie können auch PowerShell verwenden, um Standardangebote, Pläne und Kontingente zu erstellen. Weitere Informationen finden Sie in den [Informationen für Azure Stack-Dienstadministratoren](https://github.com/Azure/AzureStack-Tools/tree/master/ServiceAdmin).
+   > Sie können auch PowerShell verwenden, um Standardangebote, Pläne und Kontingente zu erstellen. Weitere Informationen finden Sie in der [Azure Stack-PowerShell-Modul 1.3.0](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

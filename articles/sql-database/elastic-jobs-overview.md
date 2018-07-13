@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: overview
 ms.date: 06/14/2018
 ms.author: srinia
-ms.openlocfilehash: a15a64c1ccf1e40179a46baf9815f669ac4adfde
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: b2cbf7501b3c5006c7504c7af7d70c14035cfc74
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751127"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113356"
 ---
 # <a name="manage-groups-of-databases-with-elastic-database-jobs"></a>Verwalten von Datenbankgruppen mithilfe von Aufträgen für die elastische Datenbank
 
@@ -38,7 +38,7 @@ Die folgende Abbildung zeigt einen Auftrags-Agent, der Aufträge für die versch
 ### <a name="collect-data-for-reporting"></a>Sammeln von Berichtsdaten
 
 - Aggregation von Daten aus einer Sammlung von Azure SQL-Datenbanken in einer einzelnen Zieltabelle.
-- Ausführung von Abfragen zur Datenverarbeitung mit längerer Laufzeit für eine große Anzahl von Datenbanken, z. B. bei der Sammlung von Kundentelemetrie. Die Ergebnisse werden zur weiteren Analyse in einer einzelnen Zieltabelle gesammelt.
+- Ausführung von Abfragen zur Datenverarbeitung mit längerer Laufzeit für eine große Anzahl von Datenbanken, z.B. bei der Sammlung von Kundentelemetrie. Die Ergebnisse werden zur weiteren Analyse in einer einzelnen Zieltabelle gesammelt.
 
 ### <a name="reduce-overhead"></a>Verringern des Aufwands
 
@@ -104,7 +104,7 @@ Eine *Zielgruppe* definiert die Gruppe von Datenbanken, für die ein Auftragssch
 - **Shardzuordnung:** Datenbanken einer Shardzuordnung.
 
 > [!TIP]
-> Die Gruppe von Datenbanken in Zielgruppen mit Servern oder Pools wird dank *dynamischer Enumeration* zum Zeitpunkt der Auftragsausführung neu ausgewertet. Die dynamische Enumeration stellt sicher, dass **Aufträge für alle Datenbanken ausgeführt werden, die zum Zeitpunkt der Auftragsausführung auf dem Server oder im Pool vorhanden sind**. Das erneute Auswerten der Datenbankliste zur Laufzeit ist besonders hilfreich in Szenarien mit häufig wechselnder Pool- oder Servermitgliedschaft.
+> Die Gruppe von Datenbanken in Zielgruppen mit Servern oder Pools wird dank *dynamischer Enumeration* zum Zeitpunkt der Auftragsausführung neu ausgewertet. Die dynamische Enumeration stellt sicher, dass **Aufträge für alle Datenbanken ausgeführt werden, die zum Zeitpunkt der Auftragsausführung auf dem Server oder im Pool vorhanden sind**. Das erneute Auswerten der Datenbankliste zur Laufzeit ist besonders hilfreich in Szenarios mit häufig wechselnder Pool- oder Servermitgliedschaft.
 
 
 Pools und einzelne Datenbanken können in die Gruppe eingeschlossen oder aus der Gruppe ausgeschlossen werden. Dadurch können Sie eine Zielgruppe mit einer beliebigen Kombination von Datenbanken erstellen. So können Sie beispielsweise einer Zielgruppe einen Server hinzufügen, aber bestimmte Datenbanken aus einem Pool für elastische Datenbanken (oder den gesamten Pool) ausschließen.
@@ -219,5 +219,5 @@ Analog dazu muss auch ein Skript erfolgreich ausgeführt werden können, indem l
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Create an Elastic Job agent using PowerShell](elastic-jobs-powershell.md) (Erstellen eines Agents für elastische Aufträge mithilfe von PowerShell)
-- [Use Transact-SQL (T-SQL) to create and manage Elastic Database Jobs](elastic-jobs-tsql.md) (Erstellen und Verwalten von Aufträgen für die elastische Datenbank mithilfe von Transact-SQL (T-SQL))
+- [Erstellen und Verwalten von elastischen Aufträgen mithilfe von PowerShell](elastic-jobs-powershell.md)
+- [Erstellen und Verwalten von Aufträgen für die elastische Datenbank mithilfe von Transact-SQL (T-SQL)](elastic-jobs-tsql.md)

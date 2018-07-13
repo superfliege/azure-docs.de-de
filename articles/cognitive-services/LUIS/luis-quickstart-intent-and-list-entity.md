@@ -7,16 +7,16 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/21/2018
+ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: 68c241833aab756bfc5e71c03da5d4175401910d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c5408d20a736f262e95ce7014c385b50521967ad
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335821"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127854"
 ---
-# <a name="tutorial-create-app-using-a-list-entity"></a>Tutorial: Erstellen einer App mit einer Listenentität
+# <a name="tutorial-4-add-list-entity"></a>Tutorial: 4. Hinzufügen einer Entität vom Typ „Liste“
 In diesem Tutorial erstellen Sie eine App, mit der veranschaulicht wird, wie Sie Daten abrufen, die mit Angaben in einer vordefinierten Liste übereinstimmen. 
 
 <!-- green checkmark -->
@@ -30,7 +30,7 @@ In diesem Tutorial erstellen Sie eine App, mit der veranschaulicht wird, wie Sie
 Für diesen Artikel benötigen Sie ein kostenloses [LUIS](luis-reference-regions.md#luis-website)-Konto, um Ihre LUIS-Anwendung erstellen zu können.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-Falls Sie nicht über die Personal-App aus [Tutorial: Verwenden einer Entität vom Typ „Regulärer Ausdruck“](luis-quickstart-intents-regex-entity.md) verfügen, [importieren](create-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json).
+Falls Sie nicht über die Personal-App aus dem Tutorial zur [RegEx](luis-quickstart-intents-regex-entity.md)-Entität verfügen, [importieren](create-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json).
 
 Wenn Sie die ursprüngliche Personal-App behalten möchten, klonen Sie die Version auf der Seite [Einstellungen](luis-how-to-manage-versions.md#clone-a-version), und nennen Sie sie `list`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. 
 
@@ -43,7 +43,7 @@ Der kanonische Name für die einzelnen Elemente ist die Mitarbeiternummer. Für 
 
 |Zweck des Synonyms|Wert des Synonyms|
 |--|--|
-|Name|John W. Smith|
+|NAME|John W. Smith|
 |E-Mail-Adresse|john.w.smith@mycompany.com|
 |Durchwahl|x12345|
 |Persönliche Mobiltelefonnummer|425-555-1212|
@@ -97,8 +97,6 @@ mv john.w.smith@mycompany from office b-1234 to office h-4452
     |234-56-7891 to hh-2345 (234-56-7891 nach hh-2345)|
 
     [ ![Screenshot: Seite „Intents“ (Absichten) mit hervorgehobenen neuen Äußerungen](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png) ](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png#lightbox)
-
-    Diese Anwendung verfügt über die vordefinierte Zahlenentität aus dem vorherigen Tutorial, sodass jede Nummer über ein Tag verfügt. Unter Umständen reichen diese Informationen für Ihre Clientanwendung bereits aus, aber die Nummer ist nicht mit dem zugehörigen Typ gekennzeichnet. Durch die Erstellung einer neuen Entität mit einem geeigneten Namen kann die Clientanwendung die Entität verarbeiten, wenn sie von LUIS zurückgegeben wird.
 
 ## <a name="create-an-employee-list-entity"></a>Erstellen einer Mitarbeiterlistenentität
 Nachdem die Absicht **MoveEmployee** jetzt über Äußerungen verfügt, muss LUIS verstehen, was ein Mitarbeiter ist. 
@@ -298,7 +296,7 @@ Ihr Chatbot verfügt nun über genügend Informationen, um die primäre Aktion (
 LUIS hat diese Anforderung abgeschlossen. Die aufrufende Anwendung (z.B. ein Chatbot) kann das Ergebnis für „topScoringIntent“ und die Daten aus der Entität verwenden, um den nächsten Schritt auszuführen. LUIS führt diese programmgesteuerte Aufgabe nicht für den Bot oder die aufrufende Anwendung aus. LUIS bestimmt lediglich die Absicht des Benutzers. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Klicken Sie dazu in der Liste rechts vom App-Namen auf die drei Punkte (...) und anschließend auf **Löschen**. Klicken Sie im Popupdialogfenster **Delete app?** (App löschen?) auf **OK**.
+Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Wählen Sie im Menü oben links die Option **Meine Apps**. Klicken Sie in der Liste rechts vom App-Namen auf die drei Punkte (...) und anschließend auf **Löschen**. Klicken Sie im Popupdialogfenster **Delete app?** (App löschen?) auf **OK**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

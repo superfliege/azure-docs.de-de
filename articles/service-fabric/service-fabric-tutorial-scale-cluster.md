@@ -1,6 +1,6 @@
 ---
-title: Skalieren eines Azure Service Fabric-Clusters | Microsoft-Dokumentation
-description: Dieses Tutorial enthält Informationen zum schnellen Skalieren eines Service Fabric-Clusters.
+title: Skalieren eines Service Fabric-Clusters in Azure | Microsoft-Dokumentation
+description: Dieses Tutorial enthält Informationen zum schnellen Skalieren eines Service Fabric-Clusters in Azure.
 services: service-fabric
 documentationcenter: .net
 author: Thraka
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 02/06/2018
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: 678ca45d12fd10a02d967cd32743b4d7b6ea26af
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 83f7a03744e7e8819d71eae81ed8e497797bef62
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642698"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109408"
 ---
-# <a name="tutorial-scale-a-service-fabric-cluster"></a>Tutorial: Skalieren eines Service Fabric-Clusters
+# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Tutorial: Skalieren eines Service Fabric-Clusters in Azure
 
 Dieses Tutorial ist der zweite Teil einer Reihe und zeigt, wie Sie Ihren vorhandenen Cluster horizontal hoch- und herunterskalieren. In diesem Tutorial erfahren Sie, wie Sie Ihren Cluster skalieren und gegebenenfalls zurückgebliebene Ressourcen bereinigen.
 
@@ -41,14 +41,17 @@ In dieser Tutorialserie lernen Sie Folgendes:
 > * [Bereitstellen von API Management mit Service Fabric](service-fabric-tutorial-deploy-api-management.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
-- Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Installieren Sie das [Azure PowerShell-Modul Version 4.1 oder höher](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) oder [Azure CLI 2.0](/cli/azure/install-azure-cli).
-- Erstellen Sie einen sicheren [Windows-Cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oder [Linux-Cluster](service-fabric-tutorial-create-vnet-and-linux-cluster.md) in Azure.
-- Wenn Sie einen Windows-Cluster bereitstellen, richten Sie eine Windows-Entwicklungsumgebung ein. Installieren Sie [Visual Studio 2017](http://www.visualstudio.com) und die Workloads für **Azure-Entwicklung**, **ASP.NET und Webentwicklung** und **Plattformübergreifende .NET Core-Entwicklung**.  Richten Sie dann eine [.NET-Entwicklungsumgebung](service-fabric-get-started.md) ein.
-- Wenn Sie einen Linux-Cluster bereitstellen, richten Sie eine Java-Entwicklungsumgebung unter [Linux](service-fabric-get-started-linux.md) oder [macOS](service-fabric-get-started-mac.md) ein.  Installieren Sie die [Service Fabric CLI](service-fabric-cli.md). 
+
+* Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Installieren Sie das [Azure PowerShell-Modul Version 4.1 oder höher](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) oder [Azure CLI 2.0](/cli/azure/install-azure-cli).
+* Erstellen Sie einen sicheren [Windows-Cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oder [Linux-Cluster](service-fabric-tutorial-create-vnet-and-linux-cluster.md) in Azure.
+* Wenn Sie einen Windows-Cluster bereitstellen, richten Sie eine Windows-Entwicklungsumgebung ein. Installieren Sie [Visual Studio 2017](http://www.visualstudio.com) und die Workloads für **Azure-Entwicklung**, **ASP.NET und Webentwicklung** und **Plattformübergreifende .NET Core-Entwicklung**.  Richten Sie dann eine [.NET-Entwicklungsumgebung](service-fabric-get-started.md) ein.
+* Wenn Sie einen Linux-Cluster bereitstellen, richten Sie eine Java-Entwicklungsumgebung unter [Linux](service-fabric-get-started-linux.md) oder [macOS](service-fabric-get-started-mac.md) ein.  Installieren Sie die [Service Fabric CLI](service-fabric-cli.md).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
+
 Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie Ihr Abonnement aus, bevor Sie Azure-Befehle ausführen.
 
 ```powershell
@@ -118,7 +121,7 @@ Horizontales Herunterskalieren ist mit horizontalem Hochskalieren vergleichbar. 
 > [!NOTE]
 > Dieser Teil ist nur für die Dauerhaftigkeitsstufe *Bronze* relevant. Weitere Informationen zur Dauerhaftigkeit finden Sie unter [Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster][durability].
 
-Beim horizontalen Herunterskalieren einer VM-Skalierungsgruppe entfernt die Skalierungsgruppe in den meisten Fällen die zuletzt erstellte VM-Instanz. Sie müssen also den passenden, zuletzt erstellten Service Fabric-Knoten ermitteln. Diesen finden Sie, indem Sie nach dem größten `NodeInstanceId`-Eigenschaftswert der Service Fabric-Knoten suchen. In den Codebeispielen weiter unten wird eine Sortierung nach Knoteninstanz vorgenommen, und es werden Details zur Instanz mit dem größten ID-Wert zurückgegeben. 
+Beim horizontalen Herunterskalieren einer VM-Skalierungsgruppe entfernt die Skalierungsgruppe in den meisten Fällen die zuletzt erstellte VM-Instanz. Sie müssen also den passenden, zuletzt erstellten Service Fabric-Knoten ermitteln. Diesen finden Sie, indem Sie nach dem größten `NodeInstanceId`-Eigenschaftswert der Service Fabric-Knoten suchen. In den Codebeispielen weiter unten wird eine Sortierung nach Knoteninstanz vorgenommen, und es werden Details zur Instanz mit dem größten ID-Wert zurückgegeben.
 
 ```powershell
 Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
@@ -180,7 +183,7 @@ else
     # Stop node
     $stopid = New-Guid
     Start-ServiceFabricNodeTransition -Stop -OperationId $stopid -NodeName $nodename -NodeInstanceId $nodeid -StopDurationInSeconds 300
-    
+
     $state = (Get-ServiceFabricNodeTransitionProgress -OperationId $stopid).State
     $loopTimeout = 10
 
@@ -191,7 +194,7 @@ else
         $state = (Get-ServiceFabricNodeTransitionProgress -OperationId $stopid).State
         Write-Host "Checking state... $state found"
     }
-    
+
     if ($state -ne [System.Fabric.TestCommandProgressState]::Completed)
     {
         Write-Error "Stop transaction failed with $state"
@@ -220,13 +223,12 @@ sfctl node remove-state --node-name _nt1vm_5
 > [!TIP]
 > Verwenden Sie die folgenden **sfctl**-Abfragen, um den Status der einzelnen Schritte zu überprüfen:
 >
-> **Überprüfen des Deaktivierungsstatus**  
+> **Überprüfen des Deaktivierungsstatus**
 > `sfctl node list --query "sort_by(items[*], &name)[-1].nodeDeactivationInfo"`
 >
-> **Überprüfen des Beendigungsstatus**  
+> **Überprüfen des Beendigungsstatus**
 > `sfctl node list --query "sort_by(items[*], &name)[-1].isStopped"`
 >
-
 
 ### <a name="scale-in-the-scale-set"></a>Horizontales Herunterskalieren der Skalierungsgruppe
 
@@ -249,7 +251,6 @@ az vmss list-instances -n nt1vm -g sfclustertutorialgroup --query [*].name
 az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 5
 ```
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie Folgendes gelernt:
@@ -258,7 +259,6 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Lesen der Anzahl von Clusterknoten
 > * Hinzufügen von Clusterknoten (horizontales Hochskalieren)
 > * Entfernen von Clusterknoten (horizontales Herunterskalieren)
-
 
 Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie die Runtime eines Clusters aktualisieren:
 > [!div class="nextstepaction"]

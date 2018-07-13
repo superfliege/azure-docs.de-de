@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 05/21/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: eec54e0074cbc00fb8c51cf28ba477ef75f99a3c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 42f7d767162f2f403b2cf921e31a38b711a3c773
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657239"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37438229"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-governance-with-azure-powershell"></a>Tutorial: Informationen zur Verwaltung von virtuellen Windows-Computern mit Azure PowerShell
 
@@ -55,7 +55,7 @@ Zum Verwalten virtueller Computerlösungen gibt es drei ressourcenspezifische Ro
 * [Mitwirkender von virtuellem Netzwerk](../../role-based-access-control/built-in-roles.md#network-contributor)
 * [Mitwirkender von Speicherkonto](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Anstatt einzelnen Benutzern Rollen zuzuweisen, ist es häufig einfacher, [eine Azure Active Directory-Gruppe zu erstellen](../../active-directory/active-directory-groups-create-azure-portal.md), um die Benutzer zusammenzufassen, die ähnliche Aktionen ausführen müssen. Danach weisen Sie diese Gruppe der entsprechenden Rolle zu. Zur Vereinfachung erstellen Sie in diesem Artikel eine Azure Active Directory-Gruppe ohne Mitglieder. Sie können diese Gruppe dennoch einer Rolle für einen bestimmten Bereich zuweisen. 
+Anstatt einzelnen Benutzern Rollen zuzuweisen, ist es häufig einfacher, [eine Azure Active Directory-Gruppe zu erstellen](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md), um die Benutzer zusammenzufassen, die ähnliche Aktionen ausführen müssen. Danach weisen Sie diese Gruppe der entsprechenden Rolle zu. Zur Vereinfachung erstellen Sie in diesem Artikel eine Azure Active Directory-Gruppe ohne Mitglieder. Sie können diese Gruppe dennoch einer Rolle für einen bestimmten Bereich zuweisen. 
 
 Das folgende Beispiel erstellt eine Azure Active Directory-Gruppe mit dem Namen *VMDemoContributors* und dem E-Mail-Kontonamen *vmDemoGroup*. Der E-Mail-Kontoname dient als Alias für die Gruppe.
 
@@ -194,7 +194,7 @@ Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentatio
 
 ### <a name="find-resources-by-tag"></a>Suchen von Ressourcen nach Tag
 
-Um Ressourcen über einen Tagnamen und einen Wert zu suchen, verwenden Sie den Befehl [Find-AzureRmResource](/powershell/module/azurerm.resources/find-azurermresource):
+Um Ressourcen über einen Tagnamen und einen Wert zu suchen, verwenden Sie den Befehl [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource):
 
 ```azurepowershell-interactive
 (Get-AzureRmResource -Tag @{ Environment="Test"}).Name

@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: crdun
 ms.openlocfilehash: 1fd90df3b6935d35834e1f571e80b945716b55ff
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29116669"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38307254"
 ---
 # <a name="add-push-notifications-to-your-ios-app"></a>Hinzufügen von Pushbenachrichtigungen zu Ihrer iOS-App
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 ## <a name="overview"></a>Übersicht
-In diesem Tutorial fügen Sie Pushbenachrichtigungen zum [iOS-Schnellstartprojekt] hinzu, damit jedes Mal, wenn ein Datensatz eingefügt wird, eine Pushbenachrichtigung an das Gerät gesendet wird.
+In diesem Tutorial fügen Sie Pushbenachrichtigungen zum [iOS-Schnellstart] hinzu, damit jedes Mal, wenn ein Datensatz eingefügt wird, eine Pushbenachrichtigung an das Gerät gesendet wird.
 
 Wenn Sie das heruntergeladene Schnellstart-Serverprojekt nicht verwenden, müssen Sie Ihrem Projekt das Erweiterungspaket für Pushbenachrichtigungen hinzufügen. Weitere Informationen finden Sie im Leitfaden [Arbeiten mit dem .NET Back-End-Server SDK für Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
@@ -57,4 +57,4 @@ Der [iOS-Simulator unterstützt keine Pushbenachrichtigungen](https://developer.
 <!-- Images. -->
 
 <!-- URLs. -->
-[iOS-Schnellstartprojekt]: app-service-mobile-ios-get-started.md
+[iOS-Schnellstart]: app-service-mobile-ios-get-started.md

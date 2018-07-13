@@ -16,12 +16,12 @@ ms.workload: big-data
 ms.date: 02/27/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 0490ba63e651b0ef16175dca46b85a3e48bfd26f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a5abce003849258cf02616dc34b15597b3c6ea19
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30179853"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099380"
 ---
 # <a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>Erste Schritte mit Apache Storm in HDInsight mithilfe der Storm-Starter-Beispiele
 
@@ -40,7 +40,7 @@ Apache Storm ist ein skalierbares, fehlertolerantes, verteiltes Echtzeit-Berechn
 
 * **Erfahrung mit SSH und SCP**. Informationen hierzu finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="create-a-storm-cluster"></a> Erstellen eines Storm-Clusters
+## <a name="create-a-storm-cluster"></a>Erstellen eines Storm-Clusters
 
 Verwenden Sie die folgenden Schritte, um ein Cluster vom Typ „Storm in HDInsight“ zu erstellen:
 
@@ -73,7 +73,7 @@ Verwenden Sie die folgenden Schritte, um ein Cluster vom Typ „Storm in HDInsig
 
 4. Legen Sie nach dem Auswählen des Clustertyps mit der Schaltfläche __Auswählen__ den Clustertyp fest. Schließen Sie dann mit der Schaltfläche __Weiter__ die grundlegende Konfiguration ab.
 
-5. Wählen Sie im Abschnitt **Speicher** ein Speicherkonto aus, oder erstellen Sie eines. Behalten Sie für die Schritte in diesem Dokument für die weiteren Felder in diesem Abschnitt die Standardwerte bei. Speichern Sie mit der Schaltfläche __Weiter__ die Speicherkonfiguration.
+5. Wählen Sie im Abschnitt **Speicher** ein Speicherkonto aus, oder erstellen Sie eines. Behalten Sie für die Schritte in diesem Dokument für die weiteren Felder in diesem Abschnitt die Standardwerte bei. Speichern Sie mit der Schaltfläche __Weiter__ die Speicherkonfiguration. Weitere Informationen zur Verwendung von Data Lake Storage Gen2 finden Sie unter [Schnellstart: Einrichten von Hadoop-Clustern in HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
     ![Festlegen der Speicherkontoeinstellungen für HDInsight](./media/apache-storm-tutorial-get-started-linux/set-hdinsight-storage-account.png)
 

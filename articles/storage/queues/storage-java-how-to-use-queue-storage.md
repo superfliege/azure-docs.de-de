@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.openlocfilehash: cd79a21fedca1c21c2e4a65394d424f1590f32c3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30319480"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38670947"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>Verwenden des Warteschlangenspeichers mit Java
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -71,7 +71,7 @@ String storageConnectionString =
 In den folgenden Beispielen wird davon ausgegangen, dass Sie eine dieser zwei Methoden verwendet haben, um die Speicherverbindungszeichenfolge abzurufen.
 
 ## <a name="how-to-create-a-queue"></a>Erstellen einer Warteschlange
-Mit einem **CloudQueueClient**-Objekt können Sie Referenzobjekte für Warteschlangen abrufen. Der folgende Code erstellt ein **CloudQueueClient**-Objekt. (Hinweis: Es gibt zusätzliche Möglichkeiten zum Erstellen von **CloudStorageAccount**-Objekten. Weitere Informationen finden Sie unter **CloudStorageAccount** in der [Azure Storage-Client-SDK-Referenz].)
+Mit einem **CloudQueueClient**-Objekt können Sie Referenzobjekte für Warteschlangen abrufen. Der folgende Code erstellt ein **CloudQueueClient**-Objekt. (Hinweis: Es gibt zusätzliche Möglichkeiten zum Erstellen von **CloudStorageAccount**-Objekten. Weitere Informationen finden Sie unter **CloudStorageAccount** in der [Referenz für Azure Storage-Client-SDKs].)
 
 Mithilfe des **CloudQueueClient** -Objekts können Sie einen Verweis auf die Warteschlange abrufen, die Sie verwenden möchten. Sie können die Warteschlange erstellen, wenn sie nicht vorhanden ist.
 
@@ -397,13 +397,13 @@ catch (Exception e)
 Nachdem Sie sich nun mit den Grundlagen des Warteschlangenspeichers vertraut gemacht haben, folgen Sie diesen Links, um zu erfahren, wie komplexere Speicheraufgaben ausgeführt werden.
 
 * [Azure Storage-SDK für Java][Azure Storage SDK for Java]
-* [Azure Storage-Client-SDK-Referenz][Azure Storage-Client-SDK-Referenz]
+* [Referenz für Azure Storage-Client-SDKs][Referenz für Azure Storage-Client-SDKs]
 * [REST-API für Azure Storage-Dienste][Azure Storage Services REST API]
 * [Azure Storage-Teamblog][Azure Storage Team Blog]
 
 [Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[Azure Storage-Client-SDK-Referenz]: http://dl.windowsazure.com/storage/javadoc/
+[Referenz für Azure Storage-Client-SDKs]: http://dl.windowsazure.com/storage/javadoc/
 [Azure Storage Services REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/

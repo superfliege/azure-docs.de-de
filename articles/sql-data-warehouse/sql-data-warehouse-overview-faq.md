@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
 ms.openlocfilehash: 7a570dfa6e0a2812a8dd3a25b8903c70fe07befc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187071"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971702"
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>Häufig gestellte Fragen zu SQL Data Warehouse
 
@@ -49,7 +49,7 @@ A. Wenn Sie einen Funktionswunsch haben, können Sie ihn über die Seite [UserVo
 
 F: Wo finde ich Informationen zu x?
 
-A. Wenn Sie Hilfe bei der Entwicklung mit SQL Data Warehouse benötigen, können Sie Fragen auf der Seite [Stack Overflow] stellen. 
+A. Wenn Sie Hilfe bei der Entwicklung mit SQL Data Warehouse benötigen, können Sie Fragen auf der Seite [Stapelüberlauf] stellen. 
 
 F: Wie übermittle ich ein Supportticket?
 
@@ -88,7 +88,7 @@ A: Orc, RC, Parquet und flacher, durch Trennzeichen getrennter Text
 
 F: Mit welchen Komponenten kann ich in SQL DW mithilfe von PolyBase Verbindungen herstellen? 
 
-A: [Azure Data Lake Store] und [Azure Storage Blobs]
+A: [Azure Data Lake Store] und [Azure-Speicherblobs]
 
 F: Ist ein Berechnungs-Pushdown möglich, wenn ich eine Verbindung mit Azure Storage Blobs oder ADLS herstelle? 
 
@@ -105,7 +105,7 @@ Weitere Informationen zu SQL Data Warehouse im Allgemeinen finden Sie auf der Se
 <!-- Article references -->
 [UserVoice]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [Verbindungszeichenfolgen]: ./sql-data-warehouse-connection-strings.md
-[Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Stapelüberlauf]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Supporttickets]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [Sicherheit]: ./sql-data-warehouse-overview-manage-security.md
 [Microsoft-Compliance]: https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings
@@ -113,7 +113,7 @@ Weitere Informationen zu SQL Data Warehouse im Allgemeinen finden Sie auf der Se
 [Datentypen]: ./sql-data-warehouse-tables-data-types.md
 [Nicht unterstützte Tabellenfunktionen]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
 [Azure Data Lake Store]: ./sql-data-warehouse-load-from-azure-data-lake-store.md
-[Azure Storage Blobs]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
+[Azure-Speicherblobs]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
 [Anforderung von Features für Datenbankprojekte]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu
 [MSDN]: https://msdn.microsoft.com/library/azure/mt163685.aspx
 [Übersicht]: ./sql-data-warehouse-overview-faq.md

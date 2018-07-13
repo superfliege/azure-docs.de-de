@@ -1,7 +1,7 @@
 ---
 title: Erstellen einer App mit mehreren Containern (Vorschauversion) in Azure-Web-App für Container per Docker Compose-Konfiguration
 description: Stellen Sie in wenigen Minuten Ihre erste App mit mehreren Containern in Azure-Web-App für Container bereit.
-keywords: Azure App Service, Web-App, Linux, Docker, Compose, mehrere Container, Container, Kubernetes
+keywords: Azure App Service, Web-App, Linux, Docker, Compose, mehrere Container, Web-App für Container, Container, Kubernetes, Wordpress, Azure Database for MySQL, Produktionsdatenbank mit Containern
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -15,20 +15,20 @@ ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: ec5c92415668c925fe360c0c8887fd792a121842
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: bf567402a66f9152c7eb9b97925fec2a159ffe56
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753712"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127419"
 ---
-# <a name="create-a-multicontainer-preview-app-using-web-app-for-containers"></a>Erstellen einer App mit mehreren Containern (Vorschauversion) mit Web-App für Container
+# <a name="create-a-multi-container-preview-app-using-web-app-for-containers"></a>Erstellen einer App mit mehreren Containern (Vorschauversion) mit Web-App für Container
 
-[Web-App für Container](app-service-linux-intro.md) umfasst eine flexible Möglichkeit zum Verwenden von Docker-Images. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie eine App mit mehreren Containern für Web-App für Container in [Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) per Docker Compose-Konfiguration bereitstellen. Befolgen Sie für Kubernetes die Kubernetes-Schritte unter [Tutorial: Erstellen einer App mit mehreren Containern (Vorschauversion) über Web-App für Container](tutorial-multi-container-app.md).
+[Web-App für Container](app-service-linux-intro.md) umfasst eine flexible Möglichkeit zum Verwenden von Docker-Images. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie eine App mit mehreren Containern für Web-App für Container in [Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) per Docker Compose-Konfiguration bereitstellen. Für Kubernetes und eine vollständige End-to-End-Lösung mit Azure-Datenbank für MySQL führen Sie die Anweisungen im [Tutorial zu Apps mit mehreren Containern](tutorial-multi-container-app.md).
 
-In dieser Schnellstartanleitung wird Cloud Shell verwendet. Die Befehle können aber auch lokal über die [Azure CLI](/cli/azure/install-azure-cli) (2.0.32 oder höher) ausgeführt werden. In dieser Schnellstartanleitung wird eine Docker Compose-Konfigurationsdatei verwendet.
+In diesem Schnellstart wird Cloud Shell verwendet. Die Befehle können aber auch lokal über die [Azure CLI](/cli/azure/install-azure-cli) (2.0.32 oder höher) ausgeführt werden. 
 
-![Beispiel-App mit mehreren Containern für Web-App für Container][1]
+![Beispiel-App mit mehreren Containern in Web-App für Container][1]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,7 +36,7 @@ In dieser Schnellstartanleitung wird Cloud Shell verwendet. Die Befehle können 
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
 
-Für diese Schnellstartanleitung verwenden Sie die Compose-Datei von [Docker](https://docs.docker.com/compose/wordpress/#define-the-project), aber Sie ändern sie, um Azure Database for MySQL, beständigen Speicher und Redis einzubinden. Die Konfigurationsdatei finden Sie in den [Beispielen für Azure](https://github.com/Azure-Samples/multicontainerwordpress).
+Für diesen Schnellstart verwenden Sie die Compose-Datei von [Docker](https://docs.docker.com/compose/wordpress/#define-the-project). Die Konfigurationsdatei finden Sie in den [Beispielen für Azure](https://github.com/Azure-Samples/multicontainerwordpress).
 
 [!code-yml[Main](../../../azure-app-service-multi-container/docker-compose-wordpress.yml)]
 
@@ -48,10 +48,12 @@ mkdir quickstart
 cd quickstart
 ```
 
-Führen Sie als Nächstes den folgenden Befehl aus, um das Beispiel-App-Repository in Ihrem Schnellstartverzeichnis zu klonen.
+Führen Sie als Nächstes den folgenden Befehl aus, um das Beispiel-App-Repository in Ihrem Schnellstartverzeichnis zu klonen. Wechseln Sie anschließend in das Verzeichnis `multicontainerwordpress`.
 
 ```bash
 git clone https://github.com/Azure-Samples/multicontainerwordpress
+
+cd multicontainerwordpress
 ```
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
@@ -100,11 +102,9 @@ Nach Erstellung des App Service-Plans zeigt die Azure-Befehlszeilenschnittstelle
 
 ## <a name="create-a-docker-compose-app"></a>Erstellen einer Docker Compose-App
 
-Wechseln Sie in Ihrem Cloud Shell-Terminal zum Verzeichnis `multicontainerwordpress`. Erstellen Sie eine [Web-App](app-service-linux-intro.md) mit mehreren Containern im App Service-Plan `myAppServicePlan` mithilfe des Befehls [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create). Vergessen Sie nicht, _\<app_name>_ durch einen eindeutigen App-Namen zu ersetzen.
+Erstellen Sie im Cloud Shell-Terminal eine [Web-App](app-service-linux-intro.md) mit mehreren Containern im App Service-Plan `myAppServicePlan`, indem Sie den Befehl [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) verwenden. Vergessen Sie nicht, _\<app_name>_ durch einen eindeutigen App-Namen zu ersetzen.
 
 ```bash
-cd multicontainerwordpress
-
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
 ```
 
@@ -129,7 +129,7 @@ Nach Erstellung der Web-App zeigt die Azure CLI eine Ausgabe wie im folgenden Be
 
 Navigieren Sie zur bereitgestellten App unter `http://<app_name>.azurewebsites.net`. Das Laden der App kann einige Minuten dauern. Wenn Sie einen Fehler erhalten, sollten Sie einige Minuten warten und dann den Browser aktualisieren.
 
-![Beispiel-App mit mehreren Containern für Web-App für Container][1]
+![Beispiel-App mit mehreren Containern in Web-App für Container][1]
 
 **Glückwunsch!** Sie haben in Web-App für Container eine App mit mehreren Containern erstellt.
 

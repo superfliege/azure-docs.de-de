@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/09/2018
+ms.date: 06/28/2018
 ms.author: juliako
-ms.openlocfilehash: e81544d263bea3f367eaf2100ddb36a2835034c4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e5b8cc9285d9637a04c4bec47b0185652aa7c84e
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637911"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114223"
 ---
 # <a name="tutorial-analyze-videos-with-azure-media-services"></a>Tutorial: Analysieren von Videos mit Azure Media Services 
 
@@ -33,6 +33,9 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 > * Ausführen der App
 > * Untersuchen der Ausgabe
 > * Bereinigen von Ressourcen
+
+> [!Note]
+> Verwenden Sie das Azure-Portal, so wie in der [Übersicht über das Skalieren der Medienverarbeitung](../previous/media-services-scale-media-processing-overview.md) beschrieben, um Ihr Media Services-Konto auf 10 S3 reservierte Einheiten für Medien.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -60,7 +63,7 @@ Das Beispiel befindet sich im Ordner [AnalyzeVideos](https://github.com/Azure-Sa
 
 In diesem Abschnitt werden die Funktionen untersucht, die in der Datei „[Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/Program.cs)“ des *AnalyzeVideos*-Projekts definiert werden.
 
-In dem Beispiel werden folgende Aktionen durchgeführt:
+Mit dem Beispiel werden die folgenden Aktionen durchgeführt:
 
 1. Erstellen einer Transformation und eines Auftrags für die Videoanalyse
 2. Erstellen eines Eingangsmedienobjekts und Hochladen des Videos in dieses Objekt. Das Medienobjekt wird als Eingabe für den Auftrag verwendet.

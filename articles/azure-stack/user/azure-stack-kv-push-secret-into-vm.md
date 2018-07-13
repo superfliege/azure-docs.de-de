@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/10/2018
+ms.date: 06/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: 3950c9dfc5ff5f7ea1d170da086b4f97048ed81c
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 05278ee4b0dc1f2c22f40bfcff4f9d7342017c0f
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34069032"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37108755"
 ---
 # <a name="create-a-virtual-machine-and-install-a-certificate-retrieved-from-an-azure-stack-key-vault"></a>Erstellen eines virtuellen Computers und Installieren eines Zertifikats, das aus einem Azure Stack-Schlüsseltresor abgerufen wurde
 
@@ -43,8 +43,8 @@ Die folgenden Schritte beschreiben den Prozess, der zum Übertragen eines Zertif
 2. Aktualisieren der Datei „azuredeploy.parameters.json“
 3. Bereitstellen der Vorlage
 
->[!NOTE]
->Führen Sie die Schritte über das Azure Stack Development Kit oder über einen externen Client aus, wenn eine Verbindung per VPN besteht.
+> [!NOTE]
+> Führen Sie die Schritte über das Azure Stack Development Kit oder über einen externen Client aus, wenn eine Verbindung per VPN besteht.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -56,8 +56,8 @@ Die folgenden Schritte beschreiben den Prozess, der zum Übertragen eines Zertif
 
 Das folgende Skript erstellt ein Zertifikat im PFX-Format sowie einen Schlüsseltresor und speichert das Zertifikat als Geheimnis im Schlüsseltresor.
 
->[!IMPORTANT]
->Beim Erstellen des Schlüsseltresors muss der Parameter `-EnabledForDeployment` verwendet werden. Dieser Parameter stellt sicher, dass von Azure Resource Manager-Vorlagen auf den Schlüsseltresor verwiesen werden kann.
+> [!IMPORTANT]
+> Beim Erstellen des Schlüsseltresors muss der Parameter `-EnabledForDeployment` verwendet werden. Dieser Parameter stellt sicher, dass von Azure Resource Manager-Vorlagen auf den Schlüsseltresor verwiesen werden kann.
 
 ```powershell
 

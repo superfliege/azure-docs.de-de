@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 39683c89db57dbeefd190a51415c783d012785e0
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 163763bf1203a045326c7163b5f6da9aa417d8cf
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36303774"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081855"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Tutorial: Einrichten eines Classroom-Labs 
 In diesem Tutorial richten Sie ein Classroom-Lab mit virtuellen Computern ein, die von den Teilnehmern im Classroom verwendet werden.  
@@ -96,8 +96,8 @@ Wenn Sie eine Vorlage veröffentlichen, werden von Azure Lab Services im Lab mit
 2. Wählen Sie jetzt die Schaltfläche **Veröffentlichen**. Je nach Anzahl von zu erstellenden virtuellen Computern kann dieser Vorgang relativ lange dauern. Diese Anzahl entspricht der Anzahl von Benutzern, die für das Lab zulässig sind.
     
     > [!IMPORTANT]
-    > Sobald eine Vorlage öffentlich verfügbar ist, kann der Zugriff darauf nicht in „Privat“ geändert werden. 
-4. Wechseln Sie zur Seite **Virtuelle Computer**, und vergewissern Sie sich, dass fünf virtuelle Computer mit dem Status **Nicht zugewiesen** angezeigt werden. Diese virtuellen Computer sind noch keinen Teilnehmern zugewiesen. 
+    > Sobald eine Vorlage veröffentlicht wurde, kann dies nicht mehr rückgängig gemacht werden. 
+4. Wechseln Sie zur Seite **Virtuelle Computer**, und vergewissern Sie sich, dass virtuelle Computer mit dem Status **Nicht zugewiesen** angezeigt werden. Diese virtuellen Computer sind noch keinen Teilnehmern zugewiesen. 
 
     ![Virtuelle Computer](../media/tutorial-setup-classroom-lab/virtual-machines.png)
 5. Warten Sie, bis die virtuellen Computer erstellt wurden. Sie sollten den Status **Beendet** aufweisen. Auf dieser Seite können Sie einen virtuellen Computer für einen Teilnehmer starten, eine Verbindung damit herstellen und ihn beenden und löschen. Sie können virtuelle Computer auf dieser Seite starten oder sie von Ihren Teilnehmern starten lassen. 

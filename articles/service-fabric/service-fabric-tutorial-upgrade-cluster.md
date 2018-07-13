@@ -1,5 +1,5 @@
 ---
-title: Aktualisieren der Azure Service Fabric-Runtime | Microsoft-Dokumentation
+title: Upgraden der Service Fabric-Runtime in Azure | Microsoft-Dokumentation
 description: In diesem Tutorial wird beschrieben, wie Sie mit PowerShell die Runtime eines in Azure gehosteten Service Fabric-Clusters aktualisieren.
 services: service-fabric
 documentationcenter: .net
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 11/28/2017
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: 375e0171f1a131ad95a9c6594cc0e05926e4dcc5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7e7304b259931c5196a4865383cf0b4ace4c4398
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642834"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109765"
 ---
-# <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster"></a>Tutorial: Aktualisieren der Runtime eines Service Fabric-Clusters
+# <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>Tutorial: Upgraden der Runtime eines Service Fabric-Clusters in Azure
 
 Dieses Tutorial ist der dritte Teil einer Reihe und zeigt, wie Sie die Service Fabric-Runtime in einem Azure Service Fabric-Cluster aktualisieren. Dieser Tutorialteil wurde für unter Azure ausgeführte Service Fabric-Cluster geschrieben und gilt nicht für eigenständige Service Fabric-Cluster.
 
@@ -45,14 +45,17 @@ In dieser Tutorialserie lernen Sie Folgendes:
 > * [Bereitstellen von API Management mit Service Fabric](service-fabric-tutorial-deploy-api-management.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
-- Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Installieren Sie das [Azure PowerShell-Modul Version 4.1 oder höher](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) oder [Azure CLI 2.0](/cli/azure/install-azure-cli).
-- Erstellen Sie einen sicheren [Windows-Cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oder [Linux-Cluster](service-fabric-tutorial-create-vnet-and-linux-cluster.md) in Azure.
-- Wenn Sie einen Windows-Cluster bereitstellen, richten Sie eine Windows-Entwicklungsumgebung ein. Installieren Sie [Visual Studio 2017](http://www.visualstudio.com) und die Workloads für **Azure-Entwicklung**, **ASP.NET und Webentwicklung** und **Plattformübergreifende .NET Core-Entwicklung**.  Richten Sie dann eine [.NET-Entwicklungsumgebung](service-fabric-get-started.md) ein.
-- Wenn Sie einen Linux-Cluster bereitstellen, richten Sie eine Java-Entwicklungsumgebung unter [Linux](service-fabric-get-started-linux.md) oder [macOS](service-fabric-get-started-mac.md) ein.  Installieren Sie die [Service Fabric CLI](service-fabric-cli.md). 
+
+* Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Installieren Sie das [Azure PowerShell-Modul Version 4.1 oder höher](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) oder [Azure CLI 2.0](/cli/azure/install-azure-cli).
+* Erstellen Sie einen sicheren [Windows-Cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oder [Linux-Cluster](service-fabric-tutorial-create-vnet-and-linux-cluster.md) in Azure.
+* Wenn Sie einen Windows-Cluster bereitstellen, richten Sie eine Windows-Entwicklungsumgebung ein. Installieren Sie [Visual Studio 2017](http://www.visualstudio.com) und die Workloads für **Azure-Entwicklung**, **ASP.NET und Webentwicklung** und **Plattformübergreifende .NET Core-Entwicklung**.  Richten Sie dann eine [.NET-Entwicklungsumgebung](service-fabric-get-started.md) ein.
+* Wenn Sie einen Linux-Cluster bereitstellen, richten Sie eine Java-Entwicklungsumgebung unter [Linux](service-fabric-get-started-linux.md) oder [macOS](service-fabric-get-started-mac.md) ein.  Installieren Sie die [Service Fabric CLI](service-fabric-cli.md).
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
+
 Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie Ihr Abonnement aus, bevor Sie Azure-Befehle ausführen.
 
 ```powershell
@@ -192,7 +195,8 @@ sfctl cluster upgrade-status
 }
 ```
 
-## <a name="conclusion"></a>Zusammenfassung
+## <a name="next-steps"></a>Nächste Schritte
+
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
