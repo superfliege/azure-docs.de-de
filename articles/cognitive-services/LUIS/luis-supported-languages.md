@@ -1,0 +1,94 @@
+---
+title: Unterstützen der Lokalisierung mit LUIS-Apps in Azure | Microsoft-Dokumentation
+description: Erfahren Sie etwas über die Sprachen, die LUIS unterstützt.
+services: cognitive-services
+author: cahann
+manager: hsalama
+ms.service: cognitive-services
+ms.component: language-understanding
+ms.topic: article
+ms.date: 06/04/2017
+ms.author: cahann
+ms.openlocfilehash: 1eabc01ee07f8791680738a156471e3efe2c44ff
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "35378831"
+---
+# <a name="culture-specific-understanding-in-luis-apps"></a>Kulturspezifischer Einblick in LUIS-Apps
+
+Eine LUIS-App ist kulturspezifisch, und die Kultur kann nach dem Festlegen nicht mehr geändert werden. 
+
+## <a name="multi-language-luis-apps"></a>LUIS-Apps mit mehreren Sprachen
+Wenn Sie eine mehrsprachige LUIS-Clientanwendung benötigen, z.B. einen Chatbot, haben Sie einige Optionen. Wenn LUIS alle Sprachen unterstützt, entwickeln Sie eine LUIS-App für jede Sprache. Jede LUIS-App weist eine eindeutige App-ID und ein eindeutiges Endpunktprotokoll auf. Wenn Sie ein Sprachverständnis für eine Sprache bereitstellen müssen, die LUIS nicht unterstützt, können Sie mit der [Microsoft Translator-API](../Translator/translator-info-overview.md) die Äußerung in eine unterstützte Sprache übersetzen, die Äußerung an den LUIS-Endpunkt senden und die resultierenden Bewertungen empfangen.
+
+## <a name="languages-supported"></a>Unterstützte Sprachen
+LUIS versteht Äußerungen in den folgenden Sprachen:
+
+
+| Sprache |Gebietsschema  |  Vordefinierte Domäne | Vordefinierte Entität | Ausdrucksvorschläge | **[Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) | 
+|--|--|:--:|:--:|:--:|:--:|
+| Englisch (USA) |`en-US` | ✔ | ✔  |✔|✔|
+| Französisch (Kanada) |`fr-CA` |-|   -   |-|✔|
+| *[Chinesisch](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
+| Niederländisch |`nl-NL` |-|  -   |-|✔|
+| Französisch (Frankreich) |`fr-FR` |-| ✔ |✔ |✔|
+| Deutsch |`de-DE` |-| ✔ |✔ |✔|
+| Italienisch |`it-IT` |-| ✔ |✔|✔|
+| *[Japanisch](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|Nur Schlüsselausdruck|
+| Koreanisch |`ko-KR` |-|   -   |-|Nur Schlüsselausdruck|
+| Portugiesisch (Brasilien) |`pt-BR` |-| ✔ |✔ |Nicht alle Unterkulturen|
+| Spanisch (Spanien) |`es-ES` |-| ✔ |✔|✔|
+| Spanisch (Mexiko)|`es-MX` |-|  -   |✔|✔|
+
+
+Die Sprachunterstützung variiert für [vordefinierte Entitäten](luis-reference-prebuilt-entities.md) und [vordefinierte Domänen](luis-reference-prebuilt-domains.md). 
+
+### <a name="chinese-support-notes"></a>* Hinweise zur Unterstützung von Chinesisch
+
+ - In der Kultur `zh-cn` erwartet LUIS den vereinfachten chinesischen Zeichensatz anstelle des traditionellen.
+ - Die Namen der Absichten, Entitäten, Features und regulären Ausdrücke können in chinesischen oder lateinischen Zeichen vorliegen.
+ - Informationen zu den in der Kultur `zh-cn` unterstützten vordefinierten Domänen finden Sie in der [Referenz zu vordefinierten Domänen](luis-reference-prebuilt-domains.md).
+<!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
+
+### <a name="japanese-support-notes"></a>* Hinweise zur Unterstützung von Japanisch
+
+ - Da LUIS keine syntaktische Analyse bietet und den Unterschied zwischen Keigo und informellem Japanisch nicht versteht, müssen Sie die unterschiedlichen Formalitätsstufen als Trainingsbeispiele für Ihre Anwendungen integrieren. 
+     - でございます ist nicht dasselbe wie です. 
+     - です ist nicht dasselbe wie だ. 
+
+### <a name="text-analytics-support-notes"></a>** Hinweise zur Textanalyseunterstützung
+Für die Subkulturen `pt-PT` und `pt-BR` wird nur Portugiesisch unterstützt. Alle anderen Kulturen werden auf primärer Kulturebene unterstützt. Erfahren Sie mehr über [unterstützte Sprachen](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) für die Textanalyse. 
+
+### <a name="speech-api-supported-languages"></a>Unterstützte Sprachen der Speech-API
+Informationen zu den Sprachen für den Spracherkennungsmodus von Speech finden Sie unter [Unterstützte Sprachen](https://docs.microsoft.com/azure/cognitive-services/Speech/api-reference-rest/supportedlanguages##interactive-and-dictation-mode) für Speech.
+
+### <a name="bing-spell-check-supported-languages"></a>Unterstützte Sprachen der Bing-Rechtschreibprüfung
+Eine Liste und den Status der unterstützten Sprachen finden Sie unter [Liste und Status der unterstützten Sprachen](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) für die Bing-Rechtschreibprüfung.
+
+## <a name="rare-or-foreign-words-in-an-application"></a>Seltene oder fremdsprachliche Wörter in einer Anwendung
+In der Kultur `en-us` lernt LUIS, die meisten englischen Wörter zu unterscheiden, einschließlich umgangssprachlicher. In der Kultur `zh-cn` lernt LUIS, die meisten chinesische Zeichen zu unterscheiden. Wenn Sie ein seltenes Wort in `en-us` bzw. ein seltenes Zeichen in `zh-cn` verwenden und sehen, dass LUIS das betreffende Wort bzw. Zeichen offenbar nicht unterscheiden kann, können Sie das Wort oder Zeichen einem [Ausdruckslistenfeature](luis-how-to-add-features.md) hinzufügen. Beispielsweise sollten Wörter außerhalb der Kultur der Anwendung, also fremdsprachliche Wörter, einem Ausdruckslistenfeature hinzugefügt werden. Diese Ausdrucksliste sollte als nicht austauschbar gekennzeichnet werden, um anzugeben, dass die seltenen Wortformen eine Klasse bilden, deren Erkennung LUIS erlernen sollte, die aber keine Synonyme oder untereinander austauschbar sind.
+
+### <a name="hybrid-languages"></a>Hybridsprachen
+Hybridsprachen kombinieren Wörter aus zwei Kulturen, z.B. Englisch und Chinesisch. Diese Sprachen werden in LUIS nicht unterstützt, da eine App auf einer einzelnen Kultur basiert.
+
+## <a name="tokenization"></a>Tokenisierung
+Zum Ausführen von maschinellem Lernen unterteilt LUIS eine Äußerung basierend auf der Kultur in [Token](luis-glossary.md#token). 
+
+|Sprache|  Jedes Leerzeichen oder Sonderzeichen | Zeichenebene|Zusammengesetzte Wörter|[Zurückgegebene tokenisierte Entität](luis-concept-data-extraction.md#tokenized-entity-returned)
+|--|:--:|:--:|:--:|:--:|
+|Chinesisch||✔||✔|
+|Niederländisch|||✔|✔|
+|Englisch (en-us)|✔ ||||
+|Französisch (fr-FR)|✔||||
+|Französisch (fr-CA)|✔||||
+|Deutsch|||✔|✔|
+|Italienisch|✔||||
+|Japanisch||||✔|
+|Koreanisch||✔||✔|
+|Portugiesisch (Brasilien)|✔||||
+|Spanisch (es-ES)|✔||||
+|Spanisch (es-MX)|✔||||
+
+ 
