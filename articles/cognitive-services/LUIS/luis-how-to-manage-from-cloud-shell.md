@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: v-geberr
-ms.openlocfilehash: 2de25645e5377efdd53bcc980695804d34db5ee2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8dfe5b2363fbf9b89947956f212d8d4e1ef5d82a
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376986"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867034"
 ---
 # <a name="manage-luis-service-from-azure-cloud-shell"></a>Verwalten des LUIS-Diensts in der Azure Cloud Shell
 Das Azure-Portal ermöglicht Ihnen die Verwendung von PowerShell-Cmdlets zum Arbeiten mit LUIS-Ressourcen. 
@@ -22,7 +22,7 @@ Das Azure-Portal ermöglicht Ihnen die Verwendung von PowerShell-Cmdlets zum Arb
 Mithilfe dieser Cmdlets können Sie ein LUIS-Abonnement [erstellen](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/new-azurermcognitiveservicesaccount?view=azurermps-6.0.0), Informationen über das Abonnement abrufen, einschließlich der [Nutzung](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountusage?view=azurermps-6.0.0), und das Abonnement [entfernen](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/remove-azurermcognitiveservicesaccount?view=azurermps-6.0.0). 
 
 ## <a name="cloud-shell-storage-account-and-authentication"></a>Cloud Shell-Speicherkonto und Authentifizierung
-Um PowerShell in der [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell) im Azure-Portal verwenden zu können, benötigen Sie ein Azure-Speicherkonto. Wenn Sie nicht über ein [Speicherkonto](https://docs.microsoft.com/en-us/azure/cloud-shell/persisting-shell-storage#set-up-a-clouddrive-file-share) verfügen, werden Sie aufgefordert, eins zu erstellen. Das Speicherkonto ermöglicht Ihnen das Speichern von PowerShell-Skripts in der Cloud Shell.  
+Um PowerShell in der [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell) im Azure-Portal verwenden zu können, benötigen Sie ein Azure-Speicherkonto. Wenn Sie nicht über ein [Speicherkonto](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage#set-up-a-clouddrive-file-share) verfügen, werden Sie aufgefordert, eins zu erstellen. Das Speicherkonto ermöglicht Ihnen das Speichern von PowerShell-Skripts in der Cloud Shell.  
 
 Darüber hinaus müssen Sie sich in der Cloud Shell bei Azure authentifizieren, um auf Ressourcen zuzugreifen. 
 

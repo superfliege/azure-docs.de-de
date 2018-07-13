@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 74a4b77bd9823e5462eecd438cf4c1d863e79892
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 80ccedc7299836cae689edd8a277a7c6d23befa7
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300637"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345055"
 ---
 # <a name="add-example-utterances-and-label-with-entities"></a>Hinzufügen von Beispieläußerungen und -beschriftungen bei Entitäten
 
@@ -194,7 +194,7 @@ Fix this - moved to luis-how-to-add-intents.md - how ?
 
 -->
 ## <a name="train-your-app-after-changing-model-with-utterances"></a>Trainieren Ihrer App nach dem Ändern des Modells mit Äußerungen
-Nachdem Sie Äußerungen hinzugefügt, bearbeitet oder entfernt haben, [trainieren](luis-how-to-train.md) und [veröffentlichen](PublishApp.md) Sie Ihre App, damit die Änderungen Auswirkungen auf Endpunktabfragen zeigen. 
+Nachdem Sie Äußerungen hinzugefügt, bearbeitet oder entfernt haben, [trainieren](luis-how-to-train.md) und [veröffentlichen](luis-how-to-publish-app.md) Sie Ihre App, damit die Änderungen Auswirkungen auf Endpunktabfragen zeigen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

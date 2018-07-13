@@ -125,7 +125,7 @@
       items:
         - name: Interaktives Testen
           href: luis-concept-test.md
-        - name: Testen in Batches
+        - name: Batchtests
           href: luis-concept-batch-test.md
     - name: Enterprise
       items:
@@ -191,7 +191,7 @@
       items:
         - name: Interaktives Testen
           href: interactive-test.md
-        - name: Testen in Batches
+        - name: Batchtests
           href: luis-how-to-batch-test.md
     - name: App veröffentlichen
       href: luis-how-to-publish-app.md
@@ -201,8 +201,6 @@
           href: luis-prebuilt-entities.md
         - name: Domänen verwenden
           href: luis-how-to-use-prebuilt-domains.md
-        - name: Cortana verwenden
-          href: luis-how-to-cortana-prebuilt-app.md
     - name: Verwalten der App
       items:
         - name: Verwenden des Dashboards
@@ -241,7 +239,7 @@
       href: luis-boundaries.md
     - name: Vordefinierter Entitätsverweis
       items:
-        - name: Entitäten pro Kultur
+        - name: Entitäten nach Kultur
           href: luis-reference-prebuilt-entities.md
         - name: Altersentität
           href: luis-reference-prebuilt-age.md
@@ -257,7 +255,7 @@
           href: luis-reference-prebuilt-email.md
         - name: keyPhrase-Entität
           href: luis-reference-prebuilt-keyphrase.md
-        - name: Zahlenentität
+        - name: Nummernentität
           href: luis-reference-prebuilt-number.md
         - name: Ordinalentität
           href: luis-reference-prebuilt-ordinal.md
@@ -267,12 +265,10 @@
           href: luis-reference-prebuilt-phonenumber.md
         - name: Temperaturentität
           href: luis-reference-prebuilt-temperature.md
-        - name: URL-Entität
+        - name: Entität „url“
           href: luis-reference-prebuilt-url.md
     - name: Vordefinierter Domänenverweis
       href: luis-reference-prebuilt-domains.md
-    - name: Vordefinierter App-Verweis für Cortana
-      href: luis-reference-cortana-prebuilt.md
     - name: Erstellen von V2-APIs
       href: 'https://aka.ms/luis-authoring-apis'
     - name: Endpunkt-V2-API

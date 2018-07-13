@@ -218,8 +218,6 @@
           items:
             - name: Übersicht
               href: create-features.md
-            - name: Verwenden von Pandas
-              href: create-features-blob.md
             - name: Verwenden von SQL + Python
               href: create-features-sql-server.md
             - name: Verwenden von Hive-Abfragen
