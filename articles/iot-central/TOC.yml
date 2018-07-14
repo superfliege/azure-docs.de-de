@@ -49,8 +49,8 @@
           href: howto-version-devicetemplate.md
         - name: Erstellen einer Telemetrieregel
           href: howto-create-telemetry-rules.md
-        - name: Erstellen einer Ereignisregel
-          href: howto-create-event-rules.md
+        - name: Konfigurieren der Homepage
+          href: howto-configure-homepage.md
         - name: Vorbereiten und Hochladen von Images
           href: howto-prepare-images.md
     - name: Operator

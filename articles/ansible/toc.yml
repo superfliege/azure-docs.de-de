@@ -24,6 +24,12 @@
     - name: Verwalten von dynamischen Beständen
       href: ./ansible-manage-azure-dynamic-inventories.md
       maintainContext: true
+    - name: Erstellen und Konfigurieren von VMSS
+      href: ./ansible-create-configure-vmss.md
+    - name: Bereitstellen von Apps in VMSS
+      href: ./ansible-deploy-app-vmss.md
+    - name: Erstellen und Konfigurieren von AKS-Clustern
+      href: ./ansible-create-configure-aks.md
 - name: Verweis
   items:
     - name: Playbook-Rollen

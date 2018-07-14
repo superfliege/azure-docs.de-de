@@ -87,8 +87,6 @@
           href: batch-job-prep-release.md
         - name: Gleichzeitige Knotenaufgaben
           href: batch-parallel-node-tasks.md
-        - name: Zählen von Aufgaben nach Zustand
-          href: batch-get-task-counts.md
         - name: Abhängigkeiten von Aufgaben
           href: batch-task-dependencies.md
         - name: Benutzerkonten zum Ausführen von Aufgaben
@@ -119,7 +117,9 @@
           href: batch-diagnostics.md
         - name: Überwachen mit Application Insights
           href: monitor-application-insights.md
-        - name: Effiziente Listenabfragen
+        - name: Anzahl von Ressourcen nach Zustand
+          href: batch-get-resource-counts.md
+        - name: Effizientes Abfragen von Ressourcen
           href: batch-efficient-list-queries.md
     - name: Verwenden von Entwicklertools
       items:

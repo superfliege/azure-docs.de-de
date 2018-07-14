@@ -7,18 +7,10 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Testen von Cognitive Search
-      href: cognitive-search-quickstart-blob.md
     - name: Erstellen von Diensten
       href: search-create-service-portal.md
-    - name: Portal
-      items:
-        - name: Erstellen eines Index
-          href: search-create-index-portal.md
-        - name: Daten importieren
-          href: search-import-data-portal.md
-        - name: Suchexplorer
-          href: search-explorer.md
+    - name: Testen von Cognitive Search
+      href: cognitive-search-quickstart-blob.md
     - name: .NET
       items:
         - name: Erstellen eines Index
@@ -39,18 +31,18 @@
           href: search-fiddler.md
 - name: Tutorials
   items:
+    - name: Verwenden der integrierten Tools
+      href: search-get-started-portal.md
     - name: Cognitive Search-Entwicklung
       href: cognitive-search-tutorial-blob.md
-    - name: Indizieren von Azure SQL-Datenbank
-      href: search-indexer-tutorial.md
     - name: Indizieren von Azure-Blobs
       href: search-semi-structured-data.md
+    - name: Indizieren von Azure SQL-Datenbank
+      href: search-indexer-tutorial.md
     - name: Hinzufügen von Synonymen in .NET
       href: search-synonyms-tutorial-sdk.md
     - name: Hinzufügen der automatischen Vervollständigung in .NET
       href: search-autocomplete-tutorial.md
-    - name: Präsentation der Portalfunktionen
-      href: search-get-started-portal.md
 - name: Beispiele
   items:
     - name: Azure-Codebeispiele
@@ -129,6 +121,8 @@
       items:
         - name: Indexdefinition
           href: search-what-is-an-index.md
+        - name: Erstellen eines Indexes (Portal)
+          href: search-create-index-portal.md
         - name: Analysemodule
           items:
             - name: Textanalysen
@@ -151,6 +145,8 @@
       items:
         - name: Push- vs. Pull-Indizierung
           href: search-what-is-data-import.md
+        - name: Importassistent (Portal)
+          href: search-import-data-portal.md
         - name: Neuerstellen eines Indexes
           href: search-howto-reindex.md
         - name: Indizieren großer Datasets
@@ -181,6 +177,8 @@
       items:
         - name: Grundlegende Abfrageerstellung
           href: search-query-overview.md
+        - name: Suchexplorer (Portal)
+          href: search-explorer.md
         - name: Einfache Abfragesyntax
           href: 'https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search'
         - name: Lucene-Abfragesyntax

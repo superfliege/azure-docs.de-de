@@ -4,7 +4,7 @@
   href: index.yml
 - name: Übersicht
   items:
-    - name: Info zu Azure Maps
+    - name: Was ist Azure Maps?
       href: about-azure-maps.md
 - name: Schnellstarts
   items:
@@ -22,22 +22,10 @@
   items:
     - name: Zoomfaktoren und Linienraster
       href: zoom-levels-and-tile-grid.md
-    - name: Abdeckung durch Geocodierung
-      href: geocoding-coverage.md
-    - name: Verkehrserschließung
-      href: traffic-coverage.md
-    - name: Abgedeckter Renderbereich
-      href: render-coverage.md
-    - name: Abgedeckter Routingbereich
-      href: routing-coverage.md
     - name: Unterstützte Suchkategorien
       href: supported-search-categories.md
     - name: Unterstützte Sprachen
       href: supported-languages.md
-    - name: Nutzungsmodell
-      href: consumption-model.md
-    - name: geoJSON erweitern
-      href: extend-geojson.md
 - name: Anleitungen
   items:
     - name: Verwalten von Azure Maps-Konten
@@ -76,6 +64,22 @@
           href: map-accessibility.md
 - name: Verweis
   items:
+    - name: Dienstabdeckung
+      items:
+        - name: Geocodierung
+          href: geocoding-coverage.md
+        - name: Verkehr
+          href: traffic-coverage.md
+        - name: Rendern
+          href: render-coverage.md
+        - name: Routing
+          href: routing-coverage.md
+    - name: API- und Parametererweiterungen
+      items:
+        - name: Fahrzeugnutzungsmodell
+          href: consumption-model.md
+        - name: GeoJSON-Format erweitern
+          href: extend-geojson.md
     - name: REST
       items:
         - name: Renderingdienst
@@ -139,4 +143,4 @@
     - name: Technische Fallstudien
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
     - name: Videos
-      href: 'https://azure.microsoft.com/documentation/videos'
+      href: 'https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo'

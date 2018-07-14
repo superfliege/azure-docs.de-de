@@ -63,6 +63,8 @@
           href: devtest-lab-create-first-vm.md
         - name: Festlegen von Richtlinien für das Lab
           href: devtest-lab-get-started-with-lab-policies.md
+        - name: Speichern von Geheimnissen in Azure Key Vault
+          href: devtest-lab-store-secrets-in-key-vault.md
         - name: Verwenden von virtuellen Computern in einem Lab
           items:
             - name: Virtuelle Computer erstellen
