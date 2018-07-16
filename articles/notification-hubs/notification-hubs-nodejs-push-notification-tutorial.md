@@ -71,7 +71,7 @@ Das **NotificationHubService** -Objekt ermöglicht Ihnen das Arbeiten mit Notifi
 
     var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
 
-Führen Sie die folgenden Schritte im **Azure-Portal** durch, um den Wert für [connectionstring] zu erhalten:
+Führen Sie die folgenden Schritte im [Azure-Portal]l durch, um den Wert für **connectionstring** zu erhalten:
 
 1. Klicken Sie im linken Navigationsbereich auf **Durchsuchen**.
 2. Wählen Sie **Notification Hubs**, und wählen Sie den gewünschten Hub für das Beispiel aus. Wenn Sie Hilfe beim Erstellen eines neuen Notification Hubs benötigen, lesen Sie das Tutorial [Erste Schritte mit Notification Hubs für Windows Store-Apps](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) .

@@ -9,12 +9,12 @@ ms.component: knowledge-exploration
 ms.topic: article
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 27202379b8c36696a380049336229cac040b0108
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b64025be2f5a9708162da475c1f037d7f253d2c6
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373403"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865752"
 ---
 # <a name="grammar-format"></a>Grammatikformat
 Bei der Grammatik handelt es sich um eine XML-Datei, die den gewichteten Satz von Abfragen in natürlicher Sprache angibt, die der Dienst interpretieren kann, und die angibt, wie diese Abfragen in natürlicher Sprache in Semantikabfrageausdrücke konvertiert werden.  Die Grammatiksyntax basiert auf [SRGS](http://www.w3.org/TR/speech-grammar/). Dabei handelt es sich um einen W3C-Standard für Spracherkennungsgrammatiken mit Erweiterungen zur Unterstützung von Datenindexintegration und Semantikfunktionen.
@@ -60,7 +60,7 @@ Wenn ein `item`-Element kein untergeordnetes Element eines `one-of`-Elements ist
 <item repeat="1-" repeat-logprob="-10">...</item>
 ```
 
-Wenn `item`-Elemente als untergeordnete Elemente eines `one-of`-Elements verwendet werden, definieren sie die Gruppe von Erweiterungsalternativen.  Bei dieser Verwendung gibt das optionale `logprob`-Attribut die relative Logarithmus-Wahrscheinlichkeit für die verschiedenen Optionen an.  Bei einer Wahrscheinlichkeit *p* zwischen 0 und 1 kann die entsprechende Logarithmus-Wahrscheinlichkeit als log(*p*) berechnet werden, wobei „log()“ die natürliche Logarithmus-Funktion ist.  Ohne Angabe wird für `logprob` standardmäßig „0“ verwendet, und die Interpretationswahrscheinlichkeit wird nicht geändert.  Beachten Sie, dass die Logarithmus-Wahrscheinlichkeit immer ein negativer Gleitkommawert oder Null ist.
+Wenn `item`-Elemente als untergeordnete Elemente eines `one-of`-Elements verwendet werden, definieren sie die Gruppe von Erweiterungsalternativen.  Bei dieser Verwendung gibt das optionale `logprob`-Attribut die relative Logarithmus-Wahrscheinlichkeit für die verschiedenen Optionen an.  Bei einer Wahrscheinlichkeit *p* zwischen 0 und 1 kann die entsprechende Logarithmuswahrscheinlichkeit als log(*p*) berechnet werden, wobei „log()“ die natürliche Logarithmusfunktion ist.  Ohne Angabe wird für `logprob` standardmäßig „0“ verwendet, und die Interpretationswahrscheinlichkeit wird nicht geändert.  Beachten Sie, dass die Logarithmus-Wahrscheinlichkeit immer ein negativer Gleitkommawert oder Null ist.
 
 ```xml
 <one-of>
@@ -114,7 +114,7 @@ before <attrref uri="academic#Year" op="lt" name="year"/
 
 Die folgende Tabelle enthält die unterstützten `op`-Werte für die jeweiligen Attributtypen.  Für die Verwendung muss der entsprechende Indexvorgang in die Schemaattributdefinition eingeschlossen werden.
 
-| Attributtyp | op-Wert | Beschreibung | Indexoperation
+| Attributtyp | op-Wert | BESCHREIBUNG | Indexoperation
 |----|----|----|----|
 | Zeichenfolge | eq | Zeichenfolge – exakte Übereinstimmung | equals |
 | Zeichenfolge | starts_with | Zeichenfolge – Präfixübereinstimmung | starts_with |
