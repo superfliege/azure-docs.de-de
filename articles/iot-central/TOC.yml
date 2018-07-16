@@ -37,10 +37,12 @@
   items:
     - name: Administrator
       items:
-        - name: Erstellen einer Anwendung
-          href: howto-create-application.md
+        - name: Erstellen und Verwalten einer Anwendung als Cloudlösungsanbieter
+          href: howto-create-and-manage-applications-as-CSP.md
         - name: Verwalten Ihrer Anwendung
           href: howto-administer.md
+        - name: Daten exportieren
+          href: howto-export-data.md
     - name: Generator
       items:
         - name: Einrichten der Gerätevorlage
@@ -49,6 +51,10 @@
           href: howto-version-devicetemplate.md
         - name: Erstellen einer Telemetrieregel
           href: howto-create-telemetry-rules.md
+        - name: Erstellen einer Ereignisregel
+          href: howto-create-event-rules.md
+        - name: Erstellen von Workflows in Microsoft Flow
+          href: howto-add-microsoft-flow.md
         - name: Konfigurieren der Homepage
           href: howto-configure-homepage.md
         - name: Vorbereiten und Hochladen von Images
