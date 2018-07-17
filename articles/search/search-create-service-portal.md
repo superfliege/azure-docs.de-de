@@ -6,14 +6,14 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 11/07/2017
+ms.date: 07/09/2018
 ms.author: heidist
-ms.openlocfilehash: 1837fc6511ac734766c55bd1c2a2a7a40219c31a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 0c7f9807605236a8250d75623d0885730c9945a0
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31793020"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950678"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Erstellen eines Azure Search-Diensts im Portal
 
@@ -29,8 +29,8 @@ Alternativ dazu können Sie Ihre [Vorteile für MSDN-Abonnenten aktivieren](http
 
 ## <a name="find-azure-search"></a>Aufrufen von Azure Search
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie in der oberen linken Ecke auf das Pluszeichen („+“).
-3. Wählen Sie **Web + Mobile** > **Azure Search** aus.
+2. Klicken Sie in der oberen linken Ecke auf das Pluszeichen („+ Ressource erstellen“).
+3. Wählen Sie **Web** > **Azure Search** aus.
 
 ![](./media/search-create-service-portal/find-search3.png)
 
@@ -77,12 +77,14 @@ Die Erstellung eines Diensts kann einige Minuten dauern (je nach Tarif 15 Minute
 
 ***Replikate*** ermöglichen Ihrem Dienst, eine größere Menge von Suchabfragen zu verarbeiten.
 
+Durch das Hinzufügen von Ressourcen wird Ihre monatliche Rechnung höher. Der [Preisrechner](https://azure.microsoft.com/pricing/calculator/) veranschaulicht, wie das Hinzufügen von Ressourcen sich auf die Abrechnung auswirken kann. Denken Sie daran, dass Sie Ressourcen basierend auf der Last anpassen können. Beispielsweise können Sie Ressourcen erhöhen, um einen vollständigen anfänglichen Index zu erstellen. Später können Sie die Ressourcen auf eine Ebene verringern, die sich besser für die inkrementelle Indizierung eignet.
+
 > [!Important]
 > Ein Dienst benötigt [2 Replikate für schreibgeschützte SLAs und 3 Replikate für SLAs mit Lese-/Schreibzugriff](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 1. Wechseln Sie im Azure-Portal zur Seite Ihres Suchdiensts.
 2. Wählen Sie im linken Navigationsbereich die Optionen **Einstellungen** > **Skalierung** aus.
-3. Verwenden Sie den Schiebregler, um Replikate oder Partitionen hinzuzufügen.
+3. Verwenden Sie den Schieberegler, um Ressourcen jedes Typs hinzuzufügen.
 
 ![](./media/search-create-service-portal/settings-scale.png)
 

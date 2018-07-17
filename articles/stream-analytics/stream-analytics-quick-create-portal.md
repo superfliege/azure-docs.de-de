@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 1059a401382820b4e5d3fd4b010d400bb6113926
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 830b3d4226440a68c7de62170d2ffc28082315c2
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031429"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902903"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines Stream Analytics-Auftrags mithilfe des Azure-Portals
 
@@ -48,7 +48,7 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereit
 
 4. Navigieren Sie auf der Seite **Alle Ressourcen** zu dem im vorherigen Schritt erstellten Speicherkonto. Öffnen Sie die Seite **Übersicht**, und klicken Sie auf die Kachel **Blobs**.  
 
-5. Klicken Sie auf der Seite **Blob-Dienst** auf **Container**, geben Sie im Feld **Name** einen Namen für den Container ein (etwa *container1*), und ändern Sie die Angabe für **Öffentliche Zugriffsebene** in „Blob (Anonymer Lesezugriff nur für Blobs)“. Klicken Sie dann auf **OK**.  
+5. Klicken Sie auf der Seite **Blob-Dienst** auf **Container**, geben Sie im Feld **Name** einen Namen für den Container ein (etwa *container1*), und ändern Sie die Angabe für **Öffentliche Zugriffsebene** zu „Privat“ (kein anonymer Zugriff), klicken Sie dann auf **OK**.  
 
    ![Erstellen eines Containers](./media/stream-analytics-quick-create-portal/create-a-storage-container.png)
 

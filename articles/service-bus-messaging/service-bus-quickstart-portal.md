@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/22/2018
 ms.author: sethm
-ms.openlocfilehash: b970fe1d9d705bd91e616f19a6ef133d6cfd7dd2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3f8979687747453354f60eda15d73b20b2c745a0
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660549"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867204"
 ---
 # <a name="quickstart-send-and-receive-messages-using-the-azure-portal-and-net"></a>Schnellstart: Senden und Empfangen von Nachrichten mit dem Azure-Portal und .NET
 
@@ -87,7 +87,7 @@ Gehen Sie wie folgt vor, um den Code auszuführen:
    git clone https://github.com/Azure/azure-service-bus.git
    ```
 
-3. Navigieren Sie zum Ordner `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart` mit den Beispielen.
+3. Navigieren Sie zum Beispielordner `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart`.
 
 4. Kopieren Sie die Verbindungszeichenfolge und den Warteschlangennamen, den Sie im Abschnitt [Abrufen der Verwaltungsanmeldeinformationen](#obtain-the-management-credentials) beschafft haben.
 
@@ -99,7 +99,7 @@ Gehen Sie wie folgt vor, um den Code auszuführen:
 
 6.  Navigieren Sie zum Ordner `bin\Debug\netcoreapp2.0`.
 
-7.  Geben Sie den folgenden Befehl ein, um das Programm auszuführen. Ersetzen Sie `myConnectionString` durch den abgerufenen Wert und `myQueueName` durch den Namen der von Ihnen erstellten Warteschlange:
+7.  Geben Sie den folgenden Befehl ein, um das Programm auszuführen. Ersetzen Sie `myConnectionString` durch den zuvor abgerufenen Wert und `myQueueName` durch den Namen der von Ihnen erstellten Warteschlange:
 
    ```shell
    dotnet BasicSendReceiveQuickStart.dll -ConnectionString "myConnectionString" -QueueName "myQueueName"
@@ -156,7 +156,7 @@ Die `Main()`-Methode startet dann die asynchrone Nachrichtenschleife `MainAsync(
 
 ### <a name="message-loop"></a>Nachrichtenschleife
 
-Die „MainAsync()“-Methode erstellt einen Warteschlangenclient mit den Befehlszeilenargumenten, ruft einen Nachrichtenhandler für den Empfang mit dem Namen `RegisterOnMessageHandlerAndReceiveMessages()` auf und sendet die Nachrichten:
+Die Methode „MainAsync()“ erstellt einen Warteschlangenclient mit den Befehlszeilenargumenten, ruft einen Nachrichtenhandler für den Empfang mit dem Namen `RegisterOnMessageHandlerAndReceiveMessages()` auf und sendet die Nachrichten:
 
 ```csharp
 static async Task MainAsync(string ServiceBusConnectionString, string QueueName)

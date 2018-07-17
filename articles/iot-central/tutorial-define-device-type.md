@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 71ccae1951020a522fbbdddcdce0bbeeea5f1fb9
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: b085911f760693a774d443ca055944268b20f055
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235789"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869568"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Tutorial: Definieren eines neuen Gerätetyps in Ihrer Azure IoT Central-Anwendung
 
@@ -41,6 +41,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Anzeigen des simulierten Zustands
 > * Verwenden von Geräteeigenschaften
 > * Verwenden von Geräteeinstellungen
+> * Verwenden von Befehlen
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -50,23 +51,29 @@ Für dieses Tutorial benötigen Sie eine Azure IoT Central-Anwendung. Wenn Sie d
 
 2. Geben Sie die E-Mail-Adresse und das Kennwort für den Zugriff auf Ihr Azure-Abonnement ein:
 
-   ![Eingeben Ihres Organisationskontos](media/tutorial-define-device-type/sign-in.png)
+   ![Eingeben Ihres Organisationskontos](./media/tutorial-define-device-type/sign-in.png)
 
 3. Klicken Sie auf **Neue Anwendung**, um mit der Erstellung einer neuen Azure IoT Central-Anwendung zu beginnen:
 
-    ![Azure IoT Central-Seite „Application Manager“ (Anwendungs-Manager)](media/tutorial-define-device-type/iotcentralhome.png)
+    ![Azure IoT Central-Seite „Application Manager“ (Anwendungs-Manager)](./media/tutorial-define-device-type/iotcentralhome.png)
 
 4. So erstellen Sie eine neue Azure IoT Central-Anwendung:
 
     * Wählen Sie einen Anzeigenamen für die Anwendung (beispielsweise **Contoso Air Conditioners**). Azure IoT Central generiert automatisch ein eindeutiges URL-Präfix. Dieses URL-Präfix kann in einen einprägsameren Wert geändert werden.
+    
     * Wählen Sie eine Azure Active Directory-Instanz und ein Azure-Abonnement aus. Weitere Informationen zu Verzeichnissen und Abonnements finden Sie unter [Create your Azure IoT Central Application](howto-create-application.md) (Erstellen Ihrer Azure IoT Central-Anwendung).
+    
     * Verwenden Sie entweder eine bereits vorhandene Ressourcengruppe, oder erstellen Sie eine Ressourcengruppe mit einem beliebigen Namen. Beispiel: **contoso-rg**.
+    
     * Wählen Sie die Region aus, die Ihnen geografisch am nächsten liegt.
+    
     * Wählen Sie die Anwendungsvorlage **Benutzerdefinierte Anwendung** aus.
+    
     * Wählen Sie den Zahlungsplan **Free 30 Day Trial Application** (Kostenlose 30-tägige Testanwendung) aus.
+    
     * Wählen Sie **Erstellen**.
 
-    ![Azure IoT Central-Seite „Anwendung erstellen“](media/tutorial-define-device-type/iotcentralcreate.png)
+    ![Azure IoT Central-Seite „Anwendung erstellen“](./media/tutorial-define-device-type/iotcentralcreate.png)
 
 Weitere Informationen finden Sie unter [Create your Azure IoT Central Application](howto-create-application.md) (Erstellen Ihrer Azure IoT Central-Anwendung).
 
@@ -74,9 +81,9 @@ Weitere Informationen finden Sie unter [Create your Azure IoT Central Applicatio
 
 Als Ersteller können Sie die Gerätevorlagen in Ihrer Anwendung erstellen und bearbeiten. Wenn Sie eine Gerätevorlage erstellen, generiert Azure IoT Central auf der Grundlage der Vorlage ein simuliertes Gerät. Das simulierte Gerät generiert Telemetriedaten, mit denen Sie das Verhalten Ihrer Anwendung testen können, bevor Sie eine Verbindung mit einem physischen Gerät herstellen.
 
-Wenn Sie Ihrer Anwendung eine neue Gerätevorlage hinzufügen möchten, navigieren Sie zur Seite **Application Builder** (Anwendungs-Generator). Klicken Sie hierzu im linken Navigationsmenü auf **Application Builder** (Anwendungs-Generator):
+Wenn Sie Ihrer Anwendung eine neue Gerätevorlage hinzufügen möchten, navigieren Sie zur Seite **Application Builder** (Anwendungs-Generator). Klicken Sie hierzu im linken Navigationsmenü auf **Application Builder** (Anwendungs-Generator).
 
-    ![Application Builder page](media/tutorial-define-device-type/builderhome.png)
+![Seite „Application Builder“ (Anwendungs-Generator)](./media/tutorial-define-device-type/builderhome.png)
 
 ## <a name="add-a-device-and-define-telemetry"></a>Hinzufügen eines Geräts und Definieren von Telemetriedaten
 
@@ -84,37 +91,43 @@ In diesem Abschnitt erfahren Sie Schritt für Schritt, wie Sie für Geräte, die
 
 1. Klicken Sie auf der Seite **Application Builder** (Anwendungs-Generator) auf **Create Device Template** (Gerätevorlage erstellen):
 
-    ![Seite „Application Builder“ (Anwendungs-Generator), Option „Create Device Template“ (Gerätevorlage erstellen)](media/tutorial-define-device-type/builderhomedevices.png)
+    ![Seite „Application Builder“ (Anwendungs-Generator), Option „Create Device Template“ (Gerätevorlage erstellen)](./media/tutorial-define-device-type/builderhomedevices.png)
 
 2. Klicken Sie auf der Seite **Device Templates** (Gerätevorlagen) auf **Benutzerdefiniert**. Mit einer Gerätevorlage vom Typ **Benutzerdefiniert** können Sie sämtliche Eigenschaften und Verhaltensweisen Ihrer verbundenen Klimaanlage definieren:
 
-    ![Geräte](media/tutorial-define-device-type/builderhomedevicescustom.png)
+    ![Geräte](./media/tutorial-define-device-type/builderhomedevicescustom.png)
 
 3. Geben Sie auf der Seite **New Device Template** (Neue Gerätevorlage) den Gerätenamen **Connected Air Conditioner** ein, und klicken Sie anschließend auf **Erstellen**. Sie können auch ein Bild Ihres Geräts hochladen, das Bedienern im Device Explorer angezeigt wird:
 
-    ![Benutzerdefiniertes Gerät](media/tutorial-define-device-type/createcustomdevice.png)
+    ![Benutzerdefiniertes Gerät](./media/tutorial-define-device-type/createcustomdevice.png)
 
 4. Vergewissern Sie sich in der Gerätevorlage **Connected Air Conditioner**, dass Sie sich auf der Seite **Measurements** (Messungen) befinden, um die Telemetriedaten zu definieren. Jede Gerätevorlage, die Sie definieren, bietet individuelle Seiten für Folgendes:
 
     * Angeben der Messungen, die vom Gerät gesendet werden (etwa Telemetriedaten, Ereignisse und Zustände)
+    
     * Definieren der Einstellungen zum Steuern des Geräts
+    
     * Definieren der Eigenschaften zum Erfassen von Informationen zum Gerät
+    
     * Definieren der Regeln für das Gerät
+    
     * Anpassen des Gerätedashboards für die Bediener
 
-    ![Messungen für die Klimaanlage](media/tutorial-define-device-type/airconmeasurements.png)
+    ![Messungen für die Klimaanlage](./media/tutorial-define-device-type/airconmeasurements.png)
 
     > [!NOTE]
     > Wenn Sie den Namen des Geräts oder der Gerätevorlage ändern möchten, klicken Sie auf den Text im oberen Seitenbereich.
 
 5. Klicken Sie auf **New Measurement** (Neue Messung), um die Messung für die Temperaturtelemetrie hinzuzufügen. Wählen Sie **Telemetrie** als Messungstyp aus:
 
-    ![Messungen für die verbundene Klimaanlage](media/tutorial-define-device-type/airconmeasurementsnew.png)
+    ![Messungen für die verbundene Klimaanlage](./media/tutorial-define-device-type/airconmeasurementsnew.png)
 
 6. Jede Art von Telemetrie, die Sie für eine Gerätevorlage definieren, beinhaltet [Konfigurationsoptionen](howto-set-up-template.md) wie etwa:
 
     * Anzeigeoptionen
+
     * Telemetriedetails
+
     * Simulationsparameter
 
     Verwenden Sie zum Konfigurieren der Telemetrie **Temperature** (Temperatur) die Informationen aus der folgenden Tabelle:
@@ -130,15 +143,15 @@ In diesem Abschnitt erfahren Sie Schritt für Schritt, wie Sie für Geräte, die
 
     Sie können auch eine Farbe für die Telemetrieanzeige auswählen. Klicken Sie auf **Speichern**, um die Telemetriedefinition zu speichern:
 
-    ![Konfigurieren der Temperatursimulation](media/tutorial-define-device-type/temperaturesimulation.png)
+    ![Konfigurieren der Temperatursimulation](./media/tutorial-define-device-type/temperaturesimulation.png)
 
 7. Nach kurzer Zeit wird auf der Seite **Measurements** (Messungen) ein Diagramm der Temperaturtelemetriedaten Ihrer simulierten verbundenen Klimaanlage angezeigt. Mithilfe der Steuerelemente können Sie die Sichtbarkeit sowie die Aggregation verwalten und die Telemetriedefinition bearbeiten:
 
-    ![Anzeigen der Temperatursimulation](media/tutorial-define-device-type/viewsimulation.png)
+    ![Anzeigen der Temperatursimulation](./media/tutorial-define-device-type/viewsimulation.png)
 
 8. Darüber hinaus können Sie das Diagramm mithilfe der Steuerelemente **Linie**, **Gestapelt** und **Zeitbereich bearbeiten** anpassen:
 
-    ![Anpassen des Diagramms](media/tutorial-define-device-type/customizechart.png)
+    ![Anpassen des Diagramms](./media/tutorial-define-device-type/customizechart.png)
 
 ## <a name="define-event-measurement"></a>Definieren der Ereignismessung
 
@@ -146,13 +159,15 @@ Mithilfe der Ereignisoption können Sie Zeitpunktdaten definieren, die vom Gerä
 
 1. Klicken Sie auf **New Measurement** (Neue Messung), um die Ereignismessung **Fan Motor Error** (Lüftermotorfehler) hinzuzufügen. Wählen Sie dann **Ereignis** als Messungstyp aus:
 
-    ![Messungen für die verbundene Klimaanlage](media/tutorial-define-device-type/eventnew.png)
+    ![Messungen für die verbundene Klimaanlage](./media/tutorial-define-device-type/eventnew.png)
 
 2. Jede Art von Ereignis, das Sie für eine Gerätevorlage definieren, beinhaltet [Konfigurationsoptionen](howto-set-up-template.md) wie etwa:
 
-    * Anzeigename
-    * Feldname
-    * Schweregrad
+   * Anzeigename
+
+   * Feldname
+
+   * Schweregrad
 
     Verwenden Sie zum Konfigurieren des Ereignisses **Fan Motor Error** die Informationen aus der folgenden Tabelle:
 
@@ -164,15 +179,15 @@ Mithilfe der Ereignisoption können Sie Zeitpunktdaten definieren, die vom Gerä
 
     Klicken Sie auf **Speichern**, um die Ereignisdefinition zu speichern:
 
-    ![Konfigurieren der Ereignismessung](media/tutorial-define-device-type/eventconfiguration.png)
+    ![Konfigurieren der Ereignismessung](./media/tutorial-define-device-type/eventconfiguration.png)
 
 3. Nach kurzer Zeit wird auf der Seite **Measurements** (Messungen) ein Diagramm der Ereignisse angezeigt, die nach dem Zufallsprinzip auf der Grundlage Ihrer simulierten verbundenen Klimaanlage generiert wurden. Mithilfe der Steuerelemente können Sie die Sichtbarkeit verwalten und die Ereignisdefinition bearbeiten:
 
-    ![Anzeigen der Ereignissimulation](media/tutorial-define-device-type/eventview.png)
+    ![Anzeigen der Ereignissimulation](./media/tutorial-define-device-type/eventview.png)
 
 1. Klicken Sie im Diagramm auf das Ereignis, um zusätzliche Ereignisdetails anzuzeigen:
 
-    ![Anzeigen von Ereignisdetails](media/tutorial-define-device-type/eventviewdetail.png)
+    ![Anzeigen von Ereignisdetails](./media/tutorial-define-device-type/eventviewdetail.png)
 
 ## <a name="define-state-measurement"></a>Definieren der Zustandsmessung
 
@@ -180,14 +195,17 @@ Mithilfe der Zustandsoption können Sie den Zustand des Geräts oder der dazugeh
 
 1. Klicken Sie auf **New Measurement** (Neue Messung), um die Messung **Fan Mode** (Lüftermodus) hinzuzufügen. Wählen Sie dann **Zustand** als Messungstyp aus:
 
-    ![Zustandsmessungen für die verbundene Klimaanlage](media/tutorial-define-device-type/statenew.png)
+    ![Zustandsmessungen für die verbundene Klimaanlage](./media/tutorial-define-device-type/statenew.png)
 
 2. Jede Art von Zustand, den Sie für eine Gerätevorlage definieren, beinhaltet [Konfigurationsoptionen](howto-set-up-template.md) wie etwa:
 
-    * Anzeigename
-    * Feldname
-    * Werte mit optionalen Anzeigebeschriftungen
-    * Wertspezifische Farben
+   * Anzeigename
+
+   * Feldname
+
+   * Werte mit optionalen Anzeigebeschriftungen
+
+   * Wertspezifische Farben
 
     Verwenden Sie zum Konfigurieren des Zustands **Fan Mode** (Lüftermodus) die Informationen aus der folgenden Tabelle:
 
@@ -202,19 +220,19 @@ Mithilfe der Zustandsoption können Sie den Zustand des Geräts oder der dazugeh
 
     Klicken Sie auf **Speichern**, um die Definition der Zustandsmessung zu speichern:
 
-    ![Konfigurieren der Zustandsmessung](media/tutorial-define-device-type/stateconfiguration.png)
+    ![Konfigurieren der Zustandsmessung](./media/tutorial-define-device-type/stateconfiguration.png)
 
 3. Nach kurzer Zeit wird auf der Seite **Measurements** (Messungen) ein Diagramm der Zustände angezeigt, die nach dem Zufallsprinzip auf der Grundlage Ihrer simulierten verbundenen Klimaanlage generiert wurden. Mithilfe der Steuerelemente können Sie die Sichtbarkeit verwalten und die Zustandsdefinition bearbeiten:
 
-    ![Anzeigen der Zustandssimulation](media/tutorial-define-device-type/stateview.png)
+    ![Anzeigen der Zustandssimulation](./media/tutorial-define-device-type/stateview.png)
 
 4. Sollten vom Gerät innerhalb kurzer Zeit zu viele Datenpunkte gesendet werden, wird die Zustandsmessung anders dargestellt, wie in der folgenden Abbildung zu sehen. Wenn Sie auf das Diagramm klicken, werden alle Datenpunkte innerhalb dieses Zeitraums in chronologischer Reihenfolge angezeigt. Sie können den Zeitbereich auch einschränken, um die Messung im Diagramm anzuzeigen.
 
-    ![Anzeigen von Zustandsdetails](media/tutorial-define-device-type/stateviewdetail.png)
+    ![Anzeigen von Zustandsdetails](./media/tutorial-define-device-type/stateviewdetail.png)
 
-## <a name="properties-device-properties-and-settings"></a>Eigenschaften, Geräteeigenschaften und Einstellungen
+## <a name="settings-properties-and-commands"></a>Einstellungen, Eigenschaften und Befehle
 
-Eigenschaften, Geräteeigenschaften und Einstellungen sind unterschiedliche Werte, die in einer Gerätevorlage definiert und jedem einzelnen Gerät zugeordnet werden:
+Eigenschaften, Einstellungen und Geräteeigenschaften sowie Befehle sind unterschiedliche Werte, die in einer Gerätevorlage definiert und jedem einzelnen Gerät zugeordnet werden:
 
 * _Einstellungen_ dienen dazu, Konfigurationsdaten aus Ihrer Anwendung an ein Gerät zu senden. Mithilfe einer Einstellung kann ein Bediener beispielsweise das Telemetrieintervall des Geräts von zwei Sekunden in fünf Sekunden ändern. Wenn ein Bediener eine Einstellung ändert, wird diese auf der Benutzeroberfläche als ausstehend markiert, bis das Gerät bestätigt, dass die Einstellungsänderung durchgeführt wurde.
 
@@ -222,13 +240,15 @@ Eigenschaften, Geräteeigenschaften und Einstellungen sind unterschiedliche Wert
 
 * _Geräteeigenschaften_ dienen dazu, einem Gerät das Senden von Eigenschaftswerten an Ihre Anwendung zu ermöglichen. Diese Eigenschaften können nur durch das Gerät geändert werden. Für Bediener sind Geräteeigenschaften schreibgeschützt.
 
+* Verwenden Sie _Befehle_, um Ihr Gerät aus Ihrer Anwendung remote zu verwalten. Sie können Befehle auf Ihrem Gerät direkt aus der Cloud ausführen, um die Geräte zu steuern. Operatoren können z.B. Befehle wie den Neustart ausführen, um das Gerät sofort neu zu starten.
+
 ## <a name="use-settings"></a>Verwenden von Einstellungen
 
 *Einstellungen* ermöglichen es einem Bediener, Konfigurationsdaten an ein Gerät zu senden. In diesem Abschnitt fügen Sie der Gerätevorlage **Connected Air Conditioner** eine Einstellung hinzu, die es Bedienern ermöglicht, die Zieltemperatur der verbundenen Klimaanlage festzulegen.
 
 1. Navigieren Sie zur Seite **Einstellungen** für die Gerätevorlage **Connected Air Conditioner**:
 
-    ![Vorbereiten des Hinzufügens einer Einstellung](media/tutorial-define-device-type/deviceaddsetting.png)
+    ![Vorbereiten des Hinzufügens einer Einstellung](./media/tutorial-define-device-type/deviceaddsetting.png)
 
     Sie können Einstellungen unterschiedlicher Art erstellen – beispielsweise Zahlen oder Text.
 
@@ -249,24 +269,24 @@ Eigenschaften, Geräteeigenschaften und Einstellungen sind unterschiedliche Wert
 
     Klicken Sie anschließend auf **Speichern**:
 
-    ![Konfigurieren der Einstellung für die Sollwerttemperatur](media/tutorial-define-device-type/configuresetting.png)
+    ![Konfigurieren der Einstellung für die Sollwerttemperatur](./media/tutorial-define-device-type/configuresetting.png)
 
     > [!NOTE]
     > Wenn das Gerät eine Einstellungsänderung bestätigt, ändert sich der Status der Einstellungsänderung in **Synchronisiert**.
 
 4. Sie können die Einstellungskacheln verschieben und ihre Größe ändern, um das Layout der Seite **Einstellungen** anzupassen:
 
-    ![Anpassen des Layouts der Einstellungen](media/tutorial-define-device-type/settingslayout.png)
+    ![Anpassen des Layouts der Einstellungen](./media/tutorial-define-device-type/settingslayout.png)
 
-## <a name="use-properties"></a>Verwenden von Eigenschaften
+## <a name="use-properties--device-properties"></a>Verwenden von Eigenschaften und Geräteeigenschaften
 
-*Eigenschaften* dienen dazu, Geräteinformationen in der Anwendung zu speichern. In diesem Abschnitt fügen Sie der Gerätevorlage **Connected Air Conditioner** Eigenschaften zum Speichern der Seriennummer und der Firmwareversion des jeweiligen Geräts hinzu.
-
+*Eigenschaften* dienen dazu, Geräteinformationen in der Anwendung zu speichern. In diesem Abschnitt fügen Sie der Gerätevorlage **Connected Air Conditioner** Geräteeigenschaften hinzu, um die Seriennummer und die Firmwareversion des jeweiligen Geräts zu speichern. Beachten Sie, dass beides schreibgeschützte Eigenschaften sind, die vom Gerät gemeldet werden. Sie können ihnen keine Werte zuweisen. Zu den Eigenschaften, die Sie verwenden und denen Sie Werte zuweisen können, gehören der Speicherort des Geräts, Angaben zum Besitzer und das Datum bzw. die Uhrzeit der letzten Inbetriebnahme des Geräts.
+ 
 1. Navigieren Sie zur Seite **Eigenschaften** für die Gerätevorlage **Connected Air Conditioner**:
 
-    ![Vorbereiten des Hinzufügens einer Eigenschaft](media/tutorial-define-device-type/deviceaddproperty.png)
+    ![Vorbereiten des Hinzufügens einer Eigenschaft](./media/tutorial-define-device-type/deviceaddproperty.png)
 
-    Sie können Eigenschaften unterschiedlicher Art erstellen – beispielsweise Zahlen oder Text. Klicken Sie auf **Text**, um Ihrer Gerätevorlage eine Seriennummerneigenschaft hinzuzufügen.
+    Sie können Geräteeigenschaften unterschiedlicher Art erstellen, wie Zahlen oder Text. Klicken Sie auf **Text**, um Ihrer Gerätevorlage eine Seriennummerneigenschaft hinzuzufügen.
 
 2. Verwenden Sie zum Konfigurieren der Seriennummerneigenschaft die Informationen aus der folgenden Tabelle:
 
@@ -279,13 +299,13 @@ Eigenschaften, Geräteeigenschaften und Einstellungen sind unterschiedliche Wert
 
     Behalten Sie für die anderen Felder die Standardwerte bei.
 
-    ![Konfigurieren der Geräteeigenschaften](media/tutorial-define-device-type/configureproperties.png)
+    ![Konfigurieren der Geräteeigenschaften](./media/tutorial-define-device-type/configureproperties.png)
 
-    Klicken Sie auf **Speichern**.
+    Wählen Sie **Speichern** aus.
 
-3. Klicken Sie auf **Text**, um Ihrer Gerätevorlage eine Firmwareversionseigenschaft hinzuzufügen.
+3. Klicken Sie auf **Text**, um Ihrer Gerätevorlage eine Firmwareversion als Eigenschaft hinzuzufügen.
 
-4. Verwenden Sie zum Konfigurieren der Firmwareversionseigenschaft die Informationen aus der folgenden Tabelle:
+4. Um die Firmwareversion als Geräteeigenschaft ordnungsgemäß zu konfigurieren, verwenden Sie die Informationen aus der folgenden Tabelle:
 
     | Feld                | Wert                   |
     | -------------------- | ----------------------- |
@@ -294,13 +314,44 @@ Eigenschaften, Geräteeigenschaften und Einstellungen sind unterschiedliche Wert
     | Anfangswert        | 0,1                     |
     | BESCHREIBUNG          | Device firmware version |
 
-    ![Konfigurieren der Geräteeigenschaften](media/tutorial-define-device-type/configureproperties2.png)
+    ![Konfigurieren der Geräteeigenschaften](./media/tutorial-define-device-type/configureproperties2.png)
 
-    Klicken Sie auf **Speichern**.
+    Wählen Sie **Speichern** aus.
 
-5. Sie können die Eigenschaftenkacheln verschieben und ihre Größe ändern, um das Layout der Seite **Eigenschaften** anzupassen:
+5. Sie können das Layout der Seite **Properties** (Eigenschaften) anpassen, indem Sie die Eigenschaftenkacheln verschieben und ihre Größe ändern:
 
-    ![Anpassen des Layouts der Eigenschaften](media/tutorial-define-device-type/propertieslayout.png)
+    ![Anpassen des Layouts der Eigenschaften](./media/tutorial-define-device-type/propertieslayout.png)
+
+
+## <a name="use-commands"></a>Verwenden von Befehlen
+
+Verwenden Sie _Befehle_, damit ein Operator Befehle direkt auf dem Gerät ausführen kann. In diesem Abschnitt fügen Sie Ihrer Gerätevorlage **Connected Air Conditioner** einen Befehl hinzu. Dadurch kann ein Operator eine bestimmte Nachricht auf der Anzeige der verbundenen Klimaanlage (funktioniert mit MxChip-Beispielcode) zurückgeben.
+
+1. Navigieren Sie zur Seite **Commands** (Befehle) Ihrer Gerätevorlage **Connected Air Conditioner**:
+
+    ![Vorbereiten des Hinzufügens einer Einstellung](media/tutorial-define-device-type/commandsecho.png)
+
+    Sie können je nach Anforderung Befehle unterschiedlichen Typs erstellen. 
+
+1. Klicken Sie auf **New Command** (Neuer Befehl), um Ihrem Gerät einen Befehl hinzufügen.
+
+1. Um Ihren neuen Befehl zu konfigurieren, verwenden Sie die Informationen aus der folgenden Tabelle:
+
+    | Feld                | Wert           |
+    | -------------------- | -----------     |
+    | Anzeigename         | Echo-Befehl    |
+    | Feldname           | Echo            |
+    | Standardzeitlimit      | 30              |
+    | Anzeigename         | Text anzeigen    |
+    | Typ anzeigen         | text            |  
+
+Sie können zusätzliche Eingaben für den Befehl hinzufügen, indem Sie auf **+** klicken.
+
+2. Wählen Sie **Speichern** aus.
+
+3. Sie können das Layout der Seite **Commands** (Befehle) anpassen, indem Sie die Einstellungskacheln verschieben und ihre Größe ändern:
+
+    ![Anpassen des Layouts der Einstellungen](media/tutorial-define-device-type/commandstileresize.png)
 
 ## <a name="view-your-simulated-device"></a>Anzeigen Ihres simulierten Geräts
 
@@ -308,11 +359,11 @@ Nachdem Sie Ihre Gerätevorlage **Connected Air Conditioner** definiert haben, k
 
 1. Navigieren Sie zur Seite **Dashboard** für die Gerätevorlage **Connected Air Conditioner**:
 
-    ![Dashboards für die verbundene Klimaanlage](media/tutorial-define-device-type/aircondashboards.png)
+    ![Dashboards für die verbundene Klimaanlage](./media/tutorial-define-device-type/aircondashboards.png)
 
 2. Klicken Sie auf **Liniendiagramm**, um die Komponente dem **Dashboard** hinzuzufügen:
 
-    ![Dashboardkomponenten](media/tutorial-define-device-type/dashboardcomponents1.png)
+    ![Dashboardkomponenten](./media/tutorial-define-device-type/dashboardcomponents1.png)
 
 3. Konfigurieren Sie die Komponente **Liniendiagramm** mit den Informationen aus der folgenden Tabelle:
 
@@ -322,7 +373,7 @@ Nachdem Sie Ihre Gerätevorlage **Connected Air Conditioner** definiert haben, k
     | Zeitbereich   | Letzte 30 Minuten |
     | Measurements (Messungen) | temperature (Klicken Sie neben **temperature** auf **Sichtbarkeit**.) |
 
-    ![Einstellungen für Liniendiagramm](media/tutorial-define-device-type/linechartsettings.png)
+    ![Einstellungen für Liniendiagramm](./media/tutorial-define-device-type/linechartsettings.png)
 
     Klicken Sie auf **Speichern**.
 
@@ -334,7 +385,7 @@ Nachdem Sie Ihre Gerätevorlage **Connected Air Conditioner** definiert haben, k
     | Zeitbereich   | Letzte 30 Minuten |
     | Measurements (Messungen) | Fan Motor Error (Klicken Sie neben **Fan Motor Error** auf **Sichtbarkeit**.) |
 
-    ![Einstellungen für Liniendiagramm](media/tutorial-define-device-type/dashboardeventchartsetting.png)
+    ![Einstellungen für Liniendiagramm](./media/tutorial-define-device-type/dashboardeventchartsetting.png)
 
     Klicken Sie auf **Speichern**.
 
@@ -346,13 +397,13 @@ Nachdem Sie Ihre Gerätevorlage **Connected Air Conditioner** definiert haben, k
     | Zeitbereich   | Letzte 30 Minuten |
     | Measurements (Messungen) | Fan Mode (Klicken Sie neben **Fan Mode** auf **Sichtbarkeit**.) |
 
-    ![Einstellungen für Liniendiagramm](media/tutorial-define-device-type/dashboardstatechartsetting.png)
+    ![Einstellungen für Liniendiagramm](./media/tutorial-define-device-type/dashboardstatechartsetting.png)
 
     Klicken Sie auf **Speichern**.
 
 6. Klicken Sie auf **Settings and Properties** (Einstellungen und Eigenschaften), um dem Dashboard die Einstellung für die Sollwerttemperatur hinzuzufügen:
 
-    ![Dashboardkomponenten](media/tutorial-define-device-type/dashboardcomponents4.png)
+    ![Dashboardkomponenten](./media/tutorial-define-device-type/dashboardcomponents4.png)
 
 7. Konfigurieren Sie die Komponente **Settings and Properties** (Einstellungen und Eigenschaften) mit den Informationen aus der folgenden Tabelle:
 
@@ -361,13 +412,13 @@ Nachdem Sie Ihre Gerätevorlage **Connected Air Conditioner** definiert haben, k
     | Titel                   | Set target temperature |
     | Settings and Properties (Einstellungen und Eigenschaften) | Set Temperature |
 
-    ![Einstellungen für die Seriennummerneigenschaft](media/tutorial-define-device-type/propertysettings3.png)
+    ![Einstellungen für die Seriennummerneigenschaft](./media/tutorial-define-device-type/propertysettings3.png)
 
     Klicken Sie auf **Speichern**.
 
 8. Klicken Sie auf **Settings and Properties** (Einstellungen und Eigenschaften), um dem Dashboard die Seriennummer des Geräts hinzuzufügen:
 
-    ![Dashboardkomponenten](media/tutorial-define-device-type/dashboardcomponents3.png)
+    ![Dashboardkomponenten](./media/tutorial-define-device-type/dashboardcomponents3.png)
 
 9. Konfigurieren Sie die Komponente **Settings and Properties** (Einstellungen und Eigenschaften) mit den Informationen aus der folgenden Tabelle:
 
@@ -376,13 +427,13 @@ Nachdem Sie Ihre Gerätevorlage **Connected Air Conditioner** definiert haben, k
     | Titel                   | Serial number |
     | Settings and Properties (Einstellungen und Eigenschaften) | Seriennummer |
 
-    ![Einstellungen für die Seriennummerneigenschaft](media/tutorial-define-device-type/propertysettings1.png)
+    ![Einstellungen für die Seriennummerneigenschaft](./media/tutorial-define-device-type/propertysettings1.png)
 
     Klicken Sie auf **Speichern**.
 
 10. Klicken Sie auf **Settings and Properties** (Einstellungen und Eigenschaften), um dem Dashboard die Firmwareversion des Geräts hinzuzufügen:
 
-    ![Dashboardkomponenten](media/tutorial-define-device-type/dashboardcomponents4.png)
+    ![Dashboardkomponenten](./media/tutorial-define-device-type/dashboardcomponents4.png)
 
 11. Konfigurieren Sie die Komponente **Settings and Properties** (Einstellungen und Eigenschaften) mit den Informationen aus der folgenden Tabelle:
 
@@ -391,7 +442,7 @@ Nachdem Sie Ihre Gerätevorlage **Connected Air Conditioner** definiert haben, k
     | Titel                   | Firmware version |
     | Settings and Properties (Einstellungen und Eigenschaften) | Firmware Version |
 
-    ![Einstellungen für die Seriennummerneigenschaft](media/tutorial-define-device-type/propertysettings2.png)
+    ![Einstellungen für die Seriennummerneigenschaft](./media/tutorial-define-device-type/propertysettings2.png)
 
     Klicken Sie auf **Speichern**.
 

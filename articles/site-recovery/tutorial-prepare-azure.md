@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 06/04/2018
+ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ffcce12800fae3a4d9e4930c918fcafb919b96ed
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 6a113169cb3f8fea1012643efcb56e5cf6c7e908
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737203"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915968"
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>Vorbereiten von Azure-Ressourcen für die Replikation von lokalen Computern
 
@@ -54,11 +54,12 @@ Images der replizierten Computer sind in Azure Storage gespeichert. Azure-VMs we
 1. Wählen Sie im Menü des [Azure-Portals](https://portal.azure.com) **Ressource erstellen** > **Speicher** > **Speicherkonto – Blob, Datei, Tabelle, Warteschlange**.
 2. Geben Sie unter **Speicherkonto erstellen** einen Namen für das Konto ein. Verwenden Sie für diese Tutorials **contosovmsacct1910171607**. Der ausgewählte Name muss in Azure eindeutig und zwischen 3 und 24 Zeichen lang sein, wobei nur Ziffern und Kleinbuchstaben zulässig sind.
 3. Wählen Sie unter **Bereitstellungsmodell** die Option **Resource Manager**.
-4. Wählen Sie unter **Kontoart** die Option **Speicher (universell v1)** aus. Wählen Sie keinen Blobspeicher aus. Wählen Sie unter **Leistung** die Option **Standard**. 
+4. Wählen Sie unter **Kontoart** die Option **Speicher (universell v1)** aus. Wählen Sie keinen Blobspeicher aus.
 5. Wählen Sie unter **Replikation** für die Speicherredundanz die Standardoption **Georedundanter Speicher mit Lesezugriff**. Wir lassen die Option **Sichere Übertragung erforderlich** **deaktiviert**.
-6. Wählen Sie unter **Abonnement** das Abonnement aus, in dem Sie das neue Speicherkonto erstellen möchten. 
-2. Geben Sie unter **Ressourcengruppe** eine neue Ressourcengruppe ein. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Für diese Tutorials verwenden wir **ContosoRG**.
-3. Wählen Sie unter **Standort** den geografischen Standort für das Speicherkonto aus. 
+6. Wählen Sie unter **Leistung** die Option **Standard** und unter **Zugriffsebene** die Standardoption **Heiße Ebene** aus.
+7. Wählen Sie unter **Abonnement** das Abonnement aus, in dem Sie das neue Speicherkonto erstellen möchten.
+8. Geben Sie unter **Ressourcengruppe** eine neue Ressourcengruppe ein. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Für diese Tutorials verwenden wir **ContosoRG**.
+9. Wählen Sie unter **Standort** den geografischen Standort für das Speicherkonto aus. 
 
    ![Speicherkonto erstellen](media/tutorial-prepare-azure/create-storageacct.png)
 
@@ -98,7 +99,7 @@ Wenn die Azure-VMs nach einem Failover aus dem Speicher erstellt werden, werden 
 
 - [Informationen zu](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) Azure-Netzwerken.
 - [Informationen zu](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts) Azure-Speichertypen.
-- - [Informationen zu ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs#read-access-geo-redundant-storage) Speicherredundanz und [sicherer Übertragung](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) für Speicher.
+- [Informationen zu ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs#read-access-geo-redundant-storage) Speicherredundanz und [sicherer Übertragung](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) für Speicher.
 
 
 

@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 03/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6d866a6b068e9f6b8a46e53d60653d55e35a2ffd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f56ac74c62334ef64fca45a6430a539e3c4c372c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594022"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38442535"
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>Integrieren Ihrer lokalen Verzeichnisse in Azure Active Directory
 Azure AD Connect integriert Ihre lokalen Verzeichnisse in Azure Active Directory. Dadurch können Sie für Ihre Benutzer eine einzige Identität für in Azure AD integrierte in Office 365-, Azure- und SaaS-Anwendungen bereitstellen. Dieses Thema beschreibt die Planung, Bereitstellung und den Betrieb. Es umfasst Links zu Themen, die mit diesem Bereich zusammenhängen.
@@ -33,8 +33,9 @@ Azure AD Connect integriert Ihre lokalen Verzeichnisse in Azure Active Directory
 
 > 
 > - Die Synchronisierung von Benutzern mit Azure AD ist ein **kostenloses Feature**, für das Kunden keinerlei kostenpflichtiges Abonnement benötigen.
->- Synchronisierten Benutzer wird **nicht automatisch** *eine* Lizenz erteilt. Administratoren haben weiterhin uneingeschränkte Kontrolle über Lizenzzuweisungen. 
+> - Synchronisierten Benutzer wird **nicht automatisch** *eine* Lizenz erteilt. Administratoren haben weiterhin uneingeschränkte Kontrolle über Lizenzzuweisungen. 
 > - Microsoft empfiehlt IT-Administratoren, alle Benutzer zu synchronisieren. Dadurch können die Benutzer nicht nur auf sämtliche integrierte Azure AD-Ressourcen zugreifen, IT-Administratoren erhalten auch eine deutlich besseren Überblick darüber, auf welche Anwendungen die Benutzer zugreifen. 
+> - Von Microsoft wird dringend empfohlen, Benutzer nicht mit Administratorrollen in AAD zu synchronisieren.
 
 ![Was ist Azure AD Connect?](media/active-directory-aadconnect/arch.png)
 

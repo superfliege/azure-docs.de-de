@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/15/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: a7a4391b436af4ffa303741397f0be7abf0186fb
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 538977b9057a5699d61d6c2cc44209367e3550e2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33935876"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38722846"
 ---
 # <a name="import-and-publish-your-first-api"></a>Importieren und Veröffentlichen Ihrer ersten API 
 
@@ -53,6 +53,8 @@ In diesem Abschnitt wird gezeigt, wie Sie eine Back-End-API mit OpenAPI-Spezifik
 
     Sie können die API-Werte während der Erstellung oder später über die Registerkarte **Einstellungen** festlegen. Der rote Stern neben einem Feld gibt an, dass das Feld erforderlich ist.
 
+    Verwenden Sie die Werte aus der Datei unten, um Ihre erste API zu erstellen.
+
     |Einstellung|Wert|BESCHREIBUNG|
     |---|---|---|
     |**OpenAPI-Spezifikation**|http://conferenceapi.azurewebsites.net?format=json|Verweist auf den Dienst zum Implementieren der API. API Management leitet Anfragen an diese Adresse weiter.|
@@ -75,19 +77,21 @@ Vorgänge können direkt aus dem Azure-Portal aufgerufen werden. Dies ist ein ei
 1. Wählen Sie die API aus, die Sie im vorherigen Schritt erstellt haben (auf der Registerkarte **APIs**).
 2. Wählen Sie die Registerkarte **Testen** aus.  ![Test-API](./media/api-management-get-started/test-api.png)
 3. Klicken Sie auf **GetSpeakers**.
-    Auf der Seite werden Felder für Abfrageparameter angezeigt, aber in diesem Fall sind keine vorhanden. Die Seite enthält auch Felder für die Header. Einer der Header ist „Ocp-Apim-Subscription-Key“. Er steht für den Abonnementschlüssel des Produkts, das dieser API zugeordnet ist. Der Schlüssel wird automatisch eingefügt.
+    Auf der Seite werden Felder für Abfrageparameter angezeigt (in diesem Fall keine) sowie Header. Einer der Header ist „Ocp-Apim-Subscription-Key“. Er steht für den Abonnementschlüssel des Produkts, das dieser API zugeordnet ist. Der Schlüssel wird automatisch eingefügt.
 4. Klicken Sie auf **Senden**.
 
     Das Back-End antwortet mit **200 OK** und einigen Daten.
 
 ## <a name="call-operation"></a>Aufrufen einer Operation aus dem Entwicklerportal
 
-Vorgänge können auch über das **Entwicklerportal** aufgerufen werden, um APIs zu testen. 
+Vorgänge können auch über das **Entwicklerportal** aufgerufen werden, um APIs zu testen.
 
-1. Wählen Sie **Demo Conference API** aus.
-2. Klicken Sie auf **GetSpeakers**.
+1. Navigieren Sie zum **Entwicklerportal**.
+![Entwicklerportal](./media/api-management-get-started/developer-portal.png)
+
+2. Wählen Sie **APIS** aus, klicken Sie auf **Demo Conference API** und dann auf **GetSpeakers**.
     
-    Auf der Seite werden Felder für Abfrageparameter angezeigt, aber in diesem Fall sind keine vorhanden. Die Seite enthält auch Felder für die Header. Einer der Header ist „Ocp-Apim-Subscription-Key“. Er steht für den Abonnementschlüssel des Produkts, das dieser API zugeordnet ist. Wenn Sie die APIM-Instanz erstellt haben, sind Sie bereits Administrator, sodass der Schlüssel automatisch eingetragen wird.
+    Auf der Seite werden Felder für Abfrageparameter angezeigt (in diesem Fall keine) sowie Header. Einer der Header ist „Ocp-Apim-Subscription-Key“. Er steht für den Abonnementschlüssel des Produkts, das dieser API zugeordnet ist. Wenn Sie die APIM-Instanz erstellt haben, sind Sie bereits Administrator, sodass der Schlüssel automatisch eingetragen wird.
 3. Wählen Sie **Ausprobieren**.
 4. Klicken Sie auf **Senden**.
     

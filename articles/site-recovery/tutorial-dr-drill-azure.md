@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie mit Azure Site Recovery eine Notfallwiederher
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/03/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: fa66e47715940584259e5cf555f3f6cd6f07e267
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: af8062fc0134975542c8a5ec420c790f33996154
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437211"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920170"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Durchführen eines Notfallwiederherstellungsverfahrens in Azure
 
@@ -20,10 +20,10 @@ Dieser Artikel veranschaulicht das Durchführen einer Notfallwiederherstellungs�
 Dies ist das vierte Tutorial in einer Reihe, welche die Einrichtung der Notfallwiederherstellung in Azure für lokale virtuelle VMware-Computer oder virtuelle Hyper-V-Computer veranschaulicht.
 
 In diesem Tutorial wird davon ausgegangen, dass Sie die ersten drei Tutorials abgeschlossen haben: 
-    - Im [ersten Tutorial](tutorial-prepare-azure.md) haben Sie für die VMware- oder Hyper-V-Notfallwiederherstellung [Azure-Komponenten vorbereitet](tutorial-prepare-azure.md).
-    - Im zweiten Tutorial haben Sie lokale Komponenten für die [VMware-](vmware-azure-tutorial-prepare-on-premises.md) oder [Hyper-V](hyper-v-prepare-on-premises-tutorial.md)-Notfallwiederherstellung vorbereitet.
-    - Im dritten Tutorial haben Sie die Replikation für lokale [virtuelle VMware-Computer](vmware-azure-tutorial.md), [virtuelle Hyper-V-Computer mit System Center VMM](hyper-v-vmm-azure-tutorial.md) oder [virtuelle Hyper-V-Computer ohne VMM](hyper-v-azure-tutorial.md) eingerichtet und aktiviert.
-- Tutorials dienen zur Veranschaulichung des einfachsten Bereitstellungspfads für ein Szenario. Sie verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. Bei allen Tutorials wird Site Recovery mit den einfachsten Einstellungen eingerichtet, und nach Möglichkeit werden Standardwerte verwendet. Ausführlichere Informationen zu den Schritten des Testfailovers finden Sie in [dieser Anleitung](site-recovery-test-failover-to-azure.md).
+    - Im [ersten Tutorial](tutorial-prepare-azure.md) haben wir die erforderlichen Azure-Komponenten für die VMware-Notfallwiederherstellung eingerichtet.
+    - Im [zweiten Tutorial](vmware-azure-tutorial-prepare-on-premises.md) haben wir lokale Komponenten für die Notfallwiederherstellung vorbereitet und die Anforderungen überprüft.
+    - Im [dritten Tutorial](vmware-azure-tutorial.md) haben wir die Replikation für den lokalen virtuellen VMware-Computer eingerichtet und aktiviert.
+    - Tutorials dienen zur Veranschaulichung des **einfachsten Bereitstellungspfads für ein Szenario**. Sie verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. Ausführlichere Informationen zu den Schritten des Testfailovers finden Sie in [dieser Anleitung](site-recovery-test-failover-to-azure.md).
 
 In diesem Tutorial lernen Sie Folgendes:
 

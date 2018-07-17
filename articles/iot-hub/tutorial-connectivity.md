@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 05/29/2018
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 47d52fa412adf3f8e7f0c3c4d4afaf9009b4783e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dc857760cf0d3fa2e146f22196b7bc36d119df5f
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651420"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869571"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Tutorial: Verwenden eines simulierten Geräts zum Testen der Konnektivität mit Ihrem IoT Hub
 
@@ -49,7 +49,7 @@ Mit dem folgenden Befehl können Sie die aktuelle Node.js-Version auf Ihrem Entw
 node --version
 ```
 
-Laden Sie das Node.js-Beispielprojekt für den Gerätesimulator von https://github.com/Azure-Samples/iot-hub-tutorials-node/archive/master.zip herunter, und extrahieren Sie das ZIP-Archiv.
+Laden Sie das Node.js-Beispielprojekt für den Gerätesimulator von https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip herunter, und extrahieren Sie das ZIP-Archiv.
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
 
@@ -123,6 +123,9 @@ Hierbei sehen Sie jetzt einen Authentifizierungsfehler, wenn die Anwendung versu
 Wenn Ihr Gerät eines der IoT Hub-Geräte-SDKs nutzt, generiert der SDK-Bibliothekscode das SAS-Token, das zum Authentifizieren mit dem Hub verwendet wird. Ein SAS-Token wird aus dem Namen Ihres Hub, dem Namen Ihres Geräts und dem Geräteschlüssel generiert.
 
 Bei einigen Szenarien, z.B. in einem Cloudprotokollgateway oder als Teil eines benutzerdefinierten Authentifizierungsschemas, müssen Sie das SAS-Token ggf. selbst generieren. Zum Behandeln von Problemen mit Ihrem SAS-Generierungscode ist es nützlich, wenn Sie ein als funktionierend bekanntes SAS-Token zur Verwendung beim Testen generieren können.
+
+> [!NOTE]
+> Das Beispiel „SimulatedDevice-2.js“ enthält Beispiele zum Generieren eines SAS-Tokens jeweils mit und ohne SDK.
 
 Führen Sie den folgenden Befehl aus, um mit der CLI ein als funktionierend bekanntes SAS-Token zu generieren:
 

@@ -14,11 +14,12 @@ ms.topic: tutorial
 ms.date: 04/17/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 1b51638754287d3359eaea7bd5da3f71bf15cc89
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f1388843f2c5d3ea607b876ece288db1370329a2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38461536"
 ---
 # <a name="tutorial-secure-sql-database-connection-with-managed-service-identity"></a>Tutorial: Schützen der SQL-Datenbank-Verbindung mittels verwalteter Dienstidentität
 
@@ -31,6 +32,9 @@ Folgendes wird vermittelt:
 > * Gewähren von SQL-Datenbank-Zugriff für die verwaltete Dienstidentität
 > * Konfigurieren des Anwendungscodes für die Authentifizierung mit SQL-Datenbank mittels Azure Active Directory-Authentifizierung
 > * Gewähren minimaler Berechtigungen für die Dienstidentität in SQL-Datenbank
+
+> [!NOTE]
+> Die Azure Active Directory-Authentifizierung _unterscheidet sich_ von der [integrierten Windows-Authentifizierung](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10)) im lokalen Active Directory (AD DS) AD DS und Azure Active Directory verwenden komplett unterschiedliche Authentifizierungsprotokolle. Weitere Informationen finden Sie unter [Der Unterschied zwischen Windows Server AD DS und Azure AD](../active-directory/fundamentals/understand-azure-identity-solutions.md#the-difference-between-windows-server-ad-ds-and-azure-ad)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -64,7 +68,7 @@ Das folgende Beispiel zeigt die Ausgabe nach der Erstellung der Identität in Az
 Der Wert von `principalId` wird im nächsten Schritt verwendet. Wenn Sie die Details der neuen Identität in Azure Active Directory anzeigen möchten, führen Sie den folgenden optionalen Befehl mit dem Wert von `principalId` aus:
 
 ```azurecli-interactive
-az ad sp show --id <principalid>`
+az ad sp show --id <principalid>
 ```
 
 ## <a name="grant-database-access-to-identity"></a>Gewähren von Datenbankzugriff für die Identität
@@ -156,7 +160,7 @@ Fügen Sie die verwaltete Dienstidentität für Ihre App über Cloud Shell einer
 ```azurecli-interactive
 groupid=$(az ad group create --display-name myAzureSQLDBAccessGroup --mail-nickname myAzureSQLDBAccessGroup --query objectId --output tsv)
 msiobjectid=$(az webapp identity show --resource-group <group_name> --name <app_name> --query principalId --output tsv)
-az ad group member add --group $groupid --member-id $msiid
+az ad group member add --group $groupid --member-id $msiobjectid
 az ad group member list -g $groupid
 ```
 

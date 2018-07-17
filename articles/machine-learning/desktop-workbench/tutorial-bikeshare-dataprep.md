@@ -7,15 +7,17 @@ ms.author: ranku
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/21/2017
-ms.openlocfilehash: 51ed7dbead7f9085de563d2fb20c4e4a08f90bb2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 951ce8947d113eaad2ea0e3b5df5e9714aa33dd8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723186"
 ---
 # <a name="tutorial-use-azure-machine-learning-workbench-for-advanced-data-preparation-bike-share-data"></a>Tutorial: Erweiterte Datenvorbereitung (Bikesharing-Daten) mit Azure Machine Learning Workbench
 Azure Machine Learning (Vorschauversion) ist eine integrierte End-to-End-Lösung für Data Science-Anwendungen und erweiterte Analysen, die sich an professionelle Datenspezialisten richtet und zum Vorbereiten von Daten, Entwickeln von Experimenten und Bereitstellen von Modellen auf Cloudniveau verwendet werden kann.
@@ -253,7 +255,7 @@ Die Spalte __REPORTTYPE__ wird nicht mehr benötigt. Klicken Sie mit der rechten
    ![Option „Remove Column“ (Spalte entfernen)](media/tutorial-bikeshare-dataprep/weatherremovereporttype.png)
 
 ## <a name="change-datatypes-and-remove-errors"></a>Ändern von Datentypen und Entfernen von Fehlern
-1. Halten Sie beim Auswählen von Spaltenüberschriften die STRG-TASTE (bzw. auf einem Mac die Befehlstaste ⌘) gedrückt, um gleichzeitig mehrere Spalten auszuwählen. Wählen Sie so die folgenden Spaltenüberschriften aus:
+1. Drücken Sie auf STRG (⌘ auf einem Mac), während Sie die Spaltenüberschriften zum Auswählen mehrerer Spalten gleichzeitig auswählen. Wählen Sie so die folgenden Spaltenüberschriften aus:
 
    * **HOURLYDRYBULBTEMPF**
 
@@ -452,7 +454,7 @@ Für die Datenvorbereitung stehen praktische Visualisierungen (so genannte Inspe
 1. Wählen Sie die Spalten **start station latitude** und **start station longitude** gleichzeitig aus. Klicken Sie mit der rechten Maustaste auf eine der Spalten, und wählen Sie die Option **Map** (Karte) aus.
 
     > [!TIP]
-    > Halten Sie für die Mehrfachauswahl die STRG-TASTE (bzw. auf einem Mac die Befehlstaste ⌘) gedrückt, und wählen Sie die Überschrift der jeweiligen Spalte aus.
+    > Halten Sie für die Mehrfachauswahl STRG gedrückt (⌘ auf einem Mac), und wählen Sie die Überschrift für jede Spalte aus.
 
     ![Kartenvisualisierung](media/tutorial-bikeshare-dataprep/launchMapInspector.png)
 
@@ -635,7 +637,7 @@ Führen Sie die folgenden Schritte aus, um die Wetterdaten mit den Fahrtdaten zu
 
     ![Spalte „Period“](media/tutorial-bikeshare-dataprep/featurehourrange.png)
 
-3. Halten Sie zum Entfernen der Spalten **Date Hour Range** und **r_Date Hour Range** die STRG-TASTE (bzw. auf einem Mac die Befehlstaste ⌘) gedrückt, und wählen Sie die einzelnen Spaltenüberschriften aus. Klicken Sie mit der rechten Maustaste, und wählen Sie die Option **Remove Column** (Spalte entfernen) aus.
+3. Drücken Sie zum Entfernen der Spalten **Date Hour Range** und **r_Date Hour Range** die STRG-TASTE (⌘ auf einem Mac), und wählen Sie die beiden Spaltenüberschriften aus. Klicken Sie mit der rechten Maustaste, und wählen Sie die Option **Remove Column** (Spalte entfernen) aus.
 
 ## <a name="read-data-from-python"></a>Auslesen der Daten aus Python
 

@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/19/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: bebfabfa2c9012fa55bfc6964dc0b638cb7ab3f1
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b94f6ad4c7c6f3b5e93cdb890e053a3d1678e161
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38722948"
 ---
 # <a name="transform-and-protect-your-api"></a>Transformieren und Schützen Ihrer API 
 
@@ -54,7 +55,7 @@ In diesem Abschnitt wird gezeigt, wie Sie die HTTP-Header ausblenden, die Sie ni
 
 So zeigen Sie die ursprüngliche Antwort an
 
-1. Klicken Sie auf die Registerkarte **API**.
+1. Wählen Sie in Ihrer APIM-Dienstinstanz **APIs** aus (unter **API-VERWALTUNG**).
 2. Klicken Sie in der API-Liste auf **Demo Conference API**.
 3. Wählen Sie den Vorgang **GetSpeakers** aus.
 4. Klicken Sie oben auf der Seite auf die Registerkarte **Testen**.
@@ -66,24 +67,24 @@ So zeigen Sie die ursprüngliche Antwort an
 
 ### <a name="set-the-transformation-policy"></a>Festlegen der Transformationsrichtlinie
 
-1. Navigieren Sie zu Ihrer APIM-Instanz.
-2. Klicken Sie auf die Registerkarte **API**.
-3. Klicken Sie in der API-Liste auf **Demo Conference API**.
-4. Wählen Sie **Alle Vorgänge** aus.
-5. Klicken Sie im oberen Seitenbereich auf die Registerkarte **Entwurf**.
-6. Klicken Sie im Fenster **Ausgehende Verarbeitung** auf das Dreieck (neben dem Stift).
-7. Klicken Sie auf **Code-Editor**.
-    
+1. Wählen Sie **Demo Conference API** aus.
+2. Klicken Sie im oberen Seitenbereich auf die Registerkarte **Entwurf**.
+3. Wählen Sie **Alle Vorgänge** aus.
+4. Klicken Sie im Fenster **Ausgehende Verarbeitung** auf das Dreieck (neben dem Stift), und wählen Sie **Code-Editor** aus.
      ![Richtlinie bearbeiten](./media/set-edit-policies/set-edit-policies01.png)
-9. Positionieren Sie den Cursor im **&lt;outbound&gt;**-Element.
-10. Klicken Sie im rechten Fenster unter **Transformationsrichtlinien** zweimal auf **+ HTTP-Header festlegen** (um zwei Richtlinienausschnitte einzufügen).
+5. Positionieren Sie den Cursor im **&lt;outbound&gt;**-Element.
+6. Klicken Sie im rechten Fenster unter **Transformationsrichtlinien** zweimal auf **+ HTTP-Header festlegen** (um zwei Richtlinienausschnitte einzufügen).
 
     ![Richtlinien](./media/transform-api/transform-api.png)
-11. Ändern Sie Ihren **<outbound>**-Code, sodass er folgendermaßen aussieht:
+7. Ändern Sie Ihren **<outbound>**-Code, sodass er folgendermaßen aussieht:
 
         <set-header name="X-Powered-By" exists-action="delete" />
         <set-header name="X-AspNet-Version" exists-action="delete" />
-                
+
+    ![Richtlinien](./media/transform-api/set-policy.png)
+8. Klicken Sie auf die Schaltfläche **Save** .
+
+
 ## <a name="replace-original-urls-in-the-body-of-the-api-response-with-apim-gateway-urls"></a>Ersetzen der ursprünglichen URLs im Textkörper der API-Antwort durch APIM-Gateway-URLs
 
 In diesem Abschnitt wird gezeigt, wie Sie die ursprünglich im Textkörper der HTTP-Antwort der API angezeigten URLs ausblenden und stattdessen eine Umleitung an das APIM-Gateway durchführen.
@@ -92,11 +93,10 @@ In diesem Abschnitt wird gezeigt, wie Sie die ursprünglich im Textkörper der H
 
 So zeigen Sie die ursprüngliche Antwort an
 
-1. Klicken Sie auf die Registerkarte **API**.
-2. Klicken Sie in der API-Liste auf **Demo Conference API**.
-3. Wählen Sie den Vorgang **GetSpeakers** aus.
-4. Klicken Sie oben auf der Seite auf die Registerkarte **Testen**.
-5. Klicken Sie unten auf der Seite auf die Schaltfläche **Senden**. 
+1. Wählen Sie **Demo Conference API** aus.
+2. Wählen Sie den Vorgang **GetSpeakers** aus.
+3. Klicken Sie oben auf der Seite auf die Registerkarte **Testen**.
+4. Klicken Sie unten auf der Seite auf die Schaltfläche **Senden**. 
 
     Wie Sie sehen können, sieht die ursprüngliche Antwort so aus:
 
@@ -104,16 +104,13 @@ So zeigen Sie die ursprüngliche Antwort an
 
 ### <a name="set-the-transformation-policy"></a>Festlegen der Transformationsrichtlinie
 
-1. Navigieren Sie zu Ihrer APIM-Instanz.
-2. Klicken Sie auf die Registerkarte **API**.
-3. Klicken Sie in der API-Liste auf **Demo Conference API**.
-4. Wählen Sie **Alle Vorgänge** aus.
-5. Klicken Sie im oberen Seitenbereich auf die Registerkarte **Entwurf**.
-6. Klicken Sie im Fenster **Ausgehende Verarbeitung** auf das Dreieck (neben dem Stift).
-7. Klicken Sie auf **Code-Editor**.
-8. Positionieren Sie den Cursor im **&lt;outbound&gt;**-Element.
-9. Klicken Sie im rechten Fenster unter **Transformationsrichtlinien** auf **+ Zeichenfolge im Text suchen und ersetzen**.
-10. Ändern Sie Ihren **<find-and-replace**-Code (im Element **<outbound>**) ab, um die URL durch eine URL zu Ihrem APIM-Gateway zu ersetzen. Beispiel: 
+1. Wählen Sie **Demo Conference API** aus.
+2. Wählen Sie **Alle Vorgänge** aus.
+3. Klicken Sie im oberen Seitenbereich auf die Registerkarte **Entwurf**.
+4. Klicken Sie im Fenster **Ausgehende Verarbeitung** auf das Dreieck (neben dem Stift), und wählen Sie **Code-Editor** aus.
+5. Positionieren Sie den Cursor im **&lt;outbound&gt;**-Element.
+6. Klicken Sie im rechten Fenster unter **Transformationsrichtlinien** auf **+ Zeichenfolge im Text suchen und ersetzen**.
+7. Ändern Sie Ihren **find-and-replace**-Code (im Element **\<outbound\>**) ab, um die URL durch eine URL zu Ihrem APIM-Gateway zu ersetzen. Beispiel: 
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 
@@ -121,22 +118,19 @@ So zeigen Sie die ursprüngliche Antwort an
 
 In diesem Abschnitt wird gezeigt, wie Sie Ihre Back-End-API schützen, indem Sie Aufruflimits konfigurieren. Beispielsweise können Sie die Anzahl von API-Aufrufen begrenzen, damit die API nicht übermäßig von den Entwicklern verwendet wird. In diesem Beispiel wird das Limit für jede Abonnement-ID auf 3 Aufrufe pro 15 Sekunden festgelegt. Nach 15 Sekunden kann ein Entwickler die API erneut aufrufen.
 
-1. Navigieren Sie zu Ihrer APIM-Instanz.
-2. Klicken Sie auf die Registerkarte **API**.
-3. Klicken Sie in der API-Liste auf **Demo Conference API**.
-4. Wählen Sie **Alle Vorgänge** aus.
-5. Klicken Sie im oberen Seitenbereich auf die Registerkarte **Entwurf**.
-6. Klicken Sie im Fenster **Eingehende Verarbeitung** auf das Dreieck (neben dem Stift).
-7. Klicken Sie auf **Code-Editor**.
-8. Positionieren Sie den Cursor im **&lt;inbound&gt;**-Element.
-9. Klicken Sie im rechten Fenster unter **Richtlinien für die Zugriffsbeschränkung** auf **+ Aufrufrate pro Schlüssel einschränken**.
-10. Ändern Sie Ihren **<rate-limit-by-key**-Code (im **<inbound>**-Element) folgendermaßen ab:
+1. Wählen Sie **Demo Conference API** aus.
+2. Wählen Sie **Alle Vorgänge** aus.
+3. Klicken Sie im oberen Seitenbereich auf die Registerkarte **Entwurf**.
+4. Klicken Sie im Fenster **Eingehende Verarbeitung** auf das Dreieck (neben dem Stift), und wählen Sie **Code-Editor** aus.
+5. Positionieren Sie den Cursor im **&lt;inbound&gt;**-Element.
+6. Klicken Sie im rechten Fenster unter **Richtlinien für die Zugriffsbeschränkung** auf **+ Aufrufrate pro Schlüssel einschränken**.
+7. Modifizieren Sie Ihren **rate-limit-by-key**-Code (im **\<inbound\>**-Element) folgendermaßen:
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 
 ## <a name="test-the-transformations"></a>Testen der Transformationen
         
-An diesem Punkt sieht Ihr Richtliniencode so aus:
+Zu diesem Zeitpunkt sieht Ihre Richtlinie in etwa wie folgt aus, wenn Sie den Code im Code-Editor betrachten:
 
     <policies>
         <inbound>
@@ -161,12 +155,10 @@ Im verbleibenden Teil dieses Abschnitts werden die Richtlinientransformationen g
 
 ### <a name="test-the-stripped-response-headers"></a>Testen der entfernten Antwortheader
 
-1. Navigieren Sie zu Ihrer APIM-Instanz.
-2. Klicken Sie auf die Registerkarte **API**.
-3. Klicken Sie in der API-Liste auf **Demo Conference API**.
-4. Klicken Sie auf den Vorgang **GetSpeakers**.
-5. Wählen Sie die Registerkarte **Testen** aus.
-6. Klicken Sie auf **Senden**.
+1. Wählen Sie **Demo Conference API** aus.
+2. Klicken Sie auf den Vorgang **GetSpeakers**.
+3. Wählen Sie die Registerkarte **Testen** aus.
+4. Klicken Sie auf **Senden**.
 
     Wie Sie sehen können, wurden die Header entfernt:
 
@@ -174,12 +166,10 @@ Im verbleibenden Teil dieses Abschnitts werden die Richtlinientransformationen g
 
 ### <a name="test-the-replaced-url"></a>Testen der ersetzten URL
 
-1. Navigieren Sie zu Ihrer APIM-Instanz.
-2. Klicken Sie auf die Registerkarte **API**.
-3. Klicken Sie in der API-Liste auf **Demo Conference API**.
-4. Klicken Sie auf den Vorgang **GetSpeakers**.
-5. Wählen Sie die Registerkarte **Testen** aus.
-6. Klicken Sie auf **Senden**.
+1. Wählen Sie **Demo Conference API** aus.
+2. Klicken Sie auf den Vorgang **GetSpeakers**.
+3. Wählen Sie die Registerkarte **Testen** aus.
+4. Klicken Sie auf **Senden**.
 
     Wie Sie sehen können, wurde die URL ersetzt.
 
@@ -187,15 +177,13 @@ Im verbleibenden Teil dieses Abschnitts werden die Richtlinientransformationen g
 
 ### <a name="test-the-rate-limit-throttling"></a>Testen des Aufruflimits (Drosselung)
 
-1. Navigieren Sie zu Ihrer APIM-Instanz.
-2. Klicken Sie auf die Registerkarte **API**.
-3. Klicken Sie in der API-Liste auf **Demo Conference API**.
-4. Klicken Sie auf den Vorgang **GetSpeakers**.
-5. Wählen Sie die Registerkarte **Testen** aus.
-6. Klicken Sie dreimal hintereinander auf **Senden**.
+1. Wählen Sie **Demo Conference API** aus.
+2. Klicken Sie auf den Vorgang **GetSpeakers**.
+3. Wählen Sie die Registerkarte **Testen** aus.
+4. Klicken Sie dreimal hintereinander auf **Senden**.
 
     Nachdem Sie die Anforderung dreimal gesendet haben, erhalten Sie die Antwort **429 Zu viele Anforderungen**.
-7. Warten Sie etwa 15 Sekunden ab, und klicken Sie erneut auf **Senden**. Jetzt sollten Sie die Antwort **200 OK** erhalten.
+5. Warten Sie etwa 15 Sekunden ab, und klicken Sie erneut auf **Senden**. Jetzt sollten Sie die Antwort **200 OK** erhalten.
 
     ![Drosselung](./media/transform-api/test-throttling.png)
 

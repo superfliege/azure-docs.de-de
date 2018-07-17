@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 27e5b7fed227248d9d60c8ede460c9ecc65ca52d
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 5346467dff40832aa35799ee3d532e99bf14d569
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096273"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38482073"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Schnellstart: Bereitstellen des ersten IoT Edge-Moduls auf einem Linux-basierten x64-Gerät
 
@@ -44,6 +44,22 @@ Fügen Sie die Azure IoT-Erweiterung der Cloud Shell-Instanz hinzu.
    az extension add --name azure-cli-iot-ext
    ```
 
+## <a name="prerequisites"></a>Voraussetzungen
+
+Diese Schnellstartanleitung verwendet einen Linux-Computer als Azur IoT Edge-Gerät. Falls Ihnen zu Testzwecken kein Gerät zur Verfügung steht, können Sie es mithilfe der Azure-Befehlszeilenschnittstelle erstellen. 
+
+Erstellen Sie eine neue Ressourcengruppe. Sie können diese Ressourcengruppe für die anderen Azure-Ressourcen verwenden, die Sie in dieser Schnellstartanleitung zur einfacheren Verwaltung erstellen.  
+
+   ```azurecli-interactive
+   az group create --name IoTEdgeResources --location westus
+   ```
+
+Erstellen Sie den virtuellen Computer. Zum Testen von Azur IoT Edge ist keine ausgesprochen große VM erforderlich. **B1ms** ist als Größe ausreichend.
+
+   ```azurecli-interactive
+   az vm create --resource-group IoTEdgeResources --name EdgeVM --image Canonical:UbuntuServer:16.04-LTS:latest --admin-username azureuser --generate-ssh-keys --size Standard_B1ms
+   ```
+
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
 
 Beginnen Sie mit der Schnellstartanleitung, indem Sie Ihre IoT Hub-Instanz im Azure-Portal erstellen.
@@ -51,17 +67,19 @@ Beginnen Sie mit der Schnellstartanleitung, indem Sie Ihre IoT Hub-Instanz im Az
 
 Der kostenlose IoT Hub kann für diesen Schnellstart verwendet werden. Wenn Sie den IoT Hub schon einmal genutzt und bereits einen kostenlosen Hub erstellt haben, können Sie diesen IoT Hub verwenden. Jedes Abonnement kann nur über einen kostenlosen IoT Hub verfügen. 
 
-1. Erstellen Sie in Azure Cloud Shell eine Ressourcengruppe. Mit dem folgenden Code wird eine Ressourcengruppe mit dem Namen **TestResources** in der Region **West US** erstellt. Wenn Sie alle Ressourcen für die Schnellstarts und Tutorials in einer Gruppe anordnen, können Sie sie zusammen verwalten. 
+1. Erstellen Sie in der Azure-Cloudshell eine Ressourcengruppe, falls Sie dies nicht bereits im Zusammenhang mit den Voraussetzungen getan haben. Wenn Sie alle Ressourcen für die Schnellstarts und Tutorials in einer Gruppe anordnen, können Sie sie zusammen verwalten. 
 
    ```azurecli-interactive
-   az group create --name TestResources --location westus
+   az group create --name IoTEdgeResources --location westus
    ```
 
-1. Erstellen Sie einen IoT Hub in Ihrer neuen Ressourcengruppe. Mit dem folgenden Code wird ein kostenloser **F1**-Hub in der Ressourcengruppe **TestResources** erstellt. Ersetzen Sie *{hub_name}* durch einen eindeutigen Namen für Ihren IoT Hub.
+1. Erstellen Sie einen IoT Hub in Ihrer neuen Ressourcengruppe. Mit dem folgenden Code wird ein kostenloser **F1**-Hub in der Ressourcengruppe **IoTEdgeResources** erstellt. Ersetzen Sie *{hub_name}* durch einen eindeutigen Namen für Ihren IoT Hub.
 
    ```azurecli-interactive
    az iot hub create --resource-group TestResources --name {hub_name} --sku F1 
    ```
+
+   Wenn Sie eine Fehlermeldung erhalten, da bereits ein kostenloser Hub in Ihrem Abonnement vorhanden ist, ändern Sie die SKU auf **S1**. 
 
 ## <a name="register-an-iot-edge-device"></a>Registrieren eines IoT Edge-Geräts
 
@@ -73,7 +91,7 @@ Erstellen Sie eine Geräteidentität für das simulierte Gerät, sodass es mit d
 1. Geben Sie in Azure Cloud Shell den folgenden Befehl ein, um in Ihrem Hub ein Gerät mit dem Namen **myEdgeDevice** zu erstellen.
 
    ```azurecli-interactive
-   az iot hub device-identity create --device-id myEdgeDevice --hub-name {hub_name} --edge-enabled
+   az iot hub device-identity create --hub-name {hub_name} --device-id myEdgeDevice --edge-enabled
    ```
 
 1. Rufen Sie die Verbindungszeichenfolge für Ihr Gerät ab, über die Ihr physisches Gerät mit seiner Identität auf dem IoT Hub verknüpft wird. 
@@ -91,6 +109,8 @@ Installieren und starten Sie die Azure IoT Edge-Runtime auf Ihrem Gerät.
 ![Registrieren eines Geräts][5]
 
 Die IoT Edge-Runtime wird auf allen IoT Edge-Geräten bereitgestellt. Sie besteht aus drei Komponenten. Der **Daemon für die IoT Edge-Sicherheit** wird jedes Mal gestartet, wenn ein Edge-Gerät gestartet wird, und startet den IoT Edge-Agent, um einen Bootstrapvorgang durchzuführen. Der **IoT Edge-Agent** erleichtert die Bereitstellung und Überwachung von Modulen auf dem IoT Edge-Gerät, einschließlich des IoT Edge-Hubs. Der **IoT Edge-Hub** verwaltet die Kommunikation zwischen Modulen auf dem IoT Edge-Gerät sowie zwischen dem Gerät und IoT Hub. 
+
+Führen Sie die folgenden Schritte auf dem Linux-Computer oder virtuellen Computer durch, den Sie für diese Schnellstartanleitung vorbereitet haben. 
 
 ### <a name="register-your-device-to-use-the-software-repository"></a>Registrieren Ihres Geräts zur Verwendung des Softwarerepositorys
 
@@ -122,11 +142,16 @@ Aktualisieren Sie **apt-get**.
    sudo apt-get update
    ```
 
-Installieren Sie Moby, eine Containerruntime und die zugehörigen CLI-Befehle. 
+Installieren Sie **Moby**, eine Containerruntime.
 
    ```bash
    sudo apt-get install moby-engine
-   sudo apt-get install moby-cli   
+   ```
+
+Installieren Sie die CLI-Befehle für Moby. 
+
+   ```bash
+   sudo apt-get install moby-cli
    ```
 
 ### <a name="install-and-configure-the-iot-edge-security-daemon"></a>Installieren und Konfigurieren des Daemons für die IoT Edge-Sicherheit
@@ -146,15 +171,19 @@ Der Daemon für die Sicherheit wird als Systemdienst installiert, sodass die IoT
    sudo nano /etc/iotedge/config.yaml
    ```
 
-3. Fügen Sie die Verbindungszeichenfolge des IoT Edge-Geräts hinzu, die Sie bei der Registrierung Ihres Geräts kopiert haben. Ersetzen Sie den Wert für die Variable **device_connection_string** durch den Wert, den Sie weiter oben in dieser Schnellstartanleitung kopiert haben.
+3. Fügen Sie die Verbindungszeichenfolge für das Azure IoT Edge-Gerät hinzu. Suchen Sie die Variable **device_connection_string**, und aktualisieren Sie den Wert mit der Zeichenfolge, die Sie nach der Registrierung Ihres Geräts kopiert haben.
 
-4. Starten Sie den Daemon für die Edge-Sicherheit neu:
+4. Speichern und schließen Sie die Datei. 
+
+   `CTRL + X`, `Y`, `Enter`
+
+4. Starten Sie den Daemon für die Azure IoT Edge-Sicherheit neu.
 
    ```bash
    sudo systemctl restart iotedge
    ```
 
-5. Überprüfen Sie, ob der Daemon für die Edge-Sicherheit als Systemdienst ausgeführt wird:
+5. Überprüfen Sie, ob der Daemon für die Azure Edge-Sicherheit als Systemdienst ausgeführt wird.
 
    ```bash
    sudo systemctl status iotedge
@@ -168,13 +197,14 @@ Der Daemon für die Sicherheit wird als Systemdienst installiert, sodass die IoT
    journalctl -u iotedge
    ```
 
-6. Zeigen Sie die Module an, die auf Ihrem Gerät ausgeführt werden: 
+6. Zeigen Sie die Module an, die auf Ihrem Gerät ausgeführt werden. 
+
+   >[!TIP]
+   >Sie benötigen *sudo*, um zunächst `iotedge`-Befehle auszuführen. Melden Sie sich bei Ihrem Computer ab und dann erneut an, um die Berechtigungen zu aktualisieren. Danach können Sie `iotedge`-Befehle ohne erweiterte Berechtigungen ausführen. 
 
    ```bash
    sudo iotedge list
    ```
-
-   Nach einer Ab- und Anmeldung ist *sudo* für den obigen Befehl nicht erforderlich.
 
    ![Anzeigen eines Moduls auf Ihrem Gerät](./media/quickstart-linux/iotedge-list-1.png)
 
@@ -214,7 +244,22 @@ Die vom Gerät gesendeten Telemetriedaten können Sie auch anzeigen, indem Sie d
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie mit den IoT Edge-Tutorials fortfahren möchten, können Sie das Gerät verwenden, das Sie in dieser Schnellstartanleitung registriert und eingerichtet haben. Verwenden Sie die folgenden Befehle, wenn Sie die Installationen von Ihrem Gerät entfernen möchten.  
+Wenn Sie mit den IoT Edge-Tutorials fortfahren möchten, können Sie das Gerät verwenden, das Sie in dieser Schnellstartanleitung registriert und eingerichtet haben. Andernfalls können Sie die Azure-Ressourcen löschen, die Sie erstellt haben, und die IoT Edge-Runtime von Ihrem Gerät entfernen. 
+
+### <a name="delete-azure-resources"></a>Löschen von Azure-Ressourcen
+
+Wenn Sie Ihren virtuellen Computer und Azure IoT Hub in einer neuen Ressourcengruppe erstellt haben, können Sie diese Gruppe und alle zugehörigen Ressourcen löschen. Wenn Sie etwas in dieser Ressourcengruppe behalten möchten, klicken Sie einfach auf die einzelnen Ressourcen, die Sie bereinigen möchten. 
+
+Um eine Ressourcengruppe zu entfernen, gehen Sie wie folgt vor: 
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen**.
+2. Geben Sie im Textfeld **Nach Name filtern...** den Namen der Ressourcengruppe ein, die Ihre IoT Hub-Ressource enthält. 
+3. Klicken Sie in der Ergebnisliste rechts neben Ihrer Ressourcengruppe auf **...** und dann auf **Ressourcengruppe löschen**.
+4. Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben Sie zur Bestätigung erneut den Namen Ihrer Ressourcengruppe ein, und klicken Sie anschließend auf **Löschen**. Daraufhin werden die Ressourcengruppe und alle darin enthaltenen Ressourcen gelöscht.
+
+### <a name="remove-the-iot-edge-runtime"></a>Entfernen der IoT Edge-Runtime
+
+Verwenden Sie die folgenden Befehle, wenn Sie die Installationen von Ihrem Gerät entfernen möchten.  
 
 Entfernen Sie die IoT Edge-Runtime.
 
@@ -222,22 +267,24 @@ Entfernen Sie die IoT Edge-Runtime.
    sudo apt-get remove --purge iotedge
    ```
 
-Löschen Sie die Container, die auf Ihrem Gerät erstellt wurden. 
+Sobald die IoT Edge-Runtime entfernt wird, werden die Container, die sie erstellt hat, angehalten. Sie sind jedoch weiterhin auf dem Gerät vorhanden. Zeigen Sie alle Container an.
 
    ```bash
-   sudo docker rm -f $(sudo docker ps -aq)
+   sudo docker ps -a
+   ```
+
+Löschen Sie die Container, die auf Ihrem Gerät von der IoT Edge-Runtime erstellt wurden. Ändern Sie den Namen des TempSensor-Containers, wenn Sie ihm einen anderen Namen gegeben haben. 
+
+   ```bash
+   sudo docker rm -f tempSensor
+   sudo docker rm -f edgeHub
+   sudo docker rm -f edgeAgent
    ```
 
 Entfernen Sie die Containerruntime.
 
    ```bash
    sudo apt-get remove --purge moby
-   ```
-
-Falls Sie die erstellten Azure-Ressourcen nicht mehr benötigen, können Sie den folgenden Befehl verwenden, um die von Ihnen erstellte Ressourcengruppe und alle dazugehörigen Ressourcen zu löschen:
-
-   ```azurecli-interactive
-   az group delete --name TestResources
    ```
 
 ## <a name="next-steps"></a>Nächste Schritte

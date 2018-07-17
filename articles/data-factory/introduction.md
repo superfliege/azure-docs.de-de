@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: e4e90082f483720699fb029db33bc8110173c0aa
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: bc53d245dd814b6f9bb4edab89ddcbf841f16a8f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082953"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38579176"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Einführung in Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -120,6 +120,10 @@ In Azure Data Factory selbst werden keine Daten gespeichert. Der Dienst ermögli
 Data Factory ist zwar nur in bestimmten Regionen verfügbar, aber der Datenverschiebungsdienst für Data Factory steht global in verschiedenen Regionen zur Verfügung. Wenn sich ein Datenspeicher hinter einer Firewall befindet, werden die Daten stattdessen von einer in der lokalen Umgebung installierten selbstgehosteten Integration Runtime verschoben.
 
 Nehmen wir beispielsweise an, dass Ihre Compute-Umgebungen wie Azure HDInsight-Cluster und Azure Machine Learning in der Region „Europa, Westen“ ausgeführt werden. Sie können eine Azure Data Factory-Instanz in der Region „USA, Osten“ oder „USA, Osten 2“ erstellen und damit Aufträge in Ihren Computeumgebungen in der Region „Europa, Westen“ planen. Es dauert ein paar Millisekunden, bis Data Factory den Auftrag in Ihrer Compute-Umgebung ausgelöst hat. Die Dauer für die Ausführung des Auftrags in Ihrer Compute-Umgebung ändert sich aber nicht.
+
+## <a name="accessibility"></a>Barrierefreiheit
+
+Die Data Factory-Benutzererfahrung im Azure-Portal ist barrierefrei.
 
 ## <a name="compare-with-version-1"></a>Vergleich mit Version 1
 Eine Liste mit den Unterschieden zwischen Version 1 und der aktuellen Version des Data Factory-Diensts finden Sie unter [Vergleichen von Azure Data Factory mit Data Factory Version 1](compare-versions.md). 

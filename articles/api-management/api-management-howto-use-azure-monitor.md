@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/19/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 658588b29e65c9b1cd2f9d82c1c4528929875b2f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b4c885758f572851f058edb6e7851d650faed9f9
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33935571"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972997"
 ---
 # <a name="monitor-published-apis"></a>Überwachen von veröffentlichten APIs
 
@@ -58,10 +58,14 @@ Von API Management werden jede Minute Metriken ausgegeben, sodass Sie einen Übe
 So greifen Sie auf Metriken zu:
 
 1. Klicken Sie im Menü am unteren Seitenrand auf **Metriken**.
-2. Wählen Sie im Dropdownmenü die gewünschten Metriken aus (Sie können mehrere Metriken hinzufügen). 
 
+    ![Metriken](./media/api-management-azure-monitor/api-management-metrics-blade.png)
+
+2. Wählen Sie im Dropdownmenü die gewünschten Metriken aus (Sie können mehrere Metriken hinzufügen).  
     Wählen Sie in der Liste der verfügbaren Metriken beispielsweise **Gatewayanforderungen gesamt** und **Fehlerhafte Gatewayanforderungen** aus.
-3. Im Diagramm ist die Gesamtanzahl von API-Aufrufen gezeigt. Es enthält außerdem die Anzahl fehlerhafter API-Aufrufe. 
+3. Im Diagramm ist die Gesamtanzahl von API-Aufrufen gezeigt. Es enthält außerdem die Anzahl fehlerhafter API-Aufrufe.
+
+    ![Metrikdiagramm](./media/api-management-azure-monitor/apim-monitor-metrics.png)
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>Einrichten einer Warnungsregel für nicht autorisierte Anforderungen
 
@@ -73,7 +77,10 @@ Sie können die Konfiguration so durchführen, dass Warnungen basierend auf Metr
 
 So konfigurieren Sie Warnungen:
 
-1. Klicken Sie auf der Menüleiste am unteren Seitenrand auf **Warnungsregeln**.
+1. Klicken Sie auf der Menüleiste am unteren Seitenrand auf **Warnungen (klassisch)**.
+
+    ![alerts](./media/api-management-azure-monitor/api-management-alert-rules-blade.png)
+
 2. Wählen Sie **Metrikwarnung hinzufügen** aus.
 3. Geben Sie unter **Name** einen Namen für die Warnung ein.
 4. Wählen Sie als zu überwachende Metrik **Nicht autorisierte Gatewayanforderungen** aus.
@@ -100,6 +107,12 @@ So zeigen Sie Aktivitätsprotokolle an:
 1. Wählen Sie Ihre APIM-Dienstinstanz aus.
 2. Klicken Sie auf **Aktivitätsprotokoll**.
 
+    ![Aktivitätsprotokoll](./media/api-management-azure-monitor/api-management-activity-logs-blade.png)
+
+3. Wählen Sie den gewünschten Filterungsbereich, und klicken Sie auf **Anwenden**.
+
+    ![Aktivitätsprotokolle](./media/api-management-azure-monitor/apim-monitor-activity-logs.png)
+
 ## <a name="diagnostic-logs"></a>Diagnoseprotokolle
 
 Diagnoseprotokolle bieten umfassende Informationen zu Vorgängen und Fehlern, die zur Überwachung und Problembehandlung relevant sind. Diagnoseprotokolle unterscheiden sich von Aktivitätsprotokollen. Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure-Ressourcen ausgeführt wurden. Diagnoseprotokolle bieten Einblick in Vorgänge, die Ihre Ressource selbst ausgeführt hat.
@@ -107,7 +120,10 @@ Diagnoseprotokolle bieten umfassende Informationen zu Vorgängen und Fehlern, di
 So konfigurieren Sie Diagnoseprotokolle:
 
 1. Wählen Sie Ihre APIM-Dienstinstanz aus.
-2. Klicken Sie auf **Diagnoseprotokoll**.
+2. Klicken Sie auf **Diagnoseprotokolle**.
+
+    ![Diagnoseprotokolle](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
+
 3. Klicken Sie auf **Diagnose aktivieren**. Sie können Diagnoseprotokolle zusammen mit Metriken in einem Speicherkonto archivieren, an einen Event Hub streamen oder an Log Analytics senden. 
 
 API Management bietet derzeit Diagnoseprotokolle (stündlich erfasst) zu einzelnen API-Anforderungen, bei denen jeder Eintrag das folgende Schema aufweist:

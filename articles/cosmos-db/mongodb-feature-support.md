@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2017
 ms.author: alekseys
-ms.openlocfilehash: 9202e8eb328f098f7ab68a18f4629a95ecc10991
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 2c86cbe2ac9a0611873aca35480af92304abe5b5
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796354"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928689"
 ---
 # <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>Unterstützung der MongoDB-API für Features und Syntax von MongoDB
 
@@ -23,14 +23,19 @@ Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehr
 
 Mit der MongoDB-API von Azure Cosmos DB können Sie die Vorteile der vertrauten MongoDB-APIs mit allen Unternehmensfunktionen von Azure Cosmos DB kombinieren. Hierzu zählen unter anderem [globale Verteilung](distribute-data-globally.md), [automatisches Sharding](partition-data.md), Gewährleistung der Verfügbarkeit und Latenz, automatische Indizierung der einzelnen Felder, Verschlüsselung ruhender Daten sowie Sicherungen.
 
+## <a name="mongodb-protocol-support"></a>Protokollunterstützung für MongoDB
+
+Die MongoDB-API von Azure Cosmos DB ist standardmäßig mit der MongoDB-Serverversion **3.2** kompatibel. Die unterstützten Operatoren und alle Einschränkungen oder Ausnahmen sind unten aufgeführt. Features oder Abfrageoperatoren, die in der MongoDB-Version **3.4** hinzugefügt wurden, sind derzeit als Vorschaufunktion verfügbar. Alle Clienttreiber, die diese Protokolle verstehen können, sollten auch zur MongoDB-API von Azure Cosmos DB eine Verbindung herstellen können.
+
+Die [MongoDB-Aggregationspipeline](#aggregation-pipeline) ist derzeit auch als separate Vorschaufunktion verfügbar.
+
 ## <a name="mongodb-query-language-support"></a>Unterstützung der MongoDB-Abfragesprache
 
 Die MongoDB-API von Azure Cosmos DB bietet umfassende Unterstützung für MongoDB-Abfragesprachkonstrukte. Im Folgenden finden Sie die detaillierte Aufstellung der aktuell unterstützten Vorgänge, Operatoren, Phasen, Befehle und Optionen.
 
-
 ## <a name="database-commands"></a>Datenbankbefehle
 
-Azure Cosmos DB unterstützt die folgenden Datenbankbefehle für alle Konten der MongoDB-API. 
+Azure Cosmos DB unterstützt die folgenden Datenbankbefehle für alle Konten der MongoDB-API.
 
 ### <a name="query-and-write-operation-commands"></a>Befehle für Abfrage- und Schreibvorgänge
 - delete
@@ -287,7 +292,11 @@ $all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
 $elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
 $size | ```{ "Location.coordinates": { $size: 2 } }``` | 
 $comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` | 
-$text |  | Nicht unterstützt. Verwenden Sie stattdessen $regex. 
+$text |  | Nicht unterstützt. Verwenden Sie stattdessen „$regex“.
+
+## <a name="unsupported-operators"></a>Nicht unterstützte Operatoren
+
+Die Operatoren ```$where``` und ```$eval``` werden von Azure Cosmos DB nicht unterstützt.
 
 ### <a name="methods"></a>Methoden
 
@@ -316,6 +325,10 @@ Azure Cosmos DB unterstützt noch keine Benutzer und Rollen. Azure Cosmos DB unt
 ## <a name="replication"></a>Replikation
 
 Azure Cosmos DB unterstützt die automatische, native Replikation auf den niedrigsten Ebenen. Diese Logik wird erweitert, um auch die globale Replikation mit geringer Latenz zu erreichen. Azure Cosmos DB unterstützt keine manuellen Replikationsbefehle.
+
+## <a name="write-concern"></a>Schreibbestätigung
+
+Bestimmte MongoDB-APIs unterstützen eine [Schreibbestätigung](https://docs.mongodb.com/manual/reference/write-concern/). Diese gibt die Anzahl der Antworten an, die während eines Schreibvorgangs erforderlich sind. Aufgrund der Art und Weise, in der Cosmos DB die Replikation im Hintergrund durchführt, gilt für alle Schreibvorgänge automatisch und standardmäßig ein Quorum. Alle Schreibvorgänge, die durch Clientcode angegeben sind, werden ignoriert. Weitere Informationen finden Sie unter [Verwenden von Konsistenzebenen zum Maximieren der Verfügbarkeit und Leistung](consistency-levels.md).
 
 ## <a name="sharding"></a>Sharding (Horizontales Partitionieren)
 

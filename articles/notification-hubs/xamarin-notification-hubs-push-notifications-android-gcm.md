@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: f75671e2e5511054f3db550a8c24e62d031492c3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4c537b06c4ff50d90d9fd5a847b378038f252790
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776711"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972273"
 ---
 # <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an Xamarin.Android-Apps mit Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -58,7 +58,7 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 
 Der Notification Hub ist für die Arbeit mit FCM konfiguriert, und Sie besitzen die Verbindungszeichenfolgen, um die App für den Empfang von Benachrichtigungen zu registrieren und Pushbenachrichtigungen zu versenden.
 
-## <a name="create-xamainandroid-app-and-connect-it-to-notification-hub"></a>Erstellen einer Xamarin.Android-App und Herstellen einer Verbindung mit dem Notification Hub
+## <a name="create-xamarinandroid-app-and-connect-it-to-notification-hub"></a>Erstellen einer Xamarin.Android-App und Herstellen einer Verbindung mit dem Notification Hub
 
 ### <a name="create-visual-studio-project-and-add-nuget-packages"></a>Erstellen eines Visual Studio-Projekts und Hinzufügen von NuGet-Paketen
 1. Zeigen Sie in Visual Studio auf **Datei**, wählen Sie **Neu** und anschließend **Projekt** aus. 
@@ -100,8 +100,8 @@ Der Notification Hub ist für die Arbeit mit FCM konfiguriert, und Sie besitzen 
 
 1. Erfassen Sie für Ihre Android-App und den Notification Hub folgende Informationen:
    
-   * **Verbindungszeichenfolge für Überwachung**: Klicken Sie im Dashboard des [Azure-Portals] auf **Verbindungszeichenfolgen anzeigen**. Kopieren Sie die Verbindungszeichenfolge *DefaultListenSharedAccessSignature* für diesen Wert.
-   * **Hub-Name**: Der Name des Hubs aus dem [Azure-Portals]. Beispiel: *mynotificationhub2*.
+   * **Verbindungszeichenfolge für Überwachung**: Klicken Sie im Dashboard des [Azure-Portal] auf **Verbindungszeichenfolgen anzeigen**. Kopieren Sie die Verbindungszeichenfolge *DefaultListenSharedAccessSignature* für diesen Wert.
+   * **Hub-Name**: Der Name des Hubs aus dem [Azure-Portal]. Beispiel: *mynotificationhub2*.
      
 2. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das **Projekt**, zeigen Sie auf **Hinzufügen**, und wählen Sie **Klasse** aus. 
 4. Erstellen Sie eine **Constants.cs** -Klasse für Ihr Xamarin-Projekt und definieren Sie die folgenden Konstantenwerte in der Klasse. Ersetzen Sie die Platzhalter durch Ihre Werte.
@@ -142,6 +142,7 @@ Der Notification Hub ist für die Arbeit mit FCM konfiguriert, und Sie besitzen 
 8. Fügen Sie **MyFirebaseIIDService.cs** die folgenden using-Anweisungen hinzu:
    
     ```csharp
+    using Android.App;
     using Android.Util;
     using WindowsAzure.Messaging;
     using Firebase.Iid;
@@ -183,6 +184,7 @@ Der Notification Hub ist für die Arbeit mit FCM konfiguriert, und Sie besitzen 
 12. Fügen Sie **MyFirebaseMessagingService.cs** die folgenden using-Anweisungen hinzu.
     
     ```csharp
+        using Android.App;
         using Android.Util;
         using Firebase.Messaging;
     ```
@@ -237,7 +239,7 @@ Der Notification Hub ist für die Arbeit mit FCM konfiguriert, und Sie besitzen 
 16. **Ausführen** Ihrer App auf Ihrem Gerät oder im geladenen Emulator
 
 ## <a name="send-test-notification-from-the-azure-portal"></a>Senden einer Testbenachrichtigung im Azure-Portal
-Mit der Option *Testsendevorgang* im [Azure-Portals] können Sie den Empfang von Benachrichtigungen in Ihrer App testen. Diese Option sendet zu Testzwecken eine Pushbenachrichtigung an Ihr Gerät.
+Mit der Option *Testsendevorgang* im [Azure-Portal] können Sie den Empfang von Benachrichtigungen in Ihrer App testen. Diese Option sendet zu Testzwecken eine Pushbenachrichtigung an Ihr Gerät.
 
 ![Azure-Portal – Testsendung](media/partner-xamarin-notification-hubs-android-get-started/send-test-notification.png)
 
@@ -287,7 +289,7 @@ In diesem Tutorial haben Sie Broadcastbenachrichtigungen an alle Android-Geräte
 [Visual Studio mit Xamarin]: https://docs.microsoft.com/visualstudio/install/install-visual-studio
 [Visual Studio für Mac]: https://www.visualstudio.com/vs/visual-studio-mac/
 
-[Azure-Portals]: https://portal.azure.com/
+[Azure-Portal]: https://portal.azure.com/
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for Android]: http://msdn.microsoft.com/library/dn282661.aspx
