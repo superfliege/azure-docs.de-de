@@ -143,9 +143,9 @@
 ## Verwalten von Kennwörtern
 ### [Übersicht über Kennwörter](authentication/active-directory-passwords-overview.md)
 ### Benutzerdokumente
-#### [Zurücksetzen oder Ändern des Kennworts](active-directory-passwords-update-your-own-password.md)
+#### [Zurücksetzen oder Ändern des Kennworts](user-help/active-directory-passwords-update-your-own-password.md)
 #### [Bewährte Methoden für Kennwörter](active-directory-secure-passwords.md)
-#### [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md)
+#### [Registrieren für die Self-Service-Kennwortzurücksetzung](user-help/active-directory-passwords-reset-register.md)
 ### [SSPR – So funktioniert‘s](authentication/concept-sspr-howitworks.md)
 ### [SSPR-Bereitstellungshandbuch](authentication/howto-sspr-deployment.md)
 ### [SSPR and Windows 10 (SSPR und Windows 10)](authentication/tutorial-sspr-windows.md)
@@ -174,8 +174,8 @@
 ### [Planen der Azure AD-Einbindung](active-directory-azureadjoin-deployment-aadjoindirect.md)
 ### [Häufig gestellte Fragen](device-management-faq.md)
 ### Aufgaben
-#### [Einrichten von bei Azure AD registrierten Windows 10-Geräten](device-management-azuread-registered-devices-windows10-setup.md)
-#### [Einrichten von in Azure AD eingebundenen Geräten](device-management-azuread-joined-devices-setup.md)
+#### [Einrichten von bei Azure AD registrierten Windows 10-Geräten](user-help/device-management-azuread-registered-devices-windows10-setup.md)
+#### [Einrichten von in Azure AD eingebundenen Geräten](user-help/device-management-azuread-joined-devices-setup.md)
 #### [Einrichten von in Azure AD eingebundenen Hybridgeräten](device-management-hybrid-azuread-joined-devices-setup.md)
 #### [Lokale Bereitstellung](active-directory-device-registration-on-premises-setup.md)
 #### [Azure AD-Einbindung während des Eindrucks beim ersten Ausführen von Windows 10](device-management-azuread-joined-devices-frx.md)
