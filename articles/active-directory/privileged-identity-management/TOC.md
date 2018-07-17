@@ -42,9 +42,9 @@
 ### [Starten einer Zugriffsüberprüfung](pim-resource-roles-start-access-review.md)
 ### [Beenden einer Zugriffsüberprüfung](pim-resource-roles-complete-access-review.md)
 
-# Häufig gestellte Fragen
-## PIM für Ressourcenrollen
-### [Zuweisungstypen](pim-resource-roles-eligible-visibility.md)
+# Konzepte
+## [Zuweisungstypen](pim-resource-roles-eligible-visibility.md)
+## [E-Mail-Benachrichtigungen](pim-email-notifications.md)
 
 # Verweis
 ## [Codebeispiele](https://azure.microsoft.com/resources/samples/?service=active-directory)
