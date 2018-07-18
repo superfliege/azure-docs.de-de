@@ -11,15 +11,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/03/2017
+ms.date: 07/05/2018
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 664f31d64ac037acea2fb45a8d8b813da52b6da5
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 9e53fa896f1d958e505d26af430b262be9195605
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294699"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859682"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurieren des Application Insights-SDK mit "ApplicationInsights.config" oder XML
 Das Application Insights .NET-SDK umfasst eine Reihe von NuGet-Paketen. Das [Kernpaket](http://www.nuget.org/packages/Microsoft.ApplicationInsights) stellt die API für das Senden von Telemetriedaten an Application Insights bereit. [Zusätzliche Pakete](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) bieten *Telemetriemodule* und *-initialisierer* für die automatische Nachverfolgung von Telemetriedaten von Ihrer Anwendung und deren Kontext. Durch Anpassen der Konfigurationsdatei können Sie Telemetriemodule und -initialisierer aktivieren oder deaktivieren sowie Parameter für einige von ihnen festlegen.
@@ -130,10 +130,10 @@ Die standardmäßigen Initialisierer werden entweder von den Web- oder WindowsSe
 
     Die `<Filters>` legen identifizierende Eigenschaften der Anforderungen fest.
 * `UserTelemetryInitializer` aktualisiert die `Id`- und `AcquisitionDate`-Eigenschaften des `User`-Kontexts für alle Telemetrieelemente mit Werten, die aus dem `ai_user`-Cookie extrahiert werden, der vom Application Insights-JavaScript-Instrumentationscode generiert wird, der im Browser des Benutzers ausgeführt wird.
-* `WebTestTelemetryInitializer` legt die Benutzer-ID, Sitzungs-ID und synthetischen Quelleneigenschaften für die HTTP-Anforderungen fest, die aus [Verfügbarkeitstests](app-insights-monitor-web-app-availability.md)stammen.
+* `WebTestTelemetryInitializer` legt die Benutzer-ID, Sitzungs-ID und synthetischen Quelleneigenschaften für die HTTP-Anforderungen fest, die aus [Verfügbarkeitstests](app-insights-monitor-web-app-availability.md) stammen.
   Die `<Filters>` legen identifizierende Eigenschaften der Anforderungen fest.
 
-Für .NET-Anwendungen in Service Fabric können Sie das `Microsoft.ApplicationInsights.ServiceFabric`-NuGet-Paket aufnehmen. Dieses Paket enthält ein `FabricTelemetryInitializer`-Element, wodurch Service Fabric-Eigenschaften zu Telemetrieelementen hinzugefügt werden. Weitere Informationen finden Sie auf der [GitHub-Seite](https://go.microsoft.com/fwlink/?linkid=848457) zu den Eigenschaften, die von diesem NuGet-Paket hinzugefügt werden.
+Für .NET-Anwendungen in Service Fabric können Sie das `Microsoft.ApplicationInsights.ServiceFabric`-NuGet-Paket aufnehmen. Dieses Paket enthält ein `FabricTelemetryInitializer`-Element, wodurch Service Fabric-Eigenschaften zu Telemetrieelementen hinzugefügt werden. Weitere Informationen finden Sie auf der [GitHub-Seite](https://github.com/Microsoft/ApplicationInsights-ServiceFabric/blob/master/README.md) zu den Eigenschaften, die von diesem NuGet-Paket hinzugefügt werden.
 
 ## <a name="telemetry-processors-aspnet"></a>Telemetrieprozessoren (ASP.NET)
 Mit Telemetrieprozessoren kann jedes Telemetrieelement direkt vor dem Senden vom SDK an das Portal gefiltert und geändert werden.
@@ -317,7 +317,7 @@ TelemetryConfiguration.Active.ApplicationIdProvider = new ApplicationInsightsApp
 
 Hierbei handelt es sich um einen statischen Anbieter, der auf den konfigurierten Kombinationen aus Instrumentierungsschlüssel und Anwendungs-ID basiert.
 
-Die Eigenschaft `Defined` dieser Klasse hat das Format „Dictionary<Zeichenfolge,Zeichenfolge>“ und gibt die Kombinationen aus Instrumentierungsschlüssel und Anwendungs-ID an.
+Die `Defined`-Eigenschaft dieser Klasse hat das Format „Dictionary<Zeichenfolge,Zeichenfolge>“ und gibt die Kombinationen aus Instrumentierungsschlüssel und Anwendungs-ID an.
 
 Diese Klasse enthält die optionale Eigenschaft `Next`, mit der ein weiterer Anbieter konfiguriert werden kann. Dieser wird verwendet, wenn ein Instrumentierungsschlüssel angefordert wird, der in Ihrer Konfiguration nicht vorhanden ist.
 

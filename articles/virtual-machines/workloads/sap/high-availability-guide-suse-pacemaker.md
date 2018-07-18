@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: sedusch
-ms.openlocfilehash: ba44a8988c4af68abf4d155a2b9cb490b6122d39
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cac2f91a25907be824e3fd3517736d921c3fde64
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656413"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37923428"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure
 
@@ -28,6 +28,8 @@ ms.locfileid: "34656413"
 [deployment-guide]:deployment-guide.md
 [dbms-guide]:dbms-guide.md
 [sap-hana-ha]:sap-hana-high-availability.md
+[virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#memory-preserving-maintenance
+[virtual-machines-windows-maintenance]:../../windows/maintenance-and-updates.md#memory-preserving-maintenance
 
 Es gibt zwei Möglichkeiten zum Einrichten eines Pacemaker-Clusters in Azure. Sie können entweder einen Umgrenzungs-Agent verwenden, über den der Neustart eines fehlerhaften Knotens über die Azure-APIs erfolgt, oder Sie können ein SBD-Gerät verwenden.
 
@@ -277,10 +279,10 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    sudo vi /root/.ssh/authorized_keys
    </code></pre>
 
-1. **[A]** Installieren Sie die HA-Erweiterung.
+1. **[A]** Installieren Sie Fence Agents.
    
    <pre><code>
-   sudo zypper install sle-ha-release fence-agents
+   sudo zypper install fence-agents
    </code></pre>
 
 1. **[A]** Richten Sie die Hostnamensauflösung ein.   
@@ -335,11 +337,11 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    sudo vi /etc/corosync/corosync.conf   
    </code></pre>
 
-   Fügen Sie den folgenden fett formatierten Inhalt in die Datei ein, falls die Werte dort nicht vorhanden sind oder sich von den angegebenen Werten unterscheiden.
+   Fügen Sie den folgenden fett formatierten Inhalt in die Datei ein, falls die Werte dort nicht vorhanden sind oder sich von den angegebenen Werten unterscheiden. Stellen Sie sicher, dass Sie das Token in 30000 ändern, um die Wartung mit Speicherbeibehaltung zu ermöglichen. Weitere Details finden Sie in [diesem Artikel für Linux][virtual-machines-linux-maintenance] bzw. [diesem Artikel für Windows][virtual-machines-windows-maintenance].
    
    <pre><code> 
    [...]
-     <b>token:          5000
+     <b>token:          30000
      token_retransmits_before_loss_const: 10
      join:           60
      consensus:      6000

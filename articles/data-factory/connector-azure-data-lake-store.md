@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten nach bzw. aus Azure Data Lake Store mit Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten nach bzw. aus Azure Data Lake Storage Gen1 mit Data Factory | Microsoft-Dokumentation
 description: Erfahren Sie, wie mithilfe der Data Factory Daten von unterstützten Quelldatenspeichern nach Azure Data Lake Store oder aus Data Lake Store in unterstützte Senkenspeicher kopiert werden.
 services: data-factory
 author: linda33wj
@@ -12,19 +12,19 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: cf1ac441f695e5427e57f1a85bafd095777eed80
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: a3df91adf7c35343dc890dc734ec052f1aa97134
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049297"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37860247"
 ---
-# <a name="copy-data-to-or-from-azure-data-lake-store-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure Data Lake Store mithilfe von Azure Data Factory
+# <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure Data Lake Storage Gen1 mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-azure-datalake-connector.md)
 > * [Aktuelle Version](connector-azure-data-lake-store.md)
 
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten nach und aus Azure Data Lake Store zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+In diesem Artikel wird beschrieben, wie Sie die Copy-Aktivität (Kopieraktivität) in Azure Data Factory verwenden, um Daten nach und aus Azure Data Lake Storage Gen1 zu kopieren (bisher als Azure Data Lake Store bezeichnet). Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 

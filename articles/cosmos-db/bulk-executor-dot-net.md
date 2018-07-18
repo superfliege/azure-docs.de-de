@@ -1,6 +1,6 @@
 ---
 title: Verwenden der BulkExecutor-.NET-Bibliothek zum Ausführen von Massenvorgängen in Azure Cosmos DB | Microsoft-Dokumentation
-description: Verwenden Sie die BulkExecutor-.NET-Bibliothek von Azure Cosmos DB, um Dokumente in Azure Cosmos DB-Sammlungen per Massenvorgang zu importieren und zu aktualisieren.
+description: Verwenden Sie die BulkExecutor-.NET-Bibliothek von Azure Cosmos DB, um Dokumente in Azure Cosmos DB-Containern per Massenvorgang zu importieren und zu aktualisieren.
 keywords: .NET-BulkExecutor
 services: cosmos-db
 author: tknandu
@@ -10,16 +10,16 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: b09fd415c442c1e605987a6b25fd938ce04ce5c1
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 804906e1c1b361b9274dbc8fa3ab1cb204e27dfc
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300770"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857275"
 ---
 # <a name="using-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Verwenden der BulkExecutor-.NET-Bibliothek zum Ausführen von Massenvorgängen in Azure Cosmos DB
 
-Dieses Tutorial bietet Anleitungen zum Verwenden der BulkExecutor-.NET-Bibliothek von Azure Cosmos DB zum Importieren und Aktualisieren von Dokumenten in Azure Cosmos DB-Sammlungen. Informationen zur BulkExecutor-Bibliothek und dazu, wie Sie damit massiven Durchsatz und riesige Speichermengen nutzen können, finden Sie im Artikel [BulkExecutor-Bibliothek – Übersicht](bulk-executor-overview.md). Dieses Tutorial führt Sie durch eine .NET-Beispielanwendung, die zufällig generierte Dokumente per Massenvorgang in eine Azure Cosmos DB-Sammlung importiert. Nach dem Import wird erläutert, wie Sie die importierten Daten per Massenvorgang aktualisieren, indem Sie Patches als Vorgänge angeben, die für bestimmte Dokumentfelder ausgeführt werden sollen.
+Dieses Tutorial enthält Anleitungen zum Verwenden der BulkExecutor-.NET-Bibliothek von Azure Cosmos DB zum Importieren und Aktualisieren von Dokumenten in Azure Cosmos DB-Containern. Informationen zur BulkExecutor-Bibliothek und dazu, wie Sie damit massiven Durchsatz und riesige Speichermengen nutzen können, finden Sie im Artikel [BulkExecutor-Bibliothek – Übersicht](bulk-executor-overview.md). In diesem Tutorial werden Sie durch eine .NET-Beispielanwendung geführt, die zufällig generierte Dokumente per Massenvorgang in einen Azure Cosmos DB-Container importiert. Nach dem Import wird erläutert, wie Sie die importierten Daten per Massenvorgang aktualisieren, indem Sie Patches als Vorgänge angeben, die für bestimmte Dokumentfelder ausgeführt werden sollen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -170,11 +170,11 @@ Berücksichtigen Sie bei der Verwendung der BulkExecutor-Bibliothek die folgende
 
 * Um die beste Leistung zu erzielen, führen Sie Ihre Anwendung auf einem virtuellen Azure-Computer in der Region aus, die Sie für Ihre Cosmos DB-Kontoschreibvorgänge verwenden.  
 
-* Es empfiehlt sich, ein einzelnes BulkExecutor-Objekt für die gesamte Anwendung auf einem einzelnen virtuellen Computer zu instanziieren, das einer bestimmten Cosmos DB-Sammlung entspricht.  
+* Es empfiehlt sich, ein einzelnes BulkExecutor-Objekt für die gesamte Anwendung auf einem einzelnen virtuellen Computer zu instanziieren, das einem bestimmten Cosmos DB-Container entspricht.  
 
-* Eine einzelne Ausführung einer Massenvorgang-API verbraucht eine große Menge an CPU- und Netzwerk-E/A-Ressourcen des Clientcomputers. Dies wird erreicht, indem mehrere Tasks intern erzeugt werden. Vermeiden Sie das Erzeugen mehrerer gleichzeitiger Tasks in Ihrem Anwendungsprozess, von denen jeder Massenvorgang-API-Aufrufe ausführt. Wenn ein einzelner Massenvorgang-API-Aufruf, der auf einem einzelnen virtuellen Computer ausgeführt wird, nicht den gesamten Durchsatz Ihrer Sammlung verbrauchen kann (wenn der Durchsatz mehr als 1 Million Anforderungseinheiten pro Sekunde beträgt), ist es besser, separate virtuelle Computer zu erstellen, um Massenvorgang-API-Aufrufe gleichzeitig auszuführen.  
+* Eine einzelne Ausführung einer Massenvorgang-API verbraucht eine große Menge an CPU- und Netzwerk-E/A-Ressourcen des Clientcomputers. Dies wird erreicht, indem mehrere Tasks intern erzeugt werden. Vermeiden Sie das Erzeugen mehrerer gleichzeitiger Tasks in Ihrem Anwendungsprozess, von denen jeder Massenvorgang-API-Aufrufe ausführt. Wenn ein einzelner Massenvorgang-API-Aufruf, der auf einem einzelnen virtuellen Computer ausgeführt wird, nicht den gesamten Durchsatz Ihres Containers verbrauchen kann (wenn der Durchsatz mehr als 1 Million Anforderungseinheiten pro Sekunde beträgt), ist es besser, separate virtuelle Computer zu erstellen, um Massenvorgang-API-Aufrufe gleichzeitig auszuführen.  
 
-* Stellen Sie sicher, dass „InitializeAsync()“ aufgerufen wird, nachdem ein BulkExecutor-Objekt instanziiert wurde, um die Zielpartitionszuordnung für die Cosmos DB-Sammlung abzurufen.  
+* Stellen Sie sicher, dass „InitializeAsync()“ aufgerufen wird, nachdem ein BulkExecutor-Objekt instanziiert wurde, um die Zielpartitionszuordnung für den Cosmos DB-Container abzurufen.  
 
 * Stellen Sie in der App.config-Datei Ihrer Anwendung sicher, dass **gcServer** aktiviert ist, um eine bessere Leistung zu erzielen.
   ```xml  

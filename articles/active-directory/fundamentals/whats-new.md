@@ -14,24 +14,24 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d86a2b702eac4fc976fd59ca24fd7122a76005b4
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 9f0d0b9732b2af36a0411329cede01a9b8cc8efc
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061676"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920813"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Neuerungen in Azure Active Directory
 
-> Abonnieren Sie den [![RSS](./media/whats-new/feed-icon-16x16.png)](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us)-[Feed](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us), um in Bezug auf Neuerungen in Azure Active Directory (Azure AD) auf dem Laufenden zu bleiben.
+> Sie können eine Benachrichtigung erhalten, wann auf dieser Seite Updates vorhanden sind, indem Sie den [![RSS](./media/whats-new/feed-icon-16x16.png)](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us)-[Feed](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us) abonnieren.
 
 Es werden fortlaufend Verbesserungen an Azure AD vorgenommen. Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben, bietet dieser Artikel Informationen zu Folgendem:
 
--   Neueste Versionen
--   Bekannte Probleme
--   Fehlerbehebungen
--   Veraltete Funktionen
--   Pläne für Änderungen
+- Neueste Versionen
+- Bekannte Probleme
+- Fehlerbehebungen
+- Veraltete Funktionen
+- Pläne für Änderungen
 
 Besuchen Sie regelmäßig diese Seite. Diese wird monatlich aktualisiert.
 
@@ -40,8 +40,8 @@ Besuchen Sie regelmäßig diese Seite. Diese wird monatlich aktualisiert.
 ### <a name="change-notice-security-fix-to-the-delegated-authorization-flow-for-apps-using-azure-ad-activity-logs-api"></a>Änderungshinweis: Sicherheitsfix für den Flow für die delegierte Autorisierung für Apps, die die Azure AD-Aktivitätsprotokolle-API verwenden.
 
 **Typ:** Plan für Änderung  
-**Dienstkategorie:** Überwachung und Berichterstellung  
-**Produktfunktion**: Berichterstellung
+**Dienstkategorie**: Berichterstellung  
+**Produktfunktion:** Überwachung und Berichterstellung
 
 Aufgrund unserer strengeren Durchsetzung von Sicherheitsmaßnahmen mussten wir die Berechtigungen für Apps ändern, die für den Zugriff auf [Azure AD-Aktivitätsprotokolle-APIs](https://aka.ms/aadreportsapi) einen Flow für die delegierte Autorisierung verwenden. Diese Änderung erfolgt am **26. Juni 2018**.
 
@@ -64,7 +64,7 @@ Weitere Informationen finden Sie im Abschnitt [Erteilen von Berechtigungen](http
 ### <a name="configure-tls-settings-to-connect-to-azure-ad-services-for-pci-dss-compliance"></a>Konfigurieren von TLS-Einstellungen zum Herstellen einer Verbindung mit Azure AD-Diensten zum Zweck der PCI-DSS-Konformität
 
 **Typ:** Neue Funktion  
-**Dienstkategorie**: Neues Feature  
+**Dienstkategorie:** Nicht verfügbar  
 **Produktfunktion**: Plattform
 
 Transport Layer Security (TLS) ist ein Protokoll, das Datenschutz und -integrität zwischen zwei kommunizierenden Anwendungen gewährleistet, und derzeit das am weitesten verbreitete Sicherheitsprotokoll.
@@ -172,7 +172,8 @@ Die MFA-Bereitstellungsanleitung finden Sie auf GitHub im Repository [Identity D
 ### <a name="azure-ad-delegated-app-management-roles-are-in-public-preview"></a>Delegierte Azure AD-App-Verwaltungsrollen in Public Preview
 
 **Typ:** Neue Funktion  
-**Dienstkategorie:** Unternehmens-Apps **Produktfunktion:** Zugriffssteuerung
+**Dienstkategorie**: Unternehmens-Apps  
+**Produktfunktion**: Zugriffssteuerung
 
 Administratoren können nun App-Verwaltungsaufgaben delegieren, ohne die Rolle „Globaler Administrator“ zuzuweisen. Es gibt die folgenden neuen Rollen und Funktionen:
 
@@ -408,7 +409,7 @@ Weitere Informationen finden Sie unter [Azure AD B2C: Anfordern von Zugriffstoke
 
 Beim Konfigurieren von SAML-basierten SSO-Anwendungen können Sie die Integration auf der Konfigurationsseite testen. Wenn während des Anmeldens ein Fehler auftritt, können Sie den Fehler auf der Testbenutzeroberfläche bereitstellen, und Azure AD bietet Ihnen Lösungsschritte für das spezifische Problem an.
 
-Weitere Informationen finden Sie unter 
+Weitere Informationen finden Sie unter
 
 - [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)
 - [Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
@@ -565,7 +566,7 @@ Azure AD sendet eine Benachrichtigung, wenn ein Zertifikat für eine Katalog- od
 
 Einige Benutzer haben für Unternehmensanwendungen, die für SAML-basiertes einmaliges Anmelden konfiguriert waren, keine Benachrichtigungen erhalten. Dieses Problem wurde behoben. Azure AD sendet Benachrichtigungen für Zertifikate, die in 7, 30 und 60 Tagen ablaufen. Sie können dieses Ereignis in den Überwachungsprotokollen sehen. 
 
-Weitere Informationen finden Sie unter 
+Weitere Informationen finden Sie unter
 
 - [Verwalten von Zertifikaten für die einmalige Verbundanmeldung in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs)
 - [Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)
@@ -598,7 +599,7 @@ Weitere Informationen finden Sie unter [Was ist die Azure AD B2B-Zusammenarbeit
 
 Weitere Informationen hierzu finden Sie in unserem [Blogbeitrag](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/).
 
-Weitere Informationen finden Sie unter 
+Weitere Informationen finden Sie unter
 
 - [App-basierter bedingter Zugriff mit Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
 
@@ -957,7 +958,7 @@ Die folgenden Anwendungen werden bis Ende Februar hinzugefügt:
 
 - Microsoft Invoicing
 
-Weitere Informationen finden Sie unter 
+Weitere Informationen finden Sie unter
 
 - [Genehmigte Client-App als Voraussetzung](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
 - [App-basierter bedingter Zugriff mit Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
@@ -1070,7 +1071,7 @@ Im Zuge der allgemeinen Verfügbarkeit der neuen Azure Active Directory-Verwaltu
 
 Im Rahmen der Umstellung auf die neue Verwaltungskonsole haben wir zwei neue APIs zum Abrufen von Azure AD-Aktivitätsprotokollen zur Verfügung gestellt. Die neuen APIs bieten umfangreichere Filter- und Sortierfunktionen sowie mehr Überprüfungs- und Anmeldeaktivitäten. Die Daten, die bisher in den Sicherheitsberichten verfügbar waren, können jetzt über die API für Identity Protection-Risikoereignisse in Microsoft Graph abgerufen werden.
 
-Weitere Informationen finden Sie unter 
+Weitere Informationen finden Sie unter
 
 - [Erste Schritte mit der Berichterstellungs-API von Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)
 
@@ -1255,7 +1256,7 @@ Die folgenden Apps wurden der Liste der [genehmigten Client-Apps](https://docs.m
 - [Microsoft Kaizala](https://microsoft.com/en-us/garage/profiles/kaizala/)
 - [Microsoft StaffHub](https://staffhub.office.com/what-it-is)
 
-Weitere Informationen finden Sie unter 
+Weitere Informationen finden Sie unter
 
 - [Genehmigte Client-App als Voraussetzung](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
 - [App-basierter bedingter Zugriff mit Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
@@ -1348,7 +1349,7 @@ Ab sofort können Sie macOS als Geräteplattformbedingung in Ihre Richtlinie fü
 - **Sicherstellen, dass macOS-Geräte die in Intune definierten Konformitätsrichtlinien Ihrer Organisation einhalten**: In Intune im Azure-Portal können Sie nun Konformitätsrichtlinien für macOS-Geräte einrichten. 
 - **Beschränken des Zugriffs auf Anwendungen in Azure AD auf ausschließlich konforme macOS-Geräte**: Für die Erstellung bedingter Zugriffsrichtlinien ist macOS als separate Geräteplattformoption festgelegt. Nun können Sie macOS-spezifische Richtlinien für den bedingten Zugriff für die festgelegte Zielanwendung in Azure erstellen.
 
-Weitere Informationen finden Sie unter 
+Weitere Informationen finden Sie unter
 
 - [Erstellen einer Gerätekonformitätsrichtlinie für macOS-Geräte mit Intune](https://aka.ms/macoscompliancepolicy)
 - [Bedingter Zugriff in Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
@@ -1409,7 +1410,7 @@ Die folgenden Apps wurden der Liste der [genehmigten Client-Apps](https://docs.m
 - Azure Information Protection 
 
 
-Weitere Informationen finden Sie unter 
+Weitere Informationen finden Sie unter
 
 - [Genehmigte Client-App als Voraussetzung](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
 - [App-basierter bedingter Zugriff mit Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
