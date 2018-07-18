@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 06/26/2018
   ms.author: ryanwi
-  ms.openlocfilehash: e5fc62d84ace2acd46816a7116ea1cf2198be63f
-  ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+  ms.openlocfilehash: fccd805f6d4abcf7005fca0cc6f4d368ac5764f1
+  ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
   ms.translationtype: HT
   ms.contentlocale: de-DE
   ms.lasthandoff: 07/17/2018
-  ms.locfileid: "39073686"
+  ms.locfileid: "39090042"
 abstract:
   description: Azure Service Fabric Mesh ist ein vollständig verwalteter Dienst, der Entwicklern das Erstellen und Bereitstellen von unternehmenskritischen Anwendungen ohne Infrastrukturverwaltung ermöglicht.  Verwenden Sie Service Fabric Mesh zum Erstellen und Ausführen von sicheren, verteilten Microserviceanwendungen, die nach Bedarf skaliert werden können. Hier erfahren Sie anhand unserer Schnellstarts und Tutorials, wie Service Fabric Mesh verwendet wird.  Lesen Sie die <a href="/azure/service-fabric-mesh/service-fabric-mesh-overview">Übersicht über Service Fabric Mesh</a>, um mehr zu erfahren.
 sections:
@@ -45,15 +45,3 @@ sections:
     style: unordered
     items:
     - html: <a href="/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore">Bereitstellen einer .NET Core-Anwendung</a>
-- title: Beispiele
-  items:
-  - type: paragraph
-    text: 'Hier finden Sie .NET Core-Beispielanwendungen für Windows und Linux:'
-  - type: list
-    style: unordered
-    items:
-    - html: <a href="https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/helloworld">Hallo Welt!</a>
-    - html: <a href="https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/azurefiles-volume">Azure Files–Volume</a>
-    - html: <a href="https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/todolistapp">Aufgabenliste</a>
-    - html: <a href="https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/visualobjects">Visuelle Objekte</a>
-    - html: <a href="https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/votingapp">Abstimmen</a>
