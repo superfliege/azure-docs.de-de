@@ -44,8 +44,8 @@
 ## [.NET](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/keyvault/client?view=azure-dotnet)
 ## [Java](/java/api/overview/azure/keyvault?view=azure-java-stable)
 ## Node.js
-### [Tresorverwaltung](https://docs.microsoft.com/en-us/javascript/api/overview/azure/keyvault/client?view=azure-node-latest)
-### [Tresorinhaltsverwaltung](https://docs.microsoft.com/en-us/javascript/api/azure-arm-keyvault/index?view=azure-node-latest)
+### [Tresorverwaltung](https://docs.microsoft.com/javascript/api/azure-keyvault/index?view=azure-node-latest)
+### [Tresorinhaltsverwaltung](https://docs.microsoft.com/javascript/api/azure-arm-keyvault/index?view=azure-node-latest)
 ## [REST](/rest/api/keyvault)
 ## Entwickeln
 ### [Video mit ersten Schritten für Entwickler](http://channel9.msdn.com/Blogs/Windows-Azure/Azure-Key-Vault-Developer-Quick-Start)
