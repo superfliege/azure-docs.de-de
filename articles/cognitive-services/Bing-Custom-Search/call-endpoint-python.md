@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
 ms.openlocfilehash: 889762ae0b401438f25546738268c584ddd58389
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 15bfce02b334b67aedd634fa864efb4849fc5ee2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
+ms.lasthandoff: 07/17/2018
 ms.locfileid: "35378496"
 ---
 # <a name="call-bing-custom-search-endpoint-python"></a>Aufrufen des Endpunkts für die benutzerdefinierte Bing-Suche (Python)
@@ -62,5 +62,5 @@ Um den Endpunkt der benutzerdefinierten Bing-Suche aufzurufen, gehen Sie folgend
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Konfigurieren der gehosteten Benutzeroberfläche](./hosted-ui.md)
-- [Verwenden von Dekorationsmarkierungen zum Hervorheben von Text](./hit-highlighting.md)
+- [Verwenden von Decorator-Markierungen zum Hervorheben von Text](./hit-highlighting.md)
 - [Einteilen von Webseiten](./page-webpages.md)
