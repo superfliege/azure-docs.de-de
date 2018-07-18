@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/17/2017
 ms.author: xiaoyzhu
-ms.openlocfilehash: 95fd9efdcd7f93d8011808af943f52d4db13de8b
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 646d6e4b8980b780d4691fa258aa0d36ff309fd6
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054325"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Verwenden von Caffe in Azure HDInsight Spark für verteiltes Deep Learning
 
@@ -29,7 +30,7 @@ Deep Learning wirkt sich auf zahlreiche Bereiche aus – vom Gesundheitswesen ü
 
 Es gibt [viele beliebte Frameworks](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), einschließlich [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [Tensorflow](https://www.tensorflow.org/), MXNet, Theano usw. Caffe ist eines der berühmtesten, nicht symbolischen (imperativen) neuronalen Netzwerkframeworks und wird in vielen Bereichen verwendet, einschließlich beim maschinellen Sehen. Darüber hinaus kombiniert [CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) Caffe mit Apache Spark, wodurch Deep Learning einfach auf einem vorhandenen Hadoop-Cluster verwendet werden kann. Sie können Deep Learning zusammen mit Spark-ETL-Pipelines verwenden, um die Systemkomplexität und die Wartezeit für das vollständige Lernen von Lösungen zu reduzieren.
 
-[HDInsight](https://azure.microsoft.com/services/hdinsight/) ist ein Hadoop-Cloudangebot mit optimierten Open Source-Analyseclustern für Spark, Hive, Hadoop, HBase, Storm, Kafka und R Server. HDInsight ist durch eine SLA mit 99,9 Prozent gedeckt. Alle diese Big Data-Technologien und ISV-Anwendungen können ganz einfach als verwaltete Cluster mit Sicherheit und Überwachung für Unternehmen bereitgestellt werden.
+[HDInsight](https://azure.microsoft.com/services/hdinsight/) ist ein Hadoop-Cloudangebot mit optimierten Open-Source-Analyseclustern für Spark, Hive, Hadoop, HBase, Storm, Kafka und ML Services. HDInsight ist durch eine SLA mit 99,9 Prozent gedeckt. Alle diese Big Data-Technologien und ISV-Anwendungen können ganz einfach als verwaltete Cluster mit Sicherheit und Überwachung für Unternehmen bereitgestellt werden.
 
 Dieser Artikel veranschaulicht die Installation von [CaffeOnSpark](https://github.com/yahoo/CaffeOnSpark) für einen HDInsight-Cluster. Dieser Artikel verwendet ebenfalls die integrierte MNIST-Demo, um die Verwendung von verteiltem Deep Learning mit HDInsight Spark auf CPUs zu veranschaulichen.
 

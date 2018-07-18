@@ -22,7 +22,7 @@ Dieser Abschnitt führt Sie durch das Einrichten der Entwicklungsumgebung. Dies 
 
 2. Wählen Sie im Kontextmenü **Hinzufügen** > **Verbundener Dienst** aus.
 
-1. Wählen Sie im Dialogfeld **Verbundene Dienste** die Option **Cloudspeicher mit Azure Storage** und dann **Konfigurieren** aus.
+1. Wählen Sie im Dialogfeld **Verbundene Dienste** die Option **Cloudspeicher mit Azure Storage** aus.
 
     ![Screenshot: Dialogfeld „Verbundene Dienste“](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-3.png)
 

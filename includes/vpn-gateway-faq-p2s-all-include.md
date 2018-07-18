@@ -5,14 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 06/04/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 072c16a0e50a4922d44dd354b632f39b33d23cdd
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 199998f193f375137d499913e9ce966f85ed863c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38727526"
 ---
 ### <a name="supportedclientos"></a>Welche Clientbetriebssysteme kann ich bei Point-to-Site-Verbindungen verwenden?
 
@@ -20,7 +21,6 @@ Folgende Clientbetriebssysteme werden unterstützt:
 
 * Windows 7 (32 Bit und 64 Bit)
 * Windows Server 2008 R2 (nur 64 Bit)
-* Windows 8 (32 Bit und 64 Bit)
 * Windows 8.1 (32 Bit und 64 Bit)
 * Windows Server 2012 (nur 64 Bit)
 * Windows Server 2012 R2 (nur 64 Bit)
@@ -28,6 +28,12 @@ Folgende Clientbetriebssysteme werden unterstützt:
 * Windows 10
 * Mac OS X-Version 10.11 (El Capitan)
 * Mac OS X-Version 10.12 (Sierra)
+* Linux (StrongSwan)
+* iOS
+
+>[!NOTE]
+>[!INCLUDE [TLS](vpn-gateway-tls-updates.md)]
+>
 
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Wie viele VPN-Clientendpunkte kann meine Punkt-zu-Standort-Konfiguration umfassen?
 
@@ -87,7 +93,7 @@ Wenn Sie sowohl SSTP als auch IKEv2 in einer gemischten Umgebung (bestehend aus 
 
 ### <a name="other-than-windows-and-mac-which-other-platforms-does-azure-support-for-p2s-vpn"></a>Welche anderen Plattformen, außer Windows und Mac, werden von Azure für P2S-VPN unterstützt?
 
-Azure unterstützt nur Windows und Mac für P2S-VPN.
+Azure unterstützt Windows, Mac und Linux für P2S-VPN.
 
 ### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enable-radius-andor-ikev2-vpn-on-it"></a>Ich verfüge bereits über ein bereitgestelltes Azure-VPN-Gateway. Kann ich RADIUS und/oder IKEv2-VPN darauf aktivieren?
 

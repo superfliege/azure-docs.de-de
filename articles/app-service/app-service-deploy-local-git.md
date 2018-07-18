@@ -11,13 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: 842cd6f67a04bec0ed06282bdeeea8b8a51c0667
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: a614dadae40fcfc28eba85e5943f60a38653224b
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233902"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Lokale Git-Bereitstellung in Azure App Service
 
@@ -38,36 +39,21 @@ Zur Verwendung eines Beispielrepositorys zum Nachzuvollziehen führen Sie den fo
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 
-## <a name="prepare-your-repository"></a>Vorbereiten Ihres Repositorys
-
-Stellen Sie sicher, dass Ihr Repositorystamm die richtigen Dateien in Ihrem Projekt aufweist.
-
-| Laufzeit | Stammverzeichnisdateien |
-|-|-|
-| ASP.NET (nur Windows) | _*.sln_, _*.csproj_ oder _default.aspx_ |
-| ASP.NET Core | _*.sln_ oder _*.csproj_ |
-| PHP | _index.php_ |
-| Ruby (nur Linux) | _Gemfile_ |
-| Node.js | _server.js_, _app.js_ oder _package.json_ mit einem Startskript |
-| Python (nur Windows) | _\*.py_, _requirements.txt_ oder _runtime.txt_ |
-| HTML | _default.htm_, _default.html_, _default.asp_, _index.htm_, _index.html_ oder _iisstart.htm_ |
-| WebJobs | _\<job_name>/run.\<erweiterung>_ unter _App\_Data/jobs/continuous_ (für fortlaufende WebJobs) oder _App\_Data/jobs/triggered_ (für ausgelöste WebJobs). Weitere Informationen finden Sie in der [Kudu-Dokumentation zu WebJobs](https://github.com/projectkudu/kudu/wiki/WebJobs). |
-| Funktionen | Siehe [Kontinuierliche Bereitstellung für Azure Functions](../azure-functions/functions-continuous-deployment.md#continuous-deployment-requirements). |
-
-Zum Anpassen Ihrer Bereitstellung können Sie eine Datei vom Typ _.deployment_ in dem Repositorystamm einschließen. Weitere Informationen finden Sie unter [Customizing deployments](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) (Anpassen von Bereitstellungen) und [Custom Deployment Script](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) (Benutzerdefiniertes Bereitstellungsskript).
-
-> [!NOTE]
-> Achten Sie darauf, `git commit` für alle Änderungen auszuführen, die Sie bereitstellen möchten.
->
->
+[!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user.md)]
+## <a name="deploy-from-local-git-with-kudu-builds"></a>Bereitstellen von einem lokalen Git mit Kudu-Builds
 
-## <a name="enable-git-for-your-app"></a>Aktivieren von Git für die App
+Die einfachste Möglichkeit zum Aktivieren einer lokalen Git-Bereitstellung für Ihre App mit dem Kudu-Buildserver ist die Verwendung von Cloud Shell.
 
-Zum Aktivieren der Git-Bereitstellung für eine vorhandene App Service-App führen Sie [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_local_git) in Cloud Shell aus.
+### <a name="create-a-deployment-user"></a>Erstellen eines Bereitstellungsbenutzers
+
+[!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
+
+### <a name="enable-local-git-with-kudu"></a>Aktivieren von lokalem Git mit Kudu
+
+Zum Aktivieren einer lokalen Git-Bereitstellung für Ihre App mit dem Kudu-Buildserver führen Sie [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_local_git) in Cloud Shell aus.
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
@@ -97,7 +83,7 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebs
 }
 ```
 
-## <a name="deploy-your-project"></a>Bereitstellen des Projekts
+### <a name="deploy-your-project"></a>Bereitstellen des Projekts
 
 Kehren Sie zum _lokalen Terminalfenster_ zurück, und fügen Sie Ihrem lokalen Git-Repository einen Azure-Remotespeicherort hinzu. Ersetzen Sie _\<Url>_ durch die URL des Git-Remoterepositorys, die Sie beim [Aktivieren von Git für die App](#enable-git-for-you-app) erhalten haben.
 
@@ -113,13 +99,58 @@ git push azure master
 
 Die Ausgabe enthält u.U. laufzeitspezifische Automatisierungen wie MSBuild für ASP.NET, `npm install` für Node.js und `pip install` für Python. 
 
-Nach Abschluss der Bereitstellung sollte Ihre App im Azure-Portal jetzt einen Datensatz mit Ihrer `git push`-Anweisung auf der Seite **Bereitstellungsoptionen** aufweisen.
+Navigieren Sie zu Ihrer App, um sicherzustellen, dass der Inhalt bereitgestellt wird.
 
-![](./media/app-service-deploy-local-git/deployment_history.png)
+## <a name="deploy-from-local-git-with-vsts-builds"></a>Bereitstellen von einem lokalen Git mit VSTS-Builds
+
+> [!NOTE]
+> Damit App Service die erforderlichen Build- und Releasedefinitionen in Ihrem VSTS-Konto erstellt, muss Ihr Azure-Konto die Rolle **Besitzer** in Ihrem Azure-Abonnement aufweisen.
+>
+
+Zum Aktivieren einer lokalen Git-Bereitstellung für Ihre App mit dem Kudu-Buildserver navigieren Sie zu Ihrer App im [Azure-Portal](https://portal.azure.com).
+
+Klicken Sie im linken Navigationsbereich Ihrer App-Seite auf **Bereitstellungscenter** > **Lokales Git** > **Weiter**. 
+
+![](media/app-service-deploy-local-git/portal-enable.png)
+
+Klicken Sie auf **Continuous Delivery mit VSTS** > **Weiter**.
+
+![](media/app-service-deploy-local-git/vsts-build-server.png)
+
+Konfigurieren Sie auf der Seite **Konfigurieren** ein neues VSTS-Konto, oder geben Sie ein vorhandenes Konto an. Klicken Sie abschließend auf **Weiter**.
+
+> [!NOTE]
+> Wenn Sie ein vorhandenes VSTS-Konto verwenden möchten, das nicht aufgeführt wird, müssen Sie das [VSTS-Konto mit Ihrem Azure-Abonnement verknüpfen](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
+
+Wählen Sie auf der Seite **Test** aus, ob Auslastungstests aktiviert werden sollen, und klicken Sie dann auf **Weiter**.
+
+Abhängig vom [Tarif](/pricing/details/app-service/plans/) Ihres App Service-Plans wird ggf. auch eine Seite **Für Staging bereitstellen** angezeigt. Wählen Sie aus, ob Bereitstellungsslots aktiviert werden sollen, und klicken Sie dann auf **Weiter**.
+
+Überprüfen Sie auf der Seite **Zusammenfassung** die Optionen, und klicken Sie dann auf **Fertig stellen**.
+
+Es dauert einige Minuten, bis das VSTS-Konto betriebsbereit ist. Sobald dies der Fall ist, kopieren Sie die Git-Repository-URL in das Bereitstellungscenter.
+
+![](media/app-service-deploy-local-git/vsts-repo-ready.png)
+
+Kehren Sie zum _lokalen Terminalfenster_ zurück, und fügen Sie Ihrem lokalen Git-Repository einen Azure-Remotespeicherort hinzu. Ersetzen Sie  _\<URL>_ durch die URL aus dem letzten Schritt.
+
+```bash
+git remote add vsts <url>
+```
+
+Führen Sie einen Pushvorgang zum Azure-Remotespeicherort durch, um Ihre App mit dem folgenden Befehl bereitzustellen. Melden Sie sich nach Aufforderung durch die Git-Anmeldeinformationsverwaltung mit Ihrem visualstudio.com-Benutzerkonto an. Zusätzliche Authentifizierungsmethoden finden Sie in der [Übersicht zur VSTS-Authentifizierung](/vsts/git/auth-overview?view=vsts).
+
+```bash
+git push vsts master
+```
+
+Sobald die Bereitstellung abgeschlossen ist, finden Sie den Buildfortschritt unter `https://<vsts_account>.visualstudio.com/<project_name>/_build` und den Bereitstellungsstatus unter `https://<vsts_account>.visualstudio.com/<project_name>/_release`.
 
 Navigieren Sie zu Ihrer App, um sicherzustellen, dass der Inhalt bereitgestellt wird.
 
-## <a name="troubleshooting"></a>Problembehandlung
+[!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
+
+## <a name="troubleshooting-kudu-deployment"></a>Problembehandlung bei der Kudu-Bereitstellung
 
 Die folgenden Fehler und Probleme treten häufig auf, wenn Git zum Veröffentlichen in einer App Service-App in Azure verwendet wird:
 

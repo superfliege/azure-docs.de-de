@@ -3,21 +3,20 @@ title: Lambda-Architektur mit Azure Cosmos DB und HDInsight (Apache Spark) | Mic
 description: In diesem Artikel wird beschrieben, wie Sie eine Lambda-Architektur mit Azure Cosmos DB, HDInsight und Spark verwenden.
 keywords: Lambda-Architektur
 services: cosmos-db
-documentationcenter: ''
-author: dennyglee
+author: tknandu
 manager: kfile
 editor: ''
-ms.assetid: 273aeae9-e31c-4a43-b216-5751c46f212e
 ms.service: cosmos-db
-ms.workload: data-services
-ms.topic: article
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 01/19/2018
-ms.author: denlee
-ms.openlocfilehash: 9c1a8c212fbacde9fbf69fdf9bf72ed2393786db
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: ramkris
+ms.openlocfilehash: 20fea7f4f4ccf852045d53ba06c3f8fcbdd1d60d
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959830"
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB: Implementieren einer Lambda-Architektur auf der Azure Platform 
 

@@ -1,7 +1,7 @@
 In diesem Beispiel zeige ich Ihnen, wie mit dem Trigger **SharePoint Online - Wenn ein neues Element erstellt wird** der Workflow einer Logik-App ausgelöst wird, wenn ein neues Element in einer SharePoint Online-Liste erstellt wird.
 
 > [!NOTE]
-> Sie werden aufgefordert, sich bei Ihrem SharePoint-Konto anzumelden, wenn Sie noch keine *Verbindung* mit SharePoint Online erstellt haben.  
+> Sie werden aufgefordert, sich bei Ihrem SharePoint-Konto anzumelden, wenn Sie noch keine *Verbindung* mit SharePoint Online hergestellt haben.  
 > 
 > 
 

@@ -3,7 +3,7 @@ title: Analysieren der Datennutzung in Log Analytics | Microsoft Docs
 description: Beurteilen Sie anhand des Log Analytics-Dashboards für Nutzung und geschätzte Kosten, wie viele Daten an Log Analytics gesendet werden, und ermitteln Sie mögliche Ursachen für unvorhergesehene Zunahmen.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: 74d0adcb-4dc2-425e-8b62-c65537cef270
@@ -11,14 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 03/29/2018
+ms.topic: conceptual
+ms.date: 06/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 7e141dcf69c1a173c60cb96907cae2ba9f119b03
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.component: na
+ms.openlocfilehash: d02c3ad3e1ca2812049608cad2eacced3686dad3
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128563"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analysieren der Datennutzung in Log Analytics
 Log Analytics enthält Informationen zur Menge der gesammelten Daten, zu den Quellen, die die Daten gesendet haben, und zu den unterschiedlichen Arten gesendeter Daten.  Die Datennutzung können Sie mithilfe des Dashboards **Protokollanalysenutzung** überprüfen und analysieren. Im Dashboard ist angegeben, wie viele Daten von jeder Lösung gesammelt werden und wie viele Daten von den Computern gesendet werden.
@@ -58,7 +60,9 @@ In diesem Abschnitt wird beschrieben, wie Sie eine Warnung erstellen, wenn Folge
 - Das Datenvolumen übersteigt eine angegebene Menge.
 - Für das Datenvolumen besteht die Vorhersage, dass eine bestimmte Menge überschritten wird.
 
-Für Log Analytics-[Warnungen](log-analytics-alerts-creating.md) werden Suchabfragen verwendet. Für die folgende Abfrage wird ein Ergebnis erzielt, wenn innerhalb der letzten 24 Stunden mehr als 100 GB an Daten gesammelt wurden:
+Azure-Warnungen unterstützen [Protokollwarnungen](../monitoring-and-diagnostics/monitor-alerts-unified-log.md), die Suchabfragen nutzen. 
+
+Für die folgende Abfrage wird ein Ergebnis erzielt, wenn innerhalb der letzten 24 Stunden mehr als 100 GB an Daten gesammelt wurden:
 
 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
 
@@ -68,27 +72,35 @@ Für die folgende Abfrage wird eine einfache Formel verwendet, um vorherzusagen,
 
 Wenn die Warnung für ein anderes Datenvolumen gelten soll, ändern Sie den Wert 100 in den Abfragen einfach in den gewünschten GB-Wert.
 
-Führen Sie die Schritte unter [Erstellen einer Warnungsregel](log-analytics-alerts-creating.md#create-an-alert-rule) aus, um eine Benachrichtigung zu erhalten, wenn die Datensammlung höher als erwartet ausfällt.
+Führen Sie die Schritte unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) aus, um eine Benachrichtigung zu erhalten, wenn die Datensammlung höher als erwartet ausfällt.
 
 Legen Sie beim Erstellen der Warnung für die erste Abfrage Folgendes fest, wenn mehr als 100 GB an Daten innerhalb von 24 Stunden anfallen:  
-- **Name** auf *Datenvolumen größer als 100 GB in 24 Stunden*  
-- **Schweregrad** auf *Warnung*  
-- **Suchabfrage** auf `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`   
-- **Zeitfenster** auf *24 Stunden*
-- **Warnungshäufigkeit** auf eine Stunde, da die Nutzungsdaten nur einmal pro Stunde aktualisiert werden
-- **Warnung generieren basierend auf** auf *Anzahl von Ergebnissen*
-- **Anzahl von Ergebnissen** auf *Größer als 0*
 
-Führen Sie die Schritte aus, die unter [Hinzufügen von Aktionen zu Warnungsregeln](log-analytics-alerts-actions.md) beschrieben sind, um eine E-Mail-, Webhook- oder Runbookaktion für die Warnungsregel zu konfigurieren.
+- **Definieren der Warnungsbedingung**: Festlegen Ihres Log Analytics-Arbeitsbereichs als Ressourcenziel
+- **Warnungskriterien**: Geben Sie Folgendes an:
+   - **Signalname**: **Benutzerdefinierte Protokollsuche**
+   - **Suchabfrage** auf `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
+   - **Warnungslogik**: **Basiert auf** *Anzahl von Ergebnissen* und **Bedingung** ist *Größer als* ein **Schwellenwert** von *0*
+   - **Zeitraum**: *1440* Minuten, **Warnungshäufigkeit**: alle *60* Minuten, da die Nutzungsdaten nur einmal pro Stunde aktualisiert werden
+- **Definieren der Warnungsdetails**:
+   - **Name** auf *Datenvolumen größer als 100 GB in 24 Stunden*
+   - **Schweregrad** auf *Warnung*
+
+Geben Sie eine vorhandene [Aktionsgruppe](../monitoring-and-diagnostics/monitoring-action-groups.md) an, oder erstellen Sie eine neue, damit Sie benachrichtigt werden, wenn die Protokollwarnung Kriterien erfüllt.
 
 Legen Sie beim Erstellen der Warnung für die zweite Abfrage Folgendes fest, wenn die Vorhersage besteht, dass innerhalb von 24 Stunden mehr als 100 GB an Daten anfallen:
-- **Name** auf *Erwartetes Datenvolumen von mehr als 100 GB in 24 Stunden*
-- **Schweregrad** auf *Warnung*
-- **Suchabfrage** auf `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
-- **Zeitfenster** auf *3 Stunden*
-- **Warnungshäufigkeit** auf eine Stunde, da die Nutzungsdaten nur einmal pro Stunde aktualisiert werden
-- **Warnung generieren basierend auf** auf *Anzahl von Ergebnissen*
-- **Anzahl von Ergebnissen** auf *Größer als 0*
+
+- **Definieren der Warnungsbedingung**: Festlegen Ihres Log Analytics-Arbeitsbereichs als Ressourcenziel
+- **Warnungskriterien**: Geben Sie Folgendes an:
+   - **Signalname**: **Benutzerdefinierte Protokollsuche**
+   - **Suchabfrage** auf `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
+   - **Warnungslogik**: **Basiert auf** *Anzahl von Ergebnissen* und **Bedingung** ist *Größer als* ein **Schwellenwert** von *0*
+   - **Zeitraum**: *180* Minuten, **Warnungshäufigkeit**: alle *60* Minuten, da die Nutzungsdaten nur einmal pro Stunde aktualisiert werden
+- **Definieren der Warnungsdetails**:
+   - **Name** auf *Erwartetes Datenvolumen von mehr als 100 GB in 24 Stunden*
+   - **Schweregrad** auf *Warnung*
+
+Geben Sie eine vorhandene [Aktionsgruppe](../monitoring-and-diagnostics/monitoring-action-groups.md) an, oder erstellen Sie eine neue, damit Sie benachrichtigt werden, wenn die Protokollwarnung Kriterien erfüllt.
 
 Wenn Sie eine Warnung erhalten, können Sie die Schritte im folgenden Abschnitt verwenden, um per Problembehandlung zu ermitteln, warum die Nutzung höher als erwartet ist.
 
@@ -116,7 +128,7 @@ Im folgenden Screenshot werden für den Computer vom Datentyp *LogManagement/Per
 
 Wechseln Sie als Nächstes zurück zum Dashboard *Nutzung*, und sehen Sie sich das Diagramm *Datenmenge nach Lösung* an. Klicken Sie in der Liste auf den Namen einer Lösung, um die Computer anzuzeigen, die die meisten Daten für die Lösung senden. Klicken Sie auf den Namen der ersten Lösung in der Liste. 
 
-Im folgenden Screenshot ist zu erkennen, dass der Computer *acmetomcat* die meisten Daten für die Lösung „LogManagement“ (Protokollverwaltung) sendet.<br><br> ![Datenvolumen für eine Lösung](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)<br><br>
+Im folgenden Screenshot ist zu erkennen, dass der Computer *mycon* die meisten Daten für die Protokollverwaltungslösung sendet.<br><br> ![Datenvolumen für eine Lösung](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)<br><br>
 
 Führen Sie bei Bedarf zusätzliche Analysen aus, um große Mengen innerhalb einer Lösung oder eines Datentyps zu identifizieren. Beispiele für Abfragen:
 
@@ -140,7 +152,7 @@ Führen Sie die folgenden Schritte aus, um das Volumen der erfassten Protokolle 
 
 | Quelle mit hohem Datenvolumen | Reduzieren des Datenvolumens |
 | -------------------------- | ------------------------- |
-| Sicherheitsereignisse            | Wählen Sie [Sicherheitsereignisse vom Typ „Allgemein“ oder „Minimal“](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/) aus. <br> Ändern der Sicherheitsüberwachungsrichtlinie, sodass nur benötigte Ereignisse erfasst werden. Überprüfen Sie insbesondere die Notwendigkeit zum Erfassen von Ereignissen für die <br> - [Überwachung der Filterplattform](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [Überwachung der Registrierung](https://docs.microsoft.com/windows/device-security/auditing/audit-registry)<br> - [Überwachung des Dateisystems](https://docs.microsoft.com/windows/device-security/auditing/audit-file-system)<br> - [Überwachung des Kernelobjekts](https://docs.microsoft.com/windows/device-security/auditing/audit-kernel-object)<br> - [Überwachung der Handleänderung](https://docs.microsoft.com/windows/device-security/auditing/audit-handle-manipulation)<br> - [Überwachung von Wechselmedien](https://docs.microsoft.com/windows/device-security/auditing/audit-removable-storage) |
+| Sicherheitsereignisse            | Wählen Sie [Sicherheitsereignisse vom Typ „Allgemein“ oder „Minimal“](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/) aus. <br> Ändern der Sicherheitsüberwachungsrichtlinie, sodass nur benötigte Ereignisse erfasst werden. Überprüfen Sie insbesondere die Notwendigkeit zum Erfassen von Ereignissen für die <br> - [Überwachung der Filterplattform](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [Überwachung der Registrierung](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [Überwachung des Dateisystems](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [Überwachung des Kernelobjekts](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [Überwachung der Handleänderung](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - Überwachung von Wechselmedien |
 | Leistungsindikatoren       | Ändern Sie [Leistungsindikatoren-Konfiguration](log-analytics-data-sources-performance-counters.md) in: <br> - Reduzieren der Sammlungshäufigkeit <br> - Reduzieren der Anzahl von Leistungsindikatoren |
 | Ereignisprotokolle                 | Ändern Sie die [Ereignisprotokollkonfiguration](log-analytics-data-sources-windows-events.md) in: <br> - Reduzieren der Anzahl von erfassten Ereignisprotokollen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebene *Informationen*. |
 | syslog                     | Ändern Sie die [syslog-Konfiguration](log-analytics-data-sources-syslog.md) in: <br> - Reduzieren der Anzahl von erfassten Einrichtungen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebenen *Informationen* und *Debuggen*. |
@@ -154,12 +166,11 @@ Klicken Sie auf **Alle anzeigen...**, um die vollständige Liste mit Computern a
 
 Verwenden Sie die [Zielgruppenadressierung für Lösungen](../operations-management-suite/operations-management-suite-solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen dazu, wie Sie die Suchsprache verwenden, finden Sie unter [Protokollsuchen in Log Analytics](log-analytics-log-searches.md). Sie können Suchabfragen verwenden, um für die Nutzungsdaten eine zusätzliche Analyse durchzuführen.
-* Führen Sie die unter [Erstellen einer Warnungsregel](log-analytics-alerts-creating.md#create-an-alert-rule) beschriebenen Schritte aus, um benachrichtigt zu werden, wenn ein Suchkriterium erfüllt ist.
+* Führen Sie die unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) beschriebenen Schritte aus, um benachrichtigt zu werden, wenn ein Suchkriterium erfüllt ist.
 * Verwenden Sie die [Zielgruppenadressierung für Lösungen](../operations-management-suite/operations-management-suite-solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen.
 * Lesen Sie zum Konfigurieren einer effektiven Richtlinie zur Erfassung von Sicherheitsereignissen die Informationen unter [Datensammlung in Azure Security Center](../security-center/security-center-enable-data-collection.md).
-* Ändern Sie die [Leistungsindikatoren-Konfiguration](log-analytics-data-sources-performance-counters.md).
+* Ändern Sie die [Leistungsindikatorenkonfiguration](log-analytics-data-sources-performance-counters.md).
 * Informationen zum Ändern der Einstellungen für die Ereigniserfassung finden Sie unter [Datenquellen für Windows-Ereignisprotokolle in Log Analytics](log-analytics-data-sources-windows-events.md).
 * Informationen zum Ändern der Einstellungen für die Syslog-Sammlung finden Sie unter [Syslog-Datenquellen in Log Analytics](log-analytics-data-sources-syslog.md).

@@ -22,7 +22,7 @@
 ### VM-Skalierungsgruppen
 #### [Erstellen einer Skalierungsgruppe in einer Verfügbarkeitszone](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
 
-### Lastenausgleichsmodul
+### Load Balancer
 #### [Was ist der Load Balancer?](../load-balancer/load-balancer-standard-overview.md)
 #### [Load Balancer Standard und Verfügbarkeitszonen](../load-balancer/load-balancer-standard-availability-zones.md)
 
@@ -42,6 +42,18 @@
 
 ### Speicher
 #### [Zonenredundanter Speicher](../storage/common/storage-redundancy-zrs.md)
+
+### Event Hubs
+#### [Georedundante Notfallwiederherstellung in Event Hubs](../event-hubs/event-hubs-geo-dr.md#availability-zones-preview)
+
+### Service Bus
+#### [Georedundante Notfallwiederherstellung in Service Bus](../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview)
+
+### VPN Gateway
+#### [Erstellen eines zonenredundanten Gateways für virtuelle Netzwerke](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
+
+### ExpressRoute
+#### [Erstellen eines zonenredundanten Gateways für virtuelle Netzwerke](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
 
 # Notfallwiederherstellung
 ## [Verwenden von Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/)

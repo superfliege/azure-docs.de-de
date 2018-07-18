@@ -1,12 +1,12 @@
 ---
-title: "Vorbereiten von Festplatten für einen Azure Import/Export-Auftrag | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Festplatten mit dem WAImportExport-Tool zum Erstellen eines Importauftrags für den Azure Import/Export-Dienst vorbereiten."
+title: Vorbereiten von Festplatten für einen Azure Import/Export-Auftrag | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Festplatten mit dem WAImportExport-Tool zum Erstellen eines Importauftrags für den Azure Import/Export-Dienst vorbereiten.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/19/2017
+ms.locfileid: "23469239"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Vorbereiten von Festplatten für einen Importauftrag
 

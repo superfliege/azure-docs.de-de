@@ -1,34 +1,42 @@
 ---
-title: "Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Azure Blob Storage-Endpunkt | Microsoft Docs"
-description: Verwenden Sie das Azure-Portal, um Ihren eigenen kanonischen Namen (CNAME) dem Blob Storage-Endpunkt in einem Azure Storage-Konto zuzuordnen.
+title: Konfigurieren eines benutzerdefinierten Domänennamens für Ihr Azure Storage-Konto | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie über das Azure-Portal einen eigenen kanonischen Namen (canonical name, CNAME) dem Blob- oder Webendpunkt in einem Azure Storage-Konto zuordnen.
 services: storage
 author: tamram
 manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 06/26/2018
 ms.author: tamram
-ms.openlocfilehash: 2b776e8f40f6972a60f933b0104312b119439f38
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 2f4267c25dfd31e6f1d5ae3a832be06b5ef6c828
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017919"
 ---
-# <a name="configure-a-custom-domain-name-for-your-blob-storage-endpoint"></a>Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Blob Storage-Endpunkt
+# <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Konfigurieren eines benutzerdefinierten Domänennamens für Ihr Azure Storage-Konto
 
-Sie können eine benutzerdefinierte Domäne für den Zugriff auf Blob-Daten in Ihrem Azure-Speicherkonto konfigurieren. Der Standardendpunkt für den Blobspeicher ist `<storage-account-name>.blob.core.windows.net`. Wenn Sie dem Blobendpunkt für Ihr Speicherkonto eine benutzerdefinierte Domäne und Unterdomäne wie **www.contoso.com** zuordnen, können Benutzer über diese Domäne auf Blobdaten in Ihrem Speicherkonto zugreifen.
+Sie können eine benutzerdefinierte Domäne für den Zugriff auf Blob-Daten in Ihrem Azure-Speicherkonto konfigurieren. Der Standardendpunkt für den Blobspeicher ist `<storage-account-name>.blob.core.windows.net`. Sie können auch den Webendpunkt verwenden, der im Rahmen des Artikels [Static website hosting in Azure Storage (Preview)](storage-blob-static-website.md) (Hosten einer statischen Website in Azure Storage (Vorschauversion)) generiert wurde. Wenn Sie dem Blob- oder Webendpunkt für Ihr Speicherkonto eine benutzerdefinierte Domäne und eine Unterdomäne wie etwa **www.contoso.com** zuordnen, können Benutzer über diese Domäne auf Blobdaten in Ihrem Speicherkonto zugreifen.
 
 > [!IMPORTANT]
 > Azure Storage bietet noch keine native Unterstützung von HTTPS für benutzerdefinierte Domänen. Derzeit können Sie [Azure-CDN zum Zugreifen auf Blobs mit benutzerdefinierten Domänen über HTTPS verwenden](storage-https-custom-domain-cdn.md).
 >
 
+> [!NOTE]  
+> Von Speicherkonten wird derzeit nur ein einzelner benutzerdefinierter Domänenname pro Konto unterstützt. Somit kann ein benutzerdefinierter Domänenname nicht dem Webdienstendpunkt und zugleich dem Blobdienstendpunkt zugeordnet werden.
+
 Die folgende Tabelle enthält einige Beispiel-URLs für Blobdaten, die sich in einem Speicherkonto namens **mystorageaccount** befinden. Die für das Speicherkonto registrierte benutzerdefinierte Domäne ist **www.contoso.com**:
 
 | Ressourcentyp | Standard-URL | Benutzerdefinierte Domänen-URL |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | Speicherkonto | http://mystorageaccount.blob.core.windows.net | http://www.contoso.com |
 | Blob |http://mystorageaccount.blob.core.windows.net/mycontainer/myblob | http://www.contoso.com/mycontainer/myblob |
 | Stammcontainer | http://mystorageaccount.blob.core.windows.net/myblob oder http://mystorageaccount.blob.core.windows.net/$root/myblob| http://www.contoso.com/myblob oder http://www.contoso.com/$root/myblob |
+| Web |  http://mystorageaccount.[zone].web.core.windows.net/$web/[indexdoc] oder http://mystorageaccount.[zone].web.core.windows.net/[indexdoc] oder http://mystorageaccount.[zone].web.core.windows.net/$web oder http://mystorageaccount.[zone].web.core.windows.net/ | http://www.contoso.com/$web oder http://www.contoso.com/ oder http://www.contoso.com/$web/[indexdoc] oder http://www.contoso.com/[indexdoc] |
+
+> [!NOTE]  
+> Alle Beispiele für den Blobdienstendpunkt weiter unten gelten auch für den Webdienstendpunkt.
 
 ## <a name="direct-vs-intermediary-domain-mapping"></a>Direkte und zwischengeschaltete Domänenzuordnung
 
@@ -157,3 +165,4 @@ Verwenden Sie das PowerShell-Cmdlet [Set-AzureRmStorageAccount](/powershell/modu
 ## <a name="next-steps"></a>Nächste Schritte
 * [Zuordnen von CDN-Inhalt (Content Delivery Network) zu einer benutzerdefinierten Domäne](../../cdn/cdn-map-content-to-custom-domain.md)
 * [Verwenden von Azure-CDN zum Zugreifen auf Blobs mit benutzerdefinierten Domänen über HTTPS](storage-https-custom-domain-cdn.md)
+* [Hosten von statischen Websites in Azure Storage (Vorschauversion)](storage-blob-static-website.md)

@@ -1,0 +1,91 @@
+- name: Dokumentation zur Gesichtserkennungs-API
+  href: index.yml
+- name: Übersicht
+  expanded: true
+  items:
+    - name: Worum handelt es sich bei der Gesichtserkennungs-API?
+      href: Overview.md
+- name: Schnellstarts
+  items:
+    - name: 'C#'
+      href: QuickStarts/CSharp.md
+    - name: cURL
+      href: QuickStarts/curl.md
+    - name: Go
+      href: QuickStarts/go.md
+    - name: Java
+      href: QuickStarts/Java.md
+    - name: JavaScript
+      href: QuickStarts/JavaScript.md
+    - name: Node.js
+      href: QuickStarts/node.md
+    - name: PHP
+      href: QuickStarts/PHP.md
+    - name: Python
+      href: QuickStarts/Python.md
+    - name: Ruby
+      href: QuickStarts/Ruby.md
+- name: Tutorials
+  items:
+    - name: 'C#'
+      href: Tutorials/FaceAPIinCSharpTutorial.md
+    - name: Android
+      href: Tutorials/FaceAPIinJavaForAndroidTutorial.md
+- name: Anleitungen
+  items:
+    - name: Erste Apps mit Gesichtserkennungs-API
+      items:
+        - name: Python
+          href: Tutorials/FaceAPIinPythonTutorial.md
+    - name: Gesichtserkennung in Bildern
+      href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
+    - name: Gesichtsidentifikation in Bildern
+      href: Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md
+    - name: Hinzufügen von Gesichtern
+      href: Face-API-How-to-Topics/how-to-add-faces.md
+    - name: Verwenden des Features für die Verarbeitung in großem Umfang
+      href: Face-API-How-to-Topics/how-to-use-large-scale.md
+    - name: Videoanalyse in Echtzeit
+      href: Face-API-How-to-Topics/HowtoAnalyzeVideo_Face.md
+    - name: Arbeiten mit Visual Studio
+      items:
+        - name: Verwenden des verbundenen Diensts für die Gesichtserkennungs-API
+          href: vs-face-connected-service.md
+- name: Verweis
+  items:
+    - name: Gesichtserkennungs-API
+      href: APIReference.md
+    - name: Glossar
+      href: Glossary.md
+    - name: SDKs
+      items:
+        - name: Windows
+          href: 'https://github.com/Microsoft/Cognitive-Face-Windows'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest#vision-modules'
+        - name: Python
+          href: 'https://github.com/Microsoft/Cognitive-Face-Python'
+        - name: Go
+          href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face'
+        - name: Android
+          href: 'https://github.com/Microsoft/Cognitive-Face-Android'
+        - name: iOS
+          href: 'https://github.com/Microsoft/Cognitive-Face-iOS'
+- name: angeben
+  items:
+    - name: Beispiele
+      href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face'
+    - name: Häufig gestellte Fragen
+      href: FAQ.md
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/430315-face-api'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Versionshinweise
+      href: ReleaseNotes.md

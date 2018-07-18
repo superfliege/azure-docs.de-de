@@ -14,11 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: f42526430599e47e673d359433e91b4687cbeb9e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0af61ec3b22692402697df5331df80ca044759b5
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340660"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Endlose Orchestrierungen in Durable Functions (Azure Functions)
 
@@ -60,32 +61,6 @@ public static async Task Run(
 ```
 
 Der Unterschied zwischen diesem Beispiel und einer per Timer ausgelösten Funktion besteht darin, dass Bereinigungstriggerzeiten hier nicht auf einem Zeitplan basieren. Beispiel: Ein CRON-Zeitplan, für den stündlich eine Funktion ausgeführt wird (um 1:00, 2:00, 3:00 Uhr usw.), können ggf. Probleme mit Überlappungen auftreten. Wenn die Bereinigung in diesem Beispiel aber 30 Minuten dauert, wird sie um 1:00, 2:30, 4:00 Uhr usw. geplant, sodass es nicht zu Überlappungen kommt.
-
-## <a name="counter-example"></a>Counter-Beispiel
-
-Hier ist ein vereinfachtes Beispiel für eine *counter*-Funktion (Zähler) angegeben, die endlos lange auf *increment*- und *decrement*-Ereignisse lauscht.
-
-```csharp
-[FunctionName("SimpleCounter")]
-public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
-{
-    int counterState = context.GetInput<int>();
-
-    string operation = await context.WaitForExternalEvent<string>("operation");
-
-    if (operation == "incr")
-    {
-        counterState++;
-    }
-    else if (operation == "decr")
-    {
-        counterState--;
-    }
-    
-    context.ContinueAsNew(counterState);
-}
-```
 
 ## <a name="exit-from-an-eternal-orchestration"></a>Beenden einer endlosen Orchestrierung
 

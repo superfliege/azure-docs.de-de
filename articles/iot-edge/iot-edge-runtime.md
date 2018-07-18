@@ -1,21 +1,21 @@
 ---
 title: Grundlegendes zur Azure IoT Edge-Laufzeit | Microsoft-Dokumentation
-description: "Hier erhalten Sie Informationen über die Azure IoT Edge-Laufzeit und wie Sie sie für Ihre Edgegeräte nutzen können."
-services: iot-edge
-keywords: 
+description: Hier erhalten Sie Informationen über die Azure IoT Edge-Laufzeit und wie Sie sie für Ihre Edgegeräte nutzen können.
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 02/15/2018
-ms.topic: article
+ms.date: 06/05/2018
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 8bd725e2201cb08853f4fb63d156b6359427663b
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+services: iot-edge
+ms.openlocfilehash: b7418947c44c62883ef13c4be130458bb9f9ce6c
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030378"
 ---
-# <a name="understand-the-azure-iot-edge-runtime-and-its-architecture---preview"></a>Grundlegendes zur Azure IoT Edge-Laufzeit und ihre Architektur – Vorschau
+# <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Grundlegendes zur Azure IoT Edge-Runtime und ihrer Architektur
 
 Die IoT-Edge-Laufzeit ist eine Sammlung von Programmen, die auf einem Gerät installiert sein müssen, damit es als IoT Edge-Gerät gilt. Die Sammlung der Komponenten der IoT Edge-Laufzeit ermöglicht IoT Edge-Geräten den Empfang von Code für die Ausführung im Edgebereich und das Kommunizieren der Ergebnisse. 
 
@@ -23,7 +23,7 @@ Die IoT Edge-Laufzeit führt auf IoT Edge-Geräten die folgenden Funktionen aus:
 
 * Installieren und Aktualisieren von Workloads auf dem Gerät
 * Aufrechterhalten von Azure IoT Edge-Sicherheitsstandards auf dem Gerät
-* Sicherstellen, dass die [IoT Edge-Module][Grundlegendes zu den Azure IoT Edge-Modulen – Vorschau] immer ausgeführt werden
+* Sicherstellen, dass die [IoT Edge-Module][Ink-Module] immer ausgeführt werden
 * Melden der Modulintegrität an die Cloud für die Remoteüberwachung
 * Ermöglichen der Kommunikation zwischen nachgeschalteten Blattknotengeräten und dem IoT Edge-Gerät
 * Ermöglichen der Kommunikation zwischen Modulen auf dem IoT Edge-Gerät
@@ -33,7 +33,7 @@ Die IoT Edge-Laufzeit führt auf IoT Edge-Geräten die folgenden Funktionen aus:
 
 Die Aufgaben der IoT Edge-Laufzeit fallen in zwei Kategorien: Modulverwaltung und -kommunikation. Diese beiden Rollen werden von zwei Komponenten ausgeführt, aus denen die IoT Edge-Laufzeit besteht. Der IoT Edge-Hub ist für die Kommunikation verantwortlich, während der IoT Edge-Agent für die Bereitstellung und Überwachung der Module zuständig ist. 
 
-Der Edge-Agent und der Edge-Hub sind Module wie jedes andere auf einem IoT Edge-Gerät ausgeführte Modul. Weitere Informationen zur Funktionsweise der Module finden Sie unter [Grundlegendes zu den Azure IoT Edge-Modulen – Vorschau] 
+Der Edge-Agent und der Edge-Hub sind Module wie jedes andere auf einem IoT Edge-Gerät ausgeführte Modul. Weitere Informationen zur Funktionsweise der Module finden Sie unter [Ink-Module] 
 
 ## <a name="iot-edge-hub"></a>IoT Edge-Hub
 
@@ -90,9 +90,9 @@ Um die Ausführung des Edge-Agents zu starten, führen Sie den Startbefehl „az
 
 Jedes Element im Modulwörterbuch enthält spezielle Informationen zu einem Modul, und es wird vom Edge-Agent zum Steuern des Lebenszyklus des Moduls verwendet. Einige der wichtigeren Eigenschaften lauten: 
 
-* **settings.image** – Der Container, der vom Edge-Agent zum Starten des Moduls verwendet wird. Der Edge-Agent muss mit den Anmeldeinformationen für die Containerregistrierung konfiguriert werden, wenn das Image mit einem Kennwort geschützt ist. Verwenden Sie zum Konfigurieren des Edge-Agents den folgenden Befehl: `azure-iot-edge-runtime-ctl.py –configure`
+* **settings.image** – Der Container, der vom Edge-Agent zum Starten des Moduls verwendet wird. Der Edge-Agent muss mit den Anmeldeinformationen für die Containerregistrierung konfiguriert werden, wenn das Image mit einem Kennwort geschützt ist. Aktualisieren Sie zum Konfigurieren des Edge-Agents die Datei `config.yaml`. Verwenden Sie unter Linux den folgenden Befehl: `sudo nano /etc/iotedge/config.yaml`
 * **settings.createOptions** – Eine Zeichenfolge, die beim Starten des Containers eines Moduls direkt an den Docker-Daemon übergeben wird. Das Hinzufügen von Docker-Optionen in dieser Eigenschaft ermöglicht erweiterte Optionen, z.B. Portweiterleitung oder das Bereitstellen von Volumes im Container eines Moduls.  
-* **status** – Der Status, in den der Edge-Agent das Modul versetzt. Dieser Wert wird in der Regel auf *running* festgelegt, da die meisten Personen möchten, dass der Edge-Agent alle Module auf dem Gerät sofort startet. Sie können jedoch festlegen, dass der Anfangsstatus eines Moduls „Beendet“ lautet, und den Edge-Agent zu einem zukünftigen Zeitpunkt zum Starten eines Moduls auffordern. Der Edge-Agent meldet der Cloud den Status jedes Moduls in den gemeldeten Eigenschaften. Ein Unterschied zwischen der gewünschten Eigenschaft und der gemeldeten Eigenschaft ist ein Indikator oder ein fehlerhaftes Gerät. Die unterstützten Status lauten:
+* **status** – Der Status, in den der Edge-Agent das Modul versetzt. Dieser Wert wird in der Regel auf *running* festgelegt, da die meisten Personen möchten, dass der Edge-Agent alle Module auf dem Gerät sofort startet. Sie können jedoch festlegen, dass der Anfangsstatus eines Moduls „Beendet“ lautet, und den Edge-Agent zu einem zukünftigen Zeitpunkt zum Starten eines Moduls auffordern. Der Edge-Agent meldet der Cloud den Status jedes Moduls in den gemeldeten Eigenschaften. Weicht die gemeldete Eigenschaft von der gewünschten Eigenschaft ab, ist dies ein Indikator für ein fehlerhaftes Gerät. Die unterstützten Status lauten:
    * Herunterladen
    * Wird ausgeführt
    * Fehlerhaft
@@ -104,7 +104,7 @@ Jedes Element im Modulwörterbuch enthält spezielle Informationen zu einem Modu
    * Fehlerhaft – Wenn das Modul abstürzt oder als fehlerhaft angesehen wird, startet es der Edge-Agent neu.
    * Immer – Wenn das Modul abstürzt, als fehlerhaft angesehen wird oder auf irgend eine Weise heruntergefahren wird, führt der Edge-Agent den Neustart des Moduls aus. 
 
-IoT Edge-Agent sendet eine Runtimeantwort an IoT Hub. Im Folgenden sehen Sie eine Liste der möglichen Antworten:
+Der IoT Edge-Agent sendet eine Runtimeantwort an IoT Hub. Im Folgenden sehen Sie eine Liste der möglichen Antworten:
   * 200 – OK
   * 400 – Die Bereitstellungskonfiguration ist falsch formatiert oder ungültig.
   * 417 – Für das Gerät ist keine Bereitstellungskonfiguration festgelegt.
@@ -114,13 +114,13 @@ IoT Edge-Agent sendet eine Runtimeantwort an IoT Hub. Im Folgenden sehen Sie ein
 
 ### <a name="security"></a>Sicherheit
 
-Der IoT Edge-Agent hat eine wichtige Funktion für die Sicherheit eines IoT Edge-Geräts. Er überprüft beispielsweise das Image eines Moduls, bevor er es startet. Diese Features werden bei allgemeiner Verfügbarkeit von V2-Features hinzugefügt. 
+Der IoT Edge-Agent hat eine wichtige Funktion für die Sicherheit eines IoT Edge-Geräts. Er überprüft beispielsweise das Image eines Moduls, bevor er es startet. Diese Features werden der allgemein verfügbaren Version hinzugefügt. 
 
 <!-- For more information about the Azure IoT Edge security framework, see []. -->
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Grundlegendes zu den Azure IoT Edge-Modulen – Vorschau][Grundlegendes zu den Azure IoT Edge-Modulen – Vorschau]
+- [Grundlegendes zu den Azure IoT Edge-Modulen – Vorschau][Ink-Module]
 
 <!-- Images -->
 [1]: ./media/iot-edge-runtime/Pipeline.png
@@ -129,4 +129,4 @@ Der IoT Edge-Agent hat eine wichtige Funktion für die Sicherheit eines IoT Edge
 [4]: ./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png
 
 <!-- Links -->
-[Grundlegendes zu den Azure IoT Edge-Modulen – Vorschau]: iot-edge-modules.md
+[Ink-Module]: iot-edge-modules.md

@@ -12,23 +12,17 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/15/2018
+ms.date: 06/18/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83d97d9ed9c51d59500115c4ee3896d471024999
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 8e179e2af3ee7a19c39a2f2c688e0eb25a0c02ca
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359756"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287533"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Erstellen eines Batch-Kontos mit dem Azure-Portal
-
-> [!div class="op_single_selector"]
-> * [Azure-Portal](batch-account-create-portal.md)
-> * [Batch Management .NET](batch-management-dotnet.md)
->
->
 
 Hier erfahren Sie, wie Sie im [Azure-Portal][azure_portal] ein Azure Batch-Konto erstellen und geeignete Kontoeigenschaften für Ihr Computeszenario auswählen. Außerdem erfahren Sie, wo Sie wichtige Kontoeigenschaften wie Zugriffsschlüssel und Konto-URLs finden.
 
@@ -40,7 +34,7 @@ Hintergrundinformationen zu Batch-Konten und -Szenarien finden Sie in der [Funkt
 
 1. Melden Sie sich beim [Azure-Portal][azure_portal] an.
 
-2. Klicken Sie auf **Neu** > **Compute** > **Batch-Dienst**.
+2. Klicken Sie auf **Ressource erstellen** > **Compute** > **Batch-Dienst**.
 
     ![Batch im Marketplace][marketplace_portal]
 
@@ -62,7 +56,7 @@ Hintergrundinformationen zu Batch-Konten und -Szenarien finden Sie in der [Funkt
 
     f. **Poolzuordnungsmodus**: In den meisten Szenarien übernehmen Sie die Standardeinstellung **Batch-Dienst**.
 
-4. Klicken Sie auf **Erstellen** , um das Konto zu erstellen.
+4. Wählen Sie **Erstellen**, um das Konto zu erstellen.
 
 
 
@@ -91,7 +85,11 @@ Wenn Sie Ihr erstes Batch-Konto im Modus „Benutzerabonnement“ erstellen, mü
 
 1. Melden Sie sich beim [Azure-Portal][azure_portal] an.
 
-2. Klicken Sie auf **Weitere Dienste** > **Abonnements** und anschließend auf das Abonnement, das Sie für das Batch-Konto verwenden möchten.
+2. Klicken Sie auf **Alle Dienste** > **Abonnements** und anschließend auf das Abonnement, das Sie für das Batch-Konto verwenden möchten.
+
+3. Klicken Sie auf der Seite **Abonnement** auf **Ressourcenanbieter**, und suchen Sie nach **Microsoft.Batch**. Überprüfen Sie, ob der Ressourcenanbieter **Microsoft.Batch** im Abonnement registriert ist. Wenn er nicht registriert ist, klicken Sie auf den Link **Registrieren**.
+
+    ![Registrieren des Microsoft.Batch-Anbieters][register_provider]
 
 3. Klicken Sie auf der Seite **Abonnement** auf **Zugriffssteuerung (IAM)** > **Hinzufügen**.
 
@@ -137,4 +135,5 @@ Neben der Verwendung des Azure-Portals stehen Ihnen zum Erstellen und Verwalten 
 [storage_account]: ./media/batch-account-create-portal/storage_account.png
 [subscription_access]: ./media/batch-account-create-portal/subscription_iam.png
 [add_permission]: ./media/batch-account-create-portal/add_permission.png
+[register_provider]: ./media/batch-account-create-portal/register_provider.png
 

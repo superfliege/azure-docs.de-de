@@ -4,22 +4,22 @@ description: Erfahren Sie, was Sie beim Planen einer Azure Files-Bereitstellung 
 services: storage
 documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: jgerend
+manager: aungoo
+editor: tamram
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2017
+ms.date: 05/31/2018
 ms.author: wgries
-ms.openlocfilehash: 26e4af814bad988da02d4e0cf36f17e1beec872e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 93331dd936a6d7b30ca18743d2079900421b2620
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187741"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738478"
 ---
 # <a name="addremove-an-azure-file-sync-preview-server-endpoint"></a>Hinzufügen/Entfernen eines Serverendpunkts für Azure File Sync (Vorschau)
 Mit Azure File Sync (Vorschau) können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
@@ -44,22 +44,25 @@ Unter **Serverendpunkt hinzufügen** sind die folgenden Informationen erforderli
 
 - **Registrierter Server:** Der Name des Servers oder Clusters, auf bzw. in dem der Serverendpunkt erstellt werden soll.
 - **Pfad:** Der Pfad auf dem Windows-Server, der als Teil der Synchronisierungsgruppe synchronisiert werden soll.
-- **Cloudtiering**: Ein Schalter zum Aktivieren oder Deaktivieren von Cloudtiering, ein Feature, das das Auslagern von nur selten verwendeten oder aufgerufenen Dateien in Azure Files ermöglicht.
+- **Cloudtiering**: Ein Schalter, mit dem Cloudtiering aktiviert oder deaktiviert wird. Wenn das Cloudtiering aktiviert ist, werden Dateien in Ihren Azure-Dateifreigaben *auf mehrere Speicherebenen aufgeteilt (Tiering)*. Hierbei werden lokale Dateifreigaben in einen Cache statt in eine vollständige Kopie des Datasets konvertiert, damit Sie die Speicherplatzeffizienz auf dem Server verwalten können.
 - **Freier Speicherplatz auf Volume:** Die Menge des freien Speicherplatzes auf dem Volume, auf dem sich der Serverendpunkt befindet. Wenn z.B. für ein Volume mit einem einzigen Serverendpunkt „Freier Speicherplatz auf Volume“ auf 50 % festgelegt ist, wird ungefähr die Hälfte der Daten in Azure Files ausgelagert. Die Azure-Dateifreigabe enthält immer eine vollständige Kopie der Daten in der Synchronisierungsgruppe, unabhängig davon, ob Cloudtiering aktiviert ist.
 
 Wählen Sie **Erstellen** aus, um den Serverendpunkt hinzuzufügen. Die Dateien im Namespace einer Synchronisierungsgruppe bleiben synchron. 
 
 ## <a name="remove-a-server-endpoint"></a>Entfernen eines Serverendpunkts
-Wenn für einen Serverendpunkt das Cloudtiering aktiviert ist, werden Dateien auf Ihre Azure-Dateifreigaben *ausgelagert*. Dadurch können lokale Dateifreigaben als Cache statt als vollständige Kopie des Datasets fungieren, um den Speicherplatz auf dem Dateiserver effizient zu nutzen. **Wenn jedoch ein Serverendpunkt entfernt wird und ausgelagerte Dateien noch lokal auf dem Server vorhanden sind, kann auf diese Dateien nicht mehr zugegriffen werden.** Aus diesem Grund müssen Sie vor dem Löschen des Serverendpunkts alle ausgelagerten Dateien aus Azure Files abrufen, wenn ein Zugriff auf lokale Dateifreigaben weiterhin möglich sein soll. 
+Wenn Sie Azure File Sync für einen bestimmten Serverendpunkt nicht mehr verwenden möchten, können Sie den Serverendpunkt entfernen. 
 
-Dies kann mithilfe des folgenden PowerShell-Cmdlets durchgeführt werden:
+> [!Warning]  
+> Versuchen Sie nicht, Probleme mit der Synchronisierung, dem Cloudtiering oder anderen Aspekten von Azure File Sync zu behandeln, indem Sie den Serverendpunkt entfernen und neu erstellen, es sei denn, Sie werden ausdrücklich von einem Microsoft-Techniker dazu aufgefordert. Das Entfernen eines Serverendpunkts ist ein destruktiver Vorgang. Mehrstufige Dateien auf dem Serverendpunkt werden nicht erneut mit ihren Speicherorten in der Azure-Dateifreigabe verbunden, nachdem der Serverendpunkt neu erstellt wurde. Dies führt zu Synchronisierungsfehlern. Beachten Sie, dass mehrstufige Dateien, die sich außerhalb des Endpunktnamespaces befinden, dauerhaft verloren gehen können. Auf Ihrem Serverendpunkt sind möglicherweise auch dann mehrstufige Dateien vorhanden, wenn das Cloudtiering nie aktiviert wurde.
+
+Um sicherzustellen, dass alle mehrstufigen Dateien abgerufen werden, bevor der Serverendpunkt entfernt wird, deaktivieren Sie das Cloudtiering auf dem Serverendpunkt, und führen Sie dann das folgende PowerShell-Cmdlet aus, um alle mehrstufigen Dateien innerhalb des Namespaces des Serverendpunkts abzurufen:
 
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```
 
-> [!Warning]  
+> [!Note]  
 > Wenn das lokale Volume, das den Server hostet, nicht genügend freien Speicherplatz aufweist, um alle ausgelagerten Daten abzurufen, schlägt das Cmdlet `Invoke-StorageSyncFileRecall` fehl.  
 
 So entfernen Sie den Serverendpunkt

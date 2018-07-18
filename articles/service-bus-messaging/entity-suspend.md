@@ -1,11 +1,11 @@
 ---
-title: "Anhalten von Azure Service Bus-Messagingentitäten | Microsoft-Dokumentation"
-description: "Anhalten und Reaktivieren von Azure Service Bus-Messagingentitäten"
+title: Anhalten von Azure Service Bus-Messagingentitäten | Microsoft-Dokumentation
+description: Anhalten und Reaktivieren von Azure Service Bus-Messagingentitäten
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28197025"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Anhalten und Reaktivieren von Messagingentitäten (deaktiviert)
 

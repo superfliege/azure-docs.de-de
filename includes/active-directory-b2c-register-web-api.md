@@ -4,7 +4,7 @@ Verwenden Sie zum Registrieren Ihrer Web-API die in der Tabelle angegebenen Eins
 
 ![Beispielregistrierungseinstellungen für die neue Web-API](./media/active-directory-b2c-register-web-api/b2c-new-web-api-settings.png)
 
-| Einstellung      | Beispielwert  | Beschreibung                                        |
+| Einstellung      | Beispielwert  | BESCHREIBUNG                                        |
 | ------------ | ------- | -------------------------------------------------- |
 | **Name** | Contoso B2C-API | Geben Sie für die Anwendung einen **Namen** ein, der Ihre API für Kunden beschreibt. | 
 | **Web-App/Web-API einschließen** | Ja | Wählen Sie für eine Web-API die Option **Ja** aus. |

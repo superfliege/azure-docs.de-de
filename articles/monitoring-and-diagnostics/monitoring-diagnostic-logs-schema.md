@@ -1,58 +1,79 @@
 ---
-title: Azure-Diagnoseprotokolle – unterstützte Dienste, Schemas und Kategorien | Microsoft-Dokumentation
+title: 'Azure-Diagnoseprotokolle: Unterstützte Dienste und Schemas'
 description: Erläuterung der unterstützten Dienste und Ereignisschemas für Azure-Diagnose-Protokolle.
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: fe8887df-b0e6-46f8-b2c0-11994d28e44f
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 4/12/2018
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: reference
+ms.date: 7/06/2018
 ms.author: johnkem
-ms.openlocfilehash: 91c3f1507bb4fb64d5395917e8e431951f77e72b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.component: logs
+ms.openlocfilehash: f4bf77f07bd8f6b8172798ec3faf8c0bdaf3d3f5
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921228"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle
 
-[Azure-Ressourcendiagnoseprotokolle](monitoring-overview-of-diagnostic-logs.md) sind von Ihren Azure-Ressourcen ausgegebene Protokolle, die den Betrieb der jeweiligen Ressource beschreiben. Diese Protokolle sind ressourcentypspezifisch. In diesem Artikel beschreiben wir den Satz von unterstützten Diensten und Ereignisschemas für Ereignisse, der vom jeweiligen Dienst ausgegeben wird. Dieser Artikel enthält auch eine vollständige Liste der pro Ressourcentyp verfügbaren Protokollkategorien.
+[Azure-Ressourcendiagnoseprotokolle](monitoring-overview-of-diagnostic-logs.md) sind von Ihren Azure-Ressourcen ausgegebene Protokolle, die den Betrieb der jeweiligen Ressource beschreiben. Für alle Diagnoseprotokolle, die über Azure Monitor verfügbar sind, wird ein Schema der obersten Ebene gemeinsam genutzt. Auf diese Weise kann jeder Dienst für seine eigenen Ereignisse flexibel eindeutige Eigenschaften ausgeben.
 
-## <a name="supported-services-and-schemas-for-resource-diagnostic-logs"></a>Unterstützte Dienste und Schemas für Ressourcendiagnoseprotokolle
-Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Ressource und der Protokollkategorie.   
+Ein Schema wird mit einer Kombination aus dem Ressourcentyp (in der `resourceId`-Eigenschaft verfügbar) und dem `category`-Element eindeutig identifiziert. In diesem Artikel wird das Schema der obersten Ebene für Diagnoseprotokolle beschrieben, und es sind Links zu den Schemas für jeden Dienst vorhanden.
+
+## <a name="top-level-diagnostic-logs-schema"></a>Schema der obersten Ebene für Diagnoseprotokolle
+
+| NAME | Erforderlich/Optional | BESCHREIBUNG |
+|---|---|---|
+| time | Erforderlich | Der Zeitstempel (UTC) des Ereignisses. |
+| Ressourcen-ID | Erforderlich | Die Ressourcen-ID der Ressource, die das Ereignis ausgegeben hat. |
+| operationName | Erforderlich | Der Name des Vorgangs, für den dieses Ereignis steht. Wenn das Ereignis für einen RBAC-Vorgang steht, ist dies der RBAC-Vorgangsname (z.B. Microsoft.Storage/storageAccounts/blobServices/blobs/Read). Ist normalerweise in Form eines Resource Manager-Vorgangs modelliert, auch wenn es sich nicht tatsächlich um dokumentierte Resource Manager-Vorgänge handelt (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`). |
+| operationVersion | Optional | Die API-Version, die dem Vorgang zugeordnet ist, wenn für „operationName“ eine API verwendet wurde (z.B. http://myservice.windowsazure.net/object?api-version=2016-06-01). Wenn keine API für diesen Vorgang vorhanden ist, entspricht die Version der Version dieses Vorgangs für den Fall, dass sich die dem Vorgang zugeordneten Eigenschaften in Zukunft ändern. |
+| category | Erforderlich | Die Protokollkategorie des Ereignisses. „category“ ist die Granularität, mit der Sie Protokolle für eine bestimmte Ressource aktivieren oder deaktivieren können. Die Eigenschaften, die im Eigenschaftenblob eines Ereignisses angezeigt werden, sind für eine bestimmte Protokollkategorie und einen Ressourcentyp gleich. Häufige Protokollkategorien sind „Audit“, „Operational“, „Execution“ und „Request“ (Überwachung, Betrieb, Ausführung, Anforderung). |
+| resultType | Optional | Der Status des Ereignisses. Häufige Werte sind „Started“, „In Progress“, „Succeeded“, „Failed“, „Active“ und „Resolved“ (Gestartet, In Bearbeitung, Erfolgreich, Fehler, Aktiv, Gelöst). |
+| resultSignature | Optional | Der Unterstatus des Ereignisses. Wenn dieser Vorgang einem REST-API-Aufruf entspricht, ist dies der HTTP-Statuscode des entsprechenden REST-Aufrufs. |
+| resultDescription | Optional | Die statische Textbeschreibung dieses Vorgangs, z.B. „Get storage file“ (Speicherdatei abrufen). |
+| durationMs | Optional | Die Dauer des Vorgangs in Millisekunden. |
+| callerIpAddress | Optional | Die IP-Adresse des Aufrufers, wenn der Vorgang einem API-Aufruf entspricht, der von einer Entität mit einer öffentlich verfügbaren IP-Adresse stammt. |
+| correlationId | Optional | Eine GUID, die zum Gruppieren eines Satzes mit verwandten Ereignissen verwendet wird. Wenn zwei Ereignisse über den gleichen „operationName“ verfügen, aber über einen unterschiedlichen Status (z.B. „Started“ (Gestartet) und „Succeeded“ (Erfolgreich)), weisen sie die gleiche Korrelations-ID auf. Hiermit können auch andere Beziehungen zwischen Ereignissen dargestellt werden. |
+| identity | Optional | Ein JSON-Blob zum Beschreiben der Identität des Benutzers oder der Anwendung, der bzw. die den Vorgang durchgeführt hat. Normalerweise sind hierin auch die Autorisierung und die Ansprüche bzw. das JWT-Token aus Active Directory enthalten. |
+| Ebene | Optional | Der Schweregrad des Ereignisses. Er kann „Informational“ (Information), „Warning“ (Warnung), „Error“ (Fehler) oder „Critical“ (Kritisch) lauten. |
+| location | Optional | Die Region der Ressource, die das Ereignis ausgibt, z.B. „USA, Osten“ oder „Frankreich, Süden“. |
+| Eigenschaften | Optional | Alle erweiterten Eigenschaften, die sich auf die jeweilige Kategorie der Ereignisse beziehen. Alle benutzerdefinierten bzw. eindeutigen Eigenschaften müssen in diesem „Teil B“ des Schemas angeordnet werden. |
+
+## <a name="service-specific-schemas-for-resource-diagnostic-logs"></a>Dienstspezifische Schemas für Ressourcendiagnoseprotokolle
+Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Ressource und der Protokollkategorie. In dieser Liste sind alle Dienste aufgeführt, über die Diagnoseprotokolle und Links zum Dienst und zum kategoriespezifischen Schema (falls zutreffend) verfügbar gemacht werden.
 
 | Dienst | Schema und Dokumente |
 | --- | --- |
-| Analysis Services | Schema nicht verfügbar. |
+| Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
 | API Management | [API Management-Diagnoseprotokolle](../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | Anwendungsgateways |[Diagnoseprotokollierung für Application Gateway](../application-gateway/application-gateway-diagnostics.md) |
 | Azure-Automatisierung |[Protokollanalysen für Azure Automation](../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Diagnoseprotokolle für Azure Batch](../batch/batch-diagnostics.md) |
-| Customer Insights | Schema nicht verfügbar. |
-| Content Delivery Network | Schema nicht verfügbar. |
+| Content Delivery Network | [Azure-Diagnoseprotokolle für CDN](../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Azure Cosmos DB-Protokollierung](../cosmos-db/logging.md) |
+| Data Factory | [Überwachen von Data Factorys mit Azure Monitor](../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Zugreifen auf Diagnoseprotokolle für Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
-| Data Lake-Speicher |[Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store](../data-lake-store/data-lake-store-diagnostic-logs.md) |
+| Data Lake Store |[Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store](../data-lake-store/data-lake-store-diagnostic-logs.md) |
+| Datenbank für PostgreSQL |  Schema nicht verfügbar. |
 | Event Hubs |[Azure Event Hubs-Diagnoseprotokolle](../event-hubs/event-hubs-diagnostic-logs.md) |
+| ExpressRoute | Schema nicht verfügbar. |
 | IoT Hub | [IoT Hub-Vorgänge](../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
-| Schlüsseltresor |[Azure-Schlüsseltresor-Protokollierung](../key-vault/key-vault-logging.md) |
-| Lastenausgleichsmodul |[Protokollanalysen für den Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md) |
+| Key Vault |[Azure-Schlüsseltresor-Protokollierung](../key-vault/key-vault-logging.md) |
+| Load Balancer |[Protokollanalysen für den Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Benutzerdefiniertes Logic Apps-B2B-Nachverfolgungsschema](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Netzwerksicherheitsgruppen |[Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](../virtual-network/virtual-network-nsg-manage-log.md) |
-| DDoS-Schutz | Schema nicht verfügbar. |
+| DDoS-Schutz | [Verwalten von Azure DDoS Protection Standard](../virtual-network/manage-ddos-protection.md) |
+| PowerBI dediziert | Schema nicht verfügbar. |
 | Recovery Services | [Datenmodell für Azure Backup](../backup/backup-azure-reports-data-model.md)|
 | Suchen, |[Aktivieren und Verwenden von „Datenverkehrsanalyse durchsuchen“](../search/search-traffic-analytics.md) |
-| Server Management | Schema nicht verfügbar. |
-| SERVICE BUS |[Azure Service Bus Diagnoseprotokolle](../service-bus-messaging/service-bus-diagnostic-logs.md) |
+| Service Bus |[Azure Service Bus Diagnoseprotokolle](../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL-Datenbank | [Azure SQL-Datenbank-Diagnoseprotokollierung](../sql-database/sql-database-metrics-diag-logging.md) |
 | Stream Analytics |[Auftragsdiagnoseprotokolle](../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
+| Traffic Manager | Schema nicht verfügbar. |
 | Virtuelle Netzwerke | Schema nicht verfügbar. |
+| Gateways für virtuelle Netzwerke | Schema nicht verfügbar. |
 
 ## <a name="supported-log-categories-per-resource-type"></a>Unterstützte Protokollkategorien pro Ressourcentyp
 |Ressourcentyp|Category (Kategorie)|Anzeigename der Kategorie|
@@ -74,6 +95,7 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.DataLakeStore/accounts|Audit|Überwachungsprotokolle|
 |Microsoft.DataLakeStore/accounts|Requests|Anforderungsprotokolle|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|PostgreSQL-Serverprotokolle|
+|Microsoft.DBforPostgreSQL/servers|PostgreSQLBackupEvents|PostgreSQL-Sicherungsereignisse|
 |Microsoft.Devices/IotHubs|Verbindungen|Verbindungen|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|Gerätetelemetrie|
 |Microsoft.Devices/IotHubs|C2DCommands|C2D-Befehle|
@@ -90,6 +112,7 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.Devices/provisioningServices|ServiceOperations|Dienstoperationen|
 |Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
 |Microsoft.DocumentDB/databaseAccounts|MongoRequests|MongoRequests|
+|Microsoft.DocumentDB/databaseAccounts|QueryRuntimeStatistics|QueryRuntimeStatistics|
 |Microsoft.EventHub/namespaces|ArchiveLogs|Archivprotokolle|
 |Microsoft.EventHub/namespaces|OperationalLogs|Betriebsprotokolle|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|Protokolle zur automatischen Skalierung|
@@ -112,6 +135,7 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.Network/virtualNetworkGateways|P2SDiagnosticLog|P2S-Diagnoseprotokolle|
 |Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|Traffic Manager-Testintegritätsergebnisse (Ereignis)|
 |Microsoft.Network/expressRouteCircuits|GWMCountersTable|Tabelle der GWM-Leistungsindikatoren|
+|Microsoft.PowerBIDedicated/capacities|Motor|Motor|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Azure Backup-Berichtsdaten|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure Site Recovery-Aufträge|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryEvents|Azure Site Recovery-Ereignisse|

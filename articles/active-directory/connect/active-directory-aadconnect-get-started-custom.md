@@ -12,13 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/02/2018
+ms.date: 06/07/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d7d1beff419ed2bf4c58f0646cd6c8aacf8e5e7b
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: d58418b45192a6c1e31b4c3c918a27fe253d8c34
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38473985"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Benutzerdefinierte Installation von Azure AD Connect
 Die **benutzerdefinierten Einstellungen** von Azure AD Connect werden verwendet, wenn Sie mehr Optionen für die Installation benötigen. Sie kommen zum Einsatz, wenn Sie über mehrere Gesamtstrukturen verfügen oder optionale Features konfigurieren möchten, die nicht Teil der Expressinstallation sind. Sie werden in allen Fällen verwendet, in denen die Option [**Expressinstallation**](active-directory-aadconnect-get-started-express.md) für Ihre Bereitstellung oder Topologie nicht ausreicht.
@@ -65,7 +67,7 @@ Dieses Konto dient ausschließlich der Erstellung eines Dienstkontos in Azure AD
 Wenn MFA für Ihr globales Administratorkonto aktiviert ist, müssen Sie das Kennwort im Anmelde-Popupfenster erneut eingeben und die MFA-Abfrage ausfüllen. Bei der Abfrage kann es sich etwa um die Eingabe eines Überprüfungscodes oder um einen Anruf handeln.  
 ![Benutzeranmeldung mit MFA](./media/active-directory-aadconnect-get-started-custom/connectaadmfa.png)
 
-Für das globale Administratorkonto kann auch [Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md) aktiviert sein.
+Für das globale Administratorkonto kann auch [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) aktiviert sein.
 
 Falls ein Fehler auftritt und Sie Probleme mit der Konnektivität haben, können Sie unter [Problembehebung bei Konnektivitätsproblemen](active-directory-aadconnect-troubleshoot-connectivity.md) nach einer Lösung suchen.
 
@@ -214,12 +216,11 @@ Auf einem Computer mit den Gruppenrichtlinien-Verwaltungstools:
 1.  Öffnen Sie die Gruppenrichtlinien-Verwaltungstools.
 2.  Bearbeiten Sie die Gruppenrichtlinie, die auf alle Benutzer angewendet wird. Beispiel: Standardrichtlinie der Domäne.
 3.  Navigieren Sie zu **Benutzerkonfiguration\Administrative Vorlagen\Windows-Komponenten\Internet Explorer\Internetsystemsteuerung\Sicherheitsseite**, und wählen Sie wie in der folgenden Abbildung dargestellt die Option **Liste der Site zu Zonenzuweisungen**.
-4.  Aktivieren Sie die Richtlinie, und geben Sie die folgenden beiden Elemente in das Dialogfeld ein.
+4.  Aktivieren Sie die Richtlinie, und geben Sie Folgendes in das Dialogfeld ein:
 
         Value: `https://autologon.microsoftazuread-sso.com`  
         Data: 1  
-        Value: `https://aadg.windows.net.nsatc.net`  
-        Data: 1
+    
 
 5.  Es sollte in etwa wie folgt aussehen:  
 ![Intranetzonen](./media/active-directory-aadconnect-get-started-custom/sitezone.png)
@@ -227,7 +228,7 @@ Auf einem Computer mit den Gruppenrichtlinien-Verwaltungstools:
 6.  Klicken Sie zweimal auf **OK**.
 
 ## <a name="configuring-federation-with-ad-fs"></a>Konfigurieren des Verbunds mit AD FS
-Das Konfigurieren von AD FS mit Azure AD Connect ist mit nur wenigen Mausklicks erledigt. Für die Konfiguration wird Folgendes benötigt:
+Das Konfigurieren von AD FS mit Azure AD Connect ist ganz einfach und mit wenigen Mausklicks erledigt. Für die Konfiguration wird Folgendes benötigt:
 
 * Ein Server unter Windows Server 2012 R2 (oder höher) für den Verbundserver mit aktivierter Remoteverwaltung
 * Ein Server unter Windows Server 2012 R2 (oder höher) für den Webanwendungsproxy-Server mit aktivierter Remoteverwaltung
@@ -303,7 +304,7 @@ Wenn Sie die Domäne in einem Verbund verwenden möchten, stellt Azure AD Connec
 >
 
 ## <a name="configuring-federation-with-pingfederate"></a>Konfigurieren des Verbunds mit PingFederate
-Das Konfigurieren von PingFederate mit Azure AD Connect ist mit nur wenigen Mausklicks erledigt. Für die Konfiguration wird Folgendes benötigt:  Jedoch sind die folgenden Komponenten erforderlich:
+Das Konfigurieren von PingFederate mit Azure AD Connect ist ganz einfach und mit wenigen Mausklicks erledigt. Allerdings ist Folgendes erforderlich:
 - PingFederate 8.4 oder höher.  Weitere Informationen finden Sie unter [PingFederate Integration with Azure Active Directory and Office 365](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html) (PingFederate-Integration in Azure Active Directory und Office 365)
 - Ein SSL-Zertifikat für den Verbunddienstnamen, den Sie verwenden möchten (z.B. „sts.contoso.com“)
 

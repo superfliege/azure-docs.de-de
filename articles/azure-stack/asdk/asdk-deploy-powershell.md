@@ -1,6 +1,6 @@
 ---
 title: Bereitstellen von Azure Stack – PowerShell | Microsoft-Dokumentation
-description: In diesem Tutorial installieren Sie das ASDK über die Befehlszeile.
+description: In diesem Artikel installieren Sie das ASDK mithilfe von PowerShell über die Befehlszeile.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -11,29 +11,20 @@ ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
-ms.custom: mvc
-ms.date: 03/16/2018
+ms.topic: article
+ms.custom: ''
+ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 48ccccaba6b7f5780f1d42dfbe5d9747c5e30292
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f0d7daa479f6e6ea345e010962488c1ecad5b7e2
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849956"
 ---
-# <a name="tutorial-deploy-the-asdk-from-the-command-line"></a>Tutorial: Bereitstellen des ASDKs über die Befehlszeile
-In diesem Tutorial stellen Sie das Azure Stack Development Kit (ASDK) über die Befehlszeile in einer produktionsfremden Umgebung bereit. 
-
+# <a name="deploy-the-asdk-from-the-command-line"></a>Bereitstellen des ASDK über die Befehlszeile
 Das ASDK ist eine Test- und Entwicklungsumgebung, die sie zum Evaluieren und Demonstrieren von Azure Stack-Funktionen und -Diensten bereitstellen können. Zur Einrichtung der Umgebung müssen Sie die Umgebungshardware vorbereiten und einige Skripts ausführen. (Dies nimmt mehrere Stunden in Anspruch.) Anschließend können Sie sich beim Administrator- und Benutzerportal anmelden und Azure Stack verwenden.
-
-In diesem Tutorial lernen Sie Folgendes:
-
-> [!div class="checklist"]
-> * Herunterladen und Extrahieren des Bereitstellungspakets
-> * Vorbereiten des Development Kit-Hostcomputers 
-> * Durchführen der Konfigurationsschritte nach der Bereitstellung
-> * Registrieren bei Azure
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 Bereiten Sie den Development Kit-Hostcomputer vor. Planen Sie die Hardware, die Software und das Netzwerk. Der Computer, der das Development Kit hostet (der Development Kit-Host) muss die Hardware-, Software- und Netzwerkanforderungen erfüllen. Sie müssen auch zwischen Azure Active Directory (Azure AD) und Active Directory-Verbunddienste (AD FS) wählen. Achten Sie darauf, diese Voraussetzungen vor dem Beginn der Bereitstellung zu erfüllen, damit der Installationsvorgang reibungslos ausgeführt wird. 
@@ -176,16 +167,5 @@ Sie müssen Azure Stack bei Azure registrieren, um [Azure Marketplace-Elemente i
 ## <a name="next-steps"></a>Nächste Schritte
 Glückwunsch! Nach Abschluss dieser Schritte verfügen Sie über eine Development Kit-Umgebung mit [Administratorportal](https://adminportal.local.azurestack.external) und [Benutzerportal](https://portal.local.azurestack.external). 
 
-In diesem Tutorial haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Herunterladen und Extrahieren des Bereitstellungspakets
-> * Vorbereiten des Development Kit-Hostcomputers 
-> * Durchführen der Konfigurationsschritte nach der Bereitstellung
-> * Registrieren bei Azure
-
-Im nächsten Tutorial erfahren Sie, wie Sie ein Azure Stack-Marketplace-Element hinzufügen.
-
-> [!div class="nextstepaction"]
-> [Hinzufügen eines Azure Stack-Marketplace-Elements](asdk-marketplace-item.md)
+[Konfigurationsaufgaben nach der Installation des ASDK](asdk-post-deploy.md)
 

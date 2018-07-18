@@ -1,26 +1,23 @@
 ---
 title: Gerätesimulation in der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
 description: In diesem Tutorial wird erläutert, wie Sie den Gerätesimulator mit dem Solution Accelerator für Remoteüberwachung verwenden.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 01/15/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: c10d983ea6b864d21f4589a3cbfdd5def39ac753
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: d8a528265acc3e0bee24da6c1b6130082815b9fd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628258"
 ---
 # <a name="create-a-new-simulated-device"></a>Erstellen eines neuen simulierten Geräts
 
-In diesem Tutorial wird erläutert, wie Sie den Microservice zur Gerätesimulation mit dem Solution Accelerator für Remoteüberwachung anpassen. Zur Veranschaulichung der Funktionen des Gerätesimulators werden in diesem Tutorial zwei Szenarien in der Contoso IoT-Anwendung verwendet.
+In diesem Tutorial wird erläutert, wie Sie den Microservice zur Gerätesimulation mit dem Solution Accelerator für die Remoteüberwachung anpassen. Zur Veranschaulichung der Funktionen des Gerätesimulators werden in diesem Tutorial zwei Szenarien in der Contoso IoT-Anwendung verwendet.
 
 Das folgende Video gibt einen Überblick über die Optionen zum Anpassen des Microservices zur Gerätesimulation:
 
@@ -72,7 +69,7 @@ In der folgenden Tabelle ist der Anfangszustand des Geräts aufgeführt:
 
 Im zweiten Szenario fügen Sie dem vorhandenen **Chiller**-Gerät von Contoso einen neuen Telemetrietyp hinzu.
 
-In diesem Tutorial wird erläutert, wie Sie den Gerätesimulator mit dem Solution Accelerator für Remoteüberwachung verwenden:
+In diesem Tutorial wird erläutert, wie Sie den Gerätesimulator mit dem Solution Accelerator für die Remoteüberwachung verwenden:
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -82,7 +79,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Hinzufügen eines neuen Gerätetyps im Dashboard
 > * Senden benutzerdefinierter Telemetriedaten von einem vorhandenen Gerätetyp
 
-Im folgenden Video wird eine exemplarische Vorgehensweise zum Verbinden von simulierten und physischen Geräten mit der Remoteüberwachungslösung gezeigt:
+Im folgenden Video wird eine exemplarische Vorgehensweise zum Verbinden von simulierten und physischen Geräten mit der Lösung für die Remoteüberwachung gezeigt:
 
 >[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Part-38-Customizing-Azure-IoT-Suite-solution-and-connect-a-real-device/Player]
 
@@ -90,7 +87,7 @@ Im folgenden Video wird eine exemplarische Vorgehensweise zum Verbinden von simu
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Eine bereitgestellte Instanz der Lösung für die Remoteüberwachung in Ihrem Azure-Abonnement. Sollten Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, absolvieren Sie zuerst das Tutorial [Bereitstellen des Solution Accelerators für die Remoteüberwachung](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md).
+* Eine bereitgestellte Instanz der Lösung für die Remoteüberwachung in Ihrem Azure-Abonnement. Falls Sie die Lösung für die Remoteüberwachung noch nicht bereitgestellt haben, sollten Sie zuerst das Tutorial [Bereitstellen des Solution Accelerators für die Remoteüberwachung](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md) durcharbeiten.
 
 * Visual Studio 2017 Falls Sie Visual Studio 2017 nicht installiert haben, können Sie die kostenlose [Visual Studio Community](https://www.visualstudio.com/free-developer-offers/) Edition herunterladen.
 
@@ -102,21 +99,21 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 ## <a name="prepare-your-development-environment"></a>Vorbereiten Ihrer Entwicklungsumgebung
 
-Führen Sie die folgenden Aufgaben durch, um Ihre Entwicklungsumgebung für das Hinzufügen eines neuen simulierten Geräts zu Ihrer Lösung für die Remoteüberwachung vorzubereiten:
+Führen Sie die folgenden Aufgaben aus, um Ihre Entwicklungsumgebung für das Hinzufügen eines neuen simulierten Geräts zu Ihrer Lösung für die Remoteüberwachung vorzubereiten:
 
 ### <a name="configure-ssh-access-to-the-solution-virtual-machine-in-azure"></a>Konfigurieren von SSH-Zugriff auf den virtuellen Computer der Lösung in Azure
 
-Wählen Sie beim Erstellen Ihrer Lösung für die Remoteüberwachung unter [www.azureiotsuite.com](https://www.azureiotsuite.com) einen Lösungsnamen. Der Lösungsname dient als Name für die Azure-Ressourcengruppe, die die verschiedenen von der Lösung verwendeten bereitgestellten Ressourcen enthält. Die folgenden Befehle verwenden eine Ressourcengruppe mit dem Namen **Contoso-01**. Ersetzen Sie **Contoso-01** durch den Namen Ihrer Ressourcengruppe.
+Beim Erstellen Ihrer Lösung für die Remoteüberwachung unter [www.azureiotsolutions.com](https://www.azureiotsolutions.com) haben Sie einen Lösungsnamen ausgewählt. Der Lösungsname dient als Name für die Azure-Ressourcengruppe, die die verschiedenen von der Lösung verwendeten bereitgestellten Ressourcen enthält. Die folgenden Befehle verwenden eine Ressourcengruppe mit dem Namen **Contoso-01**. Ersetzen Sie **Contoso-01** durch den Namen Ihrer Ressourcengruppe.
 
 Die folgenden Befehle verwenden den Befehl `az` von der [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest). Sie können die Azure CLI 2.0 auf Ihrem Entwicklungscomputer installieren oder [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) im [Azure-Portal](http://portal.azure.com) verwenden. Die Azure CLI 2.0 ist in Cloud Shell vorinstalliert.
 
-1. Um den Namen der Ressourcengruppe zu überprüfen, die Remoteüberwachungsressourcen enthält, führen Sie den folgenden Befehl aus:
+1. Um den Namen der Ressourcengruppe zu überprüfen, die Ihre Remoteüberwachungsressourcen enthält, führen Sie den folgenden Befehl aus:
 
     ```sh
     az group list | grep "name"
     ```
 
-    Dieser Befehl listet alle Ressourcengruppen in Ihrem Abonnement auf. Diese Liste sollte eine Ressourcengruppe mit dem gleichen Namen wie Ihre Lösung für die Remoteüberwachung enthalten.
+    Dieser Befehl listet alle Ressourcengruppen in Ihrem Abonnement auf. Die Liste sollte eine Ressourcengruppe mit dem gleichen Namen wie Ihre Lösung für die Remoteüberwachung enthalten.
 
 1. Um die Ressource als Standardgruppe für nachfolgende Befehle festzulegen, führen Sie den folgenden Befehl anstelle von **Contoso-01** mit dem Ressourcengruppennamen aus:
 
@@ -220,7 +217,7 @@ In diesem Tutorial arbeiten Sie mit den Visual Studio-Projekten **device-simulat
     git clone https://github.com/Azure/device-simulation-dotnet.git
     ```
 
-    Mit dem Gerätesimulationsdienst in der Lösung für die Remoteüberwachung können Sie Änderungen an den integrierten simulierten Gerätetypen vornehmen und neue simulierte Gerätetypen erstellen. Mithilfe der benutzerdefinierten Gerätetypen können Sie das Verhalten der Remoteüberwachungslösung testen, bevor Sie Ihre physischen Geräte verbinden.
+    Mit dem Gerätesimulationsdienst in der Lösung für die Remoteüberwachung können Sie Änderungen an den integrierten simulierten Gerätetypen vornehmen und neue simulierte Gerätetypen erstellen. Mithilfe der benutzerdefinierten Gerätetypen können Sie das Verhalten der Lösung für die Remoteüberwachung testen, bevor Sie Ihre physischen Geräte verbinden.
 
 1. Um die .NET-Version des Repositorys **storage-adapter** zu klonen, führen Sie den folgenden Befehl aus:
 
@@ -228,7 +225,7 @@ In diesem Tutorial arbeiten Sie mit den Visual Studio-Projekten **device-simulat
     git clone https://github.com/Azure/pcs-storage-adapter-dotnet.git
     ```
 
-    Der Gerätesimulationsdienst stellt mithilfe des Speicheradapterdiensts eine Verbindung mit dem Cosmos DB-Dienst in Azure her. Die Remoteüberwachungslösung speichert die Konfigurationsdaten simulierter Geräte in einer Cosmos DB-Datenbank.
+    Der Gerätesimulationsdienst stellt mithilfe des Speicheradapterdiensts eine Verbindung mit dem Cosmos DB-Dienst in Azure her. Die Lösung für die Remoteüberwachung speichert die Konfigurationsdaten simulierter Geräte in einer Cosmos DB-Datenbank.
 
 ### <a name="run-the-storage-adapter-service-locally"></a>Lokales Ausführen des Speicheradapterdiensts
 
@@ -246,7 +243,7 @@ Der Gerätesimulationsdienst stellt mithilfe des Speicheradapterdiensts eine Ver
 
 1. Belassen Sie den Speicheradapterdienst in der lokalen Ausführung, bis Sie das Tutorial abgeschlossen haben.
 
-Jetzt ist alles eingerichtet und Sie können mit dem Hinzufügen eines neuen Typs eines simulierten Geräts zu Ihrer Remoteüberwachungslösung beginnen.
+Jetzt ist alles eingerichtet, und Sie können Ihrer Lösung für die Remoteüberwachung einen neuen simulierten Gerätetyp hinzufügen.
 
 ## <a name="create-a-simulated-device-type"></a>Erstellen eines simulierten Gerätetyps
 
@@ -478,7 +475,7 @@ Sie können nun Ihren neuen simulierten Leuchtmitteltyp testen, indem Sie das Pr
 
 1. Um zu überprüfen, ob die beiden simulierten Geräte mit IoT Hub verbunden sind, rufen Sie das Azure-Portal in Ihrem Browser auf.
 
-1. Navigieren Sie zu IoT Hub in der Ressourcengruppe, die Ihre Lösung für die Remoteüberwachung verwendet.
+1. Navigieren Sie zu Ihrem IoT Hub in der Ressourcengruppe, die Ihre Lösung für die Remoteüberwachung enthält.
 
 1. Wählen Sie im Abschnitt **Überwachung** die Option **Metriken** aus. Überprüfen Sie dann, ob die Anzahl unter **Verbundene Geräte** zwei lautet:
 
@@ -582,7 +579,7 @@ Bei den folgenden Schritten wird davon ausgegangen, dass Sie über ein Repositor
     docker logs {container ID}
     ```
 
-Sie haben jetzt die Schritte zum Bereitstellen einer aktualisierten Version des Gerätesimulationsdiensts für die Lösung zur Remoteüberwachung durchgeführt.
+Sie haben jetzt die Schritte zum Bereitstellen einer aktualisierten Version des Gerätesimulationsdiensts für Ihre Lösung für die Remoteüberwachung ausgeführt.
 
 Navigieren Sie in Ihrem Browser zu dem **Dashboard** Ihrer Lösung für die Remoteüberwachung. Wählen Sie im Telemetriebereich auf dem **Dashboard** die Option **Temperatur** aus. Die Temperatur Ihrer zwei simulierten Geräte wird im Diagramm angezeigt:
 
@@ -678,7 +675,7 @@ Mit den folgenden Schritten wird veranschaulicht, wie Sie dem **Chiller**-Gerät
 
 Zum Testen des aktualisierten **Chiller**-Gerätetyps führen Sie zunächst eine lokale Kopie des Diensts **device-simulation** aus, um zu prüfen, ob sich Ihr Gerätetyp wie erwartet verhält. Nachdem Sie den aktualisierten Gerätetyp lokal getestet und gedebuggt haben, können Sie den Container neu erstellen und den Dienst **device-simulation** in Azure erneut bereitstellen.
 
-Wenn Sie den Dienst **device-simulation** lokal ausführen, sendet er Telemetriedaten an die Remoteüberwachungslösung. Auf der Seite **Devices** (Geräte) können Sie Instanzen des aktualisierten Gerätetyps bereitstellen.
+Wenn Sie den Dienst **device-simulation** lokal ausführen, sendet er Telemetriedaten an Ihre Lösung für die Remoteüberwachung. Auf der Seite **Devices** (Geräte) können Sie Instanzen des aktualisierten Gerätetyps bereitstellen.
 
 Um Ihre Änderungen lokal zu testen und zu debuggen, lesen Sie den vorherigen Abschnitt [Lokales Testen des Leuchtmittel-Gerätetyps](#test-the-lightbulb-device-type-locally).
 
@@ -701,9 +698,9 @@ In diesem Tutorial wurde Folgendes veranschaulicht:
 > * Hinzufügen eines neuen Gerätetyps im Dashboard
 > * Senden benutzerdefinierter Telemetriedaten von einem vorhandenen Gerätetyp
 
-Nun haben Sie erfahren, wie der Gerätesimulationsdienst angepasst wird. Als Nächstes wird empfohlen, sich mit dem [Verbinden eines physischen Geräts mit der Remoteüberwachungslösung](iot-accelerators-connecting-devices-node.md) auseinanderzusetzen.
+Nun haben Sie erfahren, wie der Gerätesimulationsdienst angepasst wird. Im nächsten empfohlenen Schritt erfahren Sie, wie Sie [ein physisches Gerät mit Ihrer Lösung für die Remoteüberwachung verbinden](iot-accelerators-connecting-devices-node.md).
 
-Weitere Informationen für Entwickler zur Remoteüberwachungslösung finden Sie in folgenden Quellen:
+Weitere Entwicklerinformationen zur Remoteüberwachungslösung finden Sie hier:
 
 * [Referenzhandbuch für Entwickler](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Handbuch zur Problembehandlung für Entwickler](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)

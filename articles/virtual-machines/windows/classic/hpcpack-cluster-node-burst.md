@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30915106"
 ---
 # <a name="add-on-demand-burst-nodes-to-an-hpc-pack-cluster-in-azure"></a>Hinzufügen von bedarfsgesteuerten „Burstknoten“ zu einem HPC Pack-Cluster in Azure
 Wenn Sie einen [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029)-Cluster in Azure einrichten, benötigen Sie wahrscheinlich eine Möglichkeit, die Clusterkapazität schnell hoch- oder herunterzuskalieren, ohne einen Satz vorkonfigurierter Computeknoten-VMs vorhalten zu müssen. In diesem Artikel wird erläutert, wie Sie bedarfsgesteuerte Burstknoten (Workerrolleninstanzen, die in einem Clouddienst ausgeführt werden) als Computeressourcen zu einem Hauptknoten in Azure hinzufügen. 

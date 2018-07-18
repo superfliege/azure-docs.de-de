@@ -6,6 +6,7 @@
       href: service-bus-messaging-overview.md
     - name: Vergleich von Messagingdiensten
       href: ../event-grid/compare-messaging-services.md
+      maintainContext: true
 - name: Schnellstarts
   items:
     - name: Nachrichten senden – PowerShell
@@ -125,6 +126,10 @@
               href: service-bus-amqp-request-response.md
         - name: Erweiterte Funktionen
           items:
+            - name: IP-Verbindungsfilter
+              href: service-bus-ip-filtering.md
+            - name: Virtual Network-Dienstendpunkte
+              href: service-bus-service-endpoints.md
             - name: Warteschlangen für unzustellbare Nachrichten
               href: service-bus-dead-letter-queues.md
             - name: Vorabrufen von Nachrichten

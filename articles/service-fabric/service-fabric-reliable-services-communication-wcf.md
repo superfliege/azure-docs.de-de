@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/07/2017
 ms.author: bharatn
-ms.openlocfilehash: f5ca579b446e5d3608d53cea73fa9392cd00db06
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4c45bc76c176ce9f2476f6a666afda1daf4cd9c5
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36749928"
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>WCF-basierter Kommunikationsstapel für Reliable Services
 Das Reliable Services-Framework ermöglicht Dienstautoren, den Kommunikationsstapel für ihren Dienst zu wählen. Sie können den Kommunikationsstapel ihrer Wahl über den von der **CreateServiceReplicaListeners- oder CreateServiceInstanceListeners** -Methode zurückgegebenen [ICommunicationListener](service-fabric-reliable-services-communication.md) implementieren. Das Framework bietet eine Implementierung des auf WCF (Windows Communication Foundation) basierenden Kommunikationsstapels für Dienstautoren, die eine WCF-basierte Kommunikation verwenden möchten.
@@ -125,5 +126,5 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
 ## <a name="next-steps"></a>Nächste Schritte
 * [Remoteprozeduraufruf mit Reliable Services-Remoting](service-fabric-reliable-services-communication-remoting.md)
 * [Web-API mit OWIN in Reliable Services](service-fabric-reliable-services-communication-webapi.md)
-* [Absichern der Kommunikation für Reliable Services](service-fabric-reliable-services-secure-communication.md)
+* [Absichern der Kommunikation für Reliable Services](service-fabric-reliable-services-secure-communication-wcf.md)
 

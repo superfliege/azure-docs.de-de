@@ -2,43 +2,34 @@
 title: Konfigurieren des eingehenden Datenverkehrs mit einem Azure Kubernetes Service-Cluster (AKS)
 description: Installieren und Konfigurieren eines NGINX-Eingangscontrollers in einem Azure Kubernetes Service-Cluster (AKS)
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 04/28/2018
-ms.author: nepeters
+ms.date: 06/25/2018
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b999792876f82de9500dccf9e6263f85e3e3105e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9bee80ebbaf0568706428d673d584819b1daa143
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096987"
 ---
 # <a name="https-ingress-on-azure-kubernetes-service-aks"></a>Eingehender HTTPS-Datenverkehr in Azure Kubernetes Service (AKS)
 
 Ein Eingangscontroller ist eine Softwarekomponente, die einen Reverseproxy, konfigurierbare Datenverkehrsweiterleitung und TLS-Terminierung für Kubernetes-Dienste bereitstellt. Mithilfe von Ressourcen für eingehende Kubernetes-Daten werden Eingangsregeln und Routen für einzelne Kubernetes-Dienste konfiguriert. Durch die Verwendung von einem Eingangscontroller und Eingangsregeln kann eine einzelne externe Adresse zum Weiterleiten von Datenverkehr an mehrere Dienste in einem Kubernetes-Cluster verwendet werden.
 
-Dieses Dokument begleitet Sie durch eine Beispielbereitstellung des [NGINX-Eingangscontrollers][nginx-ingress] in einem Azure Kubernetes Service-Cluster (AKS). Darüber hinaus wird das Projekt [KUBE-LEGO][kube-lego] verwendet, um automatisch [Let‘s Encrypt][lets-encrypt]-Zertifikate zu generieren und zu konfigurieren. Schließlich werden verschiedene Anwendungen im AKS-Cluster ausgeführt, die jeweils über eine einzelne Adresse zugänglich sind.
-
-## <a name="prerequisite"></a>Voraussetzung
-
-Installieren Sie die Helm CLI. Installationsanweisungen finden Sie in der [Dokumentation][helm-cli] zur Helm CLI.
+Dieses Dokument begleitet Sie durch eine Beispielbereitstellung des [NGINX-Eingangscontrollers][nginx-ingress] in einem Azure Kubernetes Service-Cluster (AKS). Darüber hinaus wird das Projekt [cert-manager][cert-manager] verwendet, um automatisch [Let‘s Encrypt][lets-encrypt]-Zertifikate zu generieren und zu konfigurieren. Schließlich werden verschiedene Anwendungen im AKS-Cluster ausgeführt, die jeweils über eine einzelne Adresse zugänglich sind.
 
 ## <a name="install-an-ingress-controller"></a>Installieren eines Eingangscontrollers
 
 Verwenden Sie Helm, um den NGINX-Eingangscontroller zu installieren. Ausführliche Bereitstellungsinformationen finden Sie in der [Dokumentation][nginx-ingress] des NGINX-Eingangscontrollers.
 
-Aktualisieren Sie das Diagrammrepository.
+In diesem Beispiel wird der Controller im Namespace `kube-system` installiert. Dieser kann in einen Namespace Ihrer Wahl geändert werden. Wenn Ihr AKS-Cluster nicht RBAC-tauglich ist, fügen Sie `--set rbac.create=false` an den Befehl an. Weitere Informationen finden Sie im [nginx-ingress-Diagramm][nginx-ingress].
 
-```console
-helm repo update
-```
-
-Installieren Sie den NGINX-Eingangscontroller. In diesem Beispiel wird der Controller im Namespace `kube-system` installiert. Dieser kann in einen Namespace Ihrer Wahl geändert werden.
-
-```
-helm install stable/nginx-ingress --namespace kube-system --set rbac.create=false --set rbac.createRole=false --set rbac.createClusterRole=false
+```bash
+helm install stable/nginx-ingress --namespace kube-system
 ```
 
 Während der Installation wird eine öffentliche Azure-IP-Adresse für den Eingangscontroller erstellt. Sie rufen die öffentliche IP-Adresse mit dem Befehl kubectl get service ab. Es dauert möglicherweise einige Zeit, bis die IP-Adresse dem Dienst zugewiesen wird.
@@ -59,7 +50,7 @@ Da noch keine Eingangsregeln erstellt wurden, werden Sie zur Standard-404-Seite 
 
 Da HTTPS-Zertifikate verwendet werden, müssen Sie einen vollqualifizierten Domänennamen für die IP-Adresse des Eingangscontrollers konfigurieren. In diesem Beispiel wird ein vollqualifizierter Azure-Domänenname mit der Azure-Befehlszeilenschnittstelle erstellt. Aktualisieren Sie das Skript mit der IP-Adresse des Eingangscontrollers und des Namens, den Sie im vollqualifizierten Domänennamen verwenden möchten.
 
-```
+```bash
 #!/bin/bash
 
 # Public IP address
@@ -68,29 +59,82 @@ IP="51.145.155.210"
 # Name to associate with public IP address
 DNSNAME="demo-aks-ingress"
 
-# Get resource group and public ip name
-RESOURCEGROUP=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '$IP')].[resourceGroup]" --output tsv)
-PIPNAME=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '$IP')].[name]" --output tsv)
+# Get the resource-id of the public ip
+PUBLICIPID=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '$IP')].[id]" --output tsv)
 
 # Update public ip address with dns name
-az network public-ip update --resource-group $RESOURCEGROUP --name  $PIPNAME --dns-name $DNSNAME
+az network public-ip update --ids $PUBLICIPID --dns-name $DNSNAME
 ```
 
 Der Eingangscontroller sollte jetzt über den vollqualifizierten Domänennamen zugänglich sein.
 
-## <a name="install-kube-lego"></a>Installieren von KUBE-LEGO
+## <a name="install-cert-manager"></a>Installieren von cert-manager
 
-Der NGINX-Eingangscontroller unterstützt TLS-Terminierung. Es gibt mehrere Methoden zum Abrufen und Konfigurieren von Zertifikaten für HTTPS. In diesem Dokument wird die Verwendung von [KUBE-LEGO][kube-lego] veranschaulicht, das automatisches Generieren von [Let‘s Encrypt][lets-encrypt]-Zertifikaten und -Verwaltungsfunktionen bietet.
+Der NGINX-Eingangscontroller unterstützt TLS-Terminierung. Es gibt mehrere Methoden zum Abrufen und Konfigurieren von Zertifikaten für HTTPS. In diesem Dokument wird die Verwendung von [cert-manager][cert-manager] veranschaulicht, das automatisches Generieren von [Let‘s Encrypt][lets-encrypt]-Zertifikaten und -Verwaltungsfunktionen bietet.
 
-Verwenden Sie zum Installieren des KUBE-LEGO-Controllers den folgenden Helm-Installationsbefehl. Ersetzen Sie die E-Mail-Adresse durch eine aus Ihrer Organisation.
+Verwenden Sie zum Installieren des cert-manager-Controllers den folgenden Helm-Installationsbefehl.
 
-```
-helm install stable/kube-lego \
-  --set config.LEGO_EMAIL=user@contoso.com \
-  --set config.LEGO_URL=https://acme-v01.api.letsencrypt.org/directory
+```bash
+helm install stable/cert-manager --set ingressShim.defaultIssuerName=letsencrypt-prod --set ingressShim.defaultIssuerKind=ClusterIssuer
 ```
 
-Weitere Informationen zur Konfiguration von KUBE-LEGO finden Sie in der [KUBE-LEGO-Dokumentation][kube-lego].
+Wenn Ihr Cluster nicht RBAC-Tauglich ist, verwenden Sie diesen Befehl.
+
+```bash
+helm install stable/cert-manager \
+  --set ingressShim.defaultIssuerName=letsencrypt-prod \
+  --set ingressShim.defaultIssuerKind=ClusterIssuer \
+  --set rbac.create=false \
+  --set serviceAccount.create=false
+```
+
+Weitere Informationen zur cert-manager-Konfiguration finden Sie unter [cert-manager-Projekt][cert-manager].
+
+## <a name="create-ca-cluster-issuer"></a>Erstellen eines CA-Clusterausstellers
+
+Bevor Zertifikate ausgestellt werden können, benötigt cert-manager eine [Aussteller][cert-manager-issuer]- oder [Clusteraussteller][cert-manager-cluster-issuer]-Ressource. Die Ressourcen sind funktionell identisch, aber `Issuer` arbeitet in einem einzelnen Namespace, `ClusterIssuer` hingegen in allen Namespaces. Weitere Informationen finden Sie in der Dokumentation zum [cert-manager-Aussteller][cert-manager-issuer].
+
+Erstellen Sie einen Clusteraussteller mithilfe des folgenden Manifests. Aktualisieren Sie die E-Mail-Adresse mit einer gültigen Adresse aus Ihrer Organisation.
+
+```yaml
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: user@contoso.com
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    http01: {}
+```
+
+## <a name="create-certificate-object"></a>Erstellen eines Zertifikatobjekts
+
+Als Nächstes muss eine Zertifikatressource erstellt werden. Die Zertifikatressource definiert das gewünschte X.509-Zertifikat. Weitere Informationen finden Sie unter [cert-manager-Zertifikate][cert-manager-certificates].
+
+Erstellen Sie die Zertifikatsressource mit dem folgenden Manifest.
+
+```yaml
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: tls-secret
+spec:
+  secretName: tls-secret
+  dnsNames:
+  - demo-aks-ingress.eastus.cloudapp.azure.com
+  acme:
+    config:
+    - http01:
+        ingressClass: nginx
+      domains:
+      - demo-aks-ingress.eastus.cloudapp.azure.com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+```
 
 ## <a name="run-application"></a>Ausführen der Anwendung
 
@@ -100,13 +144,13 @@ In diesem Beispiel wird Helm verwendet, um mehrere Instanzen einer einfachen Hal
 
 Fügen Sie vor dem Ausführen der Anwendung das Azure-Beispielrepository für Helm auf Ihrem Entwicklungssystem hinzu.
 
-```
+```bash
 helm repo add azure-samples https://azure-samples.github.io/helm-charts/
 ```
 
- Führen Sie das Hallo-Welt-AKS-Diagramm mit dem folgenden Befehl aus:
+Führen Sie das Hallo-Welt-AKS-Diagramm mit dem folgenden Befehl aus:
 
-```
+```bash
 helm install azure-samples/aks-helloworld
 ```
 
@@ -114,7 +158,7 @@ Installieren Sie nun eine zweite Instanz der Hallo-Welt-Anwendung.
 
 Geben Sie für die zweite Instanz einen neuen Titel an, sodass die beiden Anwendungen sich visuell unterscheiden. Sie müssen auch einen eindeutigen Dienstnamen angeben. Diese Konfigurationen sind im folgenden Befehl zu erkennen.
 
-```console
+```bash
 helm install azure-samples/aks-helloworld --set title="AKS Ingress Demo" --set serviceName="ingress-demo"
 ```
 
@@ -126,13 +170,14 @@ Erstellen Sie eine Datei namens `hello-world-ingress.yaml`, und fügen Sie den f
 
 Beachten Sie, dass der Datenverkehr an die Adresse `https://demo-aks-ingress.eastus.cloudapp.azure.com/` an den Dienst mit dem Namen `aks-helloworld` weitergeleitet wird. Datenverkehr an die Adresse `https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two` wird an den Dienst `ingress-demo` weitergeleitet.
 
-```
+```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
   annotations:
-    kubernetes.io/tls-acme: "true"
+    kubernetes.io/ingress.class: nginx
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   tls:
@@ -179,10 +224,13 @@ Erfahren Sie mehr über die in diesem Dokument demonstrierte Software.
 
 - [Helm CLI][helm-cli]
 - [NGINX-Eingangscontroller][nginx-ingress]
-- [KUBE-LEGO][kube-lego]
+- [cert-manager][cert-manager]
 
 <!-- LINKS - external -->
 [helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm#install-helm-cli
-[kube-lego]: https://github.com/jetstack/kube-lego
+[cert-manager]: https://github.com/jetstack/cert-manager
+[cert-manager-certificates]: https://cert-manager.readthedocs.io/en/latest/reference/certificates.html
+[cert-manager-cluster-issuer]: https://cert-manager.readthedocs.io/en/latest/reference/clusterissuers.html
+[cert-manager-issuer]: https://cert-manager.readthedocs.io/en/latest/reference/issuers.html
 [lets-encrypt]: https://letsencrypt.org/
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx

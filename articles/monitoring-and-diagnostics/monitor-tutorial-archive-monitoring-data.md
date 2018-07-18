@@ -1,20 +1,20 @@
 ---
-title: Archivieren von Azure-Überwachungsdaten | Microsoft-Dokumentation
+title: Archivieren von Azure-Metriken und -Protokolldaten mithilfe von Azure Storage
 description: Archivieren Sie in Azure generierte Protokoll- und Metrikdaten in einem Speicherkonto.
 author: johnkemnetz
-manager: orenr
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.service: monitoring-and-diagnostics
+services: azure-monitor
+ms.service: azure-monitor
 ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.openlocfilehash: b44bbd9cb2f54107d2593b1ab7f07f07fcc41e57
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.component: metrics
+ms.openlocfilehash: f6b7b9fe73f5e815e08bbf4f6493ee181a0c692b
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918270"
 ---
 # <a name="archive-azure-monitoring-data"></a>Archivieren von Azure-Überwachungsdaten
 
@@ -136,6 +136,11 @@ Zu Ihrer Ressource gehörige Überwachungsdaten werden nun in das Speicherkonto 
 Zu Ihren virtuellen Computern gehörige Überwachungsdaten werden nun in das Speicherkonto übertragen.
 
 ## <a name="view-the-monitoring-data-in-the-storage-account"></a>Anzeigen der Überwachungsdaten im Speicherkonto
+
+> [!WARNING]
+> Das Format der Protokolldaten im Speicherkonto wird am 1. November 2018 in JSON Lines geändert. [Dieser Artikel enthält eine Beschreibung der Auswirkungen und der Aktualisierung Ihrer Tools zur Verarbeitung des neuen Formats.](./monitor-diagnostic-logs-append-blobs.md) 
+>
+> 
 
 Wenn Sie die vorherigen Schritte ausgeführt haben, wurde begonnen, die Daten in Ihr Speicherkonto zu übertragen.
 

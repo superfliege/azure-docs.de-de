@@ -1,6 +1,6 @@
 ---
 title: Azure Deutschland-Entwicklerhandbuch | Microsoft-Dokumentation
-description: "Dieser Artikel enthält einen Featurevergleich und Hilfestellung zum Entwickeln von Anwendungen für Azure Deutschland."
+description: Dieser Artikel enthält einen Featurevergleich und Hilfestellung zum Entwickeln von Anwendungen für Azure Deutschland.
 services: germany
 cloud: na
 documentationcenter: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: 5faafd1be168d7acc6cfaee8448f9a780ba23149
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 09b698f66e074a58ebe7ccb1c2fc308d74740294
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130284"
 ---
 # <a name="azure-germany-developer-guide"></a>Microsoft Azure Deutschland – Entwickler- und Benutzerhandbuch
 Bei der Azure Deutschland-Umgebung handelt es sich um eine Instanz von Microsoft Azure, die vom Rest des Microsoft-Netzwerks getrennt ist. Dieses Handbuch erläutert die Unterschiede, die Anwendungsentwickler und -administratoren kennen müssen, um mit dieser separaten Region von Azure interagieren und arbeiten zu können.
@@ -47,7 +48,7 @@ Aktuell sind in Azure Deutschland die Regionen „Deutschland, Mitte“ und „D
 ## <a name="endpoint-mapping"></a>Endpunktzuordnung
 In der folgenden Tabelle finden Sie Informationen für die Zuordnung von Endpunkten in der globalen Azure-Umgebung zu Azure Deutschland-spezifischen Endpunkten:
 
-| Name | Azure Deutschland-Endpunkt |
+| NAME | Azure Deutschland-Endpunkt |
 | --- | --- |
 | ActiveDirectoryServiceEndpointResourceId | https://management.core.cloudapi.de/ |
 | GalleryUrl                               | https://gallery.cloudapi.de/ |
@@ -72,5 +73,5 @@ Weitere Informationen zu Azure Deutschland finden Sie in den folgenden Ressource
 * Wenn Sie schon ein Azure Deutschland-Konto haben, können Sie diese [Anmeldeseite](https://portal.microsoftazure.de/) nutzen.
 * [Welcome to Azure Germany](./germany-welcome.md) (Willkommen bei Azure Deutschland)
 * [Azure Deutschland-Blog](http://blogs.msdn.microsoft.com/azuregermany/)
-* [Microsoft Trust Center (Azure-Konformität)](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
+* [Microsoft Trust Center (Azure-Konformität)](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings)
 

@@ -12,14 +12,14 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/16/2018
+ms.date: 07/05/2018
 ms.author: terrylan
-ms.openlocfilehash: 28bb900a3281becc7bb243e6bd7bf2beedf1a5c1
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 594588bfaf328c687bb43f2d958ff928a521c5ab
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261630"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888931"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrieren von Sicherheitslösungen in Azure Security Center
 Dieses Dokument unterstützt Sie bei der Verwaltung von bereits mit Azure Security Center verbundenen Sicherheitslösungen sowie beim Hinzufügen neuer Lösungen.
@@ -33,10 +33,15 @@ Mit Security Center können Sie ganz einfach integrierte Sicherheitslösungen in
 
 Integrierte Sicherheitslösungen umfassen derzeit Folgendes:
 
-- Endpoint Protection ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/search/result.aspx?q=Windows+defender+endpoint+protection) und [System Center Endpoint Protection](https://www.microsoft.com/search/result.aspx?q=System+Center+endpoint+protection))
+- Endpoint Protection ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/windows/comprehensive-security) und [System Center Endpoint Protection](https://www.microsoft.com/search/result.aspx?q=System+Center+endpoint+protection))
 - Web Application Firewall ([Barracuda](https://www.barracuda.com/products/webapplicationfirewall), [F5](https://support.f5.com/kb/en-us/products/big-ip_asm/manuals/product/bigip-ve-web-application-firewall-microsoft-azure-12-0-0.html), [Imperva](https://www.imperva.com/Products/WebApplicationFirewall-WAF), [Fortinet](https://www.fortinet.com/products.html) und [Azure Application Gateway](https://azure.microsoft.com/blog/azure-web-application-firewall-waf-generally-available/))
 - Firewall der nächsten Generation ([Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/), [Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/), [Fortinet](http://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2), [Cisco](http://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html) und [Palo Alto Networks](https://www.paloaltonetworks.com/products))
-- Sicherheitsrisikobewertung ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/))  
+- Sicherheitsrisikobewertung ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/) und [Rapid7](https://www.rapid7.com/products/insightvm/))
+
+> [!NOTE]
+> Rapid7 befindet sich in der Vorschauversion.
+>
+>
 
 Die Endpoint Protection-Integrationsumgebung kann je nach Lösung variieren. Die folgende Tabelle enthält weitere Details zu den Umgebungen der einzelnen Lösungen:
 
@@ -44,7 +49,7 @@ Die Endpoint Protection-Integrationsumgebung kann je nach Lösung variieren. Die
 |-----------------------------------|---------------------------------------|------------------------------|---------------------------|
 | Windows Defender (Microsoft Antimalware)                  | Windows Server 2016                   | Nein, in Betriebssystem integriert           | Ja                       |
 | System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2, 2012, 2008 R2 | Per Erweiterung                | Ja                       |
-| Trend Micro – alle Versionen         | Windows Server-Familie                 | Per Erweiterung                | Ja                       |
+| Trend Micro – alle Versionen         | Windows Server-Familie                 | Nein                            | Ja                       |
 | Symantec v12.1.1100+              | Windows Server-Familie                 | Nein                            | Ja                       |
 | McAfee v10+                       | Windows Server-Familie                 | Nein                            | Ja                       |
 | Kaspersky                         | Windows Server-Familie                 | Nein                            | Nein                         |

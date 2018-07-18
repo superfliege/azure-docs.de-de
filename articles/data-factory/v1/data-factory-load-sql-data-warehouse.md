@@ -10,19 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3266e4b571878eb55c55e235ecb10995cbd58439
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6a7f31cf541bc1cccd3a5d565a0d3a223ccd3aee
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045166"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Laden von 1 TB in Azure SQL Data Warehouse in weniger als 15 Minuten mit Data Factory
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Wenn Sie Version 2 des Data Factory-Diensts verwenden, die sich derzeit in der Vorschauphase befindet, finden Sie weitere Informationen unter [Copy data to or from Azure SQL Data Warehouse by using Data Factory version 2 (Kopieren von Daten in oder aus Azure SQL Data Warehouse mithilfe von Version 2 von Data Factory)](../connector-azure-sql-data-warehouse.md).
+> Dieser Artikel gilt für Version 1 von Data Factory. Informationen für die aktuelle Version des Data Factory-Diensts finden Sie unter [Copy data to or from Azure SQL Data Warehouse by using Data Factory](../connector-azure-sql-data-warehouse.md) (Kopieren von Daten in oder aus Azure SQL Data Warehouse mithilfe von Data Factory).
 
 
 [Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) ist eine cloudbasierte Datenbank für das horizontale Hochskalieren, mit der sehr große Datenvolumen verarbeitet werden können, und zwar sowohl relational als auch nicht relational.  SQL Data Warehouse basiert auf MPP-Architektur (Massively Parallel Processing), und ist für Data Warehouse-Workloads für Unternehmen optimiert.  Es bietet Cloudelastizität mit der Flexibilität, Speicher zu skalieren und unabhängig zu berechnen.

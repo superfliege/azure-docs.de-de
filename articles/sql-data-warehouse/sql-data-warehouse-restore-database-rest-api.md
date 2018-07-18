@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31524423"
 ---
 # <a name="restore-an-azure-sql-data-warehouse-with-rest-apis"></a>Wiederherstellen einer Azure SQL Data Warehouse-Instanz mit REST-APIs
 Stellen Sie eine Azure SQL Data Warehouse-Instanz mithilfe von REST-APIs wieder her.

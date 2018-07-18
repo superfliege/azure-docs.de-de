@@ -1,12 +1,12 @@
 ---
-title: "Verwalten der Anmeldeinformationen Ihres StorSimple-Speicherkontos für Geräte der Microsoft Azure StorSimple 8000-Serie | Microsoft-Dokumentation"
-description: "Beschreibt, wie Sie die Seite „Konfigurieren“ des StorSimple-Geräte-Manager-Diensts zum Hinzufügen, Bearbeiten oder Löschen von Speicherkonten verwenden oder wie Sie die Sicherheitsschlüssel für ein Speicherkonto rotieren."
+title: Verwalten der Anmeldeinformationen Ihres StorSimple-Speicherkontos für Geräte der Microsoft Azure StorSimple 8000-Serie | Microsoft-Dokumentation
+description: Beschreibt, wie Sie die Seite „Konfigurieren“ des StorSimple-Geräte-Manager-Diensts zum Hinzufügen, Bearbeiten oder Löschen von Speicherkonten verwenden oder wie Sie die Sicherheitsschlüssel für ein Speicherkonto rotieren.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -15,10 +15,11 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 36058ad69ea670998b50cf9038741c294a5b79ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38688727"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>Verwalten von Anmeldeinformationen für Speicherkonten mithilfe des StorSimple-Geräte-Manager-Diensts
 
@@ -46,7 +47,7 @@ Im Folgenden sind die häufigsten ausgeführten Aufgaben im Zusammenhang mit Spe
 
 * Hinzufügen von Speicherkonten 
 * Bearbeiten eines Speicherkontos 
-* Löschen eines Speicherkontos 
+* Löschen von Speicherkonten 
 * Schlüsselrotation für Speicherkonten 
 
 ## <a name="types-of-storage-accounts"></a>Speicherkontentypen
@@ -115,7 +116,7 @@ Sie können ein Speicherkonto, das von einem Volumecontainer verwendet wird, bea
 
 Die Einstellungen werden aktualisiert und für Ihr Speicherkonto gespeichert. 
 
-## <a name="delete-a-storage-account"></a>Löschen eines Speicherkontos
+## <a name="delete-a-storage-account"></a>Löschen von Speicherkonten
 
 > [!IMPORTANT]
 > Sie können ein Speicherkonto nur dann löschen, wenn es nicht von einem Volumecontainer verwendet wird. Wenn ein Speicherkonto von einem Volumecontainer verwendet wird, löschen Sie zunächst den Volumecontainer, und löschen Sie dann das zugehörige Speicherkonto.
@@ -177,5 +178,5 @@ Sie werden benachrichtigt, sobald der Schlüssel erfolgreich synchronisiert wurd
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zur [StorSimple-Sicherheit](storsimple-8000-security.md)
-* Weitere Informationen zum [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-manager-service-administration.md).
+* Erfahren Sie mehr [Verwalten von StorSimple-Geräten mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-manager-service-administration.md).
 

@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Multi-Factor Authentication | Microsoft Docs'
+title: Multi-Factor Authentication in Azure Active Directory B2C | Microsoft-Dokumentation
 description: Aktivieren der Multi-Factor Authentication in kundenorientierten Anwendungen, die mit Azure Active Directory B2C geschützt werden
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: davidmu
-ms.openlocfilehash: f439c65d9b4fbeb78623312c426767f89dfd9fab
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.component: B2C
+ms.openlocfilehash: 3d18e1b2e45aba4e83989e29c533cfc7bf5033fc
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442707"
 ---
 # <a name="azure-active-directory-b2c-enable-multi-factor-authentication-in-your-consumer-facing-applications"></a>Azure Active Directory B2C: Aktivieren der Multi-Factor Authentication in kundenorientierten Anwendungen
 Azure Active Directory (Azure AD) B2C bietet eine direkte Integration in die [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) , damit Sie eine zweite Sicherheitsebene zu Registrierungs- und Anmeldeoberflächen in kundenorientierten Anwendungen hinzufügen können. Sie erreichen dies, ohne eine einzige Codezeile schreiben zu müssen. Derzeit wird eine Überprüfung per Telefonanruf und Textnachricht unterstützt. Sie können die Multi-Factor Authentication auch dann aktivieren, wenn Sie bereits Registrierungs- und Anmelderichtlinien erstellt haben.

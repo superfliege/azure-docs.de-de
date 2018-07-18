@@ -1,6 +1,6 @@
 ---
-title: "Firewallregeln für Azure-Datenbank für PostgreSQL-Server"
-description: "Dieser Artikel beschreibt die Firewallregeln für Ihren Azure Database for PostgreSQL-Server."
+title: Firewallregeln für Azure-Datenbank für PostgreSQL-Server
+description: Dieser Artikel beschreibt die Firewallregeln für Ihren Azure Database for PostgreSQL-Server.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29689886"
 ---
 # <a name="azure-database-for-postgresql-server-firewall-rules"></a>Firewallregeln für Azure-Datenbank für PostgreSQL-Server
 Die Azure Database for PostgreSQL-Serverfirewall verhindert jeglichen Zugriff auf Ihren Datenbankserver, bis Sie angeben, welche Computer zugriffsberechtigt sind. Die Firewall gewährt den Serverzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung.

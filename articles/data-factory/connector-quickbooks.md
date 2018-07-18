@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten aus QuickBooks mithilfe von Azure Data Factory (Beta) | Microsoft-Dokumentation
+title: Kopieren von Daten aus QuickBooks mithilfe von Azure Data Factory | Microsoft-Dokumentation
 description: Erfahren Sie, wie Daten aus QuickBooks mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
@@ -10,24 +10,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/07/2018
+ms.topic: conceptual
+ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 6185f8a8b0f60b6e3dc6f4bda2bceabd1dd4f058
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4e73b444335fe0e96ff453570ee0092f38ab9a4d
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053798"
 ---
-# <a name="copy-data-from-quickbooks-using-azure-data-factory-beta"></a>Kopieren von Daten aus QuickBooks mithilfe von Azure Data Factory (Beta)
+# <a name="copy-data-from-quickbooks-using-azure-data-factory"></a>Kopieren von Daten aus QuickBooks mithilfe von Azure Data Factory
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus QuickBooks zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (GA) ist, lesen Sie [Kopieraktivität in V1](v1/data-factory-data-movement-activities.md).
-
 > [!IMPORTANT]
-> Dieser Connector ist aktuell in der Betaphase. Sie können ihn ausprobieren und uns Feedback geben. Verwenden Sie ihn nicht in Produktionsumgebungen.
+> Dieser Connector befindet sich derzeit in der Vorschauversion. Sie können ihn ausprobieren und uns Feedback geben. Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/), wenn Sie in Ihrer Lösung eine Abhängigkeit von Connectors verwenden möchten, die sich in der Vorschauphase befinden.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -39,7 +37,7 @@ Momentan unterstützt dieser Connector nur Version 1.0a, was bedeutet, dass Sie 
 
 ## <a name="getting-started"></a>Erste Schritte
 
-[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den QuickBooks-Connector verwendet werden.
 
@@ -52,6 +50,8 @@ Folgende Eigenschaften werden für den mit QuickBooks verknüpften Dienst unters
 | type | Die „type“-Eigenschaft muss auf **QuickBooks** festgelegt sein. | Ja |
 | endpoint | Der Endpunkt des QuickBooks-Servers. (quickbooks.api.intuit.com)  | Ja |
 | companyId | Die Unternehmens-ID des zu autorisierenden QuickBooks-Unternehmens.  | Ja |
+| consumerKey | Verbraucherschlüssel für die OAuth 1.0-Authentifizierung | Ja |
+| consumerSecret | Verbrauchergeheimnis für die OAuth 1.0-Authentifizierung. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | accessToken | Das Zugriffstoken für die Authentifizierung mit OAuth 1.0. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | accessTokenSecret | Das Zugriffstokengeheimnis für die Authentifizierung mit OAuth 1.0. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein  |
@@ -66,6 +66,11 @@ Folgende Eigenschaften werden für den mit QuickBooks verknüpften Dienst unters
         "typeProperties": {
             "endpoint" : "quickbooks.api.intuit.com",
             "companyId" : "<companyId>",
+            "consumerKey": "<consumerKey>",
+            "consumerSecret": {
+                "type": "SecureString",
+                "value": "<consumerSecret>"
+            },
             "accessToken": {
                  "type": "SecureString",
                  "value": "<accessToken>"

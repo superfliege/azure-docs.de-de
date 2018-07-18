@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/09/2018
+ms.date: 05/14/2018
 ms.author: celested
+ms.reviewer: elisol, bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 5f42a706bd7cb44162765bb77039cc3173d6941e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b369cdeb3a58db0336d4f6e343599aaa46643b32
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34354451"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36316783"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Auflisten Ihrer Anwendung zum Azure Active Directory-Anwendungskatalog
 
@@ -34,20 +35,19 @@ Azure Active Directory (Azure AD) ist ein cloudbasierter Identitätsdienst. Der 
 
 *  Kunden finden so die bestmögliche Umgebung für einmaliges Anmelden.
 
-*  Die Konfiguration der Anwendung ist einfach und in wenigen Schritten erledigt. 
+*  Die Konfiguration der Anwendung ist einfach und in wenigen Schritten erledigt.
 
 *  Eine schnelle Suche findet Ihre Anwendung im Katalog.
 
-*  Azure AD-Kunden mit den Tarifen Free, Basic und Premium können diese Integration nutzen. 
+*  Azure AD-Kunden mit den Tarifen Free, Basic und Premium können diese Integration nutzen.
 
-*  Gemeinsame Kunden erhalten ausführliche Tutorials zur Konfiguration. 
+*  Gemeinsame Kunden erhalten ausführliche Tutorials zur Konfiguration.
 
 *  Kunden, die SCIM verwenden, können für die gleiche App die Bereitstellung nutzen.
 
-
 ##  <a name="prerequisites-implement-federation-protocol"></a>Voraussetzungen: Implementieren eines Verbundprotokolls
 
-Damit eine Anwendung im Azure AD-App-Katalog aufgelistet werden kann, müssen Sie zunächst eines der folgenden von Azure AD unterstützten Verbundprotokolle implementieren. Lesen Sie die Geschäftsbedingungen des Azure AD-App-Katalogs. 
+Damit eine Anwendung in den Azure AD-App-Katalog aufgenommen werden kann, müssen Sie zunächst eines der folgenden von Azure AD unterstützten Verbundprotokolle implementieren und den Geschäftsbedingungen für den Azure AD-Anwendungskatalog zustimmen. Die Geschäftsbedingungen für den Azure AD-Anwendungskatalog finden Sie [hier](https://azure.microsoft.com/en-us/support/legal/active-directory-app-gallery-terms/).
 
 *   **OpenID Connect:** Erstellen Sie die mehrinstanzenfähige Anwendung in Azure AD, und implementieren Sie das [Azure AD-Genehmigungsframework](active-directory-integrating-applications.md#overview-of-the-consent-framework) für Ihre Anwendung. Senden Sie die Anmeldeanforderung an einen gemeinsamen Endpunkt, damit jeder Kunde der Anwendung zustimmen kann. Sie können den Benutzerzugriff anhand der Mandanten-ID und des im Token erhaltenen UPN des Benutzers steuern. Befolgen Sie zum Integrieren Ihrer Anwendung in Azure AD die [Anweisungen für Entwickler](active-directory-authentication-scenarios.md).
 

@@ -5,7 +5,7 @@ keywords: Zugreifen auf Daten, lokal, Datenübertragung, Verschlüsselung, Daten
 services: logic-apps
 documentationcenter: ''
 author: jeffhollan
-manager: anneta
+manager: jeconnoc
 editor: ''
 ms.assetid: 47e3024e-88a0-4017-8484-8f392faec89d
 ms.service: logic-apps
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/14/2017
 ms.author: LADocs; millopis; estfan
-ms.openlocfilehash: 6c1c954209c08c4ce1262bdc1620755e4a3a6d7e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 63ec26325e045d2ddc027194377e1604d083d82c
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32179009"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300536"
 ---
 # <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure-Logik-Apps
 
@@ -246,7 +246,7 @@ Somit geschieht Folgendes, wenn ein Benutzer in der Cloud mit einem Element inte
 
 ## <a name="tenant-level-administration"></a>Verwaltung auf Mandantenebene 
 
-Derzeit können Mandantenadministratoren nicht alle Gateways zentral verwalten, die andere Benutzer installiert und konfiguriert haben.  Als Mandantenadministrator sollten Sie die Benutzer in Ihrer Organisation bitten, Sie jedem Gateway als Administrator hinzuzufügen, das sie installieren. So können Sie alle Gateways in Ihrer Organisation über die Seite „Gatewayeinstellungen“ oder [PowerShell-Befehle](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters#powershell-support-for-gateway-clusters) verwalten. 
+Derzeit können Mandantenadministratoren nicht alle Gateways zentral verwalten, die andere Benutzer installiert und konfiguriert haben.  Als Mandantenadministrator sollten Sie die Benutzer in Ihrer Organisation bitten, Sie jedem Gateway als Administrator hinzuzufügen, das sie installieren. So können Sie alle Gateways in Ihrer Organisation über die Seite „Gatewayeinstellungen“ oder über [PowerShell-Befehle](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters#powershell-support-for-gateway-clusters) verwalten. 
 
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen

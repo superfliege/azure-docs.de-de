@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30198229"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Wird die benutzerdefinierte IPsec-/IKE-Richtlinie von allen Azure VPN Gateway-SKUs unterstützt?
 Die benutzerdefinierte IPsec-/IKE-Richtlinie wird von Azure-VPN-Gateways vom Typ **VpnGw1, VpnGw2, VpnGw3, Standard** und **HighPerformance** unterstützt. Die SKU **Basic** wird **nicht** unterstützt.

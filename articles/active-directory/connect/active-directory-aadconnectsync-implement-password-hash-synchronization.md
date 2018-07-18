@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c223091e423d0f342f14424c58d6b7447cda50e8
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: abe439cc91a003137c116f57c0cc8bbb61430114
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593451"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 In diesem Artikel finden Sie alle Informationen, die Sie benötigen, um Benutzerkennwörter aus einer lokalen Active Directory-Instanz mit einer cloudbasierten Azure Active Directory-Instanz (Azure AD) zu synchronisieren.
@@ -81,9 +83,9 @@ Nachfolgend wird ausführlich beschrieben, wie die Kennworthashsynchronisierung 
 2. Vor dem Senden verschlüsselt der Domänencontroller den MD4-Kennworthash mithilfe eines Schlüssels, bei dem es sich um einen [MD5](http://www.rfc-editor.org/rfc/rfc1321.txt)-Hash des RPC-Sitzungsschlüssel und einen Salt-Wert handelt. Anschließend wird das Ergebnis über RPC an den Kennworthashsynchronisierungs-Agent gesendet. Der Domänencontroller übergibt auch mithilfe des Replikationsprotokolls des Domänencontrollers den Salt-Wert an den Synchronisierungs-Agent, damit der Agent den Umschlag entschlüsseln kann.
 3.  Sobald der Kennworthashsynchronisierungs-Agent über den verschlüsselten Umschlag verfügt, verwendet er [MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx) und den Salt-Wert, um einen Schlüssel zum Rückentschlüsseln der empfangenen Daten in ihr ursprüngliches MD4-Format zu generieren. Zu keinem Zeitpunkt verfügt der Kennworthashsynchronisierungs-Agent über Zugriff auf das unverschlüsselte Kennwort. Die Nutzung von MD5 durch den Kennworthashsynchronisierungs-Agent dient ausschließlich zur Kompatibilität des Replikationsprotokolls mit dem Domänencontroller und erfolgt nur lokal zwischen dem Domänencontroller und dem Kennworthashsynchronisierungs-Agent.
 4.  Der Kennworthashsynchronisierungs-Agent erweitert den binären 16-Byte-Kennworthash auf 64 Bytes, indem zunächst der Hash in eine hexadezimale 32-Byte-Zeichenfolge umgewandelt wird, die anschließend mithilfe der UTF-16-Codierung wieder in das Binärformat konvertiert wird.
-5.  Der Kennworthashsynchronisierungs-Agent fügt der 64-Byte-Binärdatei einen Salt-Wert (der Länge 10 Byte) hinzu, um den ursprünglichen Hash weiter zu schützen.
-6.  Der Kennworthashsynchronisierungs-Agent kombiniert anschließend den MD4-Hash mit dem Salt-Wert und gibt das Ergebnis in die [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt)-Funktion ein. Hierzu werden 1.000 Iterationen des mit [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) verschlüsselten Hashalgorithmus verwendet. 
-7.  Der Kennworthashsynchronisierungs-Agent verwendet den resultierenden 32-Byte-Hash, mit dem (für die Verwendung durch Azure AD) der Salt-Wert und die Anzahl der SHA256-Iterationen verkettet werden. Anschließend wird die Zeichenfolge aus Azure AD Connect über SSL an Azure AD übertragen.</br> 
+5.  Der Kennworthashsynchronisierungs-Agent fügt der 64-Byte-Binärdatei einen benutzerspezifischen Salt-Wert mit einer Länge von zehn Bytes hinzu, um den ursprünglichen Hash noch besser zu schützen.
+6.  Anschließend kombiniert der Kennworthashsynchronisierungs-Agent den MD4-Hash mit dem benutzerspezifischen Salt-Wert und gibt das Ergebnis in die Funktion [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) ein. Hierzu werden 1.000 Iterationen des mit [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) verschlüsselten Hashalgorithmus verwendet. 
+7.  Der Kennworthashsynchronisierungs-Agent verwendet den resultierenden 32-Byte-Hash, verkettet sowohl den benutzerspezifischen Salt-Wert als auch die Anzahl von SHA256-Iterationen damit (für die Verwendung durch Azure AD) und überträgt die Zeichenfolge anschließend von Azure AD Connect per SSL an Azure AD.</br> 
 8.  Wenn ein Benutzer sich bei Azure AD anzumelden versucht und sein Kennwort eingibt, durchläuft das Kennwort denselben aus MD4+Salt+PBKDF2+HMAC-SHA256 bestehenden Prozess. Wenn der resultierende Hash dem in Azure AD gespeicherten Hash entspricht, hat der Benutzer das richtige Kennwort eingegeben, woraufhin er authentifiziert wird. 
 
 >[!Note] 

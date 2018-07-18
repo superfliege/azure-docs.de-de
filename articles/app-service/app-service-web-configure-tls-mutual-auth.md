@@ -1,8 +1,8 @@
 ---
-title: "Konfigurieren der gegenseitigen TLS-Authentifizierung für eine Web-App"
-description: "Erfahren Sie, wie Sie Ihre Webanwendung für die Clientzertifikatauthentifizierung für TLS konfigurieren."
+title: Konfigurieren der gegenseitigen TLS-Authentifizierung für eine Web-App
+description: Erfahren Sie, wie Sie Ihre Webanwendung für die Clientzertifikatauthentifizierung für TLS konfigurieren.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: naziml
 manager: erikre
 editor: jimbe
@@ -14,15 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2016
 ms.author: naziml
-ms.openlocfilehash: db69852cffd1ff331ac4a640b04ea4360d00bf75
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bdf8731b2a5028f47c2baf6f164d75123f716ebb
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857638"
 ---
 # <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>Konfigurieren der gegenseitigen TLS-Authentifizierung für eine Web-App
 ## <a name="overview"></a>Übersicht
-Sie können den Zugriff auf Ihre Azure-Web-App einschränken, indem Sie verschiedene Arten von Authentifizierung für sie aktivieren. Eine Möglichkeit hierzu ist die Authentifizierung mithilfe eines Clientzertifikats, wenn die Anforderung über TLS/SSL erfolgt. Dieser Mechanismus wird gegenseitige TLS-Authentifizierung oder Clientzertifikatauthentifizierung genannt. In diesem Artikel wird das Einrichten Ihrer Web-App für die Clientzertifikatauthentifizierung ausführlich beschrieben.
+Sie können den Zugriff auf Ihre Azure-Web-App einschränken, indem Sie verschiedene Arten von Authentifizierung für sie aktivieren. Eine Möglichkeit hierzu ist die Authentifizierung mithilfe eines Clientzertifikats, wenn die Anforderung über TLS/SSL erfolgt. Dieser Mechanismus wird als gegenseitige TLS-Authentifizierung oder Clientzertifikatauthentifizierung bezeichnet. In diesem Artikel wird das Einrichten Ihrer Web-App für die Clientzertifikatauthentifizierung ausführlich beschrieben.
 
 > **Hinweis:** Wenn Sie über HTTP und nicht HTTPS auf Ihre Website zugreifen, erhalten Sie kein Clientzertifikat. Wenn Ihre Anwendung also Clientzertifikate erfordert, sollten Sie keine Anfragen an Ihre Anwendung über HTTP zulassen.
 > 
@@ -31,13 +32,13 @@ Sie können den Zugriff auf Ihre Azure-Web-App einschränken, indem Sie verschie
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="configure-web-app-for-client-certificate-authentication"></a>Konfigurieren einer Web-App für die Clientzertifikatauthentifizierung 
-Zum Einrichten Ihrer Web-App für das Anfordern von Clientzertifikaten müssen Sie Ihrer Web-App die Website-Einstellung "clientCertEnabled" hinzufügen und diese auf "true" festlegen. Diese Einstellung ist derzeit nicht auf der Verwaltungsoberfläche im Portal verfügbar, weshalb Sie dazu die REST-API verwenden müssen.
+Zum Einrichten Ihrer Web-App für die Erzwingung der Nutzung von Clientzertifikaten müssen Sie Ihrer Web-App die Website-Einstellung „clientCertEnabled“ hinzufügen und diese auf „true“ festlegen. Diese Einstellung kann auch im Azure-Portal auf dem Blatt „SSL-Zertifikate“ konfiguriert werden.
 
-Sie können das Tool [ARMClient](https://github.com/projectkudu/ARMClient) zum Vereinfachen des REST-API-Aufrufs verwenden. Nachdem Sie sich mit dem Tool angemeldet haben, müssen Sie den folgenden Befehl aufrufen:
+Sie können das Tool [ARMClient](https://github.com/projectkudu/ARMClient) zum Vereinfachen des REST-API-Aufrufs verwenden. Nachdem Sie sich mit dem Tool angemeldet haben, müssen Sie den folgenden Befehl ausführen:
 
     ARMClient PUT subscriptions/{Subscription Id}/resourcegroups/{Resource Group Name}/providers/Microsoft.Web/sites/{Website Name}?api-version=2015-04-01 @enableclientcert.json -verbose
 
-Ersetzen Sie alles in {} durch Informationen für Ihre Web-App, und erstellen Sie eine Datei namens "enableclientcert.json" mit dem folgenden JSON-Inhalt:
+Ersetzen Sie alles in {} durch Informationen für Ihre Web-App, und erstellen Sie die Datei „enableclientcert.json“ mit dem folgenden JSON-Inhalt:
 
     {
         "location": "My Web App Location",
@@ -46,9 +47,9 @@ Ersetzen Sie alles in {} durch Informationen für Ihre Web-App, und erstellen Si
         }
     }
 
-Passen Sie den Wert von "location" an die Region Ihrer Web-App an, z. B. USA, Norden-Mitte oder USA, Westen.
+Passen Sie den Wert von „location“ an die Region Ihrer Web-App an, z.B. „USA, Norden-Mitte“, „USA, Westen“ usw.
 
-Sie können auch über https://resources.azure.com die `clientCertEnabled`-Eigenschaft in `true` ändern.
+Sie können auch https://resources.azure.com verwenden, um die `clientCertEnabled`-Eigenschaft in `true` zu ändern.
 
 > **Hinweis:** Wenn Sie ARMClient von PowerShell aus ausführen, müssen Sie das @-Symbol für die JSON-Datei mit einem Graviszeichen „`“ als Escapezeichen versehen.
 > 

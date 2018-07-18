@@ -7,13 +7,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: e02672ea76eada2d660b20f91c4417019d4efc97
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 853b9c2f50967d7a203e5627bdd2fc6f14e0e4f6
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921000"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Erstellen und Anpassen von Wiederherstellungsplänen
 
@@ -76,7 +77,7 @@ Sie können einen Wiederherstellungsplan anpassen, indem Sie ein Skript oder ein
 3. Zum Hinzufügen einer manuellen Aktion gehen Sie folgendermaßen vor: a. Geben Sie einen Namen und Anweisungen für die Aktion ein. Diese Anweisungen werden der Person angezeigt, die das Failover ausführt.
     b. Geben Sie an, ob Sie die manuelle Aktion für alle Failovertypen (Test, Failover, Geplantes Failover (falls zutreffend)) hinzufügen möchten. Klicken Sie dann auf **OK**.
 4. Zum Hinzufügen eines Skripts gehen Sie folgendermaßen vor: a. Wählen Sie beim Hinzufügen eines VMM-Skripts die Option **Failover zu VMM-Skript** aus, und geben Sie unter **Skriptpfad** den relativen Pfad zur Freigabe ein. Wenn sich die Freigabe beispielsweise unter „\\<VMMServerName>\MSSCVMMLibrary\RPScripts“ befindet, geben Sie den Pfad „\RPScripts\RPScript.PS1“ an.
-    b. Wenn Sie ein Azure Automation-Runbook hinzufügen, geben Sie das **Azure Automation-Konto** an, in dem sich das Runbook befindet, und wählen das gewünschte **Azure-Runbookskript** aus.
+    b. Wenn Sie ein Azure-Automatisierungsrunbook hinzufügen, geben Sie das **Azure Automation-Konto** an, in dem sich das Runbook befindet, und wählen das gewünschte **Azure-Runbookskript** aus.
 5. Führen Sie ein Testfailover für den Wiederherstellungsplan aus, um sicherzustellen, dass das Skript wie erwartet funktioniert.
 
 ## <a name="watch-a-video"></a>Ansehen eines Videos

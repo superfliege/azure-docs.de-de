@@ -2,30 +2,27 @@
 title: Festlegen einer Gültigkeitsdauer für den Ablauf von Daten in Azure Cosmos DB | Microsoft-Dokumentation
 description: Mit TTL bietet Microsoft Azure Cosmos DB die Möglichkeit, im System vorhandene Dokumente nach einem bestimmten Zeitraum automatisch zu löschen.
 services: cosmos-db
-documentationcenter: ''
 keywords: Gültigkeitsdauer (Time To Live, TTL)
 author: SnehaGunda
 manager: kfile
-ms.assetid: 25fcbbda-71f7-414a-bf57-d8671358ca3f
 ms.service: cosmos-db
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: 13f2caa631817a5745f39b44faccb11252a2d549
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e1b11d637eec54d43c9f1212936d94b2d7396c97
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34615120"
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Festlegen einer Gültigkeitsdauer für den automatischen Ablauf von Daten in Azure Cosmos DB-Sammlungen
 Anwendungen können Unmengen an Daten generieren und speichern. Einige dieser Daten (etwa vom Computer generierte Ereignisdaten, Protokolle und Benutzersitzungsinformationen) sind allerdings nur für einen begrenzten Zeitraum relevant. Sobald die Daten von der Anwendung nicht mehr benötigt werden, können sie gefahrlos gelöscht werden, um den Speicherbedarf einer Anwendung zu verringern.
 
 Mit der Gültigkeitsdauer (Time To Live, TTL) bietet Microsoft Azure Cosmos DB die Möglichkeit, Dokumente nach einem bestimmten Zeitraum automatisch aus der Datenbank endgültig zu löschen. Die standardmäßige Gültigkeitsdauer kann auf Sammlungsebene festgelegt und für individuelle Dokumente überschrieben werden. Nach dem Festlegen der Gültigkeitsdauer (auf Sammlungs- oder Dokumentebene) werden Dokumente, die nach dem in Sekunden angegebenen Zeitraum (beginnend ab der letzten Änderung) vorhanden sind, von Cosmos DB automatisch entfernt.
 
-Die Gültigkeitsdauer in Cosmos DB basiert auf einem Offset für den letzten Änderungszeitpunkt eines Dokuments. Zu diesem Zweck wird das für jedes Dokument vorhandene Feld `_ts` verwendet. Bei dem Feld „_ts“ handelt es sich um einen Epochenzeitstempel im Unix-Format zur Darstellung von Datum und Uhrzeit. Das Feld `_ts` wird bei jeder Änderung eines Dokuments aktualisiert. 
+Die Gültigkeitsdauer in Azure Cosmos DB basiert auf einem Offset für den letzten Änderungszeitpunkt eines Dokuments. Zu diesem Zweck wird das für jedes Dokument vorhandene Feld `_ts` verwendet. Bei dem Feld „_ts“ handelt es sich um einen Epochenzeitstempel im Unix-Format zur Darstellung von Datum und Uhrzeit. Das Feld `_ts` wird bei jeder Änderung eines Dokuments aktualisiert. 
 
 ## <a name="ttl-behavior"></a>TTL-Verhalten
 Das TTL-Feature wird über TTL-Eigenschaften auf zwei Ebenen (Sammlungsebene und Dokumentebene) gesteuert. Die Werte werden in Sekunden festgelegt und fungieren als Delta für den letzten Änderungszeitpunkt des Dokuments (aus dem Feld `_ts`).
@@ -40,7 +37,7 @@ Das TTL-Feature wird über TTL-Eigenschaften auf zwei Ebenen (Sammlungsebene und
    * Die Eigenschaft wird nur angewendet, wenn DefaultTTL für die übergeordnete Auflistung vorhanden ist.
    * Überschreibt den DefaultTTL-Wert für die übergeordnete Auflistung.
 
-Abgelaufene Dokumente (`ttl` + `_ts` <= aktuelle Serverzeit) werden als abgelaufen markiert. Ab diesem Zeitpunkt können für diese Dokumente keine Vorgänge mehr ausgeführt werden, und sie werden in Abfrageergebnissen nicht mehr berücksichtigt. Die Dokumente werden im System physisch gelöscht und zu einem späteren Zeitpunkt opportunistisch im Hintergrund gelöscht. Dabei werden keinerlei [Anforderungseinheiten (Request Units, RUs)](request-units.md) des Sammlungsbudgets verbraucht.
+Abgelaufene Dokumente (`ttl` + `_ts` <= aktuelle Serverzeit) werden mit „Abgelaufen“ markiert. Ab diesem Zeitpunkt können für diese Dokumente keine Vorgänge mehr ausgeführt werden, und sie werden in Abfrageergebnissen nicht mehr berücksichtigt. Die Dokumente werden im System physisch gelöscht und zu einem späteren Zeitpunkt opportunistisch im Hintergrund gelöscht. Dabei werden keinerlei [Anforderungseinheiten (Request Units, RUs)](request-units.md) des Sammlungsbudgets verbraucht.
 
 Die obige Logik wird in der folgenden Matrix veranschaulicht:
 
@@ -169,7 +166,7 @@ Nein, Löschungen gemäß Gültigkeitsdauer (TTL) abgelaufener Dokumente in Cosm
 
 **Gilt das TTL-Feature nur für vollständige Dokumente oder kann ich einen Ablauf für individuelle Dokumenteigenschaftswerte konfigurieren?**
 
-TTL gilt für das gesamte Dokument. Soll nur ein Teil eines Dokuments ablaufen, empfiehlt es sich, den Teil aus dem Hauptdokument in ein separates, verknüpftes Dokument zu extrahieren und die Gültigkeitsdauer für das extrahierte Dokument zu verwenden.
+TTL gilt für das gesamte Dokument. Soll nur ein Teil eines Dokuments ablaufen, empfiehlt es sich, den Teil aus dem Hauptdokument in ein separates, verknüpftes Dokument zu extrahieren und die Gültigkeitsdauer auf das extrahierte Dokument anzuwenden.
 
 **Gelten für das TTL-Feature bestimmte Indizierungsanforderungen?**
 

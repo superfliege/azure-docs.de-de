@@ -1,28 +1,30 @@
 ---
-title: Migrieren klassischer Richtlinien in das Azure-Portal | Microsoft-Dokumentation
+title: Was ist Richtlinienmigration beim bedingten Zugriff in Azure Active Directory? | Microsoft-Dokumentation
 description: Wichtige Informationen zum Migrieren klassischer Richtlinien in das Azure-Portal.
 services: active-directory
-keywords: "bedingter Zugriff auf Apps, bedingter Zugriff mit Azure AD, sicherer Zugriff auf Unternehmensressourcen, Richtlinien für bedingten Zugriff"
-documentationcenter: 
+keywords: bedingter Zugriff auf Apps, bedingter Zugriff mit Azure AD, sicherer Zugriff auf Unternehmensressourcen, Richtlinien für bedingten Zugriff
+documentationcenter: ''
 author: MarkusVi
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/11/2017
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 16628bd4fa41d2e7697e1c2501f2ccd31dbd0496
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 4a9b3df66567c4170ba861d3e597261e37271bf1
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231967"
 ---
-# <a name="migrate-classic-policies-in-the-azure-portal"></a>Migrieren klassischer Richtlinien in das Azure-Portal 
+# <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Was ist Richtlinienmigration beim bedingten Zugriff in Azure Active Directory? 
 
 
 Der [bedingte Zugriff](active-directory-conditional-access-azure-portal.md) ist eine Funktion von Azure Active Directory (Azure AD), mit der Sie den Zugriff autorisierter Benutzer auf Ihre Cloud-Apps steuern können. Während der Zweck immer noch derselbe ist, hat die Veröffentlichung des neuen Azure-Portals bedeutende Verbesserungen bei der Funktionsweise des bedingten Zugriffs mit sich gebracht.
@@ -83,11 +85,11 @@ Mit den Optionen für bedingten Zugriff im Azure-Portal können Sie alle Ihre Ri
 
 Siehe:
 
-- [Bedingter Zugriff in Azure Active Directory](active-directory-conditional-access-azure-portal.md), um mehr über die grundlegenden Konzepte und die Terminologie zu erfahren.
+- [Was ist bedingter Zugriff in Azure Active Directory?](active-directory-conditional-access-azure-portal.md), um mehr über die grundlegenden Konzepte und die Terminologie zu erfahren.
 
 - [Bewährte Methoden für den bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-best-practices.md), um hilfreiche Informationen zum Bereitstellen von bedingtem Zugriff in Ihrer Organisation zu erhalten.
 
-- [Erste Schritte mit dem bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md), um sich mit der Benutzeroberfläche im Azure-Portal vertraut zu machen.
+- [Schnellstart: Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](active-directory-conditional-access-app-based-mfa.md), um sich mit der Benutzeroberfläche im Azure-Portal vertraut zu machen.
 
 
  
@@ -168,6 +170,6 @@ In einer neuen Richtlinie müssen Sie die zu unterstützenden [Geräteplattforme
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie wissen möchten, wie Sie eine Richtlinie für den bedingten Zugriff konfigurieren, helfen Ihnen die Informationen unter [Erste Schritte mit dem bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md) weiter.
+- Wenn Sie wissen möchten, wie Sie eine Richtlinie für den bedingten Zugriff konfigurieren, finden Sie Informationen unter [Schnellstart: Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](active-directory-conditional-access-app-based-mfa.md).
 
 - Wenn Sie bereit sind, Richtlinien für den bedingten Zugriff für Ihre Umgebung zu konfigurieren, lesen Sie unter [Best Practices für den bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-best-practices.md) nach. 

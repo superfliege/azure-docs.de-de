@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a7b8c480291360cb50af1ce4ae36cd406f0ddc21
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: a1cd2ecc738434fc8d5de03ef538be3ea896fa2b
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971005"
 ---
 # <a name="introduction-to-azure-security"></a>Einführung in Azure Security
 ## <a name="overview"></a>Übersicht
@@ -112,7 +113,7 @@ Dieser Abschnitt enthält zusätzliche Informationen zu den wichtigsten Features
 Eine der einfachsten Möglichkeiten, mit der Sie Ihre [App Service-App](https://docs.microsoft.com/azure/app-service/app-service-web-overview) auf Sicherheitslücken testen können, ist die Verwendung der [Integration in Tinfoil Security](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/), die diese per Mausklick auf Schwachstellen überprüft. Sie können die Testergebnisse in einem leicht verständlichen Bericht anzeigen lassen, und erfahren, wie Sie jede Sicherheitslücke mit einer Schritt-für-Schritt-Anleitung beheben können.
 
 ### <a name="penetration-testing"></a>Penetrationstests
-Wenn Sie lieber Ihre eigenen Penetrationstests ausführen möchten oder eine andere Scanner Suite oder einen anderen Anbieter verwenden möchten, befolgen Sie den [Azure Penetrationstests-Genehmigungsprozess](https://security-forms.azure.com/penetration-testing/terms) und erhalten Sie vorherige Genehmigungen zum Ausführen der gewünschten Penetrationstests.
+Wenn Sie lieber Ihre eigenen Penetrationstests ausführen möchten oder eine andere Scanner Suite oder einen anderen Anbieter verwenden möchten, befolgen Sie den [Azure Penetrationstests-Genehmigungsprozess](https://docs.microsoft.com/azure/security/azure-security-pen-testing ) und erhalten Sie vorherige Genehmigungen zum Ausführen der gewünschten Penetrationstests.
 
 ### <a name="web-application-firewall"></a>Web Application Firewall
 Die Web Application Firewall (WAF) in [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) hilft beim Schutz von Webanwendungen vor gängigen webbasierten Angriffen wie der Einschleusung von SQL-Code, Angriffen durch websiteübergreifende Skripts und der Übernahme von Sitzungen. Dazu bietet sie Schutz vor den Sicherheitsrisiken, die das [Open Web Application Security Project (OWASP) als die zehn häufigsten ermittelt hat](https://msdn.microsoft.com/library/).

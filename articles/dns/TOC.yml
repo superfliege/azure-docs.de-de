@@ -5,21 +5,22 @@
     - name: Was ist Azure DNS?
       href: dns-overview.md
 - name: Schnellstarts
+  expanded: true
   items:
-    - name: 'Erstellen einer DNS-Zone und eines Eintrags: Portal'
+    - name: 'Namensauflösung: Portal'
       href: dns-getstarted-portal.md
-    - name: 'Erstellen einer DNS-Zone und eines Eintrags: PowerShell'
+    - name: 'Namensauflösung: PowerShell'
       href: dns-getstarted-powershell.md
-    - name: 'Erstellen einer DNS-Zone und eines Eintrags: CLI'
+    - name: 'Namensauflösung: CLI'
       href: dns-getstarted-cli.md
 - name: Tutorials
   items:
-    - name: Erstellen einer privaten DNS-Zone und eines Eintrags
-      href: private-dns-getstarted-powershell.md
-    - name: Delegieren einer Domäne an Azure DNS
+    - name: Hosten Ihrer Domäne in Azure DNS
       href: dns-delegate-domain-azure-dns.md
     - name: Erstellen von benutzerdefinierten DNS-Einträgen für eine Web-App
       href: dns-web-sites-custom-domain.md
+    - name: Erstellen einer privaten DNS-Zone und eines Eintrags
+      href: private-dns-getstarted-powershell.md
 - name: Beispiele
   items:
     - name: Azure-Befehlszeilenschnittstelle
@@ -40,6 +41,8 @@
       href: dns-alerts-metrics.md
     - name: Reverse-DNS
       href: dns-reverse-dns-overview.md
+    - name: Notfallwiederherstellung mit Azure DNS und Traffic Manager
+      href: ../networking/disaster-recovery-dns-traffic-manager.md
 - name: Anleitung
   items:
     - name: 'Erstellen einer benutzerdefinierten DNS-Zone und eines Eintrags: Azure CLI'

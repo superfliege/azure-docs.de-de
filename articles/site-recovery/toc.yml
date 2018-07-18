@@ -51,6 +51,8 @@
           href: tutorial-prepare-azure.md
         - name: Migrieren von lokalen Computern zu Azure
           href: migrate-tutorial-on-premises-azure.md
+        - name: 'Migrieren von Windows Server 2008-, 2008 R2-Servern zu Azure'
+          href: migrate-tutorial-windows-server-2008.md
         - name: Migrieren von AWS-Instanzen zu Azure
           href: migrate-tutorial-aws-azure.md
         - name: Migrieren virtueller Azure-Computer zu einer anderen Region
@@ -101,6 +103,14 @@
               href: hyper-v-vmm-secondary-support-matrix.md
             - name: Hyper-V-zu-sekundärem-Standort-Architektur
               href: hyper-v-vmm-architecture.md
+    - name: Netzwerk
+      items:
+        - name: Azure Traffic Manager mit Site Recovery
+          href: concepts-traffic-manager-with-site-recovery.md
+        - name: ExpressRoute mit Site Recovery
+          href: concepts-expressroute-with-site-recovery.md
+        - name: Netzwerksicherheitsgruppen mit Site Recovery
+          href: concepts-network-security-group-with-site-recovery.md
     - name: Notfallwiederherstellung für Apps
       href: site-recovery-workload.md
     - name: Informationen zu Wiederherstellungsplänen
@@ -109,10 +119,6 @@
       href: migrate-overview.md
     - name: Informationen zur rollenbasierten Zugriffssteuerung mit Site Recovery
       href: site-recovery-role-based-linked-access-control.md
-    - name: Informationen zu Azure Traffic Manager mit Site Recovery
-      href: concepts-traffic-manager-with-site-recovery.md
-    - name: Informationen zu ExpressRoute mit Site Recovery
-      href: concepts-expressroute-with-site-recovery.md
     - name: Häufig gestellte Fragen
       href: site-recovery-faq.md
 - name: Anleitungen
@@ -231,6 +237,8 @@
               href: vmware-azure-manage-configuration-server.md
             - name: Verwalten des Konfigurationsservers für die Replikation physischer Server
               href: physical-manage-configuration-server.md
+            - name: Verwalten von Prozessservern
+              href: vmware-azure-manage-process-server.md
             - name: Verwalten von vCenter-Servern
               href: vmware-azure-manage-vcenter.md
             - name: Entfernen von Servern und Deaktivieren des Schutzes

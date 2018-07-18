@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: andrela
 ms.openlocfilehash: e19006d177777b18e1665ec5039f9c28f7e54df5
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363671"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38704639"
 ---
 # <a name="use-java-to-query-an-azure-sql-database"></a>Abfragen einer Azure SQL-Datenbank mithilfe von Java
 
@@ -142,7 +142,6 @@ Für diese Schnellstartanleitung benötigen Sie Folgendes:
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Entwurf Ihrer ersten Azure SQL-Datenbank](sql-database-design-first-database.md)
-- 
-  [Microsoft JDBC-Treiber für SQL Server](https://github.com/microsoft/mssql-jdbc)
+- [Microsoft JDBC-Treiber für SQL Server](https://github.com/microsoft/mssql-jdbc)
 - [Melden von Problemen/Stellen von Fragen](https://github.com/microsoft/mssql-jdbc/issues)
 

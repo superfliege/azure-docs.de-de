@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29943240"
 ---
 # <a name="deploy-your-offer-to-the-azure-marketplace"></a>Bereitstellen Ihres Angebots im Azure Marketplace
 Wenn Sie nach dem Testen von Kundenszenarien, Marketinginhalten und Ähnlichem mit Ihrem Angebot zufrieden sind und es veröffentlichen möchten, verwenden Sie auf der Registerkarte **Veröffentlichen** die Option **Für Produktionsumgebungen freigeben**.  

@@ -1,0 +1,287 @@
+---
+title: Languages-Methode der Microsoft Textübersetzungs-API | Microsoft Docs
+description: Verwenden der Languages-Methode der Microsoft Textübersetzungs-API.
+services: cognitive-services
+author: Jann-Skotdal
+manager: chriswendt1
+ms.service: cognitive-services
+ms.technology: microsoft translator
+ms.topic: article
+ms.date: 03/29/2018
+ms.author: v-jansko
+ms.openlocfilehash: 93c06218a560faf439f05903438d021b372ce257
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "35376435"
+---
+# <a name="text-api-30-languages"></a>Text-API 3.0: Languages
+
+Ruft die Gruppe der Sprachen ab, die zurzeit von anderen Vorgängen der Text-API unterstützt werden. 
+
+## <a name="request-url"></a>Anforderungs-URL
+
+Sendet eine `GET`-Anforderung an:
+```HTTP
+https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
+```
+
+## <a name="request-parameters"></a>Anforderungsparameter
+
+Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben:
+
+<table width="100%">
+  <th width="20%">Abfrageparameter</th>
+  <th>BESCHREIBUNG</th>
+  <tr>
+    <td>api-version</td>
+    <td>*Erforderlicher Parameter*.<br/>Die vom Client angeforderte Version der API. Der Wert muss `3.0` sein.</td>
+  </tr>
+  <tr>
+    <td>scope</td>
+    <td>*Optionaler Parameter*.<br/>Eine durch Trennzeichen getrennte Liste von Namen, die die Gruppe der zurückzugebenden Sprachen definieren. Zulässige Gruppennamen sind: `translation`, `transliteration` und `dictionary`. Wenn kein Bereich angegeben wird, werden alle Gruppen zurückgegeben. Dies entspricht dem Übergeben von `scope=translation,transliteration,dictionary`. Um zu entscheiden, welche Gruppe der unterstützten Sprachen für Ihr Szenario geeignet ist, lesen Sie die Beschreibung für das [Antwortobjekt](#response-body).</td>
+  </tr>
+</table> 
+
+Anforderungsheader:
+
+<table width="100%">
+  <th width="20%">Header</th>
+  <th>BESCHREIBUNG</th>
+  <tr>
+    <td>Accept-Language</td>
+    <td>*Optionaler Anforderungsheader*.<br/>Die Sprache, die für Zeichenfolgen der Benutzeroberfläche verwendet werden soll. Einige der Felder in der Antwort sind Namen von Sprachen oder Namen von Regionen. Verwenden Sie diesen Parameter, um die Sprache zu definieren, in der diese Namen zurückgegeben werden. Die Sprache wird durch die Bereitstellung eines wohlgeformten BCP 47-Sprachtags angegeben. Verwenden Sie z.B. den Wert `fr` zum Anfordern von Namen in Französisch, oder verwenden Sie den Wert `zh-Hant` zum Anfordern von Namen in Chinesisch (traditionell).<br/>Namen werden in englischer Sprache bereitgestellt, wenn keine Zielsprache angegeben wird oder keine Lokalisierung verfügbar ist.
+    </td>
+  </tr>
+  <tr>
+    <td>X-ClientTraceId</td>
+    <td>*Optionaler Anforderungsheader*.<br/>Eine vom Client generierte GUID zur eindeutigen Identifizierung der Anforderung.</td>
+  </tr>
+</table> 
+
+Authentifizierung ist nicht erforderlich, um Sprachressourcen abzurufen.
+
+## <a name="response-body"></a>Antworttext
+
+Ein Client verwendet den `scope`-Abfrageparameter zum Definieren, an welchen Gruppen von Sprachen er interessiert ist.
+
+* `scope=translation` bietet unterstützte Sprachen, um Text aus einer Sprache in eine andere Sprache zu übersetzen.
+
+* `scope=transliteration` bietet Funktionen zum Konvertieren von Text in einer Sprache aus einem Skript in ein anderes Skript.
+
+* `scope=dictionary` bietet Sprachpaare, für die `Dictionary`-Vorgänge Daten zurückgeben.
+
+Ein Client kann mehrere Gruppen gleichzeitig abrufen, indem er eine durch Trennzeichen getrennte Liste von Namen angibt. Beispielsweise würde `scope=translation,transliteration,dictionary` unterstützte Sprachen für alle Gruppen zurückgeben.
+
+Eine erfolgreiche Antwort ist ein JSON-Objekt mit einer Eigenschaft für jede angeforderte Gruppe:
+
+```json
+{
+    "translation": {
+        //... set of languages supported to translate text (scope=translation)
+    },
+    "transliteration": {
+        //... set of languages supported to convert between scripts (scope=transliteration)
+    },
+    "dictionary": {
+        //... set of languages supported for alternative translations and examples (scope=dictionary)
+    }
+}
+```
+
+Der Wert für jede Eigenschaft lautet wie folgt.
+
+* `translation`-Eigenschaft
+
+  Der Wert der `translation`-Eigenschaft ist ein Wörterbuch aus Schlüssel-Wert-Paaren. Jeder Schlüssel ist ein BCP 47-Sprachtag. Ein Schlüssel identifiziert eine Sprache, in die oder aus der Text übersetzt werden kann. Der Wert, der dem Schlüssel zugeordnet ist, ist ein JSON-Objekt mit Eigenschaften, die die Sprache beschreiben:
+
+  * `name`: Der Anzeigename der Sprache im Gebietsschema, der über den `Accept-Language`-Header angefordert wurde.
+
+  * `nativeName`: Der Anzeigename der Sprache in dem Gebietsschema, das nativ für diese Sprache ist.
+
+  * `dir`: Die Direktionalität, also `rtl` für Rechts-nach-links-Sprachen bzw. `ltr` für Links-nach-rechts-Sprachen.
+
+  Der folgende Code zeigt ein Beispiel:
+          
+  ```json
+  {
+    "translation": {
+      ...
+      "fr": {
+        "name": "French",
+        "nativeName": "Français",
+        "dir": "ltr"
+      },
+      ...
+    }
+  }
+  ```
+
+* `transliteration`-Eigenschaft
+
+  Der Wert der `transliteration`-Eigenschaft ist ein Wörterbuch aus Schlüssel-Wert-Paaren. Jeder Schlüssel ist ein BCP 47-Sprachtag. Ein Schlüssel identifiziert eine Sprache, für die Text aus einem Skript in ein anderes Skript konvertiert werden kann. Der Wert, der dem Schlüssel zugeordnet ist, ist ein JSON-Objekt mit Eigenschaften, die die Sprache und deren unterstützte Skripts beschreiben:
+
+  * `name`: Der Anzeigename der Sprache im Gebietsschema, der über den `Accept-Language`-Header angefordert wurde.
+
+  * `nativeName`: Der Anzeigename der Sprache in dem Gebietsschema, das nativ für diese Sprache ist.
+
+  * `scripts`: Die Liste der Skripts, aus denen die Konvertierung erfolgen soll. Jedes Element der `scripts`-Liste verfügt über Eigenschaften:
+
+    * `code`: Code, der das Skript identifiziert.
+
+    * `name`: Der Anzeigename des Skripts im Gebietsschema, der über den `Accept-Language`-Header angefordert wurde.
+
+    * `nativeName`: Der Anzeigename der Sprache in dem Gebietsschema, das nativ für die Sprache ist.
+
+    * `dir`: Die Direktionalität, also `rtl` für Rechts-nach-links-Sprachen bzw. `ltr` für Links-nach-rechts-Sprachen.
+
+    * `toScripts`: Die Liste der Skripts, in die Text konvertiert werden kann. Jedes Element der `toScripts`-Liste verfügt über die Eigenschaften `code`, `name`, `nativeName` und `dir` (wie zuvor beschrieben).
+
+  Der folgende Code zeigt ein Beispiel:
+
+  ```json
+  {
+    "transliteration": {
+      ...
+      "ja": {
+        "name": "Japanese",
+        "nativeName": "日本語",
+        "scripts": [
+          {
+            "code": "Jpan",
+            "name": "Japanese",
+            "nativeName": "日本語",
+            "dir": "ltr",
+            "toScripts": [
+              {
+                "code": "Latn",
+                "name": "Latin",
+                "nativeName": "ラテン語",
+                "dir": "ltr"
+              }
+            ]
+          },
+          {
+            "code": "Latn",
+            "name": "Latin",
+            "nativeName": "ラテン語",
+            "dir": "ltr",
+            "toScripts": [
+              {
+                "code": "Jpan",
+                "name": "Japanese",
+                "nativeName": "日本語",
+                "dir": "ltr"
+              }
+            ]
+          }
+        ]
+      },
+      ...
+    }
+  }
+  ```
+
+* `dictionary`-Eigenschaft
+
+  Der Wert der `dictionary`-Eigenschaft ist ein Wörterbuch aus Schlüssel-Wert-Paaren. Jeder Schlüssel ist ein BCP 47-Sprachtag. Der Schlüssel identifiziert eine Sprache, für die alternative Übersetzungen und Rückübersetzungen verfügbar sind. Der Wert ist ein JSON-Objekt, das die Quellsprache und die Zielsprachen mit verfügbaren Übersetzungen beschreibt:
+
+  * `name`: Der Anzeigename der Quellsprache im Gebietsschema, der über den `Accept-Language`-Header angefordert wurde.
+
+  * `nativeName`: Der Anzeigename der Sprache in dem Gebietsschema, das nativ für diese Sprache ist.
+
+  * `dir`: Die Direktionalität, also `rtl` für Rechts-nach-links-Sprachen bzw. `ltr` für Links-nach-rechts-Sprachen.
+
+  * `translations`: Die Liste der Sprachen mit alterativen Übersetzungen und Beispiele für die in der Quellsprache ausgedrückte Abfrage. Jedes Element der `translations`-Liste verfügt über Eigenschaften:
+
+    * `name`: Der Anzeigename der Zielsprache im Gebietsschema, der über den `Accept-Language`-Header angefordert wurde.
+
+    * `nativeName`: Der Anzeigename der Zielsprache in dem Gebietsschema, das nativ für die Zielsprache ist.
+
+    * `dir`: Die Direktionalität, also `rtl` für Rechts-nach-links-Sprachen bzw. `ltr` für Links-nach-rechts-Sprachen.
+    
+    * `code`: Sprachcode, der die Zielsprache identifiziert.
+
+  Der folgende Code zeigt ein Beispiel:
+
+  ```json
+  "es": {
+    "name": "Spanish",
+    "nativeName": "Español",
+    "dir": "ltr",
+    "translations": [
+      {
+        "name": "English",
+        "nativeName": "English",
+        "dir": "ltr",
+        "code": "en"
+      }
+    ]
+  },
+  ```
+
+Die Struktur des Antwortobjekts ändert sich ohne eine Änderung in der Version der API nicht. Für die gleiche Version der API kann sich die Liste der verfügbaren Sprachen im Laufe der Zeit ändern, da Microsoft Translator die Liste der von seinen Diensten unterstützten Sprachen ständig erweitert.
+
+Die Liste der unterstützten Sprachen ändert sich nicht häufig. Um Netzwerkbandbreite zu sparen und die Reaktionsfähigkeit zu verbessern, sollte eine Clientanwendung die Zwischenspeicherung von Sprachressourcen und des entsprechenden Entitätstags (`ETag`) in Betracht ziehen. Dann kann die Clientanwendung regelmäßig (z.B. ein Mal alle 24 Stunden) den Dienst abfragen, um die neuesten unterstützten Sprachen abzurufen. Das Übergeben des aktuellen `ETag`-Werts in einem `If-None-Match`-Headerfeld ermöglicht dem Dienst, die Antwort zu optimieren. Wenn die Ressource nicht geändert wurde, gibt der Dienst den Statuscode 304 sowie einen leeren Antworttext zurück.
+
+## <a name="response-headers"></a>Antwortheader
+
+<table width="100%">
+  <th width="20%">Header</th>
+  <th>BESCHREIBUNG</th>
+  <tr>
+    <td>ETag</td>
+    <td>Der aktuelle Wert des Entitätstags für die angeforderten Gruppen unterstützter Sprachen. Um nachfolgende Anforderungen effizienter zu gestalten, kann der Client den `ETag`-Wert in einem `If-None-Match`-Headerfeld senden.
+    </td>
+  </tr>
+  <tr>
+    <td>X-RequestId</td>
+    <td>Der Wert, der vom Dienst für die Identifizierung der Anforderung generiert wird. Er wird zu Problembehandlungszwecken verwendet.</td>
+  </tr>
+</table> 
+
+## <a name="response-status-codes"></a>Antwortstatuscodes
+
+Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zurückgeben kann. 
+
+<table width="100%">
+  <th width="20%">Statuscode</th>
+  <th>BESCHREIBUNG</th>
+  <tr>
+    <td>200</td>
+    <td>Erfolgreich.</td>
+  </tr>
+  <tr>
+    <td>304</td>
+    <td>Die Ressource wurde seit der in den Anforderungsheadern `If-None-Match` angegebenen Version nicht geändert.</td>
+  </tr>
+  <tr>
+    <td>400</td>
+    <td>Einer der Abfrageparameter fehlt oder ist ungültig. Korrigieren Sie die Anforderungsparameter, bevor Sie es erneut versuchen.</td>
+  </tr>
+  <tr>
+    <td>429</td>
+    <td>Der Aufrufer sendet zu viele Anforderungen.</td>
+  </tr>
+  <tr>
+    <td>500</td>
+    <td>Unerwarteter Fehler. Wenn der Fehler weiterhin besteht, melden Sie Ihn mit Datum und Zeitpunkt des Fehlers, dem Anforderungsbezeichner aus dem Anforderungsheader `X-RequestId` sowie dem Clientbezeichner aus dem Anforderungsheader `X-ClientTraceId`.</td>
+  </tr>
+  <tr>
+    <td>503</td>
+    <td>Server vorübergehend nicht erreichbar. Wiederholen Sie die Anforderung. Wenn der Fehler weiterhin besteht, melden Sie Ihn mit Datum und Zeitpunkt des Fehlers, dem Anforderungsbezeichner aus dem Anforderungsheader `X-RequestId` sowie dem Clientbezeichner aus dem Anforderungsheader `X-ClientTraceId`.</td>
+  </tr>
+</table> 
+
+## <a name="examples"></a>Beispiele
+
+Im folgenden Beispiel wird dargestellt, wie Sprachen abgerufen werden, die für die Textübersetzung unterstützt werden.
+
+# <a name="curltabcurl"></a>[curl](#tab/curl)
+
+```
+curl "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation"
+```
+
+---

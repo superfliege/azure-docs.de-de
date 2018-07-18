@@ -5,15 +5,15 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 05/04/2018
+ms.date: 06/29/2018
 ms.topic: tutorial
 ms.service: event-grid
-ms.openlocfilehash: 31c8dd520079046808b32dad0d338415bed71c58
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: ee504f805c536ba9a6186514206546c3df1f0f1a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302976"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127712"
 ---
 # <a name="route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Weiterleiten benutzerdefinierter Ereignisse an Azure Relay Hybrid Connections mit Azure-Befehlszeilenschnittstelle und Event Grid
 
@@ -55,7 +55,7 @@ Sie abonnieren ein Thema, um Event Grid mitzuteilen, welche Ereignisse Sie nachv
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Relay/namespaces/<relay-namespace>/hybridConnections/<hybrid-connection-name>`
 
-Das folgende Skript ruft die Ressourcen-ID des Relaynamespaces ab. Es erstellt die ID für die Hybridverbindung und abonniert ein Event Grid-Thema. Es legt den Endpunkttyp auf `hybridconnection` fest und verwendet die Hybridverbindungs-ID für den Endpunkt.
+Das folgende Skript ruft die Ressourcen-ID des Relaynamespaces ab. Es erstellt die ID für die Hybridverbindung und abonniert ein Event Grid-Thema. Das Skript legt den Endpunkttyp auf `hybridconnection` fest und verwendet die Hybridverbindungs-ID für den Endpunkt.
 
 ```azurecli-interactive
 relayname=<namespace-name>
@@ -73,9 +73,25 @@ az eventgrid event-subscription create \
   --endpoint $hybridid
 ```
 
+## <a name="create-application-to-process-events"></a>Erstellen einer Anwendung zum Verarbeiten von Ereignissen
+
+Sie benötigen eine Anwendung, die Ereignisse von der Hybridverbindung abrufen kann. Im [Verbraucherbeispiel für die Microsoft Azure Event Grid-Hybridverbindung in C#](https://github.com/Azure-Samples/event-grid-dotnet-hybridconnection-destination) wird dieser Vorgang ausgeführt. Sie haben die erforderlichen Schritte bereits abgeschlossen.
+
+1. Stellen Sie sicher, dass Sie über Visual Studio 2017 Version 15.5 oder höher verfügen.
+
+1. Klonen Sie das Repository auf Ihren lokalen Computer.
+
+1. Laden Sie das Projekt „HybridConnectionConsumer“ in Visual Studio.
+
+1. Ersetzen Sie in „Program.cs“ `<relayConnectionString>` und `<hybridConnectionName>` mit der Verbindungszeichenfolge und den Namen der Hybridverbindung, die Sie erstellt haben.
+
+1. Kompilieren Sie die Anwendung, und führen Sie sie über Visual Studio aus.
+
 ## <a name="send-an-event-to-your-topic"></a>Senden eines Ereignisses an Ihr Thema
 
-Wir lösen nun ein Ereignis aus, um zu sehen, wie Event Grid die Nachricht an Ihren Endpunkt weiterleitet. Zunächst rufen wir die URL und den Schlüssel für das benutzerdefinierte Thema ab. Verwenden Sie auch hier wieder Ihren Themanamen für `<topic_name>`.
+Nun wird ein Ereignis ausgelöst, um zu sehen, wie Event Grid die Nachricht an Ihren Endpunkt weiterleitet. In diesem Artikel erfahren Sie, wie Sie Azure CLI zum Auslösen des Ereignisses verwenden. Alternativ können Sie die [Event Grid-Herausgeber-App](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/tree/master/EventGridPublisher) verwenden.
+
+Zunächst rufen wir die URL und den Schlüssel für das benutzerdefinierte Thema ab. Verwenden Sie auch hier wieder Ihren Themanamen für `<topic_name>`.
 
 ```azurecli-interactive
 endpoint=$(az eventgrid topic show --name <topic_name> -g gridResourceGroup --query "endpoint" --output tsv)
@@ -102,7 +118,7 @@ az group delete --name gridResourceGroup
 
 Sie haben gelernt, wie Sie Themen und Ereignisabonnements erstellen. Nun können Sie sich ausführlicher darüber informieren, welche Möglichkeiten Event Grid bietet:
 
-- [An introduction to Azure Event Grid](overview.md) (Einführung in Azure Event Grid)
+- [Einführung in Azure Event Grid](overview.md)
 - [Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Webendpunkt](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
-- [Monitor virtual machine changes with Azure Event Grid and Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md) (Überwachen von Änderungen an virtuellen Computer mit Azure Event Grid und Logic Apps)
+- [Überwachen von Änderungen an virtuellen Computern mit Azure Event Grid und Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md)
 - [Streamen von Big Data in ein Data Warehouse](event-grid-event-hubs-integration.md)

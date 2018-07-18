@@ -3,26 +3,27 @@ title: Kompatibilitätsgrad von Datenmodellen in Azure Analysis Services | Micro
 description: Grundlegendes zum Kompatibilitätsgrad von tabellarischen Datenmodellen
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 231a7ea42560aac3fba0ccf27e27123320f219a3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 17a75e86d5539427c8837b3077aacf85b4681ad6
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447522"
 ---
 # <a name="compatibility-level-for-analysis-services-tabular-models"></a>Kompatibilitätsgrad für tabellarische Analysis Services-Modelle
 
-Der *Kompatibilitätsgrad* bezieht sich auf releasespezifische Verhalten in der Analysis Services-Engine. Änderungen am Kompatibilitätsgrad werden üblicherweise im Zuge der Hauptreleases von SQL Server vorgenommen. Diese Änderungen werden auch in Azure Analysis Services implementiert, um die Parität zwischen beiden Plattformen aufrechtzuerhalten. Änderungen am Kompatibilitätsgrad wirken sich auch auf die in Ihren tabellarischen Modellen verfügbaren Funktionen aus. Beispielsweise weisen DirectQuery und tabellarische Objektmetadaten je nach Kompatibilitätsgrad verschiedene Implementierungen auf. 
+Der *Kompatibilitätsgrad* bezieht sich auf releasespezifische Verhalten in der Analysis Services-Engine. Änderungen am Kompatibilitätsgrad werden üblicherweise im Zuge der Hauptreleases von SQL Server vorgenommen. Diese Änderungen werden auch in Azure Analysis Services implementiert, um die Parität zwischen beiden Plattformen aufrechtzuerhalten. Änderungen am Kompatibilitätsgrad wirken sich auch auf die in Ihren tabellarischen Modellen verfügbaren Funktionen aus. Beispielsweise weisen DirectQuery und tabellarische Objektmetadaten je nach Kompatibilitätsgrad verschiedene Implementierungen auf. Der Kompatibilitätsgrad wird im tabellarischen Modellprojekt in Visual Studio (SSDT) angegeben. Tabellarische Modelle, die in Power BI Desktop erstellt und daraus importiert werden, haben lediglich den Kompatibilitätsgrad 1400.
 
-Azure Analysis Services unterstützt tabellarische Modelle mit den Kompatibilitätsgraden 1200 und 1400.
+Azure Analysis Services unterstützt tabellarische Modelle mit den Kompatibilitätsgraden 1200 und 1400. 
 
 Der aktuelle Kompatibilitätsgrad ist 1400. Der jeweilige Grad stimmt mit SQL Server 2017 Analysis Services überein. Zu den wesentlichen Features im Kompatibilitätsgrad 1400 zählen Folgende:
 
-*  Neue Infrastruktur für die Datenkonnektivität und den Import in tabellarische Modelle mit Unterstützung für TOM-APIs und TMSL-Skripts. Diese neue Feature aktiviert die Unterstützung für zusätzliche Datenquellen wie etwa Azure Blob Storage.
+*  Neue Features für Datenkonnektivität und Import mit Unterstützung von TOM-APIs und TMSL-Skripts. 
 *  Datentransformations- und Datenmashupfunktionen mithilfe von Get Data- und M-Ausdrücken
 *  Measures bieten Unterstützung für eine Detailzeileneigenschaft mit einem DAX-Ausdruck. Diese Eigenschaft aktiviert Clienttools wie Microsoft Excel, um ein Drilldown auf detaillierte Daten aus einem aggregierten Bericht auszuführen. Wenn Benutzer beispielsweise den monatlichen Gesamtumsatz für eine Region anzeigen, können sie die zugehörigen Auftragsdetails einsehen. 
 *  Sicherheit auf Objektebene für Tabellen- und Spaltennamen sowie die darin enthaltenen Daten

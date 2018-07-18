@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: b2369f9468c54f10d01203841b6d7ba44b7ba2de
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f8e6ad4b23eeaf46cccac9c8ff9d41f71511129d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642851"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Verwendung der Service Fabric-Plattform durch Reliable Actors
 In diesem Artikel wird die Funktionsweise von Reliable Actors auf der Azure Service Fabric-Plattform beschrieben. Reliable Actors arbeiten in einem Framework, das in einer Implementierung des zustandsbehafteten zuverlässigen Diensts gehostet wird, der als *Akteurdienst* bezeichnet wird. Der Akteurdienst enthält alle Komponenten, die zum Verwalten des Lebenszyklus und zum Übermitteln von Nachrichten für Ihre Akteure erforderlich sind:
@@ -41,9 +42,6 @@ In Reliable Services erbt der Dienst die `StatefulService`-Klasse. Diese Klasse 
 * Dienstsicherung und -wiederherstellung
 * Gemeinsame Verwendung von Funktionen für alle Akteure, z. B. ein Schaltkreisunterbrecher
 * Remoteprozeduraufrufe für den Akteurdienst selbst sowie für einzelne Akteure
-
-> [!NOTE]
-> Zustandsbehaftete Dienste werden unter Java/Linux derzeit nicht unterstützt.
 
 Weitere Informationen finden Sie unter [Implementieren von Features auf Dienstebene in Ihren Actordienst](service-fabric-reliable-actors-using.md).
 

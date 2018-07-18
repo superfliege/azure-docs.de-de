@@ -14,11 +14,12 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8407249ed56059f278f8e4f84a4466ab286a0c24
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c0823fa839df98fa81f42bfbb3f7cd2bec6d7c1a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38582535"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe des Data Factory-Kopier-Assistenten
 > [!div class="op_single_selector"]
@@ -32,7 +33,7 @@ ms.lasthandoff: 03/23/2018
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Wenn Sie Version 2 des Data Factory-Diensts verwenden, die sich derzeit in der Vorschauphase befindet, finden Sie weitere Informationen im [Tutorial zu Kopieraktivitäten in der Dokumentation zu Version 2](../quickstart-create-data-factory-dot-net.md). 
+> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen im [Tutorial zur Kopieraktivität](../quickstart-create-data-factory-dot-net.md). 
 
 
 In diesem Tutorial wird gezeigt, wie Sie mithilfe des **Kopier-Assistenten** Daten aus Azure Blob Storage in Azure SQL-Datenbank kopieren. 
@@ -74,7 +75,7 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
    ![Data Factory-Startseite](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-home-page.png)
 
 ## <a name="launch-copy-wizard"></a>Starten des Kopier-Assistenten
-1. Klicken Sie auf dem Blatt „Data Factory“ auf **Daten kopieren (VORSCHAU)**, um den **Kopier-Assistenten** zu starten. 
+1. Klicken Sie auf dem Blatt „Data Factory“ auf **Daten kopieren**, um den **Kopier-Assistenten** zu starten. 
    
    > [!NOTE]
    > Wenn Sie feststellen, dass der Webbrowser bei der Autorisierung hängen bleibt, deaktivieren Sie in den Browsereinstellungen die Einstellung **Cookies und Websitedaten von Drittanbietern blockieren**, oder lassen Sie die Einstellung aktiviert, und erstellen Sie eine Ausnahme für **login.microsoftonline.com**. Versuchen Sie anschließend erneut, den Assistenten zu starten.

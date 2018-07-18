@@ -23,6 +23,8 @@
       href: monitoring-data-sources.md
     - name: Azure Monitor
       href: monitoring-overview-azure-monitor.md
+    - name: Agents
+      href: ../monitoring/monitoring-overview-azure-agents.md
     - name: Metriken
       href: monitoring-overview-metrics.md
     - name: Autoscale
@@ -101,6 +103,8 @@
           href: monitoring-stream-diagnostic-logs-to-event-hubs.md
         - name: Aktivieren der Diagnoseeinstellungen mithilfe von Resource Manager-Vorlagen
           href: monitoring-enable-diagnostic-logs-using-template.md
+        - name: Vorbereiten für das Diagnoseprotokollformat JSON Lines
+          href: monitor-diagnostic-logs-append-blobs.md
     - name: Verwenden des Aktivitätsprotokolls
       items:
         - name: Anzeigen von Ereignissen im Aktivitätsprotokoll
@@ -129,6 +133,8 @@
           href: monitoring-rest-api-walkthrough.md
         - name: Azure PowerShell-Beispiele
           href: insights-powershell-samples.md
+        - name: Azure CLI-Beispiele
+          href: insights-cli-samples.md
     - name: Verwenden der Azure-Diagnoseerweiterung
       items:
         - name: Senden an Azure Storage

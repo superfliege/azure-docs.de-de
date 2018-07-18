@@ -1,11 +1,11 @@
 ---
-title: "Bereitstellen des StorSimple-Geräte-Manager-Diensts | Microsoft-Dokumentation"
-description: "Erläutert das Erstellen und Löschen des StorSimple-Geräte-Manager-Diensts im Azure-Portal und beschreibt die Verwaltung des Dienstregistrierungsschlüssels."
+title: Bereitstellen des StorSimple-Geräte-Manager-Diensts | Microsoft-Dokumentation
+description: Erläutert das Erstellen und Löschen des StorSimple-Geräte-Manager-Diensts im Azure-Portal und beschreibt die Verwaltung des Dienstregistrierungsschlüssels.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 28499494-8c4d-4a7f-9d44-94b2b8a93c93
 ms.service: storsimple
 ms.devlang: na
@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 11/29/2016
 ms.author: alkohli
 ms.openlocfilehash: 1881a0625b107ae1a90e5b772f5296a4d728973d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38688152"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>Bereitstellen des StorSimple-Geräte-Manager-Diensts für StorSimple Virtual Array
 ## <a name="overview"></a>Übersicht
@@ -27,14 +28,14 @@ Der StorSimple-Geräte-Manager-Dienst wird in Microsoft Azure ausgeführt. Er ve
 
 Zu den allgemeinen Aufgaben im Zusammenhang mit einem StorSimple-Geräte-Manager-Dienst zählen:
 
-* Dienst erstellen
+* Erstellen von Diensten
 * Löschen von Diensten
 * Abrufen des Dienstregistrierungsschlüssels
-* Dienstregistrierungsschlüssel erneut generieren
+* Neugenerieren des Dienstregistrierungsschlüssels
 
 In diesem Tutorial wird beschrieben, wie diese Aufgaben durchgeführt werden. Die in diesem Artikel enthaltenen Informationen gelten nur für StorSimple Virtual Arrays. Weitere Informationen zur StorSimple 8000-Serie finden Sie unter [Bereitstellen des StorSimple Manager-Diensts](storsimple-manage-service.md).
 
-## <a name="create-a-service"></a>Dienst erstellen
+## <a name="create-a-service"></a>Erstellen von Diensten
 
 Für das Erstellen eines Diensts ist Folgendes erforderlich:
 

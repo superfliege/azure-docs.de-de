@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 05/30/2018
 ms.author: iainfou
-ms.openlocfilehash: c47822bebdc8b3cc8896fe56b8f9a4ce317495c3
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fb3639b8ce5c50773bec0ee429e1fa2f7277671b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364300"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716617"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure
 Virtuelle Linux-Computer (Linux-VMs) in Azure werden normalerweise von der Befehlszeile aus mithilfe einer SSH-Verbindung (Secure Shell) verwaltet. Wenn Sie erst in Linux einsteigen oder schnell eine Fehlerbehandlung durchführen müssen, ist die Verwendung von Remotedesktop unter Umständen einfacher. Dieser Artikel erläutert im Detail die Installation und Konfiguration von Desktopumgebung ([XFCE](https://www.xfce.org)) und Remotedesktop ([XRDP](http://www.xrdp.org)) für Ihren virtuellen Linux-Computer mithilfe des Resource Manager-Bereitstellungsmodells.
@@ -37,7 +37,7 @@ Auf den meisten virtuellen Linux-Computern in Azure ist standardmäßig keine De
 
 Im folgenden Beispiel wird die schlanke [XFCE4](https://www.xfce.org/)-Desktopumgebung auf einem virtuellen Ubuntu 16.04 LTS-Computer (VM) installiert. Die Befehle für andere Distributionen weichen geringfügig ab (verwenden Sie beispielsweise `yum`, um unter Red Hat Enterprise Linux zu installieren und passende `selinux`-Regeln zu konfigurieren, oder verwenden Sie `zypper` für die Installation unter SUSE).
 
-Stellen Sie zuerst eine SSH-Verbindung mit Ihrer VM her. Im folgenden Beispiel wird eine Verbindung mit dem virtuellen Computer namens *myvm.westus.cloudapp.azure.com* mit dem Benutzernamen *azureuser* hergestellt:
+Stellen Sie zuerst eine SSH-Verbindung mit Ihrer VM her. Im folgenden Beispiel wird mit dem Benutzernamen *azureuser* eine Verbindung mit dem virtuellen Computer namens *myvm.westus.cloudapp.azure.com* hergestellt. Verwenden Sie Ihre eigenen Werte:
 
 ```bash
 ssh azureuser@myvm.westus.cloudapp.azure.com
@@ -86,7 +86,7 @@ sudo passwd azureuser
 ## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>Erstellen einer Netzwerksicherheitsgruppen-Regel für den Remotedesktop-Datenverkehr
 Um zuzulassen, dass Remotedesktop-Datenverkehr Ihren virtuellen Linux-Computer erreicht, muss eine Netzwerksicherheitsgruppen-Regel erstellt werden, die TCP an Port 3389 an Ihren virtuellen Computer durchlässt. Weitere Informationen zu Netzwerksicherheitsgruppen-Regeln finden Sie unter [Was ist eine Netzwerksicherheitsgruppe?](../../virtual-network/security-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Alternativ können Sie [das Azure-Portal zum Erstellen einer Netzwerksicherheitsgruppen-Regel verwenden](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Im folgenden Beispiel wird eine Netzwerksicherheitsgruppen-Regel mit [az vm open-port](/cli/azure/vm#az_vm_open_port) für Port *3389* erstellt.
+Im folgenden Beispiel wird eine Netzwerksicherheitsgruppen-Regel mit [az vm open-port](/cli/azure/vm#az-vm-open-port) für Port *3389* erstellt. Öffnen Sie aus der Azure CLI 2.0 – nicht aus der SSH-Sitzung mit Ihrem virtuellen Computer – die folgende Netzwerksicherheitsgruppen-Regel:
 
 ```azurecli
 az vm open-port --resource-group myResourceGroup --name myVM --port 3389

@@ -1,6 +1,6 @@
 - name: Azure HDInsight-Dokumentation
   href: /azure/hdinsight
-- name: R Server auf HDInsight
+- name: ML Services in HDInsight
   items:
     - name: Übersicht
       href: r-server-overview.md
@@ -9,7 +9,7 @@
       maintainContext: true
 - name: Erste Schritte
   items:
-    - name: Einstieg in R Server
+    - name: Erste Schritte mit ML Services
       href: r-server-get-started.md
     - name: Installieren von HDInsight-Apps
       href: ../hdinsight-apps-install-applications.md
@@ -19,11 +19,11 @@
       maintainContext: true
 - name: Anleitung
   items:
-    - name: Verwenden von R Server
+    - name: Verwenden von ML Services
       items:
-        - name: Verwalten eines R Server-Clusters
+        - name: Verwalten eines ML Services-Clusters
           href: r-server-hdinsight-manage.md
-        - name: Operationalisieren eines R Server-Clusters
+        - name: Operationalisieren eines ML Services-Clusters
           href: r-server-operationalize.md
         - name: Speicheroptionen
           href: r-server-storage.md
@@ -276,13 +276,10 @@
         - name: Verbinden von HDInsight mit dem lokalen Netzwerk
           href: ../connect-on-premises-network.md
           maintainContext: true
-    - name: Überwachen mit OMS
+    - name: Überwachung mithilfe von Log Analytics
       items:
         - name: Verwenden von Azure Log Analytics
           href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-          maintainContext: true
-        - name: Clusterspezifische Dashboards
-          href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
           maintainContext: true
         - name: Verwenden von Abfragen mit Log Analytics
           href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
@@ -311,6 +308,10 @@
     - name: Versionshinweise
       href: ../hdinsight-release-notes.md
       maintainContext: true
+      items:
+        - name: Archivierte Versionshinweise
+          href: ../hdinsight-release-notes-archive.md
+          maintainContext: true
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: Hilfe im Forum

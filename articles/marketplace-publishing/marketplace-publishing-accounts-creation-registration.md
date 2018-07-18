@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32179332"
 ---
 # <a name="create-a-microsoft-developer-account"></a>Erstellen eines Microsoft-Entwicklerkontos
 In diesem Artikel werden die Schritte zur Erstellung und Registrierung eines Kontos erläutert, die notwendig sind, um anerkannter Microsoft-Entwickler im Azure Marketplace zu werden.

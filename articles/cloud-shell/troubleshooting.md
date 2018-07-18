@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: damaerte
-ms.openlocfilehash: 3c01a31eae2b90ecb54cbfba7f565fd140db3773
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cffa67509690f4c594182fbe8104f0620da56bee
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608949"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Problembehandlung und Einschränkungen bei Azure Cloud Shell
 
@@ -43,11 +44,6 @@ Zu den bekannten Lösungen für die Behandlung von Problemen in Azure Cloud Shel
  - **Auflösung**: Überprüfen Sie, ob Sie Ihre Netzwerkeinstellungen so konfiguriert haben, dass HTTPS- und Websocketanforderungen an Domänen unter *.console.azure.com gesendet werden können.
 
 ## <a name="bash-troubleshooting"></a>Problembehandlung bei Bash
-
-### <a name="cannot-run-az-login"></a>Ausführung von „az login“ ist nicht möglich.
-
-- **Details**: Die Ausführung von `az login` funktioniert nicht, da Sie bereits unter dem Konto authentifiziert sind, das zur Anmeldung bei Cloud Shell oder Azure-Portal verwendet wird.
-- **Auflösung**: Nutzen Sie Ihr Konto, das zum Anmelden oder Abmelden verwendet wird, und authentifizieren Sie sich erneut mit dem gewünschten Azure-Konto.
 
 ### <a name="cannot-run-the-docker-daemon"></a>Der Docker-Daemon kann nicht ausgeführt werden.
 

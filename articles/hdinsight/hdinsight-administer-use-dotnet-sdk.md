@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: 0feb1e344d70207d48e4ef07f5b45790425727ad
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 08c9d16570a923c79c81cebb8669a43488129d9a
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017936"
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Verwalten von Hadoop-Clustern in HDInsight mit .NET SDK
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Erfahren Sie, wie Sie HDInsight-Cluster mit dem [HDInsight.NET SDK](https://msdn.microsoft.com/library/mt271028.aspx)verwalten.
+Erfahren Sie, wie Sie HDInsight-Cluster mit dem [HDInsight.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)verwalten.
 
 **Voraussetzungen**
 
@@ -270,7 +271,7 @@ Weitere Informationen finden Sie unter [Verwenden von Oozie mit Hadoop zum Defin
 Siehe [Hochladen von Daten in HDInsight][hdinsight-upload-data].
 
 ## <a name="see-also"></a>Siehe auch
-* [Referenzdokumentation zum HDInsight .NET SDK](https://msdn.microsoft.com/library/mt271028.aspx)
+* [Referenzdokumentation zum HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
 * [Verwalten von HDInsight mit dem Azure-Portal][hdinsight-admin-portal]
 * [Verwalten von HDInsight über eine Befehlszeilenschnittstelle][hdinsight-admin-cli]
 * [Erstellen von HDInsight-Clustern][hdinsight-provision]

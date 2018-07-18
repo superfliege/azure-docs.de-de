@@ -14,11 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: b01e4498e63ab989b0b78246636cba50ed4f82d6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d08ac9f2cbdf98493b3132fa9dd3a3e973576451
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098816"
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Livestreaming mit lokalen Encodern, die Datenströme mit Mehrfachbitrate erstellen
 
@@ -145,7 +146,7 @@ Mit den Kanälen ist ein Vorschauendpunkt (Vorschau-URL) verfügbar, mit dem Sie
 
 Wenn Sie einen Kanal erstellen, können Sie die Vorschau-URL abrufen. Der Kanal muss zum Abrufen der URL nicht den Status **Running** (Wird ausgeführt) aufweisen. Sobald der Kanal mit dem Erfassen von Daten beginnt, können Sie eine Vorschau des Streams anzeigen.
 
-Zurzeit kann die Vorschau des Datenstroms unabhängig vom angegebenen Eingabetyp nur im Format „Fragmentiertes MP4“ (Smooth Streaming) bereitgestellt werden. Sie können den Player unter [Smooth Streaming Health Monitor](http://smf.cloudapp.net/healthmonitor) verwenden, um das Smooth Streaming zu testen. Außerdem können Sie einen Player verwenden, der im Azure-Portal gehostet wird, um Ihren Datenstrom anzuzeigen.
+Zurzeit kann die Vorschau des Datenstroms unabhängig vom angegebenen Eingabetyp nur im Format „Fragmentiertes MP4“ (Smooth Streaming) bereitgestellt werden. Sie können den Player unter [Smooth Streaming Health Monitor](http://playready.directtaps.net/smoothstreaming/) verwenden, um das Smooth Streaming zu testen. Außerdem können Sie einen Player verwenden, der im Azure-Portal gehostet wird, um Ihren Datenstrom anzuzeigen.
 
 #### <a name="allowed-ip-addresses"></a>Zulässige IP-Adressen
 Sie können die IP-Adressen definieren, die zum Herstellen einer Verbindung mit dem Vorschauendpunkt zugelassen sind. Wenn keine IP-Adressen angegeben werden, ist jede IP-Adresse zulässig. Eine zulässige IP-Adresse kann wie folgt angegeben werden:

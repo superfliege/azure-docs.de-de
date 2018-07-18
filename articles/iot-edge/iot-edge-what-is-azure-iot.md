@@ -1,24 +1,19 @@
 ---
-title: "Azure-Lösungen für das Internet der Dinge (IoT Edge) | Microsoft-Dokumentation"
-description: "Übersicht über eine Beispielarchitektur einer IoT-Lösung sowie über die Beziehung zum Azure IoT Hub-Dienst, zu Azure IoT-Geräte-SDKs, Azure IoT-Dienst-SDKs und anderen Azure-Diensten"
-services: iot-hub
-documentationcenter: 
+title: Azure-Lösungen für das Internet der Dinge (IoT Edge) | Microsoft-Dokumentation
+description: Übersicht über eine Beispielarchitektur einer IoT-Lösung sowie über die Beziehung zum Azure IoT Hub-Dienst, zu Azure IoT-Geräte-SDKs, Azure IoT-Dienst-SDKs und anderen Azure-Diensten
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: a859e379-dca7-42fa-bdf6-1125c86ad140
-ms.service: iot-hub
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-edge
+services: iot-edge
+ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: dobett
-ms.openlocfilehash: 587b733106d511ec63d71f67a06e520324a3e594
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 56b7bfe02ddb0f2c909b2f363c37308527ec8db1
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029091"
 ---
 [!INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
@@ -37,7 +32,7 @@ Informationen zu den Komponenten, die IoT Edge ermöglichen, finden Sie unter [H
 Wenn Sie Azure IoT Hub verwendet haben, kann es hilfreich sein, mit [Übersicht über den Azure IoT Hub-Dienst][lnk-iot-hub] zu beginnen.
 
 [lnk-deployment]: module-deployment-monitoring.md
-[lnk-overview]: how-iot-edge-works.md
+[lnk-overview]: about-iot-edge.md
 [lnk-iot-hub]: ../iot-hub/iot-hub-what-is-iot-hub.md
 [lnk-iot-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 [lnk-iotdev]: https://azure.microsoft.com/develop/iot/

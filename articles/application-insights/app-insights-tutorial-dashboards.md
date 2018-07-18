@@ -1,7 +1,7 @@
 ---
 title: Erstellen benutzerdefinierter Dashboards in Azure Application Insights | Microsoft-Dokumentation
 description: Tutorial zum Erstellen benutzerdefinierter KPI-Dashboards mithilfe von Azure Application Insights
-keywords: 
+keywords: ''
 services: application-insights
 author: mrbullwinkle
 ms.author: mbullwin
@@ -15,6 +15,7 @@ ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/13/2018
+ms.locfileid: "29178195"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Erstellen benutzerdefinierter KPI-Dashboards mithilfe von Azure Application Insights
 

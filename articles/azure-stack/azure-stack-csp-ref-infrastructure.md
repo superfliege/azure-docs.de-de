@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: 4ac808e0e85b1daeb54a3f2fd7bec0a7c10aa13e
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 7fe2a6444e605f388df68803b89643420b19fb54
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823485"
 ---
 ## <a name="usage-reporting-infrastructure-for-cloud-service-providers"></a>Nutzungsberichtsinfrastruktur für Cloud-Dienstanbieter
 
@@ -65,4 +66,4 @@ Die folgenden Begriffe und-Konzepte werden für Abrechnung und Nutzung in Azure 
 ## <a name="next-steps"></a>Nächste Schritte
 
  - Weitere Informationen über das CSP-Programm finden Sie unter [Programm für Cloud-Lösungsanbieter](https://partnercenter.microsoft.com/en-us/partner/programs).
- - Weitere Informationen zum Abrufen von Ressourcennutzungsinformationen aus Azure Stack finden Sie unter [Verbrauch und Abrechnung in Azure Stack](/azure-stack-billing-and-chargeback.md).
+ - Weitere Informationen zum Abrufen von Ressourcennutzungsinformationen aus Azure Stack finden Sie unter [Verbrauch und Abrechnung in Azure Stack](azure-stack-billing-and-chargeback.md).

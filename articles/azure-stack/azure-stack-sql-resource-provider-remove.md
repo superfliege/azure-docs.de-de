@@ -1,6 +1,6 @@
 ---
-title: Verwenden von SQL-Datenbanken in Azure Stack | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie in wenigen Schritten SQL-Datenbanken als Dienst in Azure Stack und den SQL Server-Ressourcenanbieteradapter bereitstellen können.
+title: Entfernen des SQL-Ressourcenanbieters in Azure Stack | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie den SQL-Ressourcenanbieter aus Ihrer Azure Stack-Bereitstellung entfernen.
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,33 +11,38 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 06/20/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: c2686a2d5241af46e70263d1827028aa7e9b2138
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 150d1c40463aa04527bdd6e356a4c24ef68b02ef
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33206162"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301897"
 ---
 # <a name="remove-the-sql-resource-provider"></a>Entfernen des SQL-Ressourcenanbieters
 
-Zum Entfernen des SQL-Ressourcenanbieters müssen unbedingt zuerst alle Abhängigkeiten entfernt werden:
+Bevor Sie den SQL-Ressourcenanbieter entfernen, müssen Sie alle Anbieterabhängigkeiten entfernen. Außerdem benötigen Sie eine Kopie des Bereitstellungspakets, mit dem der Ressourcenanbieter installiert wurde.
 
-1. Stellen Sie sicher, dass Sie das ursprüngliche Bereitstellungspaket verwenden, das Sie für diese Version des SQL-Ressourcenanbieteradapters heruntergeladen haben.
+## <a name="to-remove-the-sql-resource-provider"></a>So entfernen Sie den SQL-Ressourcenanbieter
 
-2. Alle Benutzerdatenbanken müssen aus dem Ressourcenanbieter gelöscht werden. (Die Daten werden dabei nicht gelöscht.) Diese Aufgabe sollte von den Benutzern selbst ausgeführt werden.
+1. Vergewissern Sie sich, dass Sie alle vorhandenen Abhängigkeiten des SQL-Ressourcenanbieters entfernt haben.
 
-3. Der Administrator muss die Hostserver aus dem SQL-Ressourcenanbieteradapter löschen.
+   > [!NOTE]
+   > Die Deinstallation des SQL-Ressourcenanbieters wird fortgesetzt, auch wenn abhängige Ressourcen den Ressourcenanbieter derzeit verwenden.
+  
+2. Rufen Sie eine Kopie der Binärdatei des SQL-Ressourcenanbieters ab, und führen Sie dann den Self-Extractor aus, um den Inhalt in ein temporäres Verzeichnis zu extrahieren.
 
-4. Der Administrator muss alle Pläne löschen, die auf den SQL-Ressourcenanbieteradapter verweisen.
+3. Öffnen Sie ein neues PowerShell-Konsolenfenster mit erhöhten Rechten, und wechseln Sie zu dem Verzeichnis, in dem Sie die Binärdateien des SQL-Ressourcenanbieters extrahiert haben.
 
-5. Der Administrator muss alle SKUs und Kontingente löschen, die dem SQL-Ressourcenanbieteradapter zugewiesen sind.
+4. Führen Sie das „DeploySqlProvider.ps1“-Skript mit den folgenden Parametern aus:
 
-6. Führen Sie das Bereitstellungsskript mit den folgenden Elementen erneut aus:
-    - Parameter „-Uninstall“
-    - Azure Resource Manager-Endpunkte
-    - DirectoryTenantID
-    - Anmeldeinformationen für das Dienstadministratorkonto
+    - **Deinstallieren**. Entfernt den Ressourcenanbieter und alle zugeordneten Ressourcen.
+    - **PrivilegedEndpoint**. Die IP-Adresse oder der DNS-Name des privilegierten Endpunkts.
+    - **CloudAdminCredential**. Die Anmeldeinformationen für den Cloudadministrator, die für den Zugriff auf den privilegierten Endpunkt erforderlich sind.
+    - **AzCredential**. Die Anmeldeinformationen für das Azure Stack-Dienstadministratorkonto. Verwenden Sie die gleichen Anmeldeinformationen wie bei der Bereitstellung von Azure Stack.
 
+## <a name="next-steps"></a>Nächste Schritte
+
+[Anbieten von App Services als PaaS](azure-stack-app-service-overview.md)

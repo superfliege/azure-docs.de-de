@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: REST-API-Anspruchsaustausch-Vorgänge als Orchestrierungsschritt | Microsoft-Dokumentation'
-description: Thema zu benutzerdefinierten Azure Active Directory B2C-Richtlinien und zur API-Integration
+title: REST-API-Anspruchsaustauschvorgänge als Orchestrierungsschritt in Azure Active Directory B2C | Microsoft-Dokumentation
+description: Thema zu benutzerdefinierten Azure Active Directory B2C-Richtlinien und zur API-Integration.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
-ms.openlocfilehash: 0a3f69f8262e67de624d4cd97e0cad49c6a96ef0
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: 74a84a72b76a8095db69c5d2cf1cf21c9cdad0a6
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447981"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustausch-Vorgängen in Ihre Azure AD B2C User Journey als Orchestrierungsschritt
 

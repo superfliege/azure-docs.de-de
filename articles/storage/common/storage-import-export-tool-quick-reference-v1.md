@@ -1,12 +1,12 @@
 ---
-title: "Kurzübersicht über Befehle des Azure Import/Export-Tools für Importaufträge (V1) | Microsoft-Dokumentation"
-description: "Befehlsreferenz für Befehle des Azure Import/Export-Tools, die häufig für Importaufträge verwendet werden. Dies bezieht sich auf V1 des Import/Export-Tools."
+title: Kurzübersicht über Befehle des Azure Import/Export-Tools für Importaufträge (V1) | Microsoft-Dokumentation
+description: Befehlsreferenz für Befehle des Azure Import/Export-Tools, die häufig für Importaufträge verwendet werden. Dies bezieht sich auf V1 des Import/Export-Tools.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23059345"
 ---
 # <a name="quick-reference-for-frequently-used-commands-for-import-jobs"></a>Kurzübersicht über häufig verwendete Befehle für Importaufträge
 Dieser Abschnitt enthält eine Kurzübersicht über einige häufig verwendete Befehle. Ausführliche Informationen zur Verwendung finden Sie unter [Vorbereiten von Festplatten für einen Importauftrag](../storage-import-export-tool-preparing-hard-drives-import-v1.md).  

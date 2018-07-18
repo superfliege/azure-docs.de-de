@@ -1,6 +1,6 @@
 ---
-title: "Erste Schritte – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation"
-description: "Dies ist eine detailliertere Übersicht über das Threat Modeling Tool in Aktion."
+title: Erste Schritte – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
+description: Dies ist eine detailliertere Übersicht über das Threat Modeling Tool in Aktion.
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/18/2017
+ms.locfileid: "26754185"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Erste Schritte mit dem Threat Modeling Tool
 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 0e573b4973ea30b990043b54c5cdcf0805135a40
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3c6602bdd90c82568a50ad7354d7abb7c6a472ae
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287747"
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Verwalten von Instanzen in Durable Functions (Azure Functions)
 
@@ -97,6 +98,24 @@ public static async Task Run(
 {
     var status = await client.GetStatusAsync(instanceId);
     // do something based on the current status.
+}
+```
+## <a name="querying-all-instances"></a>Abfragen aller Instanzen
+
+Sie können die `GetStatusAsync`-Methode verwenden, um die Status aller Instanzen der Orchestrierung abzufragen. Sie nimmt keine Parameter entgegen, oder Sie können ein `CancellationToken`-Objekt übergeben, falls Sie sie abbrechen möchten. Die Methode gibt Objekte mit denselben Eigenschaften wie die `GetStatusAsync`-Methode mit Parametern zurück, jedoch keinen Verlauf. 
+
+```csharp
+[FunctionName("GetAllStatus")]
+public static async Task Run(
+    [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")]HttpRequestMessage req,
+    [OrchestrationClient] DurableOrchestrationClient client,
+    TraceWriter log)
+{
+    IList<DurableOrchestrationStatus> instances = await starter.GetStatusAsync(); // You can pass CancellationToken as a parameter.
+    foreach (var instance in instances)
+    {
+        log.Info(JsonConvert.SerializeObject(instance));
+    };
 }
 ```
 
@@ -197,6 +216,41 @@ Je nach Zeitraum, der zum Abrufen der Antwort aus der Orchestrierungsinstanz erf
 
 > [!NOTE]
 > Das Format der Webhook-URLs kann in Abhängigkeit davon variieren, welche Version des Azure Functions-Hosts Sie ausführen. Das obige Beispiel gilt für den Azure Functions 2.0-Host.
+
+## <a name="retrieving-http-management-webhook-urls"></a>Abrufen von HTTP-Management-Webhook-URLs
+
+Externe Systeme können mit robusten Funktionen über die Webhook-URLs kommunizieren, die Teil der in [HTTP-APIs in Durable Functions (Azure Functions)](durable-functions-http-api.md) beschriebenen Standardantwort sind. Allerdings kann auch im Orchestrierungsclient oder in einer Aktivitätsfunktion über die [CreateHttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateHttpManagementPayload_)-Methode der [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html)-Klasse programmgesteuert auf die Webhook-URLs zugegriffen werden. 
+
+[CreateHttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateHttpManagementPayload_) verfügt über einen Parameter:
+
+* **instanceId**: die eindeutige ID der Instanz.
+
+Die Methode gibt eine Instanz von [HttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.HttpManagementPayload.html#Microsoft_Azure_WebJobs_Extensions_DurableTask_HttpManagementPayload_) mit den folgenden Zeichenfolgeneigenschaften zurück:
+
+* **Id**: die Instanz-ID der Orchestrierung (muss mit der Eingabe `InstanceId` identisch sein).
+* **StatusQueryGetUri**: die Status-URL der Orchestrierungsinstanz.
+* **SendEventPostUri**: URL der Orchestrierungsinstanz für die „Ereignisauslösung“.
+* **TerminatePostUri**: URL der Orchestrierungsinstanz für das „Beenden“.
+
+Aktivitätsfunktionen können eine Instanz von [HttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.HttpManagementPayload.html#Microsoft_Azure_WebJobs_Extensions_DurableTask_HttpManagementPayload_) zum Überwachen oder Auslösen von Ereignissen in einer Orchestrierung an externe Systeme senden:
+
+```csharp
+#r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
+
+public static void SendInstanceInfo(
+    [ActivityTrigger] DurableActivityContext ctx,
+    [OrchestrationClient] DurableOrchestrationClient client,
+    [DocumentDB(
+        databaseName: "MonitorDB",
+        collectionName: "HttpManagementPayloads",
+        ConnectionStringSetting = "CosmosDBConnection")]out dynamic document)
+{
+    HttpManagementPayload payload = client.CreateHttpManagementPayload(ctx.InstanceId);
+
+    // send the payload to Cosmos DB
+    document = new { Payload = payload, id = ctx.InstanceId };
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

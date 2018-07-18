@@ -5,7 +5,7 @@ services: service-bus-messaging
 documentationcenter: nodejs
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b9f5db85-7b6c-4cc7-bd2c-bd3087c99875
 ms.service: service-bus-messaging
 ms.workload: na
@@ -14,17 +14,26 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: sethm
-ms.openlocfilehash: d9e463273fff0ecc198b0574443c4241dde7be79
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: d3a7ebd135f705a6a3ea91feb4e037a9ed6d0c79
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38704995"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Verwenden von Service Bus-Themen und -Abonnements mit Node.js
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-In diesem Leitfaden erfahren Sie, wie Sie Service Bus-Themen und -Abonnements über Node.js-Anwendungen verwenden. Die behandelten Szenarios umfassen **das Erstellen von Themen und Abonnements**, **das Erstellen von Abonnementfiltern**, **das Senden von Nachrichten an ein Thema**, **das Empfangen von Nachrichten von einem Abonnement** und **das Löschen von Themen und Abonnements**. Weitere Informationen zu Themen und Abonnements finden Sie im Abschnitt [Nächste Schritte](#next-steps).
+In diesem Leitfaden erfahren Sie, wie Sie Service Bus-Themen und -Abonnements über Node.js-Anwendungen verwenden. Folgende Szenarien werden behandelt:
+
+- Erstellen von Themen und Abonnements 
+- Erstellen von Abonnementfiltern 
+- Senden von Nachrichten an ein Thema 
+- Empfangen von Nachrichten aus einem Abonnement
+- Löschen von Themen und Abonnements 
+
+Weitere Informationen zu Themen und Abonnements finden Sie im Abschnitt [Nächste Schritte](#next-steps).
 
 [!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
 
@@ -35,8 +44,9 @@ Erstellen Sie eine leere Node.js-Anwendung. Anweisungen zum Erstellen von Node.j
 Um Service Bus zu verwenden, laden Sie das Node.js-Azure-Paket herunter. Dieses Paket enthält eine Reihe von Bibliotheken, die mit den Service Bus-REST-Diensten kommunizieren.
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Verwenden von Node Package Manager (NPM) zum Beziehen des Pakets
-1. Verwenden Sie eine Befehlszeilenschnittstelle, z.B.**PowerShell** (Windows,) **Terminal** (Mac) oder **Bash** (Unix), und navigieren Sie zu dem Ordner, in dem Sie die Beispielanwendung erstellt haben.
-2. Geben Sie **npm install azure** im Befehlsfenster ein. Die Ausgabe dieses Befehls sollte wie folgt aussehen:
+1. Öffnen Sie eine Befehlszeilenschnittstelle wie **PowerShell** (Windows), **Terminal** (Mac) oder **Bash** (Unix).
+2. Navigieren Sie zu dem Ordner, in dem Sie Ihre Beispielanwendung erstellt haben.
+3. Geben Sie **npm install azure** im Befehlsfenster ein. Die Ausgabe dieses Befehls sollte wie folgt aussehen:
 
    ```
        azure@0.7.5 node_modules\azure
@@ -65,7 +75,7 @@ Das Azure-Modul liest die Umgebungsvariable `AZURE_SERVICEBUS_CONNECTION_STRING`
 
 Ein Beispiel zum Festlegen der Umgebungsvariablen für einen Azure-Clouddienst finden Sie unter [Node.js-Clouddienst mit Speicher][Node.js Cloud Service with Storage].
 
-Ein Beispiel zum Festlegen der Umgebungsvariablen für eine Azure-Website finden Sie unter [Node.js-Webanwendung mit Speicher][Node.js Web Application with Storage].
+
 
 ## <a name="create-a-topic"></a>Erstellen eines Themas
 Das **ServiceBusService**-Objekt ermöglicht es Ihnen, mit Themen zu arbeiten. Der folgende Code erstellt ein **ServiceBusService**-Objekt. Fügen Sie ihn am Anfang der Datei **server.js** hinzu, nach der Anweisung zum Importieren des Azure-Moduls:
@@ -74,7 +84,7 @@ Das **ServiceBusService**-Objekt ermöglicht es Ihnen, mit Themen zu arbeiten. D
 var serviceBusService = azure.createServiceBusService();
 ```
 
-Durch Aufrufen von `createTopicIfNotExists` für das Objekt **ServiceBusService** wird das angegebene Thema zurückgegeben (sofern vorhanden), oder es wird ein neues Thema mit dem angegebenen Namen erstellt. Der folgende Code verwendet `createTopicIfNotExists`, um das Thema `MyTopic` zu erstellen oder eine Verbindung mit diesem Thema herzustellen:
+Wenn Sie `createTopicIfNotExists` für das Objekt **ServiceBusService** aufrufen, wird das angegebene Thema zurückgegeben (sofern vorhanden), oder es wird ein neues Thema mit dem angegebenen Namen erstellt. Der folgende Code verwendet `createTopicIfNotExists`, um das Thema `MyTopic` zu erstellen oder eine Verbindung mit diesem Thema herzustellen:
 
 ```javascript
 serviceBusService.createTopicIfNotExists('MyTopic',function(error){
@@ -85,7 +95,9 @@ serviceBusService.createTopicIfNotExists('MyTopic',function(error){
 });
 ```
 
-Die Methode `createServiceBusService` unterstützt zudem weitere Optionen, mit denen Sie Standardeinstellungen für Themen überschreiben können. Hierzu zählen beispielsweise die Gültigkeitsdauer von Nachrichten und die maximale Themengröße. Das folgende Beispiel legt die maximale Themengröße auf 5 GB bei einer Gültigkeitsdauer (Time-to-live, TTL) von 1 Minute fest:
+Die Methode `createServiceBusService` unterstützt zudem weitere Optionen, mit denen Sie Standardeinstellungen für Themen überschreiben können. Hierzu zählen beispielsweise die Gültigkeitsdauer von Nachrichten und die maximale Themengröße. 
+
+Das folgende Beispiel legt die maximale Themengröße auf 5 GB bei einer Gültigkeitsdauer (TTL) von 1 Minute fest:
 
 ```javascript
 var topicOptions = {
@@ -101,13 +113,13 @@ serviceBusService.createTopicIfNotExists('MyTopic', topicOptions, function(error
 ```
 
 ### <a name="filters"></a>Filter
-Mit **ServiceBusService** können Sie optionale Filteroperationen auf Operationen ausführen. Filtervorgänge können Protokollierung, automatische Wiederholung usw. umfassen. Filter sind Objekte, die eine Methode mit der folgenden Signatur implementieren:
+Mit **ServiceBusService** können Sie optionale Filteroperationen auf Operationen ausführen. Filtervorgänge können Protokollierung, automatische Wiederholung usw. umfassen. Filter sind Objekte, die eine Methode mit der Signatur implementieren:
 
 ```javascript
 function handle (requestOptions, next)
 ```
 
-Nachdem die Vorverarbeitung der Anforderungsoptionen abgeschlossen ist, ruft die Methode `next` auf und übergibt dabei eine Rückruffunktion mit der folgenden Signatur:
+Nachdem die Vorverarbeitung der Anforderungsoptionen abgeschlossen ist, ruft die Methode `next` auf und übergibt eine Rückruffunktion mit der folgenden Signatur:
 
 ```javascript
 function (returnObject, finalCallback, next)
@@ -126,12 +138,12 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 Themenabonnements werden ebenfalls mit dem **ServiceBusService**-Objekt erstellt. Abonnements werden benannt und können einen optionalen Filter aufweisen, der die Nachrichten einschränkt, die an die virtuelle Warteschlange des Abonnements übermittelt werden.
 
 > [!NOTE]
-> Abonnements sind persistent und bleiben erhalten, bis sie selbst oder die mit ihnen verbundenen Themen gelöscht werden. Wenn Ihre Anwendung Logik zum Erstellen eines Abonnements beinhaltet, muss sie zuerst mithilfe der Methode `getSubscription` überprüfen, ob das Abonnement bereits vorhanden ist.
+> Abonnements sind persistent, bis sie selbst oder die ihnen zugeordneten Themen gelöscht werden. Wenn Ihre Anwendung Logik zum Erstellen eines Abonnements beinhaltet, muss sie zuerst mithilfe der Methode `getSubscription` überprüfen, ob das Abonnement vorhanden ist.
 >
 >
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Erstellen eines Abonnements mit dem Standardfilter (MatchAll)
-**MatchAll** ist der Standardfilter, der verwendet wird, wenn beim Erstellen eines neuen Abonnements kein Filter angegeben wird. Wenn der Filter **MatchAll** verwendet wird, werden alle für das Thema veröffentlichten Nachrichten in die virtuelle Warteschlange des Abonnements gestellt. Mit dem folgenden Beispiel wird ein Abonnement namens „AllMessages“ erstellt, für das der Standardfilter **MatchAll** verwendet wird.
+Der Filter **MatchAll** ist der Standardfilter, der bei der Erstellung eines Abonnements verwendet wird. Wenn Sie den Filter **MatchAll** verwenden, werden alle für das Thema veröffentlichten Nachrichten in die virtuelle Warteschlange des Abonnements eingereiht. Mit dem folgenden Beispiel wird ein Abonnement namens „AllMessages“ erstellt, für das der Standardfilter **MatchAll** verwendet wird.
 
 ```javascript
 serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
@@ -223,14 +235,14 @@ var rule={
 }
 ```
 
-Wenn jetzt eine Nachricht an `MyTopic` gesendet wird, wird diese stets an das `AllMessages`-Themenabonnement zugestellt. Sie wird selektiv an die Empfänger der Abonnements `HighMessages` und `LowMessages` zugestellt (je nach Inhalt der Nachricht).
+Wenn jetzt eine Nachricht an `MyTopic` gesendet wird, wird diese an Empfänger zugestellt, die das `AllMessages`-Themenabonnement abonniert haben. Sie wird selektiv an die Empfänger der Themenabonnements `HighMessages` und `LowMessages` zugestellt (je nach Inhalt der Nachricht).
 
 ## <a name="how-to-send-messages-to-a-topic"></a>Senden von Nachrichten an ein Thema
 Um eine Nachricht an ein Service Bus-Thema zu senden, muss die Anwendung die Methode `sendTopicMessage` des Objekts **ServiceBusService** verwenden.
 Nachrichten, die an Service Bus-Themen gesendet werden, sind **BrokeredMessage**-Objekte.
 Objekte vom Typ **BrokeredMessage** besitzen eine Reihe von Standardeigenschaften (wie etwa `Label` und `TimeToLive`), ein Wörterbuch zur Speicherung benutzerdefinierter, anwendungsspezifischer Eigenschaften und einen aus Zeichenfolgendaten bestehenden Nachrichtentext. Eine Anwendung kann den Nachrichtentext festlegen, indem sie einen Zeichenfolgenwert an `sendTopicMessage` übergibt. Erforderliche Standardeigenschaften werden mit Standardwerten gefüllt.
 
-Das folgende Beispiel zeigt, wie Sie fünf Testnachrichten an `MyTopic` senden. Beachten Sie, dass der Eigenschaftswert `messagenumber` jeder Nachricht gemäß der Iteration der Schleife variiert. (Dadurch wird bestimmt, welche Abonnements die Nachricht erhalten.)
+Das folgende Beispiel zeigt, wie Sie fünf Testnachrichten an `MyTopic` senden. Der Eigenschaftswert `messagenumber` jeder Nachricht variiert gemäß der Iteration der Schleife. (Dadurch wird bestimmt, welche Abonnements die Nachricht erhalten.)
 
 ```javascript
 var message = {
@@ -251,15 +263,15 @@ for (i = 0;i < 5;i++) {
 }
 ```
 
-Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 KB im [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB im [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Es gibt keine Beschränkung für die Anzahl der Nachrichten, die ein Thema enthält. Es gibt jedoch eine Obergrenze für die Gesamtgröße der Nachrichten eines Themas. Die Themengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB.
+Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 KB im [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB im [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Es gibt keine Beschränkung für die Anzahl der Nachrichten, die ein Thema enthält. Es gibt jedoch eine Grenze für die Gesamtgröße der Nachrichten eines Themas. Die Themengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB.
 
 ## <a name="receive-messages-from-a-subscription"></a>Empfangen von Nachrichten aus einem Abonnement
-Nachrichten werden von einem Abonnement über die Methode `receiveSubscriptionMessage` des Objekts **ServiceBusService** empfangen. Nachrichten werden standardmäßig aus dem Abonnement gelöscht, wenn sie gelesen wurden. Sie können jedoch Nachrichten lesen (sprich: einen kurzen Blick darauf werfen) und sperren, ohne sie aus dem Abonnement zu löschen, indem Sie den optionalen Parameter `isPeekLock` auf **true** festlegen.
+Nachrichten werden von einem Abonnement über die Methode `receiveSubscriptionMessage` des Objekts **ServiceBusService** empfangen. Nachrichten werden nach dem Lesen standardmäßig aus dem Abonnement gelöscht. Sie können jedoch den optionalen Parameter `isPeekLock` auf **true** festlegen, um die Nachricht zu lesen (einen kurzen Blick darauf zu werfen) und zu sperren, ohne sie aus dem Abonnement zu löschen.
 
 Das Standardverhalten für das Lesen und Löschen der Nachricht als Teil des Empfangsvorgangs ist das einfachste Modell. Es wird am besten für Szenarios eingesetzt, bei denen es eine Anwendung tolerieren kann, wenn eine Nachricht bei Auftreten eines Fehlers nicht verarbeitet wird. Um dieses Verfahren zu verstehen, stellen Sie sich ein Szenario vor, in dem der Consumer die Empfangsanforderung ausstellt und dann abstürzt, bevor diese verarbeitet wird. Da Service Bus die Nachricht als verwendet markiert hat, wird er jene Nachricht auslassen, die vor dem Absturz verwendet wurde, wenn die Anwendung neu startet und erneut mit der Verwendung von Nachrichten beginnt.
 
-Wenn der Parameter `isPeekLock` auf **true** festgelegt ist, wird der Empfangsvorgang zu einem zweistufigen Vorgang. Dadurch können Anwendungen ohne Toleranz für fehlende Nachrichten unterstützt werden. Wenn Service Bus eine Anfrage erhält, ermittelt der Dienst die nächste zu verarbeitende Nachricht, sperrt diese, um zu verhindern, dass andere Consumer sie erhalten, und sendet sie dann zurück an die Anwendung.
-Nachdem die Anwendung die Verarbeitung der Nachricht abgeschlossen hat (oder sie zwecks zukünftiger Verarbeitung zuverlässig gespeichert hat), führt sie die zweite Phase des Empfangsprozesses durch Aufruf der **deleteMessage**-Methode und Bereitstellen der Nachricht durch, die als Parameter gelöscht wird. Die **deleteMessage**-Methode markiert die Nachricht als in Verarbeitung und entfernt sie aus dem Abonnement.
+Wenn der Parameter `isPeekLock` auf **true** festgelegt ist, wird der Empfangsvorgang zu einem zweistufigen Vorgang. Dadurch können Anwendungen ohne Toleranz für fehlende Nachrichten unterstützt werden. Wenn Service Bus eine Anforderung erhält, ermittelt der Dienst die nächste zu verarbeitende Nachricht, sperrt diese, um zu verhindern, dass andere Consumer sie erhalten, und sendet sie an die Anwendung zurück.
+Nachdem die Anwendung die Nachricht verarbeitet hat (oder sie zwecks zukünftiger Verarbeitung zuverlässig gespeichert hat), führt sie die zweite Phase des Empfangsprozesses durch Aufruf der Methode **deleteMessage** durch, und stellt die Nachricht bereit, die als Parameter gelöscht werden soll. Die Methode **deleteMessage** markiert die Nachricht als verarbeitet und entfernt sie aus dem Abonnement.
 
 Das folgende Beispiel zeigt, wie Nachrichten mit `receiveSubscriptionMessage` empfangen und verarbeitet werden können. In diesem Beispiel wird zuerst eine Nachricht des Abonnements „LowMessages“ empfangen und gelöscht und anschließend eine Nachricht des Abonnements „HighMessages“ empfangen, wobei `isPeekLock` auf „true“ festgelegt ist. Anschließend wird die Nachricht mithilfe von `deleteMessage` gelöscht:
 
@@ -285,11 +297,11 @@ serviceBusService.receiveSubscriptionMessage('MyTopic', 'HighMessages', { isPeek
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Behandeln von Anwendungsabstürzen und nicht lesbaren Nachrichten
-Service Bus stellt Funktionen zur Verfügung, die Sie bei der ordnungsgemäßen Behandlung von Fehlern in der Anwendung oder bei Problemen beim Verarbeiten einer Nachricht unterstützen. Wenn eine Empfängeranwendung die Nachricht aus einem bestimmten Grund nicht verarbeiten kann, kann sie die Methode `unlockMessage` für das Objekt **ServiceBusService** aufrufen. Dies führt dazu, dass Service Bus die Nachricht innerhalb des Abonnements entsperrt und zur Verfügung stellt, damit sie erneut empfangen werden kann – durch die gleiche verarbeitende Anwendung oder durch eine andere verarbeitenden Anwendung.
+Service Bus stellt Funktionen zur Verfügung, die Sie bei der ordnungsgemäßen Behandlung von Fehlern in der Anwendung oder bei Problemen beim Verarbeiten einer Nachricht unterstützen. Wenn eine Empfängeranwendung die Nachricht aus einem bestimmten Grund nicht verarbeiten kann, kann sie die Methode `unlockMessage` für das Objekt **ServiceBusService** aufrufen. Diese Methode führt dazu, dass Service Bus die Nachricht innerhalb des Abonnements entsperrt und verfügbar macht, damit sie erneut empfangen werden kann, in diesem Fall entweder durch dieselbe verarbeitende Anwendung oder durch eine andere verarbeitende Anwendung.
 
-Zudem wird einer im Abonnement gesperrten Anwendung ein Zeitlimit zugeordnet. Wenn die Anwendung die Nachricht vor Ablauf des Sperrzeitlimits nicht verarbeiten kann (zum Beispiel wenn die Anwendung abstürzt) entsperrt Service Bus die Nachricht automatisch und macht sie verfügbar, um erneut empfangen zu werden.
+Einer innerhalb des Abonnements gesperrten Nachricht ist auch ein Zeitlimit zugeordnet. Wenn die Anwendung die Nachricht nicht verarbeiten kann, bevor das Zeitlimit der Sperre abläuft (z.B. wenn die Anwendung abstürzt), entsperrt Service Bus die Nachricht automatisch und macht sie verfügbar, sodass sie wieder empfangen werden kann.
 
-Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor dem Aufruf der Methode `deleteMessage` abstürzt, wird die Nachricht wieder an die Anwendung zugestellt, wenn diese neu gestartet wird. Dies wird häufig als *At Least Once Processing* bezeichnet und bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird, wobei dieselbe Nachricht in bestimmten Situationen möglicherweise erneut zugestellt wird. Wenn eine doppelte Verarbeitung im betreffenden Szenario nicht geeignet ist, sollten Anwendungsentwickler ihrer Anwendung zusätzliche Logik für den Umgang mit der Übermittlung doppelter Nachrichten hinzufügen. Dies wird häufig durch die Verwendung der **MessageId**-Eigenschaft der Nachricht erzielt, die über mehrere Zustellungsversuche hinweg konstant bleibt.
+Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor dem Aufruf der Methode `deleteMessage` abstürzt, wird die Nachricht wieder an die Anwendung zugestellt, wenn diese neu gestartet wird. Dies wird häufig als *At-Least-Once Processing* (Mindestens einmalige Verarbeitung) bezeichnet und bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird, wobei eine Nachricht in bestimmten Situationen unter Umständen erneut übermittelt wird. Wenn eine doppelte Verarbeitung im betreffenden Szenario nicht geeignet ist, sollten Sie Ihrer Anwendung zusätzliche Logik für den Umgang mit der Übermittlung doppelter Nachrichten hinzufügen. Dazu können Sie die Eigenschaft **MessageId** der Nachricht verwenden, die über mehrere Zustellungsversuche hinweg konstant bleibt.
 
 ## <a name="delete-topics-and-subscriptions"></a>Löschen von Themen und Abonnements
 Themen und Abonnements sind persistent und müssen über das [Azure-Portal][Azure portal] oder programmgesteuert explizit gelöscht werden.
@@ -328,4 +340,4 @@ Nachdem Sie nun mit den Grundlagen der Servicebus-Themen vertraut sind, finden S
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website]: ../app-service/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[Node.js Web Application with Storage]:../cosmos-db/table-storage-cloud-service-nodejs.md
+

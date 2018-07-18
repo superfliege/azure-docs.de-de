@@ -2,20 +2,20 @@
 title: Schnellstart – Einrichten der Anmeldung für eine Single-Page-Webanwendung mit Azure Active Directory B2C | Microsoft-Dokumentation
 description: Führen Sie eine Single-Page-Beispielwebanwendung aus, bei der die Kontoanmeldung über Azure Active Directory B2C erfolgt.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: quickstart
 ms.date: 2/13/2018
 ms.author: davidmu
-ms.openlocfilehash: 96baf0297c3d2976f3d6fb112b0bd0ce077a186f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: 7e600f55b9eeb2682b005b8c84c74ec25e054c36
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447250"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Schnellstart: Einrichten der Anmeldung für eine Single-Page-Webanwendung mit Azure Active Directory B2C
 
@@ -104,4 +104,4 @@ In diesem Schnellstart haben Sie eine Azure AD B2C-fähige ASP.NET-Beispiel-App 
 Der nächste Schritt besteht darin, einen eigenen Azure AD B2C-Mandanten zu erstellen und das Beispiel für die Ausführung über Ihren Mandanten zu konfigurieren. 
 
 > [!div class="nextstepaction"]
-> [Erstellen eines Azure Active Directory B2C-Mandanten im Azure-Portal](active-directory-b2c-get-started.md)
+> [Erstellen eines Azure Active Directory B2C-Mandanten im Azure-Portal](tutorial-create-tenant.md)

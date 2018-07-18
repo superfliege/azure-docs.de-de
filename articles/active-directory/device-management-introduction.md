@@ -8,19 +8,20 @@ manager: mtillman
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 6b1edb9c4574afa77df43e4f017848acd3ae6d28
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 8bcc89f9ec7c73fd1f690e00e831fbd5b960eef9
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33202132"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850007"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Einführung in die Geräteverwaltung in Azure Active Directory
 
@@ -31,9 +32,9 @@ In einer Welt, in der Mobilität und die Cloud an erster Stelle stehen, ermögli
 
 Über Geräte erhalten Ihre Benutzer Zugriff auf Ihre Unternehmensressourcen. Zum Schutz der Unternehmensressourcen möchten Sie als IT-Administrator Kontrolle über diese Geräte haben. So können Sie sicherstellen, dass Ihre Benutzer auf Ihre Ressourcen über Geräte zugreifen, die Ihren Standards für Sicherheit und Konformität entsprechen. 
 
-Die Geräteverwaltung stellt zudem die Grundlage für [gerätebasierten bedingten Zugriff](active-directory-conditional-access-policy-connected-applications.md) dar. Mit dem gerätebasierten bedingten Zugriff können Sie sicherstellen, dass nur mit vertrauenswürdigen Geräten auf Ressourcen in Ihrer Umgebung zugegriffen werden kann.   
+Die Geräteverwaltung stellt zudem die Grundlage für [gerätebasierten bedingten Zugriff](active-directory-conditional-access-policy-connected-applications.md) dar. Mit dem gerätebasierten bedingten Zugriff können Sie sicherstellen, dass nur mit verwalteten Geräten auf Ressourcen in Ihrer Umgebung zugegriffen werden kann.   
 
-In diesem Thema wird erläutert, wie die Geräteverwaltung in Azure Active Directory funktioniert.
+In diesem Artikel wird erläutert, wie die Geräteverwaltung in Azure Active Directory funktioniert.
 
 ## <a name="getting-devices-under-the-control-of-azure-ad"></a>Steuern der Geräte über Azure AD
 
@@ -69,12 +70,16 @@ Ziel von in Azure AD eingebundenen Geräten ist die Vereinfachung folgender Elem
 
 - Windows-Bereitstellungen unternehmenseigener Geräte 
 - Zugriff auf Unternehmens-Apps und Unternehmensressourcen über jegliche Windows-Geräte
+- Cloudbasierte Verwaltung von unternehmenseigenen Geräten
 
 ![Bei Azure AD registrierte Geräte](./media/device-management-introduction/02.png)
 
+Azure AD Join kann mit einer der folgenden Methoden bereitgestellt werden: 
+ - [Windows Autopilot](https://docs.microsoft.com/en-us/windows/deployment/windows-autopilot/windows-10-autopilot)
+ - [Massenbereitstellung](https://docs.microsoft.com/en-us/intune/windows-bulk-enroll)
+ - [Self-service-Erfahrung](device-management-azuread-joined-devices-frx.md) 
 
-Diese Ziele werden erreicht, indem Sie den Benutzern Self-Service-Funktionen zum Steuern unternehmenseigener Geräte über Azure AD bereitstellen.  
-**Azure AD Join** ist für Unternehmen bestimmt, die neu auf die Cloud umstellen oder ganz auf die Cloud setzen. Es gibt keine Einschränkung bezüglich Größe oder Typ von Organisationen, die Azure AD Join bereitstellen können. Azure AD Join funktioniert auch in einer Hybridumgebung gut und kann den Zugriff auf lokale Apps und Ressourcen aktivieren.
+**Azure AD Join** ist für Organisationen gedacht, die in erster Linie Clouddienste verwenden und die lokale Infrastruktur reduzieren möchten, oder solche, die über gar keine lokale Infrastruktur verfügen. Es gibt keine Einschränkung bezüglich der Größe oder dem Typ von Organisationen, die Azure AD Join bereitstellen können. Azure AD Join funktioniert auch in einer Hybridumgebung gut, da es den Zugriff auf Apps und Ressourcen ermöglicht, egal ob in der Cloud oder vor Ort.
 
 Die Implementierung von in Azure AD eingebundenen Geräten bietet die folgenden Vorteile:
 
@@ -88,10 +93,12 @@ Die Implementierung von in Azure AD eingebundenen Geräten bietet die folgenden 
 
 - **Einschränkung des Zugriffs** auf Apps nur über die Geräte, die die Konformitätsrichtlinie erfüllen.
 
-- **Nahtloser Zugriff auf lokale Ressourcen**, wenn das Gerät über Sichtverbindung mit dem lokalen Domänencontroller verfügt.
+- **Nahtloser Zugriff auf lokale Ressourcen**, wenn das Gerät über Sichtverbindung mit dem lokalen Domänencontroller verfügt. 
 
 
-Azure AD Join ist zwar hauptsächlich für Unternehmen vorgesehen, die über keine lokale Windows Server Active Directory-Infrastruktur verfügen, kann aber auch in folgenden Szenarien verwendet werden:
+Azure AD Join ist zwar hauptsächlich für Unternehmen vorgesehen, die über keine lokale Windows Server Active Directory-Infrastruktur verfügen, kann aber auch in folgenden Szenarios verwendet werden:
+
+- Sie möchten mit Azure AD und einer Lösung für die Verwaltung mobiler Geräte wie Intune zu einer cloudbasierten Infrastruktur wechseln.
 
 - Sie können keinen lokalen Domänenbeitritt verwenden, z.B. wenn Sie mobile Geräte wie Tablets und Telefone steuern möchten.
 
@@ -121,9 +128,9 @@ Wenn Ihre Umgebung über einen lokalen AD-Fußabdruck verfügt und Sie zudem die
 
 Verwenden Sie in Azure AD eingebundene Hybridgeräte in folgenden Fällen:
 
-- Sie haben auf den Geräten Win32-Apps bereitgestellt, für die NTLM/Kerberos verwendet wird.
+- Auf den Geräten sind Win32-Apps bereitgestellt, die die Active Directory-Authentifizierung für Computer benötigen.
 
-- Sie benötigen die Gruppenrichtlinie oder SCCM/DCM, um Geräte zu verwalten.
+- Sie benötigen Gruppenrichtlinien, um Geräte zu verwalten.
 
 - Sie möchten weiterhin Lösungen für die Imageerstellung verwenden, um Geräte für Ihre Mitarbeiter zu konfigurieren.
 

@@ -1,0 +1,512 @@
+---
+title: Erstellen einer Ruby- und Postgres-Web-App in Azure App Service unter Linux | Microsoft-Dokumentation
+description: Hier erhalten Sie Informationen zum Ausführen einer Ruby-App in Azure, die Sie mit einer PostgreSQL-Datenbank in Azure verbinden.
+services: app-service\web
+documentationcenter: ''
+author: cephalin
+manager: cfowler
+ms.service: app-service-web
+ms.workload: web
+ms.devlang: ruby
+ms.topic: tutorial
+ms.date: 06/15/2018
+ms.author: cephalin
+ms.custom: mvc
+ms.openlocfilehash: 927c8f6d0fefbc592999487217c41aeecc96b0d9
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950980"
+---
+# <a name="build-a-ruby-and-postgres-web-app-in-azure-app-service-on-linux"></a>Erstellen einer Ruby- und Postgres-Web-App in Azure App Service unter Linux
+
+[App Service unter Linux](app-service-linux-intro.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching unter Linux-Betriebssystemen. In diesem Tutorial wird gezeigt, wie Sie eine Ruby-Web-App erstellen und mit einer PostgreSQL-Datenbank verbinden. Nachdem Sie diese Schritte ausgeführt haben, verfügen Sie über eine [Ruby on Rails](http://rubyonrails.org/)-App, die in App Service unter Linux ausgeführt wird.
+
+![In Azure App Service ausgeführte Ruby on Rails-App](./media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
+
+In diesem Tutorial lernen Sie Folgendes:
+
+> [!div class="checklist"]
+> * Erstellen einer PostgreSQL-Datenbank in Azure
+> * Herstellen einer Verbindung zwischen einer Ruby on Rails-App und PostgreSQL
+> * Bereitstellen der Anwendung in Azure
+> * Aktualisieren des Datenmodells und erneutes Bereitstellen der App
+> * Streamen von Diagnoseprotokollen aus Azure
+> * Verwalten der App im Azure-Portal
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Für dieses Tutorial benötigen Sie Folgendes:
+
+* [Installation von Git](https://git-scm.com/)
+* [Installieren von Ruby 2.3](https://www.ruby-lang.org/en/documentation/installation/)
+* [Installieren von Ruby on Rails 5.1](http://guides.rubyonrails.org/v5.1/getting_started.html)
+* [Laden Sie PostgreSQL herunter, und führen Sie es aus.](https://www.postgresql.org/download/)
+
+## <a name="prepare-local-postgres"></a>Vorbereiten der lokalen Postgres-Instanz
+
+In diesem Schritt erstellen Sie eine Datenbank auf einem lokalen Postgres-Server für die Verwendung in diesem Tutorial.
+
+### <a name="connect-to-local-postgres-server"></a>Herstellen einer Verbindung mit dem lokalen Postgres-Server
+
+Öffnen Sie das Terminalfenster, und führen Sie `psql` aus, um eine Verbindung mit Ihrem lokalen Postgres-Server herzustellen.
+
+```bash
+sudo -u postgres psql
+```
+
+Wenn die Verbindung hergestellt wurde, wird die Postgres-Datenbank ausgeführt. Ist dies nicht der Fall, stellen Sie sicher, dass die lokale Postgres-Datenbank gestartet wurde, indem Sie die Schritte unter [Downloads: PostgreSQL Core Distribution](https://www.postgresql.org/download/) ausführen.
+
+Geben Sie `\q` ein, um den Postgres-Client zu beenden. 
+
+Erstellen Sie einen Postgres Benutzer, der Datenbanken erstellen kann. Führen Sie dazu unter Verwendung des angemeldeten Linux-Benutzernamenn den folgenden Befehl aus:
+
+```bash
+sudo -u postgres createuser -d <signed_in_user>
+```
+
+<a name="step2"></a>
+
+## <a name="create-a-ruby-on-rails-app-locally"></a>Lokales Erstellen einer Ruby on Rails-App
+In diesem Schritt rufen Sie eine Ruby on Rails-Beispielanwendung ab, konfigurieren ihre Datenbankverbindung und führen sie lokal aus. 
+
+### <a name="clone-the-sample"></a>Klonen des Beispiels
+
+Wechseln Sie im Terminalfenster mit `cd` in ein Arbeitsverzeichnis.
+
+Führen Sie den folgenden Befehl aus, um das Beispielrepository zu klonen.
+
+```bash
+git clone https://github.com/Azure-Samples/rubyrails-tasks.git
+```
+
+Wechseln Sie mit `cd` in das geklonte Verzeichnis. Installieren Sie die erforderlichen Pakete.
+
+```bash
+cd rubyrails-tasks
+bundle install --path vendor/bundle
+```
+
+### <a name="run-the-sample-locally"></a>Lokales Ausführen des Beispiels
+
+Führen Sie [die Rails-Migrationen](http://guides.rubyonrails.org/active_record_migrations.html#running-migrations) aus, um die von der Anwendung benötigten Tabellen zu erstellen. Im Git-Repository können Sie im Verzeichnis _db/migrate_ sehen, welche Tabellen bei den Migrationen erstellt werden.
+
+```bash
+rake db:create
+rake db:migrate
+```
+
+Führen Sie die Anwendung aus.
+
+```bash
+rails server
+```
+
+Navigieren Sie in einem Browser zu `http://localhost:3000`. Fügen Sie auf der Seite einige Aufgaben hinzu.
+
+![Erfolgreiche Verbindung zwischen Ruby on Rails und Postgres](./media/tutorial-ruby-postgres-app/postgres-connect-success.png)
+
+Um den Rails-Server zu beenden, geben Sie `Ctrl + C` im Terminal ein.
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+## <a name="create-postgres-in-azure"></a>Erstellen einer Postgres-Instanz in Azure
+
+In diesem Schritt erstellen Sie eine Postgres-Datenbank in [Azure Database for PostgreSQL](/azure/postgresql/). Später konfigurieren Sie die Ruby on Rails-Anwendung für eine Verbindung mit dieser Datenbank.
+
+### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
+
+[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
+
+### <a name="create-a-postgres-server"></a>Erstellen eines Postgres-Servers
+
+Erstellen Sie mit dem Befehl [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az_postgres_server_create) einen PostgreSQL-Server.
+
+Führen Sie den folgenden Befehl in Cloud Shell aus, und ersetzen Sie den Platzhalter *\<postgres_server_name>* durch einen eindeutigen Servernamen. Der Servername muss in Azure über alle Server hinweg eindeutig sein. 
+
+```azurecli-interactive
+az postgres server create --location "West Europe" --resource-group myResourceGroup --name <postgres_server_name> --admin-user adminuser --admin-password My5up3r$tr0ngPa$w0rd! --sku-name GP_Gen4_2
+```
+
+Nach dem Erstellen der Azure-Datenbank für den PostgreSQL-Server zeigt die Azure-Befehlszeilenschnittstelle Informationen wie im folgenden Beispiel an:
+
+```json
+{
+  "administratorLogin": "adminuser",
+  "earliestRestoreDate": "2018-06-15T12:38:25.280000+00:00",
+  "fullyQualifiedDomainName": "<postgres_server_name>.postgres.database.azure.com",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgres_server_name>",
+  "location": "westeurope",
+  "name": "<postgres_server_name>",
+  "resourceGroup": "myResourceGroup",
+  "sku": {
+    "capacity": 2,
+    "family": "Gen4",
+    "name": "GP_Gen4_2",
+    "size": null,
+    "tier": "GeneralPurpose"
+  },
+  < Output has been truncated for readability >
+}
+```
+
+### <a name="configure-server-firewall"></a>Konfigurieren der Serverfirewall
+
+Erstellen Sie in Cloud Shell mit dem Befehl [`az postgres server firewall-rule create`](/cli/azure/postgres/server/firewall-rule?view=azure-cli-latest#az_postgres_server_firewall_rule_create) eine Firewallregel für Ihren Postgres-Server, um Clientverbindungen zuzulassen. Wenn sowohl Start- als auch End-IP auf 0.0.0.0 festgelegt ist, wird die Firewall nur für andere Azure-Ressourcen geöffnet. Geben Sie für den Platzhalter *\<postgres_server_name>* einen eindeutigen Servernamen ein.
+
+```azurecli-interactive
+az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres_server_name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
+```
+
+> [!TIP] 
+> Sie können Ihre Firewallregel auch noch restriktiver gestalten und [nur die ausgehenden IP-Adressen verwenden, die Ihre App verwendet](../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
+>
+
+### <a name="connect-to-production-postgres-server-locally"></a>Herstellen einer lokalen Verbindung mit dem Postgres-Produktionsserver
+
+Stellen Sie in Cloud Shell eine Verbindung mit dem Postgres-Server in Azure her. Verwenden Sie den Wert, den Sie zuvor für den Platzhalter _&lt;postgres_server_name>_ angegeben haben.
+
+```bash
+psql -U adminuser@<postgres_server_name> -h <postgres_server_name>.postgres.database.azure.com postgres
+```
+
+Wenn Sie zur Eingabe eines Kennworts aufgefordert werden, verwenden Sie _My5up3r$tr0ngPa$w0rd!_, das Sie beim Erstellen des Datenbankservers angegeben haben.
+
+### <a name="create-a-production-database"></a>Erstellen einer Produktionsdatenbank
+
+Erstellen Sie an der Eingabeaufforderung `postgres` eine Datenbank.
+
+```sql
+CREATE DATABASE sampledb;
+```
+
+### <a name="create-a-user-with-permissions"></a>Erstellen eines Benutzers mit Berechtigungen
+
+Erstellen Sie einen Datenbankbenutzer mit dem Namen _railsappuser_, und weisen Sie ihm alle Berechtigungen in der Datenbank `sampledb` zu.
+
+```sql
+CREATE USER railsappuser WITH PASSWORD 'MyPostgresAzure2017'; 
+GRANT ALL PRIVILEGES ON DATABASE sampledb TO railsappuser;
+```
+
+Beenden Sie die Serververbindung durch Eingabe von `\q`.
+
+## <a name="connect-app-to-azure-postgres"></a>Herstellen einer Verbindung zwischen der App und Azure Postgres
+
+In diesem Schritt stellen Sie eine Verbindung zwischen der Ruby on Rails-Anwendung und der Postgres-Datenbank her, die Sie in Azure Database for PostgreSQL erstellt haben.
+
+<a name="devconfig"></a>
+
+### <a name="configure-the-database-connection"></a>Konfigurieren der Datenbankverbindung
+
+Öffnen Sie im Repository die Datei _config/database.yml_. Ersetzen Sie am Ende der Datei die Produktionsvariablen durch den folgenden Code. 
+
+```txt
+production:
+  <<: *default
+  host: <%= ENV['DB_HOST'] %>
+  database: <%= ENV['DB_DATABASE'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+```
+
+Speichern Sie die Änderungen.
+
+### <a name="test-the-application-locally"></a>Lokales Testen der Anwendung
+
+Legen Sie im lokalen Terminal die folgenden Umgebungsvariablen fest:
+
+```bash
+export DB_HOST=<postgres_server_name>.postgres.database.azure.com
+export DB_DATABASE=sampledb 
+export DB_USERNAME=railsappuser@<postgres_server_name>
+export DB_PASSWORD=MyPostgresAzure2017
+```
+
+Führen Sie die Rails-Datenbankmigrationen mit den Produktionswerten aus, die Sie soeben konfiguriert haben, um die Tabellen in Ihrer Postgres-Datenbank in Azure Database for PostgreSQL zu erstellen. 
+
+```bash
+rake db:migrate RAILS_ENV=production
+```
+
+Bei Ausführung in der Produktionsumgebung benötigt die Rails-Anwendung vorkompilierte Ressourcen. Generieren Sie die erforderlichen Ressourcen mit dem folgenden Befehl:
+
+```bash
+rake assets:precompile
+```
+
+In der Rails-Produktionsumgebung werden auch geheime Schlüssel zum Verwalten der Sicherheit verwendet. Generieren Sie einen geheimen Schlüssel.
+
+```bash
+rails secret
+```
+
+Speichern Sie den geheimen Schlüssel für die jeweiligen Variablen, die von der Rails-Produktionsumgebung verwendet werden. Verwenden Sie der Einfachheit halber für beide Variablen den gleichen Schlüssel.
+
+```bash
+export RAILS_MASTER_KEY=<output_of_rails_secret>
+export SECRET_KEY_BASE=<output_of_rails_secret>
+```
+
+Aktivieren Sie die Rails-Produktionsumgebung für die Bereitstellung von JavaScript- und CSS-Dateien.
+
+```bash
+export RAILS_SERVE_STATIC_FILES=true
+```
+
+Führen Sie die Beispielanwendung in der Produktionsumgebung aus.
+
+```bash
+rails server -e production
+```
+
+Navigieren Sie zu `http://localhost:3000`. Wenn die Seite ohne Fehler geladen wird, stellt die Ruby on Rails-Anwendung eine Verbindung mit der Postgres-Datenbank in Azure her.
+
+Fügen Sie auf der Seite einige Aufgaben hinzu.
+
+![Erfolgreiche Verbindung zwischen Ruby on Rails und Azure Database for PostgreSQL](./media/tutorial-ruby-postgres-app/azure-postgres-connect-success.png)
+
+Um den Rails-Server zu beenden, geben Sie `Ctrl + C` im Terminal ein.
+
+### <a name="commit-your-changes"></a>Committen Ihrer Änderungen
+
+Führen Sie die folgenden Git-Befehle aus, um für Ihre Änderungen einen Commit durchzuführen:
+
+```bash
+git add .
+git commit -m "database.yml updates"
+```
+
+Ihre App kann jetzt bereitgestellt werden.
+
+## <a name="deploy-to-azure"></a>Bereitstellen in Azure
+
+In diesem Schritt stellen Sie die mit Postgres verbundene Rails-Anwendung in Azure App Service bereit.
+
+### <a name="configure-a-deployment-user"></a>Konfigurieren eines Bereitstellungsbenutzers
+
+[!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user-no-h.md)]
+
+### <a name="create-an-app-service-plan"></a>Wie erstelle ich einen Plan?
+
+[!INCLUDE [Create app service plan no h](../../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
+
+### <a name="create-a-web-app"></a>Erstellen einer Web-App
+
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
+
+### <a name="configure-database-settings"></a>Konfigurieren der Datenbankeinstellungen
+
+Verwenden Sie in App Service den Befehl [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) in Cloud Shell, um Umgebungsvariablen als _App-Einstellungen_ festzulegen.
+
+Mit dem folgenden Cloud Shell-Befehl werden die App-Einstellungen `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` und `DB_PASSWORD` konfiguriert. Ersetzen Sie die Platzhalter _&lt;appname>_ und _&lt;postgres_server_name>_.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DB_HOST="<postgres_server_name>.postgres.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="railsappuser@<postgres_server_name>" DB_PASSWORD="MyPostgresAzure2017"
+```
+
+### <a name="configure-rails-environment-variables"></a>Konfigurieren der Rails-Umgebungsvariablen
+
+Generieren Sie im lokalen Terminal einen neuen geheimen Schlüssel für die Rails-Produktionsumgebung in Azure.
+
+```bash
+rails secret
+```
+
+Konfigurieren Sie die für die Rails-Produktionsumgebung erforderlichen Variablen.
+
+Ersetzen Sie im folgenden Cloud Shell-Befehl die beiden _&lt;output_of_rails_secret>_-Platzhalter durch den neuen geheimen Schlüssel, den Sie im lokalen Terminal generiert haben.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings RAILS_MASTER_KEY="<output_of_rails_secret>" SECRET_KEY_BASE="<output_of_rails_secret>" RAILS_SERVE_STATIC_FILES="true" ASSETS_PRECOMPILE="true"
+```
+
+`ASSETS_PRECOMPILE="true"` weist den Ruby-Standardcontainer an, bei jeder Git-Bereitstellung Ressourcen vorzukompilieren.
+
+### <a name="push-to-azure-from-git"></a>Übertragen von Git an Azure mithilfe von Push
+
+Fügen Sie im lokalen Terminal Ihrem lokalen Git-Repository eine Azure-Remoteinstanz hinzu.
+
+```bash
+git remote add azure <paste_copied_url_here>
+```
+
+Führen Sie einen Pushvorgang an die Azure-Remoteinstanz durch, um die Ruby on Rails-Anwendung bereitzustellen. Sie werden zur Angabe des Kennworts aufgefordert, das Sie zuvor bei der Erstellung des Bereitstellungsbenutzers angegeben haben.
+
+```bash
+git push azure master
+```
+
+Während der Bereitstellung meldet Azure App Service seinen Status mit Git.
+
+```bash
+Counting objects: 3, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote: Updating branch 'master'.
+remote: Updating submodules.
+remote: Preparing deployment for commit id 'a5e076db9c'.
+remote: Running custom deployment command...
+remote: Running deployment command...
+...
+< Output has been truncated for readability >
+```
+
+### <a name="browse-to-the-azure-web-app"></a>Navigieren Sie zur Azure-Web-App.
+
+Browsen Sie zu `http://<app_name>.azurewebsites.net`, und fügen Sie der Liste einige Aufgaben hinzu.
+
+![In Azure App Service ausgeführte Ruby on Rails-App](./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png)
+
+Glückwunsch! Sie führen eine datengesteuerte Ruby on Rails-App in Azure App Service aus.
+
+## <a name="update-model-locally-and-redeploy"></a>Lokales Aktualisieren und erneutes Bereitstellen des Modells
+
+In diesem Schritt nehmen Sie eine einfache Änderung am `task`-Datenmodell und der Web-App vor und veröffentlichen das Update dann in Azure.
+
+Für das tasks-Szenario ändern Sie die Anwendung, damit Sie eine Aufgabe als abgeschlossen kennzeichnen können.
+
+### <a name="add-a-column"></a>Hinzufügen eines Spaltennamens
+
+Navigieren Sie im Terminal zum Stamm des Git-Repositorys.
+
+Generieren Sie eine neue Migration, die der Tabelle `Tasks` eine boolesche Spalte namens `Done` hinzufügt:
+
+```bash
+rails generate migration AddDoneToTasks Done:boolean
+```
+
+Mit diesem Befehl wird im Verzeichnis _db/migrate_ eine neue Migrationsdatei generiert.
+
+
+Führen Sie im Terminal Rails-Datenbankmigrationen aus, um die Änderung in der lokalen Datenbank vorzunehmen.
+
+```bash
+rake db:migrate
+```
+
+### <a name="update-application-logic"></a>Aktualisieren der Anwendungslogik
+
+Öffnen Sie die Datei *app/controllers/tasks_controller.rb*. Suchen Sie am Ende der Datei nach der folgenden Zeile:
+
+```rb
+params.require(:task).permit(:Description)
+```
+
+Ändern Sie diese Zeile so, dass sie den neuen Parameter `Done` enthält.
+
+```rb
+params.require(:task).permit(:Description, :Done)
+```
+
+### <a name="update-the-views"></a>Aktualisieren der Ansichten
+
+Öffnen Sie die Datei *app/views/tasks/_form.html.erb*, bei der es sich um das Bearbeitungsformular handelt.
+
+Suchen Sie die Zeile `<%=f.error_span(:Description) %>`, und fügen Sie direkt darunter den folgenden Code ein:
+
+```erb
+<%= f.label :Done, :class => 'control-label col-lg-2' %>
+<div class="col-lg-10">
+  <%= f.check_box :Done, :class => 'form-control' %>
+</div>
+```
+
+Öffnen Sie die Datei *app/views/tasks/show.html.erb*, bei der es sich um die Ansichtsseite mit einem Datensatz handelt. 
+
+Suchen Sie die Zeile `<dd><%= @task.Description %></dd>`, und fügen Sie direkt darunter den folgenden Code ein:
+
+```erb
+  <dt><strong><%= model_class.human_attribute_name(:Done) %>:</strong></dt>
+  <dd><%= check_box "task", "Done", {:checked => @task.Done, :disabled => true}%></dd>
+```
+
+Öffnen Sie die Datei *app/views/tasks/index.html.erb*, bei der es sich um die Indexseite für alle Datensätze handelt.
+
+Suchen Sie die Zeile `<th><%= model_class.human_attribute_name(:Description) %></th>`, und fügen Sie direkt darunter den folgenden Code ein:
+
+```erb
+<th><%= model_class.human_attribute_name(:Done) %></th>
+```
+
+Suchen Sie in derselben Datei die Zeile `<td><%= task.Description %></td>`, und fügen Sie direkt darunter den folgenden Code ein:
+
+```erb
+<td><%= check_box "task", "Done", {:checked => task.Done, :disabled => true} %></td>
+```
+
+### <a name="test-the-changes-locally"></a>Lokales Testen der Änderungen
+
+Führen Sie im lokalen Terminal den Rails-Server aus.
+
+```bash
+rails server
+```
+
+Navigieren Sie zu `http://localhost:3000`, um die Änderung des Aufgabenstatus anzuzeigen, und fügen Sie Elemente hinzu, oder bearbeiten Sie die Elemente.
+
+![Hinzugefügtes Kontrollkästchen in der Aufgabe](./media/tutorial-ruby-postgres-app/complete-checkbox.png)
+
+Um den Rails-Server zu beenden, geben Sie `Ctrl + C` im Terminal ein.
+
+### <a name="publish-changes-to-azure"></a>Veröffentlichen von Änderungen in Azure
+
+Führen Sie im Terminal Rails-Datenbankmigrationen für die Produktionsumgebung aus, um die Änderung in der Azure-Datenbank vorzunehmen.
+
+```bash
+rake db:migrate RAILS_ENV=production
+```
+
+Führen Sie für alle Änderungen in Git einen Commit aus, und übertragen Sie dann die Codeänderungen per Pushvorgang an Azure.
+
+```bash
+git add .
+git commit -m "added complete checkbox"
+git push azure master
+```
+
+Wechseln Sie nach Abschluss des `git push`-Vorgangs zur Azure-Web-App, und testen Sie die neuen Funktionen.
+
+![Auf Azure veröffentlichte Änderungen an Modell und Datenbank](media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
+
+Wenn Sie Aufgaben hinzugefügt haben, werden sie in der Datenbank beibehalten. Bei Updates des Datenschemas bleiben vorhandene Daten erhalten.
+
+## <a name="manage-the-azure-web-app"></a>Verwalten der Azure-Web-App
+
+Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um die erstellte Web-App zu verwalten.
+
+Klicken Sie im linken Menü auf **App Services** und anschließend auf den Namen Ihrer Azure-Web-App.
+
+![Portalnavigation zur Azure-Web-App](./media/tutorial-php-mysql-app/access-portal.png)
+
+Die Übersichtsseite Ihrer Web-App wird angezeigt. Hier können Sie einfache Verwaltungsaufgaben wie Beenden, Starten, Neustarten, Durchsuchen und Löschen durchführen.
+
+Im linken Menü werden Seiten für die Konfiguration Ihrer App angezeigt.
+
+![App Service-Seite im Azure-Portal](./media/tutorial-php-mysql-app/web-app-blade.png)
+
+[!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
+
+<a name="next"></a>
+
+## <a name="next-steps"></a>Nächste Schritte
+
+In diesem Tutorial haben Sie Folgendes gelernt:
+
+> [!div class="checklist"]
+> * Erstellen einer Postgres-Datenbank in Azure
+> * Herstellen einer Verbindung zwischen einer Ruby on Rails-App und Postgres
+> * Bereitstellen der Anwendung in Azure
+> * Aktualisieren des Datenmodells und erneutes Bereitstellen der App
+> * Streamen von Diagnoseprotokollen aus Azure
+> * Verwalten der App im Azure-Portal
+
+Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie einer Web-App einen benutzerdefinierten DNS-Namen zuordnen.
+
+> [!div class="nextstepaction"]
+> [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps](../app-service-web-tutorial-custom-domain.md)

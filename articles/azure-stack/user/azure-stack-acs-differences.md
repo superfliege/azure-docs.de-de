@@ -1,33 +1,33 @@
 ---
-title: 'Azure Stack-Speicher: Unterschiede und Überlegungen'
-description: Lernen Sie die Unterschiede zwischen dem Azure Stack-Speicher und Azure Storage kennen, und erhalten Sie weitere Informationen zur Bereitstellung von Azure Stack.
+title: 'Azure Stack-Speicher: Unterschiede und Überlegungen | Microsoft-Dokumentation'
+description: Lernen Sie die Unterschiede zwischen dem Azure Stack-Speicher und Azure-Speicher kennen, und erhalten Sie weitere Informationen zur Bereitstellung von Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
 manager: femila
-ms.reviwer: xiaofmao
 ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/14/2018
+ms.date: 05/21/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 5a4d3312d6574f761da9a28bfb01a34acf11c9cc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.reviwer: xiaofmao
+ms.openlocfilehash: 2a6cb3f1a1f8009af411ba4d97a23194f6f089ae
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34197809"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604459"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack-Speicher: Unterschiede und Überlegungen
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Azure Stack-Speicher ist eine Reihe von Speicherclouddiensten in Microsoft Azure Stack. Der Azure Stack-Speicher bietet Blob-, Tabellen-, Warteschlangen- und Kontoverwaltungsfunktionen mit einer mit Azure konsistenten Semantik.
+Bei Azure Stack-Speicher handelt es sich um eine Reihe von Speicherclouddiensten in Microsoft Azure Stack. Der Azure Stack-Speicher bietet Blob-, Tabellen-, Warteschlangen- und Kontoverwaltungsfunktionen mit einer mit Azure konsistenten Semantik.
 
-Dieser Artikel fasst die bekannten Unterschiede des Azure Stack-Speichers im Vergleich zu Azure Storage-Diensten zusammen. Außerdem werden dort die Aspekte erläutert, die beim Bereitstellen von Azure Stack berücksichtigt werden sollten. Informationen zu allgemeinen Unterschieden zwischen Azure Stack und Azure finden Sie im Thema [Key considerations](azure-stack-considerations.md) (Wichtige Aspekte).
+Dieser Artikel fasst die bekannten Unterschiede des Azure Stack-Speichers im Vergleich zu Azure Storage-Diensten zusammen. Außerdem werden dort die Aspekte erläutert, die beim Bereitstellen von Azure Stack berücksichtigt werden sollten. Informationen zu allgemeinen Unterschieden zwischen globalen Azure-Umgebungen und Azure Stack finden Sie im Thema [Wichtige Aspekte: Verwenden von Diensten oder Erstellen von Apps für Azure Stack](azure-stack-considerations.md).
 
 ## <a name="cheat-sheet-storage-differences"></a>Spickzettel: Speicherunterschiede
 
@@ -91,7 +91,7 @@ Azure Stack-Speicher unterstützt die folgenden Clientbibliotheken:
 | C++            | Von 2.4.0 bis 3.1.0           | NuGet-Paket:<br>https://www.nuget.org/packages/wastorage.v140/<br> <br>GitHub-Release:<br>https://github.com/Azure/azure-storage-cpp/releases                                                                                                                                                                                          | Verbindungszeichenfolgen-Setup      |
 | PHP            | Von 0.15.0 bis 1.0.0          | GitHub-Release:<br>https://github.com/Azure/azure-storage-php/releases<br> <br>Installation über Composer (Details siehe unten)                                                                                                                                                                                                                  | Verbindungszeichenfolgen-Setup      |
 | Python         | Von 0.30.0 bis 1.0.0          | GitHub-Release:<br>https://github.com/Azure/azure-storage-python/releases                                                                                                                                                                                                                                                                | Dienstinstanzdeklaration |
-| Ruby           | Von 0.12.1 bis 1.0.1          | RubyGems-Paket:<br>Allgemein:<br>https://rubygems.org/gems/azure-storage-common/<br>Blob: https://rubygems.org/gems/azure-storage-blob/<br>Warteschlange: https://rubygems.org/gems/azure-storage-queue/<br>Tabelle: https://rubygems.org/gems/azure-storage-table/<br> <br>GitHub-Release:<br>https://github.com/Azure/azure-storage-ruby/releases | Verbindungszeichenfolgen-Setup      |
+| Ruby           | Von 0.12.1 bis 1.0.1          | RubyGems-Paket:<br>Allgemein:<br>https://rubygems.org/gems/azure-storage-common/<br>Blob: https://rubygems.org/gems/azure-storage-blob/<br>Queue: https://rubygems.org/gems/azure-storage-queue/<br>Table: https://rubygems.org/gems/azure-storage-table/<br> <br>GitHub-Release:<br>https://github.com/Azure/azure-storage-ruby/releases | Verbindungszeichenfolgen-Setup      |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

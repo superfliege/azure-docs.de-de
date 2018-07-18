@@ -2,7 +2,7 @@
 title: Steuern des Azure App Service-Datenverkehrs mit Azure Traffic Manager
 description: Dieser Artikel bietet zusammenfassende Informationen zu Azure Traffic Manager im Hinblick auf Azure App Service.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 writer: cephalin
 manager: erikre
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
-ms.openlocfilehash: efb732e9be62313eb199cb2cfbb1fa4d2cde0282
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 92ab7bf64445ff772f33a18e7f7946a7e0be333a
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824039"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Steuern des Azure App Service-Datenverkehrs mit Azure Traffic Manager
 > [!NOTE]
@@ -33,10 +34,10 @@ Mit Azure Traffic Manager können Sie steuern, wie Anforderungen von Webclients 
 ## <a name="routing-methods"></a>Routingmethoden
 Azure Traffic Manager verwendet vier verschiedene Routingmethoden. Diese Methoden werden in der folgenden Liste beschrieben, soweit sie Azure App Service betreffen.
 
-* **[Priorität](#priority):** Verwenden einer primären App für den gesamten Datenverkehr und Bereitstellen von Sicherungen für den Fall, dass die primäre App oder die Sicherungs-Apps nicht verfügbar sind
-* **[Gewichtet](#weighted):** Verteilen des Datenverkehrs auf eine Gruppe von Apps, entweder gleichmäßig oder gewichtet, gemäß Ihrer Definition
-* **[Leistung](#performance):** Wenn Apps an unterschiedlichen geografischen Standorten genutzt werden, verwenden der „nächstgelegenen“ App im Hinblick auf die niedrigste Netzwerklatenz
-* **[Geografisch](#geographic):** Weiterleiten von Benutzern basierend auf dem geografischen Standort, von dem ihre DNS-Abfrage stammt, zu bestimmten Apps 
+* **[Priorität](../traffic-manager/traffic-manager-routing-methods.md#priority):** Verwenden einer primären App für den gesamten Datenverkehr und Bereitstellen von Sicherungen für den Fall, dass die primäre App oder die Sicherungs-Apps nicht verfügbar sind
+* **[Gewichtet](../traffic-manager/traffic-manager-routing-methods.md#weighted):** Verteilen des Datenverkehrs auf eine Gruppe von Apps, entweder gleichmäßig oder gewichtet, gemäß Ihrer Definition
+* **[Leistung](../traffic-manager/traffic-manager-routing-methods.md#performance):** Wenn Apps an unterschiedlichen geografischen Standorten genutzt werden, verwenden der „nächstgelegenen“ App im Hinblick auf die niedrigste Netzwerklatenz
+* **[Geografisch](../traffic-manager/traffic-manager-routing-methods.md#geographic):** Weiterleiten von Benutzern basierend auf dem geografischen Standort, von dem ihre DNS-Abfrage stammt, zu bestimmten Apps 
 
 Weitere Informationen finden Sie unter [Traffic Manager-Methoden für das Datenverkehrsrouting](../traffic-manager/traffic-manager-routing-methods.md).
 

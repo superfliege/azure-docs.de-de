@@ -1,19 +1,19 @@
 ---
 title: Erstellen einer Azure IoT Central-Anwendung | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie als Administrator eine Azure IoT Central-Anwendung erstellen.
-services: iot-central
-author: TanmayBhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 03/20/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 83879c6b81985f61b9fcff665e9f764c1346592e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: 39992a1cc36d00a64ee6430cad5f24af3e1e1157
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200808"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34629285"
 ---
 # <a name="create-your-azure-iot-central-application"></a>Erstellen Ihrer Azure IoT Central-Anwendung
 
@@ -70,7 +70,7 @@ Die Regionen, in denen Azure IoT Central verfügbar ist, finden Sie auf der Seit
 
 Sie können für Ihre neue Azure IoT Central-Anwendung eine der verfügbaren Anwendungsvorlagen auswählen. Eine Anwendungsvorlage kann vordefinierte Elemente wie Gerätevorlagen und Dashboards enthalten, die Ihnen den Einstieg erleichtern:
 
-| Anwendungsvorlage | Beschreibung |
+| Anwendungsvorlage | BESCHREIBUNG |
 | -------------------- | ----------- |
 | Benutzerdefinierte Anwendung   | Erstellt eine leere Anwendung, die Sie mit Ihren eigenen Gerätevorlagen und Geräten füllen können. |
 | Beispiel „Contoso“       | Erstellt eine Anwendung, die eine Gerätevorlage für ein einfach angeschlossenes Gerät enthält. Verwenden Sie diese Vorlage, um mit der Erkundung von Azure IoT Central zu beginnen. |

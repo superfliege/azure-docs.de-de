@@ -6,18 +6,18 @@ services: cosmos-db
 author: tknandu
 manager: kfile
 ms.service: cosmos-db
-ms.workload: data-services
-ms.topic: article
+ms.devlang: java
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 6e9340e5db78315470052e0c0c70eeef6bf6dafa
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: f241a98cdcc847ddb579b86b51034d1438ee1395
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33885518"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300712"
 ---
-# <a name="use-bulkexecutor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Verwenden der BulkExecutor-Java-Bibliothek zum Ausführen von Massenvorgängen in Azure Cosmos DB
+# <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Verwenden der BulkExecutor-Java-Bibliothek zum Ausführen von Massenvorgängen in Azure Cosmos DB
 
 Dieses Tutorial bietet Anleitungen zum Verwenden der BulkExecutor-Java-Bibliothek von Azure Cosmos DB zum Importieren und Aktualisieren von Azure Cosmos DB-Dokumenten. Informationen zur BulkExecutor-Bibliothek und dazu, wie Sie damit massiven Durchsatz und riesige Speichermengen nutzen können, finden Sie im Artikel [BulkExecutor-Bibliothek – Übersicht](bulk-executor-overview.md). In diesem Tutorial erstellen Sie eine Java-Anwendung, die zufällige Dokumente generiert. Diese werden per Massenvorgang in eine Azure Cosmos DB-Sammlung importiert. Nach dem Importieren aktualisieren Sie per Massenvorgang einige Eigenschaften eines Dokuments. 
 
@@ -211,6 +211,6 @@ Berücksichtigen Sie bei der Verwendung der BulkExecutor-Bibliothek die folgende
 
     
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen zu Maven-Paketen und Versionsanmerkungen zur BulkExecutor-Java-Bibliothek finden Sie unter [Details zum BulkExecutor SDK](sql-api-sdk-bulk-executor-java.md).
+* Informationen zu Maven-Paketen und Versionshinweisen zur BulkExecutor-Java-Bibliothek finden Sie unter [Details zum BulkExecutor-SDK](sql-api-sdk-bulk-executor-java.md).
 
 

@@ -1,25 +1,19 @@
 ---
-title: Erstellen einer Protokollwarnung anhand einer Resource Manager-Vorlage | Microsoft-Dokumentation
+title: Erstellen einer Protokollwarnung anhand einer Resource Manager-Vorlage
 description: Erfahren Sie, wie Sie eine Protokollwarnung mit einer Azure Resource Manager-Vorlage und -API erstellen.
 author: msvijayn
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 14a2560d91fd0f8dcc729b32c7155c4b74aa8aa1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.component: alerts
+ms.openlocfilehash: 5afa34a5eadf5367b3ab28749735197ca6ed82bd
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204157"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263200"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Erstellen einer Protokollwarnung anhand einer Resource Manager-Vorlage
 In diesem Artikel wird beschrieben, wie Sie [Protokollwarnungen](monitor-alerts-unified-log.md) programmgesteuert und skaliert in Azure verwalten können, indem Sie eine [Azure Resource Manager-Vorlage](..//azure-resource-manager/resource-group-authoring-templates.md) über [Azure Powershell](../azure-resource-manager/resource-group-template-deploy.md) und [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) verwenden. Derzeit unterstützen Azure-Warnungen Protokollwarnungen zu Abfragen von [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) und [Azure Application Insights](../application-insights/app-insights-analytics-tour.md).

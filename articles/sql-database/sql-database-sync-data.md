@@ -1,22 +1,23 @@
 ---
-title: Azure SQL-Datensynchronisierung (Vorschauversion) | Microsoft-Dokumentation
-description: Diese Übersicht enthält eine Einführung in die Azure SQL-Datensynchronisierung (Vorschauversion).
+title: Azure SQL-Datensynchronisierung | Microsoft-Dokumentation
+description: Diese Übersicht bietet eine Einführung in die Azure SQL-Datensynchronisierung.
 services: sql-database
-author: douglaslms
+author: allenwux
 manager: craigg
 ms.service: sql-database
 ms.custom: data-sync
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/10/2018
-ms.author: douglasl
+ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 365a612b20ed91a6acde566dff12b07ff3b8b676
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bb5a383828e98c773c079dcea8e3cf37f9a068f0
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017434"
 ---
-# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung (Vorschauversion)
+# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung
 
 SQL-Datensynchronisierung ist ein Dienst, der auf Azure SQL-Datenbank basiert und mit dem Sie die ausgewählten Daten bidirektional über mehrere SQL-Datenbanken und SQL Server-Instanzen hinweg synchronisieren können.
 
@@ -52,15 +53,15 @@ Die Datensynchronisierung ist nützlich, wenn Daten über mehrere Azure SQL-Date
 
 -   **Global verteilte Anwendungen:** Viele Unternehmen sind in mehreren Regionen oder Ländern ansässig. Es ist ratsam, die Daten jeweils in einer Region in der Nähe vorzuhalten, um die Netzwerklatenz zu verringern. Mit der Datensynchronisierung können Sie Datenbanken in den Regionen weltweit synchron halten.
 
-Die Datensynchronisierung eignet sich nicht für die folgenden Szenarien:
+Die Datensynchronisierung ist für folgende Szenarien nicht die beste Lösung:
 
--   Notfallwiederherstellung
-
--   Leseskalierung
-
--   ETL (OLTP zu OLAP)
-
--   Migration von einer lokalen SQL Server-Instanz zu Azure SQL-Datenbank
+| Szenario | Einige empfohlene Lösungen |
+|----------|----------------------------|
+| Notfallwiederherstellung | [Georedundante Sicherungen in Azure](sql-database-automated-backups.md) |
+| Leseskalierung | [Verwenden von schreibgeschützten Replikaten für den Lastenausgleich schreibgeschützter Abfrageworkloads (Vorschau)](sql-database-read-scale-out.md) |
+| ETL (OLTP zu OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) oder [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services?view=sql-server-2017) |
+| Migration von einer lokalen SQL Server-Instanz zu Azure SQL-Datenbank | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
+|||
 
 ## <a name="how-does-data-sync-work"></a>Wie funktioniert die Datensynchronisierung? 
 
@@ -81,6 +82,8 @@ Die Transaktionskonsistenz ist nicht garantiert, da die Datensynchronisierung au
 
 #### <a name="performance-impact"></a>Auswirkungen auf die Leistung
 Für die Datensynchronisierung werden Auslöser für Einfügen, Aktualisieren und Löschen verwendet, um Änderungen nachzuverfolgen. In der Benutzerdatenbank werden Nebentabellen für die Änderungsnachverfolgung erstellt. Diese Aktivitäten zur Änderungsnachverfolgung haben Auswirkungen auf Ihre Datenbankworkload. Bewerten Sie Ihren Tarif, und aktualisieren Sie ihn bei Bedarf.
+
+Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktualisierung oder Löschung von Synchronisierungsgruppen kann sich ebenfalls nachteilig auf die Datenbankleistung auswirken. 
 
 ### <a name="general-requirements"></a>Allgemeine Anforderungen
 
@@ -124,13 +127,13 @@ Für die Datensynchronisierung werden Auslöser für Einfügen, Aktualisieren un
 
 ## <a name="faq-about-sql-data-sync"></a>Häufig gestellte Fragen zur SQL-Datensynchronisierung
 
-### <a name="how-much-does-the-sql-data-sync-preview-service-cost"></a>Wie viel kostet der Dienst für die SQL-Datensynchronisierung (Vorschauversion)?
+### <a name="how-much-does-the-sql-data-sync-service-cost"></a>Wie viel kostet der SQL-Datensynchronisierungsdienst?
 
-Während der Vorschauphase fallen für den Dienst für die SQL-Datensynchronisierung (Vorschauversion) selbst keine Gebühren an.  Es fallen aber weiterhin Datenübertragungsgebühren für die ein- und ausgehende Datenverschiebung für Ihre SQL-Datenbankinstanz an. Weitere Informationen finden Sie unter [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/).
+Für den SQL-Datensynchronisierungsdienst selbst fallen keine Kosten an.  Es fallen aber weiterhin Datenübertragungsgebühren für die ein- und ausgehende Datenverschiebung für Ihre SQL-Datenbankinstanz an. Weitere Informationen finden Sie unter [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/).
 
 ### <a name="what-regions-support-data-sync"></a>Welche Regionen werden für die Datensynchronisierung unterstützt?
 
-SQL-Datensynchronisierung (Vorschau) ist in allen öffentlichen Cloudregionen verfügbar.
+Die SQL-Datensynchronisierung ist in allen öffentlichen Cloudregionen verfügbar.
 
 ### <a name="is-a-sql-database-account-required"></a>Ist ein SQL-Datenbankkonto erforderlich? 
 
@@ -149,7 +152,7 @@ Ja. Erstellen Sie das Schema in der neuen Datenbank mithilfe eines Skripts manue
 
 ### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Sollte ich die SQL-Datensynchronisierung nutzen, um meine Datenbanken zu sichern und wiederherzustellen?
 
-Es wird nicht empfohlen, die SQL-Datensynchronisierung (Vorschauversion) zum Erstellen einer Sicherung Ihrer Daten zu verwenden. Sie können keine Sicherung und Wiederherstellung für einen bestimmten Zeitpunkt durchführen, da Synchronisierungen mit der SQL-Datensynchronisierung (Vorschauversion) keine Versionsangaben aufweisen. Zudem werden mit der SQL-Datensynchronisierung (Vorschauversion) keine anderen SQL-Objekte gesichert, z.B. gespeicherte Prozeduren, und es kann kein schneller Wiederherstellungsvorgang durchgeführt werden.
+Es wird nicht empfohlen, die SQL-Datensynchronisierung zum Erstellen einer Sicherung Ihrer Daten zu verwenden. Sie können keine Sicherung und Wiederherstellung auf einen bestimmten Zeitpunkt durchführen, da Synchronisierungen mit der SQL-Datensynchronisierung keine Versionsangaben aufweisen. Zudem werden mit der SQL-Datensynchronisierung keine anderen SQL-Objekte gesichert, z.B. gespeicherte Prozeduren, und es kann kein schneller Wiederherstellungsvorgang durchgeführt werden.
 
 Informationen zu einem empfohlenen Sicherungsverfahren finden Sie unter [Kopieren einer Azure SQL-Datenbank](sql-database-copy.md).
 
@@ -169,7 +172,7 @@ Ja. Für die SQL-Datensynchronisierung wird die Sortierung in den folgenden Szen
 
 ### <a name="is-federation-supported-in-sql-data-sync"></a>Wird der Verbund für die SQL-Datensynchronisierung unterstützt?
 
-Eine Datenbank für den Verbundstamm kann im Dienst für die SQL-Datensynchronisierung (Vorschauversion) ohne Einschränkungen verwendet werden. Es ist nicht möglich, den Verbunddatenbank-Endpunkt der aktuellen Version der SQL-Datensynchronisierung (Vorschauversion) hinzuzufügen.
+Eine Datenbank für den Verbundstamm kann im SQL-Datensynchronisierungsdienst ohne Einschränkungen verwendet werden. Es ist nicht möglich, den Endpunkt der Verbunddatenbank zur aktuellen Version der SQL-Datensynchronisierung hinzuzufügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -181,7 +184,7 @@ Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter:
 -   [Troubleshoot issues with SQL Data Sync (Preview)](sql-database-troubleshoot-data-sync.md) (Behandeln von Problemen mit der Azure SQL-Datensynchronisierung-Vorschauversion)
 
 -   Vollständige PowerShell-Beispiele, die die Konfiguration der SQL-Datensynchronisierung veranschaulichen:
-    -   [Verwenden von PowerShell zum Synchronisieren von Daten zwischen mehreren Azure SQL-­Datenbanken](scripts/sql-database-sync-data-between-sql-databases.md)
+    -   [Verwenden von PowerShell zum Synchronisieren zwischen mehreren Azure SQL-Datenbanken](scripts/sql-database-sync-data-between-sql-databases.md)
     -   [Verwenden von PowerShell zum Synchronisieren zwischen einer Azure SQL-Datenbank und einer lokalen SQL Server-Datenbank](scripts/sql-database-sync-data-between-azure-onprem.md)
 
 -   [Download the SQL Data Sync REST API documentation (Herunterladen der Dokumentation zur REST-API von SQL-Datensynchronisierung)](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)

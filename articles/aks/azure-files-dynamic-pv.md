@@ -6,15 +6,15 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 05/21/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 991db1fc32ae89ab04ca040cfb6e8d59ffe5262f
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d3e92902e711ba2b1664c6497ecb66f035ea9308
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34356442"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597500"
 ---
 # <a name="persistent-volumes-with-azure-files"></a>Persistente Volumes mit Azure Files
 
@@ -24,29 +24,20 @@ Weitere Informationen zu persistenten Kubernetes-Volumes, z.B. zur statischen Er
 
 ## <a name="create-storage-account"></a>Speicherkonto erstellen
 
-Bei der dynamischen Erstellung einer Azure-Dateifreigabe als Kubernetes-Volume kann jedes Speicherkonto verwendet werden, solange es in derselben Ressourcengruppe wie der AKS-Cluster enthalten ist. Erstellen Sie bei Bedarf ein Speicherkonto in derselben Ressourcengruppe wie der AKS-Cluster.
-
-Um die richtige Ressourcengruppe zu bestimmen, verwenden Sie den Befehl [az group list][az-group-list].
+Bei der dynamischen Erstellung einer Azure-Dateifreigabe als Kubernetes-Volume kann ein beliebiges Speicherkonto verwendet werden, solange es sich in der AKS-Ressourcengruppe des **Knotens** befindet. Rufen Sie den Namen der Ressourcengruppe mit dem Befehl [az resource show][az-resource-show] ab.
 
 ```azurecli-interactive
-az group list --output table
-```
+$ az resource show --resource-group myResourceGroup --name myAKSCluster --resource-type Microsoft.ContainerService/managedClusters --query properties.nodeResourceGroup -o tsv
 
-Suchen Sie mit einem Namen, der `MC_clustername_clustername_locaton` ähnelt, nach einer Ressourcengruppe.
-
-```
-Name                                 Location    Status
------------------------------------  ----------  ---------
-MC_myAKSCluster_myAKSCluster_eastus  eastus      Succeeded
-myAKSCluster                         eastus      Succeeded
+MC_myResourceGroup_myAKSCluster_eastus
 ```
 
 Verwenden Sie den Befehl [az storage account create][az-storage-account-create], um ein Speicherkonto zu erstellen.
 
-Ersetzen Sie in diesem Beispiel den Wert von `--resource-group` durch den Namen der Ressourcengruppe und den Wert von `--name` durch einen Namen Ihrer Wahl.
+Ersetzen Sie `--resource-group` durch den Namen der Ressourcengruppe aus dem letzten Schritt und `--name` durch einen Namen Ihrer Wahl.
 
 ```azurecli-interactive
-az storage account create --resource-group MC_myAKSCluster_myAKSCluster_eastus --name mystorageaccount --location eastus --sku Standard_LRS
+az storage account create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name mystorageaccount --location eastus --sku Standard_LRS
 ```
 
 ## <a name="create-storage-class"></a>Erstellen einer Speicherklasse
@@ -77,7 +68,7 @@ kubectl apply -f azure-file-sc.yaml
 
 Ein Anspruch auf ein persistentes Volume (Persistent Volume Claim, PVC) verwendet das Speicherklassenobjekt, um eine Azure-Dateifreigabe dynamisch bereitzustellen.
 
-Der folgende YAML-Code kann verwendet werden, um einen Anspruch auf ein persistentes Volume der Größe `5GB` mit `ReadWriteOnce`-Zugriff zu erstellen. Weitere Informationen zu Zugriffsmodi finden Sie in der Dokumentation zu [persistenten Kubernetes-Volumes][access-modes].
+Der folgende YAML-Code kann verwendet werden, um einen Anspruch auf ein persistentes Volume der Größe `5GB` mit `ReadWriteMany`-Zugriff zu erstellen. Weitere Informationen zu Zugriffsmodi finden Sie in der Dokumentation zu [persistenten Kubernetes-Volumes][access-modes].
 
 Erstellen Sie eine Datei namens „`azure-file-pvc.yaml`“, und fügen Sie den folgenden YAML-Code ein. Stellen Sie sicher, dass `storageClassName` der Speicherklasse, die Sie im letzten Schritt erstellt haben, entspricht.
 
@@ -88,7 +79,7 @@ metadata:
   name: azurefile
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   storageClassName: azurefile
   resources:
     requests:
@@ -210,6 +201,7 @@ Informieren Sie sich über persistente Kubernetes-Volumes bei Verwendung von Azu
 <!-- LINKS - internal -->
 [az-group-create]: /cli/azure/group#az_group_create
 [az-group-list]: /cli/azure/group#az_group_list
+[az-resource-show]: /cli/azure/resource#az-resource-show
 [az-storage-account-create]: /cli/azure/storage/account#az_storage_account_create
 [az-storage-create]: /cli/azure/storage/account#az_storage_account_create
 [az-storage-key-list]: /cli/azure/storage/account/keys#az_storage_account_keys_list

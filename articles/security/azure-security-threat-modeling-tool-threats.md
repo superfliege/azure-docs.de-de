@@ -1,6 +1,6 @@
 ---
-title: "Bedrohungen – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation"
-description: "Seite „Bedrohungskategorie“ für das Microsoft Threat Modeling Tool mit Kategorien für alle generierten Bedrohungen."
+title: Bedrohungen – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
+description: Seite „Bedrohungskategorie“ für das Microsoft Threat Modeling Tool mit Kategorien für alle generierten Bedrohungen.
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23043305"
 ---
 # <a name="microsoft-threat-modeling-tool-threats"></a>Microsoft Threat Modeling Tool-Bedrohungen
 

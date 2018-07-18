@@ -10,23 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a572824225c0d83af698c4ff18d6b297b1ebb729
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f33ff3f588dac49e295a5aa96d71557d32407e46
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38667437"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datasets in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: allgemein verfügbar](data-factory-create-datasets.md)
-> * [Version 2 – Vorschauversion](../concepts-datasets-linked-services.md)
+> * [Version 1](data-factory-create-datasets.md)
+> * [Version 2 (aktuelle Version)](../concepts-datasets-linked-services.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Datasets and linked services in Azure Data Factory](../concepts-datasets-linked-services.md) (Datasets und verknüpfte Dienste in Azure Data Factory).
+> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [Datasets in V2](../concepts-datasets-linked-services.md).
 
 In diesem Artikel ist beschrieben, was Datasets sind, wie sie im JSON-Format definiert werden, und wie sie in Azure Data Factory-Pipelines verwendet werden. Der Artikel enthält ausführliche Informationen zu jedem Abschnitt (z. B. „structure“, „availability“ und „policy“) in der JSON-Definition eines Datasets. Außerdem werden im Artikel Beispiele dazu bereitgestellt, wie die Eigenschaften **offset**, **anchorDateTime** und **style** in der Definition eines Datasets verwendet werden.
 

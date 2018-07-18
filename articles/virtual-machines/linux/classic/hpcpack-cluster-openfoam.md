@@ -15,14 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 07/22/2016
 ms.author: danlep
-ms.openlocfilehash: f43790d3495e1c09730e90b5077ec840731a7d83
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 73ad78fc73a7605f8feaf114ebdfac5023cc91b6
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342424"
 ---
 # <a name="run-openfoam-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Ausführen von OpenFOAM mit Microsoft HPC Pack auf einem Linux-RDMA-Cluster in Azure
-In diesem Artikel wird eine Methode zum Ausführen von OpenFoam auf Azure-VMs beschrieben. Hier stellen Sie einen Microsoft HPC Pack-Cluster mit Linux-Serverknoten unter Azure bereit und führen einen [OpenFoam](http://openfoam.com/)-Auftrag mit Intel MPI aus. Sie können RDMA-fähige Azure-VMs für die Computeknoten verwenden, sodass die Computeknoten über das Azure RDMA-Netzwerk kommunizieren. Andere Optionen zum Ausführen von OpenFoam in Azure beinhalten im Marketplace verfügbare vollständig konfigurierte kommerzielle Images, z.B. [OpenFoam 2.3 on CentOS 6](https://azure.microsoft.com/marketplace/partners/ubercloud/openfoam-v2dot3-centos-v6/) von UberCloud, und durch Ausführung von [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/). 
+In diesem Artikel wird eine Methode zum Ausführen von OpenFoam auf Azure-VMs beschrieben. Hier stellen Sie einen Microsoft HPC Pack-Cluster mit Linux-Serverknoten unter Azure bereit und führen einen [OpenFoam](http://openfoam.com/)-Auftrag mit Intel MPI aus. Sie können RDMA-fähige Azure-VMs für die Computeknoten verwenden, sodass die Computeknoten über das Azure RDMA-Netzwerk kommunizieren. Andere Optionen zum Ausführen von OpenFoam in Azure beinhalten im Marketplace verfügbare vollständig konfigurierte kommerzielle Images, z.B. [OpenFoam 2.3 on CentOS 6](https://azuremarketplace.microsoft.com/marketplace/apps/cfd-direct.cfd-direct-from-the-cloud) von UberCloud, und durch Ausführung von [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/). 
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 

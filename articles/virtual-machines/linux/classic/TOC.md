@@ -4,7 +4,7 @@
 ## [HÄUFIG GESTELLTE FRAGEN](faq-classic.md)
 
 # Erste Schritte
-## [Erstellen eines virtuellen Linux-Computers mithilfe des Azure-Portals](createportal-classic.md)
+## [Erstellen eines virtuellen Linux-Computers](createportal-classic.md)
 
 # Anleitung
 ## Compute

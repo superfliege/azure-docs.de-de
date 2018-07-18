@@ -7,15 +7,17 @@ ms.author: ranku
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 497c1725fc4554792add11c0ec069d1628a89fbd
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cc53fc52590bc9991dcfd4730d9e4cb03e05efd5
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831481"
 ---
 # <a name="split-column-by-example-transformation"></a>Transformation „Aufteilen von Spalten anhand eines Beispiels“
 Diese Transformation teilt den Inhalt einer Spalte vorausschauend auf aussagekräftige Begrenzungen auf, ohne dass eine Benutzereingabe erforderlich ist. Der Splitalgorithmus wählt die Begrenzungen aus, nachdem der Inhalt der Spalte analysiert wurde. Diese Begrenzungen können von Folgendem definiert werden:
@@ -149,12 +151,12 @@ In einigen Fällen gibt es keine tatsächlichen Trennzeichen, und Datenfelder er
 |Amount|Amount_1|Amount_2|
 |:-----|:-----|:-----|
 |\$14|$|14|
-|£9|£|9|
+|£ 9|£|9|
 |\$34|$|34|
 |€ 18|€ |18|
 |\$42|$|42|
 |\$7|$|7|
-|£42|£|42|
+|£ 42|£|42|
 |\$16|$|16|
 |€ 16|€ |16|
 |\$15|$|15|

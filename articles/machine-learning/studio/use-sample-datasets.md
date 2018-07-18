@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 03a0b844-e8a7-4896-996f-d3c7a0db7a50
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.openlocfilehash: 38f31220b7cf4624367d872df152ef9e1304e841
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 725b7e1e37ffca38cf439cc62b053f13dfd6397d
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903029"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Verwenden von Beispieldatasets in Azure Machine Learning Studio
 [top]: #machine-learning-sample-datasets
@@ -145,7 +147,7 @@ Beschriftungen vom KDD Cup 2009 (Kundenbeziehungsprognose, <a href="http://www.s
 <tr>
   <td>CRM-Dataset gemeinsam genutzt</td>
   <td>
-Diese Daten stammen vom KDD Cup 2009, Kundenbeziehungsprognose (<a href="http://www.sigkdd.org/kdd-cup-2009-customer-relationship-prediction - orange_small_train.data.zip">orange_small_train.data.zip</a>).
+Diese Daten stammen vom KDD Cup 2009, Kundenbeziehungsprognose (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip">orange_small_train.data.zip</a>).
 <p></p>
 Das DataSet enthält 50.000 Kunden des französischen Telekommunikationsunternehmens Orange. Jeder Kunde verfügt über 230 anonymisierte Merkmale, von denen 190 numerisch und 40 kategorisch sortiert sind. Die Merkmale sind sehr karg.
   </td>
@@ -203,7 +205,7 @@ Enthält Wetterdaten, etwa Temperatur und Luftfeuchtigkeit sowie die Windgeschwi
 <p></p>
 <b>Zugrunde liegende Untersuchungen:</b> Cortez, P. und Morais, A. (2008). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science 
 <p></p>
-[Cortez and Morais, 2007] P. Cortez und A. Morais. A Data Mining Approach to Predict Forest Fires using Meteorological Data. In: J. Neves, M. F. Santos und J. Machado Hrsg., New Trends in Artificial Intelligence, Proceedings of the 13th EPIA 2007 – Portuguese Conference on Artificial Intelligence, Dezember, Guimarães, Portugal, S. 512–523, 2007. APPIA, ISBN-13 978-989-95618-0-9. Verfügbar unter: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a>.
+[Cortez and Morais, 2007] P. Cortez und A. Morais. A Data Mining Approach to Predict Forest Fires using Meteorological Data. In: J. Neves, M. F. Santos und J. Machado Eds., New Trends in Artificial Intelligence, Proceedings of the 13th EPIA 2007 – Portuguese Conference on Artificial Intelligence, Dezember, Guimarães, Portugal, Seiten 512-523, 2007. APPIA, ISBN-13 978-989-95618-0-9. Verfügbar unter: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a>.
   </td>
 </tr>
 
@@ -306,7 +308,7 @@ Die Stahlsorten folgen einem festgelegten Standard, der von SAE und anderen Orga
 <p></p>
 <b>Zugrunde liegende Untersuchungen:</b> Sterling, D. und Buntine, W. (NA). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science 
 <p></p>
-Ein nützliches Handbuch zu den Stahlsorten finden Sie hier: <a href="http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf">http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf</a>
+Ein nützliches Handbuch zu den Stahlsorten finden Sie hier: <a href="https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf">https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
 </tr>
 
@@ -401,7 +403,7 @@ Themenzuweisungen für Nachrichtenartikel im Reuters-Nachrichtendataset RCV1-V2 
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td>
-Diese Daten stammen aus dem KDD Cup 2010 zur Leistungsbewertung von Schülern (<a href="http://www.kdd.org/kdd-cup-2010-student-performance-evaluation">Schülerleistungsbewertung</a>). Die verwendeten Daten stammen aus dem Trainingssatz „Algebra_2008_2009“ (Stamper, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). Algebra I 2008-2009. Dataset des KDD Cup 2010 – Educational Data Mining Challenge. Sie finden das Dataset unter <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a> oder <a href="http://www.kdd.org/sites/default/files/kddcup/site/2010/files/algebra_2008_2009.zip">algebra_2008_2009.zip</a>.
+Diese Daten stammen aus dem KDD Cup 2010 zur Leistungsbewertung von Schülern (<a href="http://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">Schülerleistungsbewertung</a>). Die verwendeten Daten stammen aus dem Trainingssatz „Algebra_2008_2009“ (Stamper, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). Algebra I 2008-2009. Dataset des KDD Cup 2010 – Educational Data Mining Challenge. Sie finden das Dataset unter <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a>.
 <p></p>
 Das Dataset wurde in Azure Blob Storage heruntergeladen und gespeichert (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>). Es enthält Protokolldateien aus einem Tutorensystem für Schüler. Die bereitgestellten Funktionen umfassen eine Problem-ID und eine zugehörige Kurzbeschreibung, die Schüler-ID, einen Zeitstempel und die Anzahl der Versuche, bevor das Problem vom Schüler ordnungsgemäß gelöst wurde. Das ursprüngliche Dataset umfasst 8,9 Millionen Datensätze. Dieses Dataset wurde auf die ersten 100.000 Zeilen reduziert. Das DataSet umfasst 23 durch Tabulatoren getrennte Spalten mit verschiedenen Typen: numerisch, kategorisch und Zeitstempel.
   </td>

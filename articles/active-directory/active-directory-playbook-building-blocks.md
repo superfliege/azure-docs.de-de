@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 97a77de2fe1111f0a65b5325a5db96ad30f40f15
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 45dedd8c4d6ae2f9b54873d87f82c2e605a8c2aa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38451698"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory-PoC-Playbook: Bausteine
 
@@ -41,10 +42,10 @@ Diese Voraussetzungen gelten für Azure AD Premium-PoC in jedem Fall.
 | Voraussetzung | angeben |
 | --- | --- |
 | Definierter Azure AD-Mandant mit gültigem Azure-Abonnement | [Einrichten eines Azure Active Directory-Mandanten](active-directory-howto-tenant.md)<br/>**Hinweis:** Wenn Sie bereits über eine Umgebung mit Azure AD Premium-Lizenzen verfügen, können Sie unter https://aka.ms/accessaad ein Abonnement ohne Obergrenze abschließen. <br/>Weitere Informationen finden Sie unter https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ sowie unter https://technet.microsoft.com/library/dn832618.aspx. |
-| Definierte und überprüfte Domäne | [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**Hinweis:** Einige Workloads wie Power BI können einen Azure AD-Mandanten unbemerkt bereitgestellt haben. Navigieren Sie zu https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration, um zu prüfen, ob eine bestimmte Domäne einem Mandanten zugeordnet ist. Bei Erfolg ist die Domäne bereits einem Mandanten zugeordnet. Dann ist möglicherweise eine Übernahme nötig. Wenn dies der Fall ist, hilft Microsoft Ihnen gerne weiter. Weitere Informationen zu den Übernahmeoptionen finden Sie unter: [Was ist die Self-Service-Registrierung für Azure?](active-directory-self-service-signup.md) |
+| Definierte und überprüfte Domäne | [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**Hinweis:** Einige Workloads wie Power BI können einen Azure AD-Mandanten unbemerkt bereitgestellt haben. Navigieren Sie zu https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration, um zu prüfen, ob eine bestimmte Domäne einem Mandanten zugeordnet ist. Bei Erfolg ist die Domäne bereits einem Mandanten zugeordnet. Dann ist möglicherweise eine Übernahme nötig. Wenn dies der Fall ist, hilft Microsoft Ihnen gerne weiter. Weitere Informationen zu den Übernahmeoptionen finden Sie unter: [Was ist die Self-Service-Registrierung für Azure?](users-groups-roles/directory-self-service-signup.md) |
 | Aktivierte Testversion von Azure AD Premium oder EMS | [Azure Active Directory Premium einen Monat lang gratis](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | PoC-Benutzern zugewiesene Azure AD Premium- oder EMS-Lizenzen | [Lizenzieren von sich selbst und Ihrer Benutzer in Azure Active Directory](active-directory-licensing-get-started-azure-portal.md) |
-| Anmeldeinformationen eines globalen Azure AD-Administrators | [Zuweisen von Administratorrollen in Azure Active Directory](active-directory-assign-admin-roles-azure-portal.md) |
+| Anmeldeinformationen eines globalen Azure AD-Administrators | [Zuweisen von Administratorrollen in Azure Active Directory](users-groups-roles/directory-assign-admin-roles.md) |
 | Optional, jedoch dringend empfohlen: parallele Laborumgebung als Fallback | [Voraussetzungen für Azure AD Connect](./connect/active-directory-aadconnect-prerequisites.md) |
 
 ## <a name="directory-synchronization---password-hash-sync-phs---new-installation"></a>Verzeichnissynchronisierung – Kennworthashsynchronisierung – Neue Installation
@@ -99,10 +100,10 @@ Geschätzter Zeitaufwand: 15 Minuten
 | Schritt | angeben |
 | --- | --- |
 | Wechseln Sie zum Azure AD-Verwaltungsportal. | [Azure AD-Verwaltungsportal: Unternehmensbranding](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/LoginTenantBranding) |
-| Laden Sie die Assets für die Anmeldeseite hoch (Herologo, kleines Logo, Label usw.). Optional: Wenn Sie über AD FS verfügen, passen Sie diese Assets an die AD FS-Anmeldeseiten an. | [Hinzufügen Ihres Unternehmensbrandings zur Anmelde- und Zugriffsbereichsseite: Anpassbare Elemente](customize-branding.md) |
+| Laden Sie die Assets für die Anmeldeseite hoch (Herologo, kleines Logo, Label usw.). Optional: Wenn Sie über AD FS verfügen, passen Sie diese Assets an die AD FS-Anmeldeseiten an. | [Hinzufügen Ihres Unternehmensbrandings zur Anmelde- und Zugriffsbereichsseite: Anpassbare Elemente](fundamentals/customize-branding.md) |
 | Warten Sie einige Minuten, bis die Änderung vollständig wirksam wird. |  |
 | Melden Sie sich mit den PoC-Benutzeranmeldeinformationen unter https://myapps.microsoft.com an. |  |
-| Überprüfen Sie das Aussehen und Verhalten im Browser. | [Hinzufügen Ihres Unternehmensbrandings zur Anmelde- und Zugriffsbereichsseite](customize-branding.md) |
+| Überprüfen Sie das Aussehen und Verhalten im Browser. | [Hinzufügen Ihres Unternehmensbrandings zur Anmelde- und Zugriffsbereichsseite](fundamentals/customize-branding.md) |
 | Optional: Überprüfen Sie das Aussehen und Verhalten auf anderen Geräten. |  |
 
 ### <a name="considerations"></a>Überlegungen
@@ -117,18 +118,18 @@ Geschätzter Zeitaufwand: 10 Minuten
 
 | Voraussetzung | angeben |
 | --- | --- |
-| Alle PoC-Benutzer sind Teil der Sicherheitsgruppe (Cloud oder lokal). | [Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](active-directory-groups-create-azure-portal.md) |
+| Alle PoC-Benutzer sind Teil der Sicherheitsgruppe (Cloud oder lokal). | [Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
 
 ### <a name="steps"></a>Schritte
 
 | Schritt | angeben |
 | --- | --- |
 | Wechseln Sie zum Blatt „Lizenzen“ im Azure AD-Verwaltungsportal. | [Azure AD-Verwaltungsportal: Lizenzierung](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) |
-| Weisen Sie die Lizenzen der Sicherheitsgruppe mit PoC-Benutzern zu. | [Zuweisen von Lizenzen zu einer Gruppe von Benutzern in Azure Active Directory](active-directory-licensing-group-assignment-azure-portal.md) |
+| Weisen Sie die Lizenzen der Sicherheitsgruppe mit PoC-Benutzern zu. | [Zuweisen von Lizenzen zu einer Gruppe von Benutzern in Azure Active Directory](users-groups-roles/licensing-groups-assign.md) |
 
 ### <a name="considerations"></a>Überlegungen
 
-Bei Problemen finden Sie hier Unterstützung: [Szenarien, Einschränkungen und bekannte Probleme mit der Verwendung von Gruppen zum Verwalten der Lizenzierung in Azure Active Directory](active-directory-licensing-group-advanced.md)
+Bei Problemen finden Sie hier Unterstützung: [Szenarien, Einschränkungen und bekannte Probleme mit der Verwendung von Gruppen zum Verwalten der Lizenzierung in Azure Active Directory](users-groups-roles/licensing-group-advanced.md)
 
 ## <a name="saas-federated-sso-configuration"></a>SSO-Konfiguration mit SaaS-Verbund
 
@@ -139,22 +140,22 @@ Geschätzter Zeitaufwand: 60 Minuten
 | Voraussetzung | angeben |
 | --- | --- |
 | Testumgebung für die SaaS-Anwendung ist verfügbar. In diesem Handbuch verwendet wir ServiceNow als Beispiel.<br/>Es wird dringend empfohlen, eine Testinstanz zu verwenden, um Unstimmigkeiten beim Navigieren mit der vorhandenen Datenqualität und den Zuordnungen zu minimieren. | Navigieren Sie zu https://developer.servicenow.com/app.do#!/home, um den Prozess zur Beschaffung einer Testinstanz zu starten. |
-| Administratorzugriff auf die Verwaltungskonsole für ServiceNow | [Tutorial: Azure Active Directory-Integration mit ServiceNow](active-directory-saas-servicenow-tutorial.md) |
-| Zielbenutzer, denen Sie die Anwendung zuweisen können. Es wird empfohlen, die PoC-Benutzer in einer Sicherheitsgruppe zusammenzufassen. <br/>Wenn die Erstellung der Gruppe nicht möglich ist, weisen Sie die Benutzer für den PoC direkt der Anwendung zu. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
+| Administratorzugriff auf die Verwaltungskonsole für ServiceNow | [Tutorial: Azure Active Directory-Integration mit ServiceNow](saas-apps/servicenow-tutorial.md) |
+| Zielbenutzer, denen Sie die Anwendung zuweisen können. Es wird empfohlen, die PoC-Benutzer in einer Sicherheitsgruppe zusammenzufassen. <br/>Wenn die Erstellung der Gruppe nicht möglich ist, weisen Sie die Benutzer für den PoC direkt der Anwendung zu. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 
 ### <a name="steps"></a>Schritte
 
 | Schritt | angeben |
 | --- | --- |
-| Teilen Sie das Tutorial über die Microsoft-Dokumentation mit allen Akteuren.  | [Tutorial: Azure Active Directory-Integration mit ServiceNow](active-directory-saas-servicenow-tutorial.md) |
-| Setzen Sie ein Arbeitstreffen an, und gehen Sie das Tutorial mit jedem Akteur durch. | [Tutorial: Azure Active Directory-Integration mit ServiceNow](active-directory-saas-servicenow-tutorial.md) |
-| Weisen Sie die App der in den Voraussetzungen identifizierten Gruppe zu. Wenn der PoC in diesem Bereich bedingten Zugriff erfordert, können Sie später darauf zurückkommen, um MFA u.ä. hinzuzufügen. <br/>Hinweis: Dadurch wird der Bereitstellungsvorgang gestartet (wenn konfiguriert). |  [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) <br/>[Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](active-directory-groups-create-azure-portal.md) |
+| Teilen Sie das Tutorial über die Microsoft-Dokumentation mit allen Akteuren.  | [Tutorial: Azure Active Directory-Integration mit ServiceNow](saas-apps/servicenow-tutorial.md) |
+| Setzen Sie ein Arbeitstreffen an, und gehen Sie das Tutorial mit jedem Akteur durch. | [Tutorial: Azure Active Directory-Integration mit ServiceNow](saas-apps/servicenow-tutorial.md) |
+| Weisen Sie die App der in den Voraussetzungen identifizierten Gruppe zu. Wenn der PoC in diesem Bereich bedingten Zugriff erfordert, können Sie später darauf zurückkommen, um MFA u.ä. hinzuzufügen. <br/>Hinweis: Dadurch wird der Bereitstellungsvorgang gestartet (wenn konfiguriert). |  [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) <br/>[Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
 | Verwenden Sie das Azure AD-Verwaltungsportal, um die ServiceNow-Anwendung über den Katalog hinzuzufügen.| [Azure AD-Verwaltungsportal: Unternehmensanwendungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/Overview) <br/>[Neuerungen bei der Verwaltung von Unternehmensanwendungen in Azure Active Directory](active-directory-enterprise-apps-whats-new-azure-portal.md) |
 | Aktivieren Sie in der ServiceNow-App auf dem Blatt „Einmaliges Anmelden“ die Einstellung „SAML-basierte Anmeldung“. |  |
 | Füllen Sie die Felder „Anmelde-URL“ und „Bezeichner“ mit der ServiceNow-URL aus.<br/>Aktivieren Sie das Kontrollkästchen „Neues Zertifikat aktivieren“.<br/>Speichern Sie die Einstellungen. |  |
 | Öffnen Sie das Blatt „ServiceNow konfigurieren“, das sich im Bereich unten befindet, um spezielle Anweisungen für die Konfiguration von ServiceNow abzurufen. |  |
 | Führen Sie die Anweisungen zum Konfigurieren von ServiceNow aus. |  |
-| Aktivieren Sie auf dem Blatt „Bereitstellung“ der ServiceNow-App die Bereitstellungsform „Automatisch“. | [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im neuen Azure-Portal](active-directory-enterprise-apps-manage-provisioning.md) |
+| Aktivieren Sie auf dem Blatt „Bereitstellung“ der ServiceNow-App die Bereitstellungsform „Automatisch“. | [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im neuen Azure-Portal](manage-apps/configure-automatic-user-provisioning-portal.md) |
 | Warten Sie einige Minuten, während die Bereitstellung abgeschlossen wird.  In der Zwischenzeit können Sie die Bereitstellungsberichte überprüfen. |  |
 | Melden Sie sich unter https://myapps.microsoft.com/ als Testbenutzer mit Zugriff an. | [Was ist der Zugriffsbereich?](active-directory-saas-access-panel-introduction.md) |
 | Klicken Sie auf die Kachel für die Anwendung, die gerade erstellt wurde. Bestätigen Sie den Zugriff. |  |
@@ -162,7 +163,7 @@ Geschätzter Zeitaufwand: 60 Minuten
 
 ### <a name="considerations"></a>Überlegungen
 
-1. Das [Tutorial](active-directory-saas-servicenow-tutorial.md) oben bezieht sich auf die bisherigen Azure AD-Verwaltungsfunktionen. PoC basiert allerdings auf der [Schnellstart](active-directory-enterprise-apps-whats-new-azure-portal.md#quickstart-get-going-with-your-new-application-right-away)-Verwaltung.
+1. Das [Tutorial](saas-apps/servicenow-tutorial.md) oben bezieht sich auf die bisherigen Azure AD-Verwaltungsfunktionen. PoC basiert allerdings auf der [Schnellstart](active-directory-enterprise-apps-whats-new-azure-portal.md#quickstart-get-going-with-your-new-application-right-away)-Verwaltung.
 2. Wenn die Anwendung nicht im Katalog vorhanden ist, können Sie die Option „Bring Your Own App“ verwenden. Weitere Informationen: [Neuerungen bei der Verwaltung von Unternehmensanwendungen in Azure Active Directory: Hinzufügen von benutzerdefinierten Anwendungen von einem Ort aus](active-directory-enterprise-apps-whats-new-azure-portal.md#add-custom-applications-from-one-place)
 
 ## <a name="saas-password-sso-configuration"></a>SaaS-Konfiguration für Kennwort-SSO
@@ -175,7 +176,7 @@ Geschätzter Zeitaufwand: 15 Minuten
 | --- | --- |
 | Testumgebung für SaaS-Anwendungen. Beispiele für Kennwort-SSO sind HipChat und Twitter. Für andere Anwendungen benötigen Sie die genaue URL der Seite, auf der sich das HTML-Anmeldeformular befindet. | [Twitter auf Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[HipChat auf Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aad.hipchat) |
 | Testkonten für die Anwendungen. | [Registrieren bei Twitter](https://twitter.com/signup?lang=en)<br/>[Kostenlos registrieren bei HipChat](https://www.hipchat.com/sign_up) |
-| Zielbenutzer, denen Sie die Anwendung zuweisen können. Es wird empfohlen, die Benutzer in einer Sicherheitsgruppe zusammenzufassen. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
+| Zielbenutzer, denen Sie die Anwendung zuweisen können. Es wird empfohlen, die Benutzer in einer Sicherheitsgruppe zusammenzufassen. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Lokaler Administratorzugriff auf einen Computer zum Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer, Chrome oder Firefox | [Zugriffsbereichserweiterung für IE](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Zugriffsbereichserweiterung für Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Zugriffsbereichserweiterung für Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
 ### <a name="steps"></a>Schritte
@@ -184,8 +185,8 @@ Geschätzter Zeitaufwand: 15 Minuten
 | --- | --- |
 | Installieren der Browsererweiterung | [Zugriffsbereichserweiterung für IE](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Zugriffsbereichserweiterung für Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Zugriffsbereichserweiterung für Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | Konfigurieren der Anwendung über den Katalog | [Neuerungen bei der Verwaltung von Unternehmensanwendungen in Azure Active Directory: Neuer und verbesserter Anwendungskatalog](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| Konfigurieren von Kennwort-SSO | [Verwalten des Features für einmaliges Anmelden für Unternehmens-Apps im neuen Azure-Portal: Kennwortbasierte Anmeldung](active-directory-enterprise-apps-manage-sso.md#password-based-sign-on) |
-| Weisen Sie die App der in den Voraussetzungen identifizierten Gruppe zu. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
+| Konfigurieren von Kennwort-SSO | [Verwalten des Features für einmaliges Anmelden für Unternehmens-Apps im neuen Azure-Portal: Kennwortbasierte Anmeldung](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| Weisen Sie die App der in den Voraussetzungen identifizierten Gruppe zu. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Melden Sie sich unter https://myapps.microsoft.com/ als Testbenutzer mit Zugriff an. |  |
 | Klicken Sie auf die Kachel für die Anwendung, die gerade erstellt wurde. | [Was ist der Zugriffsbereich?: Kennwortbasiertes SSO ohne Identitätsbereitstellung](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | Eingeben der Anwendungsanmeldeinformationen | [Was ist der Zugriffsbereich?: Kennwortbasiertes SSO ohne Identitätsbereitstellung](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
@@ -210,7 +211,7 @@ Geschätzter Zeitaufwand: 30 Minuten
 | --- | --- |
 | Halten Sie die Liste der Zielanwendungen und die genauen Anmelde-URLs bereit. Als Beispiel können Sie Twitter verwenden. | [Twitter auf Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[Registrieren bei Twitter](https://twitter.com/signup?lang=en) |
 | Freigegebene Anmeldeinformationen für diese SaaS-Anwendung. | [Gemeinsame Nutzung von Konten mit Azure AD](active-directory-sharing-accounts.md)<br/>[Automatisierte Azure AD-Kennwortrollover für Facebook, Twitter und LinkedIn ab sofort in der Vorschau! – Enterprise Mobility and Security Blog] (Blog zu Enterprise Mobility + Security) (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/) |
-| Anmeldeinformationen für mindestens zwei Teammitglieder, die auf das gleiche Konto zugreifen werden. Sie müssen einer Sicherheitsgruppe angehören. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
+| Anmeldeinformationen für mindestens zwei Teammitglieder, die auf das gleiche Konto zugreifen werden. Sie müssen einer Sicherheitsgruppe angehören. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Lokaler Administratorzugriff auf einen Computer zum Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer, Chrome oder Firefox | [Zugriffsbereichserweiterung für IE](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Zugriffsbereichserweiterung für Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Zugriffsbereichserweiterung für Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
 ### <a name="steps"></a>Schritte
@@ -219,8 +220,8 @@ Geschätzter Zeitaufwand: 30 Minuten
 | --- | --- |
 | Installieren der Browsererweiterung | [Zugriffsbereichserweiterung für IE](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Zugriffsbereichserweiterung für Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Zugriffsbereichserweiterung für Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | Konfigurieren der Anwendung über den Katalog | [Neuerungen bei der Verwaltung von Unternehmensanwendungen in Azure Active Directory: Neuer und verbesserter Anwendungskatalog](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| Konfigurieren von Kennwort-SSO | [Verwalten des Features für einmaliges Anmelden für Unternehmens-Apps im neuen Azure-Portal: Kennwortbasierte Anmeldung](active-directory-enterprise-apps-manage-sso.md#password-based-sign-on) |
-| Weisen Sie die App der in den Voraussetzungen identifizierten Gruppe zu, während Sie ihnen Anmeldeinformationen zuweisen. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
+| Konfigurieren von Kennwort-SSO | [Verwalten des Features für einmaliges Anmelden für Unternehmens-Apps im neuen Azure-Portal: Kennwortbasierte Anmeldung](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| Weisen Sie die App der in den Voraussetzungen identifizierten Gruppe zu, während Sie ihnen Anmeldeinformationen zuweisen. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Melden Sie sich als verschiedene Benutzer an, die auf die App als **das gleiche freigegebene Konto** zugreifen.  |  |
 | Optional: Überprüfen Sie die Nutzungsberichte der Anwendung. Hinweis: Die Zugriffe werden in den Berichten erst nach einer gewissen Wartezeit angezeigt. | [Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal: Nutzung von verwalteten Anwendungen](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](active-directory-reporting-retention.md) |
 
@@ -241,7 +242,7 @@ Geschätzter Zeitaufwand: 20 Minuten
 
 | Voraussetzung | angeben |
 | --- | --- |
-| Ein Basic- oder Premium-Abonnement für Microsoft Azure AD und ein Azure AD-Verzeichnis, für das Sie als globaler Administrator fungieren | [Azure Active Directory-Editionen](active-directory-whatis.md) |
+| Ein Basic- oder Premium-Abonnement für Microsoft Azure AD und ein Azure AD-Verzeichnis, für das Sie als globaler Administrator fungieren | [Azure Active Directory-Editionen](fundamentals/active-directory-whatis.md) |
 | Eine lokal gehostete Webanwendung, die Sie für Remotezugriff konfigurieren möchten |  |
 | Einen Server, auf dem Windows Server 2012 R2 bzw. Windows 8.1 oder höher installiert ist und auf dem Sie den Anwendungsproxy-Connector installieren können | [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](manage-apps/application-proxy-connectors.md) |
 | Wenn der Pfad durch eine Firewall geschützt ist, sollten Sie sich vergewissern, dass diese so konfiguriert ist, dass der Connector HTTPS-Anforderungen (TCP) an den Anwendungsproxy richten kann. | [Aktivieren des Anwendungsproxys über das Azure-Portal: Voraussetzungen für den Anwendungsproxy](manage-apps/application-proxy-enable.md#application-proxy-prerequisites) |
@@ -305,8 +306,8 @@ Geschätzter Zeitaufwand: 10 Minuten
 | Voraussetzung | angeben |
 | --- | --- |
 | Die SaaS-Anwendung (Verbund-SSO oder Kennwort-SSO) wurde bereits konfiguriert. | Baustein: [SSO-Konfiguration mit SaaS-Verbund](#saas-federated-sso-configuration) |
-| Die Cloudgruppe, der unter 1. Zugriff auf die Anwendung gewährt wurde, wurde identifiziert. | Baustein: [SSO-Konfiguration mit SaaS-Verbund](#saas-federated-sso-configuration) <br/>[Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](active-directory-groups-create-azure-portal.md) |
-| Anmeldeinformationen sind für den Besitzer der Gruppe verfügbar. | [Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](active-directory-manage-groups.md) |
+| Die Cloudgruppe, der unter 1. Zugriff auf die Anwendung gewährt wurde, wurde identifiziert. | Baustein: [SSO-Konfiguration mit SaaS-Verbund](#saas-federated-sso-configuration) <br/>[Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
+| Anmeldeinformationen sind für den Besitzer der Gruppe verfügbar. | [Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](fundamentals/active-directory-manage-groups.md) |
 | Die Anmeldeinformationen für den Information-Worker, der auf die Apps zugreifen soll, sind bekannt. | [Was ist der Zugriffsbereich?](active-directory-saas-access-panel-introduction.md) |
 
 
@@ -314,8 +315,8 @@ Geschätzter Zeitaufwand: 10 Minuten
 
 | Schritt | angeben |
 | --- | --- |
-| Identifizieren Sie die Gruppe, der Zugriff auf die Anwendung gewährt wurde, und konfigurieren Sie deren Besitzer.| [Verwalten der Einstellungen für eine Gruppe in Azure Active Directory](active-directory-groups-settings-azure-portal.md) |
-| Melden Sie sich als Besitzer der Gruppe an, und zeigen Sie die Gruppenmitgliedschaft auf der Registerkarte „Gruppen“ im Zugriffsbereich an. | [Azure Active Directory-Gruppenverwaltungsseite](https://account.activedirectory.windowsazure.com/r/#/groups) |
+| Identifizieren Sie die Gruppe, der Zugriff auf die Anwendung gewährt wurde, und konfigurieren Sie deren Besitzer.| [Verwalten der Einstellungen für eine Gruppe in Azure Active Directory](fundamentals/active-directory-groups-settings-azure-portal.md) |
+| Melden Sie sich als Besitzer der Gruppe an, und zeigen Sie die Gruppenmitgliedschaft auf der Registerkarte „Gruppen“ im Zugriffsbereich an. | [Azure Active Directory-Gruppenverwaltungsseite](https://account.activedirectory.windowsazure.com/r#/groups) |
 | Fügen Sie den Information-Worker hinzu, den Sie testen möchten. |  |
 | Melden Sie sich als Information-Worker an. Vergewissern Sie sich, dass die Kachel verfügbar ist. | [Was ist der Zugriffsbereich?](active-directory-saas-access-panel-introduction.md) |
 
@@ -330,7 +331,7 @@ Wenn die Bereitstellung für die Anwendung aktiviert ist, müssen Sie möglicher
 | Voraussetzung | angeben |
 | --- | --- |
 | Die SaaS-Anwendung (Verbund-SSO oder Kennwort-SSO) wurde bereits konfiguriert. | Baustein: [SSO-Konfiguration mit SaaS-Verbund](#saas-federated-sso-configuration) |
-| Die Cloudgruppe, der unter 1. Zugriff auf die Anwendung gewährt wurde, wurde identifiziert. | Baustein: [SSO-Konfiguration mit SaaS-Verbund](#saas-federated-sso-configuration) <br/>[Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](active-directory-groups-create-azure-portal.md) |
+| Die Cloudgruppe, der unter 1. Zugriff auf die Anwendung gewährt wurde, wurde identifiziert. | Baustein: [SSO-Konfiguration mit SaaS-Verbund](#saas-federated-sso-configuration) <br/>[Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
 | Die Anmeldeinformationen für den Information-Worker, der auf die Apps zugreifen soll, sind bekannt. | [Was ist der Zugriffsbereich?](active-directory-saas-access-panel-introduction.md) |
 
 
@@ -338,7 +339,7 @@ Wenn die Bereitstellung für die Anwendung aktiviert ist, müssen Sie möglicher
 
 | Schritt | angeben |
 | --- | --- |
-| Entfernen des Benutzers aus der Gruppe, der die App zugewiesen ist | [Verwalten der Gruppenmitgliedschaft für Benutzer in Ihrem Azure Active Directory-Mandanten](active-directory-groups-members-azure-portal.md) |
+| Entfernen des Benutzers aus der Gruppe, der die App zugewiesen ist | [Verwalten der Gruppenmitgliedschaft für Benutzer in Ihrem Azure Active Directory-Mandanten](fundamentals/active-directory-groups-members-azure-portal.md) |
 | Warten Sie einige Minuten bis zur Aufhebung der Bereitstellung. | [Automatisierte SaaS-Benutzerbereitstellung in Azure AD: Wie funktioniert die automatisierte Bereitstellung?](active-directory-saas-app-provisioning.md#how-does-automatic-provisioning-work) |
 | Melden Sie sich in einer anderen Browsersitzung als der Information-Worker beim Portal „Meine Apps“ an, und bestätigen Sie, dass die Kachel fehlt. | http://myapps.microsoft.com |
 
@@ -427,7 +428,7 @@ Geschätzter Zeitaufwand: 10 Minuten
 ### <a name="considerations"></a>Überlegungen
 
 1. Mit den PoC-Schritten in diesem Baustein aktivieren Sie MFA für den Benutzer bei allen Anmeldungen. Es gibt andere Tools wie „Bedingter Zugriff“ und „Schutz der Identität“, die MFA bei zielgerichteteren Szenarien verwenden. Darauf ist zu achten, wenn Sie vom PoC zur Produktion übergehen.
-2. Die PoC-Schritte in diesem Baustein verwenden Telefonanrufe explizit aus Gründen der MFA-Zweckmäßigkeit. Beim Übergang vom PoC zur Produktion wird empfohlen, möglichst Anwendungen wie den [Microsoft Authenticator](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) als zweiten Faktor zu verwenden.
+2. Die PoC-Schritte in diesem Baustein verwenden Telefonanrufe explizit aus Gründen der MFA-Zweckmäßigkeit. Beim Übergang vom PoC zur Produktion wird empfohlen, möglichst Anwendungen wie den [Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) als zweiten Faktor zu verwenden.
 Weitere Informationen: [DRAFT NIST Special Publication 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html)
 
 ## <a name="mfa-conditional-access-for-saas-applications"></a>Bedingter MFA-Zugriff für SaaS-Anwendungen
@@ -467,24 +468,24 @@ Geschätzter Zeitaufwand: 15 Minuten
 
 | Voraussetzung | angeben |
 | --- | --- |
-| Bestimmen Sie den globalen Administrator, der Teil des PoC für PIM wird. | [Erste Schritte mit Azure AD Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md) |
-| Bestimmen Sie den globalen Administrator, der Sicherheitsadministrator wird. | [Erste Schritte mit Azure AD Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md)<br/> [Verschiedene Administratorrollen in Azure Active Directory PIM](active-directory-privileged-identity-management-roles.md) |
-| Optional: Überprüfen Sie, ob die globalen Administratoren E-Mail-Zugriff haben, um E-Mail-Benachrichtigungen mit PIM zu testen. | [Was ist Azure AD Privileged Identity Management?: Konfigurieren der Rollenaktivierungseinstellungen](active-directory-privileged-identity-management-configure.md#configure-the-role-activation-settings)
+| Bestimmen Sie den globalen Administrator, der Teil des PoC für PIM wird. | [Erste Schritte mit Azure AD Privileged Identity Management](privileged-identity-management/pim-getting-started.md) |
+| Bestimmen Sie den globalen Administrator, der Sicherheitsadministrator wird. | [Erste Schritte mit Azure AD Privileged Identity Management](privileged-identity-management/pim-getting-started.md)<br/> [Verschiedene Administratorrollen in Azure Active Directory PIM](privileged-identity-management/pim-roles.md) |
+| Optional: Überprüfen Sie, ob die globalen Administratoren E-Mail-Zugriff haben, um E-Mail-Benachrichtigungen mit PIM zu testen. | [Was ist Azure AD Privileged Identity Management?: Konfigurieren der Rollenaktivierungseinstellungen](privileged-identity-management/pim-configure.md#configure-the-role-activation-settings)
 
 
 ### <a name="steps"></a>Schritte
 
 | Schritt | angeben |
 | --- | --- |
-| Melden Sie sich unter https://portal.azure.com als globaler Administrator (GA) an, und führen Sie den Bootstrap-Vorgang für das Blatt „PIM“ durch. Für den globalen Administrator, der diesen Schritt ausführt, erfolgt das Seeding als Sicherheitsadministrator.  Nennen wir diesen Akteur „GA1“. | [Verwenden des Sicherheits-Assistenten in Azure AD Privileged Identity Management](active-directory-privileged-identity-management-security-wizard.md) |
-| Bestimmen Sie den globalen Administrator, und ändern Sie seine Rolle von „Permanent“ in „Berechtigt“. Dabei sollte es sich der Übersichtlichkeit halber um einen anderen Administrator als den in Schritt 1 handeln. Nennen wir diesen Akteur „GA2“. | [Azure AD Privileged Identity Management: Hinzufügen oder Entfernen einer Benutzerrolle](active-directory-privileged-identity-management-how-to-add-role-to-user.md)<br/>[Was ist Azure AD Privileged Identity Management?: Konfigurieren der Rollenaktivierungseinstellungen](active-directory-privileged-identity-management-configure.md#configure-the-role-activation-settings)  |
+| Melden Sie sich unter https://portal.azure.com als globaler Administrator (GA) an, und führen Sie den Bootstrap-Vorgang für das Blatt „PIM“ durch. Für den globalen Administrator, der diesen Schritt ausführt, erfolgt das Seeding als Sicherheitsadministrator.  Nennen wir diesen Akteur „GA1“. | [Verwenden des Sicherheits-Assistenten in Azure AD Privileged Identity Management](privileged-identity-management/pim-security-wizard.md) |
+| Bestimmen Sie den globalen Administrator, und ändern Sie seine Rolle von „Permanent“ in „Berechtigt“. Dabei sollte es sich der Übersichtlichkeit halber um einen anderen Administrator als den in Schritt 1 handeln. Nennen wir diesen Akteur „GA2“. | [Azure AD Privileged Identity Management: Hinzufügen oder Entfernen einer Benutzerrolle](privileged-identity-management/pim-how-to-add-role-to-user.md)<br/>[Was ist Azure AD Privileged Identity Management?: Konfigurieren der Rollenaktivierungseinstellungen](privileged-identity-management/pim-configure.md#configure-the-role-activation-settings)  |
 | Melden Sie sich jetzt unter https://portal.azure.com als GA2 an, und versuchen Sie, Benutzereinstellungen zu ändern. Hinweis: Einige Optionen sind abgeblendet. | |
-| Navigieren Sie in der gleichen Sitzung wie in Schritt 3 auf einer neuen Registerkarte zu https://portal.azure.com, und fügen Sie das Blatt „PIM“ zum Dashboard hinzu. | [Aktivieren oder Deaktivieren von Rollen in Azure AD Privileged Identity Management: Hinzufügen der Anwendung Privileged Identity Management](active-directory-privileged-identity-management-how-to-activate-role.md#add-the-privileged-identity-management-application) |
-| Fordern Sie die Aktivierung der Rolle „Globaler Administrator“ an. | [Aktivieren oder Deaktivieren von Rollen in Azure AD Privileged Identity Management: Aktivieren einer Rolle](active-directory-privileged-identity-management-how-to-activate-role.md#activate-a-role) |
+| Navigieren Sie in der gleichen Sitzung wie in Schritt 3 auf einer neuen Registerkarte zu https://portal.azure.com, und fügen Sie das Blatt „PIM“ zum Dashboard hinzu. | [Aktivieren oder Deaktivieren von Rollen in Azure AD Privileged Identity Management: Hinzufügen der Anwendung Privileged Identity Management](privileged-identity-management/pim-how-to-activate-role.md#add-the-privileged-identity-management-application) |
+| Fordern Sie die Aktivierung der Rolle „Globaler Administrator“ an. | [Aktivieren oder Deaktivieren von Rollen in Azure AD Privileged Identity Management: Aktivieren einer Rolle](privileged-identity-management/pim-how-to-activate-role.md#activate-a-role) |
 | Hinweis: Wenn GA2 nicht für Azure MFA registriert wurde, muss dies jetzt nachgeholt werden. |  |
 | Wechseln Sie zurück zur ursprünglichen Registerkarte (Schritt 3). Klicken Sie dann auf die Aktualisierungsschaltfläche des Browsers. Sie können die „Benutzereinstellungen“ jetzt ändern. | |
 | Optional: Wenn E-Mail für die globalen Administratoren aktiviert ist, können Sie den Posteingang von GA1 und GA2 überprüfen. Dort finden Sie eine Benachrichtigung darüber, dass die Rolle aktiviert wurde. |  |
-| 8 Überprüfen Sie im Überwachungsverlauf, ob die Beförderung von GA2 im Bericht angezeigt wird. | [Was ist Azure AD Privileged Identity Management?: Überprüfen der Rollenaktivität](active-directory-privileged-identity-management-configure.md#review-role-activity) |
+| 8 Überprüfen Sie im Überwachungsverlauf, ob die Beförderung von GA2 im Bericht angezeigt wird. | [Was ist Azure AD Privileged Identity Management?: Überprüfen der Rollenaktivität](privileged-identity-management/pim-configure.md#review-role-activity) |
 
 ### <a name="considerations"></a>Überlegungen
 
@@ -552,7 +553,7 @@ Geschätzter Zeitaufwand: 20 Minuten
 | --- | --- |
 | Gerät mit Benutzerzertifikat (Windows, iOS oder Android) über Unternehmens-PKI bereitgestellt | [Bereitstellen von Benutzerzertifikaten](https://msdn.microsoft.com/library/cc770857.aspx) |
 | Azure AD-Domäne im Verbund mit AD FS | [Azure AD Connect und Verbund](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Active Directory-Zertifikatdienste: Übersicht](https://technet.microsoft.com/library/hh831740.aspx)|
-| iOS-Geräte: Microsoft Authenticator-App installiert | [Erste Schritte mit der Microsoft Authenticator-App](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |
+| iOS-Geräte: Microsoft Authenticator-App installiert | [Erste Schritte mit der Microsoft Authenticator-App](authentication/end-user/current/microsoft-authenticator-app-how-to.md) |
 
 ### <a name="steps"></a>Schritte
 

@@ -1,11 +1,11 @@
 ---
 title: Automatisieren der StorSimple-Dateifreigabe-DR mit Azure Site Recovery | Microsoft-Dokumentation
-description: "Beschreibt die Schritte und bewährte Methoden zum Erstellen einer Lösung zur Notfallwiederherstellung für auf Microsoft Azure StorSimple-Speicher gehostete Dateifreigaben."
+description: Beschreibt die Schritte und bewährte Methoden zum Erstellen einer Lösung zur Notfallwiederherstellung für auf Microsoft Azure StorSimple-Speicher gehostete Dateifreigaben.
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
 manager: syadav
-editor: 
+editor: ''
 ms.assetid: 23049a2c-055e-4d0e-b8f5-af2a87ecf53f
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/17/2017
+ms.locfileid: "23452409"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatische Lösung zur Notfallwiederherstellung mithilfe von Azure Site Recovery für auf StorSimple gehostete Dateifreigaben
 ## <a name="overview"></a>Übersicht

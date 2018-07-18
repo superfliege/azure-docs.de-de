@@ -3,22 +3,24 @@ title: Azure AD-Zugriffsüberprüfungen | Microsoft-Dokumentation
 description: Mithilfe von Azure Active Directory-Zugriffsüberprüfungen können Sie Gruppenmitgliedschaften und den Anwendungszugriff steuern, um die Anforderungen von Governance-, Risikomanagement- und Complianceinitiativen in Ihrer Organisation zu erfüllen.
 services: active-directory
 documentationcenter: ''
-author: markwahl-msft
+author: rolyon
 manager: mtillman
-editor: ''
+editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
+ms.component: compliance-reports
 ms.date: 05/02/2018
-ms.author: billmath
-ms.openlocfilehash: 02711f4fd54051f726a3823112230247df4776d1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: rolyon
+ms.reviewer: mwahl
+ms.openlocfilehash: d2e0f1ecea84398f9e4d43af07b9871f36e8dd48
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193695"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38295008"
 ---
 # <a name="azure-ad-access-reviews"></a>Azure AD-Zugriffsüberprüfungen
 
@@ -41,4 +43,4 @@ Mithilfe von Azure AD-Zugriffsüberprüfungen (Azure Active Directory) können U
 - [Manage guest access with Azure AD access reviews](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md) (Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen)
 - [Manage programs and controls for Azure AD access reviews](active-directory-azure-ad-controls-manage-programs-controls.md) (Verwalten der Programme und Kontrollen für Azure AD-Zugriffsüberprüfungen)
 - [Erstellen einer Zugriffsüberprüfung für Mitglieder einer Gruppe oder den Zugriff auf eine Anwendung](active-directory-azure-ad-controls-create-access-review.md)
-- [Erstellen einer Zugriffsüberprüfung von Benutzern in der Azure AD-Administratorrolle](active-directory-privileged-identity-management-how-to-start-security-review.md)
+- [Erstellen einer Zugriffsüberprüfung von Benutzern in der Azure AD-Administratorrolle](privileged-identity-management/pim-how-to-start-security-review.md)

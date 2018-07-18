@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Ansible in der Azure-Dokumentation
 metadata:
-  title: "Ansible in der Azure-Dokumentation – Tutorials, Beispiele, Referenz und Ressourcen"
+  title: Ansible in der Azure-Dokumentation – Tutorials, Beispiele, Referenz und Ressourcen
   meta.description: Learn how to use Ansible to automate cloud provisioning, configuration management, and application deployments.
   services: terraform
   author: tomarcher
@@ -11,17 +11,18 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: devops
   ms.topic: landing-page
-  ms.date: 01/18/2018
+  ms.date: 07/16/2018
   ms.author: tarcher
-  ms.openlocfilehash: b3e9ae46eaef25af6d290231a48850cd1ef43153
-  ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+  ms.openlocfilehash: 1230422d4d33356938aaa9215479b290b56f22e5
+  ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 01/29/2018
+  ms.lasthandoff: 07/17/2018
+  ms.locfileid: "39089673"
 abstract:
   description: Verwenden Sie <a href="http://www.ansible.com">Ansible</a> zum Automatisieren von Cloudbereitstellung, Konfigurationsverwaltung und Anwendungsbereitstellungen.
 sections:
-- title: "Fünfminütige Schnellstarts"
+- title: Fünfminütige Schnellstarts
   items:
   - type: paragraph
     text: Konfigurieren Sie Ansible, und verwenden Sie das Tool zum Erstellen eines virtuellen Linux-Computers in Azure.
@@ -36,16 +37,19 @@ sections:
         src: /azure/media/index/VirtualMachine.svg
       text: Erstellen eines virtuellen Linux-Computers
       href: /azure/virtual-machines/linux/ansible-create-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
-- title: "Schritt-für-Schritt-Tutorials"
+- title: Schritt-für-Schritt-Tutorials
   items:
   - type: paragraph
-    text: Hier erfahren Sie, wie Sie mit Ansible eine Compute- und Netzwerkinfrastruktur in Azure erstellen und verwalten.
+    text: Hier erfahren Sie, wie Sie mit Ansible eine Compute-, Netzwerk- und Speicherinfrastruktur in Azure erstellen und verwalten.
   - type: list
     style: unordered
     items:
-    - html: "<a href=\"/azure/virtual-machines/linux/ansible-create-complete-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json\">Erstellen eines virtuellen Linux-Computers, einschließlich virtuellem Netzwerk, öffentlicher IP-Adresse und virtueller Netzwerkkarte</a>"
-    - html: "<a href=\"./ansible-run-playbook-in-cloudshell\">Herstellen einer Verbindung mit einem virtuellen Azure-Computer und Ausführen eines Ansible Playbooks in Cloud Shell</a>"
+    - html: <a href="/azure/virtual-machines/linux/ansible-create-complete-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json">Erstellen eines virtuellen Linux-Computers, einschließlich virtuellem Netzwerk, öffentlicher IP-Adresse und virtueller Netzwerkkarte</a>
+    - html: <a href="./ansible-run-playbook-in-cloudshell">Herstellen einer Verbindung mit einem virtuellen Azure-Computer und Ausführen eines Ansible Playbooks in Cloud Shell</a>
     - html: <a href="./ansible-manage-azure-dynamic-inventories">Erstellen und Verwalten eines dynamischen Bestands Ihrer Azure-Ressourcen</a>
+    - html: <a href="./ansible-create-configure-vmss">Erstellen und Verwalten von Skalierungsgruppen für virtuelle Computer in Azure</a>
+    - html: <a href="./ansible-deploy-app-vmss">Bereitstellen von Anwendungen für VM-Skalierungsgruppen in Azure</a>
+    - html: <a href="./ansible-create-configure-aks">Erstellen und Verwalten von Azure Kubernetes Service-Clustern</a>
 - title: Verweis
   items:
   - type: list
@@ -53,6 +57,8 @@ sections:
     className: cardsD
     items:
     - title: Playbook-Rollen
-      html: <p><a href="https://galaxy.ansible.com/Azure/azure_modules/">azure_module</a></p><p><a href="https://galaxy.ansible.com/Azure/azure_preview_modules/">azure_preview_module</a></p>
+      html: <p><a href="https://galaxy.ansible.com/Azure/azure_preview_modules/">azure_preview_module</a></p>
     - title: Releases und Features
-      html: "<p><a href=\"./ansible-matrix.md\">Featurematrix für Module und Rollen</a></p>"
+      html: <p><a href="./ansible-matrix.md">Featurematrix für Module und Rollen</a></p>
+    - title: Tools
+      html: <p><a href="https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible">Visual Studio Code-Erweiterung für Ansible</a></p>

@@ -13,13 +13,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/27/2017
+ms.date: 06/27/2018
 ms.author: kumud
-ms.openlocfilehash: d90a4e74b6ad3bb95e91ad3a5327c887a87784bd
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 92e464aa4e0dcb7199b6db44d2c28db5b6d1673c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38676085"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>Erstellen eines internen Load Balancers für den Lastenausgleich virtueller Computer mit Azure CLI 2.0
 
@@ -46,7 +47,7 @@ Erstellen Sie ein virtuelles Netzwerk mit dem Namen *myVnet* und dem Subnetz *my
 
 ```azurecli-interactive
   az network vnet create \
-    --name myVnet
+    --name myVnet \
     --resource-group myResourceGroupILB \
     --location eastus \
     --subnet-name mySubnet
@@ -75,7 +76,7 @@ Erstellen Sie mit [az network lb create](https://docs.microsoft.com/cli/azure/ne
   ```
 ### <a name="create-the-health-probe"></a>Erstellen des Integritätstests
 
-Ein Integritätstest überprüft alle VM-Instanzen, um sicherzustellen, dass diese Netzwerkdatenverkehr empfangen können. VM-Instanzen mit Fehlern beim Test werden aus dem Load Balancer entfernt, bis sie wieder online geschaltet werden und beim Test überprüft wurde, dass sie fehlerfrei sind. Erstellen Sie mit [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#create) einen Integritätstest zum Überwachen der Integrität von virtuellen Computern. 
+Ein Integritätstest überprüft alle VM-Instanzen, um sicherzustellen, dass diese Netzwerkdatenverkehr empfangen können. VM-Instanzen mit Fehlern beim Test werden aus dem Load Balancer entfernt, bis sie wieder online geschaltet werden und beim Test überprüft wurde, dass sie fehlerfrei sind. Erstellen Sie mit [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#create) einen Integritätstest zur Überwachung der Integrität von virtuellen Computern. 
 
 ```azurecli-interactive
   az network lb probe create \
@@ -107,36 +108,9 @@ Mit einer Lastenausgleichsregel wird die Front-End-IP-Konfiguration für den ein
 
 Vor der Bereitstellung mehrerer virtueller Computer und dem Testen des Lastenausgleichs müssen Sie zunächst die unterstützenden virtuellen Netzwerkressourcen erstellen.
 
-###  <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
-Erstellen Sie eine Netzwerksicherheitsgruppe, um eingehende Verbindungen für Ihr virtuelles Netzwerk zu definieren.
-
-```azurecli-interactive
-  az network nsg create \
-    --resource-group myResourceGroupILB \
-    --name myNetworkSecurityGroup
-```
-
-### <a name="create-a-network-security-group-rule"></a>Erstellen einer Netzwerksicherheitsgruppen-Regel
-
-Erstellen Sie eine Netzwerksicherheitsgruppen-Regel, um eingehende Verbindungen über Port 80 zuzulassen.
-
-```azurecli-interactive
-  az network nsg rule create \
-    --resource-group myResourceGroupILB \
-    --nsg-name myNetworkSecurityGroup \
-    --name myNetworkSecurityGroupRuleHTTP \
-    --protocol tcp \
-    --direction inbound \
-    --source-address-prefix '*' \
-    --source-port-range '*' \
-    --destination-address-prefix '*' \
-    --destination-port-range 22 \
-    --access allow \
-    --priority 300
-```
 ### <a name="create-nics"></a>Erstellen von NICs
 
-Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az_network_nic_create) zwei Netzwerkschnittstellen, und ordnen Sie sie der privaten IP-Adresse und der Netzwerksicherheitsgruppe zu. 
+Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az_network_nic_create) zwei Netzwerkschnittstellen, und ordnen Sie sie der privaten IP-Adresse zu. 
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -145,7 +119,6 @@ for i in `seq 1 2`; do
     --name myNic$i \
     --vnet-name myVnet \
     --subnet mySubnet \
-    --network-security-group myNetworkSecurityGroup \
     --lb-name myLoadBalancer \
     --lb-address-pools myBackEndPool
 done
@@ -225,7 +198,7 @@ for i in `seq 1 2`; do
     --custom-data cloud-init.txt
     done
 ```
-Es kann einige Minuten dauern, bis die VMs bereitgestellt wurden.
+Es kann einige Minuten dauern, bis die virtuellen Computer bereitgestellt wurden.
 
 ### <a name="create-a-vm-for-testing-the-load-balancer"></a>Erstellen einer VM zum Testen des Lastenausgleichs
 
@@ -248,14 +221,14 @@ Verwenden Sie zum Abrufen der privaten IP-Adresse des Lastenausgleichs den Befeh
 
 ```azurecli-interactive
   az network lb show \
-    --name myLoadBalancer
+    --name myLoadBalancer \
     --resource-group myResourceGroupILB
 ``` 
 ![Testen des Load Balancers](./media/load-balancer-get-started-ilb-arm-cli/load-balancer-test.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) können Sie die Ressourcengruppe, den Load Balancer und alle dazugehörigen Ressourcen entfernen, wenn sie nicht mehr benötigt werden.
+Mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) können Sie die Ressourcengruppe, den Lastenausgleich und alle dazugehörigen Ressourcen entfernen, wenn Sie sie nicht mehr benötigen.
 
 ```azurecli-interactive 
   az group delete --name myResourceGroupILB

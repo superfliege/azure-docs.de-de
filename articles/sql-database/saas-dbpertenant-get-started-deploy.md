@@ -7,20 +7,21 @@ author: MightyPen
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 84e6f2303bcfd6a2c91f29e9e9afdc2b84f990ca
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 95d4fc1886e16785b6de8f3a395b218b66d193ff
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34645360"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen SaaS-App, die das Muster mit einer Datenbank pro Mandant mit SQL-Datenbank verwendet
 
 In diesem Tutorial stellen Sie Wingtip Tickets als SaaS-Anwendung mit dem Muster Datenbank pro Mandant bereit und machen sich damit vertraut (Wingtip). Die App verwendet ein Muster mit einer Datenbank pro Mandant, um die Daten mehrerer Mandanten zu speichern. Die App ist dafür ausgelegt, Features von Azure SQL-Datenbank zu veranschaulichen, mit denen die Unterstützung von SaaS-Szenarien vereinfacht wird.
 
-Fünf Minuten nach dem Auswählen von **Bereitstellung in Azure** verfügen Sie über eine mehrinstanzenfähige SaaS-Anwendung. Die App schließt eine SQL­-Datenbank ein, die in der Cloud ausgeführt wird. Die App wird mit drei Beispielmandanten bereitgestellt, die jeweils über eine eigene Datenbank verfügen. Alle Datenbanken werden in einem Pool für elastische SQL-Datenbanken bereitgestellt. Die App wird unter Ihrem Azure-Abonnement bereitgestellt. Sie haben Vollzugriff auf die einzelnen App-Komponenten, um sich damit vertraut zu machen und zu arbeiten. Der C#-Quellcode der Anwendung und die Verwaltungsskripts sind im GitHub-Repository [WingtipTicketsSaaS-DbPerTenant][github-wingtip-dpt] verfügbar.
+Fünf Minuten nach dem Auswählen von **Bereitstellung in Azure** verfügen Sie über eine mehrinstanzenfähige SaaS-Anwendung. Die App umfasst eine SQL­Datenbank, die in der Cloud ausgeführt wird. Die App wird mit drei Beispielmandanten bereitgestellt, die jeweils über eine eigene Datenbank verfügen. Alle Datenbanken werden in einem Pool für elastische SQL-Datenbanken bereitgestellt. Die App wird unter Ihrem Azure-Abonnement bereitgestellt. Sie haben Vollzugriff auf die einzelnen App-Komponenten, um sich damit vertraut zu machen und zu arbeiten. Der C#-Quellcode der Anwendung und die Verwaltungsskripts sind im GitHub-Repository [WingtipTicketsSaaS-DbPerTenant][github-wingtip-dpt] verfügbar.
 
 In diesem Tutorial lernen Sie Folgendes kennen:
 
@@ -108,7 +109,7 @@ Innerhalb der App wird für jeden Mandanten eine SQL-Datenbank in einem Pool fü
 
 Auf einer zentralen **Event Hub**-Seite wird eine Liste mit Links zu den Mandanten in Ihrer Bereitstellung aufgeführt.
 
-1. Verwenden Sie die URL zum Öffnen des Event Hub in Ihrem Webbrowser: http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net. Ersetzen Sie &lt;Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung.
+1. Verwenden Sie die URL zum Öffnen des Event Hub in Ihrem Webbrowser: http://events.wingtip-dpt.&lt;Benutzer&gt;.trafficmanager.net. Ersetzen Sie &lt;Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung.
 
     ![Veranstaltungshub](media/saas-dbpertenant-get-started-deploy/events-hub.png)
 
@@ -120,7 +121,7 @@ Auf einer zentralen **Event Hub**-Seite wird eine Liste mit Links zu den Mandant
 
 Die Wingtip-Anwendung verwendet [*Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md), um die Verteilung eingehender Anforderungen zu steuern. Die URL für den Zugriff auf die Veranstaltungsseite für einen bestimmten Mandanten verwendet das folgende Format:
 
-- http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/fabrikamjazzclub
+- http://events.wingtip-dpt.&lt;Benutzer&gt;.trafficmanager.net/fabrikamjazzclub
 
     In der folgenden Tabelle werden die Teile des oben genannten Formats erläutert.
 

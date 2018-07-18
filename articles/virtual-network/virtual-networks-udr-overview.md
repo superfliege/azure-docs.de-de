@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 926f256de0974112c1571fe4d1d48b6e7f530362
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: fc03fa2a12c9031d88404d5d8d9f821254b033bb
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211795"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726328"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing von Datenverkehr für virtuelle Netzwerke
 
@@ -167,7 +167,9 @@ Wenn Sie das Adresspräfix 0.0.0.0/0 außer Kraft setzen, werden zusätzlich daz
         - Möglichkeit zur Übersetzung der Netzwerkadresse und zur Weiterleitung oder Übergabe des Datenverkehrs an die Zielressource im Subnetz per Proxy und Rückgabe des Datenverkehrs ins Internet 
     - **Gateway für virtuelle Netzwerke**: Wenn es sich beim Gateway um ein ExpressRoute-Gateway für virtuelle Netzwerke handelt, kann ein lokal angeordnetes Gerät mit Internetverbindung die Übersetzung der Netzwerkadresse und die Weiterleitung durchführen oder den Datenverkehr per Proxy an die Zielressource im Subnetz übergeben (per [privatem Peering](../expressroute/expressroute-circuit-peerings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-private-peering) von ExpressRoute). 
 
-  Implementierungsdetails bei Verwendung von Gateways für virtuelle Netzwerke und virtuellen Geräten zwischen dem Internet und Azure finden Sie unter [DMZ between Azure and your on-premises datacenter](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) (DMZ zwischen Azure und Ihrem lokalen Datencenter) und [DMZ zwischen Azure und dem Internet](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Wenn Ihr virtuelles Netzwerk mit einem Azure-VPN-Gateway verbunden ist, ordnen Sie dem [Gatewaysubnetz](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) keine Routentabelle zu, die eine Route mit dem Ziel 0.0.0.0/0 enthält. Andernfalls funktioniert das Gateway möglicherweise nicht ordnungsgemäß.
+
+Implementierungsdetails bei Verwendung von Gateways für virtuelle Netzwerke und virtuellen Geräten zwischen dem Internet und Azure finden Sie unter [DMZ between Azure and your on-premises datacenter](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) (DMZ zwischen Azure und Ihrem lokalen Datencenter) und [DMZ zwischen Azure und dem Internet](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="routing-example"></a>Routingbeispiel
 
@@ -259,5 +261,5 @@ Die Routentabelle für *Subnet2* enthält alle von Azure erstellten Standardrout
 - [Create a user-defined route table with routes and a network virtual appliance](tutorial-create-route-table-portal.md) (Erstellen einer benutzerdefinierten Routentabelle mit Routen und einem virtuellen Netzwerkgerät)
 - [Konfigurieren von BGP für Azure VPN Gateways mithilfe von PowerShell](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Use BGP with ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#route-aggregation-and-prefix-limits) (Verwenden von BGP mit ExpressRoute)
-- [View all routes for a subnet](virtual-network-routes-troubleshoot-portal.md) (Anzeigen aller Routen für ein Subnetz). In einer benutzerdefinierten Routentabelle werden Ihnen nur die benutzerdefinierten Routen angezeigt, nicht die Standard- und BGP-Routen für ein Subnetz. Beim Anzeigen aller Routen werden die Standard-, BGP- und benutzerdefinierten Routen für das Subnetz angegeben, in dem sich eine Netzwerkschnittstelle befindet.
+- [View all routes for a subnet](diagnose-network-routing-problem.md) (Anzeigen aller Routen für ein Subnetz). In einer benutzerdefinierten Routentabelle werden Ihnen nur die benutzerdefinierten Routen angezeigt, nicht die Standard- und BGP-Routen für ein Subnetz. Beim Anzeigen aller Routen werden die Standard-, BGP- und benutzerdefinierten Routen für das Subnetz angegeben, in dem sich eine Netzwerkschnittstelle befindet.
 - [Herausfinden des Typs des nächsten Hops ](../network-watcher/diagnose-vm-network-routing-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json) zwischen einem virtuellen Computer und einer IP-Zieladresse. Mit dem Azure Network Watcher-Feature „Nächster Hop“ können Sie ermitteln, ob Datenverkehr ein Subnetz verlässt und an den gewünschten Ort weitergeleitet wird.

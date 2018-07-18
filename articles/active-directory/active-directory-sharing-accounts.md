@@ -14,11 +14,12 @@ ms.date: 11/13/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: b97ec4ffacead7630c267284f79f954ef03eff61
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: c8d7f1f5b793fcb684e9896bb93213a23d489860
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448542"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Freigeben von Konten in Azure AD
 ## <a name="overview"></a>Übersicht
@@ -46,13 +47,13 @@ Benutzer melden Sie sich einmal mit ihrem Organisationskonto an. Dieses Konto is
 
 Gemeinsam genutzte Konten verbessern nicht nur den Überblick, sondern auch die Sicherheit. Benutzer mit Berechtigungen zur Verwendung der Anmeldeinformationen sehen das gemeinsame Kennwort nicht, sondern erhalten vielmehr die Berechtigung, es als Teil des orchestrierten Authentifizierungsablaufs nutzen zu dürfen. Bei einigen Kennwort-SSO-Anwendungen haben Sie die Möglichkeit, Azure AD zum Durchführen eines regelmäßigen Rollovers (Aktualisierung) von Kennwörtern zu verwenden. Für das System werden lange, komplexe Kennwörter genutzt, um die Kontosicherheit zu erhöhen. Der Administrator kann Zugriffsrechte für bestimmte Anwendungen mühelos gewähren oder widerrufen. Er weiß, wer Zugriff auf das Konto hat und wer bereits darauf zugegriffen hat.
 
-Azure AD unterstützt freigegebene Konten für alle lizenzierten Benutzer von Enterprise Mobility Suite (EMS) Premium oder Basic für alle Arten des einmaligen Anmeldens per Kennwort. Sie können Konten für Tausende im Katalog befindliche, bereits integrierte Anwendungen gemeinsam nutzen und mithilfe [benutzerdefinierter SSO-Apps](active-directory-enterprise-apps-manage-sso.md)eigene Anwendungen mit Kennwortauthentifizierung hinzufügen.
+Azure AD unterstützt freigegebene Konten für alle lizenzierten Benutzer von Enterprise Mobility Suite (EMS) Premium oder Basic für alle Arten des einmaligen Anmeldens per Kennwort. Sie können Konten für Tausende im Katalog befindliche, bereits integrierte Anwendungen gemeinsam nutzen und mithilfe [benutzerdefinierter SSO-Apps](manage-apps/configure-single-sign-on-portal.md)eigene Anwendungen mit Kennwortauthentifizierung hinzufügen.
 
 Zu den Azure AD-Features zur gemeinsamen Nutzung von Konten gehören folgende Funktionen:
 
 * [Einmaliges Anmelden per Kennwort](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on)
 * Agent für einmaliges Anmelden per Kennwort
-* [Gruppenzuweisung](active-directory-accessmanagement-self-service-group-management.md)
+* [Gruppenzuweisung](users-groups-roles/groups-self-service-management.md)
 * Apps mit benutzerdefinierten Kennwörtern
 * [Dashboard für Anwendungsnutzung/Berichte](active-directory-passwords-get-insights.md)
 * Zugriffsportale für Endbenutzer
@@ -62,15 +63,15 @@ Zu den Azure AD-Features zur gemeinsamen Nutzung von Konten gehören folgende F
 ## <a name="sharing-an-account"></a>Gemeinsames Nutzen eines Kontos
 Folgende Schritte sind erforderlich, um Azure AD zum Freigeben eines Kontos zu verwenden:
 
-* Hinzufügen einer Anwendung aus dem [App-Katalog](https://azure.microsoft.com/marketplace/active-directory/) oder einer [benutzerdefinierten Anwendung](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx).
+* Hinzufügen einer Anwendung aus dem [App-Katalog](https://azure.microsoft.com/marketplace/active-directory/) oder einer [benutzerdefinierten Anwendung](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/).
 * Konfigurieren der Anwendung für einmaliges Anmelden per Kennwort (SSO)
-* Verwenden einer [gruppenbasierten Zuweisung](active-directory-accessmanagement-group-saasapps.md) mit der Option „Gemeinsam genutzte Anmeldeinformationen“
-* Optional: In einigen Anwendungen wie Facebook, Twitter oder LinkedIn lässt sich die Option zur automatisierten Kennwortaktualisierung aktivieren: [Azure AD automated password roll-over for Facebook, Twitter and LinkedIn now in preview!](http://blogs.technet.com/b/ad/archive/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview.aspx)
+* Verwenden einer [gruppenbasierten Zuweisung](users-groups-roles/groups-saasapps.md) mit der Option „Gemeinsam genutzte Anmeldeinformationen“
+* Optional: In einigen Anwendungen wie Facebook, Twitter oder LinkedIn lässt sich die Option zur automatisierten Kennwortaktualisierung aktivieren: [Azure AD automated password roll-over for Facebook, Twitter and LinkedIn now in preview!](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/)
 
-Mithilfe von Azure AD lassen sich gemeinsam genutzte Konten durch Multi-Factor Authentication (MFA) sicherer gestalten (siehe [Sichern von Anwendungen mit Azure AD](authentication/concept-mfa-whichversion.md)), und Sie können die Verwaltungsrechte über den Zugriff auf die Anwendung mithilfe der [Azure AD Self-Service](active-directory-accessmanagement-self-service-group-management.md)-Gruppenverwaltung delegieren.
+Mithilfe von Azure AD lassen sich gemeinsam genutzte Konten durch Multi-Factor Authentication (MFA) sicherer gestalten (siehe [Sichern von Anwendungen mit Azure AD](authentication/concept-mfa-whichversion.md)), und Sie können die Verwaltungsrechte über den Zugriff auf die Anwendung mithilfe der [Azure AD Self-Service](users-groups-roles/groups-self-service-management.md)-Gruppenverwaltung delegieren.
 
 ## <a name="related-articles"></a>Verwandte Artikel
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 * [Schützen von Apps durch bedingten Zugriff](active-directory-conditional-access-azure-portal.md)
-* [Self-Service-Gruppenverwaltung/SSAA](active-directory-accessmanagement-self-service-group-management.md)
+* [Self-Service-Gruppenverwaltung/SSAA](users-groups-roles/groups-self-service-management.md)
 

@@ -3,7 +3,7 @@ title: Schützen einer SAP NetWeaver-Anwendungsbereitstellung mit mehreren Schic
 description: In diesem Artikel wird beschrieben, wie Sie SAP NetWeaver-Anwendungsbereitstellungen mit Azure Site Recovery schützen.
 services: site-recovery
 documentationcenter: ''
-author: mayanknayar
+author: asgang
 manager: rochakm
 editor: ''
 ms.assetid: ''
@@ -12,13 +12,14 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
-ms.author: manayar
-ms.openlocfilehash: e2107177663163259d1f731717c4910bc986fc1f
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.date: 07/06/2018
+ms.author: asgang
+ms.openlocfilehash: 95e5c53da2556293fc676fa5b1db9b4585038300
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37922738"
 ---
 # <a name="protect-a-multi-tier-sap-netweaver-application-deployment-by-using-site-recovery"></a>Schützen einer SAP NetWeaver-Anwendungsbereitstellung mit mehreren Ebenen mit Azure Site Recovery
 
@@ -48,7 +49,7 @@ Mit Azure Site Recovery können Sie eine Notfallwiederherstellungslösung in fol
 * Lokal auf VMware-Servern (oder physischen Servern) ausgeführte SAP-Systeme, die in einen Standort für die Notfallwiederherstellung in einem Azure-Rechenzentrum repliziert werden (VMware-zu-Azure-Notfallwiederherstellung). Dieses Szenario erfordert einige zusätzliche Komponenten. Weitere Informationen finden Sie unter [VMware in der Architektur für die Azure-Replikation](https://aka.ms/asr-v2a-architecture).
 * Lokal unter Hyper-V ausgeführte SAP-Systeme, die in einen Standort für die Notfallwiederherstellung in einem Azure-Rechenzentrum repliziert werden (Hyper-V-zu-Azure-Notfallwiederherstellung). Dieses Szenario erfordert einige zusätzliche Komponenten. Weitere Informationen finden Sie unter [Architektur der Replikation von Hyper-V in Azure](https://aka.ms/asr-h2a-architecture).
 
-In diesem Artikel wird das Szenario der Azure-zu-Azure-Notfallwiederherstellung verwendet, um die SAP-Notfallwiederherstellungsfunktionen von Azure Site Recovery zu veranschaulichen. Da die Replikation mit Site Recovery nicht anwendungsspezifisch ist, gilt der beschriebene Prozess vermutlich auch für andere Szenarien.
+In diesem Artikel wird das Szenario der **Azure-zu-Azure**-Notfallwiederherstellung verwendet, um die SAP-Notfallwiederherstellungsfunktionen von Azure Site Recovery zu veranschaulichen. Da die Replikation mit Site Recovery nicht anwendungsspezifisch ist, gilt der beschriebene Prozess vermutlich auch für andere Szenarien.
 
 ### <a name="required-foundation-services"></a>Erforderliche Grunddienste
 In dem in diesem Artikel besprochenen Szenario werden die folgenden Foundation-Dienste bereitgestellt:
@@ -57,43 +58,97 @@ In dem in diesem Artikel besprochenen Szenario werden die folgenden Foundation-D
 
 Es wird empfohlen, diese Infrastruktur einzurichten, bevor Sie Site Recovery bereitstellen.
 
-## <a name="typical-sap-application-deployment"></a>Typische SAP-Anwendungsbereitstellung
-Große SAP-Kunden stellen in der Regel zwischen 6 und 20 einzelne SAP-Anwendungen bereit. Die meisten dieser Anwendungen basieren auf SAP NetWeaver ABAP- oder Java-Engines. Diese NetWeaver-Kernanwendungen werden durch viele kleinere, spezifische und eigenständige SAP-Engines (nicht NetWeaver) sowie in der Regel durch einige SAP-fremde Anwendungen unterstützt.  
+## <a name="reference-sap-application-deployment"></a>SAP-Anwendungsbereitstellung als Referenz
 
-Es ist wichtig, alle SAP-Anwendungen zu inventarisieren, die in Ihrer Umgebung ausgeführt werden. Bestimmen Sie dann den Bereitstellungsmodus (zwei oder drei Ebenen), Versionen, Patches, Größen, Fehlerraten und die Anforderungen an die Persistenz der Datenträger.
+Anhand dieser Referenzarchitektur wird gezeigt, wie SAP NetWeaver in einer Windows-Umgebung in Azure mit Hochverfügbarkeit ausgeführt werden kann.  Diese Architektur wird mit virtuellen Computern bestimmter Größen bereitgestellt, die an die Anforderungen Ihres Unternehmens angepasst werden können.
 
-![Diagramm eines typischen SAP-Bereitstellungsmusters](./media/site-recovery-sap/sap-typical-deployment.png)
+![Diagramm eines typischen SAP-Bereitstellungsmusters](./media/site-recovery-sap/reference_sap.png)
 
-Schützen Sie die Persistenzebene der SAP-Datenbank über die nativen DBMS-Tools wie SQL Server AlwaysOn, Oracle DataGuard oder SAP HANA System Replication. Wie die SAP-Datenbankebene wird auch die Clientebene nicht von Azure Site Recovery geschützt. Es ist wichtig, Faktoren zu berücksichtigen, die diese Schicht betreffen. Zu diesen Faktoren zählen Verzögerung der DNS-Verteilung, Sicherheit und Remotezugriff auf das Rechenzentrum für die Notfallwiederherstellung.
+## <a name="disaster-recovery-considerations"></a>Überlegungen zur Notfallwiederherstellung
 
-Azure Site Recovery ist die empfohlene Lösung für die Anwendungsebene, auch für SAP SCS und ASCS. Andere Anwendungen wie Nicht-NetWeaver-SAP-Anwendungen und SAP-fremde Anwendungen bilden einen Teil der allgemeinen SAP-Bereitstellungsumgebung. Sie sollten mit Azure Site Recovery geschützt werden.
+Zur Notfallwiederherstellung muss es möglich sein, ein Failover zu einer sekundären Region ausführen zu können. Für jede Ebene wird eine andere Strategie genutzt, um per Notfallwiederherstellung für den erforderlichen Schutz zu sorgen.
 
-## <a name="replicate-virtual-machines"></a>Replizieren von virtuellen Computern
+#### <a name="vms-running-sap-web-dispatcher-pool"></a>Virtuelle Computer mit SAP Web Dispatcher-Pool 
+Die Web Dispatcher-Komponente wird als Lastenausgleichsmodul für SAP-Datenverkehr zwischen den SAP-Anwendungsservern verwendet. Um Hochverfügbarkeit für die Web Dispatcher-Komponente zu erreichen, wird Azure Load Balancer dazu verwendet, das parallele Web Dispatcher-Setup in einer Roundrobin-Konfiguration für HTTP(S)-Datenverkehrsverteilung zwischen den verfügbaren Web Dispatcher-Instanzen im Lastenausgleichspool zu implementieren. Dies wird mithilfe von Azure Site Recovery (ASR) repliziert, und Automatisierungsskripts werden verwendet, um das Lastenausgleichsmodul in der Notfallwiederherstellungregion zu konfigurieren. 
+
+####<a name="vms-running-application-servers-pool"></a>Virtuelle Computer mit Anwendungsserverpool
+Um Anmeldegruppen für ABAP-Anwendungsserver zu verwalten, wird die SMLG-Transaktion verwendet. In ihr wird die Lastenausgleichsfunktion im Nachrichtenserver der Central Services verwendet, um Arbeitslast im SAP-Anwendungsserverpool für SAPGUIs und RFC-Datenverkehr zu verteilen. Dies wird mithilfe von Azure Site Recovery repliziert. 
+
+####<a name="vms-running-sap-central-services-cluster"></a>Virtuelle Computer mit SAP Central Services-Cluster
+In dieser Referenzarchitektur wird Central Services auf virtuellen Computern auf der Logikschicht ausgeführt. Die Central Services-Komponente ist ein möglicher Single Point of Failure (SPOF), wenn sie auf einem einzelnen virtuellen Computer bereitgestellt wird – dies ist die typische Bereitstellung, wenn Hochverfügbarkeitnicht erforderlich ist.<br>
+
+Soll eine Hochverfügbarkeitslösung implementiert werden, kann ein Cluster mit freigegebenen Datenträgern oder ein Dateifreigabecluster verwendet werden. Um virtuelle Computer für einen Cluster mit freigegebenen Datenträgern zu konfigurieren, verwenden Sie Windows Server-Failovercluster. Cloudzeuge wird als ein Quorumzeuge empfohlen. 
+ > [!NOTE]
+ > Mit Azure Site Recovery wird der Cloudzeuge nicht repliziert. Aus diesem Grund wird empfohlen, den Cloudzeugen in der Notfallwiederherstellungregion bereitzustellen.
+
+Zur Unterstützung der Failoverclusterumgebung führt [SIOS DataKeeper Cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) die Funktion zur Clustererstellung der freigegebenen Volumes aus, indem unabhängige Datenträger repliziert werden, die sich im Besitz der Clusterknoten befinden. Azure selbst unterstützt keine freigegebenen Datenträger und erfordert daher Lösungen, die von SIOS bereitgestellt werden. 
+
+Eine weitere Möglichkeit zur Verwaltung von Clustering besteht darin, ein Dateifreigabecluster zu implementieren. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) hat kürzlich das Bereitstellungsmuster von Central Services so geändert, dass über einen UNC-Pfad auf die globalen „/sapmnt“-Verzeichnisse zugegriffen wird. Es ist aber weiterhin ratsam sicherzustellen, dass die UNC-Freigabe für „/sapmnt“ hochverfügbar ist. Dies lässt sich in der Central Services-Instanz erreichen, indem Windows Server-Failovercluster mit Scale Out File Server (SOFS) und der Storage Spaces Direct-Funktion (S2D, „Direkte Speicherplätze“) in Windows Server 2016 verwendet wird. 
+ > [!NOTE]
+ > Derzeit unterstützt Azure Site Recovery nur die Replikation absturzkonsistenter Punkte virtueller Maschinen mithilfe direkter Speicherplätze. 
+
+
+## <a name="disaster-recovery-considerations"></a>Überlegungen zur Notfallwiederherstellung
+
+Mit Azure Site Recovery können Sie das Failover einer vollständigen SAP-Bereitstellung in allen Azure-Regionen orchestrieren.
+Nachfolgend sind die Schritte zum Einrichten der Notfallwiederherstellung angegeben. 
+
+1. Replizieren von virtuellen Computern 
+2. Entwerfen eines Netzwerks für die Wiederherstellung
+3.  Replizieren eines Domänencontrollers
+4.  Replizieren der Datenbankebene 
+5.  Ausführen eines Testfailovers 
+6.  Ausführen eines Failovers 
+
+Nachfolgend ist die Empfehlung für eine Notfallwiederherstellung der einzelnen Ebenen angegeben, die in diesem Beispiel verwendet werden. 
+
+ **SAP-Ebenen** | **Empfehlung**
+ --- | ---
+**SAP Web Dispatcher-Pool** |  Replikation mithilfe von Site Recovery 
+**SAP-Anwendungsserverpool** |  Replikation mithilfe von Site Recovery 
+**SAP Central Services-Cluster** |  Replikation mithilfe von Site Recovery 
+**Virtuelle Active Directory-Computer** |  Active Directory-Replikation 
+**SQL-Datenbankserver** |  SQL Always On-Replikation
+
+##<a name="replicate-virtual-machines"></a>Replizieren von virtuellen Computern
+
 Zu Beginn des Replizieren aller virtuellen Computer für SAP-Anwendungen in ein Azure-Notfallwiederherstellungsrechenzentrum folgen Sie der Anleitung unter [Replikation eines virtuellen Computers in Azure](azure-to-azure-walkthrough-enable-replication.md).
+
+
+* Eine Anleitung zum Schutz von Active Directory und DNS finden Sie im Dokument [Schützen von Active Directory und DNS](site-recovery-active-directory.md).
+
+* Eine Anleitung zum Schutz von Datenbankebenen auf SQL Server finden Sie im Dokument [Schützen von SQL Server](site-recovery-active-directory.md).
+
+## <a name="networking-configuration"></a>Netzwerkkonfiguration
 
 Wenn Sie eine statische IP-Adresse verwenden, können Sie die IP-Adresse angeben, die Sie dem virtuellen Computer zuordnen möchten. Um die IP-Adresse festzulegen, wechseln Sie zu **Einstellungen für Compute und Netzwerk** > **Netzwerkschnittstellenkarte**.
 
 ![Screenshot, der zeigt, wie eine private IP-Adresse im Bereich „Site Recovery-Netzwerkschnittstellenkarte“ festgelegt wird](./media/site-recovery-sap/sap-static-ip.png)
 
-## <a name="create-a-recovery-plan"></a>Erstellen eines Wiederherstellungsplans
+
+## <a name="creating-a-recovery-plan"></a>Erstellen eines Wiederherstellungsplans
 Ein Wiederherstellungsplan unterstützt die Sequenzierung der verschiedenen Ebenen in einer Anwendung mit mehreren Ebenen während eines Failovers. Die Sequenzierung trägt zur Wahrung der Anwendungskonsistenz bei. Beim Erstellen eines Wiederherstellungsplans für eine Webanwendung mit mehreren Ebenen führen Sie die unter [Erstellen eines Wiederherstellungsplans mit Site Recovery](site-recovery-create-recovery-plans.md) beschriebenen Schritte aus.
+
+### <a name="adding-virtual-machines-to-failover-groups"></a>Hinzufügen von virtuellen Computern zu Failovergruppen
+
+1.  Erstellen Sie einen Wiederherstellungsplan, indem Sie den Anwendungsserver, Web Dispatcher und virtuelle Computer mit SAP Central Services hinzufügen.
+2.  Klicken Sie auf „Anpassen“, um die virtuellen Computer zu gruppieren. Standardmäßig gehören alle virtuellen Computer der „Gruppe 1“ an.
+
+
 
 ### <a name="add-scripts-to-the-recovery-plan"></a>Hinzufügen von Skripts zum Wiederherstellungsplan
 Für die korrekte Funktionsweise Ihrer Anwendungen kann es erforderlich sein, nach dem Failover bzw. während eines Testfailovers einige Vorgänge auf den virtuellen Azure-Computern durchzuführen. Sie können einige Vorgänge nach einem Failover automatisieren. Durch Hinzufügen entsprechender Skripts zum Wiederherstellungsplan können Sie beispielsweise den DNS-Eintrag aktualisieren sowie Bindungen und Verbindungen ändern.
 
-### <a name="dns-update"></a>DNS-Update
-Wenn das DNS für das dynamische DNS-Update konfiguriert ist, führen virtuelle Computer nach dem Starten normalerweise ein Update des DNS mit der neuen IP-Adresse durch. Falls Sie einen expliziten Schritt für das Update des DNS mit den neuen IP-Adressen der virtuellen Computer hinzufügen möchten, fügen Sie ein [Skript zum Aktualisieren der IP-Adresse im DNS](https://aka.ms/asr-dns-update) als Aktion nach dem Failover den Wiederherstellungsplangruppen hinzu.  
 
-## <a name="example-azure-to-azure-deployment"></a>Beispiel für eine Azure-zu-Azure-Bereitstellung
-Das folgende Diagramm zeigt das Szenario der Azure-zu-Azure-Notfallwiederherstellung mit Azure Site Recovery:
+Sie können die am häufigsten verwendeten Azure Site Recovery-Skripts in Ihrem Automation-Konto bereitstellen, indem Sie auf die Schaltfläche „In Azure bereitstellen“ klicken. Wenn Sie ein beliebiges veröffentlichtes Skript verwenden, vergewissern Sie sich, dass Sie die Anleitung im Skript befolgen.
 
-![Diagramm eines Azure-zu-Azure-Replikationsszenarios](./media/site-recovery-sap/sap-replication-scenario.png)
+[![Bereitstellen in Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
-* Das primäre Rechenzentrum befindet sich in Singapur (Azure Asien, Südosten). Das Rechenzentrum für die Notfallwiederherstellung befindet sich in Hongkong (Azure Asien, Osten). In diesem Szenario wird lokale Hochverfügbarkeit durch zwei virtuelle Computer mit SQL Server AlwaysOn im synchronen Modus in Singapur bereitgestellt.
-* Die Dateifreigabe SAP ASCS stellt Hochverfügbarkeit für die einzelnen SAP-Fehlerquellen bereit. Die Dateifreigabe ASCS erfordert keinen freigegebenen Clusterdatenträger. Anwendungen wie SIOS sind nicht erforderlich.
-* Notfallwiederherstellungsschutz für die DBMS-Ebene wird mithilfe der asynchronen Replikation erreicht.
-* Dieses Szenario zeigt eine „symmetrische Notfallwiederherstellung“. Dieser Begriff beschreibt eine Lösung für die Notfallwiederherstellung, die ein exaktes Replikat der Produktion ist. Die Notfallwiederherstellung der SQL Server-Lösung verfügt über lokale Hochverfügbarkeit. Die symmetrische Notfallwiederherstellung ist nicht obligatorisch für die Datenbankebene. Viele Kunden nutzen die Flexibilität von Cloudbereitstellungen, um nach einem Notfallwiederherstellungsereignis schnell einen lokalen Hochverfügbarkeitsknoten zu erstellen.
-* Das Diagramm zeigt die SAP NetWeaver-ASCS- und Anwendungsserver-Ebene, die durch Azure Site Recovery repliziert wird.
+1. Fügen Sie der „Gruppe 1“ ein Skript als vorausgehende Aktion hinzu, um für die SQL-Verfügbarkeitsgruppe ein Failover durchzuführen. Verwenden Sie das Skript „ASR-SQL-FailoverAG“ aus den Beispielskripts. Befolgen Sie die Anleitung im Skript genau, und nehmen Sie die erforderlichen Änderungen im Skript vor.
+2. Fügen Sie ein Skript als nachfolgende Aktion hinzu, um den Failover-VMs der Webebene (Gruppe 1) einen Lastenausgleich anzufügen. Verwenden Sie das Skript „ASR-AddSingleLoadBalancer“ aus den Beispielskripts. Befolgen Sie die Anleitung im Skript genau, und nehmen Sie die erforderlichen Änderungen im Skript vor.
+
+![SAP-Wiederherstellungsplan](./media/site-recovery-sap/sap_recovery_plan.png)
+
 
 ## <a name="run-a-test-failover"></a>Ausführen eines Testfailovers
 

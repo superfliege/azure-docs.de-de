@@ -2,35 +2,43 @@
 title: Bereitstellen von Gruppen mit mehreren Containern in Azure Container Instances
 description: Hier erfahren Sie, wie Sie eine Containergruppe mit mehreren Containern in Azure Container Instances bereitstellen.
 services: container-instances
-author: neilpeterson
+author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/29/2018
-ms.author: nepeters
+ms.date: 06/08/2018
+ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 8cbf379e167f854d495704bc0919789dcbafd8e1
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: ecc4484eddd6541c1407e1ed816ba8830030d7c8
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888196"
 ---
 # <a name="deploy-a-container-group"></a>Bereitstellen einer Containergruppe
 
 Azure Container Instances unterstützt die Bereitstellung von mehreren Containern auf einem einzelnen Host mit einer [Containergruppe](container-instances-container-groups.md). Dies ist nützlich, wenn eine Sidecar-Anwendung für die Protokollierung, die Überwachung oder irgendeine andere Konfiguration, bei der ein Dienst einen zweiten angefügten Prozess benötigt, erstellt wird.
 
-In diesem Artikel wird das Ausführen einer einfachen Sidecar-Konfiguration mit mehreren Containern durch das Bereitstellen einer Azure Resource Manager-Vorlage beschrieben.
+Es gibt zwei Möglichkeiten zum Bereitstellen von Gruppen mit mehreren Containern über die Azure CLI:
+
+* Resource Manager-Vorlagenbereitstellung (dieser Artikel)
+* [YAML-Dateibereitstellung](container-instances-multi-container-yaml.md)
+
+Wenn Sie bei der Bereitstellung von Containerinstanzen zusätzliche Azure-Dienstressourcen (z.B. eine Azure Files-Freigabe) bereitstellen müssen, wird die Bereitstellung mit einer Resource Manager-Vorlage empfohlen. Das YAML-Format ist präziser, daher wird die Bereitstellung mit einer YAML-Datei empfohlen, wenn Ihre Bereitstellung *nur* Containerinstanzen enthält.
 
 > [!NOTE]
-> Gruppen mit mehreren Containern sind aktuell auf Linux-Container eingeschränkt. Bis alle Features auch für Windows-Container verfügbar sind, finden Sie die aktuellen Plattformunterschiede unter [Kontingente und Regionsverfügbarkeit für Azure Container Instances](container-instances-quotas.md).
+> Gruppen mit mehreren Containern sind aktuell auf Linux-Container beschränkt. Bis alle Features auch für Windows-Container verfügbar sind, finden Sie die aktuellen Plattformunterschiede unter [Kontingente und Regionsverfügbarkeit für Azure Container Instances](container-instances-quotas.md).
 
 ## <a name="configure-the-template"></a>Konfigurieren der Vorlage
 
-Erstellen Sie eine Datei mit dem Namen `azuredeploy.json`, und fügen Sie den folgende JSON-Code ein.
+In den Abschnitten in diesem Artikel wird das Ausführen einer einfachen Sidecar-Konfiguration mit mehreren Containern durch das Bereitstellen einer Azure Resource Manager-Vorlage beschrieben.
 
-In diesem Beispiel wird eine Containergruppe mit zwei Containern, einer öffentlichen IP-Adresse und zwei verfügbar gemachten Ports definiert. Der erste Container in der Gruppe führt eine Anwendung mit Internetverbindung aus. Der zweite Container, der Sidecar, stellt eine HTTP-Anforderung an die Hauptwebanwendung über das lokale Netzwerk der Gruppe.
+Erstellen Sie zunächst eine Datei mit dem Namen `azuredeploy.json`, und fügen Sie dann den folgende JSON-Code ein.
 
-```json
+Diese Resource Manager-Vorlage definiert eine Containergruppe mit zwei Containern, einer öffentlichen IP-Adresse und zwei verfügbar gemachten Ports. Der erste Container in der Gruppe führt eine Anwendung mit Internetverbindung aus. Der zweite Container, der Sidecar, stellt eine HTTP-Anforderung an die Hauptwebanwendung über das lokale Netzwerk der Gruppe.
+
+```JSON
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -118,7 +126,7 @@ In diesem Beispiel wird eine Containergruppe mit zwei Containern, einer öffentl
 
 Fügen Sie ein Objekt zum JSON-Dokument mit dem folgenden Format hinzu, um einen Container der privaten Imageregistrierung verwenden zu können. Eine Beispielimplementierung dieser Konfiguration finden Sie in der Dokumentation [Referenz zu ACI Resource Manager-Vorlagen][template-reference].
 
-```json
+```JSON
 "imageRegistryCredentials": [
   {
     "server": "[parameters('imageRegistryLoginServer')]",
@@ -146,13 +154,13 @@ Innerhalb weniger Sekunden sollten Sie eine erste Antwort von Azure erhalten.
 
 ## <a name="view-deployment-state"></a>Zusammenfassung der Bereitstellungen anzeigen
 
-Verwenden Sie zum Anzeigen des Status der Bereitstellung den Befehl [az container show][az-container-show]. Dieser gibt die bereitgestellte öffentliche IP-Adresse zurück, über die auf die Anwendung zugegriffen werden kann.
+Um den Bereitstellungsstatus anzuzeigen, verwenden Sie den folgenden Befehl [az container show][az-container-show]:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name myContainerGroup --output table
 ```
 
-Ausgabe:
+Wenn Sie die laufende Anwendung anzeigen möchten, navigieren Sie zu ihrer IP-Adresse in Ihrem Browser. In dieser Beispielausgabe lautet die IP `52.168.26.124`:
 
 ```bash
 Name              ResourceGroup    ProvisioningState    Image                                                           IP:ports               CPU/Memory       OsType    Location

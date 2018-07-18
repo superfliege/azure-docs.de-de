@@ -15,6 +15,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31795533"
 ---
 # <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Optimieren von Transaktionen in Azure SQL Data Warehouse
 In diesem Artikel wird beschrieben, wie die Leistung des Transaktionscodes in Azure SQL Data Warehouse optimiert wird und gleichzeitig die Risiken für lange Rollbacks minimiert werden.

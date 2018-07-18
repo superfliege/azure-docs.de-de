@@ -1,30 +1,31 @@
 ---
-title: "Azure PowerShell-Skriptbeispiel – Docker | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – Docker"
+title: Azure PowerShell-Skriptbeispiel – Docker | Microsoft-Dokumentation
+description: Azure PowerShell-Skriptbeispiel – Docker
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: neilpeterson
-manager: timlt
+author: cynthn
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/02/2017
-ms.author: nepeters
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c8b700d13e4645d408e4e752a541e521ef93a6e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f2c66385f66bf9aa75601da1a6ab03bf00210fa2
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928398"
 ---
 # <a name="create-a-docker-host-with-powershell"></a>Erstellen eines Docker-Hosts mit PowerShell
 
-Dieses Skript erstellt den virtuellen Computer mit aktiviertem Docker und startet einen Container, in dem NGINX ausgeführt wird. Nach dem Ausführen des Skripts können Sie über den FQDN des virtuellen Azure-Computers auf den NGINX-Webserver zugreifen. 
+Dieses Skript erstellt den virtuellen Computer mit aktiviertem Docker und startet einen Container, in dem NGINX ausgeführt wird. Nach dem Ausführen des Skripts können Sie über den FQDN des virtuellen Azure-Computers auf den NGINX-Webserver zugreifen.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
@@ -34,7 +35,7 @@ Dieses Skript erstellt den virtuellen Computer mit aktiviertem Docker und starte
 
 [!code-powershell[main](../../../powershell_scripts/virtual-machine/create-docker-host/create-docker-host.ps1 "Create Docker host")]
 
-## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
+## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
 Führen Sie den folgenden Befehl aus, um die Ressourcengruppe, den virtuellen Computer und alle zugehörigen Ressourcen zu entfernen.
 
@@ -46,7 +47,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. Jedes Element in der Tabelle ist mit der befehlsspezifischen Dokumentation verknüpft.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) | Erstellt eine Subnetzkonfiguration. Diese Konfiguration wird mit dem Prozess der Erstellung des virtuellen Netzwerks verwendet. |

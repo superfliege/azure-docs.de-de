@@ -7,13 +7,13 @@ ms.author: markgal
 ms.date: 2/21/2018
 ms.topic: tutorial
 ms.service: backup
-ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: c0261b4f89647a8db3b7bf452a8827d40fdc1911
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: de91559d9c3626bdd07c2e497a8aa0b124f00b57
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37434839"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Fragen zum Sichern von Azure Files
 In diesem Artikel werden allgemeine Fragen zum Sichern von Azure Files beantwortet. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
@@ -23,7 +23,7 @@ Verwenden Sie die Links auf der rechten Seite unter **In diesem Artikel**, um si
 ## <a name="configuring-the-backup-job-for-azure-files"></a>Konfigurieren des Sicherungsauftrags für Azure Files
 
 ### <a name="why-cant-i-see-some-of-my-storage-accounts-i-want-to-protect-that-contain-valid-azure-file-shares-br"></a>Warum werden einige Speicherkonten nicht angezeigt, die geschützt werden sollen und gültige Azure-Dateifreigaben enthalten? <br/>
-Während der Vorschauphase unterstützt die Sicherung für Azure-Dateifreigaben nicht alle Arten von Speicherkonten. Die Liste mit den unterstützten Speicherkonten finden Sie [hier](troubleshoot-azure-files.md#preview-boundaries). Das gesuchte Speicherkonto kann auch bereits geschützt oder in einem anderen Tresor registriert sein. [Heben Sie die Registrierung beim Tresor auf](troubleshoot-azure-files.md#configuring-backup), um das Speicherkonto in anderen Tresoren für den Schutz zu ermitteln.
+Während der Vorschauphase unterstützt die Sicherung für Azure-Dateifreigaben nicht alle Arten von Speicherkonten. Die Liste mit den unterstützten Speicherkonten finden Sie [hier](troubleshoot-azure-files.md#limitations-for-azure-file-share-backup-during-preview). Das gesuchte Speicherkonto kann auch bereits geschützt oder in einem anderen Tresor registriert sein. [Heben Sie die Registrierung beim Tresor auf](troubleshoot-azure-files.md#configuring-backup), um das Speicherkonto in anderen Tresoren für den Schutz zu ermitteln.
 
 ### <a name="why-cant-i-see-some-of-my-azure-file-shares-in-the-storage-account-when-im-trying-to-configure-backup-br"></a>Warum werden beim Konfigurieren der Sicherung einige Azure-Dateifreigaben im Speicherkonto nicht angezeigt? <br/>
 Überprüfen Sie, ob die Azure-Dateifreigabe bereits in demselben Recovery Services-Tresor geschützt wird oder vor Kurzem gelöscht wurde.
@@ -39,13 +39,13 @@ Ja. Sie müssen jedoch im verknüpften Tresor den [Schutz beenden](backup-azure-
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>An welchen geografischen Standorten kann ich Azure-Dateifreigaben sichern? <br/>
 Die Sicherung für Azure-Dateifreigaben befindet sich derzeit in der Vorschauphase und ist nur an folgenden geografischen Standorten verfügbar: 
--   Australien, Südosten (ASE) 
+-   Australien, Osten (AE) 
+- Australien, Südosten (ASE) 
 - Brasilien, Süden (BRS)
 - Kanada, Mitte (CNC)
 -   Kanada, Osten (CE)
 -   USA, Mitte (CUS)
 -   Asien, Osten (EA)
--   Australien, Osten (AE) 
 -   USA, Osten (EUS)
 -   USA, Osten 2 (EUS2)
 - Japan, Osten (JPE)
@@ -68,12 +68,12 @@ Die Sicherung für Azure-Dateifreigaben befindet sich derzeit in der Vorschaupha
 Schreiben Sie an [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com), wenn Sie die Version an einem bestimmten geografischen Standort verwenden müssen, der oben nicht aufgeführt ist.
 
 ### <a name="how-many-azure-file-shares-can-i-protect-in-a-vaultbr"></a>Wie viele Azure-Dateifreigaben kann ich in einem Tresor schützen?<br/>
-Während der Vorschauphase können Sie Azure-Dateifreigaben aus bis zu 25 Speicherkonten pro Tresor schützen. Sie können auch bis zu 200 Azure-Dateifreigaben in einem einzelnen Tresor schützen.
+Während der Vorschauphase können Sie Azure-Dateifreigaben aus bis zu 50 Speicherkonten pro Tresor schützen. Sie können auch bis zu 200 Azure-Dateifreigaben in einem einzelnen Tresor schützen.
 
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>Kann ich zwei verschiedene Dateifreigaben im gleichen Speicherkonto in verschiedenen Tresoren schützen?
 Nein. Alle Dateifreigaben in einem Speicherkonto können nur durch denselben Tresor geschützt werden.
 
-## <a name="backup"></a>Sicherung
+## <a name="backup"></a>Backup
 
 ### <a name="how-many-on-demand-backups-can-i-take-per-file-share-br"></a>Wie viele bedarfsgesteuerte Sicherungen kann ich pro Dateifreigabe erstellen? <br/>
 Für eine Dateifreigabe können jeweils bis zu 200 Momentaufnahmen vorhanden sein. In die Berechnung dieses Grenzwerts werden auch Momentaufnahmen einbezogen, die mit Azure Backup erstellt werden. Dies wird durch Ihre Richtlinie definiert. Falls für Ihre Sicherungen nach dem Erreichen des Grenzwerts Fehler auftreten, sollten Sie bedarfsgesteuerte Wiederherstellungspunkte löschen, damit die Erstellung von Sicherungen wieder erfolgreich ist.
@@ -81,7 +81,7 @@ Für eine Dateifreigabe können jeweils bis zu 200 Momentaufnahmen vorhanden sei
 ### <a name="after-enabling-virtual-networks-on-my-storage-account-the-backup-of-file-shares-in-the-account-started-failing-why"></a>Nach dem Aktivieren von virtuellen Netzwerken in meinem Speicherkonto ist beim Sichern der Dateifreigaben im Konto ein Fehler aufgetreten. Warum?
 Für die Sicherung für Azure-Dateifreigaben werden keine Speicherkonten unterstützt, für die virtuelle Netzwerke aktiviert sind. Deaktivieren Sie virtuelle Netzwerke in Speicherkonten, um erfolgreiche Sicherungen zu ermöglichen. 
 
-## <a name="restore"></a>Restore 
+## <a name="restore"></a>Restore
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share-br"></a>Kann die Wiederherstellung auf der Grundlage einer gelöschten Azure-Dateifreigabe erfolgen? <br/>
 Beim Löschen einer Azure-Dateifreigabe wird die Liste mit den Sicherungen angezeigt, die gelöscht werden, und Sie werden zum Bestätigen aufgefordert. Eine gelöschte Azure-Dateifreigabe kann nicht wiederhergestellt werden.

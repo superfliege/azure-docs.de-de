@@ -50,7 +50,7 @@ Klicken Sie auf **Launch Instance** (Instanz starten), und klicken Sie im nächs
 
 ![EC2-Instanzauswahl][aws-ec2instance]
 
-Wählen Sie **t2.medium** aus, und klicken Sie auf **Next: Configure Instance Details** (Weiter: Instanzdetails konfigurieren). Ändern Sie im nächsten Bildschirm die Instanzenanzahl in `3`, und klicken Sie anschließend auf **Advanced Details** (Erweiterte Details), um diesen Abschnitt zu erweitern.
+Wählen Sie **t2.medium** aus, und klicken Sie auf **Next: Configure Instance Details** (Nächster Schritt: Instanzdetails konfigurieren). Ändern Sie im nächsten Bildschirm die Instanzenanzahl in `3`, und klicken Sie anschließend auf **Advanced Details** (Erweiterte Details), um diesen Abschnitt zu erweitern.
 
 Damit Ihre virtuellen Computer in Service Fabric miteinander verbunden werden können, müssen die virtuellen Computer, die Ihre Infrastruktur hosten, die gleichen Anmeldeinformationen besitzen.  Konsistente Anmeldeinformationen lassen sich grundsätzlich auf zwei Arten erreichen: Sie können alle der gleichen Domäne hinzufügen oder auf jedem virtuellen Computer das gleiche Administratorkennwort festlegen.  In diesem Tutorial verwenden Sie ein Benutzerdatenskript, um alle EC2-Instanzen mit dem gleichen Kennwort zu konfigurieren.  In einer Produktionsumgebung sollten die Hosts aus Sicherheitsgründen einer Windows-Domäne hinzugefügt werden.
 

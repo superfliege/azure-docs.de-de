@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 57ae7c3cab6c0084bb43585f65d79ae6cc265356
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 11e98117a93f541f6f88b213f59dcf4aba3e7f36
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045210"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Erstellen von Linux-basierten Clustern in HDInsight mit Azure PowerShell
 
@@ -70,7 +71,7 @@ Das Erstellen eines Clusters kann bis zu 20 Minuten dauern.
 
 Sie können auch ein HDInsight-Konfigurationsobjekt mit dem Cmdlet `New-AzureRmHDInsightClusterConfig` erstellen. Anschließend können Sie dieses Konfigurationsobjekt ändern, um zusätzliche Konfigurationsoptionen für Ihren Cluster zu aktivieren. Verwenden Sie abschließend den Parameter `-Config` des Cmdlets `New-AzureRmHDInsightCluster`, um die Konfiguration zu verwenden.
 
-Das folgende Skript erstellt ein Konfigurationsobjekt zum Konfigurieren eines Clustertyps R-Server in HDInsight. Die Konfiguration aktiviert einen Edge-Knoten, RStudio, sowie ein zusätzliches Speicherkonto.
+Das folgende Skript erstellt ein Konfigurationsobjekt zum Konfigurieren eines Clusters vom Typ „ML Services in HDInsight“. Die Konfiguration aktiviert einen Edge-Knoten, RStudio, sowie ein zusätzliches Speicherkonto.
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/create-cluster/create-cluster-with-config.ps1?range=59-98)]
 

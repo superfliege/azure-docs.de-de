@@ -13,13 +13,14 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/07/2018
   ms.author: nitinme
-  ms.openlocfilehash: e3a366cd933b8667b39df146d80d07d5548138bc
-  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.openlocfilehash: 4d10acb6d3597b5f5007098775b9bd7751ed4b2a
+  ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/07/2018
+  ms.lasthandoff: 06/27/2018
+  ms.locfileid: "37053618"
 abstract:
-  description: Hier erfahren Sie, wie Sie Azure HDInsight verwenden, um Streamingdaten oder historische Daten zu analysieren. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie Cluster erstellen, Big Data verarbeiten und analysieren und Lösungen mit den beliebtesten Open Source-Frameworks wie Hadoop, Spark, Hive, LLAP, Kafka, Storm und R entwerfen.<p>Azure HDInsight ist ein umfassender, vollständig verwalteter Open Source-Analysedienst für Unternehmen. HDInsight ist ein Clouddienst, mit dem sich riesige Datenmengen einfach, schnell und kostengünstig verarbeiten lassen. HDInsight unterstützt darüber hinaus eine breite Palette an Szenarien, u.a. Extrahieren, Transformieren und Laden (ETL); Data Warehousing; Machine Learning und IoT.</p>
+  description: Hier erfahren Sie, wie Sie Azure HDInsight verwenden, um Streamingdaten oder historische Daten zu analysieren. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie Cluster erstellen, Big Data verarbeiten und analysieren und Lösungen mit den beliebtesten Open Source-Frameworks wie Hadoop, Spark, Hive, LLAP, Kafka, Storm und Microsoft Machine Learning Server entwerfen.<p>Azure HDInsight ist ein umfassender, vollständig verwalteter Open Source-Analysedienst für Unternehmen. HDInsight ist ein Clouddienst, mit dem sich riesige Datenmengen einfach, schnell und kostengünstig verarbeiten lassen. HDInsight unterstützt darüber hinaus eine breite Palette an Szenarien, u.a. Extrahieren, Transformieren und Laden (ETL); Data Warehousing; Machine Learning und IoT.</p>
   aside:
     image:
       alt: 
@@ -62,8 +63,8 @@ sections:
       text: Storm
       href: /azure/hdinsight/storm/apache-storm-tutorial-get-started-linux
     - image:
-        src: media/index/r-server_r.svg
-      text: R Server
+        src: media/index/ml-server_r.svg
+      text: ML Services
       href: /azure/hdinsight/r-server/r-server-get-started
 - title: Schritt-für-Schritt-Tutorials
   items:
@@ -78,7 +79,7 @@ sections:
     - html: HBase &#58; <a href="/azure/hdinsight/hbase/apache-hbase-provision-vnet">Erstellen von HBase-Clustern in einem VNET</a> | <a href="/azure/hdinsight/hdinsight-phoenix-in-hdinsight">Verwenden von Apache Phoenix</a> | <a href="/azure/hdinsight/hdinsight-using-spark-query-hbase">Verbinden mit Spark</a>
     - html: Interaktive Abfrage &#58; <a href="/azure/hdinsight/interactive-query/apache-hadoop-connect-hive-power-bi-directquery">Verbinden mit Power BI mithilfe einer direkten Abfrage</a>
     - html: Storm &#58; <a href="/azure/hdinsight/storm/apache-storm-develop-java-topology">Erstellen einer Storm-Topologie in Java</a> | <a href="/azure/hdinsight/storm/apache-storm-deploy-monitor-topology-linux">Bereitstellen von Storm-Topologien in HDInsight</a> | <a href="/azure/hdinsight/storm/apache-storm-write-data-lake-store">Schreiben von Daten aus Storm in Data Lake Store</a>
-    - html: R Server &#58; <a href="/azure/hdinsight/r-server/r-server-submit-jobs-r-tools-vs">Verwenden von R Tools für Visual Studio</a>
+    - html: ML Services &#58; <a href="/azure/hdinsight/r-server/r-server-submit-jobs-r-tools-vs">Verwenden von R Tools für Visual Studio</a>
 - title: Verweis
   items:
   - type: list

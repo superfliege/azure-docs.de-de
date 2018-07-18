@@ -9,17 +9,17 @@ editor: daveba
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 57d4a3767d0ad02f136686d95703817055566c33
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: cbb56ce6befaaa6a5d38cc6afbad0ba6db259711
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303387"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901601"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Tutorial: Verwenden einer Linux-VM-MSI für den Zugriff auf Azure Storage mithilfe von SAS-Anmeldeinformationen
 
@@ -254,10 +254,7 @@ Antwort:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Einen Überblick über MSI finden Sie unter [Übersicht über verwaltete Dienstidentitäten](overview.md).
-- Wenn Sie dieses gleiche Tutorial mit Speicherkontoschlüsseln ausführen möchten, lesen Sie [Verwenden einer Linux-VM-MSI für den Zugriff auf Azure Storage](tutorial-linux-vm-access-storage.md).
-- Weitere Informationen zum SAS-Feature des Azure Storage-Kontos finden Sie hier:
-  - [Verwenden von Shared Access Signatures (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1.md)
-  - [Constructing a Service SAS (Erstellen einer Dienstebenen-SAS)](/rest/api/storageservices/Constructing-a-Service-SAS.md)
+In diesem Tutorial haben Sie gelernt, wie Sie eine verwaltete Dienstidentität auf einem virtuellen Linux-Computer verwenden, um unter Verwendung von SAS-Anmeldeinformationen auf Azure Storage zuzugreifen.  Weitere Informationen zu Azure Storage-SAS finden Sie hier:
 
-Verwenden Sie den folgenden Kommentarabschnitt, um uns Feedback zu senden und uns bei der Verbesserung unserer Inhalte zu unterstützen.
+> [!div class="nextstepaction"]
+>[Verwenden von Shared Access Signatures (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)

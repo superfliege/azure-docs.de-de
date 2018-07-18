@@ -1,11 +1,11 @@
 ---
-title: "Einrichten von Hochverfügbarkeit für virtuelle Computer im Azure Resource Manager-Modus | Microsoft-Dokumentation"
-description: "In diesem Tutorial erfahren Sie, wie Sie eine AlwaysOn-Verfügbarkeitsgruppe mit virtuellen Computern im Azure Resource Manager-Modus erstellen."
+title: Einrichten von Hochverfügbarkeit für virtuelle Computer im Azure Resource Manager-Modus | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie eine AlwaysOn-Verfügbarkeitsgruppe mit virtuellen Computern im Azure Resource Manager-Modus erstellen.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 64e85527-d5c8-40d9-bbe2-13045d25fc68
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29401020"
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Automatisches Konfigurieren einer AlwaysOn-Verfügbarkeitsgruppe in Azure Virtual Machines: Resource Manager
 

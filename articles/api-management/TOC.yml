@@ -77,6 +77,8 @@
           href: edit-api.md
     - name: Bereitstellen und Skalieren
       items:
+        - name: Kapazitätsmetrik
+          href: api-management-capacity.md
         - name: Aktualisieren und Skalieren
           href: upgrade-and-scale.md
         - name: Konfigurieren einer benutzerdefinierten Domäne
@@ -97,6 +99,8 @@
           href: api-management-howto-integrate-internal-vnet-appgateway.md
         - name: Gegenseitige Zertifikatauthentifizierung
           href: api-management-howto-mutual-certificates.md
+        - name: Verwalten von Protokollen und Chiffren
+          href: api-management-howto-manage-protocols-ciphers.md
     - name: Anpassen der Entwickleroberfläche
       items:
         - name: Ändern von Seiteninhalt und Layout
@@ -173,6 +177,8 @@
           href: api-management-howto-deploy-multi-region.md
         - name: Protokollieren von Ereignissen in Azure Event Hubs
           href: api-management-howto-log-event-hubs.md
+        - name: Protokollieren von Anforderungen mit Azure Application Insights
+          href: api-management-howto-app-insights.md
         - name: Einrichten der Notfallwiederherstellung mithilfe von Sicherung/Wiederherstellung
           href: api-management-howto-disaster-recovery-backup-restore.md
         - name: Verwalten von Benutzerkonten

@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: de-DE
   ms.lasthandoff: 04/19/2018
+  ms.locfileid: "31590784"
 abstract:
   description: Bei den virtuellen Data Science- und Deep Learning-Computern handelt es sich um angepasste VM-Images in Azure mit Data Science-Tools, die zum Erstellen intelligenter Anwendungen für die erweiterte Analyse verwendet werden.
 sections:

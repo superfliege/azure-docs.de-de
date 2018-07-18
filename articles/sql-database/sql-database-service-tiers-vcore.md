@@ -1,73 +1,32 @@
 ---
 title: Azure SQL-Datenbank-Dienst – virtueller Kern | Microsoft-Dokumentation
-description: Erfahren Sie mehr über Dienstebenen für Einzel- und Pooldatenbanken, um verschiedene Leistungsstufen und Speichergrößen bereitzustellen.
+description: Mit dem V-Kern-basierte Kaufmodell (Vorschauversion) können Sie Compute- und Speicherressourcen einzeln skalieren, eine Leistung wie in Ihrer lokalen Umgebung erzielen und den Preis optimieren.
 services: sql-database
 author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.topic: article
-ms.date: 05/14/2018
+ms.topic: conceptual
+ms.date: 07/23/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 9abe7743906064d182453fea403ff94a097c3558
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: dec995d0b9177e4fb88c836c3ea0fef25a3b3ba3
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212380"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859934"
 ---
-# <a name="vcore-based-purchasing-model-for-azure-sql-database-preview"></a>Auf virtuellen Kernen basierendes Kaufmodell für Azure SQL-Datenbank (Vorschauversion)
+# <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Auswählen eines V-Kern-Diensttarifs und von Compute-, Arbeitsspeicher-, Speicher- und E/A-Ressourcen
 
-[Azure SQL-Datenbank](sql-database-technical-overview.md) verfügt über zwei Kaufmodelle für Compute-, Speicher- und E/A-Ressourcen: ein DTU-basiertes Kaufmodell und ein V-Kern-basiertes Kaufmodell (Vorschauversion). In der folgenden Tabelle und im Diagramm werden diese Kaufmodelle verglichen und gegenübergestellt.
-
-> [!IMPORTANT]
-> Das auf DTUs basierende Kaufmodell finden Sie unter [Auf DTUs basiertes Kaufmodell](sql-database-service-tiers-dtu.md).
-
-
-|**Kaufmodell**|**Beschreibung**|**Am besten geeignet für**|
-|---|---|---|
-|DTU-basiertes Modell|Dieses Modell basiert auf einem Paket mit Compute-, Speicher- und E/A-Ressourcen. Leistungsstufen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten (Database Transaction Units, DTUs) und für Pools für elastische Datenbanken als elastische Datenbanktransaktionseinheiten (elastic Database Transaction Units, eDTUs) bezeichnet. Weitere Informationen zu DTUs und eDTUs finden Sie unter [Was sind DTUs und eDTUs?](sql-database-what-is-a-dtu.md).|Eignet sich am besten für Kunden, die einfache, vorkonfigurierte Ressourcenoptionen benötigen.| 
-|V-Kern-basiertes Modell|Mit diesem Modell können Sie Compute- und Speicherressourcen einzeln skalieren – bis zu 80 V-Kerne, 4 TB Datenspeicher und 200.000 IOPS. Außerdem können Sie den Azure-Hybridvorteil für SQL Server verwenden, um Kosten zu sparen.|Eignet sich am besten für Kunden, für die Flexibilität, Kontrolle und Transparenz im Vordergrund stehen.|
-||||  
-
-![Preismodell](./media/sql-database-service-tiers/pricing-model.png)
-
-## <a name="vcore-based-purchasing-model--preview"></a>Auf virtuellen Kernen basierendes Kaufmodell (Vorschauversion)
-
-Ein virtueller Kern repräsentiert die logische CPU. Virtuelle Kerne werden für verschiedene Hardwaregenerationen angeboten. Beim V-Kern-basierten Kaufmodell (Vorschauversion) erhalten Sie Flexibilität, Kontrolle und Transparenz in Bezug auf den individuellen Ressourcenverbrauch. Außerdem können Sie die lokalen Workloadanforderungen leicht auf die Cloud übertragen. Mit diesem Modell können Sie Computeressourcen, Arbeitsspeicher und Speicher entsprechend den jeweiligen Workloadanforderungen skalieren. Bei dem auf virtuellen Kern basierenden Kaufmodell (Vorschauversion) können Kunden für [Einzeldatenbanken](sql-database-single-database-resources.md) und [Pools für elastische Datenbanken](sql-database-elastic-pool.md) zwischen den Diensttarifen „Universell“ und „Unternehmenskritisch“ (Vorschauversion) wählen. 
-
-Diensttarife unterscheiden sich in Bezug auf Leistungsstufen, Auslegung auf Hochverfügbarkeit, Fehlerisolation, Speichertypen und E/A-Bereich. Der Kunde muss den erforderlichen Speicher und den Aufbewahrungszeitraum für Sicherungen separat konfigurieren. Bei der Verwendung des V-Kern-Modells ermöglichen Einzeldatenbanken und Pools für elastische Datenbanken Einsparungen von bis zu 30 Prozent mit dem [Azure-Hybridnutzungsvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
-
-Bei dem auf virtuellen Kernen basierenden Kaufmodell (Vorschauversion) zahlen Kunden für Folgendes:
-- Compute (Diensttarif + Anzahl von V-Kernen + Hardwaregeneration)*
-- Typ und Menge von Daten und Protokollspeicher 
-- E/A-Anzahl**
-- Sicherungsspeicher (RA-GRS)** 
-
-\* In der ersten öffentlichen Vorschauversion basieren die logischen CPUs der Generation 4 auf Prozessoren vom Typ Intel E5-2673 v3 (Haswell) mit 2,4 GHz.
-
-\*\* Während der Vorschauphase sind Sicherungen und E/A-Vorgänge für einen Zeitraum von sieben Tagen kostenlos.
-
-> [!IMPORTANT]
-> Compute, E/A-Vorgänge, Daten und Protokollspeicher werden pro Datenbank oder Pool für elastische Datenbanken berechnet. Sicherungsspeicher wird pro Datenbank berechnet. Ausführlichere Informationen zur verwalteten SQL-Datenbank-Instanz finden Sie unter [Was ist eine verwaltete Instanz (Vorschauversion)?](sql-database-managed-instance.md).
-
-> [!IMPORTANT]
-> Regionseinschränkungen: 
->
-> Das auf virtuellen Kernen basierende Kaufmodell (Vorschauversion) ist in „Australien, Südosten“ noch nicht verfügbar. Die Vorschau ist in den folgenden Regionen nicht verfügbar: Europa, Westen, Frankreich, Mitte, Vereinigtes Königreich, Süden und Vereinigtes Königreich, Westen.
-> 
-
-## <a name="choosing-service-tier-compute-memory-storage-and-io-resources"></a>Auswählen des Diensttarifs und von Compute-, Arbeitsspeicher-, Speicher- und E/A-Ressourcen
-
-Durch die Umstellung auf das Kaufmodell, das auf virtuellen Kernen basiert (Vorschauversion), können Sie Compute- und Speicherressourcen einzeln skalieren, eine Leistung wie in Ihrer lokalen Umgebung erzielen und den Preis optimieren. Wenn Ihre Datenbank oder der Pool für elastische Datenbanken mehr als 300 DTUs verbraucht, können Sie mit der Umstellung auf V-Kerne unter Umständen Ihre Kosten senken. Sie können für die Umstellung die API Ihrer Wahl oder das Azure-Portal verwenden, ohne dass es zu Ausfallzeit kommt. Die Umstellung ist aber nicht zwingend erforderlich. Wenn das DTU-Kaufmodell Ihre Leistungs- und Geschäftsanforderungen erfüllt, sollten Sie es weiter nutzen. Falls Sie sich für die Umstellung vom DTU-Modell auf das Modell mit virtuellen Kernen entscheiden, sollten Sie zum Auswählen der Leistungsstufe die folgende Faustregel anwenden: Für 100 DTUs im Standard-Tarif ist jeweils mindestens ein virtueller Kern im Tarif „Universell“ erforderlich, und für 125 DTUs im Premium-Tarif ist jeweils mindestens ein virtueller Kern im Tarif „Unternehmenskritisch“ erforderlich.
+Diensttarife unterscheiden sich in Bezug auf Leistungsstufen, Auslegung auf Hochverfügbarkeit, Fehlerisolation, Speichertypen und E/A-Bereich. Der Kunde muss den erforderlichen Speicher und den Aufbewahrungszeitraum für Sicherungen separat konfigurieren. Mit dem V-Kern-Modell ermöglichen Einzeldatenbanken und Pools für elastische Datenbanken Einsparungen von bis zu 30 Prozent mit dem [Azure-Hybridnutzungsvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
 
 Die Unterschiede zwischen diesen beiden Tarifen werden in der folgenden Tabelle verdeutlicht:
 
 ||**Allgemeiner Zweck**|**Unternehmenskritisch**|
 |---|---|---|
 |Am besten geeignet für:|Die meisten geschäftlichen Workloads. Ermöglicht budgetorientierte ausgewogene und skalierbare Compute- und Speicheroptionen.|Geschäftsanwendungen mit hohen E/A-Anforderungen. Ermöglicht höchste Resilienz gegenüber Ausfällen durch mehrere isolierte Replikate.|
-|Compute|1 bis 80 V-Kerne, Generation 4 und Generation 5 |1 bis 80 V-Kerne, Generation 4 und Generation 5|
-|Arbeitsspeicher|7 GB pro Kern |7 GB pro Kern |
+|Compute|1 bis 80 V-Kerne, Gen4 und Gen5 |1 bis 80 V-Kerne, Gen4 und Gen5|
+|Arbeitsspeicher|Gen4: 7 GB pro Kern<br>Gen5: 5,5 GB pro Kern | Gen4: 7 GB pro Kern<br>Gen5: 5,5 GB pro Kern |
 |Speicher|Premium-Remotespeicher, 5 GB - 4 TB|Lokaler SSD-Speicher, 5 GB–4 TB|
 |E/A-Durchsatz (ungefähr)|500 IOPS pro V-Kern mit maximal 7.000 IOPS|5.000 IOPS pro V-Kern mit maximal 200.000 IOPS|
 |Verfügbarkeit|1 Replikat, keine Leseskalierung|3 Replikate, 1 [Leseskalierung](sql-database-read-scale-out.md), zonenredundante Hochverfügbarkeit|
@@ -80,8 +39,6 @@ Die Unterschiede zwischen diesen beiden Tarifen werden in der folgenden Tabelle 
 > [!IMPORTANT]
 > Verwenden Sie das DTU-basierte Kaufmodell, wenn Sie weniger als einen V-Kern mit Computekapazität benötigen.
 
-Ausführliche Informationen zu bestimmten Leistungsstufen und Speichergrößen für eine Einzeldatenbank finden Sie unter [Single database: Storage sizes and performance levels](sql-database-vcore-resource-limits.md#single-database-storage-sizes-and-performance-levels) (Einzeldatenbank: Speichergrößen und Leistungsstufen) und zu Pools für elastische Datenbanken unter [Elastic pool: Storage sizes and performance levels](sql-database-vcore-resource-limits.md#elastic-pool-storage-sizes-and-performance-levels) (Pool für elastische Datenbanken: Speichergrößen und Leistungsstufen).
-
 Antworten auf häufig gestellte Fragen finden Sie unter [SQL-Datenbank – Häufig gestellte Fragen](sql-database-faq.md). 
 
 ## <a name="storage-considerations"></a>Speicheraspekt
@@ -91,8 +48,8 @@ Beachten Sie Folgendes:
 - Jede Leistungsstufe unterstützt eine maximale Datenbankgröße, die standardmäßig bei 32 GB liegt.
 - Wenn Sie die erforderliche Datenbankgröße (MDF-Größe) konfigurieren, werden 30% des zusätzlichen Speichers automatisch hinzugefügt, um LDF zu unterstützen.
 - Sie können eine beliebige Datenbankgröße zwischen 10 GB und dem unterstützten Maximum auswählen.
- - Für Speicher vom Typ „Standard“ erhöhen bzw. verringern Sie die Größe in 10-GB-Inkrementen.
- - Für Speicher vom Typ „Premium“ erhöhen bzw. verringern Sie die Größe in 250-GB-Inkrementen.
+ - Für Speicher vom Typ „Standard“ erhöhen bzw. verringern Sie die Größe in Schritten von 10 GB.
+ - Für Speicher vom Typ „Premium“ erhöhen bzw. verringern Sie die Größe in Schritten von 250 GB.
 - Im Diensttarif „Universell“ wird für `tempdb` eine angefügte SSD verwendet, und diese Speicherkosten sind im V-Kern-Preis enthalten.
 - Im Diensttarif „Unternehmenskritisch“ wird für `tempdb` die angefügte SSD für MDF- und LDF-Dateien gemeinsam genutzt, und die tempDB-Speicherkosten sind im V-Kern-Preis enthalten.
 
@@ -118,7 +75,7 @@ In dem auf virtuellen Kernen basierenden Kaufmodell (Vorschauversion) können Si
 
 Die Migration vom DTU-basierten Modell zum V-Kern-basierten Modell ähnelt dem Upgrade bzw. Downgrade der Georeplikationsbeziehungen zwischen Standard- und Premium-Datenbanken. Die Georeplikation muss nicht beendet werden, aber der Benutzer muss die Sequenzierungsregeln beachten. Bei einem Upgrade müssen Sie zuerst das Upgrade für die sekundäre Datenbank und anschließend das Upgrade für die primäre Datenbank durchführen. Drehen Sie bei einem Downgrade die Reihenfolge um: Führen Sie zuerst das Downgrade für die primäre und anschließend das Downgrade für die sekundäre Datenbank durch. 
 
-Bei Verwendung der Georeplikation zwischen zwei Pools für elastische Datenbanken wird dringend empfohlen, einen Pool als primäres Element und den anderen als sekundäres Element festzulegen. In diesem Fall sollte für die Migration von Pools für elastische Datenbanken die gleiche Anleitung verwendet werden.  Allerdings ist es technisch möglich, dass ein Pool für elastische Datenbanken sowohl primäre als auch sekundäre Datenbanken enthält. In diesem Fall sollten Sie den Pool mit der höheren Auslastung als „primär“ einstufen und die entsprechenden Sequenzierungsregeln befolgen, um die Migration richtig durchzuführen.  
+Bei Verwendung der Georeplikation zwischen zwei Pools für elastische Datenbanken wird empfohlen, einen Pool als primäres Element und den anderen als sekundäres Element festzulegen. In diesem Fall sollte für die Migration von Pools für elastische Datenbanken die gleiche Anleitung verwendet werden.  Allerdings ist es technisch möglich, dass ein Pool für elastische Datenbanken sowohl primäre als auch sekundäre Datenbanken enthält. In diesem Fall sollten Sie den Pool mit der höheren Auslastung als „primär“ einstufen und die entsprechenden Sequenzierungsregeln befolgen, um die Migration richtig durchzuführen.  
 
 Die folgende Tabelle enthält eine Anleitung für die jeweiligen Migrationsszenarien: 
 
@@ -142,7 +99,7 @@ Für die Migration von Failovergruppen mit mehreren Datenbanken ist eine individ
 
 ## <a name="creation-of-a-geo-replication-secondary"></a>Erstellung einer sekundären Einheit für die Georeplikation
 
-Sie können eine sekundäre Einheit für die Georeplikation nur mit demselben Diensttarif wie für die primäre Einheit erstellen. Für eine Datenbank mit einer hohen Protokollgenerierungsrate ist es ratsam, die sekundäre Einheit mit der gleichen Leistungsstufe wie für die primäre Einheit zu erstellen. Wenn Sie eine sekundäre Einheit für die Georeplikation im Pool für elastische Datenbanken für eine einzelne primäre Datenbank erstellen, wird dringend empfohlen, dass die Einstellung `maxVCore` für den Pool mit der Leistungsstufe der primären Datenbank übereinstimmt. Bei der Erstellung einer sekundären Einheit für die Georeplikation im Pool für elastische Datenbanken einer primären Einheit in einem anderen Pool für elastische Datenbanken wird dringend empfohlen, dass die Pools über die gleichen `maxVCore`-Einstellungen verfügen.
+Sie können eine sekundäre Einheit für die Georeplikation nur mit demselben Diensttarif wie für die primäre Einheit erstellen. Für eine Datenbank mit einer hohen Protokollgenerierungsrate ist es ratsam, die sekundäre Einheit mit der gleichen Leistungsstufe wie für die primäre Einheit zu erstellen. Wenn Sie eine sekundäre Einheit für die Georeplikation im Pool für elastische Datenbanken für eine einzelne primäre Datenbank erstellen, wird empfohlen, dass die Einstellung `maxVCore` für den Pool mit der Leistungsstufe der primären Datenbank übereinstimmt. Bei der Erstellung einer sekundären Einheit für die Georeplikation im Pool für elastische Datenbanken einer primären Einheit in einem anderen Pool für elastische Datenbanken wird empfohlen, dass die Pools über die gleichen `maxVCore`-Einstellungen verfügen.
 
 ## <a name="using-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Verwenden einer Datenbankkopie zum Konvertieren einer DTU-basierten Datenbank in eine V-Kern-basierte Datenbank
 
@@ -150,6 +107,5 @@ Sie können eine beliebige Datenbank mit einer DTU-basierten Leistungsstufe in e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Ausführliche Informationen zu bestimmten Leistungsstufen und Speichergrößen finden Sie unter [Azure SQL Database DTU-based resource model limits](sql-database-dtu-resource-limits.md) (Azure SQL-Datenbank – Grenzwerte für DTU-basiertes Ressourcenmodell) und [Azure SQL Database vCore-based purchasing model limits (preview)](sql-database-vcore-resource-limits.md) (Azure SQL-Datenbank – Grenzwerte für V-Kern-basiertes Kaufmodell (Vorschauversion)).
-- Antworten auf häufig gestellte Fragen finden Sie unter [SQL-Datenbank – Häufig gestellte Fragen](sql-database-faq.md).
-- Erfahren Sie mehr über [Einschränkungen für Azure-Abonnements und -Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
+- Ausführliche Informationen zu bestimmten Leistungsstufen und Speichergrößen für Einzeldatenbanken finden Sie unter [V-Kern-basierte Ressourceneinschränkungen in SQL-Datenbank für Einzeldatenbanken](sql-database-vcore-resource-limits-single-databases.md#single-database-storage-sizes-and-performance-levels).
+- Ausführliche Informationen zu Auswahlmöglichkeiten bestimmter Leistungsstufen und Speichergrößen für Pools für elastische Datenbanken finden Sie unter [V-Kern-basierte Ressourceneinschränkungen in SQL-Datenbank für Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-performance-levels).

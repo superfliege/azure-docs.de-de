@@ -1,19 +1,19 @@
 ---
 title: Erstellen und Verwalten von Ereignisregeln in Ihre Azure IoT Central-Anwendung | Microsoft-Dokumentation
 description: Azure IoT Central-Ereignisregeln ermöglichen Ihnen, Ihre Geräte nahezu in Echtzeit zu überwachen und Aktionen, wie das Senden einer E-Mail, durch Auslösen der Regel automatisch aufzurufen.
-services: iot-central
 author: ankitgupta
 ms.author: ankitgup
 ms.date: 04/29/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 932b1906b767ee7676f46ffd7242ad3d478d41c2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: 30223fdca9d848ddc407981bf4a3ca683a10575a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201590"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628367"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Erstellen einer Ereignisregel und Einrichten von Benachrichtigungen in Ihrer Azure IoT Central-Anwendung
 
@@ -77,7 +77,7 @@ In diesem Abschnitt wird gezeigt, wie Sie mithilfe einer Aktion festlegen, was d
 
 ## <a name="parameterize-the-rule"></a>Parametrisieren der Regel
 
-Aktionen können auch über **Geräteeigenschaft** als Parameter konfiguriert werden. Wenn eine E-Mail-Adresse als Geräteeigenschaft gespeichert ist, kann sie bei der Definition der Empfängeradresse**** verwendet werden.
+Aktionen können auch über **Geräteeigenschaft** als Parameter konfiguriert werden. Wenn eine E-Mail-Adresse als Geräteeigenschaft gespeichert ist, kann sie bei der Definition der Empfängeradresse verwendet werden.
 
 ## <a name="delete-a-rule"></a>Löschen einer Regel
 

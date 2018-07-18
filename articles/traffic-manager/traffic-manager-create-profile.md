@@ -2,11 +2,11 @@
 title: Erstellen eines Traffic Manager-Profils in Azure| Microsoft-Dokumentation
 description: Dieser Artikel beschreibt das Erstellen eines Traffic Manager-Profils
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29397569"
 ---
 # <a name="create-a-traffic-manager-profile"></a>Erstellen eines Traffic Manager-Profils
 

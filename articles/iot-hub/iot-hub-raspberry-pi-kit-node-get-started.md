@@ -1,26 +1,21 @@
 ---
 title: 'Raspberry Pi in der Cloud (Node.js): Verbinden von Raspberry Pi mit Azure IoT Hub | Microsoft-Dokumentation'
 description: Erfahren Sie in diesem Tutorial, wie Sie Raspberry Pi einrichten und eine Verbindung mit Azure IoT Hub herstellen, damit Raspberry Pi Daten an die Azure-Cloudplattform senden kann.
-services: iot-hub
-documentationcenter: ''
 author: rangv
-manager: timlt
-tags: ''
+manager: ''
 keywords: Azure IoT Raspberry Pi, Raspberry Pi IoT Hub, Raspberry Pi sendet Daten an Cloud, Raspberry Pi in der Cloud
-ms.assetid: b0e14bfa-8e64-440a-a6ec-e507ca0f76ba
 ms.service: iot-hub
-ms.devlang: node
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 4/11/2018
+services: iot-hub
+ms.devlang: nodejs
+ms.topic: conceptual
+ms.date: 04/11/2018
 ms.author: rangv
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5e7db2f78a5c1a942f64a2c0a40068fffe90749d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 144669e52b8883f4dcebde02a487da865e198e5b
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38452599"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Verbinden von Raspberry Pi mit Azure IoT Hub (Node.js)
 
@@ -50,7 +45,7 @@ Sie haben noch kein Kit? Probieren Sie den [Raspberry Pi-Onlinesimulator](iot-hu
 ![Voraussetzungen](media/iot-hub-raspberry-pi-kit-node-get-started/0_starter_kit.jpg)
 
 * Eine Raspberry Pi 2- oder Raspberry Pi 3-Platine.
-* Ein aktives Azure-Abonnement. Wenn Sie kein Azure-Konto besitzen, können Sie in nur wenigen Minuten ein [kostenloses Azure-Testkonto](https://azure.microsoft.com/free/) erstellen.
+* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 * Ein Monitor, eine USB-Tastatur und eine Maus, die mit Pi verbunden werden.
 * Ein Mac oder PC, auf dem Windows oder Linux ausgeführt wird.
 * Eine Internetverbindung.
@@ -65,9 +60,8 @@ Die folgenden Elemente sind optional:
 * 6 F/M-Jumperdrähte
 * 1 LED, diffus, 10 mm
 
-
 > [!NOTE] 
-Wenn Sie die optionalen Elemente nicht besitzen, können Sie simulierte Sensordaten verwenden.
+> Wenn Sie die optionalen Elemente nicht besitzen, können Sie simulierte Sensordaten verwenden.
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
@@ -78,34 +72,44 @@ Wenn Sie die optionalen Elemente nicht besitzen, können Sie simulierte Sensorda
 Bereiten Sie die microSD-Karte für die Installation des Raspbian-Image vor.
 
 1. Laden Sie Raspbian herunter.
-   1. [Herunterladen von Raspbian Stretch](http://downloads.raspberrypi.org/raspbian/images/raspbian-2017-07-05/) (die ZIP-Datei).
+
+   a. [Herunterladen von Raspbian Stretch](http://downloads.raspberrypi.org/raspbian/images/raspbian-2017-07-05/) (die ZIP-Datei).
 
    > [!WARNING]
    > Verwenden Sie den obigen Link, um das `raspbian-2017-07-5`-ZIP-Image herunterzuladen. Die neueste Version der Raspbian-Images weist einige bekannte Probleme mit Wiring-Pi Node auf, die in den nächsten Schritten Fehler verursachen könnten.
-   1. Entpacken Sie das Raspbian-Image in einen Ordner auf Ihrem Computer.
+ 
+   b. Entpacken Sie das Raspbian-Image in einen Ordner auf Ihrem Computer.
 
-1. Installieren Sie Raspbian auf der microSD-Karte.
-   1. [Laden Sie das SD-Kartenbrennprogramm Etcher herunter, und installieren Sie es](https://etcher.io/).
-   1. Führen Sie Etcher aus, und wählen Sie das Raspbian-Image, das Sie in Schritt 1 entpackt haben.
-   1. Wählen Sie das microSD-Kartenlaufwerk. Etcher hat möglicherweise bereits das richtige Laufwerk ausgewählt.
-   1. Klicken Sie auf „Flash“, um Raspbian auf der microSD-Karte zu installieren.
-   1. Entfernen Sie die microSD-Karte aus dem Computer, wenn die Installation abgeschlossen ist. Es ist sicher, die microSD-Karte direkt zu entfernen, da Etcher die microSD-Karte nach Abschluss des Vorgangs automatisch auswirft bzw. die Bereitstellung aufhebt.
-   1. Legen Sie die microSD-Karte in den Raspberry Pi ein.
+2. Installieren Sie Raspbian auf der microSD-Karte.
+
+   a. [Laden Sie das SD-Kartenbrennprogramm Etcher herunter, und installieren Sie es](https://etcher.io/).
+
+   b. Führen Sie Etcher aus, und wählen Sie das Raspbian-Image, das Sie in Schritt 1 entpackt haben.
+
+   c. Wählen Sie das microSD-Kartenlaufwerk. Etcher hat möglicherweise bereits das richtige Laufwerk ausgewählt.
+
+   d. Klicken Sie auf „Flash“, um Raspbian auf der microSD-Karte zu installieren.
+
+   e. Entfernen Sie die microSD-Karte aus dem Computer, wenn die Installation abgeschlossen ist. Es ist sicher, die microSD-Karte direkt zu entfernen, da Etcher die microSD-Karte nach Abschluss des Vorgangs automatisch auswirft bzw. die Bereitstellung aufhebt.
+
+   f. Legen Sie die microSD-Karte in den Raspberry Pi ein.
 
 ### <a name="enable-ssh-and-i2c"></a>Aktivieren von SSH und I2C
 
 1. Stellen Sie die Verbindung von Pi mit Monitor, Tastatur und Maus her. 
-1. Starten Sie Pi, und melden Sie sich bei Raspbian mit `pi` als Benutzername und `raspberry` als Kennwort an.
-1. Klicken Sie auf das Raspberry-Symbol und dann auf **Preferences** > **Raspberry Pi Configuration**.
+
+2. Starten Sie Pi, und melden Sie sich bei Raspbian mit `pi` als Benutzername und `raspberry` als Kennwort an.
+
+3. Klicken Sie auf das Raspberry-Symbol und dann auf **Preferences** > **Raspberry Pi Configuration**.
 
    ![Das Raspbian-Menü „Preferences“](media/iot-hub-raspberry-pi-kit-node-get-started/1_raspbian-preferences-menu.png)
 
-1. Legen Sie auf der Registerkarte **Interfaces** die Einstellungen **I2C** und **SSH** auf **Enable** fest, und klicken Sie dann auf **OK**. Wenn Sie keine physischen Sensoren besitzen und simulierte Sensordaten verwenden möchten, ist dieser Schritt optional.
+4. Legen Sie auf der Registerkarte **Interfaces** die Einstellungen **I2C** und **SSH** auf **Enable** fest, und klicken Sie dann auf **OK**. Wenn Sie keine physischen Sensoren besitzen und simulierte Sensordaten verwenden möchten, ist dieser Schritt optional.
 
    ![Aktivieren von I2C und SSH auf Raspberry Pi](media/iot-hub-raspberry-pi-kit-node-get-started/2_enable-i2c-ssh-on-raspberry-pi.png)
 
 > [!NOTE] 
-Weitere Referenzdokumente zum Aktivieren von SSH und I2C finden Sie auf[raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) und unter [RASPI-CONFIG](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c).
+> Weitere Referenzdokumente zum Aktivieren von SSH und I2C finden Sie auf[raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) und unter [RASPI-CONFIG](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c).
 
 ### <a name="connect-the-sensor-to-pi"></a>Verbinden des Sensors mit Pi
 
@@ -148,18 +152,21 @@ Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung. 
 1. Stellen Sie die Verbindung Ihres Raspberry Pi mit einem der folgenden SSH-Clients auf Ihrem Hostcomputer her:
    
    **Windows-Benutzer**
-   1. Laden Sie [PuTTY](http://www.putty.org/) für Windows herunter, und installieren Sie es. 
-   1. Kopieren Sie die IP-Adresse von Pi, fügen Sie sie in den Abschnitt „Hostname (oder IP-Adresse)“ ein, und wählen Sie „SSH“ als Verbindungstyp.
+  
+   a. Laden Sie [PuTTY](http://www.putty.org/) für Windows herunter, und installieren Sie es. 
+
+   b. Kopieren Sie die IP-Adresse von Pi, fügen Sie sie in den Abschnitt „Hostname (oder IP-Adresse)“ ein, und wählen Sie „SSH“ als Verbindungstyp.
    
    ![PuTTY](media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
    
    **Mac- und Ubuntu-Benutzer**
    
    Verwenden Sie den integrierten SSH-Client unter Ubuntu oder macOS. Möglicherweise müssen Sie `ssh pi@<ip address of pi>` ausführen, um eine SSH-Verbindung mit Pi herzustellen.
-   > [!NOTE] 
-   Der Standardbenutzername ist `pi`, und das Kennwort ist `raspberry`.
 
-1. Installieren von Node.js und NPM auf Pi
+   > [!NOTE] 
+   > Der Standardbenutzername ist `pi`, und das Kennwort ist `raspberry`.
+
+2. Installieren von Node.js und NPM auf Pi
    
    Überprüfen Sie zunächst Ihre Node.js-Version. 
    
@@ -174,20 +181,20 @@ Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung. 
    sudo apt-get -y install nodejs
    ```
 
-1. Klonen Sie die Beispielanwendung.
+3. Klonen Sie die Beispielanwendung.
 
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-node-raspberrypi-client-app
    ```
 
-1. Installieren Sie alle Pakete für das Beispiel. Die Installation umfasst das Azure IoT-Geräte-SDK, die BME280-Sensorbibliothek und die Wiring-Pi-Bibliothek zur Verkabelung.
+4. Installieren Sie alle Pakete für das Beispiel. Die Installation umfasst das Azure IoT-Geräte-SDK, die BME280-Sensorbibliothek und die Wiring-Pi-Bibliothek zur Verkabelung.
 
    ```bash
    cd iot-hub-node-raspberrypi-client-app
    sudo npm install
    ```
    > [!NOTE] 
-   Je nach Netzwerkverbindung kann das Abschließen dieses Installationsvorgangs mehrere Minuten dauern.
+   >Je nach Netzwerkverbindung kann das Abschließen dieses Installationsvorgangs mehrere Minuten dauern.
 
 ### <a name="configure-the-sample-application"></a>Konfigurieren der Beispielanwendung
 
@@ -203,7 +210,7 @@ Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung. 
 
    Wenn Sie **keinen Sensor haben**, legen Sie den Wert von `simulatedData` auf `true` fest, damit die Beispielanwendung simulierte Sensordaten erstellt und nutzt.
 
-1. Speichern und beenden Sie durch Drücken von STRG+O > EINGABETASTE > STRG+X.
+2. Speichern und beenden Sie durch Drücken von STRG+O > EINGABETASTE > STRG+X.
 
 ### <a name="run-the-sample-application"></a>Ausführen der Beispielanwendung
 
@@ -214,7 +221,7 @@ Führen Sie die Beispielanwendung durch Aufrufen des folgenden Befehls aus:
    ```
 
    > [!NOTE] 
-   Stellen Sie sicher, dass Sie die Verbindungszeichenfolge des Geräts kopieren und zwischen einfachen Anführungszeichen einfügen.
+   > Stellen Sie sicher, dass Sie die Verbindungszeichenfolge des Geräts kopieren und zwischen einfachen Anführungszeichen einfügen.
 
 
 Die folgende Ausgabe sollte angezeigt werden, die die Sensordaten und Nachrichten zeigt, die an Ihren IoT Hub gesendet werden.

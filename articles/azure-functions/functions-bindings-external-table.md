@@ -1,12 +1,12 @@
 ---
-title: "Bindungen zu externer Tabelle für Azure Functions (experimentell)"
+title: Bindungen zu externer Tabelle für Azure Functions (experimentell)
 description: Verwenden von Bindungen zu externen Tabellen in Azure Functions
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: alexkarcher-msft
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/05/2018
+ms.locfileid: "27613280"
 ---
 # <a name="external-table-binding-for-azure-functions-experimental"></a>Bindungen zu externer Tabelle für Azure Functions (experimentell)
 

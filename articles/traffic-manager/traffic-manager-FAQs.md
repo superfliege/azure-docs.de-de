@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: 718a7eb1e6457c669456d88e5c6e80157b28066c
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 29c7994485eeb2b3fdde52d1794704ecb51d65e5
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942355"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301064"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Traffic Manager
 
@@ -86,10 +86,18 @@ Wenn eine DNS-Abfrage bei Traffic Manager eingeht, legt er in der Antwort einen 
 
 Sie können die DNS-TTL pro Profil auf minimal 0 und maximal 2.147.483.647 Sekunden festlegen (der mit [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt ) kompatible Maximalbereich). Der TTL-Wert 0 bedeutet, dass Downstream-DNS-Resolver Abfrageantworten nicht zwischenspeichern und alle Abfragen zur Auflösung an den Traffic Manager-DNS-Server gesendet werden.
 
+### <a name="how-can-i-understand-the-volume-of-queries-coming-to-my-profile"></a>Wie kann ich das Volumen an mein Profil gerichteter Abfragen nachvollziehen? 
+Eine der vom Traffic Manager bereitgestellten Metriken ist die Anzahl der Abfragen, die von einem Profil beantwortet werden. Sie können diese Informationen in Form einer Profilebenenaggregation erhalten oder weiter aufschlüsseln, um das Volumen von Abfragen anzuzeigen, wo bestimmte Endpunkte zurückgegeben wurden. Darüber hinaus können Sie Warnungen einrichten, damit Sie benachrichtigt werden, wenn das Volumen der Antworten auf Abfragen die von Ihnen festgelegten Bedingungen überschreitet. Weitere Informationen finden Sie unter [Traffic Manager-Metriken und -Warnungen](traffic-manager-metrics-alerts.md).
+
 ## <a name="traffic-manager-geographic-traffic-routing-method"></a>Geografische Methode für das Datenverkehrsrouting in Traffic Manager
 
 ### <a name="what-are-some-use-cases-where-geographic-routing-is-useful"></a>Was sind einige Anwendungsfälle, in denen geografisches Routing nützlich ist? 
 Der geografische Routingtyp kann in jedem Szenario verwendet werden, in dem ein Azure-Kunde seine Benutzer auf der Grundlage geografischer Regionen unterscheiden muss. Beispielsweise können Sie mithilfe des geografischen Routings für Benutzer aus bestimmten Regionen eine andere Benutzeroberfläche anzeigen als für Benutzer aus anderen Regionen. Ein weiteres Beispiel wäre die Einhaltung ortsbezogener Datenhoheitsmandate, für die es erforderlich ist, dass Benutzer aus einer bestimmten Region nur von Endpunkten in der betreffenden Region bedient werden.
+
+### <a name="how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method"></a>Wie entscheide ich, ob ich die leistungsbezogene oder geografische Routingmethode verwenden sollte? 
+Der Hauptunterschied zwischen diesen zwei gängigen Routingmethoden ist, dass das primäre Ziel bei der leistungsbezogenen Routingmethode im Senden von Datenverkehr an den Endpunkt besteht, der dem Aufrufer die niedrigste Latenz bieten kann; bei der geografischen Routingmethode besteht das primäre Ziel hingegen im Erzwingen eines geografischen Zauns für Aufrufer, damit Sie sie absichtlich an einen bestimmten Endpunkt weiterleiten können. Die Überlappung geschieht, weil eine Korrelation zwischen geografischer Nähe und geringerer Latenz besteht, obwohl dies nicht immer zutrifft. Möglicherweise gibt es einen Endpunkt in einer anderen geografischen Region, der dem Aufrufer eine bessere Latenz bieten kann, und in diesem Fall sendet die leistungsbezogene Routingmethode den Benutzer an diesen Endpunkt, aber die geografische Routingmethode sendet ihn immer an den Endpunkt, den Sie für seine geografische Region zugeordnet haben. Das folgende Beispiel soll dies noch mehr verdeutlichen: Mit der geografischen Routingmethode können Sie ungewöhnliche Zuordnungen vornehmen, z.B. allen Datenverkehr aus Asien an Endpunkte in den USA senden und allen US-Datenverkehr an Endpunkte in Asien. In diesem Fall führt die geografische Routingmethode genau das aus, was Sie konfiguriert haben, und Leistungsoptimierung ist kein Kriterium. 
+>[!NOTE]
+>Es gibt möglicherweise Szenarien, in denen Sie sowohl leistungsbezogene als auch geografische Routingfunktionen benötigen; für diese Szenarien können geschachtelte Profile sich hervorragend eignen. Sie können z.B. ein übergeordnetes Profil mit der geografischen Routingmethode einrichten, in dem Sie allen Datenverkehr von Nordamerika an ein geschachteltes Profil mit Endpunkten in den USA senden und diesen Datenverkehr mit der leistungsbezogenen Routingmethode an den besten Endpunkt in diesem Satz senden. 
 
 ### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>Welche Bereiche werden von Traffic Manager für das geografische Routing unterstützt? 
 Die Landes/Regionshierarchie, die von Traffic Manager verwendet wird, finden Sie [hier](traffic-manager-geographic-regions.md). Diese Seite wird jeweils auf dem neuesten Änderungsstatus gehalten, jedoch können Sie die gleichen Informationen auch programmgesteuert mithilfe der [Azure Traffic Manager-REST-API](https://docs.microsoft.com/rest/api/trafficmanager/) abrufen. 
@@ -331,6 +339,9 @@ Klicken Sie [hier](https://azuretrafficmanagerdata.blob.core.windows.net/probes/
 Die Anzahl der Traffic Manager-Integritätsprüfungen Ihres Endpunkts hängt von Folgendem ab:
 - dem Wert, den Sie für das Überwachungsintervall festgelegt haben (ein kleineres Intervall bedeutet, dass in einem bestimmten Zeitraum mehr Anforderungen auf dem Endpunkt eingehen).
 - der Anzahl der Standorte, von denen die Integritätsprüfungen ausgehen (die IP-Adressen, von denen aus diese Überprüfungen durchgeführt werden können, sind in der vorherigen FAQ aufgelistet).
+
+### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Wie kann ich benachrichtigt werden, wenn einer meiner Endpunkte ausfällt? 
+Eine der vom Traffic Manager bereitgestellten Metriken ist der Integritätsstatus von Endpunkten in einem Profil. Dies wird als Aggregat aller Endpunkte in einem Profil angezeigt (z.B. sind 75% Ihrer Endpunkte fehlerfrei) oder auf Pro-Endpunkt-Ebene. Azure Monitor stellt Traffic Manager-Metriken bereit, und Sie können dessen [Warnfunktionen](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) verwenden, um bei einer Änderung des Integritätsstatus Ihres Endpunkts Benachrichtigungen zu erhalten. Weitere Informationen finden Sie unter [Traffic Manager-Metriken und -Warnungen](traffic-manager-metrics-alerts.md).  
 
 ## <a name="traffic-manager-nested-profiles"></a>Geschachtelte Profile in Traffic Manager
 

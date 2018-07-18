@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211649"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Konfigurieren von Upgrades für eine Service Fabric-Anwendung in Visual Studio
 Die Service Fabric-Tools für Azure Visual Studio bieten Upgradeunterstützung für die Veröffentlichung auf lokalen Clustern oder Remoteclustern. Es gibt drei Szenarios, bei denen Sie die Anwendung auf eine neuere Version aktualisieren sollten, anstatt die Anwendung beim Testen und Debuggen zu ersetzen:

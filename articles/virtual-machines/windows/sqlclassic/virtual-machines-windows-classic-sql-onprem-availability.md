@@ -1,11 +1,11 @@
 ---
-title: "Erweitern von lokalen Always On-Verfügbarkeitsgruppen auf Azure | Microsoft Docs"
-description: "In diesem Tutorial werden mit dem klassischen Bereitstellungsmodell erstellte Ressourcen verwendet. Es beschreibt die Verwendung des Assistenten zum Hinzufügen von Replikaten in SQL Server Management Studio (SSMS) zum Hinzufügen eines Replikats einer AlwaysOn-Verfügbarkeitsgruppe in Azure."
+title: Erweitern von lokalen Always On-Verfügbarkeitsgruppen auf Azure | Microsoft Docs
+description: In diesem Tutorial werden mit dem klassischen Bereitstellungsmodell erstellte Ressourcen verwendet. Es beschreibt die Verwendung des Assistenten zum Hinzufügen von Replikaten in SQL Server Management Studio (SSMS) zum Hinzufügen eines Replikats einer AlwaysOn-Verfügbarkeitsgruppe in Azure.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 7ca7c423-8342-4175-a70b-d5101dfb7f23
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29400476"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Erweitern von lokalen AlwaysOn-Verfügbarkeitsgruppen auf Azure
 AlwaysOn-Verfügbarkeitsgruppen bieten Hochverfügbarkeit für Datenbankgruppen durch Hinzufügen sekundärer Replikate. Diese Replikate ermöglichen den Failover von Datenbanken bei Ausfällen. Darüber hinaus können Sie für das Auslagern von Lesearbeitslasten oder Sicherungsaufgaben verwendet werden.

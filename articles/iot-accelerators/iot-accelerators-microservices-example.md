@@ -1,22 +1,19 @@
 ---
 title: Ändern und erneutes Bereitstellen eines Microservice | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie Sie einen Microservice in der Remoteüberwachungslösung ändern und erneut bereitstellen.
-services: ''
-suite: iot-suite
 author: giyeh
 manager: hegate
 ms.author: giyeh
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 04/19/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 3d79c085d10515183a5ddcc12ecac503915eb2e2
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: de42e68116c147d81ed0211426bfa813d070b121
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627993"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Anpassen und erneutes Bereitstellen eines Microservice
 
@@ -38,7 +35,7 @@ In diesem Tutorial lernen Sie Folgendes:
 Für dieses Tutorial benötigen Sie Folgendes:
 
 >[!div class="checklist"]
-> * [Lokale Bereitstellung der vorkonfigurierten Remoteüberwachungslösung](iot-accelerators-remote-monitoring-deploy-local.md)
+> * [Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung](iot-accelerators-remote-monitoring-deploy-local.md)
 > * [Ein Docker-Konto](https://hub.docker.com/)
 > * [Postman](https://www.getpostman.com/) (zum Anzeigen der API-Antwort)
 

@@ -1,26 +1,26 @@
 ---
-title: Übersicht über Azure Data Lake Store | Microsoft Docs
-description: Erfahren Sie, was Azure Data Lake-Speicher ist und welche Vorteile er im Vergleich zu anderen Datenspeichern bietet.
+title: Übersicht über Azure Data Lake Storage Gen1 | Microsoft-Dokumentation
+description: Hier erfahren Sie, was Data Lake Storage Gen1 (ehemals Azure Data Lake Store) ist und welche Vorteile es im Vergleich zu anderen Datenspeichern bietet.
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: b3475057-9427-4492-a3af-25a802a23a79
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/26/2018
+ms.topic: conceptual
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 111906bc9e7e85e30a879d7bacff37edb4b204ac
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4dff8f4ff9fc324d48391c0399677b64824493c6
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37034887"
 ---
-# <a name="overview-of-azure-data-lake-store"></a>Übersicht über Azure Data Lake-Speicher
+# <a name="overview-of-azure-data-lake-storage-gen1"></a>Übersicht über Azure Data Lake Storage Gen1
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
 Azure Data Lake-Speicher ist ein unternehmensweites riesiges Repository für Big Data-Analyseworkloads. Azure Data Lake bietet Ihnen die Möglichkeit, Daten von beliebiger Größe, Art und Erfassungsgeschwindigkeit zur Durchführung operativer und explorativer Analysen an einem einzigen Ort zu erfassen.
 
 > [!TIP]
@@ -81,24 +81,8 @@ In Hadoop-Umgebungen (verfügbar mit HDInsight-Clustern) kann über das neue Dat
 
 Sie können mithilfe von `adl://<data_lake_store_name>.azuredatalakestore.net`auf Ihre Daten im Data Lake-Speicher zugreifen. Weitere Informationen zum Zugriff auf die Daten im Data Lake-Speicher finden Sie unter [Anzeigen der Eigenschaften der gespeicherten Daten](data-lake-store-get-started-portal.md#properties)
 
-## <a name="how-do-i-start-using-azure-data-lake-store"></a>Wie verwende ich Azure Data Lake-Speicher?
-Informationen zur Bereitstellung eines Data Lake Store über das Azure-Portal finden Sie unter [Erste Schritte mit Data Lake Store mithilfe des Azure-Portals](data-lake-store-get-started-portal.md). Nachdem Sie Azure Data Lake bereitgestellt haben, können Sie sich darüber informieren, wie Big Data-Angebote wie Azure Data Lake Analytics oder Azure HDInsight mit Data Lake-Speicher verwendet werden. Sie können auch eine .NET-Anwendung zum Erstellen eines Azure Data Lake-Speicherkontos erstellen und Vorgänge wie das Hoch- und Herunterladen von Daten usw. durchführen.
+## <a name="next-steps"></a>Nächste Schritte
 
-* [Erste Schritte mit Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Erste Schritte mit Data Lake Storage Gen1 unter Verwendung des Azure-Portals](data-lake-store-get-started-portal.md)
 * [Erste Schritte mit Azure Data Lake-Speicher mithilfe des .NET SDK](data-lake-store-get-started-net-sdk.md)
-
-## <a name="data-lake-store-videos"></a>Videos zum Data Lake-Speicher
-Für Benutzer, die sich lieber anhand von Videos informieren, stellt Data Lake-Speicher Videos für eine Reihe von Features bereit:
-
-* [Create an Azure Data Lake Store Account (Erstellen eines Azure Data Lake-Speicherkontos)](https://mix.office.com/watch/1k1cycy4l4gen)
-* [Use the Data Explorer to Manage Data in Azure Data Lake Store (Verwalten von Daten im Azure Data Lake-Speicher mithilfe des Daten-Explorers)](https://mix.office.com/watch/icletrxrh6pc)
-* [Connect Azure Data Lake Analytics to Azure Data Lake Store (Verknüpfen von Azure Data Lake Analytics mit dem Azure Data Lake-Speicher)](https://mix.office.com/watch/qwji0dc9rx9k)
-* [Access Azure Data Lake Store via Data Lake Analytics (Zugreifen auf den Azure Data Lake-Speicher mit Azure Data Lake Analytics)](https://mix.office.com/watch/1n0s45up381a8)
-* [Connect Azure HDInsight to Azure Data Lake Store (Verknüpfen von Azure HDInsight mit dem Azure Data Lake-Speicher)](https://mix.office.com/watch/l93xri2yhtp2)
-* [Access Azure Data Lake Store via Hive and Pig (Zugreifen auf den Azure Data Lake-Speicher mit Hive und Pig)](https://mix.office.com/watch/1n9g5w0fiqv1q)
-* [Use DistCp (Hadoop Distributed Copy) to copy data to and from Azure Data Lake Store (Kopieren von Daten aus dem und in den Azure Data Lake-Speicher mithilfe von DistCp [Hadoop Distributed Copy])](https://mix.office.com/watch/1liuojvdx6sie)
-* [Use Apache Sqoop to move data between relational sources and Azure Data Lake Store (Verschieben von Daten zwischen relationalen Quellen und dem Azure Data Lake-Speicher mithilfe von Apache Sqoop)](https://mix.office.com/watch/1butcdjxmu114)
-* [Data Orchestration using Azure Data Factory for Azure Data Lake Store (Datenorchestrierung mithilfe von Azure Data Factory für den Azure Data Lake-Speicher)](https://mix.office.com/watch/1oa7le7t2u4ka)
-* [Securing Data in the Azure Data Lake Store (Schützen von Daten im Azure Data Lake-Speicher)](https://mix.office.com/watch/1q2mgzh9nn5lx)
-
+* [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)

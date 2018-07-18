@@ -2,23 +2,25 @@
 title: Eine zugewiesene Anwendung wird im Zugriffsbereich nicht angezeigt | Microsoft-Dokumentation
 description: Beheben des Problems, dass eine Anwendung nicht im Zugriffsbereich angezeigt wird
 services: active-directory
-documentationcenter: 
-author: ajamess
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
+ms.author: barbkess
 ms.reviwer: japere
-ms.openlocfilehash: 5cb8b600f77c5b7dae91204126e64ec7b9a861ae
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e67f64a40d99bdced79f37cd206a048ee60cfbfb
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333434"
 ---
 # <a name="an-assigned-application-is-not-appearing-on-the-access-panel"></a>Eine zugewiesene Anwendung wird im Zugriffsbereich nicht angezeigt.
 
@@ -132,7 +134,7 @@ Um das einmalige Anmelden für eine Anwendung zu konfigurieren, führen Sie folg
 
    2. Klicken Sie auf **Speichern**. Das neue Attribut wird in der Tabelle angezeigt.
 
-13. Klicken Sie auf **&lt;Anwendungsname&gt; konfigurieren**, um auf die Dokumentation zum Konfigurieren des einmaligen Anmeldens in der Anwendung zuzugreifen. Außerdem verfügen Sie über die Metadaten-URLs und das Zertifikat, die/das zum Einrichten des einmaligen Anmeldens mit der Anwendung erforderlich sind/ist.
+13. Klicken Sie auf **&lt;Anwendungsname&gt; konfigurieren**, um auf die Dokumentation zum Konfigurieren des einmaligen Anmeldens in der Anwendung zuzugreifen. Außerdem verfügen Sie über die Metadaten-URLs und das Zertifikat, die zum Einrichten des einmaligen Anmeldens mit der Anwendung erforderlich sind.
 
 14. Klicken Sie zum Speichern der Konfiguration auf **Speichern**.
 
@@ -249,7 +251,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden für eine nich
 
    2. Klicken Sie auf **Speichern**. Das neue Attribut wird in der Tabelle angezeigt.
 
-14. Klicken Sie auf **&lt;Anwendungsname&gt; konfigurieren**, um auf die Dokumentation zum Konfigurieren des einmaligen Anmeldens in der Anwendung zuzugreifen. Außerdem verfügen Sie über die Azure AD-URLs und das Zertifikat, die/das für die Anwendung erforderlich sind/ist.
+14. Klicken Sie auf **&lt;Anwendungsname&gt; konfigurieren**, um auf die Dokumentation zum Konfigurieren des einmaligen Anmeldens in der Anwendung zuzugreifen. Außerdem verfügen Sie über die Azure AD-URLs und das Zertifikat, die für die Anwendung erforderlich sind.
 
 #### <a name="select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application"></a>Auswählen der Benutzer-ID und Hinzufügen von Benutzerattributen, die an die Anwendung gesendet werden
 

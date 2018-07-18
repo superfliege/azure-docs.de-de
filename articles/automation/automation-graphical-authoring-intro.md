@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b813ba564e6451f973972f08f297399c3af1747b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: b0517af9f8066d2d5849b0ffe3d4a0d00afdad44
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195487"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437874"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafische Erstellung in Azure Automation
 
@@ -289,6 +289,9 @@ Die Aktivität „Get Run As Connection“ (also „Get-AutomationConnection“)
 Die nächste Aktivität (Connect-AzureRmAccount) fügt das authentifizierte ausführende Konto hinzu, damit es im Runbook verwendet werden kann.
 
 ![Parametersatz „Connect-AzureRmAccount“](media/automation-graphical-authoring-intro/authenticate-conn-to-azure-parameter-set.png)
+
+> [!IMPORTANT]
+> **Add-AzureRmAccount** ist jetzt ein Alias für **Connect-AzureRMAccount**. Sollte **Connect-AzureRMAccount** beim Durchsuchen der Bibliothekselemente nicht angezeigt werden, können Sie **Add-AzureRmAccount** verwenden oder die Module in Ihrem Automation-Konto aktualisieren.
 
 Für die Parameter **APPLICATIONID**, **CERTIFICATETHUMBPRINT** und **TENANTID** muss der Name der Eigenschaft für den Feldpfad angegeben werden, da die Aktivität ein Objekt mit mehreren Eigenschaften ausgibt. Andernfalls kann beim Ausführen des Runbooks keine Authentifizierung erfolgen. Dies sind die Mindestanforderungen, die für die Authentifizierung Ihres Runbooks mit dem ausführenden Konto erfüllt sein müssen.
 

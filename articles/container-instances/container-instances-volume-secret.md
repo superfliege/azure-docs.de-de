@@ -8,18 +8,19 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: marsma
-ms.openlocfilehash: 47abb4c305b1997fa3f44c07aa85dd01e5a94f1f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a030582c885dd0a5680bd23046ea2a9c0329701a
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830070"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Einbinden eines geheimen Volumes in Azure Container Instances
 
 Hier erfahren Sie, wie Sie ein *geheimes* Volume in Ihren Containerinstanzen einbinden, damit die Container in Ihren Containergruppen vertrauliche Informationen speichern und abrufen können.
 
 > [!NOTE]
-> Zurzeit ist das Einbinden eines *geheimen* Volumes auf Linux-Container beschränkt. Bis alle Features auch für Windows-Container verfügbar sind, finden Sie die aktuellen Plattformunterschiede unter [Kontingente und Regionsverfügbarkeit für Azure Container Instances](container-instances-quotas.md).
+> Zurzeit ist das Einbinden eines *geheimen* Volumes auf Linux-Container beschränkt. Unter [Festlegen von Umgebungsvariablen](container-instances-environment-variables.md) erfahren Sie, wie Sie sichere Umgebungsvariablen für Windows- und Linux-Container übergeben. Bis alle Features auch für Windows-Container verfügbar sind, finden Sie die aktuellen Plattformunterschiede unter [Kontingente und Regionsverfügbarkeit für Azure Container Instances](container-instances-quotas.md).
 
 ## <a name="secret-volume"></a>Geheimes Volume
 

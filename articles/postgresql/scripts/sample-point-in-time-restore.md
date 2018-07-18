@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI-Skript – Wiederherstellen eines Azure Database for PostgreSQL-Servers"
-description: "Dieses Beispielskript für die Azure-Befehlszeilenschnittstelle (CLI) veranschaulicht das Wiederherstellen eines Azure Database for PostgreSQL-Servers und seiner Datenbanken auf einen früheren Zeitpunkt."
+title: Azure CLI-Skript – Wiederherstellen eines Azure Database for PostgreSQL-Servers
+description: Dieses Beispielskript für die Azure-Befehlszeilenschnittstelle (CLI) veranschaulicht das Wiederherstellen eines Azure Database for PostgreSQL-Servers und seiner Datenbanken auf einen früheren Zeitpunkt.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -12,10 +12,11 @@ ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
 ms.openlocfilehash: 14e365d90942a09db8bbd2f3eeb4c72a8be3819b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38631791"
 ---
 # <a name="restore-an-azure-database-for-postgresql-server-using-azure-cli"></a>Wiederherstellen eines Azure Database for PostgreSQL-Servers mithilfe der Azure-Befehlszeilenschnittstelle
 Dieses CLI-Beispielskript stellt den früheren Zustand eines einzelnen Azure Database for PostgreSQL-Servers wieder her.

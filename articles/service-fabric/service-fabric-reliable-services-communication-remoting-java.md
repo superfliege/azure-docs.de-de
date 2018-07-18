@@ -1,6 +1,6 @@
 ---
-title: Dienstremoting in Azure Service Fabric | Microsoft-Dokumentation
-description: Service Fabric-Remoting ermöglicht Clients und Diensten die Kommunikation mit Diensten über einen Remoteprozeduraufruf.
+title: Dienstremoting mit Java in Azure Service Fabric | Microsoft-Dokumentation
+description: Service Fabric-Remoting ermöglicht Clients und Diensten die Kommunikation mit Java-Diensten über einen Remoteprozeduraufruf.
 services: service-fabric
 documentationcenter: java
 author: PavanKunapareddyMSFT
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 074c428662abb5c3acf86835f6fedbf3f8791acf
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 3215ee4adf907524626b4919b637ce23b9e0e782
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212975"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750179"
 ---
-# <a name="service-remoting-with-reliable-services"></a>Dienstremoting mit Reliable Services
+# <a name="service-remoting-in-java-with-reliable-services"></a>Dienstremoting in Java mit Reliable Services
 > [!div class="op_single_selector"]
 > * [C# unter Windows](service-fabric-reliable-services-communication-remoting.md)
 > * [Java unter Linux](service-fabric-reliable-services-communication-remoting-java.md)
 >
 >
 
-Das Reliable Services-Framework stellt einen Remotingmechanismus bereit, mit dem schnell und einfach ein Remoteprozeduraufruf für Dienste eingerichtet werden kann.
+Für WebAPI, WCF (Windows Communication Foundation) und andere Dienste, die nicht an ein bestimmtes Kommunikationsprotokoll oder einen bestimmten Kommunikationsstapel gebunden sind, stellt das Reliable Services-Framework einen Remotingmechanismus für das schnelle, einfache Einrichten von Remoteprozeduraufrufen für Dienste bereit.  In diesem Artikel wird das Einrichten von Remoteprozeduraufrufen für Dienste, die mit Java geschrieben wurden, erläutert.
 
 ## <a name="set-up-remoting-on-a-service"></a>Einrichten von Remoting für einen Dienst
 Die Einrichtung von Remoting für einen Dienst erfolgt in zwei einfachen Schritten:
@@ -88,7 +88,7 @@ CompletableFuture<String> message = helloWorldClient.helloWorldAsync();
 Das Remotingframework gibt beim Dienst aufgetretene Ausnahmen an den Client weiter. Somit kann die Ausnahmebehandlungslogik auf dem Client Ausnahmen, die vom Dienst ausgegeben werden, mithilfe von `ServiceProxyBase` direkt behandeln.
 
 ## <a name="service-proxy-lifetime"></a>Gültigkeitsdauer von Dienstproxys
-Die Erstellung von Dienstproxys ist ein einfacher Vorgang, sodass Benutzer so viele erstellen können, wie sie benötigen. Ein Dienstproxy kann erneut verwendet werden, solange der Benutzer ihn benötigt. Der Benutzer kann den gleichen Proxy im Fall einer Ausnahme erneut verwenden. Jeder Dienstproxy enthält einen Kommunikationsclient zum Senden von Nachrichten im Netzwerk. Beim Aufrufen der API erfolgt eine interne Prüfung, ob der verwendete Kommunikationsclient gültig ist. Basierend auf diesem Ergebnis erstellen wir den Kommunikationsclient neu. Daher müssen Benutzer im Fall einer Ausnahme den Dienstproxy nicht neu erstellen.
+Die Erstellung von Dienstproxys ist ein einfacher Vorgang, sodass Sie so viele erstellen können, wie Sie benötigen. Dienstproxyinstanzen können erneut verwendet werden, solange sie benötigt werden. Wenn ein Remoteprozeduraufruf eine Ausnahme auslöst, können Sie immer noch dieselbe Proxyinstanz wiederverwenden. Jeder Dienstproxy enthält einen Kommunikationsclient zum Senden von Nachrichten im Netzwerk. Beim Aufruf von Remoteaufrufen wird intern geprüft, ob der Kommunikationsclient gültig ist. Basierend auf den Ergebnissen dieser Überprüfungen wird der Kommunikationsclient bei Bedarf neu erstellt. Darum müssen Sie im Falle einer Ausnahme `ServiceProxy` nicht neu erstellen.
 
 ### <a name="serviceproxyfactory-lifetime"></a>Gültigkeitsdauer von „ServiceProxyFactory“
 [FabricServiceProxyFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client._fabric_service_proxy_factory) ist eine Factory, die einen Proxy für verschiedene Remotingschnittstellen erstellt. Wenn Sie die API `ServiceProxyBase.create` verwenden, um Proxys zu erstellen, erstellt das Framework eine `FabricServiceProxyFactory`.
@@ -102,7 +102,7 @@ Alle von der Dienstverwaltungs-API ausgelösten remoten Ausnahmen werden entwede
 „ServiceProxy“ verarbeitet sämtliche Failoverausnahmen für die Dienstpartition, für die seine Erstellung erfolgt ist. Dieser Proxy löst die Endpunkte erneut auf, falls Failoverausnahmen (nicht vorübergehende Ausnahmen) vorliegen, und wiederholt den Aufruf mit dem richtigen Endpunkt. Die Anzahl der Wiederholungen bei Failoverausnahmen ist unbegrenzt.
 Im Falle vorübergehender Ausnahmen wird nur der Aufruf wiederholt.
 
-Standardparameter für die Wiederholung werden von [OperationRetrySettings] angegeben. (https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client._operation_retry_settings) Der Benutzer kann diese Werte konfigurieren, indem das OperationRetrySettings-Objekt an den ServiceProxyFactory-Konstruktor übergeben wird.
+Standardparameter für die Wiederholung werden von [OperationRetrySettings] angegeben. (https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client._operation_retry_settings) Sie können diese Werte konfigurieren, indem Sie das OperationRetrySettings-Objekt an den ServiceProxyFactory-Konstruktor übergeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Absichern der Kommunikation für Reliable Services](service-fabric-reliable-services-secure-communication.md)
+* [Absichern der Kommunikation für Reliable Services](service-fabric-reliable-services-secure-communication-java.md)

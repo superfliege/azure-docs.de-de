@@ -5,27 +5,26 @@ keywords: mongoimport, mongorestore
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: 352c5fb9-8772-4c5f-87ac-74885e63ecac
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-mongo
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 36d098a76e57b65ba82c24ed81ebbe3d21489a9f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: bdaead6fe739d62340ca225aa1a6d8adf9e86cb9
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100295"
 ---
 # <a name="azure-cosmos-db-import-mongodb-data"></a>Azure Cosmos DB: Importieren von MongoDB-Daten 
 
 Sie müssen wie folgt vorgehen, um Daten von MongoDB in ein Azure Cosmos DB-Konto für die Verwendung mit der API für MongoDB zu migrieren:
 
-* Laden Sie entweder *mongoimport.exe* oder *mongorestore.exe* aus dem [MongoDB Download Center](https://www.mongodb.com/download-center) herunter.
+* Laden Sie aus dem [MongoDB-Downloadcenter](https://www.mongodb.com/download-center) den Communityserver herunter, und installieren Sie ihn.
+* Verwenden Sie die Datei „mongoimport.exe“ oder „mongorestore.exe“, die im Verzeichnis „installation folder/bin“ installiert wird. 
 * Rufen Sie Ihre [API für die MongoDB-Verbindungszeichenfolge](connect-mongodb-account.md) ab.
 
 Wenn Sie Daten aus MongoDB importieren und diese mit der SQL-API von Azure Cosmos DB verwenden möchten, sollten Sie die Daten mithilfe des [Datenmigrationstools](import-data.md) importieren.
@@ -63,7 +62,7 @@ Vorlage:
 
 Beispiel:  
 
-    mongoimport.exe --host anhoh-host.documents.azure.com:10255 -u anhoh-host -p tkvaVkp4Nnaoirnouenrgisuner2435qwefBH0z256Na24frio34LNQasfaefarfernoimczciqisAXw== --ssl --sslAllowInvalidCertificates --db sampleDB --collection sampleColl --type json --file C:\Users\anhoh\Desktop\*.json
+    mongoimport.exe --host comsosdb-mongodb-account.documents.azure.com:10255 -u comsosdb-mongodb-account -p tkvaVkp4Nnaoirnouenrgisuner2435qwefBH0z256Na24frio34LNQasfaefarfernoimczciqisAXw== --ssl --sslAllowInvalidCertificates --db sampleDB --collection sampleColl --type json --file C:\Users\admin\Desktop\*.json
 
 ## <a name="import-data-to-the-api-for-mongodb-by-using-mongorestore"></a>Importieren von Daten in die API für MongoDB mit „mongorestore“
 
@@ -75,15 +74,15 @@ Vorlage:
 
 Beispiel:
 
-    mongorestore.exe --host anhoh-host.documents.azure.com:10255 -u anhoh-host -p tkvaVkp4Nnaoirnouenrgisuner2435qwefBH0z256Na24frio34LNQasfaefarfernoimczciqisAXw== --ssl --sslAllowInvalidCertificates ./dumps/dump-2016-12-07
+    mongorestore.exe --host comsosdb-mongodb-account.documents.azure.com:10255 -u comsosdb-mongodb-account -p tkvaVkp4Nnaoirnouenrgisuner2435qwefBH0z256Na24frio34LNQasfaefarfernoimczciqisAXw== --ssl --sslAllowInvalidCertificates ./dumps/dump-2016-12-07
     
 ## <a name="guide-for-a-successful-migration"></a>Anleitung für eine erfolgreiche Migration
 
 1. Erstellen und skalieren Sie Ihre Sammlungen im Voraus:
         
-    * Standardmäßig stellt Azure Cosmos DB eine neue MongoDB-Sammlung mit 1.000 Anforderungseinheiten (RU/s) bereit. Erstellen Sie vor der Migration mithilfe von „mongoimport“, „mongorestore“ oder „mongomirror“ alle Sammlungen aus dem [Azure-Portal](https://portal.azure.com) oder von MongoDB-Treibern und Tools. Wenn Ihre Sammlung größer als 10 GB ist, müssen Sie eine [Shard-/partitionierte Sammlung](partition-data.md) mit einem entsprechenden Shardschlüssel erstellen.
+    * Standardmäßig stellt Azure Cosmos DB eine neue MongoDB-Sammlung mit 1.000 Anforderungseinheiten pro Sekunde (RU/s) bereit. Erstellen Sie vor der Migration mithilfe von „mongoimport“, „mongorestore“ oder „mongomirror“ alle Sammlungen aus dem [Azure-Portal](https://portal.azure.com) oder von MongoDB-Treibern und Tools. Wenn Ihre Sammlung größer als 10 GB ist, müssen Sie eine [Shard-/partitionierte Sammlung](partition-data.md) mit einem entsprechenden Shardschlüssel erstellen.
 
-    * Über das [Azure-Portal](https://portal.azure.com) können Sie den Durchsatz Ihrer Sammlungen von 1.000 RUs pro Sekunde für eine einzelne partitionierte Sammlung und 2.500 RUs pro Sekunde für eine Shard-Sammlung speziell für die Migration erhöhen. Mit dem höheren Durchsatz können Sie Einschränkungen vermeiden und in kürzerer Zeit migrieren. Mit der stündlichen Abrechnung in Azure Cosmos DB können Sie den Durchsatz sofort nach der Migration verringern, um Kosten zu sparen.
+    * Über das [Azure-Portal](https://portal.azure.com) können Sie den Durchsatz Ihrer Sammlungen von 1.000 RUs pro Sekunde für eine einzelne partitionierte Sammlung und 2.500 RUs pro Sekunde für eine Shard-Sammlung speziell für die Migration erhöhen. Mit dem höheren Durchsatz können Sie eine Ratenbegrenzung vermeiden und in kürzerer Zeit migrieren. Mit der stündlichen Abrechnung in Azure Cosmos DB können Sie den Durchsatz sofort nach der Migration verringern, um Kosten zu sparen.
 
     * Zusätzlich zur Bereitstellung von RU/s auf Ebene der Sammlungen können Sie zudem RU/s für eine Gruppe von Sammlungen auf der übergeordneten Datenbankebene bereitstellen. Dazu müssen vorab die Datenbank und die Sammlungen erstellt sowie jeweils ein Shardschlüssel für die einzelnen Sammlungen definiert werden.
 
@@ -161,7 +160,12 @@ Beispiel:
 6. Führen Sie den endgültigen Migrationsbefehl aus:
 
    ```
-   mongoimport.exe --host anhoh-mongodb.documents.azure.com:10255 -u anhoh-mongodb -p wzRJCyjtLPNuhm53yTwaefawuiefhbauwebhfuabweifbiauweb2YVdl2ZFNZNv8IU89LqFVm5U0bw== --ssl --sslAllowInvalidCertificates --jsonArray --db dabasename --collection collectionName --file "C:\sample.json" --numInsertionWorkers 4 --batchSize 24
+   mongoimport.exe --host comsosdb-mongodb-account.documents.azure.com:10255 -u comsosdb-mongodb-account -p wzRJCyjtLPNuhm53yTwaefawuiefhbauwebhfuabweifbiauweb2YVdl2ZFNZNv8IU89LqFVm5U0bw== --ssl --sslAllowInvalidCertificates --jsonArray --db dabasename --collection collectionName --file "C:\sample.json" --numInsertionWorkers 4 --batchSize 24
+   ```
+   Oder verwenden Sie „mongorestore“ (wobei der Durchsatz für alle Sammlungen mindestens der RU-Menge aus den vorherigen Berechnungen entsprechen muss):
+   
+   ```
+   mongorestore.exe --host comsosdb-mongodb-account.documents.azure.com:10255 -u comsosdb-mongodb-account -p wzRJCyjtLPNuhm53yTwaefawuiefhbauwebhfuabweifbiauweb2YVdl2ZFNZNv8IU89LqFVm5U0bw== --ssl --sslAllowInvalidCertificates ./dumps/dump-2016-12-07 --numInsertionWorkersPerCollection 4 --batchSize 24
    ```
 
 ## <a name="next-steps"></a>Nächste Schritte

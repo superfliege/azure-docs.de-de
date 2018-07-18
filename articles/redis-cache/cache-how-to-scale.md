@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: wesmc
-ms.openlocfilehash: 9ef988ccdcca921c0285bf983125483a38a07678
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d88fcea4a41d8402cc25a1623727284afb0e9088
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959381"
 ---
 # <a name="how-to-scale-azure-redis-cache"></a>Skalieren von Azure Redis Cache
 Für Azure Redis Cache stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -funktionen bieten. Nach dem Erstellen des Caches können Sie Größe und Tarif des Caches skalieren, wenn sich die Anforderungen Ihrer Anwendung ändern. In diesem Artikel wird erläutert, wie Sie Ihren Cache im Azure-Portal mithilfe von Tools wie Azure PowerShell und der Azure-Befehlszeilenschnittstelle skalieren.
@@ -153,7 +154,7 @@ Für Caches der Tarife „Standard“ und „Premium“ gilt zwar eine SLA (Serv
 * **Basic**-Caches sind während der Skalierung auf eine andere Größe offline. Basic-Caches bleiben bei einer Skalierung von **Basic** auf **Standard** verfügbar, es können aber kurze Verbindungsunterbrechungen auftreten. Wenn Verbindungsunterbrechungen auftreten, sollten die Redis-Clients in der Lage sein, ihre Verbindung sofort erneut herzustellen.
 
 
-### <a name="scaling-limitations-with-geo-relication"></a>Skalierungseinschränkungen bei Verwendung der Georeplikation
+### <a name="scaling-limitations-with-geo-replication"></a>Skalierungseinschränkungen bei Verwendung der Georeplikation
 
 Wenn Sie zwischen zwei Caches eine Verknüpfung für die Georeplikation hinzugefügt haben, können Sie keine Skalierungsvorgänge mehr initiieren oder die Anzahl von Shards in einem Cluster ändern. Wenn Sie diese Befehle verwenden möchten, müssen Sie zuerst die Verknüpfung für den Cache aufheben. Weitere Informationen finden Sie unter [Vorgehensweise zum Konfigurieren der Georeplikation für Azure Redis Cache](cache-how-to-geo-replication.md).
 

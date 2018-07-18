@@ -2,22 +2,19 @@
 title: Überwachen von Anforderungen, Nutzung und Speicher in Azure Cosmos DB | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Ihr Azure Cosmos DB-Konto anhand von Leistungsmetriken (z. B. Anforderungen und Serverfehler) und Nutzungsmetriken (z. B. Speicherbelegung) überwachen.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: 4c6a2e6f-6e78-48e3-8dc6-f4498b235a9e
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: sngun
-ms.openlocfilehash: 008c47bbceeba1345c56b5171f5fbc1f8676b02c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 1e5dba722f240bd6535ba64494912a153e9224c0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34612638"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Überwachen von Microsoft Azure Cosmos DB
 Sie können Ihre Azure Cosmos DB-Konten im [Azure-Portal](https://portal.azure.com/) überwachen. Für jedes Konto in Azure Cosmos DB ist eine vollständige Sammlung von Metriken verfügbar, mit der der Durchsatz, der Speicher, die Verfügbarkeit, die Latenz und die Konsistenz überwacht werden kann.

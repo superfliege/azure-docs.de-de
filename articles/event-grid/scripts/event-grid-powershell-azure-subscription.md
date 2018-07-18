@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31425901"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-powershell"></a>Abonnieren von Ereignissen für ein Azure-Abonnement mit PowerShell
 

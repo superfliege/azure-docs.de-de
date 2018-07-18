@@ -3,16 +3,17 @@ title: Erstellen eines Tabellenmodells mit dem Azure Analysis Services-Web-Desig
 description: Erfahren Sie, wie Sie ein Azure Analysis Services-Tabellenmodell mit dem Web-Designer im Azure-Portal erstellen.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/23/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4b1d4cffc3571297f2b74674156cb7f3bad7c2c8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 17ff6ebed615971b4157831431d9e2395ca68b48
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441674"
 ---
 # <a name="create-a-model-in-azure-portal"></a>Erstellen eines Modells im Azure-Portal
 

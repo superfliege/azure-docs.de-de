@@ -10,22 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 365775f840f85efe1792f376880145c7e7db1312
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 1c1d9f7a4b64ea1e952b3edd9011f5dc197543d6
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33205328"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052680"
 ---
 # <a name="copy-data-from-azure-database-for-postgresql-using-azure-data-factory"></a>Kopieren von Daten aus Azure Database for PostgreSQL mithilfe von Azure Data Factory 
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Azure Database for PostgreSQL zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
-
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (GA) ist, lesen Sie [Kopieraktivität in V1](v1/data-factory-data-movement-activities.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -49,7 +46,7 @@ Folgende Eigenschaften werden für den verknüpften Azure Database for PostgreSQ
 | connectionString | Eine ODBC-Verbindungszeichenfolge zum Herstellen einer Verbindung mit Azure Database for PostgreSQL. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
 
-Eine typische Verbindungszeichenfolge ist: `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>@admstest;Password=<Password>`. Weitere Eigenschaften, die Sie für Ihren Fall festlegen können:
+Eine typische Verbindungszeichenfolge ist `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. Weitere Eigenschaften, die Sie für Ihren Fall festlegen können:
 
 | Eigenschaft | BESCHREIBUNG | Optionen | Erforderlich |
 |:--- |:--- |:--- |:--- |:--- |
@@ -66,7 +63,7 @@ Eine typische Verbindungszeichenfolge ist: `Server=<server>.postgres.database.az
         "typeProperties": {
             "connectionString": {
                  "type": "SecureString",
-                 "value": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>@admstest;Password=<Password>"
+                 "value": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
             }
         }
     }
@@ -138,6 +135,58 @@ Legen Sie zum Kopieren von Daten aus Azure Database for PostgreSQL den Quelltyp 
     }
 ]
 ```
+
+## <a name="data-type-mapping-for-azure-database-for-postgresql"></a>Datentypzuordnung für Azure Database for PostgreSQL
+
+Beim Kopieren von Daten aus Azure Database for PostgreSQL werden die folgenden Zuordnungen von PostgreSQL-Datentypen zu Azure Data Factory-Zwischendatentypen verwendet. Unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md) erfahren Sie, wie Sie Aktivitätszuordnungen für Quellschema und Datentyp in die Senke kopieren.
+
+| PostgreSQL-Datentyp | PostgreSQL-Aliase | Data Factory-Zwischendatentyp |
+|:--- |:--- |:--- |
+| `abstime` |&nbsp; |`String` |
+| `bigint` | `int8` | `Int64` |
+| `bigserial` | `serial8` | `Int64` |
+| `bit [1]` |&nbsp; | `Boolean` |
+| `bit [(n)], n>1` |&nbsp; | `Byte[]` |
+| `bit varying [(n)]` | `varbit` |`Byte[]` |
+| `boolean` | `bool` | `Boolean` |
+| `box` |&nbsp; | `String` |
+| `bytea` |&nbsp; | `Byte[], String` |
+| `character [(n)]` | `char [(n)]` | `String` |
+| `character varying [(n)]` | `varchar [(n)]` | `String` |
+| `cid` |&nbsp; | `Int32` |
+| `cidr` |&nbsp; | `String` |
+| `circle` |&nbsp; |` String` |
+| `date` |&nbsp; |`Datetime` |
+| `daterange` |&nbsp; |`String` |
+| `double precision` |`float8` |`Double` |
+| `inet` |&nbsp; |`String` |
+| `intarray` |&nbsp; |`String` |
+| `int4range` |&nbsp; |`String` |
+| `int8range` |&nbsp; |`String` |
+| `integer` | `int, int4` |`Int32` |
+| `interval [fields] [(p)]` | | `String` |
+| `json` |&nbsp; | `String` |
+| `jsonb` |&nbsp; | `Byte[]` |
+| `line` |&nbsp; | `Byte[], String` |
+| `lseg` |&nbsp; | `String` |
+| `macaddr` |&nbsp; | `String` |
+| `money` |&nbsp; | `String` |
+| `numeric [(p, s)]`|`decimal [(p, s)]` |`String` |
+| `numrange` |&nbsp; |`String` |
+| `oid` |&nbsp; |`Int32` |
+| `path` |&nbsp; |`String` |
+| `pg_lsn` |&nbsp; |`Int64` |
+| `point` |&nbsp; |`String` |
+| `polygon` |&nbsp; |`String` |
+| `real` |`float4` |`Single` |
+| `smallint` |`int2` |`Int16` |
+| `smallserial` |`serial2` |`Int16` |
+| `serial` |`serial4` |`Int32` |
+| `text` |&nbsp; |`String` |
+| `timewithtimezone` |&nbsp; |`String` |
+| `timewithouttimezone` |&nbsp; |`String` |
+| `timestampwithtimezone` |&nbsp; |`String` |
+| `xid` |&nbsp; |`Int32` |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

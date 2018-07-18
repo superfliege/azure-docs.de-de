@@ -20,6 +20,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33778357"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Senden von Pushbenachrichtigungen mit Azure Notification Hubs und Node.js
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -70,7 +71,7 @@ Das **NotificationHubService** -Objekt ermöglicht Ihnen das Arbeiten mit Notifi
 
     var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
 
-Führen Sie die folgenden Schritte im **Azure-Portal** durch, um den Wert für [connectionstring] zu erhalten:
+Führen Sie die folgenden Schritte im [Azure-Portal]l durch, um den Wert für **connectionstring** zu erhalten:
 
 1. Klicken Sie im linken Navigationsbereich auf **Durchsuchen**.
 2. Wählen Sie **Notification Hubs**, und wählen Sie den gewünschten Hub für das Beispiel aus. Wenn Sie Hilfe beim Erstellen eines neuen Notification Hubs benötigen, lesen Sie das Tutorial [Erste Schritte mit Notification Hubs für Windows Store-Apps](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) .

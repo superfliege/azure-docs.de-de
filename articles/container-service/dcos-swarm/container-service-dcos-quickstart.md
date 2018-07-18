@@ -2,18 +2,19 @@
 title: Azure Container Service-Schnellstart – DC/OS-Cluster bereitstellen
 description: Azure Container Service-Schnellstart – DC/OS-Cluster bereitstellen
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9893606943324f5a651cc800feeb86b8966dc15e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 12a6e34db4134ffdb38428c0a38d94351747cc48
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37900557"
 ---
 # <a name="deploy-a-dcos-cluster"></a>Bereitstellen eines DC/OS-Clusters
 
@@ -23,7 +24,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure 
+## <a name="log-in-to-azure"></a>Anmelden bei Azure 
 
 Melden Sie sich mit dem Befehl [az login](/cli/azure/reference-index#az_login) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
 

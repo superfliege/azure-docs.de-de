@@ -1,16 +1,17 @@
 ---
 title: Architektur der Replikation vom physischen Server nach Azure in Azure Site Recovery | Microsoft-Dokumentation
-description: "Dieser Artikel bietet einen Überblick über die Komponenten und die Architektur, die beim Replizieren von lokalen physischen Servern in Azure mit dem Azure Site Recovery-Dienst verwendet werden."
+description: Dieser Artikel bietet einen Überblick über die Komponenten und die Architektur, die beim Replizieren von lokalen physischen Servern in Azure mit dem Azure Site Recovery-Dienst verwendet werden.
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: a8af2ee4a32925603d24aee2403ab504a0ca05a8
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: d4c0b3b8ef778a01c365d34734019d2fa11a2343
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920939"
 ---
 # <a name="physical-server-to-azure-replication-architecture"></a>Physische Server in der Architektur für die Azure-Replikation
 

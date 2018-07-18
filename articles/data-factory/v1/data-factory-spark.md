@@ -11,15 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 9df8b0987378fef37c7ca8f24070a88cbfc42f2a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e775798dbaaf93d5a9b497323a3b2fa365820550
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046462"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Aufrufen von Spark-Programmen aus Azure Data Factory-Pipelines
 
@@ -36,7 +37,7 @@ ms.lasthandoff: 04/16/2018
 > * [Benutzerdefinierte .NET-Aktivität](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Azure Data Factory, die allgemein verfügbar ist. Wenn Sie Version 2 des Data Factory-Diensts in der Vorschauversion verwenden, lesen Sie die Informationen zum [Transformieren von Daten mit der Apache Spark-Aktivität in Data Factory Version 2](../transform-data-using-spark.md).
+> Dieser Artikel bezieht sich auf Version 1 von Azure Data Factory, die allgemein verfügbar ist. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [Transformieren von Daten mithilfe der Apache Spark-Aktivität in Data Factory](../transform-data-using-spark.md).
 
 ## <a name="introduction"></a>Einführung
 Die Spark-Aktivität ist eine der [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md), die von Data Factory unterstützt werden. Diese Aktivität führt das angegebene Spark-Programm auf dem Spark-Cluster in Azure HDInsight aus. 
@@ -267,8 +268,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer HDInsightSpark-Aktivitä
 
     ![Jupyter-Abfrageergebnisse](media/data-factory-spark/jupyter-notebook-results.png)
 
-<!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article -->
-Ausführliche Anweisungen finden Sie im Abschnitt [Ausführen einer Spark SQL-Abfrage](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
+<!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article --> Ausführliche Anweisungen finden Sie im Abschnitt [Ausführen einer Spark SQL-Abfrage](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
 
 ### <a name="troubleshooting"></a>Problembehandlung
 Da Sie „getDebugInfo“ auf **Always** festgelegt haben, finden Sie einen Unterordner „log“ im Ordner „pyFiles im Blobcontainer. Die Protokolldatei im Ordner „log“ enthält weitere Informationen. Diese Protokolldatei ist besonders nützlich, wenn ein Fehler aufgetreten ist. In einer Produktionsumgebung sollten Sie sie auf **Failure** festlegen.

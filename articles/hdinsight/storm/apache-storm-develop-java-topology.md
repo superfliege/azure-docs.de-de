@@ -15,11 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 5f2a6de9737569c75e0350e2aceec19b149d9549
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 02277d8398fe5e3f3cfd1244e53cc80c4b627fa3
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857421"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Erstellen einer Apache Storm-Topologie in Java
 
@@ -596,10 +597,10 @@ Flux ist ein neues Framework von Storm 0.10.0 und höher, mit dem Sie die Konfig
 
 Die YAML-Datei definiert die für die Topologie zu verwendenden Komponenten und den Datenfluss zwischen ihnen. Sie können eine YAML-Datei als Teil der JAR-Datei einfügen, oder Sie können eine externe YAML-Datei verwenden.
 
-Weitere Informationen zu Flux finden Sie unter [Flux-Framework (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html).
+Weitere Informationen zu Flux finden Sie unter [Flux-Framework (https://storm.apache.org/releases/1.0.6/flux.html)](https://storm.apache.org/releases/1.0.6/flux.html).
 
 > [!WARNING]
-> Aufgrund eines [Fehlers (https://issues.apache.org/jira/browse/STORM-2055)](https://issues.apache.org/jira/browse/STORM-2055) in Storm 1.0.1 müssen Sie möglicherweise eine [Storm-Entwicklungsumgebung](https://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html) installieren, um Flux-Topologien lokal auszuführen.
+> Aufgrund eines [Fehlers (https://issues.apache.org/jira/browse/STORM-2055)](https://issues.apache.org/jira/browse/STORM-2055) in Storm 1.0.1 müssen Sie möglicherweise eine [Storm-Entwicklungsumgebung](http://storm.apache.org/releases/current/Setting-up-development-environment.html) installieren, um Flux-Topologien lokal auszuführen.
 
 1. Verschieben Sie die Datei `WordCountTopology.java` aus dem Projekt. Früher definierte diese Datei die Topologie, wird aber mit Flux nicht benötigt.
 
@@ -718,9 +719,9 @@ Weitere Informationen zu Flux finden Sie unter [Flux-Framework (https://storm.ap
     ```
 
     > [!WARNING]
-    > Wenn in der Topologie Storm 1.0.1-Bits verwendet werden, schlägt dieser Befehl fehl. Dieser Fehler wird verursacht durch [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055). [Installieren Sie stattdessen Storm in Ihrer Entwicklungsumgebung](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html), und führen Sie die folgenden Schritte aus:
+    > Wenn in der Topologie Storm 1.0.1-Bits verwendet werden, schlägt dieser Befehl fehl. Dieser Fehler wird verursacht durch [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055). [Installieren Sie stattdessen Storm in Ihrer Entwicklungsumgebung](http://storm.apache.org/releases/current/Setting-up-development-environment.html), und führen Sie die folgenden Schritte aus:
     >
-    > Wenn Sie [Storm in der Entwicklungsumgebung installiert haben](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html), können Sie stattdessen die folgenden Befehle verwenden:
+    > Wenn Sie [Storm in der Entwicklungsumgebung installiert haben](http://storm.apache.org/releases/current/Setting-up-development-environment.html), können Sie stattdessen die folgenden Befehle verwenden:
     >
     > ```bash
     > mvn compile package
@@ -766,7 +767,7 @@ Weitere Informationen zu Flux finden Sie unter [Flux-Framework (https://storm.ap
 
     Nachdem die Topologie gestartet wurde, sollte erkennbar sein, dass sich der Zeitraum zwischen der Ausgabe der Batches gemäß dem Wert in „newtopology.yaml“ geändert hat. Sie haben gelernt, dass Sie die Konfiguration über eine YAML-Datei ändern können, ohne die Topologie neu kompilieren zu müssen.
 
-Weitere Informationen zu diesen und anderen Features des Flux-Frameworks finden Sie unter [Flux (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html).
+Weitere Informationen zu diesen und anderen Features des Flux-Frameworks finden Sie unter [Flux (https://storm.apache.org/releases/1.0.6/flux.html)](https://storm.apache.org/releases/1.0.6/flux.html).
 
 ## <a name="trident"></a>Trident
 

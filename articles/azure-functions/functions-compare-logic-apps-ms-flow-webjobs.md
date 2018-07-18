@@ -15,11 +15,12 @@ ms.workload: na
 ms.date: 04/09/2018
 ms.author: tdykstra
 ms.custom: mvc
-ms.openlocfilehash: 6df97a40be7bf1c437c5228006d114ace768f8ca
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9b9ef150a86a754d4ed328184eb02c1937008b7b
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970137"
 ---
 # <a name="compare-flow-logic-apps-functions-and-webjobs"></a>Vergleich von Flow, Logic Apps, Functions und WebJobs
 
@@ -49,7 +50,7 @@ Anhand der folgenden Tabelle können Sie ermitteln, ob Flow oder Logic Apps für
 | Designtool |Im Browser und in der mobilen App, nur über die Benutzeroberfläche |Im Browser und [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), [Codeansicht](../logic-apps/logic-apps-author-definitions.md) verfügbar |
 | Application Lifecycle Management (ALM) |Entwerfen und Testen in Nicht-Produktionsumgebungen, Überführung in Produktion, nachdem die Bereitschaft erzielt wurde. |DevOps: Quellcodeverwaltung, Tests, Support, Automatisierung und Verwaltung in [Azure Resource Management](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) |
 | Administratorerfahrung |Verwalten von Flow-Umgebungen und Richtlinien zur Verhinderung von Datenverlust (Data Loss Prevention, DLP), Nachverfolgen der Lizenzierung [https://admin.flow.microsoft.com](https://admin.flow.microsoft.com) |Verwalten von Ressourcengruppen, Verbindungen, Zugriffsverwaltung und Protokollierung [https://portal.azure.com](https://portal.azure.com) |
-| Sicherheit |Office 365-Sicherheit und Konformitätsüberwachungsprotokolle, Verhinderung von Datenverlust (Data Loss Prevention, DLP), [Verschlüsselung ruhender Daten](https://wikipedia.org/wiki/Data_at_rest#Encryption) für sensible Daten usw. |Sicherheitsgarantie von Azure: [Azure Security](https://www.microsoft.com/trustcenter/Security/AzureSecurity), [Security Center](https://azure.microsoft.com/services/security-center/), [Überwachungsprotokolle](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) und vieles mehr. |
+| Sicherheit |Office 365-Sicherheit und Konformitätsüberwachungsprotokolle, Verhinderung von Datenverlust (Data Loss Prevention, DLP), [Verschlüsselung ruhender Daten](https://wikipedia.org/wiki/Data_at_rest#Encryption) für sensible Daten usw. |Sicherheitsgarantie von Azure: [Azure Security](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Security Center](https://azure.microsoft.com/services/security-center/), [Überwachungsprotokolle](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) und vieles mehr. |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Vergleich zwischen Azure Functions und Azure Logic Apps
 
@@ -84,7 +85,7 @@ WebJobs und das WebJobs SDK funktionieren am besten zusammen, aber Sie können a
 
 Azure Functions basiert auf dem WebJobs SDK und verfügt daher über viele gleiche Ereignisauslöser und Verbindungen mit anderen Azure-Diensten. Hier sind einige Faktoren aufgeführt, die Sie beachten sollten, wenn Sie sich zwischen Azure Functions und WebJobs mit dem WebJobs SDK entscheiden:
 
-|  | Funktionen | WebJobs mit WebJobs SDK |
+|  | Functions | WebJobs mit WebJobs SDK |
 | --- | --- | --- |
 |[Serverloses App-Modell](https://azure.microsoft.com/overview/serverless-computing/) mit [automatischer Skalierung](functions-scale.md#how-the-consumption-plan-works)|✔||
 |[Entwicklung und Tests im Browser](functions-create-first-azure-function.md) |✔||

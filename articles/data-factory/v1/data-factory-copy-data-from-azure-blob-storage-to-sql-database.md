@@ -1,31 +1,32 @@
 ---
-title: "Kopieren von Daten aus Blob Storage nach SQL-Datenbank – Azure | Microsoft Docs"
-description: "In diesem Tutorial erfahren Sie, wie Sie die Kopieraktivität in einer Azure Data Factory-Pipeline verwenden, um Daten aus Blob Storage in SQL-Datenbank zu kopieren."
+title: Kopieren von Daten aus Blob Storage nach SQL-Datenbank – Azure | Microsoft Docs
+description: In diesem Tutorial erfahren Sie, wie Sie die Kopieraktivität in einer Azure Data Factory-Pipeline verwenden, um Daten aus Blob Storage in SQL-Datenbank zu kopieren.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: e4035060-93bf-4e8d-bf35-35e2d15c51e0
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3135c8bf6316125a164c06630bc7607a92621b26
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 4538e5b49b161f22ba6d5979234786a58cae5783
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047725"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory
 > [!div class="op_single_selector"]
 > * [Übersicht und Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Kopier-Assistent](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
+> * [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager-Vorlage](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -33,7 +34,7 @@ ms.lasthandoff: 03/02/2018
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Wenn Sie Version 2 des Data Factory-Diensts verwenden, die sich derzeit in der Vorschauphase befindet, finden Sie weitere Informationen im [Tutorial zu Kopieraktivitäten in der Dokumentation zu Version 2](../quickstart-create-data-factory-dot-net.md). 
+> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen im [Tutorial zur Kopieraktivität](../quickstart-create-data-factory-dot-net.md). 
 
 In diesem Tutorial erstellen Sie eine Data Factory mit einer Pipeline, um Daten aus Blob Storage in SQL-Datenbank zu kopieren.
 
@@ -118,7 +119,7 @@ Nun bereiten Sie Ihre Azure Blob Storage-Instanz und Azure SQL-Datenbank durch A
 Sie haben die Voraussetzungen erfüllt. Mit einer der folgenden Methoden können Sie eine Data Factory erstellen. Klicken Sie oben auf eine der Optionen in der Dropdownliste oder einen der folgenden Links, um das Tutorial auszuführen.     
 
 * [Kopier-Assistent](data-factory-copy-data-wizard-tutorial.md)
-* [Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
+* [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 * [Azure Resource Manager-Vorlage](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)

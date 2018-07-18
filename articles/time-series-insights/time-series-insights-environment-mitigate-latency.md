@@ -1,22 +1,22 @@
 ---
 title: Überwachen und Reduzieren der Drosselung in Azure Time Series Insights | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Leistungsprobleme überwacht, diagnostiziert und verringert werden können, die zu Latenz und Drosselung in Azure Time Series Insights führen.
-services: time-series-insights
 ms.service: time-series-insights
-author: jasonwhowell
+services: time-series-insights
+author: ashannon7
 ms.author: jasonh
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
-ms.openlocfilehash: ac59359eb6af268f311534d90e1529fc5e41094f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bbd5e7d91e982a3dce320ea10a7fe8da435ff212
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293773"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Überwachen und Mindern der Drosselung zur Verhinderung von Latenz in Azure Time Series Insights
 Wenn die Menge der eingehenden Daten die Konfiguration Ihrer Umgebung übersteigt, kann dies zu Latenz oder Drosselung in Azure Time Series Insights führen.
@@ -45,7 +45,7 @@ Mithilfe von Warnungen können Sie durch die Umgebung verursachte Latenzprobleme
 
 Hier können Sie Warnungen mithilfe der folgenden Metriken konfigurieren:
 
-|Metrik  |Beschreibung  |
+|Metrik  |BESCHREIBUNG  |
 |---------|---------|
 |**Ingress Received Bytes** (Eingang empfangene Bytes)     | Anzahl der aus Ereignisquellen gelesenen Rohbytes. Die Anzahl der Rohbytes umfasst normalerweise den Eigenschaftennamen und den Eigenschaftswert.  |  
 |**Ingress Received Invalid Messages** (Eingang empfangene ungültige Nachrichten)     | Anzahl der aus allen Azure Event Hubs- oder Azure IoT Hub-Ereignisquellen gelesenen ungültigen Nachrichten.      |
@@ -56,7 +56,7 @@ Hier können Sie Warnungen mithilfe der folgenden Metriken konfigurieren:
 |**Ingress Received Message Count Lag** (Eingang Verzögerung aufgrund der Anzahl empfangener Nachrichten)    |  Dies ist der Unterschied zwischen der Sequenznummer der Nachricht, die auf der Ereignisquelle zuletzt in die Warteschlange eingereiht wurde, und der Sequenznummer der im Eingang verarbeiteten Nachricht.      |
 
 
-![Latenz](media/environment-mitigate-latency/latency.png)
+![Latency](media/environment-mitigate-latency/latency.png)
 
 Bei einer Drosselung wird ein Wert für *Ingress Received Message Time Lag* (Eingang Zeitverzögerung für empfangene Nachrichten) angezeigt, um sie zu informieren, wie viele Minuten TSI hinter dem tatsächlichen Zeitpunkt zurückliegt, zu dem die Nachricht auf der Ereignisquelle eintrifft (ohne Indizierungszeitraum von ca. 30 bis 60 Sekunden).  *Ingress Received Message Count Lag* (Eingang Verzögerung aufgrund der Anzahl empfangener Nachrichten) sollte ebenfalls über einen Wert verfügen, sodass Sie bestimmen können, um wie viele Nachrichten Sie zurückliegen.  Die einfachste Möglichkeit zum Aufholen des Rückstands besteht darin, die Kapazität Ihrer Umgebung auf eine Einstellung zu erhöhen, die Ihnen das Wettmachen des Unterschieds ermöglicht.  
 

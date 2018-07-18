@@ -4,7 +4,7 @@ description: In diesem Artikel wird beschrieben, wie die Azure Active Directory-
 services: active-directory
 keywords: Passthrough-Authentifizierung mit Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, einmaliges Anmelden
 documentationcenter: ''
-author: swkrish
+author: billmath
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
@@ -12,12 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 84a5ef23739635ba4d2f0adc688c1b506f643a36
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ea7fb5951cd0b2925aa3dd5ae14b452292ba582c
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917991"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory-Passthrough-Authentifizierung – ausführliche Informationen zur Sicherheit
 
@@ -130,20 +132,21 @@ Bei der Passthrough-Authentifizierung wird eine Anforderung zur Benutzeranmeldun
 1. Der Benutzer versucht, auf eine Anwendung zuzugreifen (z.B. [Outlook Web-App](https://outlook.office365.com/owa)).
 2. Wenn der Benutzer nicht bereits angemeldet ist, leitet die Anwendung den Browser auf die Anmeldeseite von Azure AD um.
 3. Der Azure AD-Sicherheitstokendienst (STS) reagiert mit der Seite **Benutzeranmeldung**.
-4. Der Benutzer gibt auf der Seite **Benutzeranmeldung** seinen Benutzernamen und sein Kennwort ein und klickt anschließend auf die Schaltfläche **Weiter**.
-5. Der Benutzername und das Kennwort werden in einer HTTPS POST-Anforderung an den Azure AD STS gesendet.
-6. Der Azure AD STS ruft öffentliche Schlüssel für alle Authentifizierungs-Agents, die unter Ihrem Mandanten registriert sind, aus der Azure SQL-Datenbank ab und verwendet diese zum Verschlüsseln des Kennworts. 
+4. Der Benutzer gibt auf der **Benutzeranmeldeseite** seinen Benutzernamen ein und wählt anschließend die Schaltfläche **Weiter** aus.
+5. Der Benutzer gibt auf der **Benutzeranmeldeseite** sein Kennwort ein und wählt anschließend die Schaltfläche **Anmelden** aus.
+6. Der Benutzername und das Kennwort werden in einer HTTPS POST-Anforderung an den Azure AD STS gesendet.
+7. Der Azure AD STS ruft öffentliche Schlüssel für alle Authentifizierungs-Agents, die unter Ihrem Mandanten registriert sind, aus der Azure SQL-Datenbank ab und verwendet diese zum Verschlüsseln des Kennworts. 
     - Der Dienst erstellt „N“ verschlüsselte Kennwortwerte für „N“ Authentifizierungs-Agents, die unter Ihrem Mandanten registriert sind.
-7. Der Azure AD STS reiht die Anforderung zur Kennwortvalidierung, die aus den Benutzername- und den verschlüsselten Kennwortwerten besteht, in die Service Bus-Warteschlange ein, die zu Ihrem Mandanten gehört.
-8. Da die initialisierten Authentifizierungs-Agents eine dauerhafte Verbindung mit der Service Bus-Warteschlange haben, ruft einer der verfügbaren Authentifizierungs-Agents die Anforderung zur Kennwortvalidierung ab.
-9. Der Authentifizierungs-Agent ermittelt durch Verwenden eines Bezeichners den verschlüsselten Kennwortwert, der zu seinem öffentlichen Schlüssel gehört, und entschlüsselt den Wert, indem er seinen privaten Schlüssel verwendet.
-10. Der Authentifizierungs-Agent versucht, den Benutzernamen und das Kennwort für die lokale Active Directory-Instanz zu validieren, indem er die [Win32 LogonUser-API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) verwendet, wobei der Parameter **dwLogonType** auf **LOGON32_LOGON_NETWORK** festgelegt ist. 
+8. Der Azure AD STS reiht die Anforderung zur Kennwortvalidierung, die aus den Benutzername- und den verschlüsselten Kennwortwerten besteht, in die Service Bus-Warteschlange ein, die zu Ihrem Mandanten gehört.
+9. Da die initialisierten Authentifizierungs-Agents eine dauerhafte Verbindung mit der Service Bus-Warteschlange haben, ruft einer der verfügbaren Authentifizierungs-Agents die Anforderung zur Kennwortvalidierung ab.
+10. Der Authentifizierungs-Agent ermittelt durch Verwenden eines Bezeichners den verschlüsselten Kennwortwert, der zu seinem öffentlichen Schlüssel gehört, und entschlüsselt den Wert, indem er seinen privaten Schlüssel verwendet.
+11. Der Authentifizierungs-Agent versucht, den Benutzernamen und das Kennwort für die lokale Active Directory-Instanz zu validieren, indem er die [Win32 LogonUser-API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) verwendet, wobei der Parameter **dwLogonType** auf **LOGON32_LOGON_NETWORK** festgelegt ist. 
     - Diese API ist dieselbe API, die von Active Directory-Verbunddienste (AD FS) verwendet wird, um Benutzer in einem Szenario mit Verbundanmeldung anzumelden.
     - Diese API setzt auf den Standardauflösungsvorgang in Windows Server auf, um den Domänencontroller zu suchen.
-11. Der Authentifizierungs-Agent empfängt das Ergebnis von Active Directory, also z.B. Erfolg, Benutzername oder Kennwort fehlerhaft oder Kennwort abgelaufen.
-12. Der Authentifizierungs-Agent leitet das Ergebnis über einen ausgehenden gegenseitig authentifizierten HTTPS-Kanal (Port 443) zurück an den Azure AD STS. Bei der gegenseitigen Authentifizierung wird das Zertifikat verwendet, das zuvor während der Registrierung für den Authentifizierungs-Agent ausgestellt wurde.
-13. Der Azure AD STS überprüft, ob das Ergebnis mit der jeweiligen Anmeldeanforderung auf Ihrem Mandanten korreliert.
-14. Der Azure AD STS fährt gemäß Konfiguration mit dem Anmeldeverfahren fort. Wenn die Kennwortvalidierung erfolgreich war, kann der Benutzer beispielsweise zum Einrichten von Multi-Factor Authentication aufgefordert oder zurück an die Anwendung geleitet werden.
+12. Der Authentifizierungs-Agent empfängt das Ergebnis von Active Directory, also z.B. Erfolg, Benutzername oder Kennwort fehlerhaft oder Kennwort abgelaufen.
+13. Der Authentifizierungs-Agent leitet das Ergebnis über einen ausgehenden gegenseitig authentifizierten HTTPS-Kanal (Port 443) zurück an den Azure AD STS. Bei der gegenseitigen Authentifizierung wird das Zertifikat verwendet, das zuvor während der Registrierung für den Authentifizierungs-Agent ausgestellt wurde.
+14. Der Azure AD STS überprüft, ob das Ergebnis mit der jeweiligen Anmeldeanforderung auf Ihrem Mandanten korreliert.
+15. Der Azure AD STS fährt gemäß Konfiguration mit dem Anmeldeverfahren fort. Wenn die Kennwortvalidierung erfolgreich war, kann der Benutzer beispielsweise zum Einrichten von Multi-Factor Authentication aufgefordert oder zurück an die Anwendung geleitet werden.
 
 ## <a name="operational-security-of-the-authentication-agents"></a>Betriebssicherheit der Authentifizierungs-Agents
 
@@ -206,7 +209,7 @@ So wird ein Authentifizierungs-Agent automatisch aktualisiert:
 ## <a name="next-steps"></a>Nächste Schritte
 - [Aktuelle Einschränkungen:](active-directory-aadconnect-pass-through-authentication-current-limitations.md) Informationen zu den unterstützten und nicht unterstützten Szenarien
 - [Schnellstart](active-directory-aadconnect-pass-through-authentication-quick-start.md): Aktivieren und Ausführen der Passthrough-Authentifizierung von Azure AD
-- [Smart Lockout](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten, um Benutzerkonten zu schützen
+- [Smart Lockout](../authentication/howto-password-smart-lockout.md): Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten, um Benutzerkonten zu schützen
 - [Funktionsweise](active-directory-aadconnect-pass-through-authentication-how-it-works.md): Grundlegende Funktionsweise der Passthrough-Authentifizierung von Azure AD
 - [Häufig gestellte Fragen](active-directory-aadconnect-pass-through-authentication-faq.md): Antworten auf häufig gestellte Fragen
 - [Problembehandlung](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): Informationen zum Beheben von allgemeinen Problemen, die es bei der Passthrough-Authentifizierung geben kann

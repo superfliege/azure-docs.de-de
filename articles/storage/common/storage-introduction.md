@@ -8,11 +8,12 @@ ms.service: storage
 ms.topic: get-started-article
 ms.date: 04/05/2018
 ms.author: tamram
-ms.openlocfilehash: 8fc94db3e44fc5388063b507cf240863fcc26a3c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0ae4e196c81e767b2bbee4340f5d99b9f803df3b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653653"
 ---
 # <a name="introduction-to-azure-storage"></a>Einführung in Azure Storage
 
@@ -31,7 +32,7 @@ Azure Storage umfasst die folgenden Datendienste:
 - [Azure-Blobs](../blobs/storage-blobs-introduction.md): Ein überaus skalierbarer Objektspeicher für Text- und Binärdaten.
 - [Azure Files](../files/storage-files-introduction.md): Verwaltete Dateifreigaben für Bereitstellungen lokal oder in der Cloud.
 - [Azure-Warteschlangen](../queues/storage-queues-introduction.md): Ein Messagingspeicher für zuverlässiges Messaging zwischen Anwendungskomponenten. 
-- [Azure-Tabellen](../../cosmos-db/table-storage-overview.md): Ein NoSQL-Speicher für die schemalose Speicherung von strukturierten Daten.
+- [Azure-Tabellen](../tables/table-storage-overview.md): Ein NoSQL-Speicher für die schemalose Speicherung von strukturierten Daten.
 
 Auf jeden Dienst wird über ein Speicherkonto zugegriffen. Informationen zu den ersten Schritten finden Sie unter [Speicherkonto erstellen](storage-quickstart-create-account.md).
 
@@ -78,13 +79,13 @@ Weitere Informationen zu Azure-Warteschlangen finden Sie unter [Einführung in W
 
 ## <a name="table-storage"></a>Table Storage
 
-Azure Table Storage ist jetzt Teil von Azure Cosmos DB. Diese Azure Table Storage-Dokumentation finden Sie unter [Übersicht über Azure Table Storage](../../cosmos-db/table-storage-overview.md). Zusätzlich zum vorhandenen Azure Table Storage-Dienst ist das neue Angebot „Azure Cosmos DB-Tabellen-API“ mit durchsatzoptimierten Tabellen, globaler Verteilung und automatischen sekundären Indizes verfügbar. Unter [Einführung in die Tabellen-API von Azure Cosmos DB](https://aka.ms/premiumtables) erfahren Sie mehr und können das neue Premiumangebot testen.
+Azure Table Storage ist jetzt Teil von Azure Cosmos DB. Diese Azure Table Storage-Dokumentation finden Sie unter [Übersicht über Azure Table Storage](../tables/table-storage-overview.md). Zusätzlich zum vorhandenen Azure Table Storage-Dienst ist das neue Angebot „Azure Cosmos DB-Tabellen-API“ mit durchsatzoptimierten Tabellen, globaler Verteilung und automatischen sekundären Indizes verfügbar. Unter [Einführung in die Tabellen-API von Azure Cosmos DB](https://aka.ms/premiumtables) erfahren Sie mehr und können das neue Premiumangebot testen.
 
-Weitere Informationen zu Table Storage finden Sie unter [Übersicht über Azure Table Storage](../../cosmos-db/table-storage-overview.md).
+Weitere Informationen zu Table Storage finden Sie unter [Übersicht über Azure Table Storage](../tables/table-storage-overview.md).
 
 ## <a name="disk-storage"></a>Datenträgerspeicher
 
-Azure Storage umfasst auch die Funktionen für verwaltete und nicht verwaltete Datenträger, die von virtuellen Computern verwendet werden. Weitere Informationen zu diesen Features finden Sie in der [Microsoft Azure-Dokumentation](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
+Azure Storage umfasst auch die Funktionen für verwaltete und nicht verwaltete Datenträger, die von virtuellen Computern verwendet werden. Weitere Informationen zu diesen Features finden Sie in der [Microsoft Azure-Dokumentation](https://docs.microsoft.com/en-gb/azure/#pivot=products&panel=Compute).
 
 ## <a name="types-of-storage-accounts"></a>Speicherkontentypen
 

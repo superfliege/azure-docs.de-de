@@ -50,7 +50,7 @@ function callGraphApi() {
         userInfoElement.parentElement.classList.remove("hidden");
         userInfoElement.innerHTML = JSON.stringify(user, null, 4);
 
-        // Show Sign-Out button
+        // Show sign-out button
         document.getElementById("signOutButton").classList.remove("hidden");
 
         // Now Call Graph API to show the user profile information:
@@ -81,7 +81,7 @@ function callGraphApi() {
 /**
  * Callback method from sign-in: if no errors, call callGraphApi() to show results.
  * @param {string} errorDesc - If error occur, the error message
- * @param {object} token - The token received from login
+ * @param {object} token - The token received from sign-in
  * @param {object} error - The error string
  * @param {string} tokenType - The token type: For loginRedirect, tokenType = "id_token". For acquireTokenRedirect, tokenType:"access_token".
  */
@@ -119,12 +119,12 @@ Die in diesem Leitfaden generierte Einzelseitenanwendung macht keinen direkten G
 
 #### <a name="getting-a-user-token-interactively"></a>Interaktives Abrufen eines Benutzertokens
 
-Nach der ersten Anmeldung möchten Sie die Benutzer nicht jedes Mal, wenn sie ein Token für den Zugriff auf eine Ressource anfordern, zur erneuten Authentifizierung auffordern – deshalb sollte in den meisten Fällen für das Abrufen von Token *acquireTokenSilent* verwendet werden. Es gibt jedoch Situationen, in denen Sie Benutzer zur Interaktion mit dem Azure Active Directory-v2-Endpunkt auffordern müssen. Beispiele:
--   Benutzer müssen möglicherweise ihre Anmeldeinformationen erneut eingeben, da das Kennwort abgelaufen ist.
--   Ihre Anwendung fordert Zugriff auf eine Ressource, der der Benutzer zustimmen muss.
--   Die zweistufige Authentifizierung ist erforderlich.
+Nach der ersten Anmeldung möchten Sie die Benutzer nicht jedes Mal, wenn sie ein Token für den Zugriff auf eine Ressource anfordern, zur erneuten Authentifizierung auffordern – deshalb sollte in den meisten Fällen *acquireTokenSilent* für das Abrufen von Token verwendet werden. Es gibt jedoch Situationen, in denen Sie Benutzer zur Interaktion mit dem Azure Active Directory-v2-Endpunkt auffordern müssen. Beispiele:
+- Benutzer müssen möglicherweise ihre Anmeldeinformationen erneut eingeben, da das Kennwort abgelaufen ist.
+- Ihre Anwendung fordert Zugriff auf eine Ressource, der der Benutzer zustimmen muss.
+- Die zweistufige Authentifizierung ist erforderlich.
 
-Das Aufrufen von *acquireTokenRedirect(scope)* führt zum Umleiten von Benutzern zum Azure Active Directory-v2-Endpunkt (oder *acquireTokenPopup(scope)* zu einem Popupfenster). Dort müssen Benutzer ihre Anmeldeinformationen bestätigen, ihre Zustimmung für die angeforderte Ressource geben oder die zweistufige Authentifizierung abschließen.
+Der Aufruf von *acquireTokenRedirect(scope)* führt zum Umleiten von Benutzern zum Azure Active Directory-v2-Endpunkt (oder *acquireTokenPopup(scope)* führt zu einem Popupfenster). Dort müssen Benutzer ihre Anmeldeinformationen bestätigen, ihre Zustimmung für die angeforderte Ressource geben oder die zweistufige Authentifizierung abschließen.
 
 #### <a name="getting-a-user-token-silently"></a>Automatisches Abrufen eines Benutzertokens
 Die Methode ` acquireTokenSilent` verwaltet das Abrufen und Erneuern von Token ohne Eingreifen des Benutzers. Nachdem `loginRedirect` (oder `loginPopup`) zum ersten Mal ausgeführt wurde, ist `acquireTokenSilent` die übliche Methode zum Abrufen von Token, die für den Zugriff auf geschützte Ressourcen bei nachfolgenden Aufrufen verwendet werden, da Aufrufe zum Anfordern oder Verlängern von Token automatisch erfolgen.
@@ -204,7 +204,7 @@ Fügen Sie Ihrer Datei `app.js` den folgenden Code hinzu:
 
 ```javascript
 /**
- * Sign-out the user
+ * Sign out the user
  */
 function signOut() {
     userAgentApplication.logout();

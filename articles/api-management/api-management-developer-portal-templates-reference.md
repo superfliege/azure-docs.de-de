@@ -2,10 +2,10 @@
 title: Vorlagen im Azure API Management-Entwicklerportal | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie den Inhalt von Entwicklerportalseiten mithilfe von verschiedenen Vorlagen in Azure API Management anpassen.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 5189f3d8-2a4c-4dc8-ab19-11c7df0114d4
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26128748"
 ---
 # <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen
 

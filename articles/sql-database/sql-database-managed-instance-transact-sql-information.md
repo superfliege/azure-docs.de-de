@@ -6,15 +6,16 @@ author: jovanpop-msft
 ms.reviewer: carlrab, bonova
 ms.service: sql-database
 ms.custom: managed instance
-ms.topic: article
-ms.date: 04/10/2018
+ms.topic: conceptual
+ms.date: 06/22/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: b36099c6fd2deb6b627c8ccd7cc9e13c328f54e3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 95eca05d695e039f59b71caa4d730f4e1f84fc97
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337298"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server 
 
@@ -54,7 +55,7 @@ Weitere Informationen finden Sie unter
 - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql) 
 - [Überwachung](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)     
 
-### <a name="backup"></a>Sicherung 
+### <a name="backup"></a>Backup 
 
 In einer verwalteten Instanz werden automatische Sicherungen durchgeführt, sodass Benutzer vollständige `COPY_ONLY`-Sicherungen für Datenbanken erstellen können. Differenzielle, Protokoll- und Dateimomentaufnahmesicherungen werden nicht unterstützt.  
 - In einer verwalteten Instanz kann eine Datenbank nur in einem Azure Blob Storage-Konto gesichert werden: 
@@ -206,6 +207,10 @@ Nicht dokumentierte DBCC-Anweisungen, die in SQL Server aktiviert sind, werden i
 - `Trace Flags` werden nicht unterstützt. Siehe [Ablaufverfolgungsflags](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
 - `DBCC TRACEOFF` wird nicht unterstützt. Siehe [DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql).
 - `DBCC TRACEON` wird nicht unterstützt. Siehe [DBCC TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql).
+
+### <a name="distributed-transactions"></a>Verteilte Transaktionen
+
+Weder MSDTC noch [elastische Transaktionen](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-transactions-overview) werden derzeit in einer verwalteten Instanz unterstützt.
 
 ### <a name="extended-events"></a>Erweiterte Ereignisse 
 
@@ -375,12 +380,10 @@ Weitere Informationen zum Erstellen und Ändern von Tabellen finden Sie unter [C
  
 Die folgenden Variablen, Funktionen und Sichten geben abweichende Ergebnisse zurück:  
 - `SERVERPROPERTY('EngineEdition')` gibt den Wert 8 zurück. Durch diese Eigenschaft wird eine verwaltete Instanz eindeutig identifiziert. Siehe [SERVERPROPERTY](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
-- `SERVERPROPERTY('InstanceName')` gibt den kurzen Instanznamen zurück, z.B. „myserver“. Siehe [SERVERPROPERTY('InstanceName')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
+- `SERVERPROPERTY('InstanceName')` gibt NULL zurück, da das für SQL Server bestehende Konzept der Instanz nicht für die verwaltete Instanz gilt. Siehe [SERVERPROPERTY('InstanceName')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
 - `@@SERVERNAME` gibt den vollständigen „verbindungsfähigen“ DNS-Namen zurück, z.B. meine-verwaltete-instanz.wcus17662feb9ce98.database.windows.net. Siehe [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql).  
 - `SYS.SERVERS` gibt den vollständigen „verbindungsfähigen“ DNS-Namen zurück, z.B. `myinstance.domain.database.windows.net` für die Eigenschaften „name“ und „data_source“. Siehe [SYS.SERVERS](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql). 
-- `@@SERVERNAME` gibt den vollständigen „verbindungsfähigen“ DNS-Namen zurück, z.B. `my-managed-instance.wcus17662feb9ce98.database.windows.net`. Siehe [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql).  
-- `SYS.SERVERS` gibt den vollständigen „verbindungsfähigen“ DNS-Namen zurück, z.B. `myinstance.domain.database.windows.net` für die Eigenschaften „name“ und „data_source“. Siehe [SYS.SERVERS](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql). 
-- `@@SERVICENAME` gibt NULL zurück, da dies in der Umgebung einer verwalteten Instanz nicht sinnvoll ist. Siehe [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).   
+- `@@SERVICENAME` gibt NULL zurück, da das für SQL Server bestehende Konzept des Diensts nicht für die verwaltete Instanz gilt. Siehe [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).   
 - `SUSER_ID` wird unterstützt. Gibt NULL zurück, wenn die AAD-Anmeldung in „sys.syslogins“ nicht vorhanden ist. Siehe [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql).  
 - `SUSER_SID` wird nicht unterstützt. Gibt falsche Daten zurück (temporäres bekanntes Problem). Siehe [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql). 
 - `GETDATE()` und andere integrierte Datum/Uhrzeit-Funktionen geben die Zeit immer in der UTC-Zeitzone zurück. Siehe [GETDATE](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql).

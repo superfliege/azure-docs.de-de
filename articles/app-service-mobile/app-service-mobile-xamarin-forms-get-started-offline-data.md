@@ -1,10 +1,10 @@
 ---
-title: "Aktivieren der Offlinesynchronisierung für Ihre Azure Mobile App (Xamarin.Forms) | Microsoft-Dokumentation"
+title: Aktivieren der Offlinesynchronisierung für Ihre Azure Mobile App (Xamarin.Forms) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mobile App Service-Apps verwenden, um Offlinedaten in Ihrer Xamarin.Forms-Anwendung zwischenzuspeichern und zu synchronisieren.
 documentationcenter: xamarin
 author: conceptdev
 manager: yochayk
-editor: 
+editor: ''
 services: app-service\mobile
 ms.assetid: acf0f874-3ea5-4410-bd22-b0e72140f3b5
 ms.service: app-service-mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27594716"
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>Aktivieren der Offlinesynchronisierung für Ihre mobile Xamarin.Forms-App
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]

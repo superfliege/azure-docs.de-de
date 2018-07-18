@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205126"
 ---
 # <a name="throttling-the-service-fabric-cluster-resource-manager"></a>Drosselung im Clusterressourcen-Manager von Service Fabric
 Auch wenn Sie den Clusterressourcen-Manager ordnungsgemäß konfiguriert haben, kann es für den Cluster zu Unterbrechungen kommen. Beispielsweise können Knoten und Fehlerdomänen gleichzeitig ausfallen. Was wäre, wenn dies während eines Upgrades passieren würde? Der Clusterressourcen-Manager versucht immer, alle Fehler zu beheben, und nutzt dabei die Ressourcen des Clusters, um ihn neu zu organisieren und zu reparieren. Drosselungen bieten eine Abfangfunktion, damit der Cluster Ressourcen zur Stabilisierung verwenden kann. Die Knoten kehren zurück, die Netzwerkpartitionen werden repariert und die korrigierten Komponenten werden bereitgestellt.

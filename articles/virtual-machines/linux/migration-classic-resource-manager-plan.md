@@ -15,17 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 586a5590c88ef4124543c47389f62eaa864d2d18
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 19dd6a693daf0b54c7df448f21bdb098d9bbdcac
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653500"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planen der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 Azure Resource Manager bietet zwar zahlreiche praktische Features, die Migration muss jedoch sorgfältig geplant werden, damit alles reibungslos funktioniert. Eine gründliche Planung gewährleistet, dass beim Ausführen der Migrationsaktivitäten keine Probleme auftreten. 
 
 > [!NOTE] 
-> An der folgenden Anleitung haben das Azure Customer Advisory Team und die Cloudlösungsarchitekten maßgeblich mitgewirkt, die Kunden bei der Migration umfangreicher Umgebungen unterstützen. Das Dokument wird immer wieder mit neuen Erfolgsmustern aktualisiert. Prüfen Sie daher von Zeit zu Zeit, ob neue Empfehlungen verfügbar sind.
+> An der folgenden Anleitung haben das Azure Customer Advisory Team und die Cloudlösungsarchitekten maßgeblich mitgewirkt, die Kunden bei der Migration umfangreicher Umgebungen zu unterstützen. Das Dokument wird immer wieder mit neuen Erfolgsmustern aktualisiert. Prüfen Sie daher von Zeit zu Zeit, ob neue Empfehlungen verfügbar sind.
 
 Die Migration lässt sich in vier allgemeine Phasen unterteilen:
 
@@ -110,7 +111,7 @@ Die folgenden Probleme wurden in vielen größeren Migrationen festgestellt. Hie
 - **Azure Resource Manager-Kontingente:** In Azure-Regionen gelten für das klassische Bereitstellungsmodell und für Azure Resource Manager separate Kontingente/Grenzwerte. In einem Migrationsszenario wird zwar keine neue Hardware genutzt *(wir tauschen vorhandene virtuelle Computer des klassischen Bereitstellungsmodells gegen virtuelle Computer des Azure Resource Manager-Bereitstellungsmodells)*, vor der Migration müssen aber trotzdem Azure Resource Manager-Kontingente mit ausreichender Kapazität vorhanden sein. Im Anschluss sind die wichtigsten Grenzwerte aufgeführt, die nach unserer Erfahrung Probleme verursachen können.  Erstellen Sie ein kontingentbezogenes Supportticket, um die Grenzwerte zu erhöhen. 
 
     > [!NOTE]
-    > Die Grenzwerte müssen in der Region erhöht werden, in der sich die aktuelle Umgebung befindet, die Sie migrieren möchten.
+    > Diese Grenzwerte müssen in der Region erhöht werden, in der sich die aktuelle Umgebung befindet, die Sie migrieren möchten.
     >
 
     - Netzwerkschnittstellen

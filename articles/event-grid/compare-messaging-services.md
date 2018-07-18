@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 03/16/2018
+ms.date: 07/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1437916e62e7c2987c0a1d8c3a5ac4a5f332134d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 69db32698951519c2630a0a8697e4ebe74f69b04
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303554"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930476"
 ---
 # <a name="choose-between-azure-services-that-deliver-messages"></a>Wählen zwischen Azure-Diensten für die Nachrichtenübermittlung
 
@@ -60,6 +60,7 @@ Merkmale:
 * Dynamisch skalierbar
 * Geringe Kosten
 * Serverlos
+* Mindestens eine Übermittlung
 
 ### <a name="event-hubs"></a>Event Hubs
 
@@ -69,6 +70,7 @@ Merkmale:
 
 * Geringe Wartezeit
 * Empfang und Verarbeitung von Millionen von Ereignissen pro Sekunde möglich
+* Mindestens eine Übermittlung
 
 ### <a name="service-bus"></a>Service Bus
 
@@ -80,6 +82,7 @@ Merkmale:
 
 * Zuverlässige asynchrone Nachrichtenübermittlung (abfragebasiertes Enterprise Messaging-as-a-Service)
 * Erweiterte Messagingfeatures wie FIFO, Batchverarbeitung/Sitzungen, Transaktionen, unzustellbare Nachrichten, zeitliche Steuerung, Routing und Filterung sowie Duplikaterkennung
+* Exakt eine Übermittlung
 
 ## <a name="use-the-services-together"></a>Gemeinsame Verwendung der Dienste
 

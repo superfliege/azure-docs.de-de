@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/31/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c8b972978743fee33c7b7080cdf9d290bdbb619e
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 968636848b9cba9c0976aa366952e56838623cc4
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34055085"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698814"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect-Optionen für die Benutzeranmeldung
 Mit Azure Active Directory Connect (Azure AD) können sich Ihre Benutzer sowohl bei Cloud- als auch bei lokalen Ressourcen mit denselben Kennwörtern anmelden. In diesem Artikel werden die wichtigsten Konzepte für jedes Identitätsmodell beschrieben, um Sie bei der Auswahl der Identität zu unterstützen, die Sie für die Registrierung für Azure AD verwenden möchten.
@@ -48,6 +49,8 @@ Sicherstellen, dass keine Kennwörter in der Cloud gespeichert werden||x*|x|
 Aktivieren der lokalen Multi-Factor Authentication-Lösungen|||x|
 
 *Per einfachem Agent.
+
+Ausführliche Informationen zum Auswählen einer Authentifizierungsmethode finden Sie unter [Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung](../../security/azure-ad-choose-authn.md).
 
 ### <a name="password-hash-synchronization"></a>Kennworthashsynchronisierung
 Mit der Kennworthashsynchronisierung werden Benutzerkennworthashes aus Ihrem lokalen Active Directory mit Azure AD synchronisiert. Werden Kennwörter geändert oder lokal zurückgesetzt, werden die neuen Kennworthashes sofort mit Azure AD synchronisiert, damit Ihre Benutzer für Cloudressourcen und lokale Ressourcen dasselbe Kennwort verwenden können. Die Kennwörter werden weder an Azure AD übermittelt noch als Klartext in Azure AD gespeichert. Sie können die Kennworthashsynchronisierung mit der Kennwortrückschreibung kombinieren, um es den Benutzern zu ermöglichen, ihre Kennwörter in Azure AD selbst zurückzusetzen.

@@ -1,5 +1,5 @@
 ---
-title: Behandeln von Problemen mit der Azure Files-Sicherung
+title: Behandeln von Problemen beim Sichern von Azure-Dateifreigaben
 description: Dieser Artikel enthält Informationen zum Behandeln von Problemen in Verbindung mit dem Schutz Ihrer Azure-Dateifreigaben.
 services: backup
 ms.service: backup
@@ -7,28 +7,30 @@ author: markgalioto
 ms.author: markgal
 ms.date: 2/21/2018
 ms.topic: tutorial
-ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: 225d11c8609c81ed7877283e8dc0fd920b14d838
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 334cea710d185a6774e28ea3459b3ca1ad9f846f
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959796"
 ---
-# <a name="troubleshoot-problems-backing-up-azure-files"></a>Behandeln von Problemen beim Sichern von Azure Files
-Die folgende Tabelle enthält Problembehandlungsinformationen für Probleme und Fehler, die bei der Verwendung der Azure Files-Sicherung auftreten können.
+# <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Behandeln von Problemen beim Sichern von Azure-Dateifreigaben
+Die folgende Tabelle enthält Problembehandlungsinformationen für Probleme und Fehler, die bei der Verwendung der Sicherung von Azure-Dateifreigaben auftreten können.
 
-## <a name="preview-boundaries"></a>Einschränkungen der Vorschauversion
-Die Azure Files-Sicherung befindet sich in der Vorschauphase. Folgende Sicherungsszenarien werden für Azure-Dateifreigaben nicht unterstützt:
-- Schützen von Azure-Dateifreigaben in Speicherkonten mit Replikation vom Typ [ZRS](../storage/common/storage-redundancy-zrs.md) (zonenredundanter Speicher) oder [RA-GRS](../storage/common/storage-redundancy-grs.md) (Read-Access Geo-Redundant Storage, georedundanter Speicher mit Lesezugriff)
-- Schützen von Azure-Dateifreigaben in Speicherkonten mit aktivierten virtuellen Netzwerken
-- Sichern von Azure-Dateifreigaben mithilfe von PowerShell oder über die Befehlszeilenschnittstelle
-
-### <a name="limitations"></a>Einschränkungen
-- Die maximale Anzahl von geplanten Sicherungen pro Tag beträgt 1.
-- Die maximale Anzahl von bedarfsgesteuerten Sicherungen pro Tag beträgt 4.
-- Verwenden Sie Ressourcensperren für das Speicherkonto, um das versehentliche Löschen von Sicherungen in Ihrem Recovery Services-Tresor zu verhindern.
+## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Einschränkungen beim Sichern von Azure-Dateifreigaben während der Vorschauphase
+Die Sicherung für Azure-Dateifreigaben befindet sich in der Vorschauphase. Folgende Sicherungsszenarien werden für Azure-Dateifreigaben nicht unterstützt:
+- Sie können Azure-Dateifreigaben in Speicherkonten mit Replikation vom Typ [RA-GRS](../storage/common/storage-redundancy-grs.md) (Read-Access Geo-Redundant Storage, georedundanter Speicher mit Lesezugriff) nicht schützen.*
+- Sie können Azure-Dateifreigaben in Speicherkonten mit aktivierten virtuellen Netzwerken oder aktivierter Firewall nicht schützen.
+- Für den Schutz von Azure Files mit Azure Backup steht keine PowerShell- oder Befehlszeilenoption zur Verfügung.
+- Die Anzahl geplanter Sicherungen ist auf eine Sicherung pro Tag begrenzt.
+- Die Anzahl bedarfsgesteuerter Sicherungen ist auf vier Sicherungen pro Tag begrenzt.
+- Verwenden Sie [Ressourcensperren](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) für das Speicherkonto, um das versehentliche Löschen von Sicherungen in Ihrem Recovery Services-Tresor zu verhindern.
 - Löschen Sie keine Momentaufnahmen, die mit Azure Backup erstellt wurden. Das Löschen von Momentaufnahmen kann zum Verlust von Wiederherstellungspunkten bzw. zu Wiederherstellungsfehlern führen.
+
+\*Azure-Dateifreigaben in Speicherkonten mit Replikation vom Typ [RA-GRS](../storage/common/storage-redundancy-grs.md) (Read-Access Geo-Redundant Storage, georedundanter Speicher mit Lesezugriff) werden als GRS verwendet und zu GRS-Preisen abgerechnet.
+
+Die Sicherung für Azure-Dateifreigaben in Speicherkonten mit Replikation vom Typ [ZRS](../storage/common/storage-redundancy-zrs.md) (Zone Redundant Storage, zonenredundanter Speicher) steht momentan nur in den Regionen „USA, Mitte“ (CUS), „USA, Osten 2“ (EUS2), „Europa, Norden“ (NE), „Asien, Südosten“ (SEA) und „Europa, Westen“ (WE) zur Verfügung.
 
 ## <a name="configuring-backup"></a>Konfigurieren der Sicherung
 Die folgende Tabelle bezieht sich auf die Konfiguration der Sicherung:
@@ -40,7 +42,7 @@ Die folgende Tabelle bezieht sich auf die Konfiguration der Sicherung:
 | Die Überprüfung oder Registrierung des ausgewählten Speicherkontos war nicht erfolgreich.| Wiederholen Sie den Vorgang. Sollte das Problem weiterhin auftreten, wenden Sie sich an den Support.|
 | Die Dateifreigaben im ausgewählten Speicherkonto konnten nicht aufgelistet werden oder wurden nicht gefunden. | <ul><li> Vergewissern Sie sich, dass das Speicherkonto in der Ressourcengruppe vorhanden ist und seit der letzten Überprüfung/Registrierung im Tresor nicht gelöscht oder verschoben wurde.<li>Vergewissern Sie sich, dass die Dateifreigabe, die Sie schützen möchten, nicht gelöscht wurde. <li>Vergewissern Sie sich, dass das Speicherkonto für die Sicherung von Dateifreigaben unterstützt wird.<li>Überprüfen Sie, ob die Dateifreigabe bereits im gleichen Recovery Services-Tresor geschützt wird.|
 | Bei der Konfiguration der Dateifreigabesicherung (oder der Schutzrichtlinie) tritt ein Fehler auf. | <ul><li>Wiederholen Sie den Vorgang, um zu prüfen, ob das Problem weiterhin besteht. <li> Vergewissern Sie sich, dass die Dateifreigabe, die Sie schützen möchten, nicht gelöscht wurde. <li> Wenn Sie mehrere Dateifreigaben auf einmal schützen möchten und für einige der Dateifreigaben ein Fehler auftritt, konfigurieren Sie die Sicherung für die Dateifreigaben, bei denen ein Fehler aufgetreten ist, erneut. |
-| Nach dem Aufheben des Schutzes einer Dateifreigabe kann der Recovery Services-Tresor nicht gelöscht werden. | Öffnen Sie im Azure-Portal **Sicherungsinfrastruktur** > **Speicherkonten**, und klicken Sie auf **Registrierung aufheben**, um das Speicherkonto aus dem Recovery Services-Tresor zu entfernen.|
+| Nach dem Aufheben des Schutzes einer Dateifreigabe kann der Recovery Services-Tresor nicht gelöscht werden. | Öffnen Sie im Azure-Portal Ihren Tresor, klicken Sie auf **Sicherungsinfrastruktur** > **Speicherkonten**, und klicken Sie anschließend auf **Registrierung aufheben**, um das Speicherkonto aus dem Recovery Services-Tresor zu entfernen.|
 
 
 ## <a name="error-messages-for-backup-or-restore-job-failures"></a>Fehlermeldungen für nicht erfolgreiche Sicherungs- oder Wiederherstellungsaufträge
@@ -49,10 +51,10 @@ Die folgende Tabelle bezieht sich auf die Konfiguration der Sicherung:
 | -------------- | ----------------------------- |
 | Vorgangsfehler, weil die Dateifreigabe nicht gefunden wurde. | Vergewissern Sie sich, dass die Dateifreigabe, die Sie schützen möchten, nicht gelöscht wurde.|
 | Das Speicherkonto wurde nicht gefunden oder wird nicht unterstützt. | <ul><li>Vergewissern Sie sich, dass das Speicherkonto in der Ressourcengruppe vorhanden ist und seit der letzten Überprüfung nicht gelöscht oder aus der Ressourcengruppe entfernt wurde. <li> Vergewissern Sie sich, dass das Speicherkonto für die Sicherung von Dateifreigaben unterstützt wird.|
-| Sie haben die maximale Anzahl von Momentaufnahmen für diese Dateifreigabe erreicht. Sie können weitere erstellen, sobald ältere abgelaufen sind. | <ul><li> Dieser Fehler kann auftreten, wenn Sie mehrere bedarfsgesteuerte Sicherungen für eine Datei erstellen. <li> Pro Dateifreigabe sind maximal 200 Momentaufnahmen zulässig – einschließlich derer, die von Azure Backup erstellt werden. Ältere geplante Sicherungen (oder Momentaufnahmen) werden automatisch bereinigt. Bedarfsgesteuerte Sicherungen (oder Momentaufnahmen) müssen gelöscht werden, wenn die maximal zulässige Anzahl erreicht wird.<li> Löschen Sie die bedarfsgesteuerten Sicherungen (Momentaufnahmen von Azure-Dateifreigaben) über das Azure Files-Portal. **Hinweis:** Das Löschen von Momentaufnahmen, die mit Azure Backup erstellt wurden, führt zum Verlust der Wiederherstellungspunkte. |
+| Sie haben die maximale Anzahl von Momentaufnahmen für diese Dateifreigabe erreicht. Sie können weitere erstellen, sobald ältere abgelaufen sind. | <ul><li> Dieser Fehler kann auftreten, wenn Sie mehrere bedarfsgesteuerte Sicherungen für eine Datei erstellen. <li> Pro Dateifreigabe sind maximal 200 Momentaufnahmen zulässig – einschließlich der von Azure Backup erstellten Momentaufnahmen. Ältere geplante Sicherungen (oder Momentaufnahmen) werden automatisch bereinigt. Bedarfsgesteuerte Sicherungen (oder Momentaufnahmen) müssen gelöscht werden, wenn die maximal zulässige Anzahl erreicht wird.<li> Löschen Sie die bedarfsgesteuerten Sicherungen (Momentaufnahmen von Azure-Dateifreigaben) über das Azure Files-Portal. **Hinweis:** Das Löschen von Momentaufnahmen, die mit Azure Backup erstellt wurden, führt zum Verlust der Wiederherstellungspunkte. |
 | Fehler bei der Dateifreigabesicherung/Dateifreigabewiederherstellung aufgrund der Speicherdienstdrosselung. Möglicherweise ist der Speicherdienst mit der Verarbeitung anderer Anforderungen für das angegebene Speicherkonto ausgelastet.| Wiederholen Sie den Vorgang nach einiger Zeit. |
 | Fehler beim Wiederherstellen: Die Zieldateifreigabe wurde nicht gefunden. | <ul><li>Vergewissern Sie sich, dass das ausgewählte Speicherkonto vorhanden ist und die Zieldateifreigabe nicht gelöscht wurde. <li> Vergewissern Sie sich, dass das Speicherkonto für die Sicherung von Dateifreigaben unterstützt wird. |
-| Azure Backup wird derzeit nicht für Azure Files in Speicherkonten unterstützt, für die virtuelle Netzwerke aktiviert sind. | Deaktivieren Sie virtuelle Netzwerke für Ihr Speicherkonto, um erfolgreiche Sicherungs- und Wiederherstellungsvorgänge zu ermöglichen. |
+| Azure Backup wird derzeit nicht für Azure-Dateifreigaben in Speicherkonten unterstützt, für die virtuelle Netzwerke aktiviert sind. | Deaktivieren Sie virtuelle Netzwerke für Ihr Speicherkonto, um erfolgreiche Sicherungs- und Wiederherstellungsvorgänge zu ermöglichen. |
 | Fehler bei der Sicherung/Wiederherstellung, weil sich das Speicherkonto im gesperrten Zustand befindet. | Entfernen Sie die Sperre des Speicherkontos, oder verwenden Sie eine Löschsperre anstelle einer Lesesperre, und wiederholen Sie den Vorgang. |
 | Fehler bei der Wiederherstellung, weil die Anzahl fehlerhafter Dateien den Schwellenwert übersteigt. | <ul><li> Die Ursachen für Fehler bei der Wiederherstellung werden in einer Datei aufgeführt. (Den Pfad finden Sie in den Auftragsdetails.) Beheben Sie die Fehler, und wiederholen Sie den Wiederherstellungsvorgang für die Dateien, bei denen ein Fehler aufgetreten ist. <li> Gängige Fehlerursachen beim Wiederherstellen von Dateien: <br/> - Die Dateien, bei denen ein Fehler aufgetreten ist, werden gerade verwendet. <br/> - Das übergeordnete Verzeichnis enthält ein Verzeichnis mit dem gleichen Namen wie die Datei, bei der ein Fehler aufgetreten ist. |
 | Fehler bei der Wiederherstellung, weil keine Datei wiederhergestellt werden konnte. | <ul><li> Die Ursachen für Fehler bei der Wiederherstellung werden in einer Datei aufgeführt. (Den Pfad finden Sie in den Auftragsdetails.) Beheben Sie die Fehler, und wiederholen Sie die Wiederherstellungsvorgänge für die Dateien, bei denen ein Fehler aufgetreten ist. <li> Gängige Fehlerursachen beim Wiederherstellen von Dateien: <br/> - Die Dateien, bei denen ein Fehler aufgetreten ist, werden gerade verwendet. <br/> - Das übergeordnete Verzeichnis enthält ein Verzeichnis mit dem gleichen Namen wie die Datei, bei der ein Fehler aufgetreten ist. |

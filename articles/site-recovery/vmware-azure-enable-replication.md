@@ -1,18 +1,18 @@
 ---
-title: Aktivieren der Replikation von VMware-VMs in Azure mit Azure Site Recovery | Microsoft-Dokumentation
+title: Aktivieren der VMware-VM-Replikation in Azure mit Azure Site Recovery | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Site Recovery die Replikation von VMware-VMs in Azure einrichten.
 services: site-recovery
 author: asgang
-manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/05/2018
+ms.date: 07/06/2018
+ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 48d84f59a80ea14c2b40821d886fc410c7e3f2c3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9a868b196a287b7a5121803136d3c0119f64d9fe
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917022"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Aktivieren der Replikation in Azure für VMware-VMs
 

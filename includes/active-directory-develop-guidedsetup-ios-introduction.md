@@ -29,7 +29,7 @@ Die MSAL verwaltet das Zwischenspeichern und Aktualisieren von Zugriffstoken, da
 
 In diesem Leitfaden werden die folgenden Bibliotheken verwendet:
 
-|Bibliothek|Beschreibung|
+|Bibliothek|BESCHREIBUNG|
 |---|---|
 |[MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|Microsoft Authentifizierungsbibliotheksvorschau für iOS|
 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31521604"
 ---
 # <a name="create-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Erstellen von HBase-Clustern in HDInsight in Azure Virtual Network
 Erfahren Sie, wie Sie Azure HDInsight HBase-Cluster in [Azure Virtual Network][1] erstellen können.

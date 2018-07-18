@@ -1,25 +1,19 @@
 ---
 title: 'Connected Factory-Lösung: Häufig gestellte Fragen – Azure | Microsoft-Dokumentation'
 description: Häufig gestellte Fragen zum Solution Accelerator für Connected Factory
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 4ed0cd413480e717e686f7e52123102e1a838f19
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: dbdd9c70fc135561eb0e60e5932e446bcfa3759b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627500"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Häufig gestellte Fragen zum Solution Accelerator für Connected Factory
 
@@ -67,7 +61,7 @@ Zum Entfernen der IP-Adresse stehen Ihnen zwei Optionen zur Verfügung:
 
 Die Anmeldung bei der Simulations-VM wird nur unterstützt, wenn Sie Ihre Lösung mithilfe des PowerShell-Skripts `build.ps1` im [Repository](https://github.com/Azure/azure-iot-connected-factory) bereitgestellt haben.
 
-Wenn Sie die Lösung über www.azureiotsuite.com bereitgestellt haben, können Sie sich nicht bei der VM anmelden. Dies liegt daran, dass das Kennwort zufällig generiert wird und Sie es nicht zurücksetzen können.
+Wenn Sie die Lösung über www.azureiotsolutions.com bereitgestellt haben, können Sie sich nicht bei dem virtuellen Computer anmelden. Dies liegt daran, dass das Kennwort zufällig generiert wird und Sie es nicht zurücksetzen können.
 
 1. Fügen Sie der VM eine öffentliche IP-Adresse hinzu. Informationen dazu finden Sie unter [Wie füge ich der Simulations-VM eine öffentliche IP-Adresse hinzu?](#how-do-i-remove-the-public-ip-address-to-the-simulation-vm)
 1. Erstellen Sie unter Angabe der IP-Adresse der VM eine SSH-Sitzung mit Ihrer VM.
@@ -148,11 +142,11 @@ Wenn Sie feststellen, dass keine Daten an IoT Hub gesendet werden, liegt ein Pro
 
 Um in Ihrer Connected Factory-Lösung eine interaktive Karte aktivieren zu können, müssen Sie über einen Tarif vom Typ „Bing Karten-API für Unternehmen“ verfügen.
 
-Bei der Bereitstellung über [www.azureiotsuite.com](http://www.azureiotsuite.com) wird während der Bereitstellung überprüft, ob Ihr Abonnement über einen aktivierten Tarif vom Typ „Bing Karten-API für Unternehmen“ verfügt, und eine interaktive Karte wird automatisch in Connected Factory bereitgestellt. Ist dies nicht der Fall, können Sie folgendermaßen trotzdem eine interaktive Karte in Ihrer Bereitstellung aktivieren:
+Bei der Bereitstellung über [www.azureiotsolutions.com](http://www.azureiotsolutions.com) wird während der Bereitstellung überprüft, ob Ihr Abonnement über einen aktivierten Tarif vom Typ „Bing Karten-API für Unternehmen“ verfügt, und eine interaktive Karte wird automatisch in Connected Factory bereitgestellt. Ist dies nicht der Fall, können Sie folgendermaßen trotzdem eine interaktive Karte in Ihrer Bereitstellung aktivieren:
 
 Wenn Sie die Bereitstellung mit dem Skript `build.ps1` im GitHub-Repository für Connected Factory durchführen und über einen Tarif vom Typ „Bing Karten-API für Unternehmen“ verfügen, legen Sie die Umgebungsvariable `$env:MapApiQueryKey` im Buildfenster auf den Abfrageschlüssel Ihres Plans fest. Die interaktive Karte wird dann automatisch aktiviert.
 
-Wenn Sie nicht über einen Tarif vom Typ „Bing Karten-API für Unternehmen“ verfügen, stellen Sie die Connected Factory-Lösung über [www.azureiotsuite.com](http://www.azureiotsuite.com) oder mit dem Skript `build.ps1` bereit. Fügen Sie dann den Plan für die Bing Karten-API für Unternehmen Ihrem Abonnement wie unter [Wie erstelle ich ein Konto für die Bing Karten-API für Unternehmen?](#how-do-i-create-a-bing-maps-api-for-enterprise-account) beschrieben hinzu. Suchen Sie den Abfrageschlüssel für dieses Konto wie unter [Wie erhalte ich meinen Abfrageschlüssel für die Bing Karten-API für Unternehmen?](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) beschrieben hinzu, und speichern Sie diesen Schlüssel. Navigieren Sie zum Azure-Portal, und greifen Sie auf die App Service-Ressource in Ihrer Connected Factory-Bereitstellung zu. Navigieren Sie zu **Anwendungseinstellungen**. Hier finden Sie den Abschnitt **App-Einstellungen**. Legen Sie **MapApiQueryKey** auf den Abfrageschlüssel fest, den Sie abgerufen haben. Speichern Sie die Einstellungen, navigieren Sie zu **Übersicht**, und starten Sie App Service neu.
+Wenn Sie nicht über einen Tarif vom Typ „Bing Karten-API für Unternehmen“ verfügen, stellen Sie die Connected Factory-Lösung über [www.azureiotsolutions.com](http://www.azureiotsolutions.com) oder mit dem Skript `build.ps1` bereit. Fügen Sie dann den Plan für die Bing Karten-API für Unternehmen Ihrem Abonnement wie unter [Wie erstelle ich ein Konto für die Bing Karten-API für Unternehmen?](#how-do-i-create-a-bing-maps-api-for-enterprise-account) beschrieben hinzu. Suchen Sie den Abfrageschlüssel für dieses Konto wie unter [Wie erhalte ich meinen Abfrageschlüssel für die Bing Karten-API für Unternehmen?](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) beschrieben hinzu, und speichern Sie diesen Schlüssel. Navigieren Sie zum Azure-Portal, und greifen Sie auf die App Service-Ressource in Ihrer Connected Factory-Bereitstellung zu. Navigieren Sie zu **Anwendungseinstellungen**. Hier finden Sie den Abschnitt **App-Einstellungen**. Legen Sie **MapApiQueryKey** auf den Abfrageschlüssel fest, den Sie abgerufen haben. Speichern Sie die Einstellungen, navigieren Sie zu **Übersicht**, und starten Sie App Service neu.
 
 ### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Wie erstelle ich ein Konto für die Bing Karten-API für Unternehmen?
 
@@ -212,6 +206,6 @@ Gehen Sie wie folgt vor, um Telemetriedaten von OPC UA-fremden Geräten an eine 
 
 Sie können auch einige andere Features und Funktionen der IoT-Solution Accelerators ausprobieren:
 
-* [Übersicht über die vorkonfigurierte Lösung für vorhersagbaren Wartungsbedarf](../iot-suite/iot-suite-predictive-overview.md)
+* [Übersicht über die vorkonfigurierte Lösung für vorhersagbaren Wartungsbedarf](iot-accelerators-predictive-overview.md)
 * [Übersicht über den Solution Accelerator für verbundene Factorys](iot-accelerators-connected-factory-overview.md)
-* [Sicherheit im Internet der Dinge von Anfang an](../iot-suite/securing-iot-ground-up.md)
+* [Sicherheit im Internet der Dinge von Anfang an](securing-iot-ground-up.md)

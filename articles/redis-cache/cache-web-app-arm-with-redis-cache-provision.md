@@ -2,10 +2,10 @@
 title: Bereitstellen einer Web-App mit Redis Cache
 description: Verwenden Sie eine Azure-Ressourcen-Manager-Vorlage, um eine Web-App mit Redis Cache bereitzustellen.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 6e99c71f-ef8e-4570-a307-e4c059e60c35
 ms.service: app-service
 ms.workload: web
@@ -15,10 +15,11 @@ ms.topic: article
 ms.date: 01/06/2017
 ms.author: wesmc
 ms.openlocfilehash: b787b3f2caaff5535557c03c45b058e1bbb0c77d
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38671400"
 ---
 # <a name="create-a-web-app-plus-redis-cache-using-a-template"></a>Erstellen einer Web-App und einer Redis Cache-Instanz mithilfe einer Vorlage
 In diesem Thema erfahren Sie, wie Sie eine Azure-Ressourcen-Manager-Vorlage erstellen, die eine Azure Web-App mit einer Redis Cache-Instanz bereitstellt. Sie erfahren, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen.

@@ -1,12 +1,12 @@
 ---
-title: "Überlegungen zur Integration der Netzwerkkonnektivität über Border-Geräte für integrierte Azure Stack-Systeme | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie die Netzwerkkonnektivität über Border-Geräte für Rechenzentren mit Azure Stack-Systemen mit mehreren Knoten planen können."
+title: Überlegungen zur Integration der Netzwerkkonnektivität über Border-Geräte für integrierte Azure Stack-Systeme | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie die Netzwerkkonnektivität über Border-Geräte für Rechenzentren mit Azure Stack-Systemen mit mehreren Knoten planen können.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28919433"
 ---
 # <a name="border-connectivity"></a>Grenzkonnektivität 
 Die Planung der Netzwerkintegration ist eine wichtige Voraussetzung, um erfolgreich integrierte Azure Stack-Systeme bereitstellen, betreiben und verwalten zu können. Bei der Planung der Konnektivität über Border-Geräte wird zunächst festgelegt, ob dynamisches Routing mit Border Gateway Protocol (BGP) verwendet werden soll. Hierfür muss eine autonome 16-Bit-BGP-Systemnummer (öffentlich oder privat) zugewiesen oder statisches Routing verwendet werden, wenn Border-Geräten eine statische Standardroute zugewiesen wird.

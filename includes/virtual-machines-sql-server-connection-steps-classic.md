@@ -1,7 +1,7 @@
 ### <a name="determine-the-dns-name-of-the-virtual-machine"></a>Bestimmen des DNS-Namens des virtuellen Computers
 Um von einem anderen Computer aus eine Verbindung mit der SQL Server-Datenbank-Engine herzustellen, müssen Sie den DNS-Namen (Domain Name System) des virtuellen Computers kennen. (Dies ist der Name, den das Internet verwendet, um den virtuellen Computer zu identifizieren. Sie können die IP-Adresse verwenden, aber die IP-Adresse ändert sich möglicherweise, wenn Azure aufgrund von Redundanz oder Wartungsarbeiten Ressourcen verschiebt. Der DNS-Name bleibt bestehen, da er zu einer neuen IP-Adresse weitergeleitet werden kann.)  
 
-1. Wählen Sie im Azure-Portal (oder im vorherigen Schritt) **Virtuelle Computer (klassisch)**aus.
+1. Wählen Sie im Azure-Portal (oder im vorherigen Schritt) **Virtuelle Computer (klassisch)** aus.
 2. Wählen Sie die SQL-VM aus.
 3. Kopieren Sie auf dem Blatt **Virtueller Computer** den **DNS-Namen** für den virtuellen Computer.
    

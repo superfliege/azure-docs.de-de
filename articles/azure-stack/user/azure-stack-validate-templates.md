@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 88fac41ce2c9fa0c5569beae02ab90a507c89a34
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 61c893848176a89b4b6ed8d7a46f27bdeff5cec1
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358641"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294486"
 ---
 # <a name="check-your-templates-for-azure-stack-with-the-template-validation-tool"></a>Überprüfen Ihrer Vorlagen für Azure Stack mit dem Validierungstool für Vorlagen
 
@@ -32,8 +32,8 @@ Sie können das Tool für die Vorlagenvalidierung verwenden, um zu überprüfen,
 
 Um eine Vorlage zu überprüfen, müssen Sie zuerst eine Datei mit Cloudfunktionen erstellen und dann das Validierungstool ausführen. Sie verwenden die folgenden PowerShell-Module aus den Azure Stack-Tools:
 
-- Im Ordner **TemplateValidator**:<br>         „AzureRM.CloudCapabilities.psm1“ erstellt eine JSON-Datei mit Cloudfunktionen, die die Dienste und Versionen in einer Azure Stack-Cloud darstellt.
-- Im Ordner **CloudCapabilities**:<br>
+- Im Ordner **CloudCapabilities**:<br>         „AzureRM.CloudCapabilities.psm1“ erstellt eine JSON-Datei mit Cloudfunktionen, die die Dienste und Versionen in einer Azure Stack-Cloud darstellt.
+- Im Ordner **TemplateValidator**:<br>
 „AzureRM.TemplateValidator.psm1“ verwendet eine JSON-Datei mit Cloudfunktionen, um Vorlagen für die Bereitstellung in Azure Stack zu testen.
 
 ## <a name="build-the-cloud-capabilities-file"></a>Erstellen der Datei mit Cloudfunktionen
@@ -99,7 +99,7 @@ In diesem Beispiel werden alle [Vorlagen aus dem Azure Stack-Schnellstart](https
 
 ```PowerShell
 test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
--CapabilitiesPath .\TemplateValidator\AzureStackCloudCapabilities_with_AddOns_20170627.json.json `
+-CapabilitiesPath .\TemplateValidator\AzureStackCloudCapabilities_with_AddOns_20170627.json `
 -TemplatePattern MyStandardTemplateName.json`
 -IncludeComputeCapabilities`
 -Report TemplateReport.html

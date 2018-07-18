@@ -3,20 +3,21 @@ title: Verwalten von Datenbankrollen und Benutzern in Azure Analysis Services | 
 description: Erfahren Sie, wie Sie Datenbankrollen und Benutzer auf einem Analysis Services-Server in Azure verwalten.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3c35fb1ee70544b8b01bbadaf72ee38145179b27
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8c777d5376614f7afe59342dc5a9fbfa37ca4556
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441055"
 ---
 # <a name="manage-database-roles-and-users"></a>Verwalten von Datenbankrollen und Benutzern
 
-Auf Modelldatenbankebene müssen alle Benutzer einer Rolle zugewiesen sein. Rollen definieren Benutzer mit bestimmten Berechtigungen für die Modelldatenbank. Alle einer Rolle hinzugefügten Benutzer oder Sicherheitsgruppen müssen über ein Konto in einem Azure AD-Mandanten im gleichen Abonnement wie der Server verfügen.
+Auf Modelldatenbankebene müssen alle Benutzer einer Rolle zugewiesen sein. Rollen definieren Benutzer mit bestimmten Berechtigungen für die Modelldatenbank. Alle einer Rolle hinzugefügten Benutzer oder Sicherheitsgruppen müssen über ein Konto in einem Azure AD-Mandanten im gleichen Abonnement wie der Server verfügen. 
 
 Wie Sie Rollen definieren, hängt jeweils vom verwendeten Tool ab, das Ergebnis ist jedoch gleich.
 
@@ -26,6 +27,9 @@ Folgende Rollenberechtigungen stehen zur Verfügung:
 *  **Lesen:** Benutzer können über eine Clientanwendung eine Verbindung mit Daten der Modelldatenbank herstellen und diese analysieren.
 
 Wenn Sie ein Projekt für ein tabellarisches Modell erstellen, erstellen Sie mit dem Rollen-Manager in SSDT Rollen und fügen diesen Rollen Benutzer oder Gruppen hinzu. Bei Bereitstellung auf einem Server verwenden Sie SSMS, [Analysis Services-PowerShell-Cmdlets](https://msdn.microsoft.com/library/hh758425.aspx) oder [Tabular Model Scripting Language](https://msdn.microsoft.com/library/mt614797.aspx) (TMSL), um Rollen und Benutzermitglieder hinzuzufügen oder zu entfernen.
+
+> [!NOTE]
+> Für Sicherheitsgruppen muss die `MailEnabled`-Eigenschaft auf `True` gesetzt sein.
 
 ## <a name="to-add-or-manage-roles-and-users-in-ssdt"></a>So fügen Sie Rollen und Benutzer in SSDT hinzu oder verwalten diese  
   

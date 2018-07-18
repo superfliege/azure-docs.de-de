@@ -1,24 +1,19 @@
 ---
 title: Grundlegendes zu den Preisen von Azure IoT Hub | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Informationen zur Funktionsweise von Messungen und zur Preisgestaltung für IoT Hub (einschließlich Praxisbeispielen).'
-services: iot-hub
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 1ac90923-1edf-4134-bbd4-77fee9b68d24
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 9b0d2df078c59c7d261fd3231450ddfb2fdcd88e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 672adba0b4b17a25c0c0a1da3596808f767e3fbd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632838"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT Hub – Preisinformationen
 
@@ -37,7 +32,7 @@ ms.lasthandoff: 05/03/2018
 | Direkte Methoden | Erfolgreiche Methodenanforderungen werden in Blöcken von 4 KB berechnet, und Antworten mit nicht leerem Textbereich werden als zusätzliche Nachrichten in Blöcken von 4 KB berechnet. Anforderungen an nicht verbundene Geräte werden als Nachrichten in Blöcken von 4 KB berechnet. Eine Methode mit einem Text von 6 KB, die zu einer Antwort ohne Text vom Gerät führt, wird als zwei Nachrichten berechnet. Eine Methode mit einem Text von 6 KB, die zu einer Antwort mit 1 KB vom Gerät führt, wird als zwei Nachrichten für die Anforderung plus eine Nachricht für die Antwort berechnet. |
 | Zwillingslesevorgänge vom Gerät und Modul | Zwillingslesevorgänge vom Gerät und Modul und vom Lösungs-Back-End werden als Nachrichten in Blöcken mit jeweils 512 Bytes berechnet. Ein Lesevorgang von einem 6-KB-Zwilling wird beispielsweise als zwölf Nachrichten berechnet. |
 | Geräte- und Modulzwillingsupdates (Tags und Eigenschaften) | Zwillingsupdates vom Gerät oder Modul und vom Lösungs-Back-End werden als Nachrichten in Blöcken mit jeweils 512 Bytes berechnet. Ein Lesevorgang von einem 6-KB-Zwilling wird beispielsweise als zwölf Nachrichten berechnet. |
-| Zwillingsabfragen vom Gerät und Modul | Abfragen werden als Nachrichten je nach Ergebnisgröße in Blöcken von 512 Byte berechnet. |
+| Abfragen von Geräte- und Modulzwillingen | Abfragen werden als Nachrichten je nach Ergebnisgröße in Blöcken von 512 Byte berechnet. |
 | Auftragsvorgänge <br/> (Erstellen, Aktualisieren, Auflisten, Löschen) | Keine Gebühren. |
 | Vorgänge vom Typ „Aufträge pro Gerät“ | Auftragsvorgänge (z.B. Zwillingsupdates und Methoden) werden normal berechnet. Ein Auftrag, der zu 1000 Methodenaufrufen mit 1-KB-Anforderungen und Antworten mit leerem Textbereich führt, wird als 1000 Nachrichten berechnet. |
 

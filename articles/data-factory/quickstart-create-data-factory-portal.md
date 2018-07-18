@@ -9,26 +9,24 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: hero-article
-ms.date: 02/01/2018
+ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: ea70d6053f12c33d9c3ff4c69f22a41130c783e4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 454eaba26155b2bf4a0381af98047dbcbb514bb5
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38644900"
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Erstellen einer Data Factory über die Azure Data Factory-Benutzeroberfläche
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
-> * [Version 1: allgemein verfügbar](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-> * [Version 2 – Vorschauversion](quickstart-create-data-factory-portal.md)
+> * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [Aktuelle Version](quickstart-create-data-factory-portal.md)
 
 Diese Schnellstartanleitung beschreibt, wie Sie mithilfe der Azure Data Factory-Benutzeroberfläche eine Data Factory erstellen und überwachen. Die in dieser Data Factory erstellte Pipeline *kopiert* Daten aus einem Ordner in einen anderen Ordner in Azure Blob Storage. Ein Tutorial zum *Transformieren* von Daten mithilfe von Azure Data Factory finden Sie im Tutorial [Transformieren von Daten in der Cloud mithilfe einer Spark-Aktivität in Azure Data Factory](tutorial-transform-data-spark-portal.md). 
 
-
 > [!NOTE]
 > Wenn Sie mit Azure Data Factory nicht vertraut sind, lesen Sie vor der Durchführung dieses Schnellstarts die Informationen unter [Einführung in Azure Data Factory](data-factory-introduction.md). 
->
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 des Diensts verwenden, hilft Ihnen das [Tutorial zu Data Factory Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) weiter.
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
@@ -57,7 +55,7 @@ Dieses Video enthält Informationen zur Data Factory-Benutzeroberfläche:
    - Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein.   
          
    Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).  
-4. Wählen Sie **V2 (Vorschau)** als **Version** aus.
+4. Wählen Sie **V2** als **Version** aus.
 5. Wählen Sie unter **Standort** den Standort für die Data Factory aus.
 
    Die Liste enthält nur von Data Factory unterstützte Standorte. Die von Data Factory verwendeten Datenspeicher (etwa Azure Storage und Azure SQL-Datenbank) und Computedienste (etwa Azure HDInsight) können sich an anderen Standorten befinden.
@@ -69,7 +67,7 @@ Dieses Video enthält Informationen zur Data Factory-Benutzeroberfläche:
 9. Nach Abschluss der Erstellung wird die Seite **Data Factory** angezeigt. Klicken Sie auf die Kachel **Erstellen und überwachen**, um die Anwendung für die Azure Data Factory-Benutzeroberfläche (User Interface, UI) auf einer separaten Registerkarte zu starten.
    
    ![Startseite der Data Factory mit der Kachel „Erstellen und überwachen“](./media/quickstart-create-data-factory-portal/data-factory-home-page.png)
-10. Wechseln Sie auf der Seite **Erste Schritte** im linken Bereich zur Registerkarte **Bearbeiten**. 
+10. Wechseln Sie auf der Seite **Erste Schritte** im linken Bereich zur Registerkarte **Autor**. 
 
     ![Seite „Erste Schritte“](./media/quickstart-create-data-factory-portal/get-started-page.png)
 
@@ -81,7 +79,7 @@ In diesem Verfahren erstellen Sie einen verknüpften Dienst, der Ihr Azure-Speic
    ![Schaltflächen zum Erstellen einer neuen Verbindung](./media/quickstart-create-data-factory-portal/new-connection-button.png)    
 2. Wählen Sie auf der Seite **Neuer verknüpfter Dienst** die Option **Azure Blob Storage**, und klicken Sie dann auf **Weiter**. 
 
-   ![Auswählen der Kachel „Azure Blob Storage“](./media/quickstart-create-data-factory-portal/select-azure-storage.png)
+   ![Auswählen der Kachel „Azure Blob Storage“](./media/quickstart-create-data-factory-portal/select-azure-blob-linked-service.png)
 3. Führen Sie die folgenden Schritte aus: 
 
    a. Geben Sie unter **Name** den Namen **AzureStorageLinkedService** ein.
@@ -93,9 +91,6 @@ In diesem Verfahren erstellen Sie einen verknüpften Dienst, der Ihr Azure-Speic
    d. Klicken Sie auf **Speichern**, um den verknüpften Dienst zu speichern. 
 
    ![Einstellungen für den mit Azure Storage verknüpften Dienst](./media/quickstart-create-data-factory-portal/azure-storage-linked-service.png) 
-4. Vergewissern Sie sich, dass **AzureStorageLinkedService** in der Liste der verknüpften Dienste angezeigt wird. 
-
-   ![Mit Azure Storage verknüpfter Dienst in der Liste](./media/quickstart-create-data-factory-portal/azure-storage-linked-service-in-list.png)
 
 ## <a name="create-datasets"></a>Erstellen von Datasets
 In diesem Verfahren erstellen Sie zwei Datasets: **InputDataset** und **OutputDataset**. Diese Datasets sind vom Typ **AzureBlob**. Sie verweisen auf den mit Azure Storage verknüpften Dienst, den Sie im vorherigen Abschnitt erstellt haben. 
@@ -111,19 +106,18 @@ In den Einstellungen des verknüpften Diensts haben Sie das Azure-Speicherkonto 
    ![Menü zum Erstellen eines Datasets](./media/quickstart-create-data-factory-portal/new-dataset-menu.png)
 2. Wählen Sie auf der Seite **Neues Dataset** die Option **Azure Blob Storage**, und klicken Sie dann auf **Fertig stellen**. 
 
-   ![Auswählen von „Azure Blob Storage“](./media/quickstart-create-data-factory-portal/select-azure-blob-storage.png)
-3. Geben Sie im Fenster **Eigenschaften** für das Dataset als **Name** den Namen **InputDataset** ein. 
+   ![Auswählen von „Azure Blob Storage“](./media/quickstart-create-data-factory-portal/select-azure-blob-dataset.png)
+3. Geben Sie auf der Registerkarte **Allgemein** für das Dataset als **Name** den Namen **InputDataset** ein. 
 
-   ![Allgemeine Einstellungen des Datasets](./media/quickstart-create-data-factory-portal/dataset-general-page.png)
 4. Wechseln Sie zur Registerkarte **Verbindung**, und führen Sie die folgenden Schritte aus: 
 
-   a. Wählen Sie unter **Verknüpfter Dienst** die Option **AzureStorageLinkedService**.
+    a. Wählen Sie unter **Verknüpfter Dienst** die Option **AzureStorageLinkedService**.
 
-   b. Klicken Sie neben **Dateipfad** auf die Schaltfläche **Durchsuchen**.
+    b. Klicken Sie neben **Dateipfad** auf die Schaltfläche **Durchsuchen**.
 
-      ![Registerkarte „Verbindung“ und Schaltfläche „Durchsuchen“](./media/quickstart-create-data-factory-portal/file-path-browse-button.png) c. Navigieren Sie im Fenster **Choose a file or folder** (Datei oder Ordner auswählen) zum Ordner **input** im Container **adftutorial**, wählen Sie die Datei **emp.txt** aus, und klicken Sie auf **Fertig stellen**.
+    ![Registerkarte „Verbindung“ und Schaltfläche „Durchsuchen“](./media/quickstart-create-data-factory-portal/file-path-browse-button.png) c. Navigieren Sie im Fenster **Choose a file or folder** (Datei oder Ordner auswählen) zum Ordner **input** im Container **adftutorial**, wählen Sie die Datei **emp.txt** aus, und klicken Sie auf **Fertig stellen**.
 
-      ![Navigieren zur Eingabedatei](./media/quickstart-create-data-factory-portal/choose-file-folder.png)
+    ![Navigieren zur Eingabedatei](./media/quickstart-create-data-factory-portal/choose-file-folder.png)
     
    d. (optional) Klicken Sie auf **Datenvorschau**, um eine Vorschau der Daten in der Datei „emp.txt“ anzuzeigen.     
 5. Wiederholen Sie die Schritte zum Erstellen des Ausgabedatasets:  
@@ -132,15 +126,9 @@ In den Einstellungen des verknüpften Diensts haben Sie das Azure-Speicherkonto 
 
    b. Wählen Sie auf der Seite **Neues Dataset** die Option **Azure Blob Storage**, und klicken Sie dann auf **Fertig stellen**.
 
-   c. Geben Sie als Name **OutputDataset** an.
+   c. Geben Sie auf der Registerkarte **Allgemein** den Namen **OutputDataset** an.
 
-   d. Geben Sie für den Ordner **adftutorial/output** an. Wenn der Ordner **output** nicht vorhanden ist, wird er von der Copy-Aktivität zur Laufzeit erstellt.
-
-   e. Geben Sie `@CONCAT(pipeline().RunId, '.txt')` als Dateiname ein. 
-   
-      Bei jeder Ausführung einer Pipeline wird der Pipelineausführung eine eindeutige ID zugewiesen. Der Ausdruck verkettet die Ausführungs-ID der Pipeline mit **.txt**, um den Namen der Ausgabedatei zu bewerten. Eine Liste der unterstützten Systemvariablen und Ausdrücke finden Sie unter [Von Azure Data Factory unterstützte Systemvariablen](control-flow-system-variables.md) und [Ausdrücke und Funktionen in Azure Data Factory](control-flow-expression-language-functions.md).
-
-   ![Einstellungen des Ausgabedatasets](./media/quickstart-create-data-factory-portal/output-dataset-settings.png)
+   d. Wählen Sie auf der Registerkarte **Verbindung** als verknüpften Dienst **AzureStorageLinkedService** aus, und geben Sie als Ordner **adftutorial/output** ein. Wenn der Ordner **output** nicht vorhanden ist, wird er von der Copy-Aktivität zur Laufzeit erstellt.
 
 ## <a name="create-a-pipeline"></a>Erstellen einer Pipeline 
 In diesem Schritt erstellen und überprüfen Sie eine Pipeline mit einer Copy-Aktivität, die das Eingabe- und Ausgabedataset verwendet. Die Copy-Aktivität kopiert Daten aus der in den Einstellungen des Eingabedatasets angegebenen Datei in die Datei, die in den Einstellungen des Ausgabedatasets angegeben ist. Wenn das Eingabedataset nur einen Ordner (nicht den Dateinamen) angibt, kopiert die Copy-Aktivität alle Dateien im Quellordner ans Ziel. 
@@ -148,45 +136,33 @@ In diesem Schritt erstellen und überprüfen Sie eine Pipeline mit einer Copy-Ak
 1. Klicken Sie auf die Schaltfläche **+** (Plus) und dann auf **Pipeline**. 
 
    ![Menü zum Erstellen einer neuen Pipeline](./media/quickstart-create-data-factory-portal/new-pipeline-menu.png)
-2. Geben Sie im Fenster **Eigenschaften** für **Name** den Namen **CopyPipeline** ein. 
+2. Geben Sie auf der Registerkarte **Allgemein** für **Name** den Namen **CopyPipeline** ein. 
 
-   ![Allgemeine Einstellungen der Pipeline](./media/quickstart-create-data-factory-portal/pipeline-general-settings.png)
 3. Erweitern Sie in der Toolbox **Aktivitäten** den Eintrag **Datenfluss**. Ziehen Sie die **Copy**-Aktivität aus der Toolbox **Aktivitäten** auf die Oberfläche des Pipeline-Designers. Sie können in der Toolbox **Aktivitäten** auch nach Aktivitäten suchen. Geben Sie unter **Name** den Namen **CopyFromBlobToBlob** ein.
 
    ![Allgemeine Einstellungen der Copy-Aktivität](./media/quickstart-create-data-factory-portal/copy-activity-general-settings.png)
 4. Wechseln Sie in den Einstellungen der Copy-Aktivität zur Registerkarte **Quelle**, und wählen Sie für **Quelldataset** die Option **InputDataset** aus.
 
-   ![Quelleinstellungen der Copy-Aktivität](./media/quickstart-create-data-factory-portal/copy-activity-source-settings.png)    
 5. Wechseln Sie in den Einstellungen der Copy-Aktivität zur Registerkarte **Senke**, und wählen Sie für **Senkendataset** die Option **OutputDataset** aus.
 
-   ![Senkeneinstellungen der Copy-Aktivität](./media/quickstart-create-data-factory-portal/copy-activity-sink-settings.png)    
-7. Klicken Sie auf **Überprüfen**, um die Einstellungen der Pipeline zu überprüfen. Vergewissern Sie sich, dass die Pipeline überprüft wurde. Klicken Sie auf die Schaltfläche **>>** (Pfeil nach rechts), um die Ausgabe der Überprüfung zu schließen. 
+6. Klicken Sie zum Überprüfen der Pipelineeinstellungen oberhalb der Canvas auf der Symbolleiste für die Pipeline auf **Überprüfen**. Vergewissern Sie sich, dass die Pipeline überprüft wurde. Klicken Sie auf die Schaltfläche **>>** (Pfeil nach rechts), um die Ausgabe der Überprüfung zu schließen. 
 
-   ![Überprüfen der Pipeline](./media/quickstart-create-data-factory-portal/pipeline-validate-button.png)
+## <a name="debug-the-pipeline"></a>Debuggen der Pipeline
+In diesem Schritt debuggen Sie die Pipeline, bevor Sie sie in Data Factory bereitstellen. 
 
-## <a name="test-run-the-pipeline"></a>Ausführen eines Testlaufs für die Pipeline
-In diesem Schritt führen Sie einen Testlauf für die Pipeline aus, bevor Sie sie in Data Factory bereitstellen. 
-
-1. Klicken Sie auf der Symbolleiste für die Pipeline auf **Testlauf**. 
+1. Klicken Sie oberhalb der Canvas auf der Symbolleiste für die Pipeline auf **Debuggen**, um einen Testlauf auszulösen. 
     
-   ![Pipelinetestläufe](./media/quickstart-create-data-factory-portal/pipeline-test-run.png)
-2. Überprüfen Sie, ob der Status der Pipelineausführung auf der Registerkarte **Ausgabe** der Pipelineeinstellungen angezeigt wird. 
+2. Überprüfen Sie, ob der Status der Pipelineausführung auf der Registerkarte **Ausgabe** der Pipelineeinstellungen unten angezeigt wird. 
 
-   ![Ausgabe des Testlaufs](./media/quickstart-create-data-factory-portal/test-run-output.png)    
 3. Vergewissern Sie sich, dass im Ordner **output** des Containers **adftutorial** eine Ausgabedatei angezeigt wird. Ist der Ausgabeordner nicht vorhanden, wird er vom Data Factory-Dienst automatisch erstellt. 
-    
-   ![Überprüfen der Ausgabe](./media/quickstart-create-data-factory-portal/verify-output.png)
-
 
 ## <a name="trigger-the-pipeline-manually"></a>Manuelles Auslösen der Pipeline
-In diesem Verfahren stellen Sie Entitäten (verknüpfte Dienste, Datasets, Pipelines) in Azure Data Factory bereit. Anschließend lösen Sie manuell eine Pipelineausführung aus. Sie können Entitäten auch in Ihrem eigenen Visual Studio Team Services-Git-Repository veröffentlichen. Die erforderlichen Schritte werden in einem [anderen Tutorial](tutorial-copy-data-portal.md?#configure-code-repository) behandelt.
+In diesem Verfahren stellen Sie Entitäten (verknüpfte Dienste, Datasets, Pipelines) in Azure Data Factory bereit. Anschließend lösen Sie manuell eine Pipelineausführung aus. 
 
-1. Vor dem Auslösen einer Pipeline müssen Sie Entitäten in Data Factory veröffentlichen. Klicken Sie zum Veröffentlichen im linken Bereich auf **Alle veröffentlichen**. 
+1. Vor dem Auslösen einer Pipeline müssen Sie Entitäten in Data Factory veröffentlichen. Klicken Sie zum Veröffentlichen oben auf **Alle veröffentlichen**. 
 
    ![Schaltfläche "Veröffentlichen"](./media/quickstart-create-data-factory-portal/publish-button.png)
-2. Klicken Sie zum manuellen Auslösen der Pipeline auf der Symbolleiste auf **Trigger** und dann auf **Trigger Now** (Jetzt auslösen). 
-    
-   ![Befehl „Trigger Now“ (Jetzt auslösen)](./media/quickstart-create-data-factory-portal/pipeline-trigger-now.png)
+2. Klicken Sie zum manuellen Auslösen der Pipeline auf der Symbolleiste für die Pipeline auf **Trigger** und dann auf **Trigger Now** (Jetzt auslösen). 
 
 ## <a name="monitor-the-pipeline"></a>Überwachen der Pipeline
 
@@ -205,15 +181,12 @@ In diesem Verfahren stellen Sie Entitäten (verknüpfte Dienste, Datasets, Pipel
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>Auslösen der Pipeline nach einem Zeitplan
 Dieser Schritt ist in diesem Tutorial optional. Sie können einen *Planer-Trigger* erstellen, um eine regelmäßige Ausführung der Pipeline (stündlich, täglich usw.) festzulegen. In diesem Schritt erstellen Sie einen Trigger, der bis zur angegebenen Endzeit (Datum und Uhrzeit) minütlich ausgeführt wird. 
 
-1. Wechseln Sie zur Registerkarte **Bearbeiten**. 
+1. Wechseln Sie zur Registerkarte **Autor**. 
 
-   ![Schaltfläche „Bearbeiten“](./media/quickstart-create-data-factory-portal/switch-edit-tab.png)
-1. Klicken Sie im Menü auf **Trigger** und dann auf **Neu/Bearbeiten**. 
+2. Navigieren Sie zu Ihrer Pipeline, klicken Sie auf der Symbolleiste für die Pipeline auf **Trigger** und dann auf **Neu/Bearbeiten**. 
 
-   ![Menü für neuen Trigger](./media/quickstart-create-data-factory-portal/new-trigger-menu.png)
 2. Klicken Sie auf der Seite **Add Triggers** (Trigger hinzufügen) auf **Choose trigger** (Trigger auswählen) und dann auf **Neu**. 
 
-   ![Auswahl zum Hinzufügen eines neuen Triggers](./media/quickstart-create-data-factory-portal/add-trigger-new-button.png)
 3. Aktivieren Sie auf der Seite **Neuer Trigger** unter **Ende** die Option **On Date** (Am), geben Sie eine Endzeit an, die einige Minuten nach der aktuellen Zeit liegt, und klicken Sie auf **Übernehmen**. 
 
    Da für jede Pipelineausführung Gebühren anfallen, sollten zwischen Endzeit und Startzeit nur wenige Minuten liegen. Vergewissern Sie sich, dass der gleiche Tag festgelegt ist. Stellen Sie jedoch sicher, dass zwischen Veröffentlichungszeit und Endzeit ausreichend Zeit für die Pipelineausführung bleibt. Der Trigger wird erst wirksam, nachdem Sie die Lösung in Data Factory veröffentlicht haben, nicht beim Speichern des Triggers auf der Benutzeroberfläche. 
@@ -227,7 +200,6 @@ Dieser Schritt ist in diesem Tutorial optional. Sie können einen *Planer-Trigge
    ![Warnung und Schaltfläche „Fertig stellen“](./media/quickstart-create-data-factory-portal/new-trigger-finish.png)
 6. Klicken Sie auf **Alle veröffentlichen**, um die Änderungen in Data Factory zu veröffentlichen. 
 
-   ![Schaltfläche "Veröffentlichen"](./media/quickstart-create-data-factory-portal/publish-button.png)
 8. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**. Klicken Sie zum Aktualisieren der Liste auf **Aktualisieren**. Sie sehen, dass die Pipeline zwischen Veröffentlichungszeit und Endzeit minütlich ausgeführt wird. 
 
    Beachten Sie die Werte in der Spalte **Ausgelöst durch**. Die manuelle Triggerausführung stammt aus dem zuvor ausgeführten Schritt (**Trigger Now** (Jetzt auslösen)). 

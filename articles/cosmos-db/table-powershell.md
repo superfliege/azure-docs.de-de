@@ -2,28 +2,26 @@
 title: Ausführen von Azure Cosmos DB-Tabellen-API-Vorgängen mit PowerShell | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Azure Cosmos DB-Tabellen-API-Vorgänge mit PowerShell ausführen.
 services: storage
-documentationcenter: storage
-author: robinsh
-manager: timlt
+author: SnehaGunda
+manager: kfile
 editor: tysonn
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: na
 ms.topic: how-to
 ms.date: 11/15/2017
-ms.author: robinsh
-ms.openlocfilehash: d40a56ca3c07bfadcf6e24d407b059a39522ca2b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: sngun
+ms.openlocfilehash: 9365fd70036c8b489efaea42bda9c670182c496c
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082273"
 ---
 # <a name="perform-azure-cosmos-db-table-api-operations-with-azure-powershell"></a>Ausführen von Azure Cosmos DB-Tabellen-API-Vorgängen mit Azure PowerShell 
 
 >[!NOTE]
->Die Azure Cosmos DB-Tabellen-API bietet Premiumfeatures für Table Storage wie sofort einsatzbereite globale Verteilung, Lese- und Schreibvorgänge mit geringer Wartezeit, automatische sekundäre Indizierung und dedizierten Durchsatz. Die PowerShell-Befehle in diesem Artikel können zwar in den meisten Fällen sowohl für die Azure Cosmos DB-Tabellen-API als auch für Azure Table Storage verwendet werden, dieser Artikel beschäftigt sich jedoch speziell mit der Azure Cosmos DB-Tabellen-API. Falls Sie Azure Table Storage verwenden, lesen Sie unter [Ausführen von Azure Table Storage-Vorgängen mit Azure PowerShell](table-storage-how-to-use-powershell.md).
+>Die Azure Cosmos DB-Tabellen-API bietet Premiumfeatures für Table Storage wie sofort einsatzbereite globale Verteilung, Lese- und Schreibvorgänge mit geringer Wartezeit, automatische sekundäre Indizierung und dedizierten Durchsatz. Die PowerShell-Befehle in diesem Artikel können zwar in den meisten Fällen sowohl für die Azure Cosmos DB-Tabellen-API als auch für Azure Table Storage verwendet werden, dieser Artikel beschäftigt sich jedoch speziell mit der Azure Cosmos DB-Tabellen-API. Falls Sie Azure Table Storage verwenden, lesen Sie unter [Ausführen von Azure Table Storage-Vorgängen mit Azure PowerShell](../storage/tables/table-storage-how-to-use-powershell.md).
 >
 
 Mit der Azure Cosmos DB-Tabellen-API können Sie große Mengen von strukturierten, nicht relationalen Daten speichern und abfragen. Die Hauptkomponenten des Diensts sind Tabellen, Entitäten und Eigenschaften. Eine Tabelle ist eine Sammlung von Entitäten. Eine Entität ist ein Satz von Eigenschaften. Jede Entität kann über bis zu 252 Eigenschaften verfügen, bei denen es sich um Name-Wert-Paare handelt. In diesem Artikel wird vorausgesetzt, dass Sie bereits mit den Konzepten der Azure Cosmos DB-Tabellen-API vertraut sind. Ausführliche Informationen finden Sie unter [Einführung in die Table-API von Azure Cosmos DB](table-introduction.md) sowie unter [Azure Cosmos DB: Erstellen einer .NET-Anwendung mit der Table-API](create-table-dotnet.md).
@@ -47,7 +45,7 @@ Nach dem Installieren oder Aktualisieren von Azure PowerShell muss das Modul **A
 Install-Module AzureRmStorageTable
 ```
 
-Installieren Sie die Azure Cosmos DB-Assemblys lokal, um diese PowerShell-Cmdlets zu verwenden. Informationen hierzu finden Sie unter [Azure RM Storage Tables PowerShell module now includes support for Cosmos DB Tables](https://blogs.technet.microsoft.com/paulomarques/2017/05/23/azure-rm-storage-tables-powershell-module-now-includes-support-for-cosmos-db-tables/) (Azure RM-Speichertabellen (PowerShell-Modul) für Cosmos DB-Tabellen).
+Installieren Sie die Azure Cosmos DB-Assemblys lokal, um diese PowerShell-Cmdlets zu verwenden. Informationen hierzu finden Sie unter [Azure RM Storage Tables PowerShell module now includes support for Cosmos DB Tables](https://blogs.technet.microsoft.com/paulomarques/2017/01/17/working-with-azure-storage-tables-from-powershell/) (Azure RM-Speichertabellen (PowerShell-Modul) für Cosmos DB-Tabellen).
 
 Für die folgenden Übungen benötigen Sie ein Azure Cosmos DB-Datenbankkonto. Erstellen Sie bei Bedarf ein neues Azure Cosmos DB-Konto über das [Azure-Portal](https://portal.azure.com). Informationen zum Erstellen eines neuen Datenbankkontos finden Sie unter [Erstellen eines Datenbankkontos](create-table-dotnet.md#create-a-database-account).
 
@@ -90,7 +88,7 @@ Die Tabellen des Azure Cosmos DB-Kontos können nicht mithilfe von PowerShell au
 
 ## <a name="delete-a-table"></a>Löschen einer Tabelle 
 
-Das Löschen von Tabellen aus Azure Cosmos DB wird von PowerShell nicht unterstützt. Wenn Sie eine Tabelle löschen möchten, navigieren Sie im [Azure-Portal](https://azure.portal.com) zum verwendeten Azure Cosmos DB-Konto, suchen Sie nach der Tabelle, und löschen Sie sie. 
+Das Löschen von Tabellen aus Azure Cosmos DB wird von PowerShell nicht unterstützt. Wenn Sie eine Tabelle löschen möchten, navigieren Sie im [Azure-Portal](https://portal.azure.com) zum verwendeten Azure Cosmos DB-Konto, suchen Sie nach der Tabelle, und löschen Sie sie. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

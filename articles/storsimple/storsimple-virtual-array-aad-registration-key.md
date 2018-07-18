@@ -1,24 +1,25 @@
 ---
-title: "Neue Authentifizierung für StorSimple Virtual Arrays | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie die AAD-basierte Authentifizierung für Ihren Dienst verwenden, einen neuen Registrierungsschlüssel generieren und eine manuelle Registrierung der Geräte durchführen."
+title: Neue Authentifizierung für StorSimple Virtual Arrays | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie die AAD-basierte Authentifizierung für Ihren Dienst verwenden, einen neuen Registrierungsschlüssel generieren und eine manuelle Registrierung der Geräte durchführen.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2018
+ms.date: 06/28/2018
 ms.author: alkohli
-ms.openlocfilehash: 8d033cc09de8e115324067d7bbdf052751730d63
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: e33a3f843017ec24f3a79701fac9a62e15b4f9ba
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109187"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>Verwenden der neuen Authentifizierung für StorSimple
 
@@ -37,7 +38,7 @@ Die Einführung der AAD-Authentifizierung hat Änderungen in folgenden Bereichen
 
 Diese Änderungen werden in den folgenden Abschnitten ausführlich erläutert.
 
-## <a name="url-changes-for-aad-authentication"></a>URL-Änderungen für die AAD-Authentifizierung
+## <a name="url-changes-for-aad-authentication"></a>URL-Änderungen für AAD-Authentifizierung
 
 Um zu gewährleisten, dass der Dienst die AAD-basierte Authentifizierung verwendet, müssen alle Benutzer die neuen Authentifizierungs-URLs in ihre Firewallregeln einschließen.
 
@@ -58,9 +59,9 @@ Ermitteln Sie bei Verwendung eines StorSimple Virtual Arrays anhand der folgende
 
 | Geräteszenario  | Auszuführende Aktion                                    |
 |----------------------------|--------------------------------------------------------------|
-| Das Gerät verfügt mindestens über Update 1.0 und ist offline. <br> Eine Warnung mit dem Hinweis, dass die URL nicht in der Zulassungsliste enthalten ist, wird angezeigt.| Ändern Sie die Firewallregeln, um die Authentifizierungs-URL einzuschließen. (siehe [Authentifizierungs-URLs](#url-changes-for-aad-authentication)) |
+| Das Gerät verfügt mindestens über Update 1.0 und ist offline. <br> Eine Warnung mit dem Hinweis, dass die URL nicht in der Zulassungsliste enthalten ist, wird angezeigt.| 1. Ändern Sie die Firewallregeln, um die Authentifizierungs-URL einzuschließen. Siehe [Authentifizierungs-URLs](#url-changes-for-aad-authentication). <br> 2. [Rufen Sie den AAD-Registrierungsschlüssel aus dem Dienst ab](#aad-based-registration-keys). <br> 3. Führen Sie zum [Herstellen einer Verbindung mit der Windows PowerShell-Schnittstelle des virtuellen Arrays](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor) die Schritte 1 bis 5 aus.<br> 4. Verwenden Sie das Cmdlet `Invoke-HcsReRegister`, um das Gerät über Windows PowerShell zu registrieren. Geben Sie den Schlüssel an, den Sie im vorherigen Schritt abgerufen haben.|
 | Das Gerät verfügt mindestens über Update 1.0 und ist online.| Es ist keine Aktion erforderlich.                                       |
-| Das Gerät verfügt maximal über Update 0.6 und ist offline. | [Laden Sie Update 1.0 über den Katalogserver herunter.](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix)<br>[Wenden Sie Update 1.0 über die lokale Webbenutzeroberfläche an.](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix) <br> [Rufen Sie den AAD-Registrierungsschlüssel aus dem Dienst ab.](#aad-based-registration-keys) <br> Führen Sie zum [Herstellen einer Verbindung mit der Windows PowerShell-Schnittstelle des virtuellen Arrays](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor) die Schritte 1 bis 5 aus.<br> Verwenden Sie das Cmdlet `Invoke-HcsReRegister`, um das Gerät über Windows PowerShell zu registrieren. Geben Sie den Schlüssel an, den Sie im vorherigen Schritt abgerufen haben.|
+| Das Gerät verfügt maximal über Update 0.6 und ist offline. | 1. [Laden Sie Update 1.0 über den Katalogserver herunter.](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix)<br>2. [Wenden Sie Update 1.0 über die lokale Webbenutzeroberfläche an.](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix)<br>3. [Rufen Sie den AAD-Registrierungsschlüssel aus dem Dienst ab](#aad-based-registration-keys). <br>4. Führen Sie zum [Herstellen einer Verbindung mit der Windows PowerShell-Schnittstelle des virtuellen Arrays](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor) die Schritte 1 bis 5 aus.<br>5. Verwenden Sie das Cmdlet `Invoke-HcsReRegister`, um das Gerät über Windows PowerShell zu registrieren. Geben Sie den Schlüssel an, den Sie im vorherigen Schritt abgerufen haben.|
 | Das Gerät verfügt maximal über Update 0.6 und ist online. | Ändern Sie die Firewallregeln, um die Authentifizierungs-URL einzuschließen.<br> Installieren Sie Update 1.0 über das Azure-Portal. |
 
 ## <a name="aad-based-registration-keys"></a>AAD-basierte Registrierungsschlüssel

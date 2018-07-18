@@ -1,12 +1,12 @@
 ---
-title: "Bindungen zu externen Dateien für Azure Functions (experimentell)"
+title: Bindungen zu externen Dateien für Azure Functions (experimentell)
 description: Verwenden von Bindungen zu externen Dateien in Azure Functions
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: alexkarcher-msft
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/05/2018
+ms.locfileid: "27607920"
 ---
 # <a name="azure-functions-external-file-bindings-experimental"></a>Azure Functions – Bindungen zu externen Dateien (experimentell)
 In diesem Artikel wird gezeigt, wie Dateien aus unterschiedlichen SaaS-Anbietern (z. B. Dropbox oder Google Drive) in Azure Functions verarbeitet werden können. Azure Functions unterstützt Trigger-, Eingabe- und Ausgabebindungen für externe Dateien. Diese Bindungen erstellen API-Verbindungen mit SaaS-Anbietern oder verwenden vorhandene API-Verbindungen aus der Ressourcengruppe Ihrer Funktionen-App.

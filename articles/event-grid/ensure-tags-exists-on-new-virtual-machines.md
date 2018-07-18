@@ -1,12 +1,12 @@
 ---
 title: Integration von Azure Automation mit Event Grid | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie beim Erstellen eines neuen virtuellen Computers automatisch ein Tag hinzufügen und eine Benachrichtigung an Microsoft Teams senden."
+description: Erfahren Sie, wie Sie beim Erstellen eines neuen virtuellen Computers automatisch ein Tag hinzufügen und eine Benachrichtigung an Microsoft Teams senden.
 keywords: Automatisierung, Runbook, Teams, Event Grid, virtueller Computer, VM
 services: automation
-documentationcenter: 
+documentationcenter: ''
 author: eamonoreilly
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.service: automation
 ms.devlang: na
 ms.topic: tutorial
@@ -19,6 +19,7 @@ ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/07/2017
+ms.locfileid: "26349068"
 ---
 # <a name="integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Integration von Azure Automation mit Event Grid und Microsoft Teams
 

@@ -1,8 +1,8 @@
 ---
 title: Bereitstellen von Apps mit Bereichsfiltern | Microsoft-Dokumentation
-description: "Hier erfahren Sie, wie Sie mithilfe von Bereichsfiltern verhindern, dass Objekte in Apps mit automatisierter Benutzerbereitstellung bereitgestellt werden, wenn ein Objekt Ihre Geschäftsanforderungen nicht erfüllt."
+description: Hier erfahren Sie, wie Sie mithilfe von Bereichsfiltern verhindern, dass Objekte in Apps mit automatisierter Benutzerbereitstellung bereitgestellt werden, wenn ein Objekt Ihre Geschäftsanforderungen nicht erfüllt.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: bcfbda74-e4d4-4859-83bc-06b104df3918
@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 10/31/2017
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e7a2322239945a529a544054c2273e37a3d65abf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d6f4f257d380d6521774afd23dbeaf6a94711c6d
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293074"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern
 In diesem Artikel wird die Verwendung von Bereichsfiltern zum Definieren attributbasierter Regeln beschrieben, die festlegen, welche Benutzer für eine Anwendung bereitgestellt werden.
@@ -29,7 +30,7 @@ Durch einen Bereichsfilter kann der Azure AD-Bereitstellungsdienst (Azure Active
 
 Bereichsfilter können abhängig von der Art des Bereitstellungsconnectors unterschiedlich verwendet werden:
 
-* **Ausgehende Bereitstellung aus Azure AD für SaaS-Anwendungen:** Wenn Azure AD das Quellsystem ist, sind [Benutzer- und Gruppenzuweisungen](active-directory-coreapps-assign-user-azure-portal.md) die gängigste Methode, um zu ermitteln, welche Benutzer im Bereich der Bereitstellung enthalten sind. Diese Zuweisungen werden auch verwendet, um das einmalige Anmelden zu ermöglichen und eine zentrale Methode für die Zugriffs- und Bereitstellungsverwaltung bereitzustellen. Bereichsfilter können optional verwendet werden – zusätzlich zu oder anstelle von Zuweisungen –, um Benutzer basierend auf Attributwerten zu filtern.
+* **Ausgehende Bereitstellung aus Azure AD für SaaS-Anwendungen:** Wenn Azure AD das Quellsystem ist, sind [Benutzer- und Gruppenzuweisungen](manage-apps/assign-user-or-group-access-portal.md) die gängigste Methode, um zu ermitteln, welche Benutzer im Bereich der Bereitstellung enthalten sind. Diese Zuweisungen werden auch verwendet, um das einmalige Anmelden zu ermöglichen und eine zentrale Methode für die Zugriffs- und Bereitstellungsverwaltung bereitzustellen. Bereichsfilter können optional verwendet werden – zusätzlich zu oder anstelle von Zuweisungen –, um Benutzer basierend auf Attributwerten zu filtern.
 
     >[!TIP]
     > Sie können die Bereitstellung auf der Grundlage von Zuweisungen für eine Unternehmensanwendung deaktivieren, indem Sie Einstellungen im Menü [Bereich](active-directory-saas-app-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) unter den Bereitstellungseinstellungen auf **Alle Benutzer und Gruppen synchronisieren** festlegen. Diese Option zusammen mit attributbasierten Bereichsfiltern ermöglicht eine schnellere Leistung als bei Verwendung von gruppenbasierten Zuweisungen.  
@@ -115,6 +116,6 @@ Bereichsfilter werden im Rahmen der Attributzuordnungen für jeden Bereitstellun
 * [Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](active-directory-saas-customizing-attribute-mappings.md)
 * [Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Kontobereitstellungsbenachrichtigungen](active-directory-saas-account-provisioning-notifications.md)
-* [Verwenden von SCIM (System for Cross-domain Identity Management) für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](active-directory-scim-provisioning.md)
+* [Verwenden von SCIM (System for Cross-domain Identity Management) für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Liste der Tutorials zur Integration von SaaS-Apps](active-directory-saas-tutorial-list.md)
 

@@ -2,10 +2,10 @@
 title: Verwenden von Eigenschaften in Azure API Management-Richtlinien
 description: Erfahren Sie, wie Eigenschaften in Azure API Management-Richtlinien verwendet werden.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28197111"
 ---
 # <a name="how-to-use-properties-in-azure-api-management-policies"></a>Verwenden von Eigenschaften in Azure API Management-Richtlinien
 API Management-Richtlinien sind eine leistungsfähige Funktion des Systems, mit der das Azure-Portal das Verhalten der API über eine Konfiguration ändern kann. Richtlinien sind eine Sammlung von Anweisungen, die sequenziell bei Anfragen oder Antworten einer API ausgeführt werden. Richtlinienanweisungen können mithilfe von literalen Textwerten, Richtlinienausdrücken und Eigenschaften erstellt werden. 

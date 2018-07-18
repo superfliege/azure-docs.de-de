@@ -1,21 +1,21 @@
 ---
-title: "Gewusst wie: Hinzufügen einer IoT Hub-Ereignisquelle zu Azure Time Series Insights | Microsoft-Dokumentation"
-description: "In diesem Artikel wird beschrieben, wie eine Ereignisquelle hinzugefügt wird, die mit einem IoT Hub in Ihrer Time Series Insights-Umgebung verbunden ist."
-services: time-series-insights
+title: 'Gewusst wie: Hinzufügen einer IoT Hub-Ereignisquelle zu Azure Time Series Insights | Microsoft-Dokumentation'
+description: In diesem Artikel wird beschrieben, wie eine Ereignisquelle hinzugefügt wird, die mit einem IoT Hub in Ihrer Time Series Insights-Umgebung verbunden ist.
 ms.service: time-series-insights
-author: sandshadow
+services: time-series-insights
+author: ashannon7
 ms.author: edett
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: 0469c35056d1d02457c162b8540af472b84f1e92
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 1cc8518e84bd9fe7a1f03a2f5d6ccdbac8fb78e3
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330593"
 ---
 # <a name="how-to-add-an-iot-hub-event-source-to-time-series-insights-environment"></a>Hinzufügen einer IoT Hub-Ereignisquelle zu einer Time Series Insights-Umgebung
 In diesem Artikel wird beschrieben, wie im Azure-Portal eine Ereignisquelle hinzugefügt wird, die Daten aus einem IoT Hub in Ihre Time Series Insights-Umgebung einliest.
@@ -26,8 +26,24 @@ In diesem Artikel wird beschrieben, wie im Azure-Portal eine Ereignisquelle hinz
 - An den IoT Hub müssen aktive Nachrichtenereignisse gesendet werden.
 - Erstellen Sie eine dedizierte Consumergruppe in IoT Hub, die die Time Series Insight-Umgebung verwenden kann. Jede Time Series Insights-Ereignisquelle benötigt eine eigene dedizierte Consumergruppe, die nicht mit anderen Consumern gemeinsam genutzt wird. Wenn mehrere Leser Ereignisse aus der gleichen Consumergruppe nutzen, werden allen Lesern wahrscheinlich Fehler angezeigt. Weitere Details finden Sie im [IoT Hub-Entwicklerhandbuch](../iot-hub/iot-hub-devguide.md).
 
+### <a name="add-a-consumer-group-to-your-iot-hub"></a>Hinzufügen einer Consumergruppe zu Ihrem IoT Hub
+Consumergruppen werden von Anwendungen verwendet, um Daten aus Azure IoT Hubs abzurufen. Geben Sie eine dedizierte Consumergruppe an, die nur von dieser Time Series Insights-Umgebung verwendet wird, um zuverlässig Daten aus Ihrem IoT Hub zu lesen.
+
+Gehen Sie folgendermaßen vor, um Ihrem IoT Hub eine neue Consumergruppe hinzuzufügen:
+1. Suchen Sie im Azure-Portal den IoT Hub, und öffnen Sie ihn.
+
+2. Wählen Sie unter der Überschrift **Messaging** die Option **Endpunkte** aus. 
+
+   ![Hinzufügen einer Consumergruppe](media/time-series-insights-how-to-add-an-event-source-iothub/5-add-consumer-group.png)
+
+3. Wählen Sie den Endpunkt **Ereignisse** aus. Die Seite **Eigenschaften** wird geöffnet.
+
+4. Geben Sie unter der Überschrift **Consumergruppen** einen neuen eindeutigen Namen für die Consumergruppe an. Verwenden Sie diesen Namen, wenn Sie eine neue Ereignisquelle in der Time Series Insights-Umgebung erstellen.
+
+5. Wählen Sie **Speichern** aus, um die neue Consumergruppe zu speichern.
+
 ## <a name="add-a-new-event-source"></a>Hinzufügen einer neuen Ereignisquelle
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 2. Suchen Sie die vorhandene Time Series Insights-Umgebung. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Alle Ressourcen**. Wählen Sie Ihre Time Series Insights-Umgebung aus.
 
@@ -50,7 +66,7 @@ In diesem Artikel wird beschrieben, wie im Azure-Portal eine Ereignisquelle hinz
 
    ![Details zu Abonnements und Event Hub](media/time-series-insights-how-to-add-an-event-source-iothub/3-new-event-source.png)
 
-   | Eigenschaft | Beschreibung |
+   | Eigenschaft | BESCHREIBUNG |
    | --- | --- |
    | Abonnement-ID | Wählen Sie das Abonnement aus, in dem dieser IoT Hub erstellt wurde.
    | IoT Hub-Name | Wählen Sie den Namen des IoT Hubs.
@@ -62,7 +78,7 @@ In diesem Artikel wird beschrieben, wie im Azure-Portal eine Ereignisquelle hinz
 
 9. Wenn Sie die Option **IoT Hub-Einstellungen manuell angeben** ausgewählt haben, finden Sie in der folgenden Tabelle die erforderlichen Eigenschaften:
 
-   | Eigenschaft | Beschreibung |
+   | Eigenschaft | BESCHREIBUNG |
    | --- | --- |
    | Abonnement-ID | Das Abonnement, in dem dieser IoT Hub erstellt wurde.
    | Ressourcengruppe | Der Name der Ressourcengruppe, in der dieser IoT Hub erstellt wurde.
@@ -73,27 +89,13 @@ In diesem Artikel wird beschrieben, wie im Azure-Portal eine Ereignisquelle hinz
    | Ereignisserialisierungsformat | Zurzeit ist JSON die einzige verfügbare Serialisierung. Die Ereignismeldungen müssen in diesem Format vorliegen, damit Daten gelesen werden können. |
    | Name der Timestamp-Eigenschaft | Um diesen Wert ermitteln, müssen Sie das Nachrichtenformat der Nachrichtendaten kennen, die an IoT Hub gesendet werden. Dieser Wert entspricht **name** der spezifischen Ereigniseigenschaft in den Nachrichtendaten, die Sie als Ereigniszeitstempel verwenden möchten. Bei dem Wert wird die Groß-/Kleinschreibung beachtet. Wenn dieser Wert nicht angegeben wird, wird der Zeitpunkt der **Einreihung des Ereignisses** in die Warteschlange in der Ereignisquelle als Ereigniszeitstempel verwendet. |
 
-10. Wählen Sie **Erstellen** aus, um die neue Ereignisquelle hinzuzufügen.
+10. Fügen Sie den dedizierten TSI-Consumergruppennamen hinzu, den Sie Ihrem IoT Hub hinzugefügt haben.
+
+11. Wählen Sie **Erstellen** aus, um die neue Ereignisquelle hinzuzufügen.
 
    ![Klicken Sie auf „Erstellen“.](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png)
 
    Nach der Erstellung der Ereignisquelle beginnt Time Series Insights automatisch damit, Daten in Ihre Umgebung zu streamen.
-
-### <a name="add-a-consumer-group-to-your-iot-hub"></a>Hinzufügen einer Consumergruppe zu Ihrem IoT Hub
-Consumergruppen werden von Anwendungen verwendet, um Daten aus Azure IoT Hubs abzurufen. Geben Sie eine dedizierte Consumergruppe an, die nur von dieser Time Series Insights-Umgebung verwendet wird, um zuverlässig Daten aus Ihrem IoT Hub zu lesen.
-
-Gehen Sie folgendermaßen vor, um Ihrem IoT Hub eine neue Consumergruppe hinzuzufügen:
-1. Suchen Sie im Azure-Portal den IoT Hub, und öffnen Sie ihn.
-
-2. Wählen Sie unter der Überschrift **Messaging** die Option **Endpunkte** aus. 
-
-   ![Hinzufügen einer Consumergruppe](media/time-series-insights-how-to-add-an-event-source-iothub/5-add-consumer-group.png)
-
-3. Wählen Sie den Endpunkt **Ereignisse** aus. Die Seite **Eigenschaften** wird geöffnet.
-
-4. Geben Sie unter der Überschrift **Consumergruppen** einen neuen eindeutigen Namen für die Consumergruppe an. Verwenden Sie diesen Namen, wenn Sie eine neue Ereignisquelle in der Time Series Insights-Umgebung erstellen.
-
-5. Wählen Sie **Speichern** aus, um die neue Consumergruppe zu speichern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Definieren von Datenzugriffsrichtlinien](time-series-insights-data-access.md) zum Schützen der Daten

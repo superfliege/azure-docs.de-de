@@ -1,4 +1,4 @@
----
+﻿---
 title: Erstellen einer ASP.NET Core-Web-App in Azure | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Web-Apps in Azure App Service ausführen, indem Sie die standardmäßige ASP.NET-Web-App bereitstellen.
 services: app-service\web
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30838365"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Erstellen von ASP.NET Core-Web-Apps in Azure
 

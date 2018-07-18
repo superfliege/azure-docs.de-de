@@ -1,12 +1,12 @@
 ---
-title: "Erstellen eines Unterstützungspakets für ein Gerät der StorSimple 8000-Serie | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie ein Unterstützungspaket für Ihr Gerät der StorSimple 8000-Serie erstellen, entschlüsseln und bearbeiten."
+title: Erstellen eines Unterstützungspakets für ein Gerät der StorSimple 8000-Serie | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie ein Unterstützungspaket für Ihr Gerät der StorSimple 8000-Serie erstellen, entschlüsseln und bearbeiten.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27743577"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Erstellen und Verwalten eines Unterstützungspakets für ein Gerät der StorSimple 8000-Serie
 

@@ -3,19 +3,20 @@ title: Authentifizierung und Benutzerberechtigungen in Azure Analysis Services |
 description: Informationen zu Authentifizierung und Benutzerberechtigungen in Azure Analysis Services.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ede05667d794267443babacaa8b016206d86ab2c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 846b76bddbc771a924a1d710cd333dfa4623f5ec
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448974"
 ---
 # <a name="authentication-and-user-permissions"></a>Authentifizierung und Benutzerberechtigungen
-Azure Analysis Services verwendet Azure Active Directory (Azure AD) zur Identitätsverwaltung und Benutzerauthentifizierung. Jeder Benutzer, der einen Azure Analysis Services-Server erstellt, verwaltet oder eine Verbindung mit diesem herstellt, muss über eine gültige Benutzeridentität in einem [Azure AD-Mandanten](../active-directory/active-directory-administer.md) im selben Abonnement verfügen.
+Azure Analysis Services verwendet Azure Active Directory (Azure AD) zur Identitätsverwaltung und Benutzerauthentifizierung. Jeder Benutzer, der einen Azure Analysis Services-Server erstellt, verwaltet oder eine Verbindung mit diesem herstellt, muss über eine gültige Benutzeridentität in einem [Azure AD-Mandanten](../active-directory/fundamentals/active-directory-administer.md) im selben Abonnement verfügen.
 
 Azure Analysis Services unterstützt die [Azure AD B2B-Zusammenarbeit](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md). Mit B2B können Benutzer außerhalb einer Organisation als Gastbenutzer in ein Azure AD-Verzeichnis eingeladen werden. Gäste können Benutzer aus einem anderen Azure AD-Mandantenverzeichnis oder mit einer gültigen E-Mail-Adresse sein. Wenn ein Benutzer eingeladen wurde und die von Azure per E-Mail gesendete Einladung annimmt, wird die Benutzeridentität dem Mandantenverzeichnis hinzugefügt. Diese Identitäten können Sicherheitsgruppen oder als Mitglieder einer Serveradministrator- oder Datenbankrolle hinzugefügt werden.
 
@@ -75,7 +76,7 @@ Rollen auf dieser Ebene gelten für Benutzer oder Konten, die sie zum Ausführen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](../active-directory/active-directory-manage-groups.md)   
+[Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [Verwalten von Datenbankrollen und Benutzern](analysis-services-database-users.md)  
 [Verwalten von Serveradministratoren](analysis-services-server-admins.md)  
 [Rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md)  

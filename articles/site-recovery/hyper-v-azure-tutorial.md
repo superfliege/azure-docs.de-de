@@ -1,18 +1,19 @@
 ---
-title: "Einrichten der Notfallwiederherstellung für lokale Hyper-V-VMs (ohne VMM) in Azure mit Azure Site Recovery | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie die Notfallwiederherstellung für lokale Hyper-V-VMs (ohne VMM) in Azure mit dem Azure Site Recovery-Dienst einrichten."
+title: Einrichten der Notfallwiederherstellung für lokale Hyper-V-VMs (ohne VMM) in Azure mit Azure Site Recovery | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie die Notfallwiederherstellung für lokale Hyper-V-VMs (ohne VMM) in Azure mit dem Azure Site Recovery-Dienst einrichten.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/14/2018
+ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: e7ddb3046b0725b3afcea2ed6a533388a89cf306
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: f09d66e069ac22e5b8203d9871d2e5645570086a
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917947"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Einrichten der Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
 
@@ -40,19 +41,31 @@ Bevor Sie beginnen, empfiehlt sich eine [Überprüfung der Architektur](concepts
 2. Klicken Sie in **Erste Schritte** auf **Site Recovery**. Klicken Sie dann auf **Infrastruktur vorbereiten**.
 3. Wählen Sie in **Schutzziel** > **Wo befinden sich Ihre Computer?** die Option **Lokal** aus.
 4. Wählen Sie in **Wohin möchten Sie Ihre Computer replizieren?** die Option **Nach Azure** aus.
-5. Wählen Sie unter **Sind Ihre Computer virtualisiert?** die Option **Nein** aus. Klicken Sie dann auf **OK**.
+5. Wählen Sie unter **Are you using System Center VMM to manage your Hyper-V hosts** (Verwenden Sie System Center VMM für die Verwaltung Ihrer Hyper-V-Hosts?) die Option **Nein** aus. Klicken Sie dann auf **OK**.
 
     ![Replikationsziel](./media/hyper-v-azure-tutorial/replication-goal.png)
 
+## <a name="confirm-deployment-planning"></a>Bestätigen der Bereitstellungsplanung
+
+Wenn Sie eine umfangreiche Bereitstellung planen, sollten Sie die [Bereitstellungsplanung für die Hyper-V-Replikation](hyper-v-deployment-planner-overview.md) durchführen. Wählen Sie für dieses Tutorial in der Dropdownliste unter **Haben Sie die Bereitstellungsplanung abgeschlossen?** die Option **Wird später durchgeführt** aus.
+
+![Bereitstellungsplanung](./media/hyper-v-azure-tutorial/deployment-planning.png)
+
 ## <a name="set-up-the-source-environment"></a>Einrichten der Quellumgebung
 
-Um die Quellumgebung einzurichten, fügen Sie Hyper-V-Hosts einem Hyper-V-Standort hinzu und laden den Azure Site Recovery-Anbieter und den Azure Recovery Services-Agent herunter und installieren diese Komponenten. Anschließend registrieren Sie den Hyper-V-Standort im Tresor. 
+Zum Einrichten der Quellumgebung erstellen Sie eine Hyper-V-Site und fügen ihr Hyper-V-Hosts hinzu. Anschließend müssen Sie den Azure Site Recovery-Anbieter und den Azure Recovery Services-Agent herunterladen und auf den einzelnen Hosts installieren sowie die Hyper-V-Site im Tresor registrieren. 
 
 1. Klicken Sie unter **Bereiten Sie die Infrastruktur vor** auf **Quelle**.
 2. Klicken Sie auf **+Hyper-V-Standort**, und geben Sie den Namen des Standorts ein, der im vorherigen Tutorial erstellt wurde: **ContosoHyperVSite**.
-3. Klicken Sie auf **+Hyper-V-Server**.
+
+    ![Hyper-V-Standort](./media/hyper-v-azure-tutorial/hyperv-site.png)
+
+3. Klicken Sie nach Erstellung der Site auf **+Hyper-V-Server**.
+
+    ![Hyper-V-Server](./media/hyper-v-azure-tutorial/hyperv-server.png)
+
 4. Laden Sie die Setupdatei für den Anbieter herunter.
-5. Laden Sie den Tresorregistrierungsschlüssel herunter. Sie benötigen diesen Schlüssel zum Durchführen des Setups für den Anbieter. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
+6. Laden Sie den Tresorregistrierungsschlüssel herunter. Sie benötigen diesen Schlüssel zum Durchführen des Setups für den Anbieter. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
 
     ![Anbieter herunterladen](./media/hyper-v-azure-tutorial/download.png)
     

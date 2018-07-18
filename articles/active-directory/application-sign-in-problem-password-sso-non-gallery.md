@@ -3,21 +3,24 @@ title: Probleme beim Anmelden bei einer Azure AD-Kataloganwendung, die für einm
 description: Erläuterungen von Problembereichen zur Hilfestellung beim Behandeln von Problemen beim Anmelden bei Azure AD-Kataloganwendungen, die für einmaliges Anmelden per Kennwort konfiguriert sind
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: f13f9fa54af13dbbe435a846be35c9e06fe65455
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: 020a5ec2a6cea2854e46d9da8aa0a178695deb86
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331904"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>Probleme beim Anmelden bei einer Azure AD-Kataloganwendung, die für einmaliges Anmelden per Kennwort konfiguriert ist
 
@@ -80,7 +83,7 @@ Das Tutorial [Bereitstellen der Zugriffsbereichserweiterung für Internet Explor
 
 ## <a name="troubleshoot-the-access-panel-in-internet-explorer"></a>Problembehandlung für den Zugriffsbereich in Internet Explorer
 
-Befolgen Sie die Anleitung [Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-Troubleshoot), um Zugriff auf ein Diagnosetool und Schritt-für-Schritt-Anweisungen zum Konfigurieren der Erweiterung für Internet Explorer zu erhalten.
+Befolgen Sie die Anleitung [Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting), um Zugriff auf ein Diagnosetool und Schritt-für-Schritt-Anweisungen zum Konfigurieren der Erweiterung für Internet Explorer zu erhalten.
 
 ## <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Konfigurieren des einmaligen Anmeldens per Kennwort für eine nicht im Katalog enthaltene Anwendung
 

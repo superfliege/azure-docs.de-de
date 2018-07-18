@@ -3,23 +3,19 @@ title: Serverseitige JavaScript-Programmierung für Azure Cosmos DB | Microsoft-
 description: Erfahren Sie, wie Sie Azure Cosmos DB dazu verwenden, gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen in JavaScript zu schreiben. Erhalten Sie Tipps zur Datenbankprogrammierung und mehr.
 keywords: Datenbanktrigger, gespeicherte Prozedur, Datenbankprogramm, sproc, Azure, Microsoft Azure
 services: cosmos-db
-documentationcenter: ''
 author: aliuy
 manager: kfile
-ms.assetid: 0fba7ebd-a4fc-4253-a786-97f1354fbf17
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: b3d7c94e8b1415a24427e1f90f5613d8c181608a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 904a5c3de9ddc8fa8146c4e2c87ab968c31e5d59
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34197992"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221205"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB-serverseitige Programmierung : gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen
 
@@ -62,40 +58,45 @@ In diesem Tutorial wird das [Node.js SDK mit Q Promises](http://azure.github.io/
 ### <a name="example-write-a-stored-procedure"></a>Beispiel: Schreiben einer gespeicherten Prozedur
 Beginnen wir mit einer einfachen gespeicherten Prozedur, die die Antwort "Hello World" zurückgibt.
 
-    var helloWorldStoredProc = {
-        id: "helloWorld",
-        serverScript: function () {
-            var context = getContext();
-            var response = context.getResponse();
+```javascript
+var helloWorldStoredProc = {
+    id: "helloWorld",
+    serverScript: function () {
+        var context = getContext();
+        var response = context.getResponse();
 
-            response.setBody("Hello, World");
-        }
+        response.setBody("Hello, World");
     }
-
+}
+```
 
 Gespeicherte Prozeduren werden pro Sammlung registriert und können auf beliebige Dokumente und Anhänge angewendet werden, die sich in dieser Sammlung befinden. Der folgende Codeausschnitt zeigt, wie die gespeicherte Prozedur "helloWorld" mit einer Sammlung registriert wird. 
 
-    // register the stored procedure
-    var createdStoredProcedure;
-    client.createStoredProcedureAsync('dbs/testdb/colls/testColl', helloWorldStoredProc)
-        .then(function (response) {
-            createdStoredProcedure = response.resource;
-            console.log("Successfully created stored procedure");
-        }, function (error) {
-            console.log("Error", error);
-        });
+
+```javascript
+// register the stored procedure
+var createdStoredProcedure;
+client.createStoredProcedureAsync('dbs/testdb/colls/testColl', helloWorldStoredProc)
+    .then(function (response) {
+        createdStoredProcedure = response.resource;
+        console.log("Successfully created stored procedure");
+    }, function (error) {
+        console.log("Error", error);
+    });
+```
 
 
 Nachdem die gespeicherte Prozedur registriert wurde, können Sie sie für die Collection ausführen und die an den Client zurückgegebenen Ergebnisse lesen. 
 
-    // execute the stored procedure
-    client.executeStoredProcedureAsync('dbs/testdb/colls/testColl/sprocs/helloWorld')
-        .then(function (response) {
-            console.log(response.result); // "Hello, World"
-        }, function (err) {
-            console.log("Error", error);
-        });
-
+```javascript
+// execute the stored procedure
+client.executeStoredProcedureAsync('dbs/testdb/colls/testColl/sprocs/helloWorld')
+    .then(function (response) {
+        console.log(response.result); // "Hello, World"
+    }, function (err) {
+        console.log("Error", error);
+    });
+```
 
 Das Kontextobjekt bietet Zugriff auf alle Vorgänge, die für den Cosmos DB-Speicher ausgeführt werden können, sowie Zugriff auf die Anforderungs- und Antwortobjekte. In diesem Fall verwenden Sie das Antwortobjekt dazu, den Text der Antwort festzulegen, der an den Client zurückgesendet wurde. Weitere Informationen finden Sie in der [Dokumentation zum Azure Cosmos DB JavaScript-Server-SDK](http://azure.github.io/azure-documentdb-js-server/).  
 
@@ -104,50 +105,53 @@ Dieses Beispiel möchten wir jetzt erweitern und datenbankbezogenere Funktionen 
 ### <a name="example-write-a-stored-procedure-to-create-a-document"></a>Beispiel: Schreiben einer gespeicherten Prozedur zum Erstellen eines Dokuments
 Der nächste Codeausschnitt veranschaulicht, wie das Kontextobjekt für die Interaktion mit Cosmos DB-Ressourcen verwendet wird.
 
-    var createDocumentStoredProc = {
-        id: "createMyDocument",
-        serverScript: function createMyDocument(documentToCreate) {
-            var context = getContext();
-            var collection = context.getCollection();
+```javascript
+var createDocumentStoredProc = {
+    id: "createMyDocument",
+    serverScript: function createMyDocument(documentToCreate) {
+        var context = getContext();
+        var collection = context.getCollection();
 
-            var accepted = collection.createDocument(collection.getSelfLink(),
-                  documentToCreate,
-                  function (err, documentCreated) {
-                      if (err) throw new Error('Error' + err.message);
-                      context.getResponse().setBody(documentCreated.id)
-                  });
-            if (!accepted) return;
-        }
+        var accepted = collection.createDocument(collection.getSelfLink(),
+              documentToCreate,
+              function (err, documentCreated) {
+                  if (err) throw new Error('Error' + err.message);
+                  context.getResponse().setBody(documentCreated.id)
+              });
+        if (!accepted) return;
     }
+}
+```
 
 
 Diese gespeicherte Prozedur übernimmt "documentToCreate", den in der aktuellen Sammlung zu erstellenden Text eines Dokuments, als Eingabe. Alle derartigen Vorgänge sind asynchron und von JavaScript-Funktionsrückrufen abhängig. Die Rückruffunktion verfügt über zwei Parameter, einer für das Fehlerobjekt, wenn der Vorgang fehlschlägt, und ein anderer für das erstellte Objekt. Innerhalb des Rückrufs können die Benutzer entweder die Ausnahme behandeln oder einen Fehler auslösen. Für den Fall, dass ein Rückruf nicht bereitgestellt wird und ein Fehler auftritt, löst die Azure Cosmos DB-Laufzeitumgebung einen Fehler aus.   
 
 Im obigen Beispiel löst der Rückruf einen Fehler aus, wenn der Vorgang fehlschlägt. Andernfalls wird die ID des erstellten Dokuments als Text für die Antwort an den Client festgelegt. Diese gespeicherte Prozedur wird mit Eingabeparametern wie folgt ausgeführt:
 
-    // register the stored procedure
-    client.createStoredProcedureAsync('dbs/testdb/colls/testColl', createDocumentStoredProc)
-        .then(function (response) {
-            var createdStoredProcedure = response.resource;
-
-            // run stored procedure to create a document
-            var docToCreate = {
-                id: "DocFromSproc",
-                book: "The Hitchhiker’s Guide to the Galaxy",
-                author: "Douglas Adams"
-            };
-
-            return client.executeStoredProcedureAsync('dbs/testdb/colls/testColl/sprocs/createMyDocument',
-                  docToCreate);
-        }, function (error) {
-            console.log("Error", error);
-        })
+```javascript
+// register the stored procedure
+client.createStoredProcedureAsync('dbs/testdb/colls/testColl', createDocumentStoredProc)
     .then(function (response) {
-        console.log(response); // "DocFromSproc"
+        var createdStoredProcedure = response.resource;
+
+        // run stored procedure to create a document
+        var docToCreate = {
+            id: "DocFromSproc",
+            book: "The Hitchhiker’s Guide to the Galaxy",
+            author: "Douglas Adams"
+        };
+
+        return client.executeStoredProcedureAsync('dbs/testdb/colls/testColl/sprocs/createMyDocument',
+              docToCreate);
     }, function (error) {
         console.log("Error", error);
-    });
-
+    })
+.then(function (response) {
+    console.log(response); // "DocFromSproc"
+}, function (error) {
+    console.log("Error", error);
+});
+```
 
 Diese gespeicherte Prozedur kann so geändert werden, dass ein Array von Dokumenttexten als Eingabe übernommen wird und alle während der Ausführung derselben gespeicherten Prozedur erstellt werden, anstatt mehrere Anforderungen zu verwenden, um sie jeweils einzeln zu erstellen. Mit dieser gespeicherten Prozedur kann eine effiziente Massenimportfunktion für Cosmos DB implementiert werden (dies wird später in diesem Tutorial erörtert).   
 
@@ -157,7 +161,7 @@ Das beschriebene Beispiel hat die Verwendung gespeicherter Prozeduren veranschau
 
 Beim Definieren einer gespeicherten Prozedur mithilfe des Azure-Portals werden Eingabeparameter immer als Zeichenfolge an die gespeicherte Prozedur gesendet. Selbst wenn Sie ein Array von Zeichenfolgen als Eingabe übergeben, wird das Array in eine Zeichenfolge konvertiert und an die gespeicherte Prozedur gesendet. Zur Umgehung dieses Problems können Sie eine Funktion in der gespeicherten Prozedur definieren, mit der die Zeichenfolge als Array analysiert wird. Der folgende Code ist ein Beispiel für das Analysieren der Zeichenfolge als Array: 
 
-``` 
+```javascript
 function sample(arr) {
     if (typeof arr === "string") arr = JSON.parse(arr);
     
@@ -175,68 +179,70 @@ Die Atomarität gewährleistet kurz gesagt, dass alle innerhalb einer Transaktio
 
 In Cosmos DB wird JavaScript im gleichen Speicherbereich wie die Datenbank gehostet. Daher werden die in gespeicherten Prozeduren und Triggern erstellten Anforderungen im gleichen Gültigkeitsbereich einer Datenbanksitzung ausgeführt. Durch dieses Feature kann Cosmos DB die vier Eigenschaften von ACID für alle Vorgänge garantieren, die Teil einer einzelnen gespeicherten Prozedur oder eines einzelnen Triggers sind. Betrachten Sie die folgende Definition einer gespeicherten Prozedur:
 
-    // JavaScript source code
-    var exchangeItemsSproc = {
-        id: "exchangeItems",
-        serverScript: function (playerId1, playerId2) {
-            var context = getContext();
-            var collection = context.getCollection();
-            var response = context.getResponse();
+```javascript
+// JavaScript source code
+var exchangeItemsSproc = {
+    id: "exchangeItems",
+    serverScript: function (playerId1, playerId2) {
+        var context = getContext();
+        var collection = context.getCollection();
+        var response = context.getResponse();
 
-            var player1Document, player2Document;
+        var player1Document, player2Document;
 
-            // query for players
-            var filterQuery = 'SELECT * FROM Players p where p.id  = "' + playerId1 + '"';
-            var accept = collection.queryDocuments(collection.getSelfLink(), filterQuery, {},
-                function (err, documents, responseOptions) {
-                    if (err) throw new Error("Error" + err.message);
+        // query for players
+        var filterQuery = 'SELECT * FROM Players p where p.id  = "' + playerId1 + '"';
+        var accept = collection.queryDocuments(collection.getSelfLink(), filterQuery, {},
+            function (err, documents, responseOptions) {
+                if (err) throw new Error("Error" + err.message);
 
-                    if (documents.length != 1) throw "Unable to find both names";
-                    player1Document = documents[0];
+                if (documents.length != 1) throw "Unable to find both names";
+                player1Document = documents[0];
 
-                    var filterQuery2 = 'SELECT * FROM Players p where p.id = "' + playerId2 + '"';
-                    var accept2 = collection.queryDocuments(collection.getSelfLink(), filterQuery2, {},
-                        function (err2, documents2, responseOptions2) {
-                            if (err2) throw new Error("Error" + err2.message);
-                            if (documents2.length != 1) throw "Unable to find both names";
-                            player2Document = documents2[0];
-                            swapItems(player1Document, player2Document);
-                            return;
+                var filterQuery2 = 'SELECT * FROM Players p where p.id = "' + playerId2 + '"';
+                var accept2 = collection.queryDocuments(collection.getSelfLink(), filterQuery2, {},
+                    function (err2, documents2, responseOptions2) {
+                        if (err2) throw new Error("Error" + err2.message);
+                        if (documents2.length != 1) throw "Unable to find both names";
+                        player2Document = documents2[0];
+                        swapItems(player1Document, player2Document);
+                        return;
+                    });
+                if (!accept2) throw "Unable to read player details, abort ";
+            });
+
+        if (!accept) throw "Unable to read player details, abort ";
+
+        // swap the two players’ items
+        function swapItems(player1, player2) {
+            var player1ItemSave = player1.item;
+            player1.item = player2.item;
+            player2.item = player1ItemSave;
+
+            var accept = collection.replaceDocument(player1._self, player1,
+                function (err, docReplaced) {
+                    if (err) throw "Unable to update player 1, abort ";
+
+                    var accept2 = collection.replaceDocument(player2._self, player2,
+                        function (err2, docReplaced2) {
+                            if (err) throw "Unable to update player 2, abort"
                         });
-                    if (!accept2) throw "Unable to read player details, abort ";
+
+                    if (!accept2) throw "Unable to update player 2, abort";
                 });
 
-            if (!accept) throw "Unable to read player details, abort ";
-
-            // swap the two players’ items
-            function swapItems(player1, player2) {
-                var player1ItemSave = player1.item;
-                player1.item = player2.item;
-                player2.item = player1ItemSave;
-
-                var accept = collection.replaceDocument(player1._self, player1,
-                    function (err, docReplaced) {
-                        if (err) throw "Unable to update player 1, abort ";
-
-                        var accept2 = collection.replaceDocument(player2._self, player2,
-                            function (err2, docReplaced2) {
-                                if (err) throw "Unable to update player 2, abort"
-                            });
-
-                        if (!accept2) throw "Unable to update player 2, abort";
-                    });
-
-                if (!accept) throw "Unable to update player 1, abort";
-            }
+            if (!accept) throw "Unable to update player 1, abort";
         }
     }
+}
 
-    // register the stored procedure in Node.js client
-    client.createStoredProcedureAsync(collection._self, exchangeItemsSproc)
-        .then(function (response) {
-            var createdStoredProcedure = response.resource;
-        }
-    );
+// register the stored procedure in Node.js client
+client.createStoredProcedureAsync(collection._self, exchangeItemsSproc)
+    .then(function (response) {
+        var createdStoredProcedure = response.resource;
+    }
+);
+```
 
 Diese gespeicherte Prozedur verwendet Transaktionen innerhalb einer Spiele-App, um in einem einzelnen Vorgang Objekte zwischen zwei Spielern auszutauschen. Die gespeicherte Prozedur versucht dabei zwei Dokumente zu lesen, die jeweils der Spieler-ID entsprechen, die als Argument übergeben wird. Wenn beide Spielerdokumente gefunden werden, aktualisiert die gespeicherte Prozedur die Dokumente, indem deren Objekte ausgetauscht werden. Wenn währenddessen Fehler auftreten, wird eine JavaScript-Ausnahme ausgelöst, durch die die Transaktion vorbehaltlos abgebrochen wird.
 
@@ -260,193 +266,198 @@ JavaScript-Funktionen sind auch an den Ressourcenverbrauch gebunden. Cosmos DB r
 ### <a name="example-bulk-importing-data-into-a-database-program"></a>Beispiel: Massenimport von Daten in ein Datenbankprogramm
 Nachfolgend finden Sie ein Beispiel einer gespeicherten Prozedur, die für den massenhaften Import von Dokumenten in eine Sammlung erstellt wurde. Beachten Sie, wie die gespeicherte Prozedur die gebundene Ausführung handhabt, indem der boolesche Rückgabewert von "createDocument" geprüft und dann die Anzahl der Dokumente verwendet wird, die bei jedem Aufruf der gespeicherten Prozedur eingefügt werden, um den mengenübergreifenden Fortschritt nachzuverfolgen und zu übernehmen.
 
-    function bulkImport(docs) {
-        var collection = getContext().getCollection();
-        var collectionLink = collection.getSelfLink();
+```javascript
+function bulkImport(docs) {
+    var collection = getContext().getCollection();
+    var collectionLink = collection.getSelfLink();
 
-        // The count of imported docs, also used as current doc index.
-        var count = 0;
+    // The count of imported docs, also used as current doc index.
+    var count = 0;
 
-        // Validate input.
-        if (!docs) throw new Error("The array is undefined or null.");
+    // Validate input.
+    if (!docs) throw new Error("The array is undefined or null.");
 
-        var docsLength = docs.length;
-        if (docsLength == 0) {
-            getContext().getResponse().setBody(0);
-        }
+    var docsLength = docs.length;
+    if (docsLength == 0) {
+        getContext().getResponse().setBody(0);
+    }
 
-        // Call the create API to create a document.
-        tryCreate(docs[count], callback);
+    // Call the create API to create a document.
+    tryCreate(docs[count], callback);
 
-        // Note that there are 2 exit conditions:
-        // 1) The createDocument request was not accepted. 
-        //    In this case the callback will not be called, we just call setBody and we are done.
-        // 2) The callback was called docs.length times.
-        //    In this case all documents were created and we don’t need to call tryCreate anymore. Just call setBody and we are done.
-        function tryCreate(doc, callback) {
-            var isAccepted = collection.createDocument(collectionLink, doc, callback);
+    // Note that there are 2 exit conditions:
+    // 1) The createDocument request was not accepted. 
+    //    In this case the callback will not be called, we just call setBody and we are done.
+    // 2) The callback was called docs.length times.
+    //    In this case all documents were created and we don’t need to call tryCreate anymore. Just call setBody and we are done.
+    function tryCreate(doc, callback) {
+        var isAccepted = collection.createDocument(collectionLink, doc, callback);
 
-            // If the request was accepted, callback will be called.
-            // Otherwise report current count back to the client, 
-            // which will call the script again with remaining set of docs.
-            if (!isAccepted) getContext().getResponse().setBody(count);
-        }
+        // If the request was accepted, callback will be called.
+        // Otherwise report current count back to the client, 
+        // which will call the script again with remaining set of docs.
+        if (!isAccepted) getContext().getResponse().setBody(count);
+    }
 
-        // This is called when collection.createDocument is done in order to process the result.
-        function callback(err, doc, options) {
-            if (err) throw err;
+    // This is called when collection.createDocument is done in order to process the result.
+    function callback(err, doc, options) {
+        if (err) throw err;
 
-            // One more document has been inserted, increment the count.
-            count++;
+        // One more document has been inserted, increment the count.
+        count++;
 
-            if (count >= docsLength) {
-                // If we created all documents, we are done. Just set the response.
-                getContext().getResponse().setBody(count);
-            } else {
-                // Create next document.
-                tryCreate(docs[count], callback);
-            }
+        if (count >= docsLength) {
+            // If we created all documents, we are done. Just set the response.
+            getContext().getResponse().setBody(count);
+        } else {
+            // Create next document.
+            tryCreate(docs[count], callback);
         }
     }
+}
+```
 
 ## <a id="trigger"></a> Datenbanktrigger
 ### <a name="database-pre-triggers"></a>Vorangestellte Datenbanktrigger
 Cosmos DB stellt Trigger bereit, die durch einen für ein Dokument erfolgten Vorgang ausgeführt oder ausgelöst werden. Sie können z. B. einen vorangestellten Trigger angeben, wenn Sie ein Dokument erstellen. Dieser vorangestellte Trigger wird ausgeführt, bevor das Dokument erstellt wird. Nachfolgend finden Sie ein Beispiel dafür, wie vorangestellte Trigger zum Überprüfen der Eigenschaften eines zu erstellenden Dokuments verwendet werden können:
 
-    var validateDocumentContentsTrigger = {
-        id: "validateDocumentContents",
-        serverScript: function validate() {
-            var context = getContext();
-            var request = context.getRequest();
+```javascript
+var validateDocumentContentsTrigger = {
+    id: "validateDocumentContents",
+    serverScript: function validate() {
+        var context = getContext();
+        var request = context.getRequest();
 
-            // document to be created in the current operation
-            var documentToCreate = request.getBody();
+        // document to be created in the current operation
+        var documentToCreate = request.getBody();
 
-            // validate properties
-            if (!("timestamp" in documentToCreate)) {
-                var ts = new Date();
-                documentToCreate["my timestamp"] = ts.getTime();
-            }
+        // validate properties
+        if (!("timestamp" in documentToCreate)) {
+            var ts = new Date();
+            documentToCreate["my timestamp"] = ts.getTime();
+        }
 
-            // update the document that will be created
-            request.setBody(documentToCreate);
-        },
-        triggerType: TriggerType.Pre,
-        triggerOperation: TriggerOperation.Create
-    }
-
+        // update the document that will be created
+        request.setBody(documentToCreate);
+    },
+    triggerType: TriggerType.Pre,
+    triggerOperation: TriggerOperation.Create
+}
+```
 
 Der entsprechende clientseitige Node.js-Registrierungscode für den Trigger sieht wie folgt aus:
 
-    // register pre-trigger
-    client.createTriggerAsync(collection.self, validateDocumentContentsTrigger)
-        .then(function (response) {
-            console.log("Created", response.resource);
-            var docToCreate = {
-                id: "DocWithTrigger",
-                event: "Error",
-                source: "Network outage"
-            };
-
-            // run trigger while creating above document 
-            var options = { preTriggerInclude: "validateDocumentContents" };
-
-            return client.createDocumentAsync(collection.self,
-                  docToCreate, options);
-        }, function (error) {
-            console.log("Error", error);
-        })
+```javascript
+// register pre-trigger
+client.createTriggerAsync(collection.self, validateDocumentContentsTrigger)
     .then(function (response) {
-        console.log(response.resource); // document with timestamp property added
+        console.log("Created", response.resource);
+        var docToCreate = {
+            id: "DocWithTrigger",
+            event: "Error",
+            source: "Network outage"
+        };
+
+        // run trigger while creating above document 
+        var options = { preTriggerInclude: "validateDocumentContents" };
+
+        return client.createDocumentAsync(collection.self,
+              docToCreate, options);
     }, function (error) {
         console.log("Error", error);
-    });
-
+    })
+.then(function (response) {
+    console.log(response.resource); // document with timestamp property added
+}, function (error) {
+    console.log("Error", error);
+});
+```
 
 Vorangestellte Trigger können keine Eingabeparameter übernehmen. Das Anforderungsobjekt kann dazu verwendet werden, um die Anforderungsnachricht zu verändern, die dem Vorgang zugeordnet ist. Hier wird der vorangestellte Trigger mit der Erstellung eines Dokuments ausgeführt, und der Text der Anforderungsnachricht enthält das im JSON-Format zu erstellende Dokument.   
 
 Wenn Trigger registriert werden, können die Benutzer die Vorgänge angeben, mit denen sie ausgeführt werden können. Der folgende Trigger wurde mit TriggerOperation.Create erstellt, d.h., es ist nicht zulässig, den Trigger wie im folgenden Code in einem Ersetzungsvorgang zu verwenden.
 
-    var options = { preTriggerInclude: "validateDocumentContents" };
+```javascript
+var options = { preTriggerInclude: "validateDocumentContents" };
 
-    client.replaceDocumentAsync(docToReplace.self,
-                  newDocBody, options)
-    .then(function (response) {
-        console.log(response.resource);
-    }, function (error) {
-        console.log("Error", error);
-    });
+client.replaceDocumentAsync(docToReplace.self,
+              newDocBody, options)
+.then(function (response) {
+    console.log(response.resource);
+}, function (error) {
+    console.log("Error", error);
+});
 
-    // Fails, can’t use a create trigger in a replace operation
+// Fails, can’t use a create trigger in a replace operation
 
-### <a name="database-post-triggers"></a>Nachgestellte Datenbanktrigger
-Nachgestellte Trigger werden wie vorangestellte Trigger einem Vorgang zugeordnet, der für ein Dokument ausgeführt wird. Auch dieser Trigger übernimmt keine Eingabeparameter. Sie werden ausgeführt, **nachdem** der Vorgang abgeschlossen ist, und haben Zugriff auf die Antwortnachricht, die an den Client gesendet wird.   
+### Database post-triggers
+Post-triggers, like pre-triggers, are associated with an operation on a document and don’t take any input parameters. They run **after** the operation has completed, and have access to the response message that is sent to the client.   
 
-Das folgende Beispiel veranschaulicht nachgestellte Trigger:
+The following example shows post-triggers in action:
 
-    var updateMetadataTrigger = {
-        id: "updateMetadata",
-        serverScript: function updateMetadata() {
-            var context = getContext();
-            var collection = context.getCollection();
-            var response = context.getResponse();
+var updateMetadataTrigger = {
+    id: "updateMetadata",
+    serverScript: function updateMetadata() {
+        var context = getContext();
+        var collection = context.getCollection();
+        var response = context.getResponse();
 
-            // document that was created
-            var createdDocument = response.getBody();
+        // document that was created
+        var createdDocument = response.getBody();
 
-            // query for metadata document
-            var filterQuery = 'SELECT * FROM root r WHERE r.id = "_metadata"';
-            var accept = collection.queryDocuments(collection.getSelfLink(), filterQuery,
-                updateMetadataCallback);
-            if(!accept) throw "Unable to update metadata, abort";
+        // query for metadata document
+        var filterQuery = 'SELECT * FROM root r WHERE r.id = "_metadata"';
+        var accept = collection.queryDocuments(collection.getSelfLink(), filterQuery,
+            updateMetadataCallback);
+        if(!accept) throw "Unable to update metadata, abort";
 
-            function updateMetadataCallback(err, documents, responseOptions) {
-                if(err) throw new Error("Error" + err.message);
-                         if(documents.length != 1) throw 'Unable to find metadata document';
+        function updateMetadataCallback(err, documents, responseOptions) {
+            if(err) throw new Error("Error" + err.message);
+                     if(documents.length != 1) throw 'Unable to find metadata document';
 
-                         var metadataDocument = documents[0];
+                     var metadataDocument = documents[0];
 
-                         // update metadata
-                         metadataDocument.createdDocuments += 1;
-                         metadataDocument.createdNames += " " + createdDocument.id;
-                         var accept = collection.replaceDocument(metadataDocument._self,
-                               metadataDocument, function(err, docReplaced) {
-                                      if(err) throw "Unable to update metadata, abort";
-                               });
-                         if(!accept) throw "Unable to update metadata, abort";
-                         return;                    
-            }                                                                                            
-        },
-        triggerType: TriggerType.Post,
-        triggerOperation: TriggerOperation.All
-    }
+                     // update metadata
+                     metadataDocument.createdDocuments += 1;
+                     metadataDocument.createdNames += " " + createdDocument.id;
+                     var accept = collection.replaceDocument(metadataDocument._self,
+                           metadataDocument, function(err, docReplaced) {
+                                  if(err) throw "Unable to update metadata, abort";
+                           });
+                     if(!accept) throw "Unable to update metadata, abort";
+                     return;                    
+        }                                                                                            
+    },
+    triggerType: TriggerType.Post,
+    triggerOperation: TriggerOperation.All
+}
 
 
-Der Trigger kann, wie im folgenden Beispiel gezeigt, registriert werden.
+The trigger can be registered as shown in the following sample.
 
-    // register post-trigger
-    client.createTriggerAsync('dbs/testdb/colls/testColl', updateMetadataTrigger)
-        .then(function(createdTrigger) { 
-            var docToCreate = { 
-                name: "artist_profile_1023",
-                artist: "The Band",
-                albums: ["Hellujah", "Rotators", "Spinning Top"]
-            };
+// register post-trigger
+client.createTriggerAsync('dbs/testdb/colls/testColl', updateMetadataTrigger)
+    .then(function(createdTrigger) { 
+        var docToCreate = { 
+            name: "artist_profile_1023",
+            artist: "The Band",
+            albums: ["Hellujah", "Rotators", "Spinning Top"]
+        };
 
-            // run trigger while creating above document 
-            var options = { postTriggerInclude: "updateMetadata" };
+        // run trigger while creating above document 
+        var options = { postTriggerInclude: "updateMetadata" };
 
-            return client.createDocumentAsync(collection.self,
-                  docToCreate, options);
-        }, function(error) {
-            console.log("Error" , error);
-        })
-    .then(function(response) {
-        console.log(response.resource); 
+        return client.createDocumentAsync(collection.self,
+              docToCreate, options);
     }, function(error) {
         console.log("Error" , error);
-    });
-
+    })
+.then(function(response) {
+    console.log(response.resource); 
+}, function(error) {
+    console.log("Error" , error);
+});
+```
 
 Dieser Trigger fragt das Metadatendokument ab und aktualisiert es mit den Details zum neu erstellten Dokument.  
 
@@ -457,42 +468,45 @@ Mithilfe von benutzerdefinierten Funktionen (UDFs) ist es möglich, die Grammati
 
 Das folgende Beispiel erstellt eine UDF, um die Einkommenssteuer auf Basis der Sätze verschiedener Einkommensgruppen zu berechnen. Dann werden sie innerhalb einer Abfrage ausgeführt, um alle Personen zu finden, die mehr als 20.000 $ Steuern gezahlt haben.
 
-    var taxUdf = {
-        id: "tax",
-        serverScript: function tax(income) {
+```javascript
+var taxUdf = {
+    id: "tax",
+    serverScript: function tax(income) {
 
-            if(income == undefined) 
-                throw 'no input';
+        if(income == undefined) 
+            throw 'no input';
 
-            if (income < 1000) 
-                return income * 0.1;
-            else if (income < 10000) 
-                return income * 0.2;
-            else
-                return income * 0.4;
-        }
+        if (income < 1000) 
+            return income * 0.1;
+        else if (income < 10000) 
+            return income * 0.2;
+        else
+            return income * 0.4;
     }
-
+}
+```
 
 Die UDF kann anschließend wie im folgenden Beispiel in Abfragen verwendet werden:
 
-    // register UDF
-    client.createUserDefinedFunctionAsync('dbs/testdb/colls/testColl', taxUdf)
-        .then(function(response) { 
-            console.log("Created", response.resource);
+```javascript
+// register UDF
+client.createUserDefinedFunctionAsync('dbs/testdb/colls/testColl', taxUdf)
+    .then(function(response) { 
+        console.log("Created", response.resource);
 
-            var query = 'SELECT * FROM TaxPayers t WHERE udf.tax(t.income) > 20000'; 
-            return client.queryDocuments('dbs/testdb/colls/testColl',
-                   query).toArrayAsync();
-        }, function(error) {
-            console.log("Error" , error);
-        })
-    .then(function(response) {
-        var documents = response.feed;
-        console.log(response.resource); 
+        var query = 'SELECT * FROM TaxPayers t WHERE udf.tax(t.income) > 20000'; 
+        return client.queryDocuments('dbs/testdb/colls/testColl',
+               query).toArrayAsync();
     }, function(error) {
         console.log("Error" , error);
-    });
+    })
+.then(function(response) {
+    var documents = response.feed;
+    console.log(response.resource); 
+}, function(error) {
+    console.log("Error" , error);
+});
+```
 
 ## <a name="javascript-language-integrated-query-api"></a>JavaScript-Language Integrated Query (LINQ)-API
 Zusätzlich zu Abfragen mit der SQL-Grammatik von Azure Cosmos DB ermöglicht das serverseitige SDK die Durchführung optimierter Abfragen mithilfe einer flüssigen JavaScript-Schnittstelle, die keinerlei SQL-Kenntnisse voraussetzt. Mit der JavaScript-Abfrage-API können Sie programmgesteuert Abfragen erstellen, indem Sie unter Verwendung einer Syntax, die mit den integrierten und weit verbreiteten JavaScript-Bibliotheken von ECMAScript5 wie Lodash vergleichbar ist, Prädikatfunktionen in verkettbare Funktionsaufrufe übergeben. Abfragen werden von der JavaScript-Laufzeit zur effizienten Ausführung mithilfe von Azure Cosmos DB-Indizes analysiert.
@@ -582,57 +596,59 @@ Weitere Informationen finden Sie in unseren [serverseitigen JSDocs](http://azure
 ### <a name="example-write-a-stored-procedure-using-the-javascript-query-api"></a>Beispiel: Schreiben einer gespeicherten Prozedur mit der JavaScript-Abfrage-API
 Das folgende Codebeispiel zeigt, wie die JavaScript-Abfrage-API im Kontext einer gespeicherten Prozedur verwendet werden kann. Die gespeicherte Prozedur fügt ein Dokument ein (angegeben durch einen Eingabeparameter) und aktualisiert mit der `__.filter()` -Methode ein Metadatendokument basierend auf der Size-Eigenschaft des Eingabedokuments mit „minSize“, „maxSize“ und „totalSize“.
 
-    /**
-     * Insert actual doc and update metadata doc: minSize, maxSize, totalSize based on doc.size.
-     */
-    function insertDocumentAndUpdateMetadata(doc) {
-      // HTTP error codes sent to our callback funciton by DocDB server.
-      var ErrorCode = {
-        RETRY_WITH: 449,
-      }
+```javascript
+/**
+ * Insert actual doc and update metadata doc: minSize, maxSize, totalSize based on doc.size.
+ */
+function insertDocumentAndUpdateMetadata(doc) {
+  // HTTP error codes sent to our callback funciton by DocDB server.
+  var ErrorCode = {
+    RETRY_WITH: 449,
+  }
 
-      var isAccepted = __.createDocument(__.getSelfLink(), doc, {}, function(err, doc, options) {
+  var isAccepted = __.createDocument(__.getSelfLink(), doc, {}, function(err, doc, options) {
+    if (err) throw err;
+
+    // Check the doc (ignore docs with invalid/zero size and metaDoc itself) and call updateMetadata.
+    if (!doc.isMetadata && doc.size > 0) {
+      // Get the meta document. We keep it in the same collection. it's the only doc that has .isMetadata = true.
+      var result = __.filter(function(x) {
+        return x.isMetadata === true
+      }, function(err, feed, options) {
         if (err) throw err;
 
-        // Check the doc (ignore docs with invalid/zero size and metaDoc itself) and call updateMetadata.
-        if (!doc.isMetadata && doc.size > 0) {
-          // Get the meta document. We keep it in the same collection. it's the only doc that has .isMetadata = true.
-          var result = __.filter(function(x) {
-            return x.isMetadata === true
-          }, function(err, feed, options) {
-            if (err) throw err;
+        // We assume that metadata doc was pre-created and must exist when this script is called.
+        if (!feed || !feed.length) throw new Error("Failed to find the metadata document.");
 
-            // We assume that metadata doc was pre-created and must exist when this script is called.
-            if (!feed || !feed.length) throw new Error("Failed to find the metadata document.");
+        // The metadata document.
+        var metaDoc = feed[0];
 
-            // The metadata document.
-            var metaDoc = feed[0];
+        // Update metaDoc.minSize:
+        // for 1st document use doc.Size, for all the rest see if it's less than last min.
+        if (metaDoc.minSize == 0) metaDoc.minSize = doc.size;
+        else metaDoc.minSize = Math.min(metaDoc.minSize, doc.size);
 
-            // Update metaDoc.minSize:
-            // for 1st document use doc.Size, for all the rest see if it's less than last min.
-            if (metaDoc.minSize == 0) metaDoc.minSize = doc.size;
-            else metaDoc.minSize = Math.min(metaDoc.minSize, doc.size);
+        // Update metaDoc.maxSize.
+        metaDoc.maxSize = Math.max(metaDoc.maxSize, doc.size);
 
-            // Update metaDoc.maxSize.
-            metaDoc.maxSize = Math.max(metaDoc.maxSize, doc.size);
+        // Update metaDoc.totalSize.
+        metaDoc.totalSize += doc.size;
 
-            // Update metaDoc.totalSize.
-            metaDoc.totalSize += doc.size;
-
-            // Update/replace the metadata document in the store.
-            var isAccepted = __.replaceDocument(metaDoc._self, metaDoc, function(err) {
-              if (err) throw err;
-              // Note: in case concurrent updates causes conflict with ErrorCode.RETRY_WITH, we can't read the meta again 
-              //       and update again because due to Snapshot isolation we will read same exact version (we are in same transaction).
-              //       We have to take care of that on the client side.
-            });
-            if (!isAccepted) throw new Error("replaceDocument(metaDoc) returned false.");
-          });
-          if (!result.isAccepted) throw new Error("filter for metaDoc returned false.");
-        }
+        // Update/replace the metadata document in the store.
+        var isAccepted = __.replaceDocument(metaDoc._self, metaDoc, function(err) {
+          if (err) throw err;
+          // Note: in case concurrent updates causes conflict with ErrorCode.RETRY_WITH, we can't read the meta again 
+          //       and update again because due to Snapshot isolation we will read same exact version (we are in same transaction).
+          //       We have to take care of that on the client side.
+        });
+        if (!isAccepted) throw new Error("replaceDocument(metaDoc) returned false.");
       });
-      if (!isAccepted) throw new Error("createDocument(actual doc) returned false.");
+      if (!result.isAccepted) throw new Error("filter for metaDoc returned false.");
     }
+  });
+  if (!isAccepted) throw new Error("createDocument(actual doc) returned false.");
+}
+```
 
 ## <a name="sql-to-javascript-cheat-sheet"></a>Cheat Sheet für SQL und Javascript
 In der folgenden Tabelle sind verschiedene SQL-Abfragen und die entsprechenden JavaScript-Abfragen aufgeführt.
@@ -669,74 +685,78 @@ Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen (UDFs) werden
 ## <a name="client-sdk-support"></a>Client-SDK-Unterstützung
 Zusätzlich zur Azure Cosmos DB-API für [Node.js](sql-api-sdk-node.md) verfügt Azure Cosmos DB über SDKs zu [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](http://azure.github.io/azure-documentdb-js/) und [Python](sql-api-sdk-python.md) für die SQL-API. Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen können mit jedem dieser SDKs erstellt und ausgeführt werden. Das folgende Beispiel zeigt, wie eine gespeicherte Prozedur mithilfe des .NET-Clients erstellt und ausgeführt wird. Beachten Sie, wie die .NET-Typen als JSON an die gespeicherte Prozedur übergeben und eingelesen werden.
 
-    var markAntiquesSproc = new StoredProcedure
-    {
-        Id = "ValidateDocumentAge",
-        Body = @"
-                function(docToCreate, antiqueYear) {
-                    var collection = getContext().getCollection();    
-                    var response = getContext().getResponse();    
+```javascript
+var markAntiquesSproc = new StoredProcedure
+{
+    Id = "ValidateDocumentAge",
+    Body = @"
+            function(docToCreate, antiqueYear) {
+                var collection = getContext().getCollection();    
+                var response = getContext().getResponse();    
 
-                    if(docToCreate.Year != undefined && docToCreate.Year < antiqueYear){
-                        docToCreate.antique = true;
-                    }
+                if(docToCreate.Year != undefined && docToCreate.Year < antiqueYear){
+                    docToCreate.antique = true;
+                }
 
-                    collection.createDocument(collection.getSelfLink(), docToCreate, {}, 
-                        function(err, docCreated, options) { 
-                            if(err) throw new Error('Error while creating document: ' + err.message);                              
-                            if(options.maxCollectionSizeInMb == 0) throw 'max collection size not found'; 
-                            response.setBody(docCreated);
-                    });
-             }"
-    };
+                collection.createDocument(collection.getSelfLink(), docToCreate, {}, 
+                    function(err, docCreated, options) { 
+                        if(err) throw new Error('Error while creating document: ' + err.message);                              
+                        if(options.maxCollectionSizeInMb == 0) throw 'max collection size not found'; 
+                        response.setBody(docCreated);
+                });
+         }"
+};
 
-    // register stored procedure
-    StoredProcedure createdStoredProcedure = await client.CreateStoredProcedureAsync(UriFactory.CreateDocumentCollectionUri("db", "coll"), markAntiquesSproc);
-    dynamic document = new Document() { Id = "Borges_112" };
-    document.Title = "Aleph";
-    document.Year = 1949;
+// register stored procedure
+StoredProcedure createdStoredProcedure = await client.CreateStoredProcedureAsync(UriFactory.CreateDocumentCollectionUri("db", "coll"), markAntiquesSproc);
+dynamic document = new Document() { Id = "Borges_112" };
+document.Title = "Aleph";
+document.Year = 1949;
 
-    // execute stored procedure
-    Document createdDocument = await client.ExecuteStoredProcedureAsync<Document>(UriFactory.CreateStoredProcedureUri("db", "coll", "ValidateDocumentAge"), document, 1920);
-
+// execute stored procedure
+Document createdDocument = await client.ExecuteStoredProcedureAsync<Document>(UriFactory.CreateStoredProcedureUri("db", "coll", "ValidateDocumentAge"), document, 1920);
+```
 
 Dieses Beispiel zeigt, wie mit der [SQL-.NET-API](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) ein vorangestellter Trigger und ein Dokument mit aktiviertem Trigger erstellt werden. 
 
-    Trigger preTrigger = new Trigger()
+```javascript
+Trigger preTrigger = new Trigger()
+{
+    Id = "CapitalizeName",
+    Body = @"function() {
+        var item = getContext().getRequest().getBody();
+        item.id = item.id.toUpperCase();
+        getContext().getRequest().setBody(item);
+    }",
+    TriggerOperation = TriggerOperation.Create,
+    TriggerType = TriggerType.Pre
+};
+
+Document createdItem = await client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri("db", "coll"), new Document { Id = "documentdb" },
+    new RequestOptions
     {
-        Id = "CapitalizeName",
-        Body = @"function() {
-            var item = getContext().getRequest().getBody();
-            item.id = item.id.toUpperCase();
-            getContext().getRequest().setBody(item);
-        }",
-        TriggerOperation = TriggerOperation.Create,
-        TriggerType = TriggerType.Pre
-    };
-
-    Document createdItem = await client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri("db", "coll"), new Document { Id = "documentdb" },
-        new RequestOptions
-        {
-            PreTriggerInclude = new List<string> { "CapitalizeName" },
-        });
-
+        PreTriggerInclude = new List<string> { "CapitalizeName" },
+    });
+```
 
 Das nachfolgende Beispiel veranschaulicht die Erstellung einer benutzerdefinierten Funktion (UDF) und deren Verwendung in einer [SQL-Abfrage](sql-api-sql-query.md).
 
-    UserDefinedFunction function = new UserDefinedFunction()
+```javascript
+UserDefinedFunction function = new UserDefinedFunction()
+{
+    Id = "LOWER",
+    Body = @"function(input) 
     {
-        Id = "LOWER",
-        Body = @"function(input) 
-        {
-            return input.toLowerCase();
-        }"
-    };
+        return input.toLowerCase();
+    }"
+};
 
-    foreach (Book book in client.CreateDocumentQuery(UriFactory.CreateDocumentCollectionUri("db", "coll"),
-        "SELECT * FROM Books b WHERE udf.LOWER(b.Title) = 'war and peace'"))
-    {
-        Console.WriteLine("Read {0} from query", book);
-    }
+foreach (Book book in client.CreateDocumentQuery(UriFactory.CreateDocumentCollectionUri("db", "coll"),
+    "SELECT * FROM Books b WHERE udf.LOWER(b.Title) = 'war and peace'"))
+{
+    Console.WriteLine("Read {0} from query", book);
+}
+```
 
 ## <a name="rest-api"></a>REST-API
 Alle Azure Cosmos DB-Vorgänge können RESTful-basiert ausgeführt werden. Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen können mithilfe von HTTP POST unter einer Collection registriert werden. Nachfolgend sehen Sie ein Beispiel für die Registrierung einer gespeicherten Prozedur:
@@ -779,12 +799,12 @@ Hier wird die Eingabe für die gespeicherte Prozedur im Anforderungstext überge
 
     { 
       name: 'TestDocument',
-      book: ‘Autumn of the Patriarch’,
-      id: ‘V7tQANV3rAkDAAAAAAAAAA==‘,
+      book: 'Autumn of the Patriarch',
+      id: 'V7tQANV3rAkDAAAAAAAAAA==',
       ts: 1407830727,
-      self: ‘dbs/V7tQAA==/colls/V7tQANV3rAk=/docs/V7tQANV3rAkDAAAAAAAAAA==/’,
-      etag: ‘6c006596-0000-0000-0000-53e9cac70000’,
-      attachments: ‘attachments/’,
+      self: 'dbs/V7tQAA==/colls/V7tQANV3rAk=/docs/V7tQANV3rAkDAAAAAAAAAA==/',
+      etag: '6c006596-0000-0000-0000-53e9cac70000',
+      attachments: 'attachments/',
       Price: 200
     }
 
@@ -797,12 +817,11 @@ Trigger können im Gegensatz zu gespeicherten Prozeduren nicht direkt ausgeführ
     x-ms-documentdb-pre-trigger-include: validateDocumentContents 
     x-ms-documentdb-post-trigger-include: bookCreationPostTrigger
 
-
     {
        "name": "newDocument",
-       “title”: “The Wizard of Oz”,
-       “author”: “Frank Baum”,
-       “pages”: 92
+       "title": "The Wizard of Oz",
+       "author": "Frank Baum",
+       "pages": 92
     }
 
 

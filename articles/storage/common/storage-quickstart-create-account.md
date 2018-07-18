@@ -3,17 +3,18 @@ title: 'Azure-Schnellstartanleitung: Erstellen eines Speicherkontos | Microsoft-
 description: Hier erfahren Sie, wie Sie über das Azure-Portal, mithilfe von Azure PowerShell oder über die Azure-Befehlszeilenschnittstelle ein neues Speicherkonto erstellen.
 services: storage
 author: tamram
-manager: jeconnoc
+manager: twooley
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 01/19/2018
+ms.date: 07/03/2018
 ms.author: tamram
-ms.openlocfilehash: 1dffceb629df5d0197bfc8ac66120df3912d70b1
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 92215c759cd51ce429708ec54b17722c486b7ca6
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856527"
 ---
 # <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
@@ -57,7 +58,7 @@ Sie können die Azure-Befehlszeilenschnittstelle auch lokal installieren und ver
 
 ---
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="log-in-to-azure"></a>Anmelden bei Azure
 
 # <a name="portaltabportal"></a>[Portal](#tab/portal)
 
@@ -164,7 +165,7 @@ Führen Sie diese Schritte aus, wenn Sie ein allgemeines Speicherkonto vom Typ �
 1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf **Alle Dienste**. Scrollen Sie anschließend nach unten zu **Speicher** und klicken Sie auf **Speicherkonten**. Klicken Sie im angezeigten Fenster **Speicherkonten** auf **Hinzufügen**.
 2. Geben Sie einen Namen für Ihr Speicherkonto ein.
 3. Legen Sie das Feld **Kontoart** auf **StorageV2 (General Purpose v2)** fest.
-4. Übernehmen Sie für das Feld **Replikation** die Einstellung **Lokal redundanter Speicher (LRS)**. Alternativ hierzu können Sie **Zonenredundanter Speicher (ZRS – Vorschau)**, **Georedundanter Speicher (GRS)** oder **Read-Access Geo Redundant-Speicher (RA-GRS)** wählen.
+4. Übernehmen Sie für das Feld **Replikation** die Einstellung **Lokal redundanter Speicher (LRS)**. Alternativ hierzu können Sie **Zonenredundanter Speicher (ZRS)**, **Georedundanter Speicher (GRS)** oder **Read-Access Geo Redundant-Speicher (RA-GRS)** wählen.
 5. Behalten Sie in den folgenden Feldern die Standardwerte bei: **Bereitstellungsmodell****Leistung**, **Sichere Übertragung erforderlich**.
 6. Wählen Sie das Abonnement aus, in dem Sie das Speicherkonto erstellen möchten.
 7. Wählen Sie im Abschnitt **Ressourcengruppe** die Option **Vorhandene verwenden** und anschließend die Ressourcengruppe aus, die Sie im vorherigen Abschnitt erstellt haben.
@@ -185,7 +186,7 @@ New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Kind StorageV2 
 ```
 
-Fügen Sie zum Erstellen eines Speicherkontos vom Typ „General Purpose v2“ mit zonenredundantem Speicher (ZRS – Vorschau), georedundantem Speicher (GRS) oder georedundantem Speicher mit Lesezugriff (RA-GRS) den gewünschten Wert in der Tabelle unten für den Parameter **SkuName** ein. 
+Fügen Sie zum Erstellen eines Speicherkontos vom Typ „General Purpose v2“ mit zonenredundantem Speicher (ZRS) (Vorschau), georedundantem Speicher (GRS) oder georedundantem Speicher mit Lesezugriff (RA-GRS) den gewünschten Wert in der Tabelle unten für den Parameter **SkuName** ein. 
 
 |Replikationsoption  |SkuName-Parameter  |
 |---------|---------|
@@ -218,13 +219,7 @@ Fügen Sie zum Erstellen eines Speicherkontos vom Typ „General Purpose v2“ m
 
 ---
 
-> [!NOTE]
-> Der [zonenredundante Speicher](https://azure.microsoft.com/blog/announcing-public-preview-of-azure-zone-redundant-storage/preview/) befindet sich derzeit in der Vorschauphase und ist nur für die folgenden Standorte verfügbar:
->    - USA (Ost 2)
->    - USA, Mitte
->    - Frankreich, Mitte (Diese Region ist derzeit in der Vorschauversion verfügbar. Informationen zum Anfordern des Zugriffs finden Sie unter [Microsoft Azure preview with Azure Availability Zones now open in France](https://azure.microsoft.com/blog/microsoft-azure-preview-with-azure-availability-zones-now-open-in-france) (Vorschauversion von Microsoft Azure mit Azure-Verfügbarkeitszonen jetzt auch in Frankreich).)
-    
-Weitere Informationen zu den verschiedenen Replikationsarten, die verfügbar sind, finden Sie unter [Azure Storage-Replikation](storage-redundancy.md).
+Weitere Informationen zu verfügbaren Replikationsoptionen finden Sie unter [Azure Storage-Replikation](storage-redundancy.md).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

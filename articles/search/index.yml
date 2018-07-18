@@ -13,11 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/01/2018
   ms.author: heidist
-  ms.openlocfilehash: ac99a23ede3a8adbf60d210b74f642ce4b0131a4
-  ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+  ms.openlocfilehash: 7c03fba9071225453b059d6bcaf9cac1be9a9f02
+  ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/10/2018
+  ms.lasthandoff: 07/02/2018
+  ms.locfileid: "37341823"
 abstract:
   description: Hier erfahren Sie, wie Sie mit Azure Search eine Unternehmenslösung für die Suche über private, heterogene Inhalte erstellen. Tutorials, API-Referenzen und weitere Dokumente enthalten Informationen zum Zusammenfassen durchsuchbarer Inhalte in einem einzelnen schnellen Index, der für eine Vielzahl von Szenarien mit einfacher, aber auch komplexerer Syntax abgefragt werden kann. <p/><b>Neue Vorschauversion für Cognitive Search.</b> Verwenden Sie eine Vorabversion der REST-API, um KI-basierte Algorithmen an die Indizierungspipeline zu binden. Extrahieren Sie Daten und rufen Sie die Verarbeitung von natürlicher Sprache und Bildern auf, um Rohdaten in unstrukturierten Inhalten in durchsuchbare Inhalte in einem Azure Search-Index umzuwandeln. <p/>Fangen Sie mit <a href="/azure/search/cognitive-search-quickstart-blob">Ressourcen und Beispieldaten</a> an, oder erfahren Sie mehr <a href="/azure/search/cognitive-search-concept-intro">Konzepte</a>.
   aside:
@@ -61,6 +62,7 @@ sections:
     - html: <a href="/azure/search/search-indexer-tutorial">Indizieren von Azure SQL-Datenbankinhalten mit .NET</a>
     - html: <a href="/azure/search/search-semi-structured-data">Indizieren von teilweise strukturierten Daten in Azure Blob Storage mit REST</a>
     - html: <a href="/azure/search/search-synonyms-tutorial-sdk">Hinzufügen von Synonymen, um Ergebnisse für entsprechende Begriffe zurückzugeben</a>
+    - html: <a href="/azure/search/search-autocomplete-tutorial">Hinzufügen der automatischen Vervollständigung zu einem Suchfeld mit .NET</a>
     - html: <a href="/azure/search/search-get-started-portal">Verwenden des Portals zum Indizieren und Testen von Abfragen</a>
 - title: Verweis
   items:
@@ -69,6 +71,6 @@ sections:
     className: cardsD
     items:
     - title: Sprachen
-      html: <p><a href="/dotnet/api/?term=microsoft.azure.search">.NET</a></p><p><a href="/dotnet/api/?term=microsoft.azure.management.search">.NET (Verwaltung)</a></p><p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html">Python (Verwaltung)</a></p>
+      html: <p><a href="/dotnet/api/?term=microsoft.azure.search">.NET</a></p><p><a href="/dotnet/api/?term=microsoft.azure.management.search">.NET (Verwaltung)</a></p><p><a href="https://docs.microsoft.com/python/api/azure.mgmt.search">Python (Verwaltung)</a></p>
     - title: REST
       html: <p><a href="/rest/api/searchservice">Referenz zur Dienst-API</a></p><p><a href="/rest/api/searchmanagement">Referenz zur Verwaltungs-API</a></p>

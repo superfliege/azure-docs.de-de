@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: jgao
-ms.openlocfilehash: 4cf20dacf66ee334dcd455ce1770609c175d3b88
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c49371d194b3b6f94076cb00595ec9feaeb3fb44
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096399"
 ---
 # <a name="quickstart-get-started-with-hadoop-and-hive-in-azure-hdinsight-using-resource-manager-template"></a>Schnellstart: Erste Schritte mit Hadoop und Hive in Azure HDInsight mit der Resource Manager-Vorlage
 
@@ -77,6 +78,110 @@ In diesem Abschnitt erstellen Sie einen Hadoop-Cluster in HDInsight mit einer Az
 > Andere Methoden zur Erstellung von Clustern und Informationen zu den in diesem Tutorial verwendeten Eigenschaften finden Sie unter [Erstellen von HDInsight-Clustern](../hdinsight-hadoop-provision-linux-clusters.md).       
 > 
 >
+
+## <a name="use-vscode-to-run-hive-queries"></a>Ausführen von Hive-Abfragen mithilfe von VS Code
+
+Informationen zur Verwendung von HDInsight Tools in VS Code finden Sie unter [Verwenden von Azure HDInsight Tools for Visual Studio Code](../hdinsight-for-vscode.md).
+
+### <a name="submit-interactive-hive-queries"></a>Übermitteln interaktiver Hive-Abfragen
+
+Mit HDInsight Tools for Visual Studio Code können Sie interaktive Hive-Abfragen an HDInsight Interactive Query-Cluster übermitteln.
+
+1. Erstellen Sie einen neuen Arbeitsordner und eine neue Hive-Skriptdatei, falls Sie über keine verfügen.
+
+2. Stellen Sie eine Verbindung mit Ihrem Azure-Konto her, und konfigurieren Sie anschließend den Standardcluster, sofern Sie diese Schritte noch nicht ausgeführt haben.
+
+3. Kopieren Sie den folgenden Code, fügen Sie ihn in Ihre Hive-Datei ein, und speichern Sie sie.
+
+    ```hiveql
+    SELECT * FROM hivesampletable;
+    ```
+4. Klicken Sie mit der rechten Maustaste auf den Skript-Editor, und klicken Sie anschließend auf **HDInsight: Hive Interactive** (HDInsight: Hive (interaktiv)), um die Abfrage zu übermitteln. Über das Kontextmenü können Sie anstelle der gesamten Skriptdatei auch einen Codeblock übermitteln. Das Abfrageergebnis wird kurz darauf auf einer neuen Registerkarte angezeigt.
+
+   ![Interactive Hive-Ergebnis](./media/apache-hadoop-linux-tutorial-get-started/interactive-hive-result.png)
+
+    - Bereich **ERGEBNISSE**: Sie können das gesamte Ergebnis als CSV-, JSON- oder Excel-Datei an einem lokalen Pfad speichern oder einfach mehrere Zeilen auswählen.
+
+    - Bereich **MELDUNGEN**: Wenn Sie auf die **Zeilennummer** klicken, gelangen Sie zur ersten Zeile des derzeit ausgeführten Skripts.
+
+Verglichen mit dem [Ausführen eines Hive-Batchauftrags](#submit-hive-batch-scripts) nimmt die interaktive Abfrage deutlich weniger Zeit in Anspruch.
+
+### <a name="submit-hive-batch-scripts"></a>Übermitteln von Hive-Batchskripts
+
+1. Erstellen Sie einen neuen Arbeitsordner und eine neue Hive-Skriptdatei, falls Sie über keine verfügen.
+
+2. Stellen Sie eine Verbindung mit Ihrem Azure-Konto her, und konfigurieren Sie anschließend den Standardcluster, sofern Sie diese Schritte noch nicht ausgeführt haben.
+
+3. Kopieren Sie den folgenden Code, fügen Sie ihn in Ihre Hive-Datei ein, und speichern Sie sie.
+
+    ```hiveql
+    SELECT * FROM hivesampletable;
+    ```
+4. Klicken Sie mit der rechten Maustaste auf den Skript-Editor, und klicken Sie anschließend auf **HDInsight: Hive Batch**, um einen Hive-Auftrag zu übermitteln. 
+
+5. Wählen Sie den gewünschten Zielcluster für die Übermittlung aus.  
+
+    Nach der Übermittlung eines Hive-Auftrags werden die Informationen zur erfolgreichen Übermittlung und die Auftrags-ID im Bereich **AUSGABE** angezeigt. Der Hive-Auftrag öffnet auch den **Webbrowser**, in dem die Auftragsprotokolle und der Status in Echtzeit angezeigt werden.
+
+   ![Übermitteln des Hive-Auftragsergebnisses](./media/apache-hadoop-linux-tutorial-get-started/submit-Hivejob-result.png)
+
+Das [Übermitteln interaktiver Hive-Abfragen](#submit-interactive-hive-queries) nimmt deutlich weniger Zeit in Anspruch als das Übermitteln eines Batchauftrags.
+
+## <a name="use-visualstudio-to-run-hive-queries"></a>Ausführen von Hive-Abfragen mithilfe von Visual Studio
+
+Informationen zur Verwendung von HDInsight Tools in Visual Studio finden Sie unter [Herstellen einer Verbindung mit Azure HDInsight und Ausführen von Hive-Abfragen mithilfe von Data Lake Tools für Visual Studio](./apache-hadoop-visual-studio-tools-get-started.md).
+
+### <a name="run-hive-queries"></a>Ausführen von Hive-Abfragen
+
+Zum Erstellen und Ausführen von Hive-Abfragen stehen Ihnen zwei Möglichkeiten zur Auswahl:
+
+* Erstellen von Ad-hoc-Abfragen
+* Erstellen einer Hive-Anwendung
+
+So können Sie Ad-hoc-Abfragen erstellen und ausführen:
+
+1. Klicken Sie im **Server-Explorer** auf **Azure** > **HDInsight-Cluster**.
+
+2. Klicken Sie mit der rechten Maustaste auf den Cluster, in dem Sie die Abfrage ausführen möchten, und wählen Sie dann **Write a Hive Query** (Hive-Abfrage schreiben) aus.  
+
+3. Geben Sie die Hive-Abfragen ein. 
+
+    Der Hive-Editor unterstützt IntelliSense. Data Lake Tools für Visual Studio unterstützt das Laden von Remotemetadaten, wenn Sie Ihr Hive-Skript bearbeiten. Wenn Sie beispielsweise **SELECT * FROM** eingeben, listet IntelliSense alle vorgeschlagenen Tabellennamen auf. Wird ein Tabellenname angegeben, listet IntelliSense die Spaltennamen auf. Die Tools unterstützen die meisten Hive-DML-Anweisungen, Unterabfragen und integrierte UDFs.
+   
+    ![Screenshot von Beispiel 1 für HDInsight Visual Studio-Tools](./media/apache-hadoop-linux-tutorial-get-started/vs-intellisense-table-name.png "U-SQL IntelliSense")
+   
+    ![Screenshot von Beispiel 2 für HDInsight Visual Studio-Tools](./media/apache-hadoop-linux-tutorial-get-started/vs-intellisense-column-name.png "U-SQL IntelliSense")
+   
+   > [!NOTE]
+   > IntelliSense schlägt nur die Metadaten des Clusters vor, der auf der HDInsight-Symbolleiste ausgewählt ist.
+   > 
+   
+4. Klicken Sie auf **Submit** (Senden) oder **Submit (Advanced)** (Erweitertes Senden). 
+   
+    ![Screenshot: Übermitteln einer Hive-Abfrage](./media/apache-hadoop-linux-tutorial-get-started/vs-batch-query.png)
+
+   Wenn Sie die Option für erweitertes Senden auswählen, konfigurieren Sie den **Auftragsnamen**, **Argumente**, **zusätzliche Konfigurationen** und das **Statusverzeichnis** für das Skript:
+
+    ![Screenshot einer HDInsight Hadoop Hive-Abfrage](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.submit.jobs.advanced.png "Übermitteln von Abfragen")
+
+   Ausführen interaktiver Hive-Abfragen
+
+   * Klicken Sie auf den Abwärtspfeil, und wählen Sie **Interaktiv** aus. 
+   
+   * Klicken Sie auf **Ausführen**.
+
+   ![Screenshot: Ausführen interaktiver Hive-Abfragen](./media/apache-hadoop-linux-tutorial-get-started/vs-execute-hive-query.png)
+
+So erstellen Sie eine Hive-Lösung und führen Sie sie aus:
+
+1. Klicken Sie im Menü **Datei** auf **Neu** und anschließend auf **Projekt**.
+2. Wählen Sie im linken Bereich **HDInsight** aus. Wählen Sie im mittleren Bereich **Hive Application** (Hive-Anwendung) aus. Geben Sie die Eigenschaften ein, und klicken Sie dann auf **OK**.
+   
+    ![Screenshot eines neuen Hive-Projekts in den HDInsight Visual Studio-Tools](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.new.hive.project.png "Erstellen von Hive-Anwendungen in Visual Studio")
+3. Doppelklicken Sie im **Projektmappen-Explorer** auf **Script.hql**, um das Skript zu öffnen.
+4. Geben Sie die Hive-Abfragen ein, und klicken Sie auf „Übermitteln“. (Schritte 3 und 4 weiter oben)  
+
+
 
 ## <a name="run-hive-queries"></a>Ausführen von Hive-Abfragen
 
@@ -150,6 +255,7 @@ In diesem Artikel haben Sie erfahren, wie Sie mithilfe einer Resource Manager-Vo
 Wenn Sie mit eigenen Daten arbeiten und mehr darüber wissen möchten, wie Daten in HDInsight gespeichert oder verwendet werden, finden Sie weitere Informationen in folgenden Artikeln:
 
 * Informationen zur Verwendung von Azure Storage durch HDInsight finden Sie unter [Verwenden von Azure Storage mit HDInsight](../hdinsight-hadoop-use-blob-storage.md).
+* Informationen zur Erstellung eines HDInsight-Clusters mit Data Lake Storage finden Sie unter [Schnellstart: Einrichten von Hadoop-Clustern in HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 * Informationen zum Hochladen von Daten in HDInsight finden Sie im Artikel zum [Hochladen von Daten für Hadoop-Aufträge in HDInsight](../hdinsight-upload-data.md).
 
 Weitere Informationen zur Datenanalyse mit HDInsight finden Sie in den folgenden Artikeln:
@@ -158,7 +264,7 @@ Weitere Informationen zur Datenanalyse mit HDInsight finden Sie in den folgenden
 * Informationen zu Pig (eine Sprache zum Transformieren von Daten) finden Sie im Artikel zum [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md).
 * Informationen zu MapReduce (einer Möglichkeit zum Schreiben von Programmen, die Daten in Hadoop verarbeiten) finden Sie im Artikel zum [Verwenden von MapReduce mit HDInsight](hdinsight-use-mapreduce.md).
 * Informationen zur Verwendung der HDInsight-Tools für Visual Studio zum Analysieren von Daten in HDInsight finden Sie unter [Erste Schritte bei der Verwendung von Hadoop-Tools für Visual Studio für HDInsight](apache-hadoop-visual-studio-tools-get-started.md).
-
+* Informationen zum Analysieren von Daten in HDInsight unter Verwendung von HDInsight Tools for Visual Studio Code finden Sie unter [Verwenden von Azure HDInsight Tools for Visual Studio Code](../hdinsight-for-vscode.md).
 
 
 Weitere Informationen zum Erstellen und Verwalten von HDInsight-Clustern finden Sie in folgenden Artikeln:

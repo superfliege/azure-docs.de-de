@@ -1,71 +1,65 @@
 ---
-title: Erkennen von Geräteproblemen in der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
+title: Erkennen von Geräteproblemen in einer Azure-basierten Lösung für die Remoteüberwachung | Microsoft-Dokumentation
 description: In diesem Tutorial wird erläutert, wie Sie mithilfe von Regeln und Aktionen automatisch schwellenwertbasierte Geräteprobleme in der Remoteüberwachungslösung erkennen können.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
-ms.date: 05/01/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: f3583b27b2fb9959e65a9c66a75c1174ebf3e238
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.date: 06/08/2018
+ms.topic: tutorial
+ms.custom: mvc
+ms.openlocfilehash: 1e3eaeec1d2eae3c36f285a3e4c536657504cbb8
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098480"
 ---
-# <a name="detect-issues-using-threshold-based-rules"></a>Erkennen von Problemen mithilfe schwellenwertbasierter Regeln
+# <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Tutorial: Erkennen von Problemen mit Geräten, die mit der Überwachungslösung verbunden sind
 
-In diesem Tutorial werden die Funktionen der Regel-Engine in der Remoteüberwachungslösung veranschaulicht. Zur Einführung dieser Funktionen wird in diesem Tutorial ein Szenario in der Contoso IoT-Anwendung verwendet.
+In diesem Tutorial konfigurieren Sie den Solution Accelerator für die Remoteüberwachung für die Erkennung von Problemen mit Ihren verbundenen IoT-Geräten. Zum Erkennen der Probleme für Ihre Geräte fügen Sie Regeln hinzu, mit denen im Lösungsdashboard Benachrichtigungen generiert werden.
 
-Contoso verfügt über eine Regel, die eine kritische Warnung generiert, wenn der von einem Gerät des Typs **Chiller** gemeldete Druck 250 PSI überschreitet. Als Bediener möchten Sie **Chiller**-Geräte identifizieren, die möglicherweise problematische Sensoren aufweisen, indem Sie nach Anfangsdruckspitzen suchen. Um diese Geräte zu identifizieren, erstellen Sie eine Regel, die eine Warnung generiert, wenn der Druck 150 PSI überschreitet.
+Zur Einführung von Regeln und Benachrichtigungen wird im Tutorial ein simuliertes Gerät vom Typ „Kältemaschine“ verwendet. Die Kältemaschine wird von der Organisation Contoso verwaltet und ist mit dem Solution Accelerator für die Remoteüberwachung verbunden. Contoso verfügt bereits über eine Regel, die eine kritische Benachrichtigung generiert, wenn der Druck in einer Kältemaschine auf über 298 PSI ansteigt. Als Bediener bei Contoso möchten Sie Geräte vom Typ „Kältemaschine“ identifizieren, die unter Umständen problematische Sensoren aufweisen, indem Sie nach Anfangsdruckspitzen suchen. Zum Identifizieren dieser Geräte fügen Sie eine Regel hinzu, mit der eine Warnungsbenachrichtigung generiert wird, wenn der Druck in der Kältemaschine auf mehr als 150 PSI ansteigt.
 
-Ihnen wurde auch gesagt, dass eine kritische Warnung ausgelöst werden muss, wenn die durchschnittliche Luftfeuchtigkeit des **Chiller**-Geräts in den letzten fünf Minuten über 80 Prozent lag und die Temperatur des **Chiller**-Geräts in den letzten fünf Minuten mehr als 75 Grad Fahrenheit betrug.
+Sie wurden außerdem gebeten, eine kritische Benachrichtigung für eine Kältemaschine zu erstellen, wenn innerhalb der letzten fünf Minuten die durchschnittliche Luftfeuchtigkeit im Gerät über 80% und die Temperatur des Geräts oberhalb von 75 Grad Fahrenheit gelegen hat.
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial haben Sie Folgendes durchgeführt:
 
 >[!div class="checklist"]
 > * Anzeigen der Regeln in der Lösung
-> * Neue Regel erstellen
-> * Erstellen einer neuen Regel mit mehreren Bedingungen
+> * Erstellen einer Regel
+> * Erstellen einer Regel mit mehreren Bedingungen
 > * Bearbeiten einer vorhandenen Regel
-> * Löschen einer Regel
+> * Ein- und Ausschalten von Regeln
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial benötigen Sie eine bereitgestellte Instanz der Remoteüberwachungslösung in Ihrem Azure-Abonnement.
+Für dieses Tutorial benötigen Sie eine bereitgestellte Instanz des Solution Accelerators für die Remoteüberwachung in Ihrem Azure-Abonnement.
 
-Sollten Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, absolvieren Sie zuerst das Tutorial [Bereitstellen des Solution Accelerators für die Remoteüberwachung](iot-accelerators-remote-monitoring-deploy.md).
+Falls Sie den Solution Accelerator für die Remoteüberwachung noch nicht bereitgestellt haben, sollten Sie die Schnellstartanleitung [Bereitstellen einer cloudbasierten Lösung für die Remoteüberwachung](quickstart-remote-monitoring-deploy.md) durcharbeiten.
 
-## <a name="view-the-rules-in-your-solution"></a>Anzeigen der Regeln in der Lösung
+## <a name="view-the-existing-rules"></a>Anzeigen der vorhandenen Regeln
 
-In der Lösung wird auf der Seite **Regeln** eine Liste mit allen aktuellen Regeln angezeigt:
+Im Solution Accelerator wird auf der Seite **Regeln** eine Liste mit allen aktuellen Regeln angezeigt:
 
-![Seite „Rules and Actions“ (Regeln und Aktionen)](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2.png)
+[![Seite „Regeln“](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-expanded.png#lightbox)
 
-Wenden Sie einen Filter an, um nur die Regeln anzuzeigen, die für **Chiller**-Geräte gelten:
+Wenden Sie einen Filter an, um nur die Regeln anzuzeigen, die für Geräte vom Typ „Kältemaschine“ gelten:
 
-![Filtern der Regelliste](./media/iot-accelerators-remote-monitoring-automate/rulesactionsfilter_v2.png)
+[![Filtern der Regelliste](./media/iot-accelerators-remote-monitoring-automate/rulesactionsfilter_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsfilter_v2-expanded.png#lightbox)
 
 Sie können weitere Informationen zu einer Regel anzeigen und diese bearbeiten, wenn Sie sie in der Liste auswählen:
 
-![Anzeigen der Regeldetails](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdetail_v2.png)
+[![Anzeigen der Regeldetails](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdetail_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdetail_v2-expanded.png#lightbox)
 
-Wählen Sie zum Deaktivieren, Aktivieren oder Löschen einer oder mehrerer Regeln mehrere Regeln in der Liste aus:
+Wählen Sie in der Liste mindestens eine Regel aus, um eine oder mehrere Regeln zu deaktivieren oder zu aktivieren:
 
-![Auswählen mehrerer Regeln](./media/iot-accelerators-remote-monitoring-automate/rulesactionsmultiselect_v2.png)
+[![Auswählen mehrerer Regeln](./media/iot-accelerators-remote-monitoring-automate/rulesactionsmultiselect_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsmultiselect_v2-expanded.png#lightbox)
 
-## <a name="create-a-new-rule"></a>Neue Regel erstellen
+## <a name="create-a-rule"></a>Erstellen einer Regel
 
-Um eine neue Regel hinzuzufügen, die eine Warnung generiert, wenn der Druck in einem **Chiller**-Gerät 150 PSI überschreitet, wählen Sie **New rule** (Neue Regel) aus:
-
-![Erstellen einer Regel](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_v2.png)
-
-Verwenden Sie zum Erstellen der Regel die folgenden Werte:
+Klicken Sie auf **New rule** (Neue Regel), um eine Regel zu erstellen, die eine Warnung generiert, wenn der Druck in einer Kältemaschine auf mehr als 150 PSI ansteigt. Verwenden Sie zum Erstellen der Regel die folgenden Werte:
 
 | Einstellung          | Wert                                 |
 | ---------------- | ------------------------------------- |
@@ -78,17 +72,17 @@ Verwenden Sie zum Erstellen der Regel die folgenden Werte:
 | Wert für die erste Bedingung    | 150                               |
 | Schweregrad  | Warnung                               |
 
-Um die neue Regel zu speichern, wählen Sie **Apply** (Übernehmen) aus.
+[![Erstellen einer Warnregel](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_v2-expanded.png#lightbox)
 
-Der Auslösezeitpunkt der Regel wird auf der Seite **Regeln** und auf der Seite **Dashboard** angezeigt.
+Klicken Sie auf **Übernehmen**, um die neue Regel zu speichern.
 
-## <a name="create-a-new-rule-with-multiple-conditions"></a>Erstellen einer neuen Regel mit mehreren Bedingungen
+Der Auslösezeitpunkt der Regel wird auf der Seite **Regeln** und auf der Seite **Dashboard** angezeigt:
 
-Klicken Sie auf **Neue Regel**, um eine neue Regel mit mehreren Bedingungen zu erstellen, die eine kritische Warnung generiert, wenn die durchschnittliche Luftfeuchtigkeit des **Chiller**-Geräts in den letzten fünf Minuten über 80 Prozent lag und die Temperatur des **Chiller**-Geräts in den letzten fünf Minuten mehr als 75 Grad Fahrenheit betrug:
+[![Warnungsregel ausgelöst](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-expanded.png#lightbox)
 
-![Erstellen einer Regel mit mehreren Bedingungen](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2.png)
+## <a name="create-a-rule-with-multiple-conditions"></a>Erstellen einer Regel mit mehreren Bedingungen
 
-Verwenden Sie zum Erstellen der Regel die folgenden Werte:
+Klicken Sie auf **New rule** (Neue Regel), um eine Regel mit mehreren Bedingungen zu erstellen, die im folgenden Fall eine kritische Benachrichtigung generiert: Innerhalb der letzten fünf Minuten hat für ein Gerät vom Typ „Kältemaschine“ die durchschnittliche Luftfeuchtigkeit über 80% und die Durchschnittstemperatur oberhalb von 75 Grad Fahrenheit gelegen. Verwenden Sie zum Erstellen der Regel die folgenden Werte:
 
 | Einstellung          | Wert                                 |
 | ---------------- | ------------------------------------- |
@@ -99,14 +93,12 @@ Verwenden Sie zum Erstellen der Regel die folgenden Werte:
 | Zeitraum      | 5                                     |
 | Feld für die erste Bedingung| Luftfeuchtigkeit                              |
 | Operator für die erste Bedingung | Größer als                      |
-| Wert für die erste Bedingung    | 80                               |
+| Wert für die erste Bedingung    | 80                                |
 | Schweregrad  | Kritisch                              |
 
-Klicken Sie zum Hinzufügen der zweiten Bedingung auf „+ Bedingung hinzufügen“.
+[![Erstellen einer Regel mit mehreren Bedingungen – Teil 1](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-expanded.png#lightbox)
 
-![Erstellen der zweiten Bedingung](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2.png)
-
-Konfigurieren Sie die neue Bedingung mit folgenden Werten:
+Klicken Sie zum Hinzufügen der zweiten Bedingung auf „+ Bedingung hinzufügen“. Verwenden Sie für die neue Bedingung die folgenden Werte:
 
 | Einstellung          | Wert                                 |
 | ---------------- | ------------------------------------- |
@@ -114,45 +106,49 @@ Konfigurieren Sie die neue Bedingung mit folgenden Werten:
 | Operator für die zweite Bedingung | Größer als                      |
 | Wert für die zweite Bedingung    | 75                                |
 
-Um die neue Regel zu speichern, wählen Sie **Apply** (Übernehmen) aus.
+[![Erstellen einer Regel mit mehreren Bedingungen – Teil 2](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-expanded.png#lightbox)
 
-Der Auslösezeitpunkt der Regel wird auf der Seite **Regeln** und auf der Seite **Dashboard** angezeigt.
+Klicken Sie auf **Übernehmen**, um die neue Regel zu speichern.
+
+Der Auslösezeitpunkt der Regel wird auf der Seite **Regeln** und auf der Seite **Dashboard** angezeigt:
+
+[![Auslösung der Regel mit mehreren Bedingungen](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-expanded.png#lightbox)
 
 ## <a name="edit-an-existing-rule"></a>Bearbeiten einer vorhandenen Regel
 
-Um eine Änderung an einer vorhandenen Regel vorzunehmen, wählen Sie sie in der Regelliste aus.
+Um eine Änderung an einer vorhandenen Regel vorzunehmen, wählen Sie sie in der Regelliste aus und klicken auf **Bearbeiten**:
 
-![Bearbeiten einer Regel](./media/iot-accelerators-remote-monitoring-automate/rulesactionsedit_v2.png)
+[![Bearbeiten einer Regel](./media/iot-accelerators-remote-monitoring-automate/rulesactionsedit_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsedit_v2-expanded.png#lightbox)
 
-<!--## Disable a rule
+## <a name="disable-a-rule"></a>Deaktivieren einer Regel
 
-To temporarily switch off a rule, you can disable it in the list of rules. Choose the rule to disable, and then choose **Disable**. The **Status** of the rule in the list changes to indicate the rule is now disabled. You can re-enable a rule that you previously disabled using the same procedure.
+Um eine Regel vorübergehend auszuschalten, können Sie sie in der Regelliste deaktivieren. Wählen Sie die zu deaktivierende Regel und dann **Disable** (Deaktivieren) aus. Der **Status** der Regel in der Liste ändert sich, um anzugeben, dass die Regel jetzt deaktiviert ist. Sie können eine zuvor deaktivierte Regel mit dem gleichen Verfahren wieder aktivieren.
 
-![Disable rule](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable.png)
+[![Deaktivieren einer Regel](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable-expanded.png#lightbox)
 
-You can enable and disable multiple rules at the same time if you select multiple rules in the list.-->
+Sie können mehrere Regeln gleichzeitig aktivieren und deaktivieren, indem Sie in der Liste mehrere Regeln auswählen.
 
-<!--## Delete a rule
+<!-- ## Delete a rule
 
 To permanently delete a rule, choose the rule in the list of rules and then choose **Delete**.
 
 You can delete multiple rules at the same time if you select multiple rules in the list.-->
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie mit dem nächsten Tutorial fortfahren möchten, können Sie die Bereitstellung des Solution Accelerators für die Remoteüberwachung beibehalten. Zum Reduzieren der Kosten für die Ausführung des Solution Accelerators, wenn Sie ihn nicht nutzen, können Sie die simulierten Geräte im Panel mit den Einstellungen beenden:
+
+[![Anhalten der Telemetrie](./media/iot-accelerators-remote-monitoring-automate/togglesimulation-inline.png)](./media/iot-accelerators-remote-monitoring-automate/togglesimulation-expanded.png#lightbox)
+
+Sie können die simulierten Geräte neu starten, wenn Sie mit dem nächsten Tutorial beginnen möchten.
+
+Falls Sie den Solution Accelerator nicht mehr benötigen, können Sie ihn auf der Seite [Bereitgestellte Lösungen](https://www.azureiotsolutions.com/Accelerators#dashboard) löschen:
+
+![Löschen der Lösung](media/iot-accelerators-remote-monitoring-automate/deletesolution.png)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde Folgendes veranschaulicht:
+In diesem Tutorial wurde veranschaulicht, wie Sie im Solution Accelerator für die Remoteüberwachung die Seite **Rules** (Regeln) verwenden, um Regeln zu erstellen und zu verwalten, mit denen Benachrichtigungen in der Lösung ausgelöst werden. Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie den Solution Accelerator zum Verwalten und Konfigurieren Ihrer verbundenen Geräte verwenden.
 
-<!-- Repeat task list from intro -->
->[!div class="checklist"]
-> * Anzeigen der Regeln in der Lösung
-> * Neue Regel erstellen
-> * Bearbeiten einer vorhandenen Regel
-> * Löschen einer Regel
-
-Sie wissen nun, wie Probleme mithilfe schwellenwertbasierter Regeln erkannt werden. In den nächsten empfohlenen Schritten erfahren Sie Folgendes:
-
-* [Verwalten und Konfigurieren von Geräten](iot-accelerators-remote-monitoring-manage.md)
-* [Beheben von Geräteproblemen](iot-accelerators-remote-monitoring-maintain.md)
-* [Testen der Lösung mit simulierten Geräten](iot-accelerators-remote-monitoring-test.md)
-
-<!-- Next tutorials in the sequence -->
+> [!div class="nextstepaction"]
+> [Konfigurieren und Verwalten von Geräten, die mit der Überwachungslösung verbunden sind](iot-accelerators-remote-monitoring-manage.md)

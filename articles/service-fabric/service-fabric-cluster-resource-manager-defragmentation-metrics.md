@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205075"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Defragmentierung von Metriken und Lasten in Service Fabric
 Die Standardstrategie des Clusterressourcen-Managers von Service Fabric beim Verwalten von Auslastungsmetriken besteht darin, die Auslastung zu verteilen. Durch die Sicherstellung der gleichmäßigen Nutzung der Knoten werden Hotspots und Coldspots vermieden, die gleichermaßen zu Konflikten und vergeudeten Ressourcen führen. Die Verteilung von Workloads im Cluster ist zudem das sicherste Konzept im Hinblick auf das Überstehen von Ausfällen, da dadurch sichergestellt wird, dass bei einem Ausfall kein hoher Prozentsatz einer Workload verloren geht. 

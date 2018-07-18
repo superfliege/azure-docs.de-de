@@ -8,13 +8,13 @@ ms.service: sql-database
 ms.custom: load & move data
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.topic: article
-ms.openlocfilehash: 30e89ea940b25e8db4a1203e966000981c47abc9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.topic: conceptual
+ms.openlocfilehash: c2f29d8c660e3d39f91bcdd97209d2e88f5ae864
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894040"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647951"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Exportieren einer Azure SQL-Datenbank in eine BACPAC-Datei
 
@@ -43,7 +43,7 @@ Wenn Sie eine Datenbank zur Archivierung oder zum Verschieben auf eine andere Pl
 
 Um eine Datenbank über das [Azure-Portal](https://portal.azure.com) zu exportieren, öffnen Sie die Seite für Ihre Datenbank, und klicken Sie auf der Symbolleiste auf **Exportieren**. Geben Sie den BACPAC-Dateinamen, das Azure Storage-Konto und den Container für den Export sowie die Anmeldeinformationen für die Verbindung mit der Quelldatenbank an.  
 
-![­Datenbankexport](./media/sql-database-export/database-export.png)
+![Datenbankexport](./media/sql-database-export/database-export.png)
 
 Um den Status des Exportvorgangs zu überwachen, öffnen Sie die Seite für den logischen Server mit der zu exportierenden Datenbank. Scrollen Sie nach unten bis zu **Vorgänge**, und klicken Sie dann auf **Import-/Exportverlauf**.
 

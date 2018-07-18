@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212737"
 ---
 # <a name="troubleshoot-application-upgrades"></a>Problembehandlung bei Anwendungsupgrades
 In diesem Artikel werden einige bekannte Probleme beim Upgrade einer Azure Service Fabric-Anwendung und ihre Behebung behandelt.

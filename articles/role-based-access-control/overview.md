@@ -1,6 +1,6 @@
 ---
-title: Verwalten von Zugriff und Berechtigungen mit RBAC – Azure RBAC | Microsoft-Dokumentation
-description: Führen Sie die ersten Schritte der Zugriffsverwaltung mit der rollenbasierten Zugriffssteuerung von Azure im Azure-Portal aus. Verwenden Sie Rollenzuweisungen, um in Ihrem Verzeichnis Berechtigungen zuzuweisen.
+title: Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure? | Microsoft-Dokumentation
+description: Übersicht über die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure. Verwenden von Rollenzuweisungen zur Steuerung des Zugriffs auf Ressourcen in Azure.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -8,62 +8,92 @@ manager: mtillman
 ms.assetid: 8f8aadeb-45c9-4d0e-af87-f1f79373e039
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/02/2018
+ms.date: 07/02/2018
 ms.author: rolyon
-ms.reviewer: rqureshi
-ms.openlocfilehash: 4a964d127d4d45d10a1f9d39b585b8c59e30ae90
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.reviewer: bagovind
+ms.openlocfilehash: 4dcfb71e0adb05922603715e4dbcbdb243305927
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37438195"
 ---
-# <a name="get-started-with-role-based-access-control-in-the-azure-portal"></a>Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal
-Sicherheitsorientierte Unternehmen müssen sich darauf konzentrieren, Mitarbeitern genau die Berechtigungen zuzuweisen, die sie benötigen. Zu viele Berechtigungen können ein Konto zum leichten Angriffsziel machen. Wenn die Berechtigungen nicht ausreichen, können Mitarbeiter nicht effizient arbeiten. Die rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, RBAC) begegnet diesem Problem, indem sie eine präzise Zugriffsverwaltung für Azure ermöglicht.
+# <a name="what-is-role-based-access-control-rbac"></a>Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)?
 
-Mithilfe von RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen. Anstatt allen uneingeschränkte Berechtigungen in Ihrem Azure-Abonnement oder Ihren Ressourcen zu gewähren, können Sie die Berechtigungen auf bestimmte Aktionen beschränken. Gestatten Sie z.B. mit RBAC einem Mitarbeiter die Verwaltung virtueller Computer in einem Abonnement, während ein anderer im gleichen Abonnement SQL-Datenbanken verwalten kann.
+Die Zugriffsverwaltung für Cloudressourcen ist eine wichtige Funktion für jede Organisation, die die Cloud nutzt. Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) können Sie verwalten, welche Benutzer Zugriff auf Azure-Ressourcen haben, welche Aktionen für diese Ressourcen ausgeführt werden können und auf welche Bereiche die Benutzer zugreifen können.
 
-## <a name="basics-of-access-management-in-azure"></a>Grundlagen zur Zugriffsverwaltung in Azure
-Jedes Azure-Abonnement ist mit einem Azure Active Directory-Verzeichnis (AD) verknüpft. Benutzer, Gruppen und Anwendungen aus diesem Verzeichnis können Ressourcen im Azure-Abonnement verwalten. Weisen Sie diese Zugriffsrechte mit dem Azure-Portal, Azure-Befehlszeilentools und Azure-Verwaltungs-APIs zu.
+RBAC ist ein Autorisierungssystem, das auf [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) basiert und eine präzise Verwaltung des Zugriffs auf Ressourcen in Azure ermöglicht. Mithilfe von RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen. Anstatt allen uneingeschränkte Berechtigungen in Ihrem Azure-Abonnement oder Ihren Ressourcen zu gewähren, können Sie die Berechtigungen auf bestimmte Aktionen in einem bestimmten Bereich beschränken.
 
-Gewähren Sie Zugriff, indem Sie Benutzern, Gruppen und Anwendungen die jeweils geeignete RBAC-Rolle für einen bestimmten Bereich zuweisen. Der Bereich einer Rollenzuweisung kann ein Abonnement, eine Ressourcengruppe oder eine einzelne Ressource sein. Mit einer Rolle, die einem übergeordneten Bereich zugewiesen ist, wird außerdem der Zugriff auf die darin enthaltenen untergeordneten Elemente gewährt. Ein Benutzer mit Zugriff auf eine Ressourcengruppe kann beispielsweise alle Ressourcen verwalten, die darin enthalten sind, z.B. Websites, virtuelle Computer und Subnetze.
+## <a name="what-can-i-do-with-rbac"></a>Welche Möglichkeiten bietet RBAC?
 
-![Beziehung zwischen Azure Active Directory-Elementen – Diagramm](./media/overview/rbac_aad.png)
+Hier sind einige Beispiele für die Verwendungsmöglichkeiten von RBAC:
 
-Die von Ihnen zugewiesene RBAC-Rolle legt fest, welche Ressourcen der Benutzer, die Gruppe oder die Anwendung auf dieser Ebene verwalten kann.
+- Ein Benutzer kann virtuelle Computer in einem Abonnement verwalten, während ein anderer Benutzer virtuelle Netzwerke verwalten kann
+- Eine DBA-Gruppe kann SQL-Datenbanken in einem Abonnement verwalten
+- Ein Benutzer kann sämtliche Ressourcen in einer Ressourcengruppe verwalten, wie z.B. virtuelle Computer, Websites und Subnetze
+- Eine Anwendung kann auf sämtliche Ressourcen in einer Ressourcengruppe zugreifen
 
-## <a name="built-in-roles"></a>Integrierte Rollen
-Azure RBAC verfügt über drei grundlegende Rollen, die für alle Ressourcentypen gelten:
+## <a name="how-rbac-works"></a>Funktionsweise von RBAC
 
-* **Besitzer** verfügen über vollständigen Zugriff auf alle Ressourcen, einschließlich des Rechts, den Zugriff an andere Personen zu delegieren.
-* **Mitwirkende** können alle Arten von Azure-Ressourcen erstellen und verwalten, aber keinen anderen Personen Zugriff gewähren.
-* **Leser** können vorhandene Azure-Ressourcen anzeigen.
+Sie können den Zugriff auf Ressourcen mit RBAC steuern, indem Sie Rollenzuweisungen erstellen. Dies ist ein wesentliches Konzept, das zur Durchsetzung von Berechtigungen verwendet wird. Eine Rollenzuweisung besteht aus drei Elementen: Sicherheitsprinzipal, Rollendefinition und Bereich.
 
-Die verbleibenden RBAC-Rollen in Azure ermöglichen die Verwaltung von bestimmten Azure-Ressourcen. Mit der Rolle „Mitwirkender von virtuellen Computern“ können Benutzer beispielsweise virtuelle Computer erstellen und verwalten. Sie haben damit keinen Zugriff auf das virtuelle Netzwerk oder das Subnetz, mit dem der virtuelle Computer verbunden ist. 
+### <a name="security-principal"></a>Sicherheitsprinzipal
 
-[Integrierte RBAC-Rollen](built-in-roles.md) sind die Rollen aufgeführt, die in Azure verfügbar sind. Hierbei werden die Vorgänge und der Bereich angegeben, die mit jeder integrierten Rolle für Benutzer gewährt werden. Wenn Sie Ihre eigenen Rollen definieren möchten, um eine noch bessere Kontrolle zu haben, helfen Ihnen die Informationen zum Erstellen von [benutzerdefinierten Rollen in Azure RBAC](custom-roles.md)weiter.
+Ein *Sicherheitsprinzipal* ist ein Objekt, das einen Benutzer, eine Gruppe oder ein Dienstprinzipal darstellt, das Zugriff auf Azure-Ressourcen anfordert.
 
-## <a name="resource-hierarchy-and-access-inheritance"></a>Ressourcenhierarchie und Zugriffsvererbung
-* Jedes **Abonnement** in Azure gehört jeweils nur zu einem Verzeichnis. (Aber jedes Verzeichnis kann über mehrere Abonnements verfügen.)
-* Jede **Ressourcengruppe** gehört jeweils nur zu einem Abonnement.
-* Jede **Ressource** gehört jeweils nur zu einer Ressourcengruppe.
+![Sicherheitsprinzipal für eine Rollenzuweisung](./media/overview/rbac-security-principal.png)
 
-Der Zugriff, den Sie auf übergeordneter Ebene gewähren, wird auf untergeordneter Ebene geerbt. Beispiel: 
+- Benutzer: eine Person, die über ein Profil in Azure Active Directory verfügt. Sie können auch bei anderen Mandanten Rollen zu Benutzern zuweisen. Weitere Informationen zu Benutzern in anderen Organisationen finden Sie unter [Azure Active Directory B2B](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+- Gruppe: eine Reihe von Benutzern, die in Azure Active Directory erstellt wurden. Wenn Sie einer Gruppe eine Rolle zuweisen, verfügen alle Benutzer in dieser Gruppe über diese Rolle. 
+- Dienstprinzipal: eine Sicherheitsidentität, die von Anwendungen oder Diensten für den Zugriff auf bestimmte Azure-Ressourcen verwendet wird. Sie können sich diesen als *Benutzeridentität* (Benutzername und Kennwort oder Zertifikat) für eine Anwendung vorstellen.
 
-* Sie weisen die Rolle „Leser“ einer Azure AD-Gruppe im Abonnementbereich zu. Die Mitglieder dieser Gruppe können alle Ressourcengruppen und Ressourcen im Abonnement anzeigen.
-* Sie weisen die Rolle „Mitwirkender“ einer Anwendung im Ressourcengruppenbereich zu. Damit können Benutzer Ressourcen aller Typen in dieser Ressourcengruppe verwalten, aber keine anderen Ressourcengruppen des Abonnements.
+### <a name="role-definition"></a>Rollendefinition
 
-## <a name="azure-rbac-vs-classic-subscription-administrators"></a>Azure RBAC im Vergleich zu klassischen Administratoren für Abonnements
-[Klassische Administratoren und Co-Admins für Abonnements](../billing/billing-add-change-azure-subscription-administrator.md) verfügen über Vollzugriff auf das Azure-Abonnement. Sie können Ressourcen über das [Azure-Portal](https://portal.azure.com), Azure Resource Manager-APIs und APIs des klassischen Azure-Bereitstellungsmodells verwalten. Im RBAC-Modell wird klassischen Administratoren die Besitzerrolle auf Abonnementebene zugewiesen.
+Eine *Rollendefinition* ist eine Sammlung von Berechtigungen. Gelegentlich wird sie auch einfach als *Rolle* bezeichnet. Eine Rollendefinition listet die ausführbaren Vorgänge wie etwa Lesen, Schreiben und Löschen auf. Rollen können auf allgemeiner Ebene erteilt werden (z.B. Benutzer) oder spezifisch sein (z.B. Leser virtueller Computer).
 
-Nur das Azure-Portal und die neuen Azure Resource Manager-APIs unterstützen Azure RBAC. Benutzer und Anwendungen, denen RBAC-Rollen zugewiesen sind, können die APIs des klassischen Azure-Bereitstellungsmodells nicht verwenden.
+![Rollenzuweisung zu Rollendefinition hinzufügen](./media/overview/rbac-role-definition.png)
 
-## <a name="authorization-for-management-vs-data-operations"></a>Autorisierung für Verwaltungsvorgänge im Vergleich zu Datenvorgängen
-Azure RBAC unterstützt nur Verwaltungsvorgänge von Azure-Ressourcen im Azure-Portal und in den Azure Resource Manager-APIs. Azure RBAC kann nicht alle Vorgänge auf Datenebene für Azure-Ressourcen autorisieren. Sie können z. B. eine Person zum Verwalten von Speicherkonten autorisieren, jedoch nicht zum Verwalten von Blobs oder Tabellen innerhalb eines Speicherkontos. Ebenso kann eine SQL-Datenbank verwaltet werden, aber nicht die darin enthaltenen Tabellen.
+Azure umfasst mehrere [integrierte Rollen](built-in-roles.md), die Sie verwenden können. Im Folgenden werden vier grundlegende integrierte Rollen aufgeführt. Die ersten drei Rollen gelten für alle Ressourcentypen.
+
+- [Besitzer](built-in-roles.md#owner) verfügen über vollständigen Zugriff auf alle Ressourcen, einschließlich des Rechts, den Zugriff an andere Personen zu delegieren.
+- [Mitwirkende](built-in-roles.md#contributor) können alle Arten von Azure-Ressourcen erstellen und verwalten, aber keinen anderen Personen Zugriff gewähren.
+- [Leser](built-in-roles.md#reader) können vorhandene Azure-Ressourcen anzeigen.
+- Mit einem [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) können Sie den Benutzerzugriff auf Azure-Ressourcen verwalten.
+
+Die verbleibenden integrierten Rollen ermöglichen die Verwaltung bestimmter Azure-Ressourcen. Mit der Rolle [Mitwirkender von virtuellen Computern](built-in-roles.md#virtual-machine-contributor) können Benutzer beispielsweise virtuelle Computer erstellen und verwalten. Wenn die integrierten Rollen den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie Ihre eigenen [benutzerdefinierten Rollen](custom-roles.md) erstellen.
+
+Azure hat Datenvorgänge eingeführt (derzeit in der Vorschauversion), durch die Sie Zugriff auf Daten in einem Objekt erteilen können. Wenn ein Benutzer z.B. über Lesezugriff auf Daten in einem Speicherkonto verfügt, kann er die Blobs in diesem Speicherkonto lesen. Weitere Informationen finden Sie unter [Grundlegendes zu Rollendefinitionen](role-definitions.md).
+
+### <a name="scope"></a>Bereich
+
+Ein *Bereich* ist die für den Zugriff geltende Grenze. Wenn Sie eine Rolle zuweisen, können Sie die zulässigen Aktionen durch das Definieren eines Bereichs weiter einschränken. Dies ist hilfreich, wenn Sie einem Benutzer die Rolle [Mitwirkender von Websites](built-in-roles.md#website-contributor) zuweisen möchten, jedoch nur für eine Ressourcengruppe.
+
+In Azure können Sie auf mehreren Ebenen einen Bereich angeben: Abonnement, Ressourcengruppe oder Ressource. Bereiche sind in einer Beziehung zwischen übergeordnetem und untergeordnetem Element strukturiert, in der jedem untergeordneten Element nur ein übergeordnetes Element zugewiesen ist.
+
+![Bereich für eine Rollenzuweisung](./media/overview/rbac-scope.png)
+
+Der Zugriff, den Sie auf übergeordneter Ebene zuweisen, wird auf untergeordneter Ebene geerbt. Beispiel:
+
+- Wenn Sie einer Rolle im Abonnementkontext die Rolle [Leser](built-in-roles.md#reader) zuweisen, können die Mitglieder dieser Gruppe alle Ressourcengruppen und Ressourcen im Abonnement anzeigen.
+- Wenn Sie einer Anwendung im Ressourcengruppenkontext die Rolle [Mitwirkender](built-in-roles.md#contributor) zuweisen, kann diese Ressourcen aller Typen in dieser Ressourcengruppe verwalten, jedoch keine anderen Ressourcengruppen des Abonnements.
+
+Azure enthält auch einen Bereich oberhalb der Abonnements namens [Verwaltungsgruppen](../azure-resource-manager/management-groups-overview.md), der sich in der Vorschauversion befindet. Mithilfe von Verwaltungsgruppen können mehrere Abonnements verwaltet werden. Wenn Sie einen Bereich für RBAC angeben, können Sie eine Verwaltungsgruppe oder ein Abonnement, eine Ressourcengruppe oder eine Ressourcenhierarchie angeben.
+
+### <a name="role-assignment"></a>Rollenzuweisung
+
+Eine *Rollenzuweisung* ist der Prozess, in dem eine Rollenzuweisung zum Zwecke der Zugriffserteilung in einem bestimmten Bereich an einen Benutzer, eine Gruppe oder ein Dienstprinzipal gebunden wird. Der Zugriff wird durch Erstellen einer Rollenzuweisung erteilt und durch Entfernen einer Rollenzuweisung widerrufen.
+
+Das folgende Diagramm zeigt ein Beispiel für eine Rollenzuweisung. In diesem Beispiel wurde der Gruppe „Marketing“ die Rolle [Mitwirkender](built-in-roles.md#contributor) für die Ressourcengruppe „Pharmavertrieb“ zugewiesen. Dies bedeutet, dass Benutzer in der Gruppe „Marketing“ in der Ressourcengruppe „Pharmavertrieb“ eine beliebige Azure-Ressource erstellen oder verwalten können. Benutzer der Gruppe „Marketing“ haben keinen Zugriff auf Ressourcen außerhalb der Ressourcengruppe „Pharmavertrieb“, sofern ihnen keine weitere Rolle zugewiesen wurde.
+
+![Rollenzuweisung zum Steuern des Zugriffs](./media/overview/rbac-overview.png)
+
+Sie können über das Azure-Portal, die Azure-Befehlszeilenschnittstelle, Azure PowerShell, Azure SDKs oder REST-APIs Rollenzuweisungen erstellen. In jedem Abonnement können Sie über bis zu 2.000 Rollenzuweisungen verfügen. Um Rollenzuweisungen erstellen und entfernen zu können, benötigen Sie die Berechtigung `Microsoft.Authorization/roleAssignments/*`. Diese Berechtigung wird über die Rolle [Besitzer](built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) erteilt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erste Schritte mit der [rollenbasierten Zugriffssteuerung im Azure-Portal](role-assignments-portal.md).
-* Weitere Informationen finden Sie unter [Integrierte RBAC-Rollen](built-in-roles.md)
-* Definieren Sie Ihre eigenen [benutzerdefinierten Rollen in Azure RBAC](custom-roles.md)
+
+- [Schnellstart: Gewähren des Zugriffs für einen Benutzer mithilfe der RBAC und des Azure-Portals](quickstart-assign-role-user-portal.md)
+- [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](role-assignments-portal.md)
+- [Grundlegendes zu den verschiedenen Rollen in Azure](rbac-and-directory-admin-roles.md)

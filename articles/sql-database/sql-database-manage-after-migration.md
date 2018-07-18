@@ -6,17 +6,18 @@ author: joesackmsft
 manager: craigg
 ms.service: sql-database
 ms.custom: migrate
-ms.topic: article
-ms.date: 03/16/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: 96bc75e15c99897414fad8c138c8a34ef790af21
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: d97e0bf94b911936cacf04f7f26c172b9975c56f
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061643"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Neuer DBA in der Cloud – Verwalten Ihrer Datenbank in Azure SQL-Datenbank
 
@@ -30,7 +31,6 @@ In diesem Artikel werden wichtige Merkmale von Azure SQL DB als Plattform beschr
 - Sicherheit und Compliance
 - Intelligente Datenbanküberwachung und -wartung
 - Datenverschiebung
-
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr"></a>Geschäftskontinuität und Notfallwiederherstellung (Business Continuity Disaster Recovery, BCDR)
 Dank der Funktionen für Geschäftskontinuität und Notfallwiederherstellung können Sie Ihre Geschäfte in einem Notfall wie gewohnt fortführen. Ein Notfall könnte auf Datenbankebene auftreten (ein Nutzer löscht z. B. versehentlich eine unternehmenswichtige Tabelle) oder das gesamte Rechenzentrum betreffen (bei einer regionalen Katastrophe wie einem Tsunami). 
@@ -170,7 +170,7 @@ Mit ExpressRoute können Sie Ihre kostenpflichtige Bandbreite ohne zusätzliche 
 - [Workflows](../expressroute/expressroute-workflows.md)
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>Ist SQL-Datenbank mit allen gesetzlichen Anforderungen kompatibel, und inwiefern hilft das dabei, die Kompatibilitätsvorgaben meiner eigenen Organisation einzuhalten?
-SQL-Datenbank ist mit einer Reihe gesetzlicher Bestimmungen konform. Im [Microsoft Trust Center](https://www.microsoft.com/trustcenter/compliance/complianceofferings) erfahren Sie, welche Compliancestandards aktuell erfüllt werden. Dort können Sie sich informieren, ob die Complianceanforderungen Ihrer Organisation erfüllt werden, und feststellen, ob SQL-Datenbank zu den konformen Azure-Diensten gehört. Wichtiger Hinweis: Obwohl SQL-Datenbank als konformer Dienst aufgeführt sein kann, unterstützt er den Dienst Ihrer Organisation lediglich bei der Umsetzung der Compliancestandards, ohne automatisch deren Einhaltung zu gewährleisten.
+SQL-Datenbank ist mit einer Reihe gesetzlicher Bestimmungen konform. Im [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/compliance/complianceofferings) erfahren Sie, welche Compliancestandards aktuell erfüllt werden. Dort können Sie sich informieren, ob die Complianceanforderungen Ihrer Organisation erfüllt werden, und feststellen, ob SQL-Datenbank zu den konformen Azure-Diensten gehört. Wichtiger Hinweis: Obwohl SQL-Datenbank als konformer Dienst aufgeführt sein kann, unterstützt er den Dienst Ihrer Organisation lediglich bei der Umsetzung der Compliancestandards, ohne automatisch deren Einhaltung zu gewährleisten.
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>Intelligente Datenbanküberwachung und -wartung nach der Migration
 
@@ -234,7 +234,7 @@ SQL-Datenbank verfügt über die Dienstebenen „Basic“, „Standard“ und �
 
 Um sicherzustellen, dass Sie die richtige Leistungsebene verwenden, können Sie die Nutzung von Abfrage- und Datenbankressourcen mithilfe einer der Methoden überwachen, die unter „Wie wird die Leistung und Ressourcenverwendung in SQL-Datenbank überwacht?“ beschrieben sind. Falls Ihre Abfragen/Datenbanken dauerhaft mehr CPU/Arbeitsspeicher usw. benötigen, sollten Sie den Umstieg auf eine höhere Leistungsebene in Erwägung ziehen. Wenn Sie feststellen, dass die Ressourcen selbst während Spitzenzeiten nicht ausgelastet werden, kommt für Sie wiederum der Wechsel zu einer niedrigeren Leistungsebene infrage. 
 
-Falls Sie ein SaaS-App-Muster oder ein Szenario zur Datenbankkonsolidierung nutzen, sollten Sie zur Kostenoptimierung einen Pool für elastische Datenbanken in Betracht ziehen. Ein Pool für elastische Datenbanken bietet optimale Voraussetzungen für die Datenbankkonsolidierung und Kostenoptimierung. Weitere Informationen zur Verwaltung mehrerer Datenbanken unter Verwendung des Pools für elastische Datenbanken finden Sie unter dem Thema zum [Verwalten von Pools und Datenbanken](sql-database-elastic-pool.md#manage-elastic-pools-and-databases-using-the-azure-portal). 
+Falls Sie ein SaaS-App-Muster oder ein Szenario zur Datenbankkonsolidierung nutzen, sollten Sie zur Kostenoptimierung einen Pool für elastische Datenbanken in Betracht ziehen. Ein Pool für elastische Datenbanken bietet optimale Voraussetzungen für die Datenbankkonsolidierung und Kostenoptimierung. Weitere Informationen zur Verwaltung mehrerer Datenbanken unter Verwendung des Pools für elastische Datenbanken finden Sie unter dem Thema zum [Verwalten von Pools und Datenbanken](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases). 
 
 ### <a name="how-often-do-i-need-to-run-database-integrity-checks-for-my-database"></a>Wie oft müssen Integritätsprüfungen für Datenbanken ausgeführt werden?
 SQL-Datenbank nutzt intelligente Technologien, mit denen bestimmte Datenbeschädigungen automatisch ohne Datenverluste behandelt werden können. Diese Technologien sind in den Dienst integriert und kommen bei Bedarf zum Einsatz. Ihre Datenbanksicherungen werden im gesamten Dienst regelmäßig getestet, indem sie wiederhergestellt und mit DBCC CHECKDB überprüft werden. Dabei werden Probleme von SQL-Datenbank proaktiv behoben. Mithilfe der [automatischen Seitenreparatur](/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring) werden Seiten repariert, die beschädigt sind oder Probleme mit der Datenintegrität aufweisen. Datenbankseiten werden immer mit der standardmäßigen CHECKSUM-Einstellung auf ihre Integrität überprüft. Die Datenintegrität Ihrer Datenbank wird von SQL-Datenbank proaktiv überwacht und überprüft. Auftretende Probleme werden mit der höchsten Priorität behandelt. Sie können nach Belieben zusätzlich eigene Integritätsprüfungen ausführen.  Weitere Informationen finden Sie im Thema zur [Datenintegrität in SQL-Datenbank](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
@@ -245,7 +245,7 @@ SQL-Datenbank nutzt intelligente Technologien, mit denen bestimmte Datenbeschäd
 
 - **Export**: Sie können Ihre Azure SQL-Datenbank als BACPAC-Datei aus dem Azure-Portal exportieren.
 
-   ![­Datenbankexport](./media/sql-database-export/database-export.png)
+   ![Datenbankexport](./media/sql-database-export/database-export.png)
 
 - **Import**: Sie können Daten im Azure-Portal auch als BACPAC-Datei in die Datenbank importieren.
 

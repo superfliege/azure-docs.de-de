@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
-ms.openlocfilehash: f1cf83044eb4f001ba341cabd0771b267c3f996d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 24b20766997a9a41956f575f6cab8ee5ef0d9e25
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37034904"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
 Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer der Attributzuordnungstypen, die Sie angeben können, eine Ausdruckszuordnung. Für diese müssen Sie einen skriptartigen Ausdruck schreiben, mit dem Sie die Daten Ihrer Benutzer in Formate umwandeln können, die für die SaaS-Anwendung einfacher zu akzeptieren sind.
@@ -36,7 +37,7 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 * Bei Zeichenfolgenkonstanten, in denen ein umgekehrter Schrägstrich ( \ ) oder ein Anführungszeichen ( " ) benötigt wird, muss dieser bzw. dieses mit einem umgekehrten Schrägstrichsymbol ( \ ) versehen werden. Beispiel: "Firmenname: \"Contoso\""
 
 ## <a name="list-of-functions"></a>Liste der Funktionen
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)
 
 - - -
 ### <a name="append"></a>Anfügen
@@ -95,6 +96,18 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 | **Länge** |Erforderlich |Ganze Zahl |Die Länge der Teilzeichenfolge. Wenn die Länge außerhalb der **Quellzeichenfolge** endet, gibt die Funktion die Teilzeichenfolge zwischen **Startindex** und dem Ende der **Quellzeichenfolge** zurück. |
 
 - - -
+### <a name="normalizediacritics"></a>NormalizeDiacritics
+**Funktion:**<br> NormalizeDiacritics(Quelle)
+
+**Beschreibung:**<br> Erfordert ein einzelnes Zeichenfolgenargument. Gibt die Zeichenfolge zurück und ersetzt sämtliche diakritische Zeichen durch entsprechende nicht diakritische Zeichen. Dient in der Regel dazu, Vor- und Nachnamen mit diakritischen Zeichen (Akzenten) in zulässige Werte zu konvertieren, die in verschiedenen Benutzer-IDs verwendet werden können (etwa in Benutzerprinzipalnamen, SAM-Kontonamen und E-Mail-Adressen).
+
+**Parameter:**<br> 
+
+| NAME | Erforderlich/wiederholt | Typ | Notizen |
+| --- | --- | --- | --- |
+| **Quelle** |Erforderlich |Zeichenfolge | In der Regel ein Attribut für einen Vor- oder Nachnamen. |
+
+- - -
 ### <a name="not"></a>not
 **Funktion:**<br> Not(Quelle)
 
@@ -128,7 +141,6 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
   * Ist ein Wert für **Quelle** vorhanden, wird der Ersatzwert aus der Eigenschaft mit **Ersatzeigenschaftsname** unter Verwendung von **RegexMuster** und **RegexGruppenname** extrahiert. Der Ersatzwert wird als Ergebnis zurückgegeben.
 
 **Parameter:**<br> 
-
 | NAME | Erforderlich/wiederholt | Typ | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
@@ -143,7 +155,7 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
 **Funktion:**<br> SingleAppRoleAssignment([appRoleAssignments])
 
-**Beschreibung:**<br> Gibt eine einzelne appRoleAssignment aus der Liste aller appRoleAssignments zurück, die einem Benutzer für eine bestimmte Anwendung zugewiesen sind. Diese Funktion ist erforderlich, um das appRoleAssignments-Objekt in eine einzelne Namenszeichenfolge für eine Rolle zu konvertieren. Beachten Sie, dass die bewährte Methode darin besteht, sicherzustellen, dass einem Benutzer nur jeweils eine appRoleAssignment zugewiesen ist. Wenn mehrere Rollen zugewiesen sind, ist die zurückgegebene Zeichenfolge für die Rolle möglicherweise nicht vorhersehbar.
+**Beschreibung:**<br> Erfordert ein einzelnes Zeichenfolgenargument. Gibt die Zeichenfolge zurück und ersetzt sämtliche diakritische Zeichen durch entsprechende nicht diakritische Zeichen.
 
 **Parameter:**<br> 
 
@@ -214,16 +226,16 @@ Sie müssen einen Benutzeralias generieren, indem Sie die ersten drei Buchstaben
 * **EINGABE** (surname): "Doe"
 * **AUSGABE**: "JohDoe"
 
-### <a name="remove-diacritics-from-a-string-and-convert-to-lowercase"></a>Entfernen diakritischer Zeichen aus einer Zeichenfolge und Konvertieren der Zeichenfolge in Kleinbuchstaben
-Sie müssen Sonderzeichen aus einer Zeichenfolge entfernen und Großbuchstaben in Kleinbuchstaben konvertieren.
+### <a name="remove-diacritics-from-a-string"></a>Entfernen diakritischer Zeichen aus einer Zeichenfolge
+Sie müssen Zeichen mit Akzent durch entsprechende Zeichen ohne Akzent ersetzen.
 
 **Ausdruck:** <br>
-`Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace([givenName], , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])", , "m", , ), , "([ñńňÑŃŇN])", , "n", , ), , "([öòőõôóÖÒŐÕÔÓO])", , "o", , ), , "([P])", , "p", , ), , "([Q])", , "q", , ), , "([řŘR])", , "r", , ), , "([ßšśŠŚS])", , "s", , ), , "([TŤť])", , "t", , ), , "([üùûúůűÜÙÛÚŮŰU])", , "u", , ), , "([V])", , "v", , ), , "([W])", , "w", , ), , "([ýÿýŸÝY])", , "y", , ), , "([źžżŹŽŻZ])", , "z", , ), " ", , , "", , )`
+NormalizeDiacritics([givenName])
 
 **Beispieleingabe/-ausgabe:** <br>
 
-* **EINGABE** (givenName): „Zoë“
-* **AUSGABE**: „zoe“
+* **EINGABE** (givenName): "Zoë"
+* **AUSGABE**: "Zoe"
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>Ausgabedatum eines Datums als Zeichenfolge in einem bestimmten Format
 Sie möchten Datumsangaben in einem bestimmten Format an eine SaaS-Anwendung senden. <br>
@@ -256,7 +268,7 @@ Wenn der Bundesstaatscode keiner der vordefinierten Optionen entspricht, soll de
 * [Automatisieren der Bereitstellung/Bereitstellungsaufhebung von Benutzern für SaaS-Apps](active-directory-saas-app-provisioning.md)
 * [Anpassen von Attributzuordnungen für die Benutzerbereitstellung](active-directory-saas-customizing-attribute-mappings.md)
 * [Bereichsfilter für die Benutzerbereitstellung](active-directory-saas-scoping-filters.md)
-* [Verwenden von SCIM für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](active-directory-scim-provisioning.md)
+* [Verwenden von SCIM für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Kontobereitstellungsbenachrichtigungen](active-directory-saas-account-provisioning-notifications.md)
-* [Liste der Tutorials zur Integration von SaaS-Apps](active-directory-saas-tutorial-list.md)
+* [Liste der Tutorials zur Integration von SaaS-Apps](saas-apps/tutorial-list.md)
 

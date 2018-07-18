@@ -11,13 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 06/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: 202854157dee28f3ab3dc73c6f22508a8bf510b3
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.reviewer: ppacent
+ms.openlocfilehash: 3ecc8885a30a11472fe93bbda60c39131c6b3bd7
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801414"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Knotenaktionen für Skalierungseinheiten in Azure Stack
 
@@ -41,11 +43,11 @@ So zeigen Sie den Status einer Skalierungseinheit an
  
 Hier werden die folgenden Informationen angezeigt:
 
-- Regionsname
+- Regionsname. Auf den Regionsnamen wird im PowerShell-Modul mit **-Location** verwiesen.
 - Systemtyp
 - Gesamtanzahl logischer Kerne
 - Gesamter Speicher
-- Liste der einzelnen Knoten und ihrer Status; entweder „Wird ausgeführt“ oder „Beendet“
+- Liste der einzelnen Knoten und ihrer Status; entweder **Wird ausgeführt** oder **Beendet**
 
 ![Kachel einer Skalierungseinheit mit Status „Wird ausgeführt“ für jeden Knoten](media/azure-stack-node-actions/ScaleUnitStatus.PNG)
 
@@ -87,7 +89,7 @@ Diese Aktion wird normalerweise verwendet, wenn ein Knoten nicht mehr reagiert u
 So führen Sie die Ausschaltaktion mithilfe von PowerShell aus
 
 ````PowerShell
-  Stop-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
+  Stop-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ```` 
 
 Verwenden Sie in dem unwahrscheinlichen Fall, dass die Ausschaltaktion nicht funktioniert, stattdessen die BMC-Webbenutzeroberfläche.
@@ -102,7 +104,7 @@ Die Aktion **Einschalten** schaltet den Knoten ein. Dies entspricht dem Drücken
 So führen Sie die Einschaltaktion mithilfe von PowerShell aus
 
 ````PowerShell
-  Start-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
+  Start-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ````
 
 Verwenden Sie in dem unwahrscheinlichen Fall, dass die Einschaltaktion nicht funktioniert, stattdessen die BMC-Webbenutzeroberfläche.
@@ -113,13 +115,13 @@ Die Aktion **Entladen** entfernt alle aktiven Workloads, indem diese auf die üb
 
 Diese Aktion wird in der Regel für den Austausch von Teilen im Betrieb, z.B. beim Ersetzen eines vollständigen Knotens, verwendet.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Stellen Sie sicher, dass Sie Knoten nur während eines geplanten Wartungsfensters entladen, in dem Benutzer benachrichtigt wurden. Unter bestimmten Umständen können bei aktiven Workloads Unterbrechungen auftreten.
 
 So führen Sie die Entladeaktion mithilfe von PowerShell aus
 
   ````PowerShell
-  Disable-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
+  Disable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
   ````
 
 ### <a name="resume"></a>Fortfahren
@@ -129,7 +131,7 @@ Die Aktion **Fortsetzen** setzt einen entladenen Knoten fort und markiert ihn f�
 So führen Sie die Fortsetzungsaktion mithilfe von PowerShell aus
 
   ````PowerShell
-  Enable-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
+  Enable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
   ````
 
 ### <a name="repair"></a>Reparieren
@@ -139,7 +141,7 @@ Die Aktion **Reparieren** repariert einen Knoten. Verwenden Sie diese Aktion nur
 - Vollständiger Knotenaustausch (mit neuen Datenträgern oder ohne diese)
 - Nach dem Ausfall oder dem Austausch einer Hardwarekomponente (sofern in der Dokumentation der FRU (Field Replaceable Unit) empfohlen).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Wenn Sie einen Knoten oder einzelne Hardwarekomponenten ersetzen müssen, finden Sie die genauen Schritte in der FRU-Dokumentation Ihres OEM-Hardwareherstellers. In der FRU-Dokumentation ist auch angegeben, ob Sie die Reparaturaktion nach dem Ersetzen einer Hardwarekomponente ausführen müssen.  
 
 Beim Ausführen der Reparaturaktion müssen Sie die BMC-IP-Adresse angeben. 
@@ -147,7 +149,9 @@ Beim Ausführen der Reparaturaktion müssen Sie die BMC-IP-Adresse angeben.
 So führen Sie die Reparaturaktion mithilfe von PowerShell aus
 
   ````PowerShell
-  Repair-AzsScaleUnitNode -Region <RegionName> -Name <NodeName> -BMCIPAddress <BMCIPAddress>
+  Repair-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -BMCIPAddress <BMCIPAddress>
   ````
 
+## <a name="next-steps"></a>Nächste Schritte
 
+Weitere Informationen zum Fabric-Administratormodul von Azure Stack finden Sie unter [Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.3.0).

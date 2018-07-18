@@ -2,7 +2,7 @@
 title: Abfragen von B2B-Nachrichten in Log Analytics – Azure Logic Apps | Microsoft-Dokumentation
 description: Erstellen von Abfragen zum Nachverfolgen von AS2-, X12- und EDIFACT-Nachrichten in Log Analytics
 author: padmavc
-manager: anneta
+manager: jeconnoc
 editor: ''
 services: logic-apps
 documentationcenter: ''
@@ -12,13 +12,14 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 06/19/2018
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 345857801035fb7f149a57a4f0d58e7668f35b81
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 48cca9919bd09906bdcc3faaaef186ec109c9169
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294308"
 ---
 # <a name="query-for-as2-x12-and-edifact-messages-in-log-analytics"></a>Abfragen von AS2-, X12- und EDIFACT-Nachrichten in Log Analytics
 
@@ -52,41 +53,33 @@ In diesem Beispiel erfahren Sie, wie Sie anhand der Austauschkontrollnummer nach
 
    ![Auswählen Ihres Log Analytics-Arbeitsbereichs](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/selectla.png)
 
-3. Wählen Sie unter **Verwaltung** die Option **OMS-Portal**.
+3. Wählen Sie unter **Verwaltung** die Option **Protokollsuche** aus.
 
-   ![Auswählen des OMS-Portals](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/omsportalpage.png)
+   ![Auswählen von „Protokollsuche“](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/azure-portal-page.png)
 
-4. Klicken Sie auf der Startseite auf **Protokollsuche**.
-
-   ![Klicken auf „Protokollsuche“ auf der Startseite](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
-
-   Oder
-
-   ![Auswählen von „Protokollsuche“ im Menü](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
-
-5. Geben Sie im Suchfeld ein Feld an, nach dem Sie suchen möchten, und drücken Sie die **EINGABETASTE**. Wenn Sie mit der Eingabe beginnen, werden in Log Analytics mögliche Übereinstimmungen und verfügbare Vorgänge angezeigt. Informieren Sie sich über das [Suchen nach Daten in Log Analytics](../log-analytics/log-analytics-log-searches.md).
+4. Geben Sie im Suchfeld ein Feld an, nach dem Sie suchen möchten, und drücken Sie die **EINGABETASTE**. Wenn Sie mit der Eingabe beginnen, werden in Log Analytics mögliche Übereinstimmungen und verfügbare Vorgänge angezeigt. Informieren Sie sich über das [Suchen nach Daten in Log Analytics](../log-analytics/log-analytics-log-searches.md).
 
    In diesem Beispiel wird nach Ereignissen mit **Type=AzureDiagnostics** gesucht.
 
    ![Beginnen mit der Eingabe einer Abfragezeichenfolge](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-start-query.png)
 
-6. Wählen Sie auf der linken Leiste den gewünschten Zeitrahmen aus. Wenn Sie der Abfrage einen Filter hinzufügen möchten, wählen Sie **+Hinzufügen** aus.
+5. Wählen Sie auf der linken Leiste den gewünschten Zeitrahmen aus. Wenn Sie der Abfrage einen Filter hinzufügen möchten, wählen Sie **+Hinzufügen** aus.
 
    ![Hinzufügen eines Filters zur Abfrage](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/query1.png)
 
-7. Geben Sie unter **Filter hinzufügen** den Namen des gewünschten Filters ein. Wählen Sie den Filter aus, und wählen Sie **+Hinzufügen** aus.
+6. Geben Sie unter **Filter hinzufügen** den Namen des gewünschten Filters ein. Wählen Sie den Filter aus, und wählen Sie **+Hinzufügen** aus.
 
    Zur Ermittlung der Austauschkontrollnummer wird in diesem Beispiel nach dem Wort „interchange“ (Austausch) gesucht und **event_record_messageProperties_interchangeControlNumber_s** als Filter ausgewählt.
 
    ![Auswählen des Filters](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-add-filter.png)
 
-9. Wählen Sie auf der linken Leiste den gewünschten Filterwert und anschließend **Übernehmen** aus.
+7. Wählen Sie auf der linken Leiste den gewünschten Filterwert und anschließend **Übernehmen** aus.
 
    In diesem Beispiel wird die Austauschkontrollnummer für die gewünschten Nachrichten ausgewählt.
 
    ![Auswählen des Filterwerts](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-select-filter-value.png)
 
-10. Kehren Sie zur Abfrageerstellung zurück. Ihre Abfrage wurde mit dem ausgewählten Filterereignis und -wert aktualisiert. Die vorherigen Ergebnisse werden nun ebenfalls gefiltert.
+8. Kehren Sie zur Abfrageerstellung zurück. Ihre Abfrage wurde mit dem ausgewählten Filterereignis und -wert aktualisiert. Die vorherigen Ergebnisse werden nun ebenfalls gefiltert.
 
     ![Rückkehr zur Abfrage mit gefilterten Ergebnissen](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-filtered-results.png)
 

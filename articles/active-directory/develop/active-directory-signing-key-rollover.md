@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2016
 ms.author: celested
-ms.reviewer: dastrock
+ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 29ac254bf3b0e8decb26452fc36112af0a3970af
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: a84cca4b0944db5cde038fb72917ebac23d0be8c
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317458"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Rollover von Signaturschlüsseln in Azure Active Directory
 In diesem Artikel wird erläutert, was Sie über die öffentlichen Schlüssel wissen müssen, die in Azure Active Directory (Azure AD) zum Signieren von Sicherheitstoken verwendet werden. Es ist wichtig zu beachten, dass für diese Schlüssel regelmäßig ein Rollover durchgeführt wird und dass in einem Notfall sofort ein Rollover erfolgen kann. Alle Anwendungen, die Azure AD verwenden, müssen den Schlüsselrolloverprozess programmgesteuert abwickeln können oder über einen regelmäßigen manuellen Rolloverprozess verfügen. In diesem Artikel erfahren Sie, wie die Schlüssel funktionieren, wie Sie die Auswirkung des Rollovers auf Ihre Anwendung bewerten und wie Sie Ihre Anwendung bei Bedarf aktualisieren oder einen regelmäßigen manuellen Rolloverprozess für Schlüssel einrichten.
@@ -50,7 +51,7 @@ Die Art und Weise, wie Ihre Anwendung den Schlüsselrollover behandelt, hängt v
 
 **Ausnahmen:**
 
-* Bei Anwendungen, die über den Azure AD-Anwendungskatalog hinzugefügt werden, steht jeweils eine separate Anleitung für Signaturschlüssel zur Verfügung. (Dies gilt auch für benutzerdefinierte Anwendungen.) Weitere Informationen finden Sie [hier](../active-directory-sso-certs.md).
+* Bei Anwendungen, die über den Azure AD-Anwendungskatalog hinzugefügt werden, steht jeweils eine separate Anleitung für Signaturschlüssel zur Verfügung. (Dies gilt auch für benutzerdefinierte Anwendungen.) Weitere Informationen finden Sie [hier](../manage-apps/manage-certificates-for-federated-single-sign-on.md).
 * Für lokale, mittels Anwendungsproxy veröffentlichte Anwendungen sind Signaturschlüssel nicht relevant.
 
 ### <a name="nativeclient"></a>Native Clientanwendungen mit Ressourcenzugriff

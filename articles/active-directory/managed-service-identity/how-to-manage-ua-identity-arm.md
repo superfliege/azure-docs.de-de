@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: e5c5ff74ee94f8df03ceb5b469ad635bd80d5a11
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a7ddcb834b135d2177355a0523c7e99bcc599e99
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33931026"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931513"
 ---
 # <a name="create-list-and-delete-a-user-assigned-identity-using-azure-resource-manager"></a>Erstellen, Auflisten und Löschen einer vom Benutzer zugewiesenen Identität mithilfe des Azure Resource Manager
 
@@ -35,7 +35,7 @@ Das Auflisten und Löschen einer vom Benutzer zugewiesenen Identität mithilfe e
 - [Löschen einer vom Benutzer zugewiesenen Identität](how-to-manage-ua-identity-cli.md#delete-a-user-assigned-identity)
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie nicht mit der verwalteten Dienstidentität vertraut sind, helfen Ihnen die Informationen in dieser [Übersicht](overview.md) weiter. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen Identität](overview.md#how-does-it-work)** bewusst.
+- Wenn Sie nicht mit „Verwaltete Dienstidentität“ vertraut sind, helfen Ihnen die Informationen in dieser [Übersicht](overview.md) weiter. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen Identität](overview.md#how-does-it-work)** bewusst.
 - Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
 
 Verwenden Sie unabhängig davon, ob Sie sich bei Azure lokal oder über das Azure-Portal anmelden, ein Konto, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält. Stellen Sie außerdem sicher, dass Ihr Konto zu einer Rolle gehört, durch die Sie Schreibberechtigungen auf dem virtuellen Computer erhalten (z.B. die Rolle „Mitwirkender für virtuelle Computer“).
@@ -53,8 +53,7 @@ Wie beim Azure-Portal und der Skripterstellung bieten Azure Resource Manager-Vor
 
 Um eine vom Benutzer zugewiesenen Identität zu erstellen, verwenden Sie die folgende Vorlage. Ersetzen Sie den Wert `<USER ASSIGNED IDENTITY NAME>` durch Ihre eigenen Werte:
 
-> [!IMPORTANT]
-> Für die Erstellung von Identitäten, die vom Benutzer zugewiesen werden, werden nur alphanumerische Zeichen und Bindestriche („0-9“, „a-Z“ bzw. „A-Z“ oder „-“) unterstützt. Darüber hinaus sollten Namen max. 24 Zeichen enthalten, damit die Zuordnung zur VM/VMSS ordnungsgemäß funktioniert. Überprüfen Sie zu einem späteren Zeitpunkt auf dieser Seite, ob neue Informationen vorliegen. Weitere Informationen finden Sie unter [FAQs und bekannte Probleme mit der verwalteten Dienstidentität (Managed Service Identity, MSI) für Azure Active Directory](known-issues.md).
+[!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 ```json
 {
@@ -71,7 +70,7 @@ Um eine vom Benutzer zugewiesenen Identität zu erstellen, verwenden Sie die fol
   "resources": [
     {
       "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
-      "name": "[parameters('<USER ASSIGNED IDENTITY NAME>')]",
+      "name": "[parameters('resourceName')]",
       "apiVersion": "2015-08-31-PREVIEW",
       "location": "[resourceGroup().location]"
     }
@@ -79,7 +78,7 @@ Um eine vom Benutzer zugewiesenen Identität zu erstellen, verwenden Sie die fol
   "outputs": {
       "identityName": {
           "type": "string",
-          "value": "[parameters('<USER ASSIGNED IDENTITY NAME>')]"
+          "value": "[parameters('resourceName')]"
       }
   }
 }

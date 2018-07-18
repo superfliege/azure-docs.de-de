@@ -10,19 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 198fa15b7ee8cce6781e6a2575844a9666185be9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 191f8973e85186590a2ba840e473f8fff57a9d94
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37053047"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – JSON-Skiptreferenz
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist.
+> Dieser Artikel gilt für Version 1 von Data Factory.
 
 
 Dieser Artikel enthält JSON-Schemas und -Beispiele für das Definieren von Azure Data Factory-Entitäten (Pipeline, Aktivität, Dataset und verknüpfter Dienst).  
@@ -1944,7 +1945,7 @@ Legen Sie zum Definieren eines verknüpften Oracle-Diensts den **Typ** des verkn
 | --- | --- | --- |
 | driverType | Legen Sie fest, welcher Treiber für das Kopieren von Daten aus/in Oracle Database verwendet wird. Zulässige Werte sind **Microsoft** oder **ODP** (Standard). Details zu den Treibern finden Sie unter [Unterstützte Versionen und Installation](#supported-versions-and-installation). | Nein  |
 | connectionString | Geben Sie Informationen, die zur Verbindung mit der Oracle Databaseinstanz erforderlich sind, für die Eigenschaft "connectionString" an. | Ja |
-| gatewayName | Der Name des Gateways, das zum Herstellen einer Verbindung mit dem lokalen Oracle-Server verwendet wird. |Ja |
+| gatewayName | Name des Gateways, das zum Herstellen einer Verbindung mit dem lokalen Oracle-Server verwendet wird |Ja |
 
 #### <a name="example"></a>Beispiel
 ```json
@@ -2976,7 +2977,7 @@ Legen Sie beim Kopieren von Daten aus Cassandra den **Quelltyp** der Kopieraktiv
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
 | query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-92-Abfrage oder CQL-Abfrage. Weitere Informationen finden Sie in der [Referenz zu CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Geben Sie beim Verwenden der SQL-Abfrage **keyspace name.table name** für die Tabelle an, die Sie abfragen möchten. |Nein (wenn tableName und keyspace im Dataset definiert sind) |
-| consistencyLevel |Mit der Konsistenzebene (consistencyLevel) wird angegeben, wie viele Replikate auf eine Leseanforderung reagieren müssen, bevor Daten an die Clientanwendung zurückgegeben werden. Cassandra überprüft die angegebene Anzahl von Replikaten auf Daten, um die Leseanforderung zu erfüllen. |ONE, TWO, THREE, QUORUM, ALL, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE. Ausführliche Informationen finden Sie unter [Configuring data consistency](http://docs.datastax.com/en//cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) (Konfigurieren der Datenkonsistenz). |Nein. Der Standardwert ist ONE. |
+| consistencyLevel |Mit der Konsistenzebene (consistencyLevel) wird angegeben, wie viele Replikate auf eine Leseanforderung reagieren müssen, bevor Daten an die Clientanwendung zurückgegeben werden. Cassandra überprüft die angegebene Anzahl von Replikaten auf Daten, um die Leseanforderung zu erfüllen. |ONE, TWO, THREE, QUORUM, ALL, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE. Ausführliche Informationen finden Sie unter [Configuring data consistency](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) (Konfigurieren der Datenkonsistenz). |Nein. Der Standardwert ist ONE. |
 
 #### <a name="example"></a>Beispiel
   
@@ -3553,7 +3554,7 @@ Legen Sie zum Definieren eines verknüpften FTP-Diensts den **Typ** des verknüp
 | username |Der Benutzer, der Zugriff auf den FTP-Server hat |Nein  |&nbsp; |
 | password |Kennwort für den Benutzer (username) |Nein  |&nbsp; |
 | encryptedCredential |Verschlüsselte Anmeldeinformation für den Zugriff auf den FTP-Server |Nein  |&nbsp; |
-| gatewayName |Name des Datenverwaltungsgateway-Gateways zum Herstellen einer Verbindung zu einem lokalen FTP-Server |Nein  |&nbsp; |
+| gatewayName |Name des Datenverwaltungsgateways für die Verbindung mit einem lokalen FTP-Server |Nein  |&nbsp; |
 | port |Port, den der FTP-Server abhört |Nein  |21 |
 | enableSsl |Angeben, ob FTP über SSL/TSL-Kanal verwendet werden soll |Nein  |true |
 | enableServerCertificateValidation |Angeben, ob die Überprüfung des SSL-Zertifikats aktiviert werden soll, wenn FTP über SSL/TSL-Kanal verwendet wird |Nein  |true |

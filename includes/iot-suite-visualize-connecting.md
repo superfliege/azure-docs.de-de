@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 5eca35141544e8ea451dfc7471a83e3e1e980360
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 5702c6e9c9d75c6cccb82f1c57684ef7b9898c34
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34307616"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34666008"
 ---
 ## <a name="view-device-telemetry"></a>Anzeigen der Gerätetelemetrie
 
@@ -33,7 +33,7 @@ Sie können die von Ihrem Gerät gesendeten Telemetriedaten in der Lösung auf d
 
 ## <a name="act-on-your-device"></a>Aktionen auf Ihrem Gerät
 
-Um Methoden auf Ihren Geräten aufzurufen, verwenden Sie in der Lösung für die Remoteüberwachung die Seite **Geräte**. In der Lösung für die Remoteüberwachung implementieren **Kühlgeräte** beispielsweise eine **FirmwareUpdate**-Methode.
+Um Methoden auf Ihren Geräten aufzurufen, verwenden Sie in der Remoteüberwachungslösung die Seite **Geräte**. In der Remoteüberwachungslösung implementieren **Kühlgeräte** beispielsweise eine **FirmwareUpdate**-Methode.
 
 1. Wählen Sie **Geräte**, um zur Seite **Geräte** in der Lösung zu navigieren.
 

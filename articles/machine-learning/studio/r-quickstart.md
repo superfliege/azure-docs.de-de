@@ -1,5 +1,5 @@
 ---
-title: Schnellstart-Tutorial für die Sprache R für Machine Learning | Microsoft Docs
+title: Schnellstart-Tutorial für die Sprache R für Machine Learning | Microsoft-Dokumentation
 description: Verwenden Sie dieses Lernprogramm für die Programmierung in R, um einen schnellen Einstieg in die Verwendung der Sprache R mit Azure Machine Learning Studio zum Erstellen von Vorhersagelösungen zu erhalten.
 keywords: Schnellstart,Sprache R,Programmiersprache R,R-Programmierungs-Lernprogramm
 services: machine-learning
@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 231d505e91fc036b30344e2fd9971db8ba2fdf05
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 97107bb5ca1a598906cac9adbf508b2d15668e7d
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227239"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>Schnellstart-Lernprogramm für die Programmiersprache R für Azure Machine Learning
 
@@ -39,7 +41,7 @@ Zeitreihendaten sind Daten, deren Werte einen Zeitindex besitzen. Der Zeitindex 
 
 In diesem Schnellstarthandbuch arbeiten wir mit kalifornischen Milchproduktions- und -preisdaten. Diese Daten umfassen monatliche Informationen zur Produktion mehrerer Milcherzeugnisse sowie zum Preis von Milchfett, einem Vergleichsrohstoff.
 
-Die in diesem Artikel verwendeten Daten können zusammen mit R-Skripts [hier][download] heruntergeladen werden. Diese Daten wurden ursprünglich aus Informationen zusammengestellt, die von der University of Wisconsin unter http://future.aae.wisc.edu/tab/production.html verfügbar sind.
+Die in diesem Artikel verwendeten Daten und R-Skripts können Sie[hier herunterladen](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/blob/master/studio-samples/cadairydata.csv). Diese Daten wurden ursprünglich aus Informationen zusammengestellt, die von der University of Wisconsin unter https://dairymarkets.com verfügbar sind.
 
 ### <a name="organization"></a>Organisation
 Wir werden mehrere Schritte durchlaufen, in denen Sie erfahren, wie Sie in der Azure Machine Learning-Umgebung R-Code zur Analyse und Datenbearbeitung erstellen, testen und ausführen.  
@@ -121,9 +123,9 @@ Azure Machine Learning verfügt über mehr als 350 vorinstallierte R-Sprachpaket
 Wenn Sie die letzte Zeile des Codes im Moment noch nicht verstehen, lesen Sie trotzdem weiter. Die Verwendung von R in der Azure Machine Learning-Umgebung wird im restlichen Teil dieses Dokuments noch ausführlich erörtert.
 
 ### <a name="introduction-to-rstudio"></a>Einführung in RStudio
-RStudio ist eine weit verbreitete IDE für R. Wir verwenden RStudio zum Bearbeiten, Testen und Debuggen einiger R-Codeabschnitte, die in diesem Schnellstarthandbuch verwendet werden. Nachdem der R-Code getestet wurde und bereit ist, schneiden Sie ihn einfach im RStudio-Editor aus und fügen ihn in ein [Execute R Script][execute-r-script]-Modul in Machine Learning Studio ein.  
+RStudio ist eine weit verbreitete IDE für R. Wir verwenden RStudio, um einige R-Codes in diesem Schnellstarthandbuch zu bearbeiten, zu testen und zu debuggen. Wenn der R-Code getestet wurde und bereit ist, können Sie ihn einfach im RStudio-Editor ausschneiden und in ein [Execute R Script][execute-r-script]-Modul in Machine Learning Studio einfügen.  
 
-Wenn die Programmiersprache R nicht auf Ihrem Desktopcomputer installiert ist, sollten Sie die Installation jetzt durchführen. Kostenlose Downloads der Open Source-Sprache R sind im CRAN (Comprehensive R Archive Network) unter [http://www.r-project.org/](http://www.r-project.org/) verfügbar. Es stehen dort Downloads für Windows, Mac OS und Linux/UNIX zur Verfügung. Wählen Sie einen Spiegelserver in Ihrer Nähe aus, und befolgen Sie die Downloadanweisungen. Zusätzlich finden Sie im CRAN eine Fülle von nützlichen Analyse- und Datenbearbeitungspaketen.
+Wenn die Programmiersprache R nicht auf Ihrem Desktopcomputer installiert ist, sollten Sie die Installation jetzt durchführen. Kostenlose Downloads der Open Source-Sprache R finden Sie in CRAN (Comprehensive R Archive Network) unter [http://www.r-project.org/](http://www.r-project.org/). Es stehen dort Downloads für Windows, Mac OS und Linux/UNIX zur Verfügung. Wählen Sie einen Spiegelserver in Ihrer Nähe aus, und befolgen Sie die Downloadanweisungen. Zusätzlich finden Sie im CRAN eine Fülle von nützlichen Analyse- und Datenbearbeitungspaketen.
 
 Wenn Sie noch keine Erfahrungen mit RStudio haben, sollten Sie die Desktopversion herunterladen und installieren. Die RStudio-Downloads für Windows, Mac OS und Linux/UNIX finden Sie unter http://www.rstudio.com/products/RStudio/. Befolgen Sie die bereitgestellten Anweisungen zum Installieren von RStudio auf Ihrem Desktopcomputer.  
 
@@ -1239,7 +1241,7 @@ Es gibt viele Bücher zu R, die Ihnen beim Einstieg helfen können. Hier finden 
 * „R Inferno“ von Patrick Burns ist ein erstaunlich humorvolles Buch, das sich mit einer Reihe von verzwickten und komplizierten Themen beschäftigt, die bei der Programmierung in R vorkommen können. Das Buch ist unter http://www.burns-stat.com/documents/books/the-r-inferno/ kostenlos erhältlich.
 * Wenn Sie eine gründliche Erörterung komplexerer Themen in R benötigen, werfen Sie einen Blick in das Buch „Advanced R“ von Hadley Wickham. Die Onlineversion dieses Buchs ist kostenlos erhältlich unter http://adv-r.had.co.nz/.
 
-Ein Katalog mit R-Zeitreihenpaketen finden Sie in der CRAN-Aufgabenansicht für die Zeitreihenanalyse unter http://cran.r-project.org/web/views/TimeSeries.html. Informationen zu speziellen Zeitreihen-Objektpaketen finden Sie in der Dokumentation für das jeweilige Paket.
+Einen Katalog mit R-Zeitreihenpaketen finden Sie in der CRAN-Aufgabenansicht für die Zeitreihenanalyse: http://cran.r-project.org/web/views/TimeSeries.html. Informationen zu speziellen Zeitreihen-Objektpaketen finden Sie in der Dokumentation für das jeweilige Paket.
 
 Das Buch "Introductory Time Series with R" von Paul Cowpertwait und Andrew Metcalfe bietet eine Einführung in die Verwendung von R für Zeitreihenanalysen. Außerdem gibt es noch jede Menge theoretische Texte, in denen Sie R-Beispiele finden können.
 

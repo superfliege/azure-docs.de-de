@@ -16,10 +16,11 @@ ms.date: 01/31/2017
 ms.author: jroth
 experimental_id: d51f3cc6-753b-4e
 ms.openlocfilehash: c856c8c67d410a3b528c4f8b12b1225cf395bca4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "29398368"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Herstellen einer Verbindung mit einem virtuellen SQL Server-Computer in Azure (Klassische Bereitstellung)
 > [!div class="op_single_selector"]
@@ -56,7 +57,7 @@ In diesem Szenario können Sie die Verbindung mit dem virtuellen Computer **Name
 ### <a name="connect-to-sql-server-over-the-internet"></a>Verbinden mit SQL Server über das Internet
 Wenn Sie über das Internet eine Verbindung mit Ihrer SQL Server-Datenbank-Engine herstellen möchten, müssen Sie einen VM-Endpunkt für eingehende TCP-Kommunikation erstellen. Dieser Azure-Konfigurationsschritt leitet den eingehenden Datenverkehr des TCP-Ports zu einem TCP-Port, auf den der virtuelle Computer zugreifen kann.
 
-Um über das Internet eine Verbindung herzustellen, müssen Sie den DNS-Namen des virtuellen Computers und die Portnummer des Endpunkts für den virtuellen Computers verwenden (wird weiter unten in diesem Artikel konfiguriert). Um den DNS-Namen zu suchen, navigieren Sie zum Azure-Portal, und wählen Sie **Virtuelle Computer (klassisch)**aus. Wählen Sie dann den virtuellen Computer aus. Der **DNS-Name** wird im Abschnitt **Übersicht** angezeigt.
+Um über das Internet eine Verbindung herzustellen, müssen Sie den DNS-Namen des virtuellen Computers und die Portnummer des Endpunkts für den virtuellen Computers verwenden (wird weiter unten in diesem Artikel konfiguriert). Um den DNS-Namen zu suchen, navigieren Sie zum Azure-Portal, und wählen Sie **Virtuelle Computer (klassisch)** aus. Wählen Sie dann den virtuellen Computer aus. Der **DNS-Name** wird im Abschnitt **Übersicht** angezeigt.
 
 Beispiel: Ein klassischer virtueller Computer mit dem Namen **mysqlvm** mit einem DNS-Namen **mysqlvm7777.cloudapp.net** und dem Endpunkt **57500** für den virtuellen Computer. Wenn eine korrekt konfigurierte Verbindung vorhanden ist, könnte die folgende Verbindungszeichenfolge verwendet werden, um von überall über das Internet auf den virtuellen Computer zuzugreifen:
 

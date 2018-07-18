@@ -1,11 +1,11 @@
 ---
 title: Erstellen und Wiederherstellen eine Sicherung in BizTalk Services | Microsoft Docs
-description: "BizTalk Services umfasst Funktionen für das Sichern und Wiederherstellen. Erfahren Sie, wie Sie eine Sicherung erstellen und wiederherstellen, und wie Sie festlegen, was gesichert werden soll. MABS, WABS"
+description: BizTalk Services umfasst Funktionen für das Sichern und Wiederherstellen. Erfahren Sie, wie Sie eine Sicherung erstellen und wiederherstellen, und wie Sie festlegen, was gesichert werden soll. MABS, WABS
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 59f91173-4683-48df-abd5-41262bfce6df
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24102340"
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk Services: Sichern und Wiederherstellen
 

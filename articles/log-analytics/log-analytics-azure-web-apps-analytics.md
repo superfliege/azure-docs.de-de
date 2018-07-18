@@ -3,7 +3,7 @@ title: Anzeigen von Analysedaten für Azure-Web-Apps | Microsoft-Dokumentation
 description: Mithilfe der Lösung Azure-Web-Apps-Analyse können Sie Erkenntnisse über Ihre Azure-Web-Apps gewinnen, indem Sie verschiedene Metriken über alle Azure-Web-App-Ressourcen sammeln.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: 20ff337f-b1a3-4696-9b5a-d39727a94220
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/18/2018
+ms.topic: conceptual
+ms.date: 06/26/2018
 ms.author: magoedte
-ms.openlocfilehash: c44546ffe65a0849b485fb0d2dd169e4216ae80a
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.component: na
+ms.openlocfilehash: 7915a255c24fc33cfa489354b49596ca0feec473
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261367"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128944"
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Anzeigen von Analysedaten für Metriken über alle Azure-Web-App-Ressourcen
 
@@ -57,8 +58,7 @@ Im Gegensatz zu den meisten anderen Log Analytics-Lösungen werden die Daten fü
 
 Führen Sie die folgenden Schritte aus, um die Lösung Azure-Web-Apps-Analyse für Ihre Arbeitsbereiche zu konfigurieren.
 
-1. Aktivieren Sie die Lösung Azure-Web-Apps-Analyse für Aktivitätsprotokolle in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureWebAppsAnalyticsOMS?tab=Overview) oder entsprechend den unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Schritten.
-2. [Aktivieren Sie die Protokollierung von Azure-Ressourcenmetriken in Log Analytics über PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell).
+1. [Aktivieren Sie die Protokollierung von Azure-Ressourcenmetriken in Log Analytics über PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell).
 
 Die Lösung Azure-Web-Apps-Analyse sammelt zwei Gruppen von Metriken aus Azure:
 

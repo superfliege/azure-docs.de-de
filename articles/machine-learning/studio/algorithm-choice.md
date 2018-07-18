@@ -10,16 +10,18 @@ editor: cgronlun
 tags: ''
 ms.assetid: a3b23d7f-f083-49c4-b6b1-3911cd69f1b4
 ms.service: machine-learning
+ms.component: studio
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 12/18/2017
-ms.openlocfilehash: e1c7030a5f0c6e13653b302fcb48e7d4efa232c7
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 79b2cc3951fa8a48282f42f7180ec831050508f8
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834381"
 ---
 # <a name="how-to-choose-algorithms-for-microsoft-azure-machine-learning"></a>Auswählen von Algorithmen für Microsoft Azure Machine Learning
 Die Antwort auf die Frage „Welchen Algorithmus für Machine Learning sollte ich verwenden?“ lautet immer „Kommt darauf an“. Es hängt von der Größe, Qualität und Art der Daten ab. Es hängt davon ab, was Sie mit der Antwort anfangen möchten. Es hängt davon ab, wie die mathematische Logik des Algorithmus in Anweisungen für den Computer übersetzt wurde, den Sie verwenden. Und es hängt davon ab, wie viel Zeit Sie haben. Selbst der erfahrenste Datenanalyst kann Ihnen nicht sagen, welcher Algorithmus die besten Ergebnisse liefert, bevor er ihn ausprobiert hat.
@@ -138,7 +140,7 @@ Einige Lernalgorithmen treffen bestimmte Annahmen über die Struktur der Daten o
 
 **●** – zeigt ausgezeichnete Genauigkeit, schnelle Trainingszeiten und Verwendung von Linearität.
 
-**○** – zeigt gute Genauigkeit und moderate Trainingszeiten.
+**○** – zeigt gute Genauigkeit und moderate Trainingszeiten
 
 ## <a name="algorithm-notes"></a>Hinweise zu den Algorithmen
 ### <a name="linear-regression"></a>Lineare Regression

@@ -1,23 +1,24 @@
 ---
-title: "Auswählen einer Azure-Hybrididentitätslösung | Microsoft-Dokumentation"
-description: "Erhalten Sie grundlegende Informationen zu den verfügbaren Hybrididentitätslösungen und Empfehlungen, nach denen Sie für Ihre Organisation eine fundierte Entscheidung zur Identitätsgovernance treffen können."
-keywords: 
+title: Auswählen einer Azure-Hybrididentitätslösung | Microsoft-Dokumentation
+description: Erhalten Sie grundlegende Informationen zu den verfügbaren Hybrididentitätslösungen und Empfehlungen, nach denen Sie für Ihre Organisation eine fundierte Entscheidung zur Identitätsgovernance treffen können.
+keywords: ''
 author: jeffgilb
 manager: mtillman
 ms.reviewer: jsnow
 ms.author: billmath
 ms.date: 03/02/2018
 ms.topic: article
-ms.prod: 
+ms.prod: ''
 ms.service: azure
-ms.technology: 
-ms.assetid: 
+ms.technology: ''
+ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 9f9099c0ebd65ba84e171314e6f04d858648a805
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 905cedd6ee781ca163731a6f71b083acfc11b5eb
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332370"
 ---
 # <a name="microsoft-hybrid-identity-solutions"></a>Hybrididentitätslösungen
 Hybrid-Identitätslösungen mit [Microsoft Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) ermöglichen es Ihnen, lokale Verzeichnisobjekte mit Azure AD zu synchronisieren, während Sie Ihre Benutzer weiterhin lokal verwalten. Die erste Entscheidung bei der Planung der Synchronisierung Ihres lokalen Windows Server Active Directory mit Azure AD ist, ob Sie synchronisierte Identitäten oder einen Identitätsverbund verwenden möchten. Mit synchronisierten Identitäten (und optional Kennworthashes) können Ihre Benutzer dasselbe Kennwort zum Zugreifen auf lokale und cloudbasierte Organisationsressourcen verwenden. Für die Anforderungen erweiterter Szenarien wie einmaliges Anmelden (Single-Sign-On, SSO) oder lokales MFA müssen Sie Active Directory-Verbunddienste (AD FS) für den Identitätsverbund bereitstellen. 
@@ -52,7 +53,7 @@ Die Pass-Through-Authentifizierung kann mit Azure AD Connect konfiguriert werden
 - Mitglied einer Domäne in der Gesamtstruktur, über die Benutzer überprüft werden
 
 ## <a name="federated-identity-ad-fs"></a>Identitätsverbund (AD FS)
-Zur besseren Steuerung des Zugriffs auf Office 365 und andere Clouddienste durch Benutzer können Sie die Verzeichnissynchronisierung mit einmaligem Anmelden (SSO) über [Active Directory-Verbunddienste (AD FS)](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/whats-new-active-directory-federation-services-windows-server-2016) einrichten. Durch den Identitätsverbund der Anmeldevorgänge Ihrer Benutzer mit AD FS wird die Authentifizierung an einen lokalen Server delegiert, der die Anmeldeinformationen des Benutzers überprüft. In diesem Modell werden lokale Active Directory-Anmeldeinformationen niemals an Azure AD übergeben.
+Zur besseren Steuerung des Zugriffs auf Office 365 und andere Clouddienste durch Benutzer können Sie die Verzeichnissynchronisierung mit einmaligem Anmelden (SSO) über [Active Directory-Verbunddienste (AD FS)](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/whats-new-active-directory-federation-services-windows-server) einrichten. Durch den Identitätsverbund der Anmeldevorgänge Ihrer Benutzer mit AD FS wird die Authentifizierung an einen lokalen Server delegiert, der die Anmeldeinformationen des Benutzers überprüft. In diesem Modell werden lokale Active Directory-Anmeldeinformationen niemals an Azure AD übergeben.
 
 ![Identitätsverbund](./media/choose-hybrid-identity-solution/federated-identity.png)
 

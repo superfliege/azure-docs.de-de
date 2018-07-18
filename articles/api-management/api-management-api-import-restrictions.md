@@ -14,20 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: b33c95af94c436b1069658963692242d0f905554
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 03d785898398cb0bcd7b43e8d7feab705bce4b34
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598469"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Einschränkungen und bekannte Probleme beim Import von APIs
 ## <a name="about-this-list"></a>Informationen zu dieser Liste
 Beim Importieren einer API stoßen Sie unter Umständen auf Einschränkungen oder Probleme, die behoben werden müssen, damit der Import erfolgreich ausgeführt werden kann. Diese Probleme werden nachfolgend unter dem jeweiligen Importformat der API beschrieben.
 
-## <a name="open-api"></a>Open API/Swagger
-Wenn Ihnen beim Import von Open API-Dokumenten Fehler gemeldet werden, sollten Sie zunächst sicherstellen, dass Sie das Dokument überprüft haben. Diese Überprüfung können Sie mit dem Designer des neuen Azure-Portals (Design – Front-End – Open API Specification Editor) oder mit einem Tool eines Drittanbieters, zum Beispiel mit <a href="http://www.swagger.io">Swagger Editor</a>, vornehmen.
+## <a name="open-api"> </a>OpenAPI/Swagger
+Wenn Ihnen beim Importieren Ihres OpenAPI-Dokuments Fehler gemeldet werden, vergewissern Sie sich, dass Sie das Dokument überprüft haben. Diese Überprüfung können Sie mit dem Designer des neuen Azure-Portals (Design – Front-End – OpenAPI Specification Editor) oder mit einem Tool eines Drittanbieters, zum Beispiel mit <a href="http://www.swagger.io">Swagger Editor</a>, vornehmen.
 
 * Nur das JSON-Format für OpenAPI wird unterstützt.
+* Erforderliche Parameter für Pfad und Abfrage müssen eindeutige Namen besitzen. (In OpenAPI muss ein Parametername nur an einem Ort (beispielsweise im Pfad, in der Abfrage oder im Header) eindeutig sein.  In API Management können Vorgänge jedoch sowohl nach Pfad- als auch nach Abfrageparametern unterschieden werden. (Dies wird von OpenAPI nicht unterstützt.) Daher müssen Parameternamen innerhalb der gesamten URL-Vorlage eindeutig sein.)
 * Schemas, auf die mit **$ref**-Eigenschaften verwiesen wird, können keine anderen **$ref**-Eigenschaften enthalten.
 * Mit **$ref**-Zeigern kann nicht auf externe Dateien verwiesen werden.
 * **x-ms-paths** und **x-servers** sind die einzigen unterstützten Erweiterungen.

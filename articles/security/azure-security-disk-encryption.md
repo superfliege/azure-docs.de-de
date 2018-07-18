@@ -14,22 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2018
 ms.author: devtiw
-ms.openlocfilehash: 813124ae7c0dd76a27dcbaea6f0d7aa19bc1e49c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f350716d0ca906376f3eadce9e117694ff14515c
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "35756395"
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer
 Bei Microsoft Azure wird sehr darauf geachtet, den Schutz Ihrer Daten und die Datenhoheit sicherzustellen. Außerdem können Sie für Ihre unter Azure gehosteten Daten eine Reihe von modernen Techniken zum Verschlüsseln, Steuern und Verwalten von Verschlüsselungsschlüsseln und Steuern und Überprüfen des Datenzugriffs nutzen. So können Azure-Kunden flexibel eine Lösung auswählen, die Ihre Anforderungen am besten erfüllt. In diesem Artikel stellen wir Ihnen die neue Technologie „Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer“ vor, die zum Schützen und Absichern Ihrer Daten dient, um Vorgaben in den Bereichen Unternehmenssicherheit und Compliance zu erfüllen. Der Artikel enthält eine ausführliche Anleitung zur Verwendung der Funktionen einer Azure-Datenträgerverschlüsselung, z.B. die unterstützten Szenarien und die Benutzeroberflächen.
 
-> [!NOTE]
-> Einige Empfehlungen führen möglicherweise zu einer erhöhten Daten-, Netzwerk- oder Computeressourcenauslastung, was zusätzliche Lizenz- oder Abonnementkosten nach sich ziehen kann.
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
+
 
 ## <a name="overview"></a>Übersicht
 Azure Disk Encryption ist eine neue Funktion, mit der Sie die Datenträger von virtuellen Windows- und Linux-IaaS-Computern verschlüsseln können. Azure Disk Encryption nutzt das Branchenstandardfeature [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) von Windows und das Feature [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) von Linux, um Volumeverschlüsselung für das Betriebssystem und die Datenträger bereitzustellen. Die Lösung ist in [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) integriert, damit Sie die Verschlüsselungsschlüssel und Geheimnisse für die Datenträgerverschlüsselung in Ihrem Key Vault-Abonnement steuern und verwalten können. Diese Lösung stellt außerdem sicher, dass alle ruhenden Daten auf den Datenträgern der virtuellen Computer in Azure Storage verschlüsselt sind.
 
 Die Azure-Datenträgerverschlüsselung (Azure Disk Encryption) für Windows- und Linux-IaaS-VMs befindet sich in allen öffentlichen Azure-Regionen und AzureGov-Regionen für Standard-VMs und VMs mit Storage Premium in der Phase **Allgemeine Verfügbarkeit**.
+
+> [!NOTE]
+> Einige Empfehlungen führen möglicherweise zu einer erhöhten Daten-, Netzwerk- oder Computeressourcenauslastung, was zusätzliche Lizenz- oder Abonnementkosten nach sich ziehen kann.
+
 
 ### <a name="encryption-scenarios"></a>Verschlüsselungsszenarien
 Die Azure Disk Encryption-Lösung unterstützt die folgenden Kundenszenarien:
@@ -417,7 +422,7 @@ Die Datenträgerverschlüsselung kann auf neuen virtuellen IaaS-Windows-VMs aus 
 > [!NOTE]
 > Mit dieser Vorlage wird ein neuer verschlüsselter virtueller Windows-Computer erstellt, der das Windows Server 2012-Katalogimage verwendet.
 
-Sie können die Datenträgerverschlüsselung auf einer neuen IaaS-RedHat Linux 7.2-VM mit einem RAID-0-Array mit 200 GB aktivieren, indem Sie [diese Resource Manager-Vorlage](https://aka.ms/fde-rhel) verwenden. Überprüfen Sie nach der Bereitstellung der Vorlage den VM-Verschlüsselungsstatus, indem Sie das `Get-AzureRmVmDiskEncryptionStatus`-Cmdlet wie unter [Verschlüsseln des Betriebssystemdatenträgers auf einer laufenden Linux-VM](#encrypting-os-drive-on-a-running-linux-vm) beschrieben verwenden. Wenn der Computer den Status _VMRestartPending_ zurückgibt, starten Sie die VM neu.
+Sie können die Datenträgerverschlüsselung auf einem neuen virtuellen IaaS-RedHat Linux 7.2-Computer mit einem RAID-0-Array mit 200 GB aktivieren, indem Sie [diese Resource Manager-Vorlage](https://aka.ms/fde-rhel) verwenden. Überprüfen Sie nach der Bereitstellung der Vorlage den VM-Verschlüsselungsstatus, indem Sie das `Get-AzureRmVmDiskEncryptionStatus`-Cmdlet wie unter [Verschlüsseln des Betriebssystemdatenträgers auf einer laufenden Linux-VM](#encrypting-os-drive-on-a-running-linux-vm) beschrieben verwenden. Wenn der Computer den Status _VMRestartPending_ zurückgibt, starten Sie die VM neu.
 
 In der folgenden Tabelle sind die Parameter der Resource Manager-Vorlage für das Szenario neuer virtuelle Computer aus dem Marketplace mit Azure AD-Client-ID aufgeführt:
 

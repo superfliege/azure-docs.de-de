@@ -1,12 +1,12 @@
 ---
-title: "Beibehalten von Dateien für Bash in Azure Cloud Shell | Microsoft-Dokumentation"
-description: "Exemplarische Vorgehensweise für Bash zum Beibehalten von Dateien in Azure Cloud Shell."
+title: Beibehalten von Dateien für Bash in Azure Cloud Shell | Microsoft-Dokumentation
+description: Exemplarische Vorgehensweise für Bash zum Beibehalten von Dateien in Azure Cloud Shell.
 services: azure
-documentationcenter: 
+documentationcenter: ''
 author: jluk
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28919541"
 ---
 [!INCLUDE [features-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 

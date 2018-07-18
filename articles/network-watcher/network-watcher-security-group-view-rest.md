@@ -1,11 +1,11 @@
 ---
-title: "Analysieren der Netzwerksicherheit mit der Azure Network Watcher-Sicherheitsgruppenansicht – REST-API | Microsoft-Dokumentation"
-description: "In diesem Artikel wird die Verwendung von PowerShell zum Analysieren der Sicherheit eines virtuellen Computers über die Sicherheitsgruppenansicht beschrieben."
+title: Analysieren der Netzwerksicherheit mit der Azure Network Watcher-Sicherheitsgruppenansicht – REST-API | Microsoft-Dokumentation
+description: In diesem Artikel wird die Verwendung von PowerShell zum Analysieren der Sicherheit eines virtuellen Computers über die Sicherheitsgruppenansicht beschrieben.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a2f418fe-f5d2-43ed-8dc3-df0ed2a4d4ac
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23036875"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>Analysieren der Sicherheit Ihres virtuellen Computers über die Sicherheitsgruppenansicht mithilfe der REST API
 

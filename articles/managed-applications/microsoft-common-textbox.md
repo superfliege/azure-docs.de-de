@@ -11,13 +11,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: f11098f4af2e85df16e00ce6dac6e7c4b5b34e2b
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: fa3e5fff8080acb9e824ffe27f6c149054804830
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063645"
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Benutzeroberflächenelement „Microsoft.Common.TextBox UI“
 Ein Steuerelement, das zum Bearbeiten von unformatiertem Text verwendet werden kann.
@@ -30,8 +31,8 @@ Ein Steuerelement, das zum Bearbeiten von unformatiertem Text verwendet werden k
 {
   "name": "element1",
   "type": "Microsoft.Common.TextBox",
-  "label": "Some text box",
-  "defaultValue": "my value",
+  "label": "Example text box 1",
+  "defaultValue": "my text value",
   "toolTip": "Use only allowed characters",
   "constraints": {
     "required": true,
@@ -43,7 +44,7 @@ Ein Steuerelement, das zum Bearbeiten von unformatiertem Text verwendet werden k
 ```
 
 ## <a name="remarks"></a>Anmerkungen
-- Wenn `constraints.required` auf **true** festgelegt ist, muss das Textfeld für eine erfolgreiche Überprüfung einen Wert enthalten. Der Standardwert ist **false**.
+- Wenn `constraints.required` auf **TRUE** festgelegt ist, muss das Textfeld für eine erfolgreiche Überprüfung einen Wert enthalten. Der Standardwert ist **false**.
 - `constraints.regex` ist ein Muster für einen regulären JavaScript-Ausdruck. Wenn der Wert des Textfelds angegeben wird, muss er für eine erfolgreiche Überprüfung dem Muster entsprechen. Der Standardwert lautet **null**.
 - `constraints.validationMessage` ist eine Zeichenfolge, die angezeigt wird, wenn bei der Überprüfung des Werts des Textfelds ein Fehler auftritt. Wird kein Wert angegeben, werden die integrierten Überprüfungsnachrichten des Textfelds verwendet. Der Standardwert lautet **null**.
 - Für `constraints.regex` kann ein Wert angegeben werden, wenn `constraints.required` auf **false** festgelegt ist. In diesem Szenario ist für eine erfolgreiche Überprüfung des Textfelds kein Wert erforderlich. Wird ein Wert angegeben, muss er dem Muster des regulären Ausdrucks entsprechen.
@@ -51,7 +52,7 @@ Ein Steuerelement, das zum Bearbeiten von unformatiertem Text verwendet werden k
 ## <a name="sample-output"></a>Beispielausgabe
 
 ```json
-"my value"
+"my text value"
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

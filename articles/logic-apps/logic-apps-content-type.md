@@ -4,8 +4,8 @@ description: Umgang von Azure Logic Apps mit Inhaltstypen zur Entwurfs- und Lauf
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: cd1f08fd-8cde-4afc-86ff-2e5738cc8288
 ms.service: logic-apps
 ms.devlang: multiple
@@ -14,15 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: ac67838344bbd10384299c086ff096fbe5dec6a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 809cc8524bf0d9922aec1f88aa5bfe3b8f2f4d78
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297120"
 ---
 # <a name="handle-content-types-in-logic-apps"></a>Behandeln von Inhaltstypen in Logik-Apps
 
-Viele verschiedene Arten von Inhalten können durch Logik-Apps fließen – einschließlich JSON, XML, Flatfiles und binären Daten. Zwar werden alle Inhaltstypen unterstützt, einige werden jedoch nativ vom Logic Apps-Modul verstanden, während andere möglicherweise eine Umwandlung oder Konvertierung erfordern. In diesem Artikel wird beschrieben, wie das Modul verschiedene Inhaltstypen behandelt und wie diese Typen bei Bedarf ordnungsgemäß behandelt werden.
+Viele verschiedene Arten von Inhalten können durch Logik-Apps fließen – einschließlich JSON, XML, Flatfiles und binären Daten. Zwar werden alle Inhaltstypen unterstützt, für einige bietet die Logic Apps-Engine jedoch native Unterstützung. während andere möglicherweise eine Umwandlung oder Konvertierung erfordern. In diesem Artikel wird beschrieben, wie die Engine verschiedene Inhaltstypen behandelt und wie diese Typen bei Bedarf ordnungsgemäß behandelt werden.
 
 ## <a name="content-type-header"></a>Header „Content-Type“
 
@@ -30,7 +31,7 @@ Sehen Sie sich zum Einstieg zunächst die beiden `Content-Types` an, die keine K
 
 ## <a name="applicationjson"></a>Anwendung/JSON
 
-Das Workflowmodul verlässt sich auf den `Content-Type` -Header aus HTTP-Aufrufen, um die richtige Verarbeitung zu ermitteln. Jede Anforderung mit dem Inhaltstyp `application/json` wird als JSON-Objekt gespeichert und behandelt. Zudem kann JSON-Inhalt standardmäßig ohne Umwandlung analysiert werden. 
+Die Workflow-Engine verlässt sich auf den `Content-Type`-Header aus HTTP-Aufrufen, um die richtige Verarbeitung zu ermitteln. Jede Anforderung mit dem Inhaltstyp `application/json` wird als JSON-Objekt gespeichert und behandelt. Zudem kann JSON-Inhalt standardmäßig ohne Umwandlung analysiert werden. 
 
 Beispielsweise können Sie eine Anforderung mit dem Header `application/json ` in einem Workflow analysieren, indem Sie mithilfe eines Ausdruck wie `@body('myAction')['foo'][0]` den Wert `bar` in diesem Fall abrufen:
 
@@ -70,7 +71,7 @@ Wenn Sie in der nächsten Aktion diese Anforderung als Text einer anderen Anford
 
 ## <a name="applicationxml-and-applicationoctet-stream-and-converter-functions"></a>application/xml und application/octet-stream und Konvertierungsfunktionen
 
-Das Logic Apps-Modul behält immer den `Content-Type` bei, der in der HTTP-Anforderung oder der Antwort empfangen wurde. Wenn ein Inhalt mit dem `Content-Type` `application/octet-stream` eingeht, führt das Einfügen in eine nachfolgende Aktion ohne Umwandlung zu einer ausgehenden Anforderung mit `Content-Type`: `application/octet-stream`. Auf diese Weise kann das Modul garantieren, dass die Daten beim Austausch im gesamten Workflow nicht verloren gehen. Der Aktionszustand (Eingaben und Ausgaben) wird jedoch in einem JSON-Objekt gespeichert, während er den Workflow durchläuft. Zum Erhalten einiger Datentypen konvertiert das Modul den Inhalt in eine Base64-codierte Binärzeichenfolge mit entsprechenden Metadaten, in der `$content` und `$content-type` beibehalten werden, wobei eine automatische Konvertierung erfolgt. 
+Die Logic Apps-Engine behält immer den `Content-Type` bei, der in der HTTP-Anforderung oder der Antwort empfangen wurde. Wenn ein Inhalt mit dem `Content-Type` `application/octet-stream` eingeht, führt das Einfügen in eine nachfolgende Aktion ohne Umwandlung zu einer ausgehenden Anforderung mit `Content-Type`: `application/octet-stream`. Auf diese Weise kann die Engine garantieren, dass die Daten beim Austausch im gesamten Workflow nicht verloren gehen. Der Aktionszustand (Eingaben und Ausgaben) wird jedoch in einem JSON-Objekt gespeichert, während er den Workflow durchläuft. Zum Erhalten einiger Datentypen konvertiert die Engine den Inhalt in eine Base64-codierte Binärzeichenfolge mit entsprechenden Metadaten, in der `$content` und `$content-type` beibehalten werden, wobei eine automatische Konvertierung erfolgt. 
 
 * `@json()`: wandelt Daten in `application/json` um
 * `@xml()`: wandelt Daten in `application/xml` um

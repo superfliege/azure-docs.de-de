@@ -1,5 +1,5 @@
 ---
-title: Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux | Microsoft Docs
+title: Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux | Microsoft-Dokumentation
 description: Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux.
 keywords: Azure App Service, Web-App, häufig gestellte Fragen, Linux, OSS
 services: app-service
@@ -13,19 +13,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
-ms.author: aelnably;wesmc
-ms.openlocfilehash: 8d25c70a0e5db92bca6f3970049a2e1325fe124b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 06/18/2018
+ms.author: msangapu
+ms.openlocfilehash: 5b3b3d3946b56ff53ad74c2ab93a646baa787d05
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222976"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux
 
 Mit dem Release von App Service unter Linux erweitern wir unsere Plattform um Features und nehmen Verbesserungen an ihr vor. Dieser Artikel enthält Antworten auf Fragen, die uns kürzlich von Kunden gestellt wurden.
 
-Wenn Sie eine Frage haben, kommentieren Sie den Artikel, und wir werden so bald wie möglich antworten.
+Wenn Sie eine Frage haben, schreiben Sie einen Kommentar zu diesem Artikel.
 
 ## <a name="built-in-images"></a>Integrierte Images
 
@@ -35,7 +36,7 @@ Sie finden alle Docker-Dateien auf [GitHub](https://github.com/azure-app-service
 
 **Welche Werte sind beim Konfigurieren des Laufzeitstapels im Abschnitt „Startdatei“ anzugeben?**
 
-Für Node.js geben Sie die PM2-Konfigurationsdatei oder Ihre Skriptdatei an. Für .NET Core geben Sie den Namen der kompilierten DLL-Datei an. Für Ruby können Sie das Ruby-Skript angeben, mit dem Ihre App initialisiert werden soll.
+Für Node.js geben Sie die PM2-Konfigurationsdatei oder Ihre Skriptdatei an. Für .NET Core geben Sie den Namen der kompilierten DLL-Datei als `dotnet <myapp>.dll` an. Für Ruby können Sie das Ruby-Skript angeben, mit dem Ihre App initialisiert werden soll.
 
 ## <a name="management"></a>Verwaltung
 
@@ -47,19 +48,19 @@ Diese Aktion ist mit dem Docker-Neustart identisch.
 
 Ja, Sie können dazu die Website für die Quellcodeverwaltung (Source Control Management, SCM) verwenden.
 
-> [!NOTE] 
+> [!NOTE]
 > Sie können auch direkt über SSH, SFTP oder Visual Studio Code (zum Livedebuggen von Node.js-Apps) eine Verbindung vom lokalen Entwicklungscomputer zum App-Container herstellen. Weitere Informationen finden Sie unter [Remotedebuggen und SSH in App Service unter Linux](https://aka.ms/linux-debug).
 >
 
 **Wie kann ich einen Linux-App Service-Plan über ein SDK oder eine Azure Resource Manager-Vorlage erstellen?**
 
-Sie müssen das Feld **reserviert** des App-Diensts auf *true* festlegen.
+Legen Sie das App-Dienstfeld **reserviert** auf *TRUE* fest.
 
 ## <a name="continuous-integration-and-deployment"></a>Continuous Integration und Continuous Deployment
 
 **Meine Web-App verwendet nach dem Aktualisieren des Images auf Docker Hub noch ein altes Docker-Containerimage. Unterstützen Sie Continuous Integration/Deployment von benutzerdefinierten Containern?**
 
-Informationen zum Einrichten von Continuous Integration/Deployment für Azure Container Registry- oder Docker Hub-Images finden Sie im Artikel [Continuous Deployment mit Web-App für Container](./app-service-linux-ci-cd.md). Bei privaten Registrierungen können Sie den Container aktualisieren, indem Sie Ihre Web-App beenden und dann wieder starten. Sie können auch eine Dummyeinstellung in der Anwendung ändern oder hinzufügen, um die Aktualisierung Ihres Containers zu erzwingen.
+Ja. Informationen zum Einrichten von Continuous Integration/Continuous Deployment für Azure Container Registry oder DockerHub finden Sie unter [Continuous Deployment mit Web-App für Container](./app-service-linux-ci-cd.md) (in englischer Sprache). Bei privaten Registrierungen können Sie den Container aktualisieren, indem Sie Ihre Web-App beenden und dann wieder starten. Sie können auch eine Dummyeinstellung in der Anwendung ändern oder hinzufügen, um die Aktualisierung Ihres Containers zu erzwingen.
 
 **Werden Stagingumgebungen unterstützt?**
 
@@ -71,13 +72,13 @@ Ja, Sie müssen die App-Einstellung `WEBSITE_WEBDEPLOY_USE_SCM` auf *false* fest
 
 **Bei der Git-Bereitstellung meiner Anwendung tritt ein Fehler auf, wenn ich eine Linux-Web-App verwende. Wie kann ich dieses Problem umgehen?**
 
-Wenn bei der Git-Bereitstellung in Ihrer Linux-Web-App ein Fehler auftritt, können Sie die folgenden alternativen Möglichkeiten zum Bereitstellen des Anwendungscodes nutzen:
+Wenn bei der Git-Bereitstellung in Ihrer Linux-Web-App ein Fehler auftritt, stellen Sie Anwendungscodes wie folgt bereit:
 
-- Verwenden Sie das Feature für Continuous Delivery (Vorschauversion): Sie können den Quellcode Ihrer App in einem Team Services-Git-Repository oder einem GitHub-Repository speichern, um Azure Continuous Delivery zu verwenden. Weitere Informationen finden Sie unter [Use Azure portal to setup Continuous Delivery for Web App On Linux](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/) (Einrichten von Continuous Delivery für Web-Apps unter Linux mithilfe des Azure-Portals).
+- Verwenden Sie das Feature für Continuous Delivery (Vorschauversion): Sie können den Quellcode Ihrer App in einem Team Services-Git-Repository oder einem GitHub-Repository speichern, um Azure Continuous Delivery zu verwenden. Weitere Informationen finden Sie unter [Konfigurieren von Continuous Delivery für die Linux-Web-App](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/) (in englischer Sprache).
 
-- Verwenden Sie die [API für die ZIP-Bereitstellung](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file):Stellen Sie zur Verwendung dieser API [eine SSH-Verbindung mit Ihrer Web-App](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection) her, und navigieren Sie zu dem Ordner, in dem der Code bereitgestellt werden soll. Führen Sie Folgendes aus:
+- Verwenden Sie die [API für die ZIP-Bereitstellung](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file):Stellen Sie zur Verwendung dieser API [eine SSH-Verbindung mit Ihrer Web-App](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection) her, und navigieren Sie zu dem Ordner, in dem der Code bereitgestellt werden soll. Führen Sie den folgenden Code aus:
 
-   ```
+   ```bash
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
    ```
 
@@ -85,10 +86,11 @@ Wenn bei der Git-Bereitstellung in Ihrer Linux-Web-App ein Fehler auftritt, kön
 
 ## <a name="language-support"></a>Sprachunterstützung
 
-**Ich möchte in meiner Node.js-Anwendung WebSockets verwenden; muss ich dazu besondere Einstellungen oder Konfigurationen festlegen?**
+**Ich möchte in meiner Node.js-Anwendung Websockets verwenden. Muss ich bestimmte Einstellungen oder Konfigurationen festlegen?**
 
-Ja, deaktivieren Sie in Ihrem serverseitigen Node.js-Code `perMessageDeflate`. Gehen Sie beispielsweise wie folgt vor, wenn Sie socket.io verwenden:
-```
+Ja, deaktivieren Sie in Ihrem serverseitigen Node.js-Code `perMessageDeflate`. Verwenden Sie beispielsweise den folgenden Code, wenn Sie socket.io nutzen:
+
+```nodejs
 var io = require('socket.io')(server,{
   perMessageDeflate :false
 });
@@ -100,20 +102,20 @@ Ja.
 
 **Unterstützen Sie Composer als Abhängigkeits-Manager für PHP-Apps?**
 
-Ja. Während einer Git-Bereitstellung sollte Kudu erkennen, dass Sie eine PHP-Anwendung bereitstellen (durch das Vorhandensein einer Datei „composer.lock“), und dann eine Composer-Installation für Sie auslösen.
+Ja. Bei einer Git-Bereitstellung erkennt Kudu, dass Sie eine PHP-Anwendung bereitstellen (weil eine composer.lock-Datei existiert), und löst eine Composerinstallation aus.
 
 ## <a name="custom-containers"></a>Benutzerdefinierte Container
 
 **Ich verwende meinen eigenen benutzerdefinierten Container. Ich möchte, dass die Plattform eine SMB-Freigabe im Verzeichnis `/home/` bereitstellt.**
 
-Dies können Sie tun, indem Sie die App-Einstellung `WEBSITES_ENABLE_APP_SERVICE_STORAGE` auf *true* festlegen oder die App-Einstellung vollständig entfernen. Denken Sie daran, dass der Container bei einer Änderung des Plattformspeichers neu gestartet wird. 
+Legen Sie die App-Einstellung `WEBSITES_ENABLE_APP_SERVICE_STORAGE` auf *TRUE* fest. Bitte beachten Sie, dass das Containerneustarts verursacht, wenn Änderungen am Plattformspeicher vorgenommen werden.
 
 >[!NOTE]
->Wenn die Einstellung `WEBSITES_ENABLE_APP_SERVICE_STORAGE` auf *false* festgelegt ist, wird das Verzeichnis `/home/` nicht über Skalierungsinstanzen freigegeben, und dort geschriebene Dateien werden nicht über Neustarts hinweg beibehalten.
+>Wenn die Einstellung `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nicht angegeben oder auf *FALSE* festgelegt ist, wird das Verzeichnis `/home/` nicht über Skalierungsinstanzen freigegeben. Außerdem werden dort geschriebene Dateien nicht über Neustarts hinweg beibehalten.
 
 **Mein benutzerdefinierter Container benötigt für den Start sehr lange, und die Plattform startet den Container neu, bevor er den Startvorgang abgeschlossen hat.**
 
-Sie können den Zeitraum konfigurieren, den die Plattform vor dem Neustarten Ihres Containers wartet. Legen Sie hierzu die App-Einstellung `WEBSITES_CONTAINER_START_TIME_LIMIT` auf den gewünschten Wert fest. Der Standardwert ist 230 Sekunden, und der zulässige Maximalwert ist 600 Sekunden.
+Sie können den Zeitraum konfigurieren, den die Plattform vor dem Neustarten Ihres Containers wartet. Legen Sie hierzu die App-Einstellung `WEBSITES_CONTAINER_START_TIME_LIMIT` auf den gewünschten Wert fest. Der Standardwert ist 230 Sekunden, und der Maximalwert ist 1800 Sekunden.
 
 **Welches Format hat die Server-URL der privaten Registrierung?**
 
@@ -161,6 +163,6 @@ Sie können Ihre Idee im [Web-Apps-Feedbackforum](https://aka.ms/webapps-uservoi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Was ist Azure App Service unter Linux?](app-service-linux-intro.md)
-* [Einrichten von Stagingumgebungen in Azure App Service](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-* [Continuous Deployment mit Web-App für Container](./app-service-linux-ci-cd.md)
+- [Was ist Azure App Service unter Linux?](app-service-linux-intro.md)
+- [Einrichten von Stagingumgebungen in Azure App Service](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Continuous Deployment mit Web-App für Container](./app-service-linux-ci-cd.md)

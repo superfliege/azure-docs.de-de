@@ -18,6 +18,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33770571"
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Analysieren von Flugverspätungsdaten mit Hive in HDInsight
 Hive ermöglicht die Ausführung eines Hadoop MapReduce-Auftrags über eine SQL-ähnliche Skriptsprache namens *[HiveQL][hadoop-hiveql]*, die zur Zusammenfassung, Abfrage und Analyse großer Datenmengen verwendet werden kann.

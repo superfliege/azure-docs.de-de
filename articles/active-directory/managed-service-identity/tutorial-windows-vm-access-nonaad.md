@@ -9,17 +9,17 @@ editor: daveba
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: c4570e43c23ff7a23b5d6a97ebd6da0244ed6fb2
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 81509108060b636e47154a8c375f5569cac73648
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34300725"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902733"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Tutorial: Verwenden einer Windows-VM-MSI (Managed Service Identity, verwaltete Dienstidentität) für den Zugriff auf Azure Key Vault 
 
@@ -139,8 +139,9 @@ Zunächst wird mit der MSI der VM ein Zugriffstoken für die Authentifizierung b
     
 Nachdem Sie das Geheimnis aus der Key Vault abgerufen haben, können Sie es für die Authentifizierung bei einem Dienst verwenden, für den ein Name und ein Kennwort angegeben werden müssen. 
 
-## <a name="related-content"></a>Verwandte Inhalte
+## <a name="next-steps"></a>Nächste Schritte
 
-- Einen Überblick über MSI finden Sie unter [Übersicht über verwaltete Dienstidentitäten](overview.md).
+In diesem Tutorial haben Sie gelernt, wie eine verwaltete Dienstidentität für den Zugriff auf Azure Key Vault erstellt wird.  Weitere Informationen zu Azure Key Vault finden Sie in folgendem Artikel:
 
-Verwenden Sie den folgenden Kommentarabschnitt, um uns Feedback zu senden und uns bei der Verbesserung unserer Inhalte zu unterstützen.
+> [!div class="nextstepaction"]
+>[Azure-Schlüsseltresor](/azure/key-vault/key-vault-whatis)

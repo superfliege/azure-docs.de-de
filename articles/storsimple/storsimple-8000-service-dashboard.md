@@ -1,12 +1,12 @@
 ---
-title: "Verwenden von Geräten der StorSimple 8000-Serie – Zusammenfassung | Microsoft-Dokumentation"
-description: "Beschreibt das StorSimple-Dienstübersichtsblatt und erläutert, wie Sie den Zustand Ihrer StorSimple-Lösung über dieses Dashboard verwalten."
+title: Verwenden von Geräten der StorSimple 8000-Serie – Zusammenfassung | Microsoft-Dokumentation
+description: Beschreibt das StorSimple-Dienstübersichtsblatt und erläutert, wie Sie den Zustand Ihrer StorSimple-Lösung über dieses Dashboard verwalten.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108208"
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-8000-series-device"></a>Verwenden des Dienstübersichtsblatt für Geräte der StorSimple 8000-Serie
 

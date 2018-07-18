@@ -1,6 +1,6 @@
 ---
 title: Verwalten des Zugriffs auf Azure-Ressourcen mit Privileged Identity Management (PIM)
-description: Erfahren Sie mehr über den Zugriff auf Azure-Ressourcen mithilfe der rollenbasierten Zugriffssteuerung in PIM.
+description: Hier erfahren Sie mehr über das Verwalten des Zugriffs auf Azure-Ressourcen mithilfe von Privileged Identity Management (PIM) und rollenbasierter Zugriffskontrolle (RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -9,17 +9,18 @@ editor: skwan
 ms.assetid: ba06b8dd-4a74-4bda-87c7-8a8583e6fd14
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: fb0a1ff3821efd7114b509b72e143d5240b61b4c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 141cba29f5027ce092775d97c1abe9ecf11badf5
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436044"
 ---
 # <a name="manage-access-to-azure-resources-with-privileged-identity-management"></a>Verwalten des Zugriffs auf Azure-Ressourcen mit Privileged Identity Management
 

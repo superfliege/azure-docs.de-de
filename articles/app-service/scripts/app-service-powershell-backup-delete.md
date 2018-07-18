@@ -1,11 +1,11 @@
 ---
-title: "Azure PowerShell-Skriptbeispiel – Löschen einer Sicherung für eine Web-App | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – Löschen einer Sicherung für eine Web-App"
+title: Azure PowerShell-Skriptbeispiel – Löschen einer Sicherung für eine Web-App | Microsoft-Dokumentation
+description: Azure PowerShell-Skriptbeispiel – Löschen einer Sicherung für eine Web-App
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: ebcadb49-755d-4202-a5eb-f211827a9168
 ms.service: app-service-web
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/31/2017
+ms.locfileid: "23644394"
 ---
 # <a name="delete-a-backup-for-a-web-app"></a>Löschen einer Sicherung für eine Web-App
 

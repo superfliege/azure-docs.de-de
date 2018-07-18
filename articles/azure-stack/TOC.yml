@@ -128,8 +128,8 @@
           href: azure-stack-monitor-health.md
         - name: Verwalten von Netzwerkressourcen
           href: azure-stack-viewing-public-ip-address-consumption.md
-        - name: Verwalten von virtuellen Computern mit Windows Azure Pack
-          href: azure-stack-manage-windows-azure-pack.md
+        - name: Ändern des Benutzerabonnementbesitzers
+          href: azure-stack-change-subscription-owner.md
         - name: Starten und Beenden von Azure Stack
           href: azure-stack-start-and-stop.md
         - name: Verwalten der Kapazität
@@ -189,6 +189,8 @@
               href: azure-stack-enable-multitenancy.md
         - name: Rotieren von Geheimnissen
           href: azure-stack-rotate-secrets.md
+        - name: Aktualisieren des Virenschutzes
+          href: azure-stack-security-av.md
     - name: Anbieten von Diensten
       items:
         - name: Übersicht über das Anbieten von Diensten
@@ -199,6 +201,8 @@
               href: azure-stack-plan-offer-quota-overview.md
             - name: Erstellen von Plänen
               href: azure-stack-create-plan.md
+            - name: Erstellen eines Add-On-Plans
+              href: create-add-on-plan.md
             - name: Erstellen von Angeboten
               href: azure-stack-create-offer.md
             - name: Abonnieren von Angeboten
@@ -214,7 +218,7 @@
           items:
             - name: Bereitstellen des SQL Server-Ressourcenanbieters
               href: azure-stack-sql-resource-provider-deploy.md
-            - name: Hinzufügen von Hostservern
+            - name: Hinzufügen von SQL-Hostservern
               href: azure-stack-sql-resource-provider-hosting-servers.md
             - name: Erstellen von SQL-Datenbanken
               href: azure-stack-sql-resource-provider-databases.md
@@ -225,7 +229,20 @@
             - name: Entfernen des SQL Server-Ressourcenanbieters
               href: azure-stack-sql-resource-provider-remove.md
         - name: Anbieten von MySQL als PaaS
-          href: azure-stack-mysql-resource-provider-deploy.md
+          href: azure-stack-mysql-resource-provider.md
+          items:
+            - name: Bereitstellen des MySQL Server-Ressourcenanbieters
+              href: azure-stack-mysql-resource-provider-deploy.md
+            - name: Hinzufügen von MySQL-Hostservern
+              href: azure-stack-mysql-resource-provider-hosting-servers.md
+            - name: Erstellen von MySQL-Datenbanken
+              href: azure-stack-mysql-resource-provider-databases.md
+            - name: Aktualisieren des MySQL Server-Ressourcenanbieters
+              href: azure-stack-mysql-resource-provider-update.md
+            - name: Warten des MySQL Server-Ressourcenanbieters
+              href: azure-stack-mysql-resource-provider-maintain.md
+            - name: Entfernen des MySQL Server-Ressourcenanbieters
+              href: azure-stack-mysql-resource-provider-remove.md
         - name: App Service als PaaS anbieten
           items:
             - name: Übersicht über App Service in Azure Stack
@@ -252,6 +269,8 @@
               href: azure-stack-app-service-release-notes-update-one.md
             - name: App Service in Azure Stack – Versionshinweise zu Update 2
               href: azure-stack-app-service-release-notes-update-two.md
+        - name: Bereitstellen von Ethereum
+          href: azure-stack-ethereum.md
         - name: Auffüllen des Marketplace
           items:
             - name: Marketplace-Übersicht
@@ -277,15 +296,15 @@
             - name: Anbieten eines Kubernetes-Clusters
               href: azure-stack-solution-template-kubernetes-cluster-add.md
         - name: Nutzung und Abrechnung
+          href: azure-stack-billing-and-chargeback.md
           items:
-            - name: Übersicht
-              href: azure-stack-billing-and-chargeback.md
             - name: Verwalten der Nutzung und Abrechnung als CSP
               href: azure-stack-add-manage-billing-as-a-csp.md
-            - name: Hinzufügen von Mandanten für Nutzung und Abrechnung
-              href: azure-stack-csp-howto-register-tenants.md
-            - name: Verwalten der Mandantenregistrierung
-              href: azure-stack-csp-ref-operations.md
+              items:
+                - name: Hinzufügen von Mandanten für Nutzung und Abrechnung
+                  href: azure-stack-csp-howto-register-tenants.md
+                - name: Verwalten der Mandantenregistrierung
+                  href: azure-stack-csp-ref-operations.md
             - name: Referenz zu Nutzung und Abrechnung
               items:
                 - name: Nutzungsdatenberichte

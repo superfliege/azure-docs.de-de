@@ -3,7 +3,7 @@ title: Tutorial – Verwalten von Azure-Datenträgern mit der Azure-Befehlszeile
 description: In diesem Tutorial erfahren Sie, wie Sie Azure CLI 2.0 zum Erstellen und Verwalten von Azure-Datenträgern für virtuelle Computer verwenden.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -13,18 +13,19 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/02/2017
-ms.author: iainfou
+ms.date: 05/30/2018
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: dff6af6a68dcc454877532c3d6f06cb86e6fe897
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 889facbf9612f2462a10c886a428ac052becefd8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38704486"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli-20"></a>Tutorial: Verwalten von Azure-Datenträgern mit Azure CLI 2.0
 
-Virtuelle Azure-Computer verwenden Datenträger zum Speichern des Betriebssystems, der Anwendungen und der Daten der virtuellen Computer. Beim Erstellen eines virtuellen Computers muss darauf geachtet werden, eine für den erwarteten Workload geeignete Datenträgergröße und -konfiguration auszuwählen. Dieses Tutorial behandelt die Bereitstellung und Verwaltung der Datenträger von virtuellen Computern. Sie erhalten Informationen zu folgenden Themen:
+Virtuelle Azure-Computer verwenden Datenträger zum Speichern des Betriebssystems, der Anwendungen und der Daten. Beim Erstellen eines virtuellen Computers muss darauf geachtet werden, eine für die erwartete Workload geeignete Datenträgergröße und -konfiguration auszuwählen. In diesem Tutorial wird gezeigt, wie Sie VM-Datenträger bereitstellen und verwalten. Sie erhalten Informationen zu folgenden Themen:
 
 > [!div class="checklist"]
 > * Betriebssystemdatenträger und temporäre Datenträger
@@ -37,41 +38,41 @@ Virtuelle Azure-Computer verwenden Datenträger zum Speichern des Betriebssystem
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu.
 
 ## <a name="default-azure-disks"></a>Azure-Standarddatenträger
 
-Beim Erstellen eines virtuellen Azure-Computers werden zwei Datenträger automatisch an den virtuellen Computer angefügt. 
+Beim Erstellen eines virtuellen Azure-Computers werden zwei Datenträger automatisch an den virtuellen Computer angefügt.
 
-**Betriebssystem-Datenträger**: Betriebssystem-Datenträger können in der Größe auf bis zu 1TB angepasst werden und hosten das Betriebssystem des virtuellen Computers. Der Betriebssystem-Datenträger wird standardmäßig mit */dev/sda* bezeichnet. Die Konfiguration der Datenträgerzwischenspeicherung des Betriebssystem-Datenträgers ist für die Leistung des Betriebssystems optimiert. Aufgrund dieser Konfiguration sollte der Betriebssystem-Datenträger **nicht** Anwendungen oder Daten hosten. Verwenden Sie für Anwendungen und Daten einen Datenträger. Dies wird weiter unten in diesem Artikel ausführlich erläutert. 
+**Betriebssystem-Datenträger**: Betriebssystem-Datenträger können in der Größe auf bis zu 2 TB angepasst werden. Sie hosten das Betriebssystem des virtuellen Computers. Der Betriebssystem-Datenträger wird standardmäßig mit */dev/sda* bezeichnet. Die Konfiguration der Datenträgerzwischenspeicherung des Betriebssystem-Datenträgers ist für die Leistung des Betriebssystems optimiert. Aufgrund dieser Konfiguration sollte der Betriebssystem-Datenträger **nicht** für Anwendungen oder Daten verwendet werden. Verwenden Sie für Anwendungen und Daten einen Datenträger. Dies wird weiter unten in diesem Tutorial ausführlich erläutert.
 
 **Temporärer Datenträger**: Temporäre Datenträger verwenden ein Solid State Drive, das sich auf dem gleichen Azure-Host wie der virtuelle Computer befindet. Temporäre Datenträger sind äußerst leistungsfähig und können für Vorgänge wie die temporäre Datenverarbeitung verwendet werden. Wenn der virtuelle Computer jedoch auf einen neuen Host verschoben wird, werden alle auf einem temporären Datenträger gespeicherten Daten entfernt. Die Größe des temporären Datenträgers richtet sich nach der Größe des virtuellen Computers. Temporäre Datenträger werden mit bezeichnet */dev/sdb* und haben den Bereitstellungspunkt */mnt*.
 
 ### <a name="temporary-disk-sizes"></a>Größe von temporären Datenträgern
 
-| Typ | Größe des virtuellen Computers | Max. Größe des temporären Datenträgers (GB) |
+| Typ | Gängige Größen | Max. Größe des temporären Datenträgers (GiB) |
 |----|----|----|
-| [Allgemeiner Zweck](sizes-general.md) | A- und D-Serie | 800 |
-| [Computeoptimiert](sizes-compute.md) | F-Serie | 800 |
-| [Arbeitsspeicheroptimiert](../virtual-machines-windows-sizes-memory.md) | D- und G-Serie | 6.144 |
-| [Speicheroptimiert](../virtual-machines-windows-sizes-storage.md) | L-Serie | 5.630 |
+| [Allgemeiner Zweck](sizes-general.md) | A-, B- und D-Serie | 1600 |
+| [Computeoptimiert](sizes-compute.md) | F-Serie | 576 |
+| [Arbeitsspeicheroptimiert](sizes-memory.md) | D-, E-, G- und M-Serie | 6.144 |
+| [Speicheroptimiert](sizes-storage.md) | L-Serie | 5.630 |
 | [GPU](sizes-gpu.md) | N-Serie | 1.440 |
 | [Hohe Leistung](sizes-hpc.md) | A- und H-Serie | 2000 |
 
 ## <a name="azure-data-disks"></a>Azure-Datenträger
 
-Zum Installieren von Anwendungen und zum Speichern von Daten können weitere Datenträger hinzugefügt werden. Datenträger sollten in allen Fällen verwendet werden, in denen eine dauerhafte und dynamische Datenspeicherung erwünscht ist. Jeder Datenträger hat eine maximale Kapazität von 1 TB. Die Größe eines virtuellen Computers bestimmt die Anzahl der Datenträger, die an den virtuellen Computer angefügt werden können. Für jede vCPU eines virtuellen Computers können zwei Datenträger angefügt werden. 
+Zusätzliche Datenträger können hinzugefügt werden, wenn Sie Anwendungen installieren und Daten speichern möchten. Datenträger sollten in allen Fällen verwendet werden, in denen eine dauerhafte und dynamische Datenspeicherung erwünscht ist. Jeder Datenträger weist eine maximale Kapazität von 4 TB auf. Die Größe eines virtuellen Computers bestimmt die Anzahl der Datenträger, die an den virtuellen Computer angefügt werden können. Für jede vCPU eines virtuellen Computers können zwei Datenträger angefügt werden.
 
 ### <a name="max-data-disks-per-vm"></a>Max. Anzahl der Datenträger pro virtuellem Computer
 
 | Typ | Größe des virtuellen Computers | Max. Anzahl der Datenträger pro virtuellem Computer |
 |----|----|----|
-| [Allgemeiner Zweck](sizes-general.md) | A- und D-Serie | 32 |
-| [Computeoptimiert](sizes-compute.md) | F-Serie | 32 |
-| [Arbeitsspeicheroptimiert](../virtual-machines-windows-sizes-memory.md) | D- und G-Serie | 64 |
+| [Allgemeiner Zweck](sizes-general.md) | A-, B- und D-Serie | 64 |
+| [Computeoptimiert](sizes-compute.md) | F-Serie | 64 |
+| [Arbeitsspeicheroptimiert](../virtual-machines-windows-sizes-memory.md) | D-, E- und G-Serie | 64 |
 | [Speicheroptimiert](../virtual-machines-windows-sizes-storage.md) | L-Serie | 64 |
-| [GPU](sizes-gpu.md) | N-Serie | 48 |
-| [Hohe Leistung](sizes-hpc.md) | A- und H-Serie | 32 |
+| [GPU](sizes-gpu.md) | N-Serie | 64 |
+| [Hohe Leistung](sizes-hpc.md) | A- und H-Serie | 64 |
 
 ## <a name="vm-disk-types"></a>VM-Datenträgertypen
 
@@ -83,15 +84,15 @@ Standardspeicher basiert auf Festplatten und stellt eine kostengünstige, perfor
 
 ### <a name="premium-disk"></a>Premium-Datenträger
 
-Premium-Datenträger zeichnen sich durch SSD-basierte hohe Leistung und geringe Wartezeit aus. Sie eignen sich hervorragend für virtuelle Computer, auf denen die Produktionsworkload ausgeführt wird. Storage Premium unterstützt virtuelle Computer der DS-, DSv2-, GS- und FS-Serie. Premium-Datenträger gibt es in drei Varianten (P10 P20, P30). Der Datenträgertyp wird durch die Größe des Datenträgers vorgegeben. Bei der Auswahl einer Datenträgergröße wird der Wert auf den nächsten Datenträgertyp aufgerundet. Liegt die Größe des Datenträgers z.B. unter 128GB, ist der Datenträgertyp P10. Wenn die Größe des Datenträgers zwischen 129 und 512GB liegt, ist die Größe P20. Bei allem über 512GB ist die Größe P30.
+Premium-Datenträger zeichnen sich durch SSD-basierte hohe Leistung und geringe Wartezeit aus. Sie eignen sich hervorragend für virtuelle Computer, auf denen die Produktionsworkload ausgeführt wird. Storage Premium unterstützt virtuelle Computer der DS-, DSv2-, GS- und FS-Serie. Bei Auswahl einer Datenträgergröße wird der Wert auf den nächsten Datenträgertyp aufgerundet. Liegt die Größe des Datenträgers z.B. unter 128GB, ist der Datenträgertyp P10. Wenn die Größe des Datenträgers zwischen 129 und 512GB liegt, ist die Größe P20. Bei mehr als 512 GB ist die Größe P30.
 
 ### <a name="premium-disk-performance"></a>Leistung von Premium-Datenträgern
 
-|Storage Premium-Datenträgertyp | P10 | P20 | P30 |
-| --- | --- | --- | --- |
-| Datenträgergröße (aufgerundet) | 128 GB | 512 GB | 1.024GB (1TB) |
-| Max. IOPS pro Datenträger | 500 | 2.300 | 5.000 |
-Durchsatz pro Datenträger | 100 MB/s | 150 MB/s | 200 MB/s |
+|Storage Premium-Datenträgertyp | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Datenträgergröße (aufgerundet) | 32 GB | 64 GB | 128 GB | 512 GB | 1.024GB (1TB) | 2.048 GB (2 TB) | 4.095 GB (4 TB) |
+| Max. IOPS pro Datenträger | 120 | 240 | 500 | 2.300 | 5.000 | 7.500 | 7.500 |
+Durchsatz pro Datenträger | 25 MB/s | 50 MB/s | 100 MB/s | 150 MB/s | 200 MB/s | 250 MB/s | 250 MB/s |
 
 In dieser Tabelle ist zwar die maximale IOPS-Anzahl pro Datenträger angegeben, eine höhere Leistung kann aber durch Striping mehrerer Datenträger erreicht werden. Eine Standard_GS5-VM kann z.B. ein Maximum von 80.000 IOPS erreichen. Ausführliche Informationen zur maximalen IOPS-Anzahl pro virtuellem Computer finden Sie unter [Größen für virtuelle Linux-Computer](sizes.md).
 
@@ -101,13 +102,13 @@ Datenträger für Daten können zum Zeitpunkt der VM-Erstellung erstellt und ang
 
 ### <a name="attach-disk-at-vm-creation"></a>Anfügen eines Datenträgers bei der VM-Erstellung
 
-Erstellen Sie mit dem Befehl [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) eine Ressourcengruppe. 
+Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroupDisk --location eastus
 ```
 
-Erstellen Sie mit dem Befehl [az vm create]( /cli/azure/vm#az_vm_create) einen virtuellen Computer. Das folgende Beispiel erstellt einen virtuellen Computer namens *myVM*, fügt ein Benutzerkonto mit dem Namen *azureuser* hinzu und generiert SSH-Schlüssel, sofern noch nicht vorhanden. Das `--datadisk-sizes-gb`-Argument gibt an, dass ein weiterer Datenträger erstellt und dem virtuellen Computer angefügt werden sollte. Verwenden Sie zum Erstellen und Anfügen mehrerer Datenträger eine durch Leerzeichen getrennte Liste der Datenträger-Größenwerte. Im folgenden Beispiel wird ein virtueller Computer mit zwei Datenträgern von jeweils 128GB erstellt. Da die Größe der Datenträger jeweils 128GB beträgt, werden beide Datenträger als P10 konfiguriert, was maximal 500IOPS pro Datenträger bereitstellt.
+Erstellen Sie mit dem Befehl [az vm create](/cli/azure/vm#az-vm-create) einen virtuellen Computer. Das folgende Beispiel erstellt einen virtuellen Computer namens *myVM*, fügt ein Benutzerkonto mit dem Namen *azureuser* hinzu und generiert SSH-Schlüssel, sofern noch nicht vorhanden. Das `--datadisk-sizes-gb`-Argument gibt an, dass ein weiterer Datenträger erstellt und dem virtuellen Computer angefügt werden sollte. Verwenden Sie zum Erstellen und Anfügen mehrerer Datenträger eine durch Leerzeichen getrennte Liste der Datenträger-Größenwerte. Im folgenden Beispiel wird ein virtueller Computer mit zwei Datenträgern von jeweils 128GB erstellt. Da die Größe der Datenträger jeweils 128GB beträgt, werden beide Datenträger als P10 konfiguriert, was maximal 500IOPS pro Datenträger bereitstellt.
 
 ```azurecli-interactive
 az vm create \
@@ -122,10 +123,16 @@ az vm create \
 
 ### <a name="attach-disk-to-existing-vm"></a>Anfügen eines Datenträgers an einen vorhandenen virtuellen Computer
 
-Verwenden Sie zum Erstellen eines neuen Datenträgers und dessen Anfügen an einen vorhandenen virtuellen Computer den [az vm disk attach](/cli/azure/vm/disk#az_vm_disk_attach)-Befehl. Im folgenden Beispiel wird ein Premium-Datenträger von 128GB erstellt und dem im letzten Schritt erstellten virtuellen Computer angefügt.
+Verwenden Sie zum Erstellen eines neuen Datenträgers und dessen Anfügen an einen vorhandenen virtuellen Computer den [az vm disk attach](/cli/azure/vm/disk#az-vm-disk-attach)-Befehl. Im folgenden Beispiel wird ein Premium-Datenträger von 128GB erstellt und dem im letzten Schritt erstellten virtuellen Computer angefügt.
 
-```azurecli-interactive 
-az vm disk attach --vm-name myVM --resource-group myResourceGroupDisk --disk myDataDisk --size-gb 128 --sku Premium_LRS --new 
+```azurecli-interactive
+az vm disk attach \
+    --resource-group myResourceGroupDisk \
+    --vm-name myVM \
+    --disk myDataDisk \
+    --size-gb 128 \
+    --sku Premium_LRS \
+    --new
 ```
 
 ## <a name="prepare-data-disks"></a>Vorbereiten von Datenträgern
@@ -136,8 +143,8 @@ Nach dem Anfügen eines Datenträgers an den virtuellen Computer muss das Betrie
 
 Stellen Sie eine SSH-Verbindung mit dem virtuellen Computer her. Ersetzen Sie die IP-Beispieladresse durch die öffentliche IP-Adresse des virtuellen Computers.
 
-```azurecli-interactive 
-ssh 52.174.34.95
+```azurecli-interactive
+ssh azureuser@52.174.34.95
 ```
 
 Partitionieren Sie den Datenträger mit `fdisk`.
@@ -158,7 +165,7 @@ Binden Sie den neuen Datenträger ein, damit im Betriebssystem darauf zugegriffe
 sudo mkdir /datadrive && sudo mount /dev/sdc1 /datadrive
 ```
 
-Auf den Datenträger kann jetzt über den Bereitstellungspunkt *datadrive* zugegriffen werden. Dies kann durch Ausführung des Befehls `df -h` überprüft werden. 
+Auf den Datenträger kann jetzt über den Bereitstellungspunkt *datadrive* zugegriffen werden. Dies kann durch Ausführung des Befehls `df -h` überprüft werden.
 
 ```bash
 df -h
@@ -199,87 +206,97 @@ exit
 
 ## <a name="resize-vm-disk"></a>Vergrößern des VM-Datenträgers
 
-Sobald ein virtueller Computer bereitgestellt ist, können der Betriebssystem-Datenträger bzw. sämtliche angefügten Datenträger vergrößert werden. Die Vergrößerung eines Datenträgers ist nützlich, wenn mehr Speicherplatz oder ein höheres Maß an Leistung (P10, P20, P30) benötigt wird. Beachten Sie, dass Datenträger nicht verkleinert werden können.
+Sobald ein virtueller Computer bereitgestellt ist, können der Betriebssystem-Datenträger bzw. sämtliche angefügten Datenträger vergrößert werden. Die Vergrößerung eines Datenträgers ist nützlich, wenn Sie mehr Speicherplatz oder ein höheres Maß an Leistung (etwa P10, P20 oder P30) benötigen. Datenträger können nicht verkleinert werden.
 
-Zum Vergrößern eines Datenträgers wird die ID oder der Name des Datenträgers benötigt. Verwenden Sie den [az disk list](/cli/azure/disk#az_disk_list)-Befehl, um alle Datenträger in einer Ressourcengruppe zurückzugeben. Notieren Sie den Namen des Datenträgers, den Sie vergrößern möchten.
+Zum Vergrößern eines Datenträgers wird die ID oder der Name des Datenträgers benötigt. Verwenden Sie den [az disk list](/cli/azure/disk#az-disk-list)-Befehl, um alle Datenträger in einer Ressourcengruppe zurückzugeben. Notieren Sie den Namen des Datenträgers, den Sie vergrößern möchten.
 
-```azurecli-interactive 
-az disk list -g myResourceGroupDisk --query '[*].{Name:name,Gb:diskSizeGb,Tier:accountType}' --output table
+```azurecli-interactive
+az disk list \
+    --resource-group myResourceGroupDisk \
+    --query '[*].{Name:name,Gb:diskSizeGb,Tier:accountType}' \
+    --output table
 ```
 
-Der virtuelle Computer muss auch freigegeben werden. Verwenden Sie den Befehl [az vm deallocate]( /cli/azure/vm#az_vm_deallocate), um den virtuellen Computer zu beenden und ihn freizugeben.
+Der virtuelle Computer muss freigegeben werden. Verwenden Sie den Befehl [az vm deallocate](/cli/azure/vm#az-vm-deallocate), um den virtuellen Computer zu beenden und die Zuordnung aufzuheben.
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm deallocate --resource-group myResourceGroupDisk --name myVM
 ```
 
-Verwenden Sie den [az disk update](/cli/azure/vm/disk#az_vm_disk_update)-Befehl, um den Datenträger zu vergrößern. In diesem Beispiel wird ein Datenträger mit dem Namen *myDataDisk* auf 1 Terabyte vergrößert.
+Verwenden Sie den [az disk update](/cli/azure/vm/disk#az-vm-disk-update)-Befehl, um den Datenträger zu vergrößern. In diesem Beispiel wird ein Datenträger mit dem Namen *myDataDisk* auf 1 Terabyte vergrößert.
 
-```azurecli-interactive 
+```azurecli-interactive
 az disk update --name myDataDisk --resource-group myResourceGroupDisk --size-gb 1023
 ```
 
 Starten Sie den virtuellen Computer nach Abschluss der Vergrößerung.
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm start --resource-group myResourceGroupDisk --name myVM
 ```
 
-Wenn Sie den Betriebssystem-Datenträger vergrößert haben, wird die Partition automatisch erweitert. Wenn Sie einen Datenträger vergrößert haben, müssen alle aktuellen Partitionen im Betriebssystem der VM erweitert werden.
+Wenn Sie den Betriebssystem-Datenträger vergrößern, wird die Partition automatisch erweitert. Wenn Sie einen Datenträger vergrößern, müssen alle aktuellen Partitionen im Betriebssystem des virtuellen Computers erweitert werden.
 
 ## <a name="snapshot-azure-disks"></a>Momentaufnahme von Azure-Datenträgern
 
-Bei einer Momentaufnahme des Datenträger wird eine schreibgeschützte Point-in-Time-Kopie des Datenträgers erstellt. Mit Azure-VM-Momentaufnahmen können Sie schnell den Status eines virtuellen Computers speichern, bevor Sie Änderungen an der Konfiguration vornehmen. Falls sich die Konfigurationsänderungen als unvorteilhaft herausstellen, kann der Status des virtuellen Computers mit der Momentaufnahme wiederhergestellt werden. Wenn ein virtueller Computer über mehrere Datenträger verfügt, wird von jedem einzelnen Datenträger eine separate Momentaufnahme erstellt. Um anwendungskonsistente Sicherungen zu erstellen, erwägen Sie, den virtuellen Computer vor dem Erstellen von Momentaufnahmen des Datenträgers zu beenden. Verwenden Sie alternativ den [Azure Backup-Dienst](/azure/backup/), mit dem Sie automatisierte Sicherungen ausführen können, während die VM ausgeführt wird.
+Bei einer Momentaufnahme des Datenträger erstellt Azure eine schreibgeschützte Point-in-Time-Kopie des Datenträgers. Mit Azure-VM-Momentaufnahmen können Sie schnell den Status eines virtuellen Computers speichern, bevor Sie Änderungen an der Konfiguration vornehmen. Falls sich die Konfigurationsänderungen als unvorteilhaft herausstellen, kann der Status des virtuellen Computers mit der Momentaufnahme wiederhergestellt werden. Wenn ein virtueller Computer über mehrere Datenträger verfügt, wird von jedem einzelnen Datenträger eine separate Momentaufnahme erstellt. Um anwendungskonsistente Sicherungen zu erstellen, erwägen Sie, den virtuellen Computer vor dem Erstellen von Momentaufnahmen des Datenträgers zu beenden. Verwenden Sie alternativ den [Azure Backup-Dienst](/azure/backup/), mit dem Sie automatisierte Sicherungen ausführen können, während die VM ausgeführt wird.
 
 ### <a name="create-snapshot"></a>Erstellen der Momentaufnahme
 
-Vor dem Erstellen der Momentaufnahme einer VM wird die ID oder der Name des Datenträgers benötigt. Rufen Sie die Datenträger-ID mit dem Befehl [az vm show](https://docs.microsoft.com/cli/azure/vm#az_vm_show) ab. In diesem Beispiel wird die Datenträger-ID in einer Variablen gespeichert und kann in einem späteren Schritt verwendet werden.
+Vor dem Erstellen der Momentaufnahme eines VM-Datenträgers wird die ID oder der Name des Datenträgers benötigt. Rufen Sie die Datenträger-ID mit dem Befehl [az vm show](/cli/azure/vm#az-vm-show) ab. In diesem Beispiel wird die Datenträger-ID in einer Variablen gespeichert und kann in einem späteren Schritt verwendet werden.
 
-```azurecli-interactive 
+```azurecli-interactive
 osdiskid=$(az vm show -g myResourceGroupDisk -n myVM --query "storageProfile.osDisk.managedDisk.id" -o tsv)
 ```
 
-Nachdem Sie jetzt die ID des VM-Datenträgers haben, wird mit dem folgenden Befehl dessen Momentaufnahme erstellt.
+Nachdem Sie jetzt die ID des VM-Datenträgers haben, wird mit dem folgenden Befehl dessen Momentaufnahme erstellt:
 
 ```azurcli
-az snapshot create -g myResourceGroupDisk --source "$osdiskid" --name osDisk-backup
+az snapshot create \
+    --resource-group myResourceGroupDisk \
+    --source "$osdiskid" \
+    --name osDisk-backup
 ```
 
 ### <a name="create-disk-from-snapshot"></a>Erstellen eines Datenträgers aus der Momentaufnahme
 
 Diese Momentaufnahme kann dann in einen Datenträger konvertiert werden, mit dem wiederum der virtuelle Computer neu erstellt werden kann.
 
-```azurecli-interactive 
+```azurecli-interactive
 az disk create --resource-group myResourceGroupDisk --name mySnapshotDisk --source osDisk-backup
 ```
 
 ### <a name="restore-virtual-machine-from-snapshot"></a>Wiederherstellen des virtuellen Computers aus der Momentaufnahme
 
-Löschen Sie den vorhandenen virtuellen Computer, um die Wiederherstellung des virtuellen Computers durchzuführen. 
+Löschen Sie den vorhandenen virtuellen Computer, um die Wiederherstellung des virtuellen Computers durchzuführen.
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm delete --resource-group myResourceGroupDisk --name myVM
 ```
 
 Erstellen Sie einen neuen virtuellen Computer aus dem Momentaufnahmendatenträger.
 
-```azurecli-interactive 
-az vm create --resource-group myResourceGroupDisk --name myVM --attach-os-disk mySnapshotDisk --os-type linux
+```azurecli-interactive
+az vm create \
+    --resource-group myResourceGroupDisk \
+    --name myVM \
+    --attach-os-disk mySnapshotDisk \
+    --os-type linux
 ```
 
 ### <a name="reattach-data-disk"></a>Erneutes Anfügen des Datenträgers
 
 Alle Datenträger müssen dem virtuellen Computer erneut angefügt werden.
 
-Finden Sie zuerst mithilfe des Befehls [az disk list](https://docs.microsoft.com/cli/azure/disk#az_disk_list) den Namen des Datenträgers. In diesem Beispiel wird der Name des Datenträgers in eine Variable namens *datadisk* eingefügt, die im nächsten Schritt verwendet wird.
+Finden Sie zuerst mithilfe des Befehls [az disk list](/cli/azure/disk#az-disk-list) den Namen des Datenträgers. In diesem Beispiel wird der Name des Datenträgers in eine Variable namens *datadisk* eingefügt, die im nächsten Schritt verwendet wird.
 
-```azurecli-interactive 
+```azurecli-interactive
 datadisk=$(az disk list -g myResourceGroupDisk --query "[?contains(name,'myVM')].[name]" -o tsv)
 ```
 
-Verwenden Sie den Befehl [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk#az_vm_disk_attach), um den Datenträger anzufügen.
+Verwenden Sie den Befehl [az vm disk attach](/cli/azure/vm/disk#az-vm-disk-attach), um den Datenträger anzufügen.
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm disk attach –g myResourceGroupDisk –-vm-name myVM –-disk $datadisk
 ```
 

@@ -1,22 +1,21 @@
 ---
-title: Verwenden von Graph-API – Azure AD B2C | Microsoft-Dokumentation
+title: Verwenden der Graph-API in Azure Active Directory B2C | Microsoft-Dokumentation
 description: Aufrufen der Graph-API für einen B2C-Mandanten durch Verwenden einer Anwendungsidentität zum Automatisieren des Prozesses.
 services: active-directory-b2c
-documentationcenter: .net
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
-ms.openlocfilehash: 731ff24fe9cc1b5dbf0c597139a96ae80b863cc2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: B2C
+ms.openlocfilehash: da8aac2968ba020dd2b98253b12e8c9f223966e5
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32140030"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442496"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Verwenden der Azure AD-Graph-API
 

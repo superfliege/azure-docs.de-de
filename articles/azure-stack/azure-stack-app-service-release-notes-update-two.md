@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: 8e1790b7d0b3a210a9142fc8580ff8ed4d64311c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: be09773a1ce3e80547d9e5f0e9de2a2d9e093c60
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34360456"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970916"
 ---
 # <a name="app-service-on-azure-stack-update-2-release-notes"></a>App Service in Azure Stack – Versionshinweise zu Update 2
 
@@ -70,7 +70,7 @@ Update 2 für Azure App Service in Azure Stack enthält die folgenden Verbesseru
 
 - Feature zum Testen in Produktionsumgebungen aktiviert – [Einführung in Tests in einer Produktionsumgebung](https://azure.microsoft.com/resources/videos/introduction-to-azure-websites-testing-in-production-with-galin-iliev/)
 
-- Azure-Funktionsproxys aktiviert – [Verwenden von Azure-Funktionsproxys](https://docs.microsoft.com/en-us/azure/azure-functions/functions-proxies)
+- Azure-Funktionsproxys aktiviert – [Verwenden von Azure-Funktionsproxys](https://docs.microsoft.com/azure/azure-functions/functions-proxies)
 
 - UX-Unterstützung der App Service-Administratorerweiterung hinzugefügt für:
   - Rotation für Geheimnisse

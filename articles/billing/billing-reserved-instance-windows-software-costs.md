@@ -1,5 +1,5 @@
 ---
-title: Windows-Softwarekosten für reservierte Azure-Instanzen – Azure-Abrechnung | Microsoft-Dokumentation
+title: Windows-Softwarekosten für reservierte Azure-Instanzen | Microsoft Docs
 description: Erfahren Sie, welche Verbrauchseinheiten für Windows-Software nicht in den Kosten für reservierte Azure-VM-Instanzen enthalten sind.
 services: billing
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: manshuk
-ms.openlocfilehash: b526ca578a72d7d35fb4198affeb02db4d308b20
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 6602424e2b2e4a4c2c3c51b5cb4bb1024a39d2e0
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303350"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064319"
 ---
 # <a name="windows-software-costs-not-included-with-azure-reserved-instances"></a>Nicht in reservierten Azure-Instanzen enthaltene Windows-Softwarekosten
 
@@ -55,10 +55,10 @@ Sie können die Kosten jeder dieser Verbrauchseinheiten über die Azure RateCard
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu reservierten Azure-Instanzen finden Sie in den folgenden Artikeln:
 
-- [Einsparung von Kosten für virtuelle Computer mit reservierten Azure-Instanzen](billing-save-compute-costs-reservations.md)
-- [Vorauszahlen für virtuelle Computer mit reservierten VM-Instanzen](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Verwalten von reservierten Instanzen](billing-manage-reserved-vm-instance.md)
-- [Grundlegendes zur Anwendung des Rabatts für reservierte VM-Instanzen](billing-understand-vm-reservation-charges.md)
+- [Was ist Azure Reserved VM Instances?](billing-save-compute-costs-reservations.md)
+- [Vorauszahlen für virtuelle Computer mit Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Verwalten von reservierten Instanzen in Azure](billing-manage-reserved-vm-instance.md)
+- [Grundlegendes zur Anwendung des Rabatts für reservierte Instanzen](billing-understand-vm-reservation-charges.md)
 - [Grundlagen zur Verwendung reservierter Azure-Instanzen für Ihr Abonnement mit nutzungsbasierter Zahlung](billing-understand-reserved-instance-usage.md)
 - [Grundlegendes zur Nutzung reservierter Instanzen für die Enterprise-Registrierung](billing-understand-reserved-instance-usage-ea.md)
 

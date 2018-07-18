@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: c28d409bbdb7a4100f2bb9f00ff6f58a13855ea4
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 4345199ed952b6d0e044d4ac99c29c47c477780d
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305054"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287067"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse
 
@@ -70,7 +70,7 @@ Obwohl das Portal die Option bietet, zwei öffentliche IP-Adressen zu erstellen 
 
 |Tool|Get-Help|
 |---|---|
-|Befehlszeilenschnittstelle (CLI)|[az network public-ip create](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_public_ip_create)|
+|Befehlszeilenschnittstelle (CLI)|[az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create)|
 |PowerShell|[New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress)|
 
 ## <a name="view-change-settings-for-or-delete-a-public-ip-address"></a>Anzeigen, Ändern von Einstellungen oder Löschen einer öffentlichen IP-Adresse
@@ -89,14 +89,24 @@ Obwohl das Portal die Option bietet, zwei öffentliche IP-Adressen zu erstellen 
 
 |Tool|Get-Help|
 |---|---|
-|Befehlszeilenschnittstelle (CLI)|[az network public-ip-list](/cli/azure/network/public-ip#az_network_public_ip_list) listet die öffentlichen IP-Adressen auf, [az network public-ip-show](/cli/azure/network/public-ip#az_network_public_ip_show) zeigt die Einstellungen an, [az network public-ip update](/cli/azure/network/public-ip#az_network_public_ip_update) führt eine Aktualisierung durch, [az network public-ip delete](/cli/azure/network/public-ip#az_network_public_ip_delete) löscht|
-|PowerShell|[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) ruft ein öffentliches IP-Adressenobjekt ab und zeigt dessen Einstellungen an, [Set-AzureRmPublicIpAddress](/powershell/resourcemanager/azurerm.network/set-azurermpublicipaddress) aktualisiert die Einstellungen, [Remove-AzureRmPublicIpAddress](/powershell/module/azurerm.network/remove-azurermpublicipaddress) löscht|
+|Befehlszeilenschnittstelle (CLI)|[az network public-ip list](/cli/azure/network/public-ip#az-network-public-ip-list) listet die öffentlichen IP-Adressen auf, [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) zeigt die Einstellungen an, [az network public-ip update](/cli/azure/network/public-ip#az-network-public-ip-update) führt eine Aktualisierung durch, [az network public-ip delete](/cli/azure/network/public-ip#az-network-public-ip-delete) löscht|
+|PowerShell|[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) ruft ein öffentliches IP-Adressenobjekt ab und zeigt dessen Einstellungen an, [Set-AzureRmPublicIpAddress](/powershell/module/azurerm.network/set-azurermpublicipaddress) aktualisiert die Einstellungen, [Remove-AzureRmPublicIpAddress](/powershell/module/azurerm.network/remove-azurermpublicipaddress) löscht|
+
+## <a name="assign-a-public-ip-address"></a>Zuweisen einer öffentlichen IP-Adresse
+
+Erfahren Sie, wie Sie eine öffentliche IP-Adresse den folgenden Ressourcen zuweisen:
+
+- Einer [Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-VM (beim Erstellen) oder einem [vorhandenen virtuellen Computer](virtual-network-network-interface-addresses.md#add-ip-addresses)
+- [Lastenausgleich mit Internetzugriff](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Azure Application Gateway](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Standort-zu-Standort-Verbindung über ein Azure VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Azure VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 ## <a name="permissions"></a>Berechtigungen
 
 Zum Durchführen von Aufgaben für öffentliche IP-Adressen muss Ihr Konto der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Rolle zugewiesen sein, der die entsprechenden, in der folgenden Tabelle aufgeführten Aktionen zugewiesen wurden:
 
-| anzuzeigen.                                                             | NAME                                                           |
+| Aktion                                                             | NAME                                                           |
 | ---------                                                          | -------------                                                  |
 | Microsoft.Network/publicIPAddresses/read                           | Lesen einer öffentlichen IP-Adresse                                          |
 | Microsoft.Network/publicIPAddresses/write                          | Schreiben oder Aktualisieren einer öffentlichen IP-Adresse                           |
@@ -107,4 +117,3 @@ Zum Durchführen von Aufgaben für öffentliche IP-Adressen muss Ihr Konto der R
 
 - Erstellen einer öffentlichen IP-Adresse mithilfe von [PowerShell](powershell-samples.md)- oder [Azure CLI](cli-samples.md)-Beispielskripts oder mithilfe von Azure [Resource Manager-Vorlagen](template-samples.md)
 - Erstellen und Anwenden einer [Azure-Richtlinie](policy-samples.md) für öffentliche IP-Adressen
-- Zuweisen von öffentlichen IP-Adressen beim Erstellen einer Azure-[Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder Azure-[Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-VM, einer [Azure Load Balancer-Instanz mit Internetzugriff](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json), eines [Azure-Anwendungsgateways](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json), einer [Site-to-Site-Verbindung über ein Azure-VPN-Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder einer [Azure-VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

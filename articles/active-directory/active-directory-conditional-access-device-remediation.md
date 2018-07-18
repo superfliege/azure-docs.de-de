@@ -8,6 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: get-started-article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5ad9b01d3821b481fe3255c821e8674dcb26b322
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 664909fa78f2034c0750492e529b21cebc087e5c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723795"
 ---
 # <a name="you-cant-get-there-from-here-on-a-windows-device"></a>Zugriffsprobleme auf einem Windows-Gerät
 
@@ -40,7 +42,7 @@ Beim Versuch, beispielsweise auf das SharePoint Online-Intranet Ihrer Organisati
 
 ## <a name="supported-browser"></a>Unterstützte Browser
 
-Wenn Ihr Administrator eine Richtlinie für bedingten Zugriff konfiguriert hat, können Sie nur über einen unterstützten Browser auf die Ressourcen Ihrer Organisation zugreifen. Auf Windows-Geräten werden ausschließlich **Internet Explorer** und **Microsoft Edge** unterstützt.
+Wenn Ihr Administrator eine Richtlinie für bedingten Zugriff konfiguriert hat, können Sie nur über einen unterstützten Browser auf die Ressourcen Ihrer Organisation zugreifen. Auf Windows-Geräten werden ausschließlich **Internet Explorer** und **Edge** unterstützt.
 
 Sie können ganz einfach ermitteln, ob das Ressourcenzugriffsproblem auf einen nicht unterstützten Browser zurückzuführen ist. Sehen Sie sich dazu den Detailbereich der Fehlerseite an:
 

@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Virtual Array – Dienstzusammenfassungsblatt | Microsoft-Dokumentation"
-description: "Beschreibt das Dienstübersichtsblatt für den StorSimple-Geräte-Manager und erläutert, wie Sie die Integrität Ihres StorSimple Virtual Array mithilfe dieses Blatt überwachen können."
+title: StorSimple Virtual Array – Dienstzusammenfassungsblatt | Microsoft-Dokumentation
+description: Beschreibt das Dienstübersichtsblatt für den StorSimple-Geräte-Manager und erläutert, wie Sie die Integrität Ihres StorSimple Virtual Array mithilfe dieses Blatt überwachen können.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: manuaery
 manager: syadav
-editor: 
+editor: ''
 ms.assetid: 8a2b9a84-b0e6-48b9-b366-d16f004241a5
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109738"
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>Verwenden der Dienstübersichtsblatts für den StorSimple-Geräte-Manager, der mit dem StorSimple Virtual Array verbunden ist
 ## <a name="overview"></a>Übersicht

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: jdial
-ms.openlocfilehash: 6ef165ddc481bf84c6189635e36b97eb9518261e
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 1725a3d6a4eb82ca57078f648efa14866d2fe390
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34077805"
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "35771127"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Anzeigen der Topologie eines virtuellen Azure-Netzwerks
 
@@ -37,10 +37,12 @@ Sie können die Topologie mithilfe des [Azure-Portals](#azure-portal), der [Azur
 
     ![Topologie anzeigen](./media/view-network-topology/view-topology.png)
 
-    Wie in der vorherigen Abbildung zu erkennen ist, enthält das virtuelle Netzwerk drei Subnetze. In einem Subnetz wurde ein virtueller Computer bereitgestellt. An den virtuellen Computer ist eine Netzwerkschnittstelle angefügt, und ihm ist eine öffentliche IP-Adresse zugeordnet. Den anderen beiden Subnetzen ist eine Routingtabelle zugeordnet. Jede Routingtabelle enthält zwei Routen. Einem Subnetz ist eine Netzwerksicherheitsgruppe zugeordnet. Topologieinformationen werden nur für Ressourcen angezeigt, für die gilt: - Sie befinden sich in derselben Ressourcengruppe und Region wie das virtuelle Netzwerk *myVnet*. Beispiel: Eine Netzwerksicherheitsgruppe, die sich in einer anderen Ressourcengruppe als *MyResourceGroup* befindet, wird nicht angezeigt, selbst wenn sie einem Subnetz im virtuellen Netzwerk *myVnet* zugeordnet ist.
-        - Sie befinden sich im virtuellen Netzwerk *myVnet* oder sind Ressourcen in ihm zugeordnet. Beispiel: Eine Netzwerksicherheitsgruppe, die keinem Subnetz und keiner Netzwerkschnittstelle im virtuellen Netzwerk *myVnet* zugewiesen ist, wird nicht angezeigt, selbst wenn sie sich in der Ressourcengruppe *MyResourceGroup* befindet.
+    Wie in der vorherigen Abbildung zu erkennen ist, enthält das virtuelle Netzwerk drei Subnetze. In einem Subnetz wurde ein virtueller Computer bereitgestellt. An den virtuellen Computer ist eine Netzwerkschnittstelle angefügt, und ihm ist eine öffentliche IP-Adresse zugeordnet. Den anderen beiden Subnetzen ist eine Routingtabelle zugeordnet. Jede Routingtabelle enthält zwei Routen. Einem Subnetz ist eine Netzwerksicherheitsgruppe zugeordnet. Informationen zur Topologie werden nur für Ressourcen angezeigt, die:
+    
+    - sich innerhalb der gleichen Ressourcengruppe und Region wie das virtuelle *myVnet* Netzwerk befinden. Beispiel: Eine Netzwerksicherheitsgruppe, die sich in einer anderen Ressourcengruppe als *MyResourceGroup* befindet, wird nicht angezeigt, selbst wenn sie einem Subnetz im virtuellen Netzwerk *myVnet* zugeordnet ist.
+    - sich im virtuellen Netzwerk *myVnet* befinden oder Ressourcen in ihm zugeordnet sind. Beispiel: Eine Netzwerksicherheitsgruppe, die keinem Subnetz und keiner Netzwerkschnittstelle im virtuellen Netzwerk *myVnet* zugewiesen ist, wird nicht angezeigt, selbst wenn sie sich in der Ressourcengruppe *MyResourceGroup* befindet.
 
-    Die in der Abbildung dargestellte Topologie gilt für das virtuelle Netzwerk, das nach der Bereitstellung des Beispielskripts unter **Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät** erstellt wurde. Diese Bereitstellung kann über die [Azure-Befehlszeilenschnittstelle](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) oder [PowerShell](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) erfolgen.
+  Die in der Abbildung dargestellte Topologie gilt für das virtuelle Netzwerk, das nach der Bereitstellung des Beispielskripts unter **Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät** erstellt wurde. Diese Bereitstellung kann über die [Azure-Befehlszeilenschnittstelle](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) oder [PowerShell](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) erfolgen.
 
 6. Wählen Sie **Topologie herunterladen** aus, um die Abbildung als bearbeitbare Datei im SVG-Format herunterzuladen.
 

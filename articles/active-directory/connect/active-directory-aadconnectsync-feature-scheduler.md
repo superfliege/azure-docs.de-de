@@ -2,10 +2,10 @@
 title: 'Azure AD Connect Sync: Scheduler | Microsoft Docs'
 description: Dieses Thema beschreibt das integrierte Schedulerfeature in Azure AD Connect Sync.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 6b1a598f-89c0-4244-9b20-f4aaad5233cf
 ms.service: active-directory
 ms.devlang: na
@@ -13,12 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: df7b16157ccb47a5463570c3ed58b9c44f0b67d0
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: fa99de4aac11e7310085cc37e6ebaee441415c61
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594158"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect Sync: Scheduler
 Dieses Thema beschreibt den integrierten Scheduler in Azure AD Connect Sync (auch bekannt als Synchronisierungsmodul).

@@ -1,11 +1,11 @@
 ---
-title: "Identitätssynchronisierung und Resilienz bei doppelten Attributen | Microsoft Docs"
+title: Identitätssynchronisierung und Resilienz bei doppelten Attributen | Microsoft Docs
 description: Neues Verhalten zur Behandlung von Objekten mit UPN- oder ProxyAddress-Konflikten bei der Verzeichnissynchronisierung mit Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 537a92b7-7a84-4c89-88b0-9bce0eacd931
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
-ms.author: markvi
-ms.openlocfilehash: 975abed469a78573553c0879b33181d2a58ec48c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.component: hybrid
+ms.author: billmath
+ms.openlocfilehash: a84e99e854900cef70450661f992c33787368c90
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919069"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Identitätssynchronisierung und Resilienz bei doppelten Attributen
 Die Resilienz bei doppelten Attributen ist ein Feature von Azure Active Directory, das der Beseitigung von Konflikten zwischen **UserPrincipalName** und **ProxyAddress** dient, die beim Ausführen eines Synchronisierungstools von Microsoft auftreten können.

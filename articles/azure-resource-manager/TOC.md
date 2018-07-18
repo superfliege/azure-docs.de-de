@@ -2,21 +2,25 @@
 
 # Übersicht
 ## [Was ist Resource Manager?](resource-group-overview.md)
-## [Ressourcenanbieter und -typen](resource-manager-supported-services.md)
 ## [Resource Manager-Bereitstellung und klassische Bereitstellung](resource-manager-deployment-model.md)
-## [Abonnementgovernance](/azure/architecture/cloud-adoption-guide/subscription-governance)
-## [Organisieren von Ressourcen mit Verwaltungsgruppen](management-groups-overview.md)
 
 # Erste Schritte
 ## [Erstellen und Bereitstellen der Vorlage](resource-manager-create-first-template.md)
 ## [VS-Codeerweiterung für Vorlagen](resource-manager-vscode-extension.md)
 ## [Visual Studio mit Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 
+# Konzepte
+## [Ressourcenanbieter und -typen](resource-manager-supported-services.md)
+## [Verwaltungsgruppen](management-groups-overview.md)
+## [Abonnementgovernance](/azure/architecture/cloud-adoption-guide/subscription-governance?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+## [Vorlagen für Cloudkonsistenz](templates-cloud-consistency.md)
+
 # Anleitung
 ## Erstellen von Vorlagen
 ### [Vorlagenabschnitte](resource-group-authoring-templates.md)
 #### [Parameter](resource-manager-templates-parameters.md)
 #### [Variablen](resource-manager-templates-variables.md)
+#### [Funktionen](resource-group-authoring-templates.md#functions)
 #### [Ressourcen](resource-manager-templates-resources.md)
 #### [Ausgaben](resource-manager-templates-outputs.md)
 ### [Verknüpfte und geschachtelte Vorlagen](resource-group-linked-templates.md)
@@ -47,7 +51,8 @@
 ### [Azure-Portal](resource-group-portal.md)
 ### [Verwenden von Tags zum Organisieren von Ressourcen](resource-group-using-tags.md)
 ### [Verschieben von Ressourcen in neue Gruppen oder Abonnements](resource-group-move-resources.md)
-### [Programmgesteuerte Erstellung von EA-Abonnements](programmatically-create-subscription.md)
+### [Erstellen von EA-Abonnements](programmatically-create-subscription.md)
+### [Gewähren des Zugriffs zur Erstellung von EA-Abonnements](grant-access-to-create-subscription.md)
 ### [Erstellen von Verwaltungsgruppen](management-groups-create.md)
 ### [Verwalten Ihrer Verwaltungsgruppen](management-groups-manage.md)
 

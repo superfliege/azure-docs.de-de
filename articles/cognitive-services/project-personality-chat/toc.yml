@@ -1,0 +1,11 @@
+- name: 'Dokumentation zu „Projekt: Chat mit Profil“'
+- name: Übersicht
+  expanded: true
+  items:
+    - name: 'Was ist „Projekt: Chat mit Profil“?'
+      href: overview.md
+- name: angeben
+  expanded: true
+  items:
+    - name: Häufig gestellte Fragen
+      href: faq.md

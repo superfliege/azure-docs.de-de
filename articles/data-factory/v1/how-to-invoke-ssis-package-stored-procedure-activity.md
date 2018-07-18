@@ -10,28 +10,29 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 309a64c47eb95ca2ca05bb82bc1c41256305823d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: bf91b1cb1e764c1350cead0c5dfb109b73e9dad3
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052714"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Aufrufen eines SSIS-Pakets mithilfe einer Aktivität einer gespeicherten Prozedur in Azure Data Factory
 In diesem Artikel wird das Aufrufen eines SSIS-Pakets aus einer Azure Data Factory-Pipeline mithilfe einer Aktivität einer gespeicherten Prozedur beschrieben. 
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar ist. Wenn Sie Version 2 des Data Factory-Diensts verwenden, die sich in Public Preview befindet, lesen Sie [Invoke SSIS packages using stored procedure activity in version 2](../how-to-invoke-ssis-package-stored-procedure-activity.md) (Aufrufen von SSIS-Paketen mithilfe einer Aktivität einer gespeicherten Prozedur in Version 2).
+> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [Aufrufen von SSIS-Paketen mithilfe der Aktivität für gespeicherte Prozeduren](../how-to-invoke-ssis-package-stored-procedure-activity.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 ### <a name="azure-sql-database"></a>Azure SQL-Datenbank 
-Die exemplarische Vorgehensweise in diesem Artikel verwendet eine Azure SQL-Datenbank, in der der SSIS-Katalog gehostet ist. Alternativ können Sie eine verwaltete Instanz von Azure SQL (Vorschau) verwenden.
+Die exemplarische Vorgehensweise in diesem Artikel verwendet eine Azure SQL-Datenbank, in der der SSIS-Katalog gehostet ist. Alternativ können Sie eine verwaltete Azure SQL-Datenbank-Instanz (Vorschau) verwenden.
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>Erstellen einer Azure SSIS Integration Runtime
-Erstellen Sie eine Azure-SSIS Integration Runtime, wenn Sie noch nicht über eine verfügen, indem Sie die Schritt-für-Schritt-Anweisung im [Tutorial: Bereitstellen von SSIS-Paketen](../tutorial-create-azure-ssis-runtime-portal.md) befolgen. Zum Erstellen einer Azure-SSIS Integration Runtime müssen Sie eine Data Factory der Version 2 erstellen. 
+Erstellen Sie eine Azure-SSIS Integration Runtime, wenn Sie noch nicht über eine verfügen, indem Sie die Schritt-für-Schritt-Anweisung im [Tutorial: Bereitstellen von SSIS-Paketen](../tutorial-create-azure-ssis-runtime-portal.md) befolgen. Sie können nicht Data Factory, Version 1 zum Erstellen einer Azure SSIS-Integration Runtime verwenden. 
 
 ## <a name="azure-portal"></a>Azure-Portal
 In diesem Abschnitt erstellen Sie mithilfe des Azure-Portals eine Data Factory-Pipeline mit einer Aktivität einer gespeicherten Prozedur, die ein SSIS-Paket aufruft.

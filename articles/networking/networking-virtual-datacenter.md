@@ -16,6 +16,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942444"
 ---
 # <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>Virtuelles Rechenzentrum in Microsoft Azure: Eine Netzwerkperspektive
 **Microsoft Azure**: Schneller agieren, Geld sparen, lokale Apps und Daten integrieren

@@ -1,25 +1,26 @@
 ---
-title: "Von der Community vorgeschlagenes Drittanbieter-VPN oder Firewallgeräteeinstellungen für Azure VPN Gateway | Microsoft-Dokumentation"
-description: "Erfahren Sie mehr über von der Community vorgeschlagenes Drittanbieter-VPN oder Firewallgeräteeinstellungen für Azure VPN Gateway."
+title: Von der Community vorgeschlagenes Drittanbieter-VPN oder Firewallgeräteeinstellungen für Azure VPN Gateway | Microsoft-Dokumentation
+description: Erfahren Sie mehr über von der Community vorgeschlagenes Drittanbieter-VPN oder Firewallgeräteeinstellungen für Azure VPN Gateway.
 services: vpn-gateway
-documentationcenter: 
+documentationcenter: ''
 author: chadmath
 manager: cshepard
-editor: 
+editor: ''
 tags: azure-vpn-gateway
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/03/2017
+ms.date: 06/11/2018
 ms.author: delhan
-ms.openlocfilehash: cc45d84ea9a5eb4c2eaefb5a3ac321feb2d896d2
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: d64830d8664ab65bbd9dbe3bc40eb997007d8910
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267236"
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Von der Community vorgeschlagenes Drittanbieter-VPN oder Firewallgeräteeinstellungen für Azure VPN Gateway
 
@@ -32,12 +33,12 @@ Dieser Artikel enthält mehrere Lösungsvorschläge für ein Drittanbieter-VPN o
 
 Die folgende Tabelle enthält mehrere gemeinsame Geräte und verwandte Hilfe:
 
-|Produkt    |Referenz                                                |
+|Produkt    |Verweis                                                |
 |-----------|-----------------------------------------------------------|
 |Cisco ASA  |[Von der Community vorgeschlagene Lösungen für Cisco ASA auf Azure-VPN](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASA&locale=enUS&tab=Cisco)   |
 |Cisco ISR  |[Von der Community vorgeschlagene Lösungen für Cisco ISR auf Azure-VPN](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ISR&locale=enUS&tab=Cisco)   |
 |Cisco ASR  |[Von der Community vorgeschlagene Lösungen für Cisco ASR auf Azure-VPN](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASR&locale=enUS&tab=Cisco)   |
-|SonicWall |Suche nach **Azure-VPN** auf der [Sonicwall-Website](https://support.sonicwall.com/search) |
+|SonicWall |Suche nach **Azure-VPN** auf der [Sonicwall-Website](https://www.sonicwall.com/en-us/support) |
 | Prüfpunkt    |Suche nach **Azure-VPN** auf der [Checkpoint-Website](https://supportcenter.checkpoint.com/supportcenter/portal) |
 |Juniper |Suche nach **Azure-VPN** auf der [Juniper-Website]( http://www.juniper.net/search/public/)|
 |Barracuda  |[Von der Community vorgeschlagene Lösungen für Barracuda auf Azure-VPN](https://campus.barracuda.com/search/?q=%22Azure+VPN%22&x=0&y=0)   |

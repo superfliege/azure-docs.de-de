@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1c8bbbde653ed8e927ab1550c32ae86a4dc2ffac
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: d30006fae8a0d495909b9a53cf0bffb5cc824433
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38295395"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Problembehebung bei Konnektivitätsproblemen mit Azure AD Connect 
 Dieser Artikel erklärt, wie die Konnektivität zwischen Azure AD Connect und Azure AD funktioniert und wie Konnektivitätsprobleme behoben werden können. Diese Probleme können insbesondere in einer Umgebung mit einem Proxyserver auftreten.
@@ -172,7 +174,7 @@ Die Authentifizierung war erfolgreich, aber es liegt ein Authentifizierung bei A
 Die Authentifizierung war erfolgreich. Sie sind kein globaler Administrator.
 
 ### <a name="privilegedidentitymanagement"></a>PrivilegedIdentityManagement
-Die Authentifizierung war erfolgreich. Privileged Identity Management wurde aktiviert, und Sie sind aktuell kein globaler Administrator. Weitere Informationen finden Sie unter [Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md).
+Die Authentifizierung war erfolgreich. Privileged Identity Management wurde aktiviert, und Sie sind aktuell kein globaler Administrator. Weitere Informationen finden Sie unter [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md).
 
 ### <a name="companyinfounavailable"></a>CompanyInfoUnavailable
 Die Authentifizierung war erfolgreich. Es konnten keine Unternehmensinformationen aus Azure AD abgerufen werden.

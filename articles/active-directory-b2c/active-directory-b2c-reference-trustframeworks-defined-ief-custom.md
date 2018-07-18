@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Referenz – Vertrauens-Frameworks | Microsoft-Dokumentation'
-description: Azure Active Directory B2C – Problembehandlung für benutzerdefinierte Richtlinien und Identity Experience Framework
+title: 'Referenz: Vertrauensframeworks in Azure Active Directory B2C | Microsoft-Dokumentation'
+description: Ein Thema zu benutzerdefinierten Azure Active Directory B2C-Richtlinien und zum Identity Experience Framework
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 0cd64e90ac1b6c87008b2a16ca3afa273b9c9d56
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 4eee1f2c9ca37227ca2cea0ef5e2ff25f6fad828
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443408"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Definieren von Vertrauens-Frameworks mit Azure AD B2C Identity Experience Framework
 

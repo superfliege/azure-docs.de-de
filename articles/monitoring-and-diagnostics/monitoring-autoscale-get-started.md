@@ -1,24 +1,19 @@
 ---
-title: Erste Schritte mit der automatischen Skalierung in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Ihre Ressource in Azure skalieren.
+title: Erste Schritte mit der automatischen Skalierung in Azure
+description: Informationen zum Skalieren Ihrer Ressource Web-App, Clouddienst, virtueller Computer oder VM-Skalierungsgruppe in Azure.
 author: rajram
-manager: rboucher
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: d37d3fda-8ef1-477c-a360-a855b418de84
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: rajram
-ms.openlocfilehash: 84ce3af2bef1e3204ad91567d155d7cbf90e9c7e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: autoscale
+ms.openlocfilehash: 2781e718e3829c13dcc8cdd998936cfba30d8550
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263645"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Erste Schritte mit der automatischen Skalierung in Azure
 In diesem Artikel wird beschrieben, wie Sie Ihre automatische Skalierungseinstellung für Ihre Ressource im Microsoft Azure-Portal einrichten.
@@ -120,7 +115,7 @@ Nun können Sie die Anzahl der Instanzen festlegen, die manuell skaliert werden 
 Sie können immer zur automatischen Skalierung zurückkehren, indem Sie auf **Automatische Skalierung aktivieren** und dann auf **Speichern** klicken.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Erstellen Sie eine Aktivitätsprotokollwarnung, um alle automatischen Modulskalierungsvorgänge für Ihr Abonnement zu überwachen.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
+- [Erstellen einer Aktivitätsprotokollwarnung, um alle Vorgänge der Engine für die automatische Skalierung für Ihr Abonnement zu überwachen](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Erstellen Sie eine Aktivitätsprotokollwarnung, um alle Autoskalierungs-Vorgänge zum horizontalen Herunterskalieren und horizontalen Hochskalieren in Ihrem Abonnement, bei denen Fehler aufgetreten sind, zu überwachen.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 
 <!--Reference-->

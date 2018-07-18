@@ -1,28 +1,24 @@
 ---
-title: Skalieren der lokalen Ausführung und Tests von U-SQL mit Azure Data Lake U-SQL SDK | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie Azure Data Lake U-SQL SDK verwenden, um die lokale Ausführung von U-SQL SDK-Aufträgen und Tests mit der Befehlszeile und den Programmierschnittstellen auf Ihrer lokalen Arbeitsstation skalieren.
+title: Lokales Ausführen und Testen von U-SQL-Aufträgen mit dem Azure Data Lake U-SQL SDK
+description: In diesem Artikel erfahren Sie, wie Sie U-SQL-Aufträge unter Verwendung der Befehlszeile und der Programmierschnittstellen auf Ihrer lokalen Arbeitsstation lokal ausführen und testen.
 services: data-lake-analytics
-documentationcenter: ''
-author: ''
-manager: ''
-editor: ''
-ms.assetid: ''
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/01/2017
+author: yanacai
 ms.author: yanacai
-ms.openlocfilehash: 55242bcf644ca0e7f30cfe7eada2130451c36e64
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+manager: kfile
+editor: jasonwhowell
+ms.topic: conceptual
+ms.date: 03/01/2017
+ms.openlocfilehash: 11a2bfdcda09a071667cc034ef1ff42794b73a33
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737070"
 ---
-# <a name="scale-u-sql-local-run-and-test-with-azure-data-lake-u-sql-sdk"></a>Skalieren der lokalen Ausführung und Tests von U-SQL mit Azure Data Lake U-SQL SDK
+# <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Ausführen und Testen von U-SQL mit dem Azure Data Lake U-SQL SDK
 
-Beim Entwickeln von U-SQL-Skript führt man das U-SQL-Skript normalerweise lokal aus und testet es, bevor man es an die Cloud übermittelt. Azure Data Lake stellt ein NuGet-Paket namens „Azure Data Lake U-SQL SDK“ für dieses Szenario zur Verfügung, mit dem Sie U-SQL ganz einfach lokal ausführen und testen können. Es ist auch möglich, diesen U-SQL-Test mit einem CI-System (Continuous Integration) zu integrieren, um das Kompilieren und den Test zu automatisieren.
+Beim Entwickeln von U-SQL-Skript führt man das U-SQL-Skript normalerweise lokal aus und testet es, bevor man es an die Cloud übermittelt. Azure Data Lake stellt ein NuGet-Paket namens „Azure Data Lake U-SQL SDK“ für dieses Szenario zur Verfügung, mit dem Sie U-SQL ganz einfach ausführen und testen können. Es ist auch möglich, diesen U-SQL-Test mit einem CI-System (Continuous Integration) zu integrieren, um das Kompilieren und den Test zu automatisieren.
 
 Wenn Sie sich dafür interessieren, wie man ein U-SQL-Skript mit GUI-Tools manuell lokal ausführt und debuggt, können Sie stattdessen Azure Data Lake Tools für Visual Studio verwenden. Weitere Informationen darüber finden Sie [hier](data-lake-analytics-data-lake-tools-local-run.md).
 
@@ -212,12 +208,12 @@ Der Befehl **execute** wird zum Ausführen von kompilierten Ergebnissen verwende
 
 Im Folgenden sind optionale Argumente für **execute** aufgeführt:
 
-|Argument|BESCHREIBUNG|
-|--------|-----------|
-|-DataRoot [Standardwert '']|Stammordner für die Ausführung von Metadaten. Der Standardwert ist die Umgebungsvariable **LOCALRUN_DATAROOT**.|
-|-MessageOut [Standardwert '']|Sichern von Meldungen der Konsole in einer Datei.|
-|-Parallel [Standardwert '1']|Indikator dafür, dass die generierten Schritte für lokale Testläufe mit der angegebenen Parallelitätsebene ausgeführt werden.|
-|-Verbose [Standardwert 'False']|Indikator dafür, dass ausführliche Ausgaben der Runtime angezeigt werden.|
+|Argument|Standardwert|BESCHREIBUNG|
+|--------|-------------|-----------|
+|-DataRoot | '' |Stammordner für die Ausführung von Metadaten. Der Standardwert ist die Umgebungsvariable **LOCALRUN_DATAROOT**.|
+|-MessageOut | '' |Sichern von Meldungen der Konsole in einer Datei.|
+|-Parallel | '1' |Indikator dafür, dass die generierten Schritte für lokale Testläufe mit der angegebenen Parallelitätsebene ausgeführt werden.|
+|-Verbose | „false“ |Indikator dafür, dass ausführliche Ausgaben der Runtime angezeigt werden.|
 
 Im Folgenden finden Sie ein Beispiel zur Verwendung:
 

@@ -3,16 +3,17 @@ title: Beispiele für Azure Analysis Services-Codes, -Projekte und -Datenbanken 
 description: Erfahren Sie mehr über Code-, Projekt- und Datenbankbeispiele für Azure Analysis Services.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 55f350f21111e8937fa1687c890d4f7bb4ab07ed
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6456663a1114ec00f2a071458c54067da53b52a7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443720"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services – Beispiele
 Nutzen Sie die folgenden Beispielressourcen, um mehr über Analysis Services für Ihre Umgebung zu erfahren und es zu testen.
@@ -38,5 +39,5 @@ Wenn Sie über einen Analysis Services-Server im Azure-Portal verfügen, können
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Adventure Works-Tutorial](/tutorials/aas-adventure-works-tutorial.md)   
+[Adventure Works-Tutorial](tutorials/aas-adventure-works-tutorial.md)   
 [Herstellen einer Verbindung mit lokalen Datenquellen mit dem lokalen Azure-Datengateway](analysis-services-gateway.md)  

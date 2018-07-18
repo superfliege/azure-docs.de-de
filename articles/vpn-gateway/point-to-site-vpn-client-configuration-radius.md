@@ -1,31 +1,36 @@
 ---
-title: "Erstellen und Installieren von VPN-Clientkonfigurationsdateien für P2S-RADIUS-Verbindungen: PowerShell: Azure | Microsoft-Dokumentation"
-description: "Erstellen Sie Windows-, Mac OS X- und Linux-VPN-Client-Konfigurationsdateien für Verbindungen, die RADIUS-Authentifizierung verwenden."
+title: 'Erstellen und Installieren von VPN-Clientkonfigurationsdateien für P2S-RADIUS-Verbindungen: PowerShell: Azure | Microsoft-Dokumentation'
+description: Erstellen Sie Windows-, Mac OS X- und Linux-VPN-Client-Konfigurationsdateien für Verbindungen, die RADIUS-Authentifizierung verwenden.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/12/2018
+ms.date: 06/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 1d57537428f5ac1085b6cbae93be6f77c71b12e7
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 19b1090a37ae1f97537fcabe128e7958fc26a96a
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235888"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Erstellen und Installieren von Clientkonfigurationsdateien für P2S-RADIUS-Authentifizierung
 
 Zum Herstellen einer P2S-Verbindung (Point-to-Site) mit einem virtuellen Netzwerk müssen Sie das Clientgerät konfigurieren, über das die Verbindung hergestellt werden soll. Sie können P2S-VPN-Verbindungen über Windows-, Mac OS X- und Linux-Clientgeräte erstellen. 
 
 Wenn Sie die RADIUS-Authentifizierung verwenden, stehen mehrere Authentifizierungsoptionen zur Verfügung: Authentifizierung per Benutzername/Kennwort, zertifikatbasierte Authentifizierung sowie weitere Authentifizierungstypen. Die VPN-Clientkonfiguration ist je nach Authentifizierungstyp unterschiedlich. Um den VPN-Client zu konfigurieren, verwenden Sie Clientkonfigurationsdateien, die die erforderlichen Einstellungen enthalten. Dieser Artikel hilft Ihnen beim Erstellen und Installieren der VPN-Clientkonfiguration für den gewünschten RADIUS-Authentifizierungstyp.
+
+>[!IMPORTANT]
+>[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
+>
 
 Der Konfigurationsworkflow für die P2S-RADIUS-Authentifizierung lautet wie folgt:
 
@@ -152,6 +157,10 @@ Die folgenden Anweisungen wurden über von strongSwan 5.5.1 auf Ubuntu 17.0.4 er
 ## <a name="certeap"></a>Zertifikatauthentifizierung
  
 Sie können VPN-Clientkonfigurationsdateien für die RADIUS-Zertifikatauthentifizierung erstellen, die das EAP-TLS-Protokoll nutzt. In der Regel wird ein vom Unternehmen ausgestelltes Zertifikat zum Authentifizieren eines Benutzers für VPN verwendet. Stellen Sie sicher, dass alle Benutzer, die eine Verbindung herstellen, ein Zertifikat auf ihren Geräten installiert haben und das Zertifikat von Ihrem RADIUS-Server überprüft werden kann.
+
+>[!NOTE]
+>[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
+>
 
 In den Befehlen ist `EapTls` als `-AuthenticationMethod` angegeben. Während der Zertifikatauthentifizierung überprüft der Client den RADIUS-Server durch Überprüfen des Zertifikats. Bei `-RadiusRootCert` handelt es sich um die CER-Datei mit dem Stammzertifikat, das zum Überprüfen des RADIUS-Servers verwendet wird.
 

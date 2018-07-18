@@ -1,26 +1,23 @@
 ---
-title: Erste Schritte mit dem U-SQL-Katalog | Microsoft Docs
+title: Erste Schritte mit dem U-SQL-Katalog in Azure Data Lake Analytics
 description: Erfahren Sie, wie Sie den U-SQL-Katalog für die gemeinsame Nutzung von Code und Daten verwenden können.
 services: data-lake-analytics
-documentationcenter: ''
-author: saveenr
-manager: saveenr
-editor: cgronlun
-ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 05/09/2017
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: b39b5250cc042c393216784128ffc4e2f1288f04
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+manager: saveenr
+editor: jasonwhowell
+ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
+ms.topic: conceptual
+ms.date: 05/09/2017
+ms.openlocfilehash: 35a39733987eba7060049db7005c1f6bc0058e63
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624351"
 ---
-# <a name="get-started-with-the-u-sql-catalog"></a>Erste Schritte mit dem U-SQL-Katalog
+# <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>Erste Schritte mit dem U-SQL-Katalog in Azure Data Lake Analytics
 
 ## <a name="create-a-tvf"></a>Erstellen einer Tabellenwertfunktion
 

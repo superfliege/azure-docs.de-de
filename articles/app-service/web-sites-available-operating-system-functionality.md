@@ -1,8 +1,8 @@
 ---
-title: "Betriebssystemfunktionen für Azure App Service"
-description: "Erfahren Sie mehr über die Funktionen des Betriebssystems, die für Apps, mobile App Back-Ends und API-Apps in Azure App Service zur Verfügung stehen."
+title: Betriebssystemfunktionen für Azure App Service
+description: Erfahren Sie mehr über die Funktionen des Betriebssystems, die für Apps, mobile App Back-Ends und API-Apps in Azure App Service zur Verfügung stehen.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: mollybos
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
-ms.openlocfilehash: 6b5939341ad05fb8f80415c5335c24d216fc2555
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 00b5f9c78000fbb9bf86e8c1d8b06e3645795a12
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850153"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Betriebssystemfunktionen für Azure App Service
 In diesem Artikel werden allgemeine grundlegende Betriebssystemfunktionen beschrieben, die für alle Apps zur Verfügung stehen, die in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)ausgeführt werden. Diese Funktionen umfassen Zugriff auf Dateien, Netzwerke und Registrierung sowie Diagnoseprotokolle und Ereignisse. 
@@ -49,16 +50,22 @@ In App Service gibt es viele Laufwerke, einschließlich lokaler Laufwerke und Ne
 <a id="LocalDrives"></a>
 
 ### <a name="local-drives"></a>Lokale Laufwerke
-Im Grunde ist App Service ein Dienst, der auf der Azure-PaaS-Infrastruktur (Platform-as-a-Service) ausgeführt wird. Daher sind die lokalen Laufwerke, die an einen virtuellen Computer "angehängt" sind, die gleichen Laufwerkstypen wie die für jede in Azure ausgeführte Workerrolle verfügbaren Typen. Dies umfasst ein Betriebssystemlaufwerk (Laufwerk „D:\“), ein Anwendungslaufwerk, das Azure-Paketdateien (CSPKG-Dateien) enthält, die ausschließlich von App Service verwendet werden (Kunden können darauf nicht zugreifen), und ein „Benutzer“-Laufwerk (Laufwerk „C:\“), dessen Umfang von der Größe des virtuellen Computers abhängt. Die Überwachung der Datenträgerauslastung ist wichtig, wenn Ihre Anwendung wächst. Wenn das Datenträgerkontingent erreicht ist, kann sich das negativ auf Ihre Anwendung auswirken.
+Im Grunde ist App Service ein Dienst, der auf der Azure-PaaS-Infrastruktur (Platform-as-a-Service) ausgeführt wird. Daher sind die lokalen Laufwerke, die an einen virtuellen Computer "angehängt" sind, die gleichen Laufwerkstypen wie die für jede in Azure ausgeführte Workerrolle verfügbaren Typen. Dies umfasst:
+
+- Ein Betriebssystemlaufwerk (Laufwerk D:\)
+- Ein Anwendungslaufwerk mit den CSPKG-Dateien des Azure-Pakets, das ausschließlich von App Service verwendet wird (und auf das Kunden keinen Zugriff haben)
+- Ein „Benutzer-Laufwerk“ (Laufwerk C:\), dessen Größe von der Größe des virtuellen Computer abhängt. 
+
+Die Überwachung der Datenträgerauslastung ist wichtig, wenn Ihre Anwendung wächst. Wenn das Datenträgerkontingent erreicht ist, kann sich das negativ auf Ihre Anwendung auswirken.
 
 <a id="NetworkDrives"></a>
 
 ### <a name="network-drives-aka-unc-shares"></a>Netzwerklaufwerke (oder auch UNC-Freigaben)
-Ein Alleinstellungsmerkmal von App Service, das die Webanwendungsbereitstellung und -wartung so unkompliziert macht, ist die Tatsache, dass alle Benutzerinhalte auf einem Satz an UNC-Freigaben gespeichert werden. Dieses Modell passt sehr gut zum allgemeinen Muster der Inhaltsspeicherung, das von lokalen Webhostingumgebungen verwendet wird, die über mehrere Server mit Lastenausgleich verfügen. 
+Ein Alleinstellungsmerkmal von App Service, das die Webanwendungsbereitstellung und -wartung so unkompliziert macht, ist die Tatsache, dass alle Benutzerinhalte auf einem Satz an UNC-Freigaben gespeichert werden. Dieses Modell passt gut zum allgemeinen Muster der Inhaltsspeicherung, das von lokalen Webhostingumgebungen verwendet wird, die über mehrere Server mit Lastenausgleich verfügen. 
 
 In App Service werden in jedem Rechenzentrum mehrere UNC-Freigaben erstellt. Ein Prozentsatz der Benutzerinhalte aller Kunden in jedem Rechenzentrum wird auf alle UNC-Freigaben verteilt. Außerdem werden alle Dateiinhalte für das Abonnement eines Kunden immer auf derselben UNC-Freigabe abgelegt. 
 
-Beachten Sie, dass sich aufgrund der Funktionsweise von Clouddiensten der spezifische virtuelle Computer, der die UNC-Freigabe hostet, im Laufe der Zeit ändert. Es wird gewährleistet, dass UNC-Freigaben von unterschiedlichen virtuellen Computern bereitgestellt werden, da diese während des normalen Verlaufs von Cloudvorgängen ein- und ausgeschaltet werden. Aus diesem Grund sollten Apps nicht hartcodiert annehmen, dass die Computerinformationen in einem UNC-Dateipfad immer stabil bleiben. Stattdessen muss der praktische *pseudoabsolute* Pfad **D:\home\site** verwendet werden, den App Service zur Verfügung stellt. Dieser pseudoabsolute Pfad bietet eine portable, Web-App- und benutzeragnostische Methode für die Verknüpfung zur eigenen App. Wenn Sie **D:\home\site** verwenden, können Sie freigegebene Dateien von App zu App übertragen, ohne für jede Übertragung einen neuen absoluten Pfad konfigurieren zu müssen.
+Aufgrund der Funktionsweise von Azure-Diensten ändert sich der spezifische virtuelle Computer, der die UNC-Freigabe hostet, im Lauf der Zeit. Es wird gewährleistet, dass UNC-Freigaben von unterschiedlichen virtuellen Computern eingebunden werden, da diese während des normalen Verlaufs von Azure-Vorgängen ein- und ausgeschaltet werden. Aus diesem Grund sollten Apps nicht hartcodiert annehmen, dass die Computerinformationen in einem UNC-Dateipfad immer stabil bleiben. Stattdessen muss der praktische *pseudoabsolute* Pfad **D:\home\site** verwendet werden, den App Service zur Verfügung stellt. Dieser pseudoabsolute Pfad bietet eine portable, Web-App- und benutzeragnostische Methode für die Verknüpfung zur eigenen App. Wenn Sie **D:\home\site** verwenden, können Sie freigegebene Dateien von App zu App übertragen, ohne für jede Übertragung einen neuen absoluten Pfad konfigurieren zu müssen.
 
 <a id="TypesOfFileAccess"></a>
 
@@ -69,7 +76,7 @@ Auf den lokalen Laufwerken, die zum virtuellen Computer gehören, auf dem eine A
 
 Zwei Beispiele dazu, wie App Service temporären lokalen Speicherplatz verwendet, sind das Verzeichnis für ASP.NET-Dateien und das Verzeichnis für komprimierte IIS-Dateien. Das Kompilierungssystem von ASP.NET verwendet das Verzeichnis "Temporary ASP.NET Files" als temporären Speicherort für den Kompilierungscache. IIS verwenden das Verzeichnis "IIS Temporary Compressed Files", um komprimierte Rückmeldungen zu speichern. Diese beiden Arten der Dateinutzung (und weitere) werden in App Service über temporären lokalen Speicherplatz pro App neu zugewiesen. Durch diese Neuzuweisung wird eine durchgängige Funktionalität gewährleistet.
 
-Jede App in App Service wird als zufällige, eindeutige Workerrollenidentität mit geringen Berechtigungen ausgeführt. Weitere Informationen zu dieser als „Anwendungspoolidentität“ bezeichneten Identität finden Sie unter folgendem Link: [http://www.iis.net/learn/manage/configuring-security/application-pool-identities](http://www.iis.net/learn/manage/configuring-security/application-pool-identities). Anwendungscode nutzt diese Identität für grundlegenden schreibgeschützten Zugriff auf das Betriebssystemlaufwerk (Laufwerk D:\). Das bedeutet, Anwendungscode kann allgemeine Verzeichnisstrukturen auflisten und allgemeine Dateien auf dem Betriebssystemlaufwerk lesen. Dies erscheint zwar wie ein sehr umfassender Zugriff, dieselben Verzeichnisse und Dateien sind jedoch zugänglich, wenn Sie in einem von Azure gehosteten Dienst eine Workerrolle bereitstellen und die Laufwerksinhalte lesen. 
+Jede App in App Service wird als zufällige, eindeutige Workerprozessidentität mit geringen Berechtigungen ausgeführt. Weitere Informationen zu dieser als „Anwendungspoolidentität“ bezeichneten Identität finden Sie unter [http://www.iis.net/learn/manage/configuring-security/application-pool-identities](http://www.iis.net/learn/manage/configuring-security/application-pool-identities). Anwendungscode nutzt diese Identität für grundlegenden schreibgeschützten Zugriff auf das Betriebssystemlaufwerk (Laufwerk D:\). Das bedeutet, Anwendungscode kann allgemeine Verzeichnisstrukturen auflisten und allgemeine Dateien auf dem Betriebssystemlaufwerk lesen. Dies erscheint zwar wie ein sehr umfassender Zugriff, dieselben Verzeichnisse und Dateien sind jedoch zugänglich, wenn Sie in einem von Azure gehosteten Dienst eine Workerrolle bereitstellen und die Laufwerksinhalte lesen. 
 
 <a name="multipleinstances"></a>
 
@@ -81,7 +88,7 @@ Das Basisverzeichnis enthält den Inhalt einer App, und ein Anwendungscode kann 
 ## <a name="network-access"></a>Netzwerkzugriff
 Anwendungscode kann TCP/IP- und UDP-basierte Protokolle verwenden, um ausgehende Verbindungen zu zugänglichen Endpunkten im Internet herzustellen, die externe Dienste bereitstellen. Apps können die gleichen Protokolle verwenden, um eine Verbindung mit Diensten innerhalb von Azure, z. B. HTTPS-Verbindungen zu SQL Database, herzustellen.
 
-Es ist außerdem eine eingeschränkte Funktion für Apps zur Erstellung einer lokalen Loopbackverbindung vorhanden, deren lokaler Loopbacksocket von Apps überwachtwerden kann. Diese Funktion dient vor allem dazu, Apps zu ermöglichen, als Teil ihrer Funktionalität lokale Loopbacksockets zu überwachen. Beachten Sie, dass in jeder App eine „private“ Loopbackverbindung angezeigt wird. App „A“ kann nicht keinen lokalen Loopbacksocket überwachen, der von App „B“ eingerichtet wurde.
+Es ist außerdem eine eingeschränkte Funktion für Apps zur Erstellung einer lokalen Loopbackverbindung vorhanden, deren lokaler Loopbacksocket von Apps überwachtwerden kann. Diese Funktion dient vor allem dazu, Apps zu ermöglichen, als Teil ihrer Funktionalität lokale Loopbacksockets zu überwachen. Jede App sieht eine „private“ Loopbackverbindung. Die App „A“ kann nicht an einem lokalen Loopbacksocket lauschen, der durch die App „B“ eingerichtet wurde.
 
 Named Pipes werden auch als Mechanismus für die Kommunikation zwischen Prozessen (IPC) unterstützt. Dies umfasst unterschiedliche Prozesse, die zusammen eine App ausführen. Beispielsweise nutzt das IIS FastCGI-Modul Named Pipes für die Koordinierung der individuellen Prozesse, die PHP-Websites ausführen.
 
@@ -103,7 +110,7 @@ Beispielsweise sind W3C-HTTP-Protokolle, die von einer aktiven App generiert wer
 
 Ebenso können Echtzeitdiagnoseinformationen aus .NET-Apps protokolliert werden. Dies ist mit der Nachverfolgungs- und Diagnosestruktur von .NET möglich, wobei die Nachverfolgungsinformationen entweder auf die Netzwerkfreigabe der App oder in einen Blob-Speicherort geschrieben werden können.
 
-Bereiche der Diagnoseprotokollierung und Nachverfolgung, die für Apps nicht verfügbar sind, sind Windows-ETW-Ereignisse und Windows-Ereignisprotokolle (zum Beispiel System-, Anwendungs- und Sicherheitsereignisprotokolle). Da ETW-Nachverfolgungsinformationen potenziell computerweit sichtbar sind (mit den entsprechenden ACLs), sind Lese- und Schreibzugriff auf ETW-Ereignisse blockiert. Entwickler erkennen wahrscheinlich, dass API-Aufrufe für das Schreiben und Lesen von ETW-Ereignissen und allgemeinen Windows-Ereignisprotokollen scheinbar funktionieren. Dies liegt jedoch daran, dass App Service die Aufrufe "fälscht", sodass sie scheinbar erfolgreich ausgeführt werden. Tatsächlich erhält der Anwendungscode keinen Zugriff auf diese Ereignisdaten.
+Bereiche der Diagnoseprotokollierung und Nachverfolgung, die für Apps nicht verfügbar sind, sind Windows-ETW-Ereignisse und Windows-Ereignisprotokolle (z.B. System-, Anwendungs- und Sicherheitsereignisprotokolle). Da ETW-Nachverfolgungsinformationen potenziell computerweit sichtbar sind (mit den entsprechenden ACLs), sind Lese- und Schreibzugriff auf ETW-Ereignisse blockiert. Entwickler erkennen wahrscheinlich, dass API-Aufrufe für das Schreiben und Lesen von ETW-Ereignissen und allgemeinen Windows-Ereignisprotokollen scheinbar funktionieren. Dies liegt jedoch daran, dass App Service die Aufrufe "fälscht", sodass sie scheinbar erfolgreich ausgeführt werden. Tatsächlich erhält der Anwendungscode keinen Zugriff auf diese Ereignisdaten.
 
 <a id="RegistryAccess"></a>
 

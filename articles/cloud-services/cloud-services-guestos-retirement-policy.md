@@ -1,11 +1,11 @@
 ---
-title: "Unterstützungs- und Deaktivierungsrichtlinien für Azure-Gastbetriebssysteme | Microsoft-Dokumentation"
-description: "Bietet Informationen zu den Elementen, die Microsoft hinsichtlich des von Clouddiensten verwendeten Azure-Gastbetriebssystems unterstützt."
+title: Unterstützungs- und Deaktivierungsrichtlinien für Azure-Gastbetriebssysteme | Microsoft-Dokumentation
+description: Bietet Informationen zu den Elementen, die Microsoft hinsichtlich des von Clouddiensten verwendeten Azure-Gastbetriebssystems unterstützt.
 services: cloud-services
 documentationcenter: na
 author: raiye
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 919dd781-4dc6-4e50-bda8-9632966c5458
 ms.service: cloud-services
 ms.devlang: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
-ms.openlocfilehash: 4bc2d57cf4c7d6e0981aa1a5c7c989860600b897
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dfa3bac95b9827789950b4931e3198237de4a1fd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608561"
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Unterstützungs- und Deaktivierungsrichtlinie für Azure-Gastbetriebssysteme
 Die Informationen auf dieser Seite beziehen sich auf das Azure-Gastbetriebssystem ([Gast-BS](cloud-services-guestos-update-matrix.md)) für Worker- und Webrollen für Clouddienste (PaaS). Sie gelten nicht für virtuelle Computer (IaaS).
@@ -33,9 +34,7 @@ Die Richtlinie lautet:
 
 Es werden möglicherweise mehr als zwei Familien oder Versionen gleichzeitig unterstützt. Offizielle Informationen zur Unterstützung von Gastbetriebssystemen finden Sie auf der Seite [Azure-Gastbetriebssystemreleases und SDK-Kompatibilitätsmatrix](cloud-services-guestos-update-matrix.md).
 
-## <a name="when-a-guest-os-family-or-version-is-retired"></a>Wann wird eine Gast-BS-Familie oder ein Gast-BS-Release deaktiviert?
-Eine neue **Familie** eines Gastbetriebssystems wird einige Zeit nach Veröffentlichung der neuen offiziellen Version eines Windows Server-Betriebssystems eingeführt. Wenn eine neue Gastbetriebssystemfamilie eingeführt wird, deaktiviert Microsoft die älteste Gastbetriebssystemfamilie.
-
+## <a name="when-a-guest-os-version-is-retired"></a>Wann wird eine Gast-BS-Version deaktiviert?
 Neue **Versionen** von Gastbetriebssystemen werden etwa jeden Monat eingeführt und enthalten die neuesten MSRC-Updates. Aufgrund dieser regelmäßigen monatlichen Updates wird eine Gastbetriebssystemversion normalerweise etwa 60 Tage nach ihrer Veröffentlichung deaktiviert. Durch diese Aktivität sind mindestens zwei Versionen jeder Gastbetriebssystemfamilie zur Verwendung verfügbar.
 
 ### <a name="process-during-a-guest-os-family-retirement"></a>Verfahren während der Deaktivierung einer Gastbetriebssystemfamilie

@@ -1,0 +1,95 @@
+---
+title: Anforderungen für den Azure Import/Export-Dienst | Microsoft-Dokumentation
+description: Erfahren Sie mehr zu den Software- und Hardwareanforderungen für den Azure Import/Export-Dienst.
+author: alkohli
+manager: jeconnoc
+services: storage
+ms.service: storage
+ms.topic: article
+ms.date: 06/06/2018
+ms.author: alkohli
+ms.openlocfilehash: 4c6e22f50f4550cb4a6e25960bcc13a4d92e9819
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34825066"
+---
+# <a name="azure-importexport-system-requirements"></a>Systemanforderungen für Azure Import/Export
+
+Dieser Artikel beschreibt die wichtigen Anforderungen für Ihren Azure Import/Export-Dienst. Sie sollten die Informationen sorgfältig überprüfen, bevor Sie den Import/Export-Dienst verwenden. Auch später sollten Sie während des Betriebs bei Bedarf als Referenz darauf zurückgreifen.
+
+## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
+
+Um die Festplatten mit dem WAImportExport-Tool vorzubereiten, werden die folgenden **64-Bit Betriebssysteme unterstützt, die die BitLocker-Laufwerkverschlüsselung unterstützen**.
+
+
+|Plattform |Version |
+|---------|---------|
+|Windows     | Windows 7 Enterprise, Windows 7 Ultimate <br> Windows 8 Pro, Windows 8 Enterprise, Windows 8.1 Pro, Windows 8.1 Enterprise <br> Windows 10        |
+|Windows Server     |Windows Server 2008 R2 <br> Windows Server 2012, Windows Server 2012 R2         |
+
+
+
+## <a name="supported-storage-accounts"></a>Unterstützte Speicherkonten
+
+Der Azure Import/Export-Dienst unterstützt die folgenden Azure-Speicherkonten.
+- Klassisch
+- Blob Storage-Konten
+- Speicherkonten des Typs „Allgemein v1“. 
+
+Bei jedem Auftrag können lediglich Daten auf ein oder von einem Speicherkonto übertragen werden. Anders ausgedrückt: Ein einzelner Import/Export-Auftrag kann nicht mehrere Speicherkonten umfassen. Weitere Informationen zum Erstellen eines neuen Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](storage-create-storage-account.md#create-a-storage-account).
+
+> [!IMPORTANT] 
+> Der Azure Import/Export-Dienst unterstützt keine Speicherkonten, für die das Feature für [Dienstendpunkte im virtuellen Netzwerk](../../virtual-network/virtual-network-service-endpoints-overview.md) aktiviert wurde. 
+
+## <a name="supported-storage-types"></a>Unterstützte Speichertypen
+
+Die folgende Liste von Speichertypen wird vom Azure Import/Export-Dienst unterstützt.
+
+
+|Auftrag  |Speicher  |Unterstützt  |Nicht unterstützt  |
+|---------|---------|---------|---------|
+|Importieren     |  Azure Blob-Speicher. <br>Blockblobs und Seitenblobs werden unterstützt. <br> Azure Files wird unterstützt.       |         |
+|Export     |   Azure Blob-Speicher. <br>Blockblobs, Seitenblobs und Anfügeblobs werden unterstützt.       | Azure Files wird nicht unterstützt.        |
+
+
+## <a name="supported-hardware"></a>Unterstützte Hardware 
+
+Für den Azure Import/Export-Dienst benötigen Sie unterstützte Datenträger und unterstützte SATA-Connectors, um Daten zu kopieren.
+
+### <a name="supported-disks"></a>Unterstützte Datenträger
+
+Die folgende Liste von Datenträgern wird für die Verwendung mit dem Azure Import/Export-Dienst unterstützt.
+
+
+|Datenträgertyp  |Größe  |Unterstützt |Nicht unterstützt  |
+|---------|---------|---------|---------|
+|SSD    |   2,5"      |         |         |
+|Festplattenlaufwerk     |  2,5"<br>3,5"       |SATA II, SATA III         |Externes Festplattenlaufwerk mit integriertem USB-Adapter <br> Datenträger im Gehäuse eines externen Festplattenlaufwerks         |
+
+
+Eine einzelner Import-/Export-Auftrag kann über Folgendes verfügen:
+- Maximal 10 Festplattenlaufwerke/SSDs
+- Eine Mischung aus Festplattenlaufwerken/SSDs beliebiger Größe
+
+Eine große Anzahl von Laufwerken kann über mehrere Aufträge verteilt werden, und es gibt keine Beschränkung hinsichtlich der Anzahl der Aufträge, die erstellt werden können. 
+
+Bei Importaufträgen wird nur das erste Datenvolume auf dem Laufwerk verarbeitet. Das Datenvolume muss mit NTFS formatiert sein.
+
+### <a name="supported-external-usb-adaptors"></a>Unterstützte externe USB-Adapter
+
+Bei der Vorbereitung von Laufwerken und dem Kopieren der Daten mit dem WAImportExport-Tool können Sie folgende externe USB-Adapter (off-the-shelf) verwenden: 
+- Anker 68UPSATAA-02BU
+- Anker 68UPSHHDS-BU
+- Startech SATADOCK22UE
+- Orico 6628SUS3-C-BK (6628-Serie)
+- Thermaltake BlacX Dockingstation für externe Hot-Swap-SATA-Festplatten (USB 2.0 und eSATA)
+
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Einrichten des WAImportExport-Tools](storage-import-export-tool-how-to.md)
+* [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
+* [Azure Import/Export-REST-API-Beispiel](https://azure.microsoft.com/documentation/samples/storage-dotnet-import-export-job-management/)
+

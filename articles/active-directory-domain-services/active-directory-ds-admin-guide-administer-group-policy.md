@@ -1,27 +1,31 @@
 ---
-title: "Azure Active Directory Domain Services: Verwalten von Gruppenrichtlinien in verwalteten Domänen | Microsoft-Dokumentation"
-description: "Verwalten von Gruppenrichtlinien in durch Azure Active Directory Domain Services verwalteten Domänen"
+title: 'Azure Active Directory Domain Services: Verwalten von Gruppenrichtlinien in verwalteten Domänen | Microsoft-Dokumentation'
+description: Verwalten von Gruppenrichtlinien in durch Azure Active Directory Domain Services verwalteten Domänen
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 316ddc2cbd67cfafaf44318c5baebcd8da366f93
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ea7aa6c9dbde9a161567a815870b05da06cc82c8
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331710"
 ---
 # <a name="administer-group-policy-on-an-azure-ad-domain-services-managed-domain"></a>Verwalten von Gruppenrichtlinien in einer durch Azure Active Directory Domain Services verwalteten Domäne
 Azure Active Directory Domain Services umfassen integrierte Gruppenrichtlinienobjekte (Group Policy Objects, GPOs) für die Container „AADDC Users“ und „AADDC Computers“. Sie können diese integrierten GPOs anpassen, um eine Gruppenrichtlinie in der verwalteten Domäne zu konfigurieren. Darüber hinaus können Mitglieder der Administratorengruppe für Azure AD-Domänencontroller benutzerdefinierte Organisationseinheiten (OEs) in der verwalteten Domäne erstellen. Sie können auch benutzerdefinierte GPOs erstellen und mit diesen benutzerdefinierten OEs verknüpfen. Benutzern, die zur Administratorengruppe für Azure AD-Domänencontroller gehören, werden Administratorrechte für Gruppenrichtlinien in der verwalteten Domäne gewährt.
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 Um die in diesem Artikel beschriebenen Aufgaben auszuführen, benötigen Sie Folgendes:

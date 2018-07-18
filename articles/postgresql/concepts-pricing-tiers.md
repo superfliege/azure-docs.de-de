@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 03/20/2018
-ms.openlocfilehash: aa8d92e86a40841ca46ff39f72ebf0ee24d332f8
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.date: 07/21/2018
+ms.openlocfilehash: 3637ee63c94ea54145d99b9d5632f0a77c95d2f4
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34272181"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970260"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL – Tarife
 
@@ -24,8 +24,8 @@ Sie können eine Azure Database for PostgreSQL-Serverinstanz basierend auf drei 
 |:---|:----------|:--------------------|:---------------------|
 | Computegeneration | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
 | V-Kerne | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
-| Arbeitsspeicher pro V-Kern | Grundwert | 2x Basic | 2x Allgemein |
-| Speichergröße | 5 GB bis 1 TB | 5 GB bis 2 TB | 5 GB bis 2 TB |
+| Arbeitsspeicher pro V-Kern | 2 GB | 5 GB | 10 GB |
+| Speichergröße | 5 GB bis 1 TB | 5 GB bis 4 TB | 5 GB bis 4 TB |
 | Speichertyp | Azure-Standardspeicher | Azure Storage Premium | Azure Storage Premium |
 | Aufbewahrungszeitraum von Datenbanksicherungen | 7 bis 35 Tage | 7 bis 35 Tage | 7 bis 35 Tage |
 
@@ -37,10 +37,10 @@ Um einen Tarif auszuwählen, verwenden Sie die folgende Tabelle als Ausgangspunk
 | Allgemeiner Zweck | Geeignet für die meisten Unternehmensworkloads mit gängigen Compute- und Arbeitsspeicheranforderungen und skalierbarem E/A-Durchsatz. Hierzu zählen beispielsweise zum Hosten von Web- und mobilen Apps verwendete Server und andere Unternehmensanwendungen.|
 | Arbeitsspeicheroptimiert | Geeignet für Hochleistungs-Datenbankworkloads, für die In-Memory-Leistung erforderlich ist, um eine schnellere Transaktionsverarbeitung und höhere Parallelität zu erzielen. Hierzu zählen beispielsweise Server für die Verarbeitung von Echtzeitdaten und leistungsstarke Transaktions- oder Analyse-Apps.|
 
-Nachdem Sie einen Server erstellt haben, kann die Anzahl von virtuellen Kernen (im gleichen Tarif) innerhalb weniger Sekunden erhöht oder verringert werden. Außerdem haben Sie die Möglichkeit, die Speichermenge einzeln zu erhöhen und den Aufbewahrungszeitraum für Sicherungen zu erhöhen oder zu verringern, ohne dass bei der Anwendung Ausfallzeiten auftreten. Den Tarif oder Sicherungsspeichertyp können Sie nach der Erstellung eines Servers nicht mehr ändern. Weitere Informationen finden Sie im Abschnitt [Skalieren von Ressourcen](#scale-resources).
+Nach der Servererstellung können Sie die Anzahl von virtuellen Kernen, die Hardwaregeneration und den Tarif (mit Ausnahme eines Wechsels zu oder von Basic) innerhalb weniger Sekunden ändern. Außerdem haben Sie die Möglichkeit, die Speichermenge einzeln zu erhöhen und den Aufbewahrungszeitraum für Sicherungen zu erhöhen oder zu verringern, ohne dass bei der Anwendung Ausfallzeiten auftreten. Der Sicherungsspeichertyp kann nach der Servererstellung nicht mehr geändert werden. Weitere Informationen finden Sie im Abschnitt [Skalieren von Ressourcen](#scale-resources).
 
 
-## <a name="compute-generations-vcores-and-memory"></a>Computegenerationen, V-Kerne und Arbeitsspeicher
+## <a name="compute-generations-and-vcores"></a>Computegenerationen und V-Kerne
 
 Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und repräsentieren die logische CPU der zugrunde liegenden Hardware. Derzeit können Sie aus zwei Computegenerationen wählen – Gen 4 und Gen 5. Logische CPUs der Generation 4 basieren auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) 2,4 GHz. Logische CPUs der Generation 5 basieren auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) 2,3 GHz. Gen 4 und 5 Gen stehen in den folgenden Regionen zur Verfügung („X“ steht für verfügbar). 
 
@@ -49,7 +49,7 @@ Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und reprä
 | USA (Mitte) | X |  |
 | USA (Ost) | X | X |
 | USA (Ost) 2 | X | X |
-| USA Nord Mitte | X |  |
+| USA Nord Mitte | X | X |
 | USA Süd Mitte | X | X |
 | USA (Westen) | X | X |
 | USA, Westen 2 |  | X |
@@ -58,20 +58,22 @@ Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und reprä
 | Brasilien Süd | X | X |
 | Nordeuropa | X | X |
 | Europa, Westen |  | X |
+| Frankreich, Mitte |  | X |
 | UK, Westen |  | X |
 | UK, Süden |  | X |
-| Asien, Osten | X |  |
+| Asien, Osten | X | X |
 | Asien, Südosten | X | X |
 | Australien (Osten) |  | X |
+| Australien, Mitte |  | X |
+| Australien, Mitte 2 |  | X |
 | Australien, Südosten |  | X |
-| Indien, Mitte | X |  |
-| Indien, Westen | X |  |
+| Indien, Mitte | X | X |
+| Indien, Westen | X | X |
 | Indien (Süden) |  | X |
 | Japan, Osten | X | X |
 | Japan, Westen | X | X |
+| Korea, Mitte |  | X |
 | Korea, Süden |  | X |
-
-Je nach Tarif wird jeder V-Kern mit einer bestimmten Menge an Speicher bereitgestellt. Wenn Sie die Anzahl von V-Kernen für Ihren Server erhöhen oder verringern, wird der Speicher proportional dazu ebenfalls erhöht oder verringert. Im Tarif „Allgemein“ erhalten Sie im Vergleich zum Tarif „Basic“ die doppelte Menge an Speicher pro V-Kern. Im Tarif „Arbeitsspeicheroptimiert“ erhalten Sie im Vergleich zum Tarif „Allgemein“ die doppelte Menge an Speicher.
 
 ## <a name="storage"></a>Speicher
 
@@ -80,15 +82,15 @@ Der von Ihnen bereitgestellte Speicher definiert die Speicherkapazität, die fü
 |    | **Basic** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
 |:---|:----------|:--------------------|:---------------------|
 | Speichertyp | Azure-Standardspeicher | Azure Storage Premium | Azure Storage Premium |
-| Speichergröße | 5 GB bis 1 TB | 5 GB bis 2 TB | 5 GB bis 2 TB |
+| Speichergröße | 5 GB bis 1 TB | 5 GB bis 4 TB | 5 GB bis 4 TB |
 | Speicherinkrementgröße | 1 GB | 1 GB | 1 GB |
-| IOPS | Variable |3 IOPS/GB<br/>Min. 100 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS |
+| IOPS | Variable |3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 6.000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 6.000 IOPS |
 
 Sie können während und nach der Erstellung des Servers zusätzliche Speicherkapazität hinzufügen. Der Tarif „Basic“ umfasst keine IOPS-Garantie. Für die Tarife „Allgemein“ und „Arbeitsspeicheroptimiert“ wird der IOPS-Wert gegenüber der bereitgestellten Speichergröße in einem Verhältnis von 3:1 skaliert.
 
 Sie können Ihren E/A-Verbrauch im Azure-Portal oder mit Azure CLI-Befehlen überwachen. Die wichtigen zu überwachenden Metriken sind das [Speicherlimit, der Speicherprozentsatz, der genutzte Speicher und der E/A-Prozentsatz](concepts-monitoring.md).
 
-### <a name="reaching-the-store-limit"></a>Erreichen der Speicherbegrenzung
+### <a name="reaching-the-storage-limit"></a>Erreichen der Speicherbegrenzung
 
 Der Server ist als schreibgeschützt gekennzeichnet, wenn die Menge des freien Speichers kleiner als 5 GB oder 5 % des bereitgestellten Speicher ist, je nachdem, welcher Wert kleiner ist. Wenn Sie beispielsweise 100 GB des Speichers bereitgestellt haben und die tatsächliche Auslastung über 95 GB hinausgeht, wird der Server als schreibgeschützt gekennzeichnet. Wenn Sie 5 GB des Speichers bereitgestellt haben, wird der Server ebenfalls als schreibgeschützt markiert, sofern sich der freie Speicher auf weniger als 250 MB beläuft.  
 
@@ -102,9 +104,9 @@ Der Dienst erstellt automatisch Sicherungen Ihres Servers. Die Mindestaufbewahru
 
 ## <a name="scale-resources"></a>Skalieren von Ressourcen
 
-Nachdem Sie Ihren Server erstellt haben, können Sie die virtuellen Kerne, die Speichermenge und den Aufbewahrungszeitraum für Sicherungen einzeln ändern. Den Tarif oder Sicherungsspeichertyp können Sie nach der Erstellung eines Servers nicht mehr ändern. Die Anzahl der V-Kerne kann innerhalb des gleichen Tarifs zentral hoch- oder herunterskaliert werden. Die Aufbewahrungsdauer für Sicherungen kann von 7 bis zu 35 Tagen zentral hoch- oder herunterskaliert werden. Die Speichergröße kann nur erhöht werden.  Die Skalierung der Ressourcen kann entweder über das Portal oder per Azure CLI durchgeführt werden. Ein Beispiel für die Skalierung mit der Azure CLI finden Sie unter [Überwachen und Skalieren eines einzelnen PostgreSQL-Servers mit der Azure CLI](scripts/sample-scale-server-up-or-down.md).
+Nachdem Sie Ihren Server erstellt haben, können Sie die virtuellen Kerne, die Hardwaregeneration, den Tarif (mit Ausnahme eines Wechsels zu oder von Basic), die Speichermenge und den Aufbewahrungszeitraum für Sicherungen einzeln ändern. Der Sicherungsspeichertyp kann nach der Servererstellung nicht mehr geändert werden. Die Anzahl virtueller Kerne kann zentral hoch- oder herunterskaliert werden. Die Aufbewahrungsdauer für Sicherungen kann von 7 bis zu 35 Tagen zentral hoch- oder herunterskaliert werden. Die Speichergröße kann nur erhöht werden. Die Skalierung der Ressourcen kann entweder über das Portal oder per Azure CLI durchgeführt werden. Ein Beispiel für die Skalierung über die Azure CLI finden Sie unter [Überwachen und Skalieren eines einzelnen PostgreSQL-Servers mit der Azure CLI](scripts/sample-scale-server-up-or-down.md).
 
-Beim Ändern der Anzahl von virtuellen Kernen wird eine Kopie des ursprünglichen Servers mit der neuen Computezuteilung erstellt. Sobald der neue Server betriebsbereit ist und ausgeführt wird, werden die Verbindungen auf den neuen Server verschoben. Während des Moments, in dem das System den Wechsel zum neuen Server durchführt, können keine neuen Verbindungen hergestellt werden, und für alle Transaktionen ohne Commit erfolgt ein Rollback. Die Länge dieses Zeitfensters variiert, aber normalerweise dauert der Vorgang nicht länger als eine Minute.
+Beim Ändern der Anzahl von virtuellen Kernen, der Hardwaregeneration oder des Tarifs wird eine Kopie des ursprünglichen Servers mit der neuen Computezuteilung erstellt. Sobald der neue Server betriebsbereit ist und ausgeführt wird, werden die Verbindungen auf den neuen Server verschoben. Während des Moments, in dem das System den Wechsel zum neuen Server durchführt, können keine neuen Verbindungen hergestellt werden, und für alle Transaktionen ohne Commit erfolgt ein Rollback. Die Länge dieses Zeitfensters variiert, aber normalerweise dauert der Vorgang nicht länger als eine Minute.
 
 Das Skalieren des Speichers und das Ändern der Aufbewahrungsdauer für Sicherungen sind reine Onlinevorgänge. Es gibt keine Ausfallzeit, und Ihre Anwendung wird nicht beeinträchtigt. Da der IOPS-Wert in Abhängigkeit der Größe des bereitgestellten Speichers skaliert wird, können Sie die IOPS-Menge, die für Ihren Server verfügbar ist, durch das zentrale Hochskalieren des Speichers erhöhen.
 

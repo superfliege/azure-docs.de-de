@@ -17,10 +17,11 @@ ms.date: 04/24/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: b09a85686e19ae92c3e437bedff54bff8371784f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38719038"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli-20"></a>Schnellstart: Erstellen eines virtuellen Windows-Computers per Azure CLI 2.0
 

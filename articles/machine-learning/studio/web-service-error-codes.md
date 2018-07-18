@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 0923074b-3728-439d-a1b8-8a7245e39be4
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: 0ba44b2a93bcd542db1350def2d0554c8c44233c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fbedf355c6b1c45d581408a962b875544838087f
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836088"
 ---
 # <a name="machine-learning-rest-api-error-codes"></a>Machine Learning-REST-API – Fehlercodes
  
@@ -35,33 +37,33 @@ Diese Klasse von Fehlern bedeutet, dass ein angegebenes Argument ungültig war. 
 | ---------- |--------------|
 | BadParameterValue | The parameter value supplied does not satisfy the parameter rule on the parameter (Der angegebene Parameterwert erfüllt die Vorgaben der Parameterregel im Parameter nicht.) |
 | BadSubscriptionId | The subscription Id that is used to score is not the one present in the resource (Die Abonnement-ID, die zum Bewerten verwendet wird, ist nicht die ID, die in der Ressource vorhanden ist.) |
-| BadVersionCall | Invalid version parameter was passed during the API call: {0}. (Während des API-Aufrufs wurde ein ungültiger Versionsparameter übergeben: {0}.) Check the API help page for passing the correct version and try again. (Ermitteln Sie auf der API-Hilfeseite die richtige Version, und wiederholen Sie den Vorgang.) |
-| BatchJobInputsNotSpecified | The following required input(s) were not specified with the request: {0}. (Die folgenden erforderlichen Eingaben wurden nicht mit der Anforderung angegeben: {0}.) Please ensure all input data is specified and try again. (Stellen Sie sicher, dass alle Eingabedaten angegeben sind, und wiederholen Sie den Vorgang.) |
-| BatchJobInputsTooManySpecified | The request specified more inputs than defined in the service. (In der Anforderung wurden mehr Eingaben angegeben, als im Dienst definiert sind.) List of accepted input(s): {0}. (Liste mit akzeptierten Eingaben: {0}.) Please ensure all input data is specified correctly and try again. (Stellen Sie sicher, dass alle Eingabedaten richtig angegeben wurden, und wiederholen Sie den Vorgang.) |
-| BlobNameTooLong | Azure blob storage path provided for diagnostic output is too long: {0}. (Der Azure Blob Storage-Pfad für die Diagnoseausgabe ist zu lang: {0}.) Shorten the path and try again. (Kürzen Sie den Pfad, und wiederholen Sie den Vorgang.) |
-| BlobNotFound | Unable to access the provided Azure blob - {0}. (Auf das angegebene Azure-Blob kann nicht zugegriffen werden – {0}.)  Azure error message: {1}. (Azure-Fehlermeldung: {1}.) |
+| BadVersionCall | Invalid version parameter was passed during the API call: (Während des API-Aufrufs wurde ein ungültiger Versionsparameter übergeben:) {0}. Check the API help page for passing the correct version and try again. (Ermitteln Sie auf der API-Hilfeseite die richtige Version, und wiederholen Sie den Vorgang.) |
+| BatchJobInputsNotSpecified | The following required input(s) were not specified with the request: (Die folgenden erforderlichen Eingaben wurden nicht mit der Anforderung angegeben:) {0}. Please ensure all input data is specified and try again. (Stellen Sie sicher, dass alle Eingabedaten angegeben sind, und wiederholen Sie den Vorgang.) |
+| BatchJobInputsTooManySpecified | The request specified more inputs than defined in the service. (In der Anforderung wurden mehr Eingaben angegeben, als im Dienst definiert sind.) List of accepted input(s): (Liste mit akzeptierten Eingaben:) {0}. Please ensure all input data is specified correctly and try again. (Stellen Sie sicher, dass alle Eingabedaten richtig angegeben wurden, und wiederholen Sie den Vorgang.) |
+| BlobNameTooLong | Azure blob storage path provided for diagnostic output is too long: (Der Azure Blob Storage-Pfad für die Diagnoseausgabe ist zu lang:) {0}. Shorten the path and try again. (Kürzen Sie den Pfad, und wiederholen Sie den Vorgang.) |
+| BlobNotFound | Unable to access the provided Azure blob - (Auf das angegebene Azure-Blob kann nicht zugegriffen werden –) {0}.  Azure error message: (Azure-Fehlermeldung:) {1}. |
 | ContainerIsEmpty | No Azure storage container name was provided. (Es wurde kein Azure-Speichercontainername angegeben.) Provide a valid container name and try again. (Geben Sie einen gültigen Containernamen an, und wiederholen Sie den Vorgang.) |
 | ContainerSegmentInvalid | Invalid container name. (Der Containername ist ungültig.) Provide a valid container name and try again. (Geben Sie einen gültigen Containernamen an, und wiederholen Sie den Vorgang.) |
-| ContainerValidationFailed | Blob container validation failed with this error: {0}. (Bei der Überprüfung des Blobcontainers ist dieser Fehler aufgetreten: {0}.) |
+| ContainerValidationFailed | Blob container validation failed with this error: (Bei der Überprüfung des Blobcontainers ist dieser Fehler aufgetreten:) {0}. |
 | DataTypeNotSupported | Unsupported data type provided. (Es wurde ein nicht unterstützter Datentyp angegeben.) Provide valid data type(s) and try again. (Stellen Sie gültige Datentypen bereit, und wiederholen Sie den Vorgang.) |
 | DuplicateInputInBatchCall | The batch request is invalid. (Die Batchanforderung ist ungültig.) Cannot specify both single and multiple input at the same time. (Einfach- und Mehrfacheingaben können nicht gleichzeitig angegeben werden.) Remove one of these items from the request and try again. (Entfernen Sie eines dieser Elemente aus der Anforderung, und wiederholen Sie den Vorgang.) |
-| ExpiryTimeInThePast | Expiry time provided is in the past: {0}. (Die angegebene Ablaufzeit liegt in der Vergangenheit: {0}.) Provide a future expiry time in UTC and try again. (Geben Sie eine Ablaufzeit (in UTC) an, die in der Zukunft liegt, und wiederholen Sie den Vorgang.) To never expire, set expiry time to NULL. (Legen Sie die Ablaufzeit auf NULL fest, wenn der Zeitraum niemals ablaufen soll.) |
+| ExpiryTimeInThePast | Expiry time provided is in the past: (Die angegebene Ablaufzeit liegt in der Vergangenheit:) {0}. Provide a future expiry time in UTC and try again. (Geben Sie eine Ablaufzeit (in UTC) an, die in der Zukunft liegt, und wiederholen Sie den Vorgang.) To never expire, set expiry time to NULL. (Legen Sie die Ablaufzeit auf NULL fest, wenn der Zeitraum niemals ablaufen soll.) |
 | IncompleteSettings | Diagnostics settings are incomplete. (Die Diagnoseeinstellungen sind unvollständig.) |
 | InputBlobRelativeLocationInvalid | No Azure storage blob name provided. (Es wurde kein Azure-Speicherblobname angegeben.) Provide a valid blob name and try again. (Geben Sie einen gültigen Blobnamen an, und wiederholen Sie den Vorgang.) |
-| InvalidBlob | Invalid blob specification for blob: {0}. (Ungültige Blobspezifikation für Blob: {0}.) Verify that connection string / relative path or SAS token specification is correct and try again. (Vergewissern Sie sich, dass die Verbindungszeichenfolge bzw. der relative Pfad oder die SAS-Tokenspezifikation richtig ist, und wiederholen Sie den Vorgang.) |
-| InvalidBlobConnectionString | The connection string specified for one of the input/output blobs in invalid: {0}. (Die Verbindungszeichenfolge, die für ein Eingabe-/Ausgabeblob angegeben wurde, ist ungültig: {0}.) Please correct this and try again. (Beheben Sie dies, und wiederholen Sie den Vorgang.) |
-| InvalidBlobExtension | The blob reference: {0} has an invalid or missing file extension. (Der Blobverweis {0} verfügt über eine ungültige oder fehlende Dateierweiterung.) Supported file extensions for this output type are: "{1}". (Unterstützte Dateierweiterungen für diesen Ausgabetyp sind: „{1}“.) |
-| InvalidInputNames | Invalid service input name(s) specified in the request: {0}. (In der Anforderung wurden ungültige Diensteingabenamen angegeben: {0}.) Please map the input data to the correct service inputs and try again. (Ordnen Sie die Eingabedaten den richtigen Diensteingaben zu, und wiederholen Sie den Vorgang.) |
-| InvalidOutputOverrideName | Invalid output override name: {0}. (Ungültiger Ausgabeüberschreibungsname: {0}.) The service does not have an output node with this name. (Der Dienst weist keinen Ausgabeknoten mit diesem Namen auf.) Please pass in a correct output node name to override (case sensitivity applies). (Übergeben Sie einen korrekten Ausgabeknotennamen für die Überschreibung (Groß-/Kleinschreibung wird berücksichtigt).) |
-| InvalidQueryParameter | Invalid query parameter '{0}'. (Ungültiger Abfrageparameter „{0}“.) {1} |
+| InvalidBlob | Invalid blob specification for blob: (Ungültige Blobspezifikation für Blob:) {0}. Verify that connection string / relative path or SAS token specification is correct and try again. (Vergewissern Sie sich, dass die Verbindungszeichenfolge bzw. der relative Pfad oder die SAS-Tokenspezifikation richtig ist, und wiederholen Sie den Vorgang.) |
+| InvalidBlobConnectionString | The connection string specified for one of the input/output blobs in invalid: (Die Verbindungszeichenfolge, die für ein Eingabe-/Ausgabeblob angegeben wurde, ist ungültig:) {0}. Please correct this and try again. (Beheben Sie dies, und wiederholen Sie den Vorgang.) |
+| InvalidBlobExtension | The blob reference: {0} has an invalid or missing file extension. (Der Blobverweis {0} verfügt über eine ungültige oder fehlende Dateierweiterung.) Supported file extensions for this output type are: (Unterstützte Dateierweiterungen für diesen Ausgabetyp sind:) „{1}“. |
+| InvalidInputNames | Invalid service input name(s) specified in the request: (In der Anforderung wurden ungültige Diensteingabenamen angegeben:) {0}. Please map the input data to the correct service inputs and try again. (Ordnen Sie die Eingabedaten den richtigen Diensteingaben zu, und wiederholen Sie den Vorgang.) |
+| InvalidOutputOverrideName | Invalid output override name: (Ungültiger Ausgabeüberschreibungsname:) {0}. The service does not have an output node with this name. (Der Dienst weist keinen Ausgabeknoten mit diesem Namen auf.) Please pass in a correct output node name to override (case sensitivity applies). (Übergeben Sie einen korrekten Ausgabeknotennamen für die Überschreibung (Groß-/Kleinschreibung wird berücksichtigt).) |
+| InvalidQueryParameter | Invalid query parameter (Ungültiger Abfrageparameter) „{0}“. {1} |
 | MissingInputBlobInformation | Missing Azure storage blob information. (Fehlende Informationen für das Azure-Speicherblob.) Provide a valid connection string and relative path or URI and try again. (Geben Sie eine gültige Verbindungszeichenfolge und einen relativen Pfad oder einen URI ein, und wiederholen Sie den Vorgang.) |
 | MissingJobId | No job Id provided. (Es wurde keine Auftrags-ID angegeben.) A job Id is returned when a job was submitted for the first time. (Eine Auftrags-ID wird zurückgegeben, wenn ein Auftrag zum ersten Mal übermittelt wurde.) Verify the job Id is correct and try again. (Stellen Sie sicher, dass die Auftrags-ID korrekt ist, und wiederholen Sie den Vorgang.) |
 | MissingKeys | No Keys provided or one of Primary or Secondary Key is not provided. (Es wurden keine Schlüssel oder kein Primär- oder Sekundärschlüssel angegeben.) |
 | MissingModelPackage | No model package Id or model package provided. (Es wurde keine Modellpaket-ID oder kein Modellpaket angegeben.) Provide a valid model package Id or model package and try again. (Geben Sie eine gültige Modellpaket-ID oder ein Modellpaket an, und wiederholen Sie den Vorgang.) |
-| MissingOutputOverrideSpecification | The request is missing the blob specification for output override {0}. (Für die Anforderung fehlt die Blobspezifikation für die Ausgabeüberschreibung {0}.) Please specify a valid blob location with the request, or remove the output specification if no location override is desired. (Geben Sie einen gültigen Blobspeicherort für die Anforderung an, oder entfernen Sie die Ausgabespezifikation, wenn keine Speicherortüberschreibung gewünscht wird.) |
+| MissingOutputOverrideSpecification | The request is missing the blob specification for output override (Für die Anforderung fehlt die Blobspezifikation für die Ausgabeüberschreibung) {0}. Please specify a valid blob location with the request, or remove the output specification if no location override is desired. (Geben Sie einen gültigen Blobspeicherort für die Anforderung an, oder entfernen Sie die Ausgabespezifikation, wenn keine Speicherortüberschreibung gewünscht wird.) |
 | MissingRequestInput | The web service expects an input, but no input was provided. (Der Webdienst erwartet eine Eingabe, aber es ist keine Eingabe erfolgt.) Ensure valid inputs are provided based on the published input ports in the model and try again. (Stellen Sie sicher, dass basierend auf den veröffentlichten Eingabeports im Modell gültige Eingaben bereitgestellt werden, und wiederholen Sie den Vorgang.) |
 | MissingRequiredGlobalParameters | Not all required web service parameter(s) provided. (Es wurden nicht alle erforderlichen Webdienstparameter angegeben.) Verify the parameter(s) expected for the module(s) are correct and try again. (Vergewissern Sie sich, dass die für die Module erwarteten Parameter korrekt sind, und wiederholen Sie den Vorgang.) |
-| MissingRequiredOutputOverrides | When calling an encrypted service endpoint it is mandatory to pass in output overrides for all the service's outputs. (Beim Aufrufen eines verschlüsselten Dienstendpunkts ist es obligatorisch, Ausgabeüberschreibungen für alle Ausgaben des Diensts zu übergeben.) Missing overrides at this time for these outputs: {0} (Derzeit fehlende Überschreibungen für diese Ausgaben: {0}) |
+| MissingRequiredOutputOverrides | When calling an encrypted service endpoint it is mandatory to pass in output overrides for all the service's outputs. (Beim Aufrufen eines verschlüsselten Dienstendpunkts ist es obligatorisch, Ausgabeüberschreibungen für alle Ausgaben des Diensts zu übergeben.) Missing overrides at this time for these outputs: (Derzeit fehlende Überschreibungen für diese Ausgaben:) {0} |
 | MissingWebServiceGroupId | No web service group Id provided. (Keine Webdienstgruppen-ID angegeben.) Provide a valid web service group Id and try again. (Geben Sie eine gültige Webdienstgruppen-ID ein, und wiederholen Sie den Vorgang.) |
 | MissingWebServiceId | No web service Id provided. (Keine Webdienst-ID angegeben.) Provide a valid web service Id and try again. (Geben Sie eine gültige Webdienst-ID an, und wiederholen Sie den Vorgang.) |
 | MissingWebServicePackage | No web Service package provided. (Kein Webdienstpaket angegeben.) Provide a valid web service package and try again. (Geben Sie ein gültiges Webdienstpaket an, und wiederholen Sie den Vorgang.) |
@@ -76,7 +78,7 @@ Diese Klasse von Fehlern bedeutet, dass ein angegebenes Argument ungültig war. 
 | WebServiceConcurrentRequestRequirementInvalid | Cannot change concurrent requests requirements for {0} web service. (Die Vorgaben für gleichzeitige Anforderungen für den Webdienst {0} können nicht geändert werden.) |
 | WebServiceIdInvalid | Invalid web service id provided. (Ungültige Webdienst-ID angegeben.) Web service id should be a valid guid. (Die Webdienst-ID muss eine gültige GUID sein.) |
 | WebServiceTooManyConcurrentRequestRequirement | Cannot set concurrent request requirement to more than {0}. (Für gleichzeitige Anforderungen kann die Vorgabe nicht auf einen höheren Wert als {0} festgelegt werden.) |
-| WebServiceTypeInvalid | Invalid web service type provided. (Ungültigen Webdiensttyp bereitgestellt.) Verify the valid web service type is correct and try again. (Vergewissern Sie sich, dass der Webdiensttyp korrekt ist, und wiederholen Sie den Vorgang.) Valid web service types: {0}. (Gültige Webdiensttypen: {0}.) |
+| WebServiceTypeInvalid | Invalid web service type provided. (Ungültigen Webdiensttyp bereitgestellt.) Verify the valid web service type is correct and try again. (Vergewissern Sie sich, dass der Webdiensttyp korrekt ist, und wiederholen Sie den Vorgang.) Valid web service types: (Gültige Webdiensttypen:) {0}. |
  
 ## <a name="baduserargument-http-status-code-400"></a>BadUserArgument (HTTP-Statuscode 400)
  
@@ -85,7 +87,7 @@ Invalid user argument provided. (Ungültiges Benutzerargument angegeben.)
 | Fehlercode | Meldung für den Benutzer |
 | ---------- |--------------|
 | InputMismatchError | Input data does not match input port schema. (Die Eingabedaten stimmen nicht mit dem Eingabeportschema überein.) |
-| InputParseError | Parsing of input vector failed. (Fehler beim Analysieren des Eingabevektors.)  Verify the input vector has the correct number of columns and data types. (Stellen Sie sicher, dass der Eingabevektor über die richtige Anzahl von Spalten und Datentypen verfügt.)  Additional details: {0}. (Weitere Details: {0}.) |
+| InputParseError | Parsing of input vector failed. (Fehler beim Analysieren des Eingabevektors.)  Verify the input vector has the correct number of columns and data types. (Stellen Sie sicher, dass der Eingabevektor über die richtige Anzahl von Spalten und Datentypen verfügt.)  Weitere Details: {0}. |
 | MissingRequiredGlobalParameters | Parameter(s) expected by the web service are missing. (Die vom Webdienst erwarteten Parameter fehlen.) Verify all the required parameters expected by the web service are correct and try again. (Stellen Sie sicher, dass alle erforderlichen Parameter, die vom Webdienst erwartet werden, korrekt sind, und wiederholen Sie den Vorgang.) |
 | UnexpectedParameter | Verify only the required parameters expected by the web service are passed and try again. (Stellen Sie sicher, dass nur die erforderlichen Parameter, die vom Webdienst erwartet werden, übergeben werden, und wiederholen Sie den Vorgang.) |
 | UserParameterInvalid | {0} |
@@ -178,7 +180,7 @@ Execution encountered an internal error. (Bei der Ausführung ist ein interner F
 | ClusterConfigBlobMisconfigured |  |
 | ContainerProcessTerminatedWithSystemError | The container process crashed with system error (Der Containerprozess ist mit einem Systemfehler abgestürzt.) |
 | ContainerProcessTerminatedWithUnknownError | The container process crashed with unknown error (Der Containerprozess ist mit einem unbekannten Fehler abgestürzt.) |
-| ContainerValidationFailed | Blob container validation failed with this error: {0}. (Bei der Überprüfung des Blobcontainers ist dieser Fehler aufgetreten: {0}.) |
+| ContainerValidationFailed | Blob container validation failed with this error: (Bei der Überprüfung des Blobcontainers ist dieser Fehler aufgetreten:) {0}. |
 | DeleteWebServiceResourceFailed |  |
 | ExceptionDeserializationError |  |
 | FailedGettingApiDocument |  |
@@ -193,15 +195,15 @@ Execution encountered an internal error. (Bei der Ausführung ist ein interner F
 | ModuleLoadFailed |  |
 | ModuleObjectCloneFailed |  |
 | OutputConversionFailed |  |
-| PortDataTypeNotSupported | Port id={0} has an unsupported data type: {1}. (Port id={0} weist einen nicht unterstützten Datentyp auf: {1}.) |
+| PortDataTypeNotSupported | Port id={0} has an unsupported data type: {1}. (Port id={0} weist einen nicht unterstützten Datentyp auf: {0}.) |
 | ResourceDownload |  |
 | ResourceLoadFailed |  |
 | ServiceUrisNotFound |  |
-| SwaggerGeneration | Swagger generation failed, Details: {0} (Fehler bei Swagger-Generierung, Details: {0}) |
+| SwaggerGeneration | Swagger generation failed, Details: (Fehler bei Swagger-Generierung, Details:) {0} |
 | UnexpectedScoreStatus |  |
 | UnknownBackendErrorResponse |  |
 | UnknownError |  |
-| UnknownJobStatusCode | Unknown job status code {0}. (Unbekannter Auftragsstatuscode {0}.) |
+| UnknownJobStatusCode | Unknown job status code (Unbekannter Auftragsstatuscode) {0}. |
 | UnknownModuleError |  |
 | UpdateWebServiceResourceFailed |  |
 | WebServiceGroupNotFound |  |
@@ -239,7 +241,7 @@ Service is temporarily unavailable. (Der Dienst ist vorübergehend nicht verfüg
 | Fehlercode | Meldung für den Benutzer |
 | ---------- |--------------|
 | NoMoreResources | No resources available for request. (Keine Ressourcen für Anforderung verfügbar.) |
-| RequestThrottled | Request was throttled for {0} endpoint. (Anforderung wurde für Endpunkt {0} gedrosselt.) The maximum concurrency for the endpoint is {1}. (Die maximale Parallelität für den Endpunkt beträgt {1}.) |
+| RequestThrottled | Request was throttled for {0} endpoint. (Anforderung wurde für Endpunkt {0} gedrosselt.) The maximum concurrency for the endpoint is (Die maximale Parallelität für den Endpunkt beträgt) {1}. |
 | TooManyConcurrentRequests | Too many concurrent requests sent. (Zu hohe Zahl von gleichzeitig gesendeten Anforderungen.) |
 | TooManyHostsBeingInitialized | Too many hosts being initialized at the same time. (Zu viele Hosts werden zur gleichen Zeit initialisiert.) Consider throttling / retrying. (Erwägen Sie eine Drosselung oder eine Wiederholung des Vorgangs.) |
 | TooManyHostsBeingInitializedPerModel | Too many hosts being initialized at the same time. (Zu viele Hosts werden zur gleichen Zeit initialisiert.) Consider throttling / retrying. (Erwägen Sie eine Drosselung oder eine Wiederholung des Vorgangs.) |

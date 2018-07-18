@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 04/25/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: db241c1a3c8bfd15e13ae0bd9f1cdf4c92c7081d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 00cb6cb59f8144782fdacd8c2f9763c2f7036880
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37906835"
 ---
 >[!NOTE]
 > Sie können Kommentare auf dieser Seite als Feedback bzw. über [Azure-Feedback](https://feedback.azure.com/forums/216843-virtual-machines) unter dem Tag „#azerrormessage“ hinterlassen.
@@ -81,7 +82,7 @@ In diesem Abschnitt sind die allgemeinen Fehlermeldungen aufgeführt, die bei de
 |  IncorrectDiskBlobType  |  Datenträgerblobs können nur vom Typ „Seitenblob“ sein. Das Blob „{0}“ weist den Typ „{1}“ auf.  |
 |  IncorrectImageBlobType  |  Datenträgerblobs können nur vom Typ „Seitenblob“ sein. Blob „{0}“ für Datenträger „{1}“ ist vom Typ „Blockblob“.  |
 |  IncorrectImageBlobType  |  Datenträgerblobs können nur vom Typ „Seitenblob“ sein. Das Blob „{0}“ weist den Typ „{1}“ auf.  |
-|  InternalOperationError  |  Speicherkonto „{0}“ konnte nicht aufgelöst werden. Stellen Sie sicher, dass es durch den Speicherressourcenanbieter am gleichen Speicherort wie die Serverressource erstellt wurde.  |
+|  InternalOperationError  |  Das Speicherkonto „{0}“ konnte nicht aufgelöst werden. Stellen Sie sicher, dass es durch den Speicherressourcenanbieter am gleichen Speicherort wie die Serverressource erstellt wurde.  |
 |  InternalOperationError  |  Fehler bei {0} Zielsucheaufgaben.  |
 |  InternalOperationError  |  Beim Überprüfen des Netzwerkprofils des virtuellen Computers „{0}“ ist ein Fehler aufgetreten.  |
 |  InvalidAccountType  |  AccountType „{0}“ ist ungültig.  |
@@ -163,7 +164,7 @@ In diesem Abschnitt sind die allgemeinen Fehlermeldungen aufgeführt, die bei de
 |  OperationNotAllowed  |  Die Größe der VM kann nicht geändert werden, weil die angeforderte Größe {0} in dem Cluster nicht verfügbar ist, dem die VM zurzeit zugeordnet ist. Um die Größe Ihrer VM in {1} zu ändern, heben Sie die Zuordnung auf (mit dem Vorgang „Beenden“ im Azure-Portal), und wiederholen Sie den Vorgang zur Größenänderung. Weitere Informationen zur VM-Größenstrategie finden Sie unter https://aka.ms/azure-resizevm.  |
 |  OSProvisioningClientError  |  Fehler bei der Betriebssystembereitstellung für den virtuellen Computer „{0}“, weil das Gastbetriebssystem zurzeit bereitgestellt wird.  |
 |  OSProvisioningClientError  |  Fehler bei der Betriebssystembereitstellung für den virtuellen Computer „{0}“. Fehlerdetails: {1} Stellen Sie sicher, dass das Image ordnungsgemäß vorbereitet (generalisiert) wurde. <ul><li>Anleitungen für Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
-|  OSProvisioningClientError  |  Fehler beim Generieren des SSH-Hostschlüssels. Fehlerdetails: {0}. Überprüfen Sie, ob der Linux-Agent ordnungsgemäß eingerichtet ist, um dieses Problem zu beheben. <ul><li>Lesen Sie die Anleitungen unter: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-agent-user-guide/ </li></ul> |
+|  OSProvisioningClientError  |  Fehler beim Generieren des SSH-Hostschlüssels. Fehlerdetails: {0}. Überprüfen Sie, ob der Linux-Agent ordnungsgemäß eingerichtet ist, um dieses Problem zu beheben. <ul><li>Lesen Sie die Anleitungen unter: https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
 |  OSProvisioningClientError  |  Der für die VM angegebene Benutzername ist für diese Linux-Distribution ungültig. Fehlerdetails: {0}.  |
 |  OSProvisioningInternalError  |  Interner Fehler bei der Betriebssystembereitstellung für den virtuellen Computer „{0}“.  |
 |  OSProvisioningTimedOut  |  Betriebssystembereitstellung für virtuellen Computer „{0}“ wurde nicht in der zugewiesenen Zeit abgeschlossen. Der virtuelle Computer kann dennoch erfolgreich bereitgestellt werden. Überprüfen Sie den Bereitstellungszustand später.  |

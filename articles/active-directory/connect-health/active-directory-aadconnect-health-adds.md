@@ -1,9 +1,9 @@
 ---
 title: Verwenden von Azure AD Connect Health mit AD DS | Microsoft-Dokumentation
-description: "Auf dieser Seite zu Azure AD Connect Health wird beschrieben, wie Sie AD DS überwachen."
+description: Auf dieser Seite zu Azure AD Connect Health wird beschrieben, wie Sie AD DS überwachen.
 services: active-directory
-documentationcenter: 
-author: arluca
+documentationcenter: ''
+author: zhiweiw
 manager: mtillman
 editor: curtand
 ms.assetid: 19e3cf15-f150-46a3-a10c-2990702cd700
@@ -14,18 +14,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: dcfb43003e81bb51574b401c21202925b16305f8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f30c09e4942cf6992be69d9aedcd5b9b0c02b0a6
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37886731"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>Verwenden von Azure AD Connect Health mit AD DS
 Die folgende Dokumentation gilt speziell für die Überwachung von Active Directory-Domänendiensten mit Azure AD Connect Health. Folgende AD DS-Versionen werden unterstützt: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 und Windows Server 2016.
 
 Weitere Informationen zum Überwachen von AD FS mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD FS](active-directory-aadconnect-health-adfs.md). Informationen zum Überwachen von Azure AD Connect (Sync) mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health für die Synchronisierung](active-directory-aadconnect-health-sync.md).
 
-![Azure AD Connect Health für AD DS](./media/active-directory-aadconnect-health/aadconnect-health-adds-entry.png)
+![Azure AD Connect Health für AD DS](./media/active-directory-aadconnect-health-adds/domainservicesnapshot.PNG)
 
 ## <a name="alerts-for-azure-ad-connect-health-for-ad-ds"></a>Warnungen für Azure AD Connect Health für AD DS
 Der Abschnitt „Warnungen“ in Azure AD Connect Health für AD DS enthält eine Liste mit aktiven und behobenen Warnungen für ihre Domänencontroller. Wenn Sie eine aktive oder behobene Warnung auswählen, wird ein neues Blatt mit weiteren Informationen sowie mit Lösungsschritten und Links zur entsprechenden Dokumentation geöffnet. Jeder Warnungstyp kann über eine oder mehrere Instanzen verfügen, die jeweils den Domänencontrollern entsprechen, die von einer Warnung betroffen sind. Im unteren Bereich des Blatts mit den Warnungen können Sie auf einen betroffenen Domänencontroller doppelklicken, um ein zusätzliches Blatt mit weiteren Details zur entsprechenden Warnungsinstanz zu öffnen.

@@ -1,25 +1,24 @@
 ---
 title: Neuerungen in Azure Data Catalog | Microsoft Docs
-description: "Dieser Artikel bietet eine Übersicht über die neu hinzugefügten Funktionen von Azure Data Catalog."
+description: Dieser Artikel bietet eine Übersicht über die neu hinzugefügten Funktionen von Azure Data Catalog.
 services: data-catalog
-documentationcenter: 
+documentationcenter: ''
 author: steelanddata
 manager: NA
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 1201f8d4-6f26-4182-af3f-91e758a12303
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 9fb7814a8412200f6d31cfb9dcaee4663d7cea97
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 18673186e80b4d1784fa5b42e622d90dd4c889d4
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37860002"
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Neuerungen in Azure Data Catalog
 Updates für **Azure Data Catalog** werden in regelmäßigen Abständen veröffentlicht. Nicht jede Version umfasst neue Funktionen für Benutzer, da sich einige Versionen auf Back-End-Dienstfunktionen konzentrieren. Auf dieser Seite werden neue Funktionen für Benutzer aufgezeigt, die dem Dienst Azure Data Catalog hinzugefügt wurden.
@@ -94,19 +93,19 @@ Februar 2017 wurden Azure Data Catalog folgende Funktionen hinzugefügt:
 
 ## <a name="whats-new-for-january-2017"></a>Neuerungen im Januar 2017 
 Januar 2017 wurden Azure Data Catalog folgende Funktionen hinzugefügt:
-*   Azure Data Catalog ist jetzt mit [CSA STAR](https://www.microsoft.com/trustcenter/compliance/csa-star-certification) konform.
+*   Azure Data Catalog ist jetzt mit [CSA STAR](https://www.microsoft.com/en-us/trustcenter/compliance/csa-star-certification) konform.
 *   Integration mit [Abrufen und Transformieren in Excel 2016 und Power Query für Excel](https://support.office.com/article/Introduction-to-Microsoft-Power-Query-for-Excel-6E92E2F4-2079-4E1F-BAD5-89F6269CD605). Excel-Benutzer können innerhalb von Excel mithilfe von Azure Data Catalog Abfragen freigeben und ermitteln. Diese Funktion ist für Benutzer mit Power BI Pro-Lizenzen verfügbar.
 
 ## <a name="whats-new-for-december-2016"></a>Neuerungen im Dezember 2016
 Dezember 2016 wurden Azure Data Catalog die folgenden Funktionen hinzugefügt:
-*   Azure Data Catalog ist jetzt mit [HIPAA](https://www.microsoft.com/trustcenter/Compliance/HIPAA) und [EU-Modellklauseln](https://www.microsoft.com/TrustCenter/Compliance/EU-Model-Clauses) konform.
+*   Azure Data Catalog ist jetzt mit [HIPAA](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) und [EU-Modellklauseln](https://www.microsoft.com/en-us/TrustCenter/Compliance/EU-Model-Clauses) konform.
 *   Unterstützung für die Bearbeitung der Verbindungsinformationen für Datenquellen. Besitzer von Datenobjekten und Data Catalog-Administratoren können nun die Verbindungsinformationen für registrierte Datenquellen bearbeiten, ohne die Datenquellen erneut registrieren zu müssen.
 *   Unterstützung für Salesforce.com-Datenquellen. Benutzer können nun Salesforce-Objekte registrieren und ermitteln.
 
 
 ## <a name="whats-new-for-november-2016"></a>Neuerungen im November 2016
 November 2016 wurden Azure Data Catalog die folgenden Funktionen hinzugefügt:
-*   Azure Data Catalog ist jetzt mit [ISO/IEC 27001](https://www.microsoft.com/trustcenter/compliance/iso-iec-27001) und [ISO/IEC 27018](https://www.microsoft.com/TrustCenter/Compliance/iso-iec-27018) konform.
+*   Azure Data Catalog ist jetzt mit [ISO/IEC 27001](https://www.microsoft.com/en-us/trustcenter/compliance/iso-iec-27001) und [ISO/IEC 27018](https://www.microsoft.com/en-us/TrustCenter/Compliance/iso-iec-27018) konform.
 *   Unterstützung für die manuelle Registrierung von ODBC-Datenquellen mithilfe von Data Catalog-Portal und REST-API.
 
 ## <a name="whats-new-for-september-2016"></a>Neuerungen im September 2016

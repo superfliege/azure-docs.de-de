@@ -1,24 +1,26 @@
 ---
-title: "Schattenattribute für den Azure AD Connect-Synchronisierungsdienst | Microsoft-Dokumentation"
+title: Schattenattribute für den Azure AD Connect-Synchronisierungsdienst | Microsoft-Dokumentation
 description: Beschreibt die Funktionsweise von Schattenattributen im Azure AD Connect-Synchronisierungsdienst.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 19d5ae46955ecc094c340d141485d3eb54c8e9b2
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: bd1ede2bf8ff642b7be0869e54a6f037b01dd262
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593400"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Schattenattribute für den Azure AD Connect-Synchronisierungsdienst
 Die meisten Attribute werden in Azure AD genauso wie in Ihrem lokalen Azure Directory dargestellt. Einige Attribute werden jedoch besonders verarbeitet, weshalb sich der Attributwert in Azure AD davon unterscheiden kann, was mit Azure AD Connect synchronisiert wird.
@@ -55,7 +57,7 @@ Für einen Postfachbenutzer, ob lokal oder in Exchange Online, werden nur Werte 
 | „proxyAddresses“ lokal | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
 | „proxyAddresses“ in Exchange Online | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
 
-In diesem Fall wurde  **smtp:abbie.spencer@fabrikam.com**  entfernt, da diese Domäne nicht bestätigt wurde. Doch Exchange hat auch **SIP:abbie.spencer@fabrikamonline.com** hinzugefügt. Fabrikam hat Lync/Skype nicht lokal genutzt, doch Azure AD und Exchange Online bereiten sich darauf vor.
+In diesem Fall wurde **smtp:abbie.spencer@fabrikam.com** entfernt, da diese Domäne nicht bestätigt wurde. Doch Exchange hat auch **SIP:abbie.spencer@fabrikamonline.com** hinzugefügt. Fabrikam hat Lync/Skype nicht lokal genutzt, doch Azure AD und Exchange Online bereiten sich darauf vor.
 
 Diese Logik für „proxyAddresses“ wird als **ProxyCalc** bezeichnet. „ProxyCalc“ wird bei jeder Änderung für einen Benutzer aufgerufen, wenn Folgendes gilt:
 

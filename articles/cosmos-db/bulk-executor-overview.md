@@ -1,22 +1,23 @@
 ---
-title: Azure Cosmos DB BulkExecutor-Bibliothek – Übersicht | Microsoft-Dokumentation
-description: Dieser Artikel bietet Informationen zur Azure Cosmos DB BulkExecutor-Bibliothek, ihren Vorteilen und ihrer Architektur.
+title: Azure Cosmos DB-BulkExecutor-Bibliothek – Übersicht | Microsoft-Dokumentation
+description: Dieser Artikel bietet Informationen zur Azure Cosmos DB-BulkExecutor-Bibliothek, ihren Vorteilen und ihrer Architektur.
 keywords: Java-BulkExecutor
 services: cosmos-db
 author: tknandu
 manager: kfile
 ms.service: cosmos-db
-ms.workload: data-services
-ms.topic: article
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: d395376ad6cf191f8f355f6308f27e525da2911f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 893888904b6afc583c3c20b94d08eb3255a98cad
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36303991"
 ---
-# <a name="azure-cosmos-db-bulkexecutor-library-overview"></a>Azure Cosmos DB BulkExecutor-Bibliothek – Übersicht
+# <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB-BulkExecutor-Bibliothek – Übersicht
  
 Azure Cosmos DB ist ein schneller, flexibler und global verteilter Datenbankdienst, der so konzipiert ist, dass er sich elastisch horizontal hochskalieren lässt und damit Folgendes unterstützt: 
 
@@ -28,7 +29,7 @@ Mit der BulkExecutor-Bibliothek können Sie diese riesigen Durchsatz- und Speich
 > [!NOTE] 
 > Zurzeit unterstützt die BulkExecutor-Bibliothek Import- und Updatevorgänge, und die Bibliothek wird nur von Azure Cosmos DB-SQL API-Konten unterstützt. Informationen zu Updates für die Bibliothek finden Sie in den Versionsanmerkungen für [.NET](sql-api-sdk-bulk-executor-dot-net.md) und [Java](sql-api-sdk-bulk-executor-java.md).
  
-## <a name="key-features-of-the-bulkexecutor-library"></a>Wichtigste Funktionen der BulkExecutor-Bibliothek  
+## <a name="key-features-of-the-bulk-executor-library"></a>Wichtigste Funktionen der BulkExecutor-Bibliothek  
  
 * Die Bibliothek reduziert die Computeressourcen auf Clientseite, die zur vollständigen Nutzung des einem Container zugeordneten Durchsatzes erforderlich sind. Eine Singlethreadanwendung, die Daten über die Massenimport-API schreibt, erzielt einen zehnmal höheren Schreibdurchsatz im Vergleich zu einer Multithreadanwendung, die Daten parallel schreibt und gleichzeitig die CPU des Clientcomputers vollständig nutzt.  
 

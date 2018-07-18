@@ -1,11 +1,11 @@
 ---
 title: Verwenden des E-Mail-Diensts SendGrid (.NET) | Microsoft Docs
 description: Erfahren Sie, wie Sie E-Mails mit dem SendGrid-E-Mail-Dienst in Azure senden. Die Codebeispiele wurden in C# geschrieben und verwenden die .NET-API.
-services: 
+services: ''
 documentationcenter: .net
 author: thinkingserious
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 21bf4028-9046-476b-9799-3d3082a0f84c
 ms.service: multiple
 ms.workload: na
@@ -15,10 +15,11 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: dx@sendgrid.com
 ms.openlocfilehash: a5f07d02bfe4032d77a17e5972b88f6530125f28
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38634967"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>Senden von E-Mails in Azure mit SendGrid
 ## <a name="overview"></a>Übersicht
@@ -33,7 +34,7 @@ SendGrid ist ein [cloudbasierter E-Mail-Dienst], der zuverlässige [transaktiona
 * Weiterleitung von Kundenanfragen
 * Verarbeitung eingehender E-Mails
 
-Weitere Informationen finden Sie unter [https://sendgrid.com](https://sendgrid.com) oder auf GitHub in der [C#-Bibliothek][sendgrid-csharp] für SendGrid.
+Weitere Informationen finden Sie unter [https://sendgrid.com](https://sendgrid.com) oder im GitHub-Repository in der [C#-Bibliothek][sendgrid-csharp] für SendGrid.
 
 ## <a name="create-a-sendgrid-account"></a>Erstellen eines SendGrid-Kontos
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
@@ -42,7 +43,7 @@ Weitere Informationen finden Sie unter [https://sendgrid.com](https://sendgrid.c
 Der einfachste Weg, die SendGrid-API abzurufen und Ihre Anwendung mit allen Abhängigkeiten zu konfigurieren, ist das [SendGrid NuGet-Paket](https://www.nuget.org/packages/Sendgrid) . NuGet ist eine Visual Studio-Erweiterung, die in Microsoft Visual Studio 2015 und höher enthalten ist und die Installation und Aktualisierung von Bibliotheken und Tools erleichtert.
 
 > [!NOTE]
-> Wenn Sie NuGet installieren möchten und eine ältere Version von Visual Studio ausführen als Visual Studio 2015, besuchen Sie [http://www.nuget.org](http://www.nuget.org), und klicken Sie auf die Schaltfläche **Install NuGet** .
+> Wenn Sie NuGet installieren möchten und eine ältere Version von Visual Studio ausführen als Visual Studio 2015, besuchen Sie [http://www.nuget.org](http://www.nuget.org) und klicken Sie auf die Schaltfläche **Install NuGet** (NuGet installieren).
 >
 >
 

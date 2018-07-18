@@ -3,23 +3,25 @@ title: Privileged Identity Management-Abonnements – Azure | Microsoft-Dokument
 description: Erläutert die Abonnement- und Lizenzierungsanforderungen für die Verwaltung und Verwendung von Azure AD Privileged Identity Management im Mandanten.
 services: active-directory
 documentationcenter: ''
-author: barclayn
+author: rolyon
 manager: mtillman
-editor: mwahl
+editor: markwahl-msft
 ms.assetid: 34367721-8b42-4fab-a443-a2e55cdbf33d
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
+ms.component: protection
 ms.date: 06/01/2017
-ms.author: barclayn
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 9e49ddb8fca9ce193c92f27c307942d5f3d3d2fd
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 681169fc3db69c2dfb8aa36d6e2896e0ddba8b56
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38548127"
 ---
 # <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Abonnementanforderungen für Azure Active Directory Privileged Identity Management
 
@@ -36,7 +38,7 @@ Wenn Sie nicht sicher sind, ob Ihre Organisation ein Testabonnement verwendet od
 2. Geben Sie `Connect-MsolService` ein, um sich im Mandanten als Benutzer zu authentifizieren.
 3. Geben Sie `Get-MsolSubscription | ft SkuPartNumber,IsTrial,Status` ein.
 
-Dieser Befehl ruft eine Liste der Abonnements im Mandanten ab. Werden keine Zeilen zurückgegeben, müssen Sie ein Azure AD Premium P2-Testabonnement, ein Azure AD Premium P2-Abonnement oder ein EMS E5-Abonnement erwerben, um Azure AD Privileged Identity Management verwenden zu können.  Informationen zum Beziehen eines Testabonnements und zum Einstieg in Azure AD Privileged Identity Management finden Sie unter [Erste Schritte mit Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md).
+Dieser Befehl ruft eine Liste der Abonnements im Mandanten ab. Werden keine Zeilen zurückgegeben, müssen Sie ein Azure AD Premium P2-Testabonnement, ein Azure AD Premium P2-Abonnement oder ein EMS E5-Abonnement erwerben, um Azure AD Privileged Identity Management verwenden zu können.  Informationen zum Beziehen eines Testabonnements und zum Einstieg in Azure AD Privileged Identity Management finden Sie unter [Erste Schritte mit Azure AD Privileged Identity Management](pim-getting-started.md).
 
 Wenn dieser Befehl eine Zeile zurückgibt, in „SkuPartNumber“ den Wert „AAD_PREMIUM_P2“ oder „EMSPREMIUM“ und „IsTrial“ den Wert „True“ aufweist, bedeutet dies, dass ein Testabonnement von Azure AD Premium P2 im Mandanten vorhanden ist.  Wenn der Abonnementstatus nicht aktiviert ist, und Sie über kein Azure AD Premium P2- oder EMS E5-Abonnement verfügen, müssen Sie ein Azure AD Premium P2- oder ein EMS E5-Abonnement erwerben, um Azure AD Privileged Identity Management weiterhin verwenden zu können.
 
@@ -59,5 +61,5 @@ Wenn ein Azure AD Premium P2-oder EMS E5-Abonnement abläuft oder eine Organisat
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erste Schritte mit Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md)
-- [Rollen in Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-roles.md)
+- [Erste Schritte mit Azure AD Privileged Identity Management](pim-getting-started.md)
+- [Rollen in Azure AD Privileged Identity Management](pim-roles.md)

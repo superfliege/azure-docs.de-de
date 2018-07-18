@@ -18,6 +18,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34260873"
 ---
 # <a name="microsoftcommoninfobox-ui-element"></a>Benutzeroberflächenelement „Microsoft.Common.InfoBox“
 Ein Steuerelement, das ein Informationsfeld hinzugefügt.

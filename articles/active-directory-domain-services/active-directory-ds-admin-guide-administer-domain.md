@@ -1,30 +1,34 @@
 ---
-title: "Azure Active Directory Domain Services: Verwalten einer verwalteten Domäne | Microsoft Docs"
-description: "Verwalten von durch die Azure Active Directory-Domänendienste verwalteten Domänen"
+title: 'Azure Active Directory Domain Services: Verwalten einer verwalteten Domäne | Microsoft Docs'
+description: Verwalten von durch die Azure Active Directory-Domänendienste verwalteten Domänen
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: d4fdbc75-3e6b-4e20-8494-5dcc3bf2220a
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 7ffe3e54b891fd74e14666c136be49132d78590b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2ee5250147a82199057a3bf6f043627616e7443d
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333685"
 ---
 # <a name="administer-an-azure-active-directory-domain-services-managed-domain"></a>Verwalten einer durch die Azure Active Directory-Domänendienste verwalteten Domäne
 Dieser Artikel erläutert die Verwaltung einer durch die Azure Active Directory-Domänendienste verwalteten Domäne.
 
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
+
 ## <a name="before-you-begin"></a>Voraussetzungen
-Um die in diesem Artikel beschriebenen Aufgaben auszuführen, benötigen Sie Folgendes:
+Zum Ausführen der in diesem Artikel aufgeführten Anweisungen ist Folgendes erforderlich:
 
 1. Ein gültiges **Azure-Abonnement**.
 2. Ein **Azure AD-Verzeichnis** – entweder synchronisiert mit einem lokalen Verzeichnis oder als reines Cloud-Verzeichnis
@@ -44,15 +48,15 @@ Mitgliedern der Administratorengruppe für Azure AD-Domänencontroller werden Be
 * Administrativer Zugriff auf Computer, die der verwalteten Domäne beigetreten sind
 
 ## <a name="administrative-privileges-you-do-not-have-on-a-managed-domain"></a>In einer verwalteten Domäne nicht vorhandene Administratorberechtigungen
-Die Domäne wird von Microsoft verwaltet – einschließlich Aktivitäten wie Patching, Überwachung und Durchführung von Sicherungen. Aus diesem Grund ist die Domäne gesperrt, und Sie besitzen keine Berechtigungen für bestimmte administrative Aufgaben in der Domäne. Im Folgenden sind einige Beispiele für Aufgaben aufgeführt, die Sie nicht ausführen können.
+Die Domäne wird von Microsoft verwaltet – einschließlich Aktivitäten wie Patching, Überwachung und Durchführung von Sicherungen. Die Domäne ist gesperrt, und Sie besitzen keine Berechtigungen für bestimmte administrative Aufgaben in der Domäne. Im Folgenden sind einige Beispiele für Aufgaben aufgeführt, die Sie nicht ausführen können.
 
-* Sie erhalten keine Domänenadministrator- oder Unternehmensadministratorberechtigungen für die verwaltete Domäne.
+* Sie besitzen keine Domänenadministrator- oder Unternehmensadministratorberechtigungen für die verwaltete Domäne.
 * Sie können das Schema der verwalteten Domäne nicht erweitern.
-* Sie können über Remotedesktop keine Verbindung zu Domänencontrollern für die verwaltete Domäne herstellen.
+* Sie können über Remotedesktop keine Verbindung mit Domänencontrollern für die verwaltete Domäne herstellen.
 * Sie können der verwalteten Domäne keine Domänencontroller hinzufügen.
 
-## <a name="task-1---provision-a-domain-joined-windows-server-virtual-machine-to-remotely-administer-the-managed-domain"></a>Aufgabe 1: Bereitstellen eines in die Domäne eingebundenen virtuellen Windows Server-Computers zur Remoteverwaltung der verwalteten Domäne
-Durch die Azure AD-Domänendienste verwaltete Domänen können mithilfe bekannter Active Directory-Verwaltungstools verwaltet werden, beispielsweise über das Active Directory-Verwaltungscenter (Active Directory Administrative Center, ADAC) oder AD PowerShell. Mandantenadministratoren besitzen keine Berechtigungen, um über Remotedesktop eine Verbindung mit Domänencontrollern in der verwalteten Domäne herzustellen. Aus diesem Grund können Mitglieder der Administratorengruppe für Azure AD-Domänencontroller verwaltete Domänen remote über die AD-Verwaltungstools eines Windows Server- oder Windows-Clientcomputers verwalten, der der verwalteten Domäne beigetreten ist. AD-Verwaltungstools können im Rahmen der optionalen Remoteserver-Verwaltungstools (Remote Server Administration Tools, RSAT) auf Windows Server- und Windows-Clientcomputern installiert werden, die der verwalteten Domäne beigetreten sind.
+## <a name="task-1---create-a-domain-joined-windows-server-virtual-machine-to-remotely-administer-the-managed-domain"></a>Aufgabe 1: Erstellen eines in die Domäne eingebundenen virtuellen Windows Server-Computers zur Remoteverwaltung der verwalteten Domäne
+Durch die Azure AD-Domänendienste verwaltete Domänen können mithilfe bekannter Active Directory-Verwaltungstools verwaltet werden, beispielsweise über das Active Directory-Verwaltungscenter (Active Directory Administrative Center, ADAC) oder AD PowerShell. Mandantenadministratoren besitzen keine Berechtigungen, um über Remotedesktop eine Verbindung mit Domänencontrollern in der verwalteten Domäne herzustellen. Mitglieder der Administratorengruppe für Azure AD-Domänencontroller können verwaltete Domänen remote über die AD-Verwaltungstools eines Windows Server- oder Windows-Clientcomputers verwalten, der der verwalteten Domäne beigetreten ist. AD-Verwaltungstools können im Rahmen der optionalen Remoteserver-Verwaltungstools (Remote Server Administration Tools, RSAT) auf Windows Server- und Windows-Clientcomputern installiert werden, die der verwalteten Domäne beigetreten sind.
 
 Der erste Schritt besteht darin, einen virtuellen Windows Server-Computer einzurichten, der der verwalteten Domäne beigetreten ist. Anweisungen hierzu finden Sie im Artikel [Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne](active-directory-ds-admin-guide-join-windows-vm.md).
 
@@ -68,7 +72,7 @@ Führen Sie die folgenden Schritte aus, um die Active Directory-Verwaltungstools
 2. Klicken Sie auf der Registerkarte „Übersicht“ auf die Schaltfläche **Verbinden**. Eine Remotedesktopprotokoll-Datei (RDP-Datei) wird erstellt und heruntergeladen.
 
     ![Verbindung mit virtuellem Windows-Computer herstellen](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-3. Öffnen Sie die heruntergeladene RDP-Datei, um eine Verbindung mit Ihrem virtuellen Computer herzustellen. Klicken Sie in der angezeigten Aufforderung auf **Verbinden**. Verwenden Sie bei der Anmeldeaufforderung die Anmeldeinformationen eines Benutzers, der zur Administratorengruppe für Azure AD-Domänencontroller gehört. In unserem Fall verwenden wir „bob@domainservicespreview.onmicrosoft.com“. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Klicken Sie auf „Ja“ bzw. „Weiter“, um mit dem Herstellen der Verbindung fortzufahren.
+3. Öffnen Sie die heruntergeladene RDP-Datei, um eine Verbindung mit Ihrem virtuellen Computer herzustellen. Klicken Sie in der angezeigten Aufforderung auf **Verbinden**. Verwenden Sie die Anmeldeinformationen eines Benutzers, der zur Administratorengruppe für Azure AD-Domänencontroller gehört. Beispiel: „bob@domainservicespreview.onmicrosoft.com“. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Klicken Sie auf „Ja“ bzw. „Weiter“, um mit dem Herstellen der Verbindung fortzufahren.
 4. Öffnen Sie auf dem Startbildschirm den **Server-Manager**. Klicken Sie im mittleren Bereich des Server-Manager-Fensters auf **Rollen und Features hinzufügen** .
 
     ![Server-Manager auf dem virtuellen Computer starten](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
@@ -81,8 +85,8 @@ Führen Sie die folgenden Schritte aus, um die Active Directory-Verwaltungstools
 7. Wählen Sie auf der Seite **Serverauswahl** den aktuellen virtuellen Computer im Serverpool aus, und klicken Sie auf **Weiter**.
 
     ![Seite „Serverauswahl“](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
-8. Klicken Sie auf der Seite **Serverrollen** auf **Weiter**. Überspringen Sie diese Seite, da in diesem Beispiel keine Rollen auf dem Server installiert werden.
-9. Erweitern Sie auf der Seite **Features** den Knoten **Remoteserver-Verwaltungstools** und dann durch den Knoten **Rollenverwaltungstools**. Wählen Sie in der Liste mit den Rollenverwaltungstools das Feature **AD DS- und AD LDS-Tools** aus.
+8. Klicken Sie auf der Seite **Serverrollen** auf **Weiter**.
+9. Erweitern Sie auf der Seite **Features** durch Klicken den Knoten **Remote Server-Verwaltungstools**, und erweitern Sie dann durch erneutes Klicken den Knoten **Rollenverwaltungstools**. Wählen Sie in der Liste mit den Rollenverwaltungstools das Feature **AD DS- und AD LDS-Tools** aus.
 
     ![Seite „Features“](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-ad-tools.png)
 10. Klicken Sie auf der Seite **Bestätigung** auf **Installieren**, um die AD- und AD LDS-Tools auf dem virtuellen Computer zu installieren. Wenn die Installation des Features erfolgreich abgeschlossen wurde, klicken Sie auf **Schließen**, um den Assistenten zum **Hinzufügen von Rollen und Funktionen** zu beenden.
@@ -90,7 +94,7 @@ Führen Sie die folgenden Schritte aus, um die Active Directory-Verwaltungstools
     ![Bestätigungsseite](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-confirmation.png)
 
 ## <a name="task-3---connect-to-and-explore-the-managed-domain"></a>Aufgabe 3: Verbindungsherstellung und Erkunden der verwalteten Domäne
-Nachdem die AD-Verwaltungstools nun auf dem virtuellen Computer installiert sind, der der Domäne beigetreten ist, können Sie diese Tools verwenden, um die verwaltete Domäne zu erkunden und zu verwalten.
+Jetzt können Sie die verwaltete Domäne mit Windows Server AD-Verwaltungstools untersuchen und verwalten.
 
 > [!NOTE]
 > Sie müssen der Administratorengruppe für AAD-Domänencontroller angehören, um die verwaltete Domäne verwalten zu können.

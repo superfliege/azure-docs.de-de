@@ -13,11 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/06/2018
   ms.author: spelluru
-  ms.openlocfilehash: f06102399cac6ef1b6b31155dff32999a923e173
-  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.openlocfilehash: 1b37824b113fd9b1aaf225c5cb24b2dd27f1b47f
+  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/07/2018
+  ms.lasthandoff: 06/01/2018
+  ms.locfileid: "34636697"
 abstract:
   description: Hier erfahren Sie, wie Sie mit Azure Lab Services schnell ein Entwicklungs-, Test-, Hackathon- oder Classroom-Lab für Ihr Team bzw. Ihre Schüler/Studenten in der Cloud einrichten. Anhand von Tutorials, Beispielen und anderem Material von Azure wird gezeigt, wie Sie Labs erstellen, verwalten und schützen.
 sections:
@@ -28,16 +29,16 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/lab-services/tutorial-setup-lab-account">Einrichten eines Lab-Kontos</a>
-    - html: <a href="/azure/lab-services/tutorial-setup-classroom-lab">Einrichten eines Classroom-Labs</a>
-    - html: <a href="/azure/lab-services/tutorial-connect-virtual-machine-classroom-lab">Zugreifen auf ein Classroom-Lab</a>
+    - html: <a href="/azure/lab-services/classroom-labs/tutorial-setup-lab-account">Einrichten eines Lab-Kontos</a>
+    - html: <a href="/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab">Einrichten eines Classroom-Labs</a>
+    - html: <a href="/azure/lab-services/classroom-labs/tutorial-connect-virtual-machine-classroom-lab">Zugreifen auf ein Classroom-Lab</a>
   - type: paragraph
-    text: Hier erfahren Sie, wie Sie mithilfe von Azure Lab Services ein <b>benutzerdefiniertes Lab</b> erstellen und verwenden.
+    text: Hier erfahren Sie, wie Sie mithilfe von Azure DevTest Labs ein <b>Lab</b> erstellen und verwenden.
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/lab-services/tutorial-create-custom-lab">Einrichten eines benutzerdefinierten Labs</a>
-    - html: <a href="/azure/lab-services/tutorial-use-custom-lab">Zugreifen auf ein benutzerdefiniertes Lab</a>
+    - html: <a href="/azure/lab-services/tutorial-create-custom-lab">Einrichten eines Labs</a>
+    - html: <a href="/azure/lab-services/tutorial-use-custom-lab">Zugriff auf ein Lab</a>
 - title: Beispiele
   items:
   - type: paragraph

@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 71c2463a38f2115bd3aeff82b100e3f2c20e7708
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ed1179663823bc5a16f3ef348a649731814cdd5a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293091"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Artikelindex für die Anwendungsverwaltung in Azure Active Directory
 Diese Seite enthält eine umfassende Liste aller Dokumente, die über die verschiedenen anwendungsbezogenen Funktionen in Azure Active Directory (Azure AD) geschrieben wurden.
@@ -32,7 +33,7 @@ Die folgenden Artikel sind gute Ausgangspunkte für diejenigen, die lediglich ei
 |:---:| --- |
 | Eine Einführung in die Probleme der Anwendungsverwaltung, die mit Azure AD gelöst werden |[Verwalten von Anwendungen mit Azure Active Directory (AD)](manage-apps/what-is-application-management.md) |
 | Eine Übersicht über die verschiedenen Funktionen in Azure AD im Zusammenhang mit dem Aktivieren der einmaligen Anmeldung, dem Definieren des Zugriffs auf Apps sowie dem Festlegen der Startmethode für Apps |[Anwendungszugriff und einmaliges Anmelden in Azure Active Directory](manage-apps/what-is-single-sign-on.md) |
-| Ein Blick auf die verschiedenen Schritte beim Integrieren von Apps in Ihr Azure AD |[Integrieren von Azure Active Directory in Anwendungen](manage-apps/plan-an-application-integration.md)<br /><br />[Aktivieren eines einmaligen Anmeldens an SaaS-Apps](active-directory-enterprise-apps-manage-sso.md)<br /><br />[Verwalten des Zugriffs auf Apps](active-directory-managing-access-to-apps.md) |
+| Ein Blick auf die verschiedenen Schritte beim Integrieren von Apps in Ihr Azure AD |[Integrieren von Azure Active Directory in Anwendungen](manage-apps/plan-an-application-integration.md)<br /><br />[Aktivieren eines einmaligen Anmeldens an SaaS-Apps](manage-apps/configure-single-sign-on-portal.md)<br /><br />[Verwalten des Zugriffs auf Apps](manage-apps/what-is-access-management.md) |
 | Eine technische Erklärung zur Darstellung von Apps in Azure AD |[Wie und warum werden Anwendungen zu Azure AD hinzugefügt?](active-directory-how-applications-are-added.md) |
 
 ## <a name="troubleshooting-articles"></a>Artikel zur Problembehandlung
@@ -42,7 +43,7 @@ Dieser Abschnitt bietet schnellen Zugriff auf relevante Anweisungen zur Problemb
 |:---:| --- |
 | Einmalige Verbundanmeldung |[Problembehandlung bei SAML-basiertem einmaligem Anmelden](active-directory-saml-debugging.md) |
 | Kennwortbasiertes einmaliges Anmelden |[Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer](active-directory-saas-ie-troubleshooting.md) |
-| Anwendungsproxy |[Handbuch zur Problembehandlung beim App-Proxy](active-directory-application-proxy-troubleshoot.md) |
+| Anwendungsproxy |[Handbuch zur Problembehandlung beim App-Proxy](manage-apps/application-proxy-troubleshoot.md) |
 | Einmaliges Anmelden zwischen lokalem AD und Azure AD |[Problembehandlung bei der Kennworthashsynchronisierung](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[Problembehandlung beim Kennwortrückschreiben](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | Dynamische Gruppenmitgliedschaften |[Problembehandlung bei dynamischen Mitgliedschaften in Gruppen](active-directory-accessmanagement-troubleshooting.md) |
 
@@ -57,7 +58,7 @@ Durch einmaliges Anmelden können Benutzer mit nur einem Satz von Anmeldeinforma
 | Mehr als 150 App-Tutorials zur Konfiguration des einmaligen Anmeldens für Apps wie [Salesforce](active-directory-saas-salesforce-tutorial.md), [ServiceNow](active-directory-saas-servicenow-tutorial.md), [Google Apps](active-directory-saas-google-apps-tutorial.md), [Workday](active-directory-saas-workday-tutorial.md) und viele mehr |[Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md) |
 | Vorgehensweise zum manuellen Einrichten und Anpassen Ihrer Konfiguration für einmaliges Anmelden |[Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[Anpassen ausgestellter Ansprüche im SAML-Token für vorintegrierte Apps](active-directory-saml-claims-customization.md) |
 | Handbuch zur Problembehandlung für Verbund-Apps, die das SAML-Protokoll verwenden |[Problembehandlung bei SAML-basiertem einmaligem Anmelden](active-directory-saml-debugging.md) |
-| Konfigurieren des Ablaufdatums für das Zertifikat Ihrer App und Erneuern von Zertifikaten |[Verwalten von Zertifikaten für die einmalige Verbundanmeldung in Azure Active Directory](active-directory-sso-certs.md) |
+| Konfigurieren des Ablaufdatums für das Zertifikat Ihrer App und Erneuern von Zertifikaten |[Verwalten von Zertifikaten für die einmalige Verbundanmeldung in Azure Active Directory](manage-apps/manage-certificates-for-federated-single-sign-on.md) |
 
 Einmaliges Anmelden im Verbund steht für alle Editionen von Azure AD für bis zu zehn Apps pro Benutzer zur Verfügung. [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) unterstützt eine unbegrenzte Anzahl von Anwendungen. Wenn Ihre Organisation [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) oder [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) verwendet, können Sie [den Zugriff auf Verbundanwendungen mithilfe von Gruppen zuweisen](#managing-access-to-applications).
 
@@ -82,7 +83,7 @@ Wenn Sie in Ihrem privaten Netzwerk Anwendungen verwenden, die für Benutzer und
 | Tutorials zum Konfigurieren des Anwendungsproxys und zum Veröffentlichen Ihrer ersten App |[Aktivieren des Anwendungsproxys über das Azure-Portal](manage-apps/application-proxy-enable.md)<br /><br />[Installieren des Azure AD-Anwendungsproxyconnectors im Hintergrund](manage-apps/application-proxy-register-connector-powershell.md)<br /><br />[Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](manage-apps/application-proxy-publish-azure-portal.md)<br /><br />[Verwenden eines eigenen Domänennamens](manage-apps/application-proxy-configure-custom-domain.md) |
 | Aktivieren des einmaligen Anmeldens und des bedingten Zugriffs für Apps, die mit dem App-Proxy veröffentlicht werden |[Einmaliges Anmelden mit Anwendungsproxy](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)<br /><br />[Bedingter Zugriff und Anwendungsproxy](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
 | Anleitung zum Verwenden des Anwendungsproxys für die folgenden Szenarien |[Aktivieren von nativen Client-Apps für die Interaktion mit Proxyanwendungen](manage-apps/application-proxy-configure-native-client-application.md)<br /><br />[Arbeiten mit Ansprüche unterstützenden Apps im Anwendungsproxy](manage-apps/application-proxy-configure-for-claims-aware-applications.md)<br /><br />[Unterstützung für in getrennten Netzwerken und an getrennten Orten veröffentlichte Anwendungen](manage-apps/application-proxy-connector-groups.md) |
-| Handbuch zur Problembehandlung beim Anwendungsproxy |[Handbuch zur Problembehandlung beim App-Proxy](active-directory-application-proxy-troubleshoot.md) |
+| Handbuch zur Problembehandlung beim Anwendungsproxy |[Handbuch zur Problembehandlung beim App-Proxy](manage-apps/application-proxy-troubleshoot.md) |
 
 Der Anwendungsproxy steht für alle Editionen von Azure AD für bis zu zehn Apps pro Benutzer zur Verfügung. [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) unterstützt eine unbegrenzte Anzahl von Anwendungen. Wenn Ihre Organisation [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) oder [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) verwendet, können Sie [den Zugriff auf Anwendungen mithilfe von Gruppen zuweisen](#managing-access-to-applications).
 
@@ -136,7 +137,7 @@ Automatisieren Sie das Erstellen, Warten und Entfernen von Benutzeridentitäten 
 |:---:| --- |
 | Weitere Informationen zur Funktionsweise und Antworten auf häufig gestellte Fragen |[Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](active-directory-saas-app-provisioning.md) |
 | Konfigurieren der Zuordnung von Informationen zwischen Azure AD und Ihrer SaaS-App |[Anpassen von Attributzuordnungen](active-directory-saas-customizing-attribute-mappings.md)<br><br>[Schreiben von Ausdrücken für Attributzuordnungen](active-directory-saas-writing-expressions-for-attribute-mappings.md) |
-| Aktivieren der automatisierten Bereitstellung in jeder App, die das SCIM-Protokoll unterstützt |[Einrichten der automatischen Bereitstellung von Benutzern für SCIM-fähige Apps](active-directory-scim-provisioning.md) |
+| Aktivieren der automatisierten Bereitstellung in jeder App, die das SCIM-Protokoll unterstützt |[Einrichten der automatischen Bereitstellung von Benutzern für SCIM-fähige Apps](manage-apps/use-scim-to-provision-users-and-groups.md) |
 | Berichterstellung zu und Problembehandlung bei Benutzerbereitstellungen |[Berichterstellung zur automatischen Benutzerbereitstellung](active-directory-saas-provisioning-reporting.md)<br><br>[Problembehandlung bei Benutzerbereitstellungen](active-directory-application-provisioning-content-map.md) |
 | Einschränken der für eine Anwendung bereitgestellten Benutzer basierend auf deren Attributwerten |[Bereichsfilter](active-directory-saas-scoping-filters.md) |
 
@@ -159,7 +160,7 @@ Um Sie bei der Verwaltung des Zugriffs auf Ressourcen zu unterstützen, ermögli
 
 | Artikelleitfaden |  |
 |:---:| --- |
-| Übersicht über Azure AD-Features für die Zugriffsverwaltung |[Einführung in die Verwaltung des Zugriffs auf Apps](active-directory-managing-access-to-apps.md)<br /><br />[Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](active-directory-manage-groups.md)<br /><br />[Verwenden von Gruppen zum Verwalten des Zugriffs auf SaaS-Anwendungen](active-directory-accessmanagement-group-saasapps.md) |
+| Übersicht über Azure AD-Features für die Zugriffsverwaltung |[Einführung in die Verwaltung des Zugriffs auf Apps](manage-apps/what-is-access-management.md)<br /><br />[Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](active-directory-manage-groups.md)<br /><br />[Verwenden von Gruppen zum Verwalten des Zugriffs auf SaaS-Anwendungen](active-directory-accessmanagement-group-saasapps.md) |
 | Aktivieren der Self-Service-Verwaltung von Apps und Gruppen |[Self-Service-Anwendungszugriff und delegierte Verwaltung mit Azure Active Directory](active-directory-self-service-application-access.md)<br /><br />[Self-Service-Gruppenverwaltung](active-directory-accessmanagement-self-service-group-management.md) |
 | Anleitungen zum Einrichten von Gruppen in Azure AD |[Verwalten von Gruppen in Azure Active Directory](active-directory-groups-create-azure-portal.md)<br /><br />[Verwalten von Besitzern einer Gruppe](active-directory-accessmanagement-managing-group-owners.md)<br /><br />[Verwenden der Gruppe „Alle Benutzer“](active-directory-accessmanagement-dedicated-groups.md) |
 | Verwenden dynamischer Gruppen zum automatischen Auffüllen der Gruppenmitgliedschaft mithilfe von attributbasierten Mitgliedschaftsregeln |[Verwenden von Attributen zum Erstellen erweiterter Regeln](active-directory-groups-dynamic-membership-azure-portal.md)<br /><br />[Problembehandlung bei dynamischen Mitgliedschaften in Gruppen](active-directory-accessmanagement-troubleshooting.md) |

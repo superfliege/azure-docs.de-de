@@ -1,6 +1,6 @@
 ### <a name="configure-a-dns-label-for-the-public-ip-address"></a>Konfigurieren einer DNS-Bezeichnung für die öffentliche IP-Adresse
 
-Um über das Internet eine Verbindung mit dem SQL Server-Datenbankmodul herzustellen, ziehen Sie die Konfiguration einer DNS-Bezeichnung für Ihre öffentliche IP-Adresse in Betracht. Sie können eine Verbindung über eine IP-Adresse herstellen, die DNS-Bezeichnung erstellt jedoch einen A-Datensatz, der einfacher zu identifizieren ist und die zugrunde liegende öffentliche IP-Adresse abstrahiert.
+Um über das Internet eine Verbindung mit der SQL Server-Datenbank-Engine herzustellen, ziehen Sie die Konfiguration einer DNS-Bezeichnung für Ihre öffentliche IP-Adresse in Betracht. Sie können eine Verbindung über eine IP-Adresse herstellen, die DNS-Bezeichnung erstellt jedoch einen A-Datensatz, der einfacher zu identifizieren ist und die zugrunde liegende öffentliche IP-Adresse abstrahiert.
 
 > [!NOTE]
 > DNS-Bezeichnungen sind nicht erforderlich, wenn Sie nur eine Verbindung mit der SQL Server-Instanz im gleichen virtuellen Netzwerk oder nur eine lokale Verbindung herstellen möchten.
@@ -19,11 +19,11 @@ Wählen Sie zum Erstellen einer DNS-Bezeichnung als Erstes im Portal die Option 
 
     ![DNS-Bezeichnung](./media/virtual-machines-sql-server-connection-steps/rm-dns-label.png)
 
-### <a name="connect-to-the-database-engine-from-another-computer"></a>Verbinden mit dem Datenbankmodul von einem anderen Computer aus
+### <a name="connect-to-the-database-engine-from-another-computer"></a>Verbindungsherstellung mit der Datenbank-Engine von einem anderen Computer aus
 
 1. Öffnen Sie SQL Server Management Studio (SSMS) auf einem mit dem Internet verbundenen Computer. Falls Sie SQL Server Management Studio nicht haben, können Sie die Suite [hier](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) herunterladen.
 
-1. Bearbeiten Sie im Dialogfeld **Mit Server verbinden** oder **Verbindung mit Datenbankmodul herstellen** den Wert **Servername**. Geben Sie die IP-Adresse oder den vollständigen DNS-Namen des virtuellen Computers ein (in der vorherigen Aufgabe bestimmt). Sie können auch ein Komma einfügen und den TCP-Port von SQL Server angeben. Beispiel: `mysqlvmlabel.eastus.cloudapp.azure.com,1433`.
+1. Bearbeiten Sie im Dialogfeld **Mit Server verbinden** oder **Verbindung mit Datenbank-Engine herstellen** den Wert **Servername**. Geben Sie die IP-Adresse oder den vollständigen DNS-Namen des virtuellen Computers ein (in der vorherigen Aufgabe bestimmt). Sie können auch ein Komma einfügen und den TCP-Port von SQL Server angeben. Beispiel: `mysqlvmlabel.eastus.cloudapp.azure.com,1433`.
 
 1. Wählen Sie im Feld **Authentifizierung** den Eintrag **SQL Server-Authentifizierung**.
 

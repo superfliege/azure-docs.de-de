@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/16/2018
+ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d707122f79b37dd6b979be09693011dead988156
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 18b66cb9c0690df7b95cb36438ba802cb7432af6
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211666"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918756"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Einrichten einer Notfallwiederherstellung für virtuelle Azure-Computer in einer sekundären Azure-Region
 
@@ -28,7 +28,7 @@ In diesem Tutorial wird erläutert, wie Sie die Notfallwiederherstellung in eine
 > * Einrichten des ausgehenden Zugriffs für VMs
 > * Aktivieren der Replikation für eine VM
 
-Die Azure-zu-Azure-Replikation befindet sich derzeit in der Vorschauphase.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie Folgendes:

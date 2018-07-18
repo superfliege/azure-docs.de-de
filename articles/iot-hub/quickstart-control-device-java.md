@@ -1,23 +1,21 @@
 ---
 title: 'Schnellstart: Steuern eines Geräts über Azure IoT Hub (Java) | Microsoft-Dokumentation'
 description: In dieser Schnellstartanleitung führen Sie zwei Java-Beispielanwendungen aus. Eine dieser Anwendungen ist eine Back-End-Anwendung, die mit Ihrem Hub verbundene Geräte remote steuern kann. Die andere Anwendung simuliert ein Gerät, das mit Ihrem Hub verbunden ist und remote gesteuert werden kann.
-services: iot-hub
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: ns
-ms.date: 04/30/2018
+ms.date: 06/22/2018
 ms.author: dobett
-ms.openlocfilehash: 569234e15c0f12de7cbf4ac6bd1c5617035ce0ab
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5da4248f0b0a72c3614b4c3e5ea042c4341f4e03
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38573499"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts (Java)
 
@@ -56,7 +54,7 @@ mvn --version
 
 Laden Sie das Java-Beispielprojekt von https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip herunter, und extrahieren Sie das ZIP-Archiv (falls nicht bereits erfolgt).
 
-## <a name="create-an-iot-hub"></a>Erstellen einer IoT Hub-Instanz
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
 
 Wenn Sie das vorherige Tutorial [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz](quickstart-send-telemetry-java.md) abgeschlossen haben, können Sie diesen Schritt überspringen.
 
@@ -72,10 +70,12 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
-    az iot hub device-identity create --hub-name {YourIoTHubName}--device-id MyJavaDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyJavaDevice
     ```
 
-1. Führen Sie den folgenden Befehl aus, um die _Geräteverbindungszeichenfolge_ für das soeben registrierte Gerät abzurufen:
+    Wenn Sie einen anderen Namen für Ihr Gerät auswählen, aktualisieren Sie den Gerätenamen in den Beispielanwendungen, bevor sie ausgeführt werden.
+
+2. Führen Sie den folgenden Befehl aus, um die _Geräteverbindungszeichenfolge_ für das soeben registrierte Gerät abzurufen:
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyJavaDevice --output table
@@ -97,25 +97,25 @@ Notieren Sie sich die Dienstverbindungszeichenfolge (`Hostname=...=`). Dieser We
 
 Die simulierte Geräteanwendung stellt eine Verbindung mit einem gerätespezifischen Endpunkt in Ihrer IoT Hub-Instanz her, sendet simulierte Telemetriedaten und lauscht auf Aufrufe direkter Methoden aus Ihrem Hub. In dieser Schnellstartanleitung weist der Aufruf einer direkten Methode aus dem Hub das Gerät an, das Intervall zu ändern, in dem es Telemetriedaten sendet. Das simulierte Gerät sendet eine Bestätigung an Ihren Hub, nachdem es die direkte Methode ausgeführt hat.
 
-1. Navigieren Sie in einem Terminalfenster zum Stammordner des Java-Beispielprojekts. Navigieren Sie anschließend zum Ordner **Quickstarts\simulated-device-2**.
+1. Navigieren Sie in einem Terminalfenster zum Stammordner des Java-Beispielprojekts. Navigieren Sie anschließend zum Ordner **iot-hub\Quickstarts\simulated-device-2**.
 
-1. Öffnen Sie die Datei **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** in einem Text-Editor Ihrer Wahl.
+2. Öffnen Sie die Datei **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** in einem Text-Editor Ihrer Wahl.
 
     Ersetzen Sie den Wert der Variablen `connString` durch die Geräteverbindungszeichenfolge, die sie sich zuvor notiert haben. Speichern Sie dann die Änderungen an der Datei **SimulatedDevice.java**.
 
-1. Führen Sie im Terminalfenster die folgenden Befehle aus, um die erforderlichen Bibliotheken zu installieren. Erstellen Sie dann die simulierte Geräteanwendung:
+3. Führen Sie im Terminalfenster die folgenden Befehle aus, um die erforderlichen Bibliotheken zu installieren. Erstellen Sie dann die simulierte Geräteanwendung:
 
     ```cmd/sh
     mvn clean package
     ```
 
-1. Führen Sie im Terminalfenster die folgenden Befehle aus, um die simulierte Geräteanwendung auszuführen:
+4. Führen Sie im Terminalfenster die folgenden Befehle aus, um die simulierte Geräteanwendung auszuführen:
 
     ```cmd/sh
     java -jar target/simulated-device-2-1.0.0-with-deps.jar
     ```
 
-    Der folgende Screenshot zeigt die Ausgabe, während die simulierte Geräteanwendung Telemetriedaten an Ihre IoT Hub-Instanz sendet:
+    Der folgende Screenshot zeigt die Ausgabe, während die Anwendung zur Simulation eines Geräts Telemetriedaten an Ihre IoT Hub-Instanz sendet:
 
     ![Ausführen des simulierten Geräts](media/quickstart-control-device-java/SimulatedDevice-1.png)
 
@@ -123,19 +123,19 @@ Die simulierte Geräteanwendung stellt eine Verbindung mit einem gerätespezifis
 
 Die Back-End-Anwendung stellt eine Verbindung mit einem dienstseitigen Endpunkt in Ihrer IoT Hub-Instanz her. Die Anwendung sendet über Ihre IoT Hub-Instanz Aufrufe direkter Methoden an ein Gerät und lauscht auf Bestätigungen. Eine IoT Hub-Back-End-Anwendung wird in der Regel in der Cloud ausgeführt.
 
-1. Navigieren Sie in einem anderen Terminalfenster zum Stammordner des Java-Beispielprojekts. Navigieren Sie dann zum Ordner **Quickstarts\back-end-application**.
+1. Navigieren Sie in einem anderen Terminalfenster zum Stammordner des Java-Beispielprojekts. Navigieren Sie anschließend zum Ordner **iot-hub\Quickstarts\back-end-application**.
 
-1. Öffnen Sie die Datei **src/main/java/com/microsoft/docs/iothub/samples/ReadDeviceToCloudMessages.java** in einem Text-Editor Ihrer Wahl.
+2. Öffnen Sie die Datei **src/main/java/com/microsoft/docs/iothub/samples/BackEndApplication.java** in einem Text-Editor Ihrer Wahl.
 
     Ersetzen Sie den Wert der Variablen `iotHubConnectionString` durch die Verbindungszeichenfolge für den Dienst, die Sie sich zuvor notiert haben. Speichern Sie dann Ihre Änderungen an der Datei **BackEndApplication.js**.
 
-1. Führen Sie im Terminalfenster die folgenden Befehle aus, um die erforderlichen Bibliotheken zu installieren. Erstellen Sie dann die Back-End-Anwendung:
+3. Führen Sie im Terminalfenster die folgenden Befehle aus, um die erforderlichen Bibliotheken zu installieren. Erstellen Sie dann die Back-End-Anwendung:
 
     ```cmd/sh
     mvn clean package
     ```
 
-1. Führen Sie im Terminalfenster die folgenden Befehle aus, um die Back-End-Anwendung auszuführen:
+4. Führen Sie im Terminalfenster die folgenden Befehle aus, um die Back-End-Anwendung auszuführen:
 
     ```cmd/sh
     java -jar target/back-end-application-1.0.0-with-deps.jar
@@ -151,9 +151,7 @@ Die Back-End-Anwendung stellt eine Verbindung mit einem dienstseitigen Endpunkt 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie mit den Tutorials fortfahren möchten, behalten Sie die Ressourcengruppe und die IoT Hub-Instanz bei, und verwenden Sie sie später erneut.
-
-Falls Sie die IoT Hub-Instanz nicht mehr benötigen, löschen Sie die Ressourcengruppe über das Portal. Wählen Sie hierzu die Ressourcengruppe mit Ihrer IoT Hub-Instanz aus, und klicken Sie auf **Löschen**.
+[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -162,4 +160,4 @@ In dieser Schnellstartanleitung haben Sie in einer Back-End-Anwendung eine direk
 Um zu erfahren, wie Sie Gerät-zu-Cloud-Nachrichten an verschiedene Ziele in der Cloud weiterleiten, fahren Sie mit dem nächsten Tutorial fort.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Weiterleiten von Telemetriedaten zur Verarbeitung an verschiedene Endpunkte](iot-hub-java-java-process-d2c.md)
+> [Tutorial: Weiterleiten von Telemetriedaten zur Verarbeitung an verschiedene Endpunkte](tutorial-routing.md)

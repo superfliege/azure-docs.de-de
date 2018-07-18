@@ -3,20 +3,22 @@ title: Verwenden benutzerdefinierter Rollen für Privileged Identity Management-
 description: Beschreibt, wie benutzerdefinierte Rollen für Azure-Ressourcen mit PIM verwendet werden.
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: protection
 ms.date: 03/30/2018
-ms.author: billmath
-ms.openlocfilehash: e3df34e761f17aa3c1949af390e57360d84a304f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: rolyon
+ms.openlocfilehash: f086d8038e6d27990c49749438ee05e3e39a5aec
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442908"
 ---
 # <a name="use-custom-roles-to-target-privileged-identity-management-settings"></a>Verwenden benutzerdefinierter Rollen für Privileged Identity Management-Einstellungen
 

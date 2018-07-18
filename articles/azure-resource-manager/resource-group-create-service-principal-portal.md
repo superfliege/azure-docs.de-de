@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: a8784a8e29e65d8abea566b5a2bf41a2ae6cadf0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7a1b6aa9afd26116253482a2e1a9c6a25bdf3c55
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441572"
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals
 
@@ -46,7 +47,7 @@ Um diesen Artikel abzuschließen, müssen Sie über ausreichende Berechtigungen 
 
    ![App-Registrierungen anzeigen](./media/resource-group-create-service-principal-portal/view-app-registrations.png)
 
-1. Wenn die Einstellung „App-Registrierungen“ auf **Nein** festgelegt ist, können nur [globale Administratoren](../active-directory/active-directory-assign-admin-roles-azure-portal.md) Apps registrieren. Überprüfen Sie, ob Ihr Konto ein Administrator für den Azure AD-Mandanten ist. Wählen Sie **Übersicht**, und sehen Sie sich Ihre Benutzerinformationen an. Gehen Sie wie folgt vor, wenn Ihrem Konto die Rolle „Benutzer“ zugewiesen wurde, die App-Registrierungseinstellung (aus dem vorherigen Schritt) aber auf Administratoren begrenzt ist: Bitten Sie Ihren Administrator, entweder Ihnen die Rolle „Globaler Administrator“ zuzuweisen oder Benutzern zu erlauben, Apps zu registrieren.
+1. Wenn die Einstellung „App-Registrierungen“ auf **Nein** festgelegt ist, können nur [globale Administratoren](../active-directory/users-groups-roles/directory-assign-admin-roles.md) Apps registrieren. Überprüfen Sie, ob Ihr Konto ein Administrator für den Azure AD-Mandanten ist. Wählen Sie **Übersicht**, und sehen Sie sich Ihre Benutzerinformationen an. Gehen Sie wie folgt vor, wenn Ihrem Konto die Rolle „Benutzer“ zugewiesen wurde, die App-Registrierungseinstellung (aus dem vorherigen Schritt) aber auf Administratoren begrenzt ist: Bitten Sie Ihren Administrator, entweder Ihnen die Rolle „Globaler Administrator“ zuzuweisen oder Benutzern zu erlauben, Apps zu registrieren.
 
    ![Benutzer suchen](./media/resource-group-create-service-principal-portal/view-user-info.png)
 

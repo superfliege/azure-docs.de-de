@@ -2,23 +2,25 @@
 title: Erste Schritte mit Azure Active Directory Domain Services | Microsoft-Dokumentation
 description: Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 05/23/2018
 ms.author: maheshu
-ms.openlocfilehash: 2a171490faf9804196c93d33c5ee74d22533c044
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d5b81a6d4bdda24208673e42757807aba60fea97
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36263974"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals
 
@@ -40,16 +42,19 @@ Der Assistent erstellt automatisch die administrative Gruppe in Ihrem Azure AD-V
 
 3. Wenn Sie fertig sind, klicken Sie auf **OK**, um zur Seite **Summary** (Zusammenfassung) des Assistenten zu gelangen.
 
-4. Überprüfen Sie die Konfigurationseinstellungen für die verwaltete Domäne auf der Seite **Summary** (Zusammenfassung) des Assistenten. Sie können zu jedem Schritt des Assistenten zurückgehen, um eventuell notwendige Änderungen vorzunehmen. Wenn Sie fertig sind, klicken Sie auf **OK**, um die neue verwaltete Domäne zu erstellen.
+
+## <a name="deploy-your-managed-domain"></a>Bereitstellen Ihrer verwalteten Domäne
+
+1. Überprüfen Sie die Konfigurationseinstellungen für die verwaltete Domäne auf der Seite **Summary** (Zusammenfassung) des Assistenten. Sie können zu jedem Schritt des Assistenten zurückgehen, um eventuell notwendige Änderungen vorzunehmen. Wenn Sie fertig sind, klicken Sie auf **OK**, um die neue verwaltete Domäne zu erstellen.
 
     ![Zusammenfassung](./media/getting-started/domain-services-blade-summary.png)
 
-5. Sie sehen eine Benachrichtigung, die den Status Ihrer Bereitstellung über Azure AD Domain Services anzeigt. Klicken Sie auf die Benachrichtigung, um den detaillierten Status Ihrer Bereitstellung anzuzeigen.
+2. Sie sehen eine Benachrichtigung, die den Status Ihrer Bereitstellung über Azure AD Domain Services anzeigt. Klicken Sie auf die Benachrichtigung, um den detaillierten Status Ihrer Bereitstellung anzuzeigen.
 
     ![Benachrichtigung: Die Bereitstellung wird ausgeführt](./media/getting-started/domain-services-blade-deployment-in-progress.png)
 
 
-## <a name="provision-your-managed-domain"></a>Bereitstellen Ihrer verwalteten Domäne
+## <a name="check-the-deployment-status-of-your-managed-domain"></a>Überprüfen des Bereitstellungsstatus Ihrer verwalteten Domäne
 Der Prozess der Bereitstellung Ihrer verwalteten Domänen kann bis zu einer Stunde dauern.
 
 1. Während Ihre Bereitstellung ausgeführt wird, können Sie im Suchfeld **Search resources** (Ressourcen suchen) nach „Domänendienste“ suchen. Wählen Sie aus dem Suchergebnis **Azure AD Domain Services** aus. Das Blatt **Azure AD Domain Services** listet die verwaltete Domäne auf, die gerade bereitgestellt wird.
@@ -67,6 +72,9 @@ Der Prozess der Bereitstellung Ihrer verwalteten Domänen kann bis zu einer Stun
 4. Wenn die verwaltete Domäne vollständig bereitgestellt ist, zeigt die Registerkarte **Overview** (Übersicht) den Domänenstatus als **Running** (Wird ausgeführt) an.
 
     ![Domänendienste – Registerkarte „Übersicht“ nach der vollständigen Bereitstellung](./media/getting-started/domain-services-provisioned.png)
+    >[!NOTE]
+    >Während des Bereitstellungsprozesses erstellt Azure AD Domain Services Unternehmensanwendungen mit den Namen „Domain Controller Services“ und „AzureActiveDirectoryDomainControllerServices“ in Ihrem Verzeichnis. Diese Unternehmensanwendungen werden zur Unterstützung Ihrer verwalteten Domäne benötigt. Diese dürfen unter keinen Umständen gelöscht werden.
+    >
 
 5. Auf der Registerkarte **Properties** (Eigenschaften) sehen Sie zwei IP-Adressen, auf denen Domänencontroller für Ihr virtuelles Netzwerk verfügbar sind.
 

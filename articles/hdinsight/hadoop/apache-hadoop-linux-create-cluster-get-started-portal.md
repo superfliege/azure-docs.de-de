@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: nitinme
-ms.openlocfilehash: 69c3ebf5a51151cd8e77c637ddd57eb18c8a9d15
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: dd803fed4bc6a25904b2ea00a5b21af606ad7153
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097895"
 ---
 # <a name="quickstart-get-started-with-hadoop-and-hive-in-azure-hdinsight-using-the-azure-portal"></a>Schnellstart: Erste Schritte mit Hadoop und Hive in Azure HDInsight im Azure-Portal
 
@@ -30,7 +31,7 @@ Zurzeit stehen in HDInsight [sieben verschiedene Clustertypen](./apache-hadoop-i
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-## <a name="create-a-hadoop-cluster"></a>Erstellen eines Hadoop-Cluster
+## <a name="create-a-hadoop-cluster"></a>Erstellen eines Hadoop-Clusters
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Hadoop-Cluster in HDInsight. 
 
@@ -55,7 +56,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Hadoop-Cluster in HDInsi
     |**SSH-Benutzername** | Der Standardbenutzername lautet **sshuser**.  Sie können einen anderen SSH-Benutzernamen angeben. |
     | **Dasselbe Kennwort wie für die Clusteranmeldung verwenden** | Aktivieren Sie dieses Kontrollkästchen, um das gleiche Kennwort für den SSH-Benutzer zu verwenden, das Sie für den Clusteranmeldebenutzer angegeben haben.|
     |**Ressourcengruppe**     | Erstellen Sie eine Ressourcengruppe, oder wählen Sie eine vorhandene Ressourcengruppe aus.  Bei einer Ressourcengruppe handelt es sich um einen Container mit Azure-Komponenten.  In diesem Fall enthält die Ressourcengruppe den HDInsight-Cluster und das abhängige Azure Storage-Konto. |
-    |**Standort**     | Wählen Sie den Azure-Standort aus, an dem Sie Ihren Cluster erstellen möchten.  Je näher der Standort, desto besser die Leistung. |
+    |**Location**     | Wählen Sie den Azure-Speicherort aus, wo Sie Ihren Cluster erstellen möchten.  Je näher der Standort, desto besser die Leistung. |
         
 3. Wählen Sie **Clustertyp** aus, und geben Sie die Informationen wie im folgenden Screenshot gezeigt ein:
 
@@ -65,7 +66,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Hadoop-Cluster in HDInsi
     
     |Eigenschaft  |BESCHREIBUNG  |
     |---------|---------|
-    |**Clustertyp**     | Geben Sie einen Namen für den Hadoop-Cluster ein. Da für alle Cluster in HDInsight gemeinsam derselbe DNS-Namespace genutzt wird, muss dieser Name eindeutig sein. Der Name kann aus bis zu 59 Zeichen mit Buchstaben, Zahlen und Bindestrichen bestehen. Das erste und das letzte Zeichen des Namens dürfen keine Bindestriche sein. |
+    |**Clustertyp**     | Wählen Sie **Hadoop** aus. |
     |**Betriebssystem**     |  Wählen Sie Ihr Azure-Abonnement. |
     |**Version**     | Wählen Sie **Hadoop 2.7.3 (HDI 3.6)** aus.|
 
@@ -79,7 +80,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Hadoop-Cluster in HDInsi
     
     |Eigenschaft  |BESCHREIBUNG  |
     |---------|---------|
-    |**Primärer Speichertyp**     | Wählen Sie für diesen Artikel **Azure-Speicher** aus, um Azure Storage Blob als Standardspeicherkonto zu verwenden. Sie können auch Azure Data Lake Store als Standardspeicher verwenden. |
+    |**Primärer Speichertyp**     | Wählen Sie für diesen Artikel **Azure-Speicher** aus, um Azure Storage Blob als Standardspeicherkonto zu verwenden. Sie können auch Azure Data Lake Storage als Standardspeicher verwenden. |
     |**Auswahlmethode**     |  Wählen Sie für diesen Artikel **Meine Abonnements** aus, um ein Speicherkonto aus Ihrem Azure-Abonnement zu verwenden. Um ein Speicherkonto aus einem anderen Abonnement zu verwenden, wählen Sie **Zugriffsschlüssel** aus, und geben Sie den Zugriffsschlüssel für das entsprechende Konto an. |
     |**Erstellen eines neuen Speicherkontos**     | Geben Sie einen Namen für das Speicherkonto an.|
 
@@ -139,7 +140,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Hadoop-Cluster in HDInsi
    
         SELECT * FROM hivesampletable;
    
-7. Sie können die Ergebnisse der Abfrage auch speichern. Klicken Sie rechts auf die Menüschaltfläche, und geben Sie an, ob Sie die Ergebnisse als CSV-Datei herunterladen oder in dem Speicherkonto speichern möchten, das dem Cluster zugeordnet ist.
+7. Sie können die Ergebnisse der Abfrage auch speichern. Wählen Sie die Menüschaltfläche rechts aus, und geben Sie an, ob Sie die Ergebnisse als CSV-Datei herunterladen oder in dem Speicherkonto speichern möchten, das dem Cluster zugeordnet ist.
 
     ![Speichern der Ergebnisse einer Hive-Abfrage](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-hive-view-save-results.png "Speichern der Ergebnisse einer Hive-Abfrage")
 
@@ -176,6 +177,7 @@ In diesem Tutorial haben Sie erfahren, wie Sie mithilfe einer Resource Manager-V
 Wenn Sie mit eigenen Daten arbeiten und mehr darüber wissen möchten, wie Daten in HDInsight gespeichert oder verwendet werden, finden Sie weitere Informationen in folgenden Artikeln:
 
 * Informationen zur Verwendung von Azure Storage durch HDInsight finden Sie unter [Verwenden von Azure Storage mit HDInsight](../hdinsight-hadoop-use-blob-storage.md).
+* Informationen zur Erstellung eines HDInsight-Clusters mit Data Lake Storage finden Sie unter [Schnellstart: Einrichten von Hadoop-Clustern in HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 * Informationen zum Hochladen von Daten in HDInsight finden Sie im Artikel zum [Hochladen von Daten für Hadoop-Aufträge in HDInsight](../hdinsight-upload-data.md).
 
 Weitere Informationen zur Datenanalyse mit HDInsight finden Sie in den folgenden Artikeln:

@@ -1,6 +1,6 @@
 ---
 title: Erneutes Bereitstellen des Azure Stack Development Kits (ASDK) | Microsoft-Dokumentation
-description: In diesem Tutorial erfahren Sie, wie Sie das ASDK neu installieren.
+description: In diesem Artikel erfahren Sie, wie Sie das ASDK neu installieren.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -11,28 +11,23 @@ ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
-ms.custom: mvc
-ms.date: 03/16/2018
+ms.topic: article
+ms.custom: ''
+ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: fcf1abfe574dd3067f00df7c5ff2632b9cc2ec4f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 91b8a936215e906e6e5b7e6a4fcd0dc88bef6009
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850319"
 ---
-# <a name="tutorial-redeploy-the-asdk"></a>Tutorial: Erneutes Bereitstellen des ASDKs
-In diesem Tutorial erfahren Sie, wie Sie das Azure Stack Development Kit (ASDK) in einer produktionsfremden Umgebung neu bereitstellen. Da für das ASDK keine Upgrades unterstützt werden, müssen Sie es vollständig neu bereitstellen, um zu einer neueren Version zu wechseln. Darüber hinaus können Sie das ASDK jederzeit neu bereitstellen, wenn Sie wieder von vorn beginnen möchten.
+# <a name="redeploy-the-asdk"></a>Erneutes Bereitstellen des ASDK
+In diesem Artikel erfahren Sie, wie Sie das Azure Stack Development Kit (ASDK) in einer produktionsfremden Umgebung neu bereitstellen. Da für das ASDK keine Upgrades unterstützt werden, müssen Sie es vollständig neu bereitstellen, um zu einer neueren Version zu wechseln. Darüber hinaus können Sie das ASDK jederzeit neu bereitstellen, wenn Sie wieder von vorn beginnen möchten.
 
 > [!IMPORTANT]
 > Für das ASDK kann kein Upgrade auf eine neue Version durchgeführt werden. Wenn Sie eine neuere Version von Azure Stack evaluieren möchten, müssen Sie das ASDK auf dem Development Kit-Hostcomputer neu bereitstellen.
-
-In diesem Tutorial lernen Sie Folgendes:
-
-> [!div class="checklist"]
-> * Entfernen der Azure-Registrierung 
-> * Erneutes Bereitstellen des ASDK
 
 ## <a name="remove-azure-registration"></a>Entfernen der Azure-Registrierung 
 Wenn Sie Ihre ASDK-Installation bei Azure registriert haben, müssen Sie die Registrierungsressource entfernen, bevor Sie das ASDK bereitstellen. Registrieren Sie das ASDK erneut, um die Marketplace-Syndikation zu aktivieren, wenn Sie das ASDK neu bereitstellen. Falls Sie das ASDK nicht bei Ihrem Azure-Abonnement registriert haben, können Sie diesen Abschnitt überspringen.
@@ -55,7 +50,7 @@ Verwenden Sie das Cmdlet **Remove-AzsRegistration**, um die Registrierungsressou
 
   # Unregister Azure Stack
   Remove-AzsRegistration `
-      -CloudAdminCredential $YourCloudAdminCredential `
+      -PrivilegedEndpointCredential $CloudAdminCred `
       -PrivilegedEndpoint AzS-ERCS01
 
   # Remove the Azure Stack resource group
@@ -71,7 +66,7 @@ Verwenden Sie das Cmdlet **Remove-AzsRegistration**, um die Registrierungsressou
 
 Azure Stack sollte nun nicht mehr bei Ihrem Azure-Abonnement registriert sein. Und auch die Ressourcengruppe „azurestack“, die im Zuge der Registrierung des ASDKs bei Azure erstellt wurde, sollte nicht mehr vorhanden sein.
 
-## <a name="redeploy-the-asdk"></a>Erneutes Bereitstellen des ASDK
+## <a name="deploy-the-asdk"></a>Bereitstellen des ASDK
 Um Azure Stack erneut bereitzustellen, müssen Sie wie unten beschrieben noch einmal von Vorne anfangen. Welche Schritte ausgeführt werden müssen, hängt davon ab, ob Sie das ASDK mithilfe des Azure Stack-Installationsskripts (asdk-installer.ps1) installiert haben.
 
 ### <a name="redeploy-the-asdk-using-the-installer-script"></a>Erneutes Bereitstellen des ASDKs mithilfe des Installationsskripts
@@ -85,7 +80,7 @@ Um Azure Stack erneut bereitzustellen, müssen Sie wie unten beschrieben noch ei
 
 3. Melden Sie sich nach dem Neustart des Development Kit-Hosts beim Basisbetriebssystem als lokaler Administrator an. Suchen und löschen Sie die Datei **C:\CloudBuilder.vhdx**, die in der vorherigen Bereitstellung verwendet wurde. 
 
-4. Wiederholen Sie die Schritte, die Sie beim erstmaligen [Bereitstellen des ASDKs](asdk-deploy.md) ausgeführt haben.
+4. Wiederholen Sie die Schritte, die Sie beim erstmaligen [Bereitstellen des ASDKs](asdk-install.md) ausgeführt haben.
 
 ### <a name="redeploy-the-asdk-without-using-the-installer"></a>Erneutes Bereitstellen des ASDKs ohne Installationsprogramm
 Wenn Sie das ASDK nicht mithilfe des Skripts „asdk-installer.ps1“ installiert haben, müssen Sie den Development Kit-Hostcomputer manuell neu konfigurieren, bevor Sie das ASDK neu bereitstellen.
@@ -100,16 +95,7 @@ Wenn Sie das ASDK nicht mithilfe des Skripts „asdk-installer.ps1“ installier
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Entfernen der Azure-Registrierung 
-> * Erneutes Bereitstellen des ASDK
-
-Im nächsten Tutorial erfahren Sie, wie Sie ein Azure Stack-Marketplace-Element hinzufügen.
-
-> [!div class="nextstepaction"]
-> [Hinzufügen eines Azure Stack-Marketplace-Elements](asdk-marketplace-item.md)
+[Konfigurationsaufgaben nach der Installation des ASDK](asdk-post-deploy.md)
 
 
 

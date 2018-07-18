@@ -3,22 +3,20 @@ title: 'Azure Cosmos DB: SQL-API – Tutorial zu den ersten Schritten | Microsof
 description: In diesem Tutorial werden eine Onlinedatenbank und eine C#-Konsolenanwendung mit der SQL-API erstellt.
 keywords: nosql tutorial, online database, c# console application
 services: cosmos-db
-documentationcenter: .net
-author: AndrewHoh
+author: SnehaGunda
 manager: kfile
-ms.assetid: bf08e031-718a-4a2a-89d6-91e12ff8797d
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/16/2017
-ms.author: anhoh
-ms.openlocfilehash: 9de183ccd60dca0b8c67bc3e17136212b7132439
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: sngun
+ms.openlocfilehash: 461279b5deb992be998e449f8f1ed062e91aae9b
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38629460"
 ---
 # <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Azure Cosmos DB: SQL-API – Tutorial zu den ersten Schritten
 > [!div class="op_single_selector"]
@@ -26,9 +24,7 @@ ms.lasthandoff: 04/06/2018
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
 > * [Node.js für MongoDB](mongodb-samples.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
-> * [Java](sql-api-java-get-started.md)
-> * [C++](sql-api-cpp-get-started.md)
->  
+> * [Java](sql-api-java-get-started.md) 
 > 
 
 Willkommen zum Tutorial zu den ersten Schritten mit der SQL-API von Azure Cosmos DB. Im Rahmen dieses Tutorials erstellen Sie eine Konsolenanwendung, mit der Azure Cosmos DB-Ressourcen erstellt und abgefragt werden können.

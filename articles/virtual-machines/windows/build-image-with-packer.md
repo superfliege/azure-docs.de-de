@@ -3,7 +3,7 @@ title: Erstellen von Windows-Azure-VM-Images mit Packer | Microsoft-Dokumentatio
 description: Erfahren Sie, wie Sie mit Packer Images von virtuellen Windows-Computern in Azure erstellen
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/29/2018
-ms.author: iainfou
-ms.openlocfilehash: e06db46d5e1d7862f7b47b75e38d0b10df628f48
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.author: cynthn
+ms.openlocfilehash: 5f19a6cb356332e95f96484953f1be3df006dd09
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778561"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931921"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Erstellen von Images von virtuellen Windows-Computern in Azure mit Packer
 Jeder virtuelle Computer (VM) in Azure wird anhand eines Images erstellt, das die Windows-Distribution und -Betriebssystemversion bestimmt. Images können vorinstallierte Anwendungen und Konfigurationen enthalten. Azure Marketplace enthält viele Images von Erst- und Drittanbietern für die gängigsten Betriebssysteme und Anwendungsumgebungen. Sie können jedoch auch entsprechend Ihren Anforderungen eigene benutzerdefinierte Images erstellen. In diesem Artikel wird erläutert, wie Sie mit dem Open-Source-Tool [Packer](https://www.packer.io/) benutzerdefinierte Images in Azure definieren und erstellen.
@@ -42,7 +42,7 @@ Packer authentifiziert sich bei Azure mithilfe eines Dienstprinzipals. Ein Azure
 Erstellen Sie mit [New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) einen Dienstprinzipal, und weisen Sie mit [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) dem Dienstprinzipal Berechtigungen zum Erstellen und Verwalten von Ressourcen zu:
 
 ```powershell
-$sp = New-AzureRmADServicePrincipal -DisplayName "Azure Packer" `
+$sp = New-AzureRmADServicePrincipal -DisplayName "AzurePacker" `
     -Password (ConvertTo-SecureString "P@ssw0rd!" -AsPlainText -Force)
 Sleep 20
 New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
@@ -94,8 +94,8 @@ Erstellen Sie eine Datei namens *windows.json*, und fügen Sie den folgenden Inh
     "image_sku": "2016-Datacenter",
 
     "communicator": "winrm",
-    "winrm_use_ssl": "true",
-    "winrm_insecure": "true",
+    "winrm_use_ssl": true,
+    "winrm_insecure": true,
     "winrm_timeout": "3m",
     "winrm_username": "packer",
 

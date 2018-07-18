@@ -1,26 +1,20 @@
 ---
 title: Erste Schritte mit der Modulidentität und dem Modulzwilling von Azure IoT Hub (Portal und .NET) | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie mit dem Portal und .NET eine Modulidentität erstellen und den Modulzwilling aktualisieren.
-services: iot-hub
-documentationcenter: .net
-author: chrissie926
+author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: f40604ff-8fd6-4969-9e99-8574fbcf036c
 ms.service: iot-hub
-ms.devlang: dotnet
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: csharp
+ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: dobett
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30a53620a640b0122286a6ac69c0f98cd0bbde40
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 4b4b193751606883548e25e731dcece4ae72ba7b
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361687"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38666890"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub unter Verwendung des Portals und eines .NET-Geräts
 
@@ -37,7 +31,7 @@ In diesem Tutorial lernen Sie Folgendes:
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Visual Studio 2015 oder Visual Studio 2017
-* Ein aktives Azure-Konto. (Wenn Sie noch kein Konto besitzen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.)
+* Ein aktives Azure-Konto. (Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.)
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
@@ -74,7 +68,7 @@ Sie haben die Modulidentität in Ihrer IoT Hub-Instanz erstellt. Testen wir nun 
 
     ![Erstellen eines Visual Studio-Projekts][13]
 
-2. **Installieren des Azure IoT Hub-.NET-Geräte-SDKs V1.16.0-preview-005:** Modulidentität und Modulzwilling sind als öffentliche Vorschauversion verfügbar. Sie sind nur in der Vorabversion der IoT Hub-Geräte-SDKs verfügbar. Navigieren Sie in Visual Studio zu „Tools“ > „NuGet-Paket-Manager“ > „NuGet-Pakete für Projektmappe verwalten“. Suchen Sie nach „Microsoft.Azure.Devices.Client“. Vergewissern Sie sich, dass das Kontrollkästchen „Vorabversion einbeziehen“ aktiviert ist. Wählen Sie Version „V1.16.0-preview-005“ aus, und installieren Sie sie. Sie haben nun Zugriff auf alle Modulfeatures. 
+2. **Installieren des aktuellsten Azure IoT Hub-.NET-Geräte-SDKs:** Modulidentität und Modulzwilling befinden sich in der Public Preview. Sie sind nur in der Vorabversion der IoT Hub-Geräte-SDKs verfügbar. Navigieren Sie in Visual Studio zu „Tools“ > „NuGet-Paket-Manager“ > „NuGet-Pakete für Projektmappe verwalten“. Suchen Sie nach „Microsoft.Azure.Devices.Client“. Vergewissern Sie sich, dass das Kontrollkästchen „Vorabversion einbeziehen“ aktiviert ist. Wählen Sie die neueste Version aus, und installieren Sie sie. Sie haben nun Zugriff auf alle Modulfeatures. 
 
     ![Installieren des Azure IoT Hub-.NET-Dienst-SDKs V1.16.0-preview-005][14]
 
@@ -149,18 +143,17 @@ Sie haben die Modulidentität in Ihrer IoT Hub-Instanz erstellt. Testen wir nun 
     ```
 
     In diesem Codebeispiel wird gezeigt, wie Sie den Modulzwilling abrufen und die gemeldeten Eigenschaften mit dem AMQP-Protokoll aktualisieren. In der öffentlichen Vorschau wird nur AMQP für Modulzwillingsvorgänge unterstützt.
-    ```
 
-## Run the apps
+## <a name="run-the-apps"></a>Ausführen der Apps
 
-You are now ready to run the apps. In Visual Studio, in Solution Explorer, right-click your solution, and then click **Set StartUp projects**. Select **Multiple startup projects**, and then select **Start** as the action for the console app. And then press F5 to start both apps running. 
+Sie können die Apps nun ausführen. Klicken Sie in Visual Studio im Projektmappen-Explorer mit der rechten Maustaste auf Ihre Projektmappe, und klicken Sie dann auf **Startprojekte festlegen**. Wählen Sie **Mehrere Startprojekte** und dann **Starten** als Aktion für die Konsolen-App aus. Drücken Sie anschließend F5, um die Ausführung der beiden Apps zu starten. 
 
-## Next steps
+## <a name="next-steps"></a>Nächste Schritte
 
-To continue getting started with IoT Hub and to explore other IoT scenarios, see:
+Informationen zu den weiteren ersten Schritten mit IoT Hub und zum Kennenlernen anderer IoT-Szenarien finden Sie in den folgenden Artikeln:
 
-* [Get started with IoT Hub module identity and module twin using .NET backup and .NET device][lnk-csharp-csharp-getstarted]
-* [Getting started with IoT Edge][lnk-iot-edge]
+* [Get started with IoT Hub module identity and module twin using .NET back end and .NET device][lnk-csharp-csharp-getstarted] (Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub unter Verwendung von .NET-Back-End und .NET-Gerät)
+* [Erste Schritte mit IoT Edge][lnk-iot-edge]
 
 
 <!-- Images. -->

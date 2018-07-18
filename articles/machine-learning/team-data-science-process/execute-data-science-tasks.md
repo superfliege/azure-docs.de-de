@@ -7,17 +7,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: deguhath
-ms.openlocfilehash: 5c617c60ff51d0b1e7717b28b0372efe63c1ee18
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: ed402f9730136fdb8a4d07dd291599c567637600
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34838380"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Ausführen von Data Science-Aufgaben: Durchsuchen, Modellieren und Bereitstellen
 
@@ -92,14 +94,17 @@ Es gibt verschiedene Ansätze und Plattformen für das Einführen von Modellen i
 - [Bereitstellung eines Modells in SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
+> [!NOTE]
+> Vor der Bereitstellung muss sichergestellt werden, dass bei der Bewertung durch das Modell ausreichend geringe Latenzen für eine Verwendung in der Produktion auftreten.
 >
->
->Hinweis: Vor der Bereitstellung muss sichergestellt werden, dass bei der Bewertung durch das Modell ausreichend geringe Latenzen für eine Verwendung in der Produktion auftreten.
 >
 
 Weitere Beispiele, in denen sämtliche Schritte im Prozess für **bestimmte Szenarien** gezeigt werden, sind in Form von exemplarischen Vorgehensweisen verfügbar. Sie sind im Artikel [Exemplarische Vorgehensweisen](walkthroughs.md) aufgeführt und mit Miniaturansichtsbeschreibungen verlinkt. Sie zeigen, wie Cloud- und lokale Tools und Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden.
 
-Hinweis: Informationen zur Bereitstellung mit Azure Machine Learning Studio finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts](../studio/publish-a-machine-learning-web-service.md).
+> [!NOTE]
+> Informationen zur Bereitstellung mit Azure Machine Learning Studio finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts](../studio/publish-a-machine-learning-web-service.md).
+>
+>
 
 ### <a name="ab-testing"></a>A/B-Tests
 Wenn sich mehrere Modelle in der Produktion befinden, kann es nützlich sein, [A/B-Tests](https://en.wikipedia.org/wiki/A/B_testing) zum Vergleichen der Leistung der Modelle durchzuführen. 
@@ -108,6 +113,7 @@ Wenn sich mehrere Modelle in der Produktion befinden, kann es nützlich sein, [A
 ## <a name="next-steps"></a>Nächste Schritte
 
 In [Nachverfolgen des Fortschritts von Data Science-Projekten](track-progress.md) wird gezeigt, wie ein Datenanalyst den Status eines Data Science-Projekts nachverfolgen kann.
- 
+
+Unter [Modellvorgang und CI-CD](ci-cd-flask.md) wird gezeigt, wie CI/CD mit entwickelten Modellen ausgeführt werden kann.
 
 

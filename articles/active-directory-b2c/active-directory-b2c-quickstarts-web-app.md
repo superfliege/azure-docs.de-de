@@ -4,17 +4,18 @@ description: Führen Sie eine Beispiel-ASP.NET-Web-App aus, bei der die Kontoanm
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 2/13/2018
 ms.author: davidmu
-ms.openlocfilehash: 4342e8c58c9bb20580d8428a6c9869f9a3b893cb
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: e52674014a888913e288f7b0749d9b2e05bedf45
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292785"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>Schnellstart: Einrichten der Anmeldung für eine ASP.NET-Anwendung unter Verwendung von Azure Active Directory B2C
 
@@ -123,4 +124,4 @@ In diesem Schnellstart haben Sie eine Azure AD B2C-fähige ASP.NET-Beispiel-App 
 Fahren Sie mit dem Tutorial fort, um zu erfahren, wie Sie die ASP.NET-Beispiel-App so konfigurieren, dass Ihr eigener Azure AD B2C-Mandant verwendet wird.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Authentifizieren von Benutzern mit Azure Active Directory B2C in einer ASP.NET-Web-App](active-directory-b2c-tutorials-web-app.md)
+> [Erstellen eines Azure Active Directory B2C-Mandanten im Azure-Portal](tutorial-create-tenant.md)

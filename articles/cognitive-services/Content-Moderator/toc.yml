@@ -1,0 +1,133 @@
+- name: Content Moderator-Dokumentation
+- name: Übersicht
+  items:
+    - name: Was ist Content Moderator?
+      href: overview.md
+- name: Beispiele
+  items:
+    - name: .NET SDK-Beispiele
+      href: samples-dotnet.md
+    - name: 'REST-API-Beispiele in C#'
+      href: samples-rest.md
+- name: Konzepte
+  items:
+    - name: Bildmoderation
+      href: image-moderation-api.md
+    - name: Textmoderation
+      href: text-moderation-api.md
+    - name: Textmoderation – Sprachen
+      href: Text-Moderation-API-Languages.md
+    - name: Videomoderation
+      href: video-moderation-human-review.md
+    - name: Aufträge und Überprüfungen
+      href: review-api.md
+    - name: Workflows
+      href: workflow-api.md
+- name: Anleitungen
+  items:
+    - name: Testen von Content Moderator
+      items:
+        - name: Erste Schritte mit Content Moderator
+          href: quick-start.md
+        - name: Moderations-APIs
+          items:
+            - name: Hilfsbibliothek – .NET
+              href: content-moderator-helper-quickstart-dotnet.md
+            - name: Bilder – API-Konsole
+              href: try-image-api.md
+            - name: Bilder – .NET
+              href: image-moderation-quickstart-dotnet.md
+            - name: Benutzerdefinierte Bilder – API-Konsole
+              href: try-image-list-api.md
+            - name: Benutzerdefinierte Bilder – .NET
+              href: image-lists-quickstart-dotnet.md
+            - name: Text – API-Konsole
+              href: try-text-api.md
+            - name: Text – .NET
+              href: text-moderation-quickstart-dotnet.md
+            - name: Benutzerdefinierte Begriffe – API-Konsole
+              href: try-terms-list-api.md
+            - name: Benutzerdefinierte Begriffe – .NET
+              href: term-lists-quickstart-dotnet.md
+            - name: Videos – .NET
+              href: video-moderation-api.md
+        - name: Überprüfen von APIs
+          items:
+            - name: Aufträge – API-Konsole
+              href: try-review-api-job.md
+            - name: Aufträge – .NET
+              href: moderation-jobs-quickstart-dotnet.md
+            - name: Überprüfungen – API-Konsole
+              href: try-review-api-review.md
+            - name: Überprüfungen – .NET
+              href: moderation-reviews-quickstart-dotnet.md
+            - name: Videoüberprüfungen – .NET
+              href: video-reviews-quickstart-dotnet.md
+            - name: Videotranskript-Überprüfungen – .NET
+              href: video-transcript-reviews-quickstart-dotnet.md
+            - name: Workflows – API-Konsole
+              href: try-review-api-workflow.md
+    - name: Erste Content Moderator-Apps
+      items:
+        - name: Facebook-Inhaltsmoderation
+          href: facebook-post-moderation.md
+        - name: E-Commerce-Bildmoderation
+          href: ecommerce-retail-catalog-moderation.md
+        - name: Video- und Transkriptmoderation
+          href: video-transcript-moderation-review-tutorial-dotnet.md
+    - name: Überprüfungstool
+      items:
+        - name: Human in the Loop
+          href: Review-Tool-User-Guide/human-in-the-loop.md
+        - name: Verwenden von Einstellungen
+          href: Review-Tool-User-Guide/Configure.md
+        - name: Verwalten des Teams
+          href: Review-Tool-User-Guide/SubTeams.md
+        - name: Verwenden von Tags
+          href: Review-Tool-User-Guide/Tags.md
+        - name: Überprüfen von Bildern
+          href: Review-Tool-User-Guide/Review-Moderated-Images.md
+        - name: Überprüfen von Text
+          href: Review-Tool-User-Guide/Text-Reviews.md
+        - name: Verwalten von Anmeldeinformationen
+          href: Review-Tool-User-Guide/Credentials.md
+        - name: Verwenden von Connectors
+          href: Review-Tool-User-Guide/Connectors.md
+        - name: Verwenden von Workflows
+          href: Review-Tool-User-Guide/Workflows.md
+        - name: Anzeigen des Dashboards
+          href: Review-Tool-User-Guide/View-Dashboard.md
+- name: Verweis
+  items:
+    - name: Content Moderator-API
+      href: api-reference.md
+    - name: SDKs
+      items:
+        - name: Java
+          href: 'https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-cognitiveservices-contentmoderator%22'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/azure-cognitiveservices-contentmoderator/?view=azure-node-latest'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python'
+        - name: .NET
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator'
+- name: angeben
+  items:
+    - name: Häufig gestellte Fragen
+      href: FAQs.md
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator'
+    - name: Exportieren oder Löschen von Kontodaten
+      href: ./export-delete-data.md
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/559960-content-moderator'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: Wissensdatenbank
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/132073-content-moderator'
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
+    - name: On-Demand-Webinar
+      href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'

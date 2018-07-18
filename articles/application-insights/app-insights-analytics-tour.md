@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: b57683f5b0634c27e8604c26496a3421ae386439
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 8295abfae8d82a7c7762c6b27a8bac7487f6afff
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335280"
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Einführung in Analytics in Application Insights
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Log Analytics-Abfragesprache beschrieben.
@@ -179,7 +180,7 @@ Weitere Beispiele:
 
 
 ## <a name="projecthttpsdocsloganalyticsiodocslanguage-referencetabular-operatorsproject-operator-select-rename-and-compute-columns"></a>[project](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator): Auswählen, Umbenennen und Berechnen von Spalten
-Verwenden Sie [`project`](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html), um nur die gewünschten Spalten auszuwählen:
+Verwenden Sie [`project`](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator), um nur die gewünschten Spalten auszuwählen:
 
 ```AIQL
 

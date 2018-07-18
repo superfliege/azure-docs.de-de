@@ -1,11 +1,11 @@
 ---
-title: "Problembehandlung und Überwachung von SAP HANA in Azure (große Instanzen) | Microsoft-Dokumentation"
-description: "Informationen zu Problembehandlung und Überwachung von SAP HANA in Azure (große Instanzen)."
+title: Problembehandlung und Überwachung von SAP HANA in Azure (große Instanzen) | Microsoft-Dokumentation
+description: Informationen zu Problembehandlung und Überwachung von SAP HANA in Azure (große Instanzen).
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: RicksterCDN
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,12 @@ ms.workload: infrastructure
 ms.date: 10/31/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5583f3d1949614dbba4d2f91d72e4ac6b4d03d1c
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 41fbeb848d7d97e5ee41a2221b69cc88380dc1e1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657195"
 ---
 # <a name="how-to-troubleshoot-and-monitor-sap-hana-large-instances-on-azure"></a>Problembehandlung und Überwachung von SAP HANA in Azure (große Instanzen)
 
@@ -107,7 +108,7 @@ Eine der wichtigsten Überprüfungen für SAP HANA unter Linux ist, ob Transpare
 
 Die folgende Linux-Befehl sollte nichts zurückgeben: **rpm -qa | grep ulimit**. Sollte _ulimit_ installiert sein, führen Sie sofort eine Deinstallation durch.
 
-**Arbeitsspeicher**
+**Memory**
 
 Sie bemerken möglicherweise, dass der von der SAP HANA-Datenbank reservierte Arbeitsspeicher größer als erwartet ist. Die folgenden Warnungen sind Anzeichen von Problemen aufgrund einer hohen Speicherauslastung:
 
@@ -125,10 +126,10 @@ Auf der Website [SAP HANA Troubleshooting: Memory Problems](http://help.sap.com/
 Führen Sie die Schritte zur Behandlung von Netzwerkproblemen aus, die in [SAP Note #2081065 – Troubleshooting SAP HANA Network](https://launchpad.support.sap.com/#/notes/2081065) beschrieben werden.
 
 1. Analysieren Sie die Roundtripzeit zwischen Server und Client.
-  A: Führen Sie das SQL-Skript [_HANA\_Network\_Clients_](https://launchpad.support.sap.com/#/notes/1969700) _aus._
+  A. Führen Sie das SQL-Skript [_HANA\_Network\_Clients_](https://launchpad.support.sap.com/#/notes/1969700) _aus._
   
 2. Analysieren Sie die Kommunikation zwischen Knoten.
-  A: Führen Sie das SQL-Skript [_HANA\_Network\_Services_](https://launchpad.support.sap.com/#/notes/1969700) _aus._
+  A. Führen Sie das SQL-Skript [_HANA\_Network\_Services_](https://launchpad.support.sap.com/#/notes/1969700) _aus._
 
 3. Führen Sie den Linux-Befehl **ifconfig** aus (die Ausgabe zeigt, ob Paketverluste auftreten).
 4. Führen Sie den Linux-Befehl **tcpdump** aus.

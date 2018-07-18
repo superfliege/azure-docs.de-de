@@ -1,11 +1,11 @@
 ---
-title: "Anzeigen einer Vorschau der Laufwerknutzung für einen Exportauftrag in Azure Import/Export (V1) | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie eine Vorschau der Liste der Blobs anzeigen, die Sie für einen Exportauftrag im Azure Import/Export-Dienst ausgewählt haben."
+title: Anzeigen einer Vorschau der Laufwerknutzung für einen Exportauftrag in Azure Import/Export (V1) | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie eine Vorschau der Liste der Blobs anzeigen, die Sie für einen Exportauftrag im Azure Import/Export-Dienst ausgewählt haben.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 7707d744-7ec7-4de8-ac9b-93a18608dc9a
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23059295"
 ---
 # <a name="previewing-drive-usage-for-an-export-job"></a>Anzeigen einer Vorschau der Laufwerknutzung für einen Exportauftrag
 Bevor Sie einen Exportauftrag erstellen, müssen Sie eine Gruppe von Blobs auswählen, die Sie exportieren möchten. Der Microsoft Azure Import/Export-Dienst bietet Ihnen die Möglichkeit, die ausgewählten Blobs mithilfe einer Liste von Blobpfaden oder Blobpräfixen darzustellen.  

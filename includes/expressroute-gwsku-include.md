@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30197532"
 ---
 Beim Erstellen eines Gateways des virtuellen Netzwerks müssen Sie die gewünschte Gateway-SKU angeben. Wenn Sie eine höhere Gateway-SKU wählen, werden dem Gateway mehr CPUs und eine höhere Bandbreite zugewiesen. Infolgedessen unterstützt das Gateway einen höheren Netzwerkdurchsatz im virtuellen Netzwerk. 
 

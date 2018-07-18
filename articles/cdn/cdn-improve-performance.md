@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie die Geschwindigkeit von Dateiübertragungen e
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: af1cddff-78d8-476b-a9d0-8c2164e4de5d
 ms.service: cdn
@@ -12,27 +12,28 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2018
-ms.author: mazha
-ms.openlocfilehash: 41e40c7e740e06654e7660c208db52fc2617d4b5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 06/11/2018
+ms.author: v-deasim
+ms.openlocfilehash: bdff57275cf123079004ada732fe782d98399d71
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260395"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Verbessern der Leistung durch Komprimieren von Dateien in Azure CDN
 Die Dateikomprimierung reduziert die Größe einer Datei, bevor sie vom Server gesendet wird, und ist eine einfache und effektive Methode zum Verbessern der Geschwindigkeit von Dateiübertragungen sowie der Seitenladeleistung. Die Dateikomprimierung reduziert die Bandbreitenkosten und steigert die Benutzerfreundlichkeit.
 
 Es gibt zwei Methoden zur Aktivierung der Dateikomprimierung:
 
-- Sie aktivieren die Komprimierung auf Ihrem Ursprungsserver. In diesem Fall leitet das CDN die komprimierten Dateien weiter und übermittelt sie an die Clients, von denen sie angefordert werden.
-- Aktivieren Sie die Komprimierung direkt auf den CDN-POP-Servern („Komprimierung bei laufendem Betrieb“). In diesem Fall komprimiert CDN die Dateien und sendet sie an die Endbenutzer, auch wenn sie nicht vom Ursprungsserver komprimiert wurden.
+- Sie aktivieren die Komprimierung auf Ihrem Ursprungsserver. In diesem Fall leitet das Azure CDN die komprimierten Dateien weiter und übermittelt sie an die Clients, von denen sie angefordert werden.
+- Aktivieren Sie die Komprimierung direkt auf den CDN-POP-Servern (*Komprimierung bei laufendem Betrieb*). In diesem Fall komprimiert CDN die Dateien und sendet sie an die Endbenutzer, auch wenn sie nicht vom Ursprungsserver komprimiert wurden.
 
 > [!IMPORTANT]
-> Es dauert eine gewisse Zeit, bis Änderungen an der CDN-Konfiguration im gesamten Netzwerk verteilt sind: 
+> Es dauert eine gewisse Zeit, bis Änderungen an der Azure CDN-Konfiguration im gesamten Netzwerk verteilt wurden: 
 - Bei Profilen vom Typ **Azure CDN Standard von Microsoft** ist die Weitergabe in der Regel in zehn Minuten abgeschlossen. 
 - Bei **Azure CDN Standard von Akamai**-Profilen ist die Weitergabe in der Regel in einer Minute abgeschlossen. 
-- Bei Profilen vom Typ **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** ist die Weitergabe in der Regel in 90 Minuten abgeschlossen. 
+- Bei Profilen vom Typ **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** ist die Weitergabe in der Regel in zehn Minuten abgeschlossen. 
 >
 > Wenn Sie die Komprimierung für Ihren CDN-Endpunkt zum ersten Mal einrichten, sollten Sie jedoch 1–2 Stunden warten, um sicherzugehen, dass die Komprimierungseinstellungen an alle POPs verteilt wurden. Erst danach lohnt sich ggf. eine Problembehandlung.
 > 
@@ -75,7 +76,7 @@ Die CDN-Tarife „Standard“ und „Premium“ bieten die gleiche Komprimierung
 
 1. Klicken Sie auf der Seite „CDN-Profil“ auf **Manage** (Verwalten).
    
-    ![Option zum Verwalten des CDN](./media/cdn-file-compression/cdn-manage-btn.png)
+    ![Klicken auf die Verwaltungsoption für das CDN](./media/cdn-file-compression/cdn-manage-btn.png)
    
     Das CDN-Verwaltungsportal wird geöffnet.
 2. Zeigen Sie auf die Registerkarte **HTTP Groß** und dann auf das Flyout **Cacheeinstellungen**. Wählen Sie **Komprimierung** aus.

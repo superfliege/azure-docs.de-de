@@ -6,7 +6,7 @@ Wenn Sie Wartungsmodus-Updates auf einem StorSimple-Gerät anwenden, werden alle
 > * Vergewissern Sie sich im Azure-Portal vor dem Starten des Wartungsmodus, dass beide Gerätecontroller fehlerfrei funktionieren. Wenn der Controller nicht fehlerfrei funktioniert, wenden Sie sich für die nächsten Schritte [an den Microsoft-Support](../articles/storsimple/storsimple-8000-contact-microsoft-support.md).
 > * Im Wartungsmodus müssen Sie zunächst einen und dann den anderen Controller aktualisieren.
 
-1. Verwenden Sie PuTTY, um eine Verbindung mit der seriellen Konsole herzustellen. Ausführliche Anweisungen dazu finden Sie unter [Verwenden von PuTTy zum Herstellen einer Verbindung mit der seriellen Konsole](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). Drücken Sie bei der Eingabeaufforderung die **Eingabetaste**. Wählen Sie „Option 1“ aus, um sich mit Vollzugriff beim Gerät anzumelden.
+1. Verwenden Sie PuTTY, um eine Verbindung mit der seriellen Konsole herzustellen. Ausführliche Anweisungen dazu finden Sie unter [Verwenden von PuTTy zum Herstellen einer Verbindung mit der seriellen Konsole](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). Drücken Sie bei der Eingabeaufforderung die **Eingabetaste**. Wählen Sie Option 1 aus: **Anmeldung mit Vollzugriff**.
 
 2. Um den Controller in den Wartungsmodus zu versetzen, geben Sie Folgendes ein:
     
@@ -14,13 +14,13 @@ Wenn Sie Wartungsmodus-Updates auf einem StorSimple-Gerät anwenden, werden alle
 
     Beide Controller werden im Wartungsmodus neu gestartet.
 
-3. Installieren Sie die Wartungsmodus-Updates. Geben Sie Folgendes ein:
+3. Installieren Sie die Wartungsmodus-Updates. Geben Sie Folgendes ein: 
 
     `Start-HcsUpdate`
 
     Sie werden aufgefordert, diesen Schritt zu bestätigen. Nachdem Sie die Updates bestätigt haben, werden sie auf dem Controller installiert, auf den Sie gerade zugreifen. Nachdem die Updates installiert wurden, wird der Controller neu gestartet.
 
-4. Überwachen Sie den Status der Aktualisierungen. Melden Sie sich beim Peercontroller an, da der aktuelle Controller aktualisiert wird und keine anderen Befehle verarbeiten kann. Geben Sie Folgendes ein:
+4. Überwachen Sie den Status der Aktualisierungen. Melden Sie sich beim Peercontroller an, da der aktuelle Controller aktualisiert wird und keine anderen Befehle verarbeiten kann. Geben Sie Folgendes ein: 
 
     `Get-HcsUpdateStatus`
 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29877482"
 ---
 # <a name="usage-and-billing-in-azure-stack"></a>Verbrauch und Abrechnung in Azure Stack
 

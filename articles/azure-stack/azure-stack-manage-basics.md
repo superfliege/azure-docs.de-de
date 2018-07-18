@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: mabrigg
-ms.openlocfilehash: df4a5a17ad034ae5d6ab82791c020634a8758b71
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 283d1c2a7ef3484cb4fd4d9a53b543a093e9baf8
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850302"
 ---
 # <a name="azure-stack-administration-basics"></a>Grundlagen zur Verwaltung von Azure Stack
 Wenn Sie nicht mit der Azure Stack-Verwaltung vertraut sind, gibt es verschiedene Punkte, die Ihnen bekannt sein müssen. Dieser Leitfaden enthält einen Überblick über Ihre Rolle als Azure Stack-Betreiber sowie Informationen, die Sie Ihren Benutzern bereitstellen müssen, damit diese rasch Produktivitätssteigerungen erzielen können.
@@ -31,7 +32,7 @@ Wenn Sie ein integriertes Azure Stack-System verwenden, werden aktualisierte Ver
  
 ### <a name="development-kit"></a>Development Kit
 
-Lesen Sie bei Verwendung des Azure Stack Development Kit den Artikel [Neuerungen bei Azure Stack](.\asdk\asdk-what-is.md), um sicherzustellen, dass Sie den Zweck des Development Kit und die entsprechenden Einschränkungen verstanden haben. Sie sollten das Development Kit als „Sandkasten“ verwenden, mit dem Sie Azure Stack auswerten und Ihre Apps in einer Nichtproduktionsumgebung entwickeln und testen können. (Informationen zur Bereitstellung finden Sie im Tutorial [Azure Stack Development Kit-Bereitstellung](.\asdk\asdk-deploy.md).)
+Lesen Sie bei Verwendung des Azure Stack Development Kit den Artikel [Neuerungen bei Azure Stack](.\asdk\asdk-what-is.md), um sicherzustellen, dass Sie den Zweck des Development Kit und die entsprechenden Einschränkungen verstanden haben. Sie sollten das Development Kit als „Sandkasten“ verwenden, mit dem Sie Azure Stack auswerten und Ihre Apps in einer Nichtproduktionsumgebung entwickeln und testen können. (Informationen zur Bereitstellung finden Sie im Artikel [Azure Stack Development Kit-Bereitstellung](.\asdk\asdk-install.md).)
 
 Wir führen schnell Innovationen wie Azure ein. Regelmäßig veröffentlichen wir neue Builds. Wenn Sie das Development Kit ausführen und die Umstellung auf den neuesten Build durchführen möchten, müssen Sie [Azure Stack erneut bereitstellen](.\asdk\asdk-redeploy.md). Es ist nicht möglich, Updatepakete anzuwenden. Dieser Vorgang dauert zwar eine Weile, doch danach können Sie die neuesten Funktionen ausprobieren. In der Development Kit-Dokumentation auf unserer Website ist der neueste Releasebuild angegeben.
 
@@ -46,7 +47,7 @@ Standardmäßig umfasst Azure Stack bei der Bereitstellung folgende grundlegende
 - Compute
 - Speicher
 - Netzwerk
-- Schlüsseltresor
+- Key Vault
 
 Mit diesen grundlegenden Dienste können Sie Ihren Benutzern Infrastructure-as-a-Service (IaaS) mit Minimalkonfiguration anbieten.
 

@@ -1,27 +1,22 @@
 ---
 title: Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Site Recovery | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie die rollenbasierte Zugriffssteuerung (RBAC) zum Verwalten von Azure Site Recovery-Bereitstellungen an- und verwendet wird.
-services: site-recovery
-documentationcenter: ''
-author: mayanknayar
-manager: rochakm
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/11/2018
+ms.date: 07/06/2018
+author: mayanknayar
+ms.topic: conceptual
 ms.author: manayar
-ms.openlocfilehash: 072e3bc2e1a13476b43fb72c8631453e2ffa3b27
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: dfd880b6ff3a7e199ea259acc5e5ec59f89c897d
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34071604"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919725"
 ---
-# <a name="use-role-based-access-control-to-manage-azure-site-recovery-deployments"></a>Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Site Recovery-Bereitstellungen
+# <a name="use-role-based-access-control-to-manage-site-recovery-access"></a>Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Site Recovery-Zugriffs
 
 Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure. Mithilfe der rollenbasierten Zugriffssteuerung können Sie Zuständigkeiten in Ihrem Team aufteilen und Benutzern nur die jeweils spezifischen Zugriffsrechte zum Ausführen bestimmter Aufträge zuweisen.
 

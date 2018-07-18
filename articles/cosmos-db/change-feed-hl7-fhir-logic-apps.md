@@ -3,22 +3,19 @@ title: Änderungsfeed für HL7 FHIR-Ressourcen – Azure Cosmos DB | Microsoft-D
 description: Hier erfahren Sie, wie Sie mithilfe von Azure Logic Apps, Azure Cosmos DB und Service Bus Änderungsbenachrichtigungen für HL7 FHIR-Krankenakten einrichten.
 keywords: HL7 FHIR
 services: cosmos-db
-author: hedidin
+author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: 0d25c11f-9197-419a-aa19-4614c6ab2d06
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: sngun
-ms.openlocfilehash: d9894709cc10c55295e63f64a0db89137bf36826
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 9d05c41e7ebf9d1cc0735da8853e4ad1617eb810
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34610496"
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>Benachrichtigen von Patienten über Änderungen an HL7 FHIR-Krankenakten mithilfe von Logic Apps und Azure Cosmos DB
 
@@ -75,7 +72,7 @@ Logik-Apps wickeln den Workflowprozess ab. Die folgenden Screenshots zeigen die 
 
     ![Die Logik-App zum Senden von Patienten-E-Mails mit der HL7 FHIR-Ressource als Text](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-send-email.png)
 
-#### <a name="service-bus"></a>SERVICE BUS
+#### <a name="service-bus"></a>Service Bus
 Die folgende Abbildung zeigt die Patientenwarteschlange. Der Wert der Tag-Eigenschaft wird für den E-Mail-Betreff verwendet.
 
 ![Die Service Bus-Warteschlange aus diesem HL7 FHIR-Tutorial](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-service-bus-queue.png)

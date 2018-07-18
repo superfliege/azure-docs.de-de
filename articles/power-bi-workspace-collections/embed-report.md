@@ -21,6 +21,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31410351"
 ---
 # <a name="embed-a-report-in-power-bi-workspace-collections"></a>Einbetten von Berichten in Power BI-Arbeitsbereichssammlungen
 

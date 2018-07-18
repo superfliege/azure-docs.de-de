@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2018
+ms.date: 05/30/2018
 ms.author: jeedes
-ms.openlocfilehash: d34ff6021816c73fb064a3ce73b7fcf3ae22dbd1
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 7cbe0d0ea3bbbd60b7cd2dc88ef249c4380083a7
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699409"
 ---
 # <a name="admin-guide-for-the-azure-active-directory-sso-plug-in"></a>Administratorhandbuch zum Azure Active Directory-SSO-Plug-In
 
@@ -67,7 +68,7 @@ Bevor Sie das Plug-In installieren, beachten Sie Folgendes:
 
 Das Plug-In unterstützt die folgenden Versionen von JIRA und Confluence:
 
-* JIRA Core und Software: 6.0 bis 7.2.0
+* JIRA Core und Software: 6.0 bis 7.8
 * JIRA Service Desk: 3.0 bis 3.2
 * Confluence: 5.0 bis 5.10
 
@@ -76,51 +77,51 @@ Das Plug-In unterstützt die folgenden Versionen von JIRA und Confluence:
 Führen Sie diese Schritte aus, um das Plug-In zu installieren:
 
 1. Melden Sie sich bei Ihrer JIRA- bzw. Confluence-Instanz als Administrator an.
-    
+
 2. Wechseln Sie zur JIRA-/Confluence-Verwaltungskonsole, und wählen Sie **Add-Ons** aus.
-    
+
 3. Suchen Sie vom Atlassian Marketplace aus nach **Microsoft SAML-SSO-Plug-In**.
- 
+
    Die entsprechende Version des Plug-Ins wird in den Suchergebnissen angezeigt.
- 
-5. Wählen Sie das Plug-In aus, und der Universal Plug-In-Manager (UPM) installiert es.
- 
+
+4. Wählen Sie das Plug-In aus, und der Universal Plug-In-Manager (UPM) installiert es.
+
 Sobald das Plug-In installiert ist, wird es im Abschnitt **Vom Benutzer installierte Add-Ons** von **Add-Ons verwalten** angezeigt.
-    
+
 ## <a name="plug-in-configuration"></a>Plug-In-Konfiguration
 
 Bevor Sie das Plug-In verwenden, müssen Sie es konfigurieren. Wählen Sie das Plug-In und die Schaltfläche **Konfigurieren** aus, und geben Sie die Konfigurationsdetails an.
 
 Die folgende Abbildung zeigt den Konfigurationsbildschirm in JIRA und Confluence an:
-    
+
 ![Plug-In-Konfigurationsbildschirm](./media/ms-confluence-jira-plugin-adminguide/jira.png)
 
 *   **Metadaten-URL**: Die URL zum Abrufen der Verbundmetadaten von Azure AD.
- 
+
 *   **Bezeichner**: Die URL, die Azure AD zum Überprüfen der Quelle der Anforderung verwendet. Sie wird dem Element **Bezeichner** in Azure AD zugeordnet. Das Plug-In leitet diese URL automatisch als „https://*<Domäne:Port>*/“ ab.
- 
+
 *   **Antwort-URL**: Die Antwort-URL in Ihrem Identitätsanbieter (IdP), die die SAML-Anmeldung initiiert. Sie wird dem **Antwort-URL**-Element in Azure AD zugeordnet. Das Plug-In leitet diese URL automatisch als „https://*<Domäne:Port>*/plugins/servlet/saml/auth“ ab.
- 
+
 *   **Anmelde-URL**: Die Anmelde-URL in Ihrem IdP, die die SAML-Anmeldung initiiert. Sie wird dem **Anmelde**-Element in Azure AD zugeordnet. Das Plug-In leitet diese URL automatisch als „https://*<Domäne:Port>*/plugins/servlet/saml/auth“ ab.
- 
+
 *   **IdP-Entitäts-ID**: Die Entitäts-ID, die Ihr IdP verwendet. Dieses Feld wird gefüllt, wenn die Metadaten-URL aufgelöst ist.
- 
+
 *   **Anmelde-URL**: Die Anmelde-URL aus Ihrem IdP. Dieses Feld wird aus Azure AD gefüllt, wenn die Metadaten-URL aufgelöst ist.
- 
+
 *   **Abmelde-URL**: Die Abmelde-URL aus Ihrem IdP. Dieses Feld wird aus Azure AD gefüllt, wenn die Metadaten-URL aufgelöst ist.
- 
+
 *   **X. 509-Zertifikat**: Das X.509-Zertifikat Ihres IdP. Dieses Feld wird aus Azure AD gefüllt, wenn die Metadaten-URL aufgelöst ist.
- 
+
 *   **Anmeldeschaltflächen-Name**: Der Name der Anmeldeschaltfläche, die Ihre Organisation Benutzern auf der Anmeldeseite anzeigen möchte.
- 
+
 *   **SAML-Benutzer-ID-Speicherorte**: Der Speicherort, wo die JIRA- bzw. Confluence-Benutzer-ID in der SAML-Antwort erwartet wird. Dies kann in **NameID** oder einem benutzerdefinierten Attributnamen sein.
- 
+
 *   **Attributname**: Name des Attributs, in dem die Benutzer-ID erwartet werden kann.
- 
+
 *   **Startbereichsermittlung aktivieren**: Erforderliche Auswahl, wenn das Unternehmen auf Active Directory-Verbunddiensten (Active Directory Federation Services, AD FS) basierendes Anmelden einsetzt.
- 
+
 *   **Domänenname**: Der Domänenname bei AD FS-basiertem Anmelden.
- 
+
 *   **Einmaliges Abmelden aktivieren**: Erforderliche Auswahl, wenn eine Abmeldung bei Azure AD erfolgen soll, wenn ein Benutzer sich bei JIRA oder Confluence abmeldet.
 
 ## <a name="troubleshooting"></a>Problembehandlung
@@ -130,15 +131,15 @@ Die folgende Abbildung zeigt den Konfigurationsbildschirm in JIRA und Confluence
 * **Ein Zertifikat läuft in Azure AD ab**: Add-Ons kümmern sich um das automatische Rollover des Zertifikats. Wenn ein Zertifikat in Kürze abläuft, sollte das neue Zertifikat als aktiv gekennzeichnet werden, und nicht verwendete Zertifikate sollten gelöscht werden. Wenn ein Benutzer versucht, sich in diesem Szenario bei JIRA anzumelden, ruft das Plug-In das neue Zertifikat ab und speichert es.
 
 * **Sie möchten WebSudo (die sichere Administratorsitzung) deaktivieren**:
-    
+
   * Für JIRA sind sichere Administratorsitzungen (d.h. Bestätigung des Kennworts vor dem Zugriff auf die Verwaltungsfunktionen) standardmäßig aktiviert. Wenn Sie diese Funktion aus Ihrer JIRA-Instanz entfernen möchten, geben Sie die folgende Zeile in die Datei „jira-config.properties“ ein: `ira.websudo.is.disabled = true`
-    
+
   * Führen Sie für Confluence die Schritte auf der [Support-Website von Confluence](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html) aus.
 
 * **Felder, die von der Metadaten-URL aufgefüllt werden sollten, werden nicht aufgefüllt**:
-    
+
   * Überprüfen Sie, ob die URL richtig ist. Überprüfen Sie, ob Sie den richtigen Mandanten und die richtige App-ID zugeordnet haben.
-    
+
   * Geben Sie die URL in einen Browser ein, und stellen Sie fest, ob Sie die Verbundmetadaten-XML empfangen.
 
 * **Es liegt ein interner Serverfehler vor**: Überprüfen Sie die Protokolle im Protokollverzeichnis der Installation. Falls der Fehler gemeldet wird, wenn der Benutzer versucht, sich mittels Azure AD-SSO anzumelden, können Sie die Protokolle gemeinsam mit dem Supportteam auswerten.
@@ -148,5 +149,5 @@ Die folgende Abbildung zeigt den Konfigurationsbildschirm in JIRA und Confluence
 * **Der Fehler „App nicht gefunden“ tritt in Azure AD auf**: Stellen Sie fest, ob die entsprechende URL der App in Azure AD zugeordnet ist.
 
 * **Sie benötigen Support**: Wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Das Team antwortet innerhalb von 24 bis 48 Geschäftsstunden.
-    
+
   Sie können auch bei Microsoft ein Supportticket über den Azure-Portalkanal erstellen.

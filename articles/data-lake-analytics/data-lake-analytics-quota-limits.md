@@ -1,27 +1,25 @@
 ---
-title: Azure Data Lake Analytics-Kontingentgrenzen
-description: Erfahren Sie, wie Sie Kontingentgrenzen in ADLA-Konten (Azure Data Lake Analytics) anpassen und erhöhen.
+title: Anpassen von Kontingenten und Grenzwerten in Azure Data Lake Analytics
+description: Hier erfahren Sie, wie Sie Kontingente und Grenzwerte in ADLA-Konten (Azure Data Lake Analytics) anpassen und erhöhen.
 services: data-lake-analytics
-keywords: Azure Data Lake Analytics
-documentationcenter: ''
-author: omidm1
-editor: omidm1
-ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.service: data-lake-analytics
-ms.topic: article
-ms.workload: big-data
-ms.date: 03/15/2018
+author: omidm1
 ms.author: omidm
-ms.openlocfilehash: 4334a438f09d7c18912262e9c70bfffbcdeb1d9e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+editor: jasonwhowell
+manager: kfile
+ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
+ms.topic: conceptual
+ms.date: 03/15/2018
+ms.openlocfilehash: e493c45ef49d370bbf7d007e039b4102aaa3cdf0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34199023"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623977"
 ---
-# <a name="azure-data-lake-analytics-quota-limits"></a>Azure Data Lake Analytics-Kontingentgrenzen
+# <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Anpassen von Kontingenten und Grenzwerten in Azure Data Lake Analytics
 
-Erfahren Sie, wie Sie Kontingentgrenzen in ADLA-Konten (Azure Data Lake Analytics) anpassen und erhöhen. Diese Grenzen zu kennen, kann dabei helfen, das Verhalten von U-SQL-Aufträgen besser zu verstehen. Kontingentgrenzen sind nicht fix. Wenden Sie sich an den Azure-Support, um diese Höchstgrenzen zu erhöhen.
+Hier erfahren Sie, wie Sie das Kontingent und die Grenzwerte in ADLA-Konten (Azure Data Lake Analytics) anpassen und erhöhen. Diese Grenzen zu kennen, kann dabei helfen, das Verhalten von U-SQL-Aufträgen besser zu verstehen. Kontingentgrenzen sind nicht fix. Wenden Sie sich an den Azure-Support, um diese Höchstgrenzen zu erhöhen.
 
 ## <a name="azure-subscriptions-limits"></a>Azure-Abonnementgrenzen
 

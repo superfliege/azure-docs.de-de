@@ -1,21 +1,22 @@
 ---
 title: Konfigurieren von Regeln und Aktionen in Azure IoT Central | Microsoft-Dokumentation
 description: In diesem Tutorial wird gezeigt, wie Sie als Ersteller telemetriebasierte Regeln und Aktionen in Ihrer Azure IoT Central-Anwendung konfigurieren.
-services: iot-central
 author: ankitgupta
 ms.author: ankitgup
 ms.date: 04/16/2018
 ms.topic: tutorial
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 5ac19e0e25ea3e25ede4d87776c01f8bcaea4655
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.service: iot-central
+services: iot-central
+ms.custom: mvc
+manager: peterpr
+ms.openlocfilehash: af2aa8d7b01d973da400808fd3e97d0739693cd2
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202236"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236330"
 ---
-# <a name="2---configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>2: Konfigurieren von Regeln und Aktionen für Ihr Gerät in Azure IoT Central
+# <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Tutorial: Konfigurieren von Regeln und Aktionen für Ihr Gerät in Azure IoT Central
 
 In diesem Tutorial wird gezeigt, wie Sie als Ersteller telemetriebasierte Regeln und Aktionen in Ihrer Microsoft Azure IoT Central-Anwendung konfigurieren.
 
@@ -39,17 +40,17 @@ Absolvieren Sie zuerst das Tutorial [1: Definieren eines neuen Gerätetyps in Ih
 
     Die erstellte Gerätevorlage **Connected Air Conditioner (1.0.0)** und das erstellte Gerät **Connected Air Conditioner-1** aus dem vorherigen Tutorial werden angezeigt.
 
-1. Wenn Sie mit dem Anpassen der verbundenen Klimaanlage beginnen möchten, wählen Sie das im vorherigen Tutorial erstellte Gerät aus:
+2. Wenn Sie mit dem Anpassen der verbundenen Klimaanlage beginnen möchten, wählen Sie das im vorherigen Tutorial erstellte Gerät aus:
 
     ![Seite der verbundenen Klimaanlage](media/tutorial-configure-rules/builderdevicelist.png)
 
-1. Klicken Sie auf **Regeln**, um eine Regel in der Ansicht **Regeln** hinzuzufügen:
+3. Klicken Sie auf **Regeln**, um eine Regel in der Ansicht **Regeln** hinzuzufügen:
 
     ![Ansicht „Regeln“](media/tutorial-configure-rules/builderrulesview.png)
 
-1. In diesem Tutorial fügen Sie eine schwellenwertbasierte Telemetrieregel hinzu. Klicken Sie auf **Neue Regel** und anschließend auf **Telemetrie**, um eine schwellenwertbasierte Regel zu erstellen.
+4. Klicken Sie auf **Neue Regel** und anschließend auf **Telemetrie**, um die schwellenwertbasierte Telemetrieregel zu erstellen.
 
-1. Nutzen Sie beim Festlegen der Regel die Informationen in der folgenden Tabelle:
+5. Nutzen Sie beim Festlegen der Regel die Informationen in der folgenden Tabelle:
 
     | Einstellung     | Wert                          |
     | ----------- | ------------------------------ |
@@ -67,7 +68,7 @@ Beim Festlegen einer Regel definieren Sie auch eine Aktion, die bei Erfüllung d
 
     ![Temperaturregelaktion](media/tutorial-configure-rules/builderaddaction.png)
 
-1. Nutzen Sie beim Festlegen der Aktion die Informationen in der folgenden Tabelle:
+2. Nutzen Sie beim Festlegen der Aktion die Informationen in der folgenden Tabelle:
 
     | Einstellung   | Wert                          |
     | --------- | ------------------------------ |
@@ -79,7 +80,7 @@ Beim Festlegen einer Regel definieren Sie auch eine Aktion, die bei Erfüllung d
 
     ![Aktion für Temperatur im Anwendungs-Generator](media/tutorial-configure-rules/buildertemperatureaction.png)
 
-1. Wählen Sie **Speichern** aus. Ihre Regel ist auf der Seite **Regeln** aufgeführt:
+3. Wählen Sie **Speichern** aus. Ihre Regel ist auf der Seite **Regeln** aufgeführt:
 
     ![Regeln im Anwendungs-Generator](media/tutorial-configure-rules/builderrules.png)
 

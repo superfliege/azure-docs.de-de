@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29958706"
 ---
 ## <a name="use-the-portal-to-move-a-vm-to-a-different-subscription"></a>Verschieben eines virtuellen Computers in ein anderes Abonnement mithilfe des Portals
 Sie können einen virtuellen Computer und die dazugehörigen Ressourcen mithilfe des Portals in ein anderes Abonnement verschieben.

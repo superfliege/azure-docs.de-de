@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: a7e0455d92635b7767227685b622bdae303f9621
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: cb01e71ae45ae8a7e37e8ab5cdf60e3b3fcb9983
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34160640"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919759"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Unterstützungsmatrix für die Replikation von VMware-VMs und physischen Servern in Azure
 
@@ -40,7 +40,7 @@ Der Konfigurationsserver ist ein lokaler Computer, auf dem Site Recovery-Kompone
 **Komponente** | **Anforderungen**
 --- |---
 CPU-Kerne | 8
-RAM | 12 GB
+RAM | 16 GB
 Anzahl der Datenträger | Drei Datenträger<br/><br/> Hierzu zählen der Betriebssystemdatenträger, der Prozessservercache-Datenträger und das Aufbewahrungslaufwerk für das Failback.
 Freier Speicherplatz auf dem Datenträger | 600 GB für den Prozessservercache.
 Freier Speicherplatz auf dem Datenträger | 600 GB für das Aufbewahrungslaufwerk.
@@ -76,15 +76,15 @@ Linux-Betriebssystem | Red Hat Enterprise Linux: 5.2 bis 5.11, 6.1 bis 6.9, 7.0 
 
 **Unterstütztes Release** | **Azure Site Recovery Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
-14.04 LTS | 9.12 | 3.13.0-24-generic to 3.13.0-132-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic to 4.4.0-96-generic |
-14.04 LTS | 9.13 | 3.13.0-24-generic bis 3.13.0-137-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-104-generic |
-14.04 LTS | 9.14 | 3.13.0-24-generic bis 3.13.0-142-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-116-generic |
+14.04 LTS | 9.17 | 3.13.0-24-generic bis 3.13.0-149-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-127-generic |
+14.04 LTS | 9.16 | 3.13.0-24-generic bis 3.13.0-144-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-119-generic |
 14.04 LTS | 9.15 | 3.13.0-24-generic bis 3.13.0-144-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-119-generic |
-16.04 LTS | 9.12 | 4.4.0-21-generic to 4.4.0-96-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic to 4.10.0-35-generic |
-16.04 LTS | 9.13 | 4.4.0-21-generic bis 4.4.0-104-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic |
-16.04 LTS | 9.14 | 4.4.0-21-generic bis 4.4.0-116-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-36-generic,<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1011-azure |
-16.04 LTS | 9.15 | 4.4.0-21-generic bis 4.4.0-119-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-38-generic,<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1012-azure |
-
+14.04 LTS | 9.14 | 3.13.0-24-generic bis 3.13.0-142-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-116-generic |
+|||
+16.04 LTS | 9.17 | 4.4.0-21-generic bis 4.4.0-127-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-43-generic |
+16.04 LTS | 9.16 | 4.4.0-21-generic bis 4.4.0-119-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-38-generic |
+16.04 LTS | 9.15 | 4.4.0-21-generic bis 4.4.0-119-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-38-generic |
+16.04 LTS | 9.14 | 4.4.0-21-generic bis 4.4.0-116-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-36-generic |
 
 
 ### <a name="debian-kernel-versions"></a>Debian-Kernelversionen
@@ -92,7 +92,11 @@ Linux-Betriebssystem | Red Hat Enterprise Linux: 5.2 bis 5.11, 6.1 bis 6.9, 7.0 
 
 **Unterstütztes Release** | **Azure Site Recovery Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
-Debian 7 | 9.14, 9.15 | 3.2.0-4-amd64 bis 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.17 | 3.2.0-4-amd64 bis 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.14, 9.15, 9.16 | 3.2.0-4-amd64 bis 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
+|||
+Debian 8 | 9.17 | 3.16.0-4-amd64 bis 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.6-amd64 |
+Debian 8 | 9.16 | 3.16.0-4-amd64 bis 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.6-amd64 |
 Debian 8 | 9.14, 9.15 | 3.16.0-4-amd64 bis 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.5-amd64 |
 
 
@@ -204,7 +208,7 @@ Lokale virtuelle Computer, die Sie in Azure replizieren, müssen die in dieser T
 
 **Komponente** | **Anforderungen** | **Details**
 --- | --- | ---
-Gastbetriebssystem | Überprüfung der [unterstützten Betriebssysteme](#replicated machines) | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
+Gastbetriebssystem | Überprüfen Sie die [unterstützten Betriebssysteme](#replicated-machines) für replizierte Computer. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Architektur des Gastbetriebssystems | 64 Bit. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Größe des Betriebssystem-Datenträgers | Bis zu 2.048 GB. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Anzahl von Betriebssystem-Datenträgern | 1 | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.  

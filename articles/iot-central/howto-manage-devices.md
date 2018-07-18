@@ -1,19 +1,19 @@
 ---
 title: Verwalten der Geräte in Ihrer Azure IoT Central-Anwendung | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie als Operator Gerätegruppen in der Azure IoT Central-Anwendung verwalten.
-services: iot-central
 author: ellenfosborne
 ms.author: elfarber
 ms.date: 01/21/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 75472d701160e7cfd331d01efcdc1a19ae20fb2d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: cf803c03d266f2a400e47fc551dea62936456177
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303578"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937617"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung
 
@@ -49,12 +49,12 @@ So fügen Sie ein Gerät Ihrer Azure IoT Central-Anwendung hinzu:
 1. Wählen Sie **Real** oder **Simuliert** aus. Ein reales Gerät steht für ein physisches Gerät, dessen Verbindung mit der Azure IoT Central-Anwendung Sie herstellen. Ein simuliertes Gerät enthält Beispieldaten, die von Azure IoT Central für Sie generiert werden. In diesem Beispiel wird ein reales Gerät verwendet. Wählen Sie **Real**, um zur Seite **Gerätedetails** für das neue Gerät zu navigieren.
 
 
-## <a name="bulk-import-devices"></a>Massenimportieren von Geräten
+## <a name="import-devices"></a>Importieren von Geräten
 
 Um eine Verbindung einer großen Anzahl von Geräten mit Ihrer Anwendung herzustellen, ermöglicht Azure IoT Central das Massenimportieren von Geräten über eine CSV-Datei. 
 
 Anforderungen an die CSV-Datei:
-1. Die CSV-Datei sollte nur eine Spalte mit den Geräte-IDs aufweisen.
+1. Die CSV-Datei sollte nur eine Spalte aufweisen, die Geräte-IDs enthält.
 
 1. Die Datei sollte keine Kopfzeile enthalten.
 
@@ -65,9 +65,12 @@ So führen Sie die Massenregistrierung von Geräten in Ihrer Anwendung durch:
 
 1. Wählen Sie im linken Bereich die Gerätevorlage aus, für die Sie das Massenerstellen der Geräte ausführen möchten.
 
-1. Wählen Sie **Neu** und dann **Massenimport** aus.
+ >   [!NOTE] 
+    Wenn Sie noch keine Gerätevorlage haben, können Sie Geräte unter **Nicht zugeordnete Geräte** importieren und ohne Vorlage registrieren. Nachdem die Geräte importiert wurden, können Sie sie als nächsten Schritt einer Vorlage zuordnen.
 
-    [![Massenimportaktion](./media/howto-manage-devices/BulkImport1.png)](./media/howto-manage-devices/BulkImport1.png#lightbox)
+1. Klicken Sie auf **Importieren**.
+
+    [![Importaktion](./media/howto-manage-devices/BulkImport1.png)](./media/howto-manage-devices/BulkImport1.png#lightbox)
 
 1. Wählen Sie die CSV-Datei aus, die die Liste der zu importierenden Geräte-IDs enthält.
 
@@ -75,10 +78,51 @@ So führen Sie die Massenregistrierung von Geräten in Ihrer Anwendung durch:
 
 1. Nach Abschluss des Imports wird eine Erfolgsmeldung auf dem Geräteraster angezeigt.
 
-    [![Massenimport-Erfolgsmeldung](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
+    [![Import erfolgreich](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
 
 Wenn beim Geräteimport ein Fehler auftritt, wird auf dem Geräteraster eine Fehlermeldung angezeigt. Eine Protokolldatei, die alle Fehler erfasst, wird generiert und kann durch Klicken auf die Fehlermeldung heruntergeladen werden.
 
+
+**Verknüpfen von Geräten mit einer Vorlage**
+
+Wenn Sie Geräte registrieren, indem Sie den Import unter **Nicht zugeordnete Geräte** starten, dann werden die Geräte ohne Gerätevorlagenzuordnung erstellt. Das Gerät muss mit einer Vorlage verknüpft sein, um damit ein Zugriff auf Daten und andere Details zum Gerät möglich ist. Führen Sie die folgenden Schritte aus, um Geräte mit einer Vorlage zu verknüpfen:
+1. Wählen Sie im Navigationsmenü auf der linken Seite die Option **Explorer** aus.
+1. Wählen Sie im linken Bereich **Nicht zugeordnete Geräte**.
+    [![Nicht zugeordnete Geräte](./media/howto-manage-devices/UnassociatedDevices1.png)](./media/howto-manage-devices/UnassociatedDevices1.png#lightbox)
+1. Wählen Sie die Geräte aus, die Sie mit einer Vorlage verknüpfen möchten.
+1. Klicken Sie auf die Option **Zuordnen**.
+    [![Zuordnen von Geräten](./media/howto-manage-devices/UnassociatedDevices2.png)](./media/howto-manage-devices/UnassociatedDevices2.png#lightbox)
+1. Wählen Sie eine verfügbare Vorlage in der Liste aus, und klicken Sie auf die Schaltfläche **Zuordnen**.
+1. Die ausgewählten Geräte werden unter die entsprechende Gerätevorlage verschoben.
+
+ >   [!NOTE] 
+    Sobald ein Gerät mit einer Vorlage verknüpft wurde, kann dessen Zuordnung nicht mehr aufgehoben werden und es kann auch keiner anderen Vorlage zugeordnet werden.
+
+## <a name="export-devices"></a>Exportieren von Geräten
+
+Um Geräte für die Verbindung mit IoT Central bereitzustellen, benötigen Sie die Verbindungszeichenfolge des Geräts, die von IoT Central generiert wird. Sie können das Feature „Export“ verwenden, um einen Massenkopiervorgang der Verbindungszeichenfolgen und anderen Eigenschaften der Geräte aus Ihrer Anwendung vorzunehmen. Durch „Export“ wird eine CSV-Datei mit der Geräteidentität, dem Gerätenamen sowie eine primäre Verbindungszeichenfolge für alle ausgewählten Geräte erstellt.
+
+So führen Sie den Massenexport von Geräten aus Ihrer Anwendung durch:
+1. Wählen Sie im Navigationsmenü auf der linken Seite die Option **Explorer** aus.
+
+1. Wählen Sie im linken Bereich die Gerätevorlage aus, für die Sie die Geräte exportieren möchten.
+
+1. Wählen Sie die Geräte aus, die Sie exportieren möchten, und klicken Sie dann auf die Aktion **Exportieren**.
+
+    [![Export](./media/howto-manage-devices/Export1.png)](./media/howto-manage-devices/Export1.png#lightbox)
+
+1. Der Exportprozess wird gestartet, und Sie können den Status oben im Raster nachverfolgen. 
+
+1. Sobald der Exportvorgang abgeschlossen ist, wird eine Erfolgsmeldung zusammen mit einem Link zum Download der generierten Datei angezeigt.
+
+1. Klicken Sie auf die **Erfolgsmeldung**, um die Datei in einen lokalen Ordner auf dem Datenträger herunterzuladen.
+
+    [![Export erfolgreich](./media/howto-manage-devices/Export2.png)](./media/howto-manage-devices/Export2.png#lightbox)
+
+1. Die exportierte CSV-Datei verfügt über folgende Informationen:
+    1. NAME
+    1. Geräte-ID
+    1. Primäre Verbindungszeichenfolge
 
 
 ## <a name="delete-a-device"></a>Gerät löschen

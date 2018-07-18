@@ -1,12 +1,12 @@
 ---
-title: "Verbinden eines Raspberry Pi mit Azure IoT Suite mithilfe von C zum Unterstützen von Firmwareupdates | Microsoft-Dokumentation"
-description: "Verwenden Sie das Microsoft Azure IoT Starter Kit für Raspberry Pi 3 und Azure IoT Suite. Verbinden Sie Ihr Raspberry Pi mithilfe von C mit der Remoteüberwachungslösung. Senden Sie Telemetriedaten von Sensoren an die Cloud, und führen Sie ein Firmwareupdate remote aus."
-services: 
+title: Verbinden eines Raspberry Pi mit Azure IoT Suite mithilfe von C zum Unterstützen von Firmwareupdates | Microsoft-Dokumentation
+description: Verwenden Sie das Microsoft Azure IoT Starter Kit für Raspberry Pi 3 und Azure IoT Suite. Verbinden Sie Ihr Raspberry Pi mithilfe von C mit der Remoteüberwachungslösung. Senden Sie Telemetriedaten von Sensoren an die Cloud, und führen Sie ein Firmwareupdate remote aus.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: c
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/06/2017
+ms.locfileid: "24010803"
 ---
 # <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-enable-remote-firmware-updates-using-c"></a>Verbinden Ihres Raspberry Pi 3 mit der Remoteüberwachungslösung und Ermöglichen von Remote-Firmwareupdates mithilfe von C
 

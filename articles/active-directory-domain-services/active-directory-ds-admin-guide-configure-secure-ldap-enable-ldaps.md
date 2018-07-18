@@ -7,18 +7,20 @@ author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2018
+ms.date: 06/27/2018
 ms.author: maheshu
-ms.openlocfilehash: 8da03990ace37b527553b0fe3ff0032515e1b812
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5838dbefab9f7100ed4776eebef7a1d07d2db1a6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061044"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurieren von sicherem LDAP (LDAPS) für eine durch Azure AD Domain Services verwaltete Domäne
 
@@ -46,7 +48,7 @@ Führen Sie die folgenden Konfigurationsschritte aus, um sicheres LDAP zu aktivi
 4. Standardmäßig ist der sichere LDAP-Zugriff auf Ihre verwaltete Domäne deaktiviert. Ändern Sie die Einstellung für **Secure LDAP** in **Aktivieren**.
 
     ![Aktivieren von sicherem LDAP](./media/active-directory-domain-services-admin-guide/secure-ldap-blade-configure.png)
-5. Standardmäßig ist der sichere LDAP-Zugriff auf Ihre verwaltete Domäne über das Internet deaktiviert. Ändern Sie, falls gewünscht, die Einstellung für **Sicheren LDAP-Zugriff über das Internet aktivieren** in **Aktivieren**. 
+5. Standardmäßig ist der sichere LDAP-Zugriff auf Ihre verwaltete Domäne über das Internet deaktiviert. Ändern Sie, falls gewünscht, die Einstellung für **Sicheren LDAP-Zugriff über das Internet aktivieren** in **Aktivieren**.
 
     > [!WARNING]
     > Wenn Sie sicheren LDAP-Zugriff über das Internet aktivieren, ist Ihre Domäne anfällig für über das Internet ausgeführte Brute-Force-Angriffe mit Kennwörtern. Daher sollten Sie eine NSG einrichten, um den Zugriff auf erforderliche Quell-IP-Adressbereiche zu sperren. Beachten Sie die Anweisungen unter [Aufgabe 5: LDAPS-Zugriff auf Ihre verwaltete Domäne über das Internet sperren](#task-5---lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet).
@@ -109,6 +111,23 @@ Die folgende Tabelle zeigt ein Beispiel einer NSG, die Sie konfigurieren können
 
 <br>
 
+## <a name="bind-to-the-managed-domain-over-ldap-using-ldpexe"></a>Binden an die verwaltete Domäne über LDAP mit „LDP.exe“
+Sie können das Tool „LDP.exe“ verwenden, das im Paket „Remoteserver-Verwaltungstools“ enthalten ist, um über LDAP zu binden und zu suchen.
+
+Öffnen Sie zunächst LDP, und stellen Sie eine Verbindung mit der verwalteten Domäne her. Klicken Sie auf **Verbindung**, und klicken Sie dann im Menü auf **Verbinden**. Geben Sie den DNS-Domänennamen der verwalteten Domäne an. Geben Sie den Port an, der für Verbindungen verwendet werden soll. Verwenden Sie Port 389 für LDAP-Verbindungen. Verwenden Sie Port 636 für LDAPS-Verbindungen. Klicken Sie auf die Schaltfläche **OK**, um eine Verbindung mit der verwalteten Domäne herzustellen.
+
+Binden Sie im nächsten Schritt an die verwaltete Domäne. Klicken Sie auf **Verbindung**, und klicken Sie dann im Menü auf **Binden**. Geben Sie die Anmeldeinformationen eines Benutzerkontos an, das zur Gruppe „AAD DC-Administratoren“ gehört.
+
+Wählen Sie **Ansicht** aus, und wählen Sie dann im Menü **Baum** aus. Lassen Sie das Basis-DN-Feld leer, und klicken Sie auf „OK“. Navigieren Sie zu dem Container, den Sie durchsuchen möchten, klicken Sie mit der rechten Maustaste auf den Container, und wählen Sie „Suchen“ aus.
+
+> [!TIP]
+> - Benutzer und Gruppen, die aus Azure AD synchronisiert werden, werden im Container **AADDC-Benutzer** gespeichert. Der Suchpfad für diesen Container sieht wie folgt aus: ```CN=AADDC\ Users,DC=CONTOSO100,DC=COM```
+> - Computerkonten für Computer, die in die verwaltete Domäne eingebunden sind, werden im Container **AADDC-Computer** gespeichert. Der Suchpfad für diesen Container sieht wie folgt aus: ```CN=AADDC\ Computers,DC=CONTOSO100,DC=COM```
+>
+>
+
+Weitere Informationen: [LDAP-Abfragegrundlagen](https://technet.microsoft.com/library/aa996205.aspx)
+
 
 ## <a name="troubleshooting"></a>Problembehandlung
 Wenn Sie Probleme beim Herstellen einer Verbindung mit der verwalteten Domäne über sicheres LDAP haben, führen Sie die folgenden Schritte zur Problembehandlung aus:
@@ -127,6 +146,7 @@ Wenn Sie weiterhin Probleme beim Herstellen einer Verbindung mit der verwalteten
 ## <a name="related-content"></a>Verwandte Inhalte
 * [Erste Schritte mit Azure AD Domain Services](active-directory-ds-getting-started.md)
 * [Verwalten einer durch Azure AD Domain Services verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
+* [LDAP-Abfragegrundlagen](https://technet.microsoft.com/library/aa996205.aspx)
 * [Verwalten von Gruppenrichtlinien in einer durch Azure Active Directory Domain Services verwalteten Domäne](active-directory-ds-admin-guide-administer-group-policy.md)
 * [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md)
-* [Erstellen einer Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+* [Erstellen einer Netzwerksicherheitsgruppe](../virtual-network/tutorial-filter-network-traffic.md)

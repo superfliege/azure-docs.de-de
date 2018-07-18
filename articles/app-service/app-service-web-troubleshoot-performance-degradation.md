@@ -2,10 +2,10 @@
 title: Schwache Leistung der Web-App in App Service | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie Web-App-Leistungsprobleme in Azure App Service beheben.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 tags: top-support-issue
 keywords: Web-App-Leistung, langsame App, App langsam
 ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
@@ -21,6 +21,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29461841"
 ---
 # <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>Problembehandlung bei niedriger Web-App-Leistung in Azure App Service
 In diesem Artikel erfahren Sie, wie Sie Web-App-Leistungsprobleme in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)beheben.

@@ -1,24 +1,25 @@
 ---
 title: Korrigieren von Sicherheitskonfigurationen in Azure Security Center | Microsoft-Dokumentation
-description: "In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung „Sicherheitskonfigurationen korrigieren“ umsetzen."
+description: In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung „Sicherheitskonfigurationen korrigieren“ umsetzen.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 991d41f5-1d17-468d-a66d-83ec1308ab79
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2018
+ms.date: 06/19/2018
 ms.author: terrylan
-ms.openlocfilehash: 477973298d8cc9d99da78e36274933e0bb737c4f
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 3af8f211c19fde9d2fc79f41fc13009570a9b4de
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285915"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Korrigieren von Sicherheitskonfigurationen in Azure Security Center
 Azure Security Center analysiert täglich das Betriebssystem Ihrer virtuellen Computer (VMs) und physischen Computer auf Konfigurationen, die sie möglicherweise anfälliger für Angriffe machen. Security Center empfiehlt die Behandlung von Sicherheitsrisiken, wenn die Betriebssystemkonfiguration nicht den empfohlenen Sicherheitskonfigurationsregeln entspricht, und empfiehlt Konfigurationsänderungen, um diese Sicherheitsrisiken zu beseitigen.
@@ -32,7 +33,7 @@ In diesem Beispiel betrachten wir unter **Compute** die Empfehlung „Sicherheit
 1. Wählen Sie im linken Bereich in Security Center die Option **Compute** aus.  
   Das Fenster **Compute** wird geöffnet.
 
-   ![Korrigieren von Sicherheitskonfigurationen][1]
+   ![Optimieren von Sicherheitskonfigurationen][1]
 
 2. Wählen Sie **Sicherheitskonfigurationen korrigieren** aus.  
   Das Fenster **Sicherheitskonfigurationen** wird geöffnet.
@@ -50,7 +51,7 @@ In diesem Beispiel betrachten wir unter **Compute** die Empfehlung „Sicherheit
 
   - **CCIED**: Der eindeutige CCE-Bezeichner für die Regel. Security Center verwendet die Common Configuration Enumeration (CCE), um Konfigurationsregeln eindeutige Bezeichner zuzuweisen.
   - **Name**: Der Name des Regelfehlers.
-  - **Regeltyp**: Der Regeltyp *Registrierungsschlüssel*, *Sicherheitsrichtlinie* oder *Überwachungsrichtlinie*.
+  - **Regeltyp**: Der Regeltyp *Registrierungsschlüssel*, *Sicherheitsrichtlinie*, *Überwachungsrichtlinie* oder *IIS*.
   - **Anzahl von VMs und Computern**: Die Gesamtzahl virtueller und physischer Computer mit diesem Regelfehler.
   - **Schweregrad der Regel**: Der CCE-Schweregrad *Kritisch*, *Wichtig* oder *Warnung*.
   - **Status**: Der aktuelle Status der Empfehlung:
@@ -99,10 +100,10 @@ Weitere Informationen zu den spezifischen Konfigurationen, die überwacht werden
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Ressourcen:
 
-* Eine Liste mit unterstützten Windows- und Linux-VMs finden Sie unter [Unterstützte Plattformen in Azure Security Center](security-center-os-coverage.md). 
-* Anweisungen zum Konfigurieren von Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen finden Sie unter [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md). 
-* Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen: [Verwalten von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md). 
-* Anweisungen zum Überwachen der Integrität Ihrer Azure-Ressourcen finden Sie unter [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md). 
+* Eine Liste mit unterstützten Windows- und Linux-VMs finden Sie unter [Unterstützte Plattformen in Azure Security Center](security-center-os-coverage.md).
+* Anweisungen zum Konfigurieren von Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen finden Sie unter [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md).
+* Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen: [Verwalten von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md).
+* Anweisungen zum Überwachen der Integrität Ihrer Azure-Ressourcen finden Sie unter [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md).
 * Erfahren Sie im Artikel [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md), wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
 * Informationen zum Überwachen des Integritätsstatus Ihrer Partnerlösungen finden Sie unter [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md).
 * Antworten auf häufig gestellte Fragen zur Verwendung des Diensts finden Sie unter [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md).

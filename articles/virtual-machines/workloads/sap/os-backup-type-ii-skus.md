@@ -1,33 +1,34 @@
 ---
-title: "Betriebssystemsicherung und -wiederherstellung von SAP HANA unter Azure-SKUs (große Instanzen) des Typs II | Microsoft-Dokumentation"
-description: "Durchführen von Betriebssystemsicherungen und -wiederherstellungen für SAP HANA unter Azure-SKUs (große Instanzen) des Typs II"
+title: Betriebssystemsicherung und -wiederherstellung von SAP HANA unter Azure-SKUs (große Instanzen) des Typs II | Microsoft-Dokumentation
+description: Durchführen von Betriebssystemsicherungen und -wiederherstellungen für SAP HANA unter Azure-SKUs (große Instanzen) des Typs II
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: saghorpa
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/31/2017
+ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 41349cd7fe3bf39b5b42c44ba47acf980d15ebe7
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: f01a32612b335003856a372ece15ef300b9d93db
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063273"
 ---
 # <a name="os-backup-and-restore-for-type-ii-skus"></a>OS-Sicherung und -Wiederherstellung für Typ-II-SKUs
 
-Dieses Dokument beschreibt die Schritte zum Durchführen einer Betriebssystemsicherung und -wiederherstellung für die **Typ-II-SKUs** großer HANA-Instanzen. 
+Dieses Dokument beschreibt die Schritte zum Durchführen einer Betriebssystemsicherung und -wiederherstellung auf Dateiebene für die **Typ-II-SKUs** großer HANA-Instanzen. 
 
 >[!NOTE]
 >In den Skripts zum Sichern des Betriebssystems wird die auf dem Server vorinstallierte ReaR-Software verwendet.  
 
-Nach Abschluss der Bereitstellung durch das Microsoft Service Management-Team ist der Server standardmäßig mit zwei geplanten Sicherungen zum Sichern des gesamten Betriebssystems konfiguriert. Der Zeitplan des Sicherung kann mithilfe des folgenden Befehls geprüft werden:
+Nach Abschluss der Bereitstellung durch das Microsoft Service Management-Team ist der Server standardmäßig mit zwei geplanten Sicherungen zum Sichern des Betriebssystems auf Dateisystemebene konfiguriert. Der Zeitplan des Sicherung kann mithilfe des folgenden Befehls geprüft werden:
 ```
 #crontab –l
 ```
@@ -37,7 +38,7 @@ Sie können den Sicherungszeitplan jederzeit mithilfe des folgenden Befehls änd
 ```
 ## <a name="how-to-take-a-manual-backup"></a>Erstellen einer manuellen Sicherung
 
-Die Sicherung des Betriebssystems wird bereits mithilfe eines **cron-Auftrags** geplant. Sie können die Sicherung des Betriebssystems jedoch auch manuell ausführen. Führen Sie für eine manuelle Sicherung den folgenden Befehl aus:
+Die Sicherung des Betriebssystems auf Dateisystemebene wird bereits mithilfe eines **cron-Auftrags** geplant. Sie können die Sicherung des Betriebssystems auf Dateisystemebene jedoch auch manuell ausführen. Führen Sie für eine manuelle Sicherung den folgenden Befehl aus:
 
 ```
 #rear -v mkbackup

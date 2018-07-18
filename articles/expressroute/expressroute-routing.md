@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/28/2018
+ms.date: 07/09/2018
 ms.author: ganesr
-ms.openlocfilehash: b0c8be546b40b36746224ca43c7766ac310fd7ee
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 998d4f8017af51a21e13695a8491e9b6bd62af9a
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930527"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute-Routinganforderungen
 Zum Herstellen einer Verbindung mit Microsoft-Clouddiensten per ExpressRoute müssen Sie das Routing einrichten und verwalten. Einige Konnektivitätsanbieter bieten das Einrichten und Verwalten des Routings als verwalteten Dienst an. Fragen Sie bei Ihrem Konnektivitätsanbieter nach, ob dieser Dienst angeboten wird. Ist dies nicht der Fall, müssen Sie folgende Anforderungen erfüllen:
@@ -66,6 +67,7 @@ Sie müssen eigene öffentliche IP-Adressen zum Einrichten der BGP-Sitzungen ver
 ### <a name="ip-addresses-used-for-microsoft-peering"></a>IP-Adressen für Microsoft-Peering
 Sie müssen eigene öffentliche IP-Adressen zum Einrichten der BGP-Sitzungen verwenden. Microsoft muss in der Lage sein, die Eigentümerschaft der IP-Adressen über Routing Internet Registries (RIR) und Internet Routing Registries (IRR) zu überprüfen.
 
+* Die im Portal für angekündigte öffentliche Präfixe aufgeführten IP-Adressen für Microsoft-Peering erstellen ACLs für die Microsoft-Kernrouter, um eingehenden Datenverkehr von diesen IP-Adressen zuzulassen. 
 * Sie müssen ein eindeutiges /29-Subnetz (IPv4) oder /125-Subnetz (IPv6) oder zwei /30-Subnetze (IPv4) oder zwei /126-Subnetze (IPv6) verwenden, um das BGP-Peering für jedes Peering pro ExpressRoute-Verbindung einzurichten (falls Sie über mehrere verfügen).
 * Wenn ein /29-Subnetz verwendet wird, wird es in zwei /30-Subnetze unterteilt.
 * Das erste /30-Subnetz wird für die primäre Verknüpfung verwendet, das zweite für die sekundäre Verknüpfung.
@@ -115,7 +117,7 @@ Für Microsoft-Peering kann eine private AS-Nummer verwendet werden, dies erford
 > 
 
 ## <a name="dynamic-route-exchange"></a>Dynamischer Routenaustausch
-Der Routingaustausch verläuft über das eBGP-Protokoll. EBGP-Sitzungen werden zwischen den MSEEs und Ihren Routern eingerichtet. Die Authentifizierung von BGP-Sitzungen ist nicht unbedingt erforderlich. Bei Bedarf kann ein MD5-Hash konfiguriert werden. Unter [Konfigurieren des Routings](expressroute-howto-routing-classic.md) und [Bereitstellungsworkflows für ExpressRoute-Verbindungen und Verbindungszustände](expressroute-workflows.md) finden Sie Informationen zum Konfigurieren von BGP-Sitzungen.
+Der Routingaustausch verläuft über das eBGP-Protokoll. EBGP-Sitzungen werden zwischen den MSEEs und Ihren Routern eingerichtet. Die Authentifizierung von BGP-Sitzungen ist nicht unbedingt erforderlich. Bei Bedarf kann ein MD5-Hash konfiguriert werden. Unter [Konfigurieren des Routings](how-to-routefilter-portal.md) und [Bereitstellungsworkflows für ExpressRoute-Verbindungen und Verbindungszustände](expressroute-workflows.md) finden Sie Informationen zum Konfigurieren von BGP-Sitzungen.
 
 ## <a name="autonomous-system-numbers"></a>Autonome Systemnummern
 Microsoft verwendet AS 12076 für öffentliches und privates Azure-Peering sowie für Microsoft-Peering. Wir haben ASNs von 65515 bis 65520 für die interne Verwendung reserviert. Sowohl AS-Nummern mit 16 als auch mit 32 Bit werden unterstützt.
@@ -225,7 +227,7 @@ Zusätzlich zu den obigen Kennzeichnungen versieht Microsoft Präfixe auch basie
 | --- | --- |
 | **US Government** |  |
 | US Gov Arizona | 12076:51106 |
-| US Government, Iowa | 12076:51109 |
+| US Gov Iowa | 12076:51109 |
 | US Government, Virginia | 12076:51105 |
 | US Gov Texas | 12076:51108 |
 | US DoD, Mitte | 12076:51209 |

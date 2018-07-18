@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206464"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Ihre Service Fabric-Anwendung und nächste Schritte
 Ihre Azure Service Fabric-Anwendung wurde erstellt. In diesem Artikel werden einige Tutorials zum Ausprobieren, der Aufbau Ihres Projekts, weitere interessante Informationen und mögliche nächste Schritte beschrieben.

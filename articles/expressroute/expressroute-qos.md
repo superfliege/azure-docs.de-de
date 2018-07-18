@@ -1,11 +1,11 @@
 ---
-title: "QoS-Anforderungen für ExpressRoute | Microsoft Docs"
-description: "Diese Seite enthält ausführliche Anforderungen für das Konfigurieren und Verwalten von QoS für ExpressRoute-Verbindungen."
+title: QoS-Anforderungen für ExpressRoute | Microsoft Docs
+description: Diese Seite enthält ausführliche Anforderungen für das Konfigurieren und Verwalten von QoS für ExpressRoute-Verbindungen.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: db1c1447-0283-4a09-907b-ae481adc40c7
 ms.service: expressroute
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22709911"
 ---
 # <a name="expressroute-qos-requirements"></a>QoS-Anforderungen für ExpressRoute
 Skype for Business umfasst verschiedene Workloads mit jeweils unterschiedlichen QoS-Anforderungen. Wenn Sie Sprachdienste über ExpressRoute bereitstellen möchten, sollten die im Folgenden beschriebenen Anforderungen erfüllt sein.

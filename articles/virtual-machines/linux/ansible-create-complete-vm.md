@@ -3,7 +3,7 @@ title: Verwenden von Ansible zum Erstellen einer vollständigen Linux-VM in Azur
 description: Erfahren Sie, wie Sie Ansible zum Erstellen und Verwalten einer vollständigen Linux-VM-Umgebung in Azure verwenden.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: na
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/18/2017
-ms.author: iainfou
-ms.openlocfilehash: 22b580e74ec412763b9c34a7fa2fea97c8a277d0
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.date: 05/30/2018
+ms.author: cynthn
+ms.openlocfilehash: 63228f8bf8729f1bf3796a77516490ae7088d5ed
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33896179"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930843"
 ---
 # <a name="create-a-complete-linux-virtual-machine-environment-in-azure-with-ansible"></a>Erstellen einer vollständigen Linux-VM-Umgebung in Azure mit Ansible
 Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. Sie können mit Ansible Ihre virtuellen Computer (VMs) in Azure wie jede andere Ressource verwalten. In diesem Artikel wird gezeigt, wie Sie eine vollständige Linux-Umgebung erstellen und Ressourcen mit Ansible unterstützen. Sie können sich auch darüber informieren, wie Sie [einen einfachen virtuellen Computer mit Ansible erstellen](ansible-create-vm.md).
@@ -38,6 +38,8 @@ Um Azure-Ressourcen mit Ansible verwalten zu können, benötigen Sie Folgendes:
 
 
 ## <a name="create-virtual-network"></a>Virtuelles Netzwerk erstellen
+Wir betrachten jeden Abschnitt eines Ansible-Playbooks und erstellen die individuellen Azure-Ressourcen. Das vollständige Playbook finden Sie in [diesem Abschnitt des Artikels](#complete-ansible-playbook).
+
 Der folgende Abschnitt in einem Ansible-Playbook erstellt ein virtuelles Netzwerk mit dem Namen *myVnet* im Adressbereich *10.0.0.0/16*:
 
 ```yaml
@@ -116,14 +118,14 @@ Der letzte Schritt besteht im Erstellen eines virtuellen Computers und dem Verwe
     vm_size: Standard_DS1_v2
     admin_username: azureuser
     ssh_password_enabled: false
-    ssh_public_keys: 
+    ssh_public_keys:
       - path: /home/azureuser/.ssh/authorized_keys
         key_data: "ssh-rsa AAAAB3Nz{snip}hwhqT9h"
     network_interfaces: myNIC
     image:
       offer: CentOS
       publisher: OpenLogic
-      sku: '7.3'
+      sku: '7.5'
       version: latest
 ```
 
@@ -177,18 +179,18 @@ Um alle diese Abschnitte zusammenzuführen, erstellen Sie das Ansible-Playbook *
       vm_size: Standard_DS1_v2
       admin_username: azureuser
       ssh_password_enabled: false
-      ssh_public_keys: 
+      ssh_public_keys:
         - path: /home/azureuser/.ssh/authorized_keys
           key_data: "ssh-rsa AAAAB3Nz{snip}hwhqT9h"
       network_interfaces: myNIC
       image:
         offer: CentOS
         publisher: OpenLogic
-        sku: '7.3'
+        sku: '7.5'
         version: latest
 ```
 
-Ansible benötigt eine Ressourcengruppe, in der alle Ressourcen bereitgestellt werden. Erstellen Sie mit [az group create](/cli/azure/vm#az_vm_create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+Ansible benötigt eine Ressourcengruppe, in der alle Ressourcen bereitgestellt werden. Erstellen Sie mit [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

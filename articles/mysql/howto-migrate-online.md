@@ -1,38 +1,31 @@
 ---
 title: Migration nach Azure Database for MySQL mit minimaler Ausfallzeit
-description: Dieser Artikel beschreibt die Durchführung einer Migration einer MySQL-Datenbank nach Azure Database for MySQL mit minimaler Ausfallzeit und die Einrichtung der anfänglichen Last und der kontinuierlichen Datensynchronisierung von der Quelldatenbank zur Zieldatenbank mithilfe von Attunity Replicate for Microsoft Migrations.
+description: In diesem Artikel wird beschrieben, wie Sie eine Migration einer MySQL-Datenbank-Instanz nach Azure Database for MySQL mit dem Azure Database Migration Service durchführen können.
 services: mysql
 author: HJToland3
 ms.author: jtoland
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: e1be72d97570643cc8a7c6eb05d3d363e96357b6
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 06/21/2018
+ms.openlocfilehash: ecbd35bd45bd11292bbe4a032329d704858d4c77
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293920"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>Migration nach Azure Database for MySQL mit minimaler Ausfallzeit
-Sie können Ihre vorhandene MySQL-Datenbank mithilfe von Attunity Replicate for Microsoft Migrations nach Azure Database for MySQL migrieren. Attunity Replicate ist ein gemeinsames Angebot von Attunity und Microsoft. Es wird Microsoft-Kunden in Verbindung mit Azure Database Migration Service ohne Zusatzkosten zur Verfügung gestellt. 
+Mit der neu eingeführten **fortlaufenden Synchronisationsfunktion** für den [Azure Database Migration Service](https://aka.ms/get-dms) (DMS) können Sie MySQL-Migrationen nach Azure Database for MySQL mit minimaler Ausfallzeit ausführen. Diese Funktion beschränkt die Ausfallzeit der Anwendung.
 
-Attunity Replicate trägt zur Minimierung von Ausfallzeiten bei Datenbankmigrationen bei und sorgt dafür, dass die Quelldatenbank während des Prozesses weiter verwendet werden kann.
+## <a name="overview"></a>Übersicht
+DMS führt einen ersten Ladevorgang Ihrer lokalen Datenbankinstanz nach Azure Database for MySQL durch und synchronisiert dann kontinuierlich alle neuen Transaktionen mit Azure, während die Anwendung weiterhin ausgeführt wird. Nachdem die Daten auf der Azure-Zielseite erfasst wurden, stoppen Sie die Anwendung für einen kurzen Moment (minimale Ausfallzeit), warten auf den letzten Datenbatch (von dem Zeitpunkt an, an dem Sie die Anwendung stoppen, bis zu dem Moment, in dem die Anwendung tatsächlich nicht mehr verfügbar ist, um neuen Datenverkehr aufzunehmen), um die Erfassung im Ziel aufzuholen. Aktualisieren Sie dann Ihre Verbindungszeichenfolge, um auf Azure zu verweisen. Danach ist Ihre Anwendung auf Azure live geschaltet.
 
-Das Attunity Replicate-Datenreplikationstool ermöglicht die Datensynchronisierung zwischen verschiedenen Quellen und Zielen. Es verteilt das Schemaerstellungsskript und die Daten, die den einzelnen Datenbanktabellen zugeordnet sind. Attunity Replicate verteilt keine anderen Artefakte (wie etwa SP, Trigger oder Funktionen) und konvertiert auch beispielsweise nicht den in solchen Artefakten gehosteten PL-/SQL-Code in T-SQL.
+![Fortlaufende Synchronisierung mit dem Azure Database Migration Service](./media/howto-migrate-online/ContinuousSync.png)
 
-> [!NOTE]
-> Attunity Replicate unterstützt zwar ein breites Spektrum von Migrationsszenarien, im Mittelpunkt steht jedoch die Unterstützung einer spezifischen Teilmenge von Quell-/Zielpaaren.
+DMS-Migration von MySQL-Quellen ist derzeit als Vorschau verfügbar. Wenn Sie den Dienst zur Migration Ihrer MySQL-Workloads testen möchten, registrieren Sie sich über die Azure DMS-[Vorschauseite](https://aka.ms/dms-preview). Ihr Feedback ist für die weitere Verbesserung des Diensts von großem Nutzen.
 
-Der Prozess für die Durchführung einer Migration mit minimaler Ausfallzeit umfasst Folgendes:
-
-* **Migrieren des MySQL-Quellschemas** zu einem verwalteten Azure Database for MySQL-Datenbankdienst mithilfe von [MySQL Workbench](https://www.mysql.com/products/workbench/)
-
-* **Einrichten des ersten Ladevorgangs und die fortlaufende Synchronisierung von der Quelldatenbank zur Zieldatenbank** mithilfe von Attunity Replicate for Microsoft Migrations. Auf diese Weise wird die Zeit minimiert, die die Quelldatenbank als schreibgeschützt festgelegt werden muss, während Sie die Überführung Ihrer Anwendungen in die MySQL-Zieldatenbank in Azure vorbereiten.
-
-Weitere Informationen zum Attunity Replicate for Microsoft Migrations-Angebot finden Sie in den folgenden Ressourcen:
- - Rufen Sie die Webseite zu [Attunity Replicate for Microsoft Migrations](https://aka.ms/attunity-replicate) auf.
- - Laden Sie [Attunity Replicate for Microsoft Migrations](http://discover.attunity.com/download-replicate-microsoft-lp6657.html) herunter.
- - Besuchen Sie die [Community von Attunity Replicate](https://aka.ms/attunity-community), um Schnellstarthandbücher, Tutorials und Support zu erhalten.
- - Eine ausführliche Anleitung zur Verwendung von Attunity Replicate zum Migrieren von MySQL-Datenbanken zu Azure Database for MySQL finden Sie im [Handbuch zu Datenbankmigrationen](https://datamigration.microsoft.com/scenario/mysql-to-azuremysql).
+## <a name="next-steps"></a>Nächste Schritte
+- Sehen Sie sich das Video [Easily migrate MySQL/PostgreSQL apps to Azure managed service](https://medius.studios.ms/Embed/Video/THR2201?sid=THR2201) (in englischer Sprache) an, das Ihnen anhand einer Demo erläutert, wie man MySQL-Anwendungen nach Azure Database for MySQL migriert.
+- Registrieren Sie sich für eine begrenzte Vorschau von Migrationen von MySQL nach Azure Database for MySQL mit minimaler Ausfallzeit über die Azure DMS-[Vorschau-Seite](https://aka.ms/dms-preview) an.

@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Azure-Swarm-Clustern mit der Docker-API
-description: "Bereitstellen von Containern für einen Docker Swarm-Cluster in Azure Container Service"
+description: Bereitstellen von Containern für einen Docker Swarm-Cluster in Azure Container Service
 services: container-service
 author: rgardler
 manager: madhana
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26331544"
 ---
 # <a name="container-management-with-docker-swarm"></a>Containerverwaltung mit Docker Swarm
 

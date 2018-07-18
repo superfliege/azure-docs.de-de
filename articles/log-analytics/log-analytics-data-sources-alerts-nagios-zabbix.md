@@ -9,16 +9,18 @@ editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 04c56b7b7726d9ca603f2ff38acfabc887ecaf34
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.component: na
+ms.openlocfilehash: 240e56e3e482b81d6336f7d6d2a1f5688953ecd8
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131550"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>Erfassen von Warnungen von Nagios und Zabbix in Log Analytics durch den OMS-Agent für Linux 
 [Nagios](https://www.nagios.org/) und [Zabbix](http://www.zabbix.com/) sind Open-Source Überwachungstools. Sie können Warnungen in Log Analytics über diese Tools erfassen, um sie zusammen mit [Warnungen aus anderen Quellen](log-analytics-alerts.md) zu analysieren.  Dieser Artikel beschreibt, wie der OMS-Agent für Linux für die Erfassung von Warnungen von diesen Systemen konfiguriert wird.
@@ -56,7 +58,7 @@ Führen Sie die folgenden Schritte auf dem Nagios-Server aus, um Warnungen zu er
     ```
 
 ### <a name="configuring-zabbix-alert-collection"></a>Konfigurieren der Erfassung von Zabbix-Warnungen
-Sie müssen einen Benutzer und ein Kennwort in *Klartext* eingeben, um Warnungen von einem Zabbix-Server zu erfassen.  Dies ist zwar nicht ideal, aber es wird empfohlen, dass Sie den Benutzer erstellen und ihm nur Überwachungsberechtigungen gewähren.
+Sie müssen einen Benutzer und ein Kennwort in *Klartext* eingeben, um Warnungen von einem Zabbix-Server zu erfassen.  Auch wenn dies nicht ideal ist, empfehlen wir die Erstellung eines Zabbix-Benutzers nur mit Leseberechtigungen zum Abfangen relevanter Alarme.
 
 Führen Sie die folgenden Schritte aus, um Warnungen auf dem Nagios-Server zu erfassen.
 
@@ -73,7 +75,7 @@ Führen Sie die folgenden Schritte aus, um Warnungen auf dem Nagios-Server zu er
 
 2. Starten Sie den omsagent-Daemon neu.
 
-    sudo sh /opt/microsoft/omsagent/bin/service_control restart
+    `sudo sh /opt/microsoft/omsagent/bin/service_control restart`
 
 
 ## <a name="alert-records"></a>Warnungsdatensätze

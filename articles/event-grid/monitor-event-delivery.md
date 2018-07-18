@@ -6,13 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/30/2018
+ms.date: 05/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: f9719bb1f1563c55537c7ef32278411a2034bd75
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 625f3e228bb28c85e68fb592914fb2191baf3e4e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626988"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Überwachen der Event Grid-Nachrichtenübermittlung 
 
@@ -41,9 +42,15 @@ Für Abonnements gibt es diese Metriken:
 
 ## <a name="event-subscription-status"></a>Status des Ereignisabonnements
 
-Um Metriken für ein Ereignisabonnement anzuzeigen, suchen Sie in den verfügbaren Diensten nach **Event Grid- Abonnements**, und wählen Sie diesen aus.
+Wenn Sie Metriken für ein Ereignisabonnement anzeigen möchten, können Sie entweder nach Abonnementtyp oder nach Abonnements für eine bestimmte Ressource suchen.
 
-![Suchen nach Ereignisabonnements](./media/monitor-event-delivery/select-event-subscriptions.png)
+Um nach Ereignisabonnementtyp zu suchen, wählen Sie **Alle Dienste** aus.
+
+![Auswählen von „Alle Dienste“](./media/monitor-event-delivery/all-services.png)
+
+Suchen Sie nach **Event Grid**, und wählen Sie die Option **Event Grid-Abonnements** aus.
+
+![Suchen nach Ereignisabonnements](./media/monitor-event-delivery/search-and-select.png)
 
 Filtern Sie nach dem Typ des Ereignisses, des Abonnements und des Standorts. Wählen Sie **Metriken** für das Abonnement aus, um diese anzuzeigen.
 
@@ -53,9 +60,15 @@ Zeigen Sie die Metriken für das Ereignisthema und Abonnement an.
 
 ![Anzeigen von Ereignismetriken](./media/monitor-event-delivery/subscription-metrics.png)
 
+Um nach den Metriken für eine bestimmte Ressource zu suchen, wählen Sie die entsprechende Ressource aus. Wählen Sie dann **Ereignisse** aus.
+
+![Auswählen von Ereignissen für eine Ressource](./media/monitor-event-delivery/select-events.png)
+
+Daraufhin werden die Metriken für die Abonnements für diese Ressource angezeigt.
+
 ## <a name="custom-event-status"></a>Benutzerdefinierter Ereignisstatus
 
-Wenn Sie ein benutzerdefiniertes Thema veröffentlicht haben, können Sie die Metriken dafür anzeigen. Wählen Sie die Ressourcengruppe, die das Thema enthält, und dann das Thema aus.
+Wenn Sie ein benutzerdefiniertes Thema veröffentlicht haben, können Sie die Metriken dafür anzeigen. Wählen Sie die Ressourcengruppe für das Thema aus, und wählen Sie dann das Thema aus.
 
 ![Auswählen eines benutzerdefinierten Themas](./media/monitor-event-delivery/select-custom-topic.png)
 

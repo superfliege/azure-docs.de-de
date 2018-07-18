@@ -1,24 +1,19 @@
 ---
 title: Geräteverwaltung mit Azure IoT Hub| Microsoft-Dokumentation
 description: 'Übersicht über die Geräteverwaltung in Azure IoT Hub: Lebenszyklus von Unternehmensgeräten und Geräteverwaltungsmuster wie Neustart, Zurücksetzung auf Werkseinstellungen, Firmwareupdate, Konfiguration, Gerätezwillinge, Abfragen und Aufträge.'
-services: iot-hub
-documentationcenter: ''
 author: bzurcher
-manager: timlt
-editor: ''
-ms.assetid: a367e715-55f6-4593-bd68-7863cbf0eb81
+manager: ''
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: briz
-ms.openlocfilehash: 4fe4328314e23bbd1ace13e935f82336e1e602a9
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c4d0b5d5ba429dc5d839fa054476461f96a52143
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030732"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>Übersicht über die Geräteverwaltung mit IoT Hub
 
@@ -56,16 +51,16 @@ In jeder dieser fünf Phasen müssen mehrere Anforderungen von Gerätebedienern 
 
 * **Planung:** Bediener müssen in die Lage versetzt werden, ein Schema der Gerätemetadaten zu erstellen. Damit können sie eine Gruppe von Geräten einfach und präzise abfragen und Massenvorgänge zu Verwaltungszwecken durchführen. Mit dem Gerätezwilling können Sie die Gerätemetadaten in Form von Tags und Eigenschaften speichern.
   
-    *Weiterführende Themen*: [Erste Schritte mit Gerätezwillingen][lnk-twins-getstarted], [Grundlegendes zu Gerätezwillingen][lnk-twins-devguide], [Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-properties]
+    *Weitere nützliche Informationen:* [Erste Schritte mit Gerätezwillingen (Node)][lnk-twins-getstarted], [Verstehen und Verwenden von Gerätezwillingen in IoT Hub][lnk-twins-devguide], [Tutorial: Konfigurieren der Nachrichtenweiterleitung mit IoT Hub][lnk-twin-properties], [Bewährte Methoden für die Gerätekonfiguration innerhalb einer IoT-Lösung][lnk-adm-best-practices].
 * **Bereitstellung:** Neue Geräte können sicher für IoT Hub bereitgestellt werden, und Bediener können die Funktionen eines Geräts sofort ermitteln.  Verwenden Sie die IoT Hub-Identitätsregistrierung, um flexible Geräteidentitäten und Anmeldeinformationen zu erstellen, und führen Sie diesen Vorgang mithilfe eines Auftrags als Massenvorgang durch. Erstellen Sie Geräte, um ihre Funktionen und Bedingungen über Geräteeigenschaften im Gerätezwilling zu melden.
   
-    *Weitere nützliche Informationen*: [Verwalten von Geräteidentitäten][lnk-identity-registry], [Massenverwaltung von IoT Hub-Geräte-Identitäten][lnk-bulk-identity], [Tutorial: Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten (Vorschau)][lnk-twin-properties], [Azure IoT Hub Device Provisioning-Dienst][lnk-dps].
+    *Weitere nützliche Informationen:* [Grundlegendes zur Identitätsregistrierung in Ihrer IoT Hub-Instanz][lnk-identity-registry], [Massenverwaltung von IoT Hub-Geräteidentitäten][lnk-bulk-identity], [Tutorial: Konfigurieren der Nachrichtenweiterleitung mit IoT Hub][lnk-twin-properties], [Bewährte Methoden für die Gerätekonfiguration innerhalb einer IoT-Lösung][lnk-adm-best-practices], [Dokumentation für den Azure IoT Hub Device Provisioning-Dienst][lnk-dps].
 * **Konfiguration:** Massenvorgänge zum Ändern der Konfiguration und Firmwareupdates für Geräte können ohne Beeinträchtigung der Integrität und der Sicherheit durchgeführt werden. Verwenden Sie die gewünschten Eigenschaften, um diese Geräteverwaltungsvorgänge als Massenvorgang durchzuführen, oder verwenden Sie direkte Methoden und Broadcastaufträge.
   
-    *Weitere nützliche Informationen*: [Verwenden von direkten Methoden][lnk-c2d-methods], [Aufrufen einer direkten Methode auf einem Gerät][lnk-methods-devguide], [Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-properties], [Planen und Übermitteln von Aufträgen][lnk-jobs], [Planen von Aufträgen auf mehreren Geräten][lnk-jobs-devguide]
+    *Weitere nützliche Informationen:* [Tutorial: Konfigurieren der Nachrichtenweiterleitung mit IoT Hub][lnk-twin-properties], [Bedarfsgerechtes Konfigurieren und Überwachen von IoT-Geräten – Vorschau][lnk-adm-how-to], [Bewährte Methoden für die Gerätekonfiguration innerhalb einer IoT-Lösung][lnk-adm-best-practices].
 * **Überwachung:** Überwachen Sie die allgemeine Geräteintegrität und den Status laufender Vorgänge, und weisen Sie Bediener auf Probleme hin, die ggf. ihre Aufmerksamkeit erfordern.  Wenden Sie den Gerätezwilling an, um es Geräten zu ermöglichen, Bedingungen und den Status von Updatevorgängen in Echtzeit zu melden. Erstellen Sie leistungsfähige Dashboardberichte, die mithilfe von Abfragen für den Gerätezwilling über neueste Probleme informieren.
   
-    *Weitere nützliche Informationen:*[Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-properties], [IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting][lnk-query-language].
+    *Weitere nützliche Informationen:* [Tutorial: Konfigurieren der Nachrichtenweiterleitung mit IoT Hub][lnk-twin-properties], [IoT Hub-Abfragesprache für Geräte- und Modulzwillinge, Aufträge und Nachrichtenrouting][lnk-query-language], [Bedarfsgerechtes Konfigurieren und Überwachen von IoT-Geräten – Vorschau][lnk-adm-how-to], [Bewährte Methoden für die Gerätekonfiguration innerhalb einer IoT-Lösung][lnk-adm-best-practices].
 * **Ausmusterung:** Geräte werden nach einem Fehler oder Upgradezyklus oder am Ende der Lebensdauer ausgetauscht oder außer Betrieb gesetzt.  Verwenden Sie zur Verwaltung von Geräteinformationen den Gerätezwilling, falls das physische Gerät ausgetauscht wird (oder das Archiv, falls das Gerät ausgemustert wird). Verwenden Sie die IoT Hub-Identitätsregistrierung zum sicheren Sperren von Geräteidentitäten und Anmeldeinformationen.
   
     *Weitere nützliche Informationen*: [Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-properties], [Verwalten von Geräteidentitäten][lnk-identity-registry]
@@ -82,7 +77,7 @@ IoT Hub ermöglicht die folgenden Geräteverwaltungsmuster.  In den [Tutorials z
 * **Konfiguration:** Die Back-End-App verwendet die gewünschten Eigenschaften zum Konfigurieren der auf dem Gerät ausgeführten Software.  Das Gerät nutzt die gemeldeten Eigenschaften zum Aktualisieren des Konfigurationsstatus des Geräts.
   
     ![Konfigurationsmuster der Geräteverwaltung – Grafik][img-config_pattern]
-* **Firmwareupdate:** Die Back-End-App informiert das Gerät mithilfe einer direkten Methode darüber, dass sie ein Firmwareupdate initiiert hat.  Das Gerät initiiert einen Prozess mit mehreren Schritten, um das Firmwareimage herunterzuladen, das Firmwareimage anzuwenden und schließlich wieder eine Verbindung mit dem IoT Hub-Dienst herzustellen.  Während des gesamten mehrstufigen Prozesses verwendet das Gerät die gemeldeten Eigenschaften, um die Fortschrittsanzeige und den Status des Geräts zu aktualisieren.
+* **Firmwareupdate:** Die Back-End-App verwendet eine automatische Geräteverwaltungskonfiguration, um die Geräte auszuwählen, die das Update erhalten sollen, um den Geräten mitzuteilen, wo sich das Update befindet, und um den Updateprozess zu überwachen. Das Gerät initiiert einen Prozess mit mehreren Schritten, um das Firmwareimage herunterzuladen, zu überprüfen und anzuwenden und das Gerät anschließend neu zu starten, bevor wieder eine Verbindung mit dem IoT Hub-Dienst hergestellt wird.  Während des gesamten mehrstufigen Prozesses verwendet das Gerät die gemeldeten Eigenschaften, um die Fortschrittsanzeige und den Status des Geräts zu aktualisieren.
   
     ![Firmwareupdate-Muster der Geräteverwaltung – Grafik][img-fwupdate_pattern]
 * **Meldung von Fortschritt und Status:** Das Lösungs-Back-End führt Gerätezwillingsabfragen für eine Gruppe von Geräten durch, um den Status und Fortschritt von Aktionen zu melden, die auf dem Gerät ausgeführt werden.
@@ -116,3 +111,5 @@ Weitere Informationen zu den Geräteverwaltungsfunktionen in IoT Hub finden Sie 
 [lnk-jobs]: iot-hub-node-node-schedule-jobs.md
 [lnk-jobs-devguide]: iot-hub-devguide-jobs.md
 [lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps
+[lnk-adm-best-practices]: iot-hub-configuration-best-practices.md
+[lnk-adm-how-to]: iot-hub-auto-device-config.md

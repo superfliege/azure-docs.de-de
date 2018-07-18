@@ -1,24 +1,20 @@
 ---
 title: C2D-Nachrichten mit Azure IoT Hub (Java) | Microsoft Docs
 description: Erfahren Sie, wie Sie mithilfe der Azure IoT SDKs für Java C2D-Nachrichten von einer Azure IoT Hub-Instanz an ein Gerät senden. Sie passen eine simulierte Geräte-App zum Empfangen von C2D-Nachrichten und eine Back-End-App zum Senden der C2D-Nachrichten an.
-services: iot-hub
-documentationcenter: java
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 7f785ea8-e7c2-40c5-87ef-96525e9b9e1e
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: 4c748f01a83c7f569953f7c7f2fc5631ca0efd17
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 410a156d60aa9b17da9c36e043082c291eea4849
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808110"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>Senden von C2D-Nachrichten mit IoT Hub (Java)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -45,7 +41,7 @@ Am Ende dieses Tutorials führen Sie zwei Java-Konsolen-Apps aus:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Eine vollständig funktionierende Version des Tutorials [Erste Schritte mit IoT Hub](iot-hub-java-java-getstarted.md) oder [Verarbeiten von D2C-Nachrichten mit IoT Hub](iot-hub-java-java-process-d2c.md)
+* Eine vollständig funktionierende Version des Tutorials [Erste Schritte mit IoT Hub](iot-hub-java-java-getstarted.md) oder [Verarbeiten von D2C-Nachrichten mit IoT Hub](tutorial-routing.md)
 * Das neueste [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Maven 3](https://maven.apache.org/install.html)
 * Ein aktives Azure-Konto. (Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.)
@@ -198,9 +194,9 @@ Sie können nun die Anwendungen ausführen.
 
 In diesem Lernprogramm haben Sie gelernt, wie Cloud-zu-Gerät-Nachrichten gesendet und empfangen werden. 
 
-Beispiele vollständiger Lösungen, die IoT Hub nutzen, finden Sie unter [Azure IoT-Solution Accelerator für Remoteüberwachung].
+Beispiele vollständiger Lösungen, die IoT Hub nutzen, finden Sie unter [Solution Accelerator für die Azure IoT-Remoteüberwachung].
 
-Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [Entwicklungsleitfaden für IoT Hub].
+Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [IoT Hub-Entwicklerhandbuch].
 
 <!-- Images -->
 [img-simulated-device]: media/iot-hub-java-java-c2d/receivec2d.png
@@ -209,11 +205,11 @@ Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [En
 
 [Erste Schritte mit IoT Hub]: iot-hub-java-java-getstarted.md
 [IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
-[Entwicklungsleitfaden für IoT Hub]: iot-hub-devguide.md
+[IoT Hub-Entwicklerhandbuch]: iot-hub-devguide.md
 [Azure IoT Developer Center]: http://azure.microsoft.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-java
 [Behandeln vorübergehender Fehler]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure-Portal]: https://portal.azure.com
-[Azure IoT-Solution Accelerator für Remoteüberwachung]: https://azure.microsoft.com/documentation/suites/iot-suite/
+[Solution Accelerator für die Azure IoT-Remoteüberwachung]: https://azure.microsoft.com/documentation/suites/iot-suite/
 [lnk-maven-service-search]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22

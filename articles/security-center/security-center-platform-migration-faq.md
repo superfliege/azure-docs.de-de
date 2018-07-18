@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31527024"
 ---
 # <a name="security-center-platform-migration-faq"></a>Häufig gestellte Fragen zur Plattformmigration von Security Center
 Seit Anfang Juni 2017 verwendet Azure Security Center den Microsoft Monitoring Agent zum Sammeln und Speichern von Daten. Weitere Informationen finden Sie unter [Azure Security Center – Plattformmigration](security-center-platform-migration.md). In diesem FAQ-Dokument werden Fragen zur Plattformmigration beantwortet.

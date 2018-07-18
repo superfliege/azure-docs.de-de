@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 5d13c711d7d71df7469e6408ce78cf0df611632b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6e447c04f4a94f2fb534ecb0605595a90816431e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638295"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Codieren mit einer automatisch generierten Reihe von Bitraten-/Auflösungspaaren
 
@@ -27,18 +28,18 @@ In diesem Artikel wird gezeigt, wie Sie in Media Services mit dem Standard-Encod
 
 ### <a name="encoding-for-streaming"></a>Codierung für Streaming
 
-Wenn Sie die Voreinstellung **AdaptiveStreaming** beim Erstellen einer Codierungstransformation verwenden, erhalten Sie, wie der Name schon sagt, eine Ausgabe, die für die Bereitstellung über Streamingprotokolle wie HLS, DASH, CMAF usw. geeignet ist. Bei Verwendung der Voreinstellung **AdaptiveStreaming** bestimmt der Encoder intelligent, wie viele Videoebenen mit welcher Bitrate und Auflösung erzeugt werden sollen. Das Ausgabemedienobjekt enthält MP4-Dateien, in denen mit AAC codierte Audio- und mit H.264 codierte Videodaten sich nicht überlappen.
+Wenn Sie die Voreinstellung **AdaptiveStreaming** beim **Transformieren** verwenden, erhalten Sie eine Ausgabe, die für die Bereitstellung über Streamingprotokolle wie HLS und DASH geeignet ist. Bei Verwendung dieser Voreinstellung legt der Dienst intelligent fest, wie viele Videoebenen mit welcher Bitrate und Auflösung erzeugt werden sollen. Die Ausgabe enthält MP4-Dateien, in denen mit AAC codierte Audio- und mit H.264 codierte Videodaten sich nicht überlappen.
 
 Ein Beispiel für die Verwendung dieser Voreinstellung finden Sie unter [Streamen einer Datei](stream-files-dotnet-quickstart.md).
 
-## <a name="output"></a>Ausgabe
+## <a name="output"></a>Output
 
 Dieser Abschnitt zeigt drei Beispiele von Ausgabevideoebenen, die vom Media Services-Encoder als Ergebnis der Codierung mit der Voreinstellung **Adaptives Streaming** erzeugt wurden. In allen Fällen enthält die Ausgabe eine reine MP4-Audiodatei, die mit 128 KBit/s codiertes Audio in Stereo enthält.
 
 ### <a name="example-1"></a>Beispiel 1
 Die Quelle mit der Höhe „1080“ und der Bildrate „29,970“ produziert 6 Videoebenen:
 
-|Ebene|Höhe|Breite|Bitrate(KBit/s)|
+|Ebene|Höhe|Breite|Bitrate (KBit/s)|
 |---|---|---|---|
 |1|1080|1920|6780|
 |2|720|1280|3520|
@@ -50,7 +51,7 @@ Die Quelle mit der Höhe „1080“ und der Bildrate „29,970“ produziert 6 V
 ### <a name="example-2"></a>Beispiel 2
 Die Quelle mit der Höhe „720“ und der Bildrate „23,970“ produziert 5 Videoebenen:
 
-|Ebene|Höhe|Breite|Bitrate(KBit/s)|
+|Ebene|Höhe|Breite|Bitrate (KBit/s)|
 |---|---|---|---|
 |1|720|1280|2940|
 |2|540|960|1850|
@@ -61,7 +62,7 @@ Die Quelle mit der Höhe „720“ und der Bildrate „23,970“ produziert 5 Vi
 ### <a name="example-3"></a>Beispiel 3
 Die Quelle mit der Höhe „360“ und der Bildrate „29,970“ produziert 3 Videoebenen:
 
-|Ebene|Höhe|Breite|Bitrate(KBit/s)|
+|Ebene|Höhe|Breite|Bitrate (KBit/s)|
 |---|---|---|---|
 |1|360|640|700|
 |2|270|480|440|

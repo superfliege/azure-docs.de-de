@@ -20,6 +20,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30164966"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Überlegungen zur Planung der Azure Stack-Bereitstellung
 Stellen Sie vor der Bereitstellung des Azure Stack Development Kits (ASDK) sicher, dass der Development Kit-Hostcomputer die in diesem Artikel beschriebenen Anforderungen erfüllt.
@@ -58,7 +59,7 @@ Stellen Sie vor der Bereitstellung des Azure Stack Development Kits (ASDK) siche
 
 <sup>*</sup> RAID-Controller ohne Pass-Through-Funktion können den Medientyp nicht erkennen. Controller dieser Art kennzeichnen HDD und SSD als unbekannt. In diesem Fall wird die SSD als persistenter Speicher und nicht als Cachegerät verwendet. Daher können Sie das Development Kit auf diesen SSDs bereitstellen.
 
-**Beispiel-HBAs:**LSI 9207-8i, LSI-9300-8i oder LSI-9265-8i im Pass-Through-Modus
+**Beispiel-HBAs:** LSI 9207-8i, LSI-9300-8i oder LSI-9265-8i im Pass-Through-Modus
 
 OEM-Beispielkonfigurationen sind verfügbar.
 

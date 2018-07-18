@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
-ms.openlocfilehash: 10f4b6ec29c2d9539fa7fe61c96581755e630822
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b0d6a797e4fe84ce2cb969d001ff96177f6ac641
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097045"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000-Serie: eine Hybridcloud-Speicherlösung
 ## <a name="overview"></a>Übersicht
@@ -213,8 +214,8 @@ In der folgenden Tabelle finden Sie eine Übersicht über die unterstützten Sto
 | Virtualisierung |Virtuelle Computer |Ja* |Nur mit lokalen Volumes unterstützt |Update 2 und höher |
 | Datenbank |SQL |Ja* |Nur mit lokalen Volumes unterstützt |Update 2 und höher |
 | Videoüberwachung |Videoüberwachung |Ja* |Unterstützt, wenn das StorSimple-Gerät nur für diese Workload verwendet wird |Update 2 und höher |
-| Sicherung |Sicherung des Primärziels |Ja* |Unterstützt, wenn das StorSimple-Gerät nur für diese Workload verwendet wird |Update 3 und höher |
-| Sicherung |Sicherung des Sekundärziels |Ja* |Unterstützt, wenn das StorSimple-Gerät nur für diese Workload verwendet wird |Update 3 und höher |
+| Backup |Sicherung des Primärziels |Ja* |Unterstützt, wenn das StorSimple-Gerät nur für diese Workload verwendet wird |Update 3 und höher |
+| Backup |Sicherung des Sekundärziels |Ja* |Unterstützt, wenn das StorSimple-Gerät nur für diese Workload verwendet wird |Update 3 und höher |
 
 *Ja&#42; – Lösungsrichtlinien und -einschränkungen sollten angewendet werden.*
 
@@ -248,7 +249,7 @@ Im Folgenden finden Sie eine Liste von Software, die mit StorSimple zum Erstelle
 | Sicherungsziel |Veeam |Veeam v9 und höher |[StorSimple als Sicherungsziel mit Veeam](storsimple-configure-backup-target-veeam.md)|
 | Sicherungsziel |Veritas Backup Exec |Backup Exec 16 und höher |[StorSimple als Sicherungsziel mit Backup Exec](storsimple-configure-backup-target-using-backup-exec.md)|
 | Sicherungsziel |Veritas NetBackup |NetBackup 7.7.x und höher  |[StorSimple als Sicherungsziel mit NetBackup](storsimple-configure-backuptarget-netbackup.md)|
-| Globale Dateifreigabe <br></br> Zusammenarbeit |Talon  |[StorSimple mit Talon](https://www.talonstorage.com/products/fast-deployment-azure-storsimple) | |
+| Globale Dateifreigabe <br></br> Zusammenarbeit |Talon  |[StorSimple mit Talon](https://www.talonstorage.com/products/archive/fast-deployment-azure-storsimple) | |
 
 ## <a name="storsimple-terminology"></a>StorSimple-Terminologie
 Vor dem Bereitstellen Ihrer Microsoft Azure StorSimple-Projektmappe, empfehlen wir, sich mit den folgenden Begriffen und Definitionen vertraut zu machen.

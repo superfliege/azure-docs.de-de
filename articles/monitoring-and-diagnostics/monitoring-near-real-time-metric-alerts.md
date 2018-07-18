@@ -1,39 +1,22 @@
 ---
-title: Neuere Metrikwarnungen in von Azure Monitor unterstützten Ressourcen | Microsoft-Dokumentation
+title: Unterstützte Ressourcen für neuere Azure Monitor-Metrikwarnungen
 description: Referenz zu Supportmetriken und -protokollen für neuere Azure-Metrikwarnungen nahezu in Echtzeit.
 author: snehithm
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 04/27/2018
-ms.author: snmuvva, vinagara
-ms.custom: ''
-ms.openlocfilehash: c4a4a82eedc41b7690af005faecc1505257183ab
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.author: snmuvva
+ms.component: alerts
+ms.openlocfilehash: d5eaa4dafc9c155d3e6f85bc67c578c8a12da7cf
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778112"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264509"
 ---
-# <a name="newer-metric-alerts-for-azure-services-in-the-azure-portal"></a>Neuere Metrikwarnungen für Azure-Dienste im Azure-Portal
-Azure Monitor unterstützt jetzt eine neue Art von Metrikwarnungen. Die neueren Warnungen unterscheiden sich in einigen Punkten von [klassischen Metrikwarnungen](insights-alerts-portal.md):
-
-- **Kürzere Wartezeit:** Neuere Metrikwarnungen können im Minutentakt ausgeführt werden. Ältere Metrikwarnungen werden immer nur alle fünf Minuten ausgeführt. Aufgrund der Zeit, die für die Erfassung der Protokolle benötigt wird, beträgt die Verzögerung bei Protokollwarnungen weiterhin mehr als eine Minute. 
-- **Unterstützung mehrdimensionaler Metriken:** Sie können Warnungen für dimensionale Metriken verwenden, um nur ein bestimmtes interessantes Segment der Metrik zu überwachen. 
-- **Mehr Kontrolle über Metrikbedingungen:** Sie können umfangreichere Warnungsregeln definieren. Die neueren Warnungen unterstützen die Überwachung der maximalen, minimalen und durchschnittlichen Werte sowie der Gesamtwerte der Metriken. 
-- **Kombinierte Überwachung mehrerer Metriken:** Sie können mehrere Metriken (aktuell bis zu zwei) mit einer einzelnen Regel überwachen. Eine Warnung wird ausgelöst, wenn beide Metriken ihren jeweiligen Schwellenwert für den angegebenen Zeitraum überschreiten. 
-- **Besseres Benachrichtigungssystem:** Alle neuere Warnungen verwenden [Aktionsgruppen](monitoring-action-groups.md). Hierbei handelt es sich um benannte Gruppen von Benachrichtigungen und Aktionen, die in mehreren Warnungen wiederverwendet werden können. Klassische Metrikwarnungen und ältere Log Analytics-Warnungen verwenden keine Aktionsgruppen. 
-- **Metriken aus Protokollen** (eingeschränkte Public Preview): Bei Log Analytics eingehende Protokolldaten können jetzt extrahiert und in Azure Monitor-Metriken konvertiert werden. Dadurch können sie genau wie andere Metriken in Warnungen genutzt werden. 
-
-Informationen zum Erstellen einer neueren Metrikwarnung im Azure-Portal finden Sie unter [Erstellen einer Warnungsregel im Azure-Portal](monitor-alerts-unified-usage.md#create-an-alert-rule-with-the-azure-portal). Nach der Erstellung können Sie die Warnung wie unter [Verwalten von Warnungen im Azure-Portal](monitor-alerts-unified-usage.md#managing-your-alerts-in-azure-portal) beschrieben verwalten.
-
+# <a name="supported-metrics-and-creation-methods-for-new-metric-alerts"></a>Unterstützten Metriken und Erstellungsmethoden für neue Metrikwarnungen
+Azure Monitor unterstützt jetzt einen [neuen Metrikwarnungstyp](monitoring-overview-unified-alerts.md), der erhebliche Vorteile gegenüber älteren [klassischen Metrikwarnungen](insights-alerts-portal.md) aufweist. Die älteren Warnungen unterstützen eine [umfangreiche Liste von Metriken](monitoring-supported-metrics.md). Die neueren Warnungen unterstützen eine (wachsende) Teilmenge dieser umfangreicheren Liste. In diesem Artikel wird diese Teilmenge aufgeführt. 
 
 ## <a name="portal-powershell-cli-rest-support"></a>Portal, PowerShell, Befehlszeilenschnittstelle, REST-Unterstützung
 Derzeit können Sie neuere Metrikwarnungen nur im Azure-Portal, in der [REST-API](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate) oder in [Resource Manager-Vorlagen](monitoring-create-metric-alerts-with-templates.md) erstellen. Die Konfiguration neuerer Warnungen über PowerShell und die Azure-Befehlszeilenschnittstelle (Azure CLI 2.0) wird in Kürze unterstützt.

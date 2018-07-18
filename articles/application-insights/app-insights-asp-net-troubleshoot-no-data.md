@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: mobile
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 951a3217d795df6360cd3cfa2d47db08c11f978e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ddc9941792b0c5d8fbf29bfdc698b16a999a3858
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971039"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Problembehandlung ohne Daten – Application Insights für .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Einige meiner Telemetriedaten fehlen
@@ -40,7 +41,7 @@ ms.lasthandoff: 04/28/2018
 *Wenn ich im Projektmappen-Explorer mit der rechten Maustaste auf ein vorhandenes Projekt klicke, werden keine Application Insights-Optionen angezeigt.*
 
 * Nicht alle Typen von .NET-Projekten werden von den Tools unterstützt. Web- und WCF-Projekte werden unterstützt. Für andere Projekttypen, z.B. Desktop- oder Dienstanwendungen, können Sie [Ihrem Projekt trotzdem manuell ein Application Insights SDK hinzufügen](app-insights-windows-desktop.md).
-* Stellen Sie sicher, dass Sie über [Visual Studio 2013 Update 3 oder höher](http://go.microsoft.com/fwlink/?LinkId=397827)verfügen. Darin sind die Developer Analytics-Tools mit dem Application Insights SDK bereits vorinstalliert.
+* Stellen Sie sicher, dass Sie über [Visual Studio 2013 Update 3 oder höher](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs)verfügen. Darin sind die Developer Analytics-Tools mit dem Application Insights SDK bereits vorinstalliert.
 * Wählen Sie **Extras** > **Erweiterungen und Updates** aus, und stellen Sie sicher, dass **Developer Analytics Tools** installiert und aktiviert ist. Wenn dies der Fall ist, klicken Sie auf **Updates** , um zu prüfen, ob ein Update verfügbar ist.
 * Öffnen Sie das Dialogfeld „Neues Projekt“, und wählen Sie die ASP.NET-Webanwendung aus. Wenn die Application Insights-Option hier angezeigt wird, sind die Tools installiert. Wenn nicht, können Sie versuchen, die Application Insights-Tools zu deinstallieren und dann neu zu installieren.
 

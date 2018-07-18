@@ -61,9 +61,9 @@ Kunden von Azure können monatlich 25.000 kostenlose E-Mails freischalten. Mit d
 
 Die Einstellungen für die Zustellung von E-Mails können durch Klicken auf die Schaltfläche **Verwalten** verwaltet werden. Daraufhin werden Sie zum SendGrid-Dashboard umgeleitet.
 
-    ![manage][manage]
+![manage][manage]
 
-    For more information on sending email through SendGrid, visit the [Email API Overview][Email API Overview].
+Weitere Informationen zum Senden von E-Mails über SendGrid finden Sie in der [Übersicht über die E-Mail-API][Email API Overview].
 
 <!--images-->
 

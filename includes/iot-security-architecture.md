@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 62856d4743d853d5685503b5c21faedc46575e55
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6f28df6f2faa78af90fb4b5e62f218e3b391000b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37066083"
 ---
 # <a name="internet-of-things-security-architecture"></a>Internet der Dinge – Sicherheitsarchitektur
 
@@ -28,7 +29,7 @@ Viele Entwicklungsteams leisten hervorragende Arbeit, was die Erfassung der Funk
 
 ### <a name="when-to-threat-model"></a>Zeitpunkt der Erstellung eines Bedrohungsmodells
 
-Die [Bedrohungsmodellierung](http://www.microsoft.com/security/sdl/adopt/threatmodeling.aspx) hat den größten Nutzen, wenn sie in die Entwurfsphase eingebunden wird. Beim Entwerfen haben Sie die größtmögliche Flexibilität, um Änderungen vorzunehmen, mit denen Bedrohungen beseitigt werden sollen. Das gewünschte Ergebnis ist, Bedrohungen standardmäßig zu beseitigen. Dies ist viel einfacher als das Hinzufügen von Abhilfemaßnahmen, das Testen dieser Maßnahmen und die Sicherstellung, dass sie stets aktuell sind. Außerdem ist eine Beseitigung auf diese Art nicht immer möglich. Es wird schwieriger, Bedrohungen zu beseitigen, wenn ein Produkt einen höheren Entwicklungsgrad erreicht. Darüber hinaus sind letztendlich mehr Arbeitsschritte und deutlich mehr Kompromisse als bei der Bedrohungsmodellierung zu einem frühen Zeitpunkt der Entwicklung erforderlich.
+Die [Bedrohungsmodellierung](https://www.microsoft.com/en-us/sdl/adopt/threatmodeling.aspx) hat den größten Nutzen, wenn sie in die Entwurfsphase eingebunden wird. Beim Entwerfen haben Sie die größtmögliche Flexibilität, um Änderungen vorzunehmen, mit denen Bedrohungen beseitigt werden sollen. Das gewünschte Ergebnis ist, Bedrohungen standardmäßig zu beseitigen. Dies ist viel einfacher als das Hinzufügen von Abhilfemaßnahmen, das Testen dieser Maßnahmen und die Sicherstellung, dass sie stets aktuell sind. Außerdem ist eine Beseitigung auf diese Art nicht immer möglich. Es wird schwieriger, Bedrohungen zu beseitigen, wenn ein Produkt einen höheren Entwicklungsgrad erreicht. Darüber hinaus sind letztendlich mehr Arbeitsschritte und deutlich mehr Kompromisse als bei der Bedrohungsmodellierung zu einem frühen Zeitpunkt der Entwicklung erforderlich.
 
 ### <a name="what-to-threat-model"></a>Ausrichtung des Bedrohungsmodells
 

@@ -22,6 +22,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30842243"
 ---
 # <a name="about-the-virtual-machine-agent-and-extensions-for-linux"></a>Informationen zum VM-Agent und zu Erweiterungen für Linux
 > [!IMPORTANT]

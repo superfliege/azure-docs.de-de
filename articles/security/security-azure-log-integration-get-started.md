@@ -12,21 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 02/20/2018
-ms.author: TomSh
+ms.date: 06/07/2018
+ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 3e229c4db44fc3c8d16aa2bd0a014fb1acc64a5e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5aab890340fcdd87e1b3788d8bcca903c43da1da
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235745"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure Log Integration mit Azure-Diagnoseprotokollierung und Windows-Ereignisweiterleitung
 
-Azure Log Integration bietet Kunden eine Alternative, falls kein [Azure Monitor](../monitoring-and-diagnostics/monitoring-get-started.md)-Connector für ihren SIEM-Anbieter (Security Incident and Event Management) verfügbar ist. Azure Log Integration macht Azure-Protokolle für Ihr SIEM verfügbar, damit Sie ein einheitliches Sicherheitsdashboard für alle Ihre Ressourcen erstellen können.
 
-> [!NOTE]
-> Weitere Informationen zu Azure Monitor finden Sie unter [Erste Schritte mit Azure Monitor](../monitoring-and-diagnostics/monitoring-get-started.md). Um weitere Informationen zum Status eines Azure Monitor-Connectors zu erhalten, wenden Sie sich an den SIEM-Anbieter.
+>[!IMPORTANT]
+> Das Feature Azure Log Integration gilt ab dem 01.06.2019 als veraltet. AzLog-Downloads werden ab dem 27. Juni 2018 deaktiviert. Um Unterstützung bei der künftigen Vorgehensweise zu erhalten, lesen Sie den Beitrag [Use Azure Monitor to integrate with SIEM tools](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) (Verwenden von Azure Monitor für die Integration mit SIEM-Tools). 
+
+Sie sollten Azure Log Integration nur nutzen, wenn Ihr SIEM-Anbieter (Security Incident and Event Management) keinen [Azure Monitor](../monitoring-and-diagnostics/monitoring-get-started.md)-Connector zur Verfügung stellt.
+
+Azure Log Integration macht Azure-Protokolle für Ihr SIEM verfügbar, damit Sie ein einheitliches Sicherheitsdashboard für alle Ihre Ressourcen erstellen können.
+Um weitere Informationen zum Status eines Azure Monitor-Connectors zu erhalten, wenden Sie sich an den SIEM-Anbieter.
 
 > [!IMPORTANT]
 > Wenn Ihr Hauptinteresse das Erfassen von Protokollen für virtuelle Computer ist, wird diese Option von den Lösungen der meisten SIEM-Anbieter abgedeckt. Das Verwenden des Connectors des SIEM-Anbieters ist immer die bevorzugte Alternative.
@@ -40,7 +45,7 @@ Der Azure Log Integration-Dienst wird auf einem physischen oder virtuellen Compu
 
 Ein physischer Computer kann lokal oder an einem Hostingstandort ausgeführt werden. Wenn Sie den Azure Log Integration-Dienst auf einem virtuellen Computer ausführen, kann sich der virtuelle Computer an einem lokalen Standort oder in einer öffentlichen Cloud (z.B. in Microsoft Azure) befinden.
 
-Der physische oder virtuelle Computer, der den Azure Log Integration-Dienst ausführt, erfordert Netzwerkverbindungen mit der öffentlichen Azure-Cloud. Dieser Artikel enthält Details zu der erforderlichen Konfiguration.
+Der physische oder virtuelle Computer, der den Azure-Protokollintegrationsdienst ausführt, erfordert Netzwerkverbindungen mit der öffentlichen Azure-Cloud. Dieser Artikel enthält Details zu der erforderlichen Konfiguration.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -118,7 +123,7 @@ Nach Abschluss des grundlegenden Setups sind Sie bereit, die auf die Installatio
   > [!NOTE]
   > Sie erhalten keine Rückmeldung, wenn der Befehl erfolgreich war. 
 
-4. Bevor Sie ein System überwachen können, benötigen Sie den Namen des Speicherkontos, das für die Azure-Diagnose verwendet wird. Navigieren Sie im Azure-Portal zu **Virtuelle Computer**. Suchen Sie nach dem virtuellen Computer, den Sie überwachen. Wählen Sie im Abschnitt **Eigenschaften** die Option **Diagnoseeinstellungen** aus.  Wählen Sie dann **Agent** aus. Notieren Sie sich den angegebenen Namen des Speicherkontos. Dieser Kontoname ist in einem späteren Schritt erforderlich.
+4. Bevor Sie ein System überwachen können, benötigen Sie den Namen des Speicherkontos, das für die Azure-Diagnose verwendet wird. Navigieren Sie im Azure-Portal zu **Virtuelle Computer**. Suchen Sie den virtuellen Windows-Computer, den Sie überwachen möchten. Wählen Sie im Abschnitt **Eigenschaften** die Option **Diagnoseeinstellungen** aus.  Wählen Sie dann **Agent** aus. Notieren Sie sich den angegebenen Namen des Speicherkontos. Dieser Kontoname ist in einem späteren Schritt erforderlich.
 
   ![Screenshot des Bereichs „Azure-Diagnoseeinstellungen“](./media/security-azure-log-integration-get-started/storage-account-large.png) 
 
@@ -134,14 +139,14 @@ Nach Abschluss des grundlegenden Setups sind Sie bereit, die auf die Installatio
   4. Melden Sie sich bei Azure an.
   5. Überprüfen Sie, ob das Speicherkonto angezeigt wird, das Sie für die Azure-Diagnose konfiguriert haben: 
 
-    ![Screenshot des Speicherkontos in Storage-Explorer](./media/security-azure-log-integration-get-started/storage-explorer.png)
+   ![Screenshot des Speicherkontos in Storage-Explorer](./media/security-azure-log-integration-get-started/storage-explorer.png)
 
   6. Einige Optionen werden unter den Speicherkonten angezeigt. Unter **Tabellen** sollte eine Tabelle mit der Bezeichnung **WADWindowsEventLogsTable** angezeigt werden.
 
   Wenn die Überwachung beim Erstellen des virtuellen Computers nicht aktiviert war, können Sie sie wie weiter oben beschrieben aktivieren.
 
 
-## <a name="integrate-azure-diagnostics-logging"></a>Integrieren der Azure-Diagnoseprotokollierung
+## <a name="integrate-windows-vm-logs"></a>Integrieren von Windows-VM-Protokollen
 
 In diesem Schritt konfigurieren Sie den Computer, auf dem der Azure Log Integration-Dienst ausgeführt wird, um eine Verbindung mit dem Speicherkonto herzustellen, das die Protokolldateien enthält.
 
@@ -178,7 +183,7 @@ Führen Sie die folgenden Schritte aus, um den Speicherschlüssel abzurufen:
 
   `Azlog source add <FriendlyNameForTheSource>.<SubscriptionID> WAD <StorageAccountName> <StorageKey>`
   
-  Beispiel: 
+  Beispiel:
   
   `Azlog source add Azlogtest.YourSubscriptionID WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==`
 
@@ -207,8 +212,37 @@ Wenn während der Installation und Konfiguration Probleme auftreten, können Sie
 
 Eine weitere Supportoption ist das [MSDN-Forum für Azure Log Integration](https://social.msdn.microsoft.com/Forums/home?forum=AzureLogIntegration). Im MSDN-Forum kann die Community Unterstützung bieten, indem sie Fragen beantwortet und Tipps und Tricks zur optimalen Nutzung von Azure Log Integration weitergibt. Das Azure Log Integration-Team überwacht dieses Forum ebenfalls. Die Mitglieder dieses Teams helfen, wann immer sie können.
 
+## <a name="integrate-azure-activity-logs"></a>Integrieren von Azure-Aktivitätsprotokollen
+
+Das Azure-Aktivitätsprotokoll ist ein Abonnementprotokoll, das Einblicke in Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Dies schließt einen Datenbereich von Azure Resource Manager-Betriebsdaten bis hin zu Aktualisierungen für Dienstintegritätsereignisse ein. Die Azure Security Center-Warnungen sind ebenfalls in diesem Protokoll enthalten.
+> [!NOTE]
+> Zur Vorbereitung auf die Schritte in diesem Artikel müssen zunächst die Schritte im Artikel [Erste Schritte](security-azure-log-integration-get-started.md) ausgeführt werden.
+
+### <a name="steps-to-integrate-azure-activity-logs"></a>Schritte zum Integrieren von Azure-Aktivitätsprotokollen
+
+1. Öffnen Sie die Eingabeaufforderung, und führen Sie diesen Befehl aus: ```cd c:\Program Files\Microsoft Azure Log Integration```
+2. Führen Sie diesen Befehl aus: ```azlog createazureid```
+
+    Dabei werden Sie zur Angabe Ihrer Azure-Anmeldeinformationen aufgefordert. Anschließend wird in den Azure AD-Mandanten, die die Azure-Abonnements hosten, in denen der angemeldete Benutzer als Administrator, Co-Administrator oder Besitzer fungiert, ein Azure Active Directory-Dienstprinzipal erstellt. Handelt es sich bei dem angemeldeten Benutzer nur um einen Gastbenutzer des Azure AD-Mandanten, tritt bei dem Befehl ein Fehler auf. Die Authentifizierung gegenüber Azure wird über Azure AD durchgeführt. Beim Erstellen eines Dienstprinzipals für die Azure-Protokollintegration wird die Azure AD-Identität erstellt, die Lesezugriff auf Azure-Abonnements erhält.
+3.  Führen Sie den folgenden Befehl aus, um den im vorherigen Schritt erstellten Azure Log Integration-Dienstprinzipal zum Lesen des Aktivitätsprotokolls für das Abonnement zu autorisieren. Sie müssen ein Besitzer des Abonnements sein, um den Befehl ausführen zu können.
+
+    ```Azlog.exe authorize subscriptionId``` Beispiel:
+
+```AZLOG.exe authorize ba2c2367-d24b-4a32-17b5-4443234859```
+4.  Überprüfen Sie die folgenden Ordner, um sicherzustellen, dass die JSON-Dateien des Azure Active Directory-Überwachungsprotokolls in ihnen erstellt wurden:
+    - C:\Users\azlog\AzureResourceManagerJson
+    - C:\Users\azlog\AzureResourceManagerJsonLD
+
+> [!NOTE]
+> Sie müssen sich an Ihren SIEM-Anbieter wenden, um spezifische Anweisungen zum Übertragen der Informationen in den JSON-Dateien in Ihr SIEM-System (Security Information and Event Management) zu erhalten.
+
+Unterstützung durch die Community ist über das [MSDN-Forum für die Azure-Protokollintegration](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration) verfügbar. In diesem Forum kann sich die Community der Azure-Protokollintegration gegenseitig mit Fragen, Antworten, Tipps und Tricks unterstützen. Darüber hinaus überwacht das Team für die Azure-Protokollintegration dieses Forum und bietet nach Möglichkeit entsprechende Hilfe an.
+
+Sie können zudem eine [Supportanfrage](../azure-supportability/how-to-create-azure-support-request.md) öffnen. Wählen Sie „Log Integration“ als Dienst aus, für den Sie Support anfordern.
+
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Azure Log Integration finden Sie in den folgenden Artikeln:
+
+Weitere Informationen zu Azure Log Integration finden Sie in den folgenden Artikeln: Zur Vorbereitung auf die Schritte in diesem Artikel müssen zunächst die im Artikel „Erste Schritte“ genannten Schritte ausgeführt werden.
 
 * [Microsoft Azure Log Integration for Azure logs](https://www.microsoft.com/download/details.aspx?id=53324) (Microsoft Azure Log Integration für Azure-Protokolle, in englischer Sprache). Diese Seite im Download Center bietet Details, Systemanforderungen und Installationsanweisungen für Azure Log Integration.
 * [Einführung in Azure Log Integration](security-azure-log-integration-overview.md). Dieser Artikel stellt Azure Log Integration, die wichtigsten Funktionen sowie die Funktionsweise vor.

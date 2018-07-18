@@ -1,6 +1,6 @@
 ---
-title: "Sensible Daten – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation"
-description: "Gegenmaßnahmen für durch das Threat Modeling-Tool offengelegte Gefahren"
+title: Sensible Daten – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
+description: Gegenmaßnahmen für durch das Threat Modeling Tool offengelegte Gefahren
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 8d7189ea4b01d43cea709e3300d8ed71d266f5c9
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: bfc1e8dd6acf2cba5b4622785aa3714a7ff037c9
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031803"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Sicherheitsrahmen: Sensible Daten | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
 | **Computer-Vertrauensstellungsgrenze** | <ul><li>[Sicherstellen, dass Binärdateien verschleiert werden, wenn sie sensible Informationen enthalten](#binaries-info)</li><li>[Erwägen der Verwendung von Encrypted File System (EFS) zum Schützen von vertraulichen benutzerspezifischen Daten](#efs-user)</li><li>[Sicherstellen, dass von der Anwendung im Dateisystem gespeicherte sensible Daten verschlüsselt sind](#filesystem)</li></ul> | 
-| **Webanwendung** | <ul><li>[Sicherstellen, dass sensible Inhalte nicht im Browser zwischengespeichert werden](#cache-browser)</li><li>[Verschlüsseln von Abschnitten der Web-App-Konfigurationsdateien, die sensible Daten enthalten](#encrypt-data)</li><li>[Explizites Deaktivieren des autocomplete-HTML-Attributs in sensiblen Formularen und Eingabeumgebungen](#autocomplete-input)</li><li>[Sicherstellen, dass auf dem Benutzerbildschirm angezeigte sensible Daten maskiert sind](#data-mask)</li></ul> | 
+| **Web Application** | <ul><li>[Sicherstellen, dass sensible Inhalte nicht im Browser zwischengespeichert werden](#cache-browser)</li><li>[Verschlüsseln von Abschnitten der Web-App-Konfigurationsdateien, die sensible Daten enthalten](#encrypt-data)</li><li>[Explizites Deaktivieren des autocomplete-HTML-Attributs in sensiblen Formularen und Eingabeumgebungen](#autocomplete-input)</li><li>[Sicherstellen, dass auf dem Benutzerbildschirm angezeigte sensible Daten maskiert sind](#data-mask)</li></ul> | 
 | **Datenbank** | <ul><li>[Implementieren der dynamischen Datenmaskierung zum Beschränken der Offenlegung von sensiblen Daten für Benutzer ohne Berechtigungen](#dynamic-users)</li><li>[Sicherstellen, dass Kennwörter im Salt-Hashformat gespeichert werden](#salted-hash)</li><li>[Sicherstellen, dass sensible Daten in Datenbankspalten verschlüsselt sind](#db-encrypted)</li><li>[Sicherstellen, dass die Verschlüsselung auf Datenbankebene (TDE) aktiviert ist](#tde-enabled)</li><li>[Sicherstellen, dass Datenbanksicherungen verschlüsselt sind](#backup)</li></ul> | 
 | **Web-API** | <ul><li>[Sicherstellen, dass für die Web-API relevante sensible Daten nicht im Speicher des Browsers gespeichert werden](#api-browser)</li></ul> | 
 | Azure DocumentDB | <ul><li>[Verschlüsseln sensibler Daten, die in Azure Cosmos DB gespeichert werden](#encrypt-docdb)</li></ul> | 
@@ -409,7 +410,7 @@ Falls die Anwendung keine Unternehmensanwendung ist, sollten Sie den von der Pla
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | .NET Framework 3 |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [Fortify](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Referenzen**              | [Fortify](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_token) |
 | **Schritte** | Bei der Verwendung eines UsernameToken mit einem Kennwort als Klartext über einen nicht verschlüsselten Kanal ist das Kennwort für Angreifer zugänglich, die die SOAP-Nachrichten ausspionieren können. Unter Umständen akzeptieren Service Providers, die UsernameToken verwenden, in Klartext gesendete Kennwörter. Beim Senden von Kennwörtern als Klartext über einen nicht verschlüsselten Kanal können die Anmeldeinformationen für Angreifer zugänglich sein, die die SOAP-Nachricht ausspionieren können. | 
 
 ### <a name="example"></a>Beispiel
@@ -428,7 +429,7 @@ Legen Sie „clientCredentialType“ auf „Certificate“ oder „Windows“ fe
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Generisch, .NET Framework 3 |
 | **Attribute**              | Sicherheitsmodus: Transport, Sicherheitsmodus: Nachricht |
-| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html), [Fundamentals of WCF Security CoDe Magazine](http://www.codemag.com/article/0611051) (Grundlagen der WCF-Sicherheit – CoDe Magazine) |
+| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_security_not_enabled), [Fundamentals of WCF Security CoDe Magazine](http://www.codemag.com/article/0611051) (Grundlagen der WCF-Sicherheit – CoDe Magazine) |
 | **Schritte** | Es wurde keine Transport- oder Nachrichtensicherheit definiert. Für Anwendungen, die Nachrichten ohne Transport- oder Nachrichtensicherheit übertragen, kann die Integrität oder Vertraulichkeit der Nachrichten nicht garantiert werden. Wenn eine WCF-Sicherheitsbindung auf „None“ festgelegt ist, wird sowohl die Transport- als auch die Nachrichtensicherheit deaktiviert. |
 
 ### <a name="example"></a>Beispiel

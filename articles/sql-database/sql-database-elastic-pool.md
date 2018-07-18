@@ -7,15 +7,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.date: 04/10/2018
+ms.date: 06/20/2018
 ms.author: ninarn
-ms.topic: article
-ms.openlocfilehash: ecf9450271e82132b0f31fd0c65ce95d95c2cb3d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.topic: conceptual
+ms.openlocfilehash: 5ef32b231a77906a6840ad3550e81b631ddc0c13
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195463"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309653"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren mehrerer Azure SQL-Datenbank-Instanzen
 
@@ -104,7 +104,7 @@ Die optimale Größe eines Pools hängt von den zusammengefassten Ressourcen ab,
 
 Verfügbare Dienstebenen für jedes Ressourcenmodell finden Sie im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) oder im [V-Kern-basierten Kaufmodell (Vorschauversion)](sql-database-service-tiers-vcore.md).
 
-SQL-Datenbank ermittelt automatisch den Verlauf der Ressourcennutzung von Datenbanken auf einem vorhandenen SQL-Datenbank-Server und empfiehlt eine geeignete Poolkonfiguration im Azure-Portal. Zusätzlich zu den Empfehlungen enthält die Datenbank eine integrierte Funktion, mit der die eDTU-Nutzung einer benutzerdefinierten Gruppe von Datenbanken auf dem Server geschätzt wird. Dadurch können Sie eine Was-wäre-wenn-Analyse durchführen, indem Sie interaktiv Datenbanken zum Pool hinzufügen und entfernen. So können Sie die Ressourcennutzung ermitteln und eine Orientierungshilfe für die Größenanpassung erhalten, bevor Sie Ihre Veränderungen committen. Eine Anleitung finden Sie unter [Überwachen, Verwalten und Skalieren eines Pools für elastische Datenbanken](sql-database-elastic-pool-manage-portal.md).
+SQL-Datenbank ermittelt automatisch den Verlauf der Ressourcennutzung von Datenbanken auf einem vorhandenen SQL-Datenbank-Server und empfiehlt eine geeignete Poolkonfiguration im Azure-Portal. Zusätzlich zu den Empfehlungen enthält die Datenbank eine integrierte Funktion, mit der die eDTU-Nutzung einer benutzerdefinierten Gruppe von Datenbanken auf dem Server geschätzt wird. Dadurch können Sie eine Was-wäre-wenn-Analyse durchführen, indem Sie interaktiv Datenbanken zum Pool hinzufügen und entfernen. So können Sie die Ressourcennutzung ermitteln und eine Orientierungshilfe für die Größenanpassung erhalten, bevor Sie Ihre Veränderungen committen. Eine Anleitung finden Sie unter [Überwachen, Verwalten und Skalieren eines Pools für elastische Datenbanken](#monitor-an-elastic-pool-and-its-databases).
 
 Wenn Sie keine Tools verwenden können, kann Ihnen die folgende Anleitung dabei helfen, einzuschätzen, ob ein Pool kostengünstiger als eine einzelne Datenbank ist:
 
@@ -138,9 +138,7 @@ In einem Pool zusammengefasste Datenbanken unterstützen in der Regel die gleich
 
 - **Aktive Georeplikation**: Für Anwendungen, für die umfangreichere Wiederherstellungsanforderungen erforderlich sind, als die Geowiederherstellung bieten kann, konfigurieren Sie [aktive Georeplikation](sql-database-geo-replication-overview.md).
 
-## <a name="manage-elastic-pools-and-databases-using-the-azure-portal"></a>Verwalten von Pools für elastische Datenbanken und von Datenbanken im Azure-Portal
-
-### <a name="creating-a-new-sql-database-elastic-pool-using-the-azure-portal"></a>Erstellen eines neuen Pools für elastische SQL-Datenbank-Instanzen im Azure-Portal
+## <a name="creating-a-new-sql-database-elastic-pool-using-the-azure-portal"></a>Erstellen eines neuen Pools für elastische SQL-Datenbank-Instanzen im Azure-Portal
 
 Zur Erstellung eines Pools für elastische Datenbanken im Azure-Portal gibt es zwei Möglichkeiten.
 1. Sie können einen Pool für elastische Datenbanken erstellen, indem Sie im **Marketplace** nach **Elastischer SQL-Pool** suchen oder auf dem Navigationsblatt „Elastische SQL-Pools“ auf **+Hinzufügen** klicken. Im Rahmen dieses Poolbereitstellungsworkflows können Sie einen neuen oder einen bereits vorhandenen Server angeben.
@@ -149,13 +147,13 @@ Zur Erstellung eines Pools für elastische Datenbanken im Azure-Portal gibt es z
 > [!NOTE]
 > Auf einem Server können mehrere Pools erstellt werden, es ist jedoch nicht möglich, Datenbanken von verschiedenen Servern im gleichen Pool zusammenzufassen.
 
-Die Dienstebene des Pools bestimmt die Features für die elastischen Datenbanken im Pool sowie die für jede Datenbank verfügbare maximale Menge der Ressourcen. Ausführliche Informationen finden Sie in den Ressourceneinschränkungen für Pools für elastische Datenbanken im [DTU-Modell](sql-database-dtu-resource-limits.md#elastic-pool-storage-sizes-and-performance-levels) und im [V-Kern-Modell](sql-database-vcore-resource-limits.md#elastic-pool-storage-sizes-and-performance-levels).
+Die Dienstebene des Pools bestimmt die Features für die elastischen Datenbanken im Pool sowie die für jede Datenbank verfügbare maximale Menge der Ressourcen. Ausführliche Informationen finden Sie in den Ressourceneinschränkungen für Pools für elastische Datenbanken im [DTU-Modell](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-performance-levels). Informationen zu V-Kern-basierte Ressourceneinschränkungen für Pools für elastische Datenbanken finden Sie unter [V-Kern-basierte Ressourceneinschränkungen – Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md).
 
 Zum Konfigurieren der Ressourcen und Preise des Pools klicken Sie auf **Pool konfigurieren**. Wählen Sie dann eine Dienstebene aus, fügen Sie den Pool Datenbanken hinzu, und konfigurieren Sie die Ressourceneinschränkungen für den Pool und seine Datenbanken.
 
 Wenn Sie die Konfiguration des Pools abgeschlossen haben, können Sie auf „Anwenden“ klicken, dem Pool einen Namen geben und auf „OK“ klicken, um den Pool zu erstellen.
 
-### <a name="monitor-an-elastic-pool-and-its-databases"></a>Überwachen eines Pools für elastische Datenbanken und der zugehörigen Datenbanken
+## <a name="monitor-an-elastic-pool-and-its-databases"></a>Überwachen eines Pools für elastische Datenbanken und der zugehörigen Datenbanken
 
 Im Azure-Portal können Sie die Verwendung eines Pools für elastische Datenbanken sowie der darin enthaltenen Datenbanken überwachen. Außerdem können Sie einen Änderungssatz für Ihren Pool für elastische Datenbanken erstellen und alle Änderungen gleichzeitig übermitteln. So können Sie etwa Datenbanken hinzufügen oder entfernen, die Einstellungen des Pools für elastische Datenbanken ändern oder Ihre Datenbankeinstellungen anpassen.
 
@@ -174,13 +172,13 @@ Wenn Sie die Datenbanken in Ihrem Pool überwachen möchten, klicken Sie links i
 
 ![Seite „Datenbank-Ressourcennutzung“](./media/sql-database-elastic-pool-manage-portal/db-utilization.png)
 
-#### <a name="to-customize-the-chart-display"></a>So passen Sie die Darstellung des Diagramms an
+### <a name="to-customize-the-chart-display"></a>So passen Sie die Darstellung des Diagramms an
 
 Sie können das Diagramm und die Metrikseite bearbeiten, um andere Metriken wie etwa die prozentuale Verwendung von CPU, Daten-E/A und Protokoll-E/A anzuzeigen.
 
 Auf dem Formular **Diagramm bearbeiten** können Sie einen festen Zeitbereich auswählen oder auf **benutzerdefiniert** klicken, um ein beliebiges 24-Stunden-Fenster in den vergangenen zwei Wochen auszuwählen, und dann die zu überwachenden Ressourcen auswählen.
 
-#### <a name="to-select-databases-to-monitor"></a>So wählen Sie die zu überwachenden Datenbanken aus
+### <a name="to-select-databases-to-monitor"></a>So wählen Sie die zu überwachenden Datenbanken aus
 
 Standardmäßig zeigt das Diagramm auf dem Blatt **Datenbank-Ressourcennutzung** die fünf wichtigsten Datenbanken nach DTU oder CPU (je nach Ihrer Dienstebene) an. Sie können die Anzeige der Datenbanken in diesem Diagramm verändern, indem Sie in der Liste unter dem Diagramm mithilfe der Kontrollkästchen auf der linken Seite Datenbanken auswählen oder deren Auswahl aufheben.
 
@@ -188,104 +186,9 @@ Sie können auch weitere Metriken zur parallelen Anzeige in dieser Datenbanktabe
 
 Weitere Informationen finden Sie unter [Erstellen von SQL-Datenbankwarnungen im Azure-Portal](sql-database-insights-alerts-portal.md).
 
-### <a name="manage-an-elastic-pool-and-its-databases"></a>Verwalten eines Pools für elastische Datenbanken und der zugehörigen Datenbanken
-
-Alle Pooleinstellungen befinden sich an einem Ort: dem Blatt **Pool konfigurieren**. Zum Aufrufen dieses Blatts suchen Sie im Portal einen Pool für elastische Datenbanken und klicken entweder oben auf dem Blatt oder im Ressourcenmenü auf der linken Seite auf **Pool konfigurieren**.
-
-Hier können Sie eine beliebige Kombination aus den folgenden Änderungen vornehmen und alle in einem Batch speichern:
-1. Ändern der Dienstebene des Pools
-2. Herauf- oder Herunterskalieren der Leistung (DTU oder V-Kerne)
-3. Hinzufügen oder Entfernen von Datenbanken im Pool
-4. Festlegen einer minimalen (garantierten) und maximalen Leistungsgrenze für die Datenbanken in den Pools
-5. Überprüfen der Kostenzusammenfassung, um alle Änderungen an Ihrer Rechnung anzuzeigen, die sich durch die neue Auswahl ergeben
-
-![Konfigurationsblatt eines Pools für elastische Datenbanken](./media/sql-database-elastic-pool-manage-portal/configure-pool.png)
-
-## <a name="manage-elastic-pools-and-databases-using-powershell"></a>Verwalten von Pools für elastische Datenbanken und von Datenbanken mit PowerShell
-
-Verwenden Sie zum Erstellen und Verwalten von Pools für elastische SQL-Datenbank-Instanzen mithilfe von Azure PowerShell die folgenden PowerShell-Cmdlets. Wenn Sie PowerShell installieren oder upgraden müssen, helfen Ihnen die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) weiter. Informationen zum Erstellen und Verwalten von Datenbanken, Servern und Firewallregeln finden Sie unter [Erstellen und Verwalten von Azure SQL-Datenbankservern und -datenbanken mit PowerShell](sql-database-servers-databases.md#manage-azure-sql-servers-databases-and-firewalls-using-powershell).
-
-> [!TIP]
-> PowerShell-Beispielskripts finden Sie unter [Erstellen von Pools für elastische Datenbanken und Verschieben von Datenbanken zwischen Pools und aus einem Pool heraus mit PowerShell](scripts/sql-database-move-database-between-pools-powershell.md) und [Verwenden von PowerShell zum Überwachen und Skalieren eines Pools für elastische SQL-Datenbanken in der Azure SQL-Datenbank](scripts/sql-database-monitor-and-scale-pool-powershell.md).
->
-
-| Cmdlet | BESCHREIBUNG |
-| --- | --- |
-|[New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool)|Erstellt einen Pool für elastische Datenbanken für eine logische SQL Server-Instanz.|
-|[Get-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/get-azurermsqlelasticpool)|Ruft Pools für elastische Datenbanken und ihre Eigenschaftswerte für eine logische SQL Server-Instanz ab.|
-|[Set-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/set-azurermsqlelasticpool)|Ändert Eigenschaften eines Pools für elastische Datenbanken für eine logische SQL Server-Instanz. Verwenden Sie z.B. die **StorageMB**-Eigenschaft zum Ändern der maximalen Speicherkapazität eines Pools für elastische Datenbanken.|
-|[Remove-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/remove-azurermsqlelasticpool)|Löscht einen Pool für elastische Datenbanken aus einer logische SQL Server-Instanz.|
-|[Get-AzureRmSqlElasticPoolActivity](/powershell/module/azurerm.sql/get-azurermsqlelasticpoolactivity)|Ruft den Status von Vorgängen für einen Pool für elastische Datenbanken für eine logische SQL Server-Instanz ab.|
-|[New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase)|Erstellt eine neue Datenbank in einem vorhandenen Pool oder als einzelne Datenbank. |
-|[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)|Ruft mindestens eine Datenbank ab.|
-|[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase)|Legt Eigenschaften für eine Datenbank fest oder verschiebt eine vorhandene Datenbank in, aus oder zwischen Pools für elastische Datenbanken.|
-|[Remove-AzureRmSqlDatabase](/powershell/module/azurerm.sql/remove-azurermsqldatabase)|Entfernt eine Datenbank.|
-
-
-> [!TIP]
-> Das Erstellen zahlreicher Datenbanken in einem Pool für elastische Datenbanken kann eine Weile dauern, wenn dies über das Portal oder über PowerShell-Cmdlets erfolgt, die jeweils nur eine Einzeldatenbank erstellen. Informationen zum Automatisieren der Erstellung in einem Pool für elastische Datenbanken finden Sie unter [CreateOrUpdateElasticPoolAndPopulate](https://gist.github.com/billgib/d80c7687b17355d3c2ec8042323819ae).
->
-
-## <a name="manage-elastic-pools-and-databases-using-the-azure-cli"></a>Verwalten von Pools für elastische Datenbanken und von Datenbanken mit der Azure-Befehlszeilenschnittstelle
-
-Verwenden Sie zum Erstellen und Verwalten von Pools für elastische SQL-Datenbank-Instanzen mithilfe der [Azure CLI](/cli/azure) die folgenden [Azure CLI-SQL-Datenbank](/cli/azure/sql/db)-Befehle. Führen Sie die CLI mithilfe von [Cloud Shell](/azure/cloud-shell/overview) in Ihrem Browser aus, oder [installieren](/cli/azure/install-azure-cli) Sie sie unter macOS, Linux oder Windows.
-
-> [!TIP]
-> Azure CLI-Beispielskripts finden Sie unter [Verwenden der Azure CLI zum Verschieben einer Azure SQL-Datenbank in einen Pool für elastische SQL-Datenbanken ](scripts/sql-database-move-database-between-pools-cli.md) und [Verwenden der Azure CLI zum Skalieren eines Pools für elastische SQL-Datenbanken in Azure SQL-Datenbank](scripts/sql-database-scale-pool-cli.md).
->
-
-| Cmdlet | BESCHREIBUNG |
-| --- | --- |
-|[az sql elastic-pool create](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_create)|Erstellt einen Pool für elastische Datenbanken.|
-|[az sql elastic-pool list](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list)|Gibt eine Liste der Pools für elastische Datenbanken auf einem Server zurück.|
-|[az sql elastic-pool list-dbs](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list_dbs)|Gibt eine Liste der Datenbanken in einem Pool für elastische Datenbanken zurück.|
-|[az sql elastic-pool list-editions](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list_editions)|Umfasst auch verfügbare DTU-Einstellungen, Speicherlimits und datenbankbezogene Einstellungen für den Pool. Zum Verringern der Ausführlichkeit sind zusätzliche Speicherlimits und datenbankbezogene Einstellungen standardmäßig ausgeblendet.|
-|[az sql elastic-pool update](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update)|Aktualisiert einen Pool für elastische Datenbanken.|
-|[az sql elastic-pool delete](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_delete)|Löscht den Pool für elastische Datenbanken.|
-
-## <a name="manage-databases-within-elastic-pools-using-transact-sql"></a>Verwalten von Datenbanken in Pools für elastische Datenbanken mit Transact-SQL
-
-Verwenden Sie die folgenden T-SQL-Befehle zum Erstellen und Verschieben von Datenbanken in vorhandenen Pools für elastische Datenbanken oder zum Zurückgeben von Informationen zu einem Pool für elastische SQL-Datenbank-Instanzen mit Transact-SQL. Sie können diese Befehle mit dem Azure-Portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio Code](https://code.visualstudio.com/docs) oder einem beliebigen anderen Programm ausführen, mit dem eine Verbindung mit einem Azure SQL-Datenbankserver hergestellt und Transact-SQL-Befehle übergeben werden können. Informationen zum Erstellen und Verwalten von Datenbanken, Servern und Firewallregeln finden Sie unter [Erstellen und Verwalten von Azure SQL-Datenbankservern und -datenbanken mit Transact-SQL](sql-database-servers-databases.md#manage-azure-sql-servers-databases-and-firewalls-using-transact-sql).
-
-> [!IMPORTANT]
-> Mit Transact-SQL können Sie einen Pool für elastische Azure SQL-Datenbank-Instanzen nicht erstellen, aktualisieren oder löschen. Sie können Datenbanken einem Pool für elastische Datenbanken hinzufügen oder daraus entfernen und mithilfe von DMVs Informationen zu vorhandenen Pools für elastische Datenbanken zurückgeben.
->
-
-| Get-Help | BESCHREIBUNG |
-| --- | --- |
-|[CREATE DATABASE (Azure SQL-Datenbank)](/sql/t-sql/statements/create-database-azure-sql-database)|Erstellt eine neue Datenbank in einem vorhandenen Pool oder als einzelne Datenbank. Sie müssen über eine Verbindung mit der Masterdatenbank verfügen, um eine neue Datenbank erstellen zu können.|
-| [ALTER DATABASE (Azure SQL-Datenbank)](/sql/t-sql/statements/alter-database-azure-sql-database) |Dient zum Verschieben einer Datenbank in, aus oder zwischen Pools für elastische Datenbanken.|
-|[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Löscht eine Datenbank.|
-|[sys.elastic_pool_resource_stats (Azure SQL-Datenbank)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|Gibt Ressourcenverwendungsstatistiken für alle Pools für elastische Datenbanken in einem logischen Server zurück. Für jeden Pool für elastische Datenbanken gibt es für jedes 15-sekündige Berichtszeitfenster eine Zeile (vier Zeilen pro Minute). Dies umfasst CPU-, E/A-, Protokoll-, Speicher- und gleichzeitige Anforderungs-/Sitzungsauslastung durch alle Datenbanken im Pool.|
-|[sys.database_service_objectives (Azure SQL-Datenbank)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Gibt die Edition (Dienstebene), das Dienstziel (Tarif) und den Namen des Pools für elastische Datenbanken, falls vorhanden, für eine Azure SQL-Datenbank oder ein Azure SQL Data Warehouse zurück. Wenn eine Anmeldung an der Masterdatenbank in einem Azure SQL-Datenbankserver besteht, werden Informationen zu allen Datenbanken zurückgegeben. Für Azure SQL Data Warehouse müssen Sie über eine Verbindung mit der Masterdatenbank verfügen.|
-
-## <a name="manage-elastic-pools-and-databases-using-the-rest-api"></a>Verwalten von Pools für elastische Datenbanken und von Datenbanken mit der REST-API
-
-Verwenden Sie zum Erstellen und Verwalten von Pools für elastische SQL-Datenbank-Instanzen diese REST-API-Anforderungen.
-
-| Get-Help | BESCHREIBUNG |
-| --- | --- |
-|[Pools für elastische Datenbanken – Erstellen oder Aktualisieren](/rest/api/sql/elasticpools/createorupdate)|Erstellt einen neuen Pool für elastische Datenbanken oder aktualisiert einen vorhandenen elastischen Pool für elastische Datenbanken|
-|[Pools für elastische Datenbanken – Löschen](/rest/api/sql/elasticpools/delete)|Löscht den Pool für elastische Datenbanken.|
-|[Pools für elastische Datenbanken – Abrufen](/rest/api/sql/elasticpools/get)|Ruft einen Pool für elastische Datenbanken ab|
-|[Pools für elastische Datenbanken – Auflisten nach Server](/rest/api/sql/elasticpools/listbyserver)|Gibt eine Liste der Pools für elastische Datenbanken auf einem Server zurück.|
-|[Pools für elastische Datenbanken – Aktualisieren](/rest/api/sql/elasticpools/update)|Aktualisiert einen vorhandenen Pool für elastische Datenbanken|
-|[Empfohlene Pools für elastische Datenbanken – Abrufen](/rest/api/sql/recommendedelasticpools/get)|Ruft einen empfohlenen Pool für elastische Datenbanken ab.|
-|[Empfohlene Pools für elastische Datenbanken – Auflisten nach Server](/rest/api/sql/recommendedelasticpools/listbyserver)|Gibt empfohlene Pools für elastische Datenbanken zurück|
-|[Empfohlene Pools für elastische Datenbanken – Auflisten von Metriken](/rest/api/sql/recommendedelasticpools/listmetrics)|Gibt Metriken zu empfohlenen Pools für elastische Datenbanken zurück.|
-|[Pool für elastische Datenbanken – Aktivitäten](/rest/api/sql/elasticpoolactivities)|Gibt Aktivitäten des Pools für elastische Datenbanken zurück|
-|[Pool für elastische Datenbanken – Datenbankaktivitäten](/rest/api/sql/elasticpooldatabaseactivities)|Gibt Aktivitäten in Datenbanken in einem Pool für elastische Datenbanken zurück|
-|[Datenbanken – Erstellen oder Aktualisieren](/rest/api/sql/databases/createorupdate)|Erstellt eine neue Datenbank oder aktualisiert eine bereits vorhandene Datenbank|
-|[Datenbanken – Abrufen](/rest/api/sql/databases/get)|Ruft eine Datenbank ab|
-|[Datenbanken – Abrufen nach Pool für elastische Datenbanken](/rest/api/sql/databases/getbyelasticpool)|Ruft eine Datenbank in einem Pool für elastische Datenbanken ab|
-|[Datenbanken – Abrufen nach empfohlenem Pool für elastische Datenbanken](/rest/api/sql/databases/getbyrecommendedelasticpool)|Ruft eine Datenbank in einem empfohlenen Pool für elastische Datenbanken ab.|
-|[Datenbanken – Auflisten nach Pool für elastische Datenbanken](/rest/api/sql/databases/listbyelasticpool)|Gibt eine Liste der Datenbanken in einem Pool für elastische Datenbanken zurück.|
-|[Datenbanken – Auflisten nach empfohlenem Pool für elastische Datenbanken](/rest/api/sql/databases/listbyrecommendedelasticpool)|Gibt eine Liste von Datenbanken in einem empfohlenen Pool für elastische Datenbanken zurück.|
-|[Datenbanken – Auflisten nach Server](/rest/api/sql/databases/listbyserver)|Gibt eine Liste der Datenbanken auf einem Server zurück|
-|[Datenbanken – Aktualisieren](/rest/api/sql/databases/update)|Aktualisiert eine vorhandene Datenbank|
-
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Informationen zum Skalieren von Pools für elastische Datenbanken finden Sie unter [Skalieren von Pools für elastische Datenbanken](sql-database-elastic-pool.md) und [Skalieren eines Pools für elastische Datenbanken – Beispielcode](scripts/sql-database-monitor-and-scale-pool-powershell.md).
 * Ein Video finden Sie unter [Microsoft Virtual Academy video course on Azure SQL Database elastic capabilities](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554) (Microsoft Virtual Academy-Videokurs zu Funktionen elastischer Datenbanken in Azure SQL-Datenbank).
 * Weitere Informationen zu Entwurfsmustern für SaaS-Anwendungen, für die Pools für elastische Datenbanken verwendet werden, finden Sie unter [Entwurfsmuster für SaaS-Anwendungen mit mehreren Mandanten und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 * Ein SaaS-Tutorial, in dem Pools für elastische Datenbanken verwendet werden, finden Sie in der [Einführung in die SaaS-Anwendung Wingtip](sql-database-wtp-overview.md).

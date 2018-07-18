@@ -1,11 +1,11 @@
 ---
 title: Optimieren des Azure-Codes in Visual Studio | Microsoft Docs
-description: "Erfahren Sie, wie Sie Azure-Tools zur Codeoptimierung in Visual Studio nutzen können, um Ihren Code robuster und leistungsstärker zu machen."
+description: Erfahren Sie, wie Sie Azure-Tools zur Codeoptimierung in Visual Studio nutzen können, um Ihren Code robuster und leistungsstärker zu machen.
 services: visual-studio-online
 documentationcenter: na
 author: cawa
 manager: paulyuk
-editor: 
+editor: ''
 ms.assetid: ed48ee06-e2d2-4322-af22-07200fb16987
 ms.service: multiple
 ms.devlang: dotnet
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: cawa
-ms.openlocfilehash: a606c8e7d8b730b67bd8481656e099900eb39fbc
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 3ee2cc3ac5098ebf205331167faffa2b5f9b6d56
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937556"
 ---
 # <a name="optimizing-your-azure-code"></a>Optimieren des Azure-Codes
 Wenn Sie Apps programmieren, für die Microsoft Azure verwendet wird, sollten Sie einige Hinweise zur Codeerstellung beachten. So vermeiden Sie Probleme mit der Skalierbarkeit, dem Verhalten und der Leistung von Apps in einer Cloudumgebung. Microsoft stellt ein Azure-Tool für die Codeanalyse bereit, mit dem mehrere dieser häufig auftretenden Probleme erkannt und behoben werden können. Sie können das Tool in Visual Studio über NuGet herunterladen.
@@ -30,7 +31,7 @@ Im Azure-Tool für die Codeanalyse werden die folgenden Regeln verwendet, um den
 ### <a name="id"></a>ID
 AP0000
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>BESCHREIBUNG
 Wenn Sie den standardmäßigen Sitzungszustandsmodus (In Bearbeitung) für Cloudanwendungen verwenden, können Sie den Sitzungszustand verlieren.
 
 Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771)gern mitteilen.
@@ -47,7 +48,7 @@ Eine empfohlene Lösung ist das Speichern des Sitzungszustands unter einem Manag
 ### <a name="id"></a>ID
 AP1000
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>BESCHREIBUNG
 Erstellen Sie asynchrone Methoden (z.B. [await](https://msdn.microsoft.com/library/hh156528.aspx)) außerhalb der [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)-Methode, und rufen Sie dann die asynchronen Methoden aus [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) auf. Wenn Sie die [[Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)-Methode als asynchron deklarieren, wird die Workerrolle in eine Neustartschleife versetzt.
 
 Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771)gern mitteilen.
@@ -92,13 +93,13 @@ public async Task RunAsync()
 ### <a name="id"></a>ID
 AP2000
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>BESCHREIBUNG
 Verwenden Sie Shared Access Signature (SAS) für die Authentifizierung. Access Control Service (ACS) gilt für die Service Bus-Authentifizierung als veraltet.
 
 Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771)gern mitteilen.
 
 ### <a name="reason"></a>Grund
-Aus Sicherheitsgründen wird die ACS-Authentifizierung für Azure Active Directory durch die SAS-Authentifizierung ersetzt. Informationen zum Übergangsplan finden Sie unter [Azure Active Directory ist die Zukunft von ACS](http://blogs.technet.com/b/ad/archive/2013/06/22/azure-active-directory-is-the-future-of-acs.aspx) (in englischer Sprache).
+Aus Sicherheitsgründen wird die ACS-Authentifizierung für Azure Active Directory durch die SAS-Authentifizierung ersetzt. Informationen zum Übergangsplan finden Sie unter [Azure Active Directory ist die Zukunft von ACS](https://cloudblogs.microsoft.com/enterprisemobility/2013/06/22/azure-active-directory-is-the-future-of-acs/) (in englischer Sprache).
 
 ### <a name="solution"></a>Lösung
 Verwenden Sie die SAS-Authentifizierung in Ihren Apps. Das folgende Beispiel zeigt, wie Sie ein vorhandenes SAS-Token zum Zugreifen auf einen Service Bus-Namespace oder eine Entität verwenden.
@@ -119,7 +120,7 @@ Weitere Informationen finden Sie in den folgenden Themen.
 ### <a name="id"></a>ID
 AP2002
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>BESCHREIBUNG
 Um das Auftreten einer „Empfangsschleife“ zu vermeiden, ist das Aufrufen der **OnMessage**-Methode eine bessere Lösung für das Empfangen von Nachrichten als das Aufrufen der **Receive**-Methode. Wenn Sie die **Receive** -Methode verwenden müssen und nicht die Standardeinstellung für die Serverwartezeit festlegen, sollten Sie sicherstellen, dass die Serverwartezeit mehr als eine Minute beträgt.
 
 Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771)gern mitteilen.
@@ -222,7 +223,7 @@ while (true)
 ### <a name="id"></a>ID
 AP2003
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>BESCHREIBUNG
 Verwenden Sie asynchrone Service Bus-Methoden zur Verbesserung der Leistung beim Brokermessaging.
 
 Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771)gern mitteilen.
@@ -239,7 +240,7 @@ Sehen Sie sich die Informationen zum Entwurfsmuster unter [Einführung in asynch
 ### <a name="id"></a>ID
 AP2004
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>BESCHREIBUNG
 Partitionieren Sie Service Bus-Warteschlangen und -Themen, um eine bessere Leistung in Verbindung mit dem Service Bus-Messaging zu erzielen.
 
 Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771)gern mitteilen.
@@ -264,7 +265,7 @@ Weitere Informationen finden Sie unter [Partitionierte Service Bus-Warteschlange
 ### <a name="id"></a>ID
 AP3001
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>BESCHREIBUNG
 Sie sollten das Verwenden von SharedAccessStartTimeset zum Angeben der aktuellen Zeit vermeiden, um die Shared Access-Richtlinie sofort zu starten. Sie müssen diese Eigenschaft nur festlegen, wenn Sie die Shared Access-Richtlinie zu einem späteren Zeitpunkt starten möchten.
 
 Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771)gern mitteilen.
@@ -296,7 +297,7 @@ blobPermissions.SharedAccessPolicies.Add("mypolicy", new SharedAccessBlobPolicy(
 ### <a name="id"></a>ID
 AP3002
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>BESCHREIBUNG
 Für Uhren zwischen Rechenzentren an verschiedenen Standorten können aufgrund einer Bedingung, die als Uhrabweichung (Clock Skew) bezeichnet wird, bis zu fünf Minuten Unterschied herrschen. Um zu verhindern, dass das SAS-Richtlinientoken früher als geplant abläuft, sollten Sie die Ablaufzeit auf mehr als fünf Minuten festlegen.
 
 Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771)gern mitteilen.
@@ -346,7 +347,7 @@ Weitere Informationen finden Sie unter [Erstellen und Verwenden einer SAS (Share
 ### <a name="id"></a>ID
 AP4000
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>BESCHREIBUNG
 Durch die Verwendung der [ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager\(v=vs.110\).aspx)-Klasse für Projekte, z.B. Azure Website und Azure Mobile Services, ergeben sich keine Laufzeitprobleme. Es ist jedoch eine bewährte Methode, Cloud[ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager\(v=vs.110\).aspx) als einheitliches Verfahren zum Verwalten von Konfigurationen für alle Azure-Cloudanwendungen zu verwenden.
 
 Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771)gern mitteilen.
@@ -363,7 +364,7 @@ Der folgende Codeausschnitt veranschaulicht die Codefehlerbehebung für dieses P
 
 `var settings = ConfigurationManager.AppSettings["mySettings"];`
 
-durch
+with
 
 `var settings = CloudConfigurationManager.GetSetting("mySettings");`
 
@@ -383,7 +384,7 @@ Hier ist ein Beispiel dafür angegeben, wie Sie die Konfigurationseinstellung in
 ### <a name="id"></a>ID
 AP4001
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>BESCHREIBUNG
 Wenn Sie hartcodierte Verbindungszeichenfolgen verwenden und diese später aktualisieren möchten, müssen Sie Änderungen an Ihrem Quellcode vornehmen und die Anwendung neu kompilieren. Falls Sie Ihre Verbindungszeichenfolgen in einer Konfigurationsdatei speichern, können Sie diese später aber ändern, indem Sie einfach die Konfigurationsdatei aktualisieren.
 
 Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771)gern mitteilen.
@@ -404,7 +405,7 @@ Informationen zur Verwendung von Konfigurationsdateien wie „web.config“ oder
 ### <a name="id"></a>ID
 AP5000
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>BESCHREIBUNG
 Anstatt Diagnoseeinstellungen in Ihrem Code zu konfigurieren, z. B. mithilfe der Microsoft.WindowsAzure.Diagnostics-Programmier-API, sollten Sie die Diagnoseeinstellungen in der Datei „diagnostics.wadcfg“ konfigurieren. (Oder in „diagnostics.wadcfgx“, wenn Sie Azure SDK 2.5 verwenden.) Auf diese Weise können Sie Diagnoseeinstellungen ändern, ohne den Code neu kompilieren zu müssen.
 
 Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771)gern mitteilen.
@@ -429,7 +430,7 @@ Verwenden Sie den Designer für die Diagnosekonfiguration, um die Diagnoseeinste
 ### <a name="id"></a>ID
 AP6000
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>BESCHREIBUNG
 Vermeiden Sie die Deklaration von DBContext-Objekten als „statisch“, um Arbeitsspeicher zu sparen.
 
 Ihre Ideen und Feedback hierzu können Sie uns unter [Feedback zur Azure-Codeanalyse](http://go.microsoft.com/fwlink/?LinkId=403771)gern mitteilen.

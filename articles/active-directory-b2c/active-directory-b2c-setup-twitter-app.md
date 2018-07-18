@@ -1,21 +1,21 @@
 ---
-title: Twitter-Konfiguration für Azure AD B2C | Microsoft-Dokumentation
+title: Twitter-Konfiguration für Azure Active Directory B2C | Microsoft-Dokumentation
 description: Bereitstellen von Registrierung und Anmeldung für Kunden mit Twitter-Konten in mit Azure Active Directory B2C geschützten Anwendungen.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 4/17/2018
 ms.author: davidmu
-ms.openlocfilehash: 40e4c5549414765dabc6f37c5ffb5aea519ae673
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: 68b9e9edbacda08bc98b6b7af5d944d3df9edca1
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34709579"
 ---
 # <a name="provide-sign-up-and-sign-in-to-consumers-with-twitter-accounts-using-azure-ad-b2c"></a>Bereitstellen von Registrierung und Anmeldung für Kunden mit Twitter-Konten mithilfe von Azure AD B2C
 
@@ -27,8 +27,10 @@ Um Twitter als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verw
 3. Geben Sie im Formular einen Wert für **Name**, **Description** und **Website** ein.
 4. Geben Sie `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` in **Callback URL** ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z.B. contosob2c.onmicrosoft.com).
 5. Aktivieren Sie das Kontrollkästchen, um **Developer Agreement** zuzustimmen, und klicken Sie auf **Create your Twitter application**.
-6. Nachdem die App erstellt wurde, klicken Sie auf die Registerkarte **Keys and Access Tokens**.
-7. Kopieren Sie den Wert von **Consumer Key** und **Consumer Secret**. Sie benötigen beide Angaben, um Twitter als Identitätsanbieter in Ihrem Mandanten zu konfigurieren.
+6. Nachdem die App erstellt wurde, wählen Sie sie in der Liste aus, und klicken Sie dann auf die Registerkarte **Einstellungen**.
+7. Deaktivieren Sie das Feld **Enable Callback Locking** (Rückrufsperren aktivieren), und klicken Sie dann auf **Update settings** (Einstellungen aktualisieren).
+8. Wählen Sie die Registerkarte **Keys and Access Tokens** .
+9. Kopieren Sie den Wert von **Consumer Key** und **Consumer Secret**. Sie benötigen beide Angaben, um Twitter als Identitätsanbieter in Ihrem Mandanten zu konfigurieren.
 
 ## <a name="configure-twitter-as-an-identity-provider-in-your-tenant"></a>Konfigurieren von Twitter als Identitätsanbieter in Ihrem Mandanten
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator des Azure AD B2C-Mandanten an. 

@@ -1,7 +1,7 @@
 ---
-ms.assetid: 
-title: "Azure Key Vault: Verwenden des vorläufigen Löschens mit der CLI"
-description: "Beispiele für Anwendungsfälle für vorläufiges Löschen mit CLI-Codeausschnitten"
+ms.assetid: ''
+title: 'Azure Key Vault: Verwenden des vorläufigen Löschens mit der CLI'
+description: Beispiele für Anwendungsfälle für vorläufiges Löschen mit CLI-Codeausschnitten
 author: lleonard-msft
 manager: mbaldwin
 ms.service: key-vault
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27927973"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Verwenden des vorläufigen Löschens in Key Vault mit der CLI
 

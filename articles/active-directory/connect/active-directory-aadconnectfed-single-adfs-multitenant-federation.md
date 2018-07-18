@@ -4,7 +4,7 @@ description: In diesem Dokument erfahren Sie, wie mehrere Azure AD-Instanzen mit
 keywords: Verbund erstellen, ADFS, AD FS, mehrere Mandanten, einzelne AD FS-Instanz, eine ADFS-Instanz, Verbund mit mehreren Mandanten, ADFS mit mehreren Gesamtstrukturen, AAD Connect, Verbund, mandantenübergreifender Verbund
 services: active-directory
 documentationcenter: ''
-author: anandyadavmsft
+author: billmath
 manager: mtillman
 editor: ''
 ms.assetid: ''
@@ -14,12 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
-ms.author: anandy; billmath
-ms.openlocfilehash: c55a4232c54308c5d000cfefc2c7dca2800b462c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: hybrid
+ms.author: billmath
+ms.openlocfilehash: 6c9c4b7db93810cac4518885eb86572b2be7ca05
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915339"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Erstellen eines Verbunds mit mehreren Instanzen von Azure AD und einer Einzelinstanz von AD FS
 

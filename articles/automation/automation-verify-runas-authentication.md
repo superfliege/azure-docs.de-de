@@ -9,17 +9,18 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9bf5a3a1dc67752e3f911d07f23c7b408e6d38c3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: af1d05c171eb5544104b12aebb6c7be937061f6a
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437177"
 ---
 # <a name="test-azure-automation-run-as-account-authentication"></a>Testen der Authentifizierung für das ausführende Azure Automation-Konto
 Nachdem die erfolgreiche Erstellung eines Automation-Kontos abgeschlossen ist, können Sie einen einfachen Test durchführen. Auf diese Weise können Sie bestätigen, dass die Authentifizierung für die Azure Resource Manager- oder klassische Azure-Bereitstellung möglich ist, indem Sie Ihr neu erstelltes oder aktualisiertes ausführendes Automation-Konto verwenden.    
 
 ## <a name="automation-run-as-authentication"></a>Authentifizierung mit ausführendem Automation-Konto
-Verwenden Sie den unten angegebenen Beispielcode zum [Erstellen eines PowerShell-Runbooks](automation-creating-importing-runbook.md), um die Authentifizierung mithilfe des ausführenden Kontos zu überprüfen, und verwenden Sie ihn auch in Ihren benutzerdefinierten Runbooks, um Resource Manager-Ressourcen mit Ihrem Automation-Konto zu authentifizieren und zu verwalten.   
+Verwenden Sie den unten angegebenen Beispielcode zum [Erstellen eines PowerShell-Runbooks](automation-creating-importing-runbook.md), um die Authentifizierung mithilfe des ausführenden Kontos zu überprüfen, und verwenden Sie ihn auch in Ihren benutzerdefinierten Runbooks, um Resource Manager-Ressourcen mit Ihrem Automation-Konto zu authentifizieren und zu verwalten.
 
     $connectionName = "AzureRunAsConnection"
     try
@@ -60,6 +61,9 @@ Verwenden Sie den unten angegebenen Beispielcode zum [Erstellen eines PowerShell
     } 
 
 Beachten Sie, dass das zur Authentifizierung im Runbook verwendete Cmdlet **Connect-AzureRmAccount** den Parametersatz *ServicePrincipalCertificate* verwendet.  Die Authentifizierung wird nicht mit Anmeldeinformationen vorgenommen, sondern mit einem Dienstprinzipalzertifikat.  
+
+> [!IMPORTANT]
+> **Add-AzureRmAccount** ist jetzt ein Alias für **Connect-AzureRMAccount**. Sollte **Connect-AzureRMAccount** beim Durchsuchen der Bibliothekselemente nicht angezeigt werden, können Sie **Add-AzureRmAccount** verwenden oder die Module in Ihrem Automation-Konto aktualisieren.
 
 Wenn Sie das [Runbook ausführen](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal), um Ihr ausführendes Konto zu überprüfen, wird ein [Runbookauftrag](automation-runbook-execution.md) erstellt, die Seite „Auftrag“ wird geöffnet, und auf der Kachel **Auftragszusammenfassung** wird der Auftragsstatus angezeigt. Der Auftrag besitzt zunächst den Status *In Warteschlange* , um anzugeben, dass der Auftrag darauf wartet, dass in der Cloud ein Runbook Worker verfügbar wird. Wird der Auftrag von einem Worker übernommen, wechselt der Status zu *Wird gestartet* und anschließend zu *Wird ausgeführt*, wenn die Ausführung des Runbooks tatsächlich gestartet wurde.  Wenn der Runbook-Auftrag abgeschlossen ist, sollte der Status **Abgeschlossen** lauten.
 

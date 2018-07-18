@@ -89,6 +89,8 @@
       href: expressroute-howto-move-arm.md
     - name: Migrieren von zugeordneten virtuellen Netzwerken vom klassischen Modell zu Resource Manager
       href: expressroute-migration-classic-resource-manager.md
+    - name: Erstellen eines zonenredundanten VNET-Gateways in Azure-Verfügbarkeitszonen
+      href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: Konfigurieren eines Routers für ExpressRoute
       items:
         - name: Konfigurieren eines Routers

@@ -1,13 +1,14 @@
 ---
-title: "Azure Active Directory Identity Protection – Glossar | Microsoft Docs"
-description: "Azure Active Directory Identity Protection – Glossar"
+title: Azure Active Directory Identity Protection – Glossar | Microsoft Docs
+description: Azure Active Directory Identity Protection – Glossar
 services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie, Glossar
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 833119a5-33d6-4482-adda-fa35218c72c3
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 30cf3911d0f22e2d9351fc606cd6697ef437e452
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: a9cc4a914091c91f4b2ae1c152644fe8e01747e8
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713390"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection – Glossar
 ### <a name="at-risk-user"></a>Gefährdet (Benutzer)
@@ -80,7 +82,7 @@ Der Teil einer Sicherheitsrichtlinie, mit der die Umstände beschrieben werden, 
 Eine Aktion, mit der Schaden für die Organisation verhindert werden soll, der durch den Missbrauch einer vermutlich oder mit Sicherheit kompromittierten Identität oder eines Geräts entsteht. Mit einer Präventionsaktion wird das Gerät bzw. die Identität nicht geschützt, und vorherige Risikoereignisse werden nicht gelöst.
 
 ### <a name="privileged-user"></a>Privilegiert (Benutzer)
-Ein Benutzer, der zum Zeitpunkt eines Risikoereignisses über dauerhafte oder vorübergehende Administratorberechtigungen für eine oder mehrere Ressourcen in Azure Active Directory verfügte, z. B. ein globaler Administrator, Abrechnungsadministrator, Dienstadministrator, Benutzeradministrator und Kennwortadministrator. 
+Ein Benutzer, der zum Zeitpunkt eines Risikoereignisses über dauerhafte oder vorübergehende Administratorberechtigungen für eine oder mehrere Ressourcen in Azure Active Directory verfügt (beispielsweise ein globaler Administrator, Abrechnungsadministrator, Dienstadministrator, Benutzeradministrator oder Kennwortadministrator). 
 
 ### <a name="real-time"></a>Echtzeit
 Siehe „Echtzeiterkennung“.
@@ -137,7 +139,7 @@ Dieses Risikoereignis wird ausgelöst, wenn eine Anmeldung von einer IP-Adresse 
 Dieses Risikoereignis wird ausgelöst, nachdem eine erfolgreiche Anmeldung von einer IP-Adresse mit einer hohen Zahl von fehlgeschlagenen Anmeldeversuchen unter Verwendung mehrerer Benutzerkonten innerhalb eines kurzen Zeitraums durchgeführt wurde.
 
 ### <a name="sign-in-from-unfamiliar-location"></a>Anmeldung von unbekanntem Standort
-Dieses Risikoereignis wird ausgelöst, wenn sich ein Benutzer erfolgreich von einem neuen Standort (IP, Breiten-/Längengrad und ASN) aus anmeldet.
+Dieses Risikoereignis wird ausgelöst, wenn sich ein Benutzer erfolgreich von einem neuen Standort (IP-Adresse, Breiten-/Längengrad und ASN) aus anmeldet.
 
 ### <a name="sign-in-risk"></a>Anmelderisiko
 Siehe „Risikostufe (Anmeldung)“.

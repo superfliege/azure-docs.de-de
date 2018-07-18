@@ -1,6 +1,6 @@
 #### <a name="to-create-a-new-service"></a>So erstellen Sie einen neuen Dienst
 
-1.  Melden Sie sich mit Ihren Microsoft-Kontoanmeldeinformationen unter dieser URL beim Azure-Portal an: <https://portal.azure.com/>. Falls Sie das Gerät im Government-Portal bereitstellen, melden Sie sich bei <https://portal.azure.us/> an.
+1.  Melden Sie sich mit Ihren Microsoft-Kontoanmeldeinformationen unter dieser URL beim Azure-Portal an: <https://portal.azure.com/>. Falls Sie das Gerät im Government-Portal bereitstellen, melden Sie sich unter <https://portal.azure.us/> an.
 
 2.  Klicken Sie im Azure-Portal auf **+ Ressource erstellen** &gt; **Storage** &gt; **Virtuelle StorSimple-Serie**.
 

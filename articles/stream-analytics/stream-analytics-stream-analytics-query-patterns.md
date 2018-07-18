@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 417517cbbd187d32b84cc0a78f7b68a5fcf8eb23
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1ca7d40bb3c358b374e354fa2c3ef77edba055c9
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971780"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Abfragebeispiele für gängige Stream Analytics-Verwendungsmuster
 
@@ -117,7 +118,7 @@ Beispiel: Bereitstellen einer Zeichenfolge, die beschreibt, wie viele Fahrzeuge 
         Make,
         TumblingWindow(second, 10)
 
-**Erläuterung**: Mit der **CASE**-Klausel kann auf der Grundlage einiger Kriterien (in unserem Fall der Fahrzeuganzahl im Aggregatfenster) eine abweichende Berechnung angegeben werden.
+**Erläuterung**: Der **CASE**-Ausdruck vergleicht einen Ausdruck mit einem Set von einfachen Ausdrücken, um das Ergebnis zu ermitteln. In diesem Beispiel haben Fahrzeugmarken mit dem Wert „1“ eine andere Zeichenfolgenbeschreibung zurückgegeben als Fahrzeugmarken mit einem anderen Wert. 
 
 ## <a name="query-example-send-data-to-multiple-outputs"></a>Abfragebeispiel: Senden von Daten an mehrere Ausgaben
 **Beschreibung**: Senden von Daten an mehrere Ausgabeziele über einen einzelnen Auftrag.
@@ -173,7 +174,7 @@ Beispiel: Analysieren von Daten für eine schwellenwertbasierte Warnung und Arch
         [Count] >= 3
 
 **Erläuterung**: Mit der **INTO**-Klausel wird Stream Analytics mitgeteilt, in welche Ausgabe die Daten aus dieser Anweisung geschrieben werden sollen.
-Bei der ersten Abfrage werden die eingegangenen Daten an eine Ausgabe namens **ArchiveOutput** übergeben.
+Bei der ersten Abfrage werden die empfangenen Daten an eine Ausgabe mit der Bezeichnung **ArchiveOutput** weitergeleitet.
 Bei der zweiten Abfrage werden die Daten nach einer einfachen Aggregation und Filterung an ein nachgelagertes Warnsystem gesendet.
 
 Beachten Sie, dass die Ergebnisse der allgemeinen Tabellenausdrücke (Common Table Expressions, CTEs) (z.B. **WITH**-Anweisungen) in mehreren Ausgabeanweisungen auch wiederverwendet werden können. Diese Option hat den Vorteil, dass weniger Leser für die Eingabequelle geöffnet werden müssen.
@@ -418,7 +419,7 @@ Beispiel: Wurde die mautpflichtige Straße innerhalb der letzten 90 Sekunden von
 
 ## <a name="query-example-detect-the-duration-of-a-condition"></a>Abfragebeispiel: Ermitteln der Dauer einer Bedingung
 **Beschreibung**: Ermitteln, wie lange eine Bedingung angedauert hat.
-Beispiel: Aufgrund eines Fehlers wurde für alle Fahrzeuge ein falsches Gewicht (über 20.000 Pfund) erfasst. Nun möchten wir ermitteln, wie lange dieser Fehler aufgetreten ist.
+Beispiel: Aufgrund eines Fehlers wurde für alle Fahrzeuge ein falsches Gewicht (über 20.000 Pfund) erfasst. Nun soll ermittelt werden, wie lange dieser Fehler aufgetreten ist.
 
 **Eingabe**:
 
@@ -506,7 +507,7 @@ Generieren Sie z.B. alle 5 Sekunden ein Ereignis, das den zuletzt angezeigten D
 
 
 ## <a name="query-example-correlate-two-event-types-within-the-same-stream"></a>Beispiel für Abfrage: Korrelieren von zwei Ereignistypen in demselben Datenstrom
-**Beschreibung**: Es kann vorkommen, dass Warnungen basierend auf mehreren Arten von Ereignissen generiert werden müssen, die in einem bestimmten Zeitbereich eingetreten sind.
+**Beschreibung**: Generieren von Warnungen basierend auf mehreren Ereignistypen, die in einem bestimmten Zeitbereich aufgetreten sind.
 Beispiel: In einem IoT-Szenario für Küchenöfen soll eine Warnung ausgelöst werden, wenn die Lüftertemperatur unter 40 und die maximale Leistung während der letzten drei Minuten unter 10 gelegen hat.
 
 **Eingabe**:
@@ -577,6 +578,46 @@ WHERE
 ````
 
 **Erklärung**: In der ersten Abfrage `max_power_during_last_3_mins` wird das [gleitende Fenster](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) verwendet, um den Maximalwert des Leistungssensors für jedes Gerät während der letzten drei Minuten zu ermitteln. Die zweite Abfrage wird mit der ersten Abfrage verknüpft, um den Leistungswert im letzten vergangenen Zeitfenster zu ermitteln, das für das aktuelle Ereignis relevant ist. Anschließend wird für das Gerät eine Warnung generiert, sofern die Bedingungen erfüllt sind.
+
+## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>Abfragebeispiel: Verarbeiten von Ereignissen unabhängig von Geräteuhrabweichungen (Unterdatenströme)
+**Beschreibung**: Eintreffen von Ereignissen mit Verzögerung oder in falscher Reihenfolge aufgrund von Uhrabweichungen zwischen Ereignisproduzenten oder Partitionen bzw. Netzwerklatenz. Im folgenden Beispiel liegt die Geräteuhr für TollId 2 zehn Sekunden hinter TollId 1 und die Geräteuhr für TollId 3 fünf Sekunden hinter TollId 1. 
+
+
+**Eingabe**:
+| LicensePlate | Stellen | Zeit | TollId |
+| --- | --- | --- | --- |
+| DXE 5291 |Honda |2015-07-27T00:00:01.0000000Z | 1 |
+| YHN 6970 |Toyota |2015-07-27T00:00:05.0000000Z | 1 |
+| QYF 9358 |Honda |2015-07-27T00:00:01.0000000Z | 2 |
+| GXF 9462 |BMW |2015-07-27T00:00:04.0000000Z | 2 |
+| VFE 1616 |Toyota |2015-07-27T00:00:10.0000000Z | 1 |
+| RMV 8282 |Honda |2015-07-27T00:00:03.0000000Z | 3 |
+| MDR 6128 |BMW |2015-07-27T00:00:11.0000000Z | 2 |
+| YZK 5704 |Ford |2015-07-27T00:00:07.0000000Z | 3 |
+
+**Ausgabe**:
+| TollId | Count |
+| --- | --- |
+| 1 | 2 |
+| 2 | 2 |
+| 1 | 1 |
+| 3 | 1 |
+| 2 | 1 |
+| 3 | 1 |
+
+**Lösung**:
+
+````
+SELECT
+      TollId,
+      COUNT(*) AS Count
+FROM input
+      TIMESTAMP BY Time OVER TollId
+GROUP BY TUMBLINGWINDOW(second, 5), TollId
+
+````
+
+**Erläuterung**: Die [TIMESTAMP BY OVER](https://msdn.microsoft.com/azure/stream-analytics/reference/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering)-Klausel betrachtet die Zeitachse jedes Geräts separat mit Unterdatenströmen. Die Ausgabeereignisse für jede TollId werden beim Berechnen generiert. Das bedeutet, dass die Ereignisse gemäß der jeweiligen TollId sortiert werden. Sie werden nicht neu angeordnet, als würden alle Geräte dieselbe Uhrzeit anzeigen.
 
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe

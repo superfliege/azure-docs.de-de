@@ -10,28 +10,26 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/26/2018
+ms.topic: conceptual
+ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 855cb159474836e4c015f84d7d57546b5e1a2e99
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c0a07cb872ec87bbf39237b74990a1fc7a74e9e8
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053254"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Sicherheitsüberlegungen für Datenverschiebung in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: allgemein verfügbar](v1/data-factory-data-movement-security-considerations.md)
-> * [Version 2 – Vorschauversion](data-movement-security-considerations.md)
+> * [Version 1](v1/data-factory-data-movement-security-considerations.md)
+> * [Aktuelle Version](data-movement-security-considerations.md)
 
 In diesem Artikel ist die grundlegende Sicherheitsinfrastruktur beschrieben, die von Datenverschiebungsdiensten in Azure Data Factory verwendet wird, um Ihre Daten zu schützen. Data Factory-Verwaltungsressourcen setzen auf der Azure Sicherheitsinfrastruktur auf und nutzen alle möglichen Sicherheitsmaßnahmen, die von Azure bereitgestellt werden.
 
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, die allgemein verfügbar (GA) ist, lesen Sie [Azure Data Factory – Sicherheitsüberlegungen für Datenverschiebung](v1/data-factory-data-movement-security-considerations.md).
-
 In einer Data Factory-Lösung erstellen Sie mindestens eine [Pipeline](concepts-pipelines-activities.md). Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten, die zusammen eine Aufgabe bilden. Diese Pipelines befinden sich in der Region, in der die Data Factory erstellt wurde. 
 
-Obwohl Data Factory nur in den Regionen USA, Osten, USA, Osten 2 und Europa, Westen (Version 2, Vorschau) verfügbar ist, ist der Datenverschiebungsdienst [global in verschiedenen Regionen](concepts-integration-runtime.md#azure-ir) verfügbar. Wenn der Datenverschiebungsdienst noch nicht in dieser Region bereitgestellt wurde, stellt der Data Factory-Dienst sicher, dass Daten einen geografischen Bereich oder eine geografische Region nicht verlassen, es sei denn, Sie weisen den Dienst ausdrücklich an, eine alternative Region zu verwenden. 
+Obwohl Data Factory nur in einigen Regionen verfügbar ist, ist der Datenverschiebungsdienst [weltweit verfügbar](concepts-integration-runtime.md#integration-runtime-location), um Datenkonformität, Effizienz und niedrigere Kosten für ausgehenden Netzwerkdatenverkehr sicherzustellen. 
 
 Azure Data Factory speichert keine Daten mit Ausnahme für verknüpfte Dienstanmeldeinformationen für Clouddatenspeicher, die mit Zertifikaten verschlüsselt sind. Mit Data Factory können Sie datengesteuerte Workflows erstellen, um die Verschiebung von Daten zwischen [unterstützten Datenspeichern](copy-activity-overview.md#supported-data-stores-and-formats) und die Verarbeitung von Daten mithilfe von [Computediensten](compute-linked-services.md) in anderen Regionen oder in einer lokalen Umgebung zu orchestrieren. Außerdem haben Sie die Möglichkeit, mithilfe von SDKs und Azure Monitor Workflows zu überwachen und zu verwalten.
 
@@ -41,7 +39,7 @@ Datenverschiebung mit Data Factory ist zertifiziert für:
 -   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018)
 -   [CSA STAR](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
 
-Informationen zur Konformität von Azure und zur eigenständigen Sicherung der Azure-Infrastruktur finden Sie im [Microsoft Trust Center](https://www.microsoft.com/trustcenter).
+Informationen zur Konformität von Azure und zur eigenständigen Sicherung der Azure-Infrastruktur finden Sie im [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx).
 
 In diesem Artikel werden Sicherheitsüberlegungen zu den beiden folgenden Datenverschiebungsszenarien erläutert: 
 

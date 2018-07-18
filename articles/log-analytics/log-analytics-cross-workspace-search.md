@@ -3,7 +3,7 @@ title: Ressourcenübergreifende Suche mit Azure Log Analytics | Microsoft Docs
 description: In diesem Artikel wird beschrieben, wie Sie Abfragen für Ressourcen aus mehreren Arbeitsbereichen und für Daten aus einer Application Insights-App in Ihrem Abonnement ausführen können.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -11,20 +11,22 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: magoedte
-ms.openlocfilehash: e46ae3af3a718703f9e1d6b847b2342469bf3a1e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: na
+ms.openlocfilehash: a8d5465a2a9aaf9cf686a8e135a1f537cc60c6b5
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129250"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Ausführen ressourcenübergreifender Protokollsuchen in Log Analytics  
 
 Mit Azure Log Analytics konnten Sie bislang nur Daten innerhalb des aktuellen Arbeitsbereichs analysieren. Abfragen für mehrere in Ihrem Abonnement definierte Arbeitsbereiche waren nicht möglich.  Darüber hinaus konnten Sie Telemetrieelemente, die von Ihrer webbasierten Anwendung mit Application Insights gesammelt wurden, nur direkt in Application Insights oder über Visual Studio suchen.  Dadurch wurde auch die gemeinsame native Analyse von Betriebs- und Anwendungsdaten zu einer Herausforderung.   
 
-Sie können jetzt nicht nur Abfragen über mehrere Log Analytics-Arbeitsbereiche ausführen, sondern auch Daten aus einer bestimmten Application Insights-App in der gleichen Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement in Abfragen einbeziehen. Dies bietet Ihnen eine systemweite Ansicht Ihrer Daten.  Diese Typen von Abfragen können nicht im Azure-Portal, sondern nur im [Erweiterten Portal](log-analytics-log-search-portals.md#advanced-analytics-portal) ausgeführt werden.  
+Sie können jetzt nicht nur Abfragen über mehrere Log Analytics-Arbeitsbereiche ausführen, sondern auch Daten aus einer bestimmten Application Insights-App in der gleichen Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement in Abfragen einbeziehen. Dies bietet Ihnen eine systemweite Ansicht Ihrer Daten.  Diese Typen von Abfragen können nicht im Azure-Portal, sondern nur im [Erweiterten Portal](log-analytics-log-search-portals.md#advanced-analytics-portal) ausgeführt werden. Die Anzahl der Ressourcen (Log Analytics-Arbeitsbereiche und Application Insights-App), die Sie in eine einzelne Abfrage einschließen können, ist auf 100 beschränkt. 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Abfragen über mehrere Log Analytics-Arbeitsbereiche und mit Application Insights
 Um einen anderen Arbeitsbereich in der Abfrage anzugeben, verwenden Sie die [*Arbeitsbereichs*](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/workspace())-ID, und verwenden Sie für eine App in Application Insights die [*App*](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/app())-ID.  

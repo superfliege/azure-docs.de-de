@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Hinzufügen Ihrer eigenen Attribute zu benutzerdefinierten Richtlinien und Verwenden bei der Profilbearbeitung| Microsoft-Dokumentation'
-description: Enthält eine exemplarische Vorgehensweise zur Verwendung von Erweiterungseigenschaften und benutzerdefinierten Attributen und ihrer Einbindung in die Benutzeroberfläche.
+title: Hinzufügen eigener Attribute zu benutzerdefinierten Richtlinien in Azure Active Directory B2C | Microsoft-Dokumentation
+description: Eine exemplarische Vorgehensweise zur Verwendung von Erweiterungseigenschaften und benutzerdefinierten Attributen sowie zu ihrer Einbindung in die Benutzeroberfläche.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.openlocfilehash: e0595a67b90e1be7bb992ef7bda4343e692d8957
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: B2C
+ms.openlocfilehash: e4dfb92257dca4069905f17e1c3ccd43d87cd45c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34710157"
 ---
 # <a name="azure-active-directory-b2c-creating-and-using-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: Erstellen und Verwenden von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie für die Profilbearbeitung
 

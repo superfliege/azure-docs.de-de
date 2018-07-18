@@ -1,25 +1,19 @@
 ---
-title: Informationen zu Azure IoT SDKs | Microsoft Docs
+title: Informationen zu Azure IoT SDKs | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Informationen und Links zu verschiedenen Geräte- und Dienst-SDKs für Azure IoT, mit denen Sie Geräte- und Back-End-Apps erstellen können.'
-services: iot-hub
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: c5c9a497-bb03-4301-be2d-00edfb7d308f
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: dobett
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 71d02e3f8bf0757d7ea0622e76b95acda1fefc95
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 718bf82a921ec3b70939b7a70205a4c650702dd0
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823349"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Verstehen und Verwenden von Azure IoT Hub SDKs
 
@@ -61,6 +55,10 @@ Azure IoT Hub Device SDK für Python:
 * Installation über [pip][lnk-pip-device]
 * [Quellcode][lnk-python-sdk]
 
+Azure IoT Hub Device SDK für iOS: 
+* Installation über [CocoaPod][lnk-cocoa-device]
+* [Beispiele][lnk-ios-sample]
+
 > [!NOTE]
 > In den „Readme“-Dateien in den GitHub-Repositorys finden Sie Informationen zum Verwenden sprach- und plattformspezifischer Paket-Manager zum Installieren von Binärdateien und Abhängigkeiten auf Ihrem Entwicklungscomputer.
 > 
@@ -96,6 +94,10 @@ Azure IoT Hub Service SDK für Python:
 Azure IoT Hub Service SDK für C: 
 * Download über [apt-get, MBED, Arduino-IDE oder Nuget][lnk-c-package]
 * [Quellcode][lnk-c-sdk]
+
+Azure IoT Hub Service SDK für iOS: 
+* Installation über [CocoaPod][lnk-cocoa-service]
+* [Beispiele][lnk-ios-sample]
 
 > [!NOTE]
 > In den „Readme“-Dateien in den GitHub-Repositorys finden Sie Informationen zum Verwenden sprach- und plattformspezifischer Paket-Manager zum Installieren von Binärdateien und Abhängigkeiten auf Ihrem Entwicklungscomputer.
@@ -145,3 +147,6 @@ Weitere Referenzthemen in diesem IoT Hub-Entwicklungsleitfaden:
 [lnk-devguide-query]: iot-hub-devguide-query-language.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
 [lnk-benefits-blog]: https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/
+[lnk-cocoa-device]: https://cocoapods.org/pods/AzureIoTHubClient
+[lnk-ios-sample]: https://github.com/Azure-Samples/azure-iot-samples-ios
+[lnk-cocoa-service]: https://cocoapods.org/pods/AzureIoTHubServiceClient

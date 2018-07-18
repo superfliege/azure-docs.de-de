@@ -6,21 +6,16 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: ccec4262297314bad261a852bb5db25c428ce0a0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9759e209f15622d70aaa833a993234863ac1053c
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918865"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Erneutes Schützen von virtuellen Azure-Computern, für die ein Failover zur primären Region durchgeführt wurde
-
-
->[!NOTE]
->
-> Die Site Recovery-Replikation für Azure-VMs ist derzeit in der Vorschauphase.
-
 
 
 Wenn Sie mithilfe von [Azure Site Recovery](site-recovery-overview.md) ein [Failover](site-recovery-failover.md) für virtuelle Azure-Computer von einer Region zu einer anderen durchführen, werden die virtuellen Computer in der sekundären Region in einem ungeschützten Zustand gestartet. Wenn Sie für die virtuellen Computer ein Failback zur primären Region durchführen, müssen Sie folgende Schritte ausführen:

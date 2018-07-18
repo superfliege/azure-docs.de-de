@@ -1,6 +1,6 @@
 ---
 title: Verwenden von Hudson mit Blobspeicher | Microsoft Docs
-description: "Beschreibt die Verwendung von Hudson mit dem Azure Blob-Speicher als Repository für Buildartefakte."
+description: Beschreibt die Verwendung von Hudson mit dem Azure Blob-Speicher als Repository für Buildartefakte.
 services: storage
 documentationcenter: java
 author: seguler
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23060125"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Verwenden von Azure-Speicher mit einer Hudson-Lösung für die fortlaufende Integration
 ## <a name="overview"></a>Übersicht
@@ -148,10 +149,10 @@ Nach der Ausführung eines Builds können Sie die Build-Verlaufskonsolenausgabe 
 ## <a name="components-used-by-the-blob-service"></a>Vom Blob-Dienst verwendete Komponenten
 Im Folgenden erhalten Sie einen Überblick über die Komponenten des Blob-Dienstes.
 
-* **Speicherkonto:**Alle Zugriffe auf den Azure-Speicher erfolgen über ein Speicherkonto. Dies ist die höchste Ebene des Namespaces für den Zugriff auf Blobs. Ein Konto kann eine beliebige Anzahl von Containern enthalten, solange deren Gesamtgröße 100 TB nicht überschreitet.
+* **Speicherkonto:** Alle Zugriffe auf den Azure-Speicher erfolgen über ein Speicherkonto. Dies ist die höchste Ebene des Namespaces für den Zugriff auf Blobs. Ein Konto kann eine beliebige Anzahl von Containern enthalten, solange deren Gesamtgröße 100 TB nicht überschreitet.
 * **Container**: Ein Container dient zur Gruppierung eines Blob-Satzes. Alle Blobs müssen sich in Containern befinden. Ein Konto kann eine beliebige Anzahl von Containern enthalten. In einem Container kann eine beliebige Anzahl von BLOBs gespeichert sein.
 * **Blob:** Eine Datei von beliebiger Art und Größe. Es gibt zwei Arten von Blobs, die im Azure-Speicher gespeichert werden können: Block- und Seitenblobs. Die meisten Dateien sind Block-BLOBs. Ein einzelner Block-Blob kann bis zu 200 GB groß sein. In diesem Tutorial werden Block-BLOBs verwendet. Der andere Blob-Typ, Seiten-Blobs, kann bis zu 1 TB groß sein und ist effizienter, wenn Byte-Bereiche in einer Datei häufig geändert werden. Weitere Informationen zu Blobs finden Sie unter [Understanding Block Blobs, Append Blobs, and Page Blobs](http://msdn.microsoft.com/library/azure/ee691964.aspx) (Grundlegendes zu Block-, Anfüge- und Seitenblobs).
-* **URL-Format:**Blobs können über das folgende URL-Format aufgerufen werden:
+* **URL-Format:** Blobs können über das folgende URL-Format aufgerufen werden:
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
   

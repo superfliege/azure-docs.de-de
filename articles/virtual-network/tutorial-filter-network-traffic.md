@@ -1,6 +1,6 @@
 ---
-title: Filtern von Netzwerkdatenverkehr – Tutorial – Azure PowerShell | Microsoft-Dokumentation
-description: In diesem Tutorial erfahren Sie, wie Sie an ein Subnetz gerichteten Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe unter Verwendung von PowerShell filtern.
+title: Filtern von Netzwerkdatenverkehr – Tutorial – Azure-Portal | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie an ein Subnetz gerichteten Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe unter Verwendung des Azure-Portals filtern.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 03/30/2018
+ms.date: 06/20/2018
 ms.author: jdial
-ms.custom: mvc
-ms.openlocfilehash: 165bd6770109348bd19ebb4fa1735bedf83004b1
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.custom: ''
+ms.openlocfilehash: a731c1e0617fe0ccf9d571dd2b7d0c2ad107bc9e
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261316"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901397"
 ---
-# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-powershell"></a>Tutorial: Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe unter Verwendung von PowerShell
+# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Tutorial: Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe über das Azure-Portal
 
 Sie können eingehenden und ausgehenden Netzwerkdatenverkehr im Subnetz eines virtuellen Netzwerks mithilfe einer Netzwerksicherheitsgruppe filtern. Netzwerksicherheitsgruppen enthalten Sicherheitsregeln, die Netzwerkdatenverkehr nach IP-Adresse, Port und Protokoll filtern. Sicherheitsregeln werden auf Ressourcen angewendet, die in einem Subnetz bereitgestellt sind. In diesem Tutorial lernen Sie Folgendes:
 
@@ -34,272 +34,191 @@ Sie können eingehenden und ausgehenden Netzwerkdatenverkehr im Subnetz eines vi
 > * Bereitstellen von virtuellen Computern in einem Subnetz
 > * Testen von Datenverkehrsfiltern
 
-Sie können dieses Tutorial auch mit der [Azure-Befehlszeilenschnittstelle](tutorial-filter-network-traffic-cli.md) durcharbeiten.
+Dieser Artikel kann auch mit der [Azure-Befehlszeilenschnittstelle](tutorial-filter-network-traffic-cli.md) oder mit [PowerShell](tutorial-filter-network-traffic-powershell.md) durchgearbeitet werden.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+## <a name="log-in-to-azure"></a>Anmelden bei Azure
 
-Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 5.4.1 des Azure PowerShell-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. 
-
-## <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
-
-Eine Netzwerksicherheitsgruppe enthält Sicherheitsregeln. Sicherheitsregeln geben eine Quelle und ein Ziel an. Bei Quellen und Zielen kann es sich um Anwendungssicherheitsgruppen handeln.
-
-### <a name="create-application-security-groups"></a>Erstellen von Anwendungssicherheitsgruppen
-
-Erstellen Sie mit [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Ressourcengruppe für alle Ressourcen, die im Rahmen dieses Tutorials erstellt werden. Das folgende Beispiel erstellt eine Ressourcengruppe am Standort *eastus*: 
-
-
-```azurepowershell-interactive
-New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
-```
-
-Erstellen Sie mit [New-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/new-azurermapplicationsecuritygroup) eine Anwendungssicherheitsgruppe. Mithilfe einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Portfilterungsanforderungen gruppieren. Das folgende Beispiel erstellt zwei Anwendungssicherheitsgruppen:
-
-```azurepowershell-interactive
-$webAsg = New-AzureRmApplicationSecurityGroup `
-  -ResourceGroupName myResourceGroup `
-  -Name myAsgWebServers `
-  -Location eastus
-
-$mgmtAsg = New-AzureRmApplicationSecurityGroup `
-  -ResourceGroupName myResourceGroup `
-  -Name myAsgMgmtServers `
-  -Location eastus
-```
-
-### <a name="create-security-rules"></a>Erstellen von Sicherheitsregeln
-
-Erstellen Sie mit [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) eine Sicherheitsregel. Das folgende Beispiel erstellt eine Regel, die eingehenden Datenverkehr aus dem Internet für die Anwendungssicherheitsgruppe *myWebServers* über die Ports 80 und 443 zulässt:
-
-```azurepowershell-interactive
-$webRule = New-AzureRmNetworkSecurityRuleConfig `
-  -Name "Allow-Web-All" `
-  -Access Allow `
-  -Protocol Tcp `
-  -Direction Inbound `
-  -Priority 100 `
-  -SourceAddressPrefix Internet `
-  -SourcePortRange * `
-  -DestinationApplicationSecurityGroupId $webAsg.id `
-  -DestinationPortRange 80,443
-
-The following example creates a rule that allows traffic inbound from the internet to the *myMgmtServers* application security group over port 3389:
-
-$mgmtRule = New-AzureRmNetworkSecurityRuleConfig `
-  -Name "Allow-RDP-All" `
-  -Access Allow `
-  -Protocol Tcp `
-  -Direction Inbound `
-  -Priority 110 `
-  -SourceAddressPrefix Internet `
-  -SourcePortRange * `
-  -DestinationApplicationSecurityGroupId $mgmtAsg.id `
-  -DestinationPortRange 3389
-```
-
-In diesem Tutorial wird RDP (Port 3389) für den virtuellen Computer *myAsgMgmtServers* für das Internet verfügbar gemacht. In Produktionsumgebungen empfiehlt es sich, eine [VPN-basierte](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder [private](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Netzwerkverbindung mit den Azure-Ressourcen herzustellen, die Sie verwalten möchten, anstatt den Port 3389 für das Internet verfügbar zu machen.
-
-### <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
-
-Erstellen Sie eine Netzwerksicherheitsgruppe mit [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup). Das folgende Beispiel erstellt eine Netzwerksicherheitsgruppe namens *myNsg*: 
-
-```powershell-interactive
-$nsg = New-AzureRmNetworkSecurityGroup `
-  -ResourceGroupName myResourceGroup `
-  -Location eastus `
-  -Name myNsg `
-  -SecurityRules $webRule,$mgmtRule
-```
+Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-Erstellen Sie mit [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) ein virtuelles Netzwerk. Das folgende Beispiel erstellt ein virtuelles Netzwerk namens *myVirtualNetwork*:
+1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
+2. Wählen Sie **Netzwerk** und anschließend **Virtuelles Netzwerk** aus.
+3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Erstellen**:
 
-```azurepowershell-interactive
-$virtualNetwork = New-AzureRmVirtualNetwork `
-  -ResourceGroupName myResourceGroup `
-  -Location EastUS `
-  -Name myVirtualNetwork `
-  -AddressPrefix 10.0.0.0/16
-```
+    | Einstellung                 | Wert                                              |
+    | ---                     | ---                                                |
+    | NAME                    | myVirtualNetwork                                   |
+    | Adressraum           | 10.0.0.0/16                                        |
+    | Abonnement            | Wählen Sie Ihr Abonnement aus.                          |
+    | Ressourcengruppe          | Klicken Sie auf **Neu erstellen**, und geben Sie *myResourceGroup* ein. |
+    | Speicherort                | Wählen Sie **USA, Osten** aus.                                |
+    | Subnetzname            | mySubnet                                           |
+    | Subnetzadressbereich  | 10.0.0.0/24                                        |
 
-Erstellen Sie mit [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) eine Subnetzkonfiguration, und schreiben Sie sie anschließend mit [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork) in das virtuelle Netzwerk. Das folgende Beispiel fügt dem virtuellen Netzwerk ein Subnetz namens *mySubnet* hinzu und weist ihm die Netzwerksicherheitsgruppe *myNsg* zu:
+## <a name="create-application-security-groups"></a>Erstellen von Anwendungssicherheitsgruppen
 
-```azurepowershell-interactive
-Add-AzureRmVirtualNetworkSubnetConfig `
-  -Name mySubnet `
-  -VirtualNetwork $virtualNetwork `
-  -AddressPrefix "10.0.2.0/24" `
-  -NetworkSecurityGroup $nsg
-$virtualNetwork | Set-AzureRmVirtualNetwork
-```
+Mithilfe einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Funktionen gruppieren, wie etwa Webserver.
+
+1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
+2. Geben Sie in das Feld **Marketplace durchsuchen** den Suchbegriff *Anwendungssicherheitsgruppe* ein. Wenn in den Suchergebnissen **Anwendungssicherheitsgruppe** angezeigt wird, wählen Sie dieses Ergebnis aus. Wählen Sie **Anwendungssicherheitsgruppe** unter **Alles** erneut aus, und klicken Sie dann auf **Erstellen**.
+3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie dann **Erstellen** aus:
+
+    | Einstellung        | Wert                                                         |
+    | ---            | ---                                                           |
+    | NAME           | myAsgWebServers                                               |
+    | Abonnement   | Wählen Sie Ihr Abonnement aus.                                     |
+    | Ressourcengruppe | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus. |
+    | Speicherort       | USA (Ost)                                                       |
+
+4. Führen Sie Schritt 3 erneut aus, und geben Sie dabei die folgenden Werte an:
+
+    | Einstellung        | Wert                                                         |
+    | ---            | ---                                                           |
+    | NAME           | myAsgMgmtServers                                              |
+    | Abonnement   | Wählen Sie Ihr Abonnement aus.                                     |
+    | Ressourcengruppe | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus. |
+    | Speicherort       | USA (Ost)                                                       |
+
+## <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
+
+1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
+2. Wählen Sie die Option **Netzwerk** und dann **Netzwerksicherheitsgruppe** aus.
+3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie dann **Erstellen** aus:
+
+    |Einstellung|Wert|
+    |---|---|
+    |NAME|myNsg|
+    |Abonnement| Wählen Sie Ihr Abonnement aus.|
+    |Ressourcengruppe | Wählen Sie **Vorhandene verwenden** und dann *myResourceGroup*.|
+    |Speicherort|USA (Ost)|
+
+## <a name="associate-network-security-group-to-subnet"></a>Zuordnen einer Netzwerksicherheitsgruppe zu einem Subnetz
+
+1. Beginnen Sie oben im Portal im Feld *Ressourcen, Dienste und Dokumente durchsuchen* mit der Eingabe von *myNsg*. Wenn **myNsg** in den Suchergebnissen angezeigt wird, wählen Sie diesen Eintrag aus.
+2. Klicken Sie unter **EINSTELLUNGEN** auf **Subnetze** und anschließend auf **+ Zuordnen**, wie in der folgenden Abbildung gezeigt:
+
+    ![Zuordnen der Netzwerksicherheitsgruppe zum Subnetz](./media/tutorial-filter-network-traffic/associate-nsg-subnet.png)
+
+3. Wählen Sie unter **Subnetz zuordnen** die Option **Virtuelles Netzwerk** und anschließend **myVirtualNetwork** aus. Wählen Sie **Subnetz**, **mySubnet** und dann **OK** aus.
+
+## <a name="create-security-rules"></a>Erstellen von Sicherheitsregeln
+
+1. Wählen Sie unter **EINSTELLUNGEN** die Option **Eingangssicherheitsregeln** und anschließend **+ Hinzufügen** aus, wie in der folgenden Abbildung gezeigt:
+
+    ![Hinzufügen einer Eingangssicherheitsregel](./media/tutorial-filter-network-traffic/add-inbound-rule.png)
+
+2. Erstellen Sie eine Sicherheitsregel, die für die Anwendungssicherheitsgruppe **myAsgWebServers** die Ports 80 und 443 zulässt. Geben Sie unter **Eingangssicherheitsregel hinzufügen** die folgenden Werte ein oder wählen Sie die Werte aus, übernehmen Sie die restlichen Standardeinstellungen, und wählen Sie dann **Hinzufügen** aus:
+
+    | Einstellung                 | Wert                                                                                                           |
+    | ---------               | ---------                                                                                                       |
+    | Ziel             | Wählen Sie zunächst **Anwendungssicherheitsgruppe** und anschließend für **Anwendungssicherheitsgruppe** den Namen **myAsgWebServers** aus.  |
+    | Zielportbereiche | Geben Sie 80,443 ein.                                                                                                    |
+    | Protokoll                | Wählen Sie TCP aus.                                                                                                      |
+    | NAME                    | Allow-Web-All                                                                                                   |
+
+3. Führen Sie Schritt 2 erneut aus, und verwenden Sie dabei die folgenden Werte:
+
+    | Einstellung                 | Wert                                                                                                           |
+    | ---------               | ---------                                                                                                       |
+    | Ziel             | Wählen Sie zunächst **Anwendungssicherheitsgruppe** und anschließend für **Anwendungssicherheitsgruppe** den Namen **myAsgMgmtServers** aus. |
+    | Zielportbereiche | Geben Sie 3389 ein.                                                                                                      |
+    | Protokoll                | Wählen Sie TCP aus.                                                                                                      |
+    | Priorität                | Geben Sie 110 ein.                                                                                                       |
+    | NAME                    | Allow-RDP-All                                                                                                   |
+
+    In diesem Tutorial wird RDP (Port 3389) für den virtuellen Computer, der der Anwendungssicherheitsgruppe *myAsgMgmtServers* zugewiesen ist, im Internet verfügbar gemacht. In Produktionsumgebungen empfiehlt es sich, eine VPN-basierte oder private Netzwerkverbindung mit den Azure-Ressourcen herzustellen, die Sie verwalten möchten, anstatt den Port 3389 für das Internet verfügbar zu machen.
+
+Nachdem Sie die Schritte 1 bis 3 durchgeführt haben, überprüfen Sie die Regeln, die Sie erstellt haben. Ihre Liste sollte wie die Liste in der folgenden Abbildung aussehen:
+
+![Sicherheitsregeln](./media/tutorial-filter-network-traffic/security-rules.png)
 
 ## <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
-Rufen Sie vor dem Erstellen der virtuellen Computer mithilfe von [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork) das virtuelle Netzwerkobjekt mit dem Subnetz ab:
+Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk.
 
-```powershell-interactive
-$virtualNetwork = Get-AzureRmVirtualNetwork `
- -Name myVirtualNetwork `
- -Resourcegroupname myResourceGroup
-```
-Erstellen Sie mit [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) eine öffentliche IP-Adresse für die einzelnen virtuellen Computer:
+### <a name="create-the-first-vm"></a>Erstellen des ersten virtuellen Computers
 
-```powershell-interactive
-$publicIpWeb = New-AzureRmPublicIpAddress `
-  -AllocationMethod Dynamic `
-  -ResourceGroupName myResourceGroup `
-  -Location eastus `
-  -Name myVmWeb
+1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
+2. Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**.
+3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **OK**:
 
-$publicIpMgmt = New-AzureRmPublicIpAddress `
-  -AllocationMethod Dynamic `
-  -ResourceGroupName myResourceGroup `
-  -Location eastus `
-  -Name myVmMgmt
-```
+    |Einstellung|Wert|
+    |---|---|
+    |NAME|myVmWeb|
+    |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
+    |Password| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
+    |Abonnement| Wählen Sie Ihr Abonnement aus.|
+    |Ressourcengruppe| Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus.|
+    |Speicherort| Wählen Sie **USA, Osten** aus.|
 
-Erstellen Sie mit [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) zwei Netzwerkschnittstellen, und weisen Sie ihnen eine öffentliche IP-Adresse zu. Das folgende Beispiel erstellt eine Netzwerkschnittstelle, ordnet ihr die öffentliche IP-Adresse *myVmWeb* zu und fügt sie der Anwendungssicherheitsgruppe *myAsgWebServers* zu:
+4. Wählen Sie eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
+5. Wählen Sie unter **Einstellungen** die folgenden Werte aus, übernehmen Sie die restlichen Standardeinstellungen, und wählen Sie dann **OK** aus:
 
-```powershell-interactive
-$webNic = New-AzureRmNetworkInterface `
-  -Location eastus `
-  -Name myVmWeb `
-  -ResourceGroupName myResourceGroup `
-  -SubnetId $virtualNetwork.Subnets[0].Id `
-  -ApplicationSecurityGroupId $webAsg.Id `
-  -PublicIpAddressId $publicIpWeb.Id
-```
+    |Einstellung|Wert|
+    |---|---|
+    |Virtuelles Netzwerk |Wählen Sie **myVirtualNetwork** aus.|
+    |Netzwerksicherheitsgruppen (NSG) | Wählen Sie **Advanced** (Erweitert).|
+    |Netzwerksicherheitsgruppe (Firewall)| Wählen Sie **(new) myVmWeb-nsg** aus. Wählen Sie anschließend unter **Netzwerksicherheitsgruppe auswählen** die Option **Keine** aus. |
 
-Das folgende Beispiel erstellt eine Netzwerkschnittstelle, ordnet ihr die öffentliche IP-Adresse *myVmMgmt* zu und fügt sie der Anwendungssicherheitsgruppe *myAsgMgmtServers* zu:
+6. Wählen Sie auf der Seite **Zusammenfassung** unter **Erstellen** die Option **Erstellen**, um die Bereitstellung des virtuellen Computers zu starten.
 
-```powershell-interactive
-$mgmtNic = New-AzureRmNetworkInterface `
-  -Location eastus `
-  -Name myVmMgmt `
-  -ResourceGroupName myResourceGroup `
-  -SubnetId $virtualNetwork.Subnets[0].Id `
-  -ApplicationSecurityGroupId $mgmtAsg.Id `
-  -PublicIpAddressId $publicIpMgmt.Id
-```
+### <a name="create-the-second-vm"></a>Erstellen des zweiten virtuellen Computers
 
-Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk, im in einem späteren Schritt die Datenverkehrsfilterung überprüfen zu können. 
+Führen Sie die Schritte 1 bis 6 erneut aus, geben Sie jedoch in Schritt 3 dem virtuellen Computer den Namen *myVmMgmt*. Die Bereitstellung des virtuellen Computers dauert einige Minuten. Führen Sie den nächsten Schritt erst durch, nachdem der virtuelle Computer bereitgestellt wurde.
 
-Erstellen Sie mit [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) eine VM-Konfiguration und anschließend mit [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) den virtuellen Computer. Das folgende Beispiel erstellt einen virtuellen Computer, der als Webserver fungiert. Mit der Option `-AsJob` wird der virtuelle Computer im Hintergrund erstellt, sodass Sie mit dem nächsten Schritt fortfahren können: 
+## <a name="associate-network-interfaces-to-an-asg"></a>Zuordnen von Netzwerkschnittstellen zu einer Anwendungssicherheitsgruppe
 
-```azurepowershell-interactive
-# Create user object
-$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
+Beim Erstellen der virtuellen Computer im Portal wird für jeden virtuellen Computer eine Netzwerkschnittstelle erstellt und mit dem jeweiligen virtuellen Computer verbunden. Fügen Sie die Netzwerkschnittstelle für die einzelnen virtuellen Computer einer der Anwendungssicherheitsgruppen hinzu, die Sie zuvor erstellt haben:
 
-$webVmConfig = New-AzureRmVMConfig `
-  -VMName myVmWeb `
-  -VMSize Standard_DS1_V2 | `
-Set-AzureRmVMOperatingSystem -Windows `
-  -ComputerName myVmWeb `
-  -Credential $cred | `
-Set-AzureRmVMSourceImage `
-  -PublisherName MicrosoftWindowsServer `
-  -Offer WindowsServer `
-  -Skus 2016-Datacenter `
-  -Version latest | `
-Add-AzureRmVMNetworkInterface `
-  -Id $webNic.Id
-New-AzureRmVM `
-  -ResourceGroupName myResourceGroup `
-  -Location eastus `
-  -VM $webVmConfig `
-  -AsJob
-```
+1. Beginnen Sie oben im Portal im Feld *Ressourcen, Dienste und Dokumente durchsuchen* mit der Eingabe von *myVmWeb*. Wenn die VM **myVmWeb** in den Suchergebnissen angezeigt wird, wählen Sie sie aus.
+2. Wählen Sie unter **EINSTELLUNGEN** die Option **Netzwerk** aus.  Wählen Sie zunächst **Configure the application security groups** (Anwendungssicherheitsgruppen konfigurieren), anschließend **myAsgWebServers** für **Anwendungssicherheitsgruppen** und schließlich **Speichern**, wie in der folgenden Abbildung gezeigt:
 
-Erstellen Sie einen virtuellen Computer, der als Verwaltungsserver fungiert:
+    ![Zuordnen von Anwendungssicherheitsgruppen](./media/tutorial-filter-network-traffic/associate-to-asg.png)
 
-```azurepowershell-interactive
-# Create user object
-$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
-
-# Create the web server virtual machine configuration and virtual machine.
-$mgmtVmConfig = New-AzureRmVMConfig `
-  -VMName myVmMgmt `
-  -VMSize Standard_DS1_V2 | `
-Set-AzureRmVMOperatingSystem -Windows `
-  -ComputerName myVmMgmt `
-  -Credential $cred | `
-Set-AzureRmVMSourceImage `
-  -PublisherName MicrosoftWindowsServer `
-  -Offer WindowsServer `
-  -Skus 2016-Datacenter `
-  -Version latest | `
-Add-AzureRmVMNetworkInterface `
-  -Id $mgmtNic.Id
-New-AzureRmVM `
-  -ResourceGroupName myResourceGroup `
-  -Location eastus `
-  -VM $mgmtVmConfig
-```
-
-Das Erstellen des virtuellen Computers dauert einige Minuten. Fahren Sie mit dem nächsten Schritt erst fort, wenn Azure die Erstellung des virtuellen Computers abgeschlossen hat.
+3. Führen Sie die Schritte 1 und 2 erneut durch. Suchen Sie dabei nach dem virtuellen Computer **myVmMgmt**, und wählen Sie die Anwendungssicherheitsgruppe **myAsgMgmtServers** aus.
 
 ## <a name="test-traffic-filters"></a>Testen von Datenverkehrsfiltern
 
-Geben Sie mit [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) die öffentliche IP-Adresse eines virtuellen Computers zurück. Das folgende Beispiel gibt die öffentliche IP-Adresse des virtuellen Computers *myVmMgmt* zurück:
+1. Stellen Sie eine Verbindung mit dem virtuellen Computer *myVmMgmt* her. Geben Sie oben im Portal im Suchfeld *myVmMgmt* ein. Wenn **myVmMgmt** in den Suchergebnissen angezeigt wird, wählen Sie diese Angabe aus. Wählen Sie die Schaltfläche **Verbinden** aus.
+2. Wählen Sie **RDP-Datei herunterladen** aus.
+3. Öffnen Sie die heruntergeladene RDP-Datei, und wählen Sie **Verbinden** aus. Geben Sie den Benutzernamen und das Kennwort ein, die Sie beim Erstellen des virtuellen Computers festgelegt haben. Unter Umständen müssen Sie auf **Weitere Optionen** und anschließend auf **Anderes Konto verwenden** klicken, um die Anmeldeinformationen anzugeben, die Sie beim Erstellen des virtuellen Computers eingegeben haben.
+4. Klicken Sie auf **OK**.
+5. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Wenn eine Warnung angezeigt wird, klicken Sie auf **Ja** bzw. **Weiter**, um mit dem Herstellen der Verbindung fortzufahren.
 
-```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
-  -Name myVmMgmt `
-  -ResourceGroupName myResourceGroup `
-  | Select IpAddress
-```
+    Die Verbindung wird erfolgreich hergestellt, da am Port 3389 eingehender Datenverkehr aus dem Internet für die Anwendungssicherheitsgruppe *myAsgMgmtServers* zugelassen wird, in der sich die an den virtuellen Computer *myVmMgmt* angefügte Netzwerkschnittstelle befindet.
 
-Erstellen Sie mit dem folgenden Befehl eine Remotedesktopsitzung zwischen Ihrem lokalen Computer und dem virtuellen Computer *myVmMgmt*. Ersetzen Sie `<publicIpAddress>` durch die vom vorherigen Befehl zurückgegebene IP-Adresse.
+6. Stellen Sie vom virtuellen Computer *myVmMgmt* aus eine Verbindung mit dem virtuellen Computer *myVmWeb* her. Geben Sie dabei in einer PowerShell-Sitzung den folgenden Befehl ein:
 
-```
-mstsc /v:<publicIpAddress>
-```
+    ``` 
+    mstsc /v:myVmWeb
+    ```
 
-Öffnen Sie die heruntergeladene RDP-Datei. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus.
+    Sie können vom virtuellen Computer myVmMgmt aus eine Verbindung mit dem virtuellen Computer myVmWeb herstellen, da virtuelle Computer im selben virtuellen Netzwerk standardmäßig über jeden beliebigen Port miteinander kommunizieren können. Über das Internet kann jedoch keine Remotedesktopverbindung mit dem virtuellen Computer *myVmWeb* hergestellt werden, da die Sicherheitsregel für *myAsgWebServers* am Port 3389 keinen eingehenden Datenverkehr aus dem Internet zulässt. Eingehender Datenverkehr aus dem Internet wird standardmäßig für alle Ressourcen abgelehnt.
 
-Geben Sie den Benutzernamen und das Kennwort ein, wie beim Erstellen des virtuellen Computers angegeben. (Unter Umständen müssen Sie auf **Weitere Optionen** und dann auf **Anderes Konto verwenden** klicken, um die Anmeldeinformationen anzugeben, die Sie beim Erstellen des virtuellen Computers eingegeben haben.) Klicken Sie anschließend auf **OK**. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Wählen Sie **Ja** aus, um mit dem Herstellen der Verbindung fortzufahren. 
-   
-Die Verbindung wird erfolgreich hergestellt, da am Port 3389 eingehender Datenverkehr aus dem Internet für die Anwendungssicherheitsgruppe *myAsgMgmtServers* zugelassen wird, in der sich die an den virtuellen Computer *myVmMgmt* angefügte Netzwerkschnittstelle befindet.
+7. Geben Sie den folgenden Befehl über eine PowerShell-Sitzung auf dem virtuellen Computer *myVmWeb* ein, um Microsoft IIS auf dem virtuellen Computer *myVmWeb* zu installieren:
 
-Erstellen Sie mithilfe des folgenden PowerShell-Befehls eine Remotedesktopverbindung zwischen den virtuellen Computern *myVmMgmt* und *myVmWeb*:
+    ```powershell
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    ```
 
-``` 
-mstsc /v:myvmWeb
-```
+8. Trennen Sie nach Abschluss der IIS-Installation die Verbindung mit dem virtuellen Computer *myVmWeb*. Dadurch befinden Sie sich in der Remotedesktopverbindung des virtuellen Computers *myVmMgmt*.
+9. Trennen Sie die Verbindung mit dem virtuellen Computer *myVmMgmt*.
+10. Beginnen Sie oben im Azure-Portal im Feld *Ressourcen, Dienste und Dokumente durchsuchen* mit der Eingabe von *myVmWeb* über Ihren Computer. Wenn **myVmWeb** in den Suchergebnissen angezeigt wird, wählen Sie diese Angabe aus. Notieren Sie die **öffentliche IP-Adresse** Ihres virtuellen Computers. Die in der folgenden Abbildung dargestellte Adresse lautet 137.135.84.74. Ihre Adresse lautet jedoch anders:
 
-Die Verbindung wird erfolgreich hergestellt, da eine Standardsicherheitsregel innerhalb jeder Netzwerksicherheitsgruppe Datenverkehr über alle Ports zwischen allen IP-Adressen in einem virtuellen Netzwerk zulässt. Über das Internet kann keine Remotedesktopverbindung mit dem virtuellen Computer *myVmWeb* hergestellt werden, da die Sicherheitsregel für *myAsgWebServers* am Port 3389 keinen eingehenden Datenverkehr aus dem Internet zulässt.
-
-Installieren Sie mithilfe des folgenden PowerShell-Befehls Microsoft IIS auf dem virtuellen Computer *myVmWeb*:
-
-```powershell
-Install-WindowsFeature -name Web-Server -IncludeManagementTools
-```
-
-Trennen Sie nach Abschluss der IIS-Installation die Verbindung mit dem virtuellen Computer *myVmWeb*. Dadurch befinden Sie sich in der Remotedesktopverbindung des virtuellen Computers *myVmMgmt*. Navigieren Sie in einem Internetbrowser zu http://myVmWeb, um den IIS-Begrüßungsbildschirm anzuzeigen.
-
-Trennen Sie die Verbindung mit dem virtuellen Computer *myVmMgmt*.
-
-Geben Sie auf Ihrem Computer in PowerShell den folgenden Befehl ein, um die öffentliche IP-Adresse des Servers *myVmWeb* abzurufen:
-
-```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
-  -Name myVmWeb `
-  -ResourceGroupName myResourceGroup `
-  | Select IpAddress
-```
-
-Navigieren Sie auf Ihrem Computer in einem Internetbrowser zu `http://<public-ip-address-from-previous-step>`, um sich zu vergewissern, dass Sie außerhalb von Azure auf den Webserver *myVmWeb* zugreifen können. Die Verbindung wird erfolgreich hergestellt, da am Port 80 eingehender Datenverkehr aus dem Internet für die Anwendungssicherheitsgruppe *myAsgWebServers* zugelassen wird, in der sich die an den virtuellen Computer *myVmWeb* angefügte Netzwerkschnittstelle befindet.
+    ![Öffentliche IP-Adresse](./media/tutorial-filter-network-traffic/public-ip-address.png)
+  
+11. Navigieren Sie auf Ihrem Computer in einem Internetbrowser zu `http://<public-ip-address-from-previous-step>`, um sich zu vergewissern, dass Sie vom Internet aus auf den Webserver *myVmWeb* zugreifen können. Die Willkommenseite von IIS wird angezeigt, da am Port 80 eingehender Datenverkehr aus dem Internet für die Anwendungssicherheitsgruppe *myAsgWebServers* zugelassen wird, in der sich die an den virtuellen Computer *myVmWeb* angefügte Netzwerkschnittstelle befindet.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Ressourcengruppe und alle darin enthaltenen Ressourcen nicht mehr benötigen, können Sie sie mit dem Befehl [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) entfernen:
+Löschen Sie die Ressourcengruppe mit allen ihren Ressourcen, wenn Sie sie nicht mehr benötigen:
 
-```azurepowershell-interactive 
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
-```
+1. Geben Sie im oben im Portal im Feld *Suche* die Zeichenfolge **myResourceGroup** ein. Wenn **myResourceGroup** in den Suchergebnissen angezeigt wird, wählen Sie diese Angabe aus.
+2. Wählen Sie die Option **Ressourcengruppe löschen**.
+3. Geben Sie für **Geben Sie den Ressourcengruppennamen ein:** den Namen *myResourceGroup* ein, und klicken Sie auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

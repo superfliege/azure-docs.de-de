@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 0c18fc065ae4d9a9401a8d603f051e9d6236c538
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c2c7ea043d2da41442829321ac663325f30ff066
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297327"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>Herstellen einer Verbindung mit einem Amazon Web Services-Konto
 
@@ -91,7 +92,7 @@ Die folgenden Abschnitte führen Sie durch das Erstellen eines Benutzers ohne Sc
 
 ### <a name="configure-aws-iam-user-based-access-in-cost-management"></a>Konfigurieren des Zugriffs auf AWS-IAM-Benutzerbasis in Cost Management
 
-1. Öffnen Sie das Cloudyn-Portal aus dem Azure-Portal, oder navigieren Sie zu https://azure.cloudyn.com/, und melden Sie sich dort an.
+1. Öffnen Sie im Azure-Portal das Cloudyn-Portal, oder navigieren Sie zu https://azure.cloudyn.com/, und melden Sie sich an.
 2. Klicken Sie auf das Zahnradsymbol, und wählen Sie dann **Cloud Accounts (Cloudkonten)** aus.
 3. Wählen Sie unter „Accounts Management (Kontenverwaltung)“ die Registerkarte **AWS Accounts (AWS-Konten)** aus, und klicken Sie dann auf **Add new + (Neu hinzufügen)**.
 4. Geben Sie für **Account Name (Kontoname)** einen Kontonamen ein.
@@ -107,7 +108,7 @@ Cost Management startet das Sammeln der Daten und Auffüllen von Berichten. Als 
 
 Führen Sie die folgenden Schritte aus, um Ihren AWS-Rollen-ARN abzurufen. Sie verwenden den Rollen-ARN, um einem Abrechnungsbucket Leseberechtigungen zu erteilen.
 
-1. Melden Sie sich bei der AWS-Konsole unter https://console.aws.amazon.coman, und wählen Sie **Services** aus.
+1. Melden Sie sich unter https://console.aws.amazon.com bei der AWS-Konsole an, und klicken Sie auf **Services** (Dienste).
 2. Geben Sie in das Feld „Service Search (Dienstsuche) *IAM* ein, und wählen Sie diese Option aus.
 3. Wählen Sie im linken Menü die Option **Roles (Rollen)** aus.
 4. Wählen Sie in der Liste der Rollen die Rolle aus, die Sie für den Cloudyn-Zugriff angelegt haben.
@@ -117,7 +118,7 @@ Führen Sie die folgenden Schritte aus, um Ihren AWS-Rollen-ARN abzurufen. Sie v
 
 Sie erstellen einen S3-Bucket zum Speichern detaillierter Abrechnungsinformationen.
 
-1. Melden Sie sich bei der AWS-Konsole unter https://console.aws.amazon.coman, und wählen Sie **Services** aus.
+1. Melden Sie sich unter https://console.aws.amazon.com bei der AWS-Konsole an, und klicken Sie auf **Services** (Dienste).
 2. Geben Sie in das Feld „Service Search (Dienstsuche) *S3* ein, und wählen Sie **S3** aus.
 3. Klicken Sie auf der Amazon S3-Seite auf **Create bucket (Bucket erstellen)**.
 4. Wählen Sie im Assistenten zum Erstellen von Buckets einen Bucketnamen and eine Region aus, und klicken Sie auf **Next (Weiter)**.  

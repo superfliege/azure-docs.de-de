@@ -1,24 +1,19 @@
 ---
 title: Planen von Aufträgen mit Azure IoT Hub (.NET/.NET) | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie einen Azure IoT Hub-Auftrag planen, um eine direkte Methode auf mehreren Geräten aufzurufen. Sie verwenden die Azure IoT-Geräte-SDKs für .NET, um die simulierten Geräte-Apps und eine Dienst-App für die Auftragsausführung zu implementieren.
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 2233356e-b005-4765-ae41-3a4872bda943
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 012/16/2018
-ms.author: v-masebo;dobett
-ms.openlocfilehash: 76c8d3739b2af3c010cd80585c93c097fc9eb466
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+services: iot-hub
+ms.topic: conceptual
+ms.date: 03/06/2018
+ms.author: dobett
+ms.openlocfilehash: beb1e1e166325cb41a5d4e4fa07565b1f3d4b3bb
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38666915"
 ---
 # <a name="schedule-and-broadcast-jobs-netnet"></a>Planen und Übertragen von Aufträgen (.NET/.NET)
 
@@ -87,8 +82,9 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, die auf eine vom Lösu
     ```csharp
     static string DeviceConnectionString = "<yourDeviceConnectionString>";
     static DeviceClient Client = null;
+    ```
 
-1. Add the following to implement the direct method on the device:
+1. Fügen Sie Folgendes hinzu, um die direkte Methode auf dem Gerät zu implementieren:
 
     ```csharp
     static Task<MethodResponse> LockDoor(MethodRequest methodRequest, object userContext)
@@ -100,8 +96,9 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, die auf eine vom Lösu
         string result = "'Door was locked.'";
         return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(result), 200));
     }
+    ```
 
-1. Add the following to implement the device twins listener on the device:
+1. Fügen Sie Folgendes hinzu, um den Listener für Gerätezwillinge auf dem Gerät zu implementieren:
 
     ```csharp
     private static async Task OnDesiredPropertyChanged(TwinCollection desiredProperties, object userContext)
@@ -175,6 +172,7 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App (mithilfe von C#), die 
 1. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie die Platzhalter durch die IoT Hub-Verbindungszeichenfolge für den Hub, den Sie im vorherigen Abschnitt erstellt haben, und den Namen Ihres Geräts.
 
     ```csharp
+    static JobClient jobClient;
     static string connString = "<yourIotHubConnectionString>";
     static string deviceId = "<yourDeviceId>";
     ```

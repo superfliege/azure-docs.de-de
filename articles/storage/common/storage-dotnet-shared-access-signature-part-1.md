@@ -2,23 +2,18 @@
 title: Verwenden von Shared Access Signatures (SAS) in Azure Storage | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Shared Access Signatures (SAS) verwenden, um Zugriff auf Azure Storage-Ressourcen, einschließlich Blobs, Warteschlangen, Tabellen und Dateien, zu delegieren.
 services: storage
-documentationcenter: ''
 author: craigshoemaker
 manager: jeconnoc
-editor: tysonn
-ms.assetid: 46fd99d7-36b3-4283-81e3-f214b29f1152
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cshoe
-ms.openlocfilehash: d3f8b3261f9e2e86dbcaa41b92111545abeffe54
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ad313c11fb88ec7992220d43c25ca75bf65acc56
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025521"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Verwenden von Shared Access Signatures (SAS)
 
@@ -53,11 +48,11 @@ SAS sind zum Beispiel dann hilfreich, wenn Benutzer ihre eigenen Daten in Ihrem 
 
 Für viele tatsächlich arbeitende Dienste wird möglicherweise eine Mischung dieser beiden Ansätze verwendet. Beispielsweise kann es sein, dass einige Daten über den Front-End-Proxy verarbeitet und überprüft werden, während andere Daten direkt mit SAS gespeichert und/oder gelesen werden.
 
-Darüber hinaus müssen Sie eine SAS verwenden, um das Quellobjekt in einen Kopiervorgang in bestimmten Szenarien zu authentifizieren:
+Darüber hinaus muss in bestimmten Szenarien eine SAS verwendet werden, um in einem Kopiervorgang den Zugriff auf das Quellobjekt zu autorisieren:
 
-* Beim Kopieren eines Blobs in ein anderes Blob, das sich in einem anderen Speicherkonto befindet, müssen Sie eine SAS verwenden, um das Quell-Blob zu authentifizieren. Sie können optional eine SAS verwenden, um auch das Ziel-Blob zu authentifizieren.
-* Beim Kopieren einer Datei in eine andere Datei, die sich in einem anderen Speicherkonto befindet, müssen Sie eine SAS verwenden, um die Quelldatei zu authentifizieren. Sie können optional eine SAS verwenden, um auch die Zieldatei zu authentifizieren.
-* Wenn Sie ein Blob in eine Datei oder eine Datei in ein Blob kopieren, müssen Sie eine SAS verwenden, um das Quellobjekt zu authentifizieren. Dies gilt selbst dann, wenn sich die Quell- und Zielobjekte innerhalb desselben Speicherkontos befinden.
+* Wenn Sie ein Blob in ein anderes Blob kopieren, das sich in einem anderen Speicherkonto befindet, müssen Sie eine SAS verwenden, um den Zugriff auf das Quellblob zu autorisieren. Sie können optional eine SAS verwenden, um auch den Zugriff auf das Zielblob zu autorisieren.
+* Wenn Sie eine Datei in eine andere Datei kopieren, das sich in einem anderen Speicherkonto befindet, müssen Sie eine SAS verwenden, um den Zugriff auf die Quelldatei zu autorisieren. Sie können optional eine SAS verwenden, um auch den Zugriff auf die Zieldatei zu autorisieren.
+* Wenn Sie ein Blob in eine Datei oder eine Datei in ein Blob kopieren, müssen Sie eine SAS verwenden, um den Zugriff auf das Quellobjekt zu autorisieren. Das gilt auch, wenn sich Quell- und Zielobjekt im gleichen Speicherkonto befinden.
 
 ## <a name="types-of-shared-access-signatures"></a>Arten von Shared Access Signatures
 Sie können zwei Arten von Shared Access Signatures erstellen:
@@ -66,7 +61,7 @@ Sie können zwei Arten von Shared Access Signatures erstellen:
 * **Konto-SAS:** Die Konto-SAS delegiert den Zugriff auf Ressourcen in einem oder mehreren Speicherdiensten. Alle Vorgänge, die über eine Dienst-SAS verfügbar sind, sind auch über eine Konto-SAS verfügbar. Mit der Konto-SAS können Sie auch den Zugriff auf Vorgänge delegieren, die für einen bestimmten Dienst gelten, z.B. **Get/Set Service Properties** und **Get Service Stats**. Sie können auch den Zugriff auf Lese-, Schreib- und Löschvorgänge in Blob-Containern, Tabellen, Warteschlangen und Dateifreigaben delegieren, die mit einer Dienst-SAS nicht zulässig sind. Ausführliche Informationen zur Erstellung des Konto-SAS-Tokens finden Sie unter [Erstellen einer Konto-SAS](https://msdn.microsoft.com/library/mt584140.aspx).
 
 ## <a name="how-a-shared-access-signature-works"></a>Funktionsweise von Shared Access Signatures
-Eine Shared Access Signature ist ein signierter URI, der auf eine oder mehrere Speicherressourcen verweist und über ein Token verfügt, das einen speziellen Satz von Abfrageparametern enthält. Das Token gibt an, wie der Client auf die Ressourcen zugreifen kann. Einer der Abfrageparameter ist die Signatur. Sie besteht aus den SAS-Parametern und wird mit dem Kontoschlüssel signiert. Der Azure-Speicher verwendet die Signatur, um die SAS zu authentifizieren.
+Eine Shared Access Signature ist ein signierter URI, der auf eine oder mehrere Speicherressourcen verweist und über ein Token verfügt, das einen speziellen Satz von Abfrageparametern enthält. Das Token gibt an, wie der Client auf die Ressourcen zugreifen kann. Einer der Abfrageparameter ist die Signatur. Sie besteht aus den SAS-Parametern und wird mit dem Kontoschlüssel signiert. Diese Signatur wird von Azure Storage verwendet, um den Zugriff auf die Speicherressource zu autorisieren.
 
 Hier ist ein Beispiel für einen SAS-URI mit dem Ressourcen-URI und dem SAS-Token angegeben:
 
@@ -74,20 +69,20 @@ Hier ist ein Beispiel für einen SAS-URI mit dem Ressourcen-URI und dem SAS-Toke
 
 Das SAS-Token ist eine Zeichenfolge, die Sie auf der *Client*-Seite generieren (im Abschnitt [SAS-Beispiele](#sas-examples) finden Sie Codebeispiele). Ein SAS-Token, das Sie beispielsweise mit der Speicherclientbibliothek generieren, wird von Azure Storage nicht nachverfolgt. Sie können auf der Clientseite eine unbegrenzte Anzahl von SAS-Token erstellen.
 
-Wenn ein Client im Rahmen einer Anforderung einen SAS-URI für Azure Storage bereitstellt, überprüft der Dienst die SAS-Parameter und die Signatur, um sicherzustellen, dass diese Angaben für die Authentifizierung der Anforderung gültig sind. Wenn der Dienst bestätigt, dass die Signatur gültig ist, wird die Anforderung authentifiziert. Andernfalls wird die Anforderung mit Fehlercode 403 (Unzulässig) abgelehnt.
+Wenn ein Client im Rahmen einer Anforderung einen SAS-URI für Azure Storage bereitstellt, überprüft der Dienst die SAS-Parameter und die Signatur, um sicherzustellen, dass diese Angaben für die Authentifizierung der Anforderung gültig sind. Wenn der Dienst bestätigt, dass die Signatur gültig ist, wird die Anforderung autorisiert. Andernfalls wird die Anforderung mit Fehlercode 403 (Unzulässig) abgelehnt.
 
 ## <a name="shared-access-signature-parameters"></a>Shared Access Signature-Parameter
 Die Konto-SAS- und Dienst-SAS-Token enthalten einige gemeinsame Parameter sowie einige Parameter, die unterschiedlich sind.
 
 ### <a name="parameters-common-to-account-sas-and-service-sas-tokens"></a>Gemeinsame Parameter von Konto-SAS- und Dienst-SAS-Token
 * **API-Version:** Ein optionaler Parameter zum Angeben der Speicherdienstversion, die zum Ausführen der Anforderung verwendet wird.
-* **Dienstversion:** Ein erforderlicher Parameter zum Angeben der Speicherdienstversion, die zum Authentifizieren der Anforderung verwendet wird.
+* **Dienstversion:** Ein erforderlicher Parameter zum Angeben der Speicherdienstversion, die zum Autorisieren der Anforderung verwendet werden soll.
 * **Startzeit:** Dies ist der Zeitpunkt, ab dem die SAS gültig ist. Die Startzeit für eine Shared Access Signature ist optional. Wird keine Startzeit angegeben, wird die SAS sofort wirksam. Die Startzeit muss in UTC (Coordinated Universal Time) mit einem speziellen UTC-Kennzeichner („Z“) angegeben werden. Beispiel: `1994-11-05T13:15:30Z`.
 * **Ablaufzeit:** Dies ist der Zeitpunkt, ab dem die SAS nicht mehr gültig ist. Sie sollten nach Möglichkeit entweder eine Ablaufzeit für die SAS angeben oder diese mit einer gespeicherten Zugriffsrichtlinie verknüpfen. Die Ablaufzeit muss in UTC (Coordinated Universal Time) mit einem speziellen UTC-Kennzeichner („Z“) angegeben werden. Beispiel: `1994-11-05T13:15:30Z` (weitere Informationen finden Sie weiter unten).
 * **Berechtigungen.** Die Berechtigungen der SAS geben an, welche Operationen der Client mit der SAS auf der Speicherressource ausführen darf. Die verfügbaren Berechtigungen unterscheiden sich für eine Konto-SAS und eine Dienst-SAS.
 * **IP:** Ein optionaler Parameter, der eine IP-Adresse oder einen Bereich von IP-Adressen außerhalb von Azure angibt (siehe Abschnitt [Konfigurationszustand der Routingsitzung](../../expressroute/expressroute-workflows.md#routing-session-configuration-state) für Express Route), aus dem Anforderungen angenommen werden.
 * **Protokoll:** Ein optionaler Parameter zum Angeben des Protokolls, das für eine Anforderung zulässig ist. Mögliche Werte sind HTTPS und HTTP (`https,http`), was der Standardwert ist, oder nur HTTPS (`https`). Beachten Sie, dass HTTP allein kein zulässiger Wert ist.
-* **Signatur:** Die Signatur wird aus den anderen Parametern erstellt, die als Teiltoken angegeben sind, und dann verschlüsselt. Sie wird zum Authentifizieren der SAS verwendet.
+* **Signatur:** Die Signatur wird aus den anderen Parametern erstellt, die als Teiltoken angegeben sind, und dann verschlüsselt. Die Signatur wird verwendet, um den Zugriff auf die angegebenen Speicherressourcen zu autorisieren.
 
 ### <a name="parameters-for-a-service-sas-token"></a>Parameter für ein Dienst-SAS-Token
 * **Speicherressource:** Speicherressourcen, für die Sie den Zugriff mit einer Dienst-SAS delegieren können, umfassen:
@@ -123,7 +118,7 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&s
 | Berechtigungen |`sp=rw` |Die SAS verleiht die Berechtigungen zum Lesen (r) und Schreiben (w). |
 | IP-Bereich |`sip=168.1.5.60-168.1.5.70` |Der Bereich der IP-Adressen, von denen eine Anforderung akzeptiert wird. |
 | Protokoll |`spr=https` |Nur Anforderungen per HTTPS sind zulässig. |
-| Signatur |`sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D` |Wird zur Zugriffsauthentifizierung für den Blob verwendet. Die Signatur ist ein HMAC, der mithilfe des SHA256-Algorithmus über StringToSign-Zeichenfolge und Schlüssel erstellt und anschließend mit Base64 codiert wird. |
+| Signatur |`sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D` |Wird verwendet, um den Zugriff auf das Blob zu autorisieren. Die Signatur ist ein HMAC, der mithilfe des SHA256-Algorithmus über StringToSign-Zeichenfolge und Schlüssel erstellt und anschließend mit Base64 codiert wird. |
 
 ### <a name="account-sas-uri-example"></a>Beispiel für Konto-SAS-URI
 
@@ -156,19 +151,19 @@ Der Unterschied zwischen diesen beiden Formen ist wichtig für ein Schlüsselsze
 1. Die Ablaufzeit der SAS wird erreicht.
 2. Die Ablaufzeit der von der SAS referenzierten gespeicherten Zugriffsrichtlinie wird erreicht (falls eine gespeicherte Zugriffsrichtlinie referenziert wurde und diese eine Ablaufzeit definiert). Dies geschieht entweder, weil das Zeitintervall abläuft, oder weil Sie die Ablaufzeit in der gespeicherten Zugriffsrichtlinie auf einen Zeitpunkt in der Vergangenheit festgelegt haben, um die SAS zu widerrufen.
 3. Die von der SAS referenzierte gespeicherte Zugriffsrichtlinie wird gelöscht, wodurch die SAS ebenfalls widerrufen wird. Wenn Sie die gespeicherte Zugriffsrichtlinie mit demselben Namen erneut erstellen, sind alle existierenden SAS-Tokens gemäß der Berechtigungen der gespeicherten Zugriffsrichtlinie wieder gültig (sofern die Ablaufzeit der SAS noch nicht erreicht wurde). Falls Sie die SAS widerrufen möchten, müssen Sie einen anderen Namen verwenden, wenn Sie die gespeicherte Zugriffsrichtlinie mit einer Ablaufzeit in der Zukunft erneut erstellen.
-4. Der Kontoschlüssel, mit dem die SAS erstellt wurde, wird erneut generiert. Ein erneutes Generieren eines Kontoschlüssels bewirkt, dass die Authentifizierung aller Anwendungskomponenten, die diesen Schlüssel verwenden, misslingt, bis diese entweder mit dem anderen gültigen Kontoschlüssel oder dem neu generierten Kontoschlüssel aktualisiert werden.
+4. Der Kontoschlüssel, mit dem die SAS erstellt wurde, wird erneut generiert. Nach der erneuten Generierung eines Kontoschlüssels ist die Autorisierung aller Anwendungskomponenten, die diesen Schlüssel verwenden, erst wieder erfolgreich, wenn diese entweder mit dem anderen gültigen Kontoschlüssel oder mit dem neu generierten Kontoschlüssel aktualisiert werden.
 
 > [!IMPORTANT]
 > Ein SAS-URI wird dem Kontoschlüssel, mit dem die Signatur erstellt wurde, und der zugehörigen gespeicherten Zugriffsrichtlinie (sofern vorhanden) zugeordnet. Wenn keine gespeicherte Zugriffsrichtlinie angegeben wird, kann eine SAS nur durch Änderung des Kontoschlüssels aufgehoben werden.
 
 ## <a name="authenticating-from-a-client-application-with-a-sas"></a>Authentifizieren über eine Clientanwendung mit einer SAS
-Ein Client, der im Besitz einer SAS ist, kann die SAS verwenden, um eine Anforderung für ein Speicherkonto zu authentifizieren, für das dem Client die Kontoschlüssel nicht bekannt sind. Eine SAS kann in eine Verbindungszeichenfolge eingebunden oder direkt über den passenden Konstruktor oder die Methode verwendet werden.
+Ein Client mit einer SAS kann diese verwenden, um eine Anforderung für ein Speicherkonto zu autorisieren, für das dem Client die Kontoschlüssel nicht bekannt sind. Eine SAS kann in eine Verbindungszeichenfolge eingebunden oder direkt über den passenden Konstruktor oder die Methode verwendet werden.
 
 ### <a name="using-a-sas-in-a-connection-string"></a>Verwenden einer SAS in einer Verbindungszeichenfolge
 [!INCLUDE [storage-use-sas-in-connection-string-include](../../../includes/storage-use-sas-in-connection-string-include.md)]
 
 ### <a name="using-a-sas-in-a-constructor-or-method"></a>Verwenden einer SAS in einem Konstruktor oder einer Methode
-Für viele Azure Storage-Clientbibliothekkonstruktoren und -Methodenüberladungen wird ein SAS-Parameter angeboten, sodass Sie eine Anforderung an den Dienst mit einer SAS authentifizieren können.
+Für viele Azure Storage-Clientbibliothekkonstruktoren und -Methodenüberladungen steht ein SAS-Parameter zur Verfügung, sodass Sie eine Anforderung an den Dienst mit einer SAS autorisieren können.
 
 Hier wird beispielsweise ein SAS-URI verwendet, um einen Verweis auf einen Blockblob zu erstellen. Mit der SAS werden die einzigen Anmeldeinformationen bereitgestellt, die für die Anforderung benötigt werden. Der Blockblobverweis wird dann für einen Schreibvorgang verwendet:
 
@@ -226,7 +221,7 @@ Mit den folgenden Empfehlungen für die Verwendung von Shared Access Signatures 
 5. **Seien Sie vorsichtig mit der SAS-Startzeit.** Wenn Sie die Startzeit einer SAS auf **jetzt** setzen, können aufgrund von Zeitunterschieden zwischen unterschiedlichen Computern in den ersten Minuten Probleme auftreten. Üblicherweise sollten Sie als Startzeit eine Uhrzeit angeben, die mindestens 15 Minuten in der Vergangenheit liegt. Alternativ legen Sie gar keine Startzeit fest, wodurch sie in allen Fällen sofort wirksam wird. Dasselbe gilt für die Ablaufzeit. Rechnen Sie immer mit Zeitunterschieden von bis zu 15 Minuten in beide Richtungen bei jeder Anforderung. Für Clients mit einer REST-Version vor 2012-02-12 ist die maximale Dauer für eine SAS, in der nicht auf eine gespeicherte Zugriffsrichtlinie verwiesen wird, eine Stunde. Alle Richtlinien, die längere Zeiträume verwenden, schlagen fehl.
 6. **Geben Sie die freigegebene Ressource exakt an.** Aus Sicherheitsgründen sollten Benutzer nur die minimal erforderlichen Berechtigungen erhalten. Wenn ein Benutzer nur Lesezugriff auf eine einzige Entität benötigt, dann geben Sie auch nur Lesezugriff auf diese Entität, und nicht Lese-/Schreib-/Löschzugriff auf alle Entitäten. So lässt sich auch der Schaden verringern, wenn eine SAS kompromittiert wurde, denn die SAS bietet dem Angreifer weniger Angriffsfläche.
 7. **Beachten Sie, dass Ihnen jegliche Nutzung Ihres Kontos berechnet wird, inklusive der Nutzung über SAS.** Wenn Sie Schreibzugriff für einen Blob vergeben, können Benutzer Blobs mit bis zu 200GB hochladen. Falls Sie außerdem noch Lesezugriff vergeben, können die Benutzer die Daten bis zu zehnmal herunterladen und Gebühren für den Datenausgang von bis zu 2 TB verursachen. Vergeben Sie also auch hierbei eingeschränkte Berechtigungen, um die möglichen Aktionen böswilliger Benutzer abzuschwächen. Verwenden Sie kurzlebige SAS, um diese Bedrohung zu mindern (beachten Sie jedoch mögliche Zeitunterschiede bei der Ablaufzeit).
-8. **Überprüfen Sie Daten, die per SAS geschrieben wurden.** Wenn Clientanwendungen Daten in Ihr Speicherkonto schreiben, müssen Sie stets beachten, dass diese Daten problembehaftet sein können. Wenn Ihre Anwendung diese Daten vor der Verwendung validieren oder autorisieren muss, sollten Sie diese Validierung durchführen, nachdem die Daten geschrieben und bevor sie von Ihrer Anwendung verwendet werden. Auf diese Weise schützen Sie Ihr Konto auch vor beschädigten oder bösartigen Daten, sowohl von tatsächlich berechtigten SAS-Benutzern als auch von Angreifern, die eine abgefangene SAS verwenden.
+8. **Überprüfen Sie Daten, die per SAS geschrieben wurden.** Wenn Clientanwendungen Daten in Ihr Speicherkonto schreiben, müssen Sie stets beachten, dass diese Daten problembehaftet sein können. Wenn Ihre Anwendung diese Daten vor der Verwendung überprüfen oder autorisieren muss, sollten Sie diese Überprüfung durchführen, nachdem die Daten geschrieben und bevor sie von Ihrer Anwendung verwendet werden. Auf diese Weise schützen Sie Ihr Konto auch vor beschädigten oder bösartigen Daten, sowohl von tatsächlich berechtigten SAS-Benutzern als auch von Angreifern, die eine abgefangene SAS verwenden.
 9. **Verwenden Sie SAS nicht immer.** Manchmal überwiegen die Risiken einer bestimmten Operation für Ihr Speicherkonto gegenüber den Vorzügen von SAS. Für solche Operation sollten Sie einen Dienst auf der mittleren Ebene erstellen, der zunächst Geschäftsregeln validiert sowie Authentifizierung und Überwachung durchführt und die Daten anschließend in Ihr Speicherkonto schreibt. Manchmal gibt es auch einfachere Möglichkeiten der Zugriffsverwaltung. Wenn Sie z. B. alle Blobs in einem Container öffentlich lesbar machen möchten, können Sie auch den Container öffentlich machen, anstatt jedem Client für den Zugriff eine SAS zu geben.
 10. **Überwachen Sie Ihrer Anwendung mithilfe der Speicheranalyse.** Sie können Häufungen von Authentifizierungsfehlern aufgrund von Ausfällen Ihres SAS-Anbieterdiensts oder einer unbeabsichtigt gelöschten gespeicherten Zugriffsrichtlinie mithilfe von Protokollierung und Metriken beobachten. Weitere Informationen finden Sie im [Blog des Azure-Speicherteams](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) .
 

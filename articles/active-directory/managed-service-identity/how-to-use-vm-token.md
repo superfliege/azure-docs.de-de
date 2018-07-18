@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 2f24eaa65781eb56b641ed179536867ee514f668
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: e564f48b4b90cfcaa72ed51d5f210a71a4980360
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165450"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902944"
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>Verwenden der verwalteten Dienstidentität (Managed Service Identity, MSI) eines virtuellen Azure-Computers für den Tokenabruf 
 
@@ -313,6 +313,8 @@ In diesem Abschnitt sind die möglichen Fehlerantworten aufgeführt. Der Status 
 | 500 Interner Serverfehler | unknown | Beim Abrufen des Tokens aus Active Directory ist ein Fehler aufgetreten. Details finden Sie in den Protokollen unter *\<Dateipfad\>*. | Überprüfen Sie, ob die MSI auf dem virtuellen Computer aktiviert wurde. Hilfe zur Konfiguration des virtuellen Computers finden Sie unter [Konfigurieren einer VM-MSI (Managed Service Identity, verwaltete Dienstidentität) über das Azure-Portal](qs-configure-portal-windows-vm.md).<br><br>Überprüfen Sie zudem, ob Ihr HTTP GET-Anforderungs-URI richtig formatiert ist. Dies gilt vor allem für den Ressourcen-URI, der in der Abfragezeichenfolge angegeben ist. Unter „Beispiel für Anforderung“ im [vorherigen REST-Abschnitt](#rest) finden Sie ein Beispiel, und unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](services-support-msi.md) finden Sie eine Liste mit Diensten und den dazugehörigen Ressourcen-IDs.
 
 ## <a name="retry-guidance"></a>Informationen zur Wiederholung 
+
+Wenn Sie einen Fehlercode vom Typ 404, 429 oder 5xx erhalten, sollten Sie den Vorgang wiederholen. (Weitere Informationen finden Sie weiter oben unter [Fehlerbehandlung](#error-handling).)
 
 Drosselungsgrenzwerte gelten für die Anzahl von Aufrufen, die an den IMDS-Endpunkt gerichtet werden. Wird der Drosselungsschwellenwert überschritten, schränkt der IMDS-Endpunkt alle weiteren Anforderungen ein, während die Drosselung aktiv ist. Während dieser Zeit gibt der IMDS-Endpunkt den HTTP-Statuscode 429 (zu viele Anforderungen) zurück, und die Anforderungen sind nicht erfolgreich. 
 

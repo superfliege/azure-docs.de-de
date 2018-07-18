@@ -1,21 +1,21 @@
 ---
-title: "Hinzufügen eines Verweisdatasets zu Ihrer Azure Time Series Insights-Umgebung"
-description: "In diesem Artikel wird beschrieben, wie Sie Ihrer Azure Time Series Insights-Umgebung ein Verweisdataset zum Ergänzen der Daten hinzufügen."
-services: time-series-insights
+title: Hinzufügen eines Verweisdatasets zu Ihrer Azure Time Series Insights-Umgebung
+description: In diesem Artikel wird beschrieben, wie Sie Ihrer Azure Time Series Insights-Umgebung ein Verweisdataset zum Ergänzen der Daten hinzufügen.
 ms.service: time-series-insights
-author: jasonwhowell
+services: time-series-insights
+author: ashannon7
 ms.author: jasonh
 manager: kfile
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/15/2018
-ms.openlocfilehash: e0d11f253d5aa143ff636c4dc8dff7665a80360e
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 962c3c8d439884cacf010b0bbcab03bd216dbd43
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294199"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Erstellen eines Verweis-DataSets für Ihre Time Series Insights-Umgebung über das Azure-Portal
 

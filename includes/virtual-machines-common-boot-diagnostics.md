@@ -38,7 +38,7 @@ Beide Funktionen werden für virtuelle Azure-Computer in allen Regionen unterst�
     ![Erstellen eines virtuellen Computers](./media/virtual-machines-common-boot-diagnostics/create-storage-account.png)
 
     > [!NOTE]
-    > Die Startdiagnosefunktion unterstützt keine Premium-Speicherkonten. Bei Verwendung eines Premium-Speicherkontos für die Startdiagnose erhalten Sie möglicherweise den Fehler „StorageAccountTypeNotSupported“, wenn Sie die VM starten.
+    > Das Feature „Startdiagnose“ unterstützt keine Storage Premium-Konten. Wenn Sie ein Premium-Speicherkontos für die Startdiagnose verwenden, erhalten Sie beim Starten der VM möglicherweise den Fehler „StorageAccountTypeNotSupported“.
     >
     > 
 
@@ -66,11 +66,11 @@ Beide Funktionen werden für virtuelle Azure-Computer in allen Regionen unterst�
 
 Informationen zum Bereitstellen eines virtuellen Beispielcomputers mit aktivierter Startdiagnose finden Sie in unserem Repository.
 
-## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>Aktivieren von Startdiagnoseeinstellungen auf vorhandenen virtuellen Computern 
+## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>Aktivieren der Startdiagnose auf vorhandenen virtuellen Computern 
 
 Zum Aktivieren von Startdiagnoseeinstellungen auf vorhandenen virtuellen Computern führen Sie diese Schritte aus:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie den virtuellen Computer aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie dann den virtuellen Computer aus.
 2. Wählen Sie unter **Support + Problembehandlung** die Option **Startdiagnose** > **Einstellungen** aus, ändern Sie den Status in **Ein**, und wählen Sie dann ein Speicherkonto aus. 
 4. Stellen Sie sicher, dass die Option „Startdiagnose“ ausgewählt ist, und speichern Sie dann die Änderung.
 

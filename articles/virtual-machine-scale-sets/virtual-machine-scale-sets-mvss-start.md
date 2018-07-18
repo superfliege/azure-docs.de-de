@@ -1,11 +1,11 @@
 ---
-title: "Informationen zu Vorlagen für VM-Skalierungsgruppen | Microsoft-Dokumentation"
-description: "Informationen zum Erstellen einer Vorlage für eine kleinstmögliche Skalierungsgruppe für VM-Skalierungsgruppen"
+title: Informationen zu Vorlagen für VM-Skalierungsgruppen | Microsoft-Dokumentation
+description: Informationen zum Erstellen einer Vorlage für eine kleinstmögliche Skalierungsgruppe für VM-Skalierungsgruppen
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
@@ -20,6 +20,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26781254"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Informationen zu Vorlagen für VM-Skalierungsgruppen
 [Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) sind eine hervorragende Möglichkeit, Gruppen aufeinander bezogener Ressourcen bereitzustellen. In dieser Reihe von Tutorials wird gezeigt, wie Sie eine Vorlage für eine kleinstmögliche Skalierungsgruppe erstellen und für verschiedene Szenarios anpassen. Alle Beispiele stammen aus diesem [GitHub-Repository](https://github.com/gatneil/mvss). 

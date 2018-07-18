@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894748"
 ---
 # <a name="azure-operational-security-checklist"></a>Checkliste für Azure Operational Security
 Die Bereitstellung einer Anwendung in Azure ist schnell, einfach und kostengünstig. Vor der Bereitstellung der Cloudanwendung in der Produktion ist es sinnvoll, eine Checkliste für die Bewertung Ihrer Anwendung zu verwenden. Hierbei wird eine Liste wichtiger und empfohlener Betriebssicherheitsaktionen überprüft, die Sie berücksichtigen müssen.

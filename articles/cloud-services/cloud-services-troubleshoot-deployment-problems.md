@@ -1,11 +1,11 @@
 ---
 title: Behandeln von Problemen mit der Clouddienstbereitstellung | Microsoft-Dokumentation
-description: "Bei der Bereitstellung eines Clouddiensts in Azure können einige allgemeine Probleme auftreten. Dieser Artikel bietet Lösungen für einige dieser Probleme."
+description: Bei der Bereitstellung eines Clouddiensts in Azure können einige allgemeine Probleme auftreten. Dieser Artikel bietet Lösungen für einige dieser Probleme.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: simonxjx
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: a18ae415-0d1c-4bc4-ab6c-c1ddea02c870
 ms.service: cloud-services
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26408178"
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>Behandeln von Problemen mit der Clouddienstbereitstellung
 Wenn Sie ein Anwendungspaket für einen Clouddienst in Azure bereitstellen, können Sie im Bereich **Eigenschaften** des Azure-Portals Informationen zu der Bereitstellung abrufen. Mit den Informationen in diesem Bereich können Sie Probleme mit dem Clouddienst behandeln, und Sie können dem Azure-Support diese Informationen bereitstellen, wenn Sie eine neue Supportanfrage eröffnen.

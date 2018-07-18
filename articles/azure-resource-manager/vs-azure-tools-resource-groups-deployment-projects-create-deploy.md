@@ -6,32 +6,27 @@ documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 4bd084c8-0842-4a10-8460-080c6a085bec
 ms.service: azure-resource-manager
 ms.devlang: multiple
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/09/2018
+ms.date: 07/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: bd2869b35d92ea92261223131476d7cc8eb854eb
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: af8b91ee20ccb4d16e7666c317ea7d08a265e6d6
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34360103"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435543"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio
-Mit Visual Studio und dem [Azure SDK](https://azure.microsoft.com/downloads/) können Sie ein Projekt erstellen, das Ihre Infrastruktur und Ihren Code in Azure bereitstellt. Sie können z. B. den Webhost, die Website und die Datenbank für Ihre App definieren und diese Infrastruktur zusammen mit dem Code bereitstellen. Oder Sie können einen virtuellen Computer, ein virtuelles Netzwerk und ein Speicherkonto definieren und diese Infrastruktur zusammen mit einem Skript, das auf dem virtuellen Computer ausgeführt wird, bereitstellen. Das Bereitstellungsprojekt für die **Azure-Ressourcengruppe** ermöglicht die Bereitstellung aller erforderlichen Ressourcen in einem einzigen, wiederholbaren Vorgang. Weitere Informationen zum Bereitstellen und Verwalten von Ressourcengruppen finden Sie unter [Azure Resource Manager – Übersicht](resource-group-overview.md).
+Mit Visual Studio können Sie ein Projekt erstellen, das Ihre Infrastruktur und Ihren Code in Azure bereitstellt. Sie können z. B. den Webhost, die Website und die Datenbank für Ihre App definieren und diese Infrastruktur zusammen mit dem Code bereitstellen. Visual Studio bietet viele verschiedene Starter-Vorlagen für die Bereitstellung gängiger Szenarien. In diesem Artikel stellen Sie eine Web-App und SQL-Datenbank bereit.  
 
-Azure-Ressourcengruppenprojekte enthalten Azure Resource Manager-JSON-Vorlagen, die die für Azure bereitgestellten Ressourcen definieren. Weitere Informationen über die Elemente von Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md). Visual Studio ermöglicht das Bearbeiten dieser Vorlagen und bietet Tools, die das Arbeiten mit Vorlagen vereinfachen.
-
-In diesem Artikel stellen Sie eine Web-App und SQL-Datenbank bereit. Die Schritte sind jedoch für jeden Ressourcentyp nahezu identisch. Genauso einfach können Sie einen virtuellen Computer und die dazugehörigen Ressourcen bereitstellen. Visual Studio bietet viele verschiedene Starter-Vorlagen für die Bereitstellung gängiger Szenarien.
-
-Dieser Artikel zeigt Visual Studio 2017. Bei Verwendung von Visual Studio 2015 Update 2 und Microsoft Azure SDK für .NET 2.9 oder Visual Studio 2013 mit Azure SDK 2.9 ist der Ablauf größtenteils identisch. Sie können ein Azure SDK ab Version 2.6 verwenden. Die Benutzeroberfläche kann sich dann aber von der Benutzeroberfläche in diesem Artikel unterscheiden. Es wird dringend empfohlen, die neueste Version des [Azure SDK](https://azure.microsoft.com/downloads/) zu installieren, bevor Sie mit der Ausführung der Schritte beginnen. 
+In diesem Artikel erfahren Sie, wie Sie [Visual Studio 2017 mit den neuesten installierten Workloads für ASP.NET und die Azure-Entwicklung](/dotnet/azure/dotnet-tools) verwenden. Bei Verwendung von Visual Studio 2015 Update 2 und Microsoft Azure SDK für .NET 2.9 oder Visual Studio 2013 mit Azure SDK 2.9 ist der Ablauf größtenteils identisch.
 
 ## <a name="create-azure-resource-group-project"></a>Erstellen eines Azure-Ressourcengruppenprojekts
-In diesem Verfahren erstellen Sie ein Azure-Ressourcengruppenprojekt mit einer Vorlage vom Typ **Web-App und SQL** .
+In diesem Abschnitt erstellen Sie ein Azure-Ressourcengruppenprojekt mit der Vorlage **Web-App und SQL**.
 
 1. Klicken Sie in Visual Studio auf **Datei**, **Neues Projekt**, und wählen Sie entweder **C#** oder **Visual Basic** aus. (Die ausgewählte Sprache hat keine Auswirkung auf die späteren Phasen, da diese Projekte nur JSON- und PowerShell-Inhalte enthalten.) Wählen Sie dann **Cloud** und anschließend das Projekt **Azure-Ressourcengruppe** aus.
    
@@ -52,18 +47,18 @@ In diesem Verfahren erstellen Sie ein Azure-Ressourcengruppenprojekt mit einer V
    
     ![Knoten anzeigen](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-items.png)
    
-    Da wir für dieses Beispiel die Vorlage „Web-App und SQL“ gewählt haben, werden die folgenden Dateien angezeigt: 
+    Da Sie für dieses Beispiel die Vorlage „Web-App und SQL“ ausgewählt haben, werden die folgenden Dateien angezeigt: 
    
-   | Dateiname | BESCHREIBUNG |
+   | Dateiname | Beschreibung |
    | --- | --- |
-   | Deploy-AzureResourceGroup.ps1 |Ein PowerShell-Skript, das PowerShell-Befehle für die Bereitstellung im Azure-Ressourcen-Manager aufruft.<br />**Hinweis** Dieses PowerShell-Skript wird von Visual Studio zum Bereitstellen Ihrer Vorlage verwendet. Alle Änderungen, die Sie an diesem Skript vornehmen, haben Auswirkungen auf die Bereitstellung in Visual Studio. Es ist also Vorsicht geboten. |
+   | Deploy-AzureResourceGroup.ps1 |Ein PowerShell-Skript, das PowerShell-Befehle für die Bereitstellung in Azure Resource Manager ausführt.<br />**Hinweis** Dieses PowerShell-Skript wird von Visual Studio zum Bereitstellen Ihrer Vorlage verwendet. Alle Änderungen, die Sie an diesem Skript vornehmen, haben Auswirkungen auf die Bereitstellung in Visual Studio. Es ist also Vorsicht geboten. |
    | WebSiteSQLDatabase.json |Die Resource Manager-Vorlage, die sowohl die für Azure bereitzustellende Infrastruktur als auch die Parameter definiert, die Sie bei der Bereitstellung angeben können. Sie definiert auch die Abhängigkeiten zwischen Ressourcen, damit sie von Resource Manager in der richtigen Reihenfolge bereitgestellt werden. |
    | WebSiteSQLDatabase.parameters.json |Eine Parameterdatei, die Werte enthält, die für die Vorlage erforderlich sind. Parameterwerte werden zum Anpassen der einzelnen Bereitstellungen übergeben. |
    
     Alle Ressourcengruppen-Bereitstellungsprojekte enthalten diese grundlegenden Dateien. Andere Projekte enthalten möglicherweise zusätzliche Dateien zur Unterstützung weiterer Funktionen.
 
 ## <a name="customize-the-resource-manager-template"></a>Anpassen der Ressourcen-Manager-Vorlage
-Sie können ein Bereitstellungsprojekt anpassen, indem Sie die JSON-Vorlagen bearbeiten, in denen bereitzustellenden Ressourcen beschrieben werden. JSON ist die Kurzform von "JavaScript Object Notation". Es handelt sich um ein serialisiertes Datenformat, das einfach zu verwenden ist. Die JSON-Dateien verwenden ein Schema, auf das Sie am Anfang jeder Datei verweisen. Sie können das Schema herunterladen und analysieren, um es besser zu verstehen. Das Schema definiert die zulässigen Elemente und legt die Arten und Formate von Feldern, die möglichen Werte aufgezählter Werte und Ähnliches fest. Weitere Informationen über die Elemente von Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md).
+Sie können ein Bereitstellungsprojekt anpassen, indem Sie die JSON-Vorlagen bearbeiten, in denen bereitzustellenden Ressourcen beschrieben werden. JSON ist die Kurzform von "JavaScript Object Notation". Es handelt sich um ein serialisiertes Datenformat, das einfach zu verwenden ist. Die JSON-Dateien verwenden ein Schema, auf das Sie am Anfang jeder Datei verweisen. Sie können das Schema herunterladen und analysieren, um es besser zu verstehen. Das Schema definiert die zulässigen Elemente, die Arten und Formate von Feldern und die möglichen Werte für eine Eigenschaft. Weitere Informationen über die Elemente von Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md).
 
 Öffnen Sie **WebSiteSQLDatabase.json**, um die Vorlage zu bearbeiten.
 
@@ -102,7 +97,7 @@ Der Parameter **storageType** ist mit zulässigen Typen und einem Standardtyp vo
 }
 ```
 
-Visual Studio bietet auch Intellisense, damit Sie besser sehen, welche Eigenschaften beim Bearbeiten der Vorlage verfügbar sind. Wenn Sie beispielsweise die Eigenschaften für Ihren App Service-Plan bearbeiten möchten, navigieren Sie zur Ressource **HostingPlan**, und fügen Sie einen Wert für die Eigenschaften (**properties**) hinzu. Intellisense zeigt daraufhin die verfügbaren Werte sowie eine Beschreibung des Werts an.
+Visual Studio bietet auch IntelliSense, damit Sie besser sehen, welche Eigenschaften beim Bearbeiten der Vorlage verfügbar sind. Wenn Sie beispielsweise die Eigenschaften für Ihren App Service-Plan bearbeiten möchten, navigieren Sie zur Ressource **HostingPlan**, und fügen Sie einen Wert für die Eigenschaften (**properties**) hinzu. Intellisense zeigt daraufhin die verfügbaren Werte sowie eine Beschreibung des Werts an.
 
 ![IntelliSense anzeigen](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-intellisense.png)
 
@@ -141,7 +136,7 @@ Sie können das Projekt jetzt bereitstellen. Wenn Sie ein Azure-Ressourcengruppe
    
     **administratorLogin** wird der Benutzername für den SQL Server-Administrator angegeben. Verwenden Sie keine gängigen Administratornamen wie **sa** oder **admin**. 
    
-    Mit **administratorLoginPassword** wird ein Kennwort für den SQL Server-Administrator angegeben. Die Option **Kennwörter als Nur-Text in der Parameterdatei speichern** ist nicht sicher. Aktivieren Sie diese Option daher nicht. Da das Kennwort nicht als Klartext gespeichert wird, müssen Sie es während der Bereitstellung erneut angeben. 
+    Mit **administratorLoginPassword** wird ein Kennwort für den SQL Server-Administrator angegeben. Die Option **Save passwords as plain text in the parameters file** (Kennwörter als Nur-Text in der Parameterdatei speichern) ist nicht sicher. Aktivieren Sie diese Option daher nicht. Da das Kennwort nicht als Nur-Text gespeichert wird, müssen Sie es während der Bereitstellung erneut angeben. 
    
     **databaseName** wird ein Name für die zu erstellende Datenbank angegeben. 
    
@@ -218,11 +213,11 @@ Jetzt haben Sie die Infrastruktur für Ihre App bereitgestellt, im Projekt ist j
      ![Bereitgestellte App anzeigen](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployed-app.png)
 
 ## <a name="add-an-operations-dashboard-to-your-deployment"></a>Hinzufügen eines Dashboard für Abläufe zu Ihrer Bereitstellung
-Nun müssen wir die erstellte Projektmappe noch betriebsbereit machen. Sie sind nicht auf die Ressourcen beschränkt, die über die Visual Studio-Benutzeroberfläche zur Verfügung stehen. Sie können auch freigegebene Dashboards nutzen, die als Ressourcen in JSON definiert sind. Hierzu bearbeiten wir unsere Vorlage und fügen eine benutzerdefinierte Ressource hinzu. 
+Sie sind nicht auf die Ressourcen beschränkt, die über die Visual Studio-Benutzeroberfläche zur Verfügung stehen. Sie können Ihre Bereitstellung anpassen, indem Sie der Vorlage eine benutzerdefinierte Ressource hinzufügen. Fügen Sie ein Dashboard für Abläufe zum Verwalten der bereitgestellten Ressource hinzu, um das Hinzufügen einer Ressource zu veranschaulichen.
 
-1. Öffnen Sie die Datei „WebsiteSqlDeploy.json“, und fügen Sie nach der Speicherkontoressource, aber noch vor der schließenden eckigen Klammer (]) des Ressourcenabschnitts, den folgenden JSON-Codeblock hinzu.
+1. Öffnen Sie die Datei „WebsiteSqlDeploy.json“, und fügen Sie nach der Speicherkontoressource, aber noch vor der schließenden eckigen Klammer (`]`) des Ressourcenabschnitts, den folgenden JSON-Code hinzu.
 
-```json
+  ```json
     ,{
       "properties": {
         "lenses": {
@@ -297,23 +292,19 @@ Nun müssen wir die erstellte Projektmappe noch betriebsbereit machen. Sie sind 
         "hidden-title": "[concat('OPS-',resourceGroup().name)]"
       }
     }
-}
-```
+  }
+  ```
 
-2. Stellen Sie Ihre Ressourcengruppe erneut bereit. Wenn Sie sich nun Ihr Dashboard im Azure-Portal ansehen, wird dort das freigegebene Dashboard angezeigt, das Sie der Liste mit den Optionen hinzugefügt haben. 
+2. Stellen Sie Ihre Ressourcengruppe erneut bereit. Sehen Sie sich Ihr Dashboard im Azure-Portal an, und beachten Sie, dass das freigegebene Dashboard Ihrer Auswahlliste hinzugefügt wurde.
 
-    ![Benutzerdefiniertes Dashboard](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/view-custom-dashboards.png)
+   ![Benutzerdefiniertes Dashboard](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/view-custom-dashboards.png)
 
+3. Wählen Sie das Dashboard aus.
 
+   ![Benutzerdefiniertes Dashboard](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/Ops-DemoSiteGroup-dashboard.png)
 
-   > [!NOTE] 
-   > Der Zugriff auf das Dashboard kann mithilfe von RBAC-Gruppen verwaltet werden, und Sie können Anpassungen für die bereitgestellte Ressource veröffentlichen. Hinweis: Wenn Sie die Ressourcengruppe erneut bereitstellen, wird sie auf die Standardwerte in der Vorlage zurückgesetzt. Es empfiehlt sich daher unter Umständen, die Vorlage mit den Anpassungen zu aktualisieren. Eine entsprechende Anleitung finden Sie unter [Programmgesteuertes Erstellen von Azure-Dashboards](../azure-portal/azure-portal-dashboards-create-programmatically.md).
+Sie können den Zugriff auf das Dashboard verwalten, indem Sie RBAC-Gruppen verwenden. Außerdem können Sie die Darstellung des Dashboards anpassen, nachdem es bereitgestellt wurde. Wenn Sie die Ressourcengruppe jedoch erneut bereitstellen, wird das Dashboard auf den Standardzustand in der Vorlage zurückgesetzt. Weitere Informationen über das Erstellen von Dashboards finden Sie unter [Programmgesteuertes Erstellen von Azure-Dashboards](../azure-portal/azure-portal-dashboards-create-programmatically.md).
 
-
-    ![Benutzerdefiniertes Dashboard](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/Ops-DemoSiteGroup-dashboard.png)
-    
-    
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen zur Ressourcenverwaltung über das Portal finden Sie unter [Verwenden des Azure-Portals zum Verwalten Ihrer Azure-Ressourcen](resource-group-portal.md).
 * Weitere Informationen zu Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 

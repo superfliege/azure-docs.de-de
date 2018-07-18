@@ -1,24 +1,25 @@
 ---
-title: "ZIP-Push-Bereitstellung für Azure Functions | Microsoft-Dokumentation"
-description: "Verwenden Sie die Funktionen zur Bereitstellung von ZIP-Dateien des Kudu-Bereitstellungdiensts zum Veröffentlichen Ihrer Azure Functions."
+title: ZIP-Push-Bereitstellung für Azure Functions | Microsoft-Dokumentation
+description: Verwenden Sie die Funktionen zur Bereitstellung von ZIP-Dateien des Kudu-Bereitstellungdiensts zum Veröffentlichen Ihrer Azure Functions.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/06/2017
+ms.date: 05/29/2018
 ms.author: glenga
-ms.openlocfilehash: faddb73522200f60f18294dc43e8d235943f8bbb
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 91c16ad5a6bf8babffc0b83d801626932688631e
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699953"
 ---
 # <a name="zip-push-deployment-for-azure-functions"></a>ZIP-Push-Bereitstellung für Azure Functions 
 In diesem Artikel wird beschrieben, wie Sie Ihre Projektdateien für Funktions-Apps aus einer ZIP-Datei (komprimierten Datei) in Azure bereitstellen. Sie erfahren, wie Push-Bereitstellungen ausgeführt werden, sowohl mithilfe der Azure-Befehlszeilenschnittstelle als auch mithilfe der REST-APIs. 
@@ -40,23 +41,33 @@ Die ZIP-Datei, die Sie für die Push-Bereitstellung verwenden, muss alle Projekt
 >[!IMPORTANT]
 > Wenn Sie ZIP-Push-Bereitstellung verwenden, werden alle Dateien aus einer vorhandenen Bereitstellung, die nicht in der ZIP-Datei vorhanden sind, aus Ihrer Funktions-App gelöscht.  
 
-### <a name="function-app-folder-structure"></a>Funktions-App – Ordnerstruktur
-
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-### <a name="download-your-function-app-project"></a>Herunterladen Ihres Funktions-App-Projekts
+Eine Funktionen-App umfasst alle Dateien und Ordner im Verzeichnis `wwwroot`. Eine ZIP-Bereitstellungsdatei enthält den Inhalt des Verzeichnisses `wwwroot`, aber nicht das Verzeichnis selbst.  
+
+## <a name="download-your-function-app-files"></a>Herunterladen der Dateien Ihrer Funktionen-App
 
 Wenn Sie auf einem lokalen Computer entwickeln, ist es einfach, eine ZIP-Datei des Projektordners der Funktions-App auf Ihrem Entwicklungscomputer zu erstellen. 
 
-Allerdings haben Sie Ihre Funktionen möglicherweise mithilfe des Editors im Azure-Portal erstellt. So laden Sie Ihr Funktions-App-Projekt aus dem Portal herunter: 
+Allerdings haben Sie Ihre Funktionen möglicherweise mithilfe des Editors im Azure-Portal erstellt. Sie können ein vorhandenes Funktionen-App-Projekt auf eine der folgenden Weisen herunterladen: 
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie dann zu Ihrer Funktions-App.
++ **Im Azure-Portal** 
 
-2. Wählen Sie auf der Registerkarte **Übersicht** den Befehl **App-Inhalt herunterladen** aus. Wählen Sie Ihre Downloadoptionen und anschließend **Herunterladen** aus.     
+    1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie dann zu Ihrer Funktions-App.
 
-    ![Herunterladen des Funktions-App-Projekts](./media/deployment-zip-push/download-project.png)
+    2. Wählen Sie auf der Registerkarte **Übersicht** den Befehl **App-Inhalt herunterladen** aus. Wählen Sie Ihre Downloadoptionen und anschließend **Herunterladen** aus.     
 
-Die heruntergeladene ZIP-Datei weist das richtige Format auf, um mithilfe der ZIP-Push-Bereitstellung wieder in Ihrer Funktions-App veröffentlicht zu werden.
+        ![Herunterladen des Funktions-App-Projekts](./media/deployment-zip-push/download-project.png)
+
+    Die heruntergeladene ZIP-Datei weist das richtige Format auf, um mithilfe der ZIP-Push-Bereitstellung wieder in Ihrer Funktions-App veröffentlicht zu werden. Beim Herunterladen im Portal können auch die Dateien hinzugefügt werden, die zum Öffnen der Funktionen-App direkt in Visual Studio erforderlich sind.
+
++ **Mit REST-APIS** 
+
+    Verwenden Sie die folgende GET-Bereitstellungs-API, um Dateien aus Ihrem `<function_app>`-Projekt herunterzuladen: 
+
+        https://<function_app>.scm.azurewebsites.net/api/zip/site/wwwroot/
+
+    Das Hinzufügen von `/site/wwwroot/` stellt sicher, dass die ZIP-Datei nur die Dateien des Funktionen-App-Projekts und nicht die gesamte Website enthält. Wenn Sie nicht bereits in Azure angemeldet sind, werden Sie aufgefordert, sich anzumelden. Beachten Sie, dass zugunsten der in diesem Thema beschriebenen ZIP-Bereitstellungsmethode vom Senden einer POST-Anforderung an die API `api/zip/` abgeraten wird. 
 
 Sie können aber auch eine ZIP-Datei aus einem GitHub-Repository herunterladen. Beachten Sie, dass GitHub beim Herunterladen eines GitHub-Repositorys als ZIP-Datei eine zusätzliche Ordnerebene für den Branch hinzufügt. Diese zusätzliche Ordnerebene bedeutet, dass Sie die ZIP-Datei nicht direkt so, wie Sie sie von GitHub heruntergeladen haben, bereitstellen können. Wenn Sie ein GitHub-Repository zum Verwalten Ihrer Funktions-App verwenden, sollten Sie die App mithilfe von [Continuous Integration](functions-continuous-deployment.md) bereitstellen.  
 

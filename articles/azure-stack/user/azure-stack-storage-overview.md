@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/29/2018
+ms.date: 05/21/2018
 ms.author: mabrigg
-ms.openlocfilehash: b1ec7a9e74e9b460152c7d47c4b5b3b394a3367b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d97a5f8aff57f4bbfd7d5222a87d258fa5c92da8
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196949"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604385"
 ---
 # <a name="introduction-to-azure-stack-storage"></a>Einführung zu Azure Stack-Speicher
 
@@ -32,13 +32,15 @@ Azure Stack-Speicher ist ein Satz von Cloudspeicherdiensten, einschließlich Die
 
 Azure Stack-Speicher bietet die folgenden drei Dienste:
 
-* **Blob Storage**
+- **Blob Storage**
 
     Blob Storage dient zum Speichern unstrukturierter Objektdaten. Bei einem Blob kann es sich um einen beliebigen Text- oder Binärdatentyp handeln – also beispielsweise um ein Dokument, eine Mediendatei oder einen Anwendungs-Installer.
-* **Table Storage**
+
+- **Table Storage**
 
     Table Storage speichert strukturierte Datasets. Table Storage ist ein Schlüssel-/Attribut-basierter NoSQL-Datenspeicher, der eine rasche Entwicklung und schnellen Zugriff auf große Datenmengen erlaubt.
-* **Queue Storage**
+
+- **Queue Storage**
 
     Queue Storage bietet zuverlässiges Messaging für die Workflowverarbeitung und für die Kommunikation zwischen Komponenten von Clouddiensten.
 
@@ -50,24 +52,26 @@ Ein Azure Stack-Speicherkonto ist ein sicheres Konto, mit dem Sie auf Dienste in
 
 Blob Storage ist eine effektive und skalierbare Lösung für Benutzer, die große Mengen an unstrukturierten Objektdaten in der Cloud speichern möchten. Mit Blob Storage lassen sich unter anderem folgende Inhalte speichern:
 
-* Dokumente
-* Daten aus sozialen Netzwerken (etwa Fotos, Videos, Musik und Blogs)
-* Sicherungskopien von Dateien, Computern, Datenbanken und Geräten
-* Bilder und Texte für Webanwendungen
-* Konfigurationsdaten für Cloudanwendungen
-* Big Data wie Protokolle und andere umfangreiche Datasets
+- Dokumente
+- Daten aus sozialen Netzwerken (etwa Fotos, Videos, Musik und Blogs)
+- Sicherungskopien von Dateien, Computern, Datenbanken und Geräten
+- Bilder und Texte für Webanwendungen
+- Konfigurationsdaten für Cloudanwendungen
+- Big Data wie Protokolle und andere umfangreiche Datasets
 
 Jedes Blob ist in einem Container organisiert. Container sind auch eine praktische Möglichkeit, um Gruppen von Objekten Sicherheitsrichtlinien zuzuordnen. Ein Speicherkonto kann eine beliebige Anzahl von Containern enthalten, und ein Container kann eine beliebige Anzahl von Blobs enthalten, bis die Kapazität des Speicherkontos erreicht ist.
 
 Blob Storage bietet drei Typen von Blobs:
 
-* **Blockblobs**
+- **Blockblobs**
 
     Blockblobs sind für das Streamen und Speichern von Cloudobjekten optimiert und eine gute Wahl für die Speicherung von Dokumenten, Mediendateien, Sicherungskopien und Ähnlichem.
-* **Anfügeblobs**
+
+- **Anfügeblobs**
 
     Anfügeblobs ähneln Blockblobs, sind aber für Anfügevorgänge optimiert. Zum Aktualisieren eines Anfügeblobs muss an dessen Ende ein neuer Block hinzugefügt werden. Somit eignen sich Anfügeblobs sehr gut für Szenarien wie die Protokollierung, da hier neue Daten nur am Ende des Blobs geschrieben werden müssen.
-* **Seitenblobs**
+
+- **Seitenblobs**
 
     Seitenblobs sind für die Darstellung von IaaS-Festplatten und für die Unterstützung zufallsgesteuerter Schreibzugriffe optimiert, die bis zu 1 TB groß sein können. Bei einer mit dem virtuellen Azure Stack-Computer verbundenen IaaS-Festplatte handelt es sich um eine als Seitenblob gespeicherte virtuelle Festplatte.
 
@@ -75,9 +79,9 @@ Blob Storage bietet drei Typen von Blobs:
 
 Moderne Anwendungen sind im Vergleich zu früheren Softwaregenerationen häufig auf Datenspeicher mit höherer Skalierbarkeit und Flexibilität angewiesen. Table Storage bietet eine hoch verfügbare und äußerst flexibel skalierbare Speicherung, sodass sich Ihre Anwendung automatisch auf die Anforderungen der Benutzer einstellen kann. Table Storage ist ein NoSQL-Schlüssel-/Attributspeicher von Microsoft, der sich durch sein schemaloses Design von herkömmlichen relationalen Datenbanken unterscheidet. Mit einem schemalosen Datenspeicher können Sie Ihre Daten problemlos an die sich verändernden Anforderungen Ihrer Anwendung anpassen. Die hohe Benutzerfreundlichkeit von Table Storage ermöglicht Entwicklern eine rasche Anwendungserstellung.
 
-Bei Table Storage handelt es sich um einen Schlüssel-/Attribut-basierten Speicher. Das bedeutet, dass jeder Wert in einer Tabelle mit einem typisierten Eigenschaftennamen gespeichert wird. Der Eigenschaftenname kann für Filter und Auswahlkriterien verwendet werden. Eine Sammlung mit Eigenschaften und deren Werte bilden eine Entität. Da der Tabellenspeicher schemalos ist, können zwei Entitäten in der gleichen Tabelle unterschiedliche Sammlungen von Eigenschaften enthalten, und diese Eigenschaften können jeweils einen anderen Typ haben.
+Bei Table Storage handelt es sich um einen Schlüssel-/Attribut-basierten Speicher. Das bedeutet, dass jeder Wert in einer Tabelle mit einem typisierten Eigenschaftennamen gespeichert wird. Der Eigenschaftenname kann für Filter und Auswahlkriterien verwendet werden. Eine Sammlung mit Eigenschaften und deren Werte bilden eine Entität. Da Tabellenspeicher schemalos ist, können zwei Entitäten in der gleichen Tabelle unterschiedliche Sammlungen von Eigenschaften enthalten, und diese Eigenschaften können jeweils einen anderen Typ haben.
 
-Mit Table Storage können Sie flexible Datasets wie Benutzerdaten für Webanwendungen, Adressbücher, Geräteinformationen und jegliche Art von Metadaten speichern, die Ihr Dienst erfordert. Für moderne internetbasierte Anwendungen stellen NoSQL-Datenbanken wie Table Storage eine beliebte Alternative zu herkömmlichen relationalen Datenbanken dar.
+Mit Tabellenspeicher können Sie flexible Datasets wie Benutzerdaten für Webanwendungen, Adressbücher, Geräteinformationen und jegliche Art von Metadaten speichern, die Ihr Dienst erfordert. Für moderne internetbasierte Anwendungen stellen NoSQL-Datenbanken wie Tabellenspeicher eine beliebte Alternative zu herkömmlichen relationalen Datenbanken dar.
 
 Ein Speicherkonto kann eine beliebige Anzahl von Tabellen enthalten, und eine Tabelle kann eine beliebige Anzahl von Entitäten enthalten – bis zur Speicherkapazitätsgrenze des Speicherkontos.
 
@@ -89,6 +93,6 @@ Ein Speicherkonto kann eine beliebige Anzahl von Warteschlangen enthalten, und e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Azure Stack-Speicher: Unterschiede und Überlegungen](azure-stack-acs-differences.md)
+- [Azure Stack-Speicher: Unterschiede und Überlegungen](azure-stack-acs-differences.md)
 
-* Weitere Informationen zu Azure Storage finden Sie unter [Einführung in Microsoft Azure Storage](../../storage/common/storage-introduction.md).
+- Weitere Informationen zu Azure Storage finden Sie unter [Einführung in Microsoft Azure Storage](../../storage/common/storage-introduction.md).

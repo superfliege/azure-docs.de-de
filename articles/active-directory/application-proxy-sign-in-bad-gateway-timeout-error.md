@@ -3,22 +3,24 @@ title: Fehler „Zugriff auf diese Unternehmensanwendung nicht möglich“ bei V
 description: Informationen zum Beheben häufiger Probleme mit Azure AD-Anwendungsproxyanwendungen.
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: b9a643dab98fa685bb4873705c177a834af831ce
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.date: 05/21/2018
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: 1e13fe6a9a2e5251d167bb56a05721e613300e83
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156091"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334829"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Fehler „Zugriff auf diese Unternehmensanwendung nicht möglich“ bei Verwendung der Anwendungsproxyanwendung
 
@@ -108,7 +110,7 @@ Wenn Ihre Anwendung für die integrierte Windows-Authentifizierung (IWA) konfigu
 
 Wenn die Fehlermeldung weiterhin angezeigt wird, wechseln Sie zum Computer, auf dem der Connector installiert ist, öffnen einen Browser und versuchen, die interne URL der Anwendung aufzurufen. Der Connector fungiert wie ein weiterer Client vom gleichen Computer. Wenn Sie die Anwendung nicht erreichen können, überprüfen Sie, warum dieser Computer die Anwendung nicht erreichen kann, oder verwenden Sie einen Connector auf einem Server, der auf die Anwendung zugreifen kann.
 
-Wenn die Anwendung von diesem Computer aus erreicht werden kann, sollten Sie nach Problemen und Fehlern des Connectors selbst suchen. Einige häufig auftretende Fehler sind im [Problembehandlungsdokument](active-directory-application-proxy-troubleshoot.md#connector-errors) aufgeführt. Sie können auch direkt auf die Connectorprotokolle zugreifen, um Fehler zu ermitteln. Anhand vieler Fehlermeldungen können Sie genauere Empfehlungen für Fehlerbehebungen erhalten. Informationen zum Verständnis der Protokolle finden Sie in der [Connectordokumentation](manage-apps/application-proxy-connectors.md#under-the-hood).
+Wenn die Anwendung von diesem Computer aus erreicht werden kann, sollten Sie nach Problemen und Fehlern des Connectors selbst suchen. Einige häufig auftretende Fehler sind im [Problembehandlungsdokument](manage-apps/application-proxy-troubleshoot.md#connector-errors) aufgeführt. Sie können auch direkt auf die Connectorprotokolle zugreifen, um Fehler zu ermitteln. Anhand vieler Fehlermeldungen können Sie genauere Empfehlungen für Fehlerbehebungen erhalten. Informationen zum Verständnis der Protokolle finden Sie in der [Connectordokumentation](manage-apps/application-proxy-connectors.md#under-the-hood).
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](manage-apps/application-proxy-connectors.md)

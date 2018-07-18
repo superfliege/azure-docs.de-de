@@ -1,11 +1,11 @@
 ---
 title: 'Azure AD Connect: Upgrade von DirSync | Microsoft Docs'
-description: "Informationen Sie zum Aktualisieren von DirSync auf Azure AD Connect. In diesem Artikel werden die Schritte für das Upgrade von DirSync auf Azure AD Connect beschrieben."
+description: Informationen Sie zum Aktualisieren von DirSync auf Azure AD Connect. In diesem Artikel werden die Schritte für das Upgrade von DirSync auf Azure AD Connect beschrieben.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: baf52da7-76a8-44c9-8e72-33245790001c
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6a7287a6b3fa26e69167334ec47413dfc570d031
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 4598166b6fac68fbd2d3adbc97488457a377f0cc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593396"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect: Upgrade von DirSync
 Azure AD Connect ist der Nachfolger von DirSync. Dieses Thema beschreibt die Möglichkeiten, die Sie beim Upgrade von DirSync haben. Die Schritte funktionieren nicht für ein Upgrade von einer anderen Version von Azure AD Connect oder von Azure AD Sync.
@@ -158,7 +160,6 @@ Bei der Installation von Azure AD Connect auf einem neuen Server wird davon ausg
      Auf diesem Bildschirm werden die folgenden Optionen angezeigt:   
      ![Geben Sie Ihre Azure AD-Anmeldeinformationen ein.](./media/active-directory-aadconnect-dirsync-upgrade-get-started/advancedsettings.png)
 7. Klicken Sie auf **Weiter**.
-
 8. Lassen Sie auf der Seite **Bereit zur Konfiguration** das Kontrollkästchen **Starten Sie den Synchronisierungsvorgang, sobald die Konfiguration abgeschlossen wurde** aktiviert. Der Server befindet sich nun im [Stagingmodus](active-directory-aadconnectsync-operations.md#staging-mode), und Änderungen werden nicht nach Azure AD exportiert.
 9. Klicken Sie auf **Installieren**.
 10. Melden Sie sich nach Abschluss der Installation von Windows ab und anschließend wieder an, ehe Sie den Synchronisierungsdienst-Manager oder Synchronisierungsregel-Editor verwenden oder andere Änderungen an der Konfiguration vornehmen.

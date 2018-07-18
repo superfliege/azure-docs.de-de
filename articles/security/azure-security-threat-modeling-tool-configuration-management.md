@@ -1,6 +1,6 @@
 ---
-title: "Konfigurationsverwaltung – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation"
-description: "Gegenmaßnahmen für durch das Threat Modeling-Tool offengelegte Gefahren"
+title: Konfigurationsverwaltung – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
+description: Gegenmaßnahmen für durch das Threat Modeling Tool offengelegte Gefahren
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 1f3de9ba6615a9b2232cca237a822b308d89426d
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 5b9ef9691d3d9b9aaced3ad2aaa54e6cfc03fa14
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857445"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Sicherheitsrahmen: Konfigurationsverwaltung | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
-| **Webanwendung** | <ul><li>[Implementieren Sie die Inhaltssicherheitsrichtlinie (Content Security Policy, CSP), und deaktivieren Sie Inline-JavaScript.](#csp-js)</li><li>[Aktivieren Sie die XSS-Filter des Browsers.](#xss-filter)</li><li>[ASP.NET-Anwendungen müssen vor der Bereitstellung die Ablaufverfolgung und das Debugging deaktivieren.](#trace-deploy)</li><li>[Greifen Sie nur auf Drittanbieter-JavaScripts aus vertrauenswürdigen Quellen zu.](#js-trusted)</li><li>[Stellen Sie sicher, dass authentifizierte ASP.NET-Seiten gegen UI Redressing und Clickjacking geschützt sind.](#ui-defenses)</li><li>[Stellen Sie sicher, dass nur vertrauenswürdige Ursprünge zulässig sind, wenn CORS für ASP.NET-Webanwendungen aktiviert ist.](#cors-aspnet)</li><li>[Aktivieren Sie für ASP.NET-Seiten das ValidateRequest-Attribut.](#validate-aspnet)</li><li>[Verwenden Sie die neuesten Versionen von JavaScript-Bibliotheken (lokal gehostet).](#local-js)</li><li>[Deaktivieren Sie die automatische MIME-Ermittlung.](#mime-sniff)</li><li>[Entfernen Sie Serverstandardheader für Windows Azure-Websites, um Fingerprinting zu vermeiden.](#standard-finger)</li></ul> |
-| **Datenbank** | <ul><li>
-            [Konfigurieren einer Windows-Firewall für Datenbank-Engine-Zugriff](#firewall-db)</li></ul> |
+| **Web Application** | <ul><li>[Implementieren Sie die Inhaltssicherheitsrichtlinie (Content Security Policy, CSP), und deaktivieren Sie Inline-JavaScript.](#csp-js)</li><li>[Aktivieren Sie die XSS-Filter des Browsers.](#xss-filter)</li><li>[ASP.NET-Anwendungen müssen vor der Bereitstellung die Ablaufverfolgung und das Debugging deaktivieren.](#trace-deploy)</li><li>[Greifen Sie nur auf Drittanbieter-JavaScripts aus vertrauenswürdigen Quellen zu.](#js-trusted)</li><li>[Stellen Sie sicher, dass authentifizierte ASP.NET-Seiten gegen UI Redressing und Clickjacking geschützt sind.](#ui-defenses)</li><li>[Stellen Sie sicher, dass nur vertrauenswürdige Ursprünge zulässig sind, wenn CORS für ASP.NET-Webanwendungen aktiviert ist.](#cors-aspnet)</li><li>[Aktivieren Sie für ASP.NET-Seiten das ValidateRequest-Attribut.](#validate-aspnet)</li><li>[Verwenden Sie die neuesten Versionen von JavaScript-Bibliotheken (lokal gehostet).](#local-js)</li><li>[Deaktivieren Sie die automatische MIME-Ermittlung.](#mime-sniff)</li><li>[Entfernen Sie Serverstandardheader für Windows Azure-Websites, um Fingerprinting zu vermeiden.](#standard-finger)</li></ul> |
+| **Datenbank** | <ul><li>[Konfigurieren einer Windows-Firewall für Datenbank-Engine-Zugriff](#firewall-db)</li></ul> |
 | **Web-API** | <ul><li>[Stellen Sie sicher, dass nur vertrauenswürdige Ursprünge zulässig sind, wenn CORS für die ASP.NET-Web-API aktiviert ist.](#cors-api)</li><li>[Verschlüsseln Sie Abschnitte der Web-API-Konfigurationsdateien, die sensible Daten enthalten.](#config-sensitive)</li></ul> |
 | **IoT-Gerät** | <ul><li>[Stellen Sie sicher, dass alle Administratoroberflächen durch sichere Anmeldeinformationen geschützt sind.](#admin-strong)</li><li>[Stellen Sie sicher, dass auf Geräten kein unbekannter Code ausgeführt werden kann.](#unknown-exe)</li><li>[Verschlüsseln Sie die Betriebssystempartition und andere Partitionen des IoT-Geräts mit BitLocker.](#partition-iot)</li><li>[Stellen Sie sicher, dass auf Geräten nur unbedingt erforderliche Dienste/Features aktiviert sind.](#min-enable)</li></ul> |
 | **Zwischengeschaltetes IoT-Gateway** | <ul><li>[Verschlüsseln Sie die Betriebssystempartition und andere Partitionen des zwischengeschalteten IoT-Gateways mit BitLocker.](#field-bit-locker)</li><li>[Stellen Sie sicher, dass die Standardanmeldeinformationen des zwischengeschalteten Gateways bei der Installation geändert werden.](#default-change)</li></ul> |
@@ -42,7 +42,7 @@ ms.lasthandoff: 01/24/2018
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [An Introduction to Content Security Policy](http://www.html5rocks.com/en/tutorials/security/content-security-policy/) (Eine Einführung in die Inhaltssicherheitsrichtlinie), [Content Security Policy Reference](http://content-security-policy.com/) (Referenz für die Inhaltssicherheitsrichtlinie), [Security features](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/) (Sicherheitsfeatures), [Introduction to content security policy](https://docs.webplatform.org/wiki/tutorials/content-security-policy) (Einführung in die Inhaltssicherheitsrichtlinie), [Can I use CSP?](http://caniuse.com/#feat=contentsecuritypolicy) (Kann ich die Inhaltssicherheitsrichtlinie verwenden?) |
+| **Referenzen**              | [An Introduction to Content Security Policy](http://www.html5rocks.com/en/tutorials/security/content-security-policy/) (Eine Einführung in die Inhaltssicherheitsrichtlinie), [Content Security Policy Reference](http://content-security-policy.com/) (Referenz für die Inhaltssicherheitsrichtlinie), [Security features](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/) (Sicherheitsfeatures), [Introduction to content security policy](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy) (Einführung in die Inhaltssicherheitsrichtlinie), [Can I use CSP?](http://caniuse.com/#feat=contentsecuritypolicy) (Kann ich die Inhaltssicherheitsrichtlinie verwenden?) |
 | **Schritte** | <p>Die Inhaltssicherheitsrichtlinie (Content Security Policy, CSP) ist ein umfassender defensiver Sicherheitsmechanismus – ein W3C-Standard, mit dem Besitzer von Webanwendungen den in Ihre Website eingebetteten Inhalt steuern können. CSP wird auf dem Webserver als HTTP-Antwortheader hinzugefügt und clientseitig vom Browser erzwungen. Die Richtlinie basiert auf einer Positivliste: Eine Website kann einen Satz vertrauenswürdiger Domänen deklarieren, aus denen aktive Inhalte wie etwa JavaScript geladen werden können.</p><p>CSP bietet folgende Sicherheitsvorteile:</p><ul><li>**Schutz vor XSS:** Wenn eine Seite für XSS anfällig ist, kann dies von einem Angreifer auf zwei Arten ausgenutzt werden:<ul><li>Der Angreifer kann `<script>malicious code</script>` einschleusen. Dieser Exploit funktioniert dank der Basiseinschränkung 1 von CSP nicht.</li><li>Der Angreifer kann `<script src=”http://attacker.com/maliciousCode.js”/>` einschleusen. Dieser Exploit funktioniert nicht, da die vom Angreifer gesteuerte Domäne nicht in der CSP-Positivliste mit zulässigen Domänen enthalten ist.</li></ul></li><li>**Kontrolle über die Ausschleusung von Daten:** Wenn ein schädlicher Inhalt auf einer Webseite versucht, eine Verbindung mit einer externen Website herzustellen und Daten zu stehlen, wird die Verbindung von CSP getrennt. Der Grund: Die Zieldomäne ist nicht in der Positivliste von CSP enthalten.</li><li>**Schutz vor Clickjacking:** Bei einem Clickjacking-Angriff kann ein Angreifer eine Originalwebsite mit einem Frame versehen und Benutzer zum Klicken auf Benutzeroberflächenelemente bewegen. Zum Schutz vor Clickjacking wird momentan ein Antwortheader mit X-Frame-Optionen konfiguriert. Dieser Header wird nicht von allen Browsern beachtet, und in Zukunft wird CSP als eine der Standardmaßnahmen gegen Clickjacking verwendet.</li><li>**Echtzeitberichte zu Angriffen:** Bei einem Einschleusungsangriff auf eine CSP-fähige Website benachrichtigt der Browser automatisch einen auf dem Webserver konfigurierten Endpunkt. Somit fungiert CSP als Echtzeitwarnsystem.</li></ul> |
 
 ### <a name="example"></a>Beispiel
@@ -107,7 +107,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [OWASP Clickjacking Defense Cheat Sheet](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet) (OWASP-Cheat Sheet zur Abwehr von Clickjacking), [IE Internals - Combating ClickJacking With X-Frame-Options](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-click-jacking-with-x-frame-options/) (IE intern – Abwehren von Clickjacking mit X-Frame-Optionen) |
+| **Referenzen**              | [OWASP Clickjacking Defense Cheat Sheet](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet) (OWASP-Cheat Sheet zur Abwehr von Clickjacking), [IE Internals - Combating ClickJacking With X-Frame-Options](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) (IE intern – Abwehren von Clickjacking mit X-Frame-Optionen) |
 | **Schritte** | <p>Beim Clickjacking (oder UI Redressing) verwendet ein Angreifer mehrere transparente oder undurchsichtige Ebenen, um einen Benutzer dazu zu bringen, auf eine Schaltfläche oder auf einen Link auf einer anderen Seite zu klicken, obwohl der Benutzer eigentlich mit der Seite auf der obersten Ebene interagieren wollte.</p><p>Zur Erstellung dieser Ebenenstruktur wird eine schädliche Seite mit einem IFrame erstellt, der die Seite des Opfers lädt. Dadurch „kapert“ der Angreifer Klicks, die eigentlich für die ursprüngliche Seite gedacht waren, und leitet sie auf eine andere Seite um, die wahrscheinlich zu einer anderen Anwendung und/oder zu einer anderen Domäne gehört. Legen Sie zur Verhinderung von Clickjacking-Angriffen die richtigen X-Frame-Options-HTTP-Antwortheader fest, die den Browser anweisen, kein Framing von anderen Domänen zuzulassen.</p>|
 
 ### <a name="example"></a>Beispiel
@@ -286,8 +286,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | SQL Azure, lokal |
 | **Attribute**              | N/V, SQL-Version: V12 |
-| **Referenzen**              | 
-            [Übersicht über Firewallregeln für Azure SQL-Datenbank](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/), [Konfigurieren einer Windows-Firewall für Datenbank-Engine-Zugriff](https://msdn.microsoft.com/library/ms175043) |
+| **Referenzen**              | [Übersicht über Firewallregeln für Azure SQL-Datenbank](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/), [Konfigurieren einer Windows-Firewall für Datenbank-Engine-Zugriff](https://msdn.microsoft.com/library/ms175043) |
 | **Schritte** | Firewallsysteme tragen dazu bei, nicht autorisierte Zugriffe auf Computerressourcen zu verhindern. Wenn Sie durch eine Firewall auf eine Instanz der SQL Server-Datenbank-Engine zugreifen möchten, müssen Sie die Firewall auf dem Computer, auf dem SQL Server ausgeführt wird, entsprechend konfigurieren. |
 
 ## <a id="cors-api"></a>Stellen Sie sicher, dass nur vertrauenswürdige Ursprünge zulässig sind, wenn CORS für die ASP.NET-Web-API aktiviert ist.
@@ -563,7 +562,7 @@ Wenn Sie CORS für einen Controller oder eine Aktion deaktivieren möchten, verw
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | Wahl des Gateways: Azure IoT Hub |
-| **Referenzen**              | [Übersicht über die Geräteverwaltung mit IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/), [How to update Device Firmware](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-device-jobs/) (Aktualisieren der Gerätefirmware) |
+| **Referenzen**              | [Übersicht über die Geräteverwaltung mit IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/), [How to update Device Firmware](https://docs.microsoft.com/azure/iot-hub/tutorial-firmware-update) (Aktualisieren der Gerätefirmware) |
 | **Schritte** | LWM2M ist ein Protokoll der Open Mobile Alliance zur Verwaltung von IoT-Geräten. Die Azure IoT-Geräteverwaltung ermöglicht die Interaktion mit physischen Geräten über Geräteaufträge. Stellen Sie sicher, dass das Cloudgateway einen Prozess implementiert, der das Gerät und andere Konfigurationsdaten mithilfe der Geräteverwaltung von Azure IoT Hub regelmäßig auf den neuesten Stand bringt. |
 
 ## <a id="controls-policies"></a>Stellen Sie sicher, dass für Geräte organisationsrichtlinienkonforme Endpunktsicherheitskontrollen konfiguriert sind.

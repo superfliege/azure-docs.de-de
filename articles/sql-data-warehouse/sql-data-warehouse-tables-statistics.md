@@ -10,12 +10,12 @@ ms.component: implement
 ms.date: 05/09/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 2922a859f741c6b6420f49d34b982b7ec4968a8c
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: bbc6a5083aebba40885700cab6c67128c9d9f916
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011763"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643429"
 ---
 # <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Erstellen, Aktualisieren von Statistiken von Tabellen in Azure SQL Data Warehouse
 Empfehlungen und Beispiele zum Erstellen und Aktualisieren von Abfrageoptimierungsstatistiken für Tabellen in Azure SQL Data Warehouse.
@@ -50,11 +50,14 @@ Die automatische Erstellung von Statistiken erfolgt synchron, sodass möglicherw
 > Die Erstellung von Statistiken wird zudem in [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016) in einem anderen Benutzerkontext protokolliert.
 > 
 
-Bei der automatischen Erstellung von Statistiken weisen diese das folgende Muster auf: _WA_Sys_<8-stellige Spalten-ID im Hexadezimalformat>_<8-stellige Tabellen-ID im Hexadezimalformat>. Sie können Statistiken anzeigen, die bereits erstellt wurden, indem Sie den folgenden Befehl ausführen:
+Bei der automatischen Erstellung von Statistiken weisen diese das folgende Muster auf: _WA_Sys_<8-stellige Spalten-ID im Hexadezimalformat>_<8-stellige Tabellen-ID im Hexadezimalformat>. Sie können Statistiken anzeigen, die bereits erstellt wurden, indem Sie den Befehl [DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=sql-server-2017) ausführen:
 
 ```sql
 DBCC SHOW_STATISTICS (<tablename>, <targetname>)
 ```
+Das erste Argument ist die Tabelle mit der anzuzeigenden Statistik. Hierbei darf es sich nicht um eine externe Tabelle handeln. Das zweite Argument ist der Name des Zielindex, der Statistik oder der Spalte, für den bzw. für die Statistikinformationen angezeigt werden sollen.
+
+
 
 ## <a name="updating-statistics"></a>Aktualisieren von Statistiken
 

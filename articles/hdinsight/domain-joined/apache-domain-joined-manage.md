@@ -16,6 +16,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34160239"
 ---
 # <a name="manage-domain-joined-hdinsight-clusters"></a>Verwalten von in die Domäne eingebundenen HDInsight-Clustern
 Hier erhalten Sie Informationen zu den Benutzern und den Rollen in HDInsight mit Domänenverknüpfung sowie zum Verwalten von in die Domäne eingebundenen HDInsight-Clustern.

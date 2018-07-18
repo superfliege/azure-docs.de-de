@@ -1,32 +1,28 @@
 ---
 title: Herstellen einer Verbindung mit SQL Server oder Azure SQL-Datenbank – Azure Logic Apps | Microsoft Docs
-description: Erstellen von Verbindungen mit lokalen SQL Server-Instanzen und mit Azure SQL-Datenbank in der Cloud über Azure Logic Apps
-services: logic-apps
-documentationcenter: ''
+description: Hier erfahren Sie, wie Sie durch die Automatisierung von Workflows mit Azure Logic Apps auf lokale oder cloudbasierte SQL-Datenbanken zugreifen und diese verwalten.
 author: ecfan
-manager: cfowler
-editor: ''
-tags: connectors
-ms.assetid: d8a319d0-e4df-40cf-88f0-29a6158c898c
-ms.service: logic-apps
-ms.workload: logic-apps
-ms.devlang: ''
-ms.tgt_pltfrm: ''
-ms.topic: article
-ms.date: 05/15/2018
+manager: jeconnoc
 ms.author: estfan
-ms.openlocfilehash: 4917f784c07919155e006711026899ce7712fecb
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.date: 05/15/2018
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: dccb91c782408a5fed5c3ef1b68f9918823ce402
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164797"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38544022"
 ---
 # <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>Herstellen einer Verbindung mit SQL Server oder Azure SQL-Datenbank über Azure Logic Apps
 
-In diesem Artikel wird beschrieben, wie Sie über eine Logik-App mit dem SQL Server-Connector auf Daten in Ihrer SQL-Datenbank zugreifen können. Auf diese Weise können Sie Logik-Apps erstellen, mit denen Aufgaben und Workflows für das Verwalten Ihrer Daten automatisiert werden. Der Connector funktioniert sowohl für [lokale SQL Server-Instanzen](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) als auch für [Azure SQL-Datenbank in der Cloud](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview). 
+In diesem Artikel wird beschrieben, wie Sie über eine Logik-App mit dem SQL Server-Connector auf Daten in Ihrer SQL-Datenbank zugreifen können. Auf diese Weise können Sie durch Erstellung von Logik-Apps Aufgaben, Prozesse und Workflows automatisieren, die SQL-Daten und Ressourcen verwalten. Der Connector funktioniert sowohl für [lokale SQL Server-Instanzen](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) als auch für [Azure SQL-Datenbank in der Cloud](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview). 
 
-Sie können Logik-Apps erstellen, die beim Auslösen durch Ereignisse in Ihrer SQL-Datenbank oder in anderen Systemen (wie z. B. Dynamics CRM Online) ausgeführt werden. Ihre Logik-Apps können auch Daten abrufen, einfügen oder löschen und auch SQL-Abfragen oder gespeicherte Prozeduren ausführen. Sie können beispielsweise eine Logik-App erstellen, die Dynamics CRM Online automatisch auf neue Datensätze überprüft, Ihrer SQL-Datenbank Elemente für alle neuen Datensätze hinzufügt und dann E-Mail-Benachrichtigungen sendet.
+Sie können Logik-Apps erstellen, deren Ausführung durch Ereignisse in Ihrer SQL-Datenbank oder in anderen Systemen (wie z. B. Dynamics CRM Online) ausgelöst wird. Ihre Logik-Apps können auch Daten abrufen, einfügen und löschen sowie SQL-Abfragen und gespeicherte Prozeduren ausführen. Sie können beispielsweise eine Logik-App erstellen, die Dynamics CRM Online automatisch auf neue Datensätze überprüft, Ihrer SQL-Datenbank Elemente für alle neuen Datensätze hinzufügt und dann E-Mail-Benachrichtigungen sendet.
 
 Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. Wenn Sie noch nicht mit Logik-Apps vertraut sind, lesen Sie [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten Logik-App-Workflows](../logic-apps/quickstart-create-first-logic-app-workflow.md). Connectorspezifische technische Informationen finden Sie in der <a href="https://docs.microsoft.com/connectors/sql/" target="blank">SQL Server-Connector-Referenz</a>.
 

@@ -14,37 +14,38 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: c15c084592b57b074e339cad7ac8c3197375542d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c62c8941b2358d79e3c1b34659c5f9459f904b06
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627213"
 ---
 # <a name="azure-germany-iot-services"></a>IoT-Dienste von Azure Deutschland
 
-## <a name="iot-suite"></a>IoT Suite
+## <a name="iot-solution-accelerators"></a>IoT Solution Accelerators
 Alle Dienste der Azure IoT Suite sowie IoT Hub, Stream Analysis und Event Hub sind in Azure Deutschland verfügbar. 
 
 ### <a name="variations"></a>Abweichungen
 Die Homepage für die Azure IoT Suite in Azure Deutschland unterscheidet sich von der Seite in der globalen Azure-Umgebung. Verwenden Sie [http://www.azureiotsuite.de](http://www.azureiotsuite.de), und befolgen Sie die Anweisungen. 
 
-## <a name="preconfigured-solutions"></a>Vorkonfigurierte Lösungen
-Es empfiehlt sich, mit einer der folgenden vorkonfigurierten Lösungen zu beginnen. 
+## <a name="solution-accelerators"></a>Solution Accelerators
+Es empfiehlt sich, mit einem der folgenden Solution Accelerators zu beginnen. 
 
 ### <a name="remote-monitoring"></a>Remoteüberwachung
-Die vorkonfigurierte Lösung für die IoT Suite-Remoteüberwachung ist eine Implementierung einer End-to-End-Überwachungslösung für mehrere Computer, die an Remotestandorten ausgeführt werden. In der Lösung sind wichtige Azure-Dienste kombiniert, um eine generische Implementierung des Geschäftsszenarios zu erzielen. Sie können sie als Einstiegspunkt für Ihre Implementierung verwenden und dann an Ihre speziellen Geschäftsanforderungen anpassen.
+Der Solution Accelerator für die Remoteüberwachung ist eine Implementierung einer End-to-End-Überwachungslösung für mehrere Computer, die an Remotestandorten ausgeführt werden. In der Lösung sind wichtige Azure-Dienste kombiniert, um eine generische Implementierung des Geschäftsszenarios zu erzielen. Sie können sie als Einstiegspunkt für Ihre Implementierung verwenden und dann an Ihre speziellen Geschäftsanforderungen anpassen.
 
 ### <a name="predictive-maintenance"></a>Predictive Maintenance
-Die vorkonfigurierte Predictive Maintenance-Lösung in der IoT Suite ist eine End-to-End-Lösung für ein Geschäftsszenario, bei dem der Zeitpunkt prognostiziert wird, zu dem voraussichtlich ein Fehler auftritt. Sie können diese vorkonfigurierte Lösung beispielsweise zur Optimierung von Wartungsroutinen nutzen. Bei dieser Lösung werden zentrale Azure IoT Suite-Dienste wie Azure IoT Hub, Stream Analytics und ein Machine Learning-Arbeitsbereich kombiniert. Der Arbeitsbereich enthält ein Modell zum Vorhersagen der Restlebensdauer (Remaining Useful Life, RUL) eines Flugzeugtriebwerks auf der Grundlage eines öffentlichen Datasets mit Beispielwerten. Bei der Lösung wird das IoT-Geschäftsszenario vollständig als Ausgangspunkt implementiert, damit Sie eine Lösung planen und implementieren können, die Ihre speziellen Geschäftsanforderungen erfüllt.
+Der Solution Accelerator für Predictive Maintenance ist eine End-to-End-Lösung für ein Geschäftsszenario, mit der der Zeitpunkt prognostiziert wird, zu dem voraussichtlich ein Fehler auftritt. Sie können diese Lösung beispielsweise zur Optimierung von Wartungsroutinen nutzen. Bei dieser Lösung werden zentrale Azure IoT Suite-Dienste wie Azure IoT Hub, Stream Analytics und ein Machine Learning-Arbeitsbereich kombiniert. Der Arbeitsbereich enthält ein Modell zum Vorhersagen der Restlebensdauer (Remaining Useful Life, RUL) eines Flugzeugtriebwerks auf der Grundlage eines öffentlichen Datasets mit Beispielwerten. Bei der Lösung wird das IoT-Geschäftsszenario vollständig als Ausgangspunkt implementiert, damit Sie eine Lösung planen und implementieren können, die Ihre speziellen Geschäftsanforderungen erfüllt.
 
 
-## <a name="deploying-the-preconfigured-solutions"></a>Bereitstellen der vorkonfigurierten Lösungen
+## <a name="deploying-the-solution-accelerator"></a>Bereitstellen des Solution Accelerators
 
 Beide Lösungen können auf zwei Arten bereitgestellt werden: über die Website oder über PowerShell.
 
 ### <a name="deploy-via-website"></a>Bereitstellen über die Website
 
-Befolgen Sie die Anweisungen im [Tutorial für die vorkonfigurierten Lösungen](../iot-suite/iot-suite-getstarted-preconfigured-solutions.md), das über die zuvor erwähnte Homepage abgerufen werden kann.
+Befolgen Sie die Anweisungen im [Tutorial für die vorkonfigurierten Lösungen](../iot-accelerators/iot-accelerators-remote-monitoring-explore.md), das über die zuvor erwähnte Homepage abgerufen werden kann.
 
 ### <a name="deploy-via-powershell"></a>Bereitstellen über PowerShell
 

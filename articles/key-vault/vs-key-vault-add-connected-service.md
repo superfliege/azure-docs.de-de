@@ -10,11 +10,12 @@ ms.workload: azure
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: 9f0cc6ee06042948442aace05d56fcffa3742a8d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b4fed559b6364149170dc8b1da421c9c3ee1203c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635762"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Hinzufügen von Key Vault zu Ihrer Webanwendung mithilfe der Option „Verbundene Dienste“ in Visual Studio
 
@@ -25,7 +26,7 @@ Ausführliche Informationen zu den Änderungen, die durch verbundene Dienste in 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - **Ein Azure-Abonnement**. Falls Sie über kein Abonnement verfügen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/)registrieren.
-- **Visual Studio 2017, Version 15.7** mit installierter Workload **Webentwicklung**. [Jetzt herunterladen](https://aka.ms/vsdownload).
+- **Visual Studio 2017, Version 15.7** mit installierter Workload **Webentwicklung**. [Jetzt herunterladen](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 - Für ASP.NET (nicht Core) benötigen Sie die .NET Framework 4.7.1-Entwicklungstools, die nicht standardmäßig installiert werden. Um sie zu installieren, starten Sie den Installer für Visual Studio, wählen Sie **Ändern** und dann **Einzelne Komponenten**, erweitern Sie auf der rechten Seite den Eintrag **ASP.NET und Webentwicklung**, und wählen Sie **.NET Framework 4.7.1-Entwicklungstools** aus.
 - Ein ASP.NET 4.7.1- oder ein ASP.NET Core 2.0-Webprojekt wird geöffnet.
 
@@ -54,15 +55,15 @@ Ausführliche Informationen zu den Änderungen, die durch verbundene Dienste in 
 
    ![Hinzufügen eines verbundenen Diensts zum Projekt](media/vs-key-vault-add-connected-service/KeyVaultConnectedService4.PNG)
 
-1. Fügen Sie Ihrem Schlüsseltresor in Azure jetzt ein Geheimnis hinzu. Um im Portal an die richtige Stelle zu gelangen, klicken Sie auf den Link für die Verwaltung von Geheimnissen, die in diesem Schlüsseltresor gespeichert sind. Wenn Sie die Seite oder das Projekt geschlossen haben, können Sie im [Azure-Portal](https://portal.azure.com) dorthin wechseln, indem Sie unter **Sicherheit** die Option **Alle Dienste**, dann **Key Vault** und schließlich den Schlüsseltresor wählen, den Sie gerade erstellt haben.
+1. Fügen Sie Ihrem Schlüsseltresor in Azure jetzt ein Geheimnis hinzu. Um im Portal an die richtige Stelle zu gelangen, klicken Sie auf den Link für die Verwaltung von Geheimnissen, die in diesem Schlüsseltresor gespeichert sind. Wenn Sie die Seite oder das Projekt geschlossen haben, können Sie im [Azure-Portal](https://portal.azure.com) dorthin wechseln, indem Sie unter **Sicherheit** die Option **Alle Dienste**, dann **Key Vault** und schließlich den Schlüsseltresor auswählen, den Sie gerade erstellt haben.
 
    ![Navigieren zum Portal](media/vs-key-vault-add-connected-service/manage-secrets-link.jpg)
 
-1. Wählen Sie im Abschnitt „Key Vault“ für den gerade erstellten Schlüsseltresor die Option **Geheimnisse**, und klicken Sie auf **Generieren/Importieren**.
+1. Wählen Sie im Abschnitt „Key Vault“ für den gerade erstellten Schlüsseltresor die Option **Geheimnisse** aus, und klicken Sie auf **Generieren/Importieren**.
 
    ![Generieren/Importieren eines Geheimnisses](media/vs-key-vault-add-connected-service/generate-secrets.jpg)
 
-1. Geben Sie ein Geheimnis ein, z.B. „MySecret“, und weisen Sie ihm testweise einen beliebigen Zeichenfolgenwert zu. Wählen Sie anschließend die Schaltfläche **Erstellen**.
+1. Geben Sie ein Geheimnis ein, z.B. „MeinGeheimn“, und weisen Sie diesem testweise einen beliebigen Zeichenfolgenwert zu. Klicken Sie anschließend auf die Schaltfläche **Erstellen**.
 
    ![Erstellen eines Geheimnisses](media/vs-key-vault-add-connected-service/create-a-secret.jpg)
 
@@ -98,7 +99,7 @@ Jetzt können Sie in Code auf Ihre Geheimnisse zugreifen. Die nächsten Schritte
 
 ## <a name="access-your-secrets-in-code-aspnet-471-projects"></a>Zugreifen auf Ihre Geheimnisse in Code (ASP.NET 4.7.1-Projekte)
 
-1. Nehmen Sie in der Datei „Web.config“ die folgenden Änderungen vor. Die Schlüssel sind Platzhalter, die vom AzureKeyVault-ConfigurationBuilder durch die Werte von Geheimnissen in Key Vault ersetzt werden.
+1. Nehmen Sie in der Datei „Web.config“ die folgenden Änderungen vor. Die Schlüssel sind Platzhalter, die vom AzureKeyVault ConfigurationBuilder durch die Werte von Geheimnissen in Key Vault ersetzt werden.
 
    ```xml
      <appSettings configBuilders="AzureKeyVault">

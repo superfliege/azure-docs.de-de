@@ -13,14 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 06/06/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5a0574af04c118d466544d533561eb01639edfc6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 30763f88a7d78678411abd7fe7cc6375e00cb6f6
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32158991"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824267"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konten und Berechtigungen
 Der Azure AD Connect-Installations-Assistent bietet zwei verschiedene Methoden:
@@ -186,9 +187,9 @@ Das Konto erhält auch Berechtigungen für Dateien, Registrierungsschlüssel und
 ### <a name="azure-ad-service-account"></a>Azure AD-Dienstkonto
 Zur Verwendung durch den Synchronisierungsdienst wird ein Konto in Azure AD erstellt. Dieses Konto kann anhand des Anzeigenamens identifiziert werden.
 
-![AD-Konto](./media/active-directory-aadconnect-accounts-permissions/aadsyncserviceaccount.png)
+![AD-Konto](./media/active-directory-aadconnect-accounts-permissions/aadsyncserviceaccount2.png)
 
-Der Name des Servers, auf dem das Konto verwendet wird, kann im zweiten Teil des Benutzernamens identifiziert werden. In der Abbildung oben heißt der Server „FABRIKAMCON“. Wenn Sie über Stagingserver verfügen, erhält jeder Server ein eigenes Konto.
+Der Name des Servers, auf dem das Konto verwendet wird, kann im zweiten Teil des Benutzernamens identifiziert werden. In der Abbildung oben heißt der Server „DC1“. Wenn Sie über Stagingserver verfügen, erhält jeder Server ein eigenes Konto.
 
 Das Dienstkonto wird mit einem langen, komplexen Kennwort erstellt, das nicht abläuft. Diesem wird eine besondere Rolle **Konten für die Verzeichnissynchronisierungsaufgaben** zugewiesen, die nur über Berechtigungen zur Ausführung von Verzeichnissynchronisierungsaufgaben verfügt. Diese besondere integrierte Rolle kann nicht außerhalb des Azure AD Connect-Assistenten gewährt werden. Im Azure-Portal wird dieses Konto mit der Rolle **Benutzer** angezeigt.
 

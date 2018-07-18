@@ -1,18 +1,19 @@
 ---
 title: Failback in Azure Site Recovery | Microsoft-Dokumentation
-description: "Dieser Artikel bietet eine Übersicht über verschiedene Arten von Failbacks sowie Vorsichtsmaßnahmen, die beim Durchführen von Failbacks zum lokalen Standort über den Azure Site Recovery-Dienst zu berücksichtigen sind."
+description: Dieser Artikel bietet eine Übersicht über verschiedene Arten von Failbacks sowie Vorsichtsmaßnahmen, die beim Durchführen von Failbacks zum lokalen Standort über den Azure Site Recovery-Dienst zu berücksichtigen sind.
 services: site-recovery
 author: rajani-janaki-ram
 manager: guaravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 07/06/2018
 ms.author: rajanki
-ms.openlocfilehash: 372a7867b47960338d7a1bf7e646fb9fffbe72e1
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 2a9ee380fc16c4088d98875dd465509c4023d037
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920388"
 ---
 # <a name="overview-of-failback"></a>Übersicht über das Failback
 

@@ -1,36 +1,30 @@
 ---
-title: "Azure Data Lake Tools: Lokales Ausführen und lokales Debuggen von U-SQL mit Visual Studio Code | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Azure Data Lake Tools für Visual Studio Code zum lokalen Ausführen und lokalen Debuggen verwenden können."
-Keywords: VScode,Azure Data Lake Tools,Local run,Local debug,Local Debug,preview storage file,upload to storage path
+title: Lokales Ausführen und Debuggen von U-SQL in Azure Data Lake Tools für Visual Studio Code
+description: Hier erfahren Sie, wie Sie U-SQL-Aufträge mithilfe von Azure Data Lake Tools für Visual Studio Code lokal ausführen und debuggen.
 services: data-lake-analytics
-documentationcenter: 
-author: jejiang
-manager: DJ
-editor: jejiang
-tags: azure-portal
-ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
-ms.devlang: 
-ms.topic: article
-ms.tgt_pltfrm: 
-ms.workload: big-data
-ms.date: 07/14/2017
+author: jejiang
 ms.author: jejiang
-ms.openlocfilehash: d109e4d57f4ad5ab2be73805ba41bf9ed362cccb
-ms.sourcegitcommit: 21a58a43ceceaefb4cd46c29180a629429bfcf76
+manager: kfile
+editor: jasonwhowell
+ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
+ms.topic: conceptual
+ms.date: 07/14/2017
+ms.openlocfilehash: 850b13becb2137c9e881b2d6a657bbd06216e96e
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317145"
 ---
-# <a name="u-sql-local-run-and-local-debug-for-windows-with-visual-studio-code"></a>Lokales Ausführen und lokales Debuggen für Windows von U-SQL mit Visual Studio Code
-In diesem Dokument erfahren Sie, wie Sie U-SQL-Aufträge auf einem lokalen Entwicklungscomputer ausführen, um frühe Codierungsphasen zu beschleunigen oder Code lokal in Visual Studio Code zu debuggen. Weitere Informationen zur Verwendung von Azure Data Lake Tools für Visual Studio Code finden Sie unter [Verwenden von Azure Data Lake Tools für Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md). 
-
+# <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>Lokales Ausführen und Debuggen von U-SQL in Visual Studio Code
+In diesem Artikel erfahren Sie, wie Sie U-SQL-Aufträge auf einem lokalen Entwicklungscomputer ausführen, um frühe Programmierphasen zu beschleunigen oder Code lokal in Visual Studio Code zu debuggen. Weitere Informationen zur Verwendung von Azure Data Lake Tools für Visual Studio Code finden Sie unter [Verwenden von Azure Data Lake Tools für Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md). 
 
 ## <a name="set-up-the-u-sql-local-run-environment"></a>Einrichten der Umgebung zum lokalen Ausführen von U-SQL
 
-1. Öffnen Sie die Befehlspalette durch Drücken von STRG+UMSCHALT+P, und geben Sie **ADL: Download LocalRun Dependency** ein, um die Pakete herunterzuladen.  
+1. Öffnen Sie die Befehlspalette durch Drücken von STRG+UMSCHALT+P, und geben Sie **ADL: Download Local Run Package** ein, um die Pakete herunterzuladen.  
 
-   ![Herunterladen der ADL-Abhängigkeitspakete für die lokale Ausführung](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/DownloadLocalRun.png)
+   ![Herunterladen der ADL-Abhängigkeitspakete für die lokale Ausführung](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/downloadtheadllocalrunpackage.png)
 
 2. Suchen Sie die Abhängigkeitspakete unter dem im Bereich **Ausgabe** angezeigten Pfad, und installieren Sie dann BuildTools und Win10SDK 10240. Beispielpfad:  
 `C:\Users\xxx\AppData\Roaming\LocalRunDependency` 
@@ -50,7 +44,7 @@ In diesem Dokument erfahren Sie, wie Sie U-SQL-Aufträge auf einem lokalen Entwi
 
 
 ## <a name="start-the-local-run-service-and-submit-the-u-sql-job-to-a-local-account"></a>Starten des Diensts für die lokale Ausführung und Übermitteln eines U-SQL-Auftrags an ein lokales Konto 
-Anweisung für Erstbenutzer: Verwenden Sie **ADL: Download Local Run Dependency**, um lokal ausgeführte Pakete herunterzuladen, wenn [die Umgebung zum lokalen Ausführen von U-SQL](#set-up-the-u-sql-local-run-environment) nicht eingerichtet ist.
+Anweisung für Erstbenutzer: Verwenden Sie **ADL: Download Local Run Package**, um lokal ausgeführte Pakete herunterzuladen, wenn [die Umgebung zum lokalen Ausführen von U-SQL noch eingerichtet werden muss](#set-up-the-u-sql-local-run-environment).
 
 1. Drücken Sie STRG+UMSCHALT+P, um die Befehlspalette zu öffnen, und geben Sie **ADL: Start Local Run Service** ein.   
 2. Wählen Sie **Accept** (Zustimmen) aus, um die Microsoft Software-Lizenzbedingungen erstmalig zu akzeptieren. 
@@ -71,7 +65,7 @@ Anweisung für Erstbenutzer: Verwenden Sie **ADL: Download Local Run Dependency*
 ## <a name="start-a-local-debug-for-the-u-sql-job"></a>Starten des lokalen Debuggens für den U-SQL-Auftrag  
 Anweisung für Erstbenutzer:
 
-1. Verwenden Sie **ADL: Download Local Run Dependency**, um lokal ausgeführte Pakete herunterzuladen, wenn [die Umgebung zum lokalen Ausführen von U-SQL](#set-up-the-u-sql-local-run-environment) nicht eingerichtet ist.
+1. Verwenden Sie **ADL: Download Local Run Package**, um lokal ausgeführte Pakete herunterzuladen, wenn [die Umgebung zum lokalen Ausführen von U-SQL noch eingerichtet werden muss](#set-up-the-u-sql-local-run-environment).
 2. Installieren Sie, falls noch nicht geschehen, wie empfohlen .NET Core SDK 2.0 im Nachrichtenfeld.
  
   ![Erinnerung installiert Dotnet](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/remind-install-dotnet.png)
@@ -91,7 +85,6 @@ Folgen Sie den untenstehenden Schritten, um lokal zu debuggen:
 ## <a name="next-steps"></a>Nächste Schritte
 * [Verwenden der Azure Data Lake-Tools für Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)
 * [Entwickeln von U-SQL mit Python, R und CSharp für Azure Data Lake Analytics in Visual Studio Code](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
-* [Entwickeln von U-SQL-Assemblys für Azure Data Lake Analytics-Aufträge](data-lake-analytics-u-sql-develop-assemblies.md)
 * [Erste Schritte mit Data Lake Analytics mithilfe von PowerShell](data-lake-analytics-get-started-powershell.md)
 * [Erste Schritte mit Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md)
 * [Verwenden von Data Lake-Tools für Visual Studio zum Entwickeln von U-SQL-Anwendungen](data-lake-analytics-data-lake-tools-get-started.md)

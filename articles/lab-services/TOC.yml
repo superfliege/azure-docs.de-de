@@ -10,18 +10,18 @@
   items:
     - name: DevTest Labs
       items:
-        - name: 1. Einrichten eines benutzerdefinierten Labs
+        - name: 1. Einrichten eines Labs
           href: tutorial-create-custom-lab.md
-        - name: 2. Zugreifen auf ein benutzerdefiniertes Lab
+        - name: 2. Zugriff auf ein Lab
           href: tutorial-use-custom-lab.md
     - name: Classroom-Labs
       items:
         - name: 1. Einrichten eines Lab-Kontos
-          href: tutorial-setup-lab-account.md
+          href: classroom-labs/tutorial-setup-lab-account.md
         - name: 2. Einrichten eines Classroom-Labs
-          href: tutorial-setup-classroom-lab.md
+          href: classroom-labs/tutorial-setup-classroom-lab.md
         - name: 3. Zugreifen auf ein Classroom-Lab
-          href: tutorial-connect-virtual-machine-classroom-lab.md
+          href: classroom-labs/tutorial-connect-virtual-machine-classroom-lab.md
 - name: Beispiele
   items:
     - name: DevTest Labs
@@ -50,20 +50,22 @@
     - name: Classroom-Labs
       items:
         - name: Verwalten von Lab-Konten
-          href: how-to-manage-lab-accounts.md
+          href: classroom-labs/how-to-manage-lab-accounts.md
         - name: Verwalten von Classroom-Labs
-          href: how-to-manage-classroom-labs.md
+          href: classroom-labs/how-to-manage-classroom-labs.md
         - name: Zugreifen auf Classroom-Labs
-          href: how-to-use-classroom-lab.md
+          href: classroom-labs/how-to-use-classroom-lab.md
     - name: DevTest Labs
       items:
-        - name: Erstellen eines benutzerdefinierten Labs
+        - name: Erstellen eines Labs
           href: devtest-lab-create-lab.md
-        - name: Erstellen eines virtuellen Computers im benutzerdefinierten Lab
+        - name: Erstellen eines virtuellen Computers im Lab
           href: devtest-lab-create-first-vm.md
-        - name: Festlegen von Richtlinien für das benutzerdefinierte Lab
+        - name: Festlegen von Richtlinien für das Lab
           href: devtest-lab-get-started-with-lab-policies.md
-        - name: Verwenden von virtuellen Computern in einem benutzerdefinierten Lab
+        - name: Speichern von Geheimnissen in Azure Key Vault
+          href: devtest-lab-store-secrets-in-key-vault.md
+        - name: Verwenden von virtuellen Computern in einem Lab
           items:
             - name: Virtuelle Computer erstellen
               href: devtest-lab-add-vm.md
@@ -75,7 +77,13 @@
               href: devtest-lab-use-resource-manager-template.md
             - name: Neustarten eines virtuellen Computers
               href: devtest-lab-restart-vm.md
-        - name: Verwenden von Umgebungen in einem benutzerdefinierten Lab
+            - name: Ändern der Größe eines virtuellen Computers
+              href: devtest-lab-resize-vm.md
+            - name: Erneutes Bereitstellen eines virtuellen Computers
+              href: devtest-lab-redeploy-vm.md
+            - name: Importieren eines virtuellen Computers
+              href: devtest-lab-import-vm.md
+        - name: Verwenden von Umgebungen in einem Lab
           items:
             - name: Erstellen einer Umgebung
               href: devtest-lab-create-environment-from-arm.md
@@ -85,7 +93,7 @@
               href: devtest-lab-add-devtest-user.md
             - name: Anpassen der Berechtigungen mit benutzerdefinierten Rollen
               href: devtest-lab-grant-user-permissions-to-specific-lab-policies.md
-        - name: Konfigurieren eines benutzerdefinierten Labs
+        - name: Konfigurieren eines Labs
           items:
             - name: Festlegen von Richtlinien und Zeitplänen
               href: devtest-lab-set-lab-policy.md
@@ -95,11 +103,11 @@
               href: devtest-lab-configure-marketplace-images.md
             - name: Aktivieren eines lizenzierten Images
               href: devtest-lab-enable-licensed-images.md
-            - name: Hinzufügen von Tags zu einem benutzerdefinierten Lab
+            - name: Hinzufügen von Tags zu einem Lab
               href: devtest-lab-add-tag.md
-            - name: Beitragsankündigung in einem benutzerdefinierten Lab
+            - name: Beitragsankündigung in einem Lab
               href: devtest-lab-announcements.md
-            - name: Hinzufügen von Supportinformationen zu einem benutzerdefinierten Lab
+            - name: Hinzufügen von Supportinformationen zu einem Lab
               href: devtest-lab-internal-support-message.md
         - name: Auswählen benutzerdefinierter Images oder Formeln
           href: devtest-lab-comparing-vm-base-image-types.md

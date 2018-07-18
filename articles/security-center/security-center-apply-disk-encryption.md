@@ -1,11 +1,11 @@
 ---
-title: "Anwenden der Datenträgerverschlüsselung in Azure Security Center | Microsoft Docs"
-description: "In diesem Dokument wird gezeigt, wie Sie die Azure Security Center-Empfehlung **Datenträgerverschlüsselung anwenden** implementieren."
+title: Anwenden der Datenträgerverschlüsselung in Azure Security Center | Microsoft Docs
+description: In diesem Dokument wird gezeigt, wie Sie die Azure Security Center-Empfehlung **Datenträgerverschlüsselung anwenden** implementieren.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 6cc7824a-8d6b-4a5f-ab40-e3bbaebc4a91
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23040215"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Anwenden der Datenträgerverschlüsselung in Azure Security Center
 Azure Security Center empfiehlt die Anwendung der Datenträgerverschlüsselung, wenn Sie über Windows- oder Linux-VM-Datenträger verfügen, die nicht per Azure Disk Encryption verschlüsselt sind. Mit der Datenträgerverschlüsselung können Sie Ihre Windows- und Linux-IaaS-VM-Datenträger verschlüsseln.  Die Verschlüsselung wird sowohl für die Betriebssystem- als auch für die Datenvolumes auf Ihrer VM empfohlen.

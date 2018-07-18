@@ -1,12 +1,12 @@
 ---
-title: "Lokale StorSimple-Volumes: Häufig gestellte Fragen |Microsoft Docs"
-description: "Enthält Antworten auf häufig gestellte Fragen zu lokalen StorSimple-Volumes."
+title: 'Lokale StorSimple-Volumes: Häufig gestellte Fragen |Microsoft Docs'
+description: Enthält Antworten auf häufig gestellte Fragen zu lokalen StorSimple-Volumes.
 services: storsimple
 documentationcenter: NA
 author: manuaery
 manager: syadav
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109468"
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>Lokale StorSimple-Volumes: Häufig gestellte Fragen (FAQ)
 ## <a name="overview"></a>Übersicht
@@ -161,7 +162,7 @@ Weitere Informationen zum [Konvertieren eines mehrstufigen Volumes in ein lokale
 
 **F.** Kann ich den Volumetyp während der Wiederherstellung ändern?
 
-**A.**Nein, Sie können den Volumetyp während der Wiederherstellung nicht ändern.
+**A.** Nein, Sie können den Volumetyp während der Wiederherstellung nicht ändern.
 
 * Volumes, die gelöscht wurden, werden als der in der Momentaufnahme gespeicherte Typ wiederhergestellt.
 * Vorhandene Volumes werden basierend auf ihrem aktuellen Typ wiederhergestellt und zwar unabhängig von dem in der Momentaufnahme gespeicherten Typ (siehe die zwei vorherigen Fragen).

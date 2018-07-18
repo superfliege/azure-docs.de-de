@@ -1,12 +1,12 @@
 ---
 title: Beheben von Leistungsproblemen im virtuellen Azure-Netzwerk | Microsoft-Dokumentation
-description: "Diese Seite enthält eine standardisierte Methode zum Testen der Leistung der Azure-Netzwerkverbindung."
+description: Diese Seite enthält eine standardisierte Methode zum Testen der Leistung der Azure-Netzwerkverbindung.
 services: expressroute
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/22/2017
+ms.locfileid: "27318770"
 ---
 # <a name="troubleshooting-network-performance"></a>Beheben von Problemen bei der Netzwerkleistung
 ## <a name="overview"></a>Übersicht

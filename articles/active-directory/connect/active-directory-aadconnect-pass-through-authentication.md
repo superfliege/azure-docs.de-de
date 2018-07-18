@@ -4,7 +4,7 @@ description: In diesem Artikel wird beschrieben, wie die Passthrough-Authentifiz
 services: active-directory
 keywords: Was ist die Pass-Through-Authentifizierung mit Azure AD Connect?, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, Single Sign-On, einmaliges Anmelden
 documentationcenter: ''
-author: swkrish
+author: billmath
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 377a8255961a4c7fa55f8bbc5cb98ae4deff3205
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2d88bf5d20beb9de9bf4a0cdcb43548d0d582779
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917277"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Benutzeranmeldung mit der Azure Active Directory-Passthrough-Authentifizierung
 
@@ -47,7 +49,7 @@ Sie können die Passthrough-Authentifizierung mit dem Feature zum [nahtlosen ein
 - *Schützen*
   - Lokale Kennwörter werden niemals in irgendeiner Form in der Cloud gespeichert.
   - Der Agent stellt innerhalb des Netzwerks nur ausgehende Verbindungen her. Daher muss der Agent nicht in einem Umkreisnetzwerk (auch als DMZ bezeichnet) installiert werden.
-  - Ihre Benutzerkonten werden durch die nahtlose Zusammenarbeit mit [Azure AD-Richtlinien für den bedingten Zugriff](../active-directory-conditional-access-azure-portal.md), einschließlich der Multi-Factor Authentication (MFA), und durch das [Filtern von Brute-Force-Kennwortangriffen](active-directory-aadconnect-pass-through-authentication-smart-lockout.md) geschützt.
+  - Ihre Benutzerkonten werden durch die nahtlose Zusammenarbeit mit [Azure AD-Richtlinien für den bedingten Zugriff](../active-directory-conditional-access-azure-portal.md), einschließlich der Multi-Factor Authentication (MFA), und durch das [Filtern von Brute-Force-Kennwortangriffen](../authentication/howto-password-smart-lockout.md) geschützt.
 - *Hoch verfügbar*
   - Zusätzliche Agents können auf mehrere lokalen Servern installiert werden, um Hochverfügbarkeit von Anmeldeanforderungen bereitzustellen.
 
@@ -62,12 +64,12 @@ Sie können die Passthrough-Authentifizierung mit dem Feature zum [nahtlosen ein
 - Dies kann über [Azure AD Connect](active-directory-aadconnect.md) aktiviert werden.
 - Dazu wird ein einfacher lokaler Agent verwendet, der auf Kennwortüberprüfungsanforderungen lauscht und darauf reagiert.
 - Die Installation von mehreren Agents stellt Hochverfügbarkeit von Anmeldeanforderungen bereit.
-- So werden Ihre lokalen Konten gegen Brute-Force-Kennwortangriffe in der Cloud [geschützt](active-directory-aadconnect-pass-through-authentication-smart-lockout.md).
+- So werden Ihre lokalen Konten gegen Brute-Force-Kennwortangriffe in der Cloud [geschützt](../authentication/howto-password-smart-lockout.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [**Schnellstart**](active-directory-aadconnect-pass-through-authentication-quick-start.md): Einrichten und Ausführen der Passthrough-Authentifizierung mit Azure AD
-- [**Smart Lockout**](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten zum Schutz der Benutzerkonten.
+- [**Smart Lockout**](../authentication/howto-password-smart-lockout.md): Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten zum Schutz der Benutzerkonten.
 - [**Aktuelle Einschränkungen**](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Informationen zu den unterstützten und nicht unterstützten Szenarien
 - [**Technische Einzelheiten**](active-directory-aadconnect-pass-through-authentication-how-it-works.md) – Funktionsweise dieses Features verstehen
 - [**Häufig gestellte Fragen**](active-directory-aadconnect-pass-through-authentication-faq.md) – Antworten auf häufig gestellte Fragen

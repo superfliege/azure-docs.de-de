@@ -10,6 +10,8 @@
       href: stream-analytics-quick-create-portal.md
     - name: Erstellen eines Auftrags – PowerShell
       href: stream-analytics-quick-create-powershell.md
+    - name: 'Erstellen eines Auftrags: Visual Studio'
+      href: stream-analytics-quick-create-vs.md
 - name: Tutorials
   items:
     - name: 1. Erstellen/Verwalten eines Auftrags
@@ -18,6 +20,8 @@
       href: stream-analytics-with-azure-functions.md
     - name: 3. Ausführen einer benutzerdefinierten JavaScript-Funktion
       href: stream-analytics-javascript-user-defined-functions.md
+    - name: '4: Bereitstellen mit CI/CD in VSTS'
+      href: stream-analytics-tools-visual-studio-cicd-vsts.md
 - name: Beispiele
   items:
     - name: Codebeispiele
@@ -54,11 +58,11 @@
           href: stream-analytics-login-credentials-inputs-outputs.md
         - name: Konfigurieren von Warnungen
           href: stream-analytics-set-up-alerts.md
-        - name: Testen Ihres Auftrags
+        - name: Testen eines Auftrags
           href: stream-analytics-test-query.md
         - name: Anzeigen der Ergebnisse auf einem Dashboard
           href: stream-analytics-power-bi-dashboard.md
-        - name: Bereinigen Ihres Auftrags
+        - name: Bereinigen eines Auftrags
           href: stream-analytics-clean-up-your-job.md
         - name: Koppeln von Aufträgen für Zuverlässigkeit
           href: stream-analytics-job-reliability.md
@@ -125,8 +129,6 @@
           href: stream-analytics-job-diagram-with-metrics.md
         - name: Diagnoseprotokolle
           href: stream-analytics-job-diagnostic-logs.md
-        - name: Überprüfen der Ressourcenintegrität
-          href: stream-analytics-resource-health.md
         - name: SELECT INTO-Anweisung
           href: stream-analytics-select-into.md
         - name: Event Hub-Empfänger

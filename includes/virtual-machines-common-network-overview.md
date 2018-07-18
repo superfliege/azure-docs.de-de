@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 03/11/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 5940be8c13a85e256055d6bd6362c9cd93323ee4
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: dfbedd7945231f4449735cc2f909b64190dcbe05
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38746249"
 ---
 Beim Erstellen eines virtuellen Azure-Computers (VM) müssen Sie ein [virtuelles Netzwerk](../articles/virtual-network/virtual-networks-overview.md) (VNet) erstellen oder ein vorhandenes VNet verwenden. Außerdem müssen Sie entscheiden, wie auf Ihre VMs im VNet zugegriffen werden soll. Es ist wichtig, [vor dem Erstellen von Ressourcen einen Plan aufzustellen](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) und sicherzustellen, dass Sie die [Einschränkungen von Netzwerkressourcen](../articles/azure-subscription-service-limits.md#networking-limits) verstehen.
 
@@ -109,7 +110,7 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen einer Net
 
 | Methode | BESCHREIBUNG |
 | ------ | ----------- |
-| [Azure-Portal](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md) | Wenn Sie im Azure-Portal eine VM erstellen, wird automatisch eine NSG erstellt und der vom Portal erstellten NIC zugeordnet. Der Name der NSG ist eine Kombination aus dem Namen der VM und dem Zusatz **-nsg**. Diese NSG enthält eine Regel für eingehenden Datenverkehr mit einer Priorität von 1000, RDP als Dienst, TCP als Protokoll, 3389 als Port und der Einstellung „Allow“ als Aktion. Wenn Sie anderen eingehenden Datenverkehr für die VM zulassen möchten, müssen Sie der NSG zusätzliche Regeln hinzufügen. |
+| [Azure-Portal](../articles/virtual-network/tutorial-filter-network-traffic.md) | Wenn Sie im Azure-Portal eine VM erstellen, wird automatisch eine NSG erstellt und der vom Portal erstellten NIC zugeordnet. Der Name der NSG ist eine Kombination aus dem Namen der VM und dem Zusatz **-nsg**. Diese NSG enthält eine Regel für eingehenden Datenverkehr mit einer Priorität von 1000, RDP als Dienst, TCP als Protokoll, 3389 als Port und der Einstellung „Allow“ als Aktion. Wenn Sie anderen eingehenden Datenverkehr für die VM zulassen möchten, müssen Sie der NSG zusätzliche Regeln hinzufügen. |
 | [Azure PowerShell](../articles/virtual-network/tutorial-filter-network-traffic.md) | Verwenden Sie [New-AzureRmNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/New-AzureRmNetworkSecurityRuleConfig), und geben Sie die erforderlichen Informationen für die Regel an. Verwenden Sie [New-AzureRmNetworkSecurityGroup](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/New-AzureRmNetworkSecurityGroup), um die NSG zu erstellen. Verwenden Sie [Set-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/Set-AzureRmVirtualNetworkSubnetConfig), um die NSG für das Subnetz zu konfigurieren. Verwenden Sie [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork), um die NSG dem VNet hinzuzufügen. |
 | [Azure-CLI](../articles/virtual-network/tutorial-filter-network-traffic-cli.md) | Verwenden Sie [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#create) für die erste Erstellung der NSG. Verwenden Sie [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#create), um der NSG Regeln hinzuzufügen. Verwenden Sie [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet#update), um die NSG dem Subnetz hinzuzufügen. |
 | [Vorlage](../articles/virtual-network/template-samples.md) | Verwenden Sie [Create a Network Security Group](https://github.com/Azure/azure-quickstart-templates/tree/master/101-security-group-create) (Erstellen einer Netzwerksicherheitsgruppe) als Anleitung zum Bereitstellen einer Netzwerksicherheitsgruppe mit einer Vorlage. |
@@ -170,4 +171,4 @@ Es gibt auch Tutorials dazu, wie Sie den Lastenausgleich für VMs durchführen u
 
 - Informieren Sie sich, wie Sie [benutzerdefinierte Routen und die IP-Weiterleitung](../articles/virtual-network/virtual-networks-udr-overview.md) konfigurieren. 
 - Informieren Sie sich, wie Sie [VNet-zu-VNet-Verbindungen](../articles/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md) konfigurieren.
-- Lesen Sie die Informationen zur [Problembehandlung bei Routen](../articles/virtual-network/virtual-network-routes-troubleshoot-portal.md).
+- Lesen Sie die Informationen zur [Problembehandlung bei Routen](../articles/virtual-network/diagnose-network-routing-problem.md).

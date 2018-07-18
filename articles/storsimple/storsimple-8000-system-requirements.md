@@ -1,12 +1,12 @@
 ---
 title: Systemanforderungen der StorSimple 8000-Serie | Microsoft-Dokumentation
-description: "Beschreibt die Anforderungen und bewährten Methoden für Software, Netzwerke und Hochverfügbarkeit für eine Microsoft Azure StorSimple-Lösung."
+description: Beschreibt die Anforderungen und bewährten Methoden für Software, Netzwerke und Hochverfügbarkeit für eine Microsoft Azure StorSimple-Lösung.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/23/2018
+ms.locfileid: "28011060"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>Software für StorSimple 8000-Serie, Hochverfügbarkeit und Netzwerkanforderungen
 

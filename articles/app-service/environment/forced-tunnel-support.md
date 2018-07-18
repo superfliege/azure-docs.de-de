@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/20/2018
+ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 904641a433d55cc5f1d04b17ed067cd560c6b33c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 082275e2acd81e34c057f863651528eb46e8501e
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114960"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Konfigurieren Ihrer App Service-Umgebung mit erzwungenem Tunneling
 
@@ -28,7 +29,7 @@ Die ASE weist eine Reihe von externen Abhängigkeiten auf, die im Dokument zur [
 
 In einem virtuellen Azure-Netzwerk wird das Routing auf der Basis der längsten Präfixübereinstimmung (Longest Prefix Match, LPM) durchgeführt. Wenn mehrere Routen mit identischer längster Präfixübereinstimmung vorhanden sind, wird die Route in der folgenden Reihenfolge beruhend auf ihrem Ursprung ausgewählt:
 
-* Benutzerdefinierte Route
+* Benutzerdefinierte Route (UDR)
 * BGP-Route (bei Verwendung von ExpressRoute)
 * Systemroute
 
@@ -37,7 +38,8 @@ Weitere Informationen zum Routing in einem virtuellen Netzwerk finden Sie unter 
 Wenn Sie Ihren ausgehenden Datenverkehr der ASE nicht direkt ins Internet, sondern an einen anderen Ort leiten möchten, haben Sie folgende Optionen:
 
 * Ermöglichen Sie Ihrer ASE den direkten Zugang zum Internet.
-* Konfigurieren des ASE-Subnetzes für die Verwendung von Dienstendpunkten für Azure SQL und Azure Storage
+* Konfigurieren des ASE-Subnetzes zum Ignorieren von BGP-Routen
+* Konfigurieren Sie Ihr ASE-Subnetzes für die Verwendung von Dienstendpunkten für Azure SQL und Azure Storage.
 * Hinzufügen Ihrer eigenen IPs zur Azure SQL-Firewall der ASE
 
 ## <a name="enable-your-app-service-environment-to-have-direct-internet-access"></a>Aktivieren Ihrer App Service-Umgebung, sodass sie direkten Zugang zum Internet hat
@@ -52,14 +54,28 @@ Wenn Sie diese beiden Änderungen vornehmen, wird der aus dem Subnetz des App Se
 Falls das Netzwerk bereits Datenverkehr lokal weiterleitet, müssen Sie das Subnetz zum Hosten Ihrer ASE erstellen und die UDR dafür konfigurieren, bevor Sie die ASE bereitstellen.  
 
 > [!IMPORTANT]
-> Die in einer UDR definierten Routen müssen ausreichend spezifisch sein, damit sie Vorrang vor allen von der ExpressRoute-Konfiguration angekündigten Routen erhalten. Im vorhergehenden Beispiel wird der allgemeine Adressbereich „0.0.0.0/0“ verwendet. Er kann durch Routenankündigungen mit spezifischeren Adressbereichen versehentlich überschrieben werden kann.
+> Die in einer UDR definierten Routen müssen ausreichend spezifisch sein, damit sie Vorrang vor allen von der ExpressRoute-Konfiguration angekündigten Routen erhalten. Im vorhergehenden Beispiel wird der allgemeine Adressbereich „0.0.0.0/0“ verwendet. Er kann durch Routenankündigungen mit spezifischeren Adressbereichen versehentlich überschrieben werden.
 >
 > App Service-Umgebungen werden nicht mit ExpressRoute-Konfigurationen unterstützt, die Routen „über Kreuz“ vom öffentlichen Peeringpfad zum privaten Peeringpfad ankündigen. ExpressRoute-Konfigurationen, für die öffentliches Peering konfiguriert ist, erhalten Routenankündigungen von Microsoft. Die Ankündigungen enthalten zahlreiche Microsoft Azure-Adressbereiche. Wenn diese Adressbereiche über Kreuz auf dem privaten Peeringpfad angekündigt werden, werden alle ausgehenden Netzwerkpakete aus dem Subnetz der App Service-Umgebung in die lokale Netzwerkinfrastruktur eines Kunden geleitet. Dieser Netzwerkdatenfluss wird standardmäßig nicht für App Service-Umgebungen unterstützt. Eine Lösung für dieses Problem besteht darin, „Über-Kreuz-Ankündigungen“ von Routen vom öffentlichen Peeringpfad zum privaten Peeringpfad zu verhindern. Eine andere Lösung besteht darin, Ihre App Service-Umgebung in die Lage zu versetzen, in einer Konfiguration mit erzwungenem Tunneling zu arbeiten.
 
 ![Direkter Internetzugriff][1]
 
+## <a name="configure-your-ase-subnet-to-ignore-bgp-routes"></a>Konfigurieren des ASE-Subnetzes zum Ignorieren von BGP-Routen ## 
+
+Sie können das ASE-Subnetz so konfigurieren, dass alle BGP-Routen ignoriert werden.  Wenn dies konfiguriert ist, kann die ASE problemlos auf ihre Abhängigkeiten zugreifen.  Jedoch müssen Sie benutzerdefinierte Routen (UDR) erstellen, um Ihren Apps den Zugriff auf lokale Ressourcen zu ermöglichen.
+
+So konfigurieren Sie Ihr ASE-Subnetz zum Ignorieren von BGP-Routen:
+
+* Erstellen Sie eine UDR, und weisen Sie diese Ihrem ASE-Subnetz zu, falls Sie noch keine haben.
+* Öffnen Sie im Azure-Portal die Benutzeroberfläche für die Routingtabelle, die Ihrem ASE-Subnetz zugeordnet ist.  Klicken Sie auf „Konfiguration“.  Legen Sie „deaktiviert“ für die BGP-Routenverteilung fest.  Klicken Sie auf Speichern. Die Dokumentation zum Deaktivieren der BGP-Routenverteilung finden Sie unter [Erstellen einer Routentabelle][routetable].
+
+Danach verfügen Ihre Apps nicht mehr über den lokalen Zugriff. Bearbeiten Sie die UDR, die Ihrem ASE-Subnetz zugewiesen ist, und fügen Sie Routen für Ihre lokalen Adressbereiche hinzu, um dieses Problem zu beheben. Der Typ des nächsten Hops sollte auf „Gateway des virtuellen Netzwerks“ festgelegt sein. 
+
 
 ## <a name="configure-your-ase-with-service-endpoints"></a>Konfigurieren Ihrer ASE mit Dienstendpunkten ##
+
+ > [!NOTE]
+   > Dienstendpunkte mit SQL funktionieren nicht mit einer ASE in einer US Government-Region.  Die folgenden Informationen gelten nur für öffentliche Azure-Regionen.  
 
 Führen Sie die folgenden Schritte aus, um das Routing für den gesamten ausgehenden Datenverkehr Ihrer ASE einzurichten, mit Ausnahme des Datenverkehrs für Azure SQL und Azure Storage:
 
@@ -89,13 +105,13 @@ Führen Sie die folgenden Schritte aus, um das Tunneling für den gesamten ausge
 
 3. Beschaffen Sie sich die Adressen, die für den gesamten ausgehenden Datenverkehr von Ihrer App Service-Umgebung ins Internet verwendet werden. Falls Sie den Datenverkehr an lokale Speicherorte weiterleiten, sind diese Adressen Ihre NATs oder Gateway-IPs. Wenn Sie den ausgehenden Datenverkehr der App Service-Umgebung über eine NVA weiterleiten möchten, ist die ausgehende Adresse die öffentliche IP-Adresse der NVA.
 
-4. _Gehen Sie wie folgt vor, um die Ausgangsadressen in einer vorhandenen App Service-Umgebung festzulegen:_ Navigieren Sie zu „resource.azure.com“ und dann zu „Subscription/<subscription id>/resourceGroups/<ase resource group>/providers/Microsoft.Web/hostingEnvironments/<ase name>“. Dort sehen Sie die JSON-Datei, die Ihre App Service-Umgebung beschreibt. Vergewissern Sie sich, dass am Anfang **read/write** angezeigt wird. Wählen Sie **Bearbeiten** aus. Scrollen Sie ganz nach unten. Ändern Sie den Wert **userWhitelistedIpRanges** von **null** in einen Wert, der dem unten angegebenen Wert ähnelt. Verwenden Sie die Adressen, die Sie als Ausgangsadressbereich festlegen möchten. 
+4. _Gehen Sie wie folgt vor, um die Ausgangsadressen in einer vorhandenen App Service-Umgebung festzulegen:_ Navigieren Sie zu „resource.azure.com“ und dann zu „Subscription/<subscription id>/resourceGroups/<ase resource group>/providers/Microsoft.Web/hostingEnvironments/<ase name>“. Dort sehen Sie die JSON-Datei, die Ihre App Service-Umgebung beschreibt. Vergewissern Sie sich, dass am Anfang **read/write** angezeigt wird. Klicken Sie auf **Bearbeiten**. Scrollen Sie ganz nach unten. Ändern Sie den Wert **userWhitelistedIpRanges** von **NULL** in einen Wert, der dem unten angegebenen Wert ähnelt. Verwenden Sie die Adressen, die Sie als Ausgangsadressbereich festlegen möchten. 
 
         "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"] 
 
-   Wählen Sie oben **PUT** aus. Diese Option löst einen Skalierungsvorgang für Ihre App Service-Umgebung aus und passt die Firewall an.
+   Klicken Sie oben auf **PUT**. Diese Option löst einen Skalierungsvorgang für Ihre App Service-Umgebung aus und passt die Firewall an.
 
-_Gehen Sie wie folgt vor, um Ihre ASE mit den Ausgangsadressen zu erstellen_: Befolgen Sie die Anleitung unter [Erstellen einer App Service-Umgebung mit einer Vorlage][template], und rufen Sie die entsprechende Vorlage ab.  Bearbeiten Sie den Abschnitt „resources“ in der Datei „azuredeploy.json“, aber nicht im Block „properties“, und fügen Sie eine Zeile für **userWhitelistedIpRanges** mit Ihren Werten ein.
+_Gehen Sie wie folgt vor, um Ihre ASE mit den Ausgangsadressen zu erstellen:_ Befolgen Sie die Anleitung unter [Erstellen einer App Service-Umgebung mit einer Vorlage][template], und rufen Sie die entsprechende Vorlage ab.  Bearbeiten Sie den Abschnitt „resources“ in der Datei „azuredeploy.json“, aber nicht im Block „properties“, und fügen Sie eine Zeile für **userWhitelistedIpRanges** mit Ihren Werten ein.
 
     "resources": [
       {
@@ -141,3 +157,4 @@ Zusätzlich zur Unterbrechung der Kommunikation kann es auch zu einer negativen 
 [routes]: ../../virtual-network/virtual-networks-udr-overview.md
 [template]: ./create-from-template.md
 [serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md
+[routetable]: ../../virtual-network/manage-route-table.md#create-a-route-table

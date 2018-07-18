@@ -1,6 +1,6 @@
 ---
 title: Skriptaktivität in Azure Data Factory | Microsoft-Dokumentation
-description: Informationen, wie Sie die SQL Server-Aktivität "Gespeicherte Prozedur" in einer Data Factory-Pipeline zum Aufrufen einer gespeicherten Prozedur in einer Azure SQL-Datenbank oder einem Azure SQL Data Warehouse verwenden können.
+description: Erfahren Sie, wie Sie die Skriptaktivität verwenden können, um ein Skript aus einer Data Factory-Pipeline aufzurufen.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -10,19 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: e5955e0645f607156ced44bd61dabb04182bda0f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 47151fde09dd2a67c6a321e438d7b1b98ff1aca3
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049905"
 ---
 # <a name="script-activity-in-azure-data-factory"></a>Skriptaktivität in Azure Data Factory
-
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (GA) ist, lesen Sie die [Dokumentation zur Version 1 von Data Factory](v1/data-factory-introduction.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie unter anderen Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden: 

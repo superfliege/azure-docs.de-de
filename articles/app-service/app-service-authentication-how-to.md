@@ -13,11 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: cephalin
-ms.openlocfilehash: c41cb3ef2939fe7271b1f8738fcf0cb95c4b1111
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 688ea090384755b9a6d60a4968d958678edc27ad
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337178"
 ---
 # <a name="customize-authentication-and-authorization-in-azure-app-service"></a>Anpassen der Authentifizierung und Autorisierung in Azure App Service
 
@@ -88,7 +89,7 @@ Wenn das Zugriffstoken Ihres Anbieters abläuft, müssen Sie den Benutzer erneut
 
 - **Google**: Fügen Sie Ihrem `/.auth/login/google`-API-Aufruf einen Abfragezeichenfolgen-Parameter vom Typ `access_type=offline` an. Bei Verwendung des Mobile Apps SDK können Sie den Parameter einer der `LogicAsync`-Überladungen hinzufügen (siehe [Google-Aktualisierungstoken](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: Stellt keine Aktualisierungstoken bereit. Langlebige Token laufen nach 60 ab (siehe [Verlängern von Zugriffsschlüsseln für Seiten](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
-- **Twitter-**: Zugriffstoken laufen nicht ab (siehe [Häufig gestellte Fragen zu OAuth für Twitter](https://developer.twitter.com/docs/basics/authentication/guides/oauth-faq)).
+- **Twitter-**: Zugriffstoken laufen nicht ab (siehe [Häufig gestellte Fragen zu OAuth für Twitter](https://developer.twitter.com/en/docs/basics/authentication/guides/oauth-faq)).
 - **Microsoft-Konto**: Wählen Sie beim [Konfigurieren der Authentifizierungseinstellungen für das Microsoft-Konto](app-service-mobile-how-to-configure-microsoft-authentication.md) den Bereich `wl.offline_access` aus.
 - **Azure Active Directory**: Führen Sie in [https://resources.azure.com](https://resources.azure.com) die folgenden Schritte aus:
     1. Wählen Sie am oberen Seitenrand die Option **Lesen/Schreiben** aus.
@@ -102,7 +103,7 @@ Wenn das Zugriffstoken Ihres Anbieters abläuft, müssen Sie den Benutzer erneut
 
     1. Klicken Sie auf **Put**. 
 
-Sobald Ihr Anbieter konfiguriert ist, können Sie anzeigen, ob sich Aktualisierungstoken im Tokenspeicher befinden, indem Sie `/.auth/me` aufrufen. 
+Sobald Ihr Anbieter konfiguriert ist, können Sie im Tokenspeicher [das Aktualisierungstoken und die Ablaufzeit für das Zugriffstoken suchen](#retrieve-tokens-in-app-code). 
 
 Um das Zugriffstoken jederzeit zu aktualisieren, rufen Sie einfach `/.auth/refresh` in einer beliebigen Sprache auf. Im folgenden Codeausschnitt wird jQuery verwendet, um Ihre Zugriffstoken aus einem JavaScript-Client zu aktualisieren.
 

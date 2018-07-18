@@ -3,8 +3,8 @@ title: Verwenden der Service Map-Lösung in Azure | Microsoft-Dokumentation
 description: Service Map ist eine Lösung in Azure, die Anwendungskomponenten auf Windows- und Linux-Systemen automatisch ermittelt und die Kommunikation zwischen Diensten abbildet. Dieser Artikel enthält Informationen zum Bereitstellen von Service Map in Ihrer Umgebung und zur Verwendung der Lösung in einer Vielzahl von Szenarien.
 services: monitoring
 documentationcenter: ''
-author: daveirwin1
-manager: jwhit
+author: mgoedtel
+manager: carmonm
 editor: tysonn
 ms.assetid: 3ceb84cc-32d7-4a7a-a916-8858ef70c0bd
 ms.service: monitoring
@@ -12,19 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/22/2016
-ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: aa9a6b54576ce8399471891c9ab5b80216f00ee1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.date: 06/22/2018
+ms.author: daseidma;bwren
+ms.openlocfilehash: 812137a8320634364a7d91fd2e61cd3e9d15fc12
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751427"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Verwenden der Service Map-Lösung in Azure
 Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. Mit Service Map können Sie die Server Ihrer Vorstellung gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Service Map zeigt Verbindungen zwischen Servern, Prozessen und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich.
 
-In diesem Artikel werden die Details der Verwendung von Service Map beschrieben. Weitere Informationen zum Konfigurieren von Service Map und zum Onboarding von Agents finden Sie unter [Konfigurieren von Service Map in Azure]( monitoring-service-map-configure.md).
+In diesem Artikel werden die Details von Onboarding und Verwendung der Dienstzuordnung beschrieben. Weitere Informationen zum Konfigurieren von Service Map und zum Onboarding von Agents finden Sie unter [Konfigurieren von Service Map in Azure]( monitoring-service-map-configure.md).
 
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
+Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
+
+## <a name="enable-service-map"></a>Aktivieren der Dienstzuordnung
+1. Klicken Sie im Azure-Portal auf **+ Ressource erstellen**.
+2. Geben Sie in der Suchleiste **Dienstzuordnung** ein, und drücken Sie die **EINGABETASTE**.
+3. Wählen Sie auf der Marketplace-Suchergebnisseite **Dienstzuordnung** in der Liste aus.<br><br> ![Lösung Dienstzuordnung aus Azure Marketplace-Suchergebnissen auswählen](./media/monitoring-service-map/marketplace-search-results.png)<br>
+4. Überprüfen Sie im Übersichtsbereich der **Dienstzuordnung** die Lösungsdetails, und klicken Sie dann auf **Erstellen**, um den Onboarding-Prozess zu Ihrem Log Analytics-Arbeitsbereich einzuleiten.<br><br> ![Integrieren Sie die Lösung Dienstzuordnung](./media/monitoring-service-map/service-map-onboard.png).
+5. Wählen Sie im Bereich **Lösung konfigurieren** einen vorhandenen Log Analytics-Arbeitsbereich aus, oder erstellen Sie einen neuen.  Weitere Informationen zum Erstellen eines neuen Arbeitsbereichs finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../log-analytics/log-analytics-quick-create-workspace.md). Klicken Sie nach Eingabe der erforderlichen Informationen auf **Erstellen**.  
+
+Während die Informationen überprüft werden und die Lösung bereitgestellt wird, können Sie den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen. 
+
+Greifen Sie im Azure-Portal von Ihrem Log Analytics-Arbeitsbereich aus auf die Dienstzuordnung zu, und wählen Sie im linken Bereich die Option **Lösungen** aus.<br><br> ![Option „Lösungen“ im Arbeitsbereich auswählen](./media/monitoring-service-map/select-solution-from-workspace.png).<br> Wählen Sie in der Liste der Lösungen **ServiceMap(workspaceName)** aus, und klicken Sie in der Lösungsübersichtsseite der Dienstzuordnung auf die Dienstzuordnung-Zusammenfassungskachel.<br><br> ![Dienstzuordnung-Zusammenfassungskachel](./media/monitoring-service-map/service-map-summary-tile.png).
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Anwendungsfälle: Berücksichtigen von Abhängigkeiten in IT-Prozessen
 
@@ -43,9 +57,10 @@ Wenn Sie Azure Site Recovery verwenden und Hilfe beim Definieren der Wiederherst
 ### <a name="patch-management"></a>Patchverwaltung
 Service Map erweitert die Nutzung der Bewertung von Systemupdates durch die Anzeige, welche anderen Teams und Server von Ihrem Dienst abhängig sind. Auf diese Weise können Sie sie benachrichtigen, bevor Sie Ihre Systeme zum Patchen herunterfahren. Service Map erweitert auch die Patchverwaltung durch die Anzeige, ob Ihre Dienste verfügbar und ordnungsgemäß verbunden sind, nachdem die Patches aufgespielt und die Dienste neu gestartet wurden.
 
-
 ## <a name="mapping-overview"></a>Übersicht über die Zuordnung
-Service Map-Agents sammeln Informationen über alle über TCP verbundenen Prozesse auf dem Server, auf dem sie installiert sind, und Informationen zu den eingehenden und ausgehenden Verbindungen für jeden Prozess. In der Liste im linken Bereich können Sie Computer oder Gruppen mit Dienstzuordnung-Agents auswählen, um ihre Abhängigkeiten in einem angegebenen Zeitabschnitt visuell darzustellen. Die Abhängigkeitszuordnungen gelten für einen bestimmten Computer und zeigen alle Computer an, die direkte TCP-Clients oder -Server dieses Computers sind.  Computergruppe ordnet Anzeigesets von Servern und deren Abhängigkeiten zu.
+Service Map-Agents sammeln Informationen über alle über TCP verbundenen Prozesse auf dem Server, auf dem sie installiert sind, und Informationen zu den eingehenden und ausgehenden Verbindungen für jeden Prozess.
+
+In der Liste im linken Bereich können Sie Computer oder Gruppen mit Dienstzuordnung-Agents auswählen, um ihre Abhängigkeiten in einem angegebenen Zeitabschnitt visuell darzustellen. Die Abhängigkeitszuordnungen gelten für einen bestimmten Computer und zeigen alle Computer an, die direkte TCP-Clients oder -Server dieses Computers sind.  Computergruppe ordnet Anzeigesets von Servern und deren Abhängigkeiten zu.
 
 ![Service Map-Übersicht](media/monitoring-service-map/service-map-overview.png)
 
@@ -186,16 +201,13 @@ Der Bereich **Prozessübersicht** bietet zusätzliche Informationen über die Ko
 ![Bereiche „Prozessübersicht“](media/monitoring-service-map/process-summary.png)
 
 ## <a name="alerts-integration"></a>Integration von Warnungen
-Service Map ist in Warnungen in Log Analytics integriert, um Warnungen für den ausgewählten Server anzuzeigen, die im ausgewählten Zeitraum ausgelöst werden. Für den Server wird ein Symbol angezeigt, wenn aktuelle Warnungen vorliegen, und im **Computerwarnungsbereich** werden die Warnungen aufgelistet.
+Die Dienstzuordnung ist in Azure-Warnungen integriert, um Warnungen für den ausgewählten Server anzuzeigen, die im ausgewählten Zeitraum ausgelöst werden. Für den Server wird ein Symbol angezeigt, wenn aktuelle Warnungen vorliegen, und im **Computerwarnungsbereich** werden die Warnungen aufgelistet.
 
 ![Bereich „Computerwarnungen“](media/monitoring-service-map/machine-alerts.png)
 
 Damit Service Map die relevanten Warnungen anzeigt, müssen Sie eine Warnungsregel aufstellen, die für einen bestimmten Computer ausgelöst wird. So erstellen Sie richtige Warnungen:
-- Beziehen Sie eine Klausel zur Gruppierung nach Computer ein (z.B. **by Computer interval 1minute**).
+- Beziehen Sie eine Klausel zur Gruppierung nach Computer ein (z.B. **by Computer interval 1 minute**).
 - Wählen Sie die Warnung auf Basis der Metrikmessung.
-
-![Warnungskonfiguration](media/monitoring-service-map/alert-configuration.png)
-
 
 ## <a name="log-events-integration"></a>Integration von Protokollereignissen
 Service Map ist in die Protokollsuche integriert, um die Anzahl aller verfügbaren Protokollereignisse für den ausgewählten Server während des ausgewählten Zeitraums anzuzeigen. Sie können auf eine beliebige Zeile in der Liste der Ereignisanzahl klicken, um zur Protokollsuche zu wechseln und die einzelnen Protokollereignisse anzuzeigen.
@@ -223,7 +235,7 @@ Der Bereich für die **Nachverfolgung von Änderungen auf einem Computer** zeigt
 
 Die folgende Abbildung ist eine Detailansicht eines ConfigurationChange-Ereignisses, dass Ihnen möglicherweise angezeigt wird, wenn Sie auf **In Log Analytics anzeigen** klicken.
 
-![Ereignis „ConfigurationChange“](media/monitoring-service-map/configuration-change-event.png)
+![Ereignis „ConfigurationChange“](media/monitoring-service-map/configuration-change-event-01.png)
 
 
 ## <a name="performance-integration"></a>Leistungsintegration
@@ -253,7 +265,6 @@ Die Integration von Service Map in Sicherheit und Überwachung erfolgt automatis
 Im Bereich für **Computersicherheit** werden Daten aus der Sicherheits- und Überwachungslösung für den ausgewählten Server angezeigt. Im Bereich wird ggf. eine Zusammenfassung herausragender Sicherheitsprobleme für den Server angezeigt, die während des ausgewählten Zeitraums aufgetreten sind. Beim Klicken auf ein Sicherheitsproblem wird eine Protokollsuche nach ausführlichen Informationen zu diesen durchgeführt.
 
 ![Bereich für Computersicherheit](media/monitoring-service-map/machine-security.png)
-
 
 ## <a name="updates-integration"></a>Integration von Updates
 Die Integration von Service Map in die Updateverwaltung erfolgt automatisch, wenn beide Lösungen im Log Analytics-Arbeitsbereich aktiviert und konfiguriert sind.

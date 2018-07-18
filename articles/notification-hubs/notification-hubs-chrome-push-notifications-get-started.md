@@ -16,11 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 5754a537b8a0bf0a93d6d54ba0ba78e5957ac87f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7bdc692104194bff4a25e6974ba72971af543cbf
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38698159"
 ---
 # <a name="tutorial-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an Chrome-Apps mit Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -28,7 +29,7 @@ ms.lasthandoff: 05/07/2018
 In diesem Tutorial wird beschrieben, wie Sie einen Notification Hub erstellen und mithilfe von [Google Cloud Messaging (GCM)](https://developers.google.com/cloud-messaging/) Pushbenachrichtigungen an eine Google Chrome-Beispiel-App senden. Die Chrome-App wird im Kontext eines Google Chrome-Browsers ausgeführt und beim Notification Hub registriert. 
 
 > [!NOTE]
-> Pushbenachrichtigungen von Chrome-Apps sind keine generischen browserinternen Benachrichtigungen. Sie sind speziell für das Browser-Erweiterbarkeitsmodell bestimmt. (Details finden Sie in der Übersicht zu Chrome-Apps unter [Chrome Apps Overview].) Zusätzlich zum Desktopbrowser können Chrome-Apps über Apache Cordova auch auf Mobilgeräten (Android und iOS) ausgeführt werden. Weitere Informationen finden Sie unter [Run Chrome Apps on Mobile Using Apache Cordova] (Ausführen von Chrome-Apps auf Mobilgeräten unter Verwendung von Apache Cordova).
+> Pushbenachrichtigungen von Chrome-Apps sind keine generischen browserinternen Benachrichtigungen. Sie sind speziell für das Browser-Erweiterbarkeitsmodell bestimmt. (Details finden Sie in der Übersicht zu Chrome-Apps unter [Chrome-Apps – Übersicht].) Zusätzlich zum Desktopbrowser können Chrome-Apps über Apache Cordova auch auf Mobilgeräten (Android und iOS) ausgeführt werden. Weitere Informationen finden Sie unter [Chrome-Apps auf Mobilgeräten] (Ausführen von Chrome-Apps auf Mobilgeräten unter Verwendung von Apache Cordova).
 
 In diesem Tutorial führen Sie die folgenden Schritte aus:
 
@@ -399,7 +400,7 @@ Senden Sie zu Testzwecken Chrome-Pushbenachrichtigungen über eine .NET-Konsolen
    
         Install-Package Microsoft.Azure.NotificationHubs
    
-   Ein Verweis auf das Azure Service Bus SDK mit dem <a href="http://nuget.org/packages/  WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus</a>-NuGet-Paket wird dem Projekt automatisch hinzugefügt.
+   Ein Verweis auf das Azure Service Bus SDK mit dem <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus</a>-NuGet-Paket wird dem Projekt automatisch hinzugefügt.
 4. Öffnen Sie `Program.cs`, und fügen Sie die folgende `using`-Anweisung hinzu:
    
         using Microsoft.Azure.NotificationHubs;
@@ -463,10 +464,10 @@ In diesem Tutorial haben Sie Übertragungsbenachrichtigungen an alle Clients ges
 <!-- URLs. -->
 [Notification Hub-Beispiel für Chrome-Apps]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToChromeApps
 [Notification Hubs Overview]: notification-hubs-push-notification-overview.md
-[Chrome Apps Overview]: https://developer.chrome.com/apps/about_apps
+[Chrome-Apps – Übersicht]: https://developer.chrome.com/apps/about_apps
 [GCM-Beispiel für Chrome-Apps]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
 [Installable Web Apps]: https://developers.google.com/chrome/apps/docs/
-[Run Chrome Apps on Mobile Using Apache Cordova]: https://developer.chrome.com/apps/chrome_apps_on_mobile
+[Chrome-Apps auf Mobilgeräten]: https://developer.chrome.com/apps/chrome_apps_on_mobile
 [Erstellen der Registrierungs-NH-REST-API]: http://msdn.microsoft.com/library/azure/dn223265.aspx
 [crypto-js-Bibliothek]: http://code.google.com/p/crypto-js/
 [GCM with Chrome Apps]: https://developer.chrome.com/apps/cloudMessaging

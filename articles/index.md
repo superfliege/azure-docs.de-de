@@ -6,12 +6,12 @@ description: Erfahren Sie, wie Sie mit Microsoft Azure Cloud Services leistungss
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 6405adeb697b68a651e31d348ffb525d926fd3f4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ea6241c98cd65af14242301be4681e613d867fbc
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627192"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071180"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -177,6 +177,7 @@ Go</a>
                                                     <li><a class="barLink" href="/azure/app-service-web/">Web-Apps</a></li>
                                                     <li><a class="barLink" href="/azure/azure-functions/">Serverlose Funktionen</a></li>
                                                     <li><a class="barLink" href="/azure/containers/">Container</a></li>
+                                                    <li><a class="barLink" href="/azure/aks/">Microservices mit Kubernetes</a></li>
                                                     <li><a class="barLink" href="/azure/service-fabric/">Microservices mit Service Fabric</a></li>
                                                 </ul>
                                             </div>
@@ -269,6 +270,11 @@ Terraform </a>
                                                         <a class="barLink" href="https://docs.microsoft.com/vsts/deploy-azure/">
                                                             <img src="https://docs.microsoft.com/media/logos/logo_vs-team-services.svg" alt="">
 Visual Studio Team Services </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="barLink" href="https://docs.microsoft.com/azure/devops">
+                                                            <img src="https://docs.microsoft.com/media/logos/logo_vs-team-services.svg" alt="">
+Informationen zu DevOps mit Azure </a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -490,6 +496,11 @@ Visual Studio Team Services </a>
                                                 <p>Web-App für Container</p>
                                             </a>
                                         </li>
+                                        <li>
+                                            <a href="/azure/dev-spaces/">
+                                                <img src="media/index/AzureDevSpaceController_50x.svg" alt=""/>
+                                                <p>Azure Dev Spaces</p>
+                                        </li>
                                     </ul>
                                     <h3>Integration</h3>
                                     <ul>
@@ -673,6 +684,12 @@ Visual Studio Team Services </a>
                                             <a href="/azure/network-watcher/">
                                                 <img src="media/index/network-watcher.svg" alt="" />
                                                 <p>Network Watcher</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/firewall/">
+                                                <img src="media/index/azure_firewall.svg" alt="" />
+                                                <p>Azure Firewall</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -878,7 +895,7 @@ Visual Studio Team Services </a>
                                         </li>
                                         <li>
                                             <a href="/azure/cognitive-services/labs/anomaly-finder/overview">
-                                                <img src="media/index/API_Anomaly_Finder.svg" alt="" /> 
+                                                <img src="media/index/API_Anomaly_Finder.svg" alt="" />
                                                 <p>Suche nach Anomalien</p>
                                             </a>
                                         </li>
@@ -912,8 +929,6 @@ Visual Studio Team Services </a>
                                                 <p>API für die visuelle Bing-Suche</p>
                                             </a>
                                         </li>
-
-
                                         <li>
                                             <a href="/azure/cognitive-services/Bing-Autosuggest/">
                                                 <img src="media/index/API_Bing_AutoSuggest.svg" alt="" />
@@ -985,9 +1000,15 @@ Visual Studio Team Services </a>
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="/azure/storage/data-lake-storage/introduction">
+                                                <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
+                                                <p>Data Lake Storage Gen2</p>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="/azure/data-lake-store/">
                                                 <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
-                                                <p>Data Lake Store</p>
+                                                <p>Data Lake Storage Gen1</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1030,6 +1051,12 @@ Visual Studio Team Services </a>
                                             <a href="/azure/storage/blobs/storage-blob-storage-tiers">
                                                 <img src="media/index/storage.svg" alt="" />
                                                 <p>Archivspeicher</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/azure-netapp-files/">
+                                                <img src="media/index/NetAppStorage.svg" alt="" />
+                                                <p>Azure NetApp Files</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -1226,19 +1253,19 @@ Visual Studio Team Services </a>
                                         </li>
                                         <li>
                                             <a href="/azure/iot-edge/">
-                                                <img src="media/index/IOT_edge_50.svg" alt="" />
+                                                <img src="media/index/iot-edge-alt.svg" alt="" />
                                                 <p>IoT Edge</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/iot-central/">
-                                                <img src="media/index/IoT-central.svg" alt="" />
+                                                <img src="media/index/iot-central.svg" alt="" />
                                                 <p>IoT Central</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/iot-suite/">
-                                                <img src="media/index/iot-suite.svg" alt="" />
+                                                <img src="media/index/iot-solution-accelerators.svg" alt="" />
                                                 <p>IoT Solution Accelerators</p>
                                             </a>
                                         </li>
@@ -1256,7 +1283,7 @@ Visual Studio Team Services </a>
                                         </li>
                                         <li>
                                             <a href="/azure/azure-maps/">
-                                                <img src="media/index/azure-lbs-icon.svg" alt="" />
+                                                <img src="media/index/azure-maps-icon-portal.svg" alt="" />
                                                 <p>Azure Maps</p>
                                             </a>
                                         </li>
@@ -1390,7 +1417,7 @@ Visual Studio Team Services </a>
                                         </li>
                                         <li>
                                             <a href="/azure/azure-maps/">
-                                                <img src="media/index/azure-lbs-icon.svg" alt="" />
+                                                <img src="media/index/azure-maps-icon-portal.svg" alt="" />
                                                 <p>Azure Maps</p>
                                             </a>
                                         </li>
@@ -1461,6 +1488,12 @@ Visual Studio Team Services </a>
                                             <a href="/azure/vpn-gateway/">
                                                 <img src="media/index/VPNGateway.svg" alt="" />
                                                 <p>VPN Gateway</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/role-based-access-control/">
+                                                <img src="media/index/PersonWithFriend.svg" alt="" />
+                                                <p>Rollenbasierte Zugriffssteuerung</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -2100,6 +2133,44 @@ Visual Studio Team Services </a>
                                     </div>
                                 </a>
                             </li>
+                            <li>
+                                <a href="/azure/firewall/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/azure_firewall.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Firewall</h3>
+                                                    <p>Hoch verfügbarer und skalierbarer cloudbasierter Netzwerksicherheitsdienst</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/virtual-wan/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/WAN.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Virtuelles WAN</h3>
+                                                    <p>Erstellen einer sicheren Branch-Konnektivität mit globaler Reichweite</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -2144,6 +2215,25 @@ Visual Studio Team Services </a>
                                 </a>
                             </li>
                             <li>
+                                <a href="/azure/storage/data-lake-storage/introduction">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Data Lake Storage Gen2</h3>
+                                                    <p>Hochgradig skalierbarer, sicherer Data Lake-Speicher</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/azure/data-lake-store/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -2154,7 +2244,7 @@ Visual Studio Team Services </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Lake Store</h3>
+                                                    <h3>Data Lake Storage Gen1</h3>
                                                     <p>Riesiges Repository für Big Data-Analyseworkloads</p>
                                                 </div>
                                             </div>
@@ -2289,6 +2379,25 @@ Visual Studio Team Services </a>
                                                 <div class="cardText">
                                                     <h3>Archivspeicher</h3>
                                                     <p>Preisgünstiger, sicherer Cloudspeicher für Daten, auf die nicht häufig zugegriffen wird</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/azure-netapp-files/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/NetAppStorage.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure NetApp Files</h3>
+                                                    <p>Netzwerkdateidienste auf Unternehmensniveau unterstützt von NetApp</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2502,7 +2611,7 @@ Visual Studio Team Services </a>
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/azure-lbs-icon.svg" alt="" />
+                                                        <img src="media/index/azure-maps-icon-portal.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -2665,6 +2774,25 @@ Visual Studio Team Services </a>
                                                 <div class="cardText">
                                                     <h3>Web-App für Container</h3>
                                                     <p>Containerbasierte Web-Apps, die mit Ihrem Business mitwachsen, ganz einfach bereitstellen und ausführen</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/dev-spaces/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/AzureDevSpaceController_50x.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Dev Spaces</h3>
+                                                    <p>Schnelle Kubernetes-Entwicklung mit Containern und Microservices</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3175,6 +3303,25 @@ Visual Studio Team Services </a>
                                     </div>
                                 </a>
                             </li>
+                            <li>
+                                <a href="/azure/azure-netapp-files/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="/azure/azure-netapp-files/media/index/netapp.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure NetApp Files</h3>
+                                                    <p>NFS-Dateidienst auf Unternehmensniveau unterstützt von NetApp</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -3335,58 +3482,33 @@ Visual Studio Team Services </a>
                                     </div>
                                 </a>
                             </li>
-                            <li class="fullSpan">
-                                <h2 style="margin-top:24px;margin-bottom:18px;">Cognitive Services-APIs</h2>
+                            <!--li class="fullSpan">
+                                <h2 style="margin-top:24px;margin-bottom:18px;">Cognitive Services APIs</h2>
                                 <ul id="cognitive-services" class="cardsL panelContent singlePanelContent" style="display:flex!important;">
                                     <li>
                                         <div class="cardSize">
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3>Bildanalyse</h3>
+                                                        <h3>Vision</h3>
                                                         <ul class="noBullet">
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/computer-vision/"><img src="media/index/API_Computer_Vision.svg" alt="" />Maschinelles Sehen-API</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/computer-vision/"><img src="media/index/API_Computer_Vision.svg" alt="" />Computer Vision API</a>
                                                             </li>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/content-moderator/overview"><img src="media/index/API_Content_Moderator.svg" alt="" />Content Moderator</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/Custom-Vision-Service/home"><img src="media/index/API_Custom_Vision.svg" alt="" /><span>Custom Vision Service&nbsp;<sup style="font-size:70%">VORSCHAUVERSION</sup></span></a>
+                                                                <a class="barLink" href="/azure/cognitive-services/Custom-Vision-Service/home"><img src="media/index/API_Custom_Vision.svg" alt="" /><span>Custom Vision Service&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/emotion/home"><img src="media/index/API_Emotion.svg" alt="" /><span>Emotionen-API&nbsp;<sup style="font-size:70%">VORSCHAUVERSION</sup></span></a>
+                                                                <a class="barLink" href="/azure/cognitive-services/emotion/home"><img src="media/index/API_Emotion.svg" alt="" /><span>Emotion API&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/face/"><img src="media/index/API_Face.svg" alt="" />Gesichtserkennungs-API</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/face/"><img src="media/index/API_Face.svg" alt="" />Face API</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/video-indexer/video-indexer-overview"><img src="media/index/API_VideoIndexer.svg" alt="" /><span>Video Indexer&nbsp;<sup style="font-size:70%">VORSCHAUVERSION</sup></span></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="cardSize">
-                                            <div class="cardPadding">
-                                                <div class="card">
-                                                    <div class="cardText">
-                                                        <h3>Spracheingabe</h3>
-                                                        <ul class="noBullet">
-                                                            <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/speech/home"><img src="media/index/API_Bing_Speech.svg" alt="" />Bing-Spracheingabe-API</a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home"><img src="media/index/API_Custom_Speech.svg" alt="" /><span>Custom Speech Service&nbsp;<sup style="font-size:70%">VORSCHAUVERSION</sup></span></a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/speaker-recognition/home"><img src="media/index/API_Speaker_Recognition.svg" alt="" /><span>Sprechererkennungs-API&nbsp;<sup style="font-size:70%">VORSCHAUVERSION</sup></span></a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="barLink" href="https://docs.microsofttranslator.com/speech-translate.html"><img src="media/index/API_TranslatorSpeech.svg" alt="" />Sprachübersetzungs-API</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/video-indexer/video-indexer-overview"><img src="media/index/API_VideoIndexer.svg" alt="" /><span>Video Indexer&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -3399,25 +3521,19 @@ Visual Studio Team Services </a>
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3>Sprache</h3>
+                                                        <h3>Speech</h3>
                                                         <ul class="noBullet">
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-spell-check/"><img src="media/index/API_Bing_Spell_Check.svg" alt="" />Bing-Rechtschreibprüfungs-API</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/speech/home"><img src="media/index/API_Bing_Speech.svg" alt="" />Bing Speech API</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/luis/"><img src="media/index/API_Luis.svg" alt="" /><span>Sprachverständnis (LUIS)</span></a>
+                                                                <a class="barLink" href="/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home"><img src="media/index/API_Custom_Speech.svg" alt="" /><span>Custom Speech Service&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/linguisticanalysisapi/home"><img src="media/index/API_LinguisticAnalysis.svg" alt="" /><span>API für linguistische Analyse&nbsp;<sup style="font-size:70%">VORSCHAUVERSION</sup></span></a>
+                                                                <a class="barLink" href="/azure/cognitive-services/speaker-recognition/home"><img src="media/index/API_Speaker_Recognition.svg" alt="" /><span>Speaker Recognition API&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/text-analytics/"><img src="media/index/API_TextAnalytics.svg" alt="" />Textanalyse-API</a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/translator/translator-info-overview"><img src="media/index/API_TranslatorText.svg" alt="" />Textübersetzungs-API</a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/web-language-model/home"><img src="media/index/API_WebLanguageModel.svg" alt="" /><span>Websprachmodell-API&nbsp;<sup style="font-size:70%">VORSCHAUVERSION</sup></span></a>
+                                                                <a class="barLink" href="https://docs.microsofttranslator.com/speech-translate.html"><img src="media/index/API_TranslatorSpeech.svg" alt="" />Translator Speech API</a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -3430,16 +3546,47 @@ Visual Studio Team Services </a>
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3>Einblicke und Wissen</h3>
+                                                        <h3>Language</h3>
                                                         <ul class="noBullet">
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/custom-decision-service/custom-decision-service-overview"><img src="media/index/API_Custom_Decision_Service.svg" alt="" /><span>Custom Decision Service&nbsp;<sup style="font-size:70%">VORSCHAUVERSION</sup></span></a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-spell-check/"><img src="media/index/API_Bing_Spell_Check.svg" alt="" />Bing Spell Check API</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/qnamaker/home"><img src="media/index/API_QnAMaker.svg" alt="" /><span>QnA Maker-API&nbsp;<sup style="font-size:70%">VORSCHAUVERSION</sup></span></a>
+                                                                <a class="barLink" href="/azure/cognitive-services/luis/"><img src="media/index/API_Luis.svg" alt="" /><span>Language Understanding (LUIS)</span></a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/recommendations/overview"><img src="media/index/API_Recommendations.svg" alt="" /><span>Empfehlungs-API&nbsp;<sup style="font-size:70%">VORSCHAUVERSION</sup></span></a>
+                                                                <a class="barLink" href="/azure/cognitive-services/linguisticanalysisapi/home"><img src="media/index/API_LinguisticAnalysis.svg" alt="" /><span>Linguistic Analysis API&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="barLink" href="/azure/cognitive-services/text-analytics/"><img src="media/index/API_TextAnalytics.svg" alt="" />Text Analytics API</a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="barLink" href="/azure/cognitive-services/translator/translator-info-overview"><img src="media/index/API_TranslatorText.svg" alt="" />Translator Text API</a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="barLink" href="/azure/cognitive-services/web-language-model/home"><img src="media/index/API_WebLanguageModel.svg" alt="" /><span>Web Language Model API&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="cardSize">
+                                            <div class="cardPadding">
+                                                <div class="card">
+                                                    <div class="cardText">
+                                                        <h3>Knowledge</h3>
+                                                        <ul class="noBullet">
+                                                            <li>
+                                                                <a class="barLink" href="/azure/cognitive-services/custom-decision-service/custom-decision-service-overview"><img src="media/index/API_Custom_Decision_Service.svg" alt="" /><span>Custom Decision Service&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="barLink" href="/azure/cognitive-services/qnamaker/home"><img src="media/index/API_QnAMaker.svg" alt="" /><span>QnA Maker API&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="barLink" href="/azure/cognitive-services/recommendations/overview"><img src="media/index/API_Recommendations.svg" alt="" /><span>Recommendations API&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a>
                                                             </li>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/kes/overview">
@@ -3450,42 +3597,39 @@ Visual Studio Team Services </a>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/academic-knowledge/home">
                                                                     <img src="media/index/API_Know_Academic.svg" alt="" />
-                                                                    <span>Academic Knowledge-API</span>
+                                                                    <span>Academic Knowledge API</span>
                                                                 </a>
                                                             </li>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/entitylinking/home">
                                                                     <img src="media/index/API_Entity_LinkingIntelligence.svg" alt="" />
-                                                                    <span>API für den Entity Linking-Analysedienst</span>
+                                                                    <span>Entity Linking Intelligence Service API</span>
                                                                 </a>
                                                             </li>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/labs/url-preview/overview">
                                                                     <img src="media/index/API_URL_Preview.svg" alt="" />
-                                                                    <span>URL-Vorschau</span>
+                                                                    <span>URL Preview</span>
                                                                 </a>
                                                             </li>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/labs/answer-search/overview">
                                                                     <img src="media/index/API_Answer_Search.svg" alt="" />
-                                                                    <span>Suche nach Antworten</span>
+                                                                    <span>Answer Search</span>
                                                                 </a>
                                                             </li>
-
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/labs/anomaly-finder/overview">
                                                                     <img src="media/index/API_Anomaly_Finder.svg" alt="" />
-                                                                    <span>Suche nach Anomalien</span>
+                                                                    <span>Anomaly Finder</span>
                                                                 </a>
                                                             </li>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/labs/conversation-learner/overview">
                                                                     <img src="media/index/API_Conversation_Learner.svg" alt="" />
-                                                                    <span>Unterhaltungslernmodul</span>
+                                                                    <span>Conversation Learner</span>
                                                                 </a>
                                                             </li>
-
-
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -3497,31 +3641,32 @@ Visual Studio Team Services </a>
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3>Suchen,</h3>
+                                                        <h3>Search</h3>
                                                         <ul class="noBullet">
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-news-search/search-the-web"><img src="media/index/API_Bing_News_Search.svg" alt="" />Bing-News-Suche-API</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-news-search/search-the-web"><img src="media/index/API_Bing_News_Search.svg" alt="" />Bing News Search API</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/Bing-Video-Search/"><img src="media/index/API_Bing_Video_Search.svg" alt="" />Bing-Videosuche-API</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/Bing-Video-Search/"><img src="media/index/API_Bing_Video_Search.svg" alt="" />Bing Video Search API</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-web-search/"><img src="media/index/API_Bing_Web_Search.svg" alt="" />Bing-Websuche-API</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-web-search/"><img src="media/index/API_Bing_Web_Search.svg" alt="" />Bing Web Search API</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-visual-search/"><img src="media/index/API_Bing_Visual_Search.svg" alt="" />API für die visuelle Bing-Suche</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-visual-search/"><img src="media/index/API_Bing_Visual_Search.svg" alt="" />Bing Visual Search API
+                                                                </a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/Bing-Autosuggest"><img src="media/index/API_Bing_AutoSuggest.svg" alt="" />Bing-Vorschlagssuche-API</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/Bing-Autosuggest"><img src="media/index/API_Bing_AutoSuggest.svg" alt="" />Bing Autosuggest API</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-custom-search"><img src="media/index/API_Bing_Custom_Search.svg" alt="" />API für die benutzerdefinierte Bing-Suche</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-custom-search"><img src="media/index/API_Bing_Custom_Search.svg" alt="" />Bing Custom Search API</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-entities-search/"><img src="media/index/API_Bing_Entity_Search.svg" alt="" />Bing-Entitätssuche-API</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-entities-search/"><img src="media/index/API_Bing_Entity_Search.svg" alt="" />Bing Entity Search API</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-image-search"><img src="media/index/API_Bing_Image_Search.svg" alt="" />Bing-Bildersuche-API</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-image-search"><img src="media/index/API_Bing_Image_Search.svg" alt="" />Bing Image Search API</a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -3530,7 +3675,7 @@ Visual Studio Team Services </a>
                                         </div>
                                     </li>
                                 </ul>
-                            </li>
+                            </li-->
                         </ul>
                     </li>
                     <li>
@@ -3581,7 +3726,7 @@ Visual Studio Team Services </a>
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/IOT_edge_50.svg" alt="" />
+                                                        <img src="media/index/iot-edge-alt.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -3600,7 +3745,7 @@ Visual Studio Team Services </a>
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/IoTCentralBlue.svg" alt="" />
+                                                        <img src="media/index/iot-central.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -3619,7 +3764,7 @@ Visual Studio Team Services </a>
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/iot-suite.svg" alt="" />
+                                                        <img src="media/index/iot-solution-accelerators.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -3676,7 +3821,7 @@ Visual Studio Team Services </a>
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/azure-lbs-icon.svg" alt="" />
+                                                        <img src="media/index/azure-maps-icon-portal.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -4286,6 +4431,25 @@ Visual Studio Team Services </a>
                                                 <div class="cardText">
                                                     <h3>VPN Gateway</h3>
                                                     <p>Einrichten von sicheren, standortübergreifenden Verbindungen</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/role-based-access-control/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/PersonWithFriend.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Rollenbasierte Zugriffssteuerung</h3>
+                                                    <p>Verwalten des Zugriffs auf Azure-Ressourcen</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -5394,7 +5558,7 @@ Azure für Java-Entwickler </h3>
                                                     <a href="/java/azure">Erste Schritte</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/java/api/overview/azure">API-Referenz</a>
+                                                    <a href="/java/api">API-Referenz</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -5545,7 +5709,7 @@ Docker </h3>
                                                     <a href="/aspnet/core/host-and-deploy/docker/visual-studio-tools-for-docker">Visual Studio-Tools für Docker</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780680">Herunterladen für Visual Studio</a>
+                                                    <a href="https://www.visualstudio.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017">Herunterladen für Visual Studio</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://go.microsoft.com/fwlink/?LinkId=780681">Herunterladen für Visual Studio Code</a>
@@ -5689,6 +5853,60 @@ Service Fabric-SDK und -Tools </h3>
                                                 </p>
                                                 <p>
                                                     <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-cli">Herunterladen der Service Fabric-Befehlszeilenschnittstelle </a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cardSize">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardImageOuter">
+                                                <div class="cardImage">
+                                                    <img src="https://docs.microsoft.com/media/common/i_tools.svg" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="cardText">
+                                                <h3>
+Datenmigrationstools </h3>
+                                                <p>
+                                                    <a href="https://aka.ms/dma">Datenmigrations-Assistent (DMA)</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://aka.ms/ssma">SQL Server Migration Assistant (SSMA)</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://aka.ms/dea-tool">Assistent für Datenbankexperimente (DEA)</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li> <li>
+                                <div class="cardSize">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardImageOuter">
+                                                <div class="cardImage">
+                                                    <img src="media/index/AzureDevSpaceController_50x.svg" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="cardText">
+                                                <h3>
+Azure Dev Spaces </h3>
+                                                <p>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/azure-dev-spaces">Erste Schritte</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-netcore">Download für .NET Core und VS Code</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-netcore-visualstudio">Download für .NET Core und Visual Studio</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-nodejs">Download für Node.js</a>
                                                 </p>
                                             </div>
                                         </div>

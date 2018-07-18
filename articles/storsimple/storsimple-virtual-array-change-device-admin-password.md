@@ -1,11 +1,11 @@
 ---
-title: "Ändern des Geräteadministratorkennworts für das StorSimple Virtual Array | Microsoft-Dokumentation"
-description: "Hier wird beschrieben, wie Sie das Azure-Portal oder die StorSimple Virtual Array-Webbenutzeroberfläche verwenden können, um das Geräteadministratorkennwort zu ändern."
+title: Ändern des Geräteadministratorkennworts für das StorSimple Virtual Array | Microsoft-Dokumentation
+description: Hier wird beschrieben, wie Sie das Azure-Portal oder die StorSimple Virtual Array-Webbenutzeroberfläche verwenden können, um das Geräteadministratorkennwort zu ändern.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 11490814-d9fd-4dc7-9c3b-55dd2c23eaf1
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109428"
 ---
 # <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>Ändern des StorSimple Virtual Array-Geräteadministratorkennworts mit dem StorSimple-Geräte-Manager
 

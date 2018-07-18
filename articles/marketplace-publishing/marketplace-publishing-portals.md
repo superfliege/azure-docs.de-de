@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29938643"
 ---
 # <a name="portals-you-will-need"></a>Portale, die Sie benötigen
 Bevor Sie mit der Veröffentlichung eines Angebots beginnen, sollten Sie sich mit den verschiedenen Portalen vertraut machen, die Sie dazu benötigen. Im Anschluss folgt eine kurze Zusammenfassung der Portale (Developer Center, Azure-Veröffentlichungsportal und Azure-Portal) in der Reihenfolge, in der Sie mit ihnen interagieren.                                                                            

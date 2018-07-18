@@ -4,29 +4,29 @@ description: Vorgehensweise zum Installieren von SAP HANA in Azure (große Insta
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/01/2016
+ms.date: 06/27/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 768d9c31cdf019bf73a9d3b3a239c537c72725f6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 178102990462235b9b39f2ed1ad0e43395118daf
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778595"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064336"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Installieren und Konfigurieren von SAP HANA in Azure (große Instanzen)
 
 Hier sind einige wichtige Definitionen angegeben, die Sie kennen sollten, bevor Sie diesen Leitfaden lesen. In [Übersicht und Architektur von SAP HANA in Azure (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) wurden zwei unterschiedliche Klassen von HANA-Einheiten (große Instanzen) eingeführt:
 
-- S72, S72m, S144, S144m, S192 und S192m, die wir als „Typ I“-Klassen von SKUs bezeichnen.
-- S384, S384m, S384xm, S576m, S768m und S960m, die wir als „Typ II-Klasse“ von SKUs bezeichnen.
+- S72, S72m, S144, S144m, S192, S192m und S192xm, die wir als „Typ I“-Klassen von SKUs bezeichnen.
+- S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm und S960m, die wir als „Typ II-Klasse“ von SKUs bezeichnen.
 
 Der Klassenspezifizierer wird in der gesamten Dokumentation zu HANA (große Instanzen) verwendet, um auf unterschiedliche Funktionen und Anforderungen basierend auf SKUs für HANA (große Instanzen) zu verweisen.
 
@@ -44,7 +44,7 @@ Führen Sie unter [SAP Support Note #2235581 - SAP HANA: Supported Operating Sys
 
 ## <a name="first-steps-after-receiving-the-hana-large-instance-units"></a>Erste Schritte nach dem Empfang der SAP HANA (große Instanzen)-Einheit(en)
 
-Der **erste Schritt** nach dem Empfang der Einheiten von SAP HANA (große Instanzen) und der Einrichtung des entsprechenden Zugriffs und der Verbindung besteht darin, das Betriebssystem der Instanz bei Ihrem Betriebssystemanbieter zu registrieren. Zu diesem Schritt gehört das Registrieren Ihres SUSE Linux-Betriebssystems in einer Instanz von SUSE SMT, die Sie auf einer VM in Azure bereitstellen müssen. Für die Einheit von HANA (große Instanzen) kann eine Verbindung mit dieser SMT-Instanz hergestellt werden (siehe weiter unten in dieser Dokumentation). Alternativ muss Ihr RedHat-Betriebssystem bei dem Red Hat Subscription Manager registriert werden, mit dem eine Verbindung herstellen müssen. Lesen Sie auch die Anmerkungen in diesem [Dokument](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Dieser Schritt ist auch erforderlich, damit das Betriebssystem gepatcht werden kann. Eine Aufgabe, die in der Verantwortung des Kunden liegt. Die Dokumentation zum Installieren und Konfigurieren von SMT für SUSE finden Sie [hier](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html).
+Der **erste Schritt** nach dem Empfang der Einheiten von SAP HANA (große Instanzen) und der Einrichtung des entsprechenden Zugriffs und der Verbindung besteht darin, das Betriebssystem der Instanz bei Ihrem Betriebssystemanbieter zu registrieren. Zu diesem Schritt gehört das Registrieren Ihres SUSE Linux-Betriebssystems in einer Instanz von SUSE SMT, die Sie auf einer VM in Azure bereitstellen müssen. Für die Einheit von HANA (große Instanzen) kann eine Verbindung mit dieser SMT-Instanz hergestellt werden (siehe weiter unten in dieser Dokumentation). Alternativ muss Ihr Red Hat-Betriebssystem beim Red Hat Subscription Manager registriert werden, mit dem Sie eine Verbindung herstellen müssen. Lesen Sie auch die Anmerkungen in diesem [Dokument](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Dieser Schritt ist auch erforderlich, damit das Betriebssystem gepatcht werden kann. Eine Aufgabe, die in der Verantwortung des Kunden liegt. Die Dokumentation zum Installieren und Konfigurieren von SMT für SUSE finden Sie [hier](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html).
 
 Der **zweite Schritt** besteht darin, nach neuen Patches und Fixes der speziellen Betriebssystemversion zu suchen. Überprüfen Sie, ob die Patchebene der SAP HANA (große Instanz) den neuesten Stand hat. Je nach Zeitplanung der Betriebssystempatches/-versionen und Änderungen am Image, das Microsoft bereitstellen kann, gibt es unter Umständen Fälle, in denen die neuesten Patches nicht enthalten sind. Daher muss, nachdem eine Einheit von SAP HANA (große Instanzen) übernommen wurde, geprüft werden, ob der jeweilige Linux-Anbieter in der Zwischenzeit Patches freigegeben hat, die für die Sicherheit, Funktionalität, Verfügbarkeit und Leistung relevant sind und angewendet werden müssen.
 
@@ -80,18 +80,7 @@ Es wird davon ausgegangen, dass Sie beim Entwerfen Ihrer Azure-VNets und Verbind
 
 Es gibt einige Details, die zu dem Netzwerkbetrieb der einzelnen Einheiten bekannt sein sollten. Jede HANA (große Instanzen)-Einheit wird mit zwei oder drei IP-Adressen geliefert, die zwei oder drei Netzwerkkartenports der Einheit zugewiesen sind. Drei IP-Adressen werden in horizontal skalierten HANA-Konfigurationen und im Szenario für HANA-Systemreplikation verwendet. Eine der IP-Adressen, die der Netzwerkkarte der Einheit zugewiesen sind, stammt aus dem Server-IP-Pool, der in [Übersicht und Architektur von SAP HANA in Azure (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) beschrieben ist.
 
-Die Verteilung für Einheiten mit zwei zugewiesenen IP-Adressen sollte wie folgt aussehen:
-
-- „eth0.xx“ muss eine zugewiesene IP-Adresse haben, die aus dem Server-IP-Pool-Adressbereich stammt, den Sie an Microsoft übermittelt haben. Diese IP-Adresse muss zur Verwaltung in „/etc/hosts“ des Betriebssystems verwendet werden.
-- „eth1.xx“ muss eine zugewiesene IP-Adresse haben, die für die Kommunikation mit NFS verwendet wird. Daher muss diese Adresse **NICHT** in „etc/hosts“ verwaltet werden, um Instanz-zu-Instanz-Datenverkehr im Mandanten zu ermöglichen.
-
-Für Bereitstellungsfälle von HANA-Systemreplikation oder horizontal skaliertem HANA ist eine Bladekonfiguration mit zwei IP-Adressen nicht geeignet. Wenn Sie nur zwei zugewiesene IP-Adressen haben, aber eine solche Konfiguration bereitstellen möchten, wenden Sie sich an das SAP HANA in Azure-Dienstverwaltungsteam, um eine dritte IP-Adresse zu erhalten, die in einem dritten VLAN zugewiesen ist. Für Einheiten von HANA (große Instanzen) mit drei zugewiesenen IP-Adressen auf drei Netzwerkkartenports gelten die folgenden Verwendungsregeln:
-
-- „eth0.xx“ muss eine zugewiesene IP-Adresse haben, die aus dem Server-IP-Pool-Adressbereich stammt, den Sie an Microsoft übermittelt haben. Daher darf diese IP-Adresse nicht zur Verwaltung in „/etc/hosts“ des Betriebssystems verwendet werden.
-- „eth1.xx“ muss eine zugewiesene IP-Adresse haben, die für die Kommunikation mit NFS-Speicher verwendet wird. Daher darf dieser Typ von Adressen nicht in „etc/hosts“ verwaltet werden.
-- „eth2.xx“ muss ausschließlich verwendet werden, um in „etc/hosts“ für die Kommunikation zwischen den verschiedenen Instanzen verwaltet zu werden. Diese Adressen wären auch die IP-Adressen, die in horizontal skalierten HANA-Konfigurationen als IP-Adressen verwaltet werden müssen, die HANA für die Konfiguration zwischen Knoten verwendet.
-
-
+Ethernet-Details für Ihre Architektur finden Sie unter [Unterstützte HLI-Szenarien](hana-supported-scenario.md).
 
 ## <a name="storage"></a>Speicher
 
@@ -111,7 +100,7 @@ SID = System-ID der HANA-Instanz
 
 tenant = interne Enumeration von Vorgängen beim Bereitstellen eines Mandanten
 
-Sie sehen, dass für die HANA-Freigabe und „usr/sap“ dasselbe Volume verwendet wird. Die Nomenklatur der Bereitstellungspunkte enthält sowohl die System-ID der HANA-Instanzen als auch die Bereitstellungsnummer. Bei Bereitstellungen für zentrales Skalieren ist nur eine Bereitstellung (Mount) vorhanden, z.B. „mnt00001“. Bei der Bereitstellung für horizontales Skalieren werden so viele „Mounts“ verwendet, wie Worker und Masterknoten vorhanden sind. Für die Umgebung für horizontales Skalieren werden Daten-, Protokoll- und Protokollsicherungsvolumes gemeinsam genutzt und jeweils an die Knoten der Konfiguration für horizontales Skalieren angefügt. Für Konfigurationen mit mehreren SAP-Instanzen wird ein anderer Satz mit Volumes erstellt und an die Einheit von HANA (große Instanzen) angefügt.
+Sie sehen, dass für die HANA-Freigabe und „usr/sap“ dasselbe Volume verwendet wird. Die Nomenklatur der Bereitstellungspunkte enthält sowohl die System-ID der HANA-Instanzen als auch die Bereitstellungsnummer. Bei Bereitstellungen für zentrales Skalieren ist nur eine Bereitstellung (Mount) vorhanden, z.B. „mnt00001“. Bei der Bereitstellung für horizontales Skalieren werden so viele „Mounts“ verwendet, wie Worker und Masterknoten vorhanden sind. Für die Umgebung für horizontales Skalieren werden Daten-, Protokoll- und Protokollsicherungsvolumes gemeinsam genutzt und jeweils an die Knoten der Konfiguration für horizontales Skalieren angefügt. Für Konfigurationen mit mehreren SAP-Instanzen wird ein anderer Satz mit Volumes erstellt und an die Einheit von HANA (große Instanzen) angefügt. Speicherlayoutdetails für Ihr Szenario finden Sie unter [Unterstützte HLI-Szenarien](hana-supported-scenario.md).
 
 Während Sie das Dokument lesen und sich eine Einheit von HANA (große Instanzen) ansehen, werden Sie feststellen, dass die Einheiten mit einem ziemlich großzügigen Datenträgervolume für „HANA/data“ bereitgestellt werden und dass es das Volume „HANA/log/backup“ gibt. Wir haben „HANA/data“ so großzügig dimensioniert, weil für die Speichermomentaufnahmen, die Ihnen als Kunde angeboten werden, dasselbe Datenträgervolume verwendet wird. Dies bedeutet Folgendes: Je mehr Speichermomentaufnahmen Sie erstellen, desto mehr Speicherplatz wird von Momentaufnahmen in Ihren zugewiesenen Speichervolumes verbraucht. Das Volume „HANA/log/backup“ ist nicht für die Speicherung von Datenbanksicherungen vorgesehen. Seine Größe ist so ausgelegt, dass es als Sicherungsvolume für Sicherungen von HANA-Transaktionsprotokollen verwendet werden kann. Für zukünftige Versionen des Speichermomentaufnahmen-Self-Service ist für dieses spezielle Volume geplant, häufigere Momentaufnahmen zu verwenden. Hieraus ergeben sich auch häufigere Replikationen zum Notfallwiederherstellungsstandort, wenn Sie die Notfallwiederherstellungsfunktionalität nutzen möchten, die von der HANA (große Instanzen)-Infrastruktur bereitgestellt wird. Ausführlichere Informationen finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
@@ -150,6 +139,7 @@ Sie können die Parameter auch nach der Installation der SAP HANA-Datenbank konf
 
 Seit SAP HANA Version 2.0 ist das hdbparam-Framework veraltet. Daher müssen die Parameter nun über SQL-Befehle festgelegt werden. Ausführliche Informationen finden Sie in [SAP Note #2399079: Elimination of hdbparam in HANA 2](https://launchpad.support.sap.com/#/notes/2399079).
 
+Informationen zum Speicherlayout für Ihre Architektur finden Sie unter [Unterstützte HLI-Szenarien](hana-supported-scenario.md).
 
 ## <a name="operating-system"></a>Betriebssystem
 

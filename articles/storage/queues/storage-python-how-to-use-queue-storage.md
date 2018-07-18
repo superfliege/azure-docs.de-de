@@ -1,6 +1,6 @@
 ---
 title: Verwenden des Warteschlangenspeichers mit Python | Microsoft Docs
-description: "Erfahren Sie, wie Sie mit dem Azure-Warteschlangendienst mit Python Warteschlangen erstellen und löschen sowie Nachrichten einfügen, abrufen und löschen können."
+description: Erfahren Sie, wie Sie mit dem Azure-Warteschlangendienst mit Python Warteschlangen erstellen und löschen sowie Nachrichten einfügen, abrufen und löschen können.
 services: storage
 documentationcenter: python
 author: tamram
@@ -15,10 +15,11 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
 ms.openlocfilehash: c7976c01436b1c30880bfd4c57cb97f72a4f48b0
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38606689"
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>Verwenden des Warteschlangenspeichers mit Python
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

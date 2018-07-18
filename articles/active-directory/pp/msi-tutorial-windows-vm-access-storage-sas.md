@@ -1,8 +1,8 @@
 ---
-title: "Verwenden einer Windows-VM-MSI für den Zugriff auf Azure Storage mit SAS-Anmeldeinformationen"
-description: "Dieses Tutorial veranschaulicht, wie Sie mit einer Windows-VM-MSI (Managed Service Identität, verwaltete Dienstidentität) auf Azure Storage zugreifen und dabei SAS-Anmeldeinformationen anstelle des Zugriffsschlüssels eines Speicherkontos verwenden."
+title: Verwenden einer Windows-VM-MSI für den Zugriff auf Azure Storage mit SAS-Anmeldeinformationen
+description: Dieses Tutorial veranschaulicht, wie Sie mit einer Windows-VM-MSI (Managed Service Identität, verwaltete Dienstidentität) auf Azure Storage zugreifen und dabei SAS-Anmeldeinformationen anstelle des Zugriffsschlüssels eines Speicherkontos verwenden.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -15,10 +15,11 @@ ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 9102ea255e533e4233b2cba77a6f7f38b992e2a5
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38610401"
 ---
 # <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Verwenden einer Windows-VM-MSI für den Zugriff auf Azure Storage mithilfe von SAS-Anmeldeinformationen
 

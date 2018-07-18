@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/27/2018
+ms.date: 05/29/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 20bcb822ff39b9587a479fd6cc43b7daa9b83627
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 807af10c0655d9d1728a80a47d1f8f9c2a16fb84
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32190678"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34654282"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Installieren von NVIDIA GPU-Treibern für virtuelle Computer der Serie N mit Linux
 
@@ -31,7 +31,7 @@ Informationen zu Spezifikationen von virtuellen Computern der N-Serie, Speicherk
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
 
-## <a name="install-cuda-drivers-for-nc-ncv2-ncv3-and-nd-series-vms"></a>Installieren von CUDA-Treibern für virtuelle Computer der NC-, NCv2-, NCv3- und ND-Serie
+## <a name="install-cuda-drivers-on-n-series-vms"></a>Installieren von CUDA-Treibern für virtuelle Computer der N-Serie
 
 Hier werden Schritte zum Installieren von CUDA-Treibern auf virtuellen Computern der N-Serie über das NVIDIA CUDA Toolkit beschrieben. 
 
@@ -156,7 +156,7 @@ Wenn der Treiber installiert wurde, wird eine Ausgabe ähnlich der folgenden ang
 
 ## <a name="rdma-network-connectivity"></a>RDMA-Netzwerkkonnektivität
 
-RDMA-Netzwerkkonnektivität kann auf virtuellen Computern der N-Serie (z.B. NC24r) aktiviert werden, die RDMA-fähig sind und in derselben Verfügbarkeitsgruppe bzw. VM-Skalierungsgruppe bereitgestellt werden. Das RDMA-Netzwerk unterstützt Message Passing Interface-Datenverkehr (MPI) für Anwendungen mit Intel MPI 5.x oder einer höheren Version. Nachfolgend werden weitere Anforderungen aufgeführt:
+RDMA-Netzwerkkonnektivität kann auf virtuellen Computern der N-Serie (z. B. NC24r) aktiviert werden, die RDMA-fähig sind und in derselben Verfügbarkeitsgruppe bzw. in einer einzelnen Platzierungsgruppe in einer VM-Skalierungsgruppe bereitgestellt werden. Das RDMA-Netzwerk unterstützt Message Passing Interface-Datenverkehr (MPI) für Anwendungen mit Intel MPI 5.x oder einer höheren Version. Nachfolgend werden weitere Anforderungen aufgeführt:
 
 ### <a name="distributions"></a>Verteilungen
 
@@ -168,7 +168,7 @@ Stellen Sie RDMA-fähige VMs der N-Serie über eines der Images aus dem Azure Ma
 
 * **7.4 HPC (CentOS-basiert)**: Auf der VM sind RDMA-Treiber und Intel MPI 5.1 installiert.
 
-## <a name="install-grid-drivers-for-nv-series-vms"></a>Installieren von GRID-Treibern für virtuelle Computer der NV-Serie
+## <a name="install-grid-drivers-on-nv-series-vms"></a>Installieren von GRID-Treibern für virtuelle Computer der NV-Serie
 
 Stellen Sie zum Installieren von NVIDIA GRID-Treibern auf virtuellen Computern der NV-Serie eine SSH-Verbindung mit jedem virtuellen Computer her, und führen Sie die Schritte für Ihre Linux-Verteilung aus. 
 

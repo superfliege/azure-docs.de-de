@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33785979"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Übersicht über die Media Services Operations-REST-API
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]

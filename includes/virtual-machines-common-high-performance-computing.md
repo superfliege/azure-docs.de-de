@@ -5,14 +5,15 @@ services: virtual-machines-linux, virtual-machines-windows
 author: dlepow
 ms.service: multiple
 ms.topic: include
-ms.date: 05/11/2018
+ms.date: 07/02/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 32a438d393077cfe4cb7f6ee62f3a01edfce0571
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 496c32e70ad58f64b31c1f6fcf913884fcd4abc1
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37348234"
 ---
 Organisationen haben hohen Computing-Bedarf. Zu diesen Big Compute-Workloads zählen unter anderem technische Entwicklungen und Analysen, die Berechnung finanzieller Risiken, das Rendern von Bildern, komplexe Modelle sowie Monte Carlo-Simulationen. 
 
@@ -39,7 +40,7 @@ Verwenden Sie die Azure-Cloud, um rechenintensive Linux- und Windows-Workloads e
     * Führen Sie Azure-fähige Engineering -und Simulationslösungen verschiedener Anbieter aus, z.B. [Altair](http://www.altair.com/), [Rescale](https://www.rescale.com/azure/) und [Cycle Computing](https://cyclecomputing.com/) (jetzt [Teil von Microsoft](https://blogs.microsoft.com/blog/2017/08/15/microsoft-acquires-cycle-computing-accelerate-big-computing-cloud/)).
     * Verwenden Sie einen [Cray-Supercomputer](https://www.cray.com/solutions/supercomputing-as-a-service/cray-in-azure) als in Azure gehosteten Dienst.
 * **Marketplace-Lösungen**
-    * Nutzen Sie die vielen Möglichkeiten der [HPC-Anwendungen](#hpc-applications) und [Lösungen](#marketplace-solutions), die über den [Azure Marketplace](https://azuremarketplace.microsoft.com/) erhältlich sind. 
+    * Nutzen Sie die vielen Möglichkeiten der [HPC-Anwendungen](#hpc-applications) und [Lösungen](#marketplace-solutions), die über den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) erhältlich sind. 
     
 
 
@@ -63,7 +64,7 @@ Images und Lösungen für HPC-fähige virtuelle Linux- und Windows-Computer find
  
 ## <a name="hpc-applications"></a>HPC-Anwendungen
 
-Führen Sie benutzerdefinierte oder kommerzielle HPC-Anwendungen in Azure aus. Für mehrere Beispiele in diesem Abschnitt wurden Benchmarks erstellt, um eine effiziente Skalierung mit zusätzlichen virtuellen Computern oder Computekernen zu ermöglichen. Besuchen Sie den [Azure Marketplace](https://marketplace.azure.com), um auf Lösungen zuzugreifen, die sofort bereitgestellt werden können.
+Führen Sie benutzerdefinierte oder kommerzielle HPC-Anwendungen in Azure aus. Für mehrere Beispiele in diesem Abschnitt wurden Benchmarks erstellt, um eine effiziente Skalierung mit zusätzlichen virtuellen Computern oder Computekernen zu ermöglichen. Besuchen Sie den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace), um auf Lösungen zuzugreifen, die sofort bereitgestellt werden können.
 
 > [!NOTE]
 > Informieren Sie sich bei Verwendung kommerzieller Anwendungen beim jeweiligen Hersteller über lizenzbedingte oder anderweitige Einschränkungen für die Ausführung in der Cloud. Nicht alle Hersteller bieten ein nutzungsbasiertes Lizenzmodell an. Unter Umständen benötigen Sie für Ihre Lösung einen Lizenzserver in der Cloud oder eine Verbindung mit einem lokalen Lizenzserver.
@@ -195,6 +196,7 @@ Beispiele für Kunden, die mithilfe von Azure-HPC-Lösungen geschäftliche Probl
 * [Microsoft Research](https://customers.microsoft.com/doclink/fast-lmm-and-windows-azure-put-genetics-research-on-fa)
 * [Milliman](https://customers.microsoft.com/story/actuarial-firm-works-to-transform-insurance-industry-w)
 * [Mitsubishi UFJ Securities International](https://customers.microsoft.com/story/powering-risk-compute-grids-in-the-cloud)
+* [NeuroInitiative](https://customers.microsoft.com/en-us/story/neuroinitiative-health-provider-azure)
 * [Schlumberger](http://azure.microsoft.com/blog/big-compute-for-large-engineering-simulations)
 * [Towers Watson](https://customers.microsoft.com/story/insurance-tech-provider-delivers-disruptive-solutions)
 

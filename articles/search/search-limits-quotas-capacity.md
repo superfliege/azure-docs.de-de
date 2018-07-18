@@ -7,14 +7,14 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/10/2018
+ms.date: 05/24/2018
 ms.author: heidist
-ms.openlocfilehash: 9fd046efd01281de6d5b46cca37d22a48671b1b2
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: c24cccde507873424e3c51d584f5cd094df2b876
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072588"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641168"
 ---
 # <a name="service-limits-in-azure-search"></a>Grenzwerte für den Azure Search-Dienst
 Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und anderen Objekten hängen davon ab, ob die [Bereitstellung von Azure Search](search-create-service-portal.md) im Tarif **Free**, **Basic** oder **Standard** erfolgt.
@@ -45,10 +45,13 @@ Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und a
 | -------- | ---- | ------------------- | --- | --- | --- | --- |
 | Maximale Anzahl von Indizes |3 |5 oder 15 |50 |200 |200 |1000 pro Partition oder 3000 pro Dienst |
 | Maximale Anzahl von Feldern pro Index |1000 |100 |1000 |1000 |1000 |1000 |
-| Maximale Anzahl von Bewertungsprofilen pro Index |100 |100 |100 |100 |100 |100 |
+| Maximale Anzahl von [Vorschlägen](https://docs.microsoft.com/rest/api/searchservice/suggesters) pro Index |1 |1 |1 |1 |1 |1 |
+| Maximale Anzahl von [Bewertungsprofilen](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) pro Index |100 |100 |100 |100 |100 |100 |
 | Maximale Anzahl von Funktionen pro Profil |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> Bei Diensten mit dem Tarif „Basic“, die nach Ende 2017 erstellt wurden, wurde das Limit auf 15 Indizes, Datenquellen und Indexer erhöht. Für zuvor erstellte Dienste gilt eine Begrenzung auf 5. Der Basic-Tarif ist die einzige SKU mit einem unteren Grenzwert von 100 Feldern pro Index.
+
+<a name="document-limits"></a>
 
 ## <a name="document-limits"></a>Dokumentgrenzwerte 
 
@@ -90,13 +93,16 @@ Um die Dokumentgröße niedrig zu halten, achten Sie darauf, nicht abfragbare Da
 
 Bei Diensten mit dem Tarif „Basic“, die ab Ende 2017 erstellt wurden, wurde das Limit auf 15 Indizes, Datenquellen, Qualifikationsgruppen und Indexer erhöht.
 
+Ressourcenintensive Vorgänge wie Bildanalysen in der Azure-BLOB-Indizierung oder die Verarbeitung natürlicher Sprache in der kognitiven Suche weisen eine kürzere maximale Ausführungsdauer auf, sodass weitere Indizierungsaufträge bewältigt werden können. Wenn ein Indizierungsauftrag nicht innerhalb der maximal zulässigen Zeit abgeschlossen werden kann, versuchen Sie, den Auftrag nach einem Zeitplan auszuführen. Der Planer verfolgt den Indizierungsstatus. Wenn ein geplanter Indizierungsauftrag aus irgendeinem Grund unterbrochen wird, kann der Indexer den Auftrag bei der nächsten geplanten Ausführung an der Stelle fortsetzen, an der er unterbrochen wurde.
+
 | Ressource | Free&nbsp;<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- |
 | Maximale Anzahl von Indexern |3 |5 oder 15|50 |200 |200 |N/V |
 | Maximale Datenquellen |3 |5 oder 15 |50 |200 |200 |N/V |
-| Maximale Qualifikationsgruppen |3 |5 oder 15 |50 |200 |200 |N/V |
+| Maximale Qualifikationsgruppen <sup>4</sup> |3 |5 oder 15 |50 |200 |200 |N/V |
 | Maximale Indizierungslast pro Aufruf |10.000 Dokumente |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |N/V |
-| Maximale Ausführungszeit | 1–3 Minuten |24 Stunden |24 Stunden |24 Stunden |24 Stunden |N/V  |
+| Maximale Ausführungsdauer <sup>5</sup> | 1–3 Minuten |24 Stunden |24 Stunden |24 Stunden |24 Stunden |N/V  |
+| Maximale Ausführungsdauer für Qualifikationsgruppen der kognitiven Suche oder für die BLOB-Indizierung bei Bildanalysen <sup>5</sup> | 3 bis 10 Minuten |2 Stunden |2 Stunden |2 Stunden |2 Stunden |N/V  |
 | Blobindexer: maximale Blobgröße, MB |16 |16 |128 |256 |256 |N/V  |
 | Blobindexer: maximale Anzahl der Zeichen des aus einem Blob extrahierten Inhalts |32.000 |64.000 |4 Millionen |4 Millionen |4 Millionen |N/V |
 
@@ -105,6 +111,10 @@ Bei Diensten mit dem Tarif „Basic“, die ab Ende 2017 erstellt wurden, wurde 
 <sup>2</sup> Bei Diensten mit dem Tarif „Basic“, die nach Ende 2017 erstellt wurden, wurde das Limit auf 15 Indizes, Datenquellen und Indexer erhöht. Für zuvor erstellte Dienste gilt eine Begrenzung auf 5.
 
 <sup>3</sup> S3 HD-Dienste beinhalten keine Indexerunterstützung.
+
+<sup>4</sup> Maximal 30 Fähigkeiten pro Qualifikationsgruppe.
+
+<sup>5</sup> Workloads der kognitiven Suche und Bildanalysen in der Azure-BLOB-Indizierung weisen eine kürzere Ausführungsdauer auf als die normale Textindizierung. Bildanalysen und die Verarbeitung natürlicher Sprache sind rechenintensive Vorgänge, die unverhältnismäßig große Mengen an verfügbarer Verarbeitungskapazität verbrauchen. Die Ausführungsdauer wurde reduziert, damit andere Aufträge in der Warteschlange ausgeführt werden können.  
 
 ## <a name="queries-per-second-qps"></a>Abfragen pro Sekunde (QPS)
 
@@ -119,7 +129,7 @@ Schätzungen sind besser vorhersagbar, wenn sie für Dienste berechnet werden, d
 * Maximal 32 Felder in $orderby-Klausel
 * Maximale Suchbegriffgröße ist 32.766 Byte (32 KB minus 2 Bytes) von UTF-8-codiertem Text
 
-<sup>1</sup> In Azure Search darf der Inhalt einer Anforderung nicht größer als 16 MB sein. Dies beschränkt möglicherweise den Inhalt einzelner Felder oder Sammlungen, für die ansonsten keine theoretischen Beschränkungen gelten. (Weitere Informationen zur Feldzusammensetzung und den Beschränkungen finden Sie unter [Supported data types](https://msdn.microsoft.com/library/azure/dn798938.aspx) (Unterstützte Datentypen).)
+<sup>1</sup> In Azure Search darf der Inhalt einer Anforderung nicht größer als 16 MB sein. Dies beschränkt möglicherweise den Inhalt einzelner Felder oder Sammlungen, für die ansonsten keine theoretischen Beschränkungen gelten. (Weitere Informationen zur Feldzusammensetzung und den Beschränkungen finden Sie unter [Supported data types](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) (Unterstützte Datentypen).)
 
 ## <a name="api-response-limits"></a>API-Antwortengrenzwerte
 * Maximale Rückgabe von 1000 Dokumenten pro Seite mit Suchergebnissen

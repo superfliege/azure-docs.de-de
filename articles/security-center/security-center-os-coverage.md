@@ -1,24 +1,25 @@
 ---
-title: "Unterstützte Plattformen in Azure Security Center | Microsoft-Dokumentation"
-description: "Dieses Dokument enthält eine Liste mit Windows- und Linux-Betriebssystemen, die in Azure Security Center unterstützt werden."
+title: Unterstützte Plattformen in Azure Security Center | Microsoft-Dokumentation
+description: Dieses Dokument enthält eine Liste mit Windows- und Linux-Betriebssystemen, die in Azure Security Center unterstützt werden.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/15/2018
+ms.date: 06/22/2018
 ms.author: terrylan
-ms.openlocfilehash: 3b57cacec729bd2f2dd4acdbb9c15e69ab9f5c85
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 1bb0b61fe8a74edd35bb096fd295aedc67f6efb3
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335889"
 ---
 # <a name="supported-platforms-in-azure-security-center"></a>Unterstützte Plattformen in Azure Security Center
 Die Überwachung des Sicherheitsstatus und entsprechende Empfehlungen sind für virtuelle Computer (VMs), die mit dem klassischen Bereitstellungsmodell oder mit dem Resource Manager-Bereitstellungsmodell erstellt wurden, und für Computer verfügbar.
@@ -41,12 +42,14 @@ Unterstützte Windows-Betriebssysteme:
 ## <a name="supported-platforms-for-linux-computers-and-vms"></a>Unterstützte Plattformen für Linux-Computer und -VMs
 Unterstützte Linux-Betriebssysteme:
 
-* Ubuntu-Versionen 12.04, 14.04, 16.04, 16.10
-* Debian-Versionen 7, 8
-* CentOS-Versionen 6.\*, 7.*
-* Red Hat Enterprise Linux-Versionen (RHEL) 6.\*, 7.\*
-* SUSE Linux Enterprise Server-Versionen (SLES) 11 SP4+, 12.\*
-* Oracle Linux-Versionen 6.\*, 7.\*
+* Ubuntu-Versionen 12.04 LTS, 14.04 LTS, 16.04 LTS
+* Debian-Versionen 6, 7, 8, 9
+* CentOS-Versionen 5, 6, 7
+* Red Hat Enterprise Linux-Versionen (RHEL) 5, 6, 7
+* SUSE Linux Enterprise Server-Versionen (SLES) 11, 12
+* Oracle Linux-Versionen 5, 6, 7
+* Amazon Linux 2012.09 bis 2017
+* OpenSSL 1.1.0 wird nur auf x86_64-Plattformen (64-Bit) unterstützt.
 
 > [!NOTE]
 > Verhaltensanalysen für virtuelle Computer sind für Linux-Betriebssysteme noch nicht verfügbar.
@@ -59,6 +62,6 @@ VMs, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt.
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Planungs- und Betriebshandbuch für Azure Security Center:](security-center-planning-and-operations-guide.md) Hier erfahren Sie, wie Sie die Einführung von Azure Security Center planen, und Sie erhalten grundlegende Informationen zu Entwurfsaspekten.
-- [Security alerts by type in Azure Security Center (Sicherheitswarnungen nach Typ in Azure Security Center):](https://docs.microsoft.com/azure/security-center/security-center-alerts-type.md#virtual-machine-behavioral-analysis) Hier finden Sie Informationen zur Verhaltensanalyse bei virtuellen Computern und zur Absturzabbild-Speicheranalyse in Security Center.
+- [Security alerts by type in Azure Security Center (Sicherheitswarnungen nach Typ in Azure Security Center):](security-center-alerts-type.md#virtual-machine-behavioral-analysis) Hier finden Sie Informationen zur Verhaltensanalyse bei virtuellen Computern und zur Absturzabbild-Speicheranalyse in Security Center.
 - [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md) : Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 - [Azure Security Blog (Blog zur Azure-Sicherheit):](http://blogs.msdn.com/b/azuresecurity/) Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.

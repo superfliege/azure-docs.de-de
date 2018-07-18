@@ -1,5 +1,5 @@
 ---
-title: Zugriffssteuerungen beim bedingten Zugriff mit Azure Active Directory | Microsoft-Dokumentation
+title: Was sind die Zugriffssteuerungen beim bedingten Zugriff mit Azure Active Directory? | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Zugriffssteuerungen beim bedingten Zugriff mit Azure Active Directory funktionieren.
 services: active-directory
 keywords: bedingter Zugriff auf Apps, bedingter Zugriff mit Azure AD, sicherer Zugriff auf Unternehmensressourcen, Richtlinien für bedingten Zugriff
@@ -9,21 +9,22 @@ manager: mtillman
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/01/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 8271c4c88245e98fd3709c7279904d36ad009682
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: dc1e3fd3984d0ccbfb0565a3216ec907894e88ea
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32770722"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028947"
 ---
-# <a name="access-controls-in-azure-active-directory-conditional-access"></a>Zugriffssteuerungen beim bedingten Zugriff mit Azure Active Directory 
+# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Was sind die Zugriffssteuerungen beim bedingten Zugriff mit Azure Active Directory? 
 
 Mit dem [bedingten Zugriff von Azure Active Directory (Azure AD)](active-directory-conditional-access-azure-portal.md) können Sie den Zugriff von autorisierten Benutzern auf Ihre Cloud-Apps steuern. Bei einer Richtlinie für bedingten Zugriff definieren Sie die Reaktion („do this“) für den Grund der Auslösung Ihrer Richtlinie („when this happens“). 
 
@@ -76,7 +77,7 @@ Die mehrstufige Authentifizierung unterstützt den Schutz Ihrer Ressourcen vor d
 
 ### <a name="compliant-device"></a>Kompatibles Gerät
 
-Sie können die Richtlinien für den bedingten Zugriff auf Geräteebene festlegen. Das Ziel einer gerätebasierten Richtlinie für den bedingten Zugriff ist, den Zugriff auf die konfigurierten Ressourcen nur von [verwalteten Geräten](active-directory-conditional-access-policy-connected-applications.md#managed-devices) aus zuzulassen. Eine Möglichkeit, zu definieren, was ein verwaltetes Gerät ist, besteht darin, ein konformes Gerät vorauszusetzen. Wenn diese Option ausgewählt ist, gewährt die Richtlinie für bedingten Zugriff den Zugriff bei Zugriffsversuchen von Geräten, die bei Ihrem Azure Active Directory-Verzeichnis [registriert](device-management-introduction.md) und von Ihrer MDM-Lösung als konform gekennzeichnet sind.
+Sie können die Richtlinien für den bedingten Zugriff auf Geräteebene festlegen. Das Ziel einer gerätebasierten Richtlinie für den bedingten Zugriff ist, den Zugriff auf die konfigurierten Ressourcen nur von [verwalteten Geräten](active-directory-conditional-access-policy-connected-applications.md#managed-devices) aus zuzulassen. Eine Möglichkeit, zu definieren, was ein verwaltetes Gerät ist, besteht darin, ein konformes Gerät vorauszusetzen. Bei Verwendung dieser Option lässt die Richtlinie für bedingten Zugriff Zugriffsversuche mit Geräten zu, die bei Ihrem Azure Active Directory-Verzeichnis [registriert](device-management-introduction.md) und von Intune (für ein beliebiges Gerätebetriebssystem) oder von Ihrer MDM-Drittanbieterlösung als mit Windows 10-Geräten kompatibel gekennzeichnet sind. MDM-Systeme von Drittanbietern für andere Arten von Gerätebetriebssystemen als Windows 10 werden nicht unterstützt.
 
 Weitere Informationen finden Sie unter [Einrichten von Richtlinien für den gerätebasierten bedingten Zugriff für Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
 
@@ -172,6 +173,6 @@ Weitere Informationen zum Anfordern von eingeschränktem Zugriff mit SharePoint 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie wissen möchten, wie Sie eine Richtlinie für den bedingten Zugriff konfigurieren, helfen Ihnen die Informationen unter [Erste Schritte mit dem bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md) weiter.
+- Wenn Sie wissen möchten, wie Sie eine Richtlinie für den bedingten Zugriff konfigurieren, finden Sie Informationen unter [Schnellstart: Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](active-directory-conditional-access-app-based-mfa.md).
 
 - Wenn Sie bereit sind, Richtlinien für den bedingten Zugriff für Ihre Umgebung zu konfigurieren, lesen Sie unter [Best Practices für den bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-best-practices.md) nach. 

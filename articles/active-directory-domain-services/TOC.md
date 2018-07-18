@@ -1,4 +1,4 @@
-# [Dokumentation zu Azure AD Domain Services](index.md)
+# [Dokumentation zu Azure AD Domain Services](index.yml)
 
 # Übersicht
 ## [Was ist Azure AD Domain Services?](active-directory-ds-overview.md)
@@ -38,6 +38,7 @@
 #### [Aufgabe 3: Aktivieren von sicherem LDAP für die verwaltete Domäne über das Azure-Portal](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
 
 ### [Erstellen einer Organisationseinheit für eine verwaltete Domäne](active-directory-ds-admin-guide-create-ou.md)
+### [Erstellen eines gruppenverwalteten Dienstkontos in einer verwalteten Domäne](active-directory-ds-create-gmsa.md)
 ### [Verwalten von Gruppenrichtlinien für eine verwaltete Domäne](active-directory-ds-admin-guide-administer-group-policy.md)
 ## [Auswählen eines virtuellen Netzwerks](active-directory-ds-networking.md)
 ## Bereitstellen von Anwendungen
@@ -53,13 +54,14 @@
 #### [Wiederherstellen fehlender Dienstprinzipale](active-directory-ds-troubleshoot-service-principals.md)
 #### [Fehler im Zusammenhang mit Secure LDAP](active-directory-ds-troubleshoot-ldaps.md)
 ### [Beheben von Fehlern durch nicht übereinstimmende Mandanten](active-directory-ds-mismatched-tenant-error.md)
+### [Angehaltene Domänen](active-directory-ds-suspension.md)
 
 
 # Verweis
 ## [Codebeispiele](https://azure.microsoft.com/resources/samples/?service=active-directory)
 
 # Verwandte Themen
-## [Azure Active Directory](../active-directory/active-directory-whatis.md)
+## [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
 ## [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-overview.md)
 ## [Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)
 

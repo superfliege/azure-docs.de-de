@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines Azure Media Services-Kontos mithilfe der CLI 2.0 | Microsoft-Dokumentation'
+title: 'Schnellstart: Erstellen eines Azure Media Services-Kontos mithilfe von Azure CLI | Microsoft-Dokumentation'
 description: Führen Sie die Schritte dieser Schnellstartanleitung aus, um ein Azure Media Services-Konto zu erstellen.
 services: media-services
 documentationcenter: ''
@@ -12,11 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: juliako
-ms.openlocfilehash: f7e5cb28f90466e9366c0a32e2a333e6823b9396
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9168a66c3afcd8dd0b05de15f5833c516ddb2250
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38767101"
 ---
 # <a name="quickstart-create-an-azure-media-services-account"></a>Schnellstart: Erstellen eines Azure Media Services-Kontos
 
@@ -25,17 +26,17 @@ ms.lasthandoff: 05/07/2018
 
 Wenn Sie Entwickler sind oder Medieninhalte erstellen, müssen Sie ein Media Services-Konto erstellen, um Medieninhalte in Azure zu speichern, zu verschlüsseln, zu codieren, zu verwalten und zu streamen. Wenn Sie ein Media Services-Konto erstellen, müssen Sie die ID einer Azure Storage-Kontoressource angeben. Das angegebene Storage-Konto wird an Ihr Media Services-Konto angefügt. Diese Storage-Kontoressource muss sich in der gleichen geografischen Region befinden wie das Media Services-Konto.  
 
-Diese Schnellstartanleitung beschreibt die Schritte zum Erstellen eines neuen Azure Media Services-Kontos mithilfe der CLI 2.0.  
+Diese Schnellstartanleitung beschreibt die Schritte zum Erstellen eines neuen Azure Media Services-Kontos mithilfe von Azure CLI  
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="log-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an, und starten Sie **CloudShell**, um CLI-Befehle auszuführen, wie in den nächsten Schritten gezeigt.
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, erfordert dieses Thema die Azure CLI-Version 2.0 oder höher. Führen Sie `az --version` aus, um herauszufinden, welche Version Sie haben. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die CLI lokal installieren und verwenden möchten, erfordert dieses Thema die Azure CLI-Version 2.0 oder höher. Führen Sie `az --version` aus, um herauszufinden, welche Version Sie haben. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli). 
 
 ## <a name="set-the-azure-subscription"></a>Einrichten des Azure-Abonnements
 

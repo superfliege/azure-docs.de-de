@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 06/28/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 16f008c6a6f97a791122a3b441c4c09eaf7eadde
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 74e6428cf0536a7c8016be6cdf29071128bf4a3b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025366"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Grundlegendes zu Azure AD-Anwendungsproxyconnectors
 
@@ -91,7 +92,6 @@ Connectors senden nur ausgehende Anforderungen. Der ausgehende Datenverkehr wird
 
 Weitere Informationen zum Konfigurieren von Firewallregeln für ausgehenden Datenverkehr finden Sie unter [Verwenden von vorhandenen lokalen Proxyservern](application-proxy-configure-connectors-with-proxy-servers.md).
 
-Verwenden Sie den [Azure AD Application Proxy Connector Ports Test Tool (Testtool der Anwendungsproxy-Connectortools von Azure AD)](https://aadap-portcheck.connectorporttest.msappproxy.net/), um sicherzustellen, dass Ihr Connector den Anwendungsproxydienst erreichen kann. Stellen Sie zumindest sicher, dass die Region USA (Mitte) und die Ihnen am nächsten gelegene Region alle über grüne Häkchen verfügen. Darüber hinaus bedeuten mehr grüne Häkchen größere Resilienz. 
 
 ## <a name="performance-and-scalability"></a>Leistung und Skalierbarkeit
 
@@ -103,7 +103,7 @@ Die Connectorleistung wird durch die CPU und das Netzwerk bestimmt. Eine gute CP
 
 Der Arbeitsspeicher ist für Connectors dagegen weniger wichtig. Der Online-Dienst übernimmt einen Großteil der Verarbeitung und den gesamten nicht authentifizierten Datenverkehr. Alle Schritte, die in der Cloud ausgeführt werden können, werden auch in der Cloud ausgeführt. 
 
-Der Lastenausgleich erfolgt zwischen Connectors einer bestimmten Connectorgruppe. Welcher Connector in der Gruppe zur Abwicklung einer bestimmten Anforderung verwendet wird, wird auf der Grundlage einer Variation des Roundrobin-Verfahrens bestimmt. Nach der Wahl eines Connectors bleibt die Sitzungsaffinität zwischen dem Benutzer und der Anwendung für die Dauer der Sitzung erhalten. Sollte der Connector oder der Computer aus irgendeinem Grund nicht mehr zur Verfügung stehen, wird der Datenverkehr an einen anderen Connector in der Gruppe geleitet. Aufgrund dieser Resilienz empfiehlt sich auch die Verwendung mehrerer Connectors.
+Der Lastenausgleich erfolgt zwischen Connectors einer bestimmten Connectorgruppe. Welcher Connector in der Gruppe zur Abwicklung einer bestimmten Anforderung verwendet wird, wird auf der Grundlage einer Variation des Roundrobin-Verfahrens bestimmt. Sollte der Connector oder der Computer aus irgendeinem Grund nicht mehr zur Verfügung stehen, wird der Datenverkehr an einen anderen Connector in der Gruppe geleitet. Aufgrund dieser Resilienz empfiehlt sich auch die Verwendung mehrerer Connectors.
 
 Ein weiterer Leistungsfaktor ist die Qualität der Netzwerkverbindung zwischen den Connectors, z.B.: 
 
@@ -164,6 +164,6 @@ Sie können den Zustand des Diensts im Fenster „Dienste“ untersuchen. Der Co
 
 * [Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen](application-proxy-connector-groups.md)
 * [Verwenden von vorhandenen lokalen Proxyservern](application-proxy-configure-connectors-with-proxy-servers.md)
-* [Beheben von Problemen mit Anwendungsproxys und Connectors](../active-directory-application-proxy-troubleshoot.md)
+* [Beheben von Problemen mit Anwendungsproxys und Connectors](application-proxy-troubleshoot.md)
 * [Installieren des Azure AD-Anwendungsproxyconnectors im Hintergrund](application-proxy-register-connector-powershell.md)
 

@@ -2,22 +2,18 @@
 title: Georedundante Notfallwiederherstellung in Azure Service Bus | Microsoft-Dokumentation
 description: Verwenden von geografischen Regionen für das Failover und zum Durchführen der Notfallwiederherstellung in Azure Service Bus
 services: service-bus-messaging
-documentationcenter: ''
-author: christianwolf42
+author: sethmanheim
 manager: timlt
-editor: ''
 ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 06/14/2018
 ms.author: sethm
-ms.openlocfilehash: 652adcf78add8ae699a7f827a915e90ce1694c61
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b43c5bd6ff6b386e1a2ee0b5e3ae8ec8fa61fb4b
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301518"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Georedundante Notfallwiederherstellung in Azure Service Bus
 
@@ -88,7 +84,7 @@ Bei einem Szenario, für das Sie die Verbindungen von Producern und Consumern ni
 
 In den [Beispielen auf GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/) wird veranschaulicht, wie Sie ein Failover einrichten und initiieren. In diesen Beispielen werden die folgenden Konzepte veranschaulicht:
 
-- Ein .NET-Beispiel und Einstellungen, die in Azure Active Directory erforderlich sind, um unter Verwendung von Azure Resource Manager und Service Bus eine georedundante Notfallwiederherstellung einzurichten und zu aktivieren
+- Ein .NET-Beispiel und Einstellungen, die in Azure Active Directory erforderlich sind, um unter Verwendung von Azure Resource Manager und Service Bus eine georedundante Notfallwiederherstellung einzurichten und zu aktivieren.
 - Schritte, die zum Ausführen des Beispielcodes erforderlich sind
 - Verwenden eines vorhandenen Namespace als Alias
 - Schritte zur alternativen Aktivierung der georedundanten Notfallwiederherstellung über PowerShell oder die Befehlszeilenschnittstelle
@@ -106,6 +102,17 @@ Beachten Sie für diesen Release Folgendes:
 
 4. Das Synchronisieren von Entitäten kann einige Zeit dauern, z.B. eine Minute für 50 bis 100 Entitäten. Abonnements und Regeln zählen ebenfalls zu den Entitäten. 
 
+## <a name="availability-zones-preview"></a>Verfügbarkeitszonen (Vorschauversion)
+
+Die Service Bus-Premium-SKU unterstützt zudem [Verfügbarkeitszonen](../availability-zones/az-overview.md), die fehlerisolierte Standorte innerhalb einer Azure-Region bieten. 
+
+> [!NOTE]
+> Die Vorschau der Verfügbarkeitszonen wird nur für die Regionen **USA, Mitte**, **USA, Osten 2** und **Frankreich, Mitte** unterstützt.
+
+Sie können Verfügbarkeitszonen nur für neue Namespaces über das Azure-Portal aktivieren. Service Bus bietet keine Unterstützung für die Migration vorhandener Namespaces. Sie können die Zonenredundanz nicht deaktivieren, wenn Sie sie für Ihren Namespace aktiviert haben.
+
+![3][]
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Hier](/rest/api/servicebus/disasterrecoveryconfigs) finden Sie Informationen zur REST-API-Referenz für die georedundante Notfallwiederherstellung.
@@ -122,3 +129,4 @@ Weitere Informationen zum Service Bus-Messaging finden Sie in folgenden Artikeln
 
 [1]: ./media/service-bus-geo-dr/geo1.png
 [2]: ./media/service-bus-geo-dr/geo2.png
+[3]: ./media/service-bus-geo-dr/az.png

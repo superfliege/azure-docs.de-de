@@ -1,21 +1,21 @@
 ---
-title: Aufrufen einer geschützten Web-API – ASP.NET – Azure Active Directory B2C | Microsoft-Dokumentation
+title: Aufrufen einer geschützten ASP.NET-Web-API in Azure Active Directory B2C | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie mithilfe von Azure Active Directory B2C und OAuth 2.0-Zugriffstokens eine .NET-Webanwendung erstellen und eine Web-API aufrufen.
 services: active-directory-b2c
-documentationcenter: .net
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/17/2017
 ms.author: davidmu
-ms.openlocfilehash: 75ae88898d3d6b275ec462e865347056305fd666
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 0fd00672e53d0b0148b70b364df5959ced1e554a
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442456"
 ---
 # <a name="azure-ad-b2c-call-a-net-web-api-from-a-net-web-app"></a>Azure AD B2C: Aufrufen einer .NET-Web-API über eine .NET-Webanwendung
 

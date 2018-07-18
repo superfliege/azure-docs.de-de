@@ -1,19 +1,20 @@
 ---
-title: "Konfigurieren von Warnungen zu Metriken für Azure Database for MySQL im Azure-Portal"
-description: "In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal die Warnungen zu Metriken für Azure Database for MySQL konfigurieren und auf diese zugreifen."
+title: Konfigurieren von Warnungen zu Metriken für Azure Database for MySQL im Azure-Portal
+description: In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal die Warnungen zu Metriken für Azure Database for MySQL konfigurieren und auf diese zugreifen.
 services: mysql
 author: rachel-msft
 ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 025e7089f797b0accf8ee7d14028e5b5ab23c113
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 3accc31f433e6db40c7d1de2b56dfbd4180b4933
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265177"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for MySQL 
 
@@ -27,7 +28,7 @@ Sie können konfigurieren, dass bei einer Warnung die folgenden Aktionen ausgef�
 * Aufrufen eines Webhooks
 
 Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abrufen zugehöriger Informationen:
-* [Azure portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
+* [Azure-Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
 * [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
 * [Befehlszeilenschnittstelle](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
 * [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931945.aspx)

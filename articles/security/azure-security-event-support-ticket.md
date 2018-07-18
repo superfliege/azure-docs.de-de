@@ -1,6 +1,6 @@
 ---
-title: "Erstellen eines Tickets beim Support für Sicherheitsereignisse – Azure | Microsoft-Dokumentation"
-description: "Ich habe als Verkäufer im Azure Marketplace ein potenzielles Sicherheitsereignis identifiziert und möchte wissen, wie ich ein entsprechendes Ticket erstelle."
+title: Erstellen eines Tickets beim Support für Sicherheitsereignisse – Azure | Microsoft-Dokumentation
+description: Ich habe als Verkäufer im Azure Marketplace ein potenzielles Sicherheitsereignis identifiziert und möchte wissen, wie ich ein entsprechendes Ticket erstelle.
 services: security
 documentationcenter: na
 author: DavidBosland
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26129939"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>Erstellen eines Tickets beim Support für Sicherheitsereignisse
 

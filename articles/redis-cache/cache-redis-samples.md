@@ -1,11 +1,11 @@
 ---
-title: "Azure Redis Cache – Beispiele | Microsoft Docs"
+title: Azure Redis Cache – Beispiele | Microsoft Docs
 description: Erfahren Sie, wie Sie Azure Redis Cache verwenden.
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 1f8d210c-ee09-4fe2-b63f-1e69246a27d8
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27909695"
 ---
 # <a name="azure-redis-cache-samples"></a>Azure Redis Cache – Beispiele
 Dieses Thema enthält eine Liste von Azure Redis Cache-Beispielen für Szenarien wie z.B. das Herstellen einer Verbindung mit einem Cache, das Lesen und Schreiben von Daten in und aus einem Cache und die Verwendung der ASP.NET Redis Cache-Anbieter. Einige der Beispiele sind herunterladbare Projekte und einige bieten eine schrittweise Anleitung und Codeausschnitte, ohne mit einem herunterladbaren Projekt verknüpft zu sein.

@@ -1,19 +1,19 @@
 ---
 title: Herstellen einer Verbindung zwischen einem DevKit-Gerät und Ihrer Azure IoT Central-Anwendung | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie als Geräteentwickler ein MXChip IoT-Entwickler-Kit-Gerät mit Ihrer Azure IoT Central-Anwendung verbinden.
-services: iot-central
-author: tanmaybhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 4c7074e5e7d3858919f3fc17005fea4f8dce1560
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: d7b92359e8875c281fd460f1f5307a7941c11c1f
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200740"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261575"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung
 
@@ -28,7 +28,9 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 
 Eine Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde, enthält eine Gerätevorlage **MXChip** mit den folgenden Eigenschaften:
 
-### <a name="telemetry-measurements"></a>Telemetriemessungen
+### <a name="measurements"></a>Messungen
+
+#### <a name="telemetry"></a>Telemetrie 
 
 | Feldname     | Units  | Minimum | Maximum | Dezimalstellen |
 | -------------- | ------ | ------- | ------- | -------------- |
@@ -44,6 +46,20 @@ Eine Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erste
 | gyroscopeX     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeY     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
+
+#### <a name="states"></a>Zustände 
+
+| NAME          | Anzeigename   | NORMAL | VORSICHT | GEFAHR | 
+| ------------- | -------------- | ------ | ------- | ------ | 
+| DeviceState   | Gerätestatus   | Grün  | Orange  | Rot    | 
+
+#### <a name="events"></a>Ereignisse 
+
+| NAME             | Anzeigename      | 
+| ---------------- | ----------------- | 
+| ButtonBPressed   | Schaltfläche „B“ gedrückt  | 
+
+
 
 ### <a name="settings"></a>Einstellungen
 
@@ -68,17 +84,6 @@ Einstellungen zum Ein-/Ausschalten
 | Geräteeigenschaft | Nummer   | dieNumber  | number    |
 | Text            | Speicherort     | location   | N/V       |
 
-### <a name="states"></a>Zustände 
-
-| NAME          | Anzeigename   | NORMAL | VORSICHT | GEFAHR | 
-| ------------- | -------------- | ------ | ------- | ------ | 
-| DeviceState   | Gerätestatus   | Grün  | Orange  | Rot    | 
-
-### <a name="events"></a>Ereignisse 
-
-| NAME             | Anzeigename      | 
-| ---------------- | ----------------- | 
-| ButtonBPressed   | Schaltfläche „B“ gedrückt  | 
 
 ### <a name="add-a-real-device"></a>Hinzufügen eines echten Geräts
 

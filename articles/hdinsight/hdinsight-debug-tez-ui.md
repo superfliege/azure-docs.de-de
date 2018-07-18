@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31406506"
 ---
 # <a name="use-the-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Verwenden der Tez-Benutzeroberfläche zum Debuggen von Tez-Aufträgen in Windows-basiertem HDInsight
 Auf der Tez-Benutzeroberfläche können Sie Hive-Aufträge debuggen, die Tez als Ausführungsengine verwenden. Die Tez-Benutzeroberfläche ermöglicht das Visualisieren des Auftrags als Graphen verbundener Elemente, eine Detailsuche in den einzelnen Elementen und das Abrufen von Statistiken und Protokollinformationen.

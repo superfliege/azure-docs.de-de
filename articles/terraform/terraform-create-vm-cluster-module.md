@@ -14,6 +14,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29952216"
 ---
 # <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>Erstellen eines VM-Clusters mit Terraform mithilfe der Modulregistrierung
 

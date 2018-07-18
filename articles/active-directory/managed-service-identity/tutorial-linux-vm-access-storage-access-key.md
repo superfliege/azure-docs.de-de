@@ -9,17 +9,17 @@ editor: daveba
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: af0ddebc79100cbe0ea55e46b825c35ab8a775b7
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: cde1af63fe609170c65bc469fa57573d7bc48490
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303755"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901509"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>Tutorial: Verwenden einer Linux-VM-MSI für den Zugriff auf Azure Storage über einen Zugriffsschlüssel
 
@@ -227,10 +227,7 @@ Antwort:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Einen Überblick über MSI finden Sie unter [Übersicht über verwaltete Dienstidentitäten](overview.md).
-- Wenn Sie dieses gleiche Tutorial mit SAS-Speicheranmeldeinformationen ausführen möchten, lesen Sie [Verwenden einer Linux-VM-MSI für den Zugriff auf Azure Storage über SAS-Anmeldeinformationen](tutorial-linux-vm-access-storage-sas.md).
-- Weitere Informationen zum SAS-Feature des Azure Storage-Kontos finden Sie hier:
-  - [Verwenden von Shared Access Signatures (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1.md)
-  - [Constructing a Service SAS (Erstellen einer Dienstebenen-SAS)](/rest/api/storageservices/Constructing-a-Service-SAS.md)
+In diesem Tutorial haben Sie gelernt, wie Sie eine verwaltete Dienstidentität für einen virtuellen Linux-Computer verwenden, um unter Verwendung eines Zugriffsschlüssels auf Azure Storage zuzugreifen.  Weitere Informationen zu Azure Storage-Zugriffsschlüsseln finden Sie hier:
 
-Verwenden Sie den folgenden Kommentarabschnitt, um uns Feedback zu senden und uns bei der Verbesserung unserer Inhalte zu unterstützen.
+> [!div class="nextstepaction"]
+>[Verwalten von Speicherzugriffsschlüsseln](/azure/storage/common/storage-create-storage-account#manage-your-storage-access-keys)

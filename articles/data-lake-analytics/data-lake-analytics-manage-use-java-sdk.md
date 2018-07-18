@@ -1,28 +1,26 @@
 ---
-title: Verwalten von Azure Data Lake Analytics mithilfe des Azure Java SDK | Microsoft-Dokumentation
-description: "Verwenden Sie das Java-SDK für Azure Data Lake Analytics zur Anwendungsentwicklung"
+title: Verwalten von Azure Data Lake Analytics mithilfe des Azure Java SDK
+description: In diesem Artikel erfahren Sie, wie Sie das Azure Java SDK verwenden, um Apps zu schreiben, die Data Lake Analytics-Aufträge, -Datenquellen und -Benutzer verwalten.
 services: data-lake-analytics
-documentationcenter: 
-author: matt1883
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/18/2017
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: 8a0c1c7aab89f3bb62d0eb9f42e8ac65309d617e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: kfile
+editor: jasonwhowell
+ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
+ms.topic: conceptual
+ms.date: 06/18/2017
+ms.openlocfilehash: 4cf8390f55beeb65c1bd99594e885ed9db551d9e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624232"
 ---
-# <a name="manage--azure-data-lake-analytics-using-java-sdk"></a>Verwalten von Azure Data Lake Analytics mithilfe des Java SDK
+# <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Verwalten von Azure Data Lake Analytics mithilfe einer Java-App
+[!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-In diesem Tutorial entwickeln Sie eine Java-Konsolenanwendung, die allgemeine Funktionen für Azure Data Lake ausführt.
+In diesem Artikel erfahren Sie, wie Sie Azure Data Lake Analytics-Konten, -Datenquellen, -Benutzer und -Aufträge mit einer App verwalten, die unter Verwendung des Azure Java SDK geschrieben wurde. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * **Java Development Kit (JDK) 8** (mit Java-Version 1.8).

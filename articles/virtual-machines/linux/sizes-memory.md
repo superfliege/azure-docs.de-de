@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/08/2017
+ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: 760426ab6255c6e42383cc19f523b2dbfc55d404
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a38fb8047415479710a8528c0bf55b1ccb3e178c
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33943677"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37900584"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Arbeitsspeicheroptimierte Größen virtueller Computer
 
@@ -36,6 +36,7 @@ ms.locfileid: "33943677"
 - [Speicheroptimiert](sizes-storage.md)
 - [GPU](../windows/sizes-gpu.md)
 - [High Performance Computing](sizes-hpc.md)
+- [Vorherige Generationen](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](acu.md) die Computeleistung von Azure-SKUs vergleichen können.

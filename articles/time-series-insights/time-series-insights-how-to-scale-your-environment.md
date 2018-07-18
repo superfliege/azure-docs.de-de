@@ -1,22 +1,22 @@
 ---
 title: 'Gewusst wie: Skalieren der Azure Time Series Insights-Umgebung | Microsoft-Dokumentation'
-description: "In diesem Artikel erfahren Sie, wie Sie Ihre Azure Time Series Insights-Umgebung skalieren. Verwenden Sie das Azure-Portal, um die Kapazität innerhalb einer Preis-SKU zu erhöhen oder zu verringern."
-services: time-series-insights
+description: In diesem Artikel erfahren Sie, wie Sie Ihre Azure Time Series Insights-Umgebung skalieren. Verwenden Sie das Azure-Portal, um die Kapazität innerhalb einer Preis-SKU zu erhöhen oder zu verringern.
 ms.service: time-series-insights
-author: sandshadow
+services: time-series-insights
+author: ashannon7
 ms.author: edett
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: edcd9561778998c4df09cc5014f8b8ba81c0e369
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 3e357f8a1667677c763e94c6f7d57402a7aa175d
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294352"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Gewusst wie: Skalieren der Azure Time Series Insights-Umgebung
 

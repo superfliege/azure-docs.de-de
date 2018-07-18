@@ -4,7 +4,7 @@ description: Kunden können die Protokollanalyse für Azure CDN aktivieren.
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -12,13 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2017
-ms.author: rli
-ms.openlocfilehash: 73c19383b791438c2ae899b45e1b4635e9cd5802
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 06/06/2018
+ms.author: v-deasim
+ms.openlocfilehash: 98a7fc5c4607115811e17a7cf6acd4e867663833
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261303"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure-Diagnoseprotokolle
 
@@ -34,9 +35,9 @@ Mit Azure-Diagnoseprotokollen können Sie Metriken zur grundlegenden Nutzung von
 
 - Exportieren von Daten in Blobspeicher, Exportieren in eine CSV-Datei und Generieren von Diagrammen in Excel
 - Exportieren von Daten nach Event Hubs und Korrelieren mit Daten von anderen Azure-Diensten
-- Exportieren von Daten in Log Analytics und Anzeigen von Daten in Ihrem eigenen Log Analytics-Arbeitsbereich
+- Exportieren von Daten nach Log Analytics und Anzeigen von Daten in Ihrem eigenen Log Analytics-Arbeitsbereich
 
-In der folgenden Abbildung ist eine typische Datenansicht der CDN-Basisanalyse dargestellt:
+Im folgenden Diagramm ist eine typische Datenansicht der CDN-Basisanalyse dargestellt.
 
 ![Portal – Diagnoseprotokolle](./media/cdn-diagnostics-log/01_OMS-workspace.png)
 
@@ -44,60 +45,87 @@ In der folgenden Abbildung ist eine typische Datenansicht der CDN-Basisanalyse d
 
 Weitere Informationen zu Diagnoseprotokollen finden Sie unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
 
-## <a name="enable-logging-with-azure-portal"></a>Aktivieren der Protokollierung über das Azure-Portal
+## <a name="enable-logging-with-the-azure-portal"></a>Aktivieren der Protokollierung über das Azure-Portal
 
 Führen Sie die folgenden Schritte aus, um die Protokollierung mit der CDN-Basisanalyse zu aktivieren:
 
-Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an. Wenn Sie CDN für Ihren Workflow nicht bereits aktiviert haben, sollten Sie [Azure CDN vor dem Fortfahren aktivieren](cdn-create-new-endpoint.md).
+Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an. Wenn Sie CDN für Ihren Workflow noch nicht aktiviert haben, [Erstellen Sie ein Azure CDN-Profil und einen Endpunkt](cdn-create-new-endpoint.md), bevor Sie fortfahren.
 
-1. Navigieren Sie im Portal zum **CDN-Profil**.
-2. Wählen Sie ein CDN-Profil und dann den CDN-Endpunkt aus, für den Sie die **Diagnoseprotokolle** aktivieren möchten.
+1. Navigieren Sie im Azure-Portal zum **CDN-Profil**.
+
+2. Suchen Sie im Azure-Portal nach einem CDN-Profil, oder wählen Sie eines aus Ihrem Dashboard. Wählen Sie dann den CDN-Endpunkt aus, für den Sie die Diagnoseprotokolle aktivieren möchten.
 
     ![Portal – Diagnoseprotokolle](./media/cdn-diagnostics-log/02_Browse-to-Diagnostics-logs.png)
 
-3. Wählen Sie im Abschnitt **Überwachung** die Option **Diagnose** aus.
+3. Wählen Sie im Abschnitt ÜBERWACHUNG die Option **Diagnoseprotokolle** aus.
+
+   Die Seite **Diagnoseprotokolle** wird angezeigt.
 
     ![Portal – Diagnoseprotokolle](./media/cdn-diagnostics-log/03_Diagnostics-logs-options.png)
 
 ### <a name="enable-logging-with-azure-storage"></a>Aktivieren der Protokollierung mit Azure Storage
+
+Führen Sie die folgenden Schritte aus, um ein Speicherkonto zum Speichern der Protokolle zu verwenden:
     
-1. Aktivieren Sie zum Speichern der Protokolle mit Azure Storage die Option **In ein Speicherkonto archivieren**, aktivieren Sie dann die Option **CoreAnalytics**, und wählen Sie unter **Aufbewahrung (Tage)** die Tage für die Aufbewahrungsdauer aus. Bei einer Aufbewahrung von 0 Tagen werden die Protokolle dauerhaft gespeichert. 
-2. Geben Sie einen Namen für die Einstellung ein, und klicken Sie auf **Speicherkonto**. Nachdem Sie ein Speicherkonto ausgewählt haben, klicken Sie auf **Speichern**.
+1. Geben Sie für **Name** einen Namen für Ihre Diagnoseprotokolleinstellungen ein.
+ 
+2. Wählen Sie **In einem Speicherkonto archivieren** und dann **CoreAnalytics**. 
 
-![Portal – Diagnoseprotokolle](./media/cdn-diagnostics-log/04_Diagnostics-logs-storage.png)
+2. Wählen Sie für **Beibehaltungsdauer (Tage)** die Anzahl der Aufbewahrungstage. Bei einer Aufbewahrung von 0 Tagen werden die Protokolle dauerhaft gespeichert. 
 
-*Abbildung 2: Protokollierung mit Azure Storage*
+    ![Portal – Diagnoseprotokolle](./media/cdn-diagnostics-log/04_Diagnostics-logs-storage.png) 
+
+3. Wählen Sie **Speicherkonto** aus.
+
+    Sie Seite **Speicherkonto auswählen** wird angezeigt.
+
+4. Wählen Sie in der Dropdownliste ein Speicherkontoname aus und klicken Sie auf **OK**.
+
+    ![Portal – Diagnoseprotokolle](./media/cdn-diagnostics-log/cdn-select-storage-account.png)
+
+5. Wenn Sie alle erforderlichen Diagnoseprotokolleinstellungen vorgenommen haben, wählen Sie **Speichern**.
 
 ### <a name="logging-with-log-analytics"></a>Protokollierung mit Log Analytics
 
 Führen Sie die folgenden Schritte aus, um Log Analytics zum Speichern der Protokolle zu verwenden:
 
-1. Aktivieren Sie auf dem Blatt **Diagnoseprotokolle** die Option **An Log Analytics senden**. 
+1. Aktivieren Sie auf der Seite **Diagnoseprotokolle** die Option **An Log Analytics senden**. 
 
     ![Portal – Diagnoseprotokolle](./media/cdn-diagnostics-log/05_Ready-to-Configure.png)    
 
-2. Klicken Sie auf **Konfigurieren**, um die Log Analytics-Protokollierung zu konfigurieren. Im Dialogfeld „OMS-Arbeitsbereiche“ können Sie einen vorherigen Arbeitsbereich auswählen oder einen neuen erstellen.
+2. Wählen Sie **Konfigurieren** aus, um die Log Analytics-Protokollierung zu konfigurieren. 
+
+   Die Seite **OMS-Arbeitsbereiche** wird angezeigt.
 
     ![Portal – Diagnoseprotokolle](./media/cdn-diagnostics-log/06_Choose-workspace.png)
 
-3. Klicken Sie auf **Neuen Arbeitsbereich erstellen**.
+3. Wählen Sie **Neuen Arbeitsbereich erstellen** aus.
+
+    Die Seite **OMS-Arbeitsbereich** wird angezeigt.
 
     ![Portal – Diagnoseprotokolle](./media/cdn-diagnostics-log/07_Create-new.png)
 
-4. Geben Sie einen neuen Namen für den Log Analytics-Arbeitsbereich ein. Ein Log Analytics-Arbeitsbereichsname muss eindeutig sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten. Leerzeichen und Unterstriche sind nicht zulässig. 
-5. Wählen Sie als Nächstes ein vorhandenes Abonnement, eine Ressourcengruppe (neu oder vorhanden), einen Standort und einen Tarif aus. Sie können diese Konfiguration auch an Ihr Dashboard anheften. Klicken Sie auf **OK**, um die Konfiguration abzuschließen.
+4. Geben Sie für **OMS-Arbeitsbereich** einen Namen für den OMS-Arbeitsbereich ein. Der Name des OMS-Arbeitsbereichs muss eindeutig sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten. Leerzeichen und Unterstriche sind nicht zulässig. 
+
+5. Wählen Sie unter **Abonnement** ein vorhandenes Abonnement aus. 
+
+6. Erstellen Sie unter **Ressourcengruppe** eine neue Ressourcengruppe, oder wählen Sie eine vorhandene aus.
+
+7. Wählen Sie für **Speicherort** einen Speicherort aus der Liste aus.
+
+8. Wählen Sie **An Dashboard anheften** aus, wenn Sie die Protokollkonfiguration an Ihr Dashboard speichern möchten. 
+
+9. Wählen Sie **OK** aus, um die Konfiguration abzuschließen.
 
     ![Portal – Diagnoseprotokolle](./media/cdn-diagnostics-log/08_Workspace-resource.png)
 
-5.  Nach der Erstellung des Arbeitsbereichs wird wieder das Fenster „Diagnoseprotokolle“ angezeigt. Überprüfen Sie den Namen Ihres neuen Log Analytics-Arbeitsbereichs.
+10. Nach der Erstellung des Arbeitsbereichs wird wieder die Seite **Diagnoseprotokolle** angezeigt. Bestätigen Sie den Namen Ihres neuen Log Analytics-Arbeitsbereichs.
 
     ![Portal – Diagnoseprotokolle](./media/cdn-diagnostics-log/09_Return-to-logging.png)
 
-    Überprüfen Sie nach dem Einrichten der Log Analytics-Konfiguration, ob **CoreAnalytics** ausgewählt ist.
+11. Wählen Sie **CoreAnalytics** und anschließend **Speichern**.
 
-6. Klicken Sie auf **Speichern**.
-
-7. Um Ihren neuen Log Analytics-Arbeitsbereich anzuzeigen, navigieren Sie zu Ihrem Dashboard im Azure-Portal und klicken auf den Namen Ihres Log Analytics-Arbeitsbereichs. Klicken Sie auf die Kachel „OMS-Portal“, um Ihren Log Analytics-Arbeitsbereich anzuzeigen. 
+12. Um Ihren neuen Log Analytics-Arbeitsbereich anzuzeigen, wählen Sie **Basisanalyse** auf Ihrer CDN-Endpunkt-Seite aus.
 
     ![Portal – Diagnoseprotokolle](./media/cdn-diagnostics-log/11_OMS-dashboard.png) 
 
@@ -107,43 +135,41 @@ Weitere Informationen zu Protokolldatenverzögerungen finden Sie unter [Protokol
 
 ## <a name="enable-logging-with-powershell"></a>Aktivieren der Protokollierung mit PowerShell
 
-Das folgende Beispiel zeigt, wie Sie Diagnoseprotokolle über die Azure PowerShell-Cmdlets aktivieren:
+Das folgende Beispiel zeigt, wie Sie Diagnoseprotokolle über die Azure PowerShell-Cmdlets aktivieren.
 
 ### <a name="enabling-diagnostic-logs-in-a-storage-account"></a>Aktivieren von Diagnoseprotokollen in einem Speicherkonto
 
-Melden Sie sich zuerst an, und wählen Sie ein Abonnement aus:
+1. Melden Sie sich an, und wählen Sie ein Abonnement aus:
 
     Connect-AzureRmAccount 
 
     Select-AzureSubscription -SubscriptionId 
 
+2. Geben Sie den folgenden Befehl ein, um Diagnoseprotokolle in einem Speicherkonto zu aktivieren:
 
-Verwenden Sie den folgenden Befehl, um Diagnoseprotokolle in einem Speicherkonto zu aktivieren:
-
-```powershell
+    ```powershell
     Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}" -StorageAccountId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicStorage/storageAccounts/{storageAccountName}" -Enabled $true -Categories CoreAnalytics
-```
-Verwenden Sie den folgenden Befehl, um Diagnoseprotokolle in einem Log Analytics-Arbeitsbereich zu aktivieren:
+    ```
 
-```powershell
+3. Geben Sie den folgenden Befehl ein, um Diagnoseprotokolle in einem Log Analytics-Arbeitsbereich zu aktivieren:
+
+    ```powershell
     Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/`{subscriptionId}<subscriptionId>
     .<subscriptionName>" -WorkspaceId "/subscriptions/<workspaceId>.<workspaceName>" -Enabled $true -Categories CoreAnalytics 
-```
-
-
+    ```
 
 ## <a name="consuming-diagnostics-logs-from-azure-storage"></a>Nutzen von Diagnoseprotokollen aus Azure Storage
 In diesem Abschnitt werden das Schema der CDN-Basisanalyse und die Organisation innerhalb eines Azure-Speicherkontos beschrieben, und er enthält Beispielcode zum Herunterladen der Protokolle in einer CSV-Datei.
 
 ### <a name="using-microsoft-azure-storage-explorer"></a>Verwenden des Microsoft Azure Storage-Explorers
-Bevor Sie im Azure Storage-Konto auf die Basisanalysedaten zugreifen können, benötigen Sie zuerst ein Tool zum Zugreifen auf den Inhalt in einem Speicherkonto. Auf dem Markt sind verschiedene Tools erhältlich, aber wir empfehlen Ihnen die Verwendung des Microsoft Azure Storage-Explorers. Informationen zum Herunterladen des Tools finden Sie unter [Azure Storage-Explorer](http://storageexplorer.com/). Konfigurieren Sie nach dem Herunterladen und Installieren der Software die Verwendung desselben Azure-Speicherkontos, das als Ziel für die CDN-Diagnoseprotokolle konfiguriert wurde.
+Bevor Sie im Azure-Speicherkonto auf die Basisanalysedaten zugreifen können, benötigen Sie zuerst ein Tool zum Zugreifen auf den Inhalt in einem Speicherkonto. Auf dem Markt sind verschiedene Tools erhältlich, aber wir empfehlen Ihnen die Verwendung des Microsoft Azure Storage-Explorers. Informationen zum Herunterladen des Tools finden Sie unter [Azure Storage-Explorer](http://storageexplorer.com/). Konfigurieren Sie nach dem Herunterladen und Installieren der Software die Verwendung desselben Azure-Speicherkontos, das als Ziel für die CDN-Diagnoseprotokolle konfiguriert wurde.
 
 1.  Öffnen Sie den **Microsoft Azure Storage-Explorer**.
 2.  Ermitteln Sie das Speicherkonto.
-3.  Navigieren Sie zum Knoten **Blobcontainer** unter diesem Speicherkonto, und erweitern Sie ihn.
-4.  Wählen Sie den Container mit dem Namen **insights-logs-coreanalytics** aus, und doppelklicken Sie darauf.
-5.  Im Bereich auf der rechten Seite werden Ergebnisse angezeigt. Es wird mit der ersten Ebene begonnen: **„resourceId=“**. Klicken Sie weiter, bis die Datei **PT1H.json** angezeigt wird. Der Pfad wird im folgenden Hinweis beschrieben.
-6.  Jede Datei **PT1H.json** des Blobs steht für die Analyseprotokolle für eine Stunde eines bestimmten CDN-Endpunkts oder dessen benutzerdefinierter Domäne.
+3.  Erweitern Sie den Knoten **Blobcontainer** unter diesem Speicherkonto.
+4.  Wählen Sie den Container mit dem Namen *insights-logs-coreanalytics* aus.
+5.  Im Bereich auf der rechten Seite werden Ergebnisse angezeigt. Es wird mit der ersten Ebene begonnen: *resourceId=*. Wählen Sie weiterhin jede Ebene aus, bis Sie die Datei *PT1H.json* gefunden haben. Eine Erläuterung des Pfads finden Sie im folgenden Hinweis *Blobpfadformat*.
+6.  Jede *PT1H.json*-Datei des Blobs steht für die Analyseprotokolle für eine Stunde eines bestimmten CDN-Endpunkts oder dessen benutzerdefinierter Domäne.
 7.  Das Schema der Inhalte dieser JSON-Datei wird im Abschnitt „Schema der Basisanalyseprotokolle“ beschrieben.
 
 
@@ -163,24 +189,24 @@ Bevor Sie im Azure Storage-Konto auf die Basisanalysedaten zugreifen können, be
 |Profile Name (Profilname) |Name des CDN-Profils|
 |Endpoint Name (Endpunktname) |Name des CDN-Endpunkts|
 |Jahr|  Vierstellige Jahresangabe, z.B. 2017|
-|Month (Monat)| Zweistellige Monatsangabe: 01 = Januar bis 12 = Dezember|
-|Day (Tag)|   Zweistellige Monatsangabe|
+|Month (Monat)| Zweistellige Monatsangabe. 01 = Januar bis 12 = Dezember|
+|Day (Tag)|   Zweistellige Tagesangabe|
 |PT1H.json| JSON-Datei, in der die Analysedaten gespeichert sind|
 
 ### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>Exportieren der Basisanalysedaten in eine CSV-Datei
 
-Um den Zugriff auf Basisanalysen zu erleichtern, wird Beispielcode für ein Tool bereitgestellt. Mit diesem Tool ist das Herunterladen der JSON-Dateien in einem flachen Dateiformat mit Kommas als Trennzeichen möglich. Diese Datei kann dann leicht zum Erstellen von Diagrammen oder Aggregationen verwendet werden.
+Um den Zugriff auf Basisanalysen zu erleichtern, wird Beispielcode für ein Tool bereitgestellt. Mit diesem Tool ist das Herunterladen der JSON-Dateien in einem flachen Dateiformat mit Kommas als Trennzeichen möglich. Diese Datei kann dann zum Erstellen von Diagrammen oder anderen Aggregationen verwendet werden.
 
 Sie können das Tool wie folgt verwenden:
 
-1.  Nutzen Sie den GitHub-Link: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv )
+1.  Nutzen Sie den GitHub-Link: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  Laden Sie den Code herunter.
 3.  Befolgen Sie die Anleitung zum Kompilieren und Konfigurieren.
 4.  Führen Sie das Tool aus.
 5.  In der sich ergebenden CSV-Datei werden die Analysedaten in einer einfachen flachen Hierarchie angezeigt.
 
 ## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>Nutzen von Diagnoseprotokollen aus einem Log Analytics-Arbeitsbereich
-Log Analytics ist ein Dienst in Azure, der Ihre cloudbasierten und lokalen Umgebungen überwacht, um die Verfügbarkeit und Leistung sicherzustellen. Er sammelt Daten, die von Ressourcen in Ihren cloudbasierten und lokalen Umgebungen sowie von anderen Überwachungstools generiert werden, um Analysen für mehrere Quellen zu ermöglichen. 
+Log Analytics ist ein Azure-Dienst, der Ihre cloudbasierten und lokalen Umgebungen überwacht, um die Verfügbarkeit und Leistung sicherzustellen. Er sammelt Daten, die von Ressourcen in Ihren cloudbasierten und lokalen Umgebungen sowie von anderen Überwachungstools generiert werden, um Analysen für mehrere Quellen zu ermöglichen. 
 
 Für die Verwendung von Log Analytics müssen Sie die [Protokollierung im Azure Log Analytics-Arbeitsbereich aktivieren](#enable-logging-with-azure-storage). Dies wurde weiter oben in diesem Artikel beschrieben.
 
@@ -194,36 +220,36 @@ Für die Verwendung von Log Analytics müssen Sie die [Protokollierung im Azure 
 
 Sie können die Daten mithilfe von Verwaltungslösungen auf unterschiedliche Weise anzeigen. Sie erhalten die Verwaltungslösungen über den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions).
 
-Sie können Verwaltungslösungen aus Azure Marketplace installieren, indem Sie unten in jeder Lösung auf den Link **Jetzt herunterladen** klicken.
+Sie können Verwaltungslösungen aus Azure Marketplace installieren, indem Sie unten in jeder Lösung den Link **Jetzt herunterladen** auswählen.
 
-### <a name="adding-a-log-analytics-cdn-management-solution"></a>Hinzufügen einer Log Analytics-CDN-Verwaltungslösung
+### <a name="add-a-log-analytics-cdn-management-solution"></a>Hinzufügen einer Log Analytics-CDN-Verwaltungslösung
 
-Führen Sie diese Schritte aus, um eine Verwaltungslösung hinzuzufügen:
+Führen Sie diese Schritte aus, um eine Log Analytics-Verwaltungslösung hinzuzufügen:
 
-1.   Melden Sie sich mit Ihrem Azure-Abonnement beim Azure-Portal an, sofern Sie noch nicht angemeldet sind, und navigieren Sie zu Ihrem Dashboard.
+1.   Melden Sie sich mit Ihrem Azure-Abonnement beim Azure-Portal an, und navigieren Sie zu Ihrem Dashboard.
     ![Azure-Dashboard](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
 
-2. Wählen Sie unter **Marketplace** auf dem Blatt **Neu** die Option **Überwachung und Verwaltung**.
+2. Klicken Sie unter **Marketplace** auf der Seite **Neu** auf **Überwachung und Verwaltung**.
 
     ![Marketplace](./media/cdn-diagnostics-log/14_Marketplace.png)
 
-3. Klicken Sie auf dem Blatt **Überwachung und Verwaltung** auf **See all** (Alle anzeigen).
+3. Wählen Sie auf der Seite **Überwachung und Verwaltung** die Option **Alle anzeigen**.
 
     ![Alle anzeigen](./media/cdn-diagnostics-log/15_See-all.png)
 
-4.  Suchen Sie im Suchfeld nach „CDN“.
+4. Suchen Sie im Suchfeld nach „CDN“.
 
     ![Alle anzeigen](./media/cdn-diagnostics-log/16_Search-for.png)
 
-5.  Wählen Sie **Azure CDN-Basisanalyse**. 
+5. Wählen Sie **Azure CDN-Basisanalyse**. 
 
     ![Alle anzeigen](./media/cdn-diagnostics-log/17_Core-analytics.png)
 
-6.  Nachdem Sie auf **Erstellen** geklickt haben, werden Sie aufgefordert, einen neuen Log Analytics-Arbeitsbereich zu erstellen oder einen vorhandenen zu verwenden. 
+6. Nachdem Sie **Erstellen** ausgewählt haben, werden Sie aufgefordert, einen neuen Log Analytics-Arbeitsbereich zu erstellen oder einen vorhandenen zu verwenden. 
 
     ![Alle anzeigen](./media/cdn-diagnostics-log/18_Adding-solution.png)
 
-7.  Wählen Sie den Arbeitsbereich aus, den Sie weiter oben erstellt haben. Anschließend müssen Sie ein Automation-Konto hinzufügen.
+7. Wählen Sie den Arbeitsbereich aus, den Sie weiter oben erstellt haben. Anschließend müssen Sie ein Automation-Konto hinzufügen.
 
     ![Alle anzeigen](./media/cdn-diagnostics-log/19_Add-automation.png)
 
@@ -231,7 +257,7 @@ Führen Sie diese Schritte aus, um eine Verwaltungslösung hinzuzufügen:
 
     ![Alle anzeigen](./media/cdn-diagnostics-log/20_Automation.png)
 
-9. Nachdem Sie das Automation-Konto erstellt haben, können Sie Ihre Lösung hinzufügen. Klicken Sie auf die Schaltfläche **Erstellen** .
+9. Nachdem Sie das Automation-Konto erstellt haben, können Sie Ihre Lösung hinzufügen. Wählen Sie die Schaltfläche **Erstellen**.
 
     ![Alle anzeigen](./media/cdn-diagnostics-log/21_Ready.png)
 
@@ -239,9 +265,9 @@ Führen Sie diese Schritte aus, um eine Verwaltungslösung hinzuzufügen:
 
     ![Alle anzeigen](./media/cdn-diagnostics-log/22_Dashboard.png)
 
-    Klicken Sie auf den Log Analytics-Arbeitsbereich, den Sie erstellt haben, um darauf zuzugreifen. 
+    Wählen Sie den von Ihnen erstellten Log Analytics-Arbeitsbereich aus, um darauf zuzugreifen. 
 
-11. Klicken Sie auf die Kachel **OMS-Portal**, um Ihre neue Lösung anzuzeigen.
+11. Wählen Sie die Kachel **OMS-Portal**, um Ihre neue Lösung anzuzeigen.
 
     ![Alle anzeigen](./media/cdn-diagnostics-log/23_workspace.png)
 
@@ -249,13 +275,13 @@ Führen Sie diese Schritte aus, um eine Verwaltungslösung hinzuzufügen:
 
     ![Alle anzeigen](./media/cdn-diagnostics-log/24_OMS-solution.png)
 
-    Klicken Sie jeweils auf eine der Kacheln, um verschiedene Ansichten Ihrer Daten anzuzeigen.
+    Wählen Sie eine der Kacheln aus, um verschiedene Ansichten Ihrer Daten anzuzeigen.
 
     ![Alle anzeigen](./media/cdn-diagnostics-log/25_Interior-view.png)
 
     Sie können nach links oder rechts scrollen, um weitere Kacheln anzuzeigen, die einzelne Ansichten der Daten darstellen. 
 
-    Wenn Sie auf eine Kachel klicken, erhalten Sie jeweils weitere Details zu Ihren Daten.
+    Wählen Sie eine der Kacheln aus, um weitere Details zu Ihren Daten anzuzeigen.
 
      ![Alle anzeigen](./media/cdn-diagnostics-log/26_Further-detail.png)
 
@@ -265,11 +291,11 @@ Angebote und Tarife für Verwaltungslösungen finden Sie [hier](https://docs.mic
 
 ### <a name="customizing-views"></a>Anpassen von Ansichten
 
-Sie können die Ansichten für Ihre Daten anpassen, in dem Sie den **Ansicht-Designer** verwenden. Um mit dem Entwerfen zu beginnen, navigieren Sie zu Ihrem Log Analytics-Arbeitsbereich und klicken auf die Kachel **Ansicht-Designer**.
+Sie können die Ansichten für Ihre Daten anpassen, in dem Sie den **Ansicht-Designer** verwenden. Um mit dem Entwerfen zu beginnen, navigieren Sie zu Ihrem Log Analytics-Arbeitsbereich und wählen Sie die Kachel **Ansicht-Designer**.
 
 ![Ansicht-Designer](./media/cdn-diagnostics-log/27_Designer.png)
 
-Sie können die Diagrammtypen ziehen und ablegen und die Datendetails eingeben, die analysiert werden sollen.
+Ziehen Sie die Diagrammtypen per Drag & Drop und geben Sie die Datendetails ein, die analysiert werden sollen.
 
 ![Ansicht-Designer](./media/cdn-diagnostics-log/28_Designer.png)
 
@@ -284,14 +310,14 @@ Um eine Stunde verzögert | Um eine Stunde verzögert, und es dauert bis zu zwei
 
 ## <a name="diagnostic-log-types-for-cdn-core-analytics"></a>Diagnoseprotokolltypen für CDN-Basisanalyse
 
-Wir bieten derzeit nur Basisanalyseprotokolle an, die Metriken mit HTTP-Antwortstatistiken und -Ausgangsstatistiken für die CDN-POPs/-Edges enthalten.
+Microsoft bietet derzeit nur Basisanalyseprotokolle an, die Metriken mit HTTP-Antwortstatistiken und -Ausgangsstatistiken für die CDN-POPs/-Edges enthalten.
 
 ### <a name="core-analytics-metrics-details"></a>Details zu Basisanalysemetriken
-Die folgende Tabelle zeigt eine Liste der in den wichtigsten Analyseprotokollen verfügbaren Metriken für **Azure CDN Standard von Microsoft**, **Azure CDN Standard von Akamai** und **Azure CDN Standard/Premium von Verizon**. Nicht alle Metriken sind für alle Anbieter verfügbar, aber die Unterschiede sind nur minimal. In dieser Tabelle ist jeweils auch angegeben, ob eine Metrik von einem Anbieter verfügbar ist. Beachten Sie, dass die Metriken nur für die CDN-Endpunkte zur Verfügung stehen, für die Datenverkehr anfällt.
+Die folgende Tabelle zeigt eine Liste der in den wichtigsten Analyseprotokollen verfügbaren Metriken für **Azure CDN Standard von Microsoft**, **Azure CDN Standard von Akamai** und **Azure CDN Standard/Premium von Verizon**. Nicht alle Metriken sind für alle Anbieter verfügbar, aber die Unterschiede sind nur minimal. In dieser Tabelle ist jeweils auch angegeben, ob eine Metrik von einem Anbieter verfügbar ist. Die Metriken stehen nur für die CDN-Endpunkte zur Verfügung, für die Datenverkehr anfällt.
 
 
 |Metrik                     | BESCHREIBUNG | Microsoft | Verizon | Akamai |
-|---------------------------|-------------|----------|---------|--------|
+|---------------------------|-------------|-----------|---------|--------|
 | RequestCountTotal         | Gesamtzahl von Anforderungstreffern während dieses Zeitraums | Ja | Ja |Ja |
 | RequestCountHttpStatus2xx | Anzahl aller Anforderungen, die zum HTTP-Code 2xx geführt haben (z.B. 200, 202) | Ja | Ja |Ja |
 | RequestCountHttpStatus3xx | Anzahl aller Anforderungen, die zum HTTP-Code 3xx geführt haben (z.B. 300, 302) | Ja | Ja |Ja |
@@ -304,7 +330,7 @@ Die folgende Tabelle zeigt eine Liste der in den wichtigsten Analyseprotokollen 
 | RequestCountHttpStatus304 | Anzahl aller Anforderungen, die zu einer Antwort mit dem HTTP-Code 304 geführt haben | Ja | Nein  |Ja |
 | RequestCountHttpStatus404 | Anzahl aller Anforderungen, die zu einer Antwort mit dem HTTP-Code 404 geführt haben | Ja | Nein  |Ja |
 | RequestCountCacheHit | Anzahl aller Anforderungen, die zu einem Cachetreffer geführt haben. Das Objekt wurde direkt vom POP für den Client bereitgestellt. | Ja | Ja | Nein   |
-| RequestCountCacheMiss | Anzahl aller Anforderungen, die zu einem Cachefehler geführt haben. Dies bedeutet, dass das Objekt nicht auf dem POP gefunden wurde, der die geringste Entfernung zum Client aufweist, und daher vom Ursprungsserver abgerufen wurde. | Ja | Ja | Nein  |
+| RequestCountCacheMiss | Anzahl aller Anforderungen, die zu einem Cachefehler geführt haben. Ein Cachefehler bedeutet, dass das Objekt nicht auf dem POP gefunden wurde, der die geringste Entfernung zum Client aufweist, und daher vom Ursprungsserver abgerufen wurde. | Ja | Ja | Nein  |
 | RequestCountCacheNoCache | Anzahl aller Anforderungen eines Objekts, die aufgrund einer Benutzerkonfiguration im Edgebereich nicht zwischengespeichert wurden. | Ja | Ja | Nein  |
 | RequestCountCacheUncacheable | Anzahl aller Anforderungen von Objekten, für die durch die Header „Cache-Control“ und „Expires“ das Zwischenspeichern verhindert wird. Mit diesen Headern wird angegeben, dass keine Zwischenspeicherung auf einem POP oder durch den HTTP-Client erfolgen soll. | Ja | Ja | Nein  |
 | RequestCountCacheOthers | Anzahl aller Anforderungen mit einem Cachestatus, der durch die obigen Metriken nicht abgedeckt ist | Nein  | Ja | Nein   |

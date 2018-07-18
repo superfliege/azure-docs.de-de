@@ -1,19 +1,20 @@
 ---
 title: Kennenlernen der Benutzeroberfläche von Azure IoT Central | Microsoft-Dokumentation
 description: Machen Sie sich als Ersteller mit den wichtigsten Bereichen der Benutzeroberfläche von Azure IoT Central vertraut, die Sie zur Erstellung von IoT-Lösungen verwenden.
-services: iot-central
-author: tanmaybhagwat
+author: tbhagwat3
 ms.author: tanmayb
-ms.date: 4/13/2018
+ms.date: 04/13/2018
 ms.topic: overview
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: aa0d496b073600bb976a639ea0039d2a5bbdbbcf
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.service: iot-central
+services: iot-central
+ms.custom: mvc
+manager: peterpr
+ms.openlocfilehash: 69898358026eab716c057f339d8594df43db136f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201474"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34629370"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Kennenlernen der Benutzeroberfläche von Azure IoT Central
 
@@ -36,7 +37,7 @@ _Bediener_ verwenden die Benutzeroberfläche von Azure IoT Central, um ihre Azur
 
 Über das linke Navigationsmenü können Sie auf die verschiedenen Bereiche der Anwendung zugreifen:
 
-| Menü | Beschreibung |
+| Menü | BESCHREIBUNG |
 | ---- | ----------- |
 | ![Linkes Navigationsmenü](media/overview-iot-central-tour/navigationbar.png) | <ul><li>Über die Schaltfläche **Startseite** gelangen Sie zur Startseite der Anwendung. Als Ersteller können Sie diese Startseite für die Bediener anpassen.</li><li>Die Schaltfläche **Device Explorer** dient zum Auflisten der in Ihrer Anwendung definierten Gerätevorlagen sowie der simulierten und echten Geräte, die den einzelnen Gerätevorlagen zugeordnet sind. Bediener verwenden den **Device Explorer**, um ihre verbundenen Geräte zu verwalten.</li><li>Die Schaltfläche **Device Sets** (Gerätegruppen) dient zum Anzeigen und Erstellen von Gerätegruppen. Bediener können Gerätegruppen als logische, durch eine Abfrage angegebene Sammlung von Geräten erstellen.</li><li>Die Schaltfläche **Analytics** dient zum Anzeigen von Analysen, die auf Gerätetelemetriedaten für Geräte und Gerätegruppen basieren. Bediener können benutzerdefinierte Ansichten auf der Grundlage von Gerätedaten erstellen, um basierend auf ihrer Anwendung Erkenntnisse zu gewinnen.</li><li>Die Schaltfläche **Application Builder** (Anwendungs-Generator) dient zum Anzeigen der von einem Ersteller verwendeten Tools (etwa des **Tools zum Erstellen von Gerätevorlagen**).</li><li>Die Schaltfläche **Verwaltung** dient zum Anzeigen der Seiten für die Anwendungsverwaltung, auf denen ein Administrator Anwendungseinstellungen, Benutzer und Rollen verwalten kann.</li></ul> |
 

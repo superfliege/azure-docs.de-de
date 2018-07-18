@@ -16,6 +16,7 @@ ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/15/2017
+ms.locfileid: "24811599"
 ---
 # <a name="create-a-serverless-api-using-azure-functions"></a>Erstellen einer serverlosen API mit Azure Functions
 

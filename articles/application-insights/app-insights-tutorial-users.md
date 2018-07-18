@@ -1,7 +1,7 @@
 ---
 title: Analysieren von Kundenverhalten in Azure Application Insights | Microsoft-Dokumentation
 description: 'Tutorial: Verwenden von Azure Application Insights zur Analyse der Kundeninteraktion mit Ihrer Anwendung.'
-keywords: 
+keywords: ''
 services: application-insights
 author: mrbullwinkle
 ms.author: mbullwin
@@ -15,6 +15,7 @@ ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/09/2017
+ms.locfileid: "24099020"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Verwenden von Azure Application Insights zur Analyse der Kundeninteraktion mit Ihrer Anwendung
 

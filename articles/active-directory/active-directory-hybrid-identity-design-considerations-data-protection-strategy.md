@@ -1,11 +1,11 @@
 ---
-title: "Entwerfen von Hybrididentitäten – Strategie für den Datenschutz in Azure | Microsoft-Dokumentation"
-description: "Sie definieren die Datenschutzstrategie für Ihre Hybrididentitätslösung, um die geschäftlichen Anforderungen zu erfüllen, die Sie definiert haben."
-documentationcenter: 
+title: Entwerfen von Hybrididentitäten – Strategie für den Datenschutz in Azure | Microsoft-Dokumentation
+description: Sie definieren die Datenschutzstrategie für Ihre Hybrididentitätslösung, um die geschäftlichen Anforderungen zu erfüllen, die Sie definiert haben.
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: e76fd1f4-340a-492a-84d9-e05f3b7cc396
 ms.service: active-directory
 ms.devlang: na
@@ -13,13 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/13/2017
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: d43be976f9b3fae7f3cbec1a0033f1a401ede896
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: f0def105997213ae5d356de89e6189b6441facbd
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36291915"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Definieren der Datenschutzstrategie für Ihre Hybrididentitätslösung
 In dieser Aufgabe definieren Sie die Datenschutzstrategie für Ihre Hybrididentitätslösung, um die geschäftlichen Anforderungen zu erfüllen, die Sie hier definiert haben:
@@ -55,7 +57,7 @@ Je nachdem, wie Sie die Fragen unter [Bestimmen der Datenschutzanforderungen](ac
 >
 
 ## <a name="define-content-management-options"></a>Definieren von Content Management-Optionen
-Ein Vorteil der Verwendung von Azure AD zum Verwalten einer Hybrididentitätsinfrastruktur ist, dass der Prozess aus der Perspektive des Endbenutzers vollständig transparent ist. Der Benutzer versucht, auf eine freigegebene Ressource zuzugreifen, die Ressource erfordert eine Authentifizierung, und der Benutzer muss eine Authentifizierungsanfrage an Azure AD senden, um das Token abzurufen und auf die Ressource zuzugreifen. Dieser gesamte Prozess findet im Hintergrund ohne Benutzereingriff statt. Es ist auch möglich, eine Berechtigung für eine [Gruppe](active-directory-manage-groups.md#getting-started-with-access-management) von Benutzern zu gewähren, damit sie bestimmte gemeinsame Aktionen ausführen können.
+Ein Vorteil der Verwendung von Azure AD zum Verwalten einer Hybrididentitätsinfrastruktur ist, dass der Prozess aus der Perspektive des Endbenutzers vollständig transparent ist. Der Benutzer versucht, auf eine freigegebene Ressource zuzugreifen, die Ressource erfordert eine Authentifizierung, und der Benutzer muss eine Authentifizierungsanfrage an Azure AD senden, um das Token abzurufen und auf die Ressource zuzugreifen. Dieser gesamte Prozess findet im Hintergrund ohne Benutzereingriff statt. Es ist auch möglich, eine Berechtigung für eine [Gruppe](fundamentals/active-directory-manage-groups.md#getting-started-with-access-management) von Benutzern zu gewähren, damit sie bestimmte gemeinsame Aktionen ausführen können.
 
 Organisationen, die um den Datenschutz besorgt sind, fordern in der Regel eine Klassifizierung von Daten für ihre Lösung. Wenn die aktuelle lokale Infrastruktur bereits die Klassifizierung von Daten unterstützt, kann Azure AD als Hauptrepository für die Identität des Benutzers genutzt werden. Ein gängiges, lokal für die Klassifizierung von Daten verwendetes Tool ist das [Toolkit zur Datenklassifizierung](https://msdn.microsoft.com/library/Hh204743.aspx) für Windows Server 2012 R2. Dieses Tool unterstützt Sie beim Ermitteln, Klassifizieren und Schützen von Daten auf Dateiservern in Ihrer privaten Cloud. Sie können hierfür auch die [Automatische Dateiklassifizierung](https://technet.microsoft.com/library/hh831672.aspx) in Windows Server 2012 einsetzen.
 
@@ -115,27 +117,26 @@ Sobald der Benutzer mithilfe von Azure AD authentifiziert ist, muss seine Zugrif
 
 Jede Interaktion in dem in Abbildung X gezeigten Diagramm stellt eine Zugriffssteuerungsszenerie dar, die von Azure AD abgedeckt werden kann. Im Folgenden werden die einzelnen Szenarien beschrieben:
 
-1. Bedingter Zugriff auf lokal gehostete Anwendungen: Sie können registrierte Geräte mit Zugriffsrichtlinien für Anwendungen verwenden, die für die Verwendung von AD FS mit Windows Server 2012 R2 konfiguriert sind. Weitere Informationen zum Einrichten des bedingten Zugriffs für lokale Systeme finden Sie unter [Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung](active-directory-conditional-access-azure-portal.md).
+  1. Bedingter Zugriff auf lokal gehostete Anwendungen: Sie können registrierte Geräte mit Zugriffsrichtlinien für Anwendungen verwenden, die für die Verwendung von AD FS mit Windows Server 2012 R2 konfiguriert sind. Weitere Informationen zum Einrichten des bedingten Zugriffs für lokale Systeme finden Sie unter [Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung](active-directory-conditional-access-azure-portal.md).
 
-2. Zugriffssteuerung auf das Azure-Portal: Mit Azure können Sie auch den Zugriff auf das Portal mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) steuern. Diese Methode ermöglicht dem Unternehmen die Beschränkung der Anzahl von Vorgängen, die eine einzelne Person im Azure-Portal ausführen kann. Durch Einsatz von RBAC zur Steuerung des Zugriffs auf das Portal können IT-Administratoren mithilfe folgender Ansätze zur Zugriffsverwaltung den Zugriff delegieren:
+  2. Zugriffssteuerung auf das Azure-Portal: Mit Azure können Sie auch den Zugriff auf das Portal mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) steuern. Diese Methode ermöglicht dem Unternehmen die Beschränkung der Anzahl von Vorgängen, die eine einzelne Person im Azure-Portal ausführen kann. Durch Einsatz von RBAC zur Steuerung des Zugriffs auf das Portal können IT-Administratoren mithilfe folgender Ansätze zur Zugriffsverwaltung den Zugriff delegieren:
 
-    * Gruppenbasierte Rollenzuweisung: Sie können Azure AD-Gruppen den Zugriff zuweisen, die von Ihrem lokalen Active Directory aus synchronisiert werden können. So können Sie die vorhandenen Investitionen nutzen, die Ihre Organisation für Tools und Prozesse zum Verwalten von Gruppen getätigt hat. Sie können auch das Feature zur delegierten Gruppenverwaltung von Azure AD Premium nutzen.
-    * Nutzung von integrierten Rollen in Azure: Sie können drei Rollen verwenden – Besitzer, Mitwirkender und Leser –, um sicherzustellen, dass Benutzer und Gruppen berechtigt sind, nur die Aufgaben auszuführen, die sie für ihre Arbeit benötigen.
-    * Präziser Zugriff auf Ressourcen: Sie können Benutzern und Gruppen Rollen für bestimmte Abonnements, Ressourcengruppen oder eine einzelne Azure-Ressource, z.B. eine Website oder eine Datenbank, zuweisen. Auf diese Weise können Sie sicherstellen, dass Benutzer Zugriff auf alle Ressourcen haben, die sie benötigen, und keinen Zugriff auf Ressourcen, die sie nicht verwalten müssen.
+   - Gruppenbasierte Rollenzuweisung: Sie können Azure AD-Gruppen den Zugriff zuweisen, die von Ihrem lokalen Active Directory aus synchronisiert werden können. So können Sie die vorhandenen Investitionen nutzen, die Ihre Organisation für Tools und Prozesse zum Verwalten von Gruppen getätigt hat. Sie können auch das Feature zur delegierten Gruppenverwaltung von Azure AD Premium nutzen.
+   - Nutzung von integrierten Rollen in Azure: Sie können drei Rollen verwenden – Besitzer, Mitwirkender und Leser –, um sicherzustellen, dass Benutzer und Gruppen berechtigt sind, nur die Aufgaben auszuführen, die sie für ihre Arbeit benötigen.
+   -  Präziser Zugriff auf Ressourcen: Sie können Benutzern und Gruppen Rollen für bestimmte Abonnements, Ressourcengruppen oder eine einzelne Azure-Ressource, z.B. eine Website oder eine Datenbank, zuweisen. Auf diese Weise können Sie sicherstellen, dass Benutzer Zugriff auf alle Ressourcen haben, die sie benötigen, und keinen Zugriff auf Ressourcen, die sie nicht verwalten müssen.
 
-> [!NOTE]
-> Wenn Sie die Anwendungen erstellen und die Zugriffssteuerung hierfür anpassen möchten, können Sie auch die Anwendungsrollen aus Azure AD für die Autorisierung verwenden. Lesen Sie dieses [WebApp-RoleClaims-DotNet-Beispiel](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) , um zu erfahren, wie Sie Ihre App so erstellen, dass sie diese Funktion nutzt.
->
->
+   > [!NOTE]
+   > Wenn Sie die Anwendungen erstellen und die Zugriffssteuerung hierfür anpassen möchten, können Sie auch die Anwendungsrollen aus Azure AD für die Autorisierung verwenden. Lesen Sie dieses [WebApp-RoleClaims-DotNet-Beispiel](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) , um zu erfahren, wie Sie Ihre App so erstellen, dass sie diese Funktion nutzt.
 
-3. Bedingter Zugriff für Office 365-Anwendungen mit Microsoft Intune: IT-Administratoren können Geräterichtlinien für den bedingten Zugriff bereitstellen, um Unternehmensressourcen zu schützen und gleichzeitig Information-Workern auf kompatiblen Geräten den Zugriff auf die Dienste zu gestatten. Weitere Informationen finden Sie unter [Geräterichtlinien für den bedingten Zugriff auf Office 365-Dienste](active-directory-conditional-access-device-policies.md).
 
-4. Bedingter Zugriff für SaaS-Apps: [Dieses Feature](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx) ermöglicht Ihnen die anwendungsspezifische Konfiguration von Zugriffsregeln für Multi-Factor Authentication und das Blockieren des Zugriffs für Benutzer, die nicht zu einem vertrauenswürdigen Netzwerk gehören. Die Regeln für die mehrstufige Authentifizierung können auf alle Benutzer angewendet werden, die einer Anwendung zugewiesen sind, oder nur auf Benutzer in angegebenen Sicherheitsgruppen. Benutzer können von der Pflicht zur mehrstufigen Authentifizierung ausgenommen werden, wenn sie von einer IP-Adresse innerhalb des Netzwerks der Organisation auf die Anwendung zugreifen.
+  3. Bedingter Zugriff für Office 365-Anwendungen mit Microsoft Intune: IT-Administratoren können Geräterichtlinien für den bedingten Zugriff bereitstellen, um Unternehmensressourcen zu schützen und gleichzeitig Information-Workern auf kompatiblen Geräten den Zugriff auf die Dienste zu gestatten. Weitere Informationen finden Sie unter [Geräterichtlinien für den bedingten Zugriff auf Office 365-Dienste](active-directory-conditional-access-device-policies.md).
+
+  4. Bedingter Zugriff für SaaS-Apps: [Dieses Feature](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/) ermöglicht Ihnen die anwendungsspezifische Konfiguration von Zugriffsregeln für Multi-Factor Authentication und das Blockieren des Zugriffs für Benutzer, die nicht zu einem vertrauenswürdigen Netzwerk gehören. Die Regeln für die mehrstufige Authentifizierung können auf alle Benutzer angewendet werden, die einer Anwendung zugewiesen sind, oder nur auf Benutzer in angegebenen Sicherheitsgruppen. Benutzer können von der Pflicht zur mehrstufigen Authentifizierung ausgenommen werden, wenn sie von einer IP-Adresse innerhalb des Netzwerks der Organisation auf die Anwendung zugreifen.
 
 Da die Optionen zur Zugriffssteuerung einem mehrstufigen Ansatz unterliegen, ist ein Vergleich dieser Optionen für diese Aufgabe nicht machbar. Stellen Sie sicher, dass Sie alle verfügbaren Optionen für jedes Szenario nutzen, das die Steuerung des Zugriffs auf Ihre Ressourcen erfordert.
 
 ## <a name="define-incident-response-options"></a>Definieren der Optionen für die Reaktion auf Vorfälle
-Azure AD kann die IT-Abteilung dabei unterstützen, potenzielle Sicherheitsrisiken in der Umgebung zu identifizieren, indem die Aktivität des Benutzers überwacht wird. Die IT-Abteilung kann die Zugriffs- und Nutzungsberichte von Azure AD verwenden, um sich einen Einblick in die Integrität und Sicherheit des Verzeichnisses Ihrer Organisation zu verschaffen. Mithilfe dieser Informationen kann ein IT-Administrator mögliche Sicherheitsrisiken besser bestimmen, um angemessen zu planen, wie diese Risiken eingedämmt werden können.  Das [Azure AD Premium-Abonnement](active-directory-get-started-premium.md) bietet eine Reihe von Sicherheitsberichten, die es IT-Mitarbeitern ermöglichen, diese Informationen zu erhalten. [Azure AD-Berichte](active-directory-view-access-usage-reports.md) sind wie folgt kategorisiert:
+Azure AD kann die IT-Abteilung dabei unterstützen, potenzielle Sicherheitsrisiken in der Umgebung zu identifizieren, indem die Aktivität des Benutzers überwacht wird. Die IT-Abteilung kann die Zugriffs- und Nutzungsberichte von Azure AD verwenden, um sich einen Einblick in die Integrität und Sicherheit des Verzeichnisses Ihrer Organisation zu verschaffen. Mithilfe dieser Informationen kann ein IT-Administrator mögliche Sicherheitsrisiken besser bestimmen, um angemessen zu planen, wie diese Risiken eingedämmt werden können.  Das [Azure AD Premium-Abonnement](fundamentals/active-directory-get-started-premium.md) bietet eine Reihe von Sicherheitsberichten, die es IT-Mitarbeitern ermöglichen, diese Informationen zu erhalten. [Azure AD-Berichte](active-directory-view-access-usage-reports.md) sind wie folgt kategorisiert:
 
 * **Anomalieberichte**: Enthalten Anmeldeereignisse, die als anomal eingestuft wurden. Das Ziel hierbei ist, Sie auf entsprechende Aktivitäten aufmerksam zu machen und es Ihnen zu ermöglichen, eine Entscheidung zu treffen, ob ein Ereignis verdächtig ist.
 * **Integrierte Anwendungsberichte**: Bieten Einblicke, wie Cloudanwendungen in Ihrer Organisation verwendet werden. Azure Active Directory ermöglicht die Integration in Tausende von Cloudanwendungen.
@@ -144,9 +145,9 @@ Azure AD kann die IT-Abteilung dabei unterstützen, potenzielle Sicherheitsrisik
 * **Aktivitätsprotokolle**: Enthalten eine Aufzeichnung aller überwachten Ereignisse in den letzten 24 Stunden, letzten 7 Tagen oder letzten 30 Tagen sowie von Änderungen an Gruppenaktivitäten sowie Kennwortzurücksetzungs- und Registrierungsaktivitäten.
 
 > [!TIP]
-> Ein weiterer Bericht, der auch das Team für die Reaktion auf Vorfälle bei der Bearbeitung eines Falls unterstützen kann, ist der Bericht über [Benutzer mit kompromittierten Anmeldeinformationen](http://blogs.technet.com/b/ad/archive/2015/06/15/azure-active-directory-premium-reporting-now-detects-leaked-credentials.aspx) . Dieser Bericht offenbart etwaige Übereinstimmungen zwischen der Liste mit kompromittierten Anmeldeinformationen und Ihrem Mandanten.
+> Ein weiterer Bericht, der auch das Team für die Reaktion auf Vorfälle bei der Bearbeitung eines Falls unterstützen kann, ist der Bericht über [Benutzer mit kompromittierten Anmeldeinformationen](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/15/azure-active-directory-premium-reporting-now-detects-leaked-credentials/) . Dieser Bericht offenbart etwaige Übereinstimmungen zwischen der Liste mit kompromittierten Anmeldeinformationen und Ihrem Mandanten.
 >
->
+
 
 Andere wichtige Berichte, die in Azure AD integriert sind und während der Untersuchung einer Reaktion auf einen Vorfall verwendet werden können, sind:
 

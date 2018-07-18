@@ -16,10 +16,11 @@ ms.workload: big-compute
 ms.date: 06/01/2017
 ms.author: danlep
 ms.openlocfilehash: aaf26e04fdb38fd76f4ab8211f9fdda8ebafd668
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971858"
 ---
 # <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>Erste Schritte mit Excel- und SOA-Workloads in einem HPC Pack-Cluster in Azure
 In diesem Artikel erfahren Sie, wie Sie einen Microsoft HPC Pack 2012 R2-Cluster mithilfe einer Azure-Schnellstartvorlage oder optional eines Azure PowerShell-Bereitstellungsskripts für Azure-VMs bereitstellen. Der Cluster verwendet VM-Images aus Azure Marketplace, die für die Ausführung von Microsoft Excel- oder SOA-Workloads mit HPC Pack konzipiert sind. Mit dem Cluster können Sie Excel-HPC- und SOA-Dienste über einen lokalen Clientcomputer ausführen. Zu den Excel-HPC-Diensten zählen die Abladung von Excel-Arbeitsmappen sowie benutzerdefinierte Funktionen (User-Defined Functions, UDFs) von Excel.

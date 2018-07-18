@@ -1,12 +1,12 @@
 ---
-title: "Austauschen eines PCM in einem StorSimple-Gerät der Serie 8000 | Microsoft-Dokumentation"
-description: "In diesem Thema wird erläutert, wie Sie ein oder beide Module für Stromversorgung und Kühlung (PCM) in einem StorSimple-Gerät austauschen oder ausbauen."
+title: Austauschen eines PCM in einem StorSimple-Gerät der Serie 8000 | Microsoft-Dokumentation
+description: In diesem Thema wird erläutert, wie Sie ein oder beide Module für Stromversorgung und Kühlung (PCM) in einem StorSimple-Gerät austauschen oder ausbauen.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108598"
 ---
 # <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Austauschen eines Moduls für Stromversorgung und Kühlung eines StorSimple-Geräts
 ## <a name="overview"></a>Übersicht

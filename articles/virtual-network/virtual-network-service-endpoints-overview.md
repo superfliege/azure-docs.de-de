@@ -12,14 +12,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/04/2018
+ms.date: 06/06/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: 001aadc3dee03a9868a2a78e8dfc280d504633e1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e7e79d51b59d82ebf91d68f0714b8eb7bcaafbe6
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443629"
 ---
 # <a name="virtual-network-service-endpoints"></a>Dienstendpunkte im virtuellen Netzwerk
 
@@ -27,10 +28,13 @@ Mit Dienstendpunkten von virtuellen Netzwerken (VNETs) werden der Bereich privat
 
 Dieses Feature ist für die folgenden Azure-Dienste und -Regionen verfügbar:
 
-- **Azure Storage**: Allgemein verfügbar in allen Azure-Regionen.
-- **Azure SQL-Datenbank**: Allgemein verfügbar in allen Azure-Regionen.
-- **Azure Cosmos DB**: Allgemein verfügbar in allen Azure-Regionen mit öffentlichen Clouds. 
-- **Azure SQL Data Warehouse**: Vorschau in allen Azure-Regionen mit öffentlichen Clouds.
+- **[Azure Storage:](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** Allgemein verfügbar in allen Azure-Regionen.
+- **[Azure SQL-Datenbank:](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** Allgemein verfügbar in allen Azure-Regionen.
+- **[Azure Cosmos DB:](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** Allgemein verfügbar in allen Azure-Regionen mit öffentlichen Clouds. 
+- **[Azure SQL Data Warehouse:](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** Vorschau in allen Azure-Regionen mit öffentlichen Clouds.
+- **Azure-Datenbankdienste für PostgreSQL und MySQL:** Vorschau in Azure-Regionen, in denen der Datenbankdienst verfügbar ist.
+- **[Azure Service Bus:](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** In der Vorschauversion verfügbar.
+- **[Azure Event Hubs:](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** In der Vorschauversion verfügbar.
 
 Aktuelle Benachrichtigungen finden Sie auf der Seite [Azure Virtual Network-Updates](https://azure.microsoft.com/updates/?product=virtual-network).
 
@@ -66,7 +70,7 @@ Dienstendpunkte bieten folgende Vorteile:
 
 - Dienstendpunkte werden in einem Subnetz eines virtuellen Netzwerks konfiguriert. Für Endpunkte können alle Arten von Computeinstanzen verwendet werden, die in diesem Subnetz ausgeführt werden.
 - Sie können mehrere Dienstendpunkte für alle unterstützten Azure-Dienste (z.B. Azure Storage oder Azure SQL-Datenbank) eines Subnetzes konfigurieren.
-- Bei Azure SQL müssen sich virtuelle Netzwerke in derselben Region wie die Ressource des Azure-Diensts befinden. Für Azure Storage muss sich das primäre Konto bei Verwendung von GRS- und RA-GRS-Konten in derselben Region wie das virtuelle Netzwerk befinden. Für alle anderen Dienste können die Ressourcen des Azure-Diensts in virtuellen Netzwerken in jeder Region gesichert werden. 
+- Bei Azure SQL-Datenbank müssen sich virtuelle Netzwerke in derselben Region wie die Ressource des Azure-Diensts befinden. Für Azure Storage muss sich das primäre Konto bei Verwendung von GRS- und RA-GRS-Konten in derselben Region wie das virtuelle Netzwerk befinden. Für alle anderen Dienste können die Ressourcen des Azure-Diensts in virtuellen Netzwerken in jeder Region gesichert werden. 
 - Das virtuelle Netzwerk, in dem der Endpunkt konfiguriert ist, kann sich unter demselben oder einem anderen Abonnement wie die Ressource des Azure-Diensts befinden. Weitere Informationen zu den erforderlichen Berechtigungen zum Einrichten von Endpunkten und Schützen von Azure-Diensten finden Sie unter [Bereitstellung](#Provisioning).
 - Für unterstützte Dienste können Sie neue oder vorhandene Ressourcen in virtuellen Netzwerken schützen, indem Sie Dienstendpunkte verwenden.
 
@@ -78,7 +82,7 @@ Dienstendpunkte bieten folgende Vorteile:
 - Bei Verwendung von Dienstendpunkten bleiben DNS-Einträge für Azure-Dienste unverändert und werden weiterhin in öffentliche IP-Adressen aufgelöst, die dem Azure-Dienst zugewiesen werden.
 - Netzwerksicherheitsgruppen (NSGs) mit Dienstendpunkten:
   - Da für NSGs ausgehender Internet-Datenverkehr standardmäßig zugelassen wird, ist auch der Datenverkehr aus Ihrem VNET zu Azure-Diensten zulässig. In Verbindung mit Dienstendpunkten funktioniert dies weiter wie bisher. 
-  - Falls Sie den gesamten ausgehenden Internet-Datenverkehr verweigern und nur Datenverkehr für bestimmte Azure-Dienste zulassen möchten, können Sie hierfür __Azure-Diensttags__ in Ihren NSGs verwenden. Sie können unterstützte Azure-Dienste als Ziel in Ihren NSG-Regeln angeben, und die Wartung der zugrunde liegenden IP-Adressen der einzelnen Tags wird von Azure bereitgestellt. Weitere Informationen finden Sie unter [Azure Service tags for NSGs](https://aka.ms/servicetags) (Azure-Diensttags für NSGs). 
+  - Falls Sie den gesamten ausgehenden Internet-Datenverkehr verweigern und nur Datenverkehr für bestimmte Azure-Dienste zulassen möchten, können Sie hierfür [Diensttags](security-overview.md#service-tags) in Ihren NSGs verwenden. Sie können unterstützte Azure-Dienste als Ziel in Ihren NSG-Regeln angeben, und die Wartung der zugrunde liegenden IP-Adressen der einzelnen Tags wird von Azure bereitgestellt. Weitere Informationen finden Sie unter [Azure-Diensttags für NSGs](security-overview.md#service-tags). 
 
 ### <a name="scenarios"></a>Szenarien
 
@@ -98,7 +102,7 @@ Nachdem Dienstendpunkte für einen bestimmten Dienst konfiguriert wurden, könne
   - Gibt an, dass – gegenüber Routen mit Tunnelerzwingung – eine direktere Verbindung mit dem Dienst vorhanden ist.
 
 >[!NOTE]
-> Die Dienstendpunktroute setzt alle BGP- oder UDR-Routen für die Übereinstimmung mit dem Adresspräfix eines Azure-Diensts außer Kraft. Informieren Sie sich über das [Verwenden von effektiven Routen zur Problembehandlung des Datenverkehrsflusses auf virtuellen Computern](virtual-network-routes-troubleshoot-portal.md#using-effective-routes-to-troubleshoot-vm-traffic-flow).
+> Die Dienstendpunktroute setzt alle BGP- oder UDR-Routen für die Übereinstimmung mit dem Adresspräfix eines Azure-Diensts außer Kraft. Informieren Sie sich über das [Verwenden von effektiven Routen zur Problembehandlung des Datenverkehrsflusses auf virtuellen Computern](diagnose-network-routing-problem.md).
 
 ## <a name="provisioning"></a>Bereitstellung
 
@@ -122,5 +126,5 @@ Für die Ressource eines Azure-Diensts (z.B. ein Azure Storage-Konto) können Di
 - Informieren Sie sich über das [Sichern eines Azure Storage-Konto in einem virtuellen Netzwerk](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Informieren Sie sich über das [Sichern einer Azure SQL-Datenbank in einem virtuellen Netzwerk](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Informieren Sie sich über die [Azure-Dienstintegration in virtuelle Netzwerke](virtual-network-for-azure-services.md).
--  Schnellstart: [Azure Resource Manager-Vorlage](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration) zum Einrichten eines Dienstendpunkts für das Subnetz eines VNET und zum Sichern eines Azure Storage-Kontos in diesem Subnetz
+-  Schnellstart: [Azure Resource Manager-Vorlage](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration) zum Einrichten eines Dienstendpunkts für das Subnetz eines VNET und zum Sichern eines Azure Storage-Kontos in diesem Subnetz.
 

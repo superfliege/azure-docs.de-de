@@ -1,13 +1,13 @@
 ---
-title: "Konfigurieren von Routenfiltern für Azure ExpressRoute-Verbindungen mit Microsoft-Peering: Portal | Microsoft-Dokumentation"
-description: "In diesem Artikel wird beschrieben, wie mithilfe des Azure-Portals Routenfilter für das Microsoft-Peering konfiguriert werden."
+title: 'Konfigurieren von Routenfiltern für Azure ExpressRoute-Verbindungen mit Microsoft-Peering: Portal | Microsoft-Dokumentation'
+description: In diesem Artikel wird beschrieben, wie mithilfe des Azure-Portals Routenfilter für das Microsoft-Peering konfiguriert werden.
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29387726"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Konfigurieren von Routenfiltern für Microsoft-Peering: Azure-Portal
 > [!div class="op_single_selector"]

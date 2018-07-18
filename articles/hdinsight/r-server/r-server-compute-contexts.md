@@ -1,6 +1,6 @@
 ---
-title: Rechenkontextoptionen für R Server in HDInsight – Azure | Microsoft-Dokumentation
-description: Informieren Sie sich über die verschiedenen Rechenkontextoptionen, die Benutzern mit R Server in HDInsight (Vorschau) zur Verfügung stehen.
+title: Computekontextoptionen für ML Services in HDInsight – Azure | Microsoft-Dokumentation
+description: Informieren Sie sich über die verschiedenen Computekontextoptionen, die Benutzern mit ML Services in HDInsight zur Verfügung stehen.
 services: hdinsight
 documentationcenter: ''
 author: nitinme
@@ -11,25 +11,26 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: R
 ms.topic: conceptual
-ms.date: 03/22/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 2aa10e1eab6cabe058062519ecc023b88361d742
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 57480cef48182a56b315d7d6932883c485f5a7c8
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050107"
 ---
-# <a name="compute-context-options-for-r-server-on-hdinsight"></a>Rechenkontextoptionen für R Server in HDInsight
+# <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Computekontextoptionen für ML Services in HDInsight
 
-Microsoft R Server für Azure HDInsight bestimmt durch Festlegen des Computekontexts, wie Aufrufe ausgeführt werden. In diesem Artikel werden die Optionen beschrieben, mit denen festgelegt werden kann, ob und wie die Ausführung in allen Kernen des Edgeknotens oder im HDInsight-Cluster parallelisiert werden.
+ML Services für Azure HDInsight bestimmt durch Festlegen des Computekontexts, wie Aufrufe ausgeführt werden. In diesem Artikel werden die Optionen beschrieben, mit denen festgelegt werden kann, ob und wie die Ausführung in allen Kernen des Edgeknotens oder im HDInsight-Cluster parallelisiert werden.
 
 Der Edgeknoten eines Clusters ist ein praktischer Ort für die Verbindungsherstellung mit dem Cluster und die Ausführung Ihrer R-Skripts. Mit einem Edgeknoten haben Sie die Möglichkeit, die parallelisierten verteilten Funktionen von RevoScaleR in allen Kernen der Edgeknotenserver auszuführen. Außerdem können Sie sie auf allen Knoten des Clusters ausführen, indem Sie Hadoop MapReduce von RevoScaleR oder Spark-Computekontexte verwenden.
 
-## <a name="microsoft-r-server-on-azure-hdinsight"></a>Microsoft R Server für Azure HDInsight
-[Microsoft R Server für Azure HDInsight](r-server-overview.md) bietet die neuesten Funktionen für die R-basierte Analyse. Die verwendeten Daten sind in einem HDFS-Container in Ihrem [Azure Blob Storage-Konto](../../storage/common/storage-introduction.md "Azure Blob Storage"), einem Data Lake Store oder im lokalen Dateisystem von Linux gespeichert. Da R Server auf Open Source R basiert, stehen Ihnen bei der Erstellung R-basierter Anwendungen alle über 8000 Open Source R-Pakete zur Verfügung. Auch die Routinen in [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler) – dem in R Server enthaltenen Big Data-Analysepaket von Microsoft – können genutzt werden.  
+## <a name="ml-services-on-azure-hdinsight"></a>ML Services in Azure HDInsight
+[ML Services in Azure HDInsight](r-server-overview.md) bietet die neuesten Funktionen für R-basierte Analysen. Die verwendeten Daten sind in einem HDFS-Container in Ihrem [Azure Blob Storage-Konto](../../storage/common/storage-introduction.md "Azure Blob Storage"), einem Data Lake Store oder im lokalen Dateisystem von Linux gespeichert. Da ML Services auf Open-Source-R basiert, stehen Ihnen bei der Erstellung R-basierter Anwendungen alle über 8.000 Open-Source-R-Pakete zur Verfügung. Auch die Routinen in [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler) – dem in ML Services enthaltenen Big Data-Analysepaket von Microsoft – können genutzt werden.  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>Computekontexte für einen Edgeknoten
-Im Allgemeinen wird ein R-Skript, das in R Server auf dem Edgeknoten ausgeführt wird, im R-Interpreter auf diesem Knoten ausgeführt. Bei Schritten, in denen eine RevoScaleR-Funktion aufgerufen wird, ist dies nicht der Fall. Die RevoScaleR-Aufrufe werden in einer Compute-Umgebung ausgeführt, die dadurch bestimmt wird, wie Sie den RevoScaleR-Computekontext festlegen.  Wenn Sie Ihr R-Skript auf einem Edgeknoten ausführen, sind für den Computekontext folgende Werte möglich:
+Im Allgemeinen wird ein R-Skript, das in einem ML Services-Cluster auf dem Edgeknoten ausgeführt wird, im R-Interpreter auf diesem Knoten ausgeführt. Bei Schritten, in denen eine RevoScaleR-Funktion aufgerufen wird, ist dies nicht der Fall. Die RevoScaleR-Aufrufe werden in einer Compute-Umgebung ausgeführt, die dadurch bestimmt wird, wie Sie den RevoScaleR-Computekontext festlegen.  Wenn Sie Ihr R-Skript auf einem Edgeknoten ausführen, sind für den Computekontext folgende Werte möglich:
 
 - lokal sequenziell (*local*)
 - lokal parallel (*localpar*)
@@ -77,9 +78,9 @@ Weitere Informationen und Beispiele zu RevoScaleR-Computekontexten finden Sie in
 Sie können sich auch die [Übersicht über verteiltes Computing](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing) in der [Dokumentation zu Machine Learning Server](https://docs.microsoft.com/machine-learning-server/) ansehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie die Optionen kennengelernt, mit denen festgelegt werden kann, ob und wie die Ausführung in allen Kernen des Edgeknotens oder im HDInsight-Cluster parallelisiert werden. Weitere Informationen zur Verwendung von R Server mit HDInsight-Clustern finden Sie unter den folgenden Themen:
+In diesem Artikel haben Sie die Optionen kennengelernt, mit denen festgelegt werden kann, ob und wie die Ausführung in allen Kernen des Edgeknotens oder im HDInsight-Cluster parallelisiert werden. Weitere Informationen zur Verwendung von ML Services mit HDInsight-Clustern finden Sie unter den folgenden Themen:
 
-* [Übersicht: R Server in HDInsight (Vorschau)](r-server-overview.md)
-* [Erste Schritte mit R Server für Hadoop](r-server-get-started.md)
-* [Azure Storage-Optionen für R Server in HDInsight](r-server-storage.md)
+* [Übersicht über ML Services für Hadoop](r-server-overview.md)
+* [Erste Schritte mit ML Services für Hadoop](r-server-get-started.md)
+* [Azure Storage-Lösungen für ML Services in HDInsight](r-server-storage.md)
 

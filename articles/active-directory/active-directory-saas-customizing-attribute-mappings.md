@@ -15,14 +15,15 @@ ms.topic: article
 ms.date: 03/13/2018
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78d971b47ffceb8d845f21a731176834f004f12c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7dad9f3e688c43de3eabd430bf5618ad4632ca3d
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37034879"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory
-Microsoft Azure AD bietet Unterstützung für die Benutzerbereitstellung für SaaS-Anwendungen von Drittanbietern, z. B. Salesforce, Google Apps usw. Wenn Sie die Benutzerbereitstellung für eine SaaS-Anwendung eines Drittanbieters aktiviert haben, steuert das Azure-Portal deren Attributwerte mithilfe einer Konfiguration, die als „Attributzuordnung“ bezeichnet wird.
+Microsoft Azure AD bietet Unterstützung für die Benutzerbereitstellung für SaaS-Anwendungen von Drittanbietern, z. B. Salesforce, Google Apps usw. Wenn Sie die Benutzerbereitstellung für eine SaaS-Anwendung eines Drittanbieters aktiviert haben, steuert das Azure-Portal deren Attributwerte mithilfe von Attributzuordnungen.
 
 Es ist eine vorkonfigurierte Sammlung von Attributen und Attributzuordnungen zwischen Azure AD-Benutzerobjekten und den Benutzerobjekten der einzelnen SaaS-Apps verfügbar. Einige Apps verwalten neben Benutzern andere Objekttypen wie beispielsweise Gruppen. <br> 
  Sie können die Standardattributzuordnungen den Anforderungen Ihres Unternehmens entsprechend anpassen. Dies bedeutet, dass Sie vorhandene Attributzuordnungen ändern oder löschen und neue Attributzuordnungen erstellen können.
@@ -34,7 +35,7 @@ Im Azure AD-Portal können Sie auf dieses Feature zugreifen, indem Sie auf eine 
 
 ![Salesforce][5] 
 
-Wenn Sie auf eine Zuordnungskonfiguration**** klicken, wird der zugehörige Bildschirm **Attributzuordnung** geöffnet. Es gibt Attributzuordnungen, die erforderlich sind, damit eine SaaS-Anwendung ordnungsgemäß funktioniert. Für die erforderlichen Attribute ist das Feature **Löschen** nicht verfügbar.
+Wenn Sie auf eine **Zuordnungskonfiguration** klicken, wird der zugehörige Bildschirm **Attributzuordnung** geöffnet. Es gibt Attributzuordnungen, die erforderlich sind, damit eine SaaS-Anwendung ordnungsgemäß funktioniert. Für die erforderlichen Attribute ist das Feature **Löschen** nicht verfügbar.
 
 
 ![Salesforce][6]  
@@ -55,7 +56,7 @@ Mit Attributzuordnungen steuern Sie, wie die Attribute in einer SaaS-Anwendung e
   Weitere Informationen finden Sie unter [Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory](active-directory-saas-writing-expressions-for-attribute-mappings.md).
 * **Kein** : Das Zielattribut bleibt unverändert. Wenn das Zielattribut allerdings leer ist, wird es mit dem von Ihnen angegebenen Standardwert aufgefüllt.
 
-Zusätzlich zu diesen vier grundlegenden Attributzuordnungstypen unterstützen benutzerdefinierte Attributzuordnungen das Konzept einer optionalen Zuordnung von **Standardwerten**. Die Standardwertzuordnung stellt sicher, dass ein Zielattribut mit einem Wert aufgefüllt wird, wenn weder in Azure AD noch für das Zielobjekt ein Wert vorhanden ist. Bei der üblichen Konfiguration bleibt dieses Feld leer.
+Zusätzlich zu diesen vier Basistypen unterstützen benutzerdefinierte Attributzuordnungen das Konzept einer optionalen Zuordnung von **Standardwerten**. Die Standardwertzuordnung stellt sicher, dass ein Zielattribut mit einem Wert aufgefüllt wird, wenn weder in Azure AD noch für das Zielobjekt ein Wert vorhanden ist. Bei der üblichen Konfiguration bleibt dieses Feld leer.
 
 
 ### <a name="understanding-attribute-mapping-properties"></a>Grundlegendes zu Attributzuordnungseigenschaften
@@ -83,7 +84,7 @@ Die Gruppenbereitstellung kann optional aktiviert oder deaktiviert werden, indem
 Die Attribute, die zusammen mit den Gruppenobjekten bereitgestellt werden, können wie Benutzerobjekte angepasst werden (siehe obige Beschreibung). 
 
 >[!TIP]
->Die Bereitstellung von Gruppenobjekten (Eigenschaften und Mitglieder) unterscheidet sich vom Konzept der [Zuweisung von Gruppen](active-directory-coreapps-assign-user-azure-portal.md) zu einer Anwendung. Es ist möglich, eine Gruppe einer Anwendung zuzuweisen, aber nur die in der Gruppe enthaltenen Benutzerobjekte bereitzustellen. Die Bereitstellung vollständiger Gruppenobjekte ist nicht erforderlich, um Gruppen in Zuweisungen verwenden zu können.
+>Die Bereitstellung von Gruppenobjekten (Eigenschaften und Mitglieder) unterscheidet sich vom Konzept der [Zuweisung von Gruppen](manage-apps/assign-user-or-group-access-portal.md) zu einer Anwendung. Es ist möglich, eine Gruppe einer Anwendung zuzuweisen, aber nur die in der Gruppe enthaltenen Benutzerobjekte bereitzustellen. Die Bereitstellung vollständiger Gruppenobjekte ist nicht erforderlich, um Gruppen in Zuweisungen verwenden zu können.
 
 
 ## <a name="editing-the-list-of-supported-attributes"></a>Bearbeiten der Liste unterstützter Attribute
@@ -97,8 +98,7 @@ Folgende Anwendungen und Systeme unterstützen die Anpassung der Attributliste:
 * Salesforce
 * ServiceNow
 * Workday
-* Azure Active Directory
-* Lokale Active Directory-Instanz (als Teil des Workday-Benutzerbereitstellungsconnectors)
+* Azure Active Directory ([Azure AD Graph-API-Standardattribute](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity) und benutzerdefinierte Verzeichniserweiterungen werden unterstützt)
 * Apps, die [SCIM 2.0](https://tools.ietf.org/html/rfc7643) unterstützen und das Hinzufügen von Attributen erfordern, die im [Kernschema](https://tools.ietf.org/html/rfc7643) definiert sind
 
 >[!NOTE]
@@ -125,7 +125,7 @@ Beim Bearbeiten der Liste unterstützter Attribute sind die folgenden Eigenschaf
 
 Um ein neues Attribut hinzuzufügen, scrollen Sie zum Ende der Liste der unterstützten Attribute, füllen Sie die obigen Felder anhand der verfügbaren Eingaben auf, und klicken Sie auf **Attribut hinzufügen**. Klicken Sie nach dem Hinzufügen von Attributen auf **Speichern**. Sie müssen die Registerkarte **Bereitstellung** anschließend erneut laden, damit die neuen Attribute im Attributzuordnungs-Editor verfügbar werden.
 
-## <a name="restoring-the-default-attributes-and-attribute-mappings"></a>Wiederherstellen der Standardattribute und -attributzuordnungen
+## <a name="restoring-the-default-attributes-and-attribute-mappings"></a>Wiederherstellen der Standardattribute und Attributzuordnungen
 
 Sollten Sie noch einmal von vorn anfangen und Ihre vorhandenen Zuordnungen auf den Standardzustand zurücksetzen müssen, können Sie das Kontrollkästchen **Standardzuordnungen wiederherstellen** aktivieren und die Konfiguration speichern. Dadurch werden alle Zuordnungen auf den Zustand zurückgesetzt, den sie aufweisen, wenn die Anwendung dem Azure AD-Mandanten gerade aus dem Anwendungskatalog hinzugefügt wurde. 
 
@@ -139,7 +139,7 @@ Durch die Auswahl dieser Option wird eine erneute Synchronisierung aller Benutze
 
 * Microsoft Azure AD stellt eine effiziente Implementierung eines Synchronisierungsprozesses zur Verfügung. In einer initialisierten Umgebung werden nur Objekte, die eine Aktualisierung erfordern, während eines Synchronisierungszyklus verarbeitet. 
 
-* Das Aktualisieren von Attributzuordnungen besitzt Auswirkungen auf die Leistung eines Synchronisierungszyklus. Nach einer Aktualisierung der Attributzuordnungskonfiguration müssen alle verwalteten Objekte erneut ausgewertet werden. 
+* Das Aktualisieren von Attributzuordnungen hat Auswirkungen auf die Leistung eines Synchronisierungszyklus. Nach einer Aktualisierung der Attributzuordnungskonfiguration müssen alle verwalteten Objekte erneut ausgewertet werden. 
 
 * Es hat sich bewährt, die Anzahl der aufeinanderfolgenden Änderungen an Attributzuordnungen so gering wie möglich zu halten.
 
@@ -149,8 +149,8 @@ Durch die Auswahl dieser Option wird eine erneute Synchronisierung aller Benutze
 * [Automatisieren der Bereitstellung/Bereitstellungsaufhebung von Benutzern für SaaS-Apps](active-directory-saas-app-provisioning.md)
 * [Schreiben von Ausdrücken für Attributzuordnungen](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Bereichsfilter für die Benutzerbereitstellung](active-directory-saas-scoping-filters.md)
-* [Verwenden von SCIM für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](active-directory-scim-provisioning.md)
-* [Liste der Tutorials zur Integration von SaaS-Apps](active-directory-saas-tutorial-list.md)
+* [Verwenden von SCIM für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](manage-apps/use-scim-to-provision-users-and-groups.md)
+* [Liste der Tutorials zur Integration von SaaS-Apps](saas-apps/tutorial-list.md)
 
 <!--Image references-->
 [5]: ./media/active-directory-saas-customizing-attribute-mappings/21.png

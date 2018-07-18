@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: f8149d2af5542fb311ff83160d674e4d525289dc
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 3204329dc7c9efe2b0ba0ae05d17bc93d51620b4
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011372"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37923468"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Unterstützungsmatrix für die Hyper-V-Replikation in Azure
 
@@ -33,7 +33,7 @@ Hyper-V ohne Virtual Machine Manager | Sie können die Notfallwiederherstellung 
 
 **Server** | **Anforderungen** | **Details**
 --- | --- | ---
-Hyper-V (Ausführung ohne Virtual Machine Manager) | Windows Server 2016, Windows Server 2012 R2 mit aktuellen Updates | Für die Konfiguration eines Hyper-V-Standorts in Site Recovery wird das Kombinieren von Hosts mit Windows Server 2016 und 2012 R2 nicht unterstützt.<br/><br/> Für virtuelle Computer auf einem Host unter Windows Server 2016 wird die Wiederherstellung an einem alternativen Standort nicht unterstützt.
+Hyper-V (Ausführung ohne Virtual Machine Manager) | Windows Server 2016 (einschließlich Server Core-Installation), Windows Server 2012 R2 mit den neuesten Updates | Für die Konfiguration eines Hyper-V-Standorts in Site Recovery wird das Kombinieren von Hosts mit Windows Server 2016 und 2012 R2 nicht unterstützt.<br/><br/> Für virtuelle Computer auf einem Host unter Windows Server 2016 wird die Wiederherstellung an einem alternativen Standort nicht unterstützt.
 Hyper-V (Ausführung mit Virtual Machine Manager) | Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Wenn Virtual Machine Manager verwendet wird, sollten Windows Server 2016-Hosts in Virtual Machine Manager 2016 verwaltet werden.<br/><br/> Eine Virtual Machine Manager-Cloud mit einer Mischung aus Windows Server 2016- und Windows Server 2012 R2-Hosts wird derzeit nicht unterstützt.<br/><br/> Umgebungen, die ein Upgrade eines vorhandenen Virtual Machine Manager 2012 R2-Servers auf 2016 enthalten, werden nicht unterstützt.
 
 
@@ -45,7 +45,7 @@ In der folgenden Tabelle wird die VM-Unterstützung zusammengefasst. Site Recove
  **Komponente** | **Details**
 --- | ---
 Konfiguration des virtuellen Computers | Virtuelle Computer, die nach Azure repliziert werden sollen, müssen die [Azure-Anforderungen](#failed-over-azure-vm-requirements) erfüllen.
-Gastbetriebssystem | Alle [von Azure unterstützten](https://technet.microsoft.com/library/cc794868.aspx) Gastbetriebssysteme.<br/><br/> Windows Server 2016 Nano Server wird nicht unterstützt.
+Gastbetriebssystem | Alle von Azure unterstützten Gastbetriebssysteme.<br/><br/> Windows Server 2016 Nano Server wird nicht unterstützt.
 
 
 

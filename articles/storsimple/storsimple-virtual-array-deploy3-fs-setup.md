@@ -1,11 +1,11 @@
 ---
 title: Einrichten von StorSimple Virtual Array als Dateiserver | Microsoft-Dokumentation
-description: "In diesem dritten Tutorial zur StorSimple Virtual Array-Bereitstellung lernen Sie, wie Sie ein virtuelles Gerät als Dateiserver einrichten."
+description: In diesem dritten Tutorial zur StorSimple Virtual Array-Bereitstellung lernen Sie, wie Sie ein virtuelles Gerät als Dateiserver einrichten.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f609f6ff-0927-48bb-a68a-6d8985d2fe34
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23111848"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>Bereitstellen von StorSimple Virtual Array – Einrichten als Dateiserver über das Azure-Portal
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)

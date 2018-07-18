@@ -1,24 +1,19 @@
 ---
-title: Verwenden von Azure Backup Server zum Sichern einer SharePoint-Farm in Azure | Microsoft-Dokumentation
-description: "Verwenden Sie Azure Backup Server zum Sichern und Wiederherstellen Ihrer SharePoint-Daten. Dieser Artikel stellt die benötigten Informationen bereit, um Ihre SharePoint-Farm so zu konfigurieren, dass Sie die gewünschten Daten in Azure speichern können. Sie können geschützte SharePoint-Daten vom Datenträger oder aus Azure wiederherstellen."
+title: Sichern einer SharePoint-Farm mit Azure Backup Server in Azure
+description: Verwenden Sie Azure Backup Server zum Sichern und Wiederherstellen Ihrer SharePoint-Daten. Dieser Artikel stellt die benötigten Informationen bereit, um Ihre SharePoint-Farm so zu konfigurieren, dass Sie die gewünschten Daten in Azure speichern können. Sie können geschützte SharePoint-Daten vom Datenträger oder aus Azure wiederherstellen.
 services: backup
-documentationcenter: 
 author: pvrk
 manager: shivamg
-editor: 
-ms.assetid: 34ba87a4-91f1-4054-a4a1-272af1e15496
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/24/2017
+ms.topic: conceptual
+ms.date: 6/8/2018
 ms.author: pullabhk
-ms.openlocfilehash: 3ed000affd326eb1bd7c99773ec021ad6e03cc3b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4dff27d8ef7357e5af3635cc39fb52963689e7bb
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35247964"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>Sichern einer SharePoint-Farm in Azure 
 Die Vorgehensweise zum Sichern einer SharePoint-Farm mithilfe von Microsoft Azure Backup Server (MABS) in Microsoft Azure ähnelt der Vorgehensweise zum Sichern anderer Datenquellen. Azure Backup ermöglicht die Verwendung eines flexiblen Sicherungszeitplans, mit dem Sie tägliche, wöchentliche, monatliche oder jährliche Sicherungspunkte erstellen und Aufbewahrungsrichtlinienoptionen für unterschiedliche Sicherungspunkte konfigurieren können. Mit MABS können Sie zudem lokale Festplattenkopien speichern, um die Wiederherstellung zu beschleunigen. Außerdem können Sie Kopien zur kostengünstigen, langfristigen Aufbewahrung in Azure speichern.
@@ -37,13 +32,13 @@ Vor dem Sichern einer SharePoint-Farm in Azure müssen Sie ein paar Punkte best�
 Bevor Sie fortfahren, stellen Sie sicher, [dass Azure Backup Server installiert und für den Schutz von Workloads vorbereitet wurde](backup-azure-microsoft-azure-backup.md).
 
 ### <a name="protection-agent"></a>Schutz-Agent
-Der Schutz-Agent muss auf dem Server, auf dem SharePoint ausgeführt wird, auf den Servern, auf denen SQL Server ausgeführt wird, sowie allen anderen Servern installiert werden, die der SharePoint-Farm angehören. Weitere Informationen zum Einrichten des Schutz-Agents finden Sie unter [Einrichten des Schutz-Agents](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx).  Einzige Ausnahme: Der Agent wird nur auf einem einzelnen Web-Front-End-Server (WFE) installiert. DPM benötigt den Agent auf einem WFE-Server nur als Einstiegspunkt für den Schutz.
+Der Azure Backup-Agent muss auf dem Server, auf dem SharePoint ausgeführt wird, auf den Servern, auf denen SQL Server ausgeführt wird, sowie allen anderen Servern installiert werden, die der SharePoint-Farm angehören. Weitere Informationen zum Einrichten des Schutz-Agents finden Sie unter [Einrichten des Schutz-Agents](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx).  Einzige Ausnahme: Der Agent wird nur auf einem einzelnen Web-Front-End-Server (WFE) installiert. Azure Backup Server benötigt den Agent auf einem WFE-Server nur als Einstiegspunkt für den Schutz.
 
 ### <a name="sharepoint-farm"></a>SharePoint-Farm
 Pro zehn Millionen Farmelemente müssen mindestens 2 GB Speicherplatz auf dem Volume verfügbar sein, auf dem sich der MABS-Ordner befindet. Dieser Speicherplatz wird für die Kataloggenerierung benötigt. Für die Wiederherstellung bestimmter Elemente (Websitesammlungen, Websites, Listen, Dokumentbibliotheken, Ordner, einzelne Dokumente und Listenelemente) durch MABS erstellt die Kataloggenerierung eine Liste mit den URLs aus den einzelnen Inhaltsdatenbanken. Sie können die URL-Liste im Bereich für wiederherstellbare Elemente (im Aufgabenbereich **Wiederherstellung** der MABS-Administratorkonsole) anzeigen.
 
 ### <a name="sql-server"></a>SQL Server
-MABS wird als lokales Systemkonto ausgeführt. Zum Sichern von SQL Server-Datenbanken benötigt MABS Systemadministratorberechtigungen für dieses Konto für den Server, auf dem SQL Server ausgeführt wird. Legen Sie für NT AUTHORITY\SYSTEM *sysadmin* auf dem Server fest, auf dem SQL Server ausgeführt wird, bevor Sie ihn sichern.
+Azure Backup Server wird als ein „LocalSystem“-Konto ausgeführt. Zum Sichern von SQL Server-Datenbanken benötigt MABS Systemadministratorberechtigungen für dieses Konto für den Server, auf dem SQL Server ausgeführt wird. Legen Sie für NT AUTHORITY\SYSTEM *sysadmin* auf dem Server fest, auf dem SQL Server ausgeführt wird, bevor Sie ihn sichern.
 
 Falls die SharePoint-Farm über SQL Server-Datenbanken verfügt, die mit SQL Server-Aliasnamen konfiguriert sind, installieren Sie die SQL Server-Clientkomponenten auf dem Front-End-Webserver, der von MABS geschützt wird.
 
@@ -237,4 +232,6 @@ F: Kann ich eine SharePoint-Datenbank am ursprünglichen Speicherort wiederherst
 A: Da SharePoint-Datenbanken in SQL AlwaysOn konfiguriert werden, können sie nur geändert werden, wenn die Verfügbarkeitsgruppe entfernt wird. MABS kann eine Datenbank daher nicht am ursprünglichen Speicherort wiederherstellen. Sie können eine SQL Server-Datenbank in einer anderen SQL Server-Instanz wiederherstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zum MABS-Schutz von SharePoint finden Sie in der dazugehörigen [Videoreihe](http://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
+
+Siehe den Artikel [Sichern eines Exchange-Servers](backup-azure-exchange-mabs.md).
+Siehe den Artikel [Sichern eines SQL Server-Servers](backup-azure-sql-mabs.md).

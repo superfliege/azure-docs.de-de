@@ -6,15 +6,15 @@ author: jovanpop-msft
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: jovanpop
-ms.openlocfilehash: 7707a40a39e429333ff1c20fb7884a1fb7ee2162
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: bef8d01bd4c220fac595177089088ff64ee3bc3b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365966"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646642"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatische Optimierung in Azure SQL-Datenbank
 
@@ -62,13 +62,15 @@ Im folgenden Video können Sie sich einen Überblick über die Funktionsweise de
 ## <a name="automatic-tuning-options"></a>Optionen für die automatische Optimierung
 
 In Azure SQL-Datenbank stehen folgende Optionen für die automatische Optimierung zur Verfügung:
- 1. **CREATE INDEX:** identifiziert Indizes, die die Leistung Ihrer Workload verbessern können, erstellt Indizes und überprüft automatisch, ob die Leistung der Abfragen verbessert wurde. Die Azure-Standardeinstellung für diese Option ist „aktiviert“.
- 2. **DROP INDEX:** identifiziert redundante und doppelte Indizes sowie Indizes, die über einen langen Zeitraum hinweg nicht verwendet wurden. Beachten Sie, dass die Option zurzeit nicht kompatibel mit Anwendungen ist, die Partitionswechsel und Indexhinweise verwenden. Die Azure-Standardeinstellung für diese Option ist „deaktiviert“.
- 3. **FORCE LAST GOOD PLAN:** identifiziert SQL-Abfragen mit einem Ausführungsplan, der langsamer als der vorherige gute Plan ist, und Abfragen, die den letzten bekannten guten Plan anstelle des zurückgestellten Plans verwenden. Die Azure-Standardeinstellung für diese Option ist „aktiviert“.
+ 1. **CREATE INDEX:** identifiziert Indizes, die die Leistung Ihrer Workload verbessern können, erstellt Indizes und überprüft automatisch, ob die Leistung der Abfragen verbessert wurde.
+ 2. **DROP INDEX:** identifiziert redundante und doppelte Indizes sowie Indizes, die über einen langen Zeitraum hinweg nicht verwendet wurden. Beachten Sie, dass diese Option nicht kompatibel mit Anwendungen ist, die Partitionswechsel und Indexhinweise verwenden.
+ 3. **FORCE LAST GOOD PLAN:** identifiziert SQL-Abfragen mit einem Ausführungsplan, der langsamer als der vorherige gute Plan ist, und Abfragen, die den letzten bekannten guten Plan anstelle des zurückgestellten Plans verwenden.
 
-Azure SQL-Datenbank identifiziert die Empfehlungen von **CREATE INDEX**, **DROP INDEX** und **FORCE LAST GOOD PLAN**, die Ihre Datenbank optimieren können, und zeigt sie im Azure-Portal an. Weitere Informationen zur Identifikation von Indizes, die geändert werden sollten, finden Sie unter [Azure SQL Database Advisor im Azure-Portal](sql-database-advisor-portal.md). Sie können Empfehlungen entweder manuell anwenden, indem Sie das Portal verwenden, oder Sie können einstellen, dass Azure SQL-Datenbank Empfehlungen automatisch anwendet, die Workload nach den Änderungen überwacht und überprüft, dass die Empfehlung die Leistung Ihrer Workload verbessert.
+Azure SQL-Datenbank identifiziert die Empfehlungen von **CREATE INDEX**, **DROP INDEX** und **FORCE LAST GOOD PLAN**, die Ihre Datenbank optimieren können, und zeigt sie im Azure-Portal an. Weitere Informationen zur Identifikation von Indizes, die geändert werden sollten, finden Sie unter [Azure SQL Database Advisor im Azure-Portal](sql-database-advisor-portal.md). Sie können Empfehlungen entweder manuell anwenden, indem Sie das Portal verwenden, oder Sie können einstellen, dass Azure SQL-Datenbank Empfehlungen automatisch anwendet, die Workload nach den Änderungen überwacht und überprüft, dass die Empfehlung die Leistung Ihrer Workload verbessert. 
 
-Die Optionen für die automatische Optimierung können unabhängig pro Datenbank aktiviert oder deaktiviert werden. Sie können auch auf einem logischen Server konfiguriert und auf jede Datenbank angewendet werden, die Einstellungen von diesem Server erbt. Logische Server können Azure-Standardwerte für die Einstellungen für automatische Optimierung erben. Das Konfigurieren der Optionen für die automatische Optimierung auf dem Server und das Erben von Einstellungen durch die Datenbanken auf dem Server wird für die Konfiguration der automatischen Optimierung empfohlen, da es die Verwaltung der Optionen für die automatische Optimierung bei einer großen Anzahl von Datenbanken vereinfacht.
+Die Optionen für die automatische Optimierung können unabhängig pro Datenbank aktiviert oder deaktiviert werden. Sie können auch auf einem logischen Server konfiguriert und auf jede Datenbank angewandt werden, die Einstellungen von diesem Server erbt. Logische Server können Azure-Standardwerte für die Einstellungen für automatische Optimierung erben. In den Azure-Standardwerten sind derzeit FORCE_LAST_GOOD_PLAN und CREATE_INDEX aktiviert und DROP_INDEX deaktiviert.
+
+Das Konfigurieren der Optionen für die automatische Optimierung auf dem Server und das Erben von Einstellungen durch die Datenbanken auf dem übergeordneten Server wird für die Konfiguration der automatischen Optimierung empfohlen, da es die Verwaltung der Optionen für die automatische Optimierung bei einer großen Anzahl von Datenbanken vereinfacht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,14 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 9610a8b37ead976cfdfa2fed81d4d3932055ddcc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: na
+ms.openlocfilehash: 55308c2f144ea90636fb477f82c19fd3f8276af5
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131127"
 ---
 # <a name="expressroute-manager"></a>ExpressRoute-Monitor
 
@@ -36,7 +38,7 @@ Mit der ExpressRoute-Monitor-Funktion im [Netzwerkleistungsmonitor](log-analytic
 ### <a name="configure-network-security-group-rules"></a>Konfigurieren von Regeln für Netzwerksicherheitsgruppen 
 Konfigurieren Sie für die Server in Azure, die zur Überwachung über den Netzwerkleistungsmonitor verwendet werden, Regeln für Netzwerksicherheitsgruppen (NSGs), um TCP-Datenverkehr an dem vom Netzwerkleistungsmonitor für synthetische Transaktionen verwendeten Port zuzulassen. Der Standardport ist 8084. Mit dieser Konfiguration kann der auf virtuellen Azure-Computern installierte Operations Management Suite-Agent mit einem lokalen Überwachungs-Agent kommunizieren. 
 
-Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter  [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-create-nsg-arm-pportal.md). 
+Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter  [Netzwerksicherheitsgruppen](../virtual-network/manage-network-security-group.md). 
 
 >[!NOTE]
 > Bevor Sie mit diesem Schritt fortfahren, installieren Sie den lokalen Server-Agent und den Azure-Server-Agent, und führen Sie das PowerShell-Skript „EnableRules.ps1“ aus. 

@@ -4,16 +4,16 @@ description: In diesem Artikel wird das programmgesteuerte Erstellen und Verwalt
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/07/2018
+ms.date: 05/24/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 5405566b5254c553eac584acc1653449b51ddffc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a83402316854b23fe85bff813dc9f5665bccd1fb
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195878"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34794809"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programmgesteuertes Erstellen von Richtlinien und Anzeigen von Konformitätsdaten
 
@@ -113,15 +113,19 @@ Verwenden Sie das folgende Verfahren, um eine Richtliniendefinition zu erstellen
   }
   ```
 
-2. Erstellen Sie die Richtliniendefinition, indem Sie den folgenden Aufruf verwenden:
+2. Erstellen Sie die Richtliniendefinition mithilfe eines der folgenden Aufrufe:
 
   ```
-  armclient PUT "/subscriptions/<subscriptionId>/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
+  # For defining a policy in a subscription
+  armclient PUT "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
+
+  # For defining a policy in a management group
+  armclient PUT "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
   ```
 
-  Ersetzen Sie die vorangestellte &lt;subscriptionId&gt; durch die ID des gewünschten Abonnements.
+  Ersetzen Sie „{subscriptionId}“ durch die ID Ihres Abonnements oder „{managementGroupId}“ durch die ID Ihrer [Verwaltungsgruppe](../azure-resource-manager/management-groups-overview.md).
 
-Weitere Informationen zur Struktur der Abfrage finden Sie unter [Richtliniendefinitionen – Create oder Update](/rest/api/resources/policydefinitions/createorupdate).
+  Weitere Informationen zur Struktur der Abfrage finden Sie unter [Policy Definitions - Create Or Update](/rest/api/resources/policydefinitions/createorupdate) (Richtliniendefinitionen: Erstellen oder Aktualisieren) sowie unter [Policy Definitions - Create Or Update At Management Group](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) (Richtliniendefinitionen: Erstellen oder Aktualisieren in einer Verwaltungsgruppe).
 
 Verwenden Sie das folgende Verfahren, um eine Richtlinienzuweisung zu erstellen und die Richtliniendefinition auf Ressourcengruppenebene zuzuweisen.
 
@@ -200,99 +204,6 @@ Die ID für die Richtliniendefinition, die Sie erstellt haben, sollte in etwa wi
 
 Weitere Informationen zum Verwalten von Ressourcenrichtlinien mit der Azure-Befehlszeilenschnittstelle finden Sie unter [Azure CLI-Ressourcenrichtlinien](/cli/azure/policy?view=azure-cli-latest).
 
-## <a name="identify-non-compliant-resources"></a>Identifizieren nicht konformer Ressourcen
-
-In einer Zuweisung ist eine Ressource nicht konform, wenn dafür die Richtlinien- oder Initiativenregeln nicht eingehalten werden. Die folgende Tabelle gibt Aufschluss über das Zusammenspiel zwischen den verschiedenen Richtlinienauswirkungen, der Bedingungsauswertung und dem resultierenden Konformitätszustand:
-
-| Ressourcenzustand | Wirkung | Richtlinienauswertung | Konformitätszustand |
-| --- | --- | --- | --- |
-| Exists | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Nicht konform |
-| Exists | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Konform |
-| Neu | Audit, AuditIfNotExist\* | True | Nicht konform |
-| Neu | Audit, AuditIfNotExist\* | False | Konform |
-
-\* Für die Auswirkungen „Append“, „DeployIfNotExist“ und „AuditIfNotExist“ muss die IF-Anweisung auf TRUE festgelegt sein. Für die Auswirkungen muss die Existenzbedingung außerdem auf FALSE festgelegt sein, damit sie nicht konform sind. Bei TRUE löst die IF-Bedingung die Auswertung der Existenzbedingung für die zugehörigen Ressourcen aus.
-
-Um zu verdeutlichen, wie Ressourcen als nicht konform gekennzeichnet werden, verwenden wir das oben erstellte Beispiel zur Richtlinienzuweisung.
-
-Angenommen, Sie verfügen über die Ressourcengruppe ContosoRG mit einigen Speicherkonten (rot hervorgehoben), die in öffentlichen Netzwerken verfügbar gemacht werden.
-
-![In öffentlichen Netzwerken verfügbar gemachte Speicherkonten](media/policy-insights/resource-group01.png)
-
-In diesem Beispiel ist Vorsicht aufgrund von Sicherheitsrisiken geboten. Nachdem Sie nun eine Richtlinienzuweisung erstellt haben, wird sie für alle Speicherkonten in der Ressourcengruppe ContosoRG ausgewertet. Sie überprüft die drei nicht konformen Speicherkonten und ändert den Status daher jeweils in **nicht konform**.
-
-![Überwachte nicht konforme Speicherkonten](media/policy-insights/resource-group03.png)
-
-Verwenden Sie das folgende Verfahren zum Identifizieren von Ressourcen in einer Ressourcengruppe, die nicht mit der Richtlinienzuweisung konform sind. In diesem Beispiel sind die Ressourcen Speicherkonten in der Ressourcengruppe ContosoRG.
-
-1. Rufen Sie die ID der Richtlinienzuweisung ab, indem Sie die folgenden Befehle ausführen:
-
-  ```azurepowershell-interactive
-  $policyAssignment = Get-AzureRmPolicyAssignment | Where-Object { $_.Properties.displayName -eq 'Audit Storage Accounts with Open Public Networks' }
-  $policyAssignment.PolicyAssignmentId
-  ```
-
-  Weitere Informationen zum Abrufen der ID einer Richtlinienzuweisung finden Sie unter [Get-AzureRmPolicyAssignment](/powershell/module/azurerm.resources/Get-AzureRmPolicyAssignment).
-
-2. Führen Sie den folgenden Befehl aus, um die Ressourcen-IDs der nicht konformen Ressourcen in eine JSON-Datei zu kopieren:
-
-  ```
-  armclient POST "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2017-12-12-preview&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>
-  ```
-
-3. Die Ergebnisse sollten in etwa wie im folgenden Beispiel aussehen:
-
-  ```json
-  {
-      "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest",
-      "@odata.count": 3,
-      "value": [{
-              "@odata.id": null,
-              "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
-              "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.storage/storageaccounts/<storageaccount1Id>"
-          },
-          {
-              "@odata.id": null,
-              "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
-              "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.storage/storageaccounts/<storageaccount2Id>"
-          },
-          {
-              "@odata.id": null,
-              "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
-              "ResourceId": "/subscriptions/<subscriptionName>/resourcegroups/<rgname>/providers/microsoft.storage/storageaccounts/<storageaccount3ID>"
-          }
-      ]
-  }
-  ```
-
-Die Ergebnisse entsprechen in etwa dem, was üblicherweise in der [Azure-Portalansicht](assign-policy-definition.md#identify-non-compliant-resources) unter **Nicht konforme Ressourcen** zu sehen ist.
-
-Derzeit werden nicht konforme Ressourcen nur über das Azure-Portal und mit HTTP-Anforderungen identifiziert. Weitere Informationen zum Abfragen von Richtlinienzuständen finden Sie im API-Referenzartikel zum [Richtlinienstatus](/rest/api/policy-insights/policystates).
-
-## <a name="view-policy-events"></a>Anzeigen von Richtlinienereignissen
-
-Wenn eine Ressource erstellt oder aktualisiert wird, wird ein Ergebnis der Richtlinienauswertung generiert. Diese Ergebnisse werden als _Richtlinienereignisse_ bezeichnet. Führen Sie die folgende Abfrage aus, um alle Richtlinienereignisse anzuzeigen, die der Richtlinienzuweisung zugeordnet sind.
-
-```
-armclient POST "/subscriptions/<subscriptionId>/providers/Microsoft.Authorization/policyDefinitions/Audit Storage Accounts Open to Public Networks/providers/Microsoft.PolicyInsights/policyEvents/default/queryResults?api-version=2017-12-12-preview"
-```
-
-Ihre Ergebnisse sollten in etwa wie im folgenden Beispiel aussehen:
-
-```json
-{
-    "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyEvents/$metadata#default",
-    "@odata.count": 1,
-    "value": [{
-        "@odata.id": null,
-        "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyEvents/$metadata#default/$entity",
-        "NumAuditEvents": 3
-    }]
-}
-```
-
-Wie Richtlinienzustände auch, können Richtlinienereignisse nur mit HTTP-Anforderungen angezeigt werden. Weitere Informationen zum Abfragen von Richtlinienereignissen finden Sie im Referenzartikel zu [Richtlinienereignissen](/rest/api/policy-insights/policyevents).
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu den in diesem Artikel verwendeten Befehlen und Abfragen finden Sie in den folgenden Artikeln.
@@ -301,3 +212,4 @@ Weitere Informationen zu den in diesem Artikel verwendeten Befehlen und Abfragen
 - [Azure RM-PowerShell-Module](/powershell/module/azurerm.resources/#policies)
 - [Befehle für Azure CLI-Richtlinien](/cli/azure/policy?view=azure-cli-latest)
 - [Ressourcenanbieter „Policy Insights“ – REST-API-Referenz](/rest/api/policy-insights)
+- [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../azure-resource-manager/management-groups-overview.md)

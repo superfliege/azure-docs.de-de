@@ -4,22 +4,21 @@ description: Beheben von häufigen Problemen bei der Azure-Dateisynchronisierung
 services: storage
 documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: jgerend
+manager: aungoo
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 05/31/2018
 ms.author: wgries
-ms.openlocfilehash: 7f3d9672e9fc152580f49cf06b431ced890d9f08
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: ea05c29bb40b595ad32304df55a79a9cf82acc18
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010923"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738437"
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Problembehandlung bei der Azure-Dateisynchronisierung (Vorschau)
 Verwenden Sie Azure File Sync (Vorschau), um die Dateifreigaben Ihrer Organisation in Azure Files zu zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit Azure File Sync werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -30,6 +29,9 @@ Dieser Artikel enthält Informationen zur Behebung von Fehlern und Lösung von P
 2. [Azure Storage-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
 3. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) 
 4. Microsoft-Support. Wählen Sie zum Erstellen einer neuen Supportanfrage im Azure-Portal auf der Registerkarte **Hilfe** die Schaltfläche **Hilfe und Support** und anschließend die Option **Neue Supportanfrage**.
+
+## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>Es besteht ein Problem mit Azure File Sync auf dem Server (Synchronisierung, Cloudtiering usw.). Soll der Serverendpunkt entfernt und neu erstellt werden?
+[!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
 
 ## <a name="storage-sync-service-object-management"></a>Objektverwaltung im Speichersynchronisierungsdienst
 Bei der Verschiebung von Ressourcen von einem Abonnement in ein anderes wird das Verschieben von Dateisynchronisierungsressourcen (Speichersynchronisierungsdienst) blockiert. 
@@ -155,7 +157,7 @@ Wenn auf einem Server ein Synchronisierungsfehler auftritt:
     2. Stellen Sie sicher, dass der Azure-Dienst für die Dateisynchronisierung auf dem Server ausgeführt wird. Öffnen Sie zu diesem Zweck das Dienste-MMC-Snap-In, und überprüfen Sie, ob der Agentdienst für die Speichersynchronisierung (FileSyncSvc) ausgeführt wird.
 
 <a id="replica-not-ready"></a>**Fehler bei der Synchronisierung: „0x80c8300f – Das Replikat ist nicht zum Ausführen des erforderlichen Vorgangs bereit“**  
-Dieses Problem ist zu erwarten, wenn Sie einen Cloudendpunkt erstellen und eine Azure-Dateifreigabe verwenden, die Daten enthält. Wenn die Ausführung eines Auftrags zum Erkennen von Änderungen auf der Azure-Dateifreigabe abgeschlossen ist (das kann bis zu 24 Stunden dauern), sollte die Synchronisierung anschließend ordnungsgemäß funktionieren.
+Dieses Problem ist zu erwarten, wenn Sie einen Cloudendpunkt erstellen und eine Azure-Dateifreigabe verwenden, die Daten enthält. Der Änderungserkennungsauftrag, bei dem die Azure-Dateifreigabe auf Änderungen geprüft wird, wird laut Zeitplan alle 24 Stunden ausgeführt.  Der Zeitaufwand hängt von der Größe des Namespace in der Azure-Dateifreigabe ab.  Dieser Fehler sollte nach Abschluss behoben sein.
 
 
     > [!NOTE]

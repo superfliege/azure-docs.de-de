@@ -1,11 +1,11 @@
 ---
-title: "DMZ-Beispiel – Erstellen einer DMZ zum Schützen von Anwendungen mit einer Firewall und NSGs | Microsoft Docs"
+title: DMZ-Beispiel – Erstellen einer DMZ zum Schützen von Anwendungen mit einer Firewall und NSGs | Microsoft Docs
 description: Erstellen einer DMZ mit einer Firewall und Netzwerksicherheitsgruppen (NSGs)
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
+editor: ''
 ms.assetid: c78491c7-54ac-4469-851c-b35bfed0f528
 ms.service: virtual-network
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23126928"
 ---
 # <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>Beispiel 2 – Erstellen einer DMZ zum Schützen von Anwendungen mit einer Firewall und NSGs
 [Zurück zur Seite mit Best Practices zu Sicherheitsgrenzen][HOME]

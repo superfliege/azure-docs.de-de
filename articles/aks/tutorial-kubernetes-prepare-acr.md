@@ -2,22 +2,23 @@
 title: Tutorial zu Kubernetes in Azure – Vorbereiten eines ACR
 description: AKS-Tutorial – Vorbereiten eines ACR
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/22/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 1ffa6ed801f5e261e79b0f7ca505d869fa3b2532
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 1e512bdd0a7df50b19fa49bd7b83632499775b04
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927722"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Tutorial: Bereitstellen und Verwenden von Azure Container Registry
 
-Azure Container Registry (ACR) ist eine Azure-basierte, private Registrierung für Docker-Containerimages. In diesem Tutorial – Teil 2 von 8 – werden die Schritte für die Bereitstellung einer Azure Container Registry-Instanz und die Übertragung von Containerimages in diese Instanz per Push erläutert. Folgende Schritte werden ausgeführt:
+Azure Container Registry (ACR) ist eine Azure-basierte, private Registrierung für Docker-Containerimages. In diesem Tutorial – Teil 2 von 7 – werden die Schritte für die Bereitstellung einer Azure Container Registry-Instanz und die Übertragung von Containerimages in diese Instanz per Push erläutert. Folgende Schritte werden ausgeführt:
 
 > [!div class="checklist"]
 > * Bereitstellen einer Azure Container Registry-Instanz
@@ -121,7 +122,7 @@ Dieser Vorgang nimmt einige Minuten in Anspruch.
 
 ## <a name="list-images-in-registry"></a>Auflisten von Images in der Registrierung
 
-Führen Sie den Befehl [az acr repository list][az-acr-repository-list] aus, um eine Liste der Images zurückzugeben, die per Push in Ihre Azure Container Registry-Instanz übertragen wurden. Aktualisieren Sie den Befehl mit dem Namen der ACR-Instanz.
+Führen Sie den Befehl [az acr repository list][az-acr-repository-list] aus, um eine Liste mit den Images zurückzugeben, die mithilfe von Push an Ihre Azure Container Registry-Instanz übertragen wurden. Aktualisieren Sie den Befehl mit dem Namen der ACR-Instanz.
 
 ```azurecli
 az acr repository list --name <acrName> --output table

@@ -3,7 +3,7 @@ title: Verschlüsseln von Datenträgern für Azure-Skalierungsgruppen mit Azure 
 description: Erfahren Sie, wie Sie Azure CLI 2.0 zum Verschlüsseln von VM-Instanzen und verknüpften Datenträgern in einer VM-Skalierungsgruppe von Linux verwenden.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: iainfou
-ms.openlocfilehash: 22d3c763317def137b4e0beb155f28585d7c6ae1
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: cynthn
+ms.openlocfilehash: a01a0ae09b91b550af4617a46f7c0d8647a5f4be
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32776413"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38704554"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli-20-preview"></a>Verschlüsseln von Betriebssystem- und angefügten Datenträgern in einer VM-Skalierungsgruppe mit Azure CLI 2.0 (Vorschauversion)
 

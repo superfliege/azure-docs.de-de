@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: 0df54d1758693bce5fb5fd74c3be9c4cfd7dccb6
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 3377a0b4e6440d83962d103b3e1770ccf43bd785
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752920"
 ---
 # <a name="management-solutions-in-azure"></a>Verwaltungslösungen in Azure
 Verwaltungslösungen nutzen Dienste in Azure, um zusätzliche Erkenntnisse zum Betrieb einer bestimmten Anwendung oder eines bestimmten Diensts zu liefern. Dieser Artikel enthält eine kurze Übersicht über Verwaltungslösungen in Azure sowie Details zu deren Verwendung und Installation.
@@ -51,21 +52,17 @@ Klicken Sie auf den Namen einer Lösung, um die dazugehörige Zusammenfassungsse
 ![Lösungseigenschaften](media/monitoring-solutions/solution-properties.png)
 
 
-## <a name="find-management-solutions"></a>Suchen nach Verwaltungslösungen
-Über den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) können Sie nach verfügbaren Verwaltungslösungen von Microsoft und Partnern suchen und die gewünschten Lösungen installieren. Führen Sie eine [Suche nach *Verwaltungslösungen*](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions) durch, um nach Verwaltungslösungen zu filtern, und klicken Sie anschließend auf ein beliebiges Element, um weitere Informationen zu erhalten.
-
-![Marketplace](media/monitoring-solutions/marketplace.png)
 
 ## <a name="install-a-management-solution"></a>Installieren einer Verwaltungslösung
+Verwaltungslösungen von Microsoft und Partnern sind im [Azure Marketplace](https://azuremarketplace.microsoft.com) verfügbar. Sie können nach verfügbaren Lösungen suchen und sie mit folgendem Verfahren installieren.
 
-### <a name="install-a-management-solution-from-the-azure-marketplace"></a>Installieren einer Verwaltungslösung über den Azure Marketplace
-Verwenden Sie eine der folgenden Methoden, um nach einer Verwaltungslösung zu suchen und die Installation zu starten:
+1. Klicken Sie in der [Liste mit Lösungen für Ihr Abonnement](#list-installed-management-solutions) auf **Hinzufügen**. 
+1. Klicken Sie rechts neben **Verwaltungslösungen** auf **More** (Mehr). 
+1. Suchen Sie die gewünschte Verwaltungslösung, und lesen Sie ihre Beschreibung.
+1. Klicken Sie auf **Erstellen**, um den Installationsprozess zu starten.
+1. Zu Beginn des Installationsvorgangs werden Sie zur Angabe der erforderlichen Konfiguration aufgefordert. Diese unterscheidet sich von Lösung zu Lösung. Bei jeder Konfiguration müssen Sie jedoch einen Log Analytics-Arbeitsbereich für die Installation der Lösung sowie für die Speicherung der gesammelten Daten auswählen. 
 
-- Klicken Sie im [Azure Marketplace](#find-management-solutions) für eine Verwaltungslösung auf **Jetzt anfordern**.
-- Klicken Sie in der [Liste mit Lösungen für Ihr Abonnement](#list-installed-management-solutions) auf **Hinzufügen**. Klicken Sie rechts neben **Verwaltungslösungen** auf **More** (Mehr). Suchen Sie die gewünschte Verwaltungslösung, und klicken Sie auf **Erstellen**.
-- Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Überwachung + Verwaltung** > **Alle anzeigen**. Klicken Sie rechts neben **Verwaltungslösungen** auf **More** (Mehr). Suchen Sie die gewünschte Verwaltungslösung, und klicken Sie auf **Erstellen**.
-
-Zu Beginn des Installationsvorgangs werden Sie zur Angabe der erforderlichen Konfiguration aufgefordert. Diese unterscheidet sich von Lösung zu Lösung. Bei jeder Konfiguration müssen Sie jedoch einen Log Analytics-Arbeitsbereich für die Installation der Lösung sowie für die Speicherung der gesammelten Daten auswählen. Außerdem müssen Sie ggf. [ein Automation-Konto angeben](#log-analytics-workspace-and-automation-account), sofern dies für die Lösung erforderlich ist.
+![Installieren einer Lösung](media/monitoring-solutions/install-solution.png)
 
 ### <a name="install-a-solution-from-the-community"></a>Installieren einer Lösung aus der Community
 Mitglieder der Community können Verwaltungslösungen für Azure-Schnellstartvorlagen senden. Sie können diese Lösungen entweder direkt installieren oder Vorlagen für eine spätere Installation herunterladen.

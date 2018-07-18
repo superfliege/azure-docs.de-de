@@ -8,17 +8,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: b406a0cd3e5176649b33d6ad8f41facb7043952d
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 6d8eedbbf4a682443e73ecb9cf9496f3cdd1cd9d
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34837200"
 ---
 # <a name="business-understanding"></a>Geschäftliche Aspekte
 
@@ -80,7 +82,7 @@ Sie könnten z.B. feststellen, dass vorhandene Systeme zusätzliche Arten von Da
 Hier sind die Ergebnisse dieser Phase angegeben:
 
    * [Charta-Dokument:](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md) In der Strukturdefinition des TDSP-Projekts ist eine Standardvorlage enthalten. Das Charta-Dokument ist ein dynamisches Dokument. Sie passen die Vorlage im Verlauf des Projekts an, wenn Sie neue Erkenntnisse gewinnen oder sich die Geschäftsanforderungen ändern. Der Schlüssel ist, dass dieses Dokument immer wieder durchlaufen wird und während des Ermittlungsprozesses weitere Details hinzugefügt werden. Beziehen Sie den Kunden und andere Projektbeteiligte in das Vornehmen der Änderungen ein, und informieren Sie sie eindeutig über die Gründe für die Änderungen.  
-   * [Datenquellen:](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#raw-data-sources) Dies ist der Abschnitt **Raw Data Sources** (Rohdatenquellen) des Berichts **Datendefinitionen** im Ordner **Data Report** (Datenbericht) des TDSP-Projekts. Er enthält die Datenquellen. In diesem Abschnitt werden der Quell- und Zielspeicherort für die Rohdaten angegeben. In späteren Phasen fügen Sie weitere Details ein, z.B. Skripts für das Verschieben der Daten in die Analyseumgebung.  
+   * [Datenquellen:](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources) Dies ist der Abschnitt **Raw Data Sources** (Rohdatenquellen) des Berichts **Datendefinitionen** im Ordner **Data Report** (Datenbericht) des TDSP-Projekts. Er enthält die Datenquellen. In diesem Abschnitt werden der Quell- und Zielspeicherort für die Rohdaten angegeben. In späteren Phasen fügen Sie weitere Details ein, z.B. Skripts für das Verschieben der Daten in die Analyseumgebung.  
    * [Data Dictionaries](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries) (Datenwörterbücher): Dieses Dokument enthält Beschreibungen der Daten, die durch den Kunden bereitgestellt werden. Diese Beschreibungen enthalten Informationen zum Schema (Datentypen und Informationen zu Validierungsregeln, sofern vorhanden) und zu den Diagrammen zu den Entitätsbeziehungen, sofern vorhanden.
 
 ## <a name="next-steps"></a>Nächste Schritte

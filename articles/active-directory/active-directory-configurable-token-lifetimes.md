@@ -16,11 +16,12 @@ ms.date: 04/19/2018
 ms.author: hirsin
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: a62d7a36eeb84b06baa4f2968d48f4a7afcaa05d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 95a3c1d3effe6d4b73354fb3ef871aeb7767bfb4
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228566"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (öffentliche Vorschau)
 Sie können die Gültigkeitsdauer eines Tokens angeben, das von Azure Active Directory (Azure AD) ausgestellt wird. Die Tokengültigkeitsdauer können Sie für alle Apps Ihrer Organisation, für eine mehrinstanzenfähige Anwendung (Multiorganisationsanwendung) oder für einen bestimmten Dienstprinzipal in Ihrer Organisation festlegen.
@@ -278,7 +279,7 @@ In diesem Beispiel erstellen Sie eine Richtlinie, bei der es erforderlich ist, d
 
 2.  Weisen Sie die Richtlinie Ihrem Dienstprinzipal zu. Rufen Sie außerdem die **ObjectId** Ihres Dienstprinzipals ab. 
 
-    1.  Sie können entweder [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) oder [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abfragen, um alle Dienstprinzipale Ihrer Organisation anzuzeigen. Dies können Sie auch im [Azure AD Graph-Explorer](https://graphexplorer.cloudapp.net/) und im [Microsoft Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) testen. Verwenden Sie hierzu Ihr Azure AD-Konto.
+    1.  Sie können entweder [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) oder [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abfragen, um alle Dienstprinzipale Ihrer Organisation anzuzeigen. Dies können Sie auch im [Azure AD Graph-Explorer](https://graphexplorer.azurewebsites.net/) und im [Microsoft Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) testen. Verwenden Sie hierzu Ihr Azure AD-Konto.
 
     2.  Führen Sie den folgenden Befehl aus, wenn Sie über die **ObjectId** Ihres Dienstprinzipals verfügen:
 
@@ -334,7 +335,7 @@ In diesem Beispiel erstellen Sie einige Richtlinien, um zu erfahren, wie das Pri
 
     Sie verfügen jetzt über eine Richtlinie, die für die gesamte Organisation gilt. Es kann beispielsweise sein, dass diese 30-Tage-Richtlinie für einen bestimmten Dienstprinzipal beibehalten werden soll, während die Organisationsstandardrichtlinie so geändert wird, dass sie als Obergrenze für „Bis zum Widerruf“ fungiert.
 
-    1.  Sie können entweder [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) oder [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abfragen, um alle Dienstprinzipale Ihrer Organisation anzuzeigen. Dies können Sie auch im [Azure AD Graph-Explorer](https://graphexplorer.cloudapp.net/) und im [Microsoft Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) testen. Verwenden Sie hierzu Ihr Azure AD-Konto.
+    1.  Sie können entweder [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) oder [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abfragen, um alle Dienstprinzipale Ihrer Organisation anzuzeigen. Dies können Sie auch im [Azure AD Graph-Explorer](https://graphexplorer.azurewebsites.net/) und im [Microsoft Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) testen. Verwenden Sie hierzu Ihr Azure AD-Konto.
 
     2.  Führen Sie den folgenden Befehl aus, wenn Sie über die **ObjectId** Ihres Dienstprinzipals verfügen:
 

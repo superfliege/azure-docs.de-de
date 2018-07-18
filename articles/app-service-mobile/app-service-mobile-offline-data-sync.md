@@ -1,10 +1,10 @@
 ---
 title: Synchronisierung von Offlinedaten in Azure Mobile Apps | Microsoft-Dokumentation
-description: "Eine grundlegende Übersicht über das Feature zur Synchronisierung von Offlinedaten für Azure Mobile Apps"
+description: Eine grundlegende Übersicht über das Feature zur Synchronisierung von Offlinedaten für Azure Mobile Apps
 documentationcenter: windows
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 services: app-service\mobile
 ms.assetid: 982fb683-8884-40da-96e6-77eeca2500e3
 ms.service: app-service-mobile
@@ -14,11 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 5ea1d655f50da49be88f7b6ae91231c4d2258fa7
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 403b3289a6135a59e888c4a7bf1cd9cbe40c8ac0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597976"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Synchronisierung von Offlinedaten in Azure Mobile Apps
 ## <a name="what-is-offline-data-sync"></a>Was ist die Synchronisierung von Offlinedaten?
@@ -52,7 +53,7 @@ Zur Unterstützung der Offlinenutzung sollte Ihre App stattdessen die *Synchroni
 ## <a name="what-is-a-local-store"></a>Was ist ein lokaler Speicher?
 Ein lokaler Speicher ist die Datenpersistenzebene auf dem Clientgerät. Die Client-SDKs von Azure Mobile Apps bieten eine Standardimplementierung für den lokalen Speicher. Unter Windows, Xamarin und Android basiert sie auf SQLite. Unter iOS basiert sie auf Core Data.
 
-Um die SQLite-basierte Implementierung für Windows Phone oder Windows Store 8.1 verwenden zu können, müssen Sie eine SQLite-Erweiterung installieren. Weitere Informationen finden Sie unter [Aktivieren der Offlinesynchronisierung für Ihre Windows-App]. Im Lieferumfang von Android und iOS ist im Betriebssystem selbst eine Version von SQLite enthalten, weshalb es nicht notwendig ist, auf eine eigene Version von SQLite zu verweisen.
+Um die SQLite-basierte Implementierung für Windows Phone oder den Microsoft Store verwenden zu können, müssen Sie eine SQLite-Erweiterung installieren. Weitere Informationen finden Sie unter [Aktivieren der Offlinesynchronisierung für Ihre Windows-App]. Im Lieferumfang von Android und iOS ist im Betriebssystem selbst eine Version von SQLite enthalten, weshalb es nicht notwendig ist, auf eine eigene Version von SQLite zu verweisen.
 
 Entwickler können auch ihren eigenen lokalen Speicher implementieren. Wenn Sie Daten in einem verschlüsselten Format auf dem mobilen Client speichern möchten, können Sie z. B. einen lokalen Speicher definieren, der SQLCipher für die Verschlüsselung verwendet.
 

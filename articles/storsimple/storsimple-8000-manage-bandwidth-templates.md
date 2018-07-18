@@ -1,12 +1,12 @@
 ---
-title: "Verwalten von Bandbreitenvorlagen für Geräte der StorSimple 8000-Serie | Microsoft-Dokumentation"
+title: Verwalten von Bandbreitenvorlagen für Geräte der StorSimple 8000-Serie | Microsoft-Dokumentation
 description: Beschreibt die Verwaltung von StorSimple-Bandbreitenvorlagen, mit denen Sie die Auslastung der Netzwerkbandbreite steuern.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108618"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-bandwidth-templates"></a>Verwalten von StorSimple-Bandbreitenvorlagen mithilfe des StorSimple-Geräte-Manager-Diensts
 

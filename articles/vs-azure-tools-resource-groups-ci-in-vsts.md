@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192943"
 ---
 # <a name="continuous-integration-in-visual-studio-team-services-using-azure-resource-group-deployment-projects"></a>Continuous Integration in Visual Studio Team Services mit Azure-Ressourcengruppen-Bereitstellungsprojekten
 Zum Bereitstellen einer Azure-Vorlage führen Sie Aufgaben in verschiedenen Phasen aus: „Erstellen“, „Testen“, „Nach Azure kopieren“ (auch als „Staging“ bezeichnet) und „Vorlage bereitstellen“. Zum Bereitstellen von Vorlagen in Visual Studio Team Services (VS Team Services) gibt es zwei Möglichkeiten. Da beide Verfahren zum gleichen Ergebnis führen, können Sie das Verfahren wählen, das am besten in Ihren Workflow passt.

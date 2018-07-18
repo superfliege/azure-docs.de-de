@@ -1,24 +1,19 @@
 ---
-title: Verwalten von mit Resource Manager bereitgestellten Sicherungen virtueller Computer | Microsoft Docs
-description: "Es wird beschrieben, wie Sie Sicherungen virtueller Computer verwalten und überwachen, die von Resource Manager bereitgestellt werden."
+title: Verwalten von mit Resource Manager bereitgestellten Sicherungen virtueller Computer
+description: Es wird beschrieben, wie Sie Sicherungen virtueller Computer verwalten und überwachen, die von Resource Manager bereitgestellt werden.
 services: backup
-documentationcenter: 
 author: trinadhk
 manager: shreeshd
-editor: 
-ms.assetid: f3050283-d60f-472d-b464-cb844e70d67e
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2016
-ms.author: trinadhk;markgal
-ms.openlocfilehash: f4613746a427e6987366eeb46605524cd3aacbe2
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: trinadhk
+ms.openlocfilehash: 4d45db6ba6354f85c3ed67561751720b6f6f4b77
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38465719"
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>Verwalten der Sicherung virtueller Computer
 
@@ -42,7 +37,7 @@ Bei vielen Verwaltungsaufgaben mit einer VM-Sicherung muss zunächst der Tresor 
 ![Vollständige Ansicht mit Schieberegler](./media/backup-azure-manage-vms/bottom-slider.png)
 
 ### <a name="open-a-recovery-services-vault-in-the-dashboard"></a>Öffnen Sie im Dashboard einen Recovery Services-Tresor:
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Klicken Sie im Hub-Menü auf **Durchsuchen**, und geben Sie in der Liste mit den Ressourcen **Recovery Services** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Klicken Sie auf **Recovery Services-Tresor**.
 
     ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)

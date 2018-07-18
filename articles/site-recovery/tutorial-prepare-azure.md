@@ -5,26 +5,30 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/16/2018
+ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 95d6673acaf3cbac2098ac7ae30114696f477045
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 6a113169cb3f8fea1012643efcb56e5cf6c7e908
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212788"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915968"
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>Vorbereiten von Azure-Ressourcen für die Replikation von lokalen Computern
 
  [Azure Site Recovery](site-recovery-overview.md) unterstützt Ihre Strategien für Geschäftskontinuität und Notfallwiederherstellung, indem die Verfügbarkeit Ihrer Geschäftsanwendungen bei geplanten und ungeplanten Ausfällen gewährleistet wird. Site Recovery verwaltet und koordiniert die Notfallwiederherstellung von lokalen Computern sowie virtuellen Azure-Computern (VMs), einschließlich Replikation, Failover und Wiederherstellung.
 
-In diesem Tutorial wird gezeigt, wie Sie Azure-Komponenten vorbereiten, wenn Sie lokale virtuelle Computer (Hyper-V oder VMware) oder physische Windows/Linux-Server in Azure replizieren möchten. In diesem Tutorial lernen Sie Folgendes:
+In diesem Artikel ist das erste Tutorial in einer Reihe, welche die Einrichtung der Notfallwiederherstellung für lokale virtuelle Computer veranschaulicht. Die Informationen gelten für das Schützen von lokalen virtuellen VMware-Computern, virtuellen Hyper-V-Computern und physischen Servern.
+
+Tutorials dienen zur Veranschaulichung des einfachsten Bereitstellungspfads für ein Szenario. Sie verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. 
+
+In diesem Artikel wird gezeigt, wie Sie Azure-Komponenten vorbereiten, wenn Sie lokale virtuelle Computer (Hyper-V oder VMware) oder physische Windows/Linux-Server in Azure replizieren möchten. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Überprüfen, ob Ihr Azure-Konto über Replikationsberechtigungen verfügt
-> * Erstellen eines Azure-Speicherkontos Darin werden replizierte Daten gespeichert.
-> * Erstellen Sie einen Recovery Services-Tresor.
+> * Erstellen eines Azure-Speicherkontos Images von replizierten Computern werden in diesem Konto gespeichert.
+> * Erstellen Sie einen Recovery Services-Tresor. Ein Tresor enthält Metadaten und Konfigurationsinformationen für virtuelle Computer und andere Replikationskomponenten.
 > * Richten Sie ein Azure-Netzwerk ein. Wenn die Azure-VMs nach einem Failover erstellt werden, werden sie mit diesem Azure-Netzwerk verbunden.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen, bevor Sie beginnen.
@@ -45,27 +49,28 @@ Zum Ausführen dieser Aufgaben muss Ihrem Konto die integrierte Rolle „Mitwirk
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Images der replizierten Computer sind in Azure Storage gespeichert. Azure-VMs werden aus dem Speicher erstellt, wenn Sie ein Failover von einem lokalen Standort nach Azure ausführen.
+Images der replizierten Computer sind in Azure Storage gespeichert. Azure-VMs werden aus dem Speicher erstellt, wenn Sie ein Failover von einem lokalen Standort nach Azure ausführen. Das Speicherkonto muss sich in der gleichen Region wie der Recovery Services-Tresor befinden. In diesem Tutorial verwenden wir „Europa, Westen“.
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) im Menü auf **Neu** > **Speicher** > **Speicherkonto**.
+1. Wählen Sie im Menü des [Azure-Portals](https://portal.azure.com) **Ressource erstellen** > **Speicher** > **Speicherkonto – Blob, Datei, Tabelle, Warteschlange**.
 2. Geben Sie unter **Speicherkonto erstellen** einen Namen für das Konto ein. Verwenden Sie für diese Tutorials **contosovmsacct1910171607**. Der ausgewählte Name muss in Azure eindeutig und zwischen 3 und 24 Zeichen lang sein, wobei nur Ziffern und Kleinbuchstaben zulässig sind.
 3. Wählen Sie unter **Bereitstellungsmodell** die Option **Resource Manager**.
-4. Wählen Sie unter **Kontoart** die Option **Allgemein**. Wählen Sie unter **Leistung** die Option **Standard**. Wählen Sie keinen Blobspeicher aus.
-5. Wählen Sie unter **Replikation** für die Speicherredundanz die Standardoption **Georedundanter Speicher mit Lesezugriff**.
-6. Wählen Sie unter **Abonnement** das Abonnement aus, in dem Sie das neue Speicherkonto erstellen möchten.
-7. Geben Sie unter **Ressourcengruppe** eine neue Ressourcengruppe ein. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Verwenden Sie für diese Tutorials den Namen **ContosoRG**.
-8. Wählen Sie unter **Standort** den geografischen Standort für das Speicherkonto aus. Das Speicherkonto muss sich in der gleichen Region wie der Recovery Services-Tresor befinden. Verwenden Sie für diese Tutorials die Region **Europa, Westen**.
+4. Wählen Sie unter **Kontoart** die Option **Speicher (universell v1)** aus. Wählen Sie keinen Blobspeicher aus.
+5. Wählen Sie unter **Replikation** für die Speicherredundanz die Standardoption **Georedundanter Speicher mit Lesezugriff**. Wir lassen die Option **Sichere Übertragung erforderlich** **deaktiviert**.
+6. Wählen Sie unter **Leistung** die Option **Standard** und unter **Zugriffsebene** die Standardoption **Heiße Ebene** aus.
+7. Wählen Sie unter **Abonnement** das Abonnement aus, in dem Sie das neue Speicherkonto erstellen möchten.
+8. Geben Sie unter **Ressourcengruppe** eine neue Ressourcengruppe ein. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Für diese Tutorials verwenden wir **ContosoRG**.
+9. Wählen Sie unter **Standort** den geografischen Standort für das Speicherkonto aus. 
 
    ![Speicherkonto erstellen](media/tutorial-prepare-azure/create-storageacct.png)
 
 9. Wählen Sie **Erstellen**, um das Speicherkonto zu erstellen.
 
-## <a name="create-a-vault"></a>Erstellen eines Tresors
+## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
-1. Wählen Sie im Azure-Portal die Option **Ressource erstellen** > **Überwachung und Verwaltung** > **Backup und Site Recovery**.
+1. Wählen Sie im Azure-Portal die Option **Ressource erstellen** > **Speicher** > **Backup & Site Recovery (OMS)**.
 2. Geben Sie unter **Name**einen Anzeigenamen ein, über den der Tresor identifiziert wird. Für diese Tutorials verwenden wir **ContosoVMVault**.
-3. Wählen Sie unter **Ressourcengruppe** die vorhandene Ressourcengruppe mit dem Namen **contosoRG** aus.
-4. Geben Sie unter **Standort** die Azure-Region **Europa, Westen** ein, die in dieser Tutorialreihe verwendet wird.
+3. In **Ressourcengruppe** verwenden wir **contosoRG**.
+4. In **Ort** verwenden wir **Europa, Westen**.
 5. Wählen Sie **An Dashboard anheften** > **Erstellen**, um über das Dashboard schnell auf den Tresor zuzugreifen.
 
    ![Erstellen eines neuen Tresors](./media/tutorial-prepare-azure/new-vault-settings.png)
@@ -77,25 +82,26 @@ Images der replizierten Computer sind in Azure Storage gespeichert. Azure-VMs we
 Wenn die Azure-VMs nach einem Failover aus dem Speicher erstellt werden, werden sie mit diesem Netzwerk verknüpft.
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk**.
-2. Belassen Sie als Auswahl für das Bereitstellungsmodell **Resource Manager**. „Resource Manager“ ist das empfohlene Bereitstellungsmodell. Führen Sie anschließend diese Schritte aus:
-
-   a. Geben Sie unter **Name** einen Netzwerknamen ein. Der Name muss innerhalb der Azure-Ressourcengruppe eindeutig sein. Verwenden Sie den Namen **ContosoASRnet**.
-
-   b. Verwenden Sie unter **Ressourcengruppe** die vorhandene Ressourcengruppe **contosoRG**.
-
-   c. Geben Sie unter **Adressbereich** den Netzwerkadressbereich **10.0.0.0/24** ein.
-
-   d. Für dieses Tutorial benötigen Sie kein Subnetz.
-
-   e. Wählen Sie unter **Abonnement** das Abonnement aus, in dem das Netzwerk erstellt werden soll.
-
-   f. Wählen Sie als **Ort** die Option **Europa, Westen** aus. Das Netzwerk muss sich in derselben Region wie der Recovery Services-Tresor befinden.
-
-3. Klicken Sie auf **Erstellen**.
+2. Wir behalten **Resource Manager** als Auswahl für das Bereitstellungsmodell bei.
+3. Geben Sie unter **Name** einen Netzwerknamen ein. Der Name muss innerhalb der Azure-Ressourcengruppe eindeutig sein. Wir verwenden **ContosoASRnet** in diesem Tutorial.
+4. Geben Sie die Ressourcengruppe an, in der das Netzwerk erstellt wird. Wir verwenden die vorhandene Ressourcengruppe **contosoRG**.
+5. Geben Sie unter **Adressbereich** den Netzwerkadressbereich **10.0.0.0/24** ein. In diesem Netzwerk verwenden wir kein Subnetz.
+6. Wählen Sie unter **Abonnement** das Abonnement aus, in dem das Netzwerk erstellt werden soll.
+7. Wählen Sie als **Ort** die Option **Europa, Westen** aus. Das Netzwerk muss sich in derselben Region wie der Recovery Services-Tresor befinden.
+8. Wir behalten die Standardoptionen des DDoS-Basisschutzes ohne Dienstendpunkt im Netzwerk bei.
+9. Klicken Sie auf **Create**.
 
    ![Erstellen eines virtuellen Netzwerks](media/tutorial-prepare-azure/create-network.png)
 
    Die Erstellung des virtuellen Netzwerks dauert ein paar Sekunden. Nach der Erstellung wird es auf dem Dashboard im Azure-Portal angezeigt.
+
+## <a name="useful-links"></a>Nützliche Links
+
+- [Informationen zu](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) Azure-Netzwerken.
+- [Informationen zu](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts) Azure-Speichertypen.
+- [Informationen zu ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs#read-access-geo-redundant-storage) Speicherredundanz und [sicherer Übertragung](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) für Speicher.
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,12 +11,12 @@
   items:
     - name: Erstellen von Funktionen – Portal
       href: functions-create-first-azure-function.md
-    - name: Erstellen von Funktionen – Azure-CLI
-      href: functions-create-first-azure-function-azure-cli.md
     - name: Erstellen von Funktionen – Visual Studio
       href: functions-create-your-first-function-visual-studio.md
     - name: Erstellen von Funktionen – Java/Maven
       href: functions-create-first-java-maven.md
+    - name: Erstellen von Funktionen – Azure-CLI
+      href: functions-create-first-azure-function-azure-cli.md
     - name: Erstellen von Funktionen – Linux
       href: functions-create-first-azure-function-azure-cli-linux.md
     - name: Trigger
@@ -49,8 +49,8 @@
       href: functions-openapi-definition.md
     - name: Ändern der Imagegröße mit Event Grid
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
-    - name: Erstellen einer serverlosen Webanwendung mit Azure Functions als API
-      href: 'https://docs.microsoft.com/learn/build-serverless-app/index'
+    - name: Erstellen einer serverlosen Web-App
+      href: 'https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database'
     - name: Funktionen unter Linux
       items:
         - name: Benutzerdefiniertes Image
@@ -97,6 +97,8 @@
       items:
         - name: Übersicht
           href: durable-functions-overview.md
+        - name: Funktionstypen und Features
+          href: durable-functions-types-features-overview.md
         - name: Bindungen
           href: durable-functions-bindings.md
         - name: Prüfpunkt und Wiedergabe
@@ -138,9 +140,11 @@
         - name: Testen von Funktionen
           href: functions-test-a-function.md
         - name: Lokales Entwickeln und Debuggen
-          href: functions-run-local.md
+          href: functions-develop-local.md
         - name: Visual Studio-Entwicklung
           href: functions-develop-vs.md
+        - name: Core Tools-Entwicklung
+          href: functions-run-local.md
         - name: Verwalten von Verbindungen
           href: manage-connections.md
         - name: Fehlerbehandlung

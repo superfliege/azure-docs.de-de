@@ -1,11 +1,11 @@
 ---
-title: Erste Schritte mit Azure-Blobspeicher und verbundenen Visual Studio-Diensten (ASP.NET Core) | Microsoft-Dokumentation
-description: "Hier erfahren Sie etwas über die ersten Schritte mit Azure-Blobspeicher in einem ASP.NET Core-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben."
+title: Erste Schritte mit Azure Blob Storage und verbundenen Visual Studio-Diensten (ASP.NET Core) | Microsoft-Dokumentation
+description: Erfahren Sie etwas über die ersten Schritte mit Azure Blob Storage in einem ASP.NET Core-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: camsoper
 manager: wpickett
-editor: 
+editor: ''
 ms.service: storage
 ms.workload: web
 ms.tgt_pltfrm: vs-getting-started
@@ -14,10 +14,11 @@ ms.topic: article
 ms.date: 12/07/2017
 ms.author: casoper
 ms.openlocfilehash: 42390effd6a2d2a8afe9350e0a77d3c0a17b6129
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38720228"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Erste Schritte mit Azure Blob Storage und verbundenen Visual Studio-Diensten (ASP.NET Core)
 
@@ -25,7 +26,7 @@ ms.lasthandoff: 01/06/2018
 > - [ASP.NET](./vs-storage-aspnet-getting-started-blobs.md)
 > - [ASP.NET Core](./vs-storage-aspnet-core-getting-started-blobs.md)
 
-Der Azure-Blobspeicher ist ein Dienst, bei dem unstrukturierte Daten in der Cloud als Objekte oder Blobs gespeichert werden. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet.
+Azure Blob Storage ist ein Dienst, bei dem unstrukturierte Daten in der Cloud als Objekte oder Blobs gespeichert werden. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet.
 
 In diesem Tutorial wird gezeigt, wie Sie ASP.NET Core-Code für einige häufige Szenarien schreiben, die Blobspeicher verwenden. Zu den Szenarien zählen das Erstellen eines Blobcontainers sowie das Hochladen, Auflisten, Herunterladen und Löschen von Blobs.
 
@@ -55,17 +56,17 @@ Dieser Abschnitt führt Sie durch das Einrichten der Entwicklungsumgebung. Dies 
 
     ![Screenshot: Dialogfeld „Neue ASP.NET Core-Webanwendung“](./media/vs-storage-aspnet-core-getting-started-blobs/new-mvc.png)
 
-### <a name="use-connected-services-to-connect-to-an-azure-storage-account"></a>Herstellen einer Verbindung mit einem Azure-Speicherkonto mithilfe von Verbundene Dienste
+### <a name="use-connected-services-to-connect-to-an-azure-storage-account"></a>Herstellen einer Verbindung mit einem Azure-Speicherkonto über verbundene Dienste
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt.
 
 2. Wählen Sie im Kontextmenü **Hinzufügen** > **Verbundener Dienst** aus.
 
-1. Wählen Sie im Dialogfeld **Verbundene Dienste** **Cloudspeicher mit Azure Storage** und dann **Konfigurieren** aus.
+1. Wählen Sie im Dialogfeld **Verbundene Dienste** die Option **Cloudspeicher mit Azure Storage** und dann **Konfigurieren** aus.
 
-    ![Screenshot des Dialogfelds „Verbundene Dienste“](./media/vs-storage-aspnet-core-getting-started-blobs/connected-services.png)
+    ![Screenshot: Dialogfeld „Verbundene Dienste“](./media/vs-storage-aspnet-core-getting-started-blobs/connected-services.png)
 
-1. Wählen Sie im Dialogfeld **Azure Storage** das Azure-Speicherkonto -Konto aus, das für dieses Tutorial verwendet werden soll. Um ein neues Azure-Speicherkonto zu erstellen, wählen Sie **Neues Azure-Speicherkonto erstellen** aus, und füllen Sie das Formular aus. Wählen Sie **Hinzufügen** aus, nachdem Sie entweder ein vorhandenes Speicherkonto ausgewählt oder ein neues Speicherkonto erstellt haben. Visual Studio installiert das NuGet-Paket für Azure Storage und eine Speicherverbindungszeichenfolge in **appsettings.json**.
+1. Wählen Sie im Dialogfeld **Azure Storage** das Azure-Speicherkonto aus, das für dieses Tutorial verwendet werden soll. Um ein neues Azure-Speicherkonto zu erstellen, wählen Sie **Neues Azure-Speicherkonto erstellen** aus, und füllen Sie das Formular aus. Wählen Sie **Hinzufügen** aus, nachdem Sie entweder ein vorhandenes Speicherkonto ausgewählt oder ein neues Speicherkonto erstellt haben. Visual Studio installiert das NuGet-Paket für Azure Storage und eine Speicherverbindungszeichenfolge in **appsettings.json**.
 
 > [!TIP]
 > Informationen zum Erstellen eines Speicherkontos mit dem [Azure-Portal](https://portal.azure.com) finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md#create-a-storage-account).

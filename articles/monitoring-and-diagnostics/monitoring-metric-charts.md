@@ -1,24 +1,19 @@
 ---
-title: Azure Monitor-Metrik-Explorer | Microsoft-Dokumentation
-description: "Erfahren Sie mehr über neue Funktionen im Azure Monitor-Metrik-Explorer."
+title: Azure Monitor-Metrik-Explorer
+description: Erfahren Sie mehr über neue Funktionen im Azure Monitor-Metrik-Explorer.
 author: vgorbenko
-manager: Victor.Mushkatin
-editor: mrbullwinkle
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 2397596a-071f-4d49-8893-bec5f735bd7b
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 09/17/2017
 ms.author: vitaly.gorbenko
-ms.openlocfilehash: 537dd6d64fe49093dd73d8040cde5a9153a7bd5c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: metrics
+ms.openlocfilehash: a2611f89d9eef1ec6bac34389fa4db833aecc087
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264087"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor-Metrik-Explorer
 
@@ -28,7 +23,7 @@ Informationen zur alten Benutzeroberfläche, die lediglich grundlegende Metriken
 
 ## <a name="what-is-azure-monitor-metrics-explorer"></a>Was ist der Azure Monitor-Metrik-Explorer?
 
-Der Azure Monitor-Metrik-Explorer ist eine Komponente des Microsoft Azure-Portals, die das Zeichnen von Diagrammen, visuelle Korrelieren von Trends und Untersuchen von Spitzen und Tiefen in Metrikwerten ermöglicht. Der Metrik-Explorer ist ein wesentlicher Ausgangspunkt, um verschiedenste Leistungs- und Verfügbarkeitsprobleme bei Ihren in Azure gehosteten oder von Azure Monitor-Diensten überwachten Anwendungen und Infrastrukturen zu untersuchen. 
+Der Azure Monitor-Metrik-Explorer ist eine Komponente des Microsoft Azure-Portals, die das Zeichnen von Diagrammen, das visuelle Korrelieren von Trends und das Untersuchen von Spitzen und Tiefen in Metrikwerten ermöglicht. Der Metrik-Explorer ist ein wesentlicher Ausgangspunkt, um verschiedenste Leistungs- und Verfügbarkeitsprobleme bei Ihren in Azure gehosteten oder von Azure Monitor-Diensten überwachten Anwendungen und Infrastrukturen zu untersuchen. 
 
 ## <a name="what-are-metrics-in-azure"></a>Was stellen Metriken in Azure dar?
 
@@ -83,7 +78,7 @@ Diese Metrik kann Fragen wie die folgenden beantworten: „Wie hoch war der Netz
    > [!NOTE]
    >Wenn Sie mehrere Azure-Abonnements besitzen, ruft der Metrik-Explorer die Ressourcen aller Abonnements ab, die in der Liste unter „Portaleinstellungen“ > „Nach Abonnements filtern“ ausgewählt sind. Um dies zu ändern, klicken Sie oben auf dem Bildschirm unter „Portaleinstellungen“ auf das Zahnradsymbol, und wählen Sie die Abonnements aus, die Sie verwenden möchten.
 
-4. Für einige Ressourcentypen (d.h. Speicherkonten und virtuelle Computer), müssen Sie vor der Auswahl einer Metrik einen **Subdienst** auswählen. Jeder Subdienst ist mit einer eigenen Gruppe von Metriken ausgestattet, die nur für den jeweiligen Subdienst und nicht für andere Subdienste relevant sind.
+4. Für einige Ressourcentypen (d.h. Speicherkonten und virtuelle Computer) müssen Sie vor der Auswahl einer Metrik einen **Subdienst** auswählen. Jeder Subdienst ist mit einer eigenen Gruppe von Metriken ausgestattet, die nur für den jeweiligen Subdienst und nicht für andere Subdienste relevant sind.
 
    Beispielsweise weist jede Azure Storage-Instanz Metriken für die Subdienste „Blobs“, „Dateien“, „Warteschlangen“ und „Tabellen“ auf, die alle zum Speicherkonto gehören. Die Metrik „Anzahl der Warteschlangenmeldungen“ gilt jedoch folgerichtig für den Subdienst „Warteschlange“ und nicht für andere Subdienste des Speicherkontos.
 
@@ -148,7 +143,7 @@ Sie können eine Metrik nach Dimension unterteilen, um die verschiedenen Segment
 
 ## <a name="how-do-i-pin-charts-to-dashboards"></a>Wie hefte ich Diagramme an Dashboards an?
 
-Nach der Konfiguration der Diagramme sollten Sie sie zu Dashboards hinzufügen, um sie erneut anzeigen zu können, beispielsweise im Kontext einer anderen Überwachungstelemetrie, oder Ihrem Team zur Verfügung zu stellen. 
+Nach der Konfiguration der Diagramme sollten Sie sie zu Dashboards hinzufügen, um sie – beispielsweise im Kontext einer anderen Überwachungstelemetrie – erneut anzeigen zu können oder Ihrem Team zur Verfügung zu stellen. 
 
 So heften Sie ein konfiguriertes Diagramm an ein Dashboard an
 

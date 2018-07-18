@@ -1,24 +1,19 @@
 ---
-title: Webhookaktionen für Protokollwarnungen in Azure-Warnungen | Microsoft-Dokumentation
+title: Webhookaktionen für Protokollwarnungen in Azure-Warnungen
 description: In diesem Artikel wird beschrieben, wie eine Protokollwarnungsregel mit Log Analytics oder Application Insights per Pushvorgang Daten als HTTP-Webhook überträgt, und es werden Details zu den verschiedenen möglichen Anpassungen erläutert.
 author: msvijayn
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 28c8e6ab6a23a46bdea31c71b08b9c6a28d1be33
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.component: alerts
+ms.openlocfilehash: 304476e2d6862fbb6a859ae6fefe96d177b1111b
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264254"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhookaktionen für Protokollwarnungsregeln
 Wenn eine [Warnung in Azure erstellt](monitor-alerts-unified-usage.md) wird, haben Sie die Möglichkeit [mithilfe von Aktionsgruppen die Ausführung von Aktionen zu konfigurieren](monitoring-action-groups.md).  Dieser Artikel beschreibt die verschiedenen verfügbaren Webhookaktionen und Details zur Konfiguration des benutzerdefinierten JSON-basierten Webhooks.
@@ -47,11 +42,11 @@ Webhooks enthalten eine URL und eine Nutzlast im JSON-Format, wobei es sich um d
 | Severity |#severity |Festgelegter Schweregrad für die erste ausgelöste Protokollwarnung |
 | AlertThresholdOperator |#thresholdoperator |Schwellenwertoperator für die Warnungsregel  *Größer als* oder *Kleiner als* |
 | AlertThresholdValue |#thresholdvalue |Wert des Schwellenwerts für die Warnungsregel |
-| LinkToSearchResults |#linktosearchresults |Link zur Log Analytics-Protokollsuche, mit der die Datensätze aus der Abfrage zurückgegeben werden, mit der die Warnung erstellt wurde |
+| LinkToSearchResults |#linktosearchresults |Link zum Analyseportal, das die Datensätze aus der Abfrage zurückgibt, mit der die Warnung erstellt wurde |
 | ResultCount |#searchresultcount |Anzahl von Datensätzen in den Suchergebnissen |
-| Endzeit für das Suchintervall |#searchintervalendtimeutc |Endzeit für die Abfrage im UTC-Format |
-| Suchintervall |#searchinterval |Zeitfenster für die Warnungsregel |
-| Startzeit für das Suchintervall |#searchintervalstarttimeutc |Startzeit für die Abfrage im UTC-Format 
+| Endzeit für das Suchintervall |#searchintervalendtimeutc |Abschlusszeit der Abfrage im UTC-Format – mm/tt/jjjj HH:mm:ss AM/PM. |
+| Suchintervall |#searchinterval |Zeitfenster für die Warnungsregel im Format – HH:mm:ss. |
+| Startzeit für das Suchintervall |#searchintervalstarttimeutc |Startzeit der Abfrage im UTC-Format – mm/tt/jjjj HH:mm:ss AM/PM. 
 | SearchQuery |#searchquery |Von der Warnungsregel verwendete Protokollsuchabfrage |
 | SearchResults |"IncludeSearchResults": true|Von der Abfrage als JSON-Tabelle zurückgegebene Datensätze, die auf die ersten 1.000 Datensätze beschränkt sind; wenn "IncludeSearchResults": true in der benutzerdefinierten JSON-Webhookdefinition als Eigenschaft der obersten Ebene hinzugefügt wird |
 | WorkspaceID |#workspaceid |ID Ihres Log Analytics-Arbeitsbereichs. |
@@ -74,6 +69,7 @@ Diese Beispielnutzlast wird ähnlich wie hier dargestellt aufgelöst, wenn sie a
         "text":"My Alert Rule fired with 18 records over threshold of 10 ."
     }
 ```
+Da alle Variablen in einem benutzerdefinierten Webhook innerhalb einer JSON-Umschließung wie "#searchinterval" angegeben werden müssen, weist auch der resultierende Webhook Variablendaten in einer Umschließung auf, etwa "00:05:00".
 
 Um Suchergebnisse in eine benutzerdefinierte Nutzlast einzuschließen, muss **IncudeSearchResults** als Eigenschaft der obersten Ebene in der JSON-Nutzlast festgelegt werden. 
 

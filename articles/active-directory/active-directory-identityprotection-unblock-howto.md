@@ -1,13 +1,14 @@
 ---
-title: "Azure Active Directory Identity Protection – Aufheben der Sperrung von Benutzern | Microsoft Docs"
+title: Azure Active Directory Identity Protection – Aufheben der Sperrung von Benutzern | Microsoft Docs
 description: Hier erfahren Sie, wie Sie die Blockierung von Benutzern aufheben, die durch eine Azure Active Directory Identity Protection-Richtlinie blockiert wurden.
 services: active-directory
 keywords: Azure Active Directory Identity Protection, Benutzerblockierung aufheben
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: a953d425-a3ef-41f8-a55d-0202c3f250a7
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,15 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: ab11f27ceed716ba90e9027eee1775c190d2d93f
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 1e96f24aeb0083e57618ad3e38163f50c23c55d3
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713455"
 ---
 # <a name="azure-active-directory-identity-protection---how-to-unblock-users"></a>Azure Active Directory Identity Protection – Aufheben der Blockierung von Benutzern
-Mit Azure Active Directory Identity Protection können Sie Richtlinien konfigurieren, um Benutzer zu blockieren, wenn die konfigurierten Bedingungen erfüllt sind. Ein blockierter Benutzer wendet sich zur Aufhebung der Blockierung in der Regel an den Helpdesk. In diesem Thema erfahren Sie Schritt für Schritt, wie Sie die Blockierung eines Benutzers wieder aufheben können.
+Mit Azure Active Directory Identity Protection können Sie Richtlinien konfigurieren, um Benutzer zu blockieren, wenn die konfigurierten Bedingungen erfüllt sind. Ein blockierter Benutzer wendet sich zur Aufhebung der Blockierung in der Regel an den Helpdesk. In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie die Blockierung eines Benutzers aufheben.
 
 ## <a name="determine-the-reason-for-blocking"></a>Ermitteln der Ursache für die Blockierung
 Wenn Sie die Blockierung eines Benutzers aufheben möchten, müssen Sie zunächst ermitteln, durch welche Art von Richtlinie der Benutzer blockiert wurde, da hiervon die weitere Vorgehensweise abhängt.
@@ -50,8 +52,8 @@ Zur Aufheben der Blockierung verdächtiger Anmeldungen stehen folgende Optionen 
 ## <a name="unblocking-accounts-at-risk"></a>Aufheben der Blockierung gefährdeter Konten
 Zur Aufheben der Blockierung gefährdeter Konten stehen folgende Optionen zur Verfügung:
 
-1. **Zurücksetzen des Kennworts:** Sie können das Kennwort des Benutzers zurücksetzen. Ausführlichere Informationen finden Sie unter [Manuelle Kennwortzurücksetzung](active-directory-identityprotection.md#manual-secure-password-reset) .
-2. **Schließen aller Risikoereignisse:** Die Benutzerrisikorichtlinie blockiert einen Benutzer, wenn die konfigurierte Benutzerrisikostufe für die Blockierung des Zugriffs erreicht wurde. Sie können die Risikostufe eines Benutzers verringern, indem Sie gemeldete Risikoereignisse manuell schließen. Ausführlichere Informationen finden Sie unter [Manuelles Schließen von Risikoereignissen](active-directory-identityprotection.md#closing-risk-events-manually).
+1. **Zurücksetzen des Kennworts:** Sie können das Kennwort des Benutzers zurücksetzen. Weitere Informationen finden Sie unter [Manuelle Kennwortzurücksetzung](active-directory-identityprotection.md#manual-secure-password-reset).
+2. **Schließen aller Risikoereignisse:** Die Benutzerrisikorichtlinie blockiert einen Benutzer, wenn die konfigurierte Benutzerrisikostufe für die Blockierung des Zugriffs erreicht wurde. Sie können die Risikostufe eines Benutzers verringern, indem Sie gemeldete Risikoereignisse manuell schließen. Weitere Informationen finden Sie unter [Manuelles Schließen von Risikoereignissen](active-directory-identityprotection.md#closing-risk-events-manually).
 3. **Ausschließen von der Richtlinie:** Wenn Sie vermuten, dass die aktuelle Konfiguration Ihrer Anmelderichtlinie Probleme für bestimmte Benutzer verursacht, können Sie diese Benutzer von der Richtlinie ausschließen. Weitere Informationen finden Sie unter [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
 4. **Deaktivieren der Richtlinie:** Wenn Sie vermuten, dass Ihre Richtlinienkonfiguration Probleme für alle Benutzer verursacht, können Sie die Richtlinie deaktivieren. Weitere Informationen finden Sie unter [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
 

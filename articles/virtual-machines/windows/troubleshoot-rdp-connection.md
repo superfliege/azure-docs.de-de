@@ -16,11 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: danis
-ms.openlocfilehash: 60c54850c1ca5de0e9bda4b48688ba297874e48e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: c1444901fa46a62761d6b94ccb8e7ea3ff3d057f
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701886"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Behandeln von Problemen bei Remotedesktopverbindungen mit einem virtuellen Azure-Computer
 Eine Verbindung über das Remotedesktopprotokoll (RDP) mit Ihrem Windows-basierten virtuellen Azure-Computer (VM, Virtual Machine) kann aus verschiedenen Gründen fehlschlagen, sodass Sie nicht auf Ihren virtuellen Computer zugreifen können. Das Problem kann mit dem Remotedesktopdienst auf dem virtuellen Computer, der Netzwerkverbindung oder dem Remotedesktopclient auf Ihrem Hostcomputer zusammenhängen. Dieser Artikel führt Sie durch einige der am häufigsten verwendeten Methoden, um die RDP-Verbindungsprobleme zu beheben. 
@@ -65,7 +66,7 @@ Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtu
     Wählen Sie im Azure-Portal Ihren virtuellen Computer aus. Scrollen Sie im Einstellungsbereich nach unten zum Abschnitt **Support und Problembehandlung**. Klicken Sie auf die Schaltfläche **Kennwort zurücksetzen**. Legen Sie den **Modus** auf **Reset configuration only** (Nur Konfiguration zurücksetzen) fest, und klicken Sie anschließend auf die Schaltfläche **Aktualisieren**:
    
     ![Zurücksetzen der RDP-Konfiguration im Azure-Portal](./media/troubleshoot-rdp-connection/reset-rdp.png)
-2. **Überprüfen Sie die Netzwerksicherheitsgruppen-Regeln.** Verwenden Sie den Ansatz [Überprüfen des IP-Flusses](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md), um zu bestätigen, dass eine Regel in einer Netzwerksicherheitsgruppe den Datenverkehr an eine VM oder von einer VM blockiert. Sie können auch die aktiven Sicherheitsgruppenregeln überprüfen, um sicherzustellen, dass die NSG-Regel „Zulassen“ für eingehende Verbindungen vorhanden ist und für den RDP-Port (standardmäßig 3389) Priorität hat. Weitere Informationen finden Sie unter [Verwenden von effektiven Sicherheitsregeln zur Problembehandlung des Datenverkehrsflusses auf virtuellen Computern](../../virtual-network/virtual-network-nsg-troubleshoot-portal.md#using-effective-security-rules-to-troubleshoot-vm-traffic-flow).
+2. **Überprüfen Sie die Netzwerksicherheitsgruppen-Regeln.** Verwenden Sie den Ansatz [Überprüfen des IP-Flusses](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md), um zu bestätigen, dass eine Regel in einer Netzwerksicherheitsgruppe den Datenverkehr an eine VM oder von einer VM blockiert. Sie können auch die aktiven Sicherheitsgruppenregeln überprüfen, um sicherzustellen, dass die NSG-Regel „Zulassen“ für eingehende Verbindungen vorhanden ist und für den RDP-Port (standardmäßig 3389) Priorität hat. Weitere Informationen finden Sie unter [Verwenden von effektiven Sicherheitsregeln zur Problembehandlung des Datenverkehrsflusses auf virtuellen Computern](../../virtual-network/diagnose-network-traffic-filter-problem.md).
 
 3. **Überprüfen Sie die Startdiagnose des virtuellen Computers.** In diesem Problembehandlungsschritt wird anhand der Konsolenprotokolle des virtuellen Computers ermittelt, ob der virtuelle Computer ein Problem meldet. Da die Startdiagnose nicht bei allen virtuellen Computern aktiviert ist, handelt es sich hierbei ggf. um einen optionalen Problembehandlungsschritt.
    
@@ -95,7 +96,7 @@ Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtu
    
     Nach Beendigung dieses Vorgangs gehen kurzlebige Datenträgerdaten verloren, und dynamische IP-Adressen, die dem virtuellen Computer zugeordnet sind, werden aktualisiert.
 
-9. **Überprüfen Sie das Routing**. Vergewissern Sie sich mit der Funktion [Nächster Hop](../../network-watcher/network-watcher-check-next-hop-portal.md) von Network Watcher, dass eine Route nicht das Weiterleiten des Datenverkehrs an einen bzw. von einem virtuellen Computer verhindert. Sie können auch die effektiven Routen überprüfen, um alle effektiven Routen für eine Netzwerkschnittstelle anzuzeigen. Weitere Informationen finden Sie unter [Problembehandlung bei Routen über das Azure-Portal](../../virtual-network/virtual-network-routes-troubleshoot-portal.md#using-effective-routes-to-troubleshoot-vm-traffic-flow).
+9. **Überprüfen Sie das Routing**. Vergewissern Sie sich mit der Funktion [Nächster Hop](../../network-watcher/network-watcher-check-next-hop-portal.md) von Network Watcher, dass eine Route nicht das Weiterleiten des Datenverkehrs an einen bzw. von einem virtuellen Computer verhindert. Sie können auch die effektiven Routen überprüfen, um alle effektiven Routen für eine Netzwerkschnittstelle anzuzeigen. Weitere Informationen finden Sie unter [Problembehandlung bei Routen mit Azure PowerShell](../../virtual-network/diagnose-network-routing-problem.md).
 
 10. Stellen Sie sicher, dass alle lokalen Firewalls oder Firewalls auf dem Computer ausgehenden Datenverkehr an TCP-Port 3389 für Azure zulassen.
 
@@ -184,7 +185,7 @@ Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtu
     Set-AzureRmVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
     ```
 
-6. **Überprüfen Sie das Routing**. Vergewissern Sie sich mit der Funktion [Nächster Hop](../../network-watcher/network-watcher-check-next-hop-portal.md) von Network Watcher, dass eine Route nicht das Weiterleiten des Datenverkehrs an einen bzw. von einem virtuellen Computer verhindert. Sie können auch die effektiven Routen überprüfen, um alle effektiven Routen für eine Netzwerkschnittstelle anzuzeigen. Weitere Informationen finden Sie unter [Problembehandlung bei Routen mit Azure PowerShell](../../virtual-network/virtual-network-routes-troubleshoot-powershell.md#using-effective-routes-to-troubleshoot-vm-traffic-flow).
+6. **Überprüfen Sie das Routing**. Vergewissern Sie sich mit der Funktion [Nächster Hop](../../network-watcher/network-watcher-check-next-hop-portal.md) von Network Watcher, dass eine Route nicht das Weiterleiten des Datenverkehrs an einen bzw. von einem virtuellen Computer verhindert. Sie können auch die effektiven Routen überprüfen, um alle effektiven Routen für eine Netzwerkschnittstelle anzuzeigen. Weitere Informationen finden Sie unter [Problembehandlung bei Routen mit Azure PowerShell](../../virtual-network/diagnose-network-routing-problem.md).
 
 7. Stellen Sie sicher, dass alle lokalen Firewalls oder Firewalls auf dem Computer ausgehenden Datenverkehr an TCP-Port 3389 für Azure zulassen.
 

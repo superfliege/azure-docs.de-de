@@ -3,7 +3,7 @@ title: Sammeln von Azure-Dienstprotokollen und Metriken für Log Analytics | Mic
 description: Konfigurieren Sie Diagnosen für Azure-Ressourcen, um Protokolle und Metriken in Log Analytics zu schreiben.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: 84105740-3697-4109-bc59-2452c1131bfe
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a748cb0e2a08ed5e8ada5db171d5ef12b2fe121e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: na
+ms.openlocfilehash: dec2abdf68b3a38706549b4b655e33bc7abca1a3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38452670"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Sammeln von Azure-Dienstprotokollen und Metriken zur Verwendung in Log Analytics
 
@@ -43,7 +44,7 @@ Protokolle und Metriken für Azure-Dienste können auf vier Arten erfasst werden
 | Data Lake Store         | Microsoft.DataLakeStore/accounts        | Diagnose |             | |
 | Event Hub-Namespace     | Microsoft.EventHub/namespaces           | Diagnose | Diagnose | |
 | IoT Hubs                | Microsoft.Devices/IotHubs               |             | Diagnose | |
-| Schlüsseltresor               | Microsoft.KeyVault/vaults               | Diagnose |             | [KeyVault-Analyse](log-analytics-azure-key-vault.md) |
+| Key Vault               | Microsoft.KeyVault/vaults               | Diagnose |             | [KeyVault-Analyse](log-analytics-azure-key-vault.md) |
 | Load Balancer          | Microsoft.Network/loadBalancers         | Diagnose |             |  |
 | Logic Apps              | Microsoft.Logic/workflows <br> Microsoft.Logic/integrationAccounts | Diagnose | Diagnose | |
 | Netzwerksicherheitsgruppen | Microsoft.Network/networksecuritygroups | Diagnose |             | [Azure-Netzwerksicherheitsgruppen-Analyse](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) |
@@ -56,7 +57,7 @@ Protokolle und Metriken für Azure-Dienste können auf vier Arten erfasst werden
 | Virtual Machines        | Microsoft.Compute/virtualMachines       | Durchwahl   | Durchwahl <br> Diagnose  | |
 | VM-Skalierungsgruppen | Microsoft.Compute/virtualMachines <br> Microsoft.Compute/virtualMachineScaleSets/virtualMachines |             | Diagnose | |
 | Webserverfarmen        | Microsoft.Web/serverfarms               |             | Diagnose | |
-| Websites               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | Diagnose | [Azure Web Apps Analytics (Vorschau)](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureWebAppsAnalyticsOMS?tab=Overview) |
+| Websites               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | Diagnose | [Azure Web Apps Analytics (Vorschau)](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-web-apps-analytics) |
 
 
 > [!NOTE]

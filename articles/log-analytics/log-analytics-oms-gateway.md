@@ -3,7 +3,7 @@ title: Verbinden von Computern über das OMS-Gateway | Microsoft Docs
 description: Verbinden Sie Ihre Geräte und durch Operations Manager überwachte Computer mit dem OMS-Gateway, um Daten an den Azure Automation- und Log Analytics-Dienst zu senden, wenn diese Dienste nicht über Internetzugriff verfügen.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ae9a1623-d2ba-41d3-bd97-36e65d3ca119
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: magoedte
-ms.openlocfilehash: b3055e6b22e3f391c0bc3f321cd8117d55a95cf5
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.component: na
+ms.openlocfilehash: a13057769bad7fcad5f95e49102adac234ebcdb4
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271648"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868938"
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Verbinden von Computern ohne Internetzugriff über das OMS-Gateway
 Dieses Dokument beschreibt, wie die Kommunikation mit Azure Automation and Log Analytics über das OMS-Gateway konfiguriert wird, wenn direkt verbundene oder durch Operations Manager überwachte Computer keinen Internetzugang haben.  Das OMS-Gateway, ein HTTP-Weiterleitungsproxy, der HTTP-Tunnel mit dem Befehl HTTP CONNECT unterstützt, kann Daten erfassen und im Auftrag der Computer an Azure Automation und Log Analytics senden.  

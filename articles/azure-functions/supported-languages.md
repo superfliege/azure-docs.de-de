@@ -1,12 +1,12 @@
 ---
-title: "In Azure Functions unterstützte Sprachen"
-description: "Erfahren Sie, welche Sprachen für allgemeine Verfügbarkeit und welche experimentell und in Vorschauversionen unterstützt werden."
+title: In Azure Functions unterstützte Sprachen
+description: Erfahren Sie, welche Sprachen für allgemeine Verfügbarkeit und welche experimentell und in Vorschauversionen unterstützt werden.
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: functions
 ms.devlang: dotnet
 ms.topic: reference
@@ -19,6 +19,7 @@ ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/17/2017
+ms.locfileid: "24879404"
 ---
 # <a name="supported-languages-in-azure-functions"></a>In Azure Functions unterstützte Sprachen
 

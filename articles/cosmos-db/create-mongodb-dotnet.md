@@ -2,23 +2,21 @@
 title: 'Azure Cosmos DB: Erstellen einer Web-App mit .NET und der MongoDB-API | Microsoft-Dokumentation'
 description: Hier finden Sie ein .NET-Codebeispiel, das Sie zum Verbinden mit und zum Abfragen von Azure Cosmos DB MongoDB-API verwenden können.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: ''
 ms.service: cosmos-db
+ms.component: cosmosdb-mongo
 ms.custom: quick start connect, mvc
-ms.workload: ''
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/19/2018
+ms.date: 05/22/2018
 ms.author: sngun
-ms.openlocfilehash: bab2728db7cdb410e995c30d69642c968ef6567d
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 2e0de0f15612b21345bd8df6f9808222ec328c3d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38542620"
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB: Erstellen einer Web-App mit einer MongoDB-API mit .NET und dem Azure-Portal
 
@@ -38,6 +36,8 @@ Falls Sie noch nicht über Visual Studio verfügen, laden Sie [Visual Studio 201
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
+
+Das in diesem Artikel beschriebene Beispiel ist mit MongoDB.Driver-Version 2.6.1 kompatibel.
 
 ## <a name="clone-the-sample-app"></a>Klonen der Beispiel-App
 
@@ -81,10 +81,7 @@ Die folgenden Codeausschnitte stammen alle aus der Datei „Dal.cs“ im Verzeic
         MongoIdentity identity = new MongoInternalIdentity(dbName, userName);
         MongoIdentityEvidence evidence = new PasswordEvidence(password);
 
-        settings.Credentials = new List<MongoCredential>()
-        {
-            new MongoCredential("SCRAM-SHA-1", identity, evidence)
-        };
+        settings.Credential = new MongoCredential("SCRAM-SHA-1", identity, evidence);
 
         MongoClient client = new MongoClient(settings);
     ```

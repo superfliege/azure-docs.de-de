@@ -11,13 +11,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5387f3911c58b115629c461420737230fce6b85a
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: e51061dc781e4ec6e822cde9cc450887ff3b1368
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061184"
 ---
 # <a name="microsoftcommonoptionsgroup-ui-element"></a>Benutzeroberflächenelement „Microsoft.Common.OptionsGroup“
 Ein Auswahlsteuerelement mit einer Zeile der verfügbaren Optionen.
@@ -31,7 +32,7 @@ Ein Auswahlsteuerelement mit einer Zeile der verfügbaren Optionen.
   "name": "element1",
   "type": "Microsoft.Common.OptionsGroup",
   "label": "Some options group",
-  "defaultValue": "my value",
+  "defaultValue": "Value two",
   "toolTip": "",
   "constraints": {
     "allowedValues": [
@@ -43,7 +44,8 @@ Ein Auswahlsteuerelement mit einer Zeile der verfügbaren Optionen.
         "label": "Value two",
         "value": "two"
       }
-    ]
+    ],
+    "required": true
   },
   "visible": true
 }
@@ -52,12 +54,11 @@ Ein Auswahlsteuerelement mit einer Zeile der verfügbaren Optionen.
 ## <a name="remarks"></a>Anmerkungen
 - Die Bezeichnung für `constraints.allowedValues` ist der Anzeigetext für ein Element, und sein Wert ist der Ausgabewert des Elements bei der Auswahl.
 - Wenn ein Wert angegeben wird, muss der Standardwert einer in `constraints.allowedValues` vorhandenen Bezeichnung entsprechen. Wird kein Wert angegeben, wird standardmäßig das erste Element in `constraints.allowedValues` ausgewählt. Der Standardwert lautet **null**.
-- `constraints.allowedValues` muss mindestens ein Element enthalten.
-- Dieses Element unterstützt die `constraints.required`-Eigenschaft nicht. Für eine erfolgreiche Überprüfung muss ein Element ausgewählt werden.
+- `constraints.allowedValues` muss mindestens ein Element aufweisen.
 
 ## <a name="sample-output"></a>Beispielausgabe
 ```json
-"Bar"
+"two"
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,0 +1,29 @@
+- name: 'Dokumentation zu „Projekt: Suche nach Antworten“'
+- name: Übersicht
+  expanded: true
+  items:
+    - name: 'Worum handelt es sich bei „Projekt: Suche nach Antworten“?'
+      href: overview.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: 'C#'
+      href: c-sharp-quickstart.md
+    - name: Java
+      href: java-quickstart.md
+    - name: Knoten
+      href: node-quickstart.md
+    - name: Python
+      href: python-quickstart.md
+- name: Konzepte
+  items:
+    - name: Faktabfragen
+      href: fact-queries.md
+    - name: Entitätsabfragen
+      href: entity-queries.md
+- name: Verweis
+  items:
+    - name: Verwenden und Anzeigen von Anforderungen
+      href: use-display-requirements.md
+    - name: 'Referenz zu „Projekt: Suche nach Antworten“'
+      href: reference.md

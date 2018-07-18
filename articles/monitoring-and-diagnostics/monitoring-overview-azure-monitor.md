@@ -1,26 +1,20 @@
 ---
-title: Übersicht über Azure Monitor | Microsoft-Dokumentation
+title: Azure Monitor – Übersicht
 description: Azure Monitor erfasst Statistiken zur Verwendung in Warnungen, in Webhooks, bei der automatischen Skalierung und bei der Automatisierung. Im Artikel werden auch andere Microsoft-Überwachungsoptionen aufgeführt.
 author: rboucher
-manager: carmonm
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: overview
 ms.date: 03/28/2018
 ms.author: robb
 ms.custom: mvc
-ms.openlocfilehash: 9a9166e93d24f6402d849b1bee3bcf470685c814
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.component: ''
+ms.openlocfilehash: a96991c424b4709002d46b6b7abe1e884c3605dd
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32312167"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264584"
 ---
 # <a name="overview-of-azure-monitor"></a>Übersicht über Azure Monitor
 Dieser Artikel bietet einen Überblick über den Azure Monitor-Dienst in Microsoft Azure. Er bietet einen Überblick über die Funktionen von Azure Monitor und stellt Verknüpfungen zu zusätzlichen Informationen über die Verwendung von Azure Monitor bereit.  Ein Einführungsvideo finden Sie über die Links im Abschnitt „Nächste Schritte“ weiter unten in diesem Artikel. 

@@ -12,13 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/28/2018
+ms.date: 05/21/2018
 ms.author: alkohli
-ms.openlocfilehash: db06614ebd7dee4b0a320737ea8f575b3a3be70f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 524a587c4547808162b36ff9aa6c08b362465b0b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34651204"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>Einführung in das StorSimple Virtual Array
 
@@ -206,10 +207,9 @@ StorSimple arbeitet mit Deduplizierung und Datenkomprimierung, um die Speicheran
 
 Mit StorSimple-Features zum Schutz der Daten können Sie bedarfsgesteuerte Sicherungen erstellen. Außerdem wird mit einem standardmäßigen Sicherungszeitplan dafür gesorgt, dass die Daten täglich gesichert werden. Sicherungen werden in Form von inkrementellen Momentaufnahmen erstellt, die in der Cloud gespeichert werden. Momentaufnahmen, bei denen nur die Änderungen seit der letzten Sicherung aufgezeichnet werden, können schnell erstellt und wiederhergestellt werden. Diese Momentaufnahmen können bei Wiederherstellungen im Notfall extrem wichtig sein, da sie sekundäre Speichersysteme (z. B. Backup auf Bandlaufwerken) ersetzen und es Ihnen ermöglichen, Daten bei Bedarf in Ihrem Rechenzentrum oder an anderen Standorten wiederherzustellen.
 
-## <a name="gdpr-compliance"></a>Einhaltung der DSGVO
-Die [Datenschutz-Grundverordnung (DSGVO)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) ist ein Datenschutzgesetz der Europäischen Union (EU). Die DSGVO enthält zahlreiche Bestimmungen für die Sammlung, Speicherung und Verwendung persönlicher Informationen. Die Regeln der DSGVO gelten für Unternehmen, Regierungsbehörden und andere Organisationen, die in der EU tätig sind und Daten sammeln/analysieren, die mit EU-Bürgern zusammenhängen.
+## <a name="managing-personal-information"></a>Verwalten personenbezogener Informationen
 
-Der StorSimple-Geräte-Manager für die virtuelle Serie ist DSGVO-konform. Es gibt zwei wichtige Instanzen, in denen persönliche Informationen gesammelt und im Dienst angezeigt werden:
+Der StorSimple-Geräte-Manager für virtuelle Serien sammelt in zwei wichtigen Instanzen personenbezogene Daten:
  - Benutzereinstellungen für Warnungen, in denen die E-Mail-Adressen von Benutzern konfiguriert werden. Diese Informationen können vom Administrator gelöscht werden. 
  - Benutzer, die auf die Daten auf den Freigaben zugreifen können. Eine Liste mit Benutzern, die auf die Freigabedaten zugreifen können, kann exportiert werden. Die Liste wird zusammen mit den Freigaben gelöscht.
 

@@ -15,11 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 7256e2f798fbc32c098f19f60b62e577300868c7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 09a0de1efc909b72192f9d8584edd0fda5e6217d
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856350"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Sicherheit auf Zeilenebene mit Power BI-Arbeitsbereichssammlungen
 
@@ -92,7 +93,7 @@ Jetzt können Filter auch von der Tabelle „Sales“ zur Tabelle **Item** flie�
 1. **Datei** -> **Optionen und Einstellungen** -> **Vorschaufeatures** -> **Kreuzfilterung in beide Richtungen für DirectQuery aktivieren**.
 2. **Datei** -> **Optionen und Einstellungen** -> **DirectQuery** -> **Unbeschränkte Measures im DirectQuery-Modus zulassen**.
 
-Weitere Informationen zur bidirektionalen Kreuzfilterung erhalten Sie, indem Sie das Whitepaper [Bidirectional cross-filtering in SQL Server Analysis Services 2016 and Power BI Desktop](http://download.microsoft.com/download/2/7/8/2782DF95-3E0D-40CD-BFC8-749A2882E109/Bidirectional cross-filtering in Analysis Services 2016 and Power BI.docx) (Bidirektionale Kreuzfilterung in SQL Server Analysis Services 2016 und Power BI Desktop) herunterladen.
+Weitere Informationen zur bidirektionalen Kreuzfilterung erhalten Sie, indem Sie das Whitepaper [Bidirectional cross-filtering in SQL Server Analysis Services 2016 and Power BI Desktop](http://download.microsoft.com/download/2/7/8/2782DF95-3E0D-40CD-BFC8-749A2882E109/Bidirectional%20cross-filtering%20in%20Analysis%20Services%202016%20and%20Power%20BI.docx) (Bidirektionale Kreuzfilterung in SQL Server Analysis Services 2016 und Power BI Desktop) herunterladen.
 
 Dies sind die Schritte, die in Power BI Desktop ausgeführt werden müssen. Es ist aber noch ein weiterer Schritt erforderlich, damit die definierten RLS-Regeln in Power BI Embedded funktionieren. Benutzer werden von Ihrer Anwendung authentifiziert und autorisiert, und App-Token werden verwendet, um den Benutzern Zugriff auf einen bestimmten Power BI Embedded-Bericht zu gewähren. Power BI Embedded verfügt nicht über spezifische Informationen darüber, wer der Benutzer ist. Damit RLS funktioniert, müssen Sie im Rahmen Ihres App-Tokens weiteren Kontext übergeben:
 

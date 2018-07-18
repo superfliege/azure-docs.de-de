@@ -4,21 +4,23 @@ description: Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefin
 services: log-analytics
 documentationcenter: ''
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: ''
 ms.assetid: ce41dc30-e568-43c1-97fa-81e5997c946a
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/18/2018
+ms.topic: conceptual
+ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: d63d47c39054230307416e24ed1c8295fbf68d93
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.component: na
+ms.openlocfilehash: d900a778aa003357fb85d3e8ec8e40dee64f0f9c
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131853"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Erstellen benutzerdefinierter Ansichten mithilfe des Ansicht-Designers in Log Analytics
 Mithilfe des Ansicht-Designers in [Azure Log Analytics](log-analytics-overview.md) können Sie verschiedene benutzerdefinierten Ansichten im Azure-Portal erstellen, in denen Sie Daten in Ihrem Log Analytics-Arbeitsbereich visualisieren können. Dieser Artikel bietet eine Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten.
@@ -53,14 +55,15 @@ Die Optionen sind in der folgenden Tabelle beschrieben:
 | Option | BESCHREIBUNG |
 |:--|:--|
 | Aktualisieren   | Aktualisiert die Ansicht mit den neuesten Daten. | 
-| Analyse | Öffnet das [Advanced Analytics-Portal](log-analytics-log-search-portals.md#advanced-analytics-portal) zum Analysieren von Daten mit Protokollsuchvorgängen. |
-| Filter    | Legt einen Zeitfilter für die in der Ansicht enthaltenen Daten fest. |
-| Edit (Bearbeiten)      | Öffnet die Ansicht im Ansicht-Designer zum Bearbeiten der zugehörigen Inhalte und der Konfiguration.  |
-| Klonen     | Erstellt eine neue Ansicht und öffnet sie im Ansicht-Designer. Der Name der neuen Ansicht entspricht dem ursprünglichen Namen, jedoch ist der Zusatz *Kopie* angefügt. |
+| Analytics | Öffnet das [Advanced Analytics-Portal](log-analytics-log-search-portals.md#advanced-analytics-portal) zum Analysieren von Daten mit Protokollsuchvorgängen. |
+| Edit (Bearbeiten)       | Öffnet die Ansicht im Ansicht-Designer zum Bearbeiten der zugehörigen Inhalte und der Konfiguration.  |
+| Klonen      | Erstellt eine neue Ansicht und öffnet sie im Ansicht-Designer. Der Name der neuen Ansicht entspricht dem ursprünglichen Namen, jedoch ist der Zusatz *Kopie* angefügt. |
+| Datumsbereich | Legt einen Datums- und Uhrzeitfilterbereich für die in der Ansicht enthaltenen Daten fest. |
+| +          | Definieren Sie einen benutzerdefinierten, für die Ansicht definierten Filter. |
 
 
 ## <a name="create-a-new-view"></a>Erstellen einer neuen Ansicht
-Sie können eine neue Ansicht im Ansicht-Designer erstellen, indem Sie auf der Seite **Übersicht** des Log Analytics-Arbeitsbereichs die Kachel für den **Ansicht-Designer** auswählen.
+Sie können eine neue Ansicht im Ansicht-Designer erstellen, indem Sie im Menü des Log Analytics-Arbeitsbereichs **Ansicht-Designer** auswählen.
 
 ![Kachel für den Ansicht-Designer](media/log-analytics-view-designer/view-designer-tile.png)
 
@@ -103,7 +106,6 @@ Die Optionen zur Verwendung von Ansichten im Bearbeitungsmodus sind in der folge
 | Export      | Exportiert die Ansicht in eine [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-authoring-templates.md), die Sie in einen anderen Arbeitsbereich importieren können. Der Name der Datei entspricht dem Namen der Ansicht mit der Erweiterung *omsview*. |
 | Importieren      | Importiert die *omsview*-Datei, die Sie aus einem anderen Arbeitsbereich exportiert haben. Mit dieser Aktion wird die Konfiguration der vorhandenen Ansicht überschrieben. |
 | Klonen       | Erstellt eine neue Ansicht und öffnet sie im Ansicht-Designer. Der Name der neuen Ansicht entspricht dem ursprünglichen Namen, jedoch ist der Zusatz *Kopie* angefügt. |
-| Veröffentlichen     | Exportiert die Ansicht in eine JSON-Datei, die Sie in einer [Verwaltungslösung](../operations-management-suite/operations-management-suite-solutions-resources-views.md) einfügen können. Der Dateiname ist identisch mit dem Namen der Ansicht, jedoch mit der Erweiterung *json*. Eine zweite Datei wird mit der Erweiterung *resjson* erstellt. Diese Datei enthält Werte für die in der JSON-Datei definierten Ressourcen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Fügen Sie [Kacheln](log-analytics-view-designer-tiles.md) zu Ihrer benutzerdefinierten Ansicht hinzu.

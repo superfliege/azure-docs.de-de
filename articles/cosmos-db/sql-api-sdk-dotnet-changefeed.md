@@ -2,23 +2,20 @@
 title: 'Azure Cosmos DB: .NET Change Feed Processor-API, -SDK und -Ressourcen | Microsoft-Dokumentation'
 description: Wichtige Informationen zur Change Feed Processor-API und zum Change Feed Processor-SDK, einschließlich Terminen für Veröffentlichung und Außerbetriebnahme sowie Änderungen an den einzelnen Versionen des .NET Change Feed Processor-SDK.
 services: cosmos-db
-documentationcenter: .net
 author: ealsur
 manager: kfile
-ms.assetid: f2dd9438-8879-4f74-bb6c-e1efc2cd0157
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: dotnet
-ms.topic: article
-ms.date: 04/19/2018
+ms.topic: reference
+ms.date: 05/21/2018
 ms.author: maquaran
-ms.openlocfilehash: 7ed5772df4d8677fe878d7ced831dc15bbe8cac0
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: f69742d111555e776a968454bdc004ba171e6336
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33885135"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937416"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor-SDK: Download und Anmerkungen zur Version
 > [!div class="op_single_selector"]
@@ -45,6 +42,10 @@ ms.locfileid: "33885135"
 ## <a name="release-notes"></a>Versionshinweise
 
 ### <a name="stable-builds"></a>Stabile Builds
+
+### <a name="a-name133133"></a><a name="1.3.3"/>1.3.3
+* Weitere Protokollierung hinzugefügt.
+* Ein DocumentClient-Fehler beim mehrfachen Aufrufen der Schätzung für ausstehende Arbeit wurde behoben.
 
 ### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
 * Korrekturen der Schätzung ausstehender Arbeit.
@@ -73,6 +74,17 @@ ms.locfileid: "33885135"
 * Kompatibel mit [SQL .NET SDK](sql-api-sdk-dotnet.md), Version 1.14.1 und niedriger.
 
 ### <a name="pre-release-builds"></a>Vorabversionen von Builds
+
+### <a name="a-name203-prerelease203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3 – Vorabversion
+* Die folgenden Probleme wurden behoben:
+  * Wenn eine Partition geteilt wird, werden Dokumente, die vor der Teilung modifiziert wurden, möglicherweise doppelt verarbeitet.
+  * Die GetEstimatedRemainingWork-API gab 0 zurück, wenn in der Leasesammlung keine Leases vorhanden waren.
+
+* Die folgenden Ausnahmen wurden öffentlich gemacht. Erweiterungen, die IPartitionProcessor implementieren, können diese Ausnahmen auslösen.
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.LeaseLostException. 
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionException. 
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionNotFoundException.
+  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionSplitException. 
 
 ### <a name="a-name202-prerelease202-prerelease"></a><a name="2.0.2-prerelease"/>2.0.2-Vorabversion
 * Geringfügige API-Änderungen:
@@ -108,6 +120,7 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.3.3](#1.3.3) |8. Mai 2018 |--- |
 | [1.3.2](#1.3.2) |18. April 2018 |--- |
 | [1.3.1](#1.3.1) |13. März 2018 |--- |
 | [1.2.0](#1.2.0) |31. Oktober 2017 |--- |

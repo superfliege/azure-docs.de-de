@@ -7,15 +7,15 @@ ms.reviewer: carlrab
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: 85a0157751a1c26fb7f37152d7c12f56b1c423d1
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e606b38c626c1a4dd335c40926e89a7cf0cec17a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32193283"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054652"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Was ist eine verwaltete Instanz (Vorschauversion)?
 
@@ -39,7 +39,7 @@ Die folgende Tabelle enthält die Hauptunterschiede und vorgesehenen Verwendungs
 
 | | Verwendungsszenario | 
 | --- | --- | 
-|Verwaltete SQL-Datenbank-Instanz |Schlagen Sie Kunden, die eine große Anzahl von selbst erstellten oder über ISVs bereitgestellten Anwendungen lokal oder per IaaS mit möglichst geringem Migrationsaufwand migrieren möchten, eine verwaltete Instanz vor. Unter Verwendung des vollständig automatisierten [Data Migration Service (DMS)](/sql/dma/dma-overview) in Azure können Kunden ihren lokalen SQL Server per Lift & Shift zu einer verwalteten Instanz migrieren, die Kompatibilität mit dem lokalen SQL Server und vollständige Isolation von Kundeninstanzen mit nativer VNET-Unterstützung bietet.  Mit Software Assurance können Sie die vorhandenen Lizenzen der Kunden mit dem [Azure-Hybridvorteil für Windows Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) zu ermäßigten Preisen für eine verwaltete SQL-Datenbank-Instanz austauschen.  Eine verwaltete SQL-Datenbank-Instanz ist das beste Migrationsziel in der Cloud für SQL Server-Instanzen, die hohe Sicherheit und eine umfangreiche Programmieroberfläche erfordern. |
+|Verwaltete SQL-Datenbank-Instanz |Schlagen Sie Kunden, die eine große Anzahl von selbst erstellten oder über ISVs bereitgestellten Anwendungen lokal oder per IaaS mit möglichst geringem Migrationsaufwand migrieren möchten, eine verwaltete Instanz vor. Unter Verwendung des vollständig automatisierten [Data Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) in Azure können Kunden ihren lokalen SQL Server per Lift & Shift zu einer verwalteten Instanz migrieren, die Kompatibilität mit dem lokalen SQL Server und vollständige Isolation von Kundeninstanzen mit nativer VNET-Unterstützung bietet.  Mit Software Assurance können Sie die vorhandenen Lizenzen der Kunden mit dem [Azure-Hybridvorteil für Windows Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) zu ermäßigten Preisen für eine verwaltete SQL-Datenbank-Instanz austauschen.  Eine verwaltete SQL-Datenbank-Instanz ist das beste Migrationsziel in der Cloud für SQL Server-Instanzen, die hohe Sicherheit und eine umfangreiche Programmieroberfläche erfordern. |
 |Azure SQL-Datenbank (Einzelinstanz oder Pool) |**Elastische Pools**: Schlagen Sie Kunden, die neue mehrinstanzenfähige SaaS-Anwendungen entwickeln oder bewusst ihre vorhandenen lokalen Anwendungen in mehrinstanzenfähige SaaS-Anwendungen transformieren, Pools für elastische Datenbanken vor. Dieses Modell bietet folgende Vorteile: <br><ul><li>Umstellung des Geschäftsmodells vom Verkauf von Lizenzen zum Verkauf von Dienstabonnements (für ISVs)</li></ul><ul><li>Einfache und sichere Mandantenisolation</li></ul><ul><li>Vereinfachtes datenbankbasiertes Programmiermodell</li></ul><ul><li>Potenzial für horizontales Hochskalieren ohne feste Begrenzung</li></ul>**Einzelne Datenbanken**: Schlagen Sie Kunden, die andere neue Anwendungen als mehrinstanzenfähige SaaS-Anwendungen entwickeln, deren Workload stabil und vorhersagbar ist, einzelne Datenbanken vor. Dieses Modell bietet folgende Vorteile:<ul><li>Vereinfachtes datenbankbasiertes Programmiermodell</li></ul>  <ul><li>Vorhersagbare Leistung für die einzelnen Datenbanken</li></ul>|
 |Virtueller SQL-IaaS-Computer|Schlagen Sie Kunden, die das Betriebssystem oder den Datenbankserver anpassen müssen, und Kunden, die spezifische Anforderungen an die Ausführung von Drittanbieteranwendungen neben SQL Server (auf dem gleichen virtuellen Computer) haben, virtuelle SQL-Computer und SQL-IaaS als optimale Lösung vor.|
 |||
@@ -184,13 +184,12 @@ Azure Database Migration Service ist ein vollständig verwalteter Dienst, der di
 
 ### <a name="backup-and-restore"></a>Sichern und Wiederherstellen  
 
-Beim Migrationsansatz werden SQL-Sicherungen in Azure Blob Storage genutzt. In Azure Blob Storage gespeicherte Sicherungen können direkt in der verwalteten Instanz gespeichert werden. Zur Wiederherstellung einer vorhandenen SQL-­Datenbank in einer verwalteten Instanz können Sie wie folgt vorgehen:
+Beim Migrationsansatz werden SQL-Sicherungen in Azure Blob Storage genutzt. In Azure Blob Storage gespeicherte Sicherungen können direkt in der verwalteten Instanz gespeichert werden. Um eine vorhandene SQL-­Datenbank in einer verwalteten Instanz wiederherzustellen, haben Sie folgende Möglichkeiten:
 
-- Verwenden Sie [Data Migration Service (DMS)](/sql/dma/dma-overview). Ein Tutorial zum Wiederherstellen aus einer Datenbanksicherungsdatei finden Sie unter [Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz](../dms/tutorial-sql-server-to-managed-instance.md).
+- Verwenden Sie [Data Migration Service (DMS)](../dms/dms-overview.md). Ein Tutorial zum Wiederherstellen aus einer Datenbanksicherungsdatei finden Sie unter [Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz](../dms/tutorial-sql-server-to-managed-instance.md).
 - Verwenden Sie den [T-SQL RESTORE-Befehl](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql). 
   - Ein Tutorial zum Wiederherstellen der Standardsicherungsdatei für die Wide World Importers-Datenbank finden Sie unter [Wiederherstellen einer Sicherungsdatei in einer verwalteten Instanz](sql-database-managed-instance-restore-from-backup-tutorial.md). In diesem Tutorial wird gezeigt, wie eine Sicherungsdatei in den Azure Blob Storage hochgeladen und mit einem SAS-Schlüssel (Shared Access Signature) geschützt wird.
   - Weitere Informationen zur Wiederherstellung über eine URL finden Sie unter [Native RESTORE FROM URL-Option](sql-database-managed-instance-migrate.md#native-restore-from-url).
-- [Importieren einer BACPAC-Datei in eine neue Azure SQL-Datenbank](sql-database-import.md)
 
 ## <a name="sql-features-supported"></a>Unterstützte SQL-Features 
 
@@ -211,7 +210,8 @@ Die verwaltete Instanz ist in der Cloud immer auf dem neuesten Stand, d.h., eini
 - In einer verwalteten Instanz können keine vollständigen physischen Pfade angegeben werden. Daher müssen alle entsprechenden Szenarien unterschiedlich unterstützt werden: RESTORE DB unterstützt WITH MOVE nicht; CREATE DB lässt keine physischen Pfade zu; BULK INSERT kann nur mit Azure-Blobs ausgeführt werden usw. 
 - Eine verwaltete Instanz unterstützt die [Azure AD-Authentifizierung](sql-database-aad-authentication.md) als Cloudalternative zur Windows-Authentifizierung. 
 - Eine verwaltete Instanz verwaltet automatisch XTP-Dateigruppen und -Dateien für Datenbanken mit In-Memory-OLTP-Objekten.
- 
+- Eine verwaltete Instanz unterstützt SQL Server Integration Services (SSIS) und kann den SSIS-Katalog (SSISDB) hosten, in dem SSIS-Pakete gespeichert werden, sie wird jedoch in einer verwalteten Azure SSIS Integration Runtime (IR) in Azure Data Factory (ADF) ausgeführt. Siehe dazu [Erstellen der Azure SSIS Integration Runtime in Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime).
+
 ### <a name="managed-instance-administration-features"></a>Features zur Verwaltung einer verwalteten Instanz  
 
 In einer verwalteten Instanz können Systemadministratoren sich auf die für das Unternehmen wichtigsten Aspekte konzentrieren. Viele durch Systemadministratoren oder DBA durchgeführte Aktivitäten sind nicht erforderlich oder lassen sich einfach ausführen, z.B. Installation und Patches des Betriebssystems und von RDBMS, dynamische Größenänderung und Konfiguration von Instanzen, Sicherungen, Datenbankreplikation (einschließlich Systemdatenbanken), Konfiguration der Hochverfügbarkeit und der Integrität und Leistungsüberwachung der Datenströme. 

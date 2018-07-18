@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: byvinyal
-ms.openlocfilehash: 8a8482fa93ca902746e4fc8ef6d67b274a926bdc
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 1d67266bf599a4dc57fc2e9e0d1c5f9f2562346c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38610771"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 In diesem Dokument sind einige der gängigsten Einschränkungen in Microsoft Azure aufgeführt, die bisweilen auch als „Kontingente“ bezeichnet werden. Dieses Dokument behandelt derzeit nicht alle Azure-Dienste. Mit der Zeit wird diese Liste erweitert, um größere Teile der Plattform abzudecken.
@@ -39,8 +40,7 @@ In den folgenden Grenzwerten wurde eine neue Tabelle hinzugefügt, um alle abwei
 
 > [!NOTE]
 > Wichtig ist, dass der Zugriff Ihres Abonnements auf Kontingente für Ressourcen in Azure-Ressourcengruppen pro Region erfolgt und nicht pro Abonnement wie bei Dienstverwaltungskontingenten. Verwenden wir vCPU-Kontingente als Beispiel. Wenn Sie eine Erhöhung des Kontingents mit Unterstützung für vCPUs anfordern müssen, müssen Sie entscheiden, wie viele vCPUs Sie in den einzelnen Regionen verwenden möchten, und anschließend eine spezifische Anforderung für Azure-Ressourcengruppen-vCPUs-Kontingente für die gewünschten Beträge und Regionen vornehmen. Wenn Sie für die Ausführung Ihrer Anwendung 30 vCPUs in „Europa, Westen“ benötigen, sollten Sie daher 30 vCPUs in „Europa, Westen“ anfordern. In anderen Regionen erfolgt jedoch keine Erhöhung des vCPU-Kontingents. Das Kontingent von 30 vCPUs gilt nur für „Europa, Westen“.
-> <!-- -->
-> Daher sollten Sie gegebenenfalls überlegen, wie hoch Ihre Azure-Ressourcengruppenkontingente für Ihre Workload in jeder Region sein müssen, und diesen Betrag in jeder Region anfordern, in der Sie eine Bereitstellung in Betracht ziehen. Weitere Informationen zum Ermitteln Ihrer aktuellen Kontingente für bestimmte Regionen finden Sie unter [Problembehandlung bei der Bereitstellung](resource-manager-common-deployment-errors.md) .
+> <!-- --> Daher sollten Sie gegebenenfalls überlegen, wie hoch Ihre Azure-Ressourcengruppenkontingente für Ihre Workload in jeder Region sein müssen, und diesen Betrag in jeder Region anfordern, in der Sie eine Bereitstellung in Betracht ziehen. Weitere Informationen zum Ermitteln Ihrer aktuellen Kontingente für bestimmte Regionen finden Sie unter [Problembehandlung bei der Bereitstellung](resource-manager-common-deployment-errors.md) .
 >
 >
 
@@ -73,6 +73,7 @@ In den folgenden Grenzwerten wurde eine neue Tabelle hinzugefügt, um alle abwei
 * [IoT Hub Device Provisioning-Dienst](#iot-hub-device-provisioning-service-limits)
 * [Schlüsseltresor](#key-vault-limits)
 * [Log Analytics](#log-analytics-limits)
+* [Verwaltete Identität](#managed-identity-limits)
 * [Media Services](#media-services-limits)
 * [Mobile Engagement](#mobile-engagement-limits)
 * [Mobile Services](#mobile-services-limits)
@@ -82,6 +83,7 @@ In den folgenden Grenzwerten wurde eine neue Tabelle hinzugefügt, um alle abwei
 * [Network Watcher](#network-watcher-limits)
 * [Notification Hubs-Dienst](#notification-hub-service-limits)
 * [Ressourcengruppe](#resource-group-limits)
+* [Rollenbasierte Zugriffssteuerung](#role-based-access-control-limits)
 * [Scheduler](#scheduler-limits)
 * [Suchen,](#search-limits)
 * [Service Bus](#service-bus-limits)
@@ -315,8 +317,14 @@ Detailliertere Informationen zu Grenzwerten wie etwa für Dokumentgröße, Abfra
 ### <a name="automation-limits"></a>Automatisierungsgrenzwerte
 [!INCLUDE [automation-limits](../includes/azure-automation-service-limits.md)]
 
+### <a name="managed-identity-limits"></a>Grenzwerte für verwaltete Identitäten
+[!INCLUDE [automation-limits](~/includes/managed-identity-limits.md)]
+
+### <a name="role-based-access-control-limits"></a>Grenzwerte für rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
+[!INCLUDE [role-based-access-control-limits](../includes/role-based-access-control-limits.md)]
+
 ### <a name="sql-database-limits"></a>Grenzwerte für SQL-Datenbanken
-Einschränkungen für SQL-Datenbanken finden Sie unter [Ressourceneinschränkungen für SQL-Datenbank](sql-database/sql-database-resource-limits.md).
+Weitere Informationen zu Limits von SQL-Datenbank finden Sie unter [Ressourcenlimits von SQL-Datenbank für Einzeldatenbanken](sql-database/sql-database-vcore-resource-limits-single-databases.md) und [Ressourcenlimits von SQL-Datenbank für Pools für elastische Datenbanken und in einem Pool zusammengefasste Datenbanken](sql-database/sql-database-vcore-resource-limits-elastic-pools.md).
 
 ### <a name="sql-data-warehouse-limits"></a>Einschränkungen zu SQL Data Warehouse
 Einschränkungen zu SQL Data Warehouse finden Sie unter [Ressourceneinschränkungen zu SQL Data Warehouse](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).

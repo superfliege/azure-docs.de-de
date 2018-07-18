@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Konfiguration für Weibo | Microsoft-Dokumentation'
+title: Konfiguration für Weibo in Azure Active Directory B2C | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie Registrierung und Anmeldung für Kunden mit Weibo-Konten in Ihren mit Azure Active Directory B2C gesicherten Anwendungen bereitstellen.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 3/26/2017
 ms.author: davidmu
-ms.openlocfilehash: f2a7b6992e54f9804057f21e10ba68a9a723c6a0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: bfd7dde290bd040f8457e6d095fdf896e802764b
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444788"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-weibo-accounts"></a>Azure Active Directory B2C: Bereitstellen von Registrierung und Anmeldung für Kunden mit Weibo-Konten
 
@@ -31,11 +31,11 @@ Um Weibo als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwe
 
 1. Navigieren Sie zum [Weibo-Entwicklerportal](http://open.weibo.com/) und melden Sie sich mit den Anmeldeinformationen Ihres Weibo-Kontos an.
 2. Klicken Sie nach der Anmeldung oben rechts auf Ihren Anzeigenamen.
-3. Wählen Sie in der Dropdownliste **编辑开发者信息** (Entwicklerinformationen bearbeiten).
-4. Geben Sie die erforderlichen Informationen in das Formular ein und klicken Sie auf **提交** (Absenden).
+3. Wählen Sie in der Dropdownliste die Option **编辑开发者信息** (Entwicklerinformationen bearbeiten) aus.
+4. Geben Sie die erforderlichen Informationen in das Formular ein, und klicken Sie auf **提交** (Übermitteln).
 5. Schließen Sie den E-Mail-Überprüfungsprozess ab.
 6. Rufen Sie die Seite [Identitätsüberprüfung](http://open.weibo.com/developers/identity/edit) auf.
-7. Geben Sie die erforderlichen Informationen in das Formular ein und klicken Sie auf **提交** (Absenden).
+7. Geben Sie die erforderlichen Informationen in das Formular ein, und klicken Sie auf **提交** (Übermitteln).
 
 ### <a name="register-a-weibo-application"></a>Registrieren einer Weibo-Anwendung
 
@@ -45,10 +45,10 @@ Um Weibo als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwe
 4. Kopieren Sie die Werte von **App-Schlüssel** und **App-Geheimnis**. Sie benötigen sie später.
 5. Laden Sie die erforderlichen Fotos hoch und geben Sie die benötigten Informationen ein.
 6. Klicken Sie auf **保存以上信息** (Speichern).
-7. Klicken Sie auf **高级信息** (Erweiterte Informationen).
-8. Klicken Sie auf **编辑** (Bearbeiten) neben dem Feld für **授权设置** (Umleitungs-URL) von OAuth 2.0.
-9. Geben Sie `https://login.microsoftonline.com/te/{tenant_name}/oauth2/authresp` für **授权设置** (Umleitungs-URL) von OAuth 2.0 ein. Wenn Ihr `tenant_name` beispielsweise „contoso.onmicrosoft.com“ lautet, setzen Sie die URL auf `https://login.microsoftonline.com/te/contoso.onmicrosoft.com/oauth2/authresp`.
-10. Klicken Sie auf **提交** (Absenden).  
+7. Klicken Sie auf **高级信息** (erweiterte Informationen).
+8. Klicken Sie neben dem Feld **授权设置** (Umleitungs-URL) für OAuth2.0 auf **编辑** (Bearbeiten).
+9. Geben Sie für **授权设置** (Umleitungs-URL) für OAuth2.0 die Zeichenfolge `https://login.microsoftonline.com/te/{tenant_name}/oauth2/authresp` ein. Wenn Ihr `tenant_name` beispielsweise „contoso.onmicrosoft.com“ lautet, setzen Sie die URL auf `https://login.microsoftonline.com/te/contoso.onmicrosoft.com/oauth2/authresp`.
+10. Klicken Sie auf **提交** (Senden).  
 
 ## <a name="configure-weibo-as-an-identity-provider-in-your-tenant"></a>Konfigurieren von Weibo als Identitätsanbieter in Ihrem Mandanten
 1. Führen Sie diese Schritte aus, um im Azure-Portal [zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).

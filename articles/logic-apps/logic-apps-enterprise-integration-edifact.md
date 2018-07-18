@@ -1,11 +1,11 @@
 ---
-title: "EDIFACT-Nachrichten für die B2B-Unternehmensintegration – Azure Logic Apps | Microsoft-Dokumentation"
-description: "Austauschen von EDIFACT-Nachrichten im EDI-Format für die B2B-Unternehmensintegration mit Azure Logic Apps"
+title: EDIFACT-Nachrichten für die B2B-Unternehmensintegration – Azure Logic Apps | Microsoft-Dokumentation
+description: Austauschen von EDIFACT-Nachrichten im EDI-Format für die B2B-Unternehmensintegration mit Azure Logic Apps
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 2257d2c8-1929-4390-b22c-f96ca8b291bc
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/26/2016
 ms.author: LADocs; jonfan
-ms.openlocfilehash: 4b1ea9966add3cf0d5f75988f11cda57fa4e4cf6
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: d85db6f5be487578ceab261d2779589439bfad31
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300095"
 ---
 # <a name="exchange-edifact-messages-for-enterprise-integration-with-logic-apps"></a>Austauschen von EDIFACT-Nachrichten für die Unternehmensintegration mit Logik-Apps
 
@@ -44,14 +45,14 @@ Nachdem Sie [ein Integrationskonto erstellt](../logic-apps/logic-apps-enterprise
 
 1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com "Azure-Portal") an. 
 
-2. Wählen Sie im Azure-Hauptmenü **Alle Dienste** aus. Geben Sie im Suchfeld das Wort „Integration“ ein, und wählen Sie dann **Integrationskonten** aus.
+2. Wählen Sie im Azure-Hauptmenü die Option **Alle Dienste** aus. Geben Sie im Suchfeld das Wort „Integration“ ein, und wählen Sie dann **Integrationskonten** aus.
 
    ![Suchen Ihres Integrationskontos](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
 
    > [!TIP]
    > Falls **Alle Dienste** nicht angezeigt wird, müssen Sie das Menü unter Umständen zunächst erweitern. Wählen Sie im oberen Bereich des reduzierten Menüs die Option **Beschriftungen anzeigen** aus.
 
-3. Wählen Sie unter **Integrationskonten** das Integrationskonto aus, unter dem Sie die Vereinbarung erstellen möchten.
+3. Wählen Sie unter **Integrationskonten** das Integrationskonto aus, in dem Sie die Vereinbarung erstellen möchten.
 
    ![Integrationskonto für die Erstellung der Vereinbarung auswählen](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
 
@@ -238,11 +239,11 @@ Nach Abschluss der einzelnen Überprüfungszeilen wird jeweils automatisch eine 
 
 ## <a name="find-your-created-agreement"></a>Suchen der erstellten Vereinbarung
 
-1.  Wählen Sie nach dem Festlegen der Vereinbarungseigenschaften auf der Seite **Hinzufügen** die Option **OK** aus, um die Erstellung Ihrer Vereinbarung abzuschließen und zum Integrationskonto zurückzukehren.
+1.  Wählen Sie nach dem Festlegen der Vereinbarungseigenschaften auf der Seite **Hinzufügen** die Option **OK** aus, um die Erstellung Ihrer Vereinbarung abzuschließen und zu Ihrem Integrationskonto zurückzukehren.
 
     Die neu hinzugefügte Vereinbarung ist nun in der Liste **Vereinbarungen** enthalten.
 
-2.  Sie können Ihre Vereinbarungen auch in der Integrationskontoübersicht anzeigen. Wählen Sie im Menü Ihres Integrationskontos die Option **Übersicht** und anschließend die Kachel **Vereinbarungen** aus. 
+2.  Sie können Ihre Vereinbarungen auch in der Integrationskontoübersicht anzeigen. Wählen Sie im Menü Ihres Integrationskontos die Option **Übersicht** aus, und wählen Sie dann die Kachel **Vereinbarungen** aus. 
 
     ![Kachel „Vereinbarungen“ auswählen](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 

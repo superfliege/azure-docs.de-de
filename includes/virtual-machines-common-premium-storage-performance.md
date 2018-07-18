@@ -239,7 +239,7 @@ Es ist wichtig, den Cache für die richtige Gruppe von Datenträgern zu aktivier
 | **Datenträgertyp** | **Standardeinstellung für den Cache** |
 | --- | --- |
 | Betriebssystem-Datenträger |ReadWrite |
-| Datenträger |Keine |
+| Datenträger |ReadOnly |
 
 Es folgen die empfohlenen Cacheeinstellungen für Datenträger:
 

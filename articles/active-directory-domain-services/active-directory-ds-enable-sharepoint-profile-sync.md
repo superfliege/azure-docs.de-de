@@ -1,29 +1,33 @@
 ---
-title: "Azure Active Directory Domain Services: Aktivieren der Unterstützung für den SharePoint-Benutzerprofildienst | Microsoft-Dokumentation"
-description: "Konfigurieren von in Azure Active Directory Domain Services verwalteten Domänen für die Unterstützung der Profilsynchronisierung für SharePoint Server"
+title: 'Azure Active Directory Domain Services: Aktivieren der Unterstützung für den SharePoint-Benutzerprofildienst | Microsoft-Dokumentation'
+description: Konfigurieren von in Azure Active Directory Domain Services verwalteten Domänen für die Unterstützung der Profilsynchronisierung für SharePoint Server
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: d98fbe85f35932161476a800a2fd438f0bf2b9ef
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9e21547f6e1088677bb5699d17d81d170b4cab3d
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332132"
 ---
 # <a name="configure-a-managed-domain-to-support-profile-synchronization-for-sharepoint-server"></a>Konfigurieren einer verwalteten Domäne für die Unterstützung der Profilsynchronisierung für SharePoint Server
 SharePoint Server umfasst einen Benutzerprofildienst, der für die Benutzerprofilsynchronisierung verwendet wird. Zum Einrichten des Benutzerprofildiensts müssen in einer Active Directory-Domäne entsprechende Berechtigungen erteilt werden. Weitere Informationen finden Sie unter [Erteilen von Berechtigungen für Active Directory Domain Services für die Profilsynchronisierung in SharePoint Server 2013](https://technet.microsoft.com/library/hh296982.aspx).
 
 In diesem Artikel wird erläutert, wie in Azure AD Domain Services verwaltete Domänen für die Bereitstellung des Benutzerprofil-Synchronisierungsdiensts von SharePoint Server konfiguriert werden können.
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="the-aad-dc-service-accounts-group"></a>Die Gruppe „AAD-DC-Dienstkonten“
 Eine Sicherheitsgruppe namens **AAD-DC-Dienstkonten** steht innerhalb der Organisationseinheit „Benutzer“ in Ihrer verwalteten Domäne zur Verfügung. Diese Gruppe wird im MMC-Snap-In **Active Directory-Benutzer und -Computer** für Ihre verwaltete Domäne angezeigt.

@@ -7,23 +7,27 @@ author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 6ed797ca25161919ccf5e69be0073a67bfcef6d6
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4c6e25972b47edf67dac8557e1925bb44463f4d6
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331028"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-on-a-managed-domain"></a>Konfigurieren der eingeschränkten Kerberos-Delegierung (KCD) in einer verwalteten Domäne
 Viele Anwendungen müssen im Kontext des Benutzers auf Ressourcen zugreifen. Active Directory unterstützt einen Mechanismus, die so genannte Kerberos-Delegierung, die diesen Anwendungsfall ermöglicht. Darüber hinaus können Sie die Delegierung einschränken, sodass im Kontext des Benutzers nur auf bestimmte Ressourcen zugegriffen werden kann. In Azure AD Domain Services verwaltete Domänen unterscheiden sich insofern von herkömmlichen Active Directory-Domänen, als dass sie sicherer gesperrt sind.
 
 Dieser Artikel veranschaulicht die Konfiguration der eingeschränkten Kerberos-Delegierung in einer verwalteten Azure AD Domain Services-Domäne.
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="kerberos-constrained-delegation-kcd"></a>Eingeschränkte Kerberos-Delegierung (KCD)
 Die Kerberos-Delegierung ermöglicht einem Konto den Identitätswechsel zu einem anderen Sicherheitsprinzipal (z.B. einem Benutzer) für den Zugriff auf Ressourcen. Stellen Sie sich eine Webanwendung vor, die im Kontext eines Benutzers auf eine Back-End-Web-API zugreift. In diesem Beispiel nimmt die Webanwendung (die im Kontext eines Dienstkontos oder eines Computerkontos ausgeführt wird) beim Zugriff auf die Ressource (Back-End-Web-API) die Identität des Benutzers an. Die Kerberos-Delegierung ist unsicher, da sie nicht die Ressourcen einschränkt, auf die das Konto mit dem Identitätswechsel im Kontext des Benutzers zugreifen kann.

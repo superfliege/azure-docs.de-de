@@ -2,24 +2,25 @@
 title: 'Schnellstartanleitung: Erstellen einer privaten Docker-Registrierung in Azure mit der Azure CLI'
 description: Hier lernen Sie, wie Sie schnell eine private Docker-Containerregistrierung mit der Azure CLI erstellen.
 services: container-registry
-author: neilpeterson
+author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 03/03/2018
-ms.author: nepeters
+ms.author: marsma
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: ed5c2d0b925d92f318b36b36d060ebc923499ee5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 20dfae9c24bac7d9f76ae95f8b6d7c0610a0735e
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888540"
 ---
 # <a name="quickstart-create-a-container-registry-using-the-azure-cli"></a>Schnellstart: Erstellen einer Containerregistrierung mit der Azure-Befehlszeilenschnittstelle
 
 Azure Container Registry ist ein verwalteter Docker-Containerregistrierungsdienst zum Speichern privater Docker-Containerimages. Diese Anleitung enthält ausführliche Informationen zum Erstellen einer Azure Container Registry-Instanz mit der Azure CLI, Übertragen eines Containerimages per Pushvorgang in die Registrierung und Bereitstellen des Containers aus Ihrer Registrierung in Azure Container Instances (ACI).
 
-Für diese Schnellstartanleitung müssen Sie mindestens Version 2.0.27 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI 2.0][azure-cli].
+Für diese Schnellstartanleitung müssen Sie mindestens Version 2.0.27 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli] Informationen dazu.
 
 Darüber hinaus muss Docker lokal installiert sein. Für Docker sind Pakete erhältlich, mit denen Docker problemlos auf einem [Mac-][docker-mac], [Windows-][docker-windows] oder [Linux-][docker-linux]System konfiguriert werden kann.
 

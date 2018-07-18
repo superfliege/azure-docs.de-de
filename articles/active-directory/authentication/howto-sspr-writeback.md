@@ -10,15 +10,16 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 1c44b2738fb21450c5a37f715c995a3e7aecc4a6
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 164760355077e2b905aa0e0f03e1efaf28941e55
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36296887"
 ---
 # <a name="password-writeback-overview"></a>Übersicht über die Kennwortrückschreibung
 
-Mit Kennwortrückschreiben können Sie Azure Active Directory (Azure AD) so konfigurieren, dass Kennwörter in die lokale Active Directory-Instanz zurückgeschrieben werden. Kennwortrückschreiben bewirkt, dass es nicht mehr erforderlich ist, eine komplizierte lokale Lösung für Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) einzurichten und zu verwalten. Gleichzeitig bietet diese Funktion Ihren Benutzern eine bequeme, cloudbasierte Möglichkeit zum Zurücksetzen ihrer lokalen Kennwörter – unabhängig davon, wo sie sich gerade befinden. Kennwortrückschreiben ist eine Komponente von [Azure Active Directory Connect](./../connect/active-directory-aadconnect.md), die von den aktuellen Abonnenten von [Azure Active Directory Premium-Editionen](../active-directory-whatis.md) aktiviert und verwendet werden kann.
+Mit Kennwortrückschreiben können Sie Azure Active Directory (Azure AD) so konfigurieren, dass Kennwörter in die lokale Active Directory-Instanz zurückgeschrieben werden. Kennwortrückschreiben bewirkt, dass es nicht mehr erforderlich ist, eine komplizierte lokale Lösung für Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) einzurichten und zu verwalten. Gleichzeitig bietet diese Funktion Ihren Benutzern eine bequeme, cloudbasierte Möglichkeit zum Zurücksetzen ihrer lokalen Kennwörter – unabhängig davon, wo sie sich gerade befinden. Kennwortrückschreiben ist eine Komponente von [Azure Active Directory Connect](./../connect/active-directory-aadconnect.md), die von den aktuellen Abonnenten von [Azure Active Directory Premium-Editionen](../fundamentals/active-directory-whatis.md) aktiviert und verwendet werden kann.
 
 Kennwortrückschreiben bietet die folgenden Features:
 
@@ -128,7 +129,7 @@ Um die entsprechenden Berechtigungen für das Kennwortrückschreiben einzurichte
 
 ## <a name="licensing-requirements-for-password-writeback"></a>Lizenzierungsanforderungen für das Kennwortrückschreiben
 
-Informationen zur Lizenzierung finden Sie unter [Erforderliche Lizenzen für das Kennwortrückschreiben](concept-sspr-licensing.md#licenses-required-for-password-writeback) oder auf den folgenden Websites:
+Informationen zur Lizenzierung finden Sie unter [Erforderliche Lizenzen für das Kennwortrückschreiben](concept-sspr-licensing.md) oder auf den folgenden Websites:
 
 * [Website mit Preisen für Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)

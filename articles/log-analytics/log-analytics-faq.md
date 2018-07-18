@@ -1,9 +1,9 @@
 ---
-title: Häufig gestellte Fragen zu Log Analytics | Microsoft-Dokumentation
+title: Häufig gestellte Fragen zu Log Analytics | Microsoft Docs
 description: Antworten auf häufig gestellte Fragen zum Azure Log Analytics-Dienst.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ad536ff7-2c60-4850-a46d-230bc9e1ab45
@@ -11,14 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/27/2018
+ms.topic: conceptual
+ms.date: 06/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 22da58df653b31c46145ebbbd1f6f6a26b0e9f29
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.component: na
+ms.openlocfilehash: eb1a60ff533e9e24f3dc80057129da47a2d9a726
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128529"
 ---
 # <a name="log-analytics-faq"></a>Häufig gestellte Fragen zu Log Analytics
 Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Log Analytics in Microsoft Azure. Wenn Sie weiteren Fragen zu Log Analytics haben, besuchen Sie das [Diskussionsforum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
@@ -74,18 +76,21 @@ Log Analytics orientiert sich an der UTC-Zeit, und jeder Tag beginnt um Mitterna
 
 ### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>F: Wie kann ich benachrichtigt werden, wenn die Datensammlung beendet wird?
 
-A: Führen Sie die Schritte unter [Erstellen einer Warnungsregel](log-analytics-alerts-creating.md#create-an-alert-rule) aus, um eine Benachrichtigung zu erhalten, wenn die Datensammlung endet.
+A: Führen Sie die Schritte unter [Erstellen einer Warnungsregel mit dem Azure-Portal](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) aus, um eine Benachrichtigung zu erhalten, wenn die Datensammlung beendet wird.
 
 Legen Sie beim Erstellen der Warnung für das Beenden der Datensammlung Folgendes fest:
-- **Name** auf *Datensammlung beendet*
-- **Schweregrad** auf *Warnung*
-- **Suchabfrage** auf `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
-- **Zeitfenster** auf *30 Minuten*
-- **Warnungshäufigkeit** auf alle *zehn* Minuten
-- **Warnung generieren basierend auf** auf *Anzahl von Ergebnissen*
-- **Anzahl von Ergebnissen** auf *Größer als 0*
 
-Diese Warnung wird nur ausgelöst, wenn die Abfrage Ergebnisse zurückgibt und der Heartbeat für mehr als 15 Minuten ausbleibt.  Führen Sie die Schritte aus, die unter [Hinzufügen von Aktionen zu Warnungsregeln](log-analytics-alerts-actions.md) beschrieben sind, um eine E-Mail-, Webhook- oder Runbookaktion für die Warnungsregel zu konfigurieren.
+- **Definieren der Warnungsbedingung**: Festlegen Ihres Log Analytics-Arbeitsbereichs als Ressourcenziel
+- **Warnungskriterien**:
+   - **Signalname** auf **Benutzerdefinierte Protokollsuche**
+   - **Suchabfrage** auf `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
+   - **Warnungslogik**: **Basiert auf** *Anzahl von Ergebnissen* und **Bedingung** ist *Größer als* ein **Schwellenwert** von *0*
+   - **Zeitraum** auf *30* Minuten und **Warnungshäufigkeit** auf alle *10* Minuten
+- **Definieren der Warnungsdetails**:
+   - **Name** auf *Datensammlung beendet*
+   - **Schweregrad** auf *Warnung*
+
+Geben Sie eine vorhandene [Aktionsgruppe](../monitoring-and-diagnostics/monitoring-action-groups.md) an, oder erstellen Sie eine neue, damit Sie benachrichtigt werden, wenn die Protokollwarnung Kriterien erfüllt, und ein Heartbeat für mehr als 15 Minuten ausbleibt.
 
 ## <a name="configuration"></a>Konfiguration
 ### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>F: Kann ich den Namen der Tabelle bzw. des Blobcontainers zum Einlesen von Daten aus Azure-Diagnose (WAD) ändern?
@@ -96,7 +101,7 @@ A. Nein, derzeit ist es nicht möglich, aus beliebigen Tabellen oder Containern 
 
 A. Der Log Analytics-Dienst basiert auf Azure. Log Analytics-IP-Adressen finden Sie in den [Microsoft Azure Datacenter IP Ranges](http://www.microsoft.com/download/details.aspx?id=41653) (Microsoft Azure-Rechenzentrum-IP-Adressbereiche).
 
-Sobald Dienstbereitstellungen erfolgen, ändern sich die tatsächlichen IP-Adressen des Log Analytics-Diensts. Die für Ihre Firewall zugelassenen DNS-Namen sind in den [Systemanforderungen](log-analytics-concept-hybrid.md#prerequisites) dokumentiert.
+Sobald Dienstbereitstellungen erfolgen, ändern sich die tatsächlichen IP-Adressen des Log Analytics-Diensts. Die für Ihre Firewall zugelassenen DNS-Namen sind in den [Netzwerkanforderungen](log-analytics-concept-hybrid.md#network-firewall-requirements) dokumentiert.
 
 ### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>F: Ich verwende ExpressRoute für die Verbindung mit Azure. Wird für meinen Log Analytics-Datenverkehr meine ExpressRoute-Verbindung verwendet?
 
@@ -130,7 +135,7 @@ Ein gelbes Warnsymbol bedeutet, dass der Agent Probleme bei der Kommunikation mi
 ### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>F: Wie beende ich die Kommunikation eines Agents mit Log Analytics?
 
 A: Entfernen Sie in System Center Operations Manager den Computer aus der Liste der OMS-verwalteten Computer. Operations Manager aktualisiert die Konfiguration des Agents so, dass er keine Berichte mehr an Log Analytics sendet. Bei Agents, die direkt mit Log Analytics verbunden sind, können Sie die Kommunikation beenden, indem Sie zu „Systemsteuerung > Sicherheit und Einstellungen > **Microsoft Monitoring Agent**“ wechseln.
-Entfernen Sie unter **Azure Log Analytics (OMS)**alle aufgeführten Arbeitsbereiche.
+Entfernen Sie unter **Azure Log Analytics (OMS)** alle aufgeführten Arbeitsbereiche.
 
 ### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>F: Warum tritt ein Fehler auf, wenn ich versuche, meinen Arbeitsbereich aus einem Azure-Abonnement in ein anderes zu verschieben?
 

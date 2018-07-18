@@ -11,17 +11,18 @@ ms.date: 04/24/2018
 ms.author: brenduns
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 2ea07f04d4c566c0add39d75cad3d3a4ed81c6c8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c364a9ba5a9606967fa86262417ccd1ac3aeffc3
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866269"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>Schnellstart: Erstellen eines virtuellen Linux-Servers mit dem Azure Stack-Portal
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Sie können einen virtuellen Computer mit Ubuntu Server 16.04 LTS über das Azure Stack-Portal erstellen. Führen Sie die Schritte in diesem Artikel aus, um einen virtuellen Computer zu erstellen und zu verwenden. Darüber hinaus erfahren Sie in diesem Artikel, wie Sie folgende Schritte ausführen:
+Sie können einen virtuellen Computer mit Ubuntu Server 16.04 LTS über das Azure Stack-Portal erstellen. Führen Sie die Schritte in diesem Artikel aus, um einen virtuellen Computer zu erstellen und zu verwenden. In diesem Artikel führen Sie auch die folgenden Schritte aus:
 
 * Herstellen einer Verbindung mit dem virtuellen Computer über einen Remoteclient
 * Installieren eines NGINX-Webservers
@@ -31,7 +32,7 @@ Sie können einen virtuellen Computer mit Ubuntu Server 16.04 LTS über das Azur
 
 * **Ein Linux-Image im Azure Stack-Marketplace**
 
-   Ein Linux-Image ist standardmäßig nicht im Azure Stack-Marketplace enthalten. Um einen virtuellen Linux-Server erstellen zu können, muss der Azure Stack-Bediener das benötigte Image für **Ubuntu Server 16.04 LTS** bereitstellen. Hierzu kann der Bediener die Schritte des Artikels [Herunterladen von Marketplace-Elementen von Azure in Azure Stack](../azure-stack-download-azure-marketplace-item.md) ausführen.
+   Ein Linux-Image ist standardmäßig nicht im Azure Stack-Marketplace enthalten. Um einen virtuellen Linux-Server erstellen zu können, muss der Azure Stack-Bediener das benötigte Image für **Ubuntu Server 16.04 LTS** bereitstellen. Hierzu kann der Operator die Schritte des Artikels [Herunterladen von Marketplace-Elementen von Azure in Azure Stack](../azure-stack-download-azure-marketplace-item.md) ausführen.
 
 * **Zugriff auf einen SSH-Client**
 

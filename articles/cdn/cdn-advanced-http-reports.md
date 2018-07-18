@@ -1,11 +1,11 @@
 ---
 title: Analysieren von Nutzungsstatistiken mit den erweiterten HTTP-Berichten in Azure CDN | Microsoft-Dokumentation
-description: "Hier erfahren Sie, wie Sie erweiterte HTTP-Berichte in Microsoft Azure CDN erstellen. Diese Berichte enthalten detaillierte Informationen zur CDN-Aktivität."
+description: Hier erfahren Sie, wie Sie erweiterte HTTP-Berichte in Microsoft Azure CDN erstellen. Diese Berichte enthalten detaillierte Informationen zur CDN-Aktivität.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: ef90adc1-580e-4955-8ff1-bde3f3cafc5d
 ms.service: cdn
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22999035"
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Analysieren von Nutzungsstatistiken mit den erweiterten HTTP-Berichten in Azure CDN
 ## <a name="overview"></a>Übersicht

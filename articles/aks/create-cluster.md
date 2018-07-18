@@ -2,18 +2,19 @@
 title: Erstellen eines Azure Kubernetes Service-Clusters (AKS)
 description: Erstellen eines AKS-Clusters mit der Befehlszeilenschnittstelle oder dem Azure-Portal
 services: container-service
-author: neilpeterson
-manager: timlt
+author: iainfoulds
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 02/12/2018
-ms.author: nepeters
+ms.date: 06/26/2018
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 46c2f718911f27ad8f51423589c6fdda100a68d2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 304f3807a70179e4aab2ede80dc08a1aa85a2e51
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098905"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster"></a>Erstellen eines Azure Kubernetes Service-Clusters (AKS)
 
@@ -27,24 +28,41 @@ Verwenden Sie den Befehl [az aks create][az-aks-create] zum Erstellen des AKS-Cl
 az aks create --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Für den Befehl `az aks create` sind die folgenden Optionen verfügbar:
+Für den Befehl `az aks create` sind die folgenden Optionen verfügbar: Weitere Informationen zu diesen Argumenten finden Sie in der [Azure CLI-Referenz][az-aks-create] für AKS.
 
 | Argument | BESCHREIBUNG | Erforderlich |
 |---|---|:---:|
 | `--name``-n` | Ressourcenname für den verwalteten Cluster | Ja |
 | `--resource-group``-g` | Name der Azure Kubernetes Service-Ressourcengruppe | Ja |
 | `--admin-username``-u` | Benutzername für die virtuellen Linux-Computer.  Standard: azureuser. | no |
+| `--aad-client-app-id` | (VORSCHAUVERSION) Die ID einer Azure Active Directory-Clientanwendung vom Typ „Nativ“ | no |
+| `--aad-server-app-id` | (VORSCHAUVERSION) Die ID einer Azure Active Directory-Serveranwendung vom Typ „Web-App/API“ | no |
+| `--aad-server-app-secret` | (VORSCHAUVERSION) Das Geheimnis einer Azure Active Directory-Serveranwendung | no |
+| `--aad-tenant-id` | (VORSCHAUVERSION) Die ID eines Azure Active Directory-Mandanten | no |
+| `--admin-username``-u` | Benutzerkonto zum Erstellen von VMs auf Knoten für den SSH-Zugriff  Standard: azureuser. | no |
 | ` --client-secret` | Das dem Dienstprinzipal zugeordnete Geheimnis | no |
 | `--dns-name-prefix``-p` | DNS-Präfix für die öffentliche IP-Adresse des Clusters | no |
+| `--dns-service-ip` | IP-Adresse, die dem Kubernetes-DNS-Dienst zugewiesen ist | no |
+| `--docker-bridge-address` | IP-Adresse und Netzmaske, die der Docker-Bridge zugewiesen ist | no |
+| `--enable-addons``-a` | Aktivieren der Kubernetes-Add-Ons in einer kommagetrennten Liste | no |
+| `--enable-rbac``-r` | Aktivieren der rollenbasierten Zugriffssteuerung für Kubernetes | no |
 | `--generate-ssh-keys` | Erstellen der Dateien für öffentliche und private SSH-Schlüssel, sofern diese fehlen. | no |
-| `--kubernetes-version``-k` | Die Version von Kubernetes zum Erstellen des Clusters, z.B. „1.7.9“ oder „1.8.2“.  Standard: 1.7.7. | no |
+| `--kubernetes-version``-k` | Die Version von Kubernetes zum Erstellen des Clusters, z.B. „1.7.9“ oder „1.9.6“. | no |
+| `--locaton``-l` | Speicherort für die automatisch erstellte Ressourcengruppe | no |
+| `--max-pods``-m` | Maximale Anzahl von Pods, die auf einem Knoten bereitgestellt werden können | no |
+| `--network-plugin` | Zu verwendendes Kubernetes-Netzwerk-Plug-In | no |
+| `--no-ssh-key``-x` | Keinen lokalen SSH-Schlüssel verwenden oder erstellen | no |
 | `--no-wait` | Nicht auf den Abschluss lang andauernder Vorgänge warten | no |
 | `--node-count``-c` | Standardanzahl von Knoten für die Knotenpools.  Standard: 3. | no |
 | `--node-osdisk-size` | Größe des Betriebssystemdatenträgers des virtuellen Computers für den Knotenpool in GB | no |
 | `--node-vm-size``-s` | Größe des virtuellen Computers.  Standard: Standard_D1_v2. | no |
+| `--pod-cidr` | IP-Bereich in CIDR-Notation, über den Pod-IPs zugewiesen werden, wenn kubenet verwendet wird | no |
+| `--service-cidr` | IP-Bereich in CIDR-Notation, über den Dienstcluster-IPs zugewiesen werden | no |
 | `--service-principal` | Dienstprinzipal für die Clusterauthentifizierung | no |
 | `--ssh-key-value` | SSH-Schlüsseldateiwert oder -Schlüsseldateipfad.  Standard: ~/.ssh/id_rsa.pub. | no |
 | `--tags` | Durch Leerzeichen getrennte Tags im Format „Schlüssel[=Wert]“. Verwenden Sie ", um vorhandene Tags zu löschen. | no |
+| `--vnet-subnet-id` | Die ID eines Subnetzes in einem vorhandenen VNET, in dem der Cluster bereitgestellt werden soll | no |
+| `--workspace-resource-id` | Ressourcen-ID eines vorhandenen Log Analytics-Arbeitsbereichs zum Speichern von Überwachungsdaten | no |
 
 ## <a name="azure-portal"></a>Azure-Portal
 

@@ -1,76 +1,64 @@
 ---
-title: 'Gewusst wie: Erweitern (Kopieren) von Warnungen aus dem OMS-Portal in Azure | Microsoft-Dokumentation'
-description: Die Tools und die API, mit denen Warnungen aus OMS in Azure-Warnungen erweitert werden, können von Kunden freiwillig ausgeführt werden.
+title: Erweitern von Warnungen aus Log Analytics auf Azure
+description: Dieser Artikel beschreibt die Tools und die API zum Erweitern von Warnungen aus Log Analytics auf Azure-Warnungen.
 author: msvijayn
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/14/2018
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 06/04/2018
 ms.author: vinagara
-ms.openlocfilehash: 241ac027a0606f901f51d6a20b9a48a2cf7a9fcf
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.component: alerts
+ms.openlocfilehash: 21ba95a7b3efff177afe63d22da3f6ba9848ded2
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34166181"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301030"
 ---
-# <a name="how-to-extend-copy-alerts-from-oms-into-azure"></a>Gewusst wie: Erweitern (Kopieren) von Warnungen aus dem OMS-Portal in Azure
-Ab dem **14. Mai 2018** werden die Warnungen aller Kunden, die in [Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) konfiguriert sind, auf Azure erweitert. Warnungen, die in Azure erweitert werden, verhalten sich auf die gleiche Weise wie in OMS. Die Überwachungsfunktionen bleiben intakt. Das Erweitern von Warnungen aus OMS in Azure bietet zahlreiche Vorteile. Weitere Informationen zu den Vorteilen und dem Vorgang der Erweiterung von Warnungen aus OMS in Azure finden Sie unter [Erweitern von Warnungen aus OMS in Azure](monitoring-alerts-extend.md).
+# <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Erweitern von Warnungen aus Log Analytics in Azure-Warnungen
+Die Warnfunktion in Azure Log Analytics wird durch Azure-Warnungen ersetzt. Im Rahmen dieses Übergangs werden Warnungen, die Sie ursprünglich in Log Analytics konfiguriert haben, auf Azure erweitert. Wenn Sie nicht warten möchten, bis diese automatisch in Azure verschoben werden, können Sie den Prozess auslösen:
+
+- Manuell über das Operations Management Suite-Portal 
+- Programmgesteuert mithilfe der AlertsVersion-API  
 
 > [!NOTE]
-> Ab dem 14. Mai 2018 beginnt Microsoft mit dem Vorgang zur automatischen Erweiterung der Warnungen in Azure. Nicht alle Arbeitsbereiche und Warnungen werden an diesem Tag erweitert. Stattdessen beginnt Microsoft in den kommenden Wochen mit der automatischen Erweiterung der Warnungen in Tranchen. Daher werden Ihre Warnungen im OMS-Portal nicht sofort am 14. Mai 2018 automatisch in Azure erweitert, und Benutzer können ihre Warnungen weiterhin manuell erweitern, indem sie die unten beschriebenen Optionen nutzen.
+> Ab dem 14. Mai 2018 erweitert Microsoft in Log Analytics erstellte Warnungen automatisch in einer wiederholten Serie bis zum vollständigen Abschluss auf Azure-Warnungen. Microsoft legt die Migration der Warnungen zu Azure in einem Zeitplan fest. Während dieses Übergangs können Warnungen sowohl über das Operations Management Suite-Portal als auch über das Azure-Portal verwaltet werden. Bei diesem Vorgang wird nichts zerstört oder unterbrochen.  
 
-Kunden, die ihre Warnungen sofort aus OMS in Azure verschieben möchten, können dies über eine der angegebenen Optionen erreichen.
+## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>Option 1: Starten über das Operations Management Suite-Portal
+Die folgenden Schritte beschreiben, wie Sie Warnungen für den Arbeitsbereich über das Operations Management Suite-Portal erweitern.  
 
-## <a name="option-1---using-oms-portal"></a>Option 1: Verwenden des OMS-Portals
-Um die Erweiterung von Warnungen aus dem OMS-Portal in Azure freiwillig zu initiieren, führen Sie die unten aufgeführten Schritte aus.
+1. Wählen Sie im Azure-Portal **Alle Dienste** aus. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
+2. Wählen Sie im Log Analytics-Abonnementbereich einen Arbeitsbereich aus, und wählen Sie dann die Kachel **OMS-Portal** aus.
+![Screenshot des Log Analytics-Abonnementbereichs mit hervorgehobener Kachel für das OMS-Portal](./media/monitor-alerts-extend/azure-portal-01.png) 
+3. Nachdem Sie zum Operations Management Suite-Portal weitergeleitet wurden, klicken Sie auf das Symbol **Einstellungen**.
+![Screenshot des Operations Management Suite-Portals mit hervorgehobenem Symbol „Einstellungen“](./media/monitor-alerts-extend/oms-portal-settings-option.png) 
+4. Klicken Sie auf der Seite **Einstellungen** auf **Warnungen**.  
+5. Wählen Sie **Auf Azure erweitern**.
+![Screenshot der Seite „Einstellungen“ im Operations Management Suite-Portal mit hervorgehobener Option „Auf Azure erweitern“](./media/monitor-alerts-extend/ExtendInto.png)
+6. Ein Assistent mit drei Schritten wird im Bereich **Warnungen** angezeigt. Lesen Sie die Übersicht, und wählen Sie **Weiter**.
+![Screenshot von Schritt 1 des Assistenten](./media/monitor-alerts-extend/ExtendStep1.png)  
+7. Im zweiten Schritt wird eine Zusammenfassung der vorgeschlagenen Änderungen mit den entsprechenden [Aktionsgruppen](monitoring-action-groups.md) für die Warnungen angezeigt. Wenn für mehrere Warnungen ähnliche Aktionen angezeigt werden, schlägt der Assistent vor, allen eine einzige Aktionsgruppe zuzuordnen.  Die Namenskonvention lautet folgendermaßen: *Arbeitsbereichsname_AG_#Nummer*. Zum Fortsetzen des Vorgangs klicken Sie auf **Weiter**.
+![Screenshot von Schritt 2 des Assistenten](./media/monitor-alerts-extend/ExtendStep2.png)  
+8. Wählen Sie im letzten Schritt des Assistenten **Fertig stellen**, und bestätigen Sie bei Aufforderung den Start des Vorgangs. Optional können Sie eine E-Mail-Adresse angeben, damit Sie benachrichtigt werden, wenn der Prozess abgeschlossen ist und alle Warnungen erfolgreich in Azure-Warnungen verschoben wurden.
+![Screenshot von Schritt 3 des Assistenten](./media/monitor-alerts-extend/ExtendStep3.png)
 
-1. Navigieren Sie auf der Übersichtsseite des OMS-Portals zum Abschnitt „Einstellungen“ und dann zu „Warnungen“. Klicken Sie wie in der Abbildung unten gezeigt auf die Schaltfläche „In Azure erweitern“.
-
-    ![Seite „Warnungseinstellungen“ mit Option „Erweitern“ des OMS-Portals](./media/monitor-alerts-extend/ExtendInto.png)
-
-2. Nach dem Klicken auf die Schaltfläche wird ein Assistent mit drei Schritten angezeigt. Dabei stellt der erste Schritt die Details des Vorgangs bereit. Klicken Sie zum Fortfahren auf „Weiter“.
-
-    ![Erweitern von Warnungen aus dem OMS-Portal in Azure – Schritt 1](./media/monitor-alerts-extend/ExtendStep1.png)
-
-3. Im zweiten Schritt zeigt das System eine Zusammenfassung der vorgeschlagenen Änderung an, indem es die entsprechenden [Aktionsgruppen](monitoring-action-groups.md) für die Warnungen im OMS-Portal auflistet. Wenn ähnliche Aktionen über mehrere Warnungen hinweg auftreten, schlägt das System vor, allen eine einzige Aktionsgruppe zuzuordnen.  Die vorgeschlagene Aktionsgruppe folgt dieser Namenskonvention: *ArbeitsbereichName_AG_#Zahl*. Klicken Sie auf „Weiter“, um den Vorgang fortzusetzen.
-Unten sehen Sie einen Beispielbildschirm.
-
-    ![Erweitern von Warnungen aus dem OMS-Portal in Azure – Schritt 2](./media/monitor-alerts-extend/ExtendStep2.png)
-
-
-4. Im letzten Schritt des Assistenten können Sie das OMS-Portal auffordern, alle Ihre Warnungen in Azure zu erweitern, indem neue Aktionsgruppen erstellt und mit Warnungen verknüpft werden, wie im Screenshot weiter oben gezeigt. Zu Fortfahren klicken Sie auf „Fertig stellen“ und bestätigen an der Eingabeaufforderung, dass der Vorgang initiiert werden soll. Optional können Kunden auch E-Mail-Adressen angeben, an die das OMS-Portal einen Bericht über den Abschluss der Verarbeitung senden soll.
-
-    ![Erweitern von Warnungen aus dem OMS-Portal in Azure – Schritt 3](./media/monitor-alerts-extend/ExtendStep3.png)
-
-5. Sobald der Assistent beendet wurde, wird die Steuerung zurück an die Seite mit den Warnungseinstellungen gegeben, und die Option „In Azure erweitern“ wird entfernt. Im Hintergrund plant das OMS-Portal, dass Warnungen aus Log Analytics in Azure erweitert werden. Dies kann einige Zeit in Anspruch nehmen, und wenn der Vorgang beginnt, stehen Warnungen im OMS-Portal für kurze Zeit nicht zur Änderung zur Verfügung. Der aktuelle Status wird über das Banner angezeigt, und wenn in Schritt 4 E-Mail-Adressen angegeben wurden, werden diese informiert, wenn der Hintergrundprozess alle Warnungen erfolgreich in Azure erweitert hat. 
-
-6. Warnungen werden weiterhin im OMS-Portal aufgelistet, auch nachdem sie erfolgreich in Azure erweitert wurden.
-
-    ![Nach dem Erweitern von Warnungen aus dem OMS-Portal in Azure](./media/monitor-alerts-extend/PostExtendList.png)
+Wenn der Assistent beendet ist, wird die Option zum Erweitern von Warnungen auf Azure auf der Seite **Warnungseinstellungen** nicht mehr angezeigt. Im Hintergrund werden Ihre Warnungen in Azure verschoben, und dieser Vorgang kann eine Weile dauern. Während des Vorgangs können Sie über das Operations Management Suite-Portal keine Änderungen an Warnungen vornehmen. Den aktuellen Status können Sie dem Banner am oberen Rand des Portals entnehmen. Wenn Sie zuvor eine E-Mail-Adresse angegeben haben, erhalten eine E-Mail, wenn der Vorgang erfolgreich abgeschlossen wurde.  
 
 
-## <a name="option-2---using-api"></a>Option 2: Verwenden der API
-Für Kunden, die den Vorgang des Erweiterns von Warnungen aus dem OMS-Portal in Azure programmgesteuert steuern oder automatisieren möchten, hat Microsoft eine neue AlertsVersion-API unter Log Analytics bereitgestellt.
+Warnungen werden weiterhin im Operations Management Suite-Portal aufgeführt, auch nachdem sie erfolgreich in Azure verschoben wurden.
+![Screenshot der Seite mit Warnungseinstellungen im Operations Management Suite-Portal](./media/monitor-alerts-extend/PostExtendList.png)
 
-Die AlertsVersion-API aus Log Analytics ist RESTful. Der Zugriff darauf erfolgt über die Azure Resource Manager-REST-API. In diesem Dokument finden Sie Beispiele, in denen über eine PowerShell-Befehlszeile mit [ARMClient](https://github.com/projectkudu/ARMClient) auf die API zugegriffen wird. Dies ist ein Open Source-Befehlszeilentool, mit dem das Aufrufen der Azure Resource Manager-API vereinfacht wird. Die Verwendung von ARMClient und PowerShell ist eine von vielen Möglichkeiten, auf die API zuzugreifen. Die API gibt Ergebnisse im JSON-Format aus, die programmgesteuert auf viele verschiedene Arten verwendet werden können.
 
-Durch die Verwendung von GET mit der API können Sie im Ergebnis die Zusammenfassung der vorgeschlagenen Änderung als Liste geeigneter [Aktionsgruppen](monitoring-action-groups.md) für die Warnungen im OMS-Portal im JSON-Format erhalten. Wenn ähnliche Aktionen über mehrere Warnungen hinweg auftreten, schlägt das System vor, eine Aktionsgruppe zu erstellen und allen eine einzige Aktionsgruppe zuzuordnen.  Die vorgeschlagene Aktionsgruppe folgt dieser Namenskonvention: *ArbeitsbereichName_AG_#Zahl*.
+## <a name="option-2-use-the-alertsversion-api"></a>Option 2: Verwenden der AlertsVersion-API
+Sie können die AlertsVersion-API von Log Analytics zum Erweitern von Warnungen aus Log Analytics in Azure-Warnungen auf jedem beliebigen Client verwenden, der eine REST-API aufrufen kann. Die API kann in PowerShell über das Open Source-Befehlszeilentool [ARMClient](https://github.com/projectkudu/ARMClient) aufgerufen werden. Die Ergebnisse können im JSON-Format ausgegeben werden.  
+
+Zum Verwenden der API erstellen Sie zunächst eine GET-Anforderung. Diese bewertet die vorgeschlagenen Änderungen und gibt eine Zusammenfassung zurück, bevor Sie die Erweiterung auf Azure tatsächlich mithilfe einer POST-Anforderung durchführen. In den Ergebnissen werden Ihre Warnungen und eine vorgeschlagene Liste von [Aktionsgruppen](monitoring-action-groups.md) im JSON-Format aufgeführt. Wenn für mehrere Warnungen ähnliche Aktionen angezeigt werden, schlägt der Dienst vor, allen eine einzige Aktionsgruppe zuzuordnen. Die Namenskonvention lautet folgendermaßen: *Arbeitsbereichsname_AG_#Nummer*.
 
 ```
 armclient GET  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
 ```
 
-> [!NOTE]
-> Der an die API gerichtete GET-Aufruf führt nicht dazu, dass Warnungen aus dem OMS-Portal in Azure erweitert werden. Er bietet nur als Ergebnis die Zusammenfassung der vorgeschlagenen Änderungen. Um zu bestätigen, dass diese Änderungen zum Erweitern von Warnungen in Azure vorgenommen werden sollen, muss ein POST-Aufruf der API erfolgen.
-
-Wenn der GET-Aufruf der API erfolgreich ist, wird zusammen mit einer 200 OK-Antwort eine JSON-Liste der Warnungen und vorgeschlagenen Aktionsgruppen bereitgestellt. Die Abbildung unten zeigt eine Beispielantwort:
+Wenn die GET-Anforderung erfolgreich ist, wird ein HTTP-Statuscode 200 zusammen mit einer Liste der Warnungen und vorgeschlagenen Aktionsgruppen in den JSON-Daten zurückgegeben. Hier sehen Sie eine Beispielantwort:
 
 ```json
 {
@@ -127,7 +115,7 @@ Wenn der GET-Aufruf der API erfolgreich ist, wird zusammen mit einer 200 OK-Antw
 }
 
 ```
-Falls es keine Warnungen im angegebenen Arbeitsbereich gibt, wird zusammen mit der 200 OK-Antwort für den GET-Vorgang folgender JSON-Code zurückgegeben:
+Wenn für den angegebenen Arbeitsbereich keine Warnregeln definiert sind, geben die JSON-Daten Folgendes zurück:
 
 ```json
 {
@@ -136,14 +124,15 @@ Falls es keine Warnungen im angegebenen Arbeitsbereich gibt, wird zusammen mit d
 }
 ```
 
-Wenn alle Warnungen im angegebenen Arbeitsbereich bereits in Azure erweitert wurden, würde die Antwort auf den GET-Aufruf folgendermaßen lauten:
+Wenn alle Warnungen im angegebenen Arbeitsbereich bereits auf Azure erweitert wurden, lautet die Antwort auf die GET-Anforderung folgendermaßen:
+
 ```json
 {
     "version": 2
 }
 ```
 
-Um die Planung der Erweiterung von Warnungen aus dem OMS-Portal in Azure zu starten, initiieren Sie einen POST-Aufruf der API. Durch diesen Aufruf/Befehl wird die Absicht des Benutzers bestätigt, seine Warnungen aus dem OMS-Portal in Azure zu erweitern und die Änderungen auszuführen, die als Antwort auf den GET-Aufruf der API angegeben werden. Optional kann der Benutzer eine Liste von E-Mail-Adressen angeben, an die das OMS-Portal einen Bericht sendet, wenn der geplante Hintergrundprozess der Erweiterung der Warnungen aus dem OMS-Portal in Azure erfolgreich abgeschlossen wurde.
+Um die Migration von Warnungen zu Azure zu starten, initiieren Sie eine POST-Antwort. Die POST-Antwort bestätigt Ihre Absicht und Ihr Einverständnis dafür, Warnungen aus Log Analytics auf Azure-Warnungen zu erweitern. Die Aktivität wird zeitlich geplant, und die Warnungen werden wie angegeben und basierend auf den Ergebnissen der zuvor durchgeführten GET-Antwort verarbeitet. Optional können Sie eine Liste von E-Mail-Adressen angeben, an die Log Analytics einen Bericht sendet, wenn der geplante Hintergrundprozess zur Migration der Warnungen erfolgreich abgeschlossen wurde. Sie können das folgende Anforderungsbeispiel verwenden:
 
 ```
 $emailJSON = “{‘Recipients’: [‘a@b.com’, ‘b@a.com’]}”
@@ -151,17 +140,17 @@ armclient POST  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupNam
 ```
 
 > [!NOTE]
-> Das Ergebnis der Erweiterung von OMS-Portal-Warnungen in Azure kann aufgrund von Änderungen im System von der von GET bereitgestellten Zusammenfassung abweichen. Nach der Planung sind Warnungen im OMS-Portal vorübergehend nicht mehr für die Bearbeitung/Änderung verfügbar, während neue Warnungen weiterhin erstellt werden können. 
+> Das Ergebnis der Migration von Warnungen zu Azure-Warnungen variiert basierend auf der Zusammenfassung, die von der GET-Antwort bereitgestellt wurde. Wenn sie geplant werden, können Warnungen in Log Analytics vorübergehend nicht im Operations Management Suite-Portal bearbeitet werden. Sie können jedoch neue Warnungen erstellen. 
 
-Wenn der POST-Aufruf erfolgreich ist, wird eine 200 OK-Antwort zusammen mit der folgenden Angabe zurückgegeben:
+Wenn die POST-Anforderung erfolgreich ist, werden ein HTTP 200 OK-Status sowie die folgende Antwort zurückgegeben:
+
 ```json
 {
     "version": 2
 }
 ```
-Diese Antwort gibt an, dass die Warnungen in Azure erweitert wurden, wie „version 2“ besagt. Diese Versionsangabe dient nur zur Überprüfung, ob Warnungen in Azure erweitert wurden, und besitzt keinen Einfluss auf die Verwendung mit der [Log Analytics-Such-API](../log-analytics/log-analytics-api-alerts.md). Sobald die Warnungen erfolgreich in Azure erweitert sind, wird an alle während der Ausführung von GET bereitgestellten E-Mail-Adressen ein Bericht mit Details zu den vorgenommenen Änderungen gesendet.
 
-Wenn die Erweiterung aller Warnungen im angegebenen Arbeitsbereich in Azure bereits geplant ist, ist die Antwort auf POST schließlich „403 Forbidden“. Zum Anzeigen von Fehlermeldungen oder zum Ermitteln, ob der Erweiterungsprozess hängt, können Benutzer einen GET-Aufruf durchführen. Es wird eine Zusammenfassung und, falls zutreffend, eine Fehlermeldung angezeigt.
+Diese Antwort gibt an, dass die Warnungen erfolgreich auf Azure-Warnungen erweitert wurden. Die Versionseigenschaft dient nur zur Überprüfung, ob Warnungen auf Azure erweitert wurden, und steht nicht im Zusammenhang mit der [Log Analytics-API für die Suche](../log-analytics/log-analytics-api-alerts.md). Wenn die Warnungen erfolgreich auf Azure erweitert wurden, erhalten alle E-Mail-Adressen, die mit der POST-Anforderung angegeben wurden, einen Bericht. Wenn für alle Warnungen im angegebenen Arbeitsbereich bereits eine Erweiterung geplant wurde, erhalten Sie als Antwort auf Ihre POST-Anforderung einen Statuscode 403 mit dem Hinweis, dass der Versuch unzulässig sei. Um Fehlermeldungen anzuzeigen oder zu ermitteln, ob der Prozess abgestürzt ist, können Sie eine GET-Anforderung senden. Wenn eine Fehlermeldung vorliegt, wird sie zusammen mit den Zusammenfassungsinformationen zurückgegeben.
 
 ```json
 {
@@ -224,32 +213,268 @@ Wenn die Erweiterung aller Warnungen im angegebenen Arbeitsbereich in Azure bere
 
 ```
 
+
+## <a name="option-3-use-a-custom-powershell-script"></a>Option 3: Verwenden eines benutzerdefinierten PowerShell-Skripts
+ Wenn Microsoft Ihre Warnungen nicht erfolgreich aus dem Operations Management Suite-Portal auf Azure erweitern konnte, können Sie dies bis zum 5. Juli 2018 manuell durchführen. In den vorherigen beiden Abschnitten wurden die beiden Optionen für die manuelle Erweiterung behandelt.
+
+Nach dem 5. Juli 2018 werden alle Warnungen aus dem Operations Management Suite-Portal auf Azure erweitert. Für Benutzer, die die [erforderlichen vorgeschlagenen Wiederherstellungsschritte](#troubleshooting) nicht durchgeführt haben, werden Warnungen ohne das Auslösen von Aktionen oder Benachrichtigungen ausgeführt, weil keine [Aktionsgruppen](monitoring-action-groups.md) zugeordnet wurden. 
+
+Um [Aktionsgruppen](monitoring-action-groups.md) für Warnungen manuell in Log Analytics zu erstellen, verwenden Sie das folgende Beispielskript:
+```PowerShell
+########## Input Parameters Begin ###########
+
+
+$subscriptionId = ""
+$resourceGroup = ""
+$workspaceName = "" 
+
+
+########## Input Parameters End ###########
+
+armclient login
+
+try
+{
+    $workspace = armclient get /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/"$workspaceName"?api-version=2015-03-20 | ConvertFrom-Json
+    $workspaceId = $workspace.properties.customerId
+    $resourceLocation = $workspace.location
+}
+catch
+{
+    "Please enter valid input parameters i.e. Subscription Id, Resource Group and Workspace Name !!"
+    exit
+}
+
+# Get Extend Summary of the Alerts
+"`nGetting Extend Summary of Alerts for the workspace...`n"
+try
+{
+
+    $value = armclient get /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/alertsversion?api-version=2017-04-26-preview
+
+    "Extend preview summary"
+    "=========================`n"
+
+    $value
+
+    $result = $value | ConvertFrom-Json
+}
+catch
+{
+
+    $ErrorMessage = $_.Exception.Message
+    "Error occured while fetching/parsing Extend summary: $ErrorMessage"
+    exit 
+}
+
+if ($result.version -eq 2)
+{
+    "`nThe alerts in this workspace have already been extended to Azure."
+    exit
+}
+
+$in = Read-Host -Prompt "`nDo you want to continue extending the alerts to Azure? (Y/N)"
+
+if ($in.ToLower() -ne "y")
+{
+    exit
+} 
+
+
+# Check for resource provider registration
+try
+{
+    $val = armclient get subscriptions/$subscriptionId/providers/microsoft.insights/?api-version=2017-05-10 | ConvertFrom-Json
+    if ($val.registrationState -eq "NotRegistered")
+    {
+        $val = armclient post subscriptions/$subscriptionId/providers/microsoft.insights/register/?api-version=2017-05-10
+    }
+}
+catch
+{
+    "`nThe user does not have required access to register the resource provider. Please try with user having Contributor/Owner role in the subscription"
+    exit
+}
+
+$actionGroupsMap = @{}
+try
+{
+    "`nCreating new action groups for alerts extension...`n"
+    foreach ($actionGroup in $result.migrationSummary.actionGroups)
+    {
+        $actionGroupName = $actionGroup.actionGroupName
+        $actions = $actionGroup.actions
+        if ($actionGroupsMap.ContainsKey($actionGroupName))
+        {
+            continue
+        } 
+        
+        # Create action group payload
+        $shortName = $actionGroupName.Substring($actionGroupName.LastIndexOf("AG_"))
+        $properties = @{"groupShortName"= $shortName; "enabled" = $true}
+        $emailReceivers = New-Object Object[] $actions.emailIds.Count
+        $webhookReceivers = New-Object Object[] $actions.webhookActions.Count
+        
+        $count = 0
+        foreach ($email in $actions.emailIds)
+        {
+            $emailReceivers[$count] = @{"name" = "Email$($count+1)"; "emailAddress" = "$email"}
+            $count++
+        }
+
+        $count = 0
+        foreach ($webhook in $actions.webhookActions)
+        {
+            $webhookReceivers[$count] = @{"name" = "$($webhook.name)"; "serviceUri" = "$($webhook.serviceUri)"}
+            $count++
+        }
+
+        $itsmAction = $actions.itsmAction
+        if ($itsmAction.connectionId -ne $null)
+        {
+            $val = @{
+            "name" = "ITSM"
+            "workspaceId" = "$subscriptionId|$workspaceId"
+            "connectionId" = "$($itsmAction.connectionId)"
+            "ticketConfiguration" = $itsmAction.templateInfo
+            "region" = "$resourceLocation"
+            }
+            $properties["itsmReceivers"] = @($val)  
+        }
+
+        $properties["emailReceivers"] = @($emailReceivers)
+        $properties["webhookReceivers"] = @($webhookReceivers)
+        $armPayload = @{"properties" = $properties; "location" = "Global"} | ConvertTo-Json -Compress -Depth 4
+
+    
+        # Azure Resource Manager call to create action group
+        $response = $armPayload | armclient put /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.insights/actionGroups/$actionGroupName/?api-version=2017-04-01
+
+        "Created Action Group with name $actionGroupName" 
+        $actionGroupsMap[$actionGroupName] = $actionGroup.actionGroupResourceId.ToLower()
+        $index++
+    }
+
+    "`nSuccessfully created all action groups!!"
+}
+catch
+{
+    $ErrorMessage = $_.Exception.Message
+
+    #Delete all action groups in case of failure
+    "`nDeleting newly created action groups if any as some error happened..."
+    
+    foreach ($actionGroup in $actionGroupsMap.Keys)
+    {
+        $response = armclient delete /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.insights/actionGroups/$actionGroup/?api-version=2017-04-01      
+    }
+
+    "`nError: $ErrorMessage"
+    "`nExiting..."
+    exit
+}
+
+# Update all alerts configuration to the new version
+"`nExtending OMS alerts to Azure...`n"
+
+try
+{
+    $index = 1
+    foreach ($alert in $result.migrationSummary.alerts)
+    {
+        $uri = $alert.alertId + "?api-version=2015-03-20"
+        $config = armclient get $uri | ConvertFrom-Json
+        $aznsNotification = @{
+            "GroupIds" = @($actionGroupsMap[$alert.actionGroupName])
+        }
+        if ($alert.customWebhookPayload)
+        {
+            $aznsNotification.Add("CustomWebhookPayload", $alert.customWebhookPayload)
+        }
+        if ($alert.customEmailSubject)
+        {
+            $aznsNotification.Add("CustomEmailSubject", $alert.customEmailSubject)
+        }      
+
+        # Update alert version
+        $config.properties.Version = 2
+
+        $config.properties | Add-Member -MemberType NoteProperty -Name "AzNsNotification" -Value $aznsNotification
+        $payload = $config | ConvertTo-Json -Depth 4
+        $response = $payload | armclient put $uri
+    
+        "Extended alert with name $($alert.alertName)"
+        $index++
+    }
+}
+catch
+{
+    $ErrorMessage = $_.Exception.Message   
+    if ($index -eq 1)
+    {
+        "`nDeleting all newly created action groups as no alerts got extended..."
+        foreach ($actionGroup in $actionGroupsMap.Keys)
+        {
+            $response = armclient delete /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.insights/actionGroups/$actionGroup/?api-version=2017-04-01      
+        }
+        "`nDeleted all action groups."  
+    }
+    
+    "`nError: $ErrorMessage"
+    "`nPlease resolve the issue and try extending again!!"
+    "`nExiting..."
+    exit
+}
+
+"`nSuccessfully extended all OMS alerts to Azure!!" 
+
+# Update version of workspace to indicate extension
+"`nUpdating alert version information in OMS workspace..." 
+
+$response = armclient post "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/alertsversion?api-version=2017-04-26-preview&iversion=2"
+
+"`nExtension complete!!"
+```
+
+
+### <a name="about-the-custom-powershell-script"></a>Informationen zum benutzerdefinierten PowerShell-Skript 
+Im Folgenden finden Sie wichtige Informationen zur Verwendung des Skripts:
+- Eine Voraussetzung dafür ist die Installation von [ARMClient](https://github.com/projectkudu/ARMClient), ein Open Source-Befehlszeilentool, das den Aufruf der Azure Resource Manager-API vereinfacht.
+- Um das Skript auszuführen, muss Ihr Azure-Abonnement eine Rolle „Mitwirkender“ oder „Besitzer“ aufweisen.
+- Sie müssen die folgenden Parameter angeben:
+    - $subscriptionId: Die Azure-Abonnement-ID, die dem Log Analytics-Arbeitsbereich der Operations Management Suite zugeordnet ist.
+    - $resourceGroup: Die Azure-Ressourcengruppe für den Log Analytics-Arbeitsbereich der Operations Management Suite.
+    - $workspaceName: Der Name des Log Analytics-Arbeitsbereichs der Operations Management Suite.
+
+### <a name="output-of-the-custom-powershell-script"></a>Ausgabe des benutzerdefinierten PowerShell-Skripts
+Das Skript ist sehr detailliert und gibt während der Ausführung die einzelnen Schritte aus: 
+- Es zeigt eine Zusammenfassung mit den Informationen zu den vorhandenen Log Analytics-Warnungen im Arbeitsbereich der Operations Management Suite. Die Zusammenfassung enthält auch Informationen zu den Azure-Aktionsgruppen, die für die ihnen zugeordneten Aktionen erstellt werden sollen. 
+- Sie werden aufgefordert, mit der Erweiterung fortzufahren oder den Vorgang nach dem Anzeigen der Zusammenfassung zu beenden.
+- Wenn Sie die Erweiterung fortsetzen, werden neue Azure-Aktionsgruppen erstellt, denen alle vorhandenen Warnungen zugeordnet werden. 
+- Das Skript wird mit der Meldung „Erweiterung abgeschlossen!“ beendet. Bei zwischenzeitlichen Fehlern zeigt das Skript nachfolgende Fehler an.
+
 ## <a name="troubleshooting"></a>Problembehandlung 
-Bei der Erweiterung von Warnungen aus OMS auf Azure kann es gelegentlich zu einem Problem kommen, das die Erstellung der erforderlichen [Aktionsgruppen](monitoring-action-groups.md) durch das System verhindert. In diesen Fällen wird im OMS-Portal über ein Banner im Abschnitt „Warnungen“ und für den GET-Aufruf an die API eine Fehlermeldung angezeigt.
+Bei der Erweiterung von Warnungen können Probleme verhindern, dass das System die erforderlichen [Aktionsgruppen](monitoring-action-groups.md) erstellt. In solchen Fällen wird Ihnen eine Fehlermeldung in einem Banner im Abschnitt **Warnung** des Operations Management Suite-Portals oder im an die API gerichteten GET-Aufruf angezeigt.
 
-Hier sind die Schritte zum Beheben der Fehler angegeben:
-1. **Error: The subscription is not registered to use the namespace 'microsoft.insights'** (Fehler: Das Abonnement ist nicht für die Verwendung des Namespace „microsoft.insights“ registriert.): ![OMS-Portal: Seite „Warnungseinstellungen“mit Fehlermeldung zur Registrierung](./media/monitor-alerts-extend/ErrorMissingRegistration.png)
+> [!IMPORTANT]
+> Wenn Sie die folgenden Wiederherstellungsschritte nicht vor dem 5. Juli 2018 durchführen, werden Warnungen in Azure ausgeführt, lösen aber keine Aktion oder Benachrichtigung aus. Um Benachrichtigungen für Warnungen zu erhalten, müssen Sie [Aktionsgruppen](monitoring-action-groups.md) manuell bearbeiten und hinzufügen oder das oben beschriebene [benutzerdefinierte PowerShell-Skript](#option-3---using-custom-powershell-script) verwenden.
 
-    a. Das Abonnement, das Ihrem OMS-Arbeitsbereich zugeordnet ist, wurde nicht für die Verwendung von Azure Monitor (microsoft.insights) registriert. Aus diesem Grund können Ihre Warnungen aus OMS nicht auf Azure Monitor und Azure-Warnungen erweitert werden.
-    
-    b. Sie können diesen Fehler beheben, indem Sie die Verwendung von „microsoft.insights“ (Azure Monitor und Azure-Warnungen) in Ihrem Abonnement per PowerShell, Azure CLI oder Azure-Portal registrieren. Weitere Informationen finden Sie im Artikel zum Thema [Beheben von Fehlern bei der Ressourcenanbieterregistrierung](../azure-resource-manager/resource-manager-register-provider-errors.md).
-    
-    c. Nachdem Sie den Fehler mit den im Artikel beschriebenen Schritten behoben haben, führt OMS die Erweiterung Ihrer Warnung auf Azure innerhalb der für den nächsten Tag geplanten Ausführung durch, ohne dass von Ihrer Seite aus eine Aktion oder Initiierung erforderlich ist.
-2. **Error: Scope Lock is present at subscription/resource group level for write operations** (Fehler: Bereichssperre auf Abonnement-/Ressourcengruppenebene für Schreibvorgänge): ![OMS-Portal: Seite „Warnungseinstellungen“ mit Fehlermeldung zu Bereichssperre](./media/monitor-alerts-extend/ErrorScopeLock.png)
+Hier werden die Wiederherstellungsschritte für die einzelnen Fehler aufgeführt:
+- **Error: Scope Lock is present at subscription/resource group level for write operations** (Fehler: Bereichssperre auf Abonnement-/Ressourcengruppenebene für Schreibvorgänge):   ![Screenshot der Seite „Warnungseinstellungen“ im Operations Management Suite-Portal mit hervorgehobener Fehlermeldung zur Bereichssperre](./media/monitor-alerts-extend/ErrorScopeLock.png)
 
-    a. Wenn eine Bereichssperre aktiviert ist, sind alle neuen Änderungen am Abonnement oder der Ressourcengruppe mit dem Log Analytics-Arbeitsbereich (OMS) eingeschränkt. Das System kann keine Warnungen auf Azure erweitern (kopieren) und keine erforderlichen Aktionsgruppen erstellen.
+    Wenn die Bereichssperre aktiviert ist, schränkt dieses Feature neue Änderungen in dem Abonnement bzw. in der Ressourcengruppe ein, das bzw. die den Log Analytics-Arbeitsbereich (Operations Management Suite) enthält. Das System kann Warnungen nicht auf Azure erweitern und nicht die erforderlichen Aktionsgruppen erstellen.
     
-    b. Sie können den Fehler beheben, indem Sie die Schreibschutzsperre (*ReadOnly*) für Ihr Abonnement oder die Ressourcengruppe mit dem Arbeitsbereich per Azure-Portal, PowerShell, Azure CLI oder API löschen. Weitere Informationen finden Sie im Artikel zum [Sperren von Ressourcen](../azure-resource-manager/resource-group-lock-resources.md). 
+    Um das Problem zu lösen, löschen Sie die *ReadOnly*-Sperre aus dem Abonnement oder der Ressourcengruppe, das bzw. die den Arbeitsbereich enthält. Verwenden Sie hierzu das Azure-Portal, PowerShell, die Azure CLI oder die API. Weitere Informationen finden Sie unter [Verwenden von Ressourcensperren](../azure-resource-manager/resource-group-lock-resources.md). 
     
-    c. Nachdem Sie den Fehler mit den im Artikel beschriebenen Schritten behoben haben, führt OMS die Erweiterung Ihrer Warnung auf Azure innerhalb der für den nächsten Tag geplanten Ausführung durch, ohne dass von Ihrer Seite aus eine Aktion oder Initiierung erforderlich ist.
+    Wenn Sie den Fehler mithilfe der in diesem Artikel beschriebenen Schritte beheben, erweitert Operations Management Suite Ihre Warnungen während der für den nächsten Tag geplanten Ausführung auf Azure. Sie müssen keine weiteren Aktionen durchführen oder starten.
 
-3. **Fehler: Richtlinie auf Abonnement-/Ressourcengruppenebene vorhanden**: ![Seite mit Warnungseinstellungen im OMS-Portal mit Meldung zu Richtlinienfehler](./media/monitor-alerts-extend/ErrorPolicy.png)
+- **Error: Policy is present at subscription/resource group level** (Fehler: Richtlinie auf Abonnement-/Ressourcengruppenebene):   ![Screenshot der Seite „Warnungseinstellungen“ im Operations Management Suite-Portal mit hervorgehobener Fehlermeldung zu Richtlinien](./media/monitor-alerts-extend/ErrorPolicy.png)
 
-    a. Wenn [Azure Policy](../azure-policy/azure-policy-introduction.md) angewendet wird, werden alle neuen Ressourcen des Abonnements oder der Ressourcengruppe eingeschränkt, die den Log Analytics-Arbeitsbereich (OMS) enthalten. Das System kann keine Warnungen auf Azure erweitern (kopieren) und keine erforderlichen Aktionsgruppen erstellen.
+    Wenn [Azure Policy](../azure-policy/azure-policy-introduction.md) angewendet wird, werden neue Ressourcen in einem Abonnement oder in einer Ressourcengruppe eingeschränkt, das bzw. die den Log Analytics-Arbeitsbereich (Operations Management Suite) enthält. Das System kann Warnungen nicht auf Azure erweitern und nicht die erforderlichen Aktionsgruppen erstellen.
     
-    b. Gehen Sie wie folgt vor, um den Fehler zu beheben: Bearbeiten Sie die Richtlinie, die den Fehler *[RequestDisallowedByPolicy](../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md)* verursacht, durch den die Erstellung neuer Ressourcen für Ihr Abonnement oder die Ressourcengruppe mit dem Arbeitsbereich verhindert wird. Verwendung des Azure-Portals, von PowerShell, der Azure CLI oder der API: Sie können Aktionen überwachen, um die entsprechende Richtlinie zu ermitteln, die den Fehler verursacht. Weitere Informationen finden Sie im Artikel [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](../azure-resource-manager/resource-group-audit.md). 
+    Beheben Sie das Problem durch Bearbeiten der Richtlinie, die den Fehler *[RequestDisallowedByPolicy](../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md)* verursacht. Dieser Fehler verhindert die Erstellung neuer Ressourcen für das Abonnement oder die Ressourcengruppe, das bzw. die den Arbeitsbereich enthält. Verwenden Sie hierzu das Azure-Portal, PowerShell, die Azure CLI oder die API. Sie können Aktionen überwachen, um die entsprechende Richtlinie zu finden, die den Fehler verursacht. Weitere Informationen finden Sie unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](../azure-resource-manager/resource-group-audit.md). 
     
-    c. Nachdem Sie den Fehler mit den im Artikel beschriebenen Schritten behoben haben, führt OMS die Erweiterung Ihrer Warnung auf Azure innerhalb der für den nächsten Tag geplanten Ausführung durch, ohne dass von Ihrer Seite aus eine Aktion oder Initiierung erforderlich ist.
+    Wenn Sie den Fehler mithilfe der in diesem Artikel beschriebenen Schritte beheben, erweitert Operations Management Suite Ihre Warnungen während der für den nächsten Tag geplanten Ausführung auf Azure. Sie müssen keine weiteren Aktionen durchführen oder starten.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

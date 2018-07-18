@@ -8,6 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: protection
 ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
@@ -15,12 +16,12 @@ ms.workload: identity
 ms.date: 05/11/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 475b0229b9e627a56b02d2299ee2e5400aa0ede1
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 1501ca1c036a8db1d53b9b27170d9ae05d41f797
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156108"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724114"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Schnellstart: Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory 
 
@@ -58,7 +59,7 @@ Legen Sie in Ihrer Richtlinie Folgendes fest:
 |---     | --- |
 |Benutzer und Gruppen | Isabella Simonsen |
 |Cloud-Apps | Microsoft Azure Management |
-|Zugriff gewähren | Mehrstufige Authentifizierung erforderlich |
+|Gewähren von Zugriff | Mehrstufige Authentifizierung erforderlich |
  
 
 ![Richtlinie erstellen](./media/active-directory-conditional-access-app-based-mfa/31.png)
@@ -129,7 +130,7 @@ Legen Sie in Ihrer Richtlinie Folgendes fest:
 
     a. Wählen Sie **Zugriff gewähren** aus.
 
-    a. Wählen Sie **Erfordern der mehrstufigen Authentifizierung** aus.
+    a. Wählen Sie **Erfordern von Multi-Factor Authentication**.
 
     b. Klicken Sie auf **Auswählen**.
 
@@ -137,12 +138,12 @@ Legen Sie in Ihrer Richtlinie Folgendes fest:
 
     ![Richtlinie aktivieren](./media/active-directory-conditional-access-app-based-mfa/18.png)
 
-13. Klicken Sie auf **Erstellen**.
+13. Klicken Sie auf **Create**.
 
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Auswerten einer simulierten Anmeldung
 
-Nachdem Sie nun Ihre Richtlinie für bedingten Zugriff konfiguriert haben, möchten Sie wahrscheinlich wissen, ob sie erwartungsgemäß funktioniert. Verwenden Sie im ersten Schritt das What If-Richtlinientool des bedingten Zugriffs, um eine Anmeldung für Ihren Testbenutzer zu simulieren. Die Simulation schätzt die Auswirkungen dieser Anmeldungen auf Ihre Richtlinien und generiert einen Simulationsbericht.  
+Nachdem Sie nun Ihre Richtlinie für bedingten Zugriff konfiguriert haben, möchten Sie wahrscheinlich wissen, ob sie erwartungsgemäß funktioniert. Verwenden Sie im ersten Schritt das What If-Richtlinientool des bedingten Zugriffs, um eine Anmeldung für Ihren Testbenutzer zu simulieren. Die Simulation schätzt die Auswirkungen dieser Anmeldungen auf Ihre Richtlinien ab und generiert einen Simulationsbericht.  
 
 Legen Sie zum Initialisieren des What If-Richtlinienauswertungstools Folgendes fest:
 
@@ -191,7 +192,7 @@ Im vorherigen Abschnitt haben Sie gelernt, wie Sie eine simulierte Anmeldung aus
 
 Um Ihre Richtlinie zu testen, versuchen Sie, sich im [Azure-Portal](https://portal.azure.com) mit dem Testkonto **Isabella Simonsen** anzumelden. Es sollte ein Dialogfeld angezeigt werden, in dem Sie Ihr Konto für eine zusätzliche Sicherheitsüberprüfung einrichten müssen.
 
-![Mehrstufige Authentifizierung](./media/active-directory-conditional-access-app-based-mfa/22.png)
+![Multi-Factor Authentication](./media/active-directory-conditional-access-app-based-mfa/22.png)
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
@@ -202,7 +203,7 @@ Löschen Sie den Testbenutzer, wenn er nicht mehr benötigt wird, und löschen S
 
 - Zum Löschen Ihrer Richtlinie wählen Sie die Richtlinie aus, und klicken Sie dann in der Symbolleiste für den Schnellzugriff auf **Löschen**.
 
-    ![Mehrstufige Authentifizierung](./media/active-directory-conditional-access-app-based-mfa/33.png)
+    ![Multi-Factor Authentication](./media/active-directory-conditional-access-app-based-mfa/33.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,6 +1,6 @@
 ---
 title: Speicherdienste von Azure Deutschland | Microsoft-Dokumentation
-description: "Vergleich der Speicherdienste für Azure Deutschland"
+description: Vergleich der Speicherdienste für Azure Deutschland
 services: germany
 cloud: na
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/02/2017
+ms.locfileid: "23664210"
 ---
 # <a name="azure-germany-storage-services"></a>Speicherdienste von Azure Deutschland
 ## <a name="storage"></a>Storage

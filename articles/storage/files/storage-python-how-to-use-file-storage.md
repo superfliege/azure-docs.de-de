@@ -1,11 +1,11 @@
 ---
-title: "Entwickeln für Azure Files mit Python | Microsoft-Dokumentation"
+title: Entwickeln für Azure Files mit Python | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Python-Anwendungen und -Dienste entwickeln, die Azure Files zum Speichern von Dateidaten verwenden.
 services: storage
 documentationcenter: python
-author: tamram
-manager: timlt
-editor: tysonn
+author: wmgries
+manager: aungoo
+editor: tamram
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: tamram
-ms.openlocfilehash: cee6ece907950724f6ad4a86c489a5f07dfcaaec
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 1102fd516b5497b4c482986b64fa7c96e9ccc54a
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738260"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Entwickeln für Azure Files mit Python
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -33,7 +34,7 @@ Dieses Tutorial veranschaulicht die grundlegende Verwendung von Python bei der E
 * Hochladen, Herunterladen und Löschen einer Datei
 
 > [!Note]  
-> Da auf Azure Files über SMB zugegriffen werden kann, können Sie unter Verwendung der standardmäßigen Python-Klassen und -Funktionen für die Ein- und Ausgabe einfache Anwendungen mit Zugriff auf die Azure-Dateifreigabe schreiben. In diesem Artikel erfahren Sie, wie Sie Anwendungen schreiben, die das Azure Storage Python SDK verwenden, das über die [Azure Files-REST-API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) mit Azure Files kommuniziert.
+> Da auf Azure Files über das SMB-Protokoll zugegriffen werden kann, können Sie unter Verwendung der standardmäßigen Python-E/A-Klassen und -Funktionen einfache Anwendungen mit Zugriff auf die Azure-Dateifreigabe schreiben. In diesem Artikel erfahren Sie, wie Sie Anwendungen schreiben, die das Azure Storage Python SDK verwenden, das über die [Azure Files-REST-API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) mit Azure Files kommuniziert.
 
 ## <a name="download-and-install-azure-storage-sdk-for-python"></a>Herunterladen und Installieren des Azure Storage SDK für Python
 

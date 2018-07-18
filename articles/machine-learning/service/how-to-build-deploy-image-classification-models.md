@@ -9,11 +9,12 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 04/23/2018
-ms.openlocfilehash: bd9f01e76c68fa41616818251b5b54553059cbcc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 72f5215bac9254c9e3295b2cade7b6d44d516af6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637734"
 ---
 # <a name="build-and-deploy-image-classification-models-with-azure-machine-learning"></a>Erstellen und Bereitstellen von Bildklassifizierungsmodellen mit Azure Machine Learning
 
@@ -227,7 +228,6 @@ else:
 ## <a name="define-dnn-models"></a>Definieren von DNN-Modellen
 
 Mit diesem Paket werden die folgenden vortrainierten Deep Neural Network-Modelle unterstützt: 
-+ AlexNet
 + Resnet-18
 + Resnet-34
 + Resnet-50
@@ -444,13 +444,9 @@ Melden Sie sich mit einem [Azure](https://azure.microsoft.com/)-Konto mit einem 
 + Um das aktuelle Modellverwaltungskonto anzuzeigen, verwenden Sie den folgenden Befehl:
   <br>`az ml account modelmanagement show`
 
-**Erstellen und Einrichten Ihrer Bereitstellungsumgebung**
+**Erstellen und Einrichten Ihrer Clusterbereitstellungsumgebung**
 
 Sie müssen Ihre Bereitstellungsumgebung nur ein Mal einrichten. Wenn Sie noch nicht über eine Bereitstellungsumgebung verfügen, richten Sie sie jetzt unter Verwendung [dieser Anweisungen](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/deployment-setup-configuration#environment-setup) ein. 
-
-Führen Sie die Bereitstellungsschritte für eine lokale oder Clusterbereitstellung ordnungsgemäß basierend auf Ihren Anforderungen aus.
-+ Lokale Bereitstellungen werden für Linux- und Windows 10-Computer, jedoch nicht für die Windows Data Science-VM oder die Deep Learning-VM unterstützt. 
-+ Clusterumgebungsbereitstellungen werden für Linux und für Windows unterstützt. 
 
 Um Ihre aktive Bereitstellungsumgebung anzuzeigen, verwenden Sie den folgenden CLI-Befehl:
 <br>`az ml env show`

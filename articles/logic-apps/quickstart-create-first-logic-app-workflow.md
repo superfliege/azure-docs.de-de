@@ -1,30 +1,26 @@
 ---
-title: Erstellen Ihres ersten automatisierten Workflows – Azure Logic Apps | Microsoft-Dokumentation
-description: Diese Schnellstartanleitung veranschaulicht, wie Sie Ihren ersten Workflow mit Azure Logic Apps für Systemintegrations- und Enterprise Application Integration-Szenarien (EAI) automatisieren, bei denen Systeme und Clouddienste integriert werden.
-author: ecfan
-manager: anneta
-editor: ''
+title: Erstellen und Automatisieren Ihres ersten Workflows – Azure Logic Apps | Microsoft-Dokumentation
+description: Schnellstartanleitung zur Erstellung Ihrer ersten Logik-App für die Automatisierung von Aufgaben, Prozessen und Workflows mit Azure Logic Apps. Erstellen Sie Logik-Apps für Lösungen mit Systemintegration und Enterprise Application Integration (EAI) für Ihre Systeme und Clouddienste.
 services: logic-apps
-keywords: Workflows, Clouddienste, Systemintegration, Enterprise Application Integration, EAI
-documentationcenter: ''
-ms.assetid: ce3582b5-9c58-4637-9379-75ff99878dcd
 ms.service: logic-apps
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
+ms.date: 1/12/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 1/12/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: ccd00fbb3c5dc0f78a31adcaed31bbe6e4a6e785
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 0a629deec0cc18f65dfe5e88a3eaea528636dd0f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300938"
 ---
-# <a name="quickstart-build-your-first-logic-app-workflow---azure-portal"></a>Schnellstart: Erstellen Ihres ersten Logik-App-Workflows – Azure-Portal
+# <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal
 
-Diese Schnellstartanleitung enthält eine Einführung in das Erstellen Ihres ersten automatisierten Workflows mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md). In diesem Artikel erstellen Sie eine Logik-App, die den RSS-Feed einer Website regelmäßig auf neue Elemente überprüft. Wenn neue Elemente vorhanden sind, sendet die Logik-App eine E-Mail für jedes Element. Am Ende entspricht Ihre Logik-App grob dem folgenden Workflow:
+Diese Schnellstartanleitung enthält eine Einführung in die Erstellung Ihres ersten automatisierten Workflows mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md). In diesem Artikel erstellen Sie eine Logik-App, die den RSS-Feed einer Website regelmäßig auf neue Elemente überprüft. Wenn neue Elemente vorhanden sind, sendet die Logik-App eine E-Mail für jedes Element. Am Ende entspricht Ihre Logik-App grob dem folgenden Workflow:
 
 ![Übersicht – Logik-App-Beispiel](./media/quickstart-create-first-logic-app-workflow/overview.png)
 

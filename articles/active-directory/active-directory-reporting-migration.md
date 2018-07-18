@@ -3,34 +3,28 @@ title: Suchen von Benutzeraktivitätsberichten von Azure Active Directory im Azu
 description: Erfahren Sie, wo sich die Azure Active Directory-Benutzeraktivitätsberichte im Azure-Portal befinden.
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.component: users-groups-roles
 ms.date: 12/06/2017
-ms.author: curtand
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 985bdc3c00549844958c23a83496a019d7a31944
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f22219a0e2ff342e25a2efdeb319f389250ecfef
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231320"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Speicherorte von Aktivitätsberichten im Azure-Portal
 
 In diesem Artikel beschreiben wir, wie Sie Benutzeraktivitätsberichte von Azure Active Directory im Azure-Portal finden.
 
-## <a name="whats-new"></a>Neuigkeiten
-
-Die Berichte im klassischen Azure-Portal waren in Kategorien unterteilt:
-* Sicherheitsberichte
-* Aktivitätsberichte
-* Berichte zu integrierten Apps
-
-### <a name="activity-and-integrated-app-reports"></a>Aktivitätsberichte und Berichte zu integrierten Apps
+## <a name="activity-and-integrated-app-reports"></a>Aktivitätsberichte und Berichte zu integrierten Apps
 
 Mit der kontextbasierten Berichterstellung im Azure-Portal werden die vorhandenen Berichte in einer zentralen Ansicht zusammengeführt. Eine einzelne zugrunde liegende API stellt die Daten in der Ansicht bereit.
 
@@ -87,7 +81,7 @@ Wählen Sie unter **Aktivität** die Option **Anmeldungen**, um die Anwendungsnu
 
 #### <a name="azure-ad-anomalous-activity-reports"></a>Azure AD-Berichte zu anomalen Aktivitäten
 
-Die Sicherheitsberichte zur anormalen Aktivität von Azure AD im klassischen Azure-Portal wurden zusammengestellt, um Ihnen einen zentralen Blick auf alle sicherheitsrelevanten Risikoereignisse zu gewähren, die Azure AD ermitteln und melden kann.
+Die Azure AD-Sicherheitsberichte zur anormalen Aktivität werden zusammengestellt, um Ihnen einen zentralen Blick auf alle sicherheitsrelevanten Risikoereignisse zu gewähren, die Azure AD ermitteln und melden kann.
 
 Die folgende Tabelle listet die Sicherheitsberichte zur anormalen Aktivität von Azure AD und die entsprechenden Risikoereignistypen im Azure-Portal auf.
 
@@ -104,8 +98,6 @@ Folgende Sicherheitsberichte zur anormalen Aktivität von Azure AD gehören nich
 
 * Anmeldungen nach mehreren Fehlern
 * Anmeldungen aus mehreren geografischen Regionen
-
-Diese Berichte sind im klassischen Azure-Portal weiterhin verfügbar, werden allerdings zu einem zukünftigen Zeitpunkt als veraltet markiert.
 
 Weitere Informationen finden Sie unter [Azure Active Directory-Risikoereignisse](active-directory-identity-protection-risk-events.md).  
 
@@ -125,29 +117,10 @@ Weitere Informationen zu Sicherheitsberichten finden Sie unter:
 - [Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal](active-directory-reporting-security-risky-sign-ins.md)
 
 
-## <a name="activity-reports-in-the-azure-classic-portal-vs-the-azure-portal"></a>Aktivitätsberichte im klassischen Azure-Portal im Vergleich zum Azure-Portal
-
-Die Tabelle in diesem Abschnitt enthält vorhandene Berichte im klassischen Azure-Portal. Außerdem wird erläutert, wie Sie diese Informationen im Azure-Portal abrufen können.
-
-Rufen Sie zum Anzeigen aller Überwachungsdaten auf dem Blatt **Azure Active Directory** unter **AKTIVITÄT** die **Überwachungsprotokolle** auf.
-
-![Überwachungsprotokolle](./media/active-directory-reporting-migration/61.png "Überwachungsprotokolle")
-
-| Klassisches Azure-Portal                 | Im Azure-Portal zu finden                                                         |
-| ---                                  | ---                                                                        |
-| Überwachungsprotokolle                           | Wählen Sie als **Aktivitätskategorie** die Option **Kernverzeichnis** aus.                       |
-| Kennwortzurücksetzungsaktivität              | Wählen Sie als **Aktivitätskategorie** die Option **Self-Service-Kennwortverwaltung**. |
-| Aktivität "Registrierung für Zurücksetzen des Kennworts" | Wählen Sie als **Aktivitätskategorie** die Option **Self-Service-Kennwortverwaltung**.     |
-| Self-Service-Gruppenaktivität         | Wählen Sie als **Aktivitätskategorie** die Option **Self-Service-Gruppenverwaltung** aus.        |
-| Kontobereitstellungsaktivität        | Wählen Sie als **Aktivitätskategorie** die Option **Benutzerkontenbereitstellung** aus.         |
-| Status des Kennwortrollovers             | Wählen Sie als **Aktivitätskategorie** die Option **Automatischer Rollover von App-Kennwörtern** aus.      |
-| Kontobereitstellungsfehler          | Wählen Sie als **Aktivitätskategorie** die Option **Benutzerkontenbereitstellung** aus.        |
-| Namensänderungen für Office 365-Gruppen         | Wählen Sie als **Aktivitätskategorie** die Option **Self-Service-Kennwortverwaltung**. Wählen Sie **Aktivitätsressourcentyp** die Option **Gruppe**. Wählen Sie als **Aktivitätsquelle** die Option **Office 365-Gruppen**.|
-
 Wählen Sie zum Anzeigen des Berichts zur **Anwendungsnutzung** auf dem Blatt **Azure Active Directory** unter **VERWALTEN** die **Unternehmensanwendungen**, und wählen Sie dann **Anmeldevorgänge**.
 
 
-![Bericht zu Anmeldungen bei Unternehmensanwendungen](./media/active-directory-reporting-migration/199.png "Bericht zu Anmeldungen bei Unternehmensanwendungen")
+![Anmeldeberichte für Unternehmensanwendungen](./media/active-directory-reporting-migration/199.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,7 +5,7 @@ services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 53dfd236-97f1-4778-b376-be91aa14b842
 ms.service: service-bus-relay
 ms.devlang: na
@@ -14,15 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: sethm
-ms.openlocfilehash: a0b06c32cf5f154cf5eb01842d9b917dcb35f7b3
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 82e26571c88460436e6ca5ee70323cd680c82bdc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642307"
 ---
 # <a name="azure-wcf-relay-tutorial"></a>Tutorial zu Azure WCF Relay
 
-Dieses Tutorial beschreibt das Erstellen einer einfachen Clientanwendung und eines Diensts für WCF-Relay mithilfe von Azure Relay. Ein ähnliches Tutorial, in dem die [Messagingfunktionen von Service Bus](../service-bus-messaging/service-bus-messaging-overview.md#brokered-messaging) beschrieben werden, finden Sie unter [Erste Schritte mit Service Bus-Warteschlangen](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
+Dieses Tutorial beschreibt das Erstellen einer einfachen Clientanwendung und eines Diensts für WCF-Relay mithilfe von Azure Relay. Ein ähnliches Tutorial, in dem die [Messagingfunktionen von Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) beschrieben werden, finden Sie unter [Erste Schritte mit Service Bus-Warteschlangen](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 
 Dieses Tutorial vermittelt Ihnen Grundkenntnisse zu den Schritten, die zum Erstellen einer Client- und Dienstanwendung für WCF-Relay erforderlich sind. Ein Dienst ist wie sein ursprüngliches Gegenstück in WCF ein Konstrukt, das mindestens einen Endpunkt bereitstellt. Dabei stellt jeder Endpunkt mindestens einen Dienstvorgang zur Verfügung. Der Endpunkt eines Diensts gibt eine Adresse an, unter der der Dienst gefunden werden kann, eine Bindung, die die Information enthält, dass ein Client mit dem Dienst kommunizieren muss, und einen Vertrag, der die Funktionen definiert, die der Dienst für seine Clients bereitstellt. Der Hauptunterschied zwischen WCF und WCF-Relay besteht darin, dass der Endpunkt in der Cloud und nicht lokal auf Ihrem Computer bereitgestellt wird.
 
@@ -35,7 +36,7 @@ Die letzten drei Schritte beschreiben das Erstellen einer Clientanwendung, das K
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * [Microsoft Visual Studio 2015 oder höher](http://visualstudio.com) In diesem Tutorial wird Visual Studio 2017 verwendet.
-* Ein aktives Azure-Konto. Falls Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Konto erstellen. Weitere Informationen finden Sie unter [Kostenloses Azure-Testkonto](https://azure.microsoft.com/free/).
+* Ein aktives Azure-Konto. Falls Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Konto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-service-namespace"></a>Erstellen eines Dienstnamespaces
 
@@ -48,7 +49,7 @@ Der Dienstvertrag gibt an, welche Vorgänge (Webdienstterminologie für Methoden
 ### <a name="create-a-relay-contract-with-an-interface"></a>Erstellen eines Relayvertrags mit einer Schnittstelle
 
 1. Öffnen Sie Visual Studio als Administrator, indem Sie im **Startmenü** mit der rechten Maustaste auf das Programm klicken und dann **Als Administrator ausführen** auswählen.
-2. Erstellen Sie ein neues Konsolenanwendungsprojekt. Klicken Sie auf das Menü **Datei**, wählen Sie **Neu** aus, und klicken Sie auf **Projekt**. Klicken Sie im Dialogfeld **Neues Projekt** auf **Visual C#** (wenn **Visual C#** nicht angezeigt wird, suchen Sie unter **Andere Sprachen**). Klicken Sie auf die Vorlage **Konsolenanwendung (.NET Framework)**, und geben Sie ihr den Namen **EchoService**. Klicken Sie auf **OK** , um das Projekt zu erstellen.
+2. Erstellen Sie ein neues Konsolenanwendungsprojekt. Klicken Sie auf das Menü **Datei**, wählen Sie **Neu** aus, und klicken Sie auf **Projekt**. Klicken Sie im Dialogfeld **Neues Projekt** auf **Visual C#** (wenn **Visual C#** nicht angezeigt wird, suchen Sie unter **Andere Sprachen**). Klicken Sie auf die Vorlage **Konsolenanwendung (.NET Framework)**, und geben Sie ihr den Namen **EchoService**. Klicken Sie auf **OK**, um das Projekt zu erstellen.
 
     ![][2]
 
@@ -714,7 +715,7 @@ namespace Microsoft.ServiceBus.Samples
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Dieses Tutorial zeigte das Erstellen einer Azure Relay-Clientanwendung und eines Azure Relay-Diensts mithilfe der WCF-Relayfunktionen von Service Bus. Ein ähnliches Tutorial, in dem die [Messagingfunktionen von Service Bus](../service-bus-messaging/service-bus-messaging-overview.md#brokered-messaging) beschrieben werden, finden Sie unter [Erste Schritte mit Service Bus-Warteschlangen](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
+Dieses Tutorial zeigte das Erstellen einer Azure Relay-Clientanwendung und eines Azure Relay-Diensts mithilfe der WCF-Relayfunktionen von Service Bus. Ein ähnliches Tutorial, in dem die [Messagingfunktionen von Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) beschrieben werden, finden Sie unter [Erste Schritte mit Service Bus-Warteschlangen](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 
 Weitere Informationen zu Azure Relay finden Sie in den folgenden Themen:
 

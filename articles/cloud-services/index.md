@@ -1,11 +1,11 @@
 ---
-title: "Dokumentation für Azure Cloud Services – Tutorials, API-Referenz | Microsoft-Dokumentation"
-description: "Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie mithilfe von Cloud Services hochverfügbare und skalierbare Cloudanwendungen und APIs hosten und ausführen."
+title: Dokumentation für Azure Cloud Services – Tutorials, API-Referenz | Microsoft-Dokumentation
+description: Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie mithilfe von Cloud Services hochverfügbare und skalierbare Cloudanwendungen und APIs hosten und ausführen.
 services: cloud-services
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: cloud-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24101881"
 ---
 # <a name="cloud-services-documentation"></a>Dokumentation zu Cloud Services
 

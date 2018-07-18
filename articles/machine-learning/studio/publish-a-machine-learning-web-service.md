@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 73a3e9c6-00d0-41d4-8cf1-2ec87713867e
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 3ce4104040e90a4740442d7692b3bf4a0789bde0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0f22f22d40410b258b3945d9e78938384ce64767
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128394"
 ---
 # <a name="deploy-an-azure-machine-learning-web-service"></a>Bereitstellen eines Azure Machine Learning-Webdiensts
 Azure Machine Learning ermöglicht es Ihnen, Vorhersageanalyselösungen zu erstellen, zu testen und bereitzustellen.
@@ -26,8 +28,8 @@ Azure Machine Learning ermöglicht es Ihnen, Vorhersageanalyselösungen zu erste
 Allgemein betrachtet, geschieht dies in drei Schritten:
 
 * **[Erstellen eines Trainingsexperiments]** : Azure Machine Learning Studio ist eine gemeinsame visuelle Entwicklungsumgebung, mit der Sie ein Vorhersageanalysemodell mithilfe von Trainingsdaten, die Sie bereitstellen, trainieren und testen können.
-* **[Konvertieren in ein Vorhersageexperiment]**: Sobald Ihr Modell mit vorhandenen Daten trainiert wurde, können Sie es verwenden, um neue Daten zu bewerten. Sie bereiten das Experiment auf Vorhersagen vor und optimieren es.
-* **[Bereitstellen als Webdienst:]** Sie können Ihr Vorhersageexperiment als [neuen] oder [klassischen] Azure-Webdienst bereitstellen. Die Benutzer Daten an Ihr Modell senden und die Vorhersagen Ihres Modells empfangen.
+* **[Konvertierten in ein Vorhersageexperiment]**: Sobald Ihr Modell mit vorhandenen Daten trainiert wurde, können Sie es verwenden, um neue Daten zu bewerten. Sie bereiten das Experiment auf Vorhersagen vor und optimieren es.
+* **[Bereitstellen des Experiments als Webdienst]** Sie können Ihr Vorhersageexperiment als [neuen] oder [Klassisch] Azure-Webdienst bereitstellen. Die Benutzer Daten an Ihr Modell senden und die Vorhersagen Ihres Modells empfangen.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
@@ -183,10 +185,10 @@ Eine Option zum Aktualisieren des Webdiensts ist das programmgesteuerte erneute 
 
 <!-- internal links -->
 [Erstellen eines Trainingsexperiments]: #create-a-training-experiment
-[Konvertieren in ein Vorhersageexperiment]: #convert-the-training-experiment-to-a-predictive-experiment
-[Bereitstellen als Webdienst:]: #deploy-it-as-a-web-service
-[neuen]: #deploy-the-predictive-experiment-as-a-new-Web-service
-[klassischen]: #deploy-the-predictive-experiment-as-a-new-Web-service
+[Konvertierten in ein Vorhersageexperiment]: #convert-the-training-experiment-to-a-predictive-experiment
+[Bereitstellen des Experiments als Webdienst]: #deploy-it-as-a-web-service
+[neuen]: #deploy-the-predictive-experiment-as-a-new-web-service
+[Klassisch]: #deploy-the-predictive-experiment-as-a-classic-web-service
 [Access]: #access-the-Web-service
 [Manage]: #manage-the-Web-service-in-the-azure-management-portal
 [Update]: #update-the-Web-service

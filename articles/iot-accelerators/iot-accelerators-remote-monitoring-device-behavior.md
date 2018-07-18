@@ -1,22 +1,19 @@
 ---
 title: Verhalten simulierter Geräte in der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt, wie Sie JavaScript verwenden, um das Verhalten eines simulierten Geräts in der Remoteüberwachungslösung zu definieren.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 01/29/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: cd6c3c20f8d776996a7089873e010430fd2b570b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: 7e874723833eee239a55b937e3fd0bdfc52d762a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627670"
 ---
 # <a name="implement-the-device-model-behavior"></a>Implementieren des Gerätemodellverhaltens
 
@@ -268,7 +265,7 @@ Dieser Artikel beschreibt, wie Sie das Verhalten Ihres eigenen benutzerdefiniert
 
 Jetzt wissen Sie, wie Sie das Verhalten eines simulierten Geräts festlegen, und sollten als Nächstes das [Testen der Lösung mit simulierten Geräten](iot-accelerators-remote-monitoring-test.md) kennenlernen.
 
-Weitere Informationen für Entwickler zur Remoteüberwachungslösung finden Sie in folgenden Quellen:
+Weitere Entwicklerinformationen zur Remoteüberwachungslösung finden Sie hier:
 
 * [Referenzhandbuch für Entwickler](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Handbuch zur Problembehandlung für Entwickler](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)

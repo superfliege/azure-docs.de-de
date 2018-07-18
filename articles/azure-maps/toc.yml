@@ -4,7 +4,7 @@
   href: index.yml
 - name: Übersicht
   items:
-    - name: Info zu Azure Maps
+    - name: Was ist Azure Maps?
       href: about-azure-maps.md
 - name: Schnellstarts
   items:
@@ -22,20 +22,10 @@
   items:
     - name: Zoomfaktoren und Linienraster
       href: zoom-levels-and-tile-grid.md
-    - name: Abdeckung durch Geocodierung
-      href: geocoding-coverage.md
-    - name: Verkehrserschließung
-      href: traffic-coverage.md
-    - name: Abgedeckter Renderbereich
-      href: render-coverage.md
-    - name: Abgedeckter Routingbereich
-      href: routing-coverage.md
-    - name: Suchkategorien
-      href: search-categories.md
+    - name: Unterstützte Suchkategorien
+      href: supported-search-categories.md
     - name: Unterstützte Sprachen
       href: supported-languages.md
-    - name: Nutzungsmodell
-      href: consumption-model.md
 - name: Anleitungen
   items:
     - name: Verwalten von Azure Maps-Konten
@@ -70,17 +60,49 @@
           href: map-show-traffic.md
         - name: Interaktion mit Mausereignissen
           href: map-events.md
+        - name: Zugängliche Kartenanwendungen
+          href: map-accessibility.md
 - name: Verweis
   items:
-    - name: 'Services API: REST'
-      href: 'https://docs.microsoft.com/rest/api/maps/'
-    - name: Kartensteuerelement-API – Javascript
-      href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
+    - name: Dienstabdeckung
+      items:
+        - name: Geocodierung
+          href: geocoding-coverage.md
+        - name: Verkehr
+          href: traffic-coverage.md
+        - name: Rendern
+          href: render-coverage.md
+        - name: Routing
+          href: routing-coverage.md
+    - name: API- und Parametererweiterungen
+      items:
+        - name: Fahrzeugnutzungsmodell
+          href: consumption-model.md
+        - name: GeoJSON-Format erweitern
+          href: extend-geojson.md
+    - name: REST
+      items:
+        - name: Renderingdienst
+          href: 'https://docs.microsoft.com/rest/api/maps/render'
+        - name: Routendienst
+          href: 'https://docs.microsoft.com/rest/api/maps/route'
+        - name: Suchdienst
+          href: 'https://docs.microsoft.com/rest/api/maps/search'
+        - name: Zeitzonendienst
+          href: 'https://docs.microsoft.com/rest/api/maps/timezone'
+        - name: Verkehrsinfodienst
+          href: 'https://docs.microsoft.com/rest/api/maps/traffic'
+        - name: Kartenkontoverwaltung
+          href: 'https://docs.microsoft.com/rest/api/maps-management'
+    - name: JavaScript
+      items:
+        - name: Kartensteuerelement
+          href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
 - name: Verwandte Themen
   items:
     - name: Lösungen
       items:
-        - name: Vorkonfigurierte IoT Suite-Lösungen
+        - name: IoT Solution Accelerators
           href: /azure/iot-suite
         - name: IoT Central
           href: 'https://docs.microsoft.com/microsoft-iot-central/'
@@ -121,4 +143,4 @@
     - name: Technische Fallstudien
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
     - name: Videos
-      href: 'https://azure.microsoft.com/documentation/videos'
+      href: 'https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo'

@@ -1,52 +1,45 @@
 ---
-title: Bereitstellen von Azure Stream Analytics mit Azure IoT Edge | Microsoft-Dokumentation
-description: Bereitstellen von Azure Stream Analytics als Modul für ein Edge-Gerät
-services: iot-edge
-keywords: ''
+title: 'Tutorial: Bereitstellen von ASA-Aufträgen auf Azure IoT Edge-Geräten | Microsoft-Dokumentation'
+description: Bereitstellen von Azure Stream Analytics als Modul auf einem IoT Edge-Gerät
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 05/18/2018
-ms.topic: article
+ms.date: 06/25/2018
+ms.topic: tutorial
 ms.service: iot-edge
-ms.openlocfilehash: 5d4c2b3bc55b94b08287a06125e15ac61013834a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+services: iot-edge
+ms.custom: mvc
+ms.openlocfilehash: 0790f504c978b4302812cffc9b655e817c156da3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362038"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38540171"
 ---
-# <a name="deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Bereitstellen von Azure Stream Analytics als IoT Edge-Modul – Vorschau
+# <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Tutorial: Bereitstellen von Azure Stream Analytics als IoT Edge-Modul (Vorschauversion)
 
-IoT-Geräte können sehr große Datenmengen erzeugen. Um den Umfang der übertragenen Daten zu reduzieren oder die Roundtriplatenz aussagekräftiger Erkenntnisse zu beseitigen, müssen diese Daten in bestimmten Fällen analysiert oder verarbeitet werden, bevor sie die Cloud erreichen.
+Viele IoT-Lösungen verwenden Analysedienste, um Erkenntnisse zu Daten zu gewinnen, die von den IoT-Geräten an die Cloud übermittelt werden. Mit Azure IoT Edge können Sie die Logik von [Azure Stream Analytics][azure-stream] direkt auf dem Gerät bereitstellen. Die Verarbeitung von Telemetriedatenströmen im Edgebereich verringert die Menge an Uploaddaten sowie die Zeit, die benötigt wird, um auf verwertbare Erkenntnisse zu reagieren.
 
-Azure IoT Edge profitiert von vorgefertigten Azure Service IoT Edge-Modulen für eine schnelle Bereitstellung. [Azure Stream Analytics][azure-stream] (ASA) ist ein solches Modul. Sie können über das Portal einen Azure Stream Analytics-Auftrag erstellen und anschließend zum Azure IoT Hub-Portal wechseln, um es als IoT Edge-Modul bereitzustellen. 
+Dank der Integration von Azure IoT Edge und Azure Stream Analytics können Sie über das Azure-Portal einen Azure Stream Analytics-Auftrag erstellen und ihn anschließend ohne zusätzlichen Code als IoT-Edge-Modul bereitstellen.  
 
 Azure Stream Analytics bietet eine aufwändig strukturierte Abfragesyntax für die Datenanalyse in der Cloud und auf IoT Edge-Geräten. Weitere Informationen zu Azure Stream Analytics auf IoT Edge finden Sie in der [Azure Stream Analytics-Dokumentation](../stream-analytics/stream-analytics-edge.md).
 
-Dieses Tutorial führt Sie durch die Erstellung eines Azure Stream Analytics-Auftrags und dessen Bereitstellung auf einem IoT Edge-Gerät. Auf diese Weise können Sie einen lokalen Telemetriedatenstrom direkt auf dem Gerät verarbeiten und Warnungen generieren, die eine sofortige Aktion auf dem Gerät auslösen. 
-
-Das Tutorial präsentiert zwei Module: 
-* Ein simuliertes Temperatursensormodul (tempSensor), das Temperaturdaten zwischen 20 und 120 Grad erzeugt, die alle 5 Sekunden um den Wert 1 erhöht werden. 
-* Ein Stream Analytics-Modul, das „tempSensor“ zurücksetzt, sobald über 30 Sekunden ein Durchschnittswert von 70 erreicht wird. In einer Produktionsumgebung kann diese Funktion dazu verwendet werden, einen Computer herunterzufahren oder vorbeugende Maßnahmen zu ergreifen, wenn die Temperatur eine gefährliche Höhe erreicht. 
+Das Stream Analytics-Modul in diesem Tutorial berechnet die Durchschnittstemperatur der letzten 30 Sekunden. Bei Erreichen einer Durchschnittstemperatur von 70 Grad sendet das Modul eine Warnung, damit das Gerät eine entsprechende Aktion ausführen kann. In diesem Fall wird der simulierte Temperatursensor zurückgesetzt. In einer Produktionsumgebung kann diese Funktion dazu verwendet werden, einen Computer herunterzufahren oder vorbeugende Maßnahmen zu ergreifen, wenn die Temperatur eine gefährliche Höhe erreicht. 
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen eines Azure Stream Analytics-Auftrags zum Verarbeiten von Daten auf dem Edge-Gerät.
 > * Verbinden des neuen Azure Stream Analytics-Auftrags mit anderen IoT Edge-Modulen.
-> * Bereitstellen des Azure Stream Analytics-Auftrags auf einem IoT Edge-Gerät.
+> * Bereitstellen des Azure Stream Analytics-Auftrags auf einem IoT Edge-Gerät über das Azure-Portal.
+
+>[!NOTE]
+>Azure Stream Analytics-Module für IoT Edge sind als [Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Einen IoT Hub. 
-* Das Gerät, das Sie im Schnellstart oder in den Artikeln zum Bereitstellen von Azure IoT Edge auf einem simulierten Gerät unter [Windows][lnk-tutorial1-win] oder [Linux][lnk-tutorial1-lin] erstellt und konfiguriert haben. Sie müssen den Geräteverbindungsschlüssel und die Geräte-ID kennen. 
-* Docker auf dem IoT Edge-Gerät.
-    * [Installieren von Docker unter Windows][lnk-docker-windows]
-    * [Installieren von Docker unter Linux][lnk-docker-linux]
-* Python 2.7.x auf Ihrem IoT Edge-Gerät
-    * [Installieren Sie Python 2.7 unter Windows][lnk-python].
-    * In den meisten Linux-Distributionen, einschließlich Ubuntu, ist Python 2.7 bereits installiert. Führen Sie den folgenden Befehl aus, um zu überprüfen, ob pip installiert ist: `sudo apt-get install python-pip`.
+* Ein IoT Hub
+* Das IoT Edge-Gerät, das Sie im Rahmen der Schnellstartanleitung für [Windows][lnk-quickstart-win] oder [Linux][lnk-quickstart-lin] erstellt und konfiguriert haben 
 
 ## <a name="create-an-azure-stream-analytics-job"></a>Erstellen eines Azure Stream Analytics-Auftrags
 
@@ -54,7 +47,7 @@ In diesem Abschnitt erstellen Sie einen Azure Stream Analytics-Auftrag, um Daten
 
 ### <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Ein Azure Storage-Konto ist erforderlich, um einen Endpunkt anzugeben, der als Ausgabe in Ihrem Azure Stream Analytics-Auftrag verwendet wird. Das Beispiel in diesem Abschnitt verwendet den Speichertyp „Blob“. Weitere Informationen finden Sie im Abschnitt „Blobs“ in der [Azure Storage-Dokumentation][azure-storage].
+Für Azure Stream Analytics-Aufträge ist ein Azure Storage-Konto erforderlich, das als Endpunkt für die Auftragsausgabe fungiert. Das Beispiel in diesem Abschnitt verwendet den Speichertyp „Blob“. Weitere Informationen finden Sie im Abschnitt „Blobs“ in der [Azure Storage-Dokumentation][azure-storage].
 
 1. Wechseln Sie im Azure-Portal zu **Ressource erstellen**, geben Sie **Speicherkonto** in das Suchfeld ein und wählen Sie **Speicherkonto – Blob, Datei, Tabelle, Warteschlange** aus.
 
@@ -62,11 +55,6 @@ Ein Azure Storage-Konto ist erforderlich, um einen Endpunkt anzugeben, der als A
 
     ![Speicherkonto erstellen][1]
 
-3. Wechseln Sie zu dem Speicherkonto, das Sie soeben erstellt haben, und wählen Sie **Blobs durchsuchen** aus. 
-
-4. Erstellen Sie einen neuen Container für das Azure Stream Analytics-Modul, um Daten zu speichern, setzen Sie die Zugriffsebene auf **Container** und wählen Sie dann **OK** aus.
-
-    ![Speichereinstellungen][10]
 
 ### <a name="create-a-stream-analytics-job"></a>Erstellen eines Stream Analytics-Auftrags
 
@@ -74,15 +62,15 @@ Ein Azure Storage-Konto ist erforderlich, um einen Endpunkt anzugeben, der als A
 
 2. Gehen Sie im Bereich **Neuer Stream Analytics-Auftrag** wie folgt vor:
 
-    a. Geben Sie im Feld **Auftragsname** einen Auftragsnamen ein.
-    
-    b. Wählen Sie unter **Hosting-Umgebung** die Option **Edge** aus.
-    
-    c. Verwenden Sie in den verbleibenden Feldern die Standardwerte.
+   1. Geben Sie im Feld **Auftragsname** einen Auftragsnamen ein.
+   
+   2. Verwenden Sie die gleiche **Ressourcengruppe** und den gleichen **Standort** wie für Ihre IoT Hub-Instanz. 
 
-    > [!NOTE]
-    > Aktuell werden Azure Stream Analytics-Aufträge für IoT Edge in der Region „USA, Westen 2“ nicht unterstützt. 
+      > [!NOTE]
+      > Aktuell werden Azure Stream Analytics-Aufträge für IoT Edge in der Region „USA, Westen 2“ nicht unterstützt. 
 
+   3. Wählen Sie unter **Hosting-Umgebung** die Option **Edge** aus.
+    
 3. Klicken Sie auf **Erstellen**.
 
 4. Öffnen Sie im erstellten Auftrag unter **Auftragstopologie** die Option **Eingaben**.
@@ -91,21 +79,21 @@ Ein Azure Storage-Konto ist erforderlich, um einen Endpunkt anzugeben, der als A
 
 5. Wählen Sie **Datenstromeingabe hinzufügen** und dann **Edge Hub** aus.
 
-5. Geben Sie im Bereich **Neue Eingabe** die **Temperatur** als Eingabealias ein. 
+6. Geben Sie im Bereich **Neue Eingabe** die **Temperatur** als Eingabealias ein. 
 
-6. Wählen Sie **Speichern**aus.
+7. Wählen Sie **Speichern**aus.
 
-7. Öffnen Sie unter **Auftragstopologie** die Option **Ausgaben**.
+8. Öffnen Sie unter **Auftragstopologie** die Option **Ausgaben**.
 
    ![Azure Stream Analytics-Ausgabe](./media/tutorial-deploy-stream-analytics/asa_output.png)
 
-8. Wählen Sie **Hinzufügen** und dann **Edge Hub** aus.
+9. Wählen Sie **Hinzufügen** und dann **Edge Hub** aus.
 
-8. Geben Sie im Bereich **Neue Ausgabe** die **Warnung** als Ausgabealias ein. 
+10. Geben Sie im Bereich **Neue Ausgabe** die **Warnung** als Ausgabealias ein. 
 
-9. Klicken Sie auf **Erstellen**.
+11. Wählen Sie **Speichern**aus.
 
-9. Wählen Sie unter **Auftragstopologie** die Option **Abfrage** aus und ersetzen Sie dann den Standardtext durch die folgende Abfrage:
+12. Klicken Sie unter **Auftragstopologie** auf **Abfrage**, und ersetzen Sie den Standardtext durch die folgende Abfrage, die eine Warnung erstellt, wenn die Durchschnittstemperatur des Computers in einem Zeitfenster von 30 Sekunden 70 Grad erreicht:
 
     ```sql
     SELECT  
@@ -118,59 +106,60 @@ Ein Azure Storage-Konto ist erforderlich, um einen Endpunkt anzugeben, der als A
     HAVING Avg(machine.temperature) > 70
     ```
 
-10. Wählen Sie **Speichern**aus.
+13. Wählen Sie **Speichern**aus.
+
+14. Klicken Sie unter **Konfigurieren** auf **IoT Edge-Einstellungen**.
+
+15. Wählen Sie im Dropdownmenü Ihr **Speicherkonto** aus.
+
+16. Klicken Sie für das Feld **Container** auf **Neu erstellen**, und geben Sie einen Namen für den Speichercontainer an. 
+
+17. Wählen Sie **Speichern**aus. 
+
 
 ## <a name="deploy-the-job"></a>Bereitstellen des Auftrags
 
 Sie können den Azure Stream Analytics-Auftrag jetzt auf Ihrem IoT Edge-Gerät bereitstellen.
 
-1. Wechseln Sie im Azure-Portal in Ihrem IoT-Hub zu **IoT Edge (Vorschau)**, und öffnen Sie dann die Detailseite für Ihr IoT Edge-Gerät.
+1. Wechseln Sie im Azure-Portal in Ihrem IoT-Hub zu **IoT Edge**, und öffnen Sie dann die Detailseite für Ihr IoT Edge-Gerät.
 
 2. Wählen Sie **Module festlegen** aus.  
-    Wenn Sie zuvor das tempSensor-Modul auf diesem Gerät bereitgestellt haben, wird es unter Umständen automatisch aufgefüllt. Wenn dies nicht der Fall ist, fügen Sie das Modul wie folgt hinzu:
 
-   a. Wählen Sie **IoT Edge-Modul hinzufügen** aus.
+   Wenn Sie zuvor das tempSensor-Modul auf diesem Gerät bereitgestellt haben, wird es unter Umständen automatisch aufgefüllt. Gehen Sie andernfalls wie folgt vor, um das Modul hinzuzufügen:
 
-   b. Geben Sie für den Namen **tempSensor** ein.
-    
-   c. Geben Sie für den Bild-URI **microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview** ein. 
+   1. Klicken Sie auf **Hinzufügen** und anschließend auf **IoT Edge-Modul**.
+   2. Geben Sie für den Namen **tempSensor** ein.
+   3. Geben Sie als Bild-URI **mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0** ein. 
+   4. Behalten Sie die restlichen Einstellungen unverändert bei.
+   5. Wählen Sie **Speichern**aus.
 
-   d. Behalten Sie die restlichen Einstellungen unverändert bei.
-   
-   e. Wählen Sie **Speichern**aus.
+3. Fügen Sie Ihren Azure Stream Analytics Edge-Auftrag wie folgt hinzu:
 
-3. Klicken Sie zum Hinzufügen des Azure Stream Analytics Edge-Auftrags auf **Import Azure Stream Analytics IoT Edge Module** (Azure Stream Analytics-IoT Edge-Modul importieren).
+   1. Klicken Sie auf **Hinzufügen** und anschließend auf **Azure Stream Analytics-Modul**.
+   2. Wählen Sie das Abonnement und den erstellten Azure Stream Analytics Edge-Auftrag aus. 
+   3. Wählen Sie **Speichern**aus.
 
-4. Wählen Sie das Abonnement und den erstellten Azure Stream Analytics Edge-Auftrag aus. 
+4. Klicken Sie auf **Weiter**.
 
-5. Wählen Sie das Abonnement, das erstellte Speicherkonto und dann **Speichern** aus.
-
-    ![Modul festlegen][6]
-
-6. Kopieren Sie den Namen Ihres Azure Stream Analytics-Moduls. 
-
-    ![Temperaturmodul][11]
-
-7. Wählen Sie **Weiter** aus, um Routen zu konfigurieren.
-
-8. Kopieren Sie den folgenden Code zu **Routen**: Ersetzen Sie _{moduleName}_ durch den zuvor kopierten Modulnamen:
+5. Ersetzen Sie den Standardwert in **Routen** durch den folgenden Code. Aktualisieren Sie _{moduleName}_ mit dem Namen Ihres Azure Stream Analytics-Moduls. Das Modul muss den gleichen Namen haben wie der Auftrag, auf dessen Grundlage es erstellt wurde. 
 
     ```json
     {
-        "routes": {                                                               
-          "telemetryToCloud": "FROM /messages/modules/tempSensor/* INTO $upstream", 
-          "alertsToCloud": "FROM /messages/modules/{moduleName}/* INTO $upstream", 
-          "alertsToReset": "FROM /messages/modules/{moduleName}/* INTO BrokeredEndpoint(\"/modules/tempSensor/inputs/control\")", 
-          "telemetryToAsa": "FROM /messages/modules/tempSensor/* INTO BrokeredEndpoint(\"/modules/{moduleName}/inputs/temperature\")" 
+        "routes": {
+            "telemetryToCloud": "FROM /messages/modules/tempSensor/* INTO $upstream",
+            "alertsToCloud": "FROM /messages/modules/{moduleName}/* INTO $upstream",
+            "alertsToReset": "FROM /messages/modules/{moduleName}/* INTO BrokeredEndpoint(\"/modules/tempSensor/inputs/control\")",
+            "telemetryToAsa": "FROM /messages/modules/tempSensor/* INTO BrokeredEndpoint(\"/modules/{moduleName}/inputs/temperature\")"
         }
     }
     ```
 
-9. Klicken Sie auf **Weiter**.
+6. Klicken Sie auf **Weiter**.
 
-10. Wählen Sie im Schritt **Vorlage überprüfen** die Option **Senden** aus.
+7. Klicken Sie im Schritt für die **Bereitstellungsüberprüfung** auf **Übermitteln**.
 
-11. Kehren Sie zur Seite mit Gerätedetails zurück, und wählen Sie dann **Aktualisieren** aus.  
+8. Kehren Sie zur Seite mit Gerätedetails zurück, und wählen Sie dann **Aktualisieren** aus.  
+
     Es sollte nun angezeigt werden, dass das neue Stream Analytics-Modul zusammen mit dem IoT Edge-Agent-Modul und dem IoT Edge-Hub ausgeführt wird.
 
     ![Modulausgabe][7]
@@ -182,25 +171,56 @@ Wechseln Sie nun zu Ihrem IoT Edge-Gerät, um sich über die Interaktion zwische
 1. Überprüfen Sie, ob alle Module in Docker ausgeführt werden:
 
    ```cmd/sh
-   docker ps  
+   iotedge list  
    ```
-
-   ![Docker-Ausgabe][8]
-
+<!--
+   ![Docker output][8]
+-->
 2. Zeigen Sie alle Systemprotokolle und Metrikdaten an. Verwenden Sie den Namen des Stream Analytics-Moduls:
 
    ```cmd/sh
-   docker logs -f {moduleName}  
+   iotedge logs -f {moduleName}  
    ```
 
 Sie sollten beobachten können, wie die Temperatur des Computers allmählich steigt, bis sie 30 Sekunden lang 70 Grad beträgt. Dann löst das Stream Analytics-Modul eine Zurücksetzung aus, und die Computertemperatur fällt zurück auf 21. 
 
    ![Docker-Protokoll][9]
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen 
+
+<!--[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)] -->
+
+Falls Sie mit dem nächsten empfohlenen Artikel fortfahren möchten, können Sie die bereits erstellten Ressourcen und Konfigurationen beibehalten und wiederverwenden.
+
+Andernfalls können Sie die in diesem Artikel erstellten lokalen Konfigurationen und Azure-Ressourcen löschen, um Kosten zu vermeiden. 
+
+> [!IMPORTANT]
+> Das Löschen der Azure-Ressourcen und der Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden unwiderruflich gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. Wenn Sie die IoT Hub-Ressource in einer bereits vorhandenen Ressourcengruppe erstellt haben, die Ressourcen enthält, die Sie behalten möchten, löschen Sie nicht die Ressourcengruppe, sondern nur die IoT Hub-Ressource.
+>
+
+Wenn Sie nur die IoT Hub-Instanz löschen möchten, führen Sie den folgenden Befehl mit dem Namen des Hubs und dem Namen der Ressourcengruppe aus:
+
+```azurecli-interactive
+az iot hub delete --name MyIoTHub --resource-group TestResources
+```
+
+
+Löschen Sie die gesamte Ressourcengruppe wie folgt anhand des Namens:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen**.
+
+2. Geben Sie im Textfeld **Nach Name filtern...** den Namen der Ressourcengruppe ein, die Ihre IoT Hub-Ressource enthält. 
+
+3. Klicken Sie in der Ergebnisliste rechts neben Ihrer Ressourcengruppe auf **...** und dann auf **Ressourcengruppe löschen**.
+
+<!--
+   ![Delete](./media/iot-edge-quickstarts-clean-up-resources/iot-edge-delete-resource-group.png)
+-->
+4. Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben Sie zur Bestätigung erneut den Namen Ihrer Ressourcengruppe ein, und klicken Sie anschließend auf **Löschen**. Daraufhin werden die Ressourcengruppe und alle darin enthaltenen Ressourcen gelöscht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie einen Azure Storage-Container und einen Streaming Analytics-Auftrag zum Analysieren von Daten konfiguriert, die von ihrem IoT Edge-Gerät stammen. Danach haben Sie ein benutzerdefiniertes Azure Stream Analytics-Modul geladen, um Daten von Ihrem Gerät über den Datenstrom in ein Blob zu verschieben, das heruntergeladen werden kann. Sie können nun die anderen Tutorials bearbeiten, um noch mehr darüber zu erfahren, wie sich mit Azure IoT Edge weitere Lösungen für Ihr Unternehmen erstellen lassen.
+In diesem Tutorial haben Sie einen Azure Streaming Analytics-Auftrag zum Analysieren von Daten konfiguriert, die von ihrem IoT Edge-Gerät stammen. Anschließend haben Sie das Azure Stream Analytics-Modul auf Ihrem IoT Edge-Gerät geladen, um die Daten lokal zu verarbeiten, lokal auf einen Temperaturanstieg zu reagieren und den aggregierten Datenstrom an die Cloud zu senden. Sie können nun die anderen Tutorials bearbeiten, um noch mehr darüber zu erfahren, wie sich mit Azure IoT Edge weitere Lösungen für Ihr Unternehmen erstellen lassen.
 
 > [!div class="nextstepaction"] 
 > [Bereitstellen eines Azure Machine Learning-Modells als Modul][lnk-ml-tutorial]
@@ -210,7 +230,7 @@ In diesem Tutorial haben Sie einen Azure Storage-Container und einen Streaming A
 [4]: ./media/tutorial-deploy-stream-analytics/add_device.png
 [5]: ./media/tutorial-deploy-stream-analytics/asa_job.png
 [6]: ./media/tutorial-deploy-stream-analytics/set_module.png
-[7]: ./media/tutorial-deploy-stream-analytics/module_output.png
+[7]: ./media/tutorial-deploy-stream-analytics/module_output2.png
 [8]: ./media/tutorial-deploy-stream-analytics/docker_output.png
 [9]: ./media/tutorial-deploy-stream-analytics/docker_log.png
 [10]: ./media/tutorial-deploy-stream-analytics/storage_settings.png
@@ -225,11 +245,8 @@ In diesem Tutorial haben Sie einen Azure Storage-Container und einen Streaming A
 [azure-storage]: https://docs.microsoft.com/azure/storage/
 [azure-stream]: https://docs.microsoft.com/azure/stream-analytics/
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-tutorial1-win]: tutorial-simulate-device-windows.md
-[lnk-tutorial1-lin]: tutorial-simulate-device-linux.md
+[lnk-quickstart-win]: quickstart.md
+[lnk-quickstart-lin]: quickstart-linux.md
 [lnk-module-tutorial]: tutorial-csharp-module.md
 [lnk-ml-tutorial]: tutorial-deploy-machine-learning.md
 
-[lnk-docker-windows]: https://docs.docker.com/docker-for-windows/install/ 
-[lnk-docker-linux]: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/
-[lnk-python]: https://www.python.org/downloads/

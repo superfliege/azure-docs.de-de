@@ -14,6 +14,7 @@ ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/13/2017
+ms.locfileid: "24518799"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Erstellen eines VM-Clusters mit Terraform und HCL
 

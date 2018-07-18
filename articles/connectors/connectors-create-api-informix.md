@@ -1,25 +1,22 @@
 ---
-title: "Hinzufügen des Informix-Connectors zu Ihren Logik-Apps | Microsoft Docs"
-description: "Übersicht über den Informix-Connector mit REST-API-Parametern"
-services: 
-documentationcenter: 
+title: Herstellen einer Verbindung mit einer IBM Informix-Datenbank – Azure Logic Apps | Microsoft-Dokumentation
+description: Verwalten von Ressourcen mit IBM Informix-REST-APIs und Azure Logic Apps
 author: gplarsen
-manager: anneta
-editor: 
-tags: connectors
-ms.assetid: ca2393f0-3073-4dc2-8438-747f5bc59689
-ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: jeconnoc
+ms.author: plarsen
 ms.date: 09/26/2016
-ms.author: plarsen; ladocs
-ms.openlocfilehash: b3b352b185b7dfeee12ac9bee1b72cb740add5b8
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: d0008c19ed96f731f7b57c5d8aa41cd9f128bc20
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296035"
 ---
 # <a name="get-started-with-the-informix-connector"></a>Erste Schritte mit dem Informix-Connector
 Mit dem Microsoft Connector für Informix werden Logik-Apps mit Ressourcen verbunden, die in einer IBM Informix-Datenbank gespeichert sind. Der Informix-Connector enthält einen Microsoft-Client zum Kommunizieren mit Informix-Remoteservercomputern über ein TCP/IP-Netzwerk. Dies umfasst Clouddatenbanken, z.B. IBM Informix für Windows, in Azure sowie lokale Datenbanken unter Verwendung des lokalen Datengateways. Siehe die [Liste mit unterstützten IBM Informix-Plattformen und -Versionen](connectors-create-api-informix.md#supported-informix-platforms-and-versions) (in diesem Thema).
@@ -148,7 +145,7 @@ Sie können eine Logik-App-Aktion zum Abrufen aller Zeilen in einer Informix-Tab
     ![](./media/connectors-create-api-informix/InformixconnectorCloudConnection.png)
 10. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
 11. Optional können Sie **Erweiterte Optionen anzeigen** auswählen, um Abfrageoptionen anzugeben.
-12. Wählen Sie **Speichern** aus. 
+12. Wählen Sie **Speichern**aus. 
     
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowsTableName.png)
 13. Wählen Sie auf dem Blatt **InformixgetRows** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
@@ -175,7 +172,7 @@ Sie können eine Logik-App-Aktion zum Hinzufügen einer Zeile zu einer Informix-
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
 8. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
 9. Geben Sie Werte für alle erforderlichen Spalten ein (siehe rotes Sternchen). Geben Sie beispielsweise `99999` für **AREAID**, `Area 99999` und `102` für **REGIONID** ein. 
-10. Wählen Sie **Speichern** aus.
+10. Wählen Sie **Speichern**aus.
     
     ![](./media/connectors-create-api-informix/InformixconnectorInsertRowValues.png)
 11. Wählen Sie auf dem Blatt **InformixinsertRow** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
@@ -203,7 +200,7 @@ Sie können eine Logik-App-Aktion zum Abrufen einer Zeile aus einer Informix-Tab
 8. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
 9. Geben Sie Werte für alle erforderlichen Spalten ein (siehe rotes Sternchen). Geben Sie beispielsweise `99999` für **AREAID**ein. 
 10. Optional können Sie **Erweiterte Optionen anzeigen** auswählen, um Abfrageoptionen anzugeben.
-11. Wählen Sie **Speichern** aus. 
+11. Wählen Sie **Speichern**aus. 
     
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowValues.png)
 12. Wählen Sie auf dem Blatt **InformixgetRow** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
@@ -230,7 +227,7 @@ Sie können eine Logik-App-Aktion zum Ändern einer Zeile in einer Informix-Tabe
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
 8. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
 9. Geben Sie Werte für alle erforderlichen Spalten ein (siehe rotes Sternchen). Geben Sie beispielsweise `99999` für **AREAID**, `Updated 99999` und `102` für **REGIONID** ein. 
-10. Wählen Sie **Speichern** aus. 
+10. Wählen Sie **Speichern**aus. 
     
     ![](./media/connectors-create-api-informix/InformixconnectorUpdateRowValues.png)
 11. Wählen Sie auf dem Blatt **InformixupdateRow** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
@@ -257,7 +254,7 @@ Sie können eine Logik-App-Aktion zum Entfernen einer Zeile aus einer Informix-T
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
 8. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
 9. Geben Sie Werte für alle erforderlichen Spalten ein (siehe rotes Sternchen). Geben Sie beispielsweise `99999` für **AREAID**ein. 
-10. Wählen Sie **Speichern** aus. 
+10. Wählen Sie **Speichern**aus. 
     
     ![](./media/connectors-create-api-informix/InformixconnectorDeleteRowValues.png)
 11. Wählen Sie auf dem Blatt **InformixdeleteRow** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.

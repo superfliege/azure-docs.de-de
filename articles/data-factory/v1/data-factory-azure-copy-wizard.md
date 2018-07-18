@@ -1,29 +1,30 @@
 ---
 title: Kopier-Assistent in Azure Data Factory | Microsoft Docs
-description: "Erfahren Sie, wie Sie den Kopier-Assistenten von Azure Data Factory verwenden, um Daten aus unterstützten Datenquellen in Senken zu kopieren."
+description: Erfahren Sie, wie Sie den Kopier-Assistenten von Azure Data Factory verwenden, um Daten aus unterstützten Datenquellen in Senken zu kopieren.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 0974eb40-db98-4149-a50d-48db46817076
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: aeed2b2413f14b60d018ebd4f09293d6c41554d2
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 6330854f4ee9b2db1597d916c815bb6646da6a29
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052748"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Kopier-Assistent in Azure Data Factory
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. 
+> Dieser Artikel gilt für Version 1 von Data Factory. 
 
 Der Kopier-Assistent in Azure Data Factory vereinfacht den Datenerfassungsvorgang (üblicherweise der erste Schritt in einem Szenario mit End-to-End-Datenintegration). Zur Arbeit mit dem Kopier-Assistenten in Azure Data Factory sind Kenntnisse hinsichtlich der JSON-Definitionen für verknüpfte Dienste, Datasets und Pipelines nicht erforderlich. Der Assistent erstellt automatisch eine Pipeline, um Daten aus der ausgewählten Datenquelle in das gewünschte Ziel zu kopieren. Darüber hinaus können Sie mit dem Kopier-Assistenten die erfassten Daten zum Zeitpunkt der Erstellung überprüfen. Dies spart insbesondere dann Zeit, wenn Sie Daten zum ersten Mal aus der Datenquelle erfassen. Klicken Sie zum Starten des Kopier-Assistenten auf der Startseite Ihrer Data Factory auf die Kachel **Daten kopieren** .
 

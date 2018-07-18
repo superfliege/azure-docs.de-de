@@ -1,11 +1,11 @@
 ---
 title: Azure Relay-Ausnahmen und Tipps zur ihrer Behebung | Microsoft-Dokumentation
-description: "Eine Liste mit Azure Relay-Ausnahmen und empfohlenen Maßnahmen zu deren Behebung."
+description: Eine Liste mit Azure Relay-Ausnahmen und empfohlenen Maßnahmen zu deren Behebung.
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5f9dd02c-cce0-43b3-8eb8-744f0c27f38c
 ms.service: service-bus-relay
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "26855860"
 ---
 # <a name="azure-relay-exceptions"></a>Azure Relay-Ausnahmen
 

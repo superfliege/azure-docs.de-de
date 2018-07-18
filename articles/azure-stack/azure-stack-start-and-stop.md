@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31391132"
 ---
 # <a name="start-and-stop-azure-stack"></a>Starten und Beenden von Azure Stack
 Sie sollten die Verfahren in diesem Artikel befolgen, um Azure Stack-Dienste ordnungsgemäß herunterzufahren und neu zu starten. 

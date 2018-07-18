@@ -1,28 +1,30 @@
 ---
-title: "Was-wäre-wenn-Tool für den bedingten Azure Active Directory-Zugriff – Vorschauversion | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie die Konfiguration Ihrer Richtlinien für bedingten Azure Active Directory-Zugriff testen können."
+title: Was ist das Was-wäre-wenn-Tool für den bedingten Azure Active Directory-Zugriff?
+description: Erfahren Sie, welche Auswirkungen die Richtlinien für bedingten Zugriff auf Ihre Umgebung haben.
 services: active-directory
-keywords: "bedingter Zugriff auf Apps, bedingter Zugriff mit Azure AD, sicherer Zugriff auf Unternehmensressourcen, Richtlinien für bedingten Zugriff"
-documentationcenter: 
+keywords: bedingter Zugriff auf Apps, bedingter Zugriff mit Azure AD, sicherer Zugriff auf Unternehmensressourcen, Richtlinien für bedingten Zugriff
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/08/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 19ebb30164eee8e03a3cd8f18b6d575c6eee5438
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 897f1b96f0861fb13ba0e6c2427b621ea6a12a06
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750081"
 ---
-# <a name="azure-active-directory-conditional-access-what-if-tool---preview"></a>Was-wäre-wenn-Tool für den bedingten Azure Active Directory-Zugriff – Vorschauversion
+# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Was ist das Was-wäre-wenn-Tool für den bedingten Azure Active Directory-Zugriff?
 
 Der [bedingte Zugriff](active-directory-conditional-access-azure-portal.md) ist eine Funktion von Azure Active Directory (Azure AD), mit der Sie den Zugriff autorisierter Benutzer auf Ihre Cloud-Apps steuern können. Wie wissen Sie, was Sie von den Richtlinien für bedingten Zugriff in Ihrer Umgebung erwarten können? Um diese Frage zu beantworten, können Sie das **Was-wäre-wenn-Tool für den bedingten Zugriff** verwenden.
 
@@ -119,7 +121,7 @@ In der Liste der Richtlinien, die nicht für den Benutzer gelten, finden Sie auc
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie wissen möchten, wie Sie eine Richtlinie für den bedingten Zugriff konfigurieren, helfen Ihnen die Informationen unter [Erste Schritte mit dem bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md) weiter.
+- Wenn Sie wissen möchten, wie Sie eine Richtlinie für den bedingten Zugriff konfigurieren, finden Sie Informationen unter [Schnellstart: Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](active-directory-conditional-access-app-based-mfa.md).
 
 - Wenn Sie bereit sind, Richtlinien für den bedingten Zugriff für Ihre Umgebung zu konfigurieren, lesen Sie unter [Best Practices für den bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-best-practices.md) nach. 
 

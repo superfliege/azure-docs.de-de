@@ -4,7 +4,7 @@ description: Hochverfügbarkeitsleitfaden für SAP NetWeaver auf dem SUSE Linux 
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -16,11 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: sedusch
-ms.openlocfilehash: f1d2725237d2cf059450ce7e2c1600b24d17f35c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 9d6c56f96c085de60b7cc05e4cc16b57867f6a7d
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308359"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs auf dem SUSE Linux Enterprise Server for SAP Applications
 
@@ -41,7 +42,7 @@ ms.lasthandoff: 04/05/2018
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
 
-[suse-hana-ha-guide]:https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf
+[suse-ha-guide]:https://www.suse.com/products/sles-for-sap/resource-library/sap-best-practices/
 [suse-drbd-guide]:https://www.suse.com/documentation/sle-ha-12/singlehtml/book_sleha_techguides/book_sleha_techguides.html
 
 [template-multisid-xscs]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
@@ -74,8 +75,7 @@ Lesen Sie zuerst die folgenden SAP Notes und Dokumente:
 * [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide]
 * [Bereitstellung von Azure Virtual Machines für SAP unter Linux (dieser Artikel)][deployment-guide]
 * [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]
-* [SAP HANA SR Performance Optimized Scenario][suse-hana-ha-guide] (SAP HANA-SR-Leistung – optimiertes Szenario)  
-  Das Handbuch enthält alle erforderlichen Informationen zum lokalen Einrichten der SAP HANA-Replikation. Verwenden Sie dieses Handbuch als Grundlage.
+* [Best Practices für SUSE SAP HA][suse-ha-guide] Die Leitfäden enthalten alle erforderlichen Informationen, um Netweaver HA und SAP HANA System Replication vor Ort einzurichten. Verwenden Sie diese Leitfäden als allgemeine Basis. Sie bieten wesentlich mehr Informationen.
 * [Hochverfügbarer NFS-Speicher mit DRBD und Pacemaker][suse-drbd-guide] Der Leitfaden enthält alle erforderlichen Informationen zum Einrichten eines hochverfügbaren NFS-Servers. Verwenden Sie dieses Handbuch als Grundlage.
 
 
@@ -100,9 +100,9 @@ Der NFS-Server, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS und die
   * 36**&lt;Nr.&gt;** TCP
   * 39**&lt;Nr.&gt;** TCP
   * 81**&lt;Nr.&gt;** TCP
-  * 5**&lt;Nr.&gt;**13 TCP
-  * 5**&lt;Nr.&gt;**14 TCP
-  * 5**&lt;Nr.&gt;**16 TCP
+  * 5**&lt;Nr.&gt;** 13 TCP
+  * 5**&lt;Nr.&gt;** 14 TCP
+  * 5**&lt;Nr.&gt;** 16 TCP
 
 ### <a name="ers"></a>ERS
 
@@ -114,9 +114,9 @@ Der NFS-Server, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS und die
   * Port 621**&lt;nr&gt;**
 * Lastenausgleichsregeln
   * 33**&lt;Nr.&gt;** TCP
-  * 5**&lt;Nr.&gt;**13 TCP
-  * 5**&lt;Nr.&gt;**14 TCP
-  * 5**&lt;Nr.&gt;**16 TCP
+  * 5**&lt;Nr.&gt;** 13 TCP
+  * 5**&lt;Nr.&gt;** 14 TCP
+  * 5**&lt;Nr.&gt;** 16 TCP
 
 ## <a name="setting-up-a-highly-available-nfs-server"></a>Einrichten eines hoch verfügbaren NFS-Servers
 
@@ -264,9 +264,9 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    # IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nw1-nfs</b>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS
-   <b>10.0.0.11 nw1-ascs</b>
+   <b>10.0.0.7 nw1-ascs</b>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS ERS
-   <b>10.0.0.12 nw1-aers</b>
+   <b>10.0.0.8 nw1-aers</b>
    # IP address of the load balancer frontend configuration for database
    <b>10.0.0.13 nw1-db</b>
    </code></pre>
@@ -349,7 +349,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    sudo crm node standby <b>nw1-cl-1</b>
    
    sudo crm configure primitive vip_<b>NW1</b>_ASCS IPaddr2 \
-     params ip=<b>10.0.0.11</b> cidr_netmask=<b>24</b> \
+     params ip=<b>10.0.0.7</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
    
    sudo crm configure primitive nc_<b>NW1</b>_ASCS anything \
@@ -379,7 +379,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
 1. **[1]** Installieren Sie SAP NetWeaver ASCS.  
 
-   Installieren Sie SAP NetWeaver ASCS auf dem ersten Knoten als Stamm. Verwenden Sie dabei einen virtuellen Hostnamen, der der IP-Adresse der Front-End-Konfiguration des Lastenausgleichs für ASCS zugeordnet ist (z.B. <b>nw1-ascs</b>, <b>10.0.0.11</b>), und die Instanznummer, die Sie für den Test des Lastenausgleichs verwendet haben (z.B. <b>00</b>).
+   Installieren Sie SAP NetWeaver ASCS auf dem ersten Knoten als Stamm. Verwenden Sie dabei einen virtuellen Hostnamen, der der IP-Adresse der Front-End-Konfiguration des Lastenausgleichs für ASCS zugeordnet ist (z.B. <b>nw1-ascs</b>, <b>10.0.0.7</b>), und die Instanznummer, die Sie für den Test des Lastenausgleichs verwendet haben (z.B. <b>00</b>).
 
    Sie können den sapinst-Parameter „SAPINST_REMOTE_ACCESS_USER“ verwenden, um anderen Benutzern als Stammbenutzern die Herstellung einer Verbindung mit sapinst zu ermöglichen.
 
@@ -401,7 +401,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    sudo crm node standby <b>nw1-cl-0</b>
    
    sudo crm configure primitive vip_<b>NW1</b>_ERS IPaddr2 \
-     params ip=<b>10.0.0.12</b> cidr_netmask=<b>24</b> \
+     params ip=<b>10.0.0.8</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
    
    sudo crm configure primitive nc_<b>NW1</b>_ERS anything \
@@ -436,7 +436,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
 1. **[2]** Installieren Sie SAP NetWeaver ERS.  
 
-   Installieren Sie SAP NetWeaver ERS auf dem zweiten Knoten als Stamm. Verwenden Sie dabei einen virtuellen Hostnamen, der der IP-Adresse der Front-End-Konfiguration des Lastenausgleichs für ERS zugeordnet ist (z.B. <b>nw1-aers</b>, <b>10.0.0.12</b>) und die Instanznummer, die Sie für den Test des Lastenausgleichs verwendet haben (z.B. <b>02</b>).
+   Installieren Sie SAP NetWeaver ERS auf dem zweiten Knoten als Stamm. Verwenden Sie dabei einen virtuellen Hostnamen, der der IP-Adresse der Front-End-Konfiguration des Lastenausgleichs für ERS zugeordnet ist (z.B. <b>nw1-aers</b>, <b>10.0.0.8</b>) und die Instanznummer, die Sie für den Test des Lastenausgleichs verwendet haben (z.B. <b>02</b>).
 
    Sie können den sapinst-Parameter „SAPINST_REMOTE_ACCESS_USER“ verwenden, um anderen Benutzern als Stammbenutzern die Herstellung einer Verbindung mit sapinst zu ermöglichen.
 
@@ -581,14 +581,14 @@ Bezüglich der nachstehenden Schritten wird davon ausgegangen, dass Sie den Anwe
    # IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nw1-nfs</b>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS/SCS
-   <b>10.0.0.11 nw1-ascs</b>
+   <b>10.0.0.7 nw1-ascs</b>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ERS
-   <b>10.0.0.12 nw1-aers</b>
+   <b>10.0.0.8 nw1-aers</b>
    # IP address of the load balancer frontend configuration for database
    <b>10.0.0.13 nw1-db</b>
    # IP address of all application servers
-   <b>10.0.0.8 nw1-di-0</b>
-   <b>10.0.0.7 nw1-di-1</b>
+   <b>10.0.0.20 nw1-di-0</b>
+   <b>10.0.0.21 nw1-di-1</b>
    </code></pre>
 
 1. Erstellen Sie das sapmnt-Verzeichnis.

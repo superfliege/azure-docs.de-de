@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 4f9354426ba584b26213f8a104c14122a831a453
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 026c686b1d5654aa50dd63b9addd619dd5322da0
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34075220"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808144"
 ---
 # <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>Verwalten des Zugriffs auf Ressourcen mit der rollenbasierten Zugriffssteuerung in Azure Stack
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Azure Stack unterstützt die rollenbasierte Zugriffssteuerung (RBAC), das gleiche von Microsoft Azure verwendete [Sicherheitsmodell für die Zugriffsverwaltung](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview). Anhand der RBAC können Sie den Benutzer-, Gruppen- oder Anwendungszugriff auf Abonnements, Ressourcen und Dienste verwalten.
+Azure Stack unterstützt die rollenbasierte Zugriffssteuerung (RBAC), das gleiche von Microsoft Azure verwendete [Sicherheitsmodell für die Zugriffsverwaltung](https://docs.microsoft.com/azure/role-based-access-control/overview). Anhand der RBAC können Sie den Benutzer-, Gruppen- oder Anwendungszugriff auf Abonnements, Ressourcen und Dienste verwalten.
 
 ## <a name="basics-of-access-management"></a>Grundlagen zur Zugriffsverwaltung
 
-Die rollenbasierte Zugriffssteuerung bietet eine präzise Zugriffssteuerung, mit der Sie Ihre Umgebung schützen können. Dabei erteilen Sie Benutzern genau die benötigten Berechtigungen, indem Sie eine RBAC-Rolle in einem bestimmten Bereich zuweisen. Der Bereich der Rollenzuweisung kann ein Abonnement, eine Ressourcengruppe oder eine einzelne Ressource sein. Ausführlichere Informationen zur Zugriffsverwaltung finden Sie im Artikel [Rollenbasierte Zugriffssteuerung im Azure-Portal](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview).
+Die rollenbasierte Zugriffssteuerung bietet eine präzise Zugriffssteuerung, mit der Sie Ihre Umgebung schützen können. Dabei erteilen Sie Benutzern genau die benötigten Berechtigungen, indem Sie eine RBAC-Rolle in einem bestimmten Bereich zuweisen. Der Bereich der Rollenzuweisung kann ein Abonnement, eine Ressourcengruppe oder eine einzelne Ressource sein. Ausführlichere Informationen zur Zugriffsverwaltung finden Sie im Artikel [Rollenbasierte Zugriffssteuerung im Azure-Portal](https://docs.microsoft.com/azure/role-based-access-control/overview).
 
 ### <a name="built-in-roles"></a>Integrierte Rollen
 
@@ -60,7 +60,7 @@ Sie können einem Benutzer mehrere Rollen zuweisen, und jede Rolle kann einem an
 * Sie weisen TestUser-A die Leserolle für Subscription-1 zu.
 * Sie weisen TestUser-A die Besitzerrolle für TestVM-1 zu.
 
-Der Artikel zu [Rollenzuweisungen](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal) in Azure enthält ausführliche Informationen zum Anzeigen, Zuweisen und Löschen von Rollen.
+Der Artikel zu [Rollenzuweisungen](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) in Azure enthält ausführliche Informationen zum Anzeigen, Zuweisen und Löschen von Rollen.
 
 ### <a name="resource-hierarchy-and-inheritance"></a>Ressourcenhierarchie und Vererbung
 
@@ -82,7 +82,7 @@ Sie können einem Benutzer mehrere Rollen zuweisen, und jede Rolle kann einem an
 * Sie weisen TestUser-A die Leserolle für Subscription-1 zu.
 * Sie weisen TestUser-A die Besitzerrolle für TestVM-1 zu.
 
-Der Artikel zu [Rollenzuweisungen](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal) in Azure enthält ausführliche Informationen zum Anzeigen, Zuweisen und Löschen von Rollen.
+Der Artikel zu [Rollenzuweisungen](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) in Azure enthält ausführliche Informationen zum Anzeigen, Zuweisen und Löschen von Rollen.
 
 ## <a name="set-access-permissions-for-a-user"></a>Festlegen von Zugriffsberechtigungen für Benutzer
 

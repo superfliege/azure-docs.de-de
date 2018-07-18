@@ -10,21 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/15/2018
+ms.topic: conceptual
+ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 22dbaa3d10d09456a972a7991583dc29b7941db1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 338df0e258f66b6639e59a4fe31b6cfb6c283dd3
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045526"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Schemazuordnung in Kopieraktivität
 In diesem Artikel wird beschrieben, wie Kopieraktivität in Azure Data Factory Schemazuordnung und Datentypzuordnung von Quelldaten zu Senkendaten beim Kopieren der Daten ausführt.
-
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (GA) ist, lesen Sie die [Dokumentation zur Version 1 von Data Factory](v1/data-factory-introduction.md).
-
 
 ## <a name="column-mapping"></a>Spaltenzuordnung
 
@@ -127,11 +124,18 @@ Der folgende JSON-Code definiert eine Kopieraktivität in einer Pipeline. Die Sp
         "translator":
         {
             "type": "TabularTranslator",
-            "ColumnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"
+            "columnMappings": 
+            {
+                "UserId": "MyUserId",
+                "Group": "MyGroup",
+                "Name": "MyName"
+            }
         }
     }
 }
 ```
+
+Wenn Sie zum Angeben der Spaltenzuordnung die Syntax `"columnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"` verwendet haben, wird sie weiterhin unverändert unterstützt.
 
 **Ablauf der Spaltenzuordnung:**
 

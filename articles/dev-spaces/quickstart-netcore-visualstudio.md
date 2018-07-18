@@ -1,56 +1,59 @@
 ---
-title: Erstellen einer Kubernetes-Entwicklungsumgebung in der Cloud | Microsoft-Dokumentation
+title: Erstellen eines Kubernetes-Entwicklungsbereichs in der Cloud | Microsoft-Dokumentation
 titleSuffix: Azure Dev Spaces
 author: ghogen
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
 ms.author: ghogen
-ms.date: 05/11/2018
+ms.date: 07/09/2018
 ms.topic: quickstart
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
 manager: douge
-ms.openlocfilehash: 9bee5677aecb235872f50eea75ddc98bc453f426
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 91302f21f3b3f9db50dc0c930a4cdfc02749d151
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361714"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951004"
 ---
-# <a name="quickstart-create-a-kubernetes-development-environment-with-azure-dev-spaces-net-core-and-visual-studio"></a>Schnellstart: Erstellen einer Kubernetes-Entwicklungsumgebung mit Azure Dev Spaces (.NET Core und Visual Studio)
+# <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-visual-studio"></a>Schnellstart: Erstellen eines Kubernetes-Entwicklungsbereichs mit Azure Dev Spaces (.NET Core und Visual Studio)
 
 In diesem Leitfaden lernen Sie Folgendes:
 
-- Erstellen einer für die Entwicklung optimierten, Kubernetes-basierten Umgebung in Azure
+- Einrichten von Azure Dev Spaces mit einem verwalteten Kubernetes-Cluster in Azure
 - Iteratives Entwickeln von Code in Containern mit Visual Studio
+- Debuggen von Code, der in Ihrem Cluster ausgeführt wird
 
-[!INCLUDE[](includes/see-troubleshooting.md)]
+> [!Note]
+> **Sollten Sie einmal nicht weiterkommen**, lesen Sie den Abschnitt [Problembehandlung](troubleshooting.md), oder hinterlassen Sie einen Kommentar auf dieser Seite. Ein ausführlicheres Tutorial finden Sie [hier](get-started-netcore-visualstudio.md).
 
-[!INCLUDE[](includes/portal-aks-cluster.md)]
+## <a name="prerequisites"></a>Voraussetzungen
 
-## <a name="get-the-visual-studio-tools"></a>Abrufen der Visual Studio-Tools 
-1. Installieren Sie die neue Version von [Visual Studio 2017](https://www.visualstudio.com/vs/).
-1. Wählen Sie im Visual Studio-Installer unbedingt die folgende Workload aus:
-    * ASP.NET und Webentwicklung
-1. Installieren Sie die [Visual Studio-Erweiterung für Azure Dev Spaces](https://aka.ms/get-azds-visualstudio).
+- Ein Kubernetes-Cluster mit Kubernetes 1.10.3 in der Region „USA, Osten“, „USA, Mitte“, „USA, Westen 2“, „Europa, Westen“, „Kanada, Mitte“ oder „Kanada, Osten“ mit aktiviertem HTTP-Anwendungsrouting.
 
-Jetzt können Sie eine ASP.NET-Web-App mit Visual Studio erstellen.
+  ![Achten Sie darauf, dass HTTP-Anwendungsrouting aktiviert ist.](media/common/Kubernetes-Create-Cluster-3.PNG)
 
-## <a name="create-an-aspnet-web-app"></a>Erstellen einer ASP.NET-Web-App
+- Visual Studio 2017 mit installierter Workload für Webentwicklung. Ist diese Version nicht installiert, können Sie sie [hier](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) herunterladen.
+
+## <a name="set-up-azure-dev-spaces"></a>Einrichten von Azure Dev Spaces
+
+Installieren von [Visual Studio-Tools für Kubernetes](https://aka.ms/get-azds-visualstudio)
+
+## <a name="connect-to-a-cluster"></a>Herstellen der Verbindung zu einem Cluster
+
+Als Nächstes erstellen und konfigurieren Sie ein Projekt für Azure Dev Spaces.
+
+### <a name="create-an-aspnet-web-app"></a>Erstellen einer ASP.NET-Web-App
 
 Erstellen Sie in Visual Studio 2017 ein neues Projekt. Derzeit muss das Projekt eine **ASP.NET Core-Webanwendung** sein. Nennen Sie das Projekt **webfrontend**.
 
-![](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
+Wählen Sie die Vorlage **Webanwendung (Model-View-Controller)** aus, und legen Sie **.NET Core** und **ASP.NET Core 2.0** als Ziel fest.
 
-Wählen Sie die Vorlage **Webanwendung (Model-View-Controller)** aus, und legen Sie oben im Dialogfeld in den beiden Dropdownmenüs **.NET Core** und **ASP.NET Core 2.0** fest. Klicken Sie auf **OK**, um das Projekt zu erstellen.
+### <a name="enable-dev-spaces-for-an-aks-cluster"></a>Aktivieren von Dev Spaces für einen AKS-Cluster
 
-![](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
-
-
-## <a name="create-a-dev-environment-in-azure"></a>Erstellen einer Entwicklungsumgebung in Azure
-
-Mit Azure Dev Spaces können Sie Kubernetes-basierte Entwicklungsumgebungen erstellen, die vollständig von Azure verwaltet werden und für die Entwicklung optimiert sind. Während das soeben erstellte Projekt geöffnet ist, wählen Sie wie nachfolgend gezeigt im Dropdownmenü mit den Starteinstellungen **Azure Dev Spaces** aus.
+Wählen Sie für das soeben erstellte Projekt wie nachfolgend gezeigt im Dropdownmenü mit den Starteinstellungen die Option **Azure Dev Spaces**.
 
 ![](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
@@ -58,7 +61,7 @@ Vergewissern Sie sich im nächsten angezeigten Dialogfeld, dass Sie mit dem ents
 
 ![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
 
-Übernehmen Sie für die Dropdownliste **Space** (Bereich) vorerst den Standardwert `default`. Später erfahren Sie mehr über diese Option. Aktivieren Sie das Kontrollkästchen **Publicly Accessible** (Öffentlich zugänglich), damit auf die Web-App über einen öffentlichen Endpunkt zugegriffen werden kann. Diese Einstellung ist nicht erforderlich, ist aber später in dieser exemplarischen Vorgehensweise hilfreich für die Erläuterung einiger Konzepte. Aber keine Sorge: Sie können Ihre Website in beiden Fällen mit Visual Studio debuggen.
+Übernehmen Sie für die Dropdownliste **Space** (Bereich) vorerst `default`. Aktivieren Sie das Kontrollkästchen **Publicly Accessible** (Öffentlich zugänglich), damit auf die Web-App über einen öffentlichen Endpunkt zugegriffen werden kann.
 
 ![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog2.png)
 
@@ -70,32 +73,48 @@ Wenn Sie einen Cluster auswählen, der nicht für die Verwendung mit Azure Dev S
 
 Klicken Sie auf **OK**. 
 
-Dazu wird eine Hintergrundaufgabe gestartet. Diese nimmt einige Minuten in Anspruch. Um zu überprüfen, ob der Cluster noch erstellt wird, zeigen Sie mit der Maus unten links auf der Statusleiste auf das Symbol **Hintergrundaufgaben**, wie in der folgenden Abbildung gezeigt:
+### <a name="look-at-the-files-added-to-project"></a>Anzeigen der zum Projekt hinzugefügten Dateien
+Während Sie auf die Erstellung des Entwicklungsbereichs warten, sehen Sie sich die Dateien an, die Ihrem Projekt hinzugefügt wurden, als Sie sich für die Verwendung von Azure Dev Spaces entschieden haben.
 
-![](media/get-started-netcore-visualstudio/BackgroundTasks.png)
-
-> [!Note]
-Sie können die Anwendung erst debuggen, wenn die Entwicklungsumgebung erstellt wurde.
-
-## <a name="look-at-the-files-added-to-project"></a>Anzeigen der zum Projekt hinzugefügten Dateien
-Während Sie auf die Erstellung der Entwicklungsumgebung warten, sehen Sie sich die Dateien an, die Ihrem Projekt hinzugefügt wurden, als Sie sich für die Verwendung einer Entwicklungsumgebung entschieden haben.
-
-Sie sehen zuerst einen Ordner namens `charts`, der hinzugefügt wurde. In diesem Ordner wurde ein [Helm-Diagramm](https://docs.helm.sh) für Ihre Anwendung erstellt. Diese Dateien werden zum Bereitstellen der Anwendung in der Entwicklungsumgebung verwendet.
-
-Sie sehen, dass die Datei `Dockerfile` hinzugefügt wurde. Diese Datei enthält Informationen, die zum Packen Ihrer Anwendung im Docker-Standardformat erforderlich sind. Darüber hinaus wird die Datei `HeaderPropagation.cs` erstellt. Diese Datei wird später in dieser exemplarischen Vorgehensweise genauer erläutert. 
-
-Außerdem wurde die Datei `azds.yaml` hinzugefügt. Sie enthält für die Entwicklungsumgebung erforderliche Konfigurationsinformationen, etwa Angaben dazu, ob die Anwendung über einen öffentlichen Endpunkt zugänglich sein soll.
+- Ein Ordner namens `charts` wurde hinzugefügt. In diesem Ordner wurde ein [Helm-Diagramm](https://docs.helm.sh) für Ihre Anwendung erstellt. Diese Dateien werden zum Bereitstellen der Anwendung im Entwicklungsbereich verwendet.
+- `Dockerfile` enthält Informationen, die zum Packen Ihrer Anwendung im Docker-Standardformat erforderlich sind.
+- `azds.yaml` enthält die Konfiguration der Entwicklungszeit, die für den Entwicklungsbereich erforderlich ist.
 
 ![](media/get-started-netcore-visualstudio/ProjectFiles.png)
 
 ## <a name="debug-a-container-in-kubernetes"></a>Debuggen eines Containers in Kubernetes
-Wenn die Entwicklungsumgebung erstellt wurde, können Sie die Anwendung debuggen. Legen Sie einen Breakpoint im Code fest, etwa in Zeile 20 in der Datei `HomeController.cs`, in der die Variable `Message` festgelegt wird. Drücken Sie **F5**, um das Debuggen zu starten. 
+Wenn der Entwicklungsbereich erstellt wurde, können Sie die Anwendung debuggen. Legen Sie einen Breakpoint im Code fest, etwa in Zeile 20 in der Datei `HomeController.cs`, in der die Variable `Message` festgelegt wird. Drücken Sie **F5**, um das Debuggen zu starten. 
 
-Visual Studio kommuniziert zum Erstellen und Bereitstellen der Anwendung mit der Entwicklungsumgebung und öffnet dann einen Browser mit der ausgeführten Web-App. Es sieht unter Umständen so aus, als würde der Container lokal ausgeführt, tatsächlich wird er jedoch in der Entwicklungsumgebung in Azure ausgeführt. Der Grund für die localhost-Adresse ist, dass Azure Dev Spaces einen temporären SSH-Tunnel zu dem in Azure ausgeführten Container erstellt.
+Visual Studio kommuniziert zum Erstellen und Bereitstellen der Anwendung mit dem Entwicklungsbereich und öffnet dann einen Browser mit der ausgeführten Web-App. Es sieht unter Umständen so aus, als würde der Container lokal ausgeführt, tatsächlich wird er jedoch im Entwicklungsbereich in Azure ausgeführt. Die localhost-Adresse wird verwendet, da Azure Dev Spaces einen temporären SSH-Tunnel zu dem in AKS ausgeführten Container erstellt.
 
 Klicken Sie oben auf der Seite auf den Link **Info**, um den Breakpoint auszulösen. Sie besitzen wie bei der lokalen Ausführung des Codes Vollzugriff auf Debuginformationen, etwa Aufrufliste, lokale Variablen, Ausnahmeinformationen usw.
+
+
+## <a name="iteratively-develop-code"></a>Iteratives Entwickeln von Code
+
+Bei Azure Dev Spaces geht es nicht nur um die Ausführung von Code in Kubernetes: Mit diesem Dienst sollen Codeänderungen in einer Kubernetes-Umgebung in der Cloud schnell und iterativ sichtbar gemacht werden.
+
+### <a name="update-a-content-file"></a>Aktualisieren einer Inhaltsdatei
+1. Navigieren Sie zur Datei `./Views/Home/Index.cshtml`, und ändern Sie die HTML. Beispiel: Ändern Sie Zeile 70 (`<h2>Application uses</h2>`) ungefähr wie folgt: `<h2>Hello k8s in Azure!</h2>`
+1. Speichern Sie die Datei .
+1. Aktualisieren Sie die Anzeige im Browser. Daraufhin sollte auf der Webseite die aktualisierte HTML angezeigt werden.
+
+Was ist passiert? Für Änderungen an Inhaltsdateien (z.B. HTML und CSS) ist keine erneute Kompilierung in einer .NET Core-Web-App erforderlich. Eine aktive F5-Sitzung synchronisiert daher automatisch alle geänderten Inhaltsdateien im ausgeführten Container in AKS, sodass alle Inhaltsänderungen direkt angezeigt werden.
+
+### <a name="update-a-code-file"></a>Aktualisieren einer Codedatei
+Die Aktualisierung von Codedateien ist etwas aufwendiger, da eine .NET Core-App aktualisierte Anwendungsbinärdateien neu erstellen und generieren muss.
+
+1. Beenden Sie den Debugger in Visual Studio.
+1. Öffnen Sie die Codedatei mit dem Namen `Controllers/HomeController.cs`, und bearbeiten Sie die Nachricht, die auf der Seite „Info“ angezeigt wird: `ViewData["Message"] = "Your application description page.";`.
+1. Speichern Sie die Datei .
+1. Drücken Sie **F5**, um das Debuggen wieder zu starten. 
+
+Das Neuerstellen und erneute Bereitstellen eines neuen Containerimages bei jeder vorgenommenen Codeänderung kann geraume Zeit in Anspruch nehmen. Daher kompiliert Azure Dev Spaces Code im vorhandenen Container inkrementell, um den Bearbeitungs-/Debugging-Kreislauf zu beschleunigen.
+
+Aktualisieren Sie die Web-App im Browser, und wechseln Sie zur Seite „Info“. Daraufhin sollte Ihre benutzerdefinierte Meldung auf der Benutzeroberfläche angezeigt werden.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Arbeiten mit mehreren Containern und Teamentwicklung](get-started-netcore-visualstudio.md#call-another-container)
+> [Arbeiten mit mehreren Containern und Teamentwicklung](team-development-netcore-visualstudio.md)

@@ -11,11 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: mahender
-ms.openlocfilehash: d774f0ca644793235a8c423b052b559d26e289c4
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: af748f234a27ed9b37ac50438d7497fd680bc193
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085571"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph-Bindungen für Azure Functions
 
@@ -39,7 +40,7 @@ Die Microsoft Graph-Erweiterung bietet die folgenden Bindungen:
 
 Die Authentifizierungstoken-Eingabebindung wird im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.AuthTokens](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.AuthTokens/) bereitgestellt. Die anderen Microsoft Graph-Bindungen werden im Paket [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/) bereitgestellt. Den Quellcode für die Pakete finden Sie im GitHub-Repository [azure-functions-microsoftgraph-extension](https://github.com/Azure/azure-functions-microsoftgraph-extension/).
 
-[!INCLUDE [functions-package](../../includes/functions-package.md)]
+[!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="setting-up-the-extensions"></a>Einrichten der Erweiterungen
 
@@ -975,7 +976,7 @@ Mit Webhooks können Sie auf Ereignisse in Microsoft Graph reagieren. Zur Unters
 - Eine [Microsoft Graph-Webhookabonnement-Eingabebindung](#webhook-input) ermöglicht Ihnen das Auflisten und optionale Aktualisieren von vorhandenen Abonnements.
 - Eine [Microsoft Graph-Webhookabonnement-Ausgabebindung](#webhook-output) ermöglicht Ihnen das Erstellen und Löschen von Webhookabonnements.
 
-Für die eigentlichen Bindungen sind keine Azure AD-Berechtigungen erforderlich, aber Sie benötigen die entsprechenden Berechtigungen für den Ressourcentyp, auf den Sie reagieren möchten. Eine Liste der für jeden Ressourcentyp erforderlichen Berechtigungen finden Sie unter [Abonnementberechtigungen](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/subscription_post_subscriptions#permissions).
+Für die eigentlichen Bindungen sind keine Azure AD-Berechtigungen erforderlich, aber Sie benötigen die entsprechenden Berechtigungen für den Ressourcentyp, auf den Sie reagieren möchten. Eine Liste der für jeden Ressourcentyp erforderlichen Berechtigungen finden Sie unter [Abonnementberechtigungen](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/subscription_post_subscriptions).
 
 Weitere Informationen über Webhooks finden Sie unter [Arbeiten mit Webhooks in Microsoft Graph].
 
@@ -1284,11 +1285,11 @@ In der *function.json*-Datei ist ein HTTP-Trigger mit einer Abonnementausgabebin
       "direction": "in"
     },
     {
-      "type": "graphwebhook",
+      "type": "graphWebhookSubscription",
       "name": "clientState",
       "direction": "out",
       "action": "create",
-      "listen": "me/mailFolders('Inbox')/messages",
+      "subscriptionResource": "me/mailFolders('Inbox')/messages",
       "changeTypes": [
         "created"
       ],
@@ -1333,11 +1334,11 @@ In der *function.json*-Datei ist ein HTTP-Trigger mit einer Abonnementausgabebin
       "direction": "in"
     },
     {
-      "type": "graphwebhook",
+      "type": "graphWebhookSubscription",
       "name": "clientState",
       "direction": "out",
       "action": "create",
-      "listen": "me/mailFolders('Inbox')/messages",
+      "subscriptionResource": "me/mailFolders('Inbox')/messages",
       "changeTypes": [
         "created"
       ],

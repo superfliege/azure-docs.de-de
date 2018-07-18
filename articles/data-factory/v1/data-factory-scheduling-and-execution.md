@@ -10,19 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 58274b2255de13efaa1fba8af8beff7b7b59f7a8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: bd8b682e073e86bb824d31d6ebab20a80f807730
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054601"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory – Planung und Ausführung
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Wenn Sie Version 2 des Data Factory-Diensts verwenden, die sich derzeit in der Vorschauphase befindet, finden Sie weitere Informationen im Artikel [pipeline execution and triggers (Pipelineausführung und -trigger)](../concepts-pipeline-execution-triggers.md).
+> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen im Artikel [Pipelineausführung und Auslöser](../concepts-pipeline-execution-triggers.md).
 
 In diesem Artikel werden die Planungs- und Ausführungsaspekte des Azure Data Factory-Anwendungsmodells erläutert. In diesem Artikel wird vorausgesetzt, dass Sie mit den Grundbegriffen des Data Factory-Anwendungsmodells vertraut sind, z.B. Aktivität, Pipelines, verknüpfte Dienste und Datasets. Grundlegende Konzepte von Azure Data Factory finden Sie in den folgenden Artikeln:
 

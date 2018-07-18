@@ -15,11 +15,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5241c62e8b423b20477fc72c87303daf3d4ab43c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 98a5af1c0b321b7f9acf2bfd936a16d22088babf
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128859"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Verwenden von Visual Studio-Vorlagen für den schnellen Einstieg in Batch-Lösungen
 
@@ -438,10 +439,7 @@ Sie können Parameter auch an einzelne Aufgaben übergeben, die mit der Aufgaben
 ### <a name="persist-job-and-task-output-to-azure-storage"></a>Persistente Aufträge und Aufgabenausgabe in Azure Storage
 Ein weiteres nützliches Tool bei der Entwicklung von Batch-Lösungen sind [Azure Batch-Dateikonventionen][nuget_package]. Verwenden Sie diese .NET-Klassenbibliothek (derzeit in der Vorschauphase) in Ihren Batch .NET-Anwendungen, um Aufgabenausgaben leicht speichern und für Azure Storage übermitteln zu können. [Beibehalten der Ausgabe von Azure Batch-Aufträgen und -Tasks](batch-task-output.md) enthält eine umfassende Beschreibung der Bibliothek und ihrer Verwendung.
 
-### <a name="batch-forum"></a>Batch-Forum
-Das [Azure Batch-Forum][forum] auf MSDN eignet sich hervorragend, um Informationen zu Batch zu erhalten und Fragen zu diesem Dienst zu stellen. Nutzen Sie das Forum, um hilfreiche Beiträge zu lesen, und posten Sie selber Fragen, die während der Erstellung Ihrer Batch-Lösungen auftreten.
 
-[forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azurebatch
 [net_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobmanagertask.aspx
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files

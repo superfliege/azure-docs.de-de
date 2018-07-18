@@ -4,24 +4,24 @@ description: Erfahren Sie, wie die Azure Cosmos DB-Tabellen-API und Azure Storag
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: 378f00f2-cfd9-4f6b-a9b1-d1e4c70799fd
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: 2560c2ee34a83ce86db043e17fb41192c31de398
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1ebf244aeb00b1eb87b846a5bb1db6bd4f954e26
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798167"
 ---
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>Entwickeln mit der Azure Cosmos DB-Tabellen-API und Azure Table Storage
 
 Die Azure Cosmos DB-Tabellen-API und Azure Table Storage nutzen dasselbe Tabellendatenmodell und dieselben Erstellungs-, Lösch-, Update- und Abfragevorgänge über ihre SDKs. 
+
+[!INCLUDE [storage-table-cosmos-comparison](../../includes/storage-table-cosmos-comparison.md)]
 
 ## <a name="developing-with-the-azure-cosmos-db-table-api"></a>Entwickeln mit der Azure Cosmos DB-Tabellen-API
 
@@ -33,9 +33,21 @@ Derzeit sind für die [Tabellen-API von Azure Cosmos DB](table-introduction.md) 
 
 Weitere Informationen zum Arbeiten mit der Tabellen-API finden Sie im FAQ-Artikel unter [Entwickeln mit der Tabellen-API (Vorschauversion)](faq.md#develop-with-the-table-api).
 
-## <a name="developing-with-the-azure-table-storage"></a>Entwickeln mit Azure Table Storage
+## <a name="developing-with-azure-table-storage"></a>Entwickeln mit Azure Table Storage
 
-[Azure Table Storage](table-storage-overview.md) hat zahlreiche verfügbare SDKs und Tutorials, die nun im Abschnitt [Azure Table Storage](table-storage-overview.md) verfügbar sind. Diese Artikel werden aktualisiert, sobald Azure Table Storage-SDKs und die Azure Cosmos-DB-Tabelle-APIs interoperabel werden.  
+In Azure Table Storage stehen die folgenden SDKs für die Entwicklung zur Verfügung:
+
+- [WindowsAzure.Storage .NET SDK](https://www.nuget.org/packages/WindowsAzure.Storage/). Diese Bibliothek ermöglicht Ihnen die Verwendung des Table Storage-Diensts.
+- [Python SDK](table-sdk-python.md). Das Azure Cosmos DB Table SDK für Python unterstützt den Table Storage-Dienst ebenfalls.
+- [Azure Storage-SDK für Java](https://github.com/azure/azure-storage-java). Dieses Azure Storage SDK enthält eine Clientbibliothek in Java für die Nutzung von Azure Table Storage.
+- [Node.js SDK](table-sdk-nodejs.md). Dieses SDK bietet ein Node.js-Paket und eine browserkompatible JavaScript-Clientbibliothek für die Nutzung des Table Storage-Diensts.
+- [AzureRmStorageTable-PowerShell-Modul](https://www.powershellgallery.com/packages/AzureRmStorageTable/1.0.0.7). Dieses PowerShell-Modul enthält Cmdlets für die Verwendung mit Speichertabellen.
+- [Azure Storage-Clientbibliothek für C++](https://github.com/Azure/azure-storage-cpp/). Diese Clientbibliothek ermöglicht Ihnen die Erstellung von Anwendungen für Azure Storage.
+- [Azure Table Storage-Clientbibliothek für Ruby](https://github.com/azure/azure-storage-ruby/tree/master/table). Dieses Projekt stellt ein Ruby-Paket bereit, das den Zugriff auf Azure Table Storage-Dienste erleichtert.
+- [Azure Table Storage-Clientbibliothek für PHP](https://github.com/Azure/azure-storage-php/tree/master/azure-storage-table). Dieses Projekt stellt eine PHP-Clientbibliothek bereit, die den Zugriff auf Azure Table Storage-Dienste erleichtert.
+
+
+   
 
 
 

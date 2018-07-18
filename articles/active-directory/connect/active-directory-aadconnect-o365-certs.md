@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f0435f1c5aae9381c76441b1233a47799af94768
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e8f6b30bb7cbe82159e86fa48721afce3f9477d8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591496"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Erneuern von Verbundzertifikaten für Office 365 und Azure Active Directory
 ## <a name="overview"></a>Übersicht
@@ -87,7 +89,7 @@ Wenn die Fingerabdrücke in beiden Ausgaben übereinstimmen, sind Ihre Zertifika
 ### <a name="step-3-check-if-your-certificate-is-about-to-expire"></a>Schritt 3: Überprüfen, ob das Zertifikat bald abläuft
 Überprüfen Sie in der Ausgabe von „Get-MsolFederationProperty“ oder „Get-AdfsCertificate“ das Datum unter „Not after“ (Nicht nach). Falls das Datum weniger als 30 Tage entfernt ist, sollten Sie Maßnahmen ergreifen.
 
-| AutoCertificateRollover | Mit Azure AD synchronisierte Zertifikate | Verbundmetadaten sind öffentlich zugänglich | Gültigkeitsdauer | anzuzeigen. |
+| AutoCertificateRollover | Mit Azure AD synchronisierte Zertifikate | Verbundmetadaten sind öffentlich zugänglich | Gültigkeitsdauer | Aktion |
 |:---:|:---:|:---:|:---:|:---:|
 | Ja |Ja |Ja |- |Keine Aktion erforderlich. Siehe [Automatisches Erneuern von Tokensignaturzertifikaten](#autorenew). |
 | Ja |Nein  |- |Weniger als 15 Tage |Sofort erneuern. Siehe [Manuelles Erneuern von Tokensignaturzertifikaten](#manualrenew). |

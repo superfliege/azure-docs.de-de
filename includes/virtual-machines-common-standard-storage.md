@@ -1,22 +1,39 @@
+---
+title: Includedatei
+description: Includedatei
+services: storage
+author: yuemlu
+ms.service: storage
+ms.topic: include
+ms.date: 06/05/2018
+ms.author: yuemlu
+ms.custom: include file
+ms.openlocfilehash: 4e62342a32456787863da775ea98df178ab1d559
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34806297"
+---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Kostengünstiger Standardspeicher und verwaltete/nicht verwaltete Azure-VM-Datenträger
 
-Azure-Standardspeicher bietet zuverlässige, kostengünstige Datenträgerunterstützung für virtuelle Computer mit latenzempfindlichen Workloads. Darüber hinaus unterstützt er Blobs, Tabellen, Warteschlangen und Dateien. Bei Verwendung von Standardspeicher werden die Daten auf Festplattenlaufwerken (Hard Disk Drives, HDDs) gespeichert. Wenn Sie mit virtuellen Computern arbeiten, können Sie Standardspeicherdatenträger für Entwicklungs-und Testszenarien sowie für weniger kritische Workloads und Storage Premium-Datenträger für unternehmenskritische Produktionsanwendungen verwenden. Standardspeicher ist in allen Azure-Regionen verfügbar. 
+Azure-Standardspeicher bietet zuverlässige, kostengünstige Datenträgerunterstützung für virtuelle Computer mit latenzempfindlichen Workloads. Darüber hinaus unterstützt er Blobs, Tabellen, Warteschlangen und Dateien. Bei Verwendung von Standardspeicher werden die Daten auf Festplattenlaufwerken (Hard Disk Drives, HDDs) gespeichert. Wenn Sie mit virtuellen Computern arbeiten, können Sie Standard-SSD- und -HDD-Datenträger für Dev/Test-Szenarien sowie weniger kritische Workloads und Premium-SSD-Datenträger für unternehmenskritische Produktionsanwendungen verwenden. Standardspeicher ist in allen Azure-Regionen verfügbar. 
 
-Dieser Artikel beschäftigt sich hauptsächlich mit der Verwendung von Standardspeicher für VM-Datenträger. Weitere Informationen zur Verwendung von Speicher mit Blobs, Tabellen, Warteschlangen und Dateien finden Sie in der [Einführung in Storage](../articles/storage/common/storage-introduction.md).
+Dieser Artikel beschäftigt sich hauptsächlich mit der Verwendung von Standard-SSD- und -HDD-Datenträgern. Weitere Informationen zur Verwendung von Speicher mit Blobs, Tabellen, Warteschlangen und Dateien finden Sie in der [Einführung in Storage](../articles/storage/common/storage-introduction.md).
 
 ## <a name="disk-types"></a>Datenträgertypen
 
 Standarddatenträger für virtuelle Azure-Computer können in zwei Varianten erstellt werden:
 
-**Nicht verwaltete Datenträger:** Bei dieser ursprünglichen Methode verwalten Sie die Speicherkonten, die zum Speichern der VHD-Dateien für die VM-Datenträger verwendet werden. VHD-Dateien werden als Seitenblobs in Speicherkonten gespeichert. Nicht verwaltete Datenträger können an jede beliebige Azure-VM-Größe angefügt werden – auch an virtuelle Computer, die in erster Linie Storage Premium verwenden (wie etwa die DSv2- und die GS-Serie). Virtuelle Azure-Computer unterstützen das Anfügen mehrerer Standarddatenträger. Dadurch kann pro virtuellem Computer eine Speicherkapazität von bis zu 256 TB erreicht werden.
+**Nicht verwaltete Datenträger:** Bei diesem Datenträgertyp verwalten Sie die Speicherkonten, die zum Speichern der VHD-Dateien für die VM-Datenträger verwendet werden. VHD-Dateien werden als Seitenblobs in Speicherkonten gespeichert. Nicht verwaltete Datenträger können an jede beliebige Azure-VM-Größe angefügt werden – auch an virtuelle Computer, die in erster Linie Storage Premium verwenden (wie etwa die DSv2- und die GS-Serie). Virtuelle Azure-Computer unterstützen das Anfügen mehrerer Standarddatenträger. Dadurch kann pro virtuellem Computer eine Speicherkapazität von bis zu 256 TB erreicht werden.
 
-[**Azure Managed Disks**:](../articles/virtual-machines/windows/managed-disks-overview.md) Dieses Feature nimmt Ihnen die Verwaltung der Speicherkonten ab, die für die VM-Datenträger verwendet werden. Sie geben die Art (Premium oder Standard) und die benötigte Größe des Datenträgers an, und Azure erstellt und verwaltet ihn für Sie. Sie müssen die Datenträger nicht selbst auf mehrere Speicherkonten verteilen, um sicherzustellen, dass Sie die Skalierbarkeitsgrenzwerte für die Speicherkonten einhalten. Dies erledigt Azure für Sie.
+[**Azure Managed Disks**](../articles/virtual-machines/windows/managed-disks-overview.md): Dieses Feature nimmt Ihnen die Verwaltung der Speicherkonten ab, die für die VM-Datenträger verwendet werden. Sie geben die Art (Premium-SSD, Standard-SSD oder Standard-HDD) und die benötigte Größe des Datenträgers an, und Azure erstellt und verwaltet ihn für Sie. Sie müssen die Datenträger nicht selbst auf mehrere Speicherkonten verteilen, um sicherzustellen, dass Sie die Skalierbarkeitsgrenzwerte für die Speicherkonten einhalten. Dies erledigt Azure für Sie.
 
 Grundsätzlich stehen Ihnen zwar beide Arten von Datenträgern zur Verfügung, aber wir empfehlen Ihnen die Verwendung von Managed Disks, da Sie bei dieser Variante von zahlreichen Features profitieren.
 
 Informationen zu den ersten Schritten mit Azure-Standardspeicher finden Sie unter [Erstellen Sie noch heute Ihr kostenloses Azure-Konto](https://azure.microsoft.com/pricing/free-trial/). 
 
-Informationen zum Erstellen eines virtuellen Computers mit Managed Disks finden Sie in den folgenden Artikeln:
+Informationen zum Erstellen eines virtuellen Computers mit Managed Disks finden Sie in den folgenden Artikeln.
 
 * [Erstellen eines virtuellen Computers mithilfe von Resource Manager und PowerShell](../articles/virtual-machines/windows/quick-create-powershell.md)
 * [Erstellen eines virtuellen Linux-Computers mit Azure CLI 2.0](../articles/virtual-machines/linux/quick-create-cli.md)
@@ -27,7 +44,9 @@ In diesem Abschnitt werden einige der Features von Standardspeicher erläutert. 
 
 **Standardspeicher:** Azure-Standardspeicher unterstützt Azure-Datenträger, Azure-Blobs, Azure-Dateien, Azure-Tabellen und Azure-Warteschlangen. Wenn Sie Standardspeicherdienste verwenden möchten, beginnen Sie mit der [Erstellung eines Azure Storage-Kontos](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account).
 
-**Standardspeicher-Datenträger:** Standardspeicher-Datenträger können an beliebige virtuelle Azure-Computer angefügt werden. Dies schließt auch virtuelle Computer aus Größenserien mit Storage Premium (beispielsweise die DSv2- und die GS-Serie) mit ein. Ein Standardspeicher-Datenträger kann nur an einen einzelnen virtuellen Computer angefügt werden. An einen virtuellen Computer können allerdings mehrere dieser Datenträger angefügt werden (bis zur maximalen, für die VM-Größe definierten Datenträgeranzahl). Die Spezifikationen werden im folgenden Abschnitt zu Skalierbarkeits- und Leistungszielen für Standardspeicher ausführlicher beschrieben. 
+**Standard-SSD-Datenträger:** Standard-SSD-Datenträger bieten eine zuverlässigere Leistung als Standard-HDD-Datenträger und sind derzeit in der Vorschau verfügbar. Weitere Informationen zur Verfügbarkeit von Standard-SSD-Datenträgern in verschiedenen Regionen finden Sie unter [Regionsverfügbarkeit von Standard-SSD-Datenträgern (Vorschau)](../articles/virtual-machines/windows/faq-for-disks.md#standard-ssds-azure-regions).
+
+**Standard-HDD-Datenträger:** Standard-HDD-Datenträger können an beliebige virtuelle Azure-Computer angefügt werden. Dies schließt auch virtuelle Computer aus Größenserien mit Storage Premium (beispielsweise die DSv2- und die GS-Serie) mit ein. Ein Standard-HDD-Datenträger kann nur an einen einzelnen virtuellen Computer angefügt werden. An einen virtuellen Computer können allerdings mehrere dieser Datenträger angefügt werden (bis zur maximalen, für die VM-Größe definierten Datenträgeranzahl). Die Spezifikationen werden im folgenden Abschnitt zu Skalierbarkeits- und Leistungszielen für Standardspeicher ausführlicher beschrieben.
 
 **Standardseitenblob:** Standardseitenblobs dienen zum Speichern persistenter Datenträger für virtuelle Computer, und Sie können wie bei anderen Arten von Azure-Blobs direkt über REST auf sie zugreifen. Bei [Seitenblobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) handelt es sich um eine Sammlung von 512-Byte-Seiten, die für zufällige Lese- und Schreibvorgänge optimiert sind. 
 
@@ -124,7 +143,7 @@ Der Azure Backup-Dienst kann auch in Kombination mit Managed Disks verwendet wer
 
 * [Einführung in Azure Storage](../articles/storage/common/storage-introduction.md)
 
-* [Erstellen eines Speicherkontos](../articles/storage/common/storage-create-storage-account.md)
+* [Erstellen Sie ein Speicherkonto](../articles/storage/common/storage-create-storage-account.md)
 
 * [Managed Disks Overview](../articles/virtual-machines/linux/managed-disks-overview.md) (Übersicht über Azure Managed Disks)
 

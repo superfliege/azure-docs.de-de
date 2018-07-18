@@ -12,13 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2017
+ms.date: 06/18/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0b3f274c2bf457760a1d62d5cc369ebdb0c52c59
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 351f3e34f5050d922655a633ec89f51d191b946e
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36291965"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: Besondere Überlegungen zu Instanzen
 Azure AD Connect wird am häufigsten mit der weltweiten Instanz von Azure AD und Office 365 verwendet. Es gibt jedoch noch weitere Instanzen, und für diese gelten andere Anforderungen an URLs sowie weitere besondere Überlegungen.
@@ -36,8 +38,6 @@ Wenn Sie sich bei Ihrem Azure AD-Mandanten anmelden, müssen Sie ein Konto in de
 
 In der Microsoft Cloud Deutschland derzeit nicht enthaltene Features:
 
-* **Azure AD Connect Health** ist nicht verfügbar.
-* **Automatische Updates** sind nicht verfügbar.
 * **Kennwortrückschreiben** ist für die Vorschauversion mit Azure AD Connect-Version 1.1.570.0 und höher verfügbar.
 * Andere Azure AD Premium-Dienste sind nicht verfügbar.
 
@@ -59,8 +59,6 @@ Diese Cloud wurde von früheren Versionen von DirSync unterstützt. Ab Build 1.1
 
 In der Microsoft Azure Government-Cloud derzeit nicht enthaltene Features:
 
-* **Azure AD Connect Health** ist nicht verfügbar.
-* **Automatische Updates** sind nicht verfügbar.
 * **Kennwortrückschreiben** ist für die Vorschauversion mit Azure AD Connect-Version 1.1.570.0 und höher verfügbar.
 * Andere Azure AD Premium-Dienste sind nicht verfügbar.
 

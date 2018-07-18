@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360341"
 ---
 # <a name="azure-cloud-services-definition-webrole-schema"></a>Azure Cloud Services-Definition – WebRole-Schema
 Die Azure-Webrolle ist eine Rolle, die für die Programmierung von Webanwendungen gemäß Unterstützung durch IIS 7 angepasst wird, z.B. ASP.NET, PHP, Windows Communication Foundation und FastCGI.

@@ -10,11 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 701ab041eb603a1a06025d5bb43964880353ada9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 3b767da394f6337a1110ad171f19ad789fa044d2
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972980"
 ---
 # <a name="azure-ad-password-reset-from-the-login-screen"></a>Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm
 
@@ -27,7 +28,7 @@ Die folgenden Voraussetzungen müssen erfüllt sein, damit Benutzer ihr Azure AD
 * Windows 10 April 2018 Update oder ein neuerer Client, der in [Azure AD eingebunden](../device-management-azure-portal.md) oder in [Hybrid-Azure AD eingebunden](../device-management-hybrid-azuread-joined-devices-setup.md) ist
 * Die Azure AD-Self-Service-Kennwortzurücksetzung muss aktiviert sein.
 * Führen Sie das Konfigurieren und Bereitstellen der Einstellung zum Aktivieren des Links „Kennwort zurücksetzen“ durch, indem Sie eine der folgenden Methoden verwenden:
-   * [Profil für Intune-Gerätekonfiguration](tutorial-sspr-windows.md#configure-reset-password-link-using-intune)
+   * [Profil für Intune-Gerätekonfiguration](tutorial-sspr-windows.md#configure-reset-password-link-using-intune) Diese Methode erfordert die Registrierung des Gerätes über Intune.
    * [Registrierungsschlüssel](tutorial-sspr-windows.md#configure-reset-password-link-using-the-registry)
 
 ## <a name="configure-reset-password-link-using-intune"></a>Konfigurieren des Links „Kennwort zurücksetzen“ mit Intune
@@ -65,7 +66,7 @@ Die folgenden Voraussetzungen müssen erfüllt sein, damit Benutzer ihr Azure AD
    * Klicken Sie auf **Auswählen**.
 4. Klicken Sie auf **Erstellen**
 
-Weitere Informationen zum Erstellen von Gruppen finden Sie im Artikel [Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](../active-directory-manage-groups.md).
+Weitere Informationen zum Erstellen von Gruppen finden Sie im Artikel [Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](../fundamentals/active-directory-manage-groups.md).
 
 #### <a name="assign-device-configuration-policy-to-device-group"></a>Zuweisen einer Richtlinie für die Gerätekonfiguration zu einer Gerätegruppe
 

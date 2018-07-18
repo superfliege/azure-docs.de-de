@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: a40432aa1d9a466706b4a3ebbcbd56cd8e5b768e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d864a663604794a249b08a7c7be471c3abba32af
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971535"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Häufig gestellte Fragen zu Service Fabric
 
@@ -28,9 +29,9 @@ Es gibt viele häufig gestellte Fragen zu den Funktionen und zur Verwendung von 
 
 ### <a name="how-do-i-rollback-my-service-fabric-cluster-certificate"></a>Wie kann ich ein Rollback für mein Service Fabric-Clusterzertifikat ausführen?
 
-Für das Rollback (Zurücksetzen) eines Upgrades für Ihre Anwendung ist vor dem Commit für die Änderung durch das Service Fabric-Clusterquorum eine Integritätsfehlererkennung erforderlich; für Änderungen mit erfolgtem Commit kann nur ein Rollforward ausgeführt werden. Möglicherweise muss ein Eskalationstechniker über die Kundensupportdienste Ihr Cluster wiederherstellen, wenn eine nicht überwachte wichtige Zertifikatsänderung eingeführt wurde.  Das [Service Fabric-Anwendungsupgrade](https://review.docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-upgrade?branch=master) wendet [Anwendungsupgradeparameter](https://review.docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master) an und verspricht ein Upgrade ohne Ausfallzeiten.  Entsprechend dem empfohlenen überwachten Modus für Anwendungsupgrades basiert der automatische Fortschritt der Domänenaktualisierung auf bestandenen Integritätsprüfungen. Ein Rollback erfolgt automatisch, wenn die Aktualisierung eines Standarddienstes fehlschlägt.
+Für das Rollback (Zurücksetzen) eines Upgrades für Ihre Anwendung ist vor dem Commit für die Änderung durch das Service Fabric-Clusterquorum eine Integritätsfehlererkennung erforderlich; für Änderungen mit erfolgtem Commit kann nur ein Rollforward ausgeführt werden. Möglicherweise muss ein Eskalationstechniker über die Kundensupportdienste Ihr Cluster wiederherstellen, wenn eine nicht überwachte wichtige Zertifikatsänderung eingeführt wurde.  Das [Service Fabric-Anwendungsupgrade](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) wendet [Anwendungsupgradeparameter](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master) an und verspricht ein Upgrade ohne Ausfallzeiten.  Entsprechend dem empfohlenen überwachten Modus für Anwendungsupgrades basiert der automatische Fortschritt der Domänenaktualisierung auf bestandenen Integritätsprüfungen. Ein Rollback erfolgt automatisch, wenn die Aktualisierung eines Standarddienstes fehlschlägt.
  
-Wenn Ihr Cluster noch die klassische Eigenschaft „Zertifikatfingerabdruck“ in der Resource Manager-Vorlage nutzt, empfiehlt es sich, [„Zertifikatfingerabdruck“ in „Allgemeiner Name“](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn) für den Cluster zu ändern, um die modernen Verwaltungsfunktionen für geheime Schlüssel verwenden zu können.
+Wenn Ihr Cluster noch die klassische Eigenschaft „Zertifikatfingerabdruck“ in der Resource Manager-Vorlage nutzt, empfiehlt es sich, [„Zertifikatfingerabdruck“ in „Allgemeiner Name“](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn) für den Cluster zu ändern, um die modernen Verwaltungsfunktionen für geheime Schlüssel verwenden zu können.
 
 ### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>Kann ich einen Cluster erstellen, der mehrere Azure-Regionen oder eigene Datencenter umfasst?
 

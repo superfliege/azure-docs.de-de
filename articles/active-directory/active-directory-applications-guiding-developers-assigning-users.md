@@ -1,11 +1,11 @@
 ---
 title: 'Azure AD und Anwendungen: Zuweisen von Benutzern zu einer Anwendung | Microsoft Docs'
-description: "Informationen zum Implementieren der Zuweisung von Benutzern für Azure-Anwendungen"
+description: Informationen zum Implementieren der Zuweisung von Benutzern für Azure-Anwendungen
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 97ce69c1-4034-4e38-bd82-8caf984f6b98
 ms.service: active-directory
 ms.workload: identity
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26598623"
 ---
 # <a name="azure-ad-and-applications-assigning-users-to-an-application"></a>Azure AD und Anwendungen: Zuweisen von Benutzern zu einer Anwendung
 Bevor Sie einer Anwendung Benutzer und Gruppen zuweisen können, müssen Sie die Benutzerzuweisung erfordern.  Informationen zum Erfordern der Benutzerzuweisung finden Sie im Artikel zum [Erfordern von Benutzerzuweisungen](active-directory-applications-guiding-developers-requiring-user-assignment.md) .

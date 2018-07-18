@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: 57cb06fcee029f72dd1cf81ef086985fdda3f45f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0ca9c7ff1ac4cfbb50f251679286a933429bf03f
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903046"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Einfügen von Anzeigen auf Clientseite
 Dieser Artikel enthält Informationen zum Einfügen verschiedener Typen von Anzeigen auf Clientseite.
@@ -275,7 +276,7 @@ Das folgende Beispiel zeigt eine VMAP-Datei, die Nachverfolgungsereignisse angib
     </vmap:VMAP>
 ```
 
-Weitere Informationen zum <**TrackingEvents**>-Element und zu dessen untergeordneten Elementen finden Sie unter http://iab.org/VMAP.pdf.
+Weitere Informationen zum <**TrackingEvents**>-Element und zu dessen untergeordneten Elementen finden Sie unter http://iab.net/VMAP.pdf.
 
 ### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>Verwenden einer MAST-Datei (Media Abstract Sequencing Template)
 Mithilfe einer MAST-Datei können Sie Trigger angeben, die definieren, wann eine Werbeeinblendung angezeigt wird. Im Folgenden finden Sie eine MAST-Beispieldatei, die Trigger für eine Pre-Roll-, eine Mid-Roll- und eine Post-Roll-Werbeeinblendung enthält.

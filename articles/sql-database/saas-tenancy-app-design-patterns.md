@@ -7,23 +7,36 @@ author: billgib
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
+ms.reviewer: genemi
 ms.author: billgib
-ms.openlocfilehash: ef35bbb28f5b13068f92f4bf07c7807b4a5d407a
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 39be48019979ceb1337cbd3008c8cf071d403310
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33941893"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737679"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Mandantenmuster für mehrinstanzenfähige SaaS-Datenbanken
 
 Wenn Sie eine mehrinstanzenfähige SaaS-Anwendung entwerfen, wählen Sie nach sorgfältiger Überlegung das Mandantenmodell aus, das den Anforderungen Ihrer Anwendung am besten gerecht wird.  Ein Mandantenmodell legt fest, wie die Daten eines jeden Mandanten dem Speicher zugeordnet werden.  Die Wahl des Mandantenmodells wirkt sich auf den Entwurf und die Verwaltung der Anwendung aus.  Ein späterer Wechsel zu einem anderen Modell kann sich mitunter als kostspielig erweisen.
 
-Im Folgenden werden alternative Mandantenmodelle vorgestellt.
+Dieser Artikel beschreibt die alternativen Mandantenmodelle.
 
-## <a name="a-how-to-choose-the-appropriate-tenancy-model"></a>A. Vorgehensweise zum Auswählen des geeigneten Mandantenmodells
+## <a name="a-saas-concepts-and-terminology"></a>A. SaaS-Konzepte und -Terminologie
+
+Im Software-as-a-Service-Modell (SaaS) verkauft Ihr Unternehmen keine *Lizenzen* für Ihre Software. Stattdessen zahlt jeder Kunde eine Leihgebühr an Ihr Unternehmen, sodass jeder Kunde ein *Mandant* Ihres Unternehmens wird.
+
+Als Gegenleistung für die Leihgebühr erhält jeder Mandant Zugriff auf Ihre SaaS-Anwendungskomponenten, und seine Daten werden im SaaS-System gespeichert.
+
+Der Begriff *Mandantenmodell* bezieht sich auf die Art und Weise, in der die gespeicherten Daten des Mandanten organisiert sind:
+
+- *Einzelinstanzenfähigkeit:*&nbsp; Jede Datenbank speichert Daten eines einzelnen Mandanten.
+- *Mehrinstanzenfähigkeit:*&nbsp; Jede Datenbank speichert Daten mehrerer Mandanten (mit Mechanismen zum Datenschutz).
+- Hybride Mandantenmodelle sind ebenfalls verfügbar.
+
+## <a name="b-how-to-choose-the-appropriate-tenancy-model"></a>B: Vorgehensweise zum Auswählen des geeigneten Mandantenmodells
 
 Das Mandantenmodell wirkt sich in der Regel nicht auf die Funktionsweise einer Anwendung aus, hat jedoch sehr wahrscheinlich Auswirkungen auf andere Aspekte der gesamten Lösung.  Für die Bewertung der einzelnen Modelle werden folgende Kriterien herangezogen:
 
@@ -51,7 +64,7 @@ Das Mandantenmodell wirkt sich in der Regel nicht auf die Funktionsweise einer A
 
 Die Informationen zu Mandanten beziehen sich hauptsächlich auf die *Datenschicht*.  Im Folgenden sollten wir jedoch einen kurzen Blick auf die *Anwendungsschicht* werfen.  Die Anwendungsschicht ist als monolithische Einheit zu betrachten.  Wenn Sie die Anwendung in viele kleine Komponenten unterteilen, kann dies die Wahl Ihres Mandantenmodells ändern.  Einige Komponenten können je nach Mandant sowie verwendeter Speichertechnologie oder Plattform unterschiedlich behandelt werden.
 
-## <a name="b-standalone-single-tenant-app-with-single-tenant-database"></a>B: Eigenständige Einzelinstanz-App mit einer Einzelinstanzdatenbank
+## <a name="c-standalone-single-tenant-app-with-single-tenant-database"></a>C. Eigenständige Einzelinstanz-App mit einer Einzelinstanzdatenbank
 
 #### <a name="application-level-isolation"></a>Isolation der Anwendungsebene
 
@@ -67,7 +80,7 @@ Jede Mandantendatenbank wird als eigenständige Datenbank bereitgestellt.  Diese
 
 Der Hersteller kann auf alle Datenbanken in sämtlichen eigenständigen App-Instanzen zugreifen, auch wenn die App-Instanzen in unterschiedlichen Mandantenabonnements installiert sind.  Der Zugriff erfolgt über SQL-Verbindungen.  Mit einem solchen instanzübergreifenden Zugriff kann der Hersteller die Schemaverwaltung und die datenbankübergreifende Abfrage für Berichterstellungs- oder Analysezwecke zentralisieren.  Falls diese Art der zentralen Verwaltung erforderlich ist, muss ein Katalog für die Zuordnung zwischen Mandanten-IDs und Datenbank-URIs bereitgestellt werden.  Für die Bereitstellung eines Katalogs wird eine Shardingbibliothek, die von Azure SQL-Datenbank bereitgestellt wird, zusammen mit einer SQL-Datenbank verwendet.  Die Shardingbibliothek wird offiziell als [Clientbibliothek für elastische Datenbanken][docu-elastic-db-client-library-536r] bezeichnet.
 
-## <a name="c-multi-tenant-app-with-database-per-tenant"></a>C. Mehrinstanzenfähige App mit einer Datenbank pro Mandant
+## <a name="d-multi-tenant-app-with-database-per-tenant"></a>D: Mehrinstanzenfähige App mit einer Datenbank pro Mandant
 
 Beim nächsten Muster kommt eine mehrinstanzenfähige Anwendung mit vielen Einzelinstanzdatenbanken zum Einsatz.  Für jeden neuen Mandanten wird eine neue Datenbank bereitgestellt.  Die Logikschicht wird vertikal *zentral hochskaliert*, indem weitere Ressourcen pro Knoten hinzugefügt werden.  Alternativ wird die App durch Hinzufügen weiterer Knoten *horizontal erweitert*.  Die Skalierung basiert auf der Workload und hängt von der Anzahl oder dem Umfang der einzelnen Datenbanken ab.
 
@@ -106,7 +119,7 @@ Für die Verwaltungsvorgänge können Skripts erstellt werden, und sie können �
 
 Beispielsweise könnten Sie die Wiederherstellung eines einzelnen Mandanten zu einem früheren Zeitpunkt automatisieren.  Bei der Wiederherstellung muss lediglich eine Einzelinstanzdatenbank wiederhergestellt werden, in der der Mandant gespeichert wird.  Diese Wiederherstellung hat keine Auswirkungen auf andere Mandanten, was wiederum zeigt, dass Verwaltungsvorgänge in den einzelnen Mandanten auf hochgradig granularer Ebene stattfinden.
 
-## <a name="d-multi-tenant-app-with-multi-tenant-databases"></a>D: Mehrinstanzenfähige App mit mehrinstanzenfähigen Datenbanken
+## <a name="e-multi-tenant-app-with-multi-tenant-databases"></a>E. Mehrinstanzenfähige App mit mehrinstanzenfähigen Datenbanken
 
 Ein weiteres verfügbares Muster besteht darin, viele Mandanten in einer mehrinstanzenfähigen Datenbank zu speichern.  Die Anwendungsinstanz kann beliebig viele mehrinstanzenfähige Datenbanken umfassen.  Das Schema einer mehrinstanzenfähigen Datenbank muss eine oder mehrere Spalten für die Mandanten-ID enthalten, damit die Daten eines beliebigen Mandanten selektiv abgerufen werden können.  Zudem sind für das Schema eventuell einige Tabellen oder Spalten erforderlich, die nur von einer Teilmenge von Mandanten verwendet werden.  Statische Codes und Referenzdaten werden jedoch nur einmal gespeichert und von allen Mandanten gemeinsam genutzt.
 
@@ -122,13 +135,13 @@ Im Allgemeinen weisen mehrinstanzenfähige Datenbanken die niedrigsten Kosten pr
 
 Im Folgenden werden zwei Varianten eines mehrinstanzenfähigen Datenbankmodells erläutert, wobei das mehrinstanzenfähige Modell mit Sharding das flexibelste Modell mit der höchsten Skalierbarkeit darstellt.
 
-## <a name="e-multi-tenant-app-with-a-single-multi-tenant-database"></a>E. Mehrinstanzenfähige App mit einer Einzelinstanzdatenbank
+## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>F. Mehrinstanzenfähige App mit einer Einzelinstanzdatenbank
 
 Das einfachste Muster einer mehrinstanzenfähigen Datenbank verwendet eine einzelne eigenständige Datenbank, um Daten für alle Mandanten zu hosten.  Bei einer steigenden Anzahl von Mandanten muss die Datenbank mit weiteren Speicher- und Computeressourcen zentral hochskaliert werden.  Eine solche zentrale Hochskalierung könnte Abhilfe leisten, wobei es jedoch immer eine finale Begrenzung für die Skalierung gibt.  Allerdings wird die Datenbankverwaltung lange vor Erreichen dieser Begrenzung zunehmend umständlicher.
 
 Bei mehrinstanzenfähigen Datenbanken ist die Implementierung von Verwaltungsvorgängen, die sich auf einzelne Mandanten konzentrieren, komplexer.  Mit steigender Größenordnung könnte dies dazu führen, dass diese Vorgänge unzumutbar langsam werden.  Ein Beispiel ist die Point-in-Time-Wiederherstellung von Daten für nur einen Mandanten.
 
-## <a name="f-multi-tenant-app-with-sharded-multi-tenant-databases"></a>F. Mehrinstanzenfähige App mit mehrinstanzenfähigen Datenbanken mit Sharding
+## <a name="g-multi-tenant-app-with-sharded-multi-tenant-databases"></a>G. Mehrinstanzenfähige App mit mehrinstanzenfähigen Datenbanken mit Sharding
 
 Die meisten SaaS-Anwendungen greifen auf die Daten von jeweils nur einem Mandanten zu.  Bei diesem Zugriffsmuster können Mandantendaten auf mehrere Datenbanken oder Shards aufgeteilt werden, wobei alle Daten eines beliebigen Mandanten in einem Shard enthalten sind.  In Kombination mit einem Muster einer mehrinstanzenfähigen Datenbank ermöglicht ein Modell in Shards eine nahezu unbegrenzte Skalierbarkeit.
 
@@ -152,7 +165,7 @@ Abhängig von der verwendeten Shardingmethode können in Bezug auf das Datenbank
 
 Mehrinstanzenfähige Datenbanken mit Shards können in Pools für elastische Datenbanken platziert werden.  Die Verwaltung von vielen Einzelinstanzdatenbanken in einem Pool ist in der Regel genauso kosteneffizient wie die Verwaltung vieler Mandanten in mehreren mehrinstanzenfähigen Datenbanken.  Mehrinstanzenfähige Datenbanken erweisen sich vor allem dann als nützlich, wenn eine große Anzahl von relativ inaktiven Mandanten vorliegt.
 
-## <a name="g-hybrid-sharded-multi-tenant-database-model"></a>G. Hybrides mehrinstanzenfähiges Datenbankmodell mit Sharding
+## <a name="h-hybrid-sharded-multi-tenant-database-model"></a>H. Hybrides mehrinstanzenfähiges Datenbankmodell mit Sharding
 
 Im hybriden Modell enthalten alle Datenbanken im Schema die Mandanten-ID.  Alle Datenbanken können mehr als einen Mandanten speichern und in Shards aufgeteilt werden.  Hinsichtlich des Schemas handelt es sich also bei allen Datenbanken um mehrinstanzenfähige Datenbanken.  In der Praxis enthalten einige dieser Datenbanken jedoch nur einen Mandanten.  Nichtsdestotrotz hat die Anzahl der in einer Datenbank gespeicherten Mandanten keinen Einfluss auf das Datenbankschema.
 
@@ -166,7 +179,7 @@ Das hybride Modell erweist sich vor allem dann als hilfreich, wenn große Unters
 
 In diesem hybriden Modell können Einzelinstanzdatenbanken für Mandanten mit Abonnement in Ressourcenpools platziert werden, um die Datenbankkosten pro Mandant zu senken.  Dies wird über das Modell mit einer Datenbank pro Mandant erreicht.
 
-## <a name="h-tenancy-models-compared"></a>H. Vergleich von Mandantenmodellen
+## <a name="i-tenancy-models-compared"></a>I. Vergleich von Mandantenmodellen
 
 In der folgenden Tabelle werden die Unterschiede zwischen den wichtigsten Mandantenmodellen erläutert:
 

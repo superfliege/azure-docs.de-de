@@ -1,13 +1,13 @@
 ---
-title: "Azure PowerShell-Skriptbeispiel – Sichern eines virtuellen Azure-Computers | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – Sichern eines virtuellen Azure-Computers"
+title: Azure PowerShell-Skriptbeispiel – Sichern eines virtuellen Azure-Computers | Microsoft-Dokumentation
+description: Azure PowerShell-Skriptbeispiel – Sichern eines virtuellen Azure-Computers
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: backup
 ms.devlang: na
 ms.topic: sample
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22997525"
 ---
 # <a name="back-up-an-encrypted-azure-virtual-machine-with-powershell"></a>Sichern eines verschlüsselten virtuellen Azure-Computers mit PowerShell
 

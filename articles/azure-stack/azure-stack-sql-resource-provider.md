@@ -11,37 +11,41 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 06/21/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: b1cc1fad6b0831bcf0bab5ba4f37b753c3cf33ca
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 55d0e51606e8768a01c0b5a7766dbafe24d97a0d
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33206163"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36307824"
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Verwenden von SQL-Datenbanken in Microsoft Azure Stack
-Verwenden Sie den SQL Server-Ressourcenanbieteradapter, um SQL-Datenbanken als Dienst in [Azure Stack](azure-stack-poc.md) verfügbar zu machen. Nachdem Sie den Ressourcenanbieter installiert und mit mindestens einer SQL Server-Instanz verbunden haben, können Sie und Ihre Benutzer damit Folgendes erstellen:
-- Datenbanken für native Cloud-Apps.
-- Websites, die auf SQL basieren.
-- Workloads, die auf SQL basieren.
-Sie müssen nicht jedes Mal einen virtuellen Computer bereitstellen, der SQL Server hostet.
 
-Der Ressourcenanbieter unterstützt nicht alle Datenbankverwaltungsfunktionen von [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/). Pools für elastische Datenbanken und die automatische Skalierung der Datenbankleistung nach oben oder unten sind beispielsweise nicht verfügbar. Der Ressourcenanbieter unterstützt jedoch ähnliche Vorgänge für das Erstellen, Lesen, Aktualisieren und Löschen. Die API ist nicht mit SQL-Datenbank kompatibel.
+Verwenden Sie die API des SQL Server-Ressourcenanbieteradapters, um SQL-Datenbanken als Dienst in [Azure Stack](azure-stack-poc.md) verfügbar zu machen. Nachdem Sie den Ressourcenanbieter installiert und mit mindestens einer SQL Server-Instanz verbunden haben, können Sie und Ihre Benutzer damit Folgendes erstellen:
+
+- Datenbanken für native Cloud-Apps.
+- Websites, die SQL verwenden.
+- Workloads, die SQL verwenden.
+
+Der Ressourcenanbieter bietet nicht alle Datenbankverwaltungsfunktionen von [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/). Zum Beispiel werden Pools für elastische Datenbanken, die automatisch Ressourcen zuordnen, nicht unterstützt. Der Ressourcenanbieter unterstützt jedoch ähnliche Vorgänge für das Erstellen, Lesen, Aktualisieren und Löschen in einer SQL Server-Datenbank. Weitere Informationen über die Ressourcenanbieter-API finden Sie unter [Windows Azure Pack SQL Server Resource Provider REST API Reference](https://msdn.microsoft.com/library/dn528529.aspx) (Referenz zur Azure SQL Server-Ressourcenanbieter-REST-API für Windows Azure Pack).
+
+>[!NOTE]
+Die API des SQL Server-Ressourcenanbieters ist nicht mit der Azure SQL-Datenbank kompatibel.
 
 ## <a name="sql-resource-provider-adapter-architecture"></a>Architektur des SQL-Ressourcenanbieteradapters
-Der Ressourcenanbieter besteht aus drei Komponenten:
 
-- **Dem virtuellen Computer des SQL-Ressourcenanbieteradapters**, einem virtuellen Windows-Computer, der die Anbieterdienste ausführt.
-- **Dem Ressourcenanbieter selbst**, der die Bereitstellungsanforderungen verarbeitet und Datenbankressourcen verfügbar macht
+Der Ressourcenanbieter besteht aus den folgenden Komponenten:
+
+- **Dem virtuellen Computer des SQL-Ressourcenanbieteradapters**, einem virtuellen Windows Server-Computer, der die Anbieterdienste ausführt.
+- **Dem Ressourcenanbieter selbst**, der Anforderungen der und Zugriffe auf Datenbankressourcen verarbeitet.
 - **Servern, die SQL Server hosten**, die Kapazität für Datenbanken bereitstellen und als „Hostserver“ bezeichnet werden.
 
 Sie müssen mindestens eine SQL Server-Instanz erstellen bzw. den Zugriff auf externe SQL Server-Instanzen bereitstellen.
 
 > [!NOTE]
-> Hostserver, die auf integrierten Azure Stack-Systemen installiert werden, müssen mit einem Mandantenabonnement erstellt werden. Sie können nicht mit dem Standardabonnement des Anbieters erstellt werden. Sie müssen im Mandantenportal oder einer PowerShell-Sitzung mit einer geeigneten Anmeldung erstellt werden. Alle Hostserver sind abrechenbare VMs, die entsprechende Lizenzen benötigen. Der Dienstadministrator kann Besitzer des Mandantenabonnements sein.
-
+> Hostserver, die auf integrierten Azure Stack-Systemen installiert werden, müssen mit einem Mandantenabonnement erstellt werden. Sie können nicht mit dem Standardabonnement des Anbieters erstellt werden. Sie müssen im Mandantenportal oder mit PowerShell mit einer geeigneten Anmeldung erstellt werden. Alle Hostserver sind abrechenbare virtuelle Computer, die Lizenzen benötigen. Der Dienstadministrator kann Besitzer des Mandantenabonnements sein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

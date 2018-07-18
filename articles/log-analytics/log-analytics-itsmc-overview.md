@@ -3,7 +3,7 @@ title: IT Service Management Connector in Azure Log Analytics | Microsoft-Dokume
 description: Dieser Artikel bietet eine Übersicht über den ITSM-Connector (IT Service Management-Connector) sowie Informationen zur Verwendung dieser Lösung, um die ITSM-Arbeitselemente in Azure Log Analytics zu überwachen und zu verwalten und um etwaige Probleme schnell zu lösen.
 services: log-analytics
 documentationcenter: ''
-author: JYOTHIRMAISURI
+author: jyothirmaisuri
 manager: riyazp
 editor: ''
 ms.assetid: 0b1414d9-b0a7-4e4e-a652-d3a6ff1118c4
@@ -11,14 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/23/2018
+ms.topic: conceptual
+ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 8fb75484537d577cb19b04fa091bab69d6723c9b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.component: na
+ms.openlocfilehash: da37e7558f93bc5073cd4ee1726a409c7defe127
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131717"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinden von Azure mit ITSM-Tools mithilfe des ITSM-Connectors
 
@@ -98,7 +100,7 @@ Nachdem Sie Ihre ITSM-Tools vorbereitet haben, führen Sie die folgenden Schritt
 
     > [!NOTE]
 
-    > Standardmäßig aktualisiert der ITSM-Connector die Konfigurationsdaten der Verbindung einmal alle 24 Stunden. Um die Daten Ihrer Verbindung bei Änderungen oder Vorlagenupdates, die Sie vornehmen, sofort zu aktualisieren, klicken Sie auf die Schaltfläche „Aktualisieren“, die neben der Verbindung angezeigt wird.
+    > Standardmäßig aktualisiert der ITSM-Connector die Konfigurationsdaten der Verbindung einmal alle 24 Stunden. Um die Daten Ihrer Verbindung bei Änderungen oder Vorlagenupdates, die Sie vornehmen, sofort zu aktualisieren, klicken Sie auf die Schaltfläche **Synchronisieren** auf dem Blatt Ihrer Verbindung.
 
     ![Aktualisieren der Verbindung](./media/log-analytics-itsmc/itsmc-connections-refresh.png)
 
@@ -137,58 +139,6 @@ Verwenden Sie beim Erstellen/Bearbeiten einer Azure-Warnungsregel eine Aktionsgr
 >[!NOTE]
 
 > Informationen zu den Preisen für ITSM-Aktionen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/monitor/) für Aktionsgruppen.
-
-
-## <a name="create-itsm-work-items-from-log-analytics-alerts"></a>Erstellen von ITSM-Arbeitselementen aus Log Analytics-Warnungen
-
-Sie haben die Möglichkeit, Warnungsregeln im Azure Log Analytics-Portal zum Erstellen von Arbeitselementen im ITSM-Tool zu konfigurieren, indem Sie wie folgt vorgehen.
-
-1. Führen Sie im Fenster **Protokollsuche** eine Protokollsuchabfrage zum Anzeigen von Daten aus. Abfrageergebnisse sind die Quelle für Arbeitselemente.
-2. Klicken Sie in **Protokollsuche** auf **Warnung**, um die Seite **Warnungsregel hinzufügen** zu öffnen.
-
-    ![Log Analytics-Bildschirm](./media/log-analytics-itsmc/itsmc-work-items-for-azure-alerts.png)
-
-3. Geben Sie im Fenster **Warnungsregel hinzufügen** die erforderlichen Details für **Name**, **Schweregrad**, **Suchabfrage** und **Warnungskriterien** (Zeitfenster/metrische Maßeinheit) an.
-4. Wählen Sie **Ja** für **ITSM-Aktionen** aus.
-5. Wählen Sie Ihre ITSM-Verbindung aus der Liste **Verbindung auswählen** aus.
-6. Geben Sie die Details nach Bedarf an.
-7. Um ein gesondertes Arbeitselement für jeden Protokolleintrag dieser Warnung zu erstellen, aktivieren Sie das Kontrollkästchen **Einzelne Arbeitselemente für jeden Protokolleintrag erstellen**.
-
-    oder
-
-    Lassen Sie dieses Kontrollkästchen deaktiviert, um nur ein Arbeitselement für eine beliebige Anzahl von Protokolleinträgen zu dieser Warnung zu erstellen.
-
-7. Klicken Sie auf **Speichern**.
-
-Sie können die Log Analytics-Warnung anzeigen, die Sie unter **Einstellungen > Warnungen** erstellt haben. Die Arbeitselemente der entsprechenden ITSM-Verbindung werden erstellt, wenn die Bedingung der angegebenen Warnung erfüllt ist.
-
-
-## <a name="create-itsm-work-items-from-log-analytics-log-records"></a>Erstellen von ITSM-Arbeitselementen aus Log Analytics-Protokolldatensätzen
-
-Sie können auch Arbeitselemente direkt über einen Protokolldatensatz in den verbundenen ITSM-Quellen erstellen. Dies ist hilfreich, um festzustellen, ob die Verbindung ordnungsgemäß funktioniert.
-
-
-1. Suchen Sie in **Protokollsuche** nach den erforderlichen Daten, wählen Sie die Details aus, und klicken Sie auf **Arbeitselement erstellen**.
-
-    Das Fenster **ITSM-Arbeitselement erstellen** wird angezeigt:
-
-    ![Log Analytics-Bildschirm](media/log-analytics-itsmc/itsmc-work-items-from-azure-logs.png)
-
-2.   Fügen Sie die folgenden Details hinzu:
-
-  - **Arbeitselementtitel**: Titel für das Arbeitselement.
-  - **Arbeitselementbeschreibung**: Beschreibung für das neue Arbeitselement.
-  - **Betroffener Computer**: Name des Computers, auf dem diese Protokolldaten gefunden wurden.
-  - **Verbindung auswählen**: ITSM-Verbindung, in der dieses Arbeitselement erstellt werden soll.
-  - **Arbeitselement**: Typ des Arbeitselements.
-
-3. Um eine vorhandene Arbeitselementvorlage für einen Incident zu verwenden, klicken Sie unter **Arbeitselement basierend auf Vorlage generieren** auf **Ja**, und klicken Sie dann auf **Erstellen**.
-
-    Oder
-
-    Klicken Sie auf **Nein**, wenn Sie Ihre benutzerdefinierten Werte bereitstellen möchten.
-
-4. Geben Sie die entsprechenden Werte in die Textfelder **Kontakttyp**, **Auswirkung**, **Dringlichkeit**, **Kategorie** und **Unterkategorie** ein, und klicken Sie dann auf **Erstellen**.
 
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Visualisieren und Analysieren der Incident- und Änderungsanforderungsdaten

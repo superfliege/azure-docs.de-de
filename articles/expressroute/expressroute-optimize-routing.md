@@ -1,11 +1,11 @@
 ---
 title: 'Optimieren von ExpressRoute-Routing: Azure | Microsoft-Dokumentation'
-description: "Diese Seite enthält Informationen zur Optimierung des Routings, wenn Sie über mehr als eine ExpressRoute-Verbindung verfügen, mit der die Verbindung zwischen Microsoft und Ihrem Unternehmensnetzwerk hergestellt werden kann."
+description: Diese Seite enthält Informationen zur Optimierung des Routings, wenn Sie über mehr als eine ExpressRoute-Verbindung verfügen, mit der die Verbindung zwischen Microsoft und Ihrem Unternehmensnetzwerk hergestellt werden kann.
 documentationcenter: na
 services: expressroute
 author: charwen
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: fca53249-d9c3-4cff-8916-f8749386a4dd
 ms.service: expressroute
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22709996"
 ---
 # <a name="optimize-expressroute-routing"></a>Optimieren von ExpressRoute-Routing
 Wenn Sie mehrere ExpressRoute-Verbindungen nutzen, verfügen Sie über mehr als einen Weg zur Herstellung einer Verbindung mit Microsoft. Dies kann ein suboptimales Routing zur Folge haben. Es kann also sein, dass Ihr Datenverkehr für den Weg zu Microsoft und von Microsoft in Ihr Netzwerk mehr Zeit benötigt. Je länger der Netzwerkpfad, desto höher die Latenz. Die Latenz wirkt sich direkt auf die Anwendungsleistung und die Benutzerfreundlichkeit aus. In diesem Artikel wird dieses Problem veranschaulicht, und es wird beschrieben, wie Sie das Routing mit den standardmäßigen Routingtechnologien optimieren.

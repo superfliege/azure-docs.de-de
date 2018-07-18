@@ -1,11 +1,11 @@
 ---
-title: "Schützen Ihres Netzwerks in Azure Security Center | Microsoft Docs"
+title: Schützen Ihres Netzwerks in Azure Security Center | Microsoft Docs
 description: Dieses Dokument behandelt Empfehlungen in Azure Security Center, die zum Schutz Ihres Azure-Netzwerks sowie zur Einhaltung von Sicherheitsrichtlinien beitragen.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 96c55a02-afd6-478b-9c1f-039528f3dea0
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23040595"
 ---
 # <a name="protecting-your-network-in-azure-security-center"></a>Schützen Ihres Netzwerks in Azure Security Center
 Azure Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente unterstützen.  Die Empfehlungen gelten für folgende Azure-Ressourcentypen: virtuelle Computer (Virtual Machines, VMs), Netzwerk, SQL und Anwendungen.

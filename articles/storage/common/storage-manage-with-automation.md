@@ -2,10 +2,10 @@
 title: Verwalten von Azure Storage mithilfe von Azure Automation
 description: Erfahren Sie, wie der Azure Automation-Dienst zur angemessenen Verwaltung von Azure Storage verwendet werden kann.
 services: storage, automation
-documentationcenter: 
+documentationcenter: ''
 author: jodoglevy
 manager: eamono
-editor: 
+editor: ''
 ms.assetid: bac41c39-1d95-46aa-a481-ec17bbb21b40
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23059545"
 ---
 # <a name="managing-azure-storage-using-azure-automation"></a>Verwalten von Azure Storage mithilfe von Azure Automation
 Dieser Leitfaden bietet eine Einführung in den Azure Automation-Dienst und zeigt, wie Azure Automation zur Vereinfachung der Verwaltung Ihrer Azure Storage-Blobs, -Tabellen und -Warteschlangen genutzt werden kann.

@@ -3,7 +3,7 @@ title: Verwenden von PerfInsights in Microsoft Azure | Microsoft-Dokumentation
 description: Lernen Sie, wie Sie Leistungsprobleme bei virtuellen Windows-Computern mit PerfInsights behandeln.
 services: virtual-machines-windows'
 documentationcenter: ''
-author: genlin
+author: anandhms
 manager: cshepard
 editor: na
 tags: ''
@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: cac17b5f3ee730bf1f56dbfd05b6c6d3b02c891f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 2f496f906eef416b35e2e59b2db93481ce65acb1
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36946277"
 ---
-# <a name="how-to-use-perfinsights"></a>Verwenden von PerfInsights 
+# <a name="how-to-use-perfinsights"></a>Verwenden von PerfInsights
 
 [PerfInsights](http://aka.ms/perfinsightsdownload) ist ein Diagnosetool zur Selbsthilfe, mit dem die Diagnosedaten gesammelt und analysiert werden. Außerdem wird ein Bericht erstellt, der für die Problembehandlung bei Leistungsproblemen mit virtuellen Windows-Computern in Azure als Hilfe dient. PerfInsights kann auf virtuellen Computern als eigenständiges Tool oder direkt über das Portal ausgeführt werden, indem Sie die [Azure-VM-Erweiterung für die Leistungsdiagnose](performance-diagnostics-vm-extension.md) installieren.
 
@@ -30,7 +31,7 @@ Wenn bei virtuellen Computern Leistungsprobleme auftreten, führen Sie dieses To
 
 PerfInsights kann verschiedene Arten von Informationen erfassen und analysieren. Allgemeine Szenarien werden in den folgenden Abschnitten beschrieben.
 
-### <a name="collect-basic-configuration"></a>Erfassen der grundlegenden Konfiguration 
+### <a name="quick-performance-analysis"></a>Schnelle Leistungsanalyse
 
 Dieses Szenario erfasst die Datenträgerkonfiguration und andere wichtige Informationen, u.a.:
 
@@ -63,11 +64,11 @@ Dieses Szenario führt den [DiskSpd](https://github.com/Microsoft/diskspd)-Vergl
 > Dieses Szenario kann sich auf das System auswirken und sollte nicht auf einem Liveproduktionssystem ausgeführt werden. Falls erforderlich, führen Sie dieses Szenario in einem dedizierten Wartungsfenster aus, um Probleme zu vermeiden. Eine erhöhte Workload, die durch eine Ablaufverfolgung oder einen Vergleichstest verursacht wird, kann die Leistung Ihres virtuellen Computers beeinträchtigen.
 >
 
-### <a name="slow-vm-analysis"></a>Analyse bei langsamer VM 
+### <a name="slow-vm-analysis"></a>Langsame VM-Analyse
 
 Dieses Szenario führt eine [Leistungsindikator](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx)-Ablaufverfolgung mithilfe der Indikatoren aus, die in der Datei „RuleEngineConfig.json“ angegeben werden. Wenn der virtuelle Computer als Server identifiziert wird, auf dem SQL Server ausgeführt wird, wird eine Leistungsindikator-Ablaufverfolgung durchgeführt. Hierfür werden die Leistungsindikatoren verwendet, die in der Datei „RuleEngineConfig.json“ enthalten sind. Dieses Szenario enthält auch Leistungsdiagnosedaten.
 
-### <a name="azure-files-analysis"></a>Azure Files-Analyse 
+### <a name="azure-files-analysis"></a>Azure Files-Analyse
 
 Dieses Szenario führt eine besondere Leistungsindikatorerfassung zusammen mit einer Ablaufverfolgung im Netzwerk durch. Die Erfassung enthält alle Indikatoren vom Typ „SMB-Client-Freigaben“ (Server Message Block). Es folgen einige der wichtigsten SMB-Client-Freigaben-Leistungsindikatoren, die Teil der Erfassung sind:
 
@@ -89,9 +90,9 @@ Dieses Szenario führt eine besondere Leistungsindikatorerfassung zusammen mit e
 |              | Durchschn. Schreibwarteschlangen-Länge       |
 |              | Durchschn. Datenwarteschlangen-Länge        |
 
-### <a name="custom-slow-vm-analysis"></a>Benutzerdefinierte Analyse bei langsamer VM 
+### <a name="advanced-slow-vm-analysis"></a>Erweiterte langsame VM-Analyse
 
-Bei der Ausführung einer benutzerdefinierten Analyse bei langsamen virtuellen Computern legen Sie fest, dass Ablaufverfolgungen parallel ausgeführt werden. Sie können bei Bedarf alle Ablaufverfolgungen (Leistungsindikator, Xperf, Netzwerk und StorPort) ausführen.  
+Bei der Ausführung einer erweiterten langsamen VM-Analyse wählen Sie Ablaufverfolgungen aus, die parallel ausgeführt werden sollen. Sie können bei Bedarf alle Ablaufverfolgungen (Leistungsindikator, Xperf, Netzwerk und StorPort) ausführen.  
 
 > [!Note]
 > Dieses Szenario kann sich auf das System auswirken und sollte nicht auf einem Liveproduktionssystem ausgeführt werden. Falls erforderlich, führen Sie dieses Szenario in einem dedizierten Wartungsfenster aus, um Probleme zu vermeiden. Eine erhöhte Workload, die durch eine Ablaufverfolgung oder einen Vergleichstest verursacht wird, kann die Leistung Ihres virtuellen Computers beeinträchtigen.
@@ -103,7 +104,7 @@ Informationen zu virtuellen Windows-Computern, Datenträger- oder Speicherpoolko
 
 |Gesammelte Daten                              |  |  | Leistungsszenarien |  |  | |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                               | Erfassen der grundlegenden Konfiguration | Benchmarktests | Analyse bei langsamer VM | Azure Files-Analyse | Benutzerdefinierte Analyse bei langsamer VM |
+|                               | Schnelle Leistungsanalyse | Benchmarktests | Langsame VM-Analyse | Azure Files-Analyse | Erweiterte langsame VM-Analyse |
 | Informationen aus Ereignisprotokollen       | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
 | Systeminformationen                | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
 | Volumezuordnung                        | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
@@ -170,9 +171,9 @@ DiskSpd-E/A-Workloadtests (Betriebssystemdatenträger [Schreibzugriff] und Pooll
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>Mögliche Probleme bei Ausführung des Tools auf Produktions-VMs
 
--  Bei Verwendung des Benchmarktestszenarien oder des Szenarios „Benutzerdefinierte Analyse bei langsamer VM“, das für die Verwendung von XPerf oder DiskSpd konfiguriert ist, kann das Tool die Leistung des virtuellen Computers beeinträchtigen. Diese Szenarien sollten nicht in einer Liveproduktionsumgebung ausgeführt werden.
+-  Im Benchmarktestszenario oder im Szenario „Erweiterte langsame VM-Analyse“, das für die Verwendung von XPerf oder DiskSpd konfiguriert ist, kann das Tool die Leistung des virtuellen Computers beeinträchtigen. Diese Szenarien sollten nicht in einer Liveproduktionsumgebung ausgeführt werden.
 
--  Stellen Sie bei Verwendung des Benchmarktestszenarien oder des Szenarios „Benutzerdefinierte Analyse bei langsamer VM“, das für die Verwendung von DiskSpd konfiguriert ist, sicher, dass die E/A-Workload nicht durch eine andere Hintergrundaktivität beeinträchtigt wird.
+-  Vergewissern Sie sich bei Verwendung des Benchmarktestszenarios oder des Szenarios „Erweiterte langsame VM-Analyse“, das für die Verwendung von DiskSpd konfiguriert ist, dass die E/A-Workload nicht durch eine andere Hintergrundaktivität beeinträchtigt wird.
 
 -  Standardmäßig verwendet das Tool das temporäre Speicherlaufwerk zum Sammeln von Daten. Wenn die Ablaufverfolgung für einen längeren Zeitraum aktiviert bleibt, könnte die Menge der gesammelten Daten relevant sein. Dies kann den verfügbaren Speicher auf dem temporären Datenträger reduzieren und sich damit auf jede Anwendung auswirken, die von diesem Laufwerk abhängig ist.
 
@@ -217,10 +218,16 @@ Gehen Sie wie folgt vor, um das Tool PerfInsights auszuführen:
     PerfInsights /run vmslow /d 300 /AcceptDisclaimerAndShareDiagnostics
     ```
 
-    Sie können das folgende Beispiel verwenden, um das benutzerdefinierte Szenario mit Xperf und Leistungsindikator-Ablaufverfolgungen fünf Minuten lang auszuführen:
+    Sie können das folgende Beispiel verwenden, um das erweiterte Szenario mit Xperf und Leistungsindikator-Ablaufverfolgungen fünf Minuten lang auszuführen:
     
     ```
-    PerfInsights /run custom xp /d 300 /AcceptDisclaimerAndShareDiagnostics
+    PerfInsights /run advanced xp /d 300 /AcceptDisclaimerAndShareDiagnostics
+    ```
+
+    Mit dem folgenden Beispiel können Sie das langsame VM-Szenario fünf Minuten lang ausführen und die resultierende ZIP-Datei in das Speicherkonto hochladen:
+    
+    ```
+    PerfInsights /run vmslow /d 300 /AcceptDisclaimerAndShareDiagnostics /sa <StorageAccountName> /sk <StorageAccountKey>
     ```
 
     Sie können alle verfügbaren Szenarien und Optionen mit dem Befehl **/list** nachschlagen:
@@ -236,7 +243,7 @@ Gehen Sie wie folgt vor, um das Tool PerfInsights auszuführen:
     >
     >Standardmäßig versucht PerfInsights, selbst ein Update auf die neueste verfügbare Version durchzuführen. Verwenden Sie den Parameter **/SkipAutoUpdate** oder **/sau**, um die automatische Aktualisierung zu überspringen.  
     >
-    >Wenn der Switch **/d** für die Dauer nicht angegeben ist, werden Sie von PerfInsights zum Reproduzieren des Problems aufgefordert, während die Szenarien vmslow, azurefiles und das benutzerdefinierte Szenario ausgeführt werden. 
+    >Wenn der Switch **/d** (Dauer) nicht angegeben ist, werden Sie von PerfInsights zum Reproduzieren des Problems aufgefordert, während die Szenarien vmslow, azurefiles und das erweiterte Szenario ausgeführt werden. 
 
 Wenn die Ablaufverfolgungen oder Vorgänge abgeschlossen sind, wird eine neue Datei im selben Ordner wie PerfInsights angezeigt. Der Name der Datei lautet **CollectedData\_jjjj-MM-tt\_hh-mm-ss-fff.zip**. Sie können diese Datei zur Analyse an den Support-Agent senden oder den Bericht in der ZIP-Datei öffnen, um Ergebnisse und Empfehlungen anzuzeigen.
 
@@ -250,9 +257,9 @@ Wählen Sie die Registerkarte **Ergebnisse**.
 ![Screenshot des PerfInsights-Berichts](media/how-to-use-perfInsights/findings.PNG)
 
 > [!NOTE] 
-> Bei Ergebnissen, die als „Kritisch“ eingestuft werden, handelt es sich um bekannte Probleme, die zu Leistungsproblemen führen können. Ergebnisse vom Typ „Wichtig“ sind suboptimale Konfigurationen, die nicht unbedingt Leistungsprobleme verursachen. Ergebnisse, die als „Information“ eingestuft werden, sind nur für Informationszwecke bestimmt.
+> Bei Ergebnissen, die als „Hoch“ eingestuft werden, handelt es sich um bekannte Probleme, die zu Leistungsproblemen führen können. Ergebnisse vom Typ „Mittel“ sind suboptimale Konfigurationen, die nicht unbedingt Leistungsprobleme verursachen. Ergebnisse, die als „Niedrig“ eingestuft werden, dienen lediglich zur Information.
 
-Sehen Sie sich die Empfehlungen und Links zu allen kritischen und wichtigen Ergebnissen an. Dort erhalten Sie Informationen zu ihren möglichen Auswirkungen auf die Leistung sowie zu bewährten Vorgehensweisen für leistungsoptimierte Konfigurationen.
+Sehen Sie sich die Empfehlungen und Links zu allen hohen und mittleren Ergebnissen an. Dort erhalten Sie Informationen zu ihren möglichen Auswirkungen auf die Leistung sowie zu bewährten Vorgehensweisen für leistungsoptimierte Konfigurationen.
 
 ### <a name="storage-tab"></a>Registerkarte „Speicher“
 

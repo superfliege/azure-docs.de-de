@@ -17,6 +17,10 @@
           href: stream-files-tutorial-with-api.md
         - name: Mit REST
           href: stream-files-tutorial-with-rest.md
+    - name: Livestreaming
+      items:
+        - name: Mit .NET Core
+          href: stream-live-tutorial-with-api.md
     - name: Analysieren Ihres Videos
       items:
         - name: Mit .NET
@@ -24,19 +28,25 @@
 - name: Beispiele
   items:
     - name: Azure-Codebeispiele
-      href: 'https://azure.microsoft.com/resources/samples/?service=media-services'
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=media-services&term=v3'
     - name: Azure-Befehlszeilenschnittstelle
       href: cli-samples.md
 - name: Konzepte
   items:
     - name: Objekte
       href: assets-concept.md
+    - name: Content Protection
+      items:
+        - name: Übersicht
+          href: content-protection-overview.md
     - name: Codieren
       items:
         - name: Übersicht
           href: encoding-concept.md
         - name: Automatisches Generieren einer Reihe von adaptiven Bitraten
           href: autogen-bitrate-ladder.md
+    - name: Livestreaming
+      href: live-streaming-overview.md
     - name: Medieninformationen
       href: intelligence-concept.md
     - name: Reagieren auf Ereignisse
@@ -53,23 +63,25 @@
       href: create-account-cli-how-to.md
     - name: 'Datenzugriffs-API: CLI'
       href: access-api-cli-how-to.md
-    - name: 'Auftragsstatusereignisse: CLI'
+    - name: 'Überwachen von Auftragsstatusereignissen: CLI'
       href: job-state-events-cli-how-to.md
-    - name: 'Hochladen von Inhalten: .NET'
+    - name: 'Anpassen der Transformationsvoreinstellungen: .NET Core'
+      href: customize-encoder-presets-how-to.md
+    - name: Hochladen von Inhalten
       items:
-        - name: Über HTTP(s)
+        - name: 'Über HTTP(s): .NET'
           href: job-input-from-http-how-to.md
-        - name: Aus einer lokalen Datei
+        - name: 'Über eine lokale Datei: .NET'
           href: job-input-from-local-file-how-to.md
-    - name: Anpassen der Transformationsvoreinstellungen
+    - name: Inhalt schützen
       items:
-        - name: Mit .NET Core
-          href: customize-encoder-presets-how-to.md
+        - name: 'Mit AES-128: .NET'
+          href: protect-with-aes128.md
 - name: Verweis
   items:
     - name: OpenAPI-Spezifikation (Swagger)
       href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2018-03-30-preview'
-    - name: Azure CLI 2.0
+    - name: Azure-Befehlszeilenschnittstelle
       href: 'https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest'
     - name: REST
       href: 'https://go.microsoft.com/fwlink/p/?linkid=873030'
@@ -83,6 +95,14 @@
       href: 'https://docs.microsoft.com/en-us/javascript/api/azure-arm-mediaservices/index?view=azure-node-latest'
     - name: Ereignisschemas
       href: media-services-event-schemas.md
+    - name: DRM-Lizenzen
+      items:
+        - name: PlayReady-Lizenzvorlage
+          href: playready-license-template-overview.md
+        - name: Widevine-Lizenzvorlage
+          href: widevine-license-template-overview.md
+        - name: FairPlay-Lizenzanforderungen
+          href: fairplay-license-overview.md
 - name: angeben
   items:
     - name: Azure-Roadmap

@@ -2,24 +2,22 @@
 title: Entwickeln von Skriptaktionen HDInsight – Azure | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mit Skriptaktionen Hadoop-Cluster anpassen können. Mit Skriptaktionen (Script Action) kann zusätzliche Software in einem Hadoop-Cluster installiert oder die Konfiguration von in einem Cluster installierten Anwendungen geändert werden.
 services: hdinsight
-documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 836d68a8-8b21-4d69-8b61-281a7fe67f21
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 921da2db8e235e17611788cae7e976597bd76703
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 8b00661e1561b4aa93be26994b20e33feac97ff6
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271614"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952367"
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>Entwickeln von Script Action-Skripts für Windows-basierte HDInsight-Cluster
 Entwickeln von Skriptaktionsskripts für HDInsight Weitere Informationen zu Skriptaktionsskripts finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster.md). Der gleiche Artikel, der für den Linux-basierten HDInsight-Cluster verfasst wurde, befindet sich unter [Entwickeln von Skriptaktionsskripts für HDInsight](hdinsight-hadoop-script-actions-linux.md).
@@ -103,10 +101,12 @@ HDInsight verfügt über mehrere Skripts zum Installieren zusätzlicher Komponen
 
 | NAME | Skript |
 | --- | --- |
-| **Installieren von Spark** |https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Installieren und Verwenden von Spark in HDInsight-Clustern][hdinsight-install-spark]. |
-| **Installieren von R** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Installieren und Verwenden von R in HDInsight-Clustern][hdinsight-r-scripts]. |
-| **Installieren von Solr** |https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Installieren und Verwenden von Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install.md). |
-| - **Installieren von Giraph** |https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Installieren und Verwenden von Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install.md). |
+| **Installieren von Spark** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Installieren und Verwenden von Spark in HDInsight-Clustern][hdinsight-install-spark]. |
+| **Installieren von R** | `https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Installieren und Verwenden von R in HDInsight-Clustern](r-server/r-server-hdinsight-manage.md#install-additional-r-packages-on-the-cluster). |
+| **Installieren von Solr** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Installieren und Verwenden von Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install.md). |
+| **Installieren von Giraph** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Installieren und Verwenden von Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install.md). |
+| **Vorabladen von Hive-Bibliotheken** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Siehe [Hinzufügen von Hive-Bibliotheken zu HDInsight-Clustern](hdinsight-hadoop-add-hive-libraries.md). |
+
 
 Skriptaktionen können über das Azure-Portal, Azure PowerShell oder das HDInsight .NET SDK bereitgestellt werden.  Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen][hdinsight-cluster-customize].
 

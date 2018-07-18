@@ -1,12 +1,12 @@
 ---
-title: "Azure Functions – Leitfaden zur Fehlerbehandlung | Microsoft-Dokumentation"
-description: "Enthält einen allgemeinen Leitfaden für die Behandlung von Fehlern, die bei der Ausführung Ihrer Funktionen auftreten, und bietet Links zu bindungsspezifischen Fehlerthemen."
+title: Azure Functions – Leitfaden zur Fehlerbehandlung | Microsoft-Dokumentation
+description: Enthält einen allgemeinen Leitfaden für die Behandlung von Fehlern, die bei der Ausführung Ihrer Funktionen auftreten, und bietet Links zu bindungsspezifischen Fehlerthemen.
 services: functions
-cloud: 
-documentationcenter: 
+cloud: ''
+documentationcenter: ''
 author: ggailey777
 manager: cfowler
-ms.assetid: 
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: multiple
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29133697"
 ---
 # <a name="azure-functions-error-handling"></a>Azure Functions – Fehlerbehandlung
 

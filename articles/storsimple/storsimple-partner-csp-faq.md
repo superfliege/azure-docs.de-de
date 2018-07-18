@@ -1,12 +1,12 @@
 ---
-title: "Häufig gestellte Fragen zu Microsoft Azure StorSimple und zum Programm für Cloudlösungsanbieter für Partner | Microsoft-Dokumentation"
-description: "Hier finden Sie Antworten auf einige allgemeine Fragen zu StorSimple und zum Programm für Cloudlösungsanbieter (Cloud Solution Provider Program, CSP) für Partner."
+title: Häufig gestellte Fragen zu Microsoft Azure StorSimple und zum Programm für Cloudlösungsanbieter für Partner | Microsoft-Dokumentation
+description: Hier finden Sie Antworten auf einige allgemeine Fragen zu StorSimple und zum Programm für Cloudlösungsanbieter (Cloud Solution Provider Program, CSP) für Partner.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109058"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>StorSimple für das Programm für Cloudlösungsanbieter: häufig gestellte Fragen
 

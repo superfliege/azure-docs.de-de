@@ -6,18 +6,18 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/04/2018
+ms.date: 06/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 996bd4b3497861a3bfcbfecebe18a6936f487028
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 7c012bdf025a352788aec2d2d70bab33d7914577
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301766"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849541"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Ereignishandler in Azure Event Grid
 
-Ein Ereignishandler ist der Ort, an den das Ereignis gesendet wird. Der Handler ergreift zur Verarbeitung des Ereignisses weitere Maßnahmen. Mehrere Azure-Dienste werden automatisch für die Behandlung von Ereignissen konfiguriert. Sie können aber auch einen beliebigen Webhook für die Behandlung von Ereignissen verwenden. Der Webhook muss zum Behandeln von Ereignissen nicht in Azure gehostet werden.
+Ein Ereignishandler ist der Ort, an den das Ereignis gesendet wird. Der Handler ergreift zur Verarbeitung des Ereignisses weitere Maßnahmen. Mehrere Azure-Dienste werden automatisch für die Behandlung von Ereignissen konfiguriert. Sie können aber auch einen beliebigen Webhook für die Behandlung von Ereignissen verwenden. Der Webhook muss zum Behandeln von Ereignissen nicht in Azure gehostet werden. Event Grid unterstützt nur HTTPS-Webhook-Endpunkte.
 
 Dieser Artikel enthält Links zu Inhalten für die einzelnen Ereignishandler.
 
@@ -33,12 +33,22 @@ Verwenden Sie Azure Automation für die Verarbeitung von Ereignissen mit automat
 
 Verwenden Sie Azure Functions für eine serverlose Reaktion auf Ereignisse.
 
+Wenn Sie Azure Functions als Handler einsetzen, verwenden Sie den Event Grid-Trigger anstelle der generischen HTTP-Trigger. Event Grid überprüft Event Grid-Funktionstrigger automatisch. Bei generischen HTTP-Triggern müssen Sie die [Überprüfungsantwort](security-authentication.md#webhook-event-delivery) implementieren.
+
 |Titel  |BESCHREIBUNG  |
 |---------|---------|
 | [Event Grid-Trigger für Azure Functions](../azure-functions/functions-bindings-event-grid.md) | Übersicht über die Verwendung des Event Grid-Triggers in Functions. |
 | [Automatisieren der Größenänderung von hochgeladenen Images per Event Grid](resize-images-on-storage-blob-upload-event.md) | Benutzer laden Bilder über eine Web-App in ein Speicherkonto hoch. Wenn ein Speicherblob erstellt wird, sendet Event Grid ein Ereignis an die Funktions-App, die daraufhin die Größe des hochgeladenen Bilds anpasst. |
 | [Streamen von Big Data in ein Data Warehouse](event-grid-event-hubs-integration.md) | Wenn Event Hubs eine Capture-Datei erstellt, sendet Event Grid ein Ereignis an eine Funktions-App. Die App ruft die Capture-Datei ab und migriert Daten zu einem Data Warehouse. |
 | [Beispiele für die Integration von Azure Service Bus in Azure Event Grid](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid sendet Nachrichten von einem Service Bus-Thema an eine Funktions-App und an eine Logik-App. |
+
+## <a name="event-hubs"></a>Event Hubs
+
+Verwenden Sie Event Hubs, wenn Ihre Lösung Ereignisse schneller abruft, als die Ereignisse verarbeitet werden können. Die Anwendung verarbeitet die Ereignisse von Event Hubs nach einem eigenen Zeitplan. Sie können die Ereignisverarbeitung in Anpassung an die eingehenden Ereignisse skalieren.
+
+|Titel  |BESCHREIBUNG  |
+|---------|---------|
+| [Weiterleiten benutzerdefinierter Ereignisse an Azure Event Hubs mit Azure CLI und Event Grid](custom-event-to-eventhub.md) | Sendet ein benutzerdefiniertes Ereignis an einen Event Hub, damit es durch eine Anwendung verarbeitet wird. |
 
 ## <a name="hybrid-connections"></a>Hybridverbindungen
 
@@ -60,7 +70,7 @@ Verwenden Sie Logic Apps, um Geschäftsprozesse für die Reaktion auf Ereignisse
 
 ## <a name="queue-storage"></a>Queue Storage
 
-Verwenden Sie Queue Storage, um Ereignisse zu empfangen, die gepullt werden müssen.
+Verwenden Sie Queue Storage, um Ereignisse zu empfangen, die gepullt werden müssen. Bei einem Prozess mit langer Ausführungszeit und zu langer Antwortdauer können Sie Queue Storage verwenden. Wenn die Ereignisse an Queue Storage gesendet werden, kann die App Ereignisse nach einem eigenen Zeitplan pullen und verarbeiten.
 
 |Titel  |BESCHREIBUNG  |
 |---------|---------|

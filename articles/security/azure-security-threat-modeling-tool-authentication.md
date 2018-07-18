@@ -1,6 +1,6 @@
 ---
-title: "Authentifizierung – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation"
-description: "Gegenmaßnahmen für durch das Threat Modeling-Tool offengelegte Gefahren"
+title: Authentifizierung – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
+description: Gegenmaßnahmen für durch das Threat Modeling Tool offengelegte Gefahren
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 1ac614156755b9b29db7c968c708a5cff706f7a8
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: d53ade1e5c31ca25636b95d4f8b9e0fe29f9d081
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031106"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Sicherheitsrahmen: Authentifizierung | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
-| **Webanwendung**    | <ul><li>[Verwenden Sie ggf. einen Standardauthentifizierungsmechanismus zur Authentifizierung bei Webanwendungen.](#standard-authn-web-app)</li><li>[Anwendungen müssen Szenarien mit nicht erfolgreicher Authentifizierung sicher behandeln.](#handle-failed-authn)</li><li>[Aktivieren Sie Step-up-Authentifizierung oder adaptive Authentifizierung.](#step-up-adaptive-authn)</li><li>[Stellen Sie sicher, dass Administratoroberflächen angemessen gesperrt sind.](#admin-interface-lockdown)</li><li>[Implementieren Sie sichere Funktionen für vergessene Kennwörter.](#forgot-pword-fxn)</li><li>[Stellen Sie sicher, dass die Kennwort- und die Kontorichtlinie implementiert werden.](#pword-account-policy)</li><li>[Implementieren Sie Kontrollen, um die Enumeration von Benutzernamen zu verhindern.](#controls-username-enum)</li></ul> |
+| **Web Application**    | <ul><li>[Verwenden Sie ggf. einen Standardauthentifizierungsmechanismus zur Authentifizierung bei Webanwendungen.](#standard-authn-web-app)</li><li>[Anwendungen müssen Szenarien mit nicht erfolgreicher Authentifizierung sicher behandeln.](#handle-failed-authn)</li><li>[Aktivieren Sie Step-up-Authentifizierung oder adaptive Authentifizierung.](#step-up-adaptive-authn)</li><li>[Stellen Sie sicher, dass Administratoroberflächen angemessen gesperrt sind.](#admin-interface-lockdown)</li><li>[Implementieren Sie sichere Funktionen für vergessene Kennwörter.](#forgot-pword-fxn)</li><li>[Stellen Sie sicher, dass die Kennwort- und die Kontorichtlinie implementiert werden.](#pword-account-policy)</li><li>[Implementieren Sie Kontrollen, um die Enumeration von Benutzernamen zu verhindern.](#controls-username-enum)</li></ul> |
 | **Datenbank** | <ul><li>[Verwenden Sie beim Herstellen einer SQL Server-Verbindung nach Möglichkeit die Windows-Authentifizierung.](#win-authn-sql)</li><li>[Verwenden Sie beim Herstellen einer SQL-Datenbank-Verbindung nach Möglichkeit die Azure Active Directory-Authentifizierung.](#aad-authn-sql)</li><li>[Stellen Sie bei Verwendung des SQL-Authentifizierungsmodus sicher, dass die Konto- und die Kennwortrichtlinie für SQL Server erzwungen werden.](#authn-account-pword)</li><li>[Verwenden Sie für eigenständige Datenbanken keine SQL-Authentifizierung.](#autn-contained-db)</li></ul> |
 | **Azure Event Hub** | <ul><li>[Verwenden Sie gerätespezifische Authentifizierungsanmeldeinformationen mit SAS-Token.](#authn-sas-tokens)</li></ul> |
 | **Azure-Vertrauensstellungsgrenze** | <ul><li>[Aktivieren Sie Azure Multi-Factor Authentication für Azure-Administratoren.](#multi-factor-azure-admin)</li></ul> |
@@ -305,7 +306,7 @@ Das Element `<netMsmqBinding/>` der folgenden WCF-Konfigurationsdatei weist WCF 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | .NET Framework 3 |
 | **Attribute**              | Art der Clientanmeldeinformationen: keine |
-| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_message_client) |
 | **Schritte** | Ohne Authentifizierung kann jeder auf diesen Dienst zugreifen. Ein Dienst ohne Clientauthentifizierung gewährt allen Benutzern Zugriff. Konfigurieren Sie die Anwendung so, dass eine Authentifizierung anhand von Clientanmeldeinformationen erfolgt. Legen Sie hierzu „message clientCredentialType“ auf „Windows“ oder „Certificate“ fest. |
 
 ### <a name="example"></a>Beispiel
@@ -321,7 +322,7 @@ Das Element `<netMsmqBinding/>` der folgenden WCF-Konfigurationsdatei weist WCF 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Generisch, .NET Framework 3 |
 | **Attribute**              | Art der Clientanmeldeinformationen: keine |
-| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_transport_client) |
 | **Schritte** | Ohne Authentifizierung kann jeder auf diesen Dienst zugreifen. Ein Dienst ohne Clientauthentifizierung gewährt allen Benutzern Zugriff auf seine Funktionen. Konfigurieren Sie die Anwendung so, dass eine Authentifizierung anhand von Clientanmeldeinformationen erfolgt. Legen Sie hierzu „transport clientCredentialType“ auf „Windows“ oder „Certificate“ fest. |
 
 ### <a name="example"></a>Beispiel

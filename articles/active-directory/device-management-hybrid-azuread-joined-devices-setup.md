@@ -8,6 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,18 +16,18 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: a74a16fa583ac3bc7ea2250f916e855a0bd9d1c1
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: fabe19a7348591b4a299868dfc3e618c049198c3
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34258311"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261184"
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten
 
 Mit der Geräteverwaltung in Azure Active Directory (Azure AD) können Sie sicherstellen, dass Benutzer auf Ihre Ressourcen über Geräte zugreifen, die Ihren Standards für Sicherheit und Konformität entsprechen. Weitere Informationen finden Sie unter [Einführung in die Geräteverwaltung in Azure Active Directory](device-management-introduction.md).
 
-Wenn Sie in einer lokalen Active Directory-Umgebung Ihre in die Domäne eingebundenen Geräte in Azure AD einbinden möchten, kann dies durch Konfigurieren von in Azure AD eingebundenen Hybridgeräten erfolgen. Die entsprechenden Schritte werden in diesem Thema beschrieben. 
+Wenn Sie in einer lokalen Active Directory-Umgebung Ihre in die Domäne eingebundenen Geräte in Azure AD einbinden möchten, kann dies durch Konfigurieren von in Azure AD eingebundenen Hybridgeräten erfolgen. Die entsprechenden Schritte werden in diesem Artikel beschrieben. 
 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
@@ -37,7 +38,7 @@ Wenn Sie das [Systemvorbereitungstool (Sysprep)](https://docs.microsoft.com/prev
 
 Für alle in die Domäne eingebundenen Geräte, auf denen Windows 10 Anniversary Update und Windows Server 2016 ausgeführt wird, wird bei einem Neustart des Geräts oder der Anmeldung eines Benutzers eine automatische Registrierung bei Azure AD durchgeführt, sobald die unten beschriebenen Konfigurationsschritte durchgeführt wurden. **Wenn dieses Verhalten zur automatischen Registrierung nicht erwünscht ist oder wenn ein kontrollierter Rollout gewünscht wird**, aktivieren oder deaktivieren Sie zuerst selektiv den automatischen Rollout (siehe Anweisungen im Abschnitt „Schritt 4: Steuern der Bereitstellung und des Rollouts“), bevor Sie mit den anderen Konfigurationsschritten fortfahren.  
 
-In diesem Thema werden die folgenden Bezeichnungen verwendet, um die Lesbarkeit der Beschreibungen zu erleichtern: 
+In diesem Artikel werden die folgenden Bezeichnungen verwendet, um die Lesbarkeit der Beschreibungen zu erleichtern: 
 
 - **Aktuelle Windows-Geräte**: Diese Bezeichnung bezieht sich auf in die Domäne eingebundene Geräte, auf denen Windows 10 oder Windows Server 2016 ausgeführt wird.
 - **Kompatible Windows-Geräte**: Diese Bezeichnung bezieht sich auf alle **unterstützten** in die Domäne eingebundenen Windows-Geräte, auf denen weder Windows 10 noch Windows Server 2016 ausgeführt wird.  
@@ -56,7 +57,8 @@ In diesem Thema werden die folgenden Bezeichnungen verwendet, um die Lesbarkeit 
     - Windows Server 2012 R2
     - Windows Server 2012
     - Windows Server 2008 R2
-- Die Registrierung kompatibler Windows-Geräte **wird** in nicht zu einem Verbund gehörenden Umgebungen durch die [nahtlose einmalige Anmeldung mit Azure Active Directory](https://aka.ms/hybrid/sso) unterstützt.
+- Die Registrierung kompatibler Windows-Geräte **wird** in nicht zu einem Verbund gehörenden Umgebungen durch die [nahtlose einmalige Anmeldung mit Azure Active Directory](https://aka.ms/hybrid/sso) unterstützt. 
+- Bei Verwendung der Azure AD-Passthrough-Authentifizierung wird die Registrierung kompatibler Windows-Geräte **nicht** unterstützt.
 - Für Geräte, die Roamingprofile verwenden, wird die Registrierung kompatibler Windows-Geräte **nicht** unterstützt. Verwenden Sie Windows 10, wenn Sie das Roaming von Profilen oder Einstellungen nutzen.
 
 
@@ -80,8 +82,7 @@ Achten Sie darauf, dass von Computern innerhalb Ihres Unternehmensnetzwerks zur 
 
 - https://enterpriseregistration.windows.net
 
-- https://login.microsoftonline.com
-
+- https://login.microsoftonline.com (zulassen)
 - https://device.login.microsoftonline.com
 
 - STS Ihrer Organisation (Verbunddomänen)
@@ -94,7 +95,7 @@ Wenn Ihre Organisation das nahtlose SSO verwenden möchte, müssen die folgenden
 
 - https://aadg.windows.net.nsatc.net
 
-- Darüber hinaus muss die folgende Einstellung in der Intranetzone des Benutzers aktiviert werden: „Aktualisierungen der Statusleiste per Skript zulassen“.
+- Darüber hinaus muss die folgende Einstellung in der Intranetzone des Benutzers aktiviert werden: „Statusleistenupdates über Skript zulassen“.
 
 Wenn Ihre Organisation die verwaltete Einrichtung (ohne Verbund) über lokales AD und nicht AD FS zum Herstellens eines Verbunds mit Azure AD verwendet, basiert die hybride Azure AD-Einbindung unter Windows 10 auf den Computerobjekten in AD, die mit Azure AD synchronisiert werden sollen. Stellen Sie sicher, dass alle Organisationseinheiten (OU), die die Computerobjekte enthalten, die hybrid in Azure AD eingebunden werden müssen, in der Azure AD Connect-Synchronisierungskonfiguration für die Synchronisierung aktiviert sind.
 

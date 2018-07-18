@@ -1,19 +1,19 @@
 ---
 title: Integrieren der Remoteüberwachungslösung in Azure Data Lake Store | Microsoft Docs
 description: Erfahren Sie, wie Sie die Remoteüberwachungslösung in Azure Data Lake Store mit einem Azure Stream Analytics-Auftrag integrieren können.
-+services: ''
-+suite: iot-suite
-+author: philmea
-+manager: timlt
-+ms.author: philmea
-+ms.date: 04/029/2018
-+ms.topic: article
-+ms.service: iot-suite
-ms.openlocfilehash: 426ded8079ba5d6de4c186a8d18dd284082b0c1c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+author: philmea
+manager: timlt
+ms.author: philmea
+ms.date: 04/29/2018
+ms.topic: conceptual
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.openlocfilehash: 5ba9b5534e986be1cbe55043a9acdd981d2ed7fd
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971736"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>Integrieren der Remoteüberwachungslösung in Azure Data Lake Store
 
@@ -25,7 +25,7 @@ In dieser schrittweisen Vorgehensweise verwenden Sie einen Azure Stream Analytic
 
 Für diese Vorgehensweise ist Folgendes erforderlich:
 
-* [Bereitstellen der vorkonfigurierten Remoteüberwachungslösung](iot-accelerators-remote-monitoring-deploy.md).
+* [Bereitstellen des Solution Accelerators für die Remoteüberwachung](iot-accelerators-remote-monitoring-deploy.md)
   * Die Remoteüberwachungslösung stellt den IoT Hub und den Azure Stream Analytics-Auftrag in Ihrem Azure-Abonnement bereit, der in diesem Artikel verwendet wird.
 * [Bereitstellen eines Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md)
   * Ihr Data Lake Store sollte in der gleichen Region wie Ihre Remoteüberwachungslösung bereitgestellt werden.
@@ -180,4 +180,4 @@ Azure Stream Analytics verwendet eine SQL-ähnliche Abfragesprache zum Angeben e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Azure Data Lake Analytics kann verwendet werden, um Big Data-Analysen für Ihre Data Lake Store-Datasets auszuführen. Weitere Informationen finden Sie in der [Dokumentation zu Data Lake Analytics](https://docs.microsoft.com/en-us/azure/data-lake-analytics).
+Azure Data Lake Analytics kann verwendet werden, um Big Data-Analysen für Ihre Data Lake Store-Datasets auszuführen. Weitere Informationen finden Sie in der [Dokumentation zu Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics).

@@ -3,19 +3,23 @@ title: Verwalten von Serveradministratoren in Azure Analysis Services | Microsof
 description: Erfahren Sie, wie Sie in Azure Serveradministratoren für einen Analysis Services-Server verwalten.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 06/20/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: def09f2853f761f3fefca80f341e6cc0557bac86
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ec1630f4de70f77c13e335c68aff16180e524c12
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36307807"
 ---
 # <a name="manage-server-administrators"></a>Verwalten von Serveradministratoren
-„Serveradministratoren“ muss eine gültige Benutzergruppe in Azure Active Directory (Azure AD) für den Mandanten sein, in dem sich der Server befindet. Zum Verwalten von Serveradministratoren können Sie die Option **Analysis Services-Administratoren** für Ihren Server im Azure-Portal oder die Servereigenschaften in SSMS verwenden. 
+„Serveradministratoren“ muss eine gültige Benutzer- oder Sicherheitsgruppe in Azure Active Directory (Azure AD) für den Mandanten sein, in dem sich der Server befindet. Zum Verwalten von Serveradministratoren können Sie die Option **Analysis Services-Administratoren** für Ihren Server im Azure-Portal oder die Servereigenschaften in SSMS verwenden. 
+
+> [!NOTE]
+> Für Sicherheitsgruppen muss die `MailEnabled`-Eigenschaft auf `True` gesetzt sein.
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>So fügen Sie Serveradministratoren über das Azure-Portal hinzu
 1. Klicken Sie im Azure-Portal im Bereich für Ihren Server auf **Analysis Services-Administratoren**.

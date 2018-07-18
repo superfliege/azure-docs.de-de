@@ -1,24 +1,20 @@
 ---
 title: Erhalten einer E-Mail beim Öffnen einer Tür per SendGrid-Dienst und Azure Functions | Microsoft-Dokumentation
 description: Überwachen Sie den Magnetsensor, um zu erkennen, wenn eine Tür geöffnet wird, und verwenden Sie Azure Functions, um eine E-Mail-Benachrichtigung zu senden.
-services: iot-hub
-documentationcenter: ''
 author: liydu
-manager: timlt
-tags: ''
-keywords: ''
+manager: jeffya
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: d25948aeab4170e67133a8e7f538089fca28407d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 25cb3ba53c663a642f0871becbfbcab39d521c67
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437714"
 ---
 # <a name="door-monitor"></a>Türüberwachung          
 
@@ -37,7 +33,7 @@ In diesem Projekt lernen Sie Folgendes:
 
 ## <a name="what-you-need"></a>Voraussetzungen
 
-Befolgen Sie die Anweisungen im [Leitfaden zu den ersten Schritten]({{"/docs/get-started/" | absolute_url }}), um folgende Voraussetzungen zu erfüllen:
+Befolgen Sie die Anweisungen im [Leitfaden zu den ersten Schritten](iot-hub-arduino-iot-devkit-az3166-get-started.md), um folgende Voraussetzungen zu erfüllen:
 
 * Herstellen einer Wi-Fi-Verbindung mit dem DevKit
 * Vorbereiten der Entwicklungsumgebung
@@ -213,4 +209,4 @@ Wenn Probleme auftreten, helfen Ihnen die Informationen in den [häufig gestellt
 Es wurde beschrieben, wie Sie ein DevKit-Gerät mit Ihrer Azure IoT-Remoteüberwachungslösung verbinden und den SendGrid-Dienst zum Senden einer E-Mail verwenden. Hier sind die empfohlenen nächsten Schritte aufgeführt:
 
 * [Solution Accelerator für die Azure IoT-Remoteüberwachung: Übersicht](https://docs.microsoft.com/azure/iot-suite/)
-* [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Microsoft IoT Central-Anwendung](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+* [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

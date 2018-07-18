@@ -1,21 +1,21 @@
 ---
-title: "Entwickeln von Modulen für Azure IoT Edge | Microsoft-Dokumentation"
-description: "Informationen zum Erstellen von benutzerdefinierten Modulen für Azure IoT Edge"
-services: iot-edge
-keywords: 
+title: Entwickeln von Modulen für Azure IoT Edge | Microsoft-Dokumentation
+description: Informationen zum Erstellen von benutzerdefinierten Modulen für Azure IoT Edge
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 10/05/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 95b1d5d4e5e11f96b6abb17f0aeba935cc65512d
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+services: iot-edge
+ms.openlocfilehash: dbbd07e93602855afb0c9755e8872e0b46557611
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030018"
 ---
-# <a name="understand-the-requirements-and-tools-for-developing-iot-edge-modules---preview"></a>Grundlegendes zu den Anforderungen und Tools für die Entwicklung von IoT Edge-Modulen – Vorschau
+# <a name="understand-the-requirements-and-tools-for-developing-iot-edge-modules"></a>Grundlegendes zu den Anforderungen und Tools für die Entwicklung von IoT Edge-Modulen
 
 In diesem Artikel wird erläutert, welche Funktionalitäten beim Schreiben von Anwendungen, die als IoT Edge-Modul ausgeführt werden, verfügbar sind und wie sie genutzt werden.
 
@@ -52,7 +52,7 @@ Die Verwendung expliziter Eingänge und Ausgänge erleichtert jedoch das Verstä
 
 Schließlich werden vom Edge-Hub behandelte D2C-Nachrichten mit den folgenden Eigenschaften gekennzeichnet:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | -------- | ----------- |
 | $connectionDeviceId | Die Geräte-ID des Clients, der die Nachricht gesendet hat. |
 | $connectionModuleId | Die Modul-ID des Moduls, das die Nachricht gesendet hat. |

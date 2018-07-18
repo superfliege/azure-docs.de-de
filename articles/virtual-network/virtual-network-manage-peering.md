@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 9a8e4e95f2f4de6475243de196519d94e87a9297
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 314920d4aae2bd364ea93451fcbda2034a36cc7e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366544"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332098"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke
 
@@ -116,7 +116,8 @@ Wenn Sie möchten, dass virtuelle Netzwerke gelegentlich, jedoch nicht immer, ko
     - Die virtuellen Netzwerke können sich in einer beliebigen Region einer öffentlichen Azure-Cloud befinden, jedoch nicht in Regionen nationaler Azure-Clouds.
     - Ressourcen in einem virtuellen Netzwerk können nicht mit der IP-Adresse eines internen Azure-Lastenausgleichs in einem per Peering verbundenen virtuellen Netzwerk kommunizieren. Der Lastenausgleich und die Ressourcen, die mit diesem kommunizieren, müssen sich im selben virtuellen Netzwerk befinden.
     - Sie können keine Remotegateways verwenden oder einen Gatewaytransit zulassen. Dies ist nur möglich, wenn sich beide virtuelle Netzwerke im Peering in derselben Region befinden. 
-- Die virtuellen Netzwerke können sich im gleichen Abonnement oder in verschiedenen Abonnements befinden. Wenn sich die virtuellen Netzwerke in verschiedenen Abonnements befinden, müssen beide Abonnements demselben Azure Active Directory-Mandanten zugeordnet sein. Wenn Sie noch keinen AD-Mandanten besitzen, [erstellen Sie schnell einen](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Sie können ein [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) verwenden, um zwei virtuelle Netzwerke in unterschiedlichen Abonnements zu verknüpfen, die verschiedenen Active Directory-Mandanten zugewiesen sind.
+    - Die Kommunikation über virtuelle Netzwerke, die in globalem Peering verbunden sind, wird für die folgenden VM-Typen nicht unterstützt: [High Performance Computing](../virtual-machines/windows/sizes-hpc.md) und [GPU](../virtual-machines/windows/sizes-gpu.md). Dies schließt virtuelle Computer der Serien H, NC, NV, NCv2, NCv3 und ND ein.
+- Die virtuellen Netzwerke können sich im gleichen Abonnement oder in verschiedenen Abonnements befinden. Wenn Sie eine Peerverbindung zwischen virtuellen Netzwerken in verschiedenen Abonnements herstellen, müssen beide Abonnements demselben Azure Active Directory-Mandanten zugeordnet sein. Wenn Sie noch keinen AD-Mandanten besitzen, [erstellen Sie schnell einen](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Sie können ein [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) verwenden, um zwei virtuelle Netzwerke in unterschiedlichen Abonnements zu verknüpfen, die verschiedenen Active Directory-Mandanten zugewiesen sind.
 - Die mittels Peering verknüpften virtuellen Netzwerke dürfen keine sich überschneidenden IP-Adressräume aufweisen.
 - Sie können Adressbereiche zum Adressraum eines virtuellen Netzwerks hinzufügen oder aus diesem löschen, nachdem ein virtuelles Netzwerk per Peering mit einem anderen virtuellen Netzwerk verknüpft wurde. Um Adressbereiche hinzuzufügen oder zu entfernen, das Peering zu löschen oder Adressräume hinzuzufügen oder zu entfernen, erstellen Sie das Peering erneut. Informationen zum Hinzufügen oder Entfernen von Adressbereichen in virtuellen Netzwerken finden Sie unter [Verwalten virtueller Netzwerke](manage-virtual-network.md).
 - Sie können zwei über Resource Manager bereitgestellte virtuelle Netzwerke oder ein über Resource Manager bereitgestelltes virtuelles Netzwerk per Peering mit einem virtuellen Netzwerk verknüpfen, das über das klassische Bereitstellungsmodell bereitgestellt wurde. Sie können nicht zwei virtuelle Netzwerke, die mit dem klassischen Bereitstellungsmodell erstellt wurden, mittels Peering miteinander verknüpfen. Wenn Sie mit den Azure-Bereitstellungsmodellen nicht vertraut sind, lesen Sie den Artikel [Grundlegendes zu Azure-Bereitstellungsmodellen](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Sie können ein [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) verwenden, um zwei virtuelle Netzwerke zu verbinden, die mit dem klassischen Bereitstellungsmodell erstellt wurden.
@@ -143,7 +144,7 @@ Die Konten, mit denen Sie beim Peering virtueller Netzwerke arbeiten, müssen de
 
 Wenn Ihr Konto nicht einer der zuvor aufgeführten Rollen zugewiesen ist, müssen Sie es einer [benutzerdefinierten Rolle](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) zuweisen, die den erforderlichen Aktionen aus der folgenden Tabelle zugewiesen ist:
 
-| anzuzeigen. | NAME |
+| Aktion | NAME |
 |---|---|
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Erforderlich, um ein Peering zwischen dem virtuellen Netzwerk A und dem virtuellen Netzwerk B herzustellen. Das virtuelle Netzwerk A muss ein virtuelles Netzwerk sein (Resource Manager).                            |
 | Microsoft.Network/virtualNetworks/peer/action                   | Erforderlich, um ein Peering zwischen dem virtuellen Netzwerk B (Resource Manager) und dem virtuellen Netzwerk A herzustellen.                                                                                |
@@ -162,6 +163,6 @@ Wenn Ihr Konto nicht einer der zuvor aufgeführten Rollen zugewiesen ist, müsse
     |Einmal Resource Manager, einmal klassisch  |[Gleich](create-peering-different-deployment-models.md)|
     |                                   |[Unterschiedlich](create-peering-different-deployment-models-subscriptions.md)|
 
-* Informieren Sie sich über das Erstellen einer [Hub-and-Spoke-Netzwerktopologie](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual network-peering).
+* Informieren Sie sich über das Erstellen einer [Hub-and-Spoke-Netzwerktopologie](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
 * Erstellen eines Peering virtueller Netzwerke mithilfe von [PowerShell](powershell-samples.md)- oder [Azure CLI](cli-samples.md)-Beispielskripts oder mithilfe von Azure [Resource Manager-Vorlagen](template-samples.md)
 * Erstellen und Anwenden einer [Azure-Richtlinie](policy-samples.md) für virtuelle Netzwerke

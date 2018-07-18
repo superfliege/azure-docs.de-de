@@ -5,21 +5,23 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 04/05/2018
+ms.date: 07/05/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: a16a9bdb866803a65bf7204628b735bd9ac60aee
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 4fef565dbd78cf3559cd47ed6c59800c8e6f9c9d
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302558"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869142"
 ---
 # <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit dem Azure Portal und Event Grid
 
 Azure Event Grid ist ein Ereignisdienst für die Cloud. In diesem Artikel erstellen Sie über das Azure-Portal ein benutzerdefiniertes Thema, abonnieren dieses Thema und lösen das Ereignis aus, um das Ergebnis anzuzeigen. Sie senden das Ereignis an eine Azure-Funktion, mit der die Ereignisdaten protokolliert werden. Nach Abschluss des Vorgangs sehen Sie, dass die Ereignisdaten an einen Endpunkt gesendet und protokolliert wurden.
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
+
+[!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
 
 ## <a name="create-a-custom-topic"></a>Erstellen eines benutzerdefinierten Themas
 
@@ -71,7 +73,7 @@ Vor dem Abonnieren des Themas erstellen wir zunächst den Endpunkt für die Erei
 
    ![Erstellen einer Funktion](./media/custom-event-quickstart-portal/create-function.png)
 
-1. Geben Sie einen eindeutigen Namen für die Azure-Funktion an. Verwenden Sie nicht den Namen, der in der Abbildung zu sehen ist. Wählen Sie die Ressourcengruppe aus, die Sie in diesem Artikel erstellt haben. Verwenden Sie als Hostingplan die Option **Verbrauchstarif**. Verwenden Sie das vorgeschlagene neue Speicherkonto. Wählen Sie nach dem Angeben der Werte die Option **Erstellen**.
+1. Geben Sie einen eindeutigen Namen für die Azure-Funktion an. Verwenden Sie nicht den Namen, der in der Abbildung zu sehen ist. Wählen Sie die Ressourcengruppe aus, die Sie in diesem Artikel erstellt haben. Verwenden Sie als Hostingplan die Option **Verbrauchstarif**. Verwenden Sie das vorgeschlagene neue Speicherkonto. Sie können Application Insights abschalten. Wählen Sie nach dem Angeben der Werte die Option **Erstellen**.
 
    ![Angeben von Funktionswerten](./media/custom-event-quickstart-portal/provide-function-values.png)
 

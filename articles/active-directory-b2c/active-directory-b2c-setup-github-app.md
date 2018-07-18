@@ -1,21 +1,21 @@
 ---
-title: GitHub-Identitätsanbieterkonfiguration – Azure AD B2C | Microsoft-Dokumentation
+title: GitHub-Identitätsanbieterkonfiguration in Azure Active Directory B2C | Microsoft-Dokumentation
 description: Bereitstellen von Registrierung und Anmeldung für Kunden mit GitHub-Konten in mit Azure Active Directory B2C gesicherten Anwendungen
 services: active-directory-b2c
-documentationcenter: ''
-author: davidmu
+author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/06/2017
 ms.author: davidmu
-ms.openlocfilehash: 17ec4ebd8406f56c431666340ca8834c5ccf9670
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 3754a169b301bac97f3e12d10b754222e3cf325d
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443340"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-github-accounts"></a>Azure Active Directory B2C: Bereitstellen von Registrierung und Anmeldung für Kunden mit GitHub-Konten
 

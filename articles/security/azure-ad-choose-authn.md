@@ -9,16 +9,16 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 6d107b9264a80c7b280ffed9a50b7bb0ffe354be
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7e2eb9bad8c95e61d5b750cacd0724fc2536f2c5
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365524"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294108"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung 
 
-Dieser Artikel ist der Beginn einer Reihe von Artikeln, die Organisationen bei der Implementierung einer kompletten Azure AD-Hybrididentitätslösung (Azure Active Directory) unterstützen. Diese Lösung wurde als Hybrid Identity Digital Transformation Framework (digitales Transformationsframework für Hybrididentitäten) entworfen. Hiermit werden die Geschäftsergebnisse und Ziele abgedeckt, auf die sich Organisationen konzentrieren sollten, um sicherzustellen, dass sie eine stabile und sichere Hybrididentitätslösung implementiert haben. 
+Dieser Artikel ist der Beginn einer Reihe von Artikeln, die Organisationen bei der Implementierung einer kompletten Azure AD-Hybrididentitätslösung (Azure Active Directory) unterstützen. Diese Lösung wurde [als Hybrid Identity Digital Transformation Framework](https://aka.ms/aadframework) (digitales Transformationsframework für Hybrididentitäten) entworfen. Hiermit werden die Geschäftsergebnisse und Ziele abgedeckt, auf die sich Organisationen konzentrieren sollten, um sicherzustellen, dass sie eine stabile und sichere Hybrididentitätslösung implementiert haben. 
 
 Das erste Geschäftsergebnis des Frameworks beschreibt die Anforderungen an Organisationen, den Authentifizierungsprozess zu sichern, wenn Benutzer auf Cloud-Apps zugreifen. Das erste Unternehmensziel beim Geschäftsergebnis mit sicherer Authentifizierung ist, Benutzern die Möglichkeit zu geben, sich mit ihren lokalen Benutzernamen und Kennwörtern an Cloud-Apps anzumelden. Durch diesen Anmeldeprozess und die Art der Benutzerauthentifizierung stehen in der Cloud alle Türen offen.
 
@@ -41,6 +41,8 @@ Organisationen, die über keine lokalen Verzeichnisse verfügen, stehen nicht im
 Wenn die Azure AD-Hybrididentitätslösung Ihre neue Steuerungsebene bildet, ist die Authentifizierung die Grundlage für den Cloudzugriff. Die Wahl der richtigen Authentifizierungsmethode ist daher eine wichtige erste Entscheidung bei der Einrichtung einer Azure AD-Hybrididentitätslösung. Implementieren Sie die Authentifizierungsmethode, die mit Azure AD Connect konfiguriert wird. Hierüber werden auch Benutzer in der Cloud bereitgestellt.
 
 Bei der Auswahl einer Authentifizierungsmethode müssen Sie die Zeit, die vorhandene Infrastruktur, die Komplexität und die Implementierungskosten für die gewählte Lösung berücksichtigen. Diese Faktoren sind für jede Organisation unterschiedlich und können sich im Laufe der Zeit ändern. 
+
+>[!VIDEO https://www.youtube.com/embed/YtW2cmVqSEw]
 
 Azure AD unterstützt für Hybrididentitätslösungen die folgenden Authentifizierungsmethoden.
 
@@ -167,7 +169,7 @@ Im folgenden Diagramm sind die allgemeinen Architekturkomponenten dargestellt, d
 |Welche Optionen gibt es für die mehrstufige Authentifizierung?|[Azure MFA](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/)|[Azure MFA](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/)|[Azure MFA](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/)<br><br>[Azure MFA-Server](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-mfaserver-deploy)<br><br>[MFA über Drittanbieter](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)|
 |Welche Benutzerkontenstatus werden unterstützt?|Deaktivierte Konten<br>(bis zu 30 Minuten Verzögerung)|Deaktivierte Konten<br><br>Konto gesperrt<br><br>Kennwort abgelaufen<br><br>Anmeldestunden|Deaktivierte Konten<br><br>Konto gesperrt<br><br>Kennwort abgelaufen<br><br>Anmeldestunden|
 |Welche Optionen für bedingten Zugriff gibt es?|[Bedingter Zugriff auf Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal)|[Bedingter Zugriff auf Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal)|[Bedingter Zugriff auf Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal)<br><br>[AD FS-Anspruchsregeln](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
-|Wird Blockieren älterer Protokolle unterstützt?|Nein |Nein |[Ja](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
+|Wird Blockieren älterer Protokolle unterstützt?|[Ja](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[Ja](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[Ja](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
 |Können das Logo, das Bild und die Beschreibung auf den Anmeldeseiten angepasst werden?|[Ja, mit Azure AD Premium](https://docs.microsoft.com/en-us/azure/active-directory/customize-branding)|[Ja, mit Azure AD Premium](https://docs.microsoft.com/en-us/azure/active-directory/customize-branding)|[Ja](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-federation-management#customlogo)|
 |Welche erweiterten Szenarien werden unterstützt?|[Intelligente Kennwortsperrung](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-secure-passwords)<br><br>[Berichte über kompromittierte Anmeldeinformationen](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-risk-events)|[Intelligente Kennwortsperrung](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-smart-lockout)|Authentifizierungssystem mit geringer Wartezeit für mehrere Standorte<br><br>[AD FS-Extranetsperre](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-lockout-protection)<br><br>[Integration in Identitätssysteme von Drittanbietern](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-federation-compatibility)|
 

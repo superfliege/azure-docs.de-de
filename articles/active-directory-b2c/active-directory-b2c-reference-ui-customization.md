@@ -1,30 +1,30 @@
 ---
-title: 'Anpassen der Benutzeroberfläche: Azure AD B2C | Microsoft-Dokumentation'
+title: Anpassung der Benutzeroberfläche (UI) in Azure Active Directory B2C | Microsoft-Dokumentation
 description: Ein Thema über die Anpassungsfeatures für die Benutzeroberfläche (UI) in Azure Active Directory B2C
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: b202f30e5fb47bcd16f25c5961f8345dd0324139
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.component: B2C
+ms.openlocfilehash: 385c13194063761d6449fafa49714d8627f6c6fc
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447052"
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C: Anpassen der Azure AD B2C-Benutzeroberfläche (UI)
 
 Benutzerfreundlichkeit ist in einer kundenorientierten Anwendung entscheidend.  Vergrößern Sie Ihren Kundenstamm, indem Sie zu Ihrem Unternehmen passende Benutzeroberflächen entwickeln. Azure Active Directory B2C (Azure AD B2C) ermöglicht Ihnen, die Seiten für Registrierung und Anmeldung, Profilbearbeitung und Kennwortzurücksetzung mit präziser Kontrolle anzupassen.
 
 > [!NOTE]
-> Das in diesem Artikel beschriebene Feature „Seite für die Benutzeroberflächenanpassung“ gilt nicht für die Anmeldungsrichtlinie, die dazugehörige Seite zum Zurücksetzen des Kennworts und Bestätigungs-E-Mails.  Für diese Features wird stattdessen das [Unternehmensbrandingfeature](../active-directory/customize-branding.md) verwendet.
+> Das in diesem Artikel beschriebene Feature „Seite für die Benutzeroberflächenanpassung“ gilt nicht für die Anmeldungsrichtlinie, die dazugehörige Seite zum Zurücksetzen des Kennworts und Bestätigungs-E-Mails.  Für diese Features wird stattdessen das [Unternehmensbrandingfeature](../active-directory/fundamentals/customize-branding.md) verwendet.
 >
-> Entsprechend gilt: Wenn ein Benutzer eine Richtlinie zum Bearbeiten des Profils *vor* der Anmeldung startet, wird der Benutzer auf eine Seite umgeleitet, die mit dem [Unternehmensbrandingfeature](../active-directory/customize-branding.md) angepasst werden kann.
+> Entsprechend gilt: Wenn ein Benutzer eine Richtlinie zum Bearbeiten des Profils *vor* der Anmeldung startet, wird der Benutzer auf eine Seite umgeleitet, die mit dem [Unternehmensbrandingfeature](../active-directory/fundamentals/customize-branding.md) angepasst werden kann.
 
 In diesem Artikel werden die folgenden Themen behandelt:
 

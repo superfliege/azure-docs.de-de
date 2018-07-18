@@ -2,17 +2,18 @@
 title: Authentifizieren per Azure Container Registry über Azure Kubernetes Service
 description: Es wird beschrieben, wie Sie Zugriff auf Images in Ihrer privaten Containerregistrierung über den Azure Kubernetes Service gewähren, indem Sie einen Azure Active Directory-Dienstprinzipal verwenden.
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 02/24/2018
-ms.author: nepeters
-ms.openlocfilehash: 0888afbb9087251e2c9219e2eb32fbf0d5600304
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.author: iainfou
+ms.openlocfilehash: 8cfd70275caa13c708f7d2f46cdc71e0f190ca0e
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100622"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Authentifizieren per Azure Container Registry über Azure Kubernetes Service
 

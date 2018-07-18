@@ -1,45 +1,46 @@
 ---
 title: Durchführen einer Notfallwiederherstellungsübung für lokale Computer in Azure mit Azure Site Recovery | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mit Azure Site Recovery eine Notfallwiederherstellungsübung von lokalen Computern nach Azure durchführen.
-services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/16/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 724144e8f2f2f76c4ad98b4c5cad84e69dadadbb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: af8062fc0134975542c8a5ec420c790f33996154
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209724"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920170"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Durchführen eines Notfallwiederherstellungsverfahrens in Azure
 
-Dieses Tutorial veranschaulicht das Durchführen einer Notfallwiederherstellungsübung für lokale Computer nach Azure mit einem Testfailover. Eine Übung dient der Überprüfung Ihrer Replikationsstrategie ohne Datenverlust. In diesem Tutorial lernen Sie Folgendes:
+Dieser Artikel veranschaulicht das Durchführen einer Notfallwiederherstellungsübung für lokale Computer in Azure mit einem Testfailover. Eine Übung dient der Überprüfung Ihrer Replikationsstrategie ohne Datenverlust.
+
+Dies ist das vierte Tutorial in einer Reihe, welche die Einrichtung der Notfallwiederherstellung in Azure für lokale virtuelle VMware-Computer oder virtuelle Hyper-V-Computer veranschaulicht.
+
+In diesem Tutorial wird davon ausgegangen, dass Sie die ersten drei Tutorials abgeschlossen haben: 
+    - Im [ersten Tutorial](tutorial-prepare-azure.md) haben wir die erforderlichen Azure-Komponenten für die VMware-Notfallwiederherstellung eingerichtet.
+    - Im [zweiten Tutorial](vmware-azure-tutorial-prepare-on-premises.md) haben wir lokale Komponenten für die Notfallwiederherstellung vorbereitet und die Anforderungen überprüft.
+    - Im [dritten Tutorial](vmware-azure-tutorial.md) haben wir die Replikation für den lokalen virtuellen VMware-Computer eingerichtet und aktiviert.
+    - Tutorials dienen zur Veranschaulichung des **einfachsten Bereitstellungspfads für ein Szenario**. Sie verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. Ausführlichere Informationen zu den Schritten des Testfailovers finden Sie in [dieser Anleitung](site-recovery-test-failover-to-azure.md).
+
+In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Einrichten eines isolierten Netzwerks für das Testfailover
 > * Vorbereiten der Verbindungsherstellung mit Azure-VMs nach dem Failover
 > * Ausführen eines Testfailovers für einen einzelnen Computer
 
-Dies ist das vierte Tutorial in einer Reihe. In diesem Tutorial wird davon ausgegangen, dass Sie bereits die Aufgaben in den vorherigen Tutorials durchgearbeitet haben.
-
-1. [Vorbereiten von Azure](tutorial-prepare-azure.md)
-2. [Lokales Vorbereiten von VMware](tutorial-prepare-on-premises-vmware.md)
-3. [Einrichten der Notfallwiederherstellung](tutorial-vmware-to-azure.md)
+Dieses Tutorial
 
 ## <a name="verify-vm-properties"></a>Überprüfen von VM-Eigenschaften
 
-Überprüfen Sie vor dem Ausführen eines Testfailovers die VM-Eigenschaften, und stellen Sie sicher, dass die Hyper-V-VM [hyper-v-azure-support-matrix.md#replicated-vms], die [VMware-VM oder der physische Server](vmware-physical-azure-support-matrix.md#replicated-machines) die Azure-Anforderungen erfüllt.
+Bevor Sie ein Testfailover ausführen, überprüfen Sie die VM-Eigenschaften, und stellen Sie sicher, dass der virtuelle [Hyper-V](hyper-v-azure-support-matrix.md#replicated-vms)- oder [VMware](vmware-physical-azure-support-matrix.md#replicated-machines)-Computer die Azure-Anforderungen erfüllt.
 
-1. Klicken Sie unter **Geschützte Elemente** auf **Replizierte Elemente** > VM.
+1. Klicken Sie unter **Geschützte Elemente** auf **Replizierte Elemente** und dann auf den virtuellen Computer.
 2. Im Bereich **Repliziertes Element** finden Sie eine Zusammenfassung der Informationen zu virtuellen Computern, den Integritätsstatus sowie die neuesten verfügbaren Wiederherstellungspunkte. Klicken Sie auf **Eigenschaften**, um weitere Details anzuzeigen.
-3. In **Compute und Netzwerk** können Sie den Azure-Namen, die Ressourcengruppe, die Zielgröße, die [Verfügbarkeitsgruppe](../virtual-machines/windows/tutorial-availability-sets.md) und die Einstellungen verwalteter Datenträger ändern.
-   
-      >[!NOTE]
-      Ein Failback von Azure-VMs mit verwalteten Datenträgern auf lokale Hyper-V-Computer wird derzeit nicht unterstützt. Sie dürfen die Option für verwaltete Datenträger nur dann für ein Failover verwenden, wenn Sie eine Migration lokaler VMs zu Azure ohne ein Failback planen.
-   
+3. In **Compute und Netzwerk** können Sie den Azure-Namen, die Ressourcengruppe, die Zielgröße, die Verfügbarkeitsgruppe und die Einstellungen verwalteter Datenträger ändern.
 4. Sie können Netzwerkeinstellungen einschließlich des Netzwerks/Subnetzes, in dem der virtuelle Azure-Computer nach dem Failover platziert wird, sowie der IP-Adresse, die ihm zugewiesen wird, anzeigen und ändern.
 5. Unter **Datenträger** finden Sie Informationen über das Betriebssystem und die Datenträger auf dem virtuellen Computer.
 
@@ -68,3 +69,4 @@ In einigen Szenarien erfordert ein Failover zusätzliche Verarbeitungsschritte, 
 
 > [!div class="nextstepaction"]
 > [Durchführen von Failover und Failback für lokale VMware-VMs](vmware-azure-tutorial-failover-failback.md)
+> [Durchführen von Failover und Failback für lokale Hyper-V-VMs](hyper-v-azure-failover-failback-tutorial.md)

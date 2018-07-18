@@ -3,23 +3,24 @@ title: Häufig gestellte Fragen zu Azure Active Directory-Berichten | Microsoft-
 description: Häufig gestellte Fragen zu Azure Active Directory-Berichten.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: priyamohanram
 manager: mtillman
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
+ms.component: compliance-reports
 ms.date: 05/10/2018
-ms.author: markvi
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5fa52099f5cf55b78fd2fea407c34f29237939d3
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 8d627abfe7b686eeeb5a65c4515e184f4ce62f4e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34067009"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335056"
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Häufig gestellte Fragen zu Azure Active Directory-Berichten
 
@@ -71,7 +72,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 **F: Wie viele Datensätze kann ich aus dem Azure-Portal herunterladen?**
 
-**A:** Sie können bis zu 120.000 Datensätze aus dem Azure-Portal herunterladen. Die Datensätze werden nach *Aktualität* sortiert, und standardmäßig erhalten Sie die neuesten 120.000 Datensätze. 
+**A:** Sie können bis zu 5.000 Datensätze aus dem Azure-Portal herunterladen. Die Datensätze werden nach *Aktualität* sortiert, und standardmäßig erhalten Sie die neuesten 5.000 Datensätze.
 
 ---
 
@@ -83,7 +84,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 **F: Wie erhalte ich eine Premium-Lizenz?**
 
-**A:** Die Antwort auf diese Frage finden Sie unter [Erste Schritte mit Azure Active Directory Premium](active-directory-get-started-premium.md).
+**A:** Die Antwort auf diese Frage finden Sie unter [Erste Schritte mit Azure Active Directory Premium](fundamentals/active-directory-get-started-premium.md).
 
 ---
 

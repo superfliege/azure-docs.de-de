@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten aus Netezza mithilfe von Azure Data Factory (Beta) | Microsoft-Dokumentation
+title: Kopieren von Daten aus Netezza mithilfe von Azure Data Factory | Microsoft-Dokumentation
 description: Erfahren Sie, wie Daten aus Netezza mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
@@ -10,25 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/09/2018
+ms.topic: conceptual
+ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 469e72a70d23b3d23eeeb68b3aa2a9e3527d038e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: f8c10e2200f830ea6e568e7b3fba1f0a6085cef2
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33940136"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055661"
 ---
-# <a name="copy-data-from-netezza-using-azure-data-factory-beta"></a>Kopieren von Daten aus Netezza mithilfe von Azure Data Factory (Beta)
+# <a name="copy-data-from-netezza-using-azure-data-factory"></a>Kopieren von Daten aus Netezza mithilfe von Azure Data Factory 
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Netezza zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
-
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (GA) ist, lesen Sie [Kopieraktivität in V1](v1/data-factory-data-movement-activities.md).
-
-> [!IMPORTANT]
-> Dieser Connector ist aktuell in der Betaphase. Sie können ihn ausprobieren und uns Feedback geben. Verwenden Sie ihn nicht in Produktionsumgebungen.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -54,10 +48,10 @@ Folgende Eigenschaften werden für den mit Netezza verknüpften Dienst unterstü
 
 Eine typische Verbindungszeichenfolge ist `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`. Weitere Eigenschaften, die Sie für Ihren Fall festlegen können:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |:--- |
 | SecurityLevel | Der Sicherheitsgrad (SSL/TLS), den der Treiber für die Verbindung mit dem Datenspeicher verwendet. Beispiel: `SecurityLevel=preferredSecured`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Folgende Werte werden unterstützt:<br/>- Nur ungesichert (**OnlyUnSecured**): Der Treiber verwendet kein SSL.<br/>- Bevorzugt ungesichert (**PreferredUnSecured**) (Standardeinstellung): Wenn der Server eine Wahl bietet, verwendet der Treiber kein SSL. <br/>- Bevorzugt gesichert (**PreferredSecured**): Wenn der Server eine Wahl bietet, verwendet der Treiber SSL. <br/>- Nur gesichert (**OnlySecured**): Der Treiber stellt nur eine Verbindung her, wenn eine SSL-Verbindung verfügbar ist. | Nein  |
-| CaCertFile | Der vollständige Pfad zum vom Server verwendeten SSL-Zertifikat. Beispiel: `UseSystemTrustStore=<cert path>;`| Ja, wenn SSL aktiviert ist |
+| CaCertFile | Der vollständige Pfad zum vom Server verwendeten SSL-Zertifikat. Beispiel: `CaCertFile=<cert path>;`| Ja, wenn SSL aktiviert ist |
 
 **Beispiel:**
 

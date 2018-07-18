@@ -8,17 +8,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: d8866fa6-aba6-40e5-b3b3-33057393c1a8
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: 10fe87757a6da8a64e4fbd7fb624fef3e666714c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 991e4b86a1d3e75c02e5ed8fe97727c625f174a4
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055711"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>Lösungs-Playbook zur Fahrzeugtelemetrieanalyse: Ausführliche Betrachtung der Lösung
 Dieses Menü enthält Links zu den Abschnitten des Playbooks: 
@@ -33,7 +35,7 @@ Für die Lösung werden zwei unterschiedliche Datenquellen verwendet:
 * Datasets mit simulierten Fahrzeugsignalen und Diagnosedaten
 * Fahrzeugkatalog
 
-Zu dieser Lösung gehört ein Simulator für Fahrzeugtelematik, wie im folgenden Bildschirmfoto gezeigt. Diese Anwendung gibt Diagnosedaten und Signale entsprechend dem Zustand des Fahrzeugs und Fahrmuster zu einem bestimmten Zeitpunkt aus. Besuchen Sie die Webseite [Vehicle Telematics Simulator](http://go.microsoft.com/fwlink/?LinkId=717075), um die Visual Studio-Projektmappe „Vehicle Telematics Simulator“ herunterzuladen, wenn Sie Anpassungen nach Ihren Anforderungen vornehmen möchten. Der Fahrzeugkatalog enthält ein Verweisdataset, in dem Fahrzeugidentifizierungsnummern (Vehicle Identification Numbers, VINs) Modellen zugeordnet sind.
+Zu dieser Lösung gehört ein Simulator für Fahrzeugtelematik, wie im folgenden Bildschirmfoto gezeigt. Diese Anwendung gibt Diagnosedaten und Signale entsprechend dem Zustand des Fahrzeugs und Fahrmuster zu einem bestimmten Zeitpunkt aus.  Der Fahrzeugkatalog enthält ein Verweisdataset, in dem Fahrzeugidentifizierungsnummern (Vehicle Identification Numbers, VINs) Modellen zugeordnet sind. Hinweis: Das Dataset für die Visual Studio-Projektmappe Vehicle Telematics Simulator ist nicht mehr verfügbar. 
 
 ![Vehicle Telematics Simulator](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig1-vehicle-telematics-simulator.png)
 
@@ -361,7 +363,7 @@ Die Projektmappe enthält eine Anwendung, mit der das Machine Learning-Modell in
 
 Dieses Muster gilt auch für Szenarien, bei denen Sie eine Branchenanwendung in den Ablauf der Echtzeitanalyse integrieren möchten. Zu diesen Szenarien zählen Warnungen, Benachrichtigungen und Messaging.
 
-Besuchen Sie die Webseite [RealtimeDashboardApp download](http://go.microsoft.com/fwlink/?LinkId=717078), um die Visual Studio-Projektmappe „RealtimeDashboardApp“ zur Verwendung für Anpassungen herunterzuladen. 
+Hinweis: Die Daten für die Visual Studio-Projektmappe RealtimeDashboardApp sind nicht mehr verfügbar.
 
 #### <a name="execute-the-real-time-dashboard-application"></a>**Ausführen der Echtzeit-Dashboardanwendung**
 1. Extrahieren Sie die Projektmappe „RealtimeDashboardApp“, und speichern Sie sie lokal.
@@ -667,10 +669,9 @@ In diesem Dokument wird die Projektmappe für die Fahrzeugtelemetrieanalyse (Veh
 
 ### <a name="references"></a>Referenzen
 
-* [Visual Studio-Projektmappe „Vehicle Telematics Simulator“](http://go.microsoft.com/fwlink/?LinkId=717075) 
 * [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 * [Azure Data Factory](https://azure.microsoft.com/documentation/learning-paths/data-factory/)
 * [Azure Event Hub-SDK für Datenstromerfassung](../../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
-* [Funktionen zum Verschieben von Azure Data Factory-Daten](../../data-factory/v1/data-factory-data-movement-activities.md)
-* [Azure Data Factory-.NET-Aktivität](../../data-factory/v1/data-factory-use-custom-activities.md)
+* [Funktionen zum Verschieben von Azure Data Factory-Daten](../../data-factory/copy-activity-overview.md)
+* [Azure Data Factory-.NET-Aktivität](../../data-factory/transform-data-using-dotnet-custom-activity.md)
 * [Zum Vorbereiten von Beispieldaten verwendete Visual Studio-Projektmappe „Azure Data Factory-.NET-Aktivität“](http://go.microsoft.com/fwlink/?LinkId=717077) 

@@ -15,11 +15,12 @@ ms.date: 07/28/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: c3f07aa0ef4fea773e214e3e161a61e9337dc617
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 673f41e368d54aeed903400179a818e534845860
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292737"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Aspekte der Netzwerktopologie bei Verwendung des Azure Active Directory-Anwendungsproxys
 
@@ -76,7 +77,7 @@ Wenn Sie für die Verbindung zwischen Azure und Ihrem Unternehmensnetzwerk über
 
 ## <a name="focus-your-optimization-strategy"></a>Präzises Ausrichten Ihrer Optimierungsstrategie
 
-Sie können nicht viel tun, um die Verbindung zwischen Ihren Benutzern und dem Anwendungsproxydienst zu steuern. Benutzer können auf Ihre Apps aus einem Heimnetzwerk, einem Café oder einem anderen Land zugreifen. Stattdessen können Sie die Verbindungen vom Anwendungsproxydienst zu den Anwendungsproxyconnectors und den Apps optimieren. Halten Sie sich bei der Einrichtung Ihrer Umgebung an folgende Muster.
+Sie können nicht viel tun, um die Verbindung zwischen Ihren Benutzern und dem Anwendungsproxydienst zu steuern. Benutzer können auf Ihre Apps über ein privates Netzwerk, in einem Café oder von einem anderen Land aus zugreifen. Stattdessen können Sie die Verbindungen vom Anwendungsproxydienst zu den Anwendungsproxyconnectors und den Apps optimieren. Halten Sie sich bei der Einrichtung Ihrer Umgebung an folgende Muster.
 
 ### <a name="pattern-1-put-the-connector-close-to-the-application"></a>Muster 1: Platzieren des Connectors in der Nähe der Anwendung
 
@@ -175,4 +176,4 @@ In dieser Situation können Sie auch eine andere Variante verwenden. Wenn sich d
 - [Aktivieren des Anwendungsproxys](application-proxy-enable.md)
 - [Aktivieren der einmaligen Anmeldung](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Aktivieren des bedingten Zugriffs](application-proxy-integrate-with-sharepoint-server.md)
-- [Problembehandlung von Anwendungsproxys](../active-directory-application-proxy-troubleshoot.md)
+- [Problembehandlung von Anwendungsproxys](application-proxy-troubleshoot.md)

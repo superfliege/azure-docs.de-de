@@ -1,25 +1,20 @@
 ---
-title: Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure | Microsoft Docs
+title: Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure
 description: Wichtige Aspekte beim Planen der Sicherung virtueller Computer in Azure
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keywords: Sichern virtueller Computer, Sichern von VMs
-ms.assetid: 19d2cf82-1f60-43e1-b089-9238042887a9
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 3/23/2018
-ms.author: markgal;trinadhk;sogup
-ms.openlocfilehash: 299794b100ed438de2995d70419025dd686d2278
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: markgal
+ms.openlocfilehash: 92122e7dc62e0f402bcddff099984e6e2c605fae
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606085"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure
 Dieser Artikel enthält leistungs- und ressourcenbezogene Vorschläge, um Ihnen bei der Planung Ihrer Sicherungsinfrastruktur für virtuelle Computer helfen. Darüber hinaus werden in diesem Artikel zentrale Aspekte des Backup-Diensts definiert, die für Ihre Architektur sowie für die Kapazitäts- und Zeitplanung entscheidend sein können. Wenn Sie [Ihre Umgebung vorbereitet](backup-azure-arm-vms-prepare.md) haben, ist die Planung der nächste Schritt, bevor Sie mit dem [Sichern Ihrer virtuellen Computer](backup-azure-arm-vms.md) beginnen. Weitere Informationen zu virtuellen Azure-Computern finden Sie in der [Dokumentation zu Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/).
@@ -119,7 +114,7 @@ Berücksichtigen Sie beim Konfigurieren von Sicherungen für virtuelle Computer 
 * Planen Sie VM-Sicherungen für Nebenzeiten ein. Auf diese Weise nutzt der Backup-Dienst den IOPS-Wert zum Übertragen von Daten aus dem Speicherkonto des Kunden in den Tresor.
 * Sorgen Sie dafür, dass eine Richtlinie für virtuelle Computer angewendet wird, die auf verschiedene Speicherkonten verteilt sind. Mit einem Sicherungszeitplan sollten insgesamt maximal 20 Datenträger eines einzelnen Speicherkontos geschützt werden. Wenn ein Speicherkonto mehr als 20 Datenträger enthält, verteilen Sie die entsprechenden virtuellen Computer auf mehrere Richtlinien, damit in der Übertragungsphase der Sicherung die erforderlichen IOPS zur Verfügung stehen.
 * Stellen Sie einen virtuellen Computer unter Storage Premium nicht unter dem gleichen Speicherkonto wieder her. Wenn der Wiederherstellungsvorgang zur gleichen Zeit stattfindet wie der Sicherungsvorgang, verringern sich dadurch die für die Sicherung verfügbaren IOPS.
-* Vergewissern Sie sich bei der VM-Premium-Sicherung, dass das Speicherkonto, das Premium-Datenträger hostet, mindestens über 50 % freien Staging-Speicherplatz für Momentaufnahmen für eine erfolgreiche Sicherung verfügt. 
+* Für die Sicherung von Premium-VMs im VM-Sicherungsstapel V1 sollten nur 50 % des gesamten Speicherplatzes des Speicherkontos zugeordnet werden, sodass der Azure Backup-Dienst die Momentaufnahme in das Speicherkonto kopieren und Daten von diesem Kopierspeicherort im Speicherkonto in den Tresor übertragen kann.
 * Stellen Sie sicher, dass die für die Sicherung aktivierten virtuellen Linux-Computer die Python-Version 2.7 enthalten.
 
 ## <a name="data-encryption"></a>Datenverschlüsselung

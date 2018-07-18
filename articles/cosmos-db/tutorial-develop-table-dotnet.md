@@ -2,24 +2,22 @@
 title: 'Azure Cosmos DB: Entwickeln mit der Tabellen-API in .NET | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie mit der Tabellen-API von Azure Cosmos DB unter Verwendung von .NET entwickeln können.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
 editor: ''
-ms.assetid: 4b22cb49-8ea2-483d-bc95-1172cd009498
 ms.service: cosmos-db
-ms.workload: ''
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/18/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 52d91205e7b0daa82fb12c166222b1dce4c699eb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e6511b9511d2598b58fd3afee34803ceb09ac5ce
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38582851"
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: Entwickeln mit der Tabellen-API in .NET
 

@@ -7,14 +7,14 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: 9bfe181b2271f4e8af6f43e1728167712dade8ee
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c0429e87f6c58ef2b9c7a268bee596d769e95910
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777595"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919803"
 ---
 # <a name="troubleshoot-azure-site-recovery-extension-failures-issues-with-the-agent-or-extension"></a>Beheben von Fehlern bei der Azure Site Recovery-Erweiterung: Probleme mit dem Agent oder der Erweiterung
 
@@ -29,14 +29,14 @@ Fehlercode: „151076“
  Azure Site Recovery installiert eine Erweiterung auf dem virtuellen Computer als Teil des Aktivierungsschutzes. Jede der folgenden Bedingungen kann verhindern, dass der Schutzvorgang ausgelöst wird und der Auftrag nicht ausgeführt wird. Führen Sie die folgenden Problembehandlungsschritte aus, und wiederholen Sie dann den Vorgang:
 
 **Ursache 1: [Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern).](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
-**Ursache 2: [Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern).](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**Ursache 2: [Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **Ursache 3: [Die Site Recovery-Erweiterung kann nicht aktualisiert oder geladen werden.](#the-site-recovery-extension-fails-to-update-or-load)**  
 
 Fehlermeldung: „Der vorherige Site Recovery-Erweiterungsvorgang nimmt mehr Zeit in Anspruch als erwartet.“<br>
 Fehlercode: „150066“<br>
 
 **Ursache 1: [Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern).](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
-**Ursache 2: [Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern).](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**Ursache 2: [Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **Ursache 3: [Der Status der Site Recovery-Erweiterung ist nicht korrekt.](#the-site-recovery-extension-fails-to-update-or-load)**  
 
 ## <a name="protection-fails-because-the-vm-agent-is-unresponsive"></a>Fehler beim Schutzvorgang, weil der VM-Agent nicht reagiert
@@ -48,7 +48,7 @@ Dieser Fehler kann auftreten, wenn der Azure-Gast-Agent auf dem virtuellen Compu
 Sie können den Status des Azure-Gast-Agents im [Azure-Portal](https://portal.azure.com/) überprüfen. Wechseln Sie zum virtuellen Computer, den Sie schützen möchten, und überprüfen Sie den Status unter „VM > Einstellungen > Eigenschaften > Agent-Status“. Meistens ist der Status des Agents nach dem Neustart des virtuellen Computers „Bereit“. Wenn jedoch ein Neustart nicht möglich ist, oder das Problem weiterhin besteht, führen Sie die folgenden Schritte zur Problembehebung aus.
 
 **Ursache 1: [Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern).](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
-**Ursache 2: [Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern).](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**Ursache 2: [Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 
 
 Fehlermeldung: „Timeout bei der Taskausführung beim Warten auf den Start des Erweiterungsvorgangs.“<br>
@@ -104,7 +104,7 @@ Deinstallieren Sie die Erweiterung, und wiederholen Sie den Vorgang.
 So deinstallieren Sie die Erweiterung:
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com/) zu dem virtuellen Computer, auf dem der Sicherungsfehler auftritt.
-2. Wählen Sie **Einstellungen**.
+2. Wählen Sie **Settings**aus.
 3. Wählen Sie **Erweiterungen**.
 4. Wählen Sie **Site Recovery-Erweiterung**.
 5. Wählen Sie **Deinstallieren**.

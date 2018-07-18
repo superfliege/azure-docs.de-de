@@ -1,11 +1,11 @@
 ---
 title: Installieren von Updates auf einem Microsoft Azure StorSimple Virtual Array | Microsoft Docs
-description: "Hier wird beschrieben, wie Sie die Webbenutzeroberfläche des StorSimple Virtual Arrays verwenden, um Updates und Hotfixes über das Portal anzuwenden."
+description: Hier wird beschrieben, wie Sie die Webbenutzeroberfläche des StorSimple Virtual Arrays verwenden, um Updates und Hotfixes über das Portal anzuwenden.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 9997a97b-9382-43ed-b56e-61369335c987
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23110168"
 ---
 # <a name="install-updates-on-your-storsimple-virtual-array---azure-portal"></a>Installieren von Updates auf einem StorSimple Virtual Array – Azure-Portal
 

@@ -2,8 +2,8 @@
 documentType: LandingData
 title: Dokumentation zu Azure Migrate
 metadata:
-  title: 'Dokumentation zu Azure Migrate – Tutorials, API-Referenz | Microsoft-Dokumentation'
-  description: 'Erfahren Sie, wie Sie lokale Computer für die Migration zu Azure bewerten.'
+  title: Dokumentation zu Azure Migrate – Tutorials, API-Referenz | Microsoft-Dokumentation
+  description: Erfahren Sie, wie Sie lokale Computer für die Migration zu Azure bewerten.
   services: migration-planner
   author: rayne-wiselman
   manager: carmonm
@@ -13,14 +13,20 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/22/2017
   ms.author: raynew
+  ms.openlocfilehash: 64e5293473dd9b5d4b55088e447a5ec3a289372d
+  ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 11/27/2017
+  ms.locfileid: "25927117"
 abstract:
   description: Mit Azure Migrate können Sie die Eignung lokaler Computer für die Migration zu Azure ermitteln und bewerten. Darüber hinaus werden mit diesem Dienst Größen und Kosten für die Ausführung virtueller Azure-Computer geschätzt.
 sections:
-  - title: Schritt-für-Schritt-Tutorials
+- title: Schritt-für-Schritt-Tutorials
+  items:
+  - type: paragraph
+    text: Erfahren Sie, wie Sie virtuelle VMware-Computer für die Migration zu Azure bewerten.
+  - type: list
+    style: unordered
     items:
-      - type: paragraph
-        text: 'Erfahren Sie, wie Sie virtuelle VMware-Computer für die Migration zu Azure bewerten.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="tutorial-assessment-vmware">Erkunden und Bewerten von lokalen virtuellen VMware-Computern</a>
+    - html: <a href="tutorial-assessment-vmware">Erkunden und Bewerten von lokalen virtuellen VMware-Computern</a>

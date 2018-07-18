@@ -11,26 +11,27 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 06/05/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 46a9bf47b4998c4d5be47f67556fbdb3ba7b71db
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 2e5a7cab5c9db0c13ca0c0986c18c86adf675562
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34054093"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850285"
 ---
 # <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Häufig gestellte Fragen zu Azure Active Directory Connect
 
 ## <a name="general-installation"></a>Allgemeine Installation
 **F: Ist die Installation möglich, wenn der globale Azure AD-Administrator 2FA aktiviert hat?**  
-Dies wird in den Builds ab Februar 2016 unterstützt.
+Dieses Szenario wird in den Builds ab Februar 2016 unterstützt.
 
 **F: Gibt es eine Möglichkeit, Azure AD Connect unbeaufsichtigt zu installieren?**  
-Azure AD Connect kann nur mit dem Installationsassistenten installiert werden. Eine unbeaufsichtigte und automatische Installation wird nicht unterstützt.
+Azure AD Connect kann nur mit dem Installationsassistenten installiert werden. Unbeaufsichtigte und automatische Installationen werden nicht unterstützt.
 
 **F: In meiner Gesamtstruktur ist eine Domäne nicht erreichbar. Wie installiere ich Azure AD Connect?**  
-Dies wird in den Builds ab Februar 2016 unterstützt.
+Dieses Szenario wird in den Builds ab Februar 2016 unterstützt.
 
 **F: Funktioniert der AD DS Health-Agent im Serverkern?**  
 Ja. Nach der Installation des Agents können Sie den Registrierungsprozess abschließen, indem Sie das folgende PowerShell-Cmdlet verwenden: 
@@ -38,13 +39,23 @@ Ja. Nach der Installation des Agents können Sie den Registrierungsprozess absch
 `Register-AzureADConnectHealthADDSAgent -Credentials $cred`
 
 **F: Unterstützt AADConnect die Synchronisierung aus zwei Domänen mit Azure AD?**</br>
-Ja, diese Möglichkeit wird unterstützt. Weitere Informationen finden Sie unter [Mehrere Domänen](active-directory-aadconnect-multiple-domains.md).
+Ja, dieses Szenario wird unterstützt. Weitere Informationen finden Sie unter [Mehrere Domänen](active-directory-aadconnect-multiple-domains.md).
  
-**F: Werden mehrere Connectors für dieselbe Active Directory-Domäne in Azure AD Connect unterstützt?**</br> Nein, dies wird nicht unterstützt. 
+**F: Können mehrere Connectors für dieselbe Active Directory-Domäne in Azure AD Connect verwendet werden?**</br> Nein, mehrere Connectors für die gleichen AD-Domäne werden nicht unterstützt. 
+
+**F: Kann ich die Azure AD Connect-Datenbank von der lokalen Datenbank auf einen SQL Server-Remoteserver verschieben?**</br> Ja, in den folgenden Schritten finden Sie einen allgemeinen Leitfaden dazu.  Wir arbeiten derzeit an einem ausführlicheren Dokument, das in Kürze verfügbar sein wird.
+
+
+   1. Sichern Sie die LocalDB-Datenbank „ADSync“. Die einfachste Möglichkeit hierzu ist die Verwendung von SQL Server Management Studio, das auf demselben Computer wie Azure AD Connect installiert ist. Stellen Sie eine Verbindung mit „(localdb)\.\ADSync“ her, und sichern Sie dann die ADSync-Datenbank.
+   2. Stellen Sie die „ADSync“-Datenbank in der Remote-SQL-Instanz wieder her.
+   3. Installieren Sie Azure AD Connect anhand der vorhandenen [Remote-SQL-Datenbank](active-directory-aadconnect-existing-database.md). Der Link enthält die Schritte bei der Migration zur Verwendung einer lokalen SQL-Datenbank. Wenn Sie auf eine Remote-SQL-Datenbank migrieren, müssen Sie in Schritt 5 dieses Prozesses auch ein vorhandenes Dienstkonto eingeben, unter dem der Windows-Synchronisierungsdienst ausgeführt wird. Dieses Dienstkonto der Synchronisierungs-Engine wird hier beschrieben:</br></br>
+   **Verwenden eines bestehenden Dienstkontos** – Für Azure AD Connect wird standardmäßig ein virtuelles Dienstkonto für die Synchronisierungsdienste genutzt. Wenn Sie einen Remote-SQL Server oder einen Proxy mit Authentifizierungsanforderung verwenden, benötigen Sie ein verwaltetes Dienstkonto oder ein Dienstkonto in der Domäne und das Kennwort. Geben Sie in diesen Fällen das zu verwendende Konto ein. Stellen Sie sicher, dass der die Installation ausführende Benutzer ein SA in SQL ist, damit das Dienstkonto erstellt werden kann. Weitere Informationen finden Sie unter [Azure AD Connect: Konten und Berechtigungen](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account).</br></br> Mit dem neuesten Build kann der SQL-Administrator nun eine Out-of-Band-Datenbankbereitstellung ausführen, sodass die Datenbank anschließend vom Azure AD Connect-Administrator mit Datenbankbesitzerrechten installiert werden kann. Weitere Informationen finden Sie unter [Install Azure AD Connect using SQL delegated administrator permissions](active-directory-aadconnect-sql-delegation.md) (Installieren von Azure AD Connect mit Berechtigungen eines delegierten SQL-Administrators).
+
+Damit es nicht zu kompliziert wird, empfehlen wird, dass der Benutzer, der Azure AD Connect installiert, in SQL SA ist. Seit den letzten Builds können Sie jetzt auch delegierte SQL-Administratoren verwenden, wie [hier](active-directory-aadconnect-sql-delegation.md) beschrieben. 
 
 ## <a name="network"></a>Netzwerk
 **F: Die maximale Länge für offene Verbindungen in meinem Netzwerk wird durch eine Firewall, ein Netzwerkgerät o. ä. eingeschränkt. Wie hoch sollte der clientseitige Schwellenwert für die Zeitüberschreitung bei der Verwendung von Azure AD Connect sein?**  
-Für Netzwerksoftware, physische Geräte und alle anderen Komponenten, durch die die maximale Länge von offenen Verbindungen eingeschränkt wird, sollte ein Schwellenwert von mindestens 5 Minuten (300 Sekunden) für die Konnektivität zwischen dem Server, auf dem der Azure AD Connect-Client installiert ist, und Azure Active Directory verwendet werden. Dies gilt auch für alle zuvor veröffentlichten Microsoft Identity-Synchronisierungswerkzeuge.
+Für Netzwerksoftware, physische Geräte und alle anderen Komponenten, durch die die maximale Länge von offenen Verbindungen eingeschränkt wird, sollte ein Schwellenwert von mindestens 5 Minuten (300 Sekunden) für die Konnektivität zwischen dem Server, auf dem der Azure AD Connect-Client installiert ist, und Azure Active Directory verwendet werden. Diese Empfehlung gilt auch für alle zuvor veröffentlichten Microsoft-Identitätssynchronisierungswerkzeuge.
 
 **F: Werden SLDs (einteilige Domänen) unterstützt?**  
 Nein. Azure AD Connect unterstützt keine lokalen Gesamtstrukturen/Domänen mit SLDs.
@@ -60,7 +71,7 @@ Nein, Azure AD Connect unterstützt keine reine IPv6-Umgebung.
 
 ## <a name="federation"></a>Verbund
 **F: Was muss ich tun, wenn ich eine E-Mail erhalte, in der ich aufgefordert werde, mein Office 365-Zertifikat zu erneuern?**  
-Befolgen Sie die Anweisungen, die Sie im Thema [Erneuern von Zertifikaten](active-directory-aadconnect-o365-certs.md) finden, um Ihr Zertifikat zu erneuern.
+Befolgen Sie die Anweisungen, die Sie im Dokument [Erneuern von Zertifikaten](active-directory-aadconnect-o365-certs.md) finden, um Ihr Zertifikat zu erneuern.
 
 **F: Für die vertrauende Seite für Office 365 habe ich „Vertrauende Seite automatisch aktualisieren“ festgelegt. Muss ich bestimmte Maßnahmen ergreifen, wenn mein Tokensignaturzertifikat automatisch verlängert wird?**  
 Befolgen Sie die Anweisungen im Artikel [Erneuern von Zertifikaten](active-directory-aadconnect-o365-certs.md).
@@ -79,10 +90,10 @@ Informationen hierzu finden Sie in diesen Artikeln:
 Sie können Azure AD auch so konfigurieren, dass das Synchronisierungsmodul den userPrincipalName wie unter [Features des Azure AD Connect-Synchronisierungsdiensts](active-directory-aadconnectsyncservice-features.md)beschrieben aktualisiert.
 
 **F: Ist es möglich, Soft-Match-Zuordnungen von lokalen AD-Gruppen-/Kontaktobjekten mit vorhandenen Azure AD-Gruppen-/Kontaktobjekten vorzunehmen?**  
-Ja, diese Zuordnungen basieren auf der Proxyadresse.  Soft Match wird nur für E-Mail-aktivierte Gruppen unterstützt.
+Ja, diese Soft-Match-Zuordnungen basieren auf der Proxyadresse.  Soft Match wird nur für E-Mail-aktivierte Gruppen unterstützt.
 
 **F: Ist es möglich, das ImmutableId-Attribut manuell für vorhandene Azure AD-Gruppen-/Kontaktobjekte festzulegen, um eine Hard-Match-Zuordnung zu lokalen AD-Gruppen-/Kontaktobjekten durchzuführen?**  
-Nein, dies wird derzeit nicht unterstützt.
+Nein, die manuelle Festlegung des ImmutableId-Attributs für vorhandene Azure AD-Gruppen-/Kontaktobjekte, um eine Hard-Match-Zuordnung durchzuführen, wird derzeit nicht unterstützt.
 
 ## <a name="custom-configuration"></a>Benutzerdefinierte Konfiguration
 **F: Wo sind die PowerShell-Cmdlets für Azure AD Connect dokumentiert?**  
@@ -92,10 +103,10 @@ Mit Ausnahme der auf dieser Website dokumentierten Cmdlets werden keine PowerShe
 Nein. Da bei dieser Option nicht alle Einstellungen abgerufen werden, sollte sie nicht verwendet werden. Verwenden Sie stattdessen den Assistenten zum Erstellen der Basiskonfiguration auf dem zweiten Server und verwenden Sie den Synchronisierungsregel-Editor, um PowerShell-Skripts zum Verschieben benutzerdefinierter Regeln zwischen Servern zu erstellen. Siehe [Swing-Migration](active-directory-aadconnect-upgrade-previous-version.md#swing-migration).
 
 **F: Können Kennwörter für die Azure-Anmeldeseite zwischengespeichert werden, und kann dies verhindert werden, da sie ein Kennworteingabeelement mit dem Attribut „autocomplete = "false"“ enthält?**</br>
-Wir unterstützen derzeit keine Änderung der HTML-Attribute des Kennworteingabefelds, einschließlich des AutoVervollständigen-Tags. Wir arbeiten derzeit an einem Feature, das benutzerdefiniertes Javascript zulässt, sodass Sie dem Kennwortfeld beliebige Attribute hinzufügen können. Dies sollte Ende 2017 verfügbar sein.
+Derzeit wird keine Änderung der HTML-Attribute des Kennworteingabefelds, einschließlich des AutoVervollständigen-Tags, unterstützt. Wir arbeiten derzeit an einem Feature, das benutzerdefiniertes Javascript zulässt, sodass Sie dem Kennwortfeld beliebige Attribute hinzufügen können.
 
 **F: Auf der Azure-Anmeldeseite werden Benutzernamen für Benutzer angezeigt, die sich zuvor erfolgreich angemeldet haben.  Kann dieses Verhalten deaktiviert werden?**</br>
-Wir unterstützen derzeit keine Änderung der HTML-Attribute der Anmeldeseite. Wir arbeiten derzeit an einem Feature, das benutzerdefiniertes Javascript zulässt, sodass Sie dem Kennwortfeld beliebige Attribute hinzufügen können. Dies sollte Ende 2017 verfügbar sein.
+Derzeit wird keine Änderung der HTML-Attribute des Kennworteingabefelds, einschließlich des AutoVervollständigen-Tags, unterstützt. Wir arbeiten derzeit an einem Feature, das benutzerdefiniertes Javascript zulässt, sodass Sie dem Kennwortfeld beliebige Attribute hinzufügen können.
 
 **F: Gibt es eine Möglichkeit, gleichzeitige Sitzungen zu verhindern?**</br>
 Nein.
@@ -103,14 +114,18 @@ Nein.
 ## <a name="auto-upgrade"></a>Automatisches Upgrade
 
 **F: Worin bestehen die Vorteile und Folgen der Verwendung des automatischen Upgrades?**</br>
-Allen Kunden wird empfohlen, das automatische Upgrade für ihre Azure AD Connect-Installation zu aktivieren. Die Vorteile bestehen darin, dass sie immer die neuesten Patches erhalten, einschließlich Sicherheitsupdates für Sicherheitsrisiken, die in Azure AD Connect gefunden wurden. Der Upgradeprozess verläuft reibungslos und erfolgt automatisch, sobald eine neue Version verfügbar ist. Mit jeder neuen Version unterstützen wir durch das automatische Upgrade viele Tausende Azure AD Connect-Kunden.
+Wir empfehlen allen Kunden, das automatische Upgrade für ihre Azure AD Connect-Installation zu aktivieren. Die Vorteile bestehen darin, dass sie so immer die neuesten Patches erhalten, einschließlich Sicherheitsupdates für Sicherheitsrisiken, die in Azure AD Connect gefunden wurden. Der Upgradeprozess verläuft reibungslos und erfolgt automatisch, sobald eine neue Version verfügbar ist. Viele Tausende Azure AD Connect-Kunden verwenden das automatische Upgrade mit jeder neuen Version.
 
-Beim Prozess des automatischen Upgrades wird zunächst immer überprüft, ob eine Installation berechtigt für das automatische Upgrade ist (dazu gehört die Suche nach benutzerdefinierten Änderungen an Regeln, nach spezifischen Umgebungsfaktoren usw.). In diesem Fall wird das Upgrade ausgeführt und getestet. Wenn die Tests ergeben, dass ein Upgrade nicht erfolgreich ausgeführt wurde, wird automatisch die vorherige Version wiederhergestellt.
+Beim Prozess des automatischen Upgrades wird zunächst immer überprüft, ob eine Installation berechtigt für das automatische Upgrade ist (dieser Prozess umfasst die Suche nach benutzerdefinierten Änderungen an Regeln, nach spezifischen Umgebungsfaktoren usw.). In diesem Fall wird das Upgrade ausgeführt und getestet. Wenn die Tests ergeben, dass ein Upgrade nicht erfolgreich ausgeführt wurde, wird automatisch die vorherige Version wiederhergestellt.
 
 Je nach der Größe der Umgebung kann der Prozess mehrere Stunden dauern. Während das Upgrade ausgeführt wird, erfolgt keine Synchronisierung zwischen Windows Server AD und Azure AD.
 
 **F: In einer E-Mail wurde mir mitgeteilt, dass das automatische Upgrade nicht mehr funktioniert und dass ich eine neue Version installieren muss. Warum ist dies erforderlich?**</br>
-Letztes Jahr haben wir eine Version von Azure AD Connect veröffentlicht, durch die unter bestimmten Umständen das Feature für automatisches Upgrade auf Ihrem Server deaktiviert wurde. Dieses Problem wurde in Azure AD Connect Version 1.1.750.0 behoben, die Ende des letzten Monats veröffentlicht wurde. Kunden, die möglicherweise von diesem Problem betroffen sind, müssen das Upgrade auf die neueste Version von Azure AD Connect manuell durchführen, um das Problem zu beheben. Für das manuelle Upgrade müssen Sie die neueste Version der Datei „AADConnect.msi“ herunterladen und ausführen.
+Letztes Jahr wurde eine Version von Azure AD Connect veröffentlicht, durch die unter bestimmten Umständen das Feature für automatisches Upgrade auf Ihrem Server deaktiviert wurde. Dieses Problem wurde in Version 1.1.750.0 von Azure AD Connect behoben. Kunden, die möglicherweise von diesem Problem betroffen sind, müssen ein PowerShell-Skript ausführen oder das Upgrade auf die neueste Version von Azure AD Connect manuell durchführen, um das Problem zu beheben. 
+
+Um das PowerShell-Skript ausführen, laden Sie das Skript [hier](https://aka.ms/repairaadconnect) herunter und führen Sie es auf Ihrem AADConnect-Server in einem administrativen PowerShell-Fenster aus. [Dies ist ein kurzes Video](https://aka.ms/repairaadcau), in dem die Vorgehensweise ausführlich erläutert wird.
+
+Für das manuelle Upgrade müssen Sie die neueste Version der Datei „AADConnect.msi“ herunterladen und ausführen.
  
 -  Wenn Ihre aktuelle Version älter als 1.1.750.0 ist, müssen Sie das Upgrade auf die neueste Version durchführen, die Sie [hier herunterladen können](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
 - Wenn Sie Azure AD Connect 1.1.750.0 oder eine neuere Version installiert haben, müssen Sie keine Aktion ausführen, um das Problem zu beheben, da Sie bereits die Version mit der entsprechenden Fehlerkorrektur verwenden. 
@@ -135,26 +150,26 @@ In diesem [Artikel](active-directory-aadconnect-upgrade-previous-version.md) wir
 **F: Wir haben bereits letztes Jahr ein Upgrade auf die neueste Version von AADConnect durchgeführt. Müssen wir erneut ein Upgrade durchführen?**</br> Das Azure AD Connect-Team nimmt häufig Aktualisierungen an diesem Dienst vor. Außerdem ist es wichtig, dass auf Ihrem Server immer die neueste Version installiert ist, sodass Sie von Fehlerkorrekturen und Sicherheitsupdates, aber auch von neuen Features profitieren können. Wenn Sie das automatische Upgrade aktivieren, wird die Softwareversion automatisch aktualisiert. Informationen zum Verlauf der Versionsveröffentlichungen von Azure AD Connect finden Sie unter diesem [Link](active-directory-aadconnect-version-history.md).
 
 **F: Wie lange dauert das Durchführen des Upgrades, und was sind die Auswirkungen für meine Benutzer?**</br>    
-Die erforderliche Zeit für das Upgrade hängt von der Größe Ihres Mandanten ab. Für größere Organisationen empfiehlt sich die Durchführung am Abend oder am Wochenende. Beachten Sie, dass während des Upgrades keine Synchronisierungsvorgänge erfolgen.
+Die erforderliche Zeit für das Upgrade hängt von der Größe Ihres Mandanten ab. Für größere Organisationen empfiehlt sich die Durchführung am Abend oder am Wochenende. Während des Upgrades erfolgen keine Synchronisierungsvorgänge.
 
-**F: Ich bin der Meinung, dass ich das Upgrade auf AADConnect durchgeführt habe, im Office-Portal wird aber weiterhin „DirSync“ angezeigt.  Wie kommt das?**</br>    
+**F: Ich bin der Meinung, dass ich das Upgrade auf AADConnect durchgeführt habe, im Office-Portal wird aber weiterhin „DirSync“ angezeigt.  Warum?**</br>    
 Das Office-Team arbeitet daran, dass bei den Aktualisierungen des Office-Portals der aktuelle Produktname angezeigt wird. Welches Synchronisierungstool Sie verwenden, wird nicht angezeigt.
 
 **F: Ich habe den Status des automatischen Upgrades überprüft, er lautet „Angehalten“. Warum wurde der Dienst angehalten? Muss ich ihn aktivieren?**</br>     
 Eine frühere Version enthielt einen Fehler, der unter bestimmten Umständen dazu führte, dass der Status des automatischen Upgrades auf „Angehalten“ gesetzt wurde. Die manuelle Aktivierung ist technisch möglich, würde aber mehrere komplexe Schritte erfordern. Am besten installieren Sie die neueste Version von Azure AD Connect.
 
-**F: In meinem Unternehmen gelten strenge Anforderungen im Hinblick auf das Change Management, und ich möchte steuern, wann die Übermittlung stattfindet. Kann ich steuern, wann das automatische Upgrade gestartet wird?**</br> Nein, derzeit steht kein solches Feature zur Verfügung. Wir werden dies für eine künftige Version auswerten.
+**F: In meinem Unternehmen gelten strenge Anforderungen im Hinblick auf das Change Management, und ich möchte steuern, wann die Übermittlung stattfindet. Kann ich steuern, wann das automatische Upgrade gestartet wird?**</br> Nein, derzeit steht kein solches Feature zur Verfügung. Wir werden dies jedoch für eine künftige Version auswerten.
 
 **F: Erhalte ich eine E-Mail, wenn beim automatischen Upgrade Fehler auftreten? Woher weiß ich, dass es erfolgreich ausgeführt wurde?**</br>     
-Sie erhalten keine Benachrichtigung in Bezug auf das Ergebnis des Upgrades. Wir werden dies für eine künftige Version auswerten.
+Sie erhalten keine Benachrichtigung in Bezug auf das Ergebnis des Upgrades. Wir werden dieses Feature jedoch für eine künftige Version auswerten.
 
 **F: Veröffentlichen Sie eine Zeitachse im Hinblick auf die geplante Übermittlung von automatischen Upgrades?**</br>    
-Das automatische Upgrade ist der erste Schritt unseres Releaseprozesses einer neueren Version, d.h., sobald eine neue Version zur Verfügung steht, werden automatische Upgrades übertragen. Neuere Versionen von Azure AD Connect werden in der [Azure AD-Roadmap](../../active-directory/whats-new.md) vorab angekündigt.
+Das automatische Upgrade ist der erste Schritt des Releaseprozesses einer neueren Version, d.h., sobald eine neue Version zur Verfügung steht, werden automatische Upgrades übertragen. Neuere Versionen von Azure AD Connect werden in der [Azure AD-Roadmap](../../active-directory/whats-new.md) vorab angekündigt.
 
 **F: Wird mit dem automatischen Upgrade AAD Connect Health aktualisiert?**</br>   Ja, mit dem automatischen Upgrade wird auch AAD Connect Health aktualisiert.
 
 **F: Wird das automatische Upgrade auch für AAD Connect-Server im Stagingmodus durchgeführt?**</br>   
-Nein, für einen Azure AD Connect-Server im Stagingmodus kann kein automatisches Upgrade durchgeführt werden.
+Ja, ein automatisches Upgrade kann für einen Azure AD Connect-Server im Stagingmodus durchgeführt werden.
 
 **F: Wie soll ich vorgehen, wenn beim automatischen Upgrade Fehler auftreten und der AAD Connect-Server nicht gestartet wird?**</br>   
 In seltenen Fällen wird der Azure AD Connect-Dienst nach der Durchführung des Upgrades nicht gestartet. Starten Sie in diesen Fällen den Server neu. Das Problem wird dadurch normalerweise behoben. Wenn der Azure AD Connect-Dienst weiterhin nicht gestartet wird, öffnen Sie ein Supportticket. Die entsprechende Beschreibung finden Sie unter diesem [Link](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/). 
@@ -175,5 +190,5 @@ Wenn Sie Hilfe bei der Durchführung eines Upgrades auf eine neuere Version von 
 
 [Erhalten von Support für Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
 
-* Verwenden Sie diesen Link, um Support über das Azure-Portal zu erhalten.
+
 

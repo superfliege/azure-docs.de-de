@@ -1,42 +1,113 @@
-### <a name="prerequisites"></a>Voraussetzungen
-* Ein Azure-Konto. Sie können ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
-* Eine [Azure SQL-Datenbank](../articles/sql-database/sql-database-get-started.md) mit zugehörigen Verbindungsinformationen, einschließlich Servername, Datenbankname und Benutzername/Kennwort. Diese Informationen sind in der Verbindungszeichenfolge der SQL-Datenbank enthalten:
-  
-    Server=tcp:*IhrSQLServerName*.database.windows.net,1433;Initial Catalog=*IhrSQLDBName*;Persist Security Info=False;User ID={Ihr_Benutzername};Password={Ihr_Kennwort};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
-  
-    Erfahren Sie mehr über [Azure SQL-Datenbanken](https://azure.microsoft.com/services/sql-database).
+---
+title: Includedatei
+description: Includedatei
+services: logic-apps
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 05/15/2018
+ms.author: estfan
+ms.custom: include file
+ms.openlocfilehash: 013e230aa7e096f6a90ed7cf9e93a44fbdeb3bd6
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34678266"
+---
+* Wenn Sie Azure SQL-Datenbank verwenden, führen Sie die Schritte unter [Herstellen einer Verbindung mit Azure SQL-Datenbank](#connect-azure-sql-db) aus. 
 
-> [!NOTE]
-> Wenn Sie eine Azure SQL-Datenbank erstellen, können Sie auch die in SQL enthaltenen Beispieldatenbanken erstellen. 
-> 
-> 
+* Wenn Sie SQL Server verwenden, führen Sie die Schritte unter [Herstellen einer Verbindung mit SQL Server](#connect-sql-server) aus.
 
-Stellen Sie eine Verbindung mit der SQL-Datenbank her, bevor Sie die Azure SQL-Datenbank in einer Logik-App verwenden. Sie können dies ganz einfach in Ihrer Logik-App im Azure-Portal durchführen.  
+<a name="connect-azure-sql-db"></a>
 
-Stellen Sie die Verbindung mit Ihrer Azure SQL-Datenbank mit den folgenden Schritten her:  
+### <a name="connect-to-azure-sql-database"></a>Herstellen einer Verbindung mit Azure SQL-Datenbank
 
-1. Erstellen Sie eine Logik-App. Fügen Sie im Designer für Logik-Apps einen Trigger hinzu, und fügen Sie dann eine Aktion hinzu. Wählen Sie in der Dropdownliste **Von Microsoft verwaltete APIs anzeigen** aus, und geben Sie dann „SQL“ in das Suchfeld ein. Wählen Sie eine der Aktionen aus:  
-   
-    ![Schritt zur Erstellung der SQL Azure-Verbindung](./media/connectors-create-api-sqlazure/sql-actions.png)
-2. Wenn Sie zuvor noch keine Verbindungen mit der SQL-Datenbank hergestellt haben, werden Sie aufgefordert, die Details der Verbindung anzugeben:  
-   
-    ![Schritt zur Erstellung der SQL Azure-Verbindung](./media/connectors-create-api-sqlazure/connection-details.png) 
-3. Geben Sie die SQL-Datenbank-Details ein. Mit einem Sternchen gekennzeichnete Eigenschaften müssen angegeben werden.
-   
-   | Eigenschaft | Details |
-   | --- | --- |
-   | Connect via Gateway (Verbinden über Gateway) |Lassen Sie dieses Kontrollkästchen deaktiviert. Diese Option wird bei der Verbindungsherstellung mit einer lokalen SQL Server-Instanz verwendet. |
-   | Verbindungsname* |Geben Sie einen beliebigen Namen für Ihre Verbindung ein. |
-   | SQL Server-Name* |Geben Sie den Servernamen ein. Dieser sieht in etwa wie folgt aus: *servername.database.windows.net*. Der Servername wird sowohl im Azure-Portal als auch in der Verbindungszeichenfolge in den SQL-Datenbankeigenschaften angezeigt. |
-   | SQL-Datenbankname* |Geben Sie den Namen Ihrer SQL-Datenbank ein. Dieser wird in den SQL-Datenbankeigenschaften in der Verbindungszeichenfolge aufgeführt: Initial Catalog=*IhrSQLDBName*. |
-   | Benutzername* |Geben Sie den Benutzernamen ein, den Sie beim Erstellen der SQL-Datenbank erstellt haben. Dieser wird im Azure-Portal in den SQL-Datenbankeigenschaften aufgeführt. |
-   | Kennwort* |Geben Sie das Kennwort ein, das Sie beim Erstellen der SQL-Datenbank erstellt haben. |
-   
-    Mit diesen Anmeldeinformationen kann Ihre Logik-App eine Verbindung herstellen und auf Ihre SQL-Daten zugreifen. Nach Abschluss des Vorgangs sehen Ihre Verbindungsdetails in etwa wie folgt aus:  
-   
-    ![Schritt zur Erstellung der SQL Azure-Verbindung](./media/connectors-create-api-sqlazure/sample-connection.png) 
-4. Klicken Sie auf **Erstellen**. 
-5. Beachten Sie, dass die Verbindung erstellt wurde. Fahren Sie nun mit den weiteren Schritten in Ihrer Logik-App fort: 
-   
-    ![Schritt zur Erstellung der SQL Azure-Verbindung](./media/connectors-create-api-sqlazure/table.png)
+1. Wenn Sie durch den SQL-Trigger oder die Aktion aufgefordert werden, Verbindungsinformationen anzugeben, gehen Sie folgendermaßen vor:
 
+   1. Geben Sie einen Namen für die Verbindung an.
+
+   2. Wählen Sie Ihren SQL-Server und dann die Datenbank aus. 
+
+      Die Datenbankliste wird erst nach der Auswahl des SQL-Servers angezeigt.
+ 
+   3. Geben Sie den Benutzernamen und das Kennwort für Ihren Server an.
+
+      Sie finden diese Informationen im Azure-Portal in den Eigenschaften Ihrer SQL-Datenbank oder in der Verbindungszeichenfolge: 
+      
+      „User ID=<*IhrBenutzername*>“
+      <br>
+      „Password=<*IhrKennwort*>“
+
+   Dieses Beispiel zeigt die Verbindungsinformationen für einen Trigger, die Schritte gelten aber auch für Aktionen.
+
+   ![Erstellen einer Azure SQL-Datenbank-Verbindung](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
+   <br>
+   Sternchen (*) kennzeichnen erforderliche Werte.
+
+   | Eigenschaft | Wert | Details | 
+   |----------|-------|---------| 
+   | Verbindungsname | <*my-sql-connection*> | Name der Verbindung | 
+   | SQL Server Name | <*my-sql-server*> | Name des SQL-Servers |
+   | SQL Database Name | <*my-sql-database*>  | Name der SQL-Datenbank | 
+   | Username | <*my-sql-username*> | Benutzername für den Zugriff auf die Datenbank |
+   | Password | <*my-sql-password*> | Kennwort für den Zugriff auf die Datenbank | 
+   |||| 
+
+2. Wenn Sie fertig sind, wählen Sie **Erstellen** aus.
+
+3. Nachdem Sie die Verbindung erstellt haben, fahren Sie mit [Hinzufügen eines SQL-Triggers](#add-sql-trigger) oder [Hinzufügen einer SQL-Aktion](#add-sql-action) fort.
+
+<a name="connect-sql-server"></a>
+
+### <a name="connect-to-sql-server"></a>Herstellen einer Verbindung mit SQL Server
+
+Bevor Sie Ihr Gateway auswählen können, sollten Sie sicherstellen, dass Sie bereits das [Datengateway eingerichtet](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection) haben. In diesem Fall wird das Gateway bei der Erstellung der Verbindung in der Gatewayliste angezeigt.
+
+1. Wenn Sie durch den SQL-Trigger oder die Aktion aufgefordert werden, Verbindungsinformationen anzugeben, gehen Sie folgendermaßen vor:
+
+   1. Wählen Sie in den Trigger oder die Aktion und dann **Über lokales Datengateway verbinden** aus, damit die SQL Server-Optionen angezeigt werden.
+
+   2. Geben Sie einen Namen für die Verbindung an.
+
+   3. Geben Sie die Adresse des SQL-Servers und den Namen der Datenbank an.
+   
+      Sie finden diese Informationen in der Verbindungszeichenfolge: 
+      
+      * „Server=<*AdresseIhresServers*>“
+      * „Database=<*NameIhrerDatenbank*>“
+
+   4. Geben Sie den Benutzernamen und das Kennwort für Ihren Server an.
+
+      Sie finden diese Informationen in der Verbindungszeichenfolge: 
+      
+      * „User ID=<*IhrBenutzername*>“
+      * „Password=<*IhrKennwort*>“
+
+   5. Wenn auf dem SQL-Server die Windows- oder die Standardauthentifizierung verwendet wird, wählen Sie den Authentifizierungstyp aus.
+
+   6. Wählen Sie den Namen des lokalen Datengateways aus, das Sie zuvor erstellt haben.
+   
+      Wenn Ihr Gateway nicht in der Liste angezeigt wird, überprüfen Sie, ob Sie das [Gateway richtig eingerichtet](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection) haben.
+
+   Dieses Beispiel zeigt die Verbindungsinformationen für einen Trigger, die Schritte gelten aber auch für Aktionen.
+
+   ![Erstellen einer SQL Server-Verbindung](./media/connectors-create-api-sqlazure/sql-server-create-connection.png)
+   <br>
+   Sternchen (*) kennzeichnen erforderliche Werte.
+
+   | Eigenschaft | Wert | Details | 
+   |----------|-------|---------| 
+   | Über lokales Datengateway verbinden | Wählen Sie diese Option zuerst für SQL Server-Einstellungen aus. | | 
+   | Verbindungsname | <*my-sql-connection*> | Name der Verbindung | 
+   | SQL Server Name | <*my-sql-server*> | Name des SQL-Servers |
+   | SQL Database Name | <*my-sql-database*>  | Name der SQL-Datenbank |
+   | Username | <*my-sql-username*> | Benutzername für den Zugriff auf die Datenbank |
+   | Password | <*my-sql-password*> | Kennwort für den Zugriff auf die Datenbank | 
+   | Authentication Type | Windows oder Standard | Optional: vom SQL-Server verwendeter Authentifizierungstyp | 
+   | Gateways | <*my-data-gateway*> | Name Ihres lokalen Datengateways | 
+   |||| 
+
+2. Wenn Sie fertig sind, wählen Sie **Erstellen** aus. 
+
+3. Nachdem Sie die Verbindung erstellt haben, fahren Sie mit [Hinzufügen eines SQL-Triggers](#add-sql-trigger) oder [Hinzufügen einer SQL-Aktion](#add-sql-action) fort.

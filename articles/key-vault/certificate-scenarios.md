@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: 5f3b8a7b9c7bf582ebc2fac2be8ff55134fbc6f2
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: f1a1a2fa083dd1bf02132e08981d736a17a2c58f
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109483"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Erste Schritte mit Key Vault-Zertifikaten
 Die folgenden Szenarien stellen verschiedene der primären Verwendungen des Key Vault-Zertifikatverwaltungdiensts dar. Dazu gehören auch die zusätzlichen Schritte, die zum Erstellen Ihres ersten Zertifikats in Ihrem Schlüsseltresor erforderlich sind.
@@ -82,8 +83,9 @@ Hinweis: Dieser Prozess bis Schritt 3.1 ist ein einmaliger Vorgang.
       -   Erneuerungsinformationen - > Beispiel: 90 Tage vor Ablauf  
 
   - Ein Zertifikaterstellungsprozess ist normalerweise ein asynchroner Prozess und umfasst das Abrufen des Status der Zertifikaterstellung von Ihrem Schlüsseltresor.  
-[Vorgang zum Abrufen eines Zertifikats](https://docs.microsoft.com/en-us/rest/api/keyvault/getcertificateoperation) – Status: abgeschlossen, fehlgeschlagen mit Fehlerinformationen oder abgebrochen  
-            – Aufgrund einer Verzögerung bei der Erstellung kann ein Abbruchvorgang initiiert werden. Der Abbruchvorgang ist aber möglicherweise nicht wirksam.  
+[Zertifikatabrufvorgang](https://docs.microsoft.com/en-us/rest/api/keyvault/getcertificateoperation)  
+      -   Status: abgeschlossen, Fehler mit Fehlerinformationen oder abgebrochen  
+      -   Aufgrund einer Verzögerung bei der Erstellung kann ein Abbruchvorgang initiiert werden. Der Abbruchvorgang ist aber möglicherweise nicht wirksam.  
 
 ## <a name="import-a-certificate"></a>Importieren eines Zertifikats  
  Alternative: Ein Zertifikat kann in Key Vault als PFX oder PEM importiert werden.  
@@ -119,5 +121,5 @@ Hinweis: Dieser Prozess bis Schritt 3.1 ist ein einmaliger Vorgang.
   (5): Ihre Anwendung schließt die Erstellung des neuen Zertifikats durch das Zusammenführen mit dem X.509-Zertifikat Ihrer Zertifizierungsstelle ab.
 
 ## <a name="see-also"></a>Siehe auch
-- [Zertifikatvorgänge](/rest/api/keyvault/certificate-operations.md)
+- [Zertifikatvorgänge](/rest/api/keyvault/certificate-operations)
 - [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](about-keys-secrets-and-certificates.md)

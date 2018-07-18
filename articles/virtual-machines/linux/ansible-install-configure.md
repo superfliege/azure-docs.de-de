@@ -3,7 +3,7 @@ title: Installieren und Konfigurieren von Ansible für die Verwendung mit virtue
 description: Erfahren Sie, wie Sie Ansible für die Verwaltung von Azure-Ressourcen unter Ubuntu, CentOS und SLES installieren und konfigurieren.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: na
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/04/2018
-ms.author: iainfou
-ms.openlocfilehash: e6fad548eda35d1832cb4ecc2fd9bdabf825f361
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.author: cynthn
+ms.openlocfilehash: e7d57ead2caff87db07380582b9085b831844f1e
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33896128"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930068"
 ---
 # <a name="install-and-configure-ansible-to-manage-virtual-machines-in-azure"></a>Installieren und Konfigurieren von Ansible für das Verwalten von virtuellen Computern in Azure
 
@@ -106,7 +106,7 @@ Installieren Sie die erforderlichen Pakete für die Python-SDK-Module für Azure
 sudo apt-get update && sudo apt-get install -y libssl-dev libffi-dev python-dev python-pip
 
 ## Install Ansible and Azure SDKs via pip
-pip install ansible[azure]
+sudo pip install ansible[azure]
 ```
 
 Fahren Sie anschließend mit dem [Erstellen von Azure-Anmeldeinformationen](#create-azure-credentials) fort.
@@ -150,7 +150,7 @@ Fahren Sie anschließend mit dem [Erstellen von Azure-Anmeldeinformationen](#cre
 
 Ansible kommuniziert mit Azure unter Verwendung von Benutzername und Kennwort oder eines Dienstprinzipals. Ein Azure-Dienstprinzipal ist eine Sicherheitsidentität, die Sie mit Apps, Diensten und Automatisierungstools wie Ansible verwenden können. Sie steuern und definieren die Berechtigungen hinsichtlich der Vorgänge, die der Dienstprinzipal in Azure ausführen können soll. Zur Erhöhung der Sicherheit über die Bereitstellung eines Benutzernamens und Kennworts hinaus wird in diesem Beispiel ein einfacher Dienstprinzipal erstellt.
 
-Erstellen Sie auf dem Hostcomputer oder in der Azure Cloud Shell einen Prinzipal mit [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac). Die für Ansible erforderlichen Anmeldeinformationen werden auf dem Bildschirm ausgegeben:
+Erstellen Sie auf dem Hostcomputer oder in der Azure Cloud Shell einen Prinzipal mit [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac). Die für Ansible erforderlichen Anmeldeinformationen werden auf dem Bildschirm ausgegeben:
 
 ```azurecli-interactive
 az ad sp create-for-rbac --query '{"client_id": appId, "secret": password, "tenant": tenant}'
@@ -166,7 +166,7 @@ Ein Beispiel der Ausgabe der vorherigen Befehle lautet wie folgt:
 }
 ```
 
-Zur Authentifizierung bei Azure müssen Sie auch Ihre Azure-Abonnement-ID mit [az account show](/cli/azure/account#az_account_show) abrufen:
+Zur Authentifizierung bei Azure müssen Sie auch Ihre Azure-Abonnement-ID mit [az account show](/cli/azure/account#az-account-show) abrufen:
 
 ```azurecli-interactive
 az account show --query "{ subscription_id: id }"

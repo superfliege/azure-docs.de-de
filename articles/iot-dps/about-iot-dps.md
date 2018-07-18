@@ -1,22 +1,19 @@
 ---
-title: "Übersicht über den Azure IoT Hub Device Provisioning-Dienst | Microsoft-Dokumentation"
-description: "Beschreibt die Gerätebereitstellung in Azure mit dem Device Provisioning-Dienst und IoT Hub"
-services: iot-dps
-keywords: 
+title: Übersicht über den Azure IoT Hub Device Provisioning-Dienst | Microsoft-Dokumentation
+description: Beschreibt die Gerätebereitstellung in Azure mit dem Device Provisioning-Dienst und IoT Hub
 author: nberdy
 ms.author: nberdy
 ms.date: 12/05/2017
-ms.topic: article
+ms.topic: overview
 ms.service: iot-dps
-documentationcenter: 
-manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: 108ae4a66d2c13906cd0892b6c8ee5b20c3ca605
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+services: iot-dps
+manager: briz
+ms.openlocfilehash: bad33376b9457eff25e3407c8e480cf7c0078a1d
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36316413"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Bereitstellung von Geräten mit dem Azure IoT Hub Device Provisioning-Dienst
 Microsoft Azure bietet einen umfangreichen Satz von integrierten öffentlichen Clouddiensten für alle Ihre IoT-Lösunganforderungen. Der IoT Hub Device Provisioning-Dienst ist ein Hilfsdienst für IoT Hub, der die JIT-Bereitstellung im richtigen IoT-Hub ohne manuelles Eingreifen ermöglicht, sodass Kunden Millionen von Geräten sicher und skalierbar bereitstellen können.
@@ -57,14 +54,14 @@ Beide Schritte fügen sich nahtlos in bestehende Fertigungs- und Bereitstellungs
 ### <a name="manufacturing-step"></a>Fertigungsschritt
 Dieser Schritt umfasst alles, was in der Fertigung geschieht. An diesem Schritt sind Hardwareentwickler und -hersteller, Integrator und/oder Endhersteller des Geräts beteiligt. Dieser Schritt betrifft das Erstellen der Hardware selbst.
 
-Der Device Provisioning-Dienst führt keinen neuen Schritt in den Fertigungsprozess ein; stattdessen bindet er ihn in den vorhandenen Schritt ein, der die grundlegende Software und (im Idealfall) das HSM auf dem Gerät installiert. Statt dass in diesem Schritt eine Geräte-ID erstellt wird, wird das Gerät einfach mit den Bereitstellungsdienstinformationen programmiert, sodass es den Bereitstellungsdienst aufruft, um seine Verbindungsinformationen/IoT-Lösungszuweisung zu erhalten, wenn es eingeschaltet wird.
+Der Device Provisioning-Dienst führt keinen neuen Schritt in den Fertigungsprozess ein; stattdessen bindet er ihn in den vorhandenen Schritt ein, der die grundlegende Software und (im Idealfall) das HSM auf dem Gerät installiert. Statt dass in diesem Schritt eine Geräte-ID erstellt wird, wird das Gerät mit den Bereitstellungsdienstinformationen programmiert, sodass es den Bereitstellungsdienst aufrufen kann, um beim Einschalten seine Verbindungsinformationen/IoT-Lösungszuweisung zu erhalten.
 
-Auch in diesem Schritt liefert der Hersteller dem Bereitsteller/Bediener des Geräts Indentifikationsschlüsselinformationen. Dies ist möglicherweise einfach nur die Bestätigung, dass alle Geräte über ein X.509-Zertifikat verfügen, das aus einem vom Bereitsteller/Bediener des Geräts bereitgestellten Signaturzertifikat generiert wurde, bis hin zum Extrahieren des öffentlichen Teils eines TPM-Endorsement Keys aus jedem TPM-Gerät. Diese Dienste werden heute von vielen Hardwareherstellern angeboten.
+Auch in diesem Schritt liefert der Hersteller dem Bereitsteller/Bediener des Geräts Indentifikationsschlüsselinformationen. Die Angabe dieser Informationen ist möglicherweise einfach nur die Bestätigung, dass alle Geräte über ein X.509-Zertifikat verfügen, das aus einem vom Gerätebereitsteller/-bediener bereitgestellten Signaturzertifikat generiert wurde, kann jedoch auch komplexer sein und das Extrahieren des öffentlichen Teils eines TPM-Endorsement Keys aus jedem TPM-Gerät beinhalten. Diese Dienste werden heute von vielen Hardwareherstellern angeboten.
 
 ### <a name="cloud-setup-step"></a>Cloudeinrichtungsschritt
 In diesem Schritt wird die Cloud für die ordnungsgemäße automatische Bereitstellung konfiguriert. Im Allgemeinen sind zwei Arten von Benutzern am Cloudeinrichtungsschritt beteiligt: eine Person (ein Gerätebediener), die weiß, wie Geräte erstmalig eingerichtet werden müssen, und eine andere Person (ein Lösungsoperator), die weiß, wie Geräte auf die IoT Hubs aufgeteilt werden sollen.
 
-Eine einmalige anfängliche Einrichtung der Bereitstellung muss ausgeführt werden, und diese Aufgabe übernimmt im Allgemeinen der Lösungsoperator. Sobald der Bereitstellungsdienst konfiguriert ist, muss er nicht geändert werden, solange sich der Anwendungsfall nicht ändert.
+Eine einmalige anfängliche Einrichtung der Bereitstellung muss ausgeführt werden, und dies wird im Allgemeinen vom Lösungsoperator übernommen. Sobald der Bereitstellungsdienst konfiguriert ist, muss er nicht geändert werden, solange sich der Anwendungsfall nicht ändert.
 
 Wenn der Dienst für die automatische Bereitstellung konfiguriert ist, muss er auf das Registrieren von Geräten vorbereitet werden. Dieser Schritt erfolgt durch den Gerätebediener, der die gewünschte Konfiguration der Geräte kennt und dafür verantwortlich ist, sicherzustellen, dass der Bereitstellungsdienst ordnungsgemäß die Identität des Geräts nachweisen kann, wenn es seinen IoT Hub sucht. Die Gerätebediener übernimmt die Indentifikationsschlüsselinformationen vom Hersteller und fügt sie der Registrierungsliste hinzu. Die Registrierungsliste kann später aktualisiert werden, indem neue Einträge hinzugefügt oder vorhandene Einträge mit den neuesten Informationen zu den Geräten aktualisiert werden.
 
@@ -74,7 +71,7 @@ Wenn der Dienst für die automatische Bereitstellung konfiguriert ist, muss er a
 1. Im ersten Teil wird durch Registrieren des Geräts eine erstmalige Verbindung des Geräts mit der IoT-Lösung hergestellt.
 2. Im zweiten Schritt wird die richtige Konfiguration des Geräts basierend auf den spezifischen Anforderungen der Lösung, für die es registriert wurde, angewendet.
 
-Erst nach Ausführung beider Schritte ist das Gerät vollständig bereitgestellt. Einige Clouddienste ermöglichen nur den ersten Schritt des Bereitstellungsvorgangs, das Registrieren von Geräten beim Endpunkt der IoT-Lösung, aber nicht die Erstkonfiguration. Der Device Provisioning-Dienst automatisiert beide Schritte und sorgt so für eine nahtlose Bereitstellung des Geräts.
+Nach Ausführung dieser beiden Schritte kann das Gerät als vollständig bereitgestellt bezeichnet werden. Einige Clouddienste ermöglichen nur den ersten Schritt des Bereitstellungsvorgangs, das Registrieren von Geräten beim Endpunkt der IoT-Lösung, aber nicht die Erstkonfiguration. Der Device Provisioning-Dienst automatisiert beide Schritte und sorgt so für eine nahtlose Bereitstellung des Geräts.
 
 ## <a name="features-of-the-device-provisioning-service"></a>Features des Device Provisioning-Diensts
 Der Device Provisioning-Dienst hat viele Features, die ihn zur idealen Lösung zur Bereitstellung von Geräten machen.
@@ -82,31 +79,31 @@ Der Device Provisioning-Dienst hat viele Features, die ihn zur idealen Lösung z
 * Unterstützung des **sicheren Nachweises** für Identitäten auf X.509- und TPM-Basis.
 * Eine **Registrierungsliste** mit der vollständigen Aufzeichnung von Geräten/Gerätegruppen, die sich zu einem beliebigen Zeitpunkt registrieren könnten. Die Registrierungsliste enthält Informationen zu der gewünschten Konfiguration des Geräts, sobald es registriert ist, und sie kann jederzeit aktualisiert werden.
 * **Mehrere Zuordnungsrichtlinien**, um zu steuern, wie der Device Provisioning-Dienst zur Unterstützung Ihrer Szenarien Geräte IoT Hubs zuweist.
-* **Überwachungs- und Diagnoseprotokolle**, um sicherzustellen, dass alles ordnungsgemäß funktioniert.
+* **Überwachungs- und Diagnoseprotokolle**, um sicherzustellen, dass alles ordnungsgemäß funktioniert
 * **Unterstützung für mehrere Hubs**, sodass der Device Provisioning-Dienst Geräte mehreren IoT Hubs zuweisen kann. Der Device Provisioning-Dienst kann mehrere Azure-Abonnements übergreifend mit Hubs kommunizieren.
-* **Regionsübergreifende Unterstützung**, sodass der Device Provisioning-Dienst Geräte IoT Hubs in anderen Regionen zuweisen kann.
+* **Regionsübergreifende Unterstützung**, sodass der Device Provisioning-Dienst Geräte IoT Hubs in anderen Regionen zuweisen kann
 
 Weitere Informationen zu den Konzepten und Features in Verbindung mit der Gerätebereitstellung finden Sie unter [IoT Hub Device Provisioning Service device concepts](concepts-device.md) (IoT Hub Device Provisioning-Dienst: Gerätekonzepte), [IoT Hub Device Provisioning Service concepts](concepts-service.md) (IoT Hub Device Provisioning-Dienst: Konzepte) und [IoT Hub Device Provisioning Service security concepts](concepts-security.md) (IoT Hub Device Provisioning-Dienst: Sicherheitskonzepte).
 
 ## <a name="cross-platform-support"></a>Plattformübergreifende Unterstützung
-Der Device Provisioning-Dienst ist wie alle Azure IoT-Dienste plattformübergreifend mit einer Vielzahl von Betriebssystemen einsetzbar. Azure bietet Open-Source-SDKs in einer Vielzahl von [Sprachen](https://github.com/Azure/azure-iot-sdks) zur Erleichterung von Geräteverbindungen und Dienstverwaltung. Der Device Provisioning-Dienst unterstützt die folgenden Protokolle zum Verbinden von Geräten:
+Der Device Provisioning-Dienst ist wie alle Azure IoT-Dienste plattformübergreifend mit einer Vielzahl von Betriebssystemen einsetzbar. Azure bietet Open Source-SDKs in einer Vielzahl von [Sprachen](https://github.com/Azure/azure-iot-sdks) zur Erleichterung von Geräteverbindungen und Dienstverwaltung. Der Device Provisioning-Dienst unterstützt die folgenden Protokolle zum Verbinden von Geräten:
 
 * HTTPS
 * AMQP
-* AMQP über WebSockets
+* AMQP über Websockets
 * MQTT
-* MQTT über WebSockets
+* MQTT über Websockets
 
 Der Device Provisioning-Dienst unterstützt für Dienstvorgänge nur HTTPS-Verbindungen.
 
 ## <a name="regions"></a>Regionen
-Der Device Provisioning-Dienst ist in vielen Regionen verfügbar. Wir führen unter [Azure-Regionen](https://azure.microsoft.com/regions/) eine für alle Dienste laufend aktualisierte Liste der vorhandenen und neu angekündigten Regionen. Wo der Device Provisioning-Dienst verfügbar ist, erfahren Sie auf der Seite [Azure-Status](https://azure.microsoft.com/status/).
+Der Device Provisioning-Dienst ist in vielen Regionen verfügbar. Eine für alle Dienste laufend aktualisierte Liste der vorhandenen und neu angekündigten Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/). Die Verfügbarkeit des Device Provisioning-Diensts können Sie auf der Seite [Azure-Status](https://azure.microsoft.com/status/) überprüfen.
 
 > [!NOTE]
 > Der Device Provisioning-Dienst ist global und nicht an einen Standort gebunden. Sie müssen jedoch eine Region angeben, in der Ihre dem Device Provisioning-Dienstprofil zugeordneten Metadaten gespeichert werden sollen.
 
 ## <a name="availability"></a>Verfügbarkeit
-Wir setzen eine Vereinbarung zum Servicelevel (SLA) von 99,9 % für den Device Provisioning-Dienst um, und Sie können [die SLA lesen](https://azure.microsoft.com/support/legal/sla/iot-hub/). Die vollständige [Azure-SLA](https://azure.microsoft.com/support/legal/sla/) erläutert die garantierte Verfügbarkeit von Azure insgesamt.
+Für den Device Provisioning-Dienst gilt eine Vereinbarung zum Servicelevel (SLA) von 99,9 Prozent, und Sie können die SLA [hier](https://azure.microsoft.com/support/legal/sla/iot-hub/) einsehen. Die vollständige [Azure-SLA](https://azure.microsoft.com/support/legal/sla/) erläutert die garantierte Verfügbarkeit von Azure insgesamt.
 
 ## <a name="quotas"></a>Kontingente
 Für jedes Azure-Abonnement gelten standardmäßig bestimmte Kontingentgrenzen, die den Umfang Ihrer IoT-Lösung beeinträchtigen könnten. Die aktuelle Grenze auf Abonnementbasis sind 10 Device Provisioning-Dienste pro Abonnement.

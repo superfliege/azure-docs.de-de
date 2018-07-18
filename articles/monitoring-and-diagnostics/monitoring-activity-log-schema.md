@@ -1,22 +1,19 @@
 ---
-title: Ereignisschema des Azure-Aktivitätsprotokolls | Microsoft-Dokumentation
+title: Ereignisschema des Azure-Aktivitätsprotokolls
 description: Informieren Sie sich über das Ereignisschema für Daten, die in das Aktivitätsprotokoll ausgegeben werden
 author: johnkemnetz
-manager: robb
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: reference
 ms.date: 4/12/2018
 ms.author: dukek
-ms.openlocfilehash: 4264bfd733f586dcdabdee8f29494bfffd9a7a76
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.component: activitylog
+ms.openlocfilehash: f6f6c59195fdc79959a1964c1f2770c3b6a68b22
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264550"
 ---
 # <a name="azure-activity-log-event-schema"></a>Ereignisschema des Azure-Aktivitätsprotokolls
 Das **Azure-Aktivitätsprotokoll** ist ein Protokoll, das einen Einblick in alle Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Dieser Artikel beschreibt das Ereignisschema pro Datenkategorie.
@@ -482,6 +479,88 @@ Diese Kategorie enthält den Datensatz, der von Warnungen in Azure Security Cent
 | eventTimestamp |Zeitstempel der Ereignisgenerierung durch den Azure-Dienst, der die zum Ereignis gehörende Anforderung verarbeitet hat. |
 | submissionTimestamp |Zeitstempel des Zeitpunkts, ab dem das Ereignis für Abfragen verfügbar war. |
 | subscriptionId |Azure-Abonnement-ID |
+
+## <a name="recommendation"></a>Empfehlung
+Diese Kategorie enthält den Datensatz mit den neuen Empfehlungen, die für Ihre Dienste generiert werden. Ein Beispiel für eine Empfehlung wäre „Verwenden Sie für eine verbesserte Fehlertoleranz Verfügbarkeitsgruppen“. Es gibt 4 Arten von Empfehlungsereignissen, die generiert werden können: Hochverfügbarkeit, Leistung, Sicherheit und Kostenoptimierung. 
+
+### <a name="sample-event"></a>Beispielereignis
+```json
+{
+    "channels": "Operation",
+    "correlationId": "92481dfd-c5bf-4752-b0d6-0ecddaa64776",
+    "description": "The action was successful.",
+    "eventDataId": "06cb0e44-111b-47c7-a4f2-aa3ee320c9c5",
+    "eventName": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "category": {
+        "value": "Recommendation",
+        "localizedValue": "Recommendation"
+    },
+    "eventTimestamp": "2018-06-07T21:30:42.976919Z",
+    "id": "/SUBSCRIPTIONS/<Subscription ID>/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.COMPUTE/VIRTUALMACHINES/MYVM/events/06cb0e44-111b-47c7-a4f2-aa3ee320c9c5/ticks/636640038429769190",
+    "level": "Informational",
+    "operationId": "",
+    "operationName": {
+        "value": "Microsoft.Advisor/generateRecommendations/action",
+        "localizedValue": "Microsoft.Advisor/generateRecommendations/action"
+    },
+    "resourceGroupName": "MYRESOURCEGROUP",
+    "resourceProviderName": {
+        "value": "MICROSOFT.COMPUTE",
+        "localizedValue": "MICROSOFT.COMPUTE"
+    },
+    "resourceType": {
+        "value": "MICROSOFT.COMPUTE/virtualmachines",
+        "localizedValue": "MICROSOFT.COMPUTE/virtualmachines"
+    },
+    "resourceId": "/SUBSCRIPTIONS/<Subscription ID>/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.COMPUTE/VIRTUALMACHINES/MYVM",
+    "status": {
+        "value": "Active",
+        "localizedValue": "Active"
+    },
+    "subStatus": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "submissionTimestamp": "2018-06-07T21:30:42.976919Z",
+    "subscriptionId": "<Subscription ID>",
+    "properties": {
+        "recommendationSchemaVersion": "1.0",
+        "recommendationCategory": "Security",
+        "recommendationImpact": "High",
+        "recommendationRisk": "None"
+    },
+    "relatedEvents": []
+}
+
+```
+### <a name="property-descriptions"></a>Beschreibungen der Eigenschaften
+| Elementname | BESCHREIBUNG |
+| --- | --- |
+| channels | Immer „Vorgang“ |
+| correlationId | Eine GUID im Zeichenfolgenformat. |
+| Beschreibung |Statische Beschreibung des Empfehlungsereignisses. |
+| eventDataId | Eindeutiger Bezeichner des Empfehlungsereignisses. |
+| category | Immer „Empfehlung“ |
+| id |Eindeutiger Ressourcenbezeichner des Empfehlungsereignisses. |
+| level |Ebene des Ereignisses. Einer der folgenden Werte: „Kritisch“, „Fehler“, „Warnung“, „Information“ oder „Ausführlich“. |
+| operationName |Name des Vorgangs.  Immer „Microsoft.Advisor/generateRecommendations/action“|
+| resourceGroupName |Name der Ressourcengruppe für die Ressource. |
+| resourceProviderName |Name des Ressourcenanbieters für die Ressource, für die diese Empfehlung gilt, z.B. „MICROSOFT.COMPUTE“. |
+| resourceType |Name des Ressourcentyps für die Ressource, für die diese Empfehlung gilt, z.B. „MICROSOFT.COMPUTE/virtualmachines“. |
+| Ressourcen-ID |Ressourcen-ID der Ressource, für die die Empfehlung gilt. |
+| status | Immer „Aktiv“ |
+| submissionTimestamp |Zeitstempel des Zeitpunkts, ab dem das Ereignis für Abfragen verfügbar war. |
+| subscriptionId |Azure-Abonnement-ID |
+| Eigenschaften |Satz mit `<Key, Value>`-Paaren (also ein Wörterbuch), die die Details der Empfehlung beschreiben.|
+| properties.recommendationSchemaVersion| Schemaversion der Empfehlungseigenschaften, die im Aktivitätsprotokolleintrag veröffentlicht werden. |
+| properties.recommendationCategory | Kategorie der Empfehlung. Mögliche Werte sind „Hochverfügbarkeit“, „Leistung“, „Sicherheit“ und „Kosten“. |
+| properties.recommendationImpact| Auswirkung der Empfehlung. Mögliche Werte sind „Hoch“, „Mittel“ oder „Niedrig“. |
+| properties.recommendationRisk| Risiko der Empfehlung. Mögliche Werte sind „Fehler“, „Warnung“, „Kein“. |
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Weitere Informationen zum Aktivitätsprotokoll (bisher „Überwachungsprotokolle“)](monitoring-overview-activity-logs.md)

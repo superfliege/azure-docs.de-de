@@ -15,14 +15,15 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: v-livech
-ms.openlocfilehash: 8df9035cf4a5e62102353c701625526e211b7282
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c1ca250d7255877cc811bf7c03034ecbb8f1f372
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936903"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Erstellen von virtuellen Netzwerkkarten und Verwenden des internen DNS für die Auflösung von virtuellen Computernamen in Azure
-In diesem Artikel wird gezeigt, wie Sie mit der Azure CLI 2.0 mithilfe von virtuellen Netzwerkkarten (vNICs) und DNS-Bezeichnungsnamen statische interne DNS-Namen für virtuelle Linux-Computer festlegen. Sie können diese Schritte auch per [Azure CLI 1.0](static-dns-name-resolution-for-linux-on-azure-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen. Statische DNS-Namen werden für permanente Infrastrukturdienste wie einen Jenkins-Buildserver, der in diesem Dokument als Beispiel dient, oder einen Git-Server verwendet.
+In diesem Artikel wird gezeigt, wie Sie mit der Azure CLI 2.0 mithilfe von virtuellen Netzwerkkarten (vNICs) und DNS-Bezeichnungsnamen statische interne DNS-Namen für virtuelle Linux-Computer festlegen. Statische DNS-Namen werden für permanente Infrastrukturdienste wie einen Jenkins-Buildserver, der in diesem Dokument als Beispiel dient, oder einen Git-Server verwendet.
 
 Folgende Anforderungen müssen erfüllt sein:
 

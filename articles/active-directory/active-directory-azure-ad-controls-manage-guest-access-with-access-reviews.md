@@ -3,22 +3,24 @@ title: Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen | Microso
 description: Verwalten von Gastbenutzern als Mitglieder einer Gruppe oder einer Anwendung zugewiesene Benutzer mit Azure Active Directory-Zugriffsüberprüfungen
 services: active-directory
 documentationcenter: ''
-author: markwahl-msft
+author: rolyon
 manager: mtillman
-editor: ''
+editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/16/2018
-ms.author: billmath
-ms.openlocfilehash: a96e856b55f118b74c7cb43ead925e10e4b74f1c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.component: compliance-reports
+ms.date: 06/21/2018
+ms.author: rolyon
+ms.reviewer: mwahl
+ms.openlocfilehash: 452501d5da58d06093f22009c6ecc30e02f581a5
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192437"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38295638"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen
 
@@ -28,23 +30,20 @@ Mit Azure Active Directory (Azure AD) können Sie problemlos die Zusammenarbeit 
 Sie können auch auf einfache Weise sicherstellen, dass Gastbenutzer über entsprechenden Zugriff verfügen. Hierzu können Sie die Gäste selbst oder einen Entscheidungsträger bitten, an einer Zugriffsüberprüfung teilzunehmen und den Zugriff des Gasts erneut zu zertifizieren (oder zu „bescheinigen“). Basierend auf Vorschlägen von Azure AD können die Prüfer die Notwendigkeit des weiteren Zugriffs der einzelnen Benutzer abwägen. Nach Abschluss einer Zugriffsüberprüfung können Sie dann Änderungen vornehmen und Zugriffsrechte für Gäste entfernen, die diese nicht mehr benötigen.
 
 > [!NOTE]
-> Dieses Dokument beschäftigt sich mit der Überprüfung des Zugriffs von Gastbenutzern. Wenn Sie den Zugriff aller Benutzer überprüfen möchten (und nicht nur den von Gästen), lesen Sie [Verwalten des Benutzerzugriffs mit Azure AD-Zugriffsüberprüfungen](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md). Wenn Sie die Benutzermitgliedschaft in Administratorrollen wie „Globaler Administrator“ überprüfen möchten, finden Sie entsprechende Informationen unter [Starten einer Zugriffsüberprüfung in Azure AD Privileged Identity Management](active-directory-privileged-identity-management-how-to-start-security-review.md). 
+> Dieses Dokument beschäftigt sich mit der Überprüfung des Zugriffs von Gastbenutzern. Wenn Sie den Zugriff aller Benutzer überprüfen möchten (und nicht nur den von Gästen), lesen Sie [Verwalten des Benutzerzugriffs mit Azure AD-Zugriffsüberprüfungen](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md). Wenn Sie die Benutzermitgliedschaft in Administratorrollen wie „Globaler Administrator“ überprüfen möchten, finden Sie entsprechende Informationen unter [Starten einer Zugriffsüberprüfung in Azure AD Privileged Identity Management](privileged-identity-management/pim-how-to-start-security-review.md). 
 >
 >
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
 
-Zugriffsüberprüfungen sind mit der Premium P2-Edition von Azure AD (in Microsoft Enterprise Mobility + Security E5 enthalten) verfügbar. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md). Jeder Benutzer, der mit diesem Feature interagiert (einschließlich Erstellen oder Anwenden einer Zugriffsüberprüfung bzw. Zugreifen darauf), benötigt eine Lizenz. 
-
-Zugriffsüberprüfungen sind mit der Premium P2-Edition von Azure AD (in Microsoft Enterprise Mobility + Security E5 enthalten) verfügbar. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-whatis.md). Jeder Benutzer, der dieses Feature zum Erstellen oder Anwenden einer Zugriffsüberprüfung bzw. Zugreifen darauf verwendet, benötigt eine Lizenz.
-
+Zugriffsüberprüfungen sind mit der Premium P2-Edition von Azure AD (in Microsoft Enterprise Mobility + Security E5 enthalten) verfügbar. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md). Jeder Benutzer, der mit diesem Feature interagiert (einschließlich Erstellen oder Ausfüllen einer Überprüfung bzw. Bestätigen des Zugriffs), benötigt eine Lizenz. 
 
 Wenn Sie Gastbenutzer bitten möchten, ihren eigenen Zugriff zu überprüfen, lesen Sie die Informationen zur Lizenzierung von Gastbenutzern. Weitere Informationen finden Sie unter [Lizenzierung für die Azure AD B2B-Zusammenarbeit](active-directory-b2b-licensing.md).
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Erstellen und Durchführen einer Zugriffsüberprüfung für Gäste
 
-Aktivieren Sie zunächst Zugriffsüberprüfungen, damit diese in den Zugriffsbereichen eines Prüfers angezeigt werden. Navigieren Sie als globaler Administrator zur Seite [Zugriffsüberprüfungen](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/). 
+Aktivieren Sie zunächst Zugriffsüberprüfungen, damit diese in den Zugriffsbereichen eines Prüfers angezeigt werden. Als globaler Administrator oder Benutzerkontoadministrator navigieren Sie zur Seite [Zugriffsüberprüfungen](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/). 
 
 Azure AD ermöglicht mehrere Szenarien für die Überprüfung von Gastbenutzern.
 

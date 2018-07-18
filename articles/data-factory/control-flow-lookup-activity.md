@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/10/2018
+ms.topic: conceptual
+ms.date: 06/15/2018
 ms.author: shlo
-ms.openlocfilehash: b6c2e2b685855455550612abb58ada6a694bbdff
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 25ed439674fcf7136e29034eb97e0652ae9ba111
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011525"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38237831"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Lookup-Aktivität in Azure Data Factory
 
@@ -26,9 +26,6 @@ Mit einer Nachschlageaktivität kann ein Dataset aus einer beliebigen ADF-fähig
 - Dynamische Bestimmung der Objekte (Dateien, Tabellen etc.), die in einer nachfolgenden Aktivität verarbeitet werden sollen, statt der Hartcodierung von Objektnamen
 
 Die Nachschlageaktivität kann den Inhalt einer Konfigurationsdatei, einer Konfigurationstabelle oder das Ergebnis der Ausführung einer Abfrage oder gespeicherten Prozedur lesen und zurückgeben.  Die Ausgabe der Nachschlageaktivität kann als Singleton-Wert in einer nachfolgenden Kopier- oder Transformationsaktivitäten oder als Gruppe von Attributen in einer ForEach-Aktivität verwendet werden.
-
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Azure Data Factory, die sich derzeit in der Vorschauphase befindet. Wenn Sie die allgemein verfügbare Version 1 (GA) des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Dokumentation zur Version 1 von Data Factory](v1/data-factory-introduction.md) weiter.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -279,11 +276,11 @@ Diese Azure SQL-Datenbankinstanz enthält die Daten, die in Blob Storage kopiert
 ```json
 {
   "Id": "1",
-  "tableName": "Table1",
+  "tableName": "Table1"
 }
 {
    "Id": "2",
-  "tableName": "Table2",
+  "tableName": "Table2"
 }
 ```
 
@@ -293,11 +290,11 @@ Diese Azure SQL-Datenbankinstanz enthält die Daten, die in Blob Storage kopiert
 [ 
     {
         "Id": "1",
-          "tableName": "Table1",
-    }
+        "tableName": "Table1"
+    },
     {
         "Id": "2",
-        "tableName": "Table2",
+        "tableName": "Table2"
     }
 ]
 ```

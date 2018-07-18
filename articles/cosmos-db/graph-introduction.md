@@ -3,21 +3,19 @@ title: Einführung in die Graph-APIs von Azure Cosmos DB | Microsoft-Dokumentati
 description: Erfahren Sie, wie Sie anhand der Graph-Abfragesprache Gremlin von Apache TinkerPop umfangreiche Diagramme mit niedrigen Latenzen durch Azure Cosmos DB speichern, abfragen und traversieren können.
 services: cosmos-db
 author: LuisBosquez
-documentationcenter: ''
 manager: kfile
-ms.assetid: b916644c-4f28-4964-95fe-681faa6d6e08
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
-ms.topic: article
+ms.component: cosmosdb-graph
+ms.devlang: na
+ms.topic: overview
 ms.date: 01/05/2017
 ms.author: lbosq
-ms.openlocfilehash: 6deaf57b6314ed4077369beb3195e97281d918e6
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 333bb4074ac741e854ff56c7c397b0e3be247f1b
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857149"
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Einführung in die Graph-API von Azure Cosmos DB
 
@@ -47,7 +45,7 @@ Die Graph-API von Azure Cosmos DB bietet:
 - Einstellbare Konsistenzebenen
 - Umfassende SLAs – einschließlich einer SLA mit einer Verfügbarkeit von 99,99 Prozent für alle Konten mit einer einzelnen Region und für alle Konten mit mehreren Regionen und gelockerter Konsistenz sowie einer Leseverfügbarkeit von 99,999 Prozent für alle Datenbankkonten mit mehreren Regionen.
 
-Zum Abfragen von Azure Cosmos DB können Sie die [Apache TinkerPop](http://tinkerpop.apache.org)-Graph-Traversalsprache [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) oder andere mit TinkerPop kompatible Diagrammsysteme wie [Apache Spark GraphX](spark-connector-graph.md) verwenden.
+Zum Abfragen von Azure Cosmos DB können Sie die Graphdurchlauf-Sprache [Apache TinkerPop](http://tinkerpop.apache.org) oder [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) verwenden.
 
 Dieser Artikel enthält eine Übersicht über die Graph-API von Azure Cosmos DB und erläutert, wie Sie diese zum Speichern von umfangreichen Diagrammen mit Milliarden von Vertices und Edges verwenden können. Sie können die Diagramme mit einer Latenz im Millisekundenbereich abfragen und die Diagrammstruktur und das Schema entwickeln.
 
@@ -95,13 +93,13 @@ Azure Cosmos DB bietet im Vergleich zu anderen Diagrammdatenbanken auf dem Markt
 
 * Kompatibilität mit Apache TinkerPop
 
- Azure Cosmos DB unterstützt systemintern den Open-Source-Standard Apache TinkerPop und kann in andere TinkerPop-fähige Diagrammsysteme integriert werden. So können Sie mühelos Migrationen von einer anderen Diagrammdatenbank wie Titan oder Neo4j durchführen, oder Azure Cosmos DB mit Diagrammanalyseframeworks wie [Apache Spark GraphX](spark-connector-graph.md) verwenden.
+ Azure Cosmos DB unterstützt systemintern den Open-Source-Standard Apache TinkerPop und kann in andere TinkerPop-fähige Diagrammsysteme integriert werden. So können Sie mühelos Migrationen von einer anderen Diagrammdatenbank wie Titan oder Neo4j durchführen oder Azure Cosmos DB mit Graphanalyse-Frameworks wie Apache Spark GraphX verwenden.
 
 * Einstellbare Konsistenzebenen
 
  Die Konsistenz kann über fünf klar definierte Ebenen abgestimmt werden, um für ein ausgewogenes Verhältnis zwischen Konsistenz und Leistung zu sorgen. Für Abfragen und Lesevorgänge bietet Azure Cosmos DB fünf verschiedene Konsistenzebenen – „stark“, „begrenzte Veraltung“, „Sitzung“, „Präfixkonsistenz“ und „letztlich“. Mit diesen granularen, wohldefinierten Konsistenzebenen können fundierte Kompromisse zwischen Konsistenz, Verfügbarkeit und Latenz geschlossen werden. Weitere Informationen finden Sie unter [Einstellbare Datenkonsistenzebenen in Azure Cosmos DB](consistency-levels.md).
 
-Azure Cosmos DB bietet zudem die Möglichkeit, mehrere Modelle wie Dokumente und Diagramme in denselben Containern bzw. Datenbanken zu verwenden. Sie können eine Dokumentsammlung verwenden, um Diagrammdaten zusammen mit Dokumenten zu speichern. Sowohl mit SQL-Abfragen über JSON als auch mit Gremlin Abfragen können Sie dieselben Daten wie ein Diagramm abfragen.
+Azure Cosmos DB bietet zudem die Möglichkeit, mehrere Modelle wie Dokumente und Diagramme in denselben Containern bzw. Datenbanken zu verwenden. Sie können einen Dokumentcontainer verwenden, um Diagrammdaten zusammen mit Dokumenten zu speichern. Sowohl mit SQL-Abfragen über JSON als auch mit Gremlin Abfragen können Sie dieselben Daten wie ein Diagramm abfragen.
 
 ## <a name="get-started"></a>Erste Schritte
 Sie können die Azure-Befehlszeilenschnittstelle (CLI), Azure PowerShell oder das Azure-Portal mit Unterstützung für die Graph-API verwenden, um Azure Cosmos DB-Konten zu erstellen. Nach der Erstellung von Konten wird im Azure-Portal ein Dienstendpunkt wie `https://<youraccount>.gremlin.cosmosdb.azure.com` bereitgestellt, der ein WebSocket-Front-End für Gremlin bietet. Um eine Verbindung mit diesem Endpunkt herzustellen und Anwendungen in Java, Node.js oder einem beliebigen Gremlin-Clienttreiber zu erstellen, können Sie Ihre TinkerPop-kompatiblen Tools wie die [Gremin-Konsole](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) konfigurieren.

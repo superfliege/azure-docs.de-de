@@ -1,12 +1,12 @@
 ---
 title: Azure Relay-Authentifizierung und -Autorisierung | Microsoft-Dokumentation
-description: "Übersicht über die SAS-Authentifizierung (Shared Access Signature) in Azure Relay"
+description: Übersicht über die SAS-Authentifizierung (Shared Access Signature) in Azure Relay
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-relay
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28018116"
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Azure Relay-Authentifizierung und -Autorisierung
 

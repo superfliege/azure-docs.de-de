@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 1febadbbf7821988600d6feddc94fce25d15e989
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ec1727926f6dbfeead9932004715a8bb1dfbb0cd
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36964534"
 ---
 ## <a name="os-config"></a>Hinzufügen von IP-Adressen zu einem VM-Betriebssystem
 
@@ -109,7 +110,7 @@ ping -S 10.0.0.5 hotmail.com
 
     Es sollte die IP-Adresse angezeigt werden, die Sie als Teil der Liste hinzugefügt haben.
 
-### <a name="linux-redhat-centos-and-others"></a>Linux (Redhat, CentOS u.a.)
+### <a name="linux-red-hat-centos-and-others"></a>Linux (Red Hat, CentOS usw.)
 
 1. Öffnen Sie ein Terminalfenster.
 2. Stellen Sie sicher, dass Sie der root-Benutzer sind. Geben Sie andernfalls den folgenden Befehl ein:

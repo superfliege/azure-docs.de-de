@@ -1,24 +1,19 @@
 ---
-title: "Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen | Microsoft Docs"
-description: "Erfahren Sie, wie Sie automatischer Skalierungsvorgänge in Azure Monitor nutzen können, um Web-URLs aufzurufen oder E-Mail-Benachrichtigungen zu senden. "
+title: Verwenden von automatischer Skalierung zum Senden von E-Mail- und Webhook-Warnungsbenachrichtigungen
+description: 'Erfahren Sie, wie Sie automatischer Skalierungsvorgänge in Azure Monitor nutzen können, um Web-URLs aufzurufen oder E-Mail-Benachrichtigungen zu senden. '
 author: anirudhcavale
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: eb9a4c98-0894-488c-8ee8-5df0065d094f
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: ancav
-ms.openlocfilehash: 16caf14028494800e9259f0296c292b606d0210a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: autoscale
+ms.openlocfilehash: 65405a6d7f1d49911da1e2a5d26b02098a261c01
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262221"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Monitor
 In diesem Artikel wird beschrieben, wie Sie Trigger einrichten, damit Sie basierend auf Skalierungsvorgängen in Azure bestimmte Web-URLs aufrufen oder E-Mails senden können.  
@@ -64,7 +59,7 @@ Wenn Sie die REST-API oder die Resource Manager-Vorlage verwenden, fügen Sie da
       }
     ]
 ```
-| Feld | Erforderlich? | Beschreibung |
+| Feld | Erforderlich? | BESCHREIBUNG |
 | --- | --- | --- |
 | operation |Ja |Als Wert muss „Scale“ angegeben werden. |
 | sendToSubscriptionAdministrator |Ja |Als Wert muss „true“ oder „false“ festgelegt werden. |
@@ -75,7 +70,7 @@ Wenn Sie die REST-API oder die Resource Manager-Vorlage verwenden, fügen Sie da
 | Eigenschaften |Ja |Der Wert muss leer {} sein. Er kann auch Schlüssel-Wert-Paare enthalten. |
 
 ## <a name="authentication-in-webhooks"></a>Authentifizierung in Webhooks
-Die Authentifizierung des Webhooks kann mithilfe der Token-basierten Authentifizierung erfolgen, wobei der Webhook-URI mit einer Token-ID (z.B. einem Abfrageparameter) gespeichert wird. Beispiel: https://beispielwarnung/web-rückruf?tokenid=token-id&parameter=wert
+Die Authentifizierung des Webhooks kann mithilfe der Token-basierten Authentifizierung erfolgen, wobei der Webhook-URI mit einer Token-ID (z.B. einem Abfrageparameter) gespeichert wird. Zum Beispiel, https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue
 
 ## <a name="autoscale-notification-webhook-payload-schema"></a>Benachrichtigung über automatische Skalierung mit dem Webhook-Nutzlastschema
 Beim Generieren der Benachrichtigung über automatische Skalierung werden die folgenden Metadaten in die Webhook-Nutzlast aufgenommen:
@@ -107,21 +102,21 @@ Beim Generieren der Benachrichtigung über automatische Skalierung werden die fo
 ```
 
 
-| Feld | Erforderlich? | Beschreibung |
+| Feld | Erforderlich? | BESCHREIBUNG |
 | --- | --- | --- |
 | status |Ja |Status, der angibt, dass ein automatischer Skalierungsvorgang generiert wurde |
 | operation |Ja |Der Vorgang zum Erhöhen der Anzahl der Instanzen ist „Horizontal hochskalieren“ und „Horizontal herunterskalieren“ zum Verringern der Anzahl der Instanzen. |
 | context |Ja |Der Kontext des automatischen Skalierungsvorgangs |
 | timestamp |Ja |Zeitstempel der Auslösung des automatischen Skalierungsvorgangs |
 | id |Ja |Resource Manager-ID der Einstellung für die automatische Skalierung |
-| Name |Ja |Name der Einstellung für die automatische Skalierung |
-| Details |Ja |Erläuterung der Aktion, die der Dienst für die automatische Skalierung ausgeführt hat und der Änderung der Instanzenanzahl |
+| name |Ja |Name der Einstellung für die automatische Skalierung |
+| details |Ja |Erläuterung der Aktion, die der Dienst für die automatische Skalierung ausgeführt hat und der Änderung der Instanzenanzahl |
 | subscriptionId |Ja |Abonnement-ID der Zielressource, die skaliert wird |
-| ResourceGroupName |Ja |Ressourcengruppenname der Zielressource, die skaliert wird |
+| resourceGroupName |Ja |Ressourcengruppenname der Zielressource, die skaliert wird |
 | resourceName |Ja |Name der Zielressource, die skaliert wird |
 | resourceType |Ja |Die drei unterstützten Werte: „microsoft.classiccompute/domainnames/slots/roles“ – Clouddienstrollen, „microsoft.compute/virtualmachinescalesets“ – Skalierungsgruppen für virtuelle Computer und „Microsoft.Web/serverfarms“ – Web-App |
-| resourceId |Ja |Resource Manager-ID der Zielressource, die skaliert wird |
+| Ressourcen-ID |Ja |Resource Manager-ID der Zielressource, die skaliert wird |
 | portalLink |Ja |Link vom Azure-Portal zur Zusammenfassungsseite der Zielressource |
 | oldCapacity |Ja |Die aktuelle (alte) Anzahl von Instanzen, wenn die automatische Skalierung eine Skalierungsaktion durchgeführt hat |
 | newCapacity |Ja |Die neue Anzahl der Instanzen, auf die die automatische Skalierung die Ressource skaliert hat |
-| Eigenschaften |Nein |Optional. Eine Reihe von Schlüssel-Wert-Paaren (Beispiel: Wörterbuch <Zeichenfolge, Zeichenfolge>). Das Feld "properties" ist optional. In einer angepassten Benutzeroberfläche oder einem auf Logik-Apps basierenden Workflow können Sie Schlüssel und Werte eingeben, die mithilfe der Nutzlast übergeben werden können. Alternativ können benutzerdefinierte Eigenschaften über den Webhook-URI selbst (als Abfrageparameter) an den ausgehenden Webhook-Aufruf zurückgegeben werden. |
+| Eigenschaften |Nein  |Optional. Eine Reihe von Schlüssel-Wert-Paaren (Beispiel: Wörterbuch <Zeichenfolge, Zeichenfolge>). Das Feld "properties" ist optional. In einer angepassten Benutzeroberfläche oder einem auf Logik-Apps basierenden Workflow können Sie Schlüssel und Werte eingeben, die mithilfe der Nutzlast übergeben werden können. Alternativ können benutzerdefinierte Eigenschaften über den Webhook-URI selbst (als Abfrageparameter) an den ausgehenden Webhook-Aufruf zurückgegeben werden. |

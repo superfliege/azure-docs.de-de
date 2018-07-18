@@ -2,10 +2,10 @@
 title: Erstellen einer ILB-ASE mit Azure Resource Manager-Vorlagen | Microsoft Docs
 description: Hier erfahren Sie, wie Sie mit Azure Resource Manager-Vorlagen einen internen Load Balancer erstellen.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: nirma
-editor: 
+editor: ''
 ms.assetid: 091decb6-b0de-42a1-9f2f-c18d9b2e67df
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22986835"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Gewusst wie: Erstellen einer ILB-ASE mit Azure Resource Manager-Vorlagen
 

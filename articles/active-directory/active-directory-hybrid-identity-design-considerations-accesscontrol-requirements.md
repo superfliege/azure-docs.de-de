@@ -1,35 +1,37 @@
 ---
-title: "Entwerfen von Hybrididentitäten – Anforderungen für die Zugriffssteuerung in Azure | Microsoft-Dokumentation"
-description: "Es werden die Säulen der Identität erläutert, und es wird die Ermittlung der Zugriffsanforderungen für Ressourcen für Benutzer in einer Hybrid-Umgebung beschrieben."
-documentationcenter: 
+title: Entwerfen von Hybrididentitäten – Anforderungen für die Zugriffssteuerung in Azure | Microsoft-Dokumentation
+description: Es werden die Säulen der Identität erläutert, und es wird die Ermittlung der Zugriffsanforderungen für Ressourcen für Benutzer in einer Hybrid-Umgebung beschrieben.
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: e3b3b984-0d15-4654-93be-a396324b9f5e
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 161820e69b0c9d0dc376a62cecceb9cc5e83c8ce
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 3a61e7ab4c738f6cba17bcc74c3bfd335378ab83
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801217"
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>Ermitteln der Zugriffssteuerungsanforderungen für Ihre Hybrid-Identitätslösung
-Wenn eine Organisation ihre Hybrid-Identitätslösung entwirft, kann sie diese Gelegenheit auch zum Überprüfen von Zugriffsanforderungen für die Ressourcen nutzen, für die eine Bereitstellung für die Benutzer geplant ist. Der Datenzugriff deckt alle vier Säulen der Identität ab, also:
+Wenn eine Organisation ihre Hybrid-Identitätslösung entwirft, kann sie bei dieser Gelegenheit auch die Zugriffsanforderungen für die Ressourcen überprüfen, die sie für Benutzer verfügbar machen möchte. Der Datenzugriff deckt alle vier Säulen der Identität ab, also:
 
 * Verwaltung
 * Authentifizierung
 * Autorisierung
 * Überwachung
 
-Im folgenden Abschnitt wird näher auf die Authentifizierung und Autorisierung eingegangen. Die Verwaltung und die Überwachung sind Teil des Hybrid-Identitätslebenszyklus. Weitere Informationen zu diesen Funktionen finden Sie unter [Ermitteln der Aufgaben für die Hybrididentitätsverwaltung](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).
+Im folgenden Abschnitt wird näher auf die Authentifizierung und Autorisierung eingegangen. Verwaltung und Überwachung sind Teil des Lebenszyklus von Hybrididentitäten. Weitere Informationen zu diesen Funktionen finden Sie unter [Ermitteln der Aufgaben für die Hybrididentitätsverwaltung](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).
 
 > [!NOTE]
 > Weitere Informationen zu den einzelnen Säulen finden Sie unter [Die vier Säulen der Identität – Identitätsverwaltung im Zeitalter von Hybrid-IT](http://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx) (in englischer Sprache).
@@ -41,7 +43,7 @@ Es gibt verschiedene Szenarien für die Authentifizierung und Autorisierung. Die
 
 * Sollen vom Unternehmen nur Benutzer authentifiziert und autorisiert werden, die im eigenen System für die Identitätsverwaltung enthalten sind?
   * Gibt es Pläne für B2B-Szenarien?
-  * Wenn ja: Ist bereits bekannt, welche Protokolle (SAML, OAuth, Kerberos, Token oder Zertifikate) verwendet werden, um beide Unternehmen zu verbinden?
+  * Wenn ja: Ist bereits bekannt, welche Protokolle (SAML, OAuth, Kerberos oder Zertifikate) verwendet werden, um beide Unternehmen zu verbinden?
 * Werden diese Protokolle von der Hybrid-Identitätslösung unterstützt, die Sie einsetzen möchten?
 
 Als weiterer wichtiger Punkt ist zu beachten, wo sich das Authentifizierungsrepository, das von Benutzern und Partnern verwendet wird, und das Verwaltungsmodell befinden. Erwägen Sie die beiden folgenden Hauptoptionen:
@@ -58,7 +60,7 @@ Das Modell, das von Ihrem Unternehmen gewählt wird, richtet sich jeweils nach d
   * Wenn ja: Wirkt sich die Einführung eines Hybrid-Identitätsmodells auf diesen Prozess aus?
 
 ## <a name="access-control"></a>Zugriffssteuerung
-Die Authentifizierung und Autorisierung sind wichtige Elemente, um über die Überprüfung von Benutzern den Zugriff auf Unternehmensdaten zu ermöglichen. Ebenso wichtig ist aber auch die Steuerung der Zugriffsebene, die diese Benutzer haben, sowie der Zugriffsebene von Administratoren für die von ihnen verwalteten Ressourcen. Ihre Hybrid-Identitätslösung muss den präzisen Zugriff auf Ressourcen, Delegierung und die rollenbasierte Zugriffssteuerung bereitstellen können. Stellen Sie sicher, dass in Bezug auf die Zugriffssteuerung die folgenden Fragen beantwortet werden:
+Die Authentifizierung und Autorisierung sind wichtige Elemente, um über die Überprüfung von Benutzern den Zugriff auf Unternehmensdaten zu ermöglichen. Ebenso wichtig ist aber auch die Steuerung der Zugriffsebene, die diese Benutzer haben, sowie der Zugriffsebene von Administratoren für die von ihnen verwalteten Ressourcen. Ihre Hybrididentitätslösung muss präzisen Zugriff auf Ressourcen, Delegierung und die rollenbasierte Zugriffssteuerung bieten. In Bezug auf die Zugriffssteuerung müssen folgende Fragen beantwortet werden:
 
 * Verfügt Ihr Unternehmen über mehr als einen Benutzer mit erhöhten Rechten für die Verwaltung Ihres Identitätssystems?
   * Wenn ja: Ist für jeden Benutzer die gleiche Zugriffsebene erforderlich?

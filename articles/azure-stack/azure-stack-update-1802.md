@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/30/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 5cf61ccaadc40a5f250dcf477de5b446052aba9a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: af65ffc088c2beadf415b72ec284ef77f3e4f6d4
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196218"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757256"
 ---
 # <a name="azure-stack-1802-update"></a>Azure Stack-Update 1802
 
@@ -37,7 +37,7 @@ Die Buildnummer des Azure Stack-Updates 1802 ist **20180302.1**.
 
 ## <a name="before-you-begin"></a>Voraussetzungen    
 > [!IMPORTANT]    
-> Versuchen Sie nicht, während der Installation dieses Updates virtuelle Computer zu erstellen. Weitere Informationen zum Verwalten von Updates finden Sie unter [Übersicht zum Verwalten von Updates in Azure Stack](/azure-stack-updates#plan-for-updates).
+> Versuchen Sie nicht, während der Installation dieses Updates virtuelle Computer zu erstellen. Weitere Informationen zum Verwalten von Updates finden Sie unter [Übersicht zum Verwalten von Updates in Azure Stack](azure-stack-updates.md#plan-for-updates).
 
 
 ### <a name="prerequisites"></a>Voraussetzungen
@@ -108,6 +108,9 @@ Dieses Update enthält die folgenden Verbesserungen und Fehlerbehebungen für Az
 Im Folgenden werden bekannte Probleme nach der Installation zum Build **20180302.1** vorgestellt:
 
 #### <a name="portal"></a>Portal
+- <!-- 2332636 - IS -->  When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
+  Problemumgehung: Um dieses Problem nach der Installation dieses Updates zu beheben, führen Sie Schritt 3 unter [Auslösen der Automatisierung zum Konfigurieren der Anspruchsanbieter-Vertrauensstellung in Azure Stack](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1) aus, um den Besitzer des Abonnements für Standardanbieter zurückzusetzen.   
+
 - Die Funktion, mit der innerhalb des Administratorportals [eine neue Supportanfrage über die Dropdownliste geöffnet wird](azure-stack-manage-portals.md#quick-access-to-help-and-support), ist nicht verfügbar. Verwenden Sie stattdessen den folgenden Link:     
     - Für integrierte Azure Stack-Systeme muss https://aka.ms/newsupportrequest verwendet werden.
 
@@ -138,7 +141,22 @@ Im Folgenden werden bekannte Probleme nach der Installation zum Build **20180302
 
 
 #### <a name="health-and-monitoring"></a>Integrität und Überwachung
-Nach dem Update auf 1802 liegen keine bekannten Probleme vor.
+- <!-- 1264761 - IS ASDK -->  You might see alerts for the *Health controller* component that have the following details:  
+
+  Warnung 1:
+   - NAME: Infrastrukturrolle fehlerhaft
+   - SCHWEREGRAD: Warnung
+   - KOMPONENTE: Health Controller
+   - BESCHREIBUNG: Heartbeat Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.  
+
+  Warnung 2:
+   - NAME: Infrastrukturrolle fehlerhaft
+   - SCHWEREGRAD: Warnung
+   - KOMPONENTE: Health Controller
+   - BESCHREIBUNG: Fault Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.
+
+  Beide Warnungen können ignoriert werden. Sie werden mit der Zeit automatisch geschlossen.  
+
 
 #### <a name="marketplace"></a>Marketplace
 - Benutzer können den gesamten Marketplace ohne Abonnement durchsuchen, und es werden administrative Elemente wie Pläne und Angebote angezeigt. Diese Elemente sind für Benutzer nicht funktional.
@@ -156,7 +174,7 @@ Nach dem Update auf 1802 liegen keine bekannten Probleme vor.
 
 - Wenn Sie im Portal unter **Neu** > **Berechnen** > **Verfügbarkeitsgruppe** eine Verfügbarkeitsgruppe erstellen, können Sie nur eine Verfügbarkeitsgruppe mit einer Fehlerdomäne und einer Updatedomäne erstellen. Erstellen Sie bei der Erstellung eines neuen virtuellen Computers zur Problemumgehung die Verfügbarkeitsgruppe mithilfe von PowerShell, der CLI oder im Portal.
 
-- Beim Erstellen von virtuellen Computern im Azure Stack-Benutzerportal zeigt das Portal eine falsche Anzahl von Datenträgern an, die an eine VM der Serie DS angefügt werden können. VMs der Serie DS können so viele Datenträger wie bei der Azure-Konfiguration aufnehmen.
+- Beim Erstellen von virtuellen Computern im Azure Stack-Benutzerportal zeigt das Portal eine falsche Anzahl von Datenträgern an, die an eine VM der Serie D angefügt werden können. Alle unterstützten virtuellen Computer der Serie D können so viele Datenträger wie bei der Azure-Konfiguration aufnehmen.
 
 - Falls bei der Erstellung eines VM-Images ein Fehler auftritt, wird dem Blatt „Berechnung der VM-Images“ ggf. ein fehlerhaftes Element hinzugefügt, das nicht gelöscht werden kann.
 
@@ -278,6 +296,8 @@ Nach dem Update auf 1802 liegen keine bekannten Probleme vor.
 <!--
 #### Identity
 -->
+
+
 
 #### <a name="downloading-azure-stack-tools-from-github"></a>Herunterladen von Azure Stack-Tools von GitHub
 - Beim Herunterladen der Azure Stack-Tools über GitHub mit dem PowerShell-Cmdlet *invoke-webrequest* ist ein Fehler aufgetreten:     

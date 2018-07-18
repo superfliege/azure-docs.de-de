@@ -1,27 +1,25 @@
 ---
-title: Verwenden von Azure Table Storage oder der Azure Cosmos DB-Tabellen-API aus Java | Microsoft-Dokumentation
-description: Speichern Sie strukturierte Daten mit Azure Table Storage, einem NoSQL-Datenspeicher, in der Cloud.
+title: Verwenden von Azure Table Storage oder der Azure Cosmos DB-Tabellen-API über Java | Microsoft-Dokumentation
+description: Speichern Sie mit Azure Table Storage oder der Azure Cosmos DB-Tabellen-API strukturierte Daten in der Cloud.
 services: cosmos-db
-documentationcenter: java
 author: SnehaGunda
 manager: kfile
-ms.assetid: 45145189-e67f-4ca6-b15d-43af7bfd3f97
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: Java
-ms.topic: article
+ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 4ac25fd9e1d7233546b34da89eb1bcaf37f6f38b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f4ebcf51ab6682009190e467ca9dbf67caf1c182
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34797895"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Verwenden von Azure Table Storage oder der Azure Cosmos DB-Tabellen-API aus Java
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
+[!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
 ## <a name="overview"></a>Übersicht
 Dieser Artikel zeigt, wie Sie allgemeine Szenarien mit dem Azure Table Storage-Dienst und Azure Cosmos DB ausführen. Die Beispiele wurden in Java geschrieben und verwenden das [Azure Storage-SDK für Java][Azure Storage SDK for Java]. Die erläuterten Szenarien umfassten das **Erstellen**, **Auflisten** und **Löschen** von Tabellen sowie das **Einfügen**, **Abfragen**, **Ändern** und **Löschen** von Entitäten in einer Tabelle. Weitere Informationen zu Tabellen finden Sie im Abschnitt [Nächste Schritte](#next-steps) .
@@ -36,13 +34,13 @@ Dieser Artikel zeigt, wie Sie allgemeine Szenarien mit dem Azure Table Storage-D
 ### <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-### <a name="create-an-azure-cosmos-db-table-api-account"></a>Erstellen eines Kontos für die Azure Cosmos DB-Tabellen-API
+### <a name="create-an-azure-cosmos-db-account"></a>Erstellen eines Azure Cosmos DB-Kontos
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="create-a-java-application"></a>Erstellen einer Java-Anwendung
 In diesem Leitfaden verwenden Sie Speicherfunktionen, die lokal innerhalb einer Java-Anwendung oder in Code innerhalb einer Webrolle oder Workerrolle in Azure ausgeführt werden können.
 
-Um die Beispiele in diesem Artikel zu verwenden, installieren Sie das Java Development Kit (JDK), und erstellen Sie dann ein Azure Storage-Konto in Ihrem Azure-Abonnement. Sobald Sie dies erledigt haben, stellen Sie sicher, dass Ihr Entwicklungssystem die minimalen Anforderungen und Abhängigkeiten erfüllt, die im Repository [Azure Storage-SDK für Java][Azure Storage SDK for Java] auf GitHub aufgelistet sind. Wenn Ihr System diese Anforderungen erfüllt, können Sie die Anweisungen für das Herunterladen und Installieren der Azure Storage-Bibliotheken für Java auf Ihr System von diesem Repository befolgen. Sobald Sie diese Aufgaben abgeschlossen haben, können Sie eine Java-Anwendung erstellen, die die Beispiele in diesem Artikel verwendet.
+Um die Beispiele in diesem Artikel zu verwenden, installieren Sie das Java Development Kit (JDK), und erstellen Sie dann ein Azure-Speicherkonto oder ein Azure Cosmos DB-Konto in Ihrem Azure-Abonnement. Sobald Sie dies erledigt haben, stellen Sie sicher, dass Ihr Entwicklungssystem die minimalen Anforderungen und Abhängigkeiten erfüllt, die im Repository [Azure Storage-SDK für Java][Azure Storage SDK for Java] auf GitHub aufgelistet sind. Wenn Ihr System diese Anforderungen erfüllt, können Sie die Anweisungen für das Herunterladen und Installieren der Azure Storage-Bibliotheken für Java auf Ihr System von diesem Repository befolgen. Nach Abschluss dieser Aufgaben können Sie eine Java-Anwendung erstellen, die die Beispiele in diesem Artikel verwendet.
 
 ## <a name="configure-your-application-to-access-table-storage"></a>Konfigurieren Ihrer Anwendung für den Zugriff auf Tabellenspeicher
 Fügen Sie folgende import-Anweisungen am Anfang der Java-Datei dort ein, wo Azure Storage-APIs oder die Azure Cosmos DB-Tabellen-API auf Tabellen zugreifen sollen:
@@ -67,7 +65,7 @@ public static final String storageConnectionString =
     "AccountKey=your_storage_account_key";
 ```
 
-## <a name="add-an-azure-cosmos-db-connection-string"></a>Hinzufügen einer Azure Cosmos DB-Verbindungszeichenfolge
+## <a name="add-an-azure-cosmos-db-table-api-connection-string"></a>Hinzufügen einer Verbindungszeichenfolge für die Azure Cosmos DB-Tabellen-API
 Ein Azure Cosmos DB-Konto verwendet eine Verbindungszeichenfolge, um den Endpunkt für die Tabelle und Ihre Anmeldeinformationen zu speichern. Bei der Ausführung in einer Clientanwendung muss die Azure Cosmos DB-Verbindungszeichenfolge in dem unten gezeigten Format angegeben werden. Dabei müssen der Name Ihres Azure Cosmos DB-Kontos und der primäre Zugriffsschlüssel für das im [Azure-Portal](https://portal.azure.com) aufgeführte Konto als Werte für *AccountName* und *AccountKey* eingegeben werden. 
 
 Dieses Beispiel zeigt, wie Sie ein statisches Feld für die Azure Cosmos DB-Verbindungszeichenfolge deklarieren:
@@ -100,7 +98,7 @@ In den folgenden Beispielen wird davon ausgegangen, dass Sie eine dieser Methode
 Mit einem **CloudTableClient**-Objekt können Sie Referenzobjekte für Tabellen und Entitäten abrufen. Der folgende Code erstellt ein **CloudTableClient**-Objekt und verwendet es zum Erstellen eines neuen **CloudTable**-Objekts, das eine Tabelle mit der Bezeichnung „people“ darstellt. 
 
 > [!NOTE]
-> **CloudStorageAccount**-Objekte können auch auf andere Weise erstellt werden. Weitere Informationen finden Sie in der [Azure Storage-Client-SDK-Referenz] unter **CloudStorageAccount**.
+> **CloudStorageAccount**-Objekte können auch auf andere Weise erstellt werden. Weitere Informationen finden Sie in der [Azure Storage Client SDK-Referenz] unter **CloudStorageAccount**.
 >
 
 ```java
@@ -534,7 +532,7 @@ catch (Exception e)
 ```
 
 ## <a name="delete-an-entity"></a>Löschen einer Entität
-Sie können eine Entität problemlos nach dem Abrufen löschen. Wenn die Entität aufgerufen worden ist, rufen Sie die **TableOperation.delete** -Methode mit der zu löschenden Entität auf. Rufen Sie dann **execute** für das **CloudTable**-Objekt auf. Durch den nachstehenden Code wird eine Kundenentität aufgerufen und gelöscht.
+Sie können eine Entität problemlos nach dem Abrufen löschen. Rufen Sie nach dem Abrufen der Entität die Methode **TableOperation.delete** mit der zu löschenden Entität auf. Rufen Sie dann **execute** für das **CloudTable**-Objekt auf. Durch den nachstehenden Code wird eine Kundenentität aufgerufen und gelöscht.
 
 ```java
 try
@@ -599,7 +597,7 @@ catch (Exception e)
 * [Erste Schritte mit dem Azure-Tabellenspeicherdienst in Java](https://github.com/Azure-Samples/storage-table-java-getting-started)
 * Beim [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.
 * [Azure Storage-SDK für Java][Azure Storage SDK for Java]
-* [Azure Storage-Client-SDK-Referenz][Azure Storage-Client-SDK-Referenz]
+* [Azure Storage Client SDK-Referenz][Azure Storage Client SDK-Referenz]
 * [Azure Storage-REST-API][Azure Storage REST API]
 * [Azure Storage-Teamblog][Azure Storage Team Blog]
 
@@ -608,7 +606,7 @@ Weitere Informationen finden Sie im Artikel [Azure für Java-Entwickler](/java/a
 [Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[Azure Storage-Client-SDK-Referenz]: http://azure.github.io/azure-storage-java/
+[Azure Storage Client SDK-Referenz]: http://azure.github.io/azure-storage-java/
 [Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Tables: Introducing Upsert and Query Projection]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx

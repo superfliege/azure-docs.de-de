@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: fe9998e3b1f5e2a3376f833c3dd8212e4a639274
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: bcb4302c3a237ec75ff670b322c9d068d8700de9
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33941835"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738512"
 ---
 # <a name="use-azure-stream-analytics-tools-for-visual-studio"></a>Verwenden der Azure Stream Analytics-Tools für Visual Studio
 Azure Stream Analytics-Tools für Visual Studio sind jetzt allgemein verfügbar. Diese Tools bieten umfangreichere Funktionen für Stream Analytics-Benutzer beim Beheben von Problemen sowie beim Verfassen komplexer Abfragen und sogar beim lokalen Schreiben von Abfragen. Sie können auch einen Stream Analytics-Auftrag in ein Visual Studio-Projekt exportieren.
@@ -31,8 +31,7 @@ Nach Abschluss dieses Tutorials, werden Sie in der Lage sein, folgende Aufgaben 
 * Exportieren vorhandener Aufträge in Projekte
 
 >[!IMPORTANT]
->
->Angesichts der am 25. Mai 2018 in Kraft tretenden Datenschutz-Grundverordnung (DSGVO) sollten Benutzer von Azure Stream Analytics Tools für Visual Studio vorsorglich mindestens ein Upgrade auf die Version 2.3.3000.5 durchführen. Diese Version enthält Änderungen zur Erfüllung der neuesten Datenschutzanforderungen. Ältere Versionen stehen nicht zum Download zur Verfügung und sind veraltet. 
+> Microsoft empfiehlt Ihnen das Upgrade auf Version 2.3.3000.4 (oder höher) der Azure Data Lake Tools für Visual Studio. Ältere Versionen stehen nicht mehr als Download zur Verfügung und sind veraltet. 
 >
 >**Was muss ich tun?**
 >

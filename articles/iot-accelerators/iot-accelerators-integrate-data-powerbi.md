@@ -1,22 +1,19 @@
 ---
 title: Visualisieren von Remoteüberwachungsdaten mit Power BI – Azure | Microsoft-Dokumentation
 description: In diesem Tutorial werden Daten aus einer Remoteüberwachungslösung unter Verwendung von Power BI Desktop und Cosmos DB in eine benutzerdefinierte Visualisierung integriert. So können Benutzer ihre eigenen benutzerdefinierten Dashboards erstellen und sie mit Benutzern teilen, die die Lösung nicht verwenden.
-services: iot-suite
-suite: iot-suite
 author: asdonald
 manager: hegate
 ms.author: asdonald
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 05/01/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 55feb56008a54676bd0af332e251da94a9653aaf
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: ae039573cf202059114f23cca86207c117a35ead
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970399"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Visualisieren von Remoteüberwachungsdaten mit Power BI
 
@@ -97,15 +94,15 @@ Nach der Verbindungsherstellung mit dem Datenstrom können Sie Ihre personalisie
 
 ## <a name="publishing-the-dashboard-and-refreshing-the-data"></a>Veröffentlichen des Dashboards und Aktualisieren der Daten
 
-Erfolgreich erstellte Dashboards sollten [veröffentlicht](https://docs.microsoft.com/en-us/power-bi/desktop-upload-desktop-files) werden, um sie mit anderen zu teilen.
+Erfolgreich erstellte Dashboards sollten [veröffentlicht](https://docs.microsoft.com/power-bi/desktop-upload-desktop-files) werden, um sie mit anderen zu teilen.
 
-Darüber hinaus sollten Sie die [Daten für das veröffentlichte Dashboard aktualisieren](https://docs.microsoft.com/en-us/power-bi/refresh-data), um sicherzustellen, dass Sie über das neueste Dataset verfügen.
+Darüber hinaus sollten Sie die [Daten für das veröffentlichte Dashboard aktualisieren](https://docs.microsoft.com/power-bi/refresh-data), um sicherzustellen, dass Sie über das neueste Dataset verfügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel haben Sie erfahren, wie Sie Remoteüberwachungsdaten mithilfe von Power BI visualisieren.
 
-Weitere Informationen zum Anpassen der Remoteüberwachungslösung finden Sie in folgenden Quellen:
+Weitere Informationen zum Anpassen der Remoteüberwachungslösung finden Sie hier:
 
 * [Anpassen der vorkonfigurierten Remoteüberwachungslösung](iot-accelerators-remote-monitoring-customize.md)
 * [Referenzhandbuch für Entwickler](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)

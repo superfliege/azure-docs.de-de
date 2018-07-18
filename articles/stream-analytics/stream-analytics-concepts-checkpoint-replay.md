@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: 1a7cb6c5d9c3383b127ce38ae21bb2dc811e1f2e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 32970ff37d202cc73e7ab7aa1bf3d737dae895c1
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936716"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Begriffe zu Prüfpunkten und zur Wiedergabe bei Azure Stream Analytics-Aufträgen
 In diesem Artikel werden Begriffe zu internen Prüfpunkten und zur Wiedergabe in Azure Stream Analytics sowie deren Auswirkung auf die Wiederherstellung von Aufträgen beschrieben. Bei jeder Ausführung eines Stream Analytics-Auftrags werden intern Zustandsinformationen verwaltet. Die Zustandsinformationen werden in regelmäßigen Abständen in einem Prüfpunkt gespeichert. In einigen Szenarien werden die Prüfpunktinformationen bei einem Auftragsfehler oder einem Upgrade für die Auftragswiederherstellung verwendet. In anderen Fällen kann der Prüfpunkt nicht für die Wiederherstellung verwendet werden, sodass eine Wiedergabe erforderlich ist.
@@ -47,7 +48,7 @@ Microsoft führt gelegentlich Upgrades für die Binärdateien durch, die Stream 
 
 Das Format des Wiederherstellungsprüfpunkts zwischen Upgrades wird derzeit nicht gespeichert. Der Zustand der Streamingabfrage muss daher vollständig mithilfe der Wiedergabemethode wiederhergestellt werden. Damit Stream Analytics-Aufträge genau dieselbe Eingabe wiedergeben können wie vorher, muss unbedingt eine Aufbewahrungsrichtlinie für die Quelldaten mit mindestens den Fenstergrößen in Ihrer Abfrage festgelegt werden. Anderenfalls sind möglicherweise falsche oder Teilergebnisse beim Dienstupgrade die Folge, da die Quelldaten nicht weit genug in der Vergangenheit beibehalten wurden, um die vollständige Fenstergröße einzuschließen.
 
-Grundsätzlich verhält sich die erforderliche Wiedergabemenge proportional zur Größe des Fensters multipliziert mit der durchschnittlichen Ereignisrate. Beispiel: Bei einem Auftrag mit einer Eingangsrate von 1000 Ereignissen pro Sekunde gilt eine Fenstergröße von mehr als einer Stunde als große Wiedergabegröße. Bei Abfragen mit umfangreicher Wiedergabegröße können Sie für einen längeren Zeitraum eventuell eine verzögerte Ausgabe (keine Ausgabe) beobachten. 
+Grundsätzlich verhält sich die erforderliche Wiedergabemenge proportional zur Größe des Fensters multipliziert mit der durchschnittlichen Ereignisrate. Beispiel: Bei einem Auftrag mit einer Eingangsrate von 1000 Ereignissen pro Sekunde gilt eine Fenstergröße von mehr als einer Stunde als große Wiedergabegröße. Möglicherweise müssen bis zu einer Stunde an Daten erneut verarbeitet werden, um den Zustand zu initialisieren, sodass vollständige und korrekte Ergebnisse erzielt werden können, was zu einer verzögerten Ausgabe (keine Ausgabe) über einen längeren Zeitraum führen kann. Abfragen ohne Fenster oder andere temporale Operatoren, wie `JOIN` oder `LAG` würden eine Wiedergabemenge von 0 haben.
 
 ## <a name="estimate-replay-catch-up-time"></a>Einschätzung der Wiedergabeaufholzeit
 Um die Länge der Verzögerung aufgrund eines Dienstupgrades einzuschätzen, können Sie das folgende Verfahren ausführen:

@@ -6,15 +6,16 @@ author: rmatchoro
 manager: craigg
 ms.service: sql-database
 ms.custom: security, managed instance
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: ronmat
 ms.reviewer: carlrab
-ms.openlocfilehash: 2112a0a3997af478de6b8c80abcf7924a66302f0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 14ef907717045e2e0cf297694d92468a65e57e4d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650076"
 ---
 # <a name="azure-sql-database-managed-instance-threat-detection"></a>Bedrohungserkennung für eine verwaltete Azure SQL-Datenbank-Instanz
 
@@ -32,7 +33,7 @@ Durch die SQL-Bedrohungserkennung werden Warnungen in [Azure Security Center](ht
 1. Starten Sie das Azure-Portal unter [https://portal.azure.com](https://portal.azure.com).
 2. Navigieren Sie zur Konfigurationsseite der verwalteten Instanz, die geschützt werden soll. Wählen Sie auf der Seite **Einstellungen** die Option **Bedrohungserkennung** aus. 
 3. Auf der Konfigurationsseite für die Bedrohungserkennung 
-   - **Aktivieren Sie** die Bedrohungserkennung.
+   - Aktivieren **Sie** die Bedrohungserkennung.
    - Konfigurieren Sie die **Liste der E-Mail-Empfänger**, die bei Erkennung anomaler Datenbankaktivitäten Sicherheitswarnungen erhalten sollen.
    - Wählen Sie das **Azure Storage-Konto** aus, in dem Überwachungsdatensätze zu anomalen Bedrohungen gespeichert werden. 
 4.  Klicken Sie auf **Speichern**, um die neue oder aktualisierte Richtlinie für die Bedrohungserkennung zu speichern.

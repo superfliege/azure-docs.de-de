@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33765635"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Verwalten des Ablaufs von Azure Blob-Speicher in Azure CDN
 > [!div class="op_single_selector"]

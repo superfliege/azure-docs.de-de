@@ -8,13 +8,13 @@ ms.service: sql-database
 ms.custom: load & move data
 ms.date: 04/10/2018
 ms.author: carlrab
-ms.topic: article
-ms.openlocfilehash: bd9554a18775cf98f4415ebd5d4b0d52edc53718
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.topic: conceptual
+ms.openlocfilehash: d22c9a05d1fe56d71eb901c0a4bf22c179dfe937
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894186"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646914"
 ---
 # <a name="import-a-bacpac-file-to-a-new-azure-sql-database"></a>Importieren einer BACPAC-Datei in eine neue Azure SQL-Datenbank
 
@@ -101,7 +101,10 @@ $importStatus
 ```
 
 > [!TIP]
-Ein weiteres Skriptbeispiel finden Sie unter [Importieren von einer BACPAC-Datei in eine SQL-­Datenbank mithilfe von PowerShell](scripts/sql-database-import-from-bacpac-powershell.md).
+Ein weiteres Skriptbeispiel finden Sie unter [Importieren einer Datenbank aus einer BACPAC-Datei](scripts/sql-database-import-from-bacpac-powershell.md).
+
+## <a name="limitations"></a>Einschränkungen
+- Das Importieren in eine Datenbank in einen Pool für elastische Datenbanken wird nicht unterstützt. Sie können jedoch Daten in eine Singleton-Datenbank importieren und die Datenbank anschließend in einen Pool verschieben.
 
 ## <a name="import-using-other-methods"></a>Importieren mithilfe anderer Methoden
 

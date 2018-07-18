@@ -14,6 +14,7 @@ ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/17/2017
+ms.locfileid: "23451637"
 ---
 # <a name="search-unstructured-data-in-cloud-storage"></a>Suchen von unstrukturierten Daten in Cloudspeicher
 

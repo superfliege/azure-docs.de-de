@@ -12,6 +12,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29121524"
 ---
 # <a name="terraform-cloud-shell-development"></a>Entwicklung mit Terraform und Cloud Shell 
 

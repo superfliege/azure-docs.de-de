@@ -55,8 +55,6 @@
       href: ../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fcdn%2ftoc.json
     - name: Authentifizieren von Benutzern
       href: app-service-web-tutorial-auth-aad.md
-    - name: Bereitstellen von Apps in Azure App Service mit VSTS und CI/CD
-      href: 'https://docs.microsoft.com/learn/deploy-apps-to-azure/index'
 - name: Beispiele
   items:
     - name: Azure-Befehlszeilenschnittstelle
@@ -168,6 +166,8 @@
           href: app-service-configure-premium-tier.md
         - name: Horizontales Hochskalieren auf mehrere Instanzen
           href: ../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json
+        - name: High Density-Hosting
+          href: app-service-high-density-hosting.md
     - name: Überwachen der App
       items:
         - name: Kontingente und Warnungen
@@ -276,3 +276,11 @@
               href: app-service-web-open-source-technologies-faq.md
             - name: Häufig gestellte Fragen zu Konfiguration und Verwaltung
               href: app-service-web-configuration-and-management-faq.md
+    - name: Änderung der IP-Adresse
+      items:
+        - name: IP-Adresse für eingehenden Datenverkehr
+          href: ip-address-change-inbound.md
+        - name: IP-Adresse für ausgehenden Datenverkehr
+          href: ip-address-change-outbound.md
+        - name: SSL-Adresse
+          href: ip-address-change-ssl.md

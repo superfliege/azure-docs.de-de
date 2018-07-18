@@ -1,18 +1,21 @@
 ---
 title: Funktionen für Kundendatenanforderungen
+description: Zusammenfassung der Features für Kundendatenanforderungen
 author: dominicbetts
 ms.author: dobett
+manager: timlt
 ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
-ms.openlocfilehash: 3af76fe22e93b6c5d502733196994bda61b9a93e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+services: iot-hub
+ms.openlocfilehash: 73da48d449a7cc5cdca598c8aef176952909ed85
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361514"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634922"
 ---
-# <a name="summary-of-customer-data-request-features"></a>Übersicht über Funktionen für Kundendatenanforderungen
+# <a name="summary-of-customer-data-request-features"></a>Zusammenfassung der Features für Kundendatenanforderungen
 
 Azure IoT Hub ist ein REST-API-basierter Clouddienst, der auf Unternehmenskunden ausgerichtet ist und eine sichere und bidirektionale Kommunikation zwischen Millionen von Geräten und einem partitionierten Azure-Dienst ermöglicht.
 

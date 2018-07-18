@@ -1,25 +1,19 @@
 ---
-title: Protokollwarnungen in Azure Monitor – Warnungen | Microsoft-Dokumentation
+title: Protokollwarnungen in Azure Monitor
 description: Lösen Sie E-Mails, Benachrichtigungen, den Aufruf von Website-URLs (Webhooks) oder eine Automatisierung aus, wenn die von Ihnen angegebenen analytischen Abfragebedingungen für Azure-Warnungen erfüllt sind.
 author: msvijayn
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: f7457655-ced6-4102-a9dd-7ddf2265c0e2
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 8bf534177e8236a7d72d6dfdd4612b5f6f492b17
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.component: alerts
+ms.openlocfilehash: f36f05789424cfd3213525dd501333f852a0d9c2
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34057320"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971719"
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Protokollwarnungen in Azure Monitor – Warnungen 
 Dieser Artikel enthält Details zu Protokollwarnungen. Dies ist einer der Typen von Warnungen, die im Rahmen der neuen [Azure-Warnungen](monitoring-overview-unified-alerts.md) unterstützt werden. Sie ermöglichen es Benutzern, die Analyseplattform von Azure als Basis für die Bereitstellung von Warnungen zu verwenden. Details zu Metrikwarnungen, die Protokolle verwenden, finden Sie unter [Metrikwarnungen nahezu in Echtzeit](monitoring-near-real-time-metric-alerts.md).
@@ -36,7 +30,7 @@ Regeln für die Protokollsuche werden anhand der folgenden Details definiert:
 - **Protokollabfrage**:  Die Abfrage, die bei jeder Auslösung der Warnungsregel ausgeführt wird.  Mit den von dieser Abfrage zurückgegebenen Datensätzen wird ermittelt, ob eine Warnung erstellt werden muss. Eine *Azure Application Insights*-Abfrage kann auch [anwendungsübergreifende Aufrufe](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery) umfassen, sofern der Benutzer über Zugriffsrechte für die externen Anwendungen verfügt. 
 
     > [!IMPORTANT]
-    > Da sich die Unterstützung von [anwendungsübergreifenden Abfragen für Application Insights](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery) in der Vorschauphase befindet, können sich Funktionen und die Benutzeroberfläche also noch ändern. Die Verwendung von [übergreifenden Abfragen für Arbeitsbereiche](https://dev.loganalytics.io/oms/documentation/3-Using-the-API/CrossResourceQuery) und [ressourcenübergreifenden Abfragen für Log Analytics](../log-analytics/log-analytics-cross-workspace-search.md) wird für Azure-Warnungen derzeit **nicht unterstützt**.
+    > Die Unterstützung von [anwendungsübergreifenden Abfragen für Application Insights](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery) befindet sich in der Vorschauphase – die Funktionalität ist auf die Verwendung mit zwei oder mehr Apps eingeschränkt, und die Benutzeroberfläche kann sich noch ändern. Die Verwendung von [übergreifenden Abfragen für Arbeitsbereiche](https://dev.loganalytics.io/oms/documentation/3-Using-the-API/CrossResourceQuery) und [ressourcenübergreifenden Abfragen für Log Analytics](../log-analytics/log-analytics-cross-workspace-search.md) wird für Azure-Warnungen derzeit **nicht unterstützt**.
 
 - **Zeitraum**:  Gibt den Zeitraum für die Abfrage an. Die Abfrage gibt nur Datensätze zurück, die innerhalb dieses aktuellen Zeitbereichs erstellt wurden. Mit dem Zeitraum werden die Daten eingeschränkt, die für eine Protokollabfrage abgerufen werden, um Missbrauch zu verhindern, und alle in einer Protokollabfrage verwendeten Zeitbefehle (z.B. „ago“) werden umgangen. <br>*Wenn der Zeitraum beispielsweise auf 60 Minuten festgelegt ist und die Abfrage um 13:15 Uhr ausgeführt wird, werden nur Datensätze zurückgegeben, die zwischen 12:15 und 13:15 Uhr erstellt wurden, um die Protokollabfrage auszuführen. Falls für die Protokollabfrage ein Zeitbefehl wie „ago (7d)“ verwendet wird, wird die Protokollabfrage nur für Daten zwischen 12:15 und 13:15 Uhr ausgeführt, als ob nur Daten für die letzten 60 Minuten vorhanden wären. Und nicht Daten für sieben Tage, wie in der Protokollabfrage angegeben.*
 - **Häufigkeit**:  Gibt an, wie oft die Abfrage ausgeführt werden soll. Dies kann ein beliebiger Wert zwischen 5 Minuten und 24 Stunden sein. Er sollte kleiner als oder gleich dem Zeitraumwert sein.  Wenn der Wert größer als der Zeitraum ist, besteht das Risiko, dass Datensätze ausgelassen werden.<br>*Angenommen, Sie verwenden einen Zeitraum von 30 Minuten und eine Häufigkeit von 60 Minuten.  Wenn die Abfrage um 13:00 Uhr ausgeführt wird, gibt sie die Datensätze für den Zeitraum zwischen 12:30 und 13:00 Uhr zurück.  Wenn die Abfrage dann das nächste Mal um 14 Uhr ausgeführt wird, gibt sie die Datensätze für den Zeitraum zwischen 13:30 und 14:00 Uhr zurück.  Alle Datensätze, die zwischen 13:00 und 13:30 erstellt werden, werden also nicht ausgewertet.*
@@ -126,7 +120,7 @@ Für Protokollwarnungen bereitgestellte APIs sind „RESTful“, und es kann üb
 
 Ausführliche Informationen und Beispiele für die Verwendung der REST-API finden Sie unter:
 - [Erstellen und Verwalten von Warnungsregeln in Log Analytics mithilfe der REST-API](../log-analytics/log-analytics-api-alerts.md): Enthält eine Beschreibung, wie Sie Warnungsregeln der Protokollsuche für Azure Log Analytics erstellen und verwalten.
-- [Azure Monitor Scheduled Query Rules REST API](https://docs.microsoft.com/en-us/rest/api/monitorr/scheduledqueryrules/) (Azure Monitor-Regeln für geplante Abfragen – REST-API): Enthält eine Beschreibung, wie Sie Warnungsregeln der Protokollsuche für Azure Application Insights erstellen und verwalten.
+- [Azure Monitor Scheduled Query Rules REST API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) (Azure Monitor-Regeln für geplante Abfragen – REST-API): Enthält eine Beschreibung, wie Sie Warnungsregeln der Protokollsuche für Azure Application Insights erstellen und verwalten.
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage
 Benutzer können auch die Flexibilität von [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) nutzen, um Ressourcen zu erstellen und zu aktualisieren, die für die Erstellung oder Aktualisierung von Protokollwarnungen dienen.

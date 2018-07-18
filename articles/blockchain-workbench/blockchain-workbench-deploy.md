@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 484c7a17fec4ee94e3170e93eb1438af688d101e
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: e226aadbe499d5905b1814bec5d042f67d898c18
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303942"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294848"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Bereitstellen von Azure Blockchain Workbench
 
@@ -48,7 +48,10 @@ Vor der Bereitstellung von Azure Blockchain Workbench müssen mehrere Voraussetz
 
 ### <a name="blockchain-workbench-api-app-registration"></a>Blockchain Workbench-API-App-Registrierung
 
-Die Blockchain Workbench-Bereitstellung erfordert die Registrierung einer Azure AD-Anwendung. Sie benötigen einen Azure Active Directory (Azure AD)-Mandanten, um die App zu registrieren. Sie können einen bestehenden Mandanten verwenden oder einen neuen Mandanten anlegen. Wenn Sie einen bestehenden Azure AD-Mandanten verwenden, benötigen Sie ausreichende Berechtigungen, um Anwendungen innerhalb eines Azure AD-Mandanten zu registrieren. Die Anwendungsregistrierungen müssen sich im Mandanten des Abonnementadministrators befinden, in dem die Workbench bereitgestellt ist. Weitere Informationen über Azure AD-Mandanten finden Sie unter [Einrichten eines Azure Active Directory-Mandanten](../active-directory/develop/active-directory-howto-tenant.md) und [Integrieren von Anwendungen in Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md).
+Die Blockchain Workbench-Bereitstellung erfordert die Registrierung einer Azure AD-Anwendung. Sie benötigen einen Azure Active Directory (Azure AD)-Mandanten, um die App zu registrieren. Sie können einen bestehenden Mandanten verwenden oder einen neuen Mandanten anlegen. Wenn Sie einen bestehenden Azure AD-Mandanten verwenden, benötigen Sie ausreichende Berechtigungen, um innerhalb eines Azure AD-Mandanten Anwendungen zu registrieren und Berechtigungen für die Graph-API zu erteilen. Wenn Sie in einem vorhandenen Azure AD-Mandanten nicht über ausreichende Berechtigungen verfügen, erstellen Sie einen neuen Mandanten. 
+
+> [!IMPORTANT]
+> Workbench muss nicht in demselben Mandanten bereitgestellt werden, den Sie zum Registrieren einer Azure AD-Anwendung verwenden. Workbench muss in einem Mandanten bereitgestellt werden, in dem Sie über ausreichende Berechtigungen zum Bereitstellen von Ressourcen verfügen. Weitere Informationen über Azure AD-Mandanten finden Sie unter [Einrichten eines Azure Active Directory-Mandanten](../active-directory/develop/active-directory-howto-tenant.md) und [Integrieren von Anwendungen in Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md).
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie oben rechts Ihr Konto aus, und wechseln Sie zum gewünschten Azure AD-Mandanten. Der Mandant sollte der Mandant des Abonnementadministrators sein, in dem die Workbench installiert ist. Zudem müssen Sie über ausreichende Berechtigungen verfügen, um Anwendungen zu registrieren.
@@ -73,7 +76,7 @@ Die Blockchain Workbench-Bereitstellung erfordert die Registrierung einer Azure 
 Als Nächstes müssen Sie das Anwendungsmanifest für die Verwendung von Anwendungsrollen innerhalb von Azure AD ändern, um Blockchain Workbench-Administratoren festzulegen.  Weitere Informationen zu Anwendungsmanifesten finden Sie unter [Azure Active Directory-Anwendungsmanifest](../active-directory/develop/active-directory-application-manifest.md).
 
 1. Wählen Sie für die Anwendung, die Sie registriert haben, im Detailbereich der registrierten Anwendung **Manifest** aus.
-2. Generieren Sie eine GUID. Sie können den PowerShell-Befehl `[guid]::NewGuid()` oder Onlinetools verwenden, um eine GUID zu generieren. 
+2. Generieren Sie eine GUID. Eine GUID kann mit dem PowerShell-Befehl „[guid] :: NewGuid ()“ oder mit dem Cmdlet „New-GUID“ generiert werden. Alternativ können Sie auch eine GUID-Generator-Website verwenden.
 3. Sie werden den Abschnitt **appRoles** des Manifests aktualisieren. Wählen Sie im Bereich „Manifest bearbeiten“ die Option **Bearbeiten**, und ersetzen Sie `"appRoles": []` mit der gegebenen JSON-Datei. Stellen Sie sicher, dass Sie den Wert für das Feld **ID** durch die von Ihnen generierte GUID ersetzen. 
 
     ``` json

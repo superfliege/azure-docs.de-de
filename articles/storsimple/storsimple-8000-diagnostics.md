@@ -1,12 +1,12 @@
 ---
-title: "Diagnosetool für die Problembehandlung von StorSimple 8000-Geräten | Microsoft-Dokumentation"
-description: "Beschreibt die StorSimple-Gerätemodi und erläutert, wie Sie den Gerätemodus mithilfe von Windows PowerShell für StorSimple ändern."
+title: Diagnosetool für die Problembehandlung von StorSimple 8000-Geräten | Microsoft-Dokumentation
+description: Beschreibt die StorSimple-Gerätemodi und erläutert, wie Sie den Gerätemodus mithilfe von Windows PowerShell für StorSimple ändern.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27744111"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Verwenden des StorSimple-Diagnosetools für die Behandlung von Problemen mit Geräten der 8000-Serie
 

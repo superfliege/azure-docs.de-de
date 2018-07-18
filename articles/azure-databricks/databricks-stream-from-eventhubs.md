@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 03/27/2018
+ms.date: 06/21/2018
 ms.author: alehall
-ms.openlocfilehash: 2e4c424bb26a3b268ec893ca40dcdce7d7469217
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a06ee5b03521fa2e0a711f5194cf01b32e7cea37
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308695"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Tutorial: Streamen von Daten an Azure Databricks unter Verwendung von Event Hubs
 
@@ -109,7 +110,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
 
 Für den Empfang eines Datenstroms mit Tweets erstellen Sie eine Anwendung in Twitter. Gehen Sie gemäß der Anleitung vor, um eine Twitter-Anwendung zu erstellen, und erfassen Sie die Werte, die Sie für dieses Tutorial benötigen.
 
-1. Navigieren Sie in einem Webbrowser zur Anwendungsverwaltung von Twitter ([Twitter Application Management](http://twitter.com/app)), und klicken Sie auf **Create New App** (Neue App erstellen).
+1. Navigieren Sie in einem Webbrowser zur Anwendungsverwaltung von Twitter ([Twitter Application Management](https://apps.twitter.com/)), und klicken Sie auf **Create New App** (Neue App erstellen).
 
     ![Erstellen einer Twitter-Anwendung](./media/databricks-stream-from-eventhubs/databricks-create-twitter-app.png "Erstellen einer Twitter-Anwendung")
 

@@ -13,6 +13,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30921443"
 ---
 Im Azure-Portal können Sie zur gewünschten Verbindung navigieren und den Verbindungsstatus eines Resource Manager-VPN-Gateways anzeigen. Die folgenden Schritte zeigen eine Möglichkeit, zu Ihrer Verbindung zu navigieren und sie zu überprüfen.
 

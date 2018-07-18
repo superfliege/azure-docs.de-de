@@ -1,6 +1,6 @@
 ---
 title: Hybridverbindung mit einer Anwendung mit zwei Ebenen | Microsoft Docs
-description: "Erfahren Sie, wie Sie virtuelle Geräte und benutzerdefinierte Routen bereitstellen, um eine Anwendungsumgebung mit mehreren Ebenen in Azure zu erstellen."
+description: Erfahren Sie, wie Sie virtuelle Geräte und benutzerdefinierte Routen bereitstellen, um eine Anwendungsumgebung mit mehreren Ebenen in Azure zu erstellen.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/31/2017
+ms.locfileid: "23643864"
 ---
 # <a name="virtual-appliance-scenario"></a>Szenario für virtuelle Geräte
 Als gängiges Szenario müssen größere Azure-Kunden eine Anwendung mit zwei Ebenen bereitstellen, die über das Internet verfügbar ist und gleichzeitig den Zugriff auf die Back-End-Ebene über ein lokales Rechenzentrum ermöglicht. In diesem Dokument wird schrittweise ein Szenario mit benutzerdefinierten Routen (User Defined Routes, UDR), einem VPN-Gateway und virtuellen Netzwerkgeräten zum Bereitstellen einer Umgebung mit zwei Ebenen erläutert, die folgende Anforderungen erfüllt:

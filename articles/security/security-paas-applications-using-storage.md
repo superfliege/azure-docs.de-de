@@ -12,38 +12,41 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 06/20/2018
 ms.author: TomShinder
-ms.openlocfilehash: 9d4251e61b60d8da6ce5072ba66aeaedb60cb33a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ffc04973a003c65f52f3387292f11fede65edce3
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295294"
 ---
 # <a name="securing-paas-web-and-mobile-applications-using-azure-storage"></a>Schützen webbasierter und mobiler PaaS-Anwendungen mit Azure Storage
+
 In diesem Artikel erläutern wir eine Sammlung empfohlener Vorgehensweisen in Azure Storage zum Schutz Ihrer webbasierten und mobilen PaaS-Anwendungen. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit Azure und den Erfahrungen von Kunden wie Ihnen abgeleitet.
 
 Der [Azure Storage security guide](../storage/common/storage-security-guide.md) (Azure Storage-Sicherheitsleitfaden, in englischer Sprache) ist eine hervorragende Quelle für ausführliche Informationen zu Azure Storage und Sicherheit.  In diesem Artikel werden in allgemeiner Form einige der Konzepte im Sicherheitsleitfaden erläutert. Er enthält zudem Links zum Sicherheitsleitfaden und anderen Quellen, die weitere Informationen bieten.
 
 ## <a name="azure-storage"></a>Azure Storage
+
 Azure bietet Methoden zum Bereitstellen und Verwenden von Speicher, die lokal nicht möglich sind. Sie können in Azure Storage mit relativ geringem Aufwand ein hohes Maß an Skalierbarkeit und Verfügbarkeit erzielen. Azure Storage ist nicht nur die Grundlage für virtuelle Windows- und Linux-Computer in Azure, sondern unterstützt auch große verteilte Anwendungen.
 
 Azure Storage umfasst vier Dienste: Blob Storage, Table Storage, Queue Storage und File Storage. Weitere Informationen finden Sie unter [Introduction to Microsoft Azure Storage](../storage/storage-introduction.md) (Einführung in Microsoft Azure, in englischer Sprache).
 
 ## <a name="best-practices"></a>Bewährte Methoden
+
 Dieser Artikel behandelt die folgenden Best Practices:
 
 - Zugriffsschutz:
    - Shared Access Signatures (SAS)
-   - Managed Disk
    - Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
 
 - Speicherverschlüsselung:
    - Clientseitige Verschlüsselung wertvoller Daten
-   - Azure Disk Encryption für virtuelle Computer (VMs)
    - Storage Service Encryption
 
 ## <a name="access-protection"></a>Zugriffsschutz
+
 ### <a name="use-shared-access-signature-instead-of-a-storage-account-key"></a>Verwenden von Shared Access Signature statt eines Speicherkontoschlüssels
 
 In einer IaaS-Lösung, in der normalerweise virtuelle Windows Server- oder Linux-Computer ausgeführt werden, erfolgt der Schutz der Dateien vor Offenlegung und Manipulation durch Mechanismen der Zugriffssteuerung. Unter Windows verwenden Sie [Zugriffssteuerungslisten (Access Control Lists, ACLs)](../virtual-network/virtual-networks-acl.md) und unter Linux wahrscheinlich [chmod](https://en.wikipedia.org/wiki/Chmod). Dies sind im Wesentlichen die Methoden, mit denen heute Dateien auf einem Server im eigenen Rechenzentrum geschützt werden.
@@ -65,12 +68,6 @@ Mit SAS können Sie Inhalte auf die gewünschte Weise freigeben, ohne die Speich
 
 Weitere Informationen finden Sie unter [Using shared access signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) (Verwenden von Shared Access Signatures (SAS), in englischer Sprache). Weitere Informationen zu potenziellen Risiken und Empfehlungen zum Reduzieren dieser Risiken finden Sie unter [Using shared access signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) (Verwenden von Shared Access Signatures (SAS), in englischer Sprache).
 
-### <a name="use-managed-disks-for-vms"></a>Verwenden von Managed Disks für virtuelle Computer
-
-Bei Auswahl von [Azure Managed Disks](../storage/storage-managed-disks-overview.md) übernimmt Azure die Verwaltung der Speicherkonten, die Sie für Ihre VM-Datenträger verwenden. Sie müssen lediglich den Typ des Datenträgers (Premium oder Standard) und die Datenträgergröße auswählen. Der Rest erfolgt automatisch durch Azure Storage. Sie müssen sich keine Gedanken über Beschränkungen der Skalierbarkeit machen, die andernfalls bei mehreren Speicherkonten beachtet werden müssen.
-
-Weitere Informationen finden Sie unter [Frequently Asked Questions about managed and unmanaged premium disks](../storage/storage-faq-for-disks.md) (Häufig gestellte Fragen zu verwalteten und nicht verwalteten Premium-Datenträgern, in englischer Sprache).
-
 ### <a name="use-role-based-access-control"></a>Verwenden der rollenbasierten Zugriffssteuerung
 
 Weiter oben wurde erläutert, wie Sie mit einer Shared Access Signature (SAS) anderen Clients eingeschränkten Zugriff auf Objekte in Ihrem Speicherkonto gewähren, ohne Ihren Speicherkontoschlüssel verfügbar zu machen. Manchmal überwiegen die Risiken einer bestimmten Operation für Ihr Speicherkonto gegenüber den Vorzügen von SAS. Manchmal gibt es einfachere Möglichkeiten der Zugriffsverwaltung.
@@ -88,6 +85,7 @@ Weitere Informationen über RBAC:
 - [Azure Storage security guide](../storage/common/storage-security-guide.md) (Azure Storage-Sicherheitsleitfaden, in englischer Sprache) mit Informationen zum Sichern des Speicherkontos mit RBAC
 
 ## <a name="storage-encryption"></a>Speicherverschlüsselung
+
 ### <a name="use-client-side-encryption-for-high-value-data"></a>Verwenden von clientseitiger Verschlüsselung für wertvolle Daten
 
 Die clientseitige Verschlüsselung ermöglicht Ihnen das programmgesteuerte Verschlüsseln von Daten während der Übertragung, bevor sie in Azure Storage hochgeladen werden, und das programmgesteuerte Entschlüsseln von Daten beim Abrufen aus dem Speicher.  So können Daten während der Übertragung, jedoch auch ruhende Daten verschlüsselt werden.  Die clientseitige Verschlüsselung ist die sicherste Methode zum Verschlüsseln der Daten, sie erfordert jedoch programmgesteuerte Änderungen an Ihrer Anwendung und die Platzierung von Schlüsselverwaltungsprozessen.
@@ -96,15 +94,12 @@ Die clientseitige Verschlüsselung bietet Ihnen außerdem die alleinige Kontroll
 
 Die clientseitige Verschlüsselung ist in den Java- und .NET-Speicherclientbibliotheken integriert.  Informationen zum Verschlüsseln von Daten in Clientanwendungen sowie zum Generieren und Verwalten eigener Verschlüsselungsschlüssel finden Sie unter [Client-Side Encryption and Azure Key Vault for Microsoft Azure Storage](../storage/storage-client-side-encryption.md) (Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage, in englischer Sprache).
 
-### <a name="azure-disk-encryption-for-vms"></a>Azure Disk Encryption für virtuelle Computer
-Azure Disk Encryption ist eine Funktion, mit der Sie die Datenträger von virtuellen Windows- und Linux-IaaS-Computern verschlüsseln können. Bei der Azure Disk Encryption werden die Branchenstandardfunktion BitLocker von Windows und die Funktion DM-Crypt von Linux verwendet, um Volumeverschlüsselung für das Betriebssystem und die Datenträger bereitzustellen. Die Lösung ist in Azure Key Vault integriert, damit Sie die Verschlüsselungsschlüssel und Geheimnisse für die Datenträgerverschlüsselung in Ihrem Key Vault-Abonnement steuern und verwalten können. Diese Lösung stellt außerdem sicher, dass alle ruhenden Daten auf den Datenträgern der virtuellen Computer in Azure Storage verschlüsselt sind.
-
-Siehe [Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer](azure-security-disk-encryption.md).
-
 ### <a name="storage-service-encryption"></a>Storage Service Encryption
+
 Wenn [Speicherdienstverschlüsselung](../storage/storage-service-encryption.md) für File Storage aktiviert ist, werden die Daten automatisch mit AES-256-Verschlüsselung verschlüsselt. Microsoft behandelt die gesamte Verschlüsselung, Entschlüsselung und Schlüsselverwaltung. Dieses Feature ist für die Redundanztypen LRS und GRS verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 In diesem Artikel wurde Ihnen eine Sammlung empfohlener Vorgehensweisen in Azure Storage zum Schutz Ihrer webbasierten und mobilen PaaS-Anwendungen vorgestellt. Weitere Informationen zum Schutz Ihrer PaaS-Bereitstellungen finden Sie unter:
 
 - [Schützen von PaaS-Bereitstellungen](security-paas-deployments.md)

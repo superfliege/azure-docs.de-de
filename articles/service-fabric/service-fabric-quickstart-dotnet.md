@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer .NET Service Fabric-Anwendung in Azure | Microsoft-Dokumentation
+title: Erstellen einer .NET-App unter Service Fabric in Azure | Microsoft-Dokumentation
 description: In diesem Schnellstart erstellen Sie eine .NET-Anwendung für Azure, indem Sie die Service Fabric Reliable Services-Beispielanwendung verwenden.
 services: service-fabric
 documentationcenter: .net
@@ -15,15 +15,16 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 001488a8c7e22db595cd9f929bc0f3d631da0715
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f04af62dc555c6c05313b9d0cd7b0231aac7d3aa
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207205"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110081"
 ---
-# <a name="quickstart-create-a-net-service-fabric-application-in-azure"></a>Schnellstart: Erstellen einer .NET Service Fabric-Anwendung in Azure
-Azure Service Fabric ist eine Plattform für verteilte Systeme zum Bereitstellen und Verwalten von skalierbaren und zuverlässigen Microservices und Containern. 
+# <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Schnellstart: Bereitstellen einer .NET Reliable Services-Anwendung in Service Fabric
+
+Azure Service Fabric ist eine Plattform für verteilte Systeme zum Bereitstellen und Verwalten von skalierbaren und zuverlässigen Microservices und Containern.
 
 In diesem Schnellstart wird gezeigt, wie Sie Ihre erste .NET-Anwendung für Service Fabric bereitstellen. Am Ende verfügen Sie über eine Abstimmungsanwendung mit einem ASP.NET Core-Web-Front-End, mit der Abstimmungsergebnisse im Cluster in einem zustandsbehafteten Back-End-Dienst gespeichert werden.
 
@@ -40,7 +41,9 @@ Mithilfe dieser Anwendung erfahren Sie Folgendes:
 * Durchführen eines parallelen Anwendungsupgrades
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 So führen Sie diesen Schnellstart durch:
+
 1. [Installieren Sie Visual Studio 2017](https://www.visualstudio.com/) mit den Workloads **Azure-Entwicklung** und **ASP.NET und Webentwicklung**.
 2. [Installation von Git](https://git-scm.com/)
 3. [Installieren Sie das Microsoft Azure Service Fabric-SDK](http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK).
@@ -54,15 +57,18 @@ So führen Sie diesen Schnellstart durch:
 >
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
+
 Führen Sie in einem Befehlsfenster den folgenden Befehl aus, um das Beispiel-App-Repository auf Ihren lokalen Computer zu klonen.
-```
+
+```git
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 ```
 
 ## <a name="run-the-application-locally"></a>Lokales Ausführen der Anwendung
+
 Klicken Sie im Menü „Start“ mit der rechten Maustaste auf das Visual Studio-Symbol, und wählen Sie die Option **Als Administrator ausführen**. Um den Debugger an Ihre Dienste anzufügen, müssen Sie Visual Studio als Administrator ausführen.
 
-Öffnen Sie die Visual Studio-Lösung **Voting.sln** aus dem geklonten Repository.  
+Öffnen Sie die Visual Studio-Lösung **Voting.sln** aus dem geklonten Repository.
 
 Standardmäßig ist die Abstimmungsanwendung so festgelegt, dass sie an Port 8080 lauscht.  Der Anwendungsport wird in der Datei */VotingWeb/PackageRoot/ServiceManifest.xml* festgelegt.  Sie können den Anwendungsport ändern, indem Sie das Attribut **Port** im Element **Endpoint** aktualisieren.  Wenn Sie die Anwendung lokal bereitstellen und ausführen möchten, muss der Anwendungsport auf dem Computer geöffnet und verfügbar sein.  Wenn Sie den Anwendungsport ändern, ersetzen Sie im gesamten Artikel „8080“ durch den Wert des neuen Anwendungsports.
 
@@ -78,13 +84,16 @@ Starten Sie nach Abschluss der Bereitstellung einen Browser, und öffnen Sie die
 Sie können jetzt einen Satz mit Abstimmungsoptionen hinzufügen und die Abstimmung freigeben. Die Anwendung führt alle Daten in Ihrem Service Fabric-Cluster aus und speichert sie dort, ohne dass eine separate Datenbank verwendet werden muss.
 
 ## <a name="walk-through-the-voting-sample-application"></a>Durchlaufen der Beispielanwendung für die Abstimmung
+
 Die Abstimmungsanwendung besteht aus zwei Diensten:
-- Web-Front-End-Dienst (VotingWeb): Ein ASP.NET Core-Web-Front-End-Dienst, der die Webseite bereitstellt und Web-APIs für die Kommunikation mit dem Back-End-Dienst verfügbar macht.
-- Back-End-Dienst (VotingData): Ein ASP.NET Core-Web-Dienst, der eine API verfügbar macht, um die Abstimmungsergebnisse in einem zuverlässigen Wörterbuch zu speichern, das dauerhaft auf dem Datenträger vorhanden ist.
+
+* Web-Front-End-Dienst (VotingWeb): Ein ASP.NET Core-Web-Front-End-Dienst, der die Webseite bereitstellt und Web-APIs für die Kommunikation mit dem Back-End-Dienst verfügbar macht.
+* Back-End-Dienst (VotingData): Ein ASP.NET Core-Web-Dienst, der eine API verfügbar macht, um die Abstimmungsergebnisse in einem zuverlässigen Wörterbuch zu speichern, das dauerhaft auf dem Datenträger vorhanden ist.
 
 ![Anwendungsdiagramm](./media/service-fabric-quickstart-dotnet/application-diagram.png)
 
 Beim Abstimmen in der Anwendung treten die folgenden Ereignisse ein:
+
 1. Ein JavaScript sendet die Abstimmungsanforderung als HTTP PUT-Anforderung an die Web-API im Web-Front-End-Dienst.
 
 2. Der Web-Front-End-Dienst nutzt einen Proxy, um eine HTTP PUT-Anforderung zu lokalisieren und an den Back-End-Dienst weiterzuleiten.
@@ -96,37 +105,40 @@ Beim Abstimmen in der Anwendung treten die folgenden Ereignisse ein:
 Die Anwendung sollte reibungslos funktionieren. Sie können jedoch den Debugger verwenden, um die Funktion wichtiger Komponenten der Anwendung zu überprüfen. Beim Debuggen der Anwendung in Visual Studio verwenden Sie einen lokalen Service Fabric-Entwicklungscluster. Sie haben die Möglichkeit, Ihre Oberfläche für das Debuggen an Ihr Szenario anzupassen. In dieser Anwendung werden Daten mithilfe eines zuverlässigen Wörterbuchs in einem Back-End-Dienst gespeichert. Standardmäßig wird die Anwendung von Visual Studio entfernt, wenn Sie den Debugger beenden. Die Entfernung der Anwendung führt dazu, dass auch die Daten im Back-End-Dienst entfernt werden. Um die Daten zwischen den Debugsitzungen beizubehalten, können Sie den **Debugmodus für die Anwendung** als Eigenschaft im Projekt **Voting** in Visual Studio ändern.
 
 Führen Sie die folgenden Schritte aus, um zu ermitteln, was im Code passiert:
+
 1. Öffnen Sie die Datei **/VotingWeb/Controllers/VotesController.cs**, und legen Sie in der **Put**-Methode der Web-API (Zeile 69) einen Breakpoint fest. Sie können in Visual Studio im Projektmappen-Explorer nach der Datei suchen.
 
 2. Öffnen Sie die Datei **/VotingData/Controllers/VoteDataController.cs**, und legen Sie in der **Put**-Methode dieser Web-API (Zeile 54) einen Breakpoint fest.
 
 3. Wechseln Sie zurück in den Browser, und klicken Sie auf eine Abstimmungsoption, oder fügen Sie eine neue Abstimmungsoption hinzu. Der erste Breakpoint befindet sich im API-Controller des Web-Front-Ends.
-    - An diesem Punkt sendet das JavaScript im Browser eine Anforderung an den Web-API-Controller im Front-End-Dienst.
-    
+    * An diesem Punkt sendet das JavaScript im Browser eine Anforderung an den Web-API-Controller im Front-End-Dienst.
+
     ![Front-End-Dienst „Stimme hinzufügen“](./media/service-fabric-quickstart-dotnet/addvote-frontend.png)
 
-    - Erstellen Sie zunächst die URL zum Reverseproxy für den Back-End-Dienst **(1)**.
-    - Senden Sie anschließend die HTTP-Anforderung PUT an den Reverseproxy **(2)**.
-    - Geben Sie zum Schluss die Antwort vom Back-End-Dienst an den Client zurück **(3)**.
+    * Erstellen Sie zunächst die URL zum Reverseproxy für den Back-End-Dienst **(1)**.
+    * Senden Sie anschließend die HTTP-Anforderung PUT an den Reverseproxy **(2)**.
+    * Geben Sie zum Schluss die Antwort vom Back-End-Dienst an den Client zurück **(3)**.
 
 4. Drücken Sie **F5**, um fortzufahren.
     - Gewähren Sie bei entsprechender Aufforderung durch den Browser der Gruppe „ServiceFabricAllowedUsers“ Lese- und Ausführungsberechtigungen für den Debugmodus.
     - Sie befinden sich jetzt am Breakpoint im Back-End-Dienst.
-    
+
     ![Back-End-Dienst „Stimme hinzufügen“](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
 
-    - In der ersten Zeile der Methode **(1)** wird das `StateManager`-Element verwendet, um ein zuverlässiges Wörterbuch mit dem Namen `counts` abzurufen bzw. hinzuzufügen.
-    - Für alle Interaktionen mit Werten in einem zuverlässigen Wörterbuch ist eine Transaktion erforderlich. Diese Transaktion wird mithilfe der Anweisung **(2)** erstellt.
-    - Aktualisieren Sie in der Transaktion den Wert des relevanten Schlüssels für die Abstimmungsoption, und committen Sie den Vorgang **(3)**. Nachdem die Rückgabe für die Commit-Methode durchgeführt wurde, werden die Daten im Wörterbuch aktualisiert und auf anderen Knoten im Cluster repliziert. Die Daten sind jetzt sicher im Cluster gespeichert, und der Back-End-Dienst kann das Failover auf andere Knoten durchführen, während die Daten weiterhin verfügbar sind.
+    * In der ersten Zeile der Methode **(1)** wird das `StateManager`-Element verwendet, um ein zuverlässiges Wörterbuch mit dem Namen `counts` abzurufen bzw. hinzuzufügen.
+    * Für alle Interaktionen mit Werten in einem zuverlässigen Wörterbuch ist eine Transaktion erforderlich. Diese Transaktion wird mithilfe der Anweisung **(2)** erstellt.
+    * Aktualisieren Sie in der Transaktion den Wert des relevanten Schlüssels für die Abstimmungsoption, und committen Sie den Vorgang **(3)**. Nachdem die Rückgabe für die Commit-Methode durchgeführt wurde, werden die Daten im Wörterbuch aktualisiert und auf anderen Knoten im Cluster repliziert. Die Daten sind jetzt sicher im Cluster gespeichert, und der Back-End-Dienst kann das Failover auf andere Knoten durchführen, während die Daten weiterhin verfügbar sind.
 5. Drücken Sie **F5**, um fortzufahren.
 
 Drücken Sie **UMSCHALT+F5**, um die Debugsitzung zu beenden.
 
 ## <a name="deploy-the-application-to-azure"></a>Bereitstellen der Anwendung für Azure
-Für die Bereitstellung der Anwendung in Azure benötigen Sie einen Service Fabric-Cluster, der die Anwendung ausführt. 
+
+Für die Bereitstellung der Anwendung in Azure benötigen Sie einen Service Fabric-Cluster, der die Anwendung ausführt.
 
 ### <a name="join-a-party-cluster"></a>Beitreten zu einem Partycluster
-Partycluster sind kostenlose, zeitlich begrenzte Service Fabric-Cluster, die in Azure gehostet und vom Service Fabric-Team ausgeführt werden, in denen jeder Benutzer Anwendungen bereitstellen und mehr über die Plattform erfahren kann. Der Cluster verwendet ein einzelnes selbstsigniertes Zertifikat für Knoten-zu-Knoten- und Client-zu-Knoten-Sicherheit. 
+
+Partycluster sind kostenlose, zeitlich begrenzte Service Fabric-Cluster, die in Azure gehostet und vom Service Fabric-Team ausgeführt werden, in denen jeder Benutzer Anwendungen bereitstellen und mehr über die Plattform erfahren kann. Der Cluster verwendet ein einzelnes selbstsigniertes Zertifikat für Knoten-zu-Knoten- und Client-zu-Knoten-Sicherheit.
 
 Melden Sie sich an, und [treten Sie einem Windows-Cluster bei](http://aka.ms/tryservicefabric). Klicken Sie auf den Link **PFX**, um das PFX-Zertifikat auf Ihren Computer herunterzuladen. Klicken Sie auf den Link **How to connect to a secure Party cluster?** (Herstellen einer Verbindung mit einem sicheren Partycluster), und kopieren Sie das Zertifikatkennwort. Das Zertifikat, das Zertifikatkennwort und der Wert für **Verbindungsendpunkt** werden in den folgenden Schritten verwendet.
 
@@ -135,7 +147,6 @@ Melden Sie sich an, und [treten Sie einem Windows-Cluster bei](http://aka.ms/try
 > [!Note]
 > Pro Stunde ist eine begrenzte Anzahl von Partyclustern verfügbar. Sollte beim Registrieren für einen Partycluster ein Fehler auftreten, können Sie eine Weile warten und es dann erneut versuchen. Alternativ können Sie die Schritte aus dem [Tutorial zum Bereitstellen einer .NET-App](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-deploy-app-to-party-cluster#deploy-the-sample-application) ausführen, um in Ihrem Azure-Abonnement einen Service Fabric-Cluster zu erstellen und die Anwendung darin bereitzustellen. Falls Sie noch nicht über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen. Nachdem Sie die Anwendung in Ihrem Cluster bereitgestellt und überprüft haben, können Sie direkt mit dem [Skalieren von Anwendungen und Diensten in einem Cluster](#scale-applications-and-services-in-a-cluster) in dieser Schnellstartanleitung fortfahren.
 >
-
 
 Installieren Sie das PFX-Zertifikat auf Ihrem Windows-Computer im Zertifikatspeicher *CurrentUser\My*.
 
@@ -157,12 +168,12 @@ Notieren Sie sich den Fingerabdruck für einen späteren Schritt.
 >
 
 ### <a name="deploy-the-application-using-visual-studio"></a>Bereitstellen der Anwendung mit Visual Studio
+
 Nachdem die Anwendung nun bereit ist, können Sie sie direkt aus Visual Studio in einem Cluster bereitstellen.
 
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Voting**, und wählen Sie **Veröffentlichen**. Das Dialogfeld „Veröffentlichen“ wird angezeigt.
 
-
-2. Kopieren Sie den **Verbindungsendpunkt** von der Seite des Partyclusters in das Feld **Verbindungsendpunkt**. Beispiel: `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Klicken Sie auf **Erweiterte Verbindungsparameter**, und vergewissern Sie sich, dass die Werte für *FindValue* und *ServerCertThumbprint* dem Fingerabdruck des in einem früheren Schritt installierten Zertifikats entsprechen. 
+2. Kopieren Sie den **Verbindungsendpunkt** von der Seite des Partyclusters in das Feld **Verbindungsendpunkt**. Beispiel: `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Klicken Sie auf **Erweiterte Verbindungsparameter**, und vergewissern Sie sich, dass die Werte für *FindValue* und *ServerCertThumbprint* dem Fingerabdruck des in einem früheren Schritt installierten Zertifikats entsprechen.
 
     ![Dialogfeld „Veröffentlichen“](./media/service-fabric-quickstart-dotnet/publish-app.png)
 
@@ -175,9 +186,10 @@ Nachdem die Anwendung nun bereit ist, können Sie sie direkt aus Visual Studio i
     ![Anwendungs-Front-End](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Skalieren von Anwendungen und Diensten in einem Cluster
+
 Service Fabric-Dienste können für einen Cluster auf einfache Weise skaliert werden, um eine Änderung der Last für die Dienste auszugleichen. Sie skalieren einen Dienst, indem Sie die Anzahl von Instanzen ändern, die im Cluster ausgeführt werden. Sie haben mehrere Möglichkeiten, Ihre Dienste zu skalieren. Sie können Skripts oder Befehle aus PowerShell oder der Service Fabric CLI (sfctl) verwenden. In diesem Beispiel verwenden Sie Service Fabric Explorer.
 
-Service Fabric Explorer wird in allen Service Fabric-Clustern ausgeführt und ist über einen Browser zugänglich, indem auf den HTTP-Verwaltungsport (19080) der Cluster zugegriffen wird, z.B. `https://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
+Service Fabric Explorer wird in allen Service Fabric-Clustern ausgeführt und ist über einen Browser zugänglich, indem auf den HTTP-Verwaltungsport (19080) der Cluster zugegriffen wird, z.B. `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`.
 
 Unter Umständen erscheint eine Browserwarnung mit dem Hinweis, dass der Ort nicht vertrauenswürdig ist. Dies ist auf das selbstsignierte Zertifikat zurückzuführen. Sie können die Warnung ignorieren und den Vorgang fortsetzen.
 1. Wenn Sie vom Browser dazu aufgefordert werden, wählen Sie das installierte Zertifikat aus, um eine Verbindung herzustellen. Das in der Liste ausgewählte Partyclusterzertifikat muss dem Partycluster entsprechen, auf den Sie zugreifen möchten. Beispiel: win243uja6w62r.westus.cloudapp.azure.com.
@@ -185,7 +197,8 @@ Unter Umständen erscheint eine Browserwarnung mit dem Hinweis, dass der Ort nic
 
 Führen Sie die folgenden Schritte aus, um den Web-Front-End-Dienst zu skalieren:
 
-1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster, z.B. `https://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
+1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster, z.B. `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`.
+
 2. Erweitern Sie **Anwendungen**->**VotingType**->**fabric:/Voting** in der Strukturansicht. Klicken Sie auf das Auslassungszeichen (drei Punkte) neben dem Knoten **fabric:/Voting/VotingWeb** in der Strukturansicht, und wählen Sie **Scale Service** (Dienst skalieren).
 
     ![Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/service-fabric-explorer-scale.png)
@@ -202,6 +215,7 @@ Führen Sie die folgenden Schritte aus, um den Web-Front-End-Dienst zu skalieren
 Mit dieser einfachen Verwaltungsaufgabe wurden die verfügbaren Ressourcen für den Front-End-Dienst zum Verarbeiten der Benutzerauslastung verdoppelt. Es ist wichtig zu verstehen, dass Sie nicht mehrere Instanzen eines Diensts benötigen, damit er zuverlässig ausgeführt wird. Wenn ein Dienst ausfällt, wird von Service Fabric sichergestellt, dass im Cluster eine neue Dienstinstanz ausgeführt wird.
 
 ## <a name="perform-a-rolling-application-upgrade"></a>Durchführen eines parallelen Anwendungsupgrades
+
 Beim Bereitstellen von neuen Updates für Ihre Anwendung führt Service Fabric den Rollout des Updates auf sichere Weise durch. Bei parallelen Upgrades kommt es während des Vorgangs nicht zu Ausfallzeiten, und bei Fehlern wird ein automatischer Rollback durchgeführt.
 
 Gehen Sie zum Aktualisieren der Anwendung wie folgt vor:
@@ -226,8 +240,8 @@ Gehen Sie zum Aktualisieren der Anwendung wie folgt vor:
 
     Mit Service Fabric werden Upgrades sicher gemacht, indem nach dem Aktualisieren des Diensts auf einem Knoten im Cluster jeweils zwei Minuten gewartet wird. Rechnen Sie damit, dass der gesamte Updatevorgang ca. acht Minuten dauert.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
+
 In diesem Schnellstart haben Sie Folgendes gelernt:
 
 * Erstellen einer Anwendung mit .NET und Service Fabric

@@ -12,13 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/27/2018
+ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: ee0534ab8bc3400854ddf550df9ca2f395f8d80d
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 578fb3f8bfe68ccd9bbade0ad04f3a811a249c08
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37906386"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple-Sicherheit und -Datenschutz
 
@@ -42,7 +43,7 @@ In den folgenden Abschnitten werden die in der StorSimple-Sicherheitsfunktionen 
 
 Der StorSimple-Geräte-Manager-Dienst ist ein in Microsoft Azure gehosteter Verwaltungsdienst, der zum Verwalten aller StorSimple-Geräte verwendet wird, die Ihre Organisation beschafft hat. Sie können auf den StorSimple-Geräte-Manager-Dienst zugreifen, indem Sie sich beim Azure-Portal mithilfe eines Webbrowsers unter Verwendung Ihrer Organisationsanmeldeinformationen anmelden.
 
-Für den Zugriff auf den StorSimple-Geräte-Manager-Dienst ist es erforderlich, dass Ihre Organisation über ein Azure-Abonnement verfügt, das StorSimple einschließt. Ihr Abonnement bestimmt die Features, auf die Sie im Azure-Portal zugreifen können. Wenn Ihre Organisation kein Azure-Abonnement besitzt, und Sie weitere Informationen dazu erhalten möchten, lesen Sie [Als Unternehmen für Azure registrieren](../active-directory/sign-up-organization.md).
+Für den Zugriff auf den StorSimple-Geräte-Manager-Dienst ist es erforderlich, dass Ihre Organisation über ein Azure-Abonnement verfügt, das StorSimple einschließt. Ihr Abonnement bestimmt die Features, auf die Sie im Azure-Portal zugreifen können. Wenn Ihre Organisation kein Azure-Abonnement besitzt, und Sie weitere Informationen dazu erhalten möchten, lesen Sie [Als Unternehmen für Azure registrieren](../active-directory/fundamentals/sign-up-organization.md).
 
 Da der StorSimple-Geräte-Manager-Dienst in Azure gehostet wird, ist er durch die Azure-Sicherheitsfeatures geschützt. Weitere Informationen zu den Sicherheitsfeatures von Microsoft Azure finden Sie im [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/security/).
 
@@ -204,6 +205,18 @@ In der folgenden Tabelle werden die Verschlüsselungsalgorithmen beschrieben, di
 
 [!INCLUDE [storsimple Cloud Appliance security](../../includes/storsimple-virtual-device-security.md)]
 
+## <a name="managing-personal-inforamation"></a>Verwalten personenbezogener Informationen
+
+Der StorSimple-Geräte-Manager für physische und virtuelle Serien erfasst personenbezogene Daten in folgenden Schlüsselszenarien:
+
+- Benutzereinstellungen für Warnungen, in denen die E-Mail-Adresse von Benutzern konfiguriert wird. Diese Informationen können vom Administrator angezeigt und gelöscht werden. Dies gilt sowohl für die StorSimple 8000-Serie als auch für StorSimple Virtual Arrays.
+ * Wenn Sie die Einstellungen für die StorSimple 8000-Serie anzeigen und löschen möchten, gehen Sie gemäß der Anleitung unter [Anzeigen und Verwalten von StorSimple-Warnungen](storsimple-8000-manage-alerts.md#configure-alert-settings) vor.
+ * Wenn Sie die Einstellungen für ein StorSimple Virtual Array anzeigen und löschen möchten, gehen Sie gemäß der Anleitung unter [Anzeigen und Verwalten von StorSimple-Warnungen](storsimple-virtual-array-manage-alerts.md#configure-alert-settings) vor.
+- Benutzer, die auf die Daten auf den Freigaben zugreifen können. Eine Liste mit Benutzern, die auf die Freigabedaten zugreifen können, kann angezeigt werden. Die Liste wird zusammen mit den Freigaben gelöscht. Dies gilt nur für StorSimple Virtual Arrays.
+ * Eine Anleitung zum Anzeigen der Liste mit den Benutzern, die auf eine Freigabe zugreifen können, sowie zum Löschen einer Freigabe finden Sie unter [Verwenden des StorSimple-Geräte-Manager-Diensts zum Verwalten von Freigaben auf dem StorSimple Virtual Array](storsimple-virtual-array-manage-shares.md).
+
+Weitere Informationen finden Sie im [Trust Center](https://www.microsoft.com/trustcenter) in der Microsoft-Datenschutzrichtlinie.
+
 ## <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ)
 
 Die folgenden Fragen und Antworten beziehen sich auf die Sicherheit und Microsoft Azure StorSimple.
@@ -254,7 +267,7 @@ Die folgenden Fragen und Antworten beziehen sich auf die Sicherheit und Microsof
 
 **A:** Sie können das neue Zertifikat aus dem StorSimple-Geräte-Manager-Dienst herunterladen und dann für die Installation im Zertifikatspeicher der Remotezugriffsclients bereitstellen. Anweisungen dazu finden Sie unter:
 
-* [Cmdlet "Import-Certificate"](https://technet.microsoft.com/library/hh848630.aspx)
+* [Cmdlet "Import-Certificate"](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate)
 
 **F:** Sind meine Daten im Fall einer Gefährdung des StorSimple-Geräte-Manager-Diensts geschützt?
 
@@ -268,19 +281,7 @@ Die folgenden Fragen und Antworten beziehen sich auf die Sicherheit und Microsof
 
 **A:** Da alle Daten im Dienst verschlüsselt werden und der private Schlüssel im Gerät verbleibt, muss die Behörde die Daten direkt vom Kunden anfordern.
 
-## <a name="gdpr-compliance"></a>Einhaltung der DSGVO
 
-Die [Datenschutz-Grundverordnung (DSGVO)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) ist ein Datenschutzgesetz der Europäischen Union (EU). Die DSGVO enthält zahlreiche Bestimmungen für die Sammlung, Speicherung und Verwendung persönlicher Informationen. Die Regeln der DSGVO gelten für Unternehmen, Regierungsbehörden und andere Organisationen, die in der EU tätig sind und Daten sammeln/analysieren, die mit EU-Bürgern zusammenhängen. 
-
-Der StorSimple-Geräte-Manager für die physische und die virtuelle Serie ist DSGVO-konform. Es gibt zwei wichtige Instanzen, in denen persönliche Informationen gesammelt und im Dienst angezeigt werden:
-
-- Benutzereinstellungen für Warnungen, in denen die E-Mail-Adresse von Benutzern konfiguriert wird. Diese Informationen können vom Administrator angezeigt und gelöscht werden. Dies gilt sowohl für die StorSimple 8000-Serie als auch für StorSimple Virtual Arrays.
- * Wenn Sie die Einstellungen für die StorSimple 8000-Serie anzeigen und löschen möchten, gehen Sie gemäß der Anleitung unter [Anzeigen und Verwalten von StorSimple-Warnungen](storsimple-8000-manage-alerts.md#configure-alert-settings) vor.
- * Wenn Sie die Einstellungen für ein StorSimple Virtual Array anzeigen und löschen möchten, gehen Sie gemäß der Anleitung unter [Anzeigen und Verwalten von StorSimple-Warnungen](storsimple-virtual-array-manage-alerts.md#configure-alert-settings) vor.
-- Benutzer, die auf die Daten auf den Freigaben zugreifen können. Eine Liste mit Benutzern, die auf die Freigabedaten zugreifen können, kann angezeigt werden. Die Liste wird zusammen mit den Freigaben gelöscht. Dies gilt nur für StorSimple Virtual Arrays.
- * Eine Anleitung zum Anzeigen der Liste mit den Benutzern, die auf eine Freigabe zugreifen können, sowie zum Löschen einer Freigabe finden Sie unter [Verwenden des StorSimple-Geräte-Manager-Diensts zum Verwalten von Freigaben auf dem StorSimple Virtual Array](storsimple-virtual-array-manage-shares.md).
-
-Weitere Informationen finden Sie im [Trust Center](https://www.microsoft.com/trustcenter) in der Microsoft-Datenschutzrichtlinie.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

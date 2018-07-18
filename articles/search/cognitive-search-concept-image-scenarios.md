@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 77fbd69aad6c78ecd5c933d8017c980afaa661a3
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 566b1e731f137863e9d4bc284d8868d408c7a575
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34367272"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640199"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Verarbeiten und Extrahieren von Text aus Bildern in kognitiven Suchszenarien
 
@@ -45,7 +45,7 @@ Legen Sie den Parameter **parsingMode** auf `json` (zum Indizieren jedes Blob al
 Der Standardwert von 2.000 Pixeln für die maximale Breite und Höhe der normalisierten Bilder basiert auf der maximal unterstützten Größe der [OCR-Qualifikation](cognitive-search-skill-ocr.md) und der [Bildanalysequalifikation](cognitive-search-skill-image-analysis.md). Wenn Sie die maximalen Grenzwerte erhöhen, können größere Bilder möglicherweise nicht erfolgreich verarbeitet werden.
 
 
-Die imageAction-Eigenschaft wird in der [Indexerdefinition](ref-create-indexer.md) wie folgt angegeben:
+Die imageAction-Eigenschaft wird in der [Indexerdefinition](https://docs.microsoft.com/rest/api/searchservice/create-indexer) wie folgt angegeben:
 
 ```json
 {
@@ -218,7 +218,7 @@ Um die normalisierten Koordinaten auf den ursprünglichen Koordinatenraum zu üb
 ```
 
 ## <a name="see-also"></a>Weitere Informationen
-+ [Create Indexer (Azure Search Service REST api-version=2017-11-11-Preview)](ref-create-indexer.md) (Erstellen eines Indexers (REST-API für den Azure Search-Dienst: Version 2017-11-11-Preview))
++ [Create Indexer (Azure Search Service REST api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) (Erstellen eines Indexers (REST-API für den Azure Search-Dienst: Version 2017-11-11-Preview))
 + [Image Analysis cognitive skill](cognitive-search-skill-image-analysis.md) (Kognitive Qualifikation: Bildanalyse)
 + [OCR cognitive skill](cognitive-search-skill-ocr.md) (Kognitive Qualifikation: OCR)
 + [Text Merge cognitive skill](cognitive-search-skill-textmerger.md) (Kognitive Qualifikation: Textzusammenführung)

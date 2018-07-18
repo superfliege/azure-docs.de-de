@@ -14,11 +14,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: larryfr
-ms.openlocfilehash: 0a8930da2d44714573155477d791dd9cb78d872a
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 9137e509ff352bdcb7a74b652b5c7c7edef2d7ea
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131159"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Entwickeln von Apache Storm-Topologien mit Python in HDInsight
 
@@ -37,7 +38,7 @@ Der Code für dieses Projekt ist verfügbar unter [https://github.com/Azure-Samp
 
 * Maven 3
 
-* (Optional) Eine lokale Storm-Entwicklungsumgebung. Eine lokale Storm-Umgebung ist nur erforderlich, wenn die Topologie lokal ausgeführt werden soll. Weitere Informationen finden Sie unter [Setting up a development environment](http://storm.apache.org/releases/1.1.0/Setting-up-development-environment.html) (Einrichten einer Entwicklungsumgebung).
+* (Optional) Eine lokale Storm-Entwicklungsumgebung. Eine lokale Storm-Umgebung ist nur erforderlich, wenn die Topologie lokal ausgeführt werden soll. Weitere Informationen finden Sie unter [Setting up a development environment](http://storm.apache.org/releases/1.1.2/Setting-up-development-environment.html) (Einrichten einer Entwicklungsumgebung).
 
 ## <a name="storm-multi-language-support"></a>Storm-Unterstützung für mehrere Sprachen
 
@@ -96,7 +97,7 @@ storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.
 ```
 
 > [!NOTE]
-> Dieser Befehl setzt eine lokale Storm-Entwicklungsumgebung voraus. Weitere Informationen finden Sie unter [Setting up a development environment](http://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html) (Einrichten einer Entwicklungsumgebung).
+> Dieser Befehl setzt eine lokale Storm-Entwicklungsumgebung voraus. Weitere Informationen finden Sie unter [Setting up a development environment](http://storm.apache.org/releases/current/Setting-up-development-environment.html) (Einrichten einer Entwicklungsumgebung).
 
 Sobald die Topologie startet, gibt er Informationen über die lokale Konsole aus, die folgendem Text ähneln:
 

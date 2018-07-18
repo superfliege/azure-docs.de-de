@@ -1,29 +1,25 @@
 ---
-title: "Ausführen von Schritten basierend auf dem Status gruppierter Aktionen – Azure Logic Apps | Microsoft-Dokumentation"
-description: "Gruppieren von Aktionen zu Bereichen und Ausführen von Schritten basierend auf Gruppenstatus"
+title: Hinzufügen von Bereichen für die Ausführung von Aktionen auf der Grundlage des Gruppenstatus – Azure Logic Apps | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie in Azure Logic Apps Bereiche erstellen, die Workflowaktionen auf der Grundlage des Gruppenstatus ausführen.
 services: logic-apps
-keywords: Verzweigungen, Parallelverarbeitung
-documentationcenter: 
-author: ecfan
-manager: anneta
-editor: 
-ms.assetid: 
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 052af45962f442e96ca28f05ffaa1b9814b2588b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 1258175eb3d28d39be8be08498ba8d2e0998aa43
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298813"
 ---
-# <a name="scopes-run-steps-based-on-group-status-in-logic-apps"></a>Bereiche: Ausführen von Schritten basierend auf Gruppenstatus in Logik-Apps
+# <a name="create-scopes-that-run-workflow-actions-based-on-group-status-in-azure-logic-apps"></a>Erstellen von Bereichen in Azure Logic Apps, die Workflowaktionen auf der Grundlage des Gruppenstatus ausführen
 
-Um Schritte nur auszuführen, nachdem eine andere Gruppe von Aktionen erfolgreich war oder fehlgeschlagen ist, nehmen Sie diese Gruppe in einen *Bereich* auf. Diese Struktur ist hilfreich, wenn Sie Aktionen als logische Gruppe organisieren, den Status dieser Gruppe auswerten und Aktionen durchführen möchten, die auf dem Status des Bereichs basieren. Nachdem die Ausführung aller Aktionen in einem Bereich beendet ist, erhält der Bereich auch einen eigenen Status. Beispielsweise können Sie Bereiche verwenden, wenn Sie die [Ausnahme- und Fehlerbehandlung](../logic-apps/logic-apps-exception-handling.md#scopes) implementieren möchten. 
+Wenn Aktionen nur ausgeführt werden sollen, nachdem eine andere Gruppe von Aktionen erfolgreich oder nicht erfolgreich war, gruppieren Sie diese Aktionen in einem *Bereich*. Diese Struktur ist hilfreich, wenn Sie Aktionen als logische Gruppe organisieren, den Status dieser Gruppe auswerten und Aktionen durchführen möchten, die auf dem Status des Bereichs basieren. Nachdem die Ausführung aller Aktionen in einem Bereich beendet ist, erhält der Bereich auch einen eigenen Status. Beispielsweise können Sie Bereiche verwenden, wenn Sie die [Ausnahme- und Fehlerbehandlung](../logic-apps/logic-apps-exception-handling.md#scopes) implementieren möchten. 
 
 Zum Überprüfen des Status eines Bereichs können Sie die gleichen Kriterien wie zum Bestimmen des Ausführungsstatus einer Logik-App verwenden, z.B. „Erfolgreich“, „Fehlerhaft“, „Abgebrochen“ usw. Bei erfolgreicher Ausführung aller Aktionen des Bereichs wird der Status des Bereichs als „Erfolgreich“ festgelegt. Wenn jedoch eine Aktion im Bereich fehlschlägt oder abgebrochen wird, erhält der Bereich den Status „Fehlerhaft“. Grenzwerte für Bereiche finden Sie unter [Grenzwerte und Konfiguration](../logic-apps/logic-apps-limits-and-config.md). 
 

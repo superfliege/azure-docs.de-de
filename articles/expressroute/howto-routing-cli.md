@@ -20,6 +20,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30316425"
 ---
 # <a name="create-and-modify-routing-for-an-expressroute-circuit-using-cli"></a>Erstellen und Ändern des Routings für eine ExpressRoute-Verbindung mithilfe der CLI
 

@@ -5,20 +5,16 @@ services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: bfa10984-eb22-4671-861a-f377a90d9372
 ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/30/2018
+ms.date: 06/07/2018
 ms.author: sethm
-ms.openlocfilehash: 8a30b8cb92b98606ca3d859ada329b8301806b10
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 4c28f1ae5517e54fab259e680128d6c666c82fbe
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235310"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Häufig gestellte Fragen zu Event Hubs
 
@@ -30,7 +26,7 @@ Im Standard-Tarif von Azure Event Hubs stehen Ihnen mehr Funktionen als im Basic
 * Längere Aufbewahrung von Ereignissen
 * Zusätzliche Brokerverbindungen (Bei Überschreitung der enthaltenen Anzahl fällt eine Zusatzgebühr an.)
 * Mehr als eine Consumergruppe
-* [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)
+* [Capture](event-hubs-capture-overview.md)
 
 Weitere Informationen zu Tarifen, u.a. für Event Hubs Dedicated, finden Sie unter [Event Hubs – Preisdetails](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -58,9 +54,10 @@ Sie können mit dem Feature [Automatische Vergrößerung](event-hubs-auto-inflat
 Ja, solange sich alle Event Hubs im gleichen Namespace befinden.
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>Was ist die maximale Beibehaltungsdauer für Ereignisse?
-Die Standard-Ebene für Event Hubs unterstützt derzeit einen maximalen Aufbewahrungszeitraum von 7 Tagen. Beachten Sie, dass Event Hubs nicht als dauerhafter Datenspeicher vorgesehen sind. Beibehaltungsdauern größer als 24 Stunden sind für Szenarien vorgesehen, in denen es praktisch ist, einen Stream von Ereignissen in die gleichen Systeme wiederzugeben, wenn Sie beispielsweise ein neues Computerlernmodell für vorhandene Daten trainieren oder überprüfen wollen. Wenn Sie Nachrichten länger als sieben Tage aufbewahren möchten, werden die Daten durch Aktivieren von [Event Hubs Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) in Ihrem Event Hub von Ihrem Event Hub per Pull in das Storage-Konto oder das von Ihnen gewünschte Data Lake Service-Konto übertragen. Abhängig von Ihrer Durchsatzeinheit entstehen durch das aktivieren von „Capture“ Kosten.
+Die Standard-Ebene für Event Hubs unterstützt derzeit einen maximalen Aufbewahrungszeitraum von 7 Tagen. Beachten Sie, dass Event Hubs nicht als dauerhafter Datenspeicher vorgesehen sind. Beibehaltungsdauern größer als 24 Stunden sind für Szenarien vorgesehen, in denen es praktisch ist, einen Stream von Ereignissen in die gleichen Systeme wiederzugeben, wenn Sie beispielsweise ein neues Computerlernmodell für vorhandene Daten trainieren oder überprüfen wollen. Wenn Sie Nachrichten länger als sieben Tage aufbewahren möchten, werden die Daten durch Aktivieren von [Event Hubs Capture](event-hubs-capture-overview.md) in Ihrem Event Hub von Ihrem Event Hub per Pull in das Storage-Konto oder das von Ihnen gewünschte Data Lake Service-Konto übertragen. Abhängig von Ihrer erworbenen Durchsatzeinheit entstehen durch das Aktivieren von „Capture“ Kosten.
 
 ### <a name="where-is-azure-event-hubs-available"></a>Wo steht Azure Event Hubs zur Verfügung?
+
 Azure Event Hubs ist in allen unterstützten Azure-Regionen verfügbar. Eine Liste finden Sie auf der Seite [Azure-Regionen](https://azure.microsoft.com/regions/).  
 
 ## <a name="best-practices"></a>Bewährte Methoden
@@ -101,22 +98,27 @@ Capture verwendet ein Speicherkonto, das Sie angeben, wenn es auf einem Event Hu
 ## <a name="quotas"></a>Kontingente
 
 ### <a name="are-there-any-quotas-associated-with-event-hubs"></a>Sind Event Hubs bestimmte Kontingente zugeordnet?
+
 Eine Liste aller Kontingente für Event Hubs finden Sie unter [Event Hubs-Kontingente](event-hubs-quotas.md).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Welche Beispiele gibt es für Ausnahmen, die von Event Hubs generiert werden, und die vorgeschlagenen Aktionen?
+
 Eine Liste der möglichen Event Hubs-Ausnahmen finden Sie unter [Event Hubs-Messagingausnahmen](event-hubs-messaging-exceptions.md).
 
 ### <a name="diagnostic-logs"></a>Diagnoseprotokolle
+
 Event Hubs unterstützt zwei Arten von [Diagnoseprotokollen](event-hubs-diagnostic-logs.md): Erfassungsfehlerprotokolle und Betriebsprotokolle. Beide werden im JSON-Format dargestellt und können über das Azure-Portal aktiviert werden.
 
 ### <a name="support-and-sla"></a>Support und SLA
+
 Technischer Support für Event Hubs steht über die [Communityforen](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus)bereit. Der Support für die Abrechnungs- und Abonnementverwaltung wird kostenlos bereitgestellt.
 
 Weitere Informationen zu unserem SLA finden Sie auf der Seite [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/) .
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 
 * [Übersicht über Event Hubs](event-hubs-what-is-event-hubs.md)

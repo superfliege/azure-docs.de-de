@@ -1,12 +1,12 @@
 ---
 title: Verbinden eines Raspberry Pi mit Azure IoT Hub Suite | Microsoft-Dokumentation
-description: "Tutorials, in denen Node.js oder C verwendet wird, um Ihnen zu vermitteln, wie das Microsoft Azure IoT Starter Kit für Raspberry Pi 3 und die IoT Suite-Remoteüberwachungslösung verwendet werden. Sie können ein Tutorial wählen, das entweder Telemetrie simuliert, echte Sensoren verwendet oder Remoteupdates der Firmware ermöglicht."
-services: 
+description: Tutorials, in denen Node.js oder C verwendet wird, um Ihnen zu vermitteln, wie das Microsoft Azure IoT Starter Kit für Raspberry Pi 3 und die IoT Suite-Remoteüberwachungslösung verwendet werden. Sie können ein Tutorial wählen, das entweder Telemetrie simuliert, echte Sensoren verwendet oder Remoteupdates der Firmware ermöglicht.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/06/2017
+ms.locfileid: "24010423"
 ---
 # <a name="connect-your-microsoft-azure-iot-raspberry-pi-3-starter-kit-to-the-remote-monitoring-solution"></a>Verbinden Ihres Microsoft Azure IoT Raspberry Pi 3 Starter Kits mit der Remoteüberwachungslösung
 

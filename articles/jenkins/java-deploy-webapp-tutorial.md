@@ -1,10 +1,10 @@
 ---
 title: Verwenden von Jenkins zum Bereitstellen Ihrer Web-Apps in Azure | Microsoft-Dokumentation
-description: "Richten Sie Continuous Integration aus GitHub in Azure App Service für Ihre Java-Web-Apps mithilfe von Jenkins und Docker ein."
+description: Richten Sie Continuous Integration aus GitHub in Azure App Service für Ihre Java-Web-Apps mithilfe von Jenkins und Docker ein.
 author: rloutlaw
 manager: douge
 ms.service: jenkins
-ms.search.scope: 
+ms.search.scope: ''
 ms.devlang: java
 ms.topic: article
 ms.workload: web
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852998"
 ---
 # <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>Einrichten von Continuous Integration und Continuous Deployment in Azure App Service mit Jenkins
 

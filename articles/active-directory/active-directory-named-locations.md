@@ -11,14 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/13/2018
+ms.date: 05/23/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 3b7bd6f4bea111815f647af09ebaa868696b25bc
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4c8aba8faf4ce91445209eb46abea17423f57a77
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589330"
 ---
 # <a name="configure-named-locations-in-azure-active-directory"></a>Konfigurieren benannter Orte in Azure Active Directory
 
@@ -79,7 +80,7 @@ Sie können auf die Seite mit der Konfiguration des benannten Orts im Abschnitt 
 
 6. Gehen Sie auf der Seite **Neu** wie folgt vor:
 
-    ![Das Blatt „Neu“](./media/active-directory-named-locations/56.png)
+    ![Das Blatt „Neu“](./media/active-directory-named-locations/61.png)
 
     a. Geben Sie im Feld **Name** einen Namen für den benannten Ort ein.
 

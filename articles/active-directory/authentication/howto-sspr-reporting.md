@@ -10,11 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 45183e51e9071647e07cfd0738522f0dfa28bd7b
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: df46a4de32482f9da46b81e6b0fbc55c2cc1af35
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37444241"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD
 
@@ -25,7 +26,7 @@ Nach einer Bereitstellung möchten viele Organisationen wissen, wie oder ob Self
 Die folgenden Fragen können mit den Berichten beantwortet werden, die im [Azure-Portal] (https://portal.azure.com/): vorhanden sind:
 
 > [!NOTE]
-> Sie müssen [ein globaler Administrator](../active-directory-assign-admin-roles-azure-portal.md) sein, und Sie müssen zustimmen, dass diese Daten im Auftrag Ihres Unternehmens erfasst werden. Um zuzustimmen, müssen Sie die Registerkarte **Berichterstellung** oder die Überwachungsprotokolle mindestens ein Mal öffnen. Bis dahin werden keine Daten für Ihre Organisation erfasst.
+> Sie müssen [ein globaler Administrator](../users-groups-roles/directory-assign-admin-roles.md) sein, und Sie müssen zustimmen, dass diese Daten im Auftrag Ihres Unternehmens erfasst werden. Um zuzustimmen, müssen Sie die Registerkarte **Berichterstellung** oder die Überwachungsprotokolle mindestens ein Mal öffnen. Bis dahin werden keine Daten für Ihre Organisation erfasst.
 >
 
 * Wie viele Personen haben sich für die Kennwortzurücksetzung registriert?
@@ -53,25 +54,6 @@ Die Art und Weise, wie Aktivitäten zur Kennwortzurücksetzung und zur Registrie
 6. Möchten Sie diese Ansicht filtern, sodass nur die kennwortbezogenen Ereignisse angezeigt werden, wählen Sie im oberen Bereich des Blatts die Schaltfläche **Filter** aus.
 7. Wählen Sie im Menü **Filter** die Dropdownliste **Kategorie** aus, und legen Sie für diese den Kategorietyp **Self-Service-Kennwortverwaltung** fest.
 8. Grenzen Sie die Liste optional weiter ein, indem Sie die spezielle **Aktivität** auswählen, für die Sie sich interessieren.
-
-## <a name="how-to-retrieve-password-management-events-from-the-azure-ad-reports-and-events-api"></a>Abrufen von Kennwortverwaltungsereignissen von der API für Azure AD-Berichte und -Ereignisse
-
-Die API für Azure AD-Berichte und -Ereignisse unterstützt das Abrufen aller Informationen, die in Berichten zu Kennwortzurücksetzung und zu Registrierung für die Kennwortzurücksetzung enthalten sind. Mithilfe dieser API können Sie einzelne Ereignisse zur Kennwortzurücksetzung und zur Registrierung für die Kennwortzurücksetzung herunterladen und diese in die von Ihnen gewünschte Berichtstechnologie integrieren.
-
-> [!IMPORTANT]
-> Derzeit ruft die API für Azure AD-Berichte und -Ereignisse bis zu *75.000 Einzelereignisse* der Typen [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent) und [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent) ab. Die API berücksichtigt die letzten 30 Tage.
-> 
-> Wenn Sie weiter zurückliegende Daten abrufen oder speichern möchten, sollten Sie sie in einer externen Datenbank speichern, indem Sie die API verwenden, um die resultierenden Deltas abzufragen. Es empfiehlt sich, dass Sie mit dem Abrufen dieser Daten beginnen, sobald Sie damit begonnen haben, SSPR in Ihrer Organisation zu verwenden. Speichern Sie die Daten extern, und gehen Sie dann so vor, dass Sie die Deltas ab diesem Zeitpunkt vorwärts verfolgen.
->
-
-### <a name="how-to-get-started-with-the-reporting-api"></a>Erste Schritte mit der Reporting-API
-
-Um auf diese Daten zuzugreifen, müssen Sie eine kleine Anwendung oder ein Skript schreiben, um die Daten von unseren Servern abzurufen. Weitere Informationen finden Sie unter [Erste Schritte mit der Berichterstellungs-API von Azure Active Directory](../active-directory-reporting-api-getting-started-azure-portal.md).
-
-Nachdem Sie ein funktionierendes Skript haben, sollten Sie sich mit den Kennwortzurücksetzungs- und Registrierungsereignissen befassen, die Sie zum Erfüllen Ihrer Szenarien abrufen können:
-
-* [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent): Listet die Spalten auf, die für Kennwortzurücksetzungsereignisse verfügbar sind.
-* [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent): Listet die Spalten auf, die für Ereignisse zum Registrieren der Kennwortzurücksetzung verfügbar sind.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Beschreibung der Berichtsspalten im Azure-Portal
 

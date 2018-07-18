@@ -1,11 +1,11 @@
 ---
-title: "Einrichten von Laufwerk „D:“ eines virtuellen Computers als Datenträger | Microsoft Docs"
-description: "Es wird beschrieben, wie Sie Laufwerkbuchstaben für eine Windows-VM ändern, um das Laufwerk D: als Datenlaufwerk zu verwenden."
+title: Einrichten von Laufwerk „D:“ eines virtuellen Computers als Datenträger | Microsoft Docs
+description: 'Es wird beschrieben, wie Sie Laufwerkbuchstaben für eine Windows-VM ändern, um das Laufwerk D: als Datenlaufwerk zu verwenden.'
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 0867a931-0055-4e31-8403-9b38a3eeb904
 ms.service: virtual-machines-windows
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/03/2018
+ms.locfileid: "27577444"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>Verwenden des Laufwerks „D:“ als Datenlaufwerk auf einem virtuellen Windows-Computer
 Wenn Ihre Anwendung Laufwerk D zum Speichern der Daten verwenden muss, können Sie diese Anweisungen befolgen, um für den temporären Datenträger einen anderen Laufwerkbuchstaben zu verwenden. Verwenden Sie niemals den temporären Datenträger zum Speichern von Daten, die Sie behalten müssen.

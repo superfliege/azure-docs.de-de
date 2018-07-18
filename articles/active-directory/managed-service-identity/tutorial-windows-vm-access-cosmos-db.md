@@ -9,17 +9,17 @@ editor: daveba
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
-ms.author: arluca
-ms.openlocfilehash: d04bfe601760dcbf832aeec0cc66d8e1eda51178
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.author: daveba
+ms.openlocfilehash: ed1aff411ae5446688fe717ddc4570ea756c4c1e
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304340"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37904270"
 ---
 # <a name="tutorial-use-a-windows-vm-msi-to-access-azure-cosmos-db"></a>Tutorial: Verwenden einer Windows-VM-MSI für den Zugriff auf Azure Cosmos DB
 
@@ -210,4 +210,9 @@ Mit diesem CLI-Befehl werden Details zur Sammlung zurückgegeben:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Einen Überblick über MSI finden Sie unter [Übersicht über verwaltete Dienstidentitäten](overview.md).
+In diesem Tutorial haben Sie gelernt, wie Sie eine verwaltete Dienstidentität unter Windows für den Zugriff auf Cosmos DB erstellen.  Weitere Informationen zu Cosmos DB finden Sie hier:
+
+> [!div class="nextstepaction"]
+>[Willkommen bei Azure Cosmos DB](/azure/cosmos-db/introduction)
+
+

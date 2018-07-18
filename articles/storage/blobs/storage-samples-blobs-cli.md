@@ -1,12 +1,12 @@
 ---
-title: "Azure CLI-Beispiele für Blob Storage | Microsoft-Dokumentation"
-description: "Azure CLI-Beispiele für das Arbeiten mit Azure Blob Storage"
+title: Azure CLI-Beispiele für Blob Storage | Microsoft-Dokumentation
+description: Azure CLI-Beispiele für das Arbeiten mit Azure Blob Storage
 services: storage
 documentationcenter: na
 author: tamram
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
 ms.workload: storage
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/01/2017
+ms.locfileid: "26040174"
 ---
 # <a name="azure-cli-samples-for-azure-blob-storage"></a>Azure CLI-Beispiele für Azure Blob Storage
 

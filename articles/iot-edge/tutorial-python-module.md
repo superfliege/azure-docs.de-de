@@ -1,24 +1,24 @@
 ---
-title: Python-Modul in Azure IoT Edge | Microsoft-Dokumentation
-description: Erstellen eines IoT Edge-Moduls mit Python-Code und Bereitstellen dieses Moduls auf einem Edge-Gerät
+title: Tutorial für Python und Azure IoT Edge | Microsoft-Dokumentation
+description: In diesem Tutorial wird gezeigt, wie Sie ein IoT Edge-Modul mit Python-Code erstellen und dieses Modul auf einem Edge-Gerät bereitstellen.
 services: iot-edge
-keywords: ''
 author: shizn
 manager: timlt
 ms.author: xshi
-ms.date: 03/18/2018
-ms.topic: article
+ms.date: 06/26/2018
+ms.topic: tutorial
 ms.service: iot-edge
-ms.openlocfilehash: 3c46df85f95377f5740526542ac1baf5a8fd77c0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.custom: mvc
+ms.openlocfilehash: 42af2b5ec6b591929f37afebe6546d61b8a3a02a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32177834"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38633302"
 ---
-# <a name="develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device---preview"></a>Entwickeln und Bereitstellen eines Python-IoT Edge-Moduls für Ihr simuliertes Gerät – Vorschau
+# <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>Tutorial: Entwickeln und Bereitstellen eines Python-IoT Edge-Moduls für Ihr simuliertes Gerät
 
-Mithilfe von IoT Edge-Modulen können Sie Code bereitstellen, mit dem Ihre Geschäftslogik direkt auf Ihren IoT Edge-Geräten implementiert wird. In diesem Tutorial wird beschrieben, wie Sie ein IoT Edge-Modul, mit dem Sensordaten gefiltert werden, erstellen und bereitstellen. Sie verwenden das simulierte IoT Edge-Gerät, das Sie in den Tutorials zum Bereitstellen von Azure IoT Edge auf einem simulierten Gerät unter [Windows][lnk-tutorial1-win] oder [Linux][lnk-tutorial1-lin] erstellt haben. In diesem Tutorial lernen Sie Folgendes:    
+Mithilfe von IoT Edge-Modulen können Sie Code bereitstellen, mit dem Ihre Geschäftslogik direkt auf Ihren IoT Edge-Geräten implementiert wird. In diesem Tutorial wird beschrieben, wie Sie ein IoT Edge-Modul, mit dem Sensordaten gefiltert werden, erstellen und bereitstellen. Sie verwenden das simulierte IoT Edge-Gerät, das Sie in den Schnellstartanleitungen zum Bereitstellen von Azure IoT Edge auf einem simulierten Gerät unter [Windows][lnk-quickstart-win] oder [Linux][lnk-quickstart-lin] erstellt haben. In diesem Tutorial lernen Sie Folgendes:    
 
 > [!div class="checklist"]
 > * Erstellen eines IoT Edge-Python-Moduls mit Visual Studio Code
@@ -29,13 +29,16 @@ Mithilfe von IoT Edge-Modulen können Sie Code bereitstellen, mit dem Ihre Gesch
 
 Das IoT Edge-Modul, das Sie in diesem Tutorial erstellen, filtert die von Ihrem Gerät generierten Temperaturdaten. Es leitet Nachrichten nur dann an nachgeschaltete Geräte weiter, wenn die Temperatur einen angegebenen Schwellenwert überschreitet. Diese Art der Analyse auf Edge-Ebene eignet sich zur Verringerung der Datenmenge, die in die Cloud weitergeleitet und dort gespeichert wird. 
 
-> [!IMPORTANT]
-> Das Python-Modul kann derzeit nur in amd64-Linux-Containern ausgeführt werden. Die Ausführung in Windows-Containern oder ARM-basierten Containern ist nicht möglich. 
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen, bevor Sie beginnen.
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Das Azure IoT Edge-Gerät, das Sie mit der Schnellstartanleitung oder im ersten Tutorial erstellt haben.
-* Die Verbindungszeichenfolge des primären Schlüssels für das IoT Edge-Gerät  
+* Das Azure IoT Edge-Gerät, das Sie mit der Schnellstartanleitung für [Linux](quickstart-linux.md) erstellt haben.
+
+   >[!Note]
+   >Python-Module für Azure IoT Edge unterstützen keine Windows- oder ARM-Geräte. 
+
 * [Visual Studio Code](https://code.visualstudio.com/). 
 * [Azure IoT Edge-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
 * [Python-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python). 
@@ -57,36 +60,61 @@ Sie können für dieses Tutorial jede beliebige Docker-kompatible Registrierung 
 
 ## <a name="create-an-iot-edge-module-project"></a>Erstellen eines IoT Edge-Modulprojekts
 Die folgenden Schritte zeigen, wie Sie mithilfe von Visual Studio Code und der Azure IoT Edge-Erweiterung ein IoT Edge-Python-Modul erstellen.
+
+### <a name="create-a-new-solution"></a>Erstellen einer neuen Lösung
+
+Verwenden Sie das Python-Paket **cookiecutter**, um eine Python-Lösungsvorlage zu erstellen, auf der Sie aufbauen können. 
+
 1. Wählen Sie in Visual Studio Code die Optionen **Ansicht** > **Integriertes Terminal** aus, um das in Visual Studio Code integrierte Terminal zu öffnen.
-2. Geben Sie im integrierten Terminalfenster den folgenden Befehl ein, um **cookiecutter** zu installieren (oder zu aktualisieren) – es wird empfohlen, dies in einer virtuellen Umgebung oder als Benutzerinstallation durchzuführen, wie unten dargestellt:
+
+2. Geben Sie im integrierten Terminal den folgenden Befehl ein, um **cookiecutter** zu installieren (oder zu aktualisieren). Sie verwenden das Paket anschließend zum Erstellen der Edge-Lösungsvorlage in VS Code:
 
     ```cmd/sh
     pip install --upgrade --user cookiecutter
     ```
 
-3. Erstellen Sie ein Projekt für das neue Modul. Mit dem folgenden Befehl wird der Projektordner **FilterModule** in Ihrem Containerrepository erstellt. Der Parameter von `image_repository` muss bei Verwendung der Azure-Containerregistrierung in Form von `<your container registry name>.azurecr.io/filtermodule` vorliegen. Geben Sie den folgenden Befehl im aktuellen Arbeitsordner ein:
+3. Klicken Sie auf **Ansicht** > **Befehlspalette**, um die VS Code-Befehlspalette zu öffnen. 
 
-    ```cmd/sh
-    cookiecutter --no-input https://github.com/Azure/cookiecutter-azure-iot-edge-module module_name=FilterModule image_repository=<your container registry address>/filtermodule
-    ```
+4. Geben Sie in der Befehlspalette den Befehl **Azure: Sign in** (Azure: Anmelden) ein, und führen Sie ihn aus. Befolgen Sie die Anweisungen zum Anmelden beim Azure-Konto. Wenn Sie bereits angemeldet sind, können Sie diesen Schritt überspringen.
+
+5. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: Neue IoT Edge-Projektmappe) ein, und führen Sie ihn aus. Geben Sie in der Befehlspalette die folgenden Informationen an, um die Projektmappe zu erstellen: 
+
+   1. Wählen Sie den Ordner aus, in dem die Projektmappe erstellt werden soll. 
+   2. Geben Sie einen Namen für Ihre Projektmappe ein, oder übernehmen Sie den Standardnamen **EdgeSolution**.
+   3. Wählen Sie **Python-Modul** als Modulvorlage aus. 
+   4. Nennen Sie das Modul **PythonModule**. 
+   5. Geben Sie die Azure Container Registry-Instanz an, die Sie im vorherigen Abschnitt als Imagerepository für das erste Modul erstellt haben. Ersetzen Sie **localhost:5000** durch den kopierten Wert für den Anmeldeserver. Die endgültige Zeichenfolge sieht wie folgt aus: **\<Registrierungsname\>.azurecr.io/pythonmodule**.
  
-4. Wählen Sie **Datei** > **Ordner öffnen** aus.
-5. Navigieren Sie zum Ordner **FilterModule**, und klicken Sie auf **Ordner auswählen**, um das Projekt in VS Code zu öffnen.
-6. Klicken Sie im VS Code-Explorer auf **main.py**, um es zu öffnen.
-7. Importieren Sie oben im **FilterModule**-Namespace die `json`-Bibliothek:
+Das VS Code-Fenster lädt den Arbeitsbereich für Ihre IoT Edge-Projektmappe. Er enthält einen Ordner für **Module**, eine Bereitstellungsmanifest-Vorlagendatei und eine Datei vom Typ **.env**. 
+
+### <a name="add-your-registry-credentials"></a>Hinzufügen von Registrierungsanmeldeinformationen
+
+Die Umgebungsdatei speichert die Anmeldeinformationen für Ihr Containerrepository und gibt sie an die IoT Edge-Runtime weiter. Die Runtime benötigt diese Anmeldeinformationen, um Ihre privaten Images per Pull auf das IoT Edge-Gerät zu übertragen. 
+
+1. Öffnen Sie im VS Code-Explorer die Datei vom Typ **.env**. 
+2. Aktualisieren Sie die Felder mit den Werten für **Benutzername** und **Kennwort**, die Sie aus der Azure-Containerregistrierung kopiert haben. 
+3. Speichern Sie diese Datei. 
+
+### <a name="update-the-module-with-custom-code"></a>Aktualisieren des Moduls mit benutzerdefiniertem Code
+
+Jede Vorlage enthält Beispielcode, der Sensordaten aus dem Model **tempSensor** an IoT Hub weiterleitet. Fügen Sie in diesem Abschnitt den Code hinzu, der „pythonModule“ erweitert, um die Nachrichten vor dem Senden zu analysieren. 
+
+1. Öffnen Sie im VS Code-Explorer **Module** > **PythonModule** > **main.py**.
+
+2. Importieren Sie oben in **main.py** die Bibliothek `json`.
 
     ```python
     import json
     ```
 
-8. Fügen Sie `TEMPERATURE_THRESHOLD`, `RECEIVE_CALLBACKS` und `TWIN_CALLBACKS` unter den globalen Leistungsindikatoren hinzu. Der Temperaturschwellenwert legt den Wert fest, den die gemessene Temperatur übersteigen muss, damit die Daten an IoT Hub gesendet werden.
+3. Fügen Sie die Variablen `TEMPERATURE_THRESHOLD` und `TWIN_CALLBACKS` unter den globalen Leistungsindikatoren hinzu. Der Temperaturschwellenwert legt den Wert fest, den die gemessene Computertemperatur übersteigen muss, damit die Daten an IoT Hub gesendet werden.
 
     ```python
     TEMPERATURE_THRESHOLD = 25
-    TWIN_CALLBACKS = RECEIVE_CALLBACKS = 0
+    TWIN_CALLBACKS = 0
     ```
 
-9. Aktualisieren Sie die Funktion `receive_message_callback` mit dem folgenden Inhalt.
+4. Ersetzen Sie die Funktion `receive_message_callback` durch den folgenden Code:
 
     ```python
     # receive_message_callback is invoked when an incoming message arrives on the specified 
@@ -98,129 +126,136 @@ Die folgenden Schritte zeigen, wie Sie mithilfe von Visual Studio Code und der A
         message_buffer = message.get_bytearray()
         size = len(message_buffer)
         message_text = message_buffer[:size].decode('utf-8')
-        print("    Data: <<<{}>>> & Size={:d}".format(message_text, size))
+        print ( "    Data: <<<%s>>> & Size=%d" % (message_text, size) )
         map_properties = message.properties()
         key_value_pair = map_properties.get_internals()
-        print("    Properties: {}".format(key_value_pair))
+        print ( "    Properties: %s" % key_value_pair )
         RECEIVE_CALLBACKS += 1
-        print("    Total calls received: {:d}".format(RECEIVE_CALLBACKS))
+        print ( "    Total calls received: %d" % RECEIVE_CALLBACKS )
         data = json.loads(message_text)
         if "machine" in data and "temperature" in data["machine"] and data["machine"]["temperature"] > TEMPERATURE_THRESHOLD:
             map_properties.add("MessageType", "Alert")
-            print("Machine temperature {} exceeds threshold {}".format(data["machine"]["temperature"], TEMPERATURE_THRESHOLD))
+            print("Machine temperature %s exceeds threshold %s" % (data["machine"]["temperature"], TEMPERATURE_THRESHOLD))
         hubManager.forward_event_to_output("output1", message, 0)
         return IoTHubMessageDispositionResult.ACCEPTED
     ```
 
-10. Fügen Sie eine neue Funktion `device_twin_callback` hinzu. Diese Funktion wird aufgerufen, wenn die gewünschten Eigenschaften aktualisiert werden.
+5. Fügen Sie eine neue Funktion namens `module_twin_callback` hinzu. Diese Funktion wird aufgerufen, wenn die gewünschten Eigenschaften aktualisiert werden.
 
     ```python
-    # device_twin_callback is invoked when twin's desired properties are updated.
-    def device_twin_callback(update_state, payload, user_context):
+    # module_twin_callback is invoked when twin's desired properties are updated.
+    def module_twin_callback(update_state, payload, user_context):
         global TWIN_CALLBACKS
         global TEMPERATURE_THRESHOLD
-        print("\nTwin callback called with:\nupdateStatus = {}\npayload = {}\ncontext = {}".format(update_state, payload, user_context))
+        print ( "\nTwin callback called with:\nupdateStatus = %s\npayload = %s\ncontext = %s" % (update_state, payload, user_context) )
         data = json.loads(payload)
         if "desired" in data and "TemperatureThreshold" in data["desired"]:
             TEMPERATURE_THRESHOLD = data["desired"]["TemperatureThreshold"]
         if "TemperatureThreshold" in data:
             TEMPERATURE_THRESHOLD = data["TemperatureThreshold"]
         TWIN_CALLBACKS += 1
-        print("Total calls confirmed: {:d}\n".format(TWIN_CALLBACKS))
+        print ( "Total calls confirmed: %d\n" % TWIN_CALLBACKS )
     ```
 
-11. Fügen Sie in Klasse `HubManager` der `__init__`-Methode eine neue Zeile zum Initialisieren der `device_twin_callback`-Funktion hinzu, die Sie gerade hinzugefügt haben.
+6. Fügen Sie in Klasse `HubManager` der `__init__`-Methode eine neue Zeile zum Initialisieren der `module_twin_callback`-Funktion hinzu, die Sie gerade hinzugefügt haben.
 
     ```python
     # sets the callback when a twin's desired properties are updated.
-    self.client.set_device_twin_callback(device_twin_callback, self)
+    self.client.set_module_twin_callback(module_twin_callback, self)
     ```
 
+7. Speichern Sie diese Datei.
 
-12. Speichern Sie diese Datei.
+## <a name="build-your-iot-edge-solution"></a>Erstellen Ihrer IoT Edge-Projektmappe
 
-## <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>Erstellen und Veröffentlichen eines Docker-Image in der Registrierung
+Im vorherigen Abschnitt haben Sie eine IoT Edge-Projektmappe erstellt und PythonModule Code hinzugefügt, der Nachrichten herausfiltert, deren gemeldete Computertemperatur unter dem zulässigen Schwellenwert liegt. Nun müssen Sie die Projektmappe als Containerimage erstellen und per Push an die Containerregistrierung übertragen. 
 
-1. Melden Sie sich bei Docker an. Geben Sie dazu den folgenden Code im Terminal von Visual Studio Code ein: 
+1. Melden Sie sich durch Eingabe des folgenden Befehls im integrierten Visual Studio Code-Terminal bei Docker an, um das Modulimage per Push an ACR zu übertragen: 
      
    ```csh/sh
-   docker login -u <username> -p <password> <Login server>
+   docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
-        
-   Verwenden Sie den Benutzernamen, das Kennwort und den Anmeldeserver, die Sie bei der Erstellung aus Ihrer Azure-Containerregistrierung kopiert haben.
+   Verwenden Sie den Benutzernamen, das Kennwort und den Anmeldeserver, die Sie im ersten Abschnitt aus Azure Container Registry kopiert haben. Oder rufen Sie sie erneut über den Abschnitt **Zugriffsschlüssel** der Registrierung im Azure-Portal ab.
 
-2. Klicken Sie im VS Code-Explorer mit der rechten Maustaste auf die Datei **module.json**, und klicken Sie auf **IoT Edge-Modul-Docker-Image erstellen und pushen**. Wählen Sie im Popup-Dropdownlistenfeld oben im VS Code-Fenster Ihre Containerplattform aus, z.B. **amd64** für Linux-Container. Bringen Sie die Datei `main.py` und erforderliche Abhängigkeiten mit VS Code in einem Container unter, und pushen Sie sie in die angegebene Containerregistrierung. Das erstmalige Erstellen des Images kann einige Minuten dauern.
+2. Öffnen Sie im VS Code-Explorer die Datei **deployment.template.json** im Arbeitsbereich für Ihre IoT Edge-Projektmappe. 
 
-3. Sie können die vollständige Adresse des Containerimages mit Tag in dem Terminal abrufen, das in VS Code integriert ist. Weitere Informationen zur Definition für Erstellen und Pushen finden Sie in der Datei `module.json`.
+   Diese Datei weist `$edgeAgent` an, zwei Module bereitzustellen: das Modul **tempSensor**, das Gerätedaten simuliert, und das Modul **PythonModule**. Der Wert `PythonModule.image` wird auf eine Linux-amd64-Version des Images festgelegt. Weitere Informationen zu Bereitstellungsmanifesten finden Sie unter [Verstehen, wie IoT Edge-Module verwendet, konfiguriert und wiederverwendet werden können – Vorschau](module-composition.md).
 
-## <a name="add-registry-credentials-to-edge-runtime"></a>Hinzufügen von Registrierungsanmeldeinformationen zur Edge-Runtime
-Fügen Sie die Anmeldeinformationen für Ihre Registrierung zur Edge-Runtime auf dem Computer hinzu, auf dem Sie Ihr Edge-Gerät ausgeführen. Über diese Anmeldeinformationen erhält die Runtime Zugriff zum Pullen des Containers. 
+   Diese Datei enthält außerdem Ihre Anmeldeinformationen für die Registrierung. In der Vorlagendatei sind Ihr Benutzername und Ihr Kennwort als Platzhalter angegeben. Beim Erstellen des Bereitstellungsmanifests werden die Felder mit den Werten aktualisiert, die Sie zu **.env** hinzugefügt haben. 
 
-- Führen Sie für Windows den folgenden Befehl aus:
-    
-    ```cmd/sh
-    iotedgectl login --address <your container registry address> --username <username> --password <password> 
-    ```
-
-- Führen Sie für Linux den folgenden Befehl aus:
-    
-    ```cmd/sh
-    sudo iotedgectl login --address <your container registry address> --username <username> --password <password> 
-    ```
-
-## <a name="run-the-solution"></a>Ausführen der Lösung
-
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem IoT Hub.
-2. Wechseln Sie zu **IoT Edge (Vorschau)**, und wählen Sie Ihr IoT Edge-Gerät aus.
-3. Wählen Sie **Module festlegen** aus. 
-2. Überprüfen Sie, ob das Modul **tempSensor** automatisch ausgefüllt wird. Wenn dies nicht der Fall ist, fügen Sie es mit den folgenden Schritten hinzu:
-    1. Wählen Sie **IoT Edge-Modul hinzufügen** aus.
-    2. Geben Sie im Feld **Name** die Zeichenfolge `tempSensor` ein.
-    3. Geben Sie im Feld **Image-URI** die Zeichenfolge `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview` ein.
-    4. Behalten Sie die restlichen Einstellungen unverändert bei, und wählen Sie **Speichern** aus.
-9. Fügen Sie das Modul **filterModule** hinzu, das Sie in den vorherigen Abschnitten erstellt haben. 
-    1. Wählen Sie **IoT Edge-Modul hinzufügen** aus.
-    2. Geben Sie im Feld **Name** die Zeichenfolge `filterModule` ein.
-    3. Geben Sie im Feld **Image-URI** die Imageadresse ein, z.B. `<your container registry address>/filtermodule:0.0.1-amd64`. Die vollständige Imageadresse finden Sie im vorherigen Abschnitt.
-    4. Aktivieren Sie das Kontrollkästchen **Aktivieren**, damit Sie den Modulzwilling bearbeiten können. 
-    5. Ersetzen Sie den JSON-Code im Textfeld für den Modulzwilling durch den folgenden JSON-Code: 
-
-        ```json
-        {
-           "properties.desired":{
-              "TemperatureThreshold":25
-           }
-        }
-        ```
- 
-    6. Klicken Sie auf **Speichern**.
-10. Klicken Sie auf **Weiter**.
-11. Kopieren Sie im Schritt **Routen angeben** den folgenden JSON-Code in das Textfeld. Module veröffentlichen alle Nachrichten in der Edge-Runtime. Deklarative Regeln in der Runtime definieren, wohin die Nachrichten fließen. In diesem Tutorial benötigen Sie zwei Routen. Die erste Route transportiert Nachrichten vom Temperatursensor über den Endpunkt „input1“ zum Filtermodul. Dies ist der Endpunkt, für den Sie den **FilterMessages**-Handler konfiguriert haben. Die zweite Route transportiert Nachrichten vom Filtermodul an IoT Hub. In dieser Route ist `upstream` ein spezieller Empfänger, der Edge Hub anweist, Nachrichten an IoT Hub zu senden. 
-
+3. Fügen Sie den Modulzwilling „PythonModule“ zum Bereitstellungsmanifest hinzu. Fügen Sie am Ende des Abschnitts `moduleContent` nach dem Modulzwilling `$edgeHub` den folgenden JSON-Inhalt ein: 
     ```json
-    {
-       "routes":{
-          "sensorToFilter":"FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filterModule/inputs/input1\")",
-          "filterToIoTHub":"FROM /messages/modules/filterModule/outputs/output1 INTO $upstream"
-       }
-    }
+        "PythonModule": {
+            "properties.desired":{
+                "TemperatureThreshold":25
+            }
+        }
     ```
 
-4. Klicken Sie auf **Weiter**.
-5. Klicken Sie im Schritt **Vorlage überprüfen** auf **Senden**. 
-6. Kehren Sie zur Seite mit den IoT Edge-Gerätedetails zurück, und klicken Sie auf **Aktualisieren**. Es sollte nun angezeigt werden, dass das neue **filtermodule**-Modul zusammen mit dem **tempSensor**-Modul und der **IoT Edge-Laufzeit** ausgeführt wird. 
+4. Speichern Sie diese Datei.
+
+5. Klicken Sie im VS Code-Explorer mit der rechten Maustaste auf die Datei **deployment.template.json**, und klicken Sie dann auf **Build IoT Edge solution** (IoT Edge-Projektmappe erstellen). 
+
+Wenn Sie Visual Studio Code anweisen, die Projektmappe zu erstellen, wird zuerst basierend auf den Informationen in der Bereitstellungsvorlage eine `deployment.json`-Datei in einem neuen Konfigurationsordner (**config**) generiert. Anschließend werden zwei Befehle im integrierten Terminal ausgeführt: `docker build` und `docker push`. Diese beiden Befehle erstellen den Code, packen den Python-Code in Container und führen dann eine Pushübertragung an die Containerregistrierung durch, die Sie beim Initialisieren der Projektmappe angegeben haben. 
+
+Sie können die vollständige Adresse des Containerimages mit Tag im Befehl `docker build` anzeigen, der im integrierten VS Code-Terminal ausgeführt wird. Die Imageadresse wird auf der Grundlage der Informationen in der Datei `module.json` erstellt und hat folgendes Format: **\<Repository\>:\<Version\>-\<Plattform\>**. In diesem Tutorial sollte sie wie folgt aussehen: **registryname.azurecr.io/pythonmodule:0.0.1-amd64**.
+
+## <a name="deploy-and-run-the-solution"></a>Bereitstellen und Ausführen der Projektmappe
+
+Wie in den Schnellstartanleitungen können Sie das Python-Modul über das Azure-Portal auf einem IoT Edge-Gerät bereitstellen. Sie können Module jedoch auch über Visual Studio Code bereitstellen und überwachen. In den folgenden Abschnitten wird die Azure IoT Edge-Erweiterung für VS Code verwendet, die als erforderliche Komponente aufgeführt ist. Installieren Sie sie jetzt, sofern noch nicht geschehen. 
+
+1. Öffnen Sie die VS Code-Befehlspalette, indem Sie auf **Ansicht** > **Befehlspalette** klicken.
+
+2. Suchen Sie den Befehl **Azure: Sign in** (Azure: Anmelden), und führen Sie ihn aus. Befolgen Sie die Anweisungen zum Anmelden bei Ihrem Azure-Konto. 
+
+3. Suchen Sie in der Befehlspalette nach dem Befehl **Azure IoT Hub: Select IoT Hub** (Azure IoT Hub: IoT Hub auswählen), und führen Sie den Befehl aus. 
+
+4. Wählen Sie das Abonnement mit Ihrem IoT-Hub und dann den IoT-Hub aus, auf den Sie zugreifen möchten.
+
+5. Erweitern Sie im VS Code-Explorer den Abschnitt **Azure IoT Hub-Geräte**. 
+
+6. Klicken Sie mit der rechten Maustaste auf den Namen Ihres IoT Edge-Geräts, und klicken Sie dann auf **Create Deployment for IoT Edge device** (Bereitstellung für IoT Edge-Gerät erstellen). 
+
+7. Navigieren Sie zum Projektmappenordner, der PythonModule enthält. Öffnen Sie den Konfigurationsordner (**config**), und wählen Sie die Datei **deployment.json** aus. Klicken Sie auf **Select Edge Deployment Manifest** (Edge-Bereitstellungsmanifest auswählen).
+
+8. Aktualisieren Sie den Abschnitt **Azure IoT Hub-Geräte**. Nun sollte das neue **PythonModule**-Modul zusammen mit dem **TempSensor**-Modul sowie **$edgeAgent** und **$edgeHub** ausgeführt werden. 
 
 ## <a name="view-generated-data"></a>Anzeigen generierter Daten
 
-So überwachen Sie Gerät-zu-Cloud-Nachrichten, die von Ihrem IoT Edge-Gerät an IoT Hub gesendet wurden:
-1. Konfigurieren Sie die Verbindungszeichenfolge für Ihren IoT Hub in der Azure IoT-Toolkit-Erweiterung: 
-    1. Öffnen Sie den Visual Studio Code-Explorer durch Auswählen von **Ansicht** > **Explorer**. 
-    3. Klicken Sie im Explorer auf **IOT HUB DEVICES** (IOT HUB-GERÄTE), und klicken Sie dann auf **...**. Klicken Sie auf **Set IoT Hub Connection String** (IoT Hub-Verbindungszeichenfolge festlegen), und geben Sie die Verbindungszeichenfolge für den IoT Hub, mit dem Ihr IoT Edge-Gerät verbunden ist, in das Popupfenster ein. 
+1. Klicken Sie zum Überwachen der bei IoT Hub eingehenden Daten auf **...** und dann auf **Start Monitoring D2C Messages** (Überwachung von D2C-Nachrichten starten).
+2. Wenn Sie die D2C-Nachrichten für ein bestimmtes Gerät überwachen möchten, klicken Sie mit der rechten Maustaste auf das Gerät in der Liste, und klicken Sie dann auf **Start Monitoring D2C Messages** (Überwachung von D2C-Nachrichten starten).
+3. Wenn Sie die Datenüberwachung beenden möchten, führen Sie in der Befehlspalette den Befehl **Azure IoT Hub: Stop monitoring D2C message** (Azure IoT Hub: Überwachung von D2C-Nachrichten beenden) aus. 
+4. Klicken Sie zum Anzeigen oder Aktualisieren des Modulzwillings mit der rechten Maustaste auf das Modul in der Liste, und klicken Sie auf **Edit module twin** (Modulzwilling bearbeiten). Speichern Sie zum Aktualisieren des Modulzwillings die JSON-Datei des Zwillings, klicken Sie mit der rechten Maustaste auf den Editorbereich, und wählen Sie **Update Module Twin** (Modulzwilling aktualisieren).
+5. Zum Anzeigen von Docker-Protokollen können Sie [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker) für VS Code installieren und Ihre ausgeführten Module lokal im Docker-Explorer suchen. Klicken Sie zum Anzeigen im integrierten Terminal im Kontextmenü auf **Protokolle anzeigen**. 
 
-        Um die Verbindungszeichenfolge zu ermitteln, klicken Sie im Azure-Portal auf die Kachel für Ihren IoT Hub, und klicken Sie dann auf **Richtlinien für gemeinsamen Zugriff**. Klicken Sie unter **Richtlinien für gemeinsamen Zugriff** auf die Richtlinie **iothubowner**, und kopieren Sie die im Fenster **iothubowner** angegebene IoT Hub-Verbindungszeichenfolge.   
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen 
 
-1. Zum Überwachen von Daten, die beim IoT Hub eingehen, wählen Sie **Ansicht** > **Befehlspalette** aus, und suchen Sie den Menübefehl **IoT: Start monitoring D2C message** (Überwachung von Gerät-zu-Cloud-Nachricht starten). 
-2. Zum Beenden der Datenüberwachung verwenden Sie den Menübefehl **IoT: Stop Monitoring D2C Message** (Überwachung von Gerät-zu-Cloud-Nachricht beenden). 
+<!--[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)] -->
+
+Falls Sie mit dem nächsten empfohlenen Artikel fortfahren möchten, können Sie die bereits erstellten Ressourcen und Konfigurationen beibehalten und wiederverwenden.
+
+Andernfalls können Sie die in diesem Artikel erstellten lokalen Konfigurationen und Azure-Ressourcen löschen, um Kosten zu vermeiden. 
+
+> [!IMPORTANT]
+> Das Löschen der Azure-Ressourcen und der Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden unwiderruflich gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. Wenn Sie die IoT Hub-Ressource in einer bereits vorhandenen Ressourcengruppe erstellt haben, die Ressourcen enthält, die Sie behalten möchten, löschen Sie nicht die Ressourcengruppe, sondern nur die IoT Hub-Ressource.
+>
+
+Wenn Sie nur die IoT Hub-Instanz löschen möchten, führen Sie den folgenden Befehl mit dem Namen des Hubs und dem Namen der Ressourcengruppe aus:
+
+```azurecli-interactive
+az iot hub delete --name MyIoTHub --resource-group TestResources
+```
+
+
+Löschen Sie die gesamte Ressourcengruppe wie folgt anhand des Namens:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen**.
+
+2. Geben Sie im Textfeld **Nach Name filtern...** den Namen der Ressourcengruppe ein, die Ihre IoT Hub-Ressource enthält. 
+
+3. Klicken Sie in der Ergebnisliste rechts neben Ihrer Ressourcengruppe auf **...** und dann auf **Ressourcengruppe löschen**.
+
+4. Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben Sie zur Bestätigung erneut den Namen Ihrer Ressourcengruppe ein, und klicken Sie anschließend auf **Löschen**. Daraufhin werden die Ressourcengruppe und alle darin enthaltenen Ressourcen gelöscht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -232,8 +267,8 @@ In diesem Tutorial haben Sie ein IoT Edge-Modul erstellt, das Code zum Filtern v
 
 
 <!-- Links -->
-[lnk-tutorial1-win]: tutorial-simulate-device-windows.md
-[lnk-tutorial1-lin]: tutorial-simulate-device-linux.md
+[lnk-quickstart-win]: quickstart.md
+[lnk-quickstart-lin]: quickstart-linux.md
 
 <!-- Images -->
 [1]: ./media/tutorial-csharp-module/programcs.png

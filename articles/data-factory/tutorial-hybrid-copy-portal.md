@@ -13,18 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: e21c08d418022430400ff14baedc1759d2d16069
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 27e7d6f22678bf33ffd81fb34472fe4add3f9a15
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045465"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kopieren von Daten aus einer lokalen SQL Server-Datenbank nach Azure Blob Storage
 In diesem Tutorial verwenden Sie die Benutzeroberfläche (User Interface, UI) von Azure Data Factory, um eine Data Factory-Pipeline zu erstellen, mit der Daten aus einer lokalen SQL Server-Datenbank nach Azure Blob Storage kopiert werden. Sie erstellen und verwenden eine selbstgehostete Integration Runtime, die Daten zwischen lokalen Speichern und Clouddatenspeichern verschiebt.
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Azure Data Factory, die sich derzeit in der Vorschauphase befindet. Wenn Sie die allgemein verfügbare Version 1 von Data Factory verwenden, lesen Sie die Informationen unter [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
-> 
 > Dieser Artikel enthält keine ausführliche Einführung in Data Factory. Weitere Informationen finden Sie unter [Einführung in Azure Data Factory](introduction.md). 
 
 In diesem Tutorial führen Sie die folgenden Schritte aus:
@@ -127,21 +126,21 @@ In diesem Schritt erstellen Sie eine Data Factory und starten die Data Factory-B
    
    ![Erstellen einer neuen Data Factory](./media/tutorial-hybrid-copy-portal/new-azure-data-factory-menu.png)
 3. Geben Sie auf der Seite **Neue Data Factory** unter **Name** den Namen **ADFTutorialDataFactory** ein. 
-      
+   
      ![Seite „Neue Data Factory“](./media/tutorial-hybrid-copy-portal/new-azure-data-factory.png)
- 
-   Der Name der Data Factory muss *global eindeutig* sein. Sollte für das Feld „Name“ die folgende Fehlermeldung angezeigt werden, ändern Sie den Namen der Data Factory (beispielsweise in „<IhrName>ADFTutorialDataFactory“). Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Azure Data Factory – Benennungsregeln](naming-rules.md).
-  
+
+Der Name der Data Factory muss *global eindeutig* sein. Sollte für das Feld „Name“ die folgende Fehlermeldung angezeigt werden, ändern Sie den Namen der Data Factory (beispielsweise in „<IhrName>ADFTutorialDataFactory“). Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Azure Data Factory – Benennungsregeln](naming-rules.md).
+
    ![Name der neuen Data Factory](./media/tutorial-hybrid-copy-portal/name-not-available-error.png)
 4. Wählen Sie das **Azure-Abonnement** aus, in dem die Data Factory erstellt werden soll.
 5. Führen Sie unter **Ressourcengruppe** einen der folgenden Schritte aus:
-     
+   
       - Wählen Sie die Option **Use existing**(Vorhandene verwenden) und dann in der Dropdownliste eine vorhandene Ressourcengruppe.
 
       - Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein.
-         
+        
     Weitere Informationen zu Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).
-6. Wählen Sie **V2 (Vorschau)** als **Version** aus.
+6. Wählen Sie unter **Version** die Option **V2**.
 7. Wählen Sie unter **Standort** den Standort für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die Datenspeicher (etwa Storage und SQL-Datenbank) und Computeeinheiten (etwa Azure HDInsight), die von Data Factory genutzt werden, können sich in anderen Regionen befinden.
 8. Wählen Sie die Option **An Dashboard anheften** aus. 
 9. Klicken Sie auf **Erstellen**.
@@ -159,42 +158,55 @@ In diesem Schritt erstellen Sie eine Data Factory und starten die Data Factory-B
 1. Wählen Sie auf der Seite **Erste Schritte** die Option **Pipeline erstellen** aus. Eine Pipeline wird automatisch für Sie erstellt. Die Pipeline wird in der Strukturansicht angezeigt, und der dazugehörige Editor wird geöffnet. 
 
    ![Seite „Erste Schritte“](./media/tutorial-hybrid-copy-portal/get-started-page.png)
+
 2. Geben Sie unten im Fenster **Eigenschaften** auf der Registerkarte **Allgemein** unter **Name** den Namen **SQLServerToBlobPipeline** ein.
 
    ![Pipelinename](./media/tutorial-hybrid-copy-portal/pipeline-name.png)
+
 3. Erweitern Sie in der Toolbox **Aktivitäten** den Eintrag **Datenfluss**. Ziehen Sie die Aktivität **Kopieren** auf die Oberfläche zum Entwerfen von Pipelines. Legen Sie den Namen der Aktivität auf **CopySqlServerToAzureBlobActivity** fest.
 
    ![Name der Aktivität](./media/tutorial-hybrid-copy-portal/copy-activity-name.png)
+
 4. Wechseln Sie im Fenster **Eigenschaften** zur Registerkarte **Quelle**, und klicken Sie auf **+ Neu**.
 
    ![Registerkarte „Quelle“](./media/tutorial-hybrid-copy-portal/source-dataset-new-button.png)
+
 5. Suchen Sie im Fenster **Neues Dataset** nach **SQL Server**. Wählen Sie **SQL Server** und dann **Fertig stellen**. Daraufhin wird eine neue Registerkarte mit dem Titel **SqlServerTable1** angezeigt. Außerdem wird das Dataset **SqlServerTable1** links in der Strukturansicht angezeigt. 
 
    ![Auswahl von SQL Server](./media/tutorial-hybrid-copy-portal/select-sql-server.png)
+
 6. Geben Sie unten im Fenster **Eigenschaften** auf der Registerkarte **Allgemein** unter **Name** den Namen **SqlServerDataset** ein.
-    
+
    ![Name des Quelldatasets](./media/tutorial-hybrid-copy-portal/source-dataset-name.png)
+
 7. Wechseln Sie zur Registerkarte **Verbindung**, und klicken Sie auf **+ Neu**. In diesem Schritt erstellen Sie eine Verbindung mit dem Quelldatenspeicher (SQL Server-Datenbank). 
 
    ![Verbindung mit Quelldataset](./media/tutorial-hybrid-copy-portal/source-connection-new-button.png)
-8. Klicken Sie im Fenster **Neuer verknüpfter Dienst** auf **Neue Integrationslaufzeit**. In diesem Abschnitt erstellen Sie eine selbstgehostete Integration Runtime und ordnen sie einem lokalen Computer mit der SQL Server-Datenbank zu. Die selbstgehostete Integration Runtime ist die Komponente, die Daten aus der SQL Server-Datenbank auf Ihrem Computer in Blob Storage kopiert. 
+
+8. Fügen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die Option **Name** als **SqlServerLinkedService** hinzu. Wählen Sie unter **Connect via integration runtime** (Verbindung per Integration Runtime herstellen) die Option **Neu**. In diesem Abschnitt erstellen Sie eine selbstgehostete Integration Runtime und ordnen sie einem lokalen Computer mit der SQL Server-Datenbank zu. Die selbstgehostete Integration Runtime ist die Komponente, die Daten aus der SQL Server-Datenbank auf Ihrem Computer in Blob Storage kopiert. 
 
    ![Neue Integration Runtime](./media/tutorial-hybrid-copy-portal/new-integration-runtime-button.png)
+
 9. Wählen Sie im Fenster **Integration Runtime Setup** (Integration Runtime-Setup) die Option **Privates Netzwerk** aus, und klicken Sie anschließend auf **Weiter**. 
 
    ![Auswahl des privaten Netzwerks](./media/tutorial-hybrid-copy-portal/select-private-network.png)
+
 10. Geben Sie einen Namen für die Integration Runtime ein, und klicken Sie auf **Weiter**.
-    
+
     ![Name der Integration Runtime](./media/tutorial-hybrid-copy-portal/integration-runtime-name.png)
+
 11. Klicken Sie im Abschnitt **Option 1: Express setup** (Option 1: Express-Setup) auf **Click here to launch the express setup for this computer** (Klicken Sie hier, um das Express-Setup für diesen Computer zu starten). 
 
     ![Link für das Express-Setup](./media/tutorial-hybrid-copy-portal/click-exress-setup.png)
+
 12. Klicken Sie im Fenster **Express-Setup von Integration Runtime (selbstgehostet)** auf **Schließen**. 
 
     ![Express-Setup von Integration Runtime (selbstgehostet)](./media/tutorial-hybrid-copy-portal/integration-runtime-setup-successful.png)
-13. Klicken Sie im Webbrowser im Fenster **Integration Runtime Setup** (Integration Runtime-Setup) auf **Fertig stellen**. 
 
-    ![Setup der Integrationslaufzeit](./media/tutorial-hybrid-copy-portal/click-finish-integration-runtime-setup.png)
+13. Stellen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) sicher, dass die oben erstellte **Integration Runtime** unter **Connect via integration runtime** (Verbindung per Integration Runtime herstellen) ausgewählt ist. 
+
+    ![](./media/tutorial-hybrid-copy-portal/select-integration-runtime.png)
+
 14. Führen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die folgenden Schritte aus:
 
     a. Geben Sie unter **Name** die Zeichenfolge **SqlServerLinkedService** ein.
@@ -211,9 +223,10 @@ In diesem Schritt erstellen Sie eine Data Factory und starten die Data Factory-B
 
     g. Klicken Sie auf **Verbindung testen**. Mit diesem Schritt vergewissern Sie sich, dass Data Factory über die selbstgehostete Integration Runtime, die Sie erstellt haben, eine Verbindung mit Ihrer SQL Server-Datenbank herstellen kann.
 
-    h. Klicken Sie auf **Speichern**, um den verknüpften Dienst zu speichern.
+    h. Klicken Sie auf **Fertig stellen**, um den verknüpften Dienst zu speichern.
 
-       ![Einstellungen für den neuen verknüpften Dienst](./media/tutorial-hybrid-copy-portal/sql-server-linked-service-settings.png)
+       
+
 15. Sie sollten sich wieder im Fenster mit dem geöffneten Quelldataset befinden. Führen Sie im Fenster **Eigenschaften** auf der Registerkarte **Verbindung** die folgenden Schritte aus: 
 
     a. Vergewissern Sie sich, dass unter **Verknüpfter Dienst** die Zeichenfolge **SqlServerLinkedService** angezeigt wird.
@@ -221,21 +234,27 @@ In diesem Schritt erstellen Sie eine Data Factory und starten die Data Factory-B
     b. Wählen Sie unter **Tabelle** die Option **[dbo].[emp]** aus.
 
     ![Verbindungsinformationen zum Quelldataset](./media/tutorial-hybrid-copy-portal/source-dataset-connection.png)
+
 16. Wechseln Sie zur Registerkarte mit der Pipeline **SQLServerToBlobPipeline**, oder klicken Sie in der Strukturansicht auf **SQLServerToBlobPipeline**. 
 
     ![Pipelineregisterkarte](./media/tutorial-hybrid-copy-portal/pipeliene-tab.png)
+
 17. Wechseln Sie unten im Fenster **Eigenschaften** zur Registerkarte **Senke**, und klicken Sie auf **+ Neu**. 
 
     ![Registerkarte „Senke“](./media/tutorial-hybrid-copy-portal/sink-dataset-new-button.png)
+
 18. Wählen Sie im Fenster **Neues Dataset** die Option **Azure Blob Storage** aus. Klicken Sie dann auf **Fertig stellen**. Daraufhin wird eine neue Registerkarte für das Dataset geöffnet. Außerdem wird das Dataset in der Strukturansicht angezeigt. 
 
     ![Auswählen von Blob Storage](./media/tutorial-hybrid-copy-portal/select-azure-blob-storage.png)
+
 19. Geben Sie unter **Name** die Zeichenfolge **AzureBlobDataset** ein.
 
     ![Name des Senkendatasets](./media/tutorial-hybrid-copy-portal/sink-dataset-name.png)
+
 20. Wechseln Sie unten im Fenster **Eigenschaften** zur Registerkarte **Verbindung**. Klicken Sie neben **Verknüpfter Dienst** auf **+ Neu**. 
 
     ![Schaltfläche für neuen verknüpften Dienst](./media/tutorial-hybrid-copy-portal/new-storage-linked-service-button.png)
+
 21. Führen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die folgenden Schritte aus:
 
     a. Geben Sie unter **Name** den Namen **AzureStorageLinkedService** ein.
@@ -247,28 +266,39 @@ In diesem Schritt erstellen Sie eine Data Factory und starten die Data Factory-B
     d. Wählen Sie **Speichern**aus.
 
     ![Einstellungen für den mit Storage verknüpften Dienst](./media/tutorial-hybrid-copy-portal/azure-storage-linked-service-settings.png) 
-22.  Sie sollten sich wieder im Fenster mit dem geöffneten Senkendataset befinden. Führen Sie auf der Registerkarte **Verbindung** folgende Schritte aus: 
 
-        a. Vergewissern Sie sich, dass unter **Verknüpfter Dienst** die Option **AzureStorageLinkedService** ausgewählt ist.
+22. Sie sollten sich wieder im Fenster mit dem geöffneten Senkendataset befinden. Führen Sie auf der Registerkarte **Verbindung** folgende Schritte aus: 
 
-        b. Geben Sie unter **Dateipfad** für den **Ordner** die Zeichenfolge **adftutorial/fromonprem** ein. Sollte der Ausgabeordner im Container „adftutorial“ nicht vorhanden sein, wird der Ausgabeordner von Data Factory automatisch erstellt.
+       a. Vergewissern Sie sich, dass unter **Verknüpfter Dienst** die Option **AzureStorageLinkedService** ausgewählt ist.
 
-        c. Geben Sie unter **Dateipfad** als **Dateiname** die Zeichenfolge `@CONCAT(pipeline().RunId, '.txt')` ein.
+       b. Geben Sie für den Teil **folder**/ **Directory** von **Dateipfad** die Zeichenfolge **adftutorial/fromonprem** ein. Sollte der Ausgabeordner im Container „adftutorial“ nicht vorhanden sein, wird der Ausgabeordner von Data Factory automatisch erstellt.
 
-     ![Verbindung mit Senkendataset](./media/tutorial-hybrid-copy-portal/sink-dataset-connection.png)
+       c. Wählen Sie für den Teil **Dateiname** von **Dateipfad** die Option **Dynamischen Inhalt hinzufügen**.   
+
+    ![Wert für dynamischen Dateinamen](./media/tutorial-hybrid-copy-portal/file-name.png)
+
+       d. Fügen Sie `@CONCAT(pipeline().RunId, '.txt')` hinzu, und wählen Sie **Fertig stellen**. Die Datei wird in „PipelineRunID.txt“ umbenannt. 
+
+    ![Dynamischer Ausdruck zum Auflösen des Dateinamens](./media/tutorial-hybrid-copy-portal/add-dynamic-file-name.png)
+
+    ![Verbindung mit Senkendataset](./media/tutorial-hybrid-copy-portal/sink-dataset-connection.png)
+
 23. Wechseln Sie zur Registerkarte mit der geöffneten Pipeline, oder klicken Sie in der Strukturansicht auf die Pipeline. Vergewissern Sie sich, dass unter **Sink Dataset** (Senkendataset) die Option **AzureBlobDataset** ausgewählt ist. 
 
     ![Senkendataset ausgewählt](./media/tutorial-hybrid-copy-portal/sink-dataset-selected.png)
+
 24. Klicken Sie zum Überprüfen der Pipelineeinstellungen auf der Symbolleiste für die Pipeline auf **Überprüfen**. Klicken Sie zum Schließen des **Pipelineüberprüfungsbericht** auf **Schließen**. 
 
     ![Überprüfen der Pipeline](./media/tutorial-hybrid-copy-portal/validate-pipeline.png)
+
 25. Klicken Sie zum Veröffentlichen der erstellten Entitäten in Data Factory auf **Alle veröffentlichen**.
 
     ![Schaltfläche "Veröffentlichen"](./media/tutorial-hybrid-copy-portal/publish-button.png)
+
 26. Warten Sie, bis die Popupmeldung **Veröffentlichung erfolgreich** angezeigt wird. Wenn Sie den Veröffentlichungsstatus überprüfen möchten, klicken Sie im linken Bereich auf den Link **Benachrichtigungen anzeigen**. Klicken Sie zum Schließen des Fensters mit den Benachrichtigungen auf **Schließen**. 
 
     ![Veröffentlichung erfolgreich](./media/tutorial-hybrid-copy-portal/publishing-succeeded.png)
-    
+
 
 ## <a name="trigger-a-pipeline-run"></a>Auslösen einer Pipelineausführung
 Wählen Sie auf der Symbolleiste für die Pipeline die Option **Trigger** und dann **Trigger Now** (Jetzt auslösen).
@@ -285,15 +315,9 @@ Wählen Sie auf der Symbolleiste für die Pipeline die Option **Trigger** und da
     ![Überwachung der Aktivitätsausführungen](./media/tutorial-hybrid-copy-portal/activity-runs.png)
 
 ## <a name="verify-the-output"></a>Überprüfen der Ausgabe
-Die Pipeline erstellt den Ausgabeordner *fromonprem* automatisch im Blobcontainer `adftutorial`. Vergewissern Sie sich, dass die Datei *dbo.emp.txt* im Ausgabeordner enthalten ist. 
+Die Pipeline erstellt den Ausgabeordner *fromonprem* automatisch im Blobcontainer `adftutorial`. Vergewissern Sie sich, dass die Datei *[pipeline().RunId].txt* im Ausgabeordner enthalten ist. 
 
-1. Wählen Sie im Azure-Portal im Fenster des Containers **adftutorial** die Option **Aktualisieren**, um den Ausgabeordner anzuzeigen.
-
-    ![Erstellter Ausgabeordner](media/tutorial-hybrid-copy-portal/fromonprem-folder.png)
-2. Wählen Sie in der Liste mit den Ordnern die Option `fromonprem`. 
-3. Vergewissern Sie sich, dass die Datei `dbo.emp.txt` angezeigt wird.
-
-    ![Ausgabedatei](media/tutorial-hybrid-copy-portal/fromonprem-file.png)
+![Bestätigen des Ausgabedateinamens](./media/tutorial-hybrid-copy-portal/sink-output.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

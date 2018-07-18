@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 02/27/2018
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: 23e3a675e6a464c92d26df220c8126c970f590a0
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 21a52af4943004789b0a9bdbe4695ab1a603c046
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796698"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-service-provider"></a>Verwalten von Nutzung und Abrechnung für Azure Stack als Cloud-Dienstanbieter 
 
@@ -84,4 +85,4 @@ Da Mandantenabonnements CSP-Abonnements sind, wird ihre Rechnung an den CSP-Part
 ## <a name="next-steps"></a>Nächste Schritte
 
  - Weitere Informationen über das CSP-Programm finden Sie unter [Programm für Cloud-Lösungsanbieter](https://partnercenter.microsoft.com/en-us/partner/programs).
- - Weitere Informationen zum Abrufen von Ressourcennutzungsinformationen aus Azure Stack finden Sie unter [Verbrauch und Abrechnung in Azure Stack](/azure-stack-billing-and-chargeback.md).
+ - Weitere Informationen zum Abrufen von Ressourcennutzungsinformationen aus Azure Stack finden Sie unter [Verbrauch und Abrechnung in Azure Stack](azure-stack-billing-and-chargeback.md).

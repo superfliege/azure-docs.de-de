@@ -1,32 +1,22 @@
 ---
-title: Erstellen und Verwalten von Azure SQL-Servern und -Datenbanken | Microsoft-Dokumentation
-description: Informationen zum Azure SQL-Datenbankserver und zu Datenbankkonzepten sowie zum Erstellen und Verwalten von Servern und Datenbanken.
+title: Logische Server und Einzeldatenbanken in Azure SQL-Datenbank | Microsoft-Dokumentation
+description: Erfahren Sie mehr über Konzepte zu logischen Servern und Einzeldatenbanken sowie deren Ressourcen in Azure SQL-Datenbank.
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.topic: article
-ms.date: 04/10/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: carlrab
-ms.openlocfilehash: 3ffae541020a2672affab774ee6da2a8c707745f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 505fd88959feb1c84abc53c6435776a5c5b4123c
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309179"
 ---
-# <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Erstellen und Verwalten von Azure SQL-Datenbankservern und -datenbanken
-
-SQL-Datenbank bietet drei Typen von Datenbanken:
-
-- Eine einzelne Datenbank, die in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) mit einem [kombinierten Satz von Compute- und Speicherressourcen](sql-database-service-tiers-dtu.md) oder einer [unabhängigen Skalierung der Compute- und Speicherressourcen](sql-database-service-tiers-vcore.md) erstellt wird. Eine Azure SQL-Datenbank ist einem logischen Azure SQL-Datenbankserver zugeordnet, der innerhalb einer bestimmten Azure-Region erstellt wird.
-- Eine Datenbank, die als Teil eines [Datenbankpools](sql-database-elastic-pool.md) in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) mit einem [kombinierten Satz von Compute- und Speicherressourcen (DTU-basiert)](sql-database-service-tiers-dtu.md) oder einer [unabhängigen Skalierung der Compute- und Speicherressourcen (V-Kern-basiert)](sql-database-service-tiers-vcore.md) erstellt wird, die von allen Datenbanken im Pool gemeinsam verwendet werden. Eine Azure SQL-Datenbank ist einem logischen Azure SQL-Datenbankserver zugeordnet, der innerhalb einer bestimmten Azure-Region erstellt wird.
-- Eine [Instanz von SQL-Server](sql-database-managed-instance.md) (eine verwaltete Instanz), die innerhalb einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) mit einem definierten Satz von Compute- und Speicherressourcen alle Datenbanken auf dieser Serverinstanz für erstellt wird. Eine verwaltete Instanz enthält sowohl System- als auch Benutzerdatenbanken. Eine verwaltete Instanz ist so konzipiert, dass sie eine Datenbankmigration per Lift & Shift zu einem vollständig verwalteten PaaS ermöglicht, ohne dass die Anwendung neu gestaltet werden muss. Verwaltete Instanzen bieten umfassende Kompatibilität mit dem SQL Server-Programmiermodell sowie Unterstützung für die überwiegende Mehrheit von SQL Server-Features sowie die zugehörigen Tools und Dienste.  
-
-Microsoft Azure SQL-Datenbank unterstützt den TDS-Client (Tabular Data Stream) ab Version 7.3 und lässt nur verschlüsselte TCP/IP-Verbindungen zu.
-
-> [!IMPORTANT]
-> Die verwaltete Azure SQL-Datenbank-Instanz ist derzeit als öffentliche Vorschauversion verfügbar und bietet eine einzelne universelle Dienstebene. Weitere Informationen finden Sie unter [Verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md). Der Rest dieses Artikels gilt nicht für verwaltete Instanzen.
+# <a name="azure-sql-database-logical-servers-and-single-databases-and-their-resources"></a>Logische Server und Einzeldatenbanken und deren Ressourcen in Azure SQL-Datenbank
 
 ## <a name="what-is-an-azure-sql-logical-server"></a>Was ist ein logischer Azure SQL-Server?
 
@@ -58,6 +48,20 @@ Ein logischer Azure Datenbankserver:
 - Serverebenenprinzipal-Anmeldungen können alle Datenbanken auf einem Server verwalten
 - kann Anmeldungen enthalten, die denen in SQL-Instanzen vor Ort ähnlich sind und die über Zugriff auf eine oder mehrere Datenbanken auf dem Server verfügen und denen beschränkte Administratorrechte zugewiesen werden können. Weitere Informationen finden Sie unter [Logins (Anmeldungen)](sql-database-manage-logins.md).
 - Die Standardsortierung für alle auf einem logischen Server erstellten Benutzerdatenbanken ist `SQL_LATIN1_GENERAL_CP1_CI_AS`, wobei `LATIN1_GENERAL` für Englisch (USA), `CP1` für Codepage 1252, `CI` für keine Unterscheidung von Groß-/Kleinschreibung und `AS` für die Unterscheidung nach Akzent steht.
+
+## <a name="logical-servers-and-databases"></a>Logische Server und Datenbanken
+
+Auf einem logischen Server können Sie Folgendes erstellen:
+
+- Eine einzelne Datenbank, die in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) mit einem [kombinierten Satz von Compute- und Speicherressourcen](sql-database-service-tiers-dtu.md) oder einer [unabhängigen Skalierung der Compute- und Speicherressourcen](sql-database-service-tiers-vcore.md) erstellt wird. Eine Azure SQL-Datenbank ist einem logischen Azure SQL-Datenbankserver zugeordnet, der innerhalb einer bestimmten Azure-Region erstellt wird.
+- Eine Datenbank, die als Teil eines [Datenbankpools](sql-database-elastic-pool.md) in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) mit einem [kombinierten Satz von Compute- und Speicherressourcen (DTU-basiert)](sql-database-service-tiers-dtu.md) oder einer [unabhängigen Skalierung der Compute- und Speicherressourcen (V-Kern-basiert)](sql-database-service-tiers-vcore.md) erstellt wird, die von allen Datenbanken im Pool gemeinsam verwendet werden. Eine Azure SQL-Datenbank ist einem logischen Azure SQL-Datenbankserver zugeordnet, der innerhalb einer bestimmten Azure-Region erstellt wird.
+
+> [!IMPORTANT]
+> Die Verwaltete SQL-Datenbank-Instanz, derzeit als öffentliche Vorschauversion verfügbar, ist eine [Instanz von SQL Server](sql-database-managed-instance.md) (eine verwaltete Instanz), die innerhalb einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) mit einem definierten Satz von Compute- und Speicherressourcen alle Datenbanken auf dieser Serverinstanz für erstellt wird. Eine verwaltete Instanz enthält sowohl System- als auch Benutzerdatenbanken. Eine verwaltete Instanz ist so konzipiert, dass sie eine Datenbankmigration per Lift & Shift zu einem vollständig verwalteten PaaS ermöglicht, ohne dass die Anwendung neu gestaltet werden muss. Verwaltete Instanzen bieten umfassende Kompatibilität mit dem SQL Server-Programmiermodell sowie Unterstützung für die überwiegende Mehrheit von SQL Server-Features sowie die zugehörigen Tools und Dienste. Weitere Informationen finden Sie unter [Verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md). Der Rest dieses Artikels gilt nicht für verwaltete Instanzen.
+
+## <a name="tds-and-tcpip-connections"></a>TDS und TCP/IP-Verbindungen
+
+Microsoft Azure SQL-Datenbank unterstützt den TDS-Client (Tabular Data Stream) ab Version 7.3 und lässt nur verschlüsselte TCP/IP-Verbindungen zu.
 
 ## <a name="azure-sql-databases-protected-by-sql-database-firewall"></a>Azure SQL-Datenbanken, die von der SQL-Datenbank-Firewall geschützt werden
 
@@ -108,7 +112,7 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 |[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)|Ruft mindestens eine Datenbank ab|
 |[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase)|Legt Eigenschaften für eine Datenbank fest oder verschiebt eine vorhandene Datenbank in einen Pool für elastische Datenbanken|
 |[Remove-AzureRmSqlDatabase](/powershell/module/azurerm.sql/remove-azurermsqldatabase)|Entfernt eine Datenbank|
-|[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)|Erstellt eine Ressourcengruppe
+|[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)|Erstellt eine Ressourcengruppe|
 |[New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver)|Erstellt einen Server|
 |[Get-AzureRmSqlServer](/powershell/module/azurerm.sql/get-azurermsqlserver)|Gibt Informationen zu Servern zurück|
 |[Set-AzureRmSqlServer](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlserver)|Ändert die Eigenschaften eines Servers|
@@ -120,7 +124,7 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 | New-AzureRmSqlServerVirtualNetworkRule | Erstellt eine [*virtuelle Netzwerkregel*](sql-database-vnet-service-endpoint-rule-overview.md), die auf einem Subnetz basiert, das einen Dienstendpunkt für ein virtuelles Netzwerk darstellt. |
 
 > [!TIP]
-> Eine Schnellstartanleitung zu PowerShell finden Sie unter [Erstellen einer einzelnen Azure SQL-Datenbank mithilfe von PowerShell](sql-database-get-started-portal.md). PowerShell-Beispielskripts finden Sie unter [Erstellen einer einzelnen Azure SQL-­Datenbank und Konfigurieren einer Firewallregel mithilfe von PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) und [Überwachen und Skalieren einer einzelnen SQL­-Datenbank mit PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
+> Eine Schnellstartanleitung zu PowerShell finden Sie unter [Erstellen einer einzelnen Azure SQL-Datenbank mithilfe von PowerShell](sql-database-get-started-portal.md). PowerShell-Beispielskripts finden Sie unter [Verwenden von PowerShell zum Erstellen einer einzelnen Azure SQL-Datenbank und Konfigurieren einer Firewallregel](scripts/sql-database-create-and-configure-database-powershell.md) und [Überwachen und Skalieren einer einzelnen SQL-Datenbank mithilfe von PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-cli"></a>Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe der Azure CLI
@@ -150,7 +154,7 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 |[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|Löscht eine Firewallregel|
 
 > [!TIP]
-> Eine Schnellstartanleitung zur Azure CLI finden Sie unter [Erstellen einer einzelnen Azure SQL-Datenbank mithilfe der Azure CLI](sql-database-get-started-cli.md). Azure CLI-Beispielskripts finden Sie unter [Erstellen einer einzelnen SQL-­Datenbank und Konfigurieren einer Firewallregel mit der Azure CLI](scripts/sql-database-create-and-configure-database-cli.md) und [Überwachen und Skalieren einer einzelnen SQL-­Datenbank mithilfe der CLI](scripts/sql-database-monitor-and-scale-database-cli.md).
+> Eine Schnellstartanleitung zur Azure CLI finden Sie unter [Erstellen einer einzelnen Azure SQL-Datenbank mithilfe der Azure CLI](sql-database-get-started-cli.md). Azure CLI-Beispielskripts finden Sie unter [Verwenden der Befehlszeilenschnittstelle zum Erstellen einer einzelnen Azure SQL-Datenbank und Konfigurieren einer Firewallregel](scripts/sql-database-create-and-configure-database-cli.md) und [Verwenden der Befehlszeilenschnittstelle zum Überwachen und Skalieren einer einzelnen SQL-Datenbank](scripts/sql-database-monitor-and-scale-database-cli.md).
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-transact-sql"></a>Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe von Transact-SQL

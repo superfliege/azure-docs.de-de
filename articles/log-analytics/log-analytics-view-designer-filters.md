@@ -11,25 +11,31 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/31/2017
+ms.topic: conceptual
+ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: 5c2201292eb085dcc043e4257580c7971dbaffbd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: na
+ms.openlocfilehash: 0ad22562bd1f36bba7c0ab99fe504e82645033d3
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131409"
 ---
 # <a name="filters-in-log-analytics-views"></a>Filter in Log Analytics-Ansichten
 Mit **Filtern** in einer [Log Analytics-Ansicht](log-analytics-view-designer.md) können Benutzer die Daten in der Ansicht anhand des Werts einer bestimmten Eigenschaft filtern, ohne die Ansicht selbst zu ändern.  Beispielsweise können Sie Benutzern Ihrer Ansicht ermöglichen, die Ansicht nach Daten nur von einem bestimmten Computer oder eine Gruppe von Computern zu filtern.  Sie können mehrere Filter für eine einzelne Ansicht erstellen, um Benutzern das Filtern nach mehreren Eigenschaften zu ermöglichen.  Dieser Artikel beschreibt, wie Sie Filter verwenden und einer benutzerdefinierten Ansicht hinzufügen.
 
 ## <a name="using-a-filter"></a>Verwenden eines Filters
-Klicken Sie auf **Filter**, um den Filterbereich für eine Ansicht zu öffnen.  Dadurch können Sie einen Zeitraum und Werte für alle Filter auswählen, die für die Ansicht verfügbar sind.  Wenn Sie einen Filter auswählen, wird eine Liste der verfügbaren Werte angezeigt.  Sie können Werte auswählen oder sie eingeben. Die Ansicht wird automatisch aktualisiert und nach den angegebenen Werten gefiltert. 
+Klicken Sie oben in der Ansicht auf den Datums-/Uhrzeitbereich, um die Dropdownliste zu öffnen, in der Sie den Datums-/Uhrzeitbereich für die Ansicht ändern können.
 
-Wenn für einen Filter kein Wert ausgewählt ist, wird dieser Filter nicht auf die Ansicht angewendet.  Wenn Sie alle Werte für einen Filter entfernen, wird dieser Filter nicht mehr angewendet.
+![Filterbeispiel](media/log-analytics-view-designer/filters-example-time.png)
+
+Klicken Sie auf **+**, um einen Filter mithilfe benutzerdefinierter Filter hinzuzufügen, die für die Ansicht definiert sind. Wählen Sie entweder einen Wert für den Filter aus der Dropdownliste, oder geben Sie einen Wert ein. Klicken Sie auf **+**, um weitere Filter hinzuzufügen. 
 
 
-![Filterbeispiel](media/log-analytics-view-designer/filters-example.png)
+![Filterbeispiel](media/log-analytics-view-designer/filters-example-custom.png)
+
+Wenn Sie alle Werte für einen Filter entfernen, wird dieser Filter nicht mehr angewendet.
 
 
 ## <a name="creating-a-filter"></a>Erstellen eines Filters

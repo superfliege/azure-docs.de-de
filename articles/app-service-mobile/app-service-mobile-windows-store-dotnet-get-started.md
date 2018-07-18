@@ -1,11 +1,11 @@
 ---
-title: "Erstellen einer App für die universelle Windows-Plattform (UWP) mit Mobile Apps | Microsoft Docs"
-description: "Dieses Tutorial enthält eine Einführung in die Verwendung von Azure Mobile App-Back-Ends zum Entwickeln von Apps für die universelle Windows-Plattform (UWP) in C#, Visual Basic oder JavaScript."
+title: Erstellen einer App für die universelle Windows-Plattform (UWP) mit Mobile Apps | Microsoft Docs
+description: Dieses Tutorial enthält eine Einführung in die Verwendung von Azure Mobile App-Back-Ends zum Entwickeln von Apps für die universelle Windows-Plattform (UWP) in C#, Visual Basic oder JavaScript.
 services: app-service\mobile
 documentationcenter: windows
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 47124296-2908-4d92-85e0-05c4aa6db916
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -15,10 +15,11 @@ ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 508989e0e2daeac7922d61ff692ee4579139cfc8
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38307220"
 ---
 # <a name="create-a-windows-app"></a>Erstellen einer Windows-App
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]

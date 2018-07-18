@@ -2,7 +2,7 @@
 
 Sie können Ihre Vorlage mithilfe von [Cloud Shell](../articles/cloud-shell/overview.md) bereitstellen. Zuerst müssen Sie die Vorlage aber in das Speicherkonto für Ihre Cloud Shell-Instanz laden. Für den Fall, dass Sie Cloud Shell noch nicht verwendet haben, finden Sie unter [Übersicht über Azure Cloud Shell (Vorschau)](../articles/cloud-shell/overview.md) Informationen zum Einrichten von Cloud Shell.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 1. Wählen Sie Ihre Cloud Shell-Ressourcengruppe aus. Namensmuster: `cloud-shell-storage-<region>`.
 

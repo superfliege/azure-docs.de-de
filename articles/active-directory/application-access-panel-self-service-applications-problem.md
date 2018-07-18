@@ -2,23 +2,25 @@
 title: Probleme beim Self-Service-Anwendungszugriff | Microsoft-Dokumentation
 description: Beheben von Problemen in Zusammenhang mit dem Self-Service-Anwendungszugriff
 services: active-directory
-documentationcenter: 
-author: ajamess
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.reviewer: japere
-ms.openlocfilehash: 6d4044414cfae9a79487d02709aab24998fdef0b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: barbkess
+ms.reviewer: japere,asteen
+ms.openlocfilehash: cdd554b71cc17019d7818e2b509433df621da84f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446825"
 ---
 # <a name="problem-using-self-service-application-access"></a>Probleme beim Self-Service-Anwendungszugriff
 
@@ -96,4 +98,4 @@ Diese Genehmigungen unterstützen nur Workflows mit einzelnen Genehmigungen. Das
 -   Fiddler-Ablaufverfolgungen
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Einrichten von Azure Active Directory zur Self-Service-Gruppenverwaltung](active-directory-accessmanagement-self-service-group-management.md)
+[Einrichten von Azure Active Directory zur Self-Service-Gruppenverwaltung](users-groups-roles/groups-self-service-management.md)

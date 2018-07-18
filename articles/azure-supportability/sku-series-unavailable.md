@@ -1,11 +1,11 @@
 ---
-title: "SKU-Serien nicht verfügbar | Microsoft Docs"
-description: "Einige SKU-Serien sind für das ausgewählte Abonnement für diese Region nicht verfügbar."
+title: SKU-Serien nicht verfügbar | Microsoft Docs
+description: Einige SKU-Serien sind für das ausgewählte Abonnement für diese Region nicht verfügbar.
 services: Azure Supportability
-documentationcenter: 
+documentationcenter: ''
 author: stevendotwang
 manager: rajatk
-editor: 
+editor: ''
 ms.service: azure-supportability
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/16/2017
+ms.locfileid: "24870577"
 ---
 # <a name="region-or-sku-unavailable"></a>Region oder SKU nicht verfügbar
 In diesem Artikel wird beschrieben, wie Sie das Problem beheben können, dass ein Azure-Abonnement keinen Zugriff auf eine Region oder eine VM-SKU hat.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33783419"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Verwenden von Azure-Warteschlangenspeicher zum Überwachen von Media Services-Auftragsbenachrichtigungen mit .NET
 Beim Ausführen von Codierungsaufträgen ist es nützlich, deren Status nachverfolgen zu können. Sie können Media Services zur Übermittlung von Benachrichtigungen an [Azure Queue Storage](../../storage/storage-dotnet-how-to-use-queues.md) konfigurieren. Sie können den Status des Auftrags überwachen, indem Sie Benachrichtigungen aus Queue Storage abrufen. 

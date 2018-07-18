@@ -1,6 +1,6 @@
 ---
 title: Verwenden der Azure-Befehlszeilenschnittstelle 1.0 mit Azure Storage | Microsoft Docs
-description: "Erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle 1.0 (Azure CLI) mit Azure Storage verwenden, um Speicherkonten zu erstellen und zu verwalten sowie mit Azure-Blobs und -Dateien zu arbeiten. Die Azure-Befehlszeilenschnittstelle ist ein plattformübergreifendes Tool."
+description: Erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle 1.0 (Azure CLI) mit Azure Storage verwenden, um Speicherkonten zu erstellen und zu verwalten sowie mit Azure-Blobs und -Dateien zu arbeiten. Die Azure-Befehlszeilenschnittstelle ist ein plattformübergreifendes Tool.
 services: storage
 documentationcenter: na
 author: seguler
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
-ms.openlocfilehash: 772417012e4c6aa519e83177bd8e93778f6af3b5
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 1e2c2dc45f2cb91ca225bf183ddde5fa2d1123c4
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936988"
 ---
 # <a name="using-the-azure-cli-10-with-azure-storage"></a>Verwenden der Azure-Befehlszeilenschnittstelle 1.0 mit Azure Storage
 
@@ -28,7 +29,7 @@ Die Azure-Befehlszeilenschnittstelle stellt eine Reihe von plattformübergreifen
 
 Diese Anleitung enthält Informationen zur Verwendung der [Azure-Befehlszeilenschnittstelle (Azure CLI)](../../cli-install-nodejs.md) zum Ausführen einer Vielzahl von Entwicklungs- und Verwaltungsaufgaben mit Azure Storage. Sie sollten die neueste Azure-Befehlszeilenschnittstelle herunterladen und installieren bzw. ein Upgrade durchführen, bevor Sie diese Anleitung verwenden.
 
-Diese Anleitung setzt voraus, dass Sie die grundlegenden Konzepte von Azure-Speicher verstehen. Die Anleitung bietet eine Reihe von Skripts, um die Verwendung der Azure-Befehlszeilenschnittstelle mit Azure-Speicher zu veranschaulichen. Sie müssen die Skriptvariablen auf Basis Ihrer Konfiguration aktualisieren, bevor Sie die jeweiligen Skripts ausführen.
+Diese Anleitung setzt voraus, dass Sie die grundlegenden Konzepte von Azure Storage verstehen. Die Anleitung bietet eine Reihe von Skripts, um die Verwendung der Azure-Befehlszeilenschnittstelle mit Azure-Speicher zu veranschaulichen. Sie müssen die Skriptvariablen auf Basis Ihrer Konfiguration aktualisieren, bevor Sie die jeweiligen Skripts ausführen.
 
 > [!NOTE]
 > Die Anleitung enthält die Befehle der Azure-Befehlszeilenschnittstelle und Skriptbeispiele für klassische Speicherkonten. Befehle der Azure-Befehlszeilenschnittstelle für Resource Manager-Speicherkonten finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows mit der Azure-Ressourcenverwaltung](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects) .
@@ -42,7 +43,7 @@ Diese Anleitung verwendet für Beispiele Ubuntu, andere Betriebssystemplattforme
 
 **Neu in Azure:** Holen Sie Sich ein Microsoft Azure-Abonnement und ein Microsoft-Konto für dieses Abonnement. Informationen zu Azure-Kaufoptionen finden Sie unter [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/), [Kaufoptionen](https://azure.microsoft.com/pricing/purchase-options/) und [Angebote für Mitglieder](https://azure.microsoft.com/pricing/member-offers/) (für Mitglieder von MSDN, Microsoft Partner Network, BizSpark und anderen Microsoft-Programmen).
 
-Unter [Zuweisen von Administratorrollen in Azure Active Directory (Azure AD)](https://msdn.microsoft.com/library/azure/hh531793.aspx) finden Sie weitere Informationen zu Azure-Abonnements.
+Unter [Zuweisen von Administratorrollen in Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) finden Sie weitere Informationen zu Azure-Abonnements.
 
 **Nach der Erstellung eines Microsoft Azure-Abonnements und eines Kontos:**
 
@@ -127,7 +128,7 @@ export AZURE_STORAGE_CONNECTION_STRING=<connection_string>
 ```
 
 ## <a name="create-and-manage-blobs"></a>Erstellen und Verwalten von Blobs
-Der Azure-Blob-Speicher ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. Dieser Abschnitt setzt voraus, dass Sie mit den Konzepten des Azure-Blob-Speichers bereits vertraut sind. Ausführliche Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../blobs/storage-dotnet-how-to-use-blobs.md) und [Konzepte des Blob-Diensts](http://msdn.microsoft.com/library/azure/dd179376.aspx).
+Azure Blob Storage ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. Dieser Abschnitt setzt voraus, dass Sie mit den Konzepten von Azure Blob Storage bereits vertraut sind. Ausführliche Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../blobs/storage-dotnet-how-to-use-blobs.md) und [Konzepte des Blob-Diensts](http://msdn.microsoft.com/library/azure/dd179376.aspx).
 
 ### <a name="create-a-container"></a>Erstellen eines Containers
 Jeder Blob im Azure-Speicher muss sich in einem Container befinden. Mit dem Befehl `azure storage container create` können Sie einen privaten Container erstellen:
@@ -142,7 +143,7 @@ azure storage container create mycontainer
 >
 
 ### <a name="upload-a-blob-into-a-container"></a>Hochladen eines Blobs in einen Container
-Azure Blob-Speicher unterstützt Blockblobs und Seitenblobs. Weitere Informationen finden Sie unter [Grundlagen zu Blockblobs, Anfügeblobs und Seitenblobs](http://msdn.microsoft.com/library/azure/ee691964.aspx).
+Azure Blob Storage unterstützt Block- und Seitenblobs. Weitere Informationen finden Sie unter [Grundlagen zu Blockblobs, Anfügeblobs und Seitenblobs](http://msdn.microsoft.com/library/azure/ee691964.aspx).
 
 Um Blobs in einen Container hochzuladen, können Sie den Befehl `azure storage blob upload`verwenden. Dieser Befehl lädt standardmäßig die lokalen Dateien in einen Blockblob hoch. Um den Blob-Typ anzugeben, können Sie den Parameter `--blobtype` verwenden.
 

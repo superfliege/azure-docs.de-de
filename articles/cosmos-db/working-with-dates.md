@@ -4,23 +4,20 @@ description: Erfahren Sie, wie Sie in Azure Cosmos DB mit Datumsangaben arbeiten
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: e587772f-ce9f-498c-a017-a51e7265bb23
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: sngun
-ms.openlocfilehash: a1f8b38725eb188b609fbdc8efa09ed5aaaf6ae5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d7188270ff5b1edd3b5e396be0cd5fd22e6123c4
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37855505"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Arbeiten mit Datumsangaben in Azure Cosmos DB
-Azure Cosmos DB bietet Schemaflexibilität und eine umfassende Indizierung über ein natives [JSON](http://www.json.org)-Datenmodell. Alle Azure Cosmos DB-Ressourcen mit Datenbanken, Sammlungen, Dokumenten und gespeicherten Prozeduren werden als JSON-Dokumente modelliert und gespeichert. Aufgrund der erforderlichen Portierbarkeit unterstützt JSON (ebenso wie Azure Cosmos DB) nur einen kleinen Satz grundlegender Typen: String, Number, Boolean, Array, Object und Null. JSON ist jedoch flexibel und ermöglicht es Entwicklern und Frameworks, komplexere Daten darzustellen, indem deren Grundtypen verwendet und als Objekte oder Arrays zusammengestellt werden. 
+Azure Cosmos DB bietet Schemaflexibilität und eine umfassende Indizierung über ein natives [JSON](http://www.json.org)-Datenmodell. Alle Azure Cosmos DB-Ressourcen, z.B. Datenbanken, Container, Dokumente und gespeicherte Prozeduren, werden als JSON-Dokumente modelliert und gespeichert. Aufgrund der erforderlichen Portierbarkeit unterstützt JSON (ebenso wie Azure Cosmos DB) nur einen kleinen Satz grundlegender Typen: String, Number, Boolean, Array, Object und Null. JSON ist jedoch flexibel und ermöglicht es Entwicklern und Frameworks, komplexere Daten darzustellen, indem deren Grundtypen verwendet und als Objekte oder Arrays zusammengestellt werden. 
 
 Zusätzlich zu den grundlegenden Typen benötigen viele Anwendungen den [DateTime](https://msdn.microsoft.com/library/system.datetime(v=vs.110).aspx)-Typ, um Daten und Zeitstempel darzustellen. Dieser Artikel beschreibt, wie Entwickler Datumsangaben in Azure Cosmos DB über das .NET SDK speichern, abrufen und abfragen können.
 

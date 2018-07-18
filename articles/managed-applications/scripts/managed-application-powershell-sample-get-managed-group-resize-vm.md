@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell-Skriptbeispiel – Abrufen einer verwalteten Ressourcengruppe und Ändern der Größe von virtuellen Computern | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – Abrufen einer verwalteten Ressourcengruppe und Ändern der Größe von virtuellen Computern"
+title: Azure PowerShell-Skriptbeispiel – Abrufen einer verwalteten Ressourcengruppe und Ändern der Größe von virtuellen Computern | Microsoft-Dokumentation
+description: Azure PowerShell-Skriptbeispiel – Abrufen einer verwalteten Ressourcengruppe und Ändern der Größe von virtuellen Computern
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/30/2017
+ms.locfileid: "23636970"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-powershell"></a>Abrufen von Ressourcen in einer verwalteten Ressourcengruppe und Ändern der Größe von virtuellen Computern mit PowerShell
 

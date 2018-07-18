@@ -3,10 +3,10 @@ title: Testen von Azure Functions | Microsoft Docs
 description: Testen Sie Ihre Azure-Funktionen mithilfe von Postman, cURL und Node.js.
 services: functions
 documentationcenter: na
-author: wesmc7777
+author: tdykstra
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur, Tests
 ms.assetid: c00f3082-30d2-46b3-96ea-34faf2f15f77
 ms.service: functions
@@ -15,20 +15,21 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/02/2017
-ms.author: wesmc
+ms.author: tdykstra
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 41796a8cdde0756e5157ba276463a56b07679d04
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b4f6bf89ec5c83a497666a8a410a156c5f9bb359
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083254"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategien zum Testen Ihres Codes in Azure Functions
 
 Dieses Thema veranschaulicht die verschiedenen Möglichkeiten zum Testen von Funktionen einschließlich Nutzung der folgenden allgemeinen Ansätze:
 
 + HTTP-basierte Tools, z.B. cURL, Postman und sogar einen Webbrowser für webbasierte Trigger
-+ Azure-Speicher-Explorer zum Testen von Triggern, die auf Azure Storage basieren
++ Azure Storage-Explorer zum Testen von Triggern, die auf Azure Storage basieren
 + Testregisterkarte im Azure Functions-Portal
 + Per Timer ausgelöste Funktion
 + Testen der Anwendung oder des Frameworks
@@ -182,20 +183,20 @@ Im Portalfenster **Protokolle** wird während der Ausführung der Funktion eine 
     2016-04-05T21:55:30.738 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/HttpTriggerNodeJS1?code=XXXXXXX&name=Azure Functions
     2016-04-05T21:55:30.738 Function completed (Success, Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
 
-### <a name="test-a-blob-trigger-by-using-storage-explorer"></a>Testen eines Blobtriggers mit dem Speicher-Explorer
-Sie können eine Blobtriggerfunktion mit dem [Azure-Speicher-Explorer](http://storageexplorer.com/) testen.
+### <a name="test-a-blob-trigger-by-using-storage-explorer"></a>Testen eines Blobtriggers mit dem Storage-Explorer
+Sie können eine Blobtriggerfunktion mit dem [Azure Storage-Explorer](http://storageexplorer.com/) testen.
 
-1. Erstellen Sie im [Azure-Portal] für Ihre Funktionen-App eine C#-, F#- oder JavaScript-Blobtriggerfunktion. Legen Sie den zu überwachenden Pfad auf den Namen Ihres Blobcontainers fest. Beispiel:
+1. Erstellen Sie im [Azure-Portal] für Ihre Funktionen-App eine C#-, F#- oder JavaScript-Blobtriggerfunktion. Legen Sie den zu überwachenden Pfad auf den Namen Ihres Blobcontainers fest. Beispiel: 
 
         files
 2. Klicken Sie auf die Schaltfläche **+** , um das zu verwendende Speicherkonto auszuwählen oder zu erstellen. Klicken Sie dann auf **Erstellen**.
 3. Erstellen und speichern Sie eine Textdatei mit folgendem Inhalt:
 
         A text file for blob trigger function testing.
-4. Führen Sie den [Azure-Speicher-Explorer](http://storageexplorer.com/) aus, und stellen Sie eine Verbindung mit dem Blobcontainer im überwachten Speicherkonto her.
+4. Führen Sie den [Azure Storage-Explorer](http://storageexplorer.com/) aus, und stellen Sie eine Verbindung mit dem Blobcontainer im überwachten Speicherkonto her.
 5. Klicken Sie auf **Hochladen**, um die Textdatei hochzuladen.
 
-    ![Screenshot des Speicher-Explorers](./media/functions-test-a-function/azure-storage-explorer-test.png)
+    ![Screenshot des Storage-Explorers](./media/functions-test-a-function/azure-storage-explorer-test.png)
 
 Der Standardcode der Blobtriggerfunktion meldet die Verarbeitung des Blobs in den Protokollen:
 
@@ -267,9 +268,9 @@ Um diesen Ansatz zu veranschaulichen, erstellen wir zunächst eine Warteschlange
 6. Geben Sie den Namen der Warteschlange ein, an die die Nachricht gesendet wird:
 
         queue-newusers
-7. Klicken Sie auf die Schaltfläche **+**, um das Speicherkonto auszuwählen, das Sie zuvor mit dem Warteschlangentrigger verwendet haben. Klicken Sie anschließend auf **Save**.
+7. Klicken Sie auf die Schaltfläche **+**, um das Speicherkonto auszuwählen, das Sie zuvor mit dem Warteschlangentrigger verwendet haben. Klicken Sie anschließend auf **Speichern**.
 8. Klicken Sie auf die Registerkarte **Entwickeln** für Ihren Trigger mit Timer.
-9. Sie können den folgenden Code für die C#-Timerfunktion verwenden, sofern Sie den gleichen Warteschlangennachricht-Objektnamen wie bereits gezeigt verwendet haben. Klicken Sie anschließend auf **Save**.
+9. Sie können den folgenden Code für die C#-Timerfunktion verwenden, sofern Sie den gleichen Warteschlangennachricht-Objektnamen wie bereits gezeigt verwendet haben. Klicken Sie anschließend auf **Speichern**.
 
     ```cs
     using System;

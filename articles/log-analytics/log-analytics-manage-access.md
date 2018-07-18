@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/16/2018
+ms.date: 05/17/2018
 ms.author: magoedte
-ms.openlocfilehash: d2480936ed54ec58ba289eae1ba605a16e27f0b3
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 80ce7337717376b05dc9539abaf49b1a933a78f2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271669"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637530"
 ---
 # <a name="manage-workspaces"></a>Verwalten von Arbeitsbereichen
 
@@ -96,9 +96,9 @@ Mit den älteren Log Analytics-Benutzerrollen wird nur der Zugriff auf Aktivitä
 
 Für die folgenden Aktivitäten sind ebenfalls Azure-Berechtigungen erforderlich:
 
-| anzuzeigen.                                                          | Azure-Berechtigungen erforderlich | Notizen |
+| Aktion                                                          | Azure-Berechtigungen erforderlich | Notizen |
 |-----------------------------------------------------------------|--------------------------|-------|
-| Hinzufügen und Entfernen von Verwaltungslösungen                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | |
+| Hinzufügen und Entfernen von Verwaltungslösungen                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | Diese Berechtigungen müssen auf der Ressourcengruppen- oder Abonnementebene gewährt werden. |
 | Ändern des Tarifs                                       | `Microsoft.OperationalInsights/workspaces/*/write` | |
 | Anzeigen von Daten auf den Kacheln der *Backup*- und *Site Recovery*-Lösungen | Administrator/Co-Administrator | Zugriff auf Ressourcen, die mit dem klassischen Bereitstellungsmodell bereitgestellt werden |
 | Erstellen eines Arbeitsbereichs im Azure-Portal                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
@@ -117,19 +117,22 @@ Mitglieder der Rolle *Log Analytics-Leser* können folgende Aktionen ausführen:
 
 | Typ    | Berechtigung | BESCHREIBUNG |
 | ------- | ---------- | ----------- |
-| anzuzeigen. | `*/read`   | Anzeigen aller Ressourcen und der Ressourcenkonfiguration, einschließlich: <br> VM-Erweiterungsstatus <br> Konfiguration von Azure-Diagnosen für Ressourcen <br> Sämtliche Eigenschaften und Einstellungen aller Ressourcen |
-| anzuzeigen. | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | Ausführen von Protokollsuchabfragen (v2) |
-| anzuzeigen. | `Microsoft.OperationalInsights/workspaces/search/action` | Ausführen von Protokollsuchabfragen (v1) |
-| anzuzeigen. | `Microsoft.Support/*` | Öffnen von Supportfällen |
+| Aktion | `*/read`   | Anzeigen aller Ressourcen und der Ressourcenkonfiguration, einschließlich: <br> VM-Erweiterungsstatus <br> Konfiguration von Azure-Diagnosen für Ressourcen <br> Sämtliche Eigenschaften und Einstellungen aller Ressourcen |
+| Aktion | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | Ausführen von Protokollsuchabfragen (v2) |
+| Aktion | `Microsoft.OperationalInsights/workspaces/search/action` | Ausführen von Protokollsuchabfragen (v1) |
+| Aktion | `Microsoft.Support/*` | Öffnen von Supportfällen |
 |Keine Aktion | `Microsoft.OperationalInsights/workspaces/sharedKeys/read` | Verhindert das Lesen des Arbeitsbereichsschlüssels, der zum Verwenden der Datensammlungs-API und zum Installieren von Agents erforderlich ist |
 
 
 Mitglieder der Rolle *Log Analytics-Mitwirkender* können folgende Aktionen ausführen:
-- Lesen sämtlicher Überwachungsdaten 
-- Erstellen und Konfigurieren von Automation-Konten
-- Hinzufügen und Entfernen von Verwaltungslösungen
-- Lesen von Speicherkontoschlüsseln 
-- Konfigurieren der Sammlung von Protokollen aus Azure Storage
+- Lesen sämtlicher Überwachungsdaten  
+- Erstellen und Konfigurieren von Automation-Konten  
+- Hinzufügen und Entfernen von Verwaltungslösungen    
+    > [!NOTE] 
+    > Um diese beiden Aktionen erfolgreich ausführen zu können, muss diese Berechtigung auf der Ressourcengruppen- oder Abonnementebene gewährt werden.  
+
+- Lesen von Speicherkontoschlüsseln   
+- Konfigurieren der Sammlung von Protokollen aus Azure Storage  
 - Bearbeiten von Überwachungseinstellungen für Azure-Ressourcen, einschließlich:
   - Hinzufügen der VM-Erweiterung zu virtuellen Computern
   - Konfigurieren von Azure-Diagnosen für alle Azure-Ressourcen
@@ -157,7 +160,7 @@ Mit diesen Rollen können Sie Benutzern Zugriff auf verschiedenen Ebenen gewähr
 - Ressourcengruppe: Zugriff auf alle Arbeitsbereiche in der Ressourcengruppe
 - Ressource: Nur Zugriff auf den angegebenen Arbeitsbereich
 
-Verwenden Sie [benutzerdefinierte Rollen](../active-directory/role-based-access-control-custom-roles.md), um Rollen mit spezifischen Berechtigungen zu erstellen.
+Es empfiehlt sich, Zuweisungen auf der Ressourcenebene (Arbeitsbereich) vorzunehmen, um eine korrekte Zugriffssteuerung zu gewährleisten.  Verwenden Sie [benutzerdefinierte Rollen](../active-directory/role-based-access-control-custom-roles.md), um Rollen mit spezifischen Berechtigungen zu erstellen.
 
 ### <a name="azure-user-roles-and-log-analytics-portal-user-roles"></a>Azure-Benutzerrollen und Benutzerrollen des Log Analytics-Portals
 Wenn Sie für den Log Analytics-Arbeitsbereich mindestens über die Azure-Leseberechtigung verfügen, können Sie das Log Analytics-Portal öffnen, indem Sie im Log Analytics-Arbeitsbereich auf die Aufgabe **OMS-Portal** klicken.

@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Dynamisches Anpassen der Azure AD B2C-Benutzeroberfläche (UI) mithilfe von benutzerdefinierten Richtlinien'
+title: Dynamisches Anpassen der Azure Active Directory B2C-Benutzeroberfläche (UI) mithilfe von benutzerdefinierten Richtlinien | Microsoft-Dokumentation
 description: Unterstützung mehrerer Brandingdarstellungen mit HTML5/CSS-Inhalt, der sich zur Laufzeit dynamisch ändert.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
-ms.openlocfilehash: 77f6ae1df8a364eecc5e7d6d6fe3a07dd215ac16
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: 4e7cc47bddf3663cbc1c8bb5c4470020a84073e4
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441650"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Konfigurieren der Benutzeroberfläche mit dynamischen Inhalten mithilfe von benutzerdefinierten Richtlinien
 

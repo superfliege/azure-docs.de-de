@@ -20,6 +20,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874551"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung mithilfe des Portals
 > [!div class="op_single_selector"]

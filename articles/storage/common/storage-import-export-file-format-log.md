@@ -1,11 +1,11 @@
 ---
 title: Format der Protokolldateien von Azure Import/Export | Microsoft Docs
-description: "Erfahren Sie mehr über das Format der Protokolldateien, die erstellt werden, wenn Schritte für einen Auftrag des Import/Export-Diensts ausgeführt werden."
+description: Erfahren Sie mehr über das Format der Protokolldateien, die erstellt werden, wenn Schritte für einen Auftrag des Import/Export-Diensts ausgeführt werden.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 38cc16bd-ad55-4625-9a85-e1726c35fd1b
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23060005"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Format der Protokolldateien des Azure Import/Export-Diensts
 Wenn der Microsoft Azure Import/Export-Dienst als Teil eines Import- oder Exportauftrags eine Aktion auf einem Laufwerk durchführt, werden Protokolle in Blockblobs in dem Speicherkonto geschrieben, das dem Auftrag zugeordnet ist.  

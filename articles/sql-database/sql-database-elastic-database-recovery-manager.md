@@ -6,14 +6,15 @@ manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 350ea0d4b744467849916f2d958cc49fd72d3e4b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 6257edbb567be3ebb3151724e7e50ca81905ad40
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646234"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Verwenden der RecoveryManager-Klasse zur Behebung von Problemen mit der Shard-Zuordnung
 Die [RecoveryManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.aspx)-Klasse bietet ADO.NET-Anwendungen die Möglichkeit, Inkonsistenzen zwischen der globalen Shardzuordnung (GSM) und der lokalen Shardzuordnung (LSM) in einer horizontal partitionierten Datenbank einfach zu erkennen und zu beheben. 

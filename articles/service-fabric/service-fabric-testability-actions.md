@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv
-ms.openlocfilehash: 087a0f12f765b55c2e2976abd93d791409ff6d44
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 27c6671c170f4c03c63270772651051830d8e4ec
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757620"
 ---
 # <a name="testability-actions"></a>Testability-Aktionen
 Zur Simulierung einer unzuverlässigen Infrastruktur bietet Azure Service Fabric Ihnen, dem Entwickler, die Möglichkeit, verschiedene Ausfälle und Statusübergänge aus der Praxis zu simulieren. Diese werden als Testability-Aktionen verfügbar gemacht. Bei den Aktionen handelt es sich um Low-Level-APIs, die eine bestimmte Fault Injection, einen Statusübergang oder eine Überprüfung bewirken. Diese Aktionen können von Ihnen zu umfassenden Testszenarien für Ihre Dienste kombiniert werden.
@@ -36,13 +37,13 @@ Testability-Aktionen sind nach zwei Hauptbereichen (Buckets) klassifiziert:
 Führen Sie zur besseren Überprüfung der Qualität die Dienst- und Unternehmensworkload aus, während Sie verschiedene ordnungsgemäße und nicht ordnungsgemäße Fehler auslösen. Bei nicht ordnungsgemäßen Fehlern werden Szenarien simuliert, bei denen der Dienstprozess mitten in einem Workflow abrupt beendet wird. Auf diese Weise wird der Wiederherstellungspfad getestet, nachdem das Dienstreplikat von Service Fabric wiederhergestellt wurde. Dies ist eine Hilfe beim Testen der Datenkonsistenz und der richtigen Beibehaltung des Dienstzustands nach Ausfällen. Bei den anderen (ordnungsgemäßen) Fehlern wird getestet, ob der Dienst richtig auf Replikate reagiert, die von Service Fabric verschoben werden. Hierbei wird auch die Behandlung des Abbruchs in der RunAsync-Methode getestet. Der Dienst muss überprüfen, ob das Abbruchtoken festgelegt ist, den Status korrekt speichern und die RunAsync-Methode beenden.
 
 ## <a name="testability-actions-list"></a>Liste mit Testability-Aktionen
-| anzuzeigen. | BESCHREIBUNG | Verwaltete API | PowerShell-Cmdlet | Ordnungsgemäße und nicht ordnungsgemäße Fehler |
+| Aktion | BESCHREIBUNG | Verwaltete API | PowerShell-Cmdlet | Ordnungsgemäße und nicht ordnungsgemäße Fehler |
 | --- | --- | --- | --- | --- |
 | CleanTestState |Entfernt alle Testzustände aus dem Cluster, falls es zu einem fehlerhaften Herunterfahren des Testtreibers kommt. |CleanTestStateAsync |Remove-ServiceFabricTestState |Nicht zutreffend |
 | InvokeDataLoss |Verursacht einen Datenverlust für eine Dienstpartition. |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |Ordnungsgemäß |
 | InvokeQuorumLoss |Versetzt eine bestimmte zustandsbehaftete Dienstpartition in den Zustand eines Quorumverlusts. |InvokeQuorumLossAsync |Invoke-ServiceFabricQuorumLoss |Ordnungsgemäß |
-| Move Primary |Verschiebt das angegebene primäre Replikat eines zustandsbehafteten Diensts auf den angegebenen Clusterknoten. |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |Ordnungsgemäß |
-| Move Secondary |Verschiebt das aktuelle sekundäre Replikat des zustandsbehafteten Diensts auf einen anderen Clusterknoten. |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |Ordnungsgemäß |
+| MovePrimary |Verschiebt das angegebene primäre Replikat eines zustandsbehafteten Diensts auf den angegebenen Clusterknoten. |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |Ordnungsgemäß |
+| MoveSecondary |Verschiebt das aktuelle sekundäre Replikat des zustandsbehafteten Diensts auf einen anderen Clusterknoten. |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |Ordnungsgemäß |
 | RemoveReplica |Simuliert einen Replikatausfall, indem ein Replikat aus einem Cluster entfernt wird. Das Replikat wird geschlossen, und es wird der Übergang zur Rolle „Keine“ durchgeführt, sodass alle dazugehörigen Zustände aus dem Cluster entfernt werden. |RemoveReplicaAsync |Remove-ServiceFabricReplica |Ordnungsgemäß |
 | RestartDeployedCodePackage |Simuliert den Ausfall eines Codepaketprozesses, indem ein Codepaket neu gestartet wird, das auf einem Knoten in einem Cluster bereitgestellt wurde. Dadurch wird der Codepaketprozess abgebrochen, und alle unter dem Prozess gehosteten Benutzerdienstreplikate werden neu gestartet. |RestartDeployedCodePackageAsync |Restart-ServiceFabricDeployedCodePackage |Nicht ordnungsgemäß |
 | RestartNode |Simuliert den Ausfall eines Service Fabric-Clusterknotens, indem ein Knoten neu gestartet wird. |RestartNodeAsync |Restart-ServiceFabricNode |Nicht ordnungsgemäß |

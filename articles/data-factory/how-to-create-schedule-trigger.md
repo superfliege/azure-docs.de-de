@@ -10,22 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: shlo
-ms.openlocfilehash: 6466d6cb535bbe0042d7c4c3e828e576e23d5d07
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: eee68481f4396f8a09241b664d4c3d7d4a4f6567
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054351"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Erstellen eines Triggers zum Ausführen einer Pipeline gemäß einem Zeitplan
 Dieser Artikel enthält Informationen zum Zeitplantrigger und den Schritten zum Erstellen, Starten und Überwachen eines Zeitplantriggers. Informationen zu anderen Triggertypen finden Sie unter [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md).
 
 Geben Sie bei der Erstellung eines Zeitplantriggers einen Zeitplan (Startdatum, Wiederholung, Enddatum usw.) für den Trigger an, und ordnen Sie diesem eine Pipeline zu. Pipelines und Trigger haben eine m:m-Beziehung. Mehrere Trigger können eine einzelne Pipeline starten. Ein einzelnder Trigger kann mehrere Pipelines starten.
-
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Azure Data Factory, die sich derzeit in der Vorschauversion befindet. Wenn Sie Version 1 von Azure Data Factory verwenden, die allgemein verfügbar (GA) ist, lesen Sie [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 In den folgenden Abschnitten werden die Schritte zum Erstellen eines Zeitplantriggers durch unterschiedliche Methoden erläutert. 
 
@@ -248,7 +246,7 @@ Informationen zum Überwachen von Trigger- bzw. Pipelineausführungen im Azure-P
 Sie können mit einer Azure Resource Manager-Vorlage einen Trigger erstellen. Detaillierte Anweisungen finden Sie unter [Tutorial: Erstellen einer Azure Data Factory mit einer Azure Resource Manager-Vorlage](quickstart-create-data-factory-resource-manager-template.md).  
 
 ## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>Übergeben der Startzeit des Triggers an eine Pipeline
-In Version 1 unterstützt Azure Data Factory das Lesen oder Schreiben von partitionierten Daten mithilfe der Systemvariablen **SliceStart**, **SliceEnd**, **WindowStart** und **WindowEnd**. In Azure Data Factory Version 2 können Sie dieses Verhalten anhand eines Pipelineparameters auslösen. Die Startzeit und die geplante Zeit für den Trigger werden als Wert für den Pipelineparameter festgelegt. Im folgenden Beispiel wird die geplante Zeit für den Trigger als Wert an den Pipelineparameter **scheduledRunTime** übergeben:
+In Version 1 unterstützt Azure Data Factory das Lesen oder Schreiben von partitionierten Daten mithilfe der Systemvariablen **SliceStart**, **SliceEnd**, **WindowStart** und **WindowEnd**. In der aktuellen Version von Azure Data Factory können Sie dieses Verhalten anhand eines Pipelineparameters erreichen. Die Startzeit und die geplante Zeit für den Trigger werden als Wert für den Pipelineparameter festgelegt. Im folgenden Beispiel wird die geplante Zeit für den Trigger als Wert an den Pipelineparameter **scheduledRunTime** übergeben:
 
 ```json
 "parameters": {

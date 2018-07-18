@@ -10,17 +10,18 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: ajaycode
-ms.openlocfilehash: 1e7e43dc2e7ed386f8f77fd1ab186d2ff34af405
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: na
+ms.openlocfilehash: 96eb26d6a4faf8c6907d23ebf21f2446722c913b
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32176998"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127092"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Preisänderungen für Azure-Netzwerkleistungsmonitor
 
@@ -48,7 +49,7 @@ Unter dem alten Modell wurde die Rechnung basierend auf der Anzahl der Knoten un
 Die Funktion „Systemmonitor“ im Netzwerkleistungsmonitor wird nun anhand der Kombination folgender Elemente berechnet: 
 
 * Überwachte Subnetzlinks
-* Datenvolumen
+* Datenvolume
 
 **Was ist ein Subnetzlink?**
 
@@ -58,7 +59,7 @@ Systemmonitor überwacht die Konnektivität zwischen zwei oder mehr Orten im Net
 
 Nein. Zu Abrechnungszwecken werden alle Verbindungen zwischen Subnetz A und Subnetz B zu einem Subnetzlink gruppiert. Ihnen wird eine einzelne Verbindung in Rechnung gestellt. Systemmonitor überwacht weiterhin die Konnektivität zwischen den verschiedenen Agents in den einzelnen Subnetzen.
 
-**Welche Kosten werden für die Überwachung eines Subnetzlinks erhoben?**
+**Was sind die Kosten für die Überwachung eines Subnetzlinks?**
 
 Im Abschnitt [Pingmesh](https://azure.microsoft.com/pricing/details/network-watcher/) finden Sie die Kosten für die Überwachung eines einzelnen Subnetzlinks für den gesamten Monat.
 
@@ -69,7 +70,7 @@ Die Gebühren für die Erfassung (Datenupload zu Log Analytics, Verarbeitung und
 
 ## <a name="expressroute-monitor"></a>ExpressRoute-Monitor
 
-**Welche Gebühren werden für die Nutzung von ExpressRoute-Monitor erhoben?**
+**Was sind die Gebühren für die Verwendung von ExpressRoute-Monitor?**
 
 Gebühren für ExpressRoute-Monitor werden basierend auf der Menge der während der Überwachung generierten Daten in Rechnung gestellt. Weitere Informationen finden Sie unter „Welche Gebühren werden für die von Systemmonitor generierten Daten erhoben?“.
 
@@ -104,7 +105,7 @@ Bei den höheren Perzentilen (siehe obige Tabelle) überwachen Kunden ihre Verbi
 
 ## <a name="service-endpoint-monitor"></a>Dienstendpunktmonitor
 
-**Welche Gebühren werden für die Nutzung des Dienstendpunktmonitors erhoben?**
+**Was sind die Gebühren für die Verwendung des Dienstendpunktmonitors?**
 
 Die Gebühren für die Nutzung des Dienstendpunktmonitors werden anhand der folgenden Elemente berechnet:
 * Anzahl der Verbindungen

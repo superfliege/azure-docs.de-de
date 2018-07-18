@@ -1,25 +1,20 @@
 ---
-title: Sichern des Windows-Systemstatus in Azure | Microsoft-Dokumentation
+title: Sichern des Windows-Systemstatus in Azure
 description: Erfahren Sie, wie Sie den Systemstatus von Windows Server und/oder Windows-Computern in Azure sichern.
 services: backup
-documentationcenter: ''
 author: saurabhsensharma
-manager: carmonm
-editor: ''
+manager: shivamg
 keywords: Sichern; Sicherung; Sichern von Dateien und Ordnern
-ms.assetid: 5b15ebf1-2214-4722-b937-96e2be8872bb
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 07/31/2017
-ms.author: saurse;markgal
-ms.openlocfilehash: b4847a4b2d8397530d8a6bb4bc4729a6966634f2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.topic: conceptual
+ms.date: 05/23/2018
+ms.author: saurse
+ms.openlocfilehash: 61ee1ce7d5cc6dc2aa4b7a8b02c2e5ba77539725
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606068"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Sichern des Windows-Systemstatus in der Ressourcen Manager-Bereitstellung
 Dieser Artikel beschreibt, wie Sie den Systemstatus von Windows Server in Azure sichern. Dies ist ein Tutorial, in dem die Grundlagen beschrieben werden.
@@ -175,6 +170,11 @@ Die erste Sicherung umfasst zwei Aufgaben:
 * Erstmaliges Sichern des Systemstatus
 
 Für die erste Sicherung verwenden Sie den Microsoft Azure Recovery Services-Agent.
+
+> [!NOTE]
+> Sie können den Systemstatus unter Windows Server 2008 R2 bis Windows Server 2016 sichern. Das Sichern des Systemstatus wird auf Client-SKUs nicht unterstützt. Der Systemstatus wird für Windows-Clients oder Computer mit Windows Server 2008 SP2 nicht als Option angezeigt.
+>
+>
 
 ### <a name="to-schedule-the-backup-job"></a>So planen Sie den Sicherungsauftrag
 

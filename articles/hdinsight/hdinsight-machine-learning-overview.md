@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: nitinme
-ms.openlocfilehash: b80c49b67c7cca835ae08346561984e168e3df4e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6ccdb1fff5ecdcb61beedf1b12904d3785d4921d
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048500"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Machine Learning in HDInsight
 
@@ -32,13 +33,13 @@ Die Microsoft Machine Learning-Bibliothek für Apache Spark ist [MMLSpark](https
 
 ## <a name="r"></a>R
 
-[R](https://www.r-project.org/) ist derzeit die weltweit am häufigsten verwendete Programmiersprache für statistische Berechnungen. Es handelt sich um ein Open-Source-Datenvisualisierungstool mit einer Community von mehr als 2,5 Millionen Benutzern, die stetig wächst. Mit der stark wachsenden Benutzerbasis und mehr als 8.000 verteilten Paketen ist R die wahrscheinlichste Wahl für viele Unternehmen, die maschinelles Lernen nutzen möchten. Sie können einen HDInsight-Cluster mit R Server erstellen, der bereit ist für den Einsatz mit sehr großen Datasets und Modellen. Diese Funktion bietet Datenanalysten und Statistikern eine vertraute R-Schnittstelle, die bei Bedarf durch HDInsight skaliert werden kann – ohne den zusätzlichen Aufwand der Einrichtung und Wartung eines Clusters.
+[R](https://www.r-project.org/) ist derzeit die weltweit am häufigsten verwendete Programmiersprache für statistische Berechnungen. Es handelt sich um ein Open-Source-Datenvisualisierungstool mit einer Community von mehr als 2,5 Millionen Benutzern, die stetig wächst. Mit der stark wachsenden Benutzerbasis und mehr als 8.000 verteilten Paketen ist R die wahrscheinlichste Wahl für viele Unternehmen, die maschinelles Lernen nutzen möchten. Sie können einen HDInsight-Cluster mit ML Services erstellen, der bereit für den Einsatz mit sehr großen Datasets und Modellen ist. Diese Funktion bietet Datenanalysten und Statistikern eine vertraute R-Schnittstelle, die bei Bedarf durch HDInsight skaliert werden kann – ohne den zusätzlichen Aufwand der Einrichtung und Wartung eines Clusters.
 
 ![Training für die Vorhersage mit R Server](./media/hdinsight-machine-learning-overview/r-training.png)
 
 Der Edgeknoten eines Clusters ist ein praktischer Ort für die Verbindungsherstellung mit dem Cluster und die Ausführung Ihrer R-Skripts.  Außerdem können Sie R-Skripts über die Knoten des Clusters hinweg ausführen, indem Sie Hadoop MapReduce von ScaleR oder Spark-Computekontexte verwenden.
 
-Mit R Server auf HDInsight mit Spark können Sie das Training auf den Knoten eines Clusters durch Verwenden eines Spark-Computekontexts parallel ausführen. Sie können R-Skripts direkt auf dem Edgeknoten ausführen und bei Bedarf alle verfügbaren Kerne parallel verwenden. Alternativ können Sie den Code auch über den Edgeknoten ausführen, um die Verarbeitung zu starten, die auf alle Knoten im Cluster verteilt wird. R Server auf HDInsight mit Spark ermöglicht zudem bei Bedarf parallele Funktionen von Open-Source-R-Paketen.
+Mit ML Services in HDInsight mit Spark können Sie das Training auf den Knoten eines Clusters durch Verwenden eines Spark-Computekontexts parallel ausführen. Sie können R-Skripts direkt auf dem Edgeknoten ausführen und bei Bedarf alle verfügbaren Kerne parallel verwenden. Alternativ können Sie den Code auch über den Edgeknoten ausführen, um die Verarbeitung zu starten, die auf alle Knoten im Cluster verteilt wird. ML Services in HDInsight mit Spark ermöglicht zudem bei Bedarf das Parallelisieren der Funktionen von Open-Source-R-Paketen.
 
 ## <a name="azure-machine-learning-and-hive"></a>Azure Machine Learning und Hive
 

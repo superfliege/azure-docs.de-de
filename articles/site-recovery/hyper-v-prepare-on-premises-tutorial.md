@@ -5,14 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7e0219a662483ef123bdc2889a43dd3d93d23ac2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: fb820d124fd9b5e882cad538ad436532d7865fbc
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37923488"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Vorbereiten lokaler Hyper-V-Server für die Notfallwiederherstellung in Azure
 
@@ -65,7 +66,7 @@ Bereiten Sie VMM wie folgt für die Netzwerkzuordnung vor:
     
 3. Wenn Sie den Zugriff über die IP-Adresse steuern, stellen Sie Folgendes sicher:
     - Bei Verwendung von auf IP-Adressen basierenden Firewallregeln muss eine Verbindung mit [IP-Bereichen für das Azure-Rechenzentrum](https://www.microsoft.com/download/confirmation.aspx?id=41653) und dem HTTPS-Port (443) möglich sein.
-    - Lassen Sie IP-Adressbereiche für die Azure-Region Ihres Abonnements und für die Region „USA, Westen“ (wird für Zugriffsteuerung und Identitätsverwaltung verwendet) zu.
+    - Lassen Sie IP-Adressbereiche für die Azure-Region Ihres Abonnements zu.
 
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Vorbereiten der Verbindungsherstellung mit Azure-VMs nach dem Failover

@@ -61,15 +61,13 @@
           href: backup-mabs-protection-matrix.md
         - name: Installieren oder Aktualisieren
           items:
-            - name: Vorbereiten der Sicherung von Azure Backup Server-Workloads im Azure-Portal
+            - name: Installieren von Azure Backup Server
               href: backup-azure-microsoft-azure-backup.md
-            - name: Installieren von Azure Backup Server in Azure Stack
-              href: backup-mabs-install-azure-stack.md
-            - name: Hinzufügen von Speicher zu Azure Backup Server
+            - name: Hinzufügen von Speicher
               href: backup-mabs-add-storage.md
-            - name: Upgraden von Azure Backup Server auf v.2
+            - name: Upgrade auf v.2
               href: backup-mabs-upgrade-to-v2.md
-            - name: Unbeaufsichtigte Installation von Azure Backup Server
+            - name: Unbeaufsichtigte Installation
               href: backup-mabs-unattended-install.md
         - name: Schützen von Workloads
           items:
@@ -83,10 +81,18 @@
               href: backup-azure-sql-mabs.md
             - name: Schützen des Systemstatus und Bare-Metal-Recovery
               href: backup-mabs-system-state-and-bmr.md
-            - name: Dateien und Anwendungen in Azure Stack
-              href: backup-mabs-files-applications-azure-stack.md
         - name: Wiederherstellen von Daten von Azure Backup Server
           href: backup-azure-alternate-dpm-server.md
+    - name: Azure Backup Server in Azure Stack
+      items:
+        - name: Installieren von Azure Backup Server
+          href: backup-mabs-install-azure-stack.md
+        - name: Schützen von Dateien und Anwendungen
+          href: backup-mabs-files-applications-azure-stack.md
+        - name: Schützen einer SharePoint-Farm
+          href: backup-mabs-sharepoint-azure-stack.md
+        - name: Schützen einer SQL Server-Datenbank
+          href: backup-mabs-sql-azure-stack.md
     - name: Azure-Dateifreigaben
       items:
         - name: Sichern von Azure-Dateifreigaben
@@ -199,6 +205,8 @@
           href: backup-azure-mars-troubleshoot.md
         - name: Azure-Dateifreigabe
           href: troubleshoot-azure-files.md
+        - name: SQL Server
+          href: backup-sql-server-azure-troubleshoot.md
 - name: Verweis
   items:
     - name: .NET

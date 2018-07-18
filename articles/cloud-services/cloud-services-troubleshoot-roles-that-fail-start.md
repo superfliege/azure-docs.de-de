@@ -20,6 +20,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29875333"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Problembehandlung bei Clouddienstrollen, die nicht gestartet werden
 In diesem Artikel finden Sie Informationen zu allgemeinen Problemen in Zusammenhang mit nicht gestarteten Azure-Clouddienstrollen sowie zur Lösung dieser Probleme.

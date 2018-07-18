@@ -6,14 +6,15 @@ manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: sstein
-ms.openlocfilehash: cf8d4427cddbe6368ac265fe9ecc0f408f7fb1fb
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7e156142a68b30471646ea3a9181ce7d0097e626
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646992"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Horizontales Skalieren von Datenbanken mit dem Shardzuordnungs-Manager
 Verwenden Sie einen Shardzuordnungs-Manager, um Datenbanken in SQL Azure problemlos horizontal zu skalieren. Der Shardzuordnungs-Manager ist eine spezielle Datenbank, die globale Zuordnungsinformationen zu allen Shards (Datenbanken) in einer Shardgruppe verwaltet. Die Metadaten ermöglichen einer Anwendung die Verbindung mit der richtigen Datenbank basierend auf dem Wert des **Sharding-Schlüssels**. Darüber hinaus enthält jeder Shard in der Gruppe Zuordnungen, die die lokalen Sharddaten (als **Shardlets**bezeichnet) nachverfolgen. 

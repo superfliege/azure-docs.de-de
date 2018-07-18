@@ -2,24 +2,23 @@
 title: 'Azure Cosmos DB: .NET-API, SDK und Ressourcen für BulkExecutor | Microsoft-Dokumentation'
 description: Wichtige Informationen zur .NET-API und zum SDK für BulkExecutor, einschließlich Veröffentlichungstermine, Deaktivierungstermine und Änderungen an den einzelnen Versionen des .NET SDK für Azure Cosmos DB BulkExecutor.
 services: cosmos-db
-documentationcenter: .net
 author: tknandu
 manager: kfile
 editor: cgronlun
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: reference
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 52dcd8497a6dad2885a27197f873de4603378501
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5f2bc50a59219a38c2fcf4d501de4d8a11f6fbf1
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300753"
 ---
-# <a name="net-bulkexecutor-library-download-information"></a>BulkExecutor-Bibliothek für .NET: Informationen zum Download 
+# <a name="net-bulk-executor-library-download-information"></a>BulkExecutor-Bibliothek für .NET: Informationen zum Download 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
@@ -32,8 +31,8 @@ ms.lasthandoff: 05/07/2018
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-Ressourcenanbieter](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-> * [BulkExecutor: .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [BulkExecutor: Java](sql-api-sdk-bulk-executor-java.md)
+> * [BulkExecutor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [BulkExecutor – Java](sql-api-sdk-bulk-executor-java.md)
 
 <table>
 

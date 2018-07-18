@@ -22,7 +22,7 @@
     ```
     var connectionString = "HostName=contoso.azure-devices.net;DeviceId=mydevice;SharedAccessKey=2s ... =="
     ```
-7. Speichern Sie die Datei. Führen Sie die folgenden Befehle in einer Shell oder an einer Eingabeaufforderung im Ordner mit diesen Dateien aus, um die erforderlichen Pakete zu installieren. Führen Sie dann die Beispielanwendung aus:
+7. Speichern Sie die Datei . Führen Sie die folgenden Befehle in einer Shell oder an einer Eingabeaufforderung im Ordner mit diesen Dateien aus, um die erforderlichen Pakete zu installieren. Führen Sie dann die Beispielanwendung aus:
    
     ```
     npm install

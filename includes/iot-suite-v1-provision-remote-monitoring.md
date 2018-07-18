@@ -1,3 +1,20 @@
+---
+title: Includedatei
+description: Includedatei
+services: iot-accelerators
+author: dominicbetts
+ms.service: iot-accelerators
+ms.topic: include
+ms.date: 05/30/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 04081a514d9b96a5289594a730ec0519e6ee0b01
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36329789"
+---
 ## <a name="provision-the-solution"></a>Bereitstellen der Lösung
 
 Wenn Sie die vorkonfigurierte Lösung für die Remoteüberwachung noch nicht in Ihrem Konto bereitgestellt haben:
@@ -21,7 +38,7 @@ Wenn Sie die vorkonfigurierte Lösung für die Remoteüberwachung noch nicht in 
 
 Erwarten Sie Informationen zu Ihrer Lösung, die nicht aufgeführt werden? Senden Sie uns Vorschläge für neue Funktionen über den [Feedbackbereich](https://feedback.azure.com/forums/321918-azure-iot)zu.
 
-[lnk-azureiotsuite]: https://www.azureiotsuite.com
+[lnk-azureiotsuite]: https://www.azureiotsolutions.com
 [lnk-permissions]: ../articles/iot-suite/iot-suite-v1-permissions.md
 [lnk-portal]: http://portal.azure.com/
 [lnk-faq]: ../articles/iot-suite/iot-suite-v1-faq.md

@@ -1,11 +1,11 @@
 ---
-title: "Konfigurieren einer vom Benutzer zugewiesenen MSI für eine Azure-VM mit einer Azure-Vorlage"
-description: "Ausführliche Anweisungen für die Konfiguration einer vom Benutzer zugewiesenen verwalteten Dienstidentität (MSI) für eine Azure-VM unter Verwendung einer Azure Resource Manager-Vorlage."
+title: Konfigurieren einer vom Benutzer zugewiesenen MSI für eine Azure-VM mit einer Azure-Vorlage
+description: Ausführliche Anweisungen für die Konfiguration einer vom Benutzer zugewiesenen verwalteten Dienstidentität (MSI) für eine Azure-VM unter Verwendung einer Azure Resource Manager-Vorlage.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,11 @@ ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: e01e4c397e0d0a19280a32fc1e8341b57b47e4eb
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38610382"
 ---
 # <a name="configure-a-user-assigned-managed-service-identity-msi-for-a-vm-using-an-azure-template"></a>Konfigurieren einer vom Benutzer zugewiesenen verwalteten Dienstidentität (MSI) für eine VM mit einer Azure-Vorlage
 

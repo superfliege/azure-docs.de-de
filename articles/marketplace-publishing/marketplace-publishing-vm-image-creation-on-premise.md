@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29944430"
 ---
 # <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>Entwickeln eines lokalen Images eines virtuellen Computers für Azure Marketplace
 Es wird dringend empfohlen, virtuelle Azure-Festplatten (Azure-VHDs) direkt in der Cloud mithilfe des Remotedesktopprotokolls zu entwickeln. Bei Bedarf ist es jedoch auch möglich, eine VHD herunterzuladen und mithilfe lokaler Infrastruktur zu entwickeln.  

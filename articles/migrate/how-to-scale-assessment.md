@@ -3,19 +3,19 @@ title: Skalieren von Ermittlung und Bewertung mit Azure Migrate | Microsoft-Doku
 description: Hier erfahren Sie, wie Sie eine große Anzahl lokaler Computer mit dem Azure Migrate-Dienst bewerten.
 author: rayne-wiselman
 ms.service: azure-migrate
-ms.topic: article
-ms.date: 05/18/2018
+ms.topic: conceptual
+ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: c8943aec1c81abb34b646180df48bcc55764ca24
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: dd7524c0114589e0c145cb4c03b0f531d58ce950
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365330"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214690"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Ermitteln und Bewerten einer umfangreichen VMware-Umgebung
 
-In diesem Artikel erfahren Sie, wie Sie eine große Anzahl lokaler Computer (VMs) mit [Azure Migrate](migrate-overview.md) bewerten. Azure Migrate bewertet Computer, um zu prüfen, ob diese für die Migration zu Azure geeignet sind. Hierbei liefert der Dienst Größen- und Kostenschätzungen für die Ausführung des jeweiligen Computers in Azure.
+Bei Azure Migrate gilt eine Beschränkung von 1500 Computern pro Projekt. In diesem Artikel erfahren Sie, wie Sie eine große Anzahl lokaler virtueller Computer (VMs) mit [Azure Migrate](migrate-overview.md) bewerten.   
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -24,7 +24,9 @@ In diesem Artikel erfahren Sie, wie Sie eine große Anzahl lokaler Computer (VMs
 - **Berechtigungen:** In vCenter Server benötigen Sie Berechtigungen zum Erstellen eines virtuellen Computers durch Importieren einer Datei im OVA-Format.
 - **Statistikeinstellungen:** Die Statistikeinstellungen für vCenter Server müssen vor der Bereitstellung auf Ebene 3 festgelegt werden. Bei einer niedrigeren Ebene wird die Bewertung zwar ausgeführt, die Leistungsdaten für den Speicher und das Netzwerk werden jedoch nicht erfasst. Die Größenempfehlungen werden in diesem Fall auf der Grundlage von Leistungsdaten für CPU und Arbeitsspeicher sowie basierend auf den Konfigurationsdaten für Datenträger- und Netzwerkadapter erstellt.
 
-## <a name="plan-azure-migrate-projects"></a>Planen von Azure Migrate-Projekten
+## <a name="plan-your-migration-projects-and-discoveries"></a>Planen von Migrationsprojekten und Ermittlungen
+
+Ein einziger Azure Migrate-Collector unterstützt Ermittlungen mehrerer vCenter Server-Instanzen (nacheinander) sowie mehrerer Migrationsprojekte (nacheinander). Für den Collector gilt das Prinzip eines Fire-and-Forget-Modells, d.h. nach Abschluss einer Ermittlung kann derselbe Collector verwendet werden, um Daten einer anderen vCenter Server-Instanz zu sammeln oder sie an ein anderes Migrationsprojekt zu senden.
 
 Planen Sie Ihre Ermittlungen und Bewertungen basierend auf den folgenden Limits:
 
@@ -34,25 +36,35 @@ Planen Sie Ihre Ermittlungen und Bewertungen basierend auf den folgenden Limits:
 | Ermittlung  | 1.500             |
 | Bewertung | 1.500             |
 
-<!--
-- If you have fewer than 400 machines to discover and assess, you need a single project and a single discovery. Depending on your requirements, you can either assess all the machines in a single assessment or split the machines into multiple assessments.
-- If you have 400 to 1,000 machines to discover, you need a single project with a single discovery. But you will need multiple assessments to assess these machines, because a single assessment can hold up to 400 machines.
-- If you have 1,001 to 1,500 machines, you need a single project with two discoveries in it.
-- If you have more than 1,500 machines, you need to create multiple projects, and perform multiple discoveries, according to your requirements. For example:
-    - If you have 3,000 machines, you can set up two projects with two discoveries, or three projects with a single discovery.
-    - If you have 5,000 machines, you can set up four projects: three with a discovery of 1,500 machines, and one with a discovery of 500 machines. Alternatively, you can set up five projects with a single discovery in each one.
-      -->
-
-## <a name="plan-multiple-discoveries"></a>Planen mehrerer Ermittlungen
-
-Sie können denselben Azure Migrate-Collector verwenden, um mehrere Ermittlungen für ein Projekt oder mehrere Projekte durchzuführen. Berücksichtigen Sie bei der Planung Folgendes:
+Berücksichtigen Sie bei der Planung Folgendes:
 
 - Wenn Sie eine Ermittlung mit dem Azure Migrate-Collector durchführen, können Sie den Ermittlungsbereich auf einen vCenter Server-Order, ein Rechenzentrum, einen Cluster oder einen Host festlegen.
 - Wenn Sie mehrere Ermittlungen durchführen, vergewissern Sie sich in vCenter Server, dass sich die zu ermittelnden VMs in Ordnern, Rechenzentren, Clustern oder Hosts befinden, die die Beschränkung auf 1.500 Computer unterstützen.
 - Zur Bewertung sollten sich Computer mit Abhängigkeiten im gleichen Projekt und in der gleichen Bewertung befinden. Achten Sie daher in vCenter Server darauf, dass sich abhängige Computer zur Bewertung im gleichen Ordner, Rechenzentrum, Cluster oder Host befinden.
 
+Je nach Szenario können Sie Ihre Ermittlungen wie folgt aufteilen:
 
-## <a name="create-a-project"></a>Erstellen eines Projekts
+### <a name="multiple-vcenter-servers-with-less-than-1500-vms"></a>Bei mehreren vCenter Server-Instanzen mit weniger als 1500 VMs
+
+Wenn es in Ihrer Umgebung mehrere vCenter Server-Instanzen gibt und die Gesamtzahl der virtuellen Computer niedriger als 1500 ist, können Sie zur Ermittlung aller virtuellen Computer über alle vCenter Server-Instanzen hinweg einen einzelnen Collector und ein einzelnes Migrationsprojekt verwenden. Da der Collector jeweils nur eine vCenter Server-Instanz ermittelt, können Sie denselben Collector nacheinander für alle vCenter Server-Instanzen ausführen und ihn auf dasselbe Migrationsprojekt verweisen. Nach Abschluss aller Ermittlungen lassen sich Bewertungen für die Computer erstellen.
+
+### <a name="multiple-vcenter-servers-with-more-than-1500-vms"></a>Bei mehreren vCenter Server-Instanzen mit mehr als 1500 VMs
+
+Wenn Sie mehrere vCenter Server-Instanzen mit weniger als 1500 virtuellen Computern pro vCenter Server-Instanz, aber mehr als 1500 VMs über alle vCenter Server-Instanzen hinweg haben, müssen Sie mehrere Migrationsprojekte erstellen, da ein einzelnes Migrationsprojekt nur 1500 VMs enthalten kann. Hierzu können Sie ein Migrationsprojekt pro vCenter Server-Instanz erstellen und die Ermittlungen aufteilen. Sie können jede vCenter Server-Instanz (nacheinander) mithilfe eines einzigen Collectors ermitteln. Wenn Sie möchten, dass die Ermittlungen zeitgleich beginnen, lassen sie sich durch die Bereitstellung mehrerer Appliances parallel ausführen.
+
+### <a name="more-than-1500-machines-in-a-single-vcenter-server"></a>Bei mehr als 1500 Computern in einer einzigen vCenter Server-Instanz
+
+Wenn Sie mehr als 1500 virtuelle Computer in einer einzelnen vCenter Server-Instanz haben, müssen Sie die Ermittlungen auf mehrere Migrationsprojekte aufteilen. Zum Aufteilen der Ermittlungen können Sie in der Appliance das Feld „Bereich“ nutzen und die folgenden zu ermittelnden Daten angeben: Host, Cluster, Ordner oder Rechenzentrum. Angenommen, Sie haben zwei Ordner in der vCenter Server-Instanz – einen mit 1000 VMs (Ordner1) und einen anderen mit 800 VMs (Ordner2). In diesem Fall können Sie einen einzigen Collector zur Ausführung von zwei Ermittlungen verwenden. Für die erste Ermittlung können Sie Ordner1 als Bereich festlegen und ihn auf das erste Migrationsprojekt verweisen. Nach Abschluss der ersten Ermittlung lässt sich derselbe Collector verwenden. Ändern Sie dazu seinen Bereich zu Ordner2, passen Sie die Details zum Migrationsprojekt an das zweite Migrationsprojekt an und führen Sie die zweite Ermittlung aus.
+
+### <a name="multi-tenant-environment"></a>Umgebungen mit mehreren Mandanten
+
+Wenn Sie bei einer von mehreren Mandanten gemeinsam genutzten Umgebung keine VMs eines Mandanten im Abonnement eines anderen ermitteln möchten, können Sie das Feld „Bereich“ in der Collectorappliance nutzen, um den Bereich der Ermittlung festzulegen. Sollten Mandanten Hosts gemeinsam nutzen, erstellen Sie Anmeldeinformationen, die nur auf diejenigen VMs einen schreibgeschützten Zugriff ermöglichen, die dem bestimmten Mandanten gehören. Verwenden Sie dann diese Anmeldeinformationen in der Collectorappliance und geben Sie den Bereich als Host für die Ermittlung an. Alternativ können Sie auch Ordner in der vCenter Server-Instanz erstellen – z.B. Ordner1 für Mandant1 und Ordner2 für Mandant2 – und unter dem gemeinsam genutzten Host die VMs für Mandant1 in Ordner1 und für Mandant2 in Ordner2 verschieben. Legen Sie anschließend im Collector den Bereich für die Ermittlungen fest, indem Sie den entsprechenden Ordner angeben.
+
+## <a name="discover-on-premises-environment"></a>Ermitteln der lokalen Umgebung
+
+Ist Ihre Planung abgeschlossen, können Sie mit dem Ermitteln der lokalen virtuellen Computer beginnen:
+
+### <a name="create-a-project"></a>Erstellen eines Projekts
 
 Erstellen Sie ein für Ihre Anforderungen geeignetes Azure Migrate-Projekt:
 
@@ -62,11 +74,11 @@ Erstellen Sie ein für Ihre Anforderungen geeignetes Azure Migrate-Projekt:
 4. Erstellen Sie eine neue Ressourcengruppe.
 5. Geben Sie den Standort an, an dem das Projekt erstellt werden soll, und klicken Sie auf **Erstellen**. Beachten Sie, dass Sie Ihre VMs weiterhin für einen anderen Zielstandort bewerten können. Der für das Projekt angegebene Standort wird zum Speichern der Metadaten verwendet, die von den lokalen VMs erfasst werden.
 
-## <a name="set-up-the-collector-appliance"></a>Einrichten der Collectorappliance
+### <a name="set-up-the-collector-appliance"></a>Einrichten der Collectorappliance
 
 Azure Migrate erstellt einen lokalen virtuellen Computer, der als „Collectorappliance“ bezeichnet wird. Diese VM ermittelt lokale virtuelle VMware-Computer und sendet Metadaten zu diesen Computern an den Azure Migrate-Dienst. Zum Einrichten der Collectorappliance laden Sie eine OVA-Datei herunter und importieren sie auf die lokale vCenter Server-Instanz.
 
-### <a name="download-the-collector-appliance"></a>Herunterladen der Collectorappliance
+#### <a name="download-the-collector-appliance"></a>Herunterladen der Collectorappliance
 
 Wenn Sie über mehrere Projekte verfügen, müssen Sie die Collectorappliance nur einmal auf die vCenter Server-Instanz herunterladen. Nach dem Herunterladen und Einrichten der Appliance müssen Sie diese für jedes Projekt ausführen und jeweils die eindeutige Projekt-ID und den Schlüssel angeben.
 
@@ -75,7 +87,7 @@ Wenn Sie über mehrere Projekte verfügen, müssen Sie die Collectorappliance nu
 3. Kopieren Sie unter **Projektanmeldeinformationen kopieren** die ID und den Schlüssel für das Projekt. Diese Angaben benötigen Sie beim Konfigurieren des Collectors.
 
 
-### <a name="verify-the-collector-appliance"></a>Überprüfen der Collectorappliance
+#### <a name="verify-the-collector-appliance"></a>Überprüfen der Collectorappliance
 
 Überprüfen Sie, ob die OVA-Datei sicher ist, bevor Sie sie bereitstellen:
 
@@ -121,7 +133,7 @@ Wenn Sie über mehrere Projekte verfügen, müssen Sie die Collectorappliance nu
     SHA1 | a2d8d496fdca4bd36bfa11ddf460602fa90e30be
     SHA256 | f3d9809dd977c689dda1e482324ecd3da0a6a9a74116c1b22710acc19bea7bb2  
 
-## <a name="create-the-collector-vm"></a>Erstellen der Collector-VM
+### <a name="create-the-collector-vm"></a>Erstellen der Collector-VM
 
 Importieren Sie die heruntergeladene Datei auf die vCenter Server-Instanz:
 
@@ -137,7 +149,7 @@ Importieren Sie die heruntergeladene Datei auf die vCenter Server-Instanz:
 7. Geben Sie unter **Netzwerkzuordnung** das Netzwerk an, mit dem der virtuelle Collectorcomputer eine Verbindung herstellt. Das Netzwerk benötigt Internetkonnektivität, um Metadaten an Azure zu senden.
 8. Überprüfen und bestätigen Sie die Einstellungen, und klicken Sie auf **Fertig stellen**.
 
-## <a name="identify-the-id-and-key-for-each-project"></a>Ermitteln von ID und Schlüssel für jedes Projekt
+### <a name="identify-the-id-and-key-for-each-project"></a>Ermitteln von ID und Schlüssel für jedes Projekt
 
 Wenn Sie über mehrere Projekte verfügen, müssen Sie die ID und den Schlüssel für jedes der Projekte ermitteln. Der Schlüssel wird benötigt, wenn Sie den Collector ausführen, um die virtuellen Computer zu ermitteln.
 
@@ -145,7 +157,7 @@ Wenn Sie über mehrere Projekte verfügen, müssen Sie die ID und den Schlüssel
 2. Kopieren Sie unter **Projektanmeldeinformationen kopieren** die ID und den Schlüssel für das Projekt.
     ![Projektanmeldeinformationen kopieren](./media/how-to-scale-assessment/copy-project-credentials.png)
 
-## <a name="set-the-vcenter-statistics-level"></a>Festlegen der vCenter-Statistikebene
+### <a name="set-the-vcenter-statistics-level"></a>Festlegen der vCenter-Statistikebene
 Die folgende Liste enthält die Leistungsindikatoren, die im Rahmen der Ermittlung erfasst werden. Die Indikatoren sind standardmäßig auf verschiedenen Ebenen in vCenter Server verfügbar.
 
 Wir empfehlen, für die Statistik die höchste allgemeine Ebene (3) festzulegen, damit alle Leistungsindikatoren ordnungsgemäß erfasst werden. Wenn Sie für vCenter eine niedrigere Ebene festgelegt haben, werden möglicherweise nur einige Leistungsindikatoren vollständig erfasst, und der Rest ist auf 0 festgelegt. Dadurch erhalten Sie in der Bewertung möglicherweise unvollständige Daten.
@@ -166,7 +178,7 @@ Die folgende Tabelle gibt auch Aufschluss über die betroffenen Bewertungsergebn
 > [!WARNING]
 > Nach dem Festlegen einer höheren Statistikebene kann es bis zu einem Tag dauern, bis die Leistungsindikatordaten generiert werden. Die Ermittlung sollte deshalb erst nach einem Tag durchgeführt werden.
 
-## <a name="run-the-collector-to-discover-vms"></a>Ausführen des Collectors zum Ermitteln virtueller Computer
+### <a name="run-the-collector-to-discover-vms"></a>Ausführen des Collectors zum Ermitteln virtueller Computer
 
 Für die einzelnen Ermittlungen müssen Sie jeweils den Collector ausführen, um virtuelle Computer im erforderlichen Bereich zu ermitteln. Führen Sie die Ermittlungen nacheinander durch. Parallele Ermittlungen werden nicht unterstützt, und jede Ermittlung muss einen anderen Bereich umfassen.
 
@@ -194,7 +206,7 @@ Für die einzelnen Ermittlungen müssen Sie jeweils den Collector ausführen, um
 7.  Überwachen Sie in **Sammlungsfortschritt anzeigen** den Ermittlungsprozess, und vergewissern Sie sich, dass sich die von den VMs erfassten Metadaten innerhalb des zulässigen Bereichs befinden. Der Collector gibt eine ungefähre Ermittlungszeit an.
 
 
-### <a name="verify-vms-in-the-portal"></a>Überprüfen virtueller Computer im Portal
+#### <a name="verify-vms-in-the-portal"></a>Überprüfen virtueller Computer im Portal
 
 Die Ermittlungszeit hängt von der Anzahl der ermittelten virtuellen Computer ab. Normalerweise dauert die Ermittlung bei 100 virtuellen Computern nach Abschluss der Collector-Ausführung ungefähr eine Stunde.
 

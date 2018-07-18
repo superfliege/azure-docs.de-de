@@ -4,22 +4,23 @@ description: Log Analytics kann Ereignisse aus Textdateien auf Windows- und Linu
 services: log-analytics
 documentationcenter: ''
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: aca7f6bb-6f53-4fd4-a45c-93f12ead4ae1
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/04/2018
+ms.date: 05/27/2018
 ms.author: bwren
-ms.openlocfilehash: e4e2edeb6703e8c55a16b488175fbcdb0dfe56a9
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.component: na
+ms.openlocfilehash: c533d54a804ccc624246f54940ccf269361cdd7a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361888"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128672"
 ---
 # <a name="custom-logs-in-log-analytics"></a>Benutzerdefinierte Protokolle in Log Analytics
 Mithilfe der Datenquelle „Custom Logs“ (Benutzerdefinierte Protokolle) in Log Analytics können Ereignisse aus Textdateien auf Windows- und Linux-Computern gesammelt werden. Viele Anwendungen protokollieren Informationen nicht in standardmäßigen Protokollierungsdiensten wie Windows-Ereignisprotokoll oder Syslog, sondern in Textdateien.  Mithilfe des Log Analytics-Features [Benutzerdefinierte Felder](log-analytics-custom-fields.md) können gesammelte Datensätze im Protokoll individuell analysiert und einzelnen Feldern zugeordnet werden.
@@ -42,7 +43,13 @@ Die zu sammelnden Protokolldateien müssen folgende Kriterien erfüllen:
 ## <a name="defining-a-custom-log"></a>Definieren eines benutzerdefinierten Protokolls
 Gehen Sie zum Definieren einer benutzerdefinierten Protokolldatei wie folgt vor.  Am Ende dieses Artikels finden Sie eine exemplarische Vorgehensweise für das Hinzufügen eines benutzerdefinierten Protokolls.
 
-### <a name="step-1-open-the-custom-log-wizard"></a>Schritt 1: Öffnen des Assistenten für benutzerdefinierte Protokolle
+### <a name="step-1-enable-custom-logs-preview"></a>Schritt 1: Aktivieren der Vorschauversion benutzerdefinierter Protokolle
+1. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
+2. Wählen Sie im Log Analytics-Abonnementbereich einen Arbeitsbereich aus, und wählen Sie dann die Kachel **OMS-Portal** aus.<br><br> ![Schaltfläche „Protokollsuche“](media/log-analytics-data-sources-custom-logs/azure-portal-01.png)<br><br> 
+3. Nachdem Sie zum OMS-Portal weitergeleitet werden, klicken Sie auf die Kachel „Einstellungen“ rechts oben auf der Seite.<br><br> ![Option „Einstellungen“ im OMS-Portal](media/log-analytics-data-sources-custom-logs/oms-portal-settings-option.png)<br><br> 
+4. Wählen Sie auf der Seite **Einstellungen** die Option **Vorschaufeatures** aus, und wählen Sie dann für benutzerdefinierte Protokolle **Aktivieren** aus.    
+
+### <a name="step-2-open-the-custom-log-wizard"></a>Schritt 2: Öffnen des Assistenten für benutzerdefinierte Protokolle
 Mit dem im Azure-Portal ausgeführten Assistenten für benutzerdefinierte Protokolle können Sie ein neues benutzerdefiniertes Protokoll für die Sammlung definieren.
 
 1. Klicken Sie im Azure-Portal auf **Log Analytics**, auf Ihren Arbeitsbereich und anschließend auf **Erweiterte Einstellungen**.
@@ -50,7 +57,7 @@ Mit dem im Azure-Portal ausgeführten Assistenten für benutzerdefinierte Protok
 3. Standardmäßig werden alle Konfigurationsänderungen automatisch per Push an alle Agents weitergegeben.  Bei Linux-Agents wird eine Konfigurationsdatei an den Fluentd-Datensammler gesendet.  Wenn Sie diese Datei manuell auf jedem Linux-Agent ändern möchten, deaktivieren Sie das Kontrollkästchen *Nachstehende Konfiguration auf meine Linux-Computer anwenden*.
 4. Klicken Sie auf **Hinzufügen+** , um den Assistenten für benutzerdefinierte Protokolle zu öffnen.
 
-### <a name="step-2-upload-and-parse-a-sample-log"></a>Schritt 2: Hochladen und Analysieren eines Beispielprotokolls
+### <a name="step-3-upload-and-parse-a-sample-log"></a>Schritt 3: Hochladen und Analysieren eines Beispielprotokolls
 Als Erstes muss ein benutzerdefiniertes Beispielprotokoll hochgeladen werden.  Der Assistent überprüft die Einträge in dieser Datei und zeigt sie zur Überprüfung an.  Log Analytics verwendet bei der Identifizierung der einzelnen Datensätze das von Ihnen angegebene Trennzeichen.
 
 Das Standardtrennzeichen **Neue Zeile** wird für Protokolldateien verwendet, die pro Zeile jeweils einen einzelnen Eintrag enthalten.  Falls die Zeile mit einer Datums- und Uhrzeitangabe in einem kompatiblen Format beginnt, können Sie als Trennzeichen die Option **Zeitstempel** angeben. Diese Option unterstützt Einträge, die sich über mehrere Zeilen erstrecken.
@@ -64,7 +71,7 @@ Bei Verwendung der Zeitstempeloption wird die TimeGenerated-Eigenschaft der einz
 4. Ändern Sie das Trennzeichen, das zur Identifizierung eines neuen Datensatzes verwendet wird, und wählen Sie das Trennzeichen aus, das für die Einträge in Ihrer Protokolldatei am besten geeignet ist.
 5. Klicken Sie auf **Weiter**.
 
-### <a name="step-3-add-log-collection-paths"></a>Schritt 3: Hinzufügen von Protokollsammlungspfaden
+### <a name="step-4-add-log-collection-paths"></a>Schritt 4: Hinzufügen von Protokollsammlungspfaden
 Definieren Sie für den Agent mindestens einen Pfad, an dem sich das benutzerdefinierte Protokoll befindet.  Sie können entweder einen bestimmten Pfad und Namen für die Protokolldatei angeben oder einen Pfad mit einem Platzhalter für den Namen verwenden.  Dadurch werden Anwendungen unterstützt, die täglich oder bei Erreichen einer bestimmten Dateigröße eine neue Datei erstellen.  Sie können auch mehrere Pfade für eine einzelne Protokolldatei angeben.
 
 Ein Beispiel: Angenommen, eine Anwendung erstellt jeden Tag eine Protokolldatei, und das Datum ist jeweils Teil des Dateinamens (etwa „log20100316.txt“). In einem solchen Fall kann beispielsweise ein Muster wie *log\*.txt* verwendet werden, um sämtliche Protokolldateien abzudecken, die nach dem Benennungsschema der Anwendung erstellt werden.
@@ -82,14 +89,14 @@ Die folgende Tabelle enthält Musterbeispiele für die Angabe verschiedener Prot
 2. Geben Sie den Pfad ein, und klicken Sie auf die Schaltfläche **+** .
 3. Wiederholen Sie den Vorgang für jeden zusätzlichen Pfad.
 
-### <a name="step-4-provide-a-name-and-description-for-the-log"></a>Schritt 4: Angeben eines Namens und einer Beschreibung für das Protokoll
+### <a name="step-5-provide-a-name-and-description-for-the-log"></a>Schritt 5: Angeben eines Namens und einer Beschreibung für das Protokoll
 Der angegebene Name wird für den oben beschriebenen Protokolltyp verwendet.  Er endet immer mit „_CL“, um ihn als benutzerdefiniertes Protokoll zu kennzeichnen.
 
 1. Geben Sie einen Namen für das Protokoll ein.  Das Suffix **\_CL** wird automatisch angehängt.
 2. Geben Sie ggf. eine **Beschreibung** ein.
 3. Klicken Sie auf **Weiter** , um die Definition des benutzerdefinierten Protokolls zu speichern.
 
-### <a name="step-5-validate-that-the-custom-logs-are-being-collected"></a>Schritt 5: Überprüfen, ob die benutzerdefinierten Protokolle gesammelt werden
+### <a name="step-6-validate-that-the-custom-logs-are-being-collected"></a>Schritt 6: Überprüfen, ob die benutzerdefinierten Protokolle gesammelt werden
 Es kann bis zu einer Stunde dauern, bis die ersten Daten aus einem neuen benutzerdefinierten Protokoll in Log Analytics erscheinen.  Die Sammlung von Einträgen aus Protokollen, die sich am angegebenen Pfad befinden, beginnt, nachdem Sie das benutzerdefinierte Protokoll definiert haben.  Die bei der Erstellung des benutzerdefinierten Protokolls hochgeladenen Einträge werden zwar nicht gespeichert, es werden aber bereits vorhandene Einträge aus den gefundenen Protokolldateien gesammelt.
 
 Sobald Log Analytics mit dem Sammeln von Einträgen aus dem benutzerdefinierten Protokoll begonnen hat, stehen die entsprechenden Datensätze bei einer Protokollsuche zur Verfügung.  Geben Sie in Ihrer Abfrage den Namen, mit dem Sie das benutzerdefinierte Protokoll benannt haben, als **Typ** an.
@@ -99,7 +106,7 @@ Sobald Log Analytics mit dem Sammeln von Einträgen aus dem benutzerdefinierten 
 >
 >
 
-### <a name="step-6-parse-the-custom-log-entries"></a>Schritt 6: Analysieren der Einträge des benutzerdefinierten Protokolls
+### <a name="step-7-parse-the-custom-log-entries"></a>Schritt 7. Analysieren der Einträge des benutzerdefinierten Protokolls
 Der gesamte Protokolleintrag wird in einer einzelnen Eigenschaft namens **RawData**gespeichert.  Sie möchten vermutlich die verschiedenen Einzelinformationen der jeweiligen Einträge als einzelne Eigenschaften im Datensatz speichern.  Hierzu wird das Log Analytics-Feature [Benutzerdefinierte Felder](log-analytics-custom-fields.md) verwendet.
 
 An dieser Stelle wird keine ausführliche Anleitung zum Analysieren des benutzerdefinierten Protokolleintrags bereitgestellt.  Diese finden Sie in der Dokumentation zu [Benutzerdefinierte Felder](log-analytics-custom-fields.md) .

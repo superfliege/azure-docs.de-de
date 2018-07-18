@@ -9,17 +9,17 @@ editor: vturecek
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 5fcd42a2453bddbfc1c1d1939dd9e63e7e09bdb0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f52861411a34d1fbff577fbbc37cf926151a97d8
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366527"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294811"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Windows
 > [!div class="op_single_selector"]
@@ -29,21 +29,28 @@ ms.locfileid: "34366527"
 Zum Ausführen einer vorhandenen Anwendung eines Windows-Containers in einem Service Fabric-Cluster sind keine Änderungen an Ihrer Anwendung erforderlich. In diesem Artikel wird schrittweise beschrieben, wie Sie ein Docker-Image mit einer Python [Flask](http://flask.pocoo.org/)-Webanwendung erstellen und in einem Service Fabric-Cluster bereitstellen. Außerdem stellen Sie Ihre Containeranwendung per [Azure Container Registry](/azure/container-registry/) bereit. In diesem Artikel werden grundlegende Kenntnisse von Docker vorausgesetzt. Weitere Informationen zu Docker finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/understanding-docker/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Ein Entwicklungscomputer, auf dem Folgendes ausgeführt wird:
-* Visual Studio 2015 oder Visual Studio 2017
-* [Service Fabric-SDK und -Tools](service-fabric-get-started.md)
-*  Docker für Windows [Laden Sie „Docker CE for Windows (stable)“ herunter](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Klicken Sie nach dem Installieren und Starten von Docker mit der rechten Maustaste auf das Taskleistensymbol, und wählen Sie **Switch to Windows containers** (Zu Windows-Containern wechseln). Dieser Schritt ist für die Ausführung Windows-basierter Docker-Images erforderlich.
+* Ein Entwicklungscomputer, auf dem Folgendes ausgeführt wird:
+  * Visual Studio 2015 oder Visual Studio 2017
+  * [Service Fabric-SDK und -Tools](service-fabric-get-started.md)
+  *  Docker für Windows [Laden Sie „Docker CE for Windows (stable)“ herunter](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Klicken Sie nach dem Installieren und Starten von Docker mit der rechten Maustaste auf das Taskleistensymbol, und wählen Sie **Switch to Windows containers** (Zu Windows-Containern wechseln). Dieser Schritt ist für die Ausführung Windows-basierter Docker-Images erforderlich.
 
-Ein Windows-Cluster mit mindestens drei Knoten, die unter Windows Server 2016 mit Containern ausgeführt werden – [erstellen Sie einen Cluster](service-fabric-cluster-creation-via-portal.md), oder [testen Sie Service Fabric kostenlos](https://aka.ms/tryservicefabric).
+* Ein Windows-Cluster mit mindestens drei Knoten, auf denen Windows Server ausgeführt wird, mit Containern 
 
-Eine Registrierung in Azure Container Registry – erstellen Sie in Ihrem Azure-Abonnement eine [Containerregistrierung](../container-registry/container-registry-get-started-portal.md).
+  Für diesen Artikel muss die Version (Build) von Windows Server mit Containern, die auf den Clusterknoten ausgeführt wird, mit der auf dem Entwicklungscomputer übereinstimmen. Dies ist erforderlich, da Sie das Docker-Image auf dem Entwicklungscomputer erstellen und zwischen den Versionen des Containerbetriebssystems und des Hostbetriebssystems für die Bereitstellung Kompatibilitätseinschränkungen bestehen. Weitere Informationen finden Sie unter [Kompatibilität zwischen Containerbetriebssystem und Hostbetriebssystem bei Windows Server](#windows-server-container-os-and-host-os-compatibility). 
+  
+  Zum Ermitteln der Version von Windows Server mit Containern, die Sie für Ihren Cluster benötigen, führen Sie den Befehl `ver` an einer Windows-Eingabeaufforderung auf dem Entwicklungscomputer aus:
+
+  * Wenn die Version *x.x.14323.x* enthält, wählen Sie *WindowsServer 2016-Datacenter-with-Containers* als Betriebssystem aus, und [erstellen einen Cluster](service-fabric-cluster-creation-via-portal.md). Sie können auch [Service Fabric mit einem Partycluster kostenlos](https://aka.ms/tryservicefabric) testen.
+  * Wenn die Version *x.x.16299.x* enthält, dann wählen Sie *WindowsServerSemiAnnual Datacenter-Core-1709-with-Containers* als Betriebssystem aus, und [erstellen einen Cluster](service-fabric-cluster-creation-via-portal.md). Sie können jedoch keinen Partycluster verwenden.
+
+* Eine Registrierung in Azure Container Registry – erstellen Sie in Ihrem Azure-Abonnement eine [Containerregistrierung](../container-registry/container-registry-get-started-portal.md).
 
 > [!NOTE]
-> Das Bereitstellen von Containern in einem Service Fabric-Cluster unter Windows 10 oder einem Cluster mit Docker CE wird nicht unterstützt. In dieser exemplarischen Vorgehensweise wird die Verwendung des Docker-Moduls unter Windows 10 lokal getestet, und abschließend werden die Containerdienste in einem Windows Server-Cluster in Azure mit Docker EE bereitgestellt. 
+> Das Bereitstellen von Containern für einen unter Windows 10 ausgeführten Service Fabric-Cluster wird nicht unterstützt.  In [diesem Artikel](service-fabric-how-to-debug-windows-containers.md) finden Sie Informationen dazu, wie Windows 10 für die Ausführung von Windows-Container konfiguriert werden kann.
 >   
 
 > [!NOTE]
-> Version 6.1 von Service Fabric verfügt über eine Vorschauunterstützung für Windows Server-Version 1709. Der Netzwerkmodus „Open“ und der Service Fabric-DNS-Dienst funktionieren nicht mit Windows Server-Version 1709. 
+> Service Fabric Versionen 6.2 und höher unterstützen die Bereitstellung von Containern für Cluster, die auf Windows Server Version 1709 ausgeführt werden.  
 > 
 
 ## <a name="define-the-docker-container"></a>Definieren des Docker-Containers
@@ -316,7 +323,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 ```
 
 ## <a name="configure-isolation-mode"></a>Isolationsmodus konfigurieren
-Windows unterstützt zwei Isolationsmodi für Container: Prozesse und Hyper-V. Mit dem Prozessisolationsmodus verwenden alle auf demselben Host ausgeführten Container denselben Kernel wie der Host. Mit dem Hyper-V-Isolationsmodus werden die Kernels der einzelnen Hyper-V-Container und des Containerhosts voneinander getrennt. Der Isolationsmodus wird im `ContainerHostPolicies`-Element der Anwendungsmanifestdatei angegeben. Als Isolationsmodi können `process`, `hyperv` und `default` angegeben werden. Der Standardisolationsmodus lautet für Windows Server-Hosts `process` und für Windows 10-Hosts `hyperv`. Im folgenden Codeausschnitt wird gezeigt, wie der Isolationsmodus in der Anwendungsmanifestdatei angegeben wird.
+Windows unterstützt zwei Isolationsmodi für Container: Prozesse und Hyper-V. Mit dem Prozessisolationsmodus verwenden alle auf demselben Host ausgeführten Container denselben Kernel wie der Host. Mit dem Hyper-V-Isolationsmodus werden die Kernels der einzelnen Hyper-V-Container und des Containerhosts voneinander getrennt. Der Isolationsmodus wird im `ContainerHostPolicies`-Element der Anwendungsmanifestdatei angegeben. Als Isolationsmodi können `process`, `hyperv` und `default` angegeben werden. In der Voreinstellung wird auf Windows Server-Hosts der Prozessisolationsmodus verwendet. Auf Windows 10-Hosts wird nur der Hyper-V-Isolationsmodus unterstützt, daher wird der Container im Hyper-V-Isolationsmodus unabhängig von der Einstellung für den Isolationsmodus ausgeführt. Im folgenden Codeausschnitt wird gezeigt, wie der Isolationsmodus in der Anwendungsmanifestdatei angegeben wird.
 
 ```xml
 <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
@@ -387,19 +394,44 @@ docker rmi helloworldapp
 docker rmi myregistry.azurecr.io/samples/helloworldapp
 ```
 
+## <a name="windows-server-container-os-and-host-os-compatibility"></a>Kompatibilität zwischen Containerbetriebssystem und Hostbetriebssystem bei Windows Server
+
+Windows Server-Container sind nicht mit allen Versionen eines Hostbetriebssystems kompatibel. Beispiel: 
+ 
+- Windows Server-Container, die mit Windows Server Version 1709 erstellt wurden, funktionieren nicht auf Hosts unter Windows Server 2016. 
+- Windows Server-Container, die mit Windows Server 2016 erstellt wurden, funktionieren im hyperv-Isolationsmodus nur auf Hosts unter Windows Server Version 1709. 
+- Mit Windows Server-Containern, die mit Windows Server 2016 erstellt wurden, ist es möglicherweise erforderlich, sicherzustellen, dass die Revision des Containerbetriebssystems und des Hostbetriebssystems sind identisch, sofern die Ausführung im Isolationsmodus auf einem Host unter Windows Server 2016 erfolgt.
+ 
+Weitere Informationen finden Sie unter [Versionskompatibilität von Windows-Containern](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
+
+Beachten Sie die Kompatibilität von Hostbetriebssystem und Containerbetriebssystem beim Erstellen und Bereitstellen von Containern in Ihrem Service Fabric-Cluster. Beispiel: 
+
+- Stellen Sie sicher, dass Sie Container mit einem Betriebssystem bereitstellen, das kompatibel mit dem Betriebssystem auf den Clusterknoten ist.
+- Stellen Sie sicher, dass der für Ihre Container-App angegebene Isolationsmodus mit dem für das Containerbetriebssystem auf dem Knoten, auf dem sie bereitgestellt wird, übereinstimmt.
+- Berücksichtigen Sie auch, wie sich Betriebssystemupgrades auf den Clusterknoten oder in den Containern auf deren Kompatibilität auswirken. 
+
+Die folgenden Verfahren werden empfohlen, um sicherzustellen, dass die Container ordnungsgemäß im Service Fabric-Cluster bereitgestellt werden:
+
+- Wenden Sie das explizite Imagetagging auf Ihre Docker-Images an, um die Version des Windows Server-Betriebssystems, auf dem ein Container basiert, anzugeben. 
+- Verwenden Sie das [Betriebssystemtagging](#specify-os-build-specific-container-images) in der Anwendungsmanifestdatei, um sicherzustellen, dass Ihre Anwendung mit unterschiedlichen Versionen und Upgrades von Windows Server kompatibel ist.
+
+> [!NOTE]
+> Mit Service Fabric ab Version 6.2 können Sie Container basierend auf Windows Server 2016 lokal auf einem Windows 10-Host bereitstellen. Unter Windows 10 werden Container im Hyper-V-Isolationsmodus ausgeführt, und zwar unabhängig vom Isolationsmodus im Anwendungsmanifest. Weitere Informationen finden Sie unter [Konfigurieren des Isolationsmodus](#configure-isolation-mode).   
+>
+ 
 ## <a name="specify-os-build-specific-container-images"></a>Angeben spezifischer Containerimages für den Build des Betriebssystems 
 
-Windows Server-Container (Modus „Prozessisolation“) sind mit neueren Versionen des Betriebssystems ggf. nicht kompatibel. Beispielsweise funktionieren Windows Server-Container, die mit Windows Server 2016 erstellt wurden, nicht für Windows Server-Version 1709. Daher tritt für Containerdienste, die mit den vorherigen Versionen des Betriebssystems erstellt wurden, ggf. ein Fehler auf, wenn die Clusterknoten auf die aktuelle Version aktualisiert wurden. Um dies mit Version 6.1 der Runtime (und höher) zu umgehen, unterstützt Service Fabric das Angeben von mehreren Betriebssystemimages pro Container und das Kennzeichnen mit den Buildversionen des Betriebssystems (abrufbar durch Ausführung von `winver` an einer Windows-Eingabeaufforderung). Aktualisieren Sie zunächst die Anwendungsmanifeste, und geben Sie Imageaußerkraftsetzungen pro Betriebssystemversion an, bevor Sie das Betriebssystem auf den Knoten aktualisieren. Im folgenden Codeausschnitt wird veranschaulicht, wie Sie im Anwendungsmanifest (**ApplicationManifest.xml**) mehrere Containerimages angeben:
+Windows Server-Container sind möglicherweise nicht mit allen Versionen des Betriebssystems kompatibel. Beispielsweise funktionieren Windows Server-Container, die mit Windows Server 2016 erstellt wurden, im Prozessisolationsmodus nicht für Windows Server Version 1709. Daher tritt für Containerdienste, die mit älteren Versionen des Betriebssystems erstellt wurden, ggf. ein Fehler auf, wenn die Clusterknoten auf die aktuelle Version aktualisiert werden. Um dies mit Version 6.1 der Runtime (und höher) zu umgehen, unterstützt Service Fabric das Angeben mehrerer Betriebssystemimages pro Container und das Tagging mit den Buildversionen des Betriebssystems im Anwendungsmanifest. Sie rufen die Buildversion des Betriebssystems ab, indem Sie `winver` an einer Windows-Eingabeaufforderung ausführen. Aktualisieren Sie zunächst die Anwendungsmanifeste, und geben Sie Imageaußerkraftsetzungen pro Betriebssystemversion an, bevor Sie das Betriebssystem auf den Knoten aktualisieren. Im folgenden Codeausschnitt wird veranschaulicht, wie Sie im Anwendungsmanifest (**ApplicationManifest.xml**) mehrere Containerimages angeben:
 
 
 ```xml
-<ContainerHostPolicies> 
+      <ContainerHostPolicies> 
          <ImageOverrides> 
            <Image Name="myregistry.azurecr.io/samples/helloworldappDefault" /> 
                <Image Name="myregistry.azurecr.io/samples/helloworldapp1701" Os="14393" /> 
                <Image Name="myregistry.azurecr.io/samples/helloworldapp1709" Os="16299" /> 
          </ImageOverrides> 
-     </ContainerHostPolicies> 
+      </ContainerHostPolicies> 
 ```
 Die Buildversion für Windows Server 2016 lautet 14393, und die Buildversion für Windows Server-Version 1709 lautet 16299. Im Dienstmanifest wird weiterhin nur ein Image pro Containerdienst angegeben, wie hier zu sehen ist:
 

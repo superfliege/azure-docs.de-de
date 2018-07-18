@@ -1,26 +1,23 @@
 ---
-title: Erweitern von U-SQL-Skripts um R in Azure Data Lake Analytics | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie R-Code in U-SQL-Skripts ausführen."
+title: Erweitern von U-SQL-Skripts mit R in Azure Data Lake Analytics
+description: Hier erfahren Sie, wie Sie R-Code in U-SQL-Skripts unter Verwendung von Azure Data Lake Analytics ausführen.
 services: data-lake-analytics
-documentationcenter: 
-author: saveenr
-manager: sukvg
-editor: cgronlun
-ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/20/2017
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: d479af515566f497d9611e75426f6acb8f8276d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: kfile
+editor: jasonwhowell
+ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
+ms.topic: conceptual
+ms.date: 06/20/2017
+ms.openlocfilehash: 8b22b4238b20f56727d1c7858094328ab8817dad
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624923"
 ---
-# <a name="tutorial-get-started-with-extending-u-sql-with-r"></a>Tutorial: Erste Schritte beim Erweitern von U-SQL um R
+# <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>Erweitern von U-SQL-Skripts mit R-Code in Azure Data Lake Analytics
 
 Im folgenden Beispiel werden die grundlegenden Schritte für eine Bereitstellung von R-Code veranschaulicht:
 * Verwenden Sie die `REFERENCE ASSEMBLY`-Anweisung zum Aktivieren von R-Erweiterungen für das U-SQL-Skript.
@@ -107,7 +104,7 @@ Verwenden Sie ein U-SQL-Skript, um das R-Skript mit der Anweisung „DEPLOY RESO
 * Eine schreibgeschützte Spalte darf nicht Bestandteil des Ausgabedatenrahmens sein. Ursache hierfür ist, dass eine schreibgeschützte Spalte automatisch wieder in die U-SQL-Tabelle zurückgeschrieben wird, wenn sie Bestandteil des Ausgabeschemas von UDO ist.
 
 ### <a name="functional-limitations"></a>Funktionale Beschränkungen
-* Das R-Modul kann nicht zweimal in demselben Prozess instanziiert werden. 
+* Die R-Engine kann nicht zweimal in demselben Prozess instanziiert werden. 
 * Derzeit unterstützt U-SQL keine Combiner-UDOs für die Vorhersage mithilfe von partitionierten Modellen, die von Reducer-UDOs erzeugt wurden. Benutzer können die partitionierten Modelle als Ressource deklarieren und sie in ihrem R-Skript verwenden (siehe den Beispielcode „`ExtR_PredictUsingLMRawStringReducer.usql`“)
 
 ### <a name="r-versions"></a>Versionen von R

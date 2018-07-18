@@ -1,24 +1,19 @@
 ---
-title: Nutzen der Überwachungsdaten von Azure | Microsoft Docs
+title: Quellen für Überwachungsdaten in Azure
 description: Erfahren Sie etwas über alle zurzeit in Azure verfügbaren Überwachungsdatenquellen.
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 3/27/2017
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 06/12/2018
 ms.author: johnkem
-ms.openlocfilehash: b10e95cd6b335468201b4cd123b3a29fb5d1bcdb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.component: ''
+ms.openlocfilehash: 78b3288cf4973efa2684252581000d0e4fc56cae
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082997"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Nutzen der Überwachungsdaten von Azure
 
@@ -33,7 +28,7 @@ Wir bringen mit der Azure Monitor-Pipeline die Überwachungsdaten von der gesamt
 | Benutzerdefinierte oder Anwendungsmetriken | Metriken | Alle mit Application Insights instrumentierten Anwendungen | <ul><li>**REST-API:**[Application Insights-REST-API](https://dev.applicationinsights.io/reference)</li></ul> |
 | Speichermetrik | Metriken | Azure Storage | <ul><li>**Speichertabelle:**[Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
 | Abrechnungsdaten | Metriken | Alle Azure-Dienste | <ul><li>**REST-API:**[Azure-APIs zur Ressourcennutzung und Gebührenkarte](../billing/billing-usage-rate-card-overview.md)</li></ul> |
-| Aktivitätsprotokoll | Ereignisse | Alle Azure-Dienste | <ul><li>**REST-API:**[Azure Monitor-Ereignis-API](https://docs.microsoft.com/rest/api/monitor/events)</li><li>**Speicherblob oder Event Hub:**[Protokollprofil](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)</li></ul> |
+| Aktivitätsprotokoll | Ereignisse | Alle Azure-Dienste | <ul><li>**REST-API:**[Azure Monitor-Ereignis-API](https://docs.microsoft.com/en-us/rest/api/monitor/eventcategories)</li><li>**Speicherblob oder Event Hub:**[Protokollprofil](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)</li></ul> |
 | Azure Monitor-Diagnoseprotokolle | Ereignisse | [Siehe Liste hier](monitoring-diagnostic-logs-schema.md) | <ul><li>**Speicher-Blob oder Event Hub:**[Diagnoseeinstellungen](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)</li></ul> |
 | Compute-Protokolle für Gastbetriebssysteme (z.B. IIS, ETW, syslogs) | Ereignisse | [Windows](../virtual-machines-dotnet-diagnostics.md)- und Linux-VMs (V2), [Clouddienste](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md), [Service Fabric](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**Speichertabelle oder Blob:**[Windows oder Linux – Azure-Diagnose](../cloud-services/cloud-services-dotnet-diagnostics-storage.md)</li><li>**Event Hub:**[Windows Azure-Diagnose](../event-hubs/event-hubs-streaming-azure-diags-data.md)</li></ul> |
 | App Service-Protokolle | Ereignisse | App Services | <ul><li>**File, Table oder Blob Storage:**[Web-App-Diagnose](../app-service/web-sites-enable-diagnostic-log.md)</li></ul> |
@@ -45,7 +40,7 @@ Wir bringen mit der Azure Monitor-Pipeline die Überwachungsdaten von der gesamt
 | Azure Monitor-Metrikwarnungen | Benachrichtigungen | [Siehe Liste hier](monitoring-supported-metrics.md) | <ul><li>**Webhook:**[Azure-Metrikwarnungen](insights-webhooks-alerts.md)</li></ul> |
 | Azure Monitor-Aktivitätsprotokollwarnungen | Benachrichtigungen | Alle Azure-Dienste | <ul><li>**Webhook:** Azure-Aktivitätsprotokollwarnungen</li></ul> |
 | Benachrichtigungen zum automatischen Skalieren | Benachrichtigungen | [Siehe Liste hier](monitoring-overview-autoscale.md#supported-services-for-autoscale) | <ul><li>**Webhook:**[Benachrichtigung zur automatischen Skalierung mit dem Webhook-Nutzlastschema](insights-autoscale-to-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
-| Warnungen zu Protokollsuchabfragen | Benachrichtigungen | Log Analytics | <ul><li>**Webhook:**[Log Analytics-Warnungen](../log-analytics/log-analytics-alerts-actions.md#webhook-actions)</li></ul> |
+| Warnungen zu Protokollsuchabfragen | Benachrichtigungen | Log Analytics | <ul><li>**Webhook:** [Webhookaktionen für Protokollwarnungsregeln](../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md)</li></ul> |
 | Application Insights-Metrikwarnungen | Benachrichtigungen | Application Insights | <ul><li>**Webhook:**[Application Insights-Warnungen](../application-insights/app-insights-alerts.md)</li></ul> |
 | Application Insights-Webtests | Benachrichtigungen | Application Insights | <ul><li>**Webhook:**[Application Insights-Warnungen](../application-insights/app-insights-alerts.md)</li></ul> |
 

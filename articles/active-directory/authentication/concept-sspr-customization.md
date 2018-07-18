@@ -10,11 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: ffd12d03dffb5deafc8605cc7352bd71d588d235
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: afcd39e6512ac7bcb46f56df157822efa463113e
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37449068"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Anpassen der Azure AD-Funktionalität für die Self-Service-Kennwortzurücksetzung
 
@@ -38,7 +39,7 @@ Die Kontakt-E-Mail wird in der folgenden Reihenfolge an die folgenden Empfänger
 
 In jedem Fall werden bis zu 100 Empfänger benachrichtigt.
 
-Weitere Informationen zu den verschiedenen Administratorrollen und wie sie zugewiesen werden können finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](../active-directory-assign-admin-roles-azure-portal.md).
+Weitere Informationen zu den verschiedenen Administratorrollen und wie sie zugewiesen werden können finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
 
 ### <a name="disable-contact-your-administrator-emails"></a>Deaktivieren von „Wenden Sie sich an Ihren Administrator“-E-Mails
 
@@ -68,7 +69,7 @@ Die von Ihnen ausgewählten Grafiken werden in den folgenden Situationen angezei
     * Durch Übergeben des *whr*-Parameters an die Seite zum Zurücksetzen des Kennworts, z.B. „https://login.microsoftonline.com/?whr=contoso.com“
     * Durch Übergeben des *username*-Parameters an die Seite zum Zurücksetzen des Kennworts, z.B. „https://login.microsoftonline.com/?username=admin@contoso.com“
 
-Im Artikel [Schnellstart: Hinzufügen eines Unternehmensbrandings zur Anmeldeseite in Azure AD](../customize-branding.md) finden Sie ausführliche Informationen zum Konfigurieren von Unternehmensbranding.
+Im Artikel [Schnellstart: Hinzufügen eines Unternehmensbrandings zur Anmeldeseite in Azure AD](../fundamentals/customize-branding.md) finden Sie ausführliche Informationen zum Konfigurieren von Unternehmensbranding.
 
 ### <a name="directory-name"></a>Verzeichnisname
 

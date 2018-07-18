@@ -14,11 +14,12 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: f8d403e46f7460dff92cc418b829cc5510efd982
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f293aab67fb5e952dc32e20a6370d45cded682b5
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "35761996"
 ---
 # <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>Ausführen von Pig-Aufträgen über eine Remotedesktopverbindung
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
@@ -76,7 +77,8 @@ Aktivieren Sie Remotedesktop für den HDInsight-Cluster, und stellen Sie anschli
     <tr>
     <td>RESULT = order FREQUENCIES by COUNT desc;</td><td>Ordnet die Protokollebenen nach Anzahl (absteigend) und speichert sie in RESULT.</td>
     </tr>
-    </table>
+</table>
+
 6. Sie können die Ergebnisse einer Transformation auch mithilfe der Anweisung `STORE` speichern. Beispiel: Der folgende Befehl speichert `RESULT` im Verzeichnis **/example/data/pigout** des Standardspeichercontainers für Ihren Cluster.
 
         STORE RESULT into 'wasb:///example/data/pigout'
@@ -85,6 +87,7 @@ Aktivieren Sie Remotedesktop für den HDInsight-Cluster, und stellen Sie anschli
    > Die Daten werden im angegebenen Verzeichnis in Dateien namens **part-nnnnn**gespeichert. Wenn das Verzeichnis bereits vorhanden ist, erhalten Sie eine Fehlermeldung.
    >
    >
+   
 7. Geben Sie die folgende Anweisung ein, um die grunt-Eingabeaufforderung zu beenden.
 
         QUIT;

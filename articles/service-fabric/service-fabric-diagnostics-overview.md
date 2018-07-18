@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2018
 ms.author: srrengar
-ms.openlocfilehash: 4fcf8c514cb785dbb0a149e5b3073fc72937b68a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f7fe07500f877cf34626e53361c9c68dd459a5e4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643174"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Überwachung und Diagnose für Azure Service Fabric
 
@@ -46,9 +47,6 @@ Service Fabric bietet einen umfassenden Satz von sofort einsatzfähigen Ereignis
 Wir empfehlen die Verwendung von EventStore für eine schnelle Analyse und eine Momentaufnahme der Arbeitsweise des Clusters. Anhand dieser Einblicke können Sie feststellen, ob alles erwartungsgemäß funktioniert. Zum Erfassen der Protokolle und Ereignisse, die von Ihrem Cluster generiert werden, empfehlen wir im Allgemeinen die Verwendung der [Azure-Diagnoseerweiterung](service-fabric-diagnostics-event-aggregation-wad.md). Die Erweiterung kann gut in Service Fabric-Analyse, die spezielle Service-Fabric-Lösung von OMS Log Analytics, integriert werden, die ein benutzerdefiniertes Dashboard für die Überwachung von Service Fabric-Clustern bereitstellt und die Abfrage von Clusterereignissen und das Einrichten von Warnungen ermöglicht. Weitere Informationen finden Sie unter [Ereignisanalyse und Visualisierung mit OMS](service-fabric-diagnostics-event-analysis-oms.md). 
 
  Weitere Informationen zum Überwachen des Clusters finden Sie unter [Ereignis- und Protokollgenerierung auf Plattformebene](service-fabric-diagnostics-event-generation-infra.md).
-
-
- ![OMS – SF-Lösung](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-solution.png)
 
 ## <a name="performance-monitoring"></a>Leistungsüberwachung
 Die Überwachung der zugrunde liegenden Infrastruktur ist wichtig, um einen Eindruck vom Zustand des Clusters und der Ressourcenverwendung zu erhalten. Die Messung der Systemleistung hängt von mehreren Faktoren ab, die normalerweise jeweils durch einen eigenen KPI (Key Performance Indicator) bestimmt werden. KPIs, die für Service Fabric relevant sind, können Metriken in Form von Leistungsindikatoren zugeordnet werden. Die Metriken können dabei aus den Knoten im Cluster erfasst werden.

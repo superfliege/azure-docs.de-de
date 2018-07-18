@@ -1,10 +1,10 @@
 ---
 title: 'Schnellstart: Erstellen eines Azure CDN-Profils und -Endpunkts | Microsoft-Dokumentation'
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Azure CDN durch Erstellen eines neuen CDN-Profils und -Endpunkts aktivieren.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Azure CDN durch Erstellen eines neuen CDN-Profils und CDN-Endpunkts aktivieren.
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: 4ca51224-5423-419b-98cf-89860ef516d2
 ms.service: cdn
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/13/2018
-ms.author: mazha
+ms.date: 05/24/2018
+ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 87216a861aa150c5f9a16f6193f2abf2af6d57d1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: cf0a0b10d8df3b119f5abbd8060f8821d54172bb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198706"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607870"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Schnellstart: Erstellen eines Azure CDN-Profils und -Endpunkts
 In dieser Schnellstartanleitung aktivieren Sie Azure Content Delivery Network (CDN), indem Sie ein neues CDN-Profil und einen CDN-Endpunkt erstellen. Nach der Erstellung eines Profils und eines Endpunkts können Sie mit der Bereitstellung von Inhalten für Ihre Kunden beginnen.
@@ -47,11 +47,9 @@ Nachdem Sie ein CDN-Profil erstellt haben, können Sie damit einen Endpunkt erst
    
     ![CDN-Profil](./media/cdn-create-new-endpoint/cdn-select-endpoint.png)
    
-    Die Seite **Endpunkt hinzufügen** wird angezeigt.
+    Der Bereich **Endpunkt hinzufügen** wird angezeigt.
 
-    Verwenden Sie die Einstellungen aus der Tabelle unter der folgenden Abbildung.
-   
-    ![Bereich „Endpunkt hinzufügen“](./media/cdn-create-new-endpoint/cdn-add-endpoint.png)
+3. Verwenden Sie für die Endpunkteinstellungen die Werte aus der folgenden Tabelle:
 
     | Einstellung | Wert |
     | ------- | ----- |
@@ -63,7 +61,9 @@ Nachdem Sie ein CDN-Profil erstellt haben, können Sie damit einen Endpunkt erst
     | **Protokoll** | Übernehmen Sie den ausgewählten Standardoptionen **HTTP** und **HTTPS**. |
     | **Ursprungsport** | Behalten Sie die Standardportwerte bei. | 
     | **Optimiert für** | Behalten Sie die Standardauswahl **Allgemeine Webbereitstellung** bei. |
-    
+
+    ![Bereich „Endpunkt hinzufügen“](./media/cdn-create-new-endpoint/cdn-add-endpoint.png)
+
 3. Wählen Sie **Hinzufügen**, um den neuen Endpunkt zu erstellen.
    
    Der erstellte Endpunkt wird in der Liste mit den Endpunkten für das Profil angezeigt.

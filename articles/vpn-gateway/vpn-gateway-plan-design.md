@@ -1,11 +1,11 @@
 ---
-title: "Planung und Entwurf für standortübergreifende Verbindungen: Azure VPN Gateway | Microsoft-Dokumentation"
-description: "Erfahren Sie mehr über Planung und Entwurf von VPN-Gateways für standortübergreifende, Hybrid- und VNet-zu-VNet-Verbindungen."
+title: 'Planung und Entwurf für standortübergreifende Verbindungen: Azure VPN Gateway | Microsoft-Dokumentation'
+description: Erfahren Sie mehr über Planung und Entwurf von VPN-Gateways für standortübergreifende, Hybrid- und VNet-zu-VNet-Verbindungen.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: d5aaab83-4e74-4484-8bf0-cc465811e757
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23125478"
 ---
 # <a name="planning-and-design-for-vpn-gateway"></a>Planung und Entwurf für VPN Gateway
 

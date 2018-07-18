@@ -1,11 +1,11 @@
 ---
 title: Lesen von NSG-Datenflussprotokollen | Microsoft-Dokumentation
-description: "In diesem Artikel wird erläutert, wie NSG-Datenflussprotokolle analysiert werden"
+description: In diesem Artikel wird erläutert, wie NSG-Datenflussprotokolle analysiert werden
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/11/2018
+ms.locfileid: "29149633"
 ---
 # <a name="read-nsg-flow-logs"></a>Lesen von NSG-Datenflussprotokollen
 

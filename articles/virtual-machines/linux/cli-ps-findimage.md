@@ -1,11 +1,11 @@
 ---
-title: "Auswählen von Linux-VM-Images mit der Azure CLI | Microsoft-Dokumentation"
-description: "Erfahren Sie mehr über die Verwendung der Azure CLI, um den Herausgeber, das Angebot, die SKU und die Version für Marketplace-VM-Images zu ermitteln."
+title: Auswählen von Linux-VM-Images mit der Azure CLI | Microsoft-Dokumentation
+description: Erfahren Sie mehr über die Verwendung der Azure CLI, um den Herausgeber, das Angebot, die SKU und die Version für Marketplace-VM-Images zu ermitteln.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 7a858e38-4f17-4e8e-a28a-c7f801101721
 ms.service: virtual-machines-linux
@@ -16,14 +16,17 @@ ms.workload: infrastructure
 ms.date: 02/28/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c65ebbc8a61c13b96364dadde45bd4bca828e337
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 53e5100023fb76b4daf468d3f2027f2b5c7f31d7
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292958"
 ---
 # <a name="how-to-find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Vorgehensweise zum Suchen nach Linux-VM-Images im Azure Marketplace mit der Azure CLI
 Dieses Thema beschreibt, wie Sie mit Azure CLI 2.0 nach VM-Images im Azure Marketplace suchen. Verwenden Sie diese Informationen, um ein Marketplace-Image anzugeben, wenn Sie einen virtuellen Computer programmgesteuert mit der Befehlszeilenschnittstelle, mit Resource Manager-Vorlagen oder anderen Tools erstellen.
+
+Suchen Sie über die [Azure Marketplace](https://azuremarketplace.microsoft.com/) Storefront, das [Azure-Portal](https://portal.azure.com) oder [Azure PowerShell](../windows/cli-ps-findimage.md) nach den verfügbaren Images und Angeboten. 
 
 Stellen Sie sicher, dass Sie die aktuelle Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert haben und bei einem Azure-Konto (`az login`) angemeldet sind.
 

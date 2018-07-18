@@ -18,6 +18,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "25958170"
 ---
 # <a name="transitioning-to-azure-log-analytics-new-query-language"></a>Übergang zur neuen Azure Log Analytics-Abfragesprache
 In Log Analytics wurde vor kurzem eine neue Abfragesprache implementiert.  Dieser Artikel unterstützt Sie beim Übergang zur neuen Abfragesprache für Log Analytics, wenn Sie bereits mit der bisherigen Sprache vertraut sind.

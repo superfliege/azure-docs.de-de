@@ -1,22 +1,21 @@
 ---
-title: Sprachanpassung in Azure AD B2C | Microsoft-Dokumentation
+title: Sprachanpassung in Azure Active Directory B2C | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die Sprachanpassung.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: davidmu
-ms.openlocfilehash: 097033b78e3e4f640e7bf4008fd970c53315d5d7
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.component: B2C
+ms.openlocfilehash: affd52352dcc745557dd66c61ccfa1e7a99dcdb7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33200551"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442320"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Sprachanpassung in Azure Active Directory B2C
 
@@ -203,7 +202,7 @@ Von Chrome und Firefox wird jeweils die eigene festgelegte Sprache angefordert. 
 | Malayalam             | ml            |
 | Marathi               | mr            |
 | Malaiisch                 | ms            |
-| Norwegisch (Bokmål)      | nb            |
+| Norwegisch Bokmål      | nb            |
 | Niederländisch                 | nl            |
 | Pandschabi               | pa            |
 | Polnisch                | pl            |

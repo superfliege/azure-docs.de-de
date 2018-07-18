@@ -2,7 +2,7 @@
 
 
 #### <a name="to-create-a-new-service"></a>So erstellen Sie einen neuen Dienst
-1. Melden Sie sich mithilfe Ihrer Microsoft-Kontoanmeldeinformationen beim [Microsoft Azure-Behördenportal](https://portal.azure.us/)an.
+1. Melden Sie sich mithilfe Ihrer Microsoft-Kontoanmeldeinformationen beim [Microsoft Azure Government-Portal](https://portal.azure.us/) an.
 2. Klicken Sie im Behördenportal auf **+** und dann im Marketplace auf **Alle anzeigen**. Suchen Sie nach _physisches Storsimple_. Wählen Sie **Physische StorSimple-Geräteserie** aus, klicken Sie darauf und dann auf **Erstellen**. Alternativ können Sie im Behördenportal auf **+** und dann unter **Speicher** auf **Physische StorSimple-Geräteserie** klicken.
 3. Führen Sie auf dem Blatt **StorSimple-Geräte-Manager** die folgenden Schritte aus:
    

@@ -1,7 +1,7 @@
 ---
 title: Senden von Warnungen aus Application Insights nach SQL | Microsoft-Dokumentation
 description: Tutorial zum Senden von Warnungen als Reaktion auf Fehler in der Anwendung mithilfe von Azure Application Insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2017
@@ -14,6 +14,7 @@ ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/01/2017
+ms.locfileid: "23659343"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Überwachen der Anwendungsintegrität und Senden entsprechender Warnungen mit Azure Application Insights
 

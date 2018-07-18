@@ -1,24 +1,20 @@
 ---
-title: Problembehandlung bei der Azure-Diagnose | Microsoft-Dokumentation
+title: Problembehandlung bei der Azure-Diagnoseerweiterung
 description: Behandeln Sie Probleme bei der Verwendung der Azure-Diagnose in Azure Virtual Machines, Service Fabric und Cloud Services.
-services: monitoring-and-diagnostics
-documentationcenter: .net
+services: azure-monitor
 author: rboucher
-manager: carmonm
-editor: ''
-ms.assetid: 66469bce-d457-4d1e-b550-a08d2be4d28c
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/12/2017
 ms.author: robb
-ms.openlocfilehash: e194c2898616d5a19782039d38592c59f6b0c576
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.component: diagnostic-extension
+ms.openlocfilehash: 8f41605114de296b626418d0a868e3ed778c0640
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263845"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Problembehandlung mit Azure-Diagnose
 Dieser Artikel enthält Informationen zur Problembehandlung, die für die Verwendung der Azure-Diagnose relevant sind. Weitere Informationen zur Azure-Diagnose finden Sie unter [Überblick über Azure-Diagnose](azure-diagnostics.md).
@@ -122,7 +118,7 @@ Die Diagnosekonfiguration enthält eine Anleitung zum Sammeln von Daten eines be
 #### <a name="is-the-host-generating-data"></a>Generierung von Daten durch den Host
 - **Leistungsindikatoren**: Öffnen Sie den Systemmonitor, und überprüfen Sie den Leistungsindikator.
 
-- **Ablaufverfolgungsprotokolle**: Führen Sie den Remotezugriff auf die VM durch, und fügen Sie der Konfigurationsdatei der App einen TextWriterTraceListener hinzu.  Informationen zum Einrichten des Textlisteners finden Sie unter „http://msdn.microsoft.com/library/sk36c28t.aspx“.  Stellen Sie sicher, dass für das `<trace>`-Element `<trace autoflush="true">` festgelegt ist.<br />
+- **Ablaufverfolgungsprotokolle**: Führen Sie den Remotezugriff auf die VM durch, und fügen Sie der Konfigurationsdatei der App einen TextWriterTraceListener hinzu.  Informationen zum Einrichten des Textlisteners finden Sie unter http://msdn.microsoft.com/library/sk36c28t.aspx.  Stellen Sie sicher, dass für das `<trace>`-Element `<trace autoflush="true">` festgelegt ist.<br />
 Wenn Sie nicht sehen, dass Ablaufverfolgungsprotokolle generiert werden, helfen Ihnen die Informationen unter [Weitere Informationen zu fehlenden Ablaufverfolgungsprotokollen](#more-about-trace-logs-missing) weiter.
 
 - **ETW-Ablaufverfolgungen**: Führen Sie den Remotezugriff auf die VM durch, und installieren Sie PerfView.  Führen Sie in PerfView Folgendes aus: **File** > **User Command** > **Listen etwprovider1** > **etwprovider2** (Datei > Benutzerbefehl > Lauschen etwprovider1 > etwprovider2) usw. Beim Befehl **Listen** (Lauschen) wird die Groß-/Kleinschreibung beachtet, und die kommagetrennte Liste mit ETW-Anbietern darf keine Leerstellen enthalten. Falls der Befehl nicht ausgeführt werden kann, können Sie im PerfView-Tool unten rechts die Schaltfläche **Log** (Protokoll) wählen, um anzuzeigen, was ausgeführt werden sollte und wie das Ergebnis lautet.  Es wird ein neues Fenster angezeigt, wenn die Eingabe korrekt ist. Nach einigen Sekunden werden die ersten Ereignisablaufverfolgungen für Windows angezeigt.

@@ -10,22 +10,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 06/27/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: ee4321b905396f78e7dad9248b9e377dad250a13
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 1a516c890441c3b703d43f31816b7c37cac364fd
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010974"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054380"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Von Profilen in Azure Stack unterstützte API-Versionen von Ressourcenanbietern
 
 In diesem Artikel finden Sie den Ressourcenanbieter und die Versionsnummern für jedes API-Profil, das von Azure Stack verwendet wird. In den Tabellen in diesem Artikel sind die Versionen aufgeführt, die für die einzelnen Ressourcenanbieter und die API-Versionen der Profile unterstützt werden. Jeder Ressourcenanbieter enthält einen Satz mit Ressourcentypen und spezifischen Versionsnummern.
 
 Für das API-Profil gelten drei Benennungskonventionen:
- - latest
+ - neueste
  - jjjj-mm-tt-hybrid
  - jjjj-mm-tt-profile
 
@@ -71,7 +71,7 @@ Eine Liste mit den Versionen jedes einzelnen Ressourcentyps für die Anbieter im
 | Microsoft.Insights | 2015-11-01 |
 | Microsoft.Keyvault | 2016-10-01 |
 | Richtlinie | 2015-10-01-preview |
-| Ressourcen | 2016-02-01 |
+| angeben | 2016-02-01 |
 | Resources_Links | 2016-09-01 |
 | Resources_Locks | 2016-09-01 |
 | Abonnements | 2016-06-1 |
@@ -144,11 +144,14 @@ Die Azure Compute-APIs ermöglichen Ihnen den programmgesteuerten Zugriff auf vi
 
 | Ressourcentypen | API-Versionen |
 |--------------------|--------------------|
-| Warnungsregeln | 2016-03-01 |
-| Ereigniskategorien | 2017-03-01-preview |
-| Ereignistypen | 2017-03-01-preview |
-| Metrikdefinitionen | 2016-03-01 |
 | Vorgänge | 2015-04-01 |
+| Ereignistypen | 2015-04-01 |
+| Ereigniskategorien | 2015-04-01 |
+| Metrikdefinitionen | 2018-01-01 |
+| Metriken | 2018-01-01 |
+| Diagnoseeinstellungen | 2017-05-01-preview |
+| Kategorien von Diagnoseeinstellungen | 2017-05-01-preview |
+
 
 ### <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 

@@ -1,21 +1,21 @@
 ---
-title: "Verwenden von Azure IoT Edge-Geräten als Gateways | Microsoft-Dokumentation"
-description: "Verwenden Sie Azure IoT Edge zum Erstellen eines transparenten oder nicht transparenten Gateway-Geräts oder eines Proxy-Gateway-Geräts, das Daten von mehreren nachgeschalteten Geräten in die Cloud sendet oder lokal verarbeitet."
-services: iot-edge
-keywords: 
+title: Verwenden von Azure IoT Edge-Geräten als Gateways | Microsoft-Dokumentation
+description: Verwenden Sie Azure IoT Edge zum Erstellen eines transparenten oder nicht transparenten Gateway-Geräts oder eines Proxy-Gateway-Geräts, das Daten von mehreren nachgeschalteten Geräten in die Cloud sendet oder lokal verarbeitet.
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 11/27/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: fe7ad2444b9378550e9624e3d109c8be4fd29f23
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+services: iot-edge
+ms.openlocfilehash: 0e085d6c2962ec2a2324bfc134b0e201df04a336
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028964"
 ---
-# <a name="how-an-iot-edge-device-can-be-used-as-a-gateway---preview"></a>Verwendung eines IoT Edge-Geräts als Gateway – Vorschauversion
+# <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Verwendung eines IoT Edge-Geräts als Gateway
 
 Der Zweck von Gateways in IoT-Lösungen ist lösungsspezifisch und vereint Gerätekonnektivität mit Edgeanalysen. Mit Azure IoT Edge lassen sich alle Anforderungen an ein IoT-Gateway im Bezug auf Konnektivität, Identität und Edgeanalysen erfüllen. Gatewaymuster in diesem Artikel beziehen sich nur auf Merkmale der Konnektivität und Identität nachgeschalteter Geräte, nicht auf die Verarbeitung von Gerätedaten auf dem Gateway.
 
@@ -54,7 +54,7 @@ Bei Verwendung eines nicht transparenten Gatewaymusters (Protokollübersetzung) 
 ## <a name="next-steps"></a>Nächste Schritte
 Verwenden eines IoT Edge-Geräts als [transparentes Gateway][lnk-iot-edge-as-transparent-gateway] 
 
-[lnk-iot-edge-as-transparent-gateway]: ./how-to-create-transparent-gateway.md
+[lnk-iot-edge-as-transparent-gateway]: ./how-to-create-transparent-gateway-linux.md
 [lnk-iothub-throttles-quotas]: ../iot-hub/iot-hub-devguide-quotas-throttling.md
 
 [1]: ./media/iot-edge-as-gateway/edge-as-gateway.png

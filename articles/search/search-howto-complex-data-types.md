@@ -14,6 +14,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31799072"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-search"></a>Gewusst wie: Modellieren komplexer Datentypen in Azure Search
 Externe Datasets, die zum Auffüllen eines Azure Search-Index verwendet werden, weisen manchmal hierarchische oder geschachtelte Teilstrukturen auf, die in einem tabellarischen Rowset nicht sauber unterteilt werden. Beispiele für solche Strukturen können mehrere Standorte und Telefonnummern für einen einzelnen Kunden, mehrere Farben und Größen für eine einzelne SKU, mehrere Autoren für ein einzelnes Buch enthalten und so weiter. In der Modelliersprache werden diese Strukturen bisweilen als *komplexe Datentypen*, *zusammengesetzte Datentypen*, *verbundene Datentypen* oder *aggregierte Datentypen* bezeichnet, um nur einige zu nennen.

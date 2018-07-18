@@ -3,16 +3,17 @@ title: 'Azure Analysis Services-Tutorial – Lektion 7: Erstellen von Key Perfor
 description: Dieser Artikel beschreibt, wie Key Performance Indicators im Azure Analysis Services-Tutorialprojekt erstellt werden.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8534640822030a7aa93c8eafe2a1b1a4a8bc5bc4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1f7d54129ef9f85bb4141d26b9be8d4a0652bff8
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448185"
 ---
 # <a name="create-key-performance-indicators"></a>Erstellen von Key Performance Indicators
 

@@ -1,13 +1,13 @@
 ---
 title: Azure Service Bus-Diagnoseprotokolle | Microsoft Docs
-description: "Hier erfahren Sie, wie Sie Diagnoseprotokolle für Service Bus in Azure einrichten."
-keywords: 
+description: Hier erfahren Sie, wie Sie Diagnoseprotokolle für Service Bus in Azure einrichten.
+keywords: ''
 documentationcenter: .net
 services: service-bus-messaging
 author: banisadr
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29122176"
 ---
 # <a name="service-bus-diagnostic-logs"></a>Service Bus-Diagnoseprotokolle
 

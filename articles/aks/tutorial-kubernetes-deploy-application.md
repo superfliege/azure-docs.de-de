@@ -2,29 +2,30 @@
 title: Tutorial zu Kubernetes in Azure – Bereitstellen von Anwendungen
 description: AKS-Tutorial – Bereitstellen eine Anwendung
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/22/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: e992d7ca455ad4d95d0f10a94c6c9ce8055f8286
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: e0e349361afaac9aec816d7f5d158322d6f4e691
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100977"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Tutorial: Ausführen von Anwendungen in Azure Kubernetes Service (AKS)
 
-In diesem Tutorial – Teil 4 von 8 – wird eine Beispielanwendung in einem Kubernetes-Cluster bereitgestellt. Folgende Schritte werden ausgeführt:
+In diesem Tutorial – Teil 4 von 7 – wird eine Beispielanwendung in einem Kubernetes-Cluster bereitgestellt. Folgende Schritte werden ausgeführt:
 
 > [!div class="checklist"]
 > * Aktualisieren von Kubernetes-Manifestdateien
 > * Ausführen einer Anwendung in Kubernetes
 > * Testen der Anwendung
 
-In den nachfolgenden Tutorials wird diese Anwendung horizontal hochskaliert. Zudem wird Log Analytics für die Überwachung des Kubernetes-Clusters konfiguriert.
+In den nachfolgenden Tutorials wird dies Anwendung horizontal hochskaliert und aktualisiert.
 
 Dieses Tutorial setzt voraus, dass Sie grundlegend mit den Konzepten von Kubernetes vertraut sind. Ausführliche Informationen zu Kubernetes finden Sie in der [Kubernetes-Dokumentation][kubernetes-documentation].
 

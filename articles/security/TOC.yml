@@ -10,6 +10,8 @@
       href: azure-log-audit.md
     - name: Azure-Netzwerksicherheit
       href: azure-network-security.md
+    - name: Serverlose Azure-Plattformsicherheit
+      href: abstract-serverless-platform-security.md
     - name: Gewährleisten von Betriebssicherheit
       href: azure-operational-security.md
     - name: Governance (Kontrolle) in Azure
@@ -51,13 +53,34 @@
       href: ../storage/common/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json
 - name: Plattform und Infrastruktur
   items:
+    - name: Sicherheit der Infrastruktur
+      href: azure-security-infrastructure.md
+      items:
+        - name: Physische Sicherheit
+          href: azure-physical-security.md
+        - name: Verfügbarkeit
+          href: azure-infrastructure-availability.md
+        - name: Komponenten und Grenzen
+          href: azure-infrastructure-components.md
+        - name: Netzwerkarchitektur
+          href: azure-infrastructure-network.md
+        - name: Produktionsnetzwerk
+          href: azure-production-network.md
+        - name: SQL-Datenbank
+          href: azure-infrastructure-sql.md
+        - name: Vorgänge
+          href: azure-infrastructure-operations.md
+        - name: Überwachung
+          href: azure-infrastructure-monitoring.md
+        - name: Integrität
+          href: azure-infrastructure-integrity.md
+        - name: Datenschutz
+          href: azure-protection-of-customer-data.md
     - name: Microsoft Antimalware
       href: azure-security-antimalware.md
     - name: IaaS-Sicherheit
       href: security-virtual-machines-overview.md
       items:
-        - name: 'Bewährte Methoden: virtuelle Azure-Computer'
-          href: azure-security-best-practices-vms.md
         - name: 'Bewährte Methoden: IaaS-Workloads'
           href: azure-security-iaas.md
         - name: Azure Marketplace-Images
@@ -67,6 +90,8 @@
       items:
         - name: Auswählen der Azure AD-Authentifizierung
           href: azure-ad-choose-authn.md
+        - name: Checkliste für die Sicherheit
+          href: azure-ad-secure-steps.md
         - name: Bewährte Methoden
           href: azure-security-identity-management-best-practices.md
         - name: Erzwingen der mehrstufigen Authentifizierung für Abonnementadministratoren
@@ -139,18 +164,6 @@
           href: azure-operational-security-checklist.md
 - name: Governance und Einhaltung
   items:
-    - name: Finanzdienstleistungen für regulierte Workloads
-      href: ./blueprints/financial-services-regulated-workloads.md
-    - name: GDPR
-      items:
-        - name: Datenanalysen
-          href: ./blueprints/gdpr-analytics-overview.md
-        - name: Data Warehouse
-          href: ./blueprints/gdpr-datawarehouse-overview.md
-        - name: IaaS-Webanwendung
-          href: ./blueprints/gdpr-iaaswa-overview.md
-        - name: PaaS-Webanwendung
-          href: ./blueprints/gdpr-paaswa-overview.md
     - name: FedRAMP
       items:
         - name: Datenanalysen
@@ -161,42 +174,58 @@
           href: ./blueprints/fedramp-iaaswa-overview.md
         - name: PaaS-Webanwendung
           href: ./blueprints/fedramp-paaswa-overview.md
+    - name: FFIEC
+      items:
+        - name: Datenanalysen
+          href: ./blueprints/ffiec-analytics-overview.md
+        - name: Data Warehouse
+          href: ./blueprints/ffiec-dw-overview.md
+        - name: IaaS-Webanwendung
+          href: ./blueprints/ffiec-iaaswa-overview.md
+        - name: PaaS-Webanwendung
+          href: ./blueprints/ffiec-paaswa-overview.md
+    - name: GDPR
+      items:
+        - name: Datenanalysen
+          href: ./blueprints/gdpr-analytics-overview.md
+        - name: Data Warehouse
+          href: ./blueprints/gdpr-datawarehouse-overview.md
+        - name: IaaS-Webanwendung
+          href: ./blueprints/gdpr-iaaswa-overview.md
+        - name: PaaS-Webanwendung
+          href: ./blueprints/gdpr-paaswa-overview.md
+    - name: HIPAA/HITRUST
+      items:
+        - name: Integritätsdaten und KI
+          href: ./blueprints/azure-health.md
     - name: PCI-DSS
-      href: ./blueprints/payment-processing-blueprint.md
       items:
-        - name: Anforderungsübersicht
-          href: ./blueprints/pci-dss-requirements-overview.md
-        - name: 'Anforderung 1: Firewalls'
-          href: ./blueprints/pci-dss-requirement-1-firewall.md
-        - name: 'Anforderung 2: Kennwörter'
-          href: ./blueprints/pci-dss-requirement-2-password.md
-        - name: 'Anforderung 3: CHD'
-          href: ./blueprints/pci-dss-requirement-3-chd.md
-        - name: 'Anforderung 4: Verschlüsselung'
-          href: ./blueprints/pci-dss-requirement-4-encryption.md
-        - name: 'Anforderung 5: Schadsoftware'
-          href: ./blueprints/pci-dss-requirement-5-malware.md
-        - name: 'Anforderung 6: sichere Systeme'
-          href: ./blueprints/pci-dss-requirement-6-secure-system.md
-        - name: 'Anforderung 7: Zugriff'
-          href: ./blueprints/pci-dss-requirement-7-access.md
-        - name: 'Anforderung 8: Identität'
-          href: ./blueprints/pci-dss-requirement-8-identity.md
-        - name: 'Anforderung 9: physischer Zugriff'
-          href: ./blueprints/pci-dss-requirement-9-physical-access.md
-        - name: 'Anforderung 10: Überwachung'
-          href: ./blueprints/pci-dss-requirement-10-monitoring.md
-        - name: 'Anforderung 11: Testen'
-          href: ./blueprints/pci-dss-requirement-11-testing.md
-        - name: 'Anforderung 12: Richtlinie'
-          href: ./blueprints/pci-dss-requirement-12-policy.md
-    - name: UK-OFFICIAL
-      href: ./blueprints/uk-official-three-tier-applications-overview.md
+        - name: Datenanalysen
+          href: ./blueprints/pcidss-analytics-overview.md
+        - name: Data Warehouse
+          href: ./blueprints/pcidss-dw-overview.md
+        - name: IaaS-Webanwendung
+          href: ./blueprints/pcidss-iaaswa-overview.md
+        - name: PaaS-Webanwendung
+          href: ./blueprints/pcidss-paaswa-overview.md
+    - name: TIC
       items:
-        - name: Übersicht über Prinzipien
-          href: ./blueprints/uk-official-three-tier-applications-principles-overview.md
-    - name: HIPAA-/HITRUST-Gesundheitsdaten und KI
-      href: ./blueprints/azure-health.md
+        - name: Vertrauenswürdige Internetverbindung mit Azure
+          href: ./compliance/compliance-tic.md
+    - name: NHS (Vereinigtes Königreich)
+      items:
+        - name: Datenanalysen
+          href: ./blueprints/uknhs-analytics-overview.md
+        - name: Data Warehouse
+          href: ./blueprints/uknhs-datawarehouse-overview.md
+        - name: IaaS-Webanwendung
+          href: ./blueprints/uknhs-iaaswa-overview.md
+        - name: PaaS-Webanwendung
+          href: ./blueprints/uknhs-paaswa-overview.md
+    - name: UK OFFICIAL
+      items:
+        - name: IaaS-Webanwendung
+          href: ./blueprints/ukofficial-iaaswa-overview.md
 - name: Whitepaper
   href: security-white-papers.md
 - name: Azure-Sicherheitsdienste

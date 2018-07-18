@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 1ebbdb22698ec1eab76b6b6b504fe27a6f0b28bf
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 4da848b9d7765b11db67973226a056e73ca5cced
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824760"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Erste Schritte mit Azure Stream Analytics: Betrugserkennung in Echtzeit
 
@@ -131,12 +132,12 @@ Bevor Sie die TelcoGenerator-App starten, konfigurieren Sie sie so, dass Aufrufd
 1.  Öffnen Sie ein Befehlsfenster, und wechseln Sie zum Ordner, in dem sich die entzippte TelcoGenerator-App befindet.
 2.  Geben Sie den folgenden Befehl ein:
 
-        telcodatagen.exe 1000 .2 2
+        telcodatagen.exe 1000 0.2 2
 
     Die Parameter lauten wie folgt: 
 
     * Anzahl der KDS pro Stunde 
-    * Wahrscheinlichkeit eines SIM-Kartenbetrugs: Die Häufigkeit als Prozentsatz aller Anrufe, mit der die App einen betrügerischen Anruf simulieren soll. Der Wert „.2“ bedeutet, dass etwa 20 % der Anrufdatensätze betrügerische Anrufe simulieren.
+    * Wahrscheinlichkeit eines SIM-Kartenbetrugs: Die Häufigkeit als Prozentsatz aller Anrufe, mit der die App einen betrügerischen Anruf simulieren soll. Der Wert „0.2“ bedeutet, dass etwa 20 Prozent der Anrufdatensätze betrügerische Anrufe simulieren.
     * Dauer in Stunden: Die Anzahl der Stunden, in denen die App ausgeführt werden soll. Sie können die App auch jederzeit beenden, indem Sie in der Befehlszeile Strg+C drücken.
 
     Nach wenigen Sekunden werden auf dem Bildschirm in der App die Telefonanrufdatensätze angezeigt, während diese an den Event Hub gesendet werden.

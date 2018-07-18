@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 05/10/2018
+ms.date: 06/27/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 39708248160b029185b64ed927a453562e1003f2
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 5c2088ab39e32c049ce867698e84efba759c9a87
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447335"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Verfügbarmachen eines VM-Images in Azure Stack
 
@@ -53,7 +54,7 @@ Auf Images muss über einen Blobspeicher-URI verwiesen werden können. Bereiten 
 
    ![Festlegen des öffentlichen Blobzugriffs](./media/azure-stack-add-vm-image/image2.png)
 
-2. Melden Sie sich bei Azure Stack als Bediener an. Klicken Sie im Menü auf **Weitere Dienste** > **Ressourcenanbieter**. Klicken Sie anschließend auf **Compute** > **VM-Images** > **Hinzufügen**.
+2. Melden Sie sich bei Azure Stack als Bediener an. Wählen Sie im Menü die Option **Weitere Dienste**. Klicken Sie anschließend auf **Compute** > **VM-Images** > **Hinzufügen**.
 
 3. Geben Sie unter **Add a VM Image** (VM-Image hinzufügen) den Herausgeber, das Angebot, die SKU und die Version des VM-Images ein. Diese Namenssegmente verweisen in Resource Manager-Vorlagen auf das VM-Image. Wählen Sie den korrekten Wert für **osType** aus. Geben Sie unter **OS Disk Blob URI** (Blob-URI des Betriebssystemdatenträgers) den Blob-URI ein, an den das Image hochgeladen wurde. Klicken Sie anschließend auf **Erstellen**, um mit der Erstellung des VM-Images zu beginnen.
 
@@ -72,6 +73,9 @@ Auf Images muss über einen Blobspeicher-URI verwiesen werden können. Bereiten 
 3. Klicken Sie auf **Löschen**.
 
 ## <a name="add-a-vm-image-to-the-marketplace-by-using-powershell"></a>Hinzufügen eines VM-Images zum Marketplace mit PowerShell
+
+> [!Note]  
+> Wenn Sie ein Image hinzufügen, ist es nur für Azure Resource Manger-basierte Vorlagen und PowerShell-Bereitstellungen verfügbar. Wenn Sie ein Image für Ihre Benutzer als Marketplace-Element bereitstellen möchten, können Sie es mit den Schritten im Artikel [Erstellen und Veröffentlichen eines Marketplace-Elements](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-and-publish-marketplace-item) veröffentlichen.
 
 1. [Installieren Sie PowerShell für Azure Stack](azure-stack-powershell-install.md).  
 
@@ -108,7 +112,7 @@ Auf Images muss über einen Blobspeicher-URI verwiesen werden können. Bereiten 
     Beispiel: `https://storageaccount.blob.core.windows.net/vhds/Ubuntu1404.vhd`  
     Sie können einen Blobspeicher-URI für ein `osDisk`-Element angeben.  
 
-    Weitere Informationen zum Add-AzsPlatformimage-Cmdlet finden Sie in der [Dokumentation zum Azure Stack-Bedienermodul](https://docs.microsoft.com/powershell/module/) für Microsoft PowerShell.
+    Weitere Informationen finden Sie in der PowerShell-Referenz für das Cmdlet [Add-AzsPlatformimage](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage) und das Cmdlet [New-DataDiskObject](https://docs.microsoft.com/powershell/module/Azs.Compute.Admin/New-DataDiskObject).
 
 ## <a name="add-a-custom-vm-image-to-the-marketplace-by-using-powershell"></a>Hinzufügen eines benutzerdefinierten VM-Images zum Marketplace mit PowerShell
 
@@ -206,7 +210,7 @@ Wenn Sie das hochgeladene VM-Image nicht mehr benötigen, können Sie es im Mark
     Beispiel: `1.0.0`  
     Die von Benutzern bei der Bereitstellung des VM-Images verwendete Version des VM-Images. Diese Version wird im Format *\#.\#.\#* angegeben. Beispiel: **1.0.0**. Dieses Feld darf kein Leerzeichen und kein anderes Sonderzeichen enthalten.  
     
-    Weitere Informationen zum Remove-AzsPlatformImage-Cmdlet finden Sie in der [Dokumentation zum Azure Stack-Bedienermodul](https://docs.microsoft.com/powershell/module/) für Microsoft PowerShell.
+    Weitere Informationen zum Cmdlet „Remove-AzsPlatformImage“ finden Sie in der [Dokumentation zum Azure Stack-Bedienermodul](https://docs.microsoft.com/powershell/module/) für Microsoft PowerShell.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

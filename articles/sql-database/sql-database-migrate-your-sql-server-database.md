@@ -2,22 +2,23 @@
 title: Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank mithilfe von DMA | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie mithilfe von DMA eine SQL Server-Datenbank zu Azure SQL-Datenbank migrieren.
 services: sql-database
-author: CarlRabeler
+author: sachinpMSFT
 manager: craigg
 ms.service: sql-database
 ms.custom: mvc,migrate
 ms.topic: tutorial
-ms.date: 04/10/2018
+ms.date: 07/02/2018
 ms.author: carlrab
-ms.openlocfilehash: e714667183704670807fd2f62767b75f62978a38
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: ceab627d98149774a3eb767ee56d688f9c11ff99
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346840"
 ---
 # <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dma"></a>Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank mithilfe von DMA
 
-Das Migrieren Ihrer SQL Server-Datenbank zu einer einfachen Datenbank in Azure SQL-Datenbank ist so einfach, wie eine leere SQL-­Datenbank in Azure zu erstellen und sie dann mithilfe des [Datenmigrations-Assistenten ](https://www.microsoft.com/download/details.aspx?id=53595) (Data Migration Assistant, DMA) in Azure zu importieren. Weitere Migrationsoptionen finden Sie unter [Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank](sql-database-cloud-migrate.md).
+Wenn Sie Ihre SQL Server-Datenbank in eine einzelne Datenbank von Azure SQL-Datenbank verschieben möchten, müssen Sie lediglich eine leere SQL-­Datenbank in Azure erstellen und sie anschließend mithilfe des [Datenmigrations-Assistenten](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) in Azure importieren. Weitere Migrationsoptionen finden Sie unter [Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank](sql-database-cloud-migrate.md).
 
 > [!IMPORTANT]
 > Informationen zum Migrieren zu einer verwalteten Azure SQL-Datenbank-Instanz finden Sie unter [Migration einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-migrate.md).
@@ -44,11 +45,11 @@ Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Vorauss
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
-## <a name="create-a-blank-sql-database"></a>Erstellen einer leeren SQL-­Datenbank
+## <a name="create-a-blank-sql-database"></a>Erstellen einer leeren SQL-Datenbank
 
 Eine Azure SQL-Datenbank wird mit einer definierten Gruppe von [Compute- und Speicherressourcen](sql-database-service-tiers-dtu.md) erstellt. Die Datenbank wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) und auf einem [logischen Azure SQL-Datenbankserver](sql-database-features.md) erstellt. 
 
-Führen Sie die folgenden Schritte aus, um eine leere SQL-­Datenbank zu erstellen. 
+Führen Sie die folgenden Schritte aus, um eine leere SQL-­Datenbank zu erstellen: 
 
 1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
 
@@ -87,10 +88,7 @@ Führen Sie die folgenden Schritte aus, um eine leere SQL-­Datenbank zu erstell
 8. Akzeptieren Sie die Nutzungsbedingungen für die Vorschauversion, um die Option **Add-On-Speicher** zu verwenden. 
 
    > [!IMPORTANT]
-   > - Speichergrößen, die den integrierten Speicher überschreiten, befinden sich in der Vorschauphase und werden gegen Aufpreis bereitgestellt. Weitere Informationen finden Sie unter [SQL-Datenbank Preise](https://azure.microsoft.com/pricing/details/sql-database/). 
-   >
-   > - Im Premium-Tarif ist derzeit eine Speicherkapazität von mehr als 1 TB in folgenden Regionen verfügbar: „Brasilien, Süden“, „Kanada, Mitte“, „Kanada, Osten“, „USA, Mitte“, „Frankreich, Mitte“, „Deutschland, Mitte“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „USA, Osten 2“, „USA, Westen“, „USA Gov Virginia“ und „Europa, Westen“. Siehe [Aktuelle Einschränkungen für P11–P15](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
-   > 
+   > Mehr als 1 TB Speicher im Premium-Tarif ist derzeit in allen Regionen verfügbar, mit Ausnahme von: „USA, Westen-Mitte“, „China, Osten“, „US DoD, Mitte“, „USGov Iowa“, „Deutschland, Mitte“, „US DoD, Osten“, „US Gov, Südwesten“, „Deutschland, Nordosten“, „China, Norden“. In anderen Regionen ist der Speicher im Premium-Tarif auf 1 TB begrenzt. Siehe [Aktuelle Einschränkungen für P11–P15]( sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 9. Klicken Sie auf **Übernehmen**, wenn Sie die Dienstebene, die Anzahl von DTUs und die Menge an Speicherplatz ausgewählt haben.  
 

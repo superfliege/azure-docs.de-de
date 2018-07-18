@@ -8,13 +8,14 @@ manager: carmonm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 871c9e8404438f966cab2fc5ab782e254295569e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 011c9acb5d34e15f65b64d59867e7501f0720a08
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920116"
 ---
 # <a name="about-recovery-plans"></a>Informationen zu Wiederherstellungsplänen
 
@@ -67,10 +68,10 @@ Das Wiederherstellen von großen Anwendungen kann eine komplexe Aufgabe sein. Ma
 * **Aufgaben auf dem virtuellen Azure-Computer nach dem Failover**: Wenn Sie ein Failover zu Azure ausführen, müssen Sie normalerweise Aktionen ausführen, damit Sie nach dem Failover eine Verbindung mit dem virtuellen Computer herstellen können. Beispiel:  
     * Erstellen einer öffentlichen IP-Adresse auf dem virtuellen Azure-Computer
     * Zuweisen einer Netzwerksicherheitsgruppe zum Netzwerkadapter des virtuellen Azure-Computers
-    * Hinzufügen eines Lastenausgleichs zu einer Verfügbarkeitsgruppe
+    * Hinzufügen eines Lastenausgleichs zu einer Verfügbarkeitsgruppe.
 * **Aufgaben innerhalb des virtuellen Computers nach dem Failover**: Mit diesen Aufgaben wird in der Regel die auf dem Computer ausgeführte App neu konfiguriert, damit sie in der neuen Umgebung weiterhin ordnungsgemäß funktioniert. Beispiel: 
     * Ändern der Datenbank-Verbindungszeichenfolge innerhalb des Computers
-    * Ändern der Webserverkonfiguration oder -regeln
+    * Ändern der Webserverkonfiguration oder -regeln.
 
 
 ## <a name="test-failover"></a>Testfailover

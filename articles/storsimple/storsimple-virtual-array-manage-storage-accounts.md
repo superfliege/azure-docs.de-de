@@ -1,11 +1,11 @@
 ---
 title: Verwalten von StorSimple Virtual Array-Speicherkonto-Anmeldeinformationen | Microsoft-Dokumentation
-description: "Beschreibt, wie Sie die Seite „Konfigurieren“ des StorSimple-Geräte-Managers zum Hinzufügen, Bearbeiten und Löschen von Speicherkonten verwenden, und wie Sie die Sicherheitsschlüssel für die Anmeldeinformationen eines Speicherkontos rotieren, das StorSimple Virtual Array zugeordnet ist."
+description: Beschreibt, wie Sie die Seite „Konfigurieren“ des StorSimple-Geräte-Managers zum Hinzufügen, Bearbeiten und Löschen von Speicherkonten verwenden, und wie Sie die Sicherheitsschlüssel für die Anmeldeinformationen eines Speicherkontos rotieren, das StorSimple Virtual Array zugeordnet ist.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 234bf8bb-d5fe-40be-9d25-721d7482bc3b
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23111708"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Managers zum Verwalten der Anmeldeinformationen eines Speicherkontos für StorSimple Virtual Array
 

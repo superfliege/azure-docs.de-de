@@ -1,29 +1,28 @@
 ---
-title: Verwalten von Azure Data Lake Analytics mithilfe von Python | Microsoft-Dokumentation
-description: 'Es wird beschrieben, wie Sie Python zum Erstellen eines Data Lake Store-Kontos und Übermitteln von Aufträgen verwenden. '
+title: Verwalten von Azure Data Lake Analytics mithilfe von Python
+description: In diesem Artikel wird beschrieben, wie Sie Python zum Verwalten von Data Lake Analytics-Konten, -Datenquellen, -Benutzern und -Aufträgen verwenden.
 services: data-lake-analytics
-documentationcenter: ''
-author: matt1883
-manager: jhubbard
-editor: cgronlun
-ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/18/2017
+author: matt1883
 ms.author: saveenr
-ms.custom: devcenter
-ms.openlocfilehash: 0182a14979550c880904ec829f6b59dee016cad2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+manager: kfile
+editor: jasonwhowell
+ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
+ms.topic: conceptual
+ms.date: 06/08/2018
+ms.openlocfilehash: 2f3912069b54b3ad761493f02336d8d58866f53a
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261459"
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Verwalten von Azure Data Lake Analytics mithilfe von Python
+[!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-## <a name="python-versions"></a>Python-Versionen
+In diesem Artikel wird beschrieben, wie Sie Azure Data Lake Analytics-Konten, -Datenquellen, -Benutzer und -Aufträge mit Python verwalten.
+
+## <a name="supported-python-versions"></a>Unterstützte Python-Versionen
 
 * Verwenden Sie eine 64-Bit-Version von Python.
 * Sie können die Python-Standarddistribution unter **[Python.org downloads](https://www.python.org/downloads/)** verwenden. 
@@ -35,9 +34,9 @@ ms.lasthandoff: 04/05/2018
 Installieren Sie die folgenden Module:
 
 * Das Modul **azure-mgmt-resource** enthält andere Azure-Module, z.B. für Active Directory.
-* Das Modul **azure-mgmt-datalake-store** beinhaltet Kontoverwaltungsvorgänge für Azure Data Lake Store.
 * Das Modul **azure-datalake-store** umfasst die Vorgänge für das Azure Data Lake Store-Dateisystem. 
-* Das Modul **azure-datalake-analytics** umfasst die Vorgänge für Azure Data Lake Analytics. 
+* Das Modul **azure-mgmt-datalake-store** beinhaltet Kontoverwaltungsvorgänge für Azure Data Lake Store.
+* Das Modul **azure-mgmt-datalake-analytics** beinhaltet die Vorgänge für Azure Data Lake Analytics. 
 
 Vergewissern Sie sich zunächst, dass die aktuelle Version von `pip` verwendet wird, indem Sie folgenden Befehl ausführen:
 

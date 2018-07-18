@@ -2,25 +2,22 @@
 title: Wie werden Abfragen mit SQL in Azure Cosmos DB durchgeführt? | Microsoft-Dokumentation
 description: Erlernen der Durchführung von Abfragen mit SQL in Azure Cosmos DB
 services: cosmos-db
-documentationcenter: ''
 author: rafats
 manager: kfile
 editor: ''
 tags: ''
-ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: tutorial-develop, mvc
 ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: ''
 ms.date: 05/10/2017
 ms.author: rafats
-ms.openlocfilehash: 131296d5219dffb2c4d7602b61b3c69b390e211e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5f5a98f0f28eba499b7ea3fa76944c21cf8bf8db
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36958867"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Tutorial: Abfragen von Azure Cosmos BD mithilfe der SQL-API
 
@@ -125,14 +122,10 @@ Die nächste Abfrage gibt alle Vornamen von Kindern der Familie zurück, deren �
     FROM Families f 
     JOIN c IN f.children 
     WHERE f.id = 'WakefieldFamily'
-    ORDER BY f.children.grade ASC
 
 **Ergebnisse**
 
-    [
-      { "givenName": "Jesse" }, 
-      { "givenName": "Lisa"}
-    ]
+[ { "givenName": "Jesse" }, { "givenName": "Lisa" } ]
 
 
 ## <a name="next-steps"></a>Nächste Schritte

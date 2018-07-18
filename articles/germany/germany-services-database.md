@@ -1,6 +1,6 @@
 ---
 title: Datenbankdienste von Azure Deutschland | Microsoft-Dokumentation
-description: "Vergleich der Datenbankdienste für Azure Deutschland"
+description: Vergleich der Datenbankdienste für Azure Deutschland
 services: germany
 cloud: na
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22647068"
 ---
 # <a name="azure-germany-database-services"></a>Datenbankdienste von Azure Deutschland
 ## <a name="sql-database"></a>SQL-Datenbank

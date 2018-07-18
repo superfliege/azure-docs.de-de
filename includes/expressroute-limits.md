@@ -5,14 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 03/22/2018
+ms.date: 06/12/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 36f48e4cc321b534c0fd2e896bf3f43623c540bb
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6e0d2b881e00acc6b1fccd3196187309fc36cba2
+ms.sourcegitcommit: 8659efc885be98f42edae0b516ca576e38940c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/13/2018
+ms.locfileid: "35568142"
 ---
 #### <a name="expressroute-limits"></a>Einschränkungen für ExpressRoute
 Für ExpressRoute-Ressourcen gelten pro Abonnement die folgenden Einschränkungen.
@@ -27,6 +28,7 @@ Für ExpressRoute-Ressourcen gelten pro Abonnement die folgenden Einschränkunge
 | Maximale Anzahl von Routen für Public Peering in Azure mit ExpressRoute-Premium-Add-on |200 |
 | Maximale Anzahl von Routen für Microsoft-Peering in Azure mit ExpressRoute-Standard |200 |
 | Maximale Anzahl von Routen für Microsoft-Peering in Azure mit ExpressRoute-Premium-Add-on |200 |
+| Maximale Anzahl von ExpressRoute-Verbindungen, die mit dem gleichen virtuellen Netzwerk an unterschiedlichen Peeringstandorten verknüpft sind |4 |
 | Anzahl der pro ExpressRoute-Leitung zulässigen virtuellen Netzwerkverbindungen |siehe Tabelle unten |
 
 #### <a name="number-of-virtual-networks-per-expressroute-circuit"></a>Anzahl der virtuellen Netzwerke pro ExpressRoute-Verbindung

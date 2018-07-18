@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 6f755754097336fc97678940ea1fa0aa28315fab
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: f2d0b009c4451a4108222ac7aa7954ba6dd86699
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868603"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869006"
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -154,6 +154,8 @@ Benutzerdefinierte Sicherheitsfragen sind nicht für verschiedene Gebietsschemas
 
 Die Länge von benutzerdefinierten Sicherheitsfragen ist auf 200 Zeichen begrenzt.
 
+Wenn Sie das Portal für die Kennwortzurücksetzung und die Fragen in einer anderen Sprache anzeigen möchten, fügen Sie am Ende der URL für die Kennwortzurücksetzung „?mkt=<Locale>“ hinzu, wie im folgenden Beispiel für Spanisch zu sehen: [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us).
+
 ### <a name="security-question-requirements"></a>Anforderungen an Sicherheitsfragen
 
 * Die Mindestanzahl von Zeichen für Antworten ist drei Zeichen.
@@ -233,7 +235,7 @@ Dieses Steuerelement legt fest, ob Benutzer, die das Kennwortzurücksetzungsport
 Das Zurücksetzen und Ändern von Kennwörtern wird von allen B2B-Konfigurationen (Business-to-Business) uneingeschränkt unterstützt. Das Zurücksetzen von B2B-Benutzerkennwörtern wird in den folgenden drei Fällen unterstützt:
 
    * **Benutzer aus einer Partnerorganisation mit einem vorhandenen Azure AD-Mandanten:** Falls die Organisation, mit der Sie eine Partnerschaft eingegangen sind, über einen Azure AD-Mandanten verfügt, *respektieren wir die in diesem Mandanten aktivierten Kennwortzurücksetzungsrichtlinien*. Damit die Kennwortzurücksetzung funktioniert, muss die Partnerorganisation nur sicherstellen, dass Azure AD SSPR aktiviert ist. Für Office 365-Kunden fallen keine zusätzlichen Gebühren an, und Azure AD SSPR kann anhand der Schritte unter [Schnelle Bereitstellung der Self-Service-Kennwortzurücksetzung in Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords) aktiviert werden.
-   * **Benutzer, die sich mit der Self-Service-Registrierung registriert haben:** Wenn die Organisation, mit der Sie eine Partnerschaft eingegangen sind, das [Self-Service-Registrierungsfeature](../active-directory-self-service-signup.md) verwendet, um auf einen Mandanten zuzugreifen, steht eine Zurücksetzung des Kennworts unter Verwendung der E-Mail-Adresse zur Verfügung, mit der die Registrierung erfolgt ist.
+   * **Benutzer, die sich mit der Self-Service-Registrierung registriert haben:** Wenn die Organisation, mit der Sie eine Partnerschaft eingegangen sind, das [Self-Service-Registrierungsfeature](../users-groups-roles/directory-self-service-signup.md) verwendet, um auf einen Mandanten zuzugreifen, steht eine Zurücksetzung des Kennworts unter Verwendung der E-Mail-Adresse zur Verfügung, mit der die Registrierung erfolgt ist.
    * **B2B-Benutzer:** Alle neuen B2B-Benutzer, die mithilfe der neuen [Azure AD-B2B-Funktionen](../active-directory-b2b-what-is-azure-ad-b2b.md) erstellt werden, können ihre Kennwörter unter Verwendung der E-Mail-Adresse zurücksetzen, mit der sie sich im Rahmen des Einladungsprozesses registriert haben.
 
 Um dieses Szenario zu testen, wechseln Sie mit einem der Partnerbenutzer zu http://passwordreset.microsoftonline.com. Sofern eine alternative E-Mail-Adresse oder eine E-Mail-Adresse für die Authentifizierung definiert ist, funktioniert die Kennwortzurücksetzung wie erwartet.

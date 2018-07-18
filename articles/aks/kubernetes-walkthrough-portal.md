@@ -2,18 +2,19 @@
 title: Schnellstart – Schnellstart für Azure Kubernetes-Cluster im Portal
 description: Hier lernen Sie schnell, wie Sie einen Kubernetes-Cluster für Linux-Container in AKS mit dem Azure-Portal erstellen.
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 04/29/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: cd17d2732bf44e3f4b46878d6a416579b9e2f970
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: aa8a1cccd4eeb45e829cd8df73f128dd6cca416d
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344473"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Schnellstart: Bereitstellen eines Azure Kubernetes Service-Clusters (AKS)
 
@@ -27,11 +28,9 @@ Für diese Schnellstartanleitung werden Grundkenntnisse in Bezug auf die Kuberne
 
 Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
-
-
 ## <a name="create-aks-cluster"></a>Erstellen eines ACS-Clusters
 
-Wählen Sie **Ressource erstellen**, suchen Sie nach **Kubernetes**, und klicken Sie dann auf **Azure Kubernetes Service (Vorschauversion)** > **Erstellen**.
+Klicken Sie auf **Ressource erstellen**, und wählen Sie dann die Option **Kubernetes-Dienst**.
 
 Führen Sie unter jeder Überschrift des Formulars zur Erstellung des AKS-Clusters die folgenden Schritte aus.
 
@@ -163,10 +162,10 @@ spec:
     app: azure-vote-front
 ```
 
-Führen Sie die Anwendung mithilfe des Befehls [kubectl create][kubectl-create] aus.
+Führen Sie die Anwendung mithilfe des Befehls [kubectl apply][kubectl-apply] aus.
 
 ```azurecli-interactive
-kubectl create -f azure-vote.yaml
+kubectl apply -f azure-vote.yaml
 ```
 
 Ausgabe:
@@ -244,7 +243,7 @@ Weitere Informationen zu Azure Container Service sowie ein vollständiges Beispi
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git
 [azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
-[kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
 [kubernetes-deployment]: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
@@ -254,7 +253,7 @@ Weitere Informationen zu Azure Container Service sowie ein vollständiges Beispi
 <!-- LINKS - internal -->
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az_aks_get_credentials
 [az-aks-delete]: /cli/azure/aks#az-aks-delete
-[aks-monitor]: ../log-analytics/log-analytics-containers.md
+[aks-monitor]: ../monitoring/monitoring-container-health.md
 [aks-network]: ./networking-overview.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [http-routing]: ./http-application-routing.md

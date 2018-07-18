@@ -1,13 +1,13 @@
 ---
-title: "Azure Virtual Machines-Architektur für Hochverfügbarkeit und Szenarien für SAP NetWeaver | Microsoft-Dokumentation"
-description: "Architektur und Szenarien für die Hochverfügbarkeit von SAP NetWeaver auf Azure Virtual Machines"
+title: Azure Virtual Machines-Architektur für Hochverfügbarkeit und Szenarien für SAP NetWeaver | Microsoft-Dokumentation
+description: Architektur und Szenarien für die Hochverfügbarkeit von SAP NetWeaver auf Azure Virtual Machines
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 887caaec-02ba-4711-bd4d-204a7d16b32b
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 31f3765d807882e65a247819a5999c191f9e7ac5
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 6612e3fb5368d8d5a4f59c0e5eefc8ef24c04aec
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656923"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Architektur und Szenarien für die Hochverfügbarkeit von SAP NetWeaver
 
@@ -146,7 +147,7 @@ ms.lasthandoff: 11/15/2017
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID high-availability configuration)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP-Multi-SID-Konfiguration mit Hochverfügbarkeit)
 
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -248,7 +249,7 @@ Hochverfügbarkeit von SAP in Azure kann in drei Typen unterteilt werden:
 
 * **Hochverfügbarkeit von SAP-Anwendungen:** 
 
-    Für eine vollständige Hochverfügbarkeit von SAP-Systemen müssen Sie alle kritischen SAP-Systemkomponenten schützen. Beispiel:
+    Für eine vollständige Hochverfügbarkeit von SAP-Systemen müssen Sie alle kritischen SAP-Systemkomponenten schützen. Beispiel: 
     * Redundante SAP-Anwendungsserver
     * Einmalig auftretende Komponenten. Beispiel: eine Single Point of Failure-Komponente (SPOF) wie z.B. eine SAP ASCS/SCS-Instanz oder ein Datenbank-Managementsystem (DBMS).
 
@@ -264,9 +265,9 @@ Aktuell gibt es eine SLA mit 99,9% für einen einzelnen virtuellen Computer mit 
 
 Als Grundlage für die Berechnung werden 30 Tage pro Monat bzw. 43.200 Minuten verwendet. Eine Ausfallzeit von 0,05 % entspricht beispielsweise 21,6 Minuten. Wie üblich wird die Verfügbarkeit der verschiedenen Dienste auf folgende Weise berechnet:
 
-(Verfügbarkeitsdienst Nr. 1/100) * (Verfügbarkeitsdienst Nr. 2/100) * (Verfügbarkeitsdienst Nr. 3/100) \*…
+(Verfügbarkeitsdienst Nr. 1/100) × (Verfügbarkeitsdienst Nr. 2/100) × (Verfügbarkeitsdienst Nr. 3/100) \*…
 
-Beispiel:
+Beispiel: 
 
 (99,95/100) * (99,9/100) * (99,9/100) = 0,9975 bzw. eine allgemeine Verfügbarkeit von 99,75 Prozent.
 
@@ -314,13 +315,13 @@ SAP unterstützt derzeit nur Managed Disks Premium. Weitere Informationen finden
 
 ## <a name="utilizing-azure-infrastructure-high-availability-to-achieve-higher-availability-of-sap-applications"></a>Verwenden der Hochverfügbarkeit des virtuellen Computers der Azure-Infrastruktur für eine *höhere Verfügbarkeit* von SAP-Anwendungen
 
-Wenn Sie keine Funktionen wie WSFC oder Pacemaker unter Linux (derzeit nur für SUSE Linux Enterprise Server [SLES] 12 und höher unterstützt) verwenden möchten, wird ein Neustart der Azure-VM angewendet. Dadurch werden SAP-Systeme vor geplanten und ungeplanten Ausfallzeiten der physischen Azure-Serverinfrastruktur und der allgemeinen zugrunde liegenden Azure-Plattform geschützt.
+Wenn Sie keine Funktionen wie WSFC oder Pacemaker unter Linux (derzeit nur für SUSE Linux Enterprise Server [SLES] 12 und höher unterstützt) verwenden möchten, wird ein Neustart der Azure-VM angewendet. Auf diese Weise werden SAP-Systeme vor geplanten und ungeplanten Ausfallzeiten der physischen Azure-Serverinfrastruktur und der insgesamt zugrunde liegenden Azure-Plattform geschützt.
 
 Weitere Informationen zu diesem Ansatz finden Sie unter [Verwenden der Neustartfunktion von virtuellen Computern der Azure-Infrastruktur für eine höhere Verfügbarkeit des SAP-Systems][sap-higher-availability].
 
 ## <a name="baed0eb3-c662-4405-b114-24c10a62954e"></a> Hochverfügbarkeit von SAP-Anwendungen in Azure IaaS
 
-Für eine vollständige Hochverfügbarkeit von SAP-Systemen müssen Sie alle kritischen SAP-Systemkomponenten schützen. Beispiel:
+Für eine vollständige Hochverfügbarkeit von SAP-Systemen müssen Sie alle kritischen SAP-Systemkomponenten schützen. Beispiel: 
   * Redundante SAP-Anwendungsserver
   * Einmalig auftretende Komponenten. Beispiel: eine Single Point of Failure-Komponente (SPOF) wie z.B. eine SAP ASCS/SCS-Instanz oder ein Datenbank-Managementsystem (DBMS).
 

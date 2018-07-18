@@ -2,23 +2,22 @@
 title: Verwenden von b2clogin.com | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die Verwendung von b2clogin.com statt login.microsoftonline.com.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/29/2018
 ms.author: davidmu
-ms.openlocfilehash: d2737e995b91caa2dcc55027baa2b552e64af23e
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.component: B2C
+ms.openlocfilehash: c41c02acaeffa170d55f3c59f34a4b1ecae1c523
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33660420"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712452"
 ---
-#<a name="using-b2clogincom"></a>Verwenden von b2clogin.com
+# <a name="using-b2clogincom"></a>Verwenden von b2clogin.com
 
 >[!IMPORTANT]
 >Dieses Feature befindet sich in der Phase der öffentlichen Vorschau. 

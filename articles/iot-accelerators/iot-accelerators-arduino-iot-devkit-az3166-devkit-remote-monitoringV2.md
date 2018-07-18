@@ -1,31 +1,27 @@
 ---
-title: IoT DevKit in der Cloud – Verbinden von IoT DevKit AZ3166 mit Azure IoT Suite Remote Monitoring v2 | Microsoft-Dokumentation
-description: In diesem Tutorial erfahren Sie, wie der Status von Sensoren auf IoT DevKit AZ3166 zur Überwachung und Visualisierung an Remote Monitoring v2 von Azure IoT Suite gesendet wird.
-services: iot-hub
-documentationcenter: ''
+title: 'IoT DevKit in der Cloud: Verbinden von IoT DevKit AZ3166 mit dem Solution Accelerator für die IoT-Remoteüberwachung | Microsoft Docs'
+description: In diesem Tutorial erfahren Sie, wie der Status von Sensoren auf IoT DevKit AZ3166 zur Überwachung und Visualisierung an den Solution Accelerator für die IoT-Remoteüberwachung gesendet wird.
 author: isabelcabezasm
 manager: ''
-tags: ''
-keywords: ''
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.devlang: c
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: isacabe
-ms.openlocfilehash: 667e51acd5ac1367e185fb9bf9a7949a13e061af
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: e900b952ab9bb2054b9e4174670894027cdd2618
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969451"
 ---
-# <a name="connect-mxchip-iot-devkit-az3166-to-azure-iot-suite-for-remote-monitoring-v2"></a>Verbinden von MXChip IoT DevKit AZ3166 mit Azure IoT Suite Remote Monitoring v2
+# <a name="connect-mxchip-iot-devkit-az3166-to-the-iot-remote-monitoring-solution-accelerator"></a>Verbinden von MXChip IoT DevKit AZ3166 mit dem Solution Accelerator für die IoT-Remoteüberwachung
 
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-In diesem Tutorial erfahren Sie, wie Sie eine Beispiel-App auf dem DevKit ausführen, um Sensordaten an die Azure IoT Suite zu senden.
+In diesem Tutorial erfahren Sie, wie Sie eine Beispiel-App auf Ihrem DevKit ausführen, um Sensordaten an Ihren Solution Accelerator zu senden.
 
 Das [MXChip IoT DevKit](https://aka.ms/iot-devkit) ist ein mit Arduino kompatibles All-in-One-Board mit umfangreichen Peripheriegeräten und Sensoren. Sie können dafür mithilfe der [Visual Studio Code-Erweiterung für Arduino](https://aka.ms/arduino) entwickeln. Im Lieferumfang enthalten ist ein wachsender [Projektkatalog](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/), der Sie durch das Erstellen eines Prototyps von Lösungen für das Internet der Dinge (Internet of Things, IoT) führt, die Microsoft Azure-Dienste nutzen.
 
@@ -114,13 +110,13 @@ Jetzt können Sie Ihr neues physisches Gerät im VS Code-Abschnitt „Azure IoT 
 
 ## <a name="test-the-project"></a>Testen des Projekts
 
-Beim Ausführen der Beispiel-App sendet DevKit Sensordaten über Wi-Fi an die Azure IoT Suite. Gehen Sie wie folgt vor, um das Ergebnis anzuzeigen:
+Beim Ausführen der Beispiel-App sendet DevKit Sensordaten über Wi-Fi an Ihre IoT Solution Accelerators. Gehen Sie wie folgt vor, um das Ergebnis anzuzeigen:
 
-1. Wechseln Sie zur Azure IoT Suite, und klicken Sie auf **DASHBOARD**.
+1. Wechseln Sie zu Ihrem IoT Solution Accelerator, und klicken Sie auf **DASHBOARD**.
 
-2. In der Azure IoT Suite-Lösungskonsole wird der Status des DevKit-Sensors angezeigt. 
+2. In der IoT Solution Accelerator-Konsole wird der Status Ihres DevKit-Sensors angezeigt. 
 
-![Sensordaten in Azure IoT Suite](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-dashboard.png)
+![Sensordaten in IoT Solution Accelerators](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-dashboard.png)
 
 Wenn Sie auf den Sensornamen (AZ3166) klicken, öffnet sich auf der rechten Seite des Dashboards eine Registerkarte, in der Sie das Diagramm mit den MX-Chipsensoren in Echtzeit sehen können.
 
@@ -158,7 +154,7 @@ Wenn Probleme auftreten, lesen Sie die [häufig gestellten Fragen](https://micro
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun erfahren haben, wie Sie ein DevKit-Gerät mit der Azure IoT Suite verbinden und die Sensordaten darstellen, werden die folgenden nächsten Schritte empfohlen:
+Nachdem Sie nun erfahren haben, wie Sie ein DevKit-Gerät mit Ihren IoT Solution Accelerators verbinden und die Sensordaten visualisieren, werden die folgenden nächsten Schritte empfohlen:
 
-* [Übersicht über Azure IoT Suite](https://docs.microsoft.com/azure/iot-suite/)
-* [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Microsoft IoT Central-Anwendung](https://docs.microsoft.com/en-us/microsoft-iot-central/howto-connect-devkit)
+* [Übersicht über IoT Solution Accelerators](https://docs.microsoft.com/azure/iot-suite/)
+* [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Microsoft IoT Central-Anwendung](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

@@ -1,12 +1,12 @@
 ---
-title: "Azure CLI-Beispielskript – Rotieren von Speicherkonto-Zugriffsschlüsseln | Microsoft-Dokumentation"
-description: "Erstellen Sie ein Azure Storage-Konto, und rufen Sie dann die Zugriffsschlüssel für das Konto ab, und rotieren Sie sie."
+title: Azure CLI-Beispielskript – Rotieren von Speicherkonto-Zugriffsschlüsseln | Microsoft-Dokumentation
+description: Erstellen Sie ein Azure Storage-Konto, und rufen Sie dann die Zugriffsschlüssel für das Konto ab, und rotieren Sie sie.
 services: storage
 documentationcenter: na
 author: tamram
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
 ms.workload: storage
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29847810"
 ---
 # <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>Erstellen eines Speicherkontos und Rotieren der Zugriffsschlüssel für das Konto
 

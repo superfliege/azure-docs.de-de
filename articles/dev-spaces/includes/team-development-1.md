@@ -10,19 +10,19 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 404e238e51b7ac8b799f413965560a8d42ccc5df
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2a6118bd23c6e8319ad4fa26a266948a4dad1b9f
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34371115"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36939157"
 ---
 Bisher haben Sie den Code Ihrer Anwendung so ausgeführt, als wären Sie der einzige Entwickler, der an der App arbeitet. In diesem Abschnitt erfahren Sie, wie Azure Dev Spaces die Teamentwicklung optimiert:
-* Ermöglichen Sie einem Team von Entwicklern, in der gleichen Umgebungsentwicklung zu arbeiten.
+* Ein Team von Entwicklern kann in der gleichen Umgebung arbeiten und je nach Bedarf einen gemeinsamen oder einen getrennten Entwicklungsbereich nutzen.
 * Jeder Entwickler kann seinen Code isoliert und ohne Beeinträchtigung der anderen Entwickler durchlaufen.
 * Testen Sie Ihren Code vollständig, bevor Sie ihn committen, ohne Modelle erstellen oder Abhängigkeiten simulieren zu müssen.
 
-## <a name="challenges-with-developing-microservices"></a>Herausforderungen bei der Entwicklung von Microservices
+### <a name="challenges-with-developing-microservices"></a>Herausforderungen bei der Entwicklung von Microservices
 Ihre Beispielanwendung ist im Moment nicht sehr komplex. Bei der realen Entwicklung stoßen Sie jedoch bald auf Herausforderungen, wenn Sie mehr Dienste hinzufügen und das Entwicklungsteam wächst.
 
 Stellen Sie sich vor, Sie arbeiten an einem Dienst, der mit Dutzenden anderen Diensten interagiert.
@@ -30,16 +30,16 @@ Stellen Sie sich vor, Sie arbeiten an einem Dienst, der mit Dutzenden anderen Di
 - Die lokale Ausführung aller Komponenten für die Entwicklung kann daher unrealistisch werden. Ihr Entwicklungscomputer verfügt unter Umständen nicht über ausreichend Ressourcen zum Ausführen der gesamten App. Oder Ihre App verwendet vielleicht Endpunkte, die öffentlich zugänglich sein müssen (beispielsweise antwortet Ihre App auf einen Webhook von einer SaaS-App).
 
 - Sie können versuchen, nur die Dienste auszuführen, auf die Sie angewiesen sind. Das bedeutet jedoch, dass Sie alle Abhängigkeiten kennen müssen (beispielsweise Abhängigkeiten von Abhängigkeiten). Oder es ist nicht ganz einfach, Abhängigkeiten zu erstellen und auszuführen, da Sie an diesen nicht selbst gearbeitet haben.
-- Einige Entwickler verlegen sich darauf, viele ihrer Dienstabhängigkeiten zu simulieren. Diese Vorgehensweise kann manchmal hilfreich sein. Für die Verwaltung dieser Simulationen kann jedoch bald ein gesonderter Entwicklungsaufwand entstehen. Darüber hinaus führt dieser Ansatz dazu, dass Ihre Entwicklungsumgebung sich wesentlich von der Produktionsumgebung unterscheidet, und es können sich kleine Fehler einschleichen.
+- Einige Entwickler verlegen sich darauf, viele ihrer Dienstabhängigkeiten zu simulieren. Diese Vorgehensweise kann manchmal hilfreich sein. Für die Verwaltung dieser Simulationen kann jedoch bald ein gesonderter Entwicklungsaufwand entstehen. Darüber hinaus führt dieser Ansatz dazu, dass Ihr Entwicklungsbereich sich wesentlich von der Produktionsumgebung unterscheidet, und es können sich kleine Fehler einschleichen.
 - End-to-End-Tests können daher schwierig werden. Integrationstests sind nur nach einem Commit realistisch. Das bedeutet, dass Ihnen Probleme erst später im Entwicklungszyklus auffallen.
 
 ![](../media/common/microservices-challenges.png)
 
 
-## <a name="work-in-a-shared-development-environment"></a>Arbeiten in einer gemeinsamen Entwicklungsumgebung
-Mit Azure Dev Spaces können Sie eine *gemeinsame* Entwicklungsumgebung in Azure einrichten. Jeder Entwickler kann sich auf seinen Teil der Anwendung konzentrieren und *Code vor dem Commit* iterativ in einer Umgebung entwickeln, die bereits alle anderen Dienste und Cloudressourcen enthält, die der Entwickler für seine Szenarien benötigt. Abhängigkeiten sind immer aktuell, und Entwickler arbeiten wie in einer Produktionsumgebung.
+### <a name="work-in-a-shared-dev-space"></a>Arbeiten in einem gemeinsamen Entwicklungsbereich
+Mit Azure Dev Spaces können Sie einen *gemeinsamen* Entwicklungsbereich in Azure einrichten. Jeder Entwickler kann sich auf seinen Teil der Anwendung konzentrieren und *Code vor dem Commit* iterativ in einem Entwicklungsbereich entwickeln, der bereits alle anderen Dienste und Cloudressourcen enthält, die der Entwickler für seine Szenarien benötigt. Abhängigkeiten sind immer aktuell, und Entwickler arbeiten wie in einer Produktionsumgebung.
 
-## <a name="work-in-your-own-space"></a>Arbeiten im eigenen Bereich
+### <a name="work-in-your-own-space"></a>Arbeiten im eigenen Bereich
 Während der Entwicklung von Code für Ihren Dienst und vor dem Einchecken ist Code häufig nicht fehlerfrei. Sie strukturieren und testen den Code weiterhin iterativ und experimentieren mit Lösungen. In einem **Bereich** – einem Konzept von in Azure Dev Spaces – können Sie isoliert arbeiten, ohne Ihre Teammitglieder zu beeinträchtigen.
 
 > [!Note]
@@ -56,13 +56,15 @@ webfrontend  default  webfrontend-0.1.0  80/TCP  1m ago     http://webfrontend-c
 
 Die Spalte „Space“ zeigt, dass beide Dienste in einem Bereich namens `default` ausgeführt werden. Jeder Benutzer, der die öffentliche URL öffnet und zur Web-App navigiert, ruft den von Ihnen geschriebenen Codepfad auf, der beide Dienste durchläuft. Nehmen Sie an, Sie möchten mit der Entwicklung von `mywebapi` fortfahren. Wie nehmen Sie Änderungen am Code vor und testen diese, ohne andere Entwickler zu unterbrechen, die die Entwicklungsumgebung ebenfalls verwenden? Die Lösung: Sie richten Ihren eigenen Bereich ein.
 
-## <a name="create-a-space"></a>Erstellen eines Bereichs
+### <a name="create-a-dev-space"></a>Erstellen eines Entwicklungsbereichs (Dev Space)
 Um Ihre Version von `mywebapi` in einem anderen Bereich als `default` auszuführen, erstellen Sie mithilfe des folgenden Befehls einen eigenen Bereich:
 
 ``` 
-azds space create --name scott
+azds space select --name scott
 ```
+
+Wählen Sie bei Aufforderung unter **parent dev space** die Option `default`. Dies bedeutet, dass der neue Bereich `default/scott` vom Bereich `default` abgeleitet wird. Wir werden gleich sehen, wie uns dies beim Testen behilflich ist. 
 
 Im obigen Beispiel habe ich meinen Namen für den neuen Bereich verwendet, damit meine Kollegen erkennen können, dass es sich um den Bereich handelt, in dem ich arbeite. Sie können jedoch einen beliebigen Namen verwenden, z.B. „Demo“ oder „Sprint4“.
 
-Führen Sie den Befehl `azds space list` aus, um eine Liste aller Bereiche in der Entwicklungsumgebung anzuzeigen. Neben dem aktuell ausgewählten Bereich wird ein Sternchen (*) angezeigt. In unserem Fall wurde der Bereich „scott“ automatisch ausgewählt, als er erstellt wurde. Sie können jederzeit mit dem Befehl `azds space select` einen anderen Bereich auswählen.
+Führen Sie den Befehl `azds space list` aus, um eine Liste aller Bereiche in der Entwicklungsumgebung anzuzeigen. Neben dem aktuell ausgewählten Bereich wird ein Sternchen (*) angezeigt. In unserem Fall wurde der Bereich „default/scott“ automatisch ausgewählt, als er erstellt wurde. Sie können jederzeit mit dem Befehl `azds space select` einen anderen Bereich auswählen.

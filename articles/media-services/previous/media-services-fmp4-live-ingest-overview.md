@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33783869"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services
 Diese Spezifikation beschreibt das Protokoll und Format für die fragmentierte MP4-basierte Livestreamingerfassung für Azure Media Services. Media Services bietet einen Livestreamingdienst, mit dem Kunden Liveereignisse und Sendungsinhalte mit Azure als Cloudplattform in Echtzeit streamen können. In diesem Dokument werden auch optimale Verfahren zur Erstellung hoch redundanter und stabiler Mechanismen der Echtzeiterfassung beschrieben.

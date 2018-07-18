@@ -1,25 +1,20 @@
 ---
-title: "Datenmodell für Azure Backup"
-description: "In diesem Artikel werden die Details des Power BI-Datenmodells für Azure Backup-Berichte vorgestellt."
+title: Datenmodell für Azure Backup
+description: In diesem Artikel werden die Details des Power BI-Datenmodells für Azure Backup-Berichte vorgestellt.
 services: backup
-documentationcenter: 
-author: JPallavi
-manager: vijayts
-editor: 
-ms.assetid: 0767c330-690d-474d-85a6-aa8ddc410bb2
+author: adiganmsft
+manager: shivamg
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 06/26/2017
-ms.author: pajosh
+ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: efecbc9f1c410744f49795889c4ec3cc618f07e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6b1531e23d0e5fd34eff59868055ccd855b423e4
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444302"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Datenmodell für Azure Backup-Berichte
 In diesem Artikel wird das Power BI-Datenmodell beschrieben, das zum Erstellen von Azure Backup-Berichten verwendet wird. Mit diesem Datenmodell können Sie vorhandene Berichte basierend auf entsprechenden Feldern filtern und, was noch wichtiger ist, eigene Berichte mithilfe der Tabellen und Felder im Modell erstellen. 
@@ -33,7 +28,7 @@ Sie können die folgenden Felder im Datenmodell nutzen, um Berichte zu erstellen
 ### <a name="alert"></a>Warnung
 Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene warnungsbezogene Felder.
 
-| Feld | Datentyp | Beschreibung |
+| Feld | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | #AlertsCreatedInPeriod |Ganze Zahl |Anzahl der Warnungen, die im gewählten Zeitraum erstellt wurden |
 | %ActiveAlertsCreatedInPeriod |Prozentsatz |Prozentsatz aktiver Warnungen im gewählten Zeitraum |
@@ -50,7 +45,7 @@ Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene w
 ### <a name="backup-item"></a>Sicherungselement
 Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene auf Sicherungselemente bezogene Felder.
 
-| Feld | Datentyp | Beschreibung |
+| Feld | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | #BackupItems |Ganze Zahl |Anzahl der Sicherungselemente |
 | #UnprotectedBackupItems |Ganze Zahl |Anzahl der Sicherungselemente, deren Schutz beendet wurde oder die für Sicherungen konfiguriert sind, aber Sicherungen nicht gestartet wurden|
@@ -68,7 +63,7 @@ Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene a
 ### <a name="calendar"></a>Kalender
 Diese Tabelle enthält Details zu kalenderbezogenen Feldern.
 
-| Feld | Datentyp | Beschreibung |
+| Feld | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | Datum |Datum |Zum Filtern von Daten ausgewähltes Datum |
 | DateKey |Text |Eindeutiger Schlüssel jedes Datumselements |
@@ -85,7 +80,7 @@ Diese Tabelle enthält Details zu kalenderbezogenen Feldern.
 ### <a name="job"></a>Auftrag
 Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene auftragsbezogene Felder.
 
-| Feld | Datentyp | Beschreibung |
+| Feld | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | #JobsCreatedInPeriod |Ganze Zahl |Anzahl der Aufträge, die im gewählten Zeitraum erstellt wurden |
 | %FailuresForJobsCreatedInPeriod |Prozentsatz |Prozentsatz der gesamten Auftragsfehler im ausgewählten Zeitraum |
@@ -98,14 +93,14 @@ Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene a
 | JobFailureCode |Text |Zeichenfolge mit dem Fehlercode zum Angeben des Grunds des Auftragsfehlers |
 | JobOperation |Text |Vorgang, für den Auftrag ausgeführt wird, z.B. Sicherung, Wiederherstellung, Sicherungskonfiguration |
 | JobStartDate |Datum |Datum des Starts des Auftrags |
-| JobStartTime |Time |Uhrzeit des Starts des Auftrags |
+| JobStartTime |Zeit |Uhrzeit des Starts des Auftrags |
 | Auftragsstatus |Text |Status des beendeten Auftrags, z.B. Abgeschlossen, Fehler |
 | JobUniqueId |Text |Eindeutige ID zur Bezeichnung des Auftrags |
 
 ### <a name="policy"></a>Richtlinie
 Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene richtlinienbezogene Felder.
 
-| Feld | Datentyp | Beschreibung |
+| Feld | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | #Policies |Ganze Zahl |Anzahl der Sicherungsrichtlinien im System |
 | #PoliciesInUse |Ganze Zahl |Anzahl der Richtlinien, die derzeit für das Konfigurieren von Sicherungen verwendet werden |
@@ -139,7 +134,7 @@ Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene r
 ### <a name="protected-server"></a>Geschützter Server
 Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene Felder, die sich auf geschützte Server beziehen.
 
-| Feld | Datentyp | Beschreibung |
+| Feld | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | #ProtectedServers |Ganze Zahl |Anzahl geschützter Server |
 | AsOnDateTime |Datum/Uhrzeit |Uhrzeit der letzten Aktualisierung der ausgewählten Zeile |
@@ -158,7 +153,7 @@ Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene F
 ### <a name="storage"></a>Speicher
 Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene speicherbezogene Felder.
 
-| Feld | Datentyp | Beschreibung |
+| Feld | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | #ProtectedInstances |Dezimalzahl |Anzahl der geschützten Instanzen, die zum Berechnen von Front-End-Speicher in der Abrechnung verwendet werden. Die Berechnung erfolgt basierend auf dem letzten Wert im ausgewählten Zeitraum. |
 | AsOnDateTime |Datum/Uhrzeit |Uhrzeit der letzten Aktualisierung der ausgewählten Zeile |
@@ -166,22 +161,22 @@ Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene s
 | EntityState |Text |Aktueller Status des Speicherobjekts, z.B. Aktiv, Gelöscht |
 | LastUpdatedDate |Datum |Datum, an dem ausgewählte Zeile zuletzt aktualisiert wurde |
 
-### <a name="time"></a>Time
+### <a name="time"></a>Zeit
 Diese Tabelle enthält Details zu uhrzeitbezogenen Feldern.
 
-| Feld | Datentyp | Beschreibung |
+| Feld | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
-| Hour |Time |Stunde des Tages, z.B. 13:00:00 Uhr |
+| Hour |Zeit |Stunde des Tages, z.B. 13:00:00 Uhr |
 | HourNumber |Dezimalzahl |Nummer der Stunde des Tages, z.B. 13:00 |
 | Minute |Dezimalzahl |Minute der Stunde |
 | PeriodOfTheDay |Text |Zeitfenster des Tages, z.B. 12-15 Uhr |
-| Time |Time |Stunde des Tages, z.B. 12:00:01 Uhr |
+| Zeit |Zeit |Stunde des Tages, z.B. 12:00:01 Uhr |
 | TimeKey |Text |Schlüsselwert zum Darstellen der Zeit |
 
 ### <a name="vault"></a>Tresor
 Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene tresorbezogene Felder.
 
-| Feld | Datentyp | Beschreibung |
+| Feld | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | #Vaults |Ganze Zahl |Anzahl der Tresore |
 | AsOnDateTime |Datum/Uhrzeit |Uhrzeit der letzten Aktualisierung der ausgewählten Zeile |

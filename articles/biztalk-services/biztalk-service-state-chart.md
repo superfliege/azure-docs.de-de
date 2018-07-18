@@ -1,11 +1,11 @@
 ---
-title: "Zulässige Aufgaben in verschiedenen Status in BizTalk Services | Microsoft Docs"
-description: "Zulässige Aktionen/Vorgänge in verschiedenen MABS-Status: Beenden, Starten, Neustarten, Anhalten, Wiederaufnehmen, Löschen, Skalieren, Aktualisieren der Konfiguration und Sichern"
+title: Zulässige Aufgaben in verschiedenen Status in BizTalk Services | Microsoft Docs
+description: 'Zulässige Aktionen/Vorgänge in verschiedenen MABS-Status: Beenden, Starten, Neustarten, Anhalten, Wiederaufnehmen, Löschen, Skalieren, Aktualisieren der Konfiguration und Sichern'
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: aea738f3-ec76-4099-a41b-e17fea9e252f
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24102741"
 ---
 # <a name="what-you-can-and-cant-do-using-the-biztalk-service-state"></a>BizTalk Services: eine Dienststatusübersicht
 

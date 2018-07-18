@@ -1,25 +1,19 @@
 ---
 title: FAQ zu Solution Accelerators für die Remoteüberwachung | Microsoft-Dokumentation
 description: Häufig gestellte Fragen zu Solution Accelerators für die Remoteüberwachung
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: cb537749-a8a1-4e53-b3bf-f1b64a38188a
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: a65f2a90aedf5aa50016a6c5e5019094f202bf55
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 094bb4b781bb554d340580377ec343f33579299e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627653"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Häufig gestellte Fragen zu Solution Accelerators für die Remoteüberwachung
 
@@ -34,7 +28,7 @@ Der neue Solution Accelerator bietet zwei Bereitstellungsoptionen:
 
 ### <a name="how-can-i-ensure-i-keep-my-costs-down-while-i-develop-my-solution"></a>Wie kann ich sicherstellen, dass ich die Kosten beim Entwickeln meiner Lösung gering halte?
 
-Zusätzlich zur Bereitstellung von zwei unterschiedlichen Bereitstellungen verfügt die neue Remoteüberwachungslösung über eine Einstellung zum Aktivieren oder Deaktivieren aller simulierten Geräte nach Bedarf. Durch die Deaktivierung der Simulation werden die in der Lösung erfassten Daten und somit die Gesamtkosten reduziert.
+Neben zwei unterschiedlichen Bereitstellungen verfügt die neue Remoteüberwachungslösung über eine Einstellung zum Aktivieren oder Deaktivieren aller simulierten Geräte nach Bedarf. Durch die Deaktivierung der Simulation werden die in der Lösung erfassten Daten und somit die Gesamtkosten reduziert.
 
 ### <a name="what-is-the-difference-between-the-basic-and-standard-deployment-options-how-do-i-decide-between-the-two-deployment-options"></a>Worin besteht der Unterschied zwischen der Basic- und der Standard-Bereitstellung? Wie treffe ich die Wahl zwischen den beiden Bereitstellungsoptionen?
 
@@ -49,6 +43,6 @@ Weitere Informationen finden Sie unter [Aktualisieren des Zuordnungsschlüssels 
 Sie können auch einige andere Features und Funktionen der IoT-Solution Accelerators ausprobieren:
 
 * [Erkunden der Funktionen des Solution Accelerators für Remoteüberwachung](iot-accelerators-remote-monitoring-explore.md)
-* [Übersicht über den Solution Accelerator für Predictive Maintenance](../iot-suite/iot-suite-predictive-overview.md)
+* [Übersicht über den Solution Accelerator für Predictive Maintenance](iot-accelerators-predictive-overview.md)
 * [Übersicht über den Solution Accelerator für verbundene Factorys](iot-accelerators-connected-factory-overview.md)
-* [Sicherheit im Internet der Dinge von Anfang an](../iot-suite/securing-iot-ground-up.md)
+* [Sicherheit im Internet der Dinge von Anfang an](securing-iot-ground-up.md)

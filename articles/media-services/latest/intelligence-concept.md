@@ -11,11 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: juliako
-ms.openlocfilehash: 804a418f6ee88974d6e74a2c18bc5d01b6adf838
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c488060b9db0ba482d12eee2394e5149b918950e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331519"
 ---
 # <a name="media-intelligence"></a>Medieninformationen
 
@@ -46,11 +47,11 @@ Die Ausgabe umfasst eine JSON-Datei (insights.json) mit allen Informationen, die
 
 ### <a name="transcript"></a>Transkript
 
-|NAME|Beschreibung|
+|NAME|BESCHREIBUNG|
 |---|---|
 |id|Die Zeilen-ID.|
 |text|Das Transkript selbst.|
-|language|Die Sprache des Transkripts. Vorgesehen zur Unterstützung von Transkripts, bei denen jede Zeile eine andere Sprache enthalten kann.|
+|Language|Die Sprache des Transkripts. Vorgesehen zur Unterstützung von Transkripts, bei denen jede Zeile eine andere Sprache enthalten kann.|
 |instances|Eine Liste der Zeitbereiche, in denen diese Zeile angezeigt wurde. Wenn die Instanz ein Transkript ist, gibt es nur 1 Instanz.|
 
 Beispiel:
@@ -84,12 +85,12 @@ Beispiel:
 
 ### <a name="ocr"></a>ocr
 
-|Name|Beschreibung|
+|NAME|BESCHREIBUNG|
 |---|---|
 |id|Die OCR-Zeilen-ID.|
 |text|Der OCR-Text.|
 |confidence|Die Zuverlässigkeit der Erkennung.|
-|language|Die OCR-Sprache.|
+|Language|Die OCR-Sprache.|
 |instances|Eine Liste der Zeitbereiche, in denen diese OCR angezeigt wurde (die gleiche OCR kann mehrfach vorkommen).|
 
 ```json
@@ -127,12 +128,12 @@ Beispiel:
 
 ### <a name="keywords"></a>keywords
 
-|Name|Beschreibung|
+|NAME|BESCHREIBUNG|
 |---|---|
 |id|Die Stichwort-ID.|
 |text|Der Stichworttext.|
 |confidence|Die Zuverlässigkeit der Erkennung des Stichworts.|
-|language|Die Sprache des Stichworts (sofern übersetzt).|
+|Language|Die Sprache des Stichworts (sofern übersetzt).|
 |instances|Eine Liste der Zeitbereiche, in denen dieses Stichwort angezeigt wurde (ein Stichwort kann mehrfach vorkommen).|
 
 ```json
@@ -175,12 +176,12 @@ Beispiel:
 
 ### <a name="faces"></a>faces
 
-|name|Beschreibung|
+|NAME|BESCHREIBUNG|
 |---|---|
 |id|Die Gesichts-ID.|
 |name|Der Name des Gesichts. Möglich sind „Unknown #0“, ein identifizierter Prominenter oder eine vom Kunden trainierte Person.|
 |confidence|Die Zuverlässigkeit der Gesichtsidentifikation.|
-|description|Bei einem Prominenten dessen Beschreibung (Satya Nadella wurde am ... geboren). |
+|Beschreibung|Bei einem Prominenten dessen Beschreibung. |
 |thumbnalId|Die ID des Miniaturbilds dieses Gesichts.|
 |knownPersonId|Bei einer bekannten Person deren interne ID.|
 |referenceId|Bei einem Bing-Prominenten dessen Bing-ID.|
@@ -218,13 +219,13 @@ Beispiel:
 }]
 ```
 
-### <a name="labels"></a>labels
+### <a name="labels"></a>Bezeichnungen
 
-|Name|Beschreibung|
+|NAME|BESCHREIBUNG|
 |---|---|
 |id|Die Bezeichnungs-ID.|
 |name|Der Bezeichnungsname (z. B. „Computer“, „TV“).|
-|language|Die Sprache des Bezeichnungsnamens (sofern übersetzt). BCP-47|
+|Language|Die Sprache des Bezeichnungsnamens (sofern übersetzt). BCP-47|
 |instances|Eine Liste der Zeitbereiche, in denen diese Bezeichnung angezeigt wurde (eine Bezeichnung kann mehrfach vorkommen). Jedes Vorkommen weist ein Zuverlässigkeitsfeld auf. |
 
 
@@ -279,7 +280,7 @@ Beispiel:
 
 ### <a name="shots"></a>shots
 
-|Name|BESCHREIBUNG|
+|NAME|BESCHREIBUNG|
 |---|---|
 |id|Die ID der Aufnahme.|
 |keyFrames|Eine Liste mit Keyframes innerhalb der Aufnahme (jede verfügt über eine ID und eine Liste der Zeitbereiche der Vorkommen).|
@@ -330,39 +331,12 @@ Beispiel:
   ]
 ```
 
-### <a name="audioeffects"></a>audioEffects
-
-|Name|Beschreibung|
-|---|---|
-|id|Die ID des Audioeffekts.|
-|type|Der Typ des Audioeffekts (z. B. Geklatsche, Sprache, Stille).|
-|instances|Eine Liste der Zeitbereiche, in denen dieser Audioeffekt vorkam.|
-
-```json
-"audioEffects": [
-{
-    "id": 0,
-    "type": "Clapping",
-    "instances": [
-    {
-        "start": "00:00:00",
-        "end": "00:00:03"
-    },
-    {
-        "start": "00:01:13",
-        "end": "00:01:21"
-    }
-    ]
-}
-]
-```
-
 
 ### <a name="sentiments"></a>sentiments
 
 Stimmungen werden anhand ihres Felds „SentimentType“ (neutral/positiv/negativ) aggregiert. Beispiel: 0-0,1, 0,1-0,2.
 
-|Name|Beschreibung|
+|NAME|BESCHREIBUNG|
 |---|---|
 |id|Die Stimmungs-ID.|
 |averageScore |Der Durchschnitt aller Bewertungen aller Vorkommen dieses Stimmungstyps: neutral/positiv/negativ|

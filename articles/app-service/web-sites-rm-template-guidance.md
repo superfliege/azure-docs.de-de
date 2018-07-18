@@ -4,19 +4,19 @@ description: Empfehlungen zum Erstellen von Azure Resource Manager-Vorlagen zum 
 services: app-service
 documentationcenter: app-service
 author: tfitzmac
-manager: timlt
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 07/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: dc816bb6e95d2800d79124dfac60b55e88eaa500
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c2f600d86965e1115d4be1370da8f7c8e1b67f05
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927671"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Anleitung zum Bereitstellen von Web-Apps mit Azure Resource Manager-Vorlagen
 
@@ -58,19 +58,20 @@ Sie stellen Ressourcen in der folgenden Reihenfolge bereit:
 
 In der Regel enthält Ihre Lösung nur einige dieser Ressourcen und Ebenen. Bei fehlenden Ebenen ordnen Sie die Ressourcen auf niedrigerer Ebene der nächsthöheren Ebene zu.
 
-Das folgende Beispiel zeigt einen Teil einer Vorlage. Der Wert der Verbindungszeichenfolgen-Konfiguration hängt von der MSDeploy-Erweiterung ab. Die MS Deploy-Erweiterung hängt von der Web-App und der Datenbank ab.
+Das folgende Beispiel zeigt einen Teil einer Vorlage. Der Wert der Verbindungszeichenfolgen-Konfiguration hängt von der MSDeploy-Erweiterung ab. Die MS Deploy-Erweiterung hängt von der Web-App und der Datenbank ab. 
 
 ```json
 {
-    "name": "[parameters('name')]",
-    "type": "Microsoft.Web/sites",
+    "name": "[parameters('appName')]",
+    "type": "Microsoft.Web/Sites",
+    ...
     "resources": [
       {
           "name": "MSDeploy",
           "type": "Extensions",
           "dependsOn": [
-            "[concat('Microsoft.Web/Sites/', parameters('name'))]",
-            "[concat('SuccessBricks.ClearDB/databases/', parameters('databaseName'))]"
+            "[concat('Microsoft.Web/Sites/', parameters('appName'))]",
+            "[concat('Microsoft.Sql/servers/', parameters('dbServerName'), '/databases/', parameters('dbName'))]",
           ],
           ...
       },
@@ -78,13 +79,15 @@ Das folgende Beispiel zeigt einen Teil einer Vorlage. Der Wert der Verbindungsze
           "name": "connectionstrings",
           "type": "config",
           "dependsOn": [
-            "[concat('Microsoft.Web/Sites/', parameters('name'), '/Extensions/MSDeploy')]"
+            "[concat('Microsoft.Web/Sites/', parameters('appName'), '/Extensions/MSDeploy')]"
           ],
           ...
       }
     ]
 }
 ```
+
+Ein lauffähiges Beispiel, das den oben stehenden Code verwendet, finden Sie unter [Template: Build a simple Umbraco Web App](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple) (Vorlage: Erstellen einer einfachen Umbraco-Web-App).
 
 ## <a name="find-information-about-msdeploy-errors"></a>Suchen von Informationen zu MS Deploy-Fehlern
 
@@ -106,6 +109,30 @@ Der Name Ihrer Web-App muss global eindeutig sein. Sie können eine Namenskonven
   ...
 }
 ```
+
+## <a name="deploy-web-app-certificate-from-key-vault"></a>Bereitstellen eines Web-App-Zertifikats aus Key Vault
+
+Wenn Ihre Vorlage eine [Microsoft.Web/certificates](/azure/templates/microsoft.web/certificates)-Ressource für die SSL-Bindung enthält und das Zertifikat in einer Key Vault-Instanz gespeichert ist, müssen Sie sicherstellen, dass die App Service-Identität auf das Zertifikat zugreifen kann.
+
+In der globalen Azure-Umgebung hat der App Service-Dienstprinzipal die ID **abfa0a7c-a6b6-4736-8310-5855508787cd**. Verwenden Sie Folgendes, um für den App Service-Dienstprinzipal den Zugriff auf Key Vault zu gewähren:
+
+```azurepowershell-interactive
+Set-AzureRmKeyVaultAccessPolicy `
+  -VaultName KEY_VAULT_NAME `
+  -ServicePrincipalName abfa0a7c-a6b6-4736-8310-5855508787cd `
+  -PermissionsToSecrets get `
+  -PermissionsToCertificates get
+```
+
+In Azure Government hat der App Service-Dienstprinzipal die ID **6a02c803-dafd-4136-b4c3-5a6f318b4714**. Verwenden Sie diese ID im vorherigen Beispiel.
+
+Wählen Sie in Ihrer Key Vault-Instanz die Optionen **Zertifikate** und **Generieren/importieren**, um das Zertifikat hochzuladen.
+
+![Importieren des Zertifikats](media/web-sites-rm-template-guidance/import-certificate.png)
+
+Geben Sie in Ihrer Vorlage den Namen des Zertifikats für `keyVaultSecretName` an.
+
+Eine Beispielvorlage finden Sie unter [Deploy a Web App certificate from Key Vault secret and use it for creating SSL binding](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault) (Bereitstellen eines Web-App-Zertifikats über das Key Vault-Geheimnis und Verwenden zum Erstellen der SSL-Bindung).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

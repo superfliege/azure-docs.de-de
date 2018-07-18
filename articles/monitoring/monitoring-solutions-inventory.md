@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: ab07a11883b3462c4b9d0f9adab6c55e4fe49d78
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 887611f1293e276070df51ac06df51a994161ec1
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112190"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Ausführliche Informationen zu Datensammlungen für Verwaltungslösungen in Azure
 Dieser Artikel enthält eine Liste mit verfügbaren [Verwaltungslösungen](monitoring-solutions.md) von Microsoft sowie Links zur entsprechenden ausführlichen Dokumentation.  Außerdem finden Sie hier Informationen zur jeweiligen Methode und Häufigkeit der Datensammlung in Log Analytics.  Anhand der Informationen in diesem Artikel können Sie sich über die verschiedenen verfügbaren Lösungen informieren sowie den Datenfluss und die Verbindungsanforderungen für unterschiedliche Verwaltungslösungen nachvollziehen. 
@@ -64,9 +65,6 @@ Erläuterung der Spalten:
 | [Netzwerkleistungsmonitor](../log-analytics/log-analytics-network-performance-monitor.md) | Windows | &#8226; | &#8226; |  |  |  | TCP-Handshakes werden alle fünf Sekunden gesendet, Daten alle drei Minuten |
 | [Office 365-Analyse (Vorschau)](../operations-management-suite/oms-solution-office-365.md) |Windows | | | | | |Bei Benachrichtigung |
 | **Verwaltungslösung** | **Plattform** | **Microsoft Monitoring Agent** | **Operations Manager-Agent** | **Azure-Speicher** | **Operations Manager erforderlich?** | **Über Verwaltungsgruppe gesendete Operations Manager-Agent-Daten** | **Sammlungshäufigkeit** |
-| [Sicherheit und Überwachung](../operations-management-suite/oms-security-getting-started.md) (Syslog) | Linux | &#8226; | | |  |  | Bei der Ankunft |
-| [Sicherheit und Überwachung](../operations-management-suite/oms-security-getting-started.md) (Sicherheitsereignisprotokolle) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | Bei der Ankunft |
-| [Sicherheit und Überwachung](../operations-management-suite/oms-security-getting-started.md) (Firewallprotokolle) |Windows |&#8226; |&#8226; |  |  |  |Bei der Ankunft |
 | [Service Fabric-Analysen (Vorschau)](../log-analytics/log-analytics-service-fabric.md) |Windows | | |&#8226; | | |5 Minuten |
 | [Dienstzuordnung](../operations-management-suite/operations-management-suite-service-map.md) | Windows und Linux | &#8226; | &#8226; |  |  |  | 15 Sekunden |
 | [SQL-Bewertung](../log-analytics/log-analytics-sql-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 Tage |

@@ -7,22 +7,24 @@ ms.author: ahgyger
 manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/15/2017
-ms.openlocfilehash: bbcb2ea5a7ceeb976f590393608cc29c67d9a49e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 735bfd911a738d4e71974f5cdcd94afa50acc502
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932981"
 ---
 # <a name="visual-studio-tools-for-ai"></a>Visual Studio-Tools für AI
 Visual Studio-Tools für AI ist eine Entwicklungserweiterung zum Erstellen, Testen und Bereitstellen von Deep Learning- und KI-Lösungen. Die Erweiterung lässt sich nahtlos in Azure Machine Learning integrieren und zeigt den Ausführungsverlauf sowie die Leistung vorheriger Trainings und benutzerdefinierter Metriken an. Sie bietet eine Explorer-Ansicht mit Beispielen zum Durchsuchen und Durchführen eines Bootstraps eines neuen Projekts mit dem [Microsoft Cognitive Toolkit](http://www.microsoft.com/en-us/cognitive-toolkit) (früher als CNTK bezeichnet), [Google TensorFlow](https://www.tensorflow.org) und anderen Deep Learning-Frameworks. Sie bietet zudem einen Explorer für Computeziele, mit dem Sie Aufträge übermitteln können, um Modelle in Remoteumgebungen wie Azure Virtual Machines oder Linux-Servern mit GPU zu trainieren. Außerdem ermöglicht die Erweiterung vereinfachten Zugriff auf [Azure Batch AI (Vorschauversion)](https://docs.microsoft.com/azure/batch-ai/).
  
 ## <a name="getting-started"></a>Erste Schritte 
 Als Erstes müssen Sie [Visual Studio](https://www.visualstudio.com/downloads/) herunterladen und installieren. Führen Sie die folgenden Schritte aus, nachdem Visual Studio geöffnet wurde:
-1. Klicken Sie in Visual Studio in der Menüleiste auf „Erweiterungen und Updates...“.
+1. Klicken Sie in Visual Studio in der Menüleiste auf „Extras“ und dann auf „Erweiterungen und Updates...“.
 2. Klicken Sie auf die Registerkarte „Online“, und wählen Sie die Option zum Durchsuchen des Visual Studio Marketplace.
 3. Suchen Sie nach „Visual Studio für AI“. 
 3. Klicken Sie auf die Schaltfläche **Herunterladen** . 

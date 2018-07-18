@@ -16,10 +16,11 @@ ms.custom: mvc
 ms.date: 04/04/2018
 ms.author: dimazaid
 ms.openlocfilehash: ee0e78402515a733731e6faf21b09886674cda51
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38452412"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Tutorial: Senden von Benachrichtigungen an bestimmte Benutzer mit Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
@@ -125,7 +126,7 @@ In diesem Abschnitt aktualisieren Sie den Code im Projekt, den Sie im [Tutorial:
     using Windows.UI.Popups;
     using System.Threading.Tasks;
     ```
-12. Fügen Sie in **MainPage.xaml.cs** für das Projekt **WindowsApp** das folgende Element zur `MainPage`-Klasse hinzu. Ersetzen Sie `<Enter Your Backend Endpoint>` durch den tatsächlichen Back-End-Endpunkt, den Sie zuvor abgerufen haben. Beispiel: `http://mybackend.azurewebsites.net`.
+12. Fügen Sie in **MainPage.xaml.cs** für das Projekt **WindowsApp** das folgende Element zur `MainPage`-Klasse hinzu. Ersetzen Sie `<Enter Your Backend Endpoint>` unbedingt durch den tatsächlichen Back-End-Endpunkt, den Sie zuvor abgerufen haben. Beispiel: `http://mybackend.azurewebsites.net`.
     
     ```csharp
     private static string BACKEND_ENDPOINT = "<Enter Your Backend Endpoint>";
@@ -212,7 +213,7 @@ In diesem Abschnitt aktualisieren Sie den Code im Projekt, den Sie im [Tutorial:
         ApplicationData.Current.LocalSettings.Values["AuthenticationToken"] = token;
     }
     ```
-1. Öffnen Sie die Datei **App.xaml.cs**. Suchen Sie den Aufruf von `InitNotificationsAsync()` im `OnLaunched()`-Ereignishandler. Kommentieren Sie den Aufruf von `InitNotificationsAsync()` aus, oder löschen Sie ihn. Der zuvor hinzugefügte Schaltflächenhandler initialisiert Benachrichtigungsregistrierungen.
+1. Öffnen Sie die Datei **App.xaml.cs**. Suchen Sie den Aufruf von `InitNotificationsAsync()` in the `OnLaunched()` -Ereignishandler. Kommentieren Sie den Aufruf von `InitNotificationsAsync()`aus, oder löschen Sie ihn. Der zuvor hinzugefügte Schaltflächenhandler initialisiert Benachrichtigungsregistrierungen.
 
     ```csharp
     protected override void OnLaunched(LaunchActivatedEventArgs e)

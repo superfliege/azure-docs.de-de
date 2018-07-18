@@ -1,24 +1,19 @@
 ---
-title: Sichern eines Exchange-Servers in Azure Backup mit Azure Backup Server | Microsoft-Dokumentation
+title: Sichern eines Exchange-Servers in Azure Backup mit Azure Backup Server
 description: Erfahren Sie, wie Sie einen Exchange-Server mit Azure Backup Server in Azure Backup sichern.
 services: backup
-documentationcenter: 
 author: pvrk
 manager: shivamg
-editor: 
-ms.assetid: e46557e8-2eaf-4ee0-99ea-00fbb8687dca
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: pullabhk
-ms.openlocfilehash: 60b784fd00013c2b9504f8635c6b5c4c592563be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d64c273a189b1fe2337c4430b156874e0adf54b2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605959"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-azure-backup-server"></a>Sichern eines Exchange-Servers in Azure Backup mit Azure Backup Server
 In diesem Artikel wird beschrieben, wie Sie einen Microsoft Azure Backup Server (MABS) konfigurieren, um einen Microsoft Exchange-Server in Azure zu sichern.  
@@ -53,7 +48,6 @@ Führen Sie die folgenden Schritte aus, um den MABS-Schutz-Agent auf dem Exchang
    * Kurzfristiger Schutz unter Verwendung eines Datenträgers
    * Onlineschutz
 6. Klicken Sie auf **Weiter**.
-
 7. Wählen Sie die Option **„Eseutil“ zum Prüfen der Datenintegrität ausführen** aus, wenn Sie die Integrität der Exchange-Server-Datenbanken überprüfen möchten.
 
     Nach dem Auswählen dieser Option wird auf dem MABS die Backupkonsistenz überprüft, um den E/A-Datenverkehr zu vermeiden, der durch das Ausführen des Befehls **eseutil** auf dem Exchange-Server generiert wird.
@@ -64,7 +58,6 @@ Führen Sie die folgenden Schritte aus, um den MABS-Schutz-Agent auf dem Exchang
    >
    >
 8. Klicken Sie auf **Weiter**.
-
 9. Wählen Sie die Datenbank für **Kopiesicherung** aus, und klicken Sie auf **Weiter**.
 
    > [!NOTE]
@@ -75,10 +68,10 @@ Führen Sie die folgenden Schritte aus, um den MABS-Schutz-Agent auf dem Exchang
 11. Überprüfen Sie den verfügbaren Speicherplatz, und klicken Sie auf **Weiter**.
 12. Wählen Sie den Zeitpunkt aus, an dem der MAB-Server die erste Replikation erstellt, und klicken Sie auf **Weiter**.
 13. Wählen Sie die Optionen für die Konsistenzüberprüfung aus, und klicken Sie auf **Weiter**.
-14. Wählen Sie die Datenbank aus, die Sie unter Azure sichern möchten, und klicken Sie auf **Weiter**. Beispiel:
+14. Wählen Sie die Datenbank aus, die Sie unter Azure sichern möchten, und klicken Sie auf **Weiter**. Beispiel: 
 
     ![Onlineschutzdaten angeben](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. Definieren Sie den Zeitplan für **Azure Backup**, und klicken Sie auf **Weiter**. Beispiel:
+15. Definieren Sie den Zeitplan für **Azure Backup**, und klicken Sie auf **Weiter**. Beispiel: 
 
     ![Zeitplan für Onlinesicherung angeben](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 

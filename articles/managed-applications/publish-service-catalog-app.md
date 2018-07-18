@@ -8,18 +8,18 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: b7f8bbcad39000e7e71149824535a6a82b26c758
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 39d2979aad3aee80ba010d5fc3cf83ad486baf2d
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305309"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35247879"
 ---
 # <a name="publish-a-managed-application-for-internal-consumption"></a>Veröffentlichen einer verwalteten Anwendung für die interne Nutzung
 
-Sie können [verwaltete Azure-Anwendungen](overview.md) erstellen und veröffentlichen, die für Mitglieder Ihrer Organisation vorgesehen sind. Die IT-Abteilung kann beispielsweise verwaltete Anwendungen veröffentlichen, die die Konformität mit Ihren Unternehmensstandards gewährleisten. Diese verwalteten Anwendungen stehen über den Dienstkatalog, aber nicht über den Azure Marketplace zur Verfügung.
+Sie können [verwaltete Azure-Anwendungen](overview.md) erstellen und veröffentlichen, die für Mitglieder Ihrer Organisation vorgesehen sind. Eine IT-Abteilung kann beispielsweise verwaltete Anwendungen veröffentlichen, die die Standards der Organisation erfüllen. Diese verwalteten Anwendungen stehen über den Dienstkatalog, aber nicht über den Azure Marketplace zur Verfügung.
 
 Um eine verwaltete Anwendung für den Dienstkatalog zu veröffentlichen, gehen Sie folgendermaßen vor:
 
@@ -29,7 +29,9 @@ Um eine verwaltete Anwendung für den Dienstkatalog zu veröffentlichen, gehen S
 * Entscheiden Sie, welche Benutzer, Gruppen oder Anwendungen Zugriff auf die Ressourcengruppe im Benutzerabonnement benötigen.
 * Erstellen Sie die verwaltete Anwendungsdefinition, die auf das ZIP-Paket verweist und Zugriff auf die Identität anfordert.
 
-Für diesen Artikel enthält die verwaltete Anwendung nur ein Speicherkonto. Es soll die Schritte zum Veröffentlichen einer verwalteten Anwendung veranschaulichen. Vollständige Beispiele finden Sie unter [Sample projects for Azure managed applications](sample-projects.md) (Beispielprojekte für verwaltete Azure-Anwendungen).
+Für diesen Artikel verfügt die verwaltete Anwendung nur über ein Speicherkonto. Es soll die Schritte zum Veröffentlichen einer verwalteten Anwendung veranschaulichen. Vollständige Beispiele finden Sie unter [Sample projects for Azure managed applications](sample-projects.md) (Beispielprojekte für verwaltete Azure-Anwendungen).
+
+Für die PowerShell-Beispiele in diesem Artikel wird mindestens die Azure PowerShell-Version 6.2 benötigt. [Aktualisieren Sie Ihre Version](/powershell/azure/install-azurerm-ps), sofern erforderlich.
 
 ## <a name="create-the-resource-template"></a>Erstellen der Ressourcenvorlage
 
@@ -143,7 +145,7 @@ Speichern Sie die Datei „createUIDefinition.json“.
 
 ## <a name="package-the-files"></a>Erstellen eines Pakets aus den Dateien
 
-Fügen Sie die beiden Dateien einer ZIP-Datei mit dem Namen „app.zip“ hinzu. Die zwei Dateien müssen sich auf der Stammebene der ZIP-Datei befinden. Wenn Sie sie in einem Ordner speichern, erhalten Sie, wenn Sie die Definition der verwalteten Anwendung erstellen, eine Fehlermeldung, dass die erforderlichen Dateien nicht vorhanden sind. 
+Fügen Sie die beiden Dateien einer ZIP-Datei mit dem Namen „app.zip“ hinzu. Die zwei Dateien müssen sich auf der Stammebene der ZIP-Datei befinden. Wenn Sie sie in einem Ordner speichern, erhalten Sie beim Erstellen der Definition der verwalteten Anwendung eine Fehlermeldung mit dem Hinweis, dass die erforderlichen Dateien nicht vorhanden sind. 
 
 Laden Sie das Paket an einen zugänglichen Speicherort hoch, wo es verwendet werden kann. 
 
@@ -187,7 +189,7 @@ $ownerID=(Get-AzureRmRoleDefinition -Name Owner).Id
 
 ### <a name="create-the-managed-application-definition"></a>Erstellen der Definition für die verwaltete Anwendung
 
-Wenn Sie noch über keine Ressourcengruppe für das Speichern der Definition Ihrer verwalteten Anwendung verfügen, erstellen Sie sie jetzt:
+Falls Sie noch nicht über eine Ressourcengruppe zum Speichern der Definition Ihrer verwalteten Anwendung verfügen, erstellen Sie jetzt eine:
 
 ```powershell
 New-AzureRmResourceGroup -Name appDefinitionGroup -Location westcentralus
@@ -208,6 +210,10 @@ New-AzureRmManagedApplicationDefinition `
   -Authorization "${groupID}:$ownerID" `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
+
+### <a name="make-sure-users-can-see-your-definition"></a>Sicherstellen, dass Benutzer Ihre Definition sehen können
+
+Sie haben zwar Zugriff auf die Definition der verwalteten Anwendung, möchten aber sicherstellen, dass andere Benutzer in Ihrer Organisation darauf zugreifen können. Erteilen Sie ihnen mindestens die Leserrolle für die Definition. Diese Zugriffsebene haben sie möglicherweise vom Abonnement oder von der Ressourcengruppe geerbt. Informationen zum Überprüfen, wer Zugriff auf die Definition hat, sowie zum Hinzufügen von Benutzern oder Gruppen finden Sie unter [Manage access using RBAC and the Azure portal](../role-based-access-control/role-assignments-portal.md) (Verwalten des Zugriffs mithilfe von RBAC und Azure-Portal).
 
 ## <a name="create-the-managed-application"></a>Erstellen der verwalteten Anwendung
 
@@ -256,6 +262,16 @@ Jetzt verwenden wir das Portal zum Bereitstellen der verwalteten Anwendung. Sie 
 1. Suchen Sie die verwaltete Anwendung, die Sie erstellen möchten, in der Liste der verfügbaren Lösungen, und wählen Sie sie aus. Klicken Sie auf **Erstellen**.
 
    ![Suchen der verwalteten Anwendung](./media/publish-service-catalog-app/find-application.png)
+
+   Sollte die Definition der verwalteten Anwendung im Portal nicht angezeigt werden, müssen Sie ggf. Ihre Portaleinstellungen ändern. Klicken Sie auf den **Verzeichnis- und Abonnementfilter**.
+
+   ![Klicken auf den Abonnementfilter](./media/publish-service-catalog-app/select-filter.png)
+
+   Vergewissern Sie sich, dass der globale Abonnementfilter das Abonnement mit der Definition der verwalteten Anwendung enthält.
+
+   ![Überprüfen des Abonnementfilters](./media/publish-service-catalog-app/check-global-filter.png)
+
+   Beginnen Sie nach der Wahl des Abonnements erneut mit der Erstellung der verwalteten Dienstkataloganwendung. Nun sollte sie angezeigt werden.
 
 1. Geben Sie grundlegende Informationen an, die für die verwaltete Anwendung erforderlich sind. Geben Sie das Abonnement und eine neue Ressourcengruppe an, die die verwaltete Anwendung enthalten sollen. Wählen Sie als Standort **USA, Westen-Mitte** aus. Wählen Sie dann die Option **OK**.
 

@@ -1,8 +1,8 @@
 ---
 title: Erstellen einer Funktion in Azure, die aus Visual Studio Team Services bereitgestellt wird | Microsoft-Dokumentation
-description: "Erstellen einer Funktionen-App und Bereitstellen von Funktionscode über Visual Studio Team Services"
+description: Erstellen einer Funktionen-App und Bereitstellen von Funktionscode über Visual Studio Team Services
 services: functions
-keywords: 
+keywords: ''
 author: syntaxc4
 ms.author: cfowler
 ms.date: 01/09/2018
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29842346"
 ---
 # <a name="create-a-function-app-and-deploy-function-code-from-visual-studio-team-services"></a>Erstellen einer Funktions-App und Bereitstellen von Funktionscode über Visual Studio Team Services
 

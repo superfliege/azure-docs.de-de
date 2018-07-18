@@ -1,71 +1,73 @@
 ---
-title: Erstellen einer Kubernetes-Entwicklungsumgebung in der Cloud | Microsoft-Dokumentation
+title: Erstellen eines Kubernetes-Entwicklungsbereichs in der Cloud | Microsoft-Dokumentation
 titleSuffix: Azure Dev Spaces
 author: ghogen
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
 ms.author: ghogen
-ms.date: 05/11/2018
+ms.date: 07/09/2018
 ms.topic: quickstart
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
 manager: douge
-ms.openlocfilehash: 279b7a8c20717668c0ff4be541e9168e2d8706fd
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3bb190570cbdf795668dd6e9f9d36630b6f3201b
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361578"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37949865"
 ---
-# <a name="quickstart-create-a-kubernetes-development-environment-with-azure-dev-spaces-net-core-and-vs-code"></a>Schnellstart: Erstellen einer Kubernetes-Entwicklungsumgebung mit Azure Dev Spaces (.NET Core und VS Code)
+# <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-vs-code"></a>Schnellstart: Erstellen eines Kubernetes-Entwicklungsbereichs mit Azure Dev Spaces (.NET Core und VS Code)
 
+In diesem Leitfaden lernen Sie Folgendes:
 
-[!INCLUDE[](includes/learning-objectives.md)]
+- Einrichten von Azure Dev Spaces mit einem verwalteten Kubernetes-Cluster in Azure
+- Iteratives Entwickeln von Code in Containern mit VS Code und der Befehlszeile
+- Debuggen des Codes in Ihrem Entwicklungsbereich über VS Code
 
-[!INCLUDE[](includes/see-troubleshooting.md)]
+> [!Note]
+> **Sollten Sie einmal nicht weiterkommen**, lesen Sie den Abschnitt [Problembehandlung](troubleshooting.md), oder hinterlassen Sie einen Kommentar auf dieser Seite. Ein ausführlicheres Tutorial finden Sie [hier](get-started-netcore.md).
 
-Sie können nun eine Kubernetes-basierte Entwicklungsumgebung in Azure erstellen.
+## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE[](includes/portal-aks-cluster.md)]
+- Ein Azure-Abonnement. Falls Sie über keins verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
+- Ein [Kubernetes-Cluster](https://ms.portal.azure.com/#create/microsoft.aks) mit Kubernetes 1.10.3 in der Region „USA, Osten“, „USA, Mitte“, „USA, Westen 2“, „Europa, Westen“, „Kanada, Mitte“ oder „Kanada, Osten“ mit aktiviertem **HTTP-Anwendungsrouting**.
 
-## <a name="install-the-azure-cli"></a>Installieren der Azure CLI
-Bei Azure Dev Spaces ist der Einrichtungsaufwand für die lokalen Computer minimal. Der Großteil der Konfiguration Ihrer Entwicklungsumgebung wird in der Cloud gespeichert und kann für andere Benutzer freigegeben werden. Laden Sie zunächst die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?view=azure-cli-latest) (Command-Line Interface, CLI) herunter, und führen Sie sie aus. 
+  ![Achten Sie darauf, dass HTTP-Anwendungsrouting aktiviert ist.](media/common/Kubernetes-Create-Cluster-3.PNG)
 
-> [!IMPORTANT]
-> Falls die Azure-Befehlszeilenschnittstelle bereits installiert ist, vergewissern Sie sich, dass es sich dabei um mindestens Version 2.0.32 der CLI handelt.
+- [Visual Studio Code](https://code.visualstudio.com/download).
 
-[!INCLUDE[](includes/sign-into-azure.md)]
+## <a name="set-up-azure-dev-spaces"></a>Einrichten von Azure Dev Spaces
 
-[!INCLUDE[](includes/use-dev-spaces.md)]
+1. Installieren Sie die [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) (mindestens Version 2.0.38).
+1. Richten Sie Dev Spaces in Ihrem AKS-Cluster ein: `az aks use-dev-spaces -g MyResourceGroup -n MyAKS`
+1. Laden Sie die [Azure Dev Spaces-Erweiterung](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) für VS Code herunter. Klicken Sie auf „Installieren“, sobald Sie sich auf der Marketplace-Seite der Erweiterung befinden. Wiederholen Sie diesen Vorgang in VS Code.
 
-[!INCLUDE[](includes/install-vscode-extension.md)]
+## <a name="build-and-run-code-in-kubernetes"></a>Erstellen und Ausführen von Code in Kubernetes
 
-Während Sie auf die Erstellung des Clusters warten, können Sie mit der Codeentwicklung beginnen.
+1. Laden Sie den Beispielcode von GitHub herunter: [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces) 
+1. Wechseln zum Ordner „webfrontend“: `cd dev-spaces/samples/dotnetcore/getting-started/webfrontend`
+1. Generieren Sie Diagrammressourcen für Docker und Helm: `azds prep --public`
+1. Erstellen Sie Ihren Code in AKS, und führen Sie ihn aus. Führen Sie im Terminalfenster unter dem **webfrontend-Ordner** den folgenden Befehl aus: `azds up`.
+1. Suchen Sie in der Konsolenausgabe nach Informationen zu der URL, die durch den Befehl `up` erstellt wurde. Sie weist folgendes Format auf: 
 
-## <a name="create-an-aspnet-core-web-app"></a>Erstellen einer ASP.NET Core-Web-App
-Wenn [.NET Core](https://www.microsoft.com/net) installiert ist, können Sie schnell eine ASP.NET Core-Web-App in einem Ordner namens `webfrontend` erstellen.
+   `Service 'webfrontend' port 'http' is available at <url>` 
 
-```cmd
-   dotnet new mvc --name webfrontend
-```
+   Öffnen Sie diese URL in einem Browserfenster. Dort sollten Sie sehen, dass die Web-App geladen wird. 
+   
+   > [!Note]
+   > Beim ersten Ausführen kann es mehrere Minuten dauern, bis das öffentliche DNS bereit ist. Wenn die öffentliche URL nicht aufgelöst wird, können Sie die alternative URL http://localhost:<portnumber> verwenden, die in der Konsolenausgabe angezeigt wird. Bei Verwendung der localhost-URL kann es so aussehen, als ob der Container lokal ausgeführt wird, während er stattdessen unter AKS ausgeführt wird. Um die Interaktion mit dem Dienst auf Ihrem lokalen Computer zu erleichtern, erstellt Azure Dev Spaces einen temporären SSH-Tunnel zu dem in Azure ausgeführten Container. Sie können später zurückkehren und versuchen, die öffentliche URL zu verwenden, wenn der DNS-Eintrag bereit ist.
 
-Oder **laden Sie Beispielcode von GitHub herunter**. Navigieren Sie dazu zu https://github.com/Azure/dev-spaces, und klicken Sie auf **Klonen oder herunterladen**, um das GitHub-Repository in Ihre lokale Umgebung herunterzuladen. Der Code für diese Anleitung befindet sich in `samples/dotnetcore/getting-started/webfrontend`.
+### <a name="update-a-content-file"></a>Aktualisieren einer Inhaltsdatei
 
-[!INCLUDE[](includes/azds-prep.md)]
-
-[!INCLUDE[](includes/build-run-k8s-cli.md)]
-
-## <a name="update-a-content-file"></a>Aktualisieren einer Inhaltsdatei
-Bei Azure Dev Spaces geht es nicht nur um die Ausführung von Code in Kubernetes: Mit diesem Dienst sollen Codeänderungen in einer Kubernetes-Umgebung in der Cloud schnell und iterativ sichtbar gemacht werden.
-
-1. Navigieren Sie zur Datei `./Views/Home/Index.cshtml`, und ändern Sie die HTML. Beispiel: Ändern Sie Zeile 70 (`<h2>Application uses</h2>`) etwa ungefähr wie folgt: `<h2>Hello k8s in Azure!</h2>`
+1. Suchen Sie nach einer Datei (beispielsweise `./Views/Home/Index.cshtml`), und ändern Sie den HTML-Code. Beispiel: Ändern Sie Zeile 70 (`<h2>Application uses</h2>`) ungefähr wie folgt: `<h2>Hello k8s in Azure!</h2>`
 1. Speichern Sie die Datei . Kurz darauf wird im Terminalfenster eine Nachricht mit dem Hinweis angezeigt, dass eine Datei im ausgeführten Container aktualisiert wurde.
 1. Aktualisieren Sie die Anzeige im Browser. Daraufhin sollte auf der Webseite die aktualisierte HTML angezeigt werden.
 
 Was ist passiert? Für Änderungen an Inhaltsdateien (etwa HTML und CSS) ist keine erneute Kompilierung in einer .NET Core-Web-App erforderlich. Ein aktiver `azds up`-Befehl synchronisiert daher automatisch alle geänderten Inhaltsdateien im ausgeführten Container in Azure, sodass alle Inhaltsänderungen direkt angezeigt werden.
 
-## <a name="update-a-code-file"></a>Aktualisieren einer Codedatei
+### <a name="update-a-code-file"></a>Aktualisieren einer Codedatei
 Die Aktualisierung von Codedateien ist etwas aufwendiger, da eine .NET Core-App aktualisierte Anwendungsbinärdateien neu erstellen und generieren muss.
 
 1. Drücken Sie im Terminalfenster `Ctrl+C` (zum Beenden von `azds up`).
@@ -75,15 +77,22 @@ Die Aktualisierung von Codedateien ist etwas aufwendiger, da eine .NET Core-App 
 
 Mit diesem Befehl wird das Containerimage neu erstellt und das Helm-Diagramm erneut bereitgestellt. Navigieren Sie in der Web-App zum Menü „Info“, um zu sehen, wie sich Ihre Codeänderungen in der ausgeführten Anwendung auswirken.
 
-
 Es gibt jedoch eine noch *schnellere Methode* für die Codeentwicklung. Sie wird im nächsten Abschnitt erläutert. 
 
 ## <a name="debug-a-container-in-kubernetes"></a>Debuggen eines Containers in Kubernetes
 
-[!INCLUDE[](includes/debug-intro.md)]
+In diesem Abschnitt verwenden Sie VS Code zum direkten Debuggen Ihres in Azure ausgeführten Containers. Außerdem erfahren Sie, wie Sie die Schleife zum Bearbeiten/Ausführen/Testen beschleunigen.
 
-[!INCLUDE[](includes/init-debug-assets-vscode.md)]
+![](./media/common/edit-refresh-see.png)
 
+### <a name="initialize-debug-assets-with-the-vs-code-extension"></a>Initialisieren von Debugressourcen mit der VS Code-Erweiterung
+Sie müssen zunächst Ihr Codeprojekt konfigurieren, damit VS Code mit dem Entwicklungsbereich in Azure kommunizieren kann. Die VS Code-Erweiterung für Azure Dev Spaces enthält einen Befehl zum Einrichten der Debugkonfiguration. 
+
+Öffnen Sie die **Befehlspalette** (über das Menü **Ansicht | Befehlspalette**), verwenden Sie die automatische Vervollständigung für die Eingabe, und wählen Sie den Befehl `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces` aus. 
+
+Dadurch wird die Debugkonfiguration für Azure Dev Spaces unter dem `.vscode`-Ordner hinzugefügt.
+
+![](./media/common/command-palette.png)
 
 ### <a name="select-the-azds-debug-configuration"></a>Auswählen der AZDS-Debugkonfiguration
 1. Klicken Sie zum Öffnen der Debugansicht auf der **Aktivitätsleiste** am Rand von VS Code auf das Symbol „Debuggen“.
@@ -98,11 +107,12 @@ Es gibt jedoch eine noch *schnellere Methode* für die Codeentwicklung. Sie wird
 ### <a name="debug-the-container-in-kubernetes"></a>Debuggen des Containers in Kubernetes
 Drücken Sie **F5**, um Ihren Code in Kubernetes zu debuggen.
 
-Wie beim Befehl `up` wird der Code mit der Entwicklungsumgebung synchronisiert, und ein Container wird erstellt und in Kubernetes bereitgestellt. Dieses Mal ist der Debugger natürlich an den Remotecontainer angefügt.
+Wie beim Befehl `up` wird der Code mit dem Entwicklungsbereich synchronisiert, und ein Container wird erstellt und in Kubernetes bereitgestellt. Dieses Mal ist der Debugger natürlich an den Remotecontainer angefügt.
 
-[!INCLUDE[](includes/tip-vscode-status-bar-url.md)]
+> [!Tip]
+> Auf der Statusleiste von VS Code wird eine klickbare URL angezeigt.
 
-Legen Sie einen Breakpoint in einer serverseitigen Codedatei fest, beispielsweise in der `Index()`-Funktion in der Quelldatei `Controllers/HomeController.cs`. Durch die Aktualisierung der Browserseite wird der Breakpoint erreicht.
+Legen Sie einen Breakpoint in einer serverseitigen Codedatei fest, beispielsweise in der `Index()`-Funktion in der Quelldatei `Controllers/HomeController.cs`. Durch Aktualisieren der Browserseite wird der Breakpoint erreicht.
 
 Sie besitzen wie bei der lokalen Ausführung des Codes Vollzugriff auf Debuginformationen, etwa Aufrufliste, lokale Variablen, Ausnahmeinformationen usw.
 
@@ -125,9 +135,11 @@ Das Neuerstellen und erneute Bereitstellen eines neuen Containerimages bei jeder
 
 Aktualisieren Sie die Web-App im Browser, und wechseln Sie zur Seite „Info“. Daraufhin sollte eine benutzerdefinierte Meldung auf der Benutzeroberfläche angezeigt werden.
 
-**Sie kennen jetzt eine Methode für die schnelle Codeiteration und das direkte Debugging in Kubernetes!**
+**Sie kennen jetzt eine Methode für die schnelle Codeiteration und das direkte Debuggen in Kubernetes!**
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+Erfahren Sie, wie Azure Dev Spaces Sie bei der Entwicklung komplexerer, containerübergreifender Apps unterstützt und wie Sie die gemeinsame Entwicklung vereinfachen können, indem Sie in verschiedenen Bereichen mit verschiedenen Versionen oder Branches Ihres Codes arbeiten. 
+
 > [!div class="nextstepaction"]
-> [Arbeiten mit mehreren Containern und Teamentwicklung](get-started-netcore.md#call-a-service-running-in-a-separate-container)
+> [Arbeiten mit mehreren Containern und Teamentwicklung](team-development-netcore.md)

@@ -13,10 +13,11 @@ ms.custom: mvc
 ms.date: 11/28/2017
 ms.author: apimpm
 ms.openlocfilehash: 7fb4182c0b5149a9006a30ad34782ad968e16758
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38595587"
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Erstellen einer neuen Azure API Management-Dienstinstanz
 
@@ -28,7 +29,7 @@ In dieser Schnellstartanleitung werden die Schritte zum Erstellen einer neuen AP
 
 ![Neue Instanz](./media/get-started-create-service-instance/get-started-create-service-instance-created.png)
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="log-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 

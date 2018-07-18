@@ -1,26 +1,21 @@
 ---
-title: Wiederherstellen eines VM-Datenträgers mit Azure Backup | Microsoft-Dokumentation
+title: Wiederherstellen eines VM-Datenträgers mit Azure Backup
 description: Erfahren Sie, wie Sie mit Backup und Recovery Services einen Datenträger wiederherstellen und eine Wiederherstellung eines virtuellen Computers in Azure erstellen.
 services: backup
-documentationcenter: virtual-machines
 author: markgalioto
 manager: carmonm
-editor: ''
 tags: azure-resource-manager, virtual-machine-backup
-ms.assetid: ''
 ms.service: backup
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 4/17/2018
-ms.author: iainfou
+ms.author: markgal
 ms.custom: mvc
-ms.openlocfilehash: f2b82725362517d12dd4e7df7b2bb083fa107253
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 47f0b43ae074314ffb1727508bb534fdd79c1f7d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607115"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Wiederherstellen eines Datenträgers und Erstellen einer wiederhergestellten VM in Azure
 Azure Backup erstellt Wiederherstellungspunkte, die in geografisch redundanten Recovery-Tresoren gespeichert werden. Wenn Sie eine Wiederherstellung von einem Wiederherstellungspunkt durchführen, können Sie den gesamten virtuellen Computer oder einzelne Dateien wiederherstellen. In diesem Artikel wird das Wiederherstellen eines vollständigen virtuellen Computers mithilfe der Befehlszeilenschnittstelle erläutert. In diesem Tutorial lernen Sie Folgendes:

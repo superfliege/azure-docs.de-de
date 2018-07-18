@@ -16,6 +16,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31798120"
 ---
 # <a name="using-windows-powershell-scripts-to-publish-to-dev-and-test-environments"></a>Veröffentlichung in Entwicklungs- und Testumgebungen mithilfe von Windows PowerShell-Skripts
 
@@ -320,7 +321,7 @@ Wenn Sie Hilfe zu Funktionen abrufen möchten, können Sie an der Windows PowerS
 | Find-AzureVM |Ruft den angegebenen virtuellen Azure-Computer ab. |
 | Format-DevTestMessageWithTime |Stellt einer Meldung das Datum und die Uhrzeit voran. Diese Funktion bezieht sich auf Meldungen, die in die Datenströme vom Typ "Fehler" und "Ausführlich" geschrieben werden. |
 | Get-AzureSQLDatabaseConnectionString |Stellt eine Verbindungszeichenfolge zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank zusammen. |
-| Get-AzureVMStorage |Gibt den Namen des ersten Speicherkontos am angegebenen Speicherort oder in der Affinitätsgruppe mit dem Namensmuster „devtest*“ zurück (ohne Unterscheidung von Groß-/Kleinschreibung). Wenn das Speicherkonto „devtest*“ nicht mit dem Speicherort oder der Affinitätsgruppe übereinstimmt, wird es von der Funktion ignoriert. Geben Sie einen Speicherort oder eine Affinitätsgruppe an. |
+| Get-AzureVMStorage |Gibt den Namen des ersten Speicherkontos am angegebenen Speicherort oder in der Affinitätsgruppe mit dem Namensmuster „devtest *“ zurück (ohne Unterscheidung von Groß-/Kleinschreibung). Wenn das Speicherkonto „devtest*“ nicht mit dem Speicherort oder der Affinitätsgruppe übereinstimmt, wird es von der Funktion ignoriert. Geben Sie einen Speicherort oder eine Affinitätsgruppe an. |
 | Get-MSDeployCmd |Gibt einen Befehl zum Ausführen des Tools "MsDeploy.exe" zurück. |
 | New-AzureVMEnvironment |Sucht oder erstellt einen virtuellen Computer im Abonnement, das mit den Werten in der JSON-Konfigurationsdatei übereinstimmt. |
 | Publish-WebPackage |Verwendet "MsDeploy.exe" und eine Webveröffentlichungspaket-ZIP-Datei zum Bereitstellen von Ressourcen für eine Website. Diese Funktion generiert keine Ausgabe. Wenn beim Aufruf von "MSDeploy.exe" ein Fehler auftritt, löst die Funktion eine Ausnahme aus. Verwenden Sie die Option **-Verbose** , wenn Sie eine ausführlichere Ausgabe wünschen. |

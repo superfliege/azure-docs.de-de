@@ -15,16 +15,18 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 3368a8a14a3d1314e4c7ecae9256071f1fe646f9
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: dee6a77fb85b2ac882103ba58a19ac4fce59c188
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34257868"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301443"
 ---
 # <a name="compare-azure-cdn-product-features"></a>Vergleichen von Azure CDN-Produktfeatures
 
 Azure CDN (Content Delivery Network) beinhaltet vier Produkte: **Azure CDN Standard von Microsoft** (Vorschauversion), **Azure CDN Standard von Akamai**, **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon**. 
+
+Informationen zur Migration eines Profils vom Typ **Azure CDN Standard von Verizon** zu **Azure CDN Premium von Verizon** finden Sie unter [Migrate an Azure CDN profile from Standard Verizon to Premium Verizon](cdn-migrate.md) (Migrieren eines Azure CDN-Profils von Standard Verizon zu Premium Verizon).
 
 In der folgenden Tabelle werden die Features der einzelnen Produkte gegenübergestellt.
 
@@ -41,7 +43,6 @@ In der folgenden Tabelle werden die Features der einzelnen Produkte gegenüberge
 | Cache-/Headereinstellungen (mit [Zwischenspeicherungsregeln](cdn-caching-rules.md))  |  |**&#x2713;** |**&#x2713;** | |
 | Cache-/Headereinstellungen (mit [Regel-Engine](cdn-rules-engine.md))  |  | | |**&#x2713;** |
 | [Zwischenspeicherung von Abfragezeichenfolgen](cdn-query-string.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| Regionales Zwischenspeichern  |**&#x2713;** |  |  |  |
 | Dualer IPv4-/IPv6-Stapel | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [HTTP/2-Unterstützung](cdn-http2.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 ||||

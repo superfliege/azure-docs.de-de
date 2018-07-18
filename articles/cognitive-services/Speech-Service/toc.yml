@@ -1,0 +1,123 @@
+- name: Spracherkennungsdienst-API – Dokumentation
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Worum handelt es sich beim Speech-Dienst?
+      href: overview.md
+      expanded: true
+    - name: Speech-Szenarien
+      href: speech-scenarios.md
+- name: Schnellstarts
+  items:
+    - name: Kostenloses Testen des Speech-Diensts
+      href: get-started.md
+    - name: 'Erkennen von Sprache in C# (.NET unter Windows)'
+      href: quickstart-csharp-dotnet-windows.md
+    - name: 'Erkennen von Sprache in C# (.NET Core unter Windows)'
+      href: quickstart-csharp-dotnetcore-windows.md
+    - name: Erkennen von Sprache in einer UWP-App
+      href: quickstart-csharp-uwp.md
+    - name: Erkennen von Sprache in C++ für Windows
+      href: quickstart-cpp-windows.md
+    - name: Erkennen von Sprache in C++ für Linux
+      href: quickstart-cpp-linux.md
+    - name: Erkennen von Sprache in Java für Android
+      href: quickstart-java-android.md
+    - name: Erste Schritte mit dem SDK für sprachaktivierte Geräte
+      href: speech-devices-sdk-qsg.md
+- name: Anleitungen
+  items:
+    - name: Erkennen von Sprache
+      href: how-to-speech-to-text.md
+    - name: Synthetisieren von Sprache
+      href: how-to-text-to-speech.md
+    - name: Übersetzen von gesprochener Sprache
+      href: how-to-translate-speech.md
+    - name: Batch-Transkription
+      href: batch-transcription.md
+    - name: Abrufen des SDK für sprachaktivierte Geräte
+      href: get-speech-devices-sdk.md
+- name: Anpassung
+  items:
+    - name: Anpassen von Akustikmodellen
+      href: how-to-customize-acoustic-models.md
+    - name: Anpassen von Sprachmodellen
+      href: how-to-customize-language-model.md
+    - name: Anpassen der Aussprache
+      href: how-to-customize-pronunciation.md
+    - name: Anpassen von Voicefonts (Bot-Markenstimme)
+      href: how-to-customize-voice-font.md
+    - name: Aufnehmen von Sprachbeispielen
+      href: record-custom-voice-samples.md
+    - name: Anfertigen von Transkripts
+      href: prepare-transcription.md
+    - name: Verwenden von benutzerdefinierten Audiodatenströmen
+      href: how-to-use-audio-input-streams.md
+    - name: Anpassen des Codeworts für das Gerät (Geräte-SDK)
+      href: speech-devices-sdk-create-kws.md
+- name: Beispiele
+  items:
+    - name: Herunterladen von Beispielen
+      href: samples.md
+    - name: Spracherkennung
+      href: speech-to-text-sample.md
+    - name: Absichtserkennung
+      href: intent.md
+    - name: Sprachübersetzung
+      href: translation.md
+- name: Konzepte
+  items:
+    - name: Spracherkennung
+      href: speech-to-text.md
+    - name: Text-zu-Sprache
+      href: text-to-speech.md
+    - name: Sprachübersetzung
+      href: speech-translation.md
+    - name: Sprach-SDK
+      href: speech-sdk.md
+    - name: Speech-Geräte-SDK
+      href: speech-devices-sdk.md
+- name: Verweis
+  items:
+    - name: Unterstützte Sprachen
+      href: supported-languages.md
+    - name: Regionen
+      href: regions.md
+    - name: REST-APIs
+      href: rest-apis.md
+    - name: Sprach-SDK-API
+      href: speech-sdk-reference.md
+    - name: Markup für Sprachsynthese
+      href: speech-synthesis-markup.md
+- name: angeben
+  items:
+    - name: Häufig gestellte Fragen
+      items:
+        - name: Spracherkennung – Häufig gestellte Fragen
+          href: faq-stt.md
+        - name: 'Text-zu-Sprache: Häufig gestellte Fragen'
+          href: faq-text-to-speech.md
+        - name: 'Übersetzung: Häufig gestellte Fragen'
+          href: 'https://www.microsoft.com/en-us/translator/faq.aspx'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/912208-speech-service'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
+    - name: Datenschutz und Cookies
+      href: 'https://privacy.microsoft.com/privacystatement'
+    - name: Problembehandlung
+      href: troubleshooting.md
+    - name: Versenden Ihrer Anwendung
+      href: ship-application.md
+    - name: Versionshinweise
+      href: releasenotes.md
+    - name: Sprach-SDK – Lizenz
+      href: license.md
+    - name: SDK für sprachaktivierte Geräte – Lizenz
+      href: speech-devices-sdk-license.md
+    - name: Drittanbieterhinweise
+      href: third-party-notices.md

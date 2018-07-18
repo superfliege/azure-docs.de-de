@@ -1,12 +1,12 @@
 ---
-title: "StorSimple: Failover und Notfallwiederherstellung für eine StorSimple Cloud Appliance | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie für Ihr physisches Gerät der StorSimple 8000-Serie ein Failover auf ein Cloudgerät erfolgt."
+title: 'StorSimple: Failover und Notfallwiederherstellung für eine StorSimple Cloud Appliance | Microsoft-Dokumentation'
+description: Erfahren Sie, wie für Ihr physisches Gerät der StorSimple 8000-Serie ein Failover auf ein Cloudgerät erfolgt.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108328"
 ---
 # <a name="fail-over-to-your-storsimple-cloud-appliance"></a>Failover auf Ihre StorSimple Cloud Appliance
 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 18a3f3080c58e01117e0fc73adad76d28c298536
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 110f393e723c7e784a4bd7e79559dd9d55147140
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599431"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Leistung und Skalierbarkeit in Durable Functions (Azure Functions)
 
@@ -161,7 +162,7 @@ Bei der Planung der Verwendung von Durable Functions für eine Produktionsanwend
 > [!TIP]
 > Im Gegensatz zur Auffächerung nach außen sind Vorgänge zur Auffächerung nach innen auf einen einzelnen virtuellen Computer beschränkt. Wenn in Ihrer Anwendung das Muster „Auffächern nach außen/innen“ verwendet wird und Sie die Leistung im Hinblick auf die Auffächerung nach innen optimieren möchten, können Sie die Auffächerung der Aktivitätsfunktionen nach außen in mehrere [untergeordnete Orchestrierungen](durable-functions-sub-orchestrations.md) unterteilen.
 
-In der folgenden Tabelle sind die erwarteten *maximalen* Durchsatzzahlen für die zuvor beschriebenen Szenarien aufgeführt. „Instanz“ bezieht sich auf eine einzelne Instanz einer Orchestratorfunktion, die auf einem einzelnen kleinen ([A1](../virtual-machines/windows/sizes-general.md#a-series)) virtuellen Computer in Azure App Service ausgeführt wird. In allen Fällen wird angenommen, dass [erweiterte Sitzungen](#orchestrator-function-replay) aktiviert sind. Die tatsächlichen Ergebnisse können je nach den durch den Funktionscode ausgeführten CPU- oder E/A-Vorgängen variieren.
+In der folgenden Tabelle sind die erwarteten *maximalen* Durchsatzzahlen für die zuvor beschriebenen Szenarien aufgeführt. „Instanz“ bezieht sich auf eine einzelne Instanz einer Orchestratorfunktion, die auf einem einzelnen kleinen ([A1](../virtual-machines/windows/sizes-previous-gen.md#a-series)) virtuellen Computer in Azure App Service ausgeführt wird. In allen Fällen wird angenommen, dass [erweiterte Sitzungen](#orchestrator-function-replay) aktiviert sind. Die tatsächlichen Ergebnisse können je nach den durch den Funktionscode ausgeführten CPU- oder E/A-Vorgängen variieren.
 
 | Szenario | Maximaler Durchsatz |
 |-|-|

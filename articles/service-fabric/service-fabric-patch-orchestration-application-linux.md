@@ -12,13 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/22/2018
+ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: f5d9b39a91567dd04b4e8ca0cd580c58024bb2f2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 00e5f5a73973a34a8611143719c91a2b1ad0c8eb
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971265"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Patchen des Linux-Betriebssystems in Ihrem Service Fabric-Cluster
 
@@ -61,9 +62,9 @@ Die App für die Patchorchestrierung besteht aus den folgenden Teilkomponenten:
 ### <a name="ensure-that-your-azure-vms-are-running-ubuntu-1604"></a>Sicherstellen, dass die virtuellen Azure-Computer unter Ubuntu 16.04 ausgeführt werden
 Zum Zeitpunkt der Abfassung dieses Dokuments ist Ubuntu 16.04 (`Xenial Xerus`) die einzige unterstützte Version.
 
-### <a name="ensure-that-the-service-fabric-linux-cluster-is-version-61x-and-above"></a>Sicherstellen, dass Version 6.1.x oder höher des Service Fabric-Linux-Clusters verwendet wird
+### <a name="ensure-that-the-service-fabric-linux-cluster-is-version-62x-and-above"></a>Sicherstellen, dass Version 6.2.x oder höher des Service Fabric-Linux-Clusters verwendet wird
 
-Die App für die Patchorchestrierung für Linux verwendet bestimmte Features der Runtime, die nur in der Service Fabric-Runtimeversion 6.1.x und höher verfügbar sind.
+Die App für die Patchorchestrierung für Linux verwendet bestimmte Features der Runtime, die nur in der Service Fabric-Runtimeversion 6.2.x und höher verfügbar sind.
 
 ### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>Aktivieren des Reparatur-Manager-Diensts (falls dieser nicht bereits ausgeführt wird)
 
@@ -118,7 +119,9 @@ Für Ubuntu wird [unattended-upgrades](https://help.ubuntu.com/community/Automat
 
 ## <a name="download-the-app-package"></a>Herunterladen des App-Pakets
 
-Laden Sie die Anwendung über den [Downloadlink](https://go.microsoft.com/fwlink/?linkid=867984) herunter.
+Die Anwendung kann zusammen mit Installationsskripts über den [Archivlink](https://go.microsoft.com/fwlink/?linkid=867984) heruntergeladen werden.
+
+Die Anwendung im SFPKG-Format kann über den [SFPKG-Link](https://go.microsoft.com/fwlink/?linkid=867984&pc=sfpkg) heruntergeladen werden. Dies ist praktisch für die [Azure Resource Manager-basierte Anwendungsbereitstellung](service-fabric-application-arm-resource.md).
 
 ## <a name="configure-the-app"></a>Konfigurieren der App
 
@@ -319,6 +322,10 @@ F: **Führt die App für die Patchorchestrierung nach dem Upgrade die Bereinigun
 
 A. Ja, die Bereinigung ist Bestandteil der Schritte nach der Installation. 
 
+F: **Kann die App für die Patchorchestrierung für das Patchen des Entwicklungsclusters (Einzelknotencluster) verwendet werden?**
+
+A. Nein, die App für die Patchorchestrierung kann nicht für Patchvorgänge in Einzelknotenclustern verwendet werden. Diese Einschränkung ist entwurfsbedingt, da es zu Ausfallzeiten bei [Service Fabric-Systemdiensten](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services) oder anderen Kunden-Apps kommen kann, sodass ein Reparaturauftrag für einen Patch nie vom Reparatur-Manager genehmigt werden würde.
+
 ## <a name="troubleshooting"></a>Problembehandlung
 
 ### <a name="a-node-is-not-coming-back-to-up-state"></a>Ein Knoten wird nicht wieder in den betriebsbereiten Zustand versetzt.
@@ -360,5 +367,8 @@ Die App für die Patchorchestrierung sammelt Telemetriedaten zum Nachverfolgen v
 ### <a name="version-010"></a>Version 0.1.0
 - Private Vorschauversion
 
-### <a name="version-200-latest"></a>Version 2.0.0 (neueste Version)
+### <a name="version-200"></a>Version 2.0.0
 - Öffentliche Version
+
+### <a name="version-201-latest"></a>Version 2.0.1 (aktuellste Version)
+- Die App wurde mithilfe des neuesten Service Fabric-SDK erneut kompiliert.

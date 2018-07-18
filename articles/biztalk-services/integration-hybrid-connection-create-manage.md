@@ -2,10 +2,10 @@
 title: Erstellen und Verwalten von Hybridverbindungen | Microsoft Docs
 description: Erfahren Sie, wie Sie eine Hybridverbindung herstellen, die Verbindung verwalten und den Hybridverbindungs-Manager installieren. MABS, WABS
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: aac0546b-3bae-41e0-b874-583491a395ea
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26628844"
 ---
 # <a name="create-and-manage-hybrid-connections"></a>Erstellen und Verwalten von Hybridverbindungen
 

@@ -1,6 +1,6 @@
 ---
-title: "Serverprotokolle in Azure-Datenbank für PostgreSQL"
-description: "Dieser Artikel beschreibt, wie Azure Database for PostgreSQL Protokolle für Abfragen und Fehler generiert und wie die Protokollaufbewahrung konfiguriert wird."
+title: Serverprotokolle in Azure-Datenbank für PostgreSQL
+description: Dieser Artikel beschreibt, wie Azure Database for PostgreSQL Protokolle für Abfragen und Fehler generiert und wie die Protokollaufbewahrung konfiguriert wird.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -9,11 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: a8d560aa8906e3ba1f65758239b645cd1b1df032
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: bcca8ce8d11482dd8517992297b7e8a5b94ac8b1
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435489"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Serverprotokolle in Azure-Datenbank für PostgreSQL 
 Azure-Datenbank für PostgreSQL generiert Abfragen und Fehlerprotokolle. Der Zugriff auf Transaktionsprotokolle wird jedoch nicht unterstützt. Diese Abfrage- und Fehlerprotokolle dienen zur Identifizierung, Behebung und Reparatur von Konfigurationsfehlern und suboptimaler Leistung. Weitere Informationen finden Sie unter [Fehlerberichterstattung und -protokollierung](https://www.postgresql.org/docs/9.6/static/runtime-config-logging.html).
@@ -28,7 +29,7 @@ Die Protokolldateien rotieren jede Stunde bzw. bei einer Größe von 100 MB, je 
 ## <a name="configure-logging-for-azure-postgresql-server"></a>Konfigurieren der Protokollierung für den Azure PostgreSQL-Server
 Sie können die Abfrage- und Fehlerprotokollierung für Ihren Server aktivieren. Fehlerprotokolle können Informationen über „auto-vacuum“, Verbindungen und Prüfpunkte enthalten.
 
-Sie können die Abfrageprotokollierung für Ihre PostgreSQL-Datenbankinstanz durch Festlegung der folgenden zwei Serverparameter aktivieren: `log\_statement` und `log\_min\_duration\_statement`.
+Sie können die Abfrageprotokollierung für Ihre PostgreSQL-Datenbankinstanz durch Festlegung der folgenden zwei Serverparameter aktivieren: `log_statement` und `log_min_duration_statement`.
 
 Der Parameter **log\_statement** steuert, welche SQL-Anweisungen protokolliert werden. Es wird empfohlen, diesen Parameter auf ***Alle*** zu setzen, damit alle Anweisungen protokolliert werden. Der Standardwert lautet „Keine“.
 

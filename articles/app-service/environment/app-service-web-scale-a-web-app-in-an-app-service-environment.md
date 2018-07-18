@@ -2,7 +2,7 @@
 title: 'Gewusst wie: Skalieren von Apps in einer App Service-Umgebung'
 description: Skalierung einer Web-App in einer App Service-Umgebung
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: ccompy
 manager: stefsch
 editor: jimbe
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22986315"
 ---
 # <a name="scaling-apps-in-an-app-service-environment"></a>Skalieren von Apps in einer App Service-Umgebung
 In Azure App Service können üblicherweise drei Faktoren skaliert werden:

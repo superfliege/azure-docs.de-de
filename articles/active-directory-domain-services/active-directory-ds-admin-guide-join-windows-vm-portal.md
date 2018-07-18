@@ -1,30 +1,34 @@
 ---
-title: "Azure Active Directory Domain Services: Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne | Microsoft Docs"
+title: 'Azure Active Directory Domain Services: Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne | Microsoft Docs'
 description: Einbinden eines virtuellen Windows Server-Computers in Azure AD DS
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 29316313-c76c-4fb9-8954-5fa5ec82609e
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 06/21/2018
 ms.author: maheshu
-ms.openlocfilehash: 7b5c23f1f4b6180d8b664f1371ccfd8a075572e6
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 2929f85b738171f7fb7f5b66af90e4e2ab54f5d0
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317169"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne
 In diesem Artikel wird veranschaulicht, wie Sie mit dem Azure-Portal einen neuen virtuellen Windows Server-Computer bereitstellen. Anschließend erfahren Sie, wie Sie den virtuellen Computer in eine verwaltete Domäne von Azure Active Directory Domain Services (Azure AD DS) einbinden.
 
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
+
 ## <a name="step-1-create-a-windows-server-virtual-machine"></a>Schritt 1: Erstellen eines virtuellen Windows Server-Computers
-Gehen Sie wie folgt vor, um einen virtuellen Windows-Computer zu erstellen, der in das virtuelle Netzwerk eingebunden wird, in dem Sie Azure AD DS aktiviert haben:
+Führen Sie folgende Schritte durch, um einen virtuellen Windows-Computer zu erstellen, der in das virtuelle Netzwerk eingebunden wird, in dem Sie Azure AD DS aktiviert haben:
 
 1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
 2. Wählen Sie oben im linken Bereich die Option **Neu**.
@@ -66,29 +70,29 @@ Gehen Sie wie folgt vor, um einen virtuellen Windows-Computer zu erstellen, der 
 ## <a name="step-2-connect-to-the-windows-server-virtual-machine-by-using-the-local-administrator-account"></a>Schritt 2: Herstellen einer Verbindung mit dem virtuellen Windows Server-Computer über das lokale Administratorkonto
 Stellen Sie als Nächstes eine Verbindung mit dem neu erstellten virtuellen Windows Server-Computer her, damit dieser der Domäne beitreten kann. Verwenden Sie die Anmeldeinformationen des lokalen Administrators, die Sie beim Erstellen des virtuellen Computers angegeben haben.
 
-Gehen Sie wie folgt vor, um eine Verbindung mit dem virtuellen Computer herzustellen:
+Um eine Verbindung mit dem virtuellen Computer herzustellen, führen Sie die folgenden Schritte durch:
 
 1. Wählen Sie im Bereich **Übersicht** die Option **Verbinden**.  
     Eine Remotedesktopprotokoll-Datei (RDP-Datei) wird erstellt und heruntergeladen.
 
     ![Verbindung mit virtuellem Windows-Computer herstellen](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
 
-2. Öffnen Sie die heruntergeladene RDP-Datei, um eine Verbindung mit Ihrem virtuellen Computer herzustellen. Wählen Sie **Verbinden**, wenn die Aufforderung angezeigt wird.
-3. Geben Sie an der Anmeldeaufforderung Ihre **Anmeldeinformationen für den lokalen Administrator** ein, die Sie beim Erstellen des virtuellen Computers angegeben haben (z.B. *localhost\mahesh*).
-4. Falls Sie während des Anmeldeprozesses eine Zertifikatwarnung erhalten, können Sie mit der Verbindungsherstellung fortfahren, indem Sie **Ja** oder **Weiter** wählen.
+2. Öffnen Sie die heruntergeladene RDP-Datei, um eine Verbindung mit Ihrem virtuellen Computer herzustellen. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus.
+3. Geben Sie Ihre **Anmeldeinformationen für den lokalen Administrator** ein, die Sie beim Erstellen des virtuellen Computers angegeben haben (z.B. *localhost\mahesh*).
+4. Wenn während des Anmeldevorgangs eine Zertifikatwarnung angezeigt wird, klicken Sie auf **Ja** oder **Weiter**, um eine Verbindung herzustellen.
 
 Sie sollten Sie mit Ihren Anmeldeinformationen für den lokalen Administrator am neu erstellten virtuellen Windows-Computer angemeldet werden. Der nächste Schritt besteht darin, den virtuellen Computer in die Domäne einzubinden.
 
 
 ## <a name="step-3-join-the-windows-server-virtual-machine-to-the-azure-ad-ds-managed-domain"></a>Schritt 3: Einbinden des virtuellen Windows Server-Computers in die per Azure AD DS verwaltete Domäne
-Gehen Sie wie folgt vor, um den virtuellen Windows Server-Computer in die per Azure AD DS verwaltete Domäne einzubinden:
+Um den virtuellen Windows Server-Computer in die mit Azure AD DS verwalteten Domäne einzubinden, führen Sie folgende Schritte durch:
 
 1. Stellen Sie eine Verbindung mit dem virtuellen Windows Server-Computer her, wie in Schritt 2 gezeigt. Öffnen Sie auf dem **Startbildschirm** den **Server-Manager**.
 2. Wählen Sie im linken Bereich des **Server-Manager**-Fensters die Option **Lokaler Server**.
 
     ![Server-Manager-Fenster auf dem virtuellen Computer](./media/active-directory-domain-services-admin-guide/join-domain-server-manager.png)
 
-3. Wählen Sie unter **Eigenschaften** die Option **Arbeitsgruppe**. 
+3. Wählen Sie unter **Eigenschaften** die Option **Arbeitsgruppe**.
 4. Wählen Sie im Fenster **Systemeigenschaften** die Option **Ändern**, um die Domäne einzubinden.
 
     ![Fenster „Systemeigenschaften“](./media/active-directory-domain-services-admin-guide/join-domain-system-properties.png)
@@ -97,7 +101,7 @@ Gehen Sie wie folgt vor, um den virtuellen Windows Server-Computer in die per Az
 
     ![Domäne für den Beitritt angeben](./media/active-directory-domain-services-admin-guide/join-domain-system-properties-specify-domain.png)
 
-6. Sie werden aufgefordert, Ihre Anmeldeinformationen für den Domänenbeitritt einzugeben. Stellen Sie sicher, dass Sie die Anmeldeinformationen eines *Benutzers angeben, der zur Gruppe „AAD DC-Administratoren“ gehört*. Nur Mitglieder dieser Gruppen verfügen über die Berechtigungen, Computer in die verwaltete Domäne einzubinden.
+6. Sie werden aufgefordert, Ihre Anmeldeinformationen für den Domänenbeitritt einzugeben. Geben Sie die Anmeldeinformationen eines *Benutzers an, der zur Administratorengruppe für Azure AD-Domänencontroller gehört*. Nur Mitglieder dieser Gruppen verfügen über die Berechtigungen, Computer in die verwaltete Domäne einzubinden.
 
     ![Fenster von „Windows-Sicherheit“ zum Angeben von Anmeldeinformationen](./media/active-directory-domain-services-admin-guide/join-domain-system-properties-specify-credentials.png)
 
@@ -121,30 +125,30 @@ Gehen Sie wie folgt vor, um den virtuellen Windows Server-Computer in die per Az
 
 ## <a name="troubleshoot-joining-a-domain"></a>Problembehandlung für die Einbindung in eine Domäne
 ### <a name="connectivity-issues"></a>Konnektivitätsprobleme
-Versuchen Sie es mit einem der folgenden Ansätze, wenn der virtuelle Computer die Domäne nicht finden kann:
+Wenn der virtuelle Computer die Domäne nicht findet, versuchen Sie es mit den folgenden Schritten zur Problembehandlung:
 
-* Stellen Sie sicher, dass der virtuelle Computer mit dem gleichen virtuellen Netzwerk verbunden ist, in dem Sie Azure AD DS aktiviert haben. Wenn keine Verbindung besteht, kann der virtuelle Computer keine Verbindung mit der Domäne herstellen und ihr daher auch nicht beitreten.
+* Stellen Sie sicher, dass der virtuelle Computer mit dem gleichen virtuellen Netzwerk verbunden ist, in dem Azure AD DS aktiviert ist. Andernfalls kann der virtuelle Computer keine Verbindung mit der Domäne herstellen oder nicht in diese eingebunden werden.
 
-* Stellen Sie sicher, dass der virtuelle Computer mit einem virtuellen Netzwerk verbunden ist, das wiederum mit dem virtuellen Netzwerk verbunden ist, in dem Sie Azure AD DS aktiviert haben.
+* Überprüfen Sie, ob der virtuelle Computer mit einem virtuellen Netzwerk verbunden ist, das wiederum mit dem virtuellen Netzwerk verbunden ist, in dem Azure AD DS aktiviert ist.
 
-* Pingen Sie die Domäne unter Verwendung des Domänennamens der verwalteten Domäne (Beispiel: *ping contoso100.com*). Sollte das nicht möglich sein, pingen Sie die IP-Adressen für die Domäne, die auf der Seite angezeigt werden, auf der Sie Azure AD DS aktiviert haben (Beispiel: *ping 10.0.0.4*). Wenn Sie die IP-Adressen pingen können, aber nicht die Domäne, ist das DNS ggf. falsch konfiguriert. Überprüfen Sie, ob die IP-Adressen der Domäne für das virtuelle Netzwerk als DNS-Server konfiguriert sind.
+* Pingen Sie die Domäne unter Verwendung des DNS-Domänennamens der verwalteten Domäne (z.B. *ping contoso100.com*). Sollte das nicht möglich sein, pingen Sie die IP-Adressen für die Domäne, die auf der Seite angezeigt werden, auf der Sie Azure AD DS aktiviert haben (Beispiel: *ping 10.0.0.4*). Wenn Sie die IP-Adresse pingen können, aber nicht die Domäne, ist das DNS möglicherweise falsch konfiguriert. Überprüfen Sie, ob die IP-Adressen der Domäne für das virtuelle Netzwerk als DNS-Server konfiguriert sind.
 
 * Leeren Sie den DNS-Resolvercache im virtuellen Computer (*ipconfig /flushdns*).
 
 Wenn ein Fenster angezeigt wird, in dem Anmeldeinformationen für den Domänenbeitritt angefordert werden, bestehen keine Verbindungsprobleme.
 
 ### <a name="credentials-related-issues"></a>Probleme mit Anmeldeinformationen
-Probieren Sie es mit einem der folgenden Ansätze, wenn Probleme mit Anmeldeinformationen auftreten und ein Domänenbeitritt nicht möglich ist:
+Probieren Sie es mit den folgenden Schritten zur Problembehandlung, wenn Probleme mit Anmeldeinformationen auftreten und ein Domänenbeitritt nicht möglich ist:
 
-* Verwenden Sie das UPN-Format für die Angabe von Anmeldeinformationen. Der „SAMAccountName“ für Ihr Konto wird möglicherweise automatisch generiert, wenn mehrere Benutzer in Ihrem Mandanten das gleiche UPN-Präfix verwenden oder wenn Ihr UPN-Präfix übermäßig lang ist. Das Format „SAMAccountName“ für Ihr Konto ist möglicherweise anders als Sie erwarten bzw. unterscheidet sich von dem, was Sie in Ihrer lokalen Domäne verwenden.
+* Verwenden Sie das UPN-Format für die Angabe von Anmeldeinformationen. Der „SAMAccountName“ für Ihr Konto wird möglicherweise automatisch generiert, wenn mehrere Benutzer in Ihrem Mandanten das gleiche UPN-Präfix verwenden oder wenn Ihr UPN-Präfix zu lang ist. In diesen Fällen ist das Format „SAMAccountName“ für Ihr Konto möglicherweise anders als Sie erwarten bzw. unterscheidet sich von dem, was Sie in Ihrer lokalen Domäne verwenden.
 
 * Versuchen Sie, die Anmeldeinformationen eines Benutzerkontos zu verwenden, das zur Gruppe *AAD DC-Administratoren* gehört.
 
-* Stellen Sie sicher, dass Sie die [Aktivierung der Kennwortsynchronisierung](active-directory-ds-getting-started-password-sync.md) gemäß den Schritten durchgeführt haben, die im Leitfaden zu den ersten Schritten angegeben sind.
+* Überprüfen Sie, ob Sie die [Kennwortsynchronisierung für Ihre verwaltete Domäne aktiviert haben](active-directory-ds-getting-started-password-sync.md).
 
-* Verwenden Sie den UPN des Benutzers bei der Anmeldung exakt so, wie er in Azure AD konfiguriert ist (z.B. *bob@domainservicespreview.onmicrosoft.com*).
+* Vergewissern Sie sich, dass Sie den UPN des Benutzers bei der Anmeldung exakt so verwenden, wie er in Azure AD konfiguriert ist (z.B. *bob@domainservicespreview.onmicrosoft.com*).
 
-* Stellen Sie sicher, dass Sie lange genug warten, damit die Kennwortsynchronisierung abgeschlossen ist, wie im Leitfaden „Erste Schritte“ angegeben.
+* Warten Sie so lange, bis die Kennwortsynchronisierung abgeschlossen ist, wie im Leitfaden für die ersten Schritte angegeben wird.
 
 ## <a name="related-content"></a>Verwandte Inhalte
 * [Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals](active-directory-ds-getting-started.md)

@@ -6,14 +6,15 @@ manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: c70279bd52f7b0b0e0cbc27742eca93d9af5e630
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 3c68b18a96ae79cd32cd3059eab837e6051847dd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647417"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Verschieben von Daten zwischen horizontal hochskalierten Clouddatenbanken
 Wenn Sie Software- oder Dienstentwickler sind, und plötzlich eine enorme Nachfrage nach Ihrer App entsteht, müssen Sie das Wachstum anpassen. So fügen Sie weitere Datenbanken (Shards) hinzu. Wie verteilen Sie die Daten ohne Unterbrechung der Datenintegrität neu auf die neuen Datenbanken? Verschieben Sie Daten mit dem **Split-Merge-Tool** aus eingeschränkten Datenbanken in die neuen Datenbanken.  

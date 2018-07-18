@@ -1,20 +1,17 @@
 ---
 title: Installieren eines Linux-Masterzielservers für ein Failover von Azure auf lokale Instanzen | Microsoft-Dokumentation
 description: Bevor Sie die Schritte zum erneuten Schützen eines virtuellen Linux-Computers ausführen können, benötigen Sie einen Linux-Masterzielserver. Hier wird beschrieben, wie Sie die Installation durchführen.
-services: site-recovery
-documentationcenter: ''
 author: nsoneji
-manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: a18bc242d10c9eb287d0f3645490acb9ca9fec2a
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 4443d8fcbf40240e1a7bd718416e522192b4efb3
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072435"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921068"
 ---
 # <a name="install-a-linux-master-target-server"></a>Installieren eines Linux-Masterzielservers
 Nach dem Failover Ihrer virtuellen Computer zu Azure können Sie für die virtuellen Computer ein Failback zum lokalen Standort durchführen. Für ein Failback müssen Sie den virtuellen Computer von Azure zum lokalen Standort erneut schützen. Für diesen Prozess benötigen Sie einen lokalen Masterzielserver, der den Datenverkehr empfängt. 
@@ -243,7 +240,7 @@ Führen Sie die folgenden Schritte aus, um einen Aufbewahrungsdatenträger zu er
 
 2. Ermitteln Sie mit dem Befehl **multipath -ll** die Multipfad-ID des Aufbewahrungsdatenträgers: **multipath -ll**
 
-    ![Multipfad-ID](./media/vmware-azure-install-linux-master-target/image22.png)
+    ![Multipfad-ID](./media/vmware-azure-install-linux-master-target/image27.png)
 
 3. Formatieren Sie das Laufwerk, und erstellen Sie auf dem neuen Laufwerk ein Dateisystem: **mkfs.ext4 /dev/mapper/<Multipfad-ID des Aufbewahrungsdatenträgers>**.
     

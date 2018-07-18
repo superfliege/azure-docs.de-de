@@ -3,7 +3,7 @@ title: 'Tutorial: Erstellen und Verwalten einer Azure-VM-Skalierungsgruppe | Mic
 description: Hier erfahren Sie, wie Sie mithilfe von Azure PowerShell eine VM-Skalierungsgruppe erstellen und einige allgemeine Verwaltungsaufgaben ausführen, um beispielsweise eine Instanz zu starten und zu beenden oder die Kapazität der Skalierungsgruppe zu ändern.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/18/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 91174f14cb6a49e560504e01ba47e7121f869080
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 6e3262ffbf31c18611a82c8293c63e13e572e30c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366255"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38531561"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Tutorial: Erstellen und Verwalten einer VM-Skalierungsgruppe mit Azure PowerShell
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Während des Lebenszyklus einer Skalierungsgruppe müssen unter Umständen verschiedene Verwaltungsaufgaben durchgeführt werden. In diesem Tutorial lernen Sie Folgendes:
@@ -146,7 +146,7 @@ Nach der Anmeldung bei der VM-Instanz können Sie nach Bedarf einige manuelle Ko
 
 
 ## <a name="understand-vm-instance-images"></a>Grundlegendes zu VM-Instanzimages
-Wenn Sie in einem vorherigen Schritt eine Skalierungsgruppenkonfiguration mit [Set-AzureRmVmssStorageProfile](/powershell/module/AzureRM.Compute/Set-AzureRmVmssStorageProfile) definiert haben, haben Sie ein Windows Server 2016 Datacenter-Image verwendet. Im Azure Marketplace stehen zahlreiche Images zur Verfügung, die Sie zum Erstellen von VM-Instanzen verwenden können. Verwenden Sie den Befehl [Get-AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher), um eine Liste mit den verfügbaren Publishern anzuzeigen.
+Im Azure Marketplace stehen zahlreiche Images zur Verfügung, die Sie zum Erstellen von VM-Instanzen verwenden können. Verwenden Sie den Befehl [Get-AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher), um eine Liste mit den verfügbaren Publishern anzuzeigen.
 
 ```azurepowershell-interactive
 Get-AzureRmVMImagePublisher -Location "EastUS"

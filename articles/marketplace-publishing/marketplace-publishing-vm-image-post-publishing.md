@@ -19,6 +19,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "29949020"
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>Postproduktionsleitfaden für Virtual Machine-Angebote im Azure Marketplace
 In diesem Artikel wird beschrieben, wie Sie ein Virtual Machine-Liveangebot im Azure Marketplace aktualisieren können. Sie werden durch die Schritte zum Hinzufügen einer oder mehrerer neuer SKUs zu einem vorhandenen Angebot geführt. Außerdem wird beschrieben, wie Sie ein VM-Liveangebot oder eine SKU vom Marketplace entfernen.

@@ -3,7 +3,7 @@ title: Zurücksetzen eines lokalen Windows-Kennworts ohne Azure-Agent | Microsof
 description: 'Gewusst wie: Zurücksetzen des Kennworts eines lokalen Windows-Benutzerkontos, wenn der Azure-Gast-Agent auf einem virtuellen Computer nicht installiert ist oder nicht ausgeführt wird.'
 services: virtual-machines-windows
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 ms.assetid: cf353dd3-89c9-47f6-a449-f874f0957013
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
-ms.author: iainfou
-ms.openlocfilehash: ad892aee646b1a5f8c96d5bdeca24b7a0d88f38e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: cynthn
+ms.openlocfilehash: 791ac9ca7795b5317c7b6e12a67327e7710a71ff
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932516"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Zurücksetzen eines lokalen Windows-Kennworts im Offlinemodus für einen virtuellen Azure-Computer
 Sie können das lokale Windows-Kennwort eines virtuellen Computers in Azure im [Azure-Portal oder mithilfe von Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zurücksetzen, sofern der Azure-Gast-Agent installiert ist. Diese Methode ist die einfachste Möglichkeit zum Zurücksetzen eines Kennworts für einen virtuellen Azure-Computer. Wenn der Azure-Gast-Agent nicht reagiert oder nach dem Hochladen eines benutzerdefinierten Images nicht installiert wird, können Sie ein Windows-Kennwort manuell zurücksetzen. In diesem Artikel wird erläutert, wie das Kennwort eines lokalen Kontos durch Anfügen des virtuellen Quellbetriebssystem-Datenträgers an einen anderen virtuellen Computer zurückgesetzt wird. Die in diesem Artikel beschriebenen Schritte gelten nicht für Windows-Domänencontroller. 
@@ -93,7 +94,7 @@ Versuchen Sie zunächst immer, ein Kennwort im [Azure-Portal oder mithilfe von A
      ```
      
      ![Erstellen von „gpt.ini“](./media/reset-local-password-without-agent/create_gpt_ini.png)
-5. Erstellen Sie `scripts.ini` in `\Windows\System32\GroupPolicy\Machine\Scripts`. Stellen Sie sicher, dass ausgeblendete Ordner angezeigt werden. Erstellen Sie gegebenenfalls den Ordner `Machine` oder `Scripts`.
+5. Erstellen Sie `scripts.ini` in `\Windows\System32\GroupPolicy\Machine\Scripts\Startup`. Stellen Sie sicher, dass ausgeblendete Ordner angezeigt werden. Erstellen Sie gegebenenfalls den Ordner `Machine` oder `Scripts`.
    
    * Fügen Sie in der erstellten Datei `scripts.ini` die folgenden Zeilen ein:
      
@@ -133,7 +134,7 @@ Versuchen Sie zunächst immer, ein Kennwort im [Azure-Portal oder mithilfe von A
      ![Kopieren des Datenträger-URI](./media/reset-local-password-without-agent/copy_source_vhd_uri.png)
 9. Erstellen Sie einen virtuellen Computer über den Betriebssystemdatenträger des virtuellen Quellcomputers:
    
-   * Verwenden Sie [diese Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd), um einen virtuellen Computer aus einer speziellen VHD zu erstellen. Klicken Sie auf die Schaltfläche `Deploy to Azure`, um das Azure-Portal mit den automatisch ausgefüllten Werten der Vorlage zu öffnen.
+   * Verwenden Sie [diese Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-new-or-existing-vnet), um einen virtuellen Computer aus einer speziellen VHD zu erstellen. Klicken Sie auf die Schaltfläche `Deploy to Azure`, um das Azure-Portal mit den automatisch ausgefüllten Werten der Vorlage zu öffnen.
    * Wenn alle vorherigen Einstellungen für den virtuellen Computer beibehalten werden sollen, wählen Sie *Vorlage bearbeiten* aus, um das vorhandene VNET, das vorhandene Subnetz, die vorhandene Netzwerkkarte oder die vorhandene öffentliche IP-Adresse anzugeben.
    * Fügen Sie im Parametertextfeld `OSDISKVHDURI` den URI der Quell-VHD aus dem vorherigen Schritt ein:
      

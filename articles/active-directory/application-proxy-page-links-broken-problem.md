@@ -3,22 +3,24 @@ title: Links auf der Seite funktionieren nicht für eine Anwendungsproxyanwendun
 description: Behandeln von Problemen mit fehlerhaften Links in Anwendungsproxyanwendungen, die Sie in Azure AD integriert haben
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 7c505080e6b6144ab3cf24ad89bb084efbb77c29
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.date: 05/18/2018
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: 7da9642281db07d873c4db234b8316c8248ef7f4
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34155463"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330902"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Links auf der Seite funktionieren nicht für eine Anwendungsproxyanwendung
 

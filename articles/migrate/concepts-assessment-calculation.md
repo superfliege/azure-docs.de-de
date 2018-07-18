@@ -4,14 +4,14 @@ description: Bietet eine Übersicht über Bewertungsberechnungen im Azure Migrat
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/02/2017
+ms.date: 06/20/2018
 ms.author: raynew
-ms.openlocfilehash: f3ac9c328db1130ea25ac63170ee7de35fb67d16
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 6fd0af65e63e9fc1c09232cd1e002da105a9d086
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779344"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287887"
 ---
 # <a name="assessment-calculations"></a>Bewertungsberechnungen
 
@@ -69,12 +69,12 @@ In vCenter Server als *Sonstige* angegebenes Betriebssystem | In diesem Fall kan
 
 ## <a name="sizing"></a>Festlegen der Größe
 
-Nachdem ein Computer als bereit für Azure markiert wurde, bestimmt Azure Migrate die Größe des virtuellen Computers und der zugehörigen Datenträger für Azure. Wenn als Größenkriterium in den Bewertungseigenschaften die leistungsbasierte Größenanpassung angegeben ist, berücksichtigt Azure Migrate den Leistungsverlauf des Computers, um eine VM-Größe in Azure zu ermitteln. Diese Methode ist hilfreich in Szenarien, bei denen Sie die lokalen virtuellen Computer überbelegt haben, die Auslastung jedoch gering ist, und Sie die Größe der virtuellen Computer in Azure optimal anpassen möchten, um Kosten zu sparen.
+Nachdem ein Computer als bereit für Azure markiert wurde, bestimmt Azure Migrate die Größe des virtuellen Computers und der zugehörigen Datenträger für Azure. Wenn als Größenkriterium in den Bewertungseigenschaften die leistungsbasierte Größenanpassung angegeben ist, berücksichtigt Azure Migrate den Leistungsverlauf des Computers, um die VM-Größe und den Datenträgertyp in Azure zu ermitteln. Diese Methode ist hilfreich in Szenarien, bei denen Sie die lokalen virtuellen Computer überbelegt haben, die Auslastung jedoch gering ist, und Sie die Größe der virtuellen Computer in Azure optimal anpassen möchten, um Kosten zu sparen.
 
 > [!NOTE]
 > Azure Migrate erfasst den Leistungsverlauf von lokalen virtuellen Computern von vCenter Server. Stellen Sie für eine genaue Größenanpassung sicher, dass die Statistikeinstellung in vCenter Server auf Stufe 3 festgelegt ist, und warten Sie mindestens einen Tag, bevor Sie die Ermittlung der lokalen virtuellen Computer starten. Wenn die Statistikeinstellung in vCenter Server auf einen Wert unter 3 festgelegt ist, werden keine Leistungsdaten für Datenträger und Netzwerk erfasst.
 
-Wenn der Leistungsverlauf der VM-Skalierung nicht geprüft werden und der virtuelle Computer unverändert zu Azure migriert werden soll, können Sie das Größenkriterium *Wie lokal* angeben. Azure Migrate legt dann die Größe der virtuellen Computer basierend auf der lokalen Konfiguration ohne Berücksichtigung der Nutzungsdaten fest. Die Datenträgergrößenanpassung basiert in diesem Fall weiterhin auf Leistungsdaten.
+Wenn der Leistungsverlauf der VM-Skalierung nicht geprüft werden und der virtuelle Computer unverändert zu Azure migriert werden soll, können Sie das Größenkriterium *Wie lokal* angeben. Azure Migrate legt dann die Größe der virtuellen Computer basierend auf der lokalen Konfiguration ohne Berücksichtigung der Nutzungsdaten fest. Die Größenanpassung für den Datenträger erfolgt in diesem Fall basierend auf dem Storage-Typ, den Sie in den Bewertungseigenschaften angeben (Standard-Datenträger oder Premium-Datenträger).
 
 ### <a name="performance-based-sizing"></a>Leistungsbasierte Größenanpassung
 
@@ -103,25 +103,13 @@ Bei der leistungsbasierten Größenanpassung prüft Azure Migrate zunächst die 
     - Wenn mehrere geeignete Azure-VM-Größen vorhanden sind, wird die mit den geringsten Kosten empfohlen.
 
 ### <a name="as-on-premises-sizing"></a>Größenanpassung vom Typ „Wie lokal“
-Wenn als Größenanpassungskriterium *Wie lokal* angegeben ist, berücksichtigt Azure Migrate den Leistungsverlauf der virtuellen Computer nicht und ordnet virtuelle Computer basierend auf der lokal zugeordneten Größe zu. Für die Datenträger-Größenanpassung wird der Leistungsverlauf der Datenträger allerdings berücksichtigt, um Standard- oder Premium-Datenträger zu empfehlen.  
-- **Speicher**: Azure Migrate ordnet jeden an den Computer angefügten Datenträger einem Datenträger in Azure zu.
-
-    > [!NOTE]
-    > Azure Migrate unterstützt bei der Bewertung nur verwaltete Datenträger.
-
-    - Für die effektiven E/A-Vorgänge pro Sekunde (IOPS) der Datenträger und den effektiven Durchsatz (MBit/s) multipliziert Azure Migrate die Datenträger-IOPS und den Durchsatz mit dem Komfortfaktor. Basierend auf den effektiven IOPS- und Durchsatzwerten bestimmt Azure Migrate, ob der Datenträger einem Standard- oder Premium-Datenträger in Azure zugeordnet werden soll.
-    - Wenn Azure Migrate keinen Datenträger mit den erforderlichen IOPS- und Durchsatzwerten finden kann, wird der Computer als ungeeignet für Azure gekennzeichnet. [Erfahren Sie mehr](../azure-subscription-service-limits.md#storage-limits) über Azure-Grenzwerte pro Datenträger und virtuellem Computer.
-    - Wenn mehrere geeignete Datenträger gefunden werden, wählt Azure Migrate diejenigen aus, die die Speicherredundanzmethode sowie den in den Bewertungseinstellungen festgelegten Speicherort unterstützen.
-    - Falls mehrere geeignete Datenträger vorhanden sind, werden die mit den geringsten Kosten ausgewählt.
-    - Wenn keine Leistungsdaten für Datenträger verfügbar sind, werden alle Datenträger Standard-Datenträgern in Azure zugeordnet.
-- **Netzwerk:** Für jeden Netzwerkadapter wird ein Netzwerkadapter in Azure empfohlen.
-- **Compute:** Azure Migrate prüft die Anzahl der Kerne und die Arbeitsspeichergröße des lokalen virtuellen Computers und empfiehlt einen virtuellen Azure-Computer mit der gleichen Konfiguration. Wenn mehrere geeignete Azure-VM-Größen vorhanden sind, wird die mit den geringsten Kosten empfohlen. Nutzungsdaten für CPU- und Arbeitsspeicher werden nicht als lokale Größenanpassung angesehen.
+Wenn als Größenkriterium die Größenanpassung vom Typ *Wie lokal* angegeben ist, berücksichtigt Azure Migrate den Leistungsverlauf der virtuellen Computer und Datenträger nicht und ordnet einer VM SKU basierend auf der lokal zugeordneten Größe zu. Analog dazu berücksichtigt Azure Migrate bei der Größenanpassung des Datenträgers den Storage-Typ, der in den Bewertungseigenschaften angegeben wurde (Standard oder Premium), und empfiehlt einen entsprechenden Datenträgertyp. Der Standard-Storage-Typ ist Premium.
 
 ### <a name="confidence-rating"></a>Zuverlässigkeitsstufe
 
 Jeder Bewertung in Azure Migrate wird eine Zuverlässigkeitsstufe zugeordnet. Die Skala reicht von einem Stern (niedrigster Wert) bis zu fünf Sternen (höchster Wert). Die Zuverlässigkeitsstufe wird einer Bewertung auf der Grundlage der Verfügbarkeit von Datenpunkten zugeordnet, die zum Berechnen der Bewertung erforderlich sind. Anhand der Zuverlässigkeitsstufe können Sie die Zuverlässigkeit der von Azure Migrate bereitgestellten Größenempfehlungen besser einschätzen.
 
-Bei Verwendung der leistungsbasierten Größenanpassung des virtuellen Computers benötigt Azure Migrate Nutzungsdaten für CPU und Arbeitsspeicher. Außerdem werden bei der Größenanpassung für jeden an den virtuellen Computer angefügten Datenträger Informationen zu den Lese-/Schreib-IOPS sowie zum Durchsatz benötigt. Analog dazu benötigt Azure Migrate für jeden Netzwerkadapter, der an den virtuellen Computer angefügt ist, Informationen zu ein- und ausgehenden Netzwerkdaten, um die leistungsbasierte Größenanpassung durchführen zu können. Steht eine der oben aufgeführten Nutzungsangaben in vCenter Server nicht zur Verfügung, ist die Größenempfehlung von Azure Migrate unter Umständen nicht zuverlässig. Die Zuverlässigkeitsstufe für die Bewertung ist abhängig davon, wie viele Datenpunkte verfügbar sind (in Prozent), wie es nachfolgend angegeben ist:
+Die Zuverlässigkeitsstufe einer Bewertung ist besonders bei Bewertungen hilfreich, bei denen die leistungsbasierte Größenanpassung als Größenkriterium verwendet wird. Bei Verwendung der leistungsbasierten Größenanpassung benötigt Azure Migrate Nutzungsdaten für CPU und Arbeitsspeicher des virtuellen Computers. Außerdem werden für jeden an den virtuellen Computer angefügten Datenträger Informationen zu IOPS und Durchsatzdaten benötigt. Analog dazu benötigt Azure Migrate für jeden Netzwerkadapter, der an einen virtuellen Computer angefügt ist, Informationen zu ein- und ausgehenden Netzwerkdaten, um die leistungsbasierte Größenanpassung durchführen zu können. Steht eine der oben aufgeführten Nutzungsangaben in vCenter Server nicht zur Verfügung, ist die Größenempfehlung von Azure Migrate unter Umständen nicht zuverlässig. Die Zuverlässigkeitsstufe für die Bewertung ist abhängig davon, wie viele Datenpunkte verfügbar sind (in Prozent), wie es nachfolgend angegeben ist:
 
    **Verfügbarkeit von Datenpunkten** | **Zuverlässigkeitsstufe**
    --- | ---
@@ -144,7 +132,7 @@ Dass für eine Bewertung nicht alle Datenpunkte verfügbar sind, kann folgende U
 
 Nach Abschluss der Größenempfehlungen berechnet Azure Migrate die Computer- und Speicherkosten nach der Migration.
 
-- **Computekosten**: Azure Migrate berechnet anhand der empfohlenen Azure-VM-Größe mithilfe der Abrechnungs-API die monatlichen Kosten für den virtuellen Computer. Bei der Berechnung werden Betriebssystem-, Software Assurance-, Standort- und Währungseinstellungen berücksichtigt. Die Kosten aller Computer werden zusammengefasst, um die monatlichen Gesamtcomputekosten zu berechnen.
+- **Computekosten**: Azure Migrate berechnet anhand der empfohlenen Azure-VM-Größe mithilfe der Abrechnungs-API die monatlichen Kosten für den virtuellen Computer. Bei der Berechnung werden Betriebssystem, Software Assurance, reservierte Instanzen, VM-Betriebszeit, Standort und Währungseinstellungen berücksichtigt. Die Kosten aller Computer werden zusammengefasst, um die monatlichen Gesamtcomputekosten zu berechnen.
 - **Speicherkosten**: Die monatlichen Speicherkosten für einen Computer werden berechnet, indem die monatlichen Kosten aller an den Computer angefügten Datenträger zusammengefasst werden. Azure Migrate berechnet die gesamten monatlichen Speicherkosten durch Aggregieren der Speicherkosten aller Computer. Derzeit werden bei der Berechnung keine Angebote berücksichtigt, die in den Bewertungseinstellungen angegeben sind.
 
 Kosten werden in der Währung angezeigt, die in den Bewertungseinstellungen festgelegt ist.

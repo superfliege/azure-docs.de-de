@@ -1,24 +1,20 @@
 ---
-title: "Azure Backup Server schützt den Systemstatus und führt Bare-Metal-Wiederherstellungsvorgänge durch | Microsoft-Dokumentation"
+title: Azure Backup Server schützt den Systemstatus und stellt Bare-Metal-Sicherungen wieder her
 description: Verwenden Sie Azure Backup Server, um Ihren Systemstatus zu sichern und Bare-Metal-Recovery-Schutz (BMR) zu bieten.
 services: backup
-documentationcenter: 
 author: markgalioto
 manager: carmonm
-keywords: 
-ms.assetid: 
+keywords: ''
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.targetplatform: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: markgal,masaran
-ms.openlocfilehash: 30f70a702d7d9a3e1196c04096708c035e406607
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: markgal
+ms.openlocfilehash: d35f8667cb1ca9a0b3abd08450ebc647d6d12276
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607207"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Sichern des Systemstatus und Bare-Metal-Wiederherstellung mit Azure Backup Server
 
@@ -33,12 +29,12 @@ Azure Backup Server sichert den Systemstatus und bietet Bare-Metal-Recovery-Schu
 
 In der folgenden Tabelle wird zusammengefasst, was Sie sichern und wiederherstellen können. Ausführliche Informationen zu App-Versionen, die mit der Systemstatus- und BMR-Sicherung geschützt werden können, finden Sie im Artikel dazu, [was mit Azure Backup Server gesichert wird](backup-mabs-protection-matrix.md).
 
-|Sicherung|Problem|Wiederherstellung aus Azure Backup Server-Sicherung|Wiederherstellung aus einer Systemstatussicherung|BMR|
+|Backup|Problem|Wiederherstellung aus Azure Backup Server-Sicherung|Wiederherstellung aus einer Systemstatussicherung|BMR|
 |----------|---------|---------------------------|------------------------------------|-------|
 |**Dateidaten**<br /><br />Reguläre Datensicherung<br /><br />BMR-/Systemstatussicherung|Verlust von Dateidaten|J|N|N|
 |**Dateidaten**<br /><br />Azure Backup Server-Sicherung von Dateidaten<br /><br />BMR-/Systemstatussicherung|Verlust oder Beschädigung des Betriebssystems|N|J|J|
 |**Dateidaten**<br /><br />Azure Backup Server-Sicherung von Dateidaten<br /><br />BMR-/Systemstatussicherung|Verlust eines Servers (Datenvolumes intakt)|N|N|J|
-|**Dateidaten**<br /><br />Azure Backup Server-Sicherung von Dateidaten<br /><br />BMR-/Systemstatussicherung|Verlust eines Servers (Verlust von Datenvolumes)|J|Nein|Ja (BMR, gefolgt von regulärer Wiederherstellung gesicherter Dateidaten)|
+|**Dateidaten**<br /><br />Azure Backup Server-Sicherung von Dateidaten<br /><br />BMR-/Systemstatussicherung|Verlust eines Servers (Verlust von Datenvolumes)|J|Nein |Ja (BMR, gefolgt von regulärer Wiederherstellung gesicherter Dateidaten)|
 |**SharePoint-Daten**:<br /><br />Azure Backup Server-Sicherung von Farmdaten<br /><br />BMR-/Systemstatussicherung|Verlust von Website, Listen, Listenelementen, Dokumenten|J|N|N|
 |**SharePoint-Daten**:<br /><br />Azure Backup Server-Sicherung von Farmdaten<br /><br />BMR-/Systemstatussicherung|Verlust oder Beschädigung des Betriebssystems|N|J|J|
 |**SharePoint-Daten**:<br /><br />Azure Backup Server-Sicherung von Farmdaten<br /><br />BMR-/Systemstatussicherung|Notfallwiederherstellung|N|N|N|
@@ -100,7 +96,7 @@ Nach Abschluss der Sicherung wird die Datei auf den Backup Server-Computer über
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-1.  **Stellen Sie Azure Backup Server bereit**. Überprüfen Sie, ob Backup Server ordnungsgemäß bereitgestellt ist. Weitere Informationen finden Sie unter:
+1.  **Stellen Sie Azure Backup Server bereit**. Überprüfen Sie, ob Backup Server ordnungsgemäß bereitgestellt ist. Weitere Informationen finden Sie unter 
     * [Systemanforderungen für Azure Backup Server](http://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites)
     * [Backup Server-Schutzmatrix](backup-mabs-protection-matrix.md)
 

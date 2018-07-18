@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: b2f33a8dce441312e74688ca766ab65c028451d9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 75709e099c6126997d91bf4b679de473fc75a485
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064408"
 ---
 # <a name="understanding-cost-management-reports"></a>Grundlegendes zu Kostenverwaltungsberichten
 
@@ -135,7 +136,7 @@ Jeder nummerierte Bereich in der vorherigen Abbildung wird in den folgenden Info
     Verwenden Sie „Amortisierung“ in Kostenzuteilungsberichten zum Anzeigen von nicht nutzungsbasierten Dienstgebühren oder einmalig zu zahlenden Kosten und zur gleichmäßigen Verteilung dieser Kosten während ihrer Lebensdauer. Beispiele für die einmalige Gebühren:
     - Jährliche Supportgebühren
     - Jährliche Gebühren für Sicherheitskomponenten
-    - Gebühren für den Kauf von reservierten VM-Instanzen
+    - Gebühren für den Kauf von reservierten Instanzen
     - Einige Azure Marketplace-Elemente
 
   Wählen Sie unter Amortisierung die Option **Amortized cost** (Amortisierte Kosten) oder **Actual Cost** (Istkosten) aus.
@@ -175,6 +176,10 @@ Jeder nummerierte Bereich in der vorherigen Abbildung wird in den folgenden Info
 
     Verwenden Sie „Aktionen“ zum Speichern, Exportieren oder Planen des Berichts.
 
+15. **Richtlinie**
+
+    Einige Berichte enthalten eine Richtlinie zur Berechnung der voraussichtlichen geplanten Kosten, die jedoch nicht abgebildet sind. In diesen Berichten zeigt die Richtlinie **Konsolidiert** Empfehlungen für alle Konten und Abonnements unter der aktuellen Entität wie z. B. Microsoft-Registrierung oder AWS-Zahlender an. Die Richtlinie **Eigenständig** zeigt Empfehlungen für ein Konto oder ein Abonnement an, als ob keine anderen Abonnements vorhanden wären. Die Richtlinie, die Sie auswählen, hängt von der Optimierungsstrategie Ihrer Organisation ab. Kostenprojektionen basieren auf den letzten 30 Tagen der Nutzung.
+
 ## <a name="save-and-schedule-reports"></a>Speichern und Planen von Berichten
 
 Nachdem Sie einen Bericht erstellt haben, können Sie ihn zur späteren Verwendung speichern. Gespeicherte Berichte stehen unter **Meine Tools** > **Meine Berichte** zur Verfügung. Wenn Sie Änderungen an einen vorhandenen Bericht vornehmen und speichern, wird der Bericht als neue Version gespeichert. Sie können ihn aber auch als neuen Bericht speichern.
@@ -198,4 +203,5 @@ Klicken Sie in einem geöffneten Bericht auf **Aktionen**, und wählen Sie dann 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Falls Sie das erste Tutorial zu Kostenverwaltung noch nicht abgeschlossen haben, lesen Sie es unter [Überprüfen der Nutzung und der Kosten](tutorial-review-usage.md).
+- Lesen Sie [Verwenden von Cost Management-Berichten](use-reports.md), um mehr über die in Cloudyn enthaltenen Berichte zu erfahren.
+- Erfahren Sie, wie Sie Berichte zum Erstellen von [Dashboards](dashboards.md) verwenden.

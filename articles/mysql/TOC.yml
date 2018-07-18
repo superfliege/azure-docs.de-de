@@ -75,6 +75,8 @@
           href: concepts-firewall-rules.md
         - name: Konfigurieren von SSL
           href: concepts-ssl-connection-security.md
+        - name: VNet
+          href: concepts-data-access-and-security-vnet.md
     - name: Geschäftskontinuität
       items:
         - name: Übersicht
@@ -89,6 +91,10 @@
           href: concepts-compatibility.md
         - name: Anwendungsentwicklung
           href: concepts-database-application-development.md
+    - name: Replikation
+      items:
+        - name: Replikation eingehender Daten
+          href: concepts-data-in-replication.md
 - name: Anleitungen
   items:
     - name: Verwalten eines Servers
@@ -141,18 +147,30 @@
       items:
         - name: Erstellen von Warnungen zu Metriken
           href: howto-alert-on-metric.md
+    - name: Replikation
+      items:
+        - name: Konfigurieren der Replikation eingehender Daten
+          href: howto-data-in-replication.md
     - name: Problembehandlung
       items:
         - name: Beheben von Problemen mit der Abfrageleistung
           href: howto-troubleshoot-query-performance.md
         - name: Verwenden von Ansichten im Systemschema
           href: howto-troubleshoot-sys-schema.md
+    - name: Virtual Network
+      items:
+        - name: Azure-Portal
+          href: howto-manage-vnet-using-portal.md
+        - name: Azure-Befehlszeilenschnittstelle
+          href: howto-manage-vnet-using-cli.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/mysql
     - name: REST-API
       href: /rest/api/mysql
+    - name: Gespeicherte Prozeduren für die Replikation eingehender Daten
+      href: reference-data-in-stored-procedures.md
 - name: angeben
   items:
     - name: Bereitstellungsvorlagen
@@ -166,7 +184,19 @@
     - name: Stack Overflow
       href: 'http://stackoverflow.com/questions/tagged/azure-database-mysql'
     - name: Videos
-      href: videos.md
+      items:
+        - name: Produktvideos
+          href: videos.md
+        - name: Videoserie mit Anleitungen
+          items:
+            - name: Informationen zu Produktfeatures und -vorteilen
+              href: 'https://aka.ms/mysql-intro-vid'
+            - name: Migrieren Ihrer MySQL-App zu Azure
+              href: 'https://aka.ms/mysql-migrate-vid'
+            - name: Erstellen und Bereitstellen von Web-Apps
+              href: 'https://aka.ms/mysql-webapps-vid'
+            - name: Herstellen einer Verbindung mit Containern mithilfe von OSBA
+              href: 'https://aka.ms/mysql-osba-vid'
     - name: Anfordern eines Features
       href: 'https://feedback.azure.com/forums/597982-azure-database-for-mysql'
     - name: Regionale Verfügbarkeit
@@ -175,5 +205,7 @@
       href: 'https://azure.microsoft.com/support/options/'
     - name: Kundenstimmen
       href: 'https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20MySQL%20"'
+    - name: Partner
+      href: partners-migration-mysql.md
     - name: Leitfaden zur Datenbankmigration
       href: 'https://datamigration.microsoft.com/'

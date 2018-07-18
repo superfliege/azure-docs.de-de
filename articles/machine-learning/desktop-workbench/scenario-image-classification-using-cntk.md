@@ -8,14 +8,16 @@ ms.author: pabuehle
 manager: mwinkle
 ms.reviewer: marhamil, mldocs, garyericson, jasonwhowell
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 8bf5cd802198cba48a99c029d0c75c25dd5f6d84
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 48c21638fe5756e6527288ed0fdc73dd9e331afd
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "35636854"
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Bildklassifizierung per Azure Machine Learning Workbench
 
@@ -234,7 +236,8 @@ In Azure Machine Learning Workbench wird der Verlauf jeder Ausführung in Azure 
 Im ersten Screenshot führt die DNN-Optimierung zu besseren Genauigkeiten als das SVM-Training für alle Klassen. Im zweiten Screenshot sind alle Metriken dargestellt, die nachverfolgt werden, z.B. die Art der Klassifizierung. Diese Nachverfolgung erfolgt im Skript `5_evaluate.py`, indem die Azure Machine Learning Workbench-Protokollierung aufgerufen wird. Außerdem speichert das Skript die ROC-Kurve und die Konfusionsmatrix im Ordner *outputs*. Der Ordner *outputs* ist ein besonderer Ordner, da sein Inhalt auch von der Workbench-Verlaufsfunktion nachverfolgt wird. Daher kann unabhängig davon, ob lokale Kopien überschrieben wurden, jederzeit auf die Ausgabedateien zugegriffen werden.
 
 <p align="center">
-<img src="media/scenario-image-classification-using-cntk/run_comparison1.jpg" alt="alt text" width="700"/> </p>
+<img src="media/scenario-image-classification-using-cntk/run_comparison1.jpg" alt="alt text" width="700"/>
+</p>
 
 <p align="center">
 <img src="media/scenario-image-classification-using-cntk/run_comparison2b.jpg" alt="alt text" width="700"/>
@@ -242,15 +245,20 @@ Im ersten Screenshot führt die DNN-Optimierung zu besseren Genauigkeiten als da
 
 
 ### <a name="parameter-tuning"></a>Parameteroptimierung
+
 Wie für die meisten anderen Machine Learning-Projekte auch, gilt Folgendes: Zum Erzielen guter Ergebnisse für ein neues Dataset ist es erforderlich, eine sorgfältige Parameteroptimierung und eine Abwägung unterschiedlicher Entwurfsentscheidungen durchzuführen. Als Hilfestellung bei dieser Aufgabe werden alle wichtigen Parameter an einem Ort angegeben (zusammen mit einer kurzen Erklärung), und zwar in der Datei `PARAMETERS.py`.
 
 Hier sind einige Verbesserungen aufgeführt, die am meisten Erfolg versprechen:
 
 - Datenqualität: Stellen Sie sicher, dass die Trainings- und Testsätze eine hohe Qualität aufweisen. Dies bedeutet Folgendes: Die Bilder sollten mit den richtigen Anmerkungen versehen sein, mehrdeutige Bilder sollten entfernt werden (z.B. Kleidungsstücke, die sowohl Streifen als auch Punkte aufweisen), und die Attribute sollten sich gegenseitig ausschließen (sodass ein Bild genau einem Attribut zugeordnet werden kann).
+
 - Wenn das betreffende Objekt im Bild klein ist, funktionieren Ansätze, die auf der Bildklassifizierung basieren, meist nicht so gut. Erwägen Sie in diesen Fällen die Verwendung eines Ansatzes mit Verwendung der Objekterkennung, der in [diesem Tutorial](https://github.com/Azure/ObjectDetectionUsingCntk) beschrieben ist.
 - DNN-Optimierung: Der wahrscheinlich wichtigste Parameter ist die Lerngeschwindigkeit `rf_lrPerMb`. Wenn die Genauigkeit des Trainingssatzes (erste Abbildung in Teil 2) nicht im Bereich 0 - 5% liegt, ist der Grund häufig eine falsche Lerngeschwindigkeit. Die anderen Parameter, die mit `rf_` beginnen, sind weniger wichtig. Normalerweise sollte der Trainingsfehler exponentiell verringert werden und nach dem Training in der Nähe von 0% liegen.
+
 - Eingabeauflösung: Die Standardbildauflösung beträgt 224x224 Pixel. Wenn eine höhere Bildauflösung (Parameter: `rf_inputResoluton`) von beispielsweise 448x448 oder 896x896 Pixel verwendet wird, führt dies häufig zu einer erheblichen Verbesserung der Genauigkeit und gleichzeitig zu einer Verlangsamung der DNN-Optimierung. **Die Verwendung einer höheren Bildauflösung ist mit Vorteilen verbunden und führt fast immer zu einer höheren Genauigkeit**.
+
 - DNN-Überanpassung: Vermeiden Sie eine große Lücke zwischen der Trainings- und Testgenauigkeit während der DNN-Optimierung (erste Abbildung in Teil 2). Diese Lücke kann reduziert werden, indem Abbruchraten (`rf_dropoutRate`) von 0,5 oder höher verwendet werden und die Regularisierungsgewichtung (`rf_l2RegWeight`) erhöht wird. Die Verwendung einer hohen Abbruchrate kann besonders hilfreich sein, wenn die DNN-Eingabebildauflösung hoch ist.
+
 - Versuchen Sie, tiefer gehende DNNs zu verwenden, indem Sie `rf_pretrainedModelFilename` von `ResNet_18.model` entweder in `ResNet_34.model` oder `ResNet_50.model` ändern. Das Resnet-50-Modell ist nicht nur tiefer gehend, sondern die Ausgabe der vorletzten Schicht beträgt auch 2048 Gleitkommazahlen (gegenüber 512 Gleitkommazahlen bei den Modellen ResNet-18 und ResNet-34). Diese Erhöhung kann besonders hilfreich sein, wenn eine SVM-Klassifizierung trainiert wird.
 
 ## <a name="part-3---custom-dataset"></a>Teil 3: Benutzerdefiniertes Dataset

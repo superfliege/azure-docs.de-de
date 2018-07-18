@@ -1,23 +1,26 @@
 ---
-title: Bewährte Methoden zur Verwendung von Azure Data Lake Store | Microsoft-Dokumentation
-description: Enthält eine Beschreibung der bewährten Methoden zur Datenerfassung, Datensicherheit und Leistung in Bezug auf die Verwendung von Azure Data Lake Store.
+title: Bewährte Methoden zur Verwendung von Azure Data Lake Storage Gen1 | Microsoft-Dokumentation
+description: Enthält eine Beschreibung der bewährten Methoden zur Datenerfassung, Datensicherheit und Leistung in Bezug auf die Verwendung von Azure Data Lake Storage Gen1 (ehemals Azure Data Lake Store).
 services: data-lake-store
 documentationcenter: ''
 author: sachinsbigdata
 manager: jhubbard
-editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2018
+ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: ac0a01ed7a067688732aa54eb1b76e0e299e4263
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 00eb2b6b60aa6c3224b58556f6dad64d4294c308
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37034801"
 ---
-# <a name="best-practices-for-using-azure-data-lake-store"></a>Bewährte Methoden für die Verwendung von Azure Data Lake Store
+# <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Bewährte Methoden zur Verwendung von Azure Data Lake Storage Gen1
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
 In diesem Artikel erfahren Sie mehr zu den bewährten Methoden und Aspekten in Bezug auf die Arbeit mit Azure Data Lake Store. Der Artikel enthält Informationen zu den Bereichen Sicherheit, Leistung, Resilienz und Überwachung für Data Lake Store. Vor der Einführung von Data Lake Store war die Arbeit mit wirklich großen Datenmengen (Big Data) in Diensten wie Azure HDInsight sehr komplex. Daten mussten per Sharding auf mehrere Blobspeicherkonten verteilt werden, um die Speicherung im Petabyte-Bereich und eine entsprechende optimale Leistung zu erzielen. Dank Data Lake Store gelten die meisten festen Grenzwerte im Hinblick auf die Größe und Leistung nicht mehr. In diesem Artikel werden aber trotzdem noch einige Aspekte beschrieben, damit Sie für Data Lake Store die bestmögliche Leistung erzielen können. 
 
 ## <a name="security-considerations"></a>Sicherheitshinweise
@@ -65,9 +68,9 @@ POSIX-Berechtigungen und die Überwachung in Data Lake Store führen zu Mehraufw
 * Schnelles Kopieren/Replizieren
 * Weniger zu verarbeitende Dateien beim Aktualisieren von Data Lake Store-POSIX-Berechtigungen 
 
-Je nachdem, welche Dienste und Workloads die Daten nutzen, ist eine Dateigröße von 256 MB bis 1 GB ein guter Bereich (idealerweise nicht weniger als 100 MB und mehr als 2 GB). Falls die Dateigrößen vor dem Eintreffen in Data Lake Store nicht zu Batches zusammengefasst werden können, können Sie einen separaten Komprimierungsauftrag verwenden, mit dem diese Dateien zu größeren Dateien kombiniert werden. Weitere Informationen und Empfehlungen zu Dateigrößen und zur Organisation der Daten in Data Lake Store finden Sie unter [Strukturieren Ihres Datasets](data-lake-store-performance-tuning-guidance.md#structure-your-data-set). 
+Für Dateien empfiehlt sich eine Größe von mindestens 256 MB (je nachdem, welche Dienste und Workloads die Daten verwenden). Falls die Dateigrößen vor dem Eintreffen in Data Lake Store nicht zu Batches zusammengefasst werden können, können Sie einen separaten Komprimierungsauftrag verwenden, mit dem diese Dateien zu größeren Dateien kombiniert werden. Weitere Informationen und Empfehlungen zu Dateigrößen und zur Organisation der Daten in Data Lake Store finden Sie unter [Strukturieren Ihres Datasets](data-lake-store-performance-tuning-guidance.md#structure-your-data-set).
 
-### <a name="large-file-sizes-and-potential-performance-impact"></a>Große Dateien und potenzielle Auswirkungen auf die Leistung 
+### <a name="large-file-sizes-and-potential-performance-impact"></a>Große Dateien und potenzielle Auswirkungen auf die Leistung
 
 Data Lake Store unterstützt zwar große Dateien bis in den Petabyte-Bereich, aber zur Erzielung der optimalen Leistung und je nach dem Prozess zum Lesen der Daten ist es unter Umständen nicht ideal, wenn die durchschnittliche Größe oberhalb von 2 GB liegt. Wenn Sie beispielsweise **Distcp** zum Kopieren von Daten zwischen Standorten oder unterschiedlichen Speicherkonten verwenden, sind Dateien die feinste Granularitätsebene, die zum Ermitteln von Zuordnungsaufgaben herangezogen wird. Wenn Sie also zehn Dateien kopieren, die jeweils eine Größe von 1 TB haben, werden maximal zehn Zuordnungen durchgeführt. Falls Sie über eine hohe Zahl von Dateien mit zugewiesenen Zuordnungen verfügen, arbeiten die Zuordnungen anfänglich außerdem parallel, um die großen Dateien zu verschieben. Wenn der Auftrag dem Ende entgegen geht, sind nur noch wenige Zuordnungen vorhanden, und es kann passieren, dass nur noch eine Zuordnung zu einer großen Datei besteht. Microsoft hat Verbesserungsvorschläge an Distcp gesendet, damit dieses Problem in zukünftigen Hadoop-Versionen behoben werden kann.  
 
@@ -113,7 +116,7 @@ Kopieraufträge können von Apache Oozie-Workflows ausgelöst werden, indem Häu
 
 ### <a name="use-azure-data-factory-to-schedule-copy-jobs"></a>Verwenden von Azure Data Factory zum Planen von Kopieraufträgen 
 
-Azure Data Factory kann auch verwendet werden, um Kopieraufträge mit einer **Kopieraktivität** zu planen, und über den **Kopier-Assistenten** kann sogar eine Häufigkeit dafür eingerichtet werden. Beachten Sie hierbei, dass für Azure Data Factory eine Begrenzung in Bezug auf die Einheiten der Clouddatenverschiebung (Data Movement Units, DMUs) gilt und für große Datenworkloads irgendwann eine Durchsatz-/Computebeschränkung greift. Außerdem sind mit Azure Data Factory derzeit keine Deltaupdates zwischen Data Lake Store-Konten möglich, sodass für Ordner wie Hive-Tabellen für die Replikation eine vollständige Kopie erforderlich ist. Weitere Informationen zum Kopieren mit Data Factory finden Sie im [Handbuch zur Leistung und Optimierung der Kopieraktivität](../data-factory/v1/data-factory-copy-activity-performance.md). 
+Azure Data Factory kann auch verwendet werden, um Kopieraufträge mit einer **Kopieraktivität** zu planen, und über den **Kopier-Assistenten** kann sogar eine Häufigkeit dafür eingerichtet werden. Beachten Sie hierbei, dass für Azure Data Factory eine Begrenzung in Bezug auf die Einheiten der Clouddatenverschiebung (Data Movement Units, DMUs) gilt und für große Datenworkloads irgendwann eine Durchsatz-/Computebeschränkung greift. Außerdem sind mit Azure Data Factory derzeit keine Deltaupdates zwischen Data Lake Store-Konten möglich, sodass für Ordner wie Hive-Tabellen für die Replikation eine vollständige Kopie erforderlich ist. Weitere Informationen zum Kopieren mit Data Factory finden Sie im [Handbuch zur Leistung und Optimierung der Kopieraktivität](../data-factory/copy-activity-performance.md). 
 
 ### <a name="adlcopy"></a>AdlCopy
 

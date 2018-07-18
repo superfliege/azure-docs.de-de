@@ -1,9 +1,9 @@
 ---
-title: "Oracle-Lösungen in Microsoft Azure | Microsoft-Dokumentation"
-description: "Hier finden Sie Informationen zu unterstützten Konfigurationen und Einschränkungen von Oracle-Lösungen in Microsoft Azure."
+title: Oracle-Lösungen in Microsoft Azure | Microsoft-Dokumentation
+description: Hier finden Sie Informationen zu unterstützten Konfigurationen und Einschränkungen von Oracle-Lösungen in Microsoft Azure.
 services: virtual-machines-linux
-documentationcenter: 
-manager: timlt
+documentationcenter: ''
+manager: jeconnoc
 author: rickstercdn
 tags: azure-resource-management
 ms.assetid: 5d71886b-463a-43ae-b61f-35c6fc9bae25
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/28/2017
 ms.author: rclaus
-ms.openlocfilehash: 1bc03d15096e7f1d4538d6642a61aaee9bb572f7
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: daed709b4b4be87ba75f5539bd31c666b3a37414
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656345"
 ---
 # <a name="oracle-solutions-and-their-deployment-on-microsoft-azure"></a>Oracle-Lösungen und deren Bereitstellung in Microsoft Azure
 Dieser Artikel enthält Informationen, die Sie benötigen, um verschiedene Oracle-Lösungen erfolgreich in Microsoft Azure bereitzustellen. Diese Lösungen basieren auf VM-Images, die von Oracle im Azure Marketplace veröffentlicht werden. Um eine Liste der derzeit verfügbaren Images zu erhalten, führen Sie den folgenden Befehl aus:
@@ -53,7 +54,7 @@ Oracle unterstützt die Ausführung von Oracle DB 12.1 Standard und Enterprise E
 
 ### <a name="attached-disk-configuration-options"></a>Optionen für die Konfiguration angefügter Datenträger
 
-Angefügte Datenträger nutzen den Azure-BLOB-Speicherdienst. Auf jedem Standarddatenträger können theoretisch bis zu 500 E/A-Vorgänge pro Sekunde (IOPS) ausgeführt werden. Unser Premium-Datenträgerangebot wird in erster Linie für Datenbanknutzlasten mit hoher Leistung verwendet und kann bis zu 5000 IOps pro Datenträger erreichen. Sie können zwar einen einzelnen Datenträger verwenden, wenn dies Ihren Anforderungen an die Leistung genügt. Sie können die effektive IOPS-Leistung jedoch verbessern, wenn Sie mehrere angefügte Datenträger verwenden, Datenbankdaten auf diesen verteilen und dann Oracle Automatic Storage Management (ASM) verwenden. Spezifische Informationen zu Oracle ASM finden Sie unter [Oracle Automatic Storage Management Overview](http://www.oracle.com/technetwork/database/index-100339.html) (in englischer Sprache). Ein Beispiel für das Installieren und Konfigurieren von Oracle ASM auf einem virtuellen Azure-Linux-Computer erhalten Sie im Tutorial [Installing and Configuring Oracle Automated Storage Management](configure-oracle-asm.md) (Installieren und Konfigurieren von Oracle Automated Storage Management).
+Angefügte Datenträger nutzen den Azure Blob Storage-Dienst. Auf jedem Standarddatenträger können theoretisch bis zu 500 E/A-Vorgänge pro Sekunde (IOPS) ausgeführt werden. Unser Premium-Datenträgerangebot wird in erster Linie für Datenbanknutzlasten mit hoher Leistung verwendet und kann bis zu 5000 IOps pro Datenträger erreichen. Sie können zwar einen einzelnen Datenträger verwenden, wenn dies Ihren Anforderungen an die Leistung genügt. Sie können die effektive IOPS-Leistung jedoch verbessern, wenn Sie mehrere angefügte Datenträger verwenden, Datenbankdaten auf diesen verteilen und dann Oracle Automatic Storage Management (ASM) verwenden. Spezifische Informationen zu Oracle ASM finden Sie unter [Oracle Automatic Storage Management Overview](http://www.oracle.com/technetwork/database/index-100339.html) (in englischer Sprache). Ein Beispiel für das Installieren und Konfigurieren von Oracle ASM auf einem virtuellen Azure-Linux-Computer erhalten Sie im Tutorial [Installing and Configuring Oracle Automated Storage Management](configure-oracle-asm.md) (Installieren und Konfigurieren von Oracle Automated Storage Management).
 
 ## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle Real Application Cluster (Oracle RAC)
 Oracle RAC ist so konzipiert, dass der Ausfall eines einzelnen Knotens in einer lokalen Clusterkonfiguration mit mehreren Knoten möglichst geringe Auswirkungen hat. RAC beruht auf zwei lokalen Technologien, die in öffentlichen Cloudumgebungen mit Hyperskalierung nicht nativ funktionieren: Netzwerk-Multicast und freigegebene Datenträger. Wenn Ihre Datenbanklösung Oracle RAC in Azure erfordert, benötigen Sie Software von Drittanbietern, um diese Technologien zu aktivieren.  Ein **Microsoft Azure Certified**-Angebot mit der Bezeichnung [FlashGrid Node for Oracle RAC](https://azuremarketplace.microsoft.com/marketplace/apps/flashgrid-inc.flashgrid-racnode?tab=Overview) (FlashGrid-Knoten für Oracle RAC), das von FlashGrid Inc. veröffentlicht wurde, finden Sie im Azure Marketplace. Weitere Informationen zu dieser Lösung und ihrer Funktionsweise in Azure finden Sie auf der [Seite zur FlashGrid-Lösung](https://www.flashgrid.io/oracle-rac-in-azure/).
@@ -89,7 +90,7 @@ Trotz einer Lösung für Hochverfügbarkeit und Notfallwiederherstellung in Azur
 
          -Dweblogic.rjvm.enableprotocolswitch=true
 
-Weitere Informationen finden Sie im KB-Artikel **860340.1** unter <http://support.oracle.com>.
+Verwandte Informationen finden Sie im KB-Artikel **860340.1** unter <http://support.oracle.com>.
 
 * **Einschränkungen für dynamisches Clustering und Lastenausgleich**. Angenommen, Sie möchten in WebLogic Server einen dynamischen Cluster verwenden und ihn in Azure über einen einzelnen Endpunkt mit Lastenausgleich verfügbar machen. Dies ist möglich, solange Sie für jeden verwalteten Server eine feste Portnummer (keine dynamisch aus einem Bereich zugewiesene Nummer) verwenden und nicht mehr verwaltete Server starten, als Computer vorhanden sind, die vom Administrator nachverfolgt werden (d. h. nicht mehr als einen verwalteten Server pro virtuellem Computer). Wenn die Konfiguration bewirkt, dass mehr WebLogic-Server gestartet werden, als virtuelle Computer vorhanden sind (d.h., wenn mehrere WebLogic Server-Instanzen denselben virtuellen Computer verwenden), kann nicht mehr als eine dieser WebLogic-Serverinstanzen an eine angegebene Portnummer gebunden werden, und bei den anderen Instanzen auf diesem virtuellen Computer treten Fehler auf.
 

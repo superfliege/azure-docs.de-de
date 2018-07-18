@@ -1,12 +1,12 @@
 ---
-title: "Erstellen und Veröffentlichen von Marketplace-Elementen mithilfe des Marketplace-Toolkits | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie mithilfe des Veröffentlichungstoolkits in kurzer Zeit Marketplace-Elemente erstellen."
+title: Erstellen und Veröffentlichen von Marketplace-Elementen mithilfe des Marketplace-Toolkits | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mithilfe des Veröffentlichungstoolkits in kurzer Zeit Marketplace-Elemente erstellen.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29386876"
 ---
 #  <a name="add-marketplace-items-using-publishing-tool"></a>Hinzufügen von Marketplace-Elementen mithilfe des Veröffentlichungstools
 Durch Hinzufügen Ihrer Inhalte zum [Azure Stack-Marketplace](azure-stack-marketplace.md) werden Ihre Lösungen für Sie und Ihre Mandanten für die Bereitstellung verfügbar.  Das Marketplace-Toolkit erstellt Azure Marketplace-Paketdateien (AZPKG-Dateien) auf der Grundlage Ihrer IaaS-Azure Resource Manager-Vorlagen oder VM-Erweiterungen.  Darüber hinaus können Sie mit dem Marketplace-Toolkit AZPKG-Dateien veröffentlichen, die entweder mit dem Tool oder [manuell](azure-stack-create-and-publish-marketplace-item.md) erstellt wurden.  In diesem Thema erfahren Sie, wie Sie das Tool herunterladen, ein Marketplace-Element auf der Grundlage einer VM-Vorlage erstellen und das Element anschließend im Azure Stack-Marketplace veröffentlichen.     

@@ -1,23 +1,20 @@
 ---
-title: "Entwickeln von U-SQL mit Python, R und C# für Azure Data Lake Analytics in Visual Studio Code | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie CodeBehind mit Python, R und C# verwenden, um Aufträge in Azure Data Lake zu übermitteln."
+title: Entwickeln von U-SQL mit Python, R und C# für Azure Data Lake Analytics in Visual Studio Code
+description: Hier erfahren Sie, wie Sie CodeBehind mit Python, R und C# verwenden, um Aufträge in Azure Data Lake zu übermitteln.
 services: data-lake-analytics
-documentationcenter: 
-author: jejiang
-manager: 
-editor: 
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 11/22/2017
+author: jejiang
 ms.author: jejiang
-ms.openlocfilehash: 8fd8decfde1220be6aaa099c3afb24e8c1eecce4
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+manager: kfile
+editor: jasonwhowell
+ms.topic: conceptual
+ms.date: 11/22/2017
+ms.openlocfilehash: 171aef186fd681adf9b3d92deb8691c852ea1038
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624906"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Entwickeln von U-SQL mit Python, R und C# für Azure Data Lake Analytics in Visual Studio Code
 Hier erfahren Sie, wie Sie Visual Studio Code (VSCode) verwenden, um Python-, R- und C#-CodeBehind-Dateien mit U-SQL zu schreiben und Aufträge an den Azure Data Lake-Dienst zu übermitteln. Weitere Informationen zu Azure Data Lake Tools für VSCode finden Sie unter [Verwenden von Azure Data Lake Tools für Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md).
@@ -185,7 +182,6 @@ Eine CodeBehind-Datei ist eine C#-Datei, die einem U-SQL-Skript zugeordnet ist. 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Verwenden der Azure Data Lake-Tools für Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)
 * [Lokales Ausführen und lokales Debuggen von U-SQL mit Visual Studio Code](data-lake-tools-for-vscode-local-run-and-debug.md)
-* [Entwickeln von U-SQL-Assemblys für Azure Data Lake Analytics-Aufträge](data-lake-analytics-u-sql-develop-assemblies.md)
 * [Erste Schritte mit Data Lake Analytics mithilfe von PowerShell](data-lake-analytics-get-started-powershell.md)
 * [Erste Schritte mit Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md)
 * [Verwenden von Data Lake-Tools für Visual Studio zum Entwickeln von U-SQL-Anwendungen](data-lake-analytics-data-lake-tools-get-started.md)

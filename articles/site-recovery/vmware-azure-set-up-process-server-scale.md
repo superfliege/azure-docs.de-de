@@ -2,44 +2,99 @@
 title: Einrichten eines Prozessservers in Azure für das Failback von VMware-VMs und physischen Servern mit Azure Site Recovery | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie in Azure ein Prozessserver für ein Failback von Azure-VMs zu VMware eingerichtet wird.
 services: site-recovery
-author: AnoopVasudavan
-manager: gauravd
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
-ms.author: anoopkv
-ms.openlocfilehash: 7bbe690e749680edde08facadf6d5910d7896f7e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 07/06/2018
+ms.author: raynew
+ms.openlocfilehash: ade47c59a8db673869ce8c60a062a2a6a6656ca2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38688999"
 ---
-# <a name="set-up-a-process-server-in-azure-for-failback"></a>Einrichten eines Prozessservers für das Failback in Azure
+# <a name="set-up-additional-process-servers-for-scalability"></a>Einrichten zusätzlicher Prozessserver für Skalierbarkeit
 
-Nach dem Failover von VMware-VMs oder physischen Servern in Azure mit [Site Recovery](site-recovery-overview.md) können Sie ein Failback zurück zum lokalen Standort ausführen, wenn dieser wieder in Betrieb ist. Für das Failback müssen Sie in Azure einen temporären Prozessserver einrichten, der die Replikation von Azure zum lokalen Standort verarbeitet. Sie können diesen virtuellen Computer nach Abschluss des Failbacks löschen.
+Wenn Sie VMware-VMs oder physische Server mithilfe von [Site Recovery](site-recovery-overview.md) in Azure replizieren, wird standardmäßig ein Prozessserver auf dem Konfigurationsservercomputer installiert und zum Koordinieren der Datenübertragung zwischen Site Recovery und Ihrer lokalen Infrastruktur verwendet. Um die Kapazität zu erhöhen und die Replikationsbereitstellung horizontal hochzuskalieren, können Sie zusätzliche eigenständige Prozessserver hinzufügen. Dieser Artikel beschreibt die entsprechende Vorgehensweise.
 
 ## <a name="before-you-start"></a>Vorbereitung
 
-Erfahren Sie mehr über den [erneuten Schutz](vmware-azure-reprotect.md) und das [Failback](vmware-azure-failback.md).
+### <a name="capacity-planning"></a>Kapazitätsplanung
 
-[!INCLUDE [site-recovery-vmware-process-server-prerequ](../../includes/site-recovery-vmware-azure-process-server-prereq.md)]
+Stellen Sie sicher, dass Sie eine [Kapazitätsplanung](site-recovery-plan-capacity-vmware.md) für die VMware-Replikation durchgeführt haben. Dadurch können Sie feststellen, wie und wann Sie zusätzliche Prozessserver bereitstellen sollten.
 
-## <a name="deploy-a-process-server-in-azure"></a>Bereitstellen eines Prozessservers in Azure
+### <a name="sizing-requirements"></a>Größenanforderungen 
 
-1. Wählen Sie im Tresor unter **Site Recovery-Infrastruktur**> **Verwalten** > **Konfigurationsserver** den Konfigurationsserver aus.
-2. Klicken Sie auf der Serverseite auf **+ Prozessserver**.
-3. Wählen Sie auf der Seite **Prozessserver hinzufügen** die Bereitstellung eines Prozessservers in Azure aus.
-4. Geben Sie die Azure-Einstellungen an, einschließlich des Abonnements für das Failover, einer Ressourcengruppe, der Azure-Region für das Failover und des virtuellen Netzwerks, in dem sich die virtuellen Azure-Computer befinden. Wenn Sie mehrere Azure-Netzwerke verwendet haben, benötigen Sie in jedem einen Prozessserver.
-5. Geben Sie in **Servername**, **Benutzername** und **Kennwort** einen Namen für den Prozessserver und die Anmeldeinformationen (mit Administratorberechtigungen auf dem Server) an.
-6. Geben Sie ein Speicherkonto, das für die Datenträger der Server-VMs verwendet werden soll, das Subnetz, in dem sich die Prozessserver-VM befindet, und die Server-IP-Adresse, die beim Starten des virtuellen Computers zugewiesen wird, an.
-7. Klicken Sie auf die Schaltfläche **OK**, um mit der Bereitstellung der Prozessserver-VM zu beginnen.
+Prüfen Sie die in der Tabelle zusammengefassten Größenanforderungen. Allgemein gilt: Wenn Sie Ihre Bereitstellung auf mehr als 200 Quellcomputer hochskalieren müssen oder Ihre gesamte tägliche Änderungsrate 2 TB übersteigt, benötigen Sie zusätzliche Prozessserver zur Bewältigung des Datenverkehrsaufkommens.
 
->
+| **Zusätzlicher Prozessserver** | **Größe des Cachedatenträgers** | **Datenänderungsrate** | **Geschützte Computer** |
+| --- | --- | --- | --- |
+|4 vCPUs (2 Sockets * 2 Kerne mit 2,5GHz), 8GB Arbeitsspeicher |300 GB |250 GB oder weniger |Bis zu 85 Computer replizieren. |
+|8 vCPUs (2 Sockets * 4 Kerne mit 2,5GHz), 12GB Arbeitsspeicher |600 GB |250 GB bis 1 TB |Zwischen 85 und 150 Computer replizieren. |
+|12 vCPUs (2 Sockets * 6 Kerne mit 2,5GHz), 24GB Arbeitsspeicher |1 TB |1 TB bis 2 TB |Zwischen 150 und 225 Computer replizieren. |
 
-## <a name="registering-the-process-server-running-in-azure-to-a-configuration-server-running-on-premises"></a>Registrieren des Prozessservers (in Azure ausgeführt) bei einem Konfigurationsserver (lokal ausgeführt)
+### <a name="prerequisites"></a>Voraussetzungen
 
-Nachdem die Prozessserver-VM in Betrieb genommen wurde, müssen Sie sie beim lokalen Konfigurationsserver registrieren. Gehen Sie dazu wie folgt vor:
+In der folgenden Tabelle sind die Voraussetzungen für den zusätzlichen Prozessserver zusammengefasst.
 
-[!INCLUDE [site-recovery-vmware-register-process-server](../../includes/site-recovery-vmware-register-process-server.md)]
+[!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 
+## <a name="download-installation-file"></a>Herunterladen der Installationsdatei
+
+Laden Sie die Installationsdatei für den Prozessserver wie folgt herunter:
+
+1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zu Ihrem Recovery Services-Tresor.
+2. Öffnen Sie **Site Recovery-Infrastruktur** > **VMware und physische Computer** > **Konfigurationsserver** (unter „Für VMware und physische Computer“).
+3. Wählen Sie den Konfigurationsserver aus, um die Detailsseite des Servers aufzurufen. Klicken Sie dann auf **+ Prozessserver**.
+4. Wählen Sie unter **Prozessserver hinzufügen** >  **Geben Sie an, wo Sie Ihren Prozessserver bereitstellen möchten** die Option **Prozessserver für horizontales Hochskalieren lokal bereitstellen** aus.
+
+  ![Seite „Server hinzufügen“](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
+1. Klicken Sie auf **Einheitliches Setup von Microsoft Azure Site Recovery herunterladen**. Dadurch wird die neueste Version der Installationsdatei heruntergeladen.
+
+  > [!WARNING]
+  Bei der Installationsversion des Prozessservers sollte es sich um die gleiche oder eine frühere Version wie die von Ihnen ausgeführte Version des Konfigurationsservers handeln. Eine einfache Möglichkeit, die Versionskompatibilität sicherzustellen, ist die Verwendung des gleichen Installers, den Sie zuletzt zum Installieren oder Aktualisieren Ihres Konfigurationsservers verwendet haben.
+
+## <a name="install-from-the-ui"></a>Installieren über die Benutzeroberfläche
+
+Führen Sie die Installation auf folgende Weise aus. Nachdem Sie den Prozessserver eingerichtet haben, migrieren Sie Quellcomputer, damit diese ihn verwenden können.
+
+[!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-add-process-server.md)]
+
+
+## <a name="install-from-the-command-line"></a>Installieren über die Befehlszeile
+
+Die Installation erfolgt, indem Sie den folgenden Befehl ausführen:
+
+```
+UnifiedSetup.exe [/ServerMode <CS/PS>] [/InstallDrive <DriveLetter>] [/MySQLCredsFilePath <MySQL credentials file path>] [/VaultCredsFilePath <Vault credentials file path>] [/EnvType <VMWare/NonVMWare>] [/PSIP <IP address to be used for data transfer] [/CSIP <IP address of CS to be registered with>] [/PassphraseFilePath <Passphrase file path>]
+```
+
+Die Befehlszeilenparameter lauten wie folgt:
+
+[!INCLUDE [site-recovery-unified-setup-parameters](../../includes/site-recovery-unified-installer-command-parameters.md)]
+
+Beispiel: 
+
+```
+MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /xC:\Temp\Extracted
+cd C:\Temp\Extracted
+UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "PS" /InstallLocation "D:\" /EnvType "VMWare" /CSIP "10.150.24.119" /PassphraseFilePath "C:\Users\Administrator\Desktop\Passphrase.txt" /DataTransferSecurePort 443
+```
+### <a name="create-a-proxy-settings-file"></a>Erstellen einer Datei mit Proxyeinstellungen
+
+Wenn Sie einen Proxy einrichten müssen, nimmt der ProxySettingsFilePath-Parameter eine Datei als Eingabe an. Sie können die Datei auf folgende Weise erstellen und als Eingabe an den ProxySettingsFilePath-Parameter übergeben.
+
+```
+* [ProxySettings]
+* ProxyAuthentication = "Yes/No"
+* Proxy IP = "IP Address"
+* ProxyPort = "Port"
+* ProxyUserName="UserName"
+* ProxyPassword="Password"
+```
+
+## <a name="next-steps"></a>Nächste Schritte
+Informationen zum [Verwalten von Prozessservereinstellungen](vmware-azure-manage-process-server.md)

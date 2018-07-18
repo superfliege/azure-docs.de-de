@@ -1,0 +1,83 @@
+---
+title: Verwenden der API für die Suche nach Anomalien mit PHP – Microsoft Cognitive Services | Microsoft-Dokumentation
+description: Informationen und Codebeispiele für den schnellen Einstieg in die Verwendung der API für die Suche nach Anomalien mit PHP in Cognitive Services
+services: cognitive-services
+author: chliang
+manager: bix
+ms.service: cognitive-services
+ms.technology: anomaly-detection
+ms.topic: article
+ms.date: 05/01/2018
+ms.author: chliang
+ms.openlocfilehash: f81c99b77f931b5b259633fa8fcd0bf3e358e281
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "35375331"
+---
+# <a name="use-the-anomaly-finder-api-with-php"></a>Verwenden der API für die Suche nach Anomalien mit PHP
+
+In diesem Artikel finden Sie Informationen und Codebeispiele, die Ihnen bei der Nutzung der API für die Suche nach Anomalien mit PHP helfen, damit Sie Ergebnisse für Anomalien bei Zeitreihendaten erfassen können.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+[!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
+
+## <a name="getting-anomaly-points-with-anomaly-finder-api-using-php"></a>Abrufen von Anomaliepunkten mithilfe der API für die Suche nach Anomalien mit PHP
+[!INCLUDE [DataContract](../includes/datacontract.md)]
+
+### <a name="example-of-time-series-data"></a>Beispiel für Zeitreihendaten
+So sieht das Beispiel für die Zeitreihendaten aus:
+[!INCLUDE [Request](../includes/request.md)]
+
+### <a name="analyze-data-and-get-anomaly-points-php-example"></a>Beispiel zum Analysieren von Daten und Abrufen von Anomaliepunkten mit PHP
+1. Ersetzen Sie den Wert `[YOUR_SUBSCRIPTION_KEY]` durch Ihren gültigen Abonnementschlüssel.
+2. Ersetzen Sie `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` durch das Beispiel oder Ihre eigenen Datenpunkte.
+3. Führen Sie die Anforderung aus, und überprüfen Sie die Antwort.
+
+```PHP
+<?php
+# This sample uses the Apache HTTP client from HTTP components (http://hc.apache.org/httpcomponents-client-ga/)
+require_once 'HTTP/Request2.php';
+
+$request = new HTTP_Request2('https://api.labs.cognitive.microsoft.com/anomalyfinder/v1.0/anomalydetection');
+$url = $request->getUrl();
+
+$requestData = '[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]';
+
+$headers = array(
+    # Request headers
+    'Content-Type' => 'application/json',
+    # NOTE: Replace the "Ocp-Apim-Subscription-Key" value with a valid subscription key.
+    'Ocp-Apim-Subscription-Key' => '[YOUR_SUBSCRIPTION_KEY]',
+);
+
+$request->setHeader($headers);
+
+$request->setMethod(HTTP_Request2::METHOD_POST);
+
+# Request body
+$request->setBody($requestData);
+
+try
+{
+    $response = $request->send();
+    echo $response->getBody();
+}
+catch (HttpException $ex)
+{
+    echo $ex;
+}
+?>
+```
+
+### <a name="example-response"></a>Beispielantwort
+
+Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Eine beispielhafte Antwort lautet:
+[!INCLUDE [Response](../includes/response.md)]
+
+## <a name="next-steps"></a>Nächste Schritte
+
+> [!div class="nextstepaction"]
+> [REST-API-Referenz](https://dev.labs.cognitive.microsoft.com/docs/services/anomaly-detection/operations/post-anomalydetection)

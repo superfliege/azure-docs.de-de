@@ -1,5 +1,5 @@
 ---
-title: Sichern von Azure Files in Azure
+title: Sichern von Azure-Dateifreigaben
 description: Dieser Artikel enthält ausführliche Informationen zum Sichern und Wiederherstellen von Azure-Dateifreigaben sowie Informationen zu Verwaltungsaufgaben.
 services: backup
 author: markgalioto
@@ -8,11 +8,12 @@ ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 440cee4309fad0a22d8964982f3aad2178397124
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: d21a235602c425cef77b26d8c60f1e3562411095
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961671"
 ---
 # <a name="back-up-azure-file-shares"></a>Sichern von Azure-Dateifreigaben
 In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure-Portals [Azure Dateifreigaben](../storage/files/storage-files-introduction.md) sichern und wiederherstellen.
@@ -27,17 +28,21 @@ In diesem Artikel lernen Sie Folgendes:
 > * Löschen der Sicherungsdaten
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Um eine Azure-Dateifreigabe sichern zu können, muss sie sich unter einem der [unterstützten Speicherkontotypen](troubleshoot-azure-files.md#preview-boundaries) befinden. Sobald Sie dies überprüft haben, können Sie Ihre Dateifreigaben schützen.
+Um eine Azure-Dateifreigabe sichern zu können, muss sie sich unter einem der [unterstützten Speicherkontotypen](backup-azure-files.md#limitations-for-azure-file-share-backup-during-preview) befinden. Sobald Sie dies überprüft haben, können Sie Ihre Dateifreigaben schützen.
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Einschränkungen beim Sichern von Azure-Dateifreigaben während der Vorschauphase
-Die Sicherung für Azure-Dateifreigaben befindet sich in der Vorschauphase. Während der Vorschauphase sind folgende Einschränkungen zu beachten:
-- Azure-Dateifreigaben können nicht in Speicherkonten mit einer Replikation vom Typ [ZRS](../storage/common/storage-redundancy-zrs.md) (zonenredundanter Speicher) oder [RA-GRS](../storage/common/storage-redundancy-grs.md) (Read-Access Geo-Redundant Storage, georedundanter Speicher mit Lesezugriff) geschützt werden.
-- Azure-Dateifreigaben können nicht in Speicherkonten mit aktivierten virtuellen Netzwerken geschützt werden.
-- Für den Schutz von Azure Files steht keine PowerShell- oder Befehlszeilenoption zur Verfügung.
+Die Sicherung für Azure-Dateifreigaben befindet sich in der Vorschauphase. Folgende Sicherungsszenarien werden für Azure-Dateifreigaben nicht unterstützt:
+- Sie können Azure-Dateifreigaben in Speicherkonten mit Replikation vom Typ [RA-GRS](../storage/common/storage-redundancy-grs.md) (Read-Access Geo-Redundant Storage, georedundanter Speicher mit Lesezugriff) nicht schützen.*
+- Sie können Azure-Dateifreigaben in Speicherkonten mit aktivierten virtuellen Netzwerken oder aktivierter Firewall nicht schützen.
+- Für den Schutz von Azure Files mit Azure Backup steht keine PowerShell- oder Befehlszeilenoption zur Verfügung.
 - Die Anzahl geplanter Sicherungen ist auf eine Sicherung pro Tag begrenzt.
 - Die Anzahl bedarfsgesteuerter Sicherungen ist auf vier Sicherungen pro Tag begrenzt.
 - Verwenden Sie [Ressourcensperren](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) für das Speicherkonto, um das versehentliche Löschen von Sicherungen in Ihrem Recovery Services-Tresor zu verhindern.
-- Löschen Sie keine Momentaufnahmen, die mit Azure Backup erstellt wurden. Das Löschen von Momentaufnahmen kann zum Verlust von Wiederherstellungspunkten bzw. zu Wiederherstellungsfehlern führen. 
+- Löschen Sie keine Momentaufnahmen, die mit Azure Backup erstellt wurden. Das Löschen von Momentaufnahmen kann zum Verlust von Wiederherstellungspunkten bzw. zu Wiederherstellungsfehlern führen.
+
+\*Azure-Dateifreigaben in Speicherkonten mit Replikation vom Typ [RA-GRS](../storage/common/storage-redundancy-grs.md) (Read-Access Geo-Redundant Storage, georedundanter Speicher mit Lesezugriff) werden als GRS verwendet und zu GRS-Preisen abgerechnet.
+
+Die Sicherung für Azure-Dateifreigaben in Speicherkonten mit Replikation vom Typ [ZRS](../storage/common/storage-redundancy-zrs.md) (Zone Redundant Storage, zonenredundanter Speicher) steht momentan nur in den Regionen „USA, Mitte“ (CUS), „USA, Osten 2“ (EUS2), „Europa, Norden“ (NE), „Asien, Südosten“ (SEA) und „Europa, Westen“ (WE) zur Verfügung.
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>Konfigurieren der Sicherung für eine Azure-Dateifreigabe
 Alle Sicherungsdaten werden in Recovery Services-Tresoren gespeichert. In diesem Tutorial wird davon ausgegangen, dass Sie bereits eine Azure-Dateifreigabe eingerichtet haben. So sichern Sie Ihre Azure-Dateifreigabe

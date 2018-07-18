@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29936938"
 ---
 # <a name="test-your-vm-offer-for-the-azure-marketplace-in-staging"></a>Testen Ihres VM-Angebots für den Azure Marketplace in der Stagingumgebung
 In der Stagingumgebung wird Ihr Angebot in einem privaten "Sandkasten" bereitgestellt, in dem Sie seine Funktionalität vor der Bereitstellung in Marketplace testen und überprüfen können. Die SKU wird in der Stagingumgebung genau wie bei einem Kunden angezeigt, der sie bereitgestellt hat. Ihr VM-Image muss für die Freigabe in der Stagingumgebung zertifiziert sein.

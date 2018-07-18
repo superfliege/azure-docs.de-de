@@ -6,15 +6,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: jingwang
-ms.openlocfilehash: fdfee4e06994de1b9a63996203b1a1b9fed9b768
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 534df0dfef1f69297c5728ed892a5457944e4468
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33940153"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052289"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Unterstützte Dateiformate und Komprimierungscodecs in Azure Data Factory
 
@@ -27,9 +27,6 @@ Wenn Sie **Dateien unverändert zwischen dateibasierten Speichern kopieren** mö
 * [Avro-Format](#avro-format)
 * [ORC-Format](#orc-format)
 * [Parquet-Format](#parquet-format)
-
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts in der allgemein verfügbaren Version (GA) verwenden, lesen Sie den Artikel [Von Azure Data Factory unterstützte Datei- und Komprimierungsformate](v1//data-factory-supported-file-and-compression-formats.md).
 
 > [!TIP]
 > Informationen dazu, wie die Kopieraktivität die Quelldaten der Senke zuordnet, finden Sie unter [Schemazuordnung in Kopieraktivität](copy-activity-schema-and-type-mapping.md). Darin enthalten ist auch das Bestimmen der Metadaten basierend auf Ihren Dateiformateinstellungen sowie Tipps, wann der Abschnitt [Dataset`structure`](concepts-datasets-linked-services.md#dataset-structure) anzugeben ist.

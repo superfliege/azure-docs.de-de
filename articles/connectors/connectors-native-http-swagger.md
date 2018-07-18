@@ -1,11 +1,11 @@
 ---
-title: "Aufrufen von REST-Endpunkten mit dem „HTTP + Swagger“-Connector für Azure Logic Apps | Microsoft-Dokumentation"
-description: "Verbinden mit REST-Endpunkten von Logik-Apps über Swagger mit dem „HTTP + Swagger“-Connector"
+title: Aufrufen von REST-Endpunkten mit dem „HTTP + Swagger“-Connector für Azure Logic Apps | Microsoft-Dokumentation
+description: Verbinden mit REST-Endpunkten von Logik-Apps über Swagger mit dem „HTTP + Swagger“-Connector
 services: logic-apps
 author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 tags: connectors
 ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 ms.service: logic-apps
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: 0487dbedddee684c75420bd66effe2c963a18624
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 4e4421b0dfe0f29c3d50764b9ca04471c73a1450
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296518"
 ---
 # <a name="get-started-with-the-http--swagger-action"></a>Erste Schritte mit der Aktion „HTTP + Swagger“
 
@@ -55,7 +56,7 @@ Möglicherweise möchten Sie auf ein Swagger-Dokument verweisen, das nicht gehos
 
 Im Folgenden finden Sie die Schritte zum Erstellen, Konfigurieren und Speichern von Swagger-Dokumenten in Azure Storage:
 
-1. [Erstellen Sie ein Azure-Speicherkonto mit Azure-Blobspeicher](../storage/common/storage-create-storage-account.md). Legen Sie für diesen Schritt die Berechtigungen auf **Öffentlicher Zugriff**fest.
+1. [Erstellen Sie ein Azure Storage-Konto mit Azure Blob Storage](../storage/common/storage-create-storage-account.md). Legen Sie für diesen Schritt die Berechtigungen auf **Öffentlicher Zugriff**fest.
 
 2. Aktivieren Sie CORS für das Blob. 
 
@@ -63,9 +64,9 @@ Im Folgenden finden Sie die Schritte zum Erstellen, Konfigurieren und Speichern 
 
 3. Laden Sie die Swagger-Datei in das Blob hoch. 
 
-   Hierzu können Sie das [Azure-Portal](https://portal.azure.com) oder ein Tool wie den [Azure-Speicher-Explorer](http://storageexplorer.com/) verwenden.
+   Hierzu können Sie das [Azure-Portal](https://portal.azure.com) oder ein Tool wie den [Azure Storage-Explorer](http://storageexplorer.com/) verwenden.
 
-4. Verweisen Sie mit einem HTTPS-Link auf das Dokument im Azure-Blobspeicher. 
+4. Verweisen Sie mit einem HTTPS-Link auf das Dokument in Azure Blob Storage. 
 
    Der Link hat das folgende Format:
 
@@ -84,7 +85,7 @@ Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflo
 ## <a name="http--swagger-actions"></a>„HTTP + Swagger“-Aktionen
 Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. [Weitere Informationen zu Aktionen finden Sie hier.](connectors-overview.md) Der Connector „HTTP + Swagger“ verfügt über eine mögliche Aktion.
 
-| anzuzeigen. | BESCHREIBUNG |
+| Aktion | BESCHREIBUNG |
 | --- | --- |
 | HTTP + Swagger |Führt einen HTTP-Aufruf durch und gibt den Antwortinhalt zurück. |
 

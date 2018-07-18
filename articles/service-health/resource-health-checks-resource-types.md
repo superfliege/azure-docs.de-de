@@ -14,14 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 3b4d99fe883cf52ca7f1ef98e70b7f3a1bccd5ae
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 35eedb170e1c79f4d282f71608b456a271c4d59b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018221"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Ressourcentypen und Integritätsprüfungen in Azure Resource Health
 Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource Health ausgeführten Überprüfungen.
+
+## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Ist der Server betriebsbereit?</li><li>Ist für den Server genügend Arbeitsspeicher verfügbar?</li><li>Wird der Server gestartet?</li><li>Wird der Server wiederhergestellt?</li></ul>|
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 |Ausgeführte Überprüfungen|
@@ -56,13 +62,13 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/accounts
 |Ausgeführte Überprüfungen|
 |---|
-|<ul><li>Können Benutzer in der Region Aufträge an Data Lake Analytics senden?</li><li>Werden einfache Aufträge in der Region ausgeführt und erfolgreich abgeschlossen?</li><li>Können Benutzer Katalogelemente in der Region auflisten?</li>|
+|<ul><li>Sind bei Benutzern Probleme beim Übermitteln oder Auflisten ihrer Data Lake Analytics-Aufträge aufgetreten?</li><li>Können Data Lake Analytics-Aufträge aufgrund von Systemfehlern nicht abgeschlossen werden?</li></ul>|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.datalakestore/accounts
 |Ausgeführte Überprüfungen|
 |---|
-|<ul><li>Können Benutzer Daten zu Data Lake Store in der Region hochladen?</li><li>Können Benutzer Daten von Data Lake Store in der Region herunterladen?</li></ul>|
+|<ul><li>Sind bei Benutzern Probleme beim Hochladen von Daten in Data Lake Store aufgetreten?</li><li>Sind bei Benutzern Probleme beim Herunterladen von Daten aus Data Lake Store aufgetreten?</li></ul>|
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
 
@@ -74,6 +80,11 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Wurden Datenbank- oder Sammlungsanforderungen nicht ausgeführt, weil der Azure Cosmos DB-Dienst nicht verfügbar war?</li><li>Wurden Dokumentanforderungen nicht ausgeführt, weil der Azure Cosmos DB-Dienst nicht verfügbar war?</li></ul>|
+
+## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Sind an den Schlüsseltresor gerichtete Anforderungen aufgrund von Problemen mit der Azure Key Vault-Plattform nicht erfolgreich?</li><li>Werden an den Schlüsseltresor gerichtete Anforderungen aufgrund von übermäßig vielen Anforderungen des Kunden gedrosselt?</li></ul>|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |Ausgeführte Überprüfungen|
@@ -104,6 +115,11 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li> Wurden Anmeldungen bei der Datenbank durchgeführt?</li></ul>|
+
+## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Sind Anforderungen zum Lesen von Daten aus dem Speicherkonto aufgrund von Problemen mit der Azure Storage-Plattform nicht erfolgreich?</li><li>Sind Anforderungen zum Schreiben von Daten in das Speicherkonto aufgrund von Problemen mit der Azure Storage-Plattform nicht erfolgreich?</li><li>Ist der Speichercluster, in dem sich das Speicherkonto befindet, nicht verfügbar?</li></ul>|
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 |Ausgeführte Überprüfungen|

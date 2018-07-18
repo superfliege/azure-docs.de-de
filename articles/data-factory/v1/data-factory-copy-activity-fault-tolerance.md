@@ -9,24 +9,25 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 04cab032995731b4e473793eff4b1a3fcd46496a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5cfab02fc248139c76bd6123ac942832f8e1a21a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052510"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Hinzufügen von Fehlertoleranz der Kopieraktivität durch Überspringen inkompatibler Zeilen
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: allgemein verfügbar](data-factory-copy-activity-fault-tolerance.md)
-> * [Version 2 – Vorschauversion](../copy-activity-fault-tolerance.md)
+> * [Version 1](data-factory-copy-activity-fault-tolerance.md)
+> * [Version 2 (aktuelle Version)](../copy-activity-fault-tolerance.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Wenn Sie Version 2 des Data Factory-Diensts verwenden, die sich derzeit in der Vorschauphase befindet, finden Sie weitere Informationen unter [fault tolerance in copy activity of Data Factory version 2 (Fehlertoleranz bei Kopieraktivitäten in Version 2 von Data Factory)](../copy-activity-fault-tolerance.md).
+> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [Fehlertoleranz bei der Kopieraktivität von Data Factory](../copy-activity-fault-tolerance.md).
 
 Die [Kopieraktivität](data-factory-data-movement-activities.md) von Azure Data Factory bietet beim Kopieren von Daten zwischen Quell- und Senkendatenspeichern zwei Optionen für den Umgang mit inkompatiblen Zeilen:
 

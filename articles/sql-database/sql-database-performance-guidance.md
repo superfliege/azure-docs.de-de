@@ -6,14 +6,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
-ms.date: 02/12/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: carlrab
-ms.openlocfilehash: c84104ac9094980d0e6d16b535dcf13c462a645a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2956dfab3b9c1e6e8de54648dae9d2be99788ac2
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309213"
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Optimieren der Leistung bei Azure SQL-Datenbank
 
@@ -24,7 +25,7 @@ Wenn Sie keine entsprechenden Empfehlungen erhalten und trotzdem Leistungsproble
 - Optimieren Sie Ihre Anwendung, und wenden Sie einige Best Practices zur Verbesserung der Leistung an. 
 - Optimieren Sie die Datenbank durch die Änderung von Indizes und Abfragen, um ein effizienteres Arbeiten mit Daten sicherzustellen.
 
-Hierbei handelt es sich um manuelle Methoden, weil Sie entscheiden müssen, welche [Ressourcenlimits im DTU-basierten Modell](sql-database-dtu-resource-limits.md) und welche [Ressourcenlimits im V-Kern-basierten Modell (Vorschauversion)](sql-database-vcore-resource-limits.md) Ihren Anforderungen entsprechen. Andernfalls müssten Sie den Anwendungs- oder Datenbankcode neu schreiben und die Änderungen bereitstellen.
+Dies sind manuelle Methoden, da Sie entscheiden müssen, wie viele Ressourcen Sie benötigen. Andernfalls müssten Sie den Anwendungs- oder Datenbankcode neu schreiben und die Änderungen bereitstellen.
 
 ## <a name="increasing-performance-tier-of-your-database"></a>Erhöhen der Leistungsstufe Ihrer Datenbank
 
@@ -270,8 +271,8 @@ Einige Anwendungen sind mit vielen Schreibvorgängen verbunden. In einigen Fäll
 Einige Datenbankanwendungen verfügen über Workloads mit einer hohen Zahl von Lesevorgängen. Cachingschichten können dazu beitragen, die Auslastung für die Datenbank zu reduzieren und ggf. die Leistungsebene zu reduzieren, die zum Unterstützen einer Datenbank mit Azure SQL-Datenbank erforderlich ist. Wenn Sie [Azure Redis Cache](https://azure.microsoft.com/services/cache/) verwenden und über Workloads mit vielen Lesevorgängen verfügen, können Sie Daten einmalig lesen (oder je nach Konfiguration ggf. einmal pro Computer auf Anwendungsebene) und dann außerhalb von Azure SQL-Datenbank speichern. Dies ist eine Möglichkeit zur Reduzierung der Datenbanklast (CPU- und Lesevorgang-E/A), aber es kommt zu einer Auswirkung auf die Transaktionskonsistenz, da die aus dem Cache ausgelesenen Daten gegenüber den Daten in der Datenbank ggf. nicht mehr synchron sind. Es gibt zwar viele Anwendungen, bei denen ein gewisser Inkonsistenzgrad akzeptabel ist, aber dies gilt nicht für alle Workloads. Sie sollten sich daher vollständig mit den Anwendungsanforderungen vertraut machen, bevor Sie eine Cachingstrategie auf Anwendungsebene implementieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zu den DTU-basierten Diensttarifen finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [Ressourcenlimits im DTU-basierten Modell](sql-database-dtu-resource-limits.md).
-* Weitere Informationen zu den V-Kern-basierten Diensttarifen finden Sie unter [V-Kern-basiertes Kaufmodell (Vorschauversion)](sql-database-service-tiers-vcore.md) und [Ressourcenlimits im V-Kern-basierten Modell (Vorschauversion)](sql-database-vcore-resource-limits.md).
+* Weitere Informationen zu den DTU-basierten Diensttarifen finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md).
+* Weitere Informationen zu den V-Kern-basierten Diensttarifen finden Sie unter [V-Kern-basiertes Kaufmodell (Vorschauversion)](sql-database-service-tiers-vcore.md).
 * Weitere Informationen zu Pools für elastische Datenbanken finden Sie unter [Was ist ein Pool für elastische Azure-Datenbanken?](sql-database-elastic-pool.md).
 * Informationen zur Leistung und zu Pools für elastische Datenbanken finden Sie unter [Wann ein Pool für elastische Datenbanken in Frage kommt](sql-database-elastic-pool-guidance.md).
 

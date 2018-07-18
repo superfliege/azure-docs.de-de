@@ -1,27 +1,22 @@
 ---
-title: 'Einführung: Schützen von Azure-VMs mit einem Recovery Services-Tresor | Microsoft Docs'
+title: 'Einführung: Schützen von Azure-VMs mit einem Recovery Services-Tresor'
 description: Es wird beschrieben, wie Sie Azure-VMs mit einem Recovery Services-Tresor schützen. Verwenden Sie Sicherungen von mit Resource Manager bereitgestellten virtuellen Computern, klassischen bereitgestellten Computern und virtuellen Storage Premium-Computern, verschlüsselten virtuellen Computer und virtuellen Computern auf verwalteten Datenträgern, um Ihre Daten zu schützen. Erstellen und registrieren Sie einen Recovery Services-Tresor. Registrieren Sie VMs, erstellen Sie eine Richtlinie, und schützen Sie VMs in Azure.
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keyword: backups; vm backup
-ms.assetid: 45e773d6-c91f-4501-8876-ae57db517cd1
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/18/2018
-ms.author: markgal;jimpark;sogup
+ms.author: markgal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 701accb107931bd1f4472d8999102fecb4fd6373
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+keywords: Sicherungen; VM-Sicherungen
+ms.openlocfilehash: feae4ac83b637588fe0979a82ce05a56c2d339ae
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32310603"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38466130"
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>Sichern virtueller Azure-Computer in Recovery Services-Tresor
 

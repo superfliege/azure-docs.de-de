@@ -12,13 +12,14 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 02/22/2018
+ms.date: 06/29/2018
 ms.author: sethm
-ms.openlocfilehash: a24fa21848005d9768d26ae865680a4851e1dd81
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 2763e401454cdb6145067a3ac415c3a252d7c494
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38630079"
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>Erstellen eines Service Bus-Namespace mithilfe des Azure-Portals
 
@@ -35,7 +36,7 @@ Glückwunsch! Sie haben nun einen Service Bus Messaging-Namespace erstellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [GitHub-Beispiele][github-samples] an, die einige erweiterte Features von Service Bus Messaging veranschaulichen.
+Sehen Sie sich die [GitHub-Beispiele][github-samples] für Service Bus an, mit denen einige erweiterte Service Bus-Messaging-Features veranschaulicht werden.
 
 [create-namespace-using-arm]: service-bus-resource-manager-overview.md
 [github-samples]: https://github.com/Azure/azure-service-bus/tree/master/samples

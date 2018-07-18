@@ -13,6 +13,7 @@ ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/05/2018
+ms.locfileid: "29765950"
 ---
 > [!IMPORTANT]
 > BizTalk Services ist im Azure-Portal nicht mehr verfügbar. Informationen zum Verwalten Ihrer MABS-Instanzen finden Sie unter [REST API for Managing BizTalk Services on Azure](https://msdn.microsoft.com/library/azure/dn232347.aspx) (REST-API für die Verwaltung von BizTalk Services in Azure).

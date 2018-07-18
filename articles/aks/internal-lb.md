@@ -2,22 +2,23 @@
 title: Erstellen eines internen Lastenausgleichs mit Azure Kubernetes Service (AKS)
 description: Verwenden eines internen Lastenausgleichs mit Azure Kubernetes Service (AKS)
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 3/29/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: a1a5d6d455086ee34767e92b277936840717bcd6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 7606ce574c7ff94caef3ffa89320d682b22d8502
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097919"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Verwenden eines internen Lastenausgleichs mit Azure Kubernetes Service (AKS)
 
-Durch einen internen Lastenausgleich können Anwendungen, die im gleichen virtuellen Netzwerk wie der Kubernetes-Cluster ausgeführt werden, auf einen Kubernetes-Dienst zugreifen. Dieses Dokument bietet Informationen zum Erstellen eines internen Lastenausgleichs mit Azure Kubernetes Service (AKS).
+Durch einen internen Lastenausgleich können Anwendungen, die im gleichen virtuellen Netzwerk wie der Kubernetes-Cluster ausgeführt werden, auf einen Kubernetes-Dienst zugreifen. Dieses Dokument bietet Informationen zum Erstellen eines internen Lastenausgleichs mit Azure Kubernetes Service (AKS). Azure Load Balancer ist in zwei SKUs verfügbar: Basic und Standard. AKS wird in der SKU „Basic“ angeboten.
 
 ## <a name="create-internal-load-balancer"></a>Erstellen eines internen Lastenausgleichs
 

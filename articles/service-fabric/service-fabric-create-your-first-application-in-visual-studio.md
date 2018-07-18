@@ -9,17 +9,17 @@ editor: vturecek
 ms.assetid: c3655b7b-de78-4eac-99eb-012f8e042109
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/14/2018
+ms.date: 05/21/2018
 ms.author: ryanwi
-ms.openlocfilehash: 7e64bc34f5c39edaf87cc732d7c4702655df0e3e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7dadaadd0e6a6e6d71685356568076ad26305cc2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212669"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642222"
 ---
 # <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>Erstellen Ihrer ersten zustandsbehafteten Reliable Services-Anwendung mit C# und Service Fabric
 
@@ -68,12 +68,15 @@ Eine Übersicht über den Inhalt des Dienstprojekts finden Sie unter [Erste Schr
 
 Nachdem Sie nun über eine Anwendung verfügen, können Sie sie wie folgt ausführen, bereitstellen und debuggen.
 
-1. Drücken Sie in Visual Studio F5, um die Anwendung für das Debugging bereitzustellen.
+1. Drücken Sie in Visual Studio **F5**, um die Anwendung für das Debugging bereitzustellen.  Klicken Sie auf **Ja**, wenn ein Meldungsfeld angezeigt wird, in dem Sie dazu aufgefordert werden, der Gruppe „ServiceFabricAllowedUsers“ Lese- und Ausführungsberechtigungen für Ihr Visual Studio-Projektverzeichnis zu gewähren.
 
     >[!NOTE]
     >Wenn Sie die Anwendung zum ersten Mal lokal ausführen und bereitstellen, erstellt Visual Studio einen lokalen Cluster für das Debuggen. Dies kann eine Weile dauern. Der Status der Clustererstellung wird im Ausgabefenster von Visual Studio angezeigt.
-
-    Wenn der Cluster bereit ist, erhalten Sie eine Benachrichtigung von der Taskleistenanwendung Local Cluster Manager aus dem SDK.
+    
+     Wenn der Cluster bereit ist, erhalten Sie eine Benachrichtigung von der Taskleistenanwendung Local Cluster Manager aus dem SDK.
+     
+    >[!NOTE]
+    >Diese Übung erfordert einen Cluster mit 5 Knoten (keinen Einzelknotencluster). Sie können dies wie folgt überprüfen: Starten Sie das Service Fabric Explorer-Tool, indem Sie mit der rechten Maustaste auf die Infobereich-Anwendung **Service Fabric Local Cluster Manager** (Service Fabric-Manager für lokale Cluster) klicken und anschließend auf **Switch Cluster Mode** (Clustermodus wechseln) klicken. Klicken Sie auf **5 Knoten**, wenn zurzeit „1 Knoten“ ausgewählt ist.
     
     ![Benachrichtigung in der Taskleiste zum lokalen Cluster][4]
 
@@ -107,7 +110,7 @@ Nachdem Sie nun über eine Anwendung verfügen, können Sie sie wie folgt ausfü
 
     ![Haltepunkt in der RunAsync-Methode des zustandsbehafteten Diensts][7]
 
-7. Starten Sie das Service Fabric Explorer-Tool, indem Sie mit der rechten Maustaste auf die Infobereich-Anwendung **Local Cluster Manager** (Manager für lokale Cluster) klicken und anschließend auf **Manage Local Cluster** (Lokalen Cluster verwalten) klicken.
+7. Starten Sie das Service Fabric Explorer-Tool, indem Sie mit der rechten Maustaste auf die Infobereich-Anwendung **Service Fabric Local Cluster Manager** (Service Fabric-Manager für lokale Cluster) klicken und anschließend auf **Manage Local Cluster** (Lokalen Cluster verwalten) klicken.
 
     ![Starten von Service Fabric Explorer über den Manager für den lokalen Cluster][systray-launch-sfx]
 
@@ -117,7 +120,7 @@ Nachdem Sie nun über eine Anwendung verfügen, können Sie sie wie folgt ausfü
 
     ![Beenden eines Knotens im Service Fabric Explorer][sfx-stop-node]
 
-    Sofort sollten Sie den Haltepunkt in Visual Studio sehen, während die Berechnung, die Sie auf einem Knoten durchgeführt haben, nahtlos auf einem anderen fortgeführt wird.
+    Sofort sollten Sie den Haltepunkt in Visual Studio sehen, während die Berechnung, die Sie auf einem Knoten durchgeführt haben, nahtlos auf einem anderen fortgeführt wird. Drücken Sie **F5**, um fortzufahren.
 
 9. Kehren Sie als Nächstes zur Diagnoseereignisanzeige zurück, und beobachten Sie die Meldungen. Der Zähler wurde weiter erhöht, obwohl die Ereignisse tatsächlich von einem anderen Knoten stammen.
 

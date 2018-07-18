@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 2372550548f40ad07b4f76c19bc3bc1cb8380830
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 99838a7038672998d4940bfb437bd31311d3600f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653432"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Vorbereiten eines virtuellen SLES- oder openSUSE-Computers für Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -93,9 +94,9 @@ Als Alternative zum Erstellen einer eigenen VHD veröffentlicht SUSE auf [VMDepo
      ResourceDisk.Format=y  ResourceDisk.Filesystem=ext4  ResourceDisk.MountPoint=/mnt/resource  ResourceDisk.EnableSwap=y  ResourceDisk.SwapSizeMB=2048    ## HINWEIS: Legen Sie diesen Parameter auf einen belieben gewünschten Wert fest.
 15. Führen Sie die folgenden Befehle aus, um den virtuellen Computer zurückzusetzen und ihn für die Bereitstellung in Azure vorzubereiten:
     
-    # <a name="sudo-waagent--force--deprovision"></a>sudo waagent -force -deprovision
-    # <a name="export-histsize0"></a>export HISTSIZE=0
-    # <a name="logout"></a>logout
+        # sudo waagent -force -deprovision
+        # export HISTSIZE=0
+        # logout
 16. Klicken Sie im Hyper-V-Manager auf **Aktion > Herunterfahren**. Ihre Linux-VHD kann nun in Azure hochgeladen werden.
 
 - - -
@@ -128,7 +129,7 @@ Als Alternative zum Erstellen einer eigenen VHD veröffentlicht SUSE auf [VMDepo
         # sudo zypper update
 5. Installieren des Azure Linux Agent:
    
-   # <a name="sudo-zypper-install-walinuxagent"></a>sudo zypper install WALinuxAgent
+        # sudo zypper install WALinuxAgent
 6. Modifizieren Sie die Boot-Zeile des Kernels in Ihrer Grub-Konfiguration, um zusätzliche Kernel-Parameter für Azure einzubinden. Öffnen Sie dafür "/boot/grub/menu.lst" in einem Text-Editor. Stellen Sie sicher, dass der Standardkernel die folgenden Parameter enthält:
    
      console=ttyS0 earlyprintk=ttyS0 rootdelay=300
@@ -150,9 +151,9 @@ Als Alternative zum Erstellen einer eigenen VHD veröffentlicht SUSE auf [VMDepo
      ResourceDisk.Format=y  ResourceDisk.Filesystem=ext4  ResourceDisk.MountPoint=/mnt/resource  ResourceDisk.EnableSwap=y  ResourceDisk.SwapSizeMB=2048    ## HINWEIS: Legen Sie diesen Parameter auf einen belieben gewünschten Wert fest.
 11. Führen Sie die folgenden Befehle aus, um den virtuellen Computer zurückzusetzen und ihn für die Bereitstellung in Azure vorzubereiten:
     
-    # <a name="sudo-waagent--force--deprovision"></a>sudo waagent -force -deprovision
-    # <a name="export-histsize0"></a>export HISTSIZE=0
-    # <a name="logout"></a>logout
+        # sudo waagent -force -deprovision
+        # export HISTSIZE=0
+        # logout
 12. Stellen Sie sicher, dass der Azure Linux Agent beim Start ausgeführt wird:
     
         # sudo systemctl enable waagent.service

@@ -1,6 +1,6 @@
 ---
-title: "Autorisierung – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation"
-description: "Gegenmaßnahmen für durch das Threat Modeling-Tool offengelegte Gefahren"
+title: Autorisierung – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
+description: Gegenmaßnahmen für durch das Threat Modeling Tool offengelegte Gefahren
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: b9ad3ceeb77a4adc2c47b262aa40a48c14423198
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 9ab106a78aa56b8308207bcadb3db0b5a9714a9d
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029491"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Sicherheitsrahmen: Autorisierung | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
 | **Computer-Vertrauensstellungsgrenze** | <ul><li>[Stellen Sie sicher, dass geeignete ACLs konfiguriert sind, um nicht autorisierten Zugriff auf Daten auf dem Gerät zu beschränken.](#acl-restricted-access)</li><li>[Stellen Sie sicher, dass sensible benutzerspezifische Anwendungsinhalte im Benutzerprofilverzeichnis gespeichert werden.](#sensitive-directory)</li><li>[Stellen Sie sicher, dass die bereitgestellten Anwendungen mit geringstmöglichen Berechtigungen ausgeführt werden.](#deployed-privileges)</li></ul> |
-| **Webanwendung** | <ul><li>[Erzwingen Sie bei der Verarbeitung von Geschäftslogikflows die Einhaltung einer sequenziellen Reihenfolge.](#sequential-logic)</li><li>[Implementieren Sie einen Ratenbegrenzungsmechanismus, um Enumerationen zu verhindern.](#rate-enumeration)</li><li>[Stellen Sie sicher, dass eine geeignete Autorisierung eingerichtet ist und dass das Prinzip der geringstmöglichen Berechtigungen angewendet wird.](#principle-least-privilege)</li><li>[Geschäftslogik und Entscheidungen hinsichtlich der Ressourcenzugriffsautorisierung dürfen nicht auf eingehenden Anforderungsparametern basieren.](#logic-request-parameters)</li><li>[Stellen Sie sicher, dass Inhalte und Ressourcen nicht aufzählbar sind und dass auf sie nicht mittels Forceful Browsing zugegriffen werden kann.](#enumerable-browsing)</li></ul> |
+| **Web Application** | <ul><li>[Erzwingen Sie bei der Verarbeitung von Geschäftslogikflows die Einhaltung einer sequenziellen Reihenfolge.](#sequential-logic)</li><li>[Implementieren Sie einen Ratenbegrenzungsmechanismus, um Enumerationen zu verhindern.](#rate-enumeration)</li><li>[Stellen Sie sicher, dass eine geeignete Autorisierung eingerichtet ist und dass das Prinzip der geringstmöglichen Berechtigungen angewendet wird.](#principle-least-privilege)</li><li>[Geschäftslogik und Entscheidungen hinsichtlich der Ressourcenzugriffsautorisierung dürfen nicht auf eingehenden Anforderungsparametern basieren.](#logic-request-parameters)</li><li>[Stellen Sie sicher, dass Inhalte und Ressourcen nicht aufzählbar sind und dass auf sie nicht mittels Forceful Browsing zugegriffen werden kann.](#enumerable-browsing)</li></ul> |
 | **Datenbank** | <ul><li>[Stellen Sie sicher, dass beim Herstellen einer Verbindung mit dem Datenbankserver Konten mit geringstmöglichen Berechtigungen verwendet werden.](#privileged-server)</li><li>[Implementieren Sie Sicherheit auf Zeilenebene (Row Level Security, RLS), um zu verhindern, dass Mandanten auf Daten anderer Mandanten zugreifen.](#rls-tenants)</li><li>[Die Rolle „SysAdmin“ darf nur gültige, erforderliche Benutzer enthalten.](#sysadmin-users)</li></ul> |
 | **IoT-Cloudgateway** | <ul><li>[Verwenden Sie beim Herstellen einer Verbindung mit dem Cloudgateway Token mit geringstmöglichen Berechtigungen.](#cloud-least-privileged)</li></ul> |
 | **Azure Event Hub** | <ul><li>[Verwenden Sie einen auf Sendeberechtigungen beschränkten SAS-Schlüssel, um Gerätetoken zu generieren.](#sendonly-sas)</li><li>[Verwenden Sie keine Zugriffstoken, die direkten Zugriff auf den Event Hub ermöglichen.](#access-tokens-hub)</li><li>[Verwenden Sie beim Herstellen einer Verbindung mit dem Event Hub SAS-Schlüssel, die über die erforderlichen Mindestberechtigungen verfügen.](#sas-minimum-permissions)</li></ul> |
@@ -311,7 +312,7 @@ RLS ist als vorgefertigtes Datenbankfeature nur für SQL Server ab Version 2016 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein, .NET Framework 3 |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
 | **Schritte** | <p>Das System verwendet eine schwache Klassenreferenz, wodurch Angreifer unter Umständen nicht autorisierten Code ausführen können. Das Programm verweist auf eine benutzerdefinierte Klasse, die nicht eindeutig identifiziert wird. Wenn .NET diese schwach identifizierte Klasse lädt, durchsucht das CLR-Typladeprogramm an die folgenden Speicherorte in der angegebenen Reihenfolge nach der Klasse:</p><ol><li>Wenn die Assembly des Typs bekannt ist, durchsucht das Ladeprogramm die Umleitungsorte der Konfigurationsdatei, den GAC, die aktuelle Assembly mit Konfigurationsinformationen und das Anwendungsbasisverzeichnis.</li><li>Ist die Assembly nicht bekannt, durchsucht das Ladeprogramm die aktuelle Assembly, „mscorlib“ und den vom TypeResolve-Ereignishandler zurückgegebenen Ort.</li><li>Diese CLR-Suchreihenfolge kann mit Hooks wie dem Typweiterleitungsmechanismus und dem AppDomain.TypeResolve-Ereignis geändert werden.</li></ol><p>Wenn sich ein Angreifer die CLR-Suchreihenfolge zunutze macht, indem er eine alternative Klasse mit dem gleichen Namen erstellt und sie an einem alternativen Speicherort platziert, den die CLR zuerst lädt, führt die CLR ungewollt den Code des Angreifers aus.</p>|
 
 ### <a name="example"></a>Beispiel
@@ -348,7 +349,7 @@ Das Element `<behaviorExtensions/>` der folgenden WCF-Konfigurationsdatei weist 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein, .NET Framework 3 |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_unauthorized_access) |
 | **Schritte** | <p>Dieser Dienst verwendet keine Autorisierungskontrolle. Wenn ein Client einen bestimmten WCF-Dienst aufruft, stellt WCF verschiedene Autorisierungsschemas bereit, um zu überprüfen, ob der Aufrufer zum Ausführen der Dienstmethode auf dem Server berechtigt ist. Ohne Autorisierungskontrolle für WCF-Dienste kann ein authentifizierter Benutzer eine Berechtigungsausweitung bewirken.</p>|
 
 ### <a name="example"></a>Beispiel

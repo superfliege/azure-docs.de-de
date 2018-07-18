@@ -11,20 +11,177 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 06/20/2018
 ms.author: brenduns
 ms.reviewer: misainat
-ms.openlocfilehash: 9a396c51e8eb6262726b7590498500bfb4528924
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: bbd9bb0d56dd61fd0a32531ac425a1dbc1aa8923
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34258403"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295415"
 ---
-# <a name="azure-stack-development-kit-release-notes"></a>Versionshinweise für Azure Stack Development Kit
+# <a name="azure-stack-development-kit-release-notes"></a>Versionshinweise für Azure Stack Development Kit  
 Die Anmerkungen zu dieser Version enthalten Informationen zu Verbesserungen, Fehlerbehebungen und bekannten Problemen in Azure Stack Development Kit. Wenn Sie nicht sicher sind, welche Version ausgeführt wird, können Sie diese im [Portal überprüfen](.\.\azure-stack-updates.md#determine-the-current-version).
 
 > Abonnieren Sie den [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#)-[Feed](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#), um in Bezug auf Neuerungen im ASDK auf dem Laufenden zu bleiben.
+
+## <a name="build-11805147"></a>Build 1.1805.1.47
+
+> [!TIP]  
+> Basierend auf Kundenfeedback wurde das Versionsschema für Microsoft Azure Stack aktualisiert. Ab diesem Update – 1805 – stellt das neue Schema die aktuelle Cloudversion besser dar.  
+> 
+> Das Versionsschema lautet nun *Version.YearYearMonthMonth.MinorVersion.BuildNumber*, wobei der zweite und dritte Satz die Version und das Release angeben. Beispielsweise stellt 1805.1 die *RTM*-Version (Freigabe zur Fertigung) von 1805 dar.  
+
+
+### <a name="new-features"></a>Neue Funktionen 
+Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azure Stack.  
+
+- <!-- 2297790 - IS, ASDK --> **Azure Stack enthält jetzt einen *Syslog*-Client** als *Vorschaufunktion*. Dieser Client ermöglicht die Weiterleitung von Überwachungs- und Sicherheitsprotokollen der Azure Stack-Infrastruktur an einen Syslog-Server oder eine SIEM-Software (Security Information and Event Management) außerhalb von Azure Stack. Derzeit unterstützt der Syslog-Client nur nicht authentifizierte UDP-Verbindungen über den Standardport 514. Die Nutzlast der einzelnen Syslog-Nachrichten wird im allgemeinen Ereignisformat (Common Event Format, CEF) formatiert. 
+
+  Verwenden Sie zum Konfigurieren des Syslog-Clients das Cmdlet **Set-SyslogServer**, das im privilegierten Endpunkt verfügbar ist. 
+
+  Mit dieser Vorschau werden möglicherweise die folgenden drei Warnungen angezeigt. Wenn sie in Azure Stack angezeigt werden, enthalten diese Warnungen *Beschreibungen* und Anleitungen zur *Behebung von Problemen*. 
+  - TITEL: Codeintegrität deaktivieren  
+  - TITEL: Codeintegrität im Überwachungsmodus 
+  - TITEL: Benutzerkonto erstellt
+
+  Solange diese Funktion nur als Vorschau verfügbar ist, sollte diese nicht in Produktionsumgebungen eingesetzt werden.   
+
+
+### <a name="fixed-issues"></a>Behobene Probleme
+- Wir haben das Problem behoben, das das [Öffnen einer neuen Supportanfrage aus dem Dropdownmenü](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support) innerhalb des Verwaltungsportals blockiert hat. Diese Option funktioniert jetzt wie vorgesehen. 
+
+- Es wurden **verschiedene Fehlerbehebungen** hinsichtlich der Leistung, Stabilität, Sicherheit und des von Azure Stack eingesetzten Betriebssystems vorgenommen.
+
+
+<!-- ### Changes  --> 
+
+
+<!--   ### Additional releases timed with this update  -->
+
+
+### <a name="known-issues"></a>Bekannte Probleme
+ 
+#### <a name="portal"></a>Portal
+- <!-- 2551834 - IS, ASDK --> Wenn Sie im Verwaltungs- oder Benutzerportal **Übersicht** für ein Speicherkonto auswählen, werden die Informationen aus dem Bereich *Zusammenfassung* nicht angezeigt.  Im Bereich „Zusammenfassung“ werden Informationen über das Konto angezeigt, z.B. die *Ressourcengruppe*, *Speicherort*, und *Abonnement-ID*.  Weitere Optionen für die Übersicht sind verfügbar, z.B. *Dienste* und *Überwachung* sowie Optionen zum *Öffnen im Explorer* oder zum *Löschen eines Speicherkontos*.  
+
+  Nicht verfügbare Informationen lassen sich mit dem PowerShell-Cmdlet [Get-azureRMstorageaccount](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccount?view=azurermps-6.2.0) anzeigen. 
+
+- <!-- 2551834 - IS, ASDK --> Wenn Sie im Verwaltungs- oder Benutzerportal **Tags** für ein Speicherkonto auswählen, werden die Informationen nicht geladen und nicht angezeigt.  
+
+  Nicht verfügbare Informationen lassen sich mit dem PowerShell-Cmdlet [Get-AzureRmTag](https://docs.microsoft.com/powershell/module/azurerm.tags/get-azurermtag?view=azurermps-6.2.0) anzeigen.
+
+- <!-- TBD - IS ASDK --> Verwenden Sie nicht die neuen administrativen Abonnementtypen *Messungsabonnement* und *Verbrauchsabonnement*. Diese neuen Abonnementtypen wurden mit der Version 1804 eingeführt, sind aber noch nicht zur Verwendung bereit. Sie sollten den Abonnementtyp *Standardanbieter* weiterhin verwenden.  
+
+- <!-- 2403291 - IS ASDK --> Möglicherweise haben Sie die horizontale Bildlaufleiste am unteren Rand des Verwaltungs- und Benutzerportals nicht verwendet. Wenn Sie nicht auf die horizontale Bildlaufleiste zugreifen können, verwenden Sie die Breadcrumb-Leiste, um zu einem vorherigen Blatt im Portal zu navigieren. Wählen Sie hierzu den Namen des Blattes, das Sie anzeigen möchten, aus der Breadcrumb-Liste oben links im Portal aus.
+  ![Breadcrumb](media/asdk-release-notes/breadcrumb.png)
+
+- <!-- TBD -  IS ASDK --> Das Löschen von Benutzerabonnements führt zu verwaisten Ressourcen. Eine Problemumgehung besteht darin, zuerst Benutzerressourcen oder die gesamte Ressourcengruppe zu löschen und anschließend Benutzerabonnements zu löschen.
+
+- <!-- TBD -  IS ASDK --> Sie können mit den Azure Stack-Portalen keine Berechtigungen für Ihr Abonnement anzeigen. Verwenden Sie für die Problemumgehung PowerShell, um Berechtigungen zu überprüfen.
+
+
+#### <a name="health-and-monitoring"></a>Integrität und Überwachung
+- <!-- 1264761 - IS ASDK --> Möglicherweise werden Warnungen für die *Health Controller*-Komponente mit folgenden Details angezeigt:  
+
+   Warnung 1:
+   - NAME: Infrastrukturrolle fehlerhaft
+   - SCHWEREGRAD: Warnung
+   - KOMPONENTE: Health Controller
+   - BESCHREIBUNG: Heartbeat Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.  
+
+  Warnung 2:
+   - NAME: Infrastrukturrolle fehlerhaft
+   - SCHWEREGRAD: Warnung
+   - KOMPONENTE: Health Controller
+   - BESCHREIBUNG: Fault Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.
+
+  Beide Alarme können ignoriert werden und werden nach einer gewissen Zeit automatisch geschlossen.  
+
+- <!-- 2392907 – ASDK --> Möglicherweise wird eine *kritische* Warnung bei **geringer Speicherkapazität** angezeigt. Diese Warnung hat die folgende Beschreibung: *Die Region hat mehr als 95,00 % des verfügbaren Speichers verbraucht. Beim Erstellen von virtuellen Maschinen mit großem Arbeitsspeicher kann ein Fehler auftreten.*
+
+  Diese Warnung kann generiert werden, wenn Azure Stack den Speicherverbrauch des Azure Stack Development Kit falsch kalkuliert hat.  
+
+  Diese Warnung kann ignoriert werden. Das Problem wirkt sich nicht auf die Platzierung von virtuellen Maschinen aus. 
+
+- <!-- 2368581 - IS. ASDK --> Wenn Sie als Azure Stack-Bediener eine Fehlermeldung über unzureichenden Speicher erhalten und virtuelle Computer der Mandanten nicht mit einem *Fabric-VM-Erstellungsfehler* bereitgestellt werden können, verfügt der Azure Stack-Stempel möglicherweise nicht über genügend Arbeitsspeicher. Mit dem [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) können Sie die verfügbare Kapazität für Ihre Workloads besser bestimmen. 
+
+
+#### <a name="compute"></a>Compute
+- <!-- TBD - IS, ASDK --> Bei der Auswahl der Größe des virtuellen Computers für die Bereitstellung eines virtuellen Computers sind einige VM-Größen der Serie F beim Erstellen einer VM nicht als Teil der Größenauswahl sichtbar. Folgende VM-Größen werden im Selektor nicht angezeigt: *F8s_v2*, *F16s_v2*, *F32s_v2* und *F64s_v2*.  
+  Um das Problem zu umgehen, verwenden Sie eine der folgenden Methoden zum Bereitstellen einer VM. Bei jeder Methode müssen Sie die gewünschte VM-Größe angeben.
+
+  - **Azure Resource Manager-Vorlage**: Wenn Sie eine Vorlage verwenden, legen Sie *vmSize* in der Vorlage entsprechend der gewünschten VM-Größe fest. Der folgende Eintrag z.B. wird zum Bereitstellen einer VM mit der Größe *F32s_v2* verwendet:  
+
+    ```
+        "properties": {
+        "hardwareProfile": {
+                "vmSize": "Standard_F32s_v2"
+        },
+    ```  
+  - **Azure CLI**: Sie können den Befehl [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) verwenden und die VM-Größe als Parameter angeben, ähnlich wie `--size "Standard_F32s_v2"`.
+
+  - **PowerShell**: Mit PowerShell können Sie [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0) mit dem Parameter verwenden, der die VM-Größe angibt, ähnlich wie `-VMSize "Standard_F32s_v2"`.
+
+
+- <!-- TBD -  IS ASDK --> Die Skalierungseinstellungen für Skalierungsgruppen für virtuelle Computer sind im Portal nicht verfügbar. Dieses Problem können Sie umgehen, indem Sie [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set) verwenden. Aufgrund der Versionsunterschiede bei PowerShell müssen Sie den `-Name`-Parameter statt des `-VMScaleSetName`-Parameters verwenden.
+
+- <!-- TBD -  IS ASDK --> Beim Erstellen von virtuellen Computern im Azure Stack-Benutzerportal zeigt das Portal eine falsche Anzahl von Datenträgern an, die an eine VM der Serie D angefügt werden können. Alle unterstützten virtuellen Computer der Serie D können so viele Datenträger wie bei der Azure-Konfiguration aufnehmen.
+
+- <!-- TBD -  IS ASDK --> Falls bei der Erstellung eines VM-Images ein Fehler auftritt, wird dem Blatt „Berechnung der VM-Images“ ggf. ein fehlerhaftes Element hinzugefügt, das nicht gelöscht werden kann.
+
+  Erstellen Sie zur Problemumgehung ein neues VM-Image mit einer Dummy-VHD, die per Hyper-V erstellt werden kann (New-VHD -Path C:\dummy.vhd -Fixed -SizeBytes 1 GB). Das Problem, mit dem das Löschen des fehlerhaften Elements verhindert wird, sollte durch diesen Vorgang behoben werden. Anschließend können Sie das Element 15 Minuten nach der Erstellung des Dummy-Images erfolgreich löschen.
+
+  Danach können Sie versuchen, das VM-Image, bei dem zuvor ein Fehler aufgetreten ist, erneut herunterzuladen.
+
+- <!-- TBD -  IS ASDK --> Wenn die Bereitstellung einer Erweiterung für eine VM-Bereitstellung zu lange dauert, sollten Benutzer eine Zeitüberschreitung der Bereitstellung zulassen und nicht versuchen, den Vorgang zum Aufheben der Zuordnung oder Löschen der VMs zu beenden.  
+
+- <!-- 1662991 - IS ASDK --> Die Linux-VM-Diagnose wird in Azure Stack nicht unterstützt. Wenn Sie eine Linux-VM mit aktivierter VM-Diagnose bereitstellen, schlägt die Bereitstellung fehl. Die Bereitstellung schlägt auch fehl, wenn Sie die grundlegenden Linux-VM-Metriken über die Diagnoseeinstellungen aktivieren. 
+
+#### <a name="networking"></a>Netzwerk
+- <!-- TBD - IS ASDK --> Sie können benutzerdefinierte Routen weder im Verwaltungs- noch im Benutzerportal erstellen. Dieses Problem umgehen Sie, indem Sie [Azure PowerShell](https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell) verwenden.
+
+- <!-- 1766332 - IS, ASDK --> Wenn Sie unter **Netzwerk** auf **VPN-Gateway erstellen** klicken, um eine VPN-Verbindung einzurichten, wird als VPN-Typ **Richtlinienbasiert** aufgeführt ist. Wählen Sie diese Option nicht aus. Nur die Option **Routenbasiert** wird in Azure Stack unterstützt.
+
+- <!-- 2388980 -  IS ASDK --> Nachdem Sie eine VM erstellt und einer öffentlichen IP-Adresse zugeordnet haben, können Sie die Zuordnung dieser VM zu dieser IP-Adresse nicht mehr aufheben. Die Aufhebung der Zuordnung war scheinbar erfolgreich, aber die zuvor zugewiesene öffentliche IP-Adresse bleibt der ursprünglichen VM zugeordnet.
+
+  Derzeit müssen Sie ausschließlich neue öffentliche IP-Adressen für die Erstellung neuer VMs verwenden.
+
+  Dieses Verhalten tritt auch dann auf, wenn Sie die IP-Adresse einem neuen virtuellen Computer neu zuordnen (gewöhnlich als *VIP-Austausch* bezeichnet). Alle künftigen Versuche, eine Verbindung über diese IP-Adresse herzustellen, führen dazu, dass eine Verbindung mit dem ursprünglichen virtuellen Computer (und nicht mit dem neuen) hergestellt wird.
+
+
+- <!-- 2292271 - IS ASDK --> Wenn Sie eine Kontingentgrenze für eine Netzwerkressource heraufsetzen, die Teil eines Angebots und eines Plans ist, das bzw. der mit einem Mandantenabonnement verbunden ist, wird die neue Grenze nicht auf dieses Abonnement angewendet. Der neue Grenzwert gilt jedoch für neue Abonnements, die nach Heraufsetzen der Kontingentgrenze erstellt werden. 
+
+  Um dieses Problem zu umgehen, verwenden Sie einen Skalierungsplan, um ein Netzwerkkontingent zu erhöhen, wenn der Plan bereits einem Abonnement zugeordnet ist. Weitere Informationen finden Sie in der Beschreibung der Vorgehensweise zum [Bereitstellen eines Skalierungsplans](.\.\azure-stack-subscribe-plan-provision-vm.md#to-make-an-add-on-plan-available).
+
+- <!-- 2304134 IS ASDK --> Ein Abonnement, dem DNS-Zonen- oder Routingtabellenressourcen zugeordnet wurden, kann nicht gelöscht werden. Um das Abonnement erfolgreich zu löschen, müssen Sie zuerst die DNS-Zonen- und Routingtabellenressourcen aus dem Mandantenabonnement löschen. 
+
+
+- <!-- 1902460 -  IS ASDK -->Azure Stack unterstützt ein einzelnes *Gateway eines lokalen Netzwerks* pro IP-Adresse. Dies gilt für alle Mandantenabonnements. Nach der Herstellung der Verbindung mit dem ersten Gateway eines lokalen Netzwerks werden nachfolgende Versuche zum Erstellen einer Ressource für Gateways lokaler Netzwerke mit der gleichen IP-Adresse blockiert.
+
+- <!-- 16309153 -  IS ASDK --> In einem virtuellen Netzwerk, das mit der DNS-Servereinstellung *Automatisch* erstellt wurde, tritt bei der Änderung eines benutzerdefinierten DNS-Servers ein Fehler auf. Die aktualisierten Einstellungen werden nicht per Pushvorgang auf VMs in diesem VNET übertragen.
+ 
+- <!-- TBD -  IS ASDK --> Azure Stack unterstützt nicht das Hinzufügen zusätzlicher Netzwerkschnittstellen zu einer VM-Instanz, nachdem die VM bereitgestellt wurde. Wenn die VM mehr als eine Netzwerkschnittstelle benötigt, müssen diese zum Zeitpunkt der Bereitstellung definiert werden.
+
+
+#### <a name="sql-and-mysql"></a>SQL und MySQL 
+- <!-- TBD - ASDK --> Die Server für das Hosten von Datenbanken müssen für die Verwendung durch die Ressourcenanbieter und Benutzerworkloads dediziert sein. Sie können keine Instanz verwenden, die durch andere Consumer, einschließlich App Services, verwendet wird.
+
+- <!-- IS, ASDK --> Sonderzeichen, einschließlich Leerzeichen und Interpunktion, werden in den Namen für die **Familie** nicht unterstützt, wenn Sie die SKU für die SQL- und MySQL-Ressourcenanbieter erstellen. 
+
+#### <a name="app-service"></a>App Service
+- <!-- 2352906 - IS ASDK --> Benutzer müssen den Speicherressourcenanbieter vor dem Erstellen seiner ersten Azure-Funktion im Abonnement registrieren.
+
+- <!-- TBD - IS ASDK --> Um die Infrastruktur (Worker-, Verwaltungs-, Front-End-Rollen) horizontal hochzuskalieren, müssen Sie PowerShell verwenden, wie in den Anmerkungen zu dieser Version für die Berechnung beschrieben.  
+
+- <!-- TBD - IS ASDK -->App Service kann derzeit nur im *Abonnement für Standardanbieter* bereitgestellt werden. In einem zukünftigen Update wird App Service in das neue *Messungsabonnement* integriert, das in Azure Stack 1804 eingeführt wurde. Wenn Messungen für die Verwendung unterstützt werden, migrieren alle vorhandenen Bereitstellungen zu diesem neuen Abonnementtyp.
+
+#### <a name="usage"></a>Verwendung  
+- <!-- TBD -  IS ASDK --> Die Ansicht „Verwendung“ für die Nutzungsdaten öffentlicher IP-Adressen zeigt den gleichen *EventDateTime*-Wert für jeden Datensatz anstatt des *TimeDate*-Stempels, der anzeigt, wann dieser jeweils erstellt wurde. Derzeit können Sie diese Daten nicht nutzen, um eine genaue Buchhaltung über die Nutzung öffentlicher IP-Adressen durchzuführen.
+
+<!-- #### Identity -->
+
 
 
 ## <a name="build-201805131"></a>Build 20180513.1
@@ -32,27 +189,30 @@ Die Anmerkungen zu dieser Version enthalten Informationen zu Verbesserungen, Feh
 ### <a name="new-features"></a>Neue Funktionen 
 Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azure Stack.  
 
-- <!-- 1759172 - IS, ASDK --> **More granular administrative subscriptions**. With version 1804 and later, the Default Provider subscription is now complemented with two additional subscriptions. The additions facilitate separating the management of core infrastructure, additional resource providers, and workloads. The following three subscriptions are available:
-  - *Standardabonnement des Anbieters*. Verwenden Sie dieses Abonnement nur für Kerninfrastruktur. Stellen Sie keine Ressourcen oder Ressourcenanbieter für dieses Abonnement bereit.
-  - *Messungsabonnement*. Verwenden Sie dieses Abonnement zur Ressourcenanbieterbereitstellung. Für dieses Abonnement bereitgestellte Ressourcen werden nicht in Rechnung gestellt.
-  - *Verbrauchsabonnement*. Verwenden Sie dieses Abonnement für alle anderen Workloads, die Sie bereitstellen möchten. Für hier bereitgestellte Ressourcen werden normale Auslastungspreise berechnet.
+- <!-- 1759172 - IS, ASDK --> **Neue Verwaltungsabonnements**. Mit 1804 gibt es im Portal zwei neue Abonnementtypen. Diese neuen Abonnementtypen sind zusätzlich zum Standardabonnement des Anbieters verfügbar und werden in neuen Azure Stack-Installationen ab Version 1804 angezeigt. *Verwenden Sie diese neuen Abonnementtypen nicht mit dieser Azure Stack-Version*. Die Verfügbarkeit dieser Abonnementtypen wird in einem zukünftigen Update bekanntgegeben. 
 
+  Diese neuen Abonnementtypen werden zwar angezeigt, sind jedoch Bestandteil einer größeren Änderung, um das Abonnement für Standardanbieter zu sichern und die Bereitstellung von freigegebenen Ressourcen wie SQL-Hostserver zu vereinfachen. 
+
+  Derzeit sind drei Abonnementtypen verfügbar:  
+  - Abonnement für Standardanbieter: Diesen Abonnementtyp können Sie weiterhin verwenden. 
+  - Abonnement für Messungen: *Verwenden Sie diesen Abonnementtyp nicht.*
+  - Abonnement für die Nutzung: *Verwenden Sie diesen Abonnementtyp nicht.*
 
 ### <a name="fixed-issues"></a>Behobene Probleme
-- <!-- IS, ASDK -->  In the admin portal, you no longer have to refresh the Update tile before it displays information. 
+- <!-- IS, ASDK --> Im Verwaltungsportal müssen Sie die Kachel „Aktualisieren“ nicht mehr aktualisieren, bevor diese Informationen anzeigt. 
 
-- <!-- 2050709 - IS, ASDK -->  You can now use the admin portal to edit storage metrics for Blob service, Table service, and Queue service.
+- <!-- 2050709 - IS, ASDK --> Sie können nun über das Verwaltungsportal Speichermetriken für Blob-Dienst, Tabellenspeicherdienst und Warteschlangendienst bearbeiten.
 
-- <!-- IS, ASDK --> Under **Networking**, when you click **Connection** to set up a VPN connection, **Site-to-site (IPsec)** is now the only available option. 
+- <!-- IS, ASDK --> Wenn Sie unter **Netzwerk** auf **Verbindung** klicken, um eine VPN-Verbindung einzurichten, ist **Site-to-site (IPsec)** nun die einzige verfügbare Option. 
 
 - Es wurden **verschiedene Fehlerbehebungen** hinsichtlich der Leistung, Stabilität, Sicherheit und des von Azure Stack eingesetzten Betriebssystems vorgenommen.
 
 <!-- ### Changes  --> 
 ### <a name="additional-releases-timed-with-this-update"></a>Zusätzliche, zeitlich auf dieses Update abgestimmte Releases  
-Die folgenden sind jetzt verfügbar, benötigen jedoch nicht Azure Stack Update 1804.
-- **Aktualisieren Sie auf das Microsoft Azure Stack System Center Operations Manager-Überwachungspaket**. Eine neue Version (1.0.3.0) des Microsoft System Center Operations Manager-Überwachungspakets für Azure Stack steht zum [Herunterladen](https://www.microsoft.com/download/details.aspx?id=55184) zur Verfügung. Mit dieser Version können Sie Dienstprinzipale verwenden, wenn Sie eine verbundene Azure Stack-Bereitstellung hinzufügen. Diese Version bietet auch eine Updateverwaltungsoberfläche, über die Sie direkt im Operations Manager Wartungsaktionen ausführen können. Es gibt auch neue Dashboards, die Ressourcenanbieter, Skalierungseinheiten und Skalierungseinheitenknoten anzeigen.
+Die folgenden Updates sind jetzt verfügbar, benötigen jedoch nicht Azure Stack Update 1804.
+- **Update für das Microsoft Azure Stack System Center Operations Manager-Überwachungspaket**. Eine neue Version (1.0.3.0) des Microsoft System Center Operations Manager-Überwachungspakets für Azure Stack steht zum [Herunterladen](https://www.microsoft.com/download/details.aspx?id=55184) zur Verfügung. Mit dieser Version können Sie Dienstprinzipale verwenden, wenn Sie eine verbundene Azure Stack-Bereitstellung hinzufügen. Diese Version bietet auch eine Updateverwaltungsoberfläche, mit der Sie die Wartungsaktion direkt in Operations Manager ausführen können. Es gibt auch neue Dashboards, die Ressourcenanbieter, Skalierungseinheiten und Skalierungseinheitenknoten anzeigen.
 
-- **Neue Azure Stack Admin PowerShell Version 1.3.0**.  Azure Stack PowerShell 1.3.0 ist jetzt für die Installation verfügbar. Diese Version bietet allen Administratorressourcenanbietern Befehle zum Verwalten von Azure Stack.  Aufgrund dieses Releases sind manche Inhalte aus dem GitHub-[Repository](https://github.com/Azure/AzureStack-Tools) zu Azure Stack-Tools veraltet. 
+- **Neue Azure Stack Admin PowerShell Version 1.3.0**.  Azure Stack PowerShell 1.3.0 ist jetzt für die Installation verfügbar. Diese Version stellt Befehle für alle Administratorressourcenanbieter zum Verwalten von Azure Stack zur Verfügung.  Bei diesem Release werden manche Inhalte aus dem GitHub-[Repository](https://github.com/Azure/AzureStack-Tools) für Azure Stack-Tools eingestellt. 
 
    Um ausführliche Informationen zur Installation zu erhalten, beachten Sie die [Anweisungen](.\.\azure-stack-powershell-install.md) oder den [Hilfeinhalt](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0) für das Azure Stack-Modul 1.3.0. 
 
@@ -61,80 +221,109 @@ Die folgenden sind jetzt verfügbar, benötigen jedoch nicht Azure Stack Update 
 ### <a name="known-issues"></a>Bekannte Probleme
  
 #### <a name="portal"></a>Portal
-- <!-- TBD - IS ASDK --> The ability [to open a new support request from the dropdown](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support) from within the administrator portal isn’t available. Instead, use the following link:     
+- <!-- TBD - IS ASDK --> Die Funktion, mit der innerhalb des Administratorportals [eine neue Supportanfrage über die Dropdownliste geöffnet wird](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support), ist nicht verfügbar. Verwenden Sie stattdessen den folgenden Link:     
     - Verwenden Sie https://aka.ms/azurestackforum für das Azure Stack Development Kit.    
 
-- <!-- 2403291 - IS ASDK --> You might not have use of the horizontal scroll bar along the bottom of the admin and user portals. If you can’t access the horizontal scroll bar, use the breadcrumbs to navigate to a previous blade in the portal by selecting the name of the blade you want to view from the breadcrumb list found at the top left of the portal.
+- <!-- 2403291 - IS ASDK --> Möglicherweise haben Sie die horizontale Bildlaufleiste am unteren Rand des Verwaltungs- und Benutzerportals nicht verwendet. Wenn Sie nicht auf die horizontale Bildlaufleiste zugreifen können, verwenden Sie die Breadcrumb-Leiste, um zu einem vorherigen Blatt im Portal zu navigieren. Wählen Sie hierzu den Namen des Blattes, das Sie anzeigen möchten, aus der Breadcrumb-Liste oben links im Portal aus.
   ![Breadcrumb](media/asdk-release-notes/breadcrumb.png)
 
-- <!-- TBD -  IS ASDK --> Deleting user subscriptions results in orphaned resources. As a workaround, first delete user resources or the entire resource group, and then delete user subscriptions.
+- <!-- TBD -  IS ASDK --> Das Löschen von Benutzerabonnements führt zu verwaisten Ressourcen. Eine Problemumgehung besteht darin, zuerst Benutzerressourcen oder die gesamte Ressourcengruppe zu löschen und anschließend Benutzerabonnements zu löschen.
 
-- <!-- TBD -  IS ASDK --> You cannot view permissions to your subscription using the Azure Stack portals. As a workaround, use PowerShell to verify permissions.
+- <!-- TBD -  IS ASDK --> Sie können mit den Azure Stack-Portalen keine Berechtigungen für Ihr Abonnement anzeigen. Verwenden Sie für die Problemumgehung PowerShell, um Berechtigungen zu überprüfen.
 
--   <!-- TBD -  IS ASDK --> In the admin portal, you might see a critical alert for the Microsoft.Update.Admin component. The Alert name, description, and remediation all display as:  
+-   <!-- TBD -  IS ASDK -->Im Verwaltungsportal wird möglicherweise eine kritische Warnung für die Komponente „Microsoft.Update.Admin“ angezeigt. Name, Beschreibung und Behebung der Warnung werden wie folgt angezeigt:  
     - *FEHLER: Vorlage für FaultType ResourceProviderTimeout fehlt.*
 
     Diese Warnung kann ignoriert werden. 
 
+#### <a name="health-and-monitoring"></a>Integrität und Überwachung
+- <!-- 1264761 - IS ASDK --> Möglicherweise werden Warnungen für die *Health Controller*-Komponente mit folgenden Details angezeigt:  
+
+   Warnung 1:
+   - NAME: Infrastrukturrolle fehlerhaft
+   - SCHWEREGRAD: Warnung
+   - KOMPONENTE: Health Controller
+   - BESCHREIBUNG: Heartbeat Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.  
+
+  Warnung 2:
+   - NAME: Infrastrukturrolle fehlerhaft
+   - SCHWEREGRAD: Warnung
+   - KOMPONENTE: Health Controller
+   - BESCHREIBUNG: Fault Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.
+
+  Beide Warnungen können ignoriert werden. Sie werden nach einem bestimmten Zeitraum automatisch geschlossen.  
+
+#### <a name="marketplace"></a>Marketplace
+- Benutzer können den gesamten Marketplace ohne Abonnement durchsuchen, und es werden administrative Elemente wie Pläne und Angebote angezeigt. Diese Elemente sind für Benutzer nicht funktional.
+ 
 #### <a name="compute"></a>Compute
-- <!-- TBD -  IS ASDK --> Scaling settings for virtual machine scale sets are not available in the portal. As a workaround, you can use [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Because of PowerShell version differences, you must use the `-Name` parameter instead of `-VMScaleSetName`.
+- <!-- TBD -  IS ASDK --> Die Skalierungseinstellungen für Skalierungsgruppen für virtuelle Computer sind im Portal nicht verfügbar. Dieses Problem können Sie umgehen, indem Sie [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set) verwenden. Aufgrund der Versionsunterschiede bei PowerShell müssen Sie den `-Name`-Parameter statt des `-VMScaleSetName`-Parameters verwenden.
 
-- <!-- TBD -  IS ASDK --> When you create virtual machines on the Azure Stack user portal, the portal displays an incorrect number of data disks that can attach to a DS series VM. DS series VMs can accommodate as many data disks as the Azure configuration.
+- <!-- TBD -  IS ASDK --> Beim Erstellen von virtuellen Computern im Azure Stack-Benutzerportal zeigt das Portal eine falsche Anzahl von Datenträgern an, die an eine VM der Serie DS angefügt werden können. VMs der Serie DS können so viele Datenträger wie bei der Azure-Konfiguration aufnehmen.
 
-- <!-- TBD -  IS ASDK --> When a VM image fails to be created, a failed item that you cannot delete might be added to the VM images compute blade.
+- <!-- TBD -  IS ASDK --> Falls bei der Erstellung eines VM-Images ein Fehler auftritt, wird dem Blatt „Berechnung der VM-Images“ ggf. ein fehlerhaftes Element hinzugefügt, das nicht gelöscht werden kann.
 
   Erstellen Sie zur Problemumgehung ein neues VM-Image mit einer Dummy-VHD, die per Hyper-V erstellt werden kann (New-VHD -Path C:\dummy.vhd -Fixed -SizeBytes 1 GB). Das Problem, mit dem das Löschen des fehlerhaften Elements verhindert wird, sollte durch diesen Vorgang behoben werden. Anschließend können Sie das Element 15 Minuten nach der Erstellung des Dummy-Images erfolgreich löschen.
 
   Danach können Sie versuchen, das VM-Image, bei dem zuvor ein Fehler aufgetreten ist, erneut herunterzuladen.
 
-- <!-- TBD -  IS ASDK --> If provisioning an extension on a VM deployment takes too long, users should let the provisioning time-out instead of trying to stop the process to deallocate or delete the VM.  
+- <!-- TBD -  IS ASDK --> Wenn die Bereitstellung einer Erweiterung für eine VM-Bereitstellung zu lange dauert, sollten Benutzer eine Zeitüberschreitung der Bereitstellung zulassen und nicht versuchen, den Vorgang zum Aufheben der Zuordnung oder Löschen der VMs zu beenden.  
 
-- <!-- 1662991 - IS ASDK --> Linux VM diagnostics is not supported in Azure Stack. When you deploy a Linux VM with VM diagnostics enabled, the deployment fails. The deployment also fails if you enable the Linux VM basic metrics through diagnostic settings. 
+- <!-- 1662991 - IS ASDK --> Die Linux-VM-Diagnose wird in Azure Stack nicht unterstützt. Wenn Sie eine Linux-VM mit aktivierter VM-Diagnose bereitstellen, schlägt die Bereitstellung fehl. Die Bereitstellung schlägt auch fehl, wenn Sie die grundlegenden Linux-VM-Metriken über die Diagnoseeinstellungen aktivieren. 
 
 #### <a name="networking"></a>Netzwerk
-- <!-- 1766332 - IS, ASDK --> Under **Networking**, if you click **Create VPN Gateway** to set up a VPN connection, **Policy Based** is listed as a VPN type. Do not select this option. Only the **Route Based** option is supported in Azure Stack.
+- <!-- 1766332 - IS, ASDK --> Wenn Sie unter **Netzwerk** auf **VPN-Gateway erstellen** klicken, um eine VPN-Verbindung einzurichten, wird als VPN-Typ **Richtlinienbasiert** aufgeführt ist. Wählen Sie diese Option nicht aus. Nur die Option **Routenbasiert** wird in Azure Stack unterstützt.
 
-- <!-- 2388980 -  IS ASDK --> After a VM is created and associated with a public IP address, you can't disassociate that VM from that IP address. Disassociation appears to work, but the previously assigned public IP address remains associated with the original VM.
+- <!-- 2388980 -  IS ASDK --> Nachdem Sie eine VM erstellt und einer öffentlichen IP-Adresse zugeordnet haben, können Sie die Zuordnung dieser VM zu dieser IP-Adresse nicht mehr aufheben. Die Aufhebung der Zuordnung war scheinbar erfolgreich, aber die zuvor zugewiesene öffentliche IP-Adresse bleibt der ursprünglichen VM zugeordnet.
 
   Derzeit müssen Sie ausschließlich neue öffentliche IP-Adressen für die Erstellung neuer VMs verwenden.
 
-  Dieses Verhalten tritt auch dann auf, wenn Sie die IP-Adresse einem neuen virtuellen Computer neu zuordnen (gewöhnlich als *VIP-Austausch* bezeichnet). Alle künftigen Versuche, eine Verbindung über diese IP-Adresse herzustellen, führen dazu, dass eine Verbindung mit dem ursprünglich zugeordneten virtuellen Computer (und nicht mit dem neuen) hergestellt wird.
+  Dieses Verhalten tritt auch dann auf, wenn Sie die IP-Adresse einem neuen virtuellen Computer neu zuordnen (gewöhnlich als *VIP-Austausch* bezeichnet). Alle künftigen Versuche, eine Verbindung über diese IP-Adresse herzustellen, führen dazu, dass eine Verbindung mit dem ursprünglichen virtuellen Computer (und nicht mit dem neuen) hergestellt wird.
 
-- <!-- 2292271 - IS ASDK --> If you raise a Quota limit for a Network resource that is part of an Offer and Plan that is associated with a tenant subscription, the new limit is not applied to that subscription. However, the new limit does apply to new subscriptions that are created after the quota is increased. 
+- <!-- 2292271 - IS ASDK --> Wenn Sie eine Kontingentgrenze für eine Netzwerkressource heraufsetzen, die Teil eines Angebots und eines Plans ist, das bzw. der mit einem Mandantenabonnement verbunden ist, wird die neue Grenze nicht auf dieses Abonnement angewendet. Der neue Grenzwert gilt jedoch für neue Abonnements, die nach Heraufsetzen der Kontingentgrenze erstellt werden. 
 
-  Um dieses Problem zu umgehen, verwenden Sie einen Add-On-Plan, um ein Netzwerkkontingent zu erhöhen, wenn der Plan bereits einem Abonnement zugeordnet ist. Weitere Informationen finden Sie in der Beschreibung der Vorgehensweise zum [Bereitstellen eines Add-on-Plans](.\.\azure-stack-subscribe-plan-provision-vm.md#to-make-an-add-on-plan-available).
+  Um dieses Problem zu umgehen, verwenden Sie einen Skalierungsplan, um ein Netzwerkkontingent zu erhöhen, wenn der Plan bereits einem Abonnement zugeordnet ist. Weitere Informationen finden Sie in der Beschreibung der Vorgehensweise zum [Bereitstellen eines Skalierungsplans](.\.\azure-stack-subscribe-plan-provision-vm.md#to-make-an-add-on-plan-available).
 
-- <!-- 2304134 IS ASDK --> You cannot delete a subscription that has DNS Zone resources or Route Table resources associated with it. To successfully delete the subscription, you must first delete DNS Zone and Route Table resources from the tenant subscription. 
+- <!-- 2304134 IS ASDK --> Ein Abonnement, dem DNS-Zonen- oder Routingtabellenressourcen zugeordnet wurden, kann nicht gelöscht werden. Um das Abonnement erfolgreich zu löschen, müssen Sie zuerst die DNS-Zonen- und Routingtabellenressourcen aus dem Mandantenabonnement löschen. 
 
 
-- <!-- 1902460 -  IS ASDK --> Azure Stack supports a single *local network gateway* per IP address. This is true across all tenant subscriptions. After the creation of the first local network gateway connection, subsequent attempts to create a local network gateway resource with the same IP address are blocked.
+- <!-- 1902460 -  IS ASDK -->Azure Stack unterstützt ein einzelnes *Gateway eines lokalen Netzwerks* pro IP-Adresse. Dies gilt für alle Mandantenabonnements. Nach der Herstellung der Verbindung mit dem ersten Gateway eines lokalen Netzwerks werden nachfolgende Versuche zum Erstellen einer Ressource für Gateways lokaler Netzwerke mit der gleichen IP-Adresse blockiert.
 
-- <!-- 16309153 -  IS ASDK --> On a Virtual Network that was created with a DNS Server setting of *Automatic*, changing to a custom DNS Server fails. The updated settings are not pushed to VMs in that Vnet.
+- <!-- 16309153 -  IS ASDK --> In einem virtuellen Netzwerk, das mit der DNS-Servereinstellung *Automatisch* erstellt wurde, tritt bei der Änderung eines benutzerdefinierten DNS-Servers ein Fehler auf. Die aktualisierten Einstellungen werden nicht per Pushvorgang auf VMs in diesem VNET übertragen.
  
-- <!-- TBD -  IS ASDK --> Azure Stack does not support adding additional network interfaces to a VM instance after the VM is deployed. If the VM requires more than one network interface, they must be defined at deployment time.
+- <!-- TBD -  IS ASDK --> Azure Stack unterstützt nicht das Hinzufügen zusätzlicher Netzwerkschnittstellen zu einer VM-Instanz, nachdem die VM bereitgestellt wurde. Wenn die VM mehr als eine Netzwerkschnittstelle benötigt, müssen diese zum Zeitpunkt der Bereitstellung definiert werden.
 
 
 #### <a name="sql-and-mysql"></a>SQL und MySQL 
-- <!-- TBD - ASDK --> The database hosting servers must be dedicated for use by the resource provider and user workloads. You cannot use an instance that is being used by any other consumer, including App Services.
+- <!-- TBD - ASDK --> Die Server für das Hosten von Datenbanken müssen für die Verwendung durch die Ressourcenanbieter und Benutzerworkloads dediziert sein. Sie können keine Instanz verwenden, die durch andere Consumer, einschließlich App Services, verwendet wird.
 
-- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** name when you create a SKU for the SQL and MySQL resource providers. 
+- <!-- IS, ASDK --> Sonderzeichen, einschließlich Leerzeichen und Interpunktion, werden in den Namen für die **Familie** nicht unterstützt, wenn Sie die SKU für die SQL- und MySQL-Ressourcenanbieter erstellen. 
 
 #### <a name="app-service"></a>App Service
-- <!-- TBD -  IS ASDK --> Users must register the storage resource provider before they create their first Azure Function in the subscription.
+- <!-- TBD -  IS ASDK --> Benutzer müssen den Speicherressourcenanbieter vor dem Erstellen seiner ersten Azure-Funktion im Abonnement registrieren.
 
-- <!-- TBD -  IS ASDK --> In order to scale out infrastructure (workers, management, front-end roles), you must use PowerShell as described in the release notes for Compute.
+- <!-- TBD -  IS ASDK --> Um die Infrastruktur (Worker-, Verwaltungs-, Front-End-Rollen) horizontal hochzuskalieren, müssen Sie PowerShell verwenden, wie in den Anmerkungen zu dieser Version für die Berechnung beschrieben.
  
 #### <a name="usage"></a>Verwendung  
-- <!-- TBD -  IS ASDK --> Usage Public IP address usage meter data shows the same *EventDateTime* value for each record instead of the *TimeDate* stamp that shows when the record was created. Currently, you can’t use this data to perform accurate accounting of public IP address usage.
+- <!-- TBD -  IS ASDK --> Die Ansicht „Verwendung“ für die Nutzungsdaten öffentlicher IP-Adressen zeigt den gleichen *EventDateTime*-Wert für jeden Datensatz anstatt des *TimeDate*-Stempels, der anzeigt, wann dieser jeweils erstellt wurde. Derzeit können Sie diese Daten nicht nutzen, um eine genaue Buchhaltung über die Nutzung öffentlicher IP-Adressen durchzuführen.
+
+<!--
+#### Identity
+-->
+
+
+
+#### <a name="downloading-azure-stack-tools-from-github"></a>Herunterladen von Azure Stack-Tools von GitHub
+- Beim Herunterladen der Azure Stack-Tools über GitHub mit dem PowerShell-Cmdlet *invoke-webrequest* ist ein Fehler aufgetreten:     
+    -  *invoke-webrequest: Die Anforderung wurde abgebrochen: Es konnte kein sicherer SSL/TLS-Kanal erstellt werden.*     
+
+  Dieser Fehler tritt aufgrund der zurzeit veralteten GitHub-Unterstützung für die kryptografischen Standards TLS v1 und TLS v1.1 auf (der Standardwert für PowerShell). Weitere Informationen finden Sie unter [Weak cryptographic standards removal notice](https://githubengineering.com/crypto-removal-notice/) (Hinweis zur Abschaffung unsicherer kryptografischer Standards).
 
 <!-- #### Identity -->
 
 
 
-
-
-
-## <a name="build-201803291"></a>Build 20180329.1
+## <a name="build-201803021"></a>Build 20180302.1
 
 ### <a name="new-features-and-fixes"></a>Neue Features und Fehlerbehebungen
 Die für integrierte Azure Stack-Systeme Version 1803 veröffentlichten neuen Features und Fixes gelten für das Azure Stack Development Kit. Weitere Informationen finden Sie in den Abschnitten [Neue Features](.\.\azure-stack-update-1803.md#new-features) und [Fehlerbehebungen](.\.\azure-stack-update-1803.md#fixed-issues) der Versionshinweise zum Azure Stack 1803-Update.  
@@ -151,108 +340,7 @@ Die für integrierte Azure Stack-Systeme Version 1803 veröffentlichten neuen Fe
 - Die Funktion, mit der innerhalb des Administratorportals [eine neue Supportanfrage über die Dropdownliste geöffnet wird](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support), ist nicht verfügbar. Verwenden Sie stattdessen den folgenden Link:     
     - Verwenden Sie https://aka.ms/azurestackforum für das Azure Stack Development Kit.    
 
-- <!-- 2050709 --> In the admin portal, it is not possible to edit storage metrics for Blob service, Table service, or Queue service. When you go to Storage, and then select the blob, table, or queue service tile, a new blade opens that displays a metrics chart for that service. If you then select Edit from the top of the metrics chart tile, the Edit Chart blade opens but does not display options to edit metrics.  
-
-- Ihnen wird die Warnung **Aktivierung erforderlich** angezeigt, die Ihnen dazu rät, Ihr Azure Stack Development Kit zu registrieren. Dies ist das erwartete Verhalten.
-
-- Das Löschen von Benutzerabonnements führt zu verwaisten Ressourcen. Eine Problemumgehung besteht darin, zuerst Benutzerressourcen oder die gesamte Ressourcengruppe zu löschen und anschließend Benutzerabonnements zu löschen.
-
-- Sie können mit den Azure Stack-Portalen keine Berechtigungen für Ihr Abonnement anzeigen. Verwenden Sie für die Problemumgehung PowerShell, um Berechtigungen zu überprüfen.
-
-- Im Dashboard des Verwaltungsportals tritt beim Anzeigen von Informationen zu Updates über die Kachel „Aktualisieren“ ein Fehler auf. Klicken Sie zur Behebung dieses Problems auf die Kachel, um sie zu aktualisieren.
-
--   Im Verwaltungsportal wird unter Umständen eine kritische Warnung für die Komponente „Microsoft.Update.Admin“ angezeigt. Name, Beschreibung und Behebung der Warnung werden wie folgt angezeigt:  
-    - *FEHLER: Vorlage für FaultType ResourceProviderTimeout fehlt.*
-
-    Diese Warnung kann ignoriert werden. 
-
-
-
-#### <a name="marketplace"></a>Marketplace
-- Benutzer können den gesamten Marketplace ohne Abonnement durchsuchen, und es werden administrative Elemente wie Pläne und Angebote angezeigt. Diese Elemente sind für Benutzer nicht funktional.
- 
-#### <a name="compute"></a>Compute
-- Die Skalierungseinstellungen für Skalierungsgruppen für virtuelle Computer sind im Portal nicht verfügbar. Dieses Problem können Sie umgehen, indem Sie [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set) verwenden. Aufgrund der Versionsunterschiede bei PowerShell müssen Sie den `-Name`-Parameter statt des `-VMScaleSetName`-Parameters verwenden.
-
-- Beim Erstellen von virtuellen Computern im Azure Stack-Benutzerportal zeigt das Portal eine falsche Anzahl von Datenträgern an, die an eine VM der Serie DS angefügt werden können. VMs der Serie DS können so viele Datenträger wie bei der Azure-Konfiguration aufnehmen.
-
-- Falls bei der Erstellung eines VM-Images ein Fehler auftritt, wird dem Blatt „Berechnung der VM-Images“ ggf. ein fehlerhaftes Element hinzugefügt, das nicht gelöscht werden kann.
-
-  Erstellen Sie zur Problemumgehung ein neues VM-Image mit einer Dummy-VHD, die per Hyper-V erstellt werden kann (New-VHD -Path C:\dummy.vhd -Fixed -SizeBytes 1 GB). Das Problem, mit dem das Löschen des fehlerhaften Elements verhindert wird, sollte durch diesen Vorgang behoben werden. Anschließend können Sie das Element 15 Minuten nach der Erstellung des Dummy-Images erfolgreich löschen.
-
-  Danach können Sie versuchen, das VM-Image, bei dem zuvor ein Fehler aufgetreten ist, erneut herunterzuladen.
-
--  Wenn die Bereitstellung einer Erweiterung für eine VM-Bereitstellung zu lange dauert, sollten Benutzer eine Zeitüberschreitung der Bereitstellung zulassen und nicht versuchen, den Vorgang zum Aufheben der Zuordnung oder Löschen der VMs zu beenden.  
-
-- <!-- 1662991 --> Linux VM diagnostics is not supported in Azure Stack. When you deploy a Linux VM with VM diagnostics enabled, the deployment fails. The deployment also fails if you enable the Linux VM basic metrics through diagnostic settings. 
-
-
-#### <a name="networking"></a>Netzwerk
-- Wenn Sie unter **Netzwerk** auf **Verbindung** klicken, um eine VPN-Verbindung einzurichten, wird **VNET-zu-VNET** als möglicher Verbindungstyp aufgeführt. Wählen Sie diese Option nicht aus. Derzeit wird nur die Option **Standort-zu-Standort (IPsec)** unterstützt.
-
-- Nachdem Sie eine VM erstellt und einer öffentlichen IP-Adresse zugeordnet haben, können Sie die Zuordnung dieser VM zu dieser IP-Adresse nicht mehr aufheben. Die Aufhebung der Zuordnung war scheinbar erfolgreich, aber die zuvor zugewiesene öffentliche IP-Adresse bleibt der ursprünglichen VM zugeordnet.
-
-  Derzeit müssen Sie ausschließlich neue öffentliche IP-Adressen für die Erstellung neuer VMs verwenden.
-
-  Dieses Verhalten tritt auch dann auf, wenn Sie die IP-Adresse einem neuen virtuellen Computer neu zuordnen (gewöhnlich als *VIP-Austausch* bezeichnet). Alle künftigen Versuche, eine Verbindung über diese IP-Adresse herzustellen, führen dazu, dass eine Verbindung mit dem ursprünglich zugeordneten virtuellen Computer (und nicht mit dem neuen) hergestellt wird.
-
-
-
-- Azure Stack unterstützt ein einzelnes *Gateway eines lokalen Netzwerks* pro IP-Adresse. Dies gilt für alle Mandantenabonnements. Nach der Herstellung der Verbindung mit dem ersten Gateway eines lokalen Netzwerks werden nachfolgende Versuche zum Erstellen einer Ressource für Gateways lokaler Netzwerke mit der gleichen IP-Adresse blockiert.
-
-- In einem virtuellen Netzwerk, das mit der DNS-Servereinstellung *Automatisch* erstellt wurde, tritt bei der Änderung eines benutzerdefinierten DNS-Servers ein Fehler auf. Die aktualisierten Einstellungen werden nicht per Pushvorgang auf VMs in diesem VNET übertragen.
- 
-- Azure Stack unterstützt nicht das Hinzufügen zusätzlicher Netzwerkschnittstellen zu einer VM-Instanz, nachdem die VM bereitgestellt wurde. Wenn die VM mehr als eine Netzwerkschnittstelle benötigt, müssen diese zum Zeitpunkt der Bereitstellung definiert werden.
-
-
-
-#### <a name="sql-and-mysql"></a>SQL und MySQL 
-- Es kann bis zu einer Stunde dauern, bis Benutzer Datenbanken in einer neuen SQL- oder MySQL-SKU erstellen können.
-
-- Die Server für das Hosten von Datenbanken müssen für die Verwendung durch die Ressourcenanbieter und Benutzerworkloads dediziert sein. Sie können keine Instanz verwenden, die durch andere Consumer, einschließlich App Services, verwendet wird.
-
-- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** or **Tier** names when you create a SKU for the SQL and MySQL resource providers.
-
-#### <a name="app-service"></a>App Service
-- Benutzer müssen den Speicherressourcenanbieter vor dem Erstellen seiner ersten Azure-Funktion im Abonnement registrieren.
-
-- Um die Infrastruktur (Worker-, Verwaltungs-, Front-End-Rollen) horizontal hochzuskalieren, müssen Sie PowerShell verwenden, wie in den Anmerkungen zu dieser Version für die Berechnung beschrieben.
- 
-#### <a name="usage"></a>Verwendung  
-- Die Ansicht „Verwendung“ für die Nutzungsdaten öffentlicher IP-Adressen zeigt den gleichen *EventDateTime*-Wert für jeden Datensatz anstatt des *TimeDate*-Stempels, der anzeigt, wann dieser jeweils erstellt wurde. Derzeit können Sie diese Daten nicht nutzen, um eine genaue Buchhaltung über die Nutzung öffentlicher IP-Adressen durchzuführen.
-<!--
-#### Identity
--->
-
-#### <a name="downloading-azure-stack-tools-from-github"></a>Herunterladen von Azure Stack-Tools von GitHub
-- Beim Herunterladen der Azure Stack-Tools über GitHub mit dem PowerShell-Cmdlet *invoke-webrequest* ist ein Fehler aufgetreten:     
-    -  *invoke-webrequest: Die Anforderung wurde abgebrochen: Es konnte kein sicherer SSL/TLS-Kanal erstellt werden.*     
-
-  Dieser Fehler tritt aufgrund der zurzeit veralteten GitHub-Unterstützung für die kryptografischen Standards TLS v1 und TLS v1.1 auf (der Standardwert für PowerShell). Weitere Informationen finden Sie unter [Weak cryptographic standards removal notice](https://githubengineering.com/crypto-removal-notice/) (Hinweis zur Abschaffung unsicherer kryptografischer Standards).
-
-  Fügen Sie zur Behebung dieses Problems `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` am Anfang des Skripts hinzu, um bei Downloads aus GitHub-Repositorys die Verwendung von TLS v1.2 in der PowerShell-Konsole zu erzwingen.
-
-
-
-
-
-
-## <a name="build-201803021"></a>Build 20180302.1
-
-### <a name="new-features-and-fixes"></a>Neue Features und Fehlerbehebungen
-Weitere Informationen finden Sie im Abschnitt [Neue Features und Fehlerbehebungen](.\.\azure-stack-update-1802.md#new-features-and-fixes) in den Versionshinweisen zum Azure Stack Update 1802 für in Azure Stack integrierte Systeme.
-
-> [!IMPORTANT]    
-> Einige der Elemente, die im Abschnitt **Neue Features und Fehlerbehebungen** aufgeführt sind, sind nur für integrierte Azure Stack-Systeme relevant.
-
-
-### <a name="known-issues"></a>Bekannte Probleme
- 
-#### <a name="portal"></a>Portal
-- Die Funktion, mit der innerhalb des Administratorportals [eine neue Supportanfrage über die Dropdownliste geöffnet wird](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support), ist nicht verfügbar. Verwenden Sie stattdessen den folgenden Link:     
-    - Verwenden Sie https://aka.ms/azurestackforum für das Azure Stack Development Kit.    
-
-- <!-- 2050709 --> In the admin portal, it is not possible to edit storage metrics for Blob service, Table service, or Queue service. When you go to Storage, and then select the blob, table, or queue service tile, a new blade opens that displays a metrics chart for that service. If you then select Edit from the top of the metrics chart tile, the Edit Chart blade opens but does not display options to edit metrics.  
+- <!-- 2050709 --> Es ist nicht möglich, im Verwaltungsportal Speichermetriken für Blob-Dienst, Tabellenspeicherdienst oder Warteschlangendienst zu bearbeiten. Wenn Sie zum Speicher navigieren und dann die Kachel für Blob-Dienst, Tabellenspeicherdienst oder Warteschlangendienst auswählen, wird ein neues Blatt mit dem Metrikdiagramm für diesen Dienst geöffnet. Wenn Sie anschließend oben in der Kachel „Metrikdiagramm“ die Option „Bearbeiten“ auswählen, wird das Blatt "Diagramm bearbeiten" geöffnet, welches jedoch keine Optionen zum Bearbeiten von Metriken anzeigt.  
 
 - Ihnen wird die Warnung **Aktivierung erforderlich** angezeigt, die Ihnen dazu rät, Ihr Azure Stack Development Kit zu registrieren. Dies ist das erwartete Verhalten.
 
@@ -273,8 +361,25 @@ Weitere Informationen finden Sie im Abschnitt [Neue Features und Fehlerbehebunge
 
 - Das Blatt **Service Health** wird nicht geladen. Beim Öffnen des Blatts „Service Health“ im Verwaltungs- oder Benutzerportal zeigt Azure Stack eine Fehlermeldung an, und Informationen werden nicht geladen. Dieses Verhalten wird erwartet. Sie können Service Health zwar auswählen und öffnen, dieses Feature ist jedoch noch nicht verfügbar, sondern wird in einer zukünftigen Version von Azure Stack implementiert.
 
+
 #### <a name="health-and-monitoring"></a>Integrität und Überwachung
-Im Azure Stack-Verwaltungsportal wird ggf. eine kritische Warnung der Art **Pending external certificate expiration** (Anstehender Ablauf des externen Zertifikats) angezeigt.  Sie können diese Warnung ignorieren. Sie wirkt sich nicht auf die Vorgänge des Azure Stack Development Kit aus. 
+- <!-- 1264761 - IS ASDK --> Möglicherweise werden Warnungen für die *Health Controller*-Komponente mit folgenden Details angezeigt:  
+
+   Warnung 1:
+   - NAME: Infrastrukturrolle fehlerhaft
+   - SCHWEREGRAD: Warnung
+   - KOMPONENTE: Health Controller
+   - BESCHREIBUNG: Heartbeat Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.  
+
+  Warnung 2:
+   - NAME: Infrastrukturrolle fehlerhaft
+   - SCHWEREGRAD: Warnung
+   - KOMPONENTE: Health Controller
+   - BESCHREIBUNG: Fault Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.
+
+  Beide Warnungen können ignoriert werden. Sie werden nach einem bestimmten Zeitraum automatisch geschlossen.  
+
+- Im Azure Stack-Verwaltungsportal wird ggf. eine kritische Warnung der Art **Pending external certificate expiration** (Anstehender Ablauf des externen Zertifikats) angezeigt.  Sie können diese Warnung ignorieren. Sie wirkt sich nicht auf die Vorgänge des Azure Stack Development Kit aus. 
 
 
 #### <a name="marketplace"></a>Marketplace
@@ -282,10 +387,6 @@ Im Azure Stack-Verwaltungsportal wird ggf. eine kritische Warnung der Art **Pend
  
 #### <a name="compute"></a>Compute
 - Die Skalierungseinstellungen für Skalierungsgruppen für virtuelle Computer sind im Portal nicht verfügbar. Dieses Problem können Sie umgehen, indem Sie [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set) verwenden. Aufgrund der Versionsunterschiede bei PowerShell müssen Sie den `-Name`-Parameter statt des `-VMScaleSetName`-Parameters verwenden.
-
-- Azure Stack unterstützt nur die Verwendung von VHDs mit fester Größe. Einige über den Marketplace in Azure Stack angebotenen Images verwenden dynamische VHDs, die aber entfernt wurden. Größenänderungen an virtuellen Computern (VMs), bei denen ein dynamischer Datenträger angefügt ist, führen dazu, dass die VM in den Zustand „Fehlerhaft“ wechselt.
-
-  Löschen Sie in diesem Fall den virtuellen Computer, ohne jedoch seinen Datenträger (ein VHD-Blob in einem Speicherkonto) zu löschen. Konvertieren Sie die VHD anschließend von einem dynamischen Datenträger in einen Datenträger mit fester Größe, und erstellen Sie den virtuellen Computer neu.
 
 - Beim Erstellen von virtuellen Computern im Azure Stack-Benutzerportal zeigt das Portal eine falsche Anzahl von Datenträgern an, die an eine VM der Serie DS angefügt werden können. VMs der Serie DS können so viele Datenträger wie bei der Azure-Konfiguration aufnehmen.
 
@@ -297,7 +398,7 @@ Im Azure Stack-Verwaltungsportal wird ggf. eine kritische Warnung der Art **Pend
 
 -  Wenn die Bereitstellung einer Erweiterung für eine VM-Bereitstellung zu lange dauert, sollten Benutzer eine Zeitüberschreitung der Bereitstellung zulassen und nicht versuchen, den Vorgang zum Aufheben der Zuordnung oder Löschen der VMs zu beenden.  
 
-- <!-- 1662991 --> Linux VM diagnostics is not supported in Azure Stack. When you deploy a Linux VM with VM diagnostics enabled, the deployment fails. The deployment also fails if you enable the Linux VM basic metrics through diagnostic settings. 
+- <!-- 1662991 --> Die Linux-VM-Diagnose wird in Azure Stack nicht unterstützt. Wenn Sie eine Linux-VM mit aktivierter VM-Diagnose bereitstellen, schlägt die Bereitstellung fehl. Die Bereitstellung schlägt auch fehl, wenn Sie die grundlegenden Linux-VM-Metriken über die Diagnoseeinstellungen aktivieren. 
 
 
 #### <a name="networking"></a>Netzwerk
@@ -307,9 +408,9 @@ Im Azure Stack-Verwaltungsportal wird ggf. eine kritische Warnung der Art **Pend
 
   Derzeit müssen Sie ausschließlich neue öffentliche IP-Adressen für die Erstellung neuer VMs verwenden.
 
-  Dieses Verhalten tritt auch dann auf, wenn Sie die IP-Adresse einem neuen virtuellen Computer neu zuordnen (gewöhnlich als *VIP-Austausch* bezeichnet). Alle künftigen Versuche, eine Verbindung über diese IP-Adresse herzustellen, führen dazu, dass eine Verbindung mit dem ursprünglich zugeordneten virtuellen Computer (und nicht mit dem neuen) hergestellt wird.
+  Dieses Verhalten tritt auch dann auf, wenn Sie die IP-Adresse einem neuen virtuellen Computer neu zuordnen (gewöhnlich als *VIP-Austausch* bezeichnet). Alle künftigen Versuche, eine Verbindung über diese IP-Adresse herzustellen, führen dazu, dass eine Verbindung mit dem ursprünglichen virtuellen Computer (und nicht mit dem neuen) hergestellt wird.
 
--   Das Feature zur IP-Weiterleitung wird im Portal angezeigt, aber die Aktivierung der IP-Weiterleitung hat keine Auswirkungen. Dieses Feature wird noch nicht unterstützt.
+
 
 - Azure Stack unterstützt ein einzelnes *Gateway eines lokalen Netzwerks* pro IP-Adresse. Dies gilt für alle Mandantenabonnements. Nach der Herstellung der Verbindung mit dem ersten Gateway eines lokalen Netzwerks werden nachfolgende Versuche zum Erstellen einer Ressource für Gateways lokaler Netzwerke mit der gleichen IP-Adresse blockiert.
 
@@ -324,7 +425,7 @@ Im Azure Stack-Verwaltungsportal wird ggf. eine kritische Warnung der Art **Pend
 
 - Die Server für das Hosten von Datenbanken müssen für die Verwendung durch die Ressourcenanbieter und Benutzerworkloads dediziert sein. Sie können keine Instanz verwenden, die durch andere Consumer, einschließlich App Services, verwendet wird.
 
-- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** name when you create a SKU for the SQL and MySQL resource providers.
+- <!-- IS, ASDK -->Sonderzeichen, einschließlich Leerzeichen und Interpunktion, werden in den Namen für die **Familie** oder **Ebene** nicht unterstützt, wenn Sie die SKU für die SQL- und MySQL-Ressourcenanbieter erstellen.
 
 #### <a name="app-service"></a>App Service
 - Benutzer müssen den Speicherressourcenanbieter vor dem Erstellen seiner ersten Azure-Funktion im Abonnement registrieren.
@@ -344,4 +445,8 @@ Im Azure Stack-Verwaltungsportal wird ggf. eine kritische Warnung der Art **Pend
   Dieser Fehler tritt aufgrund der zurzeit veralteten GitHub-Unterstützung für die kryptografischen Standards TLS v1 und TLS v1.1 auf (der Standardwert für PowerShell). Weitere Informationen finden Sie unter [Weak cryptographic standards removal notice](https://githubengineering.com/crypto-removal-notice/) (Hinweis zur Abschaffung unsicherer kryptografischer Standards).
 
   Fügen Sie zur Behebung dieses Problems `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` am Anfang des Skripts hinzu, um bei Downloads aus GitHub-Repositorys die Verwendung von TLS v1.2 in der PowerShell-Konsole zu erzwingen.
+
+
+
+
 

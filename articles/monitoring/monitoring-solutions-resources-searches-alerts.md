@@ -11,14 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/16/2018
+ms.date: 06/18/2018
 ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b16c88b5ec45dec7bf0fe40da24e817ae325a3e
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c29d6cb0da2e394912a2584b0d3c3cedf13f054c
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36304071"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Hinzufügen von gespeicherten Log Analytics-Suchen und -Warnungen in der Verwaltungslösung (Vorschau)
 
@@ -43,16 +44,13 @@ Der Name des Arbeitsbereichs ist im Namen jeder Log Analytics-Ressource enthalte
     "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearchId'))]"
 
 ## <a name="log-analytics-api-version"></a>Log Analytics-API-Version
-Alle in einer Resource Manager-Vorlage definierten Log Analytics-Ressourcen verfügen über die Eigenschaft **apiVersion**, die die Version der API definiert, die von der Ressource verwendet werden soll.  Diese Version unterscheidet sich für Ressourcen, die die [ältere und die aktualisierte Abfragesprache](../log-analytics/log-analytics-log-search-upgrade.md) verwenden.  
+Alle in einer Resource Manager-Vorlage definierten Log Analytics-Ressourcen verfügen über die Eigenschaft **apiVersion**, die die Version der API definiert, die von der Ressource verwendet werden soll.   
 
- In der folgenden Tabelle werden die Log Analytics-API-Versionen für gespeicherte Suchvorgänge in älteren und aktualisierten Arbeitsbereichen angegeben: 
+Die folgende Tabelle enthält die API-Versionen für die Ressource, die in diesem Beispiel verwendet wird.
 
-| Arbeitsbereichsversion | API-Version | Abfragen |
+| Ressourcentyp | API-Version | Abfragen |
 |:---|:---|:---|
-| V1 (Legacy)   | 2015-11-01-preview | Altes Format.<br> Beispiel: Type=Event EventLevelName = Error  |
-| V2 (Upgrade) | 2015-11-01-preview | Altes Format.  Bei der Installation in das aktualisierte Format konvertiert.<br> Beispiel: Type=Event EventLevelName = Error<br>Konvertiert in: Event &#124; where EventLevelName == "Error"  |
-| V2 (Upgrade) | 2017-03-03-preview | Aktualisiertes Format. <br>Beispiel: Event &#124; where EventLevelName == "Error"  |
-
+| savedSearches | 2017-03-15-preview | Event &#124; where EventLevelName == "Error"  |
 
 
 ## <a name="saved-searches"></a>Gespeicherte Suchen
@@ -89,7 +87,7 @@ Die Eigenschaften einer gespeicherten Suche sind in der folgenden Tabelle beschr
 > Sie müssen möglicherweise Escape-Zeichen in der Abfrage verwenden, wenn diese Zeichen enthält, die als JSON interpretiert werden könnten.  Falls Ihre Abfrage **Type: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"** lautete, sollte in der Lösungsdatei Folgendes stehen: **Type: AzureActivity OperationName:\"Microsoft.Compute/virtualMachines/write\"**.
 
 ## <a name="alerts"></a>Alerts
-[Log Analytics-Warnungen](../log-analytics/log-analytics-alerts.md) werden anhand von Warnungsregeln erstellt, die in regelmäßigen Abständen eine gespeicherte Suche ausführen.  Wenn die Ergebnisse der Abfrage mit den angegebenen Kriterien übereinstimmen, wird eine Warnung erstellt und mindestens eine Aktion ausgeführt.  
+[Azure-Protokollwarnungen](../monitoring-and-diagnostics/monitor-alerts-unified-log.md) werden von Azure-Warnungregeln erstellt, die in regelmäßigen Abständen automatisch angegebene Protokollabfragen auszuführen.  Wenn die Ergebnisse der Abfrage mit den angegebenen Kriterien übereinstimmen, wird eine Warnung erstellt und mindestens eine Aktion mithilfe von [Aktionsgruppen](../monitoring-and-diagnostics/monitoring-action-groups.md) ausgeführt.  
 
 > [!NOTE]
 > Ab 14. Mai 2018 werden alle Warnungen in einem Arbeitsbereich automatisch auf Azure ausgedehnt. Ein Benutzer kann die Ausdehnung von Warnungen auf Azure bereits vor dem 14. Mai 2018 freiwillig initiieren. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure ausgedehnt werden, können Sie über die [Azure Resource Manager-Vorlage für Aktionsgruppen](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md) Aktionen abrufen oder hinzufügen.
@@ -195,7 +193,7 @@ Die Eigenschaften für Warnungsaktionsressourcen werden in den folgenden Tabelle
 | Typ | Ja | Der Typ der Aktion.  Dieser lautet bei Warnungsaktionen **Warnung**. |
 | NAME | Ja | Der Anzeigename für die Warnung.  Dies ist der Name, der in der Konsole für die Warnungsregel angezeigt wird. |
 | BESCHREIBUNG | Nein  | Eine optionale Beschreibung der Warnung |
-| Schweregrad | Ja | Schweregrad des Warnungsdatensatzes aus den folgenden Werten:<br><br> **Critical** (Kritisch)<br>**Warning**<br>**Informational** (Nur zu Informationszwecken)
+| Schweregrad | Ja | Schweregrad des Warnungsdatensatzes aus den folgenden Werten:<br><br> **Kritisch**<br>**Warnung**<br>**Information**
 
 
 #### <a name="threshold"></a>Schwellenwert
@@ -337,11 +335,12 @@ Das Beispiel verwendet Variablen für [Standardlösungsparameter]( monitoring-so
           "SolutionPublisher": "Contoso",
           "ProductName": "SampleSolution",
     
-          "LogAnalyticsApiVersion": "2015-03-20",
-    
+          "LogAnalyticsApiVersion-Search": "2017-03-15-preview",
+              "LogAnalyticsApiVersion-Solution": "2015-11-01-preview",
+
           "MySearch": {
             "displayName": "Error records by hour",
-            "query": "Type=MyRecord_CL | measure avg(Rating_d) by Instance_s interval 60minutes",
+            "query": "MyRecord_CL | summarize AggregatedValue = avg(Rating_d) by Instance_s, bin(TimeGenerated, 60m)",
             "category": "Samples",
             "name": "Samples-Count of data"
           },
@@ -349,7 +348,7 @@ Das Beispiel verwendet Variablen für [Standardlösungsparameter]( monitoring-so
             "Name": "[toLower(concat('myalert-',uniqueString(resourceGroup().id, deployment().name)))]",
             "DisplayName": "My alert rule",
             "Description": "Sample alert.  Fires when 3 error records found over hour interval.",
-            "Severity": "Critical",
+            "Severity": "critical",
             "ThresholdOperator": "gt",
             "ThresholdValue": 3,
             "Schedule": {
@@ -377,7 +376,7 @@ Das Beispiel verwendet Variablen für [Standardlösungsparameter]( monitoring-so
             "location": "[parameters('workspaceRegionId')]",
             "tags": { },
             "type": "Microsoft.OperationsManagement/solutions",
-            "apiVersion": "[variables('LogAnalyticsApiVersion')]",
+            "apiVersion": "[variables('LogAnalyticsApiVersion-Solution')]",
             "dependsOn": [
               "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches', parameters('workspacename'), variables('MySearch').Name)]",
               "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name)]",
@@ -405,7 +404,7 @@ Das Beispiel verwendet Variablen für [Standardlösungsparameter]( monitoring-so
           {
             "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name)]",
             "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
-            "apiVersion": "[variables('LogAnalyticsApiVersion')]",
+            "apiVersion": "[variables('LogAnalyticsApiVersion-Search')]",
             "dependsOn": [ ],
             "tags": { },
             "properties": {
@@ -418,7 +417,7 @@ Das Beispiel verwendet Variablen für [Standardlösungsparameter]( monitoring-so
           {
             "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name, '/', variables('MyAlert').Schedule.Name)]",
             "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/",
-            "apiVersion": "[variables('LogAnalyticsApiVersion')]",
+            "apiVersion": "[variables('LogAnalyticsApiVersion-Search')]",
             "dependsOn": [
               "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/', variables('MySearch').Name)]"
             ],
@@ -432,7 +431,7 @@ Das Beispiel verwendet Variablen für [Standardlösungsparameter]( monitoring-so
           {
             "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name, '/',  variables('MyAlert').Schedule.Name, '/',  variables('MyAlert').Name)]",
             "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions",
-            "apiVersion": "[variables('LogAnalyticsApiVersion')]",
+            "apiVersion": "[variables('LogAnalyticsApiVersion-Search')]",
             "dependsOn": [
               "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/',  variables('MySearch').Name, '/schedules/', variables('MyAlert').Schedule.Name)]"
             ],

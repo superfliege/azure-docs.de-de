@@ -3,7 +3,7 @@ title: Verwenden von Ansible zum Erstellen einer einfachen Linux-VM in Azure | M
 description: Erfahren Sie, wie Sie Ansible zum Erstellen und Verwalten eines einfachen virtuellen Linux-Computers in Azure verwenden.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: na
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/18/2017
-ms.author: iainfou
-ms.openlocfilehash: a2bf047d5a08bfd3df6a6c76116d2b9b9ab81fad
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.date: 05/30/2018
+ms.author: cynthn
+ms.openlocfilehash: 35dfe8348718e0edf8683f7eeddf286831697d89
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33896162"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931428"
 ---
 # <a name="create-a-basic-virtual-machine-in-azure-with-ansible"></a>Erstellen eines einfachen virtuellen Computers in Azure mit Ansible
 Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. Sie können mit Ansible Ihre virtuellen Computer (VMs) in Azure wie jede andere Ressource verwalten. In diesem Artikel wird gezeigt, wie Sie einen einfachen virtuellen Computer mit Ansible erstellen. Sie können sich auch darüber informieren, wie Sie [eine vollständige Umgebung mit virtuellen Computern mit Ansible erstellen](ansible-create-complete-vm.md).
@@ -34,17 +34,17 @@ Um Azure-Ressourcen mit Ansible verwalten zu können, benötigen Sie Folgendes:
 - Azure-Anmeldeinformationen und eine für deren Verwendung konfigurierte Ansible-Instanz
     - [Erstellen von Azure-Anmeldeinformationen und Konfigurieren von Ansible](ansible-install-configure.md#create-azure-credentials)
 - Azure-Befehlszeilenschnittstelle, Version 2.0.4 oder höher. Führen Sie `az --version` aus, um die Version zu finden. 
-    - Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. Sie können auch [Cloud Shell](/azure/cloud-shell/quickstart) in Ihrem Browser verwenden.
+    - Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. Sie können auch [Azure Cloud Shell](/azure/cloud-shell/quickstart) in Ihrem Webbrowser verwenden.
 
 
 ## <a name="create-supporting-azure-resources"></a>Erstellen unterstützender Azure-Ressourcen
-In diesem Beispiel erstellen wir ein Runbook, das eine VM in einer vorhandenen Infrastruktur bereitstellt. Erstellen Sie zunächst mit [az group create](/cli/azure/vm#az_vm_create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+In diesem Beispiel erstellen wir ein Runbook, das eine VM in einer vorhandenen Infrastruktur bereitstellt. Erstellen Sie zunächst mit [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) ein virtuelles Netzwerk für den virtuellen Computer. Im folgenden Beispiel werden ein virtuelles Netzwerk mit dem Namen *myVnet* und ein Subnetz mit dem Namen *mySubnet* erstellt:
+Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) ein virtuelles Netzwerk für den virtuellen Computer. Im folgenden Beispiel werden ein virtuelles Netzwerk mit dem Namen *myVnet* und ein Subnetz mit dem Namen *mySubnet* erstellt:
 
 ```azurecli
 az network vnet create \
@@ -77,7 +77,7 @@ Erstellen Sie das Ansible-Playbook *azure_create_vm.yml*, und fügen Sie den fol
       image:
         offer: CentOS
         publisher: OpenLogic
-        sku: '7.3'
+        sku: '7.5'
         version: latest
 ```
 

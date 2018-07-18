@@ -8,41 +8,33 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 03/20/2018
-ms.openlocfilehash: 7e06cdba7c9c9f7e5c1d621e7421a18c342c0fdb
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 06/04/2018
+ms.openlocfilehash: 5cd829236d8d8a58e68f7bf766790aa3f0cb656e
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757415"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Einschränkungen in Azure-Datenbank für PostgreSQL
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen im Datenbankdienst beschrieben.
 
-## <a name="pricing-tier-maximums"></a>Maximalwerte der Tarife
-Azure Database for PostgreSQL stellt mehrere Tarife bereit, unter denen Sie bei der Erstellung eines Servers wählen können. Weitere Informationen finden Sie unter [Tarife für Azure Database for PostgreSQL](concepts-pricing-tiers.md).  
+## <a name="maximum-connections"></a>Maximale Anzahl der Verbindungen
+Die folgende Tabelle enthält die maximale Anzahl von Verbindungen nach Tarif und V-Kernen: 
 
-In jedem Tarif ist eine maximale Anzahl von Verbindungen, Compute-Einheiten und Speicherkapazitäten wie folgt verfügbar: 
-
-|Preisstufe| Computegeneration| Virtuelle Kerne| Max. Anzahl von Verbindungen |
-|---|---|---|---|
-|Basic| Gen 4| 1| 50 |
-|Basic| Gen 4| 2| 100 |
-|Basic| Gen 5| 1| 50 |
-|Basic| Gen 5| 2| 100 |
-|Allgemeiner Zweck| Gen 4| 2| 150|
-|Allgemeiner Zweck| Gen 4| 4| 250|
-|Allgemeiner Zweck| Gen 4| 8| 480|
-|Allgemeiner Zweck| Gen 4| 16| 950|
-|Universell| Gen 4| 32| 1500|
-|Allgemeiner Zweck| Gen 5| 2| 150|
-|Allgemeiner Zweck| Gen 5| 4| 250|
-|Allgemeiner Zweck| Gen 5| 8| 480|
-|Allgemeiner Zweck| Gen 5| 16| 950|
-|Universell| Gen 5| 32| 1500|
-|Arbeitsspeicheroptimiert| Gen 5| 2| 150|
-|Arbeitsspeicheroptimiert| Gen 5| 4| 250|
-|Arbeitsspeicheroptimiert| Gen 5| 8| 480|
-|Arbeitsspeicheroptimiert| Gen 5| 16| 950|
+|**Tarif**| **vCore(s)**| **Max. Anzahl von Verbindungen** |
+|---|---|---|
+|Basic| 1| 50 |
+|Basic| 2| 100 |
+|Allgemeiner Zweck| 2| 150|
+|Allgemeiner Zweck| 4| 250|
+|Allgemeiner Zweck| 8| 480|
+|Allgemeiner Zweck| 16| 950|
+|Allgemeiner Zweck| 32| 1500|
+|Arbeitsspeicheroptimiert| 2| 150|
+|Arbeitsspeicheroptimiert| 4| 250|
+|Arbeitsspeicheroptimiert| 8| 480|
+|Arbeitsspeicheroptimiert| 16| 950|
 
 Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den folgenden Fehler:
 > SCHWERWIEGEND: Es sind bereits zu viele Clients vorhanden.

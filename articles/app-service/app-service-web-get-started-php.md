@@ -15,11 +15,12 @@ ms.topic: quickstart
 ms.date: 12/13/2017
 ms.author: cephalin;cfowler
 ms.custom: mvc
-ms.openlocfilehash: aaac2fa4d62fb02bf17342a0db27fad79e495693
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 2d1144a94a74e56cae6ff0a4b026a64540086c11
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968577"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Erstellen einer PHP-Web-App in Azure
 
@@ -29,7 +30,7 @@ ms.lasthandoff: 04/18/2018
 
 [Azure-Web-Apps](app-service-web-overview.md) bietet einen hoch skalierbaren Webhostingdienst mit Self-Patching.  In diesem Schnellstart-Tutorial wird erläutert, wie Sie eine PHP-App in Azure-Web-Apps bereitstellen. Sie erstellen die Web-App mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) in Cloud Shell und stellen mit Git PHP-Beispielcode für die Web-App bereit.
 
-![In Azure ausgeführte Beispiel-App]](media/app-service-web-get-started-php/hello-world-in-browser.png)
+![In Azure ausgeführte Beispiel-App](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
 Die folgenden Schritte können unter Mac, Windows oder Linux ausgeführt werden. Nachdem die erforderlichen Komponenten installiert wurden, können die Schritte in etwa fünf Minuten durchgeführt werden.
 
@@ -91,6 +92,7 @@ az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --
 Nach Erstellung der Web-App zeigt die Azure CLI eine Ausgabe wie im folgenden Beispiel an:
 
 ```json
+Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
 {
   "availabilityState": "Normal",
   "clientAffinityEnabled": true,
@@ -103,8 +105,13 @@ Nach Erstellung der Web-App zeigt die Azure CLI eine Ausgabe wie im folgenden Be
   < JSON data removed for brevity. >
 }
 ```
+Sie haben eine leere neue Web-App mit aktivierter Git-Bereitstellung erstellt.
 
-Wechseln Sie zu Ihrer neu erstellten Web-App. Ersetzen Sie _&lt;App-Name>_ durch einen eindeutigen App-Namen.
+> [!NOTE]
+> Die URL des Git-Remotespeicherorts wird in der `deploymentLocalGitUrl`-Eigenschaft im Format `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git` angezeigt. Speichern Sie diese URL, da Sie sie später noch benötigen.
+>
+
+Wechseln Sie zu Ihrer neu erstellten Web-App. Ersetzen Sie _&lt;app name>_ durch Ihren eindeutigen App-Namen, den Sie im vorherigen Schritt erstellt haben.
 
 ```bash
 http://<app name>.azurewebsites.net
@@ -186,7 +193,7 @@ Die Übersichtsseite Ihrer Web-App wird angezeigt. Hier können Sie einfache Ver
 
 ![App Service-Seite im Azure-Portal](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
 
-Im linken Menü werden verschiedene Seiten für die Konfiguration Ihrer App angezeigt. 
+Im linken Menü werden verschiedene Konfigurationsoptionen für Ihre App angezeigt. 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 

@@ -1,25 +1,19 @@
 ---
 title: Architektur der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
 description: Exemplarische Vorgehensweise zur Architektur des Solution Accelerators für Remoteüberwachung
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 31fe13af-0482-47be-b4c8-e98e36625855
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 3effde81dfa48e9544d89153d40c160ff972d047
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: af7feb6c95a7de1d2211378c5eb71f09907221ff
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757432"
 ---
 # <a name="remote-monitoring-solution-accelerator-architecture"></a>Architektur des Solution Accelerators für Remoteüberwachung
 
@@ -97,13 +91,13 @@ Die Lösung enthält zwei Microservices für die Verarbeitung der Gerätetelemet
 
 Der Microservice [telemetry-agent](https://github.com/Azure/telemetry-agent-dotnet) ermöglicht Folgendes:
 
-* Speichern von Telemetriedaten in Cosmos DB
+* Speichern von Telemetriedaten in Azure Cosmos DB
 * Analysieren des Telemetriedatenstroms von Geräten
 * Generieren von Alarmen gemäß definierten Regeln
 
-Die Alarme werden in Cosmos DB gespeichert.
+Die Alarme werden in Azure Cosmos DB gespeichert.
 
-Mit dem Microservice `telemetry-agent` kann das Lösungsportal die Telemetriedaten lesen, die von Geräten gesendet werden. Das Lösungsportal nutzt diesen Dienst außerdem für folgende Zwecke:
+Mit dem Microservice [telemetry-agent](https://github.com/Azure/telemetry-agent-dotnet) kann das Lösungsportal die Telemetriedaten lesen, die von Geräten gesendet werden. Das Lösungsportal nutzt diesen Dienst außerdem für folgende Zwecke:
 
 * Definieren von Überwachungsregeln, z.B. Schwellenwerte zur Auslösung von Alarmen
 * Abrufen der Liste mit den vergangenen Alarmen
@@ -114,9 +108,9 @@ Verwenden Sie den RESTful-Endpunkt, der von diesem Microservice bereitgestellt w
 
 Der Microservice [storage-adapter](https://github.com/Azure/pcs-storage-adapter-dotnet) ist ein Adapter, der dem Hauptspeicherdienst für den Solution Accelerator vorgeschaltet ist. Er ermöglicht eine einfache Sammlung und die Speicherung von Schlüsselwerten.
 
-Die Standardbereitstellung des Solution Accelerators nutzt Cosmos DB als Hauptspeicherdienst.
+Die Standardbereitstellung des Solution Accelerators nutzt Azure Cosmos DB als Hauptspeicherdienst.
 
-In der Cosmos DB-Datenbank werden Daten des Solution Accelerators gespeichert. Der Microservice **storage-adapter** fungiert als Adapter für die anderen Microservices der Lösung, um auf Speicherdienste zuzugreifen.
+In der Azure Cosmos DB-Datenbank werden Daten des Solution Accelerators gespeichert. Der Microservice **storage-adapter** fungiert als Adapter für die anderen Microservices der Lösung, um auf Speicherdienste zuzugreifen.
 
 ## <a name="presentation"></a>Präsentation
 
@@ -141,6 +135,8 @@ Wenn Sie den Quellcode und die Entwicklerdokumentation erkunden möchten, könne
 
 * [Solution Accelerator für Remoteüberwachung mit Azure IoT (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/)
 * [Solution Accelerator für Remoteüberwachung mit Azure IoT (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
+
+Ausführliche Diagramme für die Lösungsarchitektur:
 * [Architektur des Solution Accelerators für Remoteüberwachung](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture)
 
-Weitere konzeptuelle Informationen zum Solution Accelerator für Remoteüberwachung finden Sie unter [Anpassen des Solution Accelerators für Remoteüberwachung](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md).
+Weitere konzeptionelle Informationen zum Solution Accelerator für Remoteüberwachung finden Sie unter [Anpassen des Solution Accelerators für Remoteüberwachung](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md).

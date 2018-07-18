@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/30/2018
+ms.date: 06/28/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: a16e9ad5b72d87614f5d3630e24e6aa36def8c51
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: c0d19c53a0bd217935a494dfb4affbaa85062247
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097477"
 ---
 # <a name="tutorial-load-balance-internal-traffic-with-basic-load-balancer-to-vms-using-the-azure-portal"></a>Tutorial: Durchführen eines Lastenausgleichs für internen Datenverkehr an virtuelle Computer mit einem Load Balancer im Tarif „Basic“ über das Azure-Portal
 
@@ -31,7 +32,7 @@ Dieser Artikel kann auch mit der [Azure-Befehlszeilenschnittstelle](load-balance
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
 
-## <a name="sign-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
+## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
@@ -41,6 +42,8 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
     - *myResourceGroupILB*: Name der vorhandenen Ressourcengruppe
     - *myBackendSubnet*: Subnetzname
 2. Klicken Sie auf **Erstellen**, um das virtuelle Netzwerk zu erstellen.
+
+![Einrichten eines Load Balancers](./media/tutorial-load-balancer-basic-internal-portal/1-load-balancer.png)
 
 ## <a name="create-a-basic-load-balancer"></a>Erstellen eines Load Balancers im Tarif „Basic“
 Erstellen Sie einen internen Load Balancers im Tarif „Basic“ über das Portal.
@@ -56,10 +59,7 @@ Erstellen Sie einen internen Load Balancers im Tarif „Basic“ über das Porta
     - *myResourceGroupILB*: Name der neuen Ressourcengruppe, die Sie erstellen
 3. Klicken Sie auf **Erstellen**, um den Lastenausgleich zu erstellen.
    
-    ![Einrichten eines Load Balancers](./media/tutorial-load-balancer-basic-internal-portal/1-load-balancer.png)
-
-
-## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
+    ## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
 
 In diesem Abschnitt erstellen Sie zwei virtuelle Computer für den Back-End-Pool Ihres Load Balancers im Tarif „Basic“ und installieren anschließend IIS auf den virtuellen Computern, um den Lastenausgleich zu testen.
 
@@ -75,10 +75,10 @@ In diesem Abschnitt erstellen Sie zwei virtuelle Computer für den Back-End-Pool
     - *myAvailabilitySet*: Name der neuen Verfügbarkeitsgruppe, die Sie erstellen
     -  *myVnet*: Vergewissern Sie sich, dass als virtuelles Netzwerk diese Option ausgewählt ist.
     - *myBackendSubnet*: Vergewissern Sie sich, dass als Subnetz diese Option ausgewählt ist.
-    - *myNetworkSecurityGroup*: Name der neuen Netzwerksicherheitsgruppe (Firewall), die Sie erstellen müssen
+5. Wählen Sie unter **Netzwerksicherheitsgruppe** die Option **Erweitert**. Wählen Sie anschließend für **Netzwerksicherheitsgruppe (Firewall)** die Option **Keine**.
 5. Klicken Sie auf **Deaktiviert**, um die Startdiagnose zu deaktivieren.
 6. Klicken Sie auf **OK**, überprüfen Sie die Einstellungen auf der Seite „Zusammenfassung“, und klicken Sie dann auf **Erstellen**.
-7. Erstellen Sie anhand der Schritte 1 bis 6 einen zweiten virtuellen Computer namens *VM2* mit *myAvailabilityset* als Verfügbarkeitsgruppe, *myVnet* als virtuelles Netzwerk, *myBackendSubnet* als Subnetz und *myNetworkSecurityGroup* als Netzwerksicherheitsgruppe. 
+7. Erstellen Sie anhand der Schritte 1 bis 6 einen zweiten virtuellen Computer mit dem Namen *VM2* mit *myAvailabilityset* als Verfügbarkeitsgruppe, *myVnet* als virtuellem Netzwerk, *myBackendSubnet* als Subnetz und **Keine** für **Netzwerksicherheitsgruppe (Firewall)**. 
 
 ### <a name="install-iis-and-customize-the-default-web-page"></a>Installieren von IIS und Anpassen der Standardwebseite
 
@@ -100,33 +100,6 @@ In diesem Abschnitt erstellen Sie zwei virtuelle Computer für den Back-End-Pool
 5. Schließen Sie die RDP-Verbindung mit *myVM1*.
 6. Wiederholen Sie die Schritte 1 bis 5 zum Installieren von IIS und Anpassen der Standardwebseite für *myVM2*.
 
-## <a name="create-nsg-rules"></a>Erstellen von NSG-Regeln
-
-In diesem Abschnitt erstellen Sie NSG-Regeln, um eingehende HTTP- und RDP-Verbindungen zuzulassen.
-
-1. Klicken Sie im linken Menü auf **Alle Ressourcen** und anschließend in der Ressourcenliste auf **myNetworkSecurityGroup** (in der Ressourcengruppe **myResourceGroupLB**).
-2. Klicken Sie unter **Einstellungen** auf **Eingangssicherheitsregeln** und anschließend auf **Hinzufügen**.
-3. Geben Sie für die Eingangssicherheitsregel *myHTTPRule* folgende Werte ein, um eine eingehende HTTP-Verbindung über den Port 80 zuzulassen:
-    - *Service Tag* für **Quelle**
-    - *Internet* für **Quelldiensttag**
-    - *80* für **Zielportbereiche**
-    - *TCP* für **Protokoll**
-    - *Zulassen* für **Aktion**
-    - *100* für **Priorität**
-    - *myHTTPRule* als Name
-    - *Allow HTTP* als Beschreibung
-4. Klicken Sie auf **OK**.
- 
-5. Wiederholen Sie die Schritte 2 bis 4, um eine weitere Regel namens *myRDPRule* zu erstellen und eine eingehende RDP-Verbindung über den Port 3389 zu ermöglichen. Verwenden Sie dabei die folgenden Werte:
-    - *Service Tag* für **Quelle**
-    - *Internet* für **Quelldiensttag**
-    - *3389* für **Zielportbereiche**
-    - *TCP* für **Protokoll**
-    - *Zulassen* für **Aktion**
-    - *200* für **Priorität**
-    - *myRDPRule* als Name
-    - *Allow RDP* als Beschreibung
-
 ## <a name="create-basic-load-balancer-resources"></a>Erstellen von Ressourcen für den Load Balancer im Tarif „Basic“
 
 In diesem Abschnitt konfigurieren Sie Lastenausgleichseinstellungen für einen Back-End-Adresspool und einen Integritätstest. Außerdem geben Sie Lastenausgleichs- und NAT-Regeln an.
@@ -139,7 +112,7 @@ Zum Verteilen von Datenverkehr auf die virtuellen Computer enthält ein Back-End
 1. Klicken Sie im linken Menü auf **Alle Ressourcen** und dann in der Ressourcenliste auf **myLoadBalancer**.
 2. Klicken Sie unter **Einstellungen** auf **Back-End-Pools** und anschließend auf **Hinzufügen**.
 3. Gehen Sie auf der Seite **Back-End-Pool hinzufügen** wie folgt vor:
-    - Geben Sie unter „Name“ die Zeichenfolge „*myBackEndPool“ als Name für Ihren Back-End-Pool ein.
+    - Geben Sie unter „Name“ die Zeichenfolge *myBackEndPool* als Name für Ihren Back-End-Pool ein.
     - Wählen Sie in der Dropdownliste **Zugeordnet zu** die Option **Verfügbarkeitsgruppe** aus.
     - Wählen Sie unter **verfügbarkeitsgruppe** die Option **myAvailabilitySet** aus.
     - Klicken Sie auf **+ Zielnetzwerk-IP-Konfiguration hinzufügen**, um die virtuellen Computer (*myVM1* & *myVM2*), die Sie erstellt haben, dem Back-End-Pool hinzuzufügen.

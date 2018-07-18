@@ -4,21 +4,22 @@ description: Hier erfahren Sie, wie Sie einen Windows Server bei einem Azure-Dat
 services: storage
 documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: jgerend
+manager: aungoo
+editor: tamram
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 05/31/2018
 ms.author: wgries
-ms.openlocfilehash: 9367b2bdb1bb77725356d2be41d5e44d900cb927
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 7385e8b84668facf8bf44f569a611e7dcdba9a1e
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738291"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync-preview"></a>Verwalten registrierter Server mit Azure File Sync (Vorschau)
 Mit Azure File Sync (Vorschau) können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
@@ -113,14 +114,15 @@ Register-AzureRmStorageSyncServer -SubscriptionId "<your-subscription-id>" - Res
 ### <a name="unregister-the-server-with-storage-sync-service"></a>Aufheben der Registrierung des Servers beim Speichersynchronisierungsdienst
 Zum Aufheben der Registrierung eines Servers bei einem Speichersynchronisierungsdienst sind mehrere Schritte erforderlich. Im Folgenden wird das ordnungsgemäße Aufheben der Serverregistrierung behandelt.
 
-#### <a name="optional-recall-all-tiered-data"></a>(Optional) Abrufen aller ausgelagerten Daten
-Wenn für einen Serverendpunkt das Cloudtiering aktiviert ist, werden Dateien auf Ihre Azure-Dateifreigaben *ausgelagert*. Dadurch können lokale Dateifreigaben als Cache statt als vollständige Kopie des Datasets fungieren, um den Speicherplatz auf dem Dateiserver effizient zu nutzen. Wenn jedoch ein Serverendpunkt entfernt wird und ausgelagerte Dateien noch lokal auf dem Server vorhanden sind, kann auf diese Dateien nicht mehr zugegriffen werden. Aus diesem Grund müssen Sie vor dem Aufheben der Registrierung alle ausgelagerten Dateien aus Azure Files abrufen, wenn ein Zugriff auf die Dateien weiterhin möglich sein soll. 
+> [!Warning]  
+> Versuchen Sie nicht, Probleme mit der Synchronisierung, dem Cloudtiering oder anderen Aspekten von Azure File Sync zu behandeln, indem Sie die Registrierung eines Servers aufheben und diesen wieder registrieren oder die Serverendpunkte entfernen und neu erstellen, es sei denn, Sie werden ausdrücklich von einem Microsoft-Techniker dazu aufgefordert. Das Aufheben der Registrierung eines Servers und das Entfernen von Serverendpunkten ist ein destruktiver Vorgang. Mehrstufige Dateien auf den Volumes mit Serverendpunkten werden nicht erneut mit ihren Speicherorten in der Azure-Dateifreigabe verbunden, nachdem die registrierten Server und Serverendpunkte neu erstellt wurden. Dies führt zu Synchronisierungsfehlern. Beachten Sie, dass mehrstufige Dateien, die sich außerhalb eines Endpunktnamespace befinden, dauerhaft verloren gehen. Auf Serverendpunkten sind möglicherweise auch dann mehrstufige Dateien vorhanden, wenn das Cloudtiering nie aktiviert wurde.
 
-Dies kann mithilfe des folgenden PowerShell-Cmdlets durchgeführt werden:
+#### <a name="optional-recall-all-tiered-data"></a>(Optional) Abrufen aller ausgelagerten Daten
+Wenn Dateien, die derzeit mehrstufig sind, nach dem Entfernen von Azure File Sync verfügbar sein sollen (d.h., es handelt sich nicht um eine Testumgebung, sondern um eine Produktionsumgebung), rufen Sie alle Dateien auf jedem Volume mit Serverendpunkten ab. Deaktivieren Sie das Cloudtiering für alle Serverendpunkte, und führen Sie das folgende PowerShell-Cmdlet aus:
 
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
+Invoke-StorageSyncFileRecall -Path <a-volume-with-server-endpoints-on-it>
 ```
 
 > [!Warning]  

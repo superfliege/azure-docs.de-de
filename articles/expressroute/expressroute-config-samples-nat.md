@@ -1,11 +1,11 @@
 ---
-title: "ExpressRoute-Beispiele für die Konfiguration von Kundenroutern | Microsoft Docs"
-description: "Diese Seite enthält Konfigurationsbeispiele für Router von Cisco und Juniper."
+title: ExpressRoute-Beispiele für die Konfiguration von Kundenroutern | Microsoft Docs
+description: Diese Seite enthält Konfigurationsbeispiele für Router von Cisco und Juniper.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: d6ea716f-d5ee-4a61-92b0-640d6e7d6974
 ms.service: expressroute
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23012975"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>Beispiele für die Routerkonfiguration zum Einrichten und Verwalten von NAT
 Diese Seite enthält NAT-Konfigurationsbeispiele für Router der Serien Cisco ASA und Juniper SRX. Diese Beispiele dienen nur als Leitfaden und müssen nicht wie angegeben verwendet werden. Sie können mit Ihrem Anbieter an der Ausarbeitung geeigneter Konfigurationen für Ihr Netzwerk zusammenarbeiten. 

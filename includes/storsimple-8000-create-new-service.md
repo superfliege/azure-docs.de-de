@@ -3,7 +3,7 @@
 
 #### <a name="to-create-a-new-service"></a>So erstellen Sie einen neuen Dienst
 
-1. Melden Sie sich mithilfe Ihrer Microsoft-Kontoanmeldeinformationen beim [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich mithilfe Ihrer Microsoft-Kontoanmeldeinformationen beim [Azure-Portal](https://portal.azure.com/) an.
 
 2. Klicken Sie im Azure-Portal auf **Ressource erstellen** und dann im Marketplace auf **Alle anzeigen**.
 

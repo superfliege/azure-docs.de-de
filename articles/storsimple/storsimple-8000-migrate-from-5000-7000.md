@@ -1,11 +1,11 @@
 ---
-title: "Migrieren von Daten von einem Gerät der Serie StorSimple 5000 - 7000 zu einem Gerät der Serie 8000 | Microsoft-Dokumentation"
-description: "Enthält eine Übersicht und die Voraussetzungen des Migrationsfeatures."
+title: Migrieren von Daten von einem Gerät der Serie StorSimple 5000 - 7000 zu einem Gerät der Serie 8000 | Microsoft-Dokumentation
+description: Enthält eine Übersicht und die Voraussetzungen des Migrationsfeatures.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-ms.assetid: 
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2017
 ms.author: alkohli
-ms.openlocfilehash: 36df62c4b01c623702707d39c6af59f4752ee6e0
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 378eaea4c0cf19c48f47067e4f548f2d7f530377
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856687"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Migrieren von Daten von einem Gerät der Serie StorSimple 5000 - 7000 zu einem Gerät der Serie 8000
 
@@ -55,7 +56,7 @@ Eine hostseitige Migration ermöglicht das unabhängige Einrichten der Serie 800
 | 3.   | Nach einer erfolgreichen Migration sind alle Daten lokal auf der Appliance vorhanden. Beim Zugreifen auf Daten kommt es nicht zu Wartezeiten. | Es wird mehr Azure-Speicher verbraucht, bis die Daten vom Gerät der Serie 5000/7000 gelöscht werden.                                                                                                        |
 | 4.   |                                                                                                                           | Wenn das Gerät der Serie 7000/5000 eine große Menge von Daten enthält, müssen diese Daten während der Migration aus Azure heruntergeladen werden. Hierfür fallen Kosten und Wartezeiten für das Herunterladen von Daten aus Azure an. |
 
-In diesem Artikel geht es nur um das Feature für die Migration von einem Gerät der Serie 5000/7000 zu 8000. Weitere Informationen zur hostseitigen Migration finden Sie unter [Migration from other storage devices](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf) (Migration von anderen Speichergeräten).
+In diesem Artikel geht es nur um das Feature für die Migration von einem Gerät der Serie 5000/7000 zu 8000. Weitere Informationen zur hostseitigen Migration finden Sie unter [Migration from other storage devices](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating%20Data%20to%20StorSimple%20Volumes_09-02-15.pdf) (Migration von anderen Speichergeräten).
 
 ## <a name="migration-prerequisites"></a>Voraussetzungen für die Migration
 

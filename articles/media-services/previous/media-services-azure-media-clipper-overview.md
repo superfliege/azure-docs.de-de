@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33782649"
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>Erstellen von Clips mit Azure Media Clipper
 Azure Media Clipper ist eine kostenlose JavaScript-Bibliothek, mit deren Hilfe Webentwickler ihren Benutzern eine Schnittstelle zum Erstellen von Medienclips bieten können. Dieses Tool lässt sich in jede Webseite integrieren und stellt APIs zum Laden von Medienobjekten und Übermitteln von Schnittaufträgen bereit.

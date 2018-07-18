@@ -9,17 +9,17 @@ editor: bryanla
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: skwan
-ms.openlocfilehash: 27c4f35cbd8cc69e689b26078d5a07c8558d8e2a
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.author: daveba
+ms.openlocfilehash: c2c93b8f6b4f8c4d888f7105f09e96dd9df7b574
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303200"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902621"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>Tutorial: Verwenden einer Windows-VM-MSI (Managed Service Identity, verwaltete Dienstidentität) für den Zugriff auf Azure SQL
 
@@ -270,11 +270,9 @@ Eine andere schnelle Möglichkeit zum Testen der umfassenden Einrichtung ohne Sc
 
 Überprüfen Sie den Wert von `$DataSet.Tables[0]` zum Anzeigen der Ergebnisse der Abfrage.  Herzlichen Glückwunsch, Sie haben die Datenbank mithilfe einer VM-MSI abgefragt, ohne dafür Anmeldeinformationen anzugeben!
 
-## <a name="related-content"></a>Verwandte Inhalte
+## <a name="next-steps"></a>Nächste Schritte
 
-- Einen Überblick über MSI finden Sie unter [Übersicht über verwaltete Dienstidentitäten](overview.md).
-- Erfahren Sie mehr über das [Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung mit SQL-Datenbank oder SQL Data Warehouse](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication).
-- Erfahren Sie mehr über das [Konfigurieren der Azure Active Directory-Authentifizierung mit SQL-Datenbank oder SQL Data Warehouse](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure).
-- Erfahren Sie mehr über [Erste Schritte mit Berechtigungen für das Datenbankmodul](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions).
+In diesem Tutorial haben Sie gelernt, wie eine verwaltete Dienstidentität für den Zugriff auf Azure SQL Server erstellt wird.  Weitere Informationen zu Azure SQL Server:
 
-Verwenden Sie den folgenden Kommentarabschnitt, um uns Feedback zu senden und uns bei der Verbesserung unserer Inhalte zu unterstützen.
+> [!div class="nextstepaction"]
+>[Azure SQL-Datenbankdienst](/azure/sql-database/sql-database-technical-overview)

@@ -5,8 +5,8 @@ services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23112258"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>Beheben von Problemen mit der Bereitstellung von StorSimple-Geräten
 ## <a name="overview"></a>Übersicht

@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 13e5836aea0e307cdce5bcdcd5cf3c50969dfbf8
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5f7c569eabcf6e4b743f1b6616161787764e8f84
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723492"
 ---
 # <a name="manage-resources-with-azure-powershell"></a>Verwalten von Ressourcen mit Azure PowerShell
 
@@ -55,7 +56,7 @@ In diesem Artikel stellen Sie einen virtuellen Computer und das zugehörige virt
 * [Mitwirkender von virtuellem Netzwerk](../role-based-access-control/built-in-roles.md#network-contributor)
 * [Mitwirkender von Speicherkonto](../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Anstatt einzelnen Benutzern Rollen zuzuweisen, ist es häufig einfacher, [eine Azure Active Directory-Gruppe zu erstellen](../active-directory/active-directory-groups-create-azure-portal.md), um die Benutzer zusammenzufassen, die ähnliche Aktionen ausführen müssen. Danach weisen Sie diese Gruppe der entsprechenden Rolle zu. Zur Vereinfachung erstellen Sie in diesem Artikel eine Azure Active Directory-Gruppe ohne Mitglieder. Sie können diese Gruppe dennoch zu einer Rolle für einen bestimmten Bereich zuweisen. 
+Anstatt einzelnen Benutzern Rollen zuzuweisen, ist es häufig einfacher, [eine Azure Active Directory-Gruppe zu erstellen](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md), um die Benutzer zusammenzufassen, die ähnliche Aktionen ausführen müssen. Danach weisen Sie diese Gruppe der entsprechenden Rolle zu. Zur Vereinfachung erstellen Sie in diesem Artikel eine Azure Active Directory-Gruppe ohne Mitglieder. Sie können diese Gruppe dennoch zu einer Rolle für einen bestimmten Bereich zuweisen. 
 
 Das folgende Beispiel erstellt eine Gruppe und weist diese zur Rolle „Mitwirkender von virtuellen Computern“ für die Ressourcengruppe zu. Um den Befehl `New-AzureAdGroup` auszuführen, müssen Sie entweder die [Azure Cloud Shell](/azure/cloud-shell/overview) verwenden oder [das Azure AD PowerShell-Modul herunterladen](https://www.powershellgallery.com/packages/AzureAD/).
 
@@ -222,4 +223,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 * Weitere Informationen zum Überwachen Ihrer virtuellen Computer finden Sie unter [Überwachen und Aktualisieren eines virtuellen Windows-Computers mit Azure PowerShell](../virtual-machines/windows/tutorial-monitoring.md).
 * Informationen zum Implementieren empfohlener Sicherheitsmethoden über Azure Security Center finden Sie unter [Überwachen der Sicherheit virtueller Computer mit Azure Security Center](../virtual-machines/windows/tutorial-azure-security.md).
 * Sie können vorhandene Ressourcen in eine neue Ressourcengruppe verschieben. Beispiele finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](resource-group-move-resources.md).
-* Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
+* Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](/azure/architecture/cloud-adoption-guide/subscription-governance).

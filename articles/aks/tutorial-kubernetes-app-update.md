@@ -2,32 +2,31 @@
 title: Tutorial zu Kubernetes in Azure – Aktualisieren einer Anwendung
 description: AKS-Tutorial – Aktualisieren einer Anwendung
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/24/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 622cd17a93bf1b9fa9d3c138d385ca1d29426f3b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 97d8c4bd179edc59d97914f86e2aa139681e739a
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100969"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Tutorial: Aktualisieren einer Anwendung in Azure Kubernetes Service (AKS)
 
 Nach der Bereitstellung einer Anwendung in Kubernetes kann diese durch Angeben eines neuen Containerimages oder einer neuen Imageversion aktualisiert werden. Dabei wird das Update gestaffelt bereitgestellt, sodass jeweils nur ein Teil der Bereitstellung aktualisiert wird. Durch diese Art des Updates kann die Anwendung während des Updates weiterhin ausgeführt werden. Darüber hinaus wird ein Rollbackmechanismus bereitgestellt, falls ein Fehler bei der Bereitstellung auftritt.
 
-In diesem Tutorial – Teil 6 von 8 – wird die Azure Voting-Beispiel-App aktualisiert. Sie führen folgende Aufgaben aus:
+In diesem Tutorial – Teil 6 von 7 – wird die Azure Voting-Beispiel-App aktualisiert. Sie führen folgende Aufgaben aus:
 
 > [!div class="checklist"]
 > * Aktualisieren des Front-End-Anwendungscodes
 > * Erstellen eines aktualisierten Containerimages
 > * Übertragen des Containerimages in Azure Container Registry per Push
 > * Bereitstellen des aktualisierten Containerimages
-
-In nachfolgenden Tutorials wird Log Analytics für die Überwachung des Kubernetes-Clusters konfiguriert.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 

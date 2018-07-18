@@ -3,25 +3,22 @@ title: Verwalten von Azure Cosmos DB in Azure Storage-Explorer
 description: Erfahren Sie, wie Sie Azure Cosmos DB in Azure Storage-Explorer verwalten.
 Keywords: Azure Cosmos DB, Azure Storage Explorer, MongoDB
 services: cosmos-db
-documentationcenter: ''
 author: Jejiang
-manager: omafnan
+manager: kfile
 editor: ''
 tags: Azure Cosmos DB
-ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: Azure Cosmos DB active
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: ff4ee0a47129be5df03112006dcd45a62ad410af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b45328425cff978377d5e05de487d42e786c063b
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345106"
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Verwalten von Azure Cosmos DB in Azure Storage-Explorer
 
@@ -222,7 +219,7 @@ Versuchen Sie vor dem Fortfahren, Ihre Anwendung neu zu starten, um zu prüfen, 
 
 Es gibt verschiedene Gründe, warum dieser Fehler unter Umständen angezeigt wird. Die zwei häufigsten Gründe sind:
 
-+ Sie befinden sich hinter einem „transparenten Proxy“. Dies bedeutet, dass HTTPS-Datenverkehr abgefangen (z.B. von Ihrer IT-Abteilung) und entschlüsselt und anschließend mit einem selbstsignierten Zertifikat wieder verschlüsselt wird.
++ Sie befinden sich hinter einem *transparenten Proxy*. Dies bedeutet, dass HTTPS-Datenverkehr abgefangen (z.B. von Ihrer IT-Abteilung) und entschlüsselt und anschließend mit einem selbstsignierten Zertifikat wieder verschlüsselt wird.
 
 + Sie führen Software aus, z.B. Virenschutzsoftware, mit der ein selbstsigniertes Zertifikat in Ihre HTTPS-Nachrichten injiziert wird.
 

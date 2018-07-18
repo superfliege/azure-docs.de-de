@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 97c5e2dde3faeaad13317597bef4f70455d22102
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 61fa6c94c0d717fe1e71bf8929f2e3b4a0982562
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33930128"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903878"
 ---
 # <a name="configure-a-vmss-managed-service-identity-msi-using-powershell"></a>Konfigurieren einer MSI (Managed Service Identity, verwaltete Dienstidentität) für eine VM-Skalierungsgruppe mit PowerShell
 
@@ -27,13 +27,13 @@ ms.locfileid: "33930128"
 
 Eine verwaltete Dienstidentität stellt für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein. 
 
-In diesem Artikel erfahren Sie, wie Sie mit PowerShell die folgenden Vorgänge für verwaltete Dienstidentitäten (Managed Service Identity, MSI) für eine Azure VM-Skalierungsgruppe (Virtual Machine Scale Set, VMSS) ausführen können:
+In diesem Artikel erfahren Sie, wie Sie mit PowerShell die Vorgänge für verwaltete Dienstidentitäten (Managed Service Identity, MSI) für eine VM-Skalierungsgruppe (Virtual Machine Scale Set, VMSS) ausführen:
 - Aktivieren und Deaktivieren der systemzugewiesenen Identität in einer Azure VM-Skalierungsgruppe
 - Hinzufügen und Entfernen einer benutzerzugewiesenen Identität in einer Azure VM-Skalierungsgruppe
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie nicht mit „Verwaltete Dienstidentität“ vertraut sind, helfen Ihnen die Informationen in dieser [Übersicht](overview.md) weiter. **Machen Sie sich den [Unterschied zwischen einer systemzugewiesenen und einer benutzerzugewiesenen Identität](overview.md#how-does-it-work)** bewusst.
+- Wenn Sie nicht mit „Verwaltete Dienstidentität“ vertraut sind, helfen Ihnen die Informationen in dieser [Übersicht](overview.md) weiter. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen Identität](overview.md#how-does-it-work)** bewusst.
 - Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
 - Installieren Sie [die aktuelle Version von Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM), sofern noch nicht geschehen. 
 
@@ -108,7 +108,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mithilfe von Azure PowerShell eine ben
 
 ### <a name="assign-a-user-assigned-identity-during-creation-of-an-azure-vmss"></a>Zuweisen einer benutzerzugewiesenen Identität beim Erstellen einer Azure VM-Skalierungsgruppe
 
-Erstellen einer neuen VM-Skalierungsgruppe mit einer benutzerzugewiesenen Identität über PowerShell wird derzeit nicht unterstützt. Informationen, wie Sie einer vorhandenen VM-Skalierungsgruppe eine benutzerzugewiesene Identität hinzufügen, finden Sie im nächsten Abschnitt. Überprüfen Sie zu einem späteren Zeitpunkt auf dieser Seite, ob neue Informationen vorliegen.
+Das Erstellen einer neuen VM-Skalierungsgruppe mit einer benutzerzugewiesenen Identität wird für PowerShell derzeit nicht unterstützt. Informationen, wie Sie einer vorhandenen VM-Skalierungsgruppe eine benutzerzugewiesene Identität hinzufügen, finden Sie im nächsten Abschnitt. Überprüfen Sie zu einem späteren Zeitpunkt auf dieser Seite, ob neue Informationen vorliegen.
 
 ### <a name="assign-a-user-identity-to-an-existing-azure-vmss"></a>Zuweisen einer Benutzeridentität zu einer vorhandenen Azure VM-Skalierungsgruppe
 
@@ -122,8 +122,7 @@ So weisen Sie eine benutzerzugewiesene Identität zu einer vorhandenen Azure VM-
 
 2. Rufen Sie zunächst die VM-Einstellungen mithilfe des Cmdlets `Get-AzureRmVM` ab. Weisen Sie der Azure VM-Skalierungsgruppe dann eine benutzerzugewiesene Identität zu, indem Sie die Schalter `-IdentityType` und `-IdentityID` im [Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm)-Cmdlet verwenden. Ersetzen Sie `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, `<USER ASSIGNED ID1>` und `USER ASSIGNED ID2` durch Ihre eigenen Werte.
 
-   > [!IMPORTANT]
-   > Für die Erstellung von Identitäten, die vom Benutzer zugewiesen werden, werden nur alphanumerische Zeichen und Bindestriche („0-9“, „a-Z“ bzw. „A-Z“ oder „-“) unterstützt. Darüber hinaus sollten Namen max. 24 Zeichen enthalten, damit die Zuordnung zur VM/VMSS richtig funktioniert. Überprüfen Sie zu einem späteren Zeitpunkt auf dieser Seite, ob neue Informationen vorliegen. Weitere Informationen finden Sie unter [FAQs und bekannte Probleme mit der verwalteten Dienstidentität (Managed Service Identity, MSI) für Azure Active Directory](known-issues.md).
+   [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 
    ```powershell

@@ -1,24 +1,25 @@
 ---
-title: "Einrichten eines eigenständigen Azure Service Fabric-Clusters | Microsoft-Dokumentation"
-description: "Erstellen Sie einen eigenständigen Entwicklungscluster mit drei Knoten, die auf dem gleichen Computer ausgeführt werden. Nach Abschluss dieser Einrichtung können Sie einen Cluster mit mehreren Computern erstellen."
+title: Einrichten eines eigenständigen Azure Service Fabric-Clusters | Microsoft-Dokumentation
+description: Erstellen Sie einen eigenständigen Entwicklungscluster mit drei Knoten, die auf dem gleichen Computer ausgeführt werden. Nach Abschluss dieser Einrichtung können Sie einen Cluster mit mehreren Computern erstellen.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 5438d8d366ef989d5ae29581477513f8c884c4b3
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 93c921e54c69693ed02c122a2491b0942f550126
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643463"
 ---
 # <a name="create-your-first-service-fabric-standalone-cluster"></a>Erstellen Ihres ersten eigenständigen Service Fabric-Clusters
 Sie können einen eigenständigen Service Fabric-Cluster auf beliebigen virtuellen oder physischen Computern unter Windows Server 2012 R2 oder Windows Server 2016 erstellen – ganz gleich ob lokal oder in der Cloud. In diesem Schnellstarttutorial erfahren Sie, wie Sie innerhalb weniger Minuten einen eigenständigen Entwicklungscluster erstellen.  Nach Abschluss des Tutorials verfügen Sie über einen Cluster mit drei Knoten, der auf einem einzelnen Computer ausgeführt wird und für den Sie Apps bereitstellen können.

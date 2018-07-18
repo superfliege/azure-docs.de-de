@@ -1,21 +1,21 @@
 ---
-title: Tokenreferenz – Azure AD B2C | Microsoft-Dokumentation
+title: Tokenreferenz in Azure Active Directory B2C | Microsoft-Dokumentation
 description: Enthält eine Beschreibung der Typen von Token, die in Azure Active Directory B2C ausgegeben werden
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: 09d776b54941e33979d7969b25c35e67a53cf8f0
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: adb78f04c0fd5ba175bb31c9a81ad58b3b03fb42
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447318"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Referenz zu Azure AD B2C-Token
 

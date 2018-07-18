@@ -163,6 +163,13 @@
           href: service-fabric-application-model.md
         - name: Anwendungs- und Dienstmanifeste
           href: service-fabric-application-and-service-manifests.md
+        - name: Beispiele für Anwendungs- und Dienstmanifeste
+          href: service-fabric-manifest-examples.md
+          items:
+            - name: 'Reliable Services: Beispiele für Anwendungs- und Dienstmanifeste'
+              href: service-fabric-manifest-example-reliable-services-app.md
+            - name: 'Mehrere Container: Beispiele für Anwendungs- und Dienstmanifeste'
+              href: service-fabric-manifest-example-container-app.md
         - name: Hostingmodell
           href: service-fabric-hosting-model.md
         - name: Anwendungssicherheit
@@ -208,6 +215,10 @@
               href: service-fabric-image-store-connection-string.md
         - name: Dienstressourcen
           href: service-fabric-service-manifest-resources.md
+        - name: Regelmäßige Sicherung und Wiederherstellung
+          items:
+            - name: Grundlegendes zur Konfiguration der regelmäßigen Sicherung
+              href: service-fabric-backuprestoreservice-configure-periodic-backup.md
     - name: Cluster
       href: service-fabric-deploy-anywhere.md
       items:
@@ -399,6 +410,8 @@
               href: service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md
         - name: Erstellen eines ASP.NET Core-Diensts
           href: service-fabric-add-a-web-frontend.md
+        - name: Erstellen eines Apache Tomcat-Servercontainers unter Linux
+          href: service-fabric-get-started-tomcat.md
         - name: Konfigurieren der Sicherheit
           items:
             - name: Verwalten von Anwendungsgeheimnissen
@@ -419,6 +432,8 @@
               href: service-fabric-securing-containers.md
             - name: Einrichten von gMSA für Windows-Container
               href: service-fabric-setup-gmsa-for-windows-containers.md
+            - name: Konfigurieren von Zertifikaten unter Linux
+              href: service-fabric-configure-certificates-linux.md
         - name: Konfigurieren von regelmäßigen Sicherungen (Cluster in Azure)
           href: service-fabric-backuprestoreservice-quickstart-azurecluster.md
         - name: Konfigurieren von regelmäßigen Sicherungen (eigenständige Cluster)
@@ -449,6 +464,13 @@
           href: service-fabric-debugging-your-application-java.md
         - name: Lokales Überwachen und Diagnostizieren
           href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md
+    - name: Arbeiten in einer VS Code-Umgebung
+      href: service-fabric-get-started-vs-code.md
+      items:
+        - name: 'Entwickeln von Service Fabric-C#-Anwendungen mit VS Code'
+          href: service-fabric-develop-csharp-applications-with-vs-code.md
+        - name: Entwickeln von Service Fabric-Java-Anwendungen mit VS Code
+          href: service-fabric-develop-java-applications-with-vs-code.md
     - name: Migrieren aus Cloud Services
       items:
         - name: Unterschiede zwischen Cloud Services und Service Fabric
@@ -523,17 +545,13 @@
                   href: service-fabric-cluster-creation-via-arm.md
                 - name: Cluster mit allgemeinem Namen des Zertifikats
                   href: service-fabric-create-cluster-using-cert-cn.md
-                - name: Aktivieren von Disk Encryption für Windows
-                  href: service-fabric-enable-azure-disk-encryption-windows.md
-                - name: Aktivieren von Disk Encryption für Linux
-                  href: service-fabric-enable-azure-disk-encryption-linux.md
             - name: Skalieren
               items:
                 - name: Manuelles horizontales Hochskalieren
                   href: service-fabric-cluster-scale-up-down.md
                 - name: Programmgesteuertes horizontales Hochskalieren
                   href: service-fabric-cluster-programmatic-scaling.md
-                - name: Zentrales Hochskalieren der virtuellen Computer des primären Knotentyps
+                - name: Skalieren oder Upgraden der virtuellen Computer des primären Knotentyps
                   href: service-fabric-cluster-upgrade-primary-nodetype-vm.md
             - name: Upgrade
               href: service-fabric-cluster-upgrade.md
@@ -551,8 +569,6 @@
               href: service-fabric-cluster-delete.md
             - name: Herstellen einer Remoteverbindung mit dem virtuellen Clusterknotencomputer
               href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
-            - name: Upgraden/Migrieren einer VMSS-SKU
-              href: service-fabric-update-vmss-sku.md
         - name: Eigenständige Cluster
           items:
             - name: Erstellen
@@ -601,13 +617,13 @@
               href: service-fabric-diagnostics-event-aggregation-wad.md
             - name: Azure-Diagnose unter Linux
               href: service-fabric-diagnostics-event-aggregation-lad.md
-            - name: Einrichten von OMS Log Analytics
+            - name: Einrichten von Log Analytics
               href: service-fabric-diagnostics-oms-setup.md
-            - name: Überwachen mit OMS
+            - name: Überwachen mit Log Analytics
               href: service-fabric-diagnostics-event-analysis-oms.md
         - name: Überwachen der Infrastruktur
           items:
-            - name: Leitungsüberwachung mit dem OMS-Agent
+            - name: Leistungsüberwachung mit dem Log Analytics-Agent
               href: service-fabric-diagnostics-oms-agent.md
             - name: Leistungsüberwachung mit WAD
               href: service-fabric-diagnostics-perf-wad.md
@@ -623,6 +639,10 @@
           href: service-fabric-troubleshoot-local-cluster-setup.md
         - name: Diagnostizieren von allgemeinen Szenarien
           href: service-fabric-diagnostics-common-scenarios.md
+    - name: Bewährte Methoden
+      items:
+        - name: Prüfliste für die Produktionsbereitschaft
+          href: service-fabric-production-readiness-checklist.md
 - name: Verweis
   items:
     - name: Azure PowerShell

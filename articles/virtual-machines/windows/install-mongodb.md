@@ -1,11 +1,11 @@
 ---
 title: Installieren von MongoDB auf einem virtuellen Windows-Computer in Azure | Microsoft Docs
-description: "Erfahren Sie, wie Sie MongoDB auf einem virtuellen Azure-Computer installieren, auf dem Windows Server 2012 R2 ausgeführt wird und der mit dem Resource Manager-Bereitstellungsmodell erstellt wurde."
+description: Erfahren Sie, wie Sie MongoDB auf einem virtuellen Azure-Computer installieren, auf dem Windows Server 2012 R2 ausgeführt wird und der mit dem Resource Manager-Bereitstellungsmodell erstellt wurde.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 53faf630-8da5-4955-8d0b-6e829bf30cba
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/16/2017
+ms.locfileid: "26745978"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Installieren und Konfigurieren von MongoDB auf einem virtuellen Windows-Computer in Azure
 [MongoDB](http://www.mongodb.org) ist eine beliebte, leistungsfähige Open Source-NoSQL-Datenbank. Dieser Artikel führt Sie durch die Installation und Konfiguration von MongoDB auf einem virtuellen Windows Server 2016-Computer in Azure. Sie können [MongoDB auch auf einem virtuellen Linux-Computer in Azure installieren](../linux/install-mongodb.md).

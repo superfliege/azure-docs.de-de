@@ -2,23 +2,21 @@
 title: Erstellen einer Azure Cosmos DB-Graphdatenbank mit Java | Microsoft-Dokumentation
 description: Hier finden Sie ein Java-Codebeispiel, das Sie zum Herstellen einer Verbindung mit und zum Abfragen von Diagrammdaten in Azure Cosmos DB mit Gremlin verwenden können.
 services: cosmos-db
-documentationcenter: ''
 author: luisbosquez
 manager: kfile
-ms.assetid: daacbabf-1bb5-497f-92db-079910703046
 ms.service: cosmos-db
+ms.component: cosmosdb-graph
 ms.custom: quick start connect, mvc
-ms.workload: ''
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: lbosq
-ms.openlocfilehash: a7c86ab78704baf4048bc0415d89c1ab826e16bc
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ac9d0291b38e7a8679e9c6e7707e13a90554b914
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38582517"
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: Erstellen einer Graphdatenbank mit Java und dem Azure-Portal
 
@@ -85,7 +83,7 @@ Die folgenden Codeausschnitte stammen alle aus der Datei „C:\git-samples\azure
     client = cluster.connect();
     ```
 
-* Eine Reihe von Gremlin-Schritten wird mit mithilfe der `client.submit`-Methode ausgeführt.
+* Eine Reihe von Gremlin-Schritten wird mithilfe der `client.submit`-Methode ausgeführt.
 
     ```java
     ResultSet results = client.submit(gremlin);
@@ -172,7 +170,7 @@ Nun können Sie wieder zum Daten-Explorer zurückkehren, um sich die dem Graph h
 
    ![Neue Dokumente im Daten-Explorer im Azure-Portal erstellen](./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png)
 
-2. Beachten Sie in der Liste **Ergebnisse** die Benutzer, die dem Graph neu hinzugefügt wurden. Wählen Sie **ben** aus, und beachten Sie, dass er mit „robin“ verbunden ist. Sie können die Scheitelpunkte bewegen, indem Sie sie ziehen und loslassen, zoomen, indem Sie das Mausrad verwenden, und die Größe des Graphen verändern, indem Sie auf den Doppelpfeil klicken. 
+2. Beachten Sie in der Liste **Ergebnisse** die Benutzer, die dem Graph neu hinzugefügt wurden. Wählen Sie **ben** aus, und beachten Sie, dass der Benutzer mit „robin“ verbunden ist. Sie können die Scheitelpunkte bewegen, indem Sie sie ziehen und loslassen, zoomen, indem Sie das Mausrad verwenden, und die Größe des Graphen verändern, indem Sie auf den Doppelpfeil klicken. 
 
    ![Neue Scheitelpunkte im Graph im Daten-Explorer im Azure-Portal](./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png)
 
@@ -213,11 +211,11 @@ Nun können Sie wieder zum Daten-Explorer zurückkehren, um sich die dem Graph h
 
     Wenn Sie weitere Daten hinzufügen, können Sie Ihre Ergebnisse mithilfe von Filtern eingrenzen. Daten-Explorer verwendet standardmäßig `g.V()`, um alle Scheitelpunkte eines Graphen abzurufen. Sie können ihn in eine andere [Graphabfrage](tutorial-query-graph.md) wie z.B. `g.V().count()` ändern, um die Anzahl aller Scheitelpunkte eines Graphen im JSON-Format zurückzugeben. Wenn Sie den Filter geändert haben, ändern Sie den Filter zurück in `g.V()`, und klicken Sie auf **Filter anwenden**, um wieder alle Ergebnisse anzuzeigen.
 
-12. Als Nächstes verbinden wir „rakesh“ und „ashley“. Vergewissern Sie sich, dass **ashley** in der Liste **Ergebnisse** ausgewählt ist, und klicken Sie anschließend rechts unten neben **Ziele** auf ![Ziel eines Scheitelpunkts in einem Graph ändern](./media/create-graph-java/edit-pencil-button.png). Sollte die Schaltfläche nicht zu sehen sein, müssen Sie ggf. das Fenster verbreitern.
+12. Als Nächstes verbinden Sie „rakesh“ und „ashley“. Vergewissern Sie sich, dass **ashley** in der Liste **Ergebnisse** ausgewählt ist, und klicken Sie anschließend rechts unten neben **Ziele** auf ![Ziel eines Scheitelpunkts in einem Graph ändern](./media/create-graph-java/edit-pencil-button.png). Sollte die Schaltfläche nicht zu sehen sein, müssen Sie ggf. das Fenster verbreitern.
 
    ![Ändern des Ziels eines Scheitelpunkts in einem Graph](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 
-13. Geben Sie im Feld **Ziel** die Zeichenfolge *rakesh* und im Feld **Edge label** (Edgebezeichner) die Zeichenfolge *knows* ein, und klicken Sie anschließend auf das Häkchen.
+13. Geben Sie im Feld **Ziel** die Zeichenfolge *rakesh* und im Feld **Edge label** (Edgebezeichner) die Zeichenfolge *knows* ein, und aktivieren Sie anschließend das Kontrollkästchen.
 
    ![Hinzufügen einer Verbindung zwischen „ashley“ und „rakesh“ im Daten-Explorer](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
 

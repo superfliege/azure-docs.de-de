@@ -1,5 +1,5 @@
 ---
-title: Kopien von Daten in/aus Oracle mit Data Factory | Microsoft Dokumentation
+title: Kopieren von Daten in bzw. aus Oracle per Data Factory | Microsoft-Dokumentation
 description: Informationen zum Kopieren von Daten in und aus einer Oracle-Datenbank, die lokal oder mithilfe von Azure Data Factory gehostet wird.
 services: data-factory
 documentationcenter: ''
@@ -10,23 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/10/2018
+ms.topic: conceptual
+ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 64e8a20f72d451908c12751c0f8062bf4ae86370
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 10535e75a32a9f95e759340cf14d693f43639473
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856840"
 ---
-# <a name="copy-data-tofrom-on-premises-oracle-using-azure-data-factory"></a>Kopieren von Daten in lokales/aus lokalem Oracle mithilfe von Azure Data Factory
+# <a name="copy-data-to-or-from-on-premises-oracle-using-azure-data-factory"></a>Kopieren von Daten in bzw. aus einer lokalen Oracle-Umgebung per Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: allgemein verfügbar](data-factory-onprem-oracle-connector.md)
-> * [Version 2 – Vorschauversion](../connector-oracle.md)
+> * [Version 1](data-factory-onprem-oracle-connector.md)
+> * [Version 2 (aktuelle Version)](../connector-oracle.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data from and to Oracle using Azure Data Factory](../connector-oracle.md) (Kopieren von Daten aus und in Oracle mit Azure Data Factory).
+> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [Oracle-Connector in V2](../connector-oracle.md).
 
 
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten in und aus einer lokalen Oracle-Datenbank zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
@@ -57,6 +58,9 @@ Dieser Connector für Oracle unterstützt zwei Treiberversionen:
     - Oracle 10g R1, R2 (10.1, 10.2)
     - Oracle 9i R1, R2 (9.0.1, 9.2)
     - Oracle 8i R3 (8.1.7)
+
+> [!NOTE]
+> Der Oracle-Proxyserver wird nicht unterstützt.
 
 > [!IMPORTANT]
 > Derzeit unterstützt der Microsoft-Treiber für Oracle nur das Kopieren von Daten aus Oracle, nicht jedoch das Schreiben in Oracle. Beachten Sie, dass die Funktion zum Testen der Verbindung auf der Registerkarte für die Datenverwaltungsgateway-Diagnose diesen Treiber nicht unterstützt. Alternativ können Sie den Assistenten zum Kopieren verwenden, um die Konnektivität zu überprüfen.
@@ -96,9 +100,13 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 | type |Die "type"-Eigenschaft muss auf **OnPremisesOracle** |Ja |
 | driverType | Legen Sie fest, welcher Treiber für das Kopieren von Daten aus/in Oracle Database verwendet wird. Zulässige Werte sind **Microsoft** oder **ODP** (Standard). Details zu den Treibern finden Sie unter [Unterstützte Versionen und Installation](#supported-versions-and-installation). | Nein  |
 | connectionString | Geben Sie Informationen, die zur Verbindung mit der Oracle Databaseinstanz erforderlich sind, für die Eigenschaft "connectionString" an. | Ja |
-| gatewayName | Der Name des Gateways, das zum Herstellen einer Verbindung mit dem lokalen Oracle-Server verwendet wird. |Ja |
+| gatewayName | Name des Gateways, das zum Herstellen einer Verbindung mit dem lokalen Oracle-Server verwendet wird |Ja |
 
 **Beispiel: Verwenden des Microsoft-Treibers**
+
+>[!TIP]
+>Wenn der Fehler „ORA-01025: UPI parameter out of range“ angezeigt wird und Sie die Oracle-Version 8i nutzen, können Sie Ihrer Verbindungszeichenfolge den Zusatz `WireProtocolMode=1` hinzufügen und den Vorgang wiederholen.
+
 ```json
 {
     "name": "OnPremisesOracleLinkedService",

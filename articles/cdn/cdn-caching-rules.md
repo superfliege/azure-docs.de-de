@@ -4,20 +4,21 @@ description: Anhand von CDN-Cacheregeln können Sie das Standardverhalten bei Ca
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 06/11/2018
 ms.author: v-deasim
-ms.openlocfilehash: 09705893c50e56cce5d888db097d7b810624b5d8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4095ed763de378a673908d033d87b2aa6d72f13c
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260005"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Steuern des Azure CDN-Zwischenspeicherverhaltens mit Chacheregeln
 
@@ -105,7 +106,12 @@ Globale und benutzerdefinierte Cacheregeln werden in der folgenden Reihenfolge v
 Wenn diese Regeln festgelegt sind, löst eine Anforderung für „_&lt;Endpunkthostname&gt;_.azureedge.net/home/index.html“ die benutzerdefinierte Cacheregel 2 aus, die auf &lt;Bei Fehlen festlegen&gt; und „3 Tage“ festgelegt ist. Enthält die Datei *index.html* daher den HTTP-Header `Cache-Control` oder `Expires`, werden sie berücksichtigt. Sind diese Header nicht festgelegt, wird die Datei drei Tage lang zwischengespeichert.
 
 > [!NOTE] 
-> Bei Dateien, die vor einer Regeländerung zwischengespeichert werden, wird die Cachedauereinstellung des Ursprungs beibehalten. Um die Cachedauer zurückzusetzen, müssen Sie [die Datei bereinigen](cdn-purge-endpoint.md). Bei Endpunkten vom Typ **Azure CDN von Verizon** kann es bis zu 90 Minuten dauern, bis die Cacheregeln wirksam werden.
+> Bei Dateien, die vor einer Regeländerung zwischengespeichert werden, wird die Cachedauereinstellung des Ursprungs beibehalten. Um die Cachedauer zurückzusetzen, müssen Sie [die Datei bereinigen](cdn-purge-endpoint.md). 
+>
+> Es dauert eine gewisse Zeit, bis Änderungen an der Azure CDN-Konfiguration im gesamten Netzwerk verteilt wurden: 
+> - Bei **Azure CDN Standard von Akamai**-Profilen ist die Weitergabe in der Regel in einer Minute abgeschlossen. 
+> - Bei Profilen vom Typ **Azure CDN Standard von Verizon** ist die Weitergabe in der Regel in zehn Minuten abgeschlossen.  
+>
 
 ## <a name="see-also"></a>Weitere Informationen
 

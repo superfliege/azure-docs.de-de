@@ -3,25 +3,26 @@ title: Automatisieren von benutzerdefinierten Berichten mit Azure Application In
 description: Automatisieren von benutzerdefinierten täglichen, wöchentlichen oder monatlichen Berichten mit Azure Application Insights-Daten
 services: application-insights
 documentationcenter: ''
-author: sdash
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 05/09/2018
-ms.author: sdash
-ms.openlocfilehash: 804e8c7a43d1ab16d11b6075be44599b33b46a3e
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.topic: conceptual
+ms.date: 06/25/2018
+ms.reviewer: sdash
+ms.author: mbullwin
+ms.openlocfilehash: c8cff54c67ab2c9c3d09f9261617b6312cc4434a
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072657"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025342"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatisieren von benutzerdefinierten Berichten mit Azure Application Insights-Daten
 
-Regelmäßig erstellte Berichte halten ein Team darüber im Laufenden, wie sich ihre unternehmenskritischen Dienste entwickeln. Entwickler, DevOps/SRE-Teams und deren Vorgesetzte können so produktiv arbeiten, indem automatisierte Berichte zuverlässig Informationen bereitstellen, ohne dass sich Benutzer beim Portal anmelden müssen. Derartige Berichte können auch dabei unterstützen, allmähliche Erhöhungen bei Latenzen, Lasten oder Fehlerraten zu ermitteln, die möglicherweise keine Warnungsregeln auslösen.
+Regelmäßig erstellte Berichte halten ein Team darüber im Laufenden, wie sich ihre unternehmenskritischen Dienste entwickeln. Dank automatisierter Berichte, die zuverlässig Informationen liefern, ohne dass sich alle beim Portal anmelden müssen, können Entwickler, DevOps/SRE-Teams und deren Vorgesetzte produktiv arbeiten. Derartige Berichte können auch dabei unterstützen, allmähliche Erhöhungen bei Latenzen, Lasten oder Fehlerraten zu ermitteln, die möglicherweise keine Warnungsregeln auslösen.
 
 Jedes Unternehmen stellt einzigartige Berichterstellungsanforderungen wie etwa Folgende: 
 
@@ -41,7 +42,7 @@ Jedes Unternehmen stellt einzigartige Berichterstellungsanforderungen wie etwa F
 
 * [Berichte mit Microsoft Flow automatisieren](app-insights-automate-with-flow.md)
 * [Berichte mit Logic Apps automatisieren](automate-with-logic-apps.md)
-* Verwenden Sie im Überwachungsszenario die [Azure-Funktionsvorlage](https://azure.microsoft.com/services/functions/) für „geplante Application Insights-Zusammenfassungen“. Bei dieser Funktion werden E-Mails über SendGrid übermittelt. 
+* Verwenden Sie im Überwachungsszenario die [Azure-Funktionsvorlage](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function) für „geplante Application Insights-Zusammenfassungen“. Bei dieser Funktion werden E-Mails über SendGrid übermittelt. 
 
     ![Auswählen der Azure-Funktionsvorlage](./media/automate-custom-reports/azure-function-template.png)
 
@@ -76,12 +77,90 @@ availabilityResults
 | project TotalRequests, FailedRequests, RequestsDuration, TotalDependencies, FailedDependencies, DependenciesDuration, TotalViews, TotalExceptions, OverallAvailability, AvailabilityDuration
 ```
 
-  
+## <a name="application-insights-scheduled-digest-report"></a>Bericht „AppInsights: Geplante Übersicht“
+
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Compute** > **Funktionen-App**.
+
+   ![Screenshot: Erstellen einer Azure-Ressource (Funktionen-App)](./media/automate-custom-reports/function-app-01.png)
+
+2. Geben Sie die erforderlichen Informationen für Ihre App ein, und klicken Sie anschließend auf _Erstellen_. (Application Insights muss nur dann auf _Ein_ festgelegt werden, wenn Sie Ihre neue Funktionen-App mit Application Insights überwachen möchten.)
+
+   ![Screenshot: Erstellen einer Azure-Ressource (Funktionen-App) – Einstellungen](./media/automate-custom-reports/function-app-02.png)
+
+3. Klicken Sie nach Abschluss der Bereitstellung Ihrer neuen Funktionen-App auf **Zu Ressource wechseln**.
+
+4. Klicken Sie auf **Neue Funktion**.
+
+   ![Screenshot: Erstellen einer neuen Funktion](./media/automate-custom-reports/function-app-03.png)
+
+5. Klicken Sie auf die Vorlage **_AppInsights: Geplante Übersicht_**.
+
+   ![Screenshot: Neue Funktion – Application Insights-Vorlage](./media/automate-custom-reports/function-app-04.png)
+
+6. Geben Sie eine geeignete Empfänger-E-Mail-Adresse für Ihren Bericht ein, und klicken Sie anschließend auf **Erstellen**.
+
+   ![Screenshot: Funktionseinstellungen](./media/automate-custom-reports/function-app-05.png)
+
+7. Klicken Sie auf **<Ihre Funktionen-App>** > **Plattformfeatures** > **Anwendungseinstellungen**.
+
+    ![Screenshot: Azure-Funktionen-App – Einstellungen](./media/automate-custom-reports/function-app-07.png)
+
+8. Erstellen Sie drei neue Anwendungseinstellungen mit geeigneten entsprechenden Werten (``AI_APP_ID``, ``AI_APP_KEY`` und ``SendGridAPI``). Wählen Sie **Speichern**aus.
+
+     ![Screenshot: Schnittstelle für die Funktionsintegration](./media/automate-custom-reports/function-app-08.png)
+    
+    (Die Werte vom Typ „AI_“ befinden sich unter „API-Zugriff“ für die Application Insights-Ressource, für die ein Bericht erstellt werden soll. Sollten Sie über keinen Application Insights-API-Schlüssel verfügen, können Sie mithilfe der Option **API-Schlüssel erstellen** einen API-Schlüssel erstellen.)
+    
+    * AI_APP_ID: Anwendungs-ID
+    * AI_APP_KEY: API-Schlüssel
+    * SendGridAPI: SendGrid-API-Schlüssel
+
+    > [!NOTE]
+    > Falls Sie über kein SendGrid-Konto verfügen, können Sie eines erstellen. Die SendGrid-Dokumentation für Azure Functions finden Sie [hier](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-sendgrid). Eine kurze Erläuterung der Vorgehensweise zum Einrichten von SendGrid sowie zum Generieren eines API-Schlüssels finden Sie am Ende dieses Artikels. 
+
+9. Klicken Sie auf **Integrieren** und anschließend unter „Ausgaben“ auf **SendGrid ($return)**.
+
+     ![Screenshot: Ausgabe](./media/automate-custom-reports/function-app-09.png)
+
+10. Wählen Sie unter **App-Einstellung für SendGrid-API-Schlüssel** Ihre neu erstellte App-Einstellung für **SendGridAPI** aus.
+
+     ![Screenshot: Ausführen der Funktionen-App](./media/automate-custom-reports/function-app-010.png)
+
+11. Führen Sie Ihre Funktionen-App aus, und testen Sie sie.
+
+     ![Screenshot: Test](./media/automate-custom-reports/function-app-11.png)
+
+12. Überprüfen Sie Ihren Posteingang, um sich zu vergewissern, dass die Nachricht erfolgreich gesendet/empfangen wurde.
+
+     ![Screenshot: E-Mail-Betreffzeile](./media/automate-custom-reports/function-app-12.png)
+
+## <a name="sendgrid-with-azure"></a>SendGrid mit Azure
+
+Die folgenden Schritte sind nur relevant, wenn Sie noch kein SendGrid-Konto konfiguriert haben.
+
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen**, und suchen Sie nach **E-Mail-Zustellung über SendGrid**. Klicken Sie auf **Erstellen**, und füllen Sie die SendGrid-spezifischen Erstellungsanweisungen aus. 
+
+     ![Screenshot: SendGrid-Ressource](./media/automate-custom-reports/function-app-13.png)
+
+2. Klicken Sie nach Abschluss der Erstellung unter „SendGrid-Konten“ auf **Verwalten**.
+
+     ![Screenshot: Einstellungen – API-Schlüssel](./media/automate-custom-reports/function-app-14.png)
+
+3. Daraufhin wird die SendGrid-Website gestartet. Klicken Sie auf **Einstellungen** > **API-Schlüssel**.
+
+     ![App-Screenshot: Erstellen und Anzeigen des API-Schlüssels](./media/automate-custom-reports/function-app-15.png)
+
+4. Erstellen Sie einen API-Schlüssel, und klicken Sie auf **Erstellen und anzeigen**. (Ermitteln Sie anhand der SendGrid-Dokumentation zu eingeschränktem Zugriff, welche Berechtigungsstufe für Ihren API-Schlüssel geeignet ist. In diesem Beispiel wird Vollzugriff ausgewählt.)
+
+   ![Screenshot: Vollzugriff](./media/automate-custom-reports/function-app-16.png)
+
+5. Kopieren Sie den gesamten Schlüssel. Dieser Wert wird in den Einstellungen Ihrer Funktionen-App als Wert für „SendGridAPI“ benötigt.
+
+   ![Screenshot: Kopieren des API-Schlüssels](./media/automate-custom-reports/function-app-17.png)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die Erstellung von [Analytics-Abfragen](app-insights-analytics-using.md).
-- Erfahren Sie mehr über das [programmgesteuerte Abfragen von Application Insights-Daten](https://dev.applicationinsights.io/).
-- Informieren Sie sich ausführlicher über [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps).
-- Erfahren Sie mehr über [Microsoft Flow](https://ms.flow.microsoft.com).
-
-
+* Erfahren Sie mehr über die Erstellung von [Analytics-Abfragen](app-insights-analytics-using.md).
+* Erfahren Sie mehr über das [programmgesteuerte Abfragen von Application Insights-Daten](https://dev.applicationinsights.io/).
+* Informieren Sie sich ausführlicher über [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps).
+* Erfahren Sie mehr über [Microsoft Flow](https://ms.flow.microsoft.com).

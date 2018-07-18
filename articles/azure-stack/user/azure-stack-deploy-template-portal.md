@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 05/24/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 278f15271d3a5443102f5e387d3db1adb53fe7db
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: eea4f568f21693764222c8fdbe3316bf6008cc05
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34357383"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604232"
 ---
 # <a name="deploy-templates-using-the-azure-stack-portal"></a>Bereitstellen von Vorlagen mit dem Azure Stack-Portal
 
@@ -28,7 +28,7 @@ ms.locfileid: "34357383"
 
 Sie können das Portal zum Bereitstellen von Azure Resource Manager-Vorlagen (ARM) für Azure Stack verwenden.
 
-So stellen Sie eine Vorlage bereit
+## <a name="to-deploy-a-template"></a>So stellen Sie eine Vorlage bereit
 
 1. Melden Sie sich beim Portal an, und wählen Sie **Neu** und dann **Benutzerdefiniert** aus.
 2. Wählen Sie **Vorlagenbereitstellung** aus.
@@ -40,4 +40,4 @@ So stellen Sie eine Vorlage bereit
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Bereitstellen von Vorlagen mit PowerShell](azure-stack-deploy-template-powershell.md)
+* [Bereitstellen von Vorlagen mit PowerShell](azure-stack-deploy-template-powershell.md)

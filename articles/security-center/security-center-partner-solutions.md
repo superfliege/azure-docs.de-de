@@ -1,11 +1,11 @@
 ---
-title: "Verwalten von verbundenen Partnerlösungen in Azure Security Center | Microsoft-Dokumentation"
-description: "Dieses Dokument beschreibt, wie Sie mithilfe von Azure Security Center auf einen Blick den Integritätsstatus Ihrer Partnerlösungen prüfen können, die in Ihr Azure-Abonnement integriert sind."
+title: Verwalten von verbundenen Partnerlösungen in Azure Security Center | Microsoft-Dokumentation
+description: Dieses Dokument beschreibt, wie Sie mithilfe von Azure Security Center auf einen Blick den Integritätsstatus Ihrer Partnerlösungen prüfen können, die in Ihr Azure-Abonnement integriert sind.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/18/2017
+ms.locfileid: "23454977"
 ---
 # <a name="managing-connected-partner-solutions-with-azure-security-center"></a>Verwalten von verbundenen Partnerlösungen in Azure Security Center
 Dieser Artikel führt Sie durch die Schritte zum Verwalten und Überwachen von verbundenen Sicherheitslösungen in Azure Security Center.

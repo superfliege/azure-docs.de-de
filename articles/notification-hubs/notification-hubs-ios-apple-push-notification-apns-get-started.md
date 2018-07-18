@@ -17,10 +17,11 @@ ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
 ms.openlocfilehash: 083b0c956055ab5b54a4af2eec57f096613cbe65
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38681518"
 ---
 # <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an iOS-Apps mit Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -33,7 +34,7 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 > * Generieren der Datei für die Anforderung der Zertifikatsignierung
 > * Anfordern von Pushbenachrichtigungen für Ihre App
 > * Erstellen eines Bereitstellungsprofils für die App
-> * Konfigurieren Ihres Notification Hub für iOS-Pushbenachrichtigungen
+> * Konfigurieren Ihres Notification Hubs für iOS-Pushbenachrichtigungen
 > * Verbinden der iOS-App mit Notification Hubs
 > * Senden von Test-Pushbenachrichtigungen
 > * Überprüfen, ob die App Benachrichtigungen empfängt
@@ -67,7 +68,7 @@ In diesem Abschnitt erstellen Sie einen neuen Notification Hub und konfigurieren
 3. Wählen Sie das **Dateisymbol** aus.
 4. Wählen Sie die **.p12**-Datei, die Sie zuvor exportiert haben.
 5. Geben Sie das richtige **Kennwort** an.
-6. Wählen Sie den Modus **Sandbox**. Wählen Sie den Modus **Produktion** nur dann, wenn Sie Pushbenachrichtigungen an Benutzer senden möchten, die Ihre App im Store erworben haben.
+6. Wählen Sie den Modus **Sandbox** aus. Wählen Sie den Modus **Produktion** nur dann, wenn Sie Pushbenachrichtigungen an Benutzer senden möchten, die Ihre App im Store erworben haben.
 
     ![Konfigurieren der APNS-Zertifizierung im Azure-Portal][7]
 

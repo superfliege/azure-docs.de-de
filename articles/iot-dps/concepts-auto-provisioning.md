@@ -1,22 +1,19 @@
 ---
 title: 'IoT Hub Device Provisioning-Dienst: Konzepte für automatische Bereitstellung'
 description: Dieser Artikel bietet einen konzeptionellen Überblick über die Phasen der automatischen Gerätebereitstellung mit dem IoT Device Provisioning-Dienst, IoT Hub und Client-SDKs.
-services: iot-dps
-keywords: ''
 author: BryanLa
 ms.author: bryanla
-ms.date: 03/27/2018
+ms.date: 06/01/2018
 ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: ''
+services: iot-dps
 manager: timlt
-ms.devlang: na
-ms.custom: ''
-ms.openlocfilehash: e743f40a1f8ff71fe93f14217b410df348d9903d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a5ac8b6116eebb400c12d50de010b93bded268ff
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736405"
 ---
 # <a name="auto-provisioning-concepts"></a>Konzepte für die automatische Bereitstellung
 
@@ -33,7 +30,7 @@ Die automatische Azure IoT-Bereitstellung kann in drei Phasen unterteilt werden:
 
 2. **Geräteregistrierung**: Der Vorgang, durch den die Instanz des Device Provisioning-Diensts die Geräte erkennt, die in Zukunft versuchen werden, sich zu registrieren. Die [Registrierung](concepts-service.md#enrollment) erfolgt durch die Konfiguration von Geräteidentitätsinformationen im Bereitstellungsdienst, entweder als „individuelle Registrierung“ für ein einzelnes Gerät oder als „Gruppenregistrierung“ für mehrere Geräte. Die Identität basiert auf dem [Bestätigungsmechanismus](concepts-security.md#attestation-mechanism), den das Gerät verwenden soll, der es dem Bereitstellungsdienst ermöglicht, die Echtheit des Geräts während der Registrierung zu bestätigen:
 
-   - **TPM**: Als „individuelle Registrierung“ konfiguriert, basiert die Geräteidentität auf der TPM-Registrierungs-ID und dem öffentlichen Endorsement Key. Da es sich bei TPM um eine [Spezifikation]((https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)) handelt, erwartet der Dienst nur eine Bestätigung gemäß der Spezifikation, und zwar unabhängig von der TPM-Implementierung (Hardware oder Software). Ausführliche Informationen zur TPM-basierten Bestätigung finden Sie unter [Gerätebereitstellung: Identitätsbestätigung mit TPM](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/). 
+   - **TPM**: Als „individuelle Registrierung“ konfiguriert, basiert die Geräteidentität auf der TPM-Registrierungs-ID und dem öffentlichen Endorsement Key. Da es sich bei TPM um eine [Spezifikation](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/) handelt, erwartet der Dienst nur eine Bestätigung gemäß der Spezifikation, und zwar unabhängig von der TPM-Implementierung (Hardware oder Software). Ausführliche Informationen zur TPM-basierten Bestätigung finden Sie unter [Gerätebereitstellung: Identitätsbestätigung mit TPM](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/). 
 
    - **X509**: Konfiguriert als „individuelle Registrierung“ oder „Gruppenregistrierung“, basiert die Geräteidentität auf einem digitalen X.509-Zertifikat, das als PEM- oder CER-Datei in die Registrierung hochgeladen wird.
 
@@ -62,7 +59,7 @@ Im Inhaltsverzeichnis auf der linken Seite finden Sie eine Reihe von Schnellstar
 
 Die folgende Abbildung fasst die Rollen und die Reihenfolge der Vorgänge bei der automatischen Gerätebereitstellung zusammen:
 <br><br>
-![Automatische Bereitstellungssequenz für ein Gerät](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png) 
+[![Automatische Bereitstellungssequenz für ein Gerät](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
 
 > [!NOTE]
 > Optional kann der Hersteller den Vorgang „Geräteidentität registrieren“ auch über APIs des Device Provisioning-Diensts (anstatt über die Rolle „Operator“) ausführen. Eine detaillierte Beschreibung dieser Abläufe und mehr finden Sie im Video [Zero touch device registration with Azure IoT](https://myignite.microsoft.com/sessions/55087) (Geräteregistrierung mit Azure IoT ohne jegliche Intervention, in englischer Sprache) ab Markierung 41:00.

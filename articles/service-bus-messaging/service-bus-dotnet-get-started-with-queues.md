@@ -1,11 +1,11 @@
 ---
 title: Erste Schritte mit Azure Service Bus-Warteschlangen | Microsoft-Dokumentation
-description: "Schreiben Sie eine C#-Konsolenanwendung, für die Service Bus Messaging-Warteschlangen verwendet werden."
+description: Schreiben Sie eine C#-Konsolenanwendung, für die Service Bus Messaging-Warteschlangen verwendet werden.
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 68a34c00-5600-43f6-bbcc-fea599d500da
 ms.service: service-bus-messaging
 ms.devlang: tbd
@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 12/7/2017
 ms.author: sethm
 ms.openlocfilehash: 6af7e4d238c10c0fed3443db58644e3557525993
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38308364"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Erste Schritte mit Service Bus-Warteschlangen
 
@@ -35,7 +36,7 @@ Dieses Tutorial enthält die folgenden Schritte:
 
 1. [Visual Studio 2017 Update 3 (Version 15.3, 26730.01)](http://www.visualstudio.com/vs) oder höher
 2. [NET Core SDK](https://www.microsoft.com/net/download/windows) ab Version 2.0
-2. Ein Azure-Abonnement
+2. Ein Azure-Abonnement.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 

@@ -1,29 +1,25 @@
 ---
-title: "Bedingungsanweisungen – Ausführen von Schritten basierend auf einer Bedingung – Azure Logic Apps | Microsoft-Dokumentation"
-description: "Führen Sie Schritte in Ihrer Logik-App erst aus, wenn eine Bedingung erfüllt ist. Erstellen Sie Entscheidungsstrukturen, die Workflows basierend auf festgelegten Bedingungen ausführen."
+title: Hinzufügen bedingter Anweisungen zu Workflows – Azure Logic Apps | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie Bedingungen erstellen, die Aktionen in Workflows in Azure Logic Apps steuern.
 services: logic-apps
-keywords: Bedingungsanweisungen, Entscheidungsstrukturen
-documentationcenter: 
-author: ecfan
-manager: anneta
-editor: 
-ms.assetid: 
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 486c1053f42ed3becc2c4b60accc993db7f24baa
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: e8d84944d44588602593c762c4f60c375e480343
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298167"
 ---
-# <a name="conditional-statements-run-steps-based-on-a-condition-in-logic-apps"></a>Bedingungsanweisungen: Ausführen von Schritten basierend auf einer Bedingung in Logik-Apps
+# <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Erstellen bedingter Anweisungen zum Steuern von Workflowaktionen in Azure Logic Apps
 
-Verwenden Sie eine *Bedingungsanweisung*, um Schritte erst auszuführen, wenn eine festgelegte Bedingung erfüllt ist. Diese Struktur vergleicht Daten in Ihrem Workflow mit bestimmten Werten oder Feldern. Sie können dann verschiedene Schritte definieren, die darauf basierend ausgeführt werden, ob die Daten die Bedingung erfüllen. Sie können Bedingungen ineinander schachteln.
+Fügen Sie eine *bedingte Anweisung* hinzu, falls bestimmte Aktionen in Ihrer Logik-App erst nach dem Übergeben einer bestimmten Bedingung ausgeführt werden sollen. Diese Struktur vergleicht die Daten in Ihrem Workflow mit bestimmten Werten oder Feldern. Sie können verschiedene Aktionen definieren, die abhängig davon ausgeführt werden, ob die Daten die Bedingung erfüllen. Sie können Bedingungen ineinander schachteln.
 
 Angenommen Sie verfügen über eine Logik-App, die zu viele E-Mails sendet, wenn neue Elemente auf dem RSS-Feed einer Website verfügbar gemacht werden. Sie können Bedingungsanweisung hinzufügen, um nur dann eine E-Mail zu senden, wenn das neue Element eine bestimmte Zeichenfolge enthält. 
 

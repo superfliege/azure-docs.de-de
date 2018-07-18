@@ -1,24 +1,19 @@
 ---
-title: "Empfohlene Methoden für die Autoskalierung| Microsoft-Dokumentation"
-description: "Autoskalierungsmuster in Azure für Web-Apps, VM-Skalierungsgruppen und Clouddienste"
+title: Bewährte Methoden für die automatische Skalierung
+description: Autoskalierungsmuster in Azure für Web-Apps, VM-Skalierungsgruppen und Clouddienste
 author: anirudhcavale
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 9fa2b94b-dfa5-4106-96ff-74fd1fba4657
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ancav
-ms.openlocfilehash: d5b33b15c315c7538bba7bf9ae067946f3b6d3c4
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.component: autoscale
+ms.openlocfilehash: e9fc5a4c5d2e23750493cc320dffa380724347fb
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262442"
 ---
 # <a name="best-practices-for-autoscale"></a>Bewährte Methoden für die automatische Skalierung
 In diesem Artikel werden empfohlene Methoden für die automatische Skalierung in Azure erläutert. Die automatische Skalierung von Azure Monitor gilt nur für [Skalierungsgruppen für virtuelle Computer](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/) und [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/). Andere Azure-Dienste verwenden andere Skalierungsmethoden.
@@ -40,7 +35,7 @@ Verwenden Sie die folgenden Best Practices für die automatische Skalierung.
 Falls Ihre Einstellung ein Minimum von „2“ und ein Maximum von „2“ hat und dabei die Anzahl der aktuellen Instanzen „2“ ist, kann keine automatische Skalierung durchgeführt werden. Behalten Sie eine passende Spanne zwischen der maximalen und der minimalen Instanzenanzahl bei. Beide Werte gelten dabei als inklusive. Die automatische Skalierung skaliert immer zwischen diesen Grenzwerten.
 
 ### <a name="manual-scaling-is-reset-by-autoscale-min-and-max"></a>Die manuelle Skalierung wird durch die Mindest- und Höchstwerte der automatischen Skalierung außer Kraft gesetzt.
-Wenn Sie die Anzahl der Instanzen manuell auf einen Wert oberhalb oder unterhalb dieser Grenzen aktualisieren, skaliert das Modul für die automatische Skalierung automatisch auf das Minimum (sofern der Wert niedriger ist) oder das Maximum (sofern er höher ist). Angenommen, Sie legen den Bereich zwischen 3 und 6 fest. Wenn Sie eine ausgeführte Instanz haben, skaliert das Modul für die automatische Skalierung bei seiner nächsten Ausführung auf 3 Instanzen. Wenn Sie manuell die Skalierung auf 8 Instanzen festlegen, wird ebenso bei der nächsten Ausführung der automatischen Skalierung wieder auf 6 Instanzen herunterskaliert.  Die manuelle Skalierung ist äußerst temporär, sofern Sie nicht auch die Regeln für die automatische Skalierung zurücksetzen.
+Wenn Sie die Anzahl der Instanzen manuell auf einen Wert oberhalb oder unterhalb dieser Grenzen aktualisieren, skaliert die Engine für die automatische Skalierung automatisch auf den Mindestwert (sofern der Wert niedriger ist) oder den Höchstwert (sofern er höher ist). Angenommen, Sie legen den Bereich zwischen 3 und 6 fest. Wenn Sie eine ausgeführte Instanz haben, skaliert die Engine für die automatische Skalierung bei der nächsten Ausführung auf 3 Instanzen. Wenn Sie manuell die Skalierung auf 8 Instanzen festlegen, wird ebenso bei der nächsten Ausführung der automatischen Skalierung wieder auf 6 Instanzen herunterskaliert.  Die manuelle Skalierung ist äußerst temporär, sofern Sie nicht auch die Regeln für die automatische Skalierung zurücksetzen.
 
 ### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>Verwenden Sie immer eine Regelkombination für das horizontale Hoch- und Herunterskalieren, die eine Erhöhung und Verringerung durchführt.
 Falls Sie nur einen Teil dieser Kombination verwenden („nur horizontal Hochskalieren“ oder „nur horizontal Herunterskalieren“), wird die automatische Skalierung die Hoch- oder Herunterskalierung vornehmen, bis das Maximum oder das Minimum erreicht ist.
@@ -148,10 +143,10 @@ Die automatische Skalierung schreibt in das Aktivitätsprotokoll, wenn eine der 
 * Für den Autoskalierungsdienst stehen keine Metriken zur Verfügung, auf deren Grundlage eine Skalierungsentscheidung getroffen werden kann.
 * Metriken stehen wieder zur Verfügung (Wiederherstellung), um eine Skalierungsentscheidung zu treffen.
 
-Sie können auch eine Aktivitätsprotokollwarnung zur Überwachung der Integrität des Autoskalierungs-Moduls verwenden. Es folgen Beispiele zum [Erstellen einer Aktivitätsprotokollwarnung zum Überwachen aller Autoskalierungs-Modul-Vorgänge in Ihrem Abonnement](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert) oder [Erstellen einer Aktivitätsprotokollwarnung zum Überwachen aller Autoskalierungs-Vorgänge zum horizontalen Herunterskalieren und horizontalen Hochskalieren in Ihrem Abonnement, bei denen Fehler aufgetreten sind](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert).
+Sie können auch eine Aktivitätsprotokollwarnung zur Überwachung der Integrität der Engine für die automatische Skalierung verwenden. Es folgen Beispiele zum [Erstellen einer Aktivitätsprotokollwarnung zum Überwachen aller Vorgänge der Engine für die automatische Skalierung in Ihrem Abonnement](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert) oder [Erstellen einer Aktivitätsprotokollwarnung zum Überwachen aller fehlerhaften Vorgänge zum automatischen horizontalen Herunterskalieren und zum automatischen horizontalen Hochskalieren in Ihrem Abonnement](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert).
 
 Neben der Verwendung von Warnungen zu Aktivitätsprotokollen können Sie auf der Registerkarte „Benachrichtigungen“ in den Einstellungen für die automatische Skalierung auch E-Mail- oder Webhook-Benachrichtigungen konfigurieren, um bei erfolgreichen Skalierungsaktionen informiert zu werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Erstellen Sie eine Aktivitätsprotokollwarnung, um alle automatischen Modulskalierungsvorgänge für Ihr Abonnement zu überwachen.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
+- [Erstellen Sie eine Aktivitätsprotokollwarnung, um alle Vorgänge der Engine für die automatische Skalierung für Ihr Abonnement zu überwachen.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Erstellen Sie eine Aktivitätsprotokollwarnung, um alle Autoskalierungs-Vorgänge zum horizontalen Herunterskalieren und horizontalen Hochskalieren in Ihrem Abonnement, bei denen Fehler aufgetreten sind, zu überwachen.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)

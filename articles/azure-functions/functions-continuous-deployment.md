@@ -1,12 +1,12 @@
 ---
-title: "Continuous Deployment für Azure Functions | Microsoft Docs"
-description: "Verwenden Sie Continuous Deployment-Funktionen von Azure App Service, um Ihre Azure-Funktionen zu veröffentlichen."
+title: Continuous Deployment für Azure Functions | Microsoft Docs
+description: Verwenden Sie Continuous Deployment-Funktionen von Azure App Service, um Ihre Azure-Funktionen zu veröffentlichen.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.service: functions
 ms.devlang: multiple
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: 35a0b0faa61cf4b42ba1d8696c85f5724ff73f23
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db10cd957f4dc59f787e2ac625355a96c888356e
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34735702"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Continuous Deployment für Azure Functions
 Mit Azure Functions können Sie Ihre Funktionen-App unter Verwendung von App Service-Continuous Integration problemlos bereitstellen. Functions kann in Bitbucket, Dropbox, GitHub und Visual Studio Team Services (VSTS) integriert werden. Dies ermöglicht einen Workflow, bei dem Funktionscodeaktualisierungen, die durch einen dieser integrierten Dienste erfolgt sind, die Bereitstellung in Azure auslösen. Sollten Sie noch nicht mit Azure Functions vertraut sein, sehen Sie sich zuerst die [Übersicht zu Azure Functions](functions-overview.md)an.
@@ -41,6 +42,8 @@ Bereitstellungen werden pro Funktionen-App konfiguriert. Nach Aktivierung von Co
 Die Bereitstellungsquelle und der darin enthaltene Funktionscode müssen vor der Einrichtung von Continuous Deployment konfiguriert worden sein. In jeder Bereitstellung einer Funktionen-App befinden sich die Funktionen jeweils in einem nach der Funktion benannten Unterverzeichnis.  
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
+
+Um über VSTS bereitstellen zu können, müssen Sie zuerst Ihr VSTS-Konto mit Ihrem Azure-Abonnement verknüpfen. Weitere Informationen finden Sie unter [Einrichten der Abrechnung über das Azure-Portal](https://docs.microsoft.com/vsts/billing/set-up-billing-for-your-account-vs?view=vsts#set-up-billing-via-the-azure-portal).
 
 ## <a name="set-up-continuous-deployment"></a>Einrichten der fortlaufenden Bereitstellung
 Gehen Sie wie folgt vor, um Continuous Deployment für eine vorhandene Funktionen-App zu konfigurieren. Die folgenden Schritte beziehen sich auf die Integration mit einem GitHub-Repository. Für Visual Studio Team Services oder andere Bereitstellungsdienste gelten jedoch ähnliche Schritte.

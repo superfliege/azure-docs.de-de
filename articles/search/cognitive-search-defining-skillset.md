@@ -3,17 +3,18 @@ title: Erstellen eines Skillsets in einer Pipeline der kognitiven Suche (Azure S
 description: Definieren Sie Datenextrahierung, Verarbeitung natürlicher Sprache oder Bildanalyseschritte, um strukturierte Informationen aus Ihren Daten für die Verwendung in Azure Search anzureichern und zu extrahieren.
 manager: pablocas
 author: luiscabrer
+services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 05/24/2018
 ms.author: luisca
-ms.openlocfilehash: 3ab35cfd8ce5cf54a68473736fe05b78d26850de
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 997b106f748a2f18e8141f77f3b9ff8bb6b9d971
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786869"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36268022"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Erstellen eines Skillsets in einer Anreicherungspipeline
 
@@ -52,7 +53,7 @@ Im Diagramm erfolgt der Schritt zur *Dokumententschlüsselung* automatisch. Beka
 
 ## <a name="skillset-definition-in-rest"></a>Skillsetdefinition in REST
 
-Ein Skillset wird als ein Array von Skills definiert. Jeder Skill definiert die Quelle der Eingaben und den Namen der erzeugten Ausgaben. Mit der [REST-API zum Erstellen von Skillsets](ref-create-skillset.md) können Sie einen Skillset definieren, der dem vorherigen Diagramm entspricht: 
+Ein Skillset wird als ein Array von Skills definiert. Jeder Skill definiert die Quelle der Eingaben und den Namen der erzeugten Ausgaben. Mit der [REST-API zum Erstellen von Skillsets](https://docs.microsoft.com/rest/api/searchservice/create-skillset) können Sie einen Skillset definieren, der dem vorherigen Diagramm entspricht: 
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2017-11-11-Preview
@@ -104,13 +105,13 @@ Content-Type: application/json
      "description": "Calls an Azure function, which in turn calls Bing Entity Search",
       "uri": "https://indexer-e2e-webskill.azurewebsites.net/api/InvokeTextAnalyticsV3?code=foo",
       "httpHeaders": {
-          "Ocp-Apim-Subscription-Key": "foobar",
+          "Ocp-Apim-Subscription-Key": "foobar"
       },
-      "context": "/document/content/organizations/*",
+      "context": "/document/organizations/*",
       "inputs": [
         {
           "name": "query",
-          "source": "/document/content/organizations/*"
+          "source": "/document/organizations/*"
         }
       ],
       "outputs": [
@@ -153,8 +154,7 @@ Betrachten Sie den ersten Skill, bei dem es sich um den vordefinierten [Skill zu
           "name": "text",
           "source": "/document/content"
         }
-      ],
-      "outputs": [
+      ],      "outputs": [
         {
           "name": "organizations",
           "targetName": "organizations"
@@ -209,13 +209,13 @@ Erinnern Sie sich an die Struktur der benutzerdefinierten Anreicherungsfunktion 
      "description": "This skill calls an Azure function, which in turn calls Bing Entity Search",
       "uri": "https://indexer-e2e-webskill.azurewebsites.net/api/InvokeTextAnalyticsV3?code=foo",
       "httpHeaders": {
-          "Ocp-Apim-Subscription-Key": "foobar",
+          "Ocp-Apim-Subscription-Key": "foobar"
       }
-      "context": "/document/content/organizations/*",
+      "context": "/document/organizations/*",
       "inputs": [
         {
           "name": "query",
-          "source": "/document/content/organizations/*"
+          "source": "/document/organizations/*"
         }
       ],
       "outputs": [
@@ -229,9 +229,9 @@ Erinnern Sie sich an die Struktur der benutzerdefinierten Anreicherungsfunktion 
 
 Diese Definition ist ein benutzerdefinierter Skill, der eine Web-API als Teil des Anreicherungsprozesses aufruft. Für jede Organisation, die durch die Erkennung von benannten Entitäten identifiziert wird, ruft dieser Skill eine Web-API auf, um die Beschreibung dieser Organisation zu suchen. Eine interne Anreicherungs-Engine regelt die Orchestrierung, wann die Web-API aufgerufen werden soll und wie die empfangenen Informationen weitergeleitet werden sollen. Die für den Aufruf dieser benutzerdefinierten API erforderliche Initialisierung muss jedoch über das JSON-Dokument bereitgestellt werden (z.B. URI, HTTP-Header und die erwarteten Eingaben). Informationen zum Erstellen einer benutzerdefinierten Web-API für die Anreicherungspipeline finden Sie unter [Definieren einer benutzerdefinierten Schnittstelle](cognitive-search-custom-skill-interface.md).
 
-Beachten Sie, dass das Feld „context“ mit einem Sternchen auf ```"/document/content/organizations/*"``` gesetzt ist, d.h. der Anreicherungsschritt wird *für jede* Organisation unter ```"/document/content/organizations"``` aufgerufen. 
+Beachten Sie, dass das Feld „context“ mit einem Sternchen auf ```"/document/organizations/*"``` gesetzt ist, d.h. der Anreicherungsschritt wird *für jede* Organisation unter ```"/document/organizations"``` aufgerufen. 
 
-Die Ausgabe, in diesem Fall eine Firmenbeschreibung, wird für jede identifizierte Organisation generiert. Bei Bezugnahme auf die Beschreibung in einem nachfolgenden Schritt (z.B. bei der Schlüsselbegriffserkennung) würden Sie dazu den Pfad ```"/document/content/organizations/*/description"``` verwenden. 
+Die Ausgabe, in diesem Fall eine Firmenbeschreibung, wird für jede identifizierte Organisation generiert. Bei Bezugnahme auf die Beschreibung in einem nachfolgenden Schritt (z.B. bei der Schlüsselbegriffserkennung) würden Sie dazu den Pfad ```"/document/organizations/*/description"``` verwenden. 
 
 ## <a name="enrichments-create-structure-out-of-unstructured-information"></a>Strukturieren von unstrukturierten Informationen mithilfe von Anreicherungen
 

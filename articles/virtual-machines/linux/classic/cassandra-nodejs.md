@@ -1,11 +1,11 @@
 ---
-title: "Ausführen eines Cassandra-Clusters unter Linux in Azure aus Node.js"
-description: "Ausführen eines Cassandra-Clusters unter Linux auf virtuellen Azure-Computern aus einer Node.js-Anwendung."
+title: Ausführen eines Cassandra-Clusters unter Linux in Azure aus Node.js
+description: Ausführen eines Cassandra-Clusters unter Linux auf virtuellen Azure-Computern aus einer Node.js-Anwendung.
 services: virtual-machines-linux
 documentationcenter: nodejs
 author: craigshoemaker
 manager: routlaw
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 30de1f29-e97d-492f-ae34-41ec83488de0
 ms.service: virtual-machines-linux
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 00e42a00dffd1be37073f10f6ff7bff619fdee85
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: b1945c68f0e320c834ae93a590f420403263a0fd
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098939"
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Ausführen eines Cassandra-Clusters unter Linux in Azure mit Node.js
 
@@ -60,7 +61,7 @@ Beachten Sie, dass Azure zum Zeitpunkt der Erstellung dieses Dokuments die expli
 
 **Cluster-Seeds:** Es ist wichtig, dass die Knoten mit der höchsten Verfügbarkeit für Seeds ausgewählt werden, weil die neuen Knoten mit Seed-Knoten zum Ermitteln der Topologie des Clusters kommunizieren. Ein Knoten aus jeder Verfügbarkeitsgruppe wird als Seedknoten definiert, um eine einzelne Fehlerquelle zu vermeiden
 
-**Replikationsfaktor und Konsistenzebene:** Die integrierte hohe Verfügbarkeit und Datendauerhaftigkeit von Cassandra ist durch den Replikationsfaktor (RF – Anzahl der Kopien jeder Zeile, die auf dem Cluster gespeichert sind) und die Konsistenzebene (Anzahl der Replikate, die gelesen/geschrieben werden sollen, bevor das Ergebnis an den Aufrufer zurückgegeben wird) charakterisiert. Der Replikationsfaktor wird während der KEYSPACE-Erstellung (ähnlich wie bei einer relationalen Datenbank) angegeben, während die Konsistenzebene beim Ausgeben der CRUD-Abfrage angegeben wird. Weitere Informationen zu den Konsistenzdetails sowie die Formel zum Berechnen des Quorums finden Sie in der Cassandra-Dokumentation unter [Konfiguration für Konsistenz](http://www.datastax.com/documentation/cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) .
+**Replikationsfaktor und Konsistenzebene:** Die integrierte hohe Verfügbarkeit und Datendauerhaftigkeit von Cassandra ist durch den Replikationsfaktor (RF – Anzahl der Kopien jeder Zeile, die auf dem Cluster gespeichert sind) und die Konsistenzebene (Anzahl der Replikate, die gelesen/geschrieben werden sollen, bevor das Ergebnis an den Aufrufer zurückgegeben wird) charakterisiert. Der Replikationsfaktor wird während der KEYSPACE-Erstellung (ähnlich wie bei einer relationalen Datenbank) angegeben, während die Konsistenzebene beim Ausgeben der CRUD-Abfrage angegeben wird. Weitere Informationen zu den Konsistenzdetails sowie die Formel zum Berechnen des Quorums finden Sie in der Cassandra-Dokumentation unter [Konfiguration für Konsistenz](https://docs.datastax.com/en/cassandra/3.0/cassandra/dml/dmlConfigConsistency.html) .
 
 Cassandra unterstützt zwei Arten von Datenintegritätsmodellen: Konsistenz und „Letztliche Konsistenz“ (Eventual Consistency). Der Replikationsfaktor und die Konsistenzebene bestimmen zusammen, ob die Daten konsistent sind, sobald ein Schreibvorgang abgeschlossen wurde, ob oder sie letztlich konsistent sind. Wenn z. B. QUORUM als Konsistenzebene angegeben wird, ist die Datenkonsistenz immer sichergestellt, während alle Konsistenzebenen, in denen weniger Replikate geschrieben werden, als für das Erreichen von QUORUM (z. B. ONE) erforderlich sind, zu Daten führen, die letztlich konsistent sind.
 
@@ -74,10 +75,10 @@ Cassandra-Clusterkonfiguration mit einer Region:
 | Replikationsfaktor (RF) |3 |Die Anzahl der Replikate einer angegebenen Zeile |
 | Konsistenzebene (Schreiben) |QUORUM [(RF/2) +1= 2] Das Ergebnis der Formel wird abgerundet |Schreibt höchstens zwei Replikate, bevor die Antwort an den Aufrufer gesendet wird. Das dritte Replikat wird als mit Eventual Consistency geschrieben. |
 | Konsistenzebene (Lesen) |QUORUM [(RF/2) +1= 2] Das Ergebnis der Formel wird abgerundet |Liest 2 Replikate vor dem Senden der Antwort an den Aufrufer. |
-| Replikationsstrategie |NetworkTopologyStrategy Weitere Informationen finden Sie unter [Datenreplikation](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html) in der Cassandra-Dokumentation. |Verstehen der Bereitstellungstopologie und Platzieren von Replikaten auf Knoten, damit sich letztlich nicht alle Replikate im gleichen Rack befinden. |
-| Snitch |GossipingPropertyFileSnitch. Weitere Informationen finden Sie unter [Snitches](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html) in der Cassandra-Dokumentation. |NetworkTopologyStrategy verwendet ein Snitch-Konzept, um die Topologie zu verstehen. GossipingPropertyFileSnitch bietet eine bessere Steuerung bei der Zuordnung der einzelnen Knoten zum Rechenzentrum und Rack. Der Cluster verwendet dann gossip, um diese Informationen zu verteilen. Dies ist viel einfacher in einer dynamischen IP-Einstellung im Vergleich zu PropertyFileSnitch. |
+| Replikationsstrategie |NetworkTopologyStrategy Weitere Informationen finden Sie unter [Datenreplikation](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archDataDistributeAbout.html) in der Cassandra-Dokumentation. |Verstehen der Bereitstellungstopologie und Platzieren von Replikaten auf Knoten, damit sich letztlich nicht alle Replikate im gleichen Rack befinden. |
+| Snitch |GossipingPropertyFileSnitch. Weitere Informationen finden Sie unter [Snitches](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archSnitchesAbout.html) in der Cassandra-Dokumentation. |NetworkTopologyStrategy verwendet ein Snitch-Konzept, um die Topologie zu verstehen. GossipingPropertyFileSnitch bietet eine bessere Steuerung bei der Zuordnung der einzelnen Knoten zum Rechenzentrum und Rack. Der Cluster verwendet dann gossip, um diese Informationen zu verteilen. Dies ist viel einfacher in einer dynamischen IP-Einstellung im Vergleich zu PropertyFileSnitch. |
 
-**Azure-Überlegungen zum Cassandra-Cluster**: Microsoft Azure Virtual Machines verwendet Azure-Blobspeicher für die Dauerhaftigkeit von Datenträgern. Azure Storage speichert für eine hohe Zuverlässigkeit drei Replikate der Datenträger. Dies bedeutet, dass jede Datenzeile, die in eine Tabelle Cassandra eingefügt wurde, bereits in drei Replikaten gespeichert ist. Daher ist die Datenkonsistenz bereits beachtet, selbst wenn der Replikationsfaktor (RF) gleich „1“ ist. Das Hauptproblem beim Replikationsfaktor 1 besteht darin, dass für die Anwendung schon dann eine Ausfallzeit auftritt, wenn nur ein Cassandra-Knoten ausfällt. Wenn ein Knoten jedoch aufgrund von durch Azure Fabric Controller erkannten Problemen (z. B. Hardware- oder Systemsoftwarefehlern) ausfällt, wird ein neuer Knoten an seiner Stelle mithilfe derselben Speicherlaufwerke bereitgestellt. Die Bereitstellung eines neuen Knotens zum Ersetzen des alten Knotens kann einige Minuten in Anspruch nehmen.  Für geplante Wartungsaktivitäten (z. B. Änderungen am Gastbetriebssystem, Cassandra-Upgrades und Anwendungsänderungen) führt Azure Fabric Controller parallele Upgrades der Knoten im Cluster aus.  Durch parallele Upgrades können ebenfalls mehrere Knoten gleichzeitig ausfallen. Der Cluster kann daher kurzzeitig für mehrere Partitionen ausfallen. Die Daten gehen wegen der integrierten Redundanz von Azure Storage jedoch nicht verloren.  
+**Azure-Überlegungen zum Cassandra-Cluster:** Microsoft Azure Virtual Machines verwendet Azure Blob Storage für die Dauerhaftigkeit von Datenträgern. Azure Storage speichert für eine hohe Zuverlässigkeit drei Replikate der Datenträger. Dies bedeutet, dass jede Datenzeile, die in eine Tabelle Cassandra eingefügt wurde, bereits in drei Replikaten gespeichert ist. Daher ist die Datenkonsistenz bereits beachtet, selbst wenn der Replikationsfaktor (RF) gleich „1“ ist. Das Hauptproblem beim Replikationsfaktor 1 besteht darin, dass für die Anwendung schon dann eine Ausfallzeit auftritt, wenn nur ein Cassandra-Knoten ausfällt. Wenn ein Knoten jedoch aufgrund von durch Azure Fabric Controller erkannten Problemen (z. B. Hardware- oder Systemsoftwarefehlern) ausfällt, wird ein neuer Knoten an seiner Stelle mithilfe derselben Speicherlaufwerke bereitgestellt. Die Bereitstellung eines neuen Knotens zum Ersetzen des alten Knotens kann einige Minuten in Anspruch nehmen.  Für geplante Wartungsaktivitäten (z. B. Änderungen am Gastbetriebssystem, Cassandra-Upgrades und Anwendungsänderungen) führt Azure Fabric Controller parallele Upgrades der Knoten im Cluster aus.  Durch parallele Upgrades können ebenfalls mehrere Knoten gleichzeitig ausfallen. Der Cluster kann daher kurzzeitig für mehrere Partitionen ausfallen. Die Daten gehen wegen der integrierten Redundanz von Azure Storage jedoch nicht verloren.  
 
 Für Systeme, die in Azure bereitgestellt werden und die keine Hochverfügbarkeit benötigen (z. B. ungefähr 99,9%, diese entspricht 8,76 Stunden/Jahr, Details finden Sie unter [Hochverfügbarkeit](http://en.wikipedia.org/wiki/High_availability)), können Sie für die Ausführung ggf. RF=1 und Konsistenzebene=ONE verwenden.  Für Anwendungen mit Anforderungen für Hochverfügbarkeit können RF=3 und Konsistenzebene=QUORUM den Ausfall eines der Knoten für eines der Replikate tolerieren. RF=1 in herkömmlichen (z. B. lokalen) Bereitstellungen kann aufgrund möglicher Datenverluste nicht verwendet werden, die durch Probleme wie etwa Datenträgerfehler verursacht werden.   
 
@@ -109,8 +110,8 @@ Bei einem System, das hohe Konsistenz benötigt, stellt ein LOCAL_QUORUM als Kon
 | Replikationsfaktor (RF) |3 |Die Anzahl der Replikate einer angegebenen Zeile |
 | Konsistenzebene (Schreiben) |LOCAL_QUORUM [(Summe(RF)/2) +1) = 4] Das Ergebnis der Formel wird abgerundet |Zwei Knoten werden synchron in das erste Rechenzentrum geschrieben. Die weiteren zwei Knoten, die für das Quorum benötigt werden, werden asynchron in das zweite Rechenzentrum geschrieben. |
 | Konsistenzebene (Lesen) |LOCAL_QUORUM ((RF/2) + 1) = 2 Das Ergebnis der Formel wird abgerundet. |Leseanforderungen werden nur von einer Region erfüllt. Zwei Knoten werden gelesen, bevor die Antwort zurück an den Client gesendet wird. |
-| Replikationsstrategie |NetworkTopologyStrategy Weitere Informationen finden Sie unter [Datenreplikation](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html) in der Cassandra-Dokumentation. |Verstehen der Bereitstellungstopologie und Platzieren von Replikaten auf Knoten, damit sich letztlich nicht alle Replikate im gleichen Rack befinden. |
-| Snitch |GossipingPropertyFileSnitch Weitere Informationen finden Sie unter [Snitches](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html) in der Cassandra-Dokumentation. |NetworkTopologyStrategy verwendet ein Snitch-Konzept, um die Topologie zu verstehen. GossipingPropertyFileSnitch bietet eine bessere Steuerung bei der Zuordnung der einzelnen Knoten zum Rechenzentrum und Rack. Der Cluster verwendet dann gossip, um diese Informationen zu verteilen. Dies ist viel einfacher in einer dynamischen IP-Einstellung im Vergleich zu PropertyFileSnitch. |
+| Replikationsstrategie |NetworkTopologyStrategy Weitere Informationen finden Sie unter [Datenreplikation](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archDataDistributeAbout.html) in der Cassandra-Dokumentation. |Verstehen der Bereitstellungstopologie und Platzieren von Replikaten auf Knoten, damit sich letztlich nicht alle Replikate im gleichen Rack befinden. |
+| Snitch |GossipingPropertyFileSnitch Weitere Informationen finden Sie unter [Snitches](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archSnitchesAbout.html) in der Cassandra-Dokumentation. |NetworkTopologyStrategy verwendet ein Snitch-Konzept, um die Topologie zu verstehen. GossipingPropertyFileSnitch bietet eine bessere Steuerung bei der Zuordnung der einzelnen Knoten zum Rechenzentrum und Rack. Der Cluster verwendet dann gossip, um diese Informationen zu verteilen. Dies ist viel einfacher in einer dynamischen IP-Einstellung im Vergleich zu PropertyFileSnitch. |
 
 ## <a name="the-software-configuration"></a>SOFTWAREKONFIGURATION
 Die folgenden Softwareversionen werden während der Bereitstellung verwendet:
@@ -119,7 +120,7 @@ Die folgenden Softwareversionen werden während der Bereitstellung verwendet:
 <tr><th>Software</th><th>Quelle</th><th>Version</th></tr>
 <tr><td>JRE    </td><td>[JRE 8](http://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html) </td><td>8U5</td></tr>
 <tr><td>JNA    </td><td>[JNA](https://github.com/twall/jna) </td><td> 3.2.7</td></tr>
-<tr><td>Cassandra</td><td>[Apache Cassandra 2.0.8](http://www.apache.org/dist/cassandra/2.0.8/apache-cassandra-2.0.8-bin.tar.gz)</td><td> 2.0.8</td></tr>
+<tr><td>Cassandra</td><td>[Apache Cassandra 2.0.8](http://www.apache.org/dist/cassandra/)</td><td> 2.0.8</td></tr>
 <tr><td>Ubuntu    </td><td>[Microsoft Azure](https://azure.microsoft.com/) </td><td>14.04 LTS</td></tr>
 </table>
 
@@ -355,7 +356,7 @@ Das oben beschriebene Verfahren kann über das Azure-Portal ausgeführt werden. 
         #Tested with Azure Powershell - November 2014
         #This powershell script deployes a number of VMs from an existing image inside an Azure region
         #Import your Azure subscription into the current Powershell session before proceeding
-        #The process: 1. create Azure Storage account, 2. create virtual network, 3.create the VM template, 2. crate a list of VMs from the template
+        #The process: 1. create Azure Storage account, 2. create virtual network, 3.create the VM template, 2. create a list of VMs from the template
 
         #fundamental variables - change these to reflect your subscription
         $country="us"; $region="west"; $vnetName = "your_vnet_name";$storageAccount="your_storage_account"
@@ -498,7 +499,7 @@ Erstellen Sie zwei lokale Netzwerke mit den folgenden Details:
 ### <a name="step-3-map-local-network-to-the-respective-vnets"></a>Schritt 3: Zuordnen des "lokalen" Netzwerks zu den entsprechenden VNETs
 Wählen Sie im Azure-Portal jedes VNet aus, klicken Sie auf „Konfigurieren“, aktivieren Sie „Eine Verbindung mit dem lokalen Netzwerk herstellen“, und wählen Sie dann die lokalen Netzwerke mit den folgenden Details aus:
 
-| Virtuelles Netzwerk | Lokales Netzwerk |
+| Virtual Network | Lokales Netzwerk |
 | --- | --- |
 | hk-vnet-west-us |hk-lnet-map-to-east-us |
 | hk-vnet-east-us |hk-lnet-map-to-west-us |
@@ -585,7 +586,7 @@ Sie sollten die gleiche Anzeige wie für die Region "West" erhalten:
 Führen Sie weitere Einfügevorgänge aus, und beobachten Sie, dass diese in die Region "USA (West)" des Clusters repliziert werden.
 
 ## <a name="test-cassandra-cluster-from-nodejs"></a>Testen des Cassandra-Clusters aus Node.js
-Mithilfe eines der zuvor auf der „web“-Ebene erstellten virtuellen Linux-Computers führen Sie nun ein einfaches Node.js-Skript zum Lesen der zuvor eingefügten Daten aus.
+Mithilfe eines der zuvor auf der „Web“-Ebene erstellten virtuellen Linux-Computers führen Sie nun ein einfaches Node.js-Skript zum Lesen der zuvor eingefügten Daten aus.
 
 **Schritt 1: Installieren von Node.js und des Cassandra-Clients**
 

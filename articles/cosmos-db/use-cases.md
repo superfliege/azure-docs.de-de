@@ -4,19 +4,17 @@ description: 'Erfahren Sie mehr über die fünf wichtigsten Anwendungsfälle fü
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-ms.assetid: eca68a58-1a8c-4851-8cf8-6e4d2b889905
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/7/2017
 ms.author: sngun
-ms.openlocfilehash: 67ff272f669e65f0466865349691bd69156401a9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 2af77cacced7a6905c4ed7393569949b2eac1906
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859665"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Häufige Anwendungsfälle für Azure Cosmos DB
 Dieser Artikel bietet eine Übersicht über verschiedene häufige Anwendungsfälle für Azure Cosmos DB.  Die Empfehlungen in diesem Artikel dienen als Ausgangspunkt für die Entwicklung Ihrer Anwendung mit Cosmos DB.   
@@ -49,11 +47,11 @@ IoT-Anwendungsfälle weisen einige gemeinsame Muster hinsichtlich der Erfassung,
 
 ![IoT-Referenzarchitektur für Azure Cosmos DB](./media/use-cases/iot.png)
 
-Azure Event Hubs bietet einen hohen Durchsatz bei geringer Latenz und kann daher große Datenmengen erfassen und verarbeiten. Erfasste Daten, die für Erkenntnisse in Echtzeit verarbeitet werden müssen, können zur Echtzeitanalyse an Azure Stream Analytics weitergeleitet werden. Daten können für Ad-hoc-Abfragen in Azure Cosmos DB geladen werden. Sobald die Daten in Azure Cosmos DB geladen sind, können sie abgefragt werden. Darüber hinaus können neue Daten und Änderungen an vorhandenen Daten im Änderungsfeed gelesen werden. Beim Änderungsfeed handelt es sich um ein beständiges Append-only-Protokoll, in dem Änderungen an Cosmos DB-Sammlungen in sequenzieller Reihenfolge gespeichert werden. Alle Daten oder nur die Änderungen an Daten in Azure Cosmos DB können im Rahmen von Echtzeitanalysen als Referenzdaten verwendet werden. Darüber hinaus können Daten durch Verknüpfen von Azure Cosmos DB-Daten mit HDInsight für Pig-, Hive- oder Map/Reduce-Aufträge weiter optimiert und verarbeitet werden.  Die optimierten Daten werden anschließend zur Berichterstellung wieder in Azure Cosmos DB geladen.   
+Azure Event Hubs bietet einen hohen Durchsatz bei geringer Latenz und kann daher große Datenmengen erfassen und verarbeiten. Erfasste Daten, die für Erkenntnisse in Echtzeit verarbeitet werden müssen, können zur Echtzeitanalyse an Azure Stream Analytics weitergeleitet werden. Daten können für Ad-hoc-Abfragen in Azure Cosmos DB geladen werden. Sobald die Daten in Azure Cosmos DB geladen sind, können sie abgefragt werden. Darüber hinaus können neue Daten und Änderungen an vorhandenen Daten im Änderungsfeed gelesen werden. Beim Änderungsfeed handelt es sich um ein beständiges und nur zum Anfügen bestimmtes Protokoll, in dem Änderungen an Cosmos DB-Containern in sequenzieller Reihenfolge gespeichert werden. Alle Daten oder nur die Änderungen an Daten in Azure Cosmos DB können im Rahmen von Echtzeitanalysen als Referenzdaten verwendet werden. Darüber hinaus können Daten durch Verknüpfen von Azure Cosmos DB-Daten mit HDInsight für Pig-, Hive- oder Map/Reduce-Aufträge weiter optimiert und verarbeitet werden.  Die optimierten Daten werden anschließend zur Berichterstellung wieder in Azure Cosmos DB geladen.   
 
 Eine Beispiellösung für das Internet der Dinge unter Verwendung von Azure Cosmos DB, EventHubs und Storm finden Sie im [Beispielrepository „hdinsight-storm“ in GitHub](https://github.com/hdinsight/hdinsight-storm-examples/).
 
-Weitere Informationen zu den Azure-Angeboten für das Internet der Dinge finden Sie unter [Ihr eigenes Internet der Dinge](http://www.microsoft.com/server-cloud/internet-of-things.aspx). 
+Weitere Informationen zu den Azure-Angeboten für das Internet der Dinge finden Sie unter [Ihr eigenes Internet der Dinge](https://www.microsoft.com/en-us/internet-of-things). 
 
 ## <a name="retail-and-marketing"></a>Einzelhandel und Marketing
 Azure Cosmos DB wird umfassend für die eigenen E-Commerce-Plattformen von Microsoft verwendet, auf denen der Windows Store und XBox Live ausgeführt werden. Der Dienst wird darüber hinaus im Einzelhandel zum Speichern von Katalogdaten und für die Ereignisherkunftsermittlung in Bestellabwicklungspipelines eingesetzt.

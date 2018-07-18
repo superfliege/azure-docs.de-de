@@ -1,25 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Hinzufügen eines Azure AD-Anbieters mithilfe integrierter Richtlinien | Microsoft-Dokumentation'
-description: Informationen zum Hinzufügen eines Open ID-Identitätsanbieters (Azure AD)
+title: Hinzufügen eines Azure AD-Anbieters mithilfe integrierter Richtlinien in Azure Active Directory B2C | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie einen Open ID Connect-Identitätsanbieter (Azure AD) hinzufügen.
 services: active-directory-b2c
-documentationcenter: ''
-author: parakhj
-manager: krassk
-editor: parakhj
-ms.assetid: 7dac9545-d5f1-4136-a04d-1c5740aea499
-ms.service: active-directory-b2c
+author: davidmu1
+manager: mtillman
+ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.devlang: na
+ms.topic: conceptual
 ms.date: 04/27/2018
-ms.author: parja
-ms.openlocfilehash: 52a752df9cf199acf39596f49e7368bce27a8158
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.author: davidmu
+ms.component: B2C
+ms.openlocfilehash: 70d3a19b715052fe658102929a1c29cf3db2d595
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2018
-ms.locfileid: "32309015"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443724"
 ---
 # <a name="azure-active-directory-b2c-sign-in-using-azure-ad-accounts-through-a-built-in-policy"></a>Azure Active Directory B2C: Anmelden mithilfe von Azure AD-Konten über eine integrierte Richtlinie
 

@@ -3,7 +3,7 @@ title: Azure Active Directory Connect Health-Vorgänge
 description: In diesem Artikel werden zusätzliche Vorgänge beschrieben, die nach der Bereitstellung von Azure AD Connect Health ausgeführt werden können.
 services: active-directory
 documentationcenter: ''
-author: karavar
+author: zhiweiw
 manager: mtillman
 ms.assetid: 86cc3840-60fb-43f9-8b2a-8598a9df5c94
 ms.service: active-directory
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: c9920857f7d1910921b4bb3771e770fb4c3a42c3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 68be732b2a375d1667c743ac277ce653c78105f1
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37886868"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health-Vorgänge
 In diesem Thema werden die verschiedenen Vorgänge beschrieben, die Sie mit Azure Active Directory (Azure AD) Connect Health durchführen können.
@@ -121,7 +122,7 @@ Um einem Benutzer Zugriff auf der Ebene *Alle Dienstinstanzen* innerhalb von Azu
 
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>Schritt 2: Hinzufügen von Benutzern und Gruppen und Zuweisen von Rollen
 1. Klicken Sie im Abschnitt **Konfigurieren** auf **Benutzer**.<br>
-   ![Screenshot: Hauptblatt „Rollenbasierte Zugriffssteuerung“ von Azure AD Connect Health mit Hervorhebung von „Benutzer“](./media/active-directory-aadconnect-health/RBAC_main_blade.png)
+   ![Screenshot: Seitenleiste für Azure AD Connect Health-Ressourcen](./media/active-directory-aadconnect-health/startRBAC.png)
 2. Wählen Sie **Hinzufügen**.
 3. Wählen Sie im Bereich **Rolle auswählen** eine Rolle aus (z.B. **Besitzer**).<br>
    ![Screenshot: Rollenbasierte Zugriffssteuerung von Azure AD Connect Health – Fenster „Benutzer“](./media/active-directory-aadconnect-health/RBAC_add.png)

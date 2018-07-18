@@ -1,11 +1,11 @@
 ---
-title: "Diagnose und Fehlerbehebung für Azure Import/Export-Aufträge | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie die ausführliche Protokollierung für Aufträge des Microsoft Azure Import/Export-Diensts aktivieren."
+title: Diagnose und Fehlerbehebung für Azure Import/Export-Aufträge | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie die ausführliche Protokollierung für Aufträge des Microsoft Azure Import/Export-Diensts aktivieren.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 096cc795-9af6-4335-9fe8-fffa9f239a17
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23059285"
 ---
 # <a name="diagnostics-and-error-recovery-for-azure-importexport-jobs"></a>Diagnose und Fehlerbehebung für Azure Import/Export-Aufträge
 Für jeden verarbeiteten Datenträger wird vom Azure Import/Export-Dienst im zugeordneten Speicherkonto ein Fehlerprotokoll erstellt. Sie können die ausführliche Protokollierung auch aktivieren, indem Sie die `LogLevel`-Eigenschaft `Verbose` festlegen, wenn Sie die Vorgänge [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) oder [Update Job Properties](/rest/api/storageimportexport/jobs#Jobs_Update) aufrufen.

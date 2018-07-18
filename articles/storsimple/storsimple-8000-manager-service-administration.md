@@ -1,12 +1,12 @@
 ---
-title: "Verwaltung des StorSimple-Geräte-Manager-Diensts | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Ihr StorSimple-Gerät mithilfe des StorSimple-Geräte-Manager-Diensts im Azure-Portal verwalten."
+title: Verwaltung des StorSimple-Geräte-Manager-Diensts | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Ihr StorSimple-Gerät mithilfe des StorSimple-Geräte-Manager-Diensts im Azure-Portal verwalten.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108568"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple-Geräte-Manager-Diensts
 

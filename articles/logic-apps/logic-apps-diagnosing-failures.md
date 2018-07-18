@@ -1,24 +1,25 @@
 ---
-title: "Behandeln und Diagnostizieren von Fehlern – Azure Logic Apps | Microsoft-Dokumentation"
+title: Behandeln und Diagnostizieren von Fehlern – Azure Logic Apps | Microsoft-Dokumentation
 description: Grundlegendes zu Fehlern in Logik-Apps
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: jeffhollan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: a6727ebd-39bd-4298-9e68-2ae98738576e
 ms.service: logic-apps
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 10/15/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: de706f711e9c57b2e575d130a2a0cfd0bdc907a1
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 5af99821305fe6daab8a213d0351c5a1c5936461
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298789"
 ---
 # <a name="troubleshoot-and-diagnose-logic-app-failures"></a>Behandeln und Diagnostizieren von Logik-App-Fehlern
 
@@ -41,7 +42,7 @@ Jede Logik-App beginnt mit einem Trigger. Falls der Trigger nicht ausgelöst wir
 
    Ein Auslöseversuch kann folgende Statuswerte haben:
 
-   | Status | Beschreibung | 
+   | Status | BESCHREIBUNG | 
    | ------ | ----------- | 
    | **Erfolgreich** | Der Trigger hat den Endpunkt geprüft und verfügbare Daten gefunden. Dieser Status tritt in der Regel zusammen mit dem Status „Ausgelöst“ auf. Andernfalls enthält die Triggerdefinition möglicherweise eine nicht erfüllte Bedingung oder einen `SplitOn`-Befehl, dessen Voraussetzungen nicht erfüllt wurden. <p>Dieser Status kann für einen manuellen Trigger, einen Wiederholungstrigger oder einen Abfragetrigger gelten. Ein Trigger kann erfolgreich ausgeführt werden und die Ausführung dennoch nicht erfolgreich sein, wenn die Aktionen nicht behandelte Fehler generieren. | 
    | **Übersprungen** | Der Trigger hat den Endpunkt geprüft, aber keine Daten gefunden. | 
@@ -49,7 +50,7 @@ Jede Logik-App beginnt mit einem Trigger. Falls der Trigger nicht ausgelöst wir
    ||| 
 
    Unter Umständen sind mehrere Triggereinträge mit der gleichen Zeitangabe (Datum und Uhrzeit) vorhanden. Dieser Fall kann eintreten, wenn Ihre Logik-App mehrere Elemente findet. 
-   Bei jeder Auslösung des Triggers erstellt das Logic Apps-Modul eine Logik-App-Instanz zur Ausführung Ihres Workflows. Standardmäßig werden die einzelnen Instanzen parallel ausgeführt, damit keine Wartezeiten entstehen.
+   Bei jeder Auslösung des Triggers erstellt die Logic Apps-Engine eine Logik-App-Instanz zur Ausführung Ihres Workflows. Standardmäßig werden die einzelnen Instanzen parallel ausgeführt, damit keine Wartezeiten entstehen.
 
    > [!TIP]
    > Sie können den Trigger erneut überprüfen, ohne auf die nächste Wiederholung zu warten. Klicken Sie in der Übersicht auf der Symbolleiste auf **Trigger ausführen**, und wählen Sie den Trigger aus, um eine Überprüfung zu erzwingen. Alternativ können Sie auf der Symbolleiste des Designers für Logik-Apps auf **Ausführen** klicken.
@@ -82,7 +83,7 @@ Jeder ausgelöste Trigger startet eine Workflowausführung. Sie können die Vorg
 
    Eine Ausführung kann folgende Statuswerte haben:
 
-   | Status | Beschreibung | 
+   | Status | BESCHREIBUNG | 
    | ------ | ----------- | 
    | **Erfolgreich** | Alle Aktionen waren erfolgreich. <p>Falls bei einer bestimmten Aktion ein Fehler aufgetreten ist, wurde dieser von einer nachfolgenden Aktion im Workflow behandelt. | 
    | **Fehler** | Mindestens eine Aktion war nicht erfolgreich, und der aufgetretene Fehler konnte von keiner nachfolgenden Aktion im Workflow behandelt werden. | 
@@ -98,7 +99,7 @@ Jeder ausgelöste Trigger startet eine Workflowausführung. Sie können die Vorg
 
    ![Details für eine Logik-App-Ausführung anzeigen](./media/logic-apps-diagnosing-failures/logic-app-run-details.png)
 
-3. Wählen Sie zum Untersuchen der Eingaben, Ausgaben und Fehlermeldungen für einen bestimmten Schritt den gewünschten Schritt aus, um den Bereich zu erweitern und die Details anzuzeigen. Beispiel:
+3. Wählen Sie zum Untersuchen der Eingaben, Ausgaben und Fehlermeldungen für einen bestimmten Schritt den gewünschten Schritt aus, um den Bereich zu erweitern und die Details anzuzeigen. Beispiel: 
 
    ![Schrittdetails anzeigen](./media/logic-apps-diagnosing-failures/logic-app-run-details-expanded.png)
 
@@ -112,7 +113,7 @@ Zusätzlich zur Überprüfung des Triggers und des Ausführungsverlaufs können 
 
 3. Fügen Sie die URL für Ihr RequestBin-Element in die HTTP POST-Aktion ein.
 
-4. Um zu prüfen, wie die Anforderung beim Generieren durch das Logic Apps-Modul gebildet wird, führen Sie die Logik-App aus, und aktualisieren Sie ihr RequestBin-Element.
+4. Um zu prüfen, wie die Anforderung beim Generieren durch die Logic Apps-Engine gebildet wird, führen Sie die Logik-App aus, und aktualisieren Sie ihr RequestBin-Element.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

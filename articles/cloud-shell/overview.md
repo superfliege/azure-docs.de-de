@@ -1,12 +1,12 @@
 ---
-title: "Übersicht über Azure Cloud Shell | Microsoft-Dokumentation"
-description: "Übersicht über Azure Cloud Shell."
-services: 
-documentationcenter: 
+title: Übersicht über Azure Cloud Shell | Microsoft-Dokumentation
+description: Übersicht über Azure Cloud Shell.
+services: ''
+documentationcenter: ''
 author: jluk
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: 72338a4c168b4d3b7c918fbb16758724f73fefc2
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4ee02bc2a1956994da0ba49a24eefabf9608565c
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856459"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Übersicht über Azure Cloud Shell
 Azure Cloud Shell ist eine interaktive, über den Browser zugängliche Shell für die Verwaltung von Azure-Ressourcen.
@@ -48,7 +49,7 @@ Linux-Benutzer können Bash in Cloud Shell verwenden. Für Windows-Benutzer steh
 ### <a name="authenticated-and-configured-azure-workstation"></a>Authentifizierte und konfigurierte Azure-Arbeitsstation
 Cloud Shell wird von Microsoft verwaltet und verfügt somit über gängige Befehlszeilentools und Sprachunterstützung. Darüber hinaus führt Cloud Shell automatisch eine sichere Authentifizierung durch, sodass Sie über die Azure CLI 2.0 oder über Azure PowerShell-Cmdlets sofort auf Ihre Ressourcen zugreifen können.
 
-Die vollständige Toolliste für Bash finden Sie [hier](features.md#tools). Die vollständige Toolliste für PowerShell (Vorschauversion) steht [hier](features-powershell.md#tools) zur Verfügung.
+Zeigen Sie die vollständige [Liste mit den Tools](features.md#tools) an.
 
 ### <a name="multiple-access-points"></a>Mehrere Zugriffspunkte
 Cloud Shell ist ein flexibles Tool mit verschiedenen Zugriffsmöglichkeiten:
@@ -93,7 +94,7 @@ Klicken Sie bei der Aufforderung zur Speichereinrichtung auf „Erweiterte Einst
 * Für Cloud Shell muss eine Azure-Dateifreigabe bereitgestellt werden.
 * Cloud Shell verwendet dieselbe Azure-Dateifreigabe für Bash und PowerShell.
 * Cloud Shell wird ein Computer pro Benutzerkonto zugewiesen.
-* Bash stellt $Home dauerhaft unter Verwendung eines 5-GB-Images bereit, das sich in Ihrer Dateifreigabe befindet.
+* Cloud Shell stellt $Home dauerhaft unter Verwendung eines 5-GB-Images bereit, das sich in Ihrer Dateifreigabe befindet.
 * Berechtigungen werden auf einen normalen Linux-Benutzer in Bash festgelegt.
 
 Weitere Informationen finden Sie unter [Features und Tools für Bash in Azure Cloud Shell](features.md) sowie unter [Features und Tools für PowerShell in Azure Cloud Shell](features-powershell.md).

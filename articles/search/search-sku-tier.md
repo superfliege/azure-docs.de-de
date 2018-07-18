@@ -7,14 +7,14 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/12/2018
+ms.date: 06/19/2018
 ms.author: heidist
-ms.openlocfilehash: bbf535c5b446fd654331374d29c106b6e43d55f5
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 241d24746d82a359b4bbf4febbbaaf91180dd23e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34266879"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36210923"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Auswählen eines Tarifs für Azure Search
 
@@ -39,7 +39,7 @@ Zu den Konzepten, die Sie für die Tarifauswahl kennen müssen, zählen Kapazit�
 Kapazität wird in *Replikate* und *Partitionen* strukturiert. Replikate sind Instanzen des Suchdiensts, in denen jedes Replikat eine Lastenausgleichskopie eines Indexes hostet. Beispielsweise verfügt ein Dienst mit 6 Replikaten über 6 Kopien jedes in den Dienst geladenen Indexes. Partitionen speichern Indizes und teilen durchsuchbare Daten automatisch auf: zwei Partitionen teilen den Index in Hälften, drei Partitionen in Drittel usw. Im Hinblick auf die Kapazität ist die *Partitionsgröße* das primäre unterscheidende Feature der Tarife.
 
 > [!NOTE]
-> Alle **Standard**-Tarife unterstützen [flexible Kombinationen von Replikaten und Partitionen](search-capacity-planning.md#chart), damit Sie durch Ändern des Ausgleichs [Ihr System nach Geschwindigkeit oder Speicher gewichten](search-performance-optimization.md) können. **Basic** bietet bis zu drei Replikate für hohe Verfügbarkeit, enthält jedoch nur die Partition. **Kostenlos**-Tarife bieten keine dedizierten Ressourcen: Computingressourcen werden von mehreren kostenlosen Diensten geteilt.
+> Alle **Standard**-Tarife unterstützen [flexible Kombinationen von Replikaten und Partitionen](search-capacity-planning.md#chart), damit Sie durch Ändern des Ausgleichs [Ihr System nach Geschwindigkeit oder Speicher gewichten](search-performance-optimization.md) können. **Basic** bietet bis zu drei Replikate für Hochverfügbarkeit, enthält jedoch nur eine Partition. **Kostenlos**-Tarife bieten keine dedizierten Ressourcen: Computingressourcen werden von mehreren kostenlosen Diensten geteilt.
 
 ### <a name="limits"></a>Einschränkungen
 

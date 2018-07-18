@@ -3,11 +3,12 @@ title: Aktivieren von Azure Active Directory Identity Protection | Microsoft Doc
 description: Erfahren Sie, wie Sie Azure Active Directory Identity Protection aktivieren.
 services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: f7a7ffaf-76bf-4cc7-96a1-86c944275c82
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,18 +16,24 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 39bdc17e63d382775db17097556c15dc00c3785b
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 03e0c255f235a3896c818bec07cacab87b0a2d7e
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712887"
 ---
 # <a name="enabling-azure-active-directory-identity-protection"></a>Aktivieren von Azure Active Directory Identity Protection
-Azure Active Directory Identity Protection ist ein neues Feature, das eine konsolidierte Ansicht aller verdächtigen Anmeldeaktivitäten und potenziellen Sicherheitsrisiken bietet und Sie mithilfe von Benachrichtigungen, Bereinigungsempfehlungen und auf Risikostufen basierenden Richtlinien dabei unterstützt, Ihr Business zu schützen. 
 
-Der Dienst erkennt verdächtige Aktivitäten von Benutzern und privilegierten Identitäten (Administratoren) basierend auf Signalen wie beispielsweise Brute-Force-Angriffen, kompromittierten Anmeldeinformationen oder Anmeldeversuchen von unbekannten Standorten oder infizierten Geräten, um Echtzeitschutz vor diesen Gefahren zu bieten. Noch wichtiger: Basierend auf diesen verdächtigen Aktivitäten wird ein Risikoschweregrad für den Benutzer berechnet, und Sie können auf Risikostufen basierende Richtlinien konfigurieren, um die Identitäten in Ihrer Organisation automatisch zu schützen. Weitere Informationen finden Sie unter [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
+Azure Active Directory Identity Protection ist eine Funktion von Azure Active Directory (Azure AD). Azure AD Identity Protection bietet Folgendes:
 
-In diesem Thema wird gezeigt, wie Sie Azure Active Directory Identity Protection aktivieren.
+- Eine einheitliche Ansicht gekennzeichneter Benutzer und Risikoereignisse, die mithilfe eines Machine Learning-Algorithmus ermittelt wurden
+- Festlegung risikobasierter Richtlinien für den bedingten Zugriff zum automatischen Schutz Ihrer Benutzer
+- Reaktion auf Sicherheitsrisiken zur Verbesserung des Sicherheitsstatus 
+
+Weitere Informationen finden Sie unter [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
+
+In diesem Artikel wird gezeigt, wie Sie Azure Active Directory Identity Protection aktivieren.
 
 ## <a name="steps-to-enable-azure-active-directory-identity-protection"></a>Schritte zum Aktivieren von Azure Active Directory Identity Protection
 1. [Melden Sie sich als globaler Administrator](https://ms.portal.azure.com/) bei Ihrem Azure-Portal an. 

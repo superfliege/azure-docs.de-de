@@ -1,13 +1,13 @@
 ---
-title: "Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster mithilfe freigegebener Clusterdatenträger in Azure | Microsoft-Dokumentation"
-description: "Erhalten Sie Informationen zum Clustering von SAP ASCS/SCS-Instanzen auf Windows-Failoverclustern mithilfe freigegebener Clusterdatenträger."
+title: Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster mithilfe freigegebener Clusterdatenträger in Azure | Microsoft-Dokumentation
+description: Erhalten Sie Informationen zum Clustering von SAP ASCS/SCS-Instanzen auf Windows-Failoverclustern mithilfe freigegebener Clusterdatenträger.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: f6fb85f8-c77a-4af1-bde8-1de7e4425d2e
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d9eec2d28b436b97cbdaaf4e0e5f154a6ef15fe8
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 69071ef211e6787aa7bbae121cc4d55ccf2a6ef6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657753"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -71,7 +72,7 @@ ms.lasthandoff: 11/14/2017
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID high-availability configuration)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP-Multi-SID-Konfiguration mit Hochverfügbarkeit)
 
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
@@ -199,7 +200,7 @@ Bevor Sie mit den Aufgaben in diesem Artikel beginnen, lesen Sie den folgenden A
 
 ## <a name="windows-server-failover-clustering-in-azure"></a>Windows Server-Failoverclustering in Azure
 
-Im Vergleich zu Bare-Metal- oder privaten Cloudbereitstellungen sind für Azure Virtual Machines zusätzliche Schritte erforderlich, um Windows Server-Failoverclustering zu konfigurieren. Wenn Sie einen Cluster erstellen, müssen Sie mehrere IP-Adressen und virtuelle Hostnamen für die SAP ASCS/SCS-Instanz festlegen.
+Im Vergleich zu Bare-Metal- oder privaten Cloudbereitstellungen sind für virtuelle Azure-Computer zusätzliche Schritte erforderlich, um Windows Server-Failoverclustering zu konfigurieren. Wenn Sie einen Cluster erstellen, müssen Sie mehrere IP-Adressen und virtuelle Hostnamen für die SAP ASCS/SCS-Instanz festlegen.
 
 ### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Namensauflösung in Azure und Name des virtuellen Hosts für den Cluster
 
@@ -207,7 +208,7 @@ Die Azure-Cloudplattform bietet keine Möglichkeit, virtuelle IP-Adressen, z.B. 
 
 Der Azure Load Balancer-Dienst stellt einen *internen Lastenausgleich* für Azure zur Verfügung. Mit dem internen Load Balancer erreichen Clients den Cluster über die virtuelle IP-Adresse des Clusters. 
 
-Stellen Sie den internen Lastenausgleich in der Ressourcengruppe bereit, die die Clusterknoten enthält. Konfigurieren Sie dann alle erforderlichen Portweiterleitungsregeln mithilfe der Testports des internen Lastenausgleichs. Clients können über den virtuellen Hostnamen eine Verbindung herstellen. Der DNS-Server löst die IP-Adresse des Clusters auf. Der interne Load Balancer übernimmt die Weiterleitung an den aktiven Knoten des Clusters.
+Stellen Sie den internen Lastenausgleich in der Ressourcengruppe mit den Clusterknoten bereit. Konfigurieren Sie dann alle erforderlichen Portweiterleitungsregeln mithilfe der Testports des internen Lastenausgleichs. Clients können über den virtuellen Hostnamen eine Verbindung herstellen. Der DNS-Server löst die IP-Adresse des Clusters auf. Der interne Load Balancer übernimmt die Weiterleitung an den aktiven Knoten des Clusters.
 
 ![Abbildung 1: Windows-Failoverclusteringkonfiguration in Azure ohne freigegebenen Datenträger][sap-ha-guide-figure-1001]
 
@@ -224,10 +225,10 @@ Eine SAP ASCS/SCS-Instanz verfügt über die folgenden Komponenten:
 
 
 * Globaler SAP-Hostname:
-    * Dateistruktur: S:\usr\sap\\&lt;SID&gt;\SYS\...
+    * Dateistruktur: S:\usr\sap\\&lt;SID&gt;\SYS\..
     * Die sapmnt-Dateifreigabe, die den Zugriff auf dieses globalen „S:\usr\sap\\&lt;SID&gt;\SYS\...“-Dateien mithilfe des folgenden UNC-Pfads ermöglicht:
 
-     \\\\<Name des virtuellen ASCS/SCS-Hosts>\sapmnt\\&lt;SID&gt;\SYS\...
+     \\\\&lt;Name des virtuellen ASCS/SCS-Hosts&gt;\sapmnt\\&lt;SID&gt;\SYS\..
 
 
 ![Abbildung 2: Prozesse, Dateistruktur und sapmnt-Dateifreigabe des globalen Hosts einer SAP ASCS/SCS-Instanz][sap-ha-guide-figure-8001]
@@ -270,7 +271,7 @@ Weitere Informationen zu [SIOS DataKeeper](http://us.sios.com/products/datakeepe
 _**Abbildung 5:** Windows-Failoverclusteringkonfiguration in Azure mit SIOS DataKeeper_
 
 > [!NOTE]
-> Sie benötigen bei einigen DBMS-Produkten wie SQL Server für eine hohe Verfügbarkeit keine freigegebenen Datenträger. SQL Server AlwaysOn führt die Replikation von DBMS-Daten- und -Protokolldateien vom lokalen Datenträger eines Clusterknotens auf den lokalen Datenträger eines anderen Clusterknotens durch. In diesem Fall ist bei der Windows-Clusterkonfiguration kein freigegebener Datenträger erforderlich.
+> Sie benötigen bei einigen DBMS-Produkten wie SQL Server für Hochverfügbarkeit keine freigegebenen Datenträger. SQL Server AlwaysOn führt die Replikation von DBMS-Daten- und -Protokolldateien vom lokalen Datenträger eines Clusterknotens auf den lokalen Datenträger eines anderen Clusterknotens durch. In diesem Fall ist bei der Windows-Clusterkonfiguration kein freigegebener Datenträger erforderlich.
 >
 
 ## <a name="next-steps"></a>Nächste Schritte

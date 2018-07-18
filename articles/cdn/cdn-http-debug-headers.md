@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31516274"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>HTTP-Header „X-EC-Debug“ für Azure CDN-Regel-Engine
 Der Debugcache-Anforderungsheader (`X-EC-Debug`) stellt zusätzliche Informationen zur Cacherichtlinie bereit, die auf das angeforderte Objekt angewendet wird. Diese Header sind spezifisch für **Azure CDN Premium-Produkte von Verizon**.

@@ -10,11 +10,12 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 48b0f0300ab563e8388c9e99f4f90cd24c56678d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 5ccf0ce0cc94f0ae08213167ee54628a9d059859
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701517"
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Bewährte Methoden zum Laden von Daten in Azure SQL Data Warehouse
 Dieser Artikel enthält Empfehlungen und Leistungsoptimierungen für das Laden von Daten in Azure SQL Data Warehouse. 
@@ -68,7 +69,7 @@ Beispiel: Wenn Sie über die Datenbankschemas Schema_A für Abteilung A und Sche
 ```sql
    DENY CONTROL ON SCHEMA :: schema_A TO user_B;
    DENY CONTROL ON SCHEMA :: schema_B TO user_A;
-```   
+```
 
 Benutzer_A und Benutzer_B sind für das Schema der anderen Abteilung jetzt gesperrt.
 
@@ -121,15 +122,15 @@ Beispiel:
 
 Originalschlüssel wird erstellt
 
-    ```sql
-    CREATE DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key1'
-    ``` 
+```sql
+CREATE DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key1'
+``` 
 
 Für den Schlüssel wird von Schlüssel 1 zu Schlüssel 2 rotiert
 
-    ```sq;
-    ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key2' 
-    ```
+```sql
+ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key2' 
+```
 
 Es sind keine weiteren Änderungen an zugrunde liegenden externen Datenquellen erforderlich.
 

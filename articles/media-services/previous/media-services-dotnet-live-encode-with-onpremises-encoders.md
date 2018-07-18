@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33783409"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Durchführen von Livestreaming mit lokalen Encodern mithilfe von .NET
 > [!div class="op_single_selector"]

@@ -1,23 +1,19 @@
 ---
-title: Sichern von VMware-Servern mit Azure Backup Server | Microsoft-Dokumentation
-description: "Verwenden Sie Azure Backup Server, um VMware vCenter-/ESXi-Server in Azure oder auf Datenträgern zu sichern. Dieser Artikel bietet eine Schrittanleitung zum Sichern (bzw. Schützen) Ihrer VMware-Workloads."
+title: Sichern von VMware-Servern mit Azure Backup Server
+description: Verwenden Sie Azure Backup Server, um VMware vCenter-/ESXi-Server in Azure oder auf Datenträgern zu sichern. Dieser Artikel bietet eine Schrittanleitung zum Sichern (bzw. Schützen) Ihrer VMware-Workloads.
 services: backup
-documentationcenter: 
 author: markgalioto
 manager: carmonm
-ms.assetid: 6b131caf-de85-4eba-b8e6-d8a04545cd9d
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 07/24/2017
-ms.author: markgal;
-ms.openlocfilehash: ad331dffb7c31d12290f4223967c568e4535fe3c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: adigan
+ms.openlocfilehash: 9cf3c9d5df11e19045cd47a41d7ab9ac93bdf700
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605422"
 ---
 # <a name="back-up-a-vmware-server-to-azure"></a>Sichern eines VMware-Servers in Azure
 

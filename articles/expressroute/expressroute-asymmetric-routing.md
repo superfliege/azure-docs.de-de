@@ -1,11 +1,11 @@
 ---
 title: Asymmetrisches Routing | Microsoft Docs
-description: "In diesem Artikel wird auf Probleme eingegangen, die bei Kunden mit asymmetrischem Routing in einem Netzwerk mit mehreren Verbindungen zu einem Ziel auftreten können."
+description: In diesem Artikel wird auf Probleme eingegangen, die bei Kunden mit asymmetrischem Routing in einem Netzwerk mit mehreren Verbindungen zu einem Ziel auftreten können.
 documentationcenter: na
 services: expressroute
 author: osamazia
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: a754bff9-95c9-44b5-9796-377fc21e8322
 ms.service: expressroute
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22710013"
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>Asymmetrisches Routing mit mehreren Netzwerkpfaden
 In diesem Artikel erfahren Sie, wie ausgehender und eingehender Netzwerkdatenverkehr über unterschiedliche Routen abgewickelt werden kann, wenn zwischen Netzwerkquelle und -ziel mehrere Pfade verfügbar sind.

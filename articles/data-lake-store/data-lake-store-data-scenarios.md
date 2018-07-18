@@ -1,24 +1,26 @@
 ---
-title: Datenszenarien in Zusammenhang mit Data Lake Store | Microsoft Docs
-description: Kennen lernen der verschiedenen Szenarien und Tools, mit denen Daten, die in einem Data Lake-Speicher gespeichert sind, erfasst, verarbeitet, heruntergeladen und visualisiert werden können
+title: Datenszenarien mit Data Lake Storage Gen1 | Microsoft-Dokumentation
+description: Hier finden Sie grundlegende Informationen zu den verschiedenen Szenarien und Tools, in bzw. mit denen Daten in Data Lake Storage Gen1 (ehemals Azure Data Lake Store) erfasst, verarbeitet, heruntergeladen und visualisiert werden können.
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: 37409a71-a563-4bb7-bc46-2cbd426a2ece
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/21/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: e6b89a4cb415c2d127244d55acf3e284425f03e0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e0c7ed22762ef19c6e68ad69d0cabcfeb8007251
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031038"
 ---
-# <a name="using-azure-data-lake-store-for-big-data-requirements"></a>Verwenden von Azure Data Lake-Speicher für Big Data-Anforderungen
+# <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Verwenden von Azure Data Lake Storage Gen1 für Big Data-Anforderungen
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
 Es gibt vier wichtige Phasen in der Big Data-Verarbeitung:
 
 * Erfassung von großen Datenmengen in einem Datenspeicher, in Echtzeit oder in Batches
@@ -42,7 +44,7 @@ Dies steht für kleinere Datasets, die zum Erstellen von Prototypen einer Big Da
 | Azure Storage-Blob |<ul> <li>[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)</li> <li>[AdlCopy-Tool](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[Ausführung von DistCp auf einem HDInsight-Cluster](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>Streamingdaten
-Diese Daten können von verschiedenen Quellen wie Anwendungen, Geräten, Sensoren etc. generiert werden. Diese Daten können in einem Data Lake-Speicher von verschiedenen Tools erfasst werden. Diese Tools erfassen und verarbeiten die Daten in der Regel Ereignis für Ereignis in Echtzeit und schreiben dann die Ereignisse stapelweise in den Data Lake-Speicher, damit sie weiterverarbeitet werden können.
+Diese Daten können von verschiedenen Quellen wie Anwendungen, Geräten, Sensoren etc. generiert werden. Diese Daten können in einer Data Lake Store-Instanz von verschiedenen Tools erfasst werden. Diese Tools erfassen und verarbeiten die Daten in der Regel Ereignis für Ereignis in Echtzeit und schreiben dann die Ereignisse stapelweise in den Data Lake-Speicher, damit sie weiterverarbeitet werden können.
 
 Folgende Tools können Sie verwenden:
 

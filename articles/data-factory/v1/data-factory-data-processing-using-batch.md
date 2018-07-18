@@ -10,19 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 8f0cd8aad2d5c5142fc66c78393b57ff210a7b83
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: f6b2be357ad53a1852973d40e221da3d41b09ffb
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050572"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Verarbeiten umfangreicher Datasets mit Azure Data Factory und Azure Batch
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Azure Data Factory, die allgemein verfügbar ist. Wenn Sie Version 2 des Data Factory-Diensts (in der Vorschauphase) verwenden, finden Sie weitere Informationen unter [Benutzerdefinierte Aktivitäten in Data Factory, Version 2](../transform-data-using-dotnet-custom-activity.md).
+> Dieser Artikel bezieht sich auf Version 1 von Azure Data Factory, die allgemein verfügbar ist. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [Benutzerdefinierte Aktivitäten in Data Factory](../transform-data-using-dotnet-custom-activity.md).
 
 In diesem Artikel wird die Architektur einer Beispiellösung beschrieben, mit der umfangreiche Datasets auf automatische und geplante Weise verschoben und verarbeitet werden. Darüber hinaus enthält der Artikel eine umfassende exemplarische Vorgehensweise zur Implementierung der Lösung mit Azure Data Factory und Azure Batch.
 

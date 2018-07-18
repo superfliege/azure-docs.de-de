@@ -4,20 +4,17 @@ description: Hier erfahren Sie, wie Sie mithilfe von Azure Cosmos DB und Azure F
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 9b1ffe7e63157f86a1cfe643e297c0cb3eb5c235
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: dfca26f36287cfd856beb98edeb2b2362f36bc4b
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858805"
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB: Serverloses Datenbank-Computing mithilfe von Azure Functions
 
@@ -30,8 +27,8 @@ Mit der nativen Integration zwischen [Azure Cosmos DB](https://azure.microsoft.c
 Mit Azure Cosmos DB und Azure Functions können Sie Ihre Datenbanken und serverlosen Apps wie folgt integrieren:
 
 * Erstellen Sie einen ereignisgesteuerten **Azure Cosmos DB-Trigger** in einer Azure-Funktion. Dieser Trigger stützt sich auf [Änderungsfeed](change-feed.md)-Datenströme, anhand derer Ihr Azure Cosmos DB-Container auf Änderungen überwacht wird. Werden Änderungen an einem Container vorgenommen, wird der Änderungsfeed-Datenstrom an den Trigger gesendet, wodurch die Azure-Funktion aufgerufen wird.
-* Sie können jedoch auch eine Azure-Funktion an eine Azure Cosmos DB-Sammlung mithilfe einer **Eingabebindung** an eine Azure Cosmos DB-Sammlung binden. Eingabebindungen lesen Daten aus einem Container, wenn eine Funktion ausgeführt wird.
-* Binden Sie eine Funktion mithilfe einer **Ausgabebindung** an eine Azure Cosmos DB-Sammlung. Ausgabebindungen schreiben Daten in einen Container, wenn eine Funktion abgeschlossen wird.
+* Sie können aber auch eine Azure-Funktion mithilfe einer **Eingabebindung** an einen Azure Cosmos DB-Container binden. Eingabebindungen lesen Daten aus einem Container, wenn eine Funktion ausgeführt wird.
+* Binden Sie eine Funktion mithilfe einer **Ausgabebindung** an einen Azure Cosmos DB-Container. Ausgabebindungen schreiben Daten in einen Container, wenn eine Funktion abgeschlossen wird.
 
 > [!NOTE]
 > Derzeit funktionieren der Azure Cosmos DB-Trigger, Eingabebindungen und Ausgabebindungen ausschließlich mit SQL- und Graph-API-Konten.
@@ -61,7 +58,7 @@ In IoT-Implementierungen können Sie eine Funktion aufrufen, wenn die Motorkontr
 4. Der Trigger wird bei jeder Datenänderung an der Sensordatensammlung ausgelöst, da alle Änderungen über den Änderungsfeed gestreamt werden.
 5. Anhand einer Schwellenwertbedingung in der Funktion werden die Sensordaten an die Garantieabteilung gesendet.
 6. Steigt auch die Temperatur über einen bestimmten Wert, wird auch eine Warnung an den Fahrzeughalter gesendet.
-7. Die **Ausgabebindung** in der Funktion aktualisiert den Fahrzeugdatensatz in einer weiteren Azure Cosmos DB-Sammlung, um Informationen über das Motorkontrollereignis zu speichern.
+7. Die **Ausgabebindung** in der Funktion aktualisiert den Fahrzeugdatensatz in einem weiteren Azure Cosmos DB-Container, um Informationen über das Motorkontrollereignis zu speichern.
 
 Die folgende Abbildung zeigt den Code, der für diesen Trigger in das Azure-Portal geschrieben wird.
 
@@ -98,7 +95,7 @@ Wenn in einer Gaming-Anwendung ein neuer Benutzer erstellt wird, können Sie mit
 
 Wenn ein Benutzer in Einzelhandelsimplementierungen seinem Einkaufskorb einen Artikel hinzufügt, sind Sie nun flexibel genug, um Funktionen für optionale Business-Pipelinekomponenten zu erstellen und aufzurufen.
 
-**Implementierung:** Mehrere Azure Cosmos DB-Trigger überwachen eine Sammlung
+**Implementierung:** Mehrere Azure Cosmos DB-Trigger überwachen einen Container
 
 1. Sie können mehrere Azure Functions erstellen, indem Sie jeder davon Azure Cosmos DB-Trigger hinzufügen – diese überwachen alle denselben Änderungsfeed von Einkaufswagendaten. Beachten Sie, dass eine neue Leasesammlung für jede Funktion erforderlich ist, wenn mehrere Funktionen auf den gleichen Änderungsfeed lauschen. Weitere Informationen über Leasesammlungen finden Sie unter [Grundlegendes zur Change Feed Processor-Bibliothek](change-feed.md#understand-cf).
 2. Wenn dem Einkaufswagen eines Benutzers ein neuer Artikel hinzugefügt wird, wird jede Funktion unabhängig vom Änderungsfeed aus dem Einkaufswagen-Container aufgerufen.
@@ -133,7 +130,7 @@ Azure Cosmos DB empfiehlt sich als folgenden Gründen als Datenbank für Ihre Ar
 
 * **Ohne Schema**. Azure Cosmos DB verfügt über kein Schema, daher kann jede Datenausgabe von einer Azure-Funktion verarbeitet werden. Durch diesen Ansatz der „uneingeschränkten Verarbeitung“ kann eine Vielzahl von Funktionen erstellt werden, die Daten in Azure Cosmos DB ausgeben.
 
-* **Skalierbarer Durchsatz**. Durchsatz kann in Azure Cosmos DB sofort zentral hoch- und herunterskaliert werden. Wenn Sie über Hunderte oder sogar Tausende Funktionen verfügen, die alle dieselbe Sammlung abfragen und die diese schreiben, können Sie Ihre [RU/s](request-units.md) zentral hochskalieren, sodass die Last bewältigt werden kann. Alle Funktionen arbeiten parallel mit den zugeordneten RU/s, und Ihre Daten sind garantiert [konsistent](consistency-levels.md).
+* **Skalierbarer Durchsatz**. Durchsatz kann in Azure Cosmos DB sofort zentral hoch- und herunterskaliert werden. Wenn Sie über Hunderte oder sogar Tausende von Funktionen verfügen, die alle denselben Container abfragen und in diesen Container schreiben, können Sie Ihre [RU/s](request-units.md) zentral hochskalieren, sodass die Last bewältigt werden kann. Alle Funktionen arbeiten parallel mit den zugeordneten RU/s, und Ihre Daten sind garantiert [konsistent](consistency-levels.md).
 
 * **Globale Replikation**. Sie können Azure Cosmos DB-Daten [weltweit](distribute-data-globally.md) replizieren, um die Latenz zu verringern, wobei eine Geolokalisierung Ihrer Daten in größtmöglicher Nähe zu Ihren Benutzern erfolgt. Wie bei allen Azure Cosmos DB-Abfragen sind Daten aus ereignisgesteuerten Triggern Daten, die aus der Azure Cosmos DB in größter Nähe zum Benutzer gelesen werden.
 

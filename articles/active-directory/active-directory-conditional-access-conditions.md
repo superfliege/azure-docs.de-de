@@ -1,6 +1,6 @@
 ---
-title: Bedingungen beim bedingten Zugriff in Azure Active Directory | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Zuweisungen beim bedingten Zugriff in Azure Active Directory zum Auslösen einer Richtlinie verwendet werden.
+title: Was sind Bedingungen beim bedingten Zugriff in Azure Active Directory? | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Bedingungen beim bedingten Zugriff in Azure Active Directory zum Auslösen einer Richtlinie verwendet werden.
 services: active-directory
 keywords: bedingter Zugriff auf Apps, bedingter Zugriff mit Azure AD, sicherer Zugriff auf Unternehmensressourcen, Richtlinien für bedingten Zugriff
 documentationcenter: ''
@@ -9,21 +9,22 @@ manager: mtillman
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/01/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 3cb8e598864bccfbea24a2aec5d9387ff903e51c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 42792170593dbd94d0eae9b408c70f326891508a
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32770620"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "36232019"
 ---
-# <a name="conditions-in-azure-active-directory-conditional-access"></a>Bedingungen beim bedingten Zugriff in Azure Active Directory 
+# <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Was sind Bedingungen beim bedingten Zugriff in Azure Active Directory? 
 
 Mit dem [bedingten Zugriff von Azure Active Directory (Azure AD)](active-directory-conditional-access-azure-portal.md) können Sie den Zugriff von autorisierten Benutzern auf Ihre Cloud-Apps steuern. Bei einer Richtlinie für bedingten Zugriff definieren Sie die Reaktion („do this“) für den Grund der Auslösung Ihrer Richtlinie („when this happens“). 
 
@@ -139,7 +140,7 @@ Häufige Anwendungsfälle für diese Bedingung sind Richtlinien, für die Folgen
 
 - Blockieren des Zugriffs auf einen Dienst für Benutzer, die sich in bestimmten Ländern oder Regionen aufhalten 
 
-Weitere Informationen finden Sie unter [Standortbedingungen beim bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-locations.md).
+Weitere Informationen finden Sie unter [Was sind Standortbedingungen beim bedingten Zugriff in Azure Active Directory?](active-directory-conditional-access-locations.md)
 
 
 ## <a name="client-apps"></a>Client-Apps
@@ -149,7 +150,7 @@ Mit der Bedingung für Client-Apps können Sie eine Richtlinie auf unterschiedli
 - Websites und Dienste
 - Mobile Apps und Desktopanwendungen 
 
-![Bedingungen](./media/active-directory-conditional-access-conditions/04.png)
+
 
 Eine Anwendung wird wie folgt klassifiziert:
 
@@ -157,7 +158,7 @@ Eine Anwendung wird wie folgt klassifiziert:
 
 - Als mobile App oder Desktopanwendung, wenn für einen nativen Client OpenID Connect für eine mobile App verwendet wird.
 
-Eine vollständige Liste der Client-Apps, die Sie in der Richtlinie für bedingten Zugriff verwenden können, bietet Ihnen die [Technische Referenz zum bedingten Azure Active Directory-Zugriff](active-directory-conditional-access-technical-reference.md#client-apps-condition).
+Eine vollständige Liste der Client-Apps, die Sie in der Richtlinie für bedingten Zugriff verwenden können, finden Sie in der Technischen Referenz zum bedingten Azure Active Directory-Zugriff unter [Client-Apps-Bedingung](active-directory-conditional-access-technical-reference.md#client-apps-condition).
 
 Häufige Anwendungsfälle für diese Bedingung sind Richtlinien, für die Folgendes gilt:
 
@@ -167,6 +168,20 @@ Häufige Anwendungsfälle für diese Bedingung sind Richtlinien, für die Folgen
 
 Zusätzlich zur Verwendung von Web-SSO und modernen Authentifizierungsprotokollen können Sie diese Bedingung auch auf E-Mail-Anwendungen anwenden, für die Exchange ActiveSync verwendet wird, z.B. die nativen E-Mail-Apps auf den meisten Smartphones. Derzeit müssen Client-Apps, für die Legacyprotokolle genutzt werden, mit AD FS geschützt werden.
 
+Sie können diese Bedingung nur auswählen, wenn **Office 365 Exchange Online** als einzige Cloud-App ausgewählt ist.
+
+![Cloud-Apps](./media/active-directory-conditional-access-conditions/32.png)
+
+Die Auswahl von **Exchange ActiveSync** als Client-App-Bedingung wird nur unterstützt, wenn Sie keine anderen Bedingungen in einer Richtlinie konfiguriert haben. Sie können den Umfang dieser Bedingung aber so eingrenzen, dass er nur für unterstützte Plattformen gilt.
+
+ 
+![Unterstützte Plattformen](./media/active-directory-conditional-access-conditions/33.png)
+
+Das ausschließliche Anwenden dieser Bedingung auf unterstützte Plattformen entspricht der Verwendung von allen Geräteplattformen bei einer [Geräteplattformbedingung](active-directory-conditional-access-conditions.md#device-platforms).
+
+![Unterstützte Plattformen](./media/active-directory-conditional-access-conditions/34.png)
+
+
  Weitere Informationen finden Sie unter 
 
 - [Einrichten von SharePoint Online und Exchange Online für bedingten Zugriff mit Azure Active Directory](active-directory-conditional-access-no-modern-authentication.md)
@@ -174,15 +189,59 @@ Zusätzlich zur Verwendung von Web-SSO und modernen Authentifizierungsprotokolle
 - [App-basierter bedingter Zugriff mit Azure Active Directory](active-directory-conditional-access-mam.md) 
 
 
+### <a name="legacy-authentication"></a>Legacyauthentifizierung  
+
+Der bedingte Zugriff gilt jetzt für ältere Office-Clients, die keine moderne Authentifizierung unterstützen, und für Clients, für die E-Mail-Protokolle wie POP, IMAP, SMTP usw. verwendet werden. Dies ermöglicht Ihnen das Konfigurieren von Richtlinien wie **Zugriff von anderen Clients blockieren**.
+
+
+![Legacyauthentifizierung](./media/active-directory-conditional-access-conditions/160.png)
+ 
 
 
 
+#### <a name="known-issues"></a>Bekannte Probleme
+
+- Durch das Konfigurieren einer Richtlinie für **Andere Clients** wird die gesamte Organisation für bestimmte Clients blockiert, z.B. SPConnect. Dies liegt daran, dass diese älteren Clients die Authentifizierung auf ungewöhnliche Weise durchführen. Dieses Problem gilt nicht für die wichtigen Office-Anwendungen, z.B. die älteren Office-Clients. 
+
+- Es kann bis zu 24 Stunden dauern, bis die Richtlinie wirksam wird. 
+
+
+#### <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+
+**Werden hierdurch die Exchange-Webdienste (EWS) blockiert?**
+
+Dies hängt vom Authentifizierungsprotokoll ab, das für EWS verwendet wird. Wenn für die EWS-Anwendung eine moderne Authentifizierung genutzt wird, wird dies von der Client-App „Mobile Apps und Desktop-Apps“ abgedeckt. Wenn für die EWS-Anwendung die Standardauthentifizierung verwendet wird, wird dies durch die Client-App „Andere Clients“ abgedeckt.
+
+
+**Welche Steuerelemente kann ich für „Andere Clients“ verwenden?**
+
+Für „Andere Clients“ können alle Steuerelemente konfiguriert werden. In Bezug auf die Endbenutzerumgebung wird der Zugriff aber für alle Fälle blockiert. Für „Andere Clients“ werden Steuerelemente wie MFA, Konformes Gerät, Domänenbeitritt usw. nicht unterstützt. 
+ 
+**Welche Bedingungen kann ich für „Andere Clients“ verwenden?**
+
+Für „Andere Clients“ können alle Bedingungen konfiguriert werden.
+
+**Werden für Exchange ActiveSync alle Bedingungen und Steuerelemente unterstützt?**
+
+Nein. Hier ist die Zusammenfassung für die Unterstützung von Exchange ActiveSync (EAS) angegeben:
+
+- Für EAS wird nur die Zielgruppenadressierung für Benutzer und Gruppen unterstützt. Gäste und Rollen werden nicht unterstützt. Wenn die Gast-/Rollenbedingung konfiguriert wird, werden alle Benutzer blockiert, da wir nicht bestimmen können, ob die Richtlinie für den Benutzer gelten soll oder nicht.
+
+- EAS funktioniert nur mit Exchange als Cloud-App. 
+
+- Mit Ausnahme der eigentlichen Client-App unterstützt EAS keine Bedingung.
+
+- EAS kann mit allen Steuerelementen konfiguriert werden (alles andere als Gerätekonformität führt zur Blockierung).
+
+**Gelten die Richtlinien für alle zukünftigen Client-Apps?**
+
+Nein. Es ist gibt keine Änderung beim Standardverhalten von Richtlinien. Die Richtlinien gelten weiterhin standardmäßig für Browser und mobile Anwendungen bzw. Desktopclients.
 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie wissen möchten, wie Sie eine Richtlinie für den bedingten Zugriff konfigurieren, helfen Ihnen die Informationen unter [Erste Schritte mit dem bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md) weiter.
+- Wenn Sie wissen möchten, wie Sie eine Richtlinie für den bedingten Zugriff konfigurieren, finden Sie Informationen unter [Schnellstart: Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](active-directory-conditional-access-app-based-mfa.md).
 
 - Wenn Sie bereit sind, Richtlinien für den bedingten Zugriff für Ihre Umgebung zu konfigurieren, lesen Sie unter [Best Practices für den bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-best-practices.md) nach. 
 

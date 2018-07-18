@@ -11,19 +11,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 71aa5b6bdf23e4e072247432184683f9985586b4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3419f8718396bfb4ec894310e545f6a8a5b8f718
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049263"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Verwenden von Vorlagen zum Erstellen von Azure Data Factory-Entitäten
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. 
+> Dieser Artikel gilt für Version 1 von Data Factory. 
 
 ## <a name="overview"></a>Übersicht
 Wenn Sie Azure Data Factory für die Integration Ihrer Daten verwenden, kann es vorkommen, dass Sie dasselbe Muster in verschiedenen Umgebungen verwenden oder dass Sie innerhalb einer Lösung wiederholt denselben Task implementieren. Diese Szenarios lassen sich mithilfe von Vorlagen einfach implementieren und verwalten. Vorlagen in Azure Data Factory sind ideal für Szenarios, bei denen Wiederverwendbarkeit und Wiederholungen möglich sind.

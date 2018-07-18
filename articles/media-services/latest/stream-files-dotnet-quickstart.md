@@ -13,18 +13,19 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/08/2018
 ms.author: juliako
-ms.openlocfilehash: 40759fc65caa181651de68756f4374f879fd9c9c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e17a800ff61822a5040737e479c3e1855eeb8893
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701037"
 ---
 # <a name="quickstart-stream-video-files---net"></a>Schnellstart: Streamen von Videodateien: .NET
 
 > [!NOTE]
 > Die neueste Version von Azure Media Services liegt als Vorschau vor und kann als v3 bezeichnet werden. Um mit der Verwendung von v3-APIs zu starten, sollten Sie (wie in diesem Schnellstart beschrieben) ein neues Media Services-Konto erstellen. 
 
-Dieser Schnellstart zeigt, wie einfach es ist, mit dem Streaming von Videos für eine Vielzahl von Browsern und Geräten mit Azure Media Services zu beginnen. 
+Dieser Schnellstart zeigt, wie einfach es ist, mit dem Streaming von Videos für eine Vielzahl von Browsern und Geräten mit Azure Media Services zu beginnen. Das Beispiel in diesem Thema codiert Inhalte, die Sie über eine HTTPS-URL zugänglich machen. 
 
 Am Ende des Schnellstarts sind Sie in der Lage, ein Video zu streamen.  
 
@@ -43,6 +44,18 @@ Klonen Sie ein GitHub-Repository auf Ihren Computer, das das .NET-Streamingbeisp
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts.git
  ```
+
+Das Beispiel befindet sich im Ordner [EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles).
+
+Mit dem Beispiel werden die folgenden Aktionen durchgeführt:
+
+1. Erstellen einer Transformation (nach vorheriger Überprüfung, ob die angegebene Transformation vorhanden ist) 
+2. Erstellen eines Ausgabemedienobjekts, das als Ausgabe des Codierungsauftrags verwendet wird
+3. Erstellen der auf einer HTTPS-URL basierenden Auftragseingabe
+4. Übermitteln des Codierungsauftrags mit der zuvor erstellten Ein- und Ausgabe
+5. Überprüfen des Auftragsstatus
+6. Erstellen eines Streaminglocators
+7. Erstellen von Streaming-URLs
 
 Um eine Erläuterung dazu zu erhalten, was jede Funktion im Beispiel bewirkt, untersuchen Sie den Code, und sehen Sie sich die Kommentare in [dieser Quelldatei](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) an.
 
@@ -63,7 +76,7 @@ Wenn Sie die App ausführen, werden URLs angezeigt, die zur Wiedergabe des Video
 1. Drücken Sie STRG+F5 zum Ausführen der *EncodeAndStreamFiles*-Anwendung.
 2. Wählen Sie das **HLS**-Protokoll von Apple (endet auf *manifest(format=m3u8-aapl)*) aus, und kopieren Sie die Streaming-URL aus der Konsole.
 
-![Ausgabe](./media/stream-files-tutorial-with-api/output.png)
+![Output](./media/stream-files-tutorial-with-api/output.png)
 
 Im [Quellcode](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) des Beispiels können Sie sehen, wie die URL erstellt wird. Um sie zu erstellen, müssen Sie den Hostnamen des Streamingendpunkts und den Streaminglocatorpfad miteinander verketten.  
 

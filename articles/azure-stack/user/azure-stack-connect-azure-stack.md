@@ -1,11 +1,11 @@
 ---
 title: Herstellen einer Verbindung mit Azure Stack | Microsoft-Dokumentation
-description: "Enthält Informationen dazu, wie Sie eine Verbindung mit Azure Stack herstellen."
+description: Enthält Informationen dazu, wie Sie eine Verbindung mit Azure Stack herstellen.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 3cebbfa6-819a-41e3-9f1b-14ca0a2aaba3
 ms.service: azure-stack
 ms.workload: na
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/22/2017
 ms.author: mabrigg
-ms.openlocfilehash: 7479202a8afabf5a84560691a2bccf849206c077
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 21015d31a738d3ad57048fe4a703bf78dda7e40c
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865769"
 ---
 # <a name="connect-to-azure-stack"></a>Herstellen einer Verbindung mit Azure Stack
 
@@ -34,7 +35,7 @@ Bei einer Remotedesktopverbindung kann ein einzelner gleichzeitiger Benutzer das
 
 2. Öffnen Sie auf dem Development Kit-Computer den Server-Manager, klicken Sie auf **Lokaler Server**, deaktivieren Sie die Verstärkte Sicherheitskonfiguration für Internet Explorer, und schließen Sie den Server-Manager.
 
-3. Navigieren Sie zum Öffnen des Portals zu (https://portal.local.azurestack.external/), und melden Sie sich mit Ihren Benutzeranmeldeinformationen an.
+3. Navigieren Sie zu (https://portal.local.azurestack.external/), und melden Sie sich mit Ihren Benutzeranmeldeinformationen an, um das Portal zu öffnen.
 
 
 ## <a name="connect-to-azure-stack-with-vpn"></a>Herstellen einer Verbindung mit Azure Stack per VPN
@@ -62,7 +63,7 @@ Set-ExecutionPolicy RemoteSigned
 # Import the Connect module
 Import-Module .\Connect\AzureStack.Connect.psm1 
 
-# Add the development kit computer’s host IP address & certificate authority (CA) to the list of trusted hosts. Make sure to update the the IP address and password values for your environment. 
+# Add the development kit computer’s host IP address & certificate authority (CA) to the list of trusted hosts. Make sure to update the IP address and password values for your environment. 
 
 $hostIP = "<Azure Stack host IP address>"
 

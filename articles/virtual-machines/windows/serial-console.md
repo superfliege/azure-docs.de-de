@@ -1,5 +1,5 @@
 ---
-title: Serielle Konsole für virtuelle Azure-Computer | Microsoft Docs
+title: Serielle Konsole für virtuelle Azure-Computer | Microsoft-Dokumentation
 description: Bidirektionale serielle Konsole für virtuelle Azure-Computer.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: e891e9c9fd87f370f0c98639ff0c6fc5b8cc81af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8e9e98a0c9f1db805d62cdee038fb4754ff047e2
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960439"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Serielle Konsole für virtuelle Azure-Computer (Vorschau) 
 
@@ -32,6 +33,7 @@ Die serielle Konsole für virtuelle Computer in Azure bietet Zugriff auf eine te
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
+* Sie müssen das Resource Manager-Bereitstellungsmodell verwenden. Klassische Bereitstellungen werden nicht unterstützt. 
 * Für den virtuellen Computer MUSS die [Startdiagnose](boot-diagnostics.md) aktiviert sein. 
 * Das Konto, das die serielle Konsole verwendet, muss die Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md) für den virtuellen Computer und das Speicherkonto [Startdiagnose](boot-diagnostics.md) aufweisen. 
 

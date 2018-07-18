@@ -3,7 +3,7 @@ title: Sammeln von Daten von lokalen Windows-Computern mit Azure Log Analytics |
 description: Erfahren Sie, wie der Log Analytics-Agent für Windows bereitgestellt wird, der auf Computern außerhalb von Azure ausgeführt wird, und aktivieren Sie die Sammlung von Daten mit Log Analytics.
 services: log-analytics
 documentationcenter: log-analytics
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -15,16 +15,18 @@ ms.topic: quickstart
 ms.date: 04/02/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: de94735676934af21dc08a0953987729fba756aa
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: na
+ms.openlocfilehash: b3c3e020a685147411fc784c41d9eca8b7dd8db0
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130992"
 ---
 # <a name="collect-data-from-windows-computers-hosted-in-your-environment"></a>Sammeln von Daten von Windows-Computern, die in Ihrer Umgebung gehostet werden
 [Azure Log Analytics](log-analytics-overview.md) kann Daten direkt von Ihren physischen oder virtuellen Windows-Computern und anderen Ressourcen in Ihrer Umgebung zur detaillierten Analyse und Korrelation in einem einzelnen Repository sammeln.  Dieser Schnellstart zeigt Ihnen, wie Sie in wenigen einfachen Schritten Daten von Ihrem Windows-Computer konfigurieren und sammeln.  Informationen zu virtuellen Azure Windows-Computern finden Sie im folgenden Thema [Sammeln von Daten zu Azure Virtual Machines](log-analytics-quick-collect-azurevm.md).  
 
-Informationen zu den Netzwerk- und Systemanforderungen für die Bereitstellung des Windows-Agents finden Sie in den [Voraussetzungen für das Windows-Betriebssystem](log-analytics-concept-hybrid.md#prerequisites).
+Informationen zur unterstützten Konfiguration finden Sie in den Abschnitten zu [unterstützten Windows-Betriebssystemen](log-analytics-concept-hybrid.md#supported-windows-operating-systems) und zur [Netzwerkfirewallkonfiguration](log-analytics-concept-hybrid.md#network-firewall-requirements).
  
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 

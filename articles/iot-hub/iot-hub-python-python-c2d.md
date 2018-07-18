@@ -1,24 +1,20 @@
 ---
 title: C2D-Nachrichten mit Azure IoT Hub (Python) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mithilfe der Azure IoT SDKs für Python C2D-Nachrichten von einem Azure IoT Hub an ein Gerät senden. Sie passen eine simulierte Geräte-App für den Empfang von C2D-Nachrichten und eine Back-End-App zum Senden der C2D-Nachrichten an.
-services: iot-hub
-documentationcenter: python
 author: kgremban
 manager: timlt
-editor: ''
-ms.assetid: 3ca8a78f-ade2-46e8-8a49-d5d599cdf1f1
 ms.service: iot-hub
-ms.devlang: javascript
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: python
+ms.topic: conceptual
 ms.date: 01/22/2018
-ms.author: v-masebo;kgremban
-ms.openlocfilehash: 236758f1ff83ec37c39a44068879bea80f2ffdb0
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.author: kgremban
+ms.openlocfilehash: ac57af167948ad0ca2a658953ba39fc188e2e800
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635388"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Senden von C2D-Nachrichten mit IoT Hub (Python)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -301,9 +297,9 @@ Sie können nun die Anwendungen ausführen.
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Lernprogramm haben Sie gelernt, wie Cloud-zu-Gerät-Nachrichten gesendet und empfangen werden. 
 
-Beispiele vollständiger Lösungen, die IoT Hub nutzen, finden Sie unter [Azure IoT-Solution Accelerator für Remoteüberwachung].
+Beispiele vollständiger Lösungen, die IoT Hub nutzen, finden Sie unter [Solution Accelerator für die Azure IoT-Remoteüberwachung].
 
-Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [Entwicklungsleitfaden für IoT Hub].
+Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [IoT Hub-Entwicklerhandbuch].
 
 <!-- Images -->
 [img-simulated-device]: media/iot-hub-python-python-c2d/simulated-device.png
@@ -317,10 +313,10 @@ Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [En
 [lnk-install-pip]: https://pip.pypa.io/en/stable/installing/
 [Erste Schritte mit IoT Hub]: iot-hub-node-node-getstarted.md
 [IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
-[Entwicklungsleitfaden für IoT Hub]: iot-hub-devguide.md
+[IoT Hub-Entwicklerhandbuch]: iot-hub-devguide.md
 [Azure IoT Developer Center]: http://www.azure.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 [Transient Fault Handling]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure-Portal]: https://portal.azure.com
-[Azure IoT-Solution Accelerator für Remoteüberwachung]: https://azure.microsoft.com/documentation/suites/iot-suite/
+[Solution Accelerator für die Azure IoT-Remoteüberwachung]: https://azure.microsoft.com/documentation/suites/iot-suite/

@@ -15,11 +15,11 @@ ms.topic: hero-article
 ms.date: 12/10/2017
 ms.author: juliako
 ms.openlocfilehash: a685043f0bc9841d2cc86f2c49469e8287a03b78
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33780227"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952262"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mit dem .NET SDK
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]

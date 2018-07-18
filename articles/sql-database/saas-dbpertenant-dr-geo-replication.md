@@ -7,14 +7,15 @@ author: AyoOlubeko
 manager: craigg
 ms.service: sql-database
 ms.custom: saas apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/09/2018
 ms.author: ayolubek
-ms.openlocfilehash: 3b2b1b767b26d844046d545e3d587621c5d14995
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f2ad92118c00f08e5dcdd4a8a12f007308b3fbd1
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "34645792"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Notfallwiederherstellung für eine mehrinstanzenfähige SaaS-Anwendung über Datenbankgeoreplikation
 
@@ -87,7 +88,7 @@ Später, in einem separaten Rückführungsschritt, führen Sie ein Failover des 
 ## <a name="review-the-healthy-state-of-the-application"></a>Überprüfen des ordnungsgemäßen Zustands der Anwendung
 
 Bevor Sie den Wiederherstellungsprozess starten, sollten Sie den normalen ordnungsgemäßen Zustand der Anwendung überprüfen.
-1. Öffnen Sie in Ihrem Webbrowser den Wingtip Tickets-Veranstaltungshub (Events Hub, http://events.wingtip-dpt.&lt;Benutzer&gt;.trafficmanager.net – ersetzen Sie &lt;Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung).
+1. Öffnen Sie in Ihrem Webbrowser den Wingtip Tickets-Event Hub (http://events.wingtip-dpt.&lt;Benutzer&gt;.trafficmanager.net). Ersetzen Sie dabei &lt;Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung.
     * Scrollen Sie zum unteren Rand der Seite, und beachten Sie den Katalogservernamen und den Standort in der Fußzeile. Der Standort entspricht die Region, in der Sie die App bereitgestellt haben.
     *Tipp: Zeigen Sie mit der Maus auf den Standort, um die Anzeige zu vergrößern.* 
     ![Ordnungsgemäßer Zustand des Veranstaltungshubs in der ursprünglichen Region](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
@@ -250,7 +251,7 @@ In dieser Aufgabe aktualisieren Sie eine der Mandantendatenbanken.
 2. Legen Sie in *PowerShell ISE* im Skript „...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1“ den folgenden Wert fest:
     * **$DemoScenario = 5**: Löschen einer Veranstaltung aus einem Mandanten in der Wiederherstellungsregion
 3. Drücken Sie **F5**, um das Skript auszuführen.
-4. Aktualisieren Sie die Contoso Concert Hall-Seite für Veranstaltungen (http://events.wingtip-dpt.&lt; Benutzer&gt;.trafficmanager.net/contosoconcerthall – ersetzen Sie &lt;Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung). Sie können sehen, dass die letzte Veranstaltung gelöscht wurde.
+4. Aktualisieren Sie die Contoso Concert Hall-Seite für Veranstaltungen (http://events.wingtip-dpt.&lt;Benutzer&gt;.trafficmanager.net/contosoconcerthall – ersetzen Sie &lt;Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung). Sie können sehen, dass die letzte Veranstaltung gelöscht wurde.
 
 ## <a name="repatriate-the-application-to-its-original-production-region"></a>Zurückführen der Anwendung in ihre ursprüngliche Produktionsregion
 
@@ -283,7 +284,7 @@ Nehmen Sie nun an, dass der Ausfall behoben ist, und führen Sie das Rückführu
     * Drücken Sie **F5**, um das Wiederherstellungsskript in einem neuen PowerShell-Fenster auszuführen.  Die Rückführung dauert einige Minuten und kann im PowerShell-Fenster überwacht werden.
     ![Rückführungsprozess](media/saas-dbpertenant-dr-geo-replication/repatriation-process.png)
 
-4. Während das Skript ausgeführt wird, aktualisieren Sie die Seite für den Veranstaltungshub (Events Hub, http://events.wingtip-dpt.&lt; Benutzer&gt;.trafficmanager.net).
+4. Aktualisieren Sie während der Skriptausführung die Seite für den Event Hub (http://events.wingtip-dpt.&lt;Benutzer&gt;.trafficmanager.net).
     * Sie können sehen, dass alle Mandanten im gesamten Verlauf dieses Prozesses online und für Zugriffe verfügbar sind.
 
 5. Nach Abschluss der Rückführung aktualisieren Sie den Veranstaltungshub (Events Hub), und öffnen Sie die Hawthorn Hall-Seite für Veranstaltungen. Sie können sehen, dass diese Datenbank in ihre ursprüngliche Region zurückgeführt wurde.

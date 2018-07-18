@@ -9,19 +9,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 7db5795132f5ca61c65a3cbd2caec1bccbf9a080
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ac0e1945e75ee7aea346c103a671b4a47b9e5994
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048613"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Versionshinweise für Datenverwaltungsgateway
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Wenn Sie Version 2 des Data Factory-Diensts verwenden, die sich derzeit in der Vorschauversion befindet, finden Sie weitere Informationen unter [self-hosted integration runtime in version 2 (Selbst gehostete Integration Runtime in Version 2)](../create-self-hosted-integration-runtime.md).
+> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [Selbstgehostete Integration Runtime in V2](../create-self-hosted-integration-runtime.md).
 
 Eine Herausforderung für die moderne Datenintegration ist das Verschieben von Daten zwischen lokalen Speicherorten und der Cloud. Dank Data Factory verläuft diese Integration mit dem Datenverwaltungsgateway. Es handelt sich um einen Agent, den Sie lokal installieren können, um eine hybride Datenverschiebung zu ermöglichen.
 
@@ -103,7 +104,7 @@ Die Anmerkungen zu dieser Version werden hier nicht länger beibehalten. Die neu
 *  Unterstützt das Festlegen eines HTTP-Proxys für das Gateway mithilfe des Gatewaykonfigurations-Managers. Wenn der HTTP-Proxy konfiguriert ist, erfolgt der Zugriff auf Azure-Blobs, Azure-Tabellen, Azure Data Lake und DocumentDB über diesen Proxy.
 *  Unterstützt die Verarbeitung von Kopfzeilen für TextFormat beim Kopieren von Daten aus und nach Azure-Blobs, Azure Data Lake Store, lokalem Dateisystem und lokalem HDFS.
 *  Unterstützt das Kopieren von Daten aus Anfüge- und Seitenblobs zusätzlich zu den bereits unterstützten Blockblobs.
-*  Führt den neuen Gatewaystatus **Online (begrenzt)**ein, der darauf hinweist, dass die Hauptfunktion des Gateways funktioniert, nicht jedoch die Unterstützung des interaktiven Betriebs für den Kopier-Assistenten.
+*  Führt den neuen Gatewaystatus **Online (begrenzt)** ein, der darauf hinweist, dass die Hauptfunktion des Gateways funktioniert, nicht jedoch die Unterstützung des interaktiven Betriebs für den Kopier-Assistenten.
 *  Erweitert die Stabilität der Gatewayregistrierung mithilfe von Registrierungsschlüsseln.
 
 ## <a name="216040"></a>2.1.6040.
@@ -126,12 +127,12 @@ Die Anmerkungen zu dieser Version werden hier nicht länger beibehalten. Die neu
 
     *  Neu organisierte und vereinfachte Steuerelemente.
 
-    *  Sie können Daten aus einem Speicher mithilfe des [in der Vorschau befindlichen codefreien Kopiertools](data-factory-copy-data-wizard-tutorial.md)kopieren. Unter [Gestaffeltes Kopieren](data-factory-copy-activity-performance.md#staged-copy) finden Sie allgemeine Details zu diesem Feature.
+    *  Sie können Daten aus einem Speicher mithilfe des [codefreien Kopiertools](data-factory-copy-data-wizard-tutorial.md) kopieren. Unter [Gestaffeltes Kopieren](data-factory-copy-activity-performance.md#staged-copy) finden Sie allgemeine Details zu diesem Feature.
 *  Sie können das Datenverwaltungsgateway nutzen, um Daten direkt aus einer lokalen SQL Server-Datenbank in Azure Machine Learning zu erfassen.
 
 *  Leistungsverbesserungen
 
-    * Verbessern der Leistung beim Anzeigen des Schemas bzw. einer Vorschau im Vergleich zu SQL Server im in der Vorschauphase befindlichen codelosen Kopiertool.
+    * Die Leistung beim Anzeigen des Schemas bzw. einer Vorschau wurde im Vergleich zu SQL Server im codefreien Kopiertool verbessert.
 
 ## <a name="11259531"></a>1.12.5953.1
 

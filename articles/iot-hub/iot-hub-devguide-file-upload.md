@@ -1,24 +1,19 @@
 ---
 title: Informationen zum Hochladen von Dateien in Azure IoT Hub | Microsoft-Dokumentation
-description: "Entwicklerhandbuch: Verwenden des Dateiupload-Features von IoT Hub zum Verwalten der Uploads von Dateien von einem Gerät in einen Azure Storage-Blobcontainer."
-services: iot-hub
-documentationcenter: .net
+description: 'Entwicklerhandbuch: Verwenden des Dateiupload-Features von IoT Hub zum Verwalten der Uploads von Dateien von einem Gerät in einen Azure Storage-Blobcontainer.'
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: a0427925-3e40-4fcd-96c1-2a31d1ddc14b
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 7bf1ba333f36dcfa8959320566bcb771f37cfe22
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e16d32bdba1374540c03d1034a94192a54e6a109
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634895"
 ---
 # <a name="upload-files-with-iot-hub"></a>Hochladen von Dateien mit IoT Hub
 

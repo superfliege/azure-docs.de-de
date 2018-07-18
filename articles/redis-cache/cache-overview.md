@@ -14,11 +14,12 @@ ms.topic: overview
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 8f477282e49104e9b034e11656ff50c2a67545f7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 585dcd120c42562b1520d4454f9d04e445553101
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096191"
 ---
 # <a name="what-is-azure-redis-cache"></a>Was ist Azure Redis Cache?
 
@@ -26,15 +27,15 @@ Azure Redis Cache basiert auf dem beliebten Open Source- [Redis Cache](https://r
 
 Azure Redis Cache kann auch als In-Memory-Datenstrukturspeicher, verteilte nicht relationale Datenbank und Nachrichtenbroker verwendet werden. Die Anwendungsleistung wird durch die Nutzung der Leistung des Redis-Moduls mit niedriger Latenz und hohem Durchsatz verbessert.
 
-Azure Redis Cache bietet Ihnen Zugriff auf einen sicheren, dedizierten Redis Cache, der von Microsoft verwaltet und in Azure gehostet wird und auf den jede Anwendung in Azure zugreifen kann.
+Azure Redis Cache bietet Ihnen Zugriff auf einen sicheren, dedizierten Redis Cache, der von Microsoft verwaltet und in Azure gehostet wird und auf den jede Anwendung innerhalb oder außerhalb von Azure zugreifen kann.
 
 ## <a name="why-use-azure-redis-cache"></a>Verwendung von Azure Redis Cache
 
 Es gibt viele allgemeine Muster, bei denen Redis Cache verwendet wird, um die Anwendungsarchitektur zu unterstützen oder die Anwendungsleistung zu verbessern. Nachfolgend sind einige der am häufigsten verwendeten Muster aufgeführt:
 
-| Muster      | Beschreibung                                        |
+| Muster      | BESCHREIBUNG                                        |
 | ------------ | -------------------------------------------------- |
-| [Cachefremd](cache-web-app-cache-aside-leaderboard.md) | Da eine Datenbank groß sein kann, ist das Laden einer gesamten Datenbank in einen Cache als Ansatz nicht empfehlenswert. Das [cachefremde](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) Muster wird üblicherweise verwendet, um die Datenelemente nur bei Bedarf in den Cache zu laden. Wenn das System Änderungen an den Back-End-Daten vornimmt, kann es zu diesem Zeitpunkt auch den Cache aktualisieren, der mit anderen Clients verteilt wird. Darüber hinaus kann das System ein Ablaufdatum für Datenelemente festlegen oder eine Entfernungsrichtlinie verwenden, die bewirkt, dass Datenaktualisierungen erneut in den Cache geladen werden.|
+| [Cache-Aside](cache-web-app-cache-aside-leaderboard.md) | Da eine Datenbank groß sein kann, ist das Laden einer gesamten Datenbank in einen Cache als Ansatz nicht empfehlenswert. Das [cachefremde](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) Muster wird üblicherweise verwendet, um die Datenelemente nur bei Bedarf in den Cache zu laden. Wenn das System Änderungen an den Back-End-Daten vornimmt, kann es zu diesem Zeitpunkt auch den Cache aktualisieren, der mit anderen Clients verteilt wird. Darüber hinaus kann das System ein Ablaufdatum für Datenelemente festlegen oder eine Entfernungsrichtlinie verwenden, die bewirkt, dass Datenaktualisierungen erneut in den Cache geladen werden.|
 | [Inhaltszwischenspeicherung](cache-aspnet-output-cache-provider.md) | Die meisten Webseiten werden anhand von Vorlagen mit Kopfzeilen, Fußzeilen, Symbolleisten, Menüs usw. generiert. Sie werden im Grunde nicht häufig geändert und sollten nicht dynamisch generiert werden. Die Verwendung eines in-Memory-Cache wie Azure Redis Cache ermöglicht Ihren Webservern schnellen Zugriff auf diese Art von statischem Inhalt im Vergleich zu Back-End-Datenspeichern. Dieses Muster verkürzt die Verarbeitungszeit und reduziert die Serverlast, die zum dynamischen Generieren von Inhalten erforderlich wären. Dadurch können Webserver schneller reagieren, und Sie können die Anzahl der zum Verarbeiten von Lasten erforderlichen Server reduzieren. Zur Unterstützung dieses Musters mit ASP.NET bietet Azure Redis Cache den Redis-Ausgabecacheanbieter.|
 | [Zwischenspeicherung der Benutzersitzung](cache-aspnet-session-state-provider.md) | Dieses Muster wird häufig bei Einkaufswagen und anderen Benutzerverlaufsinformationen verwendet, denen eine Webanwendung möglicherweise Benutzercookies zuordnen möchte. Die Speicherung von zu vielen Inhalten in einem Cookie kann sich negativ auf die Leistung auswirken, weil die Cookiegröße zunimmt und mit jeder Anforderung übergeben und überprüft wird. Eine typische Lösung besteht darin, das Cookie als Schlüssel zum Abfragen der Daten in einer Back-End-Datenbank zu verwenden. Die Verwendung eines in-Memory-Cache wie Azure Redis Cache, um einem Benutzer Informationen zuzuordnen, ist wesentlich schneller als die Interaktion mit einer vollständigen relationalen Datenbank. |
 | Einreihen von Aufträgen in eine Warteschlange und Message Queuing | Wenn Anwendungen Anforderungen erhalten, benötigen die mit der Anforderung verbundenen Vorgänge oft zusätzliche Zeit für die Ausführung. Es ist ein gängiges Muster, länger ausgeführte Vorgänge zu verzögern, indem sie einer Warteschlange hinzugefügt werden, die zu einem späteren Zeitpunkt und möglicherweise von einem anderen Server verarbeitet wird. Diese Methode der Verzögerung von Arbeit wird als Aufgaben-Queuing bezeichnet. Es gibt viele Softwarekomponenten, die Aufgabenwarteschlangen unterstützen. Redis Cache dient dazu auch als verteilte Warteschlange.|
@@ -44,7 +45,7 @@ Es gibt viele allgemeine Muster, bei denen Redis Cache verwendet wird, um die An
 
 Azure Redis Cache ist in folgenden Tarifen verfügbar:
 
-| Tarif | Beschreibung |
+| Tarif | BESCHREIBUNG |
 |---|---|
 Basic | Ein Cache mit einem einzelnen Knoten. Dieser Tarif unterstützt mehrere Arbeitsspeichergrößen (250 MB - 53 GB). Dieser Tarif eignet sich ideal zu Entwicklungs-/Testzwecken und für nicht kritische Workloads. Für den Basic-Tarif gilt keine Vereinbarung zum Servicelevel (Service-Level Agreement, SLA). |
 | Standard | Ein replizierter Cache in einer Primär-/Sekundärkonfiguration mit zwei Knoten, die von Microsoft verwaltet wird, mit Hochverfügbarkeits-SLA (99,9 %) |
@@ -76,6 +77,7 @@ Auf der Seite [Redis Cache – Preise](https://azure.microsoft.com/pricing/detai
 
 * [ASP.NET-Web-App-Schnellstart](cache-web-app-howto.md): Erstellen Sie eine einfache ASP.NET-Web-App, die einen Azure Redis Cache verwendet.
 * [.NET-Schnellstart](cache-dotnet-how-to-use-azure-redis-cache.md): Erstellen Sie eine .NET-App, die einen Azure Redis Cache verwendet.
+* [.NET Core-Schnellstart](cache-dotnet-core-quickstart.md): Erstellen Sie eine .NET Core-App, die einen Azure Redis Cache verwendet.
 * [Node.js-Schnellstart](cache-nodejs-get-started.md): Erstellen Sie eine einfache Node.js-App, die einen Azure Redis Cache verwendet.
 * [Java-Schnellstart](cache-java-get-started.md): Erstellen Sie eine einfache Java-App, die einen Azure Redis Cache verwendet.
 * [Python-Schnellstart](cache-python-get-started.md): Erstellen Sie eine Python-App, die einen Azure Redis Cache verwendet.

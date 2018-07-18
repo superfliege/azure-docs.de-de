@@ -1,5 +1,5 @@
 ---
-title: "Konfigurieren der Serverprotokolle für PostgreSQL und Zugreifen auf diese im Azure-Portal"
+title: Konfigurieren der Serverprotokolle für PostgreSQL und Zugreifen auf diese im Azure-Portal
 description: In diesem Artikel wird beschrieben, wie Sie aus dem Azure-Portal die Serverprotokolle in Azure Database for PostgreSQL konfigurieren und auf diese zugreifen.
 services: postgresql
 author: rachel-msft
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29692163"
 ---
 # <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurieren der und Zugreifen auf die Serverprotokolle im Azure-Portal
 

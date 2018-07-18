@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/03/2017
 ms.author: yurid
-ms.openlocfilehash: 2f3a9344b9bd383ea59ff3cb400faa90942c5b9f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 8564dd8a86cab1229f31e77e072ddd4e776947e7
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029695"
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>Verwenden von Azure Security Center zur Reaktion auf Vorfälle
 Viele Organisationen lernen erst nach einem Angriff, wie auf Sicherheitsvorfälle reagiert werden sollte. Zur Reduzierung von Kosten und Schäden ist es wichtig, dass ein Plan zur Reaktion auf Vorfälle vorhanden ist, bevor es zu einem Angriff kommt. Sie können Azure Security Center in unterschiedlichen Phasen einer Reaktion auf Vorfälle nutzen.
@@ -96,7 +97,7 @@ Sam erhält die Informationen zu diesem Fall von Judy und beginnt damit, die von
 ![Lebenszyklus der Reaktion auf Vorfälle](./media/security-center-incident-response/security-center-incident-response-fig6.png)
 
 ### <a name="additional-resources"></a>Zusätzliche Ressourcen
-Für Unternehmen mit einer eigenen SIEM-Lösung (Security Information and Event Management), die zur Untersuchung eingesetzt wird, ist auch die [Integration von Security Center in die Lösung](security-center-integrating-alerts-with-log-integration.md) möglich. Sie können auch Azure-Überwachungsprotokolle und VM-Sicherheitsereignisse integrieren, indem Sie das [Azure-Tool für die Integration von Protokollen](https://blogs.msdn.microsoft.com/azuresecurity/2016/07/21/microsoft-azure-log-integration-preview/) verwenden. Zum Untersuchen eines Angriffs können Sie diese Informationen zusammen mit den Informationen verwenden, die von Security Center bereitgestellt werden. Sie können auch das [Untersuchungsfeature](https://docs.microsoft.com/azure/security-center/security-center-investigation) in Security Center verwenden, um die Grundursache eines Vorfalls zu ermitteln.
+Für Unternehmen mit einer eigenen SIEM-Lösung (Security Information and Event Management), die zur Untersuchung eingesetzt wird, ist auch die [Integration von Security Center in die Lösung](security-center-integrating-alerts-with-log-integration.md) möglich. Sie können auch Azure-Überwachungsprotokolle und VM-Sicherheitsereignisse integrieren, indem Sie das [Azure-Tool für die Integration von Protokollen](https://azure.microsoft.com/blog/introducing-hdinsight-integration-with-azure-log-analytics/) verwenden. Zum Untersuchen eines Angriffs können Sie diese Informationen zusammen mit den Informationen verwenden, die von Security Center bereitgestellt werden. Sie können auch das [Untersuchungsfeature](https://docs.microsoft.com/azure/security-center/security-center-investigation) in Security Center verwenden, um die Grundursache eines Vorfalls zu ermitteln.
 
 ## <a name="conclusion"></a>Zusammenfassung
 Es ist für Ihre Organisation sehr wichtig, vor dem Eintreten eines Vorfalls ein Team zusammenzustellen. Dies hat einen positiven Einfluss auf den Umgang mit Sicherheitsvorfällen. Mit den richtigen Tools für die Überwachung von Ressourcen kann das Team präzise Schritte zur Lösung eines Sicherheitsvorfalls ausführen. Mit den [Erkennungsfunktionen](security-center-detection-capabilities.md) von Security Center erhält die IT-Abteilung hilfreiche Werkzeuge zum schnellen Reagieren auf Sicherheitsvorfälle und Lösen von Sicherheitsproblemen.

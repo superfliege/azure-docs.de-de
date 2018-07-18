@@ -20,6 +20,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32779467"
 ---
 # <a name="tutorial-define-and-assess-security-policies"></a>Tutorial: Definieren und Bewerten von Sicherheitsrichtlinien
 Mit Security Center kann sichergestellt werden, dass die Sicherheitsanforderungen von Unternehmen oder Behörden erfüllt werden, indem Sicherheitsrichtlinien zum Definieren der gewünschten Konfiguration Ihrer Workloads verwendet werden. Nachdem Sie die Richtlinien für Ihre Azure-Abonnements definiert und an den Workloadtyp bzw. die Empfindlichkeit Ihrer Daten angepasst haben, kann Security Center Sicherheitsempfehlungen für Ihre Compute-, Netzwerk-, SQL-/Speicher- und Anwendungsressourcen bereitstellen. In diesem Lernprogramm lernen Sie Folgendes:

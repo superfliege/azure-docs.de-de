@@ -1,12 +1,12 @@
 ---
-title: "Verwalten von App Service-Plänen in Azure | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie verschiedene Aufgaben zum Verwalten eines App Service-Plans ausführen."
-keywords: "App Service, Azure App Service, Skalierung, App Services-Plan, ändern, verwalten, Verwaltung"
+title: Verwalten von App Service-Plänen in Azure | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie verschiedene Aufgaben zum Verwalten eines App Service-Plans ausführen.
+keywords: App Service, Azure App Service, Skalierung, App Services-Plan, ändern, verwalten, Verwaltung
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.service: app-service
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29117679"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Verwalten eines App Service-Plans in Azure
 

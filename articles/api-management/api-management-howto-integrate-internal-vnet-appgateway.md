@@ -5,7 +5,7 @@ services: api-management
 documentationcenter: ''
 author: solankisamir
 manager: kjoshi
-editor: antonba
+editor: vlvinogr
 ms.assetid: a8c982b2-bca5-4312-9367-4a0bbc1082b1
 ms.service: api-management
 ms.workload: mobile
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: sasolank
-ms.openlocfilehash: 595abcaafdea5cde3f868567bac7fb9cf0ee424b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: c7d4351a9691c9787c42107306220e075f8648a0
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936104"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435122"
 ---
-# <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrieren von API Management in ein internes VNET mit Application Gateway 
+# <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrieren von API Management in ein internes VNET mit Application Gateway
 
 ##<a name="overview"></a> Übersicht
- 
+
 Der API Management-Dienst kann in einem virtuellen Netzwerk im internen Modus konfiguriert werden, sodass nur aus dem virtuellen Netzwerk darauf zugegriffen werden kann. Azure Application Gateway ist ein PaaS-Dienst, bei dem ein Schicht 7-Lastenausgleich bereitgestellt wird. Er fungiert als Reverseproxydienst und verfügt unter anderem über eine Web Application Firewall (WAF).
 
 Die Kombination aus einer Bereitstellung von API Management in einem internen VNET und dem Application Gateway-Front-End ermöglicht die folgenden Szenarien:
 
 * Verwenden Sie dieselbe API Management-Ressource für die Nutzung durch interne und externe Consumer.
 * Verwenden Sie nur eine API Management-Ressource, und halten Sie eine Teilmenge der in API Management definierten APIs für externe Consumer bereit.
-* Schaffen Sie eine einfache Möglichkeit, mit der der Zugriff auf API Management über das öffentliche Internet ein- und ausgeschaltet werden kann. 
+* Schaffen Sie eine einfache Möglichkeit, mit der der Zugriff auf API Management über das öffentliche Internet ein- und ausgeschaltet werden kann.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -53,7 +53,7 @@ Im ersten Setupbeispiel werden alle APIs ausschließlich aus Ihrem virtuellen Ne
 ## <a name="before-you-begin"></a> Voraussetzungen
 
 1. Installieren Sie mit dem Webplattform-Installer die aktuelle Version der Azure PowerShell-Cmdlets. Sie können die neueste Version aus dem Abschnitt **Windows PowerShell** der [Downloadseite](https://azure.microsoft.com/downloads/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)herunterladen und installieren.
-2. Erstellen Sie ein virtuelles Netzwerk und separate Subnetze für API Management und Application Gateway. 
+2. Erstellen Sie ein virtuelles Netzwerk und separate Subnetze für API Management und Application Gateway.
 3. Wenn Sie einen benutzerdefinierten DNS-Server für das virtuelle Netzwerk erstellen möchten, sollten Sie dies vor dem Starten der Bereitstellung durchführen. Überprüfen Sie die richtige Funktionsweise, indem Sie sicherstellen, dass ein virtueller Computer, der im virtuellen Netzwerk in einem neuen Subnetz erstellt wird, alle Azure-Dienstendpunkte auflösen und darauf zugreifen kann.
 
 ## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>Was ist erforderlich, um eine Integration zwischen API Management und Application Gateway zu erstellen?
@@ -66,7 +66,7 @@ Im ersten Setupbeispiel werden alle APIs ausschließlich aus Ihrem virtuellen Ne
 * **Benutzerdefinierter Integritätstest:** Für Application Gateway werden standardmäßig auf IP-Adressen basierende Tests verwendet, um zu ermitteln, welche Server im BackendAddressPool aktiv sind. Der API Management-Dienst reagiert nur auf Anforderungen, die über den richtigen Hostheader verfügen, sodass die Standardtests fehlschlagen. Ein benutzerdefinierter Integritätstest muss definiert werden, damit das Application Gateway ermitteln kann, dass der Dienst aktiv ist und Anforderungen weitergeleitet werden können.
 * **Benutzerdefiniertes Domänenzertifikat:** Zum Zugreifen auf API Management über das Internet müssen Sie eine CNAME-Zuordnung des Hostnamens zum DNS-Namen des Application Gateway-Front-Ends erstellen. So wird sichergestellt, dass die Daten zum Hostnamenheader und Zertifikat für das Application Gateway, die an API Management weitergeleitet werden, von APIM als gültig erkannt werden können.
 
-## <a name="overview-steps"></a> Erforderliche Schritte zur Integration von API Management und Application Gateway 
+## <a name="overview-steps"></a> Erforderliche Schritte zur Integration von API Management und Application Gateway
 
 1. Erstellen einer Ressourcengruppe für den Ressourcen-Manager
 2. Erstellen eines virtuelles Netzwerks, Subnetzes und einer öffentlichen IP-Adresse für das Application Gateway Erstellen eines anderen Subnetzes für API Management
@@ -105,7 +105,7 @@ Erstellen Sie eine Ressourcengruppe. (Überspringen Sie diesen Schritt, wenn Sie
 ```powershell
 New-AzureRmResourceGroup -Name "apim-appGw-RG" -Location "West US"
 ```
-Der Azure Resource Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Dieser wird als Standardspeicherort für Ressourcen in dieser Ressourcengruppe verwendet. Stellen Sie sicher, dass alle Befehle, mit denen ein Anwendungsgateway erstellt wird, die gleiche Ressourcengruppe verwenden.
+Azure Resource Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Dieser wird als Standardspeicherort für Ressourcen in dieser Ressourcengruppe verwendet. Stellen Sie sicher, dass alle Befehle, mit denen ein Anwendungsgateway erstellt wird, die gleiche Ressourcengruppe verwenden.
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Erstellen eines virtuellen Netzwerks und eines Subnetzes für das Application Gateway
 
@@ -164,14 +164,14 @@ Nachdem der obige Befehl erfolgreich ausgeführt wurde, können Sie die Informat
 ## <a name="set-up-a-custom-domain-name-in-api-management"></a>Einrichten eines benutzerdefinierten Domänennamens in API Management
 
 ### <a name="step-1"></a>Schritt 1
-Laden Sie das Zertifikat mit dem privaten Schlüssel für die Domäne hoch. In diesem Beispiel ist dies `*.contoso.net`. 
+Laden Sie das Zertifikat mit dem privaten Schlüssel für die Domäne hoch. In diesem Beispiel ist dies `*.contoso.net`.
 
 ```powershell
 $certUploadResult = Import-AzureRmApiManagementHostnameCertificate -ResourceGroupName "apim-appGw-RG" -Name "ContosoApi" -HostnameType "Proxy" -PfxPath <full path to .pfx file> -PfxPassword <password for certificate file> -PassThru
 ```
 
 ### <a name="step-2"></a>Schritt 2
-Erstellen Sie nach dem Hochladen des Zertifikats ein Hostnamen-Konfigurationsobjekt für den Proxy mit dem Hostnamen `api.contoso.net`, da im Beispielzertifikat die Autorität für die Domäne `*.contoso.net` gewährt wird. 
+Erstellen Sie nach dem Hochladen des Zertifikats ein Hostnamen-Konfigurationsobjekt für den Proxy mit dem Hostnamen `api.contoso.net`, da im Beispielzertifikat die Autorität für die Domäne `*.contoso.net` gewährt wird.
 
 ```powershell
 $proxyHostnameConfig = New-AzureRmApiManagementHostnameConfiguration -CertificateThumbprint $certUploadResult.Thumbprint -Hostname "api.contoso.net"
@@ -236,8 +236,8 @@ $listener = New-AzureRmApplicationGatewayHttpListener -Name "listener01" -Protoc
 Erstellen Sie einen benutzerdefinierten Test für den `ContosoApi`-Proxy-Domänenendpunkt des API Management-Diensts. Der Pfad `/status-0123456789abcdef` ist ein Standard-Integritätsendpunkt, der von allen API Management-Diensten gehostet wird. Legen Sie `api.contoso.net` als benutzerdefinierten Testhostnamen fest, den Sie mit einem SSL-Zertifikat schützen möchten.
 
 > [!NOTE]
-> Der Hostname `contosoapi.azure-api.net` ist der Proxy-Standardhostname, der konfiguriert wird, wenn im öffentlichen Azure-Bereich der Dienst `contosoapi` erstellt wird. 
-> 
+> Der Hostname `contosoapi.azure-api.net` ist der Proxy-Standardhostname, der konfiguriert wird, wenn im öffentlichen Azure-Bereich der Dienst `contosoapi` erstellt wird.
+>
 
 ```powershell
 $apimprobe = New-AzureRmApplicationGatewayProbeConfig -Name "apimproxyprobe" -Protocol "Https" -HostName "api.contoso.net" -Path "/status-0123456789abcdef" -Interval 30 -Timeout 120 -UnhealthyThreshold 8
@@ -291,7 +291,7 @@ $dummyPathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "nonexistenta
 
 ### <a name="step-11"></a>Schritt 11
 
-Konfigurieren Sie URL-Regelpfade für die Back-End-Pools. Sie haben dann die Möglichkeit, nur einige APIs von API Management auszuwählen, die öffentlich verfügbar sein sollen. Beispiel: Wenn `Echo API` (/echo/), `Calculator API` (/calc/) usw. vorhanden sind, machen Sie nur `Echo API` für den Zugriff über das Internet verfügbar. 
+Konfigurieren Sie URL-Regelpfade für die Back-End-Pools. Sie haben dann die Möglichkeit, nur einige APIs von API Management auszuwählen, die öffentlich verfügbar sein sollen. Beispiel: Wenn `Echo API` (/echo/), `Calculator API` (/calc/) usw. vorhanden sind, machen Sie nur `Echo API` für den Zugriff über das Internet verfügbar.
 
 Im folgenden Beispiel wird eine einfache Regel für den Pfad „/echo/" erstellt, um Datenverkehr an das Back-End „apimProxyBackendPool“ zu leiten.
 
@@ -305,7 +305,7 @@ Die Konfiguration der Regelpfadzuordnung konfiguriert auch dann einen Standard-B
 $urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name "urlpathmap" -PathRules $echoapiRule, $dummyPathRule -DefaultBackendAddressPool $dummyBackendPool -DefaultBackendHttpSettings $dummyBackendSetting
 ```
 
-Mit den obigen Schritten wird sichergestellt, dass nur Anforderungen für den Pfad „/echo“ über das Application Gateway gesendet werden können. Anforderungen an andere APIs, die in API Management konfiguriert sind, lösen Fehler vom Typ 404 für das Application Gateway aus, wenn der Zugriff über das Internet erfolgt. 
+Mit den obigen Schritten wird sichergestellt, dass nur Anforderungen für den Pfad „/echo“ über das Application Gateway gesendet werden können. Anforderungen an andere APIs, die in API Management konfiguriert sind, lösen Fehler vom Typ 404 für das Application Gateway aus, wenn der Zugriff über das Internet erfolgt.
 
 ### <a name="step-12"></a>Schritt 12
 
@@ -340,7 +340,7 @@ $appgw = New-AzureRmApplicationGateway -Name $applicationGatewayName -ResourceGr
 
 ## <a name="cname-the-api-management-proxy-hostname-to-the-public-dns-name-of-the-application-gateway-resource"></a>Erstellen eines CNAME-Eintrags für den API Management-Proxyhostnamen zum Namen des öffentlichen DNS der Application Gateway-Ressource
 
-Nach dem Erstellen des Gateways wird das Front-End für die Kommunikation konfiguriert. Wenn Sie eine öffentliche IP-Adresse verwenden, wird für das Application Gateway ein dynamisch zugewiesener DNS-Namen benötigt, der ggf. nicht benutzerfreundlich ist. 
+Nach dem Erstellen des Gateways wird das Front-End für die Kommunikation konfiguriert. Wenn Sie eine öffentliche IP-Adresse verwenden, wird für das Application Gateway ein dynamisch zugewiesener DNS-Namen benötigt, der ggf. nicht benutzerfreundlich ist.
 
 Verwenden Sie den DNS-Namen des Application Gateway zum Erstellen eines CNAME-Eintrags, mit dem für den APIM-Proxyhostnamen (z.B. `api.contoso.net` in den obigen Beispielen) auf diesen DNS-Namen verwiesen wird. Rufen Sie zum Konfigurieren des CNAME-Eintrags für die Front-End-IP mithilfe des PublicIPAddress-Elements Details zum Application Gateway und zum zugeordneten IP/DNS-Namen ab. Die Verwendung von A-Einträgen wird nicht empfohlen, da sich die VIP beim Neustart des Gateways unter Umständen ändert.
 

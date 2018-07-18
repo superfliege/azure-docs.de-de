@@ -2,7 +2,7 @@
 title: Überprüfen des Status, Einrichten der Protokollierung und Empfangen von Warnungen – Azure Logic Apps | Microsoft-Dokumentation
 description: Überwachen des Status und der Leistung für Logik-Apps, Protokollieren von Diagnosedaten und Einrichten von Warnungen
 author: jeffhollan
-manager: anneta
+manager: jeconnoc
 editor: ''
 services: logic-apps
 documentationcenter: ''
@@ -15,11 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: c1d5bc55b132b449ebc2964ef95016a6a4780c19
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f11db2009328118dda036057918ba853f5032200
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293522"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Überwachen des Status, Einrichten der Diagnoseprotokollierung und Aktivieren von Warnungen für Azure Logic Apps
 
@@ -117,19 +118,11 @@ Führen Sie die hier angegebenen Schritte aus, um nach Ereignissen in Ihrer Logi
 
    ![Auswählen Ihres Log Analytics-Arbeitsbereichs](media/logic-apps-monitor-your-logic-apps/selectla.png)
 
-3. Wählen Sie unter **Verwaltung** die Option **OMS-Portal**.
+3. Wählen Sie unter **Verwaltung** die Option **Protokollsuche** aus.
 
-   ![Auswählen von „OMS-Portal“](media/logic-apps-monitor-your-logic-apps/omsportalpage.png)
+   ![Auswählen von „Protokollsuche“](media/logic-apps-monitor-your-logic-apps/log-search.png)
 
-4. Klicken Sie auf der Startseite auf **Protokollsuche**.
-
-   ![Klicken auf „Protokollsuche“ auf der Startseite](media/logic-apps-monitor-your-logic-apps/logsearch.png)
-
-   Oder
-
-   ![Auswählen von „Protokollsuche“ im Menü](media/logic-apps-monitor-your-logic-apps/logsearch-2.png)
-
-5. Geben Sie im Suchfeld ein Feld an, nach dem Sie suchen möchten, und drücken Sie die **EINGABETASTE**. Wenn Sie mit der Eingabe beginnen, werden mögliche Übereinstimmungen und verfügbare Vorgänge angezeigt. 
+4. Geben Sie im Suchfeld ein Feld an, nach dem Sie suchen möchten, und drücken Sie die **EINGABETASTE**. Wenn Sie mit der Eingabe beginnen, werden mögliche Übereinstimmungen und verfügbare Vorgänge angezeigt. 
 
    Wenn Sie beispielsweise nach den ersten 10 Ereignissen suchen möchten, müssen Sie diese Suchabfrage eingeben und auswählen: **search Category == "WorkflowRuntime" | limit 10**
 
@@ -137,27 +130,27 @@ Führen Sie die hier angegebenen Schritte aus, um nach Ereignissen in Ihrer Logi
 
    Informieren Sie sich über das [Suchen nach Daten in Log Analytics](../log-analytics/log-analytics-log-searches.md).
 
-6. Wählen Sie auf der Ergebnisseite in der Leiste auf der linken Seite den Zeitrahmen für die Anzeige aus.
+5. Wählen Sie auf der Ergebnisseite in der Leiste auf der linken Seite den Zeitrahmen für die Anzeige aus.
 Wählen Sie **+Hinzufügen**, um die Abfrage durch das Hinzufügen eines Filters zu verfeinern.
 
    ![Auswählen des Zeitrahmens für Abfrageergebnisse](media/logic-apps-monitor-your-logic-apps/query-results.png)
 
-7. Geben Sie unter **Filter hinzufügen** den Filternamen ein, damit Sie den gewünschten Filter ermitteln können. Wählen Sie den Filter aus, und wählen Sie **+Hinzufügen**.
+6. Geben Sie unter **Filter hinzufügen** den Filternamen ein, damit Sie den gewünschten Filter ermitteln können. Wählen Sie den Filter aus, und wählen Sie **+Hinzufügen**.
 
    In diesem Beispiel wird das Wort „Status“ verwendet, um unter **AzureDiagnostics** nach fehlgeschlagenen Ereignissen zu suchen.
    Hier ist der Filter für **status_s** bereits ausgewählt.
 
    ![Auswählen des Filters](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
 
-8. Wählen Sie in der linken Leiste den Filterwert aus, den Sie verwenden möchten, und wählen Sie **Übernehmen**.
+7. Wählen Sie in der linken Leiste den Filterwert aus, den Sie verwenden möchten, und wählen Sie **Übernehmen**.
 
    ![Auswählen des Filterwerts und der Option „Übernehmen“](media/logic-apps-monitor-your-logic-apps/log-search-apply-filter.png)
 
-9. Navigieren Sie nun zurück zu der Abfrage, die Sie erstellen. Ihre Abfrage wird mit Ihrem ausgewählten Filter und Wert aktualisiert. Die vorherigen Ergebnisse sind jetzt auch gefiltert.
+8. Navigieren Sie nun zurück zu der Abfrage, die Sie erstellen. Ihre Abfrage wird mit Ihrem ausgewählten Filter und Wert aktualisiert. Die vorherigen Ergebnisse sind jetzt auch gefiltert.
 
    ![Zurückwechseln zur Abfrage mit gefilterten Ergebnissen](media/logic-apps-monitor-your-logic-apps/log-search-query-filtered-results.png)
 
-10. Wählen Sie **Speichern**, um die Abfrage zur späteren Verwendung zu speichern. Informieren Sie sich über das [Speichern Ihrer Abfrage](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md#save-oms-query).
+9. Wählen Sie **Speichern**, um die Abfrage zur späteren Verwendung zu speichern. Informieren Sie sich über das [Speichern Ihrer Abfrage](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md#save-oms-query).
 
 <a name="extend-diagnostic-data"></a>
 

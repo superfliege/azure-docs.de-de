@@ -7,21 +7,25 @@ author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: d76ae997-2279-46dd-bfc5-c0ee29718096
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: b278f5c4c8c87590205aca13a50a82fe8712d909
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: fceeb9655562d7abf6930cc484b4a9eb275ee81e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330800"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Einbinden eines virtuellen Red Hat Enterprise Linux 7-Computers in eine verwaltete Domäne
 Dieser Artikel zeigt, wie ein virtueller Red Hat Enterprise Linux 7-Computer (RHEL) einer durch Azure AD-Domänendienste verwalteten Domäne beitritt.
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 Um die in diesem Artikel beschriebenen Aufgaben auszuführen, benötigen Sie Folgendes:  
@@ -82,17 +86,17 @@ Nachdem die erforderlichen Pakete auf dem virtuellen Linux-Computer installiert 
     sudo realm discover CONTOSO100.COM
     ```
 
-     > [!NOTE] 
+     > [!NOTE]
      > **Problembehandlung:** Wenn Ihre verwaltete Domäne über *Realm discover* (Bereich ermitteln) nicht gefunden werden kann:
      * Stellen Sie durch Pingen sicher, dass die VM die Domäne erreichen kann.
      * Überprüfen Sie, ob die VM tatsächlich in demselben virtuellen Netzwerk bereitgestellt wurde, in dem die verwaltete Domäne verfügbar ist.
      * Überprüfen Sie, ob Sie die DNS-Servereinstellungen aktualisiert haben, sodass das virtuelle Netzwerk auf die Domänencontroller der verwalteten Domäne verweist.
      >
 
-2. Initialisieren Sie Kerberos. Geben Sie in Ihrem SSH-Terminal folgenden Befehl ein: 
+2. Initialisieren Sie Kerberos. Geben Sie in Ihrem SSH-Terminal folgenden Befehl ein:
 
-    > [!TIP] 
-    > * Stellen Sie sicher, dass Sie einen Benutzer angeben, der zur Administratorengruppe für Azure AD-Domänencontroller gehört. 
+    > [!TIP]
+    > * Stellen Sie sicher, dass Sie einen Benutzer angeben, der zur Administratorengruppe für Azure AD-Domänencontroller gehört.
     > * Geben Sie den Domänennamen in Großbuchstaben an. Andernfalls führt kinit zu einem Fehler.
     >
 
@@ -100,9 +104,9 @@ Nachdem die erforderlichen Pakete auf dem virtuellen Linux-Computer installiert 
     kinit bob@CONTOSO100.COM
     ```
 
-3. Binden Sie den Computer in die Domäne ein. Geben Sie in Ihrem SSH-Terminal folgenden Befehl ein: 
+3. Binden Sie den Computer in die Domäne ein. Geben Sie in Ihrem SSH-Terminal folgenden Befehl ein:
 
-    > [!TIP] 
+    > [!TIP]
     > Verwenden Sie das gleiche Benutzerkonto, das Sie im vorherigen Schritt („kinit“) angegeben haben.
     >
 

@@ -13,6 +13,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33814474"
 ---
 > [!IMPORTANT]
 > Dieses Feature ist nur für Produkte von **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** verfügbar. Es wird bei **Azure CDN von Akamai**nicht unterstützt. Einen Vergleich der CDN-Features finden Sie unter [Azure CDN-Produktfeatures](../articles/cdn/cdn-features.md).

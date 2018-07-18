@@ -3,7 +3,7 @@ title: Anzeigen und Ändern von Hostnamen | Microsoft Docs
 description: Anzeigen und Ändern von Hostnamen für virtuelle Computer sowie Web- und Workerrollen in Azure für die Namensauflösung
 services: virtual-network
 documentationcenter: na
-author: genli
+author: genlin
 manager: cshepard
 editor: tysonn
 ms.assetid: c668cd8e-4e43-4d05-acc3-db64fa78d828
@@ -12,24 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/27/2016
+ms.date: 05/24/2018
 ms.author: genli
-ms.openlocfilehash: 6fe3522c1b3e2f5a07de3d12875ae47a830873d3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f4c602368368e8ef36581d3f035ff3943a8f0d8f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657280"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>Anzeigen und Ändern von Hostnamen
 Damit auf Ihre Rolleninstanzen mit dem Hostnamen verwiesen werden kann, müssen Sie den Wert für den Hostnamen in der Dienstkonfigurationsdatei für jede Rolle festlegen. Hierzu fügen Sie den gewünschten Hostnamen dem **vmName**-Attribut des **Role**-Elements hinzu. Der Wert des **vmName** -Attributs wird als Grundlage für den Hostnamen der einzelnen Rolleninstanzen verwendet. Wenn **vmName** beispielsweise *webrole* lautet und drei Instanzen dieser Rolle vorhanden sind, lauten die Hostnamen der Instanzen *webrole0*, *webrole1* und *webrole2*. Sie müssen keinen Hostnamen für virtuelle Computer in der Konfigurationsdatei angeben, da der Hostname für einen virtuellen Computer auf Grundlage des Namens des virtuellen Computers erstellt wird. Weitere Informationen zum Konfigurieren eines Microsoft Azure-Diensts finden Sie unter [Azure-Dienstkonfigurationsschema (.cscfg-Datei)](https://msdn.microsoft.com/library/azure/ee758710.aspx)
 
 ## <a name="viewing-hostnames"></a>Anzeigen von Hostnamen
 Sie können die Hostnamen von virtuellen Computern und Rolleninstanzen in einem Clouddienst mithilfe der folgenden Tools anzeigen.
-
-### <a name="azure-portal"></a>Azure-Portal
-Über das [Azure-Portal](http://portal.azure.com) können Sie die Hostnamen für virtuelle Computer auf dem Übersichtsblatt für einen virtuellen Computer anzeigen. Beachten Sie, dass auf dem Blatt ein Wert für **Name** und ein Wert für **Hostname** angezeigt wird. Diese sind zu Beginn identisch, eine Änderung des Hostnamens führt jedoch nicht dazu, dass auch der Name des virtuellen Computers oder der Rolleninstanz geändert wird.
-
-Rolleninstanzen können auch im Azure-Portal angezeigt werden, wenn Sie die Instanzen jedoch in einem Clouddienst aufführen, wird der Hostname nicht angezeigt. Es wird ein Name für jede Instanz angezeigt, dieser Name stellt jedoch nicht den Hostnamen dar.
 
 ### <a name="service-configuration-file"></a>Dienstkonfigurationsdatei
 Sie können die Dienstkonfigurationsdatei für einen bereitgestellten Dienst auf dem Blatt **Konfigurieren** für den Dienst im Azure-Portal herunterladen. Dann können Sie das **vmName**-Attribut für das **Role name**-Element suchen, um den Hostnamen anzuzeigen. Beachten Sie, dass dieser Hostname als Grundlage für den Hostnamen der einzelnen Rolleninstanzen verwendet wird. Wenn **vmName** beispielsweise *webrole* lautet und drei Instanzen dieser Rolle vorhanden sind, lauten die Hostnamen der Instanzen *webrole0*, *webrole1* und *webrole2*.
@@ -46,7 +42,7 @@ Gehen Sie auf einem REST-Client wie folgt vor:
 
 1. Stellen Sie sicher, dass Sie über ein Clientzertifikat für die Verbindung zum Azure-Portal verfügen. Um ein Clientzertifikat zu erhalten, führen Sie die Schritte unter [How to: Download and Import Publish Settings and Subscription Information](https://msdn.microsoft.com/library/dn385850.aspx)(in englischer Sprache) aus. 
 2. Legen Sie einen Headereintrag mit dem Namen "x-ms-version" mit einem Wert von "2013-11-01" fest.
-3. Senden Sie eine Anforderung im folgenden Format: https://management.core.windows.net/\<Abonnement-ID\>/services/hostedservices/\<Dienstname\>?embed-detail=true
+3. Senden Sie eine Anforderung im folgenden Format: https://management.core.windows.net/\<subscrition-id\>/services/hostedservices/\<service-name\>?embed-detail=true
 4. Suchen Sie das **HostName**-Element für jedes **RoleInstance**-Element.
 
 > [!WARNING]

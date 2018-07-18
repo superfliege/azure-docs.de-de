@@ -10,21 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: db012097011d57434e35ef395ebe69a2156c92f4
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 5077982bdef4d0e8fbf1ab485566909b4dc97a8a
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857377"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Aktivität „If Condition“ in Azure Data Factory
 Die Aktivität „If Condition“ bietet die gleiche Funktionalität wie eine If-Anweisung in Programmiersprachen. Sie wertet eine Aktivitätengruppe aus, wenn die Bedingung als `true` ausgewertet wird, und eine weitere Aktivitätengruppe, wenn die Bedingung als `false` ausgewertet wird. 
-
-
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (GA) ist, lesen Sie die [Dokumentation zur Version 1 von Data Factory](v1/data-factory-introduction.md).
 
 ## <a name="syntax"></a>Syntax
 
@@ -72,9 +69,9 @@ Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
 name | Der Name der Aktivität „If Condition“ | Zeichenfolge | Ja
 type | Muss auf **IfCondition** festgelegt werden. | Zeichenfolge | Ja
-expression | Ausdruck, der als „true“ oder „false“ ausgewertet werden muss. | Ja
-ifTrueActivities | Aktivitäten, die ausgeführt werden, wenn der Ausdruck als `true` ausgewertet wird | Ja
-ifFalseActivities | Aktivitäten, die ausgeführt werden, wenn der Ausdruck als `false` ausgewertet wird | Ja
+expression | Ausdruck, der als „true“ oder „false“ ausgewertet werden muss. | Ausdruck mit Ergebnistyp „Boolesch“ | Ja
+ifTrueActivities | Aktivitäten, die ausgeführt werden, wenn der Ausdruck als `true` ausgewertet wird | Array | Ja
+ifFalseActivities | Aktivitäten, die ausgeführt werden, wenn der Ausdruck als `false` ausgewertet wird | Array | Ja
 
 ## <a name="example"></a>Beispiel
 Die Pipeline in diesem Beispiel kopiert Daten aus einem Eingabeordner in einen Ausgabeordner. Der Ausgabeordner wird durch den Wert des Pipelineparameters bestimmt: routeSelection. Wenn der routeSelection-Wert „true“ lautet, werden die Daten in „outputPath1“ kopiert. Wenn der routeSelection-Wert „false“ lautet, werden die Daten in „outputPath2“ kopiert. 

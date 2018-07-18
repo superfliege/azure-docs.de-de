@@ -1,11 +1,11 @@
 ---
-title: "Hochverfügbarkeit und Notfallwiederherstellung für SQL Server | Microsoft-Dokumentation"
-description: "Eine Beschreibung der verschiedenen HADR-Strategien für SQL Server in Azure Virtual Machines."
+title: Hochverfügbarkeit und Notfallwiederherstellung für SQL Server | Microsoft-Dokumentation
+description: Eine Beschreibung der verschiedenen HADR-Strategien für SQL Server in Azure Virtual Machines.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29401258"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Hochverfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern
 

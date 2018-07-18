@@ -11,11 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: 6b45b00de53822224afbfb3a15dbc6790deb11ce
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: feb9b0c3d90aea9d5e0351b6691e93186dbfb9f6
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902077"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways mit pfadbasierten Routingregeln mithilfe des Azure-Portals
 
@@ -34,7 +35,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="log-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
 
@@ -141,8 +142,8 @@ In diesem Beispiel erstellen Sie drei virtuelle Computer, die als Back-End-Serve
 
 1. Klicken Sie auf **Regeln** und anschließend auf **Pfadbasiert**.
 2. Geben Sie als Name *rule2* ein.
-3. Geben Sie als Name für den ersten Pfad *Bilder* ein. Geben Sie als Pfad */images/** ein. Wählen Sie als Back-End-Pool **imagesBackendPool** aus.
-4. Geben Sie als Name für den ersten Pfad *Video* ein. Geben Sie als Pfad */video/** ein. Wählen Sie als Back-End-Pool **videoBackendPool** aus.
+3. Geben Sie als Name für den ersten Pfad *Bilder* ein. Geben Sie als Pfad */images/*\* ein. Wählen Sie als Back-End-Pool **imagesBackendPool** aus.
+4. Geben Sie als Name für den ersten Pfad *Video* ein. Geben Sie als Pfad */video/*\* ein. Wählen Sie als Back-End-Pool **videoBackendPool** aus.
 
     ![Erstellen einer pfadbasierten Regel](./media/create-url-route-portal/application-gateway-route-rule.png)
 
@@ -154,13 +155,13 @@ In diesem Beispiel erstellen Sie drei virtuelle Computer, die als Back-End-Serve
 
     ![Notieren der öffentlichen IP-Adresse des Anwendungsgateways](./media/create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Z.B. http://http://40.121.222.19.
+2. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Z.B. http://40.121.222.19.
 
     ![Testen der Basis-URL im Anwendungsgateway](./media/create-url-route-portal/application-gateway-iistest.png)
 
-3. Ändern Sie die URL in http://&lt;ip-address&gt;:8080/video/test.htm, und ersetzen Sie &lt;ip-address&gt; durch Ihre IP-Adresse. Die Ausgabe sollte in etwa wie folgt aussehen:
+3. Ändern Sie die URL in http://&lt;ip-address&gt;:8080/images/test.htm, und ersetzen Sie &lt;ip-address&gt; durch Ihre IP-Adresse. Die Ausgabe sollte in etwa wie folgt aussehen:
 
-    ![Testen der URL für Bilder im Anwendungsgateway](./media/create-url-route-portal/application-gateway-iistest-images.png)
+    ![Testen der Images-URL im Anwendungsgateway](./media/create-url-route-portal/application-gateway-iistest-images.png)
 
 4. Ändern Sie die URL in http://&lt;ip-address&gt;:8080/video/test.htm, und ersetzen Sie &lt;ip-address&gt; durch Ihre IP-Adresse. Die Ausgabe sollte in etwa wie folgt aussehen:
 

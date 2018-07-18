@@ -1,5 +1,5 @@
 ---
-title: Grundlegendes zum Rabatt für reservierte Azure-Instanzen – Azure-Abrechnung | Microsoft-Dokumentation
+title: Grundlegendes zum Rabatt für reservierte Azure-Instanzen | Microsoft Docs
 description: Hier erfahren Sie, wie der Rabatt für reservierte Azure-VM-Instanzen auf ausgeführte virtuelle Computer angewendet wird.
 services: billing
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: yashar
-ms.openlocfilehash: a0800bafc3d6b858387e28a3b75bc7b3a6bfe6e8
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: d1229a49a5bb3bf3198c91a748ed37b7a626c506
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301412"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064320"
 ---
 # <a name="understand-how-the-reserved-instance-discount-is-applied"></a>Grundlegendes zur Anwendung des Rabatts für reservierte Instanzen
-Nachdem Sie eine reservierte Azure-VM-Instanz erworben haben, wird der Rabatt für reservierte Azure-Instanzen automatisch auf die virtuellen Computer angewendet, die den Attributen und der Menge der reservierten Instanz entsprechen. Eine reservierte Instanz deckt die Infrastrukturkosten Ihrer virtuellen Computer ab. In der folgenden Tabelle sind die Kosten für virtuelle Computer nach dem Kauf einer reservierten Instanz veranschaulicht. In jedem Fall werden Ihnen die regulären Gebühren für Speicher und Netzwerke berechnet.
+Nachdem Sie eine reservierte Azure-VM-Instanz erworben haben, wird der Rabatt für reservierte Instanzen automatisch auf die virtuellen Computer angewendet, die den Attributen und der Menge der reservierten Instanz entsprechen. Eine reservierte Instanz deckt die Infrastrukturkosten Ihrer virtuellen Computer ab. In der folgenden Tabelle sind die Kosten für virtuelle Computer nach dem Kauf einer reservierten Instanz veranschaulicht. In jedem Fall werden Ihnen die regulären Gebühren für Speicher und Netzwerke berechnet.
 
 | Typ des virtuellen Computers  | Gebühren bei einer reservierten Instanz |    
 |-----------------------|--------------------------------------------|
@@ -32,16 +32,16 @@ Nachdem Sie eine reservierte Azure-VM-Instanz erworben haben, wird der Rabatt f�
 |Virtuelle Windows-Computer mit [Azure-Hybridvorteil](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) | Die reservierte Instanz deckt die Infrastrukturkosten ab. Die Kosten für die Windows-Software werden durch den Azure-Hybridvorteil abgedeckt. Zusätzliche Software wird separat in Rechnung gestellt.| 
 
 ## <a name="application-of-reserved-instance-discount-to-non-windows-vms"></a>Anwendung des Rabatts für reservierte Instanzen auf virtuelle Nicht-Windows-Computer
- Der Rabatt für reservierte Instanzen wird auf Stundenbasis auf ausgeführte VM-Instanzen angewendet. Die von Ihnen erworbenen reservierten Instanzen werden zur Anwendung des Rabatts für reservierte Instanzen auf die von den ausgeführten virtuellen Computern ausgegebene Nutzung abgestimmt. Bei virtuellen Computern, die keine volle Stunde lang ausgeführt werden, wird die reservierte Instanz von anderen virtuellen Computern aufgefüllt, die keine reservierte Instanz verwenden. Dazu gehören auch gleichzeitig ausgeführte virtuelle Computer. Am Ende der Stunde wird die Anwendung der reservierten Instanz für virtuelle Computer für diese Stunde gesperrt. Wenn ein virtueller Computer nicht eine ganze Stunde lang ausgeführt wird oder gleichzeitige virtuelle Computer diese Stunde der reservierten Instanz nicht auffüllen, ist die reservierte Instanz für diese Stunde nicht vollständig ausgelastet. Das folgende Diagramm veranschaulicht die Anwendung einer reservierten Instanz auf die abrechenbare VM-Nutzung. Die Abbildung basiert auf dem Kauf von einer reservierten Instanz und zwei entsprechenden VM-Instanzen.
+ Der Rabatt für reservierte Azure-Instanzen wird auf Stundenbasis auf ausgeführte VM-Instanzen angewendet. Die von Ihnen erworbenen reservierten Instanzen werden zur Anwendung des Rabatts für reservierte Instanzen auf die von den ausgeführten virtuellen Computern ausgegebene Nutzung abgestimmt. Bei virtuellen Computern, die keine volle Stunde lang ausgeführt werden, wird die reservierte Instanz von anderen virtuellen Computern aufgefüllt, die keine reservierte Instanz verwenden. Dazu gehören auch gleichzeitig ausgeführte virtuelle Computer. Am Ende der Stunde wird die Anwendung der reservierten Instanz für virtuelle Computer für diese Stunde gesperrt. Wenn ein virtueller Computer nicht eine ganze Stunde lang ausgeführt wird oder gleichzeitige virtuelle Computer diese Stunde der reservierten Instanz nicht füllen, ist die reservierte Instanz für diese Stunde nicht vollständig ausgelastet. Im folgenden Diagramm wird die Anwendung einer reservierten Instanz auf die abrechenbare VM-Nutzung veranschaulicht. Die Abbildung basiert auf dem Kauf von einer reservierten Instanz und zwei entsprechenden VM-Instanzen.
 
 ![Screenshot einer angewendeten reservierten Instanzen und zweier entsprechender VM-Instanzen](media/billing-reserved-vm-instance-application/billing-reserved-vm-instance-application.png)
 
-1.  Jegliche Nutzung, die über der Grenze für die reservierte Instanz liegt, wird zu den regulären Preisen für nutzungsbasierte Zahlung in Rechnung gestellt. Die Nutzung unterhalb der Grenze für die reservierte Instanz werden nicht in Rechnung gestellt, da dafür bereits im Rahmen des Kaufs der reservierten Instanz bezahlt wurde.
+1.  Jegliche Nutzung, die über der Grenze für die reservierte Instanz liegt, wird zu den regulären Preisen für nutzungsbasierte Zahlung in Rechnung gestellt. Die Nutzung unterhalb der Grenze für die reservierte Instanz wird nicht in Rechnung gestellt, da diese Nutzung bereits im Rahmen des Kaufs der reservierten Instanz bezahlt wurde.
 2.  In der ersten Stunde wird Instanz 1 für 0,75 Stunden und Instanz 2 für 0,5 Stunden ausgeführt. Die Gesamtnutzung für die erste Stunde beträgt 1,25 Stunden. Ihnen wird der Preis für die nutzungsbasierte Zahlung für die verbleibenden 0,25 Stunden in Rechnung gestellt.
 3.  In der zweiten und dritten Stunde wurden beide Instanzen jeweils eine Stunde lang ausgeführt. Eine Instanz wird durch die reservierte Instanz abgedeckt, die andere wird zu den Preisen für die nutzungsbasierte Zahlung in Rechnung gestellt.
 4.  In der vierten Stunde wird Instanz 1 für 0,5 Stunden und Instanz 2 für 1 Stunde ausgeführt. Instanz 1 wird vollständig durch die reservierte Instanz abgedeckt. Außerdem sind 0,5 Stunden von Instanz 2 abgedeckt. Ihnen wird der Preis für die nutzungsbasierte Zahlung für die verbleibenden 0,5 Stunden in Rechnung gestellt.
 
-Wenn Sie grundlegende Informationen wünschen und die Anwendung Ihrer reservierten Instanzen in Abrechnungsnutzungsberichten anzeigen möchten, lesen Sie [Grundlegendes zur Nutzung reservierter Instanzen für die Enterprise-Registrierung](https://go.microsoft.com/fwlink/?linkid=862757).
+Wenn Sie grundlegende Informationen wünschen und die Anwendung Ihrer reservierten Azure-Instanzen in Abrechnungsnutzungsberichten anzeigen möchten, lesen Sie [Grundlegendes zur Nutzung reservierter Instanzen](https://go.microsoft.com/fwlink/?linkid=862757).
 
 ## <a name="application-of-reserved-instance-discount-to-windows-vms"></a>Anwendung des Rabatts für reservierte Instanzen auf virtuelle Windows-Computer
 Wenn Sie Windows-VM-Instanzen ausführen, wird die reservierte Instanz angewendet, um die Infrastrukturkosten abzudecken. Die Anwendung der reservierten Instanz auf die VM-Infrastrukturkosten ist bei virtuellen Windows-Computern und virtuellen Nicht-Windows-Computern identisch. Windows-Software wird separat basierend auf den vCPUs in Rechnung gestellt. Informationen finden Sie unter [Nicht in reservierten Instanzen enthaltene Windows-Softwarekosten](https://go.microsoft.com/fwlink/?linkid=862756). Sie können Ihre Windows-Lizenzierungskosten mit dem [Azure-Hybridvorteil für Windows Server] (https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) decken.
@@ -49,10 +49,10 @@ Wenn Sie Windows-VM-Instanzen ausführen, wird die reservierte Instanz angewende
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu reservierten Instanzen finden Sie in den folgenden Artikeln:
 
-- [Mit reservierten VM-Instanzen Kosten für virtuelle Computer sparen](billing-save-compute-costs-reservations.md)
-- [Vorauszahlen für virtuelle Computer mit reservierten VM-Instanzen](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Verwalten von reservierten Azure-VM-Instanzen](billing-manage-reserved-vm-instance.md)
-- [Grundlegendes zur Anwendung des Rabatts für reservierte VM-Instanzen](billing-understand-vm-reservation-charges.md)
+- [Was ist Azure Reserved VM Instances?](billing-save-compute-costs-reservations.md)
+- [Vorauszahlen für virtuelle Computer mit Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Verwalten von reservierten Instanzen in Azure](billing-manage-reserved-vm-instance.md)
+- [Grundlegendes zur Anwendung des Rabatts für reservierte Instanzen](billing-understand-vm-reservation-charges.md)
 - [Grundlagen zur Verwendung reservierter Azure-Instanzen für Ihr Abonnement mit nutzungsbasierter Zahlung](billing-understand-reserved-instance-usage.md)
 - [Grundlegendes zur Nutzung reservierter Instanzen für die Enterprise-Registrierung](billing-understand-reserved-instance-usage-ea.md)
 - [Grundlegendes zur Nutzung reservierter Instanzen für CSP-Abonnements](https://docs.microsoft.com/partner-center/azure-reservations)

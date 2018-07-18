@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 0db2291b53c4fe7d2d0894a4c266ed60f78219de
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: cd89c41b43be1da339ca7dcc64110e7145a93903
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857329"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Problembehandlung: Azure Punkt-zu-Standort-Verbindungsprobleme
 
@@ -304,11 +305,11 @@ Um dieses Problem zu lösen, [setzen Sie das Azure-VPN-Gateway zurück](vpn-gate
 ## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Fehler: „Die Sperrfunktion konnte die Sperre nicht überprüfen, weil der Sperrserver offline war.(Fehler 0x80092013)“
 
 ### <a name="causes"></a>Ursachen
-Diese Fehlermeldung tritt auf, wenn der Client nicht auf http://crl3.digicert.com/ssca-sha2-g1.crl und http://crl4.digicert.com/ssca-sha2-g1.cr zugreifen kann.  Für die Sperrprüfung ist Zugriff auf diese beiden Websites erforderlich.  Dieses Problem tritt in der Regel auf dem Client auf, für den der Proxyserver konfiguriert wurde. In einigen Umgebungen wird diese an der Edgefirewall verweigert, wenn die Anforderungen nicht über den Proxyserver erfolgen.
+Diese Fehlermeldung tritt auf, wenn der Client nicht auf http://crl3.digicert.com/ssca-sha2-g1.crl und http://crl4.digicert.com/ssca-sha2-g1.crl zugreifen kann.  Für die Sperrprüfung ist Zugriff auf diese beiden Websites erforderlich.  Dieses Problem tritt in der Regel auf dem Client auf, für den der Proxyserver konfiguriert wurde. In einigen Umgebungen wird diese an der Edgefirewall verweigert, wenn die Anforderungen nicht über den Proxyserver erfolgen.
 
 ### <a name="solution"></a>Lösung
 
-Überprüfen Sie die Proxyservereinstellungen, und stellen Sie sicher, dass der Client auf http://crl3.digicert.com/ssca-sha2-g1.crl und http://crl4.digicert.com/ssca-sha2-g1.cr zugreifen kann.
+Überprüfen Sie die Proxyservereinstellungen, und stellen Sie sicher, dass der Client auf http://crl3.digicert.com/ssca-sha2-g1.crl und http://crl4.digicert.com/ssca-sha2-g1.crl zugreifen kann.
 
 ## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>VPN-Clientfehler: Die Verbindung wurde aufgrund einer auf dem RAS-/VPN-Server konfigurierten Richtlinie verhindert. (Fehler 812)
 

@@ -1,0 +1,63 @@
+- name: Service Fabric Mesh-Dokumentation
+  href: index.yml
+- name: Übersicht
+  expanded: true
+  items:
+    - name: Informationen zu Service Fabric Mesh
+      href: service-fabric-mesh-overview.md
+- name: Schnellstarts
+  items:
+    - name: Bereitstellen von Hallo Welt!
+      href: service-fabric-mesh-quickstart-deploy-container.md
+    - name: Erstellen und Bereitstellen einer Web-Anwendung
+      href: service-fabric-mesh-quickstart-dotnet-core.md
+- name: Tutorials
+  items:
+    - name: Erstellen und Bereitstellen einer Web-App mit mehreren Diensten
+      items:
+        - name: 1. Erstellen einer ASP.NET Core-Anwendung
+          href: service-fabric-mesh-tutorial-create-dotnetcore.md
+        - name: 2. Debuggen der Anwendung
+          href: service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md
+        - name: 3. Bereitstellen der Anwendung
+          href: service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md
+- name: Konzepte
+  items:
+    - name: Begriff
+      href: service-fabric-mesh-terminology.md
+    - name: Service Fabric-Ressourcen
+      href: service-fabric-mesh-service-fabric-resources.md
+    - name: Überwachung und Diagnose
+      href: service-fabric-mesh-monitoring-diagnostics.md
+    - name: Zustandsspeicherung
+      href: service-fabric-mesh-storing-state.md
+- name: Anleitungen
+  items:
+    - name: Einrichten der Entwicklungsumgebung
+      href: service-fabric-mesh-howto-setup-developer-environment-sdk.md
+    - name: Einrichten der Service Fabric Mesh-CLI
+      href: service-fabric-mesh-howto-setup-cli.md
+    - name: Bereitstellen einer .NET Core-Microservices-App
+      href: service-fabric-mesh-howto-deploy-app-template.md
+    - name: Bereitstellen einer App aus einer privaten Registrierung
+      href: service-fabric-mesh-howto-deploy-app-private-registry.md
+    - name: Speichern des Zustands mit Azure Files-Volumes
+      href: service-fabric-mesh-howto-deploy-app-azurefiles-volume.md
+    - name: Unabhängige Skalierung von Microservices in einer App
+      href: service-fabric-mesh-howto-app-scale-out.md
+- name: angeben
+  items:
+    - name: Häufig gestellte Fragen
+      href: service-fabric-mesh-faq.md
+    - name: Beispielanwendungen
+      href: 'https://github.com/Azure-Samples/service-fabric-mesh'
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=service-fabric-mesh'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=service-fabric-mesh'
+    - name: Videos
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-fabric-mesh'
+    - name: Dienstupdates
+      href: 'https://azure.microsoft.com/updates/?product=service-fabric-mesh'
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/regions/services/'

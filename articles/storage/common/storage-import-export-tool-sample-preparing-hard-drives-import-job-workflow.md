@@ -1,12 +1,12 @@
 ---
-title: "Beispielworkflow für die Vorbereitung von Festplatten für einen Importauftrag in Azure Import/Export | Microsoft-Dokumentation"
-description: "Lernen Sie eine exemplarische Vorgehensweise für den vollständigen Prozess der Laufwerkvorbereitung für einen Importauftrag im Azure Import/Export-Dienst kennen."
+title: Beispielworkflow für die Vorbereitung von Festplatten für einen Importauftrag in Azure Import/Export | Microsoft-Dokumentation
+description: Lernen Sie eine exemplarische Vorgehensweise für den vollständigen Prozess der Laufwerkvorbereitung für einen Importauftrag im Azure Import/Export-Dienst kennen.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23059535"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Beispielworkflow für die Vorbereitung von Festplatten für einen Importauftrag
 

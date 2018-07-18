@@ -1,47 +1,55 @@
 ---
 title: Anzeigen von Aktivitätsprotokollen für Änderungen an der rollenbasierten Zugriffssteuerung in Azure | Microsoft-Dokumentation
-description: Zeigen Sie Aktivitätsprotokolle für Änderungen an der rollenbasierten Zugriffssteuerung für die letzten 90 Tage an.
+description: Anzeigen von Aktivitätsprotokollen für Änderungen an der rollenbasierten Zugriffssteuerung (RBAC) für die letzten 90 Tage
 services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.assetid: 2bc68595-145e-4de3-8b71-3a21890d13d9
-ms.service: active-directory
+ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/23/2017
+ms.date: 05/23/2018
 ms.author: rolyon
-ms.reviewer: rqureshi
+ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5e09ccdc4942a39e54b760cb5ad78c035dbc05f8
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 10e0df78d75763dfcf8636983c9f9092b78b9c3b
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32312422"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437648"
 ---
-# <a name="view-activity-logs-for-role-based-access-control-changes"></a>Anzeigen von Aktivitätsprotokoll für Änderungen an der rollenbasierten Zugriffssteuerung
+# <a name="view-activity-logs-for-rbac-changes"></a>Anzeigen von Aktivitätsprotokollen für RBAC-Änderungen
 
-Jedes Mal, wenn ein Benutzer Änderungen an den Rollendefinitionen oder Rollenzuweisungen vornimmt, werden die Änderungen im [Azure-Aktivitätsprotokoll](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) in der Kategorie „Administration“ aufgezeichnet. Sie können die Aktivitätsprotokolle öffnen, um alle Änderungen an der rollenbasierten Zugriffssteuerung für die letzten 90 Tage anzuzeigen.
+In einigen Fällen benötigen Sie Informationen zu Änderungen bei der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC), beispielsweise für die Überwachung oder Problembehandlung. Jedes Mal, wenn ein Benutzer Änderungen an den Rollenzuweisungen oder Rollendefinitionen innerhalb Ihrer Abonnements vornimmt, werden die Änderungen im [Azure-Aktivitätsprotokoll](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) aufgezeichnet. Sie können die Aktivitätsprotokolle öffnen, um alle RBAC-Änderungen für die letzten 90 Tage anzuzeigen.
 
 ## <a name="operations-that-are-logged"></a>Protokollierte Vorgänge
 
 Folgende Vorgänge im Bezug auf die rollenbasierte Zugriffssteuerung werden im Aktivitätsprotokoll erfasst:
 
-- Erstellen oder Aktualisieren von benutzerdefinierten Rollendefinition
-- Löschen von benutzerdefinierten Rollendefinition
 - Erstellen von Rollenzuweisungen
 - Löschen von Rollenzuweisungen
+- Erstellen oder Aktualisieren von benutzerdefinierten Rollendefinition
+- Löschen von benutzerdefinierten Rollendefinition
 
 ## <a name="azure-portal"></a>Azure-Portal
 
-Der einfachste Einstieg besteht im Anzeigen der Aktivitätsprotokolle im Azure-Portal. Auf folgendem Screenshot sehen Sie ein Beispiel für ein Aktivitätsprotokoll, das gefiltert wurde, um die Kategorie **Administration** und die Vorgänge „Rollendefinition“ und „Rollenzuweisung“ anzuzeigen. Es enthält ebenfalls einen Link, um die Protokolle als CSV-Datei herunterzuladen.
+Der einfachste Einstieg besteht im Anzeigen der Aktivitätsprotokolle im Azure-Portal. Im folgendem Screenshot sehen Sie ein Beispiel für ein Aktivitätsprotokoll, das gefiltert wurde, um Vorgänge rund um Rollenzuweisungen und -definitionen anzuzeigen. Es enthält ebenfalls einen Link, um die Protokolle als CSV-Datei herunterzuladen.
 
 ![Screenshot: Aktivitätsprotokolle im Portal](./media/change-history-report/activity-log-portal.png)
 
-Weitere Informationen finden Sie in der [Anzeigen von Ereignissen im Aktivitätsprotokoll](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
+Das Aktivitätsprotokoll im Portal verfügt über mehrere Filter. Im Folgenden die Filter für die rollenbasierte Zugriffssteuerung:
+
+|Filter  |Wert  |
+|---------|---------|
+|Ereigniskategorie     | <ul><li>Administrative</li></ul>         |
+|Vorgang     | <ul><li>Erstellen von Rollenzuweisungen</li> <li>Löschen von Rollenzuweisungen</li> <li>Erstellen oder Aktualisieren von benutzerdefinierten Rollendefinition</li> <li>Löschen von benutzerdefinierten Rollendefinition</li></ul>      |
+
+
+Weitere Informationen zu Aktivitätsprotokollen finden Sie unter [Anzeigen von Ereignissen im Aktivitätsprotokoll](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -100,7 +108,7 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 ## <a name="azure-log-analytics"></a>Azure Log Analytics
 
-[Azure Log Analytics](../log-analytics/log-analytics-overview.md) ist ein weiteres Tool, das Sie verwenden können, um Änderungen an der rollenbasierten Zugriffssteuerung für alle Azure-Ressourcen zu erfassen und zu analysieren. Log Analytics hat folgende Vorteile:
+[Azure Log Analytics](../log-analytics/log-analytics-overview.md) ist ein weiteres Tool, das Sie verwenden können, um RBAC-Änderungen für alle Azure-Ressourcen zu erfassen und zu analysieren. Log Analytics hat folgende Vorteile:
 
 - Schreiben komplexer Abfragen und Logiken
 - Integration in Warnungen, Power BI und andere Tools

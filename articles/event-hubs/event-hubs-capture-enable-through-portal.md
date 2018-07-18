@@ -1,12 +1,12 @@
 ---
-title: "Aktivieren von Event Hubs Capture über das Portal | Microsoft-Dokumentation"
-description: "Aktivieren Sie die Event Hubs Capture-Feature über das Azure-Portal."
+title: Aktivieren von Event Hubs Capture über das Portal | Microsoft-Dokumentation
+description: Aktivieren Sie die Event Hubs Capture-Feature über das Azure-Portal.
 services: event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "26855010"
 ---
 # <a name="enable-event-hubs-capture-using-the-azure-portal"></a>Aktivieren von Event Hubs Capture über das Azure-Portal
 

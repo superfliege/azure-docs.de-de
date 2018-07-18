@@ -10,32 +10,32 @@ In Bing haben Sie die Möglichkeit, Unicode-Zeichen oder HTML-Tags als Markierun
   
 Wenn `textDecorations` auf **true** festgelegt ist, können in Bing die unten angegebenen Markierungen in die Anzeigezeichenfolgen von Antworten eingefügt werden. Falls keine HTML-Entsprechung vorhanden ist, enthält die Spalte „HTML“ der Tabelle keine Angabe.
 
-|Unicode|HTML|Beschreibung
+|Unicode|HTML|BESCHREIBUNG
 |-|-|-
-|U+E000|\<b>|Markiert den Anfang des Abfrageausdrucks (Treffermarkierung)
-|U+E001|\</b>|Markiert das Ende des Abfrageausdrucks
-|U+E002|\<i>|Markiert den Anfang von Text in Kursivdruck 
-|U+E003|\</i>|Markiert das Ende von Text in Kursivdruck
-|U+E004|\<br/>|Markiert einen Zeilenumbruch
+|U+E000|\<b&gt;|Markiert den Anfang des Abfrageausdrucks (Treffermarkierung)
+|U+E001|\</b&gt;|Markiert das Ende des Abfrageausdrucks
+|U+E002|\<i&gt;|Markiert den Anfang von Text in Kursivdruck 
+|U+E003|\</i&gt;|Markiert das Ende von Text in Kursivdruck
+|U+E004|\<br/&gt;|Markiert einen Zeilenumbruch
 |U+E005||Markiert den Anfang einer Telefonnummer
 |U+E006||Markiert das Ende einer Telefonnummer
 |U+E007||Markiert den Anfang einer Adresse
 |U+E008||Markiert das Ende einer Adresse
 |U+E009|\&nbsp;|Markiert ein geschütztes Leerzeichen
-|U+E00C|\<strong>|Markiert den Anfang von Text in Fettdruck
-|U+E00D|\</strong>|Markiert das Ende von Text in Fettdruck
+|U+E00C|\<strong&gt;|Markiert den Anfang von Text in Fettdruck
+|U+E00D|\</strong&gt;|Markiert das Ende von Text in Fettdruck
 |U+E00E||Markiert den Anfang von Text, dessen Hintergrund heller als der umgebende Hintergrund sein soll
 |U+E00F||Markiert das Ende von Text, dessen Hintergrund heller als der umgebende Hintergrund sein soll
 |U+E010||Markiert den Anfang von Text, dessen Hintergrund dunkler als der umgebende Hintergrund sein soll
 |U+E011||Markiert das Ende von Text, dessen Hintergrund dunkler als der umgebende Hintergrund sein soll
-|U+E012|\<del>|Markiert den Anfang von Text, der durchgestrichen sein soll
-|U+E013|\</del>|Markiert das Ende von Text, der durchgestrichen sein soll
-|U+E016|\<sub>|Markiert den Anfang von tiefgestelltem Text
-|U+E017|\</sub>|Markiert das Ende von tiefgestelltem Text
-|U+E018|\<sup>|Markiert den Anfang von hochgestelltem Text
-|U+E019|\</sup>|Markiert das Ende von hochgestelltem Text
+|U+E012|\<del&gt;|Markiert den Anfang von Text, der durchgestrichen sein soll
+|U+E013|\</del&gt;|Markiert das Ende von Text, der durchgestrichen sein soll
+|U+E016|\<sub&gt;|Markiert den Anfang von tiefgestelltem Text
+|U+E017|\</sub&gt;|Markiert das Ende von tiefgestelltem Text
+|U+E018|\<sup&gt;|Markiert den Anfang von hochgestelltem Text
+|U+E019|\</sup&gt;|Markiert das Ende von hochgestelltem Text
 
-Das folgende Beispiel enthält die Antwort `Computation` mit Tiefstellungsmarkierungen für einen log(2)-Abfrageausdruck. Das Feld `expression` enthält die Markierungen nur dann, wenn „textDecoration“ auf **true** festgelegt ist.
+Das folgende Beispiel enthält die Antwort `Computation` mit Tiefstellungsmarkierungen für einen log(2)-Abfrageausdruck. Das Feld `expression` enthält die Markierungen nur dann, wenn für `textDecoration` **true** festgelegt ist.
 
 ![Computation-Markierungen](./media/cognitive-services-bing-hit-highlighting/bing-markers-computation.PNG) 
 

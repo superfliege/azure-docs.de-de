@@ -1,12 +1,12 @@
 ---
-title: "Sicherheit für Ihr StorSimple-Gerät | Microsoft Docs"
-description: "Beschreibt Sicherheitskonventionen, Richtlinien und Überlegungen. Darüber hinaus wird erläutert, wie das StorSimple-Gerät sicher installiert und verwendet wird."
+title: Sicherheit für Ihr StorSimple-Gerät | Microsoft Docs
+description: Beschreibt Sicherheitskonventionen, Richtlinien und Überlegungen. Darüber hinaus wird erläutert, wie das StorSimple-Gerät sicher installiert und verwendet wird.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108658"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>Sichere Installation und Verwendung des StorSimple-Geräts
 ![Symbol "Warnung"](./media/storsimple-safety/IC740879.png)

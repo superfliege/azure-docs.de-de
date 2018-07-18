@@ -1,6 +1,6 @@
 ---
-title: "Datentreuhänder für Azure Deutschland | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält Informationen zum Datentreuhändermodell."
+title: Datentreuhänder für Azure Deutschland | Microsoft-Dokumentation
+description: Dieser Artikel enthält Informationen zum Datentreuhändermodell.
 services: germany
 cloud: na
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22647071"
 ---
 # <a name="data-trustee-principle"></a>Das Microsoft Datentreuhänderprinzip
 

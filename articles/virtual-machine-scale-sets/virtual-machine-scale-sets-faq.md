@@ -16,21 +16,22 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: 2b0f463c009d13440f6d3eb2bbbe2315ba7b13f2
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: bf73f9419732e93c1f32f2fb39d3acee02f49b64
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895322"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34656440"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 
 Hier erhalten Sie Antworten auf häufig gestellte Fragen zu VM-Skalierungsgruppen in Azure.
 
 ## <a name="top-frequently-asked-questions-for-scale-sets"></a>Die am häufigsten gestellten Fragen zu Skalierungsgruppen
+
 **F.** Wie viele virtuelle Computer können in einer Skalierungsgruppe enthalten sein?
 
-**A.** Eine Skalierungsgruppe kann zwischen 0 und 1.000 virtuelle Computer (Plattformimages) bzw. 0 bis 300 virtuelle Computer (benutzerdefinierte Images) enthalten. 
+**A.** Eine Skalierungsgruppe kann zwischen 0 und 1.000 virtuelle Computer (Plattformimages) bzw. 0 bis 300 virtuelle Computer (benutzerdefinierte Images) enthalten.
 
 **F.** Werden Datenträger in Skalierungsgruppen unterstützt?
 
@@ -48,7 +49,7 @@ Hier erhalten Sie Antworten auf häufig gestellte Fragen zu VM-Skalierungsgruppe
 
 **F.** Wie erstelle ich eine Skalierungsgruppe mit einem benutzerdefinierten Image?
 
-**A.** Erstellen Sie einen verwalteten Datenträger auf der Grundlage Ihrer VHD mit benutzerdefiniertem Image, und verweisen Sie in Ihrer Skalierungsgruppenvorlage darauf. Ein entsprechendes Beispiel finden Sie [hier](https://github.com/chagarw/MDPP/tree/master/101-vmss-custom-os).
+**A.** Erstellen und erfassen Sie ein VM-Image, und verwenden Sie es dann als Quelle für Ihre Skalierungsgruppe. Ein Tutorial zum Erstellen und Verwenden eines benutzerdefinierten VM-Images finden Sie unter [Azure CLI 2.0](tutorial-use-custom-image-cli.md) oder [Azure PowerShell](tutorial-use-custom-image-powershell.md).
 
 **F.** Welche virtuellen Computer werden entfernt, wenn ich meine Kapazität für Skalierungsgruppen von 20 auf 15 verringere?
 
@@ -120,7 +121,7 @@ In dem Beispiel werden die CPU-Metrik auf der Hostebene und die Metrik für die 
 
 Metrikwarnungen für VM-Skalierungsgruppen können über PowerShell oder über die Azure-Befehlszeilenschnittstelle erstellt werden. Weitere Informationen finden Sie unter [Azure Monitor – PowerShell-Schnellstartbeispiele](https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules) und unter [Azure Monitor – Schnellstartbeispiele für die plattformübergreifende CLI](https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts).
 
-Die Zielressourcen-ID (TargetResourceId) der VM-Skalierungsgruppe sieht wie folgt aus: 
+Die Zielressourcen-ID (TargetResourceId) der VM-Skalierungsgruppe sieht wie folgt aus:
 
 /subscriptions/IhreAbonnementID/resourceGroups/<Ihre Ressourcengruppe>/providers/Microsoft.Compute/virtualMachineScaleSets/<Name Ihrer VM-Skalierungsgruppe>
 
@@ -128,8 +129,12 @@ Als Metrik, für die eine Warnung festgelegt werden soll, können Sie einen beli
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>Wie richte ich die automatische Skalierung für eine VM-Skalierungsgruppe mithilfe von PowerShell ein?
 
-Informationen zum Einrichten der automatischen Skalierung für eine VM-Skalierungsgruppe mithilfe von PowerShell finden Sie im Blogbeitrag [How to add autoscale to an Azure VM scale set](https://msftstack.wordpress.com/2017/03/05/how-to-add-autoscale-to-an-azure-vm-scale-set/) (Hinzufügen der automatischen Skalierung zu einer Azure-VM-Skalierungsgruppe).
+Informationen zum Einrichten der automatischen Skalierung für eine VM-Skalierungsgruppe mithilfe von PowerShell finden Sie unter dem Thema [Automatische Skalierung einer VM-Skalierungsgruppe](tutorial-autoscale-powershell.md). Außerdem können Sie die automatische Skalierung mit [Azure CLI 2.0](tutorial-autoscale-cli.md) und [Azure-Vorlagen](tutorial-autoscale-template.md) konfigurieren.
 
+
+### <a name="if-i-have-stopped-deallocated-a-vm-is-that-vm-started-as-part-of-an-autoscale-operation"></a>Wird eine VM, wenn ich sie beendet (d.h. deren Zuordnung aufgehoben) habe, bei einer automatischen Skalierung erneut gestartet?
+
+Nein. Wenn Regeln für die automatische Skalierung zusätzliche VM-Instanzen als Teil einer Skalierungsgruppe erfordern, wird eine neue VM-Instanz erstellt. VM-Instanzen, die beendet (bzw. deren Zuordnung aufgehoben) wurden, werden nicht im Rahmen einer automatischen Skalierung gestartet. Die beendeten (freigegebenen) VMs können jedoch im Zuge einer automatischen Skalierung gelöscht werden, die die Anzahl der Instanzen skaliert, so wie jede VM-Instanz in der Reihenfolge der VM-Instanz-ID gelöscht werden kann.
 
 
 

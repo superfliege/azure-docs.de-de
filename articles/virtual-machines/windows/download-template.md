@@ -1,11 +1,11 @@
 ---
-title: "Herunterladen der Vorlage für einen virtuellen Azure-Computer | Microsoft Docs"
-description: "Herunterladen der Vorlage für einen virtuellen Computer für die Automatisierung von Bereitstellungen im Resource Manager-Bereitstellungsmodell"
+title: Herunterladen der Vorlage für einen virtuellen Azure-Computer | Microsoft Docs
+description: Herunterladen der Vorlage für einen virtuellen Computer für die Automatisierung von Bereitstellungen im Resource Manager-Bereitstellungsmodell
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 51ef4f51-0942-4249-afea-4a3f87ce1ff8
 ms.service: virtual-machines-windows
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/02/2017
+ms.locfileid: "26055788"
 ---
 # <a name="download-the-template-for-a-vm"></a>Herunterladen einer Vorlage für einen virtuellen Computer
 Wenn Sie über das Portal oder mithilfe von PowerShell einen virtuellen Computer in Azure erstellen, wird automatisch eine Resource Manager-Vorlage für Sie erstellt. Sie können diese Vorlage verwenden, um eine Bereitstellung schnell zu duplizieren. Die Vorlage enthält Informationen über alle Ressourcen in einer Ressourcengruppe. Bei virtuellen Computern bedeutet dies, dass die Vorlage alle Elemente enthält, die zur Unterstützung des virtuellen Computers in dieser Ressourcengruppe erstellt wurden – einschließlich der Netzwerkressourcen.

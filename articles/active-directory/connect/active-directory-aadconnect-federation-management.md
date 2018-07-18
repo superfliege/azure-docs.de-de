@@ -1,12 +1,12 @@
 ---
-title: "Azure AD Connect – Verwalten und Anpassen von AD FS | Microsoft-Dokumentation"
-description: "Enthält eine Beschreibung der AD FS-Verwaltung mithilfe von Azure AD Connect und Anpassung der AD FS-Anmeldung für Benutzer mit Azure AD Connect und PowerShell."
+title: Azure AD Connect – Verwalten und Anpassen von AD FS | Microsoft-Dokumentation
+description: Enthält eine Beschreibung der AD FS-Verwaltung mithilfe von Azure AD Connect und Anpassung der AD FS-Anmeldung für Benutzer mit Azure AD Connect und PowerShell.
 keywords: AD FS, ADFS, AD FS Verwaltung, AAD Connect, Connect, anmelden, AD FS Anpassung, Vertrauensstellung reparieren, O365, Verbund, vertrauende Seite
 services: active-directory
-documentationcenter: 
-author: anandyadavmsft
+documentationcenter: ''
+author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 2593b6c6-dc3f-46ef-8e02-a8e2dc4e9fb9
 ms.service: active-directory
 ms.workload: identity
@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 49acea5c08a10ba3b60d0db5f05e30d573f5e507
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 5597d75da50853e85d6e94f1a5c7b5114068f671
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916995"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Verwaltung und Anpassung der Active Directory-Verbunddienste mit Azure AD Connect
 In diesem Artikel wird beschrieben, wie Active Directory-Verbunddienste (AD FS) mit Azure Active Directory (Azure AD) Connect verwaltet und angepasst werden. Darüber hinaus werden andere gängige AD FS-Aufgaben behandelt, die Sie möglicherweise zur vollständigen Konfiguration einer AD FS-Farm benötigen.
@@ -173,8 +175,7 @@ Das Hinzufügen einer Domäne, die einen Verbund mit Azure AD bilden soll, ist m
 
     Nach der Auswahl der Domäne erhalten Sie vom Assistenten die entsprechenden Informationen zu weiteren Aktionen, die er ausführt, sowie zur Auswirkung der Konfiguration. In einigen Fällen – wenn Sie eine Domäne auswählen, die noch nicht in Azure AD überprüft wurde – erhalten Sie vom Assistenten Informationen zur Überprüfung der Domäne. Ausführliche Informationen finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../active-directory-domains-add-azure-portal.md) .
 
-5. Klicken Sie auf **Weiter**.
- Auf der Seite **Bereit zur Konfiguration** wird die Liste mit den Aktionen angezeigt, die von Azure AD Connect ausgeführt werden. Klicken Sie auf **Installieren** , um die Konfiguration abzuschließen.
+5. Klicken Sie auf **Weiter**. Auf der Seite **Bereit zur Konfiguration** wird die Liste mit den Aktionen angezeigt, die von Azure AD Connect ausgeführt werden. Klicken Sie auf **Installieren** , um die Konfiguration abzuschließen.
 
    ![Bereit zur Konfiguration](media/active-directory-aadconnect-federation-management/AdditionalDomain5.PNG)
 
@@ -224,7 +225,7 @@ Durch die Verwendung von **add** anstelle von **issue** vermeiden Sie außerdem 
     NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
     => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
 
-Diese Regel definiert das temporäre Flag **idflag**, das auf **useguid** festgelegt ist, wenn **ms-ds-concistencyguid** für den Benutzer nicht ausgefüllt ist. Die Logik dahinter ist die Tatsache, dass AD FS leere Ansprüche nicht zulässt. Wenn also die Ansprüche „http://contoso.com/ws/2016/02/identity/claims/objectguid“ und „http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid“ in Regel 1 hinzugefügt werden, erhalten Sie den Anspruch **msdsconsistencyguid** nur, wenn der Wert für den Benutzer ausgefüllt ist. Wenn er nicht ausgefüllt ist, merkt AD FS, dass ein leerer Wert vorhanden ist, und verwirft ihn sofort. Alle Objekte verfügen über **objectGuid**, sodass dieser Anspruch immer vorhanden ist, nachdem Regel 1 ausgeführt wurde.
+Diese Regel definiert das temporäre Flag **idflag**, das auf **useguid** festgelegt ist, wenn **ms-ds-concistencyguid** für den Benutzer nicht ausgefüllt ist. Die Logik dahinter ist die Tatsache, dass AD FS leere Ansprüche nicht zulässt. Wenn Sie also in der Regel 1 die Ansprüche http://contoso.com/ws/2016/02/identity/claims/objectguid und http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid hinzufügen, erhalten Sie den Anspruch **msdsconsistencyguid** nur, wenn der Wert für den Benutzer ausgefüllt ist. Wenn er nicht ausgefüllt ist, merkt AD FS, dass ein leerer Wert vorhanden ist, und verwirft ihn sofort. Alle Objekte verfügen über **objectGuid**, sodass dieser Anspruch immer vorhanden ist, nachdem Regel 1 ausgeführt wurde.
 
 **Regel 3: Ausgeben von „ms-ds-consistencyguid“ als unveränderliche ID, sofern vorhanden**
 
@@ -245,31 +246,8 @@ In dieser Regel überprüfen Sie einfach das temporäre Flag **idflag**. Sie ent
 > Die Reihenfolge dieser Regeln ist wichtig.
 
 ### <a name="sso-with-a-subdomain-upn"></a>SSO mit Unterdomänen-UPN
-Mit Azure AD Connect können Sie mehrere Domänen für den Verbund hinzufügen. Dies ist unter [Hinzufügen einer neuen Verbunddomäne](active-directory-aadconnect-federation-management.md#addfeddomain) beschrieben. Sie müssen den UPN-Anspruch (User Principal Name, Benutzerprinzipalname) ändern, damit die Aussteller-ID der Stammdomäne entspricht und nicht der Unterdomäne, da die Verbundstammdomäne auch das untergeordnete Element abdeckt.
 
-Standardmäßig wird die Anspruchsregel für die Aussteller-ID wie folgt festgelegt:
-
-    c:[Type
-    == “http://schemas.xmlsoap.org/claims/UPN“]
-
-    => issue(Type = “http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(c.Value, “.+@(?<domain>.+)“, “http://${domain}/adfs/services/trust/“));
-
-![Aussteller-ID-Standardanspruch](media/active-directory-aadconnect-federation-management/issuer_id_default.png)
-
-Die Standardregel verwendet einfach das UPN-Suffix im Anspruch der Aussteller-ID. John ist z.B. ein Benutzer in „sub.contoso.com“, und „contoso.com“ bildet mit Azure AD einen Verbund. John gibt bei der Anmeldung bei Azure AD john@sub.contoso.com als Benutzernamen ein. Die Standardanspruchsregel für die Aussteller-ID verarbeitet diesen wie folgt:
-
-    c:[Type
-    == “http://schemas.xmlsoap.org/claims/UPN“]
-
-    => issue(Type = “http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(john@sub.contoso.com, “.+@(?<domain>.+)“, “http://${domain}/adfs/services/trust/“));
-
-**Anspruchswert:** http://sub.contoso.com/adfs/services/trust/
-
-Damit nur die Stammdomäne im Ausstelleranspruchswert enthalten ist, ändern Sie die Anspruchsregel wie folgt:
-
-    c:[Type == “http://schemas.xmlsoap.org/claims/UPN“]
-
-    => issue(Type = “http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(c.Value, “^((.*)([.|@]))?(?<domain>[^.]*[.].*)$”, “http://${domain}/adfs/services/trust/“));
+Mit Azure AD Connect können Sie mehrere Domänen für den Verbund hinzufügen. Dies ist unter [Hinzufügen einer neuen Verbunddomäne](active-directory-aadconnect-federation-management.md#addfeddomain) beschrieben. Ab der Azure AD Connect-Version 1.1.553.0 wird automatisch die korrekte Anspruchsregel für „issuerID“ erstellt. Sollten Sie die Azure AD Connect-Version 1.1.553.0 (oder eine höhere Version) nicht verwenden können, verwenden Sie das Tool [Azure AD RPT Claim Rules](https://aka.ms/aadrptclaimrules), um korrekte Anspruchsregeln für die Azure AD-Vertrauensstellung der vertrauenden Seite zu generieren und festzulegen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Erfahren Sie mehr über [Azure AD Connect-Optionen für die Benutzeranmeldung](active-directory-aadconnect-user-signin.md).

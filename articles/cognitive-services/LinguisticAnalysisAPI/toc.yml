@@ -1,0 +1,29 @@
+- name: Dokumentation zur API für linguistische Analyse
+- name: Übersicht
+  items:
+    - name: Worum handelt es sich bei der API für linguistische Analyse?
+      href: Home.md
+- name: Anleitung
+  items:
+    - name: Analysenamen
+      href: Analyzer-Names.md
+    - name: Konstituentenanalyse
+      href: Constituency-Parsing.md
+    - name: Satzteilmarkierung
+      href: POS-tagging.md
+    - name: Sätze und Token
+      href: Sentences-and-Tokens.md
+    - name: Analysieren der Methode
+      href: AnalyzeMethod.md
+    - name: Analysemethode
+      href: AnalyzersMethod.md
+- name: Verweis
+  items:
+    - name: API für linguistische Analyse
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56ea598f778daf01942505ff/operations/56ea5a1cca73071fd4b102bb'
+    - name: Windows SDK
+      href: 'https://github.com/Microsoft/Cognitive-linguisticanalysis-windows'
+- name: angeben
+  items:
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/555928-linguistic-analysis-api'

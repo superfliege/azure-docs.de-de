@@ -1,0 +1,26 @@
+- name: Dokumentation zu virtuellen Computern
+  href: index.md
+- name: Virtuelle Linux-Computer in Azure
+  href: linux/overview.md
+- name: Virtuelle Windows-Computer in Azure
+  href: windows/overview.md
+- name: Dokumentation zu VM-Erweiterungen
+  href: extensions/overview.md
+- name: Workloads
+  items:
+    - name: Oracle
+      href: workloads/oracle/oracle-considerations.md
+    - name: SAP
+      href: workloads/sap/get-started.md
+- name: Klassische Bereitstellungen
+  items:
+    - name: Linux-VMs mit klassischer Bereitstellung
+      href: linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json
+    - name: Windows-VMs mit klassischer Bereitstellung
+      href: windows/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json
+- name: angeben
+  items:
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: Preisrechner
+      href: 'https://azure.microsoft.com/pricing/calculator/'

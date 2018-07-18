@@ -10,24 +10,25 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/10/2018
+ms.topic: conceptual
+ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b54138c5197d1c5870eed6fd4782e47c6a8b0300
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 505f7345af6224b767d6d3719c123d91f54e48f5
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054291"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Handbuch zur Leistung und Optimierung der Kopieraktivität
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: allgemein verfügbar](data-factory-copy-activity-performance.md)
-> * [Version 2 – Vorschauversion](../copy-activity-performance.md)
+> * [Version 1](data-factory-copy-activity-performance.md)
+> * [Version 2 (aktuelle Version)](../copy-activity-performance.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Wenn Sie Version 2 des Data Factory-Diensts verwenden, die sich derzeit in der Vorschauphase befindet, finden Sie weitere Informationen unter [Copy activity performance and tuning guide for Data Factory version 2 (Handbuch zur Leistung und Optimierung der Kopieraktivität für Version 2 von Data Factory)](../copy-activity-performance.md).
+> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [Leistung der Kopieraktivität und Anleitung für das Optimieren für Data Factory](../copy-activity-performance.md).
 
 Die Azure Data Factory-Kopieraktivität bietet eine erstklassige, sichere und zuverlässige Lösung zum Laden von Daten mit hoher Leistung. Sie können Dutzende von Terabytes an Daten täglich zwischen einer großen Vielzahl von Cloud- und lokalen Datenspeichern kopieren. Blitzschnelles Datenladen ist wesentlich, um sicherzustellen, dass Sie sich auf das „Big Data“-Kernproblem konzentrieren können: Erstellen erweiterter Analyselösungen und tiefe Einblicke in all diese Daten.
 
@@ -102,8 +103,8 @@ Eine **Einheit für Clouddatenverschiebungen** (Data Movement Unit, DMU) ist ein
 
 | Kopierszenario | Vom Dienst bestimmte Standard-DMUs |
 |:--- |:--- |
-| Kopieren von Daten zwischen dateibasierten Speichern | Zwischen 2 und 16, abhängig von der Anzahl und Größe der Dateien |
-| Alle anderen Kopierszenarios | 2 |
+| Kopieren von Daten zwischen dateibasierten Speichern | Zwischen 4 und 16, abhängig von der Anzahl und Größe der Dateien |
+| Alle anderen Kopierszenarios | 4 |
 
 Sie können diese Standardeinstellung überschreiben, indem Sie wie im Anschluss beschrieben einen Wert für die **cloudDataMovementUnits** -Eigenschaft angeben. Die **zulässigen Werte** für die Eigenschaft **cloudDataMovementUnits** sind: 2, 4, 8, 16, 32. Die **tatsächliche Anzahl von Cloud-DMUs**, die der Kopiervorgang zur Laufzeit verwendet, entspricht maximal dem konfigurierten Wert. Dies ist abhängig von Ihrem Datenmuster. Informationen zum Umfang des möglichen Leistungsgewinns durch Konfigurieren weiterer Einheiten für eine bestimmte Kopierquelle und -senke finden Sie in der [Leistungsreferenz](#performance-reference).
 
@@ -251,7 +252,7 @@ Wir empfehlen, die folgenden Schritte auszuführen, um die Leistung des Data Fac
 
 1. **Einrichten einer Baseline**. Testen Sie Ihre Pipeline mit der Kopieraktivität in der Entwicklungsphase mit repräsentativen Beispieldaten. Mithilfe des [Slicing-Modells](data-factory-scheduling-and-execution.md) von Data Factory können Sie die verwendete Datenmenge beschränken.
 
-   Erfassen Sie mithilfe der **App „Überwachung und Verwaltung“**die Ausführungszeit und die Leistungsmerkmale. Wählen Sie auf Ihrer Data Factory-Startseite die Option **Überwachen und verwalten** aus. Wählen Sie in der Strukturansicht das **Ausgabedataset**aus. Wählen Sie in der Liste **Activity Windows** (Aktivitätsfenster) die ausgeführte Kopieraktivität aus. **Activity Windows** (Aktivitätsfenster) werden die Dauer der Kopieraktivität und die Größe der kopierten Daten aufgeführt. Der Durchsatz ist im **Activity Window Explorer**(Aktivitätsfenster-Explorer) angegeben. Unter [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der neuen App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md)erfahren Sie mehr über die App.
+   Erfassen Sie mithilfe der **App „Überwachung und Verwaltung“** die Ausführungszeit und die Leistungsmerkmale. Wählen Sie auf Ihrer Data Factory-Startseite die Option **Überwachen und verwalten** aus. Wählen Sie in der Strukturansicht das **Ausgabedataset**aus. Wählen Sie in der Liste **Activity Windows** (Aktivitätsfenster) die ausgeführte Kopieraktivität aus. **Activity Windows** (Aktivitätsfenster) werden die Dauer der Kopieraktivität und die Größe der kopierten Daten aufgeführt. Der Durchsatz ist im **Activity Window Explorer**(Aktivitätsfenster-Explorer) angegeben. Unter [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der neuen App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md)erfahren Sie mehr über die App.
 
    ![Aktivitätsausführung – Details](./media/data-factory-copy-activity-performance/mmapp-activity-run-details.png)
 
@@ -288,15 +289,15 @@ Wenn Sie Daten aus Blob Storage in SQL Data Warehouse kopieren, können Sie die 
 ### <a name="file-based-data-stores"></a>Dateibasierte Datenspeicher
 *(Einschließlich Blobspeicher, Data Lake Store, Amazon S3, lokale Dateisysteme und lokales HDFS)*
 
-* **Durchschnittliche Größe und Anzahl von Dateien:**Die Kopieraktivität überträgt Daten als einzelne Dateien. Aufgrund der Bootstrap-Phase für die einzelnen Dateien ist der Gesamtdurchsatz bei gleicher zu verschiebender Datenmenge geringer, wenn die Daten nicht aus einer geringen Anzahl großer Dateien, sondern aus zahlreichen kleinen Dateien bestehen. Kombinieren Sie kleine Dateien daher möglichst zu größeren Dateien, um einen höheren Durchsatz zu erzielen.
+* **Durchschnittliche Größe und Anzahl von Dateien:** Die Kopieraktivität überträgt Daten als einzelne Dateien. Aufgrund der Bootstrap-Phase für die einzelnen Dateien ist der Gesamtdurchsatz bei gleicher zu verschiebender Datenmenge geringer, wenn die Daten nicht aus einer geringen Anzahl großer Dateien, sondern aus zahlreichen kleinen Dateien bestehen. Kombinieren Sie kleine Dateien daher möglichst zu größeren Dateien, um einen höheren Durchsatz zu erzielen.
 * **Dateiformat und Komprimierung:** Weitere Methoden zur Verbesserung der Leistung finden Sie in den Abschnitten [Hinweise zur Serialisierung/Deserialisierung](#considerations-for-serialization-and-deserialization) und [Hinweise zur Komprimierung](#considerations-for-compression).
 * Informationen zum Szenario mit **lokalem Dateisystem**, bei dem das **Datenverwaltungsgateway** benötigt wird, finden Sie im Abschnitt [Hinweise zum Datenverwaltungsgateway](#considerations-for-data-management-gateway).
 
 ### <a name="relational-data-stores"></a>Relationale Datenspeicher
 *(Einschließlich SQL-Datenbank, SQL Data Warehouse, Amazon Redshift, SQL Server-Datenbanken sowie Oracle-, MySQL-, DB2-, Teradata-, Sybase- und PostgreSQL-Datenbanken etc.)*
 
-* **Datenmuster:**Ihr Tabellenschema hat Auswirkungen auf den Durchsatz beim Kopieren. Eine hohe Zeilengröße liefert zum Kopieren derselben Datenmenge eine bessere Leistung als eine niedrige. Der Grund ist, dass die Datenbank weniger Batches von Daten mit weniger Zeilen effizienter abrufen kann.
-* **Abfrage oder gespeicherte Prozedur:**Optimieren Sie die Logik der Abfrage oder gespeicherten Prozedur, die Sie in der Quelle der Kopieraktivität angeben, um Daten effizienter abzurufen.
+* **Datenmuster:** Ihr Tabellenschema hat Auswirkungen auf den Durchsatz beim Kopieren. Eine hohe Zeilengröße liefert zum Kopieren derselben Datenmenge eine bessere Leistung als eine niedrige. Der Grund ist, dass die Datenbank weniger Batches von Daten mit weniger Zeilen effizienter abrufen kann.
+* **Abfrage oder gespeicherte Prozedur:** Optimieren Sie die Logik der Abfrage oder gespeicherten Prozedur, die Sie in der Quelle der Kopieraktivität angeben, um Daten effizienter abzurufen.
 * Informationen zu **lokalen relationalen Datenbanken** wie SQL Server und Oracle, für die das **Datenverwaltungsgateway** verwendet werden muss, finden Sie im Abschnitt [Hinweise zum Gateway](#considerations-on-data-management-gateway).
 
 ## <a name="considerations-for-the-sink"></a>Hinweise zur Senke
@@ -312,7 +313,7 @@ Wenn Sie Daten aus **Blob Storage** in **SQL Data Warehouse** kopieren, können 
 
 * **Kopierverhalten**: Wenn Sie Daten aus einem anderen dateibasierten Datenspeicher kopieren, stehen über die **copyBehavior**-Eigenschaft drei Optionen für die Kopieraktivität zur Verfügung: Das Beibehalten oder Abflachen der Hierarchie verursacht nur einen geringen oder gar keinen Zusatzaufwand. Das Zusammenführen von Dateien ist hingegen mit einem gesteigerten Zusatzaufwand verbunden.
 * **Dateiformat und Komprimierung:** Weitere Methoden zur Verbesserung der Leistung finden Sie in den Abschnitten [Hinweise zur Serialisierung/Deserialisierung](#considerations-for-serialization-and-deserialization) und [Hinweise zur Komprimierung](#considerations-for-compression).
-* **Blob Storage:**Blob Storage unterstützt derzeit nur Blockblobs für die Optimierung von Datenübertragung und Durchsatz.
+* **Blob Storage:** Blob Storage unterstützt derzeit nur Blockblobs für die Optimierung von Datenübertragung und Durchsatz.
 * Informationen zu Szenarien mit **lokalem Dateisystem**, in denen das **Datenverwaltungsgateway** verwendet werden muss, finden Sie im Abschnitt [Hinweise zum Datenverwaltungsgateway](#considerations-for-data-management-gateway).
 
 ### <a name="relational-data-stores"></a>Relationale Datenspeicher
@@ -346,16 +347,16 @@ Serialisierung und Deserialisierung können auftreten, wenn Ihr Eingabe- oder Au
   * Wenn Eingabe- und Ausgabedataset unterschiedliche Dateiformate oder Konfigurationen (etwa Trennzeichen) besitzen, deserialisiert und transformiert der Datenverschiebungsdienst die zu streamenden Quelldaten und serialisiert sie anschließend in das von Ihnen angegebene Ausgabeformat. Dies ist im Vergleich zu anderen Szenarien mit einem wesentlich höheren Aufwand verbunden.
 * Wenn Sie Dateien in einen oder aus einem nicht dateibasierten Datenspeicher kopieren (etwa aus einem dateibasierten Speicher in einen relationalen Speicher), ist der Serialisierungs- oder Deserialisierungsschritt zwingend erforderlich. Dieser Schritt bedeutet einen erheblichen Mehraufwand.
 
-**Dateiformat:**Das von Ihnen gewählte Dateiformat beeinträchtigt unter Umständen die Leistung beim Kopieren. Avro ist beispielsweise ein kompaktes binäres Format, das nicht nur Daten, sondern auch Metadaten speichert. Es wird umfassend im Hadoop-System für Verarbeitungs- und Abfragevorgänge unterstützt. Avro verursacht jedoch einen höheren Aufwand bei der Serialisierung und Deserialisierung, was im Vergleich zum Textformat zu einem niedrigeren Durchsatz führt. Berücksichtigen Sie bei der Entscheidung für ein Dateiformat den gesamten Verarbeitungsablauf. Beginnen Sie dabei mit dem Format, in dem die Daten in Quellendatenspeichern gespeichert oder aus externen Systemen extrahiert werden, und überlegen Sie sich, welches Format am besten für die Speicherung, analytische Verarbeitung und Abfrage geeignet ist, und in welchem Format die Daten in Data Marts für die Berichterstellungs- und Visualisierungstools exportiert werden sollen. Manchmal stellt sich heraus, dass ein angesichts der Lese- und Schreibleistung eigentlich suboptimales Dateiformat bei Berücksichtigung des gesamten analytischen Prozesses trotzdem gut geeignet ist.
+**Dateiformat:** Das von Ihnen gewählte Dateiformat beeinträchtigt unter Umständen die Leistung beim Kopieren. Avro ist beispielsweise ein kompaktes binäres Format, das nicht nur Daten, sondern auch Metadaten speichert. Es wird umfassend im Hadoop-System für Verarbeitungs- und Abfragevorgänge unterstützt. Avro verursacht jedoch einen höheren Aufwand bei der Serialisierung und Deserialisierung, was im Vergleich zum Textformat zu einem niedrigeren Durchsatz führt. Berücksichtigen Sie bei der Entscheidung für ein Dateiformat den gesamten Verarbeitungsablauf. Beginnen Sie dabei mit dem Format, in dem die Daten in Quellendatenspeichern gespeichert oder aus externen Systemen extrahiert werden, und überlegen Sie sich, welches Format am besten für die Speicherung, analytische Verarbeitung und Abfrage geeignet ist, und in welchem Format die Daten in Data Marts für die Berichterstellungs- und Visualisierungstools exportiert werden sollen. Manchmal stellt sich heraus, dass ein angesichts der Lese- und Schreibleistung eigentlich suboptimales Dateiformat bei Berücksichtigung des gesamten analytischen Prozesses trotzdem gut geeignet ist.
 
 ## <a name="considerations-for-compression"></a>Hinweise zur Komprimierung
 Wenn Ihr Eingabe- oder Ausgabedataset eine Datei ist, können Sie die Kopieraktivität so konfigurieren, dass beim Schreiben von Daten in das Ziel eine Komprimierung oder Dekomprimierung ausgeführt wird. Wenn Sie sich für eine Komprimierung entscheiden, gehen Sie einen Kompromiss zwischen Eingabe/Ausgabe (E/A) und CPU ein. Das Komprimieren der Daten verursacht zusätzliche Kosten für die Computeressourcen. Im Gegenzug verringern sich aber die Kosten für Netzwerk-E/A und Speicher. Abhängig von Ihren Daten ergibt sich dadurch möglicherweise eine Verbesserung des Gesamtdurchsatzes.
 
-**Codec:**Die Kopieraktivität unterstützt folgende Komprimierungstypen: GZIP, BZIP2 und Deflate. Alle drei Typen können von Azure HDInsight für die Verarbeitung verwendet werden. Jeder Komprimierungscodec hat seine Vorteile. BZIP2 bietet etwa den geringsten Durchsatz, im Gegenzug aber die beste Hive-Abfrageleistung, da sich dieser Typ für die Verarbeitung aufteilen lässt. GZIP ist die ausgewogenste Option und wird am häufigsten verwendet. Entscheiden Sie sich für den Codec, der am besten für Ihr End-to-End-Szenario geeignet ist.
+**Codec:** Die Kopieraktivität unterstützt folgende Komprimierungstypen: GZIP, BZIP2 und Deflate. Alle drei Typen können von Azure HDInsight für die Verarbeitung verwendet werden. Jeder Komprimierungscodec hat seine Vorteile. BZIP2 bietet etwa den geringsten Durchsatz, im Gegenzug aber die beste Hive-Abfrageleistung, da sich dieser Typ für die Verarbeitung aufteilen lässt. GZIP ist die ausgewogenste Option und wird am häufigsten verwendet. Entscheiden Sie sich für den Codec, der am besten für Ihr End-to-End-Szenario geeignet ist.
 
-**Ebene:**Für jeden Komprimierungscodec stehen zwei Optionen zur Verfügung: schnellste Komprimierung und optimale Komprimierung. Bei der schnellsten Komprimierung werden die Daten schnellstmöglich komprimiert, auch wenn die resultierende Datei nicht optimal komprimiert ist. Die optimale Komprimierung dauert länger, liefert aber die kleinstmögliche Datenmenge. Sie können beide Optionen testen, um die in Ihrem Fall beste Gesamtleistung zu ermitteln.
+**Ebene:** Für jeden Komprimierungscodec stehen zwei Optionen zur Verfügung: schnellste Komprimierung und optimale Komprimierung. Bei der schnellsten Komprimierung werden die Daten schnellstmöglich komprimiert, auch wenn die resultierende Datei nicht optimal komprimiert ist. Die optimale Komprimierung dauert länger, liefert aber die kleinstmögliche Datenmenge. Sie können beide Optionen testen, um die in Ihrem Fall beste Gesamtleistung zu ermitteln.
 
-**Hinweis:**Verwenden Sie beim Kopieren umfangreicher Daten zwischen einem lokalen Datenspeicher und der Cloud ggf. einen Blobzwischenspeicher mit Komprimierung. Dies ist hilfreich, wenn die Bandbreite Ihres Unternehmensnetzwerks und Ihrer Azure-Dienste einen limitierenden Faktor darstellt und sowohl das Eingabe- als auch das Ausgabedataset in unkomprimierter Form vorliegen sollen. Um genau zu sein, können Sie eine einzelne Kopieraktivität in zwei Kopieraktivitäten aufteilen: Die erste Kopieraktivität kopiert Daten aus der Quelle in komprimierter Form in ein Zwischen- oder Stagingblob. Die zweite Kopieraktivität kopiert die komprimierten Daten aus der Stagingumgebung und dekomprimiert sie beim Schreiben in die Senke.
+**Hinweis:** Verwenden Sie beim Kopieren umfangreicher Daten zwischen einem lokalen Datenspeicher und der Cloud ggf. einen Blobzwischenspeicher mit Komprimierung. Dies ist hilfreich, wenn die Bandbreite Ihres Unternehmensnetzwerks und Ihrer Azure-Dienste einen limitierenden Faktor darstellt und sowohl das Eingabe- als auch das Ausgabedataset in unkomprimierter Form vorliegen sollen. Um genau zu sein, können Sie eine einzelne Kopieraktivität in zwei Kopieraktivitäten aufteilen: Die erste Kopieraktivität kopiert Daten aus der Quelle in komprimierter Form in ein Zwischen- oder Stagingblob. Die zweite Kopieraktivität kopiert die komprimierten Daten aus der Stagingumgebung und dekomprimiert sie beim Schreiben in die Senke.
 
 ## <a name="considerations-for-column-mapping"></a>Hinweise zur Spaltenzuordnung
 Mit der **columnMappings** -Eigenschaft der Kopieraktivität können Eingabespalten ganz oder teilweise den Ausgabespalten zugeordnet werden. Nach dem Lesen der Daten aus der Quelle muss der Datenverschiebungsdienst eine Spaltenzuordnung für die Daten vornehmen, bevor sie in die Senke geschrieben werden. Dieser zusätzliche Verarbeitungsaufwand reduziert den Kopierdurchsatz.
@@ -368,15 +369,15 @@ Wenn die zu kopierenden Daten sehr umfangreich sind, können Sie Ihre Geschäfts
 Seien Sie vorsichtig bei der Anzahl von Datasets und Kopieraktivitäten, für die Data Factory gleichzeitig eine Verbindung mit dem gleichen Datenspeicher herstellen muss. Eine hohe Anzahl gleichzeitiger Kopieraufträge kann zu einer Drosselung eines Datenspeichers sowie zu einer Beeinträchtigung der Leistung, zu internen Wiederholungsversuchen bei Kopieraufträgen und in einigen Fällen zu Fehlern bei der Ausführung führen.
 
 ## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>Beispielszenario: Kopieren aus einer lokalen SQL Server-Instanz in Blob Storage
-**Szenario:**Es wird eine Pipeline erstellt, um Daten aus einer lokalen SQL Server-Instanz im CSV-Format in Blob Storage zu kopieren. Zur Beschleunigung des Kopierauftrags sollen die CSV-Dateien im BZIP2-Format komprimiert werden.
+**Szenario:** Es wird eine Pipeline erstellt, um Daten aus einer lokalen SQL Server-Instanz im CSV-Format in Blob Storage zu kopieren. Zur Beschleunigung des Kopierauftrags sollen die CSV-Dateien im BZIP2-Format komprimiert werden.
 
-**Test und Analyse:**Der Durchsatz der Kopieraktivität beträgt weniger als 2 MB/s und liegt damit deutlich unter dem Leistungsbenchmark.
+**Test und Analyse:** Der Durchsatz der Kopieraktivität beträgt weniger als 2 MB/s und liegt damit deutlich unter dem Leistungsbenchmark.
 
-**Leistungsanalyse und -optimierung:**Zur Behebung des Leistungsproblems sehen wir uns zunächst einmal an, wie die Daten verarbeitet und verschoben werden:
+**Leistungsanalyse und -optimierung:** Zur Behebung des Leistungsproblems sehen wir uns zunächst einmal an, wie die Daten verarbeitet und verschoben werden:
 
-1. **Lesen der Daten:**Das Gateway stellt eine Verbindung mit SQL Server her und sendet die Abfrage. SQL Server sendet daraufhin den Datenstrom über das Intranet an das Gateway.
-2. **Serialisieren und Komprimieren der Daten:**Das Gateway serialisiert den Datenstrom im CSV-Format und komprimiert die Daten zu einem BZIP2-Datenstrom.
-3. **Schreiben der Daten:**Das Gateway lädt den BZIP2-Datenstrom über das Internet in Blob Storage hoch.
+1. **Lesen der Daten:** Das Gateway stellt eine Verbindung mit SQL Server her und sendet die Abfrage. SQL Server sendet daraufhin den Datenstrom über das Intranet an das Gateway.
+2. **Serialisieren und Komprimieren der Daten:** Das Gateway serialisiert den Datenstrom im CSV-Format und komprimiert die Daten zu einem BZIP2-Datenstrom.
+3. **Schreiben der Daten:** Das Gateway lädt den BZIP2-Datenstrom über das Internet in Blob Storage hoch.
 
 Wie Sie sehen, werden die Daten sequenziell mittels Streaming verarbeitet und verschoben: SQL Server -> LAN-> Gateway > WAN -> Blob Storage. **Die Gesamtleistung wird durch den minimalen Durchsatz der gesamten Pipeline begrenzt.**
 
@@ -384,31 +385,31 @@ Wie Sie sehen, werden die Daten sequenziell mittels Streaming verarbeitet und ve
 
 Der Leistungsengpass kann auf folgende Faktoren zurückzuführen sein:
 
-* **Quelle:**SQL Server selbst hat aufgrund einer hohen Auslastung einen geringen Durchsatz.
+* **Quelle:** SQL Server selbst hat aufgrund einer hohen Auslastung einen geringen Durchsatz.
 * **Datenverwaltungsgateway:**
-  * **LAN:**Das Gateway ist weit vom SQL Server-Computer entfernt, und es wird eine Verbindung mit geringer Bandbreite verwendet.
-  * **Gateway:**Für folgende Vorgänge wurde das Auslastungslimit des Gateways erreicht:
-    * **Serialisierung:**Der Datenstrom lässt sich nur mit geringem Durchsatz in das CSV-Format serialisieren.
-    * **Komprimierung:**Sie haben sich für einen langsamen Komprimierungscodec entschieden – etwa für BZIP2 (2,8 MB/s mit Core i7).
+  * **LAN:** Das Gateway ist weit vom SQL Server-Computer entfernt, und es wird eine Verbindung mit geringer Bandbreite verwendet.
+  * **Gateway:** Für folgende Vorgänge wurde das Auslastungslimit des Gateways erreicht:
+    * **Serialisierung:** Der Datenstrom lässt sich nur mit geringem Durchsatz in das CSV-Format serialisieren.
+    * **Komprimierung:** Sie haben sich für einen langsamen Komprimierungscodec entschieden – etwa für BZIP2 (2,8 MB/s mit Core i7).
   * **WAN**: Zwischen dem Unternehmensnetzwerk und Ihren Azure-Diensten steht nur eine geringe Bandbreite zur Verfügung. (Beispiele: T1 = 1,544 KBit/s; T2 = 6,312 KBit/s).
-* **Senke:**Der Durchsatz von Blob Storage ist gering. (Dieses Szenario ist eher unwahrscheinlich, da das entsprechende SLA mindestens 60 MB/s garantiert.)
+* **Senke:** Der Durchsatz von Blob Storage ist gering. (Dieses Szenario ist eher unwahrscheinlich, da das entsprechende SLA mindestens 60 MB/s garantiert.)
 
 In diesem Fall verlangsamt unter Umständen die BZIP2-Datenkomprimierung die gesamte Pipeline. Dieser Engpass lässt sich möglicherweise durch einen Wechsel zum GZIP-Komprimierungscodec beheben.
 
 ## <a name="sample-scenarios-use-parallel-copy"></a>Beispielszenarien: Verwenden paralleler Kopien
 **Szenario I:** Kopieren von 1000 Dateien mit jeweils 1 MB aus dem lokalen Dateisystem in Blob Storage
 
-**Analyse und Leistungsoptimierung:**Wenn Sie das Gateway beispielsweise auf einem Computer mit vier Kernen installiert haben, verwendet Data Factory standardmäßig 16 parallele Kopien, um Dateien gleichzeitig aus dem Dateisystem in Blob Storage zu verschieben. Diese parallele Ausführung hat einen hohen Durchsatz zur Folge. Die Anzahl paralleler Kopien kann auch explizit angegeben werden. Beim Kopieren zahlreicher kleiner Dateien tragen parallele Kopien aufgrund der effektiveren Ressourcennutzung zu einer deutlichen Verbesserung des Durchsatzes bei.
+**Analyse und Leistungsoptimierung:** Wenn Sie das Gateway beispielsweise auf einem Computer mit vier Kernen installiert haben, verwendet Data Factory standardmäßig 16 parallele Kopien, um Dateien gleichzeitig aus dem Dateisystem in Blob Storage zu verschieben. Diese parallele Ausführung hat einen hohen Durchsatz zur Folge. Die Anzahl paralleler Kopien kann auch explizit angegeben werden. Beim Kopieren zahlreicher kleiner Dateien tragen parallele Kopien aufgrund der effektiveren Ressourcennutzung zu einer deutlichen Verbesserung des Durchsatzes bei.
 
 ![Szenario 1](./media/data-factory-copy-activity-performance/scenario-1.png)
 
-**Szenario II:**Kopieren von 20 Blobs mit jeweils 500 MB aus Blob Storage in Data Lake Store Analytics mit anschließender Leistungsoptimierung
+**Szenario II:** Kopieren von 20 Blobs mit jeweils 500 MB aus Blob Storage in Data Lake Store Analytics mit anschließender Leistungsoptimierung
 
 **Analyse und Leistungsoptimierung:** In diesem Szenario kopiert Data Factory die Daten aus Blob Storage in Data Lake Store unter Verwendung einer einzelnen Kopie (**parallelCopies** = 1) und einzelner Einheiten für Clouddatenverschiebungen. Der Durchsatz entspricht in etwa den Angaben im Abschnitt [Leistungsreferenz](#performance-reference).   
 
 ![Szenario 2:](./media/data-factory-copy-activity-performance/scenario-2.png)
 
-**Szenario III:**Große Einzeldateien und hoher Gesamtumfang
+**Szenario III:** Große Einzeldateien und hoher Gesamtumfang
 
 **Analyse und Leistungsoptimierung:** Die Erhöhung des Werts für **parallelCopies** führt angesichts der Ressourcenbeschränkungen einer einzelnen Cloud-DMU nicht zu einer Verbesserung der Leistung. Stattdessen müssen weitere Cloud-DMUs angegeben werden, um weitere Ressourcen zum Ausführen der Datenverschiebung zu erhalten. Geben Sie keinen Wert für die **parallelCopies** -Eigenschaft an. Die Parallelität wird von Data Factory gehandhabt. Wenn Sie **cloudDataMovementUnits** im vorliegenden Fall auf „4“ festlegen, lässt sich der Durchsatz ungefähr vervierfachen.
 

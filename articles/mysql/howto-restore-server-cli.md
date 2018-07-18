@@ -6,15 +6,16 @@ author: rachel-msft
 ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: bd4ebbec4506824f00d09a09369ebbeaf9458c19
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 5325f23a13a181d912bbc8b26042de72855dc41e
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319087"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Sichern und Wiederherstellen eines Servers in Azure Database for MySQL mit der Azure CLI
 
@@ -31,32 +32,6 @@ Zum Durcharbeiten dieses Leitfadens benötigen Sie Folgendes:
 
 > [!IMPORTANT]
 > Diese Anleitung setzt die Verwendung von Azure CLI-Version 2.0 oder höher voraus. Geben Sie zum Bestätigen der Version an der Eingabeaufforderung von Azure CLI `az --version` ein. Informationen zum Ausführen einer Installation oder eines Upgrades finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli).
-
-## <a name="add-the-extension"></a>Hinzufügen der Erweiterung
-Fügen Sie die aktualisierte Azure Database for MySQL-Verwaltungserweiterung mit dem folgenden Befehl hinzu:
-```azurecli-interactive
-az extension add --name rdbms
-``` 
-
-Überprüfen Sie, ob die richtige Version der Erweiterung installiert ist. 
-```azurecli-interactive
-az extension list
-```
-
-Die JSON-Ausgabe sollte Folgendes enthalten: 
-```json
-{
-    "extensionType": "whl",
-    "name": "rdbms",
-    "version": "0.0.5"
-}
-```
-
-Wird Version 0.0.5 nicht zurückgegeben, führen Sie den folgenden Befehl aus, um die Erweiterung zu aktualisieren: 
-```azurecli-interactive
-az extension update --name rdbms
-```
-
 
 ## <a name="set-backup-configuration"></a>Festlegen der Sicherungskonfiguration
 

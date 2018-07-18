@@ -10,21 +10,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 140779ca1786bc9fa2afcfd08fdac0857580e8cf
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: d862cd0223609d80c511362edbcc0ed6dd512b1f
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859146"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Ausdrücke und Funktionen in Azure Data Factory | Microsoft-Dokumentation
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: allgemein verfügbar](v1/data-factory-functions-variables.md)
-> * [Version 2 – Vorschauversion](control-flow-expression-language-functions.md)
+> * [Version 1](v1/data-factory-functions-variables.md)
+> * [Aktuelle Version](control-flow-expression-language-functions.md)
 
-Dieser Artikel enthält Informationen zu von Azure Data Factory (Version 2) unterstützten Ausdrücken und Funktionen. 
+Dieser Artikel enthält Informationen zu von Azure Data Factory unterstützten Ausdrücken und Funktionen. 
 
 ## <a name="introduction"></a>Einführung
 Bei den JSON-Werten in der Definition kann es sich um Literalwerte oder um Ausdrücke handeln, die zur Laufzeit ausgewertet werden. Beispiel:   
@@ -39,20 +40,15 @@ Bei den JSON-Werten in der Definition kann es sich um Literalwerte oder um Ausdr
 "name": "@pipeline().parameters.password"
 ```
 
-
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (GA) ist, lesen Sie [Funktionen und Variablen in Data Factory V1](v1/data-factory-functions-variables.md).
-
-
 ## <a name="expressions"></a>Ausdrücke  
-Ausdrücke können an beliebiger Stelle in einem JSON-Zeichenfolgenwert verwendet werden und ergeben immer einen anderen JSON-Wert. Wenn ein JSON-Wert ein Ausdruck ist, wird der Text des Ausdrucks durch Entfernen des @-Zeichens extrahiert. Falls Sie ein Zeichenfolgenliteral benötigen, das mit einem @-Zeichen beginnt, muss es wie folgt mit einem Escapezeichen versehen werden: @. Die folgenden Beispiele veranschaulichen die Auswertung von Ausdrücken.  
+Ausdrücke können an beliebiger Stelle in einem JSON-Zeichenfolgenwert verwendet werden und ergeben immer einen anderen JSON-Wert. Wenn ein JSON-Wert ein Ausdruck ist, wird der Text des Ausdrucks durch Entfernen des \@-Zeichens extrahiert. Falls Sie ein Zeichenfolgenliteral benötigen, das mit einem @-Zeichen beginnt, muss es wie folgt mit einem Escapezeichen versehen werden: @. Die folgenden Beispiele veranschaulichen die Auswertung von Ausdrücken.  
   
 |JSON-Wert|Ergebnis|  
 |----------------|------------|  
 |"parameters"|Die Zeichenfolge „parameters“ wird zurückgegeben.|  
 |"parameters[1]"|Die Zeichenfolge „parameters[1]“ wird zurückgegeben.|  
-|"@@"|Eine Zeichenfolge, die \„\@\“ enthält, wird zurückgegeben (einzelnes Zeichen).|  
-|\" \@\"|Eine Zeichenfolge, die \„  \@ \“ enthält, wird zurückgegeben (zwei Zeichen).|  
+|"\@@"|Eine Zeichenfolge, die \„\@\“ enthält, wird zurückgegeben (einzelnes Zeichen).|  
+|" \@"|Eine Zeichenfolge, die \„  \@ \“ enthält, wird zurückgegeben (zwei Zeichen).|  
   
  Mit der *Zeichenfolgeninterpolation* können Ausdrücke auch innerhalb von Zeichenfolgen verwendet werden. Dabei werden die Ausdrücke in `@{ ... }` eingeschlossen. Beispiel: `"name" : "First Name: @{pipeline().parameters.firstName} Last Name: @{pipeline().parameters.lastName}"`  
   
@@ -60,13 +56,13 @@ Ausdrücke können an beliebiger Stelle in einem JSON-Zeichenfolgenwert verwende
   
 |JSON-Wert|Ergebnis|  
 |----------------|------------|  
-|"@pipeline().parameters.myString"| Gibt `foo` als Zeichenfolge zurück.|  
-|"@{pipeline().parameters.myString}"| Gibt `foo` als Zeichenfolge zurück.|  
-|"@pipeline().parameters.myNumber"| Gibt `42` als *Zahl* zurück.|  
-|"@{pipeline().parameters.myNumber}"| Gibt `42` als *Zeichenfolge* zurück.|  
+|"\@pipeline().parameters.myString"| Gibt `foo` als Zeichenfolge zurück.|  
+|"\@{pipeline().parameters.myString}"| Gibt `foo` als Zeichenfolge zurück.|  
+|"\@pipeline().parameters.myNumber"| Gibt `42` als *Zahl* zurück.|  
+|"\@{pipeline().parameters.myNumber}"| Gibt `42` als *Zeichenfolge* zurück.|  
 |"Answer is: @{pipeline().parameters.myNumber}"| Gibt die Zeichenfolge `Answer is: 42` zurück.|  
-|"@concat('Answer is: ', string(pipeline().parameters.myNumber))"| Gibt die Zeichenfolge `Answer is: 42` zurück.|  
-|"Answer is: @@{pipeline().parameters.myNumber}"| Gibt die Zeichenfolge `Answer is: @{pipeline().parameters.myNumber}` zurück.|  
+|"\@concat('Answer is: ', string(pipeline().parameters.myNumber))"| Gibt die Zeichenfolge `Answer is: 42` zurück.|  
+|"Answer is: \@@{pipeline().parameters.myNumber}"| Gibt die Zeichenfolge `Answer is: @{pipeline().parameters.myNumber}` zurück.|  
   
 ### <a name="examples"></a>Beispiele
 
@@ -161,8 +157,8 @@ Im folgenden Beispiel nutzt die Pipeline die Parameter **inputPath** und **outpu
 |toUpper|Konvertiert eine Zeichenfolge in Großbuchstaben. Der folgende Ausdruck gibt beispielsweise `TWO BY TWO IS FOUR` zurück: `toUpper('Two by Two is Four')`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Zeichenfolge<br /><br /> **Beschreibung:** Erforderlich. Die Zeichenfolge, die in Großbuchstaben konvertiert werden soll. Sollte für ein Zeichen in der Zeichenfolge keine groß geschriebene Variante verfügbar sein, wird das Zeichen unverändert in die zurückgegebene Zeichenfolge eingefügt.|  
 |indexof|Sucht den Index eines Werts innerhalb einer Zeichenfolge ohne Berücksichtigung der Groß-/Kleinschreibung. Der folgende Ausdruck gibt beispielsweise `7` zurück: `indexof('hello, world.', 'world')`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Zeichenfolge<br /><br /> **Beschreibung:** Erforderlich. Die Zeichenfolge, die möglicherweise den Wert enthält.<br /><br /> **Parameternummer:** 2<br /><br /> **Name:** Zeichenfolge<br /><br /> **Beschreibung:** Erforderlich. Der Wert, für den der Index ermittelt werden soll.|  
 |lastindexof|Sucht den letzten Index eines Werts innerhalb einer Zeichenfolge ohne Berücksichtigung der Groß-/Kleinschreibung. Der folgende Ausdruck gibt beispielsweise `3` zurück: `lastindexof('foofoo', 'foo')`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Zeichenfolge<br /><br /> **Beschreibung:** Erforderlich. Die Zeichenfolge, die möglicherweise den Wert enthält.<br /><br /> **Parameternummer:** 2<br /><br /> **Name:** Zeichenfolge<br /><br /> **Beschreibung:** Erforderlich. Der Wert, für den der Index ermittelt werden soll.|  
-|startswith|Überprüft, ob die Zeichenfolge mit einem Wert beginnt (ohne Berücksichtigung der Groß-/Kleinschreibung). Der folgende Ausdruck gibt beispielsweise `true` zurück: `lastindexof('hello, world', 'hello')`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Zeichenfolge<br /><br /> **Beschreibung:** Erforderlich. Die Zeichenfolge, die möglicherweise den Wert enthält.<br /><br /> **Parameternummer:** 2<br /><br /> **Name:** Zeichenfolge<br /><br /> **Beschreibung:** Erforderlich. Der Wert, mit dem die Zeichenfolge möglicherweise beginnt.|  
-|endswith|Überprüft, ob die Zeichenfolge mit einem Wert endet (ohne Berücksichtigung der Groß-/Kleinschreibung). Der folgende Ausdruck gibt beispielsweise `true` zurück: `lastindexof('hello, world', 'world')`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Zeichenfolge<br /><br /> **Beschreibung:** Erforderlich. Die Zeichenfolge, die möglicherweise den Wert enthält.<br /><br /> **Parameternummer:** 2<br /><br /> **Name:** Zeichenfolge<br /><br /> **Beschreibung:** Erforderlich. Der Wert, mit dem die Zeichenfolge möglicherweise endet.|  
+|startswith|Überprüft, ob die Zeichenfolge mit einem Wert beginnt (ohne Berücksichtigung der Groß-/Kleinschreibung). Der folgende Ausdruck gibt beispielsweise `true` zurück: `startswith('hello, world', 'hello')`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Zeichenfolge<br /><br /> **Beschreibung:** Erforderlich. Die Zeichenfolge, die möglicherweise den Wert enthält.<br /><br /> **Parameternummer:** 2<br /><br /> **Name:** Zeichenfolge<br /><br /> **Beschreibung:** Erforderlich. Der Wert, mit dem die Zeichenfolge möglicherweise beginnt.|  
+|endswith|Überprüft, ob die Zeichenfolge mit einem Wert endet (ohne Berücksichtigung der Groß-/Kleinschreibung). Der folgende Ausdruck gibt beispielsweise `true` zurück: `endswith('hello, world', 'world')`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Zeichenfolge<br /><br /> **Beschreibung:** Erforderlich. Die Zeichenfolge, die möglicherweise den Wert enthält.<br /><br /> **Parameternummer:** 2<br /><br /> **Name:** Zeichenfolge<br /><br /> **Beschreibung:** Erforderlich. Der Wert, mit dem die Zeichenfolge möglicherweise endet.|  
 |split|Teilt die Zeichenfolge mithilfe eines Trennzeichens auf. Der folgende Ausdruck gibt beispielsweise `["a", "b", "c"]` zurück: `split('a;b;c',';')`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Zeichenfolge<br /><br /> **Beschreibung:** Erforderlich. Die aufzuteilende Zeichenfolge.<br /><br /> **Parameternummer:** 2<br /><br /> **Name:** Zeichenfolge<br /><br /> **Beschreibung:** Erforderlich. Das Trennzeichen.|  
   
   
@@ -232,7 +228,7 @@ Im folgenden Beispiel nutzt die Pipeline die Parameter **inputPath** und **outpu
 |decodeDataUri|Gibt eine binäre Darstellung einer Eingabezeichenfolge des Daten-URI zurück. Der folgende Ausdruck gibt beispielsweise die binäre Darstellung von einigen Zeichenfolgen von `some string` wieder: `decodeDataUri('data:;base64,c29tZSBzdHJpbmc=')`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Zeichenfolge<br /><br /> **Beschreibung:** Erforderlich. Der Daten-URI, der in eine binäre Darstellung konvertiert werden soll.|  
 |uriComponent|Gibt eine URI-codierte Darstellung eines Werts zurück. Der folgende Ausdruck gibt beispielsweise `You+Are%3ACool%2FAwesome: uriComponent('You Are:Cool/Awesome ')` zurück<br /><br /> Details zu den Parametern: Nummer: 1, Name: Zeichenfolge, Beschreibung: erforderlich. Die Zeichenfolge, die als URI codiert werden soll.|  
 |uriComponentToBinary|Gibt eine binäre Darstellung einer URI-codierten Zeichenfolge zurück. Der folgende Ausdruck gibt beispielsweise die binäre Darstellung von `You Are:Cool/Awesome` wieder: `uriComponentToBinary('You+Are%3ACool%2FAwesome')`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Zeichenfolge<br /><br />**Beschreibung:** Erforderlich. Die URI-codierte Zeichenfolge.|  
-|uriComponentToString|Gibt eine Zeichenfolgendarstellung einer URI-codierten Zeichenfolge zurück. Der folgende Ausdruck gibt beispielsweise `You Are:Cool/Awesome` zurück: `uriComponentToBinary('You+Are%3ACool%2FAwesome')`<br /><br /> **Parameternummer:** 1<br /><br />**Name:** Zeichenfolge<br /><br />**Beschreibung:** Erforderlich. Die URI-codierte Zeichenfolge.|  
+|uriComponentToString|Gibt eine Zeichenfolgendarstellung einer URI-codierten Zeichenfolge zurück. Der folgende Ausdruck gibt beispielsweise `You Are:Cool/Awesome` zurück: `uriComponentToString('You+Are%3ACool%2FAwesome')`<br /><br /> **Parameternummer:** 1<br /><br />**Name:** Zeichenfolge<br /><br />**Beschreibung:** Erforderlich. Die URI-codierte Zeichenfolge.|  
 |xml|Gibt eine XML-Darstellung des Werts zurück. Der folgende Ausdruck gibt beispielsweise einen XML-Inhalt zurück, der durch `'\<name>Alan\</name>'` dargestellt wird: `xml('\<name>Alan\</name>')`. Die XML-Funktion unterstützt auch JSON-Objekteingaben. Der Parameter `{ "abc": "xyz" }` wird beispielsweise in XML-Inhalt konvertiert:`\<abc>xyz\</abc>`<br /><br /> **Parameternummer:** 1<br /><br />**Name:** Wert<br /><br />**Beschreibung:** Erforderlich. Der Wert, der in XML konvertiert werden soll.|  
 |xpath|Gibt ein Array mit XML-Knoten zurück, die dem xpath-Ausdruck eines Werts entsprechen, zu dem der xpath-Ausdruck ausgewertet wird.<br /><br />  **Beispiel 1**<br /><br /> Angenommen, der Wert des Parameters „p1“ ist eine Zeichenfolgendarstellung des folgenden XML-Codes:<br /><br /> `<?xml version="1.0"?> <lab>   <robot>     <parts>5</parts>     <name>R1</name>   </robot>   <robot>     <parts>8</parts>     <name>R2</name>   </robot> </lab>`<br /><br /> 1. Der Code `xpath(xml(pipeline().parameters.p1), '/lab/robot/name')`<br /><br /> würde Folgendes zurückgeben:<br /><br /> `[ <name>R1</name>, <name>R2</name> ]`<br /><br /> während<br /><br /> 2. Der Code `xpath(xml(pipeline().parameters.p1, ' sum(/lab/robot/parts)')`<br /><br /> würde Folgendes zurückgeben:<br /><br /> `13`<br /><br /> <br /><br /> **Beispiel 2**<br /><br /> Angenommen, der folgende XML-Inhalt wird verwendet:<br /><br /> `<?xml version="1.0"?> <File xmlns="http://foo.com">   <Location>bar</Location> </File>`<br /><br /> 1.  Der Code `@xpath(xml(body('Http')), '/*[name()=\"File\"]/*[name()=\"Location\"]')`<br /><br /> oder<br /><br /> 2. Der Code `@xpath(xml(body('Http')), '/*[local-name()=\"File\" and namespace-uri()=\"http://foo.com\"]/*[local-name()=\"Location\" and namespace-uri()=\"\"]')`<br /><br /> gibt Folgendes zurück:<br /><br /> `<Location xmlns="http://foo.com">bar</Location>`<br /><br /> and<br /><br /> 3. Der Code `@xpath(xml(body('Http')), 'string(/*[name()=\"File\"]/*[name()=\"Location\"])')`<br /><br /> gibt Folgendes zurück:<br /><br /> ``bar``<br /><br /> **Parameternummer:** 1<br /><br />**Name:** XML<br /><br />**Beschreibung:** Erforderlich. Der XML-Code, für den der XPath-Ausdruck ausgewertet werden soll.<br /><br /> **Parameternummer:** 2<br /><br />**Name:** XPath<br /><br />**Beschreibung:** Erforderlich. Der auszuwertende XPath-Ausdruck.|  
 |Array|Konvertiert den Parameter in ein Array.  Der folgende Ausdruck gibt beispielsweise `["abc"]` zurück: `array('abc')`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Wert<br /><br /> **Beschreibung:** Erforderlich. Der Wert, der in ein Array konvertiert wird.|

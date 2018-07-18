@@ -19,6 +19,7 @@ ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/29/2018
+ms.locfileid: "30261411"
 ---
 # <a name="configure-health-notifications-for-existing-problem-management-systems-using-a-webhook"></a>Konfigurieren von Integritätsbenachrichtigungen für vorhandene Problemverwaltungssysteme mit einem Webhook
 

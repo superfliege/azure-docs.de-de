@@ -13,6 +13,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31805061"
 ---
 ## <a name="how-to-create-a-virtual-network-using-a-network-config-file-from-powershell"></a>Erstellen eines virtuellen Netzwerks mithilfe einer Netzwerkkonfigurationsdatei von PowerShell
 Azure verwendet eine XML-Datei, um alle für ein Abonnement verfügbaren virtuellen Netzwerke zu definieren. Sie können diese Datei herunterladen und bearbeiten, um vorhandene virtuelle Netzwerke zu ändern oder zu löschen und neue Netzwerke zu erstellen. In diesem Tutorial erfahren Sie, wie Sie diese Datei, die auch als Netzwerkkonfigurationsdatei oder netcfg-Datei bezeichnet wird, herunterladen und bearbeiten können, um ein neues virtuelles Netzwerk zu erstellen. Weitere Informationen zur Netzwerkkonfigurationsdatei finden Sie im [Konfigurationsschema für virtuelle Azure-Netzwerke](https://msdn.microsoft.com/library/azure/jj157100.aspx).

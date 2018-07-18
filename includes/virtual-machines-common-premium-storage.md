@@ -1,3 +1,20 @@
+---
+title: Includedatei
+description: Includedatei
+services: storage
+author: ramankumarlive
+ms.service: storage
+ms.topic: include
+ms.date: 06/05/2018
+ms.author: ramankum
+ms.custom: include file
+ms.openlocfilehash: 5cbe6f1f8f15e9da8e1fe6961d3da9b9e2a31e4b
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34806382"
+---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Storage Premium-Hochleistungsspeicher und verwaltete Datenträger für VMs
 Azure Storage Premium bietet Datenträgerunterstützung mit hoher Leistung und geringer Wartezeit für virtuelle Computer (VMs) mit E/A-intensiven Workloads. Für VM-Datenträger, die Storage Premium nutzen, werden Daten auf SSD-Laufwerken (Solid-State Drives) gespeichert. Um die Geschwindigkeit und Leistung von Storage Premium-Datenträgern zu nutzen, können Sie vorhandene VM-Datenträger zu Storage Premium migrieren.
 
@@ -61,7 +78,7 @@ Hier sind einige Features von Storage Premium aufgeführt:
 
 ## <a name="supported-vms"></a>Unterstützte VMs
 
-Storage Premium unterstützt virtuelle Computer der Serien B, DS, DSv2, DSv3, GS, Ls, M und Fs. Mit diesen VM-Typen können Sie Standard- und Premium-Speicherdatenträger verwenden. Sie können keine Premium-Speicherdatenträger für VM-Serien verwenden, die nicht mit Storage Premium kompatibel sind.
+Storage Premium unterstützt virtuelle Computer der Serien B, DS, DSv2, DSv3, Esv3, GS, Ls, M und Fs. Mit diesen VM-Typen können Sie Standard- und Premium-Speicherdatenträger verwenden. Sie können keine Premium-Speicherdatenträger für VM-Serien verwenden, die nicht mit Storage Premium kompatibel sind.
 
 
 Informationen zu VM-Typen und -Größen in Azure für Windows finden Sie unter [Windows-VM-Größen](../articles/virtual-machines/windows/sizes.md). Informationen zu VM-Typen und -Größen in Azure für Linux finden Sie unter [Linux-VM-Größen](../articles/virtual-machines/linux/sizes.md).
@@ -183,7 +200,7 @@ Die folgenden Beispiele veranschaulichen, wie die Drosselungsebenen berechnet we
 Ihre Anwendung hat 495 E/A-Einheiten mit einer Größe von 16 KB in einer Sekunde auf einem Datenträger des Typs P10 verarbeitet. Die E/A-Einheiten werden als 495 IOPS gezählt. Wenn Sie versuchen, in der gleichen Sekunde einen E/A-Vorgang mit 2 MB durchzuführen, entspricht die Summe der E/A-Einheiten 495 + 8 IOPS. Dies liegt daran, dass ein E/A-Vorgang mit 2 MB acht E/A-Einheiten entspricht (2.048 KB/256 KB), wenn die Größe der E/A-Einheiten 256 KB beträgt. Da die Summe von 495 + 8 die IOPS-Grenze von 500 für den Datenträger überschreitet, kommt es zu einer Drosselung.
 
 ### <a name="example-2"></a>Beispiel 2
-Ihre Anwendung hat 400 E/A-Einheiten mit einer Größe von 256 KB auf einem Datenträger des Typs P10 verarbeitet. Verwendete Gesamtbandbreite: (400 · 256)/1.024 KB = 100 MB/s. Das Durchsatzlimit eines P10-Datenträgers liegt bei 100 MB/s. Wenn Ihre Anwendung versucht, weitere E/A-Vorgänge in dieser Sekunde auszuführen, wird sie gedrosselt, weil der zugewiesene Grenzwert überschritten wird.
+Ihre Anwendung hat 400 E/A-Einheiten mit einer Größe von 256 KB auf einem Datenträger des Typs P10 verarbeitet. Verwendete Gesamtbandbreite: (400*256)/1.024 KB = 100 MB/s. Das Durchsatzlimit eines P10-Datenträgers liegt bei 100 MB/s. Wenn Ihre Anwendung versucht, weitere E/A-Vorgänge in dieser Sekunde auszuführen, wird sie gedrosselt, weil der zugewiesene Grenzwert überschritten wird.
 
 ### <a name="example-3"></a>Beispiel 3
 Sie besitzen einen virtuellen DS4-Computer mit zwei angefügten P30-Datenträgern. Bei jedem P30-Datenträger ist ein Durchsatz von 200 MB/s möglich. Ein virtueller DS4-Computer verfügt aber über eine Datenträger-Bandbreitenkapazität von insgesamt 256 MB/s. Sie können auf diesem virtuellen DS4-Computer für die angeschlossenen Datenträger nicht gleichzeitig den maximalen Durchsatz erzielen. Um dieses Problem zu beheben, können Sie auf einem Datenträger Datenverkehr von 200 MB/s und auf dem anderen Datenträger 56 MB/s tolerieren. Wenn die Summe Ihres Datenträger-Datenverkehrs 256 MB/s übersteigt, wird der Datenverkehr für den Datenträger gedrosselt.

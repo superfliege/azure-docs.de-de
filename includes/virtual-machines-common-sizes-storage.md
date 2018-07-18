@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: c2209a06921ffd6a8efb6fc38dacfa88fc87fa05
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 840d3737efe4314359ba3a3bf0f5c4f888f92567
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36329568"
 ---
 Datenspeicheroptimierte VM-Größen eignen sich dank hohem Datenträgerdurchsatz und hoher E/A-Raten perfekt für Big Data-, SQL- und NoSQL-Datenbanken. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz und zur Netzwerkbandbreite der einzelnen Größen in dieser Gruppe. 
 
@@ -30,7 +31,7 @@ ACU: 180 - 240
 | Standard_L32s <sup>1</sup> | 32   | 256  | 5.630 | 64   | 160,000 / 1,600   | 40.000/1.000     | 8 / 20,000 | 
  
 
-Der mit einem virtuellen Computer der Ls-Serie maximal mögliche Datenträgerdurchsatz kann durch Anzahl, Größe und Striping angefügter Datenträger beschränkt sein. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/virtual-machines/windows/premium-storage.md). 
+Der mit einem virtuellen Computer der Ls-Serie maximal mögliche Datenträgerdurchsatz kann durch Anzahl, Größe und Striping angefügter Datenträger beschränkt sein. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/virtual-machines/windows/premium-storage.md). Virtuelle Computer der Ls-Serie sind für Workloads mit hoher lokaler Speichernutzung gedacht und verwenden angefügte Datenträger in der Regel nur für anfängliches Laden und Protokollierung. Da das Zwischenspeichern in diesen Fällen ineffektiv ist, unterstützt die Ls-Serie keine Hostzwischenspeicherung für angefügte Datenträger – Datenträger müssen im nicht zwischengespeicherten Modus angefügt werden. 
 
 <sup>1</sup> Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
 

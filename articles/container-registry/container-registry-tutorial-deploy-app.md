@@ -6,18 +6,19 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 10/24/2017
+ms.date: 04/30/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: c6ac8f22f128b350844af10f309fd3b93512d54d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6347c460ab88929152424d301445a219720b98e8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38582300"
 ---
 # <a name="tutorial-deploy-web-app-from-azure-container-registry"></a>Tutorial: Bereitstellen einer Web-App über Azure Container Registry
 
-Dies ist der zweite Teil eines dreiteiligen Tutorials. In [Teil 1](container-registry-tutorial-prepare-registry.md) wurde eine private georeplizierte Containerregistrierung erstellt. Außerdem wurde ein quellcodebasiertes Containerimage erstellt und mithilfe von Push an die Registrierung übertragen. In diesem Artikel stellen Sie den Container in zwei Web-App-Instanzen in zwei verschiedenen Azure-Regionen bereit, um von der Netzwerknähe der georeplizierten Registrierung zu profitieren.
+Dies ist der zweite Teil eines dreiteiligen Tutorials. In [Teil 1](container-registry-tutorial-prepare-registry.md) wurde eine private georeplizierte Containerregistrierung erstellt. Außerdem wurde ein quellcodebasiertes Containerimage erstellt und mithilfe von Push an die Registrierung übertragen. In diesem Artikel können Sie von der Netzwerknähe der georeplizierten Registrierung profitieren, indem Sie den Container Web-App-Instanzen in zwei verschiedenen Azure-Regionen bereitstellen. Jede Instanz ruft dann das Containerimage per Pull aus der nächstgelegenen Registrierung ab.
 
 Dieser zweite Teil der Tutorialreihe umfasst Folgendes:
 
@@ -27,7 +28,7 @@ Dieser zweite Teil der Tutorialreihe umfasst Folgendes:
 
 Wenn Sie noch keine georeplizierte Registrierung erstellt und noch kein Image der containerbasierten Beispielanwendung mithilfe von Push an die Registrierung übertragen haben, kehren Sie zum vorherigen Tutorial der Reihe zurück: [Prepare a geo-replicated Azure container registry](container-registry-tutorial-prepare-registry.md) (Vorbereiten einer georeplizierten Azure-Containerregistrierung).
 
-Im nächsten Teil der Reihe aktualisieren Sie die Anwendung und übertragen anschließend mithilfe von Push ein neues Containerimage an die Registrierung. Danach navigieren Sie zu den beiden ausgeführten Web-App-Instanzen, um zu sehen, dass die Änderung jeweils automatisch übernommen wurde. Dies zeigt die Georeplikation und Webhooks von Azure Container Registry in Aktion.
+Im nächsten Artikel der Reihe aktualisieren Sie die Anwendung und übertragen anschließend mithilfe von Push das aktualisierte Containerimage an die Registrierung. Danach navigieren Sie zu den beiden ausgeführten Web-App-Instanzen, um zu sehen, dass die Änderung jeweils automatisch übernommen wurde. Dies zeigt die Georeplikation und Webhooks von Azure Container Registry in Aktion.
 
 ## <a name="automatic-deployment-to-web-apps-for-containers"></a>Automatisches Bereitstellen in Web-App für Container
 
@@ -103,11 +104,7 @@ Nachdem das Docker-Image über Ihre georeplizierte Containerregistrierung bereit
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie zwei Instanzen von „Web-App für Container“ über eine georeplizierte Azure-Containerregistrierung bereitgestellt. Mithilfe der Schritte in diesem Tutorial haben Sie folgende Aktionen durchgeführt:
-
-> [!div class="checklist"]
-> * Bereitstellen eines Containerimages in zwei Instanzen vom Typ *Web-App für Container*
-> * Überprüfen der bereitgestellten Anwendung
+In diesem Tutorial haben Sie zwei Instanzen von „Web-App für Container“ über eine georeplizierte Azure-Containerregistrierung bereitgestellt.
 
 Im nächsten Tutorial aktualisieren Sie die Anwendung, stellen ein neues Containerimage in der Containerregistrierung bereit und vergewissern sich anschließend, dass die in beiden Regionen ausgeführten Web-Apps automatisch aktualisiert wurden.
 

@@ -9,17 +9,18 @@ editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/09/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 061a44540cb618074764ae02fecb3f43d47fe5dd
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: bee65fbdc65807ac33ae425ed9d87dbf0c246d9d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34625286"
 ---
 # <a name="authentication-with-data-lake-store-using-azure-active-directory"></a>Authentifizierung bei Data Lake Store mithilfe von Azure Active Directory
 
-Azure Data Lake Store verwendet Azure Active Directory für die Authentifizierung. Vor dem Erstellen einer Anwendung, die mit Azure Data Lake Store funktioniert, müssen Sie entscheiden, wie Sie Ihre Anwendung bei Azure Active Directory (Azure AD) authentifizieren. 
+Azure Data Lake Store verwendet Azure Active Directory für die Authentifizierung. Vor dem Erstellen einer Anwendung, die mit Azure Data Lake Store funktioniert, müssen Sie entscheiden, wie Sie Ihre Anwendung bei Azure Active Directory (Azure AD) authentifizieren.
 
 ## <a name="authentication-options"></a>Authentifizierungsoptionen
 
@@ -29,19 +30,19 @@ Azure Data Lake Store verwendet Azure Active Directory für die Authentifizierun
 
 Die folgende Tabelle verdeutlicht, wie Endbenutzerauthentifizierung und Authentifizierung zwischen Diensten für Data Lake Store unterstützt werden. Lesen Sie die Tabelle wie im Folgenden beschrieben.
 
-* Das Symbol ✔* bedeutet, dass die Authentifizierungsoption unterstützt wird, und bietet einen Link zu einem Artikel, in dem die Authentifizierungsoption veranschaulicht wird. 
-* Das Symbol ✔ bedeutet, dass die Authentifizierungsoption unterstützt wird. 
+* Das Symbol ✔* gibt an, dass die Authentifizierungsoption unterstützt wird, und ist mit einem Artikel verlinkt, in dem die Verwendung der Authentifizierungsoption veranschaulicht wird. 
+* Das Symbol ✔ gibt an, dass die Authentifizierungsoption unterstützt wird. 
 * Leere Zellen bedeuten, dass die Authentifizierungsoption nicht unterstützt wird.
 
 
 |Verwenden Sie diese Authentifizierungsoption mit...                   |.NET         |Java     |PowerShell |CLI 2.0 | Python   |REST     |
 |:---------------------------------------------|:------------|:--------|:----------|:-------------|:---------|:--------|
-|Endbenutzer (ohne MFA**)                        |   ✔ |    ✔    |    ✔      |       ✔      |    **[✔ *](data-lake-store-end-user-authenticate-python.md#end-user-authentication-without-multi-factor-authentication)**(veraltet)     |    **[✔*](data-lake-store-end-user-authenticate-rest-api.md)**    |
+|Endbenutzer (ohne MFA**)                        |   ✔ |    ✔    |    ✔      |       ✔      |    **[✔*](data-lake-store-end-user-authenticate-python.md#end-user-authentication-without-multi-factor-authentication)** (veraltet)     |    **[✔*](data-lake-store-end-user-authenticate-rest-api.md)**    |
 |Endbenutzer (mit MFA)                           |    **[✔*](data-lake-store-end-user-authenticate-net-sdk.md)**        |    **[✔*](data-lake-store-end-user-authenticate-java-sdk.md)**     |    ✔      |       **[✔*](data-lake-store-get-started-cli-2.0.md)**      |    **[✔*](data-lake-store-end-user-authenticate-python.md#end-user-authentication-with-multi-factor-authentication)**     |    ✔    |
 |Zwischen Diensten (mit Clientschlüssel)         |    **[✔*](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-client-secret)** |    **[✔*](data-lake-store-service-to-service-authenticate-java.md)**    |    ✔      |       ✔      |    **[✔*](data-lake-store-service-to-service-authenticate-python.md#service-to-service-authentication-with-client-secret-for-account-management)**     |    **[✔*](data-lake-store-service-to-service-authenticate-rest-api.md)**    |
 |Zwischen Diensten (mit Clientzertifikat) |    **[✔*](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-certificate)**        |    ✔    |    ✔      |       ✔      |    ✔     |    ✔    |
 
-<i>* Klicken Sie auf das Symbol <b>✔\* </b>. Es ist ein Link.</i><br>
+<i>* Klicken Sie auf das Symbol <b>✔\*</b>. Es ist ein Link.</i><br>
 <i>**MFA steht für Multi-Factor Authentication (mehrstufige Authentifizierung)</i>
 
 Weitere Informationen zur Authentifizierung mit Azure Active Directory finden Sie unter [Authentifizierungsszenarien für Azure AD](../active-directory/develop/active-directory-authentication-scenarios.md).

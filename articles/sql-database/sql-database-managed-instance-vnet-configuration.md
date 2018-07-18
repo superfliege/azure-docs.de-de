@@ -6,20 +6,21 @@ author: srdjan-bozovic
 manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: bccc2d52c592101a23338e57791a992441e80047
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a51923738642b0e6a8ffd420b3cf433f7e869f59
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309332"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Konfigurieren eines VNET für eine verwaltete Azure SQL-Datenbank-Instanz
 
 In einem [virtuellen Azure-Netzwerk (VNET)](../virtual-network/virtual-networks-overview.md) muss eine verwaltete Azure SQL-Datenbank-Instanz (Vorschauversion) bereitgestellt werden. Diese Bereitstellung ermöglicht die folgenden Szenarien: 
-- Direktes Herstellen einer Verbindung mit einer verwalteten Instanz mit einem lokalen Netzwerk 
+- Direktes Herstellen einer Verbindung mit einer verwalteten Instanz von einem lokalen Netzwerk 
 - Herstellen einer Verbindung zwischen einer verwalteten Instanz und einem Verbindungsserver oder einem anderen lokalen Datenspeicher 
 - Herstellen einer Verbindung zwischen einer verwalteten Instanz und Azure-Ressourcen  
 
@@ -59,7 +60,7 @@ Wenn Sie mehrere verwaltete Instanzen innerhalb des Subnetzes bereitstellen möc
 - Azure verwendet fünf IP-Adressen im Subnetz für den eigenen Bedarf. 
 - Jede allgemeine Instanz benötigt zwei Adressen. 
 
-**Beispiel**: Sie beabsichtigen, acht verwaltete Instanzen zu verwalten. Dies bedeutet, dass Sie 5 + 8 * 2 = 21 IP-Adressen benötigen. Da IP-Adressbereiche in Zweierpotenzen definiert sind, benötigen Sie den IP-Adressbereich von 32 (2^5) IP-Adressen. Aus diesem Grund müssen Sie das Subnetz mit der Subnetzmaske /27 reservieren. 
+**Beispiel**: Sie beabsichtigen, acht verwaltete Instanzen zu verwalten. Dies bedeutet, dass Sie 5 + 8 x 2 = 21 IP-Adressen benötigen. Da IP-Adressbereiche in Zweierpotenzen definiert sind, benötigen Sie den IP-Adressbereich von 32 (2^5) IP-Adressen. Aus diesem Grund müssen Sie das Subnetz mit der Subnetzmaske /27 reservieren. 
 
 ## <a name="create-a-new-virtual-network-for-managed-instances"></a>Erstellen eines neuen virtuellen Netzwerks für verwaltete Instanzen 
 

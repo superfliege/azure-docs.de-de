@@ -1,11 +1,11 @@
 ---
-title: "Deaktivierungsinformationen für die Gastbetriebssystemfamilie 1 | Microsoft Docs"
-description: "Bietet Informationen zum Zeitpunkt der Deaktivierung der Azure-Gastbetriebssystemfamilie 1 und dazu, wie Sie ermitteln, ob Sie betroffen sind"
+title: Deaktivierungsinformationen für die Gastbetriebssystemfamilie 1 | Microsoft Docs
+description: Bietet Informationen zum Zeitpunkt der Deaktivierung der Azure-Gastbetriebssystemfamilie 1 und dazu, wie Sie ermitteln, ob Sie betroffen sind
 services: cloud-services
 documentationcenter: na
 author: raiye
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 37b422e9-0713-4a81-a942-f553ef478064
 ms.service: cloud-services
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22998295"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>Deaktivierungsinformationen für die Azure-Gastbetriebssystemfamilie 1
 Die Deaktivierung der Betriebssystemfamilie 1 wurde erstmals am 1. Juni 2013 angekündigt.

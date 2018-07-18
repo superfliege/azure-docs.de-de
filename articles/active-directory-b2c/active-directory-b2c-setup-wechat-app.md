@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Konfiguration für WeChat | Microsoft-Dokumentation'
+title: Konfiguration für WeChat in Azure Active Directory B2C | Microsoft-Dokumentation
 description: Bereitstellen von Registrierung und Anmeldung für Kunden mit WeChat-Konten in mit Azure Active Directory B2C geschützten Anwendungen.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 3/26/2017
 ms.author: davidmu
-ms.openlocfilehash: ca12c84042f92dafff67dc10ce6b56b77c0456eb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: a18d41a4f45b147790a17664156659d282e710d4
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445947"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-wechat-accounts"></a>Azure Active Directory B2C: Bereitstellen von Registrierung und Anmeldung für Kunden mit WeChat-Konten
 
@@ -30,7 +30,7 @@ Um WeChat als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwe
 ### <a name="register-a-wechat-application"></a>Registrieren einer WeChat-Anwendung
 
 1. Navigieren Sie zu [https://open.weixin.qq.com/](https://open.weixin.qq.com/), und melden Sie sich an.
-2. Klicken Sie auf **管理中心** (Management Center).
+2. Klicken Sie auf **管理中心** (Verwaltungscenter).
 3. Führen Sie die erforderlichen Schritte zum Registrieren einer neuen Anwendung aus.
 4. Geben Sie unter **授权回调域** (Rückruf-URL) `https://login.microsoftonline.com/te/{tenant_name}/oauth2/authresp` ein. Wenn Ihr `tenant_name` beispielsweise „contoso.onmicrosoft.com“ lautet, legen Sie die URL auf `https://login.microsoftonline.com/te/contoso.onmicrosoft.com/oauth2/authresp` fest.
 5. Suchen und kopieren Sie die **APP-ID** und den **ANWENDUNGSSCHLÜSSEL**. Diese werden später benötigt.

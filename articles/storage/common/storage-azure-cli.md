@@ -14,11 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
-ms.openlocfilehash: 99e67b9c8469f08f1cbfc980568eec35694d1ae2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 68e101ebec4a90d8c0f39eedeef33d252c720ed1
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737367"
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Verwenden der Azure CLI 2.0 mit Azure Storage
 
@@ -34,7 +35,7 @@ In den Beispielen in der Anleitung wird von der Verwendung der Bash-Shell unter 
 Diese Anleitung setzt voraus, dass Sie die grundlegenden Konzepte von Azure Storage verstehen. Außerdem wird vorausgesetzt, dass Sie die Anforderungen an die Kontoerstellung erfüllen können, die unten für Azure und den Storage-Dienst angegeben sind.
 
 ### <a name="accounts"></a>Konten
-* **Azure-Konto**: Falls Sie noch kein Azure-Abonnement ´haben, können Sie ein [kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/).
+* **Azure-Konto**: Falls Sie noch kein Azure-Abonnement besitzen, können Sie ein [kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/).
 * **Storage-Konto**: Weitere Informationen finden Sie unter Informationen zu [Azure Storage-Konten](storage-create-storage-account.md) im Abschnitt [Erstellen eines Speicherkontos](storage-create-storage-account.md#create-a-storage-account).
 
 ### <a name="install-the-azure-cli-20"></a>Installieren der Azure CLI 2.0

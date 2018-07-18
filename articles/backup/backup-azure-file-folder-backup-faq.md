@@ -1,25 +1,20 @@
 ---
-title: Häufig gestellte Fragen zum Azure Backup-Agent | Microsoft-Dokumentation
+title: Häufig gestellte Fragen zum Azure Backup-Agent
 description: Antworten auf häufig gestellte Fragen zur Funktionsweise des Azure Backup-Agents sowie zu den Grenzwerten für Sicherung und Aufbewahrung.
 services: backup
-documentationcenter: ''
 author: trinadhk
 manager: shreeshd
-editor: ''
 keywords: Sicherung und Notfallwiederherstellung; Backup-Dienst
-ms.assetid: 778c6ccf-3e57-4103-a022-367cc60c411a
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 7/18/2017
-ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: 8777b2265666a4505a3432aca6683e2510519cac
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.topic: conceptual
+ms.date: 6/25/2018
+ms.author: trinadhk
+ms.openlocfilehash: ac6d2a8a152f3c6e22be962b867ef58421eda47b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37016487"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Fragen zum Azure Backup-Agent
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen, damit Sie sich schnell mit den Komponenten des Azure Backup-Agents vertraut machen können. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
@@ -63,7 +58,7 @@ Absolut. Azure Backup ermöglicht die Sicherung auf VM-Ebene für Azure VMs mit 
 Ja. Installieren Sie den Azure Backup-Agent auf dem Windows-Gastbetriebssystem, und sichern Sie Dateien und Ordner im temporären Speicher. Sicherungen können nicht erfolgreich durchgeführt werden, wenn Daten aus dem temporären Speicher entfernt werden. Wenn die temporären Speicherdaten gelöscht wurden, ist außerdem nur die Wiederherstellung in einem nicht volatilen Speicher möglich.
 
 ### <a name="whats-the-minimum-size-requirement-for-the-cache-folder-br"></a>Welche Mindestgröße gilt für den Cacheordner? <br/>
-Die Größe des Cacheordners bestimmt die Menge der Daten, die Sie sichern. Der Cacheordner sollte 5% des Speicherplatzes umfassen, der für die Datenspeicherung erforderlich ist.
+Die Größe des Cacheordners bestimmt die Menge der Daten, die Sie sichern. Das Volume Ihres Cacheordners sollte im Vergleich zum Gesamtumfang der Sicherungsdaten mindestens 5-10 % freien Speicherplatz aufweisen. Wenn weniger als 5-10 % Speicherplatz zur Verfügung stehen, vergrößern Sie das Volume, oder [verschieben Sie den Cacheordner auf ein Volume mit ausreichend freiem Speicherplatz](backup-azure-file-folder-backup-faq.md#backup).
 
 ### <a name="how-do-i-register-my-server-to-another-datacenterbr"></a>Wie registriere ich meinen Server bei einem anderen Datencenter?<br/>
 Die Sicherungsdaten werden an das Datencenter des Tresors gesendet, bei dem dieser registriert ist. Die einfachste Methode zum Ändern des Datencenters besteht darin, den Agent zu deinstallieren und neu zu installieren und den Server bei einem neuen Tresor zu registrieren, der zum gewünschten Datencenter gehört.
@@ -71,7 +66,7 @@ Die Sicherungsdaten werden an das Datencenter des Tresors gesendet, bei dem dies
 ### <a name="does-the-azure-backup-agent-work-on-a-server-that-uses-windows-server-2012-deduplication-br"></a>Funktioniert der Azure Backup-Agent auf einem Server, der die Deduplizierung von Windows Server 2012 verwendet? <br/>
 Ja. Der Agent-Dienst konvertiert die deduplizierten Daten bei der Vorbereitung des Sicherungsvorgangs in normale Daten. Anschließend optimiert er die Daten für die Sicherung, verschlüsselt sie und sendet die verschlüsselten Daten an den Onlinesicherungsdienst.
 
-## <a name="backup"></a>Sicherung
+## <a name="backup"></a>Backup
 ### <a name="how-do-i-change-the-cache-location-specified-for-the-azure-backup-agentbr"></a>Wie kann ich den Cachespeicherort für den Azure Backup-Agent ändern?<br/>
 Verwenden Sie die folgende Liste, um den Cachespeicherort zu ändern.
 

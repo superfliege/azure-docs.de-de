@@ -1,12 +1,12 @@
 ---
 title: Azure Event Hubs-Verwaltungsbibliotheken | Microsoft-Dokumentation
-description: "Verwalten von Event Hubs-Namespaces und -Entitäten über .NET"
+description: Verwalten von Event Hubs-Namespaces und -Entitäten über .NET
 services: event-hubs
 cloud: na
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-ms.assetid: 
+ms.assetid: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26780972"
 ---
 # <a name="event-hubs-management-libraries"></a>Event Hubs-Verwaltungsbibliotheken
 

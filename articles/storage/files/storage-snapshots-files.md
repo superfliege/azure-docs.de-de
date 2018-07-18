@@ -5,7 +5,7 @@ services: storage
 documentationcenter: .net
 author: RenaShahMSFT
 manager: aungoo
-editor: tysonn
+editor: tamram
 ms.assetid: edabe3ee-688b-41e0-b34f-613ac9c3fdfd
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
-ms.openlocfilehash: 6499bdf1af676898f7b2911612cbd206bccfa4fa
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: af113ae76d81c82ff6c4ced1569aa16f3a9ee27c
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37064324"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Übersicht über Freigabemomentaufnahmen für Azure Files 
 Azure Files bietet die Möglichkeit, Freigabemomentaufnahmen von Dateifreigaben zu erstellen. Freigabemomentaufnahmen erfassen den Freigabestatus zum jeweiligen Zeitpunkt. In diesem Artikel erfahren Sie, welche Möglichkeiten Freigabemomentaufnahmen bieten und wie Sie in Ihrem speziellen Fall von ihnen profitieren können.
@@ -45,7 +46,7 @@ Die Freigabemomentaufnahme-Funktion wird auf der Ebene der Dateifreigabe bereitg
 
 Eine Freigabemomentaufnahme einer Dateifreigabe ist mit ihrer Basisdateifreigabe identisch. Der einzige Unterschied besteht darin, dass an den Freigabe-URI ein **DateTime**-Wert angehängt wird, der den Erstellungszeitpunkt der Freigabemomentaufnahme angibt. Wenn ein Dateifreigabe-URI http://storagesample.core.file.windows.net/myshare ist, lautet der Freigabemomentaufnahmen-URI z.B. in etwa:
 ```
-http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
+http://storagesample.file.core.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
 
 Freigabemomentaufnahmen werden beibehalten, bis sie explizit gelöscht werden. Eine Freigabemomentaufnahme kann die zugehörige Basisdateifreigabe nicht überdauern. Sie können alle einer Basisdateifreigabe zugeordneten Momentaufnahmen auflisten, um die aktuell vorhandenen Momentaufnahmen nachzuverfolgen. 
@@ -90,5 +91,5 @@ Freigabemomentaufnahmen bieten nur Schutz auf der Dateiebene. Freigabemomentaufn
 - Verwenden von Azure-Dateifreigabemomentaufnahmen:
     - [Portal](storage-how-to-use-files-portal.md#create-and-modify-share-snapshots)
     - [PowerShell](storage-how-to-use-files-powershell.md#create-and-modify-share-snapshots)
-    - [Befehlszeilenschnittstelle (CLI)](storage-how-to-use-files-cli.md#create-and-modify-share-snapshots)
+    - [BEFEHLSZEILENSCHNITTSTELLE (CLI)](storage-how-to-use-files-cli.md#create-and-modify-share-snapshots)
 - [Häufig gestellte Fragen zu Azure Files](storage-files-faq.md#share-snapshots)

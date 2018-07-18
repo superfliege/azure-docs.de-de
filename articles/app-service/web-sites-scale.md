@@ -1,8 +1,8 @@
 ---
 title: Zentrales Hochskalieren einer App in Azure | Microsoft Docs
-description: "Erfahren Sie, wie Sie eine App in Azure App Service zentral hochskalieren, um Kapazität und Features hinzuzufügen."
+description: Erfahren Sie, wie Sie eine App in Azure App Service zentral hochskalieren, um Kapazität und Features hinzuzufügen.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: mollybos
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
-ms.openlocfilehash: f6244e3f739424be169f1ea117500159bd5e4254
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 01c20e7f43c11a077d3870ee32c1d8be98a95696
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38306432"
 ---
 # <a name="scale-up-an-app-in-azure"></a>Zentrales Hochskalieren einer App in Azure
 
@@ -50,7 +51,7 @@ Informationen zur Preisgestaltung und zu den Funktionen der einzelnen App Servic
 2. Klicken Sie auf der Seite Ihrer App Service-App auf **Alle Einstellungen** und anschließend auf **Zentral hochskalieren**.
    
     ![Navigieren Sie, um Ihre Azure-App zentral hochzuskalieren.][ChooseWHP]
-3. Wählen Sie Ihren Tarif, und klicken Sie auf **Auswählen**.
+3. Wählen Sie Ihren Tarif aus, und klicken Sie auf **Übernehmen**.
    
     Auf der Registerkarte **Benachrichtigungen** wird in grüner Schrift der Text **ERFOLGREICH** angezeigt, nachdem der Vorgang abgeschlossen wurde.
 
@@ -97,7 +98,7 @@ Eine Tabelle der Dienstbeschränkungen, Kontingente und Einschränkungen sowie u
   
     [Größen virtueller Computer und Clouddienste für Microsoft Azure][vmsizes]
   
-* Informationen zu den Best Practices für Azure App Service, einschließlich dem Aufbau einer skalierbaren, robusten Architektur, finden Sie unter [Best Practices: Azure App Service-Web-Apps](http://blogs.msdn.com/b/windowsazure/archive/2014/02/10/best-practices-windows-azure-websites-waws.aspx).
+* Informationen zu den Best Practices für Azure App Service, einschließlich dem Aufbau einer skalierbaren, robusten Architektur, finden Sie unter [Best Practices: Azure App Service-Web-Apps](https://azure.microsoft.com/blog/best-practices-windows-azure-websites-waws/).
 * Videos zum Skalieren von App Service-Apps finden Sie in den folgenden Ressourcen:
   
   * [Wann sollte man Azure-Websites skalieren? - Mit Stefan Schackow](https://azure.microsoft.com/resources/videos/azure-web-sites-free-vs-standard-scaling/)
@@ -107,7 +108,7 @@ Eine Tabelle der Dienstbeschränkungen, Kontingente und Einschränkungen sowie u
 <!-- LINKS -->
 [vmsizes]:/pricing/details/app-service/
 [SQLaccountsbilling]:http://go.microsoft.com/fwlink/?LinkId=234930
-[azuresubscriptions]:http://go.microsoft.com/fwlink/?LinkID=235288
+[azuresubscriptions]:https://account.windowsazure.com/subscriptions
 [portal]: https://portal.azure.com/
 
 <!-- IMAGES -->

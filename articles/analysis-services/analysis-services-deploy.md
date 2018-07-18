@@ -3,16 +3,17 @@ title: Bereitstellen in Azure Analysis Services mithilfe von SSDT | Microsoft-Do
 description: Erfahren Sie, wie Sie ein tabellarisches Modell mithilfe von SSDT auf einem Azure Analysis Services-Server bereitstellen.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a25066ef8446449148bc0ca95989dc6ca3ca6839
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9a3b969af861d6fb750b8aad666f2e1dfb7c8a3d
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447284"
 ---
 # <a name="deploy-a-model-from-ssdt"></a>Bereitstellen eines Modells mithilfe von SSDT
 Nachdem Sie im Azure-Abonnement einen Server erstellt haben, können Sie eine tabellarische Modelldatenbank auf ihm bereitstellen. Sie können SQL Server Data Tools (SSDT) zum Erstellen und Bereitstellen eines tabellarischen Modellprojekts verwenden. 
@@ -29,15 +30,18 @@ Zunächst benötigen Sie Folgendes:
 > 
 > 
 
-## <a name="to-deploy-a-tabular-model-from-ssdt"></a>So stellen Sie ein tabellarisches Modell aus SSDT bereit
+## <a name="get-the-server-name"></a>Abrufen des Servernamens
 
-1. Vor dem Bereitstellen müssen Sie den Servernamen abrufen. Kopieren Sie den Servernamen über **Azure-Portal** > Server > **Übersicht** > **Servername**.
+Kopieren Sie den Servernamen über **Azure-Portal** > Server > **Übersicht** > **Servername**.
    
-    ![Abrufen von Servernamen in Azure](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
-2. Klicken Sie in SSDT im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **Eigenschaften** aus. Fügen Sie dann in **Bereitstellung** > **Server** den Servernamen ein.   
+![Abrufen von Servernamen in Azure](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
+
+## <a name="to-deploy-from-ssdt"></a>So führen Sie die Bereitstellung über SSDT aus
+
+1. Klicken Sie in SSDT im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **Eigenschaften** aus. Fügen Sie dann in **Bereitstellung** > **Server** den Servernamen ein.   
    
     ![Einfügen des Servernamens in die Bereitstellungsserver-Eigenschaft](./media/analysis-services-deploy/aas-deploy-deployment-server-property.png)
-3. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **Eigenschaften**, und klicken Sie dann auf **Bereitstellen**. Sie werden möglicherweise aufgefordert, sich bei Azure anzumelden.
+2. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **Eigenschaften**, und klicken Sie dann auf **Bereitstellen**. Sie werden möglicherweise aufgefordert, sich bei Azure anzumelden.
    
     ![Auf Server bereitstellen](./media/analysis-services-deploy/aas-deploy-deploy.png)
    

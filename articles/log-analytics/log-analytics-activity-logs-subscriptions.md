@@ -3,21 +3,23 @@ title: Abonnementübergreifendes Erfassen von Azure-Aktivitätsprotokollen in Lo
 description: Erfassen Sie mit Event Hubs und Logik-Apps Daten aus dem Azure-Aktivitätsprotokoll, und senden Sie diese Daten an den Azure Log Analytics-Arbeitsbereich eines anderen Mandanten.
 services: log-analytics, logic-apps, event-hubs
 documentationcenter: ''
-author: richrundmsft
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: richrund; bwren
-ms.openlocfilehash: 434cbdca42e4287a0f3d7e3960bc0baa373bc358
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.component: na
+ms.openlocfilehash: c2bb802213d903290a0168623d7e6a302ba0e324
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127440"
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Abonnementübergreifendes Erfassen von Azure-Aktivitätsprotokollen in Log Analytics
 
@@ -113,7 +115,7 @@ Stellen Sie vor dem Erstellen der Logik-App sicher, dass Ihnen die folgenden Inf
 - ID des Log Analytics-Arbeitsbereichs
 - Gemeinsam verwendeter Schlüssel für Log Analytics
 
-Um Name und Verbindungszeichenfolge des Event Hubs abzurufen, führen Sie die unter [Überprüfen von Berechtigungen für Event Hub-Namespaces und Suchen nach der Verbindungszeichenfolge](../connectors/connectors-create-api-azure-event-hubs.md#connect-to-azure-event-hubs) beschriebenen Schritte aus.
+Um Name und Verbindungszeichenfolge des Event Hubs abzurufen, führen Sie die unter [Überprüfen von Berechtigungen für Event Hub-Namespaces und Suchen nach der Verbindungszeichenfolge](../connectors/connectors-create-api-azure-event-hubs.md#permissions-connection-string) beschriebenen Schritte aus.
 
 
 ### <a name="create-a-new-blank-logic-app"></a>Erstellen einer neuen leeren Logik-App

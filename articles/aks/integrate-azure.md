@@ -8,11 +8,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: seozerca
-ms.openlocfilehash: a881b08874a157b0d6781ec3859b05eeaeba6676
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 471b53be4200ff728214876dd187c3c4e427c947
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342875"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integrieren von mit Azure verwalteten Diensten mithilfe von Open Service Broker für Azure (OSBA)
 
@@ -21,7 +22,7 @@ Zusammen mit dem [Kubernetes Service Catalog][kubernetes-service-catalog] ermög
 ## <a name="prerequisites"></a>Voraussetzungen
 * Ein Azure-Abonnement
 
-* Azure CLI 2.0: [lokale Installation][azure-cli-install] oder Verwendung in [Azure Cloud Shell][azure-cloud-shell]
+* Azure CLI: [Lokale Installation][azure-cli-install] oder Verwendung in [Azure Cloud Shell][azure-cloud-shell]
 
 * Helm-CLI 2.7+: [lokale Installation][helm-cli-install] oder Verwendung in [Azure Cloud Shell][azure-cloud-shell]
 
@@ -43,10 +44,16 @@ Fügen Sie nun das Dienstkatalogdiagramm zum Helm-Repository hinzu:
 helm repo add svc-cat https://svc-catalog-charts.storage.googleapis.com
 ```
 
-Installieren Sie abschließend den Dienstkatalog mit dem Helm-Diagramm:
+Installieren Sie abschließend den Dienstkatalog mit dem Helm-Diagramm. Führen Sie diesen Befehl aus, wenn Ihr Cluster RBAC-fähig ist.
 
 ```azurecli-interactive
-helm install svc-cat/catalog --name catalog --namespace catalog --set rbacEnable=false
+helm install svc-cat/catalog --name catalog --namespace catalog --set controllerManager.healthcheck.enabled=false
+```
+
+Führen Sie diesen Befehl aus, falls Ihr Cluster nicht RBAC-fähig ist.
+
+```azurecli-interactive
+helm install svc-cat/catalog --name catalog --namespace catalog --set rbacEnable=false --set apiserver.auth.enabled=false --set controllerManager.healthcheck.enabled=false
 ```
 
 Nachdem das Helm-Diagramm ausgeführt wurde, vergewissern Sie sich, dass `servicecatalog` in der Ausgabe des folgenden Befehls angezeigt wird:
@@ -68,7 +75,7 @@ v1beta1.storage.k8s.io               10
 
 ## <a name="install-open-service-broker-for-azure"></a>Installieren von Open Service Broker für Azure
 
-Der nächste Schritt besteht darin, [Open Service Broker für Azure][open-service-broker-azure] zu installieren, worin der Katalog für die von Azure verwalteten Dienste enthalten ist. Beispiele für verfügbare Azure-Dienste sind Azure Database for PostgreSQL, Azure Redis Cache, Azure Database for MySQL, Azure Cosmos DB, Azure SQL-Datenbank und andere.
+Der nächste Schritt besteht darin, [Open Service Broker für Azure][open-service-broker-azure] zu installieren, worin der Katalog für die von Azure verwalteten Dienste enthalten ist. Beispiele für verfügbare Azure-Dienste sind Azure Database for PostgreSQL, Azure Database for MySQL und Azure SQL-Datenbank.
 
 Sie beginnen mit dem Hinzufügen des Helm-Repositorys für Open Service Broker für Azure:
 

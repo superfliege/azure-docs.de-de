@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/26/2018
+ms.date: 05/21/2018
 ms.author: vidarmsft
-ms.openlocfilehash: 429f1edae15a98b3c38ae4980a630f23b3a85d23
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: d57229ad79909aa0334cc623d727b733a1ec73f9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271903"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652007"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>Übersicht über die StorSimple Data Manager-Lösung
 
@@ -82,10 +82,9 @@ Wenn Ihre Data Manager-Region sich von Ihrer Auftragsdefinitionsregion untersche
 
 ![Dienst und Auftragsdefinition in unterschiedlichen Regionen](./media/storsimple-data-manager-overview/data-manager-job-different-regions.png)
 
-## <a name="gdpr-compliance"></a>Einhaltung der DSGVO
+## <a name="managing-personal-information"></a>Verwalten personenbezogener Informationen
 
-Die [Datenschutz-Grundverordnung (DSGVO)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) ist ein Datenschutzgesetz der Europäischen Union (EU). Die DSGVO enthält zahlreiche Bestimmungen für die Sammlung, Speicherung und Verwendung persönlicher Informationen. Die Regeln der DSGVO gelten für Unternehmen, Regierungsbehörden und andere Organisationen, die in der EU tätig sind und Daten sammeln/analysieren, die mit EU-Bürgern zusammenhängen. Der StorSimple Data Manager ist DSGVO-konform. Der Data Manager-Dienst sammelt keine personenbezogenen Daten.
-Weitere Informationen finden Sie im [Trust Center](https://www.microsoft.com/trustcenter) in der Microsoft-Datenschutzrichtlinie.
+Personenbezogene Daten werden vom StorSimple Data Manager weder gesammelt noch angezeigt. Weitere Informationen finden Sie im [Trust Center](https://www.microsoft.com/trustcenter) in der Microsoft-Datenschutzrichtlinie.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

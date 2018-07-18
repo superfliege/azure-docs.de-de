@@ -1,11 +1,11 @@
 ---
-title: "Azure CLI-Skriptbeispiel – Erstellen einer Funktionen-App in einem App Service-Plan | Microsoft-Dokumentation"
-description: "Azure CLI-Skriptbeispiel – Erstellen einer Funktionen-App in einem App Service-Plan"
+title: Azure CLI-Skriptbeispiel – Erstellen einer Funktionen-App in einem App Service-Plan | Microsoft-Dokumentation
+description: Azure CLI-Skriptbeispiel – Erstellen einer Funktionen-App in einem App Service-Plan
 services: functions
 documentationcenter: functions
 author: syntaxc4
 manager: cfowler
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
 ms.service: functions
@@ -16,17 +16,16 @@ ms.workload: web
 ms.date: 10/22/2018
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: d2c346424c5bcec7ec91b309799a1bf9fe3cab02
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 744c5310e08066dcbbfbde55b8e6ecb6c9361855
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937297"
 ---
 # <a name="create-a-function-app-in-an-app-service-plan"></a>Erstellen einer Funktionen-App in einem App Service-Plan
 
 Dieses Azure Functions-Beispielskript erstellt eine Funktions-App, die als Container für Ihre Funktionen fungiert. Die erstellte Funktions-App verwendet einen dedizierten App Service-Plan. Die Serverressourcen sind also immer aktiv.
-
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -50,7 +49,7 @@ Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft. D
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_create) | Erstellt ein Azure Storage-Konto. |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appserviceplan#az_appserviceplan_create) | Erstellt einen App Service-Plan. |
+| [az appservice plan create](https://docs.microsoft.com/en-us/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Erstellt einen App Service-Plan. |
 | [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az_functionapp_delete) | Erstellt eine Azure-Funktionen-App. |
 
 ## <a name="next-steps"></a>Nächste Schritte

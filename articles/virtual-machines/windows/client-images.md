@@ -1,11 +1,11 @@
 ---
-title: Verwenden von Windows-Clientimages in Azure | Microsoft-Dokumentation
-description: "Verwenden von Visual Studio-Abonnementvorteilen zum Bereitstellen von Windows 7, Windows 8 oder Windows 10 in Azure für Entwicklungs-/Testszenarien"
+title: Verwenden von Windows-Clientimages in Azure | Microsoft Docs
+description: Verwenden von Visual Studio-Abonnementvorteilen zum Bereitstellen von Windows 7, Windows 8 oder Windows 10 in Azure für Entwicklungs-/Testszenarien
 services: virtual-machines-windows
-documentationcenter: 
-author: iainfoulds
+documentationcenter: ''
+author: cynthn
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 91c3880a-cede-44f1-ae25-f8f9f5b6eaa4
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
-ms.author: iainfou
-ms.openlocfilehash: aaab69f452db9d4f11af2b5cfd2cd9ff6ac79954
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.author: cynthn
+ms.openlocfilehash: a2b9a06e8e3b1bda91050e1607c7265d6fe66bb1
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931788"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Verwenden des Windows-Clients in Azure für Entwicklungs-/Testszenarien
 Sie können Windows 7, Windows 8 oder Windows 10 Enterprise (x64) in Azure für Entwicklungs-/Testszenarien verwenden, sofern Sie über ein entsprechendes Visual Studio-Abonnement (früher MSDN) verfügen. Dieser Artikel beschreibt die erforderlichen Berechtigungen für die Ausführung von Windows 7, Windows 8.1 und Windows 10 Enterprise in Azure und die Verwendung der folgenden Images aus dem Azure-Katalog.
@@ -47,7 +48,7 @@ In der folgenden Tabelle werden die Angebots-IDs aufgeführt, die über den Azur
 | [Visual Studio Premium mit MSDN (Vorteil)](https://azure.microsoft.com/offers/ms-azr-0061p/) |0061P |Windows 10 |
 | [Visual Studio Enterprise-Abonnenten](https://azure.microsoft.com/offers/ms-azr-0063p/) |0063P |Windows 10 |
 | [Visual Studio Enterprise-Abonnenten (BizSpark)](https://azure.microsoft.com/offers/ms-azr-0064p/) |0064P |Windows 10 |
-| [Enterprise Dev/Test](https://azure.microsoft.com/ofers/ms-azr-0148p/) |0148P |Windows 10 |
+| [Enterprise Dev/Test](https://azure.microsoft.com/en-us/offers/ms-azr-0148p/) |0148P |Windows 10 |
 
 ## <a name="check-your-azure-subscription"></a>Überprüfen Ihres Azure-Abonnements
 Wenn Sie Ihre Angebots-ID nicht kennen, können Sie sie auf eine der beiden folgenden Weisen beim Azure-Portal abrufen:  

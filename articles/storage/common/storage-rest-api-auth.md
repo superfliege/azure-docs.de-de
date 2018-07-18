@@ -1,23 +1,19 @@
 ---
-title: "Aufrufen der REST-API-Vorgänge von Azure Storage-Diensten (einschließlich Authentifizierung) | Microsoft-Dokumentation"
-description: "Aufrufen der REST-API-Vorgänge von Azure Storage-Diensten (einschließlich Authentifizierung)"
+title: Aufrufen der REST-API-Vorgänge von Azure Storage-Diensten (einschließlich Authentifizierung) | Microsoft-Dokumentation
+description: Aufrufen der REST-API-Vorgänge von Azure Storage-Diensten (einschließlich Authentifizierung)
 services: storage
-documentationcenter: na
-author: robinsh
-manager: timlt
-ms.assetid: f4704f58-abc6-4f89-8b6d-1b1659746f5a
+author: tamram
+manager: twooley
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 11/27/2017
-ms.author: robinsh
-ms.openlocfilehash: 521487c3ed38f191308e14e4d542358438945556
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.date: 05/22/2018
+ms.author: tamram
+ms.openlocfilehash: 6009ebd18eb089b21c98d6f7d9f49044a8d96098
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650450"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Verwenden der Azure Storage-REST-API
 
@@ -48,19 +44,17 @@ git clone https://github.com/Azure-Samples/storage-dotnet-rest-api-with-auth.git
 
 Mit diesem Befehl wird das Repository in Ihren lokalen Git-Ordner geklont. Suchen Sie zum Öffnen der Visual Studio-Projektmappe nach dem Ordner „storage-dotnet-rest-api-with-auth“, und öffnen Sie ihn. Doppelklicken Sie anschließend auf „StorageRestApiAuth.sln“. 
 
-## <a name="why-do-i-need-to-know-rest"></a>Warum muss ich mit REST vertraut sein?
-
-Es ist nützlich, wenn Sie sich mit REST auskennen. Das Azure-Produktteam veröffentlicht ständig neue Features. Häufig kann auf die neuen Features über die REST-Schnittstelle zugegriffen werden, aber sie sind noch nicht in **allen** Speicherclientbibliotheken oder auf der Benutzeroberfläche (z.B. im Azure-Portal) verfügbar. Wenn Sie immer die aktuellsten und besten Funktionen nutzen möchten, ist das Erlernen von REST eine Voraussetzung dafür. Falls Sie Ihre eigene Bibliothek schreiben möchten, um mit Azure Storage zu interagieren, oder wenn Sie per Programmiersprache ohne SDK oder Speicherclientbibliothek auf Azure Storage zugreifen möchten, können Sie die REST-API verwenden.
-
 ## <a name="what-is-rest"></a>Was ist REST?
 
 REST steht für *Representational State Transfer*. Eine ausführliche Definition finden Sie bei [Wikipedia](http://en.wikipedia.org/wiki/Representational_state_transfer).
 
 REST ist im Wesentlichen eine Architektur, die Sie nutzen können, wenn Sie APIs aufrufen oder APIs für das Aufrufen zur Verfügung stellen. Dies ist unabhängig davon, was auf beiden Seiten passiert und welche andere Software verwendet wird, wenn die REST-Aufrufe gesendet oder empfangen werden. Sie können eine Anwendung schreiben, die auf einem Mac-, Windows- oder Linux-Computer, Android-Smartphone oder -Tablet, iPhone, iPod oder einer Website ausgeführt wird, und für alle Plattformen die gleiche REST-API verwenden. Daten können in ein- oder ausgehender Richtung übergeben werden, wenn die REST-API aufgerufen wird. Für die REST-API spielt es keine Rolle, von welcher Plattform aus sie aufgerufen wird. Wichtig sind die in der Anforderung übergebenen Informationen und die in der Antwort bereitgestellten Daten.
 
-## <a name="heres-the-plan"></a>Der Plan
+Es ist nützlich, wenn Sie sich mit REST auskennen. Das Azure-Produktteam veröffentlicht ständig neue Features. Häufig kann auf die neuen Features über die REST-Schnittstelle zugegriffen werden, aber sie sind noch nicht in **allen** Speicherclientbibliotheken oder auf der Benutzeroberfläche (z.B. im Azure-Portal) verfügbar. Wenn Sie immer die aktuellsten und besten Funktionen nutzen möchten, ist das Erlernen von REST eine Voraussetzung dafür. Falls Sie Ihre eigene Bibliothek schreiben möchten, um mit Azure Storage zu interagieren, oder wenn Sie per Programmiersprache ohne SDK oder Speicherclientbibliothek auf Azure Storage zugreifen möchten, können Sie die REST-API verwenden.
 
-Im Beispielprojekt sind die Container eines Speicherkontos aufgelistet. Wenn Sie verstanden haben, wie die Informationen in der REST-API-Dokumentation mit Ihrem tatsächlichen Code korrelieren, sind andere REST-Aufrufe einfacher nachzuvollziehen. 
+## <a name="about-the-sample-application"></a>Infos zur Beispielanwendung
+
+Die Beispielanwendung listet die Container in einem Speicherkonto auf. Wenn Sie verstanden haben, wie die Informationen in der REST-API-Dokumentation mit Ihrem tatsächlichen Code korrelieren, sind andere REST-Aufrufe einfacher nachzuvollziehen. 
 
 Wenn Sie sich die [Blob-Dienst-REST-API](/rest/api/storageservices/fileservices/Blob-Service-REST-API) ansehen, werden alle Vorgänge angezeigt, die Sie für Blobspeicher durchführen können. Die Speicherclientbibliotheken dienen als Wrapper für die REST-APIs. Sie erleichtern Ihnen das Zugreifen auf den Speicher, ohne dass die REST-APIs direkt verwendet werden müssen. Wie oben erwähnt, kann es vorkommen, dass Sie anstelle einer Speicherclientbibliothek die REST-API nutzen möchten.
 
@@ -70,7 +64,7 @@ Sehen Sie sich in der REST-API-Referenz die Seite zum [ListContainers](/rest/api
 
 **Anforderungsmethode**: GET. Dieses Verb ist die HTTP-Methode, die Sie als Eigenschaft des Anforderungsobjekts angeben. Andere Werte für dieses Verb sind HEAD, PUT und DELETE – je nach aufgerufener API.
 
-**Anforderungs-URI**: https://myaccount.blob.core.windows.net/?comp=list  Dieser URI wird aus dem Blobspeicherkonto-Endpunkt `http://myaccount.blob.core.windows.net` und der Ressourcenzeichenfolge `/?comp=list` erstellt.
+**Anforderungs-URI:** https://myaccount.blob.core.windows.net/?comp=list Dieser URI wird aus dem Blob Storage-Kontoendpunkt `http://myaccount.blob.core.windows.net` und der Ressourcenzeichenfolge `/?comp=list` erstellt.
 
 [URI-Parameter](/rest/api/storageservices/fileservices/List-Containers2#uri-parameters): Es sind zusätzliche Abfrageparameter vorhanden, die Sie beim Aufrufen von ListContainers verwenden können. Zwei dieser Parameter sind *timeout* für den Aufruf (in Sekunden) und *prefix* für die Filterung.
 
@@ -141,7 +135,7 @@ Fügen Sie die Anforderungsheader für „x-ms-date“ und „x-ms-version“ hi
     // Add the request headers for x-ms-date and x-ms-version.
     DateTime now = DateTime.UtcNow;
     httpRequestMessage.Headers.Add("x-ms-date", now.ToString("R", CultureInfo.InvariantCulture));
-    httpRequestMessage.Headers.Add("x-ms-version", "2017-04-17");
+    httpRequestMessage.Headers.Add("x-ms-version", "2017-07-29");
     // If you need any additional headers, add them here before creating
     //   the authorization header. 
 ```
@@ -205,7 +199,7 @@ HTTP/1.1 200 OK
 Content-Type: application/xml
 Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
 x-ms-request-id: 3e889876-001e-0039-6a3a-5f4396000000
-x-ms-version: 04-17
+x-ms-version: 2017-07-29
 Date: Fri, 17 Nov 2017 00:23:42 GMT
 Content-Length: 1511
 ```
@@ -271,6 +265,9 @@ Nachdem Sie nun mit dem Erstellen der Anforderung, dem Aufrufen des Diensts und 
 
 ## <a name="creating-the-authorization-header"></a>Erstellen des Autorisierungsheaders
 
+> [!TIP]
+> Azure Storage unterstützt jetzt die Integration von Azure Active Directory (Azure AD) für die Blob- und Warteschlangendienste (Vorschau). Azure AD bietet eine erheblich einfachere Benutzeroberfläche für das Autorisieren einer Anforderung an Azure Storage. Weitere Informationen zur Verwendung von Azure AD zum Autorisieren von REST-Vorgängen finden Sie unter [Authenticate with Azure Active Directory (Preview)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory) (Authentifizieren mit Azure Active Directory (Vorschau)). Eine Übersicht über die Azure AD-Integration in Azure Storage finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mithilfe von Azure Active Directory (Vorschau)](storage-auth-aad.md).
+
 Es gibt einen Artikel, in dem konzeptuell (ohne Code) beschrieben wird, wie Sie die [Authentifizierung für Azure Storage-Dienste](/rest/api/storageservices/fileservices/Authentication-for-the-Azure-Storage-Services) durchführen.
 Wir fassen hier die wesentlichen Punkte des Artikels zusammen und zeigen den Code.
 
@@ -312,7 +309,7 @@ Wir beginnen mit diesen beiden vereinheitlichten Feldern, da sie erforderlich si
 Rufen Sie zum Erstellen dieses Werts die Header ab, die mit „x-ms-“ beginnen, und sortieren Sie sie. Formatieren Sie sie anschließend in eine Reihe von `[key:value\n]`-Instanzen, die zu einer Zeichenfolge verkettet werden. In diesem Beispiel sehen die vereinheitlichten Header wie folgt aus: 
 
 ```
-x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-04-17\n
+x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
 ```
 
 Hier ist der Code angegeben, der zum Erstellen dieser Ausgabe verwendet wird:
@@ -417,7 +414,7 @@ internal static AuthenticationHeaderValue GetAuthorizationHeader(
 Wenn Sie diesen Code ausführen, sieht die sich ergebende MessageSignature wie folgt aus:
 
 ```
-GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 01:07:37 GMT\nx-ms-version:2017-04-17\n/contosorest/\ncomp:list
+GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 01:07:37 GMT\nx-ms-version:2017-07-29\n/contosorest/\ncomp:list
 ```
 
 Hier ist der endgültige Wert für AuthorizationHeader angegeben:
@@ -463,7 +460,7 @@ Wenn Sie dieses Beispiel ausführen, erhalten Sie beispielsweise folgende Ergebn
 **Vereinheitlichte Header:**
 
 ```
-x-ms-date:Fri, 17 Nov 2017 05:16:48 GMT\nx-ms-version:2017-04-17\n
+x-ms-date:Fri, 17 Nov 2017 05:16:48 GMT\nx-ms-version:2017-07-29\n
 ```
 
 **Vereinheitlichte Ressource:**
@@ -476,7 +473,7 @@ x-ms-date:Fri, 17 Nov 2017 05:16:48 GMT\nx-ms-version:2017-04-17\n
 
 ```
 GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 05:16:48 GMT
-  \nx-ms-version:2017-04-17\n/contosorest/container-1\ncomp:list\nrestype:container
+  \nx-ms-version:2017-07-29\n/contosorest/container-1\ncomp:list\nrestype:container
 ```
 
 **AuthorizationHeader:**
@@ -497,7 +494,7 @@ GET http://contosorest.blob.core.windows.net/container-1?restype=container&comp=
 
 ```
 x-ms-date: Fri, 17 Nov 2017 05:16:48 GMT
-x-ms-version: 2017-04-17
+x-ms-version: 2017-07-29
 Authorization: SharedKey contosorest:uzvWZN1WUIv2LYC6e3En10/7EIQJ5X9KtFQqrZkxi6s=
 Host: contosorest.blob.core.windows.net
 Connection: Keep-Alive
@@ -510,7 +507,7 @@ HTTP/1.1 200 OK
 Content-Type: application/xml
 Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
 x-ms-request-id: 7e9316da-001e-0037-4063-5faf9d000000
-x-ms-version: 2017-04-17
+x-ms-version: 2017-07-29
 Date: Fri, 17 Nov 2017 05:20:21 GMT
 Content-Length: 1135
 ```

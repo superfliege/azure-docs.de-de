@@ -3,7 +3,7 @@ title: Workflowtrigger und -aktionen – Azure Logic Apps | Microsoft-Dokumentat
 description: Informationen zu Triggern und Aktionen in den Workflowdefinitionen für Azure Logic Apps
 services: logic-apps
 author: kevinlam1
-manager: SyntaxC4
+manager: jeconnoc
 editor: ''
 documentationcenter: ''
 ms.assetid: 86a53bb3-01ba-4e83-89b7-c9a7074cb159
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 5/8/2018
 ms.author: klam; LADocs
-ms.openlocfilehash: 88ee3d810a80bed418e8dbafa4f3e35ccf5e85b1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: f44de1a316a8375618cfef2e4a98d40c2b21e019
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33886781"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300146"
 ---
 # <a name="triggers-and-actions-for-workflow-definitions-in-azure-logic-apps"></a>Trigger und Aktionen für Workflowdefinitionen in Azure Logic Apps
 
@@ -139,7 +139,7 @@ Dies ist die Triggerdefinition:
 | hours | Ganze Zahl oder Ganzzahlarray | Wenn Sie für `frequency` die Option „Day“ oder „Week“ angeben, können Sie eine ganze Zahl oder eine kommagetrennte Liste mit ganzen Zahlen von 0 bis 23 als die Stunden des Tages angeben, zu denen der Workflow ausgeführt werden soll. <p>Wenn Sie also etwa „10“, „12“ und „14“ angeben, erhalten Sie die vollen Stunden „10 Uhr“, „12 Uhr“ und „14 Uhr“. | 
 | minutes | Ganze Zahl oder Ganzzahlarray | Wenn Sie für `frequency` die Option „Day“ oder „Week“ angeben, können Sie eine ganze Zahl oder eine kommagetrennte Liste mit ganzen Zahlen von 0 bis 59 als die Minuten der Stunde angeben, zu denen der Workflow ausgeführt werden soll. <p>Wenn Sie also beispielsweise „30“ als Minutenwert angeben und das vorherige Beispiel für Stunden des Tages verwenden, erhalten Sie „10:30 Uhr“, „12:30 Uhr“ und „14:30 Uhr“. | 
 | weekDays | Zeichenfolge oder Zeichenfolgenarray | Wenn Sie für `frequency` die Option „Week“ angeben, können Sie einen Tag oder eine kommagetrennte Liste mit Tagen für die Workflowausführung angeben: „Monday“, „Tuesday“, „Wednesday“, „Thursday“, „Friday“, „Saturday“ oder „Sunday“ | 
-| Parallelität | JSON-Objekt | Für wiederholte und Abfragetrigger gibt dieses Objekt die maximale Anzahl von Workflowinstanzen an, die gleichzeitig ausgeführt werden können. Verwenden Sie diesen Wert, um die Anforderungen zu begrenzen, die Back-End-Systeme erhalten. <p>Beispielsweise legt dieser Wert den Grenzwert für die Parallelität auf 10 Instanzen fest: `"concurrency": { "runs": 10 }` | 
+| Parallelität | JSON-Objekt | Für Wiederholungs- und Abfragetrigger gibt dieses Objekt die maximale Anzahl von Workflowinstanzen an, die gleichzeitig ausgeführt werden können. Verwenden Sie diesen Wert, um die Anforderungen zu begrenzen, die Back-End-Systeme erhalten. <p>Beispielsweise legt dieser Wert den Grenzwert für die Parallelität auf 10 Instanzen fest: `"concurrency": { "runs": 10 }` | 
 | operationOptions | Zeichenfolge | Die `singleInstance`-Option gibt an, dass der Trigger nur ausgelöst wird, nachdem alle aktiven Ausführungen abgeschlossen wurden. Siehe [Trigger: Nur nach Abschluss aller aktiven Ausführungen auslösen](#single-instance). | 
 |||| 
 

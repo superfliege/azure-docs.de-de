@@ -1,6 +1,6 @@
 ---
 title: 'Abrufen von ARP-Tabellen: Resource Manager: Azure ExpressRoute-Problembehandlung | Microsoft-Dokumentation'
-description: "Diese Seite enthält Anweisungen zum Abrufen der ARP-Tabellen für eine ExpressRoute-Verbindung."
+description: Diese Seite enthält Anweisungen zum Abrufen der ARP-Tabellen für eine ExpressRoute-Verbindung.
 documentationcenter: na
 services: expressroute
 author: ganesr
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23013135"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Abrufen von ARP-Tabellen im Resource Manager-Bereitstellungsmodell
 > [!div class="op_single_selector"]

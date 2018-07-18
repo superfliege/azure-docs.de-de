@@ -1,11 +1,11 @@
 ---
 title: 'Azure AD Connect-Synchronisierung: Funktionsreferenz | Microsoft Docs'
-description: "Referenz der Ausdrücke für die deklarative Bereitstellung in der Azure AD Connect-Synchronisierung."
+description: Referenz der Ausdrücke für die deklarative Bereitstellung in der Azure AD Connect-Synchronisierung.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 4f525ca0-be0e-4a2e-8da1-09b6b567ed5f
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9ce27ca217f99b4f12ca1af0b5a178f5d61a1c89
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 4814d53a86b0d90cf16f76e75c7044448cf791eb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595154"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect-Synchronisierung: Funktionsreferenz
 In der Azure AD Connect-Synchronisierung werden Funktionen verwendet, um Attributwerte während der Synchronisierung zu ändern.  
@@ -416,7 +418,7 @@ Dieses Format wird von Azure Active Directory als DN verwendet.
 
 **Beispiel:**  
 `ConvertFromUTF8Hex("48656C6C6F20776F726C6421")`  
-Gibt*Hello world!*zurück.
+Gibt*Hello world!* zurück.
 
 - - -
 ### <a name="converttobase64"></a>ConvertToBase64
@@ -1108,7 +1110,7 @@ Das Format lautet "{source1}:{target1},{source2}:{target2},{sourceN},{targetN}",
 * Die Funktion ersetzt alle Vorkommen von definierten Quellen durch die Ziele.
 * Die Quelle muss genau ein Zeichen (Unicode) sein.
 * Die Quelle kann nicht leer sein oder mehrere Zeichen enthalten (Analysefehler).
-* Das Ziel kann mehrere Zeichen enthalten. Beispiel: ö:oe, β:ss.
+* Das Ziel kann mehrere Zeichen enthalten, etwa ö:oe, β:ss.
 * Das Ziel kann leer sein, um anzugeben, dass das Zeichen entfernt werden soll.
 * Bei der Quelle wird die Groß-/Kleinschreibung beachtet, und es muss eine genaue Übereinstimmung vorliegen.
 * Die reservierten Zeichen "," (Komma) und ":" (Doppelpunkt) können mit dieser Funktion nicht ersetzt werden.

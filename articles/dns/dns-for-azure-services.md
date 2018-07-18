@@ -1,11 +1,11 @@
 ---
 title: Verwenden von Azure DNS mit anderen Azure-Diensten | Microsoft Docs
-description: "Grundlegendes zum Verwenden von Azure DNS zum Auflösen von Namen für andere Azure-Dienste"
+description: Grundlegendes zum Verwenden von Azure DNS zum Auflösen von Namen für andere Azure-Dienste
 services: dns
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure dns
 ms.assetid: e9b5eb94-7984-4640-9930-564bb9e82b78
 ms.service: dns
@@ -21,6 +21,7 @@ ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/30/2017
+ms.locfileid: "25989842"
 ---
 # <a name="how-azure-dns-works-with-other-azure-services"></a>Funktionsweise von Azure DNS mit anderen Azure-Diensten
 

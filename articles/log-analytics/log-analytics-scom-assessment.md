@@ -1,25 +1,26 @@
 ---
 title: Optimieren Ihrer System Center Operations Manager-Umgebung mit Azure Log Analytics | Microsoft-Dokumentation
-description: "Sie können die Lösung zur System Center Operations Manager-Integritätsüberprüfung verwenden, um die Risiken und die Integrität Ihrer Umgebungen in regelmäßigen Abständen zu bewerten."
+description: Sie können die Lösung zur System Center Operations Manager-Integritätsüberprüfung verwenden, um die Risiken und die Integrität Ihrer Umgebungen in regelmäßigen Abständen zu bewerten.
 services: log-analytics
-documentationcenter: 
-author: MGoedtel
+documentationcenter: ''
+author: mgoedtel
 manager: carmonm
 editor: tysonn
 ms.assetid: 49aad8b1-3e05-4588-956c-6fdd7715cda1
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/27/2017
+ms.date: 06/25/2018
 ms.author: magoedte
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86484ca2bc7dc14035f48b8f7b1514a4fc471b74
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.component: na
+ms.openlocfilehash: bdf56a85c43513f573c02e3b28cd93f28217814b
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128961"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimieren Ihrer Umgebung mit der Lösung zur System Center Operations Manager-Integritätsüberprüfung (Vorschauversion)
 
@@ -211,14 +212,14 @@ Jede Empfehlung enthält Informationen dazu, warum sie wichtig ist. Ermitteln Si
 
 ## <a name="use-health-check-focus-area-recommendations"></a>Befolgen von Schwerpunktbereichsempfehlungen der Integritätsüberprüfung
 
-Bevor Sie eine Lösung zur Integritätsüberprüfung in Log Analytics verwenden können, müssen Sie die Lösung installieren. Weitere Informationen zum Installieren von Lösungen finden Sie unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md). Nach der Installation können Sie die Zusammenfassung der Empfehlungen anzeigen, indem Sie im OMS-Portal auf der Seite „Übersicht“ die Kachel „System Center Operations Manager-Integritätsüberprüfung“ verwenden.
+Bevor Sie eine Lösung zur Integritätsüberprüfung in Log Analytics verwenden können, müssen Sie die Lösung installieren. Weitere Informationen zum Installieren von Lösungen finden Sie unter [Hinzufügen von Azure Log Analytics-Verwaltungslösungen zu Ihrem Arbeitsbereich](log-analytics-add-solutions.md). Nach der Installation können Sie die Zusammenfassung der Empfehlungen anzeigen, indem Sie im Azure-Portal auf der Seite **Übersicht** für Ihren Arbeitsbereich die Kachel „System Center Operations Manager-Integritätsprüfung“ verwenden.
 
 Sehen Sie sich die zusammengefassten Compliancebewertungen für Ihre Infrastruktur sowie Details in den Empfehlungen an.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>So werden Empfehlungen für einen Schwerpunktbereich angezeigt und korrigierende Maßnahmen ergriffen
-1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) am Azure-Portal an.
+1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 2. Klicken Sie im Azure-Portal unten links auf **Weitere Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
-3. Wählen Sie im Log Analytics-Abonnementbereich einen Arbeitsbereich aus, und klicken Sie dann auf die Kachel **OMS-Portal**.  
+3. Wählen Sie im Log Analytics-Abonnementbereich einen Arbeitsbereich aus, und klicken Sie anschließend auf das Menüelement **Zusammenfassung des Arbeitsbereichs**.  
 4. Klicken Sie auf der Seite **Übersicht** auf die Kachel **System Center Operations Manager-Integritätsüberprüfung**.
 5. Überprüfen Sie auf der Seite **System Center Operations Manager-Integritätsüberprüfung** die Zusammenfassungsinformationen auf einem der Blätter mit Schwerpunktbereichen, und klicken Sie dann auf einen Schwerpunktbereich, um Empfehlungen für diesen Bereich anzuzeigen.
 6. Auf jeder der Schwerpunktbereichsseiten können Sie mit Prioritäten versehene Empfehlungen für Ihre Umgebung anzeigen. Klicken Sie unter **Betroffene Objekte** auf eine Empfehlung, um Details zu den Gründen für diese Empfehlung anzuzeigen.<br><br> ![Schwerpunktbereich](./media/log-analytics-scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
@@ -231,7 +232,7 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
 [!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ### <a name="to-identify-recommendations-that-you-want-to-ignore"></a>So ermitteln Sie Empfehlungen, die Sie ignorieren möchten
-1. Klicken Sie im Azure-Portal auf der Seite mit dem Log Analytics-Arbeitsbereich für Ihren ausgewählten Arbeitsbereich auf die Kachel **Protokollsuche**.
+1. Klicken Sie im Azure-Portal auf der Seite mit dem Log Analytics-Arbeitsbereich für Ihren ausgewählten Arbeitsbereich auf das Menüelement **Protokollsuche**.
 2. Verwenden Sie folgende Abfrage, um Empfehlungen aufzulisten, die für Computer in Ihrer Umgebung nicht funktionieren.
 
     ```

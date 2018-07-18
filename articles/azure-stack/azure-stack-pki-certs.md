@@ -3,7 +3,7 @@ title: Azure Stack-PKI-Zertifikatanforderungen für in Azure Stack integrierte S
 description: Beschreibt die Azure Stack-PKI-Zertifikatanforderungen für in Azure Stack integrierte Systeme.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2018
-ms.author: jeffgilb
+ms.date: 06/07/2018
+ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: b1dcbfc51e63a5bca9186b62c871b2623653bbab
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9a43179998e8377dfbbb1a41ba7d46936d63aedd
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33935639"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030154"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack-PKI-Zertifikatanforderungen
 
@@ -30,7 +30,7 @@ Azure Stack verfügt über ein öffentliches Infrastrukturnetz mit extern zugän
 - Der Prozess des Beziehens der Zertifikate, die diesen Vorgaben entsprechen
 - Vorbereiten, Überprüfen und Verwenden dieser Zertifikate während der Bereitstellung
 
-> [!NOTE]
+> [!Note]  
 > Während der Bereitstellung müssen Sie Zertifikate in den Bereitstellungsordner kopieren, der zu dem Identitätsanbieter gehört, für den Sie die Bereitstellung ausführen (Azure AD oder AD FS). Wenn Sie ein einzelnes Zertifikat für alle Endpunkte verwenden, müssen Sie diese Zertifikatdatei, wie in den folgenden Tabellen aufgeführt, in jeden Bereitstellungsordner kopieren. Die Ordnerstruktur ist bereits im virtuellen Computer für die Bereitstellung unter folgendem Pfad festgelegt: C:\CloudDeployment\Setup\Certificates. 
 
 ## <a name="certificate-requirements"></a>Zertifikatanforderungen
@@ -47,12 +47,12 @@ Die folgende Liste beschreibt die Zertifikatsanforderungen, die für die Bereits
 - Das Feld „Ausgestellt für:“ des Zertifikats darf nicht mit dem Feld „Ausgestellt von:“ identisch sein.
 - Die Kennwörter aller PFX-Zertifikatdateien müssen zum Zeitpunkt der Bereitstellung identisch sein.
 - Für die PFX-Zertifikatdatei muss ein komplexes Kennwort verwendet werden.
-- Stellen Sie sicher, dass die Antragstellernamen und alternativen Antragstellernamen aller Zertifikate mit den in diesem Artikel beschriebenen Vorgaben übereinstimmen, um fehlerhafte Implementierungen zu vermeiden.
+- Stellen Sie sicher, dass die Antragstellernamen und alternativen Antragstellernamen in der Erweiterung für alternative Antragstellernamen (x509v3_config) übereinstimmen. Im Feld für den alternativen Antragstellernamen können Sie zusätzliche Hostnamen (Websites, IP-Adressen, allgemeine Namen) angeben, die durch ein einzelnes SSL-Zertifikat geschützt werden sollen.
 
-> [!NOTE]
+> [!NOTE]  
 > Selbstsignierte Zertifikate werden nicht unterstützt.
 
-> [!NOTE]
+> [!NOTE]  
 > Das Vorhandensein von Zwischenzertifizierungsstellen in der Vertrauenskette eines Zertifikats wird ausdrücklich unterstützt. 
 
 ## <a name="mandatory-certificates"></a>Erforderliche Zertifikate
@@ -76,20 +76,6 @@ Für Ihre Bereitstellung müssen die Werte [region] und [externalfqdn] mit der R
 | ACSQueue | *.queue.&lt;Region>.&lt;FQDN><br>(SSL-Platzhalterzertifikat) | Queue Storage | queue.&lt;Region>.&lt;FQDN> |
 | KeyVault | *.vault.&lt;Region>.&lt;FQDN><br>(SSL-Platzhalterzertifikat) | Key Vault | vault.&lt;Region>.&lt;FQDN> |
 | KeyVaultInternal | *.adminvault.&lt;Region>.&lt;FQDN><br>(SSL-Platzhalterzertifikat) |  Interner Schlüsseltresor |  adminvault.&lt;Region>.&lt;FQDN> |
-
-### <a name="for-azure-stack-environment-on-pre-1803-versions"></a>Für Azure-Stack-Umgebung vor der Version 1803
-
-|Bereitstellungsordner|Erforderlicher Zertifikatantragsteller und alternative Antragstellernamen|Bereich (pro Region)|Namespace der Unterdomäne|
-|-----|-----|-----|-----|
-|Öffentliches Portal|portal.*&lt;region>.&lt;fqdn>*|Portale|*&lt;region>.&lt;fqdn>*|
-|Verwaltungsportal|adminportal.*&lt;region>.&lt;fqdn>*|Portale|*&lt;region>.&lt;fqdn>*|
-|Azure Resource Manager (Öffentlich)|management.*&lt;region>.&lt;fqdn>*|Azure Resource Manager|*&lt;region>.&lt;fqdn>*|
-|Azure Resource Manager (Verwaltung)|adminmanagement.*&lt;region>.&lt;fqdn>*|Azure Resource Manager|*&lt;region>.&lt;fqdn>*|
-|ACS<sup>1</sup>|Ein Platzhalterzertifikat für mehrere Unterdomänen mit alternativen Antragstellernamen für:<br>&#42;.blob.*&lt;region>.&lt;fqdn>*<br>&#42;.queue.*&lt;region>.&lt;fqdn>*<br>&#42;.table.*&lt;region>.&lt;fqdn>*|Speicher|blob.*&lt;region>.&lt;fqdn>*<br>table.*&lt;region>.&lt;fqdn>*<br>queue.*&lt;region>.&lt;fqdn>*|
-|KeyVault|&#42;.vault.*&lt;region>.&lt;fqdn>*<br>(SSL-Platzhalterzertifikat)|Key Vault|vault.*&lt;region>.&lt;fqdn>*|
-|KeyVaultInternal|&#42;.adminvault.*&lt;region>.&lt;fqdn>*<br>(SSL-Platzhalterzertifikat)|Interner Schlüsseltresor|adminvault.*&lt;region>.&lt;fqdn>*|
-|
-<sup>1</sup> Das ACS-Zertifikat erfordert drei Platzhalter für alternative Antragstellernamen auf einem einzigen Zertifikat. Mehrere Platzhalter für alternative Antragstellernamen auf einem einzigen Zertifikat werden ggf. nicht von allen öffentlichen Zertifizierungsstellen unterstützt. 
 
 Wenn Sie Azure Stack im Azure AD-Bereitstellungsmodus bereitstellen, müssen Sie nur die in der vorigen Tabelle aufgeführten Zertifikate anfordern. Wenn Sie jedoch Azure Stack mit dem AD FS-Bereitstellungsmodus bereitstellen, müssen Sie auch die in der folgenden Tabelle beschriebenen Zertifikate anfordern:
 

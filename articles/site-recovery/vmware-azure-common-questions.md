@@ -5,14 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/15/2018
+ms.date: 07/06/2018
+ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 345b73db423c6e12b56bb3308f7700917a372dda
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: dc316df754ea0b8630abe341dc5ce6b0adffa685
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920034"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Allgemeine Fragen – VMware-zu-Azure-Replikation
 
@@ -28,7 +29,7 @@ Während der Replikation werden Daten zu Azure-Speicher repliziert, und Sie beza
 
 ### <a name="what-can-i-do-with-vmware-to-azure-replication"></a>Was kann ich mit der VMware-zu-Azure-Replikation tun?
 - **Wiederherstellung im Notfall**: Sie können die vollständige Notfallwiederherstellung einrichten. In diesem Szenario replizieren Sie lokale VMware-VMs zu Azure-Speicher. Dann können Sie, wenn Ihre lokale Infrastruktur nicht verfügbar ist, ein Failover zu Azure ausführen. Wenn Sie ein Failover ausführen, werden Azure-VMs aus replizierten Daten erstellt. Sie können auf Apps und Arbeitsauslastungen auf den virtuellen Azure-Computern zugreifen, bis Ihr lokales Rechenzentrum wieder verfügbar ist. Dann können Sie ein Failback aus Azure zu Ihrem lokalen Standort ausführen.
-- **Migration**: Sie können mit Site Recovery lokale VMware-VMs zu Azure migrieren. In diesem Szenario replizieren Sie lokale VMware-VMs zu Azure-Speicher. Dann führen Sie ein Failover vom lokalen Standort zu Azure aus. Nach dem Failover sind Ihre Apps und Arbeitsauslastungen verfügbar und werden auf virtuellen Azure-Computern ausgeführt.
+- **Migration**: Sie können mit Site Recovery lokale VMware-VMs zu Azure migrieren. In diesem Szenario replizieren Sie lokale VMware-VMs zu Azure-Speicher. Dann führen Sie ein Failover vom lokalen Standort zu Azure aus. Nach dem Failover sind Ihre Apps und Workloads verfügbar und werden auf virtuellen Azure-Computern ausgeführt.
 
 
 

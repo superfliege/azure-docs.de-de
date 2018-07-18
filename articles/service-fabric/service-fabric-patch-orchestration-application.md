@@ -12,13 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/07/2018
+ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: d36fcac4cbbdf8127e60e23df4ff2d52e68b6689
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: cbd5a0ea5fbeb7becbfc33bf72af73425630bff6
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970719"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
@@ -316,6 +317,10 @@ A. Die Ausführungsdauer der App für die Patchorchestrierung ist größtenteils
 F: **Warum werden in den über REST-APIs abgerufenen Windows Update-Ergebnissen einige Updates angezeigt, nicht aber im Windows Update-Verlauf auf dem Computer?**
 
 A. Einige Produktupdates werden nur im jeweiligen Update-/Patchverlauf angezeigt. So werden beispielsweise Windows Defender-Updates unter Windows Server 2016 nicht im Windows Update-Verlauf angezeigt.
+
+F: **Kann die App für die Patchorchestrierung für das Patchen des Entwicklungsclusters (Einzelknotencluster) verwendet werden?**
+
+A. Nein, die App für die Patchorchestrierung kann nicht für Patchvorgänge in Einzelknotenclustern verwendet werden. Diese Einschränkung ist entwurfsbedingt, da es zu Ausfallzeiten bei [Service Fabric-Systemdiensten](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services) oder anderen Kunden-Apps kommen kann, sodass ein Reparaturauftrag für einen Patch nie vom Reparatur-Manager genehmigt werden würde.
 
 ## <a name="disclaimers"></a>Haftungsausschlüsse
 

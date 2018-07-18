@@ -1,24 +1,19 @@
 ---
-title: "Aufrufen eines Webhooks für eine Azure-Aktivitätsprotokollwarnung | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie Aktivitätsprotokollereignisse für benutzerdefinierte Aktionen an andere Dienste weiterleiten. So können Sie beispielsweise SMS-Nachrichten senden, Fehler protokollieren oder ein Team per Chat-/Messagingdienst benachrichtigen."
+title: Aufrufen eines Webhooks für eine Azure-Aktivitätsprotokollwarnung (klassisch)
+description: Hier erfahren Sie, wie Sie Aktivitätsprotokollereignisse für benutzerdefinierte Aktionen an andere Dienste weiterleiten. So können Sie beispielsweise SMS-Nachrichten senden, Fehler protokollieren oder ein Team per Chat-/Messagingdienst benachrichtigen.
 author: johnkemnetz
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 64d333d1-7f37-4a00-9d16-dda6e69a113b
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: johnkem
-ms.openlocfilehash: 9872c30d123f0a7443e28dc58ee0d4e16572a390
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.component: alerts
+ms.openlocfilehash: e825d0f2487c20c8c7f3d210d7180b07742d7173
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262459"
 ---
 # <a name="call-a-webhook-on-an-azure-activity-log-alert"></a>Aufrufen eines Webhooks für eine Azure-Aktivitätsprotokollwarnung
 Mithilfe von Webhooks können Benutzer eine Azure-Warnbenachrichtigung zur Nachbearbeitung oder Ausführung benutzerdefinierter Aktionen an andere Systeme weiterleiten. Sie können einen Webhook für eine Warnung verwenden, um sie an Dienste weiterzuleiten, die SMS-Nachrichten versenden, um Fehler zu protokollieren, um ein Team per Chat-/Messagingdienst zu benachrichtigen oder um verschiedene andere Aktionen auszuführen. Sie können auch eine Aktivitätsprotokollwarnung einrichten, bei deren Aktivierung eine E-Mail gesendet wird.
@@ -104,11 +99,11 @@ Der POST-Vorgang enthält für alle aktivitätsprotokollbasierten Warnungen die 
 }
 ```
 
-| Elementname | Beschreibung |
+| Elementname | BESCHREIBUNG |
 | --- | --- |
 | status |Wird für Metrikwarnungen verwendet. Muss für Aktivitätsprotokollwarnungen immer auf „Aktiviert“ festgelegt werden.|
 | context |Der Kontext des Ereignisses. |
-| activityLog | Die Protokolleigenschaften des Ereignisses.|
+| activityLog | Die Protokolleigenschaften des Ereignisses|
 | authorization |Die Eigenschaften der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) des Ereignisses. Zu diesen Eigenschaften zählen üblicherweise **action**, **role** und **scope**. |
 | action | Die von der Warnung erfasste Aktion. |
 | scope | Der Bereich der Warnung (also die Ressource).|

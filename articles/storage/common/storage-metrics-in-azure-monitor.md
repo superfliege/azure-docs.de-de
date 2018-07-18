@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 09/05/2017
 ms.author: fryu
-ms.openlocfilehash: b1d82f9b527a62109e0301907b87bd683f9912af
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 05021d5ab8d33e36bff16ce7d2ebacd3db72639a
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37034746"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Storage-Metriken in Azure Monitor
 
@@ -38,7 +39,7 @@ Im Azure-Portal können Sie Metriken im Zeitverlauf überwachen. Das folgende Be
 
 ![Screenshot für den Zugriff auf Metriken über das Azure-Portal](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal.png)
 
-Bei Metriken mit Dimensionsunterstützung müssen Sie den gewünschten Dimensionswert als Filter verwenden. Das folgende Beispiel zeigt, wie Sie **Transaktionen** auf der Kontoebene mit dem Antworttyp **Success** anzeigen.
+Bei Metriken mit Dimensionsunterstützung können Sie die Metrik nach dem gewünschten Dimensionswert filtern. Das folgende Beispiel zeigt, wie Sie **Transaktionen** auf der Kontoebene für einen bestimmten Vorgang anzeigen, indem Sie Werte für die Dimension **API-Name** auswählen.
 
 ![Screenshot für den Zugriff auf Metriken mit Dimension über das Azure-Portal](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal-with-dimension.png)
 
@@ -317,7 +318,7 @@ Das Format zum Angeben der Ressourcen-ID für die einzelnen Speicherdienste sieh
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
 `
 * Ressourcen-ID für den File-Dienst `
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/default
 `
 
 ### <a name="resource-id-in-azure-monitor-rest-api"></a>Ressourcen-ID in der REST-API von Azure Monitor
@@ -402,6 +403,12 @@ Bei Metriken mit Dimensionsunterstützung muss der Dimensionswert angegeben werd
 ## <a name="service-continuity-of-legacy-metrics"></a>Dienstkontinuität von Legacymetriken
 
 Legacymetriken stehen parallel zu den von Azure Monitor verwalteten Metriken zur Verfügung. Die Unterstützung bleibt unverändert, bis Azure Storage den Dienst für Legacymetriken einstellt.
+
+## <a name="faq"></a>Häufig gestellte Fragen
+
+**Unterstützt Azure Storage Metriken für verwaltete oder nicht verwaltete Datenträger?**
+
+Nein. Die Metriken für Datenträger werden von Azure Compute unterstützt. Weitere Informationen finden Sie in [diesem Artikel](https://azure.microsoft.com/en-us/blog/per-disk-metrics-managed-disks/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

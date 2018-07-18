@@ -15,18 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: f532ed9ad1254aa8082f212b8190f83bb71767e9
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 6265a7f9f60b60d7b79e15a04feb0ec76dc59f6d
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293117"
 ---
 # <a name="what-is-an-endpoint-access-control-list"></a>Was ist eine Endpunkt-Zugriffssteuerungsliste?
 
 > [!IMPORTANT]
 > Azure verfügt über zwei verschiedene [Bereitstellungsmodelle](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) für das Erstellen und Verwenden von Ressourcen: Resource Manager- und klassische Bereitstellung. Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Resource Manager-Bereitstellungsmodells. 
 
-Eine Endpunkt-Zugriffssteuerungsliste (ACL) trägt zur Verbesserung der Sicherheit Ihrer Azure-Bereitstellung bei. Mit einer ACL können Sie selektiv Datenverkehr für einen Endpunkt eines virtuellen Computers zulassen oder verweigern. Diese Paketfilterungsfunktion bietet eine zusätzliche Schutzebene. Netzwerk-ACLs können nur für Endpunkte angegeben werden. Sie können keine ACL für ein virtuelles Netzwerk oder für ein bestimmtes Subnetz innerhalb eines virtuellen Netzwerks angeben. Es wird empfohlen, anstelle von ACLs möglichst Netzwerksicherheitsgruppen (NSGs) zu verwenden. Weitere Informationen zu NSGs finden Sie im [Überblick zu Netzwerksicherheitsgruppen](security-overview.md).
+Eine Endpunkt-Zugriffssteuerungsliste (ACL) trägt zur Verbesserung der Sicherheit Ihrer Azure-Bereitstellung bei. Mit einer ACL können Sie selektiv Datenverkehr für einen Endpunkt eines virtuellen Computers zulassen oder verweigern. Diese Paketfilterungsfunktion bietet eine zusätzliche Schutzebene. Netzwerk-ACLs können nur für Endpunkte angegeben werden. Sie können keine ACL für ein virtuelles Netzwerk oder für ein bestimmtes Subnetz innerhalb eines virtuellen Netzwerks angeben. Es wird empfohlen, anstelle von ACLs möglichst Netzwerksicherheitsgruppen (NSGs) zu verwenden. Bei der Verwendung von NSGs wird die Endpunkt-Zugriffssteuerungsliste ersetzt und nicht mehr erzwungen. Weitere Informationen zu NSGs finden Sie im [Überblick zu Netzwerksicherheitsgruppen](security-overview.md).
 
 ACLs können mithilfe von PowerShell sowie über das Azure-Portal konfiguriert werden. Informationen zum Konfigurieren von Netzwerk-ACLs mittels PowerShell finden Sie unter [Verwalten von Endpunkt-Zugriffssteuerungslisten mit PowerShell im klassischen Bereitstellungsmodell](virtual-networks-acl-powershell.md). Informationen zum Konfigurieren von Netzwerk-ACLs mithilfe des Verwaltungsportals finden Sie unter [Einrichten von Endpunkten auf einem klassischen virtuellen Computer](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 

@@ -11,17 +11,18 @@ ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 0648a7555cb94543dadf5d73e0187927a90f5b5a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 3b606fc78327035e135e0f037288a817171385dd
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857943"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Aktivieren der geschachtelten Virtualisierung auf einer Azure-VM
 
 Die geschachtelte Virtualisierung wird in den Azure-VM-Serien Dv3 und Ev3 unterstützt. Diese Funktion bietet viel Flexibilität bei der Unterstützung von Szenarien wie Entwicklungs-, Test-, Schulungs- und Demonstrationsumgebungen. 
 
-Dieser Artikel erläutert die Schritte, die zum Aktivieren der geschachtelten Virtualisierung auf einer Azure VM und zum Konfigurieren der Internetkonnektivität für diese Gast-VM ausgeführt werden müssen.
+Alle virtuellen Computer der Serien Dv3 und Ev3 unterstützen die geschachtelte Virtualisierung ohne weitere Konfiguration.  In diesem Artikel werden die Schritte erläutert, die zum Aktivieren von Hyper-V auf einer Azure-VM und zum Konfigurieren der Internetkonnektivität für diese Gast-VM ausgeführt werden müssen.
 
 ## <a name="create-a-dv3-or-ev3-series-azure-vm"></a>Erstellen einer Azure-VM der Serie Dv3 oder Ev3
 

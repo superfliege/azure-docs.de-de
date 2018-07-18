@@ -7,23 +7,20 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 07/06/2018
 ms.author: sujayt
-ms.openlocfilehash: daaca3c7b389642a288f738eb0954050e168abef
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: bac4c1d02df644eedbccb38872a6b0f3e7d11c91
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210561"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919786"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Unterstützungsmatrix für die Replikation von einer Azure-Region in eine andere
 
 
->[!NOTE]
->
-> Die Site Recovery-Replikation für virtuelle Azure-Computer ist derzeit als Vorschauversion verfügbar.
 
-In diesem Artikel werden die unterstützten Konfigurationen und Komponenten für Azure Site Recovery bei der Replikation und Wiederherstellung von virtuellen Azure-Computern zwischen verschiedenen Regionen beschrieben.
+In diesem Artikel werden die unterstützten Konfigurationen und Komponenten bei der Replikation und Wiederherstellung von virtuellen Azure-Computern zwischen verschiedenen Regionen mit dem [Azure Site Recovery](site-recovery-overview.md)-Dienst beschrieben.
 
 ## <a name="user-interface-options"></a>Optionen der Benutzeroberfläche
 
@@ -82,9 +79,10 @@ Die unten aufgeführte Unterstützung gilt für alle Workloads unter dem genannt
 - Ubuntu 16.04 LTS Server[ (unterstützte Kernel-Versionen)](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 - Debian 7 [ (unterstützte Kernel-Versionen)](#supported-debian-kernel-versions-for-azure-virtual-machines)
 - Debian 8 [ (unterstützte Kernel-Versionen)](#supported-debian-kernel-versions-for-azure-virtual-machines)
-- Oracle Enterprise Linux 6.4, 6.5, auf dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird
+- SUSE Linux Enterprise Server 12 SP1, SP2, SP3 [ (unterstützte Kernelversionen)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
 - SUSE Linux Enterprise Server 11 SP3
 - SUSE Linux Enterprise Server 11 SP4
+- Oracle Enterprise Linux 6.4, 6.5, auf dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird
 
 (Ein Upgrade von replizierenden Computern von SLES 11 SP3 auf SLES 11 SP4 wird nicht unterstützt. Wenn für einen replizierten Computer ein Upgrade von SLES 11 SP3 auf SLES 11 SP4 durchgeführt wurde, müssen Sie die Replikation deaktivieren und den Computer nach dem Upgrade erneut schützen.)
 
@@ -96,22 +94,32 @@ Die unten aufgeführte Unterstützung gilt für alle Workloads unter dem genannt
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
-14.04 LTS | 9.12 | 3.13.0-24-generic to 3.13.0-132-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic to 4.4.0-96-generic |
-14.04 LTS | 9.13 | 3.13.0-24-generic bis 3.13.0-137-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-104-generic |
-14.04 LTS | 9.14 | 3.13.0-24-generic bis 3.13.0-141-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-112-generic |
+14.04 LTS | 9.17 | 3.13.0-24-generic bis 3.13.0-147-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-124-generic |
+14.04 LTS | 9.16 | 3.13.0-24-generic bis 3.13.0-144-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-119-generic |
 14.04 LTS | 9.15 | 3.13.0-24-generic bis 3.13.0-143-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-116-generic |
-16.04 LTS | 9.12 | 4.4.0-21-generic to 4.4.0-96-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic to 4.10.0-35-generic |
-16.04 LTS | 9.13 | 4.4.0-21-generic bis 4.4.0-104-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic |
-16.04 LTS | 9.14 | 4.4.0-21-generic bis 4.4.0-112-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-32-generic,<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1009-azure |
+14.04 LTS | 9.14 | 3.13.0-24-generic bis 3.13.0-141-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-112-generic |
+|||
+16.04 LTS | 9.17 | 4.4.0-21-generic bis 4.4.0-124-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-41-generic,<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1016-azure |
+16.04 LTS | 9.16 | 4.4.0-21-generic bis 4.4.0-119-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-38-generic,<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1012-azure |
 16.04 LTS | 9.15 | 4.4.0-21-generic bis 4.4.0-116-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-37-generic,<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1012-azure |
+16.04 LTS | 9.14 | 4.4.0-21-generic bis 4.4.0-112-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-32-generic,<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1009-azure |
 
 
 ### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Unterstützte Debian-Kernelversionen für virtuelle Azure-Computer
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
-Debian 7 | 9.14, 9.15 | 3.2.0-4-amd64 bis 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
-Debian 8 | 9.14, 9.15 | 3.16.0-4-amd64 bis 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.5-amd64 |
+Debian 7 | 9.17 | 3.2.0-4-amd64 bis 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.14, 9.15, 9.16 | 3.2.0-4-amd64 bis 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
+|||
+Debian 8 | 9.17 | 3.16.0-4-amd64 bis 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.6-amd64 |
+Debian 8 | 9.14, 9.15, 9.16 | 3.16.0-4-amd64 bis 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.5-amd64 |
+
+### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Unterstützte SUSE Linux Enterprise Server 12-Kernelversionen für Azure-VMs
+
+**Release** | **Mobility Service-Version** | **Kernelversion** |
+--- | --- | --- |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.17 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.88-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default</br></br>SP3 4.4.73-5-default bis 4.4.126-94.22-default |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-azure-virtual-machines-running-linux-os"></a>Unterstützte Dateisysteme und Gastspeicherkonfigurationen auf virtuellen Azure-Computern unter Linux
 
@@ -162,10 +170,10 @@ Temporärer Datenträger | Immer von der Replikation ausgeschlossen | Temporäre
 Datenänderungsrate auf dem Datenträger | Maximal 10 MBit/s pro Datenträger bei Storage Premium und 2 MBit/s pro Datenträger bei Storage Standard | Wenn die durchschnittliche Datenänderungsrate auf dem Datenträger dauerhaft über 10 MBit/s (bei Premium) und 2 MBit/s (bei Standard) liegt, kann die Replikation nicht folgen. Wenn nur gelegentlich eine große Datenmenge anfällt und die Datenänderungsrate zeitweise über 10 MBit/s (bei Premium) und 2 MBit/s (bei Standard) liegt und dann zurückgeht, kann die Replikation folgen. In diesem Fall kann es möglicherweise zu etwas verzögerten Wiederherstellungspunkten kommen.
 Datenträger in Standardspeicherkonten | Unterstützt |
 Datenträger in Storage Premium-Konten | Unterstützt | Wenn ein virtueller Computer Datenträger in Premium- und Standard-Speicherkonten aufweist, können Sie für jeden Datenträger ein eigenes Zielspeicherkonto auswählen, um sicherzustellen, dass die gleiche Speicherkonfiguration in der Zielregion vorhanden ist.
-Verwaltete Standard-Datenträger | Unterstützt in Azure-Regionen, in denen Azure Site Recovery unterstützt wird. Government-Clouds werden momentan nicht unterstützt.  |  
-Verwaltete Premium-Datenträger | Unterstützt in Azure-Regionen, in denen Azure Site Recovery unterstützt wird. Government-Clouds werden momentan nicht unterstützt. |
+Verwaltete Standard-Datenträger | Unterstützt in Azure-Regionen, in denen Azure Site Recovery unterstützt wird. |  
+Verwaltete Premium-Datenträger | Unterstützt in Azure-Regionen, in denen Azure Site Recovery unterstützt wird. |
 Speicherplätze | Unterstützt |         
-Verschlüsselung ruhender Daten (SSE) | Unterstützt | Für Cache- und Zielspeicherkonten können Sie ein Speicherkonto mit aktiviertem SSE auswählen.     
+Verschlüsselung ruhender Daten (SSE) | Unterstützt | SSE ist die Standardeinstellung für Speicherkonten.   
 Azure Disk Encryption (ADE) | Nicht unterstützt |
 Datenträger laufendem Systembetrieb hinzufügen/entfernen | Nicht unterstützt | Wenn Sie Datenträger auf dem virtuellen Computer hinzufügen oder entfernen, müssen Sie die Replikation deaktivieren und dann für den virtuellen Computer wieder aktivieren.
 Ausschließen von Datenträgern | Nicht unterstützt|   Temporäre Datenträger sind standardmäßig ausgeschlossen.

@@ -1,13 +1,13 @@
 ---
-title: "Verwalten von Web-App für Container mithilfe der Azure CLI 2.0 | Microsoft-Docs"
-description: "Verwalten von Web-App für Container mithilfe der Azure CLI."
+title: Verwalten von Web-App für Container mithilfe der Azure CLI 2.0 | Microsoft-Docs
+description: Verwalten von Web-App für Container mithilfe der Azure CLI.
 keywords: Azure App Service, Web-App, CLI, Linux, OSS
 services: app-service
-documentationCenter: 
+documentationCenter: ''
 author: ahmedelnably
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24105388"
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>Verwalten von Web-App für Container mithilfe der Azure CLI
 

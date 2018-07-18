@@ -14,11 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
-ms.openlocfilehash: 16d35a6b36f4dd85db430e05abdff898affbfd67
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 66ece0affbafc219add2ef5c4da34f29ab34e058
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37860019"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Erste Schritte mit Azure-Clouddiensten und ASP.NET
 
@@ -177,7 +178,7 @@ In einer tatsächlichen Anwendung würden Sie normalerweise separate Konten für
 
     Wenn sich Clouddienst und Speicherkonto in unterschiedlichen Datencentern (d. h. unterschiedlichen Regionen) befinden, steigt die Latenz an und Sie müssen für die Bandbreite außerhalb des Datencenters bezahlen. Die Bandbreite innerhalb eines Datencenters ist kostenlos.
 
-    Mit Azure-Affinitätsgruppen können Sie die Distanz zwischen Ressourcen in einem Datencenter und somit die Latenz minimieren. Dieses Tutorial verwendet keine Affinitätsgruppen. Anweisungen finden Sie unter [Erstellen einer Affinitätsgruppe in Azure](http://msdn.microsoft.com/library/jj156209.aspx).
+    Mit Azure-Affinitätsgruppen können Sie die Distanz zwischen Ressourcen in einem Datencenter und somit die Latenz minimieren. Dieses Tutorial verwendet keine Affinitätsgruppen. Anweisungen finden Sie unter [Erstellen einer Affinitätsgruppe in Azure](https://msdn.microsoft.com/library/azure/gg715317.aspx).
 7. Klicken Sie auf **Create**.
 
     ![Neues Speicherkonto](./media/cloud-services-dotnet-get-started/newstorage.png)
@@ -290,7 +291,7 @@ Die `<Instances>` -Einstellung definiert die Anzahl der virtuellen Computer, auf
 
     ![Schritt "Einstellungen"](./media/cloud-services-dotnet-get-started/pubsettings.png)
 
-    Die Standardeinstellungen in der Registerkarte **Erweitert** brauchen für dieses Tutorial nicht geändert werden. Weitere Informationen zur Registerkarte Erweitert finden Sie unter [Assistent zum Veröffentlichen einer Azure-Anwendung](http://msdn.microsoft.com/library/hh535756.aspx).
+    Die Standardeinstellungen in der Registerkarte **Erweitert** brauchen für dieses Tutorial nicht geändert werden. Weitere Informationen zur Registerkarte Erweitert finden Sie unter [Assistent zum Veröffentlichen einer Azure-Anwendung](https://docs.microsoft.com/azure/vs-azure-tools-publish-azure-application-wizard).
 4. Klicken Sie auf der Seite **Zusammenfassung** auf **Veröffentlichen**.
 
     ![Zusammenfassung](./media/cloud-services-dotnet-get-started/pubsummary.png)

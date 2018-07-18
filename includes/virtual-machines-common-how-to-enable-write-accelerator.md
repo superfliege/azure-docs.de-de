@@ -5,14 +5,15 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 5/9/2018
+ms.date: 6/8/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 4db9fe907ab6625fcad74ceae59f17115458a3ea
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 21681a1af64754ef569f2ad4ff92f85a598007ac
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35323781"
 ---
 # <a name="write-accelerator"></a>Schreibbeschleunigung
 Bei der Schreibbeschleunigung handelt es sich um eine Datenträgerfunktion, die nur für virtuelle Computer (Virtual Machines, VMs) der M-Serie in Storage Premium mit Azure Managed Disks verfügbar ist. Wie der Name schon besagt, ist der Zweck der Funktion die Verbesserung der E/A-Wartezeit bei Schreibvorgängen für Azure Storage Premium. Die Schreibbeschleunigung ist hervorragend geeignet, wenn Protokolldateiupdates erforderlich sind, die für moderne Datenbanken auf äußerst leistungsfähige Weise auf dem Datenträger beibehalten werden sollen.
@@ -42,17 +43,19 @@ Bei der Verwendung der Schreibbeschleunigung für einen Azure-Datenträger/eine 
 
 - Die Premium-Datenträgerzwischenspeicherung muss auf „Keine“ oder „Schreibgeschützt“ festgelegt werden. Alle anderen Zwischenspeicherungsmodi werden nicht unterstützt.
 - Momentaufnahmen des Datenträgers, für den die Schreibbeschleunigung aktiviert ist, werden noch nicht unterstützt. Aufgrund dieser Einschränkung kann der Azure Backup-Dienst keine anwendungskonsistente Momentaufnahme aller Datenträger der VM erstellen.
-- Der beschleunigte Pfad wird nur für kleinere E/A-Größen (<=32KiB) verwendet. In Workloadsituationen, bei denen Daten in einem Massenvorgang geladen oder die Transaktionsprotokollpuffer vor ihrer persistenten Speicherung stärker befüllt werden, wird für die auf Datenträger geschriebenen E/A-Vorgänge wahrscheinlich nicht der beschleunigte Pfad verwendet.
+- Der beschleunigte Pfad wird nur für kleinere E/A-Größen (<=32 KiB) verwendet. In Workloadsituationen, bei denen Daten in einem Massenvorgang geladen oder die Transaktionsprotokollpuffer vor ihrer persistenten Speicherung stärker befüllt werden, wird für die auf Datenträger geschriebenen E/A-Vorgänge wahrscheinlich nicht der beschleunigte Pfad verwendet.
 
 Die Anzahl von Azure Storage Premium-VHDs pro VM, die von der Schreibbeschleunigung unterstützt werden können, ist begrenzt. Die aktuellen Limits lauten wie folgt:
 
 | VM-SKU | Anzahl von Datenträgern mit Schreibbeschleunigung | Datenträger-IOPS der Schreibbeschleunigung pro VM |
 | --- | --- | --- |
-| M128ms | 16 | 8.000 |
-| M128s | 16 | 8.000 |
-| M64ms | 8 | 4000 |
-| M64s | 8 | 4000 | 
+| M128ms, 128s | 16 | 8.000 |
+| M64ms, M64ls, M64s | 8 | 4000 |
+| M32ms, M32ls, M32ts, M32s | 4 | 2000 | 
+| M16ms, M16s | 2 | 1000 | 
+| M8ms, M8s | 1 | 500 | 
 
+Die IOPS-Grenzwerte gelten pro VM und *nicht* pro Datenträger. Alle Datenträger mit Schreibbeschleunigung verwenden denselben IOPS-Grenzwert pro VM.
 ## <a name="enabling-write-accelerator-on-a-specific-disk"></a>Aktivieren der Schreibbeschleunigung auf einem bestimmten Datenträger
 In den nächsten Abschnitten wird beschrieben, wie die Schreibbeschleunigung auf Azure Storage Premium-VHDs aktiviert werden kann.
 
@@ -63,29 +66,29 @@ Für die Verwendung der Schreibbeschleunigung gelten zurzeit die folgenden Vorau
 - Die Datenträger, auf die Sie die Azure-Schreibbeschleunigung anwenden, müssen [verwaltete Azure-Datenträger](https://azure.microsoft.com/services/managed-disks/) in Storage Premium sein.
 - Sie müssen einen virtuellen Computer der M-Serie verwenden.
 
-### <a name="enabling-through-power-shell"></a>Aktivierung über PowerShell
+## <a name="enabling-azure-write-accelerator-using-azure-powershell"></a>Aktivieren der Azure-Schreibbeschleunigung mit Azure PowerShell
 Das Azure PowerShell-Modul ab Version 5.5.0 enthält die Änderungen der relevanten Cmdlets zum Aktivieren oder Deaktivieren der Schreibbeschleunigung für bestimmte Azure Storage Premium-Datenträger.
 Zum Aktivieren oder Bereitstellen von Datenträgern, die von der Schreibbeschleunigung unterstützt werden, wurden die folgenden PowerShell-Befehle geändert und zum Akzeptieren eines Parameters für die Schreibbeschleunigung erweitert.
 
 Den folgenden Cmdlets wurde ein neuer Switch-Parameter „WriteAccelerator“ hinzugefügt: 
 
-- Set-AzureRmVMOsDisk
-- Add-AzureRmVMDataDisk
-- Set-AzureRmVMDataDisk
-- Add-AzureRmVmssDataDisk
+- [Set-AzureRmVMOsDisk](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-6.0.0)
+- [Add-AzureRmVMDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Add-AzureRmVMDataDisk?view=azurermps-6.0.0)
+- [Set-AzureRmVMDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Set-AzureRmVMDataDisk?view=azurermps-6.0.0)
+- [Add-AzureRmVmssDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Add-AzureRmVmssDataDisk?view=azurermps-6.0.0)
 
 Wird der Parameter nicht angegeben, wird die Eigenschaft auf „false“ festgelegt, und es werden Datenträger bereitgestellt, die nicht von der Schreibbeschleunigung unterstützt werden.
 
 Dem folgenden Cmdlet wurde ein neuer Switch-Parameter „OsDiskWriteAccelerator“ hinzugefügt: 
 
-- Set-AzureRmVmssStorageProfile
+- [Set-AzureRmVmssStorageProfile](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Set-AzureRmVmssStorageProfile?view=azurermps-6.0.0)
 
-Wird der Parameter nicht angegeben, wird die Eigenschaft auf „false“ festgelegt, und es werden Datenträger bereitgestellt, die die Schreibbeschleunigung nicht nutzen.
+Wird der Parameter nicht angegeben, wird die Eigenschaft auf FALSE festgelegt, und es werden Datenträger bereitgestellt, die die Schreibbeschleunigung nicht nutzen.
 
 Den folgenden Cmdlets wurde ein neuer boolescher (NULL-Werte nicht zulässig) Parameter „OsDiskWriteAccelerator“ hinzugefügt: 
 
-- Update-AzureRmVM
-- Update-AzureRmVmss
+- [Update-AzureRmVM](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Update-AzureRmVM?view=azurermps-6.0.0)
+- [Update-AzureRmVmss](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Update-AzureRmVmss?view=azurermps-6.0.0)
 
 Setzen Sie den Parameter auf „$true“ oder „$false“, um die Unterstützung der Azure-Schreibbeschleunigung mit den Datenträgern zu steuern.
 
@@ -158,26 +161,27 @@ Sie müssen die Namen der VM, des Datenträgers und der Ressourcengruppe anpasse
 > [!Note]
 > Durch die Ausführung des obigen Skripts wird der angegebene Datenträger getrennt, die Schreibbeschleunigung für den Datenträger aktiviert und anschließend der Datenträger wieder angefügt.
 
-### <a name="enabling-through-azure-portal"></a>Aktivierung über das Azure-Portal
+### <a name="enabling-azure-write-accelerator-using-the-azure-portal"></a>Aktivieren der Azure-Schreibbeschleunigung mit dem Azure-Portal
 
 Sie können die Schreibbeschleunigung über das Portal aktivieren, in dem Sie die Datenträgercache-Einstellungen angeben: 
 
-![Die Schreibbeschleunigung im Azure-Portal](./media/virtual-machines-common-how-to-enable-write-accelerator/wa_scrnsht.png)
+![Schreibbeschleunigung im Azure-Portal](./media/virtual-machines-common-how-to-enable-write-accelerator/wa_scrnsht.png)
 
-### <a name="enabling-through-azure-cli"></a>Aktivierung über Azure CLI
+## <a name="enabling-through-azure-cli"></a>Aktivierung über Azure CLI
 Sie können die Schreibbeschleunigung mithilfe der [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) aktivieren. 
 
-Zum Aktivieren der Schreibbeschleunigung auf einem vorhandenen Datenträger verwenden Sie den folgenden Befehl, wobei Sie „diskName“, „VMName“ und „ResourceGroup“ durch Ihre eigenen Werte ersetzen: 
+Um die Schreibbeschleunigung auf einem vorhandenen Datenträger zu aktivieren, verwenden Sie [az vm update](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update). Sie können die folgenden Beispiele verwenden, wenn Sie diskName, VMName und ResourceGroup durch Ihre eigenen Werte ersetzen:
+ 
 ```
-az vm update -g group1 -n vm1 –write-accelerator 1=true
+az vm update -g group1 -n vm1 -write-accelerator 1=true
 ```
-Zum Anfügen eines Datenträgers mit aktivierter Schreibbeschleunigung verwenden Sie den folgenden Befehl mit Ihren Werten:
+Um einen Datenträger mit Schreibbeschleunigung anzufügen, verwenden Sie [az vm disk attach](https://docs.microsoft.com/en-us/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach). Dabei können Sie das folgende Beispiel verwenden, wenn Sie Ihre eigenen Werte einsetzen:
 ```
-az vm disk attach -g group1 –vm-name vm1 –disk d1 --enable-write-accelerator
+az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator
 ```
-Zum Deaktivieren der Schreibbeschleunigung legen Sie die Eigenschaft auf „false“ fest: 
+Um die Schreibbeschleunigung zu deaktivieren, verwenden Sie [az vm update](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update) und legen die Eigenschaften auf FALSE fest: 
 ```
-az vm update -g group1 -n vm1 –write-accelerator 0=false 1=false
+az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false
 ```
 
 ### <a name="enabling-through-rest-apis"></a>Aktivierung über REST-APIs

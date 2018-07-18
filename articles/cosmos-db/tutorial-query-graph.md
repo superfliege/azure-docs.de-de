@@ -2,25 +2,23 @@
 title: Wie werden Abfragen von Diagrammdaten in Azure Cosmos DB durchgeführt? | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Abfragen von Diagrammdaten in Azure Cosmos DB durchführen.
 services: cosmos-db
-documentationcenter: ''
 author: luisbosquez
 manager: kfile
 editor: ''
 tags: ''
-ms.assetid: 8bde5c80-581c-4f70-acb4-9578873c92fa
 ms.service: cosmos-db
+ms.component: cosmosdb-graph
 ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: ''
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: 449821d6121f8fec40b151ae06f687586133c3d1
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: ad38976f439c399d839d6c5ee9dcd6ade7726c71
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081906"
 ---
 # <a name="tutorial-query-azure-cosmos-db-graph-api-by-using-gremlin"></a>Tutorial: Abfragen der Graph-API von Azure Cosmos BD mithilfe von Gremlin
 
@@ -33,7 +31,7 @@ In diesem Artikel werden die folgenden Aufgaben behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Diese Abfragen können nur funktionieren, wenn Sie über ein Azure Cosmos DB-Konto verfügen und Diagrammdaten im Container vorliegen. Sie haben beides nicht? Absolvieren Sie den [5-Minuten-Schnellstart](create-graph-dotnet.md) oder das [Entwicklertutorial](tutorial-query-graph.md) zum Erstellen eines Kontos und Füllen Ihrer Datenbank. Sie können die folgenden Abfragen mit der [Azure Cosmos DB .NET-Graphbibliothek](graph-sdk-dotnet.md), der [Gremlin-Konsole](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) oder Ihrem bevorzugten Gremlin-Treiber durchführen.
+Diese Abfragen können nur funktionieren, wenn Sie über ein Azure Cosmos DB-Konto verfügen und Diagrammdaten im Container vorliegen. Sie haben beides nicht? Absolvieren Sie den [5-Minuten-Schnellstart](create-graph-dotnet.md) oder das [Entwicklertutorial](tutorial-query-graph.md) zum Erstellen eines Kontos und Füllen Ihrer Datenbank. Sie können die folgenden Abfragen ausführen, indem Sie die [Gremlin-Konsole](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) oder Ihren bevorzugten Gremlin-Treiber verwenden.
 
 ## <a name="count-vertices-in-the-graph"></a>Anzahl der Scheitelpunkte im Diagramm
 
@@ -82,7 +80,8 @@ In diesem Tutorial haben Sie die folgenden Aufgaben ausgeführt:
 > [!div class="checklist"]
 > * Sie haben gelernt, wie Sie Abfragen mithilfe von Graph durchführen. 
 
-Sie können jetzt mit dem nächsten Tutorial fortfahren, um zu erfahren, wie Sie Ihre Daten global verteilen.
+Sie können jetzt mit dem Abschnitt „Konzepte“ fortfahren, um weitere Informationen zu Cosmos DB zu erhalten.
 
 > [!div class="nextstepaction"]
-> [Globales Verteilen Ihrer Daten](tutorial-global-distribution-graph.md)
+> [Globale Verteilung](distribute-data-globally.md) 
+

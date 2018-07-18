@@ -16,12 +16,13 @@ ms.workload: identity
 ms.date: 07/20/2017
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: elisol
-ms.openlocfilehash: 9f73f31c7afd7ca13107653d097e1ac11ef94f0d
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.reviewer: elisol, sureshja
+ms.openlocfilehash: 7448a6c37df2c0bbffbebf23d211e3ace8d12edc
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317394"
 ---
 # <a name="azure-active-directory-application-manifest"></a>Azure Active Directory-Anwendungsmanifest
 Apps, die in Azure AD integrieren werden, müssen bei einem Azure AD-Mandanten registriert werden. Eine solche App kann mit dem App-Manifest (unter dem Azure AD-Blatt) im [Azure-Portal](https://portal.azure.com) konfiguriert werden.

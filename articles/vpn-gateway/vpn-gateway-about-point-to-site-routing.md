@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/16/2018
 ms.author: anzaman
-ms.openlocfilehash: d25709fb4abb1b8a35596c3dc246f7419a99419b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a0576e00d22b731f7ee9de3a9b021c0f52fc8ef9
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34702175"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Informationen zu Point-to-Site-VPN-Routing
 
@@ -51,7 +52,7 @@ Die Point-to-Site-VPN-Gatewayverbindung in diesem Beispiel gilt für ein VNet, d
 
 * Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Zugriff
+### <a name="access"></a>Access
 
 * Windows-Clients können auf VNet1 zugreifen.
 
@@ -81,7 +82,7 @@ Clients, die Windows verwenden, können auf VNets mit direktem Peering zugreifen
 
 * Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.2.0.0/16, 10.4.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Zugriff
+### <a name="access"></a>Access
 
 * Windows-Clients können auf VNet1, VNet2 und VNet4 zugreifen, aber der VPN-Client muss erneut heruntergeladen werden, damit alle Topologieänderungen wirksam werden.
 
@@ -109,7 +110,7 @@ Clients, die Windows oder ein anderes unterstütztes Betriebssystem verwenden, k
 
 * Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.2.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Zugriff
+### <a name="access"></a>Access
 
 * Windows-Clients können nur auf VNet1 zugreifen.
 
@@ -137,7 +138,7 @@ Clients, die Windows oder ein anderes unterstütztes Betriebssystem verwenden, k
 
 * Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Zugriff
+### <a name="access"></a>Access
 
 * Windows-Clients können auf VNet1, VNet2 und VNet3 zugreifen, Routen zu VNet2 und VNet3 müssen allerdings manuell hinzugefügt werden.
 
@@ -163,7 +164,7 @@ Windows-Clients können auf VNet1 und die Filiale (Site1) zugreifen, die Routen 
 
 * Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Zugriff
+### <a name="access"></a>Access
 
 * Windows-Clients können nur auf VNet1 zugreifen.
 
@@ -220,7 +221,7 @@ Alle Clients können nur auf VNet1 zugreifen.
 
 * Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Zugriff
+### <a name="access"></a>Access
 
 * Die Windows-Clients können nur auf VNet1 zugreifen.
 
@@ -228,7 +229,7 @@ Alle Clients können nur auf VNet1 zugreifen.
 
 ## <a name="multivnets2sbranchbgp"></a>Mehrere mit S2S verbundene VNets und eine Filiale (BGP)
 
-In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. VNet1 ist mit VNet2 über eine Site-to-Site-VPN-Verbindung verbunden. VNet2 ist mit VNet3 über eine Site-to-Site-VPN-Verbindung verbunden. Direktes Peering oder ein Site-to-Site-VPN-Tunnel zwischen den VNet1- und VNet3-Netzwerken ist nicht vorhanden. VNet3 ist mit einer Filiale (Site1) über eine Site-to-Site-VPN-Verbindung verbunden. Alle VPN-Verbindungen führen BGP nicht aus. Alle VPN-Verbindungen führen BGP aus.
+In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. VNet1 ist mit VNet2 über eine Site-to-Site-VPN-Verbindung verbunden. VNet2 ist mit VNet3 über eine Site-to-Site-VPN-Verbindung verbunden. Direktes Peering oder ein Site-to-Site-VPN-Tunnel zwischen den VNet1- und VNet3-Netzwerken ist nicht vorhanden. VNet3 ist mit einer Filiale (Site1) über eine Site-to-Site-VPN-Verbindung verbunden. Alle VPN-Verbindungen führen BGP aus.
 
 Clients mit Windows können auf VNets und Standorte zugreifen, die über eine Site-to-Site-VPN-Verbindung verbunden sind, die Routen zu VNet2, VNet3 und Site1 müssen dem Client aber manuell hinzugefügt werden. Nicht-Windows-Clients können ohne manuelle Eingriffe auf VNets und Standorte zugreifen, die über eine Site-to-Site-VPN-Verbindung verbunden sind. Der Zugriff ist transitiv, und Clients besitzen Zugriff auf Ressourcen in allen verbundenen VNets und Standorten (lokal).
 
@@ -250,7 +251,7 @@ Clients mit Windows können auf VNets und Standorte zugreifen, die über eine Si
 
 * Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Zugriff
+### <a name="access"></a>Access
 
 * Windows-Clients können auf VNet1, VNet2, VNet3 und Site1 zugreifen, die Routen zu VNet2, VNet3 und Site1 müssen dem Client aber manuell hinzugefügt werden.
 

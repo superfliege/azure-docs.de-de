@@ -13,13 +13,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/20/2018
+ms.date: 06/05/2018
 ms.author: charwen,cherylmc
-ms.openlocfilehash: deb2a768d766f3fcfa5523b5b3e77b85c0b87b9c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9b0e19ac859d3f0185c42a79353651996fcbf631
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823562"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections"></a>Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen
 > [!div class="op_single_selector"]
@@ -28,7 +29,16 @@ ms.lasthandoff: 04/28/2018
 > 
 > 
 
-Das Konfigurieren paralleler Site-to-Site-VPN- und ExpressRoute-Verbindungen bietet mehrere Vorteile. Sie können ein Site-to-Site-VPN als sicheren Failoverpfad für ExpressRoute konfigurieren. Alternativ hierzu können Sie Site-to-Site-VPNs nutzen, um Standorte zu verbinden, die nicht per ExpressRoute verbunden sind. Dieser Artikel enthält die Schritte für die Konfiguration beider Szenarien. Dieser Artikel gilt für das Resource Manager-Bereitstellungsmodell und für die Verwendung von PowerShell. Diese Konfiguration ist nicht im Azure-Portal verfügbar.
+Das Konfigurieren paralleler Site-to-Site-VPN- und ExpressRoute-Verbindungen bietet mehrere Vorteile:
+
+* Sie können ein Site-to-Site-VPN als sicheren Failoverpfad für ExpressRoute konfigurieren. 
+* Alternativ hierzu können Sie Site-to-Site-VPNs nutzen, um Standorte zu verbinden, die nicht per ExpressRoute verbunden sind. 
+
+Dieser Artikel enthält die Schritte für die Konfiguration beider Szenarien. Dieser Artikel gilt für das Resource Manager-Bereitstellungsmodell und für die Verwendung von PowerShell. Diese Konfiguration ist nicht im Azure-Portal verfügbar.
+
+>[!NOTE]
+>Wenn Sie ein Site-to-Site-VPN über eine ExpressRoute-Verbindung erstellen möchten, lesen Sie [diesen Artikel](site-to-site-vpn-over-microsoft-peering.md).
+>
 
 ## <a name="limits-and-limitations"></a>Grenzwerte und Einschränkungen
 * **Transitrouting wird nicht unterstützt.** Ein Routing (über Azure) zwischen Ihrem lokalen Netzwerk mit Standort-zu-Standort-VPN-Verbindung und Ihrem lokalen Netzwerk mit ExpressRoute-Verbindung ist nicht möglich.

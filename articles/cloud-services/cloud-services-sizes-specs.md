@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: bde4347c487be8986c72435172b18c10effa0690
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 490fd248cdd14858e2ca71f94dcb9dbaa5726f9c
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33940283"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "34608813"
 ---
 # <a name="sizes-for-cloud-services"></a>Größen für Clouddienste
 In diesem Thema werden die verfügbaren Größen und Optionen für Cloud Service-Rolleninstanzen (Web- und Workerrollen) beschrieben. Darüber hinaus werden Überlegungen zur Bereitstellung angestellt, die Sie berücksichtigen sollten, wenn Sie eine Verwendung dieser Ressourcen planen. Jede Größe besitzt eine ID, die Sie in Ihre [Dienstdefinitionsdatei](cloud-services-model-and-package.md#csdef) einfügen. Preise für jede Größe sind auf der Seite [Cloud Services Preise](https://azure.microsoft.com/pricing/details/cloud-services/) verfügbar.
@@ -78,20 +78,20 @@ In den folgenden Tabellen sind die Größe und die von den einzelnen Größen be
 
 * Speicherkapazität wird in GiB-Einheiten oder 1.024^3 Bytes angezeigt. Beachten Sie beim Vergleich von in GB (1.000^3 Bytes) gemessenen Datenträgern mit in GiB (1.024^3) gemessenen Datenträgern, dass die in GiB angegebenen Kapazitätszahlen kleiner erscheinen können. Beispiel: 1.023 GiB = 1.098,4 GB.
 * Der Datenträgerdurchsatz wird in E/A-Vorgängen pro Sekunde (Input/Output Operations Per Second, IOPS) und MB/s gemessen, wobei MB/s = 10^6 Bytes/Sekunde beträgt.
-* Datenträger können mit oder ohne Cache betrieben werden. Beim Datenträgerbetrieb mit Cache ist der Hostcachemodus auf **ReadOnly** oder **ReadWrite** festgelegt. Beim Datenträgerbetrieb ohne Cache ist der Hostcachemodus auf **None**festgelegt.
+* Datenträger können mit oder ohne Cache betrieben werden. Beim Datenträgerbetrieb mit Cache ist der Hostcachemodus auf **ReadOnly** oder **ReadWrite** festgelegt. Beim Datenträgerbetrieb ohne Cache ist der Hostcachemodus auf **None** festgelegt.
 * Bei der maximalen Netzwerkbandbreite handelt es sich um die maximale aggregierte Bandbreite, die pro VM-Typ zugewiesen wurde. Die maximale Bandbreite dient als Orientierungshilfe bei der Wahl des richtigen VM-Typs, um sicherzustellen, dass ausreichend Netzwerkkapazität verfügbar ist. Bei einem Wechsel zu „niedrig“, „mittel“, „hoch“ oder „sehr hoch“ ändert sich der Durchsatz entsprechend. Die tatsächliche Netzwerkleistung hängt von zahlreichen Faktoren ab. Hierzu zählen beispielsweise die Netzwerk- und Anwendungslast und die Netzwerkeinstellungen der Anwendung.
 
 ## <a name="a-series"></a>A-Serie
 | Größe            | CPU-Kerne | Arbeitsspeicher: GiB  | Temporärer Speicher: GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Sehr klein      | 1         | 0,768        | 20                   | 1/niedrig |
-| Klein           | 1         | 1,75         | 70                   | 1/moderat |
-| Mittel          | 2         | 3,5          | 135                  | 1/moderat |
-| Groß           | 4         | 7            | 285                  | 2/hoch |
-| Extragroß      | 8         | 14           | 605                  | 4/hoch |
-| A5              | 2         | 14           | 135                  | 1/moderat |
-| A6              | 4         | 28           | 285                  | 2/hoch |
-| A7              | 8         | 56           | 605                  | 4/hoch |
+| Klein           | 1         | 1,75         | 225                  | 1/moderat |
+| Mittel          | 2         | 3,5          | 490                  | 1/moderat |
+| Groß           | 4         | 7            | 1000                 | 2/hoch |
+| Extragroß      | 8         | 14           | 2040                 | 4/hoch |
+| A5              | 2         | 14           | 490                  | 1/moderat |
+| A6              | 4         | 28           | 1000                 | 2/hoch |
+| A7              | 8         | 56           | 2040                 | 4/hoch |
 
 ## <a name="a-series---compute-intensive-instances"></a>A-Serie: Rechenintensive Instanzen
 Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [Größen für leistungsstarke Compute-VMs](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

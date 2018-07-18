@@ -1,22 +1,21 @@
 ---
 title: Bereitstellen eines simulierten TPM-Geräts für Azure IoT Hub mithilfe von Python | Microsoft-Dokumentation
 description: 'Azure-Schnellstartanleitung: Erstellen und Bereitstellen eines simulierten TPM-Geräts mithilfe des Java-Geräte-SDKs für den IoT Hub Device Provisioning-Dienst'
-services: iot-dps
-keywords: ''
 author: bryanla
-ms.author: v-masebo;bryanla
-ms.date: 04/09/2018
+ms.author: bryanla
+ms.date: 05/21/2018
 ms.topic: quickstart
 ms.service: iot-dps
-documentationcenter: ''
+services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 5038a632bc88c7b44f275968779d9d7ca5044d38
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 52b94482e545418c36cfc2bc5c9a5e4ad7d22538
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630740"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Erstellen und Bereitstellen eines simulierten TPM-Geräts mithilfe des Python-Geräte-SDK für den IoT Hub Device Provisioning-Dienst
 
@@ -109,7 +108,7 @@ Sollten Sie mit der automatischen Bereitstellung nicht vertraut sein, lesen Sie 
     cd azure-iot-sdk-python/provisioning_device_client/samples
     ```
 
-1. Bearbeiten Sie mithilfe Ihrer Python-IDE das Python-Skript **provisioning\_device\_client\_sample.py**. Legen Sie die Variablen _GLOBAL\_PROV\_URI_ und _ID\_SCOPE_ auf die zuvor notierten Werte fest.
+1. Bearbeiten Sie mithilfe Ihrer Python-IDE das Python-Skript **provisioning\_device\_client\_sample.py**. Legen Sie die Variablen *GLOBAL\_PROV\_URI* und *ID\_SCOPE* auf die zuvor notierten Werte fest. Stellen Sie außerdem sicher, dass *SECURITY\_DEVICE\_TYPE* auf `ProvisioningSecurityDeviceType.TPM` festgelegt ist.
 
     ```python
     GLOBAL_PROV_URI = "{globalServiceEndpoint}"
@@ -151,4 +150,4 @@ Wenn Sie das Geräteclientbeispiel weiter verwenden und erkunden möchten, über
 In dieser Schnellstartanleitung haben Sie auf Ihrem Computer ein simuliertes TPM-Gerät erstellt und es mithilfe des IoT Hub Device Provisioning-Diensts für Ihre IoT Hub-Instanz bereitgestellt. Informationen zum programmgesteuerten Registrieren Ihres TPM-Geräts finden Sie in der Schnellstartanleitung für die programmgesteuerte Registrierung von TPM-Geräten. 
 
 > [!div class="nextstepaction"]
-> [Registrieren eines TPM-Geräts für den IoT Hub Device Provisioning-Dienst per Java-Dienst-SDK](quick-enroll-device-tpm-java.md)
+> [Registrieren eines TPM-Geräts für den IoT Hub Device Provisioning-Dienst per Java-Dienst-SDK](quick-enroll-device-tpm-python.md)

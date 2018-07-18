@@ -2,22 +2,19 @@
 title: Globale Verteilung von Daten mit Azure Cosmos DB | Microsoft-Dokumentation
 description: Erfahren Sie mehr über weltweite Georeplikation, Failover und Datenwiederherstellungen mithilfe der globalen Datenbanken von Azure Cosmos DB, einem global verwalteten Datenbankdienst, der mehrere Modelle unterstützt.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: ba5ad0cc-aa1f-4f40-aee9-3364af070725
 ms.service: cosmos-db
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 967e7458d43dccd4601440138b7445eb876b9f01
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4f548e180ca315013d5ca91118041cac2e622520
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611448"
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Wie werden Daten mit Azure Cosmos DB global verteilt?
 Azure ist ubiquitär: Es ist in über 50 geografischen Regionen auf der ganzen Welt präsent und breitet sich kontinuierlich weiter aus. Die weltweite Präsenz von Azure ermöglicht den Entwicklern unter anderem die problemlose Erstellung, Bereitstellung und Verwaltung global verteilter Anwendungen. 
@@ -87,7 +84,7 @@ Der Hauptvorteil einer global verteilten Datenbank besteht in der niedrigen Wart
 Mit Azure Cosmos DB können Sie das Failover eines Datenbankkontos auslösen, um die Eigenschaften der *End-to-End-Verfügbarkeit* der gesamten Anwendung (außerhalb der Datenbank) zu überprüfen. Da sowohl die Sicherheits- und Verfügbarkeitseigenschaften der Fehlererkennung als auch die Wahl einer übergeordneten Instanz garantiert werden, garantiert Azure Cosmos DB, dass bei einem vom Mandanten manuell initiierten Failovervorgang *keine Daten verloren gehen*.
 
 ### <a id="AutomaticFailover"></a>Automatisches Failover
-Azure Cosmos DB unterstützt automatisches Failover bei regionalen Ausfällen. Während eines regionalen Failovers erfüllt Azure Cosmos DB weiterhin die SLAs für Leselatenz, Verfügbarkeit, Konsistenz und Durchsatz. Azure Cosmos DB bietet eine Obergrenze für die Dauer eines automatischen Failovervorgangs. Hierbei handelt es sich um das Zeitfenster für potenzielle Datenverluste während eines regionalen Ausfalls.
+Azure Cosmos DB unterstützt automatisches Failover bei Ausfällen einer oder mehrerer Regionen. Während eines regionalen Failovers erfüllt Azure Cosmos DB weiterhin die SLAs für Leselatenz, Verfügbarkeit, Konsistenz und Durchsatz. Azure Cosmos DB bietet eine Obergrenze für die Dauer eines automatischen Failovervorgangs. Hierbei handelt es sich um das Zeitfenster für potenzielle Datenverluste während eines regionalen Ausfalls.
 
 ### <a id="GranularFailover"></a>Konzipiert für verschiedene Failovergranularitäten
 Aktuell werden die automatischen und manuellen Failoverfunktionen mit der Granularität des Datenbankkontos verfügbar gemacht. Intern ist Azure Cosmos DB allerdings für ein präziseres *automatisches* Failover einer Datenbank, eines Containers oder sogar einer Partition (ein Container mit einer Reihe von Schlüsseln) konzipiert. 
@@ -174,7 +171,7 @@ Die Konsistenz-SLA von Azure Cosmos DB garantiert, dass 100 Prozent der Leseanfo
 
 
 ### <a id="ConsistencyAndAvailability"></a>Zusammenhang zwischen Konsistenz und Verfügbarkeit
-Das [Unmöglichkeitsergebnis](http://www.glassbeam.com/sites/all/themes/glassbeam/images/blog/10.1.1.67.6951.pdf) des [CAP-Theorems](https://people.eecs.berkeley.edu/~brewer/cs262b-2004/PODC-keynote.pdf) beweist, dass ein System im Falle eines Ausfalls nicht gleichzeitig verfügbar bleiben und linearisierbare Konsistenz bieten kann. Der Datenbankdienst kann entweder Konsistenz und Partitionen oder Verfügbarkeit und Partitionen bieten. Im ersten Fall wird die Verfügbarkeit zugunsten von linearisierbarer Konsistenz geopfert, im zweiten Fall wird die [linearisierbare Konsistenz](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) zugunsten der Verfügbarkeit aufgegeben. Azure Cosmos DB verstößt niemals gegen das angeforderte Konsistenzmodell und ist damit formal betrachtet ein System mit Konsistenz und Partitionen. In der Praxis ist Konsistenz allerdings keine Alles-oder-Nichts-Option: Es gibt mehrere klar definierte Konsistenzmodelle entlang des Konsistenzspektrums zwischen linearisierbarer und letztlicher Konsistenz. In Azure Cosmos DB haben wir versucht, mehrere der gelockerten Konsistenzmodelle mit praktischer Anwendbarkeit und einer intuitiven Verwendung zu identifizieren. Azure Cosmos DB bietet als Kompromiss zwischen Konsistenz und Verfügbarkeit [mehrere gelockerte, aber trotzdem klar definierte Konsistenzmodelle](consistency-levels.md) sowie eine Verfügbarkeit von 99,99 Prozent für alle Datenbankkonten mit einzelner Region und eine Leseverfügbarkeit von 99,999 Prozent für alle Datenbankkonten mit mehreren Regionen. 
+Das [Unmöglichkeitsergebnis](http://www.glassbeam.com/sites/all/themes/glassbeam/images/blog/10.1.1.67.6951.pdf) des [CAP-Theorems](https://people.eecs.berkeley.edu/~brewer/cs262b-2004/PODC-keynote.pdf) beweist, dass ein System im Falle eines Ausfalls nicht gleichzeitig verfügbar bleiben und linearisierbare Konsistenz bieten kann. Der Datenbankdienst kann entweder Konsistenz und Partitionen oder Verfügbarkeit und Partitionen bieten. Im ersten Fall wird die Verfügbarkeit zugunsten von linearisierbarer Konsistenz geopfert, im zweiten Fall wird die [linearisierbare Konsistenz](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) zugunsten der Verfügbarkeit aufgegeben. Azure Cosmos DB verstößt niemals gegen das angeforderte Konsistenzmodell und ist damit formal betrachtet ein System mit Konsistenz und Partitionen. In der Praxis ist Konsistenz allerdings keine Alles-oder-Nichts-Option: Es gibt mehrere klar definierte Konsistenzmodelle entlang des Konsistenzspektrums zwischen linearisierbarer und letztlicher Konsistenz. Azure Cosmos DB nutzt mehrere der gelockerten Konsistenzmodelle mit praktischer Anwendbarkeit und einer intuitiven Verwendung. Azure Cosmos DB bietet als Kompromiss zwischen Konsistenz und Verfügbarkeit [mehrere gelockerte, aber trotzdem klar definierte Konsistenzmodelle](consistency-levels.md) sowie eine Verfügbarkeit von 99,99 Prozent für alle Datenbankkonten mit einzelner Region und eine Leseverfügbarkeit von 99,999 Prozent für alle Datenbankkonten mit mehreren Regionen. 
 
 ### <a id="ConsistencyAndAvailability"></a>Zusammenhang zwischen Konsistenz und Latenz
 Die umfassendere Variante des CAP-Theorems, auch als [PACELC](http://cs-www.cs.yale.edu/homes/dna/papers/abadi-pacelc.pdf) bezeichnet, berücksichtigt auch Kompromisse zwischen Latenz und Konsistenz in einem stabilen Zustand. Bei dieser Variante muss sich ein Datenbanksystem in einem stabilen Zustand zwischen Konsistenz und Latenz entscheiden. Mit mehreren gelockerten Konsistenzmodellen (unterstützt durch asynchrone Replikation und Quoren für lokale Lese- und Schreibvorgänge) stellt Azure Cosmos DB sicher, dass es sich bei allen Lese- und Schreibvorgängen um lokale Vorgänge für die Lese- bzw. Schreibregion handelt. Dadurch kann Azure Cosmos DB innerhalb der Region eine niedrige Latenz für die bestehenden Konsistenzmodelle garantieren.  
@@ -196,7 +193,7 @@ Mit Azure Cosmos DB lässt sich der Durchsatz (ebenso wie der Speicher) elastisc
 
 Ein Azure Cosmos DB-Container wird auf der Grundlage von zwei Dimensionen (i) innerhalb einer Region und (ii) regionsübergreifend verteilt. Das geht so: 
 
-* **Lokale Verteilung**: Innerhalb einer einzelnen Region wird ein Azure Cosmos DB-Container mithilfe von *Ressourcenpartitionen* horizontal hochskaliert. Jede Ressourcenpartition verwaltet einen Satz von Schlüsseln und ist stark konsistent und hochverfügbar, da sie physisch durch vier Replikate repräsentiert wird, die auch *Replikatgruppe* genannt werden. Zudem verwaltet sie die Zustandsautomatreplikation zwischen diesen Replikaten. Azure Cosmos DB ist ein vollständig ressourcengesteuertes System, in dem eine Ressourcenpartition für die Bereitstellung ihres Durchsatzanteils am Budget der zugeteilten Systemressourcen verantwortlich ist. Die Skalierung eines Azure Cosmos DB-Containers ist für die Benutzer vollständig transparent. Azure Cosmos DB verwaltet die Ressourcenpartitionen, teilt sie auf und führt sie bei Bedarf zusammen, wenn sich die Speicher- und Durchsatzanforderungen ändern. 
+* **Lokale Verteilung**: Innerhalb einer einzelnen Region wird ein Azure Cosmos DB-Container mithilfe von *Ressourcenpartitionen* horizontal hochskaliert. Jede Ressourcenpartition verwaltet einen Satz von Schlüsseln und ist stark konsistent und hochverfügbar, da sie physisch durch vier Replikate repräsentiert wird, die auch *Replikatgruppe* genannt werden. Zudem verwaltet sie die Zustandsautomatreplikation zwischen diesen Replikaten. Azure Cosmos DB ist ein vollständig ressourcengesteuertes System, in dem eine Ressourcenpartition für die Bereitstellung ihres Durchsatzanteils am Budget der zugeteilten Systemressourcen verantwortlich ist. Die Skalierung eines Azure Cosmos DB-Containers erfolgt für die Benutzer im Hintergrund. Azure Cosmos DB verwaltet die Ressourcenpartitionen, teilt sie auf und führt sie bei Bedarf zusammen, wenn sich die Speicher- und Durchsatzanforderungen ändern. 
 * **Globale Verteilung**: Bei einer Datenbank für mehrere Regionen wird jede der Ressourcenpartitionen dann auf diese Regionen verteilt. Ressourcenpartitionen, die in verschiedenen Regionen den gleichen Satz von Schlüsseln besitzen, bilden eine *Partitionsgruppe*, wie in der [vorherigen Abbildung](#ThroughputGuarantees) zu sehen.  Ressourcenpartitionen innerhalb einer Partitionsgruppe werden mittels Zustandsautomatreplikation über mehrere Regionen hinweg koordiniert, die mit der Datenbank verbunden sind. Je nach konfigurierter Konsistenzebene werden die Ressourcenpartitionen innerhalb einer Partitionsgruppe dynamisch unter Verwendung verschiedener Topologien (Stern, Verkettung, Baumstruktur usw.) konfiguriert. 
 
 Dank extrem reaktionsschneller Partitionsverwaltung, Lastenausgleich und strenger Ressourcengovernance können Sie den Durchsatz mit Azure Cosmos DB für eine Azure Cosmos DB-Sammlung elastisch über mehrere Azure-Regionen hinweg skalieren. Die Änderung des bereitgestellten Durchsatzes ist ein Runtimevorgang in Azure Cosmos DB. Ähnlich wie bei anderen Datenbankvorgängen garantiert Azure Cosmos DB die absolute Obergrenze der Wartezeit für Ihre Anforderung, den bereitgestellten Durchsatz zu ändern. Als Beispiel zeigt die folgende Abbildung den Container eines Kunden mit elastisch bereitgestelltem Durchsatz nach Bedarf (im Bereich zwischen einer Million und zehn Millionen Anforderungen/Sek. für zwei Regionen).

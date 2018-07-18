@@ -16,6 +16,8 @@
   items:
     - name: Hinzufügen von Azure CDN zu einer Web-App
       href: cdn-add-to-web-app.md
+    - name: Zugreifen auf Blobs mithilfe einer benutzerdefinierten Domäne über HTTPS
+      href: cdn-storage-custom-domain-https.md
     - name: Hinzufügen einer benutzerdefinierten Domäne
       href: cdn-map-content-to-custom-domain.md
     - name: Konfigurieren von HTTPS für eine benutzerdefinierte Domäne
@@ -34,6 +36,10 @@
       href: cdn-china-delivery.md
     - name: HTTP/2-Unterstützung
       href: cdn-http2.md
+    - name: Abrufen von der POP-Liste für Verizon
+      href: cdn-pop-list-api.md
+    - name: Migrieren von Verizon Standard zu Verizon Premium
+      href: cdn-migrate.md
 - name: Anleitungen
   items:
     - name: Optimieren von Inhalten
@@ -47,6 +53,8 @@
           href: cdn-dynamic-site-acceleration.md
     - name: Verwalten
       items:
+        - name: Erstellen eines Endpunkts
+          href: cdn-create-endpoint-how-to.md
         - name: Verwalten mit Azure PowerShell
           href: cdn-manage-powershell.md
         - name: Einschränken des Zugriffs nach Land
@@ -83,6 +91,8 @@
           href: cdn-resource-health.md
         - name: Überschreiben des Verhaltens mit Regeln
           href: cdn-rules-engine.md
+        - name: Verwenden von Traffic Manager
+          href: cdn-traffic-manager.md
     - name: Analysieren
       href: cdn-log-analysis.md
       items:
@@ -116,6 +126,8 @@
           href: cdn-troubleshoot-endpoint.md
         - name: Dateikomprimierung
           href: cdn-troubleshoot-compression.md
+        - name: Zulässige Zertifizierungsstellen
+          href: cdn-troubleshoot-allowed-ca.md
 - name: Verweis
   items:
     - name: Regel-Engine – Referenz

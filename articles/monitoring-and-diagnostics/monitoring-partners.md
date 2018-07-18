@@ -1,24 +1,19 @@
 ---
-title: Azure Monitor – integrierte Partnerlösungen | Microsoft-Dokumentation
+title: Partnerlösungen zur Integration in Azure Monitor
 description: Erfahren Sie mehr über die Partnerlösungen für Azure Monitor und wie Sie auf die jeweilige Dokumentation zur Integration der Lösungen zugreifen können.
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 01ee13ac-66fc-4edc-8b0c-32f69b986a26
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 3/15/2018
 ms.author: johnkem
-ms.openlocfilehash: 44315b88d55d370c8200952dc2ff9d64d64cf524
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.component: ''
+ms.openlocfilehash: c8f8dbc4aa32b550849ff14f3ad653311b9fab93
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265282"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor – integrierte Partnerlösungen
 | Partner |  |  |
