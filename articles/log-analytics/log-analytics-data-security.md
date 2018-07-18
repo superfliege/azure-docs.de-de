@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/16/2018
+ms.date: 07/05/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 7596428b4ed067bf53f3b295a1682ed372f8d472
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: df4c60be8a29ab397424e9e5f9de7050f64d87c2
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131443"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859774"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics-Datensicherheit
 Dieses Dokument enthält ergänzend zu den Informationen im [Azure Trust Center](../security/security-microsoft-trust-center.md) spezifische Informationen zu Azure Log Analytics.  
@@ -51,7 +51,6 @@ Die folgende Tabelle enthält einige der verfügbaren Lösungen sowie Beispiele 
 | **Lösung** | **Datentypen** |
 | --- | --- |
 | Kapazität und Leistung |Leistungsdaten und Metadaten |
-| Malware Assessment |Konfigurationsdaten und Metadaten |
 | Updateverwaltung |Metadaten und Statusdaten |
 | Log Management |Benutzerdefinierte Ereignisprotokolle, Windows-Ereignisprotokolle und/oder IIS-Protokolle |
 | Change Tracking |Metadaten für Softwarebestand, Windows-Dienste und Linux-Daemons sowie Windows/Linux-Dateimetadaten |
@@ -63,16 +62,16 @@ Die folgende Tabelle zeigt Beispiele für Datentypen:
 | --- | --- |
 | Warnung |AlertName, AlertDescription, BaseManagedEntityId, ProblemId, IsMonitorAlert, RuleId, ResolutionState, Priority, Severity, Category, Owner, ResolvedBy, TimeRaised, TimeAdded, LastModified, LastModifiedBy, LastModifiedExceptRepeatCount, TimeResolved, TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, RepeatCount |
 | Konfiguration |CustomerID, AgentID, EntityID, ManagedTypeID, ManagedTypePropertyID, CurrentValue, ChangeDate |
-| Ereignis |EventId, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, PublisherName, FullNumber, Number, Category, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Hinweis:** Wenn Sie Ereignisse mit benutzerdefinierten Feldern in das Windows-Ereignisprotokoll schreiben, werden diese von OMS gesammelt. |
+| Ereignis |EventId, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, PublisherName, FullNumber, Number, Category, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Hinweis:** Wenn Sie Ereignisse mit benutzerdefinierten Feldern in das Windows-Ereignisprotokoll schreiben, werden diese per Log Analytics gesammelt. |
 | Metadaten |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, PhysicalProcessors, NetworkName, IPAddress, ForestDNSName, NetbiosComputerName, VirtualMachineName, LastInventoryDate, HostServerNameIsVirtualMachine, NetbiosDomainName, LogicalProcessors, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime |
 | Leistung |ObjectName, CounterName, PerfmonInstanceName, PerformanceDataId, PerformanceSourceInternalID, SampleValue, TimeSampled, TimeAdded |
 | State (Zustand) |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
 
 ## <a name="physical-security"></a>Physische Sicherheit
-Der Log Analytics-Dienst wird von Microsoft-Mitarbeitern verwaltet. Alle Aktivitäten werden protokolliert und können überwacht werden. Log Analytics wird als Azure-Dienst betrieben und erfüllt sämtliche Compliance- und Sicherheitsanforderungen in Azure. Ausführliche Informationen über die physische Sicherheit der Azure-Ressourcen finden Sie auf Seite 18 des Dokuments [Microsoft Azure Security Overview (Microsoft Azure-Sicherheitsübersicht)](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Physische Zugriffsrechte auf sichere Bereiche werden innerhalb eines Geschäftstags für jeden Benutzer geändert, der keine Verantwortung mehr für den OMS-Dienst hat, einschließlich der Übertragung und Beendigung. Informieren Sie sich über die globale physische Infrastruktur, die wir in [Microsoft-Rechenzentren](https://azure.microsoft.com/en-us/global-infrastructure/) verwenden.
+Der Log Analytics-Dienst wird von Microsoft-Mitarbeitern verwaltet. Alle Aktivitäten werden protokolliert und können überwacht werden. Log Analytics wird als Azure-Dienst betrieben und erfüllt sämtliche Compliance- und Sicherheitsanforderungen in Azure. Ausführliche Informationen über die physische Sicherheit der Azure-Ressourcen finden Sie auf Seite 18 des Dokuments [Microsoft Azure Security Overview (Microsoft Azure-Sicherheitsübersicht)](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Physische Zugriffsrechte auf sichere Bereiche werden innerhalb eines Geschäftstags für jeden Benutzer geändert, der keine Verantwortung mehr für den Log Analytics-Dienst trägt, einschließlich der Übertragung und Beendigung. Informieren Sie sich über die globale physische Infrastruktur, die wir in [Microsoft-Rechenzentren](https://azure.microsoft.com/en-us/global-infrastructure/) verwenden.
 
 ## <a name="incident-management"></a>Incident Management
-OMS verfügt über einen Incident-Management-Prozess, dem alle Microsoft-Dienste entsprechen. Zusammenfassung:
+Log Analytics verfügt über einen Incident-Management-Prozess, dem alle Microsoft-Dienste unterliegen. Zusammenfassung:
 
 * Wir verwenden ein Modell für gemeinsame Verantwortung, bei dem Microsoft einen Teil der Verantwortung für die Sicherheit trägt und der Kunde für den anderen Teil zuständig ist.
 * Wir verwalten Azure-Sicherheitsincidents:
@@ -125,7 +124,7 @@ Azure Log Analytics erfüllt folgende Anforderungen:
 >
 
 ## <a name="cloud-computing-security-data-flow"></a>Datenfluss beim sicheren Cloud Computing
-In der folgenden Abbildung sind eine Cloudsicherheitsarchitektur sowie der Fluss der Informationen von Ihrem Unternehmen und deren Schutz auf dem Weg zum Log Analytics-Dienst dargestellt, wo Sie sie letztlich im Azure-Portal oder klassischen OMS-Portal anzeigen können. Weitere Informationen zu den einzelnen Schritten finden Sie nach dem Diagramm.
+Das folgende Diagramm zeigt eine Cloudsicherheitsarchitektur sowie den Fluss von Informationen von Ihrem Unternehmen und deren Schutz auf dem Weg zum Log Analytics-Dienst, wo Sie sie letztlich im Azure-Portal anzeigen können. Weitere Informationen zu den einzelnen Schritten finden Sie nach dem Diagramm.
 
 ![Abbildung der Datensammlung und Sicherheit in Log Analytics](./media/log-analytics-data-security/log-analytics-data-security-diagram.png)
 
@@ -139,7 +138,7 @@ In einem Log Analytics-Arbeitsbereich werden Daten gesammelt, aggregiert, analys
 
 Für Operations Manager wird über die Operation Manager-Verwaltungsgruppe eine Verbindung mit dem Log Analytics-Dienst hergestellt. Dann legen Sie fest, welche mit einem Agent verwalteten Systeme in der Verwaltungsgruppe Daten erfassen und an den Dienst senden können. Je nach aktivierter Lösung werden Daten aus diesen Lösungen entweder direkt von einem Operations Manager-Verwaltungsserver oder (aufgrund des Umfangs der Daten, die im mit einem Agent verwalteten System gesammelt werden) direkt vom Agent an den Log Analytics-Dienst gesendet. In Systemen, die nicht über Operations Manager überwacht werden, wird jeweils direkt eine sichere Verbindung mit dem Log Analytics-Dienst hergestellt.
 
-Die gesamte Kommunikation zwischen verbundenen Systemen und dem Log Analytics-Dienst ist verschlüsselt.  Das TLS (HTTPS)-Protokoll wird für die Verschlüsselung verwendet.  Das Microsoft SDL-Verfahren stellt sicher, dass Log Analytics nach den neuesten Fortschritten bei kryptografischen Protokollen aktualisiert wird.
+Die gesamte Kommunikation zwischen verbundenen Systemen und dem Log Analytics-Dienst ist verschlüsselt. Das TLS (HTTPS)-Protokoll wird für die Verschlüsselung verwendet.  Das Microsoft SDL-Verfahren stellt sicher, dass Log Analytics nach den neuesten Fortschritten bei kryptografischen Protokollen aktualisiert wird.
 
 Jeder Agent-Typ sammelt Daten für Log Analytics. Die Art der gesammelten Daten ist abhängig von der Art der verwendeten Lösungen. Eine Zusammenfassung der Datensammlung finden Sie unter [Add Log Analytics solutions from the Solutions Gallery (Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog)](log-analytics-add-solutions.md). Darüber hinaus stehen ausführlichere Sammlungs-Informationen für die meisten Lösungen zur Verfügung. Eine Lösung ist ein Bündel von vordefinierten Ansichten, Protokollsuchabfragen, Datensammlungsregeln und Verarbeitungslogik. Nur Administratoren können Log Analytics zum Importieren einer Lösung verwenden. Nach dem Importieren der Lösung wird diese auf die Operations Manager-Verwaltungsserver (sofern verwendet) und dann in die ausgewählten Agents verschoben. Anschließend sammeln die Agents die Daten.
 

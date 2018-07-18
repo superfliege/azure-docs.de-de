@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 0141694b87664a83872f7b270631d454f863d5a8
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 5077982bdef4d0e8fbf1ab485566909b4dc97a8a
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046165"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857377"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Aktivität „If Condition“ in Azure Data Factory
 Die Aktivität „If Condition“ bietet die gleiche Funktionalität wie eine If-Anweisung in Programmiersprachen. Sie wertet eine Aktivitätengruppe aus, wenn die Bedingung als `true` ausgewertet wird, und eine weitere Aktivitätengruppe, wenn die Bedingung als `false` ausgewertet wird. 
@@ -69,9 +69,9 @@ Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
 name | Der Name der Aktivität „If Condition“ | Zeichenfolge | Ja
 type | Muss auf **IfCondition** festgelegt werden. | Zeichenfolge | Ja
-expression | Ausdruck, der als „true“ oder „false“ ausgewertet werden muss. | Ja
-ifTrueActivities | Aktivitäten, die ausgeführt werden, wenn der Ausdruck als `true` ausgewertet wird | Ja
-ifFalseActivities | Aktivitäten, die ausgeführt werden, wenn der Ausdruck als `false` ausgewertet wird | Ja
+expression | Ausdruck, der als „true“ oder „false“ ausgewertet werden muss. | Ausdruck mit Ergebnistyp „Boolesch“ | Ja
+ifTrueActivities | Aktivitäten, die ausgeführt werden, wenn der Ausdruck als `true` ausgewertet wird | Array | Ja
+ifFalseActivities | Aktivitäten, die ausgeführt werden, wenn der Ausdruck als `false` ausgewertet wird | Array | Ja
 
 ## <a name="example"></a>Beispiel
 Die Pipeline in diesem Beispiel kopiert Daten aus einem Eingabeordner in einen Ausgabeordner. Der Ausgabeordner wird durch den Wert des Pipelineparameters bestimmt: routeSelection. Wenn der routeSelection-Wert „true“ lautet, werden die Daten in „outputPath1“ kopiert. Wenn der routeSelection-Wert „false“ lautet, werden die Daten in „outputPath2“ kopiert. 

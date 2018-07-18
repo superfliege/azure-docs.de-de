@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: sngun
-ms.openlocfilehash: c55f90b944038a0e4ca216a357fc30f4cf6a6ddc
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: e67fc5e00a638f116a69dbb36c60cf183cbde808
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36317285"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857829"
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Azure Cosmos DB-Firewallunterstützung
 Zum Sichern von in einem Azure Cosmos DB-Datenbankkonto gespeicherten Daten bietet Azure Cosmos DB Unterstützung für ein auf einem Geheimnis basierendes [Autorisierungsmodell](https://msdn.microsoft.com/library/azure/dn783368.aspx), das einen starken hashbasierten Nachrichtenauthentifizierungscode (HMAC) nutzt. Azure Cosmos DB unterstützt nun neben dem auf einem Geheimnis basierenden Autorisierungsmodell durch Richtlinien gesteuerte IP-basierte Access Control für die eingehende Firewallunterstützung. Dieses Modell ähnelt den Firewallregeln eines herkömmlichen Datenbanksystems und bietet zusätzliche Sicherheit für das Azure Cosmos DB-Datenbankkonto. Mit diesem Modell können Sie nun ein Azure Cosmos DB-Datenbankkonto so konfigurieren, dass es nur über eine genehmigte Gruppe von Computern und/oder Clouddiensten zugänglich ist. Für den Zugriff auf Azure Cosmos DB-Ressourcen über diese genehmigten Gruppen von Computern und Diensten muss der Aufrufer weiterhin ein gültiges Autorisierungstoken vorlegen.
@@ -109,7 +109,7 @@ Fügen Sie folgenden JSON-Code zu Ihrer Vorlage hinzu, um die IP-Zugriffssteueru
 
 ## <a name="troubleshooting-the-ip-access-control-policy"></a>Problembehandlung für die IP-Access Control-Richtlinie
 ### <a name="portal-operations"></a>Portalvorgänge
-Durch Aktivieren einer IP-Access Control-Richtlinie für Ihr Azure Cosmos DB-Datenbankkonto wird der Zugriff auf das Azure Cosmos DB-Datenbankkonto von Computern außerhalb der konfigurierten Liste der zulässigen IP-Adressbereiche blockiert. Wenn Sie also Vorgänge auf Portaldatenebene wie das Durchsuchen von Sammlungen und das Abfragen von Dokumenten ermöglichen möchten, müssen Sie den Zugriff durch das Azure-Portal auf der Seite **Firewall** im Portal explizit zulassen. 
+Durch Aktivieren einer IP-Access Control-Richtlinie für Ihr Azure Cosmos DB-Datenbankkonto wird der Zugriff auf das Azure Cosmos DB-Datenbankkonto von Computern außerhalb der konfigurierten Liste der zulässigen IP-Adressbereiche blockiert. Wenn Sie also Vorgänge auf Portaldatenebene wie das Durchsuchen von Containern und das Abfragen von Dokumenten ermöglichen möchten, müssen Sie den Zugriff durch das Azure-Portal auf der Seite **Firewall** im Portal explizit zulassen. 
 
 ### <a name="sdk--rest-api"></a>SDK und REST-API
 Aus Sicherheitsgründen wird beim Zugriff über das SDK oder die REST-API von Computern, die in der Zulassungsliste nicht enthalten sind, die generische Antwort „404 Nicht gefunden“ ohne weitere Einzelheiten zurückgegeben. Überprüfen Sie die Liste der zulässigen IP-Adressen, die für Ihr Azure Cosmos DB-Datenbankkonto konfiguriert ist, um sicherzustellen, dass die passende Richtlinienkonfiguration für das Azure Cosmos DB-Datenbankkonto angewendet wird.

@@ -5,12 +5,13 @@
     - name: Was ist Azure DNS?
       href: dns-overview.md
 - name: Schnellstarts
+  expanded: true
   items:
     - name: 'Namensauflösung: Portal'
       href: dns-getstarted-portal.md
-    - name: 'Erstellen einer DNS-Zone und eines Eintrags: PowerShell'
+    - name: 'Namensauflösung: PowerShell'
       href: dns-getstarted-powershell.md
-    - name: 'Erstellen einer DNS-Zone und eines Eintrags: CLI'
+    - name: 'Namensauflösung: CLI'
       href: dns-getstarted-cli.md
 - name: Tutorials
   items:

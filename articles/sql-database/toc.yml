@@ -402,6 +402,8 @@
           href: sql-database-cloud-migrate.md
         - name: Migrieren zur verwalteten Instanz
           href: sql-database-managed-instance-migrate.md
+        - name: Migrieren von TDE zur verwalteten Instanz
+          href: sql-database-managed-instance-migrate-tde-certificate.md
         - name: Verwalten von SQL-Datenbank nach der Migration
           href: sql-database-manage-after-migration.md
     - name: Laden und Verschieben von Daten

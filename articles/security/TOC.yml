@@ -164,6 +164,16 @@
           href: azure-operational-security-checklist.md
 - name: Governance und Einhaltung
   items:
+    - name: FedRAMP
+      items:
+        - name: Datenanalysen
+          href: ./blueprints/fedramp-analytics-overview.md
+        - name: Data Warehouse
+          href: ./blueprints/fedramp-datawarehouse-overview.md
+        - name: IaaS-Webanwendung
+          href: ./blueprints/fedramp-iaaswa-overview.md
+        - name: PaaS-Webanwendung
+          href: ./blueprints/fedramp-paaswa-overview.md
     - name: FFIEC
       items:
         - name: Datenanalysen
@@ -184,20 +194,10 @@
           href: ./blueprints/gdpr-iaaswa-overview.md
         - name: PaaS-Webanwendung
           href: ./blueprints/gdpr-paaswa-overview.md
-    - name: FedRAMP
+    - name: HIPAA/HITRUST
       items:
-        - name: Datenanalysen
-          href: ./blueprints/fedramp-analytics-overview.md
-        - name: Data Warehouse
-          href: ./blueprints/fedramp-datawarehouse-overview.md
-        - name: IaaS-Webanwendung
-          href: ./blueprints/fedramp-iaaswa-overview.md
-        - name: PaaS-Webanwendung
-          href: ./blueprints/fedramp-paaswa-overview.md
-    - name: TIC
-      items:
-        - name: Vertrauenswürdige Internetverbindung mit Azure
-          href: ./compliance/compliance-tic.md
+        - name: Integritätsdaten und KI
+          href: ./blueprints/azure-health.md
     - name: PCI-DSS
       items:
         - name: Datenanalysen
@@ -208,6 +208,10 @@
           href: ./blueprints/pcidss-iaaswa-overview.md
         - name: PaaS-Webanwendung
           href: ./blueprints/pcidss-paaswa-overview.md
+    - name: TIC
+      items:
+        - name: Vertrauenswürdige Internetverbindung mit Azure
+          href: ./compliance/compliance-tic.md
     - name: NHS (Vereinigtes Königreich)
       items:
         - name: Datenanalysen
@@ -222,8 +226,6 @@
       items:
         - name: IaaS-Webanwendung
           href: ./blueprints/ukofficial-iaaswa-overview.md
-    - name: HIPAA-/HITRUST-Gesundheitsdaten und KI
-      href: ./blueprints/azure-health.md
 - name: Whitepaper
   href: security-white-papers.md
 - name: Azure-Sicherheitsdienste

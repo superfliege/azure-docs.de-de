@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/10/2018
+ms.date: 07/03/2018
 ms.author: shlo
-ms.openlocfilehash: c07199887faf073d19007f1ef410c193bbdbf3ee
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: c24bec7366ea62b3dd8f7a301c9d2d62c6dd6c7d
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049365"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859277"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Aktivität „Metadaten abrufen“ in Azure Data Factory
 Die Aktivität „Metadaten abrufen“ kann zum Abrufen von **Metadaten** für alle Daten in Azure Data Factory verwendet werden. Diese Aktivität kann in folgenden Szenarien verwendet werden:
@@ -34,7 +34,7 @@ Die folgende Funktionalität ist in der Ablaufsteuerung verfügbar:
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
-Die Aktivität „Metadaten abrufen“ nutzt ein Dataset als erforderliche Eingabe und gibt Metadateninformationen zurück, die als Ausgabe verfügbar sind. Derzeit werden die folgenden Connectors mit entsprechenden abrufbaren Metadaten unterstützt:
+Die Aktivität „Metadaten abrufen“ nutzt ein Dataset als erforderliche Eingabe und gibt Metadateninformationen zurück, die als Ausgabe verfügbar sind. Derzeit werden die folgenden Connectors mit den entsprechenden abrufbaren Metadaten unterstützt, und die maximale unterstützte Metadatengröße beträgt **1 MB**.
 
 >[!NOTE]
 >Bei der Ausführung der Aktivität „Metadaten abrufen“ für eine selbst gehostete Integration Runtime wird die aktuelle Funktion unter Version 3.6 oder höher unterstützt. 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: 66ee0856851a301a6849b71b64cb904c925ad18d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: acc327bd9fa6828a65243b6d0ad0c6da4b98f48d
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34612213"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857098"
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Diagnoseprotokollierung für Azure Cosmos DB
 
@@ -42,7 +42,7 @@ In diesem Artikel liegt der Schwerpunkt auf dem Azure-Aktivitätsprotokoll, Azur
 
 Das Azure-Aktivitätsprotokoll ist ein Abonnementprotokoll, das Einblicke in Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Das Aktivitätsprotokoll meldet Ereignisse der Steuerungsebene für Ihre Abonnements unter der Kategorie „Administration“. Sie können das Aktivitätsprotokoll verwenden, um Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) zu ermitteln, die für die Ressourcen Ihres Abonnements ausgeführt wurden. Sie können auch den Status des Vorgangs und andere relevante Eigenschaften verstehen. 
 
-Das Aktivitätsprotokoll unterscheidet sich von Diagnoseprotokollen. Das Aktivitätsprotokoll enthält Daten zu den externen Vorgängen an einer Ressource (die _Steuerungsebene_). Im Kontext von Azure Cosmos DB sind Vorgänge auf Steuerungsebene das Erstellen einer Sammlung, Auflisten von Schlüsseln, Löschen von Schlüsseln, Auflisten der Datenbank usw. Diagnoseprotokolle werden von einer Ressource ausgegeben und enthalten Informationen zu den Vorgängen dieser Ressource (der _Datenebene_). Einige Beispiele für Vorgänger der Datenebene im Diagnoseprotokoll sind „Delete“, „Insert“ und „ReadFeed“.
+Das Aktivitätsprotokoll unterscheidet sich von Diagnoseprotokollen. Das Aktivitätsprotokoll enthält Daten zu den externen Vorgängen an einer Ressource (die _Steuerungsebene_). Im Kontext von Azure Cosmos DB sind Vorgänge auf Steuerungsebene das Erstellen eines Containers, Auflisten von Schlüsseln, Löschen von Schlüsseln, Auflisten der Datenbank usw. Diagnoseprotokolle werden von einer Ressource ausgegeben und enthalten Informationen zu den Vorgängen dieser Ressource (der _Datenebene_). Einige Beispiele für Vorgänger der Datenebene im Diagnoseprotokoll sind „Delete“, „Insert“ und „ReadFeed“.
 
 Aktivitätsprotokolle (Vorgänge auf Steuerungsebene) können weitaus umfangreicher sein und die vollständige E-Mail-Adresse des Aufrufers, die IP-Adresse des Aufrufers, den Ressourcennamen, den Vorgangsnamen und die Mandanten-ID usw. enthalten. Das Aktivitätsprotokoll enthält verschiedene [Kategorien](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema) von Daten. Umfassende Informationen zu den Schemas dieser Kategorien finden Sie unter [Ereignisschema des Azure-Aktivitätsprotokolls](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema). Diagnoseprotokolle können jedoch restriktiv sein, da personenbezogene Daten häufig aus diesen Protokollen entfernt werden. Daher ist möglicherweise die IP-Adresse des Aufrufers vorhanden, jedoch wurde der letzte Inhaltsteil entfernt.
 
@@ -354,7 +354,7 @@ Diagnoseprotokolle werden zwei Stunden nach Ausführung des Azure Cosmos DB-Vorg
 <a id="#view-in-loganalytics"></a>
 ## <a name="view-logs-in-log-analytics"></a>Anzeigen von Protokollen in Log Analytics
 
-Wenn Sie beim Aktivieren der Diagnoseprotokollierung die Option **An Log Analytics senden** ausgewählt haben, werden Diagnosedaten aus Ihrer Sammlung innerhalb von zwei Stunden an Log Analytics weitergeleitet. Wenn Sie sofort nach dem Aktivieren der Protokollierung Log Analytics anzeigen, sehen Sie keine Daten. Warten Sie zwei Stunden, und wiederholen Sie den Vorgang. 
+Wenn Sie beim Aktivieren der Diagnoseprotokollierung die Option **An Log Analytics senden** ausgewählt haben, werden Diagnosedaten aus Ihrem Container innerhalb von zwei Stunden an Log Analytics weitergeleitet. Wenn Sie sofort nach dem Aktivieren der Protokollierung Log Analytics anzeigen, sehen Sie keine Daten. Warten Sie zwei Stunden, und wiederholen Sie den Vorgang. 
 
 Bevor Sie Ihre Protokolle anzeigen, sollten Sie überprüfen, ob Ihr Log Analytics-Arbeitsbereich für die Verwendung der neuen Log Analytics-Abfragesprache aktualisiert wurde. Um dies zu überprüfen, öffnen Sie das [Azure-Portal](https://portal.azure.com), wählen Sie ganz links **Log Analytics** aus, und wählen Sie dann den Arbeitsbereichsnamen wie in der folgenden Abbildung dargestellt aus. Die Seite **OMS-Arbeitsbereich** wird angezeigt:
 
@@ -446,7 +446,7 @@ Die folgende Tabelle beschreibt die Inhalte der einzelnen Protokolleinträge.
 | **properties** | – | Die Inhalte dieser Felder werden in den folgenden Zeilen beschrieben. |
 | **activityId** | **activityId_g** | Die eindeutige GUID für den protokollierten Vorgang. |
 | **userAgent** | **userAgent_s** | Eine Zeichenfolge, die den Benutzer-Agent des Clients angibt, der die Anforderung ausführt. Das Format lautet {Name des Benutzer-Agents}/{version}.|
-| **resourceType** | **ResourceType** | Der Typ der Ressource, auf die zugegriffen wird. Bei diesem Wert kann es sich um einen der folgenden Ressourcentypen handeln: Database, Collection, Document, Attachment, User, Permission, StoredProcedure, Trigger, UserDefinedFunction oder Offer. |
+| **resourceType** | **ResourceType** | Der Typ der Ressource, auf die zugegriffen wird. Bei diesem Wert kann es sich um einen der folgenden Ressourcentypen handeln: Database, Container, Document, Attachment, User, Permission, StoredProcedure, Trigger, UserDefinedFunction oder Offer. |
 | **statusCode** | **statusCode_s** | Der Antwortstatus des Vorgangs. |
 | **requestResourceId** | **ResourceId** | Die Ressourcen-ID der Anforderung. Der Wert kann je nach ausgeführtem Vorgang auf databaseRid, collectionRid oder documentRid zeigen.|
 | **clientIpAddress** | **clientIpAddress_s** | Die IP-Adresse des Clients. |

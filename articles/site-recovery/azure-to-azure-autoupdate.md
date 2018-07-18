@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: add80b17c76e7262f55e50cd07d4e9b053cfa1ff
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 81dbb61d696da84febc89563f946581315fdf527
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209830"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37922748"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatische Aktualisierung von Mobility Service in der Replikation zwischen Azure-Standorten
 
@@ -29,6 +29,11 @@ Sobald Sie das Verwalten von Updates durch Site Recovery zulassen, wird ein glob
 
 > [!NOTE]
 > Das Aktivieren von automatischen Updates erfordert keinen Neustart der virtuellen Azure-Computer und hat keinen Einfluss auf eine laufende Replikation.
+
+> [!NOTE]
+> Die Abrechnung für Aufträge, die vom Automatisierungskonto verwendet wird, basiert auf der Anzahl von Minuten, die pro Monat zur Auftragsausführung verwendet wurden. Standardmäßig sind 500 Minuten als kostenlose Einheiten für ein Automatisierungskonto enthalten. Die tägliche Ausführungsdauer der Aufträge reicht von **einigen Sekunden bis zu einer Minute** und ist durch das **kostenlose Guthaben abgedeckt**.
+
+ENTHALTENE KOSTENLOSE EINHEITEN (PRO MONAT)**   PREIS Auftragsausführungszeit    500 Minuten ₹0,14/Minute
 
 ## <a name="enable-automatic-updates"></a>Aktivieren automatischer Updates
 
@@ -64,7 +69,7 @@ Wenn ein Problem mit den automatischen Updates auftritt, werden Sie unter „Kon
 Falls Sie vergeblich versucht haben, automatische Updates zu aktivieren, lesen Sie die folgenden Informationen zur Problembehandlung.
 
 **Fehler**: Sie sind nicht berechtigt, ein ausführendes Azure-Konto (Dienstprinzipal) zu erstellen und dem Dienstprinzipal die Rolle „Mitwirkender“ zu gewähren. 
-- Empfohlene Aktion: Stellen Sie sicher, dass das angemeldete Konto dem „Mitwirkenden“ zugewiesen ist, und wiederholen Sie den Vorgang.
+- Empfohlene Aktion: Stellen Sie sicher, dass das angemeldete Konto dem „Mitwirkenden“ zugewiesen ist, und wiederholen Sie den Vorgang. Weitere Informationen zum Zuweisen der richtigen Berechtigungen finden Sie in [diesem Dokument](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions).
  
 Wenn automatische Updates eingeschaltet sind, können die meisten Probleme durch den Site Recovery-Dienst bereinigt werden, indem Sie auf die Schaltfläche **Reparatur** klicken.
 

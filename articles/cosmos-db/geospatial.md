@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/20/2017
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 893b985514f4c812da673a90fc40148e8ac9ce81
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 74824af6f17a6c1d2638c8604edd38ffa419d607
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611366"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858118"
 ---
 # <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Arbeiten mit Geodaten und GeoJSON-Standortdaten in Azure Cosmos DB
 Dieser Artikel bietet eine Einführung in die Funktionalität für Geodaten in [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Nach dem Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
@@ -100,7 +100,7 @@ Da die Form der Erde unregelmäßig ist, werden Koordinaten von Geodaten in zahl
 Das am häufigsten verwendete KRS ist derzeit das World Geodetic System [WGS-84](http://earth-info.nga.mil/GandG/wgs84/). GPS-Geräte und viele Kartendienste einschließlich Google Maps- und Bing Maps-APIs verwenden WGS-84. Azure Cosmos DB unterstützt ausschließlich die Indizierung und Abfrage von Geodaten mit dem Koordinatenreferenzsystem WGS-84. 
 
 ## <a name="creating-documents-with-spatial-data"></a>Erstellen von Dokumenten mit räumlichen Daten
-Beim Erstellen von Dokumenten, die GeoJSON-Werte enthalten, werden diese automatisch mit einem räumlichen Index in Übereinstimmung mit der Richtlinie für die Indizierung der Sammlung indiziert. Wenn Sie mit einem Azure Cosmos DB SDK in einer dynamisch typisierten Sprache wie Python oder Node.js arbeiten, müssen Sie gültige GeoJSON erstellen.
+Beim Erstellen von Dokumenten, die GeoJSON-Werte enthalten, werden diese automatisch mit einem räumlichen Index in Übereinstimmung mit der Richtlinie für die Indizierung des Containers indiziert. Wenn Sie mit einem Azure Cosmos DB SDK in einer dynamisch typisierten Sprache wie Python oder Node.js arbeiten, müssen Sie gültige GeoJSON erstellen.
 
 **Erstellen von Dokumenten mit Geodaten in Node.js**
 

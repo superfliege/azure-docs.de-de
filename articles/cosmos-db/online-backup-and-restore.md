@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: 19f61893eb9250fbd5bbf930e98aa89ac74fd0c3
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: cf4579705e5910f62ca07223cb16405140926119
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37028735"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859199"
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatische Onlinesicherung und -wiederherstellung mit Azure Cosmos DB
 Azure Cosmos DB erstellt in regelmäßigen Abständen automatisch Sicherungen aller Daten. Die automatischen Sicherungen erfolgen ohne Beeinträchtigung der Leistung oder Verfügbarkeit des Betriebs Ihrer Datenbanken. Alle Sicherungskopien werden in einem anderen Speicherdienst getrennt gespeichert, und diese Sicherungen werden zum besseren Schutz vor regionalen Ausfällen global repliziert. Die automatischen Sicherungen sind für den Fall vorgesehen, dass Sie Ihren Cosmos DB-Container versehentlich löschen und später eine Daten- oder Notfallwiederherstellungslösung benötigen sollten.  
@@ -45,7 +45,7 @@ Das folgende Bild veranschaulicht regelmäßige vollständige Sicherungen aller 
 ![Regelmäßige vollständige Sicherungen aller Cosmos DB-Entitäten in georedundantem Azure Storage](./media/online-backup-and-restore/automatic-backup.png)
 
 ## <a name="backup-retention-period"></a>Aufbewahrungszeitraum der Sicherung
-Wie oben beschrieben, erstellt Azure Cosmos DB alle vier Stunden Momentaufnahmen auf Partitionsebene. Es werden jeweils nur die letzten zwei Momentaufnahmen aufbewahrt. Aber wenn die Sammlung bzw. Datenbank gelöscht wird, bewahrt Azure Cosmos DB die vorhandenen Momentaufnahmen für alle gelöschten Partitionen innerhalb der angegebenen Sammlung bzw. Datenbank 30 Tage lang auf.
+Wie oben beschrieben, erstellt Azure Cosmos DB alle vier Stunden Momentaufnahmen auf Partitionsebene. Es werden jeweils nur die letzten zwei Momentaufnahmen aufbewahrt. Aber wenn der Container bzw. die Datenbank gelöscht wird, bewahrt Azure Cosmos DB die vorhandenen Momentaufnahmen für alle gelöschten Partitionen innerhalb des angegebenen Containers bzw. der Datenbank 30 Tage lang auf.
 
 Wenn Sie bei Verwendung der SQL-API eigene Momentaufnahmen beibehalten möchten, können Sie die Option zum Export in eine JSON-Datei im [Datenmigrationstool](import-data.md#export-to-json-file) von Azure Cosmos DB verwenden, um zusätzliche Sicherungen zu planen.
 
@@ -55,21 +55,21 @@ Wenn Sie bei Verwendung der SQL-API eigene Momentaufnahmen beibehalten möchten,
 
 ## <a name="restoring-a-database-from-an-online-backup"></a>Wiederherstellen einer Datenbank von einer Onlinesicherung
 
-Falls Sie Ihre Datenbank oder -sammlung versehentlich löschen, können Sie [ein Supportticket anfordern](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) oder den [Azure Support bitten](https://azure.microsoft.com/support/options/), die Daten aus der letzten automatischen Sicherung wiederherzustellen. Der Azure-Support steht nur für ausgewählte Tarife wie Standard und Developer zur Verfügung. Für den Basic-Tarif ist kein Support verfügbar. Weitere Informationen zu anderen Supportplänen finden Sie auf der Seite [Azure-Supportpläne](https://azure.microsoft.com/support/plans/). 
+Falls Sie Ihre Datenbank oder Ihren Container versehentlich löschen, können Sie ein [Supportticket erstellen](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) oder sich [an den Azure Support wenden](https://azure.microsoft.com/support/options/), um die Daten aus der letzten automatischen Sicherung wiederherstellen zu lassen. Der Azure-Support steht nur für ausgewählte Tarife wie Standard und Developer zur Verfügung. Für den Basic-Tarif ist kein Support verfügbar. Weitere Informationen zu anderen Supportplänen finden Sie auf der Seite [Azure-Supportpläne](https://azure.microsoft.com/support/plans/). 
 
-Wenn Sie die Datenbank aufgrund einer Datenbeschädigung wiederherstellen müssen (einschließlich Fälle, bei denen Dokumente innerhalb einer Sammlung gelöscht werden), erfahren Sie unter [Umgang mit Datenbeschädigung](#handling-data-corruption), wie Sie zusätzliche Schritte ausführen, um zu verhindern, dass die beschädigten Daten in die vorhandenen Sicherungen überschrieben werden. Für die Wiederherstellung einer bestimmten Momentaufnahme Ihrer Sicherung setzt Cosmos DB voraus, dass die Daten für die Dauer des Sicherungszyklus dieser Momentaufnahme verfügbar waren.
+Wenn Sie die Datenbank aufgrund einer Datenbeschädigung wiederherstellen müssen (einschließlich Fälle, bei denen Dokumente innerhalb eines Containers gelöscht werden), helfen Ihnen die Informationen unter [Umgang mit Datenbeschädigung](#handling-data-corruption) weiter. Sie müssen zusätzliche Schritte ausführen, um zu verhindern, dass die vorhandenen Sicherungen durch die beschädigten Daten überschrieben werden. Für die Wiederherstellung einer bestimmten Momentaufnahme Ihrer Sicherung setzt Cosmos DB voraus, dass die Daten für die Dauer des Sicherungszyklus dieser Momentaufnahme verfügbar waren.
 
 ## <a name="handling-data-corruption"></a>Umgang mit Datenbeschädigung
 
 Azure Cosmos DB bewahrt die letzten beiden Sicherungen jeder Partition im Datenbankkonto auf. Dieses Modell funktioniert gut, wenn Sie einen Container (Sammlung von Dokumenten, Diagramm, Tabelle) oder eine Datenbank versehentlich gelöscht haben, da eine der letzten Versionen wiederhergestellt werden kann. Wenn jedoch eine Datenbeschädigung auftritt, ist Azure Cosmos DB möglicherweise nicht über die Datenbeschädigung informiert, und diese könnte in die vorhandenen Sicherungen überschrieben worden sein. 
 
-Sobald eine Beschädigung erkannt wird, können Sie sich mit Konto- und Sammlungsinformationen und dem ungefähren Zeitpunkt der Beschädigung an den Kundensupport wenden. Eine weitere Möglichkeit für Benutzer bei einer Datenbeschädigung (bzw. fehlerhaften Löschung/Aktualisierung) ist das Löschen des beschädigten Containers (Sammlung/Graph/Tabelle), damit Sicherungen vor dem Überschreiben durch beschädigte Daten geschützt sind.  
+Sobald eine Beschädigung erkannt wird, können Sie sich mit Datenbankkonto- und Containerinformationen und dem ungefähren Zeitpunkt der Beschädigung an den Kundensupport wenden. Eine weitere Möglichkeit für Benutzer bei einer Datenbeschädigung (bzw. fehlerhaften Löschung/Aktualisierung) ist das Löschen des beschädigten Containers (Sammlung/Graph/Tabelle), damit Sicherungen vor dem Überschreiben durch beschädigte Daten geschützt sind.  
 
 In der folgenden Abbildung ist die Erstellung der Supportanfrage für die Containerwiederherstellung (Sammlung/Graph/Tabelle) über das Azure-Portal dargestellt, falls Daten in einem Container versehentlich gelöscht oder aktualisiert wurden.
 
-![Wiederherstellen einer Sammlung nach dem fehlerhaften Aktualisieren oder Löschen von Daten in Cosmos DB](./media/online-backup-and-restore/backup-restore-support.png)
+![Wiederherstellen eines Containers nach dem fehlerhaften Aktualisieren oder Löschen von Daten in Cosmos DB](./media/online-backup-and-restore/backup-restore-support.png)
 
-Wenn die Wiederherstellung für diese Art von Szenarien durchgeführt wird, werden Daten in einem anderen Konto (mit dem Suffix „-restored“) und einer anderen Sammlung wiederhergestellt. Dies ist keine direkte Wiederherstellung, damit Kunden die Möglichkeit haben, die Daten zu überprüfen und wie gewünscht zu verschieben. Die wiederhergestellte Sammlung befindet sich in derselben Region und verfügt über dieselben RUs und Indizierungsrichtlinien. 
+Wenn die Wiederherstellung für diese Art von Szenarien durchgeführt wird, werden Daten in einem anderen Konto (mit dem Suffix „-restored“) und einem anderen Container wiederhergestellt. Dies ist keine direkte Wiederherstellung, damit Kunden die Möglichkeit haben, die Daten zu überprüfen und wie gewünscht zu verschieben. Der wiederhergestellte Container befindet sich in derselben Region und verfügt über dieselben RUs und Indizierungsrichtlinien. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

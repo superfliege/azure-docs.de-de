@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9e60a69e69f13dd6b8b34fafaa384f032f2ece11
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 20edcd5e8e3ec3a9d3d294f7a81a2e97b4958f50
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611822"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857183"
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Einstellbare Datenkonsistenzebenen in Azure Cosmos DB
 Azure Cosmos DB ist für jedes Datenmodell von Grund auf im Hinblick auf eine globale Verteilung konzipiert. Es bietet planbare Garantien für geringe Wartezeiten sowie mehrere klar definierte gelockerte Konsistenzmodelle. Azure Cosmos DB bietet derzeit fünf Konsistenzebenen: Stark, Begrenzte Veraltung, Sitzung, Konsistentes Präfix und Letztlich. „Begrenzte Veraltung“, „Sitzung“, „Präfixkonsistenz“ und „Letztlich“ werden als gelockerte Konsistenzmodelle bezeichnet, da sie weniger Konsistenz bieten als „Stark“ (das Modell mit der höchstmöglichen Konsistenz). 
@@ -58,7 +58,7 @@ Azure Cosmos-Datenbank bietet umfassende [SLAs](https://azure.microsoft.com/supp
 Die Granularität der Konsistenz wird auf eine einzelne Benutzeranforderung beschränkt. Eine Schreibanforderung kann einer Transaktion des Typs „Einfügen“, „Ersetzen“, „Einfügen/Aktualisieren (Upsert)“ oder „Löschen“ entsprechen. Wie bei Schreibvorgängen ist eine Lese-/Abfragetransaktion auch auf eine einzelne Benutzeranforderung beschränkt. Der Benutzer muss ggf. ein großes Resultset paginieren, das sich über mehrere Partitionen erstreckt, doch jede Lesetransaktion ist auf eine einzelne Seite beschränkt und erfolgt innerhalb einer einzelnen Partition.
 
 ## <a name="consistency-levels"></a>Konsistenzebenen
-Sie können eine Standardkonsistenzebene für Ihr Datenbankkonto konfigurieren, die für alle Sammlungen (und Datenbanken) in Ihrem Cosmos DB-Konto gilt. Standardmäßig wird für alle Lesevorgänge und Abfragen für benutzerdefinierte Ressourcen die Standardkonsistenzebene verwendet, die für das Datenbankkonto festgelegt ist. Sie können die Konsistenzebene einer bestimmten Lese-/Abfrageanforderung mithilfe der einzelnen unterstützten APIs lockern. Vom Azure Cosmos DB-Replikationsprotokoll werden fünf Arten von Konsistenzebenen unterstützt, die (wie in diesem Abschnitt beschrieben) einen klaren Kompromiss zwischen bestimmten Konsistenzgarantien und Leistung bieten.
+Sie können eine Standardkonsistenzebene für Ihr Datenbankkonto konfigurieren, die für alle Container (und Datenbanken) in Ihrem Cosmos DB-Konto gilt. Standardmäßig wird für alle Lesevorgänge und Abfragen für benutzerdefinierte Ressourcen die Standardkonsistenzebene verwendet, die für das Datenbankkonto festgelegt ist. Sie können die Konsistenzebene einer bestimmten Lese-/Abfrageanforderung mithilfe der einzelnen unterstützten APIs lockern. Vom Azure Cosmos DB-Replikationsprotokoll werden fünf Arten von Konsistenzebenen unterstützt, die (wie in diesem Abschnitt beschrieben) einen klaren Kompromiss zwischen bestimmten Konsistenzgarantien und Leistung bieten.
 
 <a id="strong"></a>
 **Stark**: 
@@ -112,7 +112,7 @@ Sie können eine Standardkonsistenzebene für Ihr Datenbankkonto konfigurieren, 
     ![Screenshot mit dem Symbol „Einstellungen“ und dem Eintrag „Standardkonsistenz“](./media/consistency-levels/database-consistency-level-1.png)
 
 ## <a name="consistency-levels-for-queries"></a>Konsistenzebenen für Abfragen
-Bei benutzerdefinierten Ressourcen entspricht die Konsistenzebene für Abfragen standardmäßig der Konsistenzebene für Lesevorgänge. Der Index wird bei jedem Einfügen, Ersetzen oder Löschen eines Dokuments eines Elements im Cosmos DB-Container standardmäßig synchron aktualisiert. Auf diese Weise können die Abfragen dieselbe Konsistenzebene wie die von Lesevorgängen von Datenpunkten berücksichtigen. Obwohl Azure Cosmos DB für Schreibvorgänge optimiert ist und beständige Mengen von Schreibvorgängen, die synchrone Indexwartung und Bereitstellung konsistenter Abfragen unterstützt, können Sie bestimmte Sammlungen so konfigurieren, dass ihr Index verzögert aktualisiert wird. Die verzögerte Indizierung steigert die Schreibleistung noch weiter und ist ideal für Sammelerfassungsszenarien mit einer starken Lesearbeitsauslastung geeignet.  
+Bei benutzerdefinierten Ressourcen entspricht die Konsistenzebene für Abfragen standardmäßig der Konsistenzebene für Lesevorgänge. Der Index wird bei jedem Einfügen, Ersetzen oder Löschen eines Dokuments eines Elements im Cosmos DB-Container standardmäßig synchron aktualisiert. Auf diese Weise können die Abfragen dieselbe Konsistenzebene wie die von Lesevorgängen von Datenpunkten berücksichtigen. Obwohl Azure Cosmos DB für Schreibvorgänge optimiert ist und beständige Mengen von Schreibvorgängen, die synchrone Indexwartung und Bereitstellung konsistenter Abfragen unterstützt, können Sie bestimmte Container so konfigurieren, dass ihr Index verzögert aktualisiert wird. Die verzögerte Indizierung steigert die Schreibleistung noch weiter und ist ideal für Sammelerfassungsszenarien mit einer starken Lesearbeitsauslastung geeignet.  
 
 | Indizierungsmodus | Lesevorgänge | Abfragen |
 | --- | --- | --- |

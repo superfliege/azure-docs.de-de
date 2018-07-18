@@ -4,15 +4,15 @@ description: Verwenden Sie diesen Artikel zum Planen der Kapazität und der Skal
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
+ms.date: 07/06/2018
 ms.topic: conceptual
-ms.date: 06/20/2018
 ms.author: rayne
-ms.openlocfilehash: 30e4534fbc235a228ac887ddc3336f09909b4fa6
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 905798acd5836c31953714d7984cfb19f16cecab
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287353"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920796"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-replication-with-azure-site-recovery"></a>Planen der Kapazität und Skalierung der VMware-Replikation mit Azure Site Recovery
 
@@ -107,24 +107,10 @@ Sie können auch das Cmdlet [Set-OBMachineSetting](https://technet.microsoft.com
 
 ## <a name="deploy-additional-process-servers"></a>Bereitstellen zusätzlicher Prozessserver
 
-Wenn Sie Ihre Bereitstellung über 200 Quellcomputer horizontal hochskalieren müssen oder Ihre gesamte tägliche Änderungsrate 2 TB übersteigt, benötigen Sie zusätzliche Prozessserver zur Bewältigung des Datenverkehrsaufkommens. Befolgen Sie diese Anweisungen, um den Prozessserver einzurichten. Nachdem Sie den Prozessserver eingerichtet haben, migrieren Sie Quellcomputer, damit diese ihn verwenden können.
-
-1. Klicken Sie unter **Site Recovery-Server** auf den Konfigurationsserver und anschließend auf **Prozessserver**.
-
-    ![Screenshot der Option „Site Recovery-Server“ zum Hinzufügen eines Prozessservers](./media/site-recovery-vmware-to-azure/migrate-ps1.png)
-2. Klicken Sie unter **Servertyp** auf **Prozessserver (lokal)**.
-
-    ![Screenshot des Dialogfelds „Prozessserver“](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
-3. Laden Sie die Datei für das einheitliche Setup von Site Recovery herunter, und führen Sie sie aus, um den Prozessserver zu installieren. Damit wird sie auch im Tresor registriert.
-4. Wählen Sie unter **Before you begin** die Option **Add additional process servers to scale out deployment** (Weitere Prozessserver zum horizontalen Hochskalieren der Bereitstellung hinzufügen) aus.
-5. Schließen Sie den Assistenten genau wie beim [Einrichten](#step-2-set-up-the-source-environment) des Konfigurationsservers ab.
-
-    ![Screenshot des Assistenten für das einheitliche Setup für Azure Site Recovery](./media/site-recovery-vmware-to-azure/add-ps1.png)
-6. Geben Sie unter **Configuration Server Details** die IP-Adresse des Konfigurationsservers und die Passphrase an. Um die Passphrase abzurufen, führen Sie auf dem Konfigurationsserver **[Site Recovery-Installationsordner]\home\svsystems\bin\genpassphrase.exe –n** aus.
-
-    ![Screenshot der Seite „Konfigurationsserverdetails“](./media/site-recovery-vmware-to-azure/add-ps2.png)
+Wenn Sie Ihre Bereitstellung über 200 Quellcomputer horizontal hochskalieren müssen oder Ihre gesamte tägliche Änderungsrate 2 TB übersteigt, benötigen Sie zusätzliche Prozessserver zur Bewältigung des Datenverkehrsaufkommens. Befolgen Sie Anleitung in [diesem Artikel](vmware-azure-set-up-process-server-scale.md), um den Prozessserver einzurichten. Nachdem Sie den Prozessserver eingerichtet haben, können Sie Quellcomputer migrieren, damit diese ihn verwenden können.
 
 ### <a name="migrate-machines-to-use-the-new-process-server"></a>Migrieren der Computer für die Verwendung des neuen Prozessservers
+
 1. Klicken Sie unter **Einstellungen** > **Site Recovery servers** auf den Konfigurationsserver, und erweitern Sie anschließend **Prozessserver**.
 
     ![Screenshot des Dialogfelds „Prozessserver“](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
@@ -133,6 +119,30 @@ Wenn Sie Ihre Bereitstellung über 200 Quellcomputer horizontal hochskalieren m�
     ![Screenshot des Dialogfelds „Konfigurationsserver“](./media/site-recovery-vmware-to-azure/migrate-ps3.png)
 3. Wählen Sie unter **Zielprozessserver auswählen** den neuen Prozessserver aus, den Sie verwenden möchten, und wählen Sie anschließend die virtuellen Computer aus, für die der Server zuständig sein wird. Klicken Sie auf das Informationssymbol, um Informationen über den Server zu erhalten. Der durchschnittliche zum Replizieren jedes ausgewählten virtuellen Computers auf den neuen Prozessserver benötigte Speicherplatz wird angezeigt, um Sie bei Lastenentscheidungen zu unterstützen. Klicken Sie auf das Häkchen, um mit dem Replizieren auf den neuen Prozessserver zu beginnen.
 
+## <a name="deploy-additional-master-target-servers"></a>Bereitstellen von zusätzlichen Masterzielservern
+
+Sie benötigen in den folgenden Szenarien zusätzliche Masterzielserver:
+
+1. Wenn Sie versuchen, einen Linux-basierten virtuellen Computer zu schützen
+2. Wenn der auf dem Konfigurationsserver verfügbare Masterzielserver keinen Zugriff auf den Datenspeicher der VM hat
+3. Wenn die Gesamtzahl von Datenträgern auf dem Masterzielserver (Anzahl von lokalen Datenträgern auf dem Server plus zu schützende Datenträger) höher als 60 ist
+
+[Klicken Sie hier](vmware-azure-install-linux-master-target.md), um einen neuen Masterzielserver für den **Linux-basierten virtuellen Computer** hinzuzufügen.
+
+Befolgen Sie für **Windows-basierte virtuelle Computer** die unten angegebene Anleitung.
+
+1. Navigieren Sie zu **Recovery Services-Tresor** > **Site Recovery-Infrastruktur** > **Konfigurationsserver**.
+2. Klicken Sie auf den erforderlichen Konfigurationsserver und dann auf **+Masterzielserver**.![add-master-target-server.png](media/site-recovery-plan-capacity-vmware/add-master-target-server.png)
+3. Laden Sie das einheitliche Setup herunter, und führen Sie es auf der VM aus, um den Masterzielserver einzurichten.
+4. Wählen Sie **Install master target** > **Next** (Masterziel installieren > Weiter). ![choose-MT.PNG](media/site-recovery-plan-capacity-vmware/choose-MT.PNG)
+5. Wählen Sie den Standardspeicherort für die Installation, und klicken Sie auf **Installieren**. ![MT-installation](media/site-recovery-plan-capacity-vmware/MT-installation.PNG)
+6. Klicken Sie auf **Proceed to Configuration** (Mit der Konfiguration fortfahren), um das Masterziel beim Konfigurationsserver zu registrieren. ![MT-proceed-configuration.PNG](media/site-recovery-plan-capacity-vmware/MT-proceed-configuration.PNG)
+7. Geben Sie die IP-Adresse des Konfigurationsservers und die Passphrase ein. [Klicken Sie hier](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase), um zu erfahren, wie Sie eine Passphrase generieren.![cs-ip-passphrase](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
+8. Klicken Sie auf **Registrieren**, und klicken Sie nach der Registrierung auf **Fertig stellen**.
+9. Nach der erfolgreichen Registrierung ist dieser Server im Portal unter **Recovery Services-Tresor** > **Site Recovery-Infrastruktur** > **Konfigurationsserver** als Masterzielserver des entsprechenden Konfigurationsservers aufgeführt.
+
+ >[!NOTE]
+ >Sie können auch [hier](https://aka.ms/latestmobsvc) die aktuelle Version des einheitlichen Setups für den Masterzielserver für Windows herunterladen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

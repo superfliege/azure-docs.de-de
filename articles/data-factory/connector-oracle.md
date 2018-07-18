@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 6a232787793f9f4992a4dece821ae0bcc9059afc
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 5039399ac875add02319e1a745d99344956c7bee
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055370"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37860213"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Oracle mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -40,7 +40,7 @@ Dieser Oracle-Connector unterstützt insbesondere die folgenden Oracle-Datenbank
 - Oracle 8i R3 (8.1.7)
 
 > [!Note]
-> Oracle-Proxyserver werden nicht unterstützt.
+> Der Oracle-Proxyserver wird nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -61,6 +61,9 @@ Die folgenden Eigenschaften werden für den mit Oracle verknüpften Dienst unter
 | type | Die type-Eigenschaft muss auf **Oracle** festgelegt werden. | Ja |
 | connectionString | Gibt die Informationen an, die zum Herstellen einer Verbindung mit der Oracle-Datenbankinstanz erforderlich sind. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md).<br><br>**Unterstützter Verbindungstyp**: Sie können **Oracle SID** oder **Oracle-Dienstname** zur Identifizierung Ihrer Datenbank verwenden:<br>– Wenn Sie die SID verwenden: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Wenn Sie den Dienstnamen verwenden: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Ja |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
+
+>[!TIP]
+>Wenn der Fehler „ORA-01025: UPI parameter out of range“ angezeigt wird und Sie die Oracle-Version 8i nutzen, können Sie Ihrer Verbindungszeichenfolge den Zusatz `WireProtocolMode=1` hinzufügen und den Vorgang wiederholen.
 
 **Beispiel:**
 

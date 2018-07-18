@@ -10,27 +10,27 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 678c538a5d672826f74235d4ac415fccf5de13fe
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 84355453a5cb8d8f42abdcbde5432651c9c035b0
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635677"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856289"
 ---
 # <a name="save-iot-hub-messages-that-contain-sensor-data-to-your-azure-blob-storage"></a>Speichern von IoT Hub-Nachrichten mit Sensordaten in Azure Blob Storage
 
-![Lückenloses Diagramm](media/iot-hub-store-data-in-azure-table-storage/1_route-to-storage.png)
+![Lückenloses Diagramm](./media/iot-hub-store-data-in-azure-table-storage/1_route-to-storage.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
 ## <a name="what-you-learn"></a>Lerninhalt
 
-Sie erfahren, wie Sie ein Azure-Speicherkonto und eine Azure-Funktions-App zum Speichern von IoT Hub-Nachrichten in Ihrem Blob-Speicher erstellen.
+Sie erfahren, wie Sie ein Azure-Speicherkonto und eine Azure-Funktions-App zum Speichern von IoT Hub-Nachrichten in Azure-Blobspeicher erstellen.
 
 ## <a name="what-you-do"></a>Aufgaben
 
 - Erstellen eines Azure-Speicherkontos
-- Bereiten Sie Ihren IoT Hub zum Weiterleiten von Nachrichten an den Speicher vor.
+- Einrichten Ihres IoT Hub zum Weiterleiten von Nachrichten an den Speicher
 
 ## <a name="what-you-need"></a>Voraussetzungen
 
@@ -41,13 +41,25 @@ Sie erfahren, wie Sie ein Azure-Speicherkonto und eine Azure-Funktions-App zum S
 
 ## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Ressource erstellen** > **Storage** > **Speicherkonto** > **Erstellen**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Ressource erstellen** > **Storage** > **Speicherkonto**.
 
 2. Geben Sie die erforderlichen Informationen für das Speicherkonto ein:
 
-   ![Erstellen eines Speicherkontos im Azure-Portal](media\iot-hub-store-data-in-azure-table-storage\1_azure-portal-create-storage-account.png)
+   ![Erstellen eines Speicherkontos im Azure-Portal](./media/iot-hub-store-data-in-azure-table-storage/1_azure-portal-create-storage-account.png)
 
    * **Name**: Der Name des Speicherkontos. Der Name muss global eindeutig sein.
+
+   * **Kontoart**: Wählen Sie `Storage (general purpose v1)`.
+
+   * **Standort**: Wählen Sie denselben Standort, der für Ihren IoT Hub verwendet wird.
+
+   * **Replikation**: Wählen Sie `Locally-redundant storage (LRS)`.
+
+   * **Leistung**: Wählen Sie `Standard`.
+
+   * **Sichere Übertragung erforderlich**: Wählen Sie `Disabled`.
+
+   * **Abonnement**: Wählen Sie Ihr Azure-Abonnement aus.
 
    * **Ressourcengruppe**: Verwenden Sie dieselbe Ressourcengruppe wie für Ihren IoT Hub.
 
@@ -61,15 +73,25 @@ IoT Hub unterstützt nativ das Weiterleiten von Nachrichten an den Azure-Speiche
 
 ### <a name="add-storage-as-a-custom-endpoint"></a>Hinzufügen von Speicher als benutzerdefinierter Endpunkt
 
-Navigieren Sie im Azure-Portal zu Ihrem IoT Hub. Klicken Sie auf **Endpunkte** > **Hinzufügen**. Benennen Sie den Endpunkt, und wählen Sie **Azure-Speichercontainer** als Typ des Endpunkts. Verwenden Sie die Auswahl, um das Speicherkonto auszuwählen, das Sie im vorherigen Abschnitt erstellt haben. Erstellen Sie einen Speichercontainer, wählen Sie ihn aus, und klicken Sie auf **OK**.
+1. Navigieren Sie im Azure-Portal zu Ihrem IoT Hub. 
 
-  ![Erstellen eines benutzerdefinierten Endpunkts in IoT Hub](media\iot-hub-store-data-in-azure-table-storage\2_custom-storage-endpoint.png)
+2. Klicken Sie auf **Endpunkte** > **Hinzufügen**. 
+
+3. Benennen Sie den Endpunkt, und wählen Sie **Azure-Speichercontainer** als Typ des Endpunkts. 
+
+4. Verwenden Sie die Auswahl, um das Speicherkonto auszuwählen, das Sie im vorherigen Abschnitt erstellt haben. Erstellen Sie einen Speichercontainer, wählen Sie ihn aus, und klicken Sie auf **OK**.
+
+   ![Erstellen eines benutzerdefinierten Endpunkts in IoT Hub](./media/iot-hub-store-data-in-azure-table-storage/2_custom-storage-endpoint.png)
 
 ### <a name="add-a-route-to-route-data-to-storage"></a>Hinzufügen einer Route zum Weiterleiten von Daten an den Speicher
 
-Klicken Sie auf **Routen** > **Hinzufügen**, und geben Sie einen Namen für die Route ein. Wählen Sie **Gerätemeldungen** als Datenquelle aus, und wählen Sie den Speicherendpunkt, den Sie gerade erstellt haben, als Endpunkt in der Route aus. Geben Sie `true` als Abfragezeichenfolge ein, und klicken Sie dann auf **Speichern**.
+1. Klicken Sie auf **Routen** > **Hinzufügen**, und geben Sie einen Namen für die Route ein. 
 
-  ![Erstellen einer Route in IoT Hub](media\iot-hub-store-data-in-azure-table-storage\3_create-route.png)
+2. Wählen Sie **Gerätemeldungen** als Datenquelle aus, und wählen Sie den Speicherendpunkt, den Sie gerade erstellt haben, als Endpunkt in der Route aus. 
+
+3. Geben Sie `true` als Abfragezeichenfolge ein, und klicken Sie dann auf **Speichern**.
+
+   ![Erstellen einer Route in IoT Hub](./media/iot-hub-store-data-in-azure-table-storage/3_create-route.png)
   
 ### <a name="add-a-route-for-hot-path-telemetry-optional"></a>Hinzufügen einer Route für Langsamster-Pfad-Telemetrie (optional)
 
@@ -78,9 +100,13 @@ Standardmäßig leitet IoT Hub alle Nachrichten, die nicht mit anderen Routen ü
 > [!NOTE]
 > Sie können diesen Schritt überspringen, wenn Sie keine zusätzliche Verarbeitung Ihrer Telemetrienachrichten ausführen.
 
-Klicken Sie im Bereich „Routen“ auf **Hinzufügen**, und geben Sie einen Namen für die Route ein. Wählen Sie **Gerätemeldungen** als Datenquelle und **Ereignisse** als Endpunkt aus. Geben Sie `true` als Abfragezeichenfolge ein, und klicken Sie dann auf **Speichern**.
+1. Klicken Sie im Bereich „Routen“ auf **Hinzufügen**, und geben Sie einen Namen für die Route ein. 
 
-  ![Erstellen einer Langsamster-Pfad-Route in IoT Hub](media\iot-hub-store-data-in-azure-table-storage\4_hot-path-route.png)
+2. Wählen Sie **Gerätemeldungen** als Datenquelle und **Ereignisse** als Endpunkt aus. 
+
+3. Geben Sie `true` als Abfragezeichenfolge ein, und klicken Sie dann auf **Speichern**.
+
+  ![Erstellen einer Langsamster-Pfad-Route in IoT Hub](./media/iot-hub-store-data-in-azure-table-storage/4_hot-path-route.png)
 
 ## <a name="verify-your-message-in-your-storage-container"></a>Überprüfen der Nachricht in Ihrem Speichercontainer
 
@@ -93,6 +119,41 @@ Klicken Sie im Bereich „Routen“ auf **Hinzufügen**, und geben Sie einen Nam
 4. Klicken Sie auf Ihr Azure-Abonnement > **Speicherkonten** > Ihr Speicherkonto > **Blobcontainer** > Ihr Container.
 
    Der Blobcontainer sollte protokollierte Nachrichten enthalten, die von Ihrem Gerät an Ihren IoT Hub gesendet wurden.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen 
+
+In diesem Tutorial haben Sie ein Speicherkonto und anschließend die Weiterleitung für Nachrichten vom IoT Hub hinzugefügt, damit diese in das Speicherkonto geschrieben werden. Zum Bereinigen der erstellten Ressourcen entfernen Sie die Weiterleitungsinformationen und löschen dann das Speicherkonto. 
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+
+2. Klicken Sie auf **Ressourcengruppen**, und wählen Sie die von Ihnen verwendete Ressourcengruppe aus. Die Liste mit den Ressourcen der Gruppe wird angezeigt. 
+
+   > [!NOTE]
+   > Wenn Sie alle Ressourcen der Ressourcengruppe entfernen möchten, klicken Sie auf **Löschen**, um die Ressourcengruppe zu löschen, und befolgen Sie dann die Anleitung. Der gesamte Inhalt der Ressourcengruppe wird entfernt. Sie haben die Bereinigung hiermit abgeschlossen und können mit dem nächsten Abschnitt fortfahren.
+
+3. Klicken Sie auf den IoT Hub, den Sie für dieses Tutorial verwendet haben. 
+
+4. Klicken Sie im IoT Hub-Bereich auf **Routen**. Klicken Sie auf das Kontrollkästchen neben der Routingregel, die Sie hinzugefügt haben, und klicken Sie dann auf **Löschen**. Klicken Sie auf **Ja**, wenn die Aufforderung zum Löschen dieser Route angezeigt wird.
+
+   ![Entfernen der Routingregel](./media/iot-hub-store-data-in-azure-table-storage/cleanup-remove-routing.png)
+
+   Schließen Sie den Bereich „Routing“. Sie gelangen zurück zum Bereich „Ressourcengruppe“.
+
+5. Klicken Sie erneut auf den IoT Hub. 
+
+6. Klicken Sie im Bereich „IoT Hub“ auf **Endpunkte**. Klicken Sie auf das Kontrollkästchen neben dem Endpunkt, den Sie für den Speichercontainer hinzugefügt haben, und klicken Sie anschließend auf **Löschen**. Klicken Sie auf **Ja**, wenn die Aufforderung zum Löschen des ausgewählten Endpunkts angezeigt wird.
+
+    ![Entfernen des Endpunkts](./media/iot-hub-store-data-in-azure-table-storage/cleanup-remove-endpoint.png)
+
+    Schließen Sie den Bereich „Endpunkte“. Sie gelangen zurück zum Bereich „Ressourcengruppe“. 
+
+7.  Klicken Sie auf das Speicherkonto, das Sie für dieses Tutorial eingerichtet haben. 
+
+8.  Klicken Sie im Bereich „Speicherkonto“ auf **Löschen**, um das Speicherkonto zu entfernen. Sie gelangen zum Bereich **Speicherkonto löschen**.
+
+   ![Entfernen des Speicherkontos](./media/iot-hub-store-data-in-azure-table-storage/cleanup-remove-storageaccount.png)
+
+8.  Geben Sie den Namen des Speicherkontos ein, und klicken Sie dann unten im Bereich auf **Löschen**. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,6 +10,8 @@
   items:
     - name: Bereitstellen einer Lösung für die Remoteüberwachung
       href: quickstart-remote-monitoring-deploy.md
+    - name: Bereitstellen einer Lösung für verbundene Factorys
+      href: quickstart-connected-factory-deploy.md
     - name: Bereitstellen einer Predictive Maintenance-Lösung
       href: quickstart-predictive-maintenance-deploy.md
     - name: Bereitstellen einer Gerätesimulationslösung
@@ -141,8 +143,8 @@
           href: iot-accelerators-predictive-overview.md
     - name: Verbundene Factory
       items:
-        - name: Bereitstellen eines Solution Accelerators
-          href: iot-accelerators-connected-factory-overview.md
+        - name: Verwenden des Dashboards
+          href: iot-accelerators-connected-factory-dashboard.md
         - name: Bereitstellen eines Gateways
           href: iot-accelerators-connected-factory-gateway-deployment.md
         - name: Verwenden von OPC Publisher

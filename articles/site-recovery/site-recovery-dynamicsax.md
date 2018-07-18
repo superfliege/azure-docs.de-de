@@ -12,14 +12,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: b390f6c62a6ddf8c800f79b42a36dac2c4f4c908
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 931cc628dccc77a026791b27a7a8159b37c585d4
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29876955"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919562"
 ---
 # <a name="replicate-a-multitier-dynamics-ax-application-by-using-azure-site-recovery"></a>Replizieren einer Dynamics AX-Anwendung mit mehreren Schichten mithilfe von Azure Site Recovery
 
@@ -114,7 +114,7 @@ Sie können einen Wiederherstellungsplan in Site Recovery erstellen, um den Fail
 
     ![Wiederherstellungsplan erstellen](./media/site-recovery-dynamics-ax/recoveryplancreation1.png)
 
-4. Wählen Sie die virtuellen Application Object Server-Computer und die virtuellen Clientcomputer für den Wiederherstellungsplan und anschließend ✓ aus.
+4. Wählen Sie den Anwendungsobjektserver und die Client-VMs für den Wiederherstellungsplan aus, und wählen Sie ✓.
 
     ![Auswählen von Elementen](./media/site-recovery-dynamics-ax/selectvms.png)
 
@@ -164,7 +164,7 @@ Weitere Informationen zum Ausführen eines Testfailovers finden Sie unter [Testf
 
 3. Wählen Sie **Failover** und dann **Failover** aus.
 
-4. Wählen Sie das Zielnetzwerk und dann **✓** aus, um den Failoverprozess zu starten.
+4. Wählen Sie das Zielnetzwerk aus, und wählen Sie dann **✓**, um den Failoverprozess zu starten.
 
 Weitere Informationen zum Ausführen eines Failovers finden Sie unter [Failover in Site Recovery](site-recovery-failover.md).
 
@@ -182,7 +182,7 @@ Spezifische Überlegungen zu SQL Server während des Failbacks finden Sie unter 
 
 5. Wählen Sie die entsprechenden Optionen aus: Datensynchronisierung und VM-Erstellung.
 
-6. Wählen Sie **✓** aus, um den Failbackprozess zu starten.
+6. Wählen Sie **✓**, um den Failbackprozess zu starten.
 
 
 Weitere Informationen zum Ausführen eines Failbacks finden Sie unter [Failback für virtuelle VMware-Computer von Azure zur lokalen Infrastruktur](site-recovery-failback-azure-to-vmware.md).

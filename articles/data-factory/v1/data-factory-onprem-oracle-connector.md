@@ -1,5 +1,5 @@
 ---
-title: Kopien von Daten in/aus Oracle mit Data Factory | Microsoft Dokumentation
+title: Kopieren von Daten in bzw. aus Oracle per Data Factory | Microsoft-Dokumentation
 description: Informationen zum Kopieren von Daten in und aus einer Oracle-Datenbank, die lokal oder mithilfe von Azure Data Factory gehostet wird.
 services: data-factory
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fe1ca45b0f79781b2fa17bfb605df03d334cc8d1
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 10535e75a32a9f95e759340cf14d693f43639473
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046712"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856840"
 ---
-# <a name="copy-data-tofrom-on-premises-oracle-using-azure-data-factory"></a>Kopieren von Daten in lokales/aus lokalem Oracle mithilfe von Azure Data Factory
+# <a name="copy-data-to-or-from-on-premises-oracle-using-azure-data-factory"></a>Kopieren von Daten in bzw. aus einer lokalen Oracle-Umgebung per Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](data-factory-onprem-oracle-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-oracle.md)
@@ -103,6 +103,10 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 | gatewayName | Name des Gateways, das zum Herstellen einer Verbindung mit dem lokalen Oracle-Server verwendet wird |Ja |
 
 **Beispiel: Verwenden des Microsoft-Treibers**
+
+>[!TIP]
+>Wenn der Fehler „ORA-01025: UPI parameter out of range“ angezeigt wird und Sie die Oracle-Version 8i nutzen, können Sie Ihrer Verbindungszeichenfolge den Zusatz `WireProtocolMode=1` hinzufügen und den Vorgang wiederholen.
+
 ```json
 {
     "name": "OnPremisesOracleLinkedService",

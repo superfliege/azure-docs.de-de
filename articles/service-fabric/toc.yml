@@ -551,7 +551,7 @@
                   href: service-fabric-cluster-scale-up-down.md
                 - name: Programmgesteuertes horizontales Hochskalieren
                   href: service-fabric-cluster-programmatic-scaling.md
-                - name: Zentrales Hochskalieren der virtuellen Computer des primären Knotentyps
+                - name: Skalieren oder Upgraden der virtuellen Computer des primären Knotentyps
                   href: service-fabric-cluster-upgrade-primary-nodetype-vm.md
             - name: Upgrade
               href: service-fabric-cluster-upgrade.md
@@ -569,8 +569,6 @@
               href: service-fabric-cluster-delete.md
             - name: Herstellen einer Remoteverbindung mit dem virtuellen Clusterknotencomputer
               href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
-            - name: Upgraden/Migrieren einer VMSS-SKU
-              href: service-fabric-update-vmss-sku.md
         - name: Eigenständige Cluster
           items:
             - name: Erstellen

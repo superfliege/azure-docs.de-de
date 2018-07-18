@@ -6,15 +6,15 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/23/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: bfa32796b40033a13d1ced9f8431bd19492e6498
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: dec995d0b9177e4fb88c836c3ea0fef25a3b3ba3
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309578"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859934"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Auswählen eines V-Kern-Diensttarifs und von Compute-, Arbeitsspeicher-, Speicher- und E/A-Ressourcen
 
@@ -25,8 +25,8 @@ Die Unterschiede zwischen diesen beiden Tarifen werden in der folgenden Tabelle 
 ||**Allgemeiner Zweck**|**Unternehmenskritisch**|
 |---|---|---|
 |Am besten geeignet für:|Die meisten geschäftlichen Workloads. Ermöglicht budgetorientierte ausgewogene und skalierbare Compute- und Speicheroptionen.|Geschäftsanwendungen mit hohen E/A-Anforderungen. Ermöglicht höchste Resilienz gegenüber Ausfällen durch mehrere isolierte Replikate.|
-|Compute|1 bis 80 V-Kerne, Generation 4 und Generation 5 |1 bis 80 V-Kerne, Generation 4 und Generation 5|
-|Arbeitsspeicher|7 GB pro Kern |7 GB pro Kern |
+|Compute|1 bis 80 V-Kerne, Gen4 und Gen5 |1 bis 80 V-Kerne, Gen4 und Gen5|
+|Arbeitsspeicher|Gen4: 7 GB pro Kern<br>Gen5: 5,5 GB pro Kern | Gen4: 7 GB pro Kern<br>Gen5: 5,5 GB pro Kern |
 |Speicher|Premium-Remotespeicher, 5 GB - 4 TB|Lokaler SSD-Speicher, 5 GB–4 TB|
 |E/A-Durchsatz (ungefähr)|500 IOPS pro V-Kern mit maximal 7.000 IOPS|5.000 IOPS pro V-Kern mit maximal 200.000 IOPS|
 |Verfügbarkeit|1 Replikat, keine Leseskalierung|3 Replikate, 1 [Leseskalierung](sql-database-read-scale-out.md), zonenredundante Hochverfügbarkeit|
