@@ -1,4 +1,4 @@
----
+﻿---
 title: Herunterladen von Azure-Rechnungen und täglichen Nutzungsdaten | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Azure-Rechnungen und tägliche Nutzungsdaten herunterladen oder ansehen können.
 keywords: Rechnung, Rechnungsdownload, Azure-Rechnung, Azure-Nutzung
