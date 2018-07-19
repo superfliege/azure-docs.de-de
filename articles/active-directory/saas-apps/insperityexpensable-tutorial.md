@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 7f9c972e51b19d4cbac4650c662e3a6da538a5b9
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 130ff2ebbf83258794ffd90aa87ed6a31d85d59b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228906"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052498"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insperity-expensable"></a>Tutorial: Azure Active Directory-Integration mit Insperity ExpensAble
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Insperity ExpensAble** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/insperityexpensable-tutorial/tutorial_insperityexpensable_samlbase.png)
+    ![Configure single sign-on](./media/insperityexpensable-tutorial/tutorial_insperityexpensable_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Insperity ExpensAble** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/insperityexpensable-tutorial/tutorial_insperityexpensable_url.png)
+    ![Configure single sign-on](./media/insperityexpensable-tutorial/tutorial_insperityexpensable_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://server.expensable.com/esapp/Authenticate?companyId=<company ID>`.
 
@@ -119,15 +119,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/insperityexpensable-tutorial/tutorial_insperityexpensable_certificate.png) 
+    ![Configure single sign-on](./media/insperityexpensable-tutorial/tutorial_insperityexpensable_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/insperityexpensable-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/insperityexpensable-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Insperity ExpensAble-Konfiguration** auf **Insperity ExpensAble konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die SAML-Dienst-URL für einmaliges Anmelden** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/insperityexpensable-tutorial/tutorial_insperityexpensable_configure.png) 
+    ![Configure single sign-on](./media/insperityexpensable-tutorial/tutorial_insperityexpensable_configure.png) 
 
 7. Zum Konfigurieren des einmaligen Anmeldens bei **Insperity ExpensAble** müssen Sie die heruntergeladene **XML-Metadaten**-Datei, **SAML-Dienst-URL für einmalige Anmeldung** und **SAML-Entitäts-ID** an das [Insperity ExpensAble-Supportteam](http://expensable.com/support/support-overview) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -184,7 +184,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Insperity ExpensAble**aus.
 
-    ![Configure Single Sign-On](./media/insperityexpensable-tutorial/tutorial_insperityexpensable_app.png) 
+    ![Configure single sign-on](./media/insperityexpensable-tutorial/tutorial_insperityexpensable_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -205,7 +205,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Insperity ExpensAble“ klicken, sollten Sie automatisch bei Ihrer Insperity ExpensAble-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

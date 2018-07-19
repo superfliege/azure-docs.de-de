@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 58873cce705ab3106898d09ab4211ebd81464126
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: be5245d0cd3b3a062f335f51b70d0aabdb372a63
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211810"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042397"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hpe-saas"></a>Tutorial: Azure Active Directory-Integration mit HPE SaaS
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **HPE SaaS** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/hpesaas-tutorial/tutorial_hpesaas_samlbase.png)
+    ![Configure single sign-on](./media/hpesaas-tutorial/tutorial_hpesaas_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für HPE SaaS** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/hpesaas-tutorial/tutorial_hpesaas_url.png)
+    ![Configure single sign-on](./media/hpesaas-tutorial/tutorial_hpesaas_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** die URL folgendermaßen ein: `https://login.saas.hpe.com/msg`.
 
@@ -121,11 +121,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/hpesaas-tutorial/tutorial_hpesaas_certificate.png) 
+    ![Configure single sign-on](./media/hpesaas-tutorial/tutorial_hpesaas_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/hpesaas-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/hpesaas-tutorial/tutorial_general_400.png)
 
 6. Zum Konfigurieren des einmaligen Anmeldens auf der Seite von **HPE SaaS** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [HPE SaaS-Supportteam](https://saas.hpe.com/en-us/contact) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -181,7 +181,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste den Eintrag **HPE SaaS** aus.
 
-    ![Configure Single Sign-On](./media/hpesaas-tutorial/tutorial_hpesaas_app.png) 
+    ![Configure single sign-on](./media/hpesaas-tutorial/tutorial_hpesaas_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -202,7 +202,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „HPE SaaS“ klicken, sollten Sie automatisch bei Ihrer HPE SaaS-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

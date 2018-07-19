@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 7eeb843a44fde53e6146084055607fe1fd6fc57c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 96d028c1e18762f5a58234792271ce3eb1aed6a0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228416"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041754"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>Tutorial: Azure Active Directory-Integration mit Wizergos Productivity Software
 
@@ -223,7 +223,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Wizergos Productivity Software“ klicken, sollten Sie automatisch bei Ihrer Wizergos Productivity Software-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

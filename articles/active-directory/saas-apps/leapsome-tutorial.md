@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: jeedes
-ms.openlocfilehash: b23a93db7912aa25b420157241c41533f4f48a27
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 4b2c23745a5e624bcf668dfbfe5d085392d7a583
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939800"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052450"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-leapsome"></a>Tutorial: Azure Active Directory-Integration mit Leapsome
 
@@ -122,7 +122,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 5. Die Leapsome-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Im folgenden Screenshot wird ein Beispiel gezeigt.
     
-    ![Configure Single Sign-On](./media/leapsome-tutorial/tutorial_Leapsome_attribute.png)
+    ![Configure single sign-on](./media/leapsome-tutorial/tutorial_Leapsome_attribute.png)
 
 6. Konfigurieren Sie das SAML-Tokenattribut im Dialogfeld **Einmaliges Anmelden** im Abschnitt **Benutzerattribute**, wie im obigen Bild gezeigt, und führen Sie die folgenden Schritte aus:
     
@@ -138,9 +138,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Configure Single Sign-On](./media/leapsome-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/leapsome-tutorial/tutorial_attribute_04.png)
 
-    ![Configure Single Sign-On](./media/leapsome-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/leapsome-tutorial/tutorial_attribute_05.png)
     
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
     
@@ -255,7 +255,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Leapsome“ klicken, sollten Sie automatisch bei Ihrer Leapsome-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

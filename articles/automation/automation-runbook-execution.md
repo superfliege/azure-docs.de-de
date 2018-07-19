@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ff58e22f8b9b837ec272cd2cd6193da80a7b718e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4b9bfc0df01dd8fc8a6a1b7aed5ade466164a82f
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195419"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930051"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Ausführen von Runbooks in Azure Automation
 
@@ -137,15 +137,17 @@ Get-AzureRmLog -ResourceId $JobResourceID -MaxRecord 1 | Select Caller
 
 Damit Ressourcen von allen Runbooks in der Cloud verwendet werden können, entlädt Azure Automation jeden Auftrag vorübergehend, nachdem er drei Stunden lang ausgeführt wurde. Während dieser Zeit werden Aufträge für [PowerShell-Runbooks](automation-runbook-types.md#powershell-runbooks) beendet und nicht neu gestartet. Als Auftragsstatus wird **Beendet** angezeigt. Diese Art Runbooks wird immer von Beginn an neu gestartet, da sie keine Prüfpunkte unterstützt.
 
-[Auf PowerShell-Workflows basierende Runbooks](automation-runbook-types.md#powershell-workflow-runbooks) werden ab ihrem letzten [Prüfpunkt](https://docs.microsoft.com/system-center/sma/overview-powershell-workflows#bk_Checkpoints) fortgesetzt. Nach dem Ausführen über drei Stunden wird der Runbook-Auftrag vom Dienst angehalten, und als Status wird **Wird ausgeführt, warten auf Ressourcen** angezeigt. Sobald eine Sandbox verfügbar ist, wird das Runbook vom Automation-Dienst automatisch neu gestartet und vom letzten Prüfpunkt aus fortgesetzt. Dies ist ein normales Verhalten des PowerShell-Workflows für Anhalten/Neustarten. Wenn das Runbook wieder drei Stunden Ausführungszeit überschreitet, wird der Vorgang bis zu dreimal wiederholt. Wenn das Runbook nach dem dritten Neustart nicht in drei Stunden abgeschlossen wird, wird ein Fehler für den Runbook-Auftrag ausgegeben, und als Auftragsstatus wird **Fehler, warten auf Ressourcen** angezeigt. In diesem Fall wird ein Ausnahmefehler mit der folgenden Meldung angezeigt.
+[Auf PowerShell-Workflows basierende Runbooks](automation-runbook-types.md#powershell-workflow-runbooks) werden ab ihrem letzten [Prüfpunkt](https://docs.microsoft.com/system-center/sma/overview-powershell-workflows#bk_Checkpoints) fortgesetzt. Nach einer Ausführungszeit von drei Stunden wird der Runbook-Auftrag vom Dienst angehalten und als Status **Wird ausgeführt, warten auf Ressourcen** angezeigt. Sobald eine Sandbox verfügbar ist, wird das Runbook vom Automation-Dienst automatisch neu gestartet und vom letzten Prüfpunkt aus fortgesetzt. Dies ist ein normales Verhalten des PowerShell-Workflows für Anhalten/Neustarten. Wenn das Runbook wieder drei Stunden Ausführungszeit überschreitet, wird der Vorgang bis zu dreimal wiederholt. Wenn das Runbook nach dem dritten Neustart nicht in drei Stunden abgeschlossen wird, wird ein Fehler für den Runbook-Auftrag ausgegeben, und als Auftragsstatus wird **Fehler, warten auf Ressourcen** angezeigt. In diesem Fall wird ein Ausnahmefehler mit der folgenden Meldung angezeigt.
 
-*Die Ausführung des Auftrags kann nicht fortgesetzt werden, da er wiederholt am selben Prüfpunkt entfernt wurde. Stellen Sie sicher, dass Ihr Runbook Vorgänge mit langer Ausführungsdauer nicht ausführt, ohne deren Zustand dauerhaft zu speichern.*
+*Die Ausführung des Auftrags kann nicht fortgesetzt werden, da er wiederholt am selben Prüfpunkt entfernt wurde. Stellen Sie sicher, dass Ihr Runbook Vorgänge mit langer Ausführungszeit nicht ausführt, ohne deren Zustand dauerhaft zu speichern.*
 
 Dieses Verhalten schützt den Dienst davor, dass Runbooks unbegrenzt ausgeführt werden, da der nächste Prüfpunkt nicht ohne Entladen erreicht werden kann.
 
 Wenn das Runbook keine Prüfpunkte enthält oder der Auftrag den ersten Prüfpunkt vor dem Entladen nicht erreicht hat, wird der Auftrag vom Anfang neu gestartet.
 
-Sorgen Sie beim Erstellen eines Runbooks dafür, dass die Zeit zum Ausführen von Aktivitäten zwischen zwei Prüfpunkten drei Stunden nicht überschreitet. Sie müssen Ihrem Runbook ggf. Prüfpunkte hinzufügen oder Vorgänge mit langen Ausführungszeiten aufteilen, um sicherzustellen, dass dieser Grenzwert von drei Stunden nicht erreicht wird. Angenommen, Ihr Runbook führt eine Neuindizierung für eine große SQL-Datenbank durch. Wenn dieser einzelne Vorgang nicht innerhalb des Grenzwerts für die gleichmäßige Verteilung abgeschlossen wird, wird der Auftrag entladen und vom Anfang neu gestartet. In diesem Fall sollten Sie den Neuindizierungsvorgang in mehrere Schritte unterteilen (z. B. nur jeweils eine Tabelle gleichzeitig neu indizieren) und dann einen Prüfpunkt nach jedem Vorgang einfügen, damit der Auftrag nach dem letzten Vorgang bis zum Abschluss fortgesetzt werden kann.
+Für Aufgaben mit langer Ausführungszeit wird empfohlen, einen [Hybrid Runbook Worker](automation-hrw-run-runbooks.md#job-behavior) zu verwenden. Hybrid Runbook Worker unterliegen nicht der gleichmäßigen Verteilung und keiner Einschränkung hinsichtlich der Ausführungszeit eines Runbooks.
+
+Wenn Sie ein PowerShell Workflow-Runbook in Azure nutzen, sorgen Sie beim Erstellen des Runbooks dafür, dass die Zeit zum Ausführen von Aktivitäten zwischen zwei Prüfpunkten drei Stunden nicht überschreitet. Sie müssen Ihrem Runbook ggf. Prüfpunkte hinzufügen oder Vorgänge mit langen Ausführungszeiten aufteilen, um sicherzustellen, dass dieser Grenzwert von drei Stunden nicht erreicht wird. Angenommen, Ihr Runbook führt eine Neuindizierung für eine große SQL-Datenbank durch. Wenn dieser einzelne Vorgang nicht innerhalb des Grenzwerts für die gleichmäßige Verteilung abgeschlossen wird, wird der Auftrag entladen und vom Anfang neu gestartet. In diesem Fall sollten Sie den Neuindizierungsvorgang in mehrere Schritte unterteilen (z. B. nur jeweils eine Tabelle gleichzeitig neu indizieren) und dann einen Prüfpunkt nach jedem Vorgang einfügen, damit der Auftrag nach dem letzten Vorgang bis zum Abschluss fortgesetzt werden kann.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

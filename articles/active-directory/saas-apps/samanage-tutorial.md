@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: e338dda7ffaf25a80663c2939fd42342b4049883
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c90c0c2f831a622b54a56db5c9a3d4efb2f57eaa
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222888"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041856"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-samanage"></a>Tutorial: Azure Active Directory-Integration mit Samanage
 
@@ -102,15 +102,15 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Samanage** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/samanage-tutorial/tutorial_samanage_samlbase.png)
+    ![Configure single sign-on](./media/samanage-tutorial/tutorial_samanage_samlbase.png)
 
 3. Führen Sie auf der Seite **Domäne und URLs für Samanage** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/samanage-tutorial/tutorial_samanage_url.png)
+    ![Configure single sign-on](./media/samanage-tutorial/tutorial_samanage_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<Company Name>.samanage.com/saml_login/<Company Name>`.
 
@@ -121,15 +121,15 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/samanage-tutorial/tutorial_samanage_certificate.png) 
+    ![Configure single sign-on](./media/samanage-tutorial/tutorial_samanage_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/samanage-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/samanage-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Samanage-Konfiguration** auf **Samanage konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL und SAML-Entitäts-ID** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/samanage-tutorial/tutorial_samanage_configure.png) 
+    ![Configure single sign-on](./media/samanage-tutorial/tutorial_samanage_configure.png) 
 
 7. Melden Sie sich in einem anderen Webbrowserfenster bei der Samanage-Unternehmenswebsite als Administrator an.
 
@@ -237,7 +237,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Samanage**aus.
 
-    ![Configure Single Sign-On](./media/samanage-tutorial/tutorial_samanage_app.png) 
+    ![Configure single sign-on](./media/samanage-tutorial/tutorial_samanage_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -258,7 +258,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Samanage“ klicken, sollten Sie automatisch bei Ihrer Samanage-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

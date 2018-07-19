@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: e1219134b398219d653a87b18aa9ed582f84a33d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 9b264a7ba1479e485ff528ee242c78c4b39010dc
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226270"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052515"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>Tutorial: Azure Active Directory-Integration in IQNavigator VMS
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **IQNavigator VMS** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
 
-    ![Configure Single Sign-On](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_samlbase.png)
+    ![Configure single sign-on](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für IQNavigator VMS** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_url.png)
+    ![Configure single sign-on](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_url.png)
 
     a. Geben Sie im Textfeld **Bezeichner** die folgende URL ein: `iqn.com`.
 
@@ -118,7 +118,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, und führen Sie den folgenden Schritt aus:
 
-    ![Configure Single Sign-On](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_url1.png)
+    ![Configure single sign-on](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_url1.png)
 
     Geben Sie im Textfeld **Relayzustand** eine URL nach dem folgenden Muster ein: `https://<subdomain>.iqnavigator.com`
 
@@ -127,19 +127,19 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
     
-    ![Configure Single Sign-On](./media/iqnavigatorvms-tutorial/tutorial_metadataurl.png)
+    ![Configure single sign-on](./media/iqnavigatorvms-tutorial/tutorial_metadataurl.png)
 
 6. Die IQNavigator-Anwendung erwartet den Wert der eindeutigen Benutzer-ID im Namensbezeichneranspruch. Der Kunde kann den richtigen Wert für den Namensbezeichneranspruch zuordnen. In diesem Fall haben wir zu Demozwecken „user.UserPrincipalName“ zugeordnet. Sie müssen jedoch basierend auf Ihren Organisationseinstellungen den richtigen Wert zuordnen.
 
-    ![Configure Single Sign-On](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_attribute.png)
+    ![Configure single sign-on](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_attribute.png)
 
 7. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/iqnavigatorvms-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/iqnavigatorvms-tutorial/tutorial_general_400.png)
 
 8. Klicken Sie im Abschnitt **IQNavigator VMS-Konfiguration** auf **IQNavigator VMS konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_configure.png)
+    ![Configure single sign-on](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_configure.png)
 
 9. Zum Konfigurieren des einmaligen Anmeldens auf der Seite von **IQNavigator VMS** müssen Sie die **Verbundmetadaten-URL der App**, **Abmelde-URL, SAML-Entitäts-ID und SAML-Dienst-URL für einmaliges Anmelden** an das [IQNavigator VMS-Supportteam](https://www.beeline.com/iqn-product-support/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -192,7 +192,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **IQNavigator VMS** aus.
 
-    ![Configure Single Sign-On](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_app.png)
+    ![Configure single sign-on](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_app.png)
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -213,7 +213,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „IQNavigator VMS“ klicken, sollten Sie automatisch bei Ihrer IQNavigator VMS-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

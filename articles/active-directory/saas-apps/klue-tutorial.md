@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
-ms.openlocfilehash: e2a625c733aac82b5db8529f2d770d31578a6246
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3a6d4b41d3b3994af08ba5492e542b7c31a9ebfe
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220419"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052600"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-klue"></a>Tutorial: Azure Active Directory-Integration in Klue
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Klue** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/klue-tutorial/tutorial_klue_samlbase.png)
+    ![Configure single sign-on](./media/klue-tutorial/tutorial_klue_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Klue** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
 
-    ![Configure Single Sign-On](./media/klue-tutorial/tutorial_klue_url1.png)
+    ![Configure single sign-on](./media/klue-tutorial/tutorial_klue_url1.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `urn:klue:<Customer ID>`
 
@@ -118,7 +118,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**. Wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![Configure Single Sign-On](./media/klue-tutorial/tutorial_klue_url2.png)
+    ![Configure single sign-on](./media/klue-tutorial/tutorial_klue_url2.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://app.klue.com/account/auth/saml/<Customer UUID>/`.
      
@@ -127,7 +127,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 5. Die Klue-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. 
 
-    ![Configure Single Sign-On](./media/klue-tutorial/attribute.png)
+    ![Configure single sign-on](./media/klue-tutorial/attribute.png)
 
 6. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der vorherigen Abbildung gezeigt, und führen Sie die folgenden Schritte durch:
     
@@ -139,9 +139,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Configure Single Sign-On](./media/klue-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/klue-tutorial/tutorial_attribute_04.png)
 
-    ![Configure Single Sign-On](./media/klue-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/klue-tutorial/tutorial_attribute_05.png)
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
@@ -151,15 +151,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 7. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/klue-tutorial/tutorial_klue_certificate.png) 
+    ![Configure single sign-on](./media/klue-tutorial/tutorial_klue_certificate.png) 
 
 8. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/klue-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/klue-tutorial/tutorial_general_400.png)
     
 9. Klicken Sie im Abschnitt **Klue-Konfiguration** auf **Klue konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/klue-tutorial/tutorial_klue_configure.png) 
+    ![Configure single sign-on](./media/klue-tutorial/tutorial_klue_configure.png) 
 
 10. Zum Konfigurieren des einmaligen Anmeldens bei **Klue** müssen Sie das heruntergeladene **Zertifikat (Base64), SAML-Dienst-URL für einmaliges Anmelden und SAML-Entitäts-ID** an das [Klue-Supportteam](mailto:support@klue.com) senden.
 
@@ -218,7 +218,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Klue** aus.
 
-    ![Configure Single Sign-On](./media/klue-tutorial/tutorial_klue_app.png) 
+    ![Configure single sign-on](./media/klue-tutorial/tutorial_klue_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -239,7 +239,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Klue“ klicken, sollten Sie automatisch bei Ihrer Klue-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

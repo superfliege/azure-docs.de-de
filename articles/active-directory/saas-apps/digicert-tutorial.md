@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: jeedes
-ms.openlocfilehash: 9c8ecac3adc3ac06eed5c87c3e1c92c91ed67d70
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 428878d3b1a8a369b58b045544f034eb4235c74c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227158"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047867"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-digicert"></a>Tutorial: Azure Active Directory-Integration mit DigiCert
 
@@ -102,21 +102,21 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **DigiCert** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/digicert-tutorial/tutorial_digicert_samlbase.png)
+    ![Configure single sign-on](./media/digicert-tutorial/tutorial_digicert_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für DigiCert** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/digicert-tutorial/tutorial_digicert_url.png)
+    ![Configure single sign-on](./media/digicert-tutorial/tutorial_digicert_url.png)
     
     Geben Sie im Textfeld **Bezeichner** die folgende URL ein: `https://www.digicert.com/sso`.
 
 4. Die DigiCert-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Konfiguration. 
 
-    ![Configure Single Sign-On](./media/digicert-tutorial/tutorial_digicert_attributes.png)
+    ![Configure single sign-on](./media/digicert-tutorial/tutorial_digicert_attributes.png)
     
 5. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der Abbildung gezeigt, und führen Sie die folgenden Schritte aus:
     
@@ -130,9 +130,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Configure Single Sign-On](./media/digicert-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/digicert-tutorial/tutorial_attribute_04.png)
 
-    ![Configure Single Sign-On](./media/digicert-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/digicert-tutorial/tutorial_attribute_05.png)
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
@@ -142,11 +142,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 6. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/digicert-tutorial/tutorial_digicert_certificate.png) 
+    ![Configure single sign-on](./media/digicert-tutorial/tutorial_digicert_certificate.png) 
 
 7. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/digicert-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/digicert-tutorial/tutorial_general_400.png)
 
 8. Zum Konfigurieren des einmaligen Anmeldens bei **DigiCert** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [DigiCert-Supportteam](mailto:support@digicert.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -199,7 +199,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **DigiCert** aus.
 
-    ![Configure Single Sign-On](./media/digicert-tutorial/tutorial_digicert_app.png) 
+    ![Configure single sign-on](./media/digicert-tutorial/tutorial_digicert_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -220,7 +220,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „DigiCert“ klicken, sollten Sie automatisch bei Ihrer DigiCert-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

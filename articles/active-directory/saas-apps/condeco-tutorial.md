@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 374c4cb970c12ce9cd015f503b70e19fcfbe294b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e19d78cdf1993b520de757d02e85572442ba09c7
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228236"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047785"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-condeco"></a>Tutorial: Azure Active Directory-Integration mit Condeco
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Condeco** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/condeco-tutorial/tutorial_condeco_samlbase.png)
+    ![Configure single sign-on](./media/condeco-tutorial/tutorial_condeco_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Condeco** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/condeco-tutorial/tutorial_condeco_url.png)
+    ![Configure single sign-on](./media/condeco-tutorial/tutorial_condeco_url.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.condecosoftware.com`.
 
@@ -119,11 +119,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/condeco-tutorial/tutorial_condeco_certificate.png) 
+    ![Configure single sign-on](./media/condeco-tutorial/tutorial_condeco_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/condeco-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/condeco-tutorial/tutorial_general_400.png)
 
 6. Zum Konfigurieren des einmaligen Anmeldens bei **Condeco** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [Condeco-Supportteam](mailTo:supportna@condecosoftware.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -184,7 +184,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Condeco**aus.
 
-    ![Configure Single Sign-On](./media/condeco-tutorial/tutorial_condeco_app.png) 
+    ![Configure single sign-on](./media/condeco-tutorial/tutorial_condeco_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -205,7 +205,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Condeco“ klicken, sollten Sie automatisch in Ihrer Condeco-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

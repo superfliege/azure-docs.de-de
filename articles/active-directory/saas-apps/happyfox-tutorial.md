@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: jeedes
-ms.openlocfilehash: f6d0710dd268796bef7f0a340f8eb2bfbee6b1f2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3dc516e24f140ad5ef7443a4cff5962e7d584065
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218012"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042366"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-happyfox"></a>Tutorial: Azure Active Directory-Integration mit HappyFox
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **HappyFox** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/happyfox-tutorial/tutorial_happyfox_samlbase.png)
+    ![Configure single sign-on](./media/happyfox-tutorial/tutorial_happyfox_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für HappyFox** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/happyfox-tutorial/tutorial_happyfox_url.png)
+    ![Configure single sign-on](./media/happyfox-tutorial/tutorial_happyfox_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.happyfox.com/`.
 
@@ -121,35 +121,35 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatsdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/happyfox-tutorial/tutorial_happyfox_certificate.png) 
+    ![Configure single sign-on](./media/happyfox-tutorial/tutorial_happyfox_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/happyfox-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/happyfox-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **HappyFox-Konfiguration** auf **HappyFox konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/happyfox-tutorial/tutorial_happyfox_configure.png) 
+    ![Configure single sign-on](./media/happyfox-tutorial/tutorial_happyfox_configure.png) 
 
 7. Melden Sie sich beim HappyFox-Mitarbeiterportal an, und navigieren Sie zu **Manage** (Verwalten). Klicken Sie anschließend auf die Registerkarte **Integrations**.
 
-    ![Configure Single Sign-On](./media/happyfox-tutorial/header.png) 
+    ![Configure single sign-on](./media/happyfox-tutorial/header.png) 
 
 8. Klicken Sie auf der Registerkarte „Integrations“ unter **SAML Integration** auf **Configure** (Konfigurieren), um die Einstellungen für einmaliges Anmelden zu öffnen.
 
-    ![Configure Single Sign-On](./media/happyfox-tutorial/configure.png) 
+    ![Configure single sign-on](./media/happyfox-tutorial/configure.png) 
 
 9. Fügen Sie im Abschnitt für die SAML-Konfiguration, die **SAML-Dienst-URL für einmaliges Anmelden**, die Sie im Azure-Portal kopiert haben, in das Textfeld **SSO Target URL** (SSO-Ziel-URL) ein.
 
-    ![Configure Single Sign-On](./media/happyfox-tutorial/targeturl.png)
+    ![Configure single sign-on](./media/happyfox-tutorial/targeturl.png)
 
 10. Öffnen Sie das Zertifikat, das Sie aus dem Azure-Portal heruntergeladen haben, in Editor, und fügen Sie den Inhalt im Abschnitt **IdP Signature** ein.
  
-    ![Configure Single Sign-On](./media/happyfox-tutorial/cert.png)
+    ![Configure single sign-on](./media/happyfox-tutorial/cert.png)
 
 11. Klicken Sie auf die Schaltfläche **Save settings** (Einstellungen speichern).
 
-    ![Configure Single Sign-On](./media/happyfox-tutorial/savesettings.png)
+    ![Configure single sign-on](./media/happyfox-tutorial/savesettings.png)
 
 > [!TIP]
 > Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
@@ -204,7 +204,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **HappyFox** aus.
 
-    ![Configure Single Sign-On](./media/happyfox-tutorial/tutorial_happyfox_app.png) 
+    ![Configure single sign-on](./media/happyfox-tutorial/tutorial_happyfox_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -230,7 +230,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmeld
 
 2. Klicken Sie auf die Schaltfläche **SAML**, um sich mit Ihrem Azure AD-Konto bei HappyFox anzumelden.
 
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

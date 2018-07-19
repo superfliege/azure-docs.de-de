@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: jeedes
-ms.openlocfilehash: 00425c5cbc34f00aa25c5d88a6d175d235afe6fe
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1f5fab12463464be8cc691226a2c50fc5419b227
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214040"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052583"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iriusrisk"></a>Tutorial: Azure Active Directory-Integration von IriusRisk
 
@@ -205,7 +205,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „IriusRisk“ klicken, sollten Sie automatisch bei Ihrer IriusRisk-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

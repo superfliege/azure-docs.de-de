@@ -16,19 +16,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: dacoulte
-ms.openlocfilehash: 8d1e8b4d529936a2401c734b2eff1f0c02dae352
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: d007869bb8bad1a2f0775a1ab2c1bf5d27c1cb8f
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36307865"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866220"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Erweiterung zum Konfigurieren des gewünschten Zustands mit Azure Resource Manager-Vorlagen
 
 Dieser Artikel beschreibt die Azure Resource Manager-Vorlage für den [Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands](dsc-overview.md) (Desired State Configuration, DSC).
 
 > [!NOTE]
-> Möglicherweise werden Ihnen andere Schemabeispiele angezeigt. Das Schema wurde im Release von Oktober 2016 geändert. Weitere Informationen finden Sie im Abschnitt zum [Update vom vorherigen Format](#update-from-the-previous-format).
+> Möglicherweise werden Ihnen andere Schemabeispiele angezeigt. Das Schema wurde im Release von Oktober 2016 geändert. Weitere Informationen finden Sie im Abschnitt zum [Update von einem vorherigen Format](#update-from-a-previous-format).
 
 ## <a name="template-example-for-a-windows-vm"></a>Vorlagenbeispiel für einen virtuellen Windows-Computer
 

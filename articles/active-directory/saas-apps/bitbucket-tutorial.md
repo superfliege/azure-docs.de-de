@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: jeedes
-ms.openlocfilehash: d18d41caf7a7fb3a821c388e786b3a45d30f4810
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 21b6adb98fdb973b75aa1d6db519777bab730d73
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221443"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048122"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>Tutorial: Azure Active Directory-Integration mit SAML SSO for Bitbucket by resolution GmbH
 
@@ -243,7 +243,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „SAML SSO for Bitbucket by resolution GmbH“ klicken, sollten Sie automatisch bei Ihrer SAML SSO for Bitbucket by resolution GmbH-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 993d03e05c7d97634b7ed12c50d248643ce9e51d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 50e9a65f881981964270e0a8bbc7af46a9dfd27a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221283"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047724"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ebsco"></a>Tutorial: Azure Active Directory-Integration mit EBSCO
 
@@ -127,7 +127,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 5. Die EBSCO-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
     
-    ![Configure Single Sign-On](./media/ebsco-tutorial/tutorial_ebsco_attribute.png)
+    ![Configure single sign-on](./media/ebsco-tutorial/tutorial_ebsco_attribute.png)
 
     > [!Note]
     > Das **name**-Attribut ist obligatorisch. Es wird dem **Benutzerbezeichner** in der EBSCO-Anwendung zugeordnet. Es wird standardmäßig hinzugefügt, sodass Sie es nicht manuell hinzufügen müssen.
@@ -142,9 +142,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Configure Single Sign-On](./media/ebsco-tutorial/tutorial_officespace_04.png)
+    ![Configure single sign-on](./media/ebsco-tutorial/tutorial_officespace_04.png)
 
-    ![Configure Single Sign-On](./media/ebsco-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/ebsco-tutorial/tutorial_attribute_05.png)
     
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
     
@@ -243,7 +243,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 1. Wenn Sie im Zugriffsbereich auf die Kachel „EBSCO“ klicken, sollten Sie automatisch bei Ihrer EBSCO-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 2. Klicken Sie nach der Anmeldung bei der Anwendung in der rechten oberen Ecke auf die Schaltfläche **Anmelden**.
 
