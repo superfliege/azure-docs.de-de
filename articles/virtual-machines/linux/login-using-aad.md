@@ -3,7 +3,7 @@ title: Anmelden bei einem virtuellen Linux-Computer mit Azure Active Directory-A
 description: In dieser Anleitung wird beschrieben, wie Sie einen virtuellen Linux-Computer zur Verwendung der Azure Active Directory-Authentifizierung für Benutzeranmeldungen erstellen und konfigurieren.
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/16/2018
-ms.author: iainfou
-ms.openlocfilehash: 96cc7aeb5fd1c64dc3793a801a4a5b759e7558b9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 06/17/2018
+ms.author: cynthn
+ms.openlocfilehash: 614375c95f4af3a5fbeeb4368ff8c577372e6381
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652871"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37933952"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Anmelden bei einem virtuellen Linux-Computer in Azure mit der Azure Active Directory-Authentifizierung (Vorschau)
 
@@ -46,8 +46,9 @@ Während der Vorschauphase dieses Features werden derzeit die folgenden Linux-Di
 | Distribution | Version |
 | --- | --- |
 | CentOS | CentOS 6.9 und CentOS 7.4 |
-| Red Hat Enterprise Linux | RHEL 7 | 
-| Ubuntu Server | Ubuntu 14.04 LTS, Ubuntu Server 16.04 und Ubuntu Server 17.10 |
+| Debian | Debian 9 |
+| Red Hat Enterprise Linux | RHEL 6, RHEL 7 | 
+| Ubuntu Server | Ubuntu 14.04 LTS, Ubuntu Server 16.04, Ubuntu Server 17.10 und Ubuntu Server 18.04 |
 
 Während der Vorschauphase dieses Features werden derzeit die folgenden Azure-Regionen unterstützt:
 
@@ -178,4 +179,4 @@ Geben Sie Feedback zu diesem Vorschaufeature oder melden Sie Probleme bei der Ve
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure Active Directory finden Sie unter [Was ist Azure Active Directory?](../../active-directory/active-directory-whatis.md) und [Erste Schritte mit Azure AD](../../active-directory/get-started-azure-ad.md).
+Weitere Informationen zu Azure Active Directory finden Sie unter [Was ist Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md) und [Erste Schritte mit Azure AD](../../active-directory/fundamentals/get-started-azure-ad.md).

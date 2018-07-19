@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4b9bfc0df01dd8fc8a6a1b7aed5ade466164a82f
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 4c01a63867ca3df85b4e7203c93855b43e9cd04c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930051"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044848"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Ausführen von Runbooks in Azure Automation
 
 Wenn Sie ein Runbook in Azure Automation starten, wird ein Auftrag erstellt. Ein Auftrag ist eine einzelne Ausführungsinstanz eines Runbooks. Für die Ausführung jedes Auftrags wird ein Azure Automation-Worker zugewiesen. Wenngleich Worker von mehreren Azure-Konten gemeinsam genutzt werden, sind die Aufträge von verschiedenen Automation-Konten voneinander isoliert. Sie können nicht steuern, welcher Worker die Anforderung für Ihren Auftrag verarbeitet. Für ein einzelnes Runbook können mehrere Aufträge gleichzeitig ausgeführt werden. Die Ausführungsumgebung für Aufträge aus dem gleichen Automation-Konto kann wiederverwendet werden. Wenn Sie die Liste der Runbooks im Azure-Portal anzeigen, wird der Status aller Aufträge aufgelistet, die für jedes Runbook gestartet wurden. Sie können die Liste der Aufträge für jedes Runbook anzeigen, um den Status der einzelnen Aufträge nachzuverfolgen. Eine Beschreibung der verschiedenen Auftragsstatusangaben finden Sie unter [Auftragsstatuswerte](#job-statuses).
 
-[!INCLUDE [gdpr-dsr-and-stp-note.md](../../includes/gdpr-dsr-and-stp-note.md)]
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 Das folgende Diagramm zeigt den Lebenszyklus eines Runbookauftrags für [grafische Runbooks](automation-runbook-types.md#graphical-runbooks) und [PowerShell-Workflow-Runbooks](automation-runbook-types.md#powershell-workflow-runbooks).
 
@@ -139,7 +139,7 @@ Damit Ressourcen von allen Runbooks in der Cloud verwendet werden können, entl�
 
 [Auf PowerShell-Workflows basierende Runbooks](automation-runbook-types.md#powershell-workflow-runbooks) werden ab ihrem letzten [Prüfpunkt](https://docs.microsoft.com/system-center/sma/overview-powershell-workflows#bk_Checkpoints) fortgesetzt. Nach einer Ausführungszeit von drei Stunden wird der Runbook-Auftrag vom Dienst angehalten und als Status **Wird ausgeführt, warten auf Ressourcen** angezeigt. Sobald eine Sandbox verfügbar ist, wird das Runbook vom Automation-Dienst automatisch neu gestartet und vom letzten Prüfpunkt aus fortgesetzt. Dies ist ein normales Verhalten des PowerShell-Workflows für Anhalten/Neustarten. Wenn das Runbook wieder drei Stunden Ausführungszeit überschreitet, wird der Vorgang bis zu dreimal wiederholt. Wenn das Runbook nach dem dritten Neustart nicht in drei Stunden abgeschlossen wird, wird ein Fehler für den Runbook-Auftrag ausgegeben, und als Auftragsstatus wird **Fehler, warten auf Ressourcen** angezeigt. In diesem Fall wird ein Ausnahmefehler mit der folgenden Meldung angezeigt.
 
-*Die Ausführung des Auftrags kann nicht fortgesetzt werden, da er wiederholt am selben Prüfpunkt entfernt wurde. Stellen Sie sicher, dass Ihr Runbook Vorgänge mit langer Ausführungszeit nicht ausführt, ohne deren Zustand dauerhaft zu speichern.*
+*Die Ausführung des Auftrags kann nicht fortgesetzt werden, da er wiederholt am selben Prüfpunkt entfernt wurde. Stellen Sie sicher, dass Ihr Runbook Vorgänge mit langer Ausführungsdauer nicht ausführt, ohne deren Zustand dauerhaft zu speichern.*
 
 Dieses Verhalten schützt den Dienst davor, dass Runbooks unbegrenzt ausgeführt werden, da der nächste Prüfpunkt nicht ohne Entladen erreicht werden kann.
 

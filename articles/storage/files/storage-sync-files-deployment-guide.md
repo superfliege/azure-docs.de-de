@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: wgries
-ms.openlocfilehash: f1230cbc4d654bfb59bb328ed7d75c6fa76ff10c
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 808bc3908790c8d6dedf1d9f00a4c70b42c7c490
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268042"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867068"
 ---
 # <a name="deploy-azure-file-sync-preview"></a>Bereitstellen von Azure File Sync (Vorschau)
 Verwenden Sie Azure File Sync (Vorschau), um die Dateifreigaben Ihrer Organisation in Azure Files zu zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit Azure File Sync werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -246,7 +246,7 @@ $registeredServer = Register-AzureRmStorageSyncServer -StorageSyncServiceName $s
 ---
 
 ## <a name="create-a-sync-group-and-a-cloud-endpoint"></a>Erstellen einer Synchronisierungsgruppe und eines Cloudendpunkts
-Eine Synchronisierungsgruppe definiert die Synchronisierungstopologie für einen Satz von Dateien. Endpunkte innerhalb einer Synchronisierungsgruppe bleiben miteinander synchron. Eine Synchronisierungsgruppe muss mindestens einen Cloudendpunkt enthalten, der eine Azure-Dateifreigabe und einen oder zwei Serverendpunkte darstellt. Ein Serverendpunkt stellt einen Pfad auf einem registrierten Server dar. Ein Server kann in mehreren Synchronisierungsgruppen über Serverendpunkte verfügen. Sie können so viele Synchronisierungsgruppen erstellen, wie Sie benötigen, um Ihre gewünschte Synchronisierungstopologie angemessen zu beschreiben.
+Eine Synchronisierungsgruppe definiert die Synchronisierungstopologie für einen Satz von Dateien. Endpunkte innerhalb einer Synchronisierungsgruppe bleiben miteinander synchron. Eine Synchronisierungsgruppe muss mindestens einen Cloudendpunkt enthalten, der eine Azure-Dateifreigabe und einen oder mehrere Serverendpunkte darstellt. Ein Serverendpunkt stellt einen Pfad auf einem registrierten Server dar. Ein Server kann in mehreren Synchronisierungsgruppen über Serverendpunkte verfügen. Sie können so viele Synchronisierungsgruppen erstellen, wie Sie benötigen, um Ihre gewünschte Synchronisierungstopologie angemessen zu beschreiben.
 
 Ein Cloudendpunkt ist ein Zeiger auf eine Azure-Dateifreigabe. Alle Serverendpunkte werden mit einem Cloudendpunkt synchronisiert, sodass der Cloudendpunkt zum Hub wird. Das Speicherkonto für die Azure-Dateifreigabe muss sich in der gleichen Region wie der Speichersynchronisierungsdienst befinden. Mit einer Ausnahme wird die gesamte Azure-Dateifreigabe synchronisiert: Ein besonderer Ordner, vergleichbar mit dem versteckten Ordner „System Volume Information“ auf einem NTFS-Volume, wird bereitgestellt. Dieses Verzeichnis heißt „.SystemShareInformation“. Er enthält wichtige Synchronisierungsmetadaten, die nicht mit anderen Endpunkten synchronisiert werden. Sie dürfen ihn weder verwenden noch löschen!
 

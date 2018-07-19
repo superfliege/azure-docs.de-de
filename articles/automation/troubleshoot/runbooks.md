@@ -8,12 +8,12 @@ ms.date: 06/19/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: bb340b8439927f191bc4a22f385d85d4e21b1cdb
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: b96d723f6c7ca423343c0586f59770abb55ada9f
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064344"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929348"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Beheben von Fehlern bei Runbooks
 
@@ -204,6 +204,20 @@ Ein Runbook kann aus verschiedenen Gründen ausgesetzt werden. Meistens wird das
 #### <a name="resolution"></a>Lösung
 
 Zur Vermeidung dieses Problems wird empfohlen, Prüfpunkte in einem Workflow zu verwenden. Weitere Informationen finden Sie unter [Grundlagen des PowerShell-Workflows](../automation-powershell-workflow.md#checkpoints). Eine ausführlichere Erläuterung der gleichmäßigen Auslastung und von Prüfpunkten finden Sie in diesem Blogbeitrag zum [Verwenden von Prüfpunkten in Runbooks](https://azure.microsoft.com/blog/azure-automation-reliable-fault-tolerant-runbook-execution-using-checkpoints/).
+
+### <a name="long-running-runbook"></a>Szenario: Ein Runbook mit langer Ausführungszeit kann nicht abgeschlossen werden
+
+#### <a name="issue"></a>Problem
+
+Dies ist das in Azure-Sandboxes vorgesehene Verhalten aufgrund der Überwachung der Prozesse in Azure Automation auf gleichmäßige Verteilung, weshalb ein Runbook automatisch angehalten wird, wenn es länger als drei Stunden ausgeführt wird.
+
+#### <a name="cause"></a>Ursache
+
+Das Runbook hat den von der gleichmäßigen Verteilung in einer Azure-Sandbox vorgegebenen Grenzwert von 3 Stunden überschritten.
+
+#### <a name="resolution"></a>Lösung
+
+Die empfohlene Lösung ist das Ausführen des Runbooks in einem [Hybrid Runbook Worker](../automation-hrw-run-runbooks.md). Hybrid Worker unterliegen nicht dem von der [gleichmäßigen Verteilung](../automation-runbook-execution.md#fair-share) in einer Azure-Sandbox vorgegebenen Grenzwert von 3 Stunden.
 
 ## <a name="common-errors-when-importing-modules"></a>Häufige Fehler beim Importieren von Modulen
 

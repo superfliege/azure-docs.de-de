@@ -9,19 +9,19 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: c915c692a12781538e10d367d40e3efe473a6853
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 1ba9f827abeb0c0cf6430089e1fb504288550737
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33929042"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37900462"
 ---
-# <a name="configure-a-vmss-managed-service-identity-msi-using-the-azure-portal"></a>Konfigurieren einer VMSS-MSI (Managed Service Identity, verwaltete Dienstidentität) über das Azure-Portal
+# <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-the-azure-portal"></a>Konfigurieren einer verwalteten Dienstidentität für eine VM-Skalierungsgruppe im Azure-Portal
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -35,7 +35,7 @@ In diesem Artikel erfahren Sie, wie Sie die vom System zugewiesene Identität f�
 ## <a name="prerequisites"></a>Voraussetzungen
 
 
-- Wenn Sie nicht mit der verwalteten Dienstidentität vertraut sind, helfen Ihnen die Informationen in dieser [Übersicht](overview.md) weiter.
+- Wenn Sie nicht mit „Verwaltete Dienstidentität“ vertraut sind, helfen Ihnen die Informationen in dieser [Übersicht](overview.md) weiter.
 - Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
 
 ## <a name="managed-service-identity-during-creation-of-an-azure-virtual-machine-scale-set"></a>Verwaltete Dienstidentität während der Erstellung einer Azure-VM-Skalierungsgruppe

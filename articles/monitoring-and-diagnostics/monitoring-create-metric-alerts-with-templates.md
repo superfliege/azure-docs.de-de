@@ -8,15 +8,19 @@ ms.topic: conceptual
 ms.date: 4/26/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 0a4e6c2ebb57aca13a53a8ff12953f0c7a90bc61
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 4dba3d182c7c2927aa4feb88e70fe5711fcc6818
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263445"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932210"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage
 In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md) [neuere Metrikwarnungen](monitoring-near-real-time-metric-alerts.md) in Azure Monitor konfigurieren können. Mit Resource Manager-Vorlagen können Sie programmgesteuert konsistent und reproduzierbar Ihre Umgebungen übergreifende Warnungen einrichten. Neuere metrische Warnungen sind derzeit für [diese Gruppe von Ressourcentypen](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported) verfügbar.
+
+> [!IMPORTANT]
+> Für die Metrikwarnung festgelegte Resource Manager-Vorlage funktioniert nicht für den Ressourcentyp: Microsoft.operationalinsights/Workspaces; die Unterstützung für Metriken aus Log Analytics befindet sich in der Vorschauphase. Benutzer, die die Vorschaufunktionen mit der Ressourcenvorlage verwenden möchten, können sich an [Feedback zu Azure-Warnungen](mailto:azurealertsfeedback@microsoft.com) wenden.
+
 
 Die grundlegenden Schritte lauten wie folgt:
 

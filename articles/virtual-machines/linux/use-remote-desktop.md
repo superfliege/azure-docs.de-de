@@ -3,7 +3,7 @@ title: Verwenden von Remotedesktop mit einem virtuellen Linux-Computer in Azure 
 description: Erfahren Sie, wie Sie Remotedesktop (XRDP) zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure mithilfe von Tools mit grafischer Benutzeroberfläche installieren und konfigurieren.
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
-ms.author: iainfou
-ms.openlocfilehash: fb3639b8ce5c50773bec0ee429e1fa2f7277671b
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.author: cynthn
+ms.openlocfilehash: 5e79cfa2c428323d8531bec7eab875a2dace4ff2
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716617"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37934212"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure
 Virtuelle Linux-Computer (Linux-VMs) in Azure werden normalerweise von der Befehlszeile aus mithilfe einer SSH-Verbindung (Secure Shell) verwaltet. Wenn Sie erst in Linux einsteigen oder schnell eine Fehlerbehandlung durchführen müssen, ist die Verwendung von Remotedesktop unter Umständen einfacher. Dieser Artikel erläutert im Detail die Installation und Konfiguration von Desktopumgebung ([XFCE](https://www.xfce.org)) und Remotedesktop ([XRDP](http://www.xrdp.org)) für Ihren virtuellen Linux-Computer mithilfe des Resource Manager-Bereitstellungsmodells.
@@ -101,6 +101,8 @@ az vm open-port --resource-group myResourceGroup --name myVM --port 3389
 Nach der Authentifizierung wird die XFCE-Desktopumgebung geladen. Sie sieht ähnlich wie das folgende Beispiel aus:
 
 ![XFCE-Desktopverbindung über XRDP](./media/use-remote-desktop/xfce-desktop-environment.png)
+
+Wenn Ihr lokaler RDP-Client die Authentifizierung auf Netzwerkebene (NLA) verwendet, müssen Sie diese Verbindungseinstellung deaktivieren. NLA wird derzeit nicht von XRDP unterstützt. Sie können auch alternative RDP-Lösungen verwenden, die NLA unterstützen, wie z.B. [FreeRDP](http://www.freerdp.com).
 
 
 ## <a name="troubleshoot"></a>Problembehandlung

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 03/30/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: d7d51a7c037e109c730dd79005a2c75eeb0697c0
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 3219f8e61a0aa469775a972e6b240eb2069c2cd9
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266890"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929966"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.B. die Diagrammdarstellung im Portal, den Zugriff über die REST-API oder die Abfrage über PowerShell oder CLI. Unten ist eine vollständige Liste aller Metriken aufgeführt, die derzeit mit der Metrikpipeline von Azure Monitor verfügbar sind. Weitere Metriken stehen möglicherweise im Portal oder über Legacy-APIs zur Verfügung. Die unten angegebene Liste enthält nur Metriken, die über die konsolidierte Azure Monitor-Metrikpipeline verfügbar sind. Verwenden Sie die [API-Version 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions), um diese Metriken abzufragen und darauf zuzugreifen.
@@ -892,76 +892,69 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|
-|Average_% Free Inodes|Average_% Free Inodes|Count|Durchschnitt|Average_% Free Inodes|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% Free Space|Average_% Free Space|Count|Durchschnitt|Average_% Free Space|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% Used Inodes|Average_% Used Inodes|Count|Durchschnitt|Average_% Used Inodes|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% Used Space|Average_% Used Space|Count|Durchschnitt|Average_% Used Space|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Disk Read Bytes/sec|Average_Disk Read Bytes/sec|Count|Durchschnitt|Average_Disk Read Bytes/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Disk Reads/sec|Average_Disk Reads/sec|Count|Durchschnitt|Average_Disk Reads/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Disk Transfers/sec|Average_Disk Transfers/sec|Count|Durchschnitt|Average_Disk Transfers/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Disk Write Bytes/sec|Average_Disk Write Bytes/sec|Count|Durchschnitt|Average_Disk Write Bytes/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Disk Writes/sec|Average_Disk Writes/sec|Count|Durchschnitt|Average_Disk Writes/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Free Megabytes|Average_Free Megabytes|Count|Durchschnitt|Average_Free Megabytes|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Logical Disk Bytes/sec|Average_Logical Disk Bytes/sec|Count|Durchschnitt|Average_Logical Disk Bytes/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% Available Memory|Average_% Available Memory|Count|Durchschnitt|Average_% Available Memory|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% Available Swap Space|Average_% Available Swap Space|Count|Durchschnitt|Average_% Available Swap Space|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% Used Memory|Average_% Used Memory|Count|Durchschnitt|Average_% Used Memory|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% Used Swap Space|Average_% Used Swap Space|Count|Durchschnitt|Average_% Used Swap Space|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Available MBytes Memory|Average_Available MBytes Memory|Count|Durchschnitt|Average_Available MBytes Memory|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Available MBytes Swap|Average_Available MBytes Swap|Count|Durchschnitt|Average_Available MBytes Swap|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Page Reads/sec|Average_Page Reads/sec|Count|Durchschnitt|Average_Page Reads/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Page Writes/sec|Average_Page Writes/sec|Count|Durchschnitt|Average_Page Writes/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Pages/sec|Average_Pages/sec|Count|Durchschnitt|Average_Pages/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Used MBytes Swap Space|Average_Used MBytes Swap Space|Count|Durchschnitt|Average_Used MBytes Swap Space|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Used Memory MBytes|Average_Used Memory MBytes|Count|Durchschnitt|Average_Used Memory MBytes|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Total Bytes Transmitted|Average_Total Bytes Transmitted|Count|Durchschnitt|Average_Total Bytes Transmitted|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Total Bytes Received|Average_Total Bytes Received|Count|Durchschnitt|Average_Total Bytes Received|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Total Bytes|Average_Total Bytes|Count|Durchschnitt|Average_Total Bytes|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Total Packets Transmitted|Average_Total Packets Transmitted|Count|Durchschnitt|Average_Total Packets Transmitted|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Total Packets Received|Average_Total Packets Received|Count|Durchschnitt|Average_Total Packets Received|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Total Rx Errors|Average_Total Rx Errors|Count|Durchschnitt|Average_Total Rx Errors|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Total Tx Errors|Average_Total Tx Errors|Count|Durchschnitt|Average_Total Tx Errors|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Total Collisions|Average_Total Collisions|Count|Durchschnitt|Average_Total Collisions|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Avg. Datenträger s/gelesen|Average_Avg. Datenträger s/gelesen|Count|Durchschnitt|Average_Avg. Datenträger s/gelesen|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Avg. Datenträger s/übertragen|Average_Avg. Datenträger s/übertragen|Count|Durchschnitt|Average_Avg. Datenträger s/übertragen|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Avg. Datenträger s/geschrieben|Average_Avg. Datenträger s/geschrieben|Count|Durchschnitt|Average_Avg. Datenträger s/geschrieben|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Physical Disk Bytes/sec|Average_Physical Disk Bytes/sec|Count|Durchschnitt|Average_Physical Disk Bytes/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Pct Privileged Time|Average_Pct Privileged Time|Count|Durchschnitt|Average_Pct Privileged Time|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Pct User Time|Average_Pct User Time|Count|Durchschnitt|Average_Pct User Time|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Used Memory kBytes|Average_Used Memory kBytes|Count|Durchschnitt|Average_Used Memory kBytes|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Virtual Shared Memory|Average_Virtual Shared Memory|Count|Durchschnitt|Average_Virtual Shared Memory|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% DPC Time|Average_% DPC Time|Count|Durchschnitt|Average_% DPC Time|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% Idle Time|Average_% Idle Time|Count|Durchschnitt|Average_% Idle Time|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% Interrupt Time|Average_% Interrupt Time|Count|Durchschnitt|Average_% Interrupt Time|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% IO Wait Time|Average_% IO Wait Time|Count|Durchschnitt|Average_% IO Wait Time|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% Nice Time|Average_% Nice Time|Count|Durchschnitt|Average_% Nice Time|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% Privileged Time|Average_% Privileged Time|Count|Durchschnitt|Average_% Privileged Time|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% Processor Time|Average_% Processor Time|Count|Durchschnitt|Average_% Processor Time|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% User Time|Average_% User Time|Count|Durchschnitt|Average_% User Time|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Free Physical Memory|Average_Free Physical Memory|Count|Durchschnitt|Average_Free Physical Memory|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Free Space in Paging Files|Average_Free Space in Paging Files|Count|Durchschnitt|Average_Free Space in Paging Files|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Free Virtual Memory|Average_Free Virtual Memory|Count|Durchschnitt|Average_Free Virtual Memory|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Processes|Average_Processes|Count|Durchschnitt|Average_Processes|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Size Stored In Paging Files|Average_Size Stored In Paging Files|Count|Durchschnitt|Average_Size Stored In Paging Files|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Uptime|Average_Uptime|Count|Durchschnitt|Average_Uptime|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Users|Average_Users|Count|Durchschnitt|Average_Users|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Avg. Datenträger s/gelesen|Average_Avg. Datenträger s/gelesen|Count|Durchschnitt|Average_Avg. Datenträger s/gelesen|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Avg. Datenträger s/geschrieben|Average_Avg. Datenträger s/geschrieben|Count|Durchschnitt|Average_Avg. Datenträger s/geschrieben|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Current Disk Queue Length|Average_Current Disk Queue Length|Count|Durchschnitt|Average_Current Disk Queue Length|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Disk Reads/sec|Average_Disk Reads/sec|Count|Durchschnitt|Average_Disk Reads/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Disk Transfers/sec|Average_Disk Transfers/sec|Count|Durchschnitt|Average_Disk Transfers/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Disk Writes/sec|Average_Disk Writes/sec|Count|Durchschnitt|Average_Disk Writes/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Free Megabytes|Average_Free Megabytes|Count|Durchschnitt|Average_Free Megabytes|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% Free Space|Average_% Free Space|Count|Durchschnitt|Average_% Free Space|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Available MBytes|Average_Available MBytes|Count|Durchschnitt|Average_Available MBytes|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% Committed Bytes In Use|Average_% Committed Bytes In Use|Count|Durchschnitt|Average_% Committed Bytes In Use|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Bytes Received/sec|Average_Bytes Received/sec|Count|Durchschnitt|Average_Bytes Received/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Bytes Sent/sec|Average_Bytes Sent/sec|Count|Durchschnitt|Average_Bytes Sent/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Bytes Total/sec|Average_Bytes Total/sec|Count|Durchschnitt|Average_Bytes Total/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% Processor Time|Average_% Processor Time|Count|Durchschnitt|Average_% Processor Time|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Processor Queue Length|Average_Processor Queue Length|Count|Durchschnitt|Average_Processor Queue Length|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Heartbeat|Heartbeat|Count|Durchschnitt|Heartbeat|Computer, OSType, Version, SourceComputerId|
-|Aktualisieren|Aktualisieren|Count|Durchschnitt|Aktualisieren|Computer, Product, Classification, UpdateState, Optional, Approved|
+Average_% Free Inodes|% freie Inodes|Count|Durchschnitt|Average_% Free Inodes|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_% Free Space|% freier Speicher|Count|Durchschnitt|Average_% Free Space|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_% Used Inodes|% verwendete Inodes|Count|Durchschnitt|Average_% Used Inodes|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_% Used Space|% verwendeter Speicher|Count|Durchschnitt|Average_% Used Space|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Disk Read Bytes/sec|Byte gelesen/s |Count|Durchschnitt|Average_Disk Read Bytes/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Disk Reads/sec|Lesevorgänge/s |Count|Durchschnitt|Average_Disk Reads/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Disk Transfers/sec|Übertragungen/s|Count|Durchschnitt|Average_Disk Transfers/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Disk Write Bytes/sec|Byte geschrieben/s|Count|Durchschnitt|Average_Disk Write Bytes/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Disk Writes/sec|Schreibvorgänge/s|Count|Durchschnitt|Average_Disk Writes/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Free Megabytes|Freie Megabytes|Count|Durchschnitt|Average_Free Megabytes|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Logical Disk Bytes/sec|Logischer Datenträger Bytes/s|Count|Durchschnitt|Average_Logical Disk Bytes/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_% Available Memory|% verfügbarer Speicher|Count|Durchschnitt|Average_% Available Memory|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_% Available Swap Space|% verfügbarer Auslagerungsbereich|Count|Durchschnitt|Average_% Available Swap Space|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_% Used Memory|% verwendeter Arbeitsspeicher|Count|Durchschnitt|Average_% Used Memory|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_% Used Swap Space|% verwendeter Auslagerungsbereich|Count|Durchschnitt|Average_% Used Swap Space|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Available MBytes Memory|Verfügbarer Speicher in MB|Count|Durchschnitt|Average_Available MBytes Memory|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Available MBytes Swap|Verfügbarer Auslagerungsbereich in MB|Count|Durchschnitt|Average_Available MBytes Swap|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Page Reads/sec|Seitenlesevorgänge/s|Count|Durchschnitt|Average_Page Reads/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Page Writes/sec|Schreibvorgänge/s|Count|Durchschnitt|Average_Page Writes/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Pages/sec|Seiten/s|Count|Durchschnitt|Average_Pages/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Used MBytes Swap Space|Verfügbarer Speicher in MB|Count|Durchschnitt|Average_Used MBytes Swap Space|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Used Memory MBytes|Verfügbarer Auslagerungsbereich in MB|Count|Durchschnitt|Average_Used Memory MBytes|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Total Bytes Transmitted|Summe übertragene Bytes|Count|Durchschnitt|Average_Total Bytes Transmitted|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Total Bytes Received|Summe empfangene Bytes|Count|Durchschnitt|Average_Total Bytes Received|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Total Bytes|Summe Bytes|Count|Durchschnitt|Average_Total Bytes|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Total Packets Transmitted|Summe übermittelte Pakete|Count|Durchschnitt|Average_Total Packets Transmitted|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Total Packets Received|Summe empfangene Pakete|Count|Durchschnitt|Average_Total Packets Received|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Total Rx Errors|Summe Rx-Fehler|Count|Durchschnitt|Average_Total Rx Errors|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Total Tx Errors|Summe Tx-Fehler|Count|Durchschnitt|Average_Total Tx Errors|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Total Collisions|Summe Konflikte|Count|Durchschnitt|Average_Total Collisions|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Avg. Datenträger s/gelesen|Durchschn. Datenträger s/gelesen|Count|Durchschnitt|Average_Avg. Datenträger s/gelesen|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Avg. Datenträger s/übertragen|Durchschn. Datenträger s/übertragen|Count|Durchschnitt|Average_Avg. Datenträger s/übertragen|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Avg. Datenträger s/geschrieben|Durchschn. Datenträger s/geschrieben|Count|Durchschnitt|Average_Avg. Datenträger s/geschrieben|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Physical Disk Bytes/sec|Physischer Datenträger Bytes/s|Count|Durchschnitt|Average_Physical Disk Bytes/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Pct Privileged Time|PCT-privilegierte Zeit|Count|Durchschnitt|Average_Pct Privileged Time|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Pct User Time|PCT-Benutzerzeit|Count|Durchschnitt|Average_Pct User Time|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Used Memory kBytes|Verwendeter Arbeitsspeicher in KB|Count|Durchschnitt|Average_Used Memory kBytes|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Virtual Shared Memory|Virtueller gemeinsamer Speicher|Count|Durchschnitt|Average_Virtual Shared Memory|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_% DPC Time|% DPC-Zeit|Count|Durchschnitt|Average_% DPC Time|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_% Idle Time|% Leerlaufzeit|Count|Durchschnitt|Average_% Idle Time|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_% Interrupt Time|% Interruptzeit|Count|Durchschnitt|Average_% Interrupt Time|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_% IO Wait Time|% E/a-Wartezeit|Count|Durchschnitt|Average_% IO Wait Time|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_% Nice Time|% Nice-Zeit|Count|Durchschnitt|Average_% Nice Time|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_% Privileged Time|% privilegierte Zeit|Count|Durchschnitt|Average_% Privileged Time|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_% Processor Time|% Prozessorzeit|Count|Durchschnitt|Average_% Processor Time|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_% User Time|% Benutzerzeit|Count|Durchschnitt|Average_% User Time|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Free Physical Memory|Freier physischer Speicher|Count|Durchschnitt|Average_Free Physical Memory|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Free Space in Paging Files|Freier Speicherplatz in Auslagerungsdateien|Count|Durchschnitt|Average_Free Space in Paging Files|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Free Virtual Memory|Freier virtueller Arbeitsspeicher|Count|Durchschnitt|Average_Free Virtual Memory|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Processes|Prozesse|Count|Durchschnitt|Average_Processes|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Size Stored In Paging Files|Genutzter Speicherplatz in Auslagerungsdateien|Count|Durchschnitt|Average_Size Stored In Paging Files|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Uptime|Betriebszeit|Count|Durchschnitt|Average_Uptime|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Users|Benutzer|Count|Durchschnitt|Average_Users|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Current Disk Queue Length|Aktuelle Warteschlangenlänge|Count|Durchschnitt|Average_Current Disk Queue Length|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Available MBytes|Verfügbare MB|Count|Durchschnitt|Average_Available MBytes|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_% Committed Bytes In Use|Zugesicherte verwendete Bytes (%)|Count|Durchschnitt|Average_% Committed Bytes In Use|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Bytes Received/sec|Empfangene Byte/Sek.|Count|Durchschnitt|Average_Bytes Received/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Bytes Sent/sec|Gesendete Byte/Sek.|Count|Durchschnitt|Average_Bytes Sent/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Average_Bytes Total/sec|Byte gesamt/Sek.|Count|Durchschnitt|Average_Bytes Total/sec|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+Heartbeat|Heartbeat|Count|Durchschnitt|Heartbeat|Computer, OSType, Version, SourceComputerId|
+Aktualisieren|Aktualisieren|Count|Durchschnitt|Aktualisieren|Computer, Product, Classification, UpdateState, Optional, Approved|
+Ereignis|Ereignis|Count|Durchschnitt|Ereignis|Source, EventLog, Computer, EventCategory, EventLevel, EventLevelName, EventID|
+
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 05720e6c290b0b54e5b6d5170a6eb22306e9cb04
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 957a68c80f9fcc07ef6f84b2b08f344745a58d95
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30282197"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866023"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure AD Connect Health
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen (FAQs) zu Azure Active Directory (Azure AD) Connect Health. Diese FAQs liefern Antworten zur Verwendung des Diensts, z.B. in Bezug auf das Abrechnungsmodell, Funktionen, Einschränkungen und den Support.
@@ -62,8 +62,16 @@ Beispiel:
 
 **F: Unterstützt Azure AD Connect Health die Azure Deutschland Cloud?**
 
-Azure AD Connect Health verfügt über eine [Installation](active-directory-aadconnect-health-agent-install.md) für Azure Deutschland. Alle Daten für deutsche Cloudkunden werden in der Azure Deutschland Cloud gespeichert.
+Azure AD Connect Health wird mit Ausnahme des [Features zum Melden von Synchronisierungsfehlern](active-directory-aadconnect-health-sync.md#object-level-synchronization-error-report-preview) nicht in der Microsoft Cloud Deutschland unterstützt. 
 
+| Rollen | Features | In der Microsoft Cloud Deutschland unterstützt |
+| ------ | --------------- | --- |
+| Connect Health für Synchronisierung | Überwachung/Erkenntnis/Warnungen/Analyse | Nein  |
+|  | Synchronisierungsfehlerbericht | Ja |
+| Connect Health für AD FS | Überwachung/Erkenntnis/Warnungen/Analyse | Nein  |
+| Connect Health für AD DS | Überwachung/Erkenntnis/Warnungen/Analyse | Nein  |
+
+Um die Agent-Konnektivität von Connect Health für Synchronisierung sicherzustellen, erfüllen Sie die [Installationsanforderungen](active-directory-aadconnect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) entsprechend.   
 
 ## <a name="installation-questions"></a>Fragen zur Installation
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 4/20/2017
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: ec30832e6863ad92eff8f5c2e613adc503c73af5
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 06a2d4ab12d2a7e03a538a98f5232a417fb39e4f
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34075747"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969468"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>Bewährte Methoden für den Infrastructure Backup-Dienst
 
@@ -42,9 +42,7 @@ Für die UNC-Zeichenfolge (Universal Naming Convention) für den Pfad muss ein v
 
 ### <a name="encryption"></a>Verschlüsselung
 
-Der Verschlüsselungsschlüssel wird zum Verschlüsseln der Sicherungsdaten verwendet, die in einen externen Speicher exportiert werden. Der Schlüssel kann mithilfe von AzureStack-Tools generiert werden. 
-
-![AzureStack-Tools](media\azure-stack-backup\azure-stack-backup-encryption1.png)
+Der Verschlüsselungsschlüssel wird zum Verschlüsseln der Sicherungsdaten verwendet, die in einen externen Speicher exportiert werden. Der Schlüssel wird im Rahmen der [Aktivierung der Sicherung für Azure Stack mit PowerShell](azure-stack-backup-enable-backup-powershell.md) generiert.
 
 Der Schlüssel muss in einem sicheren Speicherort (z.B. öffentliches Azure Key Vault-Geheimnis) gespeichert werden. Dieser Schlüssel muss während der erneuten Bereitstellung von Azure Stack verwendet werden. 
 

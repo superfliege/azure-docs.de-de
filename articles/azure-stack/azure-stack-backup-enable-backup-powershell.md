@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 5/10/2018
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: 5fab656734d0984cf44a9fe1f29fd73530bd9aa8
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 4fb40904e59e78e416d4598472a6adeb498e49f4
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34259854"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968883"
 ---
 # <a name="enable-backup-for-azure-stack-with-powershell"></a>Aktivieren der Sicherung für Azure Stack mit PowerShell
 
@@ -35,29 +35,7 @@ Sie können auf die PowerShell-Cmdlets zugreifen, um über den Endpunkt der Bedi
 
 ## <a name="prepare-powershell-environment"></a>Vorbereiten der PowerShell-Umgebung
 
-Anweisungen zum Konfigurieren der PowerShell-Umgebung finden Sie unter [Installieren von PowerShell für Azure Stack](azure-stack-powershell-install.md).
-
-## <a name="generate-a-new-encryption-key"></a>Generieren eines neuen Verschlüsselungsschlüssels
-
-PowerShell muss installiert und für Azure Stack und die Azure Stack-Tools konfiguriert sein.
- - Weitere Informationen finden Sie unter [Einrichten von PowerShell in Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-quickstart).
- - Weitere Informationen finden Sie unter [Herunterladen von Azure Stack-Tools von GitHub](azure-stack-powershell-download.md).
-
-Öffnen Sie Windows PowerShell mit erhöhten Rechten, und führen Sie die folgenden Befehle aus:
-   
-   ```powershell
-    cd C:\tools\AzureStack-Tools-master\Infrastructure
-    Import-Module .\AzureStack.Infra.psm1 
-   ```
-   
-Führen Sie in der gleichen PowerShell-Sitzung die folgenden Befehle aus:
-
-   ```powershell
-   $encryptionkey = New-EncryptionKeyBase64
-   ```
-
-> [!Warning]  
-> Sie müssen die AzureStack-Tools zum Generieren des Schlüssels verwenden.
+Anweisungen zum Konfigurieren der PowerShell-Umgebung finden Sie unter [Installieren von PowerShell für Azure Stack](azure-stack-powershell-install.md). Weitere Informationen zur Anmeldung bei Azure Stack finden Sie unter [Konfigurieren der Betreiberumgebung und Anmelden bei Azure Stack](azure-stack-powershell-configure-admin.md).
 
 ## <a name="provide-the-backup-share-credentials-and-encryption-key-to-enable-backup"></a>Angeben der Sicherungsfreigabe, der Anmeldeinformationen und des Verschlüsselungsschlüssels zum Aktivieren der Sicherung
 
@@ -66,17 +44,31 @@ Bearbeiten Sie in der gleichen PowerShell-Sitzung das folgende PowerShell-Skript
 | Variable        | BESCHREIBUNG   |
 |---              |---                                        |
 | $username       | Geben Sie den **Benutzernamen** ein, und verwenden Sie dabei die Domäne und den Benutzernamen für den Speicherort des freigegebenen Laufwerks mit ausreichendem Zugriff zum Lesen und Schreiben von Dateien. Beispiel: `Contoso\backupshareuser`. |
+| $key            | Geben Sie den **Verschlüsselungsschlüssel** ein, der zum Verschlüsseln der Sicherungen verwendet wird. |
 | $password       | Geben Sie das **Kennwort** für den Benutzer ein. |
 | $sharepath      | Geben Sie den Pfad zu dem **Sicherungsspeicherort** ein. Für den Pfad zu einer auf einem separaten Gerät gehosteten Dateifreigabe müssen Sie eine UNC-Zeichenfolge (Universal Naming Convention) verwenden. Eine UNC-Zeichenfolge gibt den Speicherort von Ressourcen (z.B. freigegebene Dateien oder Geräte) an. Zur Sicherstellung der Verfügbarkeit der Sicherungsdaten sollte sich das Gerät an einem gesonderten Speicherort befinden. |
 
    ```powershell
-    $username = "domain\backupoadmin"
-    $password = "password"
-    $credential = New-Object System.Management.Automation.PSCredential($username, ($password| ConvertTo-SecureString -asPlainText -Force))  
-    $location = Get-AzsLocation
-    $sharepath = "\\serverIP\AzSBackupStore\contoso.com\seattle"
+    $username = "domain\backupadmin"
+   
+    $Secure = Read-Host -Prompt ("Password for: " + $username) -AsSecureString
+    $Encrypted = ConvertFrom-SecureString -SecureString $Secure
+    $password = ConvertTo-SecureString -String $Encrypted
     
-    Set-AzSBackupShare -Location $location.Name -Path $sharepath -UserName $credential.UserName -Password $credential.GetNetworkCredential().password -EncryptionKey $encryptionkey
+    $BackupEncryptionKeyBase64 = ""
+    $tempEncryptionKeyString = ""
+    foreach($i in 1..64) { $tempEncryptionKeyString += -join ((65..90) + (97..122) | Get-Random | % {[char]$_}) }
+    $tempEncryptionKeyBytes = [System.Text.Encoding]::UTF8.GetBytes($tempEncryptionKeyString)
+    $BackupEncryptionKeyBase64 = [System.Convert]::ToBase64String($tempEncryptionKeyBytes)
+    $BackupEncryptionKeyBase64
+    
+    $Securekey = ConvertTo-SecureString -String $BackupEncryptionKeyBase64 -AsPlainText -Force
+    $Encryptedkey = ConvertFrom-SecureString -SecureString $Securekey
+    $key = ConvertTo-SecureString -String $Encryptedkey
+    
+    $sharepath = "\\serverIP\AzSBackupStore\contoso.com\seattle"
+
+    Set-AzSBackupShare -BackupShare $sharepath -Username $username -Password $password -EncryptionKey $key
    ```
    
 ##  <a name="confirm-backup-settings"></a>Überprüfen der Sicherungseinstellungen
@@ -84,19 +76,15 @@ Bearbeiten Sie in der gleichen PowerShell-Sitzung das folgende PowerShell-Skript
 Führen Sie in der gleichen PowerShell-Sitzung die folgenden Befehle aus:
 
    ```powershell
-   Get-AzsBackupLocation | Select-Object -ExpandProperty externalStoreDefault | Select-Object -Property Path, UserName, Password | ConvertTo-Json
+    Get-AzsBackupLocation | Select-Object -Property Path, UserName, AvailableCapacity
    ```
 
-Das Ergebnis sollte der folgenden JSON-Ausgabe ähneln:
+Das Ergebnis sollte der folgenden Ausgabe ähneln:
 
-   ```json
-      {
-    "ExternalStoreDefault":  {
-        "Path":  "\\\\serverIP\\AzSBackupStore\\contoso.com\\seattle",
-        "UserName":  "domain\backupoadmin",
-        "Password":  null
-       }
-   } 
+   ```powershell
+    Path                        : \\serverIP\AzSBackupStore\contoso.com\seattle
+    UserName                    : domain\backupadmin
+    AvailableCapacity           : 60 GB
    ```
 
 ## <a name="next-steps"></a>Nächste Schritte

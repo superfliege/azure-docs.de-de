@@ -12,23 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 07/09/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: b63fdd630647cc970a2d935619b4d3f16b8c0375
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 53bb89daee47d5f380786246070cf5cddb69b731
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30229889"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929554"
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Problembehandlung für Microsoft Azure Stack
 
-*Gilt für: Azure Stack Development Kit*
-
 Dieses Dokument enthält allgemeine Informationen zur Problembehandlung für Azure Stack. 
 
-Da das Technical Development Kit für Azure Stack als Auswertungsumgebung angeboten wird, ist kein offizieller Support vom Microsoft-Kundensupport verfügbar. Suchen Sie im [MSDN-Forum für Azure Stack](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) nach weiterer Unterstützung und Informationen, falls Sie feststellen, dass ein Problem nicht dokumentiert ist.  
+> [!NOTE]
+> Da das Technical Development Kit für Azure Stack (ASDK) als Auswertungsumgebung angeboten wird, ist kein offizieller Support vom Microsoft-Kundensupport verfügbar. Suchen Sie bei Problemen im [MSDN-Forum für Azure Stack](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) nach weiterer Unterstützung und Informationen.  
 
 Die in diesem Abschnitt beschriebenen Empfehlungen zur Behandlung von Problemen basieren auf mehreren Quellen, und es kann vorkommen, dass sich Ihr spezifisches Problem nicht mit den Empfehlungen beheben lässt. Codebeispiele werden entsprechend dem aktuellen Entwicklungsstand bereitgestellt, und die erwarteten Ergebnisse können nicht garantiert werden. An diesem Abschnitt werden im Zuge der Implementierung von Produktverbesserungen regelmäßig Änderungen und Aktualisierungen vorgenommen.
 
@@ -36,16 +35,15 @@ Die in diesem Abschnitt beschriebenen Empfehlungen zur Behandlung von Problemen 
 ### <a name="deployment-failure"></a>Fehler bei der Bereitstellung
 Wenn während der Installation ein Fehler auftritt, können Sie mithilfe der Option „-rerun“ des Bereitstellungsskripts die Bereitstellung ab dem Schritt neu starten, in dem der Fehler aufgetreten ist.  
 
-
-### <a name="at-the-end-of-the-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>Am Ende der Bereitstellung ist die PowerShell-Sitzung noch geöffnet, und es wird keine Ausgabe angezeigt.
-Dies ist wahrscheinlich nur auf das Standardverhalten des PowerShell-Befehlsfensters zurückzuführen, wenn dieses ausgewählt wurde. Die Bereitstellung des Development Kits war eigentlich erfolgreich, das Skript wurde jedoch bei der Auswahl des Fensters angehalten. Sie können überprüfen, ob das Setup abgeschlossen ist, indem Sie in der Titelleiste des Befehlsfensters nach dem Wort „select“ suchen.  Drücken Sie die ESC-Taste, um die Auswahl aufzuheben. Danach sollte die Abschlussmeldung angezeigt werden.
+### <a name="at-the-end-of-asdk-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>Am Ende der ASDK-Bereitstellung ist die PowerShell-Sitzung noch geöffnet, und es wird keine Ausgabe angezeigt.
+Dies ist wahrscheinlich nur auf das Standardverhalten des PowerShell-Befehlsfensters zurückzuführen, wenn dieses ausgewählt wurde. Die Bereitstellung des Development Kits war erfolgreich, das Skript wurde jedoch bei der Auswahl des Fensters angehalten. Sie können überprüfen, ob das Setup abgeschlossen ist, indem Sie in der Titelleiste des Befehlsfensters nach dem Wort „select“ suchen.  Drücken Sie die ESC-Taste, um die Auswahl aufzuheben. Danach sollte die Abschlussmeldung angezeigt werden.
 
 ## <a name="virtual-machines"></a>Virtuelle Computer
 ### <a name="default-image-and-gallery-item"></a>Standardimage und Katalogelement
 Vor der Bereitstellung virtueller Computer in Azure Stack müssen Sie zuerst ein Windows Server-Image und ein Katalogelement hinzufügen.
 
 ### <a name="after-restarting-my-azure-stack-host-some-vms-may-not-automatically-start"></a>Nach einem Neustart des Azure Stack-Hosts werden einige virtuelle Computer möglicherweise nicht automatisch gestartet.
-Nach dem Neustart des Hosts ist Azure Stack möglicherweise nicht sofort verfügbar.  Dies ist darauf zurückzuführen, dass [Infrastruktur-VMs](..\azure-stack\asdk\asdk-architecture.md#virtual-machine-roles) von Azure Stack und die RPs etwas Zeit zum Überprüfen den Konsistenz benötigen. Sie werden jedoch letztlich automatisch gestartet.
+Nach dem Neustart des Hosts ist Azure Stack möglicherweise nicht sofort verfügbar.  Dies ist darauf zurückzuführen, dass [Infrastruktur-VMs](..\azure-stack\asdk\asdk-architecture.md#virtual-machine-roles) von Azure Stack und Ressourcenanbieter etwas Zeit zum Überprüfen der Konsistenz benötigen. Sie werden jedoch letztlich automatisch gestartet.
 
 Es kann auch vorkommen, dass Mandanten-VMs nach einem Neustart des Azure Stack Development Kit-Hosts nicht automatisch gestartet werden. Dies ist ein bekanntes Problem, und es sind nur einige manuelle Schritte erforderlich, um diese VMs wieder online zu schalten:
 
@@ -55,7 +53,7 @@ Es kann auch vorkommen, dass Mandanten-VMs nach einem Neustart des Azure Stack D
 4.  Mandanten-VMs werden mit dem Zustand *gespeichert* angezeigt. Sobald alle Infrastruktur-VMs ausgeführt werden, klicken Sie mit der rechten Maustaste auf die Mandanten-VMs, und wählen Sie **Start**, um die Ausführung des virtuellen Computers fortzusetzen.
 
 ### <a name="i-have-deleted-some-virtual-machines-but-still-see-the-vhd-files-on-disk-is-this-behavior-expected"></a>Ich habe einige virtuelle Computer gelöscht, die VHD-Dateien werden mir auf dem Datenträger aber weiterhin angezeigt. Ist dieses Verhalten zu erwarten?
-Ja, dieses Verhalten ist zu erwarten. Es wurde aus den folgenden Gründen so entwickelt:
+Ja, dieses Verhalten wird erwartet. Es wurde aus den folgenden Gründen so entwickelt:
 
 * Wenn Sie einen virtuellen Computer löschen, werden die VHDs nicht gelöscht. Datenträger sind separate Ressourcen in der Ressourcengruppe.
 * Wenn ein Speicherkonto gelöscht wird, wird der Löschvorgang über Azure Resource Manager sofort angezeigt, die darin enthaltenen Datenträger bleiben jedoch möglicherweise im Speicher erhalten, bis die Garbage Collection ausgeführt wird.
@@ -66,14 +64,5 @@ Weitere Informationen zum Konfigurieren des Schwellenwerts für die Aufbewahrung
 
 ## <a name="storage"></a>Speicher
 ### <a name="storage-reclamation"></a>Freigabe von Speicherplatz
-Es dauert unter Umständen bis zu 14 Stunden, bis freigegebene Kapazität im Portal angezeigt wird. Die Freigabe von Speicherplatz hängt von verschiedenen Faktoren ab, einschließlich der prozentualen Auslastung von internen Containerdateien im Blockblobspeicher. Je nach gelöschter Datenmenge besteht daher keine Garantie für die Menge des Speicherplatzes, der freigegeben werden kann, wenn der Garbage Collector ausgeführt wird.
-
-## <a name="windows-azure-pack-connector"></a>Windows Azure Pack-Connector
-* Wenn Sie das Kennwort des azurestackadmin-Kontos nach der Bereitstellung des Azure Stack Development Kits ändern, können Sie den Modus mit mehreren Clouds nicht mehr konfigurieren. Daher können Sie keine Verbindung mit der Windows Azure Pack-Zielumgebung herstellen.
-* Nach dem Einrichten des Modus mit mehreren Clouds:
-    * Benutzer können das Dashboard nur anzeigen, nachdem sie die Portaleinstellungen zurückgesetzt haben. (Klicken Sie im Benutzerportal Sie auf das Symbol für die Portaleinstellungen (Zahnradsymbol rechts oben). Klicken Sie unter **Standardeinstellungen wiederherstellen** auf **Übernehmen**.)
-    * Die Dashboardtitel werden unter Umständen nicht angezeigt. Wenn dieses Problem auftritt, müssen Sie sie manuell wieder hinzufügen.
-    * Einige Kacheln werden unter Umständen nicht korrekt angezeigt, wenn Sie diese zuerst zum Dashboard hinzuzufügen. Aktualisieren Sie den Browser, um dieses Problem zu beheben.
-
-
+Es kann bis zu 14 Stunden dauern, bis freigegebene Kapazität im Portal angezeigt wird. Die Freigabe von Speicherplatz hängt von verschiedenen Faktoren ab, einschließlich der prozentualen Auslastung von internen Containerdateien im Blockblobspeicher. Je nach gelöschter Datenmenge besteht daher keine Garantie für die Menge des Speicherplatzes, der freigegeben werden kann, wenn der Garbage Collector ausgeführt wird.
 

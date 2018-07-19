@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/07/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 9a43179998e8377dfbbb1a41ba7d46936d63aedd
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 13bc82caf5e10f5b35df29d085349ec4c80628a2
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030154"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929269"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack-PKI-Zertifikatanforderungen
 
@@ -39,7 +39,7 @@ Die folgende Liste beschreibt die Zertifikatsanforderungen, die für die Bereits
 - Ihre Azure Stack-Infrastruktur muss über Netzwerkzugriff auf den im Zertifikat veröffentlichten Speicherort der Zertifikatsperrliste (Certificate Revocation List, CRL) der Zertifizierungsstelle verfügen. Bei dieser CRL muss es sich um einen HTTP-Endpunkt handeln.
 - Beim Rotieren von Zertifikaten müssen diese entweder von der gleichen internen Zertifizierungsstelle stammen, die auch zum Signieren der bei der Bereitstellung angegebenen Zertifikate verwendet wurde, oder von einer der oben angegebenen öffentlichen Zertifizierungsstellen.
 - Die Verwendung selbstsignierter Zertifikate wird nicht unterstützt.
-- Das Zertifikat kann ein einzelnes Platzhalterzertifikat sein, das alle Namespaces im Feld „Alternativer Antragstellername“ abdeckt. Alternativ können Sie auch einzelne Zertifikate mit Platzhaltern für Endpunkte wie **acs** und Key Vault verwenden, wo sie benötigt werden. 
+- Für Bereitstellung und Rotation können Sie entweder ein einziges Zertifikat verwenden, das alle Namespaces in den Feldern „Antragstellername“ und „Alternativer Antragstellername“ des Zertifikats abdeckt. ODER Sie können einzelne Zertifikate für jeden der folgenden Namespaces verwenden, die die Azure Stack-Dienste benötigen, deren Nutzung Sie planen. Hinweis: Beide Ansätze erfordern bei Bedarf Platzhalter für Endpunkte, z.B. **KeyVault** und **KeyVaultInternal**. 
 - Der Zertifikatsignaturalgorithmus darf nicht SHA1, sondern muss sicherer sein. 
 - Das Zertifikatsformat muss PFX sein, da sowohl der öffentliche als auch der private Schlüssel für die Installation von Azure Stack benötigt werden. 
 - Die PFX-Zertifikatdateien müssen im Feld „Schlüsselverwendung“ einen Wert in „Digitale Signatur“ und „Schlüsselchiffrierung“ enthalten.

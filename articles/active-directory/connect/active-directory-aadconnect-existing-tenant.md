@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 726d8998d24a630808186eea417f236fdbfb565e
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 44d9aa988e8344f76ddb5430e2aacbd4c818c033
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725206"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969400"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect mit vorhandenem Mandanten
 Bei den meisten Themen zur Verwendung von Azure AD Connect wird davon ausgegangen, dass Sie mit einem neuen Azure AD-Mandanten starten und dass es keine weiteren Benutzer oder Objekte gibt. Wenn Sie jedoch bereits über einen Azure AD-Mandanten verfügen, der mit Benutzern und anderen Objekten aufgefüllt ist, und jetzt Connect verwenden möchten, eignet sich dieses Thema perfekt für Sie.
@@ -48,6 +48,9 @@ Wenn Azure AD ein Objekt findet, dessen Attributwerte die gleichen sind wie für
 Die Warnungen und Informationen im vorherigen Abschnitt müssen in Ihrer Planung berücksichtigt werden. Wenn Sie Änderungen in Azure AD vorgenommen haben, die nicht im lokalen AD DS übernommen wurden, müssen Sie planen, wie der AD DS mit den aktualisierten Werten aufgefüllt werden soll, bevor Sie Ihre Objekte mithilfe von Azure AD Connect synchronisieren.
 
 Wenn Sie Ihre Objekte mit einem Soft Match abgeglichen haben, wird dem Objekt in Azure AD ein **sourceAnchor** hinzugefügt, sodass später ein Hard Match verwendet werden kann.
+
+>[!IMPORTANT]
+> Microsoft rät dringend davon ab, lokale Konten mit bereits vorhandenen Verwaltungskonten in Azure Active Directory zu synchronisieren.
 
 ### <a name="hard-match-vs-soft-match"></a>Hard Match im Vergleich zu Soft Match
 Bei einer neuen Connect-Installation gibt es keinen praktischen Unterschied zwischen einem Soft Match und einem Hard Match. Der Unterschied kommt bei einer Notfallwiederherstellung zum Tragen. Wenn der Server mit Azure AD Connect nicht mehr vorhanden ist, können Sie eine neue Instanz installieren, ohne dass Daten verloren gehen. Während der Erstinstallation wird ein Objekt mit einem sourceAnchor-Parameter an Connect gesendet. Die Übereinstimmung kann dann vom Client (Azure AD Connect) ausgewertet werden – dies ist erheblich schneller als das gleiche Vorgehen in Azure AD. Ein Hard Match wird sowohl von Connect als auch von Azure AD ausgewertet. Ein Soft Match wird nur von Azure AD ausgewertet.

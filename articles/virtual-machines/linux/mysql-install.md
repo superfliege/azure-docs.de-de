@@ -1,9 +1,9 @@
 ---
 title: Einrichten von MySQL auf einem virtuellen Linux-Computer in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie den MySQL-Stack auf einem virtuellen Linux-Computer (Betriebssystem der Ubuntu- oder RedHat-Familie) in Azure installieren.
+description: Erfahren Sie, wie Sie den MySQL-Stapel auf einem virtuellen Linux-Computer (Betriebssystem der Ubuntu- oder Red Hat-Familie) in Azure installieren.
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2016
-ms.author: iainfou
-ms.openlocfilehash: d91f8cf8455a60d3e0afb2f209ba07933bcdee1c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: cynthn
+ms.openlocfilehash: c8043064ac1df40eaa31ae56e9ec31c0152e0130
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30239173"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37933532"
 ---
 # <a name="how-to-install-mysql-on-azure"></a>Installieren von MySQL in Azure
 In diesem Artikel erfahren Sie, wie Sie MySQL auf einem virtuellen Azure-Computer, auf dem Linux ausgeführt wird, installieren und konfigurieren.

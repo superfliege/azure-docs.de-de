@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: tomfitz
-ms.openlocfilehash: 4111d1d990f3e9efb78fae0476b027d5bae013af
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dd111c33cbd348a05ed0f0c04f7325347612e54d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603245"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38506380"
 ---
 # <a name="use-the-azure-cli-to-manage-azure-resources-and-resource-groups"></a>Verwalten von Azure-Ressourcen und -Ressourcengruppen mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -35,7 +35,7 @@ Das Bereitstellen einer Resource Manager-Vorlage für Ihr Abonnement wird in die
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Informationen für die lokale Installation und Verwendung der CLI finden Sie unter [Install Azure CLI 2.0](/cli/azure/install-azure-cli) (Installieren der Azure CLI 2.0).
+Informationen für die lokale Installation und Verwendung der CLI finden Sie unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="set-subscription"></a>Festlegen des Abonnements
 

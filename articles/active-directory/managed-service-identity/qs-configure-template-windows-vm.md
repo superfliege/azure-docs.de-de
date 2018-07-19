@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 05859187a5734d982b750e287c3ecd375ed1da2f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: d8490dcba35cfeabb3da589f3d079571d5e98d3b
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723744"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969203"
 ---
 # <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>Konfigurieren einer verwalteten VM-Dienstidentität mithilfe einer Vorlage
 
@@ -101,18 +101,70 @@ In diesem Abschnitt aktivieren und deaktivieren Sie eine vom System zugewiesene 
 
    ![Screenshot der Vorlage nach dem Update](../media/msi-qs-configure-template-windows-vm/template-file-after.png)
 
-### <a name="disable-a-system-assigned-identity-from-an-azure-vm"></a>Deaktivieren einer vom System zugewiesenen Identität von einer Azure-VM
+### <a name="assign-a-role-the-vms-system-assigned-identity"></a>Zuweisen einer Rolle zur vom VM-System zugewiesenen Identität
 
-> [!NOTE]
-> Die Deaktivierung einer verwalteten Dienstidentität über einen virtuellen Computer wird derzeit nicht unterstützt. In der Zwischenzeit können Sie zwischen vom System zugewiesenen und vom Benutzer zugewiesenen Identitäten wechseln.
+Nachdem Sie die Option für eine vom System zugewiesene Identität auf Ihrer VM aktiviert haben, möchten Sie ihrer Identität möglicherweise eine Rolle wie **Lesezugriff** für die Ressourcengruppe gewähren, in der sie erstellt wurde.
+
+1. Verwenden Sie unabhängig davon, ob Sie sich bei Azure lokal oder über das Azure-Portal anmelden, ein Konto, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält. Stellen Sie außerdem sicher, dass Ihr Konto zu einer Rolle gehört, durch die Sie Schreibberechtigungen auf dem virtuellen Computer erhalten (z.B. die Rolle „Mitwirkender für virtuelle Computer“).
+ 
+2. Laden Sie die Vorlage in einen [Editor](#azure-resource-manager-templates), und fügen Sie die folgenden Informationen hinzu, um Ihrer VM **Lesezugriff** für die Ressourcengruppe zu gewähren, in der sie erstellt wurde.  Ihre Vorlagenstruktur kann je nach Editor und dem von Ihnen gewählten Bereitstellungsmodell variieren.
+   
+   Fügen Sie unter dem Abschnitt `parameters` Folgendes hinzu:
+
+    ```JSON
+    "builtInRoleType": {
+          "type": "string",
+          "defaultValue": "Reader"
+        },
+        "rbacGuid": {
+          "type": "string"
+        }
+    ```
+
+    Fügen Sie unter dem Abschnitt `variables` Folgendes hinzu:
+
+    ```JSON
+    "Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]"
+    ```
+
+    Fügen Sie unter dem Abschnitt `resources` Folgendes hinzu:
+
+    ```JSON
+    {
+        "apiVersion": "2017-09-01",
+         "type": "Microsoft.Authorization/roleAssignments",
+         "name": "[parameters('rbacGuid')]",
+         "properties": {
+                "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
+                "principalId": "[reference(variables('vmResourceId'), '2017-12-01', 'Full').identity.principalId]",
+                "scope": "[resourceGroup().id]"
+          },
+          "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
+            ]
+    }
+    ```
+
+### <a name="disable-a-system-assigned-identity-from-an-azure-vm"></a>Deaktivieren einer vom System zugewiesenen Identität von einer Azure-VM
 
 Wenn eine verwaltete Dienstidentität auf einer VM nicht mehr benötigt wird, gehen Sie wie folgt vor:
 
 1. Verwenden Sie unabhängig davon, ob Sie sich bei Azure lokal oder über das Azure-Portal anmelden, ein Konto, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält. Stellen Sie außerdem sicher, dass Ihr Konto zu einer Rolle gehört, durch die Sie Schreibberechtigungen auf dem virtuellen Computer erhalten (z.B. die Rolle „Mitwirkender für virtuelle Computer“).
 
-2. Ändern Sie den Identitätstyp in `UserAssigned`.
+2. Laden Sie die Vorlage in einen [Editor](#azure-resource-manager-templates), und suchen Sie nach der gewünschten `Microsoft.Compute/virtualMachines`-Ressource im Abschnitt `resources`. Wenn Ihre VM nur über eine vom System zugewiesene Identität verfügt, können Sie diese deaktivieren, indem Sie den Identitätstyp in `None` ändern.  Wenn Ihre VM sowohl vom System als auch vom Benutzer zugewiesene Identitäten enthält, entfernen Sie `SystemAssigned` aus dem Identitätstyp und behalten `UserAssigned` zusammen mit dem Array `identityIds` der vom Benutzer zugewiesenen Identitäten bei.  Das folgende Beispiel zeigt Ihnen, wie Sie eine vom System zugewiesene Identität aus einer VM ohne vom Benutzer zugewiesene Identitäten entfernen:
+   
+   ```JSON
+    {
+      "apiVersion": "2017-12-01",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('vmName')]",
+      "location": "[resourceGroup().location]",
+      "identity": { 
+          "type": "None"
+    }
+   ```
 
-## <a name="user-assigned-identity"></a>Vom Benutzer zugewiesene Identität
+## <a name="user-assigned-identity"></a>Benutzerzugewiesene Identität
 
 In diesem Abschnitt weisen Sie einer Azure-VM mit der Azure Resource Manager-Vorlage eine vom Benutzer zugewiesene Identität zu.
 

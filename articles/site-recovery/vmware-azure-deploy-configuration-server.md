@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/06/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 841176d8c5f215d18edf25b1f191792b37555fa9
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 240f5270d083fa5f4742f3ed2cd61feee2b635ec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318118"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38718956"
 ---
 # <a name="deploy-a-configuration-server"></a>Bereitstellen eines Konfigurationsservers
 
@@ -99,8 +99,10 @@ Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, f�
 
 1. Klicken Sie im Assistenten für die Konfigurationsserververwaltung auf **Konnektivität einrichten**, und wählen Sie anschließend die NIC aus, die der Verarbeitungsserver nutzt, um den Replikationsdatenverkehr zu empfangen. Klicken Sie dann auf **Speichern**. Diese Einstellung kann nach der Konfiguration nicht mehr geändert werden.
 2. Melden Sie sich unter **Recovery Services-Tresor auswählen** bei Microsoft Azure an, und wählen Sie Ihr Azure-Abonnement, die entsprechende Ressourcengruppe sowie den entsprechenden Tresor aus.
-    >[!NOTE]
+
+    > [!NOTE]
     > Nach der Registrierung kann der Recovery Services-Tresor nicht geändert werden.
+    
 3. Gehen Sie unter **Drittanbietersoftware installieren** wie folgt vor:
 
     |Szenario   |Vorgehensweise  |
@@ -117,11 +119,27 @@ Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, f�
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
-1. Kann ich die VM, auf dem der Konfigurationsserver installiert ist, für andere Zwecke einsetzen? **Nein**, der Konfigurationsserver ist nur für seinen jeweiligen Zweck vorgesehen. Der Einsatz als gemeinsam genutzter Server wird nicht unterstützt.
-2. Kann ich den Tresor, der bereits auf dem Konfigurationsserver registriert ist, mit einem neu erstellten Tresor austauschen? **Nein**, sobald ein Tresor beim Konfigurationsserver registriert ist, sind keine Änderungen daran möglich.
-3. Kann ich den gleichen Konfigurationsserver zum Schutz von physischen und virtuellen Computern verwenden? **Ja**, ein Konfigurationsserver kann zum Replizieren von physischen und virtuellen Computern verwendet werden. Allerdings wird ein Failback auf einem physischen Computer nicht unterstützt.
-4. Wie wird der Konfigurationsserver eingesetzt? Weitere Informationen zum Konfigurationsserver und seinen Funktionen finden Sie im [Artikel zu unserer Azure Site Recovery-Architektur](vmware-azure-architecture.md).
-5. Wo erhalte ich die neueste Version des Konfigurationsservers? Sie können das Tool direkt aus dem [Microsoft Download Center](https://aka.ms/asrconfigurationserver) herunterladen. Den Artikel mit den einzelnen Schritten zum Durchführen eines Upgrades für den Konfigurationsserver finden Sie [hier](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
+1. Kann ich die VM, auf der der Konfigurationsserver installiert ist, für andere Zwecke einsetzen?
+
+    **Nein**. Es wird empfohlen, die VM ausschließlich als Konfigurationsserver einzusetzen. Vergewissern Sie sich, dass alle im [vorherigen Abschnitt](vmware-azure-deploy-configuration-server.md#Prerequisites) genannten Spezifikationen für eine effiziente Verwaltung von Notfallwiederherstellungen eingehalten werden.
+2. Kann ich den Tresor, der bereits auf dem Konfigurationsserver registriert ist, mit einem neu erstellten Tresor austauschen?
+
+    **Nein**, sobald ein Tresor beim Konfigurationsserver registriert ist, sind keine Änderungen daran möglich.
+3. Kann ich den gleichen Konfigurationsserver zum Schutz von physischen und virtuellen Computern verwenden?
+
+    **Ja**, ein Konfigurationsserver kann zum Replizieren von physischen und virtuellen Computern verwendet werden. Allerdings kann ein physischer Computer nur auf eine VMware-VM zurückgesetzt werden.
+4. Welchen Zweck erfüllt ein Konfigurationsserver, und wo wird er eingesetzt?
+
+    Weitere Informationen zum Konfigurationsserver und seinen Funktionen finden Sie im [Artikel zu unserer Azure Site Recovery-Architektur](vmware-azure-architecture.md).
+5. Wo erhalte ich die neueste Version des Konfigurationsservers?
+
+    Den Artikel mit den einzelnen Schritten zum Durchführen eines Upgrades für den Konfigurationsserver finden Sie [im Portal](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Sie können das Tool auch direkt aus dem [Microsoft Download Center](https://aka.ms/asrconfigurationserver) herunterladen.
+6. Wo kann ich die Passphrase für den Konfigurationsserver herunterladen?
+
+    Informationen zum Herunterladen der Passphrase finden Sie in [diesem Artikel](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase).
+7. Wo kann ich die Tresorregistrierungsschlüssel herunterladen?
+
+    Im **Recovery Services-Tresor**, **Verwalten** > **Site Recovery-Infrastruktur** > **Konfigurationsserver**. Klicken Sie unter „Server“ auf **Registrierungsschlüssel herunterladen**, um die Datei mit den Tresoranmeldeinformationen herunterzuladen.
 
 ## <a name="upgrade-the-configuration-server"></a>Aktualisieren Sie den Konfigurationsserver
 

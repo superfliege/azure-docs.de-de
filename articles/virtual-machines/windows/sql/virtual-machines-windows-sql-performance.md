@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 04/19/2018
 ms.author: jroth
-ms.openlocfilehash: 9d3fbbab76f16a8546c431d5acf913bf419edeb4
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a7a24bde6cc34befee7de3bcbf13b96c8b641af2
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798154"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888907"
 ---
 # <a name="performance-best-practices-for-sql-server-in-azure-virtual-machines"></a>Bewährte Methoden zur Leistung für SQL Server auf virtuellen Azure-Computern
 
@@ -39,7 +39,7 @@ Im folgenden finden eine kurze Checkliste für die optimale Leistung von SQL Ser
 
 | Bereich | Optimierungen |
 | --- | --- |
-| [Größe des virtuellen Computers](#vm-size-guidance) |[DS3](../sizes-general.md) oder höher für SQL Server Enterprise Edition<br/><br/>[DS2](../sizes-general.md) oder höher für SQL Standard und Web Edition |
+| [Größe des virtuellen Computers](#vm-size-guidance) |[DS3_v2](../sizes-general.md) oder höher für SQL Server Enterprise Edition.<br/><br/>[DS2_v2](../sizes-general.md) oder höher für SQL Server Standard und Web Edition. |
 | [Speicher](#storage-guidance) |Verwenden Sie [Storage Premium](../premium-storage.md). Storage Standard empfiehlt sich nur für Entwicklungs- und Testumgebungen.<br/><br/>Speichern Sie das [Speicherkonto](../../../storage/common/storage-create-storage-account.md) und die SQL Server-VM in derselben Region.<br/><br/>Deaktivieren Sie auf dem Speicherkonto den [georedundanten Azure-Speicher](../../../storage/common/storage-redundancy.md) (Georeplikation). |
 | [Datenträger](#disks-guidance) |Verwenden Sie mindestens zwei [P30-Datenträger](../premium-storage.md#scalability-and-performance-targets): einen für Protokolldateien und einen für Datendateien und TempDB. (Oder fügen Sie mindestens zwei Datenträger zu einem Stripeset zusammen, und speichern Sie alle Dateien in einem einzelnen Volume.)<br/><br/>Vermeiden Sie die Verwendung von Betriebssystem- oder temporären Datenträgern für die Datenbankspeicherung oder Protokollierung.<br/><br/>Aktivieren Sie das Caching für Lesevorgänge auf den Datenträgern, auf denen die Datendateien und TempDB-Datendateien gehostet werden.<br/><br/>Aktivieren Sie kein Caching auf Datenträgern, auf denen die Protokolldatei gehostet wird.<br/><br/>Wichtig: Beenden Sie den SQL Server-Dienst, wenn Sie die Cacheeinstellungen für einen Azure-VM-Datenträger ändern.<br/><br/>Erstellen Sie ein Stripeset mehrerer Azure-Datenträger für Daten, um einen höheren E/A-Durchsatz zu erzielen.<br/><br/>Formatieren Sie mit dokumentierten Zuordnungsgrößen. |
 | [E/A](#io-guidance) |Aktivieren Sie die Datenbankseitenkomprimierung.<br/><br/>Aktivieren Sie die sofortige Dateiinitialisierung für Datendateien.<br/><br/>Begrenzen Sie die automatische Vergrößerung der Datenbank.<br/><br/>Deaktivieren Sie die automatische Verkleinerung der Datenbank.<br/><br/>Verschieben Sie alle Datenbanken, einschließlich der Systemdatenbanken, auf Datenträger für Daten.<br/><br/>Verschieben Sie die Verzeichnisse für das SQL Server-Fehlerprotokoll und die Ablaufverfolgungsdateien auf die Datenträger für Daten.<br/><br/>Richten Sie standardmäßige Dateispeicherorte für Sicherungen und Datenbanken ein.<br/><br/>Aktivieren Sie gesperrte Seiten.<br/><br/>Wenden Sie SQL Server-Leistungs-Hotfixpakete an. |
@@ -49,10 +49,12 @@ Weitere Informationen dazu, *wie* und *warum* diese Optimierungen vorgenommen we
 
 ## <a name="vm-size-guidance"></a>Leitfaden für die Größe virtueller Computer
 
-Für leistungsabhängige Anwendungen empfiehlt sich die Verwendung der folgenden [Größen für virtuelle Computer](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json):
+Für leistungsabhängige Anwendungen empfiehlt sich die Verwendung der folgenden [Größen für virtuelle Computer](../sizes.md):
 
-* **SQL Server Enterprise Edition**: DS3 oder höher
-* **SQL Server Standard und Web Edition**: DS2 oder höher
+* **SQL Server Enterprise Edition:** DS3_v2 oder höher
+* **SQL Server Standard und Web Edition**: DS2_v2 oder höher
+
+VMs der [DSv2-Serie](../sizes-general.md#dsv2-series) unterstützen Storage Premium, was für eine optimale Leistung empfohlen wird. Die hier empfohlenen Größen sind Richtwerte, doch die tatsächliche VM-Größe hängt von den Anforderungen Ihrer Workloads ab. VMs der DSv2-Serie sind universelle VMs, die für eine Vielzahl von Workloads geeignet sind, während andere VM-Größen für bestimmte Workloadtypen optimiert sind. Die [M-Serie](../sizes-memory.md#m-series) bietet beispielsweise die höchste vCPU-Anzahl und Arbeitsspeicher für die größten SQL Server-Workloads. Die [GS-Serie](../sizes-memory.md#gs-series) und [DSv2-Serie 11-15](../sizes-memory.md#dsv2-series-11-15) sind für große Arbeitsspeicheranforderungen optimiert. Beide Serien sind auch mit [eingeschränkten Kerngrößen](../../windows/constrained-vcpu.md) erhältlich, was Kosten bei Workloads mit geringeren Computeanforderungen spart. VMs der [Ls-Serie](../sizes-storage.md) sind für hohen Datenträgerdurchsatz und hohe E/A-Werte optimiert. Es ist wichtig, Ihre spezifische SQL Server-Workload zu prüfen und diese bei der Auswahl der VM-Serie und -Größe zu berücksichtigen.
 
 ## <a name="storage-guidance"></a>Leitfaden für Speicher
 

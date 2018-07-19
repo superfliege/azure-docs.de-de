@@ -1,28 +1,27 @@
 ---
-title: Azure Resource Manager-Vorlagenressourcen | Microsoft Docs
+title: Azure Resource Manager-Vorlagenressourcen | Microsoft-Dokumentation
 description: Beschreibt den Abschnitt „Resources“ der Azure Resource Manager-Vorlagen mithilfe deklarativer JSON-Syntax.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2017
+ms.date: 07/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 12dc5921cc1977b53f0457d89537193eadded188
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 1619f3bfdf49820ec529947ea02d1602a7b2aa8c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359671"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723452"
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Abschnitt „Resources“ von Azure Resource Manager-Vorlagen
 
-Im Ressourcenabschnitt definieren Sie die Ressourcen, die bereitgestellt oder aktualisiert werden. Dieser Abschnitt kann komplizierter werden, da Sie die Typen, die sie bereitstellen, verstehen müssen, um die richtigen Werte resources zu können.
+Im Ressourcenabschnitt definieren Sie die Ressourcen, die bereitgestellt oder aktualisiert werden. Dieser Abschnitt kann komplizierter werden, da Sie die bereitgestellten Typen verstehen müssen, um die richtigen Werte angeben zu können.
 
 ## <a name="available-properties"></a>Verfügbare Eigenschaften
 
@@ -88,7 +87,7 @@ Sie definieren Ressourcen mit der folgenden Struktur:
 | apiVersion |Ja |Version der REST-API zum Erstellen der Ressource. |
 | type |Ja |Der Typ der Ressource. Dieser Wert ist eine Kombination aus dem Namespace des Ressourcenanbieters und dem Ressourcentyp (z.B. **Microsoft.Storage/storageAccounts**). |
 | name |Ja |Der Name der Ressource. Der Name muss die Einschränkungen für URI-Komponenten laut Definition in RFC3986 erfüllen. Darüber hinaus überprüfen Azure-Dienste, die externen Parteien den Ressourcennamen verfügbar machen, den Namen, um sicherzustellen, dass es sich nicht um einen Versuch handelt, eine andere Identität vorzutäuschen. |
-| location |Variabel |Unterstützte Standorte der angegebenen Ressource Wählen Sie einen der verfügbaren Standorte. In der Regel ist es jedoch sinnvoll, einen in der Nähe der Benutzer zu wählen. Normalerweise ist es auch sinnvoll, Ressourcen, die miteinander interagieren, in der gleichen Region zu platzieren. eine Rollenzuweisung) jedoch nicht. |
+| location |Variabel |Unterstützte Standorte der angegebenen Ressource Wählen Sie einen der verfügbaren Standorte. In der Regel ist es jedoch sinnvoll, einen in der Nähe der Benutzer zu wählen. Normalerweise ist es auch sinnvoll, Ressourcen, die miteinander interagieren, in der gleichen Region zu platzieren. Die meisten Ressourcentypen benötigen einen Speicherort, andere Typen (z.B. eine Rollenzuordnung) jedoch nicht. |
 | tags |Nein  |Markierungen, die der Ressource zugeordnet sind Verwenden Sie Tags zum logischen Organisieren der Ressourcen in Ihrem Abonnement. |
 | Kommentare |Nein  |Ihre Notizen zur Dokumentierung der Ressourcen in Ihrer Vorlage |
 | copy |Nein  |Wenn mehr als eine Instanz erforderlich ist, die Anzahl der zu erstellenden Ressourcen. Der Standardmodus ist parallel. Geben Sie den seriellen Modus an, wenn nicht alle Ressourcen gleichzeitig bereitgestellt werden sollen. Weitere Informationen finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen in Azure Resource Manager](resource-group-create-multiple.md). |
@@ -99,11 +98,33 @@ Sie definieren Ressourcen mit der folgenden Struktur:
 | Tarif | Nein  | Einige Ressourcen lassen Werte zu, die den bereitzustellenden Tarif definieren. Beispielsweise können Sie das Marketplace-Image für einen virtuellen Computer angeben. | 
 | resources |Nein  |Untergeordnete Ressourcen, die von der definierten Ressource abhängig sind. Stellen Sie nur Ressourcentypen bereit, die laut Schema der übergeordneten Ressource zulässig sind. Der vollqualifizierte Typ der untergeordneten Ressource enthält den übergeordneten Ressourcentyp, z.B. **Microsoft.Web/sites/extensions**. Eine Abhängigkeit von der übergeordneten Ressource ist nicht impliziert. Sie müssen diese Abhängigkeit explizit definieren. |
 
+## <a name="condition"></a>Bedingung
+
+Wenn Sie sich während der Bereitstellung entscheiden müssen, ob Sie eine Ressource erstellen möchten, verwenden Sie das `condition`-Element. Der Wert für dieses Element wird mit „true“ oder „false“ aufgelöst. Wenn der Wert „true“ ist, wird die Ressource bereitgestellt. Ist der Wert „false“, wird die Ressource nicht bereitgestellt. Verwenden Sie beispielsweise Folgendes, um anzugeben, ob ein neues Speicherkonto bereitgestellt wird oder ob ein vorhandenes Speicherkonto verwendet wird:
+
+```json
+{
+    "condition": "[equals(parameters('newOrExisting'),'new')]",
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[variables('storageAccountName')]",
+    "apiVersion": "2017-06-01",
+    "location": "[resourceGroup().location]",
+    "sku": {
+        "name": "[variables('storageAccountType')]"
+    },
+    "kind": "Storage",
+    "properties": {}
+}
+```
+
+Eine vollständige Beispielvorlage, die das `condition`-Element verwendet, finden Sie unter [VM mit einem neuen oder vorhandenen virtuellen Netzwerk, Speicher und einer neuen oder vorhandenen öffentlichen IP-Adresse](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
+
 ## <a name="resource-specific-values"></a>Ressourcenspezifische Werte
 
 Die Werte der **apiVersion**-, **type**- und **properties**-Elemente unterscheiden sich bei den einzelnen Ressourcentypen. Die **sku**-, **kind**- und **plan**-Elemente sind für einige Ressourcentypen verfügbar, aber nicht für alle. Informationen zum Ermitteln der Werte für diese Eigenschaften finden Sie in der [Vorlagenreferenz](/azure/templates/).
 
 ## <a name="resource-names"></a>Ressourcennamen
+
 Im Allgemeinen arbeiten Sie in Resource Manager mit drei Arten von Ressourcennamen:
 
 * Ressourcennamen, die eindeutig sein müssen.
@@ -111,7 +132,8 @@ Im Allgemeinen arbeiten Sie in Resource Manager mit drei Arten von Ressourcennam
 * Ressourcennamen, die allgemein sein können.
 
 ### <a name="unique-resource-names"></a>Eindeutige Ressourcennamen
-Sie müssen einen eindeutigen Ressourcennamen für alle Ressourcentypen angeben, die einen Datenzugriffsendpunkt haben. Es folgen allgemeine Ressourcentypen, für die ein eindeutiger Name erforderlich ist:
+
+Geben Sie einen eindeutigen Ressourcennamen für alle Ressourcentypen an, die einen Datenzugriffsendpunkt haben. Es folgen allgemeine Ressourcentypen, für die ein eindeutiger Name erforderlich ist:
 
 * Azure Storage<sup>1</sup> 
 * Web-Apps-Funktion von Azure App Service
@@ -168,7 +190,7 @@ Das folgende Beispiel verwendet PowerShell, um die Speicherorte für den Ressour
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
 ```
 
-Das folgende Beispiel verwendet Azure CLI 2.0, um die Speicherorte für den Ressourcentyp `Microsoft.Web\sites` abzurufen:
+Das folgende Beispiel verwendet Azure CLI, um die Speicherorte für den Ressourcentyp `Microsoft.Web\sites` abzurufen:
 
 ```azurecli
 az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
@@ -284,7 +306,7 @@ Sie müssen die Datenbank aber nicht auf dem Server definieren. Sie können die 
 }
 ```
 
-Wenn Sie einen vollqualifizierten Verweis auf eine Ressource erstellen, ist die Reihenfolge für die Kombination von Segmenten von Typ und Name nicht einfach eine Verkettung beider Werte.  Verwenden Sie stattdessen nach dem Namespace eine Folge von *Typ-Name*-Paaren, beginnend mit dem am wenigsten spezifischen bis zum spezifischsten:
+Wenn Sie einen vollqualifizierten Verweis auf eine Ressource erstellen, ist die Reihenfolge für die Kombination von Segmenten von Typ und Name nicht einfach eine Verkettung beider Werte. Verwenden Sie stattdessen nach dem Namespace eine Folge von *Typ-Name*-Paaren, beginnend mit dem am wenigsten spezifischen bis zum spezifischsten:
 
 ```json
 {resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]*
@@ -410,6 +432,6 @@ Die folgenden Informationen können bei der Verwendung von Ressourcen hilfreich 
 ## <a name="next-steps"></a>Nächste Schritte
 * Komplette Vorlagen für viele verschiedene Lösungstypen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/).
 * Ausführliche Informationen zu den Funktionen, die Sie innerhalb einer Vorlage nutzen können, finden Sie unter [Funktionen von Azure Resource Manager-Vorlagen](resource-group-template-functions.md).
-* Informationen zum Zusammenführen mehrerer Vorlagen während der Bereitstellung finden Sie unter [Verwenden von verknüpften Vorlagen mit Azure Resource Manager](resource-group-linked-templates.md).
+* Informationen zum Verwenden mehrerer Vorlagen während der Bereitstellung finden Sie unter [Verwenden von verknüpften Vorlagen mit Azure Resource Manager](resource-group-linked-templates.md).
 * Möglicherweise müssen Sie Ressourcen verwenden, die in einer anderen Ressourcengruppe enthalten sind. Dieses Szenario ist bei der Arbeit mit Speicherkonten oder virtuellen Netzwerken üblich, die in mehreren Ressourcengruppen gemeinsam verwendet werden. Weitere Informationen finden Sie unter der [resourceId-Funktion](resource-group-template-functions-resource.md#resourceid).
 * Informationen zu Einschränkungen für Ressourcennamen finden Sie unter [Empfohlene Benennungskonventionen für Azure-Ressourcen](../guidance/guidance-naming-conventions.md).
