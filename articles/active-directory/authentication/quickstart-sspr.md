@@ -10,21 +10,21 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 856ae994e49f809ca2ef906ba6cdc7f8624dd201
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c99ae755705dddf501609c8f199d1977d0bde415
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33870021"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39057360"
 ---
 # <a name="azure-ad-self-service-password-reset-rapid-deployment"></a>Schnelle Bereitstellung der Self-Service-Kennwortzurücksetzung in Azure AD
 
 > [!IMPORTANT]
-> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen unter [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](../active-directory-passwords-update-your-own-password.md) weiter.
+> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen unter [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](../user-help/active-directory-passwords-update-your-own-password.md) weiter.
 
 Die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) ist für IT-Administratoren eine einfache Möglichkeit, Benutzern das Zurücksetzen oder Entsperren ihrer Kennwörter oder Konten zu erlauben. Das System verfügt über eine ausführliche Berichterstellung, bei der der Benutzerzugriff auf das System nachverfolgt wird, sowie über eine Benachrichtigungsfunktion, mit der Sie über eine fehlerhafte oder missbräuchliche Nutzung informiert werden.
 
-In dieser Anleitung wird vorausgesetzt, dass Sie bereits über einen funktionierenden Testmandanten oder einen lizenzierten Azure AD-Mandanten (Azure Active Directory) verfügen. Hilfe zur Einrichtung von Azure AD finden Sie unter [Erste Schritte mit einem Azure-Abonnement](../get-started-azure-ad.md).
+In dieser Anleitung wird vorausgesetzt, dass Sie bereits über einen funktionierenden Testmandanten oder einen lizenzierten Azure AD-Mandanten (Azure Active Directory) verfügen. Hilfe zur Einrichtung von Azure AD finden Sie unter [Erste Schritte mit einem Azure-Abonnement](../fundamentals/get-started-azure-ad.md).
 
 ## <a name="enable-sspr-for-your-azure-ad-tenant"></a>Aktivieren der SSPR für Ihren Azure AD-Mandanten
 
@@ -62,14 +62,14 @@ In dieser Anleitung wird vorausgesetzt, dass Sie bereits über einen funktionier
    * Benachrichtigen von Benutzern über Kennwortzurücksetzungen
    * Benachrichtigen aller Administratoren, wenn andere Administratoren ihr Kennwort zurücksetzen
 
-Sie haben SSPR jetzt für Ihren Azure AD-Mandanten konfiguriert. Ihre Benutzer können nun ihr Kennwort ohne Eingreifen des Administrators anhand der Anweisungen unter [Registrieren für die Self-Service-Kennwortzurücksetzung](../active-directory-passwords-reset-register.md) und [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](../active-directory-passwords-update-your-own-password.md) aktualisieren. Sie können den Vorgang hier beenden, wenn Sie nur in der Cloud arbeiten. Oder Sie können mit dem nächsten Abschnitt fortfahren, um die Synchronisierung von Kennwörtern für eine lokale Active Directory-Domäne zu konfigurieren.
+Sie haben SSPR jetzt für Ihren Azure AD-Mandanten konfiguriert. Ihre Benutzer können nun ihr Kennwort ohne Eingreifen des Administrators anhand der Anweisungen unter [Registrieren für die Self-Service-Kennwortzurücksetzung](../user-help/active-directory-passwords-reset-register.md) und [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](../user-help/active-directory-passwords-update-your-own-password.md) aktualisieren. Sie können den Vorgang hier beenden, wenn Sie nur in der Cloud arbeiten. Oder Sie können mit dem nächsten Abschnitt fortfahren, um die Synchronisierung von Kennwörtern für eine lokale Active Directory-Domäne zu konfigurieren.
 
 > [!TIP]
 > Testen Sie SSPR nicht als Administrator, sondern als normaler Benutzer, da Microsoft für Azure-Administratorkonten strenge Anforderungen an die Authentifizierung stellt. Weitere Informationen zur Richtlinie für Administratorkennwörter finden Sie im Artikel zu [Kennwortrichtlinien](concept-sspr-policy.md#administrator-password-policy-differences).
 
 ## <a name="configure-synchronization-to-an-existing-identity-source"></a>Konfigurieren der Synchronisierung mit einer vorhandenen Identitätsquelle
 
-Um die lokale Identitätssynchronisierung mit Azure AD zu aktivieren, müssen Sie [Azure AD Connect](./../connect/active-directory-aadconnect.md) auf einem Server Ihrer Organisation installieren und konfigurieren. Mit dieser Anwendung wird die Synchronisierung von Benutzern und Gruppen von Ihrer vorhandenen Identitätsquelle mit Ihrem Azure AD-Mandanten durchgeführt. Weitere Informationen finden Sie unter 
+Um die lokale Identitätssynchronisierung mit Azure AD zu aktivieren, müssen Sie [Azure AD Connect](./../connect/active-directory-aadconnect.md) auf einem Server Ihrer Organisation installieren und konfigurieren. Mit dieser Anwendung wird die Synchronisierung von Benutzern und Gruppen von Ihrer vorhandenen Identitätsquelle mit Ihrem Azure AD-Mandanten durchgeführt. Weitere Informationen finden Sie unter
 
 * [Aktualisieren der Windows Azure Active Directory-Synchronisierung und Azure Active Directory-Synchronisierung](./../connect/active-directory-aadconnect-dirsync-deprecated.md)
 * [Erste Schritte mit Azure AD Connect mit Expresseinstellungen](./../connect/active-directory-aadconnect-get-started-express.md)
@@ -95,8 +95,8 @@ Das Deaktivieren der Self-Service-Kennwortzurücksetzung ist einfach. Öffnen Si
 Die folgenden Artikel führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD:
 
 * [Erfolgreiches Rollout der Self-Service-Kennwortzurücksetzung](howto-sspr-deployment.md)
-* [Zurücksetzen oder Ändern des Kennworts](../active-directory-passwords-update-your-own-password.md)
-* [Registrieren für die Self-Service-Kennwortzurücksetzung](../active-directory-passwords-reset-register.md)
+* [Zurücksetzen oder Ändern des Kennworts](../user-help/active-directory-passwords-update-your-own-password.md)
+* [Registrieren für die Self-Service-Kennwortzurücksetzung](../user-help/active-directory-passwords-reset-register.md)
 * [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](concept-sspr-licensing.md)
 * [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](howto-sspr-authenticationdata.md)
 * [Authentifizierungsmethoden](concept-sspr-howitworks.md#authentication-methods)

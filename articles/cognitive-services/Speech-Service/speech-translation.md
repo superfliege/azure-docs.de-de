@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 43fcde887c21794989aa43540a214ef34893a630
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a569c968d444c36ceb3bce4779d2eca39c21f9bc
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35378381"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069195"
 ---
 # <a name="about-the-speech-translation-api"></a>Informationen zur Sprachübersetzungs-API
 
@@ -42,5 +42,5 @@ Die Unterschiede zwischen Modellen sind für das Übersetzungsmodul intern wahrn
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Abrufen Ihres Testabonnements für die Spracherkennung](https://azure.microsoft.com/try/cognitive-services/)
-* [Erkennen von Sprache in C#](quickstart-csharp-windows.md)
+* [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
+* [Erkennen von Sprache in C#](quickstart-csharp-dotnet-windows.md)

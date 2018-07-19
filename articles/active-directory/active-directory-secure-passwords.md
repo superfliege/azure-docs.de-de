@@ -3,31 +3,31 @@ title: Azure AD-Kennwortsicherheit mit Stufen | Microsoft-Dokumentation
 description: Erfahren Sie, wie Azure AD sichere Kennwörter erzwingt und Benutzerkennwörter vor Cyberkriminellen schützt.
 services: active-directory
 documentationcenter: ''
-author: barlanmsft
+author: eross-msft
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 08/28/2017
-ms.author: barlan
-ms.openlocfilehash: 04e437eb5a040f418df22e0857cb96d7ef99bbbb
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: lizross
+ms.openlocfilehash: e3e97a5a9b768b3b9d4a36627d28955be1f3d9df
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31586373"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056918"
 ---
 # <a name="a-multi-tiered-approach-to-azure-ad-password-security"></a>Ein mehrstufiger Ansatz für die Azure AD-Kennwortsicherheit
 
 In diesem Artikel werden einige Best Practices beschrieben, die Sie als Benutzer oder Administrator verwenden können, um Ihre Azure Active Directory- (Azure AD) und Microsoft-Konten zu schützen.
 
  > [!NOTE]
- > **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md)weiter.
+ > **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](user-help/active-directory-passwords-update-your-own-password.md)weiter.
  >
- > Azure AD-Administratoren können Benutzerkennwörter mithilfe der Anleitungen im Artikel [Zurücksetzen des Kennworts für einen Benutzer in Azure Active Directory](active-directory-users-reset-password-azure-portal.md) zurücksetzen.
+ > Azure AD-Administratoren können Benutzerkennwörter mithilfe der Anleitungen im Artikel [Zurücksetzen des Kennworts für einen Benutzer in Azure Active Directory](fundamentals/active-directory-users-reset-password-azure-portal.md) zurücksetzen.
  >
 
 ## <a name="password-requirements"></a>Kennwortanforderungen
@@ -38,7 +38,7 @@ Azure AD verfügt über die folgenden gängigen Ansätze zum Schützen von Kennw
 * Anforderungen an die Komplexität des Kennworts
 * Regelmäßiger bzw. periodischer Kennwortablauf
 
-Informationen zur Kennwortzurücksetzung in Azure Active Directory finden Sie im Thema [Self-Service-Kennwortzurücksetzung in Azure AD für IT-Experten](active-directory-passwords-update-your-own-password.md).
+Informationen zur Kennwortzurücksetzung in Azure Active Directory finden Sie im Thema [Self-Service-Kennwortzurücksetzung in Azure AD für IT-Experten](user-help/active-directory-passwords-update-your-own-password.md).
 
 ## <a name="azure-ad-password-protections"></a>Kennwortschutz in Azure AD
 
@@ -75,7 +75,7 @@ Für andere Microsoft-Konten sieht der Bildschirm in etwa wie folgt aus:
 
   ![Ausschluss aus einem Microsoft-Konto](./media/active-directory-secure-passwords/locked-out-ms-accounts.png)
 
-Informationen zur Kennwortzurücksetzung in Azure Active Directory finden Sie im Thema [Self-Service-Kennwortzurücksetzung in Azure AD für IT-Experten](active-directory-passwords-update-your-own-password.md).
+Informationen zur Kennwortzurücksetzung in Azure Active Directory finden Sie im Thema [Self-Service-Kennwortzurücksetzung in Azure AD für IT-Experten](user-help/active-directory-passwords-update-your-own-password.md).
 
   >[!NOTE]
   >Wenn Sie Azure AD-Administrator sind, ist die Verwendung von [Windows Hello](https://www.microsoft.com/windows/windows-hello) ratsam, um ganz zu verhindern, dass Ihre Benutzer herkömmliche Kennwörter erstellen müssen.
@@ -83,6 +83,6 @@ Informationen zur Kennwortzurücksetzung in Azure Active Directory finden Sie im
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Aktualisieren Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md)
+* [Aktualisieren Ihres eigenen Kennworts](user-help/active-directory-passwords-update-your-own-password.md)
 * [Grundlagen der Identitätsverwaltung in Azure](fundamentals-identity.md)
 * [Bericht zur Aktivität „Zurücksetzen des Kennworts“](authentication/howto-sspr-reporting.md)

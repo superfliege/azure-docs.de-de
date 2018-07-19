@@ -135,7 +135,7 @@
         - name: Datenbanksicherungen
           href: sql-database-automated-backups.md
         - name: Langfristiges Aufbewahren von Sicherungen
-          itmes:
+          items:
             - name: Langfristiges Aufbewahren von Sicherungen
               href: sql-database-long-term-retention.md
             - name: 'Konfigurieren der langfristigen Sicherungsaufbewahrung: SQL-Speicher'

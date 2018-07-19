@@ -10,12 +10,12 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 6470bb5b7b5b8404683d1ae6fd4f16f0436982ef
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 569ae89a712d14fb36989e756f99725dce398c0a
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377674"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126557"
 ---
 # <a name="using-an-insights-token-to-get-insights-about-an-image"></a>Verwenden eines Erkenntnistokens zum Gewinnen von Erkenntnissen zu einem Bild
 
@@ -62,7 +62,8 @@ Content-Disposition: form-data; name="knowledgeRequest"
 
 Beispiele, die das Erkenntnistoken verwenden, finden Sie hier: [C#](#using-csharp) | [Java](#using-java) | [Node.js](#using-nodejs) | [Python](#using-python).
 
-<a name="csharp" />
+<a name="using-csharp" />
+
 ## <a name="using-c"></a>Verwenden von C#
 
 ### <a name="prerequisites"></a>Voraussetzungen
@@ -237,8 +238,7 @@ namespace VisualSearchInsightsToken
 }
 ```
 
-
-
+<a name="using-java" />
 
 ## <a name="using-java"></a>Verwenden von Java
 
@@ -252,8 +252,8 @@ Für diese Schnellstartanleitung können Sie den Schlüssel eines [kostenlosen T
 
 Führen Sie die folgenden Schritte aus, um diese Anwendung auszuführen:
 
-1. Laden Sie die [gson-Bibliothek](https://github.com/google/gson) herunter, oder installieren Sie diese. Sie können diese Bibliothek auch über Maven abrufen.
-2. Erstellen Sie in Ihrer bevorzugten IDE oder Ihrem bevorzugten Editor ein neues Java-Projekt.
+1. Laden Sie die [gson-Bibliothek](https://github.com/google/gson) herunter, oder installieren Sie diese. Sie können sie auch über Maven erhalten.
+2. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neues Java-Projekt.
 3. Fügen Sie den bereitgestellten Code in eine Datei namens `VisualSearch.java` ein.
 4. Ersetzen Sie den `subscriptionKey`-Wert durch Ihren Abonnementschlüssel.
 5. Führen Sie das Programm aus.
@@ -357,11 +357,12 @@ public class InsightsToken {
 
 
 <a name="using-nodejs" />
+
 ## <a name="using-nodejs"></a>Verwenden von Node.js
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-Um diesen Code auszuführen, benötigen Sie [Node.js 6](https://nodejs.org/en/download/).
+Zum Ausführen dieses Code benötigen Sie [Node.js 6](https://nodejs.org/en/download/).
 
 Für diese Schnellstartanleitung können Sie den Schlüssel eines [kostenlosen Testabonnements](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) oder eines kostenpflichtigen Abonnements verwenden.
 
@@ -422,7 +423,7 @@ function requestCallback(err, res, body) {
 ```
 
 
-
+<a name="using-python" />
 
 ## <a name="using-python"></a>Verwenden von Python
 
@@ -491,7 +492,7 @@ if __name__ == '__main__':
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Tutorial: Single-Page-Web-App für die visuelle Suche](tutorial-bing-visual-search-single-page-app.md)  
+[Tutorial: Single-Page-App für die visuelle Suche](tutorial-bing-visual-search-single-page-app.md)  
 [Übersicht über die visuelle Bing-Suche](overview.md)  
 [Testen](https://aka.ms/bingvisualsearchtryforfree)  
 [Abrufen eines Zugriffsschlüssels für eine kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  

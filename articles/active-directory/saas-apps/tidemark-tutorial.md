@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 6f350daa58ca26654d74054b64bd0f6a7da93dc9
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b0aaa1b6b24a1bd4012ad43eb183d3b56434c962
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224253"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39055724"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tidemark"></a>Tutorial: Azure Active Directory-Integration mit Tidemark
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Tidemark** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/tidemark-tutorial/tutorial_tidemark_samlbase.png)
+    ![Configure single sign-on](./media/tidemark-tutorial/tutorial_tidemark_samlbase.png)
 
 3. Führen Sie auf der Seite **Domäne und URLs für Tidemark** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/tidemark-tutorial/tutorial_tidemark_url.png)
+    ![Configure single sign-on](./media/tidemark-tutorial/tutorial_tidemark_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: 
     | |
@@ -129,15 +129,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/tidemark-tutorial/tutorial_tidemark_certificate.png) 
+    ![Configure single sign-on](./media/tidemark-tutorial/tutorial_tidemark_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/tidemark-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/tidemark-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Tidemark-Konfiguration** auf **Tidemark konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/tidemark-tutorial/tutorial_tidemark_configure.png) 
+    ![Configure single sign-on](./media/tidemark-tutorial/tutorial_tidemark_configure.png) 
 
 7. Zum Konfigurieren des einmaligen Anmeldens bei **Tidemark** müssen Sie das heruntergeladene **Zertifikat (Base64), SAML-Entitäts-ID, Abmelde-URL und SAML-Dienst-URL für einmaliges Anmelden** an das [Tidemark-Supportteam](http://www.tidemark.com/contact-us) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -193,7 +193,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste den Eintrag **Tidemark**aus.
 
-    ![Configure Single Sign-On](./media/tidemark-tutorial/tutorial_tidemark_app.png) 
+    ![Configure single sign-on](./media/tidemark-tutorial/tutorial_tidemark_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -214,7 +214,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Tidemark“ klicken, sollten Sie automatisch in Ihrer Tidemark-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

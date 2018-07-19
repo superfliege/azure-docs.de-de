@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: daveba
-ms.openlocfilehash: 9d9c18d576f3975d4c8272efff7161366f3f53fe
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 27ecb00bddb41ae45e790a54702c058ff3f1d24b
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901356"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035940"
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-the-azure-portal"></a>Konfigurieren einer VM-MSI (Managed Service Identity, verwaltete Dienstidentität) über das Azure-Portal
 
@@ -59,7 +59,7 @@ So aktivieren Sie die vom System zugewiesene Identität auf einem virtuellen Com
     > [!NOTE]
     > Das Hinzufügen einer vom Benutzer zugewiesenen Identität zu einem virtuellen Computer über das Azure-Portal wird derzeit nicht unterstützt.
 
-   ![Screenshot der Konfigurationsseite](../media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
+   ![Screenshot der Konfigurationsseite](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
 
 ## <a name="remove-managed-service-identity-from-an-azure-vm"></a>Entfernen der verwalteten Dienstidentität von einer Azure-VM
 
@@ -74,7 +74,7 @@ Bei einem virtuellen Computer, für den die vom System zugewiesene Identität ni
     > [!NOTE]
     > Das Hinzufügen einer vom Benutzer zugewiesenen Identität zu einem virtuellen Computer über das Azure-Portal wird derzeit nicht unterstützt.
 
-   ![Screenshot der Konfigurationsseite](../media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)  
+   ![Screenshot der Konfigurationsseite](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)  
 
 ## <a name="related-content"></a>Verwandte Inhalte
 

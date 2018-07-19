@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 6632ab962f3df0cfee8d28d7dad40bad8baf3f50
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 210781b36f6215afc925266e597031d772a94002
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365779"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39059202"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
 
 Die Identität wird häufig als neue Grenzschicht für die Sicherheit angesehen, indem diese Rolle vom herkömmlichen netzwerkzentrierten Ansatz übernommen wird. Die Weiterentwicklung dieses Dreh- und Angelpunkts für die Bereiche Sicherheit und Investitionen basiert darauf, dass Umkreisnetzwerke immer durchlässiger geworden sind und die Verteidigung des Umkreisnetzwerks nicht mehr so effektiv wie vor der immensen Nutzung von [BYOD](http://aka.ms/byodcg)-Geräten und Cloudanwendungen sein kann.
 
-In diesem Artikel werden bewährte Methoden für die Azure-Identitätsverwaltung und die Sicherheit der Zugriffssteuerung beschrieben. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit [Azure AD](../active-directory/active-directory-whatis.md) und den Erfahrungen von Kunden wie Ihnen abgeleitet.
+In diesem Artikel werden bewährte Methoden für die Azure-Identitätsverwaltung und die Sicherheit der Zugriffssteuerung beschrieben. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit [Azure AD](../active-directory/fundamentals/active-directory-whatis.md) und den Erfahrungen von Kunden wie Ihnen abgeleitet.
 
 Für jede bewährte Methode wird Folgendes beschrieben:
 
@@ -65,7 +65,7 @@ Weitere Informationen zur Azure AD-Synchronisierung finden Sie im Artikel [Integ
 
 Wenn Sie mehrere Verzeichnisse verwalten müssen, wird dies nicht nur für die IT-Abteilung zu einem Verwaltungsproblem, sondern auch für die Endbenutzer, die sich mehrere Kennwörter merken müssen. Bei Verwendung von [SSO](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) geben Sie Ihren Benutzern die Möglichkeit, die gleiche Gruppe von Anmeldeinformationen zum Anmelden und Zugreifen auf die benötigten Ressourcen zu nutzen. Dabei spielt es keine Rolle, ob sich eine Ressource lokal oder in der Cloud befindet.
 
-Verwenden Sie SSO, um Benutzern zu ermöglichen, basierend auf ihrem Organisationskonto in Azure AD auf ihre [SaaS-Anwendungen](../active-directory/manage-apps/what-is-single-sign-on.md) zuzugreifen. Dies gilt nicht nur für Microsoft SaaS-Apps, sondern auch für andere Apps, z.B. [Google-Apps](../active-directory/active-directory-saas-google-apps-tutorial.md) und [Salesforce](../active-directory/active-directory-saas-salesforce-tutorial.md). Ihre Anwendung kann so konfiguriert werden, dass Azure AD als [SAML-Identitätsanbieter](../active-directory/fundamentals-identity.md) verwendet wird. Als Sicherheitsmaßnahme stellt Azure AD nur dann ein Token aus, das den Benutzern die Anmeldung bei der Anwendung erlaubt, wenn ihnen zuvor mit Azure AD Zugriff gewährt wurde. Sie können den Zugriff direkt oder über eine Gruppe gewähren, deren Mitglied die Benutzer sind.
+Verwenden Sie SSO, um Benutzern zu ermöglichen, basierend auf ihrem Organisationskonto in Azure AD auf ihre [SaaS-Anwendungen](../active-directory/manage-apps/what-is-single-sign-on.md) zuzugreifen. Dies gilt nicht nur für Microsoft SaaS-Apps, sondern auch für andere Apps, z.B. [Google-Apps](../active-directory/saas-apps/google-apps-tutorial.md) und [Salesforce](../active-directory/saas-apps/salesforce-tutorial.md). Ihre Anwendung kann so konfiguriert werden, dass Azure AD als [SAML-Identitätsanbieter](../active-directory/fundamentals-identity.md) verwendet wird. Als Sicherheitsmaßnahme stellt Azure AD nur dann ein Token aus, das den Benutzern die Anmeldung bei der Anwendung erlaubt, wenn ihnen zuvor mit Azure AD Zugriff gewährt wurde. Sie können den Zugriff direkt oder über eine Gruppe gewähren, deren Mitglied die Benutzer sind.
 
 > [!NOTE]
 > Die Entscheidung zur Nutzung von SSO wirkt sich auch darauf aus, wie Sie das lokale Verzeichnis in Ihr Cloudverzeichnis integrieren. Wenn Sie SSO verwenden möchten, müssen Sie einen Verbund nutzen, da die Verzeichnissynchronisierung nur eine [Oberfläche für die gleiche Anmeldung (Same Sign-On)](../active-directory/active-directory-aadconnect.md) bietet.
@@ -78,7 +78,7 @@ Weitere Informationen zu Azure AD SSO finden Sie im Artikel [Verwaltung der Acti
 
 ## <a name="deploy-password-management"></a>Bereitstellen der Kennwortverwaltung
 
-Bei Szenarien, in denen Sie mehrere Mandanten verwenden oder Benutzern das [Zurücksetzen ihres Kennworts](../active-directory/active-directory-passwords-update-your-own-password.md) ermöglichen möchten, ist es wichtig, dass Sie zur Verhinderung von Missbrauch geeignete Sicherheitsrichtlinien verwenden. In Azure können Sie die Funktion für die Self-Service-Kennwortzurücksetzung nutzen und die Sicherheitsoptionen anpassen, um Ihre geschäftlichen Anforderungen zu erfüllen.
+Bei Szenarien, in denen Sie mehrere Mandanten verwenden oder Benutzern das [Zurücksetzen ihres Kennworts](../active-directory/user-help/active-directory-passwords-update-your-own-password.md) ermöglichen möchten, ist es wichtig, dass Sie zur Verhinderung von Missbrauch geeignete Sicherheitsrichtlinien verwenden. In Azure können Sie die Funktion für die Self-Service-Kennwortzurücksetzung nutzen und die Sicherheitsoptionen anpassen, um Ihre geschäftlichen Anforderungen zu erfüllen.
 
 Es ist wichtig, Feedback von diesen Benutzern zu erhalten und aus den Erfahrungen zu lernen, die diese beim Ausführen der Schritte machen. Stellen Sie basierend auf diesen Erfahrungen einen Plan zur Lösung von potenziellen Problemen auf, die während der Bereitstellung für eine größere Gruppe auftreten können. Wir empfehlen Ihnen auch, den [Bericht zur Registrierung für die Kennwortzurücksetzung](../active-directory/active-directory-passwords-get-insights.md) zu verwenden, um die registrierten Benutzer zu überwachen.
 

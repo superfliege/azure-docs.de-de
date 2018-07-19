@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: radwiv;chadmat;genli
-ms.openlocfilehash: 38ff1ee4c525d41e2a7446d5adc792c746504491
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 7e6b3e7496c4a063156ff3b8feae1f5096efe55f
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36754181"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035617"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Überprüfen des VPN-Durchsatzes zu einem virtuellen Netzwerk
 
@@ -88,7 +88,7 @@ Laden Sie [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip) her
     ```CMD
     netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
     ```
-    </br>
+     
     **Azure Linux:** Azure Linux-Images besitzen tolerante Firewalls. Wenn eine Anwendung einen Port überwacht, wird der Datenverkehr durchgelassen. Für benutzerdefinierte Images, die gesichert sind, müssen die Ports möglicherweise explizit geöffnet werden. Allgemeine Firewalls der Linux-Betriebssystemebene enthalten `iptables`, `ufw` oder `firewalld`.
 
 3. Wechseln Sie auf dem Serverknoten in das Verzeichnis, in dem „iperf3.exe“ extrahiert wird. Führen Sie dann iPerf im Modus „Server“ aus, und legen Sie die Überwachung von Port 5001 mit den folgenden Befehlen fest:

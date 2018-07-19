@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 06f316a7c96ff266e9f4593fa3a9ac871b2979aa
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: cf6df6dd87de56ca3c8180d5377e35d9be9bbd79
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33929771"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036444"
 ---
 # <a name="assign-a-managed-service-identity-access-to-a-resource-by-using-the-azure-portal"></a>Zuweisen des MSI-Zugriffs (MSI = Managed Service Identity, verwaltete Dienstidentität) zu einer Ressource über das Azure-Portal
 
@@ -41,20 +41,20 @@ Nachdem Sie die MSI für eine Azure-Ressource wie einer [Azure-VM](qs-configure-
 
 3. Wählen Sie für einen virtuellen Azure-Computer die Seite **Zugriffssteuerung (IAM)** der Ressource und anschließend **+ Hinzufügen** aus. Geben Sie anschließend die **Rolle** an, **weisen Sie den Zugriff auf den virtuellen Computer zu**, und geben Sie das entsprechende **Abonnement** und die **Ressourcengruppe** an, in der sich die Ressource befindet. Unter dem Bereich mit den Suchkriterien sollte die Ressource nun angezeigt werden. Wählen Sie die Ressource und anschließend **Speichern** aus. 
 
-   ![Screenshot von „Zugriffssteuerung (IAM)“](../media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
+   ![Screenshot von „Zugriffssteuerung (IAM)“](../managed-service-identity/media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
    Wählen Sie für eine Azure-VM-Skalierungsgruppe die Seite **Zugriffssteuerung (IAM)** der Ressource und anschließend **+ Hinzufügen** aus. Legen Sie dann die Felder **Rolle** und **Zuweisen des Zugriffs auf** fest. Suchen Sie im Suchkriterienbereich nach Ihrer VM-Skalierungsgruppe. Wählen Sie die Ressource und anschließend **Speichern** aus.
    
-   ![Screenshot von „Zugriffssteuerung (IAM)“](../media/msi-howto-assign-access-vmss-portal/assign-access-control-vmss-iam-blade-before.png)  
+   ![Screenshot von „Zugriffssteuerung (IAM)“](../managed-service-identity/media/msi-howto-assign-access-vmss-portal/assign-access-control-vmss-iam-blade-before.png)  
 
 4. Sie sind zur Hauptseite **Zugriffssteuerung (IAM)** zurückgekehrt, auf der ein neuer Eintrag für die MSI der Ressource angezeigt wird.
 
     Virtueller Azure-Computer:
 
-   ![Screenshot von „Zugriffssteuerung (IAM)“](../media/msi-howto-assign-access-portal/assign-access-control-iam-blade-after.png)
+   ![Screenshot von „Zugriffssteuerung (IAM)“](../managed-service-identity/media/msi-howto-assign-access-portal/assign-access-control-iam-blade-after.png)
 
     Azure-VM-Skalierungsgruppe:
 
-    ![Screenshot von „Zugriffssteuerung (IAM)“](../media/msi-howto-assign-access-vmss-portal/assign-access-control-vmss-iam-blade-after.png)
+    ![Screenshot von „Zugriffssteuerung (IAM)“](../managed-service-identity/media/msi-howto-assign-access-vmss-portal/assign-access-control-vmss-iam-blade-after.png)
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

@@ -10,15 +10,15 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 41cd46bc-c479-43fa-96e5-d6c83e4e6d89
 caps.latest.revision: 55
-author: thraka
-ms.author: adegeo
+author: jpconnock
+ms.author: jeconnoc
 manager: timlt
-ms.openlocfilehash: 96131a0bb928da7e22f3e26449c8b2279457d03f
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2e487bd3fda787cf9f869cc352de4c97d5c1678b
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34360256"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39002176"
 ---
 # <a name="azure-cloud-services-definition-workerrole-schema"></a>Azure Cloud Services-Definition – WorkerRole-Schema
 Die Azure-Workerrolle ist eine Rolle, die für die generalisierte Entwicklung nützlich ist und die Hintergrundverarbeitung für eine Webrolle durchführen kann.

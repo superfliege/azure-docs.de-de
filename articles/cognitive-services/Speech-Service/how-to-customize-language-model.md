@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: c608c1b40c7b4cdaedb2b7e7a609ad65c6357584
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 85e67be406b3d9723476821adfb09fc4db8dc1d1
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344215"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068572"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Tutorial: Erstellen eines benutzerdefinierten Sprachmodells
 
@@ -32,9 +32,9 @@ Sollten Sie über kein Cognitive Services-Konto verfügen, können Sie ein [kost
 
 Vergewissern Sie sich auf der Seite [Cognitive Services Subscriptions](https://customspeech.ai/Subscriptions) (Cognitive Services-Abonnements), dass Ihr Cognitive Services-Konto mit einem Abonnement verbunden ist.
 
-Sie können auf die Schaltfläche **Connect existing subscription** (Verbindung mit vorhandenem Abonnement herstellen) klicken, um eine Verbindung mit einem Spracherkennungsdienst-Abonnement herzustellen, das im Azure-Portal erstellt wurde.
+Sie können auf die Schaltfläche **Verbindung mit vorhandenem Abonnement herstellen** klicken, um eine Verbindung mit einem Speech Service-Abonnement herzustellen, das im Azure-Portal erstellt wurde.
 
-Informationen zur Erstellung eines Spracherkennungsdienst-Abonnements im Azure-Portal finden Sie auf der Seite zu den [ersten Schritten](get-started.md).
+Informationen zur Erstellung eines Speech Service-Abonnements im Azure-Portal finden Sie auf der Seite zu den [ersten Schritten](get-started.md).
 
 ## <a name="prepare-the-data"></a>Vorbereiten der Daten
 
@@ -64,9 +64,9 @@ Beim Importieren des Texts wird dieser normalisiert, damit er vom System verarbe
 
 ## <a name="language-support"></a>Sprachunterstützung
 
-Die folgenden Sprachen werden für benutzerdefinierte Sprachmodelle für die **Spracherkennung** unterstützt.
+Die folgenden Sprachen werden für benutzerdefinierte **Sprache-zu-Text**-Sprachmodelle unterstützt.
 
-[Klicken Sie hier, um eine vollständige Liste mit den unterstützten Sprachen anzuzeigen](supported-languages.md).
+Klicken Sie hier, um eine vollständige Liste der [unterstützten Sprachen](supported-languages.md) anzuzeigen
 
 ## <a name="import-the-language-data-set"></a>Importieren des Sprachdatasets
 
@@ -115,5 +115,5 @@ Wenn Sie nachträglich den Namen oder die Beschreibung des Modells ändern möch
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Abrufen Ihres Testabonnements für die Spracherkennung](https://azure.microsoft.com/try/cognitive-services/)
-- [Erkennen von Sprache in C#](quickstart-csharp-windows.md)
+- [Erkennen von Sprache in C#](quickstart-csharp-dotnet-windows.md)
 - [Git-Beispieldaten](https://github.com/Microsoft/Cognitive-Custom-Speech-Service)

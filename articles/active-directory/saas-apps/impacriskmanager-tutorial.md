@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 2bd4b6ee8575c3e70276870ebf91b2b8cfa35dac
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1dba198c747e52be18ed49aca271109997c86929
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226708"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052627"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-impac-risk-manager"></a>Tutorial: Azure Active Directory-Integration mit IMPAC Risk Manager
 
@@ -147,7 +147,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
 7. Klicken Sie im Abschnitt **IMPAC Risk Manager-Konfiguration** auf **IMPAC Risk Manager konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Dienst-URL für einmaliges Anmelden**, die *SAML-Entitäts-ID* und die **Abmelde-URL** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/impacriskmanager-tutorial/tutorial_impacriskmanager_configure.png)
+    ![Configure single sign-on](./media/impacriskmanager-tutorial/tutorial_impacriskmanager_configure.png)
 
 8. Zum Konfigurieren des einmaligen Anmeldens bei **IMPAC Risk Manager** müssen Sie das heruntergeladene **Zertifikat (Base64)** sowie **Abmelde-URL**, *SAML-Entitäts-ID* und **SAML-Dienst-URL für einmaliges Anmelden** an das [IMPAC Risk Manager-Supportteam](mailto:rmsupport@Impac.co.nz) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -225,7 +225,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „IMPAC Risk Manager“ klicken, sollten Sie automatisch bei Ihrer IMPAC Risk Manager-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

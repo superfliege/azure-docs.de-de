@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: ea6ffa9d07be719c43ca33cfca76876c161d69bc
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: ff1f6fcae1d21d47b5ee0263b4e038287a588991
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048470"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008228"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Tief eintauchen – Advanced Analytics
 
@@ -85,7 +85,7 @@ Als Teil von HDInsight können Sie einen HDInsight-Cluster mit [ML Services](../
 
 ### <a name="spark-and-deep-learning"></a>Spark und Deep Learning
 
-[Deep Learning](https://www.microsoft.com/research/group/dltc/) ist ein Nebenzweig des Machine Learning, der *Deep Neural Networks* (DNNs) verwendet, die von den biologischen Prozessen des menschliche Gehirns inspiriert sind. Viele Forscher sehen Deep Learning als vielversprechenden Ansatz für die Künstliche Intelligenz. Einige Beispiele für Deep Learning sind Übersetzungssysteme für gesprochene Sprache, Bilderkennungssysteme und Machine Reasoning (maschinelles logisches Schlussfolgern). Um seine eigenen Bestrebungen im Deep Learning voranzutreiben, hat Microsoft das kostenlose und bedienfreundliche Open-Source-[Microsoft Cognitive Toolkit](https://www.microsoft.com/cognitive-toolkit/) entwickelt. Das Toolkit wird intensiv von einer Vielzahl verschiedener Microsoft-Produkte sowie von Firmen weltweit verwendet, die Deep Learning skaliert bereitstellen müssen, sowie von Studenten, die an den neuesten Algorithmen und Methoden interessiert sind. 
+[Deep Learning](https://www.microsoft.com/research/group/dltc/) ist ein Nebenzweig des Machine Learning, der *Deep Neural Networks* (DNNs) verwendet, die von den biologischen Prozessen des menschliche Gehirns inspiriert sind. Viele Forscher sehen Deep Learning als vielversprechenden Ansatz für die Künstliche Intelligenz. Einige Beispiele für Deep Learning sind Übersetzungssysteme für gesprochene Sprache, Bilderkennungssysteme und Machine Reasoning (maschinelles logisches Schlussfolgern). Um seine eigenen Bestrebungen im Deep Learning voranzutreiben, hat Microsoft das kostenlose und bedienfreundliche Open-Source-[Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) entwickelt. Das Toolkit wird intensiv von einer Vielzahl verschiedener Microsoft-Produkte sowie von Firmen weltweit verwendet, die Deep Learning skaliert bereitstellen müssen, sowie von Studenten, die an den neuesten Algorithmen und Methoden interessiert sind. 
 
 ## <a name="scenario---score-images-to-identify-patterns-in-urban-development"></a>Szenario – Bewerten von Bildern zur Identifizierung von Mustern bei der Stadtentwicklung
 

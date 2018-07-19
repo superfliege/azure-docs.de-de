@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/01/2018
 ms.author: garye
 ms.reviewer: gibattag
-ms.openlocfilehash: 3697dd0628f0028cb486139e92c032f0d757c6ed
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ed5f19b23375ecb83e19274c7405e9a1208a7985
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374490"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036152"
 ---
 # <a name="create-a-cognitive-services-apis-account-in-the-azure-portal"></a>Erstellen eines Cognitive Services-APIs-Kontos im Azure-Portal
 
@@ -73,6 +73,6 @@ Weitere Informationen zu allen verfügbaren Diensten von Microsoft Cognitive Ser
 
 Schnellstartanleitungen zur Verwendung einiger beispielhafter Cognitive Services-APIs:
 
- - [Maschinelles Sehen – Schnellstartanleitungen für C#](/computer-vision/quickstarts/csharp.md)
- - [Textanalyse mit Python](/text-analytics/quickstarts/python.md)
- - [Gesichtserkennungs-API mit JavaScript](/face/quickstarts/javascript.md)
+ - [Maschinelles Sehen – Schnellstartanleitungen für C#](computer-vision/quickstarts/csharp.md)
+ - [Textanalyse mit Python](text-analytics/quickstarts/python.md)
+ - [Gesichtserkennungs-API mit JavaScript](face/quickstarts/javascript.md)

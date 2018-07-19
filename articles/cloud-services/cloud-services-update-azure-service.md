@@ -3,7 +3,7 @@ title: Aktualisieren eines Clouddiensts | Microsoft Docs
 description: Hier erfahren Sie, wie Sie Clouddienste in Azure aktualisieren. Erfahren Sie, wie die Aktualisierung eines Clouddiensts ausgeführt wird, damit die Verfügbarkeit sichergestellt ist.
 services: cloud-services
 documentationcenter: ''
-author: Thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: c6a8b5e6-5c99-454c-9911-5c7ae8d1af63
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: adegeo
-ms.openlocfilehash: 36d4ee9dabd39f4103d17455e47521b378af6ebb
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.author: jeconnoc
+ms.openlocfilehash: 2f5a82fac18ab34bfa9d6b46f553227ed44a994a
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
-ms.locfileid: "24860670"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008092"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Aktualisieren eines Clouddiensts
 
@@ -54,18 +54,18 @@ Die folgende Tabelle zeigt die zulässigen Änderungen an einen Dienst während 
 
 | Zulässige Änderungen an Hosting, Diensten und Rollen | Direktes Update | Gestaffelt (VIP-Austausch) | Löschen und erneut Bereitstellen |
 | --- | --- | --- | --- |
-| Betriebssystemversion |Ja |Ja |Ja |
-| .NET-Vertrauensebene |Ja |Ja |Ja |
-| Größe des virtuellen Computers <sup>1</sup> |Ja<sup>2</sup> |Ja |Ja |
-| Einstellungen für den lokalen Speicher |Nur Erhöhen <sup>2</sup> |Ja |Ja |
-| Rollen in einem Dienst hinzufügen oder entfernen |Ja |Ja |Ja |
-| Anzahl der Instanzen einer bestimmten Rolle |Ja |Ja |Ja |
-| Anzahl oder Typ der Endpunkte für einen Dienst |Ja<sup>2</sup> |Nein |Ja |
-| Namen und Werte von Konfigurationseinstellungen |Ja |Ja |Ja |
-| Werte (aber keine Namen) von Konfigurationseinstellungen |Ja |Ja |Ja |
-| Neue Zertifikate hinzufügen |Ja |Ja |Ja |
-| Vorhandene Zertifikate ändern |Ja |Ja |Ja |
-| Neuen Code bereitstellen |Ja |Ja |Ja |
+| Betriebssystemversion |JA |Ja |JA |
+| .NET-Vertrauensebene |JA |Ja |JA |
+| Größe des virtuellen Computers <sup>1</sup> |Ja<sup>2</sup> |JA |JA |
+| Einstellungen für den lokalen Speicher |Nur Erhöhen <sup>2</sup> |JA |JA |
+| Rollen in einem Dienst hinzufügen oder entfernen |JA |Ja |JA |
+| Anzahl der Instanzen einer bestimmten Rolle |JA |Ja |JA |
+| Anzahl oder Typ der Endpunkte für einen Dienst |Ja<sup>2</sup> |Nein  |JA |
+| Namen und Werte von Konfigurationseinstellungen |JA |Ja |JA |
+| Werte (aber keine Namen) von Konfigurationseinstellungen |JA |Ja |JA |
+| Neue Zertifikate hinzufügen |JA |Ja |JA |
+| Vorhandene Zertifikate ändern |JA |Ja |JA |
+| Neuen Code bereitstellen |JA |Ja |JA |
 
 <sup>1</sup>Größenänderung beschränkt auf die Teilmenge der Größen, die für den Clouddienst verfügbar sind.
 

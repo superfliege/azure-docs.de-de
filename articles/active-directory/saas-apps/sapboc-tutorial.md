@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 42eb1c8332a29ff07c83b962aaa8f8e2f04fd07b
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: ffd4480a13549caba17becff27a43f51fcaa1988
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308298"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041737"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>Tutorial: Azure Active Directory-Integration mit SAP Business Object Cloud
 
@@ -254,7 +254,7 @@ So weisen Sie Britta Simon SAP Business Object Cloud zu:
 
 2. Wählen Sie in der Liste der Anwendungen **SAP Business Object Cloud** aus.
 
-    ![Configure Single Sign-On](./media/sapboc-tutorial/tutorial_sapboc_app.png) 
+    ![Configure single sign-on](./media/sapboc-tutorial/tutorial_sapboc_app.png) 
 
 3. Wählen Sie im linken Menü **Benutzer und Gruppen** aus.
 
@@ -278,7 +278,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmeld
 
 Wenn Sie im Zugriffsbereich die Kachel „SAP Business Object Cloud“ wählen, sollten Sie automatisch bei Ihrer SAP Business Object Cloud-Anwendung angemeldet werden.
 
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

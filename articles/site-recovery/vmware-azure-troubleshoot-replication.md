@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: ramamill
-ms.openlocfilehash: f305f552d576f58914bc33351331f1da3c68bc23
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: c2100ee2388ae09bd309167b1be77f7bdbe32f69
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951647"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126016"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Beheben von Problemen bei der Replikation von VMware-VMs und physischen Servern
 
@@ -74,25 +74,7 @@ Wenn Sie keine Verbindung herstellen können, prüfen Sie, ob das Zugriffsproble
 
 * **Prüfen Sie, ob eine URL-basierte Firewall auf dem Prozessserver den Zugriff blockiert**: Wenn Sie URL-basierte Firewallregeln auf dem Server verwenden, stellen Sie sicher, dass die folgenden URLs zur Firewallkonfiguration hinzugefügt wurden.
 
-  `*.accesscontrol.windows.net:`: Wird für Access Control und Identitätsverwaltung verwendet.
-
-  `*.backup.windowsazure.com:`: Wird für die Übertragung und Orchestrierung von Replikationsdaten verwendet.
-
-  `*.blob.core.windows.net:`: Wird für den Zugriff auf das Speicherkonto zum Speichern von replizierten Daten verwendet.
-
-  `*.hypervrecoverymanager.windowsazure.com:`: Wird für die Vorgänge und Orchestrierung der Replikationsverwaltung verwendet.
-
-  `time.nist.gov` und `time.windows.com`: Wird zum Überprüfen der Zeitsynchronisierung zwischen Systemzeit und der globalen Zeit verwendet.
-
-URLs für **Azure Government Cloud**:
-
-`* .ugv.hypervrecoverymanager.windowsazure.us`
-
-`* .ugv.backup.windowsazure.us`
-
-`* .ugi.hypervrecoverymanager.windowsazure.us`
-
-`* .ugi.backup.windowsazure.us`
+[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
 * **Prüfen Sie, ob die Proxyeinstellungen auf dem Prozessserver den Zugriff blockieren**.  Wenn Sie einen Proxyserver verwenden, stellen Sie sicher, dass der Proxyservername durch den DNS-Server aufgelöst wird.
 So überprüfen Sie, was Sie bei der Einrichtung des Konfigurationsservers angegeben haben: Navigieren Sie zum Registrierungsschlüssel:

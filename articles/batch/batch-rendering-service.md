@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: hero-article
 ms.date: 05/10/2018
 ms.author: danlep
-ms.openlocfilehash: 954a67ed126b505c9ba0da81b3ace0d25e840adb
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: f07b3ce85641f34462c97d16bbed8cf9e2e50652
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128587"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114540"
 ---
 # <a name="get-started-with-batch-rendering"></a>Erste Schritte mit Batch Rendering 
 
@@ -123,7 +123,7 @@ Mit 3ds Max können Sie Folgendes verwenden:
 
 Mit den 3ds Max Batch Labs-Vorlagen können Sie VRay- und Arnold-Szenen rendern, indem Sie Batch Rendering verwenden. Es gibt zwei Varianten der Vorlage für VRay und Arnold: eine für Standardszenen und eine für komplexere Szenen, für die eine 3ds Max-Pfaddatei für Medienobjekte und Texturen (MXP-Datei) erforderlich ist. Weitere Informationen zu den 3ds Max-BatchLabs-Vorlagen finden Sie im Repository [BatchLabs-data](https://github.com/Azure/BatchLabs-data/tree/master/ncj/3dsmax) auf GitHub.
 
-Außerdem können Sie das [Batch Python SDK](https://docs.microsoft.com/azure/batch/batch-python-tutorial) verwenden, um das Rendering in Ihre vorhandene Pipeline zu integrieren.
+Außerdem können Sie das [Batch Python SDK](/python/api/overview/azure/batch) verwenden, um das Rendering in Ihre vorhandene Pipeline zu integrieren.
 
 
 ## <a name="use-the-batch-plug-in-for-maya-to-submit-a-render-job"></a>Übermitteln eines Renderauftrags mithilfe des Batch-Plug-Ins für Maya

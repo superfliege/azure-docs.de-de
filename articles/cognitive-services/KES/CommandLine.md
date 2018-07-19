@@ -9,12 +9,12 @@ ms.component: knowledge-exploration
 ms.topic: article
 ms.date: 03/24/2016
 ms.author: paulhsu
-ms.openlocfilehash: ffa42ac73b42a8271004d2d45d7a80f3307ef059
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 71a6f5ac93e5605182a55de1bae9a99c5c3eddf4
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373298"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136354"
 ---
 # <a name="command-line-interface"></a>Befehlszeilenschnittstelle
 Über die KES-Befehlszeilenschnittstelle können Index- und Grammatikdateien aus strukturierten Daten erstellt und dann als Webdienste bereitgestellt werden.  Die allgemeine Syntax sieht wie folgt aus: `kes.exe <command> <required_args> [<optional_args>]`.  Sie können `kes.exe` ohne Argumente ausführen, um eine Liste von Befehlen anzuzeigen, oder `kes.exe <command>`, um eine Liste von Argumenten anzuzeigen, die für den angegebenen Befehl verfügbar sind.  Im Folgenden finden Sie eine Liste der verfügbaren Befehle:
@@ -26,7 +26,9 @@ ms.locfileid: "35373298"
 * describe_grammar
 
 <a name="build_index-command"></a>
+
 ## <a name="buildindex-command"></a>build_index-Befehl
+
 Der Befehl **build_index** erstellt eine Binärindexdatei aus einer Schemadefinitionsdatei und einer Datendatei von zu indizierenden Objekten.  Mit der resultierenden Indexdatei können strukturierte Abfrageausdrücke ausgewertet oder Interpretationen von Abfragen in natürlicher Sprache in Verbindung mit einer kompilierten Grammatikdatei generiert werden.
 
 `kes.exe build_index <schemaFile> <dataFile> <indexFile> [options]`
@@ -49,7 +51,9 @@ Standardmäßig wird der Index auf dem lokalen Computer erstellt.  Außerhalb de
 > Um Builds zu beschleunigen, sortieren Sie die Objekte in der Datendatei nach sinkender Wahrscheinlichkeit vor.
 
 <a name="build_grammar-command"></a>
+
 ## <a name="buildgrammar-command"></a>build_grammar-Befehl
+
 Der **build_grammar**-Befehl kompiliert eine im XML-Format angegebene Grammatik für eine binäre Grammatikdatei.  Die resultierende Grammatikdatei kann in Verbindung mit eine Indexdatei verwendet werden, um Interpretationen von Abfragen in natürlicher Sprache zu generieren.
 
 `kes.exe build_grammar <xmlFile> <grammarFile>`
@@ -62,7 +66,9 @@ Der **build_grammar**-Befehl kompiliert eine im XML-Format angegebene Grammatik 
 Diese Dateien können durch lokale Datei- oder URL-Pfade zu Azure-Blobs angegeben werden.  Die Grammatikspezifikation beschreibt die Gruppe von gewichteten Ausdrücken in natürlicher Sprache und ihre semantischen Interpretationen (siehe [Grammatikformat](GrammarFormat.md)).  Wenn der Build erfolgreich ausgeführt wird, enthält die Ausgabegrammatikdatei eine binäre Darstellung der Grammatikspezifikation, um eine schnelle Decodierung zu ermöglichen.
 
 <a name="host_service-command"/>
+
 ## <a name="hostservice-command"></a>host_service-Befehl
+
 Der Befehl **host_service** hostet eine Instanz des KES-Dienstes auf dem lokalen Computer.
 
 `kes.exe host_service <grammarFile> <indexFile> [options]`
@@ -78,7 +84,9 @@ Diese Dateien können durch lokale Datei- oder URL-Pfade zu Azure-Blobs angegebe
 Außerhalb der Azure-Umgebung sind lokal gehostete Dienste auf Indexdateien mit einer Größe von bis zu 1 MB, 10 Anforderungen pro Sekunde und insgesamt 1000 Aufrufe beschränkt.  Um diese Einschränkungen zu umgehen, führen Sie **host_service** auf einer Azure-VM aus, oder stellen Sie sie mit **deploy_service** für einen Azure-Clouddienst bereit.
 
 <a name="deploy_service-command"/>
+
 ## <a name="deployservice-command"></a>deploy_service-Befehl
+
 Der Befehl **deploy_service** stellt eine Instanz des KES-Diensts für einen Azure-Clouddienst bereit.
 
 `kes.exe deploy_service <grammarFile> <indexFile> <serviceName> <vmSize>[options]`
@@ -96,7 +104,9 @@ Diese Dateien können durch lokale Datei- oder URL-Pfade zu Azure-Blobs angegebe
 Standardmäßig wird der Dienst für die Stagingumgebung bereitgestellt und optional mit dem --slot-Parameter überschrieben.  Eine Liste der unterstützten Vorgänge finden Sie unter [Web-APIs](WebAPI.md).
 
 <a name="describe_index-command"/>
+
 ## <a name="describeindex-command"></a>describe_index-Befehl
+
 Der Befehl **describe_index** gibt Informationen über eine Indexdatei aus, wie etwa Schema und Beschreibung.
 
 `kes.exe describe_index <indexFile>`
@@ -108,7 +118,9 @@ Der Befehl **describe_index** gibt Informationen über eine Indexdatei aus, wie 
 Diese Datei kann durch einen lokalen oder URL-Pfad zu einem Azure-Blob angegeben werden.  Die Ausgabebeschreibungszeichenfolge kann mithilfe des --description-Parameters des **build_index**-Befehls angegeben werden.
 
 <a name="describe_grammar-command"/>
+
 ## <a name="describegrammar-command"></a>describe_grammar-Befehl
+
 Der **describe_grammar**-Befehl gibt die ursprüngliche Grammatikspezifikation aus, die zum Erstellen der Binärgrammatik verwendet wird.
 
 `kes.exe describe_grammar <grammarFile>`

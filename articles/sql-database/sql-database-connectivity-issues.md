@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: conceptual
-ms.date: 04/01/2018
-ms.author: daleche
-ms.openlocfilehash: 37cd099e6efe44ee70dc1799ef4b2b4377c571d5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 07/11/2018
+ms.author: ninarn
+ms.openlocfilehash: 62b5f7470491027dbf5a1c60ee478268e969d1a8
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647258"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113493"
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>Durchführen der Problembehandlung, Diagnose und Verhinderung von SQL-Verbindungsfehlern und vorübergehenden Fehlern für SQL-Datenbank
 In diesem Artikel wird beschrieben, wie Sie Verbindungsausfälle und vorübergehende Fehler verhindern, behandeln, diagnostizieren und beheben, die bei Ihrer Clientanwendung während der Interaktion mit Azure SQL-Datenbank auftreten. Erfahren Sie, wie Sie die Wiederholungslogik konfigurieren, die Verbindungszeichenfolge erstellen und andere Verbindungseinstellungen anpassen.
@@ -308,8 +308,8 @@ EntLib60 kann beispielsweise für Wiederholungslogik zur Behandlung von vorüber
 
 > [!NOTE]
 > Der Quellcode für EntLib60 steht im [Download Center](http://go.microsoft.com/fwlink/p/?LinkID=290898) zum öffentlichen Download bereit. Microsoft plant keine weiteren Funktions- oder Wartungsupdates für EntLib.
-> 
-> 
+>
+>
 
 <a id="entlib60-classes-for-transient-errors-and-retry" name="entlib60-classes-for-transient-errors-and-retry"></a>
 
@@ -319,12 +319,12 @@ Die folgenden EntLib60-Klassen sind besonders nützlich für Wiederholungslogik.
 Im Namespace **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling**:
 
 * **RetryPolicy**
-  
+
   * **ExecuteAction**
 * **ExponentialBackoff**
 * **SqlDatabaseTransientErrorDetectionStrategy**
 * **ReliableSqlConnection**
-  
+
   * **ExecuteCommand**
 
 Im Namespace **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.TestSupport**:
@@ -342,7 +342,7 @@ Unter folgenden Links finden Sie weitere Informationen zu EntLib60:
 
 ### <a name="entlib60-the-logging-block"></a>EntLib60: der Protokollierungsblock
 * Der Protokollierungsblock ist eine äußerst flexible und umfassend konfigurierbare Lösung, die Folgendes ermöglicht:
-  
+
   * Erstellen und Speichern von Protokollmeldungen an diversen Speicherorten.
   * Kategorisieren und Filtern von Meldungen.
   * Erfassen von Kontextinformationen für Debugging und Ablaufverfolgung sowie für Überwachung und allgemeine Protokollierungsanforderungen.
@@ -434,4 +434,3 @@ public bool IsTransient(Exception ex)
 [step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-to-sql-with-ado-net
 
 [step-4-connect-resiliently-to-sql-with-php-p42h]: https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php
-

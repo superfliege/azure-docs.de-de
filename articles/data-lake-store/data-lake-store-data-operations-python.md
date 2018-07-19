@@ -8,16 +8,15 @@ manager: jhubbard
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/09/2018
+ms.topic: conceptual
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 6e92eed5e4083c9b8063318b2a9139e20f53de1a
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: fa1c42a7bb9a06b2ea790e883ec7da6caa41d6b3
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39011958"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-store-using-python"></a>Dateisystemvorgänge in Azure Data Lake Store per Python
 > [!div class="op_single_selector"]
@@ -131,6 +130,6 @@ Der folgende Codeausschnitt erstellt zunächst den Data Lake Store-Kontoclient. 
 * [Erste Schritte mit Azure Data Lake Store mit Python](data-lake-store-get-started-python.md)
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Azure Data Lake Store Python (Account management) Reference](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html) (Python-Referenz zu Azure Data Lake Store (Kontoverwaltung))
+
 * [Azure Data Lake Store Python (Filesystem) Reference](http://azure-datalake-store.readthedocs.io/en/latest) (Python-Referenz zu Azure Data Lake Store (Dateisystem))
 * [Open Source-Big Data-Anwendungen, die mit Azure Data Lake-Speicher funktionieren](data-lake-store-compatible-oss-other-applications.md)

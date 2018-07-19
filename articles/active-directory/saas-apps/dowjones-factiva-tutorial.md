@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 5157e12e2afd40b8cfbc948e984747274764a276
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1a1a868302c4cd140d799fdf4962a0badf060c98
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218179"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043110"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dow-jones-factiva"></a>Tutorial: Azure Active Directory-Integration mit Dow Jones Factiva
 
@@ -102,23 +102,23 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Dow Jones Factiva** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/dowjones-factiva-tutorial/tutorial_dowjonesfactiva_samlbase.png)
+    ![Configure single sign-on](./media/dowjones-factiva-tutorial/tutorial_dowjonesfactiva_samlbase.png)
 
 3. Im Abschnitt **Domäne und URLs für Dow Jones Factiva** muss der Benutzer keine Schritte ausführen, da die App bereits in Azure integriert ist.
 
-    ![Configure Single Sign-On](./media/dowjones-factiva-tutorial/tutorial_dowjonesfactiva_url.png)
+    ![Configure single sign-on](./media/dowjones-factiva-tutorial/tutorial_dowjonesfactiva_url.png)
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/dowjones-factiva-tutorial/tutorial_dowjonesfactiva_certificate.png) 
+    ![Configure single sign-on](./media/dowjones-factiva-tutorial/tutorial_dowjonesfactiva_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/dowjones-factiva-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/dowjones-factiva-tutorial/tutorial_general_400.png)
 
 6. Zum Konfigurieren des einmaligen Anmeldens bei **Dow Jones Factiva** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [Dow Jones Factiva-Supportteam](https://www.dowjones.com/contact/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -174,7 +174,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste den Eintrag **Dow Jones Factiva** aus.
 
-    ![Configure Single Sign-On](./media/dowjones-factiva-tutorial/tutorial_dowjonesfactiva_app.png) 
+    ![Configure single sign-on](./media/dowjones-factiva-tutorial/tutorial_dowjonesfactiva_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -195,7 +195,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Dow Jones Factiva“ klicken, sollten Sie automatisch bei Ihrer Dow Jones Factiva-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

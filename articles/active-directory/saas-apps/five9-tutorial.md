@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 1698a1fc6f9acc2815ae982e090651301d0a8bc5
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3caa9b6885b87664f4b63d629677e69f47768a29
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220606"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052960"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>Tutorial: Azure Active Directory-Integration mit Five9 Plus Adapter (CTI, Contact Center -)
 
@@ -102,15 +102,15 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 1. Klicken Sie im Azure-Portal auf der Seite für die Anwendungsintegration, **Five9 Plus Adapter (CTI, Contact Center-Agents)**, auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/five9-tutorial/tutorial_five9_samlbase.png)
+    ![Configure single sign-on](./media/five9-tutorial/tutorial_five9_samlbase.png)
 
 3. Führen Sie im Abschnitt **Five9 Plus Adapter (CTI, Contact Center Agents) Domain and URLs** (Domäne und URLs für Five9 Plus Adapter (CTI, Contact Center-Agents)) die folgenden Schritte durch:
 
-    ![Configure Single Sign-On](./media/five9-tutorial/tutorial_five9_url.png)
+    ![Configure single sign-on](./media/five9-tutorial/tutorial_five9_url.png)
     
     a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein:
 
@@ -130,15 +130,15 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/five9-tutorial/tutorial_five9_certificate.png) 
+    ![Configure single sign-on](./media/five9-tutorial/tutorial_five9_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/five9-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/five9-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Five9 Plus Adapter (CTI, Contact Center Agents) Configuration** (Konfiguration von Five9 Plus Adapter (CTI, Contact Center-Agents)) auf **Configure Five9 Plus Adapter (CTI, Contact Center Agents)** (Five9 Plus Adapter (CTI, Contact Center-Agents) konfigurieren), um das Fenster **Einmaliges Anmelden** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/five9-tutorial/tutorial_five9_configure.png) 
+    ![Configure single sign-on](./media/five9-tutorial/tutorial_five9_configure.png) 
 
 7. Zum Konfigurieren des einmaligen Anmeldens bei **Five9 Plus Adapter (CTI, Contact Center-Agents)** müssen Sie das heruntergeladene **Zertifikat (Base64)** sowie Abmelde-URL, SAML-Entitäts-ID und SAML-Dienst-URL für das einmalige Anmelden an das [Supportteam von Five9 Plus Adapter (CTI, Contact Center-Agents)](https://www.five9.com/about/contact) senden. Um zudem SSO weiter zu konfigurieren, befolgen Sie die nachstehenden Schritte gemäß des Adapters:
 
@@ -202,7 +202,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Liste der Anwendungen **Five9 Plus Adapter (CTI, Contact Center-Agents)** aus.
 
-    ![Configure Single Sign-On](./media/five9-tutorial/tutorial_five9_app.png) 
+    ![Configure single sign-on](./media/five9-tutorial/tutorial_five9_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -223,7 +223,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie auf die Kachel „Five9 Plus Adapter (CTI, Contact Center-Agents)“ im Zugriffsbereich klicken, sollten Sie automatisch bei Ihrer Anwendung Five9 Plus Adapter (CTI, Contact Center-Agents) angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

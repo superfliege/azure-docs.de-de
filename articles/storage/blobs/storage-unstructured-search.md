@@ -2,19 +2,19 @@
 title: Suchen von unstrukturierten Daten in Azure-Cloudspeicher
 description: Suchen von unstrukturierten Daten mithilfe von Azure Search
 author: roygara
-manager: timlt
+manager: twooley
 services: storage
 ms.service: storage
 ms.topic: tutorial
 ms.date: 10/12/2017
-ms.author: rogara
+ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: 930b735eb03aea6ce701b694ca527049b4c3f24d
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: e50ff3b3a53a13d1604fcb7872853d758259ff9f
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
-ms.locfileid: "23451637"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136535"
 ---
 # <a name="search-unstructured-data-in-cloud-storage"></a>Suchen von unstrukturierten Daten in Cloudspeicher
 
@@ -24,7 +24,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen einer Ressourcengruppe
-> * Erstellen Sie ein Speicherkonto.
+> * Speicherkonto erstellen
 > * Erstellen eines Containers
 > * Hochladen von Daten in Ihren Container
 > * Erstellen eines Azure Search-Diensts über das Azure-Portal
@@ -40,7 +40,7 @@ Das Beispiel besteht aus Textdateien, die von [clinicaltrials.gov](https://clini
 
 Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
 
-## <a name="create-a-storage-account"></a>Erstellen Sie ein Speicherkonto.
+## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
 Ein Speicherkonto stellt einen eindeutigen Speicherort zum Speichern Ihrer Azure Storage-Datenobjekte sowie für den Zugriff darauf bereit.
 
@@ -179,7 +179,7 @@ Die Parameter des Index und die Attribute, die Sie diesen Parametern zuweisen, s
 Die Spalte **FELDNAME** enthält die Parameter. Die folgende Tabelle enthält eine Liste der verfügbaren Attribute und deren Beschreibungen.
 
 ### <a name="field-attributes"></a>Feldattribute
-| Attribut | Beschreibung |
+| Attribut | BESCHREIBUNG |
 | --- | --- |
 | *Schlüssel* |Eine Zeichenfolge, die die eindeutige ID der einzelnen Dokumente darstellt und für die Dokumentsuche verwendet wird. Jeder Index muss über einen Schlüssel verfügen. Als Schlüssel kann immer nur ein einzelnes Feld fungieren, und sein Typ muss auf „Edm.String“ festgelegt sein. |
 | *Abrufbar* |Gibt an, ob ein Feld in einem Suchergebnis zurückgegeben werden kann. |
@@ -247,7 +247,7 @@ In diesem Tutorial haben Sie Informationen zum Suchen von unstrukturierten Daten
 
 > [!div class="checklist"]
 > * Erstellen einer Ressourcengruppe
-> * Erstellen Sie ein Speicherkonto.
+> * Speicherkonto erstellen
 > * Erstellen eines Containers
 > * Hochladen von Daten in Ihren Container
 > * Erstellen eines Suchdiensts

@@ -26,6 +26,10 @@
   items:
     - name: Übersicht über den Ereignisprozessorhost
       href: event-hubs-event-processor-host.md
+    - name: IP-Verbindungsfilter
+      href: event-hubs-ip-filtering.md
+    - name: Virtual Network-Dienstendpunkte
+      href: event-hubs-service-endpoints.md
     - name: Programmierleitfaden
       href: event-hubs-programming-guide.md
     - name: Integrieren in Event Grid
@@ -150,7 +154,7 @@
     - name: Häufig gestellte Fragen
       href: event-hubs-faq.md
     - name: Azure-Roadmap
-      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: Lernpfad
       href: 'https://azure.microsoft.com/documentation/learning-paths/event-hubs/'
     - name: Preise

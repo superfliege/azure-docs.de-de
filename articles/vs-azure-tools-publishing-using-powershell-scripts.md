@@ -11,12 +11,12 @@ ms.workload: azure
 ms.topic: conceptual
 ms.date: 11/11/2016
 ms.author: ghogen
-ms.openlocfilehash: 866575a483e705e1c972a0b56d98f26e9cf0c631
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 872ca1dcd48c953180227580d805838c94ea232d
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798120"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115543"
 ---
 # <a name="using-windows-powershell-scripts-to-publish-to-dev-and-test-environments"></a>Veröffentlichung in Entwicklungs- und Testumgebungen mithilfe von Windows PowerShell-Skripts
 
@@ -36,7 +36,7 @@ Für die Arbeit mit PowerShell in Visual Studio für die Azure-Entwicklung stehe
 
 ## <a name="generating-the-publish-scripts"></a>Generieren der Veröffentlichungsskripts
 
-Sie können die Veröffentlichungsskripts für einen virtuellen Computer generieren, der Ihre Website hostet, wenn Sie ein neues Projekt anhand [dieser Anweisungen](virtual-machines/windows/classic/web-app-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) erstellen. Sie können auch [Veröffentlichungsskripts für Web-Apps in Azure App Service generieren](app-service/app-service-web-get-started-dotnet.md).
+Sie können die Veröffentlichungsskripts für einen virtuellen Computer generieren, der Ihre Website hostet, wenn Sie ein neues Projekt anhand [dieser Anweisungen](virtual-machines/windows/classic/web-app-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) erstellen. Sie können auch [Veröffentlichungsskripts für Web-Apps in Azure App Service generieren](app-service/scripts/app-service-powershell-deploy-github.md).
 
 ## <a name="scripts-that-visual-studio-generates"></a>Von Visual Studio generierte Skripts
 

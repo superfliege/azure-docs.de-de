@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6c9c4b7db93810cac4518885eb86572b2be7ca05
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 91436af0aa26c079d5cd2cc19d16a1ff0354e860
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915339"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126591"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Erstellen eines Verbunds mit mehreren Instanzen von Azure AD und einer Einzelinstanz von AD FS
 
@@ -60,7 +60,7 @@ Gehen Sie in der Azure AD PowerShell-Sitzung wie folgt vor: Stellen Sie eine Ver
     Connect-MsolService
 Konvertieren Sie die verwaltete Domäne „fabrikam.com“ in eine Verbunddomäne:
 
-    Convert-MsolDomainToFederated -DomainName anandmsft.com -Verbose -SupportMultipleDomain
+    Convert-MsolDomainToFederated -DomainName fabrikam.com -Verbose -SupportMultipleDomain
  
 Durch den obigen Vorgang werden die Domäne „fabrikam.com“ und die gleiche AD FS-Instanz zu einem Verbund zusammengefasst. Die Domäneneinstellungen können für beide Domänen mithilfe von „Get-MsolDomainFederationSettings“ überprüft werden.
 

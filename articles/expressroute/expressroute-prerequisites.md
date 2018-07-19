@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2018
 ms.author: cherylmc
-ms.openlocfilehash: 332bfba0664391b6126669c4c89e38d1af4cf4fa
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b4358d1ccffd31d1f347f1872237620bee081251
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30265083"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989358"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>Voraussetzungen und Checkliste für ExpressRoute
 Zum Herstellen einer Verbindung mit den Microsoft-Clouddiensten über ExpressRoute müssen Sie sicherstellen, dass die unten in den Abschnitten genannten Voraussetzungen erfüllt sind.
@@ -65,6 +65,6 @@ Wenn Sie Dynamics 365 für ExpressRoute aktivieren möchten, helfen Ihnen die In
 * Suchen Sie einen ExpressRoute-Konnektivitätsanbieter. Siehe [ExpressRoute-Partner und Peeringstandorte](expressroute-locations.md).
 * Sehen Sie sich die Anforderungen für [Routing](expressroute-routing.md), [NAT](expressroute-nat.md) und [QoS](expressroute-qos.md) an.
 * Konfigurieren Sie Ihre ExpressRoute-Verbindung.
-  * [Erstellen Sie eine ExpressRoute-Verbindung.](expressroute-howto-circuit-classic.md)
-  * [Konfigurieren des Routings](expressroute-howto-routing-classic.md)
-  * [Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-classic.md)
+  * [Erstellen einer ExpressRoute-Verbindung](expressroute-howto-circuit-arm.md)
+  * [Konfigurieren des Routings](expressroute-howto-routing-arm.md)
+  * [Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
