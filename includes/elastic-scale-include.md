@@ -1,2 +1,2 @@
-## <a name="additional-resources"></a>Weitere Ressourcen
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
 Verwenden Sie noch keine elastischen Datenbanktools? Sehen Sie sich unseren [Leitfaden zu den ersten Schritten](../articles/sql-database/sql-database-elastic-scale-get-started.md) an.  Bei Fragen erreichen Sie uns im [Forum für SQL-Datenbank](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted), Featureanforderungen können Sie im [Feedbackforum für SQL-Datenbank](https://feedback.azure.com/forums/217321-sql-database/) einreichen.

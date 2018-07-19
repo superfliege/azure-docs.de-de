@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: caabe0fea6286c9439e8929b054d771868dcb6f1
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 6445bcdc361bcda3beb6abcb6196fecc9c6c0024
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34272147"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952874"
 ---
 # <a name="install-and-use-solr-on-windows-based-hdinsight-clusters"></a>Installieren und Verwenden von Solr in Windows-basierten HDInsight-Clustern
 
@@ -149,21 +149,27 @@ Sie müssen mit der Indizierung von Solr mit einigen Datendateien beginnen. Sie 
            http://localhost:8983/solr/replication?command=backup
 
        Sie sollte eine Rückgabe wie diese erhalten:
-
-           <?xml version="1.0" encoding="UTF-8"?>
-           <response>
+            
+      ```xml
+      <?xml version="1.0" encoding="UTF-8"?>
+          <response>
              <lst name="responseHeader">
                <int name="status">0</int>
                <int name="QTime">9</int>
              </lst>
-             <str name="status">OK</str>
-           </response>
-   2. Navigieren Sie in der Remotesitzung zu „{SOLR_HOME}\{{Collection}\data“. Für den mit dem Beispielskript erstellten Cluster ist dies **C:\apps\dist\solr-4.7.2\example\solr\collection1\data**. An diesem Speicherort sollte ein Momentaufnahmenordner mit einem Namen wie **snapshot.* timestamp*** erstellt werden.
+            <str name="status">OK</str>
+          </response>
+      ```
+      
+   2. Navigieren Sie in der Remotesitzung zu „{SOLR_HOME}\{{Collection}\data“. Für den mit dem Beispielskript erstellten Cluster sollte dieser Pfad `C:\apps\dist\solr-4.7.2\example\solr\collection1\data` lauten. An diesem Speicherort sollte ein Momentaufnahmenordner mit einem Namen wie **snapshot.* timestamp*** erstellt werden.
+   
    3. Komprimieren Sie den Ordner für Momentaufnahmen im ZIP.-Format, und laden Sie ihn in Azure Blob Storage hoch. Navigieren Sie über die Hadoop-Befehlszeile zum Verzeichnis des Momentaufnahmenordners mithilfe des folgenden Befehls:
 
-             hadoop fs -CopyFromLocal snapshot._timestamp_.zip /example/data
+      ```
+      hadoop fs -CopyFromLocal snapshot._timestamp_.zip /example/data
+      ```
 
-       Mit diesem Befehl wird die Momentaufnahme in "/example/data/" unter der Container im Standardspeicherkonto kopiert, das dem Cluster zugeordnet ist.
+   Mit diesem Befehl wird die Momentaufnahme in "/example/data/" unter der Container im Standardspeicherkonto kopiert, das dem Cluster zugeordnet ist.
 
 ## <a name="install-solr-using-aure-powershell"></a>Installieren von Solr mithilfe von Azure PowerShell
 Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell).  Das Beispiel veranschaulicht das Installieren von Spark mithilfe von Azure PowerShell. Sie müssen das Skript für die Verwendung von [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1) anpassen.

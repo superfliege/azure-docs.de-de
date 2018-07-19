@@ -1,5 +1,5 @@
 ---
-title: Unterstützte Szenarien für SAP HANA in Azure (große Instanzen) | Microsoft Docs
+title: Unterstützte Szenarien für SAP HANA in Azure (große Instanzen) | Microsoft-Dokumentation
 description: Unterstützte Szenarien und ihre Architekturdetails für SAP HANA in Azure (große Instanzen)
 services: virtual-machines-linux
 documentationcenter: ''
@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/27/2018
+ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8927b2a32956f73e75ac7b157ebad6bf6596ea88
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 412872e607f62f710e013d88822cddc59255992e
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063628"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859951"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Unterstützte Szenarien für große HANA-Instanzen
 Dieses Dokument beschreibt die unterstützten Szenarien sowie deren Architekturdetails für große HANA-Instanzen (HANA Large Instances, HLI).
@@ -54,21 +54,22 @@ Dieses Dokument beschreibt die Details der beiden Komponenten in jeder unterstü
 
 ### <a name="ethernet"></a>Ethernet
 
-Jeder bereitgestellte Server ist mit den Ethernetsätzen vorkonfiguriert. Im Folgenden finden Sie die Details zum Ethernet, das für jede der HLI Einheiten konfiguriert ist.
+Jeder bereitgestellte Server ist mit den Gruppen von Ethernet-Schnittstellen vorkonfiguriert. Im Folgenden finden Sie die Details zu den Ethernet-Schnittstellen, die für die einzelnen HLI-Einheiten konfiguriert sind.
 
-- **A**: Für/durch Clientzugriff verwendet.
-- **B**: Wird für die Kommunikation zwischen den Knoten verwendet. Dies ist auf allen Servern (unabhängig von der angeforderten Topologie) konfiguriert, wird aber nur für Szenarien mit horizontaler Skalierung verwendet.
+- **A**: Diese Schnittstelle wird für/durch Clientzugriff verwendet.
+- **B**: Diese Schnittstelle wird für die Kommunikation zwischen den Knoten verwendet. Diese Schnittstelle ist auf allen Servern (unabhängig von der angeforderten Topologie) konfiguriert, wird aber nur für 
+- Szenarien mit horizontaler Skalierung verwendet.
 - **C**: Diese Schnittstelle wird für die Konnektivität zwischen dem Knoten und dem Speicher verwendet.
 - **D**: Diese Schnittstelle wird für die Konnektivität zwischen dem Knoten und der iSCSI-Geräteverbindung für das STONITH-Setup verwendet. Diese Schnittstelle ist nur konfiguriert, wenn das HSR-Setup angefordert wird.  
 
 | LOGISCHE NIC-SCHNITTSTELLEN | SKU-TYP | Name mit dem Betriebssystem SUSE | Name mit dem Betriebssystem RHEL | Anwendungsfall|
 | --- | --- | --- | --- | --- |
-| A | TYP I | eth0.tenant | eno1.tenant | Client zu HLI |
-| B | TYP I | eth2.tenant | eno3.tenant | Knoten zu Knoten |
+| Eine Datei | TYP I | eth0.tenant | eno1.tenant | Client zu HLI |
+| b | TYP I | eth2.tenant | eno3.tenant | Knoten zu Knoten |
 | C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
 | D | TYP I | eth4.tenant | eno4.tenant | STONITH |
-| A | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
-| B | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Knoten zu Knoten |
+| Eine Datei | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
+| b | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Knoten zu Knoten |
 | C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
 | D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | STONITH |
 
@@ -81,19 +82,19 @@ Bei Bedarf können Sie zusätzliche eigene Netzwerkkarten definieren. Die Konfig
 
 Die Verteilung für Einheiten mit zwei zugewiesenen IP-Adressen sollte wie folgt aussehen:
 
-Ethernet „A“ muss eine zugewiesene IP-Adresse haben, die aus dem Server-IP-Pool-Adressbereich stammt, den Sie an Microsoft übermittelt haben. Diese IP-Adresse muss zur Verwaltung in „/etc/hosts“ des Betriebssystems verwendet werden.
+- Ethernet „A“ muss eine zugewiesene IP-Adresse haben, die aus dem Server-IP-Pool-Adressbereich stammt, den Sie an Microsoft übermittelt haben. Diese IP-Adresse muss zur Verwaltung in „/etc/hosts“ des Betriebssystems verwendet werden.
 
-Ethernet „B“ muss eine zugewiesene IP-Adresse haben, die für die Kommunikation mit NFS verwendet wird. Daher muss diese Adresse **NICHT** in „etc/hosts“ verwaltet werden, um Instanz-zu-Instanz-Datenverkehr im Mandanten zu ermöglichen.
+- Ethernet „C“ muss eine zugewiesene IP-Adresse haben, die für die Kommunikation mit NFS verwendet wird. Daher muss diese Adresse **NICHT** in „etc/hosts“ verwaltet werden, um Instanz-zu-Instanz-Datenverkehr im Mandanten zu ermöglichen.
 
 Für Bereitstellungsfälle von HANA-Systemreplikation oder horizontal skaliertem HANA ist eine Bladekonfiguration mit zwei IP-Adressen nicht geeignet. Wenn Sie nur zwei zugewiesene IP-Adressen haben, aber eine solche Konfiguration bereitstellen möchten, wenden Sie sich an das SAP HANA in Azure-Dienstverwaltungsteam, um eine dritte IP-Adresse zu erhalten, die in einem dritten VLAN zugewiesen ist. Für Einheiten von HANA (große Instanzen) mit drei zugewiesenen IP-Adressen auf drei Netzwerkkartenports gelten die folgenden Verwendungsregeln:
 
 - Ethernet „A“ muss eine zugewiesene IP-Adresse haben, die aus dem Server-IP-Pool-Adressbereich stammt, den Sie an Microsoft übermittelt haben. Daher darf diese IP-Adresse nicht zur Verwaltung in „/etc/hosts“ des Betriebssystems verwendet werden.
 
-- Ethernet „B“ muss eine zugewiesene IP-Adresse haben, die für die Kommunikation mit dem NFS-Speicher verwendet wird. Daher darf dieser Typ von Adressen nicht in „etc/hosts“ verwaltet werden.
+- Ethernet „B“ muss ausschließlich verwendet werden, um in „etc/hosts“ für die Kommunikation zwischen den verschiedenen Instanzen verwaltet zu werden. Diese Adressen wären auch die IP-Adressen, die in horizontal skalierten HANA-Konfigurationen als IP-Adressen verwaltet werden müssen, die HANA für die Konfiguration zwischen Knoten verwendet.
 
-- Ethernet „C“ muss ausschließlich verwendet werden, um in „etc/hosts“ für die Kommunikation zwischen den verschiedenen Instanzen verwaltet zu werden. Diese Adressen wären auch die IP-Adressen, die in horizontal skalierten HANA-Konfigurationen als IP-Adressen verwaltet werden müssen, die HANA für die Konfiguration zwischen Knoten verwendet.
+- Ethernet „C“ muss eine zugewiesene IP-Adresse haben, die für die Kommunikation mit dem NFS-Speicher verwendet wird. Daher darf dieser Typ von Adressen nicht in „etc/hosts“ verwaltet werden.
 
-- Ethernet „D“ sollte ausschließlich für den Zugriff auf das STONITH-Gerät für den Schrittmacher verwendet werden. Dies ist erforderlich, wenn Sie HANA-Systemreplikation (HSR) konfigurieren und automatisches Failover im Betriebssystem mit einem SBD-basierten Gerät erzielen möchten.
+- Ethernet „D“ sollte ausschließlich für den Zugriff auf das STONITH-Gerät für den Schrittmacher verwendet werden. Diese Schnittstelle ist erforderlich, wenn Sie HANA-Systemreplikation (HSR) konfigurieren und automatisches Failover im Betriebssystem mit einem SBD-basierten Gerät erzielen möchten.
 
 
 ### <a name="storage"></a>Speicher
@@ -137,12 +138,12 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 
 | LOGISCHE NIC-SCHNITTSTELLEN | SKU-TYP | Name mit dem Betriebssystem SUSE | Name mit dem Betriebssystem RHEL | Anwendungsfall|
 | --- | --- | --- | --- | --- |
-| A | TYP I | eth0.tenant | eno1.tenant | Client zu HLI |
-| B | TYP I | eth2.tenant | eno3.tenant | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP I | eth0.tenant | eno1.tenant | Client zu HLI |
+| b | TYP I | eth2.tenant | eno3.tenant | Konfiguriert, aber nicht verwendet |
 | C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
 | D | TYP I | eth4.tenant | eno4.tenant | Konfiguriert, aber nicht verwendet |
-| A | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
-| B | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
+| b | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
 | C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
 | D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
@@ -172,12 +173,12 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 
 | LOGISCHE NIC-SCHNITTSTELLEN | SKU-TYP | Name mit dem Betriebssystem SUSE | Name mit dem Betriebssystem RHEL | Anwendungsfall|
 | --- | --- | --- | --- | --- |
-| A | TYP I | eth0.tenant | eno1.tenant | Client zu HLI |
-| B | TYP I | eth2.tenant | eno3.tenant | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP I | eth0.tenant | eno1.tenant | Client zu HLI |
+| b | TYP I | eth2.tenant | eno3.tenant | Konfiguriert, aber nicht verwendet |
 | C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
 | D | TYP I | eth4.tenant | eno4.tenant | Konfiguriert, aber nicht verwendet |
-| A | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
-| B | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
+| b | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
 | C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
 | D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
@@ -212,12 +213,12 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 
 | LOGISCHE NIC-SCHNITTSTELLEN | SKU-TYP | Name mit dem Betriebssystem SUSE | Name mit dem Betriebssystem RHEL | Anwendungsfall|
 | --- | --- | --- | --- | --- |
-| A | TYP I | eth0.tenant | eno1.tenant | Client zu HLI |
-| B | TYP I | eth2.tenant | eno3.tenant | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP I | eth0.tenant | eno1.tenant | Client zu HLI |
+| b | TYP I | eth2.tenant | eno3.tenant | Konfiguriert, aber nicht verwendet |
 | C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
 | D | TYP I | eth4.tenant | eno4.tenant | Konfiguriert, aber nicht verwendet |
-| A | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
-| B | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
+| b | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
 | C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
 | D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
@@ -236,7 +237,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
 - Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
 - Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz an der DR-HLI Einheit konfiguriert (als „Für HANA-Installation erforderlich“ markiert). 
-- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Details finden Sie unter [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure).
+- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Informationen finden Sie in dem Dokument [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure).
 - Das Startvolume für die **SKU-Typ I-Klasse** wird auf den DR-Knoten repliziert.
 
 
@@ -253,12 +254,12 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 
 | LOGISCHE NIC-SCHNITTSTELLEN | SKU-TYP | Name mit dem Betriebssystem SUSE | Name mit dem Betriebssystem RHEL | Anwendungsfall|
 | --- | --- | --- | --- | --- |
-| A | TYP I | eth0.tenant | eno1.tenant | Client zu HLI |
-| B | TYP I | eth2.tenant | eno3.tenant | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP I | eth0.tenant | eno1.tenant | Client zu HLI |
+| b | TYP I | eth2.tenant | eno3.tenant | Konfiguriert, aber nicht verwendet |
 | C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
 | D | TYP I | eth4.tenant | eno4.tenant | Konfiguriert, aber nicht verwendet |
-| A | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
-| B | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
+| b | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
 | C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
 | D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
@@ -285,13 +286,13 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
 - Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
 - Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz an der DR-HLI Einheit konfiguriert (als „Für HANA-Installation erforderlich“ markiert). 
-- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Details finden Sie unter [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure). 
+- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Informationen finden Sie in dem Dokument [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure). 
 - Am DR-Standort: Die Daten, Protokollsicherungen, freigegebenen Volumes für QA (als „QA-Instanzinstallation“ gekennzeichnet) sind für die QA-Instanzinstallation konfiguriert.
 - Das Startvolume für die **SKU-Typ I-Klasse** wird auf den DR-Knoten repliziert.
 
 ## <a name="5-hsr-with-stonith"></a>5. HSR mit STONITH
  
-Diese Topologie unterstützt zwei Knoten für die Konfiguration der HANA-Systemreplikation (HSR). 
+Diese Topologie unterstützt zwei Knoten für die Konfiguration der HANA-Systemreplikation (HSR). Diese Konfiguration wird nur für einzelne HANA-Instanzen auf einem Knoten unterstützt. Das bedeutet, dass MCOS-Szenarien NICHT unterstützt werden.
 
 **Zurzeit wird diese Architektur nur für das Betriebssystem SUSE unterstützt.**
 
@@ -307,12 +308,12 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 
 | LOGISCHE NIC-SCHNITTSTELLEN | SKU-TYP | Name mit dem Betriebssystem SUSE | Name mit dem Betriebssystem RHEL | Anwendungsfall|
 | --- | --- | --- | --- | --- |
-| A | TYP I | eth0.tenant | eno1.tenant | Client zu HLI |
-| B | TYP I | eth2.tenant | eno3.tenant | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP I | eth0.tenant | eno1.tenant | Client zu HLI |
+| b | TYP I | eth2.tenant | eno3.tenant | Konfiguriert, aber nicht verwendet |
 | C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
 | D | TYP I | eth4.tenant | eno4.tenant | Verwendet für STONITH |
-| A | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
-| B | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
+| b | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
 | C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
 | D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Verwendet für STONITH |
 
@@ -340,7 +341,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 ## <a name="6-hsr-with-dr"></a>6. HSR mit DR
  
-Diese Topologie unterstützt zwei Knoten für die Konfiguration der HANA-Systemreplikation (HSR). Sowohl normale als auch Mehrzweck-DR wird unterstützt. 
+Diese Topologie unterstützt zwei Knoten für die Konfiguration der HANA-Systemreplikation (HSR). Sowohl normale als auch Mehrzweck-DR wird unterstützt. Diese Konfigurationen werden nur für einzelne HANA-Instanzen auf einem Knoten unterstützt. Das bedeutet, das MCOS-Szenarien mit diesen Konfigurationen NICHT unterstützt werden.
 
 Im der Abbildung wird ein Mehrzweckszenario dargestellt. Dabei wird die HLI-Einheit am DR-Standort für die QA-Instanz verwendet, während die Produktionsvorgänge vom primären Standort aus ausgeführt werden. Zum Zeitpunkt des DR-Failovers (oder Failovertests) wird die QA-Instanz am DR-Standort außer Betrieb genommen. 
 
@@ -355,12 +356,12 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 
 | LOGISCHE NIC-SCHNITTSTELLEN | SKU-TYP | Name mit dem Betriebssystem SUSE | Name mit dem Betriebssystem RHEL | Anwendungsfall|
 | --- | --- | --- | --- | --- |
-| A | TYP I | eth0.tenant | eno1.tenant | Client zu HLI |
-| B | TYP I | eth2.tenant | eno3.tenant | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP I | eth0.tenant | eno1.tenant | Client zu HLI |
+| b | TYP I | eth2.tenant | eno3.tenant | Konfiguriert, aber nicht verwendet |
 | C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
 | D | TYP I | eth4.tenant | eno4.tenant | Verwendet für STONITH |
-| A | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
-| B | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
+| b | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
 | C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
 | D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Verwendet für STONITH |
 
@@ -394,7 +395,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 - STONITH: Eine SBD wird für das STONITH-Setup konfiguriert. Die Verwendung von STONITH ist jedoch optional.
 - Am DR-Standort: **Zwei Sätze von Speichervolumes** sind für die Replikation des primären und sekundären Knotens erforderlich.
 - Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz an der DR-HLI Einheit konfiguriert (als „Für HANA-Installation erforderlich“ markiert). 
-- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Details finden Sie unter [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure). 
+- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Informationen finden Sie in dem Dokument [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure). 
 - Am DR-Standort: Die Daten, Protokollsicherungen, freigegebenen Volumes für QA (als „QA-Instanzinstallation“ gekennzeichnet) sind für die QA-Instanzinstallation konfiguriert.
 - Das Startvolume für die **SKU-Typ I-Klasse** wird auf den DR-Knoten repliziert.
 
@@ -414,12 +415,12 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 
 | LOGISCHE NIC-SCHNITTSTELLEN | SKU-TYP | Name mit dem Betriebssystem SUSE | Name mit dem Betriebssystem RHEL | Anwendungsfall|
 | --- | --- | --- | --- | --- |
-| A | TYP I | eth0.tenant | eno1.tenant | Client zu HLI |
-| B | TYP I | eth2.tenant | eno3.tenant | Kommunikation zwischen den Knoten |
+| Eine Datei | TYP I | eth0.tenant | eno1.tenant | Client zu HLI |
+| b | TYP I | eth2.tenant | eno3.tenant | Kommunikation zwischen den Knoten |
 | C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
 | D | TYP I | eth4.tenant | eno4.tenant | Konfiguriert, aber nicht verwendet |
-| A | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
-| B | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Kommunikation zwischen den Knoten |
+| Eine Datei | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
+| b | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Kommunikation zwischen den Knoten |
 | C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
 | D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
@@ -455,12 +456,12 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 
 | LOGISCHE NIC-SCHNITTSTELLEN | SKU-TYP | Name mit dem Betriebssystem SUSE | Name mit dem Betriebssystem RHEL | Anwendungsfall|
 | --- | --- | --- | --- | --- |
-| A | TYP I | eth0.tenant | eno1.tenant | Client zu HLI |
-| B | TYP I | eth2.tenant | eno3.tenant | Kommunikation zwischen den Knoten |
+| Eine Datei | TYP I | eth0.tenant | eno1.tenant | Client zu HLI |
+| b | TYP I | eth2.tenant | eno3.tenant | Kommunikation zwischen den Knoten |
 | C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
 | D | TYP I | eth4.tenant | eno4.tenant | Konfiguriert, aber nicht verwendet |
-| A | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
-| B | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Kommunikation zwischen den Knoten |
+| Eine Datei | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
+| b | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Kommunikation zwischen den Knoten |
 | C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
 | D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
@@ -491,12 +492,12 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 
 | LOGISCHE NIC-SCHNITTSTELLEN | SKU-TYP | Name mit dem Betriebssystem SUSE | Name mit dem Betriebssystem RHEL | Anwendungsfall|
 | --- | --- | --- | --- | --- |
-| A | TYP I | eth0.tenant | eno1.tenant | Client zu HLI |
-| B | TYP I | eth2.tenant | eno3.tenant | Kommunikation zwischen den Knoten |
+| Eine Datei | TYP I | eth0.tenant | eno1.tenant | Client zu HLI |
+| b | TYP I | eth2.tenant | eno3.tenant | Kommunikation zwischen den Knoten |
 | C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
 | D | TYP I | eth4.tenant | eno4.tenant | Konfiguriert, aber nicht verwendet |
-| A | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
-| B | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Kommunikation zwischen den Knoten |
+| Eine Datei | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
+| b | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Kommunikation zwischen den Knoten |
 | C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
 | D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
@@ -530,12 +531,12 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 
 | LOGISCHE NIC-SCHNITTSTELLEN | SKU-TYP | Name mit dem Betriebssystem SUSE | Name mit dem Betriebssystem RHEL | Anwendungsfall|
 | --- | --- | --- | --- | --- |
-| A | TYP I | eth0.tenant | eno1.tenant | Client zu HLI |
-| B | TYP I | eth2.tenant | eno3.tenant | Kommunikation zwischen den Knoten |
+| Eine Datei | TYP I | eth0.tenant | eno1.tenant | Client zu HLI |
+| b | TYP I | eth2.tenant | eno3.tenant | Kommunikation zwischen den Knoten |
 | C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
 | D | TYP I | eth4.tenant | eno4.tenant | Konfiguriert, aber nicht verwendet |
-| A | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
-| B | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Kommunikation zwischen den Knoten |
+| Eine Datei | TYP II | vlan<tenantNo> | team0.tenant | Client zu HLI |
+| b | TYP II | vlan<tenantNo+2> | team0.tenant+2 | Kommunikation zwischen den Knoten |
 | C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
 | D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
@@ -558,7 +559,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 ### <a name="key-considerations"></a>Wichtige Aspekte
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
 -  Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz an der DR-HLI Einheit konfiguriert (als „Für HANA-Installation erforderlich“ markiert). 
-- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Details finden Sie unter [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure). 
+- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Informationen finden Sie in dem Dokument [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure). 
 - Das Startvolume für die **SKU-Typ I-Klasse** wird auf den DR-Knoten repliziert.
 
 

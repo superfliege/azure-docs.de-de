@@ -3,7 +3,7 @@ title: Überwachen und Debuggen mit Metriken in Azure Cosmos DB | Microsoft-Doku
 description: Verwenden Sie Metriken in Azure Cosmos DB zum Beheben häufiger Probleme und Überwachen der Datenbank.
 keywords: Metriken
 services: cosmos-db
-author: gnot
+author: kanshiG
 manager: kfile
 editor: ''
 ms.service: cosmos-db
@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: govindk
-ms.openlocfilehash: 49a381efa0603889336f43e409698bbcef44f41f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3c5629dc1ad87456583f5a713f16e696bc9b7b1e
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34615640"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858662"
 ---
 # <a name="monitoring-and-debugging-with-metrics-in-azure-cosmos-db"></a>Überwachen und Debuggen mit Metriken in Azure Cosmos DB
 
@@ -33,13 +33,13 @@ Dieser Artikel behandelt häufige Anwendungsfälle und zeigt, wie Azure Cosmos D
 
 Rufen Sie zunächst das [Azure-Portal](https://portal.azure.com) auf, und navigieren Sie zum Blatt **Metriken**. Suchen Sie im Blatt das Diagramm **Anzahl von Anforderungen pro 1 Minute, die die Kapazität überschritten haben**. In diesem Diagramm wird die Summe der nach Statuscode segmentierten Anforderungen für jede einzelne Minute angezeigt. Weitere Informationen zu HTTP-Statuscodes finden Sie unter [HTTP Status Codes for Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) (HTTP-Statuscodes für Azure Cosmos DB, in englischer Sprache).
 
-Der häufigste Fehlerstatuscode lautet 429 (Drosselung). Dieser besagt, dass Anforderungen von Azure Cosmos DB den angegebenen Durchsatz überschreiten. Die häufigste Lösung hierfür ist das [zentrale Hochskalieren der RUs](./set-throughput.md) für die angegebene Sammlung.
+Der häufigste Fehlerstatuscode lautet 429 (Ratenbegrenzung/Drosselung). Dieser besagt, dass Anforderungen von Azure Cosmos DB den angegebenen Durchsatz überschreiten. Die häufigste Lösung hierfür ist das [zentrale Hochskalieren der RUs](./set-throughput.md) für die angegebene Sammlung.
 
 ![Anzahl von Anforderungen pro Minute](media/use-metrics/metrics-12.png)
 
 ## <a name="determining-the-throughput-distribution-across-partitions"></a>Partitionsübergreifendes Bestimmen des Durchsatzes
 
-Für jede skalierbare Anwendung ist eine gute Kardinalität der Partitionsschlüssel von wesentlicher Bedeutung. Um die nach Partitionen aufgeschlüsselte Verteilung des Durchsatzes jeder partitionierten Sammlung zu bestimmen, navigieren Sie im [Azure-Portal](https://portal.azure.com) zum Blatt **Metriken**. Auf der Registerkarte **Durchsatz** wird im Diagramm **Maximal genutzte RU/Sekunde je physische Partition** die Speicheraufschlüsselung angezeigt. Die folgende Abbildung zeigt ein Beispiel für eine schlechte Verteilung der Daten, die sich anhand der extremen Partition am linken Rand erkennen lässt. 
+Für jede skalierbare Anwendung ist eine gute Kardinalität der Partitionsschlüssel von wesentlicher Bedeutung. Um die nach Partitionen aufgeschlüsselte Verteilung des Durchsatzes jedes partitionierten Containers zu bestimmen, navigieren Sie im [Azure-Portal](https://portal.azure.com) zum Blatt **Metriken**. Auf der Registerkarte **Durchsatz** wird im Diagramm **Maximal genutzte RU/Sekunde je physische Partition** die Speicheraufschlüsselung angezeigt. Die folgende Abbildung zeigt ein Beispiel für eine schlechte Verteilung der Daten, die sich anhand der extremen Partition am linken Rand erkennen lässt. 
 
 ![Einzelne Partition mit starker Auslastung um 15:05 Uhr](media/use-metrics/metrics-17.png)
 
@@ -47,7 +47,7 @@ Eine ungleichmäßige Verteilung des Durchsatzes kann *Hot*-Partitionen verursac
 
 ## <a name="determining-the-storage-distribution-across-partitions"></a>Partitionsübergreifendes Bestimmen der Speicherverteilung
 
-Für jede skalierbare Anwendung ist eine gute Kardinalität der Partition von wesentlicher Bedeutung. Um die nach Partitionen aufgeschlüsselte Verteilung des Durchsatzes jeder partitionierten Sammlung zu bestimmen, navigieren Sie im [Azure-Portal](https://portal.azure.com) zum Blatt „Metriken“. Auf der Registerkarte „Durchsatz“ wird im Diagramm „Maximal genutzte RU/Sekunde je physische Partition“ die Speicheraufschlüsselung angezeigt. Die folgende Abbildung veranschaulicht eine schlechte Verteilung der Daten, die sich anhand der extremen Partition am linken Rand erkennen lässt. 
+Für jede skalierbare Anwendung ist eine gute Kardinalität der Partition von wesentlicher Bedeutung. Um die nach Partitionen aufgeschlüsselte Verteilung des Durchsatzes jedes partitionierten Containers zu bestimmen, wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Blatt „Metriken“. Auf der Registerkarte „Durchsatz“ wird im Diagramm „Maximal genutzte RU/Sekunde je physische Partition“ die Speicheraufschlüsselung angezeigt. Die folgende Abbildung veranschaulicht eine schlechte Verteilung der Daten, die sich anhand der extremen Partition am linken Rand erkennen lässt. 
 
 ![Beispiel für eine schlechte Datenverteilung](media/use-metrics/metrics-07.png)
 
@@ -55,7 +55,7 @@ Sie können bestimmen, welcher Partitionsschlüssel die Verteilung verzerrt, ind
 
 ![Partitionsschlüssel verzerrt die Verteilung](media/use-metrics/metrics-05.png)
 
-Nachdem Sie den Partitionsschlüssel identifiziert haben, der die verzerrte Verteilung verursacht, müssen Sie möglicherweise die Sammlung mit einem Partitionsschlüssel für eine gleichmäßigere Verteilung neu partitionieren. Weitere Informationen zum Partitionieren in Azure Cosmos DB finden Sie unter [Partitionieren und Skalieren in Azure Cosmos DB](./partition-data.md).
+Nachdem Sie den Partitionsschlüssel identifiziert haben, der die verzerrte Verteilung verursacht, müssen Sie möglicherweise den Container mit einem Partitionsschlüssel für eine gleichmäßigere Verteilung neu partitionieren. Weitere Informationen zum Partitionieren in Azure Cosmos DB finden Sie unter [Partitionieren und Skalieren in Azure Cosmos DB](./partition-data.md).
 
 ## <a name="comparing-data-size-against-index-size"></a>Vergleichen der Datengröße mit der Indexgröße
 

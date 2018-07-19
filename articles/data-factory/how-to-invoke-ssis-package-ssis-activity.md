@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 05/25/2018
+ms.date: 07/09/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 5ff397e8b13d56b3b034854c507f8bef05008812
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: db5941528eedd10cf252607dbe2160bd498a70de
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054720"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951966"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Ausführen eines SSIS-Pakets mit der Aktivität „SSIS-Paket ausführen“ in Azure Data Factory
 In diesem Artikel wird das Ausführen eines SSIS-Pakets in einer Azure Data Factory-Pipeline mithilfe der Aktivität „SSIS-Paket ausführen“ beschrieben. 
@@ -92,9 +92,11 @@ In diesem Schritt erstellen Sie über die Data Factory-Benutzeroberfläche eine 
 
 ### <a name="optionally-parameterize-the-activity"></a>Optionales Parametrisieren der Aktivität
 
-Weisen Sie auf der Registerkarte **Erweitert** optional Werte, Ausdrücke oder Funktionen zu, die auf Data Factory-Systemvariablen, auf Ihr Projekt oder auf Paketparameter im JSON-Format verweisen können. Sie können beispielsweise Ihrem SSIS-Projekt Data Factory-Pipelineparameter zuweisen oder Paketparameter zuweisen, wie es im folgenden Screenshot zu sehen ist:
+Weisen Sie optional Werte, Ausdrücke oder Funktionen, die auf Data Factory-Systemvariablen verweisen können, Ihren Projekt- oder Paketparametern im JSON-Format zu. Dazu verwenden Sie die Schaltfläche **Quellcode anzeigen** am unteren Rand des Felds für die Aktivität „SSIS-Paket ausführen“ oder die Schaltfläche **Code** in der oberen rechten Ecke des Pipelinebereichs. Sie können beispielsweise Ihrem SSIS-Projekt Data Factory-Pipelineparameter zuweisen oder Paketparameter zuweisen, wie es in den folgenden Screenshots zu sehen ist:
 
-![Hinzufügen von Parametern zur Aktivität „SSIS-Paket ausführen“](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters.png)
+![Bearbeiten eines JSON-Skripts für die Aktivität „SSIS-Paket ausführen“](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters.png)
+
+![Hinzufügen von Parametern zur Aktivität „SSIS-Paket ausführen“](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters2.png)
 
 ### <a name="run-and-monitor-the-pipeline"></a>Ausführen und Überwachen der Pipeline
 In diesem Abschnitt lösen Sie eine Pipelineausführung aus, und überwachen diese. 
@@ -174,7 +176,7 @@ Beachten Sie folgende Punkte:
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Damit Sie Data Factory-Instanzen erstellen können, muss das Benutzerkonto, mit dem Sie sich bei Azure anmelden, ein Mitglied der Rolle **Mitwirkender** oder **Besitzer** oder ein **Administrator** des Azure-Abonnements sein.
-* Derzeit können Sie mit Data Factory nur in den Regionen „USA, Osten“, „USA, Osten 2“, „Europa, Westen“ und „Asien, Südosten“ Data Factorys erstellen. Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
+* Eine Liste der Azure-Regionen, in denen Data Factory derzeit verfügbar ist, finden Sie, indem Sie die für Sie interessanten Regionen auf der folgenden Seite auswählen und dann **Analysen** erweitern, um **Data Factory** zu finden: [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/). Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
 
 ### <a name="create-a-pipeline-with-an-ssis-activity"></a>Erstellen einer Pipeline mit einer SSIS-Aktivität 
 In diesem Schritt erstellen Sie eine Pipeline mit einer SSIS-Aktivität. Die Aktivität führt Ihr SSIS-Paket aus. 

@@ -8,14 +8,14 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/14/2018
+ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: ed69d4de56d23210cc9133d74ab81530f924b5ae
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 30ebe4f990dc65e53c34673f0948d3aa2240385c
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261558"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37859699"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB – Häufig gestellte Fragen
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure DB Cosmos-Grundlagen
@@ -116,6 +116,11 @@ Azure Cosmos DB ist in allen Azure-Regionen präsent. Dies ist auf der Seite mit
 
 Beachten Sie beim Festlegen einer Region, dass von Azure Cosmos DB unabhängige Clouds und Government Clouds respektiert werden. Wenn Sie ein Konto in einer [unabhängigen Region](https://azure.microsoft.com/global-infrastructure/) erstellen, können Sie also keine Replikation aus dieser [unabhängigen Region](https://azure.microsoft.com/global-infrastructure/) heraus durchführen. Ebenso ist es nicht möglich, die Replikation an anderen unabhängigen Standorten über ein externes Konto zu ermöglichen. 
 
+### <a name="is-it-possible-to-switch-from-container-level-throughput-provisioning-to-database-level-throughput-provisioning-or-vice-versa"></a>Kann von einer Durchsatzbereitstellung auf Containerebene zu einer Durchsatzbereitstellung auf Datenbankebene (oder umgekehrt) gewechselt werden?
+
+Die Bereitstellung auf Container- und Datenbankebene wird gesondert angeboten. Für einen Wechsel zwischen diesen Bereitstellungsmethoden müssen Daten von der Quelle zum Ziel migriert werden. Dies bedeutet, dass Sie eine neue Datenbank oder eine neue Sammlung erstellen müssen und anschließend Daten mithilfe der [Bulk-Executor-Bibliothek](bulk-executor-overview.md) oder mithilfe von [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) migrieren müssen.
+
+
 ## <a name="develop-against-the-sql-api"></a>Entwickeln für die SQL-API
 
 ### <a name="how-do-i-start-developing-against-the-sql-api"></a>Wie beginne ich mit dem Entwickeln für die SQL-API?
@@ -131,12 +136,16 @@ Beispiele für die [.NET](sql-api-dotnet-samples.md)-, [Java](https://github.com
 Ja. Die SQL-API ermöglicht Anwendungen das Speichern beliebiger JSON-Dokumente ohne Schemadefinitionen oder -hinweise. Die Daten stehen unmittelbar zur Abfrage über die Azure Cosmos DB-SQL-Abfrageschnittstelle zur Verfügung.  
 
 ### <a name="does-the-sql-api-support-acid-transactions"></a>Unterstützt die SQL-API ACID-Transaktionen?
-Ja, die SQL-API unterstützt dokumentübergreifende Transaktionen, die in Form von gespeicherten JavaScript-Prozeduren und Triggern ausgedrückt werden. Die Transaktionen werden einer Partition in jeder Sammlung zugeordnet und mit ACID-Semantik nach dem Prinzip „alles oder nichts“ ausgeführt. Sie sind dabei von anderem gleichzeitig ausgeführtem Code und Benutzeranforderungen isoliert. Falls bei der serverseitigen Ausführung des JavaScript-Anwendungscodes ein Ausnahmefehler auftritt, wird für die gesamte Transaktion ein Rollback durchgeführt. Weitere Informationen zu Transaktionen finden Sie unter [Datenbankprogramm-Transaktionen](programming.md#database-program-transactions).
+Ja, die SQL-API unterstützt dokumentübergreifende Transaktionen, die in Form von gespeicherten JavaScript-Prozeduren und Triggern ausgedrückt werden. Die Transaktionen werden einer Partition in jedem Container zugeordnet und mit ACID-Semantik nach dem Prinzip „alles oder nichts“ ausgeführt. Sie sind dabei von anderem gleichzeitig ausgeführtem Code und Benutzeranforderungen isoliert. Falls bei der serverseitigen Ausführung des JavaScript-Anwendungscodes ein Ausnahmefehler auftritt, wird für die gesamte Transaktion ein Rollback durchgeführt. Weitere Informationen zu Transaktionen finden Sie unter [Datenbankprogramm-Transaktionen](programming.md#database-program-transactions).
 
-### <a name="what-is-a-collection"></a>Was ist eine Sammlung?
-Eine Sammlung ist eine Gruppe von Dokumenten mit der zugehörigen JavaScript-Anwendungslogik. Eine Sammlung ist eine fakturierbare Entität, deren [Kosten](performance-levels.md) vom Durchsatz und belegten Speicher bestimmt werden. Sammlungen können eine oder mehrere Partitionen oder Server umfassen und können skaliert werden, um praktisch unbegrenzte Mengen an Speicher oder Durchsatz zu verarbeiten.
+### <a name="what-is-a-container"></a>Was ist ein Container?
+Ein Container ist eine Gruppe von Dokumenten mit der zugehörigen JavaScript-Anwendungslogik. Ein Container ist eine fakturierbare Entität, deren [Kosten](performance-levels.md) vom Durchsatz und belegten Speicher bestimmt werden. Container können eine oder mehrere Partitionen oder Server umfassen und können skaliert werden, um praktisch unbegrenzte Mengen an Speicher oder Durchsatz zu verarbeiten. 
 
-Sammlungen stellen außerdem die Abrechnungseinheiten für Azure Cosmos DB dar. Die Kosten für jede Sammlung werden basierend auf dem bereitgestellten Durchsatz und dem verwendeten Speicherplatz pro Stunde berechnet. Weitere Informationen finden Sie unter [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/). 
+* Bei SQL- und MongoDB-API-Konten ist ein Container einer Sammlung zugeordnet. 
+* Bei Cassandra- und Tabellen-API-Konten ist ein Container einer Tabelle zugeordnet. 
+* Bei Gremlin-API-Konten ist ein Container einem Diagramm (Graphen) zugeordnet. 
+
+Container stellen außerdem die Abrechnungseinheiten für Azure Cosmos DB dar. Die Kosten für jeden Container werden basierend auf dem bereitgestellten Durchsatz und dem verwendeten Speicherplatz pro Stunde berechnet. Weitere Informationen finden Sie unter [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/). 
 
 ### <a name="how-do-i-create-a-database"></a>Wie erstelle ich eine Datenbank?
 Sie können Datenbanken erstellen, indem Sie das [Azure-Portal](https://portal.azure.com), wie unter [Hinzufügen einer Sammlung](create-sql-api-dotnet.md#create-collection) beschrieben, oder eines der [Azure Cosmos DB SDKs](sql-api-sdk-dotnet.md) oder die [REST-APIs](/rest/api/cosmos-db/) verwenden. 
@@ -165,7 +174,7 @@ Sie haben die folgenden Möglichkeiten, um in Azure Cosmos DB die Masseneinfügu
 * Mit dem Datenmigrationstool, wie unter [Datenbankmigrationstool für Azure Cosmos DB](import-data.md) beschrieben.
 * Mit serverseitigen Verfahren, wie unter [Serverseitige JavaScript-Programmierung für Azure Cosmos DB](programming.md) beschrieben.
 
-### <a name="i-have-setup-my-collection-to-use-lazy-indexing-i-see-that-my-queries-do-not-return-expected-results"></a>Ich habe für meine Sammlung die verzögerte Indizierung eingerichtet, und bei meinen Abfragen werden nicht die erwarteten Ergebnisse zurückgegeben. 
+### <a name="i-have-setup-my-container-to-use-lazy-indexing-i-see-that-my-queries-do-not-return-expected-results"></a>Ich habe für meinen Container die verzögerte Indizierung eingerichtet, und bei meinen Abfragen werden nicht die erwarteten Ergebnisse zurückgegeben. 
 Wie im Abschnitt zur Indizierung beschrieben, kann die verzögerte Indizierung zu diesem Verhalten führen. Sie sollten für alle Anwendungen immer eine einheitliche Indizierung verwenden. 
 
 
@@ -180,7 +189,7 @@ Dies ist eine Einschränkung von JavaScript. JavaScript verwendet das Gleitkomma
 
 ### <a name="where-are-permissions-allowed-in-the-object-hierarchy"></a>Wo sind in der Objekthierarchie Berechtigungen zulässig?
 
-Die Erstellung von Berechtigungen mit ResourceTokens ist auf der Sammlungsebene und den untergeordneten Elementen (z.B. Dokumente, Anlagen) zulässig. Hieraus ergibt sich, dass auf Datenbank- oder Kontoebene derzeit keine Berechtigung erstellt werden kann.
+Die Erstellung von Berechtigungen mit ResourceTokens ist auf der Containerebene und den untergeordneten Elementen (z.B. Dokumente, Anlagen) zulässig. Hieraus ergibt sich, dass auf Datenbank- oder Kontoebene derzeit keine Berechtigung erstellt werden kann.
 
 
 ## <a name="develop-against-the-api-for-mongodb"></a>Entwickeln mit der API für MongoDB
@@ -280,9 +289,6 @@ Sie können das Azure-Portal verwenden, um die Daten zu durchsuchen. Außerdem k
 Sie können den [Azure Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) verwenden.
 
 Tools, die eine Verbindungszeichenfolge im weiter oben angegebenen Format akzeptieren, können die neue Table-API unterstützen. Eine Liste mit Tabellentools steht auf der Seite [Azure Storage-Clienttools](../storage/common/storage-explorers.md) zur Verfügung. 
-
-### <a name="do-powershell-or-azure-cli-work-with-the-table-api"></a>Kann PowerShell oder die Azure-Befehlszeilenschnittstelle mit der Table-API verwendet werden?
-[PowerShell](table-powershell.md) wird unterstützt. Die Azure-Befehlszeilenschnittstelle wird derzeit nicht unterstützt.
 
 ### <a name="is-the-concurrency-on-operations-controlled"></a>Ist die Parallelität im Betrieb gesteuert?
 Ja. Die optimistische Nebenläufigkeit wird über den Einsatz des ETag-Mechanismus bereitgestellt. 
@@ -410,7 +416,7 @@ None (Keine): Es gibt keine Preisänderungen für Bestandskunden von Azure Table
 ### <a name="how-is-the-price-calculated-for-the-table-api"></a>Wie errechnet sich der Preis für die Table-API? 
 Der Preis hängt vom zugewiesenen TableThroughput-Wert ab. 
 
-### <a name="how-do-i-handle-any-throttling-on-the-tables-in-table-api-offering"></a>Wie kann ich beim Table-API-Angebot eine ggf. auftretende Drosselung für die Tabellen behandeln? 
+### <a name="how-do-i-handle-any-rate-limiting-on-the-tables-in-table-api-offering"></a>Wie kann ich beim Table-API-Angebot eine ggf. auftretende Ratenbegrenzung behandeln? 
 Wenn die Anforderungsrate die Kapazität des bereitgestellten Durchsatzes für die zugrunde liegenden Container überschreitet, erhalten Sie einen Fehler, und das SDK wiederholt den Aufruf, indem die Wiederholungsrichtlinie angewendet wird.
 
 ### <a name="why-do-i-need-to-choose-a-throughput-apart-from-partitionkey-and-rowkey-to-take-advantage-of-the-table-api-offering-of-azure-cosmos-db"></a>Warum muss ich zusätzlich zu „PartitionKey“ und „RowKey“ einen Durchsatz festlegen, um das Table-API-Angebot von Azure Cosmos DB nutzen zu können?

@@ -13,15 +13,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 6/1/2018
+ms.date: 7/6/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 4ae64fefb58840214104a4e1cb338ec404fac1a8
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 32f45b66c4b1d22da3ffc4310a8a47c17319301f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235412"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38302822"
 ---
 # <a name="back-up-sql-server-database-in-azure"></a>Sichern einer SQL Server-Datenbank in Azure
 
@@ -78,7 +78,7 @@ Die folgenden Elemente sind die bekannten Einschränkungen der Public Preview.
 
 ## <a name="supported-operating-systems-and-versions-of-sql-server"></a>Unterstützte Betriebssysteme und Versionen von SQL Server
 
-Der folgenden unterstützten Betriebssysteme und Versionen von SQL Server gelten für SQL-Marketplace-VMs in Azure und Nicht-Marketplace-VMs (in denen SQL Server manuell installiert ist).
+Die folgenden Betriebssysteme werden unterstützt. SQL-Marketplace-VMs in Azure und Nicht-Marketplace-VMs (in denen SQL Server manuell installiert ist) werden unterstützt.
 
 ### <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
@@ -131,7 +131,7 @@ Die Kompromisse zwischen den Optionen sind: Verwaltbarkeit, Feinsteuerung und Ko
 
 ## <a name="set-permissions-for-non-marketplace-sql-vms"></a>Festlegen von Berechtigungen für Nicht-Marketplace-SQL-VMs
 
-Zum Sichern eines virtuellen Computers benötigt Azure Backup die **AzureBackupWindowsWorkload**-Erweiterung. Wenn Sie virtuelle Computer des Azure-Marketplace verwenden, fahren Sie mit [Ermitteln von SQL Server-Datenbanken](backup-azure-sql-database.md#discover-sql-server-databases) fort. Wurde der virtuelle Computer, der Ihre SQL-Datenbanken hostet, nicht vom Azure-Marketplace aus erstellt, lesen Sie den folgenden Abschnitt, um die Erweiterung zu installieren und die entsprechenden Berechtigungen festzulegen. Zusätzlich zur **AzureBackupWindowsWorkload**-Erweiterung benötigt Azure Backup Systemadministratorberechtigungen für SQL, um SQL-Datenbanken zu schützen. Beim Ermitteln von Datenbanken auf dem virtuellen Computer erstellt Azure Backup ein Konto „NT Service\AzureWLBackupPluginSvc“. Damit Azure Backup SQL-Datenbanken ermitteln kann, muss das Konto „NT Service\AzureWLBackupPluginSvc“ über SQL-Anmeldedaten und SQL-Systemadministratorberechtigungen verfügen. Im Folgenden wird erläutert, wie Sie diese Berechtigungen bereitstellen.
+Zum Sichern eines virtuellen Computers benötigt Azure Backup die **AzureBackupWindowsWorkload**-Erweiterung. Wenn Sie virtuelle Computer des Azure-Marketplace verwenden, fahren Sie mit [Ermitteln von SQL Server-Datenbanken](backup-azure-sql-database.md#discover-sql-server-databases) fort. Wurde der virtuelle Computer, der Ihre SQL-Datenbanken hostet, nicht vom Azure-Marketplace aus erstellt, lesen Sie den folgenden Abschnitt, um die Erweiterung zu installieren und die entsprechenden Berechtigungen festzulegen. Zusätzlich zur **AzureBackupWindowsWorkload**-Erweiterung benötigt Azure Backup Systemadministratorberechtigungen für SQL, um SQL-Datenbanken zu schützen. Beim Ermitteln von Datenbanken auf dem virtuellen Computer erstellt Azure Backup ein Konto „NT Service\AzureWLBackupPluginSvc“. Damit Azure Backup SQL-Datenbanken ermitteln kann, muss das Konto „NT Service\AzureWLBackupPluginSvc“ über SQL- und SQL-Systemadministratorberechtigungen verfügen. Im Folgenden wird erläutert, wie Sie diese Berechtigungen bereitstellen.
 
 So konfigurieren Sie Berechtigungen
 
@@ -168,13 +168,13 @@ Nachdem Sie die Datenbank mit dem Recovery Services-Tresor verknüpft haben, ist
 
 ### <a name="fixing-sql-sysadmin-permissions"></a>Beheben von Problemen mit SQL-Systemadministratorberechtigungen
 
-Wenn während der Installation den Fehler **UserErrorSQLNoSysadminMembership** angezeigt wird, melden Sie sich bei SQL Server Management Studio (SSMS) mit einem Konto an, das über SQL-Systemadministratorberechtigungen verfügt. Wenn Sie keine speziellen Berechtigungen benötigen, können Sie die Windows-Authentifizierung verwenden, um das Konto zu erkennen.
+Wenn während der Installation der Fehler **UserErrorSQLNoSysadminMembership** angezeigt wird, verwenden Sie ein Konto mit SQL-Systemadministratorberechtigungen, um sich bei SQL Server Management Studio (SSMS) anzumelden. Wenn Sie keine speziellen Berechtigungen benötigen, sollte die Windows-Authentifizierung funktionieren.
 
 1. Öffnen Sie auf der SQL Server-Instanz den Ordner **Sicherheit/Anmeldungen**.
 
     ![Öffnen Sie die SQL Server-Instanz und die Ordner für Sicherheit und Anmeldung, um die Konten anzuzeigen.](./media/backup-azure-sql-database/security-login-list.png)
 
-2. Klicken Sie im Ordner „Anmeldungen“ mit der rechten Maustaste, wählen Sie **Neue Anmeldung**, und klicken Sie im Dialogfeld „Anmeldung – Neu“ auf **Suchen**.
+2. Klicken Sie im Ordner „Anmeldungen“ mit der rechten Maustaste, wählen Sie **Neue Anmeldung** aus, und klicken Sie im Dialogfeld „Anmeldung – Neu“ auf **Suchen**.
 
     ![Öffnen der Suche im Dialogfeld „Anmeldung – Neu“](./media/backup-azure-sql-database/new-login-search.png)
 
@@ -190,7 +190,7 @@ Wenn während der Installation den Fehler **UserErrorSQLNoSysadminMembership** a
 
     Die erforderlichen Berechtigungen sollten jetzt vorhanden sein.
 
-6. Obwohl Sie den Berechtigungsfehler behoben haben, müssen Sie die Datenbank noch immer mit dem Recovery Services-Tresor verknüpfen. Klicken Sie im Azure-Portal in der Liste **Geschützte Server** mit der rechten Maustaste auf den fehlerhaften Server, und wählen Sie **Datenbanken neu ermitteln**.
+6. Obwohl Sie den Berechtigungsfehler behoben haben, müssen Sie die Datenbank noch immer mit dem Recovery Services-Tresor verknüpfen. Klicken Sie im Azure-Portal in der Liste **Geschützte Server** mit der rechten Maustaste auf den fehlerhaften Server, und wählen Sie **Datenbanken neu ermitteln** aus.
 
     ![Überprüfen, ob der Server über die entsprechenden Berechtigungen verfügt](./media/backup-azure-sql-database/check-erroneous-server.png)
 
@@ -251,7 +251,7 @@ Wenn Sie das Tool **DBs ermitteln** verwenden, führt Azure Backup die folgenden
 
 - Die Erweiterung **AzureBackupWindowsWorkload** wird auf dem virtuellen Computer installiert. Die Sicherung einer SQL-Datenbank erfolgt ohne Agent, d.h. mit der im virtuellen Computer installierten Erweiterung wurde kein Agent in der SQL-Datenbank installiert.
 
-- Das Dienstkonto **NT Service\AzureWLBackupPluginSvc** wird im virtuellen Computer erstellt. Für alle Sicherungs- und Wiederherstellungsvorgänge wird das Dienstkonto verwendet. **NT-Server\AzureWLBackupPluginSvc** erfordert SQL-Systemadministratorberechtigungen. Für alle SQL-Marketplace-VMs ist die Erweiterung „SqlIaaSExtension“ installiert, und „AzureBackupWindowsWorkload“ verwendet die Erweiterung „SQLIaaSExtension“, um automatisch die erforderliche Berechtigungen zu erhalten. Wenn auf Ihrem virtuellen Computer keine „SqlIaaSExtension“-Erweiterung installiert ist, tritt bei der Ermittlung der Datenbanken ein Fehler mit der Meldung **UserErrorSQLNoSysAdminMembership** auf. Um die Systemadministratorberechtigung für Sicherungen hinzuzufügen, folgen Sie den Anweisungen unter [Festlegen von Azure Backup-Berechtigungen für Nicht-Marketplace-SQL-VMs](backup-azure-sql-database.md#set-permissions-for-non--marketplace-sql-vms).
+- Das Dienstkonto **NT Service\AzureWLBackupPluginSvc** wird im virtuellen Computer erstellt. Für alle Sicherungs- und Wiederherstellungsvorgänge wird das Dienstkonto verwendet. **NT Service\AzureWLBackupPluginSvc** erfordert SQL-Systemadministratorberechtigungen. Für alle SQL-Marketplace-VMs ist die Erweiterung „SqlIaaSExtension“ installiert, und „AzureBackupWindowsWorkload“ verwendet die Erweiterung „SQLIaaSExtension“, um automatisch die erforderliche Berechtigungen zu erhalten. Wenn auf Ihrem virtuellen Computer keine „SqlIaaSExtension“-Erweiterung installiert ist, tritt bei der Ermittlung der Datenbanken ein Fehler mit der Meldung **UserErrorSQLNoSysAdminMembership** auf. Um die Systemadministratorberechtigung für Sicherungen hinzuzufügen, folgen Sie den Anweisungen unter [Festlegen von Azure Backup-Berechtigungen für Nicht-Marketplace-SQL-VMs](backup-azure-sql-database.md#set-permissions-for-non--marketplace-sql-vms).
 
     ![Auswählen der VM und Datenbank](./media/backup-azure-sql-database/registration-errors.png)
 
@@ -286,7 +286,7 @@ So konfigurieren Sie den Schutz für Ihre SQL-Datenbank
     Der Azure Backup-Dienst zeigt alle SQL-Instanzen mit eigenständigen Datenbanken sowie SQL AlwaysOn-Verfügbarkeitsgruppen an. Klicken Sie auf das Erweiterungschevron neben dem Instanznamen, um die eigenständigen Datenbanken in der SQL-Instanz anzuzeigen. Die folgenden Bilder zeigen Beispiele für eine eigenständige Instanz und eine AlwaysOn-Verfügbarkeitsgruppe.
 
     > [!NOTE]
-    > Vollständige und differenzielle Sicherungen erfolgen wegen einer Einschränkung der SQL-Plattform vom primären Knoten aus. Die Protokollsicherung kann gemäß Ihrer Sicherungseinstellung erfolgen. Aufgrund dieser Einschränkung muss der primäre Knoten registriert werden.
+    > Im Fall einer SQL Always On-Verfügbarkeitsgruppe wird die SQL-Sicherungsvoreinstellung verwendet. Wegen einer Einschränkung der SQL-Plattform müssen vollständige und differenzielle Sicherungen vom primären Knoten aus erfolgen. Die Protokollsicherung kann gemäß Ihrer Sicherungseinstellung erfolgen. Aufgrund dieser Einschränkung muss der primäre Knoten immer für Verfügbarkeitsgruppen registriert werden.
     >
 
     ![Liste der Datenbanken in der SQL Server-Instanz](./media/backup-azure-sql-database/discovered-databases.png)
@@ -394,13 +394,16 @@ So erstellen Sie eine Sicherungsrichtlinie
 
 8. Wenn Sie alle Änderungen an der Sicherungsrichtlinie vorgenommen haben, klicken Sie auf **OK**. 
 
-   ![Beibehaltungsdauer für differenzielle Sicherung](./media/backup-azure-sql-database/differential-backup-policy.png)
+   ![Akzeptieren einer neuen Richtlinie](./media/backup-azure-sql-database/backup-policy-click-ok.png)
 
 ## <a name="restore-a-sql-database"></a>Wiederherstellen einer SQL-Datenbank-Instanz
 
 Azure Backup bietet Funktionen zur Wiederherstellung einzelner Datenbanken zu einem bestimmten Datum oder einer bestimmten Uhrzeit, bis zu einer bestimmten Sekunde, unter Verwendung von Transaktionsprotokollsicherungen. Basierend auf den von Ihnen angegebenen Wiederherstellungszeiten ermittelt Azure Backup automatisch die geeigneten vollständigen Sicherungen, differenziellen Sicherungen und die Kette von Protokollsicherungen, die für die Wiederherstellung Ihrer Daten benötigt werden.
 
 Alternativ können Sie eine bestimmte vollständige oder differenzielle Sicherung auswählen, um sie auf einen bestimmten Wiederherstellungspunkt und nicht bezogen auf einen bestimmten Zeitpunkt wiederherzustellen.
+ > [!Note]
+ > Vor dem Auslösen der Wiederherstellung der „Master“datenbank starten Sie SQL Server im Einzelbenutzermodus mit der Startoption „-m AzureWorkloadBackup“. Das Argument für -m ist der Name des Clients. Nur diesem Client ist es möglich, die Verbindung zu öffnen. Beenden Sie für alle Systemdatenbanken (Modell, Master, MSDB) vor dem Auslösen der Wiederherstellung den SQL Agent-Dienst. Schließen Sie alle Anwendungen, die ggf. versuchen, eine Verbindung mit einer dieser Datenbanken zu stehlen.
+>
 
 So stellen Sie eine Datenbank wieder her
 
@@ -408,7 +411,7 @@ So stellen Sie eine Datenbank wieder her
 
 2. Wählen Sie im Tresordashboard die Option **Verwendung** für die Sicherungselemente, um das Menü „Sicherungselemente“ zu öffnen.
 
-    ![Klicken auf „+ Sicherung“, um das Menü „Sicherungsziel“ zu öffnen](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png).
+    ![Klicken auf „+ Sicherung“, um das Menü „Sicherungsziel“ zu öffnen](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png)zu erstellen und zu verwalten.
 
 3. Wählen Sie im Menü **Sicherungselemente** den Verwaltungstyp für die Sicherung **SQL auf virtuellem Azure-Computer**. 
 
@@ -442,6 +445,10 @@ So stellen Sie eine Datenbank wieder her
 ### <a name="restore-to-an-alternate-location"></a>Wiederherstellen an einem alternativen Speicherort
 
 Diese Vorgehensweise führt Sie durch die Wiederherstellung der Daten an einem alternativen Speicherort. Wenn Sie die Datenbank beim Wiederherstellen überschreiben möchten, springen Sie zum Abschnitt [Wiederherstellen und Überschreiben der Datenbank](backup-azure-sql-database.md#restore-and-overwrite-the-database). Für diese Vorgehensweise müssen Sie Ihren Recovery Services-Tresor geöffnet haben und sich im Menü „Konfiguration wiederherstellen“ befinden. Sollte dies nicht der Fall sein, beginnen Sie mit dem Abschnitt [Wiederherstellen einer SQL-Datenbank-Instanz](backup-azure-sql-database.md#restore-a-sql-database).
+
+> [!NOTE]
+> Sie können die Datenbank auf einem SQL Server in der gleichen Azure-Region wiederherstellen, und der Zielserver muss im Recovery Services-Tresor registriert sein. 
+>
 
 Im Dropdownmenü **Server** werden nur die SQL Server-Instanzen angezeigt, die im Recovery Services-Tresor registriert sind. Wenn sich der gewünschte Server nicht in der Liste **Server** befindet, lesen Sie den Abschnitt [Ermitteln von SQL Server-Datenbanken](backup-azure-sql-database.md#discover-sql-server-databases), um nach dem Server zu suchen. Während des Prozesses zur Ermittlung der Datenbank werden alle neuen Server im Recovery Services-Tresor registriert.
 
@@ -607,10 +614,40 @@ Dieser Abschnitt enthält Informationen zu den verschiedenen Azure Backup-Verwal
 * Aufheben der Registrierung einer SQL Server-Instanz
 
 ### <a name="monitor-jobs"></a>Überwachen von Aufträgen
+Azure Backup bietet als Lösung der Unternehmensklasse erweiterte Sicherungswarnungen und Benachrichtigungen bei Fehlern (siehe Abschnitt „Sicherungswarnungen“ weiter unten). Wenn Sie dennoch bestimmte Aufträge überwachen möchten, können Sie je nach Bedarf eine der folgenden Optionen verwenden:
 
-Azure Backup nutzt für alle Sicherungsvorgänge native SQL-APIs. Mithilfe der nativen APIs können Sie alle Auftragsinformationen aus der [SQL-Sicherungssatztabelle](https://docs.microsoft.com/sql/relational-databases/system-tables/backupset-transact-sql?view=sql-server-2017) in der msdb-Datenbank abrufen. Zusätzlich zeigt Azure Backup alle manuell oder adhoc ausgelösten Aufträge im Portal für Sicherungsaufträge an. Die im Portal verfügbaren Aufträge umfassen: alle Vorgänge zum Konfigurieren von Sicherungen, Wiederherstellungsvorgänge, Registrierungs- und Ermittlungsvorgänge für Datenbanken sowie Vorgänge zum Beenden von Sicherungen. Alle geplanten Aufträge können auch mit der OMS-Protokollanalyse überwacht werden. Die Verwendung von Log Analytics beseitigt die Auftragsmenge und bietet genau abgestimmte Flexibilität für die Überwachung oder Filterung bestimmter Aufträge.
-
+#### <a name="use-azure-portal-for-all-adhoc-operations"></a>Verwenden des Azure-Portals für alle Ad-hoc-Vorgänge
+Azure Backup zeigt alle manuell oder ad-hoc ausgelösten Aufträge im Portal für Sicherungsaufträge an. Die im Portal verfügbaren Aufträge umfassen: alle Vorgänge zum Konfigurieren von Sicherungen, manuell ausgelöste Sicherungsvorgänge, Wiederherstellungsvorgänge, Registrierungs- und Ermittlungsvorgänge für Datenbanken sowie Vorgänge zum Beenden von Sicherungen. 
 ![Menü „Erweiterte Konfiguration“](./media/backup-azure-sql-database/jobs-list.png)
+
+> [!NOTE]
+> Alle geplanten Sicherungsaufträge einschließlich vollständiger, differenzieller und Protokollsicherungen werden im Portal nicht angezeigt und können mit SQL Server Management Studio wie unten beschrieben überwacht werden.
+>
+
+#### <a name="use-sql-server-management-studio-for-backup-jobs"></a>Verwenden von SQL Server Management Studio für Sicherungsaufträge
+Azure Backup nutzt für alle Sicherungsvorgänge native SQL-APIs. Mit den nativen APIs können Sie alle Auftragsinformationen aus der [SQL-Sicherungssatztabelle](https://docs.microsoft.com/sql/relational-databases/system-tables/backupset-transact-sql?view=sql-server-2017) in der MSDB-Datenbank abrufen.
+
+Das folgende Beispiel zeigt eine Abfrage zum Abrufen aller Sicherungsaufträge für eine Datenbank mit dem Namen **DB1**. Passen Sie die Abfrage für eine erweiterte Überwachung an.
+```
+select CAST (
+Case type
+                when 'D' 
+                                 then 'Full'
+                when  'I'
+                               then 'Differential' 
+                ELSE 'Log'
+                END         
+                AS varchar ) AS 'BackupType',
+database_name, 
+server_name,
+machine_name,
+backup_start_date,
+backup_finish_date,
+DATEDIFF(SECOND, backup_start_date, backup_finish_date) AS TimeTakenByBackupInSeconds,
+backup_size AS BackupSizeInBytes
+  from msdb.dbo.backupset where user_name = 'NT SERVICE\AzureWLBackupPluginSvc' AND database_name =  <DB1>  
+ 
+```
 
 ### <a name="backup-alerts"></a>Warnungen zu Sicherungen
 
@@ -711,6 +748,42 @@ So heben Sie die Registrierung einer SQL Server-Instanz nach dem Entfernen des S
 5. Klicken Sie im Menü „Geschützte Server“ mit der rechten Maustaste auf den geschützten Server, und wählen Sie **Löschen** aus. 
 
    ![Fortsetzen des Datenbankschutzes](./media/backup-azure-sql-database/delete-protected-server.png)
+
+## <a name="sql-database-backup-faq"></a>FAQ zur SQL-Datenbanksicherung
+
+Der folgende Abschnitt enthält zusätzliche Informationen zur SQL-Datenbanksicherung.
+
+### <a name="can-i-throttle-the-speed-of-the-sql-backup-policy-so-it-minimizes-impact-on-the-sql-server"></a>Kann ich die Geschwindigkeit der SQL-Sicherungsrichtlinie drosseln, um die Auswirkungen auf den Computer mit SQL Server zu minimieren?
+
+Ja, Sie können die Rate drosseln, mit der die Sicherungsrichtlinie ausgeführt wird. So ändern Sie die Einstellung:
+
+1. Öffnen Sie auf dem Computer mit SQL Server **TaskThrottlerSettings.json** im Ordner `C:\Program Files\Azure Workload Backup\bin`.
+
+2. Ändern sie in der Datei **TaskThrottlerSettings.json** die Angabe **DefaultBackupTasksThreshold** in einen kleineren Wert (z.B. 5).
+
+3. Speichern Sie die Änderung, und schließen Sie die Datei.
+
+4. Öffnen Sie auf dem Computer mit SQL Server den Task-Manager, und starten Sie den **Azure Backup Workload Coordinator-Dienst** neu.
+
+### <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>Kann ich eine vollständige Sicherung aus einem sekundären Replikat ausführen?
+
+Nein, dieses Feature wird nicht unterstützt.
+
+### <a name="do-successful-backup-jobs-create-alerts"></a>Erstellen erfolgreiche Sicherungsaufträge Warnungen?
+
+Nein. Erfolgreiche Sicherungsaufträge generieren keine Warnungen. Warnungen werden nur für Sicherungsaufträge gesendet, bei denen ein Fehler aufgetreten ist.
+
+### <a name="are-scheduled-backup-job-details-shown-in-the-jobs-menu"></a>Werden die Details geplanter Sicherungsaufträge im Menü „Aufträge“ angezeigt?
+
+Nein. Im Menü „Aufträge“ werden die Details von Ad-hoc-Aufträgen angezeigt, nicht jedoch die Details geplanter Sicherungsaufträge. Wenn bei geplanten Sicherungsaufträgen ein Fehler auftritt, finden Sie alle Details in den Warnungen der fehlerhaften Aufträge. Wenn Sie alle geplanten und Ad-hoc-Sicherungsaufträge überwachen möchten, [verwenden Sie SQL Server Management Studio](backup-azure-sql-database.md#use-sql-server-management-studio-for-backup-jobs).
+
+### <a name="if-i-select-a-sql-server-will-future-databases-automatically-be-added"></a>Wenn ich einen Computer mit SQL Server auswähle, werden zukünftige Datenbanken dann automatisch hinzugefügt?
+
+Nein. Wenn Sie Schutz für einen Computer mit SQL Server konfigurieren und das Kontrollkästchen auf Serverebene aktivieren, werden alle Datenbanken hinzugefügt. Wenn Sie jedoch nach der Konfiguration des Schutzes Datenbanken zum Computer mit SQL Server hinzufügen, müssen Sie die neuen Datenbanken manuell hinzufügen, um sie zu schützen. Die Datenbanken werden nicht automatisch in den konfigurierten Schutz eingeschlossen.
+
+### <a name="if-i-change-the-recovery-model-how-do-i-restart-protection"></a>Wie kann ich den Schutz neu starten, wenn ich das Wiederherstellungsmodell geändert habe?
+
+Wenn Sie das Wiederherstellungsmodell ändern, lösen Sie eine vollständige Sicherung aus, und die Protokollsicherungen beginnen dann wie erwartet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

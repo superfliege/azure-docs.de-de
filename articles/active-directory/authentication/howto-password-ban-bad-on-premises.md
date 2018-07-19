@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 6fda373f832d6e24d1252587a19c88b0f464dda6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5065399f161bcaee2f9518236a28f0f5faa0ea5b
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231958"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902026"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>Vorschauversion: Bereitstellen des Kennwortschutzes für Azure AD
 
@@ -103,7 +103,7 @@ Es gibt zwei erforderliche Installer für den Azure AD-Kennwortschutz, die vom [
          Das Beispiel funktioniert nur, wenn der aktuell angemeldete Benutzer auch ein Active Directory-Domänenadministrator für die Stammdomäne ist. Alternativ können die erforderlichen Anmeldeinformationen für die Domäne auch über den ForestCredential-Parameter angegeben werden.
 
          > [!NOTE]
-         > Wenn mehrere Proxyserver in Ihrer Umgebung installiert sind, spielt es keine Rolle, auf welchem spezifischen Proxyserver die obige Prozedur ausgeführt wird.
+         > Wenn mehrere Proxyserver in Ihrer Umgebung installiert sind, spielt es keine Rolle, welcher Proxyserver in der oben beschriebenen Prozedur angegeben wird.
 
          > [!TIP]
          > Beim ersten Ausführen dieses Cmdlets für einen bestimmten Azure-Mandanten kann es zu einer erheblichen Verzögerung (viele Sekunden) kommen, bevor das Cmdlet die Ausführung beendet. Solange kein Fehler gemeldet wird, stellt diese Verzögerung kein Problem dar.

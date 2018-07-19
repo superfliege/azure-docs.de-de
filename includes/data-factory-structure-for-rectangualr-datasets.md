@@ -3,12 +3,12 @@ Der Abschnitt „structure“ in der JSON von Datasets ist ein **optionaler** Ab
 
 Jede Spalte enthält die folgenden Eigenschaften:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| name |Name der Spalte. |Ja |
-| type |Datentyp der Spalte. Im nachstehenden Abschnitt "Typkonvertierungen" finden Sie Details zur Angabe von Typinformationen. |Nein |
-| culture |Zu verwendendes .NET-basiertes Gebietsschema, wenn "type" angegeben ist und den .NET-Typ "Datetime" oder "Datetimeoffset" hat. Die Standardeinstellung ist "en-us". |Nein |
-| format |Zu verwendende Formatzeichenfolge, wenn "type" angegeben ist und den .NET-Typ "Datetime" oder "Datetimeoffset" hat. |Nein |
+| name |Name der Spalte. |JA |
+| type |Datentyp der Spalte. Im nachstehenden Abschnitt "Typkonvertierungen" finden Sie Details zur Angabe von Typinformationen. |Nein  |
+| culture |Zu verwendendes .NET-basiertes Gebietsschema, wenn "type" angegeben ist und den .NET-Typ "Datetime" oder "Datetimeoffset" hat. Die Standardeinstellung ist "en-us". |Nein  |
+| format |Zu verwendende Formatzeichenfolge, wenn "type" angegeben ist und den .NET-Typ "Datetime" oder "Datetimeoffset" hat. |Nein  |
 
 Das folgende Beispiel zeigt den Abschnitt "structure" der JSON für eine Tabelle mit den drei Spalten "userid", "name" und "lastlogindate".
 
@@ -41,7 +41,7 @@ Data Factory unterstützt die folgenden CLS-konformen auf .NET basierenden Typwe
 * DECIMAL
 * Byte[]
 * Bool
-* String 
+* Zeichenfolge 
 * Guid
 * Datetime
 * Datetimeoffset

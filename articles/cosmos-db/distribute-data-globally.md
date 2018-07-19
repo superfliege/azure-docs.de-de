@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 4f548e180ca315013d5ca91118041cac2e622520
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dec981ad750a49646916dbef40a4cc632ab71da2
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611448"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856639"
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Wie werden Daten mit Azure Cosmos DB global verteilt?
 Azure ist ubiquitär: Es ist in über 50 geografischen Regionen auf der ganzen Welt präsent und breitet sich kontinuierlich weiter aus. Die weltweite Präsenz von Azure ermöglicht den Entwicklern unter anderem die problemlose Erstellung, Bereitstellung und Verwaltung global verteilter Anwendungen. 
@@ -22,7 +22,7 @@ Azure ist ubiquitär: Es ist in über 50 geografischen Regionen auf der ganzen W
 [Azure Cosmos DB](../cosmos-db/introduction.md) ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen für unternehmenskritische Anwendungen. Azure Cosmos DB bietet sofort einsetzbare globale Verteilung, [flexible Skalierung von Durchsatz und Speicher](../cosmos-db/partition-data.md) weltweit, Wartezeiten im einstelligen Millisekundenbereich beim 99. Perzentil, [fünf wohldefinierte Konsistenzmodelle](consistency-levels.md) sowie garantierte Hochverfügbarkeit, gestützt durch [branchenführende, umfassende Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/cosmos-db/) (SLAs, Service Level Agreements). Azure Cosmos DB [indiziert automatisch alle Ihre Daten](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), sodass Sie sich nicht mit der Schema- oder Indexverwaltung befassen müssen. Dieser Dienst für mehrere Datenmodelle unterstützt Dokumente, Schlüssel-Wert-Paare, Diagramme und spaltenbasierte Daten. Als ursprünglich aus der Cloud entstandener Dienst wurde Azure Cosmos DB von Grund auf für Mehrinstanzenfähigkeit und globale Verteilung konzipiert.
 
 
-![Azure Cosmos DB-Sammlung, partitioniert und auf drei Regionen verteilt](./media/distribute-data-globally/global-apps.png)
+![Azure Cosmos DB-Container, partitioniert und auf drei Regionen verteilt](./media/distribute-data-globally/global-apps.png)
 
 **Ein einzelner Azure Cosmos DB-Container, partitioniert und auf mehrere Azure-Regionen verteilt**
 
@@ -92,7 +92,7 @@ Aktuell werden die automatischen und manuellen Failoverfunktionen mit der Granul
 ### <a id="MultiHomingAPIs"></a>Multihosting in Azure Cosmos DB
 Azure Cosmos DB ermöglicht die Interaktion mit einer Datenbank über *logische* (regionsunabhängige) oder *physische* (regionsspezifische) Endpunkte. Die Verwendung logischer Endpunkte ermöglicht transparentes Multihosting der Anwendung im Falle eines Failovers. Ein physischer Endpunkt bietet präzise Steuerungsmöglichkeiten für die Anwendung, um Lese- und Schreibvorgänge an bestimmte Regionen umzuleiten.
 
-Informationen zum Konfigurieren der Leseeinstellungen für die [SQL-API](../cosmos-db/tutorial-global-distribution-sql-api.md), [Gremlin-API](../cosmos-db/tutorial-global-distribution-graph.md), [Tabellen-API](../cosmos-db/tutorial-global-distribution-table.md) und [MongoDB-API](../cosmos-db/tutorial-global-distribution-mongodb.md) finden Sie in diesen Artikeln.
+Informationen zum Konfigurieren der Leseeinstellungen für die [SQL-API](../cosmos-db/tutorial-global-distribution-sql-api.md), [Tabellen-API](../cosmos-db/tutorial-global-distribution-table.md) und [MongoDB-API](../cosmos-db/tutorial-global-distribution-mongodb.md) finden Sie in diesen Artikeln.
 
 ### <a id="TransparentSchemaMigration"></a>Transparente und konsistente Migration von Datenbankschemas und Indizes 
 Azure Cosmos DB ist vollkommen [schemaunabhängig](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf). Dank des einzigartigen Designs der Datenbank-Engine kann Azure Cosmos DB automatisch und synchron sämtliche erfasste Daten indizieren, ohne dass der Benutzer dafür ein Schema oder sekundäre Indizes bereitstellen muss. Dadurch können Sie Ihre global verteilte Anwendung schnell durchlaufen, ohne sich Gedanken über die Migration von Datenbankschemas oder Indizes zu machen oder mehrstufige Anwendungsrollouts mit Schemaänderungen zu koordinieren. Azure Cosmos DB garantiert, dass Änderungen, die Sie explizit an Indizierungsrichtlinien vornehmen, keine Beeinträchtigung der Leistung oder Verfügbarkeit zur Folge haben.  
@@ -187,7 +187,7 @@ Da die Implementierung eines bestimmten Konsistenzmodells von der Wahl eines [Qu
 ## <a id="ThroughputGuarantees"></a>Durchsatzgarantien 
 Mit Azure Cosmos DB lässt sich der Durchsatz (ebenso wie der Speicher) elastisch, über eine beliebige Anzahl an Regionen und bedarfsgerecht skalieren. 
 
-![Azure Cosmos DB – verteilte und partitionierte Sammlungen](../cosmos-db/media/introduction/azure-cosmos-db-global-distribution.png)
+![Azure Cosmos DB – verteilte und partitionierte Container](../cosmos-db/media/introduction/azure-cosmos-db-global-distribution.png)
 
 **Ein einzelner Azure Cosmos DB-Container, der horizontal (über drei Ressourcenpartitionen innerhalb einer Region) partitioniert und dann global über drei Azure-Regionen verteilt ist**
 

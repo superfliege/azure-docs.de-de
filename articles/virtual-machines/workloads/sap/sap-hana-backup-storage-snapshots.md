@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 3/13/2017
+ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 819888800b9663f9b920fbaf11b30ad28287a0b5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1d3089052a67b899e2e4b38123145bd4ae51693f
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658722"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902298"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>SAP HANA-Sicherung auf der Grundlage von Speichermomentaufnahmen
 
@@ -28,9 +28,9 @@ Dieser Artikel ist Teil einer dreiteiligen Reihe zur SAP HANA-Sicherung. [Sicher
 
 Bei Verwendung einer VM-Sicherungsfunktion für ein All-in-One-Einzelinstanz-Demosystem ist es ratsam, eine VM-Sicherung durchzuführen, anstatt HANA-Sicherungen auf Betriebssystemebene zu verwalten. Eine Alternative hierzu ist die Erstellung von Azure-Blob-Momentaufnahmen zum Erstellen von Kopien einzelner virtueller Datenträger, die an einen virtuellen Computer angefügt sind, und die Beibehaltung der HANA-Datendateien. Ein kritischer Punkt ist die App-Konsistenz beim Erstellen einer VM-Sicherung oder Datenträger-Momentaufnahme, während das System aktiv ist. Informationen hierzu finden Sie unter _Konsistenz von SAP HANA-Daten beim Erstellen von Speichermomentaufnahmen_ im Artikel [Sicherungsanleitung für SAP HANA in Azure Virtual Machines](sap-hana-backup-guide.md) dieser Reihe. SAP HANA verfügt über ein Feature, das diese Arten von Speichermomentaufnahmen unterstützt.
 
-## <a name="sap-hana-snapshots"></a>SAP HANA-Momentaufnahmen
+## <a name="sap-hana-snapshots-as-central-part-of-application-consistent-backups"></a>SAP HANA-Momentaufnahmen als zentraler Bestandteil anwendungskonsistenter Sicherungen
 
-In SAP HANA gibt es ein Feature, bei dem das Erstellen von Speichermomentaufnahmen unterstützt wird. Ab Dezember 2016 gilt für Systeme mit nur einem Container aber eine Einschränkung. Mehrinstanzenfähige Containerkonfigurationen unterstützen diese Art von Datenbankmomentaufnahme nicht (siehe [Create a Storage Snapshot (SAP HANA Studio)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a0/3f8f08501e44d89115db3c5aa08e3f/content.htm) (Erstellen einer Speichermomentaufnahme (SAP HANA Studio)).
+In SAP HANA gibt es eine Funktion, die das Erstellen von Speichermomentaufnahmen unterstützt. Dies ist auf Systeme mit einem Container beschränkt. In Szenarien mit SAP HANA-MCS mit mehr als einem Mandanten wird diese Art von SAP HANA-Datenbankmomentaufnahme nicht unterstützt (siehe [Erstellen einer Speichermomentaufnahme (SAP HANA Studio)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a0/3f8f08501e44d89115db3c5aa08e3f/content.htm)).
 
 Dies funktioniert wie folgt:
 
@@ -59,7 +59,9 @@ Nachdem die Speichermomentaufnahme erstellt wurde, ist es wichtig, dass die SAP 
 
 ## <a name="hana-vm-backup-via-azure-backup-service"></a>HANA-VM-Sicherung per Azure Backup-Dienst
 
-Ab Dezember 2016 ist der Backup-Agent des Azure Backup-Diensts für Linux-VMs nicht mehr verfügbar. Zur Verwendung der Azure-Sicherung auf Datei- bzw. Verzeichnisebene werden SAP HANA-Sicherungsdateien auf eine Windows-VM kopiert, und anschließend wird der Backup-Agent verwendet. Andernfalls ist mit dem Azure Backup-Dienst nur eine vollständige Linux-VM-Sicherung möglich. Weitere Informationen finden Sie unter [Übersicht über die Funktionen in Azure Backup](../../../backup/backup-introduction-to-azure-backup.md).
+Der Backup-Agent des Azure Backup-Diensts ist für Linux-VMs nicht verfügbar. Darüber hinaus besitzt Linux keine ähnliche Funktionalität wie es bei Windows mit VSS der Fall ist.  Zur Verwendung der Azure-Sicherung auf Datei- bzw. Verzeichnisebene werden SAP HANA-Sicherungsdateien auf eine Windows-VM kopiert, und anschließend wird der Backup-Agent verwendet. 
+
+Andernfalls ist mit dem Azure Backup-Dienst nur eine vollständige Linux-VM-Sicherung möglich. Weitere Informationen finden Sie unter [Übersicht über die Funktionen in Azure Backup](../../../backup/backup-introduction-to-azure-backup.md).
 
 Der Azure Backup-Dienst verfügt über eine Option zum Sichern und Wiederherstellen einer VM. Weitere Informationen zu diesem Dienst und zur Funktionsweise finden Sie im Artikel [Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure](../../../backup/backup-azure-vms-introduction.md).
 
@@ -75,52 +77,32 @@ Im Artikel wird auf Folgendes hingewiesen:
 
 _&quot;Es wird dringend empfohlen, eine Speichermomentaufnahme nach ihrer Erstellung so schnell wie möglich zu bestätigen oder zu verwerfen. Während die Speichermomentaufnahme vorbereitet oder erstellt wird, werden die für die Momentaufnahme relevanten Daten eingefroren. Während des Einfrierzustands der für die Momentaufnahme relevanten Daten können in der Datenbank trotzdem Änderungen vorgenommen werden. Diese Änderungen führen nicht dazu, dass sich die eingefrorenen Daten für die Momentaufnahme ändern. Stattdessen werden die Änderungen im Datenbereich an Speicherorte geschrieben, die vom Bereich für die Speichermomentaufnahme getrennt sind. Außerdem werden die Änderungen in ein Protokoll geschrieben. Je länger die für die Momentaufnahme relevanten Daten aber eingefroren bleiben, desto stärker kann die Größe des Datenvolume zunehmen.&quot;_
 
-Azure Backup stellt die Konsistenz des Dateisystems mithilfe von Azure-VM-Erweiterungen sicher. Diese Erweiterungen sind nicht als eigenständige Komponenten verfügbar und funktionieren nur in Verbindung mit dem Azure Backup-Dienst. Trotzdem ist es erforderlich, eine SAP HANA-Momentaufnahme zu verwalten, um die App-Konsistenz zu gewährleisten.
+Azure Backup stellt die Konsistenz des Dateisystems mithilfe von Azure-VM-Erweiterungen sicher. Diese Erweiterungen sind nicht als eigenständige Komponenten verfügbar und funktionieren nur in Verbindung mit dem Azure Backup-Dienst. Trotzdem ist es erforderlich, Skripts zum Erstellen und Löschen einer SAP HANA-Momentaufnahme bereitzustellen, um die App-Konsistenz zu gewährleisten.
 
-Azure Backup umfasst zwei Hauptphasen:
+Azure Backup umfasst vier Hauptphasen:
 
+- Ausführen eines Vorbereitungsskripts – das Skript muss eine SAP HANA-Momentaufnahme erstellen
 - Erstellen der Momentaufnahme
+- Ausführen eines Skripts nach der Momentaufnahme – das Skript muss die SAP HANA-Momentaufnahme löschen, die vom Vorbereitungsskript erstellt wurde
 - Übertragen von Daten in einen Tresor
 
-Sie können die SAP HANA-Momentaufnahme also bestätigen, nachdem die Phase des Azure Backup-Diensts zum Erstellen einer Momentaufnahme abgeschlossen ist. Es kann einige Minuten dauern, bis dies im Azure-Portal angezeigt wird.
+Informationen dazu, wo Sie diese Skripts kopieren können, sowie Informationen zur genauen Funktionsweise von Azure Backup finden Sie in den folgenden Artikeln:
 
-![Abbildung: Teil der Sicherungsauftragsliste eines Azure Backup-Diensts](media/sap-hana-backup-storage-snapshots/image014.png)
+- [Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-introduction)
+- [Anwendungskonsistente Sicherung von Azure-Linux-VMs](https://docs.microsoft.com/en-us/azure/backup/backup-azure-linux-app-consistent)
 
-In dieser Abbildung ist ein Teil der Sicherungsauftragsliste eines Azure Backup-Diensts dargestellt, der zum Sichern der HANA-Test-VM verwendet wurde.
 
-![Klicken auf den Sicherungsauftrag im Azure-Portal zum Anzeigen der Auftragsdetails](media/sap-hana-backup-storage-snapshots/image015.png)
 
-Klicken Sie im Azure-Portal auf den Sicherungsauftrag, um die Auftragsdetails anzuzeigen. Hier sind die beiden Phasen dargestellt. Es kann einige Minuten dauern, bis angezeigt wird, dass die Phase für die Momentaufnahme abgeschlossen ist. Die meiste Zeit fällt für die Phase der Datenübertragung an.
+Zum gegenwärtigen Zeitpunkt hat Microsoft keine Vorbereitungsskripts und Skripts nach der Momentaufnahme für SAP HANA veröffentlicht. Sie als Kunde oder Systemintegrator müssen diese Skripts erstellen und die Prozedur auf Grundlage der oben genannten Dokumentation konfigurieren.
 
-## <a name="hana-vm-backup-automation-via-azure-backup-service"></a>Automatisierung von HANA-VM-Sicherungen mit dem Azure Backup-Dienst
 
-Wie bereits beschrieben wurde, kann die SAP HANA-Momentaufnahme manuell bestätigt werden, nachdem die Phase für die Erstellung der Azure Backup-Momentaufnahme abgeschlossen ist. Die Nutzung einer Automatisierung kann aber hilfreich sein, da die Sicherungsauftragsliste im Azure-Portal unter Umständen nicht von einem Administrator überwacht wird.
+## <a name="restore-from-application-consistent-backup-against-a-vm"></a>Wiederherstellen aus einer anwendungskonsistenten Sicherung für einen virtuellen Computer
+Der Wiederherstellungsvorgang für eine anwendungskonsistente Sicherung, die mit Azure Backup erstellt wurde, ist in dem Artikel [Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm) dokumentiert. 
 
-Hier wird beschrieben, wie dies mit Azure PowerShell-Cmdlets erreicht werden kann.
+> [!IMPORTANT]
+> Der Artikel [Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm) enthält eine Liste von Ausnahmen sowie Schritte bei Verwendung von Stripesets für Datenträger. Stripesetdatenträger sind wahrscheinlich die übliche Konfiguration des virtuellen Computers für SAP HANA. Daher ist es wichtig, den Artikel zu lesen und den Wiederherstellungsvorgang für die im Artikel aufgeführten Fälle zu testen. 
 
-![Erstellen eines Azure Backup-Diensts mit dem Namen „hana-backup-vault“](media/sap-hana-backup-storage-snapshots/image016.png)
 
-Es wurde ein Azure Backup-Dienst mit dem Namen &quot;hana-backup-vault&quot; erstellt. Mit dem PS-Befehl **Get-AzureRmRecoveryServicesVault -Name hana-backup-vault** wird das entsprechende Objekt abgerufen. Dieses Objekt wird dann verwendet, um den Sicherungskontext festzulegen. Dies ist in der nächsten Abbildung dargestellt.
-
-![Überprüfen des aktiven Sicherungsauftrags](media/sap-hana-backup-storage-snapshots/image017.png)
-
-Nach dem Festlegen des richtigen Kontexts können Sie den derzeit aktiven Sicherungsauftrag überprüfen und die dazugehörigen Auftragsdetails anzeigen. In der Liste mit den Unteraufgaben wird angezeigt, ob die Momentaufnahmephase des Azure-Sicherungsauftrags bereits abgeschlossen ist:
-
-```
-$ars = Get-AzureRmRecoveryServicesVault -Name hana-backup-vault
-Set-AzureRmRecoveryServicesVaultContext -Vault $ars
-$jid = Get-AzureRmRecoveryServicesBackupJob -Status InProgress | select -ExpandProperty jobid
-Get-AzureRmRecoveryServicesBackupJobDetails -Jobid $jid | select -ExpandProperty subtasks
-```
-
-![Abfragen des Werts in einer Schleife, bis er „Completed“ lautet](media/sap-hana-backup-storage-snapshots/image018.png)
-
-Nachdem die Auftragsdetails in einer Variablen gespeichert wurden, wird einfach PS-Syntax verwendet, um den ersten Arrayeintrag abzurufen und den Statuswert zu erhalten. Fragen Sie den Wert in einer Schleife ab, bis er &quot;Completed&quot; lautet, um das Automatisierungsskript fertig zu stellen.
-
-```
-$st = Get-AzureRmRecoveryServicesBackupJobDetails -Jobid $jid | select -ExpandProperty subtasks
-$st[0] | select -ExpandProperty status
-```
 
 ## <a name="hana-license-key-and-vm-restore-via-azure-backup-service"></a>HANA-Lizenzschlüssel und VM-Wiederherstellung per Azure Backup-Dienst
 
@@ -144,7 +126,7 @@ Anstatt den Azure Backup-Dienst zu verwenden, können Sie auch eine individuelle
 
 Dies ermöglicht zwar eine höhere Flexibilität, aber die weiter oben in diesem Dokument erwähnten Probleme werden hierdurch nicht gelöst:
 
-- Es muss weiterhin sichergestellt werden, dass sich SAP HANA in einem konsistenten Zustand befindet.
+- Sie müssen weiterhin sicherstellen, dass sich SAP HANA in einem konsistenten Zustand befindet, indem Sie eine SAP HANA-Momentaufnahme erstellen.
 - Der Betriebssystemdatenträger kann auch dann nicht überschrieben werden, wenn die Zuordnung der VM aufgehoben wird, da in einem Fehler angegeben wird, dass ein Lease vorhanden ist. Dies funktioniert nur nach dem Löschen der VM, wonach dann aber wieder eine neue eindeutige VM-ID benötigt wird und eine neue SAP-Lizenz installiert werden muss.
 
 ![Für eine Azure-VM können auch nur die Datenträger für Daten wiederhergestellt werden](media/sap-hana-backup-storage-snapshots/image021.png)
