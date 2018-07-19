@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: brenduns
-ms.openlocfilehash: 324fa19aa97cead44f38d07a2fd0765048cd6238
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 4d475ec93bd8bfa5cc84848ed61afa6a9d6e319b
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605387"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902179"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Überlegungen zur Verwendung von virtuellen Computern in Azure Stack
 
@@ -47,7 +47,7 @@ Azure Stack erzwingt Ressourcengrenzwerte, um einen übermäßigen Ressourcenver
 
 - Für ausgehenden Netzwerkdatenverkehr des virtuellen Computers gelten Bandbreitenobergrenzen. Die Obergrenzen in Azure Stack sind mit denen in Azure identisch.
 - Für Speicherressourcen implementiert Azure Stack Speicher-IOPS-Grenzwerte, um den allgemeinen übermäßigen Ressourcenverbrauch durch Mandanten für Speicherzugriff zu vermeiden.
-- Bei VMs mit mehreren angefügten Datenträgern beträgt der maximale Durchsatz für die einzelnen Datenträger 500 IOPS für HHDs und 2300 IOPS für SSDs.
+- Bei VMs mit mehreren angefügten Datenträgern beträgt der maximale Durchsatz für die einzelnen Datenträger 500 IOPS für HDDs und 2.300 IOPS für SSDs.
 
 Die folgende Tabelle enthält die in Azure Stack unterstützten virtuellen Computer sowie ihre Konfiguration:
 

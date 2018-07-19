@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/31/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: dc01a775579455ae24c95ecc6f3858ce28149dea
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: bbd826b636bebca90eacba43ca879a725cddf7d2
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231988"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971073"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Fehlercodes des Berichts mit den Anmeldeaktivitäten im Azure Active Directory-Portal
 
@@ -75,9 +75,10 @@ Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglic
 |50008|Die SAML-Assertion fehlt oder wurde im Token falsch konfiguriert. Wenden Sie sich an Ihren Verbundanbieter.|
 |50010|Fehler bei der Überprüfung des Benutzergruppen-URI für die Anwendung, da keine Tokenzielgruppen konfiguriert wurden. Wenden Sie sich an den Besitzer der Anwendung.|
 |50011|Die Antwortadresse fehlt, ist falsch konfiguriert oder stimmt nicht mit den für die Anwendung konfigurierten Antwortadressen überein. Versuchen Sie es mit der Lösung, die unter [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application) angegeben ist. Falls weiterhin Probleme auftreten, können Sie sich an den Besitzer oder Administrator der App wenden.|
+|50012| Dies ist eine generische Fehlermeldung, die angibt, dass ein Authentifizierungsfehler aufgetreten ist. Dies kann z.B. durch fehlende oder ungültige Anmeldeinformationen oder Ansprüche in der Anforderung verursacht werden. Stellen Sie sicher, dass die Anforderung mit den richtigen Anmeldeinformationen und Ansprüchen gesendet wird. |
 |50013|Die Assertion ist aus verschiedenen Gründen ungültig: - Der Aussteller des Tokens stimmt nicht mit der API-Version innerhalb des gültigen Zeitraums überein. - Ist abgelaufen. - Ist falsch formatiert. - Aktualisierungstoken in der Assertion ist kein primäres Aktualisierungstoken.|
 |50017|Fehler bei der Überprüfung der Zertifizierung aus den folgenden Gründen:<ul><li>Das Ausstellerzertifikat kann in der Liste mit den vertrauenswürdigen Zertifikaten nicht gefunden werden.</li><li>Das erwartete CrlSegment-Element kann nicht gefunden werden.</li><li>Das Ausstellerzertifikat kann in der Liste mit den vertrauenswürdigen Zertifikaten nicht gefunden werden.</li><li>Delta-Zertifikatsperrlisten-Verteilungspunkt wurde ohne entsprechenden Zertifikatsperrlisten-Verteilungspunkt konfiguriert.</li><li>Aufgrund einer Zeitüberschreitung können keine gültigen Zertifikatsperrlisten-Segmente abgerufen werden.</li><li>Die Zertifikatsperrliste kann nicht heruntergeladen werden.</li></ul>Wenden Sie sich an den Administrator des Mandanten.|
-|50020|Benutzer ist nicht autorisiert. - Aufgrund eines Versionsproblems können keine Token ausgestellt werden. - Es ist kein Ausstellername angegeben. - Probleme mit dem Ausstellernamen (null -max length). Wenden Sie sich an den Besitzer der App.|
+|50020|Der Benutzer ist aus einem der folgenden Gründe nicht autorisiert.<ul><li>Der Benutzer versucht, für die Anmeldung ein MSA-Konto mit dem v1-Endpunkt zu verwenden.</li><li>Der Benutzer ist im Mandanten nicht vorhanden.</li></ul> Wenden Sie sich an den Besitzer der Anwendung.|
 |50027|Das JWT-Token ist aus den folgenden Gründen ungültig:<ul><li>Enthält keinen Nonce-Anspruch, untergeordneten Anspruch</li><li>Antragstellerbezeichner stimmt nicht überein</li><li>Doppelter Anspruch in idToken-Ansprüchen</li><li>Unerwarteter Aussteller</li><li>Unerwartete Zielgruppe</li><li>Liegt nicht innerhalb des gültigen Zeitbereichs </li><li>Tokenformat ist fehlerhaft</li><li>Fehler bei Signaturüberprüfung für das Token für die externe ID vom Aussteller.</li></ul>Wenden Sie sich an den Besitzer der Anwendung.|
 |50029|Ungültiger URI: Domänenname enthält ungültige Zeichen. Wenden Sie sich an den Administrator des Mandanten.|
 |50034|Der Benutzer ist nicht im Verzeichnis vorhanden. Wenden Sie sich an den Administrator des Mandanten.|
@@ -99,12 +100,12 @@ Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglic
 |50089|Flow-Token abgelaufen: Fehler bei der Authentifizierung. Bitten Sie Benutzer, sich per Benutzername und Kennwort erneut anzumelden.|
 |50097|Geräteauthentifizierung erforderlich - DeviceId - DeviceAltSecId-Ansprüche sind null ODER es ist kein Gerät vorhanden, das zum Gerätebezeichner passt|
 |50099|JWT-Signatur ist ungültig. Wenden Sie sich an den Besitzer der Anwendung.|
-|50105|Der angemeldete Benutzer ist keiner Rolle für die angemeldete Anwendung zugewiesen. Weisen Sie den Benutzer der Anwendung zu. Weitere Informationen: [https://docs.microsoft.com/en-us/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role](https://docs.microsoft.com/en-us/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role)|
+|50105|Der angemeldete Benutzer ist keiner Rolle für die angemeldete Anwendung zugewiesen. Weisen Sie den Benutzer der Anwendung zu. Weitere Informationen: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role)|
 |50107|Das angeforderte Verbundbereichsobjekt ist nicht vorhanden. Wenden Sie sich an den Administrator des Mandanten.|
 |50120|Es besteht ein Problem mit dem JWT-Header. Wenden Sie sich an den Administrator des Mandanten.|
 |50124|Die Anspruchstransformation enthält ungültige Eingabeparameter. Wenden Sie sich an den Administrator des Mandanten, um die Richtlinie zu aktualisieren.|
 |50125|Die Anmeldung wurde aufgrund des Zurücksetzens des Kennworts oder eines Kennwortregistrierungs-Eintrags unterbrochen.|
-|50126|Ungültiger Benutzername bzw. ungültiges Kennwort oder ungültiger lokaler Benutzername bzw. Kennwort.|
+|50126|Ungültiger Benutzername bzw. ungültiges Kennwort oder ungültiger lokaler Benutzername bzw. ungültiges lokales Kennwort.|
 |50127|Der Benutzer muss für den Zugriff auf diesen Inhalt eine Broker-App installieren.|
 |50128|Ungültiger Domänenname: Es wurden keine Informationen zur Identifizierung des Mandanten in der Anforderung gefunden bzw. nicht über angegebene Anmeldeinformationen impliziert.|
 |50129|Das Gerät ist nicht mit dem Arbeitsbereich verbunden: Um das Gerät zu registrieren, ist ein Workplace Join erforderlich.|
@@ -173,7 +174,10 @@ Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglic
 |81001|Das Kerberos-Ticket des Benutzers ist zu groß. Dies kann passieren, wenn der Benutzer zu vielen Gruppen angehört und das Kerberos-Ticket aus diesem Grund zu viele Gruppenmitgliedschaften enthält. Reduzieren Sie die Gruppenmitgliedschaften des Benutzers, und versuchen Sie es erneut.|
 |81005|Das Authentifizierungspaket wird nicht unterstützt.|
 |81007|Der Mandant ist nicht für das nahtlose einmalige Anmelden aktiviert.|
-
+|90010|Die Anforderung wird aus verschiedenen Gründen nicht unterstützt. Die Anforderung wird z.B. mit einer nicht unterstützten Anforderungsmethode ausgeführt (nur die POST-Methode wird unterstützt), oder der Tokensignaturalgorithmus, der angefordert wurde, wird nicht unterstützt. Wenden Sie sich an den Anwendungsentwickler.|
+|90014| Ein Pflichtfeld für eine Protokollmeldung fehlt. Wenden Sie sich an den Besitzer der Anwendung. Wenn Sie der Besitzer der Anwendung sind, stellen Sie sicher, dass Sie über alle erforderlichen Parameter für die Anmeldeanforderung verfügen. |
+|90072| Das Konto muss zunächst als externer Benutzer im Mandanten hinzugefügt werden. Melden Sie sich ab, und melden Sie sich mit einem anderen Azure AD-Konto erneut an.|
+|90094| Für die Gewährung sind Administratorberechtigungen erforderlich. Bitten Sie den Mandantenadministrator, Zustimmung für diese Anwendung bereitzustellen.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

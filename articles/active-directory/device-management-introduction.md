@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 8bcc89f9ec7c73fd1f690e00e831fbd5b960eef9
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 5d5ddd83a2335e7a08bac587aa627f1dcae9738c
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850007"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970899"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Einführung in die Geräteverwaltung in Azure Active Directory
 
@@ -75,8 +75,8 @@ Ziel von in Azure AD eingebundenen Geräten ist die Vereinfachung folgender Elem
 ![Bei Azure AD registrierte Geräte](./media/device-management-introduction/02.png)
 
 Azure AD Join kann mit einer der folgenden Methoden bereitgestellt werden: 
- - [Windows Autopilot](https://docs.microsoft.com/en-us/windows/deployment/windows-autopilot/windows-10-autopilot)
- - [Massenbereitstellung](https://docs.microsoft.com/en-us/intune/windows-bulk-enroll)
+ - [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot)
+ - [Massenbereitstellung](https://docs.microsoft.com/intune/windows-bulk-enroll)
  - [Self-service-Erfahrung](device-management-azuread-joined-devices-frx.md) 
 
 **Azure AD Join** ist für Organisationen gedacht, die in erster Linie Clouddienste verwenden und die lokale Infrastruktur reduzieren möchten, oder solche, die über gar keine lokale Infrastruktur verfügen. Es gibt keine Einschränkung bezüglich der Größe oder dem Typ von Organisationen, die Azure AD Join bereitstellen können. Azure AD Join funktioniert auch in einer Hybridumgebung gut, da es den Zugriff auf Apps und Ressourcen ermöglicht, egal ob in der Cloud oder vor Ort.

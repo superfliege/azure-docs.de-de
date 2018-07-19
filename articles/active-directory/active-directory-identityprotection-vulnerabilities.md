@@ -2,7 +2,7 @@
 title: Von Azure Active Directory Identity Protection erkannte Sicherheitslücken | Microsoft Docs
 description: Übersicht über die von Azure Active Directory Identity Protection erkannten Sicherheitslücken
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie
+keywords: Azure Active Directory Identity Protection, Cloud Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 06/27/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 9ee926ff7cf44041c1969d541ca225395ba31a2f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 804ee23a8e27eda89861ef820d266f93013d7ffe
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34713693"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38307329"
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Von Azure Active Directory Identity Protection erkannte Sicherheitsrisiken
 Bei Sicherheitsrisiken handelt es sich um Schwachstellen in Ihrer Umgebung, die von einem Angreifer ausgenutzt werden können. Es wird empfohlen, dass Sie diese Sicherheitsrisiken entschärfen, um den Sicherheitsstatus Ihrer Organisation zu verbessern und Angreifer daran zu hindern, diese Schwachstellen auszunutzen.
@@ -47,9 +47,9 @@ Mit diesem Sicherheitsrisiko können Sie in Ihrer Organisation nicht verwaltete 
 
 In modernen Unternehmen sind den IT-Abteilungen häufig nicht alle Cloudanwendungen bekannt, die die Benutzer der Organisation für ihre Arbeit verwenden. Daher ist es nicht verwunderlich, dass sich Administratoren Sorgen um den unberechtigten Zugriff auf Unternehmensdaten, mögliche Datenlecks und andere Sicherheitsrisiken machen. 
 
-Wir empfehlen, Cloud App Discovery bereitzustellen, um nicht verwaltete Cloudanwendungen zu ermitteln und diese Anwendungen mit Azure Active Directory zu verwalten.
+Wir empfehlen, Cloud Discovery bereitzustellen, um nicht verwaltete Cloudanwendungen zu ermitteln und diese Anwendungen mit Azure Active Directory zu verwalten.
 
-Weitere Informationen finden Sie unter [Suchen nach nicht verwalteten Cloudanwendungen per Cloud App Discovery](manage-apps/cloud-app-discovery.md).
+Weitere Informationen finden Sie unter [Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
 
 ## <a name="security-alerts-from-privileged-identity-management"></a>Sicherheitswarnungen von Privileged Identity Management
 Dieses Sicherheitsrisiko hilft Ihnen beim Ermitteln und Bereinigen von Warnungen zu privilegierten Identitäten in Ihrer Organisation.  
@@ -58,7 +58,7 @@ Damit Benutzer privilegierte Vorgänge ausführen können, müssen Organisatione
 
 Wir empfehlen Ihrer Organisation die Verwendung von Azure AD Privileged Identity Management, um privilegierte Identitäten und deren Zugriff auf Ressourcen in Azure AD und anderen Microsoft-Onlinediensten wie Office 365 oder Microsoft Intune verwalten, steuern und überwachen zu können.
 
-Weitere Informationen finden Sie unter [Was ist Azure AD Privileged Identity Management?](active-directory-privileged-identity-management-configure.md). 
+Weitere Informationen finden Sie unter [Was ist Azure AD Privileged Identity Management?](privileged-identity-management/pim-configure.md). 
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)

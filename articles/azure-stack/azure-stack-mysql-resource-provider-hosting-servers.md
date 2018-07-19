@@ -11,19 +11,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/25/2018
+ms.date: 07/02/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 5522eb1b8b0398aeb6f1b0dd8578b906880b4e89
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: bccc2dcad8e326cd29cfe031a95a7c2d0cf5ec7f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939657"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38302312"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Hinzufügen von Hostservern für den MySQL-Ressourcenanbieter
 
 Sie können eine MySQL-Instanz auf einem virtuellen Computer (VM) in [Azure Stack](azure-stack-poc.md) oder auf einer VM außerhalb Ihrer Azure Stack-Umgebung hosten, solange sich der MySQL-Ressourcenanbieter mit der Instanz verbinden kann.
+
+Die MySQL-Versionen 5.6, 5.7 und 8.0 können für Ihre Hostingserver verwendet werden. Der MySQL RP unterstützt keine caching_sha2_password-Authentifizierung. Diese Unterstützung wird im nächsten Release hinzugefügt. MySQL-8.0-Server müssen für die Verwendung von mysql_native_password konfiguriert werden. MariaDB wird ebenfalls unterstützt.
 
 ## <a name="connect-to-a-mysql-hosting-server"></a>Mit einem MySQL-Hostserver verbinden
 
@@ -51,13 +53,21 @@ Stellen Sie sicher, dass Sie über die Anmeldeinformationen für ein Konto mit S
 
    Der **SKU-Name** sollte die Eigenschaften der SKU widerspiegeln, sodass Benutzer ihre Datenbanken für die entsprechende SKU bereitstellen können.
 
-   >[!IMPORTANT]
-   >Sonderzeichen, einschließlich Leerzeichen und Interpunktion, werden in **Name** oder **Ebene** nicht unterstützt, wenn Sie die SKU für den MySQL-Ressourcenanbieter erstellen.
-
 6. Klicken Sie auf **OK**, um die SKU zu erstellen.
+> [!NOTE]
+> Es kann bis zu einer Stunde dauern, bis SKUs im Portal angezeigt werden. Sie können erst dann eine Datenbank erstellen, wenn die SKU bereitgestellt wurde und ausgeführt wird.
+
 7. Wählen Sie unter **MySQL-Hostserver hinzufügen** die Option **Erstellen** aus.
 
 Wenn Sie Server hinzufügen, müssen Sie diese einer neuen oder vorhandenen SKU hinzufügen, um Dienstangebote zu unterscheiden. Beispielsweise können Sie eine MySQL Enterprise-Instanz haben, die erweiterte Datenbank- und automatische Sicherungen bietet. Sie können diesen leistungsfähigen Server für verschiedene Abteilungen in Ihrem Unternehmen reservieren.
+
+## <a name="security-considerations-for-mysql"></a>Sicherheitsüberlegungen zu MySQL
+
+Die folgenden Informationen gelten für den RP und MySQL-Hostserver:
+
+* Stellen Sie sicher, dass alle Hostserver für die Kommunikation mit TLS 1.2 konfiguriert sind. Weitere Informationen finden Sie unter [Konfigurieren von MySQL für die Verwendung verschlüsselter Verbindungen](https://dev.mysql.com/doc/refman/5.7/en/using-encrypted-connections.html).
+* Stellen Sie [Transparent Data Encryption](https://dev.mysql.com/doc/mysql-secure-deployment-guide/5.7/en/secure-deployment-data-encryption.html) bereit.
+* Der MySQL RP unterstützt keine caching_sha2_password-Authentifizierung.
 
 ## <a name="increase-backend-database-capacity"></a>Erhöhen der Back-End-Datenbankkapazität
 
@@ -65,9 +75,7 @@ Sie können die Kapazität der Back-End-Datenbank erhöhen, indem Sie mehr MySQL
 
 ## <a name="make-mysql-database-servers-available-to-your-users"></a>Freigeben der MySQL-Datenbankserver für Ihre Benutzer
 
-Erstellen Sie Pläne und Angebote, um MySQL-Datenbankserver für Benutzer verfügbar zu machen. Fügen Sie dem Plan den Dienst „Microsoft.MySqlAdapter“ hinzu. Außerdem müssen Sie das Standardkontingent hinzufügen oder ein neues Kontingent erstellen.
-
-![Erstellen von Plänen und Angeboten für Datenbanken](./media/azure-stack-mysql-rp-deploy/mysql-new-plan.png)
+Erstellen Sie Pläne und Angebote, um MySQL-Datenbankserver für Benutzer verfügbar zu machen. Fügen Sie dem Plan den Dienst Microsoft.MySqlAdapter hinzu. Außerdem müssen Sie ein neues Kontingent erstellen. MySQL ermöglicht nicht, die Größe von Datenbanken einzuschränken.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

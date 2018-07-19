@@ -2,7 +2,7 @@
 title: Azure Active Directory Identity Protection-Playbook| Microsoft Docs
 description: Erfahren Sie, wie Sie mit Azure AD Identity Protection für Angreifer die Möglichkeit einschränken können, eine kompromittierte Identität oder ein Gerät auszunutzen, und wie Sie eine Identität oder ein Gerät schützen, das zuvor vermutlich oder mit Sicherheit kompromittiert war.
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie
+keywords: Azure Active Directory Identity Protection, Cloud Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 06/27/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: ff4a8bfb5a92f0969aef726893bebb6aacd4d942
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: c0fd22bb9abb0710b9b4601777a0f0256386af77
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714305"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38473937"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection-Playbook
 
@@ -104,8 +104,8 @@ Die Anmeldung wird innerhalb von zwei bis vier Stunden auf dem Identity Protecti
 Sicherheitsrisiken sind Schwachstellen in einer Azure AD-Umgebung, die von einem Angreifer ausgenutzt werden können. Derzeit werden in Azure AD Identity Protection drei Arten von Sicherheitsrisiken erfasst, für die andere Features von Azure AD genutzt werden. Diese Sicherheitsrisiken werden im Identity Protection Dashboard automatisch angezeigt, nachdem diese Features eingerichtet wurden.
 
 * Azure AD – [Multi-Factor Authentication](authentication/multi-factor-authentication.md)
-* Azure AD [Cloud App Discovery](manage-apps/cloud-app-discovery.md)
-* Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md) 
+* Azure AD [Cloud Discovery](/cloud-app-security/set-up-cloud-discovery)
+* Azure AD [Privileged Identity Management](privileged-identity-management/pim-configure.md) 
 
 
 ## <a name="testing-security-policies"></a>Testen von Sicherheitsrichtlinien

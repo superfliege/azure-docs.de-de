@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.component: compliance-reports
-ms.date: 06/18/2018
+ms.date: 06/29/2018
 ms.author: rolyon
-ms.openlocfilehash: 2919ce1d7c57b7a92420ac11b61503caa1fdd3b0
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 7833c9da2303d119f0cb421f21bea455ab449898
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36267556"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856415"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Nutzungsbedingungsfeature für Azure Active Directory
 Mit den Azure AD-Nutzungsbedingungen können Organisationen komfortabel Informationen für Endbenutzer anzeigen. Dadurch wird sichergestellt, dass Benutzern relevante Haftungsausschlüsse angezeigt werden, um rechtliche oder compliancebezogene Anforderungen zu erfüllen. Dieser Artikel enthält eine Einführung in die Verwendung der Azure AD-Nutzungsbedingungen.
@@ -30,7 +30,7 @@ Mit den Azure AD-Nutzungsbedingungen können Organisationen komfortabel Informat
 Die Azure AD-Nutzungsbedingungen ermöglichen Folgendes:
 - Voraussetzen, dass Mitarbeiter oder Gäste Ihren Nutzungsbedingungen zustimmen, bevor ihnen Zugriff gewährt wird
 - Anzeigen allgemeiner Nutzungsbedingungen für alle Benutzer in Ihrer Organisation
-- Anzeigen spezifischer Nutzungsbedingungen auf der Grundlage von Benutzerattributen (beispielsweise Ärzte/Pflegepersonal oder Mitarbeiter im Inland/Ausland unter Verwendung [dynamischer Gruppen](active-directory-groups-dynamic-membership-azure-portal.md))
+- Anzeigen spezifischer Nutzungsbedingungen auf der Grundlage von Benutzerattributen (beispielsweise Ärzte/Pflegepersonal oder Mitarbeiter im Inland/Ausland unter Verwendung [dynamischer Gruppen](users-groups-roles/groups-dynamic-membership.md))
 - Anzeigen spezifischer Nutzungsbedingungen beim Zugriff auf besonders geschäftsrelevante Anwendungen (beispielsweise Salesforce)
 - Anzeigen von Nutzungsbedingungen in verschiedenen Sprachen
 - Auflisten, wer den Nutzungsbedingungen bereits (oder noch nicht) zugestimmt hat
@@ -115,7 +115,7 @@ Gehen Sie wie folgt vor, um mit der Verwendung von Überwachungsprotokollen zu b
 1. Sie können auch auf **Herunterladen** klicken, um die Informationen zur in einer CSV-Datei herunterzuladen und lokal zu verwenden.
 
 ## <a name="what-terms-of-use-looks-like-for-users"></a>Darstellung der Nutzungsbedingung für Benutzer
-Wenn Nutzungsbedingungen erstellt wurden und erzwungen werden, wird den betroffenen Benutzern bei der Anmeldung folgender Bildschirm angezeigt:
+Wenn Nutzungsbedingungen erstellt wurden und erzwungen werden, wird den betroffenen Benutzern bei der Anmeldung folgender Bildschirm angezeigt.
 
 ![Überwachungsereignis](media/active-directory-tou/user-tou.png)
 
@@ -126,7 +126,7 @@ Der folgende Bildschirm veranschaulicht die Darstellung der Nutzungsbedingungen 
 ### <a name="how-users-can-review-their-terms-of-use"></a>Möglichkeiten zum Lesen der Nutzungsbedingungen für die Benutzer
 Benutzer können die Nutzungsbedingungen, die sie akzeptiert haben, wie folgt lesen und anzeigen:
 
-1. Melden Sie sich unter [https://myapps.microsoft.com](https://myapps.microsoft.com) an.
+1. Melden Sie sich bei [https://myapps.microsoft.com](https://myapps.microsoft.com) an.
 
 1. Klicken Sie in der rechten oberen Ecke auf Ihren Namen, und wählen Sie in der Dropdownliste die Option **Profil** aus.
 
@@ -157,7 +157,7 @@ Veraltete Nutzungsbedingungen können wie folgt gelöscht werden:
 Ein gelöschter Benutzer befindet sich in Azure AD standardmäßig 30 Tage lang in einem gelöschten Zustand. In diesem Zeitraum kann er von einem Administrator wiederhergestellt werden, sofern erforderlich.  Nach 30 Tagen wird dieser Benutzer endgültig gelöscht.  Darüber hinaus kann ein globaler Administrator über das Azure Active Directory-Portal explizit [einen kürzlich gelöschten Benutzer endgültig löschen](fundamentals/active-directory-users-restore.md), bevor dieser Zeitraum abgelaufen ist.  Wurde ein Benutzer endgültig gelöscht, werden nachfolgende Daten für diesen Benutzer aus den aktiven Nutzungsbedingungen entfernt.  Überwachungsinformationen zu gelöschten Benutzern verbleiben im Überwachungsprotokoll.
 
 ## <a name="policy-changes"></a>Richtlinienänderungen
-Richtlinien für den bedingten Zugriff werden sofort wirksam. In diesem Fall werden dem Administrator Cloud- oder Azure AD-Tokenprobleme angezeigt. Der Administrator muss sich ab- und wieder anmelden, um die neue Richtlinie zu erfüllen.
+Richtlinien für den bedingten Zugriff werden sofort wirksam. In diesem Fall werden dem Administrator Cloudprobleme oder Azure AD-Tokenprobleme angezeigt. Der Administrator muss sich ab- und dann erneut anmelden, um die neue Richtlinie zu erfüllen.
 
 >[!IMPORTANT]
 > Betroffene Benutzer müssen sich zur Erfüllung einer neuen Richtlinie ab- und wieder anmelden, wenn Folgendes zutrifft:
@@ -167,10 +167,10 @@ Richtlinien für den bedingten Zugriff werden sofort wirksam. In diesem Fall wer
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
 **F: Wie sehe ich, wann/ob ein Benutzer Nutzungsbedingungen akzeptiert hat?**</br>
-A: Klicken Sie neben Ihren Nutzungsbedingungen auf die Zahl unter „Akzeptiert“.  Weitere Informationen finden Sie unter [Anzeigen, wer die Bedingungen abgelehnt oder akzeptiert hat](#view-who-has-accepted-and-declined).  Die Akzeptierung der Nutzungsbedingungen durch einen Benutzer wird außerdem in das Überwachungsprotokoll geschrieben. Sie können das Azure AD-Überwachungsprotokoll nach den Ergebnissen durchsuchen.  
+A: Klicken Sie auf dem Nutzungsbedingungenblatt auf die Zahl unter **Akzeptiert**. Sie können die Zustimmungsaktivität auch in den Überwachungsprotokollen anzeigen oder suchen. Weitere Informationen finden Sie unter [Anzeigen, wer die Bedingungen abgelehnt oder akzeptiert hat](#view-who-has-accepted-and-declined) und [Überwachungsprotokolle anzeigen](#view-audit-logs).
 
 **F: Müssen Benutzer die Nutzungsbedingungen erneut akzeptieren, wenn diese geändert werden?**</br>
-A: Ja. Wenn ein Administrator die Nutzungsbedingungen ändert, müssen sie erneut akzeptiert werden.
+A: Ja. Wenn ein Administrator die Nutzungsbedingungen ändert, müssen sie durch Benutzer erneut akzeptiert werden.
 
 **F: Können Nutzungsbedingungen mehrere Sprachen unterstützen?**</br>
 A: Ja.  Derzeit sind 18 verschiedene Sprachen verfügbar, die ein Administrator für eine einzelne Version der Nutzungsbedingungen konfigurieren kann. 
@@ -179,13 +179,16 @@ A: Ja.  Derzeit sind 18 verschiedene Sprachen verfügbar, die ein Administrator 
 A: Die Nutzungsbedingungen werden bei der Anmeldung ausgelöst.
 
 **F: Für welche Anwendungen kann ich Nutzungsbedingungen verwenden?**</br>
-A: Sie können eine Richtlinie für den bedingten Zugriff für Unternehmensanwendungen mit moderner Authentifizierung erstellen.  Weitere Informationen finden Sie unter [Anzeigen aller von Ihnen verwaltbaren Unternehmens-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-view-azure-portal).
+A: Sie können eine Richtlinie für den bedingten Zugriff für Unternehmensanwendungen mit moderner Authentifizierung erstellen.  Weitere Informationen finden Sie unter [Anzeigen aller von Ihnen verwaltbaren Unternehmens-Apps in Azure Active Directory](./manage-apps/view-applications-portal.md).
 
 **F: Kann ich einem bestimmten Benutzer oder einer bestimmten App mehrere Nutzungsbedingungen hinzufügen?**</br>
 A: Ja. Erstellen Sie hierzu mehrere Richtlinien für den bedingten Zugriff, und richten Sie sie auf die entsprechenden Gruppen oder Anwendungen aus. Wenn für einen Benutzer mehrere Nutzungsbedingungen gelten, muss er die Nutzungsbedingungen nacheinander akzeptieren.
  
 **F: Was passiert, wenn ein Benutzer die Nutzungsbedingungen ablehnt?**</br>
 A: Der Benutzer kann nicht auf die Anwendung zugreifen. Wenn er auf die Anwendung zugreifen möchte, muss er sich erneut anmelden und die Bedingungen akzeptieren.
+ 
+**F: Ist es möglich, die Zustimmung zu Nutzungsbedingungen rückgängig zu machen, die bereits akzeptiert wurden?**</br>
+A: Sie können [zuvor akzeptierte Nutzungsbedingungen überprüfen](#how-users-can-review-their-terms-of-use), aber zurzeit besteht keine Möglichkeit, die Zustimmung rückgängig zu machen.
  
 **F: Wie lange werden die Informationen gespeichert?**</br>
 A: Die Benutzeranzahl sowie die Angabe, wer die Bedingungen akzeptiert/abgelehnt hat, werden für die Lebensdauer der Nutzungsbedingungen gespeichert. Die Überwachungsprotokolle werden 30 Tage lang gespeichert.

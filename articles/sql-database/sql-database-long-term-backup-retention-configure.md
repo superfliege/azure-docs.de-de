@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 0ce22cae50e70ca7232e025d4009b23d62f6a198
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f7125a18aa2496ebe8367443a67502a7a7dbac02
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649226"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969186"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Verwalten der langfristigen Aufbewahrung von Sicherungen in Azure SQL-Datenbank
 
@@ -83,8 +83,10 @@ Zeigen Sie die Sicherungen an, die für eine bestimmte Datenbank mit einer LTR-R
 In den folgenden Abschnitten wird erläutert, wie Sie mithilfe von PowerShell die langfristige Sicherungsaufbewahrung konfigurieren, Sicherungen in Azure SQL-Speicher anzeigen und eine Sicherung in Azure SQL-Speicher wiederherstellen.
 
 > [!IMPORTANT]
-> Sie müssen die aktuelle AzureRM-PowerShell verwenden, um die LTR V2-Richtlinien einzurichten. Die aktuelle Version ist [AzureRM 4.5.0-preview](https://www.powershellgallery.com/packages/AzureRM.Sql/4.5.0-preview). Hierbei handelt es sich um eine Vorschauversion, also verwenden Sie diesen Befehl zur Installation: `Install-Module -Name AzureRM.Sql -AllowPrerelease -Force`.
-> Anweisungen zum Installieren der Vorabversion finden Sie unter [Installieren von PowerShellGet](https://docs.microsoft.com/en-us/powershell/gallery/installing-psget). Das Release von AzureRM-PowerShell von Mai 2018 erscheint in wenigen Tagen (voraussichtliche am 18.5.2018). Wenn Sie die Releaseversion nach ihrer Verfügbarkeit installieren, können Sie den Schalter -AllowPrelease ignorieren und den folgenden Befehl verwenden: `Install-Module -Name AzureRM.Sql -Force`.
+> Die LTR V2-API wird in den folgenden PowerShell-Versionen unterstützt:
+- [AzureRM.Sql-4.5.0](https://www.powershellgallery.com/packages/AzureRM.Sql/4.5.0) oder höher
+- [AzureRM-6.1.0](https://www.powershellgallery.com/packages/AzureRM/6.1.0) oder höher
+> 
 
 ### <a name="create-an-ltr-policy"></a>Erstellen einer LTR-Richtlinie
 
