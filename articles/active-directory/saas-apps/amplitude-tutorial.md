@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: jeedes
-ms.openlocfilehash: b42b9551a297d6c506e0dbca7e7c9898a002a9b5
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a2815b60799f98071915a0f06908fd92ff3fb2f2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215170"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043930"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amplitude"></a>Tutorial: Azure Active Directory-Integration mit Amplitude
 
@@ -133,15 +133,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 8. Klicken Sie in der linken Navigationsleiste auf **Admin planen**.
 
-    ![Configure Single Sign-On](./media/amplitude-tutorial/configure1.png)
+    ![Configure single sign-on](./media/amplitude-tutorial/configure1.png)
 
 9. Wählen Sie aus der **SSO-Integration** die Option **Microsoft Azure Active Directory-Metadaten**.
 
-    ![Configure Single Sign-On](./media/amplitude-tutorial/configure2.png)
+    ![Configure single sign-on](./media/amplitude-tutorial/configure2.png)
 
 10. Führen Sie im Abschnitt **Einmaliges Anmelden einrichten** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/amplitude-tutorial/configure3.png)
+    ![Configure single sign-on](./media/amplitude-tutorial/configure3.png)
 
     a. Öffnen Sie die aus dem Azure-Portal heruntergeladene **Metadaten-XML** im Editor, und fügen Sie den Inhalt im Textfeld **Microsoft Azure Active Directory-Metadaten** ein.
 
@@ -225,7 +225,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Amplitude“ klicken, sollten Sie automatisch bei Ihrer Amplitude-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

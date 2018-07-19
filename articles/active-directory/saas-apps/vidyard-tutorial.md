@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 0934ec2443d240234b2120056894921f2e30c81c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d796ebf6e30476d766a0d9b6c78ba4b5cf577b47
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213164"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056224"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vidyard"></a>Tutorial: Azure Active Directory-Integration in Vidyard
 
@@ -252,7 +252,7 @@ In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf Vidyard, damit sie da
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Vidyard“ klicken, werden Sie automatisch bei Ihrer Vidyard-Anwendung angemeldet.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

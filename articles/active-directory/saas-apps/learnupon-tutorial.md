@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 7a50d1f17293bb86c69ece10e05af0017b1fabf9
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3409545169208adc87eb63358082afc6c6d8d575
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219454"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042111"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Tutorial: Azure Active Directory-Integration mit LearnUpon
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **LearnUpon** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/learnupon-tutorial/tutorial_learnupon_samlbase.png)
+    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_samlbase.png)
 
 3. Führen Sie auf der Seite **Domäne und URLs für LearnUpon** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/learnupon-tutorial/tutorial_learnupon_url.png)
+    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_url.png)
 
     Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<companyname>.learnupon.com/saml/consumer`
 
@@ -121,29 +121,29 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Navigieren Sie im Abschnitt **SAML-Signaturzertifikat** zu **Fingerabdruck**. Dieser Wert wird Ihren SAML-Einstellungen für LearnUpon hinzugefügt.
 
-    ![Configure Single Sign-On](./media/learnupon-tutorial/tutorial_learnupon_certificate.png) 
+    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/learnupon-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **LearnUpon-Konfiguration** auf **LearnUpon konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/learnupon-tutorial/tutorial_learnupon_configure.png) 
+    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_configure.png) 
 
 7. Öffnen Sie eine weitere Browserinstanz, und melden Sie sich mit einem Administratorkonto bei LearnUpon an. 
 
 8. Klicken Sie auf die Registerkarte **Einstellungen** .
    
-    ![Configure Single Sign-On](./media/learnupon-tutorial/tutorial_learnupon_06.png)
+    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_06.png)
 
 9. Klicken Sie auf **Einmaliges Anmelden – SAML** und anschließend auf **Allgemeine Einstellungen**, um SAML-Einstellungen zu konfigurieren.
    
-    ![Configure Single Sign-On](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
+    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
 
 10. Führen Sie im Abschnitt **Allgemeine Einstellungen** die folgenden Schritte aus:
    
-    ![Configure Single Sign-On](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
+    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
   
     a. Wählen Sie **Aktiviert**.
 
@@ -163,7 +163,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 11. Klicken Sie auf **Benutzereinstellungen**, und führen Sie die folgenden Schritte aus:
    
-     ![Configure Single Sign-On](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
+     ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
  
     a. Geben Sie im Textfeld **Format der Vornamen-ID** den Wert ein, der angibt, an welcher Stelle in der SAML-Assertion sich der Vorname des Benutzers befindet, z.B. **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**.
   
@@ -227,7 +227,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **LearnUpon**aus.
 
-    ![Configure Single Sign-On](./media/learnupon-tutorial/tutorial_learnupon_app.png) 
+    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -248,7 +248,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „LearnUpon“ klicken, sollten Sie automatisch bei Ihrer LearnUpon-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

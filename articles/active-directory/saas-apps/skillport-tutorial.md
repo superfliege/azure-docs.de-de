@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
-ms.openlocfilehash: d9199f96c4263a8027067b0784a63aaeafe0a06d
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: cbe2e6db514eb978cf99b249c434eb5cf3df6cd2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294651"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045997"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Tutorial: Azure Active Directory-Integration mit Skillport
 
@@ -102,15 +102,15 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Skillport** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/skillport-tutorial/tutorial_skillport_samlbase.png)
+    ![Configure single sign-on](./media/skillport-tutorial/tutorial_skillport_samlbase.png)
 
 3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für Skillport** aus:
 
-    ![Configure Single Sign-On](./media/skillport-tutorial/tutorial_skillport_url.png)
+    ![Configure single sign-on](./media/skillport-tutorial/tutorial_skillport_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** diese URL ein:
       
@@ -132,11 +132,11 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die XML-Datei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/skillport-tutorial/tutorial_skillport_certificate.png) 
+    ![Configure single sign-on](./media/skillport-tutorial/tutorial_skillport_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/skillport-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/skillport-tutorial/tutorial_general_400.png)
 
 6. Zum Konfigurieren des einmaligen Anmeldens bei **Skillport** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [Skillport-Supportteam](https://www.skillsoft.com/contact.asp) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -189,7 +189,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste den Eintrag **Skillport** aus.
 
-    ![Configure Single Sign-On](./media/skillport-tutorial/tutorial_skillport_app.png) 
+    ![Configure single sign-on](./media/skillport-tutorial/tutorial_skillport_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -210,7 +210,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Skillport“ klicken, sollten Sie automatisch bei Ihrer Skillport-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

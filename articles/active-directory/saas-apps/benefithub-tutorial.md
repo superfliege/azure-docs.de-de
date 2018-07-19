@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 5accb676c7fb732c9b59dbbbeda944a3a3015d50
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 64019237370d867b2f9a35a59139b5c4cc719ffa
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285415"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054164"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefithub"></a>Tutorial: Azure Active Directory-Integration in BenefitHub
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **BenefitHub** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/benefithub-tutorial/tutorial_benefithub_samlbase.png)
+    ![Configure single sign-on](./media/benefithub-tutorial/tutorial_benefithub_samlbase.png)
 
 3. Führen Sie die folgenden Schritte im Abschnitt **Domäne und URLs für BenefitHub** durch:
 
-    ![Configure Single Sign-On](./media/benefithub-tutorial/tutorial_benefithub_url1.png)
+    ![Configure single sign-on](./media/benefithub-tutorial/tutorial_benefithub_url1.png)
   
     a. Geben Sie im Textfeld **Bezeichner** Folgendes ein: `urn:benefithub:passport`
     
@@ -118,7 +118,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 4. Die BenefitHub-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. 
 
-    ![Configure Single Sign-On](./media/benefithub-tutorial/tutorial_benefithub_attribute.png)
+    ![Configure single sign-on](./media/benefithub-tutorial/tutorial_benefithub_attribute.png)
 
 5. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der vorherigen Abbildung gezeigt, und führen Sie die folgenden Schritte durch:
     
@@ -131,9 +131,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
     
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Configure Single Sign-On](./media/benefithub-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/benefithub-tutorial/tutorial_attribute_04.png)
 
-    ![Configure Single Sign-On](./media/benefithub-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/benefithub-tutorial/tutorial_attribute_05.png)
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
     
@@ -146,11 +146,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 6. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/benefithub-tutorial/tutorial_benefithub_certificate.png) 
+    ![Configure single sign-on](./media/benefithub-tutorial/tutorial_benefithub_certificate.png) 
 
 7. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/benefithub-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/benefithub-tutorial/tutorial_general_400.png)
 
 8. Zum Konfigurieren des einmaligen Anmeldens bei **BenefitHub** müssen Sie die heruntergeladene **XML-Metadaten**-Datei an das [BenefitHub-Supportteam](https://www.benefithub.com/Home/ContactUs) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -206,7 +206,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste die Option **BenefitHub** aus.
 
-    ![Configure Single Sign-On](./media/benefithub-tutorial/tutorial_benefithub_app.png) 
+    ![Configure single sign-on](./media/benefithub-tutorial/tutorial_benefithub_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -227,7 +227,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „BenefitHub“ klicken, sollten Sie automatisch bei Ihrer BenefitHub-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

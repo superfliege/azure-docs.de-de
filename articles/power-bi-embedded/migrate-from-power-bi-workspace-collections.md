@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/28/2017
 ms.author: maghan
-ms.openlocfilehash: d138b0c26ffc0a44947f79811fd586dda7df4509
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: de20d532112ca73f34f7cb603d043579c28179d6
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31419095"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071231"
 ---
 # <a name="how-to-migrate-power-bi-workspace-collection-content-to-power-bi-embedded"></a>Migrieren von Power BI-Arbeitsbereichssammlungsinhalten zu Power BI Embedded
 
@@ -118,17 +118,17 @@ Zwischengespeicherte DataSets beziehen sich auf PBIX-Dateien, die importierte Da
 
 **Ablauf**
 
-1. Rufen Sie „GET https://api.powerbi.com/v1.0/collections/{collection_id}/workspaces/{wid}/datasets/{dataset_id}/Default.GetBoundGatewayDataSources“ auf, und speichern Sie die zurückgegebene Verbindungszeichenfolge.
+1. Rufen Sie „GET `https://api.powerbi.com/v1.0/collections/{collection_id}/workspaces/{wid}/datasets/{dataset_id}/Default.GetBoundGatewayDataSources`“ auf, und speichern Sie die zurückgegebene Verbindungszeichenfolge.
 2. Rufen Sie die Download PBIX-API über Ihren Arbeitsbereich der Power BI-Arbeitsbereichssammlung auf.
 3. Speichern Sie die PBIX-Datei.
 4. Rufen Sie die Import PBIX-API für Ihren Power BI Embedded-Arbeitsbereich auf.
-5. Aktualisieren Sie die Verbindungszeichenfolge durch Aufrufen von „POST https://api.powerbi.com/v1.0/myorg/datasets/{dataset_id}/Default.SetAllConnections“.
-6. Rufen Sie die Gateway-ID und Datenquellen-ID durch Aufrufen von „GET https://api.powerbi.com/v1.0/myorg/datasets/{dataset_id}/Default.GetBoundGatewayDataSources“ ab.
-7. Aktualisieren Sie die Anmeldeinformationen des Benutzers durch Aufrufen von „PATCH https://api.powerbi.com/v1.0/myorg/gateways/{gateway_id}/datasources/{datasource_id}“.
+5. Aktualisieren Sie die Verbindungszeichenfolge durch Aufrufen von „POST `https://api.powerbi.com/v1.0/myorg/datasets/{dataset_id}/Default.SetAllConnections`“.
+6. Rufen Sie die Gateway-ID und Datenquellen-ID durch Aufrufen von „GET `https://api.powerbi.com/v1.0/myorg/datasets/{dataset_id}/Default.GetBoundGatewayDataSources`“ ab.
+7. Aktualisieren Sie die Anmeldeinformationen des Benutzers durch Aufrufen von „PATCH `https://api.powerbi.com/v1.0/myorg/gateways/{gateway_id}/datasources/{datasource_id}`“.
 
 #### <a name="old-dataset-and-reports"></a>Altes DataSet und alte Berichte
 
-Berichte, die vor Oktober 2016 hochgeladen wurden, unterstützen das Feature „Download PBIX“ nicht.
+Berichte, die vor Oktober 2016 hochgeladen wurden, unterstützen das Feature „Download PBIX“ nicht. 
 
 **Ablauf**
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 14ac5aab1488c86949f44f712d80966719f60c4c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c2d8470581fb5bb25b6c1271079508b0e951694d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231441"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046871"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intime"></a>Tutorial: Azure Active Directory-Integration mit InTime
 
@@ -206,7 +206,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „InTime“ klicken, wird die Anmeldeseite der InTime-Anwendung aufgerufen. Klicken Sie auf die **Login**-Schaltfläche, und dann wird eine Reihe von IDPs auf einer Schaltflächenliste angezeigt. Klicken Sie auf den **IDP-Namen**, den Ihnen das [InTime-Supportteam](mailto:hdollard@intimesoft.com) nennt, um sich bei Ihrer InTime-Anwendung anzumelden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Wenn Sie im Zugriffsbereich auf die Kachel „InTime“ klicken, wird die Anmeldeseite der InTime-Anwendung aufgerufen. Klicken Sie auf die **Login**-Schaltfläche, und dann wird eine Reihe von IDPs auf einer Schaltflächenliste angezeigt. Klicken Sie auf den **IDP-Namen**, den Ihnen das [InTime-Supportteam](mailto:hdollard@intimesoft.com) nennt, um sich bei Ihrer InTime-Anwendung anzumelden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

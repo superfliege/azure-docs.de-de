@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: d5fe4b6703f9b860932e36a296f3d103a4f94807
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4f5ff9906ec5a4f57d64704a4b10cf7027878e72
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219855"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047075"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iwellnessnow"></a>Tutorial: Azure Active Directory-Integration in iWellnessNow
 
@@ -216,7 +216,7 @@ In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf iWellnessNow, damit s
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „iWellnessNow“ klicken, werden Sie automatisch bei Ihrer iWellnessNow-Anwendung angemeldet.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 8266da9c6b7aaa0aea2cd5cefb73febc090f3ba5
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3c0c91e293f04665bc284daa4f496b9bff74aa3c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214891"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051932"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moxtra"></a>Tutorial: Azure Active Directory-Integration mit Moxtra
 
@@ -102,21 +102,21 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Moxtra** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/moxtra-tutorial/tutorial_moxtra_samlbase.png)
+    ![Configure single sign-on](./media/moxtra-tutorial/tutorial_moxtra_samlbase.png)
 
 3. Führen Sie auf der Seite **Domäne und URLs für Moxtra** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/moxtra-tutorial/tutorial_moxtra_url.png)
+    ![Configure single sign-on](./media/moxtra-tutorial/tutorial_moxtra_url.png)
 
     Geben Sie im Textfeld **Anmelde-URL** die URL folgendermaßen ein: `https://www.moxtra.com/service/#login`.
 
 4. Die Moxtra-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Konfiguration. 
 
-    ![Configure Single Sign-On](./media/moxtra-tutorial/tutorial_moxtra_attributes.png)
+    ![Configure single sign-on](./media/moxtra-tutorial/tutorial_moxtra_attributes.png)
     
 5. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der Abbildung gezeigt, und führen Sie die folgenden Schritte aus:
     
@@ -131,11 +131,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Configure Single Sign-On](./media/moxtra-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/moxtra-tutorial/tutorial_attribute_04.png)
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
-    ![Configure Single Sign-On](./media/moxtra-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/moxtra-tutorial/tutorial_attribute_05.png)
 
     c. Geben Sie in der Liste **Wert** den für diese Zeile angezeigten Wert ein.
 
@@ -143,25 +143,25 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/moxtra-tutorial/tutorial_moxtra_certificate.png) 
+    ![Configure single sign-on](./media/moxtra-tutorial/tutorial_moxtra_certificate.png) 
 
 6. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/moxtra-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/moxtra-tutorial/tutorial_general_400.png)
 
 7. Klicken Sie im Abschnitt **Moxtra-Konfiguration** auf **Moxtra konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die SAML-Dienst-URL für einmaliges Anmelden** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/moxtra-tutorial/tutorial_moxtra_configure.png) 
+    ![Configure single sign-on](./media/moxtra-tutorial/tutorial_moxtra_configure.png) 
 
 8. Melden Sie sich in einem anderen Webbrowserfenster bei der Moxtra-Unternehmenswebsite als Administrator an.
 
 9. Klicken Sie auf der Symbolleiste auf der linken Seite auf **Administratorkonsole > Einmalige SAML-Anmeldung** und anschließend auf **Neu**.
    
-    ![Configure Single Sign-On](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
+    ![Configure single sign-on](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
 
 10. Führen Sie auf der Seite **SAML** die folgenden Schritte aus:
    
-    ![Configure Single Sign-On](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
+    ![Configure single sign-on](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
  
     a. Geben Sie im Textfeld **Name** einen Namen für Ihre Konfiguration ein (z.B. *SAML*). 
   
@@ -226,7 +226,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
 
 2. Klicken Sie auf der Symbolleiste auf der linken Seite auf **Administratorkonsole > Benutzerverwaltung** und dann auf **Benutzer hinzufügen**.
    
-    ![Configure Single Sign-On](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
+    ![Configure single sign-on](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
 
 3. Führen Sie im Dialogfeld **Add User** die folgenden Schritte aus:
   
@@ -258,7 +258,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Moxtra**aus.
 
-    ![Configure Single Sign-On](./media/moxtra-tutorial/tutorial_moxtra_app.png) 
+    ![Configure single sign-on](./media/moxtra-tutorial/tutorial_moxtra_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -279,7 +279,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Moxtra“ klicken, sollten Sie automatisch bei Ihrer Moxtra-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

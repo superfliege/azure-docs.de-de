@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 9263be24f883d8a02735e757f3ac02b54960f61f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 79a2bc9d517e3c292268a4a70f08936cb0325fbd
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227393"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053086"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>Tutorial: Azure Active Directory-Integration mit GitHub
 
@@ -117,7 +117,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Wählen Sie im Abschnitt **Benutzerattribute** für **Benutzer-ID** die Option „user.mail“.
 
-    ![Configure Single Sign-On](./media/github-tutorial/tutorial_github_attribute_new01.png)
+    ![Configure single sign-on](./media/github-tutorial/tutorial_github_attribute_new01.png)
 
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
@@ -253,7 +253,7 @@ In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf GitHub, damit sie das
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die GitHub-Kachel klicken, werden Sie automatisch bei Ihrer GitHub-Anwendung angemeldet.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

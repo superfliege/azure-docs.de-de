@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: jeedes
-ms.openlocfilehash: c30da2ecebd7c46e8396351f7e7c5ee69c130e29
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d852b30568acff4f1d56a1e208528e8c90b5b1f0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217033"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051777"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redbrick-health"></a>Tutorial: Integration von RedBrick Health in Azure Active Directory
 
@@ -127,7 +127,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Die RedBrick Health-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Diese Ansprüche sind kundenspezifisch und hängen von Ihren Anforderungen ab. Die folgenden optionalen Ansprüche sind nur Beispiele, die Sie für Ihre Anwendung konfigurieren können. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten.
 
-    ![Configure Single Sign-On](./media/redbrickhealth-tutorial/attribute.png)
+    ![Configure single sign-on](./media/redbrickhealth-tutorial/attribute.png)
 
 5. Konfigurieren Sie das SAML-Tokenattribut im Dialogfeld **Einmaliges Anmelden** im Abschnitt **Benutzerattribute**, wie im obigen Bild gezeigt, und führen Sie die folgenden Schritte aus:
 
@@ -142,9 +142,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
     
-    ![Configure Single Sign-On](./media/redbrickhealth-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/redbrickhealth-tutorial/tutorial_attribute_04.png)
     
-    ![Configure Single Sign-On](./media/redbrickhealth-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/redbrickhealth-tutorial/tutorial_attribute_05.png)
     
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
     
@@ -242,7 +242,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „RedBrick Health“ klicken, sollten Sie automatisch bei Ihrer RedBrick Health-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

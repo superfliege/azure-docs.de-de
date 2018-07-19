@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 45912e3aa0621ea9bfd24202392eda1a53addf80
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 9f87c0a9c705e5a87b16abf97afba10165c80425
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222418"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045570"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightanswers"></a>Tutorial: Azure Active Directory-Integration mit RightAnswers
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **RightAnswers** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/rightanswers-tutorial/tutorial_rightanswers_samlbase.png)
+    ![Configure single sign-on](./media/rightanswers-tutorial/tutorial_rightanswers_samlbase.png)
 
 3. Führen Sie die folgenden Schritte im Abschnitt **Domäne und URLs für RightAnswers** aus:
 
-    ![Configure Single Sign-On](./media/rightanswers-tutorial/tutorial_rightanswers_url.png)
+    ![Configure single sign-on](./media/rightanswers-tutorial/tutorial_rightanswers_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.rightanswers.com/portal/ss/`.
 
@@ -121,11 +121,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/rightanswers-tutorial/tutorial_rightanswers_certificate.png) 
+    ![Configure single sign-on](./media/rightanswers-tutorial/tutorial_rightanswers_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/rightanswers-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/rightanswers-tutorial/tutorial_general_400.png)
 
 6. Zum Konfigurieren des einmaligen Anmeldens bei **RightAnswers** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [RightAnswers-Supportteam](https://www.rightanswers.com/contact-us/) senden.
 
@@ -190,7 +190,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Liste der Anwendungen **RightAnswers** aus.
 
-    ![Configure Single Sign-On](./media/rightanswers-tutorial/tutorial_rightanswers_app.png) 
+    ![Configure single sign-on](./media/rightanswers-tutorial/tutorial_rightanswers_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -208,7 +208,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
     
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 
-Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)

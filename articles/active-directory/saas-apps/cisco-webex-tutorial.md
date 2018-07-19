@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 76980214daf6e7dd019c56db089095ae121b853f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: accafab55c6c1aa34ccf7aa9cfc4adb2a902f5e3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215350"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043431"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>Tutorial: Azure Active Directory-Integration mit Cisco Webex
 
@@ -131,7 +131,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
 6. Wählen Sie im Abschnitt **Cisco Webex-Konfiguration** die Option **Cisco Webex konfigurieren** aus, um das Fenster **Anmeldung konfigurieren**  zu öffnen. Kopieren Sie die **Abmelde-URL**, die **SAML-Entitäts-ID** und die **URL für den SAML-SSO-Dienst** aus dem Bereich **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/cisco-webex-tutorial/tutorial_ciscowebex_configure.png) 
+    ![Configure single sign-on](./media/cisco-webex-tutorial/tutorial_ciscowebex_configure.png) 
 
 7. Melden Sie sich in einem anderen Webbrowserfenster bei der Cisco Webex-Unternehmenswebsite als Administrator an.
 
@@ -275,7 +275,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmeld
 
 Wenn Sie im Zugriffsbereich die Kachel „Cisco Webex“ auswählen, werden Sie automatisch bei Ihrer Cisco Webex-Anwendung angemeldet.
 
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

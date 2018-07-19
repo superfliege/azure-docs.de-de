@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2017
 ms.author: jeedes
-ms.openlocfilehash: f1dbbc2695234e5196b76b13d2b71848eb7f00a6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 7d26ac2d4e7ab3cdb7603a201b4238bf9068cdab
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212807"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051335"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-novatus"></a>Tutorial: Azure Active Directory-Integration mit Novatus
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Novatus** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/novatus-tutorial/tutorial_novatus_samlbase.png)
+    ![Configure single sign-on](./media/novatus-tutorial/tutorial_novatus_samlbase.png)
 
 3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für Novatus** aus:
 
-    ![Configure Single Sign-On](./media/novatus-tutorial/tutorial_novatus_url.png)
+    ![Configure single sign-on](./media/novatus-tutorial/tutorial_novatus_url.png)
 
      Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://sso.novatuscontracts.com/<companyname>`.
 
@@ -121,15 +121,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/novatus-tutorial/tutorial_novatus_certificate.png) 
+    ![Configure single sign-on](./media/novatus-tutorial/tutorial_novatus_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/novatus-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/novatus-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Novatus-Konfiguration** auf **Novatus konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/novatus-tutorial/tutorial_novatus_configure.png) 
+    ![Configure single sign-on](./media/novatus-tutorial/tutorial_novatus_configure.png) 
 
 7. Wenden Sie sich unter an das [Supportteam von Novatus](mailto:jvinci@novatusinc.com), um SSO für Ihre Anwendung konfigurieren zu lassen. Hängen Sie die **heruntergeladene Zertifikatdatei** an Ihre E-Mail an, und teilen Sie dem Novatus-Team die **Metadaten-URLs** (**Abmelde-URL, Entitäts-ID und SAML-Dienst-URL für einmaliges Anmelden**) zum Einrichten von SSO auf ihrer Seite mit.
 
@@ -192,7 +192,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste den Eintrag **Novatus**aus.
 
-    ![Configure Single Sign-On](./media/novatus-tutorial/tutorial_novatus_app.png) 
+    ![Configure single sign-on](./media/novatus-tutorial/tutorial_novatus_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -212,7 +212,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt soll Ihre Azure AD-Konfiguration für das einmalige Anmelden mithilfe des Zugriffsbereichs getestet werden.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Novatus“ klicken, sollten Sie automatisch bei Ihrer Novatus-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „Novatus“ klicken, sollten Sie automatisch bei Ihrer Novatus-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

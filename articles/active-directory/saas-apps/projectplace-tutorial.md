@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: f156f8dfdde5f9b13494d837c64c0f2117e4d1d7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0ad1c1e66ac0719889760d4685607bd6e5f39f1f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219022"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046064"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-projectplace"></a>Tutorial: Azure Active Directory-Integration mit Projectplace
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Projectplace** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/projectplace-tutorial/tutorial_projectplace_samlbase.png)
+    ![Configure single sign-on](./media/projectplace-tutorial/tutorial_projectplace_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Projectplace** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/projectplace-tutorial/tutorial_projectplace_url.png)
+    ![Configure single sign-on](./media/projectplace-tutorial/tutorial_projectplace_url.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<company>.projectplace.com`.
 
@@ -119,11 +119,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/projectplace-tutorial/tutorial_projectplace_certificate.png) 
+    ![Configure single sign-on](./media/projectplace-tutorial/tutorial_projectplace_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/projectplace-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/projectplace-tutorial/tutorial_general_400.png)
 
 7. Zum Konfigurieren des einmaligen Anmeldens bei **Projectplace** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [Projectplace-Supportteam](https://success.planview.com/Projectplace/Support) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -207,7 +207,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Projectplace**aus.
 
-    ![Configure Single Sign-On](./media/projectplace-tutorial/tutorial_projectplace_app.png) 
+    ![Configure single sign-on](./media/projectplace-tutorial/tutorial_projectplace_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -228,7 +228,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Projectplace“ klicken, sollten Sie automatisch in Ihrer Projectplace-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 413ae4197b95932321e29eb1662fe8168c77799a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 24f49cac136335493fcc9290f29a08efcc5eb5da
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216938"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043413"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ekincare"></a>Tutorial: Azure Active Directory-Integration mit eKincare
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **eKincare** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/ekincare-tutorial/tutorial_ekincare_samlbase.png)
+    ![Configure single sign-on](./media/ekincare-tutorial/tutorial_ekincare_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für eKincare** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/ekincare-tutorial/tutorial_ekincare_url.png)
+    ![Configure single sign-on](./media/ekincare-tutorial/tutorial_ekincare_url.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<instancename>.ekincare.com/`
 
@@ -123,7 +123,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
     Der Anspruchsname ist immer eine Kombination aus **employeeid** und dem Wert, den Sie user.extensionattribute1 zugewiesen haben. Dieses Attribut enthält die Mitarbeiter-ID (EmployeeID) des Benutzers. Die Namen der anderen beiden Ansprüche **organizationid** und **organizationname** sind immer gleich. Ihre Werte enthalten Details zur Organisation des Benutzers.
     
-    ![Configure Single Sign-On](./media/ekincare-tutorial/attribute.png)
+    ![Configure single sign-on](./media/ekincare-tutorial/attribute.png)
     
 5. Konfigurieren Sie das SAML-Tokenattribut im Dialogfeld **Einmaliges Anmelden** im Abschnitt **Benutzerattribute**, wie im obigen Bild gezeigt, und führen Sie die folgenden Schritte aus:
     
@@ -135,9 +135,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Configure Single Sign-On](./media/ekincare-tutorial/04.png)
+    ![Configure single sign-on](./media/ekincare-tutorial/04.png)
 
-    ![Configure Single Sign-On](./media/ekincare-tutorial/05.png)
+    ![Configure single sign-on](./media/ekincare-tutorial/05.png)
     
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
     
@@ -147,11 +147,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 6. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/ekincare-tutorial/tutorial_ekincare_certificate.png) 
+    ![Configure single sign-on](./media/ekincare-tutorial/tutorial_ekincare_certificate.png) 
 
 7. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/ekincare-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/ekincare-tutorial/tutorial_general_400.png)
 
 8. Zum Konfigurieren des einmaligen Anmeldens bei **eKincare** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [eKincare-Supportteam](mailto:tech@ekincare.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -208,7 +208,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **eKincare** aus.
 
-    ![Configure Single Sign-On](./media/ekincare-tutorial/tutorial_ekincare_app.png) 
+    ![Configure single sign-on](./media/ekincare-tutorial/tutorial_ekincare_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -229,7 +229,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „eKincare“ klicken, sollten Sie automatisch bei Ihrer eKincare-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

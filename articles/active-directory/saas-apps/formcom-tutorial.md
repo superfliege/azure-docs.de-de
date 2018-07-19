@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: e5c322971b182a0d837c3cf6e23df7a7df17fd35
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a1e279f9cb4eebd97b76449a7d28227c91407cb1
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222541"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053042"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-formcom"></a>Tutorial: Azure Active Directory-Integration mit Form.com
 
@@ -125,7 +125,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Führen Sie im Abschnitt **SAML-Signaturzertifikat** die folgenden Schritte aus:
     
-    ![Configure Single Sign-On](./media/formcom-tutorial/tutorial_metadataurl.png)
+    ![Configure single sign-on](./media/formcom-tutorial/tutorial_metadataurl.png)
 
     a. Klicken Sie auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
 
@@ -212,7 +212,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Form.com“ klicken, sollten Sie automatisch bei Ihrer Form.com-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

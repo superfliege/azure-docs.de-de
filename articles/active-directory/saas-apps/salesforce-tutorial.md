@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 5c2971a59bbaa241a2e1eb4ecca0db7e8b95a885
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 64b94baeaede9b05e953b69324648c63d97cea8e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227131"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045437"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Tutorial: Azure Active Directory-Integration mit Salesforce
 
@@ -141,29 +141,29 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 8. Klicken Sie in der oberen rechten Ecke der Seite unter dem **Einstellungssymbol** auf **Setup**.
 
-    ![Configure Single Sign-On](./media/salesforce-tutorial/configure1.png)
+    ![Configure single sign-on](./media/salesforce-tutorial/configure1.png)
 
 9. Scrollen Sie im Navigationsbereich nach unten bis zu den **SETTINGS** (EINSTELLUNGEN), und klicken Sie auf **Identity** (Identität), um den zugehörigen Bereich zu erweitern. Klicken Sie dann auf **Einstellungen für einmaliges Anmelden**.
 
-    ![Configure Single Sign-On](./media/salesforce-tutorial/sf-admin-sso.png)
+    ![Configure single sign-on](./media/salesforce-tutorial/sf-admin-sso.png)
 
 10. Klicken Sie auf der Seite **Einstellungen für einmaliges Anmelden** auf die Schaltfläche **Bearbeiten**.
 
-    ![Configure Single Sign-On](./media/salesforce-tutorial/sf-admin-sso-edit.png)
+    ![Configure single sign-on](./media/salesforce-tutorial/sf-admin-sso-edit.png)
     
     > [!NOTE]
     > Wenn Sie keine Einstellungen für die einmalige Anmeldung für Ihr Salesforce-Konto aktivieren können, müssen Sie sich an das [Kundensupportteam von Salesforce](https://help.salesforce.com/support) wenden. 
 
 11. Wählen Sie **SAML aktiviert**, und klicken Sie dann auf **Speichern**.
 
-      ![Configure Single Sign-On](./media/salesforce-tutorial/sf-enable-saml.png)
+      ![Configure single sign-on](./media/salesforce-tutorial/sf-enable-saml.png)
 12. Um Ihre SAML-Einstellungen für die einmalige Anmeldung zu konfigurieren, klicken Sie auf **Neu**.
 
-    ![Configure Single Sign-On](./media/salesforce-tutorial/sf-admin-sso-new.png)
+    ![Configure single sign-on](./media/salesforce-tutorial/sf-admin-sso-new.png)
 
 13. Nehmen Sie auf der Seite **SAML-Einstellung für einmaliges Anmelden bearbeiten** folgende Konfigurationen vor:
 
-    ![Configure Single Sign-On](./media/salesforce-tutorial/sf-saml-config.png)
+    ![Configure single sign-on](./media/salesforce-tutorial/sf-saml-config.png)
 
     a. Geben Sie in das Feld **Name** einen Anzeigenamen für diese Konfiguration ein. Bei Eingabe eines Werts für **Name** wird automatisch das Textfeld **API-Name** gefüllt.
 
@@ -194,15 +194,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 14. Klicken Sie in Salesforce im linken Navigationsbereich auf **Company Settings** (Unternehmenseinstellungen), um den zugehörigen Abschnitt zu erweitern, und klicken Sie dann auf **My Domain** (Meine Domäne).
 
-    ![Configure Single Sign-On](./media/salesforce-tutorial/sf-my-domain.png)
+    ![Configure single sign-on](./media/salesforce-tutorial/sf-my-domain.png)
 
 15. Führen Sie einen Bildlauf nach unten zum Abschnitt **Authentifizierungskonfiguration** aus, und klicken Sie auf die Schaltfläche **Bearbeiten**.
 
-    ![Configure Single Sign-On](./media/salesforce-tutorial/sf-edit-auth-config.png)
+    ![Configure single sign-on](./media/salesforce-tutorial/sf-edit-auth-config.png)
 
 16. Wählen Sie im Abschnitt **Authentication Configuration** (Konfiguration der Authentifizierung) die Option **Login Page** (Anmeldeseite) als **Authentication Service** (Authentifizierungsdienst) Ihrer SAML-SSO-Konfiguration, und klicken Sie dann auf **Save** (Speichern).
 
-    ![Configure Single Sign-On](./media/salesforce-tutorial/sf-auth-config.png)
+    ![Configure single sign-on](./media/salesforce-tutorial/sf-auth-config.png)
 
     > [!NOTE]
     > Wenn mehrere Authentifizierungsdienste aktiviert sind, werden Benutzer aufgefordert, einen Authentifizierungsdienst zur Anmeldung auszuwählen, wenn das einmalige Anmelden bei der Salesforce-Umgebung initiiert wird. Wenn Sie dies nicht möchten, sollten Sie **alle anderen Authentifizierungsdienste deaktiviert lassen**.
@@ -278,7 +278,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Salesforce“ klicken, sollten Sie automatisch bei Ihrer Salesforce-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 43745e43cd7df4a91cf0080816c4ed423f352f3d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ddc3df7aacad7ad31c41da99916b252b6496a989
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219345"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054147"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-domo"></a>Tutorial: Azure Active Directory-Integration mit Domo
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Domo** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/domo-tutorial/tutorial_domo_samlbase.png)
+    ![Configure single sign-on](./media/domo-tutorial/tutorial_domo_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Domo** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/domo-tutorial/tutorial_domo_url.png)
+    ![Configure single sign-on](./media/domo-tutorial/tutorial_domo_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.domo.com`.
 
@@ -135,7 +135,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Die Domo-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Konfiguration. 
 
-    ![Configure Single Sign-On](./media/domo-tutorial/tutorial_domo_attributes.png)
+    ![Configure single sign-on](./media/domo-tutorial/tutorial_domo_attributes.png)
     
 5. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der Abbildung gezeigt, und führen Sie die folgenden Schritte aus:
     
@@ -146,9 +146,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Configure Single Sign-On](./media/domo-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/domo-tutorial/tutorial_attribute_04.png)
 
-    ![Configure Single Sign-On](./media/domo-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/domo-tutorial/tutorial_attribute_05.png)
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
     
@@ -158,16 +158,16 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
 6. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/domo-tutorial/tutorial_domo_certificate.png) 
+    ![Configure single sign-on](./media/domo-tutorial/tutorial_domo_certificate.png) 
 
 7. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/domo-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/domo-tutorial/tutorial_general_400.png)
 
 
 8. Klicken Sie im Abschnitt **Domo-Konfiguration** auf **Domo konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.   
 
-   ![Configure Single Sign-On](./media/domo-tutorial/tutorial_domo_configure.png) 
+   ![Configure single sign-on](./media/domo-tutorial/tutorial_domo_configure.png) 
 
 9. Um einmaliges Anmelden für **Domo** zu konfigurieren, navigieren Sie zum Wissensdatenbankartikel von Domo [unter diesem Link](http://knowledge.domo.com?cid=azuread), und befolgen Sie die Anweisungen.
 
@@ -225,7 +225,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Domo**aus.
 
-    ![Configure Single Sign-On](./media/domo-tutorial/tutorial_domo_app.png) 
+    ![Configure single sign-on](./media/domo-tutorial/tutorial_domo_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -246,7 +246,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 Wenn Sie im Zugriffsbereich auf die Kachel „Domo“ klicken, sollten Sie automatisch bei Ihrer Domo-Anwendung angemeldet werden.
 
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

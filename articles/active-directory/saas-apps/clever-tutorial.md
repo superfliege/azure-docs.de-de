@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 06606b4dede242a01beea2136126e6d252f9a4a1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5e5f89ebef3f42380f3dcceab50fda0ace9516de
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211430"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054215"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clever"></a>Tutorial: Azure Active Directory-Integration mit Clever
 
@@ -119,13 +119,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
     
-    ![Configure Single Sign-On](./media/clever-tutorial/tutorial_metadataurl.png)
+    ![Configure single sign-on](./media/clever-tutorial/tutorial_metadataurl.png)
 
 5. Die Clever-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der **SAML-Tokenattribute** benutzerdefinierte Attributzuordnungen hinzufügen.
 
     Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
 
-    ![Configure Single Sign-On](./media/clever-tutorial/tutorial_clever_07.png)
+    ![Configure single sign-on](./media/clever-tutorial/tutorial_clever_07.png)
 
 6. Konfigurieren Sie das SAML-Tokenattribut im Dialogfeld **Einmaliges Anmelden** im Abschnitt **Benutzerattribute**, wie im obigen Bild gezeigt, und führen Sie die folgenden Schritte aus:
     
@@ -138,9 +138,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Configure Single Sign-On](./media/clever-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/clever-tutorial/tutorial_attribute_04.png)
     
-    ![Configure Single Sign-On](./media/clever-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/clever-tutorial/tutorial_attribute_05.png)
     
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
@@ -254,7 +254,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Clever-Kachel klicken, sollten Sie automatisch bei Ihrer Clever-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

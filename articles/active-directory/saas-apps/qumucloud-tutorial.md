@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 488c9c62138cf9b042de749c35b8e8932b1da30f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: efa2c421b405b11acb605106bc14ccc76f1a2149
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226934"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051631"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qumu-cloud"></a>Tutorial: Azure Active Directory-Integration mit Qumu Cloud
 
@@ -123,7 +123,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 4. Die Qumu Cloud-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie für diese Anwendung die folgenden Ansprüche. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
     
-    ![Configure Single Sign-On](./media/qumucloud-tutorial/attribute.png)
+    ![Configure single sign-on](./media/qumucloud-tutorial/attribute.png)
     
 5. Aktivieren Sie im Abschnitt **Benutzerattribute** das Kontrollkästchen **Alle weiteren Benutzerattribute anzeigen und bearbeiten**, um die Attribute zu erweitern. Führen Sie die folgenden Schritte für jedes der angezeigten Attribute aus:
 
@@ -136,11 +136,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
     a. Klicken Sie auf das Attribut, um das Fenster **Attribut bearbeiten** zu öffnen.
 
-    ![Configure Single Sign-On](./media/qumucloud-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/qumucloud-tutorial/tutorial_attribute_04.png)
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
-    ![Configure Single Sign-On](./media/qumucloud-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/qumucloud-tutorial/tutorial_attribute_05.png)
 
     c. Geben Sie in der Liste **Wert** den für diese Zeile angezeigten Wert ein.
 
@@ -234,7 +234,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Qumu Cloud“ klicken, sollten Sie automatisch bei Ihrer Qumu Cloud-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

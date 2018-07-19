@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 785a2af9cf736bad0aa0520898664c2939720a78
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b69050ef85bd7108fcfb5dc5d2f6742af6218618
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212116"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053946"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-atomic-learning"></a>Tutorial: Azure Active Directory-Integration mit Atomic Learning
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden über Azure AD im Azur
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Atomic Learning** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/atomiclearning-tutorial/tutorial_atomiclearning_samlbase.png)
+    ![Configure single sign-on](./media/atomiclearning-tutorial/tutorial_atomiclearning_samlbase.png)
 
 3. Führen Sie die folgenden Schritte im Abschnitt **Domäne und URLs für Atomic Learning** durch:
 
-    ![Configure Single Sign-On](./media/atomiclearning-tutorial/tutorial_atomiclearning_url.png)
+    ![Configure single sign-on](./media/atomiclearning-tutorial/tutorial_atomiclearning_url.png)
 
      Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://secure2.atomiclearning.com/sso/shibboleth/<companyname>`.
     
@@ -119,11 +119,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden über Azure AD im Azur
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/atomiclearning-tutorial/tutorial_atomiclearning_certificate.png) 
+    ![Configure single sign-on](./media/atomiclearning-tutorial/tutorial_atomiclearning_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/atomiclearning-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/atomiclearning-tutorial/tutorial_general_400.png)
 
 6. Zum Konfigurieren des einmaligen Anmeldens bei **Atomic Learning** müssen Sie die heruntergeladene **XML-Metadaten**-Datei an das [Atomic Learning-Supportteam](mailto:cs@atomiclearning.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -181,7 +181,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste die Option **Atomic Learning**aus.
 
-    ![Configure Single Sign-On](./media/atomiclearning-tutorial/tutorial_atomiclearning_app.png) 
+    ![Configure single sign-on](./media/atomiclearning-tutorial/tutorial_atomiclearning_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -202,7 +202,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Atomic Learning“ klicken, sollten Sie automatisch bei Ihrer Atomic Learning-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

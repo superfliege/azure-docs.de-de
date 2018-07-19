@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 897db5a4d794c22f436fa074ec2c359edc5b590c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0e2936d0b428249226e428ddc0912d62e29a84f3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225057"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042398"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-collaborative-innovation"></a>Tutorial: Azure Active Directory-Integration mit Collaborative Innovation
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Collaborative Innovation** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_samlbase.png)
+    ![Configure single sign-on](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Collaborative Innovation** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_url.png)
+    ![Configure single sign-on](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<instancename>.foundry.<companyname>.com/`.
 
@@ -121,7 +121,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 4. Die Collaborative Innovation-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie für diese Anwendung die folgenden Ansprüche. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
     
-    ![Configure Single Sign-On](./media/collaborativeinnovation-tutorial/attribute.png)
+    ![Configure single sign-on](./media/collaborativeinnovation-tutorial/attribute.png)
     
 5. Aktivieren Sie im Abschnitt **Benutzerattribute** das Kontrollkästchen **Alle weiteren Benutzerattribute anzeigen und bearbeiten**, um die Attribute zu erweitern. Führen Sie die folgenden Schritte für jedes der angezeigten Attribute aus:
 
@@ -134,7 +134,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
     a. Klicken Sie auf das Attribut, um das Fenster **Attribut bearbeiten** zu öffnen.
 
-    ![Configure Single Sign-On](./media/collaborativeinnovation-tutorial/url_update.png)
+    ![Configure single sign-on](./media/collaborativeinnovation-tutorial/url_update.png)
 
     b. Löschen Sie den URL-Wert aus dem Feld **Namespace**.
     
@@ -142,11 +142,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 6. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_certificate.png) 
+    ![Configure single sign-on](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_certificate.png) 
 
 7. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/collaborativeinnovation-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/collaborativeinnovation-tutorial/tutorial_general_400.png)
 
 8. Zum Konfigurieren des einmaligen Anmeldens bei **Collaborative Innovation** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [Collaborative Innovation-Supportteam](https://www.unilever.com/contact/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -205,7 +205,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Liste der Anwendungen **Collaborative Innovation**.
 
-    ![Configure Single Sign-On](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_app.png) 
+    ![Configure single sign-on](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -226,7 +226,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Collaborative Innovation“ klicken, sollte die Anmeldeseite Ihrer Collaborative Innovation-Anwendung angezeigt werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

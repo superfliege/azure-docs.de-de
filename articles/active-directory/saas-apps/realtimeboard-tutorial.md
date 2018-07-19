@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: jeedes
-ms.openlocfilehash: cd287748c3630ed8164f17f9ba7b731aace77a0d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 00b0844deb8cc81f770f6c98f8b020f1402d2ff7
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230116"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045351"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-realtimeboard"></a>Tutorial: Azure Active Directory-Integration mit RealtimeBoard
 
@@ -114,7 +114,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![Configure Single Sign-On](./media/realtimeboard-tutorial/tutorial_realtimeboard_url2.png)
+    ![Configure single sign-on](./media/realtimeboard-tutorial/tutorial_realtimeboard_url2.png)
 
     Geben Sie im Textfeld **Anmelde-URL** die URL folgendermaßen ein: `https://realtimeboard.com/sso/saml`.
 
@@ -205,7 +205,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „RealtimeBoard“ klicken, sollten Sie automatisch bei Ihrer RealtimeBoard-Anwendung angemeldet.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

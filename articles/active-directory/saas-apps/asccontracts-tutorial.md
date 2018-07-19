@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: jeedes
-ms.openlocfilehash: c5a55f00273ea070d824f0b3d75fc86b4ff6be11
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 791d1d7c514815962d815925f49a03ccfa1f76f3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286890"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053673"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asc-contracts"></a>Tutorial: Azure Active Directory-Integration mit ASC Contracts
 
@@ -102,15 +102,15 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **ASC Contracts** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/asccontracts-tutorial/tutorial_asccontracts_samlbase.png)
+    ![Configure single sign-on](./media/asccontracts-tutorial/tutorial_asccontracts_samlbase.png)
 
 3. Führen Sie die folgenden Schritte im Abschnitt **Domäne und URLs für ASC Contracts** aus:
 
-    ![Configure Single Sign-On](./media/asccontracts-tutorial/tutorial_asccontracts_url.png)
+    ![Configure single sign-on](./media/asccontracts-tutorial/tutorial_asccontracts_url.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<subdomain>.asccontracts.com/shibboleth`
 
@@ -121,11 +121,11 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/asccontracts-tutorial/tutorial_asccontracts_certificate.png) 
+    ![Configure single sign-on](./media/asccontracts-tutorial/tutorial_asccontracts_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/asccontracts-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/asccontracts-tutorial/tutorial_general_400.png)
 
 6. Um einmaliges Anmelden bei **ASC Contracts** zu konfigurieren, rufen Sie den Support von ASC Networks Inc. (ASC) unter **+1 613.599.6178** an, und stellen Sie die heruntergeladene **Metadaten-XML** bereit. Er richtet die Anwendung ein, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -181,7 +181,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **ASC Contracts** aus.
 
-    ![Configure Single Sign-On](./media/asccontracts-tutorial/tutorial_asccontracts_app.png) 
+    ![Configure single sign-on](./media/asccontracts-tutorial/tutorial_asccontracts_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -201,7 +201,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „ASC Contracts“ klicken, sollten Sie automatisch bei Ihrer ASC Contracts-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „ASC Contracts“ klicken, sollten Sie automatisch bei Ihrer ASC Contracts-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

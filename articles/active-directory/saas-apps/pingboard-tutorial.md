@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: e07e85e60c8a4b93e4b0fd7bf43f470c4e3acc61
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f3dd1c0043a4516bfba0801d403f4b475fa2817a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221188"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041924"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>Tutorial: Azure Active Directory-Integration mit Pingboard
 
@@ -135,7 +135,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 8. Wählen Sie im Menü am oberen Rand die Option **Apps > Integrations**.
 
-    ![Configure Single Sign-On](./media/pingboard-tutorial/Pingboard_integration.png)
+    ![Configure single sign-on](./media/pingboard-tutorial/Pingboard_integration.png)
 
 9. Wechseln Sie auf der Seite **Integrations** zur Kachel **Azure Active Directory**, und klicken Sie darauf.
 
@@ -249,7 +249,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Pingboard“ klicken, sollten Sie automatisch bei Ihrer Pingboard-Anwendung angemeldet werden.
 

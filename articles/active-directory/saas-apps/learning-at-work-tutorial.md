@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: jeedes
-ms.openlocfilehash: 47640b2b8145372f372f4f1129eb992bd4f247ed
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b7a097107f68c692c960efc465d00b05e81f7c81
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216411"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046854"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-at-work"></a>Tutorial: Azure Active Directory-Integration mit Learning at Work
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Learning at Work** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/learning-at-work-tutorial/tutorial_learningatwork_samlbase.png)
+    ![Configure single sign-on](./media/learning-at-work-tutorial/tutorial_learningatwork_samlbase.png)
 
 3. Führen Sie auf der Seite **Domäne und URLs für Learning at Work** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/learning-at-work-tutorial/tutorial_learningatwork_url.png)
+    ![Configure single sign-on](./media/learning-at-work-tutorial/tutorial_learningatwork_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.sabacloud.com/Saba/Web/<company code>`.
 
@@ -121,15 +121,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/learning-at-work-tutorial/tutorial_learningatwork_certificate.png) 
+    ![Configure single sign-on](./media/learning-at-work-tutorial/tutorial_learningatwork_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/learning-at-work-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/learning-at-work-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Learning at Work-Konfiguration** auf **Learning at Work konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/learning-at-work-tutorial/tutorial_learningatwork_configure.png) 
+    ![Configure single sign-on](./media/learning-at-work-tutorial/tutorial_learningatwork_configure.png) 
 
 7. Zum Konfigurieren des einmaligen Anmeldens bei **Learning at Work** müssen Sie die heruntergeladene **Metadaten-XML**-Datei, die **SAML-Entitäts-ID**, die **SAML-Dienst-URL für einmaliges Anmelden** und die **Abmelde-URL** an den [Learning at Work-Support](https://www.learninga-z.com/site/contact/support) senden.
 
@@ -185,7 +185,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste die Option **Learning at Work**aus.
 
-    ![Configure Single Sign-On](./media/learning-at-work-tutorial/tutorial_learningatwork_app.png) 
+    ![Configure single sign-on](./media/learning-at-work-tutorial/tutorial_learningatwork_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -206,7 +206,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Learning at Work“ klicken, sollten Sie automatisch bei Ihrer Learning at Work-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

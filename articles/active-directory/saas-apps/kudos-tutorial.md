@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jeedes
-ms.openlocfilehash: c7bf7efe76f9fdee6a5508131c4d86d503a87366
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5807ab0090f401c02599db40f110b7a9b1504060
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217066"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047051"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kudos"></a>Tutorial: Azure Active Directory-Integration mit Kudos
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Kudos** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/kudos-tutorial/tutorial_kudos_samlbase.png)
+    ![Configure single sign-on](./media/kudos-tutorial/tutorial_kudos_samlbase.png)
 
 3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für Kudos** aus:
 
-    ![Configure Single Sign-On](./media/kudos-tutorial/tutorial_kudos_url.png)
+    ![Configure single sign-on](./media/kudos-tutorial/tutorial_kudos_url.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<company>.kudosnow.com`.
     
@@ -119,15 +119,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/kudos-tutorial/tutorial_kudos_certificate.png) 
+    ![Configure single sign-on](./media/kudos-tutorial/tutorial_kudos_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/kudos-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/kudos-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Kudos-Konfiguration** auf **Kudos konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/kudos-tutorial/tutorial_kudos_configure.png) 
+    ![Configure single sign-on](./media/kudos-tutorial/tutorial_kudos_configure.png) 
 
 7. Melden Sie sich in einem anderen Webbrowserfenster bei der Kudos-Unternehmenswebsite als Administrator an.
 
@@ -231,7 +231,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Liste der Anwendungen **Kudos** aus.
 
-    ![Configure Single Sign-On](./media/kudos-tutorial/tutorial_kudos_app.png) 
+    ![Configure single sign-on](./media/kudos-tutorial/tutorial_kudos_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -251,7 +251,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Kudos“ klicken, sollten Sie automatisch bei Ihrer Kudos-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „Kudos“ klicken, sollten Sie automatisch bei Ihrer Kudos-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

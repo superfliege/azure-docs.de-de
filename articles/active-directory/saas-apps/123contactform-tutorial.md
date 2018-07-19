@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: fdcbf8efa9a8d77fba30c8cec3d8ee30506fe7d8
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ecbe627697fc4f8b5fbfecf96c3cb65d9ffe4607
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223227"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054351"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-123contactform"></a>Tutorial: Azure Active Directory-Integration in 123ContactForm
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **123ContactForm** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/123contactform-tutorial/tutorial_123contactform_samlbase.png)
+    ![Configure single sign-on](./media/123contactform-tutorial/tutorial_123contactform_samlbase.png)
 
 3. Wenn Sie die Anwendung im **IdP-initiierten Modus** konfigurieren möchten, führen Sie im Abschnitt **Domäne und URLs für 123ContactForm** die folgenden Schritte durch:
 
-    ![Configure Single Sign-On](./media/123contactform-tutorial/url1.png)
+    ![Configure single sign-on](./media/123contactform-tutorial/url1.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/metadata`
 
@@ -118,7 +118,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten, führen Sie die folgenden Schritte durch:
 
-    ![Configure Single Sign-On](./media/123contactform-tutorial/url2.png)
+    ![Configure single sign-on](./media/123contactform-tutorial/url2.png)
 
     a. Klicken Sie auf die Option **Erweiterte URL-Einstellungen anzeigen**.
 
@@ -129,15 +129,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/123contactform-tutorial/tutorial_123contactform_certificate.png) 
+    ![Configure single sign-on](./media/123contactform-tutorial/tutorial_123contactform_certificate.png) 
 
 6. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/123contactform-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/123contactform-tutorial/tutorial_general_400.png)
 
 7. Navigieren Sie zum Konfigurieren des einmaligen Anmeldens auf der Seite **123ContactForm** zu [https://www.123contactform.com/form-2709121/](https://www.123contactform.com/form-2709121/), und führen Sie die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/123contactform-tutorial/submit.png) 
+    ![Configure single sign-on](./media/123contactform-tutorial/submit.png) 
 
     a. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adresse des Benutzers ein, d.h. **BrittaSimon@Contoso.com**.
 
@@ -147,7 +147,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 8. Führen Sie zum Konfigurieren von **Microsoft Azure AD – einmaliges Anmelden – App-Einstellungen konfigurieren** die folgenden Schritte durch:
     
-    ![Configure Single Sign-On](./media/123contactform-tutorial/url3.png)
+    ![Configure single sign-on](./media/123contactform-tutorial/url3.png)
 
     a. Wenn Sie die Anwendung im **IdP-initiierten Modus** konfigurieren möchten, kopieren Sie den Wert von **BEZEICHNER** für Ihre Instanz, und fügen Sie ihn im Azure-Portal im Abschnitt **Domäne und URLs für 123ContactForm** in das Textfeld **Bezeichner** ein.
     
@@ -208,7 +208,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **123ContactForm** aus.
 
-    ![Configure Single Sign-On](./media/123contactform-tutorial/tutorial_123contactform_app.png) 
+    ![Configure single sign-on](./media/123contactform-tutorial/tutorial_123contactform_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -229,7 +229,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „123ContactForm“ klicken, sollten Sie automatisch bei Ihrer 123ContactForm-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 98f7494c87683eda858da5970e12073ce2204303
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: a9dba65591479033a892615ff053eebd0862851e
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048286"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125669"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Verschieben von Daten aus Salesforce mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -71,11 +71,11 @@ Die folgende Tabelle enthält Beschreibungen der JSON-Elemente, die für den ver
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| type |Die type-Eigenschaft muss auf **Salesforce**festgelegt sein. |Ja |
+| type |Die type-Eigenschaft muss auf **Salesforce**festgelegt sein. |JA |
 | environmentUrl | Geben Sie die URL der Salesforce-Instanz an. <br><br> – Der Standardwert ist „https://login.salesforce.com“. <br> – Um Daten aus einer Sandbox zu kopieren, geben Sie „https://test.salesforce.com“ an. <br> - Geben Sie zum Kopieren von Daten aus der benutzerdefinierten Domäne z.B. „https://[Domäne].my.salesforce.com“ an. |Nein  |
-| username |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja |
-| password |Geben Sie ein Kennwort für das Benutzerkonto an. |Ja |
-| securityToken |Geben Sie ein Sicherheitstoken für das Benutzerkonto an. Anweisungen zum Abrufen oder Zurücksetzen eines Sicherheitstokens finden Sie unter [Zurücksetzen Ihres Sicherheitstokens](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) . Allgemeine Informationen zu Sicherheitstoken finden Sie unter [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)(Sicherheit und die API). |Ja |
+| username |Geben Sie einen Benutzernamen für das Benutzerkonto an. |JA |
+| password |Geben Sie ein Kennwort für das Benutzerkonto an. |JA |
+| securityToken |Geben Sie ein Sicherheitstoken für das Benutzerkonto an. Anweisungen zum Abrufen oder Zurücksetzen eines Sicherheitstokens finden Sie unter [Zurücksetzen Ihres Sicherheitstokens](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) . Allgemeine Informationen zu Sicherheitstoken finden Sie unter [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)(Sicherheit und die API). |JA |
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md) . Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
@@ -289,15 +289,15 @@ Unter [RelationalSource-Typeigenschaften](#copy-activity-properties) finden Sie 
 | --- | --- |
 | Auto Number |Zeichenfolge |
 | Kontrollkästchen |Boolescher Wert |
-| Currency |Double |
+| Currency |DECIMAL |
 | Datum |Datetime |
 | Datum/Uhrzeit |Datetime |
 | E-Mail |Zeichenfolge |
 | id |Zeichenfolge |
 | Lookup Relationship |Zeichenfolge |
 | Multi-Select Picklist |Zeichenfolge |
-| Number |Double |
-| Prozent |Double |
+| Number |DECIMAL |
+| Prozent |DECIMAL |
 | Phone |Zeichenfolge |
 | Picklist |Zeichenfolge |
 | Text |Zeichenfolge |

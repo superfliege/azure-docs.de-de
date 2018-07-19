@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: jeedes
-ms.openlocfilehash: bb2d6194b5a515d89e3204679860ab19a052ba03
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 24b2ed28d0ad0f3bf5a66494d1f1266254fb552e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285163"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042784"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>Tutorial: Azure Active Directory-Integration mit Datahug
 
@@ -102,15 +102,15 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Datahug** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/datahug-tutorial/tutorial_datahug_samlbase.png)
+    ![Configure single sign-on](./media/datahug-tutorial/tutorial_datahug_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Datahug** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
 
-    ![Configure Single Sign-On](./media/datahug-tutorial/tutorial_datahug_ur1.png)
+    ![Configure single sign-on](./media/datahug-tutorial/tutorial_datahug_ur1.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://apps.datahug.com/identity/<uniqueID>`
 
@@ -118,7 +118,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**. Wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![Configure Single Sign-On](./media/datahug-tutorial/tutorial_datahug_url2.png)
+    ![Configure single sign-on](./media/datahug-tutorial/tutorial_datahug_url2.png)
 
     Geben Sie im Textfeld **Anmelde-URL** die URL folgendermaßen ein: `https://apps.datahug.com/`.
      
@@ -127,11 +127,11 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/datahug-tutorial/tutorial_datahug_certificate.png) 
+    ![Configure single sign-on](./media/datahug-tutorial/tutorial_datahug_certificate.png) 
 
 6.  Aktivieren Sie **Erweiterte Einstellungen für die Zertifikatsignatur**, und führen Sie die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/datahug-tutorial/tutorial_datahug_cert.png)
+    ![Configure single sign-on](./media/datahug-tutorial/tutorial_datahug_cert.png)
 
     a. Wählen Sie unter **Signaturoption** die Option **SAML-Assertion signieren** aus.
     
@@ -139,11 +139,11 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
  
 7. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/datahug-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/datahug-tutorial/tutorial_general_400.png)
     
 8. Klicken Sie im Abschnitt **Datahug-Konfiguration** auf **Datahug konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID** und die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/datahug-tutorial/tutorial_datahug_configure.png) 
+    ![Configure single sign-on](./media/datahug-tutorial/tutorial_datahug_configure.png) 
 
 9. Zum Konfigurieren der einmaligen Anmeldung auf der **Datahug**-Seite müssen Sie die heruntergeladene **Metadaten-XML-Datei**, die **SAML-Entitäts-ID** und die **SAML Single Sign-On-Dienst-URL** an den [Datahug-Support](http://datahug.com/about/contact-us/) senden. Er richtet die Anwendung ein, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -221,7 +221,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
 2. Wählen Sie in der Anwendungsliste **Datahug** aus.
 
-    ![Configure Single Sign-On](./media/datahug-tutorial/tutorial_datahug_app.png) 
+    ![Configure single sign-on](./media/datahug-tutorial/tutorial_datahug_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -240,7 +240,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
-Wenn Sie im Zugriffsbereich auf die Kachel „Datahug“ klicken, sollten Sie automatisch bei Ihrer Datahug-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Wenn Sie im Zugriffsbereich auf die Kachel „Datahug“ klicken, sollten Sie automatisch bei Ihrer Datahug-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

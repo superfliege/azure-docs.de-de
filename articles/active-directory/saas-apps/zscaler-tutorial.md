@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: dbfe3ec8ab1df90941272810be4598dc27a6e76f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b7a011baeb9b526e8de22ecaa34672327c6aab17
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230198"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050166"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler"></a>Tutorial: Azure Active Directory-Integration mit Zscaler
 
@@ -103,15 +103,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Zscaler** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/zscaler-tutorial/tutorial_zscaler_samlbase.png)
+    ![Configure single sign-on](./media/zscaler-tutorial/tutorial_zscaler_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Zscaler** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/zscaler-tutorial/tutorial_zscaler_url.png)
+    ![Configure single sign-on](./media/zscaler-tutorial/tutorial_zscaler_url.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.zsclaer.net`.
 
@@ -120,15 +120,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/zscaler-tutorial/tutorial_zscaler_certificate.png) 
+    ![Configure single sign-on](./media/zscaler-tutorial/tutorial_zscaler_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/zscaler-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/zscaler-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Zscaler-Konfiguration** auf **Zscaler konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/zscaler-tutorial/tutorial_zscaler_configure.png) 
+    ![Configure single sign-on](./media/zscaler-tutorial/tutorial_zscaler_configure.png) 
 
 7. Melden Sie sich in einem anderen Webbrowserfenster bei der Zscaler-Unternehmenswebsite als Administrator an.
 
@@ -280,7 +280,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Liste der Anwendungen **Zscaler** aus.
 
-    ![Configure Single Sign-On](./media/zscaler-tutorial/tutorial_zscaler_app.png) 
+    ![Configure single sign-on](./media/zscaler-tutorial/tutorial_zscaler_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -301,7 +301,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Zscaler“ klicken, sollten Sie automatisch bei Ihrer Zscaler-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

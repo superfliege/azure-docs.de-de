@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 75a5713af0f5c6bbfca95bca2a345509cc154f4c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f579f914496427febdf60c3a8d3dc368ef265a9d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224955"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045324"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>Tutorial: Integration von Trisotech Digital Enterprise Server in Azure Active Directory
 
@@ -127,15 +127,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 7. Klicken Sie auf das **Menüsymbol**, und wählen Sie **Administration** (Verwaltung) aus.
 
-    ![Configure Single Sign-On](./media/trisotechdigitalenterpriseserver-tutorial/user1.png)
+    ![Configure single sign-on](./media/trisotechdigitalenterpriseserver-tutorial/user1.png)
 
 8. Wählen Sie **User Provider** (Benutzeranbieter) aus.
 
-    ![Configure Single Sign-On](./media/trisotechdigitalenterpriseserver-tutorial/user2.png)
+    ![Configure single sign-on](./media/trisotechdigitalenterpriseserver-tutorial/user2.png)
 
 9. Führen Sie im Abschnitt **User Provider Configurations** (Benutzeranbieterkonfigurationen) die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/trisotechdigitalenterpriseserver-tutorial/user3.png)
+    ![Configure single sign-on](./media/trisotechdigitalenterpriseserver-tutorial/user3.png)
 
     a. Wählen Sie aus der Dropdownliste unter **Authentication Method** (Authentifizierungsmethode) die Option **Secured Assertion Markup Language 2 (SAML 2)** aus.
 
@@ -222,7 +222,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Trisotech Digital Enterprise Server“ klicken, sollten Sie automatisch bei Ihrer Trisotech Digital Enterprise Server-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

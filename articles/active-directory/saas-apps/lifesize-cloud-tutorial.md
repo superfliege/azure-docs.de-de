@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 287204afa7ace9e39507c9dc006549a731b3b992
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b699714a2ab90fd0ad1c2f290681ccdae7aeb1ba
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230385"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052192"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>Tutorial: Azure Active Directory-Integration mit Lifesize Cloud
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Lifesize Cloud** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_samlbase.png)
+    ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_samlbase.png)
 
 3. Führen Sie die folgenden Schritte im Abschnitt **Domäne und URLs für Lifesize Cloud** aus:
 
-    ![Configure Single Sign-On](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_url.png)
+    ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://login.lifesizecloud.com/ls/?acs`.
 
@@ -119,7 +119,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
      
 4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, führen Sie den folgenden Schritt aus:    
    
-    ![Configure Single Sign-On](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_url1.png)
+    ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_url1.png)
 
     Geben Sie im Textfeld **Relayzustand** eine URL nach dem folgenden Muster ein: `https://webapp.lifesizecloud.com/?ent=<identifier>`
    
@@ -128,29 +128,29 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_certificate.png) 
+    ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/lifesize-cloud-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Lifesize Cloud-Konfiguration** auf **Lifesize Cloud konfigurieren**, um das Fenster **Anmelden konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die SAML-Dienst-URL für einmaliges Anmelden** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_configure.png) 
+    ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_configure.png) 
 
 7. Melden Sie sich zum Konfigurieren von SSO für Ihre Anwendung bei der Lifesize Cloud-Anwendung mit Administratorrechten an.
 
 8. Klicken Sie in der rechten oberen Ecke auf Ihren Namen und dann auf **Erweiterte Einstellungen**.
    
-    ![Configure Single Sign-On](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_06.png)
+    ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_06.png)
 
 9. Klicken Sie in den erweiterten Einstellungen nun auf den Link **SSO-Konfiguration**. Damit wird die SSO-Konfigurationsseite für Ihre Instanz geöffnet.
    
-    ![Configure Single Sign-On](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_07.png)
+    ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_07.png)
 
 10. Konfigurieren Sie jetzt die folgenden Werte in der SSO-Konfigurationsbenutzeroberfläche.    
    
-    ![Configure Single Sign-On](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_08.png)
+    ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_08.png)
     
     a. Fügen Sie in das Textfeld **Aussteller des Identitätsanbieters** den Wert der **SAML-Entitäts-ID** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -227,7 +227,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
 2. Wählen Sie in der Anwendungsliste **Lifesize Cloud** aus.
 
-    ![Configure Single Sign-On](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_app.png) 
+    ![Configure single sign-on](./media/lifesize-cloud-tutorial/tutorial_lifesize-cloud_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -248,7 +248,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Lifesize Cloud“ klicken, sollte die Anmeldeseite der Lifesize Cloud-Anwendung angezeigt werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

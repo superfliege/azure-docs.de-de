@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: a6b3751361b198126c2d05d1650acbf89d2bbc1b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 7285ef4bea1dccb651360520bfe8bc4289d54f8c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215799"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046038"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>Tutorial: Azure Active Directory-Integration mit Panorama9
 
@@ -103,15 +103,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Panorama9** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/panorama9-tutorial/tutorial_panorama9_samlbase.png)
+    ![Configure single sign-on](./media/panorama9-tutorial/tutorial_panorama9_samlbase.png)
 
 3. Führen Sie auf der Seite **Domäne und URLs für Panorama9** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/panorama9-tutorial/tutorial_panorama9_url.png)
+    ![Configure single sign-on](./media/panorama9-tutorial/tutorial_panorama9_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** die URL folgendermaßen ein: `https://dashboard.panorama9.com/saml/access/3262`.
 
@@ -122,15 +122,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
 4. Kopieren Sie im Abschnitt **SAML-Signaturzertifikat** den Wert **FINGERABDRUCK** des Zertifikats.
 
-    ![Configure Single Sign-On](./media/panorama9-tutorial/tutorial_panorama9_certificate.png) 
+    ![Configure single sign-on](./media/panorama9-tutorial/tutorial_panorama9_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/panorama9-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/panorama9-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Panorama9-Konfiguration** auf **Panorama9 konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/panorama9-tutorial/tutorial_panorama9_configure.png) 
+    ![Configure single sign-on](./media/panorama9-tutorial/tutorial_panorama9_configure.png) 
 
 5. Melden Sie sich in einem anderen Webbrowserfenster bei der Panorama9-Unternehmenswebsite als Administrator an.
 
@@ -224,7 +224,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Panorama9** aus.
 
-    ![Configure Single Sign-On](./media/panorama9-tutorial/tutorial_panorama9_app.png) 
+    ![Configure single sign-on](./media/panorama9-tutorial/tutorial_panorama9_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -245,7 +245,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Panorama9“ klicken, sollten Sie automatisch bei Ihrer Panorama9-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

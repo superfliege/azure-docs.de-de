@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: jeedes
-ms.openlocfilehash: 7e7ecce9129f3bf9f70a2ba153ba6ba47bd27731
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 75b84c2856373126ceba0fc536e41d270f4d2d05
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36209883"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048778"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp"></a>Tutorial: Integration von ADP in Azure Active Directory
 
@@ -130,7 +130,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     Hier erfolgt die Benutzerzuordnung von Azure AD zu ADP auf Grundlage der **employeeid**, aber je nach Anwendungseinstellungen ist auch eine Zuordnung zu einem anderen Wert möglich. Wenden Sie sich also zunächst an das [ADP-Supportteam](https://www.adp.com/contact-us/overview.aspx), um den korrekten Bezeichner eines Benutzers zu verwenden, und ordnen Sie diesen Wert dann dem Anspruch **PersonImmutableID** zu.
 
-    ![Configure Single Sign-On](./media/adpfederatedsso-tutorial/tutorial_adp_attribute.png)
+    ![Configure single sign-on](./media/adpfederatedsso-tutorial/tutorial_adp_attribute.png)
 
 6. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der Abbildung gezeigt, und führen Sie die folgenden Schritte aus:
     
@@ -140,9 +140,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Configure Single Sign-On](./media/adpfederatedsso-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/adpfederatedsso-tutorial/tutorial_attribute_04.png)
 
-    ![Configure Single Sign-On](./media/adpfederatedsso-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/adpfederatedsso-tutorial/tutorial_attribute_05.png)
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
@@ -311,7 +311,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die ADP-Kachel klicken, sollten Sie automatisch bei Ihrer ADP-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

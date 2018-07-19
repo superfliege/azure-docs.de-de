@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: e74138deda20ebb4fbb83ceaa3304dcca82767e7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ad0aed1ded41a422160679dc238ee8814cac4b71
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228848"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053324"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-direct"></a>Tutorial: Azure Active Directory-Integration mit Direct
 
@@ -102,31 +102,31 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Direct** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/direct-tutorial/tutorial_direct_samlbase.png)
+    ![Configure single sign-on](./media/direct-tutorial/tutorial_direct_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Direct** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
 
-    ![Configure Single Sign-On](./media/direct-tutorial/tutorial_direct_url.png)
+    ![Configure single sign-on](./media/direct-tutorial/tutorial_direct_url.png)
 
     Geben Sie im Textfeld **Bezeichner** die folgende URL ein: `https://direct4b.com/`.
 
 4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, wenn Sie die Anwendung im **SP**-initiierten Modus konfigurieren möchten:
 
-    ![Configure Single Sign-On](./media/direct-tutorial/tutorial_direct_url1.png)
+    ![Configure single sign-on](./media/direct-tutorial/tutorial_direct_url1.png)
 
      Geben Sie im Textfeld **Anmelde-URL** diese URL ein: `https://direct4b.com/sso` 
     
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/direct-tutorial/tutorial_direct_certificate.png) 
+    ![Configure single sign-on](./media/direct-tutorial/tutorial_direct_certificate.png) 
 
 6. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/direct-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/direct-tutorial/tutorial_general_400.png)
 
 7. Zum Konfigurieren des einmaligen Anmeldens bei **Direct** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [Direct-Supportteam](https://direct4b.com/ja/support.html#inquiry) senden. 
 
@@ -183,7 +183,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Direct** aus.
 
-    ![Configure Single Sign-On](./media/direct-tutorial/tutorial_direct_app.png) 
+    ![Configure single sign-on](./media/direct-tutorial/tutorial_direct_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -213,7 +213,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmeld
 
     b. Geben Sie Ihre `subdomain` in das angezeigte Textfeld ein, und drücken Sie „次へ“ (Weiter). Sie werden automatisch bei Ihrer **Direct**-Anwendung angemeldet.
     
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

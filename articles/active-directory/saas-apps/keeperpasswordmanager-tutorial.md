@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: b61465e9f38a5a461802d4ab46a7221c557b4595
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: fb57ab0f746fcad702c18032b9da1a9ec820b809
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308141"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052416"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>Tutorial: Azure Active Directory-Integration mit Keeper Password Manager & Digital Vault
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Keeper Password Manager & Digital Vault** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/keeperpasswordmanager-tutorial/tutorial_keeper_samlbase.png)
+    ![Configure single sign-on](./media/keeperpasswordmanager-tutorial/tutorial_keeper_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Keeper Password Manager & Digital Vault** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/keeperpasswordmanager-tutorial/tutorial_keeper_url.png)
+    ![Configure single sign-on](./media/keeperpasswordmanager-tutorial/tutorial_keeper_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://{SSO CONNECT SERVER}/sso-connect/saml/login`.
 
@@ -123,15 +123,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/keeperpasswordmanager-tutorial/tutorial_keeper_certificate.png) 
+    ![Configure single sign-on](./media/keeperpasswordmanager-tutorial/tutorial_keeper_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/keeperpasswordmanager-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/keeperpasswordmanager-tutorial/tutorial_general_400.png)
     
 6. Klicken Sie im Abschnitt **Keeper Password Manager & Digital Vault-Konfiguration** auf **Keeper Password Manager & Digital Vault konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/keeperpasswordmanager-tutorial/tutorial_keeper_configure.png) 
+    ![Configure single sign-on](./media/keeperpasswordmanager-tutorial/tutorial_keeper_configure.png) 
 
 7. Um einmaliges Anmelden auf der Seite **Keeper Password Manager & Digital Vault-Konfiguration** zu konfigurieren, befolgen Sie die Richtlinien im [Keeper Support Guide](https://keepersecurity.com/assets/pdf/KeeperSSOConnect_v11.pdf).
 
@@ -188,7 +188,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Liste der Anwendungen **Keeper Password Manager & Digital Vault**.
 
-    ![Configure Single Sign-On](./media/keeperpasswordmanager-tutorial/tutorial_keeper_app.png) 
+    ![Configure single sign-on](./media/keeperpasswordmanager-tutorial/tutorial_keeper_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -208,7 +208,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Keeper Password Manager & Digital Vault“ klicken, sollte die Anmeldeseite der Keeper Password Manager & Digital Vault-Anwendung angezeigt werden. Nach der erfolgreichen Authentifizierung sollte die Anwendung geöffnet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Wenn Sie im Zugriffsbereich auf die Kachel „Keeper Password Manager & Digital Vault“ klicken, sollte die Anmeldeseite der Keeper Password Manager & Digital Vault-Anwendung angezeigt werden. Nach der erfolgreichen Authentifizierung sollte die Anwendung geöffnet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

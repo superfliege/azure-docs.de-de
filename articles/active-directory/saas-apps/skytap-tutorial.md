@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 7fb1006fc83b0fc09fd5e0f40ea925508bb2b35f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c2efad63d489bf81b6e0f7c03baecbc9d6571425
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223761"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050662"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skytap"></a>Tutorial: Azure Active Directory-Integration in Skytap
 
@@ -204,7 +204,7 @@ In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf Skytap, damit sie das
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Skytap“ klicken, werden Sie automatisch bei Ihrer Skytap-Anwendung angemeldet.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

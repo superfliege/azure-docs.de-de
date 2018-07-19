@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 5aacb6a1df10b32fe5310138d19532eff249c677
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a25fbd4daaa4d1fb09d788ba7ab61392ffb100f2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222582"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043913"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allocadia"></a>Tutorial: Azure Active Directory-Integration mit Allocadia
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Allocadia** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/allocadia-tutorial/tutorial_allocadia_samlbase.png)
+    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_allocadia_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Allocadia** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/allocadia-tutorial/tutorial_allocadia_url.png)
+    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_allocadia_url.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: 
        
@@ -129,7 +129,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Die Allocadia-Anwendung erwartet die SAML-Assertions in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Konfiguration. 
 
-    ![Configure Single Sign-On](./media/allocadia-tutorial/tutorial_allocadia_attributes.png)
+    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_allocadia_attributes.png)
     
 5. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der Abbildung gezeigt, und führen Sie die folgenden Schritte aus:
     
@@ -141,11 +141,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Configure Single Sign-On](./media/allocadia-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_attribute_04.png)
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
-    ![Configure Single Sign-On](./media/allocadia-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_attribute_05.png)
 
     c. Geben Sie in der Liste **Wert** den für diese Zeile angezeigten Wert ein.
  
@@ -155,12 +155,12 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 6. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/allocadia-tutorial/tutorial_allocadia_certificate.png) 
+    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_allocadia_certificate.png) 
 
 
 7. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/allocadia-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_general_400.png)
 
 8. Zum Konfigurieren des einmaligen Anmeldens bei **Allocadia** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [Allocadia-Supportteam](mailTo:support@allocadia.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -217,7 +217,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Allocadia**aus.
 
-    ![Configure Single Sign-On](./media/allocadia-tutorial/tutorial_allocadia_app.png) 
+    ![Configure single sign-on](./media/allocadia-tutorial/tutorial_allocadia_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -238,7 +238,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Allocadia“ klicken, sollten Sie automatisch bei Ihrer Allocadia-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

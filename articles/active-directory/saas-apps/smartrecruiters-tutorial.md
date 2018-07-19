@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 33eae0b2a7fe9e920ed1bd0e120d49ad090e2466
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e7368a54945d3107f9eb8973c6aaa261da4c2154
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223019"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045290"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>Tutorial: Azure Active Directory-Integration mit SmartRecruiters
 
@@ -233,7 +233,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „SmartRecruiters“ klicken, sollten Sie automatisch bei Ihrer SmartRecruiters-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

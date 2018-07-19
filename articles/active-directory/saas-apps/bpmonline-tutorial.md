@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 1c71fa918e72ac08c653bc319e3d84e0cc4e0508
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 25847d93c9c22ee15970f164802149ad66e77203
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217587"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054089"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bpmonline"></a>Tutorial: Azure Active Directory-Integration mit Bpm’online
 
@@ -125,7 +125,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
     
-    ![Configure Single Sign-On](./media/bpmonline-tutorial/tutorial_metadataurl.png)
+    ![Configure single sign-on](./media/bpmonline-tutorial/tutorial_metadataurl.png)
      
 6. Klicken Sie auf die Schaltfläche **Save** .
 
@@ -204,7 +204,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Bpm’online“ klicken, sollten Sie automatisch bei Ihrer Bpm’online-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

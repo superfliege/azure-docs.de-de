@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: d99311dfe096c1fca94bafd630385ef856123ca1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6c13bb4c10adeeba59ff8d0f2c8d7120d6fae43a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36209832"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050645"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>Tutorial: Azure Active Directory-Integration mit TeamSeer
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **TeamSeer** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/teamseer-tutorial/tutorial_teamseer_samlbase.png)
+    ![Configure single sign-on](./media/teamseer-tutorial/tutorial_teamseer_samlbase.png)
 
 3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für TeamSeer** aus:
 
-    ![Configure Single Sign-On](./media/teamseer-tutorial/tutorial_teamseer_url.png)
+    ![Configure single sign-on](./media/teamseer-tutorial/tutorial_teamseer_url.png)
 
      Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.teamseer.com/<companyid>`.
 
@@ -119,15 +119,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/teamseer-tutorial/tutorial_teamseer_certificate.png) 
+    ![Configure single sign-on](./media/teamseer-tutorial/tutorial_teamseer_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/teamseer-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/teamseer-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **TeamSeer-Konfiguration** auf **TeamSeer konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/teamseer-tutorial/tutorial_teamseer_configure.png)
+    ![Configure single sign-on](./media/teamseer-tutorial/tutorial_teamseer_configure.png)
 
 7. Melden Sie sich in einem anderen Webbrowserfenster auf der TeamSeer-Unternehmenswebsite als Administrator an.
 
@@ -239,7 +239,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **TeamSeer** aus.
 
-    ![Configure Single Sign-On](./media/teamseer-tutorial/tutorial_teamseer_app.png) 
+    ![Configure single sign-on](./media/teamseer-tutorial/tutorial_teamseer_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -257,7 +257,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
     
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 
-Wenn Sie die Einstellungen für einmaliges Anmelden testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Wenn Sie die Einstellungen für einmaliges Anmelden testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

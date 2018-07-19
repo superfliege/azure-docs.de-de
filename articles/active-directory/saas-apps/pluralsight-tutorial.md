@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 3deb7f23f6fb54cc832ec52fcdbe34aa58a24668
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 30cf33de7385add20ec5c255bf20b4e3cb7580fc
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227073"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051515"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pluralsight"></a>Tutorial: Azure Active Directory-Integration mit Pluralsight
 
@@ -127,7 +127,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     Die Pluralsight-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
 
-    ![Configure Single Sign-On](./media/pluralsight-tutorial/tutorial_pluralsight_attribute.png)
+    ![Configure single sign-on](./media/pluralsight-tutorial/tutorial_pluralsight_attribute.png)
 
     >[!NOTE]
     >Sie können auch das Attribut **Unique ID** mit einem Wert wie beispielsweise „EmployeeID“ oder einem anderen für Ihre Organisation geeigneten Wert verwenden. Beachten Sie, dass dieses Attribut nicht erforderlich ist. Sie können es jedoch zum eindeutigen Identifizieren des Benutzers hinzufügen. 
@@ -142,7 +142,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
    
    a. Klicken Sie unten auf der Seite auf **add user attribute** to open the **Benutzerattribut hinzufügen** zu öffnen.
     
-     ![Configure Single Sign-On](./media/pluralsight-tutorial/tutorial_pluralsight_addattribute.png)
+     ![Configure single sign-on](./media/pluralsight-tutorial/tutorial_pluralsight_addattribute.png)
   
    b. Geben Sie im Textfeld **Attribute Name** den für die Zeile angezeigten Attributnamen ein.
   
@@ -152,7 +152,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 7. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/pluralsight-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/pluralsight-tutorial/tutorial_general_400.png)
 
 8. Wenden Sie sich an das [Professional Services](mailTo:professionalservices@pluralsight.com)-Team von Pluralsight, um SSO für Ihre Anwendung konfigurieren zu lassen, und stellen Sie die heruntergeladene Metadatendatei bereit.
 
@@ -230,7 +230,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Pluralsight“ klicken, sollten Sie automatisch bei Ihrer Pluralsight-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

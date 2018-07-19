@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: c1bf5ba68d8242a0ef0831987ac6fd041c62ace9
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: eafd7998e5bc21a539b6709794fe3cd70d9e3179
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969366"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054317"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>Tutorial: Azure Active Directory-Integration in Arc Publishing - SSO
 
@@ -123,7 +123,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Die Arc Publishing - SSO-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
     
-    ![Configure Single Sign-On](./media/arc-tutorial/tutorial_arc_attribute.png)
+    ![Configure single sign-on](./media/arc-tutorial/tutorial_arc_attribute.png)
 
 1. Konfigurieren Sie das SAML-Tokenattribut im Dialogfeld **Einmaliges Anmelden** im Abschnitt **Benutzerattribute**, wie im obigen Bild gezeigt, und führen Sie die folgenden Schritte aus:
     
@@ -136,9 +136,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     1. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-     ![Configure Single Sign-On](./media/arc-tutorial/tutorial_attribute_04.png)
+     ![Configure single sign-on](./media/arc-tutorial/tutorial_attribute_04.png)
 
-     ![Configure Single Sign-On](./media/arc-tutorial/tutorial_attribute_05.png)
+     ![Configure single sign-on](./media/arc-tutorial/tutorial_attribute_05.png)
     
     1. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
     
@@ -239,7 +239,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Arc Publishing - SSO“ klicken, sollten Sie automatisch bei Ihrer Arc Publishing - SSO-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

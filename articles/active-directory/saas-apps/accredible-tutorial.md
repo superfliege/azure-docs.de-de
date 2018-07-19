@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: jeedes
-ms.openlocfilehash: 270c3b9965665643b8406827cb7421ba46198b4a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b997d03534fdd7c5075b1bd483dac9ad5e1ddbd3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221109"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048326"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-accredible"></a>Tutorial: Azure Active Directory-Integration mit Accredible
 
@@ -205,7 +205,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Accredible“ klicken, sollten Sie automatisch bei Ihrer Accredible-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

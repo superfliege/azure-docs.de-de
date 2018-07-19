@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2017
 ms.author: jeedes
-ms.openlocfilehash: ef43f7cc91467d4f9b7ab2f4cbc8c35e9b7f4586
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e7cc2779661f4359c3c30fe76a387740f5f044f2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211792"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39055575"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Tutorial: Azure Active Directory-Integration mit XaitPorter
 
@@ -131,15 +131,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 8. Klicken Sie auf **Admin**.
 
-    ![Configure Single Sign-On](./media/xaitporter-tutorial/user1.png)
+    ![Configure single sign-on](./media/xaitporter-tutorial/user1.png)
 
 9. Wählen Sie in der Dropdownliste **System Setup** (Systemsetup) die Option **Manage Single Sign-On** (Einmaliges Anmelden verwalten) aus.
 
-    ![Configure Single Sign-On](./media/xaitporter-tutorial/user2.png)
+    ![Configure single sign-on](./media/xaitporter-tutorial/user2.png)
 
 10. Führen Sie im Abschnitt **MANAGE SINGLE SIGN-ON** (EINMALIGES ANMELDEN VERWALTEN) die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/xaitporter-tutorial/user3.png)
+    ![Configure single sign-on](./media/xaitporter-tutorial/user3.png)
 
     a. Aktivieren Sie **Enable Single Sign-On Authentication** (SSO-Authentifizierung aktivieren).
 
@@ -220,7 +220,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „XaitPorter“ klicken, sollten Sie automatisch bei Ihrer XaitPorter-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

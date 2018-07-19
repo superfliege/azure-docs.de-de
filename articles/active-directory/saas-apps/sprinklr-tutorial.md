@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 68437cd1fe7d6aa82ff36a139a70b208a4b0abde
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ece3509743bc3712d144a3547c5ff91f9ea101e7
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217281"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050741"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Tutorial: Azure Active Directory-Integration mit Sprinklr
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Sprinklr** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/sprinklr-tutorial/tutorial_sprinklr_samlbase.png)
+    ![Configure single sign-on](./media/sprinklr-tutorial/tutorial_sprinklr_samlbase.png)
 
 3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für Sprinklr** aus:
 
-    ![Configure Single Sign-On](./media/sprinklr-tutorial/tutorial_sprinklr_url.png)
+    ![Configure single sign-on](./media/sprinklr-tutorial/tutorial_sprinklr_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.sprinklr.com`.
 
@@ -121,11 +121,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/sprinklr-tutorial/tutorial_sprinklr_certificate.png) 
+    ![Configure single sign-on](./media/sprinklr-tutorial/tutorial_sprinklr_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/sprinklr-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/sprinklr-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Sprinklr-Konfiguration** auf **Sprinklr konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
@@ -261,7 +261,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Sprinklr** aus.
 
-    ![Configure Single Sign-On](./media/sprinklr-tutorial/tutorial_sprinklr_app.png) 
+    ![Configure single sign-on](./media/sprinklr-tutorial/tutorial_sprinklr_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -281,7 +281,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Sprinklr“ klicken, sollten Sie automatisch bei Ihrer Sprinklr-Anmeldung angemeldet werden. Informationen zum Zugriffsbereich finden Sie in der [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Wenn Sie im Zugriffsbereich auf die Kachel „Sprinklr“ klicken, sollten Sie automatisch bei Ihrer Sprinklr-Anmeldung angemeldet werden. Informationen zum Zugriffsbereich finden Sie in der [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

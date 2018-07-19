@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 925d4b0d8c116887c14d22f821500273daefba40
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 245482ec708534a8a6df2efaac193c6bb2e26397
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218593"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39055558"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workpath"></a>Tutorial: Azure Active Directory-Integration mit Workpath
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Workpath** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/workpath-tutorial/tutorial_workpath_samlbase.png)
+    ![Configure single sign-on](./media/workpath-tutorial/tutorial_workpath_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Workpath** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    ![Configure Single Sign-On](./media/workpath-tutorial/tutorial_workpath_url.png)
+    ![Configure single sign-on](./media/workpath-tutorial/tutorial_workpath_url.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://api.workpath.com/v1/saml/metadata/<instancename>`
 
@@ -118,7 +118,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**. Wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten, führen Sie die folgenden Schritte durch:
 
-    ![Configure Single Sign-On](./media/workpath-tutorial/tutorial_workpath_url1.png)
+    ![Configure single sign-on](./media/workpath-tutorial/tutorial_workpath_url1.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.workpath.com/ `.
 
@@ -127,7 +127,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 5. Die Workpath-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Konfiguration. 
 
-    ![Configure Single Sign-On](./media/workpath-tutorial/tutorial_workpath_attributes.png)
+    ![Configure single sign-on](./media/workpath-tutorial/tutorial_workpath_attributes.png)
     
 6. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der Abbildung gezeigt, und führen Sie die folgenden Schritte aus:
     
@@ -138,11 +138,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
     
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Configure Single Sign-On](./media/workpath-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/workpath-tutorial/tutorial_attribute_04.png)
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
-    ![Configure Single Sign-On](./media/workpath-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/workpath-tutorial/tutorial_attribute_05.png)
 
     c. Geben Sie in der Liste **Wert** den für diese Zeile angezeigten Wert ein.
 
@@ -153,15 +153,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 7. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/workpath-tutorial/tutorial_workpath_certificate.png) 
+    ![Configure single sign-on](./media/workpath-tutorial/tutorial_workpath_certificate.png) 
 
 8. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/workpath-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/workpath-tutorial/tutorial_general_400.png)
 
 9. Klicken Sie im Abschnitt **Workpath-Konfiguration** auf **Workpath konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/workpath-tutorial/tutorial_workpath_configure.png) 
+    ![Configure single sign-on](./media/workpath-tutorial/tutorial_workpath_configure.png) 
 
 10. Zum Konfigurieren des einmaligen Anmeldens bei **Workpath** müssen Sie die heruntergeladene **Metadaten-XML**-Datei, **Abmelde-URL, SAML-Entitäts-ID und SAML-Dienst-URL für einmaliges Anmelden** an das [Workpath-Supportteam](https://help.workpath.com) senden. 
 
@@ -219,7 +219,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Workpath** aus.
 
-    ![Configure Single Sign-On](./media/workpath-tutorial/tutorial_workpath_app.png) 
+    ![Configure single sign-on](./media/workpath-tutorial/tutorial_workpath_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -240,7 +240,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Workpath“ klicken, sollten Sie automatisch bei Ihrer Workpath-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

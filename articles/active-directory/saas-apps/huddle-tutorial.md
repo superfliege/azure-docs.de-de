@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 228354fe86bd8758a9c338d980e2a80e577a11be
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8aec15cbd3094adeceb12574c47c8246825e4ece
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211348"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043736"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>Tutorial: Azure Active Directory-Integration mit Huddle
 
@@ -108,15 +108,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Huddle** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/huddle-tutorial/tutorial_huddle_samlbase.png)
+    ![Configure single sign-on](./media/huddle-tutorial/tutorial_huddle_samlbase.png)
 
 3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für Huddle** aus:
 
-    ![Configure Single Sign-On](./media/huddle-tutorial/tutorial_huddle_url.png)
+    ![Configure single sign-on](./media/huddle-tutorial/tutorial_huddle_url.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `http://<company name>.huddle.com`.
 
@@ -125,15 +125,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/huddle-tutorial/tutorial_huddle_certificate.png) 
+    ![Configure single sign-on](./media/huddle-tutorial/tutorial_huddle_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/huddle-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/huddle-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Huddle-Konfiguration** auf **Huddle konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die SAML-Dienst-URL für einmaliges Anmelden** aus dem Abschnitt **Kurzübersicht**. 
 
-    ![Configure Single Sign-On](./media/huddle-tutorial/tutorial_huddle_configure.png) 
+    ![Configure single sign-on](./media/huddle-tutorial/tutorial_huddle_configure.png) 
     
 7. Zum Konfigurieren des einmaligen Anmeldens bei Huddle müssen Sie das heruntergeladene **Zertifikat**, die **URL für den SAML-SSO-Dienst** und die **SAML-Entitäts-ID** an das [Kundensupportteam von Huddle](https://huddle.zendesk.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.  
    
@@ -221,7 +221,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Huddle** aus.
 
-    ![Configure Single Sign-On](./media/huddle-tutorial/tutorial_huddle_app.png) 
+    ![Configure single sign-on](./media/huddle-tutorial/tutorial_huddle_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -242,7 +242,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Huddle“ klicken, sollten Sie automatisch auf die Anmeldeseite der Huddle-Anwendung gelangen.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

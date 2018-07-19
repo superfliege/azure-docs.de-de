@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: b092b8fa5f3b410788ca56a0d1a43e27e3ac3e97
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 22197f3ea91a014b6afee014463b709705bf33a0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216173"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042451"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-concur"></a>Tutorial: Azure Active Directory-Integration mit Concur
 
@@ -105,15 +105,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Concur** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/concur-tutorial/tutorial_concur_samlbase.png)
+    ![Configure single sign-on](./media/concur-tutorial/tutorial_concur_samlbase.png)
 
 3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für Concur** aus:
 
-    ![Configure Single Sign-On](./media/concur-tutorial/tutorial_concur_url.png)
+    ![Configure single sign-on](./media/concur-tutorial/tutorial_concur_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** den Wert im folgenden Format ein: `https://www.concursolutions.com/UI/SSO/<OrganizationId>`.
 
@@ -124,7 +124,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die XML-Datei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/concur-tutorial/tutorial_concur_certificate.png) 
+    ![Configure single sign-on](./media/concur-tutorial/tutorial_concur_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
@@ -190,7 +190,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Concur** aus.
 
-    ![Configure Single Sign-On](./media/concur-tutorial/tutorial_concur_app.png) 
+    ![Configure single sign-on](./media/concur-tutorial/tutorial_concur_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -211,7 +211,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Concur“ klicken, wird die Anmeldeseite der Concur-Anwendung aufgerufen.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

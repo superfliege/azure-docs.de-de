@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: be600fa6707e86e483e21f638d0d80515f9372b4
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 4c88d6a8b22e4c5c19112c30e15bc960bc8ed1b5
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294991"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045222"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>Tutorial: Azure Active Directory-Integration mit Tableau Server
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Tableau Server** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/tableauserver-tutorial/tutorial_tableauserver_samlbase.png)
+    ![Configure single sign-on](./media/tableauserver-tutorial/tutorial_tableauserver_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Tableau Server** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/tableauserver-tutorial/tutorial_tableauserver_url.png)
+    ![Configure single sign-on](./media/tableauserver-tutorial/tutorial_tableauserver_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://azure.<domain name>.link`.
     
@@ -123,7 +123,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 4. Die Tableau Server-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel dieser Attributzuordnungen.
     
-    ![Configure Single Sign-On](./media/tableauserver-tutorial/3.png)
+    ![Configure single sign-on](./media/tableauserver-tutorial/3.png)
     
 5. Konfigurieren Sie das SAML-Tokenattribut im Dialogfeld **Einmaliges Anmelden** im Abschnitt **Benutzerattribute**, wie im obigen Bild gezeigt, und führen Sie die folgenden Schritte aus:
     
@@ -133,9 +133,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Configure Single Sign-On](./media/tableauserver-tutorial/tutorial_officespace_04.png)
+    ![Configure single sign-on](./media/tableauserver-tutorial/tutorial_officespace_04.png)
 
-    ![Configure Single Sign-On](./media/tableauserver-tutorial/tutorial_officespace_05.png)
+    ![Configure single sign-on](./media/tableauserver-tutorial/tutorial_officespace_05.png)
     
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
     
@@ -146,7 +146,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 6. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/tableauserver-tutorial/tutorial_tableauserver_certificate.png) 
+    ![Configure single sign-on](./media/tableauserver-tutorial/tutorial_tableauserver_certificate.png) 
 
 7. Klicken Sie auf die Schaltfläche **Save** .
 
@@ -156,7 +156,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
    
    a. Klicken Sie in der Tableau Server-Konfiguration auf die Registerkarte **SAML** .
   
-    ![Configure Single Sign-On](./media/tableauserver-tutorial/tutorial_tableauserver_001.png) 
+    ![Configure single sign-on](./media/tableauserver-tutorial/tutorial_tableauserver_001.png) 
   
    b. Aktivieren Sie das Kontrollkästchen **Use SAML for single sign-on**.
    
@@ -236,7 +236,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Tableau Server**.
 
-    ![Configure Single Sign-On](./media/tableauserver-tutorial/tutorial_tableauserver_app.png) 
+    ![Configure single sign-on](./media/tableauserver-tutorial/tutorial_tableauserver_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -257,7 +257,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Tableau Server“ klicken, sollten Sie automatisch bei Ihrer Tableau Server-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

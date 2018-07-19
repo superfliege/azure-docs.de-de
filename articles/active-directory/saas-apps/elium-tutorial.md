@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 1ce186978d910cfdae068e68b5f86a8ebd5fa712
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2957fffecbf448fa456d80200aba9752569b5f69
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227420"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042723"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-elium"></a>Tutorial: Integration von Elium in Azure Active Directory
 
@@ -123,7 +123,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 5. Die Elium-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten.
 
-    ![Configure Single Sign-On](./media/elium-tutorial/tutorial_attribute.png)
+    ![Configure single sign-on](./media/elium-tutorial/tutorial_attribute.png)
 
 6. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der vorherigen Abbildung gezeigt, und führen Sie die folgenden Schritte durch:
            
@@ -140,11 +140,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Configure Single Sign-On](./media/elium-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/elium-tutorial/tutorial_attribute_04.png)
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
-    ![Configure Single Sign-On](./media/elium-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/elium-tutorial/tutorial_attribute_05.png)
 
     c. Geben Sie in der Liste **Wert** den für diese Zeile angezeigten Wert ein.
 
@@ -164,15 +164,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 8. Klicken Sie in der oberen rechten Ecke auf das **Benutzerprofil**, und wählen Sie **Administration** aus.
 
-    ![Configure Single Sign-On](./media/elium-tutorial/user1.png)
+    ![Configure single sign-on](./media/elium-tutorial/user1.png)
 
 9. Wählen Sie die Registerkarte **Security** (Sicherheit) aus.
 
-    ![Configure Single Sign-On](./media/elium-tutorial/user2.png)
+    ![Configure single sign-on](./media/elium-tutorial/user2.png)
 
 10. Scrollen Sie zum Abschnitt **Single Sign-On (SSO)** (Einmaliges Anmelden), und führen Sie die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/elium-tutorial/user3.png)
+    ![Configure single sign-on](./media/elium-tutorial/user3.png)
 
     a. Kopieren Sie den Wert von **Verify that SAML2 authentication works for your account** (Überprüfen, ob die SAML2-Authentifizierung für Ihr Konto funktioniert), und fügen Sie ihn im Azure-Portal im Abschnitt **Domäne und URLs für Elium** im Textfeld **Anmelde-URL** ein.
 
@@ -187,11 +187,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     e. Suchen Sie in der Datei **SP Metadata** nach **entityID**, kopieren Sie den **entityID**-Wert, und fügen Sie ihn im Azure-Portal im Abschnitt **Domäne und URLs für Elium** in das Textfeld **Bezeichner** ein. 
 
-    ![Configure Single Sign-On](./media/elium-tutorial/user4.png)
+    ![Configure single sign-on](./media/elium-tutorial/user4.png)
 
     f. Suchen Sie in der Datei **SP Metadata** nach **AssertionConsumerService**, kopieren Sie den **Location**-Wert, und fügen Sie ihn im Azure-Portal im Abschnitt **Domäne und URLs für Elium** in das Textfeld **Antwort-URL** ein.
 
-    ![Configure Single Sign-On](./media/elium-tutorial/user5.png)
+    ![Configure single sign-on](./media/elium-tutorial/user5.png)
 
     g. Öffnen Sie die heruntergeladene Metadatendatei im Azure-Portal im Editor, kopieren Sie den Inhalt, und fügen Sie ihn in das Textfeld **IdP Metadata** ein.
 
@@ -270,7 +270,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Elium-Kachel klicken, sollten Sie automatisch bei Ihrer Elium-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

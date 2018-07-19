@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 173d0ba6a93e4db1c39bb777a1290dc933fa4a78
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ecc8799e9d9fa711d2e2f52427cd5314a64dfc26
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230232"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051304"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oneteam"></a>Tutorial: Azure Active Directory-Integration mit Oneteam
 
@@ -102,15 +102,15 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Oneteam** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/oneteam-tutorial/tutorial_oneteam_samlbase.png)
+    ![Configure single sign-on](./media/oneteam-tutorial/tutorial_oneteam_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Oneteam** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
 
-    ![Configure Single Sign-On](./media/oneteam-tutorial/tutorial_oneteam_url.png)
+    ![Configure single sign-on](./media/oneteam-tutorial/tutorial_oneteam_url.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://api.one-team.io/teams/<team name>`
 
@@ -118,7 +118,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![Configure Single Sign-On](./media/oneteam-tutorial/tutorial_oneteam_url1.png)
+    ![Configure single sign-on](./media/oneteam-tutorial/tutorial_oneteam_url1.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<team name>.one-team.io/`.
      
@@ -129,11 +129,11 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/oneteam-tutorial/tutorial_oneteam_certificate.png) 
+    ![Configure single sign-on](./media/oneteam-tutorial/tutorial_oneteam_certificate.png) 
 
 6. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/oneteam-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/oneteam-tutorial/tutorial_general_400.png)
     
 7. Sie können das Supportticket beim [Supportteam von Oneteam](https://support.one-team.com/hc/requests/new) erstellen und die heruntergeladenen **Metadaten** angeben, um das einmalige Anmelden für Ihre Anwendung konfigurieren zu lassen. 
 
@@ -195,7 +195,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
 2. Wählen Sie in der Anwendungsliste **Oneteam** aus.
 
-    ![Configure Single Sign-On](./media/oneteam-tutorial/tutorial_oneteam_app.png) 
+    ![Configure single sign-on](./media/oneteam-tutorial/tutorial_oneteam_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -216,7 +216,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Oneteam“ klicken, sollten Sie automatisch bei Ihrer Oneteam-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

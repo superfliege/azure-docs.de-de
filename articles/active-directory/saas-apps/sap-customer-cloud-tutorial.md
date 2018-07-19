@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 661bb15f93c505ad069e826b1506f6e69c5339e0
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8855a82c1490c916e040f61c07e1116d9125e7e6
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223347"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045861"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-for-customer"></a>Tutorial: Azure Active Directory-Integration mit SAP Cloud for Customer
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **SAP Cloud for Customer** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_samlbase.png)
+    ![Configure single sign-on](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_samlbase.png)
 
 3. Führen Sie auf der Seite **Domäne und URLs für SAP Cloud for Customer** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_url.png)
+    ![Configure single sign-on](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<server name>.crm.ondemand.com`.
 
@@ -121,7 +121,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Führen Sie im Abschnitt **Benutzerattribute** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_attribute.png)
+    ![Configure single sign-on](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_attribute.png)
 
     a. Wählen Sie in der Liste **Benutzer-ID** die Funktion **ExtractMailPrefix()** aus.
 
@@ -130,15 +130,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_certificate.png) 
+    ![Configure single sign-on](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_certificate.png) 
 
 6. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/sap-customer-cloud-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/sap-customer-cloud-tutorial/tutorial_general_400.png)
 
 7. Klicken Sie im Abschnitt **SAP Cloud for Customer Client-Konfiguration** auf **SAP Cloud for Customer Client konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_configure.png) 
+    ![Configure single sign-on](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_configure.png) 
 
 8. Führen Sie zum Konfigurieren von SSO die folgenden Schritte aus:
    
@@ -148,7 +148,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
    
     c. Klicken Sie auf **New Identity Provider** (Neuer Identitätsanbieter), und wählen Sie die XML-Metadatendatei aus, die Sie aus dem Azure-Portal heruntergeladen haben. Beim Importieren der Metadaten lädt das System automatisch das erforderliche Signatur- und Verschlüsselungszertifikat hoch.
    
-    ![Configure Single Sign-On](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_54.png)
+    ![Configure single sign-on](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_54.png)
    
     d. Azure Active Directory erfordert die Assertionsverbraucherdienst-URL des Elements in der SAML-Anforderung. Aktivieren Sie daher das Kontrollkästchen **Include Assertion Consumer Service URL** (Assertionsverbraucherdienst-URL aufnehmen).
    
@@ -158,11 +158,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
    
     g. Klicken Sie auf die Registerkarte **My System** (Mein System).
    
-    ![Configure Single Sign-On](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_52.png)
+    ![Configure single sign-on](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_52.png)
    
     h. Fügen Sie in das Textfeld **Azure AD Sign On URL** (Azure AD-Anmelde-URL) den Wert der **SAML-Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
    
-    ![Configure Single Sign-On](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_53.png)
+    ![Configure single sign-on](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_53.png)
    
     i. Geben Sie an, ob der Mitarbeiter manuell zwischen der Anmeldung mit Benutzer-ID und Kennwort oder SSO wählen kann. Aktivieren Sie dazu die Option **Manual Identity Provider Selection** (Manuelle Auswahl des Identitätsanbieters).
    
@@ -239,7 +239,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
 2. Wählen Sie in der Anwendungsliste **SAP Cloud for Customer**aus.
 
-    ![Configure Single Sign-On](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_app.png) 
+    ![Configure single sign-on](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -260,7 +260,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „SAP Cloud for Customer“ klicken, sollten Sie automatisch bei Ihrer SAP Cloud for Customer-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

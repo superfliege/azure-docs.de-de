@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
 ms.author: jeedes
-ms.openlocfilehash: 27c10c2e08177b7987077de747482fc5ea620d91
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4c267313e4851e621b57aa1d2bddc73118405776
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231677"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054232"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apex-portal"></a>Tutorial: Azure Active Directory-Integration mit Apex Portal
 
@@ -119,7 +119,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
 4. Die Apex Portal-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. 
 
-    ![Configure Single Sign-On](./media/apexportal-tutorial/attribute.png)
+    ![Configure single sign-on](./media/apexportal-tutorial/attribute.png)
 
 5. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der vorherigen Abbildung gezeigt, und führen Sie die folgenden Schritte durch:
     
@@ -131,9 +131,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Configure Single Sign-On](./media/apexportal-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/apexportal-tutorial/tutorial_attribute_04.png)
 
-    ![Configure Single Sign-On](./media/apexportal-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/apexportal-tutorial/tutorial_attribute_05.png)
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
@@ -228,7 +228,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Apex Portal“ klicken, sollten Sie automatisch bei Ihrer Apex Portal-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

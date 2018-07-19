@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: jeedes
-ms.openlocfilehash: e0b20acb29aaf489dd3f449f883c011a26b7862a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 9811be78bd6260b17c462c077ed299dff8309b83
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223398"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048506"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas-lms"></a>Tutorial: Azure Active Directory-Integration mit Canvas LMS
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Canvas** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/canvas-lms-tutorial/tutorial_canvaslms_samlbase.png)
+    ![Configure single sign-on](./media/canvas-lms-tutorial/tutorial_canvaslms_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Canvas** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/canvas-lms-tutorial/tutorial_canvaslms_url.png)
+    ![Configure single sign-on](./media/canvas-lms-tutorial/tutorial_canvaslms_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<tenant-name>.instructure.com`.
 
@@ -121,15 +121,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
 4. Kopieren Sie im Abschnitt **SAML-Signaturzertifikat** den Wert **FINGERABDRUCK** des Zertifikats.
 
-    ![Configure Single Sign-On](./media/canvas-lms-tutorial/tutorial_canvaslms_certificate.png) 
+    ![Configure single sign-on](./media/canvas-lms-tutorial/tutorial_canvaslms_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/canvas-lms-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/canvas-lms-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Canvas-Konfiguration** auf **Canvas konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie **URL für Kennwortänderung, Abmelde-URL, SAML-Entitäts-ID und die SAML-Dienst-URL für einmalige Anmeldung** aus dem **Abschnitt Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/canvas-lms-tutorial/tutorial_canvaslms_configure.png) 
+    ![Configure single sign-on](./media/canvas-lms-tutorial/tutorial_canvaslms_configure.png) 
  
 7. Melden Sie sich in einem anderen Webbrowserfenster bei der Canvas-Unternehmenswebsite als Administrator an.
 
@@ -248,7 +248,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Canvas** aus.
 
-    ![Configure Single Sign-On](./media/canvas-lms-tutorial/tutorial_canvaslms_app.png) 
+    ![Configure single sign-on](./media/canvas-lms-tutorial/tutorial_canvaslms_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -269,7 +269,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Canvas“ klicken, sollten Sie automatisch bei Ihrer Canvas-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

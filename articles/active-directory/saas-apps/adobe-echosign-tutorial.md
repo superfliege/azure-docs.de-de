@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 9a1a1f1a1866e5221775d583a9bafe86eef17131
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d5cdc2ec0c6cfcf52f84629485d0dd879fbf6fa2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221222"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053997"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Tutorial: Azure Active Directory-Integration in Adobe Sign
 
@@ -252,7 +252,7 @@ In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf Adobe Sign, damit sie
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
-Wenn Sie im Zugriffsbereich die Kachel „Adobe Sign“ auswählen, werden Sie automatisch bei Ihrer Adobe Sign-Anwendung angemeldet. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Wenn Sie im Zugriffsbereich die Kachel „Adobe Sign“ auswählen, werden Sie automatisch bei Ihrer Adobe Sign-Anwendung angemeldet. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

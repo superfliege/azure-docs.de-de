@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 8680f01e8c23ba8e164ec3da3ac116ced37a3c97
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 97154f0ee8f07e0fa4fe8d70fef997144251c27d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219131"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041980"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Tutorial: Azure Active Directory-Integration in PolicyStat
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **PolicyStat** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/policystat-tutorial/tutorial_policystat_samlbase.png)
+    ![Configure single sign-on](./media/policystat-tutorial/tutorial_policystat_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für PolicyStat** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/policystat-tutorial/tutorial_policystat_url.png)
+    ![Configure single sign-on](./media/policystat-tutorial/tutorial_policystat_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.policystat.com`.
 
@@ -121,7 +121,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/policystat-tutorial/tutorial_policystat_certificate.png) 
+    ![Configure single sign-on](./media/policystat-tutorial/tutorial_policystat_certificate.png) 
 
 5. In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei PolicyStat zu authentifizieren.
 
@@ -139,9 +139,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Configure Single Sign-On](./media/policystat-tutorial/tutorial_policystat_04.png)
+    ![Configure single sign-on](./media/policystat-tutorial/tutorial_policystat_04.png)
 
-    ![Configure Single Sign-On](./media/policystat-tutorial/tutorial_policystat_addatribute.png)
+    ![Configure single sign-on](./media/policystat-tutorial/tutorial_policystat_addatribute.png)
     
     b. Geben Sie im Textfeld **Attributname** die Zeichenfolge **uid** ein.
 
@@ -153,7 +153,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 7. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/policystat-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/policystat-tutorial/tutorial_general_400.png)
 
 8. Melden Sie sich in einem anderen Webbrowserfenster bei der PolicyStat-Unternehmenswebsite als Administrator an.
 
@@ -246,7 +246,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **PolicyStat** aus.
 
-    ![Configure Single Sign-On](./media/policystat-tutorial/tutorial_policystat_app.png) 
+    ![Configure single sign-on](./media/policystat-tutorial/tutorial_policystat_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -267,7 +267,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „PolicyStat“ klicken, sollten Sie automatisch bei Ihrer PolicyStat-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

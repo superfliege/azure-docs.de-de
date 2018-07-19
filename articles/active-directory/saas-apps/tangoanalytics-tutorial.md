@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: e72429eb8aadb4749bc19a4536972bfe6006769b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: dc4b9ceaa48cd34930a620779019bdf3a90b4bf7
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229426"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045239"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tango-analytics"></a>Tutorial: Azure Active Directory-Integration mit Tango Analytics
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Tango Analytics** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/tangoanalytics-tutorial/tutorial_tangoanalytics_samlbase.png)
+    ![Configure single sign-on](./media/tangoanalytics-tutorial/tutorial_tangoanalytics_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Tango Analytics** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/tangoanalytics-tutorial/tutorial_tangoanalytics_url.png)
+    ![Configure single sign-on](./media/tangoanalytics-tutorial/tutorial_tangoanalytics_url.png)
 
     a. Geben Sie im Textfeld **Bezeichner** den Wert `TACORE_SSO` ein.
 
@@ -121,11 +121,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/tangoanalytics-tutorial/tutorial_tangoanalytics_certificate.png) 
+    ![Configure single sign-on](./media/tangoanalytics-tutorial/tutorial_tangoanalytics_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/tangoanalytics-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/tangoanalytics-tutorial/tutorial_general_400.png)
 
 6. Zum Konfigurieren des einmaligen Anmeldens bei **Tango Analytics** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [Tango Analytics-Supportteam](mailto:support@tangoanalytics.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -182,7 +182,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Tango Analytics** aus.
 
-    ![Configure Single Sign-On](./media/tangoanalytics-tutorial/tutorial_tangoanalytics_app.png) 
+    ![Configure single sign-on](./media/tangoanalytics-tutorial/tutorial_tangoanalytics_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -203,7 +203,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Tango Analytics“ klicken, sollten Sie automatisch bei Ihrer Tango Analytics-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

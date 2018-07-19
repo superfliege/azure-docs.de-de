@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 0ff053b88a718c152d31b593a7759b034347f3ef
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 794945caeea113dc6f1cc2ab5e11a76c3e88c83e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293667"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041907"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>Lernprogramm: Azure Active Directory-Integration mit Teamphoria
 
@@ -101,15 +101,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Teamphoria** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
 
-    ![Configure Single Sign-On](./media/teamphoria-tutorial/tutorial_teamphoria_samlbase.png)
+    ![Configure single sign-on](./media/teamphoria-tutorial/tutorial_teamphoria_samlbase.png)
 
 3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für Teamphoria** aus:
 
-    ![Configure Single Sign-On](./media/teamphoria-tutorial/tutorial_teamphoria_url.png)
+    ![Configure single sign-on](./media/teamphoria-tutorial/tutorial_teamphoria_url.png)
 
     Geben Sie im Textfeld **Anmelde-URL** die URL im folgenden Format ein: `https://<sub-domain>.teamphoria.com/login`.   
 
@@ -118,29 +118,29 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie das Zertifikat auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/teamphoria-tutorial/tutorial_teamphoria_certificate.png)
+    ![Configure single sign-on](./media/teamphoria-tutorial/tutorial_teamphoria_certificate.png)
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/teamphoria-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/teamphoria-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Teamphoria-Konfiguration** auf **Teamphoria konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/teamphoria-tutorial/tutorial_teamphoria_configure.png)
+    ![Configure single sign-on](./media/teamphoria-tutorial/tutorial_teamphoria_configure.png)
 
 7. Um einmaliges Anmelden auf **Teamphoria**-Seite zu konfigurieren, melden Sie sich als Administrator bei Ihrer Teamphoria-Anwendung an.
 
 8. Wechseln Sie auf der linken Symbolleiste zu **ADMIN SETTINGS** (Administratoreinstellungen), und klicken Sie auf der Registerkarte „Configure“ (Konfigurieren) auf **SINGLE SIGN-ON** (Einmaliges Anmelden), um das SSO-Konfigurationsfenster zu öffnen.
 
-    ![Configure Single Sign-On](./media/teamphoria-tutorial/admin_sso_configure.png)
+    ![Configure single sign-on](./media/teamphoria-tutorial/admin_sso_configure.png)
 
 9. Klicken Sie in der oberen rechten Ecke auf die Option **ADD NEW IDENTITY PROVIDER** (Neue Identitätsanbieter hinzufügen), um das Formular zum Hinzufügen der Einstellungen für SSO zu öffnen.
 
-    ![Configure Single Sign-On](./media/teamphoria-tutorial/add_new_identity_provider.png)
+    ![Configure single sign-on](./media/teamphoria-tutorial/add_new_identity_provider.png)
 
 10. Geben Sie die Details wie unten beschrieben in den Feldern ein.
 
-    ![Configure Single Sign-On](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
+    ![Configure single sign-on](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
 
     a. **DISPLAY NAME** (Anzeigename): Geben Sie den Anzeigenamen des Plug-Ins auf der Administratorseite ein.
 
@@ -225,7 +225,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste den Eintrag **Teamphoria** aus.
 
-    ![Configure Single Sign-On](./media/teamphoria-tutorial/tutorial_teamphoria_app.png) 
+    ![Configure single sign-on](./media/teamphoria-tutorial/tutorial_teamphoria_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -245,7 +245,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie die Einstellungen für einmaliges Anmelden testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Wenn Sie die Einstellungen für einmaliges Anmelden testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

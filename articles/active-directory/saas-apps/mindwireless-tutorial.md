@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: jeedes
-ms.openlocfilehash: 293a8921e64bae03d036f847d2f9138d88ebef4a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3898f64ebc32db2a512b04949e9b33a36694cdb6
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210257"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046485"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindwireless"></a>Tutorial: Azure Active Directory-Integration mit mindWireless
 
@@ -119,7 +119,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 5. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen. Der Anspruchsname ist immer eine Kombination aus **Mitarbeiter-ID** und dem Wert, den Sie dem Attribut „user.extensionattribute1“ zugewiesen haben, das die Mitarbeiter-ID des Benutzers enthält. Hier erfolgt die Benutzerzuordnung von Azure AD zu mindWireless auf Grundlage der Mitarbeiter-ID. Je nach Anwendungseinstellungen ist jedoch auch eine Zuordnung zu einem anderen Wert möglich. Sie können zunächst beim [Supportteam von mindWireless](mailto:sdulloor@mindwireless.com) die richtige ID eines Benutzers erfragen und dann diesen Wert dem Anspruch **Mitarbeiter-ID** zuordnen.
 
-    ![Configure Single Sign-On](./media/mindwireless-tutorial/tutorial_attribute.png)
+    ![Configure single sign-on](./media/mindwireless-tutorial/tutorial_attribute.png)
 
 6. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der vorherigen Abbildung gezeigt, und führen Sie die folgenden Schritte durch:
     
@@ -129,9 +129,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Configure Single Sign-On](./media/mindwireless-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/mindwireless-tutorial/tutorial_attribute_04.png)
 
-    ![Configure Single Sign-On](./media/mindwireless-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/mindwireless-tutorial/tutorial_attribute_05.png)
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
@@ -226,7 +226,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „mindWireless“ klicken, sollten Sie automatisch bei Ihrer mindWireless-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

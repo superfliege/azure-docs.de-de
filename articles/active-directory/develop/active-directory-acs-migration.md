@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 11/14/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
-ms.openlocfilehash: 0b3e7d9b7a01767e44c7c59c7250808290a03c30
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 803dd69aed91f6e33c354d01d3f5419597d98de9
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319223"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115883"
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>Migrieren aus dem Azure Access Control Service
 
@@ -57,7 +57,7 @@ Um diese Komponenten zu verwenden, müssen Sie mindestens einen Access Control-N
 https://<mynamespace>.accesscontrol.windows.net
 ```
 
-Die gesamte Kommunikation mit dem STS und die Verwaltungsvorgänge erfolgen unter dieser URL. Verwenden Sie unterschiedliche Pfade für unterschiedliche Zwecke. Um zu bestimmen, ob Ihre Anwendungen oder Dienste Access Control verwenden, überprüfen Sie eingehenden Datenverkehr an „https://<namespace>.accesscontrol.windows.net“. Jeglicher Verkehr unter dieser URL wird von Access Control verarbeitet und muss eingestellt werden. 
+Die gesamte Kommunikation mit dem STS und die Verwaltungsvorgänge erfolgen unter dieser URL. Verwenden Sie unterschiedliche Pfade für unterschiedliche Zwecke. Um zu bestimmen, ob Ihre Anwendungen oder Dienste Access Control verwenden, überprüfen Sie eingehenden Datenverkehr an „https://&lt;namespace&gt;.accesscontrol.windows.net“. Jeglicher Verkehr unter dieser URL wird von Access Control verarbeitet und muss eingestellt werden. 
 
 Die Ausnahme hiervon ist sämtlicher bei `https://accounts.accesscontrol.windows.net` eingehender Datenverkehr. Datenverkehr an diese URL wird bereits von einem anderen Dienst verarbeitet und **ist nicht** von der Deaktivierung von Access Control betroffen. 
 

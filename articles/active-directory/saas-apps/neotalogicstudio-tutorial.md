@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: jeedes
-ms.openlocfilehash: 01987f3a5f2a37d7cf2b16202310b7d442c9d7a8
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 5861d709e238e5da07cd6a44fefdcc456422ad9d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285830"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046242"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-neota-logic-studio"></a>Tutorial: Azure Active Directory-Integration mit Neota Logic Studio
 
@@ -105,15 +105,15 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Neota Logic Studio** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/neotalogicstudio-tutorial/tutorial_neotalogicstudio_samlbase.png)
+    ![Configure single sign-on](./media/neotalogicstudio-tutorial/tutorial_neotalogicstudio_samlbase.png)
 
 3. Führen Sie auf der Seite **Domäne und URLs für Neota Logic Studio** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/neotalogicstudio-tutorial/tutorial_neotalogicstudio_url.png)
+    ![Configure single sign-on](./media/neotalogicstudio-tutorial/tutorial_neotalogicstudio_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<sub domain>.neotalogic.com/a/<sub application>`.
 
@@ -124,11 +124,11 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/neotalogicstudio-tutorial/tutorial_neotalogicstudio_certificate.png) 
+    ![Configure single sign-on](./media/neotalogicstudio-tutorial/tutorial_neotalogicstudio_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/neotalogicstudio-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/neotalogicstudio-tutorial/tutorial_general_400.png)
 
 6. Wenden Sie sich an das [Supportteam von Neota Logic Studio](https://www.neotalogic.com/contact-us/), um SSO für Ihre Anwendung konfigurieren zu lassen, und stellen Sie die heruntergeladene **Metadaten XML**-Datei bereit.
 
@@ -184,7 +184,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
 2. Wählen Sie in der Anwendungsliste **Neota Logic Studio** aus.
 
-    ![Configure Single Sign-On](./media/neotalogicstudio-tutorial/tutorial_neotalogicstudio_app.png) 
+    ![Configure single sign-on](./media/neotalogicstudio-tutorial/tutorial_neotalogicstudio_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -204,7 +204,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Klicken Sie im Zugriffsbereich auf die Kachel „Neota Logic Studio“. Sie werden auf die Anmeldeseite der Organisation weitergeleitet. Nach erfolgreicher Anmeldung werden Sie auch bei Ihrer Neota Logic Studio-Anwendung angemeldet. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Klicken Sie im Zugriffsbereich auf die Kachel „Neota Logic Studio“. Sie werden auf die Anmeldeseite der Organisation weitergeleitet. Nach erfolgreicher Anmeldung werden Sie auch bei Ihrer Neota Logic Studio-Anwendung angemeldet. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

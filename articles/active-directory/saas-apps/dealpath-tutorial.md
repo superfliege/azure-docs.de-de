@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 515d176b15e3e2f97620e4054b761b06300f9d92
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c79e9352cbeb1cf6349460d4e0b1b61c351f0c40
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222323"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053426"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dealpath"></a>Tutorial: Azure Active Directory-Integration mit Dealpath
 
@@ -223,7 +223,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Dealpath“ klicken, sollten Sie automatisch bei Ihrer Dealpath-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

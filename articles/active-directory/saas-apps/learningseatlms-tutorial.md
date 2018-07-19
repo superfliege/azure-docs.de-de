@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 96608c491fe4d62b6b4bdb48ee5386c9a72212cf
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: d1a15617830f7b517210c7e86146a88d38ae8343
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286244"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046820"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-seat-lms"></a>Tutorial: Azure Active Directory-Integration mit Learning Seat LMS
 
@@ -101,15 +101,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Learning Seat LMS** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/learningseatlms-tutorial/tutorial_learnconnect_samlbase.png)
+    ![Configure single sign-on](./media/learningseatlms-tutorial/tutorial_learnconnect_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Learning Seat LMS** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
 
-    ![Configure Single Sign-On](./media/learningseatlms-tutorial/tutorial_learnconnect_url.png)
+    ![Configure single sign-on](./media/learningseatlms-tutorial/tutorial_learnconnect_url.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<subdomain>.learningseatlms.com`
 
@@ -117,7 +117,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![Configure Single Sign-On](./media/learningseatlms-tutorial/tutorial_learnconnect_url2.png)
+    ![Configure single sign-on](./media/learningseatlms-tutorial/tutorial_learnconnect_url2.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.learningseatlms.com`.
      
@@ -126,11 +126,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/learningseatlms-tutorial/tutorial_learnconnect_certificate.png) 
+    ![Configure single sign-on](./media/learningseatlms-tutorial/tutorial_learnconnect_certificate.png) 
 
 6. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/learningseatlms-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/learningseatlms-tutorial/tutorial_general_400.png)
 
 7. Zum Konfigurieren des einmaligen Anmeldens bei **Learning Seat LMS** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [Learning Seat LMS-Supportteam](http://help.learningseatlms.com/help) senden.
 
@@ -187,7 +187,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Learning Seat LMS** aus.
 
-    ![Configure Single Sign-On](./media/learningseatlms-tutorial/tutorial_learnconnect_app.png) 
+    ![Configure single sign-on](./media/learningseatlms-tutorial/tutorial_learnconnect_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -207,7 +207,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich. 
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Learning Seat LMS“ klicken, sollten Sie automatisch bei Ihrer Learning Seat LMS-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „Learning Seat LMS“ klicken, sollten Sie automatisch bei Ihrer Learning Seat LMS-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

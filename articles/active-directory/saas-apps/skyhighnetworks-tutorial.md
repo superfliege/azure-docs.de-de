@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: jeedes
-ms.openlocfilehash: 8f3f892d085c6fcea7d7891c16d7121a99cfe650
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 403d5754052e616354413160c6c34fa16ff0d837
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214340"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041941"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skyhigh-networks"></a>Tutorial: Azure Active Directory-Integration in Skyhigh Networks
 
@@ -206,7 +206,7 @@ In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf Skyhigh Networks, dam
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Skyhigh Networks“ klicken, werden Sie automatisch bei Ihrer Skyhigh Networks-Anwendung angemeldet.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

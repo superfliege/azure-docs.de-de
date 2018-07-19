@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 3c1922892a6a72caa58241a313bd1e3890487a42
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4333f6094a0da22f73255836379e1163aac485d4
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210240"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050516"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdpartytrust"></a>Tutorial: Azure Active Directory-Integration mit ThirdPartyTrust
 
@@ -201,7 +201,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „ThirdPartyTrust“ klicken, sollten Sie automatisch bei Ihrer ThirdPartyTrust-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

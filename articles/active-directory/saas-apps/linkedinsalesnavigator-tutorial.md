@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 2bc4f42b0a22ce804db9290728944575888f9c72
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 1df301e197c90970aa1e73620f94f977ecd34ba0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287445"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046905"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-sales-navigator"></a>Tutorial: Integration von Azure Active Directory in LinkedIn Sales Navigator
 
@@ -102,25 +102,25 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden über Azure AD im Azur
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **LinkedIn Sales Navigator** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_samlbase.png)
+    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_samlbase.png)
 
 3. Melden Sie sich in einem anderen Webbrowserfenster bei Ihrer **LinkedIn Sales Navigator**-Website als Administrator an.
 
 4. Klicken Sie im **Kontocenter** unter **Einstellungen** auf **Globale Einstellungen**. Wählen Sie außerdem **Sales Navigator** aus der Dropdownliste aus.
 
-    ![Configure Single Sign-On](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_01.png)
+    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_01.png)
 
 5. Klicken Sie auf **ODER klicken Sie hier, um einzelne Felder aus dem Formular zu laden und zu kopieren**, und kopieren Sie die **Entitäts-ID** und **Assertion Consumer Access(ACS)-URL**.
 
-    ![Configure Single Sign-On](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
+    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
 
 6. Führen Sie im Azure-Portal unter **Domäne und URLs für LinkedIn Sales Navigator** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten.
 
-    ![Configure Single Sign-On](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url1.png)
+    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url1.png)
 
     a. Geben Sie im Textfeld **Bezeichner** die **Entitäts-ID** ein, die Sie aus dem LinkedIn-Portal kopiert haben. 
 
@@ -128,13 +128,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden über Azure AD im Azur
 
 7. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten.
 
-    ![Configure Single Sign-On](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url2.png)
+    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url2.png)
 
     Geben Sie im Textfeld **Anmelde-URL** den Wert im folgenden Format ein: `https://www.linkedin.com/checkpoint/enterprise/login/<account id>?application=salesNavigator`.
 
 8. Die **LinkedIn Sales Navigator**-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Im folgenden Screenshot wird ein Beispiel gezeigt. Der Standardwert von **Benutzer-ID** lautet **user.userprincipalname**, LinkedIn Sales Navigator erwartet jedoch, dass dieser Wert der E-Mail-Adresse des Benutzers zugeordnet ist. Hierfür können Sie das **user.mail**-Attribut aus der Liste oder den entsprechenden Attributwert gemäß Ihrer Organisationskonfiguration verwenden. 
 
-    ![Configure Single Sign-On](./media/linkedinsalesnavigator-tutorial/updateusermail.png)
+    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/updateusermail.png)
     
 9. Klicken Sie im Abschnitt **Benutzerattribute** auf **Alle weiteren Benutzerattribute anzeigen und bearbeiten**, und legen Sie die Attribute fest. Der Benutzer muss vier Ansprüche mit den Namen **email**, **department**, **firstname** und **lastname** hinzufügen, und der Wert muss mit **user.mail**, **user.department**, **user.givenname** bzw. **user.surname** zugeordnet werden.
 
@@ -163,7 +163,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden über Azure AD im Azur
 
     a. Klicken Sie auf das Attribut, um das Fenster **Attribut bearbeiten** zu öffnen.
 
-    ![Configure Single Sign-On](./media/linkedinsalesnavigator-tutorial/url_update.png)
+    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/url_update.png)
 
     b. Löschen Sie den URL-Wert aus dem **Namespace**.
     
@@ -171,19 +171,19 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden über Azure AD im Azur
 
 11. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die XML-Datei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_certificate.png) 
+    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_certificate.png) 
 
 12. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/linkedinsalesnavigator-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/tutorial_general_400.png)
 
 13. Wechseln Sie zum Abschnitt **LinkedIn-Administratoreinstellungen**. Klicken Sie auf **XML-Datei hochladen**, um die Metadaten-XML-Datei hochzuladen, die Sie vom Azure-Portal heruntergeladen haben.
 
-    ![Configure Single Sign-On](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
+    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
 
 14. Klicken Sie auf **Ein**, um das einmalige Anmelden zu aktivieren. Der Status des einmaligen Anmeldens wechselt von **Nicht verbunden** zu **Verbunden**.
 
-    ![Configure Single Sign-On](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
+    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
 
 
 > [!TIP]
@@ -241,7 +241,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **LinkedIn Sales Navigator** aus.
 
-    ![Configure Single Sign-On](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_app.png) 
+    ![Configure single sign-on](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -261,7 +261,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie auf die Kachel „LinkedIn Sales Navigator“ im Zugriffsbereich klicken, sollten Sie zur Seite der Organisation umgeleitet werden, auf der Sie Details Ihres persönlichen LinkedIn-Kontos angeben müssen. Hierdurch wird Ihr persönliches Konto mit Ihrem LinkedIn-Geschäftskonto verknüpft. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Wenn Sie auf die Kachel „LinkedIn Sales Navigator“ im Zugriffsbereich klicken, sollten Sie zur Seite der Organisation umgeleitet werden, auf der Sie Details Ihres persönlichen LinkedIn-Kontos angeben müssen. Hierdurch wird Ihr persönliches Konto mit Ihrem LinkedIn-Geschäftskonto verknüpft. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

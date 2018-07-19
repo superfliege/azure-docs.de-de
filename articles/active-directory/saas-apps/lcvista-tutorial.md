@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 0cd42f5863293dfe5b52ab1fd99c2fc04aa9aeee
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 20c7656fc3f3cfd54007f5dbbf6dd91557020b20
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285813"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046803"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>Tutorial: Azure Active Directory-Integration mit LCVista
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **LCVista** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/lcvista-tutorial/tutorial_lcvista_samlbase.png)
+    ![Configure single sign-on](./media/lcvista-tutorial/tutorial_lcvista_samlbase.png)
 
 3. Führen Sie auf der Seite **Domäne und URLs für LCVista** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/lcvista-tutorial/tutorial_lcvista_url.png)
+    ![Configure single sign-on](./media/lcvista-tutorial/tutorial_lcvista_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.lcvista.com/rainier/login`.
 
@@ -121,21 +121,21 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/lcvista-tutorial/tutorial_lcvista_certificate.png) 
+    ![Configure single sign-on](./media/lcvista-tutorial/tutorial_lcvista_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/lcvista-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/lcvista-tutorial/tutorial_general_400.png)
     
 6. Klicken Sie im Abschnitt **LCVista-Konfiguration** auf **LCVista konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID** und die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/lcvista-tutorial/tutorial_lcvista_configure.png) 
+    ![Configure single sign-on](./media/lcvista-tutorial/tutorial_lcvista_configure.png) 
 
 7.  Melden Sie sich bei Ihrer LCVista-Anwendung als Administrator an.
 
 8. Aktivieren Sie im Abschnitt **SAML Config** das Kontrollkästchen **Enable SAML login**, und geben Sie die Daten so ein, wie im folgenden Bild veranschaulicht. 
 
-    ![Configure Single Sign-On](./media/lcvista-tutorial/tutorial_lcvista_config.png)
+    ![Configure single sign-on](./media/lcvista-tutorial/tutorial_lcvista_config.png)
 
     a. Fügen Sie die **Aussteller-URL**, die Sie aus Azure AD kopiert haben, im Abschnitt **Entity ID** ein. 
 
@@ -206,7 +206,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **LCVista**aus.
 
-    ![Configure Single Sign-On](./media/lcvista-tutorial/tutorial_lcvista_app.png) 
+    ![Configure single sign-on](./media/lcvista-tutorial/tutorial_lcvista_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -224,7 +224,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
     
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich. Klicken Sie im Zugriffsbereich auf die Kachel „LCVista“. Sie werden auf die Anmeldeseite der Organisation weitergeleitet. Nach erfolgreicher Anmeldung werden Sie auch bei Ihrer LCVista-Anwendung angemeldet. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich. Klicken Sie im Zugriffsbereich auf die Kachel „LCVista“. Sie werden auf die Anmeldeseite der Organisation weitergeleitet. Nach erfolgreicher Anmeldung werden Sie auch bei Ihrer LCVista-Anwendung angemeldet. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

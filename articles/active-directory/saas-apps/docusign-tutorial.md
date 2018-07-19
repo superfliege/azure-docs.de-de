@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 027bf154fb57e8f324757fd6b32ea6c421bbc705
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 05ec113db5fbdc0f2ea7d1f176c9be654f53a946
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229511"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053341"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-docusign"></a>Tutorial: Azure Active Directory-Integration mit DocuSign
 
@@ -102,19 +102,19 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **DocuSign** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/docusign-tutorial/tutorial_docusign_samlbase.png)
+    ![Configure single sign-on](./media/docusign-tutorial/tutorial_docusign_samlbase.png)
 
 3. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/docusign-tutorial/tutorial_docusign_certificate.png) 
+    ![Configure single sign-on](./media/docusign-tutorial/tutorial_docusign_certificate.png) 
 
 4. Klicken Sie im Abschnitt **DocuSign-Konfiguration** im Azure-Portal auf **Configure DocuSign** (DocuSign konfigurieren), um das Anmeldungsfenster für die Konfiguration zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
     
-    ![Configure Single Sign-On](./media/docusign-tutorial/tutorial_docusign_configure.png)
+    ![Configure single sign-on](./media/docusign-tutorial/tutorial_docusign_configure.png)
 
 5. Melden Sie sich in einem anderen Webbrowserfenster im **DocuSign-Verwaltungsportal** als Administrator an.
 
@@ -180,13 +180,13 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
    
     b. Kopieren Sie die **Service Provider Login URL** (Anmelde-URL des Dienstanbieters), und fügen Sie sie dann in das Feld **Anmelde-URL** im Abschnitt **DocuSign Domain and URLs** (DocuSign-Domäne und -URLs) des Azure-Portal nach folgendem Muster ein: `https://<subdomain>.docusign.com/organization/<uniqueID>/saml2/`
 
-    ![Configure Single Sign-On](./media/docusign-tutorial/tutorial_docusign_url.png)
+    ![Configure single sign-on](./media/docusign-tutorial/tutorial_docusign_url.png)
       
     c.  Klicken Sie unten auf der Seite auf **Schließen**
     
 17. Klicken Sie im Azure-Portal auf **Speichern**.
     
-    ![Configure Single Sign-On](./media/docusign-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/docusign-tutorial/tutorial_general_400.png)
 
 > [!TIP]
 > Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
@@ -240,7 +240,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
 2. Wählen Sie in der Anwendungsliste **DocuSign** aus.
 
-    ![Configure Single Sign-On](./media/docusign-tutorial/tutorial_docusign_app.png) 
+    ![Configure single sign-on](./media/docusign-tutorial/tutorial_docusign_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -261,7 +261,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „DocuSign“ klicken, sollten Sie automatisch bei Ihrer DocuSign-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

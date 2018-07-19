@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: ba24422f7ff5759153a6e067cc61251b43a7a091
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 3e3546a5161c62c137af0a29daf5140133f91eb6
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286931"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046106"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purelyhr"></a>Tutorial: Azure Active Directory-Integration mit PurelyHR
 
@@ -102,21 +102,21 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **PurelyHR** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/purelyhr-tutorial/tutorial_purelyhr_samlbase.png)
+    ![Configure single sign-on](./media/purelyhr-tutorial/tutorial_purelyhr_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für PurelyHR** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
 
-    ![Configure Single Sign-On](./media/purelyhr-tutorial/tutorial_purelyhr_url.png)
+    ![Configure single sign-on](./media/purelyhr-tutorial/tutorial_purelyhr_url.png)
    
     Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<companyID>.purelyhr.com/sso-consume`
 
 4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![Configure Single Sign-On](./media/purelyhr-tutorial/tutorial_purelyhr_url1.png)
+    ![Configure single sign-on](./media/purelyhr-tutorial/tutorial_purelyhr_url1.png)
     
     Geben Sie im Textfeld **Anmelde-URL** den Wert im folgenden Format ein: `https://<companyID>.purelyhr.com/sso-initiate`.
      
@@ -125,15 +125,15 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/purelyhr-tutorial/tutorial_purelyhr_certificate.png) 
+    ![Configure single sign-on](./media/purelyhr-tutorial/tutorial_purelyhr_certificate.png) 
 
 6. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/purelyhr-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/purelyhr-tutorial/tutorial_general_400.png)
     
 7. Klicken Sie im Abschnitt **PurelyHR-Konfiguration** auf **PurelyHR konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/purelyhr-tutorial/tutorial_purelyhr_configure.png) 
+    ![Configure single sign-on](./media/purelyhr-tutorial/tutorial_purelyhr_configure.png) 
 
 8. Um einmaliges Anmelden auf **PurelyHR**-Seite zu konfigurieren, melden Sie sich auf der Website als Administrator an.
 
@@ -141,7 +141,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 10. Fügen Sie die Werte wie unten beschrieben in die Felder ein.
 
-    ![Configure Single Sign-On](./media/purelyhr-tutorial/purelyhr-dashboard-sso-settings.png)  
+    ![Configure single sign-on](./media/purelyhr-tutorial/purelyhr-dashboard-sso-settings.png)  
 
     a. Öffnen Sie das **Zertifikat (Base64)**, das Sie aus dem Azure-Portal heruntergeladen haben, in Editor, und kopieren Sie den Zertifikatwert. Fügen Sie den kopierten Wert in das Feld für das **X.509-Zertifikat** ein.
 
@@ -206,7 +206,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
 2. Wählen Sie in der Anwendungsliste **PurelyHR** aus.
 
-    ![Configure Single Sign-On](./media/purelyhr-tutorial/tutorial_purelyhr_app.png) 
+    ![Configure single sign-on](./media/purelyhr-tutorial/tutorial_purelyhr_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -228,7 +228,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmeld
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Absorb LMS“ klicken, sollten Sie automatisch bei Ihrer Absorb LMS-Anwendung angemeldet werden.
 
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

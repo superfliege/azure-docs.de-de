@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 8c16e5d05378df9271b108eb93d36173672fc501
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1148e6f85905888eccafde638de66215073e0eaa
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223663"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043685"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn"></a>Tutorial: Azure Active Directory-Integration mit Blackboard Learn
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Blackboard Learn** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_samlbase.png)
+    ![Configure single sign-on](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Blackboard Learn** die folgenden Schritte durch:
 
-    ![Configure Single Sign-On](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_url.png)
+    ![Configure single sign-on](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.blackboard.com/`.
 
@@ -122,7 +122,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 4. Die Blackboard Learn-Anwendung erwartet die SAML-Assertions in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten.
  Der folgende Screenshot zeigt eine Beispielausgabe:
 
-    ![Configure Single Sign-On](./media/blackboard-learn-tutorial/tutorial_attribute.png)
+    ![Configure single sign-on](./media/blackboard-learn-tutorial/tutorial_attribute.png)
 
 5. Konfigurieren Sie SAML-Tokenattribute im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der Abbildung gezeigt, und führen Sie die folgenden Schritte durch. Wir haben „Userprincipalname“ hier als eindeutiges Benutzerattribut zugewiesen, aber Sie können einen anderen geeigneten Wert zuweisen, der den Benutzer in der Organisation eindeutig identifiziert und dem Feld für den Blackboard Learn-Benutzernamen entspricht.
            
@@ -132,9 +132,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Configure Single Sign-On](./media/blackboard-learn-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/blackboard-learn-tutorial/tutorial_attribute_04.png)
     
-    ![Configure Single Sign-On](./media/blackboard-learn-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/blackboard-learn-tutorial/tutorial_attribute_05.png)
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
@@ -144,15 +144,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die XML-Datei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_certificate.png)
+    ![Configure single sign-on](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_certificate.png)
 
 7. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/blackboard-learn-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/blackboard-learn-tutorial/tutorial_general_400.png)
 
 8. Klicken Sie im Abschnitt **Blackboard Learn-Konfiguration** auf **Blackboard Learn konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_configure.png) 
+    ![Configure single sign-on](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_configure.png) 
 
 9. Zum Konfigurieren des einmaligen Anmeldens auf der Seite von **Blackboard Learn** müssen Sie die heruntergeladene **XML-Metadatendatei** und die **SAML-Entitäts-ID** an den [Blackboard Learn-Support](https://www.blackboard.com/support/index.aspx) senden.
 
@@ -208,7 +208,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Blackboard Learn**aus.
 
-    ![Configure Single Sign-On](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_app.png) 
+    ![Configure single sign-on](./media/blackboard-learn-tutorial/tutorial_blackboardlearn_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -228,7 +228,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Blackboard Learn“ klicken, sollten Sie automatisch bei Ihrer Blackboard Learn-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Wenn Sie im Zugriffsbereich auf die Kachel „Blackboard Learn“ klicken, sollten Sie automatisch bei Ihrer Blackboard Learn-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

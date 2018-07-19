@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: jeedes
-ms.openlocfilehash: ef1cdb51f10e834ef9f2d3dd4623db348db9483e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: bcbcefa9db5caa2a77aabd0e482473a01f706ad8
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215367"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053494"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chronicx"></a>Tutorial: Azure Active Directory-Integration in ChronicX®
 
@@ -199,7 +199,7 @@ In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf ChronicX®, damit sie
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „ChronicX®“ klicken, werden Sie automatisch bei Ihrer ChronicX®-Anwendung angemeldet.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

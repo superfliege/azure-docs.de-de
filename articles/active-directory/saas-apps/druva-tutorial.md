@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 8a274ea6a31c907060893fe128c1125b0072781e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e536663669cadc0352a52c7f4f24ed9669661d2d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229614"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042978"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-druva"></a>Tutorial: Azure Active Directory-Integration mit Druva
 
@@ -108,13 +108,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Druva** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
 
-    ![Configure Single Sign-On](./media/druva-tutorial/tutorial_druva_url.png)
+    ![Configure single sign-on](./media/druva-tutorial/tutorial_druva_url.png)
 
     Geben Sie im Textfeld **Bezeichner** den Zeichenfolgenwert ein: `druva-cloud`.
     
 4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**. Wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![Configure Single Sign-On](./media/druva-tutorial/tutorial_druva_url1.png)
+    ![Configure single sign-on](./media/druva-tutorial/tutorial_druva_url1.png)
     
     Geben Sie im Textfeld **Anmelde-URL** diese URL ein: `https://cloud.druva.com/home`
 
@@ -124,7 +124,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 6. Die Druva-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der **SAML-Tokenattribute** benutzerdefinierte Attributzuordnungen hinzufügen. 
 
-    ![Configure Single Sign-On](./media/druva-tutorial/tutorial_druva_attribute.png)
+    ![Configure single sign-on](./media/druva-tutorial/tutorial_druva_attribute.png)
 
 7. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der vorherigen Abbildung gezeigt, und führen Sie die folgenden Schritte durch:
 
@@ -134,9 +134,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
     
-    ![Configure Single Sign-On](./media/druva-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/druva-tutorial/tutorial_attribute_04.png)
     
-    ![Configure Single Sign-On](./media/druva-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/druva-tutorial/tutorial_attribute_05.png)
     
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
@@ -146,11 +146,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 8. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/druva-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/druva-tutorial/tutorial_general_400.png)
 
 9. Klicken Sie im Abschnitt **Druva-Konfiguration** auf **Druva konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/druva-tutorial/tutorial_druva_configure.png) 
+    ![Configure single sign-on](./media/druva-tutorial/tutorial_druva_configure.png) 
 
 10. Melden Sie sich in einem anderen Webbrowserfenster bei der Druva-Unternehmenswebsite als Administrator an.
 
@@ -282,7 +282,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Druva“ klicken, sollten Sie automatisch bei Ihrer Druva-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
