@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: d253562e0ecb0d53739a4cdc5f9747e33d7e1171
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0bc88a510c05e88351b4ac7d69839a37c0e4fdd8
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33764399"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970488"
 ---
 # <a name="durable-functions-overview"></a>Übersicht zu Durable Functions
 
 *Durable Functions* ist eine Erweiterung von [Azure Functions](functions-overview.md) und [Azure WebJobs](../app-service/web-sites-create-web-jobs.md), mit der Sie zustandsbehaftete Funktionen in einer serverlosen Umgebung schreiben können. Die Erweiterung verwaltet Status, Prüfpunkte und Neustarts für Sie.
 
-Mit der Erweiterung können Sie zustandsbehaftete Workflows in einer neuen, als *Orchestratorfunktion* bezeichneten Art von Funktion definieren. Einige Vorteile der Orchestratorfunktionen sind:
+Mit der Erweiterung können Sie zustandsbehaftete Workflows in einer neuen, als [*Orchestratorfunktion*](durable-functions-types-features-overview.md#orchestrator-functions) bezeichneten Art von Funktion definieren. Einige Vorteile der Orchestratorfunktionen sind:
 
 * Sie definieren Workflows im Code. Keine JSON-Schemas oder Designer sind erforderlich.
 * Sie können andere Funktionen synchron und asynchron aufrufen. Ausgabe von aufgerufenen Funktionen kann in lokalen Variablen gespeichert werden.
@@ -340,7 +340,7 @@ Orchestratorfunktionen verwalten ihren Ausführungsstatus zuverlässig mithilfe 
 
 Die Verwendung der Ereignisherkunftsermittlung durch diese Erweiterung ist transparent. Im Hintergrund gibt der `await`-Operator in einer Orchestratorfunktion die Steuerung des Orchestratorthreads an den Durable Task Framework-Verteiler zurück. Der Verteiler committet dann alle neuen Aktionen, die die Orchestratorfunktion geplant hat (z.B. Aufrufen mindestens einer untergeordneten Funktion oder Planen eines permanenten Timers) in den Speicher. Dieser transparente Commitvorgang wird dem *Ausführungsverlauf* der Orchestrierungsinstanz angefügt. Der Verlauf wird in einer Speichertabelle gespeichert. Dann fügt die Commitaktion Nachrichten an eine Warteschlange an, um die eigentliche Arbeit zu planen. An diesem Punkt kann die Orchestratorfunktion aus dem Arbeitsspeicher entladen werden. Die Abrechnung für sie wird beendet, wenn Sie den Verbrauchstarif für Azure Functions verwenden.  Wenn weitere Aufgaben bewältigt werden müssen, wird die Funktion neu gestartet und ihr Status wiederhergestellt.
 
-Sobald eine Orchestrierungsfunktion weitere Aufgaben ausführen muss (z.B. wird eine Antwortnachricht empfangen, oder ein permanenter Timer läuft ab), wird der Orchestrator reaktiviert und führt erneut die gesamte Funktion von Beginn an neu aus, um den lokalen Status wiederherzustellen. Wenn der Code während dieser Wiedergabe versucht, eine Funktion aufzurufen (oder eine andere asynchrone Aktion auszuführen), zieht Durable Task Framework den *Ausführungsverlauf* der aktuellen Orchestrierung zu Rate. Wenn festgestellt wird, dass die Aktivitätsfunktion bereits ausgeführt wurde und ein Ergebnis erbracht hat, wird dieses Funktionsergebnis wiedergegeben und der Orchestratorcode weiter ausgeführt. Dieser Vorgang wird fortgesetzt, bis der Funktionscode an einen Punkt gelangt, an dem er entweder abgeschlossen oder neue asynchrone Arbeit geplant ist.
+Sobald eine Orchestrierungsfunktion weitere Aufgaben ausführen muss (z.B. wird eine Antwortnachricht empfangen, oder ein permanenter Timer läuft ab), wird der Orchestrator reaktiviert und führt erneut die gesamte Funktion von Beginn an neu aus, um den lokalen Status wiederherzustellen. Wenn der Code während dieser Wiedergabe versucht, eine Funktion aufzurufen (oder eine andere asynchrone Aktion auszuführen), zieht Durable Task Framework den *Ausführungsverlauf* der aktuellen Orchestrierung zu Rate. Wenn festgestellt wird, dass die [Aktivitätsfunktion](durable-functions-types-features-overview.md#activity-functions) bereits ausgeführt wurde und ein Ergebnis erbracht hat, wird dieses Funktionsergebnis wiedergegeben und der Orchestratorcode weiter ausgeführt. Dieser Vorgang wird fortgesetzt, bis der Funktionscode an einen Punkt gelangt, an dem er entweder abgeschlossen oder neue asynchrone Arbeit geplant ist.
 
 ### <a name="orchestrator-code-constraints"></a>Einschränkungen des Orchestratorcodes
 
@@ -348,7 +348,7 @@ Mit dem Wiedergabeverhalten sind Einschränkungen des Codetyps verbunden, der in
 
 ## <a name="language-support"></a>Sprachunterstützung
 
-Derzeit werden für Durable Functions nur C# (Functions v1 und v2) und JavaScript (nur Functions v2) unterstützt. Dies schließt Orchestratorfunktionen und Aktivitätsfunktionen ein. In der Zukunft werden wir Unterstützung für alle Sprachen hinzufügen, die Azure Functions unterstützt. Die [Problemliste im GitHub-Repository](https://github.com/Azure/azure-functions-durable-extension/issues) zu Azure Functions informiert Sie über den neuesten Stand unserer Arbeit für die Unterstützung zusätzlicher Sprachen.
+Derzeit werden für Durable Functions nur C# (Functions v1 und v2), F# und JavaScript (nur Functions v2) unterstützt. Dies schließt Orchestratorfunktionen und Aktivitätsfunktionen ein. In der Zukunft werden wir Unterstützung für alle Sprachen hinzufügen, die Azure Functions unterstützt. Die [Problemliste im GitHub-Repository](https://github.com/Azure/azure-functions-durable-extension/issues) zu Azure Functions informiert Sie über den neuesten Stand unserer Arbeit für die Unterstützung zusätzlicher Sprachen.
 
 ## <a name="monitoring-and-diagnostics"></a>Überwachung und Diagnose
 
@@ -384,7 +384,7 @@ Alle bekannten Probleme sollten in der Liste der [GitHub-Probleme](https://githu
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Bindings for Durable Functions (Azure Functions)](durable-functions-bindings.md) (Bindungen für Durable Functions [Azure Functions])
+> [Bindings for Durable Functions (Azure Functions)](durable-functions-types-features-overview.md) (Bindungen für Durable Functions [Azure Functions])
 
 > [!div class="nextstepaction"]
 > [Install the Durable Functions extension and samples (Azure Functions)](durable-functions-install.md) (Installieren der Erweiterung Durable Functions und Beispiele [Azure Functions])

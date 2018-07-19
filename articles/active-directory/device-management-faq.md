@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 60b77f5956cb627905eb955995652098337c4dea
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 864f790db48d3d4542ed56a4c7272a198df5bd56
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311114"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901135"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
@@ -86,11 +86,18 @@ Für früherer Windows-Versionen, die in die lokale AD-Domäne eingebunden sind:
 3.  Geben Sie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`ein.
 
 ---
-**F: Wie entferne ich ein in Azure AD eingebundenes Gerät lokal auf dem Gerät?
+**F: Wie entferne ich ein in Azure AD eingebundenes Gerät lokal auf dem Gerät?**
+
 **A:** 
 - Stellen Sie bei in Hybrid-Azure AD eingebundenen Geräten sicher, dass die automatische Registrierung deaktiviert ist, damit das Gerät im Zuge des geplanten Task nicht erneut registriert wird. Öffnen Sie als Nächstes eine Eingabeaufforderung als Administrator, und geben Sie `dsregcmd.exe /debug /leave` ein. Dieser Befehl kann alternativ auf mehreren Geräten als Skript ausgeführt werden, um eine Verknüpfung als Massenoperation aufzuheben.
 
 - Stellen Sie bei ausschließlich in Azure AD eingebundenen Geräten sicher, dass Sie über ein lokales Offlineadministratorkonto verfügen, oder erstellen Sie eines, da Sie sich nicht mit Azure AD-Benutzeranmeldeinformationen anmelden werden können. Navigieren Sie als Nächstes zu **Einstellungen** > **Konten** > **Auf Geschäfts-, Schul- oder Unikonto zugreifen**. Markieren Sie Ihr Konto, und klicken Sie auf **Trennen**. Befolgen Sie die Anweisungen, und geben Sie die Anmeldeinformationen für den lokalen Administrator an, wenn Sie aufgefordert werden. Starten Sie das Gerät neu, um den Vorgang zur Aufhebung einer Verknüpfung abzuschließen.
+
+---
+
+**F: Meine Benutzer können von in Azure AD eingebundenen Geräten aus keine Drucker durchsuchen. Wie kann ich das Drucken von in Azure AD eingebundenen Geräten aktivieren?**
+
+**A:** Informationen zum Bereitstellen von Druckern für in Azure AD eingebundene Geräte finden Sie unter [Drucken in Hybrid Clouds](https://docs.microsoft.com/en-us/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Sie benötigen einen lokalen Windows-Server, um das Drucken in Hybrid Clouds bereitzustellen. Aktuell ist kein cloudbasierter Druckdienst verfügbar. 
 
 ---
 
@@ -124,6 +131,11 @@ Für früherer Windows-Versionen, die in die lokale AD-Domäne eingebunden sind:
 
 ---
 
+**F: Warum erhalten einige meiner Benutzer auf in Azure AD eingebundenen Geräten keine MFA-Aufforderungen?**
+
+**A:** Wenn ein Benutzer ein Gerät mithilfe von mehrstufiger Authentifizierung in Azure AD einbindet oder bei Azure AD registriert, wird das Gerät selbst zum vertrauenswürdigen zweiten Faktor für diesen bestimmten Benutzer. Wann immer der gleiche Benutzer sich später beim Gerät anmeldet und auf eine Anwendung zugreift, betrachtet Azure AD das Gerät als zweiten Faktor und aktiviert den nahtlosen Zugriff des Benutzers auf seine Anwendungen ohne weitere MFA-Aufforderungen. Dieses Verhalten gilt nicht für andere Benutzer, die sich bei dem Gerät anmelden, daher wird allen anderen Benutzern, die auf das Gerät zugreifen, weiterhin eine MFA-Herausforderung angezeigt, bevor sie auf Anwendungen, die MFA erfordern, zugreifen können.
+
+---
 
 **F: Ich sehe den Gerätedatensatz im Azure-Portal in den Informationen unter BENUTZER und sehe, dass der Status auf dem Gerät „registriert“ lautet. Sind diese Einstellungen für den bedingten Zugriff richtig?**
 
@@ -173,5 +185,6 @@ Für früherer Windows-Versionen, die in die lokale AD-Domäne eingebunden sind:
 
 - [Beheben von Problemen bei der automatischen Registrierung von Computern, die in die Azure AD-Domäne eingebunden sind, für kompatible Windows-Clients](device-management-troubleshoot-hybrid-join-windows-legacy.md)
  
+
 ---
 

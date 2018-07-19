@@ -12,26 +12,28 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2018
+ms.date: 06/28/2018
 ms.author: brenduns
 ms.reviewer: anwestg
-ms.openlocfilehash: 1884574bcb39a1cbbd95b481adabdd06ebd499a9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 42258a352b05d97341f20c13bf837e1398dd8979
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29386075"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099961"
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Übersicht über App Service in Azure Stack
+
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Azure App Service ist ein Platform-as-a-Service-Angebot (PaaS) von Microsoft Azure in Azure Stack. Mit diesem Dienst können Ihre Kunden – intern und extern – Web-, API- und Azure Functions-Anwendungen für beliebige Plattformen oder Geräte erstellen. Sie können Ihre Apps in lokale Anwendungen integrieren und ihre Geschäftsprozesse automatisieren. Azure Stack-Cloudoperatoren können Kunden-Apps auf vollständig verwalteten virtuellen Computern (VMs) mit beliebigen freigegebenen VM-Ressourcen oder dedizierten VMs ausführen.
 
-Azure App Service enthält Funktionen zum Automatisieren von Geschäftsprozessen und Hosten von Cloud-APIs. Als einzelner integrierter Dienst können Sie mit Azure App Service verschiedene Komponenten – Websites, RESTful-APIs und Geschäftsprozesse – in einer zentralen Lösung zusammenstellen.
+Mit Azure App Service können Sie Geschäftsprozesse automatisieren und Cloud-APIs hosten. Als einzelner integrierter Dienst können Sie mit Azure App Service verschiedene Komponenten – Websites, RESTful-APIs und Geschäftsprozesse – in einer zentralen Lösung kombinieren.
 
 ## <a name="why-offer-azure-app-service-on-azure-stack"></a>Gründe für das Angebot von Azure App Service in Azure Stack
 
 Hier sind einige wichtige Features und Funktionen von App Service aufgeführt:
+
 - **Mehrere Sprachen und Frameworks:** App Service verfügt über erstklassige Unterstützung für ASP.NET, Node.js, Java, PHP und Python. Außerdem können Sie Windows PowerShell und andere Skripts oder ausführbare Dateien auf App Service-VMs ausführen.
 - **DevOps-Optimierung:** Richten Sie Continuous Integration und Continuous Deployment mit GitHub, einem lokalen Git oder Bitbucket ein. Stufen Sie Updates über Test- und Stagingumgebungen herauf. Verwalten Sie Ihre Apps in App Service mithilfe von Azure PowerShell oder der plattformübergreifenden Befehlszeilenschnittstelle (Command-Line Interface, CLI).
 - **Visual Studio-Integration:** Dedizierte Tools in Visual Studio optimieren das Erstellen und Bereitstellen von Anwendungen.
@@ -47,10 +49,11 @@ App Service verfügt über mehrere App-Typen, die jeweils zum Hosten einer besti
 Der Begriff „App“ bezieht sich hier auf die Hostingressourcen, die dediziert für die Ausführung einer Workload bestimmt sind. Wenn wir „Web-App“ als Beispiel nehmen, verstehen Sie darunter wahrscheinlich sowohl die Computeressourcen als auch die Anwendungscodeelemente, die zusammen für einen Browser die Funktionalität bereitstellen. In App Service handelt es sich bei einer Web-App aber um die Computeressourcen, die von Azure Stack zum Hosten Ihres Anwendungscodes bereitgestellt werden.
 
 Die Anwendung kann aus mehreren App Service-Apps unterschiedlicher Art bestehen. Wenn Ihre Anwendung also beispielsweise aus einem Web-Front-End und einem RESTful-API-Back-End besteht, haben Sie folgende Möglichkeiten:
+
 - Sie können beides (Front-End und API) für eine einzelne Web-App bereitstellen.
 - Sie können Ihren Front-End-Code für eine Web-App und Ihren Back-End-Code für eine API-App bereitstellen.
 
-   ![](media/azure-stack-app-service-overview/image01.png)
+   ![Übersicht: App Service mit Überwachungsdaten](media/azure-stack-app-service-overview/image01.png)
 
 ## <a name="what-is-an-app-service-plan"></a>Was ist ein App Service-Plan?
 
@@ -60,10 +63,9 @@ In Azure werden freigegebene und dedizierte Worker verwendet. Ein freigegebener 
 
 ## <a name="portal-features"></a>Features im Portal
 
-Für App Service in Azure Stack wird die gleiche Benutzeroberfläche wie für Azure App Service verwendet. Dies gilt auch für das Back-End. Einige Features sind deaktiviert und funktionieren in Azure Stack nicht. Die Azure-spezifischen Erwartungen bzw. Dienste, die für diese Features erforderlich sind, sind in Azure Stack noch nicht verfügbar.
+Für App Service in Azure Stack wird die gleiche Benutzeroberfläche wie für Azure App Service verwendet. Dies gilt auch für das Back-End. Einige Features sind jedoch deaktiviert und funktionieren in Azure Stack nicht. Die Azure-spezifischen Erwartungen bzw. Dienste, die für diese Features erforderlich sind, sind in Azure Stack derzeit nicht verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 
 - [Vor den ersten Schritten mit App Service in Azure Stack](azure-stack-app-service-before-you-get-started.md)
 - [Hinzufügen eines App Service-Ressourcenanbieters zu Azure Stack](azure-stack-app-service-deploy.md)

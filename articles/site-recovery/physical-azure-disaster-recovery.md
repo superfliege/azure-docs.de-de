@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/23/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: a4c83e495e269cdca35844a699d714b55cf1f500
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 173423c1a578500a990d6a7b43017d06ea96f6e7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643310"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38704899"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Einrichten der Notfallwiederherstellung in Azure für physische lokale Server
 
@@ -124,19 +124,25 @@ Richten Sie den Konfigurationsserver ein, registrieren Sie ihn im Tresor, und er
 
 Führen Sie zunächst folgende Schritte aus: 
 
-- Stellen Sie auf dem Konfigurationsservercomputer sicher, dass die Systemuhr mit einem [Zeitserver](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service) synchronisiert ist. Die Zeiten sollten übereinstimmen. Falls der Unterschied 15 Minuten beträgt, ist das Setup unter Umständen nicht erfolgreich.
-- Stellen Sie sicher, dass der Computer auf die folgenden URLs zugreifen kann: [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
+#### <a name="verify-time-accuracy"></a>Überprüfen der Zeitgenauigkeit
+Stellen Sie auf dem Konfigurationsservercomputer sicher, dass die Systemuhr mit einem [Zeitserver](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service) synchronisiert ist. Die Zeiten sollten übereinstimmen. Falls der Unterschied 15 Minuten beträgt, ist das Setup unter Umständen nicht erfolgreich.
 
-- Bei Verwendung von auf IP-Adressen basierenden Firewallregeln muss die Kommunikation mit Azure möglich sein.
-- Lassen Sie die [Azure Datacenter IP Ranges](https://www.microsoft.com/download/confirmation.aspx?id=41653) (IP-Bereiche für Azure-Rechenzentren) und den HTTPS-Port (443) zu.
-- Lassen Sie IP-Adressbereiche für die Azure-Region Ihres Abonnements und für die Region „USA, Westen“ (wird für Zugriffsteuerung und Identitätsverwaltung verwendet) zu.
+#### <a name="verify-connectivity"></a>Überprüfen der Konnektivität
+Stellen Sie sicher, dass der Computer ausgehend von Ihrer Umgebung auf die folgenden URLs zugreifen kann: 
 
+[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
+
+IP-Adressen-basierte Firewallregeln sollten die Kommunikation mit allen Azure-URLs zulassen, die über dem HTTPS-Port (443) aufgelistet sind. Um die IP-Bereiche zu vereinfachen und einzuschränken, wird der Einsatz von URL-Filterung empfohlen.
+
+- **Gewerbliche IPs**: Lassen Sie die [Azure Datacenter-IP-Bereiche](https://www.microsoft.com/download/confirmation.aspx?id=41653) und den HTTPS-Port (443) zu. Lassen Sie die IP-Adressbereiche für die Azure-Region Ihres Abonnements zu, um die URLs für AAD, Sicherung, Replikation und Speicher zu unterstützen.  
+- **Behörden-IPs**: Lassen Sie die [Azure Government Datacenter-IP-Bereiche](https://www.microsoft.com/en-us/download/details.aspx?id=57063) und den HTTPS-Port (443) für alle USGov-Regionen (Virginia, Texas, Arizona und Iowa) zu, um die URLs für AAD, Sicherung, Replikation und Speicher zu unterstützen.  
+
+#### <a name="run-setup"></a>Ausführen von Setup
 Führen Sie das einheitliche Setup als lokaler Administrator auf dem Konfigurationsserver aus. Standardmäßig werden auch der Prozessserver und der Masterzielserver auf dem Konfigurationscomputer installiert.
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 Nach Abschluss der Registrierung wird der Konfigurationsserver auf der Seite **Einstellungen** > **Server** im Tresor angezeigt.
-
 
 ## <a name="set-up-the-target-environment"></a>Einrichten der Zielumgebung
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: e407a95d3ac858ea7180a75f9fbfc399860ad378
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f0ee486d9ff4c05269da23866edad281aa627889
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30912014"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113893"
 ---
 # <a name="azure-stream-analytics-event-order-considerations"></a>Überlegungen zur Ereignisreihenfolge in Azure Stream Analytics
 
@@ -22,7 +22,7 @@ ms.locfileid: "30912014"
 
 In einem temporalen Datenstrom von Ereignissen wird jedem Ereignis ein Zeitstempel zugewiesen. Azure Stream Analytics weist jedem Ereignis anhand der Eingangszeit oder der Anwendungszeit einen Zeitstempel zu. Die Spalte **System.Timestamp** enthält den dem Ereignis zugewiesenen Zeitstempel. 
 
-Die Eingangszeit wird an der Eingabequelle zugewiesen, wenn das Ereignis die Quelle erreicht. Auf die Eingangszeit kann bei Event Hub-Eingaben mithilfe der **EventEnqueuedTime**-Eigenschaft und bei Blobeingaben mithilfe der [BlobProperties.LastModified](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties.lastmodified?view=azurestorage-8.1.3)-Eigenschaft zugegriffen werden. 
+Die Eingangszeit wird an der Eingabequelle zugewiesen, wenn das Ereignis die Quelle erreicht. Auf die Eingangszeit kann bei Event Hub-Eingaben mithilfe der **EventEnqueuedUtcTime**-Eigenschaft, bei IoT Hub mit der Eigenschaft [IoTHub.EnqueuedTime](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties.lastmodified?view=azurestorage-8.1.3) und bei Blobeingaben mithilfe der **BlobProperties.LastModified**-Eigenschaft zugegriffen werden. 
 
 Die Anwendungszeit wird bei Erstellung des Ereignisses zugewiesen und ist Teil der Nutzlast. Verwenden Sie zur Verarbeitung von Ereignissen anhand der Anwendungszeit die **Timestamp by**-Klausel in der SELECT-Abfrage. Wenn die **Timestamp by**-Klausel nicht vorhanden ist, werden Ereignisse basierend auf der Eingangszeit verarbeitet. 
 
@@ -111,7 +111,7 @@ Die Abfrage verfügt über keine **Partition by PartitionId**-Klausel, und es si
 
 Die Konfiguration entspricht der in Beispiel 2. Das Fehlen von Daten in einer der Partitionen kann aber dazu führen, dass die Ausgabe um ein zusätzliches Fenster „Toleranz für Eingangsverzögerung“ verzögert wird.
 
-## <a name="handling-event-producers-with-differing-timelines"></a>Behandlung von Ereignisproducern mit unterschiedlichen Zeitachsen
+## <a name="handling-event-producers-with-differing-timelines-with-substreams"></a>Behandlung von Ereignisproducern mit unterschiedlichen Zeitachsen mit „Unterdatenströmen“
 Ein einzelner Eingabeereignisdatenstrom enthält häufig Ereignisse, die von mehreren Ereignisproducern stammen, z.B. von einzelnen Geräten. Diese Ereignisse können aus den zuvor erläuterten Gründen in falscher Reihenfolge eingehen. Obwohl die Fehlordnung in diesen Szenarien innerhalb der Ereignisproducer hoch ist, ist sie innerhalb der Ereignisse eines einzelnen Producers gering (oder auch nicht vorhanden).
 
 Azure Stream Analytics bietet allgemeine Mechanismen zur Behandlung von Ereignissen außerhalb der Reihenfolge. Diese Mechanismen führen zu Verarbeitungsverzögerungen (die durch Warten auf den Eingang der verstreuten Ereignisse in das System entstehen), gelöschten oder angepassten Ereignissen oder zu beidem.

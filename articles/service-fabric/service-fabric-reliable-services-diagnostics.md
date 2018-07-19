@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/15/2017
+ms.date: 6/28/2018
 ms.author: dekapur
-ms.openlocfilehash: 268ec61515f438fb7f98b6cef7a8ec60ba22e23f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 51895731efd466a314877e963a5fd2c6d868ec02
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212635"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110871"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Diagnosefunktionen für zustandsbehaftete Reliable Services
 Die StatefulServiceBase-Klasse der zustandsbehafteten zuverlässigen Dienste in Azure Service Fabric gibt [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx)-Ereignisse aus. Diese können verwendet werden, um den Dienst zu debuggen, Einblicke in den Laufzeitbetrieb zu erhalten und Fehler zu beheben.
@@ -53,13 +53,16 @@ Die Reliable Services-Runtime definiert die folgenden Leistungsindikatorkategori
 | Category (Kategorie) | BESCHREIBUNG |
 | --- | --- |
 | Service Fabric-Transaktionsreplikator |Spezifische Leistungsindikatoren für den Azure Service Fabric-Transaktionsreplikator. |
+| Service Fabric TStore |Spezifische Leistungsindikatoren für den Azure Service Fabric TStore |
 
-Der [Reliable State Manager](service-fabric-reliable-services-reliable-collections-internals.md) verwendet den Service Fabric-Transaktionsreplikator zum Replizieren von Transaktionen in einer bestimmten Gruppe von [Replikaten](service-fabric-concepts-replica-lifecycle.md). 
+Der [Reliable State Manager](service-fabric-reliable-services-reliable-collections-internals.md) verwendet den Service Fabric-Transaktionsreplikator zum Replizieren von Transaktionen in einer bestimmten Gruppe von [Replikaten](service-fabric-concepts-replica-lifecycle.md).
+
+Der Service Fabric TStore ist eine Komponente, die in [zuverlässigen Sammlungen](service-fabric-reliable-services-reliable-collections-internals.md) zum Speichern und Abrufen von Schlüssel-Wert-Paaren verwendet wird.
 
 Die Anwendung [Windows-Systemmonitor](https://technet.microsoft.com/library/cc749249.aspx) , die standardmäßig im Windows-Betriebssystem verfügbar ist, kann zum Erfassen und Anzeigen von Leistungsindikatordaten verwendet werden. [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) ist eine weitere Option für das Erfassen von Leistungsindikatordaten und Hochladen in Azure-Tabellen.
 
 ### <a name="performance-counter-instance-names"></a>Namen von Leistungsindikatorinstanzen
-Ein Cluster mit einer großen Anzahl von Reliable Services oder Reliable Service-Partitionen weist eine große Anzahl von Transaktionsreplikator-Leistungsindikatorinstanzen auf. Die Namen der Leistungsindikatorinstanzen können die Identifizierung spezifischer [Partitionen](service-fabric-concepts-partitioning.md) und Dienstreplikate erleichtern, mit denen die Leistungsindikatorinstanz verknüpft ist.
+Ein Cluster mit einer großen Anzahl von Reliable Services oder Reliable Service-Partitionen weist eine große Anzahl von Transaktionsreplikator-Leistungsindikatorinstanzen auf. Dies gilt auch für TStore-Leistungsindikatoren, wird jedoch auch durch die Anzahl der verwendeten zuverlässigen Wörterbüchern und zuverlässigen Warteschlangen multipliziert. Die Namen der Leistungsindikatorinstanzen können die Identifizierung spezifischer [Partitionen](service-fabric-concepts-partitioning.md), Dienstreplikate und Zustandsanbieter erleichtern, mit denen die Leistungsindikatorinstanz verknüpft ist.
 
 #### <a name="service-fabric-transactional-replicator-category"></a>Service Fabric-Transaktionsreplikator-Kategorie
 Für die Kategorie `Service Fabric Transactional Replicator`haben die Namen von Leistungsindikatorinstanzen das folgende Format:
@@ -76,6 +79,25 @@ Der folgende Indikatorinstanzname ist typisch für einen Indikator unter der `Se
 
 Im vorherigen Beispiel ist `00d0126d-3e36-4d68-98da-cc4f7195d85e` die Zeichenfolgendarstellung der Service Fabric-Partitions-ID und `131652217797162571` die Replikat-ID.
 
+#### <a name="service-fabric-tstore-category"></a>Service Fabric TStore-Kategorie
+Für die Kategorie `Service Fabric TStore`haben die Namen von Leistungsindikatorinstanzen das folgende Format:
+
+`ServiceFabricPartitionId:ServiceFabricReplicaId:ServiceFabricStateProviderId_PerformanceCounterInstanceDifferentiator`
+
+*ServiceFabricPartitionId* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe von [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) mit dem Formatbezeichner „D“ generiert.
+
+*ServiceFabricReplicaId* die ID, die einem bestimmten Replikat eines Reliable Service zugeordnet ist. Die Replikat-ID wird in den Namen der Leistungsindikatorinstanz eingefügt, um deren Eindeutigkeit sicherzustellen und Konflikte mit anderen, von derselben Partition generierten Leistungsindikatorinstanzen zu vermeiden. Weitere Details zu Replikaten und ihrer Rolle in Reliable Services finden Sie [hier](service-fabric-concepts-replica-lifecycle.md).
+
+*ServiceFabricStateProviderId* ist die einem Anbieter zugeordnete ID innerhalb eines zuverlässigen Diensts. Die Zustandsanbieter-ID ist im Namen der Leistungsindikatorinstanz enthalten, damit TStores voneinander unterschieden werden können.
+
+*PerformanceCounterInstanceDifferentiator* ist eine als Unterscheidungsmerkmal dienende ID, die einer Leistungsindikatorinstanz in einem Zustandsanbieter zugeordnet ist. Das Unterscheidungsmerkmal wird in den Namen der Leistungsindikatorinstanz eingefügt, um deren Eindeutigkeit sicherzustellen und Konflikte mit anderen, von demselben Zustandsanbieter generierten Leistungsindikatorinstanzen zu vermeiden.
+
+Der folgende Indikatorinstanzname ist typisch für einen Indikator unter der `Service Fabric TStore`-Kategorie:
+
+`00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571:142652217797162571_1337`
+
+Im vorherigen Beispiel ist `00d0126d-3e36-4d68-98da-cc4f7195d85e` die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, `131652217797162571` die Replikat-ID, `142652217797162571` die Zustandsanbieter-ID und `1337` das Unterscheidungsmerkmal der Leistungsindikatorinstanz.
+
 ### <a name="transactional-replicator-performance-counters"></a>Transaktionsreplikator-Leistungsindikatoren
 
 Die Reliable Services-Runtime gibt die folgenden Ereignisse unter der `Service Fabric Transactional Replicator`-Kategorie aus.
@@ -88,6 +110,14 @@ Die Reliable Services-Runtime gibt die folgenden Ereignisse unter der `Service F
 | Gedrosselte Vorgänge/Sek | Die Anzahl der Vorgänge, die pro Sekunde vom Transaktionsreplikator aufgrund von Drosselung abgelehnt werden. |
 | Durchschn. Transaktionsdauer in ms/Commit | Durchschnittliche Commitlatenz pro Transaktion in Millisekunden |
 | Durchschn. Wartezeit beim Leeren (ms) | Durchschnittliche Dauer der Vorgänge des Leerens auf die Festplatte, die vom Transaktionsreplikator gestartet werden, in Millisekunden |
+
+### <a name="tstore-performance-counters"></a>TStore-Leistungsindikatoren
+
+Die Reliable Services-Runtime gibt die folgenden Ereignisse unter der `Service Fabric TStore`-Kategorie aus.
+
+ Name des Leistungsindikators | BESCHREIBUNG |
+| --- | --- |
+| Anzahl der Elemente | Die Anzahl von Schlüsseln im Speicher.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 [EventSource-Anbieter in PerfView](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

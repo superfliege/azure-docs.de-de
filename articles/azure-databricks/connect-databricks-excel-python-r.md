@@ -11,14 +11,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/29/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: bbf75a03fb771aa415a26e151614cecfaa14c485
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 333ff3ac3de053eae604ffeab600df7d35874f69
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598877"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085231"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Herstellen einer Verbindung mit Azure Databricks über Excel, Python oder R
 
@@ -99,6 +99,9 @@ In diesem Abschnitt übertragen Sie mithilfe des zuvor erstellten DSNS Daten aus
 Sobald die Daten in die Excel-Arbeitsmappe geladen wurden, können Sie Analysevorgänge dafür ausführen.
 
 ## <a name="connect-from-r"></a>Herstellen einer Verbindung über R
+
+> [!NOTE]
+> Dieser Abschnitt enthält Informationen zum Integrieren eines RStudio-Clients, der mit Azure Databricks auf Ihrem Desktop ausgeführt wird. Anweisungen zur Verwendung von RStudio im Azure Databricks-Cluster finden Sie unter [RStudio in Azure Databricks](https://docs.azuredatabricks.net/spark/latest/sparkr/rstudio.html).
 
 In diesem Abschnitt verwenden Sie eine IDE in der Sprache R, um auf in Azure Databricks verfügbare Daten zu verweisen. Bevor Sie beginnen, muss Folgendes auf Ihrem Computer installiert sein:
 

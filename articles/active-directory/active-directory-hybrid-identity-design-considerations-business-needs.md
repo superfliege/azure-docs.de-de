@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 06/27/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 68a7e71cf374f10b4c5ced3e64da36138b0d2e4d
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: a641464e04421b90de15cd953bb8a0fbf9b687d3
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34800723"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084721"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Ermitteln der Identitätsanforderungen für Ihre Hybrid-Identitätslösung
 Der erste Schritt beim Entwickeln einer Hybrid-Identitätslösung ist, die Anforderungen für das Unternehmen zu bestimmen, das diese Lösung nutzen wird.  Die Hybrid-Identität beginnt als unterstützende Rolle (unterstützt alle anderen Cloud-Lösungen durch Authentifizierung) und bietet dann neue und interessante Funktionen, die Benutzern neue Workloads ermöglichen.  Diese Workloads oder Dienste, die Sie für Ihre Benutzer integrieren möchten, bestimmen die Anforderungen an die Gestaltung der Hybrid-Identität.  Diese Dienste und Workloads müssen Hybrid-Identität sowohl lokal aus auch in der Cloud nutzen.  
@@ -58,7 +58,7 @@ Außerdem müssen Sie wissen, welche Clouddienste in Ihrem Unternehmen genutzt w
 * Befindet sich diese Integration derzeit im Produktivbetrieb oder in einer Pilotphase?
 
 > [!NOTE]
-> Wenn Sie keine genaue Zuordnung all Ihrer Apps und Clouddienste haben, können Sie das Cloud App Discovery-Tool nutzen. Mit diesem Tool erhält Ihre IT-Abteilung Einblick in alle geschäftlichen und privaten Cloud-Apps in Ihrem Unternehmen. Mit diesem Modul ist es einfacher denn je, Schatten-IT in Ihrem Unternehmen zu ermitteln. Dies umfasst u. a. Einzelheiten zu Nutzungsmustern und sämtlichen Benutzern, die auf Ihre Cloudanwendungen zugreifen. Informationen zum Einstieg finden Sie unter [Cloud App Discovery](manage-apps/cloud-app-discovery.md).
+> Cloud Discovery analysiert Ihre Datenverkehrsprotokolle in Bezug auf den Cloud-App-Katalog von Microsoft Cloud App Security, in dem sich mehr als 16.000 Cloud-Apps befinden, die abhängig von mehr als 70 Risikofaktoren klassifiziert und bewertet werden. Dadurch erhalten Sie laufend Einblicke in die Cloudnutzung, Schatten-IT und das Risiko der Schatten-IT für Ihre Organisation. Informationen zu den ersten Schritten finden Sie unter [Einrichten von Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
 > 
 > 
 

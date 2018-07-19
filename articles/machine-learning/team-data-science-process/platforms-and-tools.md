@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 3d4d217fba55b8329937575042f0ac909aad09e9
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 4b0c5d55c8a62dadbe11382997f4d258e66e1a31
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838475"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951140"
 ---
 # <a name="platforms-and-tools-for-data-science-team-projects"></a>Plattformen und Tools für Data Science-Teamprojekte
 
@@ -102,9 +102,9 @@ Besonders nützlich für Data Science-Projekte ist die Möglichkeit, einen Azure
 
 R Services (datenbankintern) bietet eine Plattform zum Entwickeln und Bereitstellen von intelligenten Anwendungen zur Gewinnung neuer Erkenntnisse. Sie können die umfangreiche und leistungsfähige R-Sprache (einschließlich der vielen Pakete aus der R-Community) zum Erstellen von Modellen und Generieren von Vorhersagen auf der Grundlage Ihrer SQL Server-Daten nutzen. Da R Services (datenbankintern) die R-Sprache in SQL Server integriert, besteht eine enge Verbindung zwischen Analysen und Daten. Dadurch lassen sich die Kosten und Sicherheitsrisiken vermeiden, die mit dem Verschieben von Daten einhergehen.
 
-R Services (datenbankintern) unterstützt die Open Source-R-Sprache mit einem umfassenden Satz von SQL Server-Tools und -Technologien. Dadurch profitieren Sie von überragender Leistung, Sicherheit, Zuverlässigkeit und Verwaltbarkeit. Sie können R-Lösungen mithilfe von praktischen und vertrauten Tools bereitstellen. Ihre Produktionsanwendungen können die R-Laufzeit aufrufen und Vorhersagen und visuelle Elemente mit Transact-SQL abrufen. Mit den ScaleR-Bibliotheken können Sie außerdem die Skalierung und Leistung Ihrer R-Lösungen verbessern. Weitere Informationen finden Sie unter [SQL Server Machine Learning Services](https://msdn.microsoft.com/library/mt604845.aspx).
+R Services (datenbankintern) unterstützt die Open Source-R-Sprache mit einem umfassenden Satz von SQL Server-Tools und -Technologien. Dadurch profitieren Sie von überragender Leistung, Sicherheit, Zuverlässigkeit und Verwaltbarkeit. Sie können R-Lösungen mithilfe von praktischen und vertrauten Tools bereitstellen. Ihre Produktionsanwendungen können die R-Laufzeit aufrufen und Vorhersagen und visuelle Elemente mit Transact-SQL abrufen. Mit den ScaleR-Bibliotheken können Sie außerdem die Skalierung und Leistung Ihrer R-Lösungen verbessern. Weitere Informationen finden Sie unter [SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services).
 
-Das TDSP-Team von Microsoft hat zwei umfassende exemplarische Vorgehensweisen zur Erstellung von Data Science-Lösungen in SQL Server 2016 R Services veröffentlicht: eine für R-Programmierer und eine für SQL-Entwickler. Die umfassende exemplarische Vorgehensweise zu Data Science für **R-Programmierer** befindet sich [hier](https://msdn.microsoft.com/library/mt612857.aspx). Das Tutorial zu erweiterten datenbankinternen Analysen für **SQL-Entwickler** befindet sich [hier](https://msdn.microsoft.com/library/mt683480.aspx).
+Das TDSP-Team von Microsoft hat zwei umfassende exemplarische Vorgehensweisen zur Erstellung von Data Science-Lösungen in SQL Server 2016 R Services veröffentlicht: eine für R-Programmierer und eine für SQL-Entwickler. Die umfassende exemplarische Vorgehensweise zu Data Science für **R-Programmierer** befindet sich [hier](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough). Das Tutorial zu erweiterten datenbankinternen Analysen für **SQL-Entwickler** befindet sich [hier](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers).
 
 
 ## <a name="appendix"></a>Anhang: Tools zum Einrichten von Data Science-Projekten

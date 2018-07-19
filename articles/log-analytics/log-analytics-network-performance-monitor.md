@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: na
-ms.openlocfilehash: d083783fb4c648cde5d8f4ab611990f65e48a16e
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 28f5ac882051250903fc2f45def95eb65d1b1ce3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129996"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38635537"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netzwerkleistungsmonitor-Lösung in Azure
 
@@ -35,7 +35,7 @@ Der Netzwerkleistungsmonitor bietet drei allgemeine Funktionen:
 
 * [Systemmonitor](log-analytics-network-performance-monitor-performance-monitor.md): Sie können die Netzwerkkonnektivität für Cloudbereitstellungen und lokale Standorte, für mehrere Rechenzentren und Zweigstellen sowie für unternehmenswichtige Microservices/Anwendungen mit mehreren Ebenen überwachen. Mithilfe des Systemmonitors können Sie Netzwerkprobleme erkennen, bevor sie Ihre Benutzer beinträchtigen.
 
-* [Dienstendpunktmonitor](log-analytics-network-performance-monitor-service-endpoint.md): Sie können die Benutzerkonnektivität mit Diensten überwachen, die für Sie interessant sind, die Infrastruktur bestimmen, durch die der Pfad führt, und Netzwerkengpässe lokalisieren. Sie wissen noch vor Ihren Benutzern über Ausfälle Bescheid und können genau sehen, wo in Ihrem Netzwerkpfad Probleme vorliegen. 
+* [Dienstkonnektivitätsmonitor](log-analytics-network-performance-monitor-service-endpoint.md): Sie können die Benutzerkonnektivität mit Diensten überwachen, die für Sie interessant sind, die Infrastruktur bestimmen, durch die der Pfad führt, und Netzwerkengpässe lokalisieren. Sie wissen noch vor Ihren Benutzern über Ausfälle Bescheid und können genau sehen, wo in Ihrem Netzwerkpfad Probleme vorliegen. 
 
     Mit dieser Funktion können Sie Tests auf Basis von HTTP, HTTPS, TCP und ICMP ausführen, um die Verfügbarkeit und Antwortzeit Ihres Diensts in nahezu Echtzeit oder historisch zu überwachen. Sie können auch den Beitrag des Netzwerks bei Paketverlusten und Latenz überwachen. Mit einer Netzwerktopologiekarte können Sie Geschwindigkeitsverluste des Netzwerks eingrenzen. Sie können Problemstellen, die entlang des Netzwerkpfads vom Knoten zum Dienst auftreten, mit Latenzdaten für jeden Hop identifizieren. Mithilfe integrierter Tests können Sie ganz ohne Vorkonfiguration die Konnektivität mit Office 365 und Dynamics CRM überwachen. Mit dieser Funktion können Sie die Netzwerkkonnektivität mit einem beliebigen TCP-fähigen Endpunkt überwachen (z.B. Websites, SaaS-Anwendungen, PaaS-Anwendungen und SQL-Datenbanken).
 
@@ -68,13 +68,13 @@ Verwenden Sie zum Installieren von Agents die grundlegenden Prozesse, die unter 
 
     Zur Überwachung einer Netzwerkverbindung installieren Sie an beiden Endpunkten der Verbindung Agents. Sollten Sie sich hinsichtlich der Topologie Ihres Netzwerks nicht sicher sein, installieren Sie die Agents auf Servern mit kritischen Workloads, zwischen denen Sie die Netzwerkleistung überwachen möchten. Wenn Sie also beispielsweise die Netzwerkverbindung zwischen einem Webserver und einem Server mit SQL überwachen möchten, installieren Sie auf beiden Servern einen Agent. Agents überwachen nicht die eigentlichen Hosts, sondern die Netzwerkkonnektivität (Verbindungen) zwischen Hosts. 
 
-* **Dienstendpunktmonitor**: Installieren Sie einen Operations Management Suite-Agent auf jedem Knoten, von dem aus Sie die Netzwerkkonnektivität mit dem Dienstendpunkt überwachen möchten. Sie möchten beispielsweise die Netzwerkkonnektivität mit Office 365 von Ihren Bürostandorten mit den Bezeichnungen O1, O2 und O3 überwachen. Installieren Sie den Operations Management Suite-Agent auf jeweils mindestens einem Knoten in O1, O2 und O3. 
+* **Dienstkonnektivitätsmonitor**: Installieren Sie einen Operations Management Suite-Agent auf jedem Knoten, von dem aus Sie die Netzwerkkonnektivität mit dem Dienstendpunkt überwachen möchten. Sie möchten beispielsweise die Netzwerkkonnektivität mit Office 365 von Ihren Bürostandorten mit den Bezeichnungen O1, O2 und O3 überwachen. Installieren Sie den Operations Management Suite-Agent auf jeweils mindestens einem Knoten in O1, O2 und O3. 
 
 * **ExpressRoute-Monitor**: Installieren Sie mindestens einen Operations Management Suite-Agent in Ihrem virtuellen Azure-Netzwerk. Installieren Sie außerdem mindestens einen Agent in Ihrem lokalen-Subnetzwerk, das über privates ExpressRoute-Peering verbunden ist.  
 
 ### <a name="configure-operations-management-suite-agents-for-monitoring"></a>Konfigurieren der Operations Management Suite-Agents für die Überwachung 
 
-Der Netzwerkleistungsmonitor verwendet synthetische Transaktionen, um die Netzwerkleistung zwischen Quell- und Ziel-Agents zu überwachen. Bei der Überwachung im Systemmonitor und im Dienstendpunktmonitor kann zwischen dem TCP- und dem ICMP-Protokoll gewählt werden. Für ExpressRoute-Monitor wird hingegen TCP verwendet. Stellen Sie sicher, dass die Firewall die Kommunikation zwischen den für die Überwachung verwendeten Operations Management Suite-Agents über das ausgewählte Protokoll zulässt. 
+Der Netzwerkleistungsmonitor verwendet synthetische Transaktionen, um die Netzwerkleistung zwischen Quell- und Ziel-Agents zu überwachen. Bei der Überwachung im Systemmonitor und im Dienstkonnektivitätsmonitor kann zwischen dem TCP- und dem ICMP-Protokoll gewählt werden. Für den ExpressRoute-Monitor steht nur TCP als Überwachungsprotokoll zur Verfügung. Stellen Sie sicher, dass die Firewall die Kommunikation zwischen den für die Überwachung verwendeten Operations Management Suite-Agents über das ausgewählte Protokoll zulässt. 
 
 * **TCP-Protokoll**: Wenn Sie sich für TCP als Überwachungsprotokoll entschieden haben, öffnen Sie den Firewallport für die Agents, die für den Netzwerkleistungsmonitor und ExpressRoute-Monitor verwendet werden, um sicherzustellen, dass die Agents eine Verbindung miteinander herstellen können. Um den Port zu öffnen, führen Sie das PowerShell-Skript [EnableRules.ps1](https://aka.ms/npmpowershellscript) ohne Parameter in einem PowerShell-Fenster mit Administratorrechten aus.
 
@@ -114,7 +114,7 @@ Der Netzwerkleistungsmonitor verwendet synthetische Transaktionen, um die Netzwe
 
    ![Ansicht „Systemmonitor“](media/log-analytics-network-performance-monitor/npm-synthetic-transactions.png)
     
-   **Dienstendpunktmonitor**: Diese Funktion bietet integrierte, vorkonfigurierte Tests zur Überwachung der Netzwerkkonnektivität mit Office 365 und Dynamics 365 über Ihre Agents. Wählen Sie die Office 365- und Dynamics 365-Dienste aus, die Sie überwachen möchten, indem Sie die Kontrollkästchen neben ihnen aktivieren. Wählen Sie **Agents hinzufügen** aus, um die gewünschten Agents für die Überwachung auszuwählen. Wenn Sie diese Funktion nicht verwenden oder später einrichten möchten, nehmen Sie keine Auswahl vor, und wählen Sie dann **Speichern und fortfahren** aus.
+   **Dienstkonnektivitätsmonitor**: Diese Funktion bietet integrierte, vorkonfigurierte Tests zur Überwachung der Netzwerkkonnektivität mit Office 365 und Dynamics 365 über Ihre Agents. Wählen Sie die Office 365- und Dynamics 365-Dienste aus, die Sie überwachen möchten, indem Sie die Kontrollkästchen neben ihnen aktivieren. Wählen Sie **Agents hinzufügen** aus, um die gewünschten Agents für die Überwachung auszuwählen. Wenn Sie diese Funktion nicht verwenden oder später einrichten möchten, nehmen Sie keine Auswahl vor, und wählen Sie dann **Speichern und fortfahren** aus.
 
    ![Ansicht „Dienstendpunktmonitor“](media/log-analytics-network-performance-monitor/npm-service-endpoint-monitor.png)
 
@@ -196,7 +196,7 @@ Nach dem Aktivieren der Netzwerkleistungsmonitor-Lösung wird auf der Kachel der
 
 * **ExpressRoute-Monitor**: Auf dieser Seite werden Integritätsübersichten für die verschiedenen ExpressRoute-Peeringverbindungen bereitgestellt, die die Lösung überwacht. Die Kachel **Topologie** zeigt die Anzahl von Netzwerkpfaden durch die ExpressRoute-Verbindungen an, die in Ihrem Netzwerk überwacht werden. Wählen Sie diese Kachel aus, um zur Ansicht **Topologie** zu navigieren.
 
-* **Dienstendpunktmonitor**: Auf dieser Seite finden Sie Integritätsübersichten für die verschiedenen Tests, die Sie erstellt haben. Die Kachel **Topologie** zeigt an, wie viele Endpunkte überwacht werden. Wählen Sie diese Kachel aus, um zur Ansicht **Topologie** zu navigieren.
+* **Dienstkonnektivitätsmonitor**: Auf dieser Seite finden Sie Integritätsübersichten für die verschiedenen Tests, die Sie erstellt haben. Die Kachel **Topologie** zeigt an, wie viele Endpunkte überwacht werden. Wählen Sie diese Kachel aus, um zur Ansicht **Topologie** zu navigieren.
 
 * **Systemmonitor**: Diese Seite enthält Integritätszusammenfassungen für die **Netzwerk**- und **Subnetzwerk**verbindungen, die die Lösung überwacht. Die Kachel **Topologie** zeigt die Anzahl von Netzwerkpfaden an, die in Ihrem Netzwerk überwacht werden. Wählen Sie diese Kachel aus, um zur Ansicht **Topologie** zu navigieren. 
 
@@ -281,4 +281,4 @@ Informationen zu Preisen sind [online](log-analytics-network-performance-monitor
 * **Treten Sie unserer Gruppe bei**: Wir freuen uns über neue Kunden, die unserer Gruppe beitreten möchten. Als Teil der Gruppe erhalten Sie vorab Zugriff auf neue Funktionen und können uns dabei helfen, den Netzwerkleistungsmonitor zu verbessern. Wenn Sie beitreten möchten, füllen Sie bitte diesen  [kurzen Fragebogen](https://aka.ms/npmcohort) aus. 
 
 ## <a name="next-steps"></a>Nächste Schritte 
-Informieren Sie sich ausführlicher über [Systemmonitor](log-analytics-network-performance-monitor-performance-monitor.md), [Dienstendpunktmonitor](log-analytics-network-performance-monitor-performance-monitor.md) und [ExpressRoute-Monitor](log-analytics-network-performance-monitor-expressroute.md). 
+Informieren Sie sich ausführlicher über [Systemmonitor](log-analytics-network-performance-monitor-performance-monitor.md), [Dienstkonnektivitätsmonitor](log-analytics-network-performance-monitor-performance-monitor.md) und [ExpressRoute-Monitor](log-analytics-network-performance-monitor-expressroute.md). 

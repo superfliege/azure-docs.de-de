@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e047dffa86915b0cd6e8829ea27e0335e7f88cb2
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: f8ee8a2a4aae61e2edc275527d80a162c9bb4dc0
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757155"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345710"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Starten eines Azure Automation-Runbooks mit einem Webhook
 
@@ -86,11 +86,11 @@ Eine andere Strategie besteht darin, dass das Runbook eine externe Bedingung üb
 
 Gehen Sie wie folgt vor, um einen neuen Webhook zu erstellen, der mit einem Runbook im Azure-Portal verknüpft ist
 
-1. Klicken Sie im Azure-Portal auf der Seite **Runbooks** auf das Runbook, das vom Webhook gestartet werden soll, um die Detailseite des Runbooks anzuzeigen.
-1. Klicken Sie oben auf der Seite auf **Webhook**, um die Seite **Webhook hinzufügen** zu öffnen.
-1. Klicken Sie auf **Neuen Webhook erstellen**, um die Seite **Webhook erstellen** zu öffnen.
-1. Geben Sie einen **Namen** und ein **Ablaufdatum** für den Webhook an, und legen Sie fest, ob er aktiviert werden soll. Weitere Informationen zu diesen Eigenschaften finden Sie unter [Details zu einem Webhook](#details-of-a-webhook) .
-1. Klicken Sie auf das Symbol zum Kopieren, und drücken Sie STRG+C, um die URL des Webhooks zu kopieren. Speichern Sie die URL an einem sicheren Ort. **Nachdem Sie den Webhook erstellt haben, können Sie die URL nicht erneut abrufen.**
+1. Klicken Sie im Azure-Portal auf der Seite **Runbooks** auf das Runbook, das vom Webhook gestartet werden soll, um die Detailseite des Runbooks anzuzeigen. Vergewissern Sie sich, dass als **Status** des Runbooks **Veröffentlicht** angezeigt wird.
+2. Klicken Sie oben auf der Seite auf **Webhook**, um die Seite **Webhook hinzufügen** zu öffnen.
+3. Klicken Sie auf **Neuen Webhook erstellen**, um die Seite **Webhook erstellen** zu öffnen.
+4. Geben Sie einen **Namen** und ein **Ablaufdatum** für den Webhook an, und legen Sie fest, ob er aktiviert werden soll. Weitere Informationen zu diesen Eigenschaften finden Sie unter [Details zu einem Webhook](#details-of-a-webhook) .
+5. Klicken Sie auf das Symbol zum Kopieren, und drücken Sie STRG+C, um die URL des Webhooks zu kopieren. Speichern Sie die URL an einem sicheren Ort. **Nachdem Sie den Webhook erstellt haben, können Sie die URL nicht erneut abrufen.**
 
    ![Webhook-URL](media/automation-webhooks/copy-webhook-url.png)
 

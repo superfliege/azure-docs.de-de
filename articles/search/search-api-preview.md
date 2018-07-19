@@ -9,14 +9,14 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: search
-ms.date: 05/17/2018
+ms.date: 06/28/2018
 ms.author: HeidiSteen
-ms.openlocfilehash: ce5771777762414a0229cf83425c2f3601cb979a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b5cb60bf16a4c904c9a6060113eba8b4d3a671ef
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659627"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112601"
 ---
 # <a name="azure-search-service-rest-api-version-2017-11-11-preview"></a>REST-API für den Azure Search-Dienst: Version 2017-11-11-Preview
 Dieser Artikel beschreibt die Version `api-version=2017-11-11-Preview` der Azure Search-Dienst-REST-API, welche die folgenden experimentellen Features bietet, die noch nicht allgemein verfügbar sind.
@@ -27,11 +27,11 @@ Dieser Artikel beschreibt die Version `api-version=2017-11-11-Preview` der Azure
 
 ## <a name="new-in-2017-11-11-preview"></a>Neuerungen in 2017-11-11-Preview
 
-Die [kognitive Suche](cognitive-search-concept-intro.md) ist eine neue Anreicherungsfunktion in Azure Search, die latente Informationen in Nicht-Textquellen und undifferenziertem Text findet und sie in durchsuchbare Volltextinhalte in Azure Search umwandelt.
+Die [**automatische Vervollständigung**](search-autocomplete-tutorial.md) wird mit der vorhandenen [Vorschlags-API](https://docs.microsoft.com/rest/api/searchservice/suggestions) verknüpft, damit ergänzende Textvervollständigungsfunktionen zur Suchleiste hinzugefügt werden können. Bei der automatischen Vervollständigung werden potenzielle Abfrageausdrücke zurückgegeben, die ein Benutzer als Abfragezeichenfolge für eine nachfolgende Suche auswählen kann. In den Vorschlägen werden tatsächliche Dokumente als Reaktion auf unvollständige Eingaben zurückgegeben: Suchergebnisse werden direkt angezeigt und ändern sich dynamisch, während die Eingabe des Suchbegriffs länger und spezifischer wird.
 
-Die folgenden Ressourcen werden in der REST-API-Vorschauversion eingeführt oder geändert. Alle anderen REST-APIs sind beim Aufrufen der allgemein verfügbaren Version und der Vorschauversion identisch.
+Die [**kognitive Suche**](cognitive-search-concept-intro.md) ist eine neue Anreicherungsfunktion in Azure Search, die latente Informationen in Nicht-Textquellen und undifferenziertem Text findet und sie in durchsuchbare Volltextinhalte in Azure Search umwandelt. Die folgenden Ressourcen werden in der REST-API-Vorschauversion eingeführt oder geändert. Alle anderen REST-APIs sind beim Aufrufen der allgemein verfügbaren Version und der Vorschauversion identisch.
 
-+ [Erstellen einer Fähigkeitengruppe (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Fähigkeitengruppe (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/skillset-operations)
 
 + [Erstellen eines Indexers (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 

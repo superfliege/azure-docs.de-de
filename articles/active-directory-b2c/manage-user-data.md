@@ -6,30 +6,30 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: dacff48be3fbf16fc719f5a0395937b1f5acc979
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 202ee9da94fc93e7301c29b62dc61ad443685807
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712537"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37449140"
 ---
-# <a name="manage-user-data-in-azure-ad-b2c"></a>Verwalten von Benutzerdaten in Azure AD B2C
+# <a name="manage-user-data-in-azure-active-directory-b2c"></a>Verwalten von Benutzerdaten in Azure Active Directory B2C
 
- Dieser Artikel enthält Informationen dazu, wie Sie Benutzerdaten in Azure Active Directory (AD) B2C mit den Vorgängen der [Azure Active Directory-Graph-API](https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/api-catalog) verwalten. Bei der Verwaltung der Benutzerdaten haben Sie auch die Möglichkeit, Daten zu löschen oder aus Überwachungsprotokollen zu exportieren.
+ Dieser Artikel beschreibt, wie Sie Benutzerdaten in Azure Active Directory (Azure AD) B2C mit den Vorgängen der [Azure Active Directory-Graph-API](https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/api-catalog) verwalten. Beim Verwalten von Benutzerdaten werden u.a. Daten aus Überwachungsprotokollen gelöscht oder exportiert.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="delete-user-data"></a>Löschen von Benutzerdaten
 
-Benutzerdaten werden im Azure AD B2C-Verzeichnis und in den Überwachungsprotokollen gespeichert. Alle Daten zur Benutzerüberwachung werden in Azure AD B2C 30 Tage lang aufbewahrt. Falls Sie Benutzerdaten innerhalb dieser 30 Tage löschen möchten, können Sie den Vorgang zum [Löschen eines Benutzers](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#DeleteUser) verwenden. Ein DELETE-Vorgang ist für alle Azure AD B2C-Mandanten erforderlich, auf denen sich Daten befinden können. 
+Benutzerdaten werden im Azure AD B2C-Verzeichnis und in den Überwachungsprotokollen gespeichert. Alle Daten zur Benutzerüberwachung werden in Azure AD B2C 30 Tage lang aufbewahrt. Falls Sie Benutzerdaten innerhalb dieser 30-Tage-Frist löschen möchten, können Sie den Vorgang [Einen Benutzer löschen](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#DeleteUser) verwenden. Ein DELETE-Vorgang ist für alle Azure AD B2C-Mandanten erforderlich, auf denen sich Daten befinden können. 
 
-Jedem Benutzer in Azure AD B2C wird eine Objekt-ID zugewiesen. Mit der Objekt-ID erhalten Sie einen eindeutigen Bezeichner, den Sie zum Löschen von Benutzerdaten in Azure AD B2C verwenden können.  Je nach Architektur kann die Objekt-ID auch ein nützlicher Korrelationsbezeichner für andere Dienste sein, z.B. Datenbanken in den Bereichen Finanzen, Marketing und Customer Relationship Management.  
+Jedem Benutzer in Azure AD B2C wird eine Objekt-ID zugewiesen. Mit der Objekt-ID erhalten Sie einen eindeutigen Bezeichner, den Sie zum Löschen von Benutzerdaten in Azure AD B2C verwenden können. Je nach Architektur kann die Objekt-ID auch ein nützlicher Korrelationsbezeichner für andere Dienste sein, z.B. Datenbanken in den Bereichen Finanzen, Marketing und Kundenbeziehungsmanagement. 
 
-Der präziseste Ansatz zum Beschaffen der Objekt-ID für einen Benutzer ist das Abrufen im Rahmen eines Authentifizierungsablaufs mit Azure AD B2C.  Wenn eine gültige Datenanforderung von einem Benutzer über andere Methoden eingeht, ist unter Umständen ein Offlineprozess erforderlich, z.B. eine Suche nach einem Kundendienst-Agent, um den Benutzer zu finden und die zugeordnete Objekt-ID zu erhalten. 
+Der präziseste Ansatz zum Beschaffen der Objekt-ID für einen Benutzer ist das Abrufen im Rahmen eines Authentifizierungsablaufs mit Azure AD B2C. Wenn Sie eine gültige Datenanforderung von einem Benutzer über andere Methoden erhalten, ist unter Umständen ein Offlineprozess erforderlich, wie eine Suche nach einem Kundendienst-Agent, um den Benutzer zu finden und die zugeordnete Objekt-ID zu erhalten. 
 
 Im folgenden Beispiel ist ein möglicher Ablauf zum Löschen von Daten dargestellt:
 
@@ -46,19 +46,19 @@ Der Prozess zum Exportieren von Kundendaten aus Azure AD B2C ähnelt dem Löschv
 
 Azure AD B2C-Benutzerdaten sind auf folgende Daten beschränkt:
 
-- **In Azure Active Directory gespeicherte Daten**: Daten können über die User Journey einer Azure AD B2C-Authentifizierung abgerufen werden, indem die Objekt-ID oder ein beliebiger Anmeldename, z.B. die E-Mail-Adresse oder der Benutzername, verwendet wird.  
-- **Bericht zu benutzerspezifischen Überwachungsereignissen**: Daten werden anhand der Objekt-ID indiziert.
+- **In Azure Active Directory gespeicherte Daten:** Sie können Daten über die User Journey einer Azure AD B2C-Authentifizierung abrufen, indem Sie die Objekt-ID oder einen beliebigen Anmeldenamen wie die E-Mail-Adresse oder den Benutzernamen verwenden. 
+- **Bericht zu benutzerspezifischen Überwachungsereignissen:** Sie können Daten anhand der Objekt-ID indizieren.
 
-Im folgenden Beispiel für einen Exportdatenfluss können die Schritte, die für die Anwendung beschrieben werden, auch per Back-End-Prozess oder von einem Benutzer mit einer Administratorrolle im Verzeichnis ausgeführt werden:
+Im folgenden Beispiel für einen Exportdatenfluss lassen sich die Schritte, die für die Anwendung beschrieben werden, entweder per Back-End-Prozess oder von einem Benutzer mit einer Administratorrolle im Verzeichnis ausführen:
 
-1. Der Benutzer meldet sich an der Anwendung an. Azure AD B2C erzwingt bei Bedarf die mehrstufige Authentifizierung.
-2. Die Anwendung verwendet die Anmeldeinformationen des Benutzers, um einen Vorgang der Azure AD-Graph-API zum Abrufen von Benutzerattributen aufzurufen. Die Azure AD-Graph-API stellt die Attributdaten im JSON-Format bereit. Je nach Schema kann der ID-Tokeninhalt so festgelegt werden, dass er alle persönlichen Daten eines Benutzers enthält.
+1. Der Benutzer meldet sich an der Anwendung an. Azure AD B2C erzwingt bei Bedarf die Azure Multi-Factor Authentication.
+2. Die Anwendung verwendet die Anmeldeinformationen des Benutzers, um einen Vorgang der Azure AD-Graph-API zum Abrufen von Benutzerattributen aufzurufen. Die Azure AD-Graph-API stellt die Attributdaten im JSON-Format bereit. Je nach Schema können Sie den ID-Tokeninhalt so festlegen, dass er alle persönlichen Daten eines Benutzers enthält.
 3. Die Anwendung ruft die Überwachungsaktivitäten für den Endbenutzer ab. Die Azure AD-Graph-API stellt die Ereignisdaten für die Anwendung bereit.
 4. Die Anwendung aggregiert die Daten und stellt sie für den Benutzer zur Verfügung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich unter [Verwalten des Benutzerzugriffs in Azure AD B2C](manage-user-access.md) darüber, wie Benutzer auf Ihre Anwendung zugreifen können.
+- Weitere Informationen dazu, wie Benutzer auf Ihre Anwendung zugreifen können, finden Sie unter [Verwalten des Benutzerzugriffs](manage-user-access.md).
 
 
 

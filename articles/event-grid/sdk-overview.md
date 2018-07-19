@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 05/04/2018
+ms.date: 06/29/2018
 ms.author: tomfitz
-ms.openlocfilehash: ebba28e72b3b27729318956bad07b6b6df3f14ac
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 3c085074863aa166a5766116b6c63b7dc341ad96
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823545"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130834"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>Event Grid-SDKs für Verwaltung und Veröffentlichung
 
@@ -43,6 +43,7 @@ Mit den Datenebenen-SDKs können Sie Ereignisse durch Authentifizieren, Bilden d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* Beispielanwendungen finden Sie unter [Codebeispiele für Event Grid](https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid)
 * Eine Einführung zu Event Grid finden Sie unter [Informationen zu Event Grid](overview.md).
 * Informationen zu Event Grid-Befehlen in der Azure-CLI finden Sie unter [Azure-CLI](/cli/azure/eventgrid).
 * Informationen zu Event Grid-Befehlen in PowerShell finden Sie unter [PowerShell](/powershell/module/azurerm.eventgrid).

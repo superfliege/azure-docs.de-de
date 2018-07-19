@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeedes
-ms.openlocfilehash: ee9c1494cb2bca4193bfe8b16b72ba5d317f9f3e
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: cbfb35df529a8caef59c459729225051a45a8ab1
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295469"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041778"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>Tutorial: Azure Active Directory-Integration mit Wingspan eTMF
 
@@ -102,15 +102,15 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Wingspan eTMF** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/wingspanetmf-tutorial/tutorial_wingspanetmf_samlbase.png)
+    ![Configure single sign-on](./media/wingspanetmf-tutorial/tutorial_wingspanetmf_samlbase.png)
 
 3. Führen Sie die folgenden Schritte im Bereich **Domäne und URLs für Wingspan eTMF** aus:
 
-    ![Configure Single Sign-On](./media/wingspanetmf-tutorial/tutorial_wingspanetmf_url11.png)
+    ![Configure single sign-on](./media/wingspanetmf-tutorial/tutorial_wingspanetmf_url11.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<customer name>.<instance name>.mywingspan.com/saml`.
 
@@ -123,11 +123,11 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/wingspanetmf-tutorial/tutorial_wingspanetmf_certificate.png) 
+    ![Configure single sign-on](./media/wingspanetmf-tutorial/tutorial_wingspanetmf_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/wingspanetmf-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/wingspanetmf-tutorial/tutorial_general_400.png)
 
 6. Zum Konfigurieren des einmaligen Anmeldens bei **Wingspan eTMF** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [Wingspan eTMF-Supportteam](http://www.wingspan.com/contact-us/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -184,7 +184,7 @@ In diesem Abschnitt ermöglichen Sie „Britta Simon“ die Verwendung des einma
 
 2. Wählen Sie in der Anwendungsliste **Wingspan eTMF**aus.
 
-    ![Configure Single Sign-On](./media/wingspanetmf-tutorial/tutorial_wingspanetmf_app.png) 
+    ![Configure single sign-on](./media/wingspanetmf-tutorial/tutorial_wingspanetmf_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -204,7 +204,7 @@ In diesem Abschnitt ermöglichen Sie „Britta Simon“ die Verwendung des einma
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich. 
 
-Klicken Sie im Zugriffsbereich auf die Kachel „Wingspan eTMF“. Sie werden auf die Anmeldeseite der Organisation weitergeleitet. Nach erfolgreicher Anmeldung werden Sie auch bei Ihrer Wingspan eTMF-Anwendung angemeldet. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Klicken Sie im Zugriffsbereich auf die Kachel „Wingspan eTMF“. Sie werden auf die Anmeldeseite der Organisation weitergeleitet. Nach erfolgreicher Anmeldung werden Sie auch bei Ihrer Wingspan eTMF-Anwendung angemeldet. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

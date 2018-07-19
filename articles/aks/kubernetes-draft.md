@@ -2,19 +2,19 @@
 title: Verwenden von Draft mit AKS und Azure Container Registry
 description: Verwenden von Draft mit AKS und Azure Container Registry
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/29/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: a5dfecefb6ce1d74e02c64371a864a6d3b07a2e1
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 8f273a5a2c47b25dc339fd63df127d141fe2f8e2
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34257314"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130242"
 ---
 # <a name="use-draft-with-azure-kubernetes-service-aks"></a>Verwenden von Draft mit Azure Kubernetes Service (AKS)
 
@@ -58,11 +58,11 @@ Draft erstellt Containerimages lokal und stellt sie anschließend aus der lokale
 
 ### <a name="create-trust-between-aks-cluster-and-acr"></a>Erstellen der Vertrauensstellung zwischen dem AKS-Cluster und ACR
 
-Zum Einrichten der Vertrauensstellung zwischen einem AKS-Cluster und einer ACR-Registrierung ändern Sie den Azure Active Directory-Dienstprinzipal, der für AKS verwendet wird, indem Sie ihm die Rolle „Mitwirkender“ mit dem Umfang des ACR-Repositorys hinzufügen. Führen Sie hierzu die folgenden Befehle aus, und ersetzen Sie dabei _&lt;aks-rg-name&gt;_ und _&lt;aks-cluster-name&gt;_ mit der Ressourcengruppe und dem Namen Ihres AKS-Clusters sowie _&lt;acr-rg-nam&gt;_ und _&lt;acr-repo-name&gt;_ mit der Ressourcengruppe und dem Repositorynamen Ihres ACR-Repositorys, mit dem Sie die Vertrauensstellung erstellen möchten.
+Zum Einrichten der Vertrauensstellung zwischen einem AKS-Cluster und einer ACR-Registrierung ändern Sie den Azure Active Directory-Dienstprinzipal, der für AKS verwendet wird, indem Sie ihm die Rolle „Mitwirkender“ mit dem Umfang der ACR-Registrierung hinzufügen. Führen Sie hierzu die folgenden Befehle aus, und ersetzen Sie dabei _&lt;aks-rg-name&gt;_ und _&lt;aks-cluster-name&gt;_ mit der Ressourcengruppe und dem Namen Ihres AKS-Clusters sowie _&lt;acr-rg-nam&gt;_ und _&lt;acr-repo-name&gt;_ mit der Ressourcengruppe und dem Registrierungsnamen Ihrer ACR-Registrierung, mit dem Sie die Vertrauensstellung erstellen möchten.
 
 ```console
 export AKS_SP_ID=$(az aks show -g <aks-rg-name> -n <aks-cluster-name> --query "servicePrincipalProfile.clientId" -o tsv)
-export ACR_RESOURCE_ID=$(az acr show -g <acr-rg-name> -n <acr-repo-name> --query "id" -o tsv)
+export ACR_RESOURCE_ID=$(az acr show -g <acr-rg-name> -n <acr-registry-name> --query "id" -o tsv)
 az role assignment create --assignee $AKS_SP_ID --scope $ACR_RESOURCE_ID --role contributor
 ```
 

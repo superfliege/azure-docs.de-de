@@ -3,15 +3,15 @@ title: Verwalten des Konfigurationsservers für die VMware-Notfallwiederherstell
 description: In diesem Artikel wird beschrieben, wie Sie einen vorhandenen Konfigurationsserver für die VMware-Notfallwiederherstellung in Azure mit Azure Site Recovery verwalten.
 author: rayne-wiselman
 ms.service: site-recovery
-ms.topic: conceptual
-ms.date: 06/20/2018
+ms.topic: article
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 753e123c660b1aacea1157157f0e580e15c47536
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: d7c2224e6529d1675cdad5b29de887f19135a2a6
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287404"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916909"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>Verwalten des Konfigurationsservers für virtuelle VMware-Computer
 
@@ -96,21 +96,18 @@ Aktualisieren Sie den Server wie folgt:
 
 1. Gehen Sie im Tresor zu **Verwalten** > **Site Recovery-Infrastruktur** > **Konfigurationsserver**.
 2. Wenn ein Update verfügbar ist, wird ein Link in der Spalte **Agent-Version** angezeigt.
-
-    ![Aktualisieren](./media/vmware-azure-manage-configuration-server/update2.png)
-
-1. Laden Sie die Datei mit dem Update-Installer auf den Konfigurationsserver herunter.
+    ![Update](./media/vmware-azure-manage-configuration-server/update2.png)
+3. Laden Sie die Datei mit dem Update-Installer auf den Konfigurationsserver herunter.
 
     ![Aktualisieren](./media/vmware-azure-manage-configuration-server/update1.png)
 
 4. Doppelklicken Sie auf die Datei, um das Installationsprogramm auszuführen.
-2. Das Installationsprogramm erkennt die aktuelle Version, die auf dem Computer ausgeführt wird. Klicken Sie auf **Ja**, um das Upgrade zu starten. 
-3. Nach Abschluss des Upgrades wird die Serverkonfiguration überprüft.
+5. Das Installationsprogramm erkennt die aktuelle Version, die auf dem Computer ausgeführt wird. Klicken Sie auf **Ja**, um das Upgrade zu starten.
+6. Nach Abschluss des Upgrades wird die Serverkonfiguration überprüft.
 
     ![Aktualisieren](./media/vmware-azure-manage-configuration-server/update3.png)
-
-4. Klicken Sie auf **Fertig stellen**, um das Installationsprogramm zu schließen.
-
+    
+7. Klicken Sie auf **Fertig stellen**, um das Installationsprogramm zu schließen.
 
 ## <a name="delete-or-unregister-a-configuration-server"></a>Löschen oder Aufheben der Registrierung eines Konfigurationsservers
 
@@ -150,7 +147,12 @@ Optional können Sie den Konfigurationsserver mithilfe von PowerShell löschen:
 > [!NOTE]
 > Sie können die Option **-Force** im Cmdlet Remove-AzureRmSiteRecoveryFabric verwenden, um das Löschen des Konfigurationsservers zu erzwingen.
  
+## <a name="generate-configuration-server-passphrase"></a>Generieren der Passphrase des Konfigurationsservers
 
+1. Melden Sie sich bei Ihrem Konfigurationsserver an, und öffnen Sie ein Eingabeaufforderungsfenster als Administrator.
+2. Um das Verzeichnis in den Ordner „bin“ zu ändern, führen Sie den Befehl **cd %ProgramData%\ASR\home\svsystems\bin** aus.
+3. Um die Passphrasedatei zu generieren, führen Sie **genpassphrase.exe -v > MobSvc.passphrase** aus.
+4. Die Passphrase wird in der Datei gespeichert, die sich unter **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase** befindet.
 
 ## <a name="renew-ssl-certificates"></a>Erneuern von SSL-Zertifikaten
 

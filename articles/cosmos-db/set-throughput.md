@@ -7,28 +7,28 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: d8b7ed593fcd307e6709c17bafbcb5a22661dc83
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 99cd7fe6f9f46ff4d6dbbf6a6e024b3b32679724
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285772"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444264"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Festlegen und Abrufen des Durchsatzes für Azure Cosmos DB-Container und -Datenbank
 
-Sie können den Durchsatz für einen Azure Cosmos DB-Container oder eine Gruppe von Containern mithilfe des Azure-Portals oder der Client-SDKs festlegen. Wenn Sie den Durchsatz für eine Gruppe von Containern bereitstellen, wird dieser von allen diesen Containern gemeinsam genutzt. Die Bereitstellung des Durchsatzes für einzelne Container garantiert die Reservierung des Durchsatzes für diesen spezifischen Container. Andererseits ermöglicht der die Bereitstellung des Durchsatzes für eine Datenbank die gemeinsame Nutzung des Durchsatzes für alle Container, die zu dieser Datenbank gehören. Innerhalb einer Azure Cosmos DB-Datenbank können Sie eine Gruppe von Containern verwenden, die sich den Durchsatz teilen, sowie Container, die über einen eigenen Durchsatz verfügen. 
+Sie können den Durchsatz für einen Azure Cosmos DB-Container oder eine Gruppe von Containern mithilfe des Azure-Portals oder der Client-SDKs festlegen. 
 
-Basierend auf dem bereitgestellten Durchsatz ordnet Azure Cosmos DB physische Partitionen zum Hosten Ihrer Container zu, und Daten werden gemäß ihrem Wachstum zwischen Partitionen aufgeteilt bzw. neu verteilt.
+**Bereitstellen von Durchsatz für einen einzelnen Container:** Wenn Sie den Durchsatz für eine Gruppe von Containern bereitstellen, wird dieser von allen diesen Containern gemeinsam genutzt. Die Bereitstellung des Durchsatzes für einzelne Container garantiert die Reservierung des Durchsatzes für diesen spezifischen Container. Beim Zuweisen von RUs pro Sekunde für einzelne Container können diese *mit fester Größe* oder *unbegrenzter Größe* erstellt werden. Container mit fester Größe weisen eine Obergrenze von 10 GB und 10.000 RUs/Sek. (Request Units, Anforderungseinheiten) auf. Um einen unbegrenzten Container zu erstellen, müssen Sie einen Mindestdurchsatz von 1.000 RU/s und einen [Partitionsschlüssel](partition-data.md) angeben. Da Ihre Daten möglicherweise auf mehrere Partitionen aufgeteilt werden müssen, ist es notwendig, einen Partitionsschlüssel mit hoher Kardinalität (Hunderte bis Millionen von unterschiedlichen Werten) auszuwählen. Durch Auswahl eines Partitionsschlüssels mit vielen unterschiedlichen Werten stellen Sie sicher, dass Container/Tabelle/Graph und Anforderungen von Azure Cosmos DB einheitlich skaliert werden können. 
 
-Beim Zuweisen von RUs pro Sekunde für einzelne Container können diese *mit fester Größe* oder *unbegrenzter Größe* erstellt werden. Container mit fester Größe weisen eine Obergrenze von 10 GB und 10.000 RUs/Sek. (Request Units, Anforderungseinheiten) auf. Um einen unbegrenzten Container zu erstellen, müssen Sie einen Mindestdurchsatz von 1.000 RU/s und einen [Partitionsschlüssel](partition-data.md) angeben. Da Ihre Daten möglicherweise auf mehrere Partitionen aufgeteilt werden müssen, ist es notwendig, einen Partitionsschlüssel mit hoher Kardinalität (Hunderte bis Millionen von unterschiedlichen Werten) auszuwählen. Durch Auswahl eines Partitionsschlüssels mit vielen unterschiedlichen Werten stellen Sie sicher, dass Container/Tabelle/Graph und Anforderungen von Azure Cosmos DB einheitlich skaliert werden können. 
+**Bereitstellen von Durchsatz für eine Gruppe von Containern oder eine Datenbank:** Die Bereitstellung des Durchsatzes für eine Datenbank ermöglicht die gemeinsame Nutzung des Durchsatzes für alle Container, die zu dieser Datenbank gehören. Innerhalb einer Azure Cosmos DB-Datenbank können Sie eine Gruppe von Containern verwenden, die sich den Durchsatz teilen, sowie Container, die über einen eigenen Durchsatz verfügen. Wenn Sie RUs pro Sekunde für eine Gruppe von Containern zuweisen, werden die Container dieser Gruppe als *unbegrenzte* Container behandelt und müssen einen Partitionsschlüssel aufweisen.
 
-Wenn Sie RUs pro Sekunde für eine Gruppe von Containern zuweisen, werden die Container dieser Gruppe als *unbegrenzte* Container behandelt und müssen einen Partitionsschlüssel aufweisen.
+Basierend auf dem bereitgestellten Durchsatz ordnet Azure Cosmos DB physische Partitionen zum Hosten Ihrer Container zu, und Daten werden gemäß ihrem Wachstum zwischen Partitionen aufgeteilt bzw. neu verteilt. Die Bereitstellung auf Container- und Datenbankebene wird gesondert angeboten. Für einen Wechsel zwischen diesen Bereitstellungsmethoden müssen Daten von der Quelle zum Ziel migriert werden. Dies bedeutet, dass Sie eine neue Datenbank oder eine neue Sammlung erstellen müssen und anschließend Daten mithilfe der [Bulk-Executor-Bibliothek](bulk-executor-overview.md) oder mithilfe von [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) migrieren müssen. Die folgende Abbildung zeigt die Bereitstellung des Durchsatzes auf verschiedenen Ebenen:
 
 ![Bereitstellen von Anforderungseinheiten für einzelne Container und Gruppen von Containern](./media/request-units/provisioning_set_containers.png)
 
-Dieser Artikel führt Sie durch die Schritte zum Konfigurieren des Durchsatzes auf unterschiedlichen Ebenen für ein Azure Cosmos DB-Konto. 
+Im nächsten Abschnitt lernen Sie die Schritte zum Konfigurieren des Durchsatzes auf unterschiedlichen Ebenen für ein Azure Cosmos DB-Konto kennen. 
 
 ## <a name="provision-throughput-by-using-azure-portal"></a>Bereitstellen des Durchsatzes mithilfe des Azure-Portals
 
@@ -88,6 +88,8 @@ Dieser Artikel führt Sie durch die Schritte zum Konfigurieren des Durchsatzes a
 
 Nachfolgend finden Sie einige Überlegungen, die Ihnen helfen, sich für eine Strategie zur Reservierung von Durchsatz zu entscheiden.
 
+### <a name="considerations-when-provisioning-throughput-at-the-database-level"></a>Überlegungen zur Bereitstellung des Durchsatzes auf Datenbankebene
+
 Ziehen Sie in den folgenden Fällen die Bereitstellung des Durchsatzes auf Datenbankebene (d.h. für eine Gruppe von Containern) in Betracht:
 
 * Wenn Sie über mindestens ein Dutzend Container verfügen, bei denen einige oder alle den Durchsatz gemeinsam nutzen könnten.  
@@ -97,6 +99,8 @@ Ziehen Sie in den folgenden Fällen die Bereitstellung des Durchsatzes auf Daten
 * Wenn Sie ungeplante Auslastungsspitzen berücksichtigen möchten, indem Sie zusammengelegten Durchsatz auf Datenbankebene verwenden.  
 
 * Anstatt den Durchsatz auf einen einzelnen Container festzulegen, sind Sie daran interessiert, den Gesamtdurchsatz über eine Gruppe von Containern innerhalb der Datenbank zu verteilen.
+
+### <a name="considerations-when-provisioning-throughput-at-the-container-level"></a>Überlegungen zur Bereitstellung des Durchsatzes auf Containerebene
 
 Ziehen Sie in den folgenden Fällen die Bereitstellung des Durchsatzes für einen einzelnen Container in Betracht:
 
@@ -135,6 +139,7 @@ In der folgenden Tabelle sind die für Container verfügbaren Durchsätze aufgef
 
 ## <a name="set-throughput-by-using-sql-api-for-net"></a>Festlegen des Durchsatzes mithilfe der SQL-API für .NET
 
+### <a name="set-throughput-at-the-container-level"></a>Festlegen des Durchsatzes auf Containerebene
 Hier sehen Sie einen Codeausschnitt zum Erstellen eines Containers mit 3.000 Anforderungseinheiten pro Sekunde für einen einzelnen Container unter Verwendung der .NET SDK der SQL-API:
 
 ```csharp
@@ -147,6 +152,8 @@ await client.CreateDocumentCollectionAsync(
     myCollection,
     new RequestOptions { OfferThroughput = 3000 });
 ```
+
+### <a name="set-throughput-at-the-for-a-set-of-containers-or-at-the-database-level"></a>Festlegen des Durchsatzes für eine Gruppe von Containern oder auf Datenbankebene
 
 Hier sehen Sie einen Codeausschnitt zum Bereitstellen von 100.000 Anforderungseinheiten pro Sekunde für eine Gruppe von Containern unter Verwendung der .NET SDK der SQL-API:
 

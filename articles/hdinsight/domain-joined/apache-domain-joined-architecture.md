@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: omidm
-ms.openlocfilehash: f4380f5d6ec379d5807f697294623a672bd270ae
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 8503534031dc5774e64c58edd3e158162a5a6aee
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715240"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110453"
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>Planen von in die Azure-Domäne eingebundenen Hadoop-Clustern in HDInsight
 
@@ -50,7 +50,7 @@ Der folgende Screenshot zeigt eine in contoso.com erstellte OE. Einige der Diens
 HDInsight unterstützt derzeit nur AAD-DS als Hauptdomänencontroller, mit dem der Cluster bezüglich der Kerberos-Authentifizierung kommuniziert. Andere komplexe AD-Setups sind jedoch auch möglich, solange AAD-DS für den HDI-Zugriff aktiviert wird.
 
 - **[Azure Active Directory Domain Services (AAD-DS)](../../active-directory-domain-services/active-directory-ds-overview.md)**: Dieser Dienst stellt eine verwaltete Domäne bereit, die vollständig mit Windows Server Active Directory kompatibel ist. Microsoft übernimmt in einem Hochverfügbarkeitssetup (Highly Available, HA) die Verwaltung, das Patchen und das Überwachen der Domäne. Sie können Ihren Cluster bereitstellen, ohne sich Sorgen um die Verwaltung von Domänencontrollern zu machen. Benutzer, Gruppen und Kennwörter werden über Azure Active Directory (AAD) [Unidirektionale Synchronisierung von AAD zu AAD-DS] synchronisiert, sodass Benutzer sich mit denselben Unternehmensanmeldeinformationen beim Cluster anmelden können. Weitere Informationen finden Sie unter [Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern mit Azure Active Directory Domain Services](./apache-domain-joined-configure-using-azure-adds.md).
-- **Lokales AD oder AD auf virtuellen IaaS-Computern**: Wenn Sie über ein lokales AD oder andere komplexere AD-Setups für Ihre Domäne verfügen, können Sie diese Identitäten mithilfe von AD Connect mit AAD synchronisieren und dann AAD-DS auf diesem AD-Mandanten aktivieren. Da Kerberos auf Kennworthashes angewiesen ist, müssen Sie [die Kennworthashsynchronisierung auf AAD-DS aktivieren](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). Wenn Sie den Verbund mit AD Federation Services (ADFS) verwenden, können Sie optional die Kennworthashsynchronisierung als Sicherung einrichten, für den Fall, dass in Ihrer ADFS-Infrastruktur ein Fehler auftritt. Weitere Informationen finden Sie unter [Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](../../active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md). Die alleinige Verwendung von lokalem AD oder AD auf IaaS-VMs ohne AAD und AAD-DS ist keine unterstützte Konfiguration für die HDI-Clusterdomäneneinbindung.
+- **Lokales AD oder AD auf virtuellen IaaS-Computern**: Wenn Sie über ein lokales AD oder andere komplexere AD-Setups für Ihre Domäne verfügen, können Sie diese Identitäten mithilfe von AD Connect mit AAD synchronisieren und dann AAD-DS auf diesem AD-Mandanten aktivieren. Da Kerberos auf Kennworthashes angewiesen ist, müssen Sie [die Kennworthashsynchronisierung auf AAD-DS aktivieren](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). Wenn Sie den Verbund mit AD Federation Services (ADFS) verwenden, können Sie optional die Kennworthashsynchronisierung als Sicherung einrichten, für den Fall, dass in Ihrer ADFS-Infrastruktur ein Fehler auftritt. Weitere Informationen finden Sie unter [Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](../../active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md). Die alleinige Verwendung von lokalem AD oder AD auf IaaS-VMs ohne AAD und AAD-DS ist keine unterstützte Konfiguration für den Domänenbeitritt eines HDI-Clusters.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern](apache-domain-joined-configure-using-azure-adds.md).

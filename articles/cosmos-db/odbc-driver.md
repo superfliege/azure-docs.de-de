@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 11e0a4e38739a775d977cf76b72d4dc92942a7b0
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e93b241c79a50380f4ef1538dfbf7615232e6c49
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725090"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096508"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Herstellen einer Azure Cosmos DB-Verbindung mithilfe von BI-Analysetools per ODBC-Treiber
 
@@ -63,7 +63,7 @@ Nun wenden wir uns dem ODBC-Treiber zu.
 4. Klicken Sie auf die Schaltfläche **Testen**, um sicherzustellen, dass Sie eine Verbindung mit Ihrem Azure Cosmos DB-Konto herstellen können. 
 5. Klicken Sie auf **Erweiterte Optionen**, und legen Sie die folgenden Werte fest:
     - **Query Consistency** (Abfragekonsistenz): Wählen Sie die [Konsistenzebene](consistency-levels.md) für Ihre Vorgänge aus. Die Standardeinstellung lautet „Sitzung“.
-    - **Anzahl von Wiederholungen**: Geben Sie ein, wie oft für einen Vorgang ein Wiederholungsversuch durchgeführt werden soll, falls die erste Anforderung aufgrund einer Drosselung des Diensts nicht abgeschlossen werden konnte.
+    - **Anzahl von Wiederholungen:** Geben Sie ein, wie oft für einen Vorgang ein Wiederholungsversuch durchgeführt werden soll, falls die erste Anforderung aufgrund einer Ratenbegrenzung des Diensts nicht abgeschlossen werden konnte.
     - **Schemadatei**: Hier haben Sie verschiedene Optionen.
         - Wenn Sie diesen Eintrag unverändert (leer) lassen, scannt der Treiber die erste Seite der Daten für alle Sammlungen, um jeweils das Schema für die Sammlung zu ermitteln. Dies wird als Sammlungszuordnung bezeichnet. Ohne definierte Schemadatei muss der Treiber den Scanvorgang bei jeder Treibersitzung durchführen. Dies kann zu einer längeren Startdauer für Anwendungen führen, die den DSN nutzen. Es ist ratsam, für einen DSN immer eine Schemadatei zuzuordnen.
         - Falls Sie bereits über eine Schemadatei verfügen (ggf. mit dem [Schema-Editor](#schema-editor) erstellt), können Sie auf **Durchsuchen** klicken, zur Datei navigieren und dann auf **Speichern** und auf **OK** klicken.

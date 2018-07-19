@@ -8,15 +8,15 @@ ms.topic: reference
 ms.date: 4/12/2018
 ms.author: dukek
 ms.component: activitylog
-ms.openlocfilehash: f6f6c59195fdc79959a1964c1f2770c3b6a68b22
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 123ae27310d70812918f3c81ac3b9a71959a6c2c
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264550"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917226"
 ---
 # <a name="azure-activity-log-event-schema"></a>Ereignisschema des Azure-Aktivitätsprotokolls
-Das **Azure-Aktivitätsprotokoll** ist ein Protokoll, das einen Einblick in alle Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Dieser Artikel beschreibt das Ereignisschema pro Datenkategorie.
+Das **Azure-Aktivitätsprotokoll** ist ein Protokoll, das einen Einblick in alle Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Dieser Artikel beschreibt das Ereignisschema pro Datenkategorie. Das Schema der Daten unterscheidet sich, je nachdem, ob Sie die Daten im Portal, in PowerShell, auf der Befehlszeilenschnittstelle oder direkt über die REST-API lesen, im Gegensatz zum [Streamen der Daten in den Speicher oder zu Event Hubs mithilfe eines Protokollprofils](./monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile). Im Beispiel unten ist zu sehen, in welcher Weise das Schema über das Portal, PowerShell, die Befehlszeilenschnittstelle und REST-API zur Verfügung gestellt wird. Eine Zuordnung dieser Eigenschaften zum [Azure-Diagnoseprotokollschema](./monitoring-diagnostic-logs-schema.md) findet sich am Ende dieses Artikels.
 
 ## <a name="administrative"></a>Administrative
 Diese Kategorie enthält die Datensätze aller Erstellungs-, Aktualisierungs-, Lösch- und Aktionsvorgänge, die über Resource Manager ausgeführt wurden. Zu den Ereignissen in dieser Kategorie gehört das Erstellen eines virtuellen Computers und das Löschen einer Netzwerksicherheitsgruppe. Jede Aktion, die von einem Benutzer oder einer Anwendung mithilfe von Resource Manager ausgeführt wird, wird als Vorgang für einen bestimmten Ressourcentyp modelliert. Wenn der Vorgangstyp „Schreiben“, „Löschen“ oder „Aktion“ ist, werden die Datensätze zum Start und zum Erfolg oder Fehler dieses Vorgangs in der Kategorie „Administration“ aufgezeichnet. Die Kategorie „Administration“ enthält außerdem alle Änderungen an der rollenbasierten Zugriffssteuerung in einem Abonnement.
@@ -131,7 +131,7 @@ Diese Kategorie enthält die Datensätze aller Erstellungs-, Aktualisierungs-, L
 | subStatus |Normalerweise der HTTP-Statuscode des entsprechenden REST-Aufrufs, kann aber auch andere Zeichenfolgen zum Beschreiben eines Unterstatus enthalten, z.B. diese häufigen Werte: OK (HTTP-Statuscode: 200), Erstellt (HTTP-Statuscode: 201), Akzeptiert (HTTP-Statuscode: 202), Kein Inhalt (HTTP-Statuscode: 204), Ungültige Anforderung (HTTP-Statuscode: 400), Nicht gefunden (HTTP-Statuscode: 404), Konflikt (HTTP-Statuscode: 409), Interner Serverfehler (HTTP-Statuscode: 500), Dienst nicht verfügbar (HTTP-Statuscode: 503), Gatewaytimeout (HTTP-Statuscode: 504). |
 | eventTimestamp |Zeitstempel der Ereignisgenerierung durch den Azure-Dienst, der die zum Ereignis gehörende Anforderung verarbeitet hat. |
 | submissionTimestamp |Zeitstempel des Zeitpunkts, ab dem das Ereignis für Abfragen verfügbar war. |
-| subscriptionId |Azure-Abonnement-ID |
+| subscriptionId |Die Azure-Abonnement-ID. |
 
 ## <a name="service-health"></a>Dienstintegrität
 Diese Kategorie enthält Datensätze zu allen Incidents im Zusammenhang mit der Dienstintegrität, die in Azure aufgetreten sind. Ein Beispiel für ein Ereignis in dieser Kategorie ist „Ausfallzeiten bei SQL Azure in der Region „USA, Osten““. Für Ereignisse zur Dienstintegrität gibt es fünf Varianten: Aktion erforderlich, unterstützte Wiederherstellung, Incident, Wartung, Information oder Sicherheit. Sie werden nur angezeigt, wenn eine Ressource in Ihrem Abonnement von dem Ereignis betroffen wäre.
@@ -277,7 +277,7 @@ Diese Kategorie enthält die Datensätze zu allen Aktivierungen von Azure-Warnun
 | subStatus | In der Regel für Warnungen null. |
 | eventTimestamp |Zeitstempel der Ereignisgenerierung durch den Azure-Dienst, der die zum Ereignis gehörende Anforderung verarbeitet hat. |
 | submissionTimestamp |Zeitstempel des Zeitpunkts, ab dem das Ereignis für Abfragen verfügbar war. |
-| subscriptionId |Azure-Abonnement-ID |
+| subscriptionId |Die Azure-Abonnement-ID. |
 
 ### <a name="properties-field-per-alert-type"></a>Feld „properties“ pro Warnungstyp
 Das Feld „properties“ enthält abhängig von der Quelle des Warnungsereignisses unterschiedliche Werte. Zwei allgemeine Ereignisanbieter für Warnungen sind Aktivitätsprotokollwarnungen und Metrikwarnungen.
@@ -391,7 +391,7 @@ Diese Kategorie enthält Datensätze zu Ereignissen im Zusammenhang mit der Engi
 | subStatus | In der Regel für die automatische Skalierung null. |
 | eventTimestamp |Zeitstempel der Ereignisgenerierung durch den Azure-Dienst, der die zum Ereignis gehörende Anforderung verarbeitet hat. |
 | submissionTimestamp |Zeitstempel des Zeitpunkts, ab dem das Ereignis für Abfragen verfügbar war. |
-| subscriptionId |Azure-Abonnement-ID |
+| subscriptionId |Die Azure-Abonnement-ID. |
 
 ## <a name="security"></a>Sicherheit
 Diese Kategorie enthält den Datensatz, der von Warnungen in Azure Security Center generiert wurde. Ein Beispiel für den Typ der Ereignisse, die in dieser Kategorie angezeigt werden, ist „Verdächtige Datei mit doppelter Erweiterung ausgeführt“.
@@ -478,7 +478,7 @@ Diese Kategorie enthält den Datensatz, der von Warnungen in Azure Security Cent
 | subStatus | Für Sicherheitsereignisse in der Regel NULL. |
 | eventTimestamp |Zeitstempel der Ereignisgenerierung durch den Azure-Dienst, der die zum Ereignis gehörende Anforderung verarbeitet hat. |
 | submissionTimestamp |Zeitstempel des Zeitpunkts, ab dem das Ereignis für Abfragen verfügbar war. |
-| subscriptionId |Azure-Abonnement-ID |
+| subscriptionId |Die Azure-Abonnement-ID. |
 
 ## <a name="recommendation"></a>Empfehlung
 Diese Kategorie enthält den Datensatz mit den neuen Empfehlungen, die für Ihre Dienste generiert werden. Ein Beispiel für eine Empfehlung wäre „Verwenden Sie für eine verbesserte Fehlertoleranz Verfügbarkeitsgruppen“. Es gibt 4 Arten von Empfehlungsereignissen, die generiert werden können: Hochverfügbarkeit, Leistung, Sicherheit und Kostenoptimierung. 
@@ -553,13 +553,37 @@ Diese Kategorie enthält den Datensatz mit den neuen Empfehlungen, die für Ihre
 | Ressourcen-ID |Ressourcen-ID der Ressource, für die die Empfehlung gilt. |
 | status | Immer „Aktiv“ |
 | submissionTimestamp |Zeitstempel des Zeitpunkts, ab dem das Ereignis für Abfragen verfügbar war. |
-| subscriptionId |Azure-Abonnement-ID |
+| subscriptionId |Die Azure-Abonnement-ID. |
 | Eigenschaften |Satz mit `<Key, Value>`-Paaren (also ein Wörterbuch), die die Details der Empfehlung beschreiben.|
 | properties.recommendationSchemaVersion| Schemaversion der Empfehlungseigenschaften, die im Aktivitätsprotokolleintrag veröffentlicht werden. |
 | properties.recommendationCategory | Kategorie der Empfehlung. Mögliche Werte sind „Hochverfügbarkeit“, „Leistung“, „Sicherheit“ und „Kosten“. |
 | properties.recommendationImpact| Auswirkung der Empfehlung. Mögliche Werte sind „Hoch“, „Mittel“ oder „Niedrig“. |
 | properties.recommendationRisk| Risiko der Empfehlung. Mögliche Werte sind „Fehler“, „Warnung“, „Kein“. |
 
+## <a name="mapping-to-diagnostic-logs-schema"></a>Zuordnung zum Diagnoseprotokollschema
+
+Beim Streamen des Azure-Aktivitätsprotokolls an ein Speicherkonto oder den Event Hubs-Namespace entsprechen die Daten dem [Azure-Diagnoseprotokollschema](./monitoring-diagnostic-logs-schema.md). Hier finden Sie die Zuordnung der Eigenschaften aus dem oben genannten Schema zum Diagnoseprotokollschema:
+
+| Eigenschaft im Diagnoseprotokollschema | Eigenschaft im REST-API-Schema des Aktivitätsprotokolls | Notizen |
+| --- | --- | --- |
+| time | eventTimestamp |  |
+| Ressourcen-ID | Ressourcen-ID | „subscriptionId“, „resourceType“ und „resourceGroupName“ werden alle aus der „resourceId“ abgeleitet. |
+| operationName | operationName.value |  |
+| category | Teil des Vorgangsnamens | Entnahme des Vorgangstyps – „Write“/„Delete“/„Action“ |
+| resultType | status.value | |
+| resultSignature | substatus.value | |
+| resultDescription | Beschreibung |  |
+| durationMs | N/V | Immer 0 |
+| callerIpAddress | httpRequest.clientIpAddress |  |
+| correlationId | correlationId |  |
+| identity | Ansprüche und Autorisierungseigenschaften |  |
+| Ebene | Ebene |  |
+| location | N/V | Ort, an dem das Ereignis verarbeitet wurde. *Dies ist nicht der Speicherort der Ressource, sondern der Ort, an dem das Ereignis verarbeitet wurde. Diese Eigenschaft wird in einem kommenden Update entfernt.* |
+| Eigenschaften | properties.eventProperties |  |
+| properties.eventCategory | category | Wenn „properties.eventCategory“ nicht vorhanden ist, ist die Kategorie „Administrative“ |
+| properties.eventName | eventName |  |
+| properties.operationId | operationId |  |
+| properties.eventProperties | Eigenschaften |  |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/16/2018
+ms.date: 07/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 7a0f9e54b920ee2c16a141ee62d22784f75c0af6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 79b0aa9ae435defa980b4da0c8d376fdb69542f3
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224160"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866558"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>Tutorial: Azure Active Directory-Integration mit Cisco Cloud
 
@@ -101,7 +101,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
+
     ![Dialogfeld „Einmaliges Anmelden“](./media/ciscocloud-tutorial/tutorial_ciscocloud_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Cisco Cloud** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
@@ -117,19 +117,45 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![SSO-Informationen zur Domäne und zu den URLs für Cisco Cloud](./media/ciscocloud-tutorial/tutorial_ciscocloud_url1.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL wie die Folgende ein: `https://<subdomain>.cloudapps.cisco.com`.
-     
-    > [!NOTE] 
+
+    > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für Bezeichner, Antwort-URL und Anmelde-URL. Wenden Sie sich an das [Supportteam für den Cisco Cloud-Client](mailto:cpr-ops@cisco.com), um diese Werte zu erhalten.
 
-5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
+5. Die Cisco Cloud-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten.
+ Der folgende Screenshot zeigt eine Beispielausgabe:
+
+    ![Configure Single Sign-On](./media/ciscocloud-tutorial/attribute.png)
+
+6. Aktivieren Sie im Abschnitt **Benutzerattribute** das Kontrollkästchen **Alle weiteren Benutzerattribute anzeigen und bearbeiten**, um die Attribute zu erweitern. Führen Sie die folgenden Schritte für jedes der angezeigten Attribute aus:
+
+    | Attributname | Attributwert |
+    | ---------------| ----------------|
+    | country      |user.country |
+    | company      |user.companyname |
+
+    a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
+
+    ![Configure Single Sign-On](./media/ciscocloud-tutorial/tutorial_attribute_04.png)
+
+    ![Configure Single Sign-On](./media/ciscocloud-tutorial/tutorial_attribute_05.png)
+
+    b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
+
+    c. Geben Sie in der Liste **Wert** den für diese Zeile angezeigten Wert ein.
+
+    d. Lassen Sie das Feld **Namespace** leer.
+
+    e. Klicken Sie auf **OK**.
+
+7. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
 
     ![Downloadlink für das Zertifikat](./media/ciscocloud-tutorial/tutorial_ciscocloud_certificate.png)
 
-6. Klicken Sie auf die Schaltfläche **Save** .
+8. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/ciscocloud-tutorial/tutorial_general_400.png)
 
-7. Zum Konfigurieren des einmaligen Anmeldens bei **Cisco Cloud** müssen Sie die **Verbundmetadaten-URL der App**-Datei an das [Supportteam von Cisco Cloud](mailto:cpr-ops@cisco.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+9. Zum Konfigurieren des einmaligen Anmeldens bei **Cisco Cloud** müssen Sie die **Verbundmetadaten-URL der App**-Datei an das [Supportteam von Cisco Cloud](mailto:cpr-ops@cisco.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 

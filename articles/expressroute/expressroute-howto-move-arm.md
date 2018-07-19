@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/03/2017
+ms.date: 06/28/2018
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 20914eec070452186295f6d87a85ea0675ebaf4c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 0c3a1a57a89d716245dc075e47b7970cb228ff50
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060085"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100452"
 ---
 # <a name="move-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model-using-powershell"></a>Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell mithilfe von PowerShell
 
@@ -97,9 +97,7 @@ Sie können Ihre ExpressRoute-Verbindung jetzt vom klassischen Bereitstellungsmo
 Move-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
 ```
 
-> [!NOTE]
-> Im klassischen Modus basiert eine ExpressRoute-Verbindung nicht auf einer Verknüpfung mit einer Region. In Resource Manager (ARM) muss jede Ressource einer Azure-Region zugeordnet sein. Bei der im Cmdlet „Move-AzureRmExpressRouteCircuit“ angegebenen Region kann es sich aus technischer Sicht um eine beliebige Region handeln. Für organisatorische Zwecke empfiehlt es sich, eine Region auszuwählen, die den Peeringstandort genau darstellt.
-> 
+Im klassischen Modus basiert eine ExpressRoute-Verbindung nicht auf einer Verknüpfung mit einer Region. In Resource Manager muss jedoch jede Ressource einer Azure-Region zugeordnet sein. Bei der im Cmdlet „Move-AzureRmExpressRouteCircuit“ angegebenen Region kann es sich aus technischer Sicht um eine beliebige Region handeln. Für organisatorische Zwecke empfiehlt es sich, eine Region auszuwählen, die den Peeringstandort genau darstellt.
 
 > [!NOTE]
 > Nachdem der Verschiebevorgang abgeschlossen wurde, wird der neue Name (der im vorherigen Cmdlet aufgeführt wurde), zum Verweis auf die Ressource verwendet. Die Verbindung wird im Grunde umbenannt.

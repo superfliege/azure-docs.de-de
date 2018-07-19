@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 32cc1a436521574917c8e52b2fa4e045d32a4f09
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 899e5dc13dfaf7d7545955e7b4b73939c3275d3f
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062573"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930306"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Ausführen von Runbooks auf einem Hybrid Runbook Worker
 
@@ -77,7 +77,7 @@ Verwenden Sie das folgende Verfahren, um ein „RunAs“-Konto für eine Hybrid 
 
 ### <a name="automation-run-as-account"></a>Ausführendes Automation-Konto
 
-Im Rahmen Ihres automatisierten Buildprozesses für die Bereitstellung von Ressourcen in Azure ist es unter Umständen erforderlich, auf lokale Systeme zuzugreifen, um einen Task oder eine Reihe von Schritten in Ihrer Bereitstellungssequenz zu unterstützen. Um die Authentifizierung bei Azure mit einem ausführenden Konto zu unterstützen, müssen Sie das Zertifikat für das ausführende Konto installieren.
+Im Rahmen Ihres automatisierten Buildprozesses für die Bereitstellung von Ressourcen in Azure ist es unter Umständen erforderlich, auf lokale Systeme zuzugreifen, um eine Aufgabe oder eine Reihe von Schritten in Ihrer Bereitstellungssequenz zu unterstützen. Um die Authentifizierung bei Azure mit einem ausführenden Konto zu unterstützen, müssen Sie das Zertifikat für das ausführende Konto installieren.
 
 Das folgende PowerShell-Runbook, *Export-RunAsCertificateToHybridWorker*, exportiert das Zertifikat für das ausführende Konto aus Ihrem Azure Automation-Konto, lädt es herunter und importiert es in den Zertifikatspeicher für den lokalen Computer auf einem Hybrid Worker, der mit dem gleichen Konto verbunden ist. Sobald dieser Schritt abgeschlossen ist, überprüft das Runbook, ob der Worker sich unter Verwendung des ausführenden Kontos erfolgreich bei Azure authentifizieren kann.
 
@@ -151,11 +151,14 @@ Set-AzureRmContext -SubscriptionId $RunAsConnection.SubscriptionID | Write-Verbo
 Get-AzureRmAutomationAccount | Select-Object AutomationAccountName
 ```
 
+> [!IMPORTANT]
+> **Add-AzureRmAccount** ist jetzt ein Alias für **Connect-AzureRMAccount**. Sollte **Connect-AzureRMAccount** beim Durchsuchen der Bibliothekselemente nicht angezeigt werden, können Sie **Add-AzureRmAccount** verwenden oder die Module in Ihrem Automation-Konto aktualisieren.
+
 Speichern Sie das *Export-RunAsCertificateToHybridWorker*-Runbook mit der Erweiterung `.ps1` auf Ihrem Computer. Importieren Sie das Runbook in Ihr Automation-Konto, und bearbeiten Sie es. Ändern Sie dabei den Wert der Variablen `$Password` in Ihr eigenes Kennwort. Veröffentlichen Sie das Runbook, und führen Sie es dann mit der Hybrid Worker-Gruppe als Ziel aus, die Runbooks über das ausführende Konto ausführt und authentifiziert. Der Auftragsdatenstrom meldet den Versuch, das Zertifikat in den lokalen Computerspeicher zu importieren. Im Bericht folgen mehrere Zeilen, je nachdem, wie viele Automation-Konten in Ihrem Abonnement definiert sind und ob die Authentifizierung erfolgreich ist.
 
 ## <a name="job-behavior"></a>Auftragsverhalten
 
-Aufträge werden auf Hybrid Runbook Workers etwas anders behandelt als bei der Ausführung in Azure Sandboxes. Ein Hauptunterschied besteht darin, dass es keine Beschränkung der Auftragsdauer auf Hybrid Runbook Workers gibt. Wenn Sie über ein Runbook mit langer Ausführungsdauer verfügen, stellen Sie sicher, dass es mögliche Neustarts überlebt (wenn z.B. der Computer, der den Hybridworker hostet, neu gestartet wird). Wenn der Hostcomputer des Hybridworkers neu gestartet wird, werden alle ausgeführten Runbookaufträge von vorne oder – im Fall von PowerShell-Workflow-Runbooks – beim letzten Prüfpunkt neu gestartet. Wenn ein Runbookauftrag mehr als drei Mal neu gestartet wird, wird er angehalten.
+Aufträge werden auf Hybrid Runbook Workers etwas anders behandelt als bei der Ausführung in Azure Sandboxes. Ein Hauptunterschied besteht darin, dass es keine Beschränkung der Auftragsdauer auf Hybrid Runbook Workers gibt. In Azure-Sandboxes ausgeführte Runbooks sind aufgrund von [gleichmäßiger Auslastung](automation-runbook-execution.md#fair-share) auf 3 Stunden beschränkt. Wenn Sie über ein Runbook mit langer Ausführungsdauer verfügen, stellen Sie sicher, dass es mögliche Neustarts überlebt (wenn z.B. der Computer, der den Hybridworker hostet, neu gestartet wird). Wenn der Hostcomputer des Hybridworkers neu gestartet wird, werden alle ausgeführten Runbookaufträge von vorne oder – im Fall von PowerShell-Workflow-Runbooks – beim letzten Prüfpunkt neu gestartet. Wenn ein Runbookauftrag mehr als drei Mal neu gestartet wird, wird er angehalten.
 
 ## <a name="troubleshoot"></a>Problembehandlung
 

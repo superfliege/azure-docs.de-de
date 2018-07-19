@@ -1,11 +1,11 @@
 ---
-title: Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux | Microsoft-Dokumentation
+title: Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux | Microsoft Docs
 description: Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux.
-keywords: Azure App Service, Web-App, häufig gestellte Fragen, Linux, OSS
+keywords: Azure App Service, Web-App, FAQ, Linux, OSS, Web-App für Container, mehrere Container, Multicontainer
 services: app-service
 documentationCenter: ''
-author: ahmedelnably
-manager: cfowler
+author: yili
+manager: apurvajo
 editor: ''
 ms.assetid: ''
 ms.service: app-service
@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/18/2018
-ms.author: msangapu
-ms.openlocfilehash: 5b3b3d3946b56ff53ad74c2ab93a646baa787d05
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.date: 06/26/2018
+ms.author: yili
+ms.openlocfilehash: ea2e9d9fd1d9390cdd689b4f33b72cd471feeb8c
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222976"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916855"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux
 
@@ -66,7 +66,7 @@ Ja. Informationen zum Einrichten von Continuous Integration/Continuous Deploymen
 
 Ja.
 
-**Kann ich *Web Deploy* zur Bereitstellung meiner Web-App verwenden?**
+**Kann ich *WebDeploy/MSDeploy* zur Bereitstellung meiner Web-App verwenden?**
 
 Ja, Sie müssen die App-Einstellung `WEBSITE_WEBDEPLOY_USE_SCM` auf *false* festlegen.
 
@@ -144,6 +144,35 @@ Die Porterkennung erfolgt automatisch. Sie können auch eine Anwendungseinstellu
 **Muss ich HTTPS in meinem benutzerdefinierten Container implementieren?**
 
 Nein. Die Plattform handhabt die HTTPS-Beendigung an den freigegebenen Front-Ends.
+
+## <a name="multi-container-with-docker-compose-and-kubernetes"></a>Mehrere Container mit Docker Compose und Kubernetes
+
+**Wie kann ich die Azure Container Registry (ACR) für die Verwendung mehrerer Container konfigurieren?**
+
+Um ACR mit mehreren Containern zu verwenden, müssen **alle Containerimages** auf dem gleichen ACR-Registrierungsserver gehostet sein. Sobald sie sich auf dem gleichen Registrierungsserver befinden, müssen Sie Anwendungseinstellungen erstellen und dann die Konfigurationsdatei von Docker Compose oder Kubernetes mit den Namen der ACR-Images aktualisieren.
+
+Erstellen Sie die folgenden Anwendungseinstellungen:
+
+- DOCKER_REGISTRY_SERVER_USERNAME
+- DOCKER_REGISTRY_SERVER_URL (vollständige URL, Beispiel: https://<server-name>.azurecr.io)
+- DOCKER_REGISTRY_SERVER_PASSWORD (Aktivieren des Administratorzugriffs in den ACR-Einstellungen)
+
+Verweisen Sie in der Konfigurationsdatei auf Ihr ACR-Image, wie im folgenden Beispiel:
+
+```yaml
+image: <server-name>.azurecr.io/<image-name>:<tag>
+```
+
+**Wie finde ich heraus, auf welchen Container aus dem Internet zugegriffen werden kann?**
+
+- Nur ein Container kann für den Zugriff geöffnet sein
+- Nur Port 80 und 8080 sind zugänglich (verfügbar gemachte Ports)
+
+Anhand dieser Regeln können Sie bestimmen, auf welchen Container zugegriffen werden kann, anhand der Rangfolge aufgelistet:
+
+- Die Anwendungseinstellung `WEBSITES_WEB_CONTAINER_NAME` ist auf den Containernamen festgelegt
+- Der erste Container, der Port 80 oder 8080 definiert
+- Wenn keiner der oben genannten Punkte zutrifft, kann auf den in der Datei zuerst definierten (verfügbar gemachten) Container zugegriffen werden
 
 ## <a name="pricing-and-sla"></a>Preise und SLA
 

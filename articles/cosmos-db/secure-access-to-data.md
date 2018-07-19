@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/24/2017
 ms.author: sngun
-ms.openlocfilehash: 079cbff3a1669efb7ba7cd7a97da9256dbbfe9f8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c51d399b646e7914ba85048c0928837caac7c15b
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34613216"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901118"
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Sichern des Zugriffs auf Azure Cosmos DB-Daten
 Dieser Artikel bietet eine Übersicht über den sicheren Zugriff auf in [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) gespeicherte Daten.
@@ -24,7 +24,7 @@ Azure Cosmos DB verwendet zwei Arten von Schlüsseln, um Benutzer zu authentifiz
 |Schlüsseltyp|angeben|
 |---|---|
 |[Hauptschlüssel](#master-keys) |Wird für Verwaltungsressourcen verwendet: Datenbankkonten, Datenbanken, Benutzer und Berechtigungen|
-|[Ressourcentoken](#resource-tokens)|Wird für Anwendungsressourcen verwendet: Auflistungen, Dokumente, Anlagen, gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen|
+|[Ressourcentoken](#resource-tokens)|Wird für Anwendungsressourcen verwendet: Container, Dokumente, Anlagen, gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen|
 
 <a id="master-keys"></a>
 
@@ -32,7 +32,7 @@ Azure Cosmos DB verwendet zwei Arten von Schlüsseln, um Benutzer zu authentifiz
 
 Hauptschlüssel ermöglichen den Zugriff auf alle Verwaltungsressourcen für das Datenbankkonto. Hauptschlüssel:  
 - Ermöglichen den Zugriff auf Konten, Datenbanken, Benutzer und Berechtigungen. 
-- Können nicht zur präzisen Steuerung des Zugriffs auf Auflistungen und Dokumente verwendet werden.
+- Können nicht zur präzisen Steuerung des Zugriffs auf Container und Dokumente verwendet werden.
 - Werden im Zuge der Kontoerstellung erstellt.
 - Können jederzeit neu generiert werden.
 
@@ -75,7 +75,7 @@ Database database = await client.CreateDatabaseAsync(
 ## <a name="resource-tokens"></a>Ressourcentoken
 
 Ressourcentoken ermöglichen den Zugriff auf die Anwendungsressourcen in einer Datenbank. Ressourcentoken:
-- Ermöglichen den Zugriff auf bestimmte Sammlungen, Partitionsschlüssel, Dokumente, Anhänge, gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen
+- Ermöglichen den Zugriff auf bestimmte Container, Partitionsschlüssel, Dokumente, Anhänge, gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen.
 - Werden erstellt, wenn einem [Benutzer](#users) [Berechtigungen](#permissions) für eine bestimmte Ressource gewährt werden.
 - Werden neu erstellt, wenn durch einen POST-, GET- oder PUT-Aufruf eine Aktion für eine Berechtigungsressource ausgeführt wird.
 - Verwenden ein Hashressourcentoken, das speziell für den Benutzer, die Ressource und die Berechtigung erstellt wird.
@@ -134,7 +134,7 @@ Von einer Berechtigungsressource können zwei Zugriffsebenen bereitgestellt werd
 * Lesen: Der Benutzer kann die Inhalte der Ressource nur lesen und keine Schreib-, Aktualisierungs- oder Löschvorgänge für die Ressource vornehmen.
 
 > [!NOTE]
-> Zum Ausführen von gespeicherten Cosmos DB-Prozeduren muss der Benutzer über uneingeschränkte Berechtigung für die Sammlung verfügen, in dem die gespeicherte Prozedur ausgeführt wird.
+> Zum Ausführen von gespeicherten Cosmos DB-Prozeduren muss der Benutzer über uneingeschränkte Berechtigung für den Container verfügen, in dem die gespeicherte Prozedur ausgeführt wird.
 > 
 > 
 
@@ -174,6 +174,11 @@ foreach (Permission perm in permFeed)
 
 DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 ```
+
+## <a name="delete-or-export-user-data"></a>Löschen oder Exportieren von Benutzerdaten
+Mithilfe von Azure Cosmos DB können Sie alle personenbezogenen Daten, die sich in einer Datenbank oder in Sammlungen befinden, durchsuchen, auswählen, ändern und löschen. Azure Cosmos DB stellt APIs für das Auffinden und Löschen von personenbezogenen Daten bereit, die Nutzung der APIs und die Entwicklung der erforderlichen Logik zum Löschen der personenbezogenen Daten liegt jedoch in Ihrer Verantwortung. Jede API für mehrere Modelle (SQL-API, MongoDB-API, Gremlin-API, Cassandra-API, Tabellen-API) stellt SDKs für verschiedene Sprachen bereit, die Methoden zum Durchsuchen und Löschen von personenbezogenen Daten enthalten. Sie können darüber hinaus die [TTL-Funktion (time-to-live)](time-to-live.md) verwenden, um Daten nach einem festgelegten Zeitraum automatisch zu löschen, wodurch keine weiteren Kosten anfallen.
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zur Cosmos DB-Datenbanksicherheit finden Sie unter [Cosmos DB: Datenbanksicherheit](database-security.md).

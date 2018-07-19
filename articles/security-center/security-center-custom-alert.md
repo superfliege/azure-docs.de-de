@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/19/2018
+ms.date: 06/29/2018
 ms.author: terrylan
-ms.openlocfilehash: f950b6fef575e9dc2d637c17ba40b6f504d1f227
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 326b07a18b07f15850e0283ad51a05b42c1ef0ab
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284776"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341312"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Benutzerdefinierte Warnungsregeln in Azure Security Center (Vorschauversion)
 In diesem Dokument erfahren Sie, wie Sie benutzerdefinierte Warnungsregeln in Azure Security Center erstellen.
@@ -31,7 +31,7 @@ In Security Center steht eine Reihe vordefinierter [Sicherheitswarnungen](https:
 Mithilfe benutzerdefinierter Warnungsregeln in Security Center können Sie neue Sicherheitswarnungen auf der Grundlage von Daten definieren, die bereits in Ihrer Umgebung gesammelt werden. Sie können Abfragen erstellen und die Ergebnisse dieser Abfragen als Kriterien für die benutzerdefinierte Regel verwenden, sodass die Regel ausgeführt wird, wenn die Kriterien erfüllt sind. Bei der Erstellung Ihrer benutzerdefinierten Abfragen können Sie Sicherheitsereignisse von Computern, Protokolle von Partnersicherheitslösungen oder über APIs erfasste Daten verwenden.
 
 > [!NOTE]
-> Sie müssen in dem Arbeitsbereich, den Sie zum Speichern Ihrer benutzerdefinierten Warnung auswählen, über Schreibberechtigung verfügen.
+> Benutzerdefinierte Warnungen werden im [Untersuchungsfeature](security-center-investigation.md) von Security Center nicht unterstützt.
 >
 >
 
@@ -52,7 +52,14 @@ Mithilfe benutzerdefinierter Warnungsregeln in Security Center können Sie neue 
 5.  Geben Sie im Feld **Beschreibung** eine kurze Beschreibung ein, die den Zweck der Regel deutlich macht.
 6.  Wählen Sie im Feld **Schweregrad** den gewünschten Schweregrad (hoch, mittel, niedrig) aus.
 7.  Wählen Sie im Feld **Abonnement** das Abonnement aus, für das die Regel gelten soll.
-8.  Wählen Sie im Feld **Arbeitsbereich** den Arbeitsbereich aus, den Sie mit dieser Regel überwachen möchten, und wählen Sie im Feld **Suchabfrage** die Abfrage zum Abrufen der Ergebnisse aus. Sie müssen in dem Arbeitsbereich, den Sie zum Speichern Ihrer benutzerdefinierten Warnung auswählen, über Schreibberechtigung verfügen. Das Ergebnis der Abfrage löst die Warnung aus. Wenn die eingegebene Abfrage gültig ist, erscheint in der rechten Ecke des Felds ein grünes Häkchen:
+8.  Wählen Sie im Feld **Arbeitsbereich** den Arbeitsbereich aus, den Sie mit dieser Regel überwachen möchten, und wählen Sie im Feld **Suchabfrage** die Abfrage zum Abrufen der Ergebnisse aus.
+
+    > [!NOTE]
+    > Sie müssen in dem Arbeitsbereich, den Sie zum Speichern Ihrer benutzerdefinierten Warnung auswählen, über Schreibberechtigung verfügen.
+    >
+    >
+
+    Das Ergebnis der Abfrage löst die Warnung aus. Wenn die eingegebene Abfrage gültig ist, erscheint in der rechten Ecke des Felds ein grünes Häkchen:
 
     ![Abfragen](./media/security-center-custom-alert/security-center-custom-alert-fig3.png)
 

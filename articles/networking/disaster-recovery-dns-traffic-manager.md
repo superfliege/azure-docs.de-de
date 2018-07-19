@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: 6c46ada7fc95d5789512f8f7c7842852e6a86b69
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: d608378f9b3ff3179f9e37ef13f88c65a645d018
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248946"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112985"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Notfallwiederherstellung mit Azure DNS und Traffic Manager
 
@@ -59,7 +59,7 @@ DNS ist einer der effizientesten Mechanismen, um den Netzwerkdatenverkehr umzule
 
 Zur Besprechung der in diesem Artikel aufgeführten Lösungen müssen Sie einige wenige DNS-Konzepte verstehen, die in großem Umfang verwendet werden:
 - **DNS A-Eintrag** – „A-Einträge“ sind Zeiger, die eine Domäne auf eine IPv4-Adresse verweisen. 
-- **CNAME oder kanonischen Namen** – Dieser Eintragstyp wird zum Verweis auf einen anderen DNS-Eintrag verwendet. CNAME antwortet nicht mit einer IP-Antwort, sondern mit dem Zeiger auf den Eintrag, der die IP-Adresse enthält. 
+- **CNAME oder kanonischen Namen** – Dieser Eintragstyp wird zum Verweis auf einen anderen DNS-Eintrag verwendet. CNAME antwortet nicht mit einer IP-Adresse, sondern mit dem Zeiger auf den Eintrag, der die IP-Adresse enthält. 
 - **Gewichtetes Routing** – Es ist möglich, eine Gewichtung mit den Dienstendpunkten zu verknüpfen und dann den Datenverkehr auf der Grundlage der zugewiesenen Gewichtung zu verteilen. Diese Routingmethode ist eine der vier Mechanismen zum Datenverkehrsrouting, die in Traffic Manager verfügbar sind. Weitere Informationen finden Sie unter [Gewichtete Methode für das Datenverkehrsrouting](../traffic-manager/traffic-manager-routing-methods.md#weighted).
 - **Prioritätsbasiertes Routing** – Das prioritätsbasierte Routing erfolgt auf Grundlage von Systemdiagnosen der Endpunkte. Standardmäßig sendet Azure Traffic Manager sämtlichen Datenverkehr an den Endpunkt mit der höchsten Priorität, und bei einem Fehler oder Notfall leitet Traffic Manager den Datenverkehr an den sekundären Endpunkt weiter. Weitere Informationen finden Sie unter [Prioritätsbasierte Methode für das Datenverkehrsrouting](../traffic-manager/traffic-manager-routing-methods.md#priority).
 

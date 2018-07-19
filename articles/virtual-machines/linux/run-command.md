@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 93972c88676cceef07b39b4a4ed34bab5b74cbd3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 850c5ac4df8ff3bd0e35567060b3b90dad7baacc
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36334872"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342690"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>Ausführen von Shellskripts in einer Linux-VM mit „Befehl ausführen“
 
@@ -36,6 +36,7 @@ Im Anschluss finden eine Liste der Einschränkungen, denen die Verwendung von �
 * Skripts, die Informationen anfordern (interaktiver Modus), werden nicht unterstützt.
 * Die Ausführung von Skripts kann nicht abgebrochen werden
 * Der Maximalzeitraum beim Ausführen von Skripts ist auf 90 Minuten beschränkt, danach tritt ein Timeout auf
+* Um die Ergebnisse des Skripts zurückzugeben, ist eine ausgehende Konnektivität des virtuellen Computers erforderlich.
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 

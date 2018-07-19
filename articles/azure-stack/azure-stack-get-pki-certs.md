@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: cfac573bc9f1bdec3fd884f8090e11514f1e93b3
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: b5adc1bb5a5aae96f37cc312588aa71e57d8342e
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604708"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083225"
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Generieren von Signieranforderungen für Azure Stack-Zertifikate
 
@@ -30,8 +30,6 @@ Das Tool Azure Stack Readiness Checker (AzsReadinessChecker) führt die folgende
 
  - **Standardzertifikatanforderungen**  
     Stellen Sie eine Anforderung zum [Generieren von PKI-Zertifikaten für die Azure Stack-Bereitstellung](azure-stack-get-pki-certs.md).
- - **Anforderungstyp**  
-    Gibt an, ob die Zertifikatsignieranforderung eine einzelne Anforderung oder mehrere Anforderungen sein soll.
  - **Platform-as-a-Service**  
     Fordern Sie optional PaaS-Namen (Platform-as-a-Service ) für Zertifikate an, wie unter [Azure Stack-PKI-Zertifikatanforderungen: Optionale PaaS-Zertifikate](azure-stack-pki-certs.md#optional-paas-certificates) angegeben.
 
@@ -98,22 +96,22 @@ Gehen Sie wie folgt vor, um die Azure Stack-PKI-Zertifikate vorzubereiten und zu
     > [!note]  
     > `<regionName>.<externalFQDN>` bildet die Grundlage für die Erstellung aller externen DNS-Namen in Azure Stack. In diesem Beispiel heißt das Portal `portal.east.azurestack.contoso.com`.  
 
-6. So generieren Sie eine einzige Zertifikatsanforderung mit mehreren alternativen Antragstellernamen:
+6. So generieren Sie Zertifikatsignieranforderungen für jeden DNS-Namen
+
+    ```PowerShell  
+    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
+    ````
+
+    Sollen PaaS-Dienste einbezogen werden, geben Sie den Schalter ```-IncludePaaS``` an.
+
+7. Alternativ für Dev/Test-Umgebungen: Um eine einzelne Zertifikatanforderung mit mehreren alternativen Antragstellernamen zu generieren, fügen Sie den Parameter und Wert **--RequestType SingleCSR** hinzu (wird für Produktionsumgebungen **nicht** empfohlen):
 
     ```PowerShell  
     Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ````
 
     Sollen PaaS-Dienste einbezogen werden, geben Sie den Schalter ```-IncludePaaS``` an.
-
-7. So generieren Sie einzelne Zertifikatsignieranforderungen für jeden DNS-Namen:
-
-    ```PowerShell  
-    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType MultipleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
-    ````
-
-    Sollen PaaS-Dienste einbezogen werden, geben Sie den Schalter ```-IncludePaaS``` an.
-
+    
 8. Überprüfen Sie die Ausgabe:
 
     ````PowerShell  

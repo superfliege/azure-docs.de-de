@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: shvija
-ms.openlocfilehash: 4f1d21be3c19dfbc764485fea47b6d4cb2171b3c
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 7a05a89fdf99efb6470ee9c8695f349cf22b8ebb
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33941228"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442126"
 ---
 # <a name="create-kafka-enabled-event-hubs"></a>Erstellen von Kafka-fähigen Event Hubs
 
@@ -31,13 +31,13 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Erstellen eines Kafka-fähigen Event Hubs-Namespace
 
-1. Melden Sie sich beim [Azure-Portal][Azure portal] an, und klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen**.
+1. Melden Sie sich im [Azure-Portal][Azure portal] an, und klicken Sie oben links auf **Ressource erstellen**.
 
 2. Suchen Sie nach Event Hubs, und wählen Sie die hier gezeigten Optionen aus:
     
     ![Suchen nach Event Hubs im Portal](./media/event-hubs-create-kafka-enabled/event-hubs-create-event-hubs.png)
  
-3. **Erstellen Sie einen Namespace**, wobei Sie einen eindeutigen Namen angeben und Kafka für den Namespace aktivieren. Klicken Sie auf **Create**.
+3. Stellen Sie einen eindeutigen Namen bereit, und aktivieren Sie Kafka für den Namespace. Klicken Sie auf **Create**.
     
     ![Erstellen eines Namespace](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.png)
  

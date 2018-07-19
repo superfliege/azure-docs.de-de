@@ -9,22 +9,22 @@ editor: bagovind
 ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/11/2018
+ms.date: 06/29/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e1e46d5fb786b09a4c006b61f52b3ac99aafd555
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 0abf0a5971435fc3842a93e79d39468cba5c74da
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266501"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445210"
 ---
 # <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Erhöhen der Zugriffsrechte für einen globalen Administrator in Azure Active Directory
 
-Wenn Sie [globaler Administrator](../active-directory/active-directory-assign-admin-roles-azure-portal.md#global-administrator) in Azure Active Directory (Azure AD) sind, möchten Sie unter Umständen folgende Aktionen ausführen:
+Wenn Sie [globaler Administrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator) in Azure Active Directory (Azure AD) sind, möchten Sie unter Umständen folgende Aktionen ausführen:
 
 - Wiedererlangen des Zugriffs auf ein Azure-Abonnement, wenn ein Benutzer keinen Zugriff mehr hat
 - Gewähren des Zugriffs auf ein Azure-Abonnement für einen anderen Benutzer oder Sie selbst
@@ -49,9 +49,9 @@ Die erhöhten Zugriffsrechte sollten nur vorübergehend und nur bei Bedarf zugew
 
    ![Screenshot von „Der globale Administrator kann Azure-Abonnements und Verwaltungsgruppen verwalten.“](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
 
-   Wenn Sie **Ja** festlegen, wird das Konto des globalen Administrators (der derzeit angemeldete Benutzer) in Azure RBAC zur Rolle „Benutzerzugriffsadministrator“ im Stammbereich (`/`) hinzugefügt. Dadurch erhalten Sie Zugriff, um alle mit Ihrem Azure AD-Mandanten verknüpften Azure-Abonnements anzuzeigen und Berichte für sie zu erstellen.
+   Wenn Sie **Ja** festlegen, wird das Konto des globalen Administrators (der derzeit angemeldete Benutzer) in der rollenbasierten Zugriffssteuerung von Azure zur Rolle „Benutzerzugriffsadministrator“ im Stammbereich (`/`) hinzugefügt. Dadurch erhalten Sie Zugriff, um alle mit Ihrem Azure AD-Mandanten verknüpften Azure-Abonnements anzuzeigen und Berichte für sie zu erstellen.
 
-   Wenn Sie **Nein** festlegen, wird das Konto des globalen Administrators (der derzeit angemeldete Benutzer) in Azure RBAC aus der Rolle „Benutzerzugriffsadministrator“ entfernt. Sie können nicht alle mit dem Azure AD-Mandanten verknüpften Azure-Abonnements anzeigen und können nur die Azure-Abonnements anzeigen und verwalten, auf die Sie Zugriff erhalten haben.
+   Wenn Sie **Nein** festlegen, wird das Konto des globalen Administrators (der derzeit angemeldete Benutzer) in der rollenbasierten Zugriffssteuerung von Azure aus der Rolle „Benutzerzugriffsadministrator“ entfernt. Sie können nicht alle mit dem Azure AD-Mandanten verknüpften Azure-Abonnements anzeigen und können nur die Azure-Abonnements anzeigen und verwalten, auf die Sie Zugriff erhalten haben.
 
 1. Klicken Sie auf **Speichern**, um Ihre Einstellung zu speichern.
 
@@ -90,7 +90,7 @@ Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
 
 ## <a name="elevate-access-for-a-global-administrator-using-the-rest-api"></a>Erhöhen der Zugriffsrechte für einen globalen Administrator mit der REST-API
 
-Führen Sie die folgenden grundlegenden Schritte aus, um mithilfe der REST-API die Zugriffsrechte für einen globalen Administrator zu erhöhen:
+Führen Sie die folgenden grundlegenden Schritte aus, um mithilfe der REST-API die Zugriffsrechte für einen globalen Administrator zu erhöhen.
 
 1. Rufen Sie mithilfe von REST `elevateAccess` auf. So erhalten Sie die Rolle des Benutzerzugriffsadministrators im Stammbereich (`/`).
 
@@ -220,4 +220,5 @@ Beim Aufruf von `elevateAccess` erstellen Sie eine Rollenzuweisung für sich sel
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Rollenbasierte Zugriffssteuerung mit REST](role-assignments-rest.md)
-- [Verwalten von Zugriffszuweisungen](role-assignments-users.md)
+- [Verwalten des Zugriffs auf Azure-Ressourcen mit Privileged Identity Management](pim-azure-resource.md)
+- [Verwalten des Zugriffs auf die Azure-Verwaltung mit bedingtem Zugriff](conditional-access-azure-management.md)

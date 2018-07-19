@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/30/2018
+ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: bf0ef5be609fba14ab12e1e6f9f97bc63f032aae
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: d06a450595a53fdc65fba74791345abe3a1b3db4
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260559"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109568"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Benutzeroberflächenelement „Microsoft.Network.PublicIpAddressCombo“
 Eine Gruppe von Steuerelementen zum Auswählen einer neuen oder vorhandenen öffentlichen IP-Adresse.
@@ -66,18 +66,20 @@ Eine Gruppe von Steuerelementen zum Auswählen einer neuen oder vorhandenen öff
 - Wenn `constraints.required.domainNameLabel` auf **true** festgelegt ist, muss der Benutzer beim Erstellen einer neuen öffentlichen IP-Adresse eine Domänennamenbezeichnung angeben. Vorhandene öffentliche IP-Adressen ohne Bezeichnung stehen nicht zur Auswahl zur Verfügung.
 - Wenn `options.hideNone` auf **true** festgelegt ist, wird die Option zum Auswählen von **Keine** für die öffentlichen IP-Adresse ausgeblendet. Der Standardwert ist **false**.
 - Wenn `options.hideDomainNameLabel` auf **true** festgelegt ist, wird das Textfeld für die Domänennamenbezeichnung ausgeblendet. Der Standardwert ist **false**.
-- Wenn `options.hideExisting` auf „true“ festgelegt ist, kann der Benutzer keine vorhandene öffentliche IP-Adresse auswählen. Der Standardwert ist **false**.
+- Wenn `options.hideExisting` auf TRUE festgelegt ist, kann der Benutzer keine vorhandene öffentliche IP-Adresse auswählen. Der Standardwert ist **false**.
 - Für `zone` sind nur öffentliche IP-Adressen für die angegebene Zone oder zonenresiliente öffentliche IP-Adressen verfügbar.
 
 ## <a name="sample-output"></a>Beispielausgabe
-Wenn der Benutzer keine öffentliche IP-Adresse auswählt, wird die folgende Ausgabe erwartet:
+Wenn der Benutzer keine öffentliche IP-Adresse auswählt, gibt das Steuerelement die folgende Ausgabe zurück:
+
 ```json
 {
   "newOrExistingOrNone": "none"
 }
 ```
 
-Wenn der Benutzer eine neue oder vorhandene öffentliche IP-Adresse auswählt, wird die folgende Ausgabe erwartet:
+Wenn der Benutzer eine neue oder vorhandene IP-Adresse auswählt, gibt das Steuerelement die folgende Ausgabe zurück:
+
 ```json
 {
   "name": "ip01",
@@ -87,6 +89,7 @@ Wenn der Benutzer eine neue oder vorhandene öffentliche IP-Adresse auswählt, w
   "newOrExistingOrNone": "new"
 }
 ```
+
 - Wenn `options.hideNone` als **true** festgelegt ist, hat `newOrExistingOrNone` nur den Wert **new** oder **existing**.
 - Wenn `options.hideDomainNameLabel` als **true** festgelegt ist, wird `domainNameLabel` nicht deklariert.
 

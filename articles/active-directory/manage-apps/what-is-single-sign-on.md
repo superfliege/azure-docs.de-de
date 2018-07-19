@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.workload: identity
 ms.topic: article
-ms.date: 06/21/2018
+ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: a6f116842ce61585feda8f20e204e0751a360036
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 199aaf60a21e0362f27707de04f14854aa528297
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311164"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081505"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?
 Einmaliges Anmelden bedeutet, dass Sie Zugriff auf sämtliche für Ihre Geschäftsaktivitäten benötigten Anwendungen und Ressourcen erhalten, indem Sie sich nur einmal mit einem einzigen Benutzerkonto anmelden. Nach der Anmeldung können Sie auf alle benötigten Anwendungen zugreifen, ohne sich ein zweites Mal (z.B. durch Eingabe eines Kennworts) authentifizieren zu müssen.
@@ -45,7 +45,8 @@ Wenn Benutzer sich bei einer Anwendung anmelden, durchlaufen sie einen Authentif
 Azure AD unterstützt drei verschiedene Methoden für die Anwendungsanmeldung:
 
 * **Einmalige Verbundanmeldung** ermöglicht Anwendungen die Umleitung zu Azure AD für die Benutzerauthentifizierung, statt zur Eingabe eines eigenen Kennworts aufgefordert zu werden. Das einmalige Anmelden im Verbund kann für Anwendungen verwendet werden, die Protokolle wie SAML 2.0, WS-Verbund oder OpenID Connect unterstützen, und ist der umfassendste Modus bei der einmaligen Anmeldung.
-* **Kennwortbasierte einmalige Anmeldung** ermöglicht die sichere Speicherung des Anwendungskennworts und dessen Wiedergabe mit einer Webbrowsererweiterung oder einer mobilen App. Bei der kennwortbasierten einmaligen Anmeldung wird der von der Anwendung bereitgestellte vorhandene Anmeldevorgang genutzt, die Kennwortverwaltung übernimmt jedoch der Administrator, sodass der Benutzer das Kennwort nicht kennen muss.
+* **Kennwortbasierte einmalige Anmeldung** ermöglicht die sichere Speicherung des Anwendungskennworts und dessen Wiedergabe mit einer Webbrowsererweiterung oder einer mobilen App. Das kennwortbasierte einmalige Anmelden verwendet den bestehenden 
+*  durch die Anwendung bereitgestellten Vorgang, die Kennwortverwaltung übernimmt jedoch der Administrator, sodass der Benutzer das Kennwort nicht kennen muss.
 * **Vorhandenes einmaliges Anmelden** ermöglicht Azure AD, eine beliebige Methode, die für die Anwendung eingerichtet wurde, für das einmalige Anmelden zu nutzen. Es ist auch möglich, diese Anwendungen mit dem Office 365- oder dem Azure AD-Zugriffsbereichsportal zu verknüpfen und darüber hinaus die Berichterstellung in Azure AD zu aktivieren, wenn die Anwendungen auf diese Weise gestartet werden.
 
 Sobald ein Benutzer bei einer Anwendung authentifiziert wurde, muss zu der Anwendung auch ein Kontodatensatz vorhanden sein, dem zu entnehmen ist, wo die Zugriffsberechtigungen und die Zugriffsebene in der Anwendung zu finden sind. Die Bereitstellung dieses Kontodatensatzes kann entweder automatisch oder manuell durch einen Administrator erfolgen, bevor dem Benutzer Zugriff mit einmaliger Anmeldung gewährt wird.
@@ -64,7 +65,7 @@ Siehe auch: [Verwalten von Zertifikaten für die einmalige Verbundanmeldung](man
 ### <a name="password-based-single-sign-on"></a>Kennwortbasiertes einmaliges Anmelden
 Das Konfigurieren der kennwortbasierten einmaligen Anmeldung ermöglicht die automatische Anmeldung der Benutzer in Ihrer Organisation bei einer Drittanbieter-SaaS-Anwendung durch Azure AD mithilfe der Benutzerkontoinformationen aus der Drittanbieter-SaaS-Anwendung. Wenn Sie dieses Feature aktivieren, sammelt Azure AD die Benutzerkontoinformationen und das zugehörige Kennwort und speichert sie sicher.
 
-Azure AD kann das kennwortbasierte einmalige Anmelden für jede cloudbasierte App unterstützen, die über eine HTML-basierte Anmeldeseite verfügt. Mithilfe eines benutzerdefinierten Browser-Plug-Ins automatisiert AAD die Anmeldevorgänge der Benutzer über den sicheren Abruf von Anmeldeinformationen der Anwendung, z.B. Benutzername und Kennwort, aus dem Verzeichnis, und trägt diese Anmeldeinformationen für die Benutzer in die Anmeldeseite der Anwendung ein. Es gibt zwei Anwendungsfälle:
+Azure AD kann das kennwortbasierte einmalige Anmelden für jede cloudbasierte App unterstützen, die über eine HTML-basierte Anmeldeseite verfügt. Mithilfe eines benutzerdefinierten Browser-Plug-Ins automatisiert AAD das Anmeldeverfahren über den sicheren Abruf von Anmeldeinformationen der Anwendung, z.B. Benutzername und Kennwort, aus dem Verzeichnis und trägt diese Anmeldeinformationen für die Benutzer in die Anmeldeseite der Anwendung ein. Es gibt zwei Anwendungsfälle:
 
 1. **Administrator verwaltet Anmeldeinformationen:** Administratoren können Anmeldeinformationen von Anwendungen erstellen und verwalten und weisen diese Anmeldeinformationen Benutzern oder Gruppen zu, die auf die Anwendung zugreifen müssen. In diesen Fällen müssen die Endbenutzer die Anmeldeinformationen nicht kennen, erhalten aber weiterhin einfach durch Klicken auf die Anwendung in ihrem Zugriffsbereich oder über einen bereitgestellten Link durch einmaliges Anmelden Zugriff auf die Anwendung. Dieser Vorgang ermöglicht zum einen die Lebenszyklusverwaltung der Anmeldeinformationen durch den Administrator und bietet zum anderen den Endbenutzern den Komfort, dass sie sich App-spezifische Kennwörter weder merken noch verwalten müssen. Die Anmeldeinformationen werden während des automatisierten Anmeldevorgangs vor dem Endbenutzer verborgen. Der Benutzer kann sie jedoch mithilfe von Webdebugtools technisch sichtbar machen, und Benutzer und Administratoren sollten die gleichen Sicherheitsrichtlinien befolgen, die auch für direkt vom Benutzer eingegebene Anmeldeinformationen gelten. Vom Administrator bereitgestellte Anmeldeinformationen sind hilfreich beim Bereitstellen von Kontozugriff bei Anwendungen, die von vielen Benutzern gemeinsam genutzt werden, wie z.B. bei sozialen Medien oder Anwendungen zur gemeinsamen Nutzung von Dokumenten.
 2. **Benutzer verwaltet Anmeldeinformationen** – Administratoren können Endbenutzern oder Gruppen Anwendungen zuweisen und Endbenutzern die direkte Eingabe ihrer Anmeldeinformationen beim erstmaligen Zugriff auf die Anwendung in ihrem Zugriffsbereich ermöglichen. Dies stellt einen Komfort für Endbenutzer dar, da sie nicht ständig für jeden Zugriff auf die Anwendung die App-spezifischen Kennwörter eingeben müssen. Benutzer können mit dem Verwalten ihrer Kennwörter fortfahren, indem sie diese je nach Bedarf aktualisieren oder löschen. Dieser Anwendungsfall kann auch als Hilfe zum Einstieg in die administrative Verwaltung der Anmeldeinformationen dienen, wobei der Administrator neue Anmeldeinformationen für die Anwendung zu einem späteren Zeitpunkt festlegen kann, ohne die Benutzerfreundlichkeit für den App-Zugriff einzuschränken.
@@ -133,7 +134,8 @@ Typische Verwaltungsaufgaben für eine SaaS-Anwendung von Drittanbietern sind:
 
 * Aktivieren der einmaligen Anmeldung bei Azure AD mithilfe von Kennwort-SSO oder, sofern für die SaaS-Zielanwendung verfügbar, Verbund-SSO
 * Optional: Aktivieren der Benutzerbereitstellung zum Bereitstellen von Benutzern und Aufheben der Bereitstellung (Verwaltung des Identitätslebenszyklus)
-* Für Anwendungen, bei denen die Benutzerbereitstellung aktiviert ist, Auswahl der Benutzer mit Zugriff auf diese Anwendung
+* Für Anwendungen, 
+* bei denen die Benutzerbereitstellung aktiviert ist, Auswahl der Benutzer mit Zugriff auf diese Anwendung
 
 Für Katalog-Apps, die die einmalige Verbundanmeldung unterstützen, müssen Sie bei der Konfiguration normalerweise zusätzliche Konfigurationseinstellungen bereitstellen, z. B. Zertifikate und Metadaten zum Erstellen einer Verbundvertrauensstellung zwischen der Drittanbieter-App und Azure AD. Der Konfigurations-Assistent führt Sie durch die Details und bietet einfachen Zugriff auf die spezifischen Daten und Anweisungen der SaaS-Anwendung.
 
@@ -192,7 +194,7 @@ Diese Links verwenden die gleichen Mechanismen der Zugriffssteuerung wie der Zug
 ## <a name="related-articles"></a>Verwandte Artikel
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](../active-directory-apps-index.md)
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](../saas-apps/tutorial-list.md)
-* [Suchen nach nicht genehmigten Cloudanwendungen per Cloud App Discovery](cloud-app-discovery.md)
+* [Einrichten von Cloud Discovery](/cloud-app/security/set-up-cloud-discovery)
 * [Einführung in die Verwaltung des Zugriffs auf Apps](what-is-access-management.md)
 * [Vergleich von Funktionen zum Verwalten externer Identitäten in Azure AD](../active-directory-b2b-compare-b2c.md)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 10/15/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 5af99821305fe6daab8a213d0351c5a1c5936461
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: b0bf6cd747860d938f80787d9bef6634a6a22d09
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298789"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441531"
 ---
 # <a name="troubleshoot-and-diagnose-logic-app-failures"></a>Behandeln und Diagnostizieren von Logik-App-Fehlern
 
@@ -105,15 +105,15 @@ Jeder ausgelöste Trigger startet eine Workflowausführung. Sie können die Vorg
 
 ## <a name="perform-runtime-debugging"></a>Durchführen von Laufzeit-Debugging
 
-Zusätzlich zur Überprüfung des Triggers und des Ausführungsverlaufs können Sie einem Workflow Diagnoseschritte hinzufügen, die Sie beim Debuggen unterstützen. So können Sie beispielsweise Schritte hinzufügen, die den Dienst [RequestBin](http://requestb.in) nutzen, um HTTP-Anforderungen untersuchen und ihre exakte Größe und Form sowie ihr Format ermitteln zu können.
+Zusätzlich zur Überprüfung des Triggers und des Ausführungsverlaufs können Sie einem Workflow Diagnoseschritte hinzufügen, die Sie beim Debuggen unterstützen. So können Sie beispielsweise Schritte hinzufügen, die den Dienst [Webhook Tester](https://webhook.site/) nutzen, um HTTP-Anforderungen untersuchen und ihre exakte Größe und Form sowie ihr Format ermitteln zu können.
 
-1. Erstellen Sie ein RequestBin-Element. (Dieses können Sie als privates Element konfigurieren, das nur in Ihrem Browser sichtbar ist.)
+1. Besuchen Sie [Webhook Tester](https://webhook.site/), und kopieren Sie die eindeutige URL, die erstellt wurde.
 
 2. Fügen Sie in Ihrer Logik-App eine HTTP POST-Aktion mit dem Textinhalt hinzu, den Sie testen möchten (beispielsweise einen Ausdruck oder eine weitere Schrittausgabe).
 
-3. Fügen Sie die URL für Ihr RequestBin-Element in die HTTP POST-Aktion ein.
+3. Fügen Sie die URL für Webhook Tester in die HTTP POST-Aktion ein.
 
-4. Um zu prüfen, wie die Anforderung beim Generieren durch die Logic Apps-Engine gebildet wird, führen Sie die Logik-App aus, und aktualisieren Sie ihr RequestBin-Element.
+4. Um zu prüfen, wie die Anforderung beim Generieren durch die Logic Apps-Engine gebildet wird, führen Sie die Logik-App aus, und prüfen Sie Webhook Tester für weitere Informationen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

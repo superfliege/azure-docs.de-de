@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: fabe19a7348591b4a299868dfc3e618c049198c3
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: fd23da29324dc5cb212c144f5bb303a46d6f4d42
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261184"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868434"
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten
 
@@ -57,8 +57,8 @@ In diesem Artikel werden die folgenden Bezeichnungen verwendet, um die Lesbarkei
     - Windows Server 2012 R2
     - Windows Server 2012
     - Windows Server 2008 R2
-- Die Registrierung kompatibler Windows-Geräte **wird** in nicht zu einem Verbund gehörenden Umgebungen durch die [nahtlose einmalige Anmeldung mit Azure Active Directory](https://aka.ms/hybrid/sso) unterstützt. 
-- Bei Verwendung der Azure AD-Passthrough-Authentifizierung wird die Registrierung kompatibler Windows-Geräte **nicht** unterstützt.
+- Die Registrierung kompatibler Windows-Geräte **wird** in nicht zu einem Verbund gehörenden Umgebungen durch die [nahtlose einmalige Anmeldung mit Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) unterstützt. 
+- Bei Verwendung der Azure AD-Passthrough-Authentifizierung wird die Registrierung kompatibler Windows-Geräte ohne nahtloses einmaliges Anmelden **nicht** unterstützt.
 - Für Geräte, die Roamingprofile verwenden, wird die Registrierung kompatibler Windows-Geräte **nicht** unterstützt. Verwenden Sie Windows 10, wenn Sie das Roaming von Profilen oder Einstellungen nutzen.
 
 
@@ -92,8 +92,6 @@ Wenn dies noch nicht erfolgt ist, sollte der STS Ihrer Organisation (für Verbun
 Wenn Ihre Organisation das nahtlose SSO verwenden möchte, müssen die folgenden URLs über die Computer innerhalb Ihrer Organisation erreichbar sein und zudem der lokalen Intranetzone des Benutzers hinzugefügt werden:
 
 - https://autologon.microsoftazuread-sso.com
-
-- https://aadg.windows.net.nsatc.net
 
 - Darüber hinaus muss die folgende Einstellung in der Intranetzone des Benutzers aktiviert werden: „Statusleistenupdates über Skript zulassen“.
 
@@ -179,7 +177,6 @@ Bei einer Active Directory-Konfiguration mit mehreren Gesamtstrukturen sollten S
 
     $de = New-Object System.DirectoryServices.DirectoryEntry
     $de.Path = "LDAP://CN=Services," + $configNC
-
     $deDRC = $de.Children.Add("CN=Device Registration Configuration", "container")
     $deDRC.CommitChanges()
 
@@ -572,7 +569,7 @@ Nachdem Sie die erforderlichen Schritte ausgeführt haben, können in die Domän
 
 ### <a name="remarks"></a>Anmerkungen
 
-- Sie können ein Gruppenrichtlinienobjekt verwenden, um den Rollout der automatischen Registrierung von in die Domäne eingebundenen Computern unter Windows 10/Windows Server 2016 zu steuern. **Wenn Sie nicht möchten, dass diese Geräte automatisch für Azure AD registriert werden, oder wenn Sie die Registrierung steuern möchten**, müssen Sie vor dem Ausführen der Konfigurationsschritte zuerst den Rollout für die Gruppenrichtlinie durchführen und die automatische Registrierung auf allen Geräten deaktivieren. Wenn Sie mit dem Konfigurieren fertig und zum Testen bereit sind, müssen Sie den Rollout der Gruppenrichtlinie durchführen und die automatische Registrierung nur für die Testgeräte aktivieren – und anschließend wie gewünscht für alle anderen Geräte.
+- Sie können ein Gruppenrichtlinienobjekt oder eine System Center Configuration Manager-Clienteinstellung verwenden, um den Rollout der automatischen Registrierung von in die Domäne eingebundenen Computern unter Windows 10 und Windows Server 2016 zu steuern. **Wenn Sie nicht möchten, dass sich diese Geräte automatisch bei Azure AD registrieren oder Sie die Registrierung steuern möchten**, müssen Sie zuerst eine Gruppenrichtlinie umsetzen, die die automatische Registrierung für alle diese Geräte deaktiviert. Wenn Sie Configuration Manager verwenden, müssen Sie die Clienteinstellung unter „Clouddienste -> Neue, in die Domäne eingebundene Windows 10-Geräte automatisch bei Azure Active Directory registrieren“ auf „Nein“ festlegen, bevor Sie mit einem der Konfigurationsschritte beginnen. Wenn Sie mit dem Konfigurieren fertig und zum Testen bereit sind, müssen Sie den Rollout der Gruppenrichtlinie durchführen und die automatische Registrierung nur für die Testgeräte aktivieren – und anschließend wie gewünscht für alle anderen Geräte.
 
 - Für den Rollout von kompatiblen Windows-Computern ist ein [Windows Installer-Paket](#windows-installer-packages-for-non-windows-10-computers) verfügbar, das auf den von Ihnen ausgewählten Computern bereitgestellt werden kann.
 

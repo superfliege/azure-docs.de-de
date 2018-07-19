@@ -88,5 +88,30 @@ Der Verfügbarkeitsgruppenlistener umfasst eine IP-Adresse und einen Netzwerknam
 
     b. Legen Sie die Clusterparameter fest, indem Sie das PowerShell-Skript auf einem der Clusterknoten ausführen.  
 
+Wiederholen Sie die oben aufgeführten Schritte, um die Clusterparameter für die IP-Adresse des WSFC-Clusters festzulegen.
+
+1. Rufen Sie den Namen der IP-Adresse des WSFC-Clusters ab. Suchen Sie den **Servernamen** im **Failovercluster-Manager** unter **Hauptressourcen des Clusters**.
+
+1. Klicken Sie erst mit der rechten Maustaste auf **IP-Adresse** und anschließend mit der linken auf **Eigenschaften**.
+
+1. Kopieren Sie den **Namen** der IP-Adresse. Z.B. `Cluster IP Address`. 
+
+1. <a name="setwsfcparam"></a>Legen Sie die Clusterparameter in PowerShell fest.
+    
+    a. Kopieren Sie das folgende PowerShell-Skript in eine Ihrer SQL Server-Instanzen. Aktualisieren Sie die Variablen für Ihre Umgebung.     
+    
+    ```PowerShell
+    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+    $IPResourceName = "<ClusterIPResourceName>" # the IP Address resource name
+    $ILBIP = "<n.n.n.n>" # the IP Address of the Cluster IP resource. This is the static IP address for the load balancer you configured in the Azure portal.
+    [int]$ProbePort = <nnnnn>
+    
+    Import-Module FailoverClusters
+    
+    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+    ```
+
+    b. Legen Sie die Clusterparameter fest, indem Sie das PowerShell-Skript auf einem der Clusterknoten ausführen.  
+
     > [!NOTE]
     > Falls sich Ihre SQL Server-Instanzen in unterschiedlichen Regionen befinden, muss das PowerShell-Skript zweimal ausgeführt werden. Verwenden Sie beim ersten Mal die Elemente `$ILBIP` und `$ProbePort` der ersten Region. Verwenden Sie beim zweiten Mal die Elemente `$ILBIP` und `$ProbePort` der zweiten Region. Der Name des Clusternetzwerks und der Cluster-IP-Ressourcenname sind identisch. 

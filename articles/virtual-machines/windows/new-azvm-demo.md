@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: a44c9ec9270e4ba76f0ff367e039f5ef72eb04a5
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: ede8fab67c04eb7ce8d26280de2d1563b6cc8ad2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "31601636"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38678739"
 ---
 # <a name="create-a-windows-virtual-machine-with-the-simplified-new-azurermvm-cmdlet-in-cloud-shell"></a>Erstellen eines virtuellen Windows-Computers mithilfe des vereinfachten Cmdlets „New-AzureRMVM“ in Cloud Shell 
 
@@ -46,11 +46,11 @@ New-AzureRMVm -Name myVM
 
 Sie werden zur Erstellung eines Benutzernamens und eines Kennworts für den virtuellen Computer aufgefordert. Diese werden später zum Herstellen der Verbindung mit dem virtuellen Computer benötigt. Das Kennwort muss 12 bis 123 Zeichen lang sein und zur Erfüllung der Komplexitätsanforderungen drei der folgenden vier Elemente enthalten: einen Kleinbuchstaben, einen Großbuchstaben, eine Zahl und ein Sonderzeichen.
 
-Die Erstellung des virtuellen Computers und der dazugehörigen Ressourcen dauert einen Moment. Nach Abschluss des Vorgangs können Sie die erstellten Ressourcen mithilfe des Cmdlets [Find-AzureRmResource](/powershell/module/azurerm.resources/find-azurermresource) anzeigen.
+Die Erstellung des virtuellen Computers und der dazugehörigen Ressourcen dauert einen Moment. Nach Abschluss des Vorgangs können Sie die erstellten Ressourcen mithilfe des Cmdlets [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) anzeigen.
 
 ```azurepowershell-interactive
-Find-AzureRmResource `
-    -ResourceGroupNameEquals myVMResourceGroup | Format-Table Name
+Get-AzureRmResource `
+    -ResourceGroupName myVMResourceGroup | Format-Table Name
 ```
 
 ## <a name="connect-to-the-vm"></a>Herstellen der Verbindung zur VM

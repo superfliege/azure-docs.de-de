@@ -4,14 +4,14 @@ description: Dieser Artikel bietet einen Überblick über die Architektur zum Re
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 39a397edd17327a91882535fbd00222a4ae4dddc
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 0319e4d1cdbd20c39772c659a3e5a1580d8b925b
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894295"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919647"
 ---
 # <a name="hyper-v-replication-to-a-secondary-site"></a>Hyper-V-Replikation an einem sekundären Standort
 
@@ -37,8 +37,8 @@ Die folgende Tabelle und Grafik bietet eine Übersicht der Komponenten, die für
 
 1. Wenn die erste Replikation ausgelöst wird, wird eine [Momentaufnahem der Hyper-V-VM](https://technet.microsoft.com/library/dd560637.aspx) erstellt.
 2. Virtuelle Festplatten auf der VM werden nacheinander an den sekundären Standort repliziert.
-3. Wenn während der Durchführung der ersten Replikation Datenträgeränderungen auftreten. 
-4. Die Deltareplikation startet, wenn die erste Replikation abgeschlossen wurde. Der Replication Tracker für Hyper-V-Replikate verfolgt die Änderungen als Hyper-V-Replikationsprotokolle (.hrl). Diese Protokolldateien befinden sich im gleichen Ordner wie die Datenträger. Jeder Datenträger verfügt über eine zugeordnete HRL-Datei, die an den sekundären Speicher gesendet wird. Beachten Sie, dass die Momentaufnahme- und Protokolldateien Festplattenressourcen belegen, während die anfängliche Replikation durchgeführt wird.
+3. Falls während der ersten Replikation Datenträgeränderungen auftreten, werden die Änderungen mit dem Replication Tracker für Hyper-V-Replikate in Form von Hyper-V-Replikationsprotokollen (.hrl) nachverfolgt. Diese Protokolldateien befinden sich im gleichen Ordner wie die Datenträger. Jeder Datenträger verfügt über eine zugeordnete HRL-Datei, die an den sekundären Speicher gesendet wird. Beachten Sie, dass die Momentaufnahme- und Protokolldateien Festplattenressourcen belegen, während die anfängliche Replikation durchgeführt wird.
+4. Nach Abschluss der ersten Replikation wird die Momentaufnahme des virtuellen Computers gelöscht, und die Deltareplikation beginnt.
 5. Die im Protokoll erfassten Datenträgeränderungen werden synchronisiert und mit dem übergeordneten Datenträger zusammengeführt.
 
 

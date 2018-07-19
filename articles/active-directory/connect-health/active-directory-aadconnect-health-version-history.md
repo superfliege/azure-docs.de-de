@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 3e3cebd47a259c7c297d6df0eaf76a350111f2e3
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 8907619b802d93cee4463a80155f38ce9030948f
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319264"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129670"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Versionsveröffentlichungsverlauf
 Das Azure Active Directory-Team aktualisiert Azure AD Connect Health regelmäßig mit neuen Features und Funktionen. In diesem Artikel werden die veröffentlichten Versionen und Features beschrieben.
@@ -29,6 +29,13 @@ Das Azure Active Directory-Team aktualisiert Azure AD Connect Health regelmäßi
 * Azure AD Connect Health für die Synchronisierung: Diagnostizieren und Beheben von Synchronisierungsfehlern durch doppelte Attribute über das Portal 
 
 **Agent-Aktualisierung:** 
+*  Azure AD Connect Health-Agent für AD DS (Version 3.1.7.0)    
+   1. Hotfix für das Problem einer hohen CPU-Auslastung des Überwachungs-Agents mit .NET Framework-Releases in KB
+
+*   Azure AD Connect Health-Agent für AD FS (Version 3.1.7.0)  
+   1. Hotfix für das Problem einer hohen CPU-Auslastung des Überwachungs-Agents mit .NET Framework-Releases in KB  
+   2. Korrekturen von Testergebnissen auf dem sekundären Server von ADFS Server 2016
+   
 *   Azure AD Connect Health-Agent für AD FS (Version 3.1.2.0)  
    1. Hotfix für Agent-Speicherverwaltung und zugehörige Warnungen speziell für Version 3.0.244.0
 

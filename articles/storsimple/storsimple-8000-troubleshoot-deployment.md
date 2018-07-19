@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: d6642231bf9d012b0015902c82d2bfde3b86285c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 61719d482a4db1c737bbe38277f2ac3b2d684b63
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23112258"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342430"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>Beheben von Problemen mit der Bereitstellung von StorSimple-Geräten
 ## <a name="overview"></a>Übersicht
@@ -139,7 +139,7 @@ Der StorSimple-Geräte-Manager-Dienst in Microsoft Azure wird zur Registrierung 
 | 9 |Warnung: Das Gerät konnte nicht aktiviert werden. Die Kennwörter für den Geräteadministrator und für den StorSimple-Momentaufnahme-Manager wurden nicht geändert. |Wenn die Registrierung fehlschlägt, werden die Geräteadministrator- und StorSimple-Momentaufnahme-Manager-Kennwörter nicht geändert. | |
 
 ## <a name="tools-for-troubleshooting-storsimple-deployments"></a>Tools zur Problembehandlung für StorSimple-Bereitstellungen
-StorSimple umfasst mehrere Tools, mit denen sich Probleme mit der StorSimple-Lösung beheben lassen. Diese umfassen:
+StorSimple umfasst mehrere Tools, mit denen sich Probleme mit der StorSimple-Lösung beheben lassen. Das umfasst:
 
 * Supportpakete und Geräteprotokolle
 * Cmdlets, die speziell für die Problembehandlung entwickelt wurden
@@ -189,7 +189,7 @@ Beim Konfigurieren von Netzwerkschnittstellen für eine erste Gerätebereitstell
    * Wenn die Schnittstelle fehlerfrei funktioniert, jedoch nicht aktiviert ist, wird der Status **ifIndex** als **NotPresent** angezeigt.
    * Wenn die Schnittstelle nicht vorhanden ist, wird sie nicht in dieser Liste angezeigt. Der Benutzeroberfläche des StorSimple-Geräte-Manager-Diensts zeigt diese Schnittstelle in einem fehlerhaften Zustand an.
 
-Weitere Informationen zur Verwendung dieses Cmdlets finden Sie unter [GetNetAdapter](https://technet.microsoft.com/library/jj130867.aspx) in der Windows PowerShell-Cmdlet-Referenz.
+Weitere Informationen zur Verwendung dieses Cmdlets finden Sie unter [Get-NetAdapter](https://docs.microsoft.com/powershell/module/netadapter/get-netadapter?view=win10-ps) in der Windows PowerShell-Cmdlet-Referenz.
 
 In den folgenden Abschnitten sind Beispiele für die Ausgabe des Cmdlets `Get-NetAdapter` aufgeführt.
 

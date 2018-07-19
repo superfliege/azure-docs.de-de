@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
-ms.openlocfilehash: 867a48674fe2489629a887ff9626d8e10b41e653
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e3ee75a07f19fef50d9aca61773bd7ea860f2ca4
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34613981"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37101537"
 ---
 > [!div class="op_single_selector"]
 > * [Async Java](performance-tips-async-java.md)
@@ -49,7 +49,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
 
 3. **Optimieren von ConnectionPolicy**
 
-    Anforderungen an Azure Cosmos DB erfolgen bei Verwendung des Async Java SDK über HTTPS/REST und unterliegen der standardmäßigen maximalen Verbindungspoolgröße (1000). Dieser Standardwert sollte für die meisten Anwendungsfälle ideal sein. Für den Fall, dass Sie über eine sehr große Sammlung mit vielen Partitionen verfügen, können Sie die maximale Verbindungspoolgröße jedoch mithilfe von „setMaxPoolSize“ auf einen höheren Wert (z.B. 1500) festlegen.
+    Anforderungen an Azure Cosmos DB erfolgen bei Verwendung des Async Java SDK über HTTPS/REST und unterliegen der standardmäßigen maximalen Verbindungspoolgröße (1000). Dieser Standardwert sollte für die meisten Anwendungsfälle ideal sein. Für den Fall, dass Sie über eine große Sammlung mit vielen Partitionen verfügen, können Sie die maximale Verbindungspoolgröße jedoch mithilfe von „setMaxPoolSize“ auf einen höheren Wert (z.B. 1500) festlegen.
 
 4. **Optimieren von parallelen Abfragen für partitionierte Sammlungen**
 
@@ -85,7 +85,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
     
 9. **Verwenden des geeigneten Planers (Vermeiden des Diebstahls von Eventloop-E/A-Threads in Netty)**
 
-    Das Async Java SDK verwendet [Netty](https://netty.io/) für nicht blockierende E/A-Vorgänge. Das SDK verwendet eine feste Anzahl (die Anzahl von CPU-Kernen Ihres Computers) von E/A-EventLoop-Threads in Netty zum Ausführen von E/A-Vorgängen. Das von der API zurückgegebene Observable-Objekt API gibt das Ergebnis auf einem der freigegebenen E/A-Eventloop-Threads in Netty aus. Daher ist es wichtig, die freigegebenen E/A-Eventloop-Threads in Netty nicht zu blockieren. CPU-intensives Arbeiten oder das Blockieren von Vorgängen auf dem E/A-Eventloop-Thread in Netty kann einen Deadlock verursachen oder den SDK-Durchsatz deutlich reduzieren.
+    Das Async Java SDK verwendet [Netty](https://netty.io/) für nicht blockierende E/A-Vorgänge. Das SDK verwendet eine feste Anzahl (die Anzahl von CPU-Kernen Ihres Computers) von E/A-Eventloop-Threads in Netty zum Ausführen von E/A-Vorgängen. Das von der API zurückgegebene Observable-Objekt gibt das Ergebnis auf einem der freigegebenen E/A-Eventloop-Threads in Netty aus. Daher ist es wichtig, die freigegebenen E/A-Eventloop-Threads in Netty nicht zu blockieren. CPU-intensives Arbeiten oder das Blockieren von Vorgängen auf dem E/A-Eventloop-Thread in Netty kann einen Deadlock verursachen oder den SDK-Durchsatz deutlich reduzieren.
 
     Beispiel: Der folgende Code führt eine CPU-intensive Arbeit auf dem E/A-Eventloop-Thread in Netty aus:
 
@@ -126,13 +126,13 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
 
     Weitere Informationen finden Sie auf der [Github-Seite](https://github.com/Azure/azure-cosmosdb-java) für Async Java SDK.
 
-10. **Deaktivieren der Netty-Protokollierung** Die Netty-Bibliotheksprotokollierung führt zu übermäßiger Kommunikation und muss deaktiviert werden (das Unterdrücken des Protokolls in der Konfiguration reicht möglicherweise nicht aus), um zusätzliche CPU-Kosten zu vermeiden. Wenn Sie sich nicht im Debuggingmodus befinden, deaktivieren Sie die Protokollierung von Netty vollständig. Wenn Sie also „log4j“ verwenden, um die zusätzlichen CPU-Kosten zu verhindern, die durch ``org.apache.log4j.Category.callAppenders()`` von Netty anfallen, fügen Sie Ihrer Codebasis die folgende Zeile hinzu:
+10. **Deaktivieren der Netty-Protokollierung** Die Netty-Bibliotheksprotokollierung führt zu übermäßiger Kommunikation und muss deaktiviert werden (das Unterdrücken der Anmeldung in der Konfiguration reicht möglicherweise nicht aus), um zusätzliche CPU-Kosten zu vermeiden. Wenn Sie sich nicht im Debuggingmodus befinden, deaktivieren Sie die Protokollierung von Netty vollständig. Wenn Sie also „log4j“ verwenden, um die zusätzlichen CPU-Kosten zu verhindern, die durch ``org.apache.log4j.Category.callAppenders()`` von Netty anfallen, fügen Sie Ihrer Codebasis die folgende Zeile hinzu:
 
     ```java
     org.apache.log4j.Logger.getLogger("io.netty").setLevel(org.apache.log4j.Level.OFF);
     ```
 
-11. **Ressourcengrenzwert des Betriebssystems für geöffnete Dateien** Einige Linux-Systeme (z.B. Redhat) haben eine Obergrenze für die Anzahl von offenen Dateien und damit für die Gesamtzahl von Verbindungen. Führen Sie den folgenden Befehl aus, um die aktuellen Grenzwerte anzuzeigen:
+11. **Ressourcengrenzwert des Betriebssystems für geöffnete Dateien** Einige Linux-Systeme (z.B. Red Hat) haben eine Obergrenze für die Anzahl von offenen Dateien und damit für die Gesamtzahl von Verbindungen. Führen Sie den folgenden Befehl aus, um die aktuellen Grenzwerte anzuzeigen:
 
     ```bash
     ulimit -a
@@ -170,7 +170,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
     </dependency>
     ```
 
-Lesen Sie für andere Plattformen (Redhat, Windows, Mac usw.) diese Anleitungen unter https://netty.io/wiki/forked-tomcat-native.html.
+Lesen Sie für andere Plattformen (Red Hat, Windows, Mac usw.) die Anweisungen unter https://netty.io/wiki/forked-tomcat-native.html
 
 ## <a name="indexing-policy"></a>Indizierungsrichtlinien
  

@@ -7,23 +7,24 @@ ms.author: raymondl
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: f87f865ef6d2c3403903a1bdcc402c01c3e9f939
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 4a49ccff68003cf7b81a7d945176992a2893d1ac
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831988"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38973172"
 ---
 # <a name="consuming-web-services"></a>Nutzen von Webdiensten
 Sobald Sie ein Modell als in Echtzeit arbeitenden Webdienst bereitgestellt haben, können Sie Daten an ihn senden und Vorhersagen von verschiedenen Plattformen und Anwendungen abrufen. Der in Echtzeit arbeitende Webdienst macht eine REST-API zum Abrufen von Vorhersagen verfügbar. Sie können Daten im ein- oder mehrzeiligen Format an den Webdienst senden, um eine oder mehrere Vorhersagen gleichzeitig zu erhalten.
 
 Bei Nutzung eines [Azure Machine Learning-Webdiensts](model-management-service-deploy.md) kommuniziert eine externe Anwendung synchron mit einem Vorhersagemodell, indem ein HTTP POST-Aufruf an die Dienst-URL gerichtet wird. Um einen Webdienst aufrufen zu können, muss die Clientanwendung den API-Schlüssel angeben, der beim Bereitstellen einer Vorhersage erstellt wird, und die Anforderungsdaten in den POST-Anforderungstext einfügen.
 
-Beachten Sie, dass API-Schlüssel nur im Modus für die Bereitstellung in einem Cluster verfügbar sind. Lokale Webdienste haben keine Schlüssel.
+> [!NOTE]
+> Beachten Sie, dass API-Schlüssel nur im Modus für die Bereitstellung in einem Cluster verfügbar sind. Lokale Webdienste haben keine Schlüssel.
 
 ## <a name="service-deployment-options"></a>Dienstbereitstellungsoptionen
 Azure Machine Learning-Webdienste können mithilfe der Docker-Engine in cloudbasierten Clustern sowohl für Produktions- und Testszenarien als auch auf lokalen Arbeitsstationen bereitgestellt werden. Die Funktionalität des Vorhersagemodells ist in beiden Fällen gleich. Die clusterbasierte Bereitstellung bietet skalierbare und leistungsstarke Lösungen auf Basis von Azure Container Services, während die lokale Bereitstellung für das Debugging genutzt werden kann. 
@@ -72,11 +73,11 @@ Verwenden Sie die Dienst-URL zum Senden einer Anforderung aus einer C#-Konsolena
 1. Erstellen Sie in Visual Studio eine neue Konsolenanwendung: 
     * Klicken Sie auf „Datei > Neu > Projekt“.
     * Klicken Sie unter „Visual Studio C#“ auf „Windows-Klasse > Desktop“, und wählen Sie dann „Konsolen-App“ aus.
-2. Geben Sie _MyFirstService_ als Namen des Projekts ein, und klicken Sie dann auf „OK“.
-3. Legen Sie in „Projektverweise“ Verweise auf _System.Net_ und _System.Net.Http_ fest.
-4. Klicken Sie auf „Extras > NuGet-Paket-Manager > Paket-Manager-Konsole“, und installieren Sie dann das Paket „Microsoft.AspNet.WebApi.Client“.
-5. Öffnen Sie die Datei „Program.cs“, und ersetzen Sie den Code durch folgenden Code:
-6. Aktualisieren Sie die Parameter _SERVICE_URL_ und _API_KEY_ mit den Informationen aus Ihrem Webdienst.
+2. Geben Sie `MyFirstService` als Namen des Projekts ein, und klicken Sie dann auf „OK“.
+3. Legen Sie in den Projektverweisen die Verweise auf `System.Net` und `System.Net.Http` fest.
+4. Klicken Sie auf „Extras > NuGet-Paket-Manager > Paket-Manager-Konsole“, und installieren Sie dann das Paket **Microsoft.AspNet.WebApi.Client**.
+5. Öffnen Sie die Datei **Program.cs**, und ersetzen Sie den Code durch folgenden Code:
+6. Aktualisieren Sie die Parameter `SERVICE_URL` und `API_KEY` mit den Informationen aus Ihrem Webdienst.
 7. Führen Sie das Projekt aus.
 
 ```csharp

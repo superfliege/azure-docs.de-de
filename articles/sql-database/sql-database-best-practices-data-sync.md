@@ -2,18 +2,18 @@
 title: Bewährte Methoden für die Azure SQL-Datensynchronisierung | Microsoft-Dokumentation
 description: Hier können Sie sich über bewährte Methoden beim Konfigurieren und Ausführen der Azure SQL-Datensynchronisierung informieren.
 services: sql-database
-ms.date: 04/01/2018
+ms.date: 07/03/2018
 ms.topic: conceptual
 ms.service: sql-database
 author: allenwux
 ms.author: xiwu
 manager: craigg
-ms.openlocfilehash: b53c72f1df4f2fc2509d91220d08aff4682b6620
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: c8b8455dac9aa1a9f7747cada4ce85644162e331
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025350"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445159"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Bewährte Methoden für die SQL-Datensynchronisierung 
 
@@ -85,6 +85,7 @@ Für die SQL-Datensynchronisierung gelten in Bezug auf die automatische Bereitst
 -   CHECK-Einschränkungen werden nicht bereitgestellt.  
 -   Vorhandene Trigger für die Quelltabellen werden nicht bereitgestellt.  
 -   Sichten und gespeicherte Prozeduren werden in der Zieldatenbank nicht erstellt.
+-   Die Aktionen ON UPDATE CASCADE und ON DELETE CASCADE werden für Fremdschlüsseleinschränkungen in den Zieltabellen nicht neu erstellt.
 
 #### <a name="recommendations"></a>Empfehlungen
 

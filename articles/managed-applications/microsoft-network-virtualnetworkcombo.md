@@ -11,23 +11,26 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5d806afbfd74d68d139f494c7a5a6e871a7dae36
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 2c2553d9ffb1dfbe032385fb77e234a8b96cb239
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260593"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110064"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Benutzeroberflächenelement „Microsoft.Network.VirtualNetworkCombo“
 Eine Gruppe von Steuerelementen zum Auswählen eines neuen oder vorhandenen virtuellen Netzwerks.
 
 ## <a name="ui-sample"></a>Benutzeroberflächenbeispiel
-![Microsoft.Network.VirtualNetworkCombo](./media/managed-application-elements/microsoft.network.virtualnetworkcombo.png)
+Wenn der Benutzer ein neues virtuelles Netzwerk auswählt, kann er den Namen und das Adresspräfix der einzelnen Subnetze anpassen. Die Konfiguration von Subnetzen ist optional.
 
-- Im oberen Drahtmodell hat der Benutzer ein neues virtuelles Netzwerk ausgewählt, sodass er den Namen und das Adresspräfix der einzelnen Subnetze anpassen kann. Die Konfiguration von Subnetzen ist in diesem Fall optional.
-- Im unteren Drahtmodell hat der Benutzer ein vorhandenes virtuelles Netzwerk ausgewählt, daher muss er jedes von der Bereitstellungsvorlage geforderte Subnetz einem vorhandenen Subnetz zuordnen. Die Konfiguration von Subnetzen ist in diesem Fall erforderlich.
+![Microsoft.Network.VirtualNetworkCombo – neu](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-new.png)
+
+Wenn der Benutzer ein vorhandenes virtuelles Netzwerk auswählt, muss er jedes von der Bereitstellungsvorlage geforderte Subnetz einem vorhandenen Subnetz zuordnen. Die Konfiguration von Subnetzen ist in diesem Fall erforderlich.
+
+![Microsoft.Network.VirtualNetworkCombo – vorhanden](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-existing.png)
 
 ## <a name="schema"></a>Schema
 ```json
@@ -88,12 +91,12 @@ Eine Gruppe von Steuerelementen zum Auswählen eines neuen oder vorhandenen virt
 - `constraints.minAddressPrefixSize` muss angegeben werden. Vorhandene virtuelle Netzwerke, deren Adressbereich kleiner als der angegebene Wert ist, können nicht ausgewählt werden.
 - `subnets` muss angegeben werden, und für jedes Subnetz muss `constraints.minAddressPrefixSize` angegeben werden.
 - Bei der Erstellung eines neuen virtuellen Netzwerks wird das Adresspräfix für jedes Subnetz automatisch basierend auf dem Adresspräfix und dem jeweiligen `addressPrefixSize`-Element des virtuellen Netzwerks berechnet.
-- Bei der Verwendung eines vorhandenen virtuellen Netzwerks können keine Subnetze ausgewählt werden, die kleiner als das entsprechende `constraints.minAddressPrefixSize`-Element sind. Darüber hinaus können bei Angabe des Werts Subnetze, die nicht mindestens `minAddressCount` verfügbare Adressen enthalten, nicht ausgewählt werden.
-Der Standardwert ist **0**. Um sicherzustellen, dass die verfügbaren Adressen zusammenhängend sind, geben Sie **true** für `requireContiguousAddresses` an. Der Standardwert lautet **true**.
+- Bei der Verwendung eines vorhandenen virtuellen Netzwerks können keine Subnetze ausgewählt werden, die kleiner als das entsprechende `constraints.minAddressPrefixSize`-Element sind. Darüber hinaus können bei Angabe des Werts Subnetze, die nicht mindestens `minAddressCount` verfügbare Adressen enthalten, nicht ausgewählt werden. Der Standardwert ist **0**. Um sicherzustellen, dass die verfügbaren Adressen zusammenhängend sind, geben Sie **true** für `requireContiguousAddresses` an. Der Standardwert lautet **true**.
 - Die Erstellung von Subnetzen in einem vorhandenen virtuellen Netzwerk wird nicht unterstützt.
 - Wenn **true** für `options.hideExisting` angegeben ist, kann der Benutzer kein vorhandenes virtuelles Netzwerk auswählen. Der Standardwert ist **false**.
 
 ## <a name="sample-output"></a>Beispielausgabe
+
 ```json
 {
   "name": "vnet01",

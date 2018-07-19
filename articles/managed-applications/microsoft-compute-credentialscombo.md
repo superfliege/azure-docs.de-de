@@ -11,23 +11,35 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 914e354265754a05476e96411d35e6cb04183213
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 183075f7407b0a0ca6ea53871e239ab8c2d89490
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261053"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098619"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Benutzeroberflächenelement „Microsoft.Compute.CredentialsCombo“
 Eine Gruppe von Steuerelementen mit integrierter Überprüfung für Windows- und Linux-Kennwörter und öffentliche SSH-Schlüssel.
 
 ## <a name="ui-sample"></a>Benutzeroberflächenbeispiel
-![Microsoft.Compute.CredentialsCombo](./media/managed-application-elements/microsoft.compute.credentialscombo.png)
+
+Windows-Benutzern wird Folgendes angezeigt:
+
+![Microsoft.Compute.CredentialsCombo Windows](./media/managed-application-elements/microsoft.compute.credentialscombo-windows.png)
+
+Bei Linux mit ausgewähltem Kennwort wird Benutzern Folgendes angezeigt:
+
+![Linux-Kennwort für „Microsoft.Compute.CredentialsCombo“](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-password.png)
+
+Bei Linux mit ausgewähltem öffentlichem SSH-Schlüssel wird Benutzern Folgendes angezeigt:
+
+![Linux-Schlüssel für „Microsoft.Compute.CredentialsCombo“](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
 
 ## <a name="schema"></a>Schema
-Wenn **Windows** für `osPlatform` festgelegt ist, wird das folgende Schema verwendet:
+Verwenden Sie unter Windows folgendes Schema:
+
 ```json
 {
   "name": "element1",
@@ -52,7 +64,8 @@ Wenn **Windows** für `osPlatform` festgelegt ist, wird das folgende Schema verw
 }
 ```
 
-Wenn **Linux** für `osPlatform` festgelegt ist, wird das folgende Schema verwendet:
+Verwenden Sie unter **Linux** folgendes Schema:
+
 ```json
 {
   "name": "element1",
@@ -84,13 +97,13 @@ Wenn **Linux** für `osPlatform` festgelegt ist, wird das folgende Schema verwen
 
 ## <a name="remarks"></a>Anmerkungen
 - `osPlatform` muss angegeben werden. Mögliche Optionen: **Windows** oder **Linux**.
-- Wenn `constraints.required` auf **true** festgelegt ist, muss für eine erfolgreiche Überprüfung das Textfeld für das Kennwort oder den öffentlichen SSH-Schlüssel Werte enthalten. Der Standardwert lautet **true**.
+- Wenn `constraints.required` auf **TRUE** festgelegt ist, muss das Textfeld für das Kennwort oder den öffentlichen SSH-Schlüssel Werte enthalten, damit die Überprüfung erfolgreich ist. Der Standardwert lautet **true**.
 - Wenn `options.hideConfirmation` auf **true** festgelegt ist, wird das zweite Textfeld zum Bestätigen des Benutzerkennworts ausgeblendet. Der Standardwert ist **false**.
 - Wenn `options.hidePassword` auf **true** festgelegt ist, wird die Option zum Verwenden der Kennwortauthentifizierung ausgeblendet. Sie kann nur verwendet werden, wenn für `osPlatform` das Betriebssystem **Linux** angegeben ist. Der Standardwert ist **false**.
 - Zusätzliche Einschränkungen für die zulässigen Kennwörter können mithilfe der `customPasswordRegex`-Eigenschaft implementiert werden. Die Zeichenfolge in `customValidationMessage` wird angezeigt, wenn bei der benutzerdefinierten Überprüfung des Kennworts ein Fehler auftritt. Der Standardwert für beide Eigenschaften ist **null**.
 
 ## <a name="sample-output"></a>Beispielausgabe
-Wenn für `osPlatform` das Betriebssystem **Windows** angegeben ist oder der Benutzer ein Kennwort anstelle eines öffentlichen SSH-Schlüssels eingegeben hat, wird die folgende Ausgabe erwartet:
+Wenn für `osPlatform` das Betriebssystem **Windows** oder für `osPlatform` das Betriebssystem **Linux** angegeben ist und der Benutzer ein Kennwort anstelle eines öffentlichen SSH-Schlüssels eingegeben hat, gibt das Steuerelement folgende Ausgabe zurück:
 
 ```json
 {
@@ -99,7 +112,8 @@ Wenn für `osPlatform` das Betriebssystem **Windows** angegeben ist oder der Ben
 }
 ```
 
-Wenn der Benutzer einen öffentlichen SSH-Schlüssel angegeben hat, wird die folgende Ausgabe erwartet:
+Wenn für `osPlatform` das Betriebssystem **Linux** angegeben ist und der Benutzer einen öffentlichen SSH-Schlüssel eingegeben hat, gibt das Steuerelement folgende Ausgabe zurück:
+
 ```json
 {
   "authenticationType": "sshPublicKey",

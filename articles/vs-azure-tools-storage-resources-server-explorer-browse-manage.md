@@ -11,12 +11,12 @@ ms.workload: azure
 ms.topic: conceptual
 ms.date: 8/24/2017
 ms.author: ghogen
-ms.openlocfilehash: c9828504ab40a1e62c107f218fda024be6330c23
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: dd867462ce3a1841aa4e2e8943f2c2619d168b08
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061742"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112319"
 ---
 # <a name="browse-and-manage-storage-resources-by-using-server-explorer"></a>Durchsuchen und Verwalten von Speicherressourcen mit dem Server-Explorer
 
@@ -219,7 +219,7 @@ Mit dem Abfrage-Generator können Sie den Satz von Entitäten anpassen, der in e
 1. Schließen Sie das Dialogfeld, wenn Sie die Abfrage erstellt haben. Die resultierende Textform der Abfrage wird in einem Textfeld als WCF Data Services-Filter angezeigt.
 1. Klicken Sie auf das grüne Dreieckssymbol, um die Abfrage auszuführen.
 
-Sie können im Tabellen-Designer angezeigte Entitätsdaten filtern, indem Sie im Filtertextfeld direkt eine WCF Data Services-Filterzeichenfolge eingeben. Diese Art von Zeichenfolge ist mit einer SQL-WHERE-Klausel vergleichbar, wird jedoch als HTTP-Anforderung an den Server gesendet. Informationen zum Erstellen von Filterzeichenfolgen finden Sie unter [Erstellen von Filterzeichenfolgen für den Tabellen-Designer](https://msdn.microsoft.com/library/azure/ff683669.aspx).
+Sie können im Tabellen-Designer angezeigte Entitätsdaten filtern, indem Sie im Filtertextfeld direkt eine WCF Data Services-Filterzeichenfolge eingeben. Diese Art von Zeichenfolge ist mit einer SQL-WHERE-Klausel vergleichbar, wird jedoch als HTTP-Anforderung an den Server gesendet. Informationen zum Erstellen von Filterzeichenfolgen finden Sie unter [Erstellen von Filterzeichenfolgen für den Tabellen-Designer](https://docs.microsoft.com/azure/vs-azure-tools-table-designer-construct-filter-strings).
 
 Die folgende Abbildung zeigt ein Beispiel für eine gültige Filterzeichenfolge:
 

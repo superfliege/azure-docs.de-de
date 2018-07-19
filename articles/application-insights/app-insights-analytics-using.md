@@ -11,15 +11,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/14/2017
+ms.date: 07/02/2018
 ms.reviewer: danha
 ms.author: mbullwin
-ms.openlocfilehash: 7f8f49cf88bda8e485d2365281c13680ef796196
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: aa86e2f3b1fb147ab167c948475a5207693143c2
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295518"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341561"
 ---
 # <a name="using-analytics-in-application-insights"></a>Verwenden von Analytics in Application Insights
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Log Analytics-Abfragesprache beschrieben.
@@ -151,7 +151,7 @@ Das an das Dashboard angeheftete Diagramm wird automatisch aktualisiert, indem d
 
 Auf ein Diagramm werden bestimmte Vereinfachungen angewendet, wenn Sie es an ein Dashboard anheften.
 
-**Zeiteinschränkung:** Abfragen sind automatisch auf die letzten 14 Tage begrenzt. Dies wirkt sich so aus, als enthielte die Abfrage `where timestamp > ago(14d)`.
+**Zeiteinschränkung:** Abfragen sind automatisch auf die letzten 30 Tage begrenzt. Dies wirkt sich so aus, als enthielte die Abfrage `where timestamp > ago(30d)`.
 
 **Maximale Anzahl von Containern:** Wenn Sie ein Diagramm mit zahlreichen separaten Containern (in der Regel ein Balkendiagramm) anzeigen, werden die Container mit wenig Daten automatisch in einem einzelnen Container zusammengefasst. Die folgende Abfrage:
 

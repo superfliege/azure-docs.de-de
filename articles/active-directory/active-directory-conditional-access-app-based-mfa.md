@@ -13,15 +13,15 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/11/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 1501ca1c036a8db1d53b9b27170d9ae05d41f797
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 0a2cddec1308b96b960cd0bbc5ccae9fd1a1a9a7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724114"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37449145"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Schnellstart: Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory 
 
@@ -42,8 +42,18 @@ Für die Durchführung des Szenarios im Rahmen dieses Schnellstarts benötigen S
 
 - **Zugriff auf eine Azure AD Premium-Edition**: Der bedingte Zugriff von Azure AD ist eine Funktion, die in Azure AD Premium enthalten ist. 
 
-- **Ein Testkonto unter dem Namen Isabella Simonsen**: Wenn Sie nicht wissen, wie Sie ein Testkonto erstellen, lesen Sie [Hinzufügen von cloudbasierten Benutzern](add-users-azure-active-directory.md#add-cloud-based-users).
+- **Ein Testkonto unter dem Namen Isabella Simonsen**: Wenn Sie nicht wissen, wie Sie ein Testkonto erstellen, lesen Sie [Hinzufügen von cloudbasierten Benutzern](fundamentals/add-users-azure-active-directory.md#add-cloud-based-users).
 
+
+## <a name="test-your-sign-in"></a>Testen Ihrer Anmeldung
+
+Das Ziel dieses Schritts besteht darin, den Anmeldevorgang ohne eine Richtlinie für bedingten Zugriff zu überprüfen.
+
+**So initialisieren Sie Ihre Umgebung:**
+
+1. Melden Sie sich bei Ihrem Azure-Portal als Isabella Simonsen an.
+
+2. Melden Sie sich ab.
 
 
 ## <a name="create-your-conditional-access-policy"></a>Erstellen der Richtlinie für bedingten Zugriff 
@@ -69,7 +79,7 @@ Legen Sie in Ihrer Richtlinie Folgendes fest:
 
 **So konfigurieren Sie die Richtlinie für bedingten Zugriff**
 
-1. Melden Sie sich im [Azure-Portal](https://portal.azure.com) als globaler Administrator an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 
 2. Klicken Sie im Azure-Portal auf der linken Navigationsleiste auf **Azure Active Directory**. 
 
@@ -179,7 +189,7 @@ Legen Sie zum Initialisieren des What If-Richtlinienauswertungstools Folgendes f
 
     c. Klicken Sie auf **Auswählen**.
 
-    d. Wählen Sie auf der Seite **Auswählen** die Option „Microsoft Azure Management“** aus, und klicken Sie dann auf **Auswählen**.
+    d. Wählen Sie auf der Seite **Auswählen** die Option **Microsoft Azure Management** aus, und klicken Sie dann auf **Auswählen**.
 
     e. Klicken Sie auf der Seite „Cloud-Apps“ auf **Fertig**.
 
@@ -199,7 +209,7 @@ Um Ihre Richtlinie zu testen, versuchen Sie, sich im [Azure-Portal](https://port
 
 Löschen Sie den Testbenutzer, wenn er nicht mehr benötigt wird, und löschen Sie auch die Richtlinie für bedingten Zugriff:
 
-- Wenn Sie nicht wissen, wie ein Azure AD-Benutzer gelöscht wird, lesen Sie [Löschen von Benutzern aus Azure AD](add-users-azure-active-directory.md#delete-users-from-azure-ad).
+- Wenn Sie nicht wissen, wie ein Azure AD-Benutzer gelöscht wird, lesen Sie [Löschen von Benutzern aus Azure AD](fundamentals/add-users-azure-active-directory.md#delete-users-from-azure-ad).
 
 - Zum Löschen Ihrer Richtlinie wählen Sie die Richtlinie aus, und klicken Sie dann in der Symbolleiste für den Schnellzugriff auf **Löschen**.
 
@@ -208,5 +218,6 @@ Löschen Sie den Testbenutzer, wenn er nicht mehr benötigt wird, und löschen S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum bedingten Zugriff finden Sie unter [Conditional access in Azure Active Directory - preview](active-directory-conditional-access-azure-portal.md) (Bedingter Zugriff in Azure Active Directory – Vorschau).
-
+> [!div class="nextstepaction"]
+> [Festlegen, dass die Nutzungsbedingungen akzeptiert werden müssen](./active-directory-conditional-access-tou.md)
+> [Blockieren des Zugriffs bei erkanntem Sitzungsrisiko](./active-directory-conditional-access-app-sign-in-risk.md)

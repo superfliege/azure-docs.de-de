@@ -10,12 +10,12 @@ ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b110f83274b2b42896bd18fb364c355ecc97a028
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 717cf6b2abfb529313699836b790bd3f07844a67
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34258259"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867952"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für die Änderungsnachverfolgung
 
@@ -57,6 +57,7 @@ Führen Sie zum Konfigurieren der Dateinachverfolgung auf Linux-Computern die fo
 |Rekursion     | Bestimmt, ob beim Suchen nach dem nachzuverfolgenden Element die Rekursion verwendet wird        |
 |Sudo verwenden     | Diese Einstellung bestimmt, ob „sudo“ bei der Suche nach dem Element verwendet wird         |
 |Links     | Diese Einstellung bestimmt, wie symbolische Verknüpfungen beim Durchlaufen von Verzeichnissen behandelt werden<br> **Ignorieren**: Symbolische Verknüpfungen werden ignoriert, und die referenzierten Dateien/Verzeichnisse werden nicht einbezogen<br>**Folgen**: Folgt den symbolischen Verknüpfungen bei der Rekursion und bindet auch die referenzierten Dateien/Verzeichnisse ein<br>**Verwalten**: Folgt den symbolischen Verknüpfungen und ermöglicht das Ändern von zurückgegebenen Inhalten     |
+|Hochladen von Dateiinhalt für alle Einstellungen| Aktiviert oder deaktiviert den Upload des Dateiinhalts für nachverfolgte Änderungen. Verfügbare Optionen: **TRUE** oder **FALSE**.|
 
 > [!NOTE]
 > Die Linkoption „Verwalten“ wird nicht empfohlen. Das Abrufen von Dateiinhalten wird nicht unterstützt.
@@ -75,6 +76,13 @@ Führen Sie zum Konfigurieren der Dateinachverfolgung auf Windows-Computern die 
 |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
 |Group     | Gruppenname für die logische Gruppierung von Dateien        |
 |Pfad eingeben     | Der zu überprüfende Pfad für die Datei, z. B. „c:\temp\meinedatei.txt“       |
+|Hochladen von Dateiinhalt für alle Einstellungen| Aktiviert oder deaktiviert den Upload des Dateiinhalts für nachverfolgte Änderungen. Verfügbare Optionen: **TRUE** oder **FALSE**.|
+
+## <a name="configure-file-content-tracking"></a>Konfigurieren der Nachverfolgung von Dateiinhalten
+
+Mithilfe der Nachverfolgung von Dateiinhalten können Sie die Inhalte vor und nach vorgenommenen Änderungen an einer Datei anzeigen. Dies ist für Windows- und Linux-Dateien verfügbar. Bei jeder Dateiänderung werden die Inhalte der Datei in einem Speicherkonto gespeichert, und die Datei wird in den Versionen vor und nach der Änderung angezeigt, wahlweise inline oder nebeneinander. Weitere Informationen finden Sie unter [View the contents of a tracked file](change-tracking-file-contents.md) (Anzeigen der Inhalte einer nachverfolgten Datei).
+
+![Anzeigen von Änderungen in einer Datei](./media/change-tracking-file-contents/view-file-changes.png)
 
 ### <a name="configure-windows-registry-keys-to-track"></a>Konfigurieren der nachzuverfolgenden Windows-Registrierungsschlüssel
 
@@ -125,11 +133,22 @@ Die folgende Tabelle zeigt die Datensammlungshäufigkeit für die Änderungstype
 | Windows-Registrierung | 50 Minuten |
 | Windows-Datei | 30 Minuten |
 | Linux-Datei | 15 Minuten |
-| Windows-Dienste | 30 Minuten |
+| Windows-Dienste | 10 Sekunden bis 30 Minuten</br> Standardwert: 30 Minuten |
 | Linux-Daemons | 5 Minuten |
 | Windows-Software | 30 Minuten |
 | Linux-Software | 5 Minuten |
 
+### <a name="windows-service-tracking"></a>Windows-Dienstnachverfolgung
+
+Die Standard-Sammelhäufigkeit für Windows-Dienste beträgt 30 Minuten. Um die Häufigkeit zu konfigurieren, wechseln Sie zu **Änderungsnachverfolgung**. Auf der Registerkarte **Windows-Dienste** befindet sich unter **Bearbeitungseinstellungen** ein Schieberegler, mit dem Sie die Sammelhäufigkeit für Windows-Dienste vom kleinsten Wert von 10 Sekunden bis zum größten von 30 Minuten ändern können. Bewegen Sie den Schieberegler auf die gewünschte Häufigkeit; sie wird automatisch gespeichert.
+
+![Windows-Dienste-Schieberegler](./media/automation-change-tracking/windowservices.png)
+
+Der Agent verfolgt nur Änderungen nach, dies optimiert seine Leistung. Wird ein zu hoher Schwellenwert festgelegt, können Änderungen verpasst werden, wenn der Dienst wieder in seinen ursprünglichen Zustand zurückgekehrt ist. Das Festlegen der Häufigkeit auf einen kleineren Wert ermöglicht es Ihnen, Änderungen zu erfassen, die sonst verpasst würden.
+
+> [!NOTE]
+> Zwar kann der Agent Änderungen bis hinab zu einem 10-Sekunden-Intervall nachverfolgen, bis zur Anzeige der Daten im Portal vergehen jedoch einige Minuten. Änderungen, die zwischen der Erfassung und der Anzeige im Portal erfolgen, werden trotzdem nachverfolgt und protokolliert.
+  
 ### <a name="registry-key-change-tracking"></a>Registrierungsschlüssel-Änderungsnachverfolgung
 
 Die Überwachung von Änderungen der Registrierungsschlüssel dient dem Ermitteln von Erweiterungspunkten, an denen Code von Drittanbietern und Schadsoftware aktiv werden können. Die folgende Liste enthält die Liste der vorkonfigurierten Registrierungsschlüssel. Diese Schlüssel sind konfiguriert, aber nicht aktiviert. Um diese Registrierungsschlüssel nachzuverfolgen, müssen Sie jeden einzeln aktivieren.

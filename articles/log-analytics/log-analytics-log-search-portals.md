@@ -1,23 +1,25 @@
 ---
 title: Portale zum Erstellen und Bearbeiten von Protokollabfragen in Azure Log Analytics | Microsoft-Dokumentation
-description: "In diesem Artikel werden die Portale beschrieben, die Sie zum Erstellen und Bearbeiten von Protokollsuchen in Azure Log Analytics verwenden können."
+description: In diesem Artikel werden die Portale beschrieben, die Sie zum Erstellen und Bearbeiten von Protokollsuchen in Azure Log Analytics verwenden können.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/26/2017
+ms.topic: conceptual
+ms.date: 06/11/2018
 ms.author: magoedte; bwren
-ms.openlocfilehash: b205f226d95d94b938a70a834ac0147e76d459ea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: na
+ms.openlocfilehash: e2ea0bf1fb3f1c63f4e6f037e465e8fdfd9a4374
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37133349"
 ---
 # <a name="portals-for-creating-and-editing-log-queries-in-azure-log-analytics"></a>Portale zum Erstellen und Bearbeiten von Protokollabfragen in Azure Log Analytics
 
@@ -37,9 +39,16 @@ Das Advanced Analytics-Portal ist ein dediziertes Portal mit erweiterten Funktio
 ![Advanced Analytics-Portal](media/log-analytics-log-search-portals/advanced-analytics-portal.png)
 
 
-Aufgrund der erweiterten Funktionen wird das Advanced Analytics-Portal in der Regel als primäres Tool für die Erstellung und Bearbeitung von Abfragen verwendet.  Nachdem Sie sich vergewissert haben, dass die Abfrage erwartungsgemäß funktioniert, kopieren Sie sie, und fügen Sie sie an anderer Stelle ein, z.B. auf der Seite „Protokollsuche“ oder im Ansicht-Designer.  Da das Advanced Analytics-Portal jedoch Abfragen mit mehreren Zeilen unterstützt, müssen Sie beim Kopieren einer Abfrage aus diesem Portal Folgendes berücksichtigen.
+Aufgrund der erweiterten Funktionen wird das Advanced Analytics-Portal in der Regel als primäres Tool für die Erstellung und Bearbeitung von Abfragen verwendet.  Nachdem Sie sich vergewissert haben, dass die Abfrage erwartungsgemäß funktioniert, kopieren Sie sie, und fügen Sie sie an anderer Stelle ein, z.B. auf der Seite „Protokollsuche“ oder im Ansicht-Designer.  
 
-- Kommentare müssen aus der Abfrage entfernt werden, bevor sie kopiert und an anderer Stelle eingefügt werden.  Sie können eine Zeile durch zwei vorangestellte Schrägstriche (//) kommentieren.  Wenn Sie eine Abfrage mit mehreren Zeilen in eine einzelne Zeile einfügen, werden Zeilenumbrüche entfernt.  Wenn Kommentare eingeschlossen werden, werden alle Zeichen nach dem ersten Kommentar als Bestandteil des Kommentars behandelt.
+### <a name="firewall-requirements"></a>Firewallanforderungen
+Ihr Browser erfordert Zugriff auf die folgenden Adressen, um auf das Advanced Analytics-Portal zuzugreifen.  Wenn der Browser über eine Firewall auf das Azure-Portal zugreift, müssen Sie den Zugriff auf diese Adressen aktivieren.
+
+| Uri | IP | Ports |
+|:---|:---|:---|
+| portal.loganalytics.io | Dynamisch | 80, 443 |
+| api.loganalytics.io    | Dynamisch | 80, 443 |
+| docs.loganalytics.io   | Dynamisch | 80, 443 |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

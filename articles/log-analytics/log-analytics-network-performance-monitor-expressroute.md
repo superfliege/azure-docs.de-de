@@ -15,14 +15,14 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: na
-ms.openlocfilehash: 55308c2f144ea90636fb477f82c19fd3f8276af5
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 27169193a468d98be879164b80e63fffde419002
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131127"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38633348"
 ---
-# <a name="expressroute-manager"></a>ExpressRoute-Monitor
+# <a name="expressroute-monitor"></a>ExpressRoute-Monitor
 
 Mit der ExpressRoute-Monitor-Funktion im [Netzwerkleistungsmonitor](log-analytics-network-performance-monitor.md) können Sie die End-to-End-Konnektivität und -Leistung zwischen Ihren Zweigstellen und Azure über Azure ExpressRoute überwachen. Zentrale Vorteile: 
 

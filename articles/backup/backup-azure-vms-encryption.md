@@ -6,27 +6,23 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/13/2017
+ms.date: 7/10/2018
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 49361aef774e9eb5a0995bc106e73b236a71b0bb
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 16620678c38dcdc1564d8cb18f3393352170cefe
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441130"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38598423"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Sichern und Wiederherstellen verschlüsselter virtueller Computer mit Azure Backup
 In diesem Artikel werden die Schritte zum Sichern und Wiederherstellen von virtuellen Computern mit Azure Backup beschrieben. Außerdem enthält er Details zu unterstützten Szenarien, Voraussetzungen und Problembehandlungsschritten für Fehler.
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
 
- * Sicherung und Wiederherstellung von verschlüsselten virtuellen Computern werden nur für virtuelle Computer unterstützt, die das Azure Resource Manager-Bereitstellungsmodell verwenden. Für virtuelle Computer, die das klassische Bereitstellungsmodell verwenden, werden diese Vorgänge nicht unterstützt. <br>
- * Sicherung und Wiederherstellung verschlüsselter virtueller Computer werden für virtuelle Windows- und Linux-Computer unterstützt, die Azure Disk Encryption nutzen. Disk Encryption verwendet das Branchenstandardfeature „BitLocker“ von Windows und das Feature „dm-crypt“ von Linux für die Verschlüsselung von Datenträgern. <br>
- 
- Die folgende Tabelle zeigt unterstützte Szenarien für verschlüsselte virtuelle Computer nur mit BitLocker-Verschlüsselungsschlüssel (BEK) und mit Schlüsselverschlüsselungsschlüssel (KEK):
- 
- 
+ Sicherung und Wiederherstellung von verschlüsselten virtuellen Computern werden nur für virtuelle Computer unterstützt, die das Azure Resource Manager-Bereitstellungsmodell verwenden. Für virtuelle Computer, die das klassische Bereitstellungsmodell verwenden, werden diese Vorgänge nicht unterstützt. Sicherung und Wiederherstellung verschlüsselter virtueller Computer werden für virtuelle Windows- und Linux-Computer unterstützt, die Azure Disk Encryption nutzen. Disk Encryption verwendet das Branchenstandardfeature „BitLocker“ von Windows und das Feature „dm-crypt“ von Linux für die Verschlüsselung von Datenträgern. Die folgende Tabelle zeigt den Verschlüsselungstyp und die Unterstützung für VMs.
+
    |  | BEK- + KEK-VMs | Virtuelle Computer nur mit BEK |
    | --- | --- | --- |
    | **Nicht verwaltete virtuelle Computer**  | Ja | Ja  |

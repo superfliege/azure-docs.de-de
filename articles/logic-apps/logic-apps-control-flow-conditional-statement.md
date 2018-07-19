@@ -10,12 +10,12 @@ ms.date: 03/05/2018
 ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: e8d84944d44588602593c762c4f60c375e480343
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d4e69d33e07f484b4ccc5343786865230368c7ca
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298167"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096375"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Erstellen bedingter Anweisungen zum Steuern von Workflowaktionen in Azure Logic Apps
 
@@ -50,32 +50,27 @@ Angenommen Sie verfügen über eine Logik-App, die zu viele E-Mails sendet, wenn
 
    1. Geben Sie im linken Feld die Daten oder das Feld an, die verglichen werden sollen.
 
-      In der Liste **Dynamischen Inhalt hinzufügen** können Sie vorhandene Felder aus Ihrer Logik-App auswählen.
+      Wenn Sie in das linke Feld klicken, wird die Liste mit dynamischen Inhalten angezeigt, sodass Sie Ausgaben aus vorherigen Schritten in der Logik-App auswählen können. 
+      Wählen Sie für dieses Beispiel die RSS-Feedzusammenfassung aus.
+
+      ![Erstellen der Bedingung](./media/logic-apps-control-flow-conditional-statement/edit-condition.png)
 
    2. Wählen Sie in der mittleren Liste den auszuführenden Vorgang aus. 
-   3. Geben Sie im rechten Feld einen Wert oder ein Feld als Suchkriterium an.
+   Wählen Sie für dieses Beispiel die Option **enthält** aus. 
 
-   Beispiel: 
-
-   ![Bearbeiten einer Bedingung im Standardmodus](./media/logic-apps-control-flow-conditional-statement/edit-condition-basic-mode.png)
+   3. Geben Sie im rechten Feld einen Wert oder ein Feld als Suchkriterium an. 
+   Geben Sie für dieses Beispiel die Zeichenfolge **Microsoft** an.
 
    Hier ist die vollständige Bedingung:
 
-   ![Vollständige Bedingung](./media/logic-apps-control-flow-conditional-statement/edit-condition-basic-mode-2.png)
+   ![Vollständige Bedingung](./media/logic-apps-control-flow-conditional-statement/edit-condition-2.png)
+
+5. Fügen Sie unter **Bei TRUE** und **Bei FALSE** die auszuführenden Schritte basierend darauf hinzu, ob die Bedingung erfüllt ist. Beispiel: 
+
+   ![Bedingung mit „Bei TRUE“- und „Bei FALSE“-Pfaden](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
 
    > [!TIP]
-   > Zum Erstellen einer komplexeren Bedingung oder zum Verwenden von Ausdrücken wählen Sie **Im erweiterten Modus bearbeiten**. Sie können Ausdrücke verwenden, die durch die [Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md) definiert sind.
-   > 
-   > Beispiel: 
-   >
-   > ![Bearbeiten einer Bedingung im Code](./media/logic-apps-control-flow-conditional-statement/edit-condition-advanced-mode.png)
-
-5. Fügen Sie unter **Wenn Ja** und **Wenn Nein** die auszuführenden Schritte basierend darauf hinzu, ob die Bedingung erfüllt ist. Beispiel: 
-
-   ![Bedingung mit Ja- und Nein-Pfaden](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
-
-   > [!TIP]
-   > Sie können die vorhandenen Aktionen in die **Wenn Ja** und **Wenn Nein**-Pfade ziehen.
+   > Sie können vorhandene Aktionen in die **Bei TRUE**- und **Bei FALSE**-Pfade ziehen.
 
 6. Speichern Sie Ihre Logik-App.
 
@@ -87,14 +82,21 @@ Da Sie nun eine Logik-App mit einer Bedingungsanweisung erstellt haben, sehen wi
 
 ``` json
 "actions": {
-  "myConditionName": {
+  "Condition": {
     "type": "If",
-    "expression": "@contains(triggerBody()?['summary'], 'Microsoft')",
     "actions": {
       "Send_an_email": {
-        "inputs": { },
+        "inputs": {},
         "runAfter": {}
-      }
+    },
+    "expression": {
+      "and": [ 
+        { 
+          "contains": [ 
+            "@triggerBody()?['summary']", "Microsoft"
+          ]
+        } 
+      ]
     },
     "runAfter": {}
   }

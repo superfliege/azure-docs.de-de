@@ -3,22 +3,22 @@ title: Verwenden der Azure Stack-API | Microsoft-Dokumentation
 description: Informationen zum Abrufen einer Authentifizierung von Azure, um API-Anforderungen an Azure Stack zu richten
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: cblackuk
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2018
+ms.date: 07/02/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: e8a9489a3f487a45303bac45f805381b41427b4b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3b89564bf17a9884640b51faa1c3966dce93f89a
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359110"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346789"
 ---
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
@@ -26,7 +26,7 @@ ms.locfileid: "34359110"
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Mit der Azure Stack-Anwendungsprogrammierschnittstelle (API) können Sie Vorgänge wie das Veröffentlichen von Marketplace-Elementen automatisieren.
+Mit der Anwendungsprogrammierschnittstelle (API) können Sie Vorgänge wie das Hinzufügen einer VM zu einer Azure Stack-Cloud automatisieren.
 
 Die API erfordert Ihre Clientauthentifizierung beim Endpunkt der Microsoft Azure-Anmeldung. Der Endpunkt gibt einen Token zurück, das im Header jeder Anforderung verwendet wird, die an die Azure Stack-API gesendet wird. Microsoft Azure basiert auf OAuth 2.0.
 

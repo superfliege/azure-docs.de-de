@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 05/02/2018
+ms.date: 07/02/2018
 ms.author: jroth
-ms.openlocfilehash: 71c86af9d4dcdf1026b4f539574b9932ef1cfc89
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: e9033724f62b383ce70488b98a3a8919e3cb198a
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32767799"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345276"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Preisinformationen für virtuelle Azure-Computer mit SQL Server
 
@@ -66,7 +66,7 @@ Es gibt zwei Möglichkeiten, für die Lizenzierung dieser SQL Server-Editionen z
 
 Die **Bezahlung für SQL Server-Lizenzen je nach Nutzung** bedeutet, dass die sekundenbasierten Kosten für die Ausführung des virtuellen Azure-Computers die Kosten für die SQL Server-Lizenz einschließen. Die Preise für die verschiedenen SQL-Server-Editionen (Web, Standard, Enterprise) finden Sie auf der Preisseite für virtuelle Azure-Computer für [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) oder [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux).
 
-Die Kosten sind für alle SQL Server-Versionen (2012 SP3 bis 2017) gleich. Die Lizenzierungskosten pro Sekunde richten sich nach der Anzahl der VM-Kerne, was bei der SQL Server-Lizenzierung ein Standard ist.
+Die Kosten sind für alle SQL Server-Versionen (2012 SP3 bis 2017) gleich. Die Lizenzierungskosten pro Sekunde sind von der Anzahl von vCPUs der VM abhängig.
 
 Die nutzungsbasierte Bezahlung der SQL Server-Lizenzierung empfiehlt sich in folgenden Fällen:
 
@@ -128,7 +128,7 @@ Um unnötige Kosten zu vermeiden, wählen Sie eine optimale Größe für virtuel
 
 ### <a id="machinesize"></a>Richtige Größe Ihres virtuellen Computers
 
-Die Kosten der Lizenzierung für SQL Server beziehen sich direkt auf die Anzahl der Kerne. Wählen Sie eine Größe der virtuellen Computer aus, die mit den erwarteten Anforderungen für CPU, Arbeitsspeicher, Speicher und E/A-Bandbreite übereinstimmt. Eine vollständige Liste der Computergrößenoptionen finden Sie unter [Größen virtueller Windows-Computer](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) und [Größen virtueller Linux-Computer](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Die Kosten der Lizenzierung für SQL Server sind direkt von der Anzahl der vCPUs abhängig. Wählen Sie eine Größe der virtuellen Computer aus, die mit den erwarteten Anforderungen für CPU, Arbeitsspeicher, Speicher und E/A-Bandbreite übereinstimmt. Eine vollständige Liste der Computergrößenoptionen finden Sie unter [Größen virtueller Windows-Computer](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) und [Größen virtueller Linux-Computer](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Es sind neue Größen für Computer verfügbar, die für bestimmte Arten von SQL Server-Arbeitsauslastungen gut geeignet sind. Dieser Computergrößen verwalten einen hohen Grad an Arbeitsspeicher, Speicher und E/A-Bandbreite, verfügen jedoch über eine niedrigere Anzahl virtualisierter Kerne. Betrachten Sie etwa das folgende Beispiel:
 
@@ -140,7 +140,7 @@ Es sind neue Größen für Computer verfügbar, die für bestimmte Arten von SQL
 > [!IMPORTANT]
 > Dies ist ein Point-in-Time-Beispiel. Die neuesten Spezifikationen finden Sie in den Artikeln zu den Computergrößen und auf der Azure-Preisseite für [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) und [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
-Im Beispiel oben können Sie sehen, dass die Spezifikationen für **Standard_DS14v2** und **Standard_DS14-4v2** bis auf die vCPUs identisch sind. Das Suffix **-4v2** am Ende der Computergröße **Standard_DS14-4v2** gibt die Anzahl der aktiven vCPUs an. Da die Lizenzierungskosten für SQL Server an die Anzahl der Kerne gebunden sind, reduziert dies die Kosten des virtuellen Computers in Szenarien erheblich, in denen die zusätzlichen vCPUs nicht benötigt werden. Dies ist ein Beispiel, und es gibt viele Computergrößen mit eingeschränkten vCPUs, die mit diesem Suffixmuster identifiziert werden. Weitere Informationen finden Sie im Blogbeitrag [Ankündigung neuer Größen für virtuelle Azure-Computer für kostengünstigeres Arbeiten mit der Datenbank](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
+Im Beispiel oben können Sie sehen, dass die Spezifikationen für **Standard_DS14v2** und **Standard_DS14-4v2** bis auf die vCPUs identisch sind. Das Suffix **-4v2** am Ende der Computergröße **Standard_DS14-4v2** gibt die Anzahl der aktiven vCPUs an. Da die Lizenzierungskosten für SQL Server an die Anzahl der vCPUs gebunden sind, reduziert dies die Kosten des virtuellen Computers in Szenarien erheblich, in denen die zusätzlichen vCPUs nicht benötigt werden. Dies ist ein Beispiel, und es gibt viele Computergrößen mit eingeschränkten vCPUs, die mit diesem Suffixmuster identifiziert werden. Weitere Informationen finden Sie im Blogbeitrag [Ankündigung neuer Größen für virtuelle Azure-Computer für kostengünstigeres Arbeiten mit der Datenbank](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
 
 ### <a name="shut-down-your-vm-when-possible"></a>Herunterfahren Ihres virtuellen Computers, wenn möglich
 

@@ -15,12 +15,12 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: robmcm
-ms.openlocfilehash: fa19f3dc7dded712102d4ba9b66dd4df1bfd20dd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6ea1d249b7f9aec3a45923b162a97ce7f83d0d31
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29397596"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901152"
 ---
 # <a name="ruby-on-rails-web-application-on-an-azure-vm"></a>Ruby on Rails-Webanwendung auf Azure VM
 In diesem Lernprogramm wird gezeigt, wie Sie eine Ruby on Rails-Website auf Azure mit einem virtuellen Linux-Computer hosten.  
@@ -100,7 +100,7 @@ Eine Ausgabe ähnlich der folgenden sollte angezeigt werden.
     [2015-06-09 23:34:23] INFO  WEBrick::HTTPServer#start: pid=27766 port=3000
 
 ## <a name="add-an-endpoint"></a>Hinzufügen eines Endpunkts
-1. Wechseln Sie zum [Azure-Portal] [https://portal.azure.com], und wählen Sie Ihren virtuellen Computer.
+1. Wechseln Sie zum [Azure-Portal][https://portal.azure.com], und wählen Sie Ihre VM aus.
 
 2. Klicken Sie unter **Einstellungen** am linken Rand der Seite auf **Endpunkte**.
 
@@ -129,7 +129,7 @@ Eine Ausgabe ähnlich der folgenden sollte angezeigt werden.
     ![Standard-Rails-Seite][default-rails-cloud]
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Lernprogramm haben Sie die meisten Schritte manuell ausgeführt. In einer Produktionsumgebung würden Sie die App auf einem Entwicklungscomputer schreiben und in der Azure-VM bereitstellen. Außerdem wird in den meisten Produktionsumgebungen die Rails-Anwendung zusammen mit einem anderen Serverprozess wie Apache oder NginX gehostet, der die Weiterleitung von Anfragen an mehrere Instanzen der Rails-Anwendung und statische Ressourcen bearbeitet. Weitere Informationen finden Sie unter „http://rubyonrails.org/deploy/“.
+In diesem Lernprogramm haben Sie die meisten Schritte manuell ausgeführt. In einer Produktionsumgebung würden Sie die App auf einem Entwicklungscomputer schreiben und in der Azure-VM bereitstellen. Außerdem wird in den meisten Produktionsumgebungen die Rails-Anwendung zusammen mit einem anderen Serverprozess wie Apache oder NginX gehostet, der die Weiterleitung von Anfragen an mehrere Instanzen der Rails-Anwendung und statische Ressourcen bearbeitet. Weitere Informationen finden Sie unter http://guides.rubyonrails.org/routing.html.
 
 Weitere Informationen über Ruby on Rails finden Sie in den [Ruby on Rails-Handbüchern][rails-guides].
 

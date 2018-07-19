@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: cynthn
-ms.openlocfilehash: b98b8c947fb34b60c7bd27b006672e0e9d923d3b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 168ba57399b2649af29820f7321dd0151618346e
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30918148"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436479"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>Verschieben eines virtuellen Windows-Computers in ein anderes Azure-Abonnement oder in eine andere Ressourcengruppe
 In diesem Artikel wird beschrieben, wie Sie einen virtuellen Windows-Computer zwischen Ressourcengruppen oder Abonnements verschieben. Das Verschieben zwischen Abonnements kann hilfreich sein, wenn Sie einen virtuellen Computer ursprünglich in einem persönlichen Abonnement erstellt haben und ihn nun in das Abonnement Ihres Unternehmens verschieben möchten, um weiterarbeiten zu können.
@@ -36,13 +36,13 @@ In diesem Artikel wird beschrieben, wie Sie einen virtuellen Windows-Computer zw
 
 ## <a name="use-powershell-to-move-a-vm"></a>Verschieben eines virtuellen Computers mithilfe von PowerShell
 
-Wenn Sie einen virtuellen Computer in eine andere Ressourcengruppe verschieben möchten, müssen Sie auch alle abhängigen Ressourcen verschieben. Für das Cmdlet „Move-AzureRMResource“ benötigen Sie die Ressourcen-ID jeder einzelnen Ressource. Verwenden Sie das Cmdlet [Find-AzureRMResource](/powershell/module/azurerm.resources/find-azurermresource), um eine Liste der Ressourcen-IDs anzuzeigen.
+Wenn Sie einen virtuellen Computer in eine andere Ressourcengruppe verschieben möchten, müssen Sie auch alle abhängigen Ressourcen verschieben. Für das Cmdlet „Move-AzureRMResource“ benötigen Sie die Ressourcen-ID jeder einzelnen Ressource. Verwenden Sie das Cmdlet [Get-AzureRMResource](/powershell/module/azurerm.resources/get-azurermresource), um eine Liste der Ressourcen-IDs anzuzeigen.
 
 ```azurepowershell-interactive
- Find-AzureRMResource -ResourceGroupNameContains <sourceResourceGroupName> | Format-table -Property ResourceId 
+ Get-AzureRMResource -ResourceGroupName <sourceResourceGroupName> | Format-table -Property ResourceId 
 ```
 
-Zum Verschieben eines virtuellen Computers müssen mehrere Ressourcen verschoben werden. Mithilfe der Ausgabe von Find-AzureRMResource können Sie eine durch Trennzeichen getrennte Liste der Ressourcen-IDs erstellen und diese an [Move-AzureRMResource](/powershell/module/azurerm.resources/move-azurermresource) übergeben, um sie auf das Ziel zu verschieben. 
+Zum Verschieben eines virtuellen Computers müssen mehrere Ressourcen verschoben werden. Mithilfe der Ausgabe von Get-AzureRMResource können Sie eine durch Trennzeichen getrennte Liste der Ressourcen-IDs erstellen und diese an [Move-AzureRMResource](/powershell/module/azurerm.resources/move-azurermresource) übergeben, um sie auf das Ziel zu verschieben. 
 
 ```azurepowershell-interactive
 

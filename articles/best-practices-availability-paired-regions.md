@@ -1,20 +1,17 @@
 ---
 title: 'Geschäftskontinuität und Notfallwiederherstellung: Azure Regionspaare | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Azure-Regionspaare sicherstellen, dass Anwendungen auch bei Rechenzentrumsausfällen stabil ausgeführt werden.
-services: site-recovery
-documentationcenter: ''
 author: rayne-wiselman
-manager: carmonm
 ms.service: multiple
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: e2c288af881fa925c1680efdb0f86deec60b7510
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 13a2b78b50b1b10975a90c1da38810f1a62a6bb5
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302677"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436908"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Geschäftskontinuität und Notfallwiederherstellung: Azure-Regionspaare
 
@@ -32,8 +29,8 @@ Abbildung 1: Azure-Regionspaare
 |:--- |:--- |:--- |
 | Asien |Asien, Osten |Asien, Südosten |
 | Australien |Australien (Osten) |Australien, Südosten |
-| Australien |Australien, Mitte |Australien, Mitte (2) |
-| Brasilien |Brasilien (Süden) (2) |USA Süd Mitte |
+| Australien |Australien, Mitte |Australien, Mitte 2 |
+| Brasilien |Brasilien, Süden 2 |USA Süd Mitte |
 | Kanada |Kanada, Mitte |Kanada, Osten |
 | China |China, Norden |China, Osten|
 | Europa |Nordeuropa |Europa, Westen |

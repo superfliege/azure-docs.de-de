@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/30/2018
+ms.date: 07/02/2018
 ms.author: sethm
-ms.openlocfilehash: 451fc42f573db2b60985912cfa63617e04f09e6c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: fd7b85d18aeb1674ad7a5e67dd9ac65345c56887
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28932714"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435030"
 ---
 # <a name="event-hubs-diagnostic-logs"></a>Event Hubs-Diagnoseprotokolle
 
@@ -31,7 +31,7 @@ Sie können zwei Typen von Protokollen für Azure Event Hubs anzeigen:
 
 ## <a name="enable-diagnostic-logs"></a>Aktivieren von Diagnoseprotokollen
 
-Diagnoseprotokolle sind standardmäßig deaktiviert. So aktivieren Sie Diagnoseprotokolle
+Diagnoseprotokolle sind standardmäßig deaktiviert. Führen Sie folgende Schritte aus, um die Diagnoseprotokolle zu aktivieren:
 
 1.  Klicken Sie im [Azure-Portal](https://portal.azure.com) unter **Überwachung und Verwaltung** auf **Diagnoseprotokolle**.
 

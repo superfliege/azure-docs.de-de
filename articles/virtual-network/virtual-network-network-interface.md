@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: a6e3bb31886f1b682ef20404b536bfc4a0c07151
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4b584dfa49c42328a44fff0645dcdec2504abaa2
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656882"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37904219"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Erstellen, Ändern oder Löschen von Netzwerkschnittstellen
 
@@ -62,7 +62,7 @@ Wenn Sie im Azure-Portal eine VM erstellen, generiert das Portal für Sie eine N
 
 Das Portal stellt keine Option bereit, mit der Sie der Netzwerkschnittstelle beim Erstellen eine öffentliche IP-Adresse zuweisen können. Sie können allerdings im Portal eine öffentliche IP-Adresse erstellen und diese einer Netzwerkschnittstelle zuweisen, wenn Sie im Portal einen virtuellen Computer erstellen. Informationen zum Hinzufügen einer öffentlichen IP-Adresse zur Netzwerkschnittstelle nach deren Erstellung finden Sie unter [Verwalten von IP-Adressen](virtual-network-network-interface-addresses.md). Wenn Sie eine Netzwerkschnittstelle mit einer öffentlichen IP-Adresse erstellen möchten, müssen Sie zum Erstellen der Netzwerkschnittstelle die Befehlszeilenschnittstelle oder PowerShell verwenden.
 
-Nicht das Portal, aber Azure CLI und PowerShell bieten die Option zum Zuweisen der Netzwerkschnittstelle zu Anwendungssicherheitsgruppen. Weitere Informationen zu Anwendungssicherheitsgruppen finden Sie unter [Anwendungssicherheitsgruppen](security-overview.md#application-security-groups).
+Im Portal steht beim Erstellen von Netzwerkschnittstellen keine Option zum Zuweisen der Netzwerkschnittstelle zu Anwendungssicherheitsgruppen zur Verfügung, wohl aber auf der Azure-Befehlszeilenschnittstelle und in PowerShell. Vorhandene Netzwerkschnittstellen können jedoch mithilfe des Portals zu Anwendungssicherheitsgruppen zugewiesen werden, sofern die Netzwerkschnittstelle einem virtuellen Computer zugeordnet ist. Informationen zum Zuweisen einer Netzwerkschnittstelle zu einer Anwendungssicherheitsgruppe finden Sie unter [Hinzufügen einer Netzwerkschnittstelle zu einer Anwendungssicherheitsgruppe bzw. deren Entfernen daraus](#add-to-or-remove-from-application-security-groups).
 
 >[!Note]
 > Azure weist der Netzwerkschnittstelle erst dann eine MAC-Adresse zu, wenn die Netzwerkschnittstelle an einen virtuellen Computer angefügt und der virtuelle Computer erstmalig gestartet wurde. Die MAC-Adresse, die Azure der Netzwerkschnittstelle zuweist, kann nicht angegeben werden. Die MAC-Adresse bleibt der Netzwerkschnittstelle zugewiesen, bis die Netzwerkschnittstelle gelöscht oder die private IP-Adresse, die der primären IP-Konfiguration der primären Netzwerkschnittstelle zugewiesen ist, geändert wird. Weitere Informationen zu IP-Adressen und IP-Konfigurationen finden Sie unter [Verwalten von IP-Adressen](virtual-network-network-interface-addresses.md).
@@ -161,7 +161,10 @@ Sie können das Subnetz, aber nicht das virtuelle Netzwerk ändern, dem eine Net
 
 ## <a name="add-to-or-remove-from-application-security-groups"></a>Hinzufügen einer Netzwerkschnittstelle zu einer Anwendungssicherheitsgruppe bzw. deren Entfernen daraus
 
-Nicht das Portal, aber Azure CLI und PowerShell bieten die Option zum Zuweisen einer Netzwerkschnittstelle zu Anwendungssicherheitsgruppen bzw. zum Trennen einer Netzwerkschnittstelle von Anwendungssicherheitsgruppen. Weitere Informationen zu Anwendungssicherheitsgruppen finden Sie unter [Anwendungssicherheitsgruppen](security-overview.md#application-security-groups) und [Erstellen einer Anwendungssicherheitsgruppe](#create-an-application-security-group).
+Sie können eine Netzwerkschnittstelle im Portal nur dann einer Anwendungssicherheitsgruppe zuweisen oder sie aus dieser entfernen, wenn die Netzwerkschnittstelle einem virtuellen Computer zugeordnet ist. Mithilfe von PowerShell oder der Azure-Befehlszeilenschnittstelle können Sie eine Netzwerkschnittstelle einer Anwendungssicherheitsgruppe hinzufügen oder sie aus dieser entfernen, unabhängig davon, ob die Netzwerkschnittstelle einem virtuellen Computer zugeordnet ist oder nicht. Weitere Informationen über [Anwendungssicherheitsgruppen](security-overview.md#application-security-groups) und das [Erstellen einer Anwendungssicherheitsgruppe](manage-network-security-group.md#create-an-application-security-group).
+
+1. Beginnen Sie im Feld *Search resources, services, and docs* (Ressourcen, Dienste und Dokumente durchsuchen) oben im Portal mit der Eingabe des Namens eines virtuellen Computers, der über eine Netzwerkschnittstelle verfügt, die Sie einer Anwendungssicherheitsgruppe hinzufügen oder aus ihr entfernen möchten. Wenn der Name Ihrer VM in den Suchergebnissen angezeigt wird, wählen Sie ihn aus.
+2. Wählen Sie unter **EINSTELLUNGEN** die Option **Netzwerk** aus.  Wählen Sie **Configure the application security groups** (Anwendungssicherheitsgruppen konfigurieren) aus, wählen Sie die Anwendungssicherheitsgruppen aus, denen Sie die Netzwerkschnittstelle hinzufügen möchten, bzw. heben Sie die Auswahl der Anwendungssicherheitsgruppen auf, aus denen Sie die Netzwerkschnittstelle entfernen möchten, und wählen Sie dann **Speichern** aus. Nur Netzwerkschnittstellen innerhalb des gleichen virtuellen Netzwerks können der gleichen Anwendungssicherheitsgruppe hinzugefügt werden. Die Anwendungssicherheitsgruppe muss am gleichen Ort wie die Netzwerkschnittstelle vorhanden sein.
 
 **Befehle**
 
@@ -264,6 +267,6 @@ Zum Durchführen von Aufgaben für Netzwerkschnittstellen muss Ihr Konto der Rol
 
 - Erstellen eines virtuellen Computers mit mehreren Netzwerkschnittstellenkarten per [Azure CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - Erstellen einer einzelnen NIC-VM mit mehreren IPv4-Adressen per [Azure CLI](virtual-network-multiple-ip-addresses-cli.md) oder [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
-- Erstellen einer einzelnen NIC-VM mit einer privaten IPv6-Adresse (hinter einem Azure Load Balancer) per [Azure CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder [Azure Resource Manager-Vorlage](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+- Erstellen einer einzelnen NIC-VM mit einer privaten IPv6-Adresse (hinter einem Azure Load Balancer) per [Azure CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder [Azure Resource Manager-Vorlage](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - Erstellen einer Netzwerkschnittstelle per [PowerShell](powershell-samples.md)- oder [Azure CLI](cli-samples.md)-Beispielskript oder per [Azure Resource Manager-Vorlagen](template-samples.md)
 - Erstellen und Anwenden einer [Azure-Richtlinie](policy-samples.md) für virtuelle Netzwerke

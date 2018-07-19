@@ -9,17 +9,17 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c9180b3f6bf6b151909ab681d0f33bc6b3583ce0
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: a29379492f4ffd662244c3e42de321f47be13d9f
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714662"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436973"
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Aktualisieren der Automation-Kontoauthentifizierung mit ausführenden Konten 
 Sie können Ihr vorhandenes Automation-Konto über das Azure-Portal oder mit PowerShell aktualisieren, wenn folgende Voraussetzungen erfüllt sind:
 
-* Sie erstellen ein Automation-Konto, aber lehnen die Erstellung des ausführenden Kontos ab.
+* Sie erstellen ein Automation-Konto, aber kein ausführendes Konto.
 * Sie verwenden bereits ein Automation-Konto zum Verwalten von Resource Manager-Ressourcen und möchten das Konto aktualisieren, um das ausführende Konto für die Runbook-Authentifizierung einzuschließen.
 * Sie verwenden bereits ein Automation-Konto zum Verwalten klassischer Ressourcen und möchten es zur Verwendung des klassischen ausführenden Kontos aktualisieren, anstatt ein neues Konto zu erstellen und Ihre Runbooks und Assets zu diesem Konto zu migrieren.   
 
@@ -248,6 +248,9 @@ Dieses PowerShell-Skript unterstützt folgende Konfigurationen:
         Write-Host -ForegroundColor red       $UploadMessage
     }
     ```
+
+    > [!IMPORTANT]
+    > **Add-AzureRmAccount** ist jetzt ein Alias für **Connect-AzureRMAccount**. Sollte **Connect-AzureRMAccount** beim Durchsuchen der Bibliothekselemente nicht angezeigt werden, können Sie **Add-AzureRmAccount** verwenden oder die Module in Ihrem Automation-Konto aktualisieren.
 
 2. Starten Sie auf Ihrem Computer **Windows PowerShell** über den **Startbildschirm** mit erhöhten Benutzerrechten.
 3. Wechseln Sie von der Befehlszeilenshell mit erhöhten Rechten zu dem Ordner, der das in Schritt 1 erstellte Skript enthält.  

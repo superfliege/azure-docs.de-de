@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: e2512a2af05ee7101713886c3ae1b5c6c74dd3db
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 5ef1ca201bc564949ee65f81970d0b040679d6b8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018537"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38671424"
 ---
 # <a name="azure-media-services-release-notes"></a>Versionsanmerkungen zu Azure Media Services
 Diese Versionsanmerkungen zu Azure Media Services bieten eine Übersicht über Änderungen im Vergleich zu früheren Versionen und bekannte Probleme.
@@ -168,7 +168,7 @@ Die reservierten Einheiten für die Codierung in den Tarifen „Basic“, „Sta
 ### <a name="azure-sdk-for-php"></a>Azure SDK für PHP
 Das Azure SDK-Team hat eine neue Version des [Azure SDK für PHP](http://github.com/Azure/azure-sdk-for-php)-Pakets veröffentlicht, das Updates und neue Features für Media Services enthält. Insbesondere unterstützt das Media Services SDK für PHP jetzt die neuesten Features für den [Inhaltsschutz](media-services-content-protection-overview.md). Hierbei handelt es sich um die dynamische Verschlüsselung mit AES und DRM (PlayReady und Widevine) mit und ohne Tokeneinschränkungen. Unterstützt wird auch die Skalierung von [Codierungseinheiten](media-services-dotnet-encoding-units.md).
 
-Weitere Informationen finden Sie unter 
+Weitere Informationen finden Sie unter
 
 * Die folgenden [Codebeispiele](http://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) erleichtern Ihnen den schnellen Einstieg:
   * **vodworkflow_aes.php**: Diese PHP-Datei veranschaulicht die Verwendung der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts. Sie basiert auf dem .NET-Beispiel, das unter [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselbereitstellungsdiensts](media-services-protect-with-aes128.md) erläutert wird.
@@ -207,7 +207,7 @@ Sie können das [Media Services .NET SDK](https://www.nuget.org/packages/windows
 Weitere Informationen finden Sie in [diesem Blog](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
 ## <a id="august_changes_15"></a>Release von August 2015
-* Das Media Services-SDK für Java Version 0.8.0 und neue Beispiele sind jetzt verfügbar. Weitere Informationen finden Sie unter 
+* Das Media Services-SDK für Java Version 0.8.0 und neue Beispiele sind jetzt verfügbar. Weitere Informationen finden Sie unter
     
 * Der Azure Media Player wurde mit Unterstützung für mehrere Audiostreams aktualisiert. Weitere Informationen finden Sie in [diesem Blogbeitrag](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/).
 
@@ -366,7 +366,7 @@ Die folgenden Fehlerkorrekturen wurden für Azure Media Services Packager und En
 
 ## <a id="may_changes_14"></a>Release von Mai 2014
 ### <a id="may_14_changes"></a>Allgemeine Media Services-Updates
-Sie können jetzt die [dynamische Paketerstellung] zum Streamen von HLS Version 3 verwenden. Fügen Sie zum Streamen von HLS Version 3 das folgende Format zum Pfad für den Ursprungslocator hinzu: *.ism/manifest(format=m3u8-aapl-v3). Weitere Informationen finden Sie in [diesem Blog](http://blog-ndrouin.azurewebsites.net/hls-v3-new-old-thing/).
+Sie können jetzt die [dynamische Paketerstellung] zum Streamen von HLS Version 3 verwenden. Fügen Sie zum Streamen von HLS Version 3 das folgende Format zum Pfad für den Ursprungslocator hinzu: *.ism/manifest(format=m3u8-aapl-v3). Weitere Informationen finden Sie in [diesem Forum](https://social.msdn.microsoft.com/Forums/en-US/13b8a776-9519-4145-b9ed-d2b632861fde/dynamic-packaging-to-hls-v3).
 
 Die dynamische Paketerstellung unterstützt jetzt auch die Bereitstellung von mit PlayReady verschlüsseltem HLS (Version 3 und Version 4) basierend auf statisch mit PlayReady verschlüsseltem Smooth Streaming. Informationen zum Verschlüsseln von Smooth Streaming mit PlayReady finden Sie unter [Dynamische Paketerstellung](http://msdn.microsoft.com/library/azure/dn189154.aspx).
 
@@ -396,7 +396,7 @@ Folgende Änderungen wurden in 3.0.0.1 und 3.0.0.2 vorgenommen:
 * Probleme hinsichtlich der Verwendung von LINQ-Abfragen mit OrderBy-Anweisungen wurden behoben.
 * Testlösungen in [GitHub] wurden in einheitenbasierte Tests und szenarienbasierte Tests unterteilt.
 
-Weitere Informationen zu den Änderungen finden Sie unter: [Media Services .NET SDK 3.0.0.1 and 3.0.0.2 Releases](http://www.gtrifonov.com/2014/02/07/windows-azure-media-services-.net-sdk-3.0.0.2-release/) (Media Services .NET SDK-Versionen 3.0.0.1 und 3.0.0.2).
+Weitere Informationen zu den Änderungen finden Sie unter: [Media Services .NET SDK 3.0.0.1 and 3.0.0.2 Releases](http://gtrifonov.com/2014/02/07/windows-azure-media-services-net-sdk-3-0-0-2-release/index.html) (Media Services .NET SDK-Versionen 3.0.0.1 und 3.0.0.2).
 
 Die folgenden Änderungen wurden in Version 3.0.0.3 vorgenommen:
 

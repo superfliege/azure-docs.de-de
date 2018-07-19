@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: juliako
-ms.openlocfilehash: 7fe59763162ca53ea0256d5902aeece90525f214
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 098a34aba8e5ce23f64d4bb07e3b9622aa2adb8e
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659573"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110419"
 ---
 # <a name="azure-media-services-v3-preview-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Media Services v3 (Vorschau)
 
@@ -30,7 +30,7 @@ Bisher nicht. Sie können eines der unterstützten SDKs verwenden. Informationen
 
 Das Media Services-Team sieht vor, reservierte Einheiten (Reserved Units, RUs) in v3 zu entfernen. Die erforderlichen Arbeiten sind aber noch nicht abgeschlossen. Bis dahin müssen Kunden zum Festlegen von RUs das Azure-Portal oder APIs von AMS v2 verwenden (wie unter [Skalieren der Medienverarbeitung](../previous/media-services-scale-media-processing-overview.md) beschrieben). 
 
-S3-RUs sind für die V3-Voreinstellungen **VideoAnalyzerPreset** und **AudioAnalyzerPreset** erforderlich.
+Wenn Sie **VideoAnalyzerPreset** und/oder **AudioAnalyzerPreset** verwenden, legen Sie Ihr Media Services-Konto auf zehn reservierte S3-Einheiten für Medien fest.
 
 ## <a name="does-v3-asset-have-no-assetfile-concept"></a>Umfasst „Asset“ in V3 kein AssetFile-Konzept?
 
@@ -56,7 +56,7 @@ Weitere Informationen finden Sie unter [Filterung, Sortierung, Paging](assets-co
 
 ## <a name="how-to-retrieve-an-entity-in-media-services-v3"></a>Wie wird eine Entität in Media Services v3 abgerufen?
 
-v3 basiert auf einer vereinheitlichten API-Oberfläche, die sowohl Verwaltungs- als auch Betriebsfunktionen auf der Basis von **Azure Resource Manager** bereitstellt. Ressourcennahmen sind in Übereinstimmung mit dem **Azure Resource Manager** immer eindeutig. Daher können Sie beliebige Zeichenfolgen für eindeutige Bezeichner (z. B. GUIDs) als Ressourcennamen verwenden. 
+v3 basiert auf einer vereinheitlichten API-Oberfläche, die sowohl Verwaltungs- als auch Betriebsfunktionen auf der Basis von **Azure Resource Manager** bereitstellt. Ressourcennahmen sind in Übereinstimmung mit dem **Azure Resource Manager** immer eindeutig. Daher können Sie beliebige Zeichenfolgen für eindeutige Bezeichner (beispielsweise GUIDs) als Ressourcennamen verwenden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

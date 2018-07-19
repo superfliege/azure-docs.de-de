@@ -9,12 +9,12 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 06/24/2018
 ms.author: giladm
-ms.openlocfilehash: 0646667caab594556cc3c2043bc36905acef6e54
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: f187a5fe1541f5508e55443abe80fc295ee63c87
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751042"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081454"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Erste Schritte bei der Überwachung von SQL-Datenbank
 Die SQL-Datenbank-Überprüfung in Azure verfolgt Datenbankereignisse und schreibt diese in ein Überwachungsprotokoll in Ihrem Azure-Speicherkonto. Die Überwachung ermöglicht außerdem Folgendes:
@@ -62,20 +62,18 @@ Eine Überwachungsrichtlinie kann für eine spezifische Datenbank oder als Stand
 Der folgende Abschnitt beschreibt die Konfiguration der Überwachung über das Azure-Portal.
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-2. Navigieren Sie zum Blatt mit den **Einstellungen** der SQL-Datenbank/des SQL Server, die bzw. den Sie überwachen möchten. Wählen Sie auf dem Blatt **Einstellungen** die Option **Überwachung und Bedrohungserkennung**.
+2. Navigieren Sie im Bereich für die SQL-Datenbank oder den SQL Server unter der Überschrift „Sicherheit“ zu **Überwachung**.
 
     <a id="auditing-screenshot"></a>![Navigationsbereich][1]
 3. Wenn Sie eine Serverüberwachungsrichtlinie einrichten möchten, können Sie auf dem Blatt für die Datenbanküberwachung den Link **Servereinstellungen anzeigen** auswählen. Anschließend können Sie die Serverüberwachungseinstellungen anzeigen oder ändern. Eine Standardrichtlinie für die Serverüberwachung wird auf alle vorhandenen und neu erstellten Datenbanken auf einem Server angewendet.
 
     ![Navigationsbereich][2]
-4. Wenn Sie die Blobüberwachung auf Datenbankebene aktivieren möchten, wählen Sie unter **Überwachung** die Option **EIN** und unter **Überwachungstyp** die Option **Blob** aus.
+4. Wenn Sie die Überwachung auf Datenbankebene aktivieren möchten, ändern Sie **Überwachung** in **EIN**.
 
-    Wenn die Serverblobüberwachung aktiviert ist, existiert die konfigurierte Datenbanküberwachung parallel zur Serverblobüberwachung.
+    Wenn die Serverüberwachung aktiviert ist, existiert die konfigurierte Datenbanküberwachung parallel zur Serverüberwachung.
 
     ![Navigationsbereich][3]
 5. Wählen Sie **Speicherdetails**, um das Blatt **Speicherung von Überwachungsprotokollen** zu öffnen. Wählen Sie das Azure Storage-Konto, in dem die Protokolle gespeichert werden sollen, und dann die Beibehaltungsdauer aus. Die alten Protokolle werden gelöscht. Klicken Sie dann auf **OK**.
-    >[!TIP]
-    >Verwenden Sie für alle überwachten Datenbanken dasselbe Speicherkonto, um die Berichtvorlagen für die Überwachung optimal einzusetzen.
 
     <a id="storage-screenshot"></a>![Navigationsbereich][4]
 6. Wenn Sie die überwachten Ereignisse anpassen möchten, können Sie [PowerShell-Cmdlets](#subheading-7) oder die [REST-API](#subheading-9) verwenden.
@@ -102,7 +100,8 @@ Es gibt verschiedene Methoden zum Anzeigen von Blobüberwachungsprotokollen:
     Das Blatt **Überwachungsdatensätze** wird geöffnet, auf dem Sie die Protokolle anzeigen können.
 
     - Sie können Protokolle bestimmter Daten anzeigen, indem Sie im oberen Bereich des Blatts **Überwachungsdatensätze** auf **Filter** klicken.
-    - Sie können zwischen Überwachungsdatensätzen wechseln, die anhand der Server- oder der Datenbankrichtlinienüberwachung erstellt wurden.
+    - Sie können zwischen Überwachungsdatensätzen wechseln, die anhand der *Serverüberwachungsrichtlinie* oder der *Datenbanküberwachungsrichtlinie* erstellt wurden, indem Sie die Option unter **Überwachungsquelle** ändern.
+    - Sie können nur Überwachungsdatensätze zur Einschleusung von SQL-Befehlen anzeigen, indem Sie das Kontrollkästchen **Nur Überwachungsdatensätze zur Einschleusung von SQL-Befehlen anzeigen** aktivieren.
 
        ![Navigationsbereich][8]
 
@@ -147,8 +146,8 @@ Wenn Sie bei georeplizierten Datenbanken die Überwachung für die primäre Date
 * Auf Serverebene (**empfohlen**): Aktivieren Sie die Überwachung sowohl auf dem **primären Server** als auch auf dem **sekundären Server**. Dadurch werden die primäre und die sekundäre Datenbank jeweils unabhängig auf der Grundlage der jeweiligen Richtlinie auf Serverebene überwacht.
 
 * Auf Datenbankebene: Die Überwachung auf Datenbankebene kann für sekundäre Datenbanken nur über die Überwachungseinstellungen der primären Datenbank konfiguriert werden.
-   * Die Blobüberwachung muss in der *primären Datenbank selbst* aktiviert werden, nicht auf dem Server.
-   * Nachdem die Blobüberwachung in der primären Datenbank aktiviert wurde, wird sie auch in der sekundären Datenbank aktiv.
+   * Die Überwachung muss in der *primären Datenbank selbst* aktiviert werden, nicht auf dem Server.
+   * Nachdem die Überwachung in der primären Datenbank aktiviert wurde, wird sie auch in der sekundären Datenbank aktiv.
 
     >[!IMPORTANT]
     >Bei der Überwachung auf Datenbankebene sind die Speichereinstellungen für die sekundäre Datenbank identisch mit den Einstellungen der primären Datenbank, wodurch regionsübergreifender Datenverkehr generiert wird. Es wird empfohlen, die Überwachung nur auf Serverebene zu aktivieren und die Überwachung auf Datenbankebene für alle Datenbanken deaktiviert zu lassen.
@@ -204,7 +203,6 @@ Ein Skriptbeispiel finden Sie unter [Konfigurieren von Überwachung von SQL-Date
 * [Erstellen oder Aktualisieren einer Richtlinie für die Überwachung von Serverblobs](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/createorupdate)
 * [Abrufen einer Richtlinie für die Überwachung von Datenbankblobs](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/get)
 * [Abrufen einer Richtlinie für die Überwachung von Serverblobs](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/get)
-* [Abrufen des Ergebnisses eines Überwachungsvorgangs für Serverblobs](https://msdn.microsoft.com/library/azure/mt771862.aspx)
 
 Erweiterte Richtlinie mit Unterstützung der WHERE-Klausel für zusätzliche Filterung:
 * [Erstellen oder Aktualisieren einer *erweiterten* Richtlinie für die Überwachung von Datenbankblobs](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)

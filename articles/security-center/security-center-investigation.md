@@ -3,36 +3,41 @@ title: Untersuchen von Vorfällen und Warnungen in Azure Security Center | Micro
 description: Dieses Dokument enthält hilfreiche Informationen zur Untersuchung von Sicherheitsvorfällen und -warnungen mithilfe des Untersuchungsfeatures in Azure Security Center.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: a8e894a9-8781-4749-ae8f-8c8e01658566
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2017
-ms.author: yurid
-ms.openlocfilehash: bab7b64a1635639991d639fb838b7118e234aa5b
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.date: 06/29/2018
+ms.author: terrylan
+ms.openlocfilehash: 010c641c247552a8994c9d1c945cd585148fadf9
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32776481"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340789"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Untersuchen von Vorfällen und Warnungen in Azure Security Center (Vorschauversion)
 Dieses Dokument enthält hilfreiche Informationen zur Untersuchung von Sicherheitsvorfällen und -warnungen mithilfe des Untersuchungsfeatures in Azure Security Center.
 
 ## <a name="what-is-investigation-in-security-center"></a>Was ist das Untersuchungsfeature in Security Center?
 Mit dem Untersuchungsfeature in Security Center können Sie einen potenziellen [Sicherheitsvorfall](https://docs.microsoft.com/azure/security-center/security-center-incident) selektieren, sich ein Bild vom Umfang machen und der Ursache auf den Grund gehen.
- 
+
 Durch die Verknüpfung sämtlicher Entitäten ([Sicherheitswarnungen](https://docs.microsoft.com/azure/security-center/security-center-alerts-type), Benutzer, Computer und Vorfälle), die mit dem untersuchten Vorfall in Zusammenhang stehen, soll der Untersuchungsprozess vereinfacht werden.  Hierzu kann Security Center relevante Daten mit allen beteiligten Entitäten korrelieren und diese Korrelation in einem Livediagramm darstellen, das die Navigation durch die Objekte und die Visualisierung relevanter Informationen erleichtert.
+
+> [!NOTE]
+> [Benutzerdefinierte Warnungen](security-center-custom-alert.md) werden im Untersuchungsfeature von Security Center nicht unterstützt.
+>
+>
 
 
 ## <a name="how-investigation-works"></a>Funktionsweise der Untersuchung
 Die Untersuchung besteht aus einem Diagramm, das den zentralen Bereich des Untersuchungsdashboards einnimmt. Das Diagramm ist immer auf eine bestimmte Entität fokussiert und stellt die Entitäten dar, die mit ihr in Verbindung stehen. Bei der Entität kann es sich beispielsweise um eine Sicherheitswarnung oder um einen Benutzer, Computer oder Vorfall handeln.
- 
+
 ![Map](./media/security-center-investigation/security-center-investigation-fig1.png)
 
 Der Benutzer kann im Diagramm auf eine Entität klicken, um zwischen den Entitäten zu navigieren. Das Diagramm wird automatisch auf die ausgewählte Entität und die dazugehörigen Entitäten zentriert. Nicht mehr relevante Entitäten werden ggf. aus dem Diagramm entfernt.
@@ -43,7 +48,7 @@ Während der Navigation zu verschiedenen Entitäten kann der Benutzer dank des U
 ![path](./media/security-center-investigation/security-center-investigation-fig2.png)
 
 ### <a name="general-information"></a>Allgemeine Informationen
-Wenn eine Entität im Diagramm dargestellt wird, stehen auf den Registerkarten zusätzliche Informationen zu dieser Entität zur Verfügung. Auf der Registerkarte **Informationen** werden allgemeine Informationen zu der Entität aus verschiedenen Quellen angezeigt. 
+Wenn eine Entität im Diagramm dargestellt wird, stehen auf den Registerkarten zusätzliche Informationen zu dieser Entität zur Verfügung. Auf der Registerkarte **Informationen** werden allgemeine Informationen zu der Entität aus verschiedenen Quellen angezeigt.
 
 ![Allgemeine Informationen](./media/security-center-investigation/security-center-investigation-fig3.png)
 
@@ -71,7 +76,7 @@ Auf der Registerkarte **Durchsuchen** kann der Prüfer Daten in Verbindung mit v
 
 ### <a name="timeline"></a>Zeitachse
 
-Die meisten Daten im Diagramm und auf den verschiedenen Registerkarten sind für einen bestimmten Zeitraum relevant. Dieser Zeitbereich wird mithilfe der entsprechenden Auswahl (links oben im Diagramm) festgelegt. Der Zeitbereich kann auf unterschiedliche Weise ausgewählt werden. 
+Die meisten Daten im Diagramm und auf den verschiedenen Registerkarten sind für einen bestimmten Zeitraum relevant. Dieser Zeitbereich wird mithilfe der entsprechenden Auswahl (links oben im Diagramm) festgelegt. Der Zeitbereich kann auf unterschiedliche Weise ausgewählt werden.
 
 ![Zeitachse](./media/security-center-investigation/security-center-investigation-fig7.png)
 
@@ -103,7 +108,7 @@ Sie können die Untersuchung abhängig von Ihren Anforderungen entweder über ei
 
     ![Untersuchungsdashboard](./media/security-center-investigation/security-center-investigation-fig9.png)
 
-Von hier aus können Sie die an dem Vorfall beteiligten Entitäten untersuchen und weitere Details zu den einzelnen Entitäten ermitteln. 
+Von hier aus können Sie die an dem Vorfall beteiligten Entitäten untersuchen und weitere Details zu den einzelnen Entitäten ermitteln.
 
 ## <a name="see-also"></a>Weitere Informationen
 In diesem Dokument haben Sie erfahren, wie Sie das Untersuchungsfeature in Security Center verwenden. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
@@ -111,7 +116,6 @@ In diesem Dokument haben Sie erfahren, wie Sie das Untersuchungsfeature in Secur
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Hier erfahren Sie, wie Sie Warnungen verwalten und auf Sicherheitsvorfälle in Security Center reagieren.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md). Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 * [Verstehen der Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Hier finden Sie Informationen zu den unterschiedlichen Arten von Sicherheitswarnungen.
-* [Azure Security Center – Handbuch zur Problembehandlung](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Hier erfahren Sie, wie Sie allgemeine Probleme in Security Center behandeln. 
+* [Azure Security Center – Handbuch zur Problembehandlung](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Hier erfahren Sie, wie Sie allgemeine Probleme in Security Center behandeln.
 * [Azure Security Center – häufig gestellte Fragen](security-center-faq.md)festgelegt ist. Enthält häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security-Blog](http://blogs.msdn.com/b/azuresecurity/). Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
-

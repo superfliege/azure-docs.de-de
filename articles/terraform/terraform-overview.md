@@ -7,12 +7,12 @@ author: binderjoe
 ms.author: jbinder
 ms.date: 10/19/2017
 ms.topic: article
-ms.openlocfilehash: 667752d8830cdac5e2338fd3ed7904917123be94
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 5d313bda6a1067e6d023f62fb26704f9aee5c7bf
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26364469"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114471"
 ---
 # <a name="terraform-with-azure"></a>Terraform mit Azure
 
@@ -39,7 +39,7 @@ Terraform bietet eine Befehlszeilenschnittstelle (CLI), mit der Benutzer Infrast
 
 ## <a name="deploy-infrastructure-to-multiple-clouds"></a>Bereitstellen der Infrastruktur in mehreren Clouds
 
-Terraform wird häufig als Tool für Szenarien mit mehreren Clouds gewählt, in denen eine ähnliche Infrastruktur für Azure und zusätzliche Cloudanbieter oder für lokale Rechenzentren bereitgestellt wird. Entwicklern wird ermöglicht, dieselben Tools und Konfigurationsdateien zum Verwalten der Infrastruktur für mehrere Cloudanbieter zu verwenden.
+Terraform wird häufig als Tool für Szenarios mit mehreren Clouds gewählt, in denen eine ähnliche Infrastruktur für Azure und zusätzliche Cloudanbieter oder für lokale Rechenzentren bereitgestellt wird. Entwicklern wird ermöglicht, dieselben Tools und Konfigurationsdateien zum Verwalten der Infrastruktur für mehrere Cloudanbieter zu verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

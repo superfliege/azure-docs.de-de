@@ -9,15 +9,15 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/16/2018
-ms.author: khdang
+ms.date: 06/29/2018
+ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 62555d3ba3513ce7183e24506530edcf78368247
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: d7d00d6236b601d145be03e6086bec2d72faafcd
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798626"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344936"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK für SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -52,6 +52,13 @@ Das SQL API Java SDK unterstützt synchrone Vorgänge. Verwenden Sie für die Un
 </table></br>
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="a-name11621162"></a><a name="1.16.2"/>1.16.2
+* Streaming-Failoverunterstützung hinzugefügt.
+* Unterstützung von benutzerdefinierten Metadaten hinzugefügt.
+* Verbesserte Sitzungsbehandlungslogik.
+* Einen Fehler im Partitionsschlüssel-Bereichscache behoben.
+* Einen NPE-Fehler im direkten Modus behoben.
 
 ### <a name="a-name11611161"></a><a name="1.16.1"/>1.16.1
 * Unterstützung für den eindeutigen Index wurde hinzugefügt.
@@ -150,7 +157,7 @@ Das SQL API Java SDK unterstützt synchrone Vorgänge. Verwenden Sie für die Un
 * Auf IPartitionResolver basierender benutzerdefinierter Partitionierungscode als „veraltet“ markiert. Verwenden Sie partitionierte Sammlungen, um mehr Speicher und höheren Durchsatz zu erzielen.
 
 ### <a name="a-name171171"></a><a name="1.7.1"/>1.7.1
-* Unterstützung für Wiederholungsrichtlinie für Drosselung hinzugefügt.  
+* Unterstützung für Wiederholungsrichtlinie für Ratenbegrenzung hinzugefügt.  
 
 ### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
 * Unterstützung einer Gültigkeitsdauer (TTL) für Dokumente hinzugefügt.
@@ -198,6 +205,7 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.16.2](#1.16.2) |29. Juni 2018 |--- |
 | [1.16.1](#1.16.1) |16. Mai 2018 |--- |
 | [1.16.0](#1.16.0) |15. März 2018 |--- |
 | [1.15.0](#1.15.0) |14. November 2017 |--- |

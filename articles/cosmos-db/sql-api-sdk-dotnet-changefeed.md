@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/21/2018
 ms.author: maquaran
-ms.openlocfilehash: f69742d111555e776a968454bdc004ba171e6336
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: f47b847b3a356540e5f366235713b8f99aea3404
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937416"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113716"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor-SDK: Download und Anmerkungen zur Version
 > [!div class="op_single_selector"]
@@ -41,39 +41,10 @@ ms.locfileid: "36937416"
 
 ## <a name="release-notes"></a>Versionshinweise
 
-### <a name="stable-builds"></a>Stabile Builds
+### <a name="v2-builds"></a>V2-Builds
 
-### <a name="a-name133133"></a><a name="1.3.3"/>1.3.3
-* Weitere Protokollierung hinzugefügt.
-* Ein DocumentClient-Fehler beim mehrfachen Aufrufen der Schätzung für ausstehende Arbeit wurde behoben.
-
-### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
-* Korrekturen der Schätzung ausstehender Arbeit.
-
-### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
-* Verbesserungen der Stabilität.
-  * Korrektur für das Behandeln von Problemen mit abgebrochenen Aufgaben, die dazu führen können, dass Beobachter auf einigen Partitionen beendet werden.
-* Unterstützung für das manuelle Setzen von Prüfpunkten.
-* Kompatibel mit [SQL .NET SDK](sql-api-sdk-dotnet.md), Version 1.21 und höher.
-
-### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
-* Unterstützung für .NET Standard 2.0 wurde hinzugefügt. Das Paket unterstützt nun die Frameworkmoniker `netstandard2.0` und `net451`.
-* Kompatibel mit [SQL .NET SDK](sql-api-sdk-dotnet.md), Version 1.17.0 und höher.
-* Kompatibel mit [SQL .NET Core SDK](sql-api-sdk-dotnet-core.md), Version 1.5.1 und höher.
-
-### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
-* Ein Problem bei der Kalkulierung der geschätzten verbleibenden Arbeit wurde behoben, wenn der Änderungsfeed leer war oder keine Arbeit ausstand.
-* Kompatibel mit [SQL .NET SDK](sql-api-sdk-dotnet.md), Version 1.13.2 und höher.
-
-### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
-* Eine Methode wurde hinzugefügt, mit der eine Schätzung der verbleibenden im Änderungsfeed zu verarbeitenden Arbeit abgerufen werden kann.
-* Kompatibel mit [SQL .NET SDK](sql-api-sdk-dotnet.md), Version 1.13.2 und höher.
-
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+### <a name="a-name204204"></a><a name="2.0.4"/>2.0.4
 * Allgemeine Verfügbarkeit (GA) des SDK
-* Kompatibel mit [SQL .NET SDK](sql-api-sdk-dotnet.md), Version 1.14.1 und niedriger.
-
-### <a name="pre-release-builds"></a>Vorabversionen von Builds
 
 ### <a name="a-name203-prerelease203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3 – Vorabversion
 * Die folgenden Probleme wurden behoben:
@@ -108,6 +79,39 @@ ms.locfileid: "36937416"
 * 100-prozentige Abwärtskompatibilität mit der v1-API
 * Neue Codebasis.
 * Kompatibel mit [SQL .NET SDK](sql-api-sdk-dotnet.md), Version 1.21.1 und höher
+
+### <a name="v1-builds"></a>V1-Builds
+
+### <a name="a-name133133"></a><a name="1.3.3"/>1.3.3
+* Weitere Protokollierung hinzugefügt.
+* Ein DocumentClient-Fehler beim mehrfachen Aufrufen der Schätzung für ausstehende Arbeit wurde behoben.
+
+### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
+* Korrekturen der Schätzung ausstehender Arbeit.
+
+### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
+* Verbesserungen der Stabilität.
+  * Korrektur für das Behandeln von Problemen mit abgebrochenen Aufgaben, die dazu führen können, dass Beobachter auf einigen Partitionen beendet werden.
+* Unterstützung für das manuelle Setzen von Prüfpunkten.
+* Kompatibel mit [SQL .NET SDK](sql-api-sdk-dotnet.md), Version 1.21 und höher.
+
+### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
+* Unterstützung für .NET Standard 2.0 wurde hinzugefügt. Das Paket unterstützt nun die Frameworkmoniker `netstandard2.0` und `net451`.
+* Kompatibel mit [SQL .NET SDK](sql-api-sdk-dotnet.md), Version 1.17.0 und höher.
+* Kompatibel mit [SQL .NET Core SDK](sql-api-sdk-dotnet-core.md), Version 1.5.1 und höher.
+
+### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
+* Ein Problem bei der Kalkulierung der geschätzten verbleibenden Arbeit wurde behoben, wenn der Änderungsfeed leer war oder keine Arbeit ausstand.
+* Kompatibel mit [SQL .NET SDK](sql-api-sdk-dotnet.md), Version 1.13.2 und höher.
+
+### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
+* Eine Methode wurde hinzugefügt, mit der eine Schätzung der verbleibenden im Änderungsfeed zu verarbeitenden Arbeit abgerufen werden kann.
+* Kompatibel mit [SQL .NET SDK](sql-api-sdk-dotnet.md), Version 1.13.2 und höher.
+
+### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+* Allgemeine Verfügbarkeit (GA) des SDK
+* Kompatibel mit [SQL .NET SDK](sql-api-sdk-dotnet.md), Version 1.14.1 und niedriger.
+
 
 ## <a name="release--retirement-dates"></a>Veröffentlichungs- und Deaktivierungstermine
 Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten.

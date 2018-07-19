@@ -6,19 +6,19 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/20/2018
+ms.date: 06/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 67f6119dd1fccc126131979148c001b9d1815175
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8675223162527cc5b2bc45dc5521aac07edaf36c
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195980"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37906336"
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation (Vorschauversion)
 
-Mit der Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten können Sie Ihre virtuellen Azure-Computer nach benutzerdefinierten Zeitplänen starten und beenden. Zudem erhalten Sie über Azure Log Analytics Einblick in Ihre Daten und können durch die Nutzung von [SendGrid](https://azuremarketplace.microsoft.com/marketplace/apps/SendGrid.SendGrid?tab=Overview) optional E-Mails senden. Die Lösung unterstützt in den meisten Szenarien sowohl Azure Resource Manager-VMs als auch klassische VMs.
+Mit der Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten können Sie Ihre virtuellen Azure-Computer nach benutzerdefinierten Zeitplänen starten und beenden. Zudem erhalten Sie über Azure Log Analytics Einblick in Ihre Daten und können durch die Nutzung von [Aktionsgruppen](../monitoring-and-diagnostics/monitoring-action-groups.md) optional E-Mails senden. Die Lösung unterstützt in den meisten Szenarien sowohl Azure Resource Manager-VMs als auch klassische VMs.
 
 Diese Lösung umfasst eine dezentrale Automatisierungsoption für Benutzer, die durch die Verwendung serverloser und kostengünstiger Ressourcen ihre Kosten reduzieren möchten. Mit dieser Lösung haben Sie folgende Möglichkeiten:
 
@@ -34,16 +34,6 @@ Diese Lösung umfasst eine dezentrale Automatisierungsoption für Benutzer, die 
 
   > [!NOTE]
   > Die Runbooks zum Verwalten des VM-Zeitplans können für VMs in jeder beliebigen Region verwendet werden.
-
-* Um beim Onboarding über den Azure Marketplace festzulegen, dass E-Mail-Benachrichtigungen gesendet werden, wenn die Runbooks zum Starten und Beenden von VMs abgeschlossen sind, wählen Sie **Ja**. Dies führt dazu, dass SendGrid bereitgestellt wird.
-
-  > [!IMPORTANT]
-  > SendGrid ist ein Drittanbieterdienst. Support erhalten Sie unter [SendGrid](https://sendgrid.com/contact/).
-
-  Für SendGrid gelten die folgenden Einschränkungen:
-
-  * Maximal ein SendGrid-Konto pro Benutzer pro Abonnement
-  * Maximal zwei SendGrid-Konten pro Abonnement
 
 ## <a name="deploy-the-solution"></a>Bereitstellen der Lösung
 
@@ -79,8 +69,8 @@ Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von V
    Hier erhalten Sie folgende Aufforderung:
    * Geben Sie einen Wert für die Zielressourcengruppennamen(**Target ResourceGroup Names**) ein. Dies sind Namen von Ressourcengruppen mit VMs, die mit dieser Lösung verwaltet werden. Sie können mehrere Namen eingeben und die Namen jeweils durch ein Komma trennen (Groß-/Kleinschreibung wird nicht berücksichtigt). Die Verwendung eines Platzhalterzeichens wird unterstützt, wenn Sie einen Vorgang für VMs in allen Ressourcengruppen des Abonnements durchführen möchten. Dieser Wert wird in den Variablen **External_Start_ResourceGroupNames** und **External_Stop_ResourceGroupNames** gespeichert.
    * Geben Sie die **VM Exclude List (string)** (VM-Ausschlussliste (Zeichenfolge)) an. Dies ist der Name von einem oder mehreren virtuellen Computern der Zielressourcengruppe. Sie können mehrere Namen eingeben und die Namen jeweils durch ein Komma trennen (Groß-/Kleinschreibung wird nicht berücksichtigt). Platzhalter können verwendet werden. Dieser Wert wird in der Variablen **External_ExcludeVMNames** gespeichert.
-   * Wählen Sie einen **Zeitplan** aus. Dies ist ein wiederkehrendes Datum und eine Uhrzeit zum Starten und Beenden der VMs in den Zielressourcengruppen. Der Zeitplan wird standardmäßig für die UTC-Zeitzone konfiguriert. Es kann keine andere Region ausgewählt werden. Falls Sie den Zeitplan nach dem Konfigurieren der Lösung für Ihre Zeitzone konfigurieren möchten, helfen Ihnen die Informationen unter [Ändern des Zeitplans für das Starten und Herunterfahren](#modify-the-startup-and-shutdown-schedule) weiter.
-   * Um **E-Mail-Benachrichtigungen** von SendGrid zu empfangen, übernehmen Sie den Standardwert **Ja**, und geben Sie eine gültige E-Mail-Adresse an. Wenn Sie hier **Nein** wählen und sich dann später doch für den Empfang von E-Mail-Benachrichtigungen entscheiden, können Sie die Variable **External_EmailToAddress** mit gültigen E-Mail-Adressen getrennt durch Kommas aktualisieren und anschließend die Variable **External_IsSendEmail** ändern (Wert **Ja**).
+   * Wählen Sie einen **Zeitplan** aus. Dies ist ein wiederkehrendes Datum und eine Uhrzeit zum Starten und Beenden der VMs in den Zielressourcengruppen. Der Zeitplan ist standardmäßig für den Zeitpunkt 30 Minuten nach der aktuellen Uhrzeit konfiguriert. Es kann keine andere Region ausgewählt werden. Falls Sie den Zeitplan nach dem Konfigurieren der Lösung für Ihre Zeitzone konfigurieren möchten, helfen Ihnen die Informationen unter [Ändern des Zeitplans für das Starten und Herunterfahren](#modify-the-startup-and-shutdown-schedule) weiter.
+   * Um **E-Mail-Benachrichtigungen** von einer Aktionsgruppe zu empfangen, übernehmen Sie den Standardwert **Ja**, und geben Sie eine gültige E-Mail-Adresse an. Wenn Sie **Nein** auswählen, sich aber zu einem späteren Zeitpunkt entscheiden, dass Sie E-Mail-Benachrichtigungen erhalten möchten, können Sie die erstellte [Aktionsgruppe](../monitoring-and-diagnostics/monitoring-action-groups.md) mit gültigen E-Mail-Adressen, die durch Komma getrennt sind, aktualisieren.
 
     > [!IMPORTANT]
     > Der Standardwert für **ResourceGroup-Zielnamen** ist ein **&ast;**. Dies betrifft alle VMs in einem Abonnement. Wenn die Lösung nicht alle VMs als Zielversion in Ihrem Abonnement festlegen soll, muss dieser Wert vor der Aktivierung der Zeitpläne auf eine Liste der Ressourcengruppennamen aktualisiert werden.
@@ -134,7 +124,7 @@ In einer Umgebung mit mehreren Komponenten auf mehreren VMs, die eine verteilte 
 2. Führen Sie das Runbook **SequencedStartStop_Parent** aus. Legen Sie dabei den Parameter ACTION auf **start** fest, fügen Sie eine durch Trennzeichen getrennte Liste von VMs im Parameter *VMList* hinzu, und legen Sie den Parameter WHATIF auf **True** fest. Zeigen Sie eine Vorschau für die Änderungen an.
 3. Konfigurieren Sie den Parameter **External_ExcludeVMNames** mit einer durch Kommas getrennten Liste von VMs (VM1,VM2,VM3).
 4. In diesem Szenario werden die Variablen **External_Start_ResourceGroupNames** und **External_Stop_ResourceGroupnames** nicht berücksichtigt. Für dieses Szenario müssen Sie Ihren eigenen Automation-Zeitplan erstellen. Ausführliche Informationen finden Sie unter [Planen eines Runbooks in Azure Automation](../automation/automation-schedules.md).
-5. Zeigen Sie für die Aktion eine Vorschau an, und nehmen Sie alle erforderlichen Änderungen vor, bevor Sie die Implementierung für Produktions-VMs durchführen. Nach Abschluss des Vorgangs können Sie das Runbook manuell ausführen, wobei Sie den Parameter auf **False** festlegen, oder Sie können die Automation-Zeitpläne **Sequenced-StartVM** und **Sequenced-StopVM** entsprechend Ihrem vorgegebenen Zeitplan automatisch ausführen.
+5. Zeigen Sie für die Aktion eine Vorschau an, und nehmen Sie alle erforderlichen Änderungen vor, bevor Sie die Implementierung für Produktions-VMs durchführen. Nach Abschluss des Vorgangs können Sie das monitoring-and-diagnostics/monitoring-action-groups-Runbook manuell ausführen, wobei Sie den Parameter auf **False** festlegen, oder Sie können die Automation-Zeitpläne **Sequenced-StartVM** und **Sequenced-StopVM** entsprechend Ihrem vorgegebenen Zeitplan automatisch ausführen.
 
 ### <a name="scenario-3-startstop-automatically-based-on-cpu-utilization"></a>Szenario 3: Automatisches Starten/Beenden basierend auf der CPU-Auslastung
 
@@ -163,8 +153,8 @@ Sie können die Aktion entweder für ein Abonnement und eine Ressourcengruppe od
 
 Nachdem Sie einen Zeitplan zum Beenden von VMs basierend auf der CPU-Auslastung erstellt haben, müssen Sie nun einen der folgenden Zeitpläne aktivieren, um sie zu starten.
 
-* Festlegen der Startaktion nach Abonnement und Ressourcengruppe. Informationen zum Testen und Aktivieren von Zeitplänen vom Typ **Scheduled-StartVM** finden Sie in den im [Szenario 1](#scenario-1:-daily-stop/start-vms-across-a-subscription-or-target-resource-groups) beschriebenen Schritten.
-* Festlegen der Startaktion nach Abonnement, Ressourcengruppe und Tag. Informationen zum Testen und Aktivieren von Zeitplänen vom Typ **Sequenced-StartVM** finden Sie in den im [Szenario 2](#scenario-2:-sequence-the-stop/start-vms-across-a-subscription-using-tags) beschriebenen Schritten.
+* Festlegen der Startaktion nach Abonnement und Ressourcengruppe. Informationen zum Testen und Aktivieren von Zeitplänen vom Typ **Scheduled-StartVM** finden Sie in den im [Szenario 1](#scenario-1-startstop-vms-on-a-schedule) beschriebenen Schritten.
+* Festlegen der Startaktion nach Abonnement, Ressourcengruppe und Tag. Informationen zum Testen und Aktivieren von Zeitplänen vom Typ **Sequenced-StartVM** finden Sie in den im [Szenario 2](#scenario-2-startstop-vms-in-sequence-by-using-tags) beschriebenen Schritten.
 
 ## <a name="solution-components"></a>Lösungskomponenten
 
@@ -202,19 +192,13 @@ In der folgenden Tabelle sind die in Ihrem Automation-Konto erstellten Variablen
 |External_AutoStop_Threshold | Der Schwellenwert für die Azure-Warnungsregel, der in der Variablen *External_AutoStop_MetricName* angegeben ist. Prozentwerte können zwischen 1 und 100 liegen.|
 |External_AutoStop_TimeAggregationOperator | Der Zeitaggregationsoperator, der auf die ausgewählte Fenstergröße angewendet wird, um die Bedingung auszuwerten. Zulässige Werte sind **Average**, **Minimum**, **Maximum**, **Total** und **Last**.|
 |External_AutoStop_TimeWindow | Die Größe des Fensters, in dem Azure ausgewählte Metriken zum Auslösen einer Warnung analysiert. Für diesen Parameter können Zeiträume eingegeben werden. Mögliche Werte reichen von 5 Minuten bis 6 Stunden.|
-|External_EmailFromAddress | Gibt den Absender der E-Mail an.|
-|External_EmailSubject | Gibt den Text für die Betreffzeile der E-Mail an.|
-|External_EmailToAddress | Gibt die Empfänger der E-Mail an. Trennen Sie die Namen durch Kommas.|
 |External_ExcludeVMNames | Geben Sie die Namen der auszuschließenden VMs ein, und trennen Sie Namen durch Kommas ohne Leerzeichen.|
-|External_IsSendEmail | Gibt die Option zum Senden einer E-Mail-Benachrichtigung nach Abschluss des Vorgangs an. Geben Sie **Yes** oder **No** an, wenn keine E-Mails gesendet werden sollen. Wählen Sie für diese Option **No**, wenn Sie während der ersten Bereitstellung keine E-Mail-Benachrichtigungen aktiviert haben.|
 |External_Start_ResourceGroupNames | Gibt eine oder mehrere Zielressourcengruppen, deren Werte durch Kommas getrennt sind, für Startaktionen an.|
 |External_Stop_ResourceGroupNames | Gibt eine oder mehrere Zielressourcengruppen, deren Werte durch Kommas getrennt sind, für Beendigungsaktionen an.|
 |Internal_AutomationAccountName | Gibt den Namen des Automation-Kontos an.|
 |Internal_AutoSnooze_WebhookUri | Gibt den Webhook-URI an, der für das AutoStop-Szenario aufgerufen wird.|
 |Internal_AzureSubscriptionId | Gibt die Azure-Abonnement-ID an.|
 |Internal_ResourceGroupName | Gibt den Ressourcengruppennamen des Automation-Kontos an.|
-|Internal_SendGridAccountName | Gibt den Namen des SendGrid-Kontos an.|
-|Internal_SendGridPassword | Gibt das Kennwort des SendGrid-Kontos an.|
 
 In allen Szenarien müssen die Variablen **External_Start_ResourceGroupNames**, **External_Stop_ResourceGroupNames** und **External_ExcludeVMNames** für die Ziel-VMs angegeben werden, mit Ausnahme der Angabe einer durch Kommas getrennten Liste von VMs für die Runbooks **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent** und **ScheduledStartStop_Parent**. Dies bedeutet, dass sich die VMs in Zielressourcengruppen befinden müssen, damit Aktionen zum Starten und Beenden durchgeführt werden. Die Logik ähnelt der von Azure-Richtlinien, da Sie das Abonnement oder die Ressourcengruppe als Ziel verwenden können und neu erstellte VMs Aktionen erben. Hierdurch wird vermieden, dass für jeden virtuellen Computer jeweils ein separater Zeitplan gepflegt werden muss und dass Aktionen zum Starten und Beenden für die Skalierung verwaltet werden müssen.
 
@@ -299,11 +283,21 @@ Hier können Sie eine weiter gehende Analyse der Auftragsdatensätze durchführe
 
 ## <a name="configure-email-notifications"></a>Konfigurieren von E-Mail-Benachrichtigungen
 
-Ändern Sie die folgenden drei Variablen, um E-Mail-Benachrichtigungen nach der Bereitstellung der Lösung zu konfigurieren:
+Um E-Mail-Benachrichtigungen nach dem Bereitstellen der Projektmappe zu ändern, bearbeiten Sie die Aktionsgruppe, die während der Bereitstellung erstellt wurde.  
 
-* External_EmailFromAddress: Geben Sie die E-Mail-Adresse des Absenders an.
-* External_EmailToAddress: Geben Sie eine durch Kommas getrennte Liste mit E-Mail-Adressen (user@hotmail.com, user@outlook.com) zum Empfangen von E-Mail-Benachrichtigungen an.
-* External_IsSendEmail: Wählen Sie **Yes**, um E-Mails zu empfangen. Legen Sie den Wert auf **No** fest, um E-Mail-Benachrichtigungen zu deaktivieren.
+Navigieren Sie im Azure-Portal zu „Überwachung“ > „Aktionsgruppen“. Wählen Sie die Aktionsgruppe mit dem Titel **StartStop_VM_Notication** aus.
+
+![Seite der Automation-Lösung „Updateverwaltung“](media/automation-solution-vm-management/azure-monitor.png)
+
+Klicken Sie auf der Seite **StartStop_VM_Notification** unter **Details** auf **Details bearbeiten**. Dadurch wird die Seite **Email/SMS/Push/Voice** (E-Mail/SMS/Push/Sprache) geöffnet. Aktualisieren Sie die E-Mail-Adresse, und klicken Sie auf **OK**, um Ihre Änderungen zu speichern.
+
+![Seite der Automation-Lösung „Updateverwaltung“](media/automation-solution-vm-management/change-email.png)
+
+Alternativ können Sie der Aktionsgruppe weitere Aktionen hinzufügen. Weitere Informationen über Aktionsgruppen finden Sie unter [Aktionsgruppen](../monitoring-and-diagnostics/monitoring-action-groups.md)
+
+Die folgende Beispiel-E-Mail wird gesendet, wenn die Lösung virtuelle Computer herunterfährt.
+
+![Seite der Automation-Lösung „Updateverwaltung“](media/automation-solution-vm-management/email.png)
 
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>Ändern der Zeitpläne für das Starten und Herunterfahren
 

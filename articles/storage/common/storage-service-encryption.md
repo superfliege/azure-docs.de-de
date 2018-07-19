@@ -6,14 +6,14 @@ author: lakasa
 manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 06/12/2018
 ms.author: lakasa
-ms.openlocfilehash: 5e4df176104111f44ca95df2b2d5d1c81ed3a4e3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d469dfb5092f1269a6600ee8ee2f81778fd83b96
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31525079"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37449060"
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Azure Storage Service Encryption für ruhende Daten
 
@@ -41,7 +41,7 @@ Melden Sie sich zum Anzeigen der Einstellungen von Storage Service Encryption be
 
 **F: Ich besitze ein klassisches Speicherkonto. Kann ich Storage Service Encryption dafür aktivieren?**
 
-A: Storage Service Encryption ist standardmäßig für alle Speicherkonten (klassisch und Resource Manager) aktiviert.
+A: Storage Service Encryption ist für alle Speicherkonten (klassisch und Resource Manager) aktiviert.
 
 **F: Wie kann ich Daten in meinem klassischen Speicherkonto verschlüsseln?**
 
@@ -53,7 +53,7 @@ A: Storage Service Encryption ist standardmäßig für alle vorhandenen Resource
 
 **F: Wie verschlüssle ich die Daten in einem Resource Manager-Speicherkonto?**
 
-A: Storage Service Encryption wird standardmäßig für alle vorhandenen Speicherkonten (Resource Manager und klassisch) aktiviert. Alle bereits im Speicherkonto vorhandenen Dateien, die vor der Aktivierung der Verschlüsselung erstellt wurden, werden nachträglich durch einen im Hintergrund ausgeführten Verschlüsselungsprozess verschlüsselt.
+A: Storage Service Encryption ist für alle vorhandenen Speicherkonten aktiviert – klassisch und Resource Manager. Alle bereits im Speicherkonto vorhandenen Dateien, die vor der Aktivierung der Verschlüsselung erstellt wurden, werden nachträglich durch einen im Hintergrund ausgeführten Verschlüsselungsprozess verschlüsselt.
 
 **F: Kann ich mithilfe von Azure PowerShell und der Azure CLI Speicherkonten erstellen, für die Storage Service Encryption aktiviert ist?**
 
@@ -73,7 +73,7 @@ A: Ja – vorausgesetzt, Sie [verwenden Ihre eigenen Verschlüsselungsschlüssel
 
 **F: Ist Storage Service Encryption beim Erstellen eines Speicherkontos standardmäßig aktiviert?**
 
-A: Ja, die Speicherdienstverschlüsselung ist standardmäßig für alle Speicherkonten und Azure Storage-Dienste aktiviert.
+A: Ja, die Speicherdienstverschlüsselung ist für alle Speicherkonten und Azure Storage-Dienste aktiviert.
 
 **F: Wo liegt der Unterschied zu Azure Disk Encryption?**
 
@@ -93,7 +93,11 @@ A: Die Verschlüsselung ist standardmäßig aktiviert, und es gibt keine Möglic
 
 **F: Ist Storage Service Encryption nur in bestimmten Regionen zugelassen?**
 
-A: Storage Service Encryption ist in allen Regionen für alle Dienste verfügbar. 
+A: Storage Service Encryption ist in allen Regionen für alle Dienste verfügbar.
+
+**F: Ist die Speicherdienstverschlüsselung mit FIPS 140-2 konform?**
+
+A: Ja, die Speicherdienstverschlüsselung ist mit FIPS 140-2 konform.
 
 **F: Wohin wende ich mich, wenn Probleme auftreten oder wenn ich Feedback abgeben möchte?**
 

@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 11/11/2016
+ms.date: 06/28/2018
 ms.author: mikejo
-ms.openlocfilehash: 34c667b0a594682e4d099e7bff64bfdb336b850b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 2ff2a619dabd7dfabf89361172557efa4884ba12
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30292539"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110486"
 ---
 # <a name="set-up-diagnostics-for-azure-cloud-services-and-virtual-machines"></a>Einrichten der Diagnose für Azure Cloud Services und virtuelle Azure-Computer
 Wenn Sie Probleme bei einem Azure-Clouddienst oder virtuellen Azure-Computer beheben müssen, können Sie Visual Studio verwenden, um Azure-Diagnose leichter einzurichten. Die Diagnose erfasst Systemdaten und Protokollierungsdaten auf den virtuellen Computern und den virtuellen Computerinstanzen, auf denen der Clouddienst ausgeführt wird. Die Diagnosedaten werden in ein Speicherkonto Ihrer Wahl übertragen. Weitere Informationen zur Diagnoseprotokollierung in Azure finden Sie unter [Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service](app-service/web-sites-enable-diagnostic-log.md).
@@ -87,7 +87,11 @@ In Visual Studio können Sie Diagnosedaten für Rollen sammeln, die in Azure aus
    * Wenn Sie **Ihr Abonnement** auswählen, können Sie das Azure-Abonnement auswählen, das Sie verwenden möchten, und einen Kontonamen angeben. Klicken Sie auf **Konten verwalten**, um Ihre Azure-Abonnements zu verwalten.
    * Wenn Sie **Manuell eingegebene Anmeldeinformationen** auswählen, geben Sie den Namen und den Schlüssel des Azure-Kontos ein, das Sie verwenden möchten.
 5. Klicken Sie auf **Konfigurieren**, um das Dialogfeld **Diagnosekonfiguration** anzuzeigen. Jede Registerkarte (mit Ausnahme von **Allgemein** und **Protokollverzeichnisse**) stellt eine Diagnosedatenquelle dar, die Sie sammeln können. Die Standardregisterkarte **Allgemein** enthält die folgenden Optionen für die Diagnosedatensammlung: **Nur Fehler**, **Alle Informationen** und **Benutzerdefinierter Plan**. Die Standardoption **Nur Fehler** verwendet am wenigsten Speicherplatz, da keine Warnungen oder Ablaufverfolgungsmeldungen übertragen werden. Die Option **Alle Informationen** überträgt die meisten Informationen, verwendet den meisten Speicher und ist daher die teuerste Option.
-   
+
+   > [!NOTE]
+   > Die unterstützte Mindestgröße für „Datenträgerkontingent in MB“ beträgt 4 GB. Wenn Sie jedoch Speicherabbilder sammeln, sollte das Datenträgerkontingent auf einen höheren Wert, z.B. 10 GB, heraufgestuft werden.
+   >
+  
     ![Aktivieren der Azure-Diagnose und Konfiguration](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758144.png)
 6. Wählen Sie für dieses Beispiel die Option **Benutzerdefinierter Plan**, um die gesammelten Daten anzupassen.
 7. Über das Feld **Datenträgerkontingent in MB** können Sie festlegen, wie viel Speicherplatz Ihrem Speicherkonto für Diagnosedaten zugeordnet werden soll. Sie können die Standardwerte akzeptieren oder ändern.

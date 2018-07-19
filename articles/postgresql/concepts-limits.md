@@ -2,19 +2,19 @@
 title: Einschränkungen in Azure-Datenbank für PostgreSQL
 description: Dieser Artikel beschreibt die Einschränkungen in Azure Database for PostgreSQL, z.B. die Anzahl der Verbindungs- und Speichermoduloptionen.
 services: postgresql
-author: kamathsun
-ms.author: sukamat
+author: rachel-msft
+ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 06/04/2018
-ms.openlocfilehash: 5cd829236d8d8a58e68f7bf766790aa3f0cb656e
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.date: 06/30/2018
+ms.openlocfilehash: dc1f8581df5dc7c5728094577298ba078cc2c527
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757415"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37343208"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Einschränkungen in Azure-Datenbank für PostgreSQL
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen im Datenbankdienst beschrieben.
@@ -43,8 +43,8 @@ Das Azure-System benötigt fünf Verbindungen, um den Azure Database for Postgre
 
 ## <a name="functional-limitations"></a>Funktionale Beschränkungen
 ### <a name="scale-operations"></a>Skalierungsvorgänge
-1.  Die dynamische Skalierung von Servern über verschiedene Tarife hinweg wird zurzeit nicht unterstützt. Wechsel zwischen den Tarifen „Basic“, „Universell“ und „Arbeitsspeicheroptimiert“ werden also nicht unterstützt.
-2.  Die Verringerung der Größe des Serverspeichers wird zurzeit nicht unterstützt.
+- Die dynamische Skalierung auf den oder vom Basic-Tarif aus wird zurzeit nicht unterstützt.
+- Die Verringerung der Größe des Serverspeichers wird zurzeit nicht unterstützt.
 
 ### <a name="server-version-upgrades"></a>Upgrades von Serverversionen
 - Die automatisierte Migration zwischen Hauptversionen von Datenbank-Engines wird derzeit nicht unterstützt.
@@ -52,9 +52,12 @@ Das Azure-System benötigt fünf Verbindungen, um den Azure Database for Postgre
 ### <a name="subscription-management"></a>Abonnementverwaltung
 - Die dynamische Verschiebung von Servern zwischen Abonnement- und Ressourcengruppen wird zurzeit nicht unterstützt.
 
+### <a name="vnet-service-endpoints"></a>VNET-Dienstendpunkte
+- VNET-Dienstendpunkte werden nur für Server vom Typ „Universell“ und „Arbeitsspeicheroptimiert“ unterstützt.
+
 ### <a name="point-in-time-restore-pitr"></a>Point-in-Time-Wiederherstellung (PITR)
-1.  Wenn Sie das PITR-Feature verwenden, wird der neue Server mit den gleichen Konfigurationen erstellt wie der Server, auf dem er basiert.
-2.  Die Wiederherstellung eines gelöschten Servers wird nicht unterstützt.
+- Wenn Sie das PITR-Feature verwenden, wird der neue Server mit den gleichen Konfigurationen erstellt wie der Server, auf dem er basiert.
+- Die Wiederherstellung eines gelöschten Servers wird nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Informationen zu den [verfügbaren Funktionen in jedem Tarif](concepts-pricing-tiers.md)

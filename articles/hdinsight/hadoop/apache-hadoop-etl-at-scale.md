@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 2f34233a68bec506d9f69426d779aee8e493d759
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9314b8ae8dceb29a9aee63ba3093ab191d4fdef3
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31402062"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37115607"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Bedarfsorientiertes Extrahieren, Transformieren und Laden (ETL)
 
@@ -85,7 +85,7 @@ Um Datasets in der Größenordnung von Terabytes hochzuladen, kann die Netzwerkw
 
 * Azure ExpressRoute: Azure ExpressRoute ermöglicht Ihnen, private Verbindungen zwischen Azure-Rechenzentren und Ihrer lokalen Infrastruktur zu erstellen. Diese Verbindungen bieten eine zuverlässige Möglichkeit zur Übertragung großer Datenmengen. Weitere Informationen finden Sie in der [Dokumentation zu Azure ExpressRoute](../../expressroute/expressroute-introduction.md).
 
-* Offline-Datenupload. Sie können über den [Azure Import/Export-Dienst](../../storage/common/storage-import-export-service.md) Festplattenlaufwerke mit Ihren Daten an ein Azure-Rechenzentrum senden. Ihre Daten werden zunächst in Azure Storage-Blobs hochgeladen. Anschließend können Sie mit [Azure Data Factory](../../data-factory/v1/data-factory-azure-datalake-connector.md) oder dem [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)-Tool Daten aus Azure Storage-Blobs in Data Lake Store kopieren.
+* Offline-Datenupload. Sie können über den [Azure Import/Export-Dienst](../../storage/common/storage-import-export-service.md) Festplattenlaufwerke mit Ihren Daten an ein Azure-Rechenzentrum senden. Ihre Daten werden zunächst in Azure Storage-Blobs hochgeladen. Anschließend können Sie mit [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) oder dem [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)-Tool Daten aus Azure Storage-Blobs in Data Lake Store kopieren.
 
 ### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
 

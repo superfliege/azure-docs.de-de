@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/02/2018
 ms.author: carlrab
-ms.openlocfilehash: 6806b0c5b5e5ac5e1189f628786f0c8f9b223395
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 403490f47ac171d4a302d2b68af65375bbdc26cd
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750950"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345716"
 ---
 # <a name="overview-azure-sql-database-resource-limits"></a>Übersicht zu Ressourcenlimits für Azure SQL-Datenbank 
 
@@ -27,10 +27,11 @@ Dieser Artikel bietet eine Übersicht zu den Ressourcenlimits für Azure SQL-Dat
 | Datenbanken pro Server | 5.000 |
 | Standardanzahl von Servern pro Abonnement in beliebiger Region | 20 |
 | Maximale Anzahl von Servern pro Abonnement in beliebiger Region | 200 |
+| DTU/eDTU-Kontingent pro Server | 54.000 |
 |||
 
 > [!NOTE]
-> Um ein höheres Serverkontingent als die Standardanzahl zu erhalten, können Sie im Azure-Portal eine neue Supportanfrage für das Abonnement mit Problemtyp „Kontingent“ übermitteln.
+> Um ein höheres DTU/eDTU-Kontingent oder eine höhere Anzahl von Servern als die Standardanzahl zu erhalten, können Sie im Azure-Portal eine neue Supportanfrage für das Abonnement mit dem Problemtyp „Kontingent“ übermitteln. Durch das DTU/eDTU-Kontingent und das Limit für Datenbanken pro Server wird die Anzahl der Pools für elastische Datenbanken pro Server eingeschränkt. 
 
 > [!IMPORTANT]
 > Wenn sich die Anzahl der Datenbanken dem Grenzwert pro Server nähert, kann Folgendes geschehen:

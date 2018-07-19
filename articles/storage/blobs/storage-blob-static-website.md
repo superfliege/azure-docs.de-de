@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/26/18
 ms.author: mihauss
-ms.openlocfilehash: 7021a0499547818d702d14aecb9d8e451a820181
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: df1661b5fe7a2c0e37deef5259d6b5842ed6ee5e
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025321"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131608"
 ---
 # <a name="static-website-hosting-in-azure-storage-preview"></a>Hosten von statischen Websites in Azure Storage (Vorschauversion)
 Azure Storage ermöglicht jetzt das Hosten von statischen Websites (Vorschauversion), und Sie können moderne Webanwendungen kostengünstig und skalierbar in Azure bereitstellen. Auf einer statischen Website enthalten Webseiten statischen Inhalt und JavaScript oder anderen clientseitigen Code. Im Gegensatz dazu sind dynamische Websites von serverseitigem Code abhängig und können mit [Azure-Web-Apps](/app-service/app-service-web-overview.md) gehostet werden.
@@ -43,6 +43,9 @@ Um mit dem Hosten Ihrer Webanwendung in Azure Storage zu beginnen, können Sie d
 ![](media/storage-blob-static-website/storage-blob-static-website-portal-config.PNG)
 
 Laden Sie Ihre Webressourcen in den Container „$web“ hoch, der im Rahmen der Aktivierung von statischen Websites erstellt wurde. Sie können dies direkt im Azure-Portal durchführen oder den [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) nutzen, um vollständige Verzeichnisstrukturen hochzuladen. Achten Sie darauf, ein Indexdokument mit dem konfigurierten Namen einzubinden. In diesem Beispiel hat das Dokument den Namen „index.html“.
+
+> [!NOTE]
+> Für den Dokumentnamen wird die Groß-/Kleinschreibung beachtet, deshalb muss er mit dem Namen der Datei im Speicher genau übereinstimmen.
 
 Navigieren Sie abschließend zu Ihrem Webendpunkt, um Ihre Website zu testen.
 

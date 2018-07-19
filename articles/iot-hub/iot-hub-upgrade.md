@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: 472115f166adc5385b6f46b2f3ac5ef75a6cde92
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1f60b7d30c073c49d5e0a7d35e7263c2181ed744
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637275"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903063"
 ---
 # <a name="how-to-upgrade-your-iot-hub"></a>Gewusst wie: Durchführen eines Upgrades für IoT Hub
 
@@ -45,7 +45,7 @@ Diese Beispiele sollen veranschaulichen, wie IoT Hub im Zuge von Änderungen in 
 4. Um die Anzahl der Einheiten in Ihrem Hub zu ändern, geben Sie einen neuen Wert unter **IoT Hub-Einheiten** ein. 
 5. Wählen Sie **Speichern**, um Ihre Änderungen zu speichern. 
 
-Ihr IoT Hub ist jetzt angepasst, und Ihre Konfigurationen wurden geändert. 
+Ihr IoT Hub ist jetzt angepasst, und Ihre Konfigurationen wurden geändert. Beachten Sie, dass die Partitionsgrenze für IoT Hub im Basic-Tarif bei 8 liegt. Dieser Grenzwert ändert sich nicht, wenn Sie vom Basic-Tarif zum Standard-Tarif migrieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

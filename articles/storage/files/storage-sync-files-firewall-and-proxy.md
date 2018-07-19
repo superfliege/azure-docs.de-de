@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: fauhse
-ms.openlocfilehash: 5014c8204b6b6da539a41aaa3308d8787fb517a7
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 7d86082abb6412072af44a6b2d794bcf536fa18d
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738529"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342725"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Proxy- und Firewalleinstellungen von Azure File Sync
 Azure File Sync verbindet Ihre lokalen Server mit Azure Files, wodurch Synchronisierung für mehrere Standorte und Cloudtiering-Funktionalität ermöglicht werden. Daher muss ein lokaler Server eine Verbindung mit dem Internet haben. Ein IT-Administrator muss den besten Weg festlegen, auf dem der Server zu den Azure-Clouddiensten gelangt.
@@ -51,9 +51,17 @@ Der Azure File Sync-Agent hat keine Anforderungen hinsichtlich spezieller Kanäl
 Azure File Sync nutzt alle verfügbaren Mittel, die Zugriff in Azure ermöglichen, passt sich automatisch an verschiedene Netzwerkeigenschaften wie Bandbreite, Wartezeit an und bietet Administratorsteuerung zur Feinabstimmung. Derzeit sind nicht alle Funktionen verfügbar. Wenn Sie ein bestimmtes Verhalten konfigurieren möchten, können Sie uns dies über [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage?category_id=180670) mitteilen.
 
 ## <a name="proxy"></a>Proxy
-Azure File Sync unterstützt derzeit computerweite Proxyeinstellungen. Diese Proxyeinstellung ist für den Azure File Sync-Agent transparent, da der gesamte Datenverkehr des Servers über diesen Proxy geleitet wird.
+Azure File Sync unterstützt App-spezifische und computerweite Proxyeinstellungen.
 
-App-spezifische Proxyeinstellungen werden derzeit entwickelt und werden in einer zukünftigen Version des Azure File Sync-Agents unterstützt. Dies wird es ermöglichen, einen Proxy speziell für Azure File Sync-Datenverkehr zu konfigurieren.
+Die computerweiten Proxyeinstellungen sind für den Azure File Sync-Agent transparent, da der gesamte Datenverkehr des Servers über den Proxy geleitet wird.
+
+App-spezifische Proxyeinstellungen ermöglichen es, einen Proxy speziell für Azure File Sync-Datenverkehr zu konfigurieren. App-spezifische Proxyeinstellungen werden ab Version 3.0.12.0 des Agents unterstützt und können während der Installation des Agents oder mit dem PowerShell-Cmdlet Set-StorageSyncProxyConfiguration konfiguriert werden.
+
+PowerShell-Befehle zum Konfigurieren von App-spezifischen Proxyeinstellungen:
+```PowerShell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
+```
 
 ## <a name="firewall"></a>Firewall
 Wie in einem vorhergehenden Abschnitt erwähnt, muss Port 443 für ausgehenden Datenverkehr geöffnet sein. Entsprechend den Richtlinien in Ihrem Rechenzentrum, Ihrer Niederlassung oder Ihrer Region kann eine weitere Beschränkung des Datenverkehrs über diesen Port auf bestimmte Domänen erwünscht oder erforderlich sein.

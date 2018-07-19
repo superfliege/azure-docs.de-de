@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 48e5a8d270701c43276e1d248d8ea4dc748d15b2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1d073732b5dd9b9867813d9ffcfad5caa1131d81
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31404566"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37101438"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>Verwenden von mehreren HDInsight-Clustern mit einem Azure Data Lake Store-Konto
 
 Ab HDInsight Version 3.5 können Sie HDInsight-Cluster mit Azure Data Lake Store-Konten als Standarddateisystem erstellen.
-Data Lake Store unterstützt unbegrenzten Speicher, wodurch es nicht nur für das Hosten von großen Datenmengen, sondern auch für das Hosten von HDInsight Clustern ideal ist, die ein gemeinsames Data Lake Store-Konto haben. Anleitungen zum Erstellen eines HDInsight-Clusters mit Data Lake Store als Speicher finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+Data Lake Store unterstützt unbegrenzten Speicher, wodurch es nicht nur für das Hosten von großen Datenmengen, sondern auch für das Hosten von HDInsight Clustern ideal ist, die ein gemeinsames Data Lake Store-Konto haben. Anweisungen zur Erstellung eines HDInsight-Clusters mit Data Lake Storage als Speicher finden Sie unter [Schnellstart: Einrichten von Hadoop-Clustern in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 Dieser Artikel bietet Empfehlungen für Data Lake Store-Administratoren bezüglich des Einrichtens eines einzelnen und eines geteilten Data Lake Store-Kontos, das über mehrere **aktive** HDInsight-Cluster hinweg verwendet werden kann. Diese Empfehlungen gelten für das Hosten von mehreren sicheren sowie nicht-sicheren Hadoop-Clustern auf einem geteilten Data Lake Store-Konto.
 
@@ -51,7 +51,7 @@ In der Tabelle
 - **Dienstprinzipal** ist der Dienstprinzipal von Azure Active Directory (AAD), der mit dem Konto verknüpft ist.
 - **FINGRP** ist eine Benutzergruppe, die in AAD erstellt wurde, die Benutzer der Organisation „Finanzen“ enthält.
 
-Anweisungen zum Erstellen einer AAD-Anwendung (die auch einen Dienstprinzipal erstellt) finden Sie unter [Create an AAD application (Erstellen einer AAD-Anwendung)](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application). Anweisungen zum Erstellen einer Benutzergruppe in AAD finden Sie unter [Verwalten von Gruppen in Azure Active Directory](../active-directory/active-directory-groups-create-azure-portal.md).
+Anweisungen zum Erstellen einer AAD-Anwendung (die auch einen Dienstprinzipal erstellt) finden Sie unter [Create an AAD application (Erstellen einer AAD-Anwendung)](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application). Anweisungen zum Erstellen einer Benutzergruppe in AAD finden Sie unter [Verwalten von Gruppen in Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Zu berücksichtigende Punkte:
 
@@ -97,6 +97,6 @@ Legen Sie die Lese- und Ausführberechtigungen für **andere** über die Hierarc
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Erstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe des Azure-Portals](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Schnellstart: Einrichten von Clustern in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 
 

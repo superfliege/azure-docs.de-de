@@ -1,6 +1,6 @@
 ---
 title: Netzwerkleistungsmonitor-Lösung in Azure Log Analytics | Microsoft-Dokumentation
-description: Mit der Dienstendpunktmonitor-Funktion des Netzwerkleistungsmonitors können Sie die Netzwerkkonnektivität mit einem beliebigen Endpunkt überwachen, der über einen geöffneten TCP-Port verfügt.
+description: Verwenden Sie den Dienstkonnektivitätsmonitor von Netzwerkleistungsmonitor, um die Netzwerkkonnektivität an einem beliebigen Endpunkt zu überwachen, der über einen geöffneten TCP-Port verfügt.
 services: log-analytics
 documentationcenter: ''
 author: abshamsft
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: f6196c1403ded7bb8a72ee5483c2c2056b0e8020
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.component: na
+ms.openlocfilehash: 3c9352e8e4aee7817b1195c15f74503e86e597ea
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030708"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37434918"
 ---
 # <a name="service-connectivity-monitor"></a>Dienstkonnektivitätsmonitor
 
@@ -78,7 +79,7 @@ Beginnen Sie mit der Erstellung Ihrer Tests zur Überwachung der Netzwerkkonnekt
 10. Wählen Sie Überwachungsbedingungen aus. Sie können benutzerdefinierte Schwellenwerte für das Generieren von Integritätsereignissen festlegen, indem Sie Schwellenwerte eingeben. Sobald der Wert einer Bedingung den festgelegten Schwellenwert für das ausgewählte Netzwerk- oder Subnetzpaar überschreitet, wird ein Integritätsereignis generiert. 
 11. Wählen Sie zum Speichern der Konfiguration **Speichern** aus. 
 
-    ![Testkonfigurationen des Dienstendpunktmonitors](media/log-analytics-network-performance-monitor/service-endpoint-configuration.png)
+    ![Testkonfigurationen für den Dienstkonnektivitätsmonitor](media/log-analytics-network-performance-monitor/service-endpoint-configuration.png)
 
 
 
@@ -86,11 +87,11 @@ Beginnen Sie mit der Erstellung Ihrer Tests zur Überwachung der Netzwerkkonnekt
 
 Wechseln Sie zur Dashboardansicht des Netzwerkleistungsmonitors. Auf der Seite **Dienstkonnektivitätsmonitor** erhalten Sie eine Zusammenfassung der Integrität der verschiedenen erstellten Tests. 
 
-![Seite „Service Endpoint Monitor“ (Dienstendpunktmonitor)](media/log-analytics-network-performance-monitor/service-endpoint-blade.png)
+![Seite „Dienstkonnektivitätsmonitor“](media/log-analytics-network-performance-monitor/service-endpoint-blade.png)
 
 Wählen Sie die Kachel aus, um Details zu den Tests auf der Seite **Tests** anzuzeigen. Die linke Tabelle gibt Aufschluss über die Integrität und die Werte der Dienstreaktionszeit, der Netzwerkwartezeit und der Paketverluste für alle Tests zu einem bestimmten Zeitpunkt. Mit dem Steuerelement „Network State Recorder“ können Sie die Ansicht der Netzwerkmomentaufnahme für einen anderen Punkt in der Vergangenheit anzeigen. Wählen Sie in der Tabelle den Test aus, den Sie untersuchen möchten. Die Diagramme auf der rechten Seite geben Aufschluss über den historischen Trend von Verlusten, Wartezeiten und Antwortzeiten. Wählen Sie den Link **Testdetails** aus, um die Leistung für die einzelnen Knoten anzuzeigen.
 
-![Dienstendpunktmonitor-Tests](media/log-analytics-network-performance-monitor/service-endpoint-tests.png)
+![Dienstkonnektivitätsmonitor-Tests](media/log-analytics-network-performance-monitor/service-endpoint-tests.png)
 
 In der Ansicht **Testknoten** können Sie die Netzwerkkonnektivität der einzelnen Knoten beobachten. Wählen Sie den Knoten aus, dessen Leistung beeinträchtigt ist. Dies ist der Knoten, an dem eine nicht zufriedenstellende Anwendungsgeschwindigkeit festgestellt wurde.
 
@@ -98,15 +99,15 @@ Ermitteln Sie, ob die mangelhafte Anwendungsleistung auf das Netzwerk oder auf e
 
 * **Anwendungsproblem:** Eine Spitze bei der Antwortzeit bei konsistenter Netzwerkwartezeit deutet darauf hin, dass das Netzwerk einwandfrei funktioniert und möglicherweise ein Problem mit der Anwendung vorliegt. 
 
-    ![Anwendungsproblem beim Dienstendpunktmonitor](media/log-analytics-network-performance-monitor/service-endpoint-application-issue.png)
+    ![Anwendungsproblem beim Dienstkonnektivitätsmonitor](media/log-analytics-network-performance-monitor/service-endpoint-application-issue.png)
 
 * **Netzwerkproblem:** Eine Spitze bei der Antwortzeit in Verbindung mit einer entsprechenden Spitze bei der Netzwerkwartezeit deutet darauf hin, dass die längere Antwortzeit auf eine erhöhte Netzwerkwartezeit zurückzuführen ist. 
 
-    ![Netzwerkproblem beim Dienstendpunktmonitor](media/log-analytics-network-performance-monitor/service-endpoint-network-issue.png)
+    ![Netzwerkproblem beim Dienstkonnektivitätsmonitor](media/log-analytics-network-performance-monitor/service-endpoint-network-issue.png)
 
 Nachdem Sie festgestellt haben, dass das Problem auf das Netzwerk zurückzuführen ist, wählen Sie den Ansichtslink **Topologie** aus, um den problematischen Hop auf der Topologiekarte zu ermitteln. In der folgenden Abbildung ist ein Beispiel angegeben. Von der Gesamtwartezeit von 105 ms zwischen Knoten und Anwendungsendpunkt entfallen 96 ms auf den rot markierten Hop. Nachdem Sie den problematischen Hop identifiziert haben, können Sie Korrekturmaßnahmen ergreifen. 
 
-![Dienstendpunktmonitor-Tests](media/log-analytics-network-performance-monitor/service-endpoint-topology.png)
+![Dienstkonnektivitätsmonitor-Tests](media/log-analytics-network-performance-monitor/service-endpoint-topology.png)
 
 ## <a name="diagnostics"></a>Diagnose 
 

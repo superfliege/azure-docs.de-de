@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 832e4672a15368768977feedade83707a26b9965
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: afd061b026e30378f5e645d11b84b44b7a516143
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048787"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341578"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit
 Bei der Integrationslaufzeit (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Weitere Informationen zur Integrationslaufzeit finden Sie unter [Integration Runtime Overview](concepts-integration-runtime.md) (Übersicht über Integrationslaufzeit).
@@ -140,6 +140,7 @@ Domänennamen | Ports | BESCHREIBUNG
 *.servicebus.windows.net | 443, 80 | Wird für die Kommunikation mit dem Back-End für den Datenverschiebungsdienst verwendet
 *.core.windows.net | 443 | Wird für das gestaffelte Kopieren mit einem Azure-Blob (sofern konfiguriert) verwendet
 *.frontend.clouddatahub.net | 443 | Wird für die Kommunikation mit dem Back-End für den Datenverschiebungsdienst verwendet
+download.microsoft.com | 443 | Wird zum Herunterladen der Aktualisierungen verwendet
 
 Auf Ebene der **Windows-Firewall** (Computerebene) sind diese ausgehenden Ports normalerweise aktiviert. Falls nicht, können Sie die Domänen und Ports auf dem Computer mit der selbstgehosteten Integrationslaufzeit entsprechend konfigurieren.
 

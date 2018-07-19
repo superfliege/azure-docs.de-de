@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: 8ccb44b5009588c28bc79bb45e1a7640ead6c817
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 4faf37394b8e4f6c4e463acb11aea898a29fef80
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2017
-ms.locfileid: "27159785"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448406"
 ---
 # <a name="service-bus-pricing-and-billing"></a>Service Bus – Preise und Abrechnung
 
@@ -39,7 +39,10 @@ Mit dem Tarif **Standard** werden gestaffelte Preise für Vorgänge eingeführt,
 
 Der Tarif **Premium** bietet Ressourcenisolierung auf CPU- und Arbeitsspeicherebene, sodass die Workloads der einzelnen Kunden voneinander isoliert ausgeführt werden. Dieser Ressourcencontainer wird als *Messaging-Einheit* bezeichnet. Jedem Premium-Namespace wird mindestens eine Messaging-Einheit zugeordnet. Sie können 1, 2 oder 4 Messaging-Einheiten für jeden Service Bus Premium-Namespace erwerben. Eine einzelne Workload oder Entität kann mehrere Messaging-Einheiten umfassen, und die Anzahl der Einheiten kann beliebig geändert werden. Gebühren werden jedoch im 24-Stunden- bzw. Tagesrhythmus berechnet. Das Ergebnis ist eine vorhersehbare und wiederholbare Leistung Ihrer Service Bus-basierten Lösung. Diese Leistung ist nicht nur besser vorhersehbar und verfügbar, sondern auch schneller.
 
-Beachten Sie, dass die Basisgebühr für den Standard-Tarif nur einmal pro Monat pro Azure-Abonnement berechnet wird. Dies bedeutet, dass Sie nach Erstellung eines einzigen Service Bus-Namespace im Standard-Tarif unter demselben Azure-Abonnement beliebig viele weitere Standardnamespaces erstellen können, ohne dass zusätzliche Grundgebühren anfallen.
+> [!NOTE]
+> Themen und Abonnements sind nur in den Tarifen Standard oder Premium verfügbar. Im Basic-Tarif (Basis-Tarif) werden nur Warteschlangen unterstützt.
+
+Die Basisgebühr für den Standard-Tarif wird nur einmal pro Monat pro Azure-Abonnement berechnet. Dies bedeutet, dass Sie nach Erstellung eines einzigen Service Bus-Namespace im Standard-Tarif unter demselben Azure-Abonnement beliebig viele weitere Standardnamespaces erstellen können, ohne dass zusätzliche Grundgebühren anfallen.
 
 In der Tabelle [Service Bus-Preise](https://azure.microsoft.com/pricing/details/service-bus/) sind die Funktionsunterschiede zwischen den Tarifen Standard und Premium zusammengefasst.
 

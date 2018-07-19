@@ -10,15 +10,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: bwren
-ms.openlocfilehash: 5719dc3719739fb561626e307ee295729752c1fa
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.component: na
+ms.openlocfilehash: e47e8cbd209ea34317ca9b176a2c4b0fef10a2b2
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297752"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37133408"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Wechsel des OMS-Portals zu Azure
 Wir danken Ihnen für die Verwendung des OMS-Portals. Dank Ihrer tatkräftigen Unterstützung werden wir weiterhin stark in unsere Überwachungs- und Verwaltungsdienste investieren. Das Feedback von Kunden hat wiederholt gezeigt, dass eine einzige Benutzeroberfläche zum Überwachen und Verwalten sowohl lokaler als auch Azure-Workloads benötigt wird. Wie Sie wahrscheinlich wissen, dient das Azure-Portal als Hub für alle Azure-Dienste und bietet eine umfassende Verwaltungsoberfläche mit Funktionen wie Dashboards für das Anheften von Ressourcen, intelligente Suche nach Ressourcen und Tagging für die Ressourcenverwaltung. Zum Konsolidieren und Optimieren des Überwachungs- und Verwaltungsworkflows haben wir damit begonnen, die Funktionen des OMS-Portals in das Azure-Portal einzubinden. Wir freuen uns, Ihnen mitteilen zu können, dass die meisten Features des OMS-Portals nun Bestandteil des Azure-Portals sind. Tatsächlich sind einige der neuen Features, wie z. B. Traffic Manager, nur im Azure-Portal verfügbar. Es sind nur noch wenige Lücken zu schließen. Insbesondere handelt es sich dabei um fünf Lösungen, die sich derzeit noch in der Übergangsphase zum Azure-Portal befinden. Sofern Sie nicht gerade diese Features verwenden, können Sie alles, was Sie bisher im OMS-Portal erledigt haben, nun mit dem Azure-Portal ausführen – und dazu noch vieles mehr. Wenn Sie das Azure-Portal noch nicht verwenden, empfehlen wir Ihnen, noch heute damit zu beginnen! 
@@ -43,7 +44,7 @@ Es bestehen derzeit einige Funktionalitätslücken, die eine weitere Verwendung 
 - Die folgenden Lösungen sind im Azure-Portal noch nicht voll funktionsfähig. Sie sollten diese Lösungen weiterhin im klassischen Portal verwenden, bis sie aktualisiert sind.
 
     - Windows-Analyselösungen ([Upgradebereitschaft](https://technet.microsoft.com/itpro/windows/deploy/upgrade-readiness-get-started), [Integrität für Geräte](https://docs.microsoft.com/windows/deployment/update/device-health-monitor) und [Updatekonformität](https://technet.microsoft.com/itpro/windows/manage/update-compliance-get-started))
-    - [DNS Analytics](log-analytics-dns.md) 
+    - [DNS-Analyse](log-analytics-dns.md) 
     - [Surface Hub](log-analytics-surface-hubs.md)
 
 -  Für den Zugriff auf die Log Analytics-Ressource in Azure muss der Benutzer Zugriff über den [rollenbasierten Zugriff in Azure](#user-access-and-role-migration) erhalten.
@@ -58,7 +59,7 @@ Lesen Sie [Häufig gestellte Fragen zum Übergang vom OMS-Portal zum Azure-Porta
 ### <a name="alert-extension"></a>Warnungserweiterung  
 Warnungen werden derzeit [in das Azure-Portal erweitert](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Sobald dieser Prozess abgeschlossen ist, sind Verwaltungsaktionen für Warnungen nur noch im Azure-Portal verfügbar. Vorhandene Warnungen werden weiterhin im OMS-Portal aufgeführt. Wenn Sie programmgesteuert mithilfe der Log Analytics-REST-API für Warnungen oder der Log Analytics-Warnungsressourcenvorlage auf Warnungen zugreifen, müssen Sie in Ihren API-Aufrufen, Azure Resource Manager-Vorlagen und PowerShell-Befehlen anstelle von Aktionen nun Aktionsgruppen verwenden.
 
-### <a name="alert-management-solution"></a>Warnungsverwaltungslösung
+### <a name="alert-management-solution"></a>Lösung „Alert Management“
 Anstelle der [Warnungsverwaltungslösung](log-analytics-solution-alert-management.md) (Alert Management) können Sie die [einheitliche Schnittstelle für Warnungen von Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) zur visuellen Darstellung und Verwaltung von Warnungen verwenden. Diese neue Oberfläche aggregiert Warnungen aus mehreren Quellen in Azure, einschließlich Protokollwarnungen aus Log Analytics. Sie können Verteilungen der Warnungen anzeigen, die automatisierte Gruppierung zusammengehöriger Warnungen mithilfe intelligenter Gruppen nutzen und Warnungen für mehrere Abonnements unter Verwendung umfangreicher Filter anzeigen. Alle diese Funktionen sind in der Vorschau ab 4. Juni 2018 verfügbar. Die Warnungsverwaltungslösung steht im Azure-Portal nicht zur Verfügung. 
 
 Die von der Warnungsverwaltungslösung (Alert Management) gesammelten Daten (Datensätze vom Typ „Warnung“) sind weiterhin in Log Analytics enthalten, solange die Lösung für den Arbeitsbereich installiert ist. Ab August 2018 ist das Streaming von Warnungen von der einheitlichen Oberfläche für Warnungen in die Arbeitsbereiche aktiviert und ersetzt diese Funktion. Es werden einige Schemaänderungen erwartet und zu einem späteren Zeitpunkt bekannt gegeben.
@@ -72,15 +73,15 @@ Während der Konvertierung prüft das System jede Benutzer- oder Sicherheitsgrup
 
 | OMS-Portalberechtigung | Azure-Rolle |
 |:---|:---|
-| Schreibgeschützt | Log Analytics-Leser |
+| ReadOnly | Log Analytics-Leser |
 | Mitwirkender | Log Analytics-Mitwirkender |
-| Administrator | Besitzer |
+| Administrator | Owner (Besitzer) |
 
 Um sicherzustellen, dass Benutzern keine zu hohen Berechtigungen zugewiesen werden, weist das System diese Berechtigungen auf Ressourcengruppenebene nicht automatisch zu. Daher müssen Arbeitsbereichsadministratoren sich selbst manuell die Rollen _Besitzer_ oder _Mitwirkender_ auf Ressourcengruppen- oder Abonnementebene zuweisen, um die folgenden Aktionen ausführen zu können.
 
 - Hinzufügen oder Entfernen von Lösungen
 - Definieren neuer benutzerdefinierter Ansichten
-- Verwalten von Warnungen 
+- Warnungen verwalten 
 
 In einigen Fällen kann bei der automatischen Konvertierung keine Berechtigung angewendet werden, und der Administrator wird aufgefordert, Berechtigungen manuell zuzuweisen.
 
@@ -94,7 +95,7 @@ Aufgrund der Unterstützung [ressourcenübergreifender Abfragen](log-analytics-c
 
 
 ## <a name="azure-network-security-group-analytics"></a>Azure-Netzwerksicherheitsgruppen-Analyse
-Die [Analyselösung der Azure-Netzwerksicherheitsgruppe](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) wird durch die kürzlich gestartete [Traffic Analytics](../network-watcher/traffic-analytics.md)-Lösung ersetzt, die Einblicke in die Benutzer- und Anwendungsaktivität in Cloudnetzwerken bietet. Traffic Analytics erleichtert es Ihnen, die Netzwerkaktivität Ihres Unternehmens zu überwachen, Anwendungen und Daten zu schützen, die Arbeitsauslastungsleistung zu optimieren und die Kompatibilität aufrechtzuerhalten. 
+Die [Analyselösung der Azure-Netzwerksicherheitsgruppe](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) wird durch die kürzlich gestartete [Traffic Analytics](https://azure.microsoft.com/en-in/blog/traffic-analytics-in-preview/)-Lösung ersetzt, die Einblicke in die Benutzer- und Anwendungsaktivität in Cloudnetzwerken bietet. Traffic Analytics erleichtert es Ihnen, die Netzwerkaktivität Ihres Unternehmens zu überwachen, Anwendungen und Daten zu schützen, die Arbeitsauslastungsleistung zu optimieren und die Kompatibilität aufrechtzuerhalten. 
 
 Diese Lösung analysiert NSG-Datenflussprotokolle und bietet folgende Einblicke.
 
@@ -105,7 +106,7 @@ Diese Lösung analysiert NSG-Datenflussprotokolle und bietet folgende Einblicke.
 - Sicherheit, einschließlich schädlichen Datenverkehrs, zum Internet offenen Ports, Anwendungen oder VMs, die versuchen, auf das Internet zuzugreifen
 - Kapazitätsauslastung, wodurch Sie Probleme einer Überbereitstellung oder Unterauslastung vermeiden
 
-Sie können weiterhin Diagnoseeinstellungen verwenden, um NSG-Protokolle an Log Analytics zu senden, damit Ihre vorhandenen gespeicherten Suchen, Warnungen und Dashboards weiterhin funktionieren. Kunden, bei denen die Lösung bereits installiert ist, können diese bis auf Weiteres verwenden. Ab dem 20. Juni wird die NSG-Lösung aus dem Marketplace entfernt und über die Community als eine [Azure-Schnellstartvorlage](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights) zur Verfügung gestellt.
+Sie können weiterhin Diagnoseeinstellungen verwenden, um NSG-Protokolle an Log Analytics zu senden, damit Ihre vorhandenen gespeicherten Suchen, Warnungen und Dashboards weiterhin funktionieren. Kunden, bei denen die Lösung bereits installiert ist, können diese bis auf Weiteres verwenden. Ab dem 20. Juni wird die Netzwerksicherheitsgruppen-Analyse-Lösung aus dem Marketplace entfernt und über die Community als eine [Azure-Schnellstartvorlage](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights) zur Verfügung gestellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Einen Leitfaden für den Wechsel vom OMS-Portal zum Azure-Portal finden Sie unter [Häufig gestellte Fragen zum Übergang vom OMS-Portal zum Azure-Portal für Log Analytics-Benutzer](log-analytics-oms-portal-faq.md).

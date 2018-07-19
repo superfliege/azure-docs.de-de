@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 06/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 2062ba20b09e8e42fd094fbff628f5e76b5ea00f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d234b34f7583441f496fb96d37166c5472cadb4c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225788"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110826"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Tutorial: Azure Active Directory-Integration in Riskware
 
@@ -67,7 +67,7 @@ Zum Konfigurieren der Integration von Riskware in Azure AD müssen Sie Riskware 
 2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“][2]
-    
+
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
@@ -101,7 +101,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
+
     ![Dialogfeld „Einmaliges Anmelden“](./media/riskware-tutorial/tutorial_riskware_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Riskware** die folgenden Schritte aus:
@@ -113,7 +113,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     |--|--|
     | UAT|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
     | PROD| `https://riskcloud.net/prod?ccode=<COMPANYCODE>` |
-    | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` | 
+    | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
     |||
 
     b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL ein:
@@ -121,10 +121,10 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     |--|--|
     | UAT| `https://riskcloud.net/uat` |
     | PROD| `https://riskcloud.net/prod` |
-    | DEMO| `https://riskcloud.net/demo` | 
+    | DEMO| `https://riskcloud.net/demo` |
     |||
 
-    > [!NOTE] 
+    > [!NOTE]
     > Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam von Riskware](mailto:support@pansoftware.com.au), um diesen Wert zu erhalten.
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
@@ -137,11 +137,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 6. Klicken Sie im Abschnitt **Riskware-Konfiguration** auf **Riskware konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Riskware-Konfiguration](./media/riskware-tutorial/tutorial_riskware_configure.png) 
+    ![Riskware-Konfiguration](./media/riskware-tutorial/tutorial_riskware_configure.png)
 
 7. Melden Sie sich in einem anderen Webbrowserfenster auf der Riskware-Unternehmenswebsite als Administrator an.
 
-8. Klicken Sie oben rechts auf **Maintenance** (Wartung), um die Wartungsseite zu öffnen. 
+8. Klicken Sie oben rechts auf **Maintenance** (Wartung), um die Wartungsseite zu öffnen.
 
     ![Wartung bei Riskware-Konfiguration](./media/riskware-tutorial/tutorial_riskware_maintain.png)
 
@@ -159,16 +159,16 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     c. Geben Sie im Textfeld **Description** (Beschreibung) eine Beschreibung ein, z.B. „AZURE Configuration for SSO“ (AZURE-Konfiguration für SSO).
 
-    d. Fügen Sie im Textfeld **Single Sign On Page** (SSO-Seite) den Wert der **SAML-Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
+    d. Fügen Sie im Textfeld **Single Sign On Page** (Seite für einmaliges Anmelden) den Wert **SAML-Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
 
     e. Fügen Sie in das Textfeld **Sign out Page** (Abmeldeseite) den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    f. Geben Sie im Textfeld **Post Form Field** (Formularfeld für POST) den Feldnamen in der SAML-POST-Antwort ein, z.B. „SAMLResponse“.
+    f. Geben Sie im Textfeld **Post Form Field** (Formularfeld für POST) den Feldnamen in der SAML-Antwort ein, z.B. „SAMLResponse“.
 
     g. Geben Sie im Textfeld **XML Identity Tag Name** (Tagname der XML-Identität) das Attribut ein, das den eindeutigen Bezeichner in der SAML-Antwort enthält, z.B. „NameID“.
 
     h. Öffnen Sie im Editor die **Metadaten-XML**-Datei, die Sie im Azure-Portal heruntergeladen haben, kopieren Sie das Zertifikat der Metadatendatei, und fügen Sie es in das Textfeld **Certificate** (Zertifikat) ein.
-    
+
     i. Fügen Sie in das Textfeld **Consumer URL** (Consumer-URL) den Wert der **Antwort-URL** ein, den Sie vom Supportteam erhalten.
 
     j. Fügen Sie in das Textfeld **Issuer** (Aussteller) den Wert des **Bezeichners** ein, den Sie vom Supportteam erhalten.
@@ -176,9 +176,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!Note]
     > Wenden Sie sich an das [Supportteam von Riskware](mailto:support@pansoftware.com.au), um diese Werte zu erhalten.
 
-    k. Wählen Sie **Use POST** (POST verwenden) aus, um die SAML-Anforderung als POST-Parameter weiterzuleiten.
+    k. Aktivieren Sie das Kontrollkästchen **Use POST** (POST verwenden).
 
-    l. Wählen Sie **Use SAML Request** (SAML-Anforderung verwenden) aus, um das einmalige Anmelden für SP-initiierte SAML-Anforderung weiterzuleiten.
+    l. Aktivieren Sie das Kontrollkästchen **Use SAML Request** (SAML-Anforderung verwenden).
 
     m. Klicken Sie auf **Speichern**.
 
@@ -213,7 +213,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
     d. Klicken Sie auf **Create**.
- 
+
 ### <a name="create-a-riskware-test-user"></a>Erstellen eines Riskware-Testbenutzers
 
 Damit sich Azure AD-Benutzer bei Riskware anmelden können, müssen sie in Riskware bereitgestellt werden. Im Fall von Riskware muss die Bereitstellung manuell ausgeführt werden.
@@ -230,8 +230,8 @@ Damit sich Azure AD-Benutzer bei Riskware anmelden können, müssen sie in Riskw
 
     ![Personen bei Riskware-Konfiguration](./media/riskware-tutorial/tutorial_riskware_people.png)
 
-4. Führen Sie auf der Registerkarte **Details** (Details) die folgenden Schritte aus:
-    
+4. Wählen Sie die Registerkarte **Details** aus, und führen Sie die folgenden Schritte aus:
+
     ![Riskware-Konfigurationsdetails](./media/riskware-tutorial/tutorial_riskware_details.png)
 
     a. Wählen Sie **Person Type** (Personentyp) aus, z.B. „Employee“ (Mitarbeiter).
@@ -240,7 +240,7 @@ Damit sich Azure AD-Benutzer bei Riskware anmelden können, müssen sie in Riskw
 
     c. Geben Sie im Textfeld **Surname** (Nachname) den Nachnamen des Benutzers ein, z.B. **Simon**.
 
-5. Führen Sie im Abschnitt **Sicherheit** die folgenden Schritte aus:    
+5. Führen Sie im Abschnitt **Sicherheit** die folgenden Schritte aus:
 
     ![Sicherheit bei Riskware-Konfiguration](./media/riskware-tutorial/tutorial_riskware_security.png)
 
@@ -250,12 +250,12 @@ Damit sich Azure AD-Benutzer bei Riskware anmelden können, müssen sie in Riskw
 
     c. Geben Sie im Textfeld **Password** (Kennwort) das Kennwort des Benutzers ein.
 
-6. Führen Sie auf der Registerkarte **Organisation** (Organisation) die folgenden Schritte aus:
+6. Führen Sie auf der Registerkarte **Organisation** die folgenden Schritte aus:
 
     ![Organisation bei Riskware-Konfiguration](./media/riskware-tutorial/tutorial_riskware_org.png)
 
-    a. Wählen Sie die Organisation im Abschnitt **Organisation** (Organisation) als **Level 1** (Ebene 1) aus.
-    
+    a. Wählen Sie als Option die Organisation **Level1** aus.
+
     b. Geben Sie im Abschnitt **Person's Primary Workplace** (Primärer Arbeitsplatz der Person) im Textfeld **Location** (Ort) Ihren Standort ein.
 
     c. Wählen Sie im Abschnitt **Employee** (Mitarbeiter) den **Employee Status** (Mitarbeiterstatus) aus, z.B. „Casual“ (Gelegentlich).
@@ -266,7 +266,7 @@ Damit sich Azure AD-Benutzer bei Riskware anmelden können, müssen sie in Riskw
 
 In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf Riskware, damit sie das einmalige Anmelden von Azure verwenden kann.
 
-![Zuweisen der Benutzerrolle][200] 
+![Zuweisen der Benutzerrolle][200]
 
 **So weisen Sie Britta Simon Riskware zu**
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 65848473139036cc431b9a142c8c0a375505f383
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 32feac32af01e518ad6cede43cc4b4f00c097d3b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225641"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041278"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Tutorial: Azure Active Directory-Integration mit SmarterU
 
@@ -102,25 +102,25 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **SmarterU** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/smarteru-tutorial/tutorial_smarteru_samlbase.png)
+    ![Configure single sign-on](./media/smarteru-tutorial/tutorial_smarteru_samlbase.png)
 
 3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für SmarterU** aus: 
 
-    ![Configure Single Sign-On](./media/smarteru-tutorial/tutorial_smarteru_url.png)
+    ![Configure single sign-on](./media/smarteru-tutorial/tutorial_smarteru_url.png)
 
     Geben Sie im Textfeld **Bezeichner** die folgende URL ein: `https://www.smarteru.com/`
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/smarteru-tutorial/tutorial_smarteru_certificate.png) 
+    ![Configure single sign-on](./media/smarteru-tutorial/tutorial_smarteru_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/smarteru-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/smarteru-tutorial/tutorial_general_400.png)
 
 6. Melden Sie sich in einem anderen Webbrowserfenster bei der SmarterU-Unternehmenswebsite als Administrator an.
 
@@ -221,7 +221,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste die Option **SmarterU** aus.
 
-    ![Configure Single Sign-On](./media/smarteru-tutorial/tutorial_smarteru_app.png) 
+    ![Configure single sign-on](./media/smarteru-tutorial/tutorial_smarteru_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -242,7 +242,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
  
 Wenn Sie im Zugriffsbereich auf die Kachel „SmarterU“ klicken, sollten Sie automatisch bei Ihrer SmarterU-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen

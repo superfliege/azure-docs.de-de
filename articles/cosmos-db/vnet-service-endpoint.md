@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: de52521824c146f63fb16e2690e2a24167ae2efe
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e6b263c1eb9fe3b151f0a51b5da9a92b8ced4549
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333911"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109741"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Sicherer Zugriff auf ein Azure Cosmos DB-Konto durch Verwenden eines Azure Virtual Network-Dienstendpunkts
 
@@ -249,7 +249,7 @@ Um mehr über NSG-Tags zu erfahren, lesen Sie den Artikel über [virtuelle Netzw
 
 Diese beiden Features ergänzen einander, um die Isolierung und Sicherheit von Azure Cosmos DB-Ressourcen sicherzustellen. Die Verwendung einer IP-Firewall stellt sicher, dass statische IP-Adressen auf das Azure Cosmos DB-Konto zugreifen können.  
 
-### <a name="can-an-on-premise-devices-ip-address-that-is-connected-through-azure-virtual-network-gatewayvpn-or-express-route-gateway-access-azure-cosmos-db-account"></a>Kann über die IP-Adresse eines lokalen Geräts, das über ein Azure Virtual Network-Gateway (VPN) oder ein ExpressRoute-Gateway verbunden ist, auf ein Azure Cosmos DB-Konto zugegriffen werden?  
+### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gatewayvpn-or-express-route-gateway-access-azure-cosmos-db-account"></a>Kann über die IP-Adresse eines lokalen Geräts, das über ein Azure Virtual Network-Gateway (VPN) oder ein ExpressRoute-Gateway verbunden ist, auf ein Azure Cosmos DB-Konto zugegriffen werden?  
 
 Die IP-Adresse oder der IP-Adressbereich des lokalen Geräts muss der Liste der statischen IPs hinzugefügt werden, um den Zugriff auf das Azure Cosmos DB-Konto zu ermöglichen.  
 

@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/25/2018
+ms.date: 07/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7bee84e1ce473c27730b3fe84aa0a580baeba7c2
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 4f73b6d735997b663ca6769aaceaf363b6d3eda7
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36940166"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346483"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -119,19 +119,26 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * Application Insights
 * Analysis Services
 * Automation
+* Azure Active Directory B2C
 * Azure Cosmos DB
+* Azure Maps
 * Azure Relay
+* Azure Stack: Registrierungen
+* Azure Migrate
 * Batch
-* Bing Maps
+* BizTalk Services
+* Botdienst
 * CDN
 * Cloud Services – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 * Cognitive Services
+* Containerregistrierung
 * Content Moderator
 * Data Catalog
-* Data Factory – V1 kann verschoben werden. Das Verschieben von V2 (Vorschauversion) wird jedoch nicht unterstützt.
+* Data Factory
 * Data Lake Analytics
 * Data Lake Store
 * DNS
+* Event Grid
 * Event Hubs
 * HDInsight-Cluster – siehe [HDInsight-Einschränkungen](#hdinsight-limitations)
 * IoT Hubs
@@ -145,14 +152,15 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * Notification Hubs
 * Operational Insights
 * Operations Management
+* Dashboards im Portal
 * Power BI – sowohl Power BI Embedded als auch Power BI-Arbeitsbereichssammlung
 * Öffentliche IP-Adresse – siehe [Einschränkungen der öffentlichen IP-Adresse](#pip-limitations)
 * Redis Cache
 * Scheduler
 * Suchen,
-* Server Management
 * Service Bus
 * Service Fabric
+* SignalR Service
 * Speicher
 * Speicher (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 * Stream Analytics – Stream Analytics-Aufträge können nicht verschoben werden, wenn sie ausgeführt werden.
@@ -175,20 +183,24 @@ Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht
 * Application Gateway
 * Azure Database for MySQL
 * Azure Database for PostgreSQL
-* Azure Migrate
-* BizTalk Services
+* Azure-Datenbankmigration
+* Azure Databricks
+* Batch AI
 * Certificates – App Service Certificates kann verschoben werden, hochgeladene Zertifikate haben jedoch [Einschränkungen](#app-service-limitations).
 * Container Service
-* DevTest-Labs – Das Verschieben in eine neue Ressourcengruppe im gleichen Abonnement ist möglich, ein abonnementübergreifendes Verschieben jedoch nicht.
 * Dynamics LCS
 * ExpressRoute
 * Kubernetes Service
+* Lab-Dienste: Das Verschieben in eine neue Ressourcengruppe im gleichen Abonnement ist möglich, ein abonnementübergreifendes Verschieben jedoch nicht.
 * Load Balancer – siehe [Load Balancer-Einschränkungen](#lb-limitations)
 * Verwaltete Anwendungen
 * Managed Disks – siehe [Einschränkungen von virtuellen Computern](#virtual-machines-limitations)
+* Microsoft Genomics
 * Öffentliche IP-Adresse – siehe [Einschränkungen der öffentlichen IP-Adresse](#pip-limitations)
 * Recovery Services-Tresor – Verschieben Sie außerdem nicht die dem Recovery Services-Tresor zugeordneten Compute-, Netzwerk- und Speicherressourcen. Siehe [Einschränkungen von Recovery Services](#recovery-services-limitations).
+* SAP HANA in Azure
 * Sicherheit
+* Site Recovery
 * StorSimple-Geräte-Manager
 * Virtual Networks (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 

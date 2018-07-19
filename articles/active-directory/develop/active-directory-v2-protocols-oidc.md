@@ -17,12 +17,12 @@ ms.date: 04/18/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a0cd077b1c6530c5794c92f131dffb814f5b341d
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 747ba9c51181c62b45bb060810391ca54f4c044e
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157716"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869097"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory v2.0 und das OpenID Connect-Protokoll
 OpenID Connect ist ein Authentifizierungsprotokoll auf Grundlage von OAuth 2.0, mit dem Benutzer sicher bei Webanwendungen angemeldet werden können. Die Implementierung von OpenID Connect im v2.0-Endpunkt ermöglicht es Ihnen, Anmeldungen und API-Zugriff für Ihre webbasierten Apps hinzuzufügen. In diesem Artikel erfahren Sie, wie dies unabhängig von der Sprache ausgeführt wird. Er beschreibt, wie HTTP-Nachrichten ohne Verwendung von Microsoft Open Source-Bibliotheken gesendet und empfangen werden.
@@ -85,7 +85,7 @@ Wenn die Web-App den Benutzer authentifizieren muss, kann sie ihn direkt an den 
 * Die Anforderung muss den `nonce` -Parameter enthalten.
 
 > [!IMPORTANT]
-> Zur erfolgreichen Anforderung eines ID-Token muss für die App-Registrierung im [Registrierungsportal](https://apps.dev.microsoft.com) die **[implizite Gewährung](active-directory-v2-protocols-implicit.md)** für den Webclient aktiviert sein. Wenn sie nicht aktiviert ist, wird ein `unsupported_response`-Fehler zurückgegeben: „The provided value for the input parameter 'response_type' is not allowed for this client. Expected value is 'code'". (Der angegebene Wert für den Eingabeparameter ‚response_type‘ ist für diesen Client nicht zulässig. Erwarteter Wert: ‚code‘.)
+> Zur erfolgreichen Anforderung eines ID-Token muss für die App-Registrierung im [Registrierungsportal](https://apps.dev.microsoft.com) die **[implizite Gewährung](active-directory-v2-protocols-implicit.md)** für den Webclient aktiviert sein. Wenn sie nicht aktiviert ist, wird ein Fehler des Typs `unsupported_response` zurückgegeben: „The provided value for the input parameter ‚response_type‘ is not allowed for this client. Expected value is ‚code‘“. (Der angegebene Wert für den Eingabeparameter ‚response_type‘ ist für diesen Client nicht zulässig. Erwarteter Wert: ‚code‘.)
 
 Beispiel: 
 

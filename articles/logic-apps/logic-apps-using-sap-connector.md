@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, divswa, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: a9346092e0a24709a9888937effdf802bf1b09fb
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 3837896911b92361e0a6d0a7166a1b17651d6fe3
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300214"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112859"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Herstellen einer Verbindung zu SAP-Systemen: Azure Logic Apps
 
@@ -28,7 +28,7 @@ Die aktuellen SAP-Connectors verfügen zwar über Aktionen, jedoch nicht über T
 * <a href="https://docs.microsoft.com/connectors/sapapplicationserver/" target="blank">SAP-Anwendungsserver-Connector</a>
 * <a href="https://docs.microsoft.com/connectors/sapmessageserver/" target="blank">SAP-Nachrichtenserver-Connector</a>
 
-Wenn Sie noch kein Azure-Abonnement haben, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>.
+Wenn Sie noch kein Azure-Abonnement haben, <a href="https://azure.microsoft.com/free/" target="_blank">melden Sie sich für ein kostenloses Azure-Konto an</a>.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

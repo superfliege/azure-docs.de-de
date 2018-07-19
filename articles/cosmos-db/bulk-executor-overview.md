@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 893888904b6afc583c3c20b94d08eb3255a98cad
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 7c490aa958cf9e78c260dd0fbcf7952b55d8d88c
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36303991"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096174"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB-BulkExecutor-Bibliothek – Übersicht
  
@@ -33,7 +33,7 @@ Mit der BulkExecutor-Bibliothek können Sie diese riesigen Durchsatz- und Speich
  
 * Die Bibliothek reduziert die Computeressourcen auf Clientseite, die zur vollständigen Nutzung des einem Container zugeordneten Durchsatzes erforderlich sind. Eine Singlethreadanwendung, die Daten über die Massenimport-API schreibt, erzielt einen zehnmal höheren Schreibdurchsatz im Vergleich zu einer Multithreadanwendung, die Daten parallel schreibt und gleichzeitig die CPU des Clientcomputers vollständig nutzt.  
 
-* Die Bibliothek verarbeitet die Anforderungsdrosselung, Anforderungstimeouts und andere vorübergehende Ausnahmen auf effiziente Weise, sodass Benutzer nicht mehr mühsam die Anwendungslogik dafür schreiben müssen.  
+* Die Bibliothek verarbeitet die Begrenzung der Anforderungsrate, Anforderungstimeouts und andere vorübergehende Ausnahmen auf effiziente Weise, sodass Benutzer nicht mehr mühsam die Anwendungslogik dafür schreiben müssen.  
 
 * Zudem bietet sie einen vereinfachten Mechanismus, mit dem Anwendungen Massenvorgänge zum horizontalen Hochskalieren ausführen können. Eine einzige BulkExecutor-Instanz, die auf einem virtuellen Azure-Computer ausgeführt wird, kann mehr als 500.000 Anforderungseinheiten/Sek. verbrauchen, und Sie können eine höhere Durchsatzrate erzielen, indem Sie zusätzliche Instanzen auf einzelnen virtuellen Clientcomputern hinzufügen.  
  
@@ -47,7 +47,7 @@ Wenn ein Massenvorgang zum Importieren oder Aktualisieren von Dokumenten mit ein
 
 ![BulkExecutor-Architektur](./media/bulk-executor-overview/bulk-executor-architecture.png)
 
-Die BulkExecutor-Bibliothek stellt sicher, dass der Durchsatz, der einer Sammlung zugeordnet ist, optimal genutzt wird. Sie verwendet für jeden Azure Cosmos DB-Partitionsschlüsselbereich einen  [AIMD-Steuerungsmechanismus für Überlastungen](https://tools.ietf.org/html/rfc5681), um Drosselungen und Zeitüberschreitungen effizient zu verarbeiten. 
+Die BulkExecutor-Bibliothek stellt sicher, dass der Durchsatz, der einer Sammlung zugeordnet ist, optimal genutzt wird. Sie verwendet für jeden Azure Cosmos DB-Partitionsschlüsselbereich einen  [AIMD-Steuerungsmechanismus für Überlastungen](https://tools.ietf.org/html/rfc5681), um Ratenbegrenzungen und Zeitüberschreitungen effizient zu verarbeiten. 
 
 ## <a name="next-steps"></a>Nächste Schritte 
   

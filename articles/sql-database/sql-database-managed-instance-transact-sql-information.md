@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 95eca05d695e039f59b71caa4d730f4e1f84fc97
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 80d06a6c40fa804c543a1cee9dc75b57b293beaf
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337298"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446876"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server 
 
@@ -398,9 +398,12 @@ Die folgenden Variablen, Funktionen und Sichten geben abweichende Ergebnisse zur
 
 Jede verwaltete Instanz verfügt über bis zu 35 TB Speicher für Azure Premium-Datenträger, und jede Datenbankdatei wird auf einem separaten physischen Datenträger abgelegt. Mögliche Datenträgergrößen sind 128 GB, 256 GB, 512 GB, 1 TB oder 4 TB. Nicht verwendeter Speicherplatz auf dem Datenträger wird nicht berechnet, aber die Gesamtgröße der Azure Premium-Datenträger darf 35 TB nicht überschreiten. In einigen Fällen kann eine verwaltete Instanz, die nicht insgesamt 8 TB benötigt, aufgrund interner Fragmentierung das Azure-Limit von 35 TB überschreiten. 
 
-Beispielsweise könnte eine verwaltete Instanz eine Datei mit einer Größe von 1,2 TB enthalten, die einen Datenträger mit 4 TB verwendet, und 248 Dateien mit einer Größe von je 1 GB, die auf 248 Datenträgern mit einer Größe von 128 GB abgelegt werden. In diesem Beispiel beträgt die gesamte Größe des Datenträgerspeichers 1 x 4 TB + 248 x 128 GB = 35 TB. Die insgesamt reservierte Instanzgröße für Datenbanken ist jedoch 1 x 1,2 TB + 248 x 1 GB = 1,4 TB. Dies veranschaulicht, dass eine verwaltete Instanz unter bestimmten Umständen aufgrund einer sehr spezifischen Verteilung von Dateien das Azure Premium-Datenträgerlimit erreichen kann, wo Sie es nicht erwarten. 
+Eine verwaltete Instanz könnte beispielsweise über eine Datei mit einer Größe von 1,2 TB verfügen, die auf einer 4-TB-Platte gespeichert ist, und über 248 Dateien mit einer Größe von jeweils 1 GB, die auf separaten 128-GB-Platten gespeichert sind. In diesem Beispiel 
+* beträgt die Gesamtgröße des Datenträgerspeichers 1 x 4 TB + 248 x 128 GB = 35 TB. 
+* beträgt der reservierte Gesamtspeicherplatz für Datenbanken in der Instanz 1 x 1,2 TB + 248 x 1 GB = 1,4 TB.
+Dies verdeutlicht, dass eine verwaltete Instanz unter bestimmten Umständen aufgrund einer sehr spezifischen Verteilung von Dateien das Azure Premium-Datenträgerlimit in Höhe von 35 TB erreichen kann, wo Sie dies möglicherweise nicht erwarten. 
 
-Es gibt keinen Fehler bei bestehenden Datenbanken, und sie können problemlos erweitert werden, wenn keine neuen Dateien hinzugefügt werden. Aber die neuen Datenbanken können nicht erstellt oder wiederhergestellt werden, da nicht genügend Speicherplatz für neue Laufwerke vorhanden ist, selbst wenn die Gesamtgröße aller Datenbanken nicht das Limit der Instanzgröße erreicht. Der Fehler, der in diesem Fall zurückgegeben wird, ist nicht klar.
+In diesem Beispiel funktionieren vorhandene Datenbanken weiterhin und können ohne Probleme weiter wachsen, solange keine neuen Dateien hinzugefügt werden. Es könnten jedoch keine neuen Datenbanken erstellt oder wiederhergestellt werden, da für neue Plattenlaufwerke nicht genügend Speicherplatz vorhanden ist, selbst nicht dann, wenn die Gesamtgröße aller Datenbanken das Größenlimit der Instanz nicht überschreitet. Der Fehler, der in diesem Fall zurückgegeben wird, ist nicht klar.
 
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>Falsche Konfiguration des SAS-Schlüssels bei der Datenbankwiederherstellung
 

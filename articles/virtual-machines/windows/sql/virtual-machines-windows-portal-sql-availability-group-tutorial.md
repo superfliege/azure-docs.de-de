@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 40a8cd256164bb66e82c651e58d37b1afbb4a652
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: a3bba4e8fd83b160472a2dc6a9425192b4bbd301
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287802"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38531578"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Manuelles Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf virtuellen Azure-Computern
 
@@ -86,7 +86,7 @@ Wenn die Voraussetzungen erfüllt sind, müssen Sie zunächst einen Windows Serv
 
    ![Eigenschaften des Clusters](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/42_IPProperties.png)
 
-3. Wählen Sie **Statische IP-Adresse** aus, und geben Sie eine verfügbare Adresse aus dem APIPA-Bereich (automatische Privat-IP-Adressierung) 169.254.0.1 bis 169.254.255.254 im Textfeld „Adresse“ ein. In diesem Beispiel können Sie eine beliebige Adresse in diesem Bereich verwenden. Beispiel: `169.254.0.1`. Klicken Sie dann auf **OK**.
+3. Wählen Sie **Statische IP-Adresse** aus, und geben Sie eine verfügbare Adresse aus dem gleichen Subnetz an, das auch Ihre virtuellen Computer enthält.
 
 4. Klicken Sie im Abschnitt **Hauptressourcen des Clusters** mit der rechten Maustaste auf den Clusternamen, und klicken Sie anschließend auf **Online schalten**. Warten Sie dann, bis beide Ressourcen online sind. Wenn die Clusternamensressource online ist, aktualisiert sie den DC-Server mit einem neuen AD-Computerkonto. Verwenden Sie dieses AD-Konto zum späteren Ausführen des Clusterdiensts der Verfügbarkeitsgruppe.
 
@@ -341,7 +341,7 @@ Sie verfügen nun über eine Verfügbarkeitsgruppe mit Replikaten in zwei Instan
 
 ## <a name="create-an-azure-load-balancer"></a>Erstellen einer Azure Load Balancer-Instanz
 
-Auf virtuellen Azure-Computern benötigt eine SQL Server-Verfügbarkeitsgruppe einen Lastenausgleich. Der Lastenausgleich speichert die IP-Adresse für den Verfügbarkeitsgruppenlistener. In diesem Abschnitt erfahren Sie, wie Sie den Lastenausgleich über das Azure-Portal erstellen.
+Auf virtuellen Azure-Computern benötigt eine SQL Server-Verfügbarkeitsgruppe einen Lastenausgleich. Der Lastenausgleich speichert die IP-Adressen für die Verfügbarkeitsgruppenlistener und den Windows Server-Failovercluster. In diesem Abschnitt erfahren Sie, wie Sie den Lastenausgleich über das Azure-Portal erstellen.
 
 1. Navigieren Sie im Azure-Portal zu der Ressourcengruppe mit Ihren SQL Server-Instanzen, und klicken Sie auf **+ Hinzufügen**.
 2. Suchen Sie nach **Load Balancer**. Wählen Sie den von Microsoft veröffentlichten Lastenausgleich aus.
@@ -370,7 +370,7 @@ Auf virtuellen Azure-Computern benötigt eine SQL Server-Verfügbarkeitsgruppe e
 
 Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen Test erstellen und die Lastenausgleichsregeln festlegen. Führen Sie diese Schritte im Azure-Portal aus.
 
-### <a name="add-backend-pool"></a>Hinzufügen eines Back-End-Pools
+### <a name="add-backend-pool-for-the-availability-group-listener"></a>Hinzufügen eines Back-End-Pools für den Verfügbarkeitsgruppenlistener
 
 1. Navigieren Sie im Azure-Portal zu Ihrer Verfügbarkeitsgruppe. Unter Umständen müssen Sie die Ansicht aktualisieren, damit der neu erstellte Lastenausgleich angezeigt wird.
 
@@ -416,6 +416,46 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
    | **Port** | Verwenden des Ports für den Verfügbarkeitsgruppenlistener | 1435 |
    | **Back-End-Port** | Dieses Feld wird nicht verwendet, wenn für Direct Server Return die Option „Floating IP“ festgelegt ist. | 1435 |
    | **Test** |Der Name, den Sie für den Test angegeben haben. | SQLAlwaysOnEndPointProbe |
+   | **Session Persistence** (Sitzungspersistenz) | Dropdownliste | **Keine** |
+   | **Leerlauftimeout** | Gibt an, wie viele Minuten eine TCP-Verbindung geöffnet bleiben soll. | 4 |
+   | **Floating IP (Direct Server Return)** | |Aktiviert |
+
+   > [!WARNING]
+   > Direct Server Return wird bei der Erstellung festgelegt. Diese Einstellung kann nicht geändert werden.
+
+1. Klicken Sie auf **OK**, um die Lastenausgleichsregeln festzulegen.
+
+### <a name="add-the-front-end-ip-address-for-the-wsfc"></a>Hinzufügen der Front-End-IP-Adresse für den WSFC
+
+Die WSFC IP-Adresse muss auf dem Lastenausgleich ebenfalls vorhanden sein. 
+
+1. Fügen Sie im Portal eine neue Frontend-IP-Konfiguration für den WSFC hinzu. Verwenden Sie die IP-Adresse, die Sie für den WSFC in den Hauptressourcen des Clusters konfiguriert haben. Legen Sie die IP-Adresse als statisch fest. 
+
+1. Klicken Sie auf den Lastenausgleich, auf **Integritätstests** und anschließend auf **+ Hinzufügen**.
+
+1. Konfigurieren Sie den Integritätstest wie folgt:
+
+   | Einstellung | BESCHREIBUNG | Beispiel
+   | --- | --- |---
+   | **Name** | Text | WSFCEndPointProbe |
+   | **Protokoll** | Wählen Sie „TCP“ aus. | TCP |
+   | **Port** | Ein beliebiger nicht verwendeter Port. | 58888 |
+   | **Intervall**  | Der Zeitraum zwischen Testversuchen in Sekunden. |5 |
+   | **Fehlerhafter Schwellenwert** | Die Anzahl aufeinander folgender Testfehler, die auftreten müssen, damit ein virtueller Computer als fehlerhaft eingestuft wird.  | 2 |
+
+1. Klicken Sie auf **OK**, um den Integritätstest zu verwenden.
+
+1. Legen Sie die Lastenausgleichsregeln fest. Klicken Sie auf **Lastenausgleichsregeln** und auf **+Hinzufügen**.
+
+1. Konfigurieren Sie die Lastenausgleichsregeln wie folgt:
+   | Einstellung | BESCHREIBUNG | Beispiel
+   | --- | --- |---
+   | **Name** | Text | WSFCPointListener |
+   | **Frontend IP address** (Front-End-IP-Adresse) | Wählen Sie eine Adresse aus. |Verwenden Sie die Adresse, die Sie beim Konfigurieren der WSFC-IP-Adresse erstellt haben. |
+   | **Protokoll** | Wählen Sie „TCP“ aus. |TCP |
+   | **Port** | Verwenden des Ports für den Verfügbarkeitsgruppenlistener | 58888 |
+   | **Back-End-Port** | Dieses Feld wird nicht verwendet, wenn für Direct Server Return die Option „Floating IP“ festgelegt ist. | 58888 |
+   | **Test** |Der Name, den Sie für den Test angegeben haben. | WSFCEndPointProbe |
    | **Session Persistence** (Sitzungspersistenz) | Dropdownliste | **Keine** |
    | **Leerlauftimeout** | Gibt an, wie viele Minuten eine TCP-Verbindung geöffnet bleiben soll. | 4 |
    | **Floating IP (Direct Server Return)** | |Aktiviert |

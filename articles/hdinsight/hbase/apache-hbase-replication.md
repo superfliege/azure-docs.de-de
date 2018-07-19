@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: jgao
-ms.openlocfilehash: 56b2b5ae9d3e4a0e682ec3dd47cd5cc30ebf6d58
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: f0367b67f141ca65ce2374722016d0fbea6c97d1
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34077325"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951120"
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Einrichten der HBase-Clusterreplikation in virtuellen Azure-Netzwerken
 
@@ -62,7 +62,7 @@ Um Ihnen die Einrichtung der Umgebungen zu erleichtern, haben wir einige [Azure 
 
 ### <a name="set-up-two-virtual-networks-in-two-different-regions"></a>Einrichten von zwei virtuellen Netzwerken in zwei verschiedenen Regionen
 
-Wählen Sie das folgende Bild, um zwei virtuelle Netzwerke in zwei verschiedenen Regionen und die VPN-Verbindung zwischen den VNets zu erstellen. Die Vorlage befindet sich in einem [öffentlichen Blobcontainer]](https://hditutorialdata.blob.core.windows.net/hbaseha/azuredeploy.json).
+Um eine Vorlage zu verwenden, die zwei virtuelle Netzwerke in zwei verschiedenen Regionen und die VPN-Verbindung zwischen den VNets zu erstellen, wählen Sie die folgende Schaltfläche **In Azure bereitstellen** aus. Die Vorlagendefinition befindet sich in einem [öffentlichen Blob-Speicher](https://hditutorialdata.blob.core.windows.net/hbaseha/azuredeploy.json).
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
@@ -187,7 +187,7 @@ Gehen Sie zur Installation von Bind wie folgt vor:
 
     Der Text `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` ist das __DNS-Suffix__ für dieses virtuelle Netzwerk. Speichern Sie diesen Wert, da er später wieder verwendet wird.
 
-    Zudem müssen Sie das DNS-Suffix von dem anderen DNS-Server ermitteln. Sie benötigen es im nächsten Schritt.
+    Zudem müssen Sie das DNS-Suffix von dem anderen DNS-Server ermitteln. Sie benötigen sie im nächsten Schritt.
 
 5. Um Bind zum Auflösen von DNS-Namen für Ressourcen innerhalb des virtuellen Netzwerks zu konfigurieren, verwenden Sie den folgenden Text als Inhalt der Datei `/etc/bind/named.conf.local`:
 

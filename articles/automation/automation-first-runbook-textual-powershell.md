@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9fe9d98b694b8c42f3342e615d92fae9824dca26
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 2f5d2f3634545001dc6dc1419530223b5a1a85a3
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195147"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435790"
 ---
 # <a name="my-first-powershell-runbook"></a>Mein erstes PowerShell-Runbook
 
@@ -88,13 +88,16 @@ Sie haben Ihr Runbook inzwischen zwar getestet und veröffentlicht, bislang ist 
 1. Öffnen Sie den Text-Editor, indem Sie auf der Seite „MyFirstRunbook-PowerShell“ auf **Bearbeiten** klicken.
 2. Die Zeile **Write-Output** wird nicht mehr benötigt, also löschen Sie sie.
 3. Geben Sie den folgenden Code ein (oder fügen Sie ihn ein). Dieser Code ist für die Authentifizierung bei Ihrem ausführenden Konto für Automation zuständig:
-   
-   ```
+
+   ```powershell
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
    Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID `
    -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
    ```
-   <br>
+
+   > [!IMPORTANT]
+   > **Add-AzureRmAccount** und **Login-AzureRmAccount** sind nun Aliase für **Connect-AzureRMAccount**. Wenn das Cmdlet **Connect-AzureRMAccount** nicht vorhanden ist, können Sie **Add-AzureRmAccount** oder **Login-AzureRmAccount** verwenden, oder Sie können Ihre Module in Ihrem Automation-Konto auf die neuesten Versionen aktualisieren.
+
 4. Klicken Sie auf den **Testbereich**, um das Runbook zu testen.
 5. Klicken Sie auf **Starten** , um den Test zu starten. Nach Abschluss des Tests erhalten Sie in der Regel eine Ausgabe wie in der Abbildung unten mit allgemeinen Informationen aus Ihrem Konto. Auf diese Weise wird bestätigt, dass die Anmeldeinformationen gültig sind.<br><br> ![Authentifizieren](media/automation-first-runbook-textual-powershell/runbook-auth-output.png)
 

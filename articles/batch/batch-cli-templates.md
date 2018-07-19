@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: big-compute
 ms.date: 12/18/2017
 ms.author: markscu
-ms.openlocfilehash: 565ceb179d8cf749842bb58ab25a8b3d946efa12
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4dd9218b982860e62e04b46fb5d07e5553407599
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608646"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130851"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>Verwenden von Azure Batch-CLI-Vorlagen und Dateiübertragung (Vorschau)
 
@@ -258,7 +258,7 @@ Mit Pool- und Auftragsvorlagen können in Dateigruppen gespeicherte Dateien ange
 
 Unterstützung für Vorlagen und die Dateiübertragung wurde derzeit nur zur Azure CLI hinzugefügt. Das Ziel besteht darin, die Zielgruppe, die Batch verwenden kann, auf Benutzer zu erweitern, die keine Codes mithilfe der Batch-APIs entwickeln müssen, wie u.a. Forscher und IT-Benutzer. So können Benutzer mit Kenntnissen in Azure, Batch und den von Batch auszuführenden Anwendungen ohne Codierung Vorlagen für die Erstellung von Pools und Aufträgen erstellen. Mit Vorlagenparametern können Benutzer ohne fundierte Kenntnisse in Batch und den Anwendungen Vorlagen verwenden.
 
-Testen Sie die Batch-Erweiterung für die Azure CLI, und teilen Sie uns Ihr Feedback und Ihre Vorschläge mit. Dies können Sie entweder über die Kommentarfunktion dieses Artikels oder das [Azure Batch-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch) tun.
+Testen Sie die Batch-Erweiterung für die Azure CLI, und teilen Sie uns Ihr Feedback und Ihre Vorschläge mit. Dies können Sie entweder über die Kommentarfunktion dieses Artikels oder das [Batch-Community-Repository](https://github.com/Azure/Batch) tun.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

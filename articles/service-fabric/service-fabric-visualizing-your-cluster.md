@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: mikhegn
-ms.openlocfilehash: 916742d89447af4097d37b5d78e97ff86c12834c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 459dd86fd614cb185801b074cea70c36dc7f6ccb
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210180"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972331"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Visualisieren Ihres Clusters mit Service Fabric Explorer
 
-Bei Service Fabric Explorer (SFX) handelt es sich um ein Open Source-Tool zum Untersuchen und Verwalten von Azure Service Fabric-Clustern. Service Fabric Explorer ist eine Desktopanwendung für Windows und Linux. Die Unterstützung für macOS ist bereits in Arbeit.
+Bei Service Fabric Explorer (SFX) handelt es sich um ein Open Source-Tool zum Untersuchen und Verwalten von Azure Service Fabric-Clustern. Service Fabric Explorer ist eine Desktopanwendung für Windows, macOS und Linux.
 
 ## <a name="service-fabric-explorer-download"></a>Herunterladen von Service Fabric Explorer
 

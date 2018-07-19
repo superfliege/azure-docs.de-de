@@ -12,29 +12,27 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 06/29/2018
 ms.author: anwestg
-ms.openlocfilehash: 42adef66fb1b1141ab44aab3a1ccdaae022202b5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ce57e153dcab6a386150ebefe1ecb4a018514247
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32150973"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130369"
 ---
 # <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>Weiterverteilen von Azure App Service in Azure Stack in Fehlerdomänen
 
 *Gilt für: Integrierte Azure Stack-Systeme*
 
-Mit dem Update 1802 unterstützt Azure Stack ab sofort die Verteilung von Workloads an Fehlerdomänen, ein Feature, das für die Bereitstellung von Hochverfügbarkeit von entscheidender Bedeutung ist.
+Mit dem Update 1802 unterstützt Azure Stack ab sofort die Verteilung von Arbeitsauslastungen an Fehlerdomänen, ein Feature, das für die Bereitstellung von Hochverfügbarkeit von entscheidender Bedeutung ist.
 
-> [!IMPORTANT]
-> Sie müssen Ihr in Azure Stack integriertes System auf 1802 aktualisiert haben, um von der Unterstützung für Fehlerdomänen profitieren zu können.  Dieses Dokument gilt nur für Bereitstellungen von App Service-Ressourcenanbietern, die vor dem Update 1802 durchgeführt wurden.  Wenn Sie App Service in Azure Stack bereitgestellt haben, nachdem das Update 1802 auf Azure Stack angewendet wurde, wurde der Ressourcenanbieter bereits an die Fehlerdomänen verteilt.
->
->
+>[!IMPORTANT]
+>Sie müssen Ihr in Azure Stack integriertes System auf 1802 aktualisieren, um von der Unterstützung für Fehlerdomänen profitieren zu können. Dieses Dokument gilt nur für Bereitstellungen von App Service-Ressourcenanbietern, die vor dem Update 1802 abgeschlossen wurden. Wenn Sie App Service in Azure Stack bereitgestellt haben, nachdem das Update 1802 auf Azure Stack angewendet wurde, wurde der Ressourcenanbieter bereits an die Fehlerdomänen verteilt.
 
 ## <a name="rebalance-an-app-service-resource-provider-across-fault-domains"></a>Ausgleichen eines App Service-Ressourcenanbieters über mehrere Fehlerdomänen hinweg
 
-Um die für den App Service-Ressourcenanbieter bereitgestellten Skalierungsgruppen neu zu verteilen, müssen Sie für jede Skalierungsgruppe die folgenden Schritte durchführen.  Standardmäßig lauten die Namen der Skalierungsgruppen wie folgt:
+Für die Neuverteilung der für den App Service-Ressourcenanbieter bereitgestellten Skalierungsgruppen müssen Sie für jede Skalierungsgruppe die Schritte in diesem Artikel durchführen. Standardmäßig lauten die Namen der Skalierungsgruppen wie folgt:
 
 * ManagementServersScaleSet
 * FrontEndsScaleSet
@@ -44,39 +42,40 @@ Um die für den App Service-Ressourcenanbieter bereitgestellten Skalierungsgrupp
 * MediumWorkerTierScaleSet
 * LargeWorkerTierScaleSet
 
-> [!NOTE]
-> Wenn keine Instanzen in den Skalierungsgruppen im Workertarif bereitgestellt wurden, müssen Sie diese Skalierungsgruppen nicht erneut ausgleichen.  Die Skalierungsgruppen werden ordnungsgemäß ausgeglichen, wenn Sie sie in Zukunft horizontal hoch skalieren.
->
->
+>[!NOTE]
+> Wenn Sie keine Instanzen in den Skalierungsgruppen im Workertarif bereitgestellt haben, müssen Sie diese Skalierungsgruppen nicht erneut ausgleichen. Die Skalierungsgruppen werden ordnungsgemäß ausgeglichen, wenn Sie sie in Zukunft horizontal hoch skalieren.
 
-1. Navigieren Sie im Azure Stack-Administratorportal zu „VM-Skalierungsgruppen“.  Vorhandene Skalierungsgruppen, die im Rahmen der App Service-Bereitstellung bereitgestellt wurden, werden unter Angabe der Anzahl der Instanzen aufgeführt.
+Führen Sie die folgenden Schritte aus, um die Skalierungsgruppen horizontal hochzuskalieren:
 
-    ![Auf der Benutzeroberfläche „VM-Skalierungsgruppen“ aufgeführte Azure App Service-Skalierungsgruppen][1]
+1. Melden Sie sich beim Azure Stack-Administratorportal an.
+2. Wählen Sie **Weitere Dienste**.
+3. Wählen Sie unter „COMPUTE“ die Option **Skalierungsgruppen für virtuelle Computer** aus. Vorhandene Skalierungsgruppen, die im Rahmen der App Service-Bereitstellung bereitgestellt wurden, werden unter Angabe der Anzahl der Instanzen aufgeführt. Die folgende Bildschirmaufnahme zeigt ein Beispiel für Skalierungsgruppen.
 
-2. Skalieren Sie anschließend jede Gruppe horizontal hoch.  Wenn beispielsweise drei Instanzen in der Skalierungsgruppe enthalten sind, müssen Sie sie auf 6 horizontal hochskalieren, damit die drei neuen Instanzen für die Fehlerdomänen bereitgestellt werden.
-    a. [Einrichten der Azure Stack-Administratorumgebung in PowerShell](azure-stack-powershell-configure-admin.md) b. Verwenden Sie dieses Beispiel, um die Skalierungsgruppe horizontal hochzuskalieren:
-        ```powershell
-                Add-AzureRmAccount -EnvironmentName AzureStackAdmin 
+      ![Auf der Benutzeroberfläche „VM-Skalierungsgruppen“ aufgeführte Azure App Service-Skalierungsgruppen][1]
 
-                # Get current scale set
-                $vmss = Get-AzureRmVmss -ResourceGroupName "AppService.local" -VMScaleSetName "SmallWorkerTierScaleSet"
+4. Skalieren Sie die einzelnen Gruppen horizontal hoch. Wenn Sie beispielsweise über drei Instanzen in der Skalierungsgruppe verfügen, müssen Sie diese auf 6 horizontal hochskalieren, damit die drei neuen Instanzen für die Fehlerdomänen bereitgestellt werden. Im folgenden PowerShell-Beispiel wird veranschaulicht, wie die Skalierungsgruppe horizontal hochskaliert wird.
 
-                # Set and update the capacity of your scale set
-                $vmss.sku.capacity = 6
-                Update-AzureRmVmss -ResourceGroupName "AppService.local" -Name "SmallWorkerTierScaleSet" -VirtualMachineScaleSet $vmss
-        '''
-> [!NOTE]
-> Es kann je nach Typ der Rolle und der Anzahl von Instanzen einigen Stunden dauern, bis dieser Schritt abgeschlossen ist.
->
->
+   ```powershell
+   Add-AzureRmAccount -EnvironmentName AzureStackAdmin 
 
-3. Überwachen Sie auf dem Blatt „App Service-Verwaltungsrollen“ den Status der neuen Rolleninstanzen.  Überprüfen Sie den Status einer einzelnen Rolleninstanz, indem Sie in der Liste auf den jeweiligen Rollentyp klicken.
+   # Get current scale set
+   $vmss = Get-AzureRmVmss -ResourceGroupName "AppService.local" -VMScaleSetName "SmallWorkerTierScaleSet"
+
+   # Set and update the capacity of your scale set
+   $vmss.sku.capacity = 6
+   Update-AzureRmVmss -ResourceGroupName AppService.local" -Name "SmallWorkerTierScaleSet" -VirtualMachineScaleSet $vmss
+   ```
+
+   >[!NOTE]
+   >Es kann je nach Typ der Rolle und der Anzahl von Instanzen mehrere Stunden dauern, bis dieser Schritt abgeschlossen ist.
+
+5. Überwachen Sie unter **App Service-Verwaltungsrollen** den Status der neuen Rolleninstanzen. Wählen Sie zur Überprüfung des Status einer Rolleninstanz den Rollentyp in der Liste aus
 
     ![Azure App Service in Azure Stack-Rollen][2]
 
-4. Sobald neue Instanzen in den Status **Bereit** wechseln, kehren Sie zum Blatt „VM-Skalierungsgruppe“ zurück, und **löschen** Sie alte Instanzen.
+6. Wenn der Status der neuen Rolleninstanzen **Bereit** lautet, wechseln Sie wieder zur **VM-Skalierungsgruppe** und **löschen** Sie die alten Rolleninstanzen.
 
-5. Wiederholen Sie diese Schritte für **jede** VM-Skalierungsgruppe.
+7. Wiederholen Sie diese Schritte für **jede** VM-Skalierungsgruppe.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

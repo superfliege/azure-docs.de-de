@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines lokalen Images eines virtuellen Computers für den Azure Marketplace | Microsoft-Dokumentation
+title: Erstellen eines lokalen Images eines virtuellen Computers für den Azure Marketplace | Microsoft Docs
 description: Informationen über die Schritte zum Erstellen eines lokalen Images eines virtuellen Computers und zur Bereitstellung für den Kauf im Azure Marketplace.
 services: marketplace-publishing
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: mbaldwin
-ms.openlocfilehash: 6b927ce6032092ce258eeebca49da0571439dbfb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 58be44e05a0b293b1f8f200cb01b4a483bae10b2
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29944430"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006511"
 ---
 # <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>Entwickeln eines lokalen Images eines virtuellen Computers für Azure Marketplace
 Es wird dringend empfohlen, virtuelle Azure-Festplatten (Azure-VHDs) direkt in der Cloud mithilfe des Remotedesktopprotokolls zu entwickeln. Bei Bedarf ist es jedoch auch möglich, eine VHD herunterzuladen und mithilfe lokaler Infrastruktur zu entwickeln.  
@@ -117,7 +117,7 @@ Erstellen Sie per PowerShell mit dem Cmdlet [New-AzureStorageAccount](http://msd
 
         New-AzureStorageAccount -StorageAccountName “mystorageaccount” -Location “West US”
 
-Erstellen Sie anschließend mit dem Cmdlet [NewAzureStorageContainer](http://msdn.microsoft.com/library/dn495291.aspx) einen Container in diesem Speicherkonto.
+Erstellen Sie anschließend mit dem Cmdlet [NewAzureStorageContainer](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer) einen Container in diesem Speicherkonto.
 
         New-AzureStorageContainer -Name “containername” -Permission “Off”
 

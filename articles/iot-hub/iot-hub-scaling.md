@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: d77953100bb7007553cf1c5ab00b9cdafea281e9
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: b4c5bf3b11c2ee661d95dc50f5c93e12fe2d56bf
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030436"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901040"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wählen des richtigen IoT Hub-Tarifs für Ihre Lösung
 
@@ -31,7 +31,7 @@ Jeder IoT Hub-Tarif ist in drei Größen verfügbar. Die Größe richtet sich da
 
 Im Standard-Tarif von IoT Hub können alle Features genutzt werden. Er ist für alle IoT-Lösungen erforderlich, für die die Funktionen für die bidirektionale Kommunikation verwendet werden sollen. Im Basic-Tarif ist ein Teil der Features aktiviert. Dieser Tarif ist für IoT-Lösungen bestimmt, für die nur die unidirektionale Kommunikation von Geräten in die Cloud erforderlich ist. Beide Tarife verfügen über die gleichen Sicherheits- und Authentifizierungsfeatures.
 
-Nachdem Sie Ihre IoT Hub-Instanz erstellt haben, können Sie ein Upgrade vom Basic-Tarif in den Standard-Tarif durchführen, ohne Ihre vorhandenen Vorgänge zu unterbrechen. Weitere Informationen finden Sie unter [How to upgrade your IoT hub](iot-hub-upgrade.md) (Durchführen eines Upgrades für Ihren IoT Hub).
+Nachdem Sie Ihre IoT Hub-Instanz erstellt haben, können Sie ein Upgrade vom Basic-Tarif in den Standard-Tarif durchführen, ohne Ihre vorhandenen Vorgänge zu unterbrechen. Weitere Informationen finden Sie unter [How to upgrade your IoT hub](iot-hub-upgrade.md) (Durchführen eines Upgrades für Ihren IoT Hub). Beachten Sie, dass die Partitionsgrenze für IoT Hub im Basic-Tarif bei 8 liegt. Dieser Grenzwert ändert sich nicht, wenn Sie vom Basic-Tarif zum Standard-Tarif migrieren.
 
 | Funktion | Basic-Tarif | Standard-Tarif |
 | ---------- | ---------- | ------------- |
@@ -43,7 +43,7 @@ Nachdem Sie Ihre IoT Hub-Instanz erstellt haben, können Sie ein Upgrade vom Bas
 | [Überwachung und Diagnose](iot-hub-monitor-resource-health.md) | Ja | Ja |
 | [Cloud-zu-Gerät-Messaging](iot-hub-devguide-c2d-guidance.md) |   | Ja |
 | [Gerätezwillinge](iot-hub-devguide-device-twins.md), [Modulzwillinge](iot-hub-devguide-module-twins.md) und [Geräteverwaltung](iot-hub-device-management-overview.md) |   | Ja |
-| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Ja |
+| [Azure IoT Edge](../iot-edge/how-iot-edge-works.md) |   | Ja |
 
 Es gibt auch einen kostenlosen Tarif (Free-Tarif) für IoT Hub, der für Tests und Evaluierungen bestimmt ist. Er verfügt über alle Funktionen des Standard-Tarifs, aber das Messaging ist eingeschränkt. Ein Upgrade aus dem Free-Tarif in den Basic- oder Standard-Tarif ist nicht möglich. 
 
@@ -59,9 +59,9 @@ Der Unterschied zwischen den unterstützten Funktionen zwischen dem Basic- und d
 | Modul abrufen | Ja | Ja |
 | [Registrierungsstatistiken abrufen](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getdeviceregistrystatistics) | Ja | Ja |
 | [Dienststatistiken abrufen](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getservicestatistics) | Ja | Ja |
-| [Gerät erstellen oder aktualisieren](https://docs.microsoft.com/rest/api/iothub/service/service/createorupdatedevice) | Ja | Ja |
+| [„Put“ für Gerät durchführen](https://docs.microsoft.com/rest/api/iothub/deviceapi/putdevice) | Ja | Ja |
 | „Put“ für Modul durchführen | Ja | Ja |
-| [IoT Hub abfragen](https://docs.microsoft.com/rest/api/iothub/service/service/queryiothub) | Ja | Ja |
+| [Geräte abfragen](https://docs.microsoft.com/rest/api/iothub/deviceapi/querydevices) | Ja | Ja |
 | Module abfragen | Ja | Ja |
 | [SAS-URI für Dateiupload erstellen](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/createfileuploadsasuri) | Ja | Ja |
 | [Gerätegebundene Benachrichtigung empfangen](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/receivedeviceboundnotification) | Ja | Ja |

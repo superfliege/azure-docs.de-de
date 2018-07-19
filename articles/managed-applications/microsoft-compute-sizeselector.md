@@ -11,20 +11,27 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: d1b4974c78a5cdb7b4eb885797319b283be2d393
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 9009d29e281ace179ad1dd2021c7cf35e3dc611a
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260839"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084806"
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Benutzeroberflächenelement „Microsoft.Compute.SizeSelector“
 Ein Steuerelement zum Auswählen einer Größe für VM-Instanzen.
 
 ## <a name="ui-sample"></a>Benutzeroberflächenbeispiel
+
+Der Benutzer sieht eine Auswahl mit Standardwerten aus der Elementdefinition.
+
 ![Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft.compute.sizeselector.png)
+
+Nach dem Auswählen des Steuerelements sieht der Benutzer eine erweiterte Ansicht der verfügbaren Größen.
+
+![Microsoft.Compute.SizeSelector, erweitert](./media/managed-application-elements/microsoft.compute.sizeselector-expanded.png)
 
 ## <a name="schema"></a>Schema
 ```json
@@ -44,6 +51,9 @@ Ein Steuerelement zum Auswählen einer Größe für VM-Instanzen.
     "numAvailabilityZonesRequired": 3,
     "zone": "3"
   },
+  "options": {
+    "hideDiskTypeFilter": false
+  },
   "osPlatform": "Windows",
   "imageReference": {
     "publisher": "MicrosoftWindowsServer",
@@ -56,14 +66,14 @@ Ein Steuerelement zum Auswählen einer Größe für VM-Instanzen.
 ```
 
 ## <a name="remarks"></a>Anmerkungen
-- `recommendedSizes` muss mindestens eine Größe enthalten. Die erste empfohlene Größe wird als Standardwert verwendet.
+- `recommendedSizes` muss mindestens eine Größe aufweisen. Die erste empfohlene Größe wird als Standardwert verwendet. Die Liste der verfügbaren Größen ist nicht nach dem empfohlenen Status sortiert. Der Benutzer kann die Spalte auswählen, um sie nach dem empfohlenen Status zu sortieren.
 - Wenn eine empfohlene Größe am ausgewählten Standort nicht verfügbar ist, wird die Größe automatisch übersprungen. Stattdessen wird die nächste empfohlene Größe verwendet.
-- Alle nicht in `constraints.allowedSizes` angegebenen Größen werden ausgeblendet, und nicht in `constraints.excludedSizes` angegebene Größen werden angezeigt.
-`constraints.allowedSizes` und `constraints.excludedSizes` sind optional, können jedoch nicht gleichzeitig angegeben werden. Die Liste der verfügbaren Größen kann mithilfe der Informationen unter [List available virtual machine sizes for a subscription](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region) (Auflisten verfügbarer VM-Größen für ein Abonnement) abgerufen werden.
+- `constraints.allowedSizes` und `constraints.excludedSizes` sind optional, können jedoch nicht gleichzeitig angegeben werden. Die Liste der verfügbaren Größen kann mithilfe der Informationen unter [List available virtual machine sizes for a subscription](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region) (Auflisten verfügbarer VM-Größen für ein Abonnement) abgerufen werden. Alle nicht in `constraints.allowedSizes` angegebenen Größen werden ausgeblendet, und nicht in `constraints.excludedSizes` angegebene Größen werden angezeigt.
 - `osPlatform` muss angegeben werden. Mögliche Optionen: **Windows** oder **Linux**. Damit werden die Hardwarekosten der virtuellen Computer ermittelt.
 - `imageReference` wird für Images von Erstanbietern ausgelassen, für Images von Drittanbietern jedoch angegeben. Damit werden die Softwarekosten der virtuellen Computer ermittelt.
 - `count` dient zum Festlegen des entsprechenden Multiplikators für das Element. Das Element unterstützt einen statischen Wert wie **2** oder einen dynamischen Wert aus einem anderen Element, etwa `[steps('step1').vmCount]`. Der Standardwert ist **1**.
 - Für `numAvailabilityZonesRequired` kann 1, 2 oder 3 festgelegt werden.
+- `hideDiskTypeFilter` ist standardmäßig auf **false** festgelegt. Mit dem Filter für den Datenträgertyp kann der Benutzer alle Datenträgertypen oder nur SSD anzeigen.
 
 ## <a name="sample-output"></a>Beispielausgabe
 ```json

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/24/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 61369fbf864db28ee0a9415bbb87dca2a185ed43
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 2480ad464f2fc716cf68672387a189aeb92f5737
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809674"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918831"
 ---
 # <a name="sap-hana-on-azure-operations-guide"></a>SAP HANA in Azure-Vorgängen – Anleitung
 Dieses Dokument enthält Anleitungen für den Betrieb von SAP HANA-Systemen, die auf nativen virtuellen Azure-Computern bereitgestellt werden. Dieses Dokument ist nicht als Ersatz für die SAP-Standarddokumentation gedacht, zu der folgende Inhalte gehören:
@@ -79,7 +79,7 @@ Eine Liste der Speichertypen und deren Vereinbarungen zum Servicelevel für IOPS
 
 ### <a name="configuring-the-storage-for-azure-virtual-machines"></a>Konfigurieren des Speichers für virtuelle Computer in Azure
 
-Wenn Sie SAP HANA-Einheiten nur für die lokale Nutzung gekauft haben, mussten Sie sich keine Gedanken über die E/A-Subsysteme und die zugehörigen Funktionen machen, da der Hersteller des Geräts sicherstellen muss, dass die minimalen Speicheranforderungen für SAP HANA erfüllt sind. Wenn Sie die Azure-Infrastruktur selbst erstellen, sollten Sie auch einige dieser Anforderungen kennen, um die Konfigurationsanforderungen zu verstehen, die in den folgenden Abschnitten empfohlen werden. Dies gilt auch, falls Sie die virtuellen Computer konfigurieren, auf denen Sie SAP HANA ausführen möchten. Einige der geforderten Merkmale ergeben sich durch folgende Notwendigkeiten:
+Solange Sie SAP HANA-Appliances für Ihr lokales System gekauft haben, brauchten Sie sich über die E/A-Subsysteme und ihre Funktionen keine Gedanken zu machen, da der Anbieter der Appliance sicherzustellen hatte, dass die minimalen Speicheranforderungen für SAP HANA erfüllt wurden. Wenn Sie die Azure-Infrastruktur selbst erstellen, sollten Sie auch einige dieser Anforderungen kennen, um die Konfigurationsanforderungen zu verstehen, die in den folgenden Abschnitten empfohlen werden. Dies gilt auch, falls Sie die virtuellen Computer konfigurieren, auf denen Sie SAP HANA ausführen möchten. Einige der geforderten Merkmale ergeben sich durch folgende Notwendigkeiten:
 
 - Aktivieren des Lese-/Schreibvolumes in „/hana/log“ mit mindestens 250 MB/s bei E/A-Größen von 1 MB
 - Aktivieren der Leseaktivität mit mindestens 400 MB/s in „/hana/data“ bei E/A-Größen von 16 MB und 64 MB
@@ -95,7 +95,20 @@ Da geringe Speicherlatenz wichtig für DBMS-Systeme ist, auch für solche wie SA
 
 Das Kumulieren einer Reihe von Azure-VHDs unter einem RAID-Volume ist für den IOPS- und Speicherdurchsatz kumulativ. Wenn Sie also ein RAID 0-Volume über drei Azure Storage Premium-P30-Datenträgern platzieren, erhalten Sie den dreifachen IOPS- und den dreifachen Speicherdurchsatz eines einzelnen Azure Storage Premium-P30-Datenträgers.
 
-Konfigurieren Sie kein Storage Premium-Zwischenspeichern auf den Datenträgern, die für „/hana/data“ und „/hana/log“ verwendet werden. Auf allen Datenträgern, die diese Volumes erstellen, muss das Zwischenspeichern dieser Datenträger auf „Kein“ festgelegt sein.
+Bei den Cacheempfehlungen unten werden E/A-Merkmale für SAP HANA gemäß der folgenden Liste zugrunde gelegt:
+
+- Es gibt kaum Workload durch Lesezugriffe auf die HANA-Datendateien. Ausnahmen betreffen umfangreiche E/As nach dem Neustart der HANA-Instanz oder der Azure VM, wenn Daten in HANA geladen werden. Ein anderer Fall umfangreicherer Lese-E/As für Datendateien sind Sicherungen der HANA-Datenbank. Das hat zur Folge, dass Lesecaches meistens nicht sinnvoll sind, da in den meisten dieser Fälle alle Volumes mit Datendateien vollständig gelesen werden müssen.
+- Das Schreiben in die Datendateien geschieht in Bursts auf der Grundlage der HANA-Sicherungspunkte und der HANA-Absturzwiederherstellung. Das Schreiben von Sicherungspunkten erfolgt asynchron und hält Benutzertransaktionen in keiner Weise auf. Beim Schreiben von Daten während der Wiederherstellung nach Abstürzen ist die Leistung ein kritischer Faktor, um schnell wieder zu einem reaktionsbereiten System zu kommen. Die Wiederherstellung nach Abstürzen dürfte allerdings eher eine Ausnahmesituation darstellen
+- Es gibt kaum Lesevorgänge aus den HANA-Wiederholungsdateien. Ausnahmen bilden umfangreiche E/A-Vorgänge beim Ausführen von Sicherungen des Transaktionsprotokolls, der Wiederherstellung nach Abstürzen oder in der Neustartphase einer HANA-Instanz.  
+- Der hauptsächliche Workload bei SAP HANA-Wiederholungsprotokolldateien besteht aus Schreibvorgängen. Abhängig von der Art des Workloads kann die Größe von E/As bis zu 4 KB herunter- oder in anderen Fällen bis zu 1 MB oder mehr heraufreichen. Wartezeiten beim Schreiben in das SAP HANA-Wiederholungsprotokoll sind ein kritischer Faktor für die Leistung.
+- Alle Schreibvorgänge müssen in zuverlässiger Weise dauerhaft auf einem Datenträger gespeichert werden
+
+Als Folge dieser beobachteten E/A-Muster von SAP HANA sollten die Caches für verschiedene Volumes unter Verwendung von Azure Premium Storage wie folgt festgelegt werden:
+
+- /hana/data – kein Caching
+- /hana/log – kein Caching – mit Ausnahme der M-Serie (weitere Informationen dazu weiter unten in diesem Dokument)
+- /hana/shared – Lesecache
+
 
 Darüber hinaus sollten Sie den E/A-Gesamtdurchsatz eines virtuellen Computers beachten, wenn Sie die Größe festlegen oder sich für einen virtuellen Computer entscheiden. Der VM-Speicherdurchsatz im Allgemeinen ist im Artikel [Arbeitsspeicheroptimierte Größen virtueller Computer](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) beschrieben.
 
