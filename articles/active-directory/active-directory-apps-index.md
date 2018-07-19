@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 76430fa5652e98cba86c41433f376e27dbb1639a
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 5c6a4ac68694c74f9a7ed99a2d7b4939b84dc33f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446859"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054878"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Artikelindex für die Anwendungsverwaltung in Azure Active Directory
 Diese Seite enthält eine umfassende Liste aller Dokumente, die über die verschiedenen anwendungsbezogenen Funktionen in Azure Active Directory (Azure AD) geschrieben wurden.
@@ -112,7 +112,7 @@ Sobald Sie das einmalige Anmelden für Ihre Apps und Ressourcen eingerichtet hab
 | Aktivieren des bedingten Zugriffs für die folgenden Ressourcentypen |[Bedingter Zugriff für SaaS-Apps](active-directory-conditional-access-azure-portal-get-started.md)<br /><br />[Bedingter Zugriff für Office 365-Dienste](active-directory-conditional-access-device-policies.md)<br /><br />[Bedingter Zugriff für lokale Anwendungen](active-directory-conditional-access-azure-portal.md)<br /><br />[Bedingter Zugriff für lokale, über den Azure AD-Anwendungsproxy veröffentlichte Anwendungen](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
 | Registrieren von Geräten bei Azure Active Directory zum Aktivieren gerätebasierter Richtlinien für den bedingten Zugriff |[Erste Schritte bei der Azure Active Directory-Geräteregistrierung](active-directory-conditional-access-device-registration-overview.md)<br /><br />[Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows-Geräte](active-directory-conditional-access-automatic-device-registration.md)<br />– [Schritte für Windows 8.1-Geräte](active-directory-conditional-access-automatic-device-registration-setup.md)<br />– [Schritte für Windows 7-Geräte](active-directory-conditional-access-automatic-device-registration-setup.md) |
 
-| Vorgehensweise: Verwenden der Microsoft Authenticator-App für die zweistufige Überprüfung | [Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) |
+| Vorgehensweise: Verwenden der Microsoft Authenticator-App für die zweistufige Überprüfung | [Microsoft Authenticator](user-help/microsoft-authenticator-app-how-to.md) |
 
 Bedingter Zugriff ist ein [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) -Feature.
 
@@ -180,7 +180,7 @@ Der Azure AD-Zugriffsbereich ist der Bereich, in dem Endbenutzer ihre Apps start
 | Artikelleitfaden |  |
 |:---:| --- |
 | Vergleich der verschiedenen verfügbaren Optionen zum Bereitstellen von Apps für einmaliges Anmelden für Benutzer |[Bereitstellen von in Azure AD integrierten Anwendungen für Benutzer](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users) |
-| Übersicht über den Zugriffsbereich und das mobile Äquivalent MyApps |[Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)<br />— [iOS](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)<br />— [Android](https://play.google.com/store/apps/details?id=com.microsoft.myapps) |
+| Übersicht über den Zugriffsbereich und das mobile Äquivalent MyApps |[Einführung in den Zugriffsbereich](user-help/active-directory-saas-access-panel-introduction.md)<br />— [iOS](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)<br />— [Android](https://play.google.com/store/apps/details?id=com.microsoft.myapps) |
 | Zugriff auf Azure AD-Apps über die Office 365-Website |[Lernen Sie das Office 365-App-Startfeld kennen](https://support.office.com/en-us/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a) |
 | Zugriff auf Azure AD-Apps über die mobile App Intune Managed Browser |[Verwalten des Internetzugriffs mittels Richtlinien für Managed Browser mit Microsoft Intune](https://technet.microsoft.com/library/dn878029.aspx)<br />— [iOS](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)<br />— [Android](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser) |
 | Zugreifen auf Azure AD-Apps mit Deep-Links zum Initiieren des einmaligen Anmeldens |[Abrufen von Links zur direkten Anmeldung bei Ihren Apps](manage-apps/what-is-single-sign-on.md#direct-sign-on-links-for-federated-password-based-or-existing-apps) |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 0aa3ec013e93ddb89cd6982c01a38411f67b34c4
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: a93e4863a8466ad6599b11e6fe6e53d8d4d971a4
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866347"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049914"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-unifi"></a>Tutorial: Azure Active Directory-Integration mit UNIFI
 
@@ -102,49 +102,49 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **UNIFI** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/unifi-tutorial/tutorial_unifi_samlbase.png)
+    ![Configure single sign-on](./media/unifi-tutorial/tutorial_unifi_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für UNIFI** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
 
-    ![Configure Single Sign-On](./media/unifi-tutorial/tutorial_unifi_url1.png)
+    ![Configure single sign-on](./media/unifi-tutorial/tutorial_unifi_url1.png)
 
     Geben Sie im Textfeld **Bezeichner** den Wert `INVIEWlabs` ein. 
 
 4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, wenn Sie die Anwendung im **SP**-initiierten Modus konfigurieren möchten:
 
-    ![Configure Single Sign-On](./media/unifi-tutorial/tutorial_unifi_url2.png)
+    ![Configure single sign-on](./media/unifi-tutorial/tutorial_unifi_url2.png)
 
     Geben Sie im Textfeld **Anmelde-URL** diese URL ein: `https://app.discoverunifi.com/login`
 
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/unifi-tutorial/tutorial_unifi_certificate.png) 
+    ![Configure single sign-on](./media/unifi-tutorial/tutorial_unifi_certificate.png) 
 
 6. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/unifi-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/unifi-tutorial/tutorial_general_400.png)
     
 7. Klicken Sie im Abschnitt **UNIFI-Konfiguration** auf **UNIFI konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/unifi-tutorial/tutorial_unifi_configure.png)
+    ![Configure single sign-on](./media/unifi-tutorial/tutorial_unifi_configure.png)
 
 8. Melden Sie sich in einem anderen Webbrowserfenster bei der **UNIFI**-Unternehmenswebsite als Administrator an.
 
 9. Klicken Sie auf **Users** (Benutzer).
 
-    ![Configure Single Sign-On](./media/unifi-tutorial/app1.png) 
+    ![Configure single sign-on](./media/unifi-tutorial/app1.png) 
 
 10. Klicken Sie auf **Add New Identity Provider** (Neuen Identitätsanbieter hinzufügen).
 
-    ![Configure Single Sign-On](./media/unifi-tutorial/app2.png)
+    ![Configure single sign-on](./media/unifi-tutorial/app2.png)
 
 11. Führen Sie im Abschnitt **Add Identity Provider** (Identitätsanbieter hinzufügen) die folgenden Schritte aus:   
 
-    ![Configure Single Sign-On](./media/unifi-tutorial/app3.png) 
+    ![Configure single sign-on](./media/unifi-tutorial/app3.png) 
 
     a. Geben Sie im Textfeld **Provider Name** (Anbietername) den Namen des Identitätsanbieters ein.
 
@@ -207,7 +207,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **UNIFI** aus.
 
-    ![Configure Single Sign-On](./media/unifi-tutorial/tutorial_unifi_app.png) 
+    ![Configure single sign-on](./media/unifi-tutorial/tutorial_unifi_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -228,7 +228,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „UNIFI“ klicken, sollten Sie automatisch bei Ihrer UNIFI-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

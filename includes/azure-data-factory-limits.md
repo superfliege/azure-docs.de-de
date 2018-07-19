@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/20/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 43408ebc65d4acf581b612e8ecfb9d00679cc078
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 67144407b078a30c521201cbc31c6087c839fa26
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37066100"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39030003"
 ---
 Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardlimits, um sicherzustellen, dass Kundenabonnements vor anderen Arbeitslasten geschützt sind. Viele der Limits können problemlos für Ihr Abonnement bis zum maximalen Limit angehoben werden, indem Sie sich an den Support wenden.
 
@@ -23,7 +23,7 @@ Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardlimi
 | -------- | ------------- | ------------- |
 | Data Factorys in einem Azure-Abonnement | 50 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Gesamtanzahl von Entitäten (Pipeline, Datasets, Trigger, verknüpfte Dienste, Integration Runtimes) in einer Data Factory | 5.000 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Gesamtzahl CPU-Kerne für Azure-SSIS Integration Runtime(s) unter einem Abonnement | 100 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Gesamtzahl CPU-Kerne für Azure-SSIS Integration Runtime(s) unter einem Abonnement | 128 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Gleichzeitige Pipelineausführungen pro Pipeline | 100 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Gleichzeitige Pipelineausführungen pro Data Factory | 10.000  | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Max. Aktivitäten pro Pipeline (einschließlich interner Aktivitäten für Container) | 40 | 40 |

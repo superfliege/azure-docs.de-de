@@ -10,18 +10,37 @@ ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 717cf6b2abfb529313699836b790bd3f07844a67
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 891206e88173d72a0bacf6694a331c4ad8cc9acc
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867952"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069446"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für die Änderungsnachverfolgung
 
 Dieser Artikel unterstützt Sie bei der Verwendung der Lösung für die Änderungsnachverfolgung, damit Sie Änderungen an Ihrer Umgebung einfach erkennen können. Die Lösung verfolgt Änderungen an Windows- und Linux-Software, an Windows- und Linux-Dateien sowie an Windows-Registrierungsschlüsseln, Windows-Diensten und Linux-Daemons. Durch Ermitteln von Konfigurationsänderungen können Sie Betriebsprobleme präzise bestimmen.
 
 Änderungen an installierter Software, an Windows-Diensten, an der Windows-Registrierung und an Windows-Dateien sowie an Linux-Daemons auf den überwachten Servern werden zur Verarbeitung an den Log Analytics-Dienst in der Cloud gesendet. Auf die empfangenen Daten wird Logik angewendet, und der Clouddienst zeichnet die Daten auf. Mithilfe der Informationen im Change Tracking-Dashboard können Sie ganz leicht die Änderungen erkennen, die in Ihrer Serverinfrastruktur vorgenommen wurden.
+
+## <a name="supported-windows-operating-systems"></a>Unterstützte Windows-Betriebssysteme
+
+Die folgenden Versionen des Windows-Betriebssystems werden für den Windows-Agent offiziell unterstützt:
+
+* Windows Server 2008 Service Pack 1 (SP1) oder höher
+* Windows 7 SP1 und höher
+
+## <a name="supported-linux-operating-systems"></a>Unterstützte Linux-Betriebssysteme
+
+Die folgenden Linux-Distributionen werden offiziell unterstützt. Der Linux-Agent kann jedoch auch auf anderen Distributionen ausgeführt werden, die hier nicht aufgeführt sind. Sofern nicht anders angegeben, werden alle Nebenversionen für jede aufgeführte Hauptversion unterstützt.  
+
+* Amazon Linux 2012.09 bis 2015.09 (x86/x64)
+* CentOS Linux 5, 6 und 7 (x86/x64)  
+* Oracle Linux 5, 6 und 7 (x86/x64)
+* Red Hat Enterprise Linux Server 5, 6 und 7 (x86/x64)
+* Debian GNU/Linux 6, 7 und 8 (x86/x64)
+* Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)
+* SUSE Linux Enterprise Server 11 und 12 (x86/x64)
 
 ## <a name="enable-change-tracking-and-inventory"></a>Aktivieren der Lösung für Änderungsnachverfolgung und Bestand
 

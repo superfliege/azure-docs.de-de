@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 4e1f6cb8a383569b80386e090b15c59988510d0f
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 633501b03a362fbd07e14e308e18488f03af5af5
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112842"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069202"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Ressourcentypen und Integritätsprüfungen in Azure Resource Health
 Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource Health ausgeführten Überprüfungen.
@@ -42,7 +42,7 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 ## <a name="microsoftcdnprofile"></a>Microsoft.CDN/profile
 |Ausgeführte Überprüfungen|
 |---|
-|<ul> <li>Wurde einer der Endpunkte angehalten, entfernt oder falsch konfiguriert?</li><li>Können CDN-Konfigurationsvorgänge auf das zusätzliche Portal zugreifen?</li><li>Treten bei den CDN-Endpunkten laufend Übermittlungsprobleme auf?</li><li>Können Benutzer die Konfiguration ihrer CDN-Ressourcen ändern?</li><li>Werden Konfigurationsänderungen mit der erwarteten Rate weitergegeben?</li><li>Können Benutzer die CDN-Konfiguration mithilfe von Azure-Portal, PowerShell oder API verwalten?</li> </ul>|
+|<ul> <li>Können CDN-Konfigurationsvorgänge auf das zusätzliche Portal zugreifen?</li><li>Treten bei den CDN-Endpunkten laufend Übermittlungsprobleme auf?</li><li>Können Benutzer die Konfiguration ihrer CDN-Ressourcen ändern?</li><li>Werden Konfigurationsänderungen mit der erwarteten Rate weitergegeben?</li><li>Können Benutzer die CDN-Konfiguration mithilfe von Azure-Portal, PowerShell oder API verwalten?</li> </ul>|
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.classiccompute/virtualmachines
 |Ausgeführte Überprüfungen|

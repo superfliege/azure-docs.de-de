@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: fbe3ceb3d26de90bd46ee02263d09c822ee90c29
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 2dbf52d0e157379687b144feba5c7933a7c5a3e3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868846"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046837"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intralinks"></a>Tutorial: Azure Active Directory-Integration mit Intralinks
 
@@ -102,15 +102,15 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Intralinks** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/intralinks-tutorial/tutorial_intralinks_samlbase.png)
+    ![Configure single sign-on](./media/intralinks-tutorial/tutorial_intralinks_samlbase.png)
 
 3. Führen Sie auf der Seite **Domäne und URLs für Intralinks** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/intralinks-tutorial/tutorial_intralinks_url.png)
+    ![Configure single sign-on](./media/intralinks-tutorial/tutorial_intralinks_url.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<company name>.Intralinks.com/?PartnerIdpId=https://sts.windows.net/<AzureADTenantID>`.
 
@@ -119,11 +119,11 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/intralinks-tutorial/tutorial_intralinks_certificate.png) 
+    ![Configure single sign-on](./media/intralinks-tutorial/tutorial_intralinks_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/intralinks-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/intralinks-tutorial/tutorial_general_400.png)
 
 6. Zum Konfigurieren des einmaligen Anmeldens bei **Intralinks** müssen Sie die heruntergeladene **XML-Metadatendatei** an das [Intralinks-Supportteam](https://www.intralinks.com/contact-1) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -179,7 +179,7 @@ In diesem Abschnitt ermöglichen Sie für Britta Simon das einmalige Anmelden vo
 
 2. Wählen Sie in der Anwendungsliste **Intralinks**aus.
 
-    ![Configure Single Sign-On](./media/intralinks-tutorial/tutorial_intralinks_app.png) 
+    ![Configure single sign-on](./media/intralinks-tutorial/tutorial_intralinks_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -231,15 +231,15 @@ Danach können Sie das unten beschrieben Verfahren verwenden, um weitere Intrali
 
 6.  Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Intralinks** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 7. Wählen Sie im Dialogfeld **Einmaliges Anmelden** für **Modus** die Option **Anmeldung über Link** aus.
  
-    ![Configure Single Sign-On](./media/intralinks-tutorial/tutorial_intralinks_linkedsignon.png)
+    ![Configure single sign-on](./media/intralinks-tutorial/tutorial_intralinks_linkedsignon.png)
 
 8. Rufen Sie die vom Dienstanbieter initiierte SSO-URL vom [Intralinks-Team](https://www.intralinks.com/contact-1) für die andere Intralinks-Anwendung ab, und geben Sie sie wie unten gezeigt in **Anmelde-URL konfigurieren** ein. 
     
-     ![Configure Single Sign-On](./media/intralinks-tutorial/tutorial_intralinks_customappurl.png)
+     ![Configure single sign-on](./media/intralinks-tutorial/tutorial_intralinks_customappurl.png)
     
      Geben Sie im Textfeld „Anmelde-URL“ die URL, die von Ihren Benutzern zur Anmeldung bei der Intralinks-Anwendung verwendet wird, nach folgendem Muster ein:
    
@@ -247,7 +247,7 @@ Danach können Sie das unten beschrieben Verfahren verwenden, um weitere Intrali
 
 9. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/intralinks-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/intralinks-tutorial/tutorial_general_400.png)
 
 10. Weisen Sie die Anwendung Benutzern oder Gruppen zu, wie im Abschnitt **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** beschrieben.
 
@@ -256,7 +256,7 @@ Danach können Sie das unten beschrieben Verfahren verwenden, um weitere Intrali
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Intralinks“ klicken, sollten Sie automatisch bei Ihrer Intralinks-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

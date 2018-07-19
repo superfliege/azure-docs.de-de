@@ -9,11 +9,11 @@ ms.date: 04/04/2018
 ms.author: heidist
 ms.custom: include file
 ms.openlocfilehash: 8a4f794c8ef24a90498954629c131904621c5b43
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30844076"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38755895"
 ---
 Sie können mehrere Dienste in einem Abonnement erstellen, die jeweils für einen bestimmten Tarif bereitgestellt werden. Als einzige Einschränkung gilt hierbei die Anzahl von zulässigen Diensten des jeweiligen Tarifs. Beispielsweise können Sie in einem Abonnement bis zu 12 Dienste für den Basic-Tarif und weitere 12 Dienste für den S1-Tarif erstellen. Weitere Informationen zu Tarifen finden Sie unter [Auswählen einer SKU oder eines Tarifs für Azure Search](../articles/search/search-sku-tier.md).
 

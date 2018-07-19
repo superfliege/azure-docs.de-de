@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/27/2018
+ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: c60d736798adbbcb47b94172768dc8b8e5c366fe
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 97404421a48d15339fdecf23a951a64d975da577
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37088414"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090341"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Erste Schritte zur Integration von Anwendungen in Azure Active Directory
 ## <a name="overview"></a>Übersicht
@@ -62,7 +62,7 @@ Vielleicht können Sie nicht alle Fragen im Voraus beantworten, aber das ist kei
 
 ## <a name="application-integration-with-azure-ad"></a>Anwendungsintegration in Azure AD
 ### <a name="finding-unsanctioned-cloud-applications-with-cloud-discovery"></a>Suchen nach nicht genehmigten Cloudanwendungen per Cloud Discovery
-Wie oben erwähnt sind möglicherweise Anwendungen im Einsatz, die bis jetzt von Ihrer Organisation noch nicht verwaltet wurden.  Im Rahmen der Bestandsaufnahme können Sie nicht genehmigte Cloudanwendungen finden. Weitere Informationen finden Sie unter [Einrichten von Cloud Discovery](/cloud-app-security/set-up-cloud-discovery.md).
+Wie oben erwähnt sind möglicherweise Anwendungen im Einsatz, die bis jetzt von Ihrer Organisation noch nicht verwaltet wurden.  Im Rahmen der Bestandsaufnahme können Sie nicht genehmigte Cloudanwendungen finden. Weitere Informationen finden Sie unter [Einrichten von Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
 
 ### <a name="authentication-types"></a>Authentifizierungstypen
 Für jede Ihrer Anwendungen gelten möglicherweise unterschiedliche Authentifizierungsanforderungen. Bei Azure AD können Signaturzertifikate mit Anwendungen verwendet werden, die die Protokolle SAML 2.0, WS-Verbund oder OpenID Connect sowie das einmalige Anmelden per Kennwort verwenden. Weitere Informationen zu Anwendungsauthentifizierungstypen, die mit Azure AD verwendet werden können, finden Sie unter [Verwalten von Zertifikaten für die einmalige Verbundanmeldung in Azure Active Directory](manage-certificates-for-federated-single-sign-on.md) und unter [Kennwortbasierte einmalige Anmeldung](what-is-single-sign-on.md).

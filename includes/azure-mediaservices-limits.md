@@ -24,18 +24,18 @@
 
 <sup>2</sup> Diese Zahl umfasst fertig gestellte, aktive und abgebrochene Aufträge sowie Aufträge in der Warteschlange. Gelöschte Aufträge sind nicht enthalten. Sie können die alten Aufträge mithilfe von **IJob.Delete** oder der HTTP **DELETE**-Anforderung löschen.
 
-Ab dem 1. April 2017 werden alle Auftragsdatensätze in Ihrem Konto, die älter als 90 Tage sind, sowie alle zugehörigen Aufgabendatensätze automatisch gelöscht, selbst wenn die Gesamtanzahl von Datensätzen unterhalb des maximalen Kontingents liegt. Wenn Sie die Auftrags-/Aufgabeninformationen archivieren müssen, können Sie dazu den [hier](../articles/media-services/media-services-dotnet-manage-entities.md) beschriebenen Code verwenden.
+Ab dem 1. April 2017 werden alle Auftragsdatensätze in Ihrem Konto, die älter als 90 Tage sind, sowie alle zugehörigen Aufgabendatensätze automatisch gelöscht, selbst wenn die Gesamtanzahl von Datensätzen unterhalb des maximalen Kontingents liegt. Wenn Sie die Auftrags-/Aufgabeninformationen archivieren müssen, können Sie dazu den [hier](../articles/media-services/previous/media-services-dotnet-manage-entities.md) beschriebenen Code verwenden.
 
 <sup>3</sup> Wenn Sie eine Anforderung zum Auflisten von Auftragsentitäten senden, werden maximal 1.000 Aufträge pro Anforderung zurückgegeben. Falls Sie alle gesendeten Aufträge nachverfolgen müssen, können Sie "Nach oben"/"Überspringen" wie in [OData-Systemabfrageoptionen](http://msdn.microsoft.com/library/gg309461.aspx)beschrieben verwenden.
 
-<sup>4</sup> Locators sind nicht für die Verwaltung der Zugriffssteuerung pro Benutzer konzipiert. Um einzelnen Benutzern verschiedene Zugriffsrechte zu erteilen, verwenden Sie Lösungen zur Verwaltung digitaler Rechte (Digital Rights Management, DRM). Weitere Informationen finden Sie in [diesem](../articles/media-services/media-services-content-protection-overview.md) Abschnitt.
+<sup>4</sup> Locators sind nicht für die Verwaltung der Zugriffssteuerung pro Benutzer konzipiert. Um einzelnen Benutzern verschiedene Zugriffsrechte zu erteilen, verwenden Sie Lösungen zur Verwaltung digitaler Rechte (Digital Rights Management, DRM). Weitere Informationen finden Sie in [diesem](../articles/media-services/previous/media-services-content-protection-overview.md) Abschnitt.
 
 <sup>5</sup> Die Speicherkonten müssen aus demselben Azure-Abonnement stammen.
 
 <sup>6</sup> Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). 
 
 >[!NOTE]
-> Wenn Sie immer die gleichen Tage und Zugriffsberechtigungen usw. verwenden, sollten Sie die gleiche Richtlinien-ID verwenden. Weitere Informationen und ein Beispiel finden Sie in [diesem](../articles/media-services/media-services-dotnet-manage-entities.md#limit-access-policies) Abschnitt.
+> Wenn Sie immer die gleichen Tage und Zugriffsberechtigungen usw. verwenden, sollten Sie die gleiche Richtlinien-ID verwenden. Weitere Informationen und ein Beispiel finden Sie in [diesem](../articles/media-services/previous/media-services-dotnet-manage-entities.md#limit-access-policies) Abschnitt.
 
 <sup>7</sup>Berücksichtigen Sie die Einschränkungen hinsichtlich der unterstützten maximalen Dateigrößen, wenn Sie Inhalte an ein Medienobjekt in Azure Media Services hochladen und mit einem der Medienprozessoren im Dienst (also mit Encodern wie Media Encoder Standard und Media Encoder Premium Workflow oder mit Analyse-Engines wie Gesichtserkennung) verarbeiten möchten. 
 

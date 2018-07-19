@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: b57522933647c9d1d5518740d41b624b199a020e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 97b6507cb8c5a66b8b6ccbfccd2c838b4b3fb53a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110557"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053300"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>Tutorial: Azure Active Directory-Integration mit Confluence SAML SSO by Microsoft
 
@@ -117,15 +117,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Confluence SAML SSO by Microsoft** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
 
-    ![Configure Single Sign-On](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_samlbase.png)
+    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Confluence SAML SSO by Microsoft** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_url.png)
+    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<domain:port>/plugins/servlet/saml/auth`.
 
@@ -138,29 +138,29 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
     
-    ![Configure Single Sign-On](./media/confluencemicrosoft-tutorial/tutorial_metadataurl.png)
+    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/tutorial_metadataurl.png)
      
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/confluencemicrosoft-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/tutorial_general_400.png)
 
 6. Melden Sie sich in einem anderen Webbrowserfenster bei Ihrer Confluence-Instanz als Administrator an.
 
 7. Fahren Sie mit dem Mauszeiger über das Zahnrad, und klicken Sie auf die **Add-Ons**.
     
-    ![Configure Single Sign-On](./media/confluencemicrosoft-tutorial/addon1.png)
+    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/addon1.png)
 
 8. Laden Sie das Plug-In aus dem [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=56503) herunter. Laden Sie das von Microsoft bereitgestellte Plug-In manuell mithilfe des Menüs **Add-On hochladen** hoch. Das Herunterladen von Plug-Ins wird unter [Microsoft-Servicevertrag](https://www.microsoft.com/en-us/servicesagreement/) beschrieben. 
     
-    ![Configure Single Sign-On](./media/confluencemicrosoft-tutorial/addon12.png)
+    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/addon12.png)
 
 9. Sobald das Plug-In installiert ist, wird es im Abschnitt **Add-Ons verwalten** unter **User Installed** (Vom Benutzer installiert) angezeigt. Klicken Sie auf **Konfigurieren**, um das neue Plug-In zu konfigurieren.
     
-    ![Configure Single Sign-On](./media/confluencemicrosoft-tutorial/addon13.png)
+    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/addon13.png)
 
 10. Führen Sie auf der Konfigurationsseite die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/confluencemicrosoft-tutorial/addon52.png)
+    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/addon52.png)
 
     > [!TIP]
     > Stellen Sie sicher, dass der App nur ein Zertifikat zugeordnet wird, um einen Fehler bei der Auflösung der Metadaten zu vermeiden. Bei mehreren Zertifikaten erhält der Administrator nach dem Auflösen der Metadaten eine Fehlermeldung.
@@ -262,7 +262,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Confluence SAML SSO by Microsoft** aus.
 
-    ![Configure Single Sign-On](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_app.png) 
+    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -283,7 +283,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Confluence SAML SSO by Microsoft“ klicken, sollten Sie automatisch bei Ihrer Confluence SAML SSO by Microsoft-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

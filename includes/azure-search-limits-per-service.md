@@ -9,17 +9,17 @@ ms.date: 04/04/2018
 ms.author: heidist
 ms.custom: include file
 ms.openlocfilehash: b4062aab5a453505ef4586f422a124d4bbf715cb
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30844073"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38755935"
 ---
 Der Speicher ist durch den Festplattenspeicher oder einen festen Grenzwert für die *maximale Anzahl* von Indizes, Dokumenten oder anderen allgemeinen Ressourcen beschränkt (je nachdem, was zuerst erreicht wird). In der folgenden Tabelle sind die Speicherbegrenzungen dokumentiert. Obergrenzen für Indizes, Dokumente und andere Objekte finden Sie unter [Grenzwerte nach Ressource](../articles/search/search-limits-quotas-capacity.md#index-limits).
 
 | Ressource | Kostenlos | Basic&nbsp;<sup>1</sup> | S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>2</sup> |
 | -------- | --- | --- | --- | --- | --- | --- |
-| Vereinbarung zum Servicelevel (SLA) <sup>3</sup>  |Nein  |Ja |Ja |Ja |Ja |Ja |
+| Vereinbarung zum Servicelevel (SLA) <sup>3</sup>  |Nein  |Ja |Ja |Ja |Ja |JA |
 | Speicherkapazität pro Partition |50 MB |2 GB |25 GB |100 GB |200 GB |200 GB |
 | Partitionen pro Dienst |N/V |1 |12 |12 |12 |3 |
 | Partitionsgröße |N/V |2 GB |25 GB |100 GB |200 GB |200 GB |

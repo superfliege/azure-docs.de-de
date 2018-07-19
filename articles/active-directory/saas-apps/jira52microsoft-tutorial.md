@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 5df8b3d91f52e4809ef43e3e376004e4274b4400
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 84afd45f6fb56222aa6d2dea063251353f406b26
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112019"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042675"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Tutorial: Azure Active Directory-Integration in JIRA SAML SSO by Microsoft (V5.2)
 
@@ -135,33 +135,33 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
 
-    ![Configure Single Sign-On](./media/jira52microsoft-tutorial/tutorial_metadataurl.png)
+    ![Configure single sign-on](./media/jira52microsoft-tutorial/tutorial_metadataurl.png)
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/jira52microsoft-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/jira52microsoft-tutorial/tutorial_general_400.png)
 
 6. Melden Sie sich in einem anderen Webbrowserfenster bei Ihrer JIRA-Instanz als Administrator an.
 
 7. Fahren Sie mit dem Mauszeiger über das Zahnrad, und klicken Sie auf die **Add-Ons**.
 
-    ![Configure Single Sign-On](./media/jira52microsoft-tutorial/addon1.png)
+    ![Configure single sign-on](./media/jira52microsoft-tutorial/addon1.png)
 
 8. Klicken Sie im Registerkartenabschnitt „Add-Ons“ auf **Add-Ons verwalten**.
 
-    ![Configure Single Sign-On](./media/jira52microsoft-tutorial/addon7.png)
+    ![Configure single sign-on](./media/jira52microsoft-tutorial/addon7.png)
 
 9. Laden Sie das Plug-In aus dem [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=56521) herunter. Laden Sie das von Microsoft bereitgestellte Plug-In manuell mithilfe des Menüs **Add-On hochladen** hoch. Das Herunterladen von Plug-Ins wird unter [Microsoft-Servicevertrag](https://www.microsoft.com/en-us/servicesagreement/) beschrieben.
 
-    ![Configure Single Sign-On](./media/jira52microsoft-tutorial/addon12.png)
+    ![Configure single sign-on](./media/jira52microsoft-tutorial/addon12.png)
 
 10. Sobald das Plug-In installiert ist, wird es im Abschnitt **User-installed add-ons** (Vom Benutzer installierte Add-Ons) angezeigt. Klicken Sie auf **Konfigurieren**, um das neue Plug-In zu konfigurieren.
 
-    ![Configure Single Sign-On](./media/jira52microsoft-tutorial/addon13.png)
+    ![Configure single sign-on](./media/jira52microsoft-tutorial/addon13.png)
 
 11. Führen Sie auf der Konfigurationsseite die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/jira52microsoft-tutorial/addon52.png)
+    ![Configure single sign-on](./media/jira52microsoft-tutorial/addon52.png)
 
     > [!TIP]
     > Stellen Sie sicher, dass der App nur ein Zertifikat zugeordnet wird, um einen Fehler bei der Auflösung der Metadaten zu vermeiden. Bei mehreren Zertifikaten erhält der Administrator nach dem Auflösen der Metadaten eine Fehlermeldung.
@@ -291,7 +291,7 @@ In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf JIRA SAML SSO by Micr
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „JIRA SAML SSO by Microsoft (V5.2)“ klicken, werden Sie automatisch bei Ihrer JIRA SAML SSO by Microsoft (V5.2)-Anwendung angemeldet.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

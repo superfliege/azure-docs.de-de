@@ -8,7 +8,7 @@ tags: azure-portal
 author: jamesbak
 manager: jahogg
 ms.component: data-lake-storage-gen2
-ms.service: hdinsight
+ms.service: storage
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: e9fd28ac21ce843655697c5d58849d940e305fce
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: e4e72d3c5b6b9c96de6a8faafccfcc39fe3c37b8
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344953"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136688"
 ---
 # <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Verwenden von Azure Data Lake Storage Gen2 Preview mit Azure HDInsight-Clustern
 
@@ -211,7 +211,7 @@ Beim Erstellen eines HDInsight-Clusters geben Sie das Azure Storage-Konto an, de
 
 In diesem Artikel wurde beschrieben, wie Sie HDFS-kompatiblen Azure Storage mit HDInsight verwenden. Über diesen Ansatz können Sie skalierbare Datenerfassungslösungen mit langfristiger Archivierung aufbauen und HDInsight verwenden, um die Informationen innerhalb der gespeicherten strukturierten und unstrukturierten Daten freizugeben.
 
-Weitere Informationen finden Sie unter 
+Weitere Informationen finden Sie unter
 
 * [Der ABFS-Hadoop-Dateisystemtreiber für Azure Data Lake Storage Gen2](abfs-driver.md)
 * [Einführung in Azure Data Lake Storage](introduction.md)

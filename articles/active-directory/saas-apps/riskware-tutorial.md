@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jeedes
-ms.openlocfilehash: d234b34f7583441f496fb96d37166c5472cadb4c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 7705baa0ba912f24d7859110c75d36703aeb4a77
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110826"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041958"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Tutorial: Azure Active Directory-Integration in Riskware
 
@@ -297,7 +297,7 @@ In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf Riskware, damit sie d
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Riskware“ klicken, werden Sie automatisch bei Ihrer Riskware-Anwendung angemeldet.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/14/2017
 ms.author: lizross
-ms.openlocfilehash: 8b0a591f84dd8ece0f6a8e2de19cddfee21b28e4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: e304242718478cae2670372a06abe07f926fbed2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449092"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054742"
 ---
 # <a name="azure-active-directory-faq"></a>Häufig gestellte Fragen zu Azure Active Directory
 Azure Active Directory (Azure AD) ist eine umfassende IDaaS-Lösung (Identity as a Service) für sämtliche Aspekte von Identität, Zugriffsverwaltung und Sicherheit.
@@ -33,7 +33,7 @@ Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](active-
 
 **A:** Für den Zugriff auf das Azure-Portal benötigt jeder Benutzer Berechtigungen mit einem Azure-Abonnement. Wenn Sie über ein kostenpflichtiges Office 365- oder Azure AD-Abonnement verfügen, können Sie unter [https://aka.ms/accessAAD](https://aka.ms/accessAAD) einen einmaligen Aktivierungsschritt ausführen. Andernfalls müssen Sie ein kostenloses [Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) oder ein kostenpflichtiges Abonnement aktivieren.
 
-Weitere Informationen finden Sie unter 
+Weitere Informationen finden Sie unter
 
 * [Beziehung zwischen Azure-Abonnements und Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
 
@@ -93,7 +93,7 @@ Weitere Informationen finden Sie unter [Integrieren Ihrer lokalen Identitäten i
 
 **A:** Ja. Für Self-Service-Aktionen und den Anwendungszugriff der Benutzer stellt Azure AD den [Azure AD-Zugriffsbereich](http://myapps.microsoft.com) bereit. Für Office 365-Kunden stehen viele dieser Funktionen bereits im Office 365-Portal zur Verfügung.
 
-Weitere Informationen finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 - - -
 **F: Unterstützt mich Azure AD bei der Verwaltung meiner lokalen Infrastruktur?**
@@ -161,7 +161,7 @@ Eine vollständige Liste mit integrierten Anwendungen finden Sie unter [Active D
 
 **A:** Mit Azure AD Premium können Sie jede beliebige Anwendung hinzufügen und konfigurieren. Abhängig von den Funktionen Ihrer Anwendung und Ihren Präferenzen können Sie SSO und die automatische Bereitstellung konfigurieren.  
 
-Weitere Informationen finden Sie unter 
+Weitere Informationen finden Sie unter
 
 * [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)
 * [Verwenden von SCIM für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](../manage-apps/use-scim-to-provision-users-and-groups.md)
@@ -183,7 +183,7 @@ Weitere Informationen finden Sie unter [Bereitstellen von in Azure AD integriert
 
 **A:** Azure AD unterstützt für die Authentifizierung und Autorisierung viele standardisierte Protokolle wie SAML 2.0, OpenID Connect, OAuth 2.0 und WS-Federation. Außerdem unterstützt Azure AD Kennworttresore und Funktionen für die automatisierte Anmeldung für Apps, die nur die formularbasierte Authentifizierung unterstützen.  
 
-Weitere Informationen finden Sie unter 
+Weitere Informationen finden Sie unter
 
 * [Authentifizierungsszenarios für Azure AD](../develop/active-directory-authentication-scenarios.md)
 * [Active Directory-Authentifizierungsprotokolle](https://msdn.microsoft.com/library/azure/dn151124.aspx)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2018
 ms.author: jeedes
-ms.openlocfilehash: e1788de7c2372797b2034eb1753ab435c1299889
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 506f52faf916aa0d5ca2e8587bdbcc16ab88e130
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38548275"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054283"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Tutorial: Azure Active Directory-Integration mit Adobe Creative Cloud
 
@@ -130,7 +130,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
      
 6. Die Adobe Creative Cloud-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute auf der Registerkarte **Benutzerattribute** der Anwendung verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
 
-    ![Configure Single Sign-On](./media/adobe-creative-cloud-tutorial/tutorial_attribute.png)
+    ![Configure single sign-on](./media/adobe-creative-cloud-tutorial/tutorial_attribute.png)
 
 7. Konfigurieren Sie das SAML-Tokenattribut im Dialogfeld **Einmaliges Anmelden** im Abschnitt **Benutzerattribute**, wie im obigen Bild gezeigt, und führen Sie die folgenden Schritte aus:
 
@@ -142,9 +142,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Configure Single Sign-On](./media/adobe-creative-cloud-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/adobe-creative-cloud-tutorial/tutorial_attribute_04.png)
 
-    ![Configure Single Sign-On](./media/adobe-creative-cloud-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/adobe-creative-cloud-tutorial/tutorial_attribute_05.png)
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
@@ -271,7 +271,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Adobe Creative Cloud“ klicken, werden Sie automatisch bei Ihrer Adobe Creative Cloud-Anwendung angemeldet.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

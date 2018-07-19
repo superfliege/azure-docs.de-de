@@ -9,11 +9,11 @@ ms.date: 06/12/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 6e0d2b881e00acc6b1fccd3196187309fc36cba2
-ms.sourcegitcommit: 8659efc885be98f42edae0b516ca576e38940c97
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2018
-ms.locfileid: "35568142"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38755715"
 ---
 #### <a name="expressroute-limits"></a>Einschränkungen für ExpressRoute
 Für ExpressRoute-Ressourcen gelten pro Abonnement die folgenden Einschränkungen.
@@ -35,8 +35,8 @@ Für ExpressRoute-Ressourcen gelten pro Abonnement die folgenden Einschränkunge
 | **Verbindungsgröße** | **Anzahl der VNet-Links – Standard** | **Anzahl der VNet-Links – Premium-Add-on** |
 | --- | --- | --- |
 | 50 MBit/s |10 |20 |
-| 100 MBit/s |10 |25 |
-| 200 MBit/s |10 |25 |
+| 100 MBit/s |10 |25 |
+| 200 MBit/s |10 |25 |
 | 500 MBit/s |10 |40 |
 | 1 GBit/s |10 |50 |
 | 2 GBit/s |10 |60 |
