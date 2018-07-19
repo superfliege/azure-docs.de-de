@@ -1,4 +1,0 @@
-- name: Zugreifen auf Azure-Speicher per VM-MSI
-  items:
-    - name: Von einem virtuellen Linux-Computer mithilfe eines Zugriffsschlüssels
-      href: msi-tutorial-linux-vm-access-storage.md
