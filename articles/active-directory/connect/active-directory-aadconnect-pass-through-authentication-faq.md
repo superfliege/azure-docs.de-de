@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e62117ee98b1d47600141249dcd3b17ec58a9654
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 6d5cd79a6336b2e5c4b3c5c6f5765d92cd602552
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918154"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048967"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory Passthrough-Authentifizierung: Häufig gestellte Fragen
 
@@ -60,7 +60,7 @@ Damit dieses Feature funktioniert, benötigen Sie Version 1.1.486.0 oder höher 
 
 ## <a name="what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication"></a>Was geschieht, wenn das Kennwort des Benutzers abgelaufen ist und er versucht, sich mit der Passthrough-Authentifizierung anzumelden?
 
-Wenn Sie das [Kennwortrückschreiben](../active-directory-passwords-update-your-own-password.md) für einen bestimmten Benutzer konfiguriert haben und der Benutzer sich mit der Passthrough-Authentifizierung anmeldet, kann er sein Kennwort ändern oder zurücksetzen. Die Kennwörter werden erwartungsgemäß in das lokale Active Directory zurückgeschrieben.
+Wenn Sie das [Kennwortrückschreiben](../user-help/active-directory-passwords-update-your-own-password.md) für einen bestimmten Benutzer konfiguriert haben und der Benutzer sich mit der Passthrough-Authentifizierung anmeldet, kann er sein Kennwort ändern oder zurücksetzen. Die Kennwörter werden erwartungsgemäß in das lokale Active Directory zurückgeschrieben.
 
 Wenn Sie das Kennwortrückschreiben für einen bestimmten Benutzer nicht konfiguriert haben oder der Benutzer keine gültige Azure AD hat, kann der Benutzer sein Kennwort in der Cloud nicht aktualisieren. Das Kennwort lässt sich nicht aktualisieren, auch wenn es bereits abgelaufen ist. Der Benutzer sieht dann folgende Meldung: „Eine Kennwortänderung auf dieser Website wird von Ihrer Organisation nicht gestattet. Ändern Sie Ihr Kennwort anhand der von Ihrer Organisation empfohlenen Methode, oder bitten Sie Ihren Administrator um Hilfe. Der Benutzer oder der Administrator muss das Kennwort im lokalen Active Directory zurücksetzen.
 

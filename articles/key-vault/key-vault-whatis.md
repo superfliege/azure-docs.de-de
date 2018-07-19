@@ -14,17 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/26/2017
 ms.author: barclayn
-ms.openlocfilehash: d1c7a61522770d5bf590637629ec48ee35151623
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1fd39cf6363cb028b2f933934c95ea2b635b754a
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28924947"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39089304"
 ---
 # <a name="what-is-azure-key-vault"></a>Was ist der Azure-Schlüsseltresor?
-Azure-Tresorschlüssel ist in den meisten Regionen verfügbar. Weitere Informationen finden Sie auf der Seite [Preisübersicht für Schlüsseltresor](https://azure.microsoft.com/pricing/details/key-vault/).
-
-## <a name="introduction"></a>Einführung
 Azure Key Vault unterstützt Sie dabei, kryptografische Schlüssel und Geheimnisse zu schützen, die von Cloudanwendungen und -diensten verwendet werden. Mit Key Vault können Sie Schlüssel und Geheimnisse (beispielsweise Authentifizierungsschlüssel, Schlüssel für Speicherkonten, Datenverschlüsselungsschlüssel, PFX-Dateien und Kennwörter) verschlüsseln und durch Hardwaresicherheitsmodule (HSMs) geschützte Schlüssel verwenden. Zur Steigerung der Sicherheit können Sie Schlüssel in HSMs importieren oder in diesen generieren. Bei Verwendung dieser Option verarbeitet Microsoft Ihre Schlüssel in mit FIPS 140-2 (Level 2) überprüften HSMs (Hardware und Firmware).  
 
 Der Schlüsseltresor optimiert die Schlüsselverwaltung und ermöglicht es Ihnen, die Kontrolle über Schlüssel zu behalten, die für den Datenzugriff und die Verschlüsselung Ihrer Daten verwendet werden. Entwickler können Schlüssel für Tests und Entwicklung innerhalb von Minuten erstellen und diese später nahtlos in Schlüssel für die Produktion migrieren. Sicherheitsadministratoren können nach Bedarf Berechtigungen für Schlüssel erteilen (und widerrufen).
@@ -60,3 +57,4 @@ Weitere Informationen zur Verwendung von Schlüsseln und geheimen Schlüsseln mi
 
 <!--Image references-->
 [1]: ./media/key-vault-whatis/AzureKeyVault_overview.png
+Azure-Tresorschlüssel ist in den meisten Regionen verfügbar. Weitere Informationen finden Sie auf der Seite [Preisübersicht für Schlüsseltresor](https://azure.microsoft.com/pricing/details/key-vault/).

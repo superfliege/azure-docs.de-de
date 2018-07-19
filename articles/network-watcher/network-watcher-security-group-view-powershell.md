@@ -14,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 3983055cd580c263d39b908c61a16ed14353c9a4
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 9cc06e97730ac846e8aa42c2cee77dfe17be99bb
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23036665"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39089645"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>Analysieren der Sicherheit Ihres virtuellen Computers über die Sicherheitsgruppenansicht mit PowerShell
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-security-group-view-powershell.md)
-> - [CLI 1.0](network-watcher-security-group-view-cli-nodejs.md)
-> - [CLI 2.0](network-watcher-security-group-view-cli.md)
+> - [Azure-CLI](network-watcher-security-group-view-cli.md)
 > - [REST-API](network-watcher-security-group-view-rest.md)
 
 Die Sicherheitsgruppenansicht gibt konfigurierte und effektive Netzwerksicherheitsregeln zurück, die auf einen virtuellen Computer angewendet werden. Diese Funktion eignet sich zur Überwachung und Diagnose von Netzwerksicherheitsgruppen und Regeln, die auf einem virtuellen Computer konfiguriert sind, um sicherzustellen, dass Datenverkehr ordnungsgemäß zugelassen oder verweigert wird. In diesem Artikel erfahren Sie, wie Sie die konfigurierten und effektiven Sicherheitsregeln mit PowerShell auf einem virtuellen Computer abrufen.
@@ -35,7 +34,7 @@ Die Sicherheitsgruppenansicht gibt konfigurierte und effektive Netzwerksicherhei
 
 In diesem Szenario verwenden Sie das Cmdlet `Get-AzureRmNetworkWatcherSecurityGroupView` zum Abrufen der Sicherheitsregelinformationen.
 
-Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits durchgeführt haben, um eine Network Watcher-Instanz zu erstellen.
+Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits ausgeführt haben.
 
 ## <a name="scenario"></a>Szenario
 

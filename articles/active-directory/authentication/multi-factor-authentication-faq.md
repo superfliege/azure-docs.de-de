@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: ea976f7ac80f0c485320713117c9ff2b484a287b
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 00eab947120cdfa76de64536ddaa0600c2dff2ec
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128689"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049410"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Häufig gestellte Fragen zu Azure Multi-Factor Authentication
 
@@ -118,7 +118,7 @@ Azure Active Directory ist für das Lizenzmodell erforderlich, da Lizenzen dem A
 
 Im Idealfall haben alle Ihre Benutzer mehrere Überprüfungsmethoden konfiguriert. Fordern Sie sie auf, sich erneut anzumelden und dabei auf der Anmeldeseite eine andere Überprüfungsmethode auszuwählen.
 
-Unter [Probleme bei der Überprüfung in zwei Schritten](end-user/current/multi-factor-authentication-end-user-troubleshoot.md) finden Ihre Endbenutzer einen Problembehandlungsleitfaden.
+Unter [Probleme bei der Überprüfung in zwei Schritten](../user-help/multi-factor-authentication-end-user-troubleshoot.md) finden Ihre Endbenutzer einen Problembehandlungsleitfaden.
 
 
 **F: Was kann ich tun, wenn ein Benutzer nicht auf sein Konto zugreifen kann?**
@@ -131,7 +131,7 @@ Löschen Sie alle App-Kennwörter des Benutzers, um nicht autorisierte Zugriffe 
 
 **F: Was kann ich tun, wenn sich ein Benutzer nicht bei nicht browserbasierten Apps anmelden kann?**
 
-Falls Ihre Organisation noch Legacyclients verwendet und Sie [die Verwendung von App-Kennwörtern zugelassen haben](howto-mfa-mfasettings.md#app-passwords), können sich Ihre Benutzer nicht mit ihrem Benutzernamen und Kennwort bei diesen Legacyclients anmelden. Stattdessen müssen sie [App-Kennwörter einrichten](end-user/current/multi-factor-authentication-end-user-app-passwords.md). Ihre Benutzer müssen ihre Anmeldeinformationen löschen, die App neu starten und sich dann mit ihrem Benutzernamen und ihrem *App-Kennwort* (anstelle des regulären Kennworts) anmelden.
+Falls Ihre Organisation noch Legacyclients verwendet und Sie [die Verwendung von App-Kennwörtern zugelassen haben](howto-mfa-mfasettings.md#app-passwords), können sich Ihre Benutzer nicht mit ihrem Benutzernamen und Kennwort bei diesen Legacyclients anmelden. Stattdessen müssen sie [App-Kennwörter einrichten](../user-help/multi-factor-authentication-end-user-app-passwords.md). Ihre Benutzer müssen ihre Anmeldeinformationen löschen, die App neu starten und sich dann mit ihrem Benutzernamen und ihrem *App-Kennwort* (anstelle des regulären Kennworts) anmelden.
 
 Wenn Ihre Organisation keine Legacyclients verwendet, sollten Sie die Erstellung von App-Kennwörtern durch Benutzer nicht zulassen.
 

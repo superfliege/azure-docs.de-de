@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: a8905f4f14b5f4f78e9f3113ec5a655b12599609
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d46ff5563df1423e3c01ba945b328b748b5979b4
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294094"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091570"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Filterung und Vorverarbeitung von Telemetriedaten im Application Insights-SDK
 
@@ -54,7 +54,7 @@ Zum Filtern von Telemetriedaten schreiben Sie einen Telemetrie-Prozessor und reg
 
     Beachten Sie, dass Telemetrieprozessoren eine Verarbeitungskette erstellen. Beim Instanziieren eines Telemetrieprozessors übergeben Sie einen Link an den nächsten Prozessor in der Kette. Wenn ein Telemetriedatenpunkt an die Verarbeitungsmethode übergeben wird, führt er seine Aufgaben aus und ruft dann den nächsten Telemetrieprozessor in der Kette auf.
 
-    ``` C#
+    ```csharp
 
     using Microsoft.ApplicationInsights.Channel;
     using Microsoft.ApplicationInsights.Extensibility;
@@ -101,7 +101,7 @@ Zum Filtern von Telemetriedaten schreiben Sie einen Telemetrie-Prozessor und reg
     ```
 1. Fügen Sie Folgendes in „ApplicationInsights.config“ ein:
 
-```XML
+```xml
 
     <TelemetryProcessors>
       <Add Type="WebApplication9.SuccessfulDependencyFilter, WebApplication9">
@@ -141,7 +141,7 @@ Nach diesem Punkt erstellte TelemetryClients-Elemente verwenden Ihre Prozessoren
 #### <a name="synthetic-requests"></a>Synthetische Anforderungen
 Filtern Sie Bots und Webtests heraus. Mit dem Metrik-Explorer haben Sie die Option, synthetische Quellen herauszufiltern. Dadurch wird der Datenverkehr verringert, da die Quellen im SDK gefiltert werden.
 
-``` C#
+```csharp
 
     public void Process(ITelemetry item)
     {
@@ -182,7 +182,7 @@ Wenn Sie langsame Aufrufe diagnostizieren möchten, filtern Sie die schnellen Au
 >
 >
 
-``` C#
+```csharp
 
 public void Process(ITelemetry item)
 {
@@ -255,6 +255,7 @@ Wenn Sie einen Telemetrieinitialisierer angeben, wird dieser immer aufgerufen, w
 
 In "ApplicationInsights.config":
 
+```xml
     <ApplicationInsights>
       <TelemetryInitializers>
         <!-- Fully qualified type name, assembly name: -->
@@ -262,6 +263,7 @@ In "ApplicationInsights.config":
         ...
       </TelemetryInitializers>
     </ApplicationInsights>
+```
 
 *Alternativ* können Sie den Initialisierer im Code instanziieren, z.B. in „Global.aspx.cs“:
 

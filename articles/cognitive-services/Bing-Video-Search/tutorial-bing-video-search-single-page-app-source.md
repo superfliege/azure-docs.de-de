@@ -9,18 +9,18 @@ ms.component: bing-video-search
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: v-gedod
-ms.openlocfilehash: c0842e53cbc297c1980a9d08733d838def073835
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bed17c1df2b7c8dff9f874e43be8d67900fd7836
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373130"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112459"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Tutorial: Single-Page-Webanwendung für die Videosuche
 
 Hier finden Sie den vollständigen Quellcode, der im [Tutorial zu Single-Page-Webanwendungen](tutorial-bing-video-search-single-page-app.md) für die Bing-Videosuche vorgestellt wird. Kopieren Sie zum Ausführen der App den Quellcode in Editor oder einen anderen Text-Editor, und speichern Sie die Datei als `bing.html`. Öffnen Sie dann die gespeicherte Datei in Microsoft Edge oder einem anderen gängigen Browser.
 
-````html
+```html
 <!DOCTYPE html>
 <!-- saved from url=(0014)about:internet -->
 <!-- the above Mark of the Web lets IE run this page in the Internet security zone,
@@ -615,3 +615,4 @@ function doPrevSearchPage() {
 
 </body>
 </html>
+```

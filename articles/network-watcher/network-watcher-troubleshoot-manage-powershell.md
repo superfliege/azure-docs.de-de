@@ -14,20 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: 0a967759e477d213dd0a33298a4079fc48caa81f
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 67c34156d6a397cdeb4bb50c712b1bb651c2f257
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32777678"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090427"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Problembehandlung bei Virtual Network-Gateways und -Verbindungen mit Azure Network Watcher und PowerShell
 
 > [!div class="op_single_selector"]
 > - [Portal](diagnose-communication-problem-between-networks.md)
 > - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
-> - [CLI 1.0](network-watcher-troubleshoot-manage-cli-nodejs.md)
-> - [CLI 2.0](network-watcher-troubleshoot-manage-cli.md)
+> - [Azure-CLI](network-watcher-troubleshoot-manage-cli.md)
 > - [REST-API](network-watcher-troubleshoot-manage-rest.md)
 
 Network Watcher bietet viele Funktionen zum Erfassen von Informationen über Ihre Netzwerkressourcen in Azure. Zu diesen Funktionen zählt die Ressourcenproblembehandlung. Die Ressourcenproblembehandlung kann über das Portal, PowerShell, die CLI oder die REST-API aufgerufen werden. Bei Aufruf untersucht Network Watcher die Integrität von Virtual Network-Gateways oder -Verbindungen und gibt entsprechende Ergebnisse zurück.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 4fbb0e5512511842e020e5670f1290c6b6359305
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: ea6008092f8fbfde8963da50d5273d36a4a30fe3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308729"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050009"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>Tutorial: Azure Active Directory-Integration mit Zscaler ZSCloud
 
@@ -103,15 +103,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Zscaler ZSCloud** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_samlbase.png)
+    ![Configure single sign-on](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_samlbase.png)
 
 3. Führen Sie die folgenden Schritte im Abschnitt **Domäne und URLs für Zscaler ZSCloud** aus:
 
-    ![Configure Single Sign-On](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_url.png)
+    ![Configure single sign-on](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_url.png)
 
      Geben Sie im Textfeld **Anmelde-URL** die von Ihren Benutzern für die Anmeldung bei Ihrer Zscaler ZSCloud-Anwendung verwendete URL ein.
     
@@ -120,15 +120,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_certificate.png) 
+    ![Configure single sign-on](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/zscaler-zscloud-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/zscaler-zscloud-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Zscaler ZSCloud-Konfiguration** auf **Zscaler ZSCloud konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_configure.png) 
+    ![Configure single sign-on](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_configure.png) 
 
 7. Melden Sie sich in einem anderen Webbrowserfenster bei der Zscaler ZSCloud-Unternehmenswebsite als Administrator an.
 
@@ -276,7 +276,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Liste der Anwendungen **Zscaler ZSCloud** aus.
 
-    ![Configure Single Sign-On](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_app.png) 
+    ![Configure single sign-on](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -298,7 +298,7 @@ Wenn Sie die Einstellungen für einmaliges Anmelden testen möchten, öffnen Sie
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Zscaler ZSCloud“ klicken, sollten Sie automatisch bei Ihrer Zscaler ZSCloud-Anwendung angemeldet werden.
 
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

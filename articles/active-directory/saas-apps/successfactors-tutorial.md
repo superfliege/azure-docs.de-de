@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: bf5fb050e81b59195d9bf9bfed9372e1fe8402ab
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8401462ed4bf5ef2ac1ff10cf3f6750cbed7b4e5
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231269"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050800"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>Tutorial: Azure Active Directory-Integration in SuccessFactors
 
@@ -158,7 +158,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
 6. Klicken Sie im Abschnitt **SuccessFactors-Konfiguration** auf **SuccessFactors konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/successfactors-tutorial/tutorial_successfactors_configure.png) 
+    ![Configure single sign-on](./media/successfactors-tutorial/tutorial_successfactors_configure.png) 
 
 7. Melden Sie sich in einem anderen Webbrowserfenster als Administrator beim **SuccessFactors-Verwaltungsportal** an.
     
@@ -214,7 +214,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 12. Führen Sie die folgenden Schritte aus, wenn bei den Anmeldebenutzernamen die Groß-/Kleinschreibung nicht beachtet werden soll.
    
-    ![Configure Single Sign-On][29]
+    ![Configure single sign-on][29]
     
     a. Rufen Sie **Unternehmenseinstellungen** (im unteren Bereich der Seite) auf.
    
@@ -302,7 +302,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „SuccessFactors“ klicken, sollten Sie automatisch bei Ihrer SuccessFactors-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

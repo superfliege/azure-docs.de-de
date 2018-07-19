@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/02/2018
 ms.author: maheshu
-ms.openlocfilehash: 701fe17869d6e7744751d80330422ea47361b411
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ff2659ed7dbdb21bccb8b5858d946b47951e40cc
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216139"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048932"
 ---
 # <a name="enable-password-hash-synchronization-to-azure-active-directory-domain-services"></a>Aktivieren der Kennworthashsynchronisierung für Azure Active Directory Domain Services
 In vorherigen Aufgaben haben Sie Azure Active Directory Domain Services für Ihren Azure AD-Mandanten (Azure Active Directory) aktiviert. Die nächste Aufgabe besteht darin, die Synchronisierung der Kennworthashes, die für die NTLM- (NT LAN Manager) und Kerberos-Authentifizierung erforderlich sind, mit Azure AD Domain Services zu ermöglichen. Nach der Einrichtung der Kennworthashsynchronisierung können sich Benutzer mit ihren Unternehmensanmeldeinformationen bei der verwalteten Domäne anmelden.
@@ -78,7 +78,7 @@ Stellen Sie Ihren Benutzern die folgende Anleitung zur Verfügung, damit sie ihr
 Das neue Kennwort kann wenige Minuten nach der Kennwortänderung in Azure Active Directory Domain Services verwendet werden. Nach etwa 20 Minuten können Sie sich mit dem neuen Kennwort bei Computern in der verwalteten Domäne anmelden.
 
 ## <a name="related-content"></a>Verwandte Inhalte
-* [Aktualisieren Ihres eigenen Kennworts](../active-directory/active-directory-passwords-update-your-own-password.md)
+* [Aktualisieren Ihres eigenen Kennworts](../active-directory/user-help/active-directory-passwords-update-your-own-password.md)
 * [Erste Schritte mit der Kennwortverwaltung](../active-directory/authentication/quickstart-sspr.md)
 * [Aktivieren der Kennwortsynchronisierung für Azure Active Directory Domain Services](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 * [Verwalten einer durch die Azure Active Directory-Domänendienste verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)

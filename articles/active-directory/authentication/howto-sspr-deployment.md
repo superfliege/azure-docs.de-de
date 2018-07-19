@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 4d3e07c6c395645ef34b1707f33a4e37a20bf05d
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 3e14c51d644a29985e759da7c8a29927680d3891
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866982"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048950"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Erfolgreicher Rollout der Self-Service-Kennwortzurücksetzung
 
@@ -86,8 +86,8 @@ Das Deaktivieren der Self-Service-Kennwortzurücksetzung ist einfach. Öffnen Si
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Zurücksetzen oder Ändern des Kennworts](../active-directory-passwords-update-your-own-password.md)
-* [Registrieren für die Self-Service-Kennwortzurücksetzung](../active-directory-passwords-reset-register.md)
+* [Zurücksetzen oder Ändern des Kennworts](../user-help/active-directory-passwords-update-your-own-password.md)
+* [Registrieren für die Self-Service-Kennwortzurücksetzung](../user-help/active-directory-passwords-reset-register.md)
 * [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](concept-sspr-licensing.md)
 * [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](howto-sspr-authenticationdata.md)
 * [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](concept-sspr-policy.md)

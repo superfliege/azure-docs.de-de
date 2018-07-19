@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5d5ddd83a2335e7a08bac587aa627f1dcae9738c
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 1a2b32e7e0e86608f879941485395ebe379a5c1e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970899"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048860"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Einführung in die Geräteverwaltung in Azure Active Directory
 
@@ -181,8 +181,8 @@ Als Faustregel sollten Sie Folgendes verwenden:
 - Weitere Informationen zum gerätebasierten bedingten Zugriff finden Sie unter [Konfigurieren des gerätebasierten bedingten Zugriffs für Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
 
 - Einrichtung:
-    - Informationen zu in Azure Active Directory registrierten Windows 10-Geräten finden Sie unter [How to configure Azure Active Directory registered Windows 10 devices](device-management-azuread-registered-devices-windows10-setup.md) (Konfigurieren von in Azure Active Directory registrierten Windows 10-Geräten).
-    - Informationen zu in Azure Active Directory eingebundenen Geräten finden Sie unter [How to configure Azure Active Directory joined devices](device-management-azuread-joined-devices-setup.md) (Konfigurieren von in Azure Active Directory eingebundenen Geräten).
+    - Informationen zu in Azure Active Directory registrierten Windows 10-Geräten finden Sie unter [How to configure Azure Active Directory registered Windows 10 devices](user-help/device-management-azuread-registered-devices-windows10-setup.md) (Konfigurieren von in Azure Active Directory registrierten Windows 10-Geräten).
+    - Informationen zu in Azure Active Directory eingebundenen Geräten finden Sie unter [How to configure Azure Active Directory joined devices](user-help/device-management-azuread-joined-devices-setup.md) (Konfigurieren von in Azure Active Directory eingebundenen Geräten).
     - Informationen zu in Azure AD eingebundenen Hybridgeräten finden Sie unter [Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten](device-management-hybrid-azuread-joined-devices-setup.md).
 
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 7a296c1e358bffa70ed88ba40380266e8731afd8
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b39879cc8548139879a3039c5e0c6b924e83c107
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211586"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046670"
 ---
 # <a name="integrate-azure-active-directory-with-palo-alto-networks---admin-ui"></a>Integrieren von Azure Active Directory in Palo Alto Networks – Admin UI
 
@@ -309,7 +309,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmeld
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Palo Alto Networks – Admin UI“ klicken, sollten Sie automatisch bei Ihrer Palo Alto Networks – Admin UI-Anwendung angemeldet werden.
 
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

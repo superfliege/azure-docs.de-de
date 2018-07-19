@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 16b715261329544687fd78ed9c022d7392cc32d9
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: e775ed9d918e53b8381a010691c679d80e7dd216
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901475"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044049"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Tutorial: Verwenden einer mit einer Linux-VM verwalteten Dienstidentität (Managed Service Identity, MSI) für den Zugriff auf Azure Key Vault 
 
@@ -51,7 +51,7 @@ In diesem Tutorial wird ein neuer virtueller Linux-Computer erstellt. Sie könne
 2. Wählen Sie **Compute** und dann **Ubuntu Server 16.04 LTS**.
 3. Geben Sie die Informationen zum virtuellen Computer ein. Wählen Sie unter **Authentifizierungstyp** die Option **Öffentlicher SSH-Schlüssel** oder **Kennwort**. Mit den erstellten Anmeldeinformationen können Sie sich auf dem virtuellen Computer anmelden.
 
-    ![Alternativer Bildtext](../media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+    ![Alternativer Bildtext](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
 4. Wählen Sie in der Dropdownliste ein **Abonnement** für den virtuellen Computer aus.
 5. Um eine neue **Ressourcengruppe** auszuwählen, in der der virtuelle Computer erstellt werden soll, wählen Sie **Neu erstellen** aus. Klicken Sie zum Abschluss auf **OK**.
@@ -66,7 +66,7 @@ Eine VM-MSI ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne das
 3. Die Option **Verwaltete Dienstidenität** wird angezeigt. Wählen Sie zum Registrieren und Aktivieren von MSI die Option **Ja** oder zum Deaktivieren „Nein“.
 4. Achten Sie darauf, zum Speichern der Konfiguration auf **Speichern** zu klicken.
 
-    ![Alternativer Bildtext](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![Alternativer Bildtext](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>Gewähren des Zugriffs auf ein in einer Key Vault gespeicherten Geheimnisses für den virtuellen Computer  
 
@@ -83,7 +83,7 @@ Zunächst müssen Sie eine Key Vault erstellen und der Identität des virtuellen
 7. Klicken Sie auf **OK**, um die neue Zugriffsrichtlinie hinzuzufügen. Klicken Sie dann erneut auf **OK**, um die Auswahl der Zugriffsrichtlinie abzuschließen. 
 8. Klicken Sie auf **Erstellen**, um die Key Vault zu erstellen. 
 
-    ![Alternativer Bildtext](../media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
+    ![Alternativer Bildtext](../managed-service-identity/media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
 
 Fügen Sie der Key Vault nun ein Geheimnis hinzu, das Sie später mithilfe von Code abrufen können, der auf dem virtuellen Computer ausgeführt wird: 
 

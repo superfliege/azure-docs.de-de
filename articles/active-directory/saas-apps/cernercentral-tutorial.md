@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: jeedes
-ms.openlocfilehash: e14a9fc822fa42ec12390d1ed4540b246802a990
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 77cd9f90de1d50e91061a6a7222d01c72aadf3f3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226373"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047908"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a>Tutorial: Azure Active Directory-Integration in Cerner Central
 
@@ -100,15 +100,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Cerner Central** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
 
-    ![Configure Single Sign-On](./media/cernercentral-tutorial/tutorial_cernercentral_samlbase.png)
+    ![Configure single sign-on](./media/cernercentral-tutorial/tutorial_cernercentral_samlbase.png)
 
 3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für Cerner Central** aus:
 
-    ![Configure Single Sign-On](./media/cernercentral-tutorial/tutorial_cernercentral_url.png)
+    ![Configure single sign-on](./media/cernercentral-tutorial/tutorial_cernercentral_url.png)
 
     a. Geben Sie im Textfeld **Bezeichner** einen Wert nach folgendem Muster ein:
 
@@ -128,11 +128,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
 
-    ![Configure Single Sign-On](./media/cernercentral-tutorial/tutorial_metadataurl.png)
+    ![Configure single sign-on](./media/cernercentral-tutorial/tutorial_metadataurl.png)
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/cernercentral-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/cernercentral-tutorial/tutorial_general_400.png)
 
 6. Zum Konfigurieren des einmaligen Anmeldens auf der Seite **Cerner Central** müssen Sie die **Verbundmetadaten-URL der App** an den [Cerner Central-Support](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations) senden. Sie konfigurieren das SSO auf der Anwendungsseite, um die Integration abzuschließen.
 
@@ -185,7 +185,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
 2. Wählen Sie in der Anwendungsliste **Cerner Central** aus.
 
-    ![Configure Single Sign-On](./media/cernercentral-tutorial/tutorial_cernercentral_app.png)
+    ![Configure single sign-on](./media/cernercentral-tutorial/tutorial_cernercentral_app.png)
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -205,7 +205,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Cerner Central“ klicken, sollten Sie automatisch bei Ihrer Cerner Central-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „Cerner Central“ klicken, sollten Sie automatisch bei Ihrer Cerner Central-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

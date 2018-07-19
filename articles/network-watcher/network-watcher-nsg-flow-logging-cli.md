@@ -14,20 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: fa90d406313d756f3dd852305a6d61db29815192
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e4e3d331665ddb6c45e47ce8b2cf8170ca622690
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34203408"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39089790"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Konfigurieren von Datenflussprotokollen für Netzwerksicherheitsgruppen mit der Azure CLI
 
 > [!div class="op_single_selector"]
 > - [Azure-Portal](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
-> - [CLI 1.0](network-watcher-nsg-flow-logging-cli-nodejs.md)
-> - [CLI 2.0](network-watcher-nsg-flow-logging-cli.md)
+> - [Azure-CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST-API](network-watcher-nsg-flow-logging-rest.md)
 
 Flowprotokolle für Netzwerksicherheitsgruppen sind ein Network Watcher-Feature, mit dem Sie Informationen zu ein- und ausgehendem IP-Datenverkehr über eine Netzwerksicherheitsgruppe anzeigen können. Diese Flowprotokolle sind im JSON-Format geschrieben und zeigen ausgehende und eingehende Datenflüsse pro Regel, die NIC, auf die sich der Datenfluss bezieht, 5-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr.

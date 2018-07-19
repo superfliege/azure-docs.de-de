@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
-ms.openlocfilehash: 1189a60b33c385377767ea44877dd5fdf853f260
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4ae5c9834352bd2413075e87c79e27a9a3c354b9
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221534"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047642"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>Tutorial: Azure Active Directory-Integration mit Flatter Files
 
@@ -102,37 +102,37 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Flatter Files** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/flatter-files-tutorial/tutorial_flatterfiles_samlbase.png)
+    ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatterfiles_samlbase.png)
 
 3. Im Abschnitt **Domäne und URLs für Flatter Files** muss der Benutzer keine Schritte ausführen, da die App bereits in Azure integriert ist.
 
-    ![Configure Single Sign-On](./media/flatter-files-tutorial/tutorial_flatterfiles_url.png)
+    ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatterfiles_url.png)
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/flatter-files-tutorial/tutorial_flatterfiles_certificate.png) 
+    ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatterfiles_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/flatter-files-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Flatter Files-Konfiguration** auf **Flatter Files konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/flatter-files-tutorial/tutorial_flatterfiles_configure.png) 
+    ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatterfiles_configure.png) 
 
 7. Melden Sie sich bei Ihrer Flatter Files-Anwendung als Administrator an.
 
 8. Klicken Sie auf **DASHBOARD**. 
    
-    ![Configure Single Sign-On](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
+    ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
 
 9. Klicken Sie auf **Settings** (Einstellungen), und führen Sie auf der Registerkarte **Company** (Unternehmen) die folgenden Schritte aus: 
    
-    ![Configure Single Sign-On](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
+    ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
     
     a. Wählen Sie **Use SAML 2.0 for Authentication**aus.
     
@@ -140,7 +140,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 8. Führen Sie im Dialogfeld **SAML Configuration** die folgenden Schritte aus: 
    
-    ![Configure Single Sign-On](./media/flatter-files-tutorial/tutorial_flatter_files_08.png)  
+    ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatter_files_08.png)  
    
     a. Geben Sie in das Textfeld für die **Domäne** die registrierte Domäne ein.
    
@@ -229,7 +229,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Flatter Files**aus.
 
-    ![Configure Single Sign-On](./media/flatter-files-tutorial/tutorial_flatterfiles_app.png) 
+    ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatterfiles_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -250,7 +250,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Flatter Files“ klicken, sollten Sie automatisch bei Ihrer Flatter Files-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

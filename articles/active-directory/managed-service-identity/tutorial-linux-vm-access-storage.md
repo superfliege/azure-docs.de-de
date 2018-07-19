@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: daveba
-ms.openlocfilehash: fb67d1eea588d96129c4b58a8c1b2f569c9663bf
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: d4daccfdcb2bc11831e960aa20533e32801db946
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904406"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049336"
 ---
 # <a name="tutorial-use-a-linux-vms-managed-identity-to-access-azure-storage"></a>Tutorial: Verwenden einer verwalteten Identität für die Linux-VM für den Zugriff auf Azure Storage 
 
@@ -61,7 +61,7 @@ In diesem Abschnitt erstellen Sie einen virtuellen Linux-Computer, für den spä
 2. Wählen Sie **Compute** und dann **Ubuntu Server 16.04 LTS**.
 3. Geben Sie die Informationen zum virtuellen Computer ein. Wählen Sie unter **Authentifizierungstyp** die Option **Öffentlicher SSH-Schlüssel** oder **Kennwort**. Mit den erstellten Anmeldeinformationen können Sie sich auf dem virtuellen Computer anmelden.
 
-   ![Bereich „Grundeinstellungen“ zum Erstellen eines virtuellen Computers](../media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+   ![Bereich „Grundeinstellungen“ zum Erstellen eines virtuellen Computers](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
 4. Wählen Sie in der Liste **Abonnement** ein Abonnement für den virtuellen Computer aus.
 5. Um eine neue Ressourcengruppe auszuwählen, in der der virtuelle Computer erstellt werden soll, klicken Sie auf **Ressourcengruppe** > **Neu erstellen**. Wenn Sie fertig sind, klicken Sie auf **OK**.
@@ -87,7 +87,7 @@ In diesem Abschnitt erstellen Sie ein Speicherkonto.
 5. Stellen Sie sicher, dass **Abonnement** und **Ressourcengruppe** dem entsprechen, was Sie bei der Erstellung Ihrer VM im vorherigen Schritt angegeben haben.
 6. Klicken Sie auf **Create**.
 
-    ![Erstellen eines neuen Speicherkontos](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
+    ![Erstellen eines neuen Speicherkontos](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
 ## <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>Erstellen eines Blobcontainers und Hochladen einer Datei in das Speicherkonto
 
@@ -98,14 +98,14 @@ Da Dateien Blob Storage erfordern, müssen wir einen Blobcontainer erstellen, in
 3. Klicken Sie oben auf der Seite auf **+ Container**.
 4. Geben Sie unter **Neuer Container** einen Namen für den Container ein, und behalten Sie unter **Öffentliche Zugriffsebene** den Standardwert bei.
 
-    ![Erstellen eines Speichercontainers](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
+    ![Erstellen eines Speichercontainers](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
 5. Erstellen Sie mit einem Editor Ihrer Wahl eine Datei mit dem Titel *hall_ welt.txt* auf dem lokalen Computer.  Öffnen Sie die Datei, fügen Sie den Text „Hallo Welt! :)“ (ohne Anführungszeichen) hinzu, und speichern Sie ihn. 
 
 6. Laden Sie die Datei in den neu erstellten Container hoch, indem Sie auf den Containernamen und dann auf **Hochladen** klicken.
 7. Klicken Sie im Bereich **Blob hochladen** unter **Dateien** auf das Ordnersymbol und navigieren Sie zur Datei **hallo_welt.txt** auf dem lokalen Computer. Wählen Sie dann die Datei aus, und klicken Sie auf **Hochladen**.
 
-    ![Hochladen einer Textdatei](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
+    ![Hochladen einer Textdatei](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
 ## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>Gewähren des Zugriffs auf einen Azure-Speichercontainer für Ihre VM 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 42833323cbebf25ce2ca14e6ab7ec4fa5adbfd15
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f301c0156265f055f0ebf7cdad8dba7f39f5ba2b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206943"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044576"
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Übersicht über den Lebenszyklus von Reliable Services
 > [!div class="op_single_selector"]
@@ -79,7 +79,10 @@ Zustandsbehaftete Dienste befolgen mit wenigen Änderungen ein ähnliches Muster
     - Falls es sich bei dem Dienst gerade um einen primären Dienst handelt, wird die Methode `StatefulServiceBase.RunAsync()` des Diensts aufgerufen.
 4. Nachdem alle Replikatlisteneraufrufe von `OpenAsync()` abgeschlossen wurden und `RunAsync()` aufgerufen wurde, wird `StatefulServiceBase.OnChangeRoleAsync()` aufgerufen. Dieser Aufruf wird normalerweise nicht im Dienst außer Kraft gesetzt.
 
-Ähnlich wie bei zustandslosen Diensten wird die Reihenfolge, in der die Listener erstellt und geöffnet werden und **RunAsync** aufgerufen wird, nicht koordiniert. Wenn Sie eine Koordinierung benötigen, sind die Lösungen nahezu identisch. Es gibt einen zusätzlichen Fall für einen zustandsbehafteten Dienst. Angenommen, die bei den Kommunikationslistenern eingehenden Aufrufe benötigen Informationen aus [zuverlässigen Sammlungen](service-fabric-reliable-services-reliable-collections.md). Da die Kommunikationslistener geöffnet werden könnten, bevor die zuverlässigen Sammlungen gelesen oder geschrieben werden können oder **RunAsync** gestartet werden konnte, ist einige zusätzliche Koordination erforderlich. Die einfachste und gängigste Lösung besteht darin, dass die Kommunikationslistener einen Fehlercode zurückgeben, anhand dessen der Client feststellt, dass die Anforderung wiederholt werden muss.
+Ähnlich wie bei zustandslosen Diensten wird die Reihenfolge, in der die Listener erstellt und geöffnet werden und **RunAsync** aufgerufen wird, nicht koordiniert. Wenn Sie eine Koordinierung benötigen, sind die Lösungen nahezu identisch. Es gibt einen zusätzlichen Fall für einen zustandsbehafteten Dienst. Angenommen, die bei den Kommunikationslistenern eingehenden Aufrufe benötigen Informationen aus [zuverlässigen Sammlungen](service-fabric-reliable-services-reliable-collections.md).
+
+   > [!NOTE]  
+   > Da die Kommunikationslistener geöffnet werden könnten, bevor die zuverlässigen Sammlungen gelesen oder geschrieben werden können oder **RunAsync** gestartet werden konnte, ist einige zusätzliche Koordination erforderlich. Die einfachste und gängigste Lösung besteht darin, dass die Kommunikationslistener einen Fehlercode zurückgeben, anhand dessen der Client feststellt, dass die Anforderung wiederholt werden muss.
 
 ## <a name="stateful-service-shutdown"></a>Herunterfahren zustandsbehafteter Dienste
 Wie bei zustandslosen Diensten stimmen die Lebenszyklusereignisse während des Herunterfahrens mit denen während des Starts überein, aber in umgekehrter Reihenfolge. Wenn ein zustandsbehafteter Dienst heruntergefahren wird, treten die folgenden Ereignisse auf:

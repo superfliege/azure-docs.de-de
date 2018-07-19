@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: d955e7fd7805688ba103897c0d900c44f16514f8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4074ba91f5029d6c132982d1d81a4888a5e42721
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376842"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071214"
 ---
 # <a name="speech-synthesis-markup-language"></a>Markupsprache für Sprachsynthese
 
@@ -78,5 +78,5 @@ Die folgenden Beispiele zeigen, wie SSML für allgemeine Sprachsyntheseanforderu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Abrufen Ihres Testabonnements für die Spracherkennung](https://azure.microsoft.com/try/cognitive-services/)
-* [Erkennen von Sprache in C#](quickstart-csharp-windows.md)
+* [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
+* [Erkennen von Sprache in C#](quickstart-csharp-dotnet-windows.md)

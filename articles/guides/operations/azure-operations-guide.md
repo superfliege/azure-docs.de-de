@@ -3,7 +3,7 @@ title: Leitfaden zu den ersten Schritten für Azure-IT-Bediener | Microsoft-Doku
 description: Leitfaden zu den ersten Schritten für Azure-IT-Bediener
 services: ''
 documentationcenter: ''
-author: iainfoulds
+author: themichaelbender-ms
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: ''
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/12/2017
-ms.author: iainfou
-ms.openlocfilehash: f79f727ed46f85866f59468be418ba8975c17bd8
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.author: mibender
+ms.openlocfilehash: 86f11e7c2d5503a0c474a6c15501a6b872c564e3
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099492"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072333"
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>Einführung in Cloud Computing und Microsoft Azure
 
@@ -141,13 +141,11 @@ Eine ausführliche Dokumentation zu Azure-Diensten finden Sie in der [Dokumentat
 
 ### <a name="datacenters-and-regions"></a>Datencenter und Regionen
 
-
 Azure ist eine globale Cloudplattform, die in vielen Regionen auf der ganzen Welt allgemein verfügbar ist. Beim Bereitstellen eines Diensts, einer Anwendung oder einer VM in Azure werden Sie aufgefordert, eine Region auszuwählen. Die ausgewählte Region steht für ein bestimmtes Datencenter, in dem Ihre Anwendung ausgeführt wird. Weitere Informationen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).
 
 Einer der Vorteile der Verwendung von Azure ist, dass Sie Ihre Anwendungen in verschiedenen Datencentern auf der ganzen Welt bereitstellen können. Die Region, die Sie auswählen, kann sich auf die Leistung Ihrer Anwendung auswirken. Es ist optimal, eine Region auszuwählen, die für den Großteil Ihrer Kunden in der Nähe liegt, um die Wartezeit bei Netzwerkanforderungen zu reduzieren. Es kann auch ratsam sein, die Region so auszuwählen, dass sie die rechtlichen Anforderungen für den Vertrieb Ihrer App in bestimmten Ländern erfüllt.
 
 ### <a name="azure-portal"></a>Azure-Portal
-
 
 Das Azure-Portal ist eine webbasierte Anwendung, die zum Erstellen, Verwalten und Entfernen von Azure-Ressourcen und -Diensten verwendet werden kann. Das Azure-Portal finden Sie unter https://portal.azure.com. Es enthält ein anpassbares Dashboard und Tools zum Verwalten der Azure-Ressourcen. Darüber hinaus werden Informationen zur Abrechnung für das Abonnement bereitgestellt. Weitere Informationen finden Sie unter [Übersicht über das Microsoft Azure-Portal](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) und [Verwalten von Azure-Ressourcen über das Portal](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
 
@@ -165,7 +163,6 @@ Eine Azure Resource Manager-Vorlage ist eine JSON-Datei (JavaScript Object Notat
 
 ### <a name="automation"></a>Automation
 
-
 Zusätzlich zum Erstellen, Verwalten und Löschen von Ressourcen mit dem Azure-Portal können Sie diese Aktivitäten automatisieren, indem Sie PowerShell oder die Azure-Befehlszeilenschnittstelle (CLI) verwenden.
 
 **Azure PowerShell**
@@ -178,9 +175,7 @@ Die Azure-Befehlszeilenschnittstelle ist ein Tool, das Sie zum Erstellen, Verwal
 
 **REST-APIs** Azure basiert auf einem Satz von REST-APIs, die die Benutzeroberfläche des Azure-Portals unterstützen. Die meisten dieser REST-APIs werden ebenfalls unterstützt, um es Ihnen zu ermöglichen, Ihre Azure-Ressourcen und -Apps über jedes internetfähige Gerät programmgesteuert bereitzustellen und zu verwalten. Weitere Informationen finden Sie unter [Azure REST API Reference](https://docs.microsoft.com/rest/api/index) (Azure-REST-API – Referenz).
 
-
 ## <a name="azure-subscriptions"></a>Azure-Abonnements
-
 
 Ein Abonnement ist eine logische Gruppierung von Azure-Diensten, die mit einem Azure-Konto verknüpft ist. Ein einzelnes Azure-Konto kann mehrere Abonnements enthalten. Die Abrechnung für Azure-Dienste erfolgt auf Abonnementbasis. Azure-Abonnements verfügen über einen Kontoadministrator, der die volle Kontrolle über das Abonnement hat, und einen Dienstadministrator, der die Kontrolle über alle Dienste des Abonnements hat. Zusätzlich zu Administratoren kann einzelnen Konten über die rollenbasierte Zugriffssteuerung (RBAC) die detaillierte Kontrolle über Azure-Ressourcen gewährt werden.
 
@@ -200,10 +195,7 @@ Wenn der Gutschriftbetrag überschritten wird, wird Ihr Dienst bis zum Beginn de
 
 **Enterprise Agreements**: Mit einem Enterprise Agreement sagen Sie die Nutzung einer bestimmten Anzahl von Diensten in Azure für das nächste Jahr verbindlich zu und zahlen den entsprechenden Betrag im Voraus. Dieser verbindliche Betrag wird im Laufe des Jahres verbraucht. Falls Sie den zugesagten Betrag überschreiten, können Sie die Differenz im Nachhinein begleichen. Je nach Betrag der Zusage erhalten Sie für die Dienste in Azure einen Rabatt.
 
-
-
 ### <a name="grant-administrative-access-to-an-azure-subscription"></a>Gewähren des administrativen Zugriffs auf ein Azure-Abonnement
-
 
 Es sind mehrere Kontoadministratorrollen verfügbar, die jederzeit geändert werden können. Zwei wichtige Rollen sind:
 
@@ -215,13 +207,11 @@ Weitere Informationen finden Sie unter [Hinzufügen oder Ändern von Azure-Admin
 
 ### <a name="view-billing-information-in-the-azure-portal"></a>Anzeigen von Abrechnungsinformationen im Azure-Portal
 
-
 Eine wichtige Komponente der Verwendung von Azure ist die Anzeige von Abrechnungsinformationen. Das Azure-Portal ermöglicht ausführliche Einblicke in Azure-Abrechnungsinformationen.
 
 Weitere Informationen finden Sie unter [Herunterladen von Azure-Rechnungen und täglichen Nutzungsdaten](../../billing/billing-download-azure-invoice-daily-usage-date.md).
 
 ### <a name="get-billing-information-from-billing-apis"></a>Abrufen von Abrechnungsinformationen aus Abrechnungs-APIs
-
 
 Zusätzlich zum Anzeigen der Abrechnung im Portal können Sie auf die Abrechnungsinformationen zugreifen, indem Sie über die Azure-Abrechnungs-REST-APIs ein Skript oder Programm verwenden:
 
@@ -262,7 +252,6 @@ Der Ressourcen-Manager bietet mehrere Vorteile:
 -   Indem Sie die Kosten für eine Gruppe mit Ressourcen anzeigen, für die das gleiche Tag verwendet wird, erhalten Sie die Abrechnungsinformationen für Ihre Organisation.
 
 ### <a name="tips-for-creating-resource-groups"></a>Tipps zum Erstellen von Ressourcengruppen
-
 
 Beachten Sie diese Tipps, wenn Sie Entscheidungen zu Ihren Ressourcengruppen treffen:
 
@@ -347,7 +336,6 @@ Sie können virtuelle Azure-Computer bereitstellen, indem Sie das Azure-Portal, 
 Für die Bereitstellung eines virtuellen Computers mit dem Azure-Portal sind nur ein aktives Azure-Abonnement und Zugriff auf einen Webbrowser erforderlich. Sie können viele verschiedene Betriebssystemimages mit unterschiedlichen Konfigurationen wählen. Alle Speicher- und Netzwerkanforderungen werden während der Bereitstellung konfiguriert. Weitere Informationen finden Sie unter „Erstellen einer Linux-VM mit dem Azure-Portal“ für [Windows](../../virtual-machines/windows/quick-create-portal.md) und [Linux](../../virtual-machines/linux/quick-create-portal.md).
 
 Zusätzlich zur Bereitstellung eines virtuellen Computers mit dem Azure-Portal können Sie auch eine Azure Resource Manager-Vorlage über das Portal bereitstellen. Auf diese Weise werden alle Ressourcen so bereitgestellt und konfiguriert, wie sie in der Vorlage definiert sind. Weitere Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
-
 
 **PowerShell**
 

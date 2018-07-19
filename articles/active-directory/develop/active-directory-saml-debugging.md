@@ -15,19 +15,19 @@ ms.date: 06/15/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin, dastrock, smalser
-ms.openlocfilehash: 8bb0df567fbac6e8f8a2e2f64f868b4f219e05ac
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 0192b2d89b5e97c7f23b5394106853ddf83ddaf4
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751393"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044008"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory.
 
 Erfahren Sie, wie Sie Probleme beim [einmaligen Anmelden](../manage-apps/what-is-single-sign-on.md) bei Anwendungen in Azure Active Directory (Azure AD), die [Security Assertion Markup Language (SAML) 2.0](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language) unterstützen, finden und beheben. 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-Sie sollten die [Erweiterung zur sicheren Anmeldung bei „Meine Apps“](../active-directory-saas-access-panel-user-help.md#i-am-having-trouble-installing-the-my-apps-secure-sign-in-extension) installieren. Diese Browsererweiterung erleichter das Erfassen der SAML-Anforderung sowie die SAML-Antwortinformationen, die Sie für die Behebung von Problemen mit einmaligem Anmelden benötigen. Für den Fall, dass Sie die Erweiterung nicht installieren können, zeigt dieser Artikel Ihnen die Behebung von Problemen mit und ohne Erweiterung.
+Sie sollten die [Erweiterung zur sicheren Anmeldung bei „Meine Apps“](../user-help/active-directory-saas-access-panel-user-help.md#i-am-having-trouble-installing-the-my-apps-secure-sign-in-extension) installieren. Diese Browsererweiterung erleichter das Erfassen der SAML-Anforderung sowie die SAML-Antwortinformationen, die Sie für die Behebung von Problemen mit einmaligem Anmelden benötigen. Für den Fall, dass Sie die Erweiterung nicht installieren können, zeigt dieser Artikel Ihnen die Behebung von Problemen mit und ohne Erweiterung.
 
 Verwenden Sie zum Herunterladen und Installieren der Erweiterung zur sicheren Anmeldung bei „Meine Apps“ einen der folgenden Links.
 

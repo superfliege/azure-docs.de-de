@@ -10,18 +10,18 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 4eb91e37331a5af064d2af0e937eb071d805688f
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 146a86058adc73626e532f33e9fdbc83d9cf27e8
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097878"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048986"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Berichte in Azure Multi-Factor Authentication
 
 Azure Multi-Factor Authentication bietet verschiedene Berichte, die Sie und Ihre Organisation im Azure-Portal verwenden können. In der folgenden Tabelle sind die verfügbaren Berichte aufgeführt:
 
-| Bericht | Speicherort | BESCHREIBUNG |
+| Bericht | Standort | BESCHREIBUNG |
 |:--- |:--- |:--- |
 | Verlauf – gesperrte Benutzer | Azure AD > MFA-Server > Benutzer blockieren/entsperren | Zeigt die Liste der Anforderungen zum Blockieren und Entsperren von Benutzern an. |
 | Nutzung und Betrugswarnungen | Azure AD > Anmeldungen | Bietet Informationen zur Gesamtnutzung, Übersichts- und Detailinformationen zu Benutzern sowie einen Verlauf von Betrugswarnungen, die im angegebenen Zeitraum gesendet wurden. |
@@ -49,5 +49,5 @@ Identifizieren Sie mithilfe des folgenden PowerShell-Befehls Benutzer, die sich 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Für Benutzer](end-user/current/multi-factor-authentication-end-user.md)
+* [Für Benutzer](../user-help/multi-factor-authentication-end-user.md)
 * [Bereitstellungsort](concept-mfa-whichversion.md)

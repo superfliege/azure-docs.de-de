@@ -7,23 +7,23 @@ author: daveba
 manager: mtillman
 editor: daveba
 ms.service: active-directory
-ms.component: msi
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 12/15/2017
 ms.author: daveba
-ms.openlocfilehash: 94e16156e8accc2460005cb1927a621ec7921c71
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 81b508661ac7195f690739fe7961691ddbedc9b0
 ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 07/14/2018
-ms.locfileid: "39043991"
+ms.locfileid: "39049359"
 ---
-# <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>Tutorial: Verwenden einer Windows-VM-MSI für den Zugriff auf Azure Storage über einen Zugriffsschlüssel
+# <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>Verwenden einer Windows-VM-MSI für den Zugriff auf Azure Storage über einen Zugriffsschlüssel
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
+[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
 In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Dienstidentität (Managed Service Identity, MSI) für einen virtuellen Windows-Computer aktivieren und diese Identität anschließend verwenden, um auf Speicherkonto-Zugriffsschlüssel zuzugreifen. Sie können Speicherzugriffsschlüssel wie gewohnt bei Speichervorgängen verwenden, z.B. bei der Verwendung des Storage SDK. Für dieses Tutorial werden Blobs mithilfe von Azure Storage PowerShell hoch- und heruntergeladen. Sie lernen Folgendes:
 
@@ -35,9 +35,9 @@ In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Dienstidentität (Manag
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
+[!INCLUDE [msi-core-prereqs](~/includes/active-directory-msi-core-prereqs-ua.md)]
 
-[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+[!INCLUDE [msi-tut-prereqs](~/includes/active-directory-msi-tut-prereqs.md)]
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -54,18 +54,22 @@ In diesem Tutorial wird ein neuer virtueller Windows-Computer erstellt. Sie kön
 5.  Um eine neue **Ressourcengruppe** auszuwählen, in der der virtuelle Computer erstellt werden soll, wählen Sie **Neu erstellen** aus. Klicken Sie zum Abschluss auf **OK**.
 6.  Wählen Sie eine Größe für den virtuellen Computer. Wählen Sie die Option **Alle anzeigen**, oder ändern Sie den Filter **Supported disk type** (Unterstützter Datenträgertyp), um weitere Größen anzuzeigen. Behalten Sie auf dem Blatt „Einstellungen“ die Standardwerte bei, und klicken Sie auf **OK**.
 
-    ![Alternativer Bildtext](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+    ![Alternativer Bildtext](../managed-service-identity/media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
 ## <a name="enable-msi-on-your-vm"></a>Aktivieren von MSI auf dem virtuellen Computer
 
-Eine VM-MSI ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Im Hintergrund werden durch das Aktivieren der MSI zwei Vorgänge ausgelöst: Der virtuelle Computer wird bei Azure Active Directory registriert, um die zugehörige verwaltete Identität zu erstellen, und die Identität wird auf dem virtuellen Computer konfiguriert.
+Eine VM-MSI ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Im Hintergrund werden durch das Aktivieren von MSI zwei Vorgänge ausgelöst: Auf dem virtuellen Computer wird die MSI-VM-Erweiterung installiert, und MSI wird für den virtuellen Computer aktiviert.  
 
 1. Navigieren Sie zu der Ressourcengruppe des neuen virtuellen Computers, und wählen Sie den virtuellen Computer aus, den Sie im vorherigen Schritt erstellt haben.
 2. Klicken Sie in den „Einstellungen“ des virtuellen Computers auf der linken Seite auf **Konfiguration**.
 3. Wählen Sie zum Registrieren und Aktivieren von MSI die Option **Ja** oder zum Deaktivieren „Nein“.
 4. Achten Sie darauf, zum Speichern der Konfiguration auf **Speichern** zu klicken.
 
-    ![Alternativer Bildtext](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![Alternativer Bildtext](../managed-service-identity/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+
+5. Wenn Sie überprüfen möchten, welche Erweiterungen sich auf der VM befinden, klicken Sie auf **Erweiterungen**. Wenn die MSI aktiviert ist, wird **ManagedIdentityExtensionforWindows** in der Liste angezeigt.
+
+    ![Alternativer Bildtext](../managed-service-identity/media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen 
 
@@ -117,7 +121,7 @@ In diesem Abschnitt müssen Sie PowerShell-Cmdlets von Azure Resource Manager ve
 4. Erstellen Sie mithilfe des PowerShell-Befehls „Invoke-WebRequest“ eine Anforderung an den lokalen MSI-Endpunkt, um ein Zugriffstoken für Azure Resource Manager zu erhalten.
 
     ```powershell
-       $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Method GET -Headers @{Metadata="true"}
+       $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://management.azure.com/"} -Headers @{Metadata="true"}
     ```
     
     > [!NOTE]
@@ -196,10 +200,15 @@ Context           : Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
 Name              : testblob
 ```
 
-## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie gelernt, wie Sie eine verwaltete Dienstidentität für den Zugriff auf Azure Storage unter Verwendung eines Zugriffsschlüssels erstellen.  Weitere Informationen zu Azure Storage-Zugriffsschlüsseln finden Sie hier:
+## <a name="related-content"></a>Verwandte Inhalte
 
-> [!div class="nextstepaction"]
->[Verwalten von Speicherzugriffsschlüsseln](/azure/storage/common/storage-create-storage-account#manage-your-storage-access-keys)
+- Einen Überblick über MSI finden Sie unter [Übersicht über verwaltete Dienstidentitäten](msi-overview.md).
+- Wenn Sie dieses gleiche Tutorial mit SAS-Speicheranmeldeinformationen ausführen möchten, lesen Sie [Verwenden einer Windows-VM-MSI für den Zugriff auf Azure Storage über SAS-Anmeldeinformationen](msi-tutorial-windows-vm-access-storage-sas.md).
+- Weitere Informationen zum SAS-Feature des Azure Storage-Kontos finden Sie hier:
+  - [Verwenden von Shared Access Signatures (SAS)](~/articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)
+  - [Constructing a Service SAS (Erstellen einer Dienstebenen-SAS)](/rest/api/storageservices/Constructing-a-Service-SAS.md)
+
+Verwenden Sie den folgenden Kommentarabschnitt, um uns Feedback zu senden und uns bei der Verbesserung unserer Inhalte zu unterstützen.
+
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: d05a86d98bbdedc2200020aeeb1e561c3786a150
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1ad18bd1aea36c5f185f7a8e3062b1c2103017c5
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218750"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049788"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>Tutorial: Azure Active Directory-Integration in TINFOIL SECURITY
 
@@ -99,7 +99,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **TINFOIL SECURITY** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
@@ -107,7 +107,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 3. Im Abschnitt **Domäne und URLs für TINFOIL SECURITY** muss der Benutzer keine Schritte ausführen, da die App bereits in Azure integriert ist.
 
-    ![Configure Single Sign-On](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_url.png)
+    ![Configure single sign-on](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_url.png)
 
 
 4. Kopieren Sie im Abschnitt **SAML-Signaturzertifikat** den Wert **FINGERABDRUCK**.
@@ -252,7 +252,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „TINFOIL SECURITY“ klicken, sollten Sie automatisch bei Ihrer TINFOIL SECURITY-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „TINFOIL SECURITY“ klicken, sollten Sie automatisch bei Ihrer TINFOIL SECURITY-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

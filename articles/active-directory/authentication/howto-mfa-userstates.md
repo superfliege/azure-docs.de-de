@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 204910ff6e02eafd62eeb56bf82b77b91b3cb5ad
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 6945966d4a701ea6e2684b7da766c8b6c9f9a283
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099608"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049047"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user-or-group"></a>Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer oder eine Gruppe
 
@@ -71,7 +71,7 @@ Führen Sie die folgenden Schritte aus, um auf die Seite zuzugreifen, auf der Si
 
 5. Bestätigen Sie Ihre Auswahl im Popupfenster, das geöffnet wird. 
 
-Benachrichtigen Sie die Benutzer per E-Mail, nachdem Sie die Benutzer aktiviert haben. Teilen Sie ihnen mit, dass sie zur Registrierung aufgefordert werden, wenn sie sich beim nächsten Mal anmelden. Und wenn Ihre Organisation auch nicht auf Browsern basierende Apps verwendet, die die moderne Authentifizierung nicht unterstützen, müssen die Benutzer App-Kennwörter erstellen. Sie können auch einen Link zum [Azure MFA-Leitfaden für Endbenutzer](end-user/current/multi-factor-authentication-end-user.md) in die E-Mail einfügen, um den Benutzern den Einstieg zu erleichtern.
+Benachrichtigen Sie die Benutzer per E-Mail, nachdem Sie die Benutzer aktiviert haben. Teilen Sie ihnen mit, dass sie zur Registrierung aufgefordert werden, wenn sie sich beim nächsten Mal anmelden. Und wenn Ihre Organisation auch nicht auf Browsern basierende Apps verwendet, die die moderne Authentifizierung nicht unterstützen, müssen die Benutzer App-Kennwörter erstellen. Sie können auch einen Link zum [Azure MFA-Leitfaden für Endbenutzer](../user-help/multi-factor-authentication-end-user.md) in die E-Mail einfügen, um den Benutzern den Einstieg zu erleichtern.
 
 ### <a name="use-powershell"></a>Verwenden von PowerShell
 Zum Ändern des Benutzerstatus mit [Azure AD PowerShell](/powershell/azure/overview) ändern Sie `$st.State`. Es gibt drei mögliche Status:

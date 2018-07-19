@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f4278dc3af1074b6de299444d2b205396bc0a9c0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7be5569654cb537260117ecd452e58cff9824a88
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595307"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044773"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect-Synchronisierung: Grundlegendes zur Standardkonfiguration
 In diesem Artikel werden die standardmäßigen Konfigurationsregeln erläutert. Er dokumentiert die Regeln und deren Auswirkungen auf die Konfiguration. Außerdem wird die Standardkonfiguration der Azure AD Connect-Synchronisierung beschrieben. Der Leser soll verstehen, wie das als deklarative Bereitstellung bezeichnete Konfigurationsmodell in einem realistischen Beispiel funktioniert. Dieser Artikel setzt voraus, dass die Azure AD Connect-Synchronisierung bereits mit dem Installations-Assistenten installiert und konfiguriert wurde.
@@ -77,9 +77,9 @@ Ein Kontaktobjekt muss Folgendes erfüllen, um synchronisiert zu werden:
 
 * Der Kontakt muss E-Mail-aktiviert sein. Die Überprüfung umfasst folgende Regeln:
   * `IsPresent([proxyAddresses]) = True)`. Das proxyAddresses-Attribut muss aufgefüllt sein.
-  * Eine primäre E-Mail-Adresse befindet sich entweder im proxyAddresses-Attribut oder im mail-Attribut. Ob es sich bei dem Inhalt um eine E-Mail-Adresse handelt, wird anhand des Vorhandenseins eines @-Zeichens ermittelt. Eine der beiden Regeln muss „True“ ergeben:
-    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Ist ein Eintrag mit „SMTP:“ vorhanden? Wenn ja, enthält die Zeichenfolge ein @-Zeichen?
-    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Ist das E-Mail-Attribut aufgefüllt, und falls ja, enthält die Zeichenfolge ein @-Zeichen?
+  * Eine primäre E-Mail-Adresse befindet sich entweder im proxyAddresses-Attribut oder im mail-Attribut. Ob es sich bei dem Inhalt um eine E-Mail-Adresse handelt, wird anhand des Vorhandenseins eines \@-Zeichens ermittelt. Eine der beiden Regeln muss „True“ ergeben:
+    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Ist ein Eintrag mit „SMTP:“ vorhanden? Wenn ja, enthält die Zeichenfolge ein \@-Zeichen?
+    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Ist das E-Mail-Attribut aufgefüllt, und falls ja, enthält die Zeichenfolge ein \@-Zeichen?
 
 Die folgenden Kontaktobjekte werden **nicht** mit Azure AD synchronisiert:
 

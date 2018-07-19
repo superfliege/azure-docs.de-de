@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: f2d0b009c4451a4108222ac7aa7954ba6dd86699
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 04a446f43bd39ef7bfca590af67289813eab4032
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869006"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048878"
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -248,8 +248,8 @@ Um dieses Szenario zu testen, wechseln Sie mit einem der Partnerbenutzer zu http
 Die folgenden Artikel führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD:
 
 * [Erfolgreiches Rollout der Self-Service-Kennwortzurücksetzung](howto-sspr-deployment.md)
-* [Zurücksetzen oder Ändern des Kennworts](../active-directory-passwords-update-your-own-password.md)
-* [Registrieren für die Self-Service-Kennwortzurücksetzung](../active-directory-passwords-reset-register.md)
+* [Zurücksetzen oder Ändern des Kennworts](../user-help/active-directory-passwords-update-your-own-password.md)
+* [Registrieren für die Self-Service-Kennwortzurücksetzung](../user-help/active-directory-passwords-reset-register.md)
 * [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](concept-sspr-licensing.md)
 * [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](howto-sspr-authenticationdata.md)
 * [Authentifizierungsmethoden](concept-sspr-howitworks.md#authentication-methods)

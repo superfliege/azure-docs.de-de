@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: cde1af63fe609170c65bc469fa57573d7bc48490
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: eee0787518a17826d6256cb9b7dad8f4547f5663
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901509"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048843"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>Tutorial: Verwenden einer Linux-VM-MSI für den Zugriff auf Azure Storage über einen Zugriffsschlüssel
 
@@ -50,7 +50,7 @@ In diesem Tutorial wird ein neuer virtueller Linux-Computer erstellt. Sie könne
 2. Wählen Sie **Compute** und dann **Ubuntu Server 16.04 LTS**.
 3. Geben Sie die Informationen zum virtuellen Computer ein. Wählen Sie unter **Authentifizierungstyp** die Option **Öffentlicher SSH-Schlüssel** oder **Kennwort**. Mit den erstellten Anmeldeinformationen können Sie sich auf dem virtuellen Computer anmelden.
 
-    ![Alternativer Bildtext](../media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+    ![Alternativer Bildtext](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
 4. Wählen Sie in der Dropdownliste ein **Abonnement** für den virtuellen Computer aus.
 5. Um eine neue **Ressourcengruppe** auszuwählen, in der der virtuelle Computer erstellt werden soll, wählen Sie **Neu erstellen** aus. Klicken Sie zum Abschluss auf **OK**.
@@ -65,7 +65,7 @@ Eine VM-MSI ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne das
 3. Wählen Sie zum Registrieren und Aktivieren von MSI die Option **Ja** oder zum Deaktivieren „Nein“.
 4. Achten Sie darauf, zum Speichern der Konfiguration auf **Speichern** zu klicken.
 
-    ![Alternativer Bildtext](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![Alternativer Bildtext](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen 
 
@@ -78,7 +78,7 @@ Erstellen Sie ein Speicherkonto, sofern Sie über keines verfügen.  Sie können
 5. Stellen Sie sicher, dass **Abonnement** und **Ressourcengruppe** dem entsprechen, was Sie bei der Erstellung Ihrer VM im vorherigen Schritt angegeben haben.
 6. Klicken Sie auf **Create**.
 
-    ![Erstellen eines neuen Speicherkontos](../media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
+    ![Erstellen eines neuen Speicherkontos](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
 ## <a name="create-a-blob-container-in-the-storage-account"></a>Erstellen eines Blob-Containers im Speicherkonto
 
@@ -89,7 +89,7 @@ Später werden wir eine Datei in das neue Speicherkonto hoch- und daraus herunte
 3. Klicken Sie oben auf der Seite auf **+ Container**, und ein Bereich namens „Neuer Container“ wird geöffnet.
 4. Geben Sie dem Container einen Namen, wählen Sie eine Zugriffsebene aus, und klicken Sie dann auf **OK**. Der angegebene Name wird später in diesem Tutorial verwendet. 
 
-    ![Erstellen eines Speichercontainers](../media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
+    ![Erstellen eines Speichercontainers](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
 ## <a name="grant-your-vms-msi-access-to-use-storage-account-access-keys"></a>Gewähren des MSI-Zugriffs Ihres virtuellen Computers für die Verwendung von Speicherkonto-Zugriffsschlüsseln
 
@@ -103,7 +103,7 @@ Azure Storage unterstützt die Azure AD-Authentifizierung nicht nativ.  Sie kön
 6. Stellen Sie im nächsten Schritt sicher, dass das richtige Abonnement in der Dropdownliste **Abonnement** aufgeführt wird, und legen Sie dann **Ressourcengruppe** auf „Alle Ressourcengruppen“ fest.  
 7. Wählen Sie schließlich unter **Auswählen** in der Dropdownliste Ihren virtuellen Linux-Computer aus, und klicken Sie dann auf **Speichern**. 
 
-    ![Alternativer Bildtext](../media/msi-tutorial-linux-vm-access-storage/msi-storage-role.png)
+    ![Alternativer Bildtext](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-role.png)
 
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>Abrufen eines Zugriffstokens mithilfe der VM-Identität und Verwenden dieses Zugriffstokens zum Aufrufen von Azure Resource Manager
 

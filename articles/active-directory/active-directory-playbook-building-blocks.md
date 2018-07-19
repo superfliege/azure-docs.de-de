@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 45dedd8c4d6ae2f9b54873d87f82c2e605a8c2aa
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fa399e3644e1050a4f264890583a388f7abd84ed
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38451698"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049468"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory-PoC-Playbook: Bausteine
 
@@ -157,7 +157,7 @@ Geschätzter Zeitaufwand: 60 Minuten
 | Führen Sie die Anweisungen zum Konfigurieren von ServiceNow aus. |  |
 | Aktivieren Sie auf dem Blatt „Bereitstellung“ der ServiceNow-App die Bereitstellungsform „Automatisch“. | [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im neuen Azure-Portal](manage-apps/configure-automatic-user-provisioning-portal.md) |
 | Warten Sie einige Minuten, während die Bereitstellung abgeschlossen wird.  In der Zwischenzeit können Sie die Bereitstellungsberichte überprüfen. |  |
-| Melden Sie sich unter https://myapps.microsoft.com/ als Testbenutzer mit Zugriff an. | [Was ist der Zugriffsbereich?](active-directory-saas-access-panel-introduction.md) |
+| Melden Sie sich unter https://myapps.microsoft.com/ als Testbenutzer mit Zugriff an. | [Was ist der Zugriffsbereich?](user-help/active-directory-saas-access-panel-introduction.md) |
 | Klicken Sie auf die Kachel für die Anwendung, die gerade erstellt wurde. Bestätigen Sie den Zugriff. |  |
 | Optional: Überprüfen Sie die Nutzungsberichte der Anwendung. Hinweis: Die Zugriffe werden in den Berichten erst nach einer gewissen Wartezeit angezeigt. | [Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal: Nutzung von verwalteten Anwendungen](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](active-directory-reporting-retention.md) |
 
@@ -188,8 +188,8 @@ Geschätzter Zeitaufwand: 15 Minuten
 | Konfigurieren von Kennwort-SSO | [Verwalten des Features für einmaliges Anmelden für Unternehmens-Apps im neuen Azure-Portal: Kennwortbasierte Anmeldung](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
 | Weisen Sie die App der in den Voraussetzungen identifizierten Gruppe zu. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Melden Sie sich unter https://myapps.microsoft.com/ als Testbenutzer mit Zugriff an. |  |
-| Klicken Sie auf die Kachel für die Anwendung, die gerade erstellt wurde. | [Was ist der Zugriffsbereich?: Kennwortbasiertes SSO ohne Identitätsbereitstellung](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
-| Eingeben der Anwendungsanmeldeinformationen | [Was ist der Zugriffsbereich?: Kennwortbasiertes SSO ohne Identitätsbereitstellung](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
+| Klicken Sie auf die Kachel für die Anwendung, die gerade erstellt wurde. | [Was ist der Zugriffsbereich?: Kennwortbasiertes SSO ohne Identitätsbereitstellung](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
+| Eingeben der Anwendungsanmeldeinformationen | [Was ist der Zugriffsbereich?: Kennwortbasiertes SSO ohne Identitätsbereitstellung](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | Schließen Sie den Browser, und wiederholen Sie den Anmeldevorgang. Zu diesem Zeitpunkt sollte der Benutzer die Anwendung direkt öffnen können. |  |
 | Optional: Überprüfen Sie die Nutzungsberichte der Anwendung. Hinweis: Die Zugriffe werden in den Berichten erst nach einer gewissen Wartezeit angezeigt. | [Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal: Nutzung von verwalteten Anwendungen](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](active-directory-reporting-retention.md) |
 
@@ -308,7 +308,7 @@ Geschätzter Zeitaufwand: 10 Minuten
 | Die SaaS-Anwendung (Verbund-SSO oder Kennwort-SSO) wurde bereits konfiguriert. | Baustein: [SSO-Konfiguration mit SaaS-Verbund](#saas-federated-sso-configuration) |
 | Die Cloudgruppe, der unter 1. Zugriff auf die Anwendung gewährt wurde, wurde identifiziert. | Baustein: [SSO-Konfiguration mit SaaS-Verbund](#saas-federated-sso-configuration) <br/>[Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
 | Anmeldeinformationen sind für den Besitzer der Gruppe verfügbar. | [Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](fundamentals/active-directory-manage-groups.md) |
-| Die Anmeldeinformationen für den Information-Worker, der auf die Apps zugreifen soll, sind bekannt. | [Was ist der Zugriffsbereich?](active-directory-saas-access-panel-introduction.md) |
+| Die Anmeldeinformationen für den Information-Worker, der auf die Apps zugreifen soll, sind bekannt. | [Was ist der Zugriffsbereich?](user-help/active-directory-saas-access-panel-introduction.md) |
 
 
 ### <a name="steps"></a>Schritte
@@ -318,7 +318,7 @@ Geschätzter Zeitaufwand: 10 Minuten
 | Identifizieren Sie die Gruppe, der Zugriff auf die Anwendung gewährt wurde, und konfigurieren Sie deren Besitzer.| [Verwalten der Einstellungen für eine Gruppe in Azure Active Directory](fundamentals/active-directory-groups-settings-azure-portal.md) |
 | Melden Sie sich als Besitzer der Gruppe an, und zeigen Sie die Gruppenmitgliedschaft auf der Registerkarte „Gruppen“ im Zugriffsbereich an. | [Azure Active Directory-Gruppenverwaltungsseite](https://account.activedirectory.windowsazure.com/r#/groups) |
 | Fügen Sie den Information-Worker hinzu, den Sie testen möchten. |  |
-| Melden Sie sich als Information-Worker an. Vergewissern Sie sich, dass die Kachel verfügbar ist. | [Was ist der Zugriffsbereich?](active-directory-saas-access-panel-introduction.md) |
+| Melden Sie sich als Information-Worker an. Vergewissern Sie sich, dass die Kachel verfügbar ist. | [Was ist der Zugriffsbereich?](user-help/active-directory-saas-access-panel-introduction.md) |
 
 ### <a name="considerations"></a>Überlegungen
 
@@ -332,7 +332,7 @@ Wenn die Bereitstellung für die Anwendung aktiviert ist, müssen Sie möglicher
 | --- | --- |
 | Die SaaS-Anwendung (Verbund-SSO oder Kennwort-SSO) wurde bereits konfiguriert. | Baustein: [SSO-Konfiguration mit SaaS-Verbund](#saas-federated-sso-configuration) |
 | Die Cloudgruppe, der unter 1. Zugriff auf die Anwendung gewährt wurde, wurde identifiziert. | Baustein: [SSO-Konfiguration mit SaaS-Verbund](#saas-federated-sso-configuration) <br/>[Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
-| Die Anmeldeinformationen für den Information-Worker, der auf die Apps zugreifen soll, sind bekannt. | [Was ist der Zugriffsbereich?](active-directory-saas-access-panel-introduction.md) |
+| Die Anmeldeinformationen für den Information-Worker, der auf die Apps zugreifen soll, sind bekannt. | [Was ist der Zugriffsbereich?](user-help/active-directory-saas-access-panel-introduction.md) |
 
 
 ### <a name="steps"></a>Schritte
@@ -380,7 +380,7 @@ Geschätzter Zeitaufwand: 15 Minuten
 
 | Voraussetzung | angeben |
 | --- | --- |
-| Aktivieren Sie die Self-Service-Kennwortverwaltung in Ihrem Mandanten. | [Azure Active Directory – Zurücksetzen von Kennwörtern für IT-Administratoren](active-directory-passwords-update-your-own-password.md) |
+| Aktivieren Sie die Self-Service-Kennwortverwaltung in Ihrem Mandanten. | [Azure Active Directory – Zurücksetzen von Kennwörtern für IT-Administratoren](user-help/active-directory-passwords-update-your-own-password.md) |
 | Aktivieren Sie das Kennwortrückschreiben, um Kennwörter lokal zu verwalten. Hinweis: Dies erfordert bestimmte Azure AD Connect-Versionen. | [Voraussetzungen für das Zurückschreiben von Kennwörtern](authentication/howto-sspr-writeback.md) |
 | Identifizieren Sie die PoC-Benutzer, die diese Funktion verwenden werden, und stellen Sie sicher, dass sie Mitglied einer Sicherheitsgruppe sind. Bei diesen Benutzern muss es sich um Nicht-Administratoren handeln, da die Funktion sonst nicht vollständig vorgestellt werden kann. | [Anpassen: Azure AD-Kennwortverwaltung: Zugriff auf die Kennwortrücksetzung beschränken](authentication/howto-sspr-writeback.md) |
 
@@ -395,7 +395,7 @@ Geschätzter Zeitaufwand: 15 Minuten
 | Geben Sie die Self-Service-Kennwortzurücksetzungsdaten an, die Sie in Schritt 2 konfiguriert haben. | https://aka.ms/ssprsetup |
 | Schließen Sie den Browser. |  |
 | Melden Sie sich erneut an, und zwar als der Information-Worker, den Sie in Schritt 4 verwendet haben. |  |
-| Setzen Sie das Kennwort zurück. | [Aktualisieren Ihres eigenen Kennworts: Zurücksetzen des eigenen Kennworts](active-directory-passwords-update-your-own-password.md) |
+| Setzen Sie das Kennwort zurück. | [Aktualisieren Ihres eigenen Kennworts: Zurücksetzen des eigenen Kennworts](user-help/active-directory-passwords-update-your-own-password.md) |
 | Versuchen Sie, sich mit dem neuen Kennwort sowohl bei Azure AD als auch bei lokalen Ressourcen anzumelden. |  |
 
 ### <a name="considerations"></a>Überlegungen
@@ -428,7 +428,7 @@ Geschätzter Zeitaufwand: 10 Minuten
 ### <a name="considerations"></a>Überlegungen
 
 1. Mit den PoC-Schritten in diesem Baustein aktivieren Sie MFA für den Benutzer bei allen Anmeldungen. Es gibt andere Tools wie „Bedingter Zugriff“ und „Schutz der Identität“, die MFA bei zielgerichteteren Szenarien verwenden. Darauf ist zu achten, wenn Sie vom PoC zur Produktion übergehen.
-2. Die PoC-Schritte in diesem Baustein verwenden Telefonanrufe explizit aus Gründen der MFA-Zweckmäßigkeit. Beim Übergang vom PoC zur Produktion wird empfohlen, möglichst Anwendungen wie den [Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) als zweiten Faktor zu verwenden.
+2. Die PoC-Schritte in diesem Baustein verwenden Telefonanrufe explizit aus Gründen der MFA-Zweckmäßigkeit. Beim Übergang vom PoC zur Produktion wird empfohlen, möglichst Anwendungen wie den [Microsoft Authenticator](user-help/microsoft-authenticator-app-how-to.md) als zweiten Faktor zu verwenden.
 Weitere Informationen: [DRAFT NIST Special Publication 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html)
 
 ## <a name="mfa-conditional-access-for-saas-applications"></a>Bedingter MFA-Zugriff für SaaS-Anwendungen
@@ -553,7 +553,7 @@ Geschätzter Zeitaufwand: 20 Minuten
 | --- | --- |
 | Gerät mit Benutzerzertifikat (Windows, iOS oder Android) über Unternehmens-PKI bereitgestellt | [Bereitstellen von Benutzerzertifikaten](https://msdn.microsoft.com/library/cc770857.aspx) |
 | Azure AD-Domäne im Verbund mit AD FS | [Azure AD Connect und Verbund](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Active Directory-Zertifikatdienste: Übersicht](https://technet.microsoft.com/library/hh831740.aspx)|
-| iOS-Geräte: Microsoft Authenticator-App installiert | [Erste Schritte mit der Microsoft Authenticator-App](authentication/end-user/current/microsoft-authenticator-app-how-to.md) |
+| iOS-Geräte: Microsoft Authenticator-App installiert | [Erste Schritte mit der Microsoft Authenticator-App](user-help/microsoft-authenticator-app-how-to.md) |
 
 ### <a name="steps"></a>Schritte
 

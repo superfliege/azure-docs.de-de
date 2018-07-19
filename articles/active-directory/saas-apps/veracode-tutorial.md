@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: fe96581428b8a41219a4aff46ecc0316d97884ae
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2dd273a1a0b5a5af65c4c40337975cb6f3f858ae
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228668"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049829"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veracode"></a>Tutorial: Azure Active Directory-Integration mit Veracode
 
@@ -108,7 +108,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 3. Im Abschnitt **Domäne und URLs für Veracode** muss der Benutzer keine Schritte ausführen, da die App bereits in Azure integriert ist. 
 
-    ![Configure Single Sign-On](./media/veracode-tutorial/tutorial_veracode_url.png)
+    ![Configure single sign-on](./media/veracode-tutorial/tutorial_veracode_url.png)
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
@@ -264,7 +264,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Veracode“ klicken, sollten Sie automatisch bei Ihrer Veracode-Anwendung angemeldet.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

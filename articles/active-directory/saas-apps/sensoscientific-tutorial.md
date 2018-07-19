@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeedes
-ms.openlocfilehash: ad3eed8886754c5785b7dfd19b36c9e18f1623ea
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: de46f3ded72b8f4444426b8754b1c1a14863321f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293012"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045878"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sensoscientific-wireless-temperature-monitoring-system"></a>Tutorial: Azure Active Directory-Integration mit SensoScientific Wireless Temperature Monitoring System
 
@@ -102,33 +102,33 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **SensoScientific Wireless Temperature Monitoring System** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_samlbase.png)
+    ![Configure single sign-on](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_samlbase.png)
 
 3. Im Abschnitt **SensoScientific Wireless Temperature Monitoring System Domain and URLs** sind keine Schritte erforderlich, da die App bereits in Azure integriert ist.
 
-    ![Configure Single Sign-On](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_url.png)
+    ![Configure single sign-on](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_url.png)
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_certificate.png) 
+    ![Configure single sign-on](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/sensoscientific-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/sensoscientific-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **SensoScientific Wireless Temperature Monitoring System Configuration** auf **SensoScientific Wireless Temperature Monitoring System konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID** und die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_configure.png) 
+    ![Configure single sign-on](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_configure.png) 
 
 7. Melden Sie sich bei der SensoScientific Wireless Temperature Monitoring System-Anwendung als Administrator an.
 
 8. Klicken Sie im oberen Navigationsmenü auf **Configuration**, und klicken Sie unter **Single Sign On** auf **Configure**, um die Seite „Single Sign On Settings“ zu öffnen.
 
-    ![Configure Single Sign-On](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_admin.png) 
+    ![Configure single sign-on](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_admin.png) 
 
 9. Führen Sie im Formular **Single Sign On Settings** die folgenden Schritte aus:
  
@@ -196,7 +196,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **SensoScientific Wireless Temperature Monitoring System** aus.
 
-    ![Configure Single Sign-On](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_app.png) 
+    ![Configure single sign-on](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -214,7 +214,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
     
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich. Klicken Sie im Zugriffsbereich auf die Kachel „SensoScientific Wireless Temperature Monitoring System“ – Sie werden automatisch bei Ihrer SensoScientific Wireless Temperature Monitoring System-Anwendung angemeldet. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich. Klicken Sie im Zugriffsbereich auf die Kachel „SensoScientific Wireless Temperature Monitoring System“ – Sie werden automatisch bei Ihrer SensoScientific Wireless Temperature Monitoring System-Anwendung angemeldet. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

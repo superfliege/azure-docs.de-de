@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 6e40c75319581a238d22d4ac17952ec706d17fcb
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f3212e55eab7ce74a44da9948cad8a0599580f42
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226654"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050544"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Tutorial: Azure Active Directory-Integration in Zscaler Beta
 
@@ -103,15 +103,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Zscaler Beta** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_samlbase.png)
+    ![Configure single sign-on](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Zscaler Beta** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_url.png)
+    ![Configure single sign-on](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_url.png)
 
     Geben Sie im Textfeld „Anmelde-URL“ die von Ihren Benutzern für die Anmeldung bei Ihrer Zscaler Beta-Anwendung verwendete URL ein.
 
@@ -120,15 +120,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_certificate.png) 
+    ![Configure single sign-on](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/zscaler-beta-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/zscaler-beta-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Zscaler Beta-Konfiguration** auf **Zscaler Beta konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_configure.png) 
+    ![Configure single sign-on](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_configure.png) 
 
 7. Melden Sie sich in einem anderen Webbrowserfenster bei der Zscaler Beta-Unternehmenswebsite als Administrator an.
 
@@ -279,7 +279,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Liste der Anwendungen **Zscaler Beta** aus.
 
-    ![Configure Single Sign-On](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_app.png) 
+    ![Configure single sign-on](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -300,7 +300,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Zscaler Beta“ klicken, sollten Sie automatisch bei Ihrer Zscaler Beta-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: df46a4de32482f9da46b81e6b0fbc55c2cc1af35
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: e2c4c59e52f277358027f5d228fdf43822822992
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37444241"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044527"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD
 
@@ -173,8 +173,8 @@ In der folgenden Liste werden die Details dieser Aktivität erläutert:
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erfolgreiches Rollout der Self-Service-Kennwortzurücksetzung](howto-sspr-deployment.md)
-* [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](../active-directory-passwords-update-your-own-password.md)
-* [Registrieren für die Self-Service-Kennwortzurücksetzung](../active-directory-passwords-reset-register.md)
+* [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](../user-help/active-directory-passwords-update-your-own-password.md)
+* [Registrieren für die Self-Service-Kennwortzurücksetzung](../user-help/active-directory-passwords-reset-register.md)
 * [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](concept-sspr-licensing.md)
 * [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](howto-sspr-authenticationdata.md)
 * [Authentifizierungsmethoden](concept-sspr-howitworks.md#authentication-methods)

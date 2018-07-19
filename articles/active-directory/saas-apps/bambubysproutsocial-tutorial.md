@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 12859384ce79a34dbdb437aa402189fbf039c44c
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: eba6f2a22de42ce65996dbe0f9b75533d2a4dacc
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285338"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047891"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>Tutorial: Azure Active Directory-Integration mit Bambu by Sprout Social
 
@@ -102,27 +102,27 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Bambu by Sprout Social** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_samlbase.png)
+    ![Configure single sign-on](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_samlbase.png)
 
 3. Im Abschnitt **Bambu by Sprout Social Domäne und URLs** muss der Benutzer keine Schritte ausführen, da die App bereits in Azure integriert ist. 
 
-    ![Configure Single Sign-On](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_url.png)
+    ![Configure single sign-on](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_url.png)
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die XML-Datei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_certificate.png) 
+    ![Configure single sign-on](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/bambubysproutsocial-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/bambubysproutsocial-tutorial/tutorial_general_400.png)
     
 6. Klicken Sie im Abschnitt **Bambu by Sprout Social-Konfiguration** auf **Bambu by Sprout Social konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_configure.png) 
+    ![Configure single sign-on](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_configure.png) 
 
 7. Zum Konfigurieren der einmaligen Anmeldung auf **Bambu by Sprout Social**-Seite müssen Sie die heruntergeladene **Metadaten-XML** und die **SAML Single Sign-On-Dienst-URL** an den [Bambu by Sprout Social-Support](mailto:support@getbambu.com) senden. Er führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -192,7 +192,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste den Eintrag **Bambu by Sprout Social**aus.
 
-    ![Configure Single Sign-On](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_app.png) 
+    ![Configure single sign-on](./media/bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -212,7 +212,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Bambu by Sprout Social“ klicken, sollten Sie automatisch bei Ihrer Bambu by Sprout Social-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Wenn Sie im Zugriffsbereich auf die Kachel „Bambu by Sprout Social“ klicken, sollten Sie automatisch bei Ihrer Bambu by Sprout Social-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

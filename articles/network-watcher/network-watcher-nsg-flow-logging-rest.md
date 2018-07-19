@@ -14,27 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 4444e83adecdc1afa170a184705b9be3be67c026
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 003335aad0452e7a2dbfff49ed29a6b99b5d54d2
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "26774370"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39089628"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Konfigurieren von Flowprotokollen für Netzwerksicherheitsgruppen mit der REST-API
 
 > [!div class="op_single_selector"]
 > - [Azure-Portal](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
-> - [CLI 1.0](network-watcher-nsg-flow-logging-cli-nodejs.md)
-> - [CLI 2.0](network-watcher-nsg-flow-logging-cli.md)
+> - [Azure-CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST-API](network-watcher-nsg-flow-logging-rest.md)
 
 Flowprotokolle für Netzwerksicherheitsgruppen sind ein Network Watcher-Feature, mit dem Sie Informationen zu ein- und ausgehendem IP-Datenverkehr über eine Netzwerksicherheitsgruppe anzeigen können. Diese Flowprotokolle sind im JSON-Format geschrieben und zeigen ausgehende und eingehende Datenflüsse pro Regel, die NIC, auf die sich der Datenfluss bezieht, 5-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-ARMClient dient zum Aufrufen der REST-API mithilfe von PowerShell. Sie finden [ARMClient auf Chocolatey](https://chocolatey.org/packages/ARMClient).
+ARMclient dient zum Aufrufen der REST-API mithilfe von PowerShell. Sie finden [ARMClient auf Chocolatey](https://chocolatey.org/packages/ARMClient).
 
 Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits durchgeführt haben, um eine Network Watcher-Instanz zu erstellen.
 
@@ -190,7 +189,7 @@ Die zurückgegebene Antwort könnte z.B. wie folgt lauten:
 
 ## <a name="download-a-flow-log"></a>Herunterladen eines Flowprotokolls
 
-Bei der Erstellung wird der Speicherort eines Flowprotokolls definiert. Ein nützliches Tool für den Zugriff auf diese in einem Speicherkonto gespeicherten Flowprotokolle ist der Microsoft Azure-Speicher-Explorer, der hier heruntergeladen werden kann: http://storageexplorer.com/
+Bei der Erstellung wird der Speicherort eines Flowprotokolls definiert. Ein nützliches Tool für den Zugriff auf diese in einem Speicherkonto gespeicherten Flussprotokolle ist der Microsoft Azure Storage-Explorer, der hier heruntergeladen werden kann: http://storageexplorer.com/
 
 Wenn ein Speicherkonto angegeben wird, werden Paketerfassungsdateien in einem Speicherkonto am folgenden Speicherort gespeichert:
 

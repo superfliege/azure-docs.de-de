@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 19d602570337b101e4a5cf759fc56822313c631c
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 74e56480c5bbf86ee6cbc059431d7d5a328dfcec
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098004"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049064"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrieren Sie Ihre Remotedesktopgateway-Infrastruktur mit der Netzwerkrichtlinienserver-Erweiterung (Network Policy Server, NPS) und Azure AD
 
@@ -95,7 +95,7 @@ Führen Sie die Schritte in [Erste Schritte mit Azure Multi-Factor Authenticatio
 ### <a name="configure-accounts-for-two-step-verification"></a>Konfigurieren von Konten für die zweistufige Überprüfung
 Nachdem ein Konto für MFA aktiviert wurde, können Sie sich erst dann bei Ressourcen anmelden, die der MFA-Richtlinie unterliegen, wenn Sie erfolgreich ein vertrauenswürdiges Gerät für den zweiten Authentifizierungsfaktor konfiguriert und die Authentifizierung mit der zweistufigen Überprüfung durchgeführt haben.
 
-Führen Sie die Schritte in [Was ist Azure Multi-Factor Authentication?](end-user/current/multi-factor-authentication-end-user.md) aus, um Ihre Geräte ordnungsgemäß mit Ihrem Benutzerkonto für MFA zu konfigurieren.
+Führen Sie die Schritte in [Was ist Azure Multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user.md) aus, um Ihre Geräte ordnungsgemäß mit Ihrem Benutzerkonto für MFA zu konfigurieren.
 
 ## <a name="install-and-configure-nps-extension"></a>Installieren und Konfigurieren der NPS-Erweiterung
 Dieser Abschnitt enthält Anweisungen zum Konfigurieren der RDS-Infrastruktur zur Verwendung der Azure MFA für die Clientauthentifizierung mit dem Remotedesktopgateway.

@@ -7,23 +7,23 @@ author: daveba
 manager: mtillman
 editor: daveba
 ms.service: active-directory
-ms.component: msi
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 12/15/2017
 ms.author: daveba
-ms.openlocfilehash: aed990c01e781ae766f421c1dd34ad64f13985cf
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 20f8ac8f301302f3121880752ea698425c194623
 ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048737"
+ms.locfileid: "39049434"
 ---
-# <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Tutorial: Verwenden einer Windows-VM-MSI (Managed Service Identity, verwaltete Dienstidentität) für den Zugriff auf Azure Key Vault 
+# <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Verwenden einer Windows-VM-MSI (Managed Service Identity, verwaltete Dienstidentität) für den Zugriff auf Azure Key Vault 
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
+[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
 In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Dienstidentität (Managed Service Identity, MSI) für einen virtuellen Windows-Computer aktivieren und diese Identität anschließend verwenden, um auf Azure Key Vault zuzugreifen. Key Vault dient als Bootstrap und ermöglicht es Ihrer Clientanwendung, mithilfe des Geheimnisses auf Ressourcen zuzugreifen, die nicht von Azure Active Directory (AD) geschützt sind. Verwaltete Dienstidentitäten werden von Azure automatisch verwaltet und ermöglichen Ihnen die Authentifizierung für Dienste, die die Azure AD-Authentifizierung unterstützen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. 
 
@@ -37,9 +37,9 @@ Folgendes wird vermittelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
+[!INCLUDE [msi-core-prereqs](~/includes/active-directory-msi-core-prereqs-ua.md)]
 
-[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+[!INCLUDE [msi-tut-prereqs](~/includes/active-directory-msi-tut-prereqs.md)]
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -49,25 +49,29 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 In diesem Tutorial wird ein neuer virtueller Windows-Computer erstellt. Sie können MSI auch auf einem vorhandenen virtuellen Computer aktivieren.
 
-1.  Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Ressource erstellen**.
+1.  Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
 2.  Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**. 
 3.  Geben Sie die Informationen zum virtuellen Computer ein. Der **Benutzername** und das **Kennwort**, die hier erstellt werden, sind die Anmeldeinformationen, die Sie für die Anmeldung beim virtuellen Computer verwenden.
 4.  Wählen Sie in der Dropdownliste das richtige **Abonnement** für den virtuellen Computer aus.
 5.  Um eine neue **Ressourcengruppe** auszuwählen, in der der virtuelle Computer erstellt werden soll, wählen Sie **Neu erstellen** aus. Klicken Sie zum Abschluss auf **OK**.
 6.  Wählen Sie eine Größe für den virtuellen Computer. Wählen Sie die Option **Alle anzeigen**, oder ändern Sie den Filter **Supported disk type** (Unterstützter Datenträgertyp), um weitere Größen anzuzeigen. Behalten Sie auf dem Blatt „Einstellungen“ die Standardwerte bei, und klicken Sie auf **OK**.
 
-    ![Alternativer Bildtext](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+    ![Alternativer Bildtext](../managed-service-identity/media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
 ## <a name="enable-msi-on-your-vm"></a>Aktivieren von MSI auf dem virtuellen Computer 
 
-Eine VM-MSI ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Durch das Aktivieren von MSI weisen Sie Azure an, eine verwaltete Identität für den virtuellen Computer zu erstellen. Im Hintergrund werden durch das Aktivieren der MSI zwei Vorgänge ausgelöst: Der virtuelle Computer wird bei Azure Active Directory registriert, um die zugehörige verwaltete Identität zu erstellen, und die Identität wird auf dem virtuellen Computer konfiguriert.
+Eine VM-MSI ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Durch das Aktivieren von MSI weisen Sie Azure an, eine verwaltete Identität für den virtuellen Computer zu erstellen. Im Hintergrund werden durch das Aktivieren von MSI zwei Vorgänge ausgelöst: Auf dem virtuellen Computer wird die MSI-VM-Erweiterung installiert, und MSI wird im Azure Resource Manager aktiviert.
 
 1.  Wählen Sie den **virtuellen Computer** aus, auf dem Sie MSI aktivieren möchten.  
 2.  Klicken Sie in der links angezeigten Navigationsleiste auf **Konfiguration**. 
 3.  Die Option **Verwaltete Dienstidenität** wird angezeigt. Wählen Sie zum Registrieren und Aktivieren von MSI die Option **Ja** oder zum Deaktivieren „Nein“. 
 4.  Achten Sie darauf, zum Speichern der Konfiguration auf **Speichern** zu klicken.  
 
-    ![Alternativer Bildtext](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![Alternativer Bildtext](../managed-service-identity/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+
+5. Wenn Sie überprüfen möchten, welche Erweiterungen sich auf diesem virtuellen Computer befinden, klicken Sie auf **Erweiterungen**. Wenn MSI aktiviert ist, wird **ManagedIdentityExtensionforWindows** in der Liste angezeigt.
+
+    ![Alternativer Bildtext](../managed-service-identity/media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>Gewähren des Zugriffs auf ein in einer Key Vault gespeicherten Geheimnisses für den virtuellen Computer 
  
@@ -75,7 +79,7 @@ Mithilfe von MSI kann der Code Zugriffstoken zur Authentifizierung von Ressource
 
 Zunächst müssen Sie eine Key Vault erstellen und der Identität des virtuellen Computers den Zugriff darauf erteilen.   
 
-1. Wählen Sie oben in der linken Navigationsleiste **Ressource erstellen** > **Sicherheit + Identität** > **Key Vault** aus.  
+1. Wählen Sie oben auf der linken Navigationsleiste **+ Neu**, dann **Sicherheit und Identität** und anschließend **Key Vault**.  
 2. Geben Sie unter **Name** einen Namen für die neue Key Vault an. 
 3. Suchen Sie die Key Vault in dem Abonnement und in der Ressourcengruppe, in der sich auch der zuvor erstellte virtuelle Computer befindet. 
 4. Wählen Sie **Zugriffsrichtlinien** aus, und klicken Sie auf **Neue hinzufügen**. 
@@ -110,25 +114,25 @@ Zunächst wird mit der MSI der VM ein Zugriffstoken für die Authentifizierung b
     Die PowerShell-Anforderung:
     
     ```powershell
-    $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net' -Method GET -Headers @{Metadata="true"} 
+    PS C:\> $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://vault.azure.net"} -Headers @{Metadata="true"} 
     ```
     
     Extrahieren Sie als Nächstes die vollständige Antwort, die als JSON-formatierte Zeichenfolge (JavaScript Object Notation) im „$response“-Objekt gespeichert ist.  
     
     ```powershell
-    $content = $response.Content | ConvertFrom-Json 
+    PS C:\> $content = $response.Content | ConvertFrom-Json 
     ```
     
     Extrahieren Sie dann das Zugriffstoken aus der Antwort.  
     
     ```powershell
-    $KeyVaultToken = $content.access_token 
+    PS C:\> $KeyVaultToken = $content.access_token 
     ```
     
     Verwenden Sie abschließend den PowerShell-Befehl „Invoke-WebRequest“, um das zuvor in der Key Vault erstellte Geheimnis abzurufen. Übergeben Sie dabei das Zugriffstoken im Autorisierungsheader.  Sie benötigen die URL Ihrer Key Vaults. Diese befindet sich im Abschnitt **Zusammenfassung** der Seite **Übersicht** der Key Vault.  
     
     ```powershell
-    (Invoke-WebRequest -Uri https://<your-key-vault-URL>/secrets/<secret-name>?api-version=2016-10-01 -Method GET -Headers @{Authorization="Bearer $KeyVaultToken"}).content 
+    PS C:\> (Invoke-WebRequest -Uri https://<your-key-vault-URL>/secrets/<secret-name>?api-version=2016-10-01 -Method GET -Headers @{Authorization="Bearer $KeyVaultToken"}).content 
     ```
     
     Die Antwort sieht so aus: 
@@ -139,9 +143,8 @@ Zunächst wird mit der MSI der VM ein Zugriffstoken für die Authentifizierung b
     
 Nachdem Sie das Geheimnis aus der Key Vault abgerufen haben, können Sie es für die Authentifizierung bei einem Dienst verwenden, für den ein Name und ein Kennwort angegeben werden müssen. 
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="related-content"></a>Verwandte Inhalte
 
-In diesem Tutorial haben Sie gelernt, wie eine verwaltete Dienstidentität für den Zugriff auf Azure Key Vault erstellt wird.  Weitere Informationen zu Azure Key Vault finden Sie in folgendem Artikel:
+- Einen Überblick über MSI finden Sie unter [Übersicht über verwaltete Dienstidentitäten](msi-overview.md).
 
-> [!div class="nextstepaction"]
->[Azure-Schlüsseltresor](/azure/key-vault/key-vault-whatis)
+Verwenden Sie den folgenden Kommentarabschnitt, um uns Feedback zu senden und uns bei der Verbesserung unserer Inhalte zu unterstützen.

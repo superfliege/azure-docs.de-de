@@ -14,20 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: ba0cd9c8aaa797e850827484c76103d1b829d6b4
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: a429bfae001cad044da9ef729c021c8128cbfefe
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23035365"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090009"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>Verwalten von Paketerfassungen mit Azure Network Watcher mithilfe der Azure-REST-API
 
 > [!div class="op_single_selector"]
 > - [Azure-Portal](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
-> - [CLI 1.0](network-watcher-packet-capture-manage-cli-nodejs.md)
-> - [CLI 2.0](network-watcher-packet-capture-manage-cli.md)
+> - [Azure-CLI](network-watcher-packet-capture-manage-cli.md)
 > - [Azure-REST-API](network-watcher-packet-capture-manage-rest.md)
 
 Mithilfe der Paketerfassung von Network Watcher können Sie Sitzungen erfassen, um den eingehenden und ausgehenden Datenverkehr eines virtuellen Computers nachzuverfolgen. Für die Erfassungssitzung werden Filter bereitgestellt, um sicherzustellen, dass nur der gewünschte Datenverkehr erfasst wird. Mithilfe der Paketerfassung können Sie Netzwerkanomalien sowohl reaktiv als auch proaktiv diagnostizieren. Weitere Verwendungszwecke sind das Erfassen von Netzwerkstatistiken, das Gewinnen von Informationen zu Netzwerkangriffen, das Debuggen der Kommunikation zwischen Client und Server und vieles mehr. Durch die Möglichkeit zur Remoteauslösung von Paketerfassungen erleichtert diese Funktion die manuelle Ausführung einer Paketerfassung auf dem gewünschten Computer. So sparen Sie wertvolle Zeit.
@@ -45,7 +44,7 @@ Dieser Artikel führt Sie durch die verschiedenen Verwaltungsaufgaben, die derze
 
 In diesem Szenario rufen Sie die Network Watcher-Rest-API auf, um die IP-Datenflussüberprüfung auszuführen. ARMClient dient zum Aufrufen der REST-API mithilfe von PowerShell. Sie finden [ARMClient auf Chocolatey](https://chocolatey.org/packages/ARMClient).
 
-Dieses Szenario setzt voraus, dass Sie die Schritte unter [Create an Azure Network Watcher instance](network-watcher-create.md) (Erstellen einer Azure Network Watcher-Instanz) bereits ausgeführt haben, um eine Network Watcher-Instanz zu erstellen.
+Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits ausgeführt haben.
 
 > Die Paketerfassung erfordert eine VM-Erweiterung `AzureNetworkWatcherExtension`. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/windows/extensions-nwa.md) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/linux/extensions-nwa.md).
 
@@ -301,7 +300,7 @@ armclient delete "https://management.azure.com/subscriptions/${subscriptionId}/R
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Anweisungen zum Herunterladen von Dateien von Azure Storage-Konten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Ein weiteres Tool, das verwendet werden kann, ist der Speicher-Explorer. Weitere Informationen zum Speicher-Explorer finden Sie unter [Speicher-Explorer](http://storageexplorer.com/).
+Anweisungen zum Herunterladen von Dateien von Azure-Speicherkonten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Ein weiteres Tool, das verwendet werden kann, ist der Storage-Explorer. Weitere Informationen zum Storage-Explorer finden Sie unter [Storage-Explorer](http://storageexplorer.com/).
 
 Informationen zur Automatisierung von Paketerfassungen mit VM-Warnungen finden Sie unter [Erstellen einer durch Warnungen ausgelösten Paketerfassung](network-watcher-alert-triggered-packet-capture.md).
 

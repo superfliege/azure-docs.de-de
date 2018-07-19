@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: a7557a5dc19fd08461a18252d914b74306816c8a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3a33f9ba0ca744709e21e9e55acc22b657c2adc2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216844"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048418"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-8x8-virtual-office"></a>Tutorial: Azure Active Directory-Integration mit 8x8 Virtual Office
 
@@ -102,15 +102,15 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden mit Azure AD im Azur
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **8x8 Virtual Office** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_samlbase.png)
+    ![Configure single sign-on](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_samlbase.png)
 
 3. Führen Sie die folgenden Schritte im Abschnitt **Domäne und URLs für 8x8 Virtual Office** durch:
 
-    ![Configure Single Sign-On](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_url.png)
+    ![Configure single sign-on](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_url.png)
 
     a. Geben Sie im Textfeld **Identifier** (Bezeichner) eine URL nach folgendem Muster ein:
 
@@ -130,15 +130,15 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden mit Azure AD im Azur
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Rohdaten)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_certificate.png) 
+    ![Configure single sign-on](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/8x8virtualoffice-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/8x8virtualoffice-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **8x8 Virtual Office-Konfiguration** auf **8x8 Virtual Office konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_configure.png) 
+    ![Configure single sign-on](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_configure.png) 
 
 7. Melden Sie sich bei Ihrem 8x8 Virtual Office-Mandanten als Administrator an.
 
@@ -226,7 +226,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste die Option **8x8 Virtual Office**aus.
 
-    ![Configure Single Sign-On](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_app.png) 
+    ![Configure single sign-on](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -247,7 +247,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „8x8 Virtual Office“ klicken, sollten Sie automatisch bei Ihrer 8x8 Virtual Office-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

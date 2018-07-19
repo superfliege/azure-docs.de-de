@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/6/2017
 ms.author: jeedes
-ms.openlocfilehash: e39bd40a25333f6b2e323439d29e2a85e67d20d5
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: ad5c8a61a83211147f5e4929a4f4f6fab738ba32
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284929"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043753"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apptio"></a>Tutorial: Azure Active Directory-Integration mit Apptio
 
@@ -118,7 +118,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 5. Ihre Apptio-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie für diese Anwendung die folgenden Ansprüche. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Beachten Sie, dass als **Benutzer-ID** der Wert **user.mail** zugeordnet wird. Es gibt drei weitere Attribute (**fullname**, *mail* und *role*), die konfiguriert werden müssen. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
 
-    ![Configure Single Sign-On](./media/apptio-tutorial/tutorial_apptio_attributes.png)     
+    ![Configure single sign-on](./media/apptio-tutorial/tutorial_apptio_attributes.png)     
     
     > [!NOTE]
     > Klicken Sie bitte [hier](../../role-based-access-control/role-assignments-portal.md), um herauszufinden, wie Sie die **Rolle** in Azure AD konfigurieren.
@@ -133,9 +133,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Configure Single Sign-On](./media/apptio-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/apptio-tutorial/tutorial_attribute_04.png)
 
-    ![Configure Single Sign-On](./media/apptio-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/apptio-tutorial/tutorial_attribute_05.png)
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
@@ -223,7 +223,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Apptio-Kachel klicken, sollten Sie automatisch bei Ihrer Apptio-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

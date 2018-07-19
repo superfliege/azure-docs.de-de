@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 77d26d860462b1a82315bf1385bccf62047e3da3
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: e28918fe9e26221738fe234ad41923c58a6ac260
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866667"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049020"
 ---
 # <a name="azure-ad-self-service-password-reset-for-the-it-professional"></a>Self-Service-Kennwortzurücksetzung in Azure AD für IT-Experten
 
@@ -65,5 +65,5 @@ Weitere Details zu Lizenzierung, Preisen und Plänen für die Zukunft finden Sie
 
 * Sind Sie bereit für die ersten Schritte mit SSPR? [Einrichten von Self-Service-Kennwortzurücksetzung in Azure AD](quickstart-sspr.md).
 * Planen Sie eine erfolgreiche SSPR-Bereitstellung für Ihre Benutzer, indem Sie die Anleitungen unter [Erfolgreicher Rollout der Self-Service-Kennwortzurücksetzung](howto-sspr-deployment.md) verwenden.
-* [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](../active-directory-passwords-update-your-own-password.md)
-* [Registrieren Sie sich für die Self-Service-Kennwortzurücksetzung](../active-directory-passwords-reset-register.md).
+* [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](../user-help/active-directory-passwords-update-your-own-password.md)
+* [Registrieren Sie sich für die Self-Service-Kennwortzurücksetzung](../user-help/active-directory-passwords-reset-register.md).

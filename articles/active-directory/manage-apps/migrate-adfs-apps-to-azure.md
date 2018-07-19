@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: 71fa305c0151ba2ff319694cdd3df55bf351e0c5
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: d3548e7640fa8ab59f7b11c66cf1d9492f23cf99
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36946270"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044367"
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>Migrieren von lokalen AD FS-Apps zu Azure 
 
@@ -202,7 +202,7 @@ Navigieren Sie zum Zuweisen von Benutzern im Azure AD-Portal auf die Seite der S
 
 ![Bereich „Zuweisung hinzufügen“](media/migrate-adfs-apps-to-azure/migrate7.png)
 
-Zur Überprüfung des Zugriffs sollte Benutzern im [Zugriffsbereich](../active-directory-saas-access-panel-introduction.md) beim Anmelden die SaaS-App angezeigt werden. Sie finden den Zugriffsbereich unter http://myapps.microsoft.com. In diesem Beispiel wurde dem Benutzer erfolgreich sowohl Zugriff auf Salesforce als auch auf ServiceNow zugewiesen.
+Zur Überprüfung des Zugriffs sollte Benutzern im [Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md) beim Anmelden die SaaS-App angezeigt werden. Sie finden den Zugriffsbereich unter http://myapps.microsoft.com. In diesem Beispiel wurde dem Benutzer erfolgreich sowohl Zugriff auf Salesforce als auch auf ServiceNow zugewiesen.
 
 ![Beispiel für den Zugriffsbereich mit Salesforce- und ServiceNow-App](media/migrate-adfs-apps-to-azure/migrate8.png)
 
