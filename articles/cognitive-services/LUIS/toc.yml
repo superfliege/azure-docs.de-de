@@ -230,9 +230,9 @@
     - name: Programmgesteuertes Suchen nach der Region
       items:
         - name: 'Verwenden von C#'
-          href: find-region-csharp.md
+          href: luis-find-region-csharp.md
         - name: Verwenden von Node.js
-          href: find-region-nodejs.md
+          href: luis-find-region-nodejs.md
 - name: Verweis
   items:
     - name: Datenschutz

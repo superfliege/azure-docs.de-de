@@ -40,6 +40,8 @@
       href: ../azure-resource-manager/resource-group-overview.md
 - name: angeben
   items:
+    - name: Häufig gestellte Fragen
+      href: firewall-faq.md
     - name: Verfassen von Vorlagen
       href: ../azure-resource-manager/resource-group-authoring-templates.md
     - name: Azure-Roadmap
