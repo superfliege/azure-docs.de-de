@@ -27,9 +27,9 @@
       href: apache-spark-use-bi-tools.md
     - name: Ausführen eines Streamingauftrags
       href: apache-spark-eventhub-streaming.md
-    - name: Erstellen einer Machine Learning-Anwendung
+    - name: Erstellen einer Machine Learning-App
       href: apache-spark-ipython-notebook-machine-learning.md
-    - name: Erstellen einer Spark-Anwendung mit IntelliJ
+    - name: Erstellen einer Spark-App in IntelliJ
       href: apache-spark-create-standalone-application.md
 - name: Anleitung
   items:

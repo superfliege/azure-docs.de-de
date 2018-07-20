@@ -121,18 +121,14 @@
           href: batch-get-resource-counts.md
         - name: Effizientes Abfragen von Ressourcen
           href: batch-efficient-list-queries.md
-    - name: Verwenden von Entwicklertools
+    - name: Verwenden von Skripterstellungstools
       items:
-        - name: Verwenden von Batch .NET
-          href: batch-dotnet-get-started.md
-        - name: Verwenden von Batch Python
-          href: batch-python-tutorial.md
-        - name: Verwenden von Batch Node.js
-          href: batch-nodejs-get-started.md
         - name: Verwenden von PowerShell-Cmdlets
           href: batch-powershell-cmdlets-get-started.md
         - name: Mithilfe der Azure-Befehlszeilenschnittstelle
           href: batch-cli-get-started.md
+    - name: Verwenden des Batch Node.js-SDK
+      href: batch-nodejs-get-started.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle

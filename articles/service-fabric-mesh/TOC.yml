@@ -9,17 +9,17 @@
   items:
     - name: Bereitstellen von Hallo Welt!
       href: service-fabric-mesh-quickstart-deploy-container.md
-    - name: Erstellen und Bereitstellen einer Web-Anwendung
+    - name: Erstellen und Bereitstellen einer Web-App in Azure Service Fabric Mesh
       href: service-fabric-mesh-quickstart-dotnet-core.md
 - name: Tutorials
   items:
-    - name: Erstellen und Bereitstellen einer Web-App mit mehreren Diensten
+    - name: 'Erstellen, Debuggen und Bereitstellen einer Service Fabric Mesh-Web-App mit mehreren Diensten'
       items:
-        - name: 1. Erstellen einer ASP.NET Core-Anwendung
+        - name: '1: Erstellen einer Service Fabric Mesh-Web-App'
           href: service-fabric-mesh-tutorial-create-dotnetcore.md
-        - name: 2. Debuggen der Anwendung
+        - name: '2: Debuggen einer Service Fabric Mesh-Web-App'
           href: service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md
-        - name: 3. Bereitstellen der Anwendung
+        - name: '3: Bereitstellen einer Service Fabric Mesh-Web-App'
           href: service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md
 - name: Konzepte
   items:

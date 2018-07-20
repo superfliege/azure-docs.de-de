@@ -145,6 +145,8 @@
           href: functions-develop-vs.md
         - name: Core Tools-Entwicklung
           href: functions-run-local.md
+        - name: IntelliJ IDEA-Entwicklung
+          href: functions-create-maven-intellij.md
         - name: Verwalten von Verbindungen
           href: manage-connections.md
         - name: Fehlerbehandlung
