@@ -3,8 +3,8 @@
 | Batch-Konten pro Region und Abonnement | 1 - 3 |50 |
 | Dedizierte Kerne pro Batch-Konto | 10 - 100 | –<sup>1</sup> |
 | Kerne mit niedriger Priorität pro Batch-Konto | 10 - 100 | N/V<sup>2</sup> |
-| Aktive Aufträge und Auftragszeitpläne<sup>3</sup> pro Batch-Konto | 20 - 100 | 5000<sup>4</sup> |
-| Pools pro Batch-Konto | 20 - 100 | 2500 |
+| Aktive Aufträge und Auftragszeitpläne<sup>3</sup> pro Batch-Konto | 100 - 300 | 2500<sup>4</sup> |
+| Pools pro Batch-Konto | 20 - 100 | 500 |
 
 > [!NOTE]
 > Die Standardgrenzwerte variieren abhängig vom Abonnementtyp, den Sie zum Erstellen eines Batch-Kontos verwenden. Die angezeigten Kontingente für Kerne gelten für Batch-Konten im Batch-Dienstmodus. [Zeigen Sie die Kontingente in Ihrem Batch-Konto an](../articles/batch/batch-quota-limit.md#view-batch-quotas). 
