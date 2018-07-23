@@ -6,17 +6,17 @@ ms.service: logic-apps
 author: ecfan
 ms.author: estfan
 manager: jeconnoc
-ms.date: 1/12/2018
 ms.topic: quickstart
 ms.custom: mvc
+ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 0a629deec0cc18f65dfe5e88a3eaea528636dd0f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 4774efda6748ac640d87ce83e2d5c4ee68310546
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300938"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125738"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal
 
@@ -34,7 +34,7 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim <a href="ht
 
 ## <a name="create-your-logic-app"></a>Erstellen Ihrer Logik-App 
 
-1. Klicken Sie im Hauptmenü von Azure auf **Ressource erstellen** > **Unternehmensintegration** > **Logik-App**.
+1. Wählen Sie im Hauptmenü von Azure **Ressource erstellen** > **Integration** > **Logik-App** aus.
 
    ![Erstellen einer Logik-App](./media/quickstart-create-first-logic-app-workflow/create-logic-app.png)
 
@@ -42,12 +42,12 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim <a href="ht
 
    ![Angeben von Details zur Logik-App](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
-   | Einstellung | Wert | BESCHREIBUNG | 
-   | ------- | ----- | ----------- | 
+   | Eigenschaft | Wert | BESCHREIBUNG | 
+   |----------|-------|-------------| 
    | **Name** | MyFirstLogicApp | Der Name Ihrer Logik-App | 
    | **Abonnement** | <*Name Ihres Azure Abonnements*> | Der Name Ihres Azure-Abonnements | 
    | **Ressourcengruppe** | My-First-LA-RG | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die zum Organisieren verwandter Ressourcen verwendet wird. | 
-   | **Location** | USA (Ost) 2 | Die Region, in der die Informationen zu Ihrer Logik-App gespeichert werden sollen | 
+   | **Location** | USA (Westen) | Die Region, in der die Informationen zu Ihrer Logik-App gespeichert werden sollen | 
    | **Log Analytics** | Aus | Behalten Sie die Einstellung **Aus** für die Diagnoseprotokollierung bei. | 
    |||| 
 
@@ -69,12 +69,12 @@ Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#lo
 
    ![Einrichten eines Triggers mit RSS-Feed, Häufigkeit und Intervall](./media/quickstart-create-first-logic-app-workflow/add-trigger-rss-settings.png)
 
-   | Einstellung | Wert | BESCHREIBUNG | 
-   | ------- | ----- | ----------- | 
+   | Eigenschaft | Wert | BESCHREIBUNG | 
+   |----------|-------|-------------| 
    | **Die URL des RSS-Feeds** | ```http://feeds.reuters.com/reuters/topNews``` | Der Link für den RSS-Feed, den Sie überwachen möchten | 
    | **Intervall** | 1 | Die Anzahl von Warteintervallen zwischen Überprüfungen | 
    | **Frequency** | Minute | Die Zeiteinheit für die Intervalle zwischen Überprüfungen.  | 
-   |  |  |  | 
+   |||| 
 
    Das Intervall und die Häufigkeit definieren zusammen den Zeitplan für den Trigger Ihrer Logik-App. 
    Diese Logik-App überprüft den Feed minütlich.
@@ -95,9 +95,11 @@ Fügen Sie nun eine [Aktion](../logic-apps/logic-apps-overview.md#logic-app-conc
 
    ![Hinzufügen einer Aktion](./media/quickstart-create-first-logic-app-workflow/add-new-action.png)
 
-2. Suchen Sie unter **Aktion auswählen** nach „E-Mail senden“, und wählen Sie dann für den gewünschten E-Mail-Anbieter die Aktion „E-Mail senden“ aus. Um die Liste der Aktionen nach einem bestimmten Dienst zu filtern, können Sie zuerst unter **Connectors** den Connector auswählen.
+2. Geben Sie unter **Aktion auswählen** „E-Mail senden“ als Filter ein. Wählen Sie aus der Liste der Aktionen die Aktion "E-Mail senden" für den gewünschten E-Mail-Anbieter aus. 
 
    ![Aktion „Office 365 Outlook – E-Mail senden“ auswählen](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
+
+   Um die Liste der Aktionen nach einer bestimmten App oder einem Dienst zu filtern, können Sie zuerst die App oder den Dienst auswählen:
 
    * Wählen Sie für Geschäfts-, Schul- oder Unikonten für Azure die Option „Office 365 Outlook“. 
    * Wählen Sie für persönliche Microsoft-Konten die Option „Outlook.com“.
@@ -109,21 +111,14 @@ Fügen Sie nun eine [Aktion](../logic-apps/logic-apps-overview.md#logic-app-conc
    1. Geben Sie im Feld **An** die E-Mail-Adresse des Empfängers ein. 
    Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben.
 
-      Ignorieren Sie vorerst die angezeigte Parameterliste oder die Liste **Dynamischen Inhalt hinzufügen**. 
-      Wenn Sie in einige Bearbeitungsfelder klicken, wird die Liste mit verfügbaren Parametern aus dem vorherigen Schritt angezeigt, die Sie als Eingaben in Ihren Workflow aufnehmen können.
-      Die Breite des Browserfensters bestimmt, welche Liste angezeigt wird.
+      Ignorieren Sie vorerst die angezeigte Liste **Dynamischen Inhalt hinzufügen**. 
+      Wenn Sie in einige Bearbeitungsfelder klicken, wird die Liste mit verfügbaren Parametern aus dem vorherigen Schritt angezeigt, die Sie als Eingaben in Ihren Workflow aufnehmen können. 
 
    2. Geben Sie im Feld **Betreff** den folgenden Text mit einem nachstehenden Leerzeichen ein: ```New RSS item: ```.
 
       ![Eingeben des E-Mail-Betreffs](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject.png)
  
-   3. Wählen Sie in der Parameterliste oder der Liste **Dynamischen Inhalt hinzufügen** die Option **Feedtitel** aus, um den Titel des RSS-Elements aufzunehmen.
-
-      Hier sehen Sie beispielsweise die Parameterliste:
-
-      ![Parameterliste – „Feedtitel“](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject-parameters-list.png)
-
-      Und hier sehen Sie die Liste mit den dynamischen Inhalten:
+   3. Wählen Sie in der Liste **Dynamischen Inhalt hinzufügen** die Option **Feedtitel** aus, um den Titel des RSS-Elements aufzunehmen.
 
       ![Liste mit dynamischen Inhalten „Feedtitel“](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject-dynamic-content.png)
 
@@ -131,18 +126,18 @@ Fügen Sie nun eine [Aktion](../logic-apps/logic-apps-overview.md#logic-app-conc
 
       ![Hinzugefügter Feedtitel](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-feed-title.png)
 
-      Wenn im Designer eine For each-Schleife angezeigt wird, haben Sie ein Feld mit einem Array ausgewählt, etwa das Feld **categories-item**. 
-      Für diese Art von Feldern fügt der Designer automatisch diese Schleife für die Aktion hinzu, die auf das Feld verweist. 
+      Wenn im Designer eine For each-Schleife angezeigt wird, haben Sie ein Token für ein Array ausgewählt, etwa das Token **categories-Item**. 
+      Für diese Art von Token fügt der Designer automatisch diese Schleife für die Aktion hinzu, die auf das Token verweist. 
       Auf diese Weise führt Ihre Logik-App die gleiche Aktion für jedes Arrayelement durch. 
       Klicken Sie zum Entfernen der Schleife in der Titelleiste der Schleife auf die **Auslassungspunkte** (**...**) und dann auf **Löschen**.
 
-   4. Geben Sie im Feld **Text** den folgenden Text ein, und wählen Sie die folgenden Felder für den E-Mail-Text aus. 
+   4. Geben Sie im Feld **Text** den folgenden Text ein, und wählen Sie die folgenden Token für den E-Mail-Text aus. 
    Drücken Sie UMSCHALT+EINGABETASTE, um in einem Bearbeitungsfeld leere Zeilen hinzuzufügen. 
 
       ![Hinzufügen des Inhalts für den E-Mail-Text](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-body.png)
 
-      | Einstellung | BESCHREIBUNG | 
-      | ------- | ----------- | 
+      | Eigenschaft | BESCHREIBUNG | 
+      |----------|-------------| 
       | **Feedtitel** | Der Titel des Elements | 
       | **Feed veröffentlicht am** | Datum und Uhrzeit der Elementveröffentlichung | 
       | **Link zum primären Feed** | Die URL für das Element | 
@@ -167,9 +162,15 @@ Herzlichen Glückwunsch! Sie haben Ihre erste Logik-App über das Azure-Portal e
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie sie nicht mehr benötigen, löschen Sie die Ressourcengruppe mit Ihrer Logik-App und den dazugehörigen Ressourcen. Wechseln Sie im Azure-Hauptmenü zu **Ressourcengruppen**, und wählen Sie die Ressourcengruppe für Ihre Logik-App aus. Klicken Sie auf **Ressourcengruppe löschen**. Geben Sie den Ressourcengruppennamen zur Bestätigung ein, und klicken Sie auf **Löschen**.
+Wenn Sie dieses Beispiel nicht mehr benötigen, löschen Sie die Ressourcengruppe mit Ihrer Logik-App und den dazugehörigen Ressourcen. 
 
-![„Ressourcengruppen“ > „Übersicht“ > „Ressourcengruppe löschen“](./media/quickstart-create-first-logic-app-workflow/delete-resource-group.png)
+1. Navigieren Sie im Azure-Hauptmenü zu **Ressourcengruppen**, und wählen Sie die Ressourcengruppe Ihrer Logik-App aus. Wählen Sie auf der Seite **Übersicht** die Option **Ressourcengruppe löschen** aus. 
+
+   ![„Ressourcengruppen“ > „Übersicht“ > „Ressourcengruppe löschen“](./media/quickstart-create-first-logic-app-workflow/delete-resource-group.png)
+
+2. Geben Sie zur Bestätigung den Ressourcengruppennamen ein, und klicken Sie auf **Löschen**.
+
+   ![Löschvorgang bestätigen](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
 
 ## <a name="get-support"></a>Support
 
