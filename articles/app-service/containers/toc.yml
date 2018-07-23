@@ -19,6 +19,8 @@
       href: quickstart-nodejs.md
     - name: Erstellen einer Java-App
       href: quickstart-java.md
+    - name: Erstellen einer Python-App
+      href: quickstart-python.md
     - name: Erstellen einer Ruby-App
       href: quickstart-ruby.md
     - name: Erstellen einer Docker-/Go-App
