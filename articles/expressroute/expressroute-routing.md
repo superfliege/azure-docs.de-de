@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/09/2018
 ms.author: ganesr
-ms.openlocfilehash: 998d4f8017af51a21e13695a8491e9b6bd62af9a
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 7fd2dd870338dc6778d192658143d14d9d9895cc
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930527"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072145"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute-Routinganforderungen
 Zum Herstellen einer Verbindung mit Microsoft-Clouddiensten per ExpressRoute müssen Sie das Routing einrichten und verwalten. Einige Konnektivitätsanbieter bieten das Einrichten und Verwalten des Routings als verwalteten Dienst an. Fragen Sie bei Ihrem Konnektivitätsanbieter nach, ob dieser Dienst angeboten wird. Ist dies nicht der Fall, müssen Sie folgende Anforderungen erfüllen:
@@ -221,7 +221,7 @@ Zusätzlich zu den obigen Kennzeichnungen versieht Microsoft Präfixe auch basie
 > 
 > 
 
-### <a name="bgp-community-support-in-national-clouds-preview"></a>BGP-Communityunterstützung in nationalen Clouds (Vorschau)
+### <a name="bgp-community-support-in-national-clouds"></a>BGP-Communityunterstützung in nationalen Clouds
 
 | **Azure-Region für nationale Clouds**| **BGP-Communitywert** |
 | --- | --- |

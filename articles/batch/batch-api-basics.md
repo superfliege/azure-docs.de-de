@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 04/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3fe0d3836046ad143e746503210099ee5c640a08
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 9de4b00b2fff1feabcaee4e30667dfbdc75d9266
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129097"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114438"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch
 
@@ -504,7 +504,7 @@ Wenn bei einigen Ihrer Tasks Fehler auftreten, kann Ihre Batch-Clientanwendung o
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich über die [Batch-APIs und Tools](batch-apis-tools.md), die für die Erstellung von Batch-Lösungen verfügbar sind.
-* Lesen Sie sich [Erste Schritte mit der Azure-Batch-Bibliothek für .NET](batch-dotnet-get-started.md)mit einer Schritt-für-Schritt-Anleitung für eine Batch-Beispielanwendung durch. Es gibt auch eine [Python-Version](batch-python-tutorial.md) des Tutorials, in der eine Workload auf Linux-Computeknoten ausgeführt wird.
+* Informieren Sie sich über die Grundlagen der Entwicklung einer Batch-fähigen Anwendung mit der [Batch-.NET-Clientbibliothek](quick-run-dotnet.md) oder mit [Python](quick-run-python.md). In diesen Schnellstarts werden Sie durch eine Beispielanwendung geführt, die den Batch-Dienst zum Ausführen einer Workload auf mehreren Computeknoten verwendet und Azure Storage zum Bereitstellen und Abrufen von Workloaddateien nutzt.
 * Laden Sie für die Entwicklung von Batch-Lösungen [BatchLabs][batch_labs] herunter, und installieren Sie es. Mit BatchLabs können Sie Azure Batch-Anwendungen erstellen, debuggen und überwachen. 
 * Sehen Sie sich die Communityressourcen an, z.B. [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-batch), das [Batch-Community-Repository](https://github.com/Azure/Batch) und das [Azure Batch-Forum][batch_forum] auf der MSDN-Website. 
 

@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 2/13/2018
+ms.date: 7/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7e600f55b9eeb2682b005b8c84c74ec25e054c36
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 155cdaf51ac5725a315259a0d809ba644f64110c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447250"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048915"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Schnellstart: Einrichten der Anmeldung für eine Single-Page-Webanwendung mit Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ In diesem Schnellstart verwenden Sie eine einseitige Azure AD B2C-fähige App, i
 
 * [Visual Studio 2017](https://www.visualstudio.com/downloads/) mit der Workload **ASP.NET und Webentwicklung**
 * Installieren von [Node.js](https://nodejs.org/en/download/)
-* Sie besitzen ein Konto bei einem sozialen Netzwerk, d.h. bei Facebook, Google, Microsoft oder Twitter.
+* Ein Facebook-Konto
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
 
@@ -63,21 +63,17 @@ Navigieren Sie in einem Webbrowser zur URL `http://localhost:6420` der App.
 
 Klicken Sie auf die Schaltfläche **Login** (Anmelden), um den Azure AD B2C-Workflow zum **Registrieren oder Anmelden** basierend auf einer Azure AD B2C-Richtlinie zu starten. 
 
-In der Beispielanwendung werden mehrere Registrierungsoptionen unterstützt, z.B. die Nutzung eines sozialen Netzwerks als Identitätsanbieter oder die Erstellung eines lokalen Kontos per E-Mail-Adresse. Verwenden Sie für diese Schnellstartanleitung ein Konto bei einem sozialen Netzwerk als Identitätsanbieter (etwa Facebook, Google, Microsoft oder Twitter). 
+In der Beispielanwendung sollen mehrere Registrierungsoptionen unterstützt werden, z.B. die Erstellung eines lokalen Kontos per E-Mail-Adresse. Verwenden Sie für diesen Schnellstart ein Facebook-Konto. 
 
 ### <a name="sign-up-using-a-social-identity-provider"></a>Registrieren mit einem sozialen Netzwerk als Identitätsanbieter
 
 Azure AD B2C zeigt für die Beispiel-Web-App eine benutzerdefinierte Anmeldeseite für die fiktive Marke „Wingtip Toys“ an. 
 
-1. Um sich mit einem Social Media-Konto als Identitätsanbieter zu registrieren, klicken Sie auf die Schaltfläche des Identitätsanbieters, den Sie verwenden möchten.
-
-    ![Anbieter für Registrierung oder Anmeldung](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
+1. Um sich mit einem Konto bei einem sozialen Netzwerk als Identitätsanbieter zu registrieren, klicken Sie auf die Schaltfläche des Facebook-Identitätsanbieters.
 
     Sie authentifizieren sich mit den Anmeldeinformationen Ihres Social Media-Kontos und autorisieren die Anwendung dazu, Informationen von Ihrem Social Media-Konto zu lesen. Wenn Sie der Anwendung Zugriff auf diese gewähren, kann die Anwendung Profilinformationen aus dem Social Media-Konto abrufen, z.B. Ihren Namen und Ihre Stadt. 
 
-2. Schließen Sie den Anmeldevorgang für den Identitätsanbieter ab. Beispiel: Wenn Sie Twitter ausgewählt haben, geben Sie Ihre Twitter-Anmeldeinformationen ein, und klicken Sie auf **Anmelden**.
-
-    ![Authentifizierung und Autorisierung mit einem Social Media-Konto](media/active-directory-b2c-quickstarts-spa/twitter-authenticate-authorize-spa.png)
+2. Schließen Sie den Anmeldevorgang für den Identitätsanbieter ab, indem Sie Ihre Anmeldeinformationen eingeben.
 
     Die Profildetails für Ihr neues Konto werden mit Informationen aus Ihrem Social Media-Konto aufgefüllt. 
 

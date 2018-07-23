@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: sangsinh
-ms.openlocfilehash: 195537b271c442b954d6d6e6fa8d1491c07822e8
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 04e88725c04fc88a8394bafd455d25ea13718f7d
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970243"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070007"
 ---
 # <a name="immutable-storage-feature-of-azure-blob-storage-preview"></a>Funktion „Unveränderlicher Speicher“ von Azure-Blobspeicher (Vorschauversion)
 
@@ -178,11 +178,11 @@ Sie können die Funktion „Unveränderlicher Speicher“ mit allen vorhandenen 
 
 **Was passiert, wenn ich versuche, einen Container mit einer *gesperrten* zeitbasierten Aufbewahrungsrichtlinie oder gesetzlichen Aufbewahrungspflicht zu löschen?**
 
-Beim Vorgang „Delete Container“ tritt ein Fehler auf, wenn es sich um mindestens ein Blob mit einer gesperrten zeitbasierten Aufbewahrungsrichtlinie oder einer gesetzlichen Aufbewahrungspflicht handelt. Der Vorgang „Delete Container“ ist erfolgreich, wenn kein Blob mit einem aktiven Aufbewahrungszeitraum vorhanden ist und keine Zeiträume für die gesetzliche Aufbewahrungspflicht aktiv sind. Sie müssen zuerst die Blobs löschen, bevor Sie den Container löschen können.
+Beim Vorgang „Delete Container“ tritt ein Fehler auf, wenn es sich um mindestens ein Blob mit einer gesperrten zeitbasierten Aufbewahrungsrichtlinie oder einer gesetzlichen Aufbewahrungspflicht handelt. Dies trifft auch dann zu, wenn die Daten [vorläufig gelöscht](storage-blob-soft-delete.md) werden. Der Vorgang „Delete Container“ ist erfolgreich, wenn kein Blob mit einem aktiven Aufbewahrungszeitraum vorhanden ist und keine Zeiträume für die gesetzliche Aufbewahrungspflicht aktiv sind. Sie müssen zuerst die Blobs löschen, bevor Sie den Container löschen können. 
 
 **Was passiert, wenn ich versuche, ein Speicherkonto mit einem WORM-Container zu löschen, das über eine *gesperrte* zeitbasierte Aufbewahrungsrichtlinie oder eine gesetzliche Aufbewahrungspflicht verfügt?**
 
-Für das Löschen des Speicherkontos tritt ein Fehler auf, wenn mindestens ein WORM-Container mit einer gesetzlichen Aufbewahrungspflicht oder ein Blob mit einem aktiven Aufbewahrungszeitraum vorhanden ist.  Alle WORM-Container müssen gelöscht werden, bevor das Speicherkonto gelöscht werden kann.  Siehe Frage #2 mit Informationen zum Löschen des Containers.
+Für das Löschen des Speicherkontos tritt ein Fehler auf, wenn mindestens ein WORM-Container mit einer gesetzlichen Aufbewahrungspflicht oder ein Blob mit einem aktiven Aufbewahrungszeitraum vorhanden ist.  Alle WORM-Container müssen gelöscht werden, bevor das Speicherkonto gelöscht werden kann.  Informationen zum Löschen des Containers finden Sie unter der vorherigen Frage.
 
 **Kann ich die Daten zwischen unterschiedlichen Blobebenen („Hot“, „Cool“, „Cold“) verschieben, wenn sich das Blob im unveränderlichen Zustand befindet?**
 

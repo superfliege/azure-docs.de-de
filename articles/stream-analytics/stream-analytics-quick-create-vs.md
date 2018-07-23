@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: da81f26109eb140135eb972fd28e487139470b82
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: a69bfbe4c062012e82ca49233226eb1fcb8eb75e
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37032915"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113539"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-stream-analytics-tools-for-visual-studio"></a>Schnellstart: Erstellen eines Stream Analytics-Auftrags mithilfe des Azure Stream Analytics-Tools für Visual Studio
 
@@ -71,6 +71,11 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereit
 4. Geben Sie **Name**, **Speicherort** und **Projektmappenname** für Ihr Projekt ein, und klicken Sie auf **OK**.
 
    ![Erstellen eines Stream Analytics-Projekts](./media/stream-analytics-quick-create-vs/create-stream-analytics-project.png)
+
+Sehen Sie sich die Elemente an, die in einem Azure Stream Analytics-Projekt enthalten sind.
+
+   <img src="./media/stream-analytics-quick-create-vs/stream-analytics-project.png" alt="Azure Stream Analytics project elements" width="300px"/>
+
 
 ## <a name="choose-the-required-subscription"></a>Auswählen des erforderlichen Abonnements
 

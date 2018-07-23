@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
-ms.date: 06/06/2018
+ms.date: 07/17/2018
 ms.author: marsma
-ms.openlocfilehash: a0772d1009021ca64b448710c5353407a5492fae
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: e4c1efbf4c2c844bae971fa1136e0fe3bed18bcc
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809864"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112962"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>Protokollierung für Containerinstanzen mit Azure Log Analytics
 
@@ -43,9 +43,26 @@ So erhalten Sie die Log Analytics-Arbeitsbereichs-ID und den Primärschlüssel:
 
 ## <a name="create-container-group"></a>Erstellen einer Containergruppe
 
-Mit der Log Analytics-Arbeitsbereichs-ID und dem Primärschlüssel können Sie nun eine Containergruppe mit aktivierter Protokollierung erstellen. Im folgenden Beispiel wird eine Containergruppe mit einem einzelnen [fluentd][fluentd]-Container erstellt. Der Fluentd-Container generiert mehrere Ausgabezeilen in der Standardkonfiguration. Da diese Ausgabe an Ihren Log Analytics-Arbeitsbereich gesendet wird, eignet sie sich gut zur Veranschaulichung der Anzeige und Abfrage von Protokollen.
+Mit der Log Analytics-Arbeitsbereichs-ID und dem Primärschlüssel können Sie nun eine Containergruppe mit aktivierter Protokollierung erstellen.
 
-Kopieren Sie zunächst die folgende YAML-Datei, die eine Containergruppe mit einem einzelnen Container definiert, in eine neue Datei. Ersetzen Sie `LOG_ANALYTICS_WORKSPACE_ID` und `LOG_ANALYTICS_WORKSPACE_KEY` durch die im vorherigen Schritt erhaltenen Werte, und speichern Sie die Datei unter dem Namen **deploy-aci.yaml**.
+In den folgenden Beispielen werden zwei Möglichkeiten zum Erstellen einer Containergruppe mit einem einzelnen [fluentd][fluentd]-Container gezeigt: Azure-Befehlszeilenschnittstelle und Azure-Befehlszeilenschnittstelle mit einer YAML-Vorlage. Der Fluentd-Container generiert mehrere Ausgabezeilen in der Standardkonfiguration. Da diese Ausgabe an Ihren Log Analytics-Arbeitsbereich gesendet wird, eignet sie sich gut zur Veranschaulichung der Anzeige und Abfrage von Protokollen.
+
+### <a name="deploy-with-azure-cli"></a>Bereitstellen über die Azure-Befehlszeilenschnittstelle
+
+Für eine Bereitstellung über die Azure-Befehlszeilenschnittstelle geben Sie die Parameter `--log-analytics-workspace` und `--log-analytics-workspace-key` im Befehl [az container create][az-container-create] an. Ersetzen Sie die beiden Arbeitsbereichswerte durch die Werten, die Sie im vorherigen Schritt erhalten haben (und aktualisieren Sie den Ressourcengruppennamen), bevor Sie den folgenden Befehl ausführen.
+
+```azurecli-interactive
+az container create \
+    --resource-group myResourceGroup \
+    --name mycontainergroup001 \
+    --image fluent/fluentd \
+    --log-analytics-workspace <WORKSPACE_ID> \
+    --log-analytics-workspace-key <WORKSPACE_KEY>
+```
+
+### <a name="deploy-with-yaml"></a>Bereitstellen mit YAML
+
+Verwenden Sie diese Methode, wenn Sie Containergruppen lieber mit YAML bereitstellen möchten. Der folgende YAML-Code definiert eine Containergruppe mit einem einzelnen Container. Kopieren Sie den YAML-Code in eine neue Datei, und ersetzen Sie `LOG_ANALYTICS_WORKSPACE_ID` und `LOG_ANALYTICS_WORKSPACE_KEY` durch die im vorherigen Schritt erhaltenen Werte. Speichern Sie die Datei unter dem Namen **deploy-aci.yaml**.
 
 ```yaml
 apiVersion: 2018-06-01
@@ -75,7 +92,7 @@ type: Microsoft.ContainerInstance/containerGroups
 Führen Sie als Nächstes den folgenden Befehl aus, um die Containergruppe bereitzustellen. Ersetzen Sie `myResourceGroup` durch eine Ressourcengruppe in Ihrem Abonnement (oder erstellen Sie zuerst eine Ressourcengruppe namens „myResourceGroup“):
 
 ```azurecli-interactive
-az container create -g myResourceGroup -n mycontainergroup001 -f deploy-aci.yaml
+az container create --resource-group myResourceGroup --name mycontainergroup001 --file deploy-aci.yaml
 ```
 
 Sie sollten kurz nach Ausgabe des Befehls eine Antwort von Azure mit den Bereitstellungsdetails erhalten.
@@ -135,3 +152,4 @@ Informationen zur Überwachung der CPU- und Arbeitsspeicherressourcen von Contai
 [query_lang]: https://docs.loganalytics.io/
 
 <!-- LINKS - Internal -->
+[az-container-create]: /cli/azure/container#az-container-create

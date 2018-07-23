@@ -7,37 +7,37 @@ manager: jwillis
 ms.service: storage
 ms.workload: storage
 ms.topic: get-started-article
-ms.date: 07/03/2018
+ms.date: 07/14/2018
 ms.author: hux
-ms.openlocfilehash: 6efc50bfee54c38511fb3346f1341f81741d14eb
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9ea4a6f0d1ff6e78d97fbc64b8a23406172ebf36
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445421"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072413"
 ---
 # <a name="azure-storage-account-options"></a>Optionen für Azure Storage-Konten
 
 ## <a name="overview"></a>Übersicht
 Azure Storage enthält drei verschiedene Kontooptionen, für die jeweils unterschiedliche Preise und unterstützte Features gelten. Berücksichtigen Sie diese Unterschiede, bevor Sie ein Speicherkonto erstellen, um die Option zu ermitteln, die für Ihre Anwendungen am besten geeignet ist. Die drei verschiedenen Speicherkontooptionen lauten:
 
-* Konten vom Typ **General Purpose v2 (GPv2)** 
-* Konten vom Typ **General Purpose v1 (GPv1)**
-* Konten vom Typ **Blobspeicher**
+* [Konten vom Typ **General Purpose v2 (GPv2)**](#general-purpose-v2-accounts)
+* [Konten vom Typ **General Purpose v1 (GPv1)**](#general-purpose-v1-accounts)
+* [Konten vom Typ **Blobspeicher**](#blob-storage-accounts)
 
 Die einzelnen Kontotypen werden im folgenden Abschnitt ausführlicher beschrieben:
 
 ## <a name="storage-account-options"></a>Speicherkontooptionen
 
-### <a name="general-purpose-v2"></a>General Purpose v2
+### <a name="general-purpose-v2-accounts"></a>Allgemeines Konto vom Typ „General Purpose v2“
 
-Konten vom Typ „General Purpose v2 (GPv2)“ unterstützen alle aktuellen Features für Blobs, Dateien, Warteschlangen und Tabellen. GPv2-Konten unterstützen alle APIs und Features, die auch für GPv1- und Blob-Speicherkonten unterstützt werden. Außerdem werden die gleichen Features in Bezug auf Dauerhaftigkeit, Verfügbarkeit, Skalierbarkeit und Leistung dieser Kontotypen unterstützt. Die Preise für GPv2-Konten wurden so konzipiert, dass die niedrigsten Preise pro GB sowie konkurrenzfähige Transaktionspreise erzielt werden.
+Konten vom Typ „General Purpose v2 (GPv2)“ unterstützen alle aktuellen Features für Blobs, Dateien, Warteschlangen und Tabellen. GPv2-Konten unterstützen alle APIs, Dienste und Features, die auch von General Purpose v1 (GPv1)- und Blob-Speicherkonten unterstützt werden. Außerdem weisen sie die gleiche Dauerhaftigkeit, Verfügbarkeit, Skalierbarkeit und Leistung auf, die von allen Speicherkontotypen geboten werden. Die Preise für GPv2-Konten wurden so konzipiert, dass die niedrigsten Preise pro GB sowie konkurrenzfähige Transaktionspreise erzielt werden.
 
 Ihr GPv1- oder Blob-Speicherkonto können Sie über das Azure-Portal, mithilfe von PowerShell oder über die Azure CLI auf ein GPv2-Konto upgraden. 
 
-Für Blockblobs in einem GPv2-Speicherkonto können Sie auf Grundlage von Zugriffsmustern zwischen den Speicherebenen „Hot“ und „Cool“ auf Kontoebene bzw. zwischen den Ebenen „Hot“, „Cool“ und „Archiv“ auf Blobebene wählen. Speichern Sie Daten, auf die häufig, weniger häufig und selten zugegriffen wird, auf den Speicherebenen „Hot“, „Cool“ bzw. „Archiv“, um die Kosten zu optimieren. 
+Für Blockblobs in einem GPv2-Speicherkonto können Sie auf Grundlage von Verwendungsmustern zwischen den Speicherzugriffsebenen „Hot“ oder „Cool“ auf Kontoebene und zwischen den Zugriffsebenen „Hot“, „Cool“ oder „Archiv“ auf Blobebene wählen. Speichern Sie Daten, auf die häufig, weniger häufig und selten zugegriffen wird, auf den Speicherebenen „Hot“, „Cool“ bzw. „Archiv“, um Speicher- und Transaktionskosten zu optimieren. 
 
-GPv2-Speicherkonten machen das Attribut **Access Tier** (Zugriffsebene) auf Kontoebene verfügbar, über das die Standard-Speicherkontoebene als **Hot** oder **Cool** angegeben wird. Die Standard-Speicherkontoebene wird auf alle Blobs angewendet, für die auf Blobebene keine explizite Ebene festgelegt ist. Bei einer Änderung des Nutzungsmusters der Daten können Sie jederzeit zwischen den beiden Speicherebenen wechseln. Die **Ebene „Archiv“** steht ausschließlich auf der Blobebene zur Verfügung.
+GPv2-Speicherkonten machen das Attribut **Access Tier** (Zugriffsebene) auf Kontoebene verfügbar, über das die Standard-Speicherkontoebene als **Hot** oder **Cool** angegeben wird. Die Standard-Speicherkontoebene wird auf alle Blobs angewendet, für die auf Blobebene keine explizite Ebene festgelegt ist. Bei einer Änderung des Nutzungsmusters der Daten können Sie jederzeit zwischen den beiden Speicherebenen wechseln. Die Ebene **Archiv** steht ausschließlich auf der Blobebene zur Verfügung.
 
 > [!NOTE]
 > Die Änderung der Speicherebene kann mit zusätzlichen Kosten verbunden sein. Weitere Informationen finden Sie im Abschnitt [Preise und Abrechnung](#pricing-and-billing).
@@ -46,7 +46,10 @@ GPv2-Speicherkonten machen das Attribut **Access Tier** (Zugriffsebene) auf Kont
 
 ### <a name="upgrade-a-storage-account-to-gpv2"></a>Aktualisieren eines Speicherkontos auf GPv2
 
-Benutzer können ein GPv1- oder Blob-Speicherkonto jederzeit mit dem Azure-Portal, PowerShell oder der Azure CLI auf ein GPv2-Konto aktualisieren. Diese Änderung kann nicht rückgängig gemacht werden, und es sind keine anderen Änderungen zulässig.
+Benutzer können ein GPv1- oder Blob-Speicherkonto jederzeit mit dem Azure-Portal, PowerShell oder der Azure CLI auf ein GPv2-Konto aktualisieren. Diese Änderung kann nicht rückgängig gemacht werden, und es sind keine anderen Änderungen des Kontotyps zulässig. Weitere Informationen zur Bewertung des vorhandenen Speicherkontos finden Sie im Abschnitt [Evaluieren von und Migrieren zu GPv2-Speicherkonten](#evaluating-and-migrating-to-gpv2-storage-accounts).
+* [Upgrade auf GPv2 mit dem Azure-Portal](#upgrade-with-azure-portal)
+* [Upgrade auf GPv2 mit PowerShell](#upgrade-with-powershell)
+* [Upgrade auf GPv2 per Azure CLI](#upgrade-with-azure-cli)
 
 #### <a name="upgrade-with-azure-portal"></a>Aktualisieren mit dem Azure-Portal
 Um für ein GPv1- oder Blob-Speicherkonto mit dem Azure-Portal ein Upgrade auf ein GPv2-Konto durchzuführen, melden Sie sich zuerst am [Azure-Portal](https://portal.azure.com) an und wählen Ihr Speicherkonto aus. Wählen Sie **Einstellungen** > **Konfiguration** aus. Die Schaltfläche **Aktualisieren** wird zusammen mit einem Hinweis zum Upgradeprozess angezeigt.
@@ -67,7 +70,7 @@ Installieren Sie zuerst die aktuelle Version der Azure CLI, um für ein GPv1- od
 az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
 ```` 
 
-### <a name="general-purpose-v1"></a>General Purpose v1
+### <a name="general-purpose-v1-accounts"></a>Allgemeines Konto vom Typ „General Purpose v1“
 
 Konten vom Typ „General Purpose v1 (GPv1)“ ermöglichen den Zugriff auf alle Azure Storage-Dienste, bieten aber ggf. nicht die aktuellen Features oder die niedrigsten GB-Preise. Beispielsweise werden die Speicherebenen „Cool“ und „Archiv“ in GPv1 nicht unterstützt. Die Preise für GPv1-Transaktionen sind niedriger, sodass Workloads mit hohen Datenänderungs- oder Leseraten ggf. von der Nutzung dieses Kontotyps profitieren.
 
@@ -196,14 +199,19 @@ Dieser Abschnitt dient dazu, Benutzern einen reibungslosen Umstieg von GPv1- auf
 * Sie verfügen über ein vorhandenes GPv1-Speicherkonto und möchten eine Umstellung auf ein GPv2-Speicherkonto mit der richtigen Speicherebene evaluieren.
 * Sie haben sich für die Nutzung eines GPv2-Speicherkontos entschieden oder besitzen bereits ein Konto dieser Art und möchten evaluieren, ob Sie die Speicherebene „Hot“ oder „Cool“ verwenden sollen.
 
-In beiden Fällen sollten Sie zuerst die Kosten für die Speicherung und den Zugriff auf Ihre Daten in einem GPv2-Speicherkonto schätzen und diesen Betrag mit Ihren derzeitigen Kosten vergleichen.
+In beiden Fällen sollten Sie zuerst die Kosten für Speicherung, Zugriff und Arbeiten mit Ihren Daten in einem GPv2-Speicherkonto schätzen und diesen Betrag mit Ihren derzeitigen Kosten vergleichen.
 
 ## <a name="evaluating-gpv2-storage-account-tiers"></a>Evaluieren von GPv2-Speicherkontoebenen
 
 Zur Ermittlung der ungefähren Kosten für die Speicherung und den Zugriff auf die Daten, die in einem GPv2-Speicherkonto gespeichert sind, müssen Sie Ihr vorhandenes Nutzungsmuster evaluieren bzw. Ihr voraussichtliches Nutzungsmuster einschätzen. Dazu benötigen Sie im Allgemeinen folgende Informationen:
 
-* Ihr Speicherverbrauch: Welche Datenmengen werden gespeichert, und wie verändert sich dies von Monat zu Monat?
-* Ihre Speicherzugriffsmuster: Welche Datenmengen werden im Rahmen des Kontos gelesen und geschrieben (einschließlich neuer Daten)? Wie viele Transaktionen werden für den Datenzugriff verwendet, und welche Arten von Transaktionen fallen an?
+* Ihren Datenspeicherverbrauch (GB)
+    - Wie viele Daten werden im Speicherkonto gespeichert?
+    - Wie ändert sich das Datenvolumen monatlich; werden alte Daten beständig durch neue Daten ersetzt?
+* Ihr Speicherzugriffsmuster (Vorgänge und Datenübertragung)
+    - Wie viele Daten werden aus dem Speicherkonto gelesen (ausgehende Daten) und in das Speicherkonto geschrieben (eingehende Daten)? 
+    - Wie viele Vorgänge finden für die Daten im Speicherkonto statt?
+    - Welche Arten von Vorgängen (Lesevorgänge gegenüber Schreibvorgängen) werden für die Daten durchgeführt?
 
 ## <a name="monitoring-existing-storage-accounts"></a>Überwachen von vorhandenen Speicherkonten
 
@@ -244,7 +252,7 @@ Die Summe von *'TotalBillableRequests'* über alle Einträge für eine API in de
 Zur Ermittlung der ungefähren Transaktionskosten für Blob-Speicherkonten müssen die Transaktionen in drei Gruppen unterteilt werden, da jeweils unterschiedliche Preise gelten.
 
 * Schreibtransaktionen wie *'PutBlob'*, *'PutBlock'*, *'PutBlockList'*, *'AppendBlock'*, *'ListBlobs'*, *'ListContainers'*, *'CreateContainer'*, *'SnapshotBlob'* und *'CopyBlob'*.
-* Löschtransaktionen wie *'DeleteBlob'* und *'DeleteContainer'*.
+* Lesetransaktionen wie *'GetBlob'*.
 * Alle anderen Transaktionen.
 
 Um die Transaktionskosten für GPv1-Speicherkonten zu schätzen, müssen Sie alle Transaktionen unabhängig vom Vorgang bzw. von der API aggregieren.

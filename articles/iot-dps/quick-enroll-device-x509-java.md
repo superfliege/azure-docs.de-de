@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: cea83fbe9c60bab687eb3d43fc269fa9f6bea325
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e9400c476179d801eb66f574373bf75cfb672d9d
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630458"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091083"
 ---
 # <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Registrieren von X.509-Geräten für den IoT Hub Device Provisioning-Dienst per Java-Dienst-SDK
 
@@ -54,7 +54,12 @@ Führen Sie vor dem Fortfahren zunächst das [Einrichten des IoT Hub Device Prov
 
 ## <a name="download-and-modify-the-java-sample-code"></a>Herunterladen und Ändern des Java-Beispielcodes
 
-In diesem Abschnitt wird veranschaulicht, wie Sie die Bereitstellungsdetails Ihres X.509-Geräts dem Beispielcode hinzufügen. 
+In diesem Abschnitt wird ein selbstsigniertes X.509-Zertifikat verwendet, wobei Folgendes zu beachten ist:
+
+* Selbstsignierte Zertifikate dienen nur zu Testzwecken und sollten nicht in der Produktion verwendet werden.
+* Die Standardgültigkeitsdauer für ein selbstsigniertes Zertifikat beträgt 1 Jahr.
+
+In den folgenden Schritten wird gezeigt, wie Sie die Bereitstellungsdetails Ihres X.509-Geräts dem Beispielcode hinzufügen. 
 
 1. Öffnen Sie eine Eingabeaufforderung. Klonen Sie das GitHub-Repository für das Codebeispiel zur Geräteregistrierung, indem Sie das Java-Dienst-SDK verwenden:
     

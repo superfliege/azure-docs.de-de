@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 06/13/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 5b5ae6ba945b1428ffc2877711ebdc73937ea0a3
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 8b9f53b34b75f9827e4976681a78f873b812ad96
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915941"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39055116"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Schnellstart: Bereitstellen eines Azure Kubernetes Service-Clusters (AKS)
 
@@ -34,20 +34,20 @@ Erstellen Sie mit dem Befehl [az group create][az-group-create] eine Ressourceng
 
 Beim Erstellen einer Ressourcengruppe werden Sie zum Angeben eines Standorts aufgefordert. Dies ist der Standort, an dem sich Ihre Ressourcen in Azure befinden.
 
-Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
+Das folgende Beispiel erstellt am Standort *eastus* eine Ressourcengruppe mit dem Namen *myAKSCluster*.
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus
+az group create --name myAKSCluster --location eastus
 ```
 
 Ausgabe:
 
 ```json
 {
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myAKSCluster",
   "location": "eastus",
   "managedBy": null,
-  "name": "myResourceGroup",
+  "name": "myAKSCluster",
   "properties": {
     "provisioningState": "Succeeded"
   },
@@ -60,7 +60,7 @@ Ausgabe:
 Erstellen Sie mithilfe des Befehls [az aks create][az-aks-create] einen AKS-Cluster. Im folgenden Beispiel wird ein Cluster mit dem Namen *myAKSCluster* erstellt. Bei der Bereitstellung eines AKS-Clusters kann die Lösung zur Überwachung der Integrität von Containern ebenso aktiviert werden. Weitere Informationen zum Aktivieren der Lösung für die Überwachung der Integrität von Containern finden Sie unter [Überwachen der Integrität von Azure Kubernetes Service][aks-monitor].
 
 ```azurecli-interactive
-az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
+az aks create --resource-group myAKSCluster --name myAKSCluster --node-count 1 --generate-ssh-keys
 ```
 
 Nach einigen Minuten ist die Ausführung des Befehls abgeschlossen, und es werden Informationen zum Cluster im JSON-Format zurückgegeben.
@@ -79,7 +79,7 @@ az aks install-cli
 Mit dem Befehl [az aks get-credentials][az-aks-get-credentials] können Sie „kubectl“ für die Verbindungsherstellung mit Ihrem Kubernetes-Cluster konfigurieren. Dieser Schritt dient dazu, Anmeldeinformationen herunterzuladen und die Kubernetes-Befehlszeilenschnittstelle für ihre Verwendung zu konfigurieren.
 
 ```azurecli-interactive
-az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+az aks get-credentials --resource-group myAKSCluster --name myAKSCluster
 ```
 
 Verwenden Sie zum Überprüfen der Verbindung mit Ihrem Cluster den Befehl [kubectl get][kubectl-get], um eine Liste der Clusterknoten zu erhalten. Beachten Sie Folgendes: Es kann einige Minuten dauern, bis die Anzeige erfolgt.
@@ -209,8 +209,11 @@ Navigieren Sie nun zu der externen IP-Adresse, um die Azure Vote-App anzuzeigen.
 Wenn der Cluster nicht mehr benötigt wird, entfernen Sie mit dem Befehl [az group delete][az-group-delete] die Ressourcengruppe, den Containerdienst und alle zugehörigen Ressourcen.
 
 ```azurecli-interactive
-az group delete --name myResourceGroup --yes --no-wait
+az group delete --name myAKSCluster --yes --no-wait
 ```
+
+> [!NOTE]
+> Wenn Sie den Cluster löschen, wird der vom AKS-Cluster verwendete Azure Active Directory-Dienstprinzipal nicht entfernt. Schritte zum Entfernen des Dienstprinzipals finden Sie unter den [Überlegungen zum AKS-Dienstprinzipal und dessen Löschung][sp-delete].
 
 ## <a name="get-the-code"></a>Abrufen des Codes
 
@@ -246,4 +249,4 @@ Weitere Informationen zu Azure Container Service sowie ein vollständiges Beispi
 [az-group-create]: /cli/azure/group#az_group_create
 [az-group-delete]: /cli/azure/group#az_group_delete
 [azure-cli-install]: /cli/azure/install-azure-cli
-
+[sp-delete]: kubernetes-service-principal.md#additional-considerations

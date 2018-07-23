@@ -1,28 +1,23 @@
 ---
-title: Erstellen von Workflows zum Verarbeiten von E-Mails und Anlagen – Azure Logic Apps | Microsoft-Dokumentation
+title: 'Erstellen von Workflows zum Verarbeiten von E-Mails und Anlagen: Azure Logic Apps | Microsoft Docs'
 description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Logic Apps, Azure Storage und Azure Functions automatisierte Workflows für die Verarbeitung von E-Mails und Anlagen erstellen.
-author: ecfan
-manager: jeconnoc
-editor: ''
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/12/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: 3d6d66dca06c1f34a31155a27c32bbe3e48c8aa3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 07/20/2018
+ms.reviewer: klam, LADocs
+ms.openlocfilehash: 2b0420302bc74d4534d712de618959ef68c76514
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300632"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126367"
 ---
-# <a name="process-emails-and-attachments-with-a-logic-app"></a>Verarbeiten von E-Mails und Anlagen mit einer Logik-App
+# <a name="process-emails-and-attachments-with-azure-logic-apps"></a>Verarbeiten von E-Mails und Anlagen mit Azure Logic Apps
 
 Mit Azure Logic Apps können Sie Workflows automatisieren und Daten übergreifend in Azure-Dienste, Microsoft-Dienste, andere SaaS-Apps (Software-as-a-Service) und lokale Systeme integrieren. In diesem Tutorial erfahren Sie, wie Sie eine [Logik-App](../logic-apps/logic-apps-overview.md) erstellen, die eingehende E-Mails und deren Anlagen verarbeitet. Die Logik-App verarbeitet den Inhalt, speichert ihn in Azure Storage und sendet Benachrichtigungen zur Prüfung des Inhalts. 
 
@@ -51,9 +46,9 @@ Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="h
   In dieser Logik-App verwenden wir ein Office 365 Outlook-Konto. 
   Bei Verwendung eines anderen E-Mail-Kontos bleiben die allgemeinen Schritte zwar gleich, die Benutzeroberfläche sieht aber unter Umständen etwas anders aus.
 
-* Laden Sie den kostenlosen <a href="http://storageexplorer.com/" target="_blank">Microsoft Azure Storage-Explorer</a> herunter, und installieren Sie ihn. Mit diesem Tool können Sie überprüfen, ob Ihr Speichercontainer ordnungsgemäß eingerichtet ist.
+* Laden Sie den kostenlosen <a href="https://storageexplorer.com/" target="_blank">Microsoft Azure Storage-Explorer</a> herunter, und installieren Sie ihn. Mit diesem Tool können Sie überprüfen, ob Ihr Speichercontainer ordnungsgemäß eingerichtet ist.
 
-## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
+## <a name="sign-in-to-azure-portal"></a>Anmelden am Azure-Portal
 
 Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> an.
 
@@ -64,40 +59,48 @@ Eingehende E-Mails und Anlagen können als Blobs in einem [Azure-Speichercontain
 1. [Erstellen Sie zunächst ein Speicherkonto](../storage/common/storage-create-storage-account.md#create-a-storage-account) mit den folgenden Einstellungen, um einen Speichercontainer erstellen zu können:
 
    | Einstellung | Wert | BESCHREIBUNG | 
-   | ------- | ----- | ----------- | 
+   |---------|-------|-------------| 
    | **Name** | attachmentstorageacct | Der Name Ihres Speicherkontos. | 
    | **Bereitstellungsmodell** | Resource Manager | Das [Bereitstellungsmodell](../azure-resource-manager/resource-manager-deployment-model.md) zum Verwalten der Ressourcenbereitstellung. | 
    | **Kontoart** | Allgemeiner Zweck | Der [Speicherkontotyp](../storage/common/storage-introduction.md#types-of-storage-accounts). | 
-   | **Leistung** | Standard | Diese Einstellung gibt die unterstützten Datentypen und die Medien für die Datenspeicherung an. Weitere Informationen finden Sie unter [Speicherkontentypen](../storage/common/storage-introduction.md#types-of-storage-accounts). | 
+   | **Location** | USA (Westen) | Die Region, in der die Informationen zu Ihrem Speicherkonto gespeichert werden sollen. | 
    | **Replikation** | Lokal redundanter Speicher (LRS) | Diese Einstellung gibt an, wie Ihre Daten kopiert, gespeichert, verwaltet und synchronisiert werden. Weitere Informationen finden Sie unter [Replikation](../storage/common/storage-introduction.md#replication). | 
+   | **Leistung** | Standard | Diese Einstellung gibt die unterstützten Datentypen und die Medien für die Datenspeicherung an. Weitere Informationen finden Sie unter [Speicherkontentypen](../storage/common/storage-introduction.md#types-of-storage-accounts). | 
    | **Sichere Übertragung erforderlich** | Deaktiviert | Diese Einstellung gibt die erforderliche Sicherheit für Anforderungen von Verbindungen an. Weitere Informationen finden Sie unter [Vorschreiben einer sicheren Übertragung in Azure Storage](../storage/common/storage-require-secure-transfer.md). | 
    | **Abonnement** | <*Name Ihres Azure Abonnements*> | Der Name Ihres Azure-Abonnements | 
    | **Ressourcengruppe** | LA-Tutorial-RG | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die zum Organisieren und Verwalten verwandter Ressourcen verwendet wird. <p>**Hinweis:** Eine Ressourcengruppe befindet sich in einer bestimmten Region. Die Elemente in diesem Tutorial sind unter Umständen nicht in allen Regionen verfügbar. Versuchen Sie aber nach Möglichkeit, die gleiche Region zu verwenden. | 
-   | **Location** | USA (Ost) 2 | Die Region, in der die Informationen zu Ihrem Speicherkonto gespeichert werden sollen. | 
    | **Konfigurieren virtueller Netzwerke** | Deaktiviert | Behalten Sie für dieses Tutorial die Einstellung **Deaktiviert** bei. | 
    |||| 
 
-   Sie können auch [Azure PowerShell](../storage/common/storage-quickstart-create-storage-account-powershell.md) oder die [Azure-Befehlszeilenschnittstelle](../storage/common/storage-quickstart-create-storage-account-cli.md) verwenden.
-  
+   Sie können auch [Azure PowerShell](../storage/common/storage-quickstart-create-storage-account-powershell.md) oder die [Azure CLI](../storage/common/storage-quickstart-create-storage-account-cli.md) verwenden, um Ihr Speicherkonto zu erstellen.
+
 2. Nachdem Azure Ihr Speicherkonto bereitgestellt hat, können Sie Ihren Speicherkonto-Zugriffsschlüssel abrufen:
 
-   1. Klicken Sie in Ihrem Speicherkontomenü unter **Einstellungen** auf **Zugriffsschlüssel**. 
-   2. Suchen Sie unter **Standardschlüssel** und dem Namen Ihres Speicherkontos nach **key1**.
+   1. Klicken Sie im Menü Ihres Speicherkontos unter **Einstellungen** auf **Zugriffsschlüssel**. 
+
+   2. Kopieren Sie den Namen Ihres Speicherkontos und **key1**, und speichern Sie diese Werte dann an einem sicheren Speicherort.
 
       ![Kopieren und Speichern von Speicherkontoname und -schlüssel](./media/tutorial-process-email-attachments-workflow/copy-save-storage-name-key.png)
 
-   Sie können auch [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccountkey) oder die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest.md#az_storage_account_keys_list) verwenden. 
+   Sie können auch [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccountkey) oder die [Azure CLI](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest.md#az_storage_account_keys_list) verwenden, um den Zugriffsschlüssel Ihres Speicherkontos abzurufen. 
 
-3. Erstellen Sie einen Speichercontainer für Ihre E-Mail-Anlagen.
+3. Erstellen Sie einen Blobspeichercontainer für Ihre E-Mail-Anlagen.
    
-   1. Klicken Sie in Ihrem Speicherkontomenü im Bereich **Übersicht** unter **Dienste** auf **Blobs** und anschließend auf **+ Container**.
+   1. Wählen Sie im Menü Ihres Speicherkontos **Übersicht** aus. 
+   Wählen Sie unter **Dienste** die Option **Blobs** aus.
 
-   2. Geben Sie als Containername die Zeichenfolge „attachments“ ein. Wählen Sie unter **Öffentliche Zugriffsebene** die Option **Container (Anonymer Lesezugriff für Container und Blobs)** aus, und klicken Sie anschließend auf **OK**.
+      ![Hinzufügen eines Blobspeichercontainers](./media/tutorial-process-email-attachments-workflow/create-storage-container.png)
 
-   Sie können auch [Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer) oder die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az_storage_container_create) verwenden. 
-   Wenn Sie die hier angegebenen Schritte ausgeführt haben, finden Sie Ihren Speichercontainer im Azure-Portal unter Ihrem Speicherkonto:
+   2. Nach die Seite **Container** geöffnet wurde, wählen Sie auf der Symbolleiste **Container** aus. 
 
-   ![Fertiger Speichercontainer](./media/tutorial-process-email-attachments-workflow/created-storage-container.png)
+   3. Geben Sie unter **Neuer Container** „attachments“ als Containernamen ein. 
+   Wählen Sie unter **Öffentliche Zugriffsebene** die Option **Container (Anonymer Lesezugriff für Container und Blobs)** aus, und klicken Sie anschließend auf **OK**.
+
+      Wenn Sie die hier angegebenen Schritte ausgeführt haben, finden Sie Ihren Speichercontainer im Azure-Portal unter Ihrem Speicherkonto:
+
+      ![Fertiger Speichercontainer](./media/tutorial-process-email-attachments-workflow/created-storage-container.png)
+
+   Sie können auch [Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer) oder die [Azure CLI](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az_storage_container_create) verwenden, um einen Speichercontainer zu erstellen. 
 
 Stellen Sie als Nächstes eine Storage-Explorer-Verbindung mit Ihrem Speicherkonto her.
 
@@ -105,25 +108,30 @@ Stellen Sie als Nächstes eine Storage-Explorer-Verbindung mit Ihrem Speicherkon
 
 Stellen Sie eine Storage-Explorer-Verbindung mit Ihrem Speicherkonto her, und vergewissern Sie sich, dass Ihre Logik-App Anlagen ordnungsgemäß als Blobs in Ihrem Speichercontainer speichert.
 
-1. Öffnen Sie den Microsoft Azure-Storage-Explorer. Wenn Sie im Storage-Explorer zur Angabe einer Verbindung mit Azure Storage aufgefordert werden, klicken Sie auf **Use a storage account name and key** (Speicherkontoname und -schlüssel verwenden) > **Weiter**.
-Sollte eine Aufforderung angezeigt werden, klicken Sie auf der Symbolleiste des Explorers auf **Konto hinzufügen**.
+1. Öffnen Sie den Microsoft Azure-Storage-Explorer. 
 
-2. Geben Sie unter **Attach using Name and Key** (Mit Name und Schlüssel anfügen) den Namen Ihres Speicherkontos und den zuvor gespeicherten Zugriffsschlüssel ein. Klicken Sie auf **Weiter** > **Verbinden**.
+   Storage-Explorer fordert Sie auf, eine Verbindung mit Ihrem Speicherkonto herzustellen. 
 
-3. Vergewissern Sie sich, dass Speicherkonto und Container ordnungsgemäß im Storage-Explorer angezeigt werden:
+2. Wählen Sie im Bereich **Verbindung mit Azure Storage herstellen** die Option **Speicherkontonamen und -schlüssel verwenden** aus, und klicken Sie auf **Weiter**. 
 
-   1. Erweitern Sie unter **Explorer** die Knoten **(Local and Attached)** (Lokal und angefügt) > 
-   **Speicherkonten** > **attachmentstorageaccount** > 
-   **Blobcontainer**.
+   ![Storage-Explorer: Herstellen einer Verbindung mit dem Speicherkonto](./media/tutorial-process-email-attachments-workflow/storage-explorer-choose-storage-account.png)
 
-   2. Vergewissern Sie sich, dass der Container „attachments“ angezeigt wird. 
-   Beispiel: 
+   > [!TIP]
+   > Sollte keine Eingabeaufforderung angezeigt werden, klicken Sie auf der Symbolleiste des Storage-Explorers auf **Konto hinzufügen**.
 
-      ![Storage-Explorer: Überprüfen des Speichercontainers](./media/tutorial-process-email-attachments-workflow/storage-explorer-check-contianer.png)
+3. Geben Sie unter **Kontoname** den Namen Ihres Speicherkontos an. Geben Sie unter **Kontoschlüssel** den Zugriffsschlüssel an, den Sie zuvor gespeichert haben. Klicken Sie auf **Weiter**.
+
+4. Bestätigen Sie die Verbindungsinformationen, und wählen Sie dann **Verbinden** aus. 
+
+   Storage-Explorer erstellt die Verbindung und zeigt Ihr Speicherkonto im Explorer-Fenster unter **(Lokale und angefügte)** > **Speicherkonten** an. 
+
+5. Erweitern Sie zum Anzeigen Ihres Blobspeicherkontos unter **Speicherkonten** Ihr Speicherkonto (in diesem Fall **attachmentstorageacct**), und erweitern Sie dann **Blobcontainer**. Hier finden Sie z.B. den Container **attachments**: 
+
+   ![Storage-Explorer: Anzeigen des Speichercontainers](./media/tutorial-process-email-attachments-workflow/storage-explorer-check-contianer.png)
 
 Erstellen Sie als Nächstes eine [Azure-Funktion](../azure-functions/functions-overview.md), die HTML-Code aus eingehenden E-Mails entfernt.
 
-## <a name="create-a-function-to-clean-html"></a>Erstellen einer Funktion zum Entfernen von HTML-Code
+## <a name="create-function-to-clean-html"></a>Erstellen einer Funktion zum Entfernen von HTML-Code
 
 Erstellen Sie nun mithilfe des in diesen Schritten bereitgestellten Codeausschnitts eine Azure-Funktion, die HTML-Code aus jeder eingehenden E-Mail entfernt. Dadurch wird der E-Mail-Inhalt übersichtlicher und lässt sich leichter verarbeiten. Diese Funktion können Sie dann über Ihre Logik-App aufrufen.
 
@@ -135,32 +143,39 @@ Erstellen Sie nun mithilfe des in diesen Schritten bereitgestellten Codeausschni
    | **Abonnement** | <*Name Ihres Azure Abonnements*> | Das gleiche Azure-Abonnement, das Sie auch zuvor verwendet haben. | 
    | **Ressourcengruppe** | LA-Tutorial-RG | Die gleiche Azure-Ressourcengruppe, die Sie auch zuvor verwendet haben. | 
    | **Hostingplan** | Verbrauchstarif | Diese Einstellung bestimmt die Zuordnung und Skalierung von Ressourcen (beispielsweise Rechenleistung) zum Ausführen Ihrer Funktions-App. Weitere Informationen finden Sie im [Vergleich der Hostingpläne](../azure-functions/functions-scale.md). | 
-   | **Location** | USA (Ost) 2 | Die gleiche Region, die Sie auch zuvor verwendet haben. | 
+   | **Location** | USA (Westen) | Die gleiche Region, die Sie auch zuvor verwendet haben. | 
    | **Speicher** | cleantextfunctionstorageacct | Erstellen Sie ein Speicherkonto für Ihre Funktions-App. Verwenden Sie nur Kleinbuchstaben und Zahlen. <p>**Hinweis:** Dieses Speicherkonto enthält Ihre Funktions-Apps und unterscheidet sich vom zuvor erstellten Speicherkonto für E-Mail-Anlagen. | 
-   | **Application Insights** | Aus | Dient zum Aktivieren der Anwendungsüberwachung mit [Application Insights](../application-insights/app-insights-overview.md). Für dieses Tutorial behalten wir jedoch die Einstellung **Aus** bei. | 
+   | **Application Insights** | Aus | Dient zum Aktivieren der Anwendungsüberwachung mit [Application Insights](../application-insights/app-insights-overview.md). Wählen Sie für dieses Tutorial jedoch die Einstellung **Aus** aus. | 
    |||| 
 
-   Falls Ihre Funktions-App nach der Bereitstellung nicht automatisch geöffnet wird, suchen Sie sie im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a>. Klicken Sie im Azure-Hauptmenü auf **App Services**, und wählen Sie Ihre Funktions-App aus.
+   Falls Ihre Funktions-App nach der Bereitstellung nicht automatisch geöffnet wird, suchen Sie sie im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a>. Wählen Sie im Azure-Hauptmenü **Funktionen-Apps** aus, und wählen Sie dann Ihre Funktionen-App aus. 
+
+   ![Auswählen der Funktions-App](./media/tutorial-process-email-attachments-workflow/select-function-app.png)
+
+   Sollte **Funktionen-Apps** im Azure-Menü nicht angezeigt werden, navigieren Sie stattdessen zu **Alle Dienste**. Suchen Sie über das Suchfeld nach **Funktionen-Apps**. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Funktion im Azure-Portal](../azure-functions/functions-create-first-azure-function.md).
+
+   Andernfalls öffnet Azure automatisch Ihre Funktionen-App wie hier gezeigt:
 
    ![Erstellte Funktions-App](./media/tutorial-process-email-attachments-workflow/function-app-created.png)
 
-   Sollte **App Services** im Azure-Menü nicht angezeigt werden, navigieren Sie stattdessen zu **Weitere Dienste**. Suchen Sie über das Suchfeld nach **Funktionen-Apps**. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Funktion im Azure-Portal](../azure-functions/functions-create-first-azure-function.md).
+   Sie können auch die [Azure CLI](../azure-functions/functions-create-first-azure-function-azure-cli.md) oder [PowerShell und Resource Manager-Vorlagen](../azure-resource-manager/resource-group-template-deploy.md) verwenden, um eine Funktionen-App zu erstellen.
 
-   Sie können auch die [Azure-Befehlszeilenschnittstelle](../azure-functions/functions-create-first-azure-function-azure-cli.md) oder [PowerShell und Resource Manager-Vorlagen](../azure-resource-manager/resource-group-template-deploy.md) verwenden.
-
-2. Erweitern Sie unter **Funktionen-Apps** den Knoten **CleanTextFunctionApp**, und wählen Sie **Funktionen** aus. Klicken Sie auf der Funktionen-Symbolleiste auf **+ Neue Funktion**.
+2. Erweitern Sie unter **Funktionen-Apps** den Knoten **CleanTextFunctionApp**, und wählen Sie **Funktionen** aus. Wählen Sie auf der Funktionen-Symbolleiste **Neue Funktion** aus.
 
    ![Erstellen einer neuen Funktion](./media/tutorial-process-email-attachments-workflow/function-app-new-function.png)
 
-3. Wählen Sie unter **Wählen Sie unten eine Vorlage aus, oder wechseln Sie zum Schnellstart** die Funktionsvorlage **HttpTrigger - C#** aus.
+3. Öffnen Sie unter **Vorlage unten auswählen oder zum Schnellstart navigieren** die Liste **Szenario**, und wählen Sie **Core** aus. Wählen Sie in der Vorlage **HTTP-Trigger** die Option **C#** aus.
 
    ![Auswählen der Funktionsvorlage](./media/tutorial-process-email-attachments-workflow/function-select-httptrigger-csharp-function-template.png)
 
-4. Geben Sie unter **Funktion benennen** Folgendes ein: ```RemoveHTMLFunction```. Behalten Sie unter **HTTP-Trigger** > **Autorisierungsstufe** den Standardwert **Funktion** bei, und klicken Sie auf **Erstellen**.
+   > [!NOTE]
+   > In diesem Beispiel wird der C#-Beispielcode bereitgestellt, damit Sie das Beispiel ausführen können, ohne C# kennen zu müssen.
+
+4. Geben Sie im Bereich **Neue Funktion** ```RemoveHTMLFunction``` unter **Name** ein. Behalten Sie für **Autorisierungsstufe** die Einstellung **Funktion** bei, und wählen Sie **Erstellen** aus.
 
    ![Benennen Ihrer Funktion](./media/tutorial-process-email-attachments-workflow/function-provide-name.png)
 
-5. Ersetzen Sie den Vorlagencode im Editor durch den folgenden Code. Dieser entfernt den HTML-Code und gibt Ergebnisse an den Aufrufer zurück.
+5. Ersetzen Sie den Vorlagencode im Editor durch den folgenden Beispielcode. Dieser entfernt den HTML-Code und gibt Ergebnisse an den Aufrufer zurück:
 
    ``` CSharp
    using System.Net;
@@ -180,7 +195,6 @@ Erstellen Sie nun mithilfe des in diesen Schritten bereitgestellten Codeausschni
 
       // Return cleaned text
       return req.CreateResponse(HttpStatusCode.OK, new { updatedBody });
-
    }
    ```
 
@@ -188,7 +202,7 @@ Erstellen Sie nun mithilfe des in diesen Schritten bereitgestellten Codeausschni
 
    ![Öffnen des Testbereichs](./media/tutorial-process-email-attachments-workflow/function-choose-test.png)
 
-7. Geben Sie im Bereich **Testen** unter **Anforderungstext** die folgende Zeile ein, und klicken Sie anschließend auf **Ausführen**:
+7. Geben Sie im Bereich **Testen** unter **Anforderungstext** die folgende Zeile ein, und klicken Sie anschließend auf **Ausführen**.
 
    ```json
    {"name": "<p><p>Testing my function</br></p></p>"}
@@ -196,17 +210,18 @@ Erstellen Sie nun mithilfe des in diesen Schritten bereitgestellten Codeausschni
 
    ![Testen der Funktion](./media/tutorial-process-email-attachments-workflow/function-run-test.png)
 
-   Im Fenster **Ausgabe** wird das folgende Ergebnis der Funktion angezeigt:
+   Im Fenster **Ausgabe** wird das Ergebnis der Funktion angezeigt:
 
    ```json
    {"updatedBody":"{\"name\": \"Testing my function\"}"}
    ```
 
-Nachdem Sie sich vergewissert haben, dass die Funktion funktioniert, können Sie Ihre Logik-App erstellen. In diesem Tutorial wird zwar gezeigt, wie Sie eine Funktion erstellen, die HTML-Code aus E-Mails entfernt, Logic Apps verfügt aber auch über einen Connector zum Konvertieren von **HTML in Text**.
+Nachdem Sie sich vergewissert haben, dass die Funktion funktioniert, können Sie Ihre Logik-App erstellen. In diesem Tutorial wird zwar gezeigt, wie Sie eine Funktion erstellen, die HTML-Code aus E-Mails entfernt, Logic Apps stellt aber auch einen Connector **HTML in Text** bereit.
 
 ## <a name="create-your-logic-app"></a>Erstellen Ihrer Logik-App
 
-1. Klicken Sie im Hauptmenü von Azure auf **Ressource erstellen** > **Unternehmensintegration** > **Logik-App**.
+1. Klicken Sie im Hauptmenü von Azure auf **Ressource erstellen** > 
+**Integration** > **Logik-App**.
 
    ![Erstellen einer Logik-App](./media/tutorial-process-email-attachments-workflow/create-logic-app.png)
 
@@ -219,8 +234,8 @@ Nachdem Sie sich vergewissert haben, dass die Funktion funktioniert, können Sie
    | **Name** | LA-ProcessAttachment | Der Name Ihrer Logik-App | 
    | **Abonnement** | <*Name Ihres Azure Abonnements*> | Das gleiche Azure-Abonnement, das Sie auch zuvor verwendet haben. | 
    | **Ressourcengruppe** | LA-Tutorial-RG | Die gleiche Azure-Ressourcengruppe, die Sie auch zuvor verwendet haben. |
-   | **Location** | USA (Ost) 2 | Die gleiche Region, die Sie auch zuvor verwendet haben. | 
-   | **Log Analytics** | Aus | Behalten Sie für dieses Tutorial die Einstellung **Aus** bei. | 
+   | **Location** | USA (Westen) | Die gleiche Region, die Sie auch zuvor verwendet haben. | 
+   | **Log Analytics** | Aus | Wählen Sie für dieses Tutorial die Einstellung **Aus** aus. | 
    |||| 
 
 3. Nachdem Ihre App von Azure bereitgestellt wurde, wird der Designer für Logik-Apps geöffnet und eine Seite mit einem Einführungsvideo und Vorlagen für allgemeine Logik-App-Mustern angezeigt. Wählen Sie unter **Vorlagen** die Option **Leere Logik-App**.
@@ -231,7 +246,9 @@ Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#lo
 
 ## <a name="monitor-incoming-email"></a>Überwachen eingehender E-Mails
 
-1. Geben Sie in das Suchfeld des Designers den Text „Wenn E-Mail empfangen wird“ ein. Wählen Sie den folgenden Trigger für Ihren E-Mail-Anbieter aus: **<*Ihr E-Mail-Anbieter*> - Wenn eine neue E-Mail empfangen wird**. Beispiel:
+1. Geben Sie im Designer in das Suchfeld „Wenn eine neue E-Mail empfangen wird“ als Filter ein. Wählen Sie diesen Trigger für Ihren E-Mail-Anbieter aus: **Wenn eine neue E-Mail empfangen wird – <*Ihr E-Mail-Anbieter*>**
+
+   Beispiel: 
 
    ![Auswählen des Triggers „Wenn eine neue E-Mail empfangen wird“ für den E-Mail-Anbieter](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
 
@@ -257,8 +274,8 @@ Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#lo
 
       | Einstellung | Wert | BESCHREIBUNG | 
       | ------- | ----- | ----------- | 
-      | **Mit Anlage** | Ja | Ruft nur E-Mails mit Anlagen ab. <p>**Hinweis:** Der Trigger entfernt keine E-Mails aus Ihrem Konto. Er überprüft nur neue Nachrichten und verarbeitet nur E-Mails, die dem Betrefffilter entsprechen. | 
-      | **Anlagen einschließen** | Ja | Ruft die Anlagen als Eingabe für Ihren Workflow ab, anstatt nur nach Anlagen zu suchen. | 
+      | **Mit Anlage** | JA | Ruft nur E-Mails mit Anlagen ab. <p>**Hinweis:** Der Trigger entfernt keine E-Mails aus Ihrem Konto. Er überprüft nur neue Nachrichten und verarbeitet nur E-Mails, die dem Betrefffilter entsprechen. | 
+      | **Anlagen einschließen** | JA | Ruft die Anlagen als Eingabe für Ihren Workflow ab, anstatt nur nach Anlagen zu suchen. | 
       | **Filter für Betreff** | ```Business Analyst 2 #423501``` | Der Text, nach dem im Betreff der E-Mail gesucht werden soll. | 
       |  |  |  | 
 
@@ -273,51 +290,54 @@ Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#lo
 
 ## <a name="check-for-attachments"></a>Überprüfen auf Anlagen
 
-1. Klicken Sie unter dem Trigger auf **+ Neuer Schritt** > **Bedingung hinzufügen**.
+Nun fügen Sie eine Bedingung hinzu, die nur E-Mails auswählt, die über Anlagen verfügen.
 
-   Der Bedingungsbereich wird standardmäßig entweder mit der Parameterliste oder mit der Liste mit den dynamischen Inhalten angezeigt, die alle Parameter aus dem vorherigen Schritt enthält, die Sie als Workfloweingabe einbeziehen können. 
-   Die Breite des Browserfensters bestimmt, welche Liste angezeigt wird.
+1. Klicken Sie unter dem Trigger auf **Neuer Schritt** > **Bedingung hinzufügen**.
+
+   ![„Neuer Schritt“, „Bedingung hinzufügen“](./media/tutorial-process-email-attachments-workflow/add-condition-under-trigger.png)
 
 2. Versehen Sie die Bedingung mit einem aussagekräftigeren Namen.
 
    1. Klicken Sie auf der Titelleiste der Bedingung auf die **Schaltfläche mit den Auslassungspunkten** (**...**) und anschließend auf **Umbenennen**.
 
-      Beispiel für die schmale Browseransicht:
-
       ![Umbenennen der Bedingung](./media/tutorial-process-email-attachments-workflow/condition-rename.png)
-
-      Wenn Sie die breite Browseransicht verwenden und die Liste mit den dynamischen Inhalten die Schaltfläche mit den Auslassungspunkten verdeckt, klicken Sie innerhalb der Bedingung auf **Dynamischen Inhalt hinzufügen**, um die Liste zu schließen. 
-      
-      ![Schließen der Liste mit den dynamischen Inhalten](./media/tutorial-process-email-attachments-workflow/close-dynamic-content-list.png)
 
    2. Nennen Sie Ihre Bedingung wie folgt: ```If email has attachments and key subject phrase```
 
-3. Beschreiben Sie die Bedingung durch Angabe eines Ausdrucks. 
+3. Erstellen Sie eine Bedingung, die überprüft, ob E-Mails mit Anlagen vorhanden sind. 
 
-   1. Klicken Sie im Bedingungsbereich auf **Im erweiterten Modus bearbeiten**.
+   1. Klicken Sie in der ersten Zeile unter **Und** innerhalb des linken Felds. 
+   Wählen Sie aus der Liste mit dynamischem Inhalt, die angezeigt wird, die Eigenschaft **Hat Anlage** aus.
 
-      ![Bearbeiten der Bedingung im erweiterten Modus](./media/tutorial-process-email-attachments-workflow/edit-advanced-mode.png)
+      ![Erstellen der Bedingung](./media/tutorial-process-email-attachments-workflow/build-condition.png)
 
-   2. Geben Sie den folgenden Ausdruck in das Textfeld ein:
+   2. Behalten Sie im mittleren Feld den Operator **gleich** bei.
 
-      ```@equals(triggerBody()?['HasAttachment'], bool('true'))```
+   3. Geben Sie im rechten Feld **TRUE** als Wert für den Vergleich mit dem Eigenschaftswert **Hat Anlage** aus dem Trigger ein.
 
-      Dieser Ausdruck vergleicht den Eigenschaftswert von **HasAttachment** aus dem Triggertext (in diesem Tutorial: die E-Mail) mit dem booleschen Objekt ```True```. 
+      ![Erstellen der Bedingung](./media/tutorial-process-email-attachments-workflow/finished-condition.png)
+
       Sind beide Werte gleich, besitzt die E-Mail mindestens eine Anlage, die Bedingung ist erfüllt, und der Workflow wird fortgesetzt.
 
-      Nun sieht Ihre Bedingung wie im folgendem Beispiel aus:
+   In Ihrer zugrunde liegenden Definition der Logik-App, die Sie im Fenster des Code-Editors anzeigen können, sieht diese Bedingung wie das folgende Beispiel aus:
 
-      ![Bedingungsausdruck](./media/tutorial-process-email-attachments-workflow/condition-expression.png)
+   ```json
+   "Condition": {
+      "actions": { <actions-to-run-when-condition-passes> },
+      "expression": {
+         "and": [ {
+            "equals": [
+               "@triggerBody()?['HasAttachment']",
+                 "True"
+            ]
+         } ]
+      },
+      "runAfter": {},
+      "type": "If"
+   }
+   ```
 
-   3. Klicken Sie auf **Im Standardmodus bearbeiten**. Der Ausdruck wird nun wie hier gezeigt aufgelöst:
-
-      ![Aufgelöster Ausdruck](./media/tutorial-process-email-attachments-workflow/condition-expression-resolved.png)
-
-      > [!NOTE]
-      > Zur manuellen Erstellung eines Ausdrucks müssen Sie sich im Standardmodus befinden und die dynamische Liste geöffnet haben, um den Ausdrucks-Generator verwenden zu können. Unter **Ausdruck** können Sie Funktionen auswählen. Unter **Dynamischer Inhalt** können Sie Parameterfelder für diese Funktionen auswählen.
-      > Die manuelle Ausdruckserstellung wird später in diesem Tutorial gezeigt.
-
-4. Speichern Sie Ihre Logik-App.
+4. Speichern Sie Ihre Logik-App. Wählen Sie auf der Symbolleiste des Designers **Speichern**.
 
 ### <a name="test-your-condition"></a>Testen der Bedingung
 
@@ -349,13 +369,17 @@ Als Nächstes definieren Sie die Aktionen, die für die Verzweigung **Bei TRUE**
 > [!NOTE]
 > Für die Verzweigung **Bei FALSE** muss die Logik-App keinerlei Aktionen ausführen, da die E-Mail dann keine Anlagen enthält. Als Zusatzübung können Sie nach Abschluss dieses Tutorials für die Verzweigung **Bei FALSE** eine beliebige geeignete Aktion hinzufügen.
 
-## <a name="call-the-removehtmlfunction"></a>Aufrufen der Funktion „RemoveHTMLFunction“
+## <a name="call-removehtmlfunction"></a>Aufrufen der Funktion „RemoveHTMLFunction“
 
-1. Klicken Sie im Logik-App-Menü auf **Logik-App-Designer**. Klicken in der Verzweigung **Bei TRUE** auf **Aktion hinzufügen**.
+Dieser Schritt fügt Ihre zuvor erstellte Azure-Funktion der Logik-App hinzu und übergibt den Inhalt des E-Mail-Texts aus dem E-Mail-Trigger an Ihre Funktion.
 
-2. Suchen Sie nach „Azure Functions“, und wählen Sie die folgende Aktion aus: **Azure Functions – Azure-Funktion wählen**
+1. Klicken Sie im Menü der Logik-App auf **Logik-App-Designer**. Klicken in der Verzweigung **Bei TRUE** auf **Aktion hinzufügen**.
 
-   ![Auswählen einer Aktion für „Azure Functions - Azure-Funktion wählen“](./media/tutorial-process-email-attachments-workflow/add-action-azure-function.png)
+   ![Hinzufügen einer Aktion in „Bei TRUE“](./media/tutorial-process-email-attachments-workflow/if-true-add-action.png)
+
+2. Suchen Sie im Suchfeld nach „Azure Functions“, und wählen Sie die folgende Aktion aus: **Azure-Funktion auswählen: Azure Functions**
+
+   ![Auswählen einer Aktion für „Azure-Funktion auswählen“](./media/tutorial-process-email-attachments-workflow/add-action-azure-function.png)
 
 3. Wählen Sie die Funktions-App **CleanTextFunctionApp** aus, die Sie zuvor erstellt haben.
 
@@ -365,42 +389,41 @@ Als Nächstes definieren Sie die Aktionen, die für die Verzweigung **Bei TRUE**
 
    ![Auswählen Ihrer Azure-Funktion](./media/tutorial-process-email-attachments-workflow/add-action-select-azure-function.png)
 
-5. Benennen Sie den Funktionsbereich wie folgt um: ```Call RemoveHTMLFunction to clean email body``` 
+5. Benennen Sie den Funktionsbereich wie folgt um: ```Call RemoveHTMLFunction to clean email body```
 
-6. Geben Sie im Funktionsbereich die Eingabe ein, die Ihre Funktion verarbeiten soll. Geben Sie den E-Mail-Text wie hier dargestellt und beschrieben an:
+6. Geben Sie nun die Eingabe an, die Ihre Funktion verarbeiten soll. 
 
-   ![Angeben des zu erwartenden Anforderungstexts für die Funktion](./media/tutorial-process-email-attachments-workflow/add-email-body-for-function-processing.png)
-
-   1. Geben Sie unter **Anforderungstext** den folgenden Text ein: 
+   1. Geben Sie unter **Anforderungstext** diesen Text mit einem nachgestellten Leerzeichen ein: 
    
       ```{ "emailBody": ``` 
 
-      Während der nächsten Schritte erscheint eine Fehlermeldung mit einem Hinweis auf ungültigen JSON-Code, solange diese Eingabe nicht abgeschlossen ist.
+      Während Sie mit dieser Eingabe im nächsten Schritten arbeiten, wird eine Fehlermeldung zu ungültigem JSON angezeigt, bis die Eingabe ordnungsgemäß als JSON formatiert wurde.
       Bei vorherigen Tests dieser Funktion wurde für die Eingabe, die für diese Funktion angegeben wurde, das JSON-Format (JavaScript Object Notation) verwendet. 
-      Der Anforderungstext muss daher das gleiche Format besitzen. 
+      Der Anforderungstext muss daher das gleiche Format besitzen.
 
-   2. Wählen Sie in der Parameterliste oder in der Liste mit den dynamischen Inhalten unter **Wenn eine neue E-Mail empfangen wird** das Feld **Text** aus.
-   Fügen Sie nach dem Feld **Text** die schließende geschweifte Klammer hinzu: ```}```
+      Wenn sich der Cursor innerhalb des Felds **Anforderungstext** befindet, wird die Liste mit dynamischem Inhalt angezeigt, damit Sie Eigenschaftswerte auswählen können, die aus vorherigen Aktionen verfügbar sind. 
+      
+   2. Wählen Sie aus der Liste mit dynamischem Inhalt unter **Wenn eine neue E-Mail empfangen wird** die Eigenschaft **Text** aus. Denken Sie daran, nach dieser Eigenschaft die schließende geschweifte Klammer hinzuzufügen: ```}```
 
-      ![Angeben des Anforderungstexts, der an die Funktion übergeben werden soll](./media/tutorial-process-email-attachments-workflow/add-email-body-for-function-processing2.png)
+      ![Angeben des Anforderungstexts, der an die Funktion übergeben werden soll](./media/tutorial-process-email-attachments-workflow/add-email-body-for-function-processing.png)
 
-      In der Definition der Logik-App wird dieser Eintrag im folgenden Format angezeigt:
+   Wenn Sie fertig sind, sieht die Eingabe für Ihre Funktion wie das folgende Beispiel aus:
 
-      ```{ "emailBody": "@triggerBody()?['Body']" }```
+   ![Fertiggestellter Anforderungstext für die Übergabe an die Funktion](./media/tutorial-process-email-attachments-workflow/add-email-body-for-function-processing-2.png)
 
 7. Speichern Sie Ihre Logik-App.
 
-Fügen Sie als Nächstes eine Aktion hinzu, die in Ihrem Speichercontainer ein Blob zum Speichern des E-Mail-Texts erstellt.
+Fügen Sie im nächsten Schritt eine Aktion hinzu, die in Ihrem Speichercontainer ein Blob zum Speichern des E-Mail-Texts erstellt.
 
 ## <a name="create-blob-for-email-body"></a>Erstellen eines Blobs für E-Mail-Text
 
-1. Klicken Sie im Azure-Funktionsbereich auf **Aktion hinzufügen**. 
+1. Wählen Sie im Block **Bei TRUE** und unter Ihrer Azure-Funktion **Aktion hinzufügen** aus. 
 
-2. Suchen Sie unter **Aktion auswählen** nach „blob“, und wählen Sie die folgende Aktion aus: **Azure Blob Storage – Blob erstellen**
+2. Geben Sie in das Suchfeld „Blob erstellen“ als Filter ein, und wählen Sie diese Aktion aus: **Blob erstellen: Azure Blob Storage**.
 
    ![Hinzufügen einer Aktion zum Erstellen eines Blobs für E-Mail-Text](./media/tutorial-process-email-attachments-workflow/create-blob-action-for-email-body.png)
 
-3. Sollte keine Verbindung mit einem Azure-Speicherkonto bestehen, erstellen Sie eine Verbindung mit Ihrem Speicherkonto, und verwenden Sie dabei die hier gezeigten und beschriebenen Einstellungen. Wenn Sie fertig sind, wählen Sie **Erstellen** aus.
+3. Erstellen Sie eine Verbindung mit Ihrem Speicherkonto, und verwenden Sie dabei die hier gezeigten und beschriebenen Einstellungen. Wenn Sie fertig sind, wählen Sie **Erstellen** aus.
 
    ![Erstellen einer Speicherkontoverbindung](./media/tutorial-process-email-attachments-workflow/create-storage-account-connection-first.png)
 
@@ -412,16 +435,20 @@ Fügen Sie als Nächstes eine Aktion hinzu, die in Ihrem Speichercontainer ein B
 
 4. Benennen Sie die Aktion **Blob erstellen** wie folgt um: ```Create blob for email body```
 
-5. Geben Sie in der Aktion **Blob erstellen** die folgenden Informationen an, und wählen Sie die folgenden Parameter aus, um das Blob wie hier dargestellt und beschrieben zu erstellen:
+5. Geben Sie in der Aktion **Blob erstellen** die folgenden Informationen an, und wählen Sie die folgenden Felder aus, um das Blob wie hier dargestellt und beschrieben zu erstellen:
 
    ![Angeben von Blobinformationen für E-Mail-Text](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body.png)
 
    | Einstellung | Wert | BESCHREIBUNG | 
    | ------- | ----- | ----------- | 
-   | **Ordnerpfad** | /attachments | Pfad und Name des zuvor erstellten Containers. Sie können auch zu einem Container navigieren und ihn auswählen. | 
-   | **Blobname** | Feld **Von** | Übergeben Sie den Namen des E-Mail-Absenders als Blobname. Wählen Sie in der Parameterliste oder in der Liste mit den dynamischen Inhalten unter **Wenn eine neue E-Mail empfangen wird** das Feld **Von** aus. | 
-   | **Blobinhalt** | Feld **Inhalt** | Übergeben Sie den HTML-freien E-Mail-Text als Blobinhalt. Wählen Sie in der Parameterliste oder in der Liste mit den dynamischen Inhalten unter **Call RemoveHTMLFunction to clean email body** die Option **Text** aus. |
+   | **Ordnerpfad** | /attachments | Pfad und Name des zuvor erstellten Containers. Für dieses Beispiel klicken Sie auf das Ordnersymbol und wählen dann den Container „/attachments“ aus. | 
+   | **Blobname** | Feld **Von** | Verwenden Sie für dieses Beispiel den Namen des Absenders als Namen des Blobs. Klicken Sie innerhalb dieses Felds, damit die Liste mit dem dynamischen Inhalt angezeigt wird, und wählen Sie dann das Feld **Von** unter der Aktion **Wenn eine neue E-Mail empfangen wird** aus. | 
+   | **Blobinhalt** | Feld **Inhalt** | Verwenden Sie für dieses Beispiel den HTML-freien E-Mail-Text als Blobinhalt. Klicken Sie innerhalb dieses Felds, damit die Liste mit dem dynamischen Inhalt angezeigt wird, und wählen Sie dann **Text** unter der Aktion **RemoveHTMLFunction zum Bereinigen des E-Mail-Texts aufrufen** aus. |
    |||| 
+
+   Wenn Sie fertig sind, sieht die Aktion wie das folgende Beispiel aus:
+
+   ![Fertiggestellte Aktion „Blob erstellen“](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body-done.png)
 
 6. Speichern Sie Ihre Logik-App. 
 
@@ -466,15 +493,15 @@ Fügen Sie als Nächstes eine Schleife für die Verarbeitung aller E-Mail-Anlage
 
 ## <a name="process-attachments"></a>Verarbeiten der Anlagen
 
-In dieser Logik-App wird zur Verarbeitung der einzelnen E-Mail-Anlagen eine **For Each**-Schleife verwendet.
+Fügen Sie dem Workflow der Logik-App zum Verarbeiten der einzelnen E-Mail-Anlagen eine **For Each**-Schleife hinzu.
 
-1. Klicken Sie unter dem Bereich **Create blob for email body** auf **... Mehr** und anschließend auf den folgenden Befehl: **"For Each"-Schleife hinzufügen**
+1. Wählen Sie unter der Form **Blob für E-Mail-Text erstellen** die Option **Weitere** > **For Each hinzufügen** aus.
 
    ![Hinzufügen einer For Each-Schleife](./media/tutorial-process-email-attachments-workflow/add-for-each-loop.png)
 
 2. Nennen Sie Ihre Schleife wie folgt: ```For each email attachment```
 
-3. Geben Sie nun die Daten an, die die Schleife verarbeiten soll. Klicken Sie auf das Feld **Ausgabe von vorherigen Schritten auswählen**. Wählen Sie in der Parameterliste oder in der Liste mit den dynamischen Inhalten die Option **Anlagen** aus. 
+3. Geben Sie nun die Daten an, die die Schleife verarbeiten soll. Klicken Sie innerhalb des Felds **Ausgabe aus vorherigen Schritten auswählen**, damit die Liste mit dynamischem Inhalt geöffnet wird, und wählen Sie dann **Anlagen** aus. 
 
    ![Auswählen von „Anlagen“](./media/tutorial-process-email-attachments-workflow/select-attachments.png)
 
@@ -485,28 +512,32 @@ In dieser Logik-App wird zur Verarbeitung der einzelnen E-Mail-Anlagen eine **Fo
 
 Fügen Sie als Nächstes die Aktion hinzu, die jede Anlage als Blob in Ihrem Speichercontainer **attachments** speichert.
 
-## <a name="create-blobs-for-attachments"></a>Erstellen von Blobs für Anlagen
+## <a name="create-blob-for-each-attachment"></a>Erstellen eines Blobs für jede Anlage
 
-1. Klicken Sie in der **For Each**-Schleife auf **Aktion hinzufügen**, um die Aufgabe anzugeben, die für jede gefundene Anlage ausgeführt werden soll.
+1. Klicken Sie in der **For Each**-Schleife für die E-Mail-Anlagen auf **Aktion hinzufügen**, um die Aufgabe anzugeben, die für jede gefundene Anlage ausgeführt werden soll.
 
    ![Hinzufügen einer Aktion zur Schleife](./media/tutorial-process-email-attachments-workflow/for-each-add-action.png)
 
-2. Suchen Sie unter **Aktion auswählen** nach „blob“, und wählen Sie anschließend die folgende Aktion aus: **Azure Blob Storage – Blob erstellen**
+2. Geben Sie in das Suchfeld „Blob erstellen“ als Filter ein, und wählen Sie dann diese Aktion aus: **Blob erstellen: Azure Blob Storage**.
 
    ![Hinzufügen einer Aktion zum Erstellen eines Blobs](./media/tutorial-process-email-attachments-workflow/create-blob-action-for-attachments.png)
 
 3. Benennen Sie die Aktion **Blob erstellen 2** wie folgt um: ```Create blob for each email attachment```
 
-4. Geben Sie in der Aktion **Create blob for each email attachment** die folgenden Informationen an, und wählen Sie die Parameter aus, um die einzelnen Blobs wie hier dargestellt und beschrieben zu erstellen:
+4. Geben Sie in der Aktion **Blob für jede E-Mail-Anlage erstellen** die folgenden Informationen an, und wählen Sie die Eigenschaften aus, um die einzelnen Blobs wie hier dargestellt und beschrieben zu erstellen:
 
    ![Angeben der Blobinformationen](./media/tutorial-process-email-attachments-workflow/create-blob-per-attachment.png)
 
    | Einstellung | Wert | BESCHREIBUNG | 
    | ------- | ----- | ----------- | 
-   | **Ordnerpfad** | /attachments | Pfad und Name des zuvor erstellten Containers. Sie können auch zu einem Container navigieren und ihn auswählen. | 
-   | **Blobname** | Feld **Name** | Wählen Sie in der Parameterliste oder in der Liste mit den dynamischen Inhalten die Option **Name** aus, um den Namen der Anlage für den Blobnamen zu übergeben. | 
-   | **Blobinhalt** | Feld **Inhalt** | Wählen Sie in der Parameterliste oder in der Liste mit den dynamischen Inhalten die Option **Inhalt** aus, um den Inhalt der Anlage für den Blobinhalt zu übergeben. |
+   | **Ordnerpfad** | /attachments | Pfad und Name des zuvor erstellten Containers. Für dieses Beispiel klicken Sie auf das Ordnersymbol und wählen dann den Container „/attachments“ aus. | 
+   | **Blobname** | Feld **Name** | Verwenden Sie für dieses Beispiel den Namen der Anlage als Namen des Blobs. Klicken Sie innerhalb dieses Felds, damit die Liste mit dem dynamischen Inhalt angezeigt wird, und wählen Sie dann das Feld **Name** unter der Aktion **Wenn eine neue E-Mail empfangen wird** aus. | 
+   | **Blobinhalt** | Feld **Inhalt** | Verwenden Sie für dieses Beispiel das Feld **Inhalt** als Blobinhalt. Klicken Sie innerhalb dieses Felds, damit die Liste mit dem dynamischen Inhalt angezeigt wird, und wählen Sie dann **Inhalt** unter der Aktion **Wenn eine neue E-Mail empfangen wird** aus. |
    |||| 
+
+   Wenn Sie fertig sind, sieht die Aktion wie das folgende Beispiel aus:
+
+   ![Fertiggestellte Aktion „Blob erstellen“](./media/tutorial-process-email-attachments-workflow/create-blob-per-attachment-done.png)
 
 5. Speichern Sie Ihre Logik-App. 
 
@@ -545,7 +576,9 @@ Fügen Sie als Nächstes eine Aktion hinzu, damit Ihre Logik-App E-Mails zur Üb
 
    ![Hinzufügen einer Aktion unter der For Each-Schleife](./media/tutorial-process-email-attachments-workflow/add-action-send-email.png)
 
-2. Suchen Sie unter **Aktion auswählen**, nach „E-Mail senden“, und wählen Sie dann für den gewünschten E-Mail-Anbieter die Aktion „E-Mail senden“ aus. Um die Liste der Aktionen nach einem bestimmten Dienst zu filtern, können Sie zuerst unter **Connectors** den Connector auswählen.
+2. Geben Sie in das Suchfeld „E-Mail senden“ als Filter ein, und wählen Sie dann die Aktion „E-Mail senden“ für Ihren E-Mail-Anbieter aus. 
+
+   Um die Liste der Aktionen nach einem bestimmten Dienst zu filtern, können Sie zuerst den Connector auswählen.
 
    ![Auswählen der Aktion „E-Mail senden“ für Ihren E-Mail-Anbieter](./media/tutorial-process-email-attachments-workflow/add-action-select-send-email.png)
 
@@ -558,26 +591,23 @@ Fügen Sie als Nächstes eine Aktion hinzu, damit Ihre Logik-App E-Mails zur Üb
 
 5. Geben Sie wie hier gezeigt und beschrieben die Informationen für diese Aktion an, und wählen Sie die Felder aus, die Sie in die E-Mail aufnehmen möchten. Drücken Sie UMSCHALT+EINGABETASTE, um in einem Bearbeitungsfeld leere Zeilen hinzuzufügen.  
 
-   Beispiel für die Liste mit den dynamischen Inhalten:
-
    ![Senden von E-Mail-Benachrichtigungen](./media/tutorial-process-email-attachments-workflow/send-email-notification.png)
 
-   Sollte die Liste ein erwartetes Feld nicht enthalten, klicken Sie in der Liste mit den dynamischen Inhalten oder am Ende der Parameterliste neben **Wenn eine neue E-Mail empfangen wird** auf **Mehr anzeigen**.
+   Sollte die Liste mit den dynamischen Inhalten ein erwartetes Feld nicht enthalten, wählen Sie neben **Wenn eine neue E-Mail empfangen wird** die Option **Mehr anzeigen** aus. 
 
    | Einstellung | Wert | Notizen | 
    | ------- | ----- | ----- | 
+   | **Text** | ```Please review new applicant:``` <p>```Applicant name: ``` **Von** <p>```Application file location: ``` **Pfad** <p>```Application email content: ``` **Text** | Der Textinhalt der E-Mail. Klicken Sie innerhalb dieses Felds, geben Sie den Beispieltext ein, und wählen Sie dann aus der Liste mit dynamischem Inhalt die folgenden Felder aus: <p>- Das Feld **Von** (unter **Wenn eine neue E-Mail empfangen wird**) </br>- Das Feld **Pfad** (unter **Create blob for email body**) </br>- Das Feld **Text** (unter **Call RemoveHTMLFunction to clean email body**) | 
+   | **Betreff**  | ```ASAP - Review applicant for position: ``` **Betreff** | Der Betreff der E-Mail, den Sie einschließen möchten. Klicken Sie innerhalb dieses Felds, geben Sie den Beispieltext ein, und wählen Sie dann aus der Liste mit dynamischem Inhalt das Feld **Betreff** unter **Wenn eine neue E-Mail empfangen wird** aus. | 
    | **An** | <*E-Mail-Adresse des Empfängers*> | Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben. | 
-   | **Betreff**  | ```ASAP - Review applicant for position: ``` **Betreff** | Der Betreff der E-Mail, den Sie einschließen möchten. Wählen Sie in der Parameterliste oder in der Liste mit den dynamischen Inhalten unter **Wenn eine neue E-Mail empfangen wird** das Feld **Betreff** aus. | 
-   | **Text** | ```Please review new applicant:``` <p>```Applicant name: ``` **Von** <p>```Application file location: ``` **Pfad** <p>```Application email content: ``` **Text** | Der Inhalt des E-Mail-Texts. Wählen Sie in der Parameterliste oder in der Liste mit den dynamischen Inhalten die folgenden Felder aus: <p>- Das Feld **Von** (unter **Wenn eine neue E-Mail empfangen wird**) </br>- Das Feld **Pfad** (unter **Create blob for email body**) </br>- Das Feld **Text** (unter **Call RemoveHTMLFunction to clean email body**) | 
    |||| 
 
-   Wenn Sie ein Feld mit einem Array auswählen (beispielsweise **Inhalt** – ein Array mit Anlagen), schließt der Designer die Aktion, die auf dieses Feld verweist, automatisch in eine For Each-Schleife ein. 
-   Auf diese Weise kann Ihre Logik-App diese Aktion für jedes Arrayelement durchführen. 
-   Wenn Sie die Schleife entfernen möchten, entfernen Sie das Feld für das Array, verschieben Sie die verweisende Aktion aus der Schleife, klicken Sie auf der Titelleiste der Schleife auf die Auslassungspunkte (**...**), und klicken Sie anschließend auf **Löschen**.
+   > [!NOTE] 
+   > Wenn Sie ein Feld mit einem Array auswählen (beispielsweise das Feld **Inhalt** – ein Array mit Anlagen), schließt der Designer die Aktion, die auf dieses Feld verweist, automatisch in eine For Each-Schleife ein. Auf diese Weise kann Ihre Logik-App diese Aktion für jedes Arrayelement durchführen. Wenn Sie die Schleife entfernen möchten, entfernen Sie das Feld für das Array, verschieben Sie die verweisende Aktion aus der Schleife, klicken Sie auf der Titelleiste der Schleife auf die Auslassungspunkte (**...**), und klicken Sie anschließend auf **Löschen**.
      
 6. Speichern Sie Ihre Logik-App. 
 
-Testen Sie als Nächstes Ihre Logik-App, die nun wie im folgenden Beispiel aussieht:
+Testen Sie jetzt Ihre Logik-App, die nun wie im folgenden Beispiel aussieht:
 
 ![Fertiggestellte Logik-App](./media/tutorial-process-email-attachments-workflow/complete.png)
 
@@ -633,7 +663,7 @@ Geschafft! Sie haben eine Logik-App erstellt und ausgeführt, die Aufgaben über
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie sie nicht mehr benötigen, löschen Sie die Ressourcengruppe mit Ihrer Logik-App und den dazugehörigen Ressourcen. Wechseln Sie im Azure-Hauptmenü zu **Ressourcengruppen**, und wählen Sie die Ressourcengruppe für Ihre Logik-App aus. Klicken Sie auf **Ressourcengruppe löschen**. Geben Sie zur Bestätigung den Ressourcengruppennamen ein, und klicken Sie auf **Löschen**.
+Wenn Sie sie nicht mehr benötigen, löschen Sie die Ressourcengruppe mit Ihrer Logik-App und den dazugehörigen Ressourcen. Navigieren Sie im Azure-Hauptmenü zu **Ressourcengruppen**, und wählen Sie dann die Ressourcengruppe für Ihre Logik-App aus. Klicken Sie auf **Ressourcengruppe löschen**. Geben Sie zur Bestätigung den Ressourcengruppennamen ein, und klicken Sie auf **Löschen**.
 
 ![Löschen der Ressourcengruppe für die Logik-App](./media/tutorial-process-email-attachments-workflow/delete-resource-group.png)
 

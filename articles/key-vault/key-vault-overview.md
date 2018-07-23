@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/08/2018
+ms.date: 07/17/2018
 ms.author: barclayn
-ms.openlocfilehash: f9648e15c720c076a65e84a95f4160f27eec598d
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 2cda30c85ce8a8dc9b7a6c0134b7cabc58b842a4
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068597"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115319"
 ---
 # <a name="what-is-azure-key-vault"></a>Was ist der Azure-Schlüsseltresor?
 
@@ -39,9 +39,9 @@ Durch die zentralisierte Speicherung von Anwendungsgeheimnissen in Azure Key Vau
 
 Über URIs können Ihre Anwendungen sicher auf die benötigten Informationen zugreifen. Die URIs ermöglichen das Abrufen spezifischer Versionen eines Geheimnisses, nachdem der Schlüssel oder das Geheimnis der Anwendung in Azure Key Vault gespeichert wurde. Dabei muss keinerlei benutzerdefinierter Code geschrieben werden, um geheime Informationen zu schützen.
 
-### <a name="securely-store-secrets"></a>Sicheres Speichern von Geheimnissen
+### <a name="securely-store-secrets-and-keys"></a>Sicheres Speichern von Geheimnissen und Schlüsseln
 
-Schlüssel werden von Azure mit branchenüblichen Algorithmen, Schlüssellängen und Hardwaresicherheitsmodulen (HSMs) geschützt. Die verwendeten HSMs erfüllen die Anforderungen von FIPS 140-2, Level 2 (Federal Information Processing Standards).
+Geheimnisse und Schlüssel werden mit branchenüblichen Algorithmen, Schlüssellängen und Hardwaresicherheitsmodulen (HSMs) von Azure geschützt. Die verwendeten HSMs erfüllen die Anforderungen von FIPS 140-2, Level 2 (Federal Information Processing Standards).
 
 Ein Aufrufer (Benutzer oder Anwendung) kann erst nach ordnungsgemäßer Authentifizierung und Autorisierung auf einen Schlüsseltresor zugreifen. Bei der Authentifizierung wird die Identität des Aufrufers ermittelt. Bei der Autorisierung wird dagegen bestimmt, welche Vorgänge der Aufrufer ausführen darf.
 
@@ -49,7 +49,7 @@ Die Authentifizierung erfolgt über Azure Active Directory. Für die Autorisieru
 
 Azure Key Vault-Instanzen können durch Software oder Hardware (HSM) geschützt werden. In Szenarien mit erhöhten Sicherheitsanforderungen können Sie Schlüssel in Hardwaresicherheitsmodule (HSMs) importieren oder darin generieren. Diese Schlüssel bleiben immer innerhalb der HSM-Grenzen. Microsoft verwendet Hardwaresicherheitsmodule von Thales. Sie können Thales-Tools verwenden, um einen Schlüssel aus Ihrem HSM in Azure Key Vault zu verschieben.
 
-Darüber hinaus ist Azure Key Vault so konzipiert, dass Ihre Schlüssel von Microsoft weder angezeigt noch extrahiert werden können.
+Darüber hinaus ist Azure Key Vault so konzipiert, dass Ihre Daten von Microsoft weder angezeigt noch extrahiert werden können.
 
 ### <a name="monitor-access-and-use"></a>Überwachen von Zugriff und Verwendung
 

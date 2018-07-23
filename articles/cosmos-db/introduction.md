@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: dcc384fad0479c66211fe31e547ad7076150b58e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 256c951b5bf193f5ee5bfe5f70c3549ef17a4d9b
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611227"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071977"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Willkommen bei Azure Cosmos DB
 
@@ -68,7 +68,7 @@ Als global verteilter Datenbankdienst mit mehreren Modellen erleichtert Azure Co
     * Die Datenbank-Engine von Azure Cosmos DB ist vollständig schemaunabhängig. Alle erfassten Daten werden automatisch und ohne Schema oder Indizes erfasst, was extrem schnelle Abfragen ermöglicht. 
 
 * **Niedrige Betriebskosten**
-    * Fünf- bis zehnmal [kosteneffizienter](https://aka.ms/cosmos-db-tco-paper) als eine nicht verwaltete Lösung oder eine lokale NoSQL-Lösung.
+    * Fünf- bis zehnmal kosteneffizienter als eine nicht verwaltete Lösung oder eine lokale NoSQL-Lösung.
     * Dreimal kostengünstiger als AWS DynamoDB oder Google Spanner
 
 ## <a name="capability-comparison"></a>Vergleich der Funktionen
@@ -78,11 +78,11 @@ Azure Cosmos DB kombiniert die besten Funktionen herkömmlicher relationaler und
 | Funktionen | Relationale Datenbanken   | Nicht relationale Datenbanken (NoSQL) |    Azure Cosmos DB |
 | --- | --- | --- | --- |
 | Globale Verteilung | Nein  | Nein  | Ja. Sofort einsatzbereite Verteilung in über 30 Regionen mit Multihosting-APIs|
-| Horizontale Skalierung | Nein  | Ja | Ja. Speicher und Durchsatz können unabhängig voneinander skaliert werden. | 
-| Wartezeitgarantien | Nein  | Ja | Ja. 99 Prozent der Lesevorgänge in unter 10 ms und Schreibvorgänge in unter 15 ms | 
-| Hochverfügbarkeit | Nein  | Ja | Ja. Azure Cosmos DB ist immer aktiv (Always On), verfügt über klar definierte PACELC-Kompromisse und bietet Optionen für automatisches und manuelles Failover.|
+| Horizontale Skalierung | Nein  | JA | Ja. Speicher und Durchsatz können unabhängig voneinander skaliert werden. | 
+| Wartezeitgarantien | Nein  | JA | Ja. 99 Prozent der Lesevorgänge in unter 10 ms und Schreibvorgänge in unter 15 ms | 
+| Hochverfügbarkeit | Nein  | JA | Ja. Azure Cosmos DB ist immer aktiv (Always On), verfügt über klar definierte PACELC-Kompromisse und bietet Optionen für automatisches und manuelles Failover.|
 | Datenmodell + API | Relational + SQL | API mit mehreren Modellen + OSS-API | API mit mehreren Modellen + SQL-API + OSS-API (weitere demnächst verfügbar) |
-| SLAs | Ja | Nein  | Ja. Umfassende SLAs für Wartezeit, Durchsatz, Konsistenz, Verfügbarkeit |
+| SLAs | JA | Nein  | Ja. Umfassende SLAs für Wartezeit, Durchsatz, Konsistenz, Verfügbarkeit |
 
 ## <a name="solutions-that-benefit-from-azure-cosmos-db"></a>Lösungen, die von Azure-Cosmos-DB profitieren
 

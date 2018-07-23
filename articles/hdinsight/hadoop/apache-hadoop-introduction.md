@@ -1,25 +1,22 @@
 ---
-title: Einführung in HDInsight und den Hadoop- und Spark-Technologiestapel – Azure | Microsoft-Dokumentation
+title: Einführung in HDInsight und den Hadoop- und Spark-Technologiestapel - Azure
 description: Enthält eine Einführung in HDInsight und den Hadoop- und Spark-Technologiestapel sowie die dazugehörigen Komponenten wie Kafka, Hive und HBase für Big Data-Analysen.
 keywords: Azure Hadoop, Hadoop Azure, Hadoop-Intro, Hadoop-Einführung, Hadoop-Technologiestapel, Einführung in Hadoop, Einführung für Hadoop, was ist ein Hadoop-Cluster, was ist ein Hadoop-Cluster, wozu dient Hadoop
 services: hdinsight
-documentationcenter: ''
 author: cjgronlund
+ms.author: cgronlun
 manager: jhubbard
-editor: cgronlun
 ms.assetid: e56a396a-1b39-43e0-b543-f2dee5b8dd3a
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017, mvc
-ms.devlang: na
 ms.topic: overview
 ms.date: 05/07/2018
-ms.author: cgronlun
-ms.openlocfilehash: b84389c1d52c0c43f1e71da3eed86f4057b85559
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: c7bed171a3b866f4b1f94d6a5348dd25d8820f2b
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051381"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115340"
 ---
 # <a name="what-is-azure-hdinsight-and-the-hadoop-technology-stack"></a>Was sind Azure HDInsight und der Hadoop-Technologiestapel?
 
@@ -89,7 +86,7 @@ Mit HDInsight können Sie Ihre vorhandene lokale Big Data-Infrastruktur auf Azur
 ## <a name="cluster-types-in-hdinsight"></a>Clustertypen in HDInsight
 HDInsight umfasst bestimmte Clustertypen und Clusteranpassungsfunktionen, z.B. die Möglichkeit zum Hinzufügen von Komponenten, Hilfsprogrammen und Sprachen. HDInsight bietet die folgenden Clustertypen:
 
-* **[Apache Hadoop](https://wiki.apache.org/hadoop)**: Ein Framework, das [Hadoop Distributed File System](#hdfs), die [YARN](#yarn)-Ressourcenverwaltung und ein einfaches [MapReduce](#mapreduce)-Programmiermodell zum parallelen Verarbeiten und Analysieren von Batchdaten nutzt.
+* **[Apache Hadoop](https://wiki.apache.org/hadoop)**: Ein Framework, das Hadoop Distributed File System, die YARN-Ressourcenverwaltung und ein einfaches MapReduce-Programmiermodell zum parallelen Verarbeiten und Analysieren von Batchdaten nutzt.
 
 * **[Apache Spark](http://spark.apache.org/)**: Ein Open-Source-Framework für die Parallelverarbeitung, das die arbeitsspeicherinterne Verarbeitung unterstützt, um die Leistung von Anwendungen zur Analyse von großen Datenmengen zu steigern. Siehe [Was ist Apache Spark in HDInsight?](../spark/apache-spark-overview.md)
 
