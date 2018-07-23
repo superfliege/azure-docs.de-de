@@ -48,6 +48,8 @@
       href: tutorials/15-branching-and-undo.md
     - name: Versionsverwaltung und Tagging
       href: tutorials/16-versioning-and-tagging.md
+    - name: Hybrid-Bots
+      href: tutorials/17-hybrid-bots.md
     - name: Demo – Kennwortzurücksetzung
       href: tutorials/demo-password-reset.md
     - name: Demo – Pizzabestellung
@@ -60,7 +62,7 @@
       href: how-to-teach-cl.md
     - name: Verwalten von Benutzerdaten
       href: managing-data.md
-- name: Ressourcen
+- name: angeben
   items:
     - name: Unterhaltungslernmodul – Beispiel für Bot
       href: 'https://github.com/Microsoft/ConversationLearner-Samples'

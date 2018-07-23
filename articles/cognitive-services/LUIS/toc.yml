@@ -79,6 +79,10 @@
           href: luis-tutorial-batch-testing.md
         - name: Mit Mustern
           href: luis-tutorial-pattern.md
+        - name: Mit Rollen
+          href: luis-tutorial-pattern-roles.md
+        - name: Mit Entität „Pattern.any“
+          href: luis-tutorial-pattern-any.md
 - name: Beispiele
   items:
     - name: Codebeispiele
@@ -194,7 +198,7 @@
     - name: Test
       items:
         - name: Interaktives Testen
-          href: interactive-test.md
+          href: luis-interactive-test.md
         - name: Testen in Batches
           href: luis-how-to-batch-test.md
     - name: App veröffentlichen
@@ -226,7 +230,7 @@
             - name: Verteilen des Endpunktkontingents auf Schlüssel per Traffic Manager
               href: luis-traffic-manager.md
     - name: Migrieren zur V2-API
-      href: migration-v1-to-v2.md
+      href: luis-migration-api-v1-to-v2.md
     - name: Programmgesteuertes Suchen nach der Region
       items:
         - name: 'Verwenden von C#'

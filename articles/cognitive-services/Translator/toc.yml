@@ -105,6 +105,10 @@
           href: quickstart-ruby-languages.md
         - name: Abrufen von Satzlängen im Text
           href: quickstart-ruby-sentences.md
+- name: Tutorials
+  items:
+    - name: Erstellen einer WPF-App für Textübersetzung
+      href: tutorial-wpf-translation-csharp.md
 - name: Konzepte
   items:
     - name: Unterstützte Sprachen
@@ -125,8 +129,6 @@
       href: word-alignment.md
     - name: Verwenden der Funktion für das dynamische Wörterbuch
       href: dynamic-dictionary.md
-    - name: Erstellen einer Textübersetzungs-App mit WPF
-      href: tutorial-wpf-translation-csharp.md
 - name: Verweis
   items:
     - name: Referenz für Version 3 der Textübersetzungs-API
@@ -134,9 +136,9 @@
       items:
         - name: Sprachen
           href: reference/v3-0-languages.md
-        - name: Übersetzen
+        - name: Translate
           href: reference/v3-0-translate.md
-        - name: Transskribieren
+        - name: Transliterate
           href: reference/v3-0-transliterate.md
         - name: Erkennen
           href: reference/v3-0-detect.md

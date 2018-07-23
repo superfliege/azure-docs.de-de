@@ -140,33 +140,13 @@
 #### [Anmeldebeispiele](active-directory-reporting-api-sign-in-activity-samples.md)
 #### [Verwenden von Zertifikaten](active-directory-reporting-api-with-certificates.md)
 
-## Verwalten von Kennwörtern
-### [Übersicht über Kennwörter](authentication/active-directory-passwords-overview.md)
+## Verwalten von Kennwörtern (active-directory/authentication/concept-sspr-howitworks.md)
 ### Benutzerdokumente
 #### [Zurücksetzen oder Ändern des Kennworts](user-help/active-directory-passwords-update-your-own-password.md)
 #### [Bewährte Methoden für Kennwörter](active-directory-secure-passwords.md)
 #### [Registrieren für die Self-Service-Kennwortzurücksetzung](user-help/active-directory-passwords-reset-register.md)
-### [SSPR – So funktioniert‘s](authentication/concept-sspr-howitworks.md)
-### [SSPR-Bereitstellungshandbuch](authentication/howto-sspr-deployment.md)
-### [SSPR and Windows 10 (SSPR und Windows 10)](authentication/tutorial-sspr-windows.md)
-### [SSPR-Richtlinien ](authentication/concept-sspr-policy.md)
-### [SSPR-Anpassung](authentication/concept-sspr-customization.md)
-### [SSPR-Datenanforderungen](authentication/howto-sspr-authenticationdata.md)
-### [SSPR-Berichterstellung](authentication/howto-sspr-reporting.md)
-### [Smart Lockout](authentication/howto-password-smart-lockout.md)
-### [Entfernen unsicherer Kennwörter](authentication/concept-password-ban-bad.md)
-### [Konfigurieren der Liste gesperrter Kennwörter](authentication/howto-password-ban-bad.md)
-### [Lokale Integration](authentication/concept-password-ban-bad-on-premises.md)
-### [Bereitstellen des Kennwortschutzes für Azure AD](authentication/howto-password-ban-bad-on-premises.md)
-### [Konfigurieren des Kennwortschutzes für Azure AD](authentication/howto-password-ban-bad-on-premises-operations.md)
-### [Überwachen des Kennwortschutzes für Azure AD](authentication/howto-password-ban-bad-on-premises-troubleshoot.md)
 ### IT-Administratoren: Zurücksetzen von Kennwörtern
 #### [Azure-Portal](fundamentals/active-directory-users-reset-password-azure-portal.md)
-### [Lizenzieren von SSPR](authentication/concept-sspr-licensing.md)
-### [Kennwortrückschreiben](authentication/howto-sspr-writeback.md)
-### [Problembehandlung](authentication/active-directory-passwords-troubleshoot.md)
-### [HÄUFIG GESTELLTE FRAGEN](authentication/active-directory-passwords-faq.md)
-
 
 ## Verwalten von Geräten
 ### [Einführung](device-management-introduction.md)
