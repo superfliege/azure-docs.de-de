@@ -7,18 +7,18 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.topic: overview
-ms.date: 06/20/2018
+ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: e2a82f9c267a89ac4af3239ebc7ce6bbfd3840fe
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 8e5518e0a2be98cc080a76cdf0697d6812ab22f8
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308909"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092102"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Worum handelt es sich beim Azure SQL-Datenbankdienst? 
 
-SQL-Datenbank ist ein relationaler verwalteter Datenbankdienst in Microsoft Azure für allgemeine Zwecke, der Strukturen wie relationale Daten, JSON, räumliche Daten und XML unterstützt. SQL-Datenbank verfügt über logische Server, die [einzelne SQL-Datenbanken](sql-database-servers-databases.md) und [Pools für elastische Datenbanken](sql-database-elastic-pool.md) enthalten können, und über [verwaltete Instanzen](sql-database-managed-instance.md) (öffentliche Vorschauversion), die System- und Benutzerdatenbanken enthalten. SQL-Datenbank bietet eine dynamisch skalierbare Leistung und ist in zwei verschiedenen Kaufmodellen verfügbar: im [V-Kern-basierten Kaufmodell (Vorschauversion)](sql-database-service-tiers-vcore.md) und im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md). SQL-Datenbank stellt auch Optionen wie z.B. [Columnstore-Indizes](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) für extrem umfangreiche Analysen und Berichte und [In-Memory-OLTP](sql-database-in-memory.md) für aufwendigste Transaktionsverarbeitungen bereit. Microsoft kümmert sich um sämtliche Patches und Updates der SQL-Codebasis und übernimmt damit die Verwaltung der gesamten zugrunde liegenden Infrastruktur. 
+SQL-Datenbank ist ein relationaler verwalteter Datenbankdienst in Microsoft Azure für allgemeine Zwecke, der Strukturen wie relationale Daten, JSON, räumliche Daten und XML unterstützt. SQL-Datenbank verfügt über logische Server, die [einzelne SQL-Datenbanken](sql-database-servers-databases.md) und [Pools für elastische Datenbanken](sql-database-elastic-pool.md) enthalten können, und über [verwaltete Instanzen](sql-database-managed-instance.md) (öffentliche Vorschauversion), die System- und Benutzerdatenbanken enthalten. SQL-Datenbank bietet eine dynamisch skalierbare Leistung und ist in zwei verschiedenen Kaufmodellen verfügbar: im [V-Kern-basierten Kaufmodell](sql-database-service-tiers-vcore.md) und im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md). SQL-Datenbank stellt auch Optionen wie z.B. [Columnstore-Indizes](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) für extrem umfangreiche Analysen und Berichte und [In-Memory-OLTP](sql-database-in-memory.md) für aufwendigste Transaktionsverarbeitungen bereit. Microsoft kümmert sich um sämtliche Patches und Updates der SQL-Codebasis und übernimmt damit die Verwaltung der gesamten zugrunde liegenden Infrastruktur. 
 
 SQL-Datenbank nutzt diese Codebasis gemeinsam mit der [Microsoft SQL Server-Datenbank-Engine](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation). Mit der Cloud-First-Strategie von Microsoft werden die neuesten Funktionen von SQL Server zunächst in SQL-Datenbank und erst dann in SQL Server selbst veröffentlicht. Durch diesen Ansatz verfügen Sie immer über die neuesten Features von SQL Server – ohne den Mehraufwand für Patches oder Updates –, die in Millionen von Datenbanken getestet wurden. Informationen zu angekündigten neuen Funktionen finden Sie unter:
 
@@ -36,15 +36,15 @@ SQL-Datenbank bietet eine vorhersagbare Leistung mit mehreren Serviceleveln, die
 
 ## <a name="scalable-performance-and-pools"></a>Skalierbare Leistung und Pools
 
-Bei SQL-Datenbank ist jede Datenbank von den anderen isoliert und damit portabel, außerdem besitzt jede eine eigene Dienstebene im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) oder [V-Kern-basierten Kaufmodell (Vorschauversion)](sql-database-service-tiers-vcore.md) mit einer garantierten Leistungsebene. SQL-Datenbank bietet unterschiedliche Leistungsebenen für unterschiedliche Anforderungen. Darüber hinaus können Datenbanken in Pools zusammengefasst werden, um die Verwendung von Ressourcen zu maximieren und damit Geld zu sparen.
+Bei SQL-Datenbank ist jede Datenbank von den anderen isoliert und damit portabel, außerdem besitzt jede eine eigene Dienstebene im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) oder [V-Kern-basierten Kaufmodell](sql-database-service-tiers-vcore.md) mit einer garantierten Leistungsebene. SQL-Datenbank bietet unterschiedliche Leistungsebenen für unterschiedliche Anforderungen. Darüber hinaus können Datenbanken in Pools zusammengefasst werden, um die Verwendung von Ressourcen zu maximieren und damit Geld zu sparen.
 
 Bei einer verwalteten Azure SQL-Datenbank-Instanz ist jede Instanz von anderen Instanzen mit garantierten Ressourcen isoliert. Weitere Informationen finden Sie unter [What is a Managed Instance (preview)?](sql-database-managed-instance.md) (Was ist eine verwaltete Instanz (Vorschauversion)?). 
 
 ### <a name="adjust-performance-and-scale-without-downtime"></a>Anpassen von Leistung und Skalierung ohne Ausfallzeiten
 
-SQL-Datenbank bietet ein [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) sowie das [V-Kern-basierte Kaufmodell (Vorschauversion)](sql-database-service-tiers-vcore.md). 
+SQL-Datenbank bietet ein [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) sowie das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md). 
 - Das DTU-basierte Kaufmodell bietet zur Unterstützung einfacher bis komplexer Datenbankworkloads eine Mischung aus Compute-, Arbeitsspeicher- und E/A-Ressourcen in drei Dienstebenen: Basic, Standard und Premium. Leistungsstufen auf den einzelnen Ebenen bieten unterschiedliche Ressourcenzusammenstellungen, durch zusätzliche Speicherressourcen ergänzt werden können.
-- Beim V-Kern-basierten Kaufmodell (Vorschauversion) können Sie die Anzahl virtueller Kerne, die Arbeitsspeichermenge sowie Menge und Geschwindigkeit des Speichers auswählen.
+- Beim V-Kern-basierten Kaufmodell können Sie die Anzahl virtueller Kerne, die Arbeitsspeichermenge sowie Menge und Geschwindigkeit des Speichers auswählen.
 
 Sie können zu geringen monatlichen Kosten Ihre erste App in einer kleinen Einzeldatenbank erstellen und dann manuell oder programmgesteuert jederzeit die Dienstebene (Tarif) ändern, um die Anforderungen Ihrer Lösung zu erfüllen. Die Leistungsanpassung ist möglich, ohne dass es für die App oder für Ihre Kunden zu Ausfallzeiten kommt. Dank der dynamischen Skalierbarkeit kann Ihre Datenbank in transparenter Form auf sich schnell ändernde Ressourcenanforderungen reagieren, und Sie zahlen nur für die Ressourcen, die Sie jeweils benötigen.
 
@@ -71,7 +71,7 @@ Sie können weiterhin flexibel vorgehen – unabhängig davon, ob Sie sich für 
 
 ### <a name="extensive-monitoring-and-alerting-capabilities"></a>Umfassende Funktionen für Überwachung und Warnung
 
-Aber wie können Sie nun die relative Leistung von Einzeldatenbanken und Pools für elastische Datenbanken vergleichen? Wie entscheiden Sie sich beim Anpassen für die richtige Lösung? Verwenden Sie die [integrierten Features für die Leistungsüberwachung](sql-database-performance.md) sowie [Warnungstools](sql-database-insights-alerts-portal.md) in Kombination mit den Leistungsbewertungen. Mit diesen Tools können Sie die Auswirkungen des zentralen Hoch- oder Herunterskalierens je nach Ihren derzeitigen bzw. projektbezogenen Leistungsanforderungen schnell bewerten. Ausführliche Informationen finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [V-Kern-basiertes Kaufmodell (Vorschauversion)](sql-database-service-tiers-vcore.md).
+Aber wie können Sie nun die relative Leistung von Einzeldatenbanken und Pools für elastische Datenbanken vergleichen? Wie entscheiden Sie sich beim Anpassen für die richtige Lösung? Verwenden Sie die [integrierten Features für die Leistungsüberwachung](sql-database-performance.md) sowie [Warnungstools](sql-database-insights-alerts-portal.md) in Kombination mit den Leistungsbewertungen. Mit diesen Tools können Sie die Auswirkungen des zentralen Hoch- oder Herunterskalierens je nach Ihren derzeitigen bzw. projektbezogenen Leistungsanforderungen schnell bewerten. Ausführliche Informationen finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [V-Kern-basiertes Kaufmodell](sql-database-service-tiers-vcore.md).
 
 Darüber hinaus kann SQL-Datenbank zur einfacheren Überwachung [Metriken und Diagnoseprotokolle ausgeben](sql-database-metrics-diag-logging.md). Sie können SQL-Datenbank zum Speichern von Ressourcenverbrauch, Workern und Sitzungen sowie Verbindungen in einer der folgenden Azure-Ressourcen konfigurieren:
 
@@ -89,7 +89,7 @@ Durch die Unterstützung eines globalen Netzwerks von Microsoft-verwalteten Rech
 - **[Point-in-Time-Wiederherstellungen:](sql-database-recovery-using-backups.md)** SQL-Datenbank unterstützt die Wiederherstellung zu einem beliebigen Zeitpunkt innerhalb der Vermerkdauer für automatische Sicherungen.
 - **[Aktive Georeplikation:](sql-database-geo-replication-overview.md)** Mit SQL-Datenbank können Sie bis zu vier lesbare sekundäre Datenbanken entweder im gleichen oder in weltweit verteilten Azure-Rechenzentren konfigurieren.  Wenn Sie beispielsweise über eine SaaS-Anwendung mit einer Katalogdatenbank verfügen, die eine große Anzahl gleichzeitiger schreibgeschützter Transaktionen umfasst, können Sie mithilfe der aktiven Georeplikation eine globale Skalierung für das Lesen aktivieren und so Engpässe in der primären Datenbank beseitigen, die durch hohe Workloads aufgrund der Lesevorgänge verursacht werden. 
 - **[Failovergruppen:](sql-database-geo-replication-overview.md)** SQL-Datenbank bietet eine hohe Verfügbarkeit und einen Lastenausgleich auf globaler Ebene, einschließlich transparenter Georeplikation und von Failovern großer Mengen von Datenbanken und Pools für elastische Datenbanken. Failovergruppen und die aktive Georeplikation erlauben das Erstellen von weltweit verteilten SaaS-Anwendungen mit minimalem Verwaltungsaufwand, bei dem alle komplexen Aufgaben für Überwachung, Weiterleitung und Failoverorchestrierung von SQL-Datenbank erledigt werden.
-- **[Zonenredundante Datenbanken:](sql-database-high-availability.md)** SQL-Datenbank ermöglicht die Bereitstellung von Premium-Datenbanken, unternehmenskritischen Datenbanken (Vorschauversion) oder Pools für elastische Datenbanken über mehrere Verfügbarkeitszonen hinweg. Datenbanken und Pools für elastische Datenbanken verfügen über mehrere redundante Replikate, um die Hochverfügbarkeit sicherzustellen. Die Anordnung dieser Replikate in mehreren Verfügbarkeitszonen sorgt für eine höhere Resilienz, die beispielsweise die automatische Wiederherstellung nach Ausfällen von Datencentern ohne Datenverlust ermöglicht. Diese Funktion steht derzeit als Vorschau zur Verfügung. 
+- **[Zonenredundante Datenbanken](sql-database-high-availability.md)**: SQL-Datenbank ermöglicht die Bereitstellung von Premium-Datenbanken, unternehmenskritischen Datenbanken oder Pools für elastische Datenbanken über mehrere Verfügbarkeitszonen hinweg. Datenbanken und Pools für elastische Datenbanken verfügen über mehrere redundante Replikate, um die Hochverfügbarkeit sicherzustellen. Die Anordnung dieser Replikate in mehreren Verfügbarkeitszonen sorgt für eine höhere Resilienz, die beispielsweise die automatische Wiederherstellung nach Ausfällen von Datencentern ohne Datenverlust ermöglicht.  
 
 ## <a name="built-in-intelligence"></a>Integrierte Logik
 

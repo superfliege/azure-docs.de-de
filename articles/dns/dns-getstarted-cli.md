@@ -1,48 +1,37 @@
 ---
-title: Erste Schritte mit Azure DNS mithilfe der Azure CLI 2.0 | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine DNS-Zone und einen DNS-Eintrag in Azure DNS erstellen. Dies ist eine Schrittanleitung zum Erstellen und Verwalten Ihrer ersten DNS-Zone und Ihres ersten DNS-Eintrags mithilfe der Azure CLI 2.0.
+title: 'Schnellstart: Erstellen einer Azure DNS-Zone und eines -Eintrags mithilfe der Azure CLI'
+description: 'Schnellstart: Erfahren Sie, wie Sie eine DNS-Zone und einen DNS-Eintrag in Azure DNS erstellen. Dies ist eine schrittweise Anleitung zum Erstellen und Verwalten Ihrer ersten DNS-Zone und Ihres ersten DNS-Eintrags mithilfe der Azure CLI.'
 services: dns
-documentationcenter: na
-author: KumuD
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: fb0aa0a6-d096-4d6a-b2f6-eda1c64f6182
+author: vhorne
 ms.service: dns
-ms.devlang: azurecli
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/10/2017
-ms.author: kumud
-ms.openlocfilehash: d24eaa4974f8bff09b337384e4fd139edb6ebd70
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.topic: quickstart
+ms.date: 7/16/2018
+ms.author: victorh
+ms.openlocfilehash: 3fb39558ff99c35786dedc133a9d1d1a450b5928
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30175238"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090121"
 ---
-# <a name="get-started-with-azure-dns-using-azure-cli-20"></a>Erste Schritte mit Azure DNS mithilfe der Azure CLI 2.0
+# <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Schnellstart: Erstellen einer Azure DNS-Zone und eines -Eintrags mithilfe der Azure CLI
 
-> [!div class="op_single_selector"]
-> * [Azure-Portal](dns-getstarted-portal.md)
-> * [PowerShell](dns-getstarted-powershell.md)
-> * [Azure CLI 2.0](dns-getstarted-cli.md)
-
-In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie mithilfe der plattformübergreifenden, für Windows, Mac und Linux verfügbaren Azure CLI 2.0 Ihre erste DNS-Zone und Ihren ersten DNS-Eintrag erstellen. Sie können diese Schritte auch im Azure-Portal oder mithilfe von Azure PowerShell ausführen.
+In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie mithilfe der für Windows, Mac und Linux verfügbaren Azure CLI Ihre erste DNS-Zone und Ihren ersten DNS-Eintrag erstellen. Sie können diese Schritte auch im [Azure-Portal](dns-getstarted-portal.md) oder mithilfe von [Azure PowerShell](dns-getstarted-powershell.md) ausführen.
 
 Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verwendet. Wenn Sie eine Domäne in Azure DNS hosten möchten, müssen Sie eine DNS-Zone für diesen Domänennamen erstellen. Jeder DNS-Eintrag für Ihre Domäne wird dann in dieser DNS-Zone erstellt. Und schließlich müssen Sie die Namenserver für die Domäne konfigurieren, um Ihre DNS-Zone im Internet zu veröffentlichen. Jeder dieser Schritte wird im Folgenden beschrieben.
 
-Bei diesen Anweisungen wird davon ausgegangen, dass Sie die Azure CLI 2.0 bereits installiert und sich dort angemeldet haben. Hilfe erhalten Sie unter [Verwalten von DNS-Zonen mit der Azure CLI 2.0](dns-operations-dnszones-cli.md).
-
 Azure DNS unterstützt jetzt auch private DNS-Zonen (zurzeit als öffentliche Vorschauversion verfügbar). Weitere Informationen zu privaten DNS-Zonen finden Sie unter [Using Azure DNS for private domains](private-dns-overview.md) (Verwenden von Azure DNS für private Domänen). Ein Beispiel zum Erstellen einer privaten DNS-Zone finden Sie unter [Erste Schritte mit privaten Azure DNS-Zonen mithilfe der CLI](./private-dns-getstarted-cli.md).
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="create-the-resource-group"></a>Ressourcengruppe erstellen
 
-Vor dem Erstellen der DNS-Zone wird eine Ressourcengruppe für die DNS-Zone erstellt. Hier sehen Sie den Befehl:
+Bevor Sie die DNS-Zone erstellen, erstellen Sie eine Ressourcengruppe für die DNS-Zone:
 
 ```azurecli
-az group create --name MyResourceGroup --location "West US"
+az group create --name MyResourceGroup --location "East US"
 ```
 
 ## <a name="create-a-dns-zone"></a>Erstellen einer DNS-Zone
@@ -64,8 +53,6 @@ Im folgenden Beispiel wird ein Eintrag mit dem relativen Namen „www“ in der 
 ```azurecli
 az network dns record-set a add-record -g MyResourceGroup -z contoso.com -n www -a 1.2.3.4
 ```
-
-Informationen zu anderen Eintragstypen, zu Eintragssätzen mit mehr als einem Eintrag, zu alternativen TTL-Werten und zum Ändern vorhandener Einträge finden Sie unter [Verwalten von DNS-Einträgen in Azure DNS mit der Azure CLI 2.0](dns-operations-recordsets-cli.md).
 
 ## <a name="view-records"></a>Anzeigen von Datensätzen
 
@@ -107,7 +94,7 @@ Diese Namenserver müssen in der Domänennamen-Registrierungsstelle konfiguriert
 
 ## <a name="delete-all-resources"></a>Löschen aller Ressourcen
  
-Führen Sie die folgenden Schritte aus, um alle in diesem Artikel erstellten Ressourcen zu löschen:
+Wenn sie nicht mehr benötigt werden, können Sie alle in diesem Schnellstart erstellten Ressourcen löschen, indem Sie die Ressourcengruppe löschen:
 
 ```azurecli
 az group delete --name MyResourceGroup
@@ -115,8 +102,7 @@ az group delete --name MyResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure DNS finden Sie unter [Azure DNS – Übersicht](dns-overview.md).
+Nachdem Sie nun Ihre erste DNS-Zone und Ihren ersten -Eintrag mit der Azure CLI erstellt haben, können Sie Einträge für eine Web-App in einer benutzerdefinierten Domäne erstellen.
 
-Weitere Informationen zum Verwalten von DNS-Zonen in Azure DNS finden Sie unter [Verwalten von DNS-Zonen in Azure DNS mit der Azure CLI 2.0](dns-operations-dnszones-cli.md).
-
-Weitere Informationen zum Verwalten von DNS-Einträgen in Azure DNS finden Sie unter [Verwalten von DNS-Einträgen in Azure DNS mit der Azure CLI 2.0](dns-operations-recordsets-cli.md).
+> [!div class="nextstepaction"]
+> [Erstellen von DNS-Einträgen für eine Web-App in einer benutzerdefinierten Domäne](./dns-web-sites-custom-domain.md)

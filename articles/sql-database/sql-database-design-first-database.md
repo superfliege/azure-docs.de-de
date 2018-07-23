@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,develop databases
 ms.topic: tutorial
-ms.date: 6/20/2018
+ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: c89b03baccc7e20ae945da154fbd78d5d0dac376
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 6f12c44c2d65eef7e8d3345ec79b812304fe9791
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311030"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091539"
 ---
 # <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>Tutorial: Entwerfen Ihrer ersten Azure SQL-Datenbank mit SSMS
 
@@ -31,7 +31,7 @@ Azure SQL-Datenbank ist eine relationale DBaaS-Lösung (Database-as-a-Service) i
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
    >[!NOTE]
-   > In diesem Tutorial verwenden wir das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md). Sie haben jedoch auch die Möglichkeit, das [V-Kern-basierte Kaufmodell (Vorschauversion)](sql-database-service-tiers-vcore.md) auszuwählen. 
+   > In diesem Tutorial verwenden wir das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md). Sie haben jedoch auch die Möglichkeit, das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md) auszuwählen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -77,7 +77,7 @@ Führen Sie die folgenden Schritte aus, um eine leere SQL-­Datenbank zu erstell
 
 5. Klicken Sie auf **Auswählen**.
 
-6. Klicken Sie auf **Tarif**, um die Dienstebene, die Anzahl von DTUs oder virtuellen Kernen und die Speichermenge anzugeben. Machen Sie sich mit den Optionen für die Anzahl von DTUs/virtuellen Kernen sowie mit den Speicheroptionen vertraut, die für die einzelnen Dienstebenen verfügbar sind. In diesem Tutorial verwenden wir das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md). Sie haben jedoch auch die Möglichkeit, das [V-Kern-basierte Kaufmodell (Vorschauversion)](sql-database-service-tiers-vcore.md) auszuwählen. 
+6. Klicken Sie auf **Tarif**, um die Dienstebene, die Anzahl von DTUs oder virtuellen Kernen und die Speichermenge anzugeben. Machen Sie sich mit den Optionen für die Anzahl von DTUs/virtuellen Kernen sowie mit den Speicheroptionen vertraut, die für die einzelnen Dienstebenen verfügbar sind. In diesem Tutorial verwenden wir das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md). Sie haben jedoch auch die Möglichkeit, das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md) auszuwählen. 
 
 7. Wählen Sie in diesem Tutorial die Dienstebene **Standard** und dann mit dem Schieberegler **100 DTUs (S3)** und **400** GB Speicher aus.
 
