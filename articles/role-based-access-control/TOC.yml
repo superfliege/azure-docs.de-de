@@ -41,6 +41,8 @@
           href: role-assignments-cli.md
         - name: REST-API
           href: role-assignments-rest.md
+        - name: Vorlage
+          href: role-assignments-template.md
     - name: Benutzerdefinierte Rollen
       href: custom-roles.md
       items:
