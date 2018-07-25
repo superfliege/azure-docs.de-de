@@ -6,14 +6,14 @@ author: tamram
 manager: jeconnoc
 ms.service: storage
 ms.topic: get-started-article
-ms.date: 04/05/2018
+ms.date: 07/11/2018
 ms.author: tamram
-ms.openlocfilehash: 0ae4e196c81e767b2bbee4340f5d99b9f803df3b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 30741e48adbdb621317c13ec286b419bed2f9ea1
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653653"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001540"
 ---
 # <a name="introduction-to-azure-storage"></a>Einführung in Azure Storage
 
@@ -140,6 +140,7 @@ Für die Storage-Dienste stehen zwei grundlegende Verschlüsselungsarten zur Ver
 
 Azure Storage Service Encryption (SSE) für ruhende Daten unterstützt Sie dabei, Ihre Daten zu schützen, um die Sicherheits- und Complianceverpflichtungen Ihrer Organisation zu erfüllen. Mit diesem Feature verschlüsselt Azure Storage Ihre Daten automatisch, bevor sie im Speicher abgelegt werden, und entschlüsselt sie vor dem Abrufen. Verschlüsselung, Entschlüsselung und Schlüsselverwaltung sind für Benutzer vollständig transparent.
 
+
 SSE verschlüsselt die Daten automatisch in allen Leistungsebenen (Standard oder Premium), allen Bereitstellungsmodellen (Azure Resource Manager und Classic) sowie allen Azure Storage-Diensten (Blob, Queue, Table und File). SSE hat keine Auswirkungen auf die Leistung von Azure Storage.
 
 Weitere Informationen zur SSE-Verschlüsselung für ruhende Daten finden Sie unter [Azure Storage Service Encryption für ruhende Daten](storage-service-encryption.md).
@@ -168,6 +169,8 @@ Informationen zur Notfallwiederherstellung finden Sie unter [What to do if an Az
 AzCopy baut auf der [Azure Storage Data Movement Library](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)auf, die derzeit als Vorschau verfügbar ist.
 
 Mit dem Azure Import/Export-Dienst können große Mengen Blobdaten in das Speicherkonto importiert bzw. aus dem Speicherkonto exportiert werden. Sie bereiten mehrere Festplatten vor und senden Sie an ein Azure-Rechenzentrum. Dort werden die Daten von den bzw. auf die Festplatten übertragen und die Festplatten anschließend an sie zurückgesendet. Weitere Informationen zu diesem Dienst finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blobspeicher](../storage-import-export-service.md).
+
+Wenn Sie schnell, kostengünstig und zuverlässig große Mengen an Blobdaten in Ihr Speicherkonto importieren möchten, können Sie auch Azure Data Box Disk verwenden. Microsoft sendet über einen regionalen Transportdienstleister bis zu fünf verschlüsselte SSDs (Solid State Drives) mit einer Kapazität von 40 TB an Ihr Datencenter. Sie können die Datenträger schnell konfigurieren, Daten über eine USB-Verbindung auf die Datenträger kopieren und sie anschließend wieder an Azure zurücksenden. Im Azure-Datencenter werden Ihre Daten dann automatisch in die Cloud hochgeladen. Weitere Informationen zu dieser Lösung finden Sie in der [Übersicht über Azure Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview).
 
 ## <a name="pricing"></a>Preise
 

@@ -1,22 +1,22 @@
 ---
 title: Tutorial zur Indizierung von Azure SQL-Datenbanken in Azure Search | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie eine Azure SQL-Datenbank durchforsten, um durchsuchbare Daten zu extrahieren und einen Azure Search-Index aufzufüllen.
+description: In diesem Tutorial erfahren Sie, wie Sie eine Azure SQL-Datenbank durchforsten, um durchsuchbare Daten zu extrahieren und einen Azure Search-Index aufzufüllen.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/10/2017
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: abf121ec369d84dd307416d2c08971d9096de4a8
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b40d3a74904d6814eb01b5d41d10632e8c9af5be
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799514"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988794"
 ---
-# <a name="how-to-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Durchforsten einer Azure SQL-Datenbank unter Verwendung von Azure Search-Indexern
+# <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Tutorial: Durchforsten einer Azure SQL-Datenbank unter Verwendung von Azure Search-Indexern
 
 In diesem Tutorial erfahren Sie, wie Sie einen Indexer konfigurieren, um durchsuchbare Daten aus einer Azure SQL-Beispieldatenbank zu extrahieren. Ein [Indexer](search-indexer-overview.md) ist eine Komponente von Azure Search, die externe Datenquellen durchforstet und einen [Suchindex](search-what-is-an-index.md) auffüllt. Von allen Indexern wird der Indexer für Azure SQL-Datenbank am häufigsten verwendet. 
 
@@ -33,15 +33,15 @@ In diesem Tutorial verwenden Sie die [Azure Search-.NET-Clientbibliotheken](http
 > * Durchsuchen des Index
 > * Anzeigen der Indexerkonfiguration im Portal
 
-## <a name="prerequisites"></a>Voraussetzungen
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-* Ein aktives Azure-Konto. Falls Sie über kein Azure-Abonnement verfügen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/free/) registrieren. 
+## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure Search-Dienst. Eine Einrichtungsanleitung finden Sie unter [Erstellen eines Suchdiensts](search-create-service-portal.md).
 
 * Eine Azure SQL-Datenbank, die die externe Datenquelle für einen Indexer bereitstellt. In der Beispielprojektmappe steht eine SQL-Datendatei zum Erstellen der Tabelle zur Verfügung.
 
-* Visual Studio 2017 Sie können die kostenlose [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) verwenden. 
+* Visual Studio 2017. Sie können die kostenlose [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) verwenden. 
 
 > [!Note]
 > Bei Verwendung des kostenlosen Azure Search-Diensts gilt eine Obergrenze von drei Indizes, drei Indexern und drei Datenquellen. In diesem Tutorial wird davon jeweils eine Instanz erstellt. Vergewissern Sie sich, dass Ihr Dienst über genügend freie Kapazität für die neuen Ressourcen verfügt.
@@ -269,21 +269,14 @@ Alle Indexer werden im Portal angezeigt. Das gilt auch für den, den Sie gerade 
 
   ![Kachel „Indexer“ und „Datenquellen“](./media/search-indexer-tutorial/tiles-portal.png)
 
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Dienste nicht mehr benötigen, gehen Sie im Azure-Portal wie folgt vor, um alle Ressourcen zu löschen, die im Rahmen dieses Tutorials erstellt wurden: 
-
-1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen**, und klicken Sie auf den Namen der erstellten Ressource. 
-2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Ressourcengruppe löschen**, geben Sie im Textfeld den Namen der zu löschenden Ressource ein, und klicken Sie dann auf **Löschen**.
+Die schnellste Möglichkeit, das System nach einem Tutorial aufzuräumen, besteht im Löschen der Ressourcengruppe, die den Azure Search-Dienst enthält. Sie können nun die Ressourcengruppe löschen, um alle darin enthaltenen Daten endgültig zu löschen. Im Portal finden Sie den Namen der Ressourcengruppe auf der Seite „Übersicht“ des Azure Search-Diensts.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen und spezifische Aufgaben für andere unterstützte Datenquellen finden Sie in den folgenden Artikeln:
+Sie können KI-basierte Algorithmen an eine Indexer-Pipeline anfügen. Als Nächstes fahren Sie mit dem folgenden Tutorial fort.
 
-* [Azure SQL-Datenbank oder SQL Server auf einem virtuellen Azure-Computer](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure Table Storage](search-howto-indexing-azure-tables.md)
-* [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
-* [Indizieren von CSV-Blobs mit Azure Search-Blobindexer](search-howto-index-csv-blobs.md)
-* [Indizieren von JSON-Blobs mit Azure Search-Blobindexer](search-howto-index-json-blobs.md)
-
+> [!div class="nextstepaction"]
+> [Indizieren von Dokumenten in Azure Blob Storage mit Azure Search](search-howto-indexing-azure-blob-storage.md)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: ddecf2f75e80f95291b12d9c139a8da85f45ac94
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 63acf0297a694ff442d56e67d52fd9b4e49f812d
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36288052"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008585"
 ---
 Im ersten Schritt wird über das Azure-Portal eine IoT Hub-Instanz in Ihrem Abonnement erstellt. Mit der IoT Hub-Instanz können umfangreiche Telemetriedaten von zahlreichen Geräten in der Cloud erfasst werden. Diese Telemetriedaten können dann von in der Cloud ausgeführten Back-End-Diensten gelesen und verarbeitet werden.
 
@@ -26,12 +26,9 @@ Im ersten Schritt wird über das Azure-Portal eine IoT Hub-Instanz in Ihrem Abon
 1. Geben Sie im Bereich **IoT Hub** die folgenden Informationen für Ihren IoT Hub ein:
 
    * **Abonnement**: Wählen Sie das Abonnement aus, das Sie zum Erstellen dieses IoT-Hubs verwenden möchten.
-
-   * **Ressourcengruppe**: Erstellen Sie eine Ressourcengruppe zum Hosten des IoT Hubs, oder verwenden Sie eine vorhandene. Indem Sie alle verwandten Ressourcen in einer Gruppe zusammenfassen, können Sie sie zusammen verwalten. Wenn Sie beispielsweise die Ressourcengruppe löschen, werden alle Ressourcen in dieser Gruppe gelöscht. Weitere Informationen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen][lnk-resource-groups].
-
-   * **Region**: Wählen Sie den nächstgelegenen Standort aus.
-
-   * **Name**: Erstellen Sie einen Namen für Ihren IoT-Hub. Wenn der eingegebene Name verfügbar ist, wird ein grünes Häkchen angezeigt.
+   * **Ressourcengruppe**: Erstellen Sie eine Ressourcengruppe, die den IoT Hub enthält, oder verwenden Sie eine vorhandene. Wenn Sie alle verwandten Ressourcen in einer Gruppe (z.B **TestResources**) zusammenfassen, können Sie sie alle zusammen verwalten. Wenn Sie beispielsweise die Ressourcengruppe löschen, werden alle Ressourcen in dieser Gruppe gelöscht. Weitere Informationen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen][lnk-resource-groups].
+   * **Region:** Wählen Sie den Standort aus, der Ihren Geräten am nächsten ist.
+   * **Name**: Erstellen Sie einen eindeutigen Namen für Ihren IoT Hub. Wenn der eingegebene Name verfügbar ist, wird ein grünes Häkchen angezeigt.
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 

@@ -1,21 +1,21 @@
 ---
-title: Durchsuchen von teilweise strukturierten Daten in Azure-Cloudspeicher
-description: Es wird beschrieben, wie Sie teilweise strukturierte Blobdaten mit Azure Search durchsuchen.
-author: roygara
+title: Tutorial zum Durchsuchen von teilweise strukturierten Daten aus dem Azure-Cloudspeicher in Azure Search | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie teilweise strukturierte Azure-Blobbaten mithilfe von Azure Search durchsucht werden.
+author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 10/12/2017
-ms.author: v-rogara
-ms.openlocfilehash: 7579862e132724d101e4267023afd9e3336bc3b1
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 07/12/2018
+ms.author: heidist
+ms.openlocfilehash: a7b006bd8469ddce1415ab6cb7c52c0171ae11cd
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795040"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005076"
 ---
-# <a name="part-2-search-semi-structured-data-in-cloud-storage"></a>Teil 2: Durchsuchen von teilweise strukturierten Daten in Cloudspeicher
+# <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>Tutorial: Durchsuchen von teilweise strukturierten Daten in Azure-Cloudspeicher
 
 In einer zweiteiligen Tutorialreihe erfahren Sie, wie Sie teilweise strukturierte und unstrukturierte Daten mit Azure Search durchsuchen. In [Teil 1](../storage/blobs/storage-unstructured-search.md) haben Sie etwas über das Durchsuchen von unstrukturierten Daten erfahren, jedoch wurden auch wichtige Voraussetzungen für dieses Tutorial behandelt, etwa das Erstellen des Speicherkontos. 
 
@@ -28,14 +28,16 @@ In Teil 2 erfahren Sie Folgendes:
 > * Erstellen und Auffüllen eines Azure Search-Index und eines Indexers zum Durchsuchen des Containers und Extrahieren von durchsuchbarem Inhalt
 > * Durchsuchen des soeben erstellten Index
 
-> [!NOTE]
-> Dieses Tutorial basiert auf JSON-Array-Unterstützung, die derzeit als Vorschaufeature in Azure Search vorhanden ist. Sie ist nicht im Portal verfügbar. Aus diesem Grund verwenden wir die Vorschauversion der REST-API, in der dieses Feature enthalten ist, und ein REST-Clienttool zum Aufrufen der API.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Abschluss des [vorhergehenden Tutorials](../storage/blobs/storage-unstructured-search.md), in dem das Speicherkonto und der Suchdienst aus dem vorherigen Tutorial bereitgestellt wurden.
 
 * Installieren eines REST-Clients und Vertrautmachen mit dem Erstellen einer HTTP-Anforderung. Für dieses Tutorial nutzen wir [Postman](https://www.getpostman.com/). Sie können auch einen anderen REST-Client verwenden, wenn Sie damit bereits gut vertraut sind.
+
+> [!NOTE]
+> Dieses Tutorial basiert auf JSON-Array-Unterstützung, die derzeit als Vorschaufeature in Azure Search vorhanden ist. Sie ist nicht im Portal verfügbar. Aus diesem Grund verwenden wir die Vorschauversion der REST-API, in der dieses Feature enthalten ist, und ein REST-Clienttool zum Aufrufen der API.
 
 ## <a name="set-up-postman"></a>Einrichten von Postman
 
@@ -55,7 +57,7 @@ Es wurde ein Beispieldataset für Sie vorbereitet. **Laden Sie [clinical-trials-
 
 Im Beispiel sind JSON-Beispieldateien enthalten, bei denen es sich ursprünglich um Textdateien von [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results) handelt. Wir haben sie der Einfachheit halber in JSON-Code konvertiert.
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
 
@@ -277,15 +279,13 @@ Wenn Sie experimentieren und einige weitere Abfragen selbst ausprobieren möchte
 
 Der Parameter `$filter` funktioniert nur mit Metadaten, die beim Erstellen des Index als filterbar gekennzeichnet wurden.
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Die schnellste Möglichkeit, das System nach einem Tutorial aufzuräumen, besteht im Löschen der Ressourcengruppe, die den Azure Search-Dienst enthält. Sie können nun die Ressourcengruppe löschen, um alle darin enthaltenen Daten endgültig zu löschen. Im Portal finden Sie den Namen der Ressourcengruppe auf der Seite „Übersicht“ des Azure Search-Diensts.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Informationen zum Suchen von teilweise strukturierten Daten mit Azure Search erhalten, z.B.:
-
-> [!div class="checklist"]
-> * Erstellen eines Azure Search-Diensts mit der REST-API
-> * Verwenden des Azure Search-Diensts zum Durchsuchen Ihres Containers
-
-Unter diesem Link erhalten Sie weitere Informationen zur Suche.
+Sie können KI-basierte Algorithmen an eine Indexer-Pipeline anfügen. Als Nächstes fahren Sie mit dem folgenden Tutorial fort.
 
 > [!div class="nextstepaction"]
 > [Indizieren von Dokumenten in Azure Blob Storage mit Azure Search](search-howto-indexing-azure-blob-storage.md)

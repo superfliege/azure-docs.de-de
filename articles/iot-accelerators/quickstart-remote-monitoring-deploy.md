@@ -7,22 +7,20 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 06/07/2018
+ms.date: 07/12/2018
 ms.author: dobett
-ms.openlocfilehash: e3eff46299ecfbfe39b57bc2cf5ed4a655a6d7f1
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 8dd630650498f3698fea3ed03882fe8c5c3d338e
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37087947"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004317"
 ---
-# <a name="quickstart-deploy-a-cloud-based-remote-monitoring-solution"></a>Schnellstart: Bereitstellen einer cloudbasierten Lösung für die Remoteüberwachung
+# <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Schnellstart: Ausprobieren einer cloudbasierten Lösung für die Remoteüberwachung
 
-In dieser Schnellstartanleitung wird veranschaulicht, wie Sie den Azure IoT Solution Accelerator für die Remoteüberwachung bereitstellen, um für Ihre IoT-Geräte eine cloudbasierte Lösung für die Remoteüberwachung zu erhalten. Nach der Bereitstellung des Solution Accelerators verwenden Sie die Seite mit dem **Lösungsdashboard**, um simulierte Geräte auf einer Karte zu visualisieren. Auf der Seite **Wartung** reagieren Sie auf eine Druckwarnung eines simulierten Kühlgeräts.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie den Azure IoT-Solution Accelerator für die Remoteüberwachung verwenden, um eine cloudbasierte Remoteüberwachungssimulation auszuführen. Nach der Bereitstellung des Solution Accelerators verwenden Sie die Seite mit dem **Lösungsdashboard**, um simulierte Geräte auf einer Karte zu visualisieren. Auf der Seite **Wartung** reagieren Sie auf eine Druckwarnung eines simulierten Kühlgeräts. Dieser Solution Accelerator kann als Ausgangspunkt für Ihre eigene Implementierung sowie als Lernhilfe verwendet werden.
 
-In der Standardbereitstellung wird der Solution Accelerator für die Remoteüberwachung für das Unternehmen mit dem Namen Contoso konfiguriert. Contoso verwaltet eine Auswahl von unterschiedlichen Gerätetypen, z.B. Kältemaschinen, die in verschiedenen physischen Umgebungen bereitgestellt wurden. Eine Kältemaschine sendet Telemetriedaten zu Temperatur, Luftfeuchtigkeit und Druck an den Solution Accelerator für die Remoteüberwachung.
-
-## <a name="prerequisites"></a>Voraussetzungen
+In der ursprünglichen Bereitstellung wird der Solution Accelerator für die Remoteüberwachung für ein Unternehmen namens Contoso konfiguriert. Contoso verwaltet eine Auswahl von unterschiedlichen Gerätetypen, z.B. Kältemaschinen, die in verschiedenen physischen Umgebungen bereitgestellt wurden. Eine Kältemaschine sendet Telemetriedaten zu Temperatur, Luftfeuchtigkeit und Druck an den Solution Accelerator für die Remoteüberwachung.
 
 Für diese Schnellstartanleitung benötigen Sie ein aktives Azure-Abonnement.
 
@@ -42,9 +40,9 @@ Wählen Sie auf der Seite **Create Remote Monitoring solution** (Remoteüberwach
 
 Wählen Sie als Sprache die Option **.NET**. Die Java- und .NET-Implementierungen verfügen über identische Features.
 
-Geben Sie einen eindeutigen **Lösungsnamen** für den Solution Accelerator für die Remoteüberwachung ein.
+Geben Sie einen eindeutigen **Lösungsnamen** für den Solution Accelerator für die Remoteüberwachung ein. In dieser Schnellstartanleitung wird der Name **contoso-rm2** verwendet.
 
-Wählen Sie die gewünschten Angaben für **Abonnement** und **Region**, um den Solution Accelerator bereitzustellen. Normalerweise wählen Sie die Region, die Ihnen am nächsten liegt. Sie müssen ein [globaler Administrator oder Benutzer](iot-accelerators-permissions.md) des Abonnements sein.
+Wählen Sie die gewünschten Angaben für **Abonnement** und **Region**, um den Solution Accelerator bereitzustellen. Normalerweise wählen Sie die Region, die Ihnen am nächsten liegt. In dieser Schnellstartanleitung haben wir **Visual Studio Enterprise** und **Europa, Westen** gewählt. Sie müssen ein [globaler Administrator oder Benutzer](iot-accelerators-permissions.md) des Abonnements sein.
 
 Klicken Sie auf **Lösung erstellen**, um mit der Bereitstellung zu beginnen. Dieser Prozess dauert mindestens fünf Minuten:
 
@@ -52,7 +50,7 @@ Klicken Sie auf **Lösung erstellen**, um mit der Bereitstellung zu beginnen. Di
 
 ## <a name="sign-in-to-the-solution"></a>Anmelden bei der Lösung
 
-Nachdem die Bereitstellung für Ihr Azure-Abonnement abgeschlossen ist, können Sie sich am Dashboard des Solution Accelerators für die Remoteüberwachung anmelden.
+Wenn die Bereitstellung in Ihrem Azure-Abonnement abgeschlossen ist, werden auf der Kachel der Lösung ein grünes Häkchen und **Bereit** angezeigt. Nun können Sie sich beim Dashboard für den Solution Accelerator für die Remoteüberwachung anmelden.
 
 Klicken Sie auf der Seite **Bereitgestellte Lösungen** auf Ihren neuen Solution Accelerator für die Remoteüberwachung:
 
@@ -68,7 +66,7 @@ Klicken Sie auf **Akzeptieren**, um die Zustimmungsanforderung zu akzeptieren, d
 
 ## <a name="view-your-devices"></a>Anzeigen von Geräten
 
-Im Lösungsdashboard werden die folgenden Informationen zu den Geräten von Contoso angezeigt:
+Im Lösungsdashboard werden die folgenden Informationen zu den simulierten Geräten von Contoso angezeigt:
 
 * Unter **Device statistics** (Gerätestatistik) werden zusammenfassende Informationen zu Warnungen und die Gesamtzahl von Geräten angezeigt. In der Standardbereitstellung verfügt Contoso über zehn simulierte Geräte unterschiedlichen Typs.
 
@@ -110,7 +108,7 @@ Scrollen Sie nach unten zu **Verwandte Informationen**, wählen Sie die Kältema
 
 [![Auswählen des Geräts und Planen einer Aktion](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-expanded.png#lightbox)
 
-Wählen Sie im Panel **Aufträge** die Option **Run method** (Methode ausführen) und dann die **EmergencyValveRelease**-Methode, fügen Sie den Auftragsnamen **ChillerPressureRelease** hinzu, und klicken Sie auf **Übernehmen**. Mit diesen Einstellungen wird ein Auftrag erstellt, der sofort ausgeführt wird.
+Klicken Sie im Bereich **Aufträge** auf **Run method** (Methode ausführen) und anschließend auf die Methode **EmergencyValveRelease**. Fügen Sie den Auftragsnamen **ChillerPressureRelease** hinzu, und klicken Sie auf **Übernehmen**. Mit diesen Einstellungen wird ein Auftrag erstellt, der sofort ausgeführt wird.
 
 Kehren Sie zum Anzeigen des Auftragsstatus auf die Seite **Wartung** zurück, und zeigen Sie die Liste mit den Aufträgen in der Ansicht **Aufträge** an. Unter Umständen müssen Sie einige Sekunden warten, bevor Sie sehen, dass der Auftrag ausgeführt und der Ventildruck für die Kältemaschine verringert wurde:
 
@@ -132,7 +130,7 @@ Der Wert in der Statusspalte ändert sich in **Geschlossen**.
 
 Wenn Sie mit den Tutorials fortfahren möchten, können Sie die Bereitstellung des Solution Accelerators für die Remoteüberwachung beibehalten.
 
-Falls Sie den Solution Accelerator nicht mehr benötigen, können Sie ihn auf der Seite [Bereitgestellte Lösungen](https://www.azureiotsolutions.com/Accelerators#dashboard) löschen:
+Falls Sie den Solution Accelerator nicht mehr benötigen, können Sie ihn auf der Seite [Bereitgestellte Lösungen](https://www.azureiotsolutions.com/Accelerators#dashboard) löschen, indem Sie ihn markieren und dann auf **Lösung löschen** klicken:
 
 ![Löschen der Lösung](media/quickstart-remote-monitoring-deploy/deletesolution.png)
 
@@ -140,7 +138,7 @@ Falls Sie den Solution Accelerator nicht mehr benötigen, können Sie ihn auf de
 
 In dieser Schnellstartanleitung haben Sie den Solution Accelerator für die Remoteüberwachung bereitgestellt und eine Überwachungsaufgabe durchgeführt, indem Sie die simulierten Geräte in der Contoso-Standardbereitstellung verwendet haben.
 
-Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie die Firmware auf Ihren verbundenen Geräten aktualisieren und Ihre Assets auf dem Solution Accelerator organisieren.
+Weitere Informationen zum Solution Accelerator und zur Verwendung simulierter Geräte finden Sie im folgenden Tutorial:
 
 > [!div class="nextstepaction"]
 > [Tutorial: Überwachen Ihrer IoT-Geräte](iot-accelerators-remote-monitoring-monitor.md)

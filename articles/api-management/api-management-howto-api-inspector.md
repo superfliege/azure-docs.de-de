@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/19/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 01a9120af2fb240eed1463613f7a6f946a9c16ed
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: cf9c56fa2ba75dc5b5ad4af59d111a0124f1a9df
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934687"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39057326"
 ---
 # <a name="debug-your-apis-using-request-tracing"></a>Debuggen von APIs mit der Anforderungsablaufverfolgung
 
@@ -44,6 +44,12 @@ In diesem Tutorial lernen Sie Folgendes:
 3. Wählen Sie den Vorgang **GetSpeakers** aus.
 4. Wechseln Sie zur Registerkarte **Test**.
 5. Stellen Sie sicher, dass ein HTTP-Header namens **Ocp-Apim-Trace** enthalten und der Wert auf **true** festgelegt ist.
+
+    ![API-Ablaufverfolgungsheader](media/api-management-howto-api-inspector/api-management-tracing-header.png)
+
+    > [!NOTE]
+    > Wenn „Ocp-Apim-Subscription-Key“ nicht automatisch ausgefüllt wird, können Sie den Wert abrufen, indem Sie die Schlüssel im Entwicklerportal auf der Profilseite verfügbar machen.
+
 6. Klicken Sie auf **Senden**, um einen API-Aufruf durchzuführen. 
 7. Warten Sie, bis der Aufruf abgeschlossen ist. 
 8. Wechseln Sie in der **API-Konsole** zur Registerkarte **Ablaufverfolgung**. Sie können auf einen der folgenden Links klicken, um ausführliche Informationen zur Ablaufverfolgung anzuzeigen: **Eingehend**, **Back-End**, **Ausgehend**.

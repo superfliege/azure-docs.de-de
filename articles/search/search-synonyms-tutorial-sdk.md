@@ -1,28 +1,34 @@
 ---
-title: Tutorial für Synonyme in Azure Search | Microsoft-Dokumentation
-description: Fügen Sie das Feature „Synonyme“ einem Index in Azure Search hinzu.
+title: C#-Tutorial für Synonyme in Azure Search | Microsoft-Dokumentation
+description: In diesem Tutorial fügen Sie einem Index in Azure Search das Feature „Synonyme“ hinzu.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 04/20/2018
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: 5482185a4a4cc8b76c1094ce12a7ac52985ec57c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8340c4dc2a855911073905a3aea93e19fc7b520d
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182088"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990560"
 ---
-# <a name="synonym-c-tutorial-for-azure-search"></a>Synonyme: C#-Tutorial für Azure Search
+# <a name="tutorial-add-synonyms-for-azure-search-in-c"></a>Tutorial: Hinzufügen von Synonymen für Azure Search in C#
 
-Anhand von Synonymen wird eine Abfrage erweitert, indem Begriffe, die als semantisch gleichwertig angesehen werden, dem eingegebenen Begriff hinzugefügt werden. Es kann beispielsweise sein, dass sich für den Begriff „Auto“ auch Übereinstimmungen für Dokumente ergeben sollen, die die Begriffe „Automobil“ oder „Fahrzeug“ enthalten.
+Anhand von Synonymen wird eine Abfrage erweitert, indem Begriffe, die als semantisch gleichwertig angesehen werden, dem eingegebenen Begriff hinzugefügt werden. Es kann beispielsweise sein, dass sich für den Begriff „Auto“ auch Übereinstimmungen für Dokumente ergeben sollen, die die Begriffe „Automobil“ oder „Fahrzeug“ enthalten. 
 
-In Azure Search werden Synonyme in einer *Synonymzuordnung* anhand von *Zuordnungsregeln* für gleichwertige Begriffe definiert. Sie können mehrere Synonymzuordnungen erstellen, diese für den gesamten Dienst als Ressource bereitstellen, die für alle Indizes verfügbar ist, und dann auf Feldebene angeben, was jeweils verwendet werden soll. Beim Abfragen führt Azure Search zusätzlich zum Durchsuchen eines Index dann eine Suche in einer Synonymzuordnung durch, falls diese für die Felder einer Abfrage angegeben ist.
+In Azure Search werden Synonyme in einer *Synonymzuordnung* anhand von *Zuordnungsregeln* für gleichwertige Begriffe definiert. Dieses Tutorial behandelt die wesentlichen Schritte zum Hinzufügen und Verwenden von Synonymen mit einem vorhandenen Index. Folgendes wird vermittelt:
+
+> [!div class="checklist"]
+> * Aktivieren von Synonymen durch Erstellen und Veröffentlichen von Zuordnungsregeln 
+> * Verweisen auf eine Synonymzuordnung in einer Abfragezeichenfolge
+
+Sie können mehrere Synonymzuordnungen erstellen, diese für den gesamten Dienst als Ressource bereitstellen, die für alle Indizes verfügbar ist, und dann auf Feldebene angeben, was jeweils verwendet werden soll. Beim Abfragen führt Azure Search zusätzlich zum Durchsuchen eines Index dann eine Suche in einer Synonymzuordnung durch, falls diese für die Felder einer Abfrage angegeben ist.
 
 > [!NOTE]
-> Das Feature „Synonyme“ wird in den aktuellen API- und SDK-Versionen (API-Version 2017-11-11, SDK-Version 5.0.0) unterstützt. Für das Azure-Portal ist derzeit noch keine Unterstützung vorhanden. Falls Unterstützung für Synonyme auch für das Azure-Portal nützlich wäre, lassen Sie uns Feedback über [UserVoice](https://feedback.azure.com/forums/263029-azure-search) zukommen.
+> Synonyme werden in den aktuellen API- und SDK-Versionen (API-Version 2017-11-11, SDK-Version 5.0.0) unterstützt. Für das Azure-Portal ist derzeit noch keine Unterstützung vorhanden. Falls Unterstützung für Synonyme auch für das Azure-Portal nützlich wäre, lassen Sie uns Feedback über [UserVoice](https://feedback.azure.com/forums/263029-azure-search) zukommen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -35,7 +41,7 @@ Für das Tutorial gelten die folgenden Anforderungen:
 
 ## <a name="overview"></a>Übersicht
 
-Anhand von Vorher- und Nachher-Abfragen soll der Nutzen von Synonymen veranschaulicht werden. In diesem Tutorial verwenden wir eine Beispielanwendung, mit der Abfragen ausgeführt und Ergebnisse für einen Beispielindex zurückgegeben werden. Mit der Beispielanwendung wird ein kleiner Index mit dem Namen „hotels“ erstellt, der mit zwei Dokumenten gefüllt wird. Die Anwendung führt Suchabfragen mithilfe von Begriffen und Wortgruppen durch, die nicht im Index enthalten sind, aktiviert das Feature „Synonyme“ und führt die gleichen Suchvorgänge dann erneut durch. Im unten angegebenen Code ist der gesamte Ablauf dargestellt.
+Anhand von Vorher- und Nachher-Abfragen soll der Nutzen von Synonymen veranschaulicht werden. In diesem Tutorial wird eine Beispielanwendung verwendet, mit der Abfragen ausgeführt und Ergebnisse für einen Beispielindex zurückgegeben werden. Mit der Beispielanwendung wird ein kleiner Index mit dem Namen „hotels“ erstellt, der mit zwei Dokumenten gefüllt wird. Die Anwendung führt Suchabfragen mithilfe von Begriffen und Wortgruppen durch, die nicht im Index enthalten sind, aktiviert das Feature „Synonyme“ und führt die gleichen Suchvorgänge dann erneut durch. Im unten angegebenen Code ist der gesamte Ablauf dargestellt.
 
 ```csharp
   static void Main(string[] args)
@@ -73,7 +79,7 @@ Die Schritte zum Erstellen und Auffüllen des Beispielindex sind unter [Verwende
 
 ## <a name="before-queries"></a>Vorher-Abfragen
 
-In `RunQueriesWithNonExistentTermsInIndex` führen wir Suchabfragen durch, die die Begriffe „five star“, „internet“ und „economy AND hotel“ enthalten.
+Führen Sie in `RunQueriesWithNonExistentTermsInIndex` Suchabfragen durch, die die Begriffe „five star“, „internet“ und „economy AND hotel“ enthalten.
 ```csharp
 Console.WriteLine("Search the entire index for the phrase \"five star\":\n");
 results = indexClient.Documents.Search<Hotel>("\"five star\"", parameters);
@@ -159,8 +165,13 @@ Durch das Hinzufügen von Synonymen wird die Sucherfahrung nachhaltig verändert
 ## <a name="sample-application-source-code"></a>Quellcode der Beispielanwendung
 Den vollständigen Quellcode der in diesem Artikel besprochenen Beispielanwendung finden Sie auf [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms).
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Die schnellste Möglichkeit, das System nach einem Tutorial zu bereinigen, besteht im Löschen der Ressourcengruppe, die den Azure Search-Dienst enthält. Sie können die Ressourcengruppe nun löschen, um alle darin enthaltenen Daten endgültig zu löschen. Der Name der Ressourcengruppe befindet sich im Portal auf der Seite „Übersicht“ des Azure Search-Diensts.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Verwenden von Synonymen in Azure Search](search-synonyms.md)
-* [Dokumentation zur REST-API für Synonyme](https://aka.ms/rgm6rq)
-* Nutzen Sie die Referenzen für das [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) und die [REST-API](https://docs.microsoft.com/rest/api/searchservice/).
+In diesem Tutorial wurde die [REST-API für Synonyme](https://aka.ms/rgm6rq) in C#-Code veranschaulicht, um Zuordnungsregeln zu erstellen und zu veröffentlichen und anschließend die Synonymzuordnung für eine Abfrage aufzurufen. Weitere Informationen finden Sie in der Referenzdokumentation für [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) und [REST-API](https://docs.microsoft.com/rest/api/searchservice/).
+
+> [!div class="nextstepaction"]
+> [Verwenden von Synonymen in Azure Search](search-synonyms.md)

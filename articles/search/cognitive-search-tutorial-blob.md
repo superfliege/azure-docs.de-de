@@ -1,20 +1,20 @@
 ---
-title: 'Tutorial: Aufrufen von APIs der kognitiven Suche in Azure Search | Microsoft Docs'
-description: Beispiel für Extrahieren von Daten, natürliche Sprache und AI-Bildverarbeitung in der Azure Search-Indizierung für die Extrahierung und Transformation von Daten.
+title: Tutorial zum Aufrufen von APIs der kognitiven Suche in Azure Search | Microsoft-Dokumentation
+description: Dieses Tutorial führt Sie schrittweise durch ein Beispiel für das Extrahieren von Daten, natürliche Sprache und AI-Bildverarbeitung in der Azure Search-Indizierung für die Extrahierung und Transformation von Daten.
 manager: pablocas
 author: luiscabrer
 services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: tutorial
-ms.date: 05/01/2018
+ms.date: 07/11/2018
 ms.author: luisca
-ms.openlocfilehash: 0bca64675ed656373d6a73ca772fa713ad36a57e
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 35295f00b9264e4b6fba2ff9d293772c22b91c50
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757569"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991918"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Tutorial: Informationen zum Aufrufen von APIs der kognitiven Suche (Vorschau)
 
@@ -23,8 +23,8 @@ In diesem Tutorial lernen Sie die Mechanismen des Programmierens von Datenanreic
 In diesem Tutorial werden Sie die folgenden Aufgaben mithilfe von REST-API-Aufrufen ausführen:
 
 > [!div class="checklist"]
-> * Erstellen einer Indizierungspipeline, die Quelldaten auf dem Weg in einen Index anreichert
-> * Verwenden der integrierten Qualifikationen für Beispieldaten: Entitätserkennung, Spracherkennung, Textbearbeitung und Schlüsselbegriffserkennung
+> * Erstellen einer Indizierungspipeline, die Beispieldaten auf dem Weg in einen Index anreichert
+> * Anwenden von integrierten Qualifikationen: Entitätserkennung, Spracherkennung, Textbearbeitung und Schlüsselbegriffserkennung
 > * Erfahren Sie, wie Qualifikationen miteinander verkettet werden, indem die Eingänge den Ausgängen in einer Qualifikationsgruppe zugeordnet werden
 > * Ausführen von Anforderungen und Überprüfen von Ergebnissen
 > * Zurücksetzen des Index und der Indexer für die weitere Entwicklung

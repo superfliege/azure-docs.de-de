@@ -9,18 +9,16 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/05/2018
 ms.author: dobett
-ms.openlocfilehash: f3a252d6f7c49a65e0c548599b1958825b134ee8
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: fd4a637ebb05493bf0c0a940c3ff0cb56ad94c54
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37966938"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005032"
 ---
 # <a name="quickstart-deploy-and-run-a-cloud-based-device-simulation-solution"></a>Schnellstart: Stellen Sie eine cloudbasierte Gerätesimulationslösung bereit, und führen Sie sie aus.
 
 Dieser Schnellstart veranschaulicht, wie Sie den Azure IoT Solution Accelerator für die Gerätesimulation verwenden, um Ihre IoT-Lösung zu testen. Nachdem Sie den Solution Accelerator bereitgestellt haben, verwenden Sie die Seite **Simulation**, um eine Simulation zu erstellen und auszuführen.
-
-## <a name="prerequisites"></a>Voraussetzungen
 
 Für diese Schnellstartanleitung benötigen Sie ein aktives Azure-Abonnement.
 
@@ -88,7 +86,7 @@ Sie können von einer bereitgestellten Instanz des Solution Accelerators nur jew
 
 Wenn Sie mehr wissen möchten, lassen Sie den Solution Accelerator für die Gerätesimulation weiterhin bereitgestellt.
 
-Falls Sie den Solution Accelerator nicht mehr benötigen, können Sie ihn auf der Seite [Bereitgestellte Lösungen](https://www.azureiotsolutions.com/Accelerators#dashboard) löschen:
+Falls Sie den Solution Accelerator nicht mehr benötigen, können Sie ihn auf der Seite [Bereitgestellte Lösungen](https://www.azureiotsolutions.com/Accelerators#dashboard) löschen, indem Sie ihn markieren und dann auf **Lösung löschen** klicken:
 
 ![Löschen der Lösung](media/quickstart-device-simulation-deploy/deletesolution.png)
 

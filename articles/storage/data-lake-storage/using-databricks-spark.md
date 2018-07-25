@@ -1,26 +1,26 @@
 ---
-title: Zugreifen auf Azure-Daten vom Typ „Data Lake Storage Gen2“ (Vorschauversion) mit Databricks unter Verwendung von Spark | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie Spark-Abfragen in einem Databricks-Cluster ausführen, um auf Daten in einem Azure-Speicherkonto vom Typ „Data Lake Storage Gen2“ zuzugreifen.
+title: Zugreifen auf Azure-Daten vom Typ „Data Lake Storage Gen2“ (Vorschauversion) mit Azure Databricks unter Verwendung von Spark | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie Spark-Abfragen in einem Azure Databricks-Cluster ausführen, um auf Daten in einem Azure-Speicherkonto vom Typ „Data Lake Storage Gen2“ zuzugreifen.
 services: hdinsight,storage
 tags: azure-portal
 author: dineshm
 manager: twooley
 ms.component: data-lake-storage-gen2
-ms.service: hdinsight
+ms.service: storage
 ms.workload: big-data
 ms.topic: tutorial
 ms.date: 6/27/2018
 ms.author: dineshm
-ms.openlocfilehash: 27ed860c7dd3b979a25860d453231de74d3f46be
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 41c34b2c1459178c59af66a75e7b34e2ec158025
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096915"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136402"
 ---
-# <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-databricks-using-spark"></a>Tutorial: Zugreifen auf Azure-Daten vom Typ „Data Lake Storage Gen2“ (Vorschauversion) mit Databricks unter Verwendung von Spark
+# <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Tutorial: Zugreifen auf Azure-Daten vom Typ „Data Lake Storage Gen2“ (Vorschauversion) mit Azure Databricks unter Verwendung von Spark
 
-In diesem Tutorial wird beschrieben, wie Sie Spark-Abfragen in einem Databricks-Cluster ausführen, um Daten in einem Azure-Konto abzufragen, das für „Data Lake Storage Gen2“ (Vorschauversion) geeignet ist.
+In diesem Tutorial erfahren Sie, wie Sie Spark-Abfragen in einem Azure Databricks-Cluster ausführen, um Daten in einem Azure-Konto abzufragen, das für „Data Lake Storage Gen2“ (Vorschauversion) geeignet ist.
 
 > [!div class="checklist"]
 > * Erstellen eines Databricks-Clusters
@@ -49,7 +49,7 @@ Sowohl der Kontoname als auch der Schlüssel sind für weitere Schritte dieses T
 
 ## <a name="create-a-databricks-cluster"></a>Erstellen eines Databricks-Clusters
 
-Der nächste Schritt ist die Erstellung eines [Databricks-Clusters](https://docs.azuredatabricks.net/), um einen Datenarbeitsbereich erstellen zu können.
+Im nächsten Schritt wird ein [Databricks-Cluster](https://docs.azuredatabricks.net/) erstellt, um einen Datenarbeitsbereich erstellen zu können.
 
 1. Erstellen Sie einen [Databricks-Dienst](https://ms.portal.azure.com/#create/Microsoft.Databricks), und geben Sie ihm den Namen **myFlightDataService**. (Aktivieren Sie beim Erstellen des Diensts das Kontrollkästchen *An Dashboard anheften*.)
 2. Klicken Sie auf **Launch Workspace** (Arbeitsbereich starten), um den Arbeitsbereich in einem neuen Browserfenster zu öffnen.
@@ -116,7 +116,7 @@ azcopy cp "<DOWNLOAD_FILE_PATH>" https://<ACCOUNT_NAME>.dfs.core.windows.net/dbr
 
 ## <a name="explore-data-using-hadoop-distributed-file-system"></a>Untersuchen von Daten per Hadoop Distributed File System
 
-Kehren Sie zum Databricks-Arbeitsbereich zurück, und klicken Sie in der linken Navigationsleiste auf **Zuletzt verwendet**.
+Kehren Sie zum Databricks-Arbeitsbereich zurück, und klicken Sie auf der linken Navigationsleiste auf **Zuletzt verwendet**.
 
 1. Klicken Sie auf das Notebook **Flight Data Analytics** (Flugdatenanalyse).
 2. Drücken Sie **STRG+ALT+N**, um eine neue Zelle zu erstellen.

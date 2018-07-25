@@ -8,14 +8,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
-ms.date: 04/13/2018
+ms.date: 07/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: d87b27101b5bbb3fb589987865649e102d7835de
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 628a936d85eb94a1ee332205047527b0f9795d50
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639206"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990513"
 ---
 # <a name="azure-managed-applications-overview"></a>Übersicht über verwaltete Azure-Anwendungen
 
@@ -41,7 +41,7 @@ Sie können Ihre verwaltete Anwendung entweder extern oder intern veröffentlich
 
 ### <a name="service-catalog"></a>Dienstkatalog
 
-Der Dienstkatalog ist ein interner Katalog mit freigegebenen Lösungen für Benutzer in einer Organisation. Mithilfe des Katalogs können Sie die Einhaltung bestimmter Organisationsstandards gewährleisten und gleichzeitig Lösungen für die Organisationen bereitstellen. Mitarbeiter können über den Katalog komfortabel das umfangreiche Spektrum von Anwendungen erkunden, die die IT-Abteilung empfohlen und freigegeben hat. Sie sehen die verwalteten Anwendungen, die auch von anderen Personen in der Organisation verwendet werden.
+Der Dienstkatalog ist ein interner Katalog mit freigegebenen Lösungen für Benutzer in einer Organisation. Mithilfe des Katalogs können Sie die Einhaltung bestimmter Organisationsstandards gewährleisten und gleichzeitig Lösungen für die Organisationen bereitstellen. Mitarbeiter können über den Katalog komfortabel Anwendungen finden, die die IT-Abteilung empfohlen und freigegeben hat. Sie sehen die verwalteten Anwendungen, die auch von anderen Personen in der Organisation verwendet werden.
 
 Informationen zum Veröffentlichen einer verwalteten Dienstkataloganwendung finden Sie unter [Erstellen einer Dienstkataloganwendung](publish-service-catalog-app.md).
 
@@ -70,6 +70,10 @@ Der Verbraucher hat uneingeschränkten Zugriff auf die Ressourcengruppe und verw
 Diese Ressourcengruppe enthält alle Ressourcen, die von der verwalteten Anwendung benötigt werden. Hierzu zählen beispielsweise die virtuellen Computer, Speicherkonten und virtuellen Netzwerke für die Lösung. Der Verbraucher hat eingeschränkten Zugriff auf diese Ressourcengruppe, da er nicht die einzelnen Ressourcen für die verwaltete Anwendung verwaltet. Der Zugriff des Herausgebers auf diese Ressourcengruppe entspricht der Rolle, die in der Definition der verwalteten Anwendung angegeben ist. Der Herausgeber kann für diese Ressourcengruppe beispielsweise die Rolle „Besitzer“ oder „Mitwirkender" anfordern.
 
 Wenn der Verbraucher die verwaltete Anwendung löscht, wird auch die verwaltete Ressourcengruppe gelöscht.
+
+## <a name="azure-policy"></a>Azure-Richtlinie
+
+Sie können eine [Azure-Richtlinie](../azure-policy/azure-policy-introduction.md) auf Ihre verwaltete Anwendung anwenden. Richtlinien werden angewendet, um sicherzustellen, dass die bereitgestellten Instanzen Ihrer verwalteten Anwendung die Daten- und Sicherheitsanforderungen erfüllen. Falls Ihre Anwendung mit sensiblen Daten interagiert, müssen Sie prüfen, wie diese Daten geschützt werden müssen. Interagiert Ihre Anwendung also beispielsweise mit Daten aus Office 365, wenden Sie eine Richtlinie an, um sicherzustellen, dass die Datenverschlüsselung aktiviert ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

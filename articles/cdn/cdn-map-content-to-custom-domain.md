@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: f66aaa23a631bd71494587683aab87a74a5aef20
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 30dbe6590cc1d70dfc026330a09645c86be24288
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261269"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036886"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Tutorial: Hinzufügen einer benutzerdefinierten Domäne zum Azure CDN-Endpunkt
 In diesem Tutorial wird veranschaulicht, wie Sie einem Azure CDN-Endpunkt (Content Delivery Network) eine benutzerdefinierte Domäne hinzufügen. Wenn Sie einen CDN-Endpunkt zum Bereitstellen von Inhalt verwenden, ist eine benutzerdefinierte Domäne erforderlich, falls Ihr eigener Domänenname in Ihrer CDN-URL sichtbar sein soll. Die Verwendung eines sichtbaren Domänennamens kann für Ihre Kunden komfortabel und für Branding-Zwecke hilfreich sein. 
@@ -54,7 +54,7 @@ Eine benutzerdefinierte Domäne und die dazugehörige Unterdomäne können jewei
 
 Es müssen bestimmte Aspekte berücksichtigt werden, wenn Sie eine vorhandene Domäne zuordnen, die sich in der Produktion befindet. Während Sie Ihre benutzerdefinierte Domäne im Azure-Portal registrieren, kann es für die Domäne zu einer kurzen Ausfallzeit kommen. Ordnen Sie Ihre benutzerdefinierte Domäne zuerst dem Hostnamen Ihres CDN-Endpunkts mit der Azure-Unterdomäne „cdnverify“ zu, um eine temporäre CNAME-Zuordnung zu erstellen und so eine Unterbrechung des Webdatenverkehrs zu vermeiden. Mit dieser Methode können Benutzer ohne Unterbrechung auf Ihre Domäne zugreifen, während die DNS-Zuordnung durchgeführt wird. 
 
-Falls Sie Ihre benutzerdefinierte Domäne zum ersten Mal verwenden und dafür kein Produktionsdatenverkehr aktiv ist, können Sie die benutzerdefinierte Domäne auch direkt Ihrem CDN-Endpunkt zuordnen. Fahren Sie mit [Zuordnen der permanenten benutzerdefinierten Domäne](#map-permanent-custom-domain) fort.
+Falls Sie Ihre benutzerdefinierte Domäne zum ersten Mal verwenden und dafür kein Produktionsdatenverkehr aktiv ist, können Sie die benutzerdefinierte Domäne auch direkt Ihrem CDN-Endpunkt zuordnen. Fahren Sie mit [Zuordnen der permanenten benutzerdefinierten Domäne](#map-the-permanent-custom-domain) fort.
 
 Erstellen Sie wie folgt einen CNAME-Eintrag mit der Unterdomäne „cdnverify“:
 

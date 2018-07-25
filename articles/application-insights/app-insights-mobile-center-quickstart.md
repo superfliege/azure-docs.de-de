@@ -4,18 +4,19 @@ description: Dieser Artikel enthält Informationen zum schnellen Einrichten eine
 services: application-insights
 keywords: ''
 author: mrbullwinkle
-ms.author: daviste; mbullwin
-ms.date: 10/05/2017
+ms.author: mbullwin
+ms.date: 07/11/2018
 ms.service: application-insights
+ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 252d16a5c4ef2d1f8230746dff681f7fbf5f44b1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: fd594e65de79844720462996a89477e0a6237ceb
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867950"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988924"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Analysieren Ihrer mobilen Apps mit App Center und Application Insights
 
@@ -144,7 +145,7 @@ Application Insights kann die Telemetriedaten zu benutzerdefinierten Ereignissen
 
    Das Tool „Benutzerabläufe“ visualisiert, welche Ereignisse Benutzer nach einem Startereignis senden. Dies ist nützlich, um sich einen Überblick darüber zu verschaffen, wie Benutzer durch Ihre App navigieren. Zudem werden so Stellen offen gelegt, an denen viele Benutzer Ihre App verlassen oder dieselbe Aktion wiederholt durchführen.
 
-   Zusätzlich zu Benutzerabläufen hat Application Insights mehrere andere Nutzungsanalysetools, die Antworten auf spezifische Fragen liefern:
+   Zusätzlich zu Benutzerabläufen hat Application Insights mehrere andere Analysetools für Benutzerverhalten, die Antworten auf spezifische Fragen liefern:
 
    * **Verkaufstrichter** zum Analysieren und Überwachen der Wechselraten
    * **Vermerkdauer** zum Analysieren der dauerhaften Bindung von Benutzern an Ihre App.

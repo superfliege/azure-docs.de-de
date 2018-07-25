@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 12/12/2017
+ms.date: 07/11/2018
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: ccd55633f71be172edc330459bf8610f2146ad8d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 008e61841611f36c440bb4896ae5a85d0bf4d874
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29386383"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991626"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Starten der Überwachung Ihrer ASP.NET Core-Webanwendung
 
@@ -33,7 +33,7 @@ So führen Sie diesen Schnellstart durch:
 - [Installieren Sie das .NET Core 2.0 SDK](https://www.microsoft.com/net/core).
 - Sie benötigen ein Azure-Abonnement und eine vorhandene .NET Core-Webanwendung.
 
-Wenn Sie noch nicht über eine ASP.NET Core-Webanwendung verfügen, können Sie mithilfe der Anleitung unter [Erstellen einer ASP.NET Core-Web-App](https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vs) eine erstellen.
+Wenn Sie keine ASP.NET Core-Webanwendung haben, können mithilfe unserer schrittweise Anleitung [eine ASP.NET Core-App erstellen und Application Insights hinzufügen.](app-insights-asp-net-core.md)
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -77,25 +77,25 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 
 1. Sie können jetzt die Seite **Übersicht** für Application Insights im Azure-Portal erneut öffnen, indem Sie **Projekt** > **Application Insights** > **Application Insights-Portal öffnen** auswählen. Hier können Sie Details zu Ihrer aktuell ausgeführten Anwendung anzeigen.
 
-   ![Application Insights – Menü „Übersicht“](./media/app-insights-dotnetcore-quick-start/004-Black.png)
+   ![Application Insights – Menü „Übersicht“](./media/app-insights-dotnetcore-quick-start/overview-001.png)
 
-2. Klicken Sie auf **App-Zuordnung**, um ein visuelles Layout der Abhängigkeitsbeziehungen zwischen den Komponenten Ihrer Anwendung zu erhalten. Jede Komponente zeigt KPIs wie z.B. Last, Leistung, Fehler und Warnungen an.
+2. Klicken Sie auf **Anwendungsübersicht**, um ein visuelles Layout der Abhängigkeitsbeziehungen zwischen den Komponenten Ihrer Anwendung zu erhalten. Jede Komponente zeigt KPIs wie z.B. Last, Leistung, Fehler und Warnungen an.
 
-   ![Anwendungszuordnung](./media/app-insights-dotnetcore-quick-start/0002-dc.png)
+   ![Anwendungszuordnung](./media/app-insights-dotnetcore-quick-start/application-map.png)
 
 3. Klicken Sie auf die Schaltfläche für die **App-Analyse** ![Schaltfläche „Anwendungszuordnung“](./media/app-insights-dotnetcore-quick-start/006.png).  Dadurch wird die **Application Insights-Analyse** geöffnet, die eine erweiterte Abfragesprache zum Analysieren aller Daten bereitstellt, die von Application Insights gesammelt werden. In diesem Fall wird eine Abfrage für Sie generiert, die die Anzahl von Anforderungen als Diagramm darstellt. Sie können selbst Abfragen zum Analysieren anderer Daten schreiben.
 
    ![Analysediagramm der Benutzeranforderungen in einem bestimmten Zeitraum](./media/app-insights-dotnetcore-quick-start/0007-dc.png)
 
-4. Kehren Sie zur Seite **Übersicht** zurück, und untersuchen Sie die **Übersichtszeitachse für die Integrität**.  Dieses Dashboard zeigt Statistiken zur Integrität Ihrer Anwendung, einschließlich der Anzahl von eingehenden Anforderungen, der Dauer dieser Anforderungen und aller auftretenden Fehler. 
+4. Kehren Sie zur Seite **Übersicht** zurück, und untersuchen Sie die KPI-Dashboards.  Dieses Dashboard zeigt Statistiken zur Integrität Ihrer Anwendung, einschließlich der Anzahl von eingehenden Anforderungen, der Dauer dieser Anforderungen und aller auftretenden Fehler. 
 
-   ![Diagramm der Übersichtszeitachse für die Integrität](./media/app-insights-dotnetcore-quick-start/0008-dc.png)
+   ![Diagramm der Übersichtszeitachse für die Integrität](./media/app-insights-dotnetcore-quick-start/overview-graphs.png)
 
    Damit das Diagramm **Ladezeit der Seitenansicht** mit **clientseitigen Telemetriedaten** aufgefüllt werden kann, fügen Sie dieses Skript zu jeder Seite hinzu, die Sie nachverfolgen möchten:
 
    ```HTML
    <!-- 
-   To collect end-user usage analytics about your application, 
+   To collect user behavior analytics about your application, 
    insert the following script into each page you want to track.
    Place this code immediately before the closing </head> tag,
    and before any other scripts. Your first data will appear 

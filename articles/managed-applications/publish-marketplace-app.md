@@ -8,14 +8,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 03/15/2018
+ms.date: 07/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 39797bb4fe2b0576cd5696d7111826dcf807ff5c
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 8f35bda8c6925bdc10097ac6d180f5998bd5cf1d
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304530"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989785"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Verwaltete Azure-Anwendungen im Marketplace
 
@@ -101,10 +101,11 @@ Eine SKU wird im Marketplace unterhalb des übergeordneten Angebots angezeigt. S
 
    Füllen Sie folgende Felder aus:
 
-   * **Aktuelle Version**: Geben Sie eine Version für das Paket ein, das Sie hochladen. Sie sollte folgendes Format aufweisen: `{number}.{number}.{number}{number}`.
-   * **Paketdatei auswählen**: Dieses Paket enthält zwei erforderliche Dateien, die in einer ZIP-Datei komprimiert werden. Bei einer Datei handelt es sich um eine Resource Manager-Vorlage, die definiert, welche Ressourcen für die verwaltete Anwendung bereitgestellt werden. Mit der anderen Datei wird die [Benutzeroberfläche](create-uidefinition-overview.md) für Kunden für die Bereitstellung der verwalteten Anwendung über das Portal definiert. Auf der Benutzeroberfläche geben Sie Elemente an, die Kunden die Angabe von Parameterwerten ermöglichen.
+   * **Version**: Geben Sie eine Version für das Paket ein, das Sie hochladen. Sie sollte folgendes Format aufweisen: `{number}.{number}.{number}{number}`.
+   * **Paketdatei (.zip)**: Dieses Paket enthält zwei erforderliche Dateien, die in einer ZIP-Datei komprimiert werden. Bei einer Datei handelt es sich um eine Resource Manager-Vorlage, die definiert, welche Ressourcen für die verwaltete Anwendung bereitgestellt werden. Mit der anderen Datei wird die [Benutzeroberfläche](create-uidefinition-overview.md) für Kunden für die Bereitstellung der verwalteten Anwendung über das Portal definiert. Auf der Benutzeroberfläche geben Sie Elemente an, die Kunden die Angabe von Parameterwerten ermöglichen.
    * **PrincipalId**: Bei dieser Eigenschaft handelt es sich um den Azure AD-Bezeichner (Azure Active Directory) eines Benutzers, einer Benutzergruppe oder einer Anwendung, dem bzw. der Zugriff auf die Ressourcen im Kundenabonnement gewährt wird. Die Berechtigungen werden in der Rollendefinition beschrieben.
    * **Rollendefinition**: Bei dieser Eigenschaft handelt es sich um eine Liste von allen integrierten rollenbasierten Zugriffssteuerungsrollen (RBAC), die von Azure AD bereitgestellt werden. Sie können die Rolle auswählen, die am besten für die Verwaltung der Ressourcen im Auftrag des Kunden geeignet ist.
+   * **Richtlinieneinstellungen**: Wenden Sie eine [Azure-Richtlinie](../azure-policy/azure-policy-introduction.md) auf Ihre verwaltete Anwendung an, um Complianceanforderungen für die bereitgestellten Lösungen anzugeben. Wählen Sie aus den verfügbaren Optionen die anzuwendenden Richtlinien aus. Geben Sie als **Richtlinienparameter** eine JSON-Zeichenfolge mit den Parameterwerten an. Informationen zu Richtliniendefinitionen und zum Format der Parameterwerte finden Sie unter [Azure Policy-Beispiele](../azure-policy/json-samples.md).
 
 Sie können mehrere Autorisierungen hinzufügen. Es wird empfohlen, eine AD-Benutzergruppe zu erstellen und die jeweilige ID unter **PrincipalId** anzugeben. Auf diese Weise können Sie der Benutzergruppe weitere Benutzer hinzufügen, ohne die SKU aktualisieren zu müssen.
 
