@@ -1,23 +1,23 @@
 ---
 title: Erstellen und Verwalten von Ereignisregeln in Ihre Azure IoT Central-Anwendung | Microsoft-Dokumentation
 description: Azure IoT Central-Ereignisregeln ermöglichen Ihnen, Ihre Geräte nahezu in Echtzeit zu überwachen und Aktionen, wie das Senden einer E-Mail, durch Auslösen der Regel automatisch aufzurufen.
+services: iot-central
 author: ankitgupta
 ms.author: ankitgup
 ms.date: 04/29/2018
-ms.topic: conceptual
-ms.service: iot-central
-services: iot-central
-manager: peterpr
-ms.openlocfilehash: 30223fdca9d848ddc407981bf4a3ca683a10575a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.topic: article
+ms.prod: microsoft-iot-central
+manager: timlt
+ms.openlocfilehash: ede7748b1471136cf792c2b30b7c90e12b0b274a
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628367"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006847"
 ---
-# <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Erstellen einer Ereignisregel und Einrichten von Benachrichtigungen in Ihrer Azure IoT Central-Anwendung
+# <a name="create-an-event-rule-and-set-up-an-action-in-your-azure-iot-central-application"></a>Erstellen einer Ereignisregel und Einrichten einer Aktion in Ihrer Azure IoT Central-Anwendung
 
-Mithilfe von Microsoft Azure IoT Central können Sie Ihre angeschlossenen Geräte remote überwachen. Azure IoT Central-Regeln ermöglichen Ihnen, Ihre Geräte nahezu in Echtzeit zu überwachen und Aktionen, wie das Senden einer E-Mail, durch Auslösen der Regel automatisch aufzurufen. In nur wenigen Klicks können Sie die Bedingung definieren, um Ihre Gerätedaten zu überwachen und die aufzurufende Aktion zu konfigurieren. Dieser Artikel beschreibt die Ereignisüberwachungsregel im Detail.
+Mithilfe von Microsoft Azure IoT Central können Sie Ihre angeschlossenen Geräte remote überwachen. Azure IoT Central-Regeln ermöglichen Ihnen, Ihre Geräte nahezu in Echtzeit zu überwachen und Aktionen, wie das Senden einer E-Mail oder Auslösen von Workflows in Microsoft Flow automatisch aufzurufen, sofern die Regelbedingungen erfüllt werden. In nur wenigen Klicks können Sie die Bedingung definieren, um Ihre Gerätedaten zu überwachen und die aufzurufende Aktion zu konfigurieren. Dieser Artikel beschreibt die Ereignisüberwachungsregel im Detail.
 
 Azure IoT Central nutzt die [Ereignismessung](howto-set-up-template.md) zur Erfassung von Gerätedaten. Jeder Typ von Messung weist Schlüsselattribute auf, die die Messung definieren. Sie können Regeln erstellen, um jeden Typ von Gerätemessung zu überwachen und Warnungen zu generieren, wenn die Regel ausgelöst wird. Eine Ereignisregel wird ausgelöst, wenn das ausgewählte Geräteereignis vom Gerät gemeldet wird.
 
@@ -29,15 +29,15 @@ In diesem Abschnitt erfahren Sie, wie Sie eine Ereignisregel erstellen. In diese
 
 1. Wenn Sie noch keine Regeln erstellt haben, gelangen Sie auf folgenden Bildschirm:
 
-    ![Noch keine Regeln](media\howto-create-event-rules\image1.png)
+    ![Noch keine Regeln](media/howto-create-event-rules/image1.png)
 
 1. Wählen Sie auf der Registerkarte **Regeln** die Option **+ Neue Regel**, um die Typen von Regeln anzuzeigen, die Sie erstellen können.
 
-    ![Regeltypen](media\howto-create-event-rules\image2.png)
+    ![Regeltypen](media/howto-create-event-rules/image2.png)
 
 1. Klicken Sie auf **Ereignis**, um das Formular zum Erstellen der Regel zu öffnen.
 
-    ![Ereignisregel](media\howto-create-event-rules\image3.png)
+    ![Ereignisregel](media/howto-create-event-rules/image3.png)
 
 1. Wählen Sie einen aussagekräftigen Namen, damit Sie die Regel in dieser Gerätevorlage einfach identifizieren können.
 
@@ -53,27 +53,32 @@ In diesem Abschnitt erfahren Sie, wie Sie eine Bedingung zum Überwachen der Mes
 
 1. Optional können Sie auch einen Wert angeben, wenn Sie einen bestimmten Wert des vom Gerät gemeldeten Ereignisses überwachen möchten. Meldet das Gerät beispielsweise das gleiche Ereignis mit unterschiedlichen Fehlercodes, wird durch die Angabe des Fehlercodes als Wert in der Bedingung der Regel sichergestellt, dass die Regel nur dann ausgelöst wird, wenn das Gerät diesen bestimmten Wert als Ereignisnutzlast sendet. Bleibt dieses Feld leer, wird die Regel immer dann ausgelöst, wenn das Gerät das Ereignis unabhängig vom Ereigniswert sendet.
 
-    ![Hinzufügen einer Ereignisbedingung](media\howto-create-event-rules\image4.png)
+    ![Hinzufügen einer Ereignisbedingung](media/howto-create-event-rules/image4.png)
 
     > [!NOTE]
     > Wenn Sie eine Ereignisregelbedingung definieren, müssen Sie mindestens eine Ereignismessung auswählen.
 
-### <a name="configure-the-action"></a>Konfigurieren der Aktion
+1. Klicken Sie auf **Speichern**, um Ihre Regel zu speichern. Die Regel geht innerhalb weniger Minuten live und beginnt mit der Überwachung der Ereignisse, die an Ihre Anwendung gesendet werden.
 
-In diesem Abschnitt wird gezeigt, wie Sie mithilfe einer Aktion festlegen, was die Regel ausführt, wenn die Bedingung erfüllt ist.
+### <a name="add-an-action"></a>Hinzufügen einer Aktion
 
-1. Wählen Sie **+** neben der Option **Aktionen**. Hier sehen Sie die Liste der verfügbaren Aktionen. Während der öffentlichen Vorschau ist **E-Mail** die einzige unterstützte Aktion.
+In diesem Abschnitt erfahren Sie, wie Sie eine Aktion zu einer Regel hinzufügen. Dabei wird veranschaulicht, wie die E-Mail-Aktion hinzugefügt wird, Sie können jedoch auch [eine Microsoft Flow-Aktion zu Ihrer Regel hinzufügen](howto-add-microsoft-flow.md), um bei Auslösung der Regel einen Workflow in Microsoft Flow zu initiieren.
 
-    ![Hinzufügen einer Aktion](media\howto-create-event-rules\image5.png)
+> [!NOTE]
+> Gegenwärtig kann einer einzigen Regel nur eine Aktion zugeordnet werden.
+
+1. Wählen Sie **+** neben der Option **Aktionen**. Hier sehen Sie die Liste der verfügbaren Aktionen.
+
+    ![Hinzufügen einer Aktion](media/howto-create-event-rules/image5.png)
 
 1. Wählen Sie die Aktion **E-Mail**, geben Sie eine gültige E-Mail-Adresse in das Feld **An** ein, und geben Sie eine Notiz ein, die im Text der E-Mail erscheint, wenn die Regel ausgelöst wird.
 
     > [!NOTE]
     > E-Mails werden nur an die Benutzer gesendet, die der Anwendung hinzugefügt wurden und sich mindestens einmal angemeldet haben. Erfahren Sie mehr über die [Benutzerverwaltung](howto-administer.md) in Azure IoT Central.
 
-   ![Konfigurieren einer Aktion](media\howto-create-event-rules\image6.png)
+   ![Konfigurieren einer Aktion](media/howto-create-event-rules/image6.png)
 
-1. Um die neue Regel zu speichern, wählen Sie **Speichern** aus. Die Regel geht innerhalb weniger Minuten live und beginnt mit der Überwachung der Ereignisse, die an Ihre Anwendung gesendet werden. Wenn die in der Regel festgelegte Bedingung erfüllt ist, löst die Regel die konfigurierte E-Mail-Aktion aus.
+1. Klicken Sie auf **Speichern**. Die Regel geht innerhalb weniger Minuten live und beginnt mit der Überwachung der Ereignisse, die an Ihre Anwendung gesendet werden. Wenn die in der Regel festgelegte Bedingung erfüllt ist, löst die Regel die konfigurierte E-Mail-Aktion aus.
 
 ## <a name="parameterize-the-rule"></a>Parametrisieren der Regel
 
@@ -96,4 +101,5 @@ Navigieren Sie zu dem Gerät, und wählen Sie die Regel, die Sie aktivieren oder
 Nachdem Sie nun erfahren haben, wie Regeln in Ihrer Azure IoT Central-Anwendung erstellt werden, wird als Nächstes der folgende Schritt empfohlen:
 
 > [!div class="nextstepaction"]
-> [Verwalten von Geräten](howto-manage-devices.md)
+> [Eine Microsoft Flow-Aktion zu einer Regel hinzufügen](howto-add-microsoft-flow.md)
+> [Geräte verwalten](howto-manage-devices.md)

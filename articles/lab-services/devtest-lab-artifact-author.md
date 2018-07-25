@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 268b9af7835c51d78812b35aff5aaac585961b01
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0414fa16f277c7495cc7fe4bdd7a51fc3a23ad93
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38619187"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988621"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Erstellen benutzerdefinierter Artefakte für Ihren virtuellen DevTest Labs-Computer
 
@@ -56,12 +56,12 @@ Das folgende Beispiel zeigt die Abschnitte, die die grundlegende Struktur einer 
 | Elementname | Erforderlich? | BESCHREIBUNG |
 | --- | --- | --- |
 | $schema |Nein  |Speicherort der JSON-Schemadatei Mithilfe der JSON-Schemadatei können Sie die Gültigkeit der Definitionsdatei testen. |
-| title |Ja |Der Name des im Lab angezeigten Artefakts. |
-| Beschreibung |Ja |Die Beschreibung des im Lab angezeigten Artefakts. |
+| title |JA |Der Name des im Lab angezeigten Artefakts. |
+| Beschreibung |JA |Die Beschreibung des im Lab angezeigten Artefakts. |
 | iconUri |Nein  |Der URI des im Lab angezeigten Symbols |
-| targetOsType |Ja |Das Betriebssystem der VM, auf der das Artefakt installiert ist. Unterstützte Optionen sind „Windows“ und „Linux“. |
+| targetOsType |JA |Das Betriebssystem der VM, auf der das Artefakt installiert ist. Unterstützte Optionen sind „Windows“ und „Linux“. |
 | Parameter |Nein  |Werte, die bereitgestellt werden, wenn der Artefaktinstallationsbefehl auf einem Computer ausgeführt wird. Dieser ermöglicht die Anpassung Ihres Artefakts. |
-| runCommand |Ja |Artefaktinstallationsbefehl, der auf einem virtuellen Computer ausgeführt wird. |
+| runCommand |JA |Artefaktinstallationsbefehl, der auf einem virtuellen Computer ausgeführt wird. |
 
 ### <a name="artifact-parameters"></a>Artefaktparameter
 Geben Sie im Parameterabschnitt der Definitionsdatei an, welche Werte ein Benutzer beim Installieren eines Artefakts eingeben kann. Auf diese Werte können Sie im Artefaktinstallationsbefehl verweisen.
@@ -78,9 +78,9 @@ Sie definieren Parameter mit der folgenden Struktur:
 
 | Elementname | Erforderlich? | BESCHREIBUNG |
 | --- | --- | --- |
-| type |Ja |Der Typ des Parameterwerts. In der folgenden Liste finden Sie die zulässigen Typen. |
-| displayName |Ja |Der Name des Parameters, der einem Benutzer im Labor angezeigt wird. | |
-| Beschreibung |Ja |Die Beschreibung des Parameters, der im Labor angezeigt wird. |
+| type |JA |Der Typ des Parameterwerts. In der folgenden Liste finden Sie die zulässigen Typen. |
+| displayName |JA |Der Name des Parameters, der einem Benutzer im Labor angezeigt wird. | |
+| Beschreibung |JA |Die Beschreibung des Parameters, der im Labor angezeigt wird. |
 
 Folgende Typen sind zulässig:
 
@@ -113,7 +113,7 @@ Das folgende Beispiel zeigt, wie Sie mit Ausdrücken und Funktionen einen Wert e
 1. Installieren Sie einen JSON-Editor. Sie benötigen zum Bearbeiten von Artefaktdefinitionsdateien einen JSON-Editor. Empfehlenswert ist [Visual Studio Code](https://code.visualstudio.com/), der für Windows, Linux und OS X verfügbar ist.
 2. Rufen Sie die Beispieldefinitionsdatei „artifactfile.json“ ab. Sehen Sie sich die Artefakte in unserem [GitHub-Repository](https://github.com/Azure/azure-devtestlab) an, die vom DevTest Labs-Team erstellt wurden. Wir haben eine umfangreiche Bibliothek an Artefakten erstellt, mit der Sie eigene Artefakte erstellen können. Laden Sie eine Artefaktdefinitionsdatei herunter, und nehmen Sie an dieser Änderungen vor, um eigene Artefakte zu erstellen.
 3. Verwenden Sie IntelliSense. Zeigen Sie mithilfe von IntelliSense gültige Elemente an, die zum Erstellen einer Artefaktdefinitionsdatei verwendet werden können. Sie können auch die verschiedenen Optionen für die Werte eines Elements sehen. Beispielsweise zeigt IntelliSense beim Bearbeiten des **targetOsType**-Elements die beiden Wahlmöglichkeiten für Windows und Linux an.
-4. Speichern Sie das Artefakt in einem [Git-Repository](devtest-lab-add-artifact-repo.md).
+4. Speichern Sie das Artefakt im [öffentlichen Git-Repository für DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) oder in [Ihrem eigenen Git-Repository](devtest-lab-add-artifact-repo.md).
    
    1. Erstellen Sie ein separates Verzeichnis für jedes Artefakt. Der Verzeichnisname muss mit dem Artefaktnamen identisch sein.
    2. Speichern Sie die Artefaktdefinitionsdatei („artifactfile.json“) in dem erstellten Verzeichnis.
@@ -122,9 +122,8 @@ Das folgende Beispiel zeigt, wie Sie mit Ausdrücken und Funktionen einen Wert e
       Ein Beispiel für den möglichen Inhalt eines Artefaktordners:
       
       ![Beispiel für einen Artefaktordner](./media/devtest-lab-artifact-author/git-repo.png)
-5. Fügen Sie das Artefaktrepository zum Lab hinzu. Weitere Informationen finden Sie unter [Hinzufügen eines Git-Repositorys für Artefakte und Vorlagen](devtest-lab-add-artifact-repo.md).
+5. Wenn Sie zum Speichern von Artefakten Ihr eigenes Repository verwenden, fügen Sie das Repository zum Lab hinzu, wie in diesem Artikel beschrieben: [Hinzufügen eines Git-Repositorys für Artefakte und Vorlagen](devtest-lab-add-artifact-repo.md).
 
-[!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="related-articles"></a>Verwandte Artikel
 * [Diagnostizieren von Artefaktfehlern in DevTest Labs](devtest-lab-troubleshoot-artifact-failure.md)

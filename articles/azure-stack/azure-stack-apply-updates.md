@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: mabrigg
-ms.openlocfilehash: 0f23216c6aced60dc651a0f10179281bc9a29c2c
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: da8261d27ae7fad3c5ff30e4e1cce3f1bca2b70a
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29802650"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035332"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Anwenden von Updates in Azure Stack
 
 *Gilt für: Integrierte Azure Stack-Systeme*
 
-Als Azure Stack-Betreiber können Sie im Administratorportal über die Kachel „Aktualisieren“ Microsoft-Updatepakete für Azure Stack anwenden. Sie müssen das Microsoft-Updatepaket herunterladen, die Paketdateien in Azure Stack importieren und das Update dann installieren. 
+Als Azure Stack-Betreiber können Sie im Administratorportal über die Kachel „Aktualisieren“ Microsoft- oder OEM-Updatepakete für Azure Stack anwenden. Sie müssen das Updatepaket herunterladen, die Paketdateien in Azure Stack importieren und das Update dann installieren. 
 
 ## <a name="download-the-update-package"></a>Herunterladen des Updates
 
-Wenn ein Microsoft-Updatepaket für Azure Stack verfügbar ist, laden Sie das Paket an einen Speicherort herunter, auf den von Azure Stack aus zugegriffen werden kann. Überprüfen Sie den Paketinhalt. Ein Updatepaket besteht in der Regel aus folgenden Dateien:
+Wenn ein Microsoft- oder OEM-Updatepaket für Azure Stack verfügbar ist, laden Sie das Paket an einen Speicherort herunter, auf den von Azure Stack aus zugegriffen werden kann. Überprüfen Sie den Paketinhalt. Ein Updatepaket besteht in der Regel aus folgenden Dateien:
 
 - Einer selbstextrahierenden EXE-Datei mit folgendem Benennungsmuster: *Paketname.exe*. Diese Datei enthält die Nutzlast für das Update, beispielsweise das aktuelle kumulative Update für Windows Server.   
 - Entsprechenden BIN-Dateien mit folgendem Benennungsmuster: *Paketname.bin*. Diese Dateien dienen zum Komprimieren der Nutzlast, die der Datei *Paketname.exe* zugeordnet ist. 

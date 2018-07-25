@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2018
+ms.date: 07/11/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 9fc58d971db18db63e4dc76123ff1311b77e0191
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 496aea1195885c582d3529d7ddb43210aad5fea1
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316432"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990131"
 ---
 # <a name="azure-stack-1804-update"></a>Azure Stack-Update 1804
 
@@ -90,7 +90,7 @@ Die folgenden Updates sind jetzt verfügbar, benötigen jedoch nicht Azure Stack
 
 ### <a name="post-update-steps"></a>Schritte nach dem Update
 Installieren Sie nach der Installation von 1804 alle entsprechenden Hotfixes. Weitere Informationen finden Sie in den folgenden Knowledge Base-Artikeln sowie in unserer [Wartungsrichtlinie](azure-stack-servicing-policy.md).  
- - [KB 4341392 – Azure Stack-Hotfix 1.0.180523.11](https://support.microsoft.com/en-us/help/4341392).
+ - [KB 4344114 – Azure Stack-Hotfix 1.0.180527.15](https://support.microsoft.com/help/4344114).
 
 
 

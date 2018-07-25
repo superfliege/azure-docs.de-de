@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 07/11/2018
 ms.author: brenduns
 ms.reviewer: misainat
-ms.openlocfilehash: bbd9bb0d56dd61fd0a32531ac425a1dbc1aa8923
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 86ac1f1b5433104faa89e1f107fa36fc1da5f70e
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295415"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989893"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Versionshinweise für Azure Stack Development Kit  
 Die Anmerkungen zu dieser Version enthalten Informationen zu Verbesserungen, Fehlerbehebungen und bekannten Problemen in Azure Stack Development Kit. Wenn Sie nicht sicher sind, welche Version ausgeführt wird, können Sie diese im [Portal überprüfen](.\.\azure-stack-updates.md#determine-the-current-version).
@@ -46,7 +46,7 @@ Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azu
   - TITEL: Codeintegrität im Überwachungsmodus 
   - TITEL: Benutzerkonto erstellt
 
-  Solange diese Funktion nur als Vorschau verfügbar ist, sollte diese nicht in Produktionsumgebungen eingesetzt werden.   
+  Solange diese Funktion nur als Vorschau verfügbar ist, sollte sie nicht in Produktionsumgebungen eingesetzt werden.   
 
 
 ### <a name="fixed-issues"></a>Behobene Probleme
@@ -64,7 +64,7 @@ Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azu
 ### <a name="known-issues"></a>Bekannte Probleme
  
 #### <a name="portal"></a>Portal
-- <!-- 2551834 - IS, ASDK --> Wenn Sie im Verwaltungs- oder Benutzerportal **Übersicht** für ein Speicherkonto auswählen, werden die Informationen aus dem Bereich *Zusammenfassung* nicht angezeigt.  Im Bereich „Zusammenfassung“ werden Informationen über das Konto angezeigt, z.B. die *Ressourcengruppe*, *Speicherort*, und *Abonnement-ID*.  Weitere Optionen für die Übersicht sind verfügbar, z.B. *Dienste* und *Überwachung* sowie Optionen zum *Öffnen im Explorer* oder zum *Löschen eines Speicherkontos*.  
+- <!-- 2551834 - IS, ASDK --> Wenn Sie im Verwaltungs- oder Benutzerportal **Übersicht** für ein Speicherkonto auswählen, werden die Informationen aus dem Bereich *Zusammenfassung* nicht angezeigt.  Im Bereich „Zusammenfassung“ werden Informationen über das Konto angezeigt, z.B. *Ressourcengruppe*, *Speicherort*, und *Abonnement-ID*.  Weitere Optionen für die Übersicht sind verfügbar, z.B. *Dienste* und *Überwachung* sowie Optionen zum *Öffnen im Explorer* oder zum *Löschen eines Speicherkontos*.  
 
   Nicht verfügbare Informationen lassen sich mit dem PowerShell-Cmdlet [Get-azureRMstorageaccount](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccount?view=azurermps-6.2.0) anzeigen. 
 
@@ -97,15 +97,21 @@ Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azu
    - KOMPONENTE: Health Controller
    - BESCHREIBUNG: Fault Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.
 
-  Beide Alarme können ignoriert werden und werden nach einer gewissen Zeit automatisch geschlossen.  
+  Beide Alarme #1 und #2 können ignoriert werden und werden nach einer gewissen Zeit automatisch geschlossen. 
 
-- <!-- 2392907 – ASDK --> Möglicherweise wird eine *kritische* Warnung bei **geringer Speicherkapazität** angezeigt. Diese Warnung hat die folgende Beschreibung: *Die Region hat mehr als 95,00 % des verfügbaren Speichers verbraucht. Beim Erstellen von virtuellen Maschinen mit großem Arbeitsspeicher kann ein Fehler auftreten.*
+  Möglicherweise wird Ihnen die folgende Warnung für *Kapazität* angezeigt. Bei dieser Warnung kann der in der Beschreibung angegebene Prozentsatz des verfügbaren Speichers variieren:  
 
-  Diese Warnung kann generiert werden, wenn Azure Stack den Speicherverbrauch des Azure Stack Development Kit falsch kalkuliert hat.  
+  Warnung #3:
+   - NAME: Niedrige Arbeitsspeicherkapazität
+   - SCHWEREGRAD: Kritisch
+   - KOMPONENTE: Kapazität
+   - BESCHREIBUNG: Die Region hat mehr als 80,00% des verfügbaren Speichers verbraucht. Beim Erstellen von virtuellen Computern mit großem Arbeitsspeicher kann ein Fehler auftreten.  
 
-  Diese Warnung kann ignoriert werden. Das Problem wirkt sich nicht auf die Platzierung von virtuellen Maschinen aus. 
+  In dieser Version von Azure Stack kann diese Warnung nicht ordnungsgemäß ausgelöst werden. Wenn die Mandanten-VMs weiterhin erfolgreich bereitgestellt werden, können Sie diese Warnung ignorieren. 
+  
+  Warnung #3 wird nicht automatisch geschlossen. Wenn Sie diese Warnung schließen, wird dieselbe Warnung von Azure Stack innerhalb von 15 Minuten erstellt.  
 
-- <!-- 2368581 - IS. ASDK --> Wenn Sie als Azure Stack-Bediener eine Fehlermeldung über unzureichenden Speicher erhalten und virtuelle Computer der Mandanten nicht mit einem *Fabric-VM-Erstellungsfehler* bereitgestellt werden können, verfügt der Azure Stack-Stempel möglicherweise nicht über genügend Arbeitsspeicher. Mit dem [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) können Sie die verfügbare Kapazität für Ihre Workloads besser bestimmen. 
+- <!-- 2368581 - IS ASDK --> Wenn Sie als Azure Stack-Bediener eine Fehlermeldung über unzureichenden Speicher erhalten und virtuelle Computer der Mandanten nicht mit einem *Fabric-VM-Erstellungsfehler* bereitgestellt werden können, verfügt der Azure Stack-Stempel möglicherweise nicht über genügend Arbeitsspeicher. Mit dem [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) können Sie die verfügbare Kapazität für Ihre Workloads besser bestimmen. 
 
 
 #### <a name="compute"></a>Compute
@@ -142,7 +148,7 @@ Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azu
 #### <a name="networking"></a>Netzwerk
 - <!-- TBD - IS ASDK --> Sie können benutzerdefinierte Routen weder im Verwaltungs- noch im Benutzerportal erstellen. Dieses Problem umgehen Sie, indem Sie [Azure PowerShell](https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell) verwenden.
 
-- <!-- 1766332 - IS, ASDK --> Wenn Sie unter **Netzwerk** auf **VPN-Gateway erstellen** klicken, um eine VPN-Verbindung einzurichten, wird als VPN-Typ **Richtlinienbasiert** aufgeführt ist. Wählen Sie diese Option nicht aus. Nur die Option **Routenbasiert** wird in Azure Stack unterstützt.
+- <!-- 1766332 - IS, ASDK --> Wenn Sie unter **Netzwerk** auf **VPN-Gateway erstellen** klicken, um eine VPN-Verbindung einzurichten, wird als VPN-Typ **Richtlinienbasiert** aufgeführt. Wählen Sie diese Option nicht aus. Nur die Option **Routenbasiert** wird in Azure Stack unterstützt.
 
 - <!-- 2388980 -  IS ASDK --> Nachdem Sie eine VM erstellt und einer öffentlichen IP-Adresse zugeordnet haben, können Sie die Zuordnung dieser VM zu dieser IP-Adresse nicht mehr aufheben. Die Aufhebung der Zuordnung war scheinbar erfolgreich, aber die zuvor zugewiesene öffentliche IP-Adresse bleibt der ursprünglichen VM zugeordnet.
 
@@ -175,7 +181,7 @@ Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azu
 
 - <!-- TBD - IS ASDK --> Um die Infrastruktur (Worker-, Verwaltungs-, Front-End-Rollen) horizontal hochzuskalieren, müssen Sie PowerShell verwenden, wie in den Anmerkungen zu dieser Version für die Berechnung beschrieben.  
 
-- <!-- TBD - IS ASDK -->App Service kann derzeit nur im *Abonnement für Standardanbieter* bereitgestellt werden. In einem zukünftigen Update wird App Service in das neue *Messungsabonnement* integriert, das in Azure Stack 1804 eingeführt wurde. Wenn Messungen für die Verwendung unterstützt werden, migrieren alle vorhandenen Bereitstellungen zu diesem neuen Abonnementtyp.
+- <!-- TBD - IS ASDK --> App Service kann derzeit nur im *Abonnement für Standardanbieter* bereitgestellt werden. In einem zukünftigen Update wird App Service in das neue *Messungsabonnement* integriert, das in Azure Stack 1804 eingeführt wurde. Wenn Messungen für die Verwendung unterstützt werden, migrieren alle vorhandenen Bereitstellungen zu diesem neuen Abonnementtyp.
 
 #### <a name="usage"></a>Verwendung  
 - <!-- TBD -  IS ASDK --> Die Ansicht „Verwendung“ für die Nutzungsdaten öffentlicher IP-Adressen zeigt den gleichen *EventDateTime*-Wert für jeden Datensatz anstatt des *TimeDate*-Stempels, der anzeigt, wann dieser jeweils erstellt wurde. Derzeit können Sie diese Daten nicht nutzen, um eine genaue Buchhaltung über die Nutzung öffentlicher IP-Adressen durchzuführen.
@@ -272,7 +278,7 @@ Die folgenden Updates sind jetzt verfügbar, benötigen jedoch nicht Azure Stack
 - <!-- 1662991 - IS ASDK --> Die Linux-VM-Diagnose wird in Azure Stack nicht unterstützt. Wenn Sie eine Linux-VM mit aktivierter VM-Diagnose bereitstellen, schlägt die Bereitstellung fehl. Die Bereitstellung schlägt auch fehl, wenn Sie die grundlegenden Linux-VM-Metriken über die Diagnoseeinstellungen aktivieren. 
 
 #### <a name="networking"></a>Netzwerk
-- <!-- 1766332 - IS, ASDK --> Wenn Sie unter **Netzwerk** auf **VPN-Gateway erstellen** klicken, um eine VPN-Verbindung einzurichten, wird als VPN-Typ **Richtlinienbasiert** aufgeführt ist. Wählen Sie diese Option nicht aus. Nur die Option **Routenbasiert** wird in Azure Stack unterstützt.
+- <!-- 1766332 - IS, ASDK --> Wenn Sie unter **Netzwerk** auf **VPN-Gateway erstellen** klicken, um eine VPN-Verbindung einzurichten, wird als VPN-Typ **Richtlinienbasiert** aufgeführt. Wählen Sie diese Option nicht aus. Nur die Option **Routenbasiert** wird in Azure Stack unterstützt.
 
 - <!-- 2388980 -  IS ASDK --> Nachdem Sie eine VM erstellt und einer öffentlichen IP-Adresse zugeordnet haben, können Sie die Zuordnung dieser VM zu dieser IP-Adresse nicht mehr aufheben. Die Aufhebung der Zuordnung war scheinbar erfolgreich, aber die zuvor zugewiesene öffentliche IP-Adresse bleibt der ursprünglichen VM zugeordnet.
 
@@ -425,7 +431,7 @@ Die für integrierte Azure Stack-Systeme Version 1803 veröffentlichten neuen Fe
 
 - Die Server für das Hosten von Datenbanken müssen für die Verwendung durch die Ressourcenanbieter und Benutzerworkloads dediziert sein. Sie können keine Instanz verwenden, die durch andere Consumer, einschließlich App Services, verwendet wird.
 
-- <!-- IS, ASDK -->Sonderzeichen, einschließlich Leerzeichen und Interpunktion, werden in den Namen für die **Familie** oder **Ebene** nicht unterstützt, wenn Sie die SKU für die SQL- und MySQL-Ressourcenanbieter erstellen.
+- <!-- IS, ASDK --> Sonderzeichen, einschließlich Leerzeichen und Interpunktion, werden in den Namen für die **Familie** oder **Ebene** nicht unterstützt, wenn Sie die SKU für die SQL- und MySQL-Ressourcenanbieter erstellen.
 
 #### <a name="app-service"></a>App Service
 - Benutzer müssen den Speicherressourcenanbieter vor dem Erstellen seiner ersten Azure-Funktion im Abonnement registrieren.

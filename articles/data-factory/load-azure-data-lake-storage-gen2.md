@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/06/2018
 ms.author: jingwang
-ms.openlocfilehash: 961c8dea4dbb6b6600d10b75e84a9a84c34c329b
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 558b426ea85decb0309390e36910eb18719e6e99
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37035093"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39002526"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-preview-with-azure-data-factory"></a>Laden von Daten in Azure Data Lake Storage Gen2 (Vorschauversion) mit Azure Data Factory
 
@@ -24,9 +24,12 @@ Mit [Azure Data Lake Storage Gen2 (Vorschauversion)](../storage/data-lake-storag
 
 Azure Data Factory ist ein vollständig verwalteter, cloudbasierter Datenintegrationsdienst. Mithilfe dieses Diensts können Sie den Lake mit Daten aus zahlreichen lokalen und cloudbasierten Datenspeichern füllen und Zeit beim Erstellen von Analyselösungen sparen. Eine ausführliche Liste der unterstützten Connectors finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Azure Data Factory bietet im Gegensatz zu AzCopy (einem Befehlszeilenprogramm zur Datenübertragung) eine horizontal skalierbare, verwaltete Lösung für die Datenverschiebung. Aufgrund der horizontal skalierbaren Architektur von ADF können Daten mit hohem Durchsatz erfasst werden. Weitere Informationen finden Sie unter [Leistung der Kopieraktivität](copy-activity-performance.md).
+Azure Data Factory bietet eine Lösung zur horizontalen Skalierung und Verschiebung verwalteter Daten. Aufgrund der horizontal skalierbaren Architektur von ADF können Daten mit hohem Durchsatz erfasst werden. Weitere Informationen finden Sie unter [Leistung der Kopieraktivität](copy-activity-performance.md).
 
 In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data Factory zum Laden von Daten aus _Amazon Web Services S3_ in _Azure Data Lake Storage Gen2_ verwenden. Sie können ähnliche Schritte zum Kopieren von Daten aus anderen Typen von Datenspeichern ausführen.
+
+>[!TIP]
+>Informationen zum Kopieren von Daten aus Azure Data Lake Storage Gen1 nach Gen2 finden Sie in [dieser exemplarischen Vorgehensweise](load-azure-data-lake-storage-gen2-from-gen1.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -46,7 +49,7 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
     * **Name**: Geben Sie einen global eindeutigen Namen für die Azure Data Factory ein. Wenn die Fehlermeldung „Data Factory mit dem Namen \"LoadADLSDemo\" ist nicht verfügbar“ angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. Sie können beispielsweise den Namen _**IhrName**_**ADFTutorialDataFactory** verwenden. Versuchen Sie erneut, die Data Factory zu erstellen. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](naming-rules.md).
     * **Abonnement**: Wählen Sie Ihr Azure-Abonnement aus, in dem die Data Factory erstellt werden soll. 
     * **Ressourcengruppe**: Wählen Sie eine vorhandene Ressourcengruppe aus der Dropdownliste aus, oder wählen Sie die Option **Neu erstellen** aus, und geben Sie dann den Namen einer Ressourcengruppe ein. Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).  
-    * **Version**: Wählen Sie **V2 (Vorschau)** aus.
+    * **Version:** Wählen Sie **V2** aus.
     * **Standort**: Wählen Sie den Standort für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die von der Data Factory verwendeten Datenspeicher können sich an anderen Standorten bzw. in anderen Regionen befinden. 
 
 3. Klicken Sie auf **Erstellen**.
@@ -75,7 +78,7 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 4. Führen Sie auf der Seite **Amazon S3-Verbindung angeben** die folgenden Schritte aus:
    1. Geben Sie den Wert für die **Zugriffsschlüssel-ID** an.
    2. Geben Sie den Wert für den **geheimen Zugriffsschlüssel** an.
-   3. Klicken Sie auf **Verbindung testen**, um die Einstellungen zu überprüfen, und wählen Sie dann **Fertig stellen**.
+   3. Klicken Sie auf **Verbindung testen**, um die Einstellungen zu überprüfen, und wählen Sie dann **Fertig stellen** aus.
    
    ![Angeben des Amazon S3-Kontos](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
    
@@ -98,7 +101,7 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
    1. Wählen Sie in der Dropdownliste „Speicherkontoname“ das Data Lake Storage Gen2-fähige Konto aus.
    2. Klicken Sie auf **Weiter**.
    
-   ![Angeben des Azure Data Lake Store-Kontos](./media/load-azure-data-lake-storage-gen2/specify-adls.png)
+   ![Angeben eines Azure Data Lake Storage Gen2-Kontos](./media/load-azure-data-lake-storage-gen2/specify-adls.png)
 
 9. Geben Sie auf der Seite **Ausgabedatei oder -ordner auswählen** die Zeichenfolge **copyfroms3** als Name für den Ausgabeordner ein, und klicken Sie dann auf **Weiter**: 
 
@@ -127,11 +130,11 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 
 16. Stellen Sie sicher, dass die Daten in Ihr Data Lake Storage Gen2-Konto kopiert werden.
 
-## <a name="best-practice"></a>Bewährte Methode
+## <a name="best-practices"></a>Bewährte Methoden
 
 Beim Kopieren großer Datenmengen aus einem dateibasierten Datenspeicher wird Folgendes empfohlen:
 
-- Partitionieren Sie die Dateien jeweils in Dateigruppen mit 10 TB bis 20 TB.
+- Partitionieren Sie die Dateien jeweils in Dateigruppen mit 10 TB bis 30 TB.
 - Lösen Sie nicht zu viele gleichzeitige Kopiervorgänge aus, um die Drosselung von Quellen- oder Senkendatenspeichern zu vermeiden. Sie können mit einem Kopiervorgang beginnen und den Durchsatz überwachen. Fügen Sie dann bei Bedarf nach und nach weitere Vorgänge hinzu.
 
 ## <a name="next-steps"></a>Nächste Schritte

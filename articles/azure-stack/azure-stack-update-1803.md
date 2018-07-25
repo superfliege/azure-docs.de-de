@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2018
+ms.date: 07/11/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: a74e77f84aa70519015a589cbc6e7478c0c41592
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 11430a0d194a722c0c0520c936db3c08b1a6b863
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318808"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989570"
 ---
 # <a name="azure-stack-1803-update"></a>Azure Stack-Update 1803
 
@@ -106,7 +106,7 @@ Dieses Update enthält die folgenden Verbesserungen und Fehlerbehebungen für Az
 ### <a name="post-update-steps"></a>Schritte nach dem Update
 - Installieren Sie nach der Installation von 1803 alle entsprechenden Hotfixes. Weitere Informationen finden Sie in den folgenden Knowledge Base-Artikeln sowie in unserer [Wartungsrichtlinie](azure-stack-servicing-policy.md).
 
-  - [KB 4341390 – Azure Stack-Hotfix 1.0.180424.12](https://support.microsoft.com/en-us/help/4341390)
+  - [KB 4344115 – Azure Stack-Hotfix 1.0.180427.15](https://support.microsoft.com/help/4344115).
 
 - Überprüfen Sie nach der Installation dieses Updates die Firewallkonfiguration, um sicherzustellen, dass die [erforderlichen Ports](azure-stack-integrate-endpoints.md) offen sind. Mit diesem Update beispielsweise wird der Dienst *Azure Monitor* eingeführt, der einen Wechsel von Überwachungsprotokollen zu Aktivitätsprotokollen beinhaltet. Durch diese Änderung wird jetzt Port 13012 verwendet, der ebenfalls offen sein muss.  
 

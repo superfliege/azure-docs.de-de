@@ -14,7 +14,7 @@ Die folgende Tabelle enthält die für IoT Hub-Ressourcen geltenden Grenzwerte:
 
 | Ressource | Begrenzung |
 | --- | --- |
-| Maximale Anzahl kostenpflichtiger IoT Hubs pro Azure-Abonnement |10 |
+| Maximale Anzahl kostenpflichtiger IoT Hubs pro Azure-Abonnement |50 |
 | Maximale Anzahl kostenloser IoT Hubs pro Azure-Abonnement |1 |
 | Maximale Anzahl von Zeichen in einer Geräte-ID | 128 |
 | Maximale Anzahl von Geräte-Identitäten,<br/> die bei einem einzelnen Aufruf zurückgegeben wird |1000 |
@@ -38,7 +38,7 @@ Die folgende Tabelle enthält die für IoT Hub-Ressourcen geltenden Grenzwerte:
 
 
 > [!NOTE]
-> Wenden Sie sich an den Microsoft Support, wenn Sie mehr als zehn kostenpflichtige IoT Hubs in einem Azure-Abonnement benötigen.
+> Wenden Sie sich an den Microsoft Support, wenn Sie mehr als 50 kostenpflichtige IoT Hubs in einem Azure-Abonnement benötigen.
 
 
 > [!NOTE]

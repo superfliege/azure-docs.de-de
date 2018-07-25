@@ -1,23 +1,23 @@
 ---
 title: Erstellen und Verwalten von Telemetrieregeln in Ihre Azure IoT Central-Anwendung | Microsoft-Dokumentation
 description: Azure IoT Central-Telemetrieregeln ermöglichen Ihnen, Ihre Geräte nahezu in Echtzeit zu überwachen und Aktionen, wie das Senden einer E-Mail, durch Auslösen der Regel automatisch aufzurufen.
-author: tbhagwat3
+services: iot-central
+author: tanmaybhagwat
 ms.author: tanmayb
 ms.date: 04/16/2018
-ms.topic: conceptual
-ms.service: iot-central
-services: iot-central
-manager: peterpr
-ms.openlocfilehash: caca4e9db898b3766995fde8c5eebd4767abd85b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.topic: article
+ms.prod: microsoft-iot-central
+manager: timlt
+ms.openlocfilehash: 083410c6407ce7aa83c3829f884890561b0b44b8
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629812"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008211"
 ---
-# <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Erstellen einer Telemetrieregel und Einrichten von Benachrichtigungen in Ihrer Azure IoT Central-Anwendung
+# <a name="create-a-telemetry-rule-and-set-up-an-action-in-your-azure-iot-central-application"></a>Erstellen einer Telemetrieregel und Einrichten einer Aktion in Ihrer Azure IoT Central-Anwendung
 
-Mithilfe von Microsoft Azure IoT Central können Sie Ihre angeschlossenen Geräte remote überwachen. Azure IoT Central-Regeln ermöglichen Ihnen, Ihre Geräte nahezu in Echtzeit zu überwachen und Aktionen, wie das Senden einer E-Mail, durch Auslösen der Regel automatisch aufzurufen. In nur wenigen Klicks können Sie die Bedingung definieren, um Ihre Gerätedaten zu überwachen und die aufzurufende Aktion zu konfigurieren. Dieser Artikel beschreibt die Telemetrieregel im Detail.
+Mithilfe von Microsoft Azure IoT Central können Sie Ihre angeschlossenen Geräte remote überwachen. Azure IoT Central-Regeln ermöglichen Ihnen, Ihre Geräte nahezu in Echtzeit zu überwachen und Aktionen, wie das Senden einer E-Mail oder Auslösen von Workflows in Microsoft Flow automatisch aufzurufen, sofern die Regelbedingungen erfüllt werden. In nur wenigen Klicks können Sie die Bedingung definieren, um Ihre Gerätedaten zu überwachen und die aufzurufende Aktion zu konfigurieren. In diesem Artikel wird die Telemetrieregel im Detail beschrieben.
 
 Azure IoT Central nutzt [Telemetriedatenmessungen](howto-set-up-template.md) zur Erfassung von Gerätedaten. Jeder Typ von Messung weist Schlüsselattribute auf, die die Messung definieren. Sie können Regeln erstellen, um jeden Typ von Gerätemessung zu überwachen und Warnungen zu generieren, wenn die Regel ausgelöst wird. Eine Telemetrieregel wird ausgelöst, wenn die ausgewählten Gerätetelemetriedaten einen angegebenen Schwellenwert überschreiten.
 
@@ -29,15 +29,15 @@ In diesem Abschnitt erfahren Sie, wie Sie eine Telemetrieregel erstellen. In die
 
 1. Wenn Sie noch keine Regeln erstellt haben, gelangen Sie auf folgenden Bildschirm:
 
-    ![Noch keine Regeln](media\howto-create-telemetry-rules\image1.png)
+    ![Noch keine Regeln](media/howto-create-telemetry-rules/image1.png)
 
 1. Wählen Sie auf der Registerkarte **Regeln** die Option **+ Neue Regel**, um die Typen von Regeln anzuzeigen, die Sie erstellen können.
 
-    ![Regeltypen](media\howto-create-telemetry-rules\image2.png)
+    ![Regeltypen](media/howto-create-telemetry-rules/image2.png)
 
 1. Wählen Sie die Kachel **Telemetrie** aus, um das Formular zum Erstellen der Regel zu öffnen.
 
-    ![Telemetrieregel](media\howto-create-telemetry-rules\image3.png)
+    ![Telemetrieregel](media/howto-create-telemetry-rules/image3.png)
 
 1. Wählen Sie einen aussagekräftigen Namen, damit Sie die Regel in dieser Gerätevorlage einfach identifizieren können.
 
@@ -51,27 +51,32 @@ In diesem Abschnitt erfahren Sie, wie Sie eine Bedingung zum Überwachen der Tem
 
 1. Wählen Sie in der Dropdownliste den Telemetrietyp **Temperatur** aus. Anschließend wählen Sie den Operator aus, und geben Sie einen Schwellenwert an. Sie können mehrere Telemetriebedingungen hinzufügen. Wenn mehrere Bedingungen angegeben werden, müssen alle Bedingungen erfüllt sein, damit die Regel ausgelöst wird.
 
-    ![Hinzufügen einer Telemetriebedingung](media\howto-create-telemetry-rules\image4.png)
+    ![Hinzufügen einer Telemetriebedingung](media/howto-create-telemetry-rules/image4.png)
 
     > [!NOTE]
     > Wählen Sie mindestens eine Telemetriedatenmessung aus, wenn Sie eine Telemetrieregelbedingung definieren.
 
-### <a name="configure-the-action"></a>Konfigurieren einer Aktion
+1. Klicken Sie auf **Speichern**, um Ihre Regel zu speichern. Die Regel geht innerhalb weniger Minuten live und beginnt mit der Überwachung der Telemetriedaten, die an Ihre Anwendung gesendet werden.
 
-In diesem Abschnitt wird gezeigt, wie Sie mithilfe einer Aktion festlegen, was die Regel ausführt, wenn die Bedingung erfüllt ist.
+### <a name="add-an-action"></a>Hinzufügen einer Aktion
 
-1. Wählen Sie **+** neben der Option **Aktionen**. Hier sehen Sie die Liste der verfügbaren Aktionen. Während der öffentlichen Vorschau ist **E-Mail** die einzige unterstützte Aktion.
+In diesem Abschnitt erfahren Sie, wie Sie eine Aktion zu einer Regel hinzufügen. Dabei wird veranschaulicht, wie die E-Mail-Aktion hinzugefügt wird, Sie können jedoch auch [eine Microsoft Flow-Aktion zu Ihrer Regel hinzufügen](howto-add-microsoft-flow.md), um bei Auslösung der Regel einen Workflow in Microsoft Flow zu initiieren.
 
-    ![Hinzufügen einer Aktion](media\howto-create-telemetry-rules\image5.png)
+> [!NOTE]
+> Gegenwärtig kann einer einzigen Regel nur eine Aktion zugeordnet werden.
+
+1. Wählen Sie **+** neben der Option **Aktionen**. Hier sehen Sie die Liste der verfügbaren Aktionen.
+
+    ![Hinzufügen einer Aktion](media/howto-create-telemetry-rules/image5.png)
 
 1. Wählen Sie die Aktion **E-Mail**, geben Sie eine gültige E-Mail-Adresse in das Feld **An** ein, und geben Sie eine Notiz ein, die im Text der E-Mail erscheint, wenn die Regel ausgelöst wird.
 
     > [!NOTE]
     > E-Mails werden nur an die Benutzer gesendet, die der Anwendung hinzugefügt wurden und sich mindestens einmal angemeldet haben. Erfahren Sie mehr über die [Benutzerverwaltung](howto-administer.md) in Azure IoT Central.
 
-   ![Konfigurieren einer Aktion](media\howto-create-telemetry-rules\image6.png)
+   ![Konfigurieren einer Aktion](media/howto-create-telemetry-rules/image6.png)
 
-1. Um die neue Regel zu speichern, wählen Sie **Speichern** aus. Die Regel geht innerhalb weniger Minuten live und beginnt mit der Überwachung der Telemetriedaten, die an Ihre Anwendung gesendet werden. Wenn die in der Regel festgelegte Bedingung erfüllt ist, löst die Regel die konfigurierte E-Mail-Aktion aus.
+1. Klicken Sie auf **Speichern**. Die Regel geht innerhalb weniger Minuten live und beginnt mit der Überwachung der Telemetriedaten, die an Ihre Anwendung gesendet werden. Wenn die in der Regel festgelegte Bedingung erfüllt ist, löst die Regel die konfigurierte E-Mail-Aktion aus.
 
 ## <a name="parameterize-the-rule"></a>Parametrisieren der Regel
 
@@ -95,7 +100,8 @@ Navigieren Sie zu dem Gerät, und wählen Sie die Regel, die Sie aktivieren oder
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun erfahren haben, wie Regeln in Ihrer Azure IoT Central-Anwendung bearbeitet werden, wird als Nächstes der folgende Schritt empfohlen:
+Nachdem Sie nun erfahren haben, wie Regeln in Ihrer Azure IoT Central-Anwendung bearbeitet werden, werden als Nächstes die folgenden Schritte empfohlen:
 
 > [!div class="nextstepaction"]
-> [Verwalten von Geräten](howto-manage-devices.md)
+> [Eine Microsoft Flow-Aktion zu einer Regel hinzufügen](howto-add-microsoft-flow.md)
+> [Geräte verwalten](howto-manage-devices.md)

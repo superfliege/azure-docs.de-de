@@ -6,18 +6,20 @@ manager: jeconnoc
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 07/11/2018
 ms.author: alkohli
-ms.openlocfilehash: 83ba437e699eb150e86e6c89e478377394966419
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ab73420d1bfe0dbddcf2a0e3c3dd34203e4bb2d7
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38232676"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008415"
 ---
 # <a name="what-is-azure-importexport-service"></a>Was ist der Azure Import/Export-Dienst?
 
 Mit dem Azure Import/Export-Dienst können Sie große Datenmengen auf sichere Weise in Azure Blob Storage und Azure Files übertragen, indem Sie Festplattenlaufwerke an ein Azure-Rechenzentrum senden. Sie können diesen Dienst auch zum Übertragen von Daten aus Azure Blob Storage auf Festplattenlaufwerke und zum Versand an lokale Standorte nutzen. Daten von einem oder mehreren Datenträgern können in Azure Blob Storage oder in Azure Files importiert werden. 
+
+Für den Azure Import/Export-Dienst müssen Sie Ihre eigenen Datenträger bereitstellen. Wenn Sie Daten mit den von Microsoft bereitgestellten Datenträgern übertragen möchten, können Sie mithilfe des Azure Data Box-Datenträgers Daten in Azure importieren. Microsoft sendet über einen regionalen Transportdienstleister bis zu fünf verschlüsselte SSDs (Solid State Drives) mit einer Kapazität von 40 TB an Ihr Rechenzentrum. Sie können Datenträger schnell konfigurieren, Daten über eine USB 3.0-Verbindung auf die Datenträger kopieren und sie anschließend wieder an Azure zurücksenden. Weitere Informationen finden Sie in der [Übersicht über den Azure Data Box-Datenträger (Vorschauversion)](https://docs.microsoft.com/azure/databox/data-box-disk-overview).
 
 ## <a name="azure-importexport-usecases"></a>Anwendungsfälle für Azure Import/Export
 

@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: liamca
-ms.openlocfilehash: a3baa17906e3bfede8a7fc5f8a0bfbde9d2a57ce
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 24fa427ad67a953020370a16b4d156c82a0a1cf6
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951021"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036665"
 ---
 # <a name="lucene-query-syntax-examples-for-building-queries-in-azure-search"></a>Beispiele für die Lucene-Abfragesyntax zum Erstellen von Abfragen in Azure Search
 Beim Erstellen von Abfragen für Azure Search können Sie entweder die standardmäßige [einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) oder alternativ dazu den [Lucene-Abfrageparser in Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) verwenden. Der Lucene-Abfrageparser unterstützt komplexere Abfragekonstrukte, beispielsweise feldbezogene Abfragen, Fuzzysuche, NEAR-Suche, Begriffsverstärkung (Term Boosting) und die Suche nach regulären Ausdrücken.
@@ -69,7 +69,7 @@ Das in **Feldname:Suchbegriff** angegebene Feld muss durchsuchbar sein. Einzelhe
 ## <a name="fuzzy-search-example"></a>Beispiel für die Fuzzysuche
 Bei einer Fuzzysuche werden Übereinstimmungen in Ausdrücken gefunden, die ähnlich aufgebaut sind. Laut [Lucene-Dokumentation](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) basiert die Fuzzysuche auf der [Damerau-Levenshtein-Distanz](https://en.wikipedia.org/wiki/Damerau%e2%80%93Levenshtein_distance).
 
-Hängen Sie für eine Fuzzysuche das Tildesymbol „~“ ans Ende eines einzelnen Worts mit einem optionalen Parameter an, einem Wert zwischen 0 und 2, der die Editierdistanz angibt. Beispielsweise würden bei „blue~“ oder „blue~1“ die Werte „blue“, „blues“ und „glue“ zurückgegeben.
+Hängen Sie für eine Fuzzysuche das Tildesymbol `~` an das Ende eines einzelnen Worts mit einem optionalen Parameter an, einem Wert zwischen 0 und 2, der die Editierdistanz angibt. Beispielsweise würden bei `blue~` oder `blue~1` die Werte „blue“, „blues“ und „glue“ zurückgegeben.
 
 **Beispiel 3** : Klicken Sie mit der rechten Maustaste auf den folgenden Abfrageausschnitt. Diese Abfrage sucht nach Stellenangeboten mit dem Begriff „Associate“ (der falsch geschrieben ist):
 

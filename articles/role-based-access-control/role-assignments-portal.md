@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 07/11/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6544503353f085a9dd9b0fe7207bbf8d4e0bc9d0
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: aaa36d850516ff4d8e40b62c588347468da5c6d2
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435616"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008160"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals
 
@@ -88,7 +88,9 @@ Bei der Zugriffsverwaltung möchten Sie die zugriffsberechtigten Benutzer sowie 
 
    ![Azure Active Directory-Benutzer: Azure-Ressourcen](./media/role-assignments-portal/aad-user-azure-resources.png)
 
-   Auf dem Blatt „Azure-Ressourcen“ sehen Sie die Rollenzuweisungen für den ausgewählten Benutzer. Diese Liste enthält nur die Rollenzuweisungen für Ressourcen, für die Sie über Leseberechtigungen verfügen. Wenn der Benutzer beispielsweise auch über Rollenzuweisungen in einem anderen Abonnement verfügt, für das Sie keine Leseberechtigung besitzen, werden diese Rollenzuweisungen nicht in der Liste angezeigt.
+   Auf dem Blatt „Azure-Ressourcen“ sehen Sie die Rollenzuweisungen für den ausgewählten Benutzer und das ausgewählte Abonnement. Diese Liste enthält nur die Rollenzuweisungen für Ressourcen, für die Sie über Leseberechtigungen verfügen. Wenn der Benutzer beispielsweise auch über Rollenzuweisungen verfügt, für die Sie keine Leseberechtigung besitzen, werden diese Rollenzuweisungen nicht in der Liste angezeigt.
+
+1. Wenn Sie über mehrere Abonnements verfügen, können Sie auf die Dropdownliste **Abonnement** klicken, um die Rollenzuweisungen in einem anderen Abonnement anzuzeigen.
 
 ## <a name="grant-access"></a>Gewähren von Zugriff
 
@@ -161,14 +163,6 @@ In RBAC entfernen Sie eine Rollenzuweisung, um den Zugriff zu entfernen.
 1. Klicken Sie in der Nachricht zum Entfernen der Rollenzuweisung auf **Ja**.
 
 Geerbte Rollenzuweisungen können nicht entfernt werden. Wenn Sie eine geerbte Rollenzuweisung entfernen möchten, müssen Sie dies für den Bereich durchführen, in dem die Rollenzuweisung erstellt wurde. Die Spalte **Bereich** neben **Geerbt** enthält einen Link, mit dem Sie zu den Ressourcen gelangen, denen diese Rolle zugewiesen wurde. Sie können die Rollenzuweisung entfernen, indem Sie zu dem dort aufgelisteten Bereich gehen.
-
-## <a name="other-tools-to-manage-access"></a>Andere Tools zum Verwalten des Zugriffs
-
-Sie können auch mit Azure RBAC-Befehlen in anderen Tools als dem Azure-Portal Rollen zuweisen und den Zugriff verwalten. Weitere Informationen finden Sie unter den folgenden Links:
-
-* [Azure PowerShell](role-assignments-powershell.md)
-* [Azure-CLI](role-assignments-cli.md)
-* [REST-API](role-assignments-rest.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

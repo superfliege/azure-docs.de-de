@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: a40971e373a6e2fe6324e06816112e2025506ba8
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: de597424c1be01e651068b7900acbece822610b1
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "34057977"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008374"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
 
@@ -299,7 +299,7 @@ subscriptionId | Azure-Abonnement für den virtuellen Computer | 2017-08-01
 tags | [Tags](../../azure-resource-manager/resource-group-using-tags.md) für den virtuellen Computer  | 2017-08-01
 resourceGroupName | [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md) für den virtuellen Computer | 2017-08-01
 placementGroupId | [Platzierungsgruppe](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) der VM-Skalierungsgruppe | 2017-08-01
-vmScaleSetName | [Name der VM-Skalierungsgruppe] (../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) Ihrer VM-Skalierungsgruppe | 2017-12-01
+vmScaleSetName | [Name Ihrer VM-Skalierungsgruppe](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
 Zone | [Verfügbarkeitszone](../../availability-zones/az-overview.md) Ihres virtuellen Computers | 2017-12-01 
 ipv4/privateIpAddress | Lokale IPv4-Adresse der VM | 2017-04-02
 ipv4/publicIpAddress | Öffentliche IPv4-Adresse der VM | 2017-04-02

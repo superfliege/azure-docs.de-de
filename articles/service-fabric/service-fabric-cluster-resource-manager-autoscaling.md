@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: cd19c0e51ca1ac7863058d7c3944400719508f9b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a742ac79f1152816621312e2ebc59598772ba127
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213196"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990620"
 ---
 # <a name="introduction-to-auto-scaling"></a>Einführung in die automatische Skalierung
 Die automatische Skalierung ist eine weitere Funktion von Service Fabric, mit der Ihre Dienste basierend auf der Last, die von Diensten gemeldet wird, oder basierend auf ihrer Ressourcennutzung dynamisch skaliert werden können. Die automatische Skalierung bietet eine hervorragende Flexibilität und ermöglicht die Bereitstellung zusätzlicher Instanzen oder Partitionen Ihres Diensts bei Bedarf. Der gesamte Prozess der automatischen Skalierung ist automatisiert und transparent. Sobald Sie Ihre Richtlinien für einen Dienst eingerichtet haben, müssen Sie keine manuellen Skalierungsvorgänge auf Dienstebene mehr durchführen. Die automatische Skalierung kann während der Erstellung des Diensts oder zu einem beliebigen Zeitpunkt durch Aktualisieren des Diensts aktiviert werden.
@@ -135,6 +135,9 @@ Wie beim Mechanismus, der die Skalierung durch Hinzufügen oder Entfernen von In
 * Das _Skalierungsinkrement_ bestimmt, wie viele Partitionen hinzugefügt oder entfernt werden, wenn der Mechanismus ausgelöst wird.
 * Die _maximale Anzahl von Partitionen_ definiert die Obergrenze für die Skalierung. Wenn die Anzahl von Partitionen des Diensts diesen Grenzwert erreicht, wird der Dienst unabhängig von der Last nicht horizontal hochskaliert. Es ist möglich, diesen Grenzwert durch die Angabe des Werts „-1“ zu übergehen. In diesem Fall wird der Dienst so weit wie möglich horizontal hochskaliert (der Grenzwert ist die tatsächliche Kapazität des Clusters).
 * Die _minimale Anzahl von Instanzen_ definiert die Untergrenze für die Skalierung. Wenn die Anzahl von Partitionen des Diensts diesen Grenzwert erreicht, wird der Dienst unabhängig von der Last nicht horizontal herunterskaliert.
+
+> [!WARNING] 
+> Bei Verwendung von „AddRemoveIncrementalNamedParitionScalingMechanism“ mit „stateful“-Diensten wird Service Fabric Partitionen **ohne Benachrichtigung oder Warnung** hinzufügen oder entfernen. Die Neupartitionierung von Daten wird nicht durchgeführt, wenn ein Skalierungsmechanismus ausgelöst wird. Beim zentralen Hochskalieren sind die neuen Partitionen leer, und beim zentralen Herunterskalieren wird die **Partition zusammen mit allen darin enthaltenen Daten gelöscht**.
 
 ## <a name="setting-auto-scaling-policy"></a>Festlegen der Richtlinie für die automatische Skalierung
 

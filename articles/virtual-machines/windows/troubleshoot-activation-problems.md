@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 11e90a79f45e54f3842d103d290c17254d0e75fc
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 3dc6466083a3dd6882933b8acdd7d64e4a8acd04
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34071492"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006987"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Behandlung von Problemen bei der Aktivierung virtueller Windows-Computer
 
@@ -49,7 +49,7 @@ In der Regel treten Probleme bei der VM-Aktivierung in Azure auf, wenn die Windo
 >[!NOTE]
 >Wenn Sie ein Standort-zu-Standort-VPN und eine Tunnelerzwingung verwenden, gehen Sie unter [Use Azure custom routes to enable KMS activation with forced tunneling (Verwenden von benutzerdefinierten Azure-Routen zum Aktivieren der KMS-Aktivierung mit Tunnelerzwingung)](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx). 
 >
->Wenn Sie ExpressRoute verwenden, und eine veröffentlichte Standardroute besitzen, gehen Sie unter [Azure VM may fail to activate over ExpressRoute (Die Azure-VM kann womöglich über ExpressRoute nicht aktiviert werden)](https://blogs.technet.microsoft.com/jpaztech/2016/05/16/azure-vm-may-fail-to-activate-over-expressroute/).
+>Wenn Sie ExpressRoute verwenden, und eine veröffentlichte Standardroute besitzen, gehen Sie unter [Azure VM may fail to activate over ExpressRoute (Die Azure-VM kann womöglich über ExpressRoute nicht aktiviert werden)](http://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx).
 
 ### <a name="step-1-configure-the-appropriate-kms-client-setup-key-for-windows-server-2016-and-windows-server-2012-r2"></a>Schritt 1: Konfigurieren des entsprechenden KMS-Clientsetupschlüssels (für Windows Server 2016 und Windows Server 2012 R2)
 
@@ -79,7 +79,7 @@ Dieser Schritt gilt nicht für Windows 2012 oder Windows 2008 R2. Es wird die Au
 
 ### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>Schritt 2: Überprüfen der Konnektivität zwischen dem virtuellen Computer und dem Azure KMS-Dienst
 
-1. Laden Sie das [Psping](http:/technet.microsoft.com/sysinternals/jj729731.aspx)-Tool herunter und extrahieren Sie es in einem lokalen Ordner auf dem virtuellen Computer, der nicht aktiviert wird. 
+1. Laden Sie das [PSping](http:/technet.microsoft.com/sysinternals/jj729731.aspx)-Tool herunter, und extrahieren Sie es in einem lokalen Ordner auf der VM, die nicht aktiviert wird. 
 
 2. Wechseln Sie zu „Start“, suchen Sie nach Windows PowerShell, klicken Sie mit der rechten Maustaste auf „Windows PowerShell“, und wählen Sie anschließend „Als Administrator ausführen“ aus.
 

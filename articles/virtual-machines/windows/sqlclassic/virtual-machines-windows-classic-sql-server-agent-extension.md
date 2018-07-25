@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 03/07/2018
+ms.date: 07/12/2018
 ms.author: jroth
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3ff9a8b91b0359c57fae5b1a01b5d895ab9a1685
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 55a31d7a0ab603dd7fe7de514d11d003e044240a
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29851757"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008330"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>Automatisieren von Verwaltungsaufgaben auf Azure Virtual Machines mit der SQL Server-Agent-Erweiterung (klassisch)
 > [!div class="op_single_selector"]
@@ -81,8 +81,9 @@ Bei einer Aktualisierung auf die aktuelle Version der SQL-IaaS-Agent-Erweiterung
 
 > [!NOTE]
 > Auf klassischen virtuellen Computern ist keine Option zum Installieren und Konfigurieren der Erweiterung für SQL-IaaS-Agent über das Portal verfügbar.
-> 
-> 
+
+> [!NOTE]
+> Die SQL Server-IaaS-Agent-Erweiterung wird nur für [SQL Server-VM-Katalogimages](../sql/virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms) unterstützt (mit nutzungsbasierter Bezahlung oder Bring Your Own License). Sie wird nicht unterstützt, wenn Sie SQL Server manuell auf einem virtuellen Computer installieren, der ausschließlich unter dem Betriebssystem Windows-Server ausgeführt wird, oder wenn Sie eine benutzerdefinierte SQL Server-VM-VHD bereitstellen. In diesen Fällen können Sie die Erweiterung mit PowerShell möglicherweise manuell installieren und verwalten, es wird jedoch ausdrücklich empfohlen, stattdessen ein SQL Server-VM-Katalogimage zu installieren und dieses dann anzupassen.
 
 ## <a name="status"></a>Status
 Eine Möglichkeit, zu überprüfen, ob die Erweiterung installiert ist, ist das Anzeigen des Agent-Status im Azure-Portal. Wählen Sie auf dem Blatt des virtuellen Computers einen virtuellen Computer aus, und klicken Sie dann auf **Erweiterungen**. Die Erweiterung **SQLIaaSAgent** sollte aufgeführt werden.

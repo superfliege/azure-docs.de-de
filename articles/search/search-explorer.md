@@ -1,30 +1,23 @@
 ---
-title: Abfragen eines Index (Portal – Azure Search) | Microsoft-Dokumentation
-description: Eingeben einer Suchabfrage in den Suchexplorer im Azure-Portal.
+title: Suchexplorer zum Abfragen von Indizes in Azure Search | Microsoft-Dokumentation
+description: In diesem Artikel erfahren Sie, wie Sie mit dem Suchexplorer Indizes in Azure Search abfragen.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
-ms.topic: quickstart
-ms.date: 07/10/2017
+ms.topic: conceptual
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: a3592bd0c304dfb78374eeba432c0d28203980c9
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 520d9e7b1899c54d922ff6fb77e0901f9609b029
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31790507"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004132"
 ---
-# <a name="query-an-azure-search-index-using-search-explorer-in-the-azure-portal"></a>Abfragen eines Azure Search-Index mithilfe des Suchexplorers im Azure-Portal
-> [!div class="op_single_selector"]
-> * [Übersicht](search-query-overview.md)
-> * [Portal](search-explorer.md)
-> * [.NET](search-query-dotnet.md)
-> * [REST](search-query-rest-api.md)
-> 
-> 
+# <a name="how-to-use-search-explorer-to-query-indexes-in-azure-search"></a>Gewusst wie: Abfragen von Indizes in Azure Search mit dem Suchexplorer 
 
-In diesem Artikel erfahren Sie, wie Sie einen Azure Search-Index mithilfe des **Suchexplorers** im Azure-Portal abfragen. Mit dem Suchexplorer können Sie einfache oder vollständige Lucene-Abfragezeichenfolgen an einen beliebigen Index in Ihrem Dienst übermitteln.
+In diesem Artikel erfahren Sie, wie Sie einen vorhandenen Azure Search-Index mithilfe des **Suchexplorers** im Azure-Portal abfragen. Mit dem Suchexplorer können Sie einfache oder vollständige Lucene-Abfragezeichenfolgen an einen beliebigen Index in Ihrem Dienst übermitteln.
 
 ## <a name="open-the-service-dashboard"></a>Öffnen des Servicedashboards
 1. Klicken Sie im linken Bereich des [Azure-Portals](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) auf der Navigationsleiste auf **Alle Ressourcen**.
@@ -38,7 +31,7 @@ Wählen Sie über die Kachel **Indizes** den Index aus, den Sie durchsuchen möc
 
 ## <a name="open-search-explorer"></a>Öffnen des Suchexplorers
 
-Klicken Sie auf die Kachel für den Suchexplorer, um die Suchleiste und den Ergebnisbereich zu öffnen.
+Klicken Sie auf die Kachel „Suchexplorer“, um die Suchleiste und den Ergebnisbereich zu öffnen.
 
    ![](./media/search-explorer/search-explorer-tile.png)
 

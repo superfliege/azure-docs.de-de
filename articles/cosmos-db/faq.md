@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: 30ebe4f990dc65e53c34673f0948d3aa2240385c
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: fb8ae3b6225b2029ced3687083777ae47cb54acf
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37859699"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39002329"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB – Häufig gestellte Fragen
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure DB Cosmos-Grundlagen
@@ -120,6 +120,9 @@ Beachten Sie beim Festlegen einer Region, dass von Azure Cosmos DB unabhängige 
 
 Die Bereitstellung auf Container- und Datenbankebene wird gesondert angeboten. Für einen Wechsel zwischen diesen Bereitstellungsmethoden müssen Daten von der Quelle zum Ziel migriert werden. Dies bedeutet, dass Sie eine neue Datenbank oder eine neue Sammlung erstellen müssen und anschließend Daten mithilfe der [Bulk-Executor-Bibliothek](bulk-executor-overview.md) oder mithilfe von [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) migrieren müssen.
 
+### <a name="how-do-i-create-fixed-collection-with-partition-key"></a>Wie erstelle ich eine feste Sammlung mit Partitionsschlüssel?
+
+Derzeit können Sie eine Sammlung mit einem Partitionsschlüsseldurchsatz erstellen, indem Sie die [CreatePartitionedCollection](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L118)-Methode von .Net SDK oder die [Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb/collection?view=azure-cli-latest#az-cosmosdb-collection-create) verwenden. Die Erstellung einer festen Sammlung über das Azure-Portal wird derzeit nicht unterstützt.  
 
 ## <a name="develop-against-the-sql-api"></a>Entwickeln für die SQL-API
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: renash
-ms.openlocfilehash: ec900182e2fe201ee598518076c6a75a7ac057c2
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: d4f77460ea6b0a31ed40286f33aa4296bafc9087
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839568"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39007291"
 ---
 # <a name="use-azure-files-with-linux"></a>Verwenden von Azure Files mit Linux
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können mithilfe des [SMB-Kernelclients](https://wiki.samba.org/index.php/LinuxCIFS) in Linux-Distributionen eingebunden werden. Dieser Artikel veranschaulicht zwei Möglichkeiten zum Einbinden einer Azure-Dateifreigabe: bedarfsgesteuert mit dem Befehl `mount` oder beim Start durch Erstellen eines Eintrags in `/etc/fstab`.
@@ -28,15 +28,28 @@ ms.locfileid: "34839568"
 > Wenn Sie eine Azure-Dateifreigabe außerhalb der Azure-Region einbinden möchten, in der sie gehostet wird (beispielsweise lokal oder in einer anderen Azure-Region), muss das Betriebssystem die Verschlüsselungsfunktionen von SMB 3.0 unterstützen.
 
 ## <a name="prerequisites-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package"></a>Voraussetzungen für das Einbinden einer Azure-Dateifreigabe in Linux und das Paket „cifs-utils“
-* **Wählen Sie eine Linux-Distribution, für die das Paket „cifs-utils“ installiert werden kann.**  
-    Folgende Linux-Distributionen stehen im Azure-Katalog zur Verfügung:
+<a id="smb-client-reqs"></a>
+* **Wählen Sie eine Linux-Distribution gemäß Ihren Anforderungen an die Einbindung aus.**  
+      Azure Files kann entweder über SMB 2.1 oder über SMB 3.0 eingebunden werden. Bei Verbindungen von lokalen Clients oder von Clients in anderen Azure-Regionen wird SMB 2.1 (oder SMB 3.0 ohne Verschlüsselung) von Azure Files abgelehnt. Ist für ein Speicherkonto die Option *Sichere Übertragung erforderlich* aktiviert, lässt Azure Files nur Verbindungen über SMB 3.0 mit Verschlüsselung zu.
+    
+    Die Unterstützung der SMB 3.0-Verschlüsselung wurde in der Linux-Kernelversion 4.11 eingeführt und nachträglich für ältere Kernelversionen gängiger Linux-Distributionen portiert. Zum Zeitpunkt der Veröffentlichung dieses Dokuments unterstützen die folgenden Distributionen aus dem Azure-Katalog die Einbindungsoption, die in den Tabellenüberschriften angegeben ist. 
 
-    * Ubuntu Server 14.04+
-    * RHEL 7+
-    * CentOS 7+
-    * Debian 8+
-    * openSUSE 13.2+
-    * SUSE Linux Enterprise Server 12
+* **Empfohlene Mindestversionen mit entsprechenden Einbindungsmöglichkeiten (SMB 2.1-Version im Vergleich zur SMB 3.0-Version)**    
+    
+    |   | SMB 2.1 <br>(Einbindungen auf VMs innerhalb derselben Azure-Region) | SMB 3.0 <br>(Einbindungen aus einer lokalen Region und regionsübergreifend) |
+    | --- | :---: | :---: |
+    | Ubuntu Server | 14.04+ | 16.04 und höher |
+    | RHEL | 7 und höher | 7.5 und höher |
+    | CentOS | 7 und höher |  7.5 und höher |
+    | Debian | 8 und höher |   |
+    | openSUSE | 13.2 und höher | 42.3 und höher |
+    | SUSE Linux Enterprise Server | 12 | 12 SP3 und höher |
+    
+    Sollte Ihre Linux-Distribution hier nicht aufgeführt sein, können Sie die Linux-Kernelversion mit dem folgenden Befehl ermitteln:    
+
+   ```bash
+   uname -r
+   ```    
 
 * <a id="install-cifs-utils"></a>**Das Paket „cifs-utils“ ist installiert.**  
     Das Paket „cifs-utils“ kann mithilfe des Paket-Managers für die Linux-Distribution Ihrer Wahl installiert werden. 
@@ -61,22 +74,7 @@ ms.locfileid: "34839568"
     ```
 
     Verwenden Sie bei anderen Distributionen den entsprechenden Paket-Manager, oder [kompilieren Sie den Quellcode](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download).
-
-* <a id="smb-client-reqs"></a>**Grundlegendes zu SMB-Clientanforderungen:**  
-    Azure Files kann entweder über SMB 2.1 oder über SMB 3.0 eingebunden werden. Bei Verbindungen von lokalen Clients oder von Clients in anderen Azure-Regionen wird SMB 2.1 (oder SMB 3.0 ohne Verschlüsselung) von Azure Files abgelehnt. Ist für ein Speicherkonto die Option *Sichere Übertragung erforderlich* aktiviert, lässt Azure Files nur Verbindungen über SMB 3.0 mit Verschlüsselung zu.
     
-    Die Unterstützung der SMB 3.0-Verschlüsselung wurde in der Linux-Kernelversion 4.11 eingeführt und nachträglich für ältere Kernelversionen gängiger Linux-Distributionen portiert. Zum Zeitpunkt der Veröffentlichung dieses Dokuments wird das Feature von folgenden Distributionen aus dem Azure-Katalog unterstützt:
-
-    - Ubuntu Server 16.04+
-    - openSUSE 42.3+
-    - SUSE Linux Enterprise Server 12 SP3+
-    
-    Sollte Ihre Linux-Distribution hier nicht aufgeführt sein, können Sie die Linux-Kernelversion mit dem folgenden Befehl ermitteln:
-
-    ```bash
-    uname -r
-    ```
-
 * **Festlegen der Verzeichnis-/Dateiberechtigungen der eingebundenen Freigabe:** In den folgenden Beispielen wird die Berechtigung `0777` verwendet, um allen Benutzern die Berechtigungen „Lesen“, „Schreiben“ und „Ausführen“ zu erteilen. Sie können dies nach Wunsch durch andere [chmod-Berechtigungen](https://en.wikipedia.org/wiki/Chmod) ersetzen. 
 
 * **Name des Speicherkontos:** Zum Einbinden einer Azure-Dateifreigabe benötigen Sie den Namen des Speicherkontos.

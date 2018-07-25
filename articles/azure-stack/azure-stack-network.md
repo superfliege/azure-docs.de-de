@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 07/12/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 752481186167fccb46d5bf3beb87c1507e0f4feb
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b39a1f7b0de01c50b04072cc0de011928c6af786
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936516"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003612"
 ---
 # <a name="network-connectivity"></a>Netzwerkverbindung
 Dieser Artikel enthält Informationen zur Netzwerkinfrastruktur von Azure Stack, die Sie bei der Entscheidung unterstützen, wie Sie Azure Stack am besten in Ihre bestehende Netzwerkumgebung integrieren können. 
@@ -29,7 +29,7 @@ Dieser Artikel enthält Informationen zur Netzwerkinfrastruktur von Azure Stack,
 > Zum Auflösen von externen DNS-Namen von Azure Stack (z.B. „www.bing.com“) müssen Sie DNS-Server für die Weiterleitung von DNS-Anforderungen bereitstellen. Weitere Informationen zu DNS-Anforderungen für Azure Stack finden Sie unter [Azure Stack-Rechenzentrumsintegration: DNS](azure-stack-integrate-dns.md).
 
 ## <a name="physical-network-design"></a>Entwurf des physischen Netzwerks
-Die Azure Stack-Lösung benötigt eine zuverlässige und hoch verfügbare physische Infrastruktur, um ihren Betrieb und ihre Dienste zu unterstützen. Im folgenden Diagramm wird unser empfohlener Entwurf dargestellt:
+Die Azure Stack-Lösung benötigt eine zuverlässige und hoch verfügbare physische Infrastruktur, um ihren Betrieb und ihre Dienste zu unterstützen. Uplinks zwischen TOR-Switches und Borderswitches sind auf SFP+- SFP28-Medien und auf Geschwindigkeiten von 1 Gbit/s, 10 Gbit/s oder 25 Gbit/s beschränkt. Angaben zur Verfügbarkeit erhalten Sie bei Ihrem OEM-Hardwarehersteller (Original Equipment Manufacturer). In der folgenden Abbildung wird unser empfohlener Entwurf dargestellt:
 
 ![Empfohlener Entwurf des Azure Stack-Netzwerks](media/azure-stack-network/recommended-design.png)
 
@@ -59,7 +59,7 @@ Dieses Netzwerk ist für die Verbindung aller Baseboard-Verwaltungscontroller (B
 Der HLH hostet auch den virtuellen Bereitstellungscomputer (Deployment VM, DVM). Der DVM wird im Rahmen der Azure Stack-Bereitstellung verwendet und nach Abschluss der Bereitstellung entfernt. In verbundenen Szenarien benötigt der DVM Internetzugriff, um mehrere Komponenten testen und überprüfen sowie darauf zugreifen zu können. Diese Komponenten können sich innerhalb oder außerhalb Ihres Unternehmensnetzwerks befinden. Beispiele wären etwa NTP, DNS und Azure. Weitere Informationen zu Konnektivitätsanforderungen finden Sie im [NAT-Abschnitt des Artikels zur Azure Stack-Firewallintegration](azure-stack-firewall.md#network-address-translation). 
 
 ### <a name="private-network"></a>Privates Netzwerk
-Dieses Netzwerk des Typs „/24“ (254 Host-IP-Adressen) ist für die Azure Stack-Region privat (d.h. es reicht nicht über die Grenzswitches der Azure Stack-Region hinaus) und ist in zwei Subnetze aufgeteilt:
+Dieses Netzwerk vom Typ „/24“ (254 Host-IP-Adressen) ist für die Azure Stack-Region privat (reicht also nicht über die Grenzswitches der Azure Stack-Region hinaus) und in zwei Subnetze aufgeteilt:
 
 - **Speichernetzwerk**. Ein Netzwerk des Typs „/25“ (126 Host-IP-Adressen), das zur Unterstützung der Verwendung von „Direkte Speicherplätze“ und Server Message Block-Speicherdatenverkehr (SMB) sowie der Livemigration virtueller Computer verwendet wird. 
 - **Internes VIP-Netzwerk (Virtuelle IP-Adresse)**. Ein Netzwerk des Typs „/25“, das ausschließlich internen VIPs für den softwaregestützten Lastenausgleich vorbehalten ist.

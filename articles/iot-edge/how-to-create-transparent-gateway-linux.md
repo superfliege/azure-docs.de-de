@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 45179f8f1f46be764144bdc22d5bab3548e9401d
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 2b4e2a19b5d5f6491ff3db24489b361040a52280
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346058"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035573"
 ---
 # <a name="create-a-linux-iot-edge-device-that-acts-as-a-transparent-gateway"></a>Erstellen eines Linux-IoT Edge-Geräts, das als transparentes Gateway fungiert
 
@@ -22,7 +22,7 @@ Dieser Artikel enthält eine ausführliche Anleitung zur Verwendung eines IoT Ed
 >[!NOTE]
 >Derzeit gilt Folgendes:
 > * Wenn das Gateway vom IoT Hub getrennt wird, können sich nachgeschaltete Geräte nicht am Gateway authentifizieren.
-> * IoT Edge-Geräte können keine Verbindung mit IoT Edge-Gateways herstellen.
+> * Edge-fähige Geräte können keine Verbindung mit IoT Edge-Gateways herstellen. 
 > * Nachgeschaltete Geräte können keinen Dateiupload verwenden.
 
 Die größte Schwierigkeit beim Erstellen eines transparenten Gateways ist das Herstellen einer sicheren Verbindung zwischen dem Gateway und nachgeschalteten Geräten. Azure IoT Edge ermöglicht Ihnen, mithilfe der PKI-Infrastruktur sichere TLS-Verbindungen zwischen diesen Geräten einzurichten. In diesem Fall lassen wir zu, dass ein nachgeschaltetes Gerät eine Verbindung mit einem IoT Edge-Gerät, das als transparentes Gateway fungiert, herstellt.  Um eine angemessene Sicherheit zu gewährleisten, sollte das nachgeschaltete Gerät die Identität des Edge-Geräts bestätigen, da Ihre Geräte nur Verbindungen mit Ihren Gateways und nicht mit potenziell schädlichen Gateways herstellen sollen.
@@ -181,7 +181,7 @@ Die IoT Edge-Runtime kann Nachrichten für nachgeschaltete Geräte genau wie Nac
    { "routes":{ "sensorToAIInsightsInput1":"FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO BrokeredEndpoint(\"/modules/ai_insights/inputs/input1\")", "AIInsightsToIoTHub":"FROM /messages/modules/ai_insights/outputs/output1 INTO $upstream" } }
    ```
 
-Ausführliche Informationen zur Weiterleitung von Nachrichten finden Sie im [Artikel über Modulzusammenstellung][lnk-module-composition].
+Ausführliche Informationen zur Weiterleitung von Nachrichten finden Sie im [Artikel über die Modulzusammenstellung][lnk-module-composition].
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Grundlegendes zu den Anforderungen und Tools für die Entwicklung von IoT Edge-Modulen][lnk-module-dev].
@@ -192,6 +192,7 @@ Ausführliche Informationen zur Weiterleitung von Nachrichten finden Sie im [Art
 <!-- Links -->
 [lnk-install-linux-x64]: ./how-to-install-iot-edge-linux.md
 [lnk-install-linux-arm]: ./how-to-install-iot-edge-linux-arm.md
+[lnk-module-composition]: ./module-composition.md
 [lnk-devicesdk]: ../iot-hub/iot-hub-devguide-sdks.md
 [lnk-tutorial1-win]: tutorial-simulate-device-windows.md
 [lnk-tutorial1-lin]: tutorial-simulate-device-linux.md

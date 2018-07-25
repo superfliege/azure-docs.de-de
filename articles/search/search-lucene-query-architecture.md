@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
-ms.openlocfilehash: 4382c3001f6b0a9227407beccb483347bccb387c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 55d361e90dbc5fe48bc118088a6f859d096048ff
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195010"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036869"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Funktionsweise der Volltextsuche in Azure Search
 
@@ -185,7 +185,7 @@ Die Standardanalyse teilt den Eingabetext in die folgenden beiden Token auf und 
 
 ### <a name="exceptions-to-lexical-analysis"></a>Ausnahmen bei der lexikalischen Analyse 
 
-Die lexikalische Analyse gilt nur für Abfragetypen, für die vollständige Ausdrücke erforderlich sind – entweder eine Begriffsabfrage oder eine Ausdrucksabfrage. Dies gilt nicht für Abfragetypen mit unvollständigen Ausdrücken – Präfixabfrage, Platzerhalterabfrage, Abfrage regulärer Ausdrücke – oder für eine Fuzzyabfrage. Diese Abfragetypen, einschließlich der Präfixabfrage mit dem Ausdruck *air-condition\** in unserem Beispiel, werden der Abfragestruktur direkt hinzugefügt, und die Analysephase wird umgangen. Die einzige Transformation, die für die Abfrageausdrücke dieser Typen durchgeführt wird, ist die Umwandlung in Kleinbuchstaben.
+Die lexikalische Analyse gilt nur für Abfragetypen, für die vollständige Ausdrücke erforderlich sind – entweder eine Begriffsabfrage oder eine Ausdrucksabfrage. Dies gilt nicht für Abfragetypen mit unvollständigen Ausdrücken – Präfixabfrage, Platzerhalterabfrage, Abfrage regulärer Ausdrücke – oder für eine Fuzzyabfrage. Diese Abfragetypen, einschließlich der Präfixabfrage mit dem Ausdruck `air-condition*` in unserem Beispiel, werden der Abfragestruktur direkt hinzugefügt, und die Analysephase wird umgangen. Die einzige Transformation, die für die Abfrageausdrücke dieser Typen durchgeführt wird, ist die Umwandlung in Kleinbuchstaben.
 
 <a name="stage3"></a>
 

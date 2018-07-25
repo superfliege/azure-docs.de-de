@@ -1,48 +1,46 @@
 ---
-title: Erstellen eines Index (Portal – Azure Search) | Microsoft-Dokumentation
-description: Erstellen Sie einen Azure Search-Index im Azure-Portal.
+title: Erstellen eines Azure Search-Indexes im Portal | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie einen Index für Azure Search erstellen, indem Sie im Portal integrierte Index-Designer verwenden.
 manager: cgronlun
 author: heidisteen
 services: search
 ms.service: search
 ms.devlang: NA
-ms.topic: quickstart
-ms.date: 06/20/2017
+ms.topic: conceptual
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: 722f1eb989fb8c160def4024b1aa967a47b87697
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: bb1ba5e860dab237b3f6e16205b5e4cbad45e6e3
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34203868"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990845"
 ---
-# <a name="create-an-azure-search-index-using-the-azure-portal"></a>Erstellen eines Azure Search-Indexes im Azure-Portal
+# <a name="how-to-create-an-azure-search-index-using-the-azure-portal"></a>Erstellen eines Azure Search-Indexes im Azure-Portal
 
-Verwenden Sie den integrierten Index-Designer im Azure-Portal zum Aufbauen oder Erstellen eines [Suchindex](search-what-is-an-index.md) für Ihren Azure Search-Dienst. 
+Azure Search enthält einen im Portal integrierten Index-Designer, der für Prototypen oder die Erstellung eines [Suchindexes](search-what-is-an-index.md), der auf Ihrem Azure Search-Dienst gehostet wird, nützlich ist. Das Tool wird für die Schemakonstruktion verwendet. Beim Speichern der Definition wird ein leerer Index vollständig in Azure Search ausgedrückt. Wie Sie darin durchsuchbare Daten eingeben, bleibt Ihnen überlassen.
 
-Erstellen Sie alternativ einen Index mit den [.NET](search-create-index-dotnet.md)- oder [REST](search-create-index-rest-api.md)-APIs.
+Der Index-Designer ist nur einer von mehreren Ansätzen bei der Erstellung eines Indexes. Programmgesteuert können Sie einen Index mit den [.NET](search-create-index-dotnet.md)- oder [REST](search-create-index-rest-api.md)-APIs erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Artikel wird vorausgesetzt, dass Sie über ein [Azure-Abonnement](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) und über einen [Azure Search-Dienst](search-create-service-portal.md) verfügen.  
+In diesem Artikel wird vorausgesetzt, dass Sie über ein [Azure-Abonnement](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) und über einen [Azure Search-Dienst](search-create-service-portal.md) verfügen.
 
-## <a name="find-your-search-service"></a>Suchen nach dem Suchdienst
-1. Melden Sie sich beim Azure-Portal an, und überprüfen Sie die [Suchdienste für Ihr Abonnement](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
-2. Wählen Sie Ihren Azure Search-Dienst aus.
+## <a name="open-index-designer-and-name-an-index"></a>Öffnen des Index-Designers und Benennen eines Indexes
 
-## <a name="name-the-index"></a>Benennen des Index
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie das Servicedashboard. Sie können auf der Navigationsleiste auf **Alle Dienste** klicken, um nach vorhandenen Suchdiensten des aktuellen Abonnements zu suchen. 
 
-1. Klicken Sie auf der Befehlsleiste oben auf der Seite auf die Schaltfläche **Index hinzufügen**.
-2. Benennen Sie den Azure Search-Index. 
+2.  Klicken Sie auf der Befehlsleiste oben auf der Seite auf die Schaltfläche **Index hinzufügen**.
+
+3. Benennen Sie den Azure Search-Index. Auf Indexnamen wird in Indizes und Abfragevorgängen verwiesen. Der Indexname wird Teil der Endpunkt-URL, die für Verbindungen mit dem Index und zum Senden von HTTP-Anforderungen in der Azure Search-REST-API verwendet wird.
+
    * Beginnen Sie mit einem Buchstaben.
    * Verwenden Sie nur Kleinbuchstaben, Ziffern oder Bindestriche („-“).
    * Beschränken Sie den Namen und 60 Zeichen.
 
-  Der Indexname wird Teil der Endpunkt-URL, die für Verbindungen mit dem Index und zum Senden von HTTP-Anforderungen in der Azure Search-REST-API verwendet wird.
-
 ## <a name="define-the-fields-of-your-index"></a>Definieren der Felder des Index
 
-Zur Indexerstellung gehört eine *Feldersammlung*, die durchsuchbare Daten im Index definiert. Genauer gesagt, gibt sie die Struktur von Dokumenten an, die Sie separat hochladen. Die Feldersammlung umfasst erforderliche und optionale Felder (mit Name und Typ) mit Indexattributen, um zu bestimmen, wie das Feld verwendet werden kann.
+Zur Indexerstellung gehört eine *Feldersammlung*, die durchsuchbare Daten im Index definiert. Insgesamt gibt die Feldersammlung die Struktur von Dokumenten an, die Sie separat hochladen. Eine Feldersammlung umfasst erforderliche und optionale Felder (mit Name und Typ) mit Indexattributen, die bestimmen, wie das Feld verwendet werden kann.
 
 1. Klicken Sie auf dem Blatt **Index hinzufügen** auf **Felder >**, um das Blatt für die Felddefinition zu öffnen. 
 
@@ -63,6 +61,7 @@ Das Erstellen eines Index im Portal erfordert einen intensiven Einsatz der Tasta
 2. Verwenden Sie dann die Kontrollkästchen oben bei den einzelnen Attributen, um die Einstellung gleichzeitig für alle Felder zu aktivieren. Deaktivieren Sie anschließend die Kontrollkästchen selektiv für einige Felder, für die sie nicht erforderlich sind. Zeichenfolgenfelder sind beispielsweise in der Regel durchsuchbar. Daher könnten Sie auf **Abrufbar** und **Durchsuchbar** klicken, um die Werte des Felds in den Suchergebnissen zurückzugeben und eine Volltextsuche für das Feld zu ermöglichen. 
 
 <a name="design"></a>
+
 ## <a name="design-guidance-for-setting-attributes"></a>Entwurfsleitfaden für das Festlegen von Attributen
 
 Obwohl Sie jederzeit neue Felder hinzufügen können, sind vorhandene Felddefinitionen für die Lebensdauer des Index gesperrt. Aus diesem Grund verwenden Entwickler in der Regel das Portal zum Erstellen einfacher Indizes und zum Testen von Ideen. Oder sie verwenden Seiten des Portals, um eine Einstellung zu suchen. Häufige Iterationen über einen Indexentwurf sind effizienter, wenn Sie einem codebasierten Ansatz folgen, sodass Sie den Index einfach neu erstellen können.

@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 0174aa2288bbb95cc5cfc796446893fde00a8964
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 477fa7e10fab0afadb28d7749009f87e82d9b6ba
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344350"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035393"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Installieren der Azure IoT Edge-Runtime unter Linux (x64)
 
@@ -56,9 +56,7 @@ sudo apt-get upgrade
 
 ## <a name="install-the-container-runtime"></a>Installieren der Containerruntime 
 
-Azure IoT Edge basiert auf einer [OCI-kompatiblen][lnk-oci]-Containerruntime (z.B. Docker). Wenn Sie auf Ihrem Edge-Gerät bereits Docker CE/EE installiert haben, können Sie diese Anwendung weiterhin für die Entwicklung und Tests mit Azure IoT Edge verwenden. 
-
-Für Produktionsszenarien wird dringend empfohlen, das unten angegebene [Moby-basierte][lnk-moby] Modul zu verwenden. Es ist das einzige Containermodul, das mit Azure IoT Edge offiziell unterstützt wird. Docker CE/EE-Containerimages sind mit der Moby-Runtime vollständig kompatibel.
+Azure IoT Edge basiert auf einer [OCI-kompatiblen][lnk-oci] Containerruntime. Für Produktionsszenarien wird dringend empfohlen, das unten angegebene [Moby-basierte][lnk-moby] Modul zu verwenden. Es ist das einzige Containermodul, das mit Azure IoT Edge offiziell unterstützt wird. Docker CE/EE-Containerimages sind mit der Moby-Runtime kompatibel.
 
 Aktualisieren Sie „apt-get“.
 

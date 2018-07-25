@@ -1,6 +1,6 @@
 ---
-title: Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric (Vorschau) | Microsoft-Dokumentation
-description: Verwenden Sie das Feature für regelmäßige Sicherungen und Wiederherstellungen von Service Fabric, um Ihre Anwendungen vor Datenverlusten zu schützen.
+title: 'Schnellstart: Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric (Vorschauversion) | Microsoft-Dokumentation'
+description: Verwenden Sie das Feature für regelmäßige Sicherungen und Wiederherstellungen von Service Fabric, um eine regelmäßige Datensicherung Ihrer Anwendungsdaten zu ermöglichen.
 services: service-fabric
 documentationcenter: .net
 author: hrushib
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: hrushib
-ms.openlocfilehash: e9bc85cec6cb1d0e35aa71f4e1934c057dbf946d
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 5666ed4226104104b91b6f964abeb0490ef80866
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114526"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990743"
 ---
-# <a name="periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric (Vorschau)
+# <a name="quickstart-periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Schnellstart: Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric (Vorschauversion)
 > [!div class="op_single_selector"]
 > * [Cluster in Azure](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
 > * [Eigenständige Cluster](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)
@@ -223,10 +223,11 @@ FailureError            :
 ## <a name="preview-limitation-caveats"></a>Einschränkungen der Vorschauversion
 - Keine in Service Fabric integrierten PowerShell-Cmdlets.
 - Keine Unterstützung für die Service Fabric-CLI.
-- Keine Unterstützung für das automatisierte Löschen von Sicherungen. Erfordert die manuelle Bereinigung von Sicherungen.
+-  Keine Unterstützung für das automatisierte Löschen von Sicherungen. Das [Skript für die Sicherungsaufbewahrung](https://github.com/Microsoft/service-fabric-scripts-and-templates/tree/master/scripts/BackupRetentionScript) kann auf eine externe Automatisierung basierend auf dem Setupskript für das Bereinigen von Sicherungen verwiesen werden.
 - Keine Unterstützung für Service Fabric-Cluster unter Linux.
 
 ## <a name="next-steps"></a>Nächste Schritte
+- [Grundlegendes zur Konfiguration der regelmäßigen Sicherung](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [REST-API-Referenz zu Sicherung/Wiederherstellung](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/PartitionBackedUpHealthEvent.png

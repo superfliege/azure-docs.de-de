@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 07/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 4acfe53d68db3192c1f6c3c9e5f91b55bd5df7b8
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2823772787adf56dfbe216a68161f633eadba255
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30832499"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001615"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Anfügen eines Datenträgers an einen virtuellen Linux-Computer mithilfe des Portals 
 In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorhandene Datenträger an einen virtuellen Linux-Computer anfügen können. Sie können auch [einen Datenträger an eine Windows-VM im Azure-Portal anfügen](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -30,6 +30,7 @@ Bevor Sie Datenträger an Ihren virtuellen Computer anfügen, lesen Sie diese Ti
 * Die Größe des virtuellen Computers bestimmt, wie viele Datenträger Sie anfügen können. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Für die Verwendung von Premium-Speicher benötigen Sie einen virtuellen Computer der DS- oder GS-Serie. Sie können für diese virtuellen Computer sowohl Premium- als auch Standard-Datenträger verwenden. Premium-Speicher ist in bestimmten Regionen verfügbar. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../windows/premium-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Bei an virtuelle Computer angefügten Datenträgern handelt es sich um VHD-Dateien, die in Azure gespeichert sind. Weitere Informationen finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Nach dem Anfügen des Datenträgers müssen Sie [eine Verbindung mit dem virtuellen Linux-Computer zum Bereitstellen des neuen Datenträgers herstellen](#connect-to-the-linux-vm-to-mount-the-new-disk).
 
 
 ## <a name="find-the-virtual-machine"></a>Suchen des virtuellen Computers
@@ -72,7 +73,181 @@ Bevor Sie Datenträger an Ihren virtuellen Computer anfügen, lesen Sie diese Ti
 
 4. Nachdem der Datenträger von Azure an den virtuellen Computer angefügt wurde, wird er in den Datenträgereinstellungen des virtuellen Computers unter **Datenträger**angezeigt.
 
+## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Herstellen einer Verbindung mit dem virtuellen Linux-Computer zum Bereitstellen des neuen Datenträgers
+Sie benötigen SSH für Ihren virtuellen Computer, um den neuen Datenträger zu partitionieren, zu formatieren und bereitzustellen, damit er von Ihrem virtuellen Linux-Computer verwendet werden kann. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux auf Azure](mac-create-ssh-keys.md). Im folgenden Beispiel wird eine Verbindung mit einem virtuellen Computer mit dem öffentlichen DNS-Eintrag von *mypublicdns.westus.cloudapp.azure.com* mit dem Benutzernamen *azureuser* erstellt: 
 
+```bash
+ssh azureuser@mypublicdns.westus.cloudapp.azure.com
+```
+
+Nachdem Sie die Verbindung zu Ihrem virtuellen Computer hergestellt haben, können Sie einen Datenträger anfügen. Suchen Sie zunächst den Datenträger mithilfe von `dmesg` (die Methode, die Sie zum Ermitteln Ihres neuen Datenträgers verwenden, kann möglicherweise anders sein). Im folgenden Beispiel wird „dmesg“ zum Filtern auf *SCSI*-Datenträgern verwendet:
+
+```bash
+dmesg | grep SCSI
+```
+
+Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
+
+```bash
+[    0.294784] SCSI subsystem initialized
+[    0.573458] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 252)
+[    7.110271] sd 2:0:0:0: [sda] Attached SCSI disk
+[    8.079653] sd 3:0:1:0: [sdb] Attached SCSI disk
+[ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
+```
+
+Hier ist *sdc* der Datenträger, den wir möchten. Partitionieren Sie nun den Datenträger mit `fdisk`, legen Sie ihn auf Partition 1 als primären Datenträger fest, und übernehmen Sie die anderen Standardwerte. Das folgende Beispiel startet den `fdisk` -Prozess auf */dev/sdc*:
+
+```bash
+sudo fdisk /dev/sdc
+```
+
+Verwenden Sie den Befehl `n`, um eine neue Partition hinzuzufügen. In diesem Beispiel haben wir auch `p` als primäre Partition ausgewählt und akzeptieren den Rest der Standardwerte. Die Ausgabe entspricht etwa folgendem Beispiel:
+
+```bash
+Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
+Building a new DOS disklabel with disk identifier 0x2a59b123.
+Changes will remain in memory only, until you decide to write them.
+After that, of course, the previous content won't be recoverable.
+
+Warning: invalid flag 0x0000 of partition table 4 will be corrected by w(rite)
+
+Command (m for help): n
+Partition type:
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended
+Select (default p): p
+Partition number (1-4, default 1): 1
+First sector (2048-10485759, default 2048):
+Using default value 2048
+Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
+Using default value 10485759
+```
+
+Drucken Sie die Partitionstabelle durch Eingabe von `p`, schreiben Sie dann mit `w` die Tabelle auf den Datenträger, und beenden Sie den Vorgang. Die Ausgabe sollte etwa folgendem Beispiel entsprechen:
+
+```bash
+Command (m for help): p
+
+Disk /dev/sdc: 5368 MB, 5368709120 bytes
+255 heads, 63 sectors/track, 652 cylinders, total 10485760 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x2a59b123
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sdc1            2048    10485759     5241856   83  Linux
+
+Command (m for help): w
+The partition table has been altered!
+
+Calling ioctl() to re-read partition table.
+Syncing disks.
+```
+
+Schreiben Sie jetzt mit dem Befehl `mkfs` ein Dateisystem auf die Partition: Geben Sie Ihren Dateisystemtyp und den Gerätenamen an. Das folgende Beispiel erstellt ein *ext4*-Dateisystem auf der */dev/sdc1*-Partition, die in den vorherigen Schritten erstellt wurde:
+
+```bash
+sudo mkfs -t ext4 /dev/sdc1
+```
+
+Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
+
+```bash
+mke2fs 1.42.9 (4-Feb-2014)
+Discarding device blocks: done
+Filesystem label=
+OS type: Linux
+Block size=4096 (log=2)
+Fragment size=4096 (log=2)
+Stride=0 blocks, Stripe width=0 blocks
+327680 inodes, 1310464 blocks
+65523 blocks (5.00%) reserved for the super user
+First data block=0
+Maximum filesystem blocks=1342177280
+40 block groups
+32768 blocks per group, 32768 fragments per group
+8192 inodes per group
+Superblock backups stored on blocks:
+    32768, 98304, 163840, 229376, 294912, 819200, 884736
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (32768 blocks): done
+Writing superblocks and filesystem accounting information: done
+```
+
+Erstellen Sie jetzt mit `mkdir` ein Verzeichnis zum Bereitstellen des neuen Dateisystems. Im folgenden Beispiel wird ein Verzeichnis mit dem Namen */datadrive* erstellt:
+
+```bash
+sudo mkdir /datadrive
+```
+
+Verwenden Sie `mount`, um anschließend das Dateisystem bereitzustellen. Im folgenden Beispiel wird die */dev/sdc1*-Partition im */datadrive*-Einbindungspunkt eingebunden:
+
+```bash
+sudo mount /dev/sdc1 /datadrive
+```
+
+Um sicherzustellen, dass das Laufwerk nach einem Neustart automatisch wieder eingebunden wird, muss es der Datei */etc/fstab* hinzugefügt werden. Außerdem wird dringend empfohlen, den UUID (Universally Unique IDentifier) in */etc/fstab* zu verwenden, um auf das Laufwerk und nicht auf den Gerätenamen (z.B. */dev/sdc1*) zu verweisen. Wenn das Betriebssystem während des Starts einen Datenträgerfehler erkennt, wird durch den UUID verhindert, dass an einem bestimmten Ort der falsche Datenträger bereitgestellt wird. Die verbleibenden Datenträger werden dann diesen Geräte-IDs zugewiesen. Verwenden Sie das Hilfsprogramm `blkid`, um den UUID des neuen Laufwerks herauszufinden:
+
+```bash
+sudo -i blkid
+```
+
+Die Ausgabe sieht in etwa wie im folgenden Beispiel aus:
+
+```bash
+/dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
+/dev/sdb1: UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4"
+/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
+```
+
+> [!NOTE]
+> Eine falsche Bearbeitung der Datei **/etc/fstab** könnte zu einem nicht startfähigen System führen. Wenn Sie sich nicht sicher sind, helfen Ihnen die Informationen zur richtigen Bearbeitung dieser Datei in der Dokumentation weiter. Außerdem wird empfohlen, ein Backup der Datei /etc/fstab zu erstellen, bevor Sie sie bearbeiten.
+
+Öffnen Sie anschließend die Datei */etc/fstab* in einem Text-Editor wie folgt:
+
+```bash
+sudo vi /etc/fstab
+```
+
+In diesem Beispiel verwenden Sie den UUID-Wert für das Gerät */dev/sdc1*, das in den vorherigen Schritten erstellt wurde, und den Einbindungspunkt */datadrive*. Fügen Sie am Ende der Datei */etc/fstab* die folgende Zeile hinzu:
+
+```bash
+UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
+```
+
+> [!NOTE]
+> Wenn Sie später einen Datenträger entfernen, ohne „fstab“ zu bearbeiten, kann der Start des virtuellen Computers fehlschlagen. Die meisten Verteilungen stellen entweder die „fstab“-Optionen *nofail* und/oder *nobootwait* zur Verfügung. Mit diesen Optionen kann ein System auch dann starten, wenn der Datenträger beim Start nicht bereitgestellt wird. Weitere Informationen zu diesen Parametern finden Sie in der Dokumentation zu Ihrer Distribution.
+> 
+> Die *nofail*-Option stellt sicher, dass der virtuelle Computer gestartet wird, selbst wenn das Dateisystem beschädigt oder der Datenträger zur Startzeit nicht vorhanden ist. Ohne diese Option können Verhalten auftreten, die unter [Cannot SSH to Linux VM due to FSTAB errors](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/) (Aufgrund von FSTAB-Fehler keine SSH-Verbindung mit Linux-VM möglich) beschrieben sind.
+
+### <a name="trimunmap-support-for-linux-in-azure"></a>TRIM/UNMAP-Unterstützung für Linux in Azure
+Einige Linux-Kernels unterstützen TRIM/UNMAP-Vorgänge, um ungenutzte Blöcke auf dem Datenträger zu verwerfen. Dies ist in erster Linie für Standardspeicher nützlich, um Azure darüber zu informieren, dass gelöschte Seiten nicht mehr gültig sind und verworfen werden können. Dies kann auch Kosten sparen, wenn Sie große Dateien erstellen und sie dann löschen.
+
+Es gibt zwei Methoden, TRIM-Unterstützung auf Ihrem virtuellen Linux-Computer zu aktivieren. Den empfohlenen Ansatz finden Sie wie üblich in Ihrer Distribution:
+
+* Verwenden Sie die Bereitstellungsoption `discard` in */etc/fstab*, z.B.:
+
+    ```bash
+    UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
+    ```
+* In einigen Fällen kann sich die Option `discard` möglicherweise auf die Leistung auswirken. Alternativ können Sie den Befehl `fstrim` manuell über die Befehlszeile ausführen oder ihn „crontab“ hinzufügen, um eine regelmäßige Ausführung zu erzielen:
+  
+    **Ubuntu**
+  
+    ```bash
+    sudo apt-get install util-linux
+    sudo fstrim /datadrive
+    ```
+  
+    **RHEL/CentOS**
+
+    ```bash
+    sudo yum install util-linux
+    sudo fstrim /datadrive
+    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie können auch [einen Datenträger mithilfe der Azure CLI anfügen](add-disk.md).

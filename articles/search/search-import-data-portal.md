@@ -1,22 +1,22 @@
 ---
 title: Importieren von Daten in Azure Search über das Portal | Microsoft-Dokumentation
-description: Verwenden Sie den Datenimport-Assistenten von Azure Search im Azure-Portal, um Azure-Daten aus NoSQL Azure Cosmos DB, Blob Storage, Table Storage, SQL-Datenbank und SQL Server auf virtuellen Azure-Computern zu durchforsten.
+description: In diesem Artikel erfahren Sie, wie Sie den Datenimport-Assistenten im Azure-Portal verwenden, um Azure-Daten aus Azure Cosmos DB, Blob Storage, Table Storage, SQL-Datenbank und SQL Server auf Azure-VMs zu durchforsten.
 author: HeidiSteen
 manager: cgronlun
-tags: Azure Portal
 services: search
 ms.service: search
-ms.topic: quickstart
-ms.date: 05/01/2017
+ms.topic: conceptual
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: ee27b63a5df658ff5d575f0599dadd1cbafd3c18
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: dcdc0501d94191cf2c281a4f880ddab3db023fc0
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795883"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004941"
 ---
-# <a name="import-data-to-azure-search-using-the-portal"></a>Importieren von Daten in Azure Search über das Portal
+# <a name="how-to-import-data-into-azure-search-index-using-the-azure-portal"></a>Gewusst wie: Importieren von Daten in einen Azure Search-Index über das Azure-Portal
+
 Im Azure-Portal steht auf dem Azure Search-Dashboard der **Datenimport-Assistent** zur Verfügung, mit dem Sie Daten in einen Index laden können. 
 
   ![„Daten importieren“ auf der Befehlsleiste][1]
@@ -26,8 +26,6 @@ Intern wird von dem Assistenten ein *Indexer*konfiguriert und aufgerufen, um meh
 * Herstellen einer Verbindung mit einer externen Datenquelle im gleichen Azure-Abonnement
 * Generieren eines anpassbaren Indexschemas auf der Grundlage der Quelldatenstruktur
 * Laden von JSON-Dokumenten in einen Index unter Verwendung eines aus der Datenquelle abgerufenen Rowsets
-
-Sie können diesen Workflow mithilfe von Beispieldaten in Azure Cosmos DB testen. Eine Anleitung hierzu finden Sie unter [Erste Schritte mit Azure Search im Portal](search-get-started-portal.md) .
 
 > [!NOTE]
 > Starten Sie über das Azure Cosmos DB-Dashboard den **Datenimport-Assistenten**, um die Indizierung für diese Datenquelle zu vereinfachen. Navigieren Sie im linken Navigationsbereich zu **Sammlungen** > **Azure Search hinzufügen**, um mit dem Vorgang zu beginnen.
@@ -45,8 +43,10 @@ Als Eingabe ist ein vereinfachtes Dataset erforderlich. Sie können Daten nur au
 
 ## <a name="connect-to-your-data"></a>Herstellen einer Verbindung mit Ihren Daten
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie das Servicedashboard. Sie können auf der Navigationsleiste auf **Alle Dienste** klicken, um nach vorhandenen Suchdiensten des aktuellen Abonnements zu suchen. 
-2. Klicken Sie auf der Befehlsleiste auf **Daten importieren** , um das gleichnamige Blatt zu öffnen.  
-3. Klicken Sie auf **Mit Ihren Daten verbinden** , um eine von einem Indexer verwendete Datenquellendefinition anzugeben. Bei abonnementinternen Datenquellen kann der Assistent Verbindungsinformationen in der Regel erkennen und lesen, was insgesamt den Konfigurationsaufwand minimiert.
+
+1. Klicken Sie auf der Befehlsleiste auf **Daten importieren** , um das gleichnamige Blatt zu öffnen.
+
+1. Klicken Sie auf **Mit Ihren Daten verbinden** , um eine von einem Indexer verwendete Datenquellendefinition anzugeben. Bei abonnementinternen Datenquellen kann der Assistent Verbindungsinformationen in der Regel erkennen und lesen, was insgesamt den Konfigurationsaufwand minimiert.
 
 |  |  |
 | --- | --- |
@@ -61,25 +61,32 @@ Als Eingabe ist ein vereinfachtes Dataset erforderlich. Sie können Daten nur au
 Vom Dataset wird üblicherweise ein vorläufiger Index abgeleitet. Vervollständigen Sie das Schema, indem Sie Felder hinzufügen, bearbeiten oder löschen. Legen Sie außerdem Attribute auf Feldebene fest, um das Verhalten bei nachfolgenden Suchvorgängen zu bestimmen.
 
 1. Geben Sie unter **Zielindex anpassen** den Namen und einen **Schlüssel** zur eindeutigen Identifizierung der einzelnen Dokumente an. Der Schlüssel muss eine Zeichenfolge sein. Wenn Feldwerte Leerzeichen oder Bindestriche enthalten, müssen unter **Import your data** (Daten importieren) erweiterte Optionen festgelegt werden, um die Prüfung auf diese Zeichen zu unterdrücken.
-2. Überprüfen und überarbeiten Sie die restlichen Felder. Der Feldname und -typ werden meist für Sie ausgefüllt. Der Datentyp kann bis zur Indexerstellung noch geändert werden. Wenn Sie den Typ später ändern möchten, muss der Index neu erstellt werden.
-3. Legen Sie Indexattribute für die einzelnen Felder fest:
+
+1. Überprüfen und überarbeiten Sie die restlichen Felder. Der Feldname und -typ werden meist für Sie ausgefüllt. Der Datentyp kann bis zur Indexerstellung noch geändert werden. Wenn Sie den Typ später ändern möchten, muss der Index neu erstellt werden.
+
+1. Legen Sie Indexattribute für die einzelnen Felder fest:
    
    * „Abrufbar“ gibt das Feld in Suchergebnissen zurück.
    * „Filterbar“ ermöglicht, dass in Filterausdrücken auf das Feld verwiesen wird.
    * „Sortierbar“ ermöglicht, dass das Feld in einer Sortierung verwendet wird.
    * „Facettierbar“ aktiviert das Feld für die Facettennavigation.
    * „Durchsuchbar“ aktiviert die Volltextsuche.
-4. Klicken Sie auf die Registerkarte **Analyse** , wenn Sie eine Sprachanalyse auf Feldebene angeben möchten. Derzeit können nur Sprachanalysen angegeben werden. Zur Verwendung benutzerdefinierter Analysen oder einer sprachfremden Analyse wie Schlüsselwort oder Muster muss Code geschrieben werden.
+
+1. Klicken Sie auf die Registerkarte **Analyse** , wenn Sie eine Sprachanalyse auf Feldebene angeben möchten. Derzeit können nur Sprachanalysen angegeben werden. Zur Verwendung benutzerdefinierter Analysen oder einer sprachfremden Analyse wie Schlüsselwort oder Muster muss Code geschrieben werden.
    
    * Klicken Sie auf **Durchsuchbar** , um die Volltextsuche für das Feld festzulegen und die Analyse-Dropdownliste zu aktivieren.
    * Wählen Sie die gewünschte Analyse aus. Details finden Sie unter [Erstellen eines Indexes für Dokumente in mehreren Sprachen](search-language-support.md).
-5. Klicken Sie auf **Vorschläge** , um für ausgewählte Felder Textvervollständigungsfunktionen bei der Abfrage zu aktivieren.
+
+1. Klicken Sie auf **Vorschläge** , um für ausgewählte Felder Textvervollständigungsfunktionen bei der Abfrage zu aktivieren.
 
 ## <a name="import-your-data"></a>Import your data
 1. Geben Sie unter **Import your data**(Daten importieren) einen Namen für den Indexer an. Denken Sie daran, dass der Datenimport-Assistent einen Indexer generiert. Wenn Sie diesen später anzeigen oder bearbeiten möchten, können Sie ihn über das Portal auswählen, anstatt erneut den Assistenten auszuführen. 
-2. Geben Sie den Zeitplan an. Dieser basiert auf der regionalen Zeitzone, in der der Dienst bereitgestellt wird.
-3. Legen Sie erweiterte Optionen zum Angeben von Schwellenwerten an, die bestimmen, ob die Indizierung fortgesetzt werden kann, wenn ein Dokument verworfen wird. Außerdem können Sie angeben, ob Felder vom Typ **Schlüssel** Leerzeichen und Schrägstriche enthalten dürfen.  
-4. Klicken Sie auf **OK**, um den Index zu erstellen und die Daten zu importieren.
+
+1. Geben Sie den Zeitplan an. Dieser basiert auf der regionalen Zeitzone, in der der Dienst bereitgestellt wird.
+
+1. Legen Sie erweiterte Optionen zum Angeben von Schwellenwerten an, die bestimmen, ob die Indizierung fortgesetzt werden kann, wenn ein Dokument verworfen wird. Außerdem können Sie angeben, ob Felder vom Typ **Schlüssel** Leerzeichen und Schrägstriche enthalten dürfen.  
+
+1. Klicken Sie auf **OK**, um den Index zu erstellen und die Daten zu importieren.
 
 Die Indizierung kann im Portal überwacht werden. Während Dokumente geladen werden, steigt die Dokumentanzahl für den definierten Index. Manchmal dauert es einige Minuten, bis die Portalseite die neuesten Aktualisierungen widerspiegelt.
 
@@ -87,9 +94,9 @@ Der Index kann abgefragt werden, sobald alle Dokumente geladen wurden.
 
 ## <a name="query-an-index-using-search-explorer"></a>Abfragen eines Index mit dem Suchexplorer
 
-Das Portal enthält den **Suchexplorer**, mit dem Sie einen Index abfragen können, ohne Code schreiben zu müssen. Der [Suchexplorer](search-explorer.md) kann für jeden beliebigen Index verwendet werden.
+Das Portal enthält den **Suchexplorer**, mit dem Sie einen Index abfragen können, ohne Code schreiben zu müssen. Sie können den [Suchexplorer](search-explorer.md) für jeden Index verwenden.
 
-Die Suche basiert auf Standardeinstellungen – beispielsweise auf der [einfachen Syntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) und dem standardmäßigen [searchMode-Abfrageparameter (https://docs.microsoft.com/rest/api/searchservice/search-documents). 
+Die Suche basiert auf den Standardeinstellungen, z.B. der [einfachen Syntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) und dem [searchMode-Abfrageparameter](https://docs.microsoft.com/rest/api/searchservice/search-documents), der standardmäßig verwendet wird. 
 
 Ergebnisse werden in einem ausführlichen JSON-Format zurückgegeben, damit Sie das gesamte Dokument untersuchen können.
 

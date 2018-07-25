@@ -9,12 +9,12 @@ ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: be52a57f10f286bded9a31d84b36a49717b94006
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 0432a1782ab5e3aef471666e2f0a3ca18dead73e
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029756"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001506"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe des Azure-Portals
 
@@ -94,9 +94,9 @@ Nachdem Sie alle Module für eine Bereitstellung konfiguriert haben, klicken Sie
 
 ### <a name="step-3-specify-routes-optional"></a>Schritt 3: Angeben von Routen (optional)
 
-Routen definieren, wie Module innerhalb einer Bereitstellung miteinander kommunizieren. Standardmäßig erhalten Sie vom Assistenten eine Route mit dem Namen **route**, die als **FROM /* INTO $upstream** definiert ist. Dies bedeutet, dass alle Nachrichten, die von Modulen ausgegeben werden, an Ihren IoT-Hub gesendet werden.  
+Routen definieren, wie Module innerhalb einer Bereitstellung miteinander kommunizieren. Standardmäßig erhalten Sie vom Assistenten eine Route mit dem Namen **route**, die als **FROM /* INTO $upstream** definiert ist. Dies bedeutet, dass alle Nachrichten, die von Modulen ausgegeben werden, an Ihren IoT Hub gesendet werden.  
 
-Fügen Sie die Routen mit Informationen aus dem Abschnitt [Deklarieren von Routen](module-composition.md#declare-routes) hinzu, oder aktualisieren Sie diese, und wählen Sie dann **Weiter** aus, um mit dem Abschnitt über die Überprüfung fortzufahren.
+Fügen Sie die Routen mit Informationen aus dem Abschnitt [Deklarieren von Routen](module-composition.md#declare-routes) hinzu, oder aktualisieren Sie diese, und wählen Sie dann **Weiter** aus, um mit dem Abschnitt zur Überprüfung fortzufahren.
 
 
 ### <a name="step-4-target-devices"></a>Schritt 4: Festlegen von Zielgeräten
@@ -105,7 +105,7 @@ Mit der Tageigenschaft Ihrer Geräte wählen Sie bestimmte Geräte als Ziele aus
 
 Da mehrere Bereitstellungen dasselbe Gerät als Ziel verwenden können, sollten Sie für jede Bereitstellung eine Priorität festlegen. Tritt irgendwann ein Konflikt auf, dann „gewinnt“ die Bereitstellung mit der höchsten Priorität (höhere Werte deuten auf eine höhere Priorität hin). Haben zwei Bereitstellungen dieselbe Priorität, dann wird jeweils diejenige verwendet, die später erstellt wurde. 
 
-1. Geben Sie eine positive ganze Zahl als **Priorität** für die Bereitstellung ein. Wenn mindestens zwei Bereitstellung auf dasselbe Gerät ausgerichtet sind, wird die Bereitstellung mit dem höchsten numerischen Wert für die Priorität angewendet.
+1. Geben Sie eine positive ganze Zahl als **Priorität** für die Bereitstellung ein. Wenn mindestens zwei Bereitstellungen auf dasselbe Gerät ausgerichtet sind, wird die Bereitstellung mit dem höchsten numerischen Wert für die Priorität angewendet.
 1. Geben Sie unter **Zielbedingung** eine Bedingung ein, um festzulegen, auf welche Geräte diese Bereitstellung angewendet werden soll. Die Bedingung basiert auf den Gerätezwillingstags oder auf den gewünschten Eigenschaften des Gerätezwillings und muss dem Ausdrucksformat entsprechen. Beispiel: `tags.environment='test'` oder `properties.desired.devicemodel='4000x'`. 
 1. Klicken Sie auf **Weiter**, um mit dem letzten Schritt fortzufahren.
 

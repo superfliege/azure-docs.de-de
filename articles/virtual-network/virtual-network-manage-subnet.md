@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: ea16a9828bfb989c49f3cc8d656122b3083ee66a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 26e01ccab3693c672130462104078c16526aa921
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34702073"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38992495"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Hinzufügen, Ändern oder Löschen von Subnetzen virtueller Netzwerke
 
@@ -44,7 +44,7 @@ Das Konto, bei dem Sie sich anmelden oder das Sie zum Herstellen einer Verbindun
 3. Wählen Sie unter **EINSTELLUNGEN** die Option **Subnetze** aus.
 4. Wählen Sie **+ Subnetz** aus.
 5. Geben Sie Werte für die folgenden Parameter ein:
-    - **Name:** Der Name muss innerhalb des virtuellen Netzwerks eindeutig sein.
+    - **Name:** Der Name muss innerhalb des virtuellen Netzwerks eindeutig sein. Für die maximale Kompatibilität mit anderen Azure-Diensten wird empfohlen, einen Buchstaben als erstes Zeichen des Namens zu verwenden. Beispielsweise wird Azure Application Gateway nicht in einem Subnetz bereitgestellt, dessen Name mit einer Zahl beginnt.
     - **Adressbereich:** Der Bereich muss innerhalb des Adressraums für das virtuelle Netzwerk eindeutig sein. Der Bereich darf keine Überschneidungen mit anderen Subnetzadressbereichen innerhalb des virtuellen Netzwerks aufweisen. Der Adressraum muss mithilfe der CIDR-Notation (Classless Inter-Domain Routing, klassenloses domänenübergreifendes Routing) angegeben werden. In einem virtuellen Netzwerk mit dem Adressraum 10.0.0.0/16 können Sie beispielsweise für ein Subnetz den Adressraum 10.0.0.0/24 definieren. Der kleinste Bereich, den Sie angeben können, ist /29, der acht IP-Adressen für das Subnetz bereitstellt. Azure reserviert die erste und letzte Adresse in jedem Subnetz aus Gründen der Protokollkonformität. Drei weitere Adressen sind für die Nutzung durch Azure-Dienste reserviert. Demzufolge führt das Einrichten eines Subnetzes mit dem Adressbereich /29 zu drei nutzbaren IP-Adressen im Subnetz. Wenn Sie ein virtuelles Netzwerk mit einem VPN-Gateway verbinden möchten, müssen Sie ein Gatewaysubnetz erstellen. Weitere Informationen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) im Abschnitt „Gatewaysubnetz“. Unter bestimmten Bedingungen können Sie den Adressbereich ändern, nachdem das Subnetz hinzugefügt wurde. Informationen zum Ändern des Adressbereichs eines Subnetzes finden Sie im Abschnitt [Ändern der Subnetzeinstellungen](#change-subnet-settings).
     - **Netzwerksicherheitsgruppe:** Sie können einem Subnetz keine oder eine vorhandene Netzwerksicherheitsgruppe zuordnen, um ein- und ausgehenden Netzwerkdatenverkehr für das Subnetz zu filtern. Die Netzwerksicherheitsgruppe muss demselben Abonnement und Standort wie das virtuelle Netzwerk angehören. Erfahren Sie mehr über [Netzwerksicherheitsgruppen](security-overview.md) und das [Erstellen einer Netzwerksicherheitsgruppe](tutorial-filter-network-traffic.md).
     - **Routingtabelle:** Sie können einem Subnetz keine oder eine vorhandene Routingtabelle zuordnen, um die Weiterleitung von Netzwerkdatenverkehr an andere Netzwerke zu steuern. Die Routingtabelle muss demselben Abonnement und Standort wie das virtuelle Netzwerk angehören. Erfahren Sie mehr über [Azure-Routing](virtual-networks-udr-overview.md) und das [Erstellen einer Routingtabelle](tutorial-create-route-table-portal.md).
@@ -68,7 +68,7 @@ Das Konto, bei dem Sie sich anmelden oder das Sie zum Herstellen einer Verbindun
 4. Wählen Sie in der Liste der Subnetze das Subnetz aus, für das Sie Einstellungen ändern möchten. Sie können die folgenden Einstellungen ändern:
 
     - **Adressbereich**: Wenn innerhalb des Subnetzes keine Ressourcen bereitgestellt sind, können Sie den Adressbereich ändern. Wenn Ressourcen im Subnetz vorhanden sind, müssen Sie die Ressourcen zuerst entweder in ein anderes Subnetz verschieben oder aus dem Subnetz löschen. Die Schritte zum Verschieben oder Löschen einer Ressource variieren abhängig von der Ressource. Informationen zum Verschieben oder Löschen von Ressourcen in Subnetzen finden Sie in der Dokumentation zum jeweiligen Ressourcentyp, den Sie verschieben oder löschen möchten. Die Einschränkungen für den **Adressbereich** finden Sie in Schritt 5 von [Hinzufügen eines Subnetzes](#add-a-subnet).
-    - **Benutzer:** Sie können den Zugriff auf das Subnetz über integrierte Rollen oder eigene benutzerdefinierte Rollen steuern. Weitere Informationen zum Zuweisen von Rollen und Benutzern für den Zugriff auf das Subnetz finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten des Zugriffs auf Ihre Azure-Ressourcen](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-access).
+    - **Benutzer:** Sie können den Zugriff auf das Subnetz über integrierte Rollen oder eigene benutzerdefinierte Rollen steuern. Weitere Informationen zum Zuweisen von Rollen und Benutzern für den Zugriff auf das Subnetz finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten des Zugriffs auf Ihre Azure-Ressourcen](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access).
     - **Netzwerksicherheitsgruppe** und **Routingtabelle**: Siehe Schritt 5 unter [Hinzufügen eines Subnetzes](#add-a-subnet).
     - **Dienstendpunkte**: Siehe Schritt 5 im Abschnitt „Dienstendpunkte“ unter [Hinzufügen eines Subnetzes](#add-a-subnet). Wenn Sie einen Dienstendpunkt für ein vorhandenes Subnetz aktivieren, stellen Sie sicher, dass auf keiner Ressource im Subnetz kritische Tasks ausgeführt werden. Dienstendpunkte ändern die Routen in jeder Netzwerkschnittstelle im Subnetz von der Standardroute mit dem Adresspräfix *0.0.0.0/0* und *Internet* als Typ des nächsten Hops zu einer neuen Route mit dem Adresspräfix des Diensts und *VirtualNetworkServiceEndpoint* als Typ des nächsten Hops. Während dieses Wechsels werden alle offenen TCP-Verbindungen geschlossen. Der Dienstendpunkt wird erst aktiviert, wenn der gesamte Datenverkehr an den Dienst in allen Netzwerkschnittstellen mit der neuen Route aktualisiert wurde. Weitere Informationen zum Routing finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke](virtual-networks-udr-overview.md).
 5. Wählen Sie **Speichern**aus.

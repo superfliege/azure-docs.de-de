@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 03/20/2018
+ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: e0254cd16c27597c3d52aed19b4c4ece49bac765
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 48df858095cb867954460ec858567e41ed330063
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366391"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39012068"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-azure-virtual-machines"></a>Häufig gestellte Fragen zu SQL Server in Microsoft Azure Virtual Machines
 
@@ -71,7 +71,7 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 1. **Wie kann ich meine lizenzierte Kopie von SQL Server auf einer Azure-VM installieren?**
 
-   Es gibt hierbei zwei Möglichkeiten. Sie können eines der [virtuellen Computerimages bereitstellen, das Lizenzen unterstützt](virtual-machines-windows-sql-server-iaas-overview.md#BYOL). Eine weitere Möglichkeit ist das Kopieren der SQL Server-Installationsmedien auf einen virtuellen Windows Server-Computer und das anschließende Installieren von SQL Server auf dem virtuellen Computer. Aus Gründen der Lizenzierung benötigen Sie die [Lizenzmobilität durch Software Assurance für Azure](https://azure.microsoft.com/pricing/license-mobility/). Weitere Informationen finden Sie unter [Pricing guidance for SQL Server Azure VMs](virtual-machines-windows-sql-server-pricing-guidance.md) (Preisinformationen für virtuelle Azure-Computer unter SQL Server).
+   Es gibt hierbei zwei Möglichkeiten. Sie können eines der [VM-Images, die Lizenzen unterstützen](virtual-machines-windows-sql-server-iaas-overview.md#BYOL), bereitstellen – dies ist auch bekannt als Bring-Your-Own-License (BYOL). Eine weitere Möglichkeit ist das Kopieren der SQL Server-Installationsmedien auf einen virtuellen Windows Server-Computer und das anschließende Installieren von SQL Server auf dem virtuellen Computer. Wenn Sie SQL Server jedoch manuell installieren, gibt es keine Portalintegration, und die SQL Server-IaaS-Agent-Erweiterung wird nicht unterstützt, sodass Features wie z.B. automatisierte Sicherung und automatisiertes Patchen in diesem Szenario nicht funktionieren. Aus diesem Grund sollten Sie eines der Images aus dem BYOL-Katalog verwenden. Um BYOL oder Ihre eigenen SQL Server-Medien auf einer Azure-VM zu verwenden, benötigen Sie [License Mobility durch Software Assurance für Azure](https://azure.microsoft.com/pricing/license-mobility/). Weitere Informationen finden Sie unter [Pricing guidance for SQL Server Azure VMs](virtual-machines-windows-sql-server-pricing-guidance.md) (Preisinformationen für virtuelle Azure-Computer unter SQL Server).
 
 1. **Kann ich einen virtuellen Computer so ändern, dass meine eigene SQL Server-Lizenz verwendet wird, wenn er mithilfe eines der Katalogimages mit nutzungsbasierter Bezahlung erstellt wurde?**
 
@@ -115,6 +115,9 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 1. **Werden SQL Server-Failoverclusterinstanzen (FCI) auf Azure-VMs unterstützt?**
 
    Ja. Sie können [einen Windows-Failovercluster unter Windows Server 2016](virtual-machines-windows-portal-sql-create-failover-cluster.md) erstellen und für die Speicherung des Clusters das Feature „Direkte Speicherplätze“ (S2D) verwenden. Alternativ können Sie, wie unter [Hochverfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions) beschrieben, Cluster- oder Speicherlösungen von Drittanbietern nutzen.
+
+   > [!IMPORTANT]
+   > Derzeit wird die [SQL Server-IaaS-Agent-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md) nicht für SQL Server-Failoverclusterinstanzen (FCI) in Azure unterstützt. Sie sollten die Erweiterung auf virtuellen Computern deinstallieren, die an den FCI beteiligt sind. Diese Erweiterung unterstützt Features wie automatisierte Sicherung und automatisiertes Patchen sowie einige Portalfeatures für SQL. Diese Features sind nach der Deinstallation des Agents nicht für SQL-VMs einsetzbar.
 
 1. **Was ist der Unterschied zwischen SQL-VMs und dem SQL-Datenbank-Dienst?**
 

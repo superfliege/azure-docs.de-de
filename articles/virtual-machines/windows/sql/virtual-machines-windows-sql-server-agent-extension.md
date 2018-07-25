@@ -13,13 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 03/20/2018
+ms.date: 07/12/2018
 ms.author: jroth
-ms.openlocfilehash: d9cb4a3bdc5776c4ac70ac376d8b839193e3fc3d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c663aec02d4d1808426a9f05a6674d5504563a63
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39012258"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-resource-manager"></a>Automatisieren von Verwaltungsaufgaben auf virtuellen Azure-Computern mit der SQL Server-Agent-Erweiterung (Resource Manager)
 > [!div class="op_single_selector"]
@@ -62,6 +63,9 @@ Anforderungen für die Verwendung der Erweiterung für SQL Server-IaaS-Agent auf
 
 * [Herunterladen und Konfigurieren der aktuellen Azure PowerShell-Befehle](/powershell/azure/overview)
 
+> [!IMPORTANT]
+> Derzeit wird die [SQL Server-IaaS-Agent-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md) nicht für SQL Server-Failoverclusterinstanzen (FCI) in Azure unterstützt. Sie sollten die Erweiterung auf virtuellen Computern deinstallieren, die an einer FCI beteiligt sind. Die von der Erweiterung unterstützten Features sind nach der Deinstallation des Agents nicht für die SQL-VMs verfügbar.
+
 ## <a name="installation"></a>Installation
 Die Erweiterung für SQL Server-IaaS-Agent wird automatisch installiert, wenn Sie eines der Katalogimages für virtuelle SQL Server-Computer bereitstellen. Falls Sie die Erweiterung auf einer dieser SQL Server-VMs manuell neu installieren müssen, verwenden Sie den folgenden PowerShell-Befehl:
 
@@ -72,10 +76,8 @@ Set-AzureRmVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "
 > [!IMPORTANT]
 > Wenn die Erweiterung noch nicht installiert ist, wird der SQL Server-Dienst durch die Installation der Erweiterung neu gestartet.
 
-Es ist auch möglich, die SQL Server-IaaS-Agent-Erweiterung auf einem virtuellen Computer mit ausschließlich dem Betriebssystem Windows Server zu installieren. Dies wird nur unterstützt, wenn Sie auch SQL Server manuell auf diesem Computer installiert haben. Verwenden Sie zum manuellen Installieren der Erweiterung ebenfalls das PowerShell-Cmdlet **Set-AzureRmVMSqlServerExtension**.
-
 > [!NOTE]
-> Wenn Sie die SQL Server-IaaS-Agent-Erweiterung manuell auf einer VM mit ausschließlich dem Betriebssystem Windows Server installieren, können Sie die SQL Server-Konfigurationseinstellungen nicht im Azure-Portal verwalten. In diesem Szenario müssen Sie alle Änderungen mit PowerShell vornehmen.
+> Die SQL Server-IaaS-Agent-Erweiterung wird nur für [SQL Server-VM-Katalogimages](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms) unterstützt (mit nutzungsbasierter Bezahlung oder Bring-Your-Own-License). Sie wird nicht unterstützt, wenn Sie SQL Server manuell auf einem virtuellen Computer installieren, der ausschließlich unter dem Betriebssystem Windows-Server ausgeführt wird, oder wenn Sie eine benutzerdefinierte SQL Server-VM-VHD bereitstellen. In diesen Fällen ist es eventuell möglich, die Erweiterung manuell mithilfe von PowerShell zu installieren und zu verwalten, aber Sie erhalten die SQL Server-Konfigurationseinstellungen nicht im Azure-Portal. Es wird jedoch dringend empfohlen, stattdessen ein Image des SQL Server-VM-Katalogs zu installieren und dann anzupassen.
 
 ## <a name="status"></a>Status
 Eine Möglichkeit, zu überprüfen, ob die Erweiterung installiert ist, ist das Anzeigen des Agent-Status im Azure-Portal. Wählen Sie im Fenster des virtuellen Computers die Option **Alle Einstellungen** aus, und klicken Sie dann auf **Erweiterungen**. Die Erweiterung **SQLIaaSExtension** sollte aufgeführt sein.

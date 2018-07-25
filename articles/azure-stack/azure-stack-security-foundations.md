@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 07/12/2018
 ms.author: mabrigg
-ms.openlocfilehash: c1d92f8f2ed9e8ab504afc65bab861e1f7bb3689
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a3bd314a1df3c45c76b2e3a5acb31c1474d0fdf5
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29843696"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39011252"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Sicherheitsstatus der Azure Stack-Infrastruktur
 
@@ -27,17 +27,16 @@ ms.locfileid: "29843696"
 
 Sicherheitsüberlegungen und Konformitätsbestimmungen gehören zu den wichtigsten Beweggründen für die Verwendung von Hybrid Clouds. Azure Stack wurde für diese Szenarien konzipiert, und es ist wichtig, bei der Einführung von Azure Stack über die bereits vorhandenen Sicherheitsmaßnahmen informiert zu sein.
 
-In Azure Stack koexistieren zwei Sicherheitsstatusebenen. Die erste Ebene besteht aus der Azure Stack-Infrastruktur, die von den Hardwarekomponenten bis zum Azure Resource Manager reicht und das Administrator- und Mandantenportal umfasst. Die zweite Ebene besteht aus den Workloads, die Mandanten erstellen, bereitstellen und verwalten und umfasst z.B. virtuelle Computer oder die App Services-Websites.  
+In Azure Stack sind zwei Sicherheitsstatusebenen vorhanden. Die erste Ebene ist die Azure Stack-Infrastruktur, die sämtliche Komponenten von den Hardwarekomponenten bis hin zum Azure Resource Manager umfasst. Die erste Ebene beinhaltet das Administrator- und Mandantenportal. Die zweite Ebene besteht aus den Workloads, die von Mandanten erstellt, bereitgestellt und verwaltet werden. Die zweite Ebene beinhaltet Elemente wie virtuelle Computer und App Service-Websites.
 
 ## <a name="security-approach"></a>Sicherheitsansatz
-Azure Stack wurde mit einem Sicherheitsstatus konzipiert, um moderne Bedrohungen abzuwehren und die Anforderungen der wichtigsten Konformitätsstandards zu erfüllen. Daraus resultiert, dass der Sicherheitsstatus der Azure Stack-Infrastruktur auf zwei Säulen ruht:
 
- - **Von einer Sicherheitsübertretung ausgehen.**  
+Der Sicherheitsstatus für Azure Stack wurde für die Abwehr moderner Bedrohungen und die Erfüllung der Anforderungen der wichtigsten Compliancestandards konzipiert. Daraus resultiert, dass der Sicherheitsstatus der Azure Stack-Infrastruktur auf zwei Säulen ruht:
+
+ - **Von einer Sicherheitsverletzung ausgehen**  
 Von der Annahme ausgehend, dass bereits eine systemseitige Sicherheitsverletzung vorliegt, konzentrieren wir uns auf das *Erkennen und Beschränken der Auswirkungen von Sicherheitsverletzungen*, anstatt nur zu versuchen, Angriffe zu verhindern. 
- - **Standardmäßig verstärkt.**  
-Da die Infrastruktur auf klar definierter Hardware und Software ausgeführt wird, *aktivieren, konfigurieren und überprüfen wir alle Sicherheitsfeatures* standardmäßig.
-
-
+ - **Standardmäßig verstärkt**  
+Da die Infrastruktur auf klar definierter Hardware und Software ausgeführt wird, *aktiviert, konfiguriert und überprüft Azure Stack standardmäßig alle Sicherheitsfeatures*.
 
 Da Azure Stack als integriertes System geliefert wird, wird der Sicherheitsstatus der Azure Stack-Infrastruktur von Microsoft definiert. Genau wie in Azure sind Mandanten dafür verantwortlich, den Sicherheitsstatus ihrer Mandantenworkloads zu definieren. Dieses Dokument vermittelt grundlegende Kenntnisse über den Sicherheitsstatus der Azure Stack-Infrastruktur.
 
@@ -69,6 +68,8 @@ Ein anderes Windows Server 2016-Sicherheitsfeature in Azure Stack ist Windows De
 ## <a name="antimalware"></a>Antimalware
 Jede Komponente in Azure Stack (Hyper-V-Hosts und virtuelle Computer) wird mit Windows Defender Antivirus geschützt.
 
+In Szenarien mit bestehender Verbindung werden mehrmals täglich Updates für Antivirendefinitionen und -programme angewendet. In Szenarien mit getrennter Verbindung werden Updates für Antischadsoftware im Rahmen der monatlichen Azure Stack-Updates angewendet. Weitere Informationen finden Sie unter [Aktualisieren von Windows Defender Antivirus in Azure Stack](azure-stack-security-av.md).
+
 ## <a name="constrained-administration-model"></a>Eingeschränktes Verwaltungsmodell
 Die Verwaltung in Azure Stack wird mit drei Einstiegspunkten gesteuert, von denen jeder einen bestimmten Zweck hat: 
 1. Das [Administratorportal](azure-stack-manage-portals.md) bietet eine Point-and-Click-Benutzeroberfläche für tägliche Verwaltungsvorgänge.
@@ -81,6 +82,8 @@ Die Azure Stack-Infrastruktur umfasst mehrere Ebenen der Zugriffssteuerungsliste
 Netzwerk-ACLs werden in drei Ebenen durchgesetzt:
 1.  Top-of Rack-Switches
 2.  Softwaredefiniertes Netzwerk
-3.  Host- und VM-Betriebssystemfirewalls 
+3.  Host- und VM-Betriebssystemfirewalls
 
+## <a name="next-steps"></a>Nächste Schritte
 
+- [Erfahren Sie, wie Sie Ihre Geheimnisse in Azure Stack rotieren.](azure-stack-rotate-secrets.md)

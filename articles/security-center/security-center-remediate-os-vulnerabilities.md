@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/19/2018
+ms.date: 07/10/2018
 ms.author: terrylan
-ms.openlocfilehash: 3af8f211c19fde9d2fc79f41fc13009570a9b4de
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 3c56abcec37bb6abcb77ec8cc443b0656bd69932
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285915"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990794"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Korrigieren von Sicherheitskonfigurationen in Azure Security Center
 Azure Security Center analysiert täglich das Betriebssystem Ihrer virtuellen Computer (VMs) und physischen Computer auf Konfigurationen, die sie möglicherweise anfälliger für Angriffe machen. Security Center empfiehlt die Behandlung von Sicherheitsrisiken, wenn die Betriebssystemkonfiguration nicht den empfohlenen Sicherheitskonfigurationsregeln entspricht, und empfiehlt Konfigurationsänderungen, um diese Sicherheitsrisiken zu beseitigen.
@@ -27,11 +27,11 @@ Azure Security Center analysiert täglich das Betriebssystem Ihrer virtuellen Co
 Weitere Informationen zu den spezifischen Konfigurationen, die überwacht werden, finden Sie in der [Liste mit den empfohlenen Konfigurationsregeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). Wie Sie Sicherheitskonfigurationsbewertungen anpassen, erfahren Sie unter [Anpassen von Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center [Vorschau]](security-center-customize-os-security-config.md).
 
 ## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
-„Sicherheitskonfigurationen korrigieren“ wird in Security Center als Empfehlung angezeigt. Die Empfehlung finden Sie unter **Empfehlungen** > **Compute**.
+„Sicherheitskonfigurationen korrigieren“ wird in Security Center als Empfehlung angezeigt. Die Empfehlung finden Sie unter **Empfehlungen** > **Compute und Apps**.
 
-In diesem Beispiel betrachten wir unter **Compute** die Empfehlung „Sicherheitskonfigurationen korrigieren“.
-1. Wählen Sie im linken Bereich in Security Center die Option **Compute** aus.  
-  Das Fenster **Compute** wird geöffnet.
+In diesem Beispiel betrachten wir unter **Compute und Apps** die Empfehlung „Sicherheitskonfigurationen korrigieren“.
+1. Wählen Sie im linken Bereich in Security Center die Option **Compute und Apps** aus.  
+  Das Fenster **Compute und Apps** wird geöffnet.
 
    ![Optimieren von Sicherheitskonfigurationen][1]
 

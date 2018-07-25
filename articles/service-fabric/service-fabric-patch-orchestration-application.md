@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: cbd5a0ea5fbeb7becbfc33bf72af73425630bff6
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: a74eab546eefd765b89aae6f12fcff554d9937c4
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970719"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036937"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
@@ -148,7 +148,7 @@ Das Verhalten der App für die Patchorchestrierung kann Ihren Anforderungen ents
 |**Parameter**        |**Typ**                          | **Details**|
 |:-|-|-|
 |MaxResultsToCache    |Long                              | Maximale Anzahl von Windows Update-Ergebnissen, die zwischengespeichert werden sollen. <br>Der Standardwert ist 3000, wobei Folgendes angenommen wird: <br> – Es sind 20 Knoten vorhanden. <br> – Jeden Monat können fünf Updates auf einem Knoten erfolgen. <br> – Pro Vorgang können zehn Ergebnisse vorliegen. <br> – Es sollen die Ergebnisse für die letzten drei Monaten gespeichert werden. |
-|TaskApprovalPolicy   |Enum <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy gibt die Richtlinie an, die vom Koordinatordienst zum Installieren von Windows-Updates auf den Service Fabric-Clusterknoten verwendet werden soll.<br>                         Zulässige Werte sind: <br>                                                           <b>NodeWise</b>. Windows Update wird immer nur auf jeweils einem Knoten installiert. <br>                                                           <b>UpgradeDomainWise</b>. Windows Update wird immer nur in jeweils einer Upgradedomäne installiert. (Höchstens alle Knoten in einer Upgradedomäne können Windows Update verwenden.)
+|TaskApprovalPolicy   |Enum <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy gibt die Richtlinie an, die vom Koordinatordienst zum Installieren von Windows-Updates auf den Service Fabric-Clusterknoten verwendet werden soll.<br>                         Zulässige Werte sind: <br>                                                           <b>NodeWise</b>. Windows Update wird immer nur auf jeweils einem Knoten installiert. <br>                                                           <b>UpgradeDomainWise</b>. Windows Update wird immer nur in jeweils einer Upgradedomäne installiert. (Höchstens alle Knoten in einer Upgradedomäne können Windows Update verwenden.)<br> Entscheiden Sie mithilfe des Abschnitts [Häufig gestellte Fragen](#frequently-asked-questions), welche Richtlinie für Ihren Cluster am besten geeignet ist.
 |LogsDiskQuotaInMB   |Long  <br> (Standardwert: 1024)               |Maximale Größe der Protokolle für die App für die Patchorchestrierung in MB, die lokal auf jedem Knoten beibehalten werden können.
 | WUQuery               | Zeichenfolge<br>(Standardwert: "IsInstalled=0")                | Abfrage zum Abrufen von Windows-Updates. Weitere Informationen finden Sie unter [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx).
 | InstallWindowsOSOnlyUpdates | Boolescher Wert <br> (Standardwert: True)                 | Dieses Flag ermöglicht die Installation von Windows-Betriebssystemupdates.            |
@@ -304,19 +304,36 @@ F: **Was kann ich tun, wenn mein Cluster einen Fehler aufweist und ich ein dring
 
 A. Die App für die Patchorchestrierung installiert keine Updates, solange der Cluster sich in einem fehlerhaften Zustand befindet. Versuchen Sie, Ihren Cluster in einen fehlerfreien Zustand zu versetzen, um den Workflow der App für die Patchorchestrierung fortzuführen.
 
-F: **Warum dauert das Patchen für den gesamten Cluster so lange?**
+F: **Soll ich TaskApprovalPolicy für meinen Cluster auf NodeWise oder UpgradeDomainWise festlegen?**
 
-A. Die Ausführungsdauer der App für die Patchorchestrierung ist größtenteils von den folgenden Faktoren abhängig:
+A. UpgradeDomainWise beschleunigt das gesamte Clusterpatchen, weil alle Knoten einer Upgradedomäne gleichzeitig gepatcht werden. Dies bedeutet, dass alle Knoten einer Upgradedomäne während des Patchprozesses nicht verfügbar wären (im Zustand [Deaktiviert](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)).
 
-- Richtlinie des Koordinatordiensts. 
-  - Die Standardrichtlinie `NodeWise` führt dazu, dass nur jeweils ein Knoten gepatcht wird. Besonders bei größeren Clustern sollten Sie die Richtlinie `UpgradeDomainWise` verwenden, um ein schnelleres Patchen bei mehreren Clustern zu erreichen.
-- Anzahl der zum Herunterladen und Installieren verfügbaren Updates. 
-- Durchschnittliche Zeit zum Herunterladen und Installieren eines Updates. Dies sollte nicht länger als einige Stunden dauern.
-- Leistung des virtuellen Computers und Netzwerkbandbreite.
+Im Gegensatz dazu patcht die NodeWise-Richtlinie nur jeweils einen Knoten, was bedeutet, dass das gesamte Clusterpatchen mehr Zeit in Anspruch nehmen würde. Es wäre jedoch während des Patchprozesses nur maximal ein Knoten nicht verfügbar (im Zustand [Deaktiviert](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)).
+
+Wenn Ihr Cluster die Ausführung auf N-1 der Upgradedomänen während des Patchzyklus tolerieren kann (wobei N die Gesamtzahl der Upgradedomänen im Cluster ist), können Sie die Richtlinie UpgradeDomainWise festlegen, andernfalls NodeWise.
+
+F: **Wie lange dauert das Patchen eines Knotens?**
+
+A. Das Patchen eines Knotens kann von Minuten (z.B.: [Windows Defender-Definitionsupdates](https://www.microsoft.com/wdsi/definitions)) bis zu Stunden (z.B.: [kumulative Windows-Updates](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)) dauern. Der Zeitaufwand für das Patchen eines Knotens hängt größtenteils von Folgendem ab: 
+ - Der Größe der Updates.
+ - Der Anzahl der Updates, die in einem Patchfenster angewendet werden müssen.
+ - Der zum Installieren der Updates, Neustarten des Knotens (falls erforderlich) und Beenden der nach dem Neustart auszuführenden Installationsschritte benötigten Zeit.
+ - Der Leistung von virtuellem/physischem Computer und den Netzwerkbedingungen.
+
+F: **Wie lange dauert es, einen kompletten Cluster zu patchen?**
+
+A. Die zum Patchen eines kompletten Clusters benötigte Zeit hängt von den folgenden Faktoren ab:
+
+- Der zum Patchen eines Knotens benötigten Zeit.
+- Richtlinie des Koordinatordiensts. – Die Standardrichtlinie `NodeWise` führt dazu, dass nur jeweils ein Knoten gepatcht wird, was langsamer wäre als `UpgradeDomainWise`. Beispiel: Das Patchen eines Knotens dauert ca. 1 Stunde. Ein Cluster mit 20 Knoten (gleichen Typs) mit 5 Upgradedomänen mit jeweils 4 Knoten soll gepatcht werden.
+    - Das Patchen des gesamten Clusters sollte mit Richtlinie `NodeWise` ca. 20 Stunden dauern.
+    - Es sollte mit Richtlinie `UpgradeDomainWise` ca. 5 Stunden dauern.
+- Clusterlast: Bei jedem Patchvorgang muss die Kundenworkload zu anderen verfügbaren Knoten im Cluster verschoben werden. Knoten, die gerade gepatcht werden, sind während dieser Zeit im Zustand [Deaktiviert](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling). Wenn der Cluster in der Nähe der Spitzenlast ausgeführt wird, würde die Deaktivierung länger dauern. Daher scheint der gesamte Patchprozess unter solchen Belastungsbedingungen langsam zu sein.
+- Clusterintegritätsfehler während des Patchens: Jede [Beeinträchtigung](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error) der [Integrität des Clusters](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction) würde den Patchprozess unterbrechen. Dies würde die zum Patchen des gesamten Clusters erforderliche Zeit erhöhen.
 
 F: **Warum werden in den über REST-APIs abgerufenen Windows Update-Ergebnissen einige Updates angezeigt, nicht aber im Windows Update-Verlauf auf dem Computer?**
 
-A. Einige Produktupdates werden nur im jeweiligen Update-/Patchverlauf angezeigt. So werden beispielsweise Windows Defender-Updates unter Windows Server 2016 nicht im Windows Update-Verlauf angezeigt.
+A. Einige Produktupdates werden nur im jeweiligen Update-/Patchverlauf angezeigt. So werden beispielsweise Windows Defender-Updates unter Windows Server 2016 im Windows Update-Verlauf angezeigt oder nicht.
 
 F: **Kann die App für die Patchorchestrierung für das Patchen des Entwicklungsclusters (Einzelknotencluster) verwendet werden?**
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/05/2018
+ms.date: 07/11/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: df4c60be8a29ab397424e9e5f9de7050f64d87c2
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: b7fd880683eed9e742007d6e595e1f275467b664
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859774"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990114"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics-Datensicherheit
 Dieses Dokument enthält ergänzend zu den Informationen im [Azure Trust Center](../security/security-microsoft-trust-center.md) spezifische Informationen zu Azure Log Analytics.  
@@ -37,6 +37,24 @@ Der Log Analytics-Dienst verwaltet Ihre Daten in der Cloud sicher mithilfe der f
 * Sicherheitsstandard-Zertifizierungen
 
 Sollten Sie Fragen, Vorschläge oder Probleme im Zusammenhang mit den folgenden Informationen (einschließlich unserer Sicherheitsrichtlinien) haben, können Sie sich über die [Azure-Supportoptionen](http://azure.microsoft.com/support/options/) mit uns in Verbindung setzen.
+
+## <a name="sending-data-securely-using-tls-12"></a>Sicheres Senden von Daten mit TLS 1.2 
+
+Um die Sicherheit von Daten bei der Übertragung an Log Analytics sicherzustellen, wird dringend empfohlen, den Agent so zu konfigurieren, dass mindestens Transport Layer Security (TLS) 1.2 verwendet wird. Bei älteren Versionen von TLS/Secure Sockets Layer (SSL) wurde ein Sicherheitsrisiko festgestellt. Sie funktionieren aus Gründen der Abwärtskompatibilität zwar noch, werden jedoch **nicht empfohlen**, und die Industrie ist bestrebt, diese älteren Protokolle schnell auszumustern. 
+
+Das [PCI Security Standards Council](https://www.pcisecuritystandards.org/) hat den [30. Juni 2018 als Termin](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) für die Deaktivierung älterer Versionen von TLS/SSL und das Upgrade auf sicherere Protokolle festgelegt. Wenn Azure keine Legacyunterstützung mehr anbietet und Ihre Agents nicht mindestens über TLS 1.2 kommunizieren können, ist das Senden von Daten an Log Analytics nicht möglich. 
+
+Es wird nicht empfohlen, Ihren Agent explizit so einzurichten, dass nur TLS 1.2 verwendet wird, es sei denn, dies ist unbedingt erforderlich. Denn dadurch können Sicherheitsfeatures auf Plattformebene deaktiviert werden, mit deren Hilfe neuere, sicherere Protokolle wie TLS 1.3 automatisch erkannt und genutzt werden können, sobald diese verfügbar sind. 
+
+### <a name="platform-specific-guidance"></a>Plattformspezifischer Leitfaden
+
+|Plattform/Sprache | Support | Weitere Informationen |
+| --- | --- | --- |
+|Linux | Linux-Distributionen greifen zur Unterstützung von TLS 1.2 tendenziell auf [OpenSSL](https://www.openssl.org) zurück.  | Überprüfen Sie anhand des [OpenSSL-Änderungsprotokolls](https://www.openssl.org/news/changelog.html), ob Ihre Version von OpenSSL unterstützt wird.|
+| Windows 8.0 bis 10 | Wird unterstützt und ist standardmäßig aktiviert. | Zur Bestätigung, dass Sie weiterhin die [Standardeinstellungen](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings) verwenden.  |
+| Windows Server 2012 bis 2016 | Wird unterstützt und ist standardmäßig aktiviert. | Zur Bestätigung, dass Sie weiterhin die [Standardeinstellungen](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings) verwenden. |
+| Windows 7 SP1 und Windows Server 2008 R2 SP1 | Wird unterstützt, ist jedoch standardmäßig deaktiviert. | Details zur Aktivierung finden Sie auf der Seite [Transport Layer Security (TLS) registry settings (Registrierungseinstellungen für Transport Layer Security (TLS))](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings).  |
+| Windows Server 2008 SP2 | Unterstützung für TLS 1.2 muss aktualisiert werden. | Informationen hierzu finden Sie unter [Update zum Hinzufügen der Unterstützung von TLS 1.1 und TLS 1.2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) in Windows Server 2008 SP2. |
 
 ## <a name="data-segregation"></a>Trennung von Daten
 Nachdem Ihre Daten vom Log Analytics-Dienst erfasst wurden, werden sie für jede Komponente des Diensts logisch getrennt verwaltet. Sämtliche Daten werden nach Arbeitsbereich gekennzeichnet. Dieser Kennzeichnung wird während des gesamten Datenlebenszyklus beibehalten und auf jeder Ebene des Diensts erzwungen. Die Daten werden in einer dedizierten Datenbank im Speichercluster in der ausgewählten Region gespeichert.

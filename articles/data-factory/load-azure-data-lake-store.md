@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 7cdc4f0ef436fbd7ea3bdf1431b08be3b840290f
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e401508fc5ffc1de666f727ffbb7790005384fc1
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857200"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003796"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Laden von Daten in Azure Data Lake Storage Gen1 mit Azure Data Factory
 
@@ -35,6 +35,7 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 
 > [!NOTE]
 > Weitere Informationen finden Sie unter [Kopieren von Daten nach und aus Azure Data Lake Store mithilfe von Azure Data Factory](connector-azure-data-lake-store.md).
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement: Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
@@ -109,7 +110,7 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
    3. Klicken Sie auf **Weiter**.
    
    > [!IMPORTANT]
-   > In dieser exemplarischen Vorgehensweise verwenden Sie eine _verwaltete Dienstidentität_, um Data Lake Store zu authentifizieren. Achten Sie darauf, dass Sie dem Dienstprinzipal die entsprechenden Berechtigungen in Azure Data Lake Store erteilen. Befolgen Sie dazu [diese Anweisungen](connector-azure-data-lake-store.md#using-managed-service-identity-authentication).
+   > In dieser exemplarischen Vorgehensweise verwenden Sie eine _verwaltete Dienstidentität_, um Data Lake Store zu authentifizieren. Achten Sie darauf, dass Sie der verwalteten Dienstidentität (Managed Service Identity, MSI) die entsprechenden Berechtigungen in Azure Data Lake Storage erteilen. Befolgen Sie dazu [diese Anweisungen](connector-azure-data-lake-store.md#using-managed-service-identity-authentication).
    
    ![Angeben des Azure Data Lake Store-Kontos](./media/load-data-into-azure-data-lake-store/specify-adls.png)
 9. Geben Sie auf der Seite **Ausgabedatei oder -ordner auswählen** die Zeichenfolge **copyfroms3** als Name für den Ausgabeordner ein, und klicken Sie dann auf **Weiter**: 

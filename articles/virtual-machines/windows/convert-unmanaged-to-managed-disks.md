@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/03/2018
+ms.date: 07/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 92168ba5605e119d42ba40ee694cebb3ad116041
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 6e7d4a0ab6d79e1615f921965fb3d77998eaf90c
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29804214"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39000946"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Konvertieren einer Windows-VM von nicht verwalteten Datenträgern in verwaltete Datenträger
 
@@ -99,6 +99,18 @@ Falls sich die VMs, die Sie in verwaltete Datenträger konvertieren möchten, in
 Wenn während der Konvertierung ein Fehler auftritt oder sich eine VM aufgrund von Problemen bei einer vorherigen Konvertierung in einen fehlerhaften Zustand befindet, führen Sie das Cmdlet `ConvertTo-AzureRmVMManagedDisk` erneut aus. Derartige Probleme können normalerweise durch eine einfache Wiederholung behoben werden.
 Stellen Sie vor dem Konvertieren sicher, dass alle VM-Erweiterungen den Zustand „Bereitstellung erfolgreich“ aufweisen. Andernfalls tritt bei der Konvertierung ein Fehler mit Fehlercode 409 auf.
 
+
+## <a name="convert-using-the-azure-portal"></a>Konvertieren über das Azure-Portal
+
+Sie haben auch die Möglichkeit, nicht verwaltete Datenträger über das Azure-Portal in verwaltete Datenträger zu konvertieren.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Wählen Sie die VM in der Liste der VMs im Portal aus.
+3. Wählen Sie auf dem Blatt für die VM aus dem Menü die Option **Datenträger** aus.
+4. Wählen Sie oben auf dem Blatt **Datenträger** die Option **Zu verwalteten Datenträgern migrieren** aus.
+5. Wenn sich Ihre VM in einer Verfügbarkeitsgruppe befindet, wird auf dem Blatt **Zu verwalteten Datenträgern migrieren** eine Warnung angezeigt, dass Sie die Verfügbarkeitsgruppe zuerst konvertieren müssen. Die Warnung sollte einen Link enthalten, über den Sie die Verfügbarkeitsgruppe konvertieren können. Sobald die Verfügbarkeitsgruppe konvertiert wurde, oder wenn sich Ihre VM nicht in einer Verfügbarkeitsgruppe befindet, klicken Sie auf **Migrieren**, um den Prozess der Migration Ihrer Datenträger zu verwalteten Datenträgern zu starten. 
+
+Nach Abschluss der Migration wird die VM beendet und neu gestartet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

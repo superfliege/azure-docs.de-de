@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2018
+ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 88bd895cb3a384f1ada0394fe2da206aca86b981
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a5a6a43c41760e22a7aeb0e97aacc145c69957ff
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38670929"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006395"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Installieren von MySQL auf einem virtuellen Computer mit OpenSUSE Linux in Azure
 
@@ -33,13 +33,13 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, benötigen Sie die A
 
 ## <a name="create-a-virtual-machine-running-opensuse-linux"></a>Erstellen eines virtuellen Computers mit OpenSUSE Linux
 
-Erstellen Sie zunächst eine Ressourcengruppe. In diesem Beispiel nennen wir die Ressourcengruppe *mySQSUSEResourceGroup* und erstellen sie in der Region *USA, Osten*.
+Erstellen Sie zunächst eine Ressourcengruppe. In diesem Beispiel heißt die Ressourcengruppe *mySQSUSEResourceGroup* und wird in der Region *USA, Osten* erstellt.
 
 ```azurecli-interactive
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-Erstellen Sie den virtuellen Computer. In diesem Beispiel nennen wir den virtuellen Computer *myVM*. Wir verwenden hier die VM-Größe *Standard_D2s_v3*, Sie sollten jedoch die [VM-Größe](sizes.md) verwenden, von der Sie glauben, dass sie sich für Ihre Workload am besten eignet.
+Erstellen Sie den virtuellen Computer. In diesem Beispiel heißt die VM [myVM](sizes.md) und weist die VM-Größe *Standard_D2s_v3* auf, Sie sollten jedoch die *VM-Größe* auswählen, von der Sie glauben, dass sie sich für Ihre Workload am besten eignet.
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -96,17 +96,30 @@ systemctl is-enabled mysql
 
 Die Ausgabe sollte „enabled“ lauten.
 
+Starten Sie den Server neu.
+
+```bash
+sudo reboot
+```
+
 
 ## <a name="mysql-password"></a>MySQL-Kennwort
 
 Nach der Installation ist das MySQL-Stammkennwort standardmäßig leer. Führen Sie das Skript **mysql\_secure\_installation** aus, um MySQL zu sichern. Sie werden vom Skript aufgefordert, das MySQL-Stammkennwort zu ändern, anonyme Benutzerkonten zu entfernen, Remote-Stammanmeldeinformationen zu deaktivieren, Testdatenbanken zu entfernen und die Berechtigungstabelle erneut zu laden. 
+
+Stellen Sie nach dem Neustart des Servers erneut eine SSH-Verbindung mit der VM her.
+
+```azurecli-interactive  
+ssh 10.111.112.113
+```
+
 
 
 ```bash
 mysql_secure_installation
 ```
 
-## <a name="log-in-to-mysql"></a>Anmelden bei MySQL
+## <a name="sign-in-to-mysql"></a>Anmelden bei MySQL
 
 Sie können sich jetzt anmelden und die MySQL-Eingabeaufforderung öffnen.
 
@@ -136,7 +149,7 @@ GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
    
 Benutzernamen und Kennwörter der Datenbank werden nur von Skripts verwendet, die eine Verbindung mit der Datenbank herstellen.  Benutzernamen für Datenbankkonten sind nicht notwendigerweise tatsächliche Benutzerkonten im System.
 
-Ermöglichen Sie die Anmeldung von einem anderen Computer aus. In diesem Beispiel ist *10.112.113.114* die IP-Adresse des Computers, von dem aus wir uns anmelden möchten.
+Ermöglichen Sie die Anmeldung von einem anderen Computer aus. In diesem Beispiel ist *10.112.113.114* die IP-Adresse des Computers, von dem aus die Anmeldung zugelassen werden soll.
 
 ```   
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'10.112.113.114' IDENTIFIED BY 'password';

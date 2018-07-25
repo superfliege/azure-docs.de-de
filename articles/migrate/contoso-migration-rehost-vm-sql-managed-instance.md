@@ -1,40 +1,46 @@
 ---
-title: Zuweisen eines neues Hosts für eine Contoso-App in Azure durch Migration zu einer Azure-VM und verwalteten Azure SQL-Instanz | Microsoft-Dokumentation
+title: Zuweisen eines neues Hosts für eine lokale Contoso-App durch Migration zu einer Azure-VM und verwalteten Azure SQL-Instanz | Microsoft-Dokumentation
 description: Erfahren Sie, wie Contoso eine lokale App erneut auf Azure-VMs und verwalteten Azure SQL-Instanzen hostet.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/13/2018
+ms.date: 07/12/2018
 ms.author: raynew
-ms.openlocfilehash: 99eda135161a228fde139458de30f5120af55153
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 49a5fb13a881b206c36dcd08a4c2945880e9a4bd
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723612"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39002295"
 ---
-# <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms-and-azure-sql-managed-instance"></a>Contoso-Migration: Zuweisen eines neuen Hosts für eine lokale App zu Azure-VMs und einer verwalteten Azure SQL-Instanz
+# <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-azure-sql-managed-instance"></a>Contoso-Migration: Zuweisen eines neuen Hosts für eine lokale App auf Azure-VMs und einer verwalteten Azure SQL-Instanz
 
 In diesem Artikel erfahren Sie, wie Contoso die Frontend-VM seiner SmartHotel-App mit dem Azure Site Recovery-Diensts zu Azure VMs und die App-Datenbank zu einer verwalteten Azure SQL-Instanz migriert.
 
 > [!NOTE]
 > Verwaltete Azure SQL-Instanz befindet sich derzeit in der Vorschauphase.
 
-Dieses Dokument ist das vierte in einer Reihe von Artikeln, die dokumentieren, wie das fiktive Unternehmen Contoso seine lokalen Ressourcen zur Microsoft Azure-Cloud migriert. Die Reihe enthält Hintergrundinformationen und einige Szenarios, die veranschaulichen, wie die Infrastruktur einer Migration eingerichtet wird und wie verschiedene Migrationstypen ausgeführt werden. Die Szenarios werden an Komplexität zunehmen, und mit der Zeit werden zusätzliche Artikel hinzugefügt.
+Dieses Dokument ist das erste in einer Reihe von Artikeln, die dokumentieren, wie das fiktive Unternehmen Contoso seine lokalen Ressourcen zur Microsoft Azure-Cloud migriert. Die Reihe enthält Hintergrundinformationen und einige Szenarios, die veranschaulichen, wie die Infrastruktur einer Migration eingerichtet wird und wie verschiedene Migrationstypen ausgeführt werden. Die Szenarios werden an Komplexität zunehmen, und mit der Zeit werden zusätzliche Artikel hinzugefügt.
 
 
 **Artikel** | **Details** | **Status**
 --- | --- | ---
 [Artikel 1: Übersicht](contoso-migration-overview.md) | Bietet eine Übersicht über die Migrationsstrategie von Contoso, die Artikelreihe und die Beispiel-Apps, die wir verwenden. | Verfügbar
-[Artikel 2: Bereitstellen einer Azure-Infrastruktur](contoso-migration-infrastructure.md) | Beschreibt, wie Contoso die lokale und die Azure-Infrastruktur für die Migration vorbereitet. Für alle Contoso-Migrationsszenarios wird dieselbe Infrastruktur verwendet. | Verfügbar
-[Artikel 3: Bewerten von lokalen Ressourcen](contoso-migration-assessment.md)  | Zeigt, wie Contoso eine Bewertung der lokalen, zweischichtigen SmartHotel-App, die unter VMware ausgeführt wird, durchführt. Sie bewerten App-VMs mit dem Dienst [Azure Migrate](migrate-overview.md) und die App SQL Server-Datenbank mit dem [Datenbankmigrations-Assistent von Azure](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Verfügbar
-Artikel 4: Zuweisen eines neuen Hosts zu Azure-VMs und einer verwalteten SQL-Instanz (dieser Artikel) | Veranschaulicht, wie Contoso die SmartHotel-App zu Azure migriert. Das Unternehmen migriert die Front-End-VM der App mithilfe von [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview), und verwendet die App-Datenbank und den Dienst [Azure Database Migration](https://docs.microsoft.com/azure/dms/dms-overview), um zu einer verwalteten SQL-Instanz zu migrieren. | Verfügbar
-[Artikel 5: Zuweisen eines neuen Hosts zu Azure-VMs](contoso-migration-rehost-vm.md) | Veranschaulicht, wie Contoso die VMs der SmartHotel-App nur mit Site Recovery migriert.
-[Artikel 6: Zuweisen eines neuen Hosts zu Azure-VMs und SQL Server-Verfügbarkeitsgruppen](contoso-migration-rehost-vm-sql-ag.md) | Veranschaulicht, wie Contoso die App SmartHotel migriert. Das Unternehmen verwendet Site Recovery zum Migrieren der App-VMs und den Database Migration Service zum Migrieren der App-Datenbank zu einer SQL Server-Verfügbarkeitsgruppe. | Verfügbar
-[Artikel 7: Zuweisen von Azure-VMs als neue Hosts zu einer Linux-App](contoso-migration-rehost-linux-vm.md) | Veranschaulicht, wie Contoso die Linux-App osTicket mithilfe von Site Recovery zu Azure-VMs migriert. | Verfügbar
-[Artikel 8: Zuweisen von Azure-VMs und Azure MySQL Server als neue Hosts für eine Linux-App](contoso-migration-rehost-linux-vm-mysql.md) | Veranschaulicht, wie Contoso die Linux-App osTicket mithilfe von Site Recovery und MySQL Workbench zu Azure-VMs und zu einer Azure MySQL Server-Instanz migriert. | Verfügbar
+[Artikel 2: Bereitstellen einer Azure-Infrastruktur](contoso-migration-infrastructure.md) | Beschreibt, wie Contoso die lokale Infrastruktur und die Azure-Infrastruktur für die Migration vorbereitet. Für alle Migrationsartikel wird die gleiche Infrastruktur verwendet. | Verfügbar
+[Artikel 3: Bewerten der lokalen Ressourcen für die Migration zu Azure](contoso-migration-assessment.md)  | Zeigt, wie Contoso eine Bewertung einer lokalen, zweischichtigen App SmartHotel auf einer VMware ausführt. Contoso bewertet App-VMs mit dem Dienst [Azure Migrate](migrate-overview.md) und die App SQL Server-Datenbank mit dem [Migrations-Assistenten von Azure Database](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Verfügbar
+Artikel 4: Zuweisen eines neuen Hosts für eine App auf Azure-VMs und einer verwalteten SQL-Instanz | Veranschaulicht, wie Contoso eine Migration zu Azure für die lokale App SmartHotel per Lift & Shift ausführt. Contoso migriert die Front-End-VM der App mithilfe von [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) und die App-Datenbank mithilfe des [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) zu einer verwalteten SQL-Instanz. | Dieser Artikel.
+[Artikel 5: Zuweisen eines neuen Hosts für eine App auf Azure-VMs](contoso-migration-rehost-vm.md) | Veranschaulicht, wie Contoso die VMs der App SmartHotel zu Azure-VMs mit dem SiteRecovery-Dienst migriert. | Verfügbar
+[Artikel 6: Zuweisen eines neuen Hosts für eine App auf Azure-VMs und zur Always On-Verfügbarkeitsgruppe von SQL Server](contoso-migration-rehost-vm-sql-ag.md) | Veranschaulicht, wie Contoso die App SmartHotel migriert. Contoso verwendet Site Recovery, um die App-VMs zu migrieren, und den Database Migration Service, um die App-Datenbank zu einem SQL Servercluster zu migrieren, das durch eine Always On-Verfügbarkeitsgruppe geschützt wird. | Verfügbar
+[Artikel 7: Zuweisen von Azure-VMs als neue Hosts zu einer Linux-App](contoso-migration-rehost-linux-vm.md) | Veranschaulicht, wie Contoso mithilfe von Site Recovery eine Migration der Linux-App osTicket per Lift & Shift zu Azure-VMs durchführt | Verfügbar
+[Artikel 8: Zuweisen eines neuen Hosts für eine lokale Linux-App zu Azure-VMs und Azure MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Veranschaulicht, wie Contoso die Linux-App osTicket mithilfe von Site Recovery zu Azure-VMs und die App-Datenbank mithilfe von MySQL Workbench zu einer Azure MySQL Server-Instanz migriert. | Verfügbar
+[Artikel 9: Umgestalten einer App in Azure-Web-Apps und Azure SQL-Datenbank](contoso-migration-refactor-web-app-sql.md) | Zeigt, wie Contoso die SmartHotel-App zu einer Azure-Web-App und die App-Datenbank zur Azure SQL Server-Instanz migriert. | Verfügbar
+[Artikel 10: Umgestalten einer Linux-App in Azure-Web-Apps und Azure MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Zeigt, wie Contoso die Linux-osTicket-App auf Azure-Web-Apps zu mehreren Websites migriert, die in GitHub für Continuous Delivery integriert sind. Sie migrieren die App-Datenbank zu einer Azure-MySQL-Instanz. | Verfügbar
+[Artikel 11: Umgestalten von TFS in VSTS](contoso-migration-tfs-vsts.md) | Zeigt, wie Contoso seine lokale Team Foundation Server-Bereitstellung (TFS) durch Migration zu Visual Studio Team Services (VSTS) in Azure migriert. | Verfügbar
+[Artikel 12: Umstrukturieren einer Contoso-App in einen Azure-Container und eine Azure SQL-Datenbank-Instanz](contoso-migration-rearchitect-container-sql.md) | Zeigt, wie Contoso ihre SmartHotel-App zu Azure migriert und umstrukturiert. Sie strukturieren die App-Webebene in einen Windows-Container und die App-Datenbank in eine Azure SQL-Datenbank-Instanz um. | Verfügbar
+[Artikel 13: Neuerstellen einer App in Azure](contoso-migration-rebuild.md) | Zeigt, wie Contoso seine SmartHotel-App mit einer Reihe von Azure-Funktionen und -Diensten wie App Services, Azure Kubernetes, Azure Functions, Cognitive Services und Cosmos DB neu erstellt. | Verfügbar
+
 
 Wenn Sie die in diesem Artikel verwendete SmartHotel-Beispiel-App verwenden möchten, können Sie diese in [Github](https://github.com/Microsoft/SmartHotel360) herunterladen.
 
@@ -230,7 +236,7 @@ Contoso kann jetzt eine verwaltete SQL-Datenbank-Instanz bereitstellen.
 
 ## <a name="step-2-prepare-dms"></a>Schritt 2: Vorbereiten von DMS
 
-Zur Vorbereitung von DMS muss Contoso folgende Aufgaben durchführen:
+Zur Vorbereitung von DMS muss Contoso folgende Aufgaben ausführen:
 
 - Registrieren des DMS-Anbieters in Azure
 - Bereitstellen von DMS mit Zugriff auf Azure-Speicher für das Hochladen der zum Migrieren einer Datenbank verwendeten Sicherungsdateien Zu diesem Zweck muss ein Blob Storage-Container erstellt werden und ein SAS-URI (Shared Access Signature) dafür generiert werden. 
@@ -239,7 +245,7 @@ Zur Vorbereitung von DMS muss Contoso folgende Aufgaben durchführen:
 
 Es müssen folgende Schritte ausgeführt werden:
 
-1. Registrieren des Database Migration-Anbieters im Abonnement
+1. Registrieren des Datenbankmigrationsanbieters im Abonnement
     ![DMS-Registrierung](media/contoso-migration-rehost-vm-sql-managed-instance/dms-subscription.png)
 
 2. Erstellen eines Blob Storage-Containers und Generieren eines SAS-URI für den DMS-Zugriff
@@ -595,5 +601,5 @@ Im vorliegenden Artikel hat Contoso der SmartHotel-App in Azure einen neuen Host
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im nächsten Artikel der Reihe zeigen wir Ihnen, wie Contoso der Azure-VM der SmartHotel-App mithilfe des Azure Site Recovery-Diensts einen neuen Host zuweist.
+Im [nächsten Artikel](contoso-migration-rehost-vm.md) der Reihe zeigen wir Ihnen, wie Contoso der SmartHotel-App auf Azure-VMs mithilfe des Azure Site Recovery-Diensts einen neuen Host zuweist.
 

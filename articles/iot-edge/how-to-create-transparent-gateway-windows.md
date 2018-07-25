@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 96ca5a7ec8b0c87984ea2c76af446d7a8b5504a1
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 96a0443a66bb826496c6af42fe6479c0a53ac964
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344299"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036083"
 ---
 # <a name="create-a-windows-iot-edge-device-that-acts-as-a-transparent-gateway"></a>Erstellen eines Windows-IoT Edge-Geräts, das als transparentes Gateway fungiert
 
@@ -22,7 +22,7 @@ Dieser Artikel enthält eine ausführliche Anleitung zur Verwendung eines IoT Ed
 >[!NOTE]
 >Derzeit gilt Folgendes:
 > * Wenn das Gateway vom IoT Hub getrennt wird, können sich nachgeschaltete Geräte nicht am Gateway authentifizieren.
-> * IoT Edge-Geräte können keine Verbindung mit IoT Edge-Gateways herstellen.
+> * Edge-fähige Geräte können keine Verbindung mit IoT Edge-Gateways herstellen. 
 > * Nachgeschaltete Geräte können keinen Dateiupload verwenden.
 
 Die größte Schwierigkeit beim Erstellen eines transparenten Gateways ist das Herstellen einer sicheren Verbindung zwischen dem Gateway und nachgeschalteten Geräten. Azure IoT Edge ermöglicht Ihnen, mithilfe der PKI-Infrastruktur sichere TLS-Verbindungen zwischen diesen Geräten einzurichten. In diesem Fall lassen wir zu, dass ein nachgeschaltetes Gerät eine Verbindung mit einem IoT Edge-Gerät, das als transparentes Gateway fungiert, herstellt.  Um eine angemessene Sicherheit zu gewährleisten, sollte das nachgeschaltete Gerät die Identität des Edge-Geräts bestätigen, da Ihre Geräte nur Verbindungen mit Ihren Gateways und nicht mit potenziell schädlichen Gateways herstellen sollen.
@@ -168,7 +168,7 @@ Durch das Installieren dieses Zertifikats im Zertifikatspeicher des Betriebssyst
 
 * Windows: Hier ist ein Beispiel für die Installation eines Zertifizierungsstellenzertifikats auf einem Windows-Host angegeben.
   * Geben Sie im Startmenü „Computerzertifikate verwalten“ ein. Dadurch sollte ein Hilfsprogramm namens `certlm` aufgerufen werden.
-  * Navigieren Sie zu „Zertifikate - Lokaler Computer“ > „Vertrauenswürdige Stammzertifikate“ > „Zertifikate“. Führen Sie einen Rechtsklick aus, und navigieren Sie zu „Alle Tasks“ und dann zu „Import to launch the certificate import wizard“ (Importieren, um den Importassistenten für Zertifikate zu starten).
+  * Navigieren Sie zu „Zertifikate > Lokaler Computer“ > „Vertrauenswürdige Stammzertifikate“ > „Zertifikate“. Führen Sie einen Rechtsklick aus, und navigieren Sie zu „Alle Tasks“ und dann zu „Import to launch the certificate import wizard“ (Importieren, um den Importassistenten für Zertifikate zu starten).
   * Führen Sie die Schritte wie angegeben aus, und importieren Sie die Zertifikatdatei „$CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem“.
   * Wenn Sie damit fertig sind, sollte die Meldung „Der Import war erfolgreich.“ angezeigt werden.
 

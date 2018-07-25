@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/07/2018
+ms.date: 07/11/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: a13c83fc0d35be1aec87cb5f2d2b19b0bf27f1bf
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 2a21c7867bf0dd2d6ca6ee0bd9025739315c8d0a
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37133370"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003317"
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Sammeln von Daten von Computern in Ihrer Umgebung mit Log Analytics
 
@@ -50,9 +50,6 @@ Die folgenden Versionen des Windows-Betriebssystems werden für den Windows-Agen
 * Windows Server 2008 Service Pack 1 (SP1) oder höher
 * Windows 7 SP1 und höher
 
-> [!NOTE]
-> Der Agent für Windows unterstützt nur Transport Layer Security (TLS) 1.0 und 1.1.  
-
 ## <a name="supported-linux-operating-systems"></a>Unterstützte Linux-Betriebssysteme
 Die folgenden Linux-Distributionen werden offiziell unterstützt.  Der Linux-Agent kann jedoch auch auf anderen Distributionen ausgeführt werden, die hier nicht aufgeführt sind.  Sofern nicht anders angegeben, werden alle Nebenversionen für jede aufgeführte Hauptversion unterstützt.  
 
@@ -64,15 +61,18 @@ Die folgenden Linux-Distributionen werden offiziell unterstützt.  Der Linux-Age
 * Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)
 * SUSE Linux Enterprise Server 11 und 12 (x86/x64)
 
+## <a name="tls-12-protocol"></a>TLS 1.2-Protokoll
+Um die Sicherheit von Daten bei der Übertragung an Log Analytics sicherzustellen, wird dringend empfohlen, den Agent so zu konfigurieren, dass mindestens Transport Layer Security (TLS) 1.2 verwendet wird. Bei älteren Versionen von TLS/Secure Sockets Layer (SSL) wurde ein Sicherheitsrisiko festgestellt. Sie funktionieren aus Gründen der Abwärtskompatibilität zwar noch, werden jedoch **nicht empfohlen**.  Weitere Informationen finden Sie unter [Senden von Daten über TLS 1.2](log-analytics-data-security.md#sending-data-securely-using-tls-12). 
+
 ## <a name="network-firewall-requirements"></a>Netzwerkfirewallanforderungen
 Die Aufstellung unten enthält die Proxy- und Firewall-Konfigurationsinformationen, die der Linux- und Windows-Agent benötigt, um mit Log Analytics zu kommunizieren.  
 
 |Agent-Ressource|Ports |Richtung |Umgehung der HTTPS-Überprüfung|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Port 443 |Eingehend und ausgehend|Ja |  
-|*.oms.opinsights.azure.com |Port 443 |Eingehend und ausgehend|Ja |  
-|*.blob.core.windows.net |Port 443 |Eingehend und ausgehend|Ja |  
-|*.azure-automation.net |Port 443 |Eingehend und ausgehend|Ja |  
+|*.ods.opinsights.azure.com |Port 443 |Eingehend und ausgehend|JA |  
+|*.oms.opinsights.azure.com |Port 443 |Eingehend und ausgehend|JA |  
+|*.blob.core.windows.net |Port 443 |Eingehend und ausgehend|JA |  
+|*.azure-automation.net |Port 443 |Eingehend und ausgehend|JA |  
 
 
 Wenn Sie planen, den Azure Automation Hybrid Runbook Worker zu verwenden, um eine Verbindung zum Automatisierungsdienst herzustellen und sich bei diesem zu registrieren, um Runbooks in Ihrer Umgebung zu verwenden, muss dieser Zugriff auf die Portnummer und die unter [Konfigurieren Ihres Netzwerks für den Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md#network-planning) beschriebenen URLs besitzen. 

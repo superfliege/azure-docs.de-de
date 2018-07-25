@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: cf24810c0aa414e751e55df163563f013c1a0081
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 9d71efa35713500911c67d1df15612b64c8e97da
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969944"
+ms.locfileid: "38990828"
 ---
 # <a name="trusted-internet-connection-guidance"></a>Leitfaden für eine vertrauenswürdige Internetverbindung (Trusted Internet Connection, TIC)
 
@@ -194,9 +194,9 @@ Die folgenden Beispielrichtlinien können für TIC-Konformitätsszenarien nützl
 |Tabelle mit benutzerdefinierten Routen erzwingen |     Stellen Sie sicher, dass die Standardroute in allen virtuellen Netzwerken auf ein zulässiges virtuelles Netzwerkgateway für das Routing auf „Lokal“ zeigt. | https://docs.microsoft.com/azure/azure-policy/scripts/no-user-def-route-table |
 |Überprüfung, wenn Network Watcher nicht für Region aktiviert ist  | Stellen Sie sicher, dass Network Watcher für alle verwendeten Regionen aktiviert ist.  | https://docs.microsoft.com/azure/azure-policy/scripts/net-watch-not-enabled |
 |NSG X in jedem Subnetz  | Stellen Sie sicher, dass eine NSG (oder ein Satz von zulässigen NSGs) mit blockiertem Internetdatenverkehr auf alle Subnetze in jedem VNET angewendet wird. | https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-subnet |
-|NSG X auf jedem NIC | Stellen Sie sicher, dass eine NSG mit blockiertem Internetdatenverkehr auf alle NICs auf allen VMs angewendet wird. | https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-nic |
+|NSG X auf jedem Netzwerkadapter | Stellen Sie sicher, dass eine NSG mit blockiertem Internetdatenverkehr auf alle NICs auf allen VMs angewendet wird. | https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-nic |
 |Zulässiges VNET für VM-Netzwerkschnittstellen verwenden  | Stellen Sie sicher, dass sich alle NICs in einem zulässigen VNET befinden. | https://docs.microsoft.com/azure/azure-policy/scripts/use-approved-vnet-vm-nics |
-|Zulässige Orte | Stellen Sie sicher, dass alle Ressourcen in Regionen mit konformen VNETs und Network Watcher-Konfiguration bereitgestellt werden.  | https://docs.microsoft.com/azure/azure-policy/scripts/allowed-locs |
+|Allowed locations (Zulässige Speicherorte) | Stellen Sie sicher, dass alle Ressourcen in Regionen mit konformen VNETs und Network Watcher-Konfiguration bereitgestellt werden.  | https://docs.microsoft.com/azure/azure-policy/scripts/allowed-locs |
 |Nicht zulässige Ressourcentypen, z.B. öffentliche IP-Adressen  | Unterbinden Sie die Bereitstellung von Ressourcentypen, die über keinen Konformitätsplan verfügen. Beispielsweise könnte diese Richtlinie verwendet werden, um die Bereitstellung von Ressourcen für öffentliche IP-Adressen zu unterbinden. NSG-Regeln können zwar dazu verwendet werden, den eingehenden Internetdatenverkehr effektiv zu blockieren, aber indem Sie verhindern, dass öffentliche IP-Adressen verwendet werden, bieten Sie noch weniger Angriffsfläche.    | https://docs.microsoft.com/azure/azure-policy/scripts/not-allowed-res-type  |
 
 ### <a name="azure-traffic-analyticshttpsazuremicrosoftcomen-inblogtraffic-analytics-in-preview"></a>Azure [Traffic Analytics](https://azure.microsoft.com/en-in/blog/traffic-analytics-in-preview/)
@@ -225,29 +225,28 @@ Der Zugriff auf Microsoft Azure, Office 365 und Dynamics 365 kann problemlos so 
 
 ## <a name="appendix-tic-patterns-for-common-workloads"></a>Anhang: TIC-Muster für gängige Workloads
 
-| Kategorie | Workload | IaaS | Dedizierter PaaS / VNET-Einschleusung  | Dienstendpunkte  |
+| Category (Kategorie) | Workload | IaaS | Dedizierter PaaS / VNET-Einschleusung  | Dienstendpunkte  |
 |---------|---------|---------|---------|--------|
-| Compute | Virtuelle Linux-Computer | Ja | | |
-| Compute | Virtuelle Windows-Computer | Ja | | |
-| Compute | Virtual Machine Scale Sets | Ja | | |
+| Compute | Virtuelle Linux-Computer | JA | | |
+| Compute | Virtuelle Windows-Computer | JA | | |
+| Compute | Virtual Machine Scale Sets | JA | | |
 | Compute | Azure-Funktionen | | über App Service-Umgebung (ASE) | |
 | Web- und mobile Anwendungen | Interne Webanwendung | | über App Service-Umgebung (ASE) | |
 | Web- und mobile Anwendungen | Interne mobile Anwendung | | über App Service-Umgebung (ASE) | |
 | Web- und mobile Anwendungen | API-Apps | | über App Service-Umgebung (ASE) | |
-| Container | Azure Container Service (ACS) | | | Ja |
-| Container | Azure Container Service (AKS)* | | | Ja |
+| Container | Azure Container Service (ACS) | | | JA |
+| Container | Azure Container Service (AKS)* | | | JA |
 | Datenbank | SQL-Datenbank | | Verwaltete Azure SQL-Datenbank-Instanz* | Azure SQL |
-| Datenbank | Azure Database for MySQL | | | Ja |
-| Datenbank | Azure Database for PostgreSQL | | | Ja |
-| Datenbank | SQL Data Warehouse | | | Ja |
-| Datenbank | Azure Cosmos DB | | | Ja |
-| Datenbank | Redis Cache | | Ja | |
-| Speicher | Blobs (in englischer Sprache) | Ja | | |
-| Speicher | Dateien | Ja | | |
-| Speicher | Warteschlangen | Ja | | |
-| Speicher | Tabellen | Ja | | |
-| Speicher | Datenträger | Ja | | |
+| Datenbank | Azure Database for MySQL | | | JA |
+| Datenbank | Azure Database for PostgreSQL | | | JA |
+| Datenbank | SQL Data Warehouse | | | JA |
+| Datenbank | Azure Cosmos DB | | | JA |
+| Datenbank | Redis Cache | | JA | |
+| Speicher | Blobs (in englischer Sprache) | JA | | |
+| Speicher | Dateien | JA | | |
+| Speicher | Warteschlangen | JA | | |
+| Speicher | Tabellen | JA | | |
+| Speicher | Datenträger | JA | | |
 
 *: Public Preview in Azure Government, Stand: Mai 2018  
 **: Private Preview in Azure Government, Stand: Mai 2018
-

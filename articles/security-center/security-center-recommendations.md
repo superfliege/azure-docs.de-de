@@ -3,7 +3,7 @@ title: Verwalten von Sicherheitsempfehlungen in Azure Security Center | Microsof
 description: In diesem Dokument erfahren Sie, wie Sicherheitsempfehlungen in Azure Security Center Ihnen helfen, Ihre Azure-Ressourcen zu schützen und Ihre Sicherheitsrichtlinien einzuhalten.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: TerryLan
 manager: MBaldwin
 editor: ''
 ms.assetid: 86c50c9f-eb6b-4d97-acb3-6d599c06133e
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2018
+ms.date: 07/12/2018
 ms.author: terrylan
-ms.openlocfilehash: 72070f46309adb526901192752fe421a3846398b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 35f9f197dc9886998f695c4c632aa4b68ac4d072
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364249"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006613"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Verwalten von Sicherheitsempfehlungen in Azure Security Center
 In diesem Dokument erfahren Sie, wie Sie Sicherheitsempfehlungen in Azure Security Center verwenden, um Ihre Azure-Ressourcen zu schützen.
@@ -76,7 +76,7 @@ Der folgenden Tabelle können Sie entnehmen, welche Empfehlungen verfügbar sind
 | [Sammlung von Daten für Abonnements aktivieren](security-center-enable-data-collection.md) |Empfiehlt Ihnen, in der Sicherheitsrichtlinie die Datensammlung für alle Abonnements sowie alle virtuellen Azure-Computer (VMs) und Computer, die keine Azure-Computer sind, zu aktivieren. |
 | [Optimieren von Sicherheitskonfigurationen](security-center-remediate-os-vulnerabilities.md) |Empfiehlt Ihnen, Ihre Betriebssystemkonfigurationen mit den empfohlenen Sicherheitskonfigurationsregeln in Einklang zu bringen und beispielsweise nicht zuzulassen, dass Kennwörter gespeichert werden. |
 | [Systemupdates anwenden](security-center-apply-system-updates.md) |Empfiehlt Ihnen, fehlende Systemsicherheitsupdates und kritische Updates für Windows- und Linux-VMs und -Computer bereitzustellen. |
-| [JIT-Netzwerkzugriffssteuerung anwenden](security-center-just-in-time.md) | Empfiehlt Ihnen, Just-In-Time-VM-Zugriff anzuwenden. Das Just-In-Time-Feature befindet sich in der Vorschauphase und ist im Standard-Tarif von Security Center verfügbar. Weitere Informationen zu den Tarifen von Security Center finden Sie unter [Preise](security-center-pricing.md). |
+| [JIT-Netzwerkzugriffssteuerung anwenden](security-center-just-in-time.md) | Empfiehlt Ihnen, Just-In-Time-VM-Zugriff anzuwenden. Das Just-In-Time-Feature ist im Standard-Tarif von Security Center verfügbar. Weitere Informationen zu den Tarifen von Security Center finden Sie unter [Preise](security-center-pricing.md). |
 | [Neustart nach Systemupdates](security-center-apply-system-updates.md#reboot-after-system-updates) |Empfiehlt Ihnen, einen virtuellen Computer neu zu starten, um die Anwendung von Systemupdates abzuschließen. |
 | [Add a web application firewall](security-center-add-web-application-firewall.md) |Empfiehlt Ihnen, eine Web Application Firewall (WAF) für Webendpunkte bereitzustellen. Eine WAF-Empfehlung wird für jede öffentlich zugängliche IP-Adresse (sowohl auf Instanzebene als auch mit Lastenausgleich) angezeigt, die über eine zugeordnete Netzwerksicherheitsgruppe mit offenen eingehenden Webports (80, 443) verfügt. </br>Security Center empfiehlt die Bereitstellung einer WAF zum Schutz vor Angriffen auf Ihre Webanwendungen auf virtuellen Computern und in der App Service-Umgebung. Eine App Service-Umgebung ist eine Option des [Premium](https://azure.microsoft.com/pricing/details/app-service/)-Tarifs von Azure App Service, die eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung von Azure App Service-Apps bereitstellt. Weitere Informationen zu ASE finden Sie unter [Dokumentation zur App Service-Umgebung](../app-service/environment/intro.md).</br>Sie können mehrere Webanwendungen in Security Center schützen, indem Sie diese Anwendungen Ihren vorhandenen WAF-Bereitstellungen hinzufügen. |
 | [Finalize application protection (Anwendungsschutz abschließen) (Anwendungsschutz abschließen)](security-center-add-web-application-firewall.md#finalize-application-protection) |Um die Konfiguration einer WAF abzuschließen, muss Datenverkehr an das WAF-Gerät umgeleitet werden. Nach dieser Empfehlung werden die erforderlichen Setupänderungen vorgenommen. |
@@ -95,7 +95,35 @@ Der folgenden Tabelle können Sie entnehmen, welche Empfehlungen verfügbar sind
 | [Sicherheitsrisikobewertung nicht installiert](security-center-vulnerability-assessment-recommendations.md) |Empfiehlt die Installation einer Lösung zur Sicherheitsrisikobewertung auf dem virtuellen Computer. |
 | [Sicherheitsrisiken beheben](security-center-vulnerability-assessment-recommendations.md#review-the-recommendation) |Ermöglicht das Anzeigen von System- und Anwendungssicherheitslücken, die von der auf dem virtuellen Computer installierten Lösung zur Sicherheitsrisikobewertung erkannt werden. |
 | [Aktivieren der Verschlüsselung für das Azure Storage-Konten](security-center-enable-encryption-for-storage-account.md) | Empfiehlt die Aktivierung von Azure Storage Service Encryption für ruhende Daten. Storage Service Encryption (SSE) verschlüsselt die Daten, wenn diese in Azure Storage geschrieben werden, und entschlüsselt sie vor dem Abrufen. SSE steht zurzeit nur für den Azure Blob-Dienst zur Verfügung und kann für Blockblobs, Seitenblobs und Anfügeblobs verwendet werden. Weitere Informationen finden Sie unter [Storage Service Encryption für ruhende Daten](../storage/common/storage-service-encryption.md).</br>SSE wird nur für Resource Manager-Speicherkonten unterstützt. |
-
+| [Adaptive Anwendungssteuerungen aktivieren](security-center-adaptive-application.md) | Empfiehlt, adaptive Anwendungssteuerungen auf Ihre Windows-VMs anzuwenden. Dieses Feature ist in der Vorschauversion und im Standard-Tarif vom Security Center verfügbar. Weitere Informationen zu den Tarifen von Security Center finden Sie unter [Preise](security-center-pricing.md). |
+| Zugriff auf App Service nur über HTTPS gestatten | Empfiehlt, den Zugriff auf App Service nur auf HTTPS zu beschränken. |
+| WebSockets für Webanwendung deaktivieren| Empfiehlt, die Verwendung von WebSockets innerhalb von Webanwendungen sorgfältig zu prüfen.  Das WebSockets-Protokoll ist für verschiedene Arten von Sicherheitsrisiken anfällig. |
+| Benutzerdefinierte Domänen für Webanwendung verwenden | Empfiehlt, benutzerdefinierte Domänen zu verwenden, damit eine Webanwendung vor gängigen Angriffen wie Phishing und anderen DNS-bezogenen Angriffen geschützt wird. |
+| IP-Einschränkungen für Webanwendung konfigurieren | Empfiehlt, eine Liste mit IP-Adressen zu definieren, die auf Ihre Anwendung zugreifen dürfen.  Mithilfe von IP-Einschränkungen kann eine Webanwendung vor gängigen Angriffen geschützt werden. |
+| Nicht allen („*“) Ressourcen Zugriff auf Ihre Anwendung erteilen | Rät davon ab, den WEBSITE_LOAD_CERTIFICATES-Parameter auf „*“ festzulegen. Durch die Einstellung des Parameters auf „*“ werden alle Zertifikate in den persönlichen Zertifikatspeicher Ihrer Webanwendungen geladen.  Dies kann zum Missbrauch des Prinzips der „geringsten Rechte“ führen, da es unwahrscheinlich ist, dass die Website Zugriff auf sämtliche Zertifikate zur Laufzeit benötigt. |
+| Nicht jeder Ressource den Zugriff auf Ihre Anwendung über CORS gestatten | Empfiehlt, nur erforderlichen Domänen die Interaktion mit Ihrer Webanwendung zu ermöglichen. Bei der Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS) sollte nicht allen Domänen gestattet werden, auf Ihre Webanwendung zuzugreifen. |
+| Die neueste unterstützte .NET Framework-Version für Webanwendungen verwenden | Empfiehlt, die neueste .NET Framework-Version für die neuesten Sicherheitsklassen zu verwenden. Die Verwendung von älteren Klassen und Typen kann die Anfälligkeit Ihrer Anwendung für Sicherheitsrisiken erhöhen. |
+| Die neueste unterstützte Java-Version für Webanwendungen verwenden | Empfiehlt, die neueste Java-Version für die neuesten Sicherheitsklassen zu verwenden. Die Verwendung von älteren Klassen und Typen kann die Anfälligkeit Ihrer Anwendung für Sicherheitsrisiken erhöhen. |
+| Die neueste unterstützte PHP-Version für Webanwendungen verwenden | Empfiehlt, die neueste PHP-Version für die neuesten Sicherheitsklassen zu verwenden. Die Verwendung von älteren Klassen und Typen kann die Anfälligkeit Ihrer Anwendung für Sicherheitsrisiken erhöhen. |
+| [Add a web application firewall](security-center-add-web-application-firewall.md) |Empfiehlt Ihnen, eine Web Application Firewall (WAF) für Webendpunkte bereitzustellen. Eine WAF-Empfehlung wird für jede öffentlich zugängliche IP-Adresse (sowohl auf Instanzebene als auch mit Lastenausgleich) angezeigt, die über eine zugeordnete Netzwerksicherheitsgruppe mit offenen eingehenden Webports (80, 443) verfügt.</br></br>Security Center empfiehlt die Bereitstellung einer WAF zum Schutz vor Angriffen auf Ihre Webanwendungen auf virtuellen Computern und in der App Service-Umgebung. Eine App Service-Umgebung ist eine Option des [Premium](https://azure.microsoft.com/pricing/details/app-service/)-Tarifs von Azure App Service, die eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung von Azure App Service-Apps bereitstellt. Weitere Informationen zu ASE finden Sie unter [Dokumentation zur App Service-Umgebung](../app-service/environment/intro.md).</br></br>Sie können mehrere Webanwendungen in Security Center schützen, indem Sie diese Anwendungen Ihren vorhandenen WAF-Bereitstellungen hinzufügen. |
+| [Finalize application protection (Anwendungsschutz abschließen) (Anwendungsschutz abschließen)](security-center-add-web-application-firewall.md#finalize-application-protection) |Um die Konfiguration einer WAF abzuschließen, muss Datenverkehr an das WAF-Gerät umgeleitet werden. Nach dieser Empfehlung werden die erforderlichen Setupänderungen vorgenommen. |
+| Die neueste unterstützte Node.js-Version für Webanwendungen verwenden | Empfiehlt, die neueste Node.js-Version für die neuesten Sicherheitsklassen zu verwenden. Die Verwendung von älteren Klassen und Typen kann die Anfälligkeit Ihrer Anwendung für Sicherheitsrisiken erhöhen. |
+| Nicht jeder Ressource den Zugriff auf Ihre Funktions-App über CORS gestatten | Empfiehlt, nur erforderlichen Domänen die Interaktion mit Ihrer Webanwendung zu ermöglichen. Bei der Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS) sollte nicht allen Domänen gestattet werden, auf Ihre Funktionsanwendung zuzugreifen. |
+| Benutzerdefinierte Domänen für Funktions-App verwenden | Empfiehlt, benutzerdefinierte Domänen zu verwenden, damit eine Funktions-App vor gängigen Angriffen wie Phishing und anderen DNS-bezogenen Angriffen geschützt wird. |
+| IP-Einschränkungen für Funktions-App konfigurieren | Empfiehlt, eine Liste mit IP-Adressen zu definieren, die auf Ihre Anwendung zugreifen dürfen. Mithilfe von IP-Einschränkungen kann eine Funktions-App vor gängigen Angriffen geschützt werden. |
+| Zugriff auf Funktions-App nur über HTTPS gestatten | Empfiehlt, den Zugriff auf Funktions-Apps nur über HTTPS zu beschränken. |
+| Remotedebuggen sollte für Funktions-Apps deaktiviert werden | Empfiehlt, das Debuggen für Funktions-Apps zu deaktivieren, wenn Sie sie nicht mehr benötigen. Für das Remotedebuggen müssen die eingehenden Ports für eine Funktions-App geöffnet sein. |
+| WebSockets für Funktions-App deaktivieren | Empfiehlt, die Verwendung von Websockets innerhalb von Funktions-Apps sorgfältig zu prüfen. Das WebSockets-Protokoll ist für verschiedene Arten von Sicherheitsrisiken anfällig. |
+| Mehrere Besitzer für Ihr Abonnement festlegen | Empfiehlt, mehrere Abonnementbesitzer festzulegen, um Redundanz beim Administratorzugriff zu gewährleisten. |
+| Bis zu drei Besitzer für Ihr Abonnement festlegen | Empfiehlt, höchstens drei Abonnementbesitzer festzulegen, um die Möglichkeit einer Sicherheitsverletzung durch einen kompromittierten Besitzer zu verringern. |
+| MFA für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktivieren | Empfiehlt, für alle Abonnementkonten mit Administratorrechten die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) zu aktivieren, um eine Sicherheitsverletzung von Konten oder Ressourcen zu verhindern. |
+| MFA für Konten mit Schreibberechtigungen in Ihrem Abonnement aktivieren | Empfiehlt, für alle Abonnementkonten mit Schreibberechtigungen die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) zu aktivieren, um eine Sicherheitsverletzung von Konten oder Ressourcen zu verhindern. |
+| MFA für Konten mit Leseberechtigungen in Ihrem Abonnement aktivieren | Empfiehlt, für alle Abonnementkonten mit Leseberechtigungen die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) zu aktivieren, um eine Sicherheitsverletzung von Konten oder Ressourcen zu verhindern. |
+| Externe Konten mit Leseberechtigungen aus Ihrem Abonnement entfernen | Empfiehlt, externe Konten mit Leseberechtigungen aus Ihrem Abonnement zu entfernen, um nicht überwachten Zugriff zu verhindern. |
+| Externe Konten mit Schreibberechtigungen aus Ihrem Abonnement entfernen | Empfiehlt, externe Konten mit Schreibberechtigungen aus Ihrem Abonnement zu entfernen, um nicht überwachten Zugriff zu verhindern. |
+| Externe Konten mit Besitzerberechtigungen aus Ihrem Abonnement entfernen | Empfiehlt, externe Konten mit Besitzerberechtigungen aus Ihrem Abonnement zu entfernen, um nicht überwachten Zugriff zu verhindern. |
+| Veraltete Konten aus dem Abonnement entfernen | Empfiehlt, veraltete Konten aus Ihren Abonnements zu entfernen. |
+| Veraltete Konten mit Besitzerberechtigungen aus dem Abonnement entfernen | Empfiehlt, veraltete Konten mit Besitzerberechtigungen aus Ihren Abonnements entfernen. |
 Sie können Empfehlungen filtern und verwerfen.
 
 1. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Filter** aus. Das Blatt **Filter** wird geöffnet. Sie können Werte für Schweregrad und Status auswählen, die Sie anzeigen möchten.

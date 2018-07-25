@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 3d34628a5a47788bca8cdafcb6e199a0c2cb3bcc
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 18a1481b72904b0ac9c27e100271dc0fd0666baf
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437840"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001761"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-windows-containers"></a>Installieren der Azure IoT Edge-Runtime unter Windows zur Verwendung mit Windows-Containern
 
@@ -52,8 +52,9 @@ Invoke-WebRequest https://aka.ms/iotedged-windows-latest -o .\iotedged-windows.z
 Expand-Archive .\iotedged-windows.zip C:\ProgramData\iotedge -f
 Move-Item c:\ProgramData\iotedge\iotedged-windows\* C:\ProgramData\iotedge\ -Force
 rmdir C:\ProgramData\iotedge\iotedged-windows
-$env:Path += ";C:\ProgramData\iotedge"
-SETX /M PATH "$env:Path"
+$sysenv = "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment"
+$path = (Get-ItemProperty -Path $sysenv -Name Path).Path + ";C:\ProgramData\iotedge"
+Set-ItemProperty -Path $sysenv -Name Path -Value $path
 ```
 
 Installieren Sie die vcruntime wie unten angegeben. (Dieser Schritt kann auf einem IoT Core-Edge-Gerät übersprungen werden.)
@@ -142,7 +143,7 @@ Geben Sie zum Abrufen Ihrer IP-Adresse `ipconfig` in das PowerShell-Fenster ein,
 
 ![NAT][img-nat]
 
-Aktualisieren Sie **workload_uri** und **management_uri** im Abschnitt **connect:** der Konfigurationsdatei. Ersetzen Sie **\<GATEWAY_ADDRESS\>** durch die von Ihnen kopierte IP-Adresse. 
+Aktualisieren Sie **workload_uri** und **management_uri** im Abschnitt **connect:** der Konfigurationsdatei. Ersetzen Sie **\<GATEWAY_ADDRESS\>** durch die von Ihnen kopierte vEthernet-IP-Adresse.
 
 ```yaml
 connect:
@@ -150,7 +151,7 @@ connect:
   workload_uri: "http://<GATEWAY_ADDRESS>:15581"
 ```
 
-Geben Sie im Abschnitt **listen:** der Konfiguration die gleichen Adressen ein, und verwenden Sie dabei Ihre IP-Adresse als Gatewayadresse.
+Geben Sie die gleichen Adressen in den Abschnitt **listen:** ein.
 
 ```yaml
 listen:

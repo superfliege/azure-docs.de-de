@@ -4,21 +4,21 @@ description: Bietet eine Übersicht über die Migrationsstrategie und Szenarien,
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 07/12/2018
 ms.author: raynew
-ms.openlocfilehash: ec0308bb2e39c3801305748f19783e70d58b0b7e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4cad84d1cabd140f4846cb823e8c4b7ce11bc1f6
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232035"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008245"
 ---
 # <a name="contoso-migration-overview"></a>Contoso-Migration: Übersicht
 
 
-Dies ist der erste Artikel in einer Reihe, der veranschaulicht, wie das fiktive Unternehmen Contoso seine lokale Infrastruktur zur [Microsoft Azure](https://azure.microsoft.com/overview/what-is-azure/)-Cloud migriert. 
+Dieser Artikel veranschaulicht, wie die fiktive Organisation Contoso ihre lokale Infrastruktur in die [Microsoft Azure](https://azure.microsoft.com/overview/what-is-azure/)-Cloud migriert. 
 
-Die Artikelreihe stellt Beispielbereitstellungen vor, die Ihnen helfen, verschiedene Optionen für die Migration zu Azure zu verstehen und auszuprobieren, und Beispielbereitstellungen zum Arbeiten in einer Hybridumgebung. Die Artikel zeigen, wie das Unternehmen Contoso seine Migration durchführt, verweisen jedoch durchgängig auf allgemeine Informationen und spezielle Anweisungen.
+Dieses Dokument ist das erste in einer Reihe von Artikeln, die zeigen, wie das fiktive Unternehmen Contoso Ressourcen zu Azure migriert. Die Reihe enthält Informationen und Szenarios, die veranschaulichen, wie die Infrastruktur einer Migration eingerichtet wird, und wie verschiedene Migrationstypen ausgeführt werden. Die Szenarios werden an Komplexität zunehmen, und wir werden mit der Zeit zusätzliche Artikel hinzufügen. Die Artikel zeigen, wie das Unternehmen Contoso seine Migration durchführt, verweisen jedoch durchgängig auf allgemeine Informationen und spezielle Anweisungen.
 
 ## <a name="introduction"></a>Einführung
 
@@ -42,22 +42,29 @@ Die Strategien für die Migration zur Cloud lassen sich grob in vier Kategorien 
 
 ## <a name="migration-articles"></a>Artikel zur Migration
 
-Die Artikel der Reihe zur Contoso-Migration werden in der folgenden Tabelle zusammengefasst.  
+Die Artikel der Reihe werden in der folgenden Tabelle zusammengefasst.  
 
-- Die Komplexität der Szenarien steigt, und wir ergänzen sie von Zeit zu Zeit.
 - Die einzelnen Migrationsszenarien basieren auf geringfügig variierten Geschäftszielen, die die Migrationsstrategie bestimmen.
 - Für die einzelnen Bereitstellungsszenarien erhalten Sie Informationen zu Business-Treibern und Zielen, einer vorgeschlagenen Architektur, Schritten zum Ausführen der Migration sowie Empfehlungen zur Bereinigung und den nächsten Schritten nach Abschluss der Migration.
 
 **Artikel** | **Details** | **Status**
 --- | --- | ---
-Artikel 1: Übersicht (dieser Artikel) | Bietet eine Übersicht über die Migrationsstrategie von Contoso, die Artikelreihe und die verwendeten Beispiel-Apps. | Verfügbar
-[Artikel 2: Bereitstellen einer Azure-Infrastruktur](contoso-migration-overview.md) | Beschreibt, wie Contoso die lokale Infrastruktur und die Azure-Infrastruktur für die Migration vorbereitet. Für sämtliche Contoso-Migrationsszenarien wird dieselbe Infrastruktur verwendet. | Verfügbar
-[Artikel 3: Bewerten von lokalen Ressourcen](contoso-migration-assessment.md) | Zeigt, wie Contoso eine Bewertung der lokalen, zweischichtigen, unter VMware ausgeführten App SmartHotel durchführt. Contoso bewertet App-VMs mit dem Dienst [Azure Migrate](migrate-overview.md) und die SQL Server-Datenbank-App mit dem [Migrations-Assistenten von Azure Database](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Verfügbar
-[Artikel 4: Zuweisen eines neuen Hosts zu Azure-VMs und einer verwalteten SQL-Instanz](contoso-migration-rehost-vm-sql-managed-instance.md) | Veranschaulicht, wie Contoso die App SmartHotel zu Azure migriert. Die App-Web-VM wird mithilfe von [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) migriert und die App-Datenbank mit dem Dienst [Azure Database Migration](https://docs.microsoft.com/azure/dms/dms-overview) zu einer verwalteten SQL-Instanz migriert. | Verfügbar
-[Artikel 5: Zuweisen eines neuen Hosts zu Azure-VMs](contoso-migration-rehost-vm.md) | Veranschaulicht, wie Contoso die VMs der App SmartHotel mit dem SiteRecovery-Dienst migriert.
-[Artikel 6: Zuweisen eines neuen Hosts zu Azure-VMs und SQL Server-Verfügbarkeitsgruppen](contoso-migration-rehost-vm-sql-ag.md) | Veranschaulicht, wie Contoso die App SmartHotel migriert. Das Unternehmen verwendet Site Recovery zum Migrieren der App-VM und den Database Migration Service zum Migrieren der App-Datenbank zu einer SQL Server-AlwaysOn-Verfügbarkeitsgruppe. | Verfügbar
-[Artikel 7: Zuweisen eines neuen Hosts für eine Linux-App zu Azure-VMs](contoso-migration-rehost-linux-vm.md) | Veranschaulicht, wie Contoso die App-VMs mithilfe von Site Recovery zu Azure migriert. | Geplant
-[Artikel 8: Zuweisen eines neuen Hosts für eine Linux-App zu Azure-VMs und Azure MySQL Server](contoso-migration-rehost-linux-vm-mysql.md) | Veranschaulicht, wie Contoso die App-VM mithilfe von Site Recovery migriert und MySQL-Workbench zum Migrieren zu einer Azure MySQL Server-Instanz verwendet. | Geplant
+Artikel 1: Übersicht | Bietet eine Übersicht über die Migrationsstrategie von Contoso, die Artikelreihe und die Beispiel-Apps, die wir verwenden. | Dieser Artikel
+[Artikel 2: Bereitstellen einer Azure-Infrastruktur](contoso-migration-infrastructure.md) | Beschreibt, wie Contoso die lokale Infrastruktur und die Azure-Infrastruktur für die Migration vorbereitet. Für alle Migrationsartikel wird die gleiche Infrastruktur verwendet. | Verfügbar
+[Artikel 3: Bewerten der lokalen Ressourcen für die Migration zu Azure](contoso-migration-assessment.md)  | Zeigt, wie Contoso eine Bewertung einer lokalen, zweischichtigen App SmartHotel auf einer VMware ausführt. Contoso bewertet App-VMs mit dem Dienst [Azure Migrate](migrate-overview.md) und die App SQL Server-Datenbank mit dem [Migrations-Assistenten von Azure Database](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Verfügbar
+[Artikel 4: Zuweisen eines neuen Hosts für eine App auf Azure-VMs und einer verwalteten SQL-Datenbank-Instanz](contoso-migration-rehost-vm-sql-managed-instance.md) | Veranschaulicht, wie Contoso eine Migration zu Azure für die lokale App SmartHotel per Lift & Shift ausführt. Contoso migriert die Front-End-VM der App mithilfe von [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) und die App-Datenbank mithilfe des [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) zu einer verwalteten SQL-Instanz. | Verfügbar
+[Artikel 5: Zuweisen eines neuen Hosts für eine App auf Azure-VMs](contoso-migration-rehost-vm.md) | Veranschaulicht, wie Contoso die VMs der App SmartHotel zu Azure-VMs mit dem Site Recovery-Dienst migriert. | Verfügbar
+[Artikel 6: Zuweisen eines neuen Hosts für eine App auf Azure-VMs und zur SQL Server Always On-Verfügbarkeitsgruppe](contoso-migration-rehost-vm-sql-ag.md) | Veranschaulicht, wie Contoso die App SmartHotel migriert. Contoso verwendet Site Recovery, um die App-VMs zu migrieren, und den Database Migration Service, um die App-Datenbank zu einem SQL Servercluster zu migrieren, das durch eine Always On-Verfügbarkeitsgruppe geschützt wird. | Verfügbar
+[Artikel 7: Zuweisen von Azure-VMs als neue Hosts zu einer Linux-App](contoso-migration-rehost-linux-vm.md) | Veranschaulicht, wie Contoso mithilfe von Site Recovery eine Migration der Linux-App osTicket per Lift & Shift zu Azure-VMs durchführt | Verfügbar
+[Artikel 8: Zuweisen eines neuen Hosts für eine lokale Linux-App zu Azure-VMs und Azure Database for MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Veranschaulicht, wie Contoso die Linux-App osTicket mithilfe von Site Recovery zu Azure-VMs und die App-Datenbank mithilfe von MySQL Workbench zu einer Azure MySQL Server-Instanz migriert. | Verfügbar
+[Artikel 9: Umgestalten einer App zu einer Azure-Web-App und einer Azure SQL-Datenbank-Instanz](contoso-migration-refactor-web-app-sql.md) | Zeigt, wie Contoso die SmartHotel-App zu einer Azure-Web-App und die App-Datenbank zu einer Azure SQL Server-Instanz migriert. | Verfügbar
+[Artikel 10: Umgestalten einer Linux-App zu einer Azure-Web-App und einer Azure Database for MySQL-Instanz](contoso-migration-refactor-linux-app-service-mysql.md) | Zeigt, wie Contoso die Linux-osTicket-App zu Azure-Web-Apps auf mehreren Websites migriert, die in GitHub für Continuous Delivery integriert sind. Es migriert die App-Datenbank zu einer Azure Database for MySQL-Instanz. | Verfügbar
+[Artikel 11: Umgestalten von TFS in VSTS](contoso-migration-tfs-vsts.md) | Zeigt, wie Contoso seine lokale Team Foundation Server-Bereitstellung (TFS) durch Migration zu Visual Studio Team Services (VSTS) in Azure migriert. | Verfügbar
+[Artikel 12: Umstrukturieren einer App zu einem Azure-Container und einer Azure SQL-Datenbank-Instanz](contoso-migration-rearchitect-container-sql.md) | Zeigt, wie Contoso seine SmartHotel-App zu Azure migriert und in Azure umstrukturiert. Es strukturiert die App-Webebene in einen Windows-Container und die App-Datenbank in eine Azure SQL-Datenbank-Instanz um. | Verfügbar
+[Artikel 13: Neuerstellen einer App in Azure](contoso-migration-rebuild.md) | Zeigt, wie Contoso seine SmartHotel-App mit einer Reihe von Azure-Funktionen und -Diensten wie App Service, Azure Kubernetes, Azure Functions, Cognitive Services und Cosmos DB neu erstellt. | Verfügbar
+
+
+
 
 
 
@@ -71,7 +78,7 @@ In den Artikeln werden zwei Demo-Apps verwendet – SmartHotel und osTicket.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erfahren Sie, wie](contoso-migration-infrastructure.md) Contoso die lokale und Azure-Infrastruktur zur Vorbereitung auf die Migration einrichtet.
+Erfahren Sie, wie [Contoso eine lokale Infrastruktur und eine Azure-Infrastruktur als Vorbereitung auf die Migration einrichtet](contoso-migration-infrastructure.md).
 
 
 

@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/07/2018
-ms.openlocfilehash: 86af0101d84fe9cd44211a931567a85d7b5166e0
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 07/12/2018
+ms.openlocfilehash: c911b096af6662e11afb4c4262b92c239d252c36
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261609"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990226"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-managed-instance-using-dms"></a>Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz mithilfe von DMS
 Mit Azure Database Migration Service können Sie die Datenbanken aus einer lokalen SQL Server-Instanz zu einer [verwalteten Azure SQL-Datenbank-Instanz](../sql-database/sql-database-managed-instance.md) migrieren. Informationen zu weiteren Methoden, für die etwas manueller Aufwand erforderlich ist, finden Sie im Artikel [Migration einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz](../sql-database/sql-database-managed-instance-migrate.md).
@@ -155,11 +155,17 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
 
 2.  Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen der Quell- und Zielserver ein, und wählen Sie dann **Speichern** aus.
 
-3.  Wählen Sie auf dem Bildschirm **Quelldatenbanken auswählen** die Quelldatenbank aus, die Sie migrieren möchten.
+3.  Wählen Sie auf dem Bildschirm **Quelldatenbanken auswählen** die Quelldatenbank(en) aus, die Sie migrieren möchten.
 
-    ![Auswählen von Quelldatenbanken](media\tutorial-sql-server-to-managed-instance\dms-select-source-databases1.png)
+    ![Auswählen von Quelldatenbanken](media\tutorial-sql-server-to-managed-instance\dms-select-source-databases2.png)
 
-4.  Wählen Sie **Speichern** aus, und geben Sie anschließend auf dem Bildschirm **Migrationseinstellungen konfigurieren** folgende Details an:
+4.  Wählen Sie **Speichern** aus, und wählen Sie dann auf dem Bildschirm **Benutzernamen auswählen** die Benutzernamen, die Sie migrieren möchten.
+
+    Nur die Migration von SQL-Anmeldeinformationen wird von der aktuellen Release unterstützt.
+
+    ![Auswählen von Benutzernamen](media\tutorial-sql-server-to-managed-instance\dms-select-logins.png)
+
+5. Wählen Sie **Speichern** aus, und geben Sie anschließend auf dem Bildschirm **Migrationseinstellungen konfigurieren** folgende Details an:
 
     | | |
     |--------|---------|
@@ -168,29 +174,31 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
     |**Kennwort** | Kennwort für den Benutzer |
     |**Speicherkontoeinstellungen** | Der SAS-URI, der Azure Database Migration Service Zugriff auf Ihren Speicherkontocontainer gewährt, in den der Dienst die Sicherungsdateien hochlädt und der für die Migration von Datenbanken zur verwalteten Azure SQL-Datenbank-Instanz verwendet wird. [Erfahren Sie, wie der SAS-URI für Blobcontainer abgerufen wird](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).|
     
-    ![Konfigurieren von Migrationseinstellungen](media\tutorial-sql-server-to-managed-instance\dms-configure-migration-settings1.png)
+    ![Konfigurieren von Migrationseinstellungen](media\tutorial-sql-server-to-managed-instance\dms-configure-migration-settings2.png)
 
 5.  Wählen Sie **Speichern** aus, und geben Sie anschließend auf dem Bildschirm **Migrationszusammenfassung** im Textfeld **Aktivitätsname** einen Namen für die Migrationsaktivität an.
 
-6. Erweitern Sie den Abschnitt **Überprüfungsoption**, um den Bildschirm **Überprüfungsoption auswählen** anzuzeigen. Geben Sie an, ob die migrierte Datenbank auf Richtigkeit der Abfrage überprüft werden soll, und wählen Sie anschließend **Speichern** aus.  
+    ![Migrationszusammenfassung](media\tutorial-sql-server-to-managed-instance\dms-migration-summary2.png)
 
-    ![Migrationszusammenfassung](media\tutorial-sql-server-to-managed-instance\dms-migration-summary1.png)
+6. Erweitern Sie den Abschnitt **Überprüfungsoption**, um den Bildschirm **Überprüfungsoption auswählen** anzuzeigen. Geben Sie an, ob die migrierte Datenbank auf Richtigkeit der Abfrage überprüft werden soll, und wählen Sie anschließend **Speichern** aus.  
 
 7. Wählen Sie **Migration ausführen** aus.
 
     Das Fenster „Migrationsaktivität“ wird angezeigt, und der Status der Aktivität lautet **Ausstehend**.
 
-   ![Migrationsaktivität ausstehend](media\tutorial-sql-server-to-managed-instance\dms-migration-activity-pending.png)
-
 ## <a name="monitor-the-migration"></a>Überwachen der Migration
 
-1. Wählen Sie auf dem Bildschirm „Migrationsaktivität“ die Option **Aktualisieren** aus, um die Anzeige so lange zu aktualisieren, bis Sie sehen, dass der Status der Migration **Abgeschlossen** lautet.
+1. Wählen Sie auf dem Bildschirm zur Migrationsaktivität die Option **Aktualisieren** aus, um die Anzeige zu aktualisieren.
  
-   ![Migrationsaktivität abgeschlossen](media\tutorial-sql-server-to-managed-instance\dms-migration-activity-finished.png)
+   ![Migrationsaktivität in Bearbeitung](media\tutorial-sql-server-to-managed-instance\dms-migration-activity-in-progress.png)
 
-2. Wählen Sie nach Abschluss der Migration die Option **Bericht herunterladen** aus, um einen Bericht abzurufen, in dem die Details zum Migrationsprozess aufgeführt werden.
+2. Sie können die Datenbanken und Anmeldekategorien erweitern, um den Migrationsstatus des jeweiligen Serverobjekts zu überwachen.
+
+   ![Migrationsaktivität in Bearbeitung](media\tutorial-sql-server-to-managed-instance\dms-migration-activity-monitor.png)
+
+3. Wählen Sie nach Abschluss der Migration die Option **Bericht herunterladen** aus, um einen Bericht abzurufen, in dem die Details zum Migrationsprozess aufgeführt werden.
  
-3. Überprüfen Sie die Zieldatenbank in der Umgebung der verwalteten Azure SQL-Datenbank-Zielinstanz.
+4. Überprüfen Sie die Zieldatenbank in der Umgebung der verwalteten Azure SQL-Datenbank-Zielinstanz.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

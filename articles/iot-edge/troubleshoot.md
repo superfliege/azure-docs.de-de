@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9ec396e8a1ad36e85e1291995345ca1de24668d0
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: ecd19acdeba57a29a28187d42783bbf146095190
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128059"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001904"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Häufig auftretende Probleme und Lösungen für Azure IoT Edge
 
@@ -107,19 +107,43 @@ Wenn der Daemon für die IoT Edge-Sicherheit ausgeführt wird, können Sie sich 
 
 ### <a name="view-the-messages-going-through-the-edge-hub"></a>Anzeigen der Nachrichten, die den Edge Hub durchlaufen
 
-Zeigen Sie die Nachrichten an, die den Edge Hub durchlaufen, und verschaffen Sie sich mit ausführlichen Protokollen der Runtimecontainer „edgeAgent“ und „edgeHub“ Einblicke in Aktualisierungen der Geräteeigenschaften. Legen Sie die Umgebungsvariable `RuntimeLogLevel` fest, um für diese Container ausführliche Protokolle zu aktivieren: 
+Zeigen Sie die Nachrichten an, die den Edge Hub durchlaufen, und verschaffen Sie sich mit ausführlichen Protokollen der Runtimecontainer „edgeAgent“ und „edgeHub“ Einblicke in Aktualisierungen der Geräteeigenschaften. Legen Sie die `RuntimeLogLevel` in Ihrer YAML-Konfigurationsdartei fest, um für diese Container ausführliche Protokolle zu aktivieren. So öffnen Sie die Datei
 
 Unter Linux:
-    
-   ```cmd
-   export RuntimeLogLevel="debug"
+
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
    ```
-    
+
 Unter Windows:
-    
-   ```powershell
-   [Environment]::SetEnvironmentVariable("RuntimeLogLevel", "debug")
+
+   ```cmd
+   notepad C:\ProgramData\iotedge\config.yaml
    ```
+
+Das `agent`-Element sieht standardmäßig in etwa wie folgt aus:
+
+   ```yaml
+   agent:
+     name: edgeAgent
+     type: docker
+     env: {}
+     config:
+       image: mcr.microsoft.com/azureiotedge-agent:1.0
+       auth: {}
+   ```
+
+Ersetzen Sie `env: {}` durch:
+
+> [!WARNING]
+> YAML-Dateien können keine Tabstopps für Einzüge enthalten. Verwenden Sie stattdessen zwei Leerzeichen.
+
+   ```yaml
+   env:
+     RuntimeLogLevel: debug
+   ```
+
+Speichern Sie die Datei, und starten Sie den IoT Edge-Sicherheits-Manager neu.
 
 Sie können auch die Nachrichten zwischen IoT Hub und den IoT Edge-Geräten überprüfen. Zeigen Sie diese Nachrichten mithilfe der [Azure IoT-Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)-Erweiterung für Visual Studio Code an. Weitere Hinweise finden Sie unter [Praktisches Tool bei der Entwicklung mit Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
 
@@ -236,5 +260,41 @@ Wenn dieser Fehler angezeigt wird, können Sie ihn durch Konfigurieren des DNS-N
       notepad C:\ProgramData\iotedge\config.yaml
       ```
 
+## <a name="stability-issues-on-resource-constrained-devices"></a>Stabilitätsprobleme für Geräte mit Ressourceneinschränkungen 
+Auf eingeschränkten Geräten wie dem Raspberry Pi kann es zu Stabilitätsproblemen kommen, vor allem bei der Verwendung als Gateway. Zu den Symptomen gehören Speicherausnahmen im Edge-Hub-Modul; nachgeschaltete Geräte können sich nicht verbinden, oder das Gerät sendet nach einigen Stunden keine Telemetrienachrichten mehr.
+
+### <a name="root-cause"></a>Grundursache
+Der zur Edgeruntime gehörige Edgehub ist standardmäßig für die Leistungserbringung optimiert und versucht, große Blöcke des Speichers zuzuordnen. Dies ist für eingeschränkte Edgegeräte nicht ideal und kann zu Stabilitätsproblemen führen.
+
+### <a name="resolution"></a>Lösung
+Setzen Sie für den Edgehub eine Umgebungsvariable **OptimizeForPerformance** auf **FALSE**. Dies kann auf zwei Arten erreicht werden:
+
+In der Benutzeroberfläche: 
+
+Erstellen Sie im Portal über *Gerätedetails*->*Module festlegen*->*Erweiterte Einstellungen für die Edge-Laufzeit konfigurieren* eine Umgebungsvariable namens *OptimizeForPerformance*, die für den *Edgehub* auf *FALSE* gesetzt ist.
+
+![optimizeforperformance][img-optimize-for-perf]
+
+**OR**
+
+Im Bereitstellungsmanifest:
+
+```json
+  "edgeHub": {
+    "type": "docker",
+    "settings": {
+      "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+      "createOptions": <snipped>
+    },
+    "env": {
+      "OptimizeForPerformance": {
+          "value": "false"
+      }
+    },
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
 Sind Sie der Meinung, dass Sie in der IoT Edge-Plattform einen Fehler gefunden haben? [Übermitteln Sie Ihr Problem](https://github.com/Azure/iotedge/issues), damit wir die Plattform weiter verbessern können. 
+
+<!-- Images -->
+[img-optimize-for-perf]: ./media/troubleshoot/OptimizeForPerformanceFalse.png

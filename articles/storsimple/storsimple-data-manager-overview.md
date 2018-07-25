@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/21/2018
 ms.author: vidarmsft
-ms.openlocfilehash: d57229ad79909aa0334cc623d727b733a1ec73f9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5845fd246b20d29739eb6d60bbc8621489ccc0d6
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652007"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39011938"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>Übersicht über die StorSimple Data Manager-Lösung
 
@@ -85,6 +85,14 @@ Wenn Ihre Data Manager-Region sich von Ihrer Auftragsdefinitionsregion untersche
 ## <a name="managing-personal-information"></a>Verwalten personenbezogener Informationen
 
 Personenbezogene Daten werden vom StorSimple Data Manager weder gesammelt noch angezeigt. Weitere Informationen finden Sie im [Trust Center](https://www.microsoft.com/trustcenter) in der Microsoft-Datenschutzrichtlinie.
+
+## <a name="known-limitations"></a>Bekannte Einschränkungen
+
+Für den Dienst gelten derzeit folgende Einschränkungen:
+- Der StorSimple Data Manager funktioniert derzeit nicht mit Volumes, die BitLocker-verschlüsselt sind. Wenn Sie versuchen, den Dienst mit einem verschlüsselten Laufwerk auszuführen, werden Auftragsfehler angezeigt.
+- Einige Metadaten von Dateien (z.B. ACLs) werden nicht in den transformierten Daten beibehalten.
+- Dieser Dienst funktioniert nur mit NTFS-Volumes.
+- Wenn Dateipfade 256 Zeichen oder mehr aufweisen, tritt bei dem Auftrag ein Fehler auf.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

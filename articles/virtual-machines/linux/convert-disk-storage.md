@@ -3,8 +3,8 @@ title: Konvertieren zwischen dem Standardspeicher und Storage Premium für verwa
 description: Vorgehensweise zum Konvertieren zwischen dem Standardspeicher und Storage Premium für verwaltete Azure-Datenträger mithilfe der Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
-author: ramankum
-manager: kavithag
+author: cynthn
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,30 +13,30 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2017
-ms.author: ramankum
-ms.openlocfilehash: c22c2c194cb839c3ec9e3e851768ca19bc6fc443
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.date: 07/12/2018
+ms.author: cynthn
+ms.openlocfilehash: 5c06de6b757da63bb35a4f094e5912e8dcd786f9
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
-ms.locfileid: "23666317"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005049"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Konvertieren zwischen dem Standardspeicher und Storage Premium für verwaltete Azure-Datenträger
 
-Für verwaltete Datenträger stehen zwei Speicheroptionen zur Verfügung: [Premium](../windows/premium-storage.md) (SSD-basiert) und [Standard](../windows/standard-storage.md) (HDD-basiert). Entsprechend Ihren Leistungsanforderungen können Sie problemlos zwischen beiden Optionen wechseln – und das bei minimaler Downtime. Diese Funktion ist nicht für nicht verwaltete Datenträger verfügbar. Sie können jedoch problemlos eine [Konvertierung in verwaltete Datenträger ](convert-unmanaged-to-managed-disks.md) durchführen, um einfach zwischen beiden Optionen zu wechseln.
+Managed Disks bietet drei Speicheroptionen: [Premium-SSDs](../windows/premium-storage.md), Standard-SSDs (Vorschauversion) und [Standard-Festplattenlaufwerke](../windows/standard-storage.md). Entsprechend Ihren Leistungsanforderungen können Sie problemlos zwischen den Optionen wechseln – und das bei minimaler Ausfallzeit. Dies wird für nicht verwaltete Datenträger nicht unterstützt. Sie können jedoch problemlos eine [Konvertierung in verwaltete Datenträger](convert-unmanaged-to-managed-disks.md) durchführen, um einfach zwischen den Datenträgertypen zu wechseln.
 
 In diesem Artikel wird die Konvertierung zwischen verwalteten Standard- und Premium-Datenträgern mithilfe der Azure CLI erläutert. Wenn Sie die Befehlszeilenschnittstelle installieren oder aktualisieren müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli.md) Informationen dazu. 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 * Da für die Konvertierung ein Neustart der VM erforderlich ist, sollten Sie die Migration Ihres Datenträgerspeichers während eines bereits vorhandenen Wartungsfensters durchführen. 
-* Wenn Sie nicht verwaltete Datenträger verwenden, [konvertieren Sie sie zuerst in verwaltete Datenträger](convert-unmanaged-to-managed-disks.md), um mithilfe der Anweisungen in diesem Artikel zwischen beiden Speicheroptionen zu wechseln. 
+* Wenn Sie nicht verwaltete Datenträger verwenden, [konvertieren Sie sie zuerst in verwaltete Datenträger](convert-unmanaged-to-managed-disks.md), um mithilfe der Anweisungen in diesem Artikel zwischen den Speicheroptionen zu wechseln. 
 
 
 ## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium-and-vice-versa"></a>Konvertieren zwischen dem Standardspeicher und Storage Premium für alle verwalteten Datenträger einer VM
 
-Im folgenden Beispiel wird gezeigt, wie Sie für alle Datenträger einer VM eine Konvertierung vom Standardspeicher in Storage Premium durchführen. Zur Verwendung von verwalteten Premium-Datenträgern muss Ihre VM eine [VM-Größe](sizes.md) verwenden, die Premium-Speicher unterstützt. In diesem Beispiel erfolgt ein Wechsel zu einer Größe, die Premium-Speicher unterstützt.
+Im folgenden Beispiel wird gezeigt, wie Sie für alle Datenträger einer VM eine Konvertierung eines Standard-Speichers zu Storage Premium durchführen. Zur Verwendung von verwalteten Premium-Datenträgern muss Ihre VM eine [VM-Größe](sizes.md) verwenden, die Premium-Speicher unterstützt. In diesem Beispiel erfolgt ein Wechsel zu einer Größe, die Premium-Speicher unterstützt.
 
  ```azurecli
 
@@ -73,7 +73,7 @@ az vm start --name $vmName --resource-group $rgName
 ```
 ## <a name="convert-a-managed-disk-from-standard-to-premium-and-vice-versa"></a>Konvertieren zwischen dem Standardspeicher und Storage Premium für einen verwalteten Datenträger
 
-Für Ihre Entwicklungs-/Testworkload sollten Sie eine Kombination aus Standard- und Premium-Datenträger verwenden, um Ihre Kosten zu senken. Führen Sie hierfür nur für die Datenträger, die eine höhere Leistung erfordern, ein Upgrade auf Storage Premium durch. Im folgenden Beispiel wird gezeigt, wie Sie für einen einzelnen Datenträger einer VM eine Konvertierung zwischen dem Standardspeicher und Storage Premium durchführen. Zur Verwendung von verwalteten Premium-Datenträgern muss Ihre VM eine [VM-Größe](sizes.md) verwenden, die Premium-Speicher unterstützt. In diesem Beispiel erfolgt ein Wechsel zu einer Größe, die Premium-Speicher unterstützt.
+Für Ihre Entwicklungs-/Testworkload sollten Sie eine Kombination aus Standard- und Premium-Datenträger verwenden, um Ihre Kosten zu senken. Führen Sie hierfür nur für die Datenträger, die eine höhere Leistung erfordern, ein Upgrade auf Storage Premium durch. Im folgenden Beispiel wird gezeigt, wie Sie für einen einzelnen Datenträger einer VM eine Konvertierung eines Standard-Speichers zu Storage Premium und umgekehrt durchführen. Zur Verwendung von verwalteten Premium-Datenträgern muss Ihre VM eine [VM-Größe](sizes.md) verwenden, die Premium-Speicher unterstützt. In diesem Beispiel erfolgt ein Wechsel zu einer Größe, die Premium-Speicher unterstützt.
 
  ```azurecli
 
@@ -105,6 +105,45 @@ az disk update --sku $sku --name $diskName --resource-group $rgName
 
 az vm start --ids $vmId 
 ```
+
+## <a name="convert-a-managed-disk-from-standard-hdd-to-standard-ssd-and-vice-versa"></a>Konvertieren eines verwalteten Datenträgers eines Standard-Festplattenlaufwerks zu einer Standard-SSD und umgekehrt
+
+Im folgenden Beispiel wird gezeigt, wie Sie für einen einzelnen Datenträger einer VM eine Konvertierung eines Standard-Festplattenlaufwerks zu einem Standard-SSD und umgekehrt durchführen.
+
+ ```azurecli
+
+#resource group that contains the managed disk
+rgName='yourResourceGroup'
+
+#Name of your managed disk
+diskName='yourManagedDiskName'
+
+#Choose between Standard_LRS and StandardSSD_LRS based on your scenario
+sku='StandardSSD_LRS'
+
+#Get the parent VM Id 
+vmId=$(az disk show --name $diskName --resource-group $rgName --query managedBy --output tsv)
+
+#Deallocate the VM before changing the disk type
+az vm deallocate --ids $vmId 
+
+# Update the sku
+az disk update --sku $sku --name $diskName --resource-group $rgName 
+
+az vm start --ids $vmId 
+```
+
+## <a name="convert-using-the-azure-portal"></a>Konvertieren über das Azure-Portal
+
+Sie haben auch die Möglichkeit, nicht verwaltete Datenträger über das Azure-Portal in verwaltete Datenträger zu konvertieren.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Wählen Sie die VM in der Liste der VMs im Portal aus.
+3. Wählen Sie auf dem Blatt für die VM aus dem Menü die Option **Datenträger** aus.
+4. Wählen Sie oben auf dem Blatt **Datenträger** die Option **Zu Managed Disks migrieren** aus.
+5. Wenn sich Ihre VM in einer Verfügbarkeitsgruppe befindet, wird auf dem Blatt **Zu Managed Disks migrieren** eine Warnung angezeigt, die besagt, dass Sie die Verfügbarkeitsgruppe zuerst konvertieren müssen. Die Warnung sollte einen Link enthalten, über den Sie die Verfügbarkeitsgruppe konvertieren können. Sobald die Verfügbarkeitsgruppe konvertiert wurde, oder wenn sich Ihre VM nicht in einer Verfügbarkeitsgruppe befindet, klicken Sie auf **Migrieren**, um den Prozess der Migration Ihrer Datenträger zu Managed Disks zu starten. 
+
+Nach Abschluss der Migration wird die VM angehalten und neu gestartet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
