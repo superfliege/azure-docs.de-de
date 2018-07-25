@@ -1,6 +1,6 @@
 ---
-title: Verwenden von DataFu mit Pig in HDInsight – Azure | Microsoft-Dokumentation
-description: Bei DataFu handelt es sich um eine Sammlung von Bibliotheken für die Verwendung mit Hadoop. Erfahren Sie, wie Sie DataFu mit Pig in Ihrem HDInsight-Cluster verwenden können.
+title: Verwenden von Apache DataFu mit Pig in HDInsight – Azure | Microsoft-Dokumentation
+description: Bei Apache DataFu handelt es sich um eine Sammlung von Bibliotheken für die Verwendung mit Pig in Hadoop. Erfahren Sie, wie Sie DataFu mit Pig in Ihrem HDInsight-Cluster verwenden können.
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
@@ -13,18 +13,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/10/2018
+ms.date: 06/16/2018
 ms.author: larryfr
-ms.openlocfilehash: 30243d0b7db41fbe19c60d6c11d56fb7e801797b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 51949e763b77aede6df8a8ff6affa3892adbed21
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31401005"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090213"
 ---
-# <a name="use-datafu-with-pig-on-hdinsight"></a>Verwenden von DataFu mit Pig für HDInsight
+# <a name="use-apache-datafu-pig-with-pig-on-hdinsight"></a>Verwenden von Apache DataFu Pig mit Pig in HDInsight
 
-Erfahren Sie, wie Sie DataFu mit HDInsight verwenden. Bei DataFu handelt es sich um eine Sammlung von Open Source-Bibliotheken für die Verwendung mit Pig in Hadoop.
+Erfahren Sie, wie Apache DataFu Pig mit HDInsight verwendet wird.
+
+Bei DataFu Pig handelt es sich um eine Sammlung von Open Source-Bibliotheken für die Verwendung mit Pig in Hadoop.
+Weitere Informationen zu DataFu Pig finden Sie unter [https://datafu.apache.org/](https://datafu.apache.org/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -44,20 +47,41 @@ Erfahren Sie, wie Sie DataFu mit HDInsight verwenden. Bei DataFu handelt es sich
 >
 > Wenn Sie einen Windows-basierten Cluster oder einen Linux-basierten Cluster über Version 3.3 verwenden, überspringen Sie diesen Abschnitt.
 
-DataFu kann aus dem Maven-Repository heruntergeladen und installiert werden. Führen Sie die folgenden Schritte aus, um DataFu dem HDInsight-Cluster hinzuzufügen:
+DataFu kann aus dem Maven-Repository heruntergeladen und installiert werden. Führen Sie die folgenden Schritte aus, um die gewünschte Version zu finden und Ihrem HDInsight-Cluster hinzuzufügen:
+
+> [!WARNING]
+> DataFu-Versionen haben möglicherweise Anforderungen, die von HDInsight nicht erfüllt werden. Wenn Sie beispielsweise eine ältere Version von DataFu verwenden, kann es sein, dass Sie eine andere Version von Pig benötigen als die, die in HDInsight enthalten ist.
+
+### <a name="find-a-version"></a>Suchen einer Version
+
+1. Navigieren Sie in Ihrem Webbrowser zu https://mvnrepository.com/artifact/org.apache.datafu/datafu-pig, und suchen Sie die Version, die Sie benötigen.
+
+2. Wählen Sie die verknüpften Versionsnummer.
+
+3. Wählen Sie __Alle anzeigen__, um alle Dateien anzuzeigen.
+
+4. Suchen Sie in der Liste der Dateien die JAR-Datei. Diese Datei ist in der Regel die größte der aufgeführten Dateien, da sie alle Abhängigkeiten enthält. Klicken Sie mit der rechten Maustaste auf den Link und kopieren Sie die Linkadresse.
+
+### <a name="download-datafu-to-hdinsight"></a>Herunterladen von DataFu zu HDInsight
 
 1. Stellen Sie per SSH eine Verbindung mit Ihrem Linux-basierten HDInsight-Cluster her. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Verwenden Sie den folgenden Befehl, um die DataFu-JAR-Datei mit dem Hilfsprogramm „wget“ herunterzuladen, oder fügen Sie den Link in Ihren Browser ein, um den Download zu starten.
+2. Verwenden Sie den folgenden Befehl, um die JAR-Datei von DataFu mit dem Hilfsprogramm „Wget“ herunterzuladen:
+
+    > [!IMPORTANT]
+    > Ersetzen Sie den Link im Befehl durch die URL, die Sie zuvor kopiert haben.
 
     ```
-    wget http://central.maven.org/maven2/com/linkedin/datafu/datafu/1.2.0/datafu-1.2.0.jar
+    wget http://central.maven.org/maven2/org/apache/datafu/datafu-pig/1.4.0/datafu-pig-1.4.0.jar
     ```
 
 3. Laden Sie als Nächstes die Datei in den Standardspeicher für Ihren HDInsight-Cluster hoch. Wenn Sie die Datei im Standardspeicher ablegen, steht sie allen Clusterknoten zur Verfügung.
 
+    > [!IMPORTANT]
+    > Ersetzen Sie die Versionsnummer im Dateinamen durch die Version, die Sie heruntergeladen haben.
+
     ```
-    hdfs dfs -put datafu-1.2.0.jar /example/jars
+    hdfs dfs -put datafu-pig-1.4.0.jar /example/jars
     ```
 
     > [!NOTE]
@@ -70,9 +94,9 @@ Bei den Schritten in diesem Abschnitt wird davon ausgegangen, dass Sie mit Pig i
 > [!IMPORTANT]
 > Wenn Sie DataFu mithilfe der Schritte im vorherigen Abschnitt manuell installiert haben, müssen Sie es vor der Verwendung registrieren.
 >
-> * Wenn Ihr Cluster Azure Storage verwendet, verwenden Sie einen `wasb://`-Pfad. Beispiel: `register wasb:///example/jars/datafu-1.2.0.jar`.
+> * Wenn Ihr Cluster Azure Storage verwendet, verwenden Sie einen `wasb://`-Pfad. Beispiel: `register wasb:///example/jars/datafu-pig-1.4.0.jar`.
 >
-> * Wenn Ihr Cluster Azure Data Lake Store verwendet, verwenden Sie einen `adl://`-Pfad. Beispiel: `register adl://home/example/jars/datafu-1.2.0.jar`.
+> * Wenn Ihr Cluster Azure Data Lake Store verwendet, verwenden Sie einen `adl://`-Pfad. Beispiel: `register adl://home/example/jars/datafu-pig-1.4.0.jar`.
 
 Gewöhnlich definieren Sie für DataFu-Funktionen einen Alias. Das folgende Beispiel definiert einen Alias für `SHA`:
 
@@ -121,5 +145,5 @@ Dadurch wird folgende Ausgabe generiert:
 
 Weitere Informationen zu DataFu oder Pig finden Sie in den folgenden Dokumenten:
 
-* [Leitfaden zu Apache DataFu Pig](http://datafu.incubator.apache.org/docs/datafu/guide.html).
+* [Apache DataFu Pig – Erste Schritte](https://datafu.apache.org/docs/datafu/getting-started.html).
 * [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md)

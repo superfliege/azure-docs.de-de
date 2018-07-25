@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: juliako
-ms.openlocfilehash: 2f0996482c599a664d02e172dcb20cda4e039af5
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 1568ea3431f18b7a7a020d34d803f883904e18b4
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341663"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115229"
 ---
 # <a name="content-protection-overview"></a>Übersicht über den Inhaltsschutz
 
@@ -45,8 +45,11 @@ Für einen erfolgreichen Entwurf Ihres Inhaltsschutzsystems oder Ihrer Inhaltssc
   > [!NOTE]
   > Sie können jedes Medienobjekt mit mehreren Verschlüsselungstypen (AES-128, PlayReady, Widevine, FairPlay) verschlüsseln. Informationen zu sinnvollen Kombinationen finden Sie unter [Streamingprotokolle und Verschlüsselungstypen](#streaming-protocols-and-encryption-types).
   
-  Im folgenden Artikel sind die Schritte zum Verschlüsseln von Inhalten mit AES beschrieben: [Schutz durch AES-Verschlüsselung](protect-with-aes128.md)
- 
+  Im folgenden Artikel sind die Schritte zum Verschlüsseln von Inhalten mit AES und/oder DRM beschrieben: 
+  
+  * [Schutz durch AES-Verschlüsselung](protect-with-aes128.md)
+  * [Schutz mit DRM](protect-with-drm.md)
+
 2. Player mit AES- oder DRM-Client. Eine Videoplayer-App basierend auf einem Player-SDK (nativ oder browserbasiert) muss die folgenden Anforderungen erfüllen:
   * Das Player-SDK unterstützt die erforderlichen DRM-Clients.
   * Das Player-SDK unterstützt die erforderlichen Streamingprotokolle: Smooth, DASH und/oder HLS.
@@ -54,7 +57,7 @@ Für einen erfolgreichen Entwurf Ihres Inhaltsschutzsystems oder Ihrer Inhaltssc
   
     Sie können mithilfe der [Azure Media Player-API](http://amp.azure.net/libs/amp/latest/docs/) einen Player erstellen. Verwenden Sie die [ProtectionInfo-API von Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/), um anzugeben, welche DRM-Technologie auf unterschiedlichen DRM-Plattformen verwendet werden soll.
 
-    Zum Testen von mit AES oder CENC (Widevine + PlayReady) verschlüsselten Inhalten können Sie [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) verwenden. Stellen Sie sicher, dass Sie auf „Erweiterte Optionen“ klicken und AES aktivieren und das Token angeben.
+    Zum Testen von mit AES oder CENC (Widevine und/oder PlayReady) verschlüsselten Inhalten können Sie [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) verwenden. Stellen Sie sicher, dass Sie auf „Erweiterte Optionen“ klicken und Ihre Verschlüsselungsoptionen angeben.
 
     Wenn Sie mit FairPlay verschlüsselte Inhalte testen möchten, verwenden Sie [diesen Testplayer](http://aka.ms/amtest). Der Player unterstützt Widevine-, PlayReady- und FairPlay-DRMs sowie die AES-128-Verschlüsselung mit unverschlüsselten Schlüsseln. Sie müssen den richtigen Browser zum Testen der verschiedenen DRMs auswählen: Chrome, Opera oder Firefox für Widevine, MS Edge oder IE11 für PlayReady, Safari unter macOS für FairPlay.
 
@@ -90,7 +93,7 @@ Mit Media Services können Sie Ihre zu übermittelnden Inhalte dynamisch mit unv
 
 In Media Services v3 ist StreamingLocator ein Inhaltsschlüssel zugeordnet (siehe [dieses Beispiel](protect-with-aes128.md)). Bei Verwendung des Media Services-Schlüsselübermittlungsdiensts sollten Sie den Inhaltsschlüssel automatisch generieren. Sie sollten den Inhaltsschlüssel selbst generieren, wenn Sie Ihren eigenen Schlüsselbereitstellungsdienst verwenden oder wenn Sie ein Hochverfügbarkeitsszenario verwenden, für das Sie denselben Inhaltsschlüssel in zwei Rechenzentren benötigen.
 
-Wenn ein Player einen Stream anfordert, verwendet Media Services den angegebenen Schlüssel, um den Inhalt dynamisch mit einem unverschlüsselten AES-Schlüssel oder per DRM-Verschlüsselung zu verschlüsseln. Um den Stream zu entschlüsseln, fordert der Player den Schlüssel vom Media Services-Schlüsselübermittlungsdienst oder dem von Ihnen angegebenen Schlüsselübermittlungsdienst an. Um zu entscheiden, ob der Benutzer berechtigt ist, den Schlüssel zu erhalten, wertet der Dienst die Autorisierungsrichtlinien aus, die Sie für den Schlüssel angegeben haben.
+Wenn ein Player einen Stream anfordert, verwendet Media Services den angegebenen Schlüssel, um den Inhalt dynamisch mit einem unverschlüsselten AES-Schlüssel oder per DRM-Verschlüsselung zu verschlüsseln. Um den Stream zu entschlüsseln, fordert der Player den Schlüssel vom Media Services-Schlüsselübermittlungsdienst oder dem von Ihnen angegebenen Schlüsselübermittlungsdienst an. Um zu entscheiden, ob der Benutzer berechtigt ist, den Schlüssel zu erhalten, wertet der Dienst die Richtlinie für Inhaltsschlüssel aus, die Sie für den Schlüssel angegeben haben.
 
 ## <a name="aes-128-clear-key-vs-drm"></a>Unverschlüsselter AES-128-Schlüssel im Vergleich zu DRM
 
@@ -122,22 +125,13 @@ Bei einer Richtlinie mit Tokeneinschränkung wird der Inhaltsschlüssel nur an e
 
 Bei der Konfiguration der Richtlinie mit Tokeneinschränkung müssen die Parameter für den primären Verifizierungsschlüssel (primary verification key), den Aussteller (issuer) und die Zielgruppe (audience) angegeben werden. Der primäre Verifizierungsschlüssel enthält den Schlüssel, mit dem das Token signiert wurde. Der Aussteller ist der Sicherheitstokendienst, der das Token ausstellt. „Audience“ (manchmal auch „Scope“) beschreibt den Verwendungszweck des Tokens oder die Ressource, auf die durch das Token Zugriff gewährt wird. Der Schlüsselübermittlungsdienst von Media Services überprüft, ob die Werte im Token mit den Werten in der Vorlage übereinstimmen.
 
-## <a name="streaming-urls"></a>Streaming-URLs
-
-Falls Ihr Medienobjekt mit mehreren DRM-Systemen verschlüsselt wurde, verwenden Sie in der Streaming-URL ein Verschlüsselungstag: (format='m3u8-aapl', encryption='xxx').
-
-Es gelten die folgenden Bedingungen:
-
-* Der Verschlüsselungstyp muss nicht in der URL angegeben werden, wenn auf das Medienobjekt nur eine einzelne Verschlüsselung angewendet wurde.
-* Beim Verschlüsselungstyp wird die Groß-/Kleinschreibung nicht beachtet.
-* Folgende Verschlüsselungstypen können angegeben werden:
-  * **cenc**: Für PlayReady oder Widevine (Common Encryption)
-  * **cbcs-aapl**: Für FairPlay (AES-CBC-Verschlüsselung)
-  * **cbc**: Für die AES-Umschlagverschlüsselung
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Schutz durch AES-Verschlüsselung in Media Services v3](protect-with-aes128.md)
+Schauen Sie sich die folgenden Artikel an:
+
+  * [Schutz durch AES-Verschlüsselung](protect-with-aes128.md)
+  * [Schutz mit DRM](protect-with-drm.md)
 
 Weitere Informationen finden Sie unter [DRM-Referenzentwurf und -implementierung](../previous/media-services-cenc-with-multidrm-access-control.md).
 

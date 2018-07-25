@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 06/10/2018
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: bc1beb53c5919914919e666ecf1836ec45d32ccf
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 669966ce21c5c6c2d0653eb51c81fe78aa0b3a12
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319725"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39057309"
 ---
 **Anforderungen an den Konfigurations-/Prozessserver**
 
@@ -36,7 +36,7 @@ IIS | - Keine bereits vorhandene Standardwebsite <br> - Keine bereits vorhandene
 | 
 **NETZWERKEINSTELLUNGEN** | 
 Art der IP-Adresse | statischen 
-Zugriff auf das Internet | Der Server benötigt Zugriff auf diese URLs (direkt oder über einen Proxy) <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (beim Einrichten eines Konfigurationsservers) <br> - time.nist.gov <br> - time.windows.com 
+Zugriff auf das Internet | Der Server benötigt Zugriff auf diese URLs (direkt oder über einen Proxy) <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com  <br> - https://management.azure.com <br> - *.services.visualstudio.com <br> - time.nist.gov <br> - time.windows.com <br> OVF benötigt auch Zugriff auf die folgenden URLs <br> - https://login.microsoftonline.com <br> - https://secure.aadcdn.microsoftonline-p.com <br> - https://login.live.com  <br> - https://auth.gfx.ms <br> - https://graph.windows.net <br> - https://login.windows.net <br> - https://www.live.com <br> - https://www.microsoft.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi 
 Ports | 443 (Steuerkanalorchestrierung)<br>9443 (Datentransport) 
 NIC-Typ | VMXNET3 (wenn der Konfigurationsserver eine VMware-VM ist)
  | 
@@ -48,7 +48,7 @@ MYSQL | MySQL sollte installiert sein. Sie können es manuell installieren oder 
 
 **CPU** | **Memory** | **Cachedatenträger** | **Datenänderungsrate** | **Replizierte Computer**
 --- | --- | --- | --- | ---
-8 vCPUs<br/><br/> 2 Sockets * 4 Kerne mit 2,5 GHz | 16 GB | 300 GB | 500 GB oder weniger | < 100 Computer
-12 vCPUs<br/><br/> 2 Sockets * 6 Kerne mit 2,5 GHz | 18 GB | 600 GB | 500 GB bis 1 TB | 100 bis 150 Computer
-16 vCPUs<br/><br/> 2 Sockets * 8 Kerne mit 2,5 GHz | 32 GB | 1 TB | 1–2 TB | 150–200 Computer
+8 vCPUs<br/><br/> 2 Sockets * 4 Kerne \@ 2,5GHz | 16 GB | 300 GB | 500 GB oder weniger | < 100 Computer
+12 vCPUs<br/><br/> 2 Sockets * 6 Kerne \@ 2,5GHz | 18 GB | 600 GB | 500 GB bis 1 TB | 100 bis 150 Computer
+16 vCPUs<br/><br/> 2 Sockets * 8 Kerne \@ 2,5GHz | 32 GB | 1 TB | 1–2 TB | 150–200 Computer
 

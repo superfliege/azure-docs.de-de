@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: dbdd9c70fc135561eb0e60e5932e446bcfa3759b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6d1002fd5131ca97f7bc1b9d081ae1471191a6cf
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627500"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39075411"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Häufig gestellte Fragen zum Solution Accelerator für Connected Factory
 
@@ -206,6 +206,6 @@ Gehen Sie wie folgt vor, um Telemetriedaten von OPC UA-fremden Geräten an eine 
 
 Sie können auch einige andere Features und Funktionen der IoT-Solution Accelerators ausprobieren:
 
-* [Übersicht über die vorkonfigurierte Lösung für vorhersagbaren Wartungsbedarf](iot-accelerators-predictive-overview.md)
-* [Übersicht über den Solution Accelerator für verbundene Factorys](iot-accelerators-connected-factory-overview.md)
-* [Sicherheit im Internet der Dinge von Anfang an](securing-iot-ground-up.md)
+* [Übersicht über den Solution Accelerator für Predictive Maintenance](iot-accelerators-predictive-overview.md)
+* [Bereitstellen des Solution Accelerators für Connected Factory](quickstart-connected-factory-deploy.md)
+* [Sicherheit im Internet der Dinge von Anfang an](/azure/iot-fundamentals/iot-security-ground-up)

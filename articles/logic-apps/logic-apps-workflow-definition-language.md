@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 04/30/2018
 ms.author: estfan
-ms.openlocfilehash: 6a4e113c6816540e303210c3f1c96d81146cf5db
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: babe21db6acc2f7154857b4eb0a02356e89a8ca7
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300180"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39059232"
 ---
 # <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>Logic Apps-Workflowdefinitionen mit dem Schema der Definitionssprache für Workflows
 
@@ -44,7 +44,7 @@ So sieht die allgemeine Struktur einer Workflowdefinition aus:
   
 | Element | Erforderlich | BESCHREIBUNG | 
 |---------|----------|-------------| 
-| Definition | Ja | Das Startelement für Ihre Workflowdefinition | 
+| Definition | JA | Das Startelement für Ihre Workflowdefinition | 
 | $schema | Nur bei externem Verweis auf eine Workflowdefinition | Der Speicherort der JSON-Schemadatei, welche die Version der Workflowdefinitionssprache beschreibt. Der Speicherort lautet wie folgt: <p>`https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json`</p> |   
 | contentVersion | Nein  | Die Versionsnummer für Ihre Workflowdefinition, die standardmäßig „1.0.0.0“ lautet. Geben Sie einen zu verwendenden Wert an, um bei der Bereitstellung eines Workflows die richtige Definition besser ermitteln und bestätigen zu können. | 
 | Parameter | Nein  | Die Definitionen für mindestens einen Parameter, der Daten an Ihren Workflow übergibt <p><p>Maximale Anzahl von Parametern: 50 | 
@@ -76,7 +76,7 @@ So sieht die allgemeine Struktur einer Parameterdefinition aus:
 
 | Element | Erforderlich | Typ | BESCHREIBUNG |  
 |---------|----------|------|-------------|  
-| type | Ja | int, float, string, securestring, bool, array, JSON-Objekt, secureobject <p><p>**Hinweis**: Verwenden Sie für sämtliche Kennwörter, Schlüssel und geheimen Schlüssel die Typen `securestring` und `secureobject`, da diese Typen beim `GET`-Vorgang nicht zurückgegeben werden. | Der Typ des Parameters |
+| type | JA | int, float, string, securestring, bool, array, JSON-Objekt, secureobject <p><p>**Hinweis**: Verwenden Sie für sämtliche Kennwörter, Schlüssel und geheimen Schlüssel die Typen `securestring` und `secureobject`, da diese Typen beim `GET`-Vorgang nicht zurückgegeben werden. | Der Typ des Parameters |
 | defaultValue | Nein  | Identisch mit `type` | Der Standardparameterwert, wenn bei der Instanziierung des Workflows kein Wert angegeben wird | 
 | allowedValues | Nein  | Identisch mit `type` | Ein Array mit Werten, die vom Parameter akzeptiert werden können |  
 | metadata | Nein  | JSON-Objekt | Alle anderen von Visual Studio oder anderen Tools verwendeten Parameterdetails, wie z.B. der Name, eine lesbare Beschreibung Ihrer Logik-App oder Entwurfszeitdaten |  
@@ -106,9 +106,9 @@ So sieht die allgemeine Struktur einer Ausgabedefinition aus:
 
 | Element | Erforderlich | Typ | BESCHREIBUNG | 
 |---------|----------|------|-------------| 
-| <*key-name*> | Ja | Zeichenfolge | Der Schlüsselname des Rückgabewerts der Ausgabe |  
-| type | Ja | int, float, string, securestring, bool, array, JSON-Objekt | Der Typ des Rückgabewerts der Ausgabe | 
-| value | Ja | Identisch mit `type` | Der Rückgabewert der Ausgabe |  
+| <*key-name*> | JA | Zeichenfolge | Der Schlüsselname des Rückgabewerts der Ausgabe |  
+| type | JA | int, float, string, securestring, bool, array, JSON-Objekt | Der Typ des Rückgabewerts der Ausgabe | 
+| value | JA | Identisch mit `type` | Der Rückgabewert der Ausgabe |  
 ||||| 
 
 Zum Abrufen der Ausgabe aus einer Workflowausführung müssen Sie im Azure-Portal den Ausführungsverlauf der Logik-App sowie Details überprüfen oder die [REST-API des Workflows](https://docs.microsoft.com/rest/api/logic/workflows) verwenden. Sie können die Ausgabe auch an externe Systeme übergeben, wie z.B. PowerBI, um Dashboards erstellen zu können. 
@@ -125,7 +125,7 @@ Mit JSON können Sie über Literalwerte verfügen, die zur Entwurfszeit vorhande
 "rainbowColorsCount": 7 
 ```
 
-Sie können auch über Werte verfügen, die erst zur Laufzeit vorhanden sind. Zur Darstellung dieser Werte können Sie *Ausdrücke* verwenden, die zur Laufzeit ausgewertet werden. Ein Ausdruck ist eine Sequenz, die mindestens eine [Funktion](#functions), einen [Operator](#operators), eine Variable, einen expliziten Wert oder eine Konstante enthalten kann. In Ihrer Workflowdefinition können Sie einen Ausdruck an einer beliebigen Stelle in einem JSON-Zeichenfolgenwert verwenden, indem Sie dem Ausdruck das at-Zeichen voranstellen (@). Beim Auswerten eines Ausdrucks, der einen JSON-Wert darstellt, wird der Ausdruckskörper durch Entfernen des @-Zeichens extrahiert. Dies führt immer zu einem anderen JSON-Wert. 
+Sie können auch über Werte verfügen, die erst zur Laufzeit vorhanden sind. Zur Darstellung dieser Werte können Sie *Ausdrücke* verwenden, die zur Laufzeit ausgewertet werden. Ein Ausdruck ist eine Sequenz, die mindestens eine [Funktion](#functions), einen [Operator](#operators), eine Variable, einen expliziten Wert oder eine Konstante enthalten kann. In Ihrer Workflowdefinition können Sie einen Ausdruck an einer beliebigen Stelle in einem JSON-Zeichenfolgenwert verwenden, indem Sie dem Ausdruck das at-Zeichen voranstellen (\@). Beim Auswerten eines Ausdrucks, der einen JSON-Wert darstellt, wird der Ausdruckskörper durch Entfernen des \@-Zeichens extrahiert. Dies führt immer zu einem anderen JSON-Wert. 
 
 Für die zuvor definierte Eigenschaft `customerName` können Sie den Eigenschaftswert in einem Ausdruck beispielsweise über die Funktion [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) abrufen und diesen Wert der Eigenschaft `accountName` zuweisen:
 
@@ -134,7 +134,7 @@ Für die zuvor definierte Eigenschaft `customerName` können Sie den Eigenschaft
 "accountName": "@parameters('customerName')"
 ```
 
-Durch die *Zeichenfolgeninterpolation* können Sie auch mehrere Ausdrücke in Zeichenfolgen verwenden, die vom @-Zeichen und geschweiften Klammern ({}) umschlossen sind. Die Syntax sieht wie folgt aus:
+Durch die *Zeichenfolgeninterpolation* können Sie auch mehrere Ausdrücke in Zeichenfolgen verwenden, die vom \@-Zeichen und geschweiften Klammern ({}) umschlossen sind. Die Syntax sieht wie folgt aus:
 
 ```json
 @{ "<expression1>", "<expression2>" }
@@ -146,7 +146,7 @@ Das Ergebnis ist immer eine Zeichenfolge, wodurch diese Funktion der Funktion `c
 "customerName": "First name: @{parameters('firstName')} Last name: @{parameters('lastName')}"
 ```
 
-Wenn Sie über eine Zeichenfolgenliteral verfügen, das mit dem @-Zeichen beginnt, stellen Sie dem @-Zeichen ein weiteres @-Zeichen als Escapezeichen voran: @@.
+Wenn Sie über eine Zeichenfolgenliteral verfügen, das mit dem \@-Zeichen beginnt, stellen Sie dem \@-Zeichen ein weiteres \@-Zeichen als Escapezeichen voran: \@\@.
 
 Diese Beispiele veranschaulichen die Auswertung von Ausdrücken:
 
@@ -154,8 +154,8 @@ Diese Beispiele veranschaulichen die Auswertung von Ausdrücken:
 |------------|--------| 
 | "Sophia Owen" | Folgende Zeichen werden zurückgegeben: „Sophia Owen“ |
 | "array[1]" | Folgende Zeichen werden zurückgegeben: „array[1]“ |
-| "\@@\" | Folgende Zeichen werden als Zeichenfolge mit einem Zeichen zurückgegeben: „@“ |   
-| \" \@\" | Folgende Zeichen werden als Zeichenfolge mit zwei Zeichen zurückgegeben: „@“ |
+| „\@\@“ | Folgende Zeichen werden als Zeichenfolge mit einem Zeichen zurückgegeben: „\@“ |   
+| " \@" | Folgende Zeichen werden als Zeichenfolge mit zwei Zeichen zurückgegeben: „\@“ |
 |||
 
 Angenommen, für "myBirthMonth" ist der Monat "January" und für "myAge" die Zahl 42 definiert:  
@@ -169,13 +169,13 @@ Diese Beispiele veranschaulichen, wie die folgenden Ausdrücke ausgewertet werde
 
 | JSON-Ausdruck | Ergebnis |
 |-----------------|--------| 
-| "@parameters('myBirthMonth')" | Folgende Zeichenfolge wird zurückgeben: „January“ |  
-| "@{parameters('myBirthMonth')}" | Folgende Zeichenfolge wird zurückgeben: „January“ |  
-| "@parameters('myAge')" | Folgende Zahl wird zurückgeben: 42 |  
-| "@{parameters('myAge')}" | Folgende Zahl wird als Zeichenfolge zurückgegeben: „42“ |  
-| "My age is @{parameters('myAge')}" | Folgende Zeichenfolge wird zurückgegeben: „My age is 42“ |  
-| "@concat('My age is ', string(parameters('myAge')))" | Folgende Zeichenfolge wird zurückgegeben: „My age is 42“ |  
-| "My age is @@{parameters('myAge')}" | Folgende Zeichenfolge, die den Ausdruck enthält, wird zurückgegeben: „My age is @{parameters('myAge')}“ | 
+| „\@parameters('myBirthMonth')“ | Folgende Zeichenfolge wird zurückgeben: „January“ |  
+| „\@{parameters('myBirthMonth')}“ | Folgende Zeichenfolge wird zurückgeben: „January“ |  
+| „\@parameters('myAge')“ | Folgende Zahl wird zurückgeben: 42 |  
+| „\@{parameters('myAge')}“ | Folgende Zahl wird als Zeichenfolge zurückgegeben: „42“ |  
+| „My age is \@{parameters('myAge')}“ | Folgende Zeichenfolge wird zurückgegeben: „My age is 42“ |  
+| „\@concat('My age is ', string(parameters('myAge')))“ | Folgende Zeichenfolge wird zurückgegeben: „My age is 42“ |  
+| „My age is \@\@{parameters('myAge')}“ | Folgende Zeichenfolge, die den Ausdruck enthält, wird zurückgegeben: „My age is \@{parameters('myAge')}“ | 
 ||| 
 
 Wenn Sie im Designer für Logik-Apps visuell arbeiten, können Sie über den Ausdrucks-Generator Ausdrücke erstellen. Beispiel: 
@@ -241,10 +241,10 @@ Im Folgenden werden einige weitere allgemeine Möglichkeiten für die Verwendung
 
 | Aufgabe | Funktionssyntax in einem Ausdruck | 
 | ---- | -------------------------------- | 
-| Führen Sie Aufgaben mit einem Element durch, indem Sie dieses Element an eine Funktion übergeben. | "@<*functionName*>(<*item*>)" | 
-| 1. Rufen Sie den Wert von *parameterName* mit der geschachtelten Funktion `parameters()` ab. </br>2. Führen Sie Aufgaben mit dem Ergebnis durch, indem Sie diesen Wert an *functionName* übergeben. | "@<*functionName*>(parameters('<*parameterName*>'))" | 
-| 1. Rufen Sie das Ergebnis der geschachtelten inneren Funktion *functionName* ab. </br>2. Übergeben Sie das Ergebnis an die äußere Funktion *functionName2*. | "@<*functionName2*>(<*functionName*>(<*item*>))" | 
-| 1. Abrufen des Ergebnisses aus *functionName*. </br>2. Da das Ergebnis ein Objekt mit der Eigenschaft *propertyName* ist, rufen Sie den Eigenschaftswert ab. | "@<*functionName*>(<*item*>).<*propertyName*>" | 
+| Führen Sie Aufgaben mit einem Element durch, indem Sie dieses Element an eine Funktion übergeben. | „\@<*functionName*>(<*Element*>)“ | 
+| 1. Rufen Sie den Wert von *parameterName* mit der geschachtelten Funktion `parameters()` ab. </br>2. Führen Sie Aufgaben mit dem Ergebnis durch, indem Sie diesen Wert an *functionName* übergeben. | „\@<*functionName*>(parameters('<*parameterName*>'))“ | 
+| 1. Rufen Sie das Ergebnis der geschachtelten inneren Funktion *functionName* ab. </br>2. Übergeben Sie das Ergebnis an die äußere Funktion *functionName2*. | „\@<*functionName2*>(<*functionName*>(<*Element*>))“ | 
+| 1. Abrufen des Ergebnisses aus *functionName*. </br>2. Da das Ergebnis ein Objekt mit der Eigenschaft *propertyName* ist, rufen Sie den Eigenschaftswert ab. | „\@<*functionName*>(<*Element*>).<*propertyName*>“ | 
 ||| 
 
 Die Funktion `concat()` kann z.B. mindestens zwei Zeichenfolgenwerte als Parameter aufweisen. In dieser Funktion werden diese Zeichenfolgen in einer Zeichenfolge kombiniert. Sie können Zeichenfolgenliterale eingeben, wie z.B. „Sophia“ und „Owen“, um eine kombinierte Zeichenfolge („SophiaOwen“) zu erhalten:

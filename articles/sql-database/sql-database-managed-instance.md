@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 07/16/2018
 ms.author: bonova
-ms.openlocfilehash: 1dec40871b8842cb5e41d48c759d1f4fa85d7b66
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 0951281a584d3c534d82ec5760d29f4b80616d2d
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082504"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091992"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Was ist eine verwaltete Instanz (Vorschauversion)?
 
@@ -64,13 +64,13 @@ In der folgenden Tabelle sind verschiedene Eigenschaften aufgeführt, auf die ü
 | --- | --- |
 |Kein Kauf und keine Verwaltung von Hardware <br>Kein zusätzlicher Aufwand für die Verwaltung der zugrunde liegenden Infrastruktur <br>Schnelle Bereitstellung und Dienstskalierung <br>Automatische Patches und Versionsupgrades <br>Integration in andere PaaS-Datendienste |Betriebszeit-SLA von 99,99 %  <br>Integrierte Hochverfügbarkeit <br>Schutz der Daten durch automatische Sicherungen <br>Vom Kunden konfigurierbare Aufbewahrungsdauer für Sicherungen (in der Public Preview-Phase auf 7 Tage festgelegt) <br>Vom Benutzer initiierte Sicherungen <br>Funktion für Point-in-Time-Datenbankwiederherstellung |
 |**Sicherheit und Konformität** | **Verwaltung**|
-|Isolierte Umgebung (VNET-Integration, Dienst mit einzelnem Mandanten, dedizierte Compute- und Speicherressourcen) <br>Verschlüsselung der Daten während der Übertragung <br>Azure AD-Authentifizierung, Unterstützung für einmaliges Anmelden <br>Gleiche Kompatibilitätsstandards wie für Azure SQL-Datenbank <br>SQL-Überwachung <br>Bedrohungserkennung |Azure Resource Manager-API zur Automatisierung der Dienstbereitstellung und -skalierung <br>Funktionen des Azure-Portals für die manuelle Dienstbereitstellung und -skalierung <br>Data Migration Service 
+|Isolierte Umgebung (VNET-Integration, Dienst mit einzelnem Mandanten, dedizierte Compute- und Speicherressourcen) <br>Transparent Data Encryption<br>Azure AD-Authentifizierung, Unterstützung für einmaliges Anmelden <br>Gleiche Kompatibilitätsstandards wie für Azure SQL-Datenbank <br>SQL-Überwachung <br>Bedrohungserkennung |Azure Resource Manager-API zur Automatisierung der Dienstbereitstellung und -skalierung <br>Funktionen des Azure-Portals für die manuelle Dienstbereitstellung und -skalierung <br>Data Migration Service 
 
 ![Einmaliges Anmelden](./media/sql-database-managed-instance/sso.png) 
 
-## <a name="vcore-based-purchasing-model-preview"></a>V-Kern-basiertes Kaufmodell (Vorschauversion)
+## <a name="vcore-based-purchasing-model"></a>Auf virtuellen Kernen basierendes Erwerbsmodell
 
-Das auf virtuellen Kernen basierende Kaufmodell (Vorschau) bietet Ihnen mehr Flexibilität, Kontrolle und Transparenz sowie eine unkomplizierte Möglichkeit, Ihre lokalen Workloadanforderungen in der Cloud zu realisieren. Mit diesem Modell können Sie Computeressourcen, Arbeitsspeicher und Speicher entsprechend den jeweiligen Workloadanforderungen skalieren. Das Modell mit virtuellen Kernen ermöglicht mit dem [Azure-Hybridvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) zudem Einsparungen von bis zu 30 Prozent.
+Das V-Kern-basierte Kaufmodell bietet Ihnen mehr Flexibilität, Kontrolle und Transparenz sowie eine unkomplizierte Möglichkeit, Ihre lokalen Workloadanforderungen in der Cloud zu realisieren. Mit diesem Modell können Sie Computeressourcen, Arbeitsspeicher und Speicher entsprechend den jeweiligen Workloadanforderungen skalieren. Das Modell mit virtuellen Kernen ermöglicht mit dem [Azure-Hybridvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) zudem Einsparungen von bis zu 30 Prozent.
 
 Ein virtueller Kern repräsentiert die logische CPU. Virtuelle Kerne werden für verschiedene Hardwaregenerationen angeboten.
 - Logische CPUs der Generation 4 basieren auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) mit 2,4 GHz.
@@ -81,13 +81,20 @@ Die folgende Tabelle bietet Informationen dazu, wie Sie die optimale Konfigurati
 ||Gen 4|Gen 5|
 |----|------|-----|
 |Hardware|Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz, angefügte SSD, virtueller Kern = 1 physischer Kern|Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz, schnelle eNVM-SSD, virtueller Kern =1 LP (Hyperthread)|
-|Leistungsstufen|8, 16, 24 virtuelle Kerne|8, 16, 24, 32, 40 virtuelle Kerne|
-|Arbeitsspeicher|7 GB pro virtuellem Kern|5,5 GB pro virtuellem Kern|
+|Leistungsstufen|8, 16, 24 virtuelle Kerne|8, 16, 24, 32, 40, 64, 80 V-Kerne|
+|Arbeitsspeicher|7 GB pro V-Kern|5,5 GB pro V-Kern|
 ||||
 
-## <a name="managed-instance-service-tier"></a>Dienstebene für eine verwaltete Instanz
+## <a name="managed-instance-service-tiers"></a>Dienstebenen für eine verwaltete Instanz
 
-Eine verwaltete Instanz ist zunächst nur auf einer Dienstebene verfügbar, und zwar der universellen Dienstebene, die für Anwendungen mit typischen Anforderungen an die Verfügbarkeit und allgemeine E/A-Latenz konzipiert ist.
+Verwaltete Instanz ist in zwei Ebenen verfügbar:
+- **Allgemeine**: Entwickelt für Anwendungen mit typischer Verfügbarkeit und üblichen E/A-Latenzanforderungen.
+- **Unternehmenskritisch**: Entwickelt für Anwendungen mit hoher Verfügbarkeit und geringen E/A-Latenzanforderungen.
+ 
+> [!IMPORTANT]
+> Das Ändern Ihrer Serviceebene von „Universell“ in „Unternehmenskritisch“ oder umgekehrt wird in Public Preview nicht unterstützt. Wenn Sie Ihre Datenbanken auf eine Instanz in einer anderen Dienstebene migrieren möchten, können Sie eine neue Instanz erstellen, Datenbanken mit Point-in-Time-Wiederherstellung aus der Originalinstanz wiederherstellen und dann die Originalinstanz löschen, wenn sie nicht mehr benötigt wird. 
+
+### <a name="general-purpose-service-tier"></a>Universelle Dienstebene
 
 Folgende wichtige Merkmale kennzeichnen die universelle Dienstebene: 
 
@@ -101,28 +108,57 @@ In der folgenden Abbildung sind die aktiven Computeknoten und die redundanten Kn
  
 ![Universelle Dienstebene](./media/sql-database-managed-instance/general-purpose-service-tier.png) 
 
-Nachfolgend sind die wichtigsten Features der universellen Dienstebene aufgeführt:
+Folgende wichtige Merkmale kennzeichnen die Dienstebene „Universell“:
 
 |Feature | BESCHREIBUNG|
 |---|---|
-| Anzahl der virtuellen Kerne* | 8, 16, 24 (Gen 4)<br>8, 16, 24, 32, 40 (Gen 5)|
+| Anzahl der virtuellen Kerne* | 8, 16, 24 (Gen 4)<br>8, 16, 24, 32, 40, 64, 80 (Gen 5)|
 | SQL Server-Version/-Build | SQL Server (neueste verfügbare Version) |
 | Min. Speichergröße | 32 GB |
 | Max. Speichergröße | 8 TB |
-| Max. Speicherkapazität pro Datenbank | 8 TB |
+| Max. Speicherkapazität pro Datenbank | Bestimmt durch die maximale Speichergröße pro Instanz |
 | Erwartete Speicher-IOPS | 500–7.500 IOPS pro Datendatei (abhängig von der jeweiligen Datendatei). Siehe [Storage Premium](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes). |
 | Anzahl der Datendateien (ROWS) pro Datenbank | Mehrere | 
 | Anzahl der Protokolldateien (LOG) pro Datenbank | 1 | 
-| Verwaltete automatisierte Sicherungen | Ja |
+| Verwaltete automatisierte Sicherungen | JA |
 | Hochverfügbarkeit | Basiert auf Remotespeicher und [Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
-| Integrierte Überwachung und Metriken von Instanzen und Datenbanken | Ja |
-| Automatische Softwarepatches | Ja |
-| VNET – Azure Resource Manager-Bereitstellung | Ja |
+| Integrierte Überwachung und Metriken von Instanzen und Datenbanken | JA |
+| Automatische Softwarepatches | JA |
+| VNET – Azure Resource Manager-Bereitstellung | JA |
 | VNET – Klassisches Bereitstellungsmodell | Nein  |
-| Portal-Unterstützung | Ja|
+| Portal-Unterstützung | JA|
 |||
 
 \* Ein virtueller Kern repräsentiert die logische CPU. Virtuelle Kerne werden für verschiedene Hardwaregenerationen angeboten. Logische CPUs der Generation 4 basieren auf Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz und logische CPUs der Generation 5 auf Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz. 
+
+### <a name="business-critical-service-tier"></a>Dienstebene „Unternehmenskritisch“
+
+Die unternehmenskritische Dienstebene wurde für Anwendungen mit hohen E/A-Anforderungen konzipiert. Sie bietet höchste Resilienz gegenüber Ausfällen durch mehrere isolierte AlwaysOn-Replikate. Das folgende Diagramm zeigt die zugrundeliegende Architektur für diese Dienstebene:
+
+![Dienstebene „Unternehmenskritisch“](./media/sql-database-managed-instance/business-critical-service-tier.png)  
+
+Folgende wichtige Merkmale kennzeichnen die Dienstebene „Unternehmenskritisch“: 
+-   Konzipiert für Geschäftsanwendungen mit höchster Leistung und Hochverfügbarkeitsanforderungen 
+-   Enthält einen äußerst schnellen SSD-Speicher (bis zu 1 TB auf Gen 4 und bis zu 4 TB auf Gen 5) – unterstützt bis zu 100 Datenbanken pro Instanz 
+
+|Feature | BESCHREIBUNG|
+|---|---|
+| Anzahl der virtuellen Kerne* | 8, 16, 24 (Gen 4)<br>8, 16, 24, 32, 40, 64, 80 (Gen 5)|
+| SQL Server-Version/-Build | SQL Server (neueste verfügbare Version) |
+| Zusätzliche Funktionen | [In-Memory-OLTP](sql-database-in-memory.md)<br> 1 zusätzliches schreibgeschütztes Replikat ([horizontale Leseskalierung](sql-database-read-scale-out.md))
+| Min. Speichergröße | 32 GB |
+| Max. Speichergröße | Gen 4: 1 TB (alle V-Kern-Größen)<br> Gen 5:<ul><li>1 TB für 8, 16 V-Kerne</li><li>2 TB für 24 V-Kerne</li><li>4 TB für 40, 60, 80 V-Kerne</ul>|
+| Max. Speicherkapazität pro Datenbank | Bestimmt durch die maximale Speichergröße pro Instanz |
+| Anzahl der Datendateien (ROWS) pro Datenbank | Mehrere | 
+| Anzahl der Protokolldateien (LOG) pro Datenbank | 1 | 
+| Verwaltete automatisierte Sicherungen | JA |
+| Hochverfügbarkeit | Basierend auf [AlwaysOn-Verfügbarkeitsgruppen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) und [Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
+| Integrierte Überwachung und Metriken von Instanzen und Datenbanken | JA |
+| Automatische Softwarepatches | JA |
+| VNET – Azure Resource Manager-Bereitstellung | JA |
+| VNET – Klassisches Bereitstellungsmodell | Nein  |
+| Portal-Unterstützung | JA|
+|||
 
 ## <a name="advanced-security-and-compliance"></a>Erweiterte Sicherheit und Konformität 
 
@@ -134,9 +170,15 @@ Verwaltete Instanzen bieten zusätzliche Sicherheitsisolation von anderen Mandan
 - Der SQL-Endpunkt wird nur über eine private IP-Adresse verfügbar gemacht, sodass sichere Verbindungen von privaten Azure-Netzwerken oder hybriden Netzwerken möglich sind.
 - Einzelner Mandant mit dedizierter zugrunde liegender Infrastruktur (Compute, Speicher)
 
-In der folgenden Abbildung ist der Isolationsentwurf dargestellt: 
+Das folgende Diagramm zeigt verschiedene Konnektivitätsoptionen für Ihre Anwendungen: 
 
 ![Hochverfügbarkeit](./media/sql-database-managed-instance/application-deployment-topologies.png)  
+
+Weitere Informationen zu VNet-Integration und die Durchsetzung von Netzwerkrichtlinien finden Sie unter [Konfigurieren eines VNET für eine verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-vnet-configuration.md) und [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-connect-app.md). 
+
+> [!IMPORTANT]
+> Platzieren Sie mehrere verwaltete Instanzen im gleichen Subnetz, wo immer dies durch Ihre Sicherheitsanforderungen erlaubt ist, da Sie dadurch zusätzliche Vorteile erzielen können. Das Zusammenstellen von Instanzen im gleichen Subnetz wird die Wartung der Netzwerkinfrastruktur erheblich vereinfachen und die Zeit für die Instanzbereitstellung verkürzen, da eine lange Bereitstellungsdauer mit den Kosten für die Bereitstellung der ersten verwalteten Instanz in einem Subnetz verbunden ist.
+
 
 ### <a name="auditing-for-compliance-and-security"></a>Überwachung auf Konformität und Sicherheit 
 
@@ -147,6 +189,11 @@ Die [Überwachung verwalteter Instanzen](sql-database-managed-instance-auditing.
 Eine verwaltete Instanz schützt Ihre Daten durch die Verschlüsselung für Daten während der Übertragung mit Transport Layer Security.
 
 Neben Transport Layer Security bietet eine verwaltete SQL-Datenbank-Instanz mit [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) einen Schutz für sensible Daten bei der Übertragung, im Ruhezustand und während der Abfrageverarbeitung. Always Encrypted ist das branchenweit erste System, das einen beispiellosen Schutz von Daten gegen Sicherheitsverletzungen wie dem Diebstahl wichtiger Daten bietet. Beispielsweise werden mit Always Encrypted Kreditkartennummern immer verschlüsselt in der Datenbank gespeichert, selbst während der Abfrageverarbeitung. Gleichzeitig wird autorisierten Mitarbeitern oder Anwendungen, die diese Daten verarbeiten müssen, die Entschlüsselung zum Zeitpunkt der Verwendung erlaubt. 
+
+### <a name="data-encryption-at-rest"></a>Datenverschlüsselung ruhender Daten 
+[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) verschlüsselt Datendateien einer verwalteten Azure SQL-Instanz-. Dies wird als Verschlüsselung ruhender Daten bezeichnet. TDE führt die E/A-Verschlüsselung und -Entschlüsselung der Daten- und Protokolldateien in Echtzeit durch. Die Verschlüsselung verwendet einen Datenbank-Verschlüsselungsschlüssel (DEK), der im Startdatensatz der Datenbank gespeichert wird und während der Wiederherstellung zur Verfügung steht. Sie können alle Ihre Datenbanken in der verwalteten Instanz mit transparenter Datenverschlüsselung schützen. TDE ist die bewährte SQL-Verschlüsselungstechnologie für ruhende Daten, die für viele Konformitätsstandards zum Schutz vor Diebstahl von Speichermedien erforderlich ist. In Public Review wird das automatische Schlüsselverwaltungsmodell unterstützt (durchgeführt von der PaaS-Plattform). 
+
+Die Migration einer verschlüsselten Datenbank zur verwalteten SQL-Instanz wird über den Azure Database Migration Service (DMS) oder die native Wiederherstellung unterstützt. Wenn Sie planen, eine verschlüsselte Datenbank mittels nativer Wiederherstellung zu migrieren, ist die Migration des vorhandenen TDE-Zertifikats vom SQL Server vor Ort oder von der SQL Server-VM auf die verwaltete Instanz erforderlich. Weitere Informationen zu den Migrationsoptionen finden Sie unter [Migration einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-migrate.md).
 
 ### <a name="dynamic-data-masking"></a>Dynamische Datenmaskierung 
 
@@ -225,3 +272,4 @@ In einer verwalteten Instanz können Systemadministratoren sich auf die für das
 - Weitere Informationen zur VNET-Konfiguration finden Sie unter [Configure a VNet for Azure SQL Database Managed Instance](sql-database-managed-instance-vnet-configuration.md) (Konfigurieren eines VNET für eine verwaltete Azure SQL-Datenbank-Instanz).
 - Ein Tutorial, in dem eine verwaltete Instanz erstellt und eine Datenbank von einer Sicherungsdatei wiederhergestellt wird, finden Sie unter [Erstellen einer verwalteten Instanz](sql-database-managed-instance-create-tutorial-portal.md).
 - Ein Tutorial mit Verwendung des Azure Database Migration Service (DMS) für die Migration finden Sie unter [Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz](../dms/tutorial-sql-server-to-managed-instance.md).
+- Preisinformationen finden Sie unter [Preise – verwaltete Azure SQL-Datenbank-Instanzen ](https://azure.microsoft.com/pricing/details/sql-database/managed/).

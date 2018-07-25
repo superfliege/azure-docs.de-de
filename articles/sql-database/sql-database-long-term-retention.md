@@ -7,23 +7,19 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 05/17/2018
+ms.date: 07/16/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: b2f3c454ba84c7b892096cc42dcbe2706ab6159f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8edf66d8ee61b2d0896ed8249ea286b0f3de7de5
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648291"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092816"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Speichern von Sicherungen von Azure SQL-Datenbank bis zu 10 Jahre lang
 
 Viele Anwendungen dienen gesetzlichen, ordnungsgemäßen oder anderen geschäftlichen Zwecken, die voraussetzen, dass Datenbanksicherungen länger als der Zeitraum von 7–35 Tagen, der für [automatischen Sicherungen](sql-database-automated-backups.md) von Azure SQL-Datenbank zur Verfügung gestellt wird, aufbewahrt werden. Mithilfe des Features für die langfristige Aufbewahrung (Long-Term Retention, LTR) können Sie angegebene vollständige Sicherungen von SQL-Datenbank in [RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)-Blobspeicher bis zu zehn Jahre lang speichern. Sie können dann jede Sicherung als neue Datenbank wiederherstellen.
-
-> [!IMPORTANT]
-> Die langfristige Aufbewahrung ist derzeit als Vorschauversion verfügbar. Vorhandene Sicherungen, die im Rahmen der vorherigen Vorschauversion dieses Features im Azure Services Recovery Service-Tresor gespeichert wurden, werden zu SQL Azure-Speicher migriert.<!-- and available in the following regions: Australia East, Australia Southeast, Brazil South, Central US, East Asia, East US, East US 2, India Central, India South, Japan East, Japan West, North Central US, North Europe, South Central US, Southeast Asia, West Europe, and West US.-->
->
 
 ## <a name="how-sql-database-long-term-retention-works"></a>Funktionsweise der langfristigen Aufbewahrung von SQL-Datenbank
 
@@ -34,7 +30,6 @@ Beispiele:
 -  W=0, M=0, Y=5, WeekOfYear=3
 
    Die dritte vollständige Sicherung jedes Jahres wird fünf Jahre lang aufbewahrt.
-
 - W=0, M=3, Y=0
 
    Die erste vollständige Sicherung jedes Monats wird drei Monate lang aufbewahrt.
@@ -61,6 +56,14 @@ Wenn Sie die obige Richtlinie ändern und „W=0“ (keine wöchentlichen Sicher
 1. Die LTR-Kopien werden vom Azure Storage-Dienst erstellt, daher beeinträchtigt der Kopiervorgang nicht die Leistung der vorhandenen Datenbank.
 2. Die Richtlinie gilt für zukünftige Sicherungen. Beispiel: Wenn die angegebene WeekOfYear beim Konfigurieren der Richtlinie in der Vergangenheit liegt, wird die erste LTR-Sicherung im nächsten Jahr erstellt. 
 3. Zum Wiederherstellen einer Datenbank aus dem LTR-Speicher können Sie eine bestimmte Sicherung basierend auf ihrem Zeitstempel auswählen.   Die Datenbank kann auf einem beliebigen vorhandenen Server unter dem gleichen Abonnement wie die ursprüngliche Datenbank wiederhergestellt werden. 
+> 
+
+## <a name="geo-replication-and-long-term-backup-retention"></a>Georeplikation und langfristige Sicherungsaufbewahrung
+
+Wenn Sie aktive Georeplikation und automatische Failovergruppen als Geschäftskontinuitätslösung verwenden, sollten Sie sich auf mögliche Failover vorbereiten und dieselbe LTR-Richtlinie auf der sekundären Geodatenbank konfigurieren. Dadurch erhöhen sich Ihre LTR-Speicherkosten nicht, da von sekundären Datenbanken keine Sicherungen erstellt werden. Nur, wenn die sekundäre Datenbank zur primäre Datenbank wird, werden die Sicherungen erstellt. Auf diese Weise gewährleisten Sie eine unterbrechungsfreie Erstellung der LTR-Sicherungen, wenn das Failover ausgelöst wird und die primäre Datenbank in den sekundären Bereich verschoben wird. 
+
+> [!NOTE]
+Wenn sich die ursprüngliche primäre Datenbank nach dem Ausfall der zu einem Failover geführt hat, wiederhergestellt wird, wird sie zu einer neuen sekundären Datenbank. Daher wird die Sicherungserstellung nicht fortgesetzt und die bestehende LTR-Richtlinie wird erst wieder wirksam, wenn sie wieder die primäre Datenbank ist. 
 > 
 
 ## <a name="configure-long-term-backup-retention"></a>Konfigurieren der langfristigen Sicherungsaufbewahrung

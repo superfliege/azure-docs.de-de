@@ -13,20 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/8/2018
+ms.date: 07/13/2018
 ms.author: kumud
-ms.openlocfilehash: 0aab72fdf48589a72707ae87f90af11f65f35088
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: dd92fca89e3bdb123be46a52708feec1c939f7cc
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30176787"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112721"
 ---
 # <a name="understand-load-balancer-probes"></a>Grundlegendes zu Load Balancer-Tests
 
-Azure Load Balancer nutzt Integritätstests, um zu bestimmen, welche Back-End-Poolinstanz neue Datenflüsse erhalten soll. Wenn ein Integritätstest fehlschlägt, stoppt Load Balancer das Senden von neuen Datenflüssen an die jeweilige fehlerhafte Instanz. Vorhandene Datenflüsse auf dieser Instanz sind hiervon nicht betroffen.  Wenn alle Tests für Back-End-Poolinstanzen ausgefallen sind, tritt für alle vorhandenen Datenflüsse auf allen Instanzen im Back-End-Pool eine Zeitüberschreitung auf.
+Azure Load Balancer nutzt Integritätstests, um zu bestimmen, welche Back-End-Poolinstanz neue Datenflüsse erhalten soll.   Anhand von Integritätstests können Sie einen Fehler in einer Anwendung auf einer Back-End-Instanz erkennen.  Sie können auch die Antwort des Integritätstests von Ihrer Anwendung verwenden, um dem Load Balancer zu signalisieren, ob weiterhin neue Flows gesendet oder keine weiteren neuen Flows mehr an eine Back-End-Instanz gesendet werden sollen, um die Last oder geplante Downtime zu verwalten.
 
-Clouddienstrollen (Workerrollen und Webrollen) verwenden einen Gast-Agent für die Testüberwachung. Wenn Sie virtuelle Computer hinter einem Load Balancer verwenden, muss ein benutzerdefinierter TCP- oder HTTP-Integritätstest konfiguriert werden.
+Mit Integritätstests können Sie steuern, ob neue Flows zu fehlerfreien Back-End-Instanzen eingerichtet werden. Wenn ein einem Integritätstest ein Fehler auftritt, beendet der Load Balancer das Senden neuer Flows an die entsprechende fehlerhafte Instanz.  Eingerichtete TCP-Verbindungen werden nach einem fehlerhaften Integritätstest fortgesetzt.  Vorhandene UDP-Flows werden aus der fehlerhaften Instanz auf eine andere fehlerfreie Instanz im Back-End-Pool verschoben.
+
+Wenn bei allen Tests für einen Back-End-Pool Fehler auftreten, beenden Basic Load Balancer alle bestehenden TCP-Flows zum Back-End-Pool, während Standard Load Balancer die Fortsetzung eingerichteter TCP-Flows erlaubt; es werden keine neuen Flows an den Back-End-Pool gesendet.  Alle vorhandene UDP-Datenflüssen werden für Basic und Standard Load Balancer beendet, wenn bei allen Tests für einen Back-End-Pool Fehler auftreten.
+
+Clouddienstrollen (Workerrollen und Webrollen) verwenden einen Gast-Agent für die Testüberwachung. Wenn Sie Load Balancer Cloud Services mit IaaS-VMs nachstellen, müssen benutzerdefinierte TCP- oder HTTP-Integritätstests konfiguriert werden.
 
 ## <a name="understand-probe-count-and-timeout"></a>Grundlegendes zu Anzahl und Timeout von Tests
 

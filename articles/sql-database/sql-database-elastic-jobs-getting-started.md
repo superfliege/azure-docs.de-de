@@ -7,16 +7,21 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 07/16/2018
 ms.author: sstein
-ms.openlocfilehash: 4f12c3353ca4949b3c1c031420ec5a0b8fdb2dbf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8b03d228464978995a7a97e2f245b629b52ed812
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649151"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092822"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Erste Schritte mit Aufträgen für die elastische Datenbank
+
+
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+
 Aufträge für die elastische Datenbank (Vorschau) für Azure SQL-Datenbank ermöglicht die zuverlässige Ausführung von T-SQL-Skripts, die mehrere Datenbanken überspannen, und stellt automatische Wiederholung und ggf. Abschlussgarantien bereit. Weitere Informationen zu den Features von Aufträgen für die elastische Datenbank finden Sie unter [Elastische Aufträge](sql-database-elastic-jobs-overview.md).
 
 Dieser Artikel erweitert das Beispiel unter [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md). Wenn Sie das Beispiel durchgearbeitet haben, haben Sie gelernt, wie Sie Aufträge zum Verwalten einer Gruppe aufeinander bezogener Datenbanken erstellen und verwalten können. Es ist nicht erforderlich, die Tools für die elastische Skalierung zu verwenden, um die Vorteile der elastischen Aufträge zu nutzen.
@@ -461,7 +466,7 @@ Die Excel-Tabelle wird mit allen Zeilen aus der Tabelle **Customers** gefüllt, 
 Sie können jetzt die Datenfunktionen von Excel verwenden. Verwenden Sie die Verbindungszeichenfolge mit dem Servernamen, dem Datenbanknamen und den Anmeldeinformationen zum Verbinden der BI und der Datenintegrationstools mit der elastischen Abfragedatenbank. Stellen Sie sicher, dass SQL Server als Datenquelle für das Tool unterstützt wird. Verweisen Sie auf die elastische Abfragedatenbank und die externen Tabellen wie auf jede andere SQL Server-Datenbank und SQL Server-Tabelle, zu denen Sie mit dem Tool eine Verbindung herstellen würden.
 
 ### <a name="cost"></a>Kosten
-Es gibt keine zusätzlichen Gebühren für die Verwendung der Abfragefunktion für elastische Datenbanken. Derzeit ist dieses Feature nur für Datenbanken vom Typ „Premium“ und „Unternehmenskritisch“ (Vorschauversion) und Pools für elastische Datenbanken als Endpunkt verfügbar, aber die Shards können einen beliebigen Diensttarif aufweisen.
+Es gibt keine zusätzlichen Gebühren für die Verwendung der Abfragefunktion für elastische Datenbanken. Derzeit ist dieses Feature nur für Datenbanken vom Typ „Premium“ und „Unternehmenskritisch“ und Pools für elastische Datenbanken als Endpunkt verfügbar, aber die Shards können einen beliebigen Diensttarif aufweisen.
 
 Preisinformationen finden Sie in der [SQL-Datenbank – Preisdetails](https://azure.microsoft.com/pricing/details/sql-database/).
 

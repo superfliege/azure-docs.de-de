@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 95dbd80e740210c3800a0af10071875a6d6f0939
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 855ea6c34082b859bb5b5b6e69b3e3f2fa54eb4a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
-ms.locfileid: "27785525"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056462"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Technische Spezifikationen und Kompatibilität des StorSimple-Geräts
 
@@ -41,10 +41,10 @@ Das EBOD-Gehäuse enthält ein PCM mit 580 W, und das primäre Gehäuse wird mi
 | Maximaler Eingangsstrom |20 A |20 A |
 | Leistungsfaktorkorrektur |> 95 % Nenneingangsspannung |> 95 % Nenneingangsspannung |
 | Oberschwingungen |Erfüllt EN61000-3-2 |Erfüllt EN61000-3-2 |
-| Output |5 V Standbyspannung bei 2,0 A |5 V Standbyspannung bei 2,7 A |
-| +5 V bei 42 A |+5 V bei 40 A | |
-| +12 V bei 38 A |+12 V bei 38 A | |
-| Hot-Plug-fähig |Ja |Ja |
+| Output |5 V Standbyspannung \@ 2,0 A |5 V Standbyspannung \@ 2,7 A |
+| +5 V \@ 42 A |+5 V \@ 40 A | |
+| +12 V \@ 38 A |+12 V \@ 38 A | |
+| Hot-Plug-fähig |JA |JA |
 | Switches und LEDs |Netzteil-Ein-/Aus-Schalter und vier Status-LEDs |Netzteil-Ein-/Aus-Schalter und sechs Status-LEDs |
 | Gehäusekühlung |Axialer Lüfter mit variabler Lüftungssteuerung |Axialer Lüfter mit variabler Lüftungssteuerung |
 
@@ -127,8 +127,8 @@ Dieser Abschnitt enthält die Spezifikationen im Zusammenhang mit der Gehäuseum
 | Luftströmung |Die Luftströmung im System verläuft von vorne nach hinten. Das System muss mit einem hinteren Luftstromauslass mit niedrigem Druck betrieben werden. Der Rückstau durch Gehäusetüren und Hindernisse sollte 5 Pascal (0,5 mm Wassersäule) nicht überschreiten. |
 | Höhe, Betrieb |–30 m bis 3045 m (–100 bis 10.000 Fuß) mit einer um 5 °C herabgesetzten maximalen Betriebstemperatur bei Höhen über 7000 Fuß. |
 | Höhe, außerhalb des Betriebs |–305 m bis 12.192 m (–1000 Fuß bis 40.000 Fuß) |
-| Stoßfestigkeit, bei Betrieb |5 g 10 ms ½ Sinus |
-| Stoßfestigkeit, außerhalb des Betriebs |30 g 10 ms ½ Sinus |
+| Stoßfestigkeit, bei Betrieb |5g 10ms ½ Sinus |
+| Stoßfestigkeit, außerhalb des Betriebs |30g 10ms ½ Sinus |
 | Schwingungen, bei Betrieb |0,21 g RMS 5 bis 500 Hz zufällig |
 | Schwingungen, außerhalb des Betriebs |1,04 g RMS 2 bis 200 Hz zufällig |
 | Schwingungen, bei Umplatzierung |3 g 2 bis 200 Hz Sinus |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell
-ms.openlocfilehash: cd3f947bfc44055bfec4198a1e7c6a9bb2fab5d4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 04342be06430747ef64cb69c27ee93e6896775e5
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642623"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070855"
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen
 Für Softwareentwickler gibt es nichts Neues, was das Einbeziehen einer Anwendung in Komponententeile betrifft. Es handelt sich hierbei um ein zentrales Paradigma der Objektorientierung, von Softwareabstrahierungen und der „Komponentisierung“. Heute erfolgt diese Faktorisierung meist in Form von Klassen und Schnittstellen zwischen freigegebenen Bibliotheken und Technologieebenen. In der Regel wird ein mehrstufiger Ansatz mit einem Back-End-Speicher, einer Geschäftslogik auf der mittleren Ebene und einer Front-End-Benutzeroberfläche verwendet. Was sich im Laufe der letzten Jahre *doch* geändert hat, ist die Tatsache, dass wir als Entwickler verteilte Anwendungen erstellen, die für die Cloud bestimmt und geschäftlich geboten sind.
@@ -146,9 +146,9 @@ Service Fabric verfügt über drei allgemeine Bereiche für die Unterstützung d
 ***Service Fabric ist agnostisch, was die Erstellung Ihres Diensts betrifft, und Sie können eine beliebige Technologie verwenden. Es bietet jedoch integrierte Programmier-APIs, die die Erstellung von Microservices vereinfachen.***
 
 ### <a name="migrating-existing-applications-to-service-fabric"></a>Migrieren von vorhandenen Anwendungen zu Service Fabric
-Ein wichtiger Ansatz in Service Fabric ist das Wiederverwenden von vorhandenem Code, der durch neue Microservices aktualisiert werden kann. Es gibt fünf Phasen der Aktualisierung von Anwendungen. Sie können mit jeder beliebigen Phase beginnen und aufhören. Dies sind die Phasen:
+Ein wichtiger Ansatz in Service Fabric ist das Wiederverwenden von vorhandenem Code, der durch neue Microservices aktualisiert werden kann. Es gibt fünf Phasen der Aktualisierung von Anwendungen. Sie können mit jeder beliebigen Phase beginnen und aufhören. Dies sind:
 
-1) Nehmen Sie eine herkömmliche monolithische Anwendung  
+1) Beginnen Sie mit einer herkömmlichen monolithischen Anwendung.  
 2) Lift and Shift: Verwenden Sie Container oder ausführbare Gastanwendungsdateien, um vorhandenen Code in Service Fabric zu hosten.  
 3) Aktualisierung: Hinzufügen von neuen Microservices gemeinsam mit vorhandenem Code in Containern  
 4) Innovation: Aufteilen der monolithischen Anwendung in Microservices je nach Bedarf  
@@ -169,7 +169,7 @@ Viele Organisationen fahren hier nicht fort. Sie können bereits von Containern 
 
 **Aktualisierung**: Bei der Aktualisierung werden neue Dienste gemeinsam mit vorhandenem Code in Containern hinzugefügt. Wenn Sie neuen Code schreiben möchten, empfiehlt es sich, kleine Schritte auf dem Weg zu Microservices zu machen. Dies kann das Hinzufügen eines neuen REST-API-Endpunkts oder neue Geschäftslogik sein. Auf diese Weise haben Sie die ersten Schritte auf dem Weg zu Microservices gemacht und können sich gleichzeitig das Entwickeln und Bereitstellen dieser vertraut machen.
 
-**Innovation**: Erinnern Sie sich noch an die ursprünglichen, sich wandelnden Unternehmensbedürfnisse vom Anfang dieses Artikels, die den Microservicesansatz vorantreiben? In dieser Phase müssen Sie sich entscheiden: Befindet sich Ihre aktuelle Anwendung im Wandel, und wenn ja, müssen Sie die monolithische Anwendung aufteilen oder sollten Sie sich um Innovationen bemühen? Ein Beispiel: Wenn eine Datenbank zu einem Verarbeitungsengpass wird, weil Sie als Workflowwarteschlange verwendet wird. Da die Anzahl an Workflowanfragen, die die Arbeit erhöht, zur Skalierung verteilt werden muss. Für diesen bestimmten Bereich der Anwendung, der nicht die Skalierung ist, oder den Sie häufiger aktualisieren müssen, teilen Sie dies in einen Microservice auf. Schon haben Sie eine Innovation durchgeführt. 
+**Innovation**: Erinnern Sie sich noch an die ursprünglichen, sich wandelnden Unternehmensbedürfnisse vom Anfang dieses Artikels, die den Microservicesansatz vorantreiben? In dieser Phase müssen Sie sich entscheiden: Befindet sich Ihre aktuelle Anwendung im Wandel, und wenn ja, müssen Sie die monolithische App in Dienste aufteilen, oder sollten Sie sich um Innovationen bemühen? Ein Beispiel ist, wenn eine Datenbank, die als Workflowwarteschlange verwendet wird, zu einem Verarbeitungsengpass wird. Mit zunehmender Anzahl an Workflowanfragen muss die Arbeit zur Skalierung verteilt werden. Für diesen bestimmten Bereich der Anwendung, der nicht die Skalierung ist, oder den Sie häufiger aktualisieren müssen, teilen Sie dies in einen Microservice auf. Schon haben Sie eine Innovation durchgeführt. 
 
 **Umwandeln in Microservices**: Wenn Ihre Anwendung komplett aus Microservices bestehen oder in Microservices unterteilt wird. Wenn Sie diesen Punkt erreicht haben, haben Sie den Weg zu Microservices abgeschlossen. Sie können hier starten. Wenn Sie dies jedoch ohne eine unterstützende Microservicesplattform machen, ist dies eine erhebliche Investition. 
 

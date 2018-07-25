@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shants
-ms.openlocfilehash: 32d61367790a2b0b43e92c427a366f58e3c12ae9
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 609a688ba2915e57916a6e5e9ea0cbdc66ccdd6a
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888982"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069555"
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>Behandeln von Benachrichtigungen zu geplanten Wartungen für virtuelle Windows-Computer
 
@@ -187,7 +187,7 @@ Weitere Informationen zu Hochverfügbarkeit finden Sie unter [Regionen und Verf�
 
 **F: Wie sind die Erfahrungen mit VM-Skalierungsgruppen?**
 
-**A:** Es ist nun eine geplante Wartung für VM-Skalierungsgruppen verfügbar. Anweisungen zum Initiieren der Self-Service-Wartung finden Sie in der Dokumentation zu Skalierungsgruppen für virtuelle Computer unter „Anleitung -> Verwalten -> Geplante Wartung“.
+**A:** Es ist nun eine geplante Wartung für VM-Skalierungsgruppen verfügbar. Anleitungen zum Initiieren der Self-Service-Wartung finden Sie im Dokument [zur geplanten VMSS-Wartung](../../virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications.md).
 
 **F: Wie sind die Erfahrungen mit Cloud Services (Web-/Workerrolle) und Service Fabric?**
 

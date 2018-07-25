@@ -8,14 +8,14 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: cb99096c1217fca1527b17946dc12390ddf3f62c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0dd7a5d5159144c6b1a050ff4c0443b181976738
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659609"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39124953"
 ---
-# <a name="how-to-scale-out-indexing-in-azure-seearch"></a>Horizontales Skalieren der Indizierung in Azure Seearch
+# <a name="how-to-scale-out-indexing-in-azure-search"></a>Horizontales Skalieren der Indizierung in Azure Search
 
 Wenn das Datenvolumen zunimmt oder die Verarbeitung geändert werden muss, stellen Sie möglicherweise fest, dass einfache [Neuerstellungen und Aufträge für die erneute Indizierung](search-howto-reindex.md) nicht ausreichend sind. 
 

@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 07/13/2018
 ms.author: babanisa
-ms.openlocfilehash: a2cccbb4feaa7b6f3f51ac7204af4a3e1efc6349
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4f1f0e95ae74ef41ed91be55f4c964671e8f723b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625592"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044548"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>Verwenden des CloudEvents-Schemas mit Event Grid
 
@@ -73,9 +73,9 @@ CloudEvents v0.1 hat folgende Eigenschaften:
 
 Weitere Informationen finden Sie in der [CloudEvents-Spezifikation](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes).
 
-## <a name="configure-event-grid-for-cloudevents"></a>Konfigurieren von Event Grid für CloudEvents
+Die im CloudEvents- und Event Grid-Schema übermittelten Headerwerte für Ereignisse sind mit Ausnahme von `content-type` identisch. Für das CloudEvents-Schema ist dieser Headerwert `"content-type":"application/cloudevents+json; charset=utf-8"`. Für das Event Grid-Schema ist dieser Headerwert `"content-type":"application/json; charset=utf-8"`.
 
-Gegenwärtig bietet Azure Event Grid Vorschauunterstützung für die CloudEvents-JSON-Formateingabe und -ausgabe in **USA, Westen-Mitte**, **USA, Mitte** und **Europa, Norden**.
+## <a name="configure-event-grid-for-cloudevents"></a>Konfigurieren von Event Grid für CloudEvents
 
 Sie können Event Grid für die Eingabe und Ausgabe von Ereignissen im CloudEvents-Schema verwenden. Sie können CloudEvents für Systemereignisse wie Blob Storage-Ereignisse und IoT Hub-Ereignisse sowie benutzerdefinierte Ereignisse verwenden. Diese Ereignisse können auch bei der Übertragung hin und her transformiert werden.
 
@@ -91,7 +91,7 @@ Für alle Ereignisschemas setzt Event Grid beim Veröffentlichen in einem Event 
 
 ### <a name="input-schema"></a>Eingabeschema
 
-Um das Eingabeschema auf ein benutzerdefiniertes Thema in CloudEvents festzulegen, verwenden Sie beim Erstellen Ihres Themas `--input-schema cloudeventv01schema` den folgenden Parameter in Azure CLI. Das benutzerdefinierte Thema erwartet nun eingehende Ereignisse im CloudEvents v0.1-Format.
+Um das Eingabeschema auf ein benutzerdefiniertes Thema in CloudEvents festzulegen, verwenden Sie beim Erstellen Ihres benutzerdefinierten Themas `--input-schema cloudeventv01schema` den folgenden Parameter in Azure CLI. Das benutzerdefinierte Thema erwartet nun eingehende Ereignisse im CloudEvents v0.1-Format.
 
 Verwenden Sie zum Erstellen eines benutzerdefinierten Event Grid-Themas:
 
@@ -124,7 +124,7 @@ az eventgrid event-subscription create \
   --event-delivery-schema cloudeventv01schema
 ```
 
-Die aktuelle Version von CloudEvents unterstützt nicht die Batchverarbeitung von Ereignissen. Ein Ereignisabonnement, das für ein CloudEvent-Schema konfiguriert ist, empfängt jedes Ereignis einzeln. Momentan kann für eine Azure Functions-App kein Event Grid-Trigger verwendet werden, wenn das Ereignis im CloudEvents-Schema übermittelt wird. Verwenden Sie einen HTTP-Trigger.
+Die aktuelle Version von CloudEvents unterstützt nicht die Batchverarbeitung von Ereignissen. Ein Ereignisabonnement, das für ein CloudEvent-Schema konfiguriert ist, empfängt jedes Ereignis einzeln. Momentan kann für eine Azure Functions-App kein Event Grid-Trigger verwendet werden, wenn das Ereignis im CloudEvents-Schema übermittelt wird. Verwenden Sie einen HTTP-Trigger. Beispiele für die Implementierung eines HTTP-Triggers, der Ereignisse im CloudEvents-Schema empfängt, finden Sie unter [Verwenden eines HTTP-Triggers als Event Grid-Trigger](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

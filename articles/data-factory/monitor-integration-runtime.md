@@ -4,21 +4,21 @@ description: Erfahren Sie, wie verschiedene Arten der Integrationslaufzeit in Az
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
-manager: ''
+manager: craigg
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/23/2017
+ms.date: 07/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 523d50623257d3944342cb174174e27bd4731248
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 4da9696761747874395ec90cb3b446e3621650ba
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045244"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113256"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Überwachen einer Integrationslaufzeit in Azure Data Factory  
 Bei der **Integrationslaufzeit** (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory mehrere Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Es werden drei Arten von Integrationslaufzeiten von Azure Data Factory angeboten:
@@ -45,7 +45,7 @@ Die folgende Tabelle enthält Beschreibungen für Eigenschaften, die vom Cmdlet 
 -------- | ------------- | 
 | NAME | Name der Azure-Integrationslaufzeit. |  
 | State (Zustand) | Status der Azure-Integrationslaufzeit. | 
-| Speicherort | Standort der Azure-Integrationslaufzeit. Weitere Informationen zum Standort einer Azure-Integrationslaufzeit finden Sie unter [Einführung in die Integrationslaufzeit](concepts-integration-runtime.md). |
+| Standort | Standort der Azure-Integrationslaufzeit. Weitere Informationen zum Standort einer Azure-Integrationslaufzeit finden Sie unter [Einführung in die Integrationslaufzeit](concepts-integration-runtime.md). |
 | DataFactoryName | Name der Data Factory, zu der die Azure-Integrationslaufzeit gehört. | 
 | ResourceGroupName | Name der Ressourcengruppe, zu der die Data Factory gehört.  |
 | BESCHREIBUNG | Beschreibung der Integrationslaufzeit.  |
@@ -156,7 +156,7 @@ Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit
 | OtherErrors | Die nicht knotenabhängigen handlungsrelevanten Fehler für Ihre Azure-SSIS-Integrationslaufzeit. |
 | LastOperation | Das Ergebnis des letzten Vorgangs zum Starten/Beenden für Ihre Azure-SSIS-Integrationslaufzeit mit handlungsrelevanten Fehlern, wenn ein Fehler aufgetreten ist. |
 | State (Zustand) | Der allgemeine Status (Initial/Wird gestartet/Gestartet/Wird beendet/Beendet) Ihrer Azure-SSIS-Integrationslaufzeit. |
-| Speicherort | Der Standort Ihrer Azure-SSIS-Integrationslaufzeit. |
+| Standort | Der Standort Ihrer Azure-SSIS-Integrationslaufzeit. |
 | NodeSize | Die Größe der einzelnen Knoten Ihrer Azure-SSIS-Integrationslaufzeit. |
 | NodeCount | Die Anzahl der Knoten in Ihrer Azure-SSIS-Integrationslaufzeit. |
 | MaxParallelExecutionsPerNode | Die Anzahl gleichzeitiger Ausführungen pro Knoten in Ihrer Azure-SSIS-Integrationslaufzeit. |
@@ -192,6 +192,24 @@ Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit
 | Gestartet | Die Knoten Ihrer Azure-SSIS-Integrationslaufzeit wurden zugeordnet/vorbereitet und sie sind bereit für die Bereitstellung/Ausführung der SSIS-Pakete. |
 | Wird beendet  | Die Knoten Ihrer Azure-SSIS-Integrationslaufzeit werden veröffentlicht. |
 | Beendet | Die Knoten Ihrer Azure-SSIS-Integrationslaufzeit wurden veröffentlicht und die Abrechnung wurde beendet. |
+
+### <a name="monitor-the-azure-ssis-integration-runtime-in-the-azure-portal"></a>Überwachen der Azure-SSIS Integration Runtime im Azure-Portal
+
+Die folgenden Screenshots zeigen die Auswahl der zu überwachenden Azure-SSIS IR und zeigen ein Beispiel für die angezeigten Informationen.
+
+![Wählen Sie die zu überwachende Azure-SSIS Integration Runtime aus.](media/monitor-integration-runtime/monitor-azure-ssis-ir-image1.png)
+
+![Rufen Sie Informationen zur Azure-SSIS Integration Runtime ab.](media/monitor-integration-runtime/monitor-azure-ssis-ir-image2.png)
+
+### <a name="monitor-the-azure-ssis-integration-runtime-with-powershell"></a>Überwachen Sie die Azure-SSIS Integration Runtime mit PowerShell.
+
+Verwenden Sie ein ähnliches Skript wie im folgenden Beispiel zum Überprüfen des Status der Azure-SSIS IR.
+
+```powershell
+Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Status
+```
+
+### <a name="more-info-about-the-azure-ssis-integration-runtime"></a>Weitere Informationen über Azure-SSIS Integration Runtime
 
 Weitere Informationen zur Azure-SSIS-Integrationslaufzeit finden Sie in den folgenden Artikeln:
 

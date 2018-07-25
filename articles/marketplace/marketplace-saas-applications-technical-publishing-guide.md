@@ -3,35 +3,27 @@ title: Technischer Leitfaden für die Veröffentlichung von Azure Marketplace-Sa
 description: Schrittanleitung und Prüflisten für die Veröffentlichung von SaaS-Anwendungen im Azure Marketplace
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
 documentationcenter: ''
-author: BrentL-Collabera
-manager: ''
-editor: BrentL-Collabera
+author: keithcharlie
+manager: nunoc
+editor: keithcharlie
 ms.assetid: ''
 ms.service: marketplace
 ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 05/09/2018
-ms.author: pabutler
-ms.openlocfilehash: 2ac8119e36843e38e334fb5772ea4ade9962b4f9
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.date: 07/09/2018
+ms.author: keithcharlie
+ms.openlocfilehash: 69f11c77d01f546aecdcb5f0560f6f89483ac204
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809470"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056401"
 ---
-# <a name="saas-applications-technical-publishing-guide"></a>Technischer Leitfaden für die Veröffentlichung von SaaS-Anwendungen
+# <a name="saas-applications-offer-publishing-guide"></a>SaaS-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten
 
-Willkommen beim technischen Leitfaden für die Veröffentlichung von Azure Marketplace-SaaS-Anwendungen. Dieser Leitfaden soll zukünftige und bestehende Herausgeber dabei unterstützen, ihre Anwendungen und Dienste mithilfe des Angebots für SaaS-Anwendungen im Azure Marketplace zu listen. 
-
-Dieser Leitfaden ist zum besseren Verständnis der Vorgehensweise zum Veröffentlichen eines SaaS-Angebots in folgende Abschnitte unterteilt:
-* Angebotsübersicht
-* Geschäftliche Anforderungen
-* Technische Anforderungen
-* Veröffentlichungsvorgang
-* Verwenden von Azure Active Directory, um Tests zu ermöglichen
-* Zertifizieren Ihrer Azure AD-Integration für Marketplace
+SaaS-Anwendungen können im Marketplace mit drei verschiedenen Aktionsaufrufen veröffentlicht werden: „Kontakt mit mir aufnehmen“, „Jetzt testen“ und „Jetzt kaufen“. Dieser Leitfaden erläutert diese drei Optionen einschließlich der jeweiligen Anforderungen. 
 
 ## <a name="offer-overview"></a>Angebotsübersicht  
 
@@ -42,29 +34,38 @@ SaaS-Anwendungen stehen in beiden Azure-Storefronts zur Verfügung. In der folge
 | AppSource | Ja (Kontaktaufnahme) | Ja (Power BI/Dynamics) |
 | Azure Marketplace | Nein  | Ja (SaaS-Apps) |   
 
-**Listing** (Eintrag): Diese Veröffentlichungsoption besteht aus einem Angebot vom Typ „Contact Me“ (Kontaktaufnahme) und wird verwendet, wenn eine Teilnahme auf Testversions- oder Transaktionsebene nicht möglich ist. Dieser Ansatz hat den Vorteil, dass Herausgeber, die eine Lösung auf dem Markt anbieten, sofort Leads gewinnen können, die zu Abschlüssen führen und zum Wachstum Ihres Geschäfts beitragen.  
-**Trial/Transact** (Testversion/Transaktion): Der Kunde hat die Möglichkeit, Ihre Lösung direkt zu kaufen oder eine Testversion für Ihre Lösung anzufordern. Die Bereitstellung einer Testversion führt zu einer stärkeren Einbindung von Kunden und ermöglicht es ihnen, Ihre Lösung vor dem Kauf in Augenschein zu nehmen. Eine Testversion steigert Ihre Verkaufschancen in den Storefronts, und die Interaktion mit den Kunden führt in der Regel zu weiteren und lukrativeren Leads. Testversionen müssen mindestens für die Dauer des Testzeitraums kostenlosen Support enthalten.  
+**Liste**: Diese Veröffentlichungsoption besteht aus dem Angebotstyp „Kontakt mit mir aufnehmen“ und wird verwendet, wenn eine Teilnahme auf Testversions- oder Transaktionsebene nicht möglich ist. Dieser Ansatz hat den Vorteil, dass Herausgeber, die eine Lösung auf dem Markt anbieten, sofort Leads gewinnen können, die zu Abschlüssen führen und zum Wachstum Ihres Geschäfts beitragen.  
+**Testversion/Transaktion**: Der Kunde hat die Möglichkeit, Ihre Lösung direkt zu kaufen oder eine Testversion für Ihre Lösung anzufordern. Die Bereitstellung einer Testversion führt zu einer stärkeren Einbindung von Kunden und ermöglicht es ihnen, Ihre Lösung vor dem Kauf in Augenschein zu nehmen. Eine Testversion steigert Ihre Verkaufschancen in den Storefronts, und die Interaktion mit den Kunden führt in der Regel zu weiteren und lukrativeren Leads. Testversionen müssen mindestens für die Dauer des Testzeitraums kostenlosen Support enthalten.  
 
 | SaaS-Apps-Angebot | Geschäftliche Anforderungen | Technische Anforderungen |  
 | --- | --- | --- |  
-| **Kontaktaufnahme** | Ja | Nein  |  
-| **Power BI/Dynamics** | Ja | Ja (Azure AD-Integration) |  
-| **SaaS-Apps**| Ja | Ja (Azure AD-Integration) |     
+| **Kontaktaufnahme** | JA | Nein  |  
+| **Power BI/Dynamics** | JA | Ja (Azure AD-Integration) |  
+| **SaaS-Apps**| JA | Ja (Azure AD-Integration) |     
 
-Weitere Informationen zu den Marketplace-Storefronts sowie eine Beschreibung der einzelnen Veröffentlichungsoptionen finden Sie im [Marketplace-Herausgeberleitfaden](https://aka.ms/sellerguide) sowie in den [Veröffentlichungsoptionen](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide#select-a-publishing-option).
+## <a name="saas-list"></a>SaaS-Liste
 
-## <a name="business-requirements"></a>Geschäftliche Anforderungen
-Die geschäftlichen Anforderungen für SaaS-Angebote können parallel zu den technischen Anforderungen angegeben werden. Die meisten der geschäftlichen Anforderungen und Informationen werden bei der Erstellung des SaaS-Angebots im Cloud Partner-Portal erfasst. Die geschäftlichen Anforderungen lauten wie folgt: 
-* Akzeptierung der Teilnahmerichtlinien
-* Microsoft-Integration 
-* Angabe der Zielgruppe für das Angebot
-* Definition und Bestimmung der zu verwendenden Leadverwaltung
-* Einrichtung von Datenschutz- und Nutzungsrichtlinien
-* Definition der Supportkontakte  
+Der Aktionsaufruf für eine SaaS-Auflistung ohne Testversion und Abrechnungsfunktionalität ist „Kontakt mit mir aufnehmen“. 
 
-Weitere Informationen finden Sie im Thema [Voraussetzungen für die Veröffentlichung im Marketplace](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide#prerequisites-for-marketplace-publishing).
+Zum Auflisten einer SaaS-Anwendung müssen Sie nicht Azure Active Directory konfigurieren. 
 
-## <a name="technical-requirements"></a>Technische Anforderungen
+|Requirements (Anforderungen)  |Details  |
+|---------|---------|
+|Ihre App ist ein SaaS-Angebot  |   Ihre Lösung ist ein SaaS-Angebot, und Sie bieten ein mehrinstanzenfähiges SaaS-Produkt an.      |
+
+
+## <a name="saas-trial"></a>SaaS-Testversion
+
+Sie stellen eine Lösung oder App mithilfe einer kostenlos zu testenden, SaaS-basierten Testversion bereit. Kostenlose Testangebote können als Testkonten mit eingeschränkter Nutzung oder begrenzter Dauer angeboten werden. 
+
+
+|Requirements (Anforderungen)  |Details  |
+|---------|---------|
+|Ihre App ist ein SaaS-Angebot  |   Ihre Lösung ist ein SaaS-Angebot, und Sie bieten ein mehrinstanzenfähiges SaaS-Produkt an.      |
+|Ihre App ist AAD-tauglich     |   Der Kunde wird zu Ihrer Domäne umgeleitet, und Sie führen direkt mit dem Kunden eine Transaktion durch.       |
+
+
+## <a name="saas-trial-technical-requirements"></a>Technische Anforderungen für die SaaS-Testversion
 
 Die technischen Voraussetzungen für SaaS-Anwendungen sind einfach. Herausgeber müssen nur für die Integration in Azure Active Directory (Azure AD) sorgen, um eine Veröffentlichung zu ermöglichen. Die Integration von Anwendungen in Azure AD ist umfassend dokumentiert, und Microsoft bietet verschiedene SDKs und Ressourcen für diesen Zweck.  
 
@@ -96,32 +97,7 @@ Eine kostenlose Azure Active Directory-Schulung finden Sie hier:
 * [Microsoft Azure for IT Pros Content Series: Azure Active Directory](https://mva.microsoft.com/en-US/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965) (Themenreihe zu Microsoft Azure für IT-Experten: Azure Active Directory)
 
 Darüber hinaus bietet Azure Active Directory eine Website für die Suche nach Dienstupdates:   
-* [Azure AD-Dienstupdates](https://azure.microsoft.com/updates/?product=active-directory)
-
-Wenn Sie Unterstützung benötigen, nutzen Sie die folgenden Ressourcen:
-* [MSDN-Foren](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
-* [StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
-
-## <a name="publishing-process"></a>Veröffentlichungsvorgang
-
-Der SaaS-Veröffentlichungsprozess umfasst sowohl technische als auch geschäftliche Schritte.  Die meisten Aufgaben für die Azure Active Directory-Entwicklung und -Integration können parallel zu den Aufgaben erledigt werden, die zum Erfüllen der geschäftlichen Anforderungen des Angebots erforderlich sind. Der Großteil der geschäftlichen Anforderungen ist Teil der Konfiguration des SaaS-App-Angebots im Cloud Partner-Portal.  
-Das folgende Diagramm zeigt die wichtigsten Veröffentlichungsschritte für das Angebot vom Typ „Trial/Transact“ (Testversion/Transaktion):  
-
-![SaaS-Veröffentlichungsschritte](./media/marketplace-saas-applications-technical-publishing-guide/saaspublishingsteps.png)  
-
-In der folgenden Tabelle werden die einzelnen Veröffentlichungsschritte beschrieben:  
-
-| Veröffentlichungsschritt | BESCHREIBUNG |   
-| --- | --- |  
-| **Erstellen der SaaS-Anwendung** | Melden Sie sich beim Cloud Partner-Portal an, klicken Sie auf **Neu**, und wählen Sie das Angebot **SaaS-Apps** aus. |  
-| **Erstellen der Azure AD-Integration** | Gehen Sie gemäß den Informationen zu den technischen Anforderungen aus dem vorherigen Abschnitt vor, um Ihre SaaS-Lösung in Azure AD zu integrieren. |  
-| **Festlegen der Angebotseinstellungen**| Geben Sie alle anfänglichen Informationen für das SaaS-Angebot ein: die gewünschte Angebots-ID und den gewünschten Angebotsnamen. |     
-| **Festlegen der technischen Informationen** | Geben Sie die technischen Informationen für das Angebot ein. Für SaaS-Anwendungen sind der URI der Lösung und die Art der Kaufschaltfläche des Angebots (kostenlos, Testversion oder Kontaktaufnahme) erforderlich. |  
-| **Testversion (optional)** | Hierbei handelt es sich um eine optionale Art von Testversion, die vor allem für andere Arten von Marketplace-Angeboten erforderlich ist. Sie ermöglicht die Bereitstellung der Testversion in den Abonnements des Herausgebers (anstatt in den Abonnements des Endkunden). |  
-| **Festlegen des Storefront-Materials für das Angebot**| In diesem Abschnitt verlinkt der Herausgeber Logos, Marketingmaterial und juristisch relevante Dokumente bzw. lädt sie hoch und konfiguriert das Leadverwaltungssystem. |
-| **Festlegen der Angebotskontakte** | Geben Sie Technik- und Supportkontaktinformationen für das SaaS-Angebot ein. |  
-| **Überprüfen der Azure AD-Integration der SaaS-App** | Vergewissern Sie sich, dass Ihre SaaS-App in Azure AD integriert ist, bevor Sie die App zur Veröffentlichung übermitteln. |  
-| **Veröffentlichen des Angebots**| Nach Fertigstellung der Angebotsressourcen und der technischen Ressourcen kann das Angebot übermittelt werden. Im Rahmen des daraufhin beginnenden Veröffentlichungsprozesses wird die Lösungsvorlage getestet, überprüft, zertifiziert und zur Veröffentlichung freigegeben. |
+* [Azure AD-Dienstupdates](https://azure.microsoft.com/updates/?product=active-directory)|
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Verwenden von Azure Active Directory, um Tests zu ermöglichen  
 
@@ -154,3 +130,25 @@ Wenn die einmalige Azure AD-Verbundanmeldung für Sie neu ist, gehen Sie wie fol
 * Entwickeln Sie eine kundenspezifische Testversion.
 * Erstellen einer mehrinstanzenfähigen Beispiel-Demo-App mit SSO
 
+## <a name="saas-subscriptions"></a>SaaS-Abonnements
+
+Verwenden Sie SaaS-App-Angebotstypen, um Ihren Kunden die Möglichkeit zu geben, Ihre SaaS-basierte, technische Lösung als Abonnement zu kaufen. Für Ihre SaaS-App müssen die folgenden Anforderungen erfüllt werden:
+- Preis und Abrechnung des Diensts als monatliche Pauschale.
+- Bereitstellung einer Upgrademethode oder Stornierung des Dienst zu einem beliebigen Zeitpunkt.
+Microsoft hostet die Commerce-Transaktion. Microsoft stellt Ihrem Kunden Rechnungen in Ihrem Namen. Wenn Sie die SaaS-App als Abonnement verwenden möchten, müssen Sie Ihre eigene Abonnementverwaltungsdienst-API aktivieren. Ihre Abonnementverwaltungsdienst-API muss direkt mit den Azure Resource Manager-APIs kommunizieren. Ihre Abonnementverwaltungsdienst-API muss die Bereitstellung, Aktualisierung und Stornierung des Diensts unterstützen.
+
+| Anforderung | Details |  
+|:--- |:--- |  
+|Abrechnung und Messung | Ihr Angebot wird über eine monatliche Flatrate abgerechnet. Derzeit werden nutzungsbasierte Preise und nutzungsbasierte Anpassungsfunktionen nicht unterstützt. |  
+|Stornierung | Ihr Angebot kann jederzeit vom Kunden storniert werden. |  
+|Transaktionszielseite | Sie hosten eine Transaktion-Landing Page mit Azure-Co-Branding, auf der Benutzer ihr SaaS-Dienstkonto erstellen und verwalten können. |   
+| Abonnement-API | Sie machen einen Dienst verfügbar, der mit dem SaaS-Abonnement interagiert, um Benutzerkonten und Servicepläne erstellen, aktualisieren und löschen zu können. Wichtige API-Änderungen müssen innerhalb von 24 Stunden unterstützt werden. Weniger wichtige API-Änderungen werden regelmäßig veröffentlicht. |  
+
+## <a name="next-steps"></a>Nächste Schritte
+Falls Sie dies noch nicht getan haben, 
+
+- [Registrieren](https://azuremarketplace.microsoft.com/sell) Sie sich im Marketplace.
+
+Wenn Sie registriert sind und ein neues Angebot erstellen oder an einem vorhandenen arbeiten,
+
+- [melden Sie sich beim Cloud-Partnerportal an](https://cloudpartner.azure.com), um Ihr Angebot zu erstellen oder zu vervollständigen.

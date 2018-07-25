@@ -6,15 +6,15 @@ author: jovanpop-msft
 manager: craigg
 ms.service: sql-database
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/16/2018
 ms.author: jovanpop
 ms.reviewer: carlrab, sashan
-ms.openlocfilehash: a9874681d59d193fc3c3d0fd4271e2a6a0fb0dc6
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 2283b7559bb0dc7e8333949a8e6382d562162123
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060382"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092486"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Hochverfügbarkeit und Azure SQL-Datenbank
 
@@ -46,21 +46,18 @@ Im Premium-Modell werden in Azure SQL-Datenbank der Compute- und Speicherbereich
 
 Hochverfügbarkeit wird mithilfe von standardmäßigen [AlwaysOn-Verfügbarkeitsgruppen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) implementiert. Jede Datenbank ist ein Cluster von Datenbankknoten mit einer primären Datenbank, die für die Kundenworkload zugänglich ist, und einigen sekundären Prozessen, die Kopien der Daten enthalten. Der primäre Knoten überträgt die Änderungen kontinuierlich zu sekundären Knoten, um sicherzustellen, dass die Daten auf sekundären Replikaten verfügbar sind, wenn der primäre Knoten aus bestimmten Gründen ausfällt. Ein Failover wird von der SQL Server-Datenbank-Engine verarbeitet: Ein sekundäres Replikat wird zum primären Knoten, und ein neues sekundäres Replikat wird erstellt, um sicherzustellen, dass ausreichend Knoten im Cluster vorhanden sind. Die Workload wird automatisch zum neuen primären Knoten umgeleitet. Die Failoverzeit wird in Millisekunden gemessen. Die neue primäre Instanz ist sofort einsatzbereit, sodass Anforderungen weiterhin bearbeitet werden können.
 
-## <a name="zone-redundant-configuration-preview"></a>Zonenredundante Konfiguration (Vorschau)
+## <a name="zone-redundant-configuration"></a>Zonenredundante Konfiguration
 
-Standardmäßig werden die Quorumssatzreplikate für die Konfigurationen mit lokalem Speicher im gleichen Rechenzentrum erstellt. Durch die Einführung von [Azure-Verfügbarkeitszonen](../availability-zones/az-overview.md) haben Sie die Möglichkeit, die verschiedenen Replikate in den Quorumssätzen in unterschiedlichen Verfügbarkeitszonen in derselben Region zu platzieren. Um einen Single Point of Failure auszuschließen, wird der Steuerring zudem in mehreren Zonen als drei Gatewayringe (GW) kopiert. Die Weiterleitung an einen bestimmten Gatewayring wird durch [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM) gesteuert. Da bei der zonenredundanten Konfiguration keine zusätzliche Datenbankredundanz erzeugt wird, ist die Verwendung von Verfügbarkeitszonen auf den Dienstebenen „Premium“ oder „Unternehmenskritisch“ (Vorschau) ohne Zusatzkosten verfügbar. Durch die Auswahl einer zonenredundanten Datenbank können Sie Ihre Datenbanken der Dienstebenen „Premium“ oder „Unternehmenskritisch“ (Vorschau) für deutlich mehr Ausfallszenarien resistent machen – z.B. für schwerwiegende Rechenzentrumsausfälle –, ohne Änderungen an der Anwendungslogik vornehmen zu müssen. Sie können zudem alle vorhandenen Datenbanken oder Pools der Dienstebenen „Premium“ oder „Unternehmenskritisch“ (Vorschau) in die zonenredundante Konfiguration konvertieren.
+Standardmäßig werden die Quorumssatzreplikate für die Konfigurationen mit lokalem Speicher im gleichen Rechenzentrum erstellt. Durch die Einführung von [Azure-Verfügbarkeitszonen](../availability-zones/az-overview.md) haben Sie die Möglichkeit, die verschiedenen Replikate in den Quorumssätzen in unterschiedlichen Verfügbarkeitszonen in derselben Region zu platzieren. Um einen Single Point of Failure auszuschließen, wird der Steuerring zudem in mehreren Zonen als drei Gatewayringe (GW) kopiert. Die Weiterleitung an einen bestimmten Gatewayring wird durch [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM) gesteuert. Da bei der zonenredundanten Konfiguration keine zusätzliche Datenbankredundanz erzeugt wird, ist die Verwendung von Verfügbarkeitszonen auf den Dienstebenen „Premium“ oder „Unternehmenskritisch“ ohne Zusatzkosten verfügbar. Durch die Auswahl einer zonenredundanten Datenbank können Sie Ihre Datenbanken der Dienstebenen „Premium“ oder „Unternehmenskritisch“ für deutlich mehr Ausfallszenarien resistent machen – z.B. für schwerwiegende Rechenzentrumsausfälle –, ohne Änderungen an der Anwendungslogik vornehmen zu müssen. Sie können zudem alle vorhandenen Datenbanken oder Pools der Dienstebenen „Premium“ oder „Unternehmenskritisch“ in die zonenredundante Konfiguration konvertieren.
 
 Da der zonenredundante Quorumssatz über Replikate in verschiedenen Rechenzentren mit einiger Entfernung dazwischen verfügt, kann sich durch die erhöhte Netzwerklatenz die Commitzeit erhöhen und dadurch die Leistung einiger OLTP-Workloads beeinträchtigt werden. Sie können jederzeit zur Einzelzonenkonfiguration zurückkehren, indem Sie die zonenredundante Einstellung deaktivieren. Dieser Prozess ist datenintensiv und ähnelt dem SLO-Update (Service Level Objective). Am Ende des Prozesses wird die Datenbank oder der Pool aus einem zonenredundanten Ring zum Ring einer einzelnen Zone migriert (oder umgekehrt).
-
-> [!IMPORTANT]
-> Zonenredundante Datenbanken und Pools für elastische Datenbanken werden derzeit nur für den Diensttarif „Premium“ unterstützt. In der Public Preview-Phase werden Sicherungen und Überwachungsdatensätze im RA-GRS-Speicher gespeichert und sind daher möglicherweise bei einem Ausfall der gesamten Zone nicht automatisch verfügbar. 
 
 Die zonenredundante Version der Hochverfügbarkeitsarchitektur wird im folgenden Diagramm veranschaulicht:
  
 ![Hochverfügbarkeitsarchitektur, zonenredundant](./media/sql-database-high-availability/high-availability-architecture-zone-redundant.png)
 
 ## <a name="read-scale-out"></a>Horizontale Leseskalierung
-Wie bereits beschrieben, verwenden die Dienstebenen „Premium“ oder „Unternehmenskritisch“ (Vorschau) Quorumssätze und Always On-Technologie für Hochverfügbarkeit sowohl in Einzelzonenkonfigurationen als auch in zonenredundanten Konfigurationen. Einer der Vorteile der Always On-Technologie besteht darin, dass sich die Replikate jederzeit in einem transaktionssicheren Zustand befinden. Da die Replikate die gleiche Leistungsstufe aufweisen wie das primäre Replikat, kann die Anwendung kostenlos von dieser zusätzlichen Kapazität für die schreibgeschützten Workloads profitieren (horizontale Leseskalierung). Auf diese Weise werden die schreibgeschützten Abfragen von der Hauptworkload für Lesen und Schreiben isoliert und beeinträchtigen deren Leistung nicht. Das Feature der horizontalen Leseskalierung ist für Anwendungen konzipiert, die logisch getrennte schreibgeschützte Workloads z.B. zur Analyse umfassen und daher von dieser zusätzlichen Kapazität profitieren können, ohne eine Verbindung mit dem primären Replikat herstellen zu müssen. 
+Wie bereits beschrieben, verwenden die Dienstebenen „Premium“ oder „Unternehmenskritisch“ Quorumssätze und Always On-Technologie für Hochverfügbarkeit sowohl in Einzelzonenkonfigurationen als auch in zonenredundanten Konfigurationen. Einer der Vorteile der Always On-Technologie besteht darin, dass sich die Replikate jederzeit in einem transaktionssicheren Zustand befinden. Da die Replikate die gleiche Leistungsstufe aufweisen wie das primäre Replikat, kann die Anwendung kostenlos von dieser zusätzlichen Kapazität für die schreibgeschützten Workloads profitieren (horizontale Leseskalierung). Auf diese Weise werden die schreibgeschützten Abfragen von der Hauptworkload für Lesen und Schreiben isoliert und beeinträchtigen deren Leistung nicht. Das Feature der horizontalen Leseskalierung ist für Anwendungen konzipiert, die logisch getrennte schreibgeschützte Workloads z.B. zur Analyse umfassen und daher von dieser zusätzlichen Kapazität profitieren können, ohne eine Verbindung mit dem primären Replikat herstellen zu müssen. 
 
 Um die horizontale Leseskalierung mit einer bestimmten Datenbank zu verwenden, müssen Sie das Feature explizit beim Erstellen der Datenbank aktivieren. Sie können es auch später aktivieren, indem Sie die Konfiguration ändern. Hierzu rufen Sie in PowerShell die Cmdlets [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) oder [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) auf oder verwenden die Methode [Datenbanken – Erstellen oder Aktualisieren](/rest/api/sql/databases/createorupdate) in der Azure Resource Manager-REST-API.
 

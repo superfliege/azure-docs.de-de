@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 07/11/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 80ed0d2353fc6ea3a515c0d05475c713920abe46
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: ba162a04d41d9ce6f0bf00e377b7717f78967e7f
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293107"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091771"
 ---
 # <a name="azure-stack-1805-update"></a>Azure Stack-Update 1805
 
@@ -83,7 +83,7 @@ Dieses Update enthält die folgenden Verbesserungen für Azure Stack.
 
 ### <a name="post-update-steps"></a>Schritte nach dem Update
 Installieren Sie nach der Installation von 1805 alle entsprechenden Hotfixes. Weitere Informationen finden Sie in den folgenden Knowledge Base-Artikeln sowie in unserer [Wartungsrichtlinie](azure-stack-servicing-policy.md).  
- - [KB 4340474 – Azure Stack-Hotfix 1.1805.4.53](https://support.microsoft.com/en-us/help/4340474).
+ - [KB 4344102 – Azure Stack Hotfix 1.1805.7.57](https://support.microsoft.com/help/4344102).
 
 
 ## <a name="known-issues-post-installation"></a>Bekannte Probleme (nach der Installation)
@@ -118,7 +118,7 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
 
 ### <a name="health-and-monitoring"></a>Integrität und Überwachung
 - <!-- 1264761 - IS ASDK --> Möglicherweise werden Warnungen für die *Health Controller*-Komponente mit folgenden Details angezeigt:  
-
+- 
    Warnung 1:
    - NAME: Infrastrukturrolle fehlerhaft
    - SCHWEREGRAD: Warnung
@@ -131,7 +131,19 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
    - KOMPONENTE: Health Controller
    - BESCHREIBUNG: Fault Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.
 
-  Beide Alarme können ignoriert werden und werden nach einer gewissen Zeit automatisch geschlossen.  
+  Beide Warnungen #1 und #2 können ignoriert werden und werden nach einer gewissen Zeit automatisch geschlossen. 
+
+  Möglicherweise wird Ihnen die folgende Warnung für *Kapazität* angezeigt. Bei dieser Warnung kann der in der Beschreibung angegebene Prozentsatz des verfügbaren Speichers variieren:  
+
+  Warnung #3:
+   - NAME: Niedrige Arbeitsspeicherkapazität
+   - SCHWEREGRAD: Kritisch
+   - KOMPONENTE: Kapazität
+   - BESCHREIBUNG: Die Region hat mehr als 80,00 % des verfügbaren Speichers verbraucht. Beim Erstellen von virtuellen Computern mit großem Arbeitsspeicher kann ein Fehler auftreten.  
+
+  In dieser Version von Azure Stack kann diese Warnung nicht ordnungsgemäß ausgelöst werden. Wenn die Mandanten-VMs weiterhin erfolgreich bereitgestellt werden, können Sie diese Warnung ignorieren. 
+  
+  Warnung #3 wird nicht automatisch geschlossen. Wenn Sie diese Warnung schließen, wird dieselbe Warnung von Azure Stack innerhalb von 15 Minuten erstellt.  
 
 - <!-- 2368581 - IS. ASDK --> Wenn Sie als Azure Stack-Bediener eine Fehlermeldung über unzureichenden Speicher erhalten und virtuelle Computer der Mandanten nicht mit einem *Fabric-VM-Erstellungsfehler* bereitgestellt werden können, verfügt der Azure Stack-Stempel möglicherweise nicht über genügend Arbeitsspeicher. Mit dem [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) können Sie die verfügbare Kapazität für Ihre Workloads besser bestimmen. 
 

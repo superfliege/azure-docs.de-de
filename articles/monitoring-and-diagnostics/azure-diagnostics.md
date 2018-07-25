@@ -6,15 +6,15 @@ author: rboucher
 ms.service: azure-monitor
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 07/13/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: b4ec82112ea0defcea4f687abaad7d96627cb902
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: b00d774ec59755288b8660d238c7b8dfc9a89eab
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267678"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39089892"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Was ist die Azure-Diagnoseerweiterung?
 Die Azure-Diagnoseerweiterung ist ein Agent innerhalb von Azure, mit dem Diagnosedaten für eine bereitgestellte Anwendung erfasst werden können. Sie können die Diagnoseerweiterung von einer Reihe verschiedener Quellen aus verwenden. Derzeit werden die Web- und Workerrollen des Azure-Clouddiensts (klassisch), Virtual Machines, Virtual Machine Scale Sets und Service Fabric unterstützt. Andere Azure-Dienste haben unterschiedliche Diagnosemethoden. Siehe [Übersicht über die Überwachung in Microsoft Azure](monitoring-overview.md). 
@@ -32,10 +32,12 @@ Die Azure-Diagnoseerweiterung kann die folgenden Datentypen erfassen:
 | Windows-Ereignisprotokolle |An das Windows-System für die Ereignisprotokollierung gesendete Informationen |
 | .NET-Ereignisquelle |Code zum Schreiben von Ereignissen mit der .NET-Klasse [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) |
 | IIS-Protokolle |Informationen zu IIS-Websites |
-| Manifestbasiertes ETW |Von einem beliebigen Prozess generierte Ereignisse der Ereignisablaufverfolgung für Windows |
+| Manifestbasiertes ETW |Von einem beliebigen Prozess generierte Ereignisse der Ereignisablaufverfolgung für Windows.(1) |
 | Absturzabbilder |Informationen zum Status des Prozesses im Fall eines Anwendungsabsturzes |
 | Benutzerdefinierte Fehlerprotokolle |Von Ihrer Anwendung oder Ihrem Dienst erstellte Protokolle |
 | Infrastrukturprotokolle der Azure-Diagnose |Informationen zur Diagnose selbst |
+
+(1) Um eine Liste der ETW-Anbieter zu erhalten, führen Sie `c:\Windows\System32\logman.exe query providers` in einem Konsolenfenster auf dem Computer aus, von dem Sie die Informationen sammeln möchten. 
 
 ## <a name="data-storage"></a>Datenspeicher
 Die Erweiterung speichert ihre Daten in einem von Ihnen angegebenen [Azure Storage-Konto](azure-diagnostics-storage.md). 

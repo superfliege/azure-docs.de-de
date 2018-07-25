@@ -6,14 +6,14 @@ manager: jeconnoc
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 07/17/2018
 ms.author: alkohli
-ms.openlocfilehash: 4349b471f960e7844511c473bffcd2177a34e055
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4f48097fa1ece66dd9e20a7a7939ac43cb0f48b4
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659705"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113476"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Verwenden des Azure Import/Export-Diensts zum Importieren von Daten in Azure Files
 
@@ -27,14 +27,22 @@ Vor dem Erstellen eines Importauftrags zum Übertragen von Daten in Azure Files 
 
 - Ein aktives Azure-Abonnement zur Verwendung mit dem Import/Export-Dienst.
 - Mindestens ein Azure Storage-Konto. Hier finden Sie die Liste der [für den Import/Export-Dienst unterstützten Speicherkonten und Speichertypen](storage-import-export-requirements.md). Weitere Informationen zum Erstellen eines neuen Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](storage-create-storage-account.md#create-a-storage-account).
-- Eine angemessene Anzahl von Datenträgern der [unterstützten Typen](storage-import-export-requirements.md#supported-disks). 
+- Eine angemessene Anzahl von Datenträgern der [unterstützten Typen](storage-import-export-requirements.md#supported-disks) 
 - Ein Windows-System, auf dem eine [unterstützte Betriebssystemversion](storage-import-export-requirements.md#supported-operating-systems) ausgeführt wird.
-- [Laden Sie Version 2 von WAImportExport](https://www.microsoft.com/download/details.aspx?id=55280) auf das Windows-System herunter. Entzippen Sie die Dateien in den Standardordner „`waimportexport`“. Beispiel: `C:\WaImportExport`.
+- [Laden Sie Version 2 von WAImportExport](https://www.microsoft.com/download/details.aspx?id=55280) auf das Windows-System herunter. Entzippen Sie die Dateien in den Standardordner `waimportexport`. Beispiel: `C:\WaImportExport`.
+- Sie benötigen ein FedEx/DHL-Konto. 
+    - Das Konto muss gültig sein, es muss Guthaben vorhanden sein und es muss der Rückversand aktiviert sein.
+    - Generieren Sie eine Nachverfolgungsnummer für den Exportauftrag.
+    - Jeder Auftrag benötigt eine separate Nachverfolgungsnummer. Mehrere Aufträge mit derselben Nachverfolgungsnummer werden nicht unterstützt.
+    - Wenn Sie kein Spediteurskonto haben, wechseln Sie zu:
+        - [Erstellen eines FedEx-Kontos](https://www.fedex.com/en-us/create-account.html) oder 
+        - [Erstellen eines DHL-Kontos](http://www.dhl-usa.com/en/express/shipping/open_account.html).
+ 
 
 
 ## <a name="step-1-prepare-the-drives"></a>Schritt 1: Vorbereiten der Laufwerke
 
-Dieser Schritt generiert eine Journaldatei. Die Journaldatei speichert grundlegende Informationen wie z.B. Laufwerksseriennummer, Verschlüsselungsschlüssel und Speicherkontodetails.
+Dieser Schritt generiert eine Journaldatei. In der Journaldatei werden grundlegende Informationen wie Laufwerksseriennummer, Verschlüsselungsschlüssel und Speicherkontendetails gespeichert.
 
 Führen Sie die folgenden Schritte zum Vorbereiten der Laufwerke aus.
 
@@ -115,7 +123,7 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
 
 3. Klicken Sie auf **Import-/Exportauftrag erstellen**.
 
-    ![Auf „Import-/Exportauftrag“ klicken](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
+    ![Klicken auf „Import-/Exportauftrag“](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
 4. Gehen Sie unter **Grundlegende Einstellungen** wie folgt vor:
 
@@ -139,13 +147,16 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
 4. In **Informationen für Rücksendung**:
 
     - Wählen Sie den Spediteur in der Dropdownliste aus.
-    - Geben Sie eine gültige Kontonummer des Spediteurs ein, die Sie mit diesem Spediteur erstellt haben. Microsoft verwendet dieses Konto, um die Laufwerke nach Abschluss des Importauftrags an Sie zurückzuschicken. 
-    - Geben Sie folgende vollständige und gültige Kontaktdaten an: Name, Telefonnummer, E-Mail-Adresse, Straße, Stadt, PLZ, Bundesstaat/Provinz und Land/Region.
+    - Geben Sie eine gültige Spediteurkontonummer ein, die Sie mit diesem Spediteur erstellt haben. Microsoft verwendet dieses Konto, um die Laufwerke nach Abschluss des Importauftrags an Sie zurückzuschicken. 
+    - Geben Sie vollständige und gültige Kontaktdaten an: Name, Telefonnummer, E-Mail-Adresse, Straße, Stadt, PLZ, Bundesstaat/Provinz und Land/Region.
+
+        > [!TIP] 
+        > Geben Sie anstelle einer E-Mail-Adresse für einen einzelnen Benutzer, eine Gruppen E-Mail-Adresse ein. Dadurch wird sichergestellt, dass Sie Benachrichtigungen erhalten, selbst wenn ein Administrator geht.
 
        ![Importauftrag erstellen – Schritt 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
 
    
-5. In der **Zusammenfassung**:
+5. Gehen Sie unter **Zusammenfassung** wie folgt vor:
 
     - Geben Sie die Lieferadresse des Azure-Rechenzentrums für die Rücksendung der Datenträger an Azure an. Stellen Sie sicher, dass der Auftragsname und die vollständige Adresse auf dem Adressetikett angegeben sind.
     - Klicken Sie auf **OK**, um das Erstellen des Importauftrags abzuschließen.
@@ -159,6 +170,10 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
 ## <a name="step-4-update-the-job-with-tracking-information"></a>Schritt 4: Aktualisieren des Auftrags mit Nachverfolgungsinformationen
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
+
+## <a name="step-5-verify-data-upload-to-azure"></a>Schritt 5: Überprüfen des Datenuploads in Azure
+
+Überwachen Sie den Auftrag bis zu seinem Abschluss. Sobald der Auftrag abgeschlossen ist, überprüfen Sie, ob Ihre Daten in Azure hochgeladen wurden. Löschen Sie die lokalen Daten erst, wenn Sie überprüft haben, dass die Daten erfolgreich hochgeladen wurden.
 
 ## <a name="samples-for-journal-files"></a>Beispiele für Journaldateien
 
@@ -193,7 +208,7 @@ Ein Importbeispiel ist nachfolgend dargestellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Anzeigen von Auftrags- und Laufwerksstatus](storage-import-export-view-drive-status.md)
+* [Anzeigen von Auftrags- und Laufwerkstatus](storage-import-export-view-drive-status.md)
 * [Überprüfen der Import/Export-Anforderungen](storage-import-export-requirements.md)
 
 

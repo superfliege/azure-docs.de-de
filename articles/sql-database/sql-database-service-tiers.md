@@ -6,19 +6,19 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/16/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 1a5424b69fc70f69359b12beac86060f4e23ff27
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: f40fe3da6874d8656c9c0a0ddce9fed602cb25f9
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083990"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091914"
 ---
 # <a name="azure-sql-database-purchasing-models-and-resources"></a>Kaufmodelle für Azure SQL-Datenbank und Ressourcen 
 
-„Logische Server“ in [Azure SQL-Datenbank](sql-database-technical-overview.md) verfügt über zwei Kaufmodelle für Compute-, Speicher- und E/A-Ressourcen: ein DTU-basiertes Kaufmodell und ein auf virtuellen Kernen basierendes Kaufmodell (Vorschauversion). 
+„Logische Server“ in [Azure SQL-Datenbank](sql-database-technical-overview.md) verfügt über zwei Kaufmodelle für Compute-, Speicher- und E/A-Ressourcen: ein DTU-basiertes Kaufmodell und ein V-Kern-basiertes Kaufmodel. 
 
 > [!NOTE]
 > [Verwaltete Instanzen](sql-database-managed-instance.md) in Azure SQL-Datenbank bieten nur das auf virtuellen Kernen basierende Kaufmodell.
@@ -26,7 +26,7 @@ ms.locfileid: "37083990"
 In der folgenden Tabelle und im Diagramm werden diese Kaufmodelle verglichen und gegenübergestellt.
 
 > [!IMPORTANT]
-> Informationen zum auf virtuellen Kernen basierenden Kaufmodell (Vorschau) finden Sie unter [Auf virtuellen Kernen basierendes Kaufmodell für Azure SQL Datenbank (Vorschau)](sql-database-service-tiers-vcore.md).
+> Informationen zum V-Kern-basierten Kaufmodell finden Sie unter [V-Kern-basiertes Kaufmodell](sql-database-service-tiers-vcore.md).
 
 |**Kaufmodell**|**Beschreibung**|**Am besten geeignet für**|
 |---|---|---|
@@ -36,13 +36,13 @@ In der folgenden Tabelle und im Diagramm werden diese Kaufmodelle verglichen und
 
 ![Preismodell](./media/sql-database-service-tiers/pricing-model.png)
 
-## <a name="vcore-based-purchasing-model--preview"></a>Auf virtuellen Kernen basierendes Kaufmodell (Vorschauversion)
+## <a name="vcore-based-purchasing-model"></a>V-Kern-basiertes Kaufmodel 
 
-Ein virtueller Kern repräsentiert die logische CPU. Virtuelle Kerne werden für verschiedene Hardwaregenerationen angeboten. Beim V-Kern-basierten Kaufmodell (Vorschauversion) erhalten Sie Flexibilität, Kontrolle und Transparenz in Bezug auf den individuellen Ressourcenverbrauch. Außerdem können Sie die lokalen Workloadanforderungen leicht auf die Cloud übertragen. Mit diesem Modell können Sie Computeressourcen, Arbeitsspeicher und Speicher entsprechend den jeweiligen Workloadanforderungen skalieren. Bei dem auf virtuellen Kern basierenden Kaufmodell (Vorschauversion) können Kunden für [Einzeldatenbanken](sql-database-single-database-scale.md) und [Pools für elastische Datenbanken](sql-database-elastic-pool.md) zwischen den Diensttarifen „Universell“ und „Unternehmenskritisch“ (Vorschauversion) wählen. 
+Ein virtueller Kern repräsentiert die logische CPU. Virtuelle Kerne werden für verschiedene Hardwaregenerationen angeboten. Beim V-Kern-basierten Kaufmodell erhalten Sie Flexibilität, Kontrolle und Transparenz in Bezug auf den individuellen Ressourcenverbrauch. Außerdem können Sie die lokalen Workloadanforderungen leicht auf die Cloud übertragen. Mit diesem Modell können Sie Computeressourcen, Arbeitsspeicher und Speicher entsprechend den jeweiligen Workloadanforderungen skalieren. Beim V-Kern-basierten Kaufmodell können Kunden für [Einzeldatenbanken](sql-database-single-database-scale.md) und [Pools für elastische Datenbanken](sql-database-elastic-pool.md) zwischen den Dienstebenen „Universell“ und „Unternehmenskritisch“ wählen. 
 
-Mit dem V-Kern-basierte Kaufmodell (Vorschauversion) können Sie Compute- und Speicherressourcen einzeln skalieren, eine Leistung wie in Ihrer lokalen Umgebung erzielen und den Preis optimieren. Wenn Ihre Datenbank oder der Pool für elastische Datenbanken mehr als 300 DTUs verbraucht, können Sie mit der Umstellung auf V-Kerne unter Umständen Ihre Kosten senken. Sie können für die Umstellung die API Ihrer Wahl oder das Azure-Portal verwenden, ohne dass es zu Ausfallzeit kommt. Die Umstellung ist aber nicht zwingend erforderlich. Wenn das DTU-Kaufmodell Ihre Leistungs- und Geschäftsanforderungen erfüllt, sollten Sie es weiter nutzen. Falls Sie sich für die Umstellung vom DTU-Modell auf das Modell mit virtuellen Kernen entscheiden, sollten Sie zum Auswählen der Leistungsstufe die folgende Faustregel anwenden: Für 100 DTUs im Standard-Tarif ist jeweils mindestens ein virtueller Kern im Tarif „Universell“ erforderlich, und für 125 DTUs im Premium-Tarif ist jeweils mindestens ein virtueller Kern im Tarif „Unternehmenskritisch“ erforderlich.
+Mit dem V-Kern-basierten Kaufmodell können Sie Compute- und Speicherressourcen einzeln skalieren, eine Leistung wie in Ihrer lokalen Umgebung erzielen und den Preis optimieren. Wenn Ihre Datenbank oder der Pool für elastische Datenbanken mehr als 300 DTUs verbraucht, können Sie mit der Umstellung auf V-Kerne unter Umständen Ihre Kosten senken. Sie können für die Umstellung die API Ihrer Wahl oder das Azure-Portal verwenden, ohne dass es zu Ausfallzeit kommt. Die Umstellung ist aber nicht zwingend erforderlich. Wenn das DTU-Kaufmodell Ihre Leistungs- und Geschäftsanforderungen erfüllt, sollten Sie es weiter nutzen. Falls Sie sich für die Umstellung vom DTU-Modell auf das Modell mit virtuellen Kernen entscheiden, sollten Sie zum Auswählen der Leistungsstufe die folgende Faustregel anwenden: Für 100 DTUs im Standard-Tarif ist jeweils mindestens ein virtueller Kern im Tarif „Universell“ erforderlich, und für 125 DTUs im Premium-Tarif ist jeweils mindestens ein virtueller Kern im Tarif „Unternehmenskritisch“ erforderlich.
 
-Bei dem auf virtuellen Kernen basierenden Kaufmodell (Vorschauversion) zahlen Kunden für Folgendes:
+Beim V-Kern-basierten Kaufmodell zahlen Kunden für Folgendes:
 - Compute (Diensttarif + Anzahl von V-Kernen + Hardwaregeneration)*
 - Typ und Menge von Daten und Protokollspeicher 
 - E/A-Anzahl**
@@ -54,7 +54,7 @@ Bei dem auf virtuellen Kernen basierenden Kaufmodell (Vorschauversion) zahlen Ku
 
 > [!IMPORTANT]
 > Compute, E/A-Vorgänge, Daten und Protokollspeicher werden pro Datenbank oder Pool für elastische Datenbanken berechnet. Sicherungsspeicher wird pro Datenbank berechnet. Ausführlichere Informationen zur verwalteten SQL-Datenbank-Instanz finden Sie unter [Was ist eine verwaltete Instanz (Vorschauversion)?](sql-database-managed-instance.md).
-> **Regionale Einschränkungen:** Das auf virtuellen Kernen basierende Kaufmodell (Vorschauversion) ist in folgenden Regionen noch nicht verfügbar: „Europa, Westen“, „Frankreich, Mitte“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“ und „Australien, Südosten“.
+> **Regionale Einschränkungen:** Das V-Kern-basierte Kaufmodell ist in folgenden Regionen noch nicht verfügbar: „Europa, Westen“, „Frankreich, Mitte“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“ und „Australien, Südosten“.
 
 ## <a name="dtu-based-purchasing-model"></a>DTU-basiertes Kaufmodell
 
@@ -189,5 +189,5 @@ Die Hauptmetriken im Vergleichstest sind Durchsatz und Antwortzeit.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zum auf virtuellen Kernen basierenden Kaufmodell (Vorschau) finden Sie unter [Auf virtuellen Kernen basierendes Kaufmodell für Azure SQL Datenbank (Vorschau)](sql-database-service-tiers-vcore.md).
+- Informationen zum V-Kern-basierten Kaufmodell finden Sie unter [V-Kern-basiertes Kaufmodell](sql-database-service-tiers-vcore.md).
 - Das auf DTUs basierende Kaufmodell finden Sie unter [Auf DTUs basiertes Kaufmodell](sql-database-service-tiers-dtu.md).

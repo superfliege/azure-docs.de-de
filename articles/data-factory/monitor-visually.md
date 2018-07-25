@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2018
+ms.date: 07/12/2018
 ms.author: shlo
-ms.openlocfilehash: e654cc23d6a558469ea238fc5ade82b44562f9a2
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 4b3828e1857d17a128de346449d5cf2041709e50
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050368"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041074"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Visuelles Überwachen von Azure Data Factory
 Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows in der Cloud erstellen können, um Datenverschiebungen und Datentransformationen zu orchestrieren und zu automatisieren. Mit Azure Data Factory können Sie datengesteuerte Workflows (sogenannte Pipelines) erstellen und planen, die Daten aus unterschiedlichen Datenspeichern erfassen, diese Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning verarbeiten/transformieren und die Ausgabedaten für Datenspeicher wie Azure SQL Data Warehouse veröffentlichen, damit diese von Business Intelligence (BI)-Anwendungen genutzt werden können.
@@ -76,6 +76,11 @@ Die Listenansicht zeigt die Aktivitätsausführungen an, die der jeweiligen Pipe
 
 ## <a name="features"></a>Features
 
+#### <a name="select-a-data-factory-to-monitor"></a>Auswählen einer zu überwachenden Data Factory
+Zeigen Sie auf das Symbol **Data Factory** im oberen linken Bereich. Klicken Sie auf das Pfeilsymbol, um eine Liste der Azure-Abonnements und Data Factorys anzuzeigen, die Sie überwachen können.
+
+![Data Factory auswählen](media/monitor-visually/select-datafactory.png)
+
 #### <a name="rich-ordering-and-filtering"></a>Umfangreiches Sortieren und Filtern
 
 Sortieren Sie Pipelineausführungen auf- oder absteigend nach Start der Ausführung, und filtern Sie Pipelineausführungen nach folgenden Spalten:
@@ -88,7 +93,7 @@ Sortieren Sie Pipelineausführungen auf- oder absteigend nach Start der Ausführ
 
 ![Filter](media/monitor-visually/filter.png)
 
-#### <a name="addremove-columns-to-list-view"></a>Hinzufügen oder Entfernen von Spalten zur oder aus der Listenansicht
+#### <a name="addremove-columns-in-list-view"></a>Hinzufügen oder Entfernen von Spalten in der Listenansicht
 Klicken Sie mit der rechten Maustaste auf den Header der Listenansicht, und wählen Sie die Spalten aus, die in der Listenansicht angezeigt werden sollen.
 
 ![Spalten](media/monitor-visually/columns.png)
@@ -96,10 +101,22 @@ Klicken Sie mit der rechten Maustaste auf den Header der Listenansicht, und wäh
 #### <a name="reorder-column-widths-in-list-view"></a>Neuanordnen der Spaltenbreiten in der Listenansicht
 Erhöhen oder verringern Sie die Spaltenbreiten in der Listenansicht, indem Sie mit der Maus auf die Spaltenüberschrift zeigen.
 
-#### <a name="select-data-factory"></a>Data Factory auswählen
-Zeigen Sie auf das Symbol „Data Factory“ im oberen linken Bereich. Klicken Sie auf das Pfeilsymbol, um eine Liste der Azure-Abonnements und Data Factorys anzuzeigen, die Sie überwachen können.
+#### <a name="user-properties"></a>Benutzereigenschaften
 
-![Data Factory auswählen](media/monitor-visually/select-datafactory.png)
+Sie können jede Pipelineaktivitätseigenschaft als Benutzereigenschaft heraufstufen, sodass sie zu einer Entität wird, die Sie überwachen können. Sie können z.B. die Eigenschaften **Quelle** und **Ziel** der Kopieraktivität in der Pipeline als Benutzereigenschaften heraufstufen. Sie können auch **Automatisch generieren** zum Generieren der Benutzereigenschaften **Quelle** und **Ziel** für eine Kopieraktivität auswählen.
+
+![Erstellen von Benutzereigenschaften](media/monitor-visually/monitor-user-properties-image1.png)
+
+> [!NOTE]
+> Sie können nur bis zu 5 Pipelineaktivitätseigenschaften zu Benutzereigenschaften heraufstufen.
+
+Nachdem Sie die Benutzereigenschaften erstellt haben, können Sie sie in den Überwachungslistenansichten überwachen. Ist die Quelle für die Kopieraktivität ein Tabellenname, können Sie den Namen der Quelltabelle als Spalte in der Listenansicht der Aktivitätsausführungen überwachen.
+
+![Aktivitätsausführungenliste ohne Benutzereigenschaften](media/monitor-visually/monitor-user-properties-image2.png)
+
+![Hinzufügen von Spalten für Benutzereigenschaften zur Aktivitätsausführungenliste](media/monitor-visually/monitor-user-properties-image3.png)
+
+![Aktivitätsausführungenliste mit Spalten für Benutzereigenschaften](media/monitor-visually/monitor-user-properties-image4.png)
 
 #### <a name="guided-tours"></a>Führungen
 Klicken Sie auf das Symbol „Informationen“ im unteren linken Bereich und dann auf „Führungen“, um eine ausführliche Anleitung zum Überwachen Ihrer Pipeline und Aktivitätsausführungen zu erhalten.

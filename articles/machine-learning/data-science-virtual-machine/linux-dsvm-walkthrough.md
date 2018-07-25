@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/16/2018
+ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 59d6b960a40910b8b2fe72f6c3b149608ee8b8ad
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d9b89329e2a9bdb26c9aa1d12bc181c61518dcb8
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798069"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39116162"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Data Science mit einer Linux Data Science Virtual Machine in Azure
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie mehrere häufige Data Science-Aufgaben mit der Linux Data Science-VM ausführen. Bei der Linux Data Science Virtual Machine (DSVM) handelt es sich um das Image eines virtuelles Computers, das unter Azure verfügbar ist und mit einer Sammlung von Tools vorinstalliert wird, die häufig für die Datenanalyse und Machine Learning verwendet werden. Die wichtigsten Softwarekomponenten sind im Thema [Bereitstellen der Linux Data Science Virtual Machine](linux-dsvm-intro.md) einzeln aufgeführt. Das VM-Image erleichtert Ihnen den Start, und für den Data Science-Vorgang sind nur wenige Minuten erforderlich, ohne dass die Tools einzeln installiert und konfiguriert werden müssen. Sie können die VM bei Bedarf leicht zentral hochskalieren und beenden, wenn sie nicht verwendet wird. Diese Ressource ist also sowohl flexibel als auch kosteneffizient.
@@ -42,7 +42,7 @@ Bevor Sie eine Linux Data Science Virtual Machine verwenden können, benötigen 
 Das Dataset [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) umfasst eine relativ kleine Gruppe von Daten, die nur 4601 Beispiele enthält. Dies ist eine gut geeignete Größe, um einige wichtige Features der Data Science-VM zu veranschaulichen, da der Umfang der Ressourcenanforderungen gering ist.
 
 > [!NOTE]
-> Diese exemplarische Vorgehensweise wurde auf einer Linux Data Science Virtual Machine der Größe „D2 v2“ erstellt. Eine DSVM dieser Größe reicht aus, um die Verfahren bei dieser Vorgehensweise zu bewältigen.
+> Diese exemplarische Vorgehensweise wurde auf einer Linux Data Science Virtual Machine (CentOS Edition) der Größe „D2 v2“ erstellt. Eine DSVM dieser Größe reicht aus, um die Verfahren bei dieser Vorgehensweise zu bewältigen.
 >
 >
 
@@ -77,12 +77,8 @@ Um Kopien der Codebeispiele zu erhalten, die in dieser exemplarischen Vorgehensw
 
     git clone https://github.com/Azure/Azure-MachineLearning-DataScience.git
 
-Öffnen Sie ein Terminalfenster, und starten Sie eine neue R-Sitzung mit der interaktiven R-Konsole.
+Öffnen Sie ein Terminalfenster, und starten Sie eine neue R-Sitzung mit der interaktiven R-Konsole, oder verwenden Sie die auf dem Computer vorinstallierte RStudio-Instanz.
 
-> [!NOTE]
-> Sie können RStudio auch für die folgenden Verfahren nutzen. Führen Sie zum Installieren von RStudio diesen Befehl an einer Terminaleingabeaufforderung aus: `./Desktop/DSVM\ tools/installRStudio.sh`
->
->
 
 Führen Sie Folgendes aus, um die Daten zu importieren und die Umgebung einzurichten:
 
@@ -193,6 +189,7 @@ Wählen Sie oben im Menü die Option **Authorization Tokens**, und notieren Sie 
 
 Laden Sie das **AzureML** -Paket, und legen Sie dann Werte der Variablen mit Ihrem Token und der Arbeitsbereich-ID in der R-Sitzung auf der DSVM fest:
 
+    if(!require("AzureML")) install.packages("AzureML")
     require(AzureML)
     wsAuth = "<authorization-token>"
     wsID = "<workspace-id>"
@@ -207,29 +204,28 @@ Wir vereinfachen das Modell, um die Implementierung dieser Demonstration zu erle
 
 Wir benötigen eine Vorhersagefunktion, bei der die Features als Eingabe verwendet und die vorhergesagten Werte zurückgegeben werden:
 
-    predictSpam <- function(char_freq_dollar, word_freq_remove, word_freq_hp) {
-        predictDF <- predict(model.rpart, data.frame("char_freq_dollar" = char_freq_dollar,
-        "word_freq_remove" = word_freq_remove, "word_freq_hp" = word_freq_hp))
-        return(colnames(predictDF)[apply(predictDF, 1, which.max)])
+    predictSpam <- function(newdata) {
+      predictDF <- predict(model.rpart, newdata = newdata)
+      return(colnames(predictDF)[apply(predictDF, 1, which.max)])
     }
+
 
 Veröffentlichen Sie die Funktion „predictSpam“ für AzureML mit der Funktion **publishWebService** :
 
-    spamWebService <- publishWebService("predictSpam",
-        "spamWebService",
-        list("char_freq_dollar"="float", "word_freq_remove"="float","word_freq_hp"="float"),
-        list("spam"="int"),
-        wsID, wsAuth)
+    spamWebService <- publishWebService(ws, fun = predictSpam, name="spamWebService", inputSchema = smallTrainSet, data.frame=TRUE)
+
 
 Bei dieser Funktion wird die Funktion **predictSpam** verwendet und ein Webdienst mit dem Namen **spamWebService** mit definierten Ein- und Ausgaben erstellt. Außerdem werden Informationen zum neuen Endpunkt zurückgegeben.
 
-Zeigen Sie Details zum veröffentlichten Webdienst, z.B. den zugehörigen API-Endpunkt und die Zugriffsschlüssel, mit dem folgenden Befehl an:
+Zeigen Sie Details zum zuletzt veröffentlichten Webdienst, z.B. den zugehörigen API-Endpunkt und die Zugriffsschlüssel, mit dem folgenden Befehl an:
 
-    spamWebService[[2]]
+    s<-tail(services(ws, name = "spamWebService"), 1)
+    ep <- endpoints(ws,s)
+    ep
 
 Probieren Sie dies für die ersten zehn Zeilen des Testsatzes aus:
 
-    consumeDataframe(spamWebService$endpoints[[1]]$PrimaryKey, spamWebService$endpoints[[1]]$ApiLocation, smallTestSet[1:10, 1:3])
+    consume(ep, smallTestSet[1:10, ])
 
 
 ## <a name="use-other-tools-available"></a>Verwenden von anderen verfügbaren Tools
@@ -285,7 +281,7 @@ Vorhersagen können Sie wie folgt erstellen:
 
 Um die Veröffentlichung eines AzureML-Endpunkts zu veranschaulichen, erstellen wir mit den drei Variablen ein einfacheres Modell als beim obigen Veröffentlichen des R-Modells.
 
-    X = data.ix[["char_freq_dollar", "word_freq_remove", "word_freq_hp"]]
+    X = data[["char_freq_dollar", "word_freq_remove", "word_freq_hp"]]
     y = data.ix[:, 57]
     clf = svm.SVC()
     clf.fit(X, y)

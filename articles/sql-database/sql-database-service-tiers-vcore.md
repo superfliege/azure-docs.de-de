@@ -1,20 +1,20 @@
 ---
 title: Azure SQL-Datenbank-Dienst – virtueller Kern | Microsoft-Dokumentation
-description: Mit dem V-Kern-basierte Kaufmodell (Vorschauversion) können Sie Compute- und Speicherressourcen einzeln skalieren, eine Leistung wie in Ihrer lokalen Umgebung erzielen und den Preis optimieren.
+description: Mit dem V-Kern-basierten Kaufmodell können Sie Compute- und Speicherressourcen einzeln skalieren, eine Leistung wie in Ihrer lokalen Umgebung erzielen und den Preis optimieren.
 services: sql-database
 author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/23/2018
+ms.date: 07/16/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: dec995d0b9177e4fb88c836c3ea0fef25a3b3ba3
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: d18076486704d5f03acd2253650762c3bd24b0af
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859934"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091491"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Auswählen eines V-Kern-Diensttarifs und von Compute-, Arbeitsspeicher-, Speicher- und E/A-Ressourcen
 
@@ -30,11 +30,9 @@ Die Unterschiede zwischen diesen beiden Tarifen werden in der folgenden Tabelle 
 |Speicher|Premium-Remotespeicher, 5 GB - 4 TB|Lokaler SSD-Speicher, 5 GB–4 TB|
 |E/A-Durchsatz (ungefähr)|500 IOPS pro V-Kern mit maximal 7.000 IOPS|5.000 IOPS pro V-Kern mit maximal 200.000 IOPS|
 |Verfügbarkeit|1 Replikat, keine Leseskalierung|3 Replikate, 1 [Leseskalierung](sql-database-read-scale-out.md), zonenredundante Hochverfügbarkeit|
-|Backups|RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage)|RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage)*|
+|Backups|RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage)|RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage)|
 |In-Memory|N/V|Unterstützt|
 |||
-
-\* Während der Vorschauphase kann der Aufbewahrungszeitraum nicht konfiguriert werden und ist auf sieben Tage festgelegt.
 
 > [!IMPORTANT]
 > Verwenden Sie das DTU-basierte Kaufmodell, wenn Sie weniger als einen V-Kern mit Computekapazität benötigen.
@@ -67,7 +65,7 @@ Der Speicher für Datenbanksicherungen wird zugeordnet, um die Funktionen „Poi
 
 ## <a name="azure-hybrid-use-benefit"></a>Azure-Vorteil bei Hybridnutzung
 
-In dem auf virtuellen Kernen basierenden Kaufmodell (Vorschauversion) können Sie Ihre vorhandenen Lizenzen mit dem [Azure-Hybridnutzungsvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) zu ermäßigten Preisen für die SQL-Datenbank austauschen. Bei diesem Azure-Vorteil können Sie Ihre lokalen SQL Server-Lizenzen nutzen, um für SQL-Datenbank bis zu 30% zu sparen, indem Sie Software Assurance für die lokalen SQL Server-Lizenzen verwenden.
+Beim V-Kern-basierten Kaufmodell können Sie Ihre vorhandenen Lizenzen gegen Rabattpreise für SQL-Datenbank eintauschen, indem Sie den [Azure-Hybridnutzungsvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) verwenden. Bei diesem Azure-Vorteil können Sie Ihre lokalen SQL Server-Lizenzen nutzen, um für SQL-Datenbank bis zu 30% zu sparen, indem Sie Software Assurance für die lokalen SQL Server-Lizenzen verwenden.
 
 ![Preise](./media/sql-database-service-tiers/pricing.png)
 

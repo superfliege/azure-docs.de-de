@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 07/16/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 5de8aebb6ffc5763dd7f0b8852c31923914e4c55
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6952e26898e4ff27dd7c2f6780dcb9b8b224460b
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645530"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092544"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Strategien für die Notfallwiederherstellung für Anwendungen mit Pools für elastische SQL-Datenbank-Instanzen
 Im Laufe der Jahre haben wir gelernt, dass Clouddienste nicht narrensicher sind und dass es zu schwerwiegenden Vorfällen kommen kann. SQL-Datenbank verfügt über verschiedene Funktionen, mit denen für die geschäftliche Kontinuität Ihrer Anwendung gesorgt werden kann, wenn Vorfälle dieser Art auftreten. [Pools für elastische Datenbanken](sql-database-elastic-pool.md) und einzelne Datenbanken unterstützen die gleichen Funktionen für die Notfallwiederherstellung. In diesem Artikel werden mehrere Notfallwiederherstellungsstrategien für Pools für elastische Datenbanken beschrieben, bei denen diese SQL-Datenbankfunktionen zur Sicherstellung der geschäftlichen Kontinuität verwendet werden.
@@ -27,12 +27,12 @@ In diesem Artikel wird das folgende kanonische SaaS-ISV-Anwendungsmuster verwend
 In diesem Artikel werden Strategien für die Notfallwiederherstellung anhand mehrerer Szenarios besprochen, angefangen bei kostenbewussten Anwendungen bis hin zu Anwendungen mit strengen Verfügbarkeitsanforderungen.
 
 > [!NOTE]
-> Wenn Sie Premium-Datenbanken, unternehmenskritische Datenbanken (Vorschauversion) oder Pools für elastische Datenbanken verwenden, können Sie sie resistent gegenüber regionalen Ausfällen machen, indem Sie sie auf die Konfiguration der zonenredundanten Bereitstellung umstellen (derzeit in der Vorschauphase). Informationen finden Sie unter [Hochverfügbarkeit und Azure SQL-Datenbank](sql-database-high-availability.md).
+> Wenn Sie Premium-Datenbanken, unternehmenskritische Datenbanken oder Pools für elastische Datenbanken verwenden, können Sie sie resistent gegenüber regionalen Ausfällen machen, indem Sie sie auf die Konfiguration der zonenredundanten Bereitstellung umstellen. Informationen finden Sie unter [Hochverfügbarkeit und Azure SQL-Datenbank](sql-database-high-availability.md).
 
 ## <a name="scenario-1-cost-sensitive-startup"></a>Szenario 1: Kostenbewusste Anwendung für Startup-Unternehmen
 <i>Wir sind ein Startup-Unternehmen, bei dem stark auf die Kosten geachtet wird.  Wir möchten die Bereitstellung und Verwaltung der Anwendung vereinfachen und einen eingeschränkten Servicelevel (SLA) für einzelne Kunden verwenden. Es soll aber sichergestellt sein, dass die Anwendung als Ganzes niemals offline ist.</i>
 
-Um die Anforderung zur Vereinfachung zu erfüllen, stellen Sie alle Mandantendatenbanken in einem Pool für elastische Datenbanken in der Azure-Region Ihrer Wahl und die Verwaltungsdatenbanken als georeplizierte einzelne Datenbanken bereit. Verwenden Sie für die Notfallwiederherstellung von Mandanten die Geowiederherstellung, für die keine zusätzlichen Kosten anfallen. Um die Verfügbarkeit der Verwaltungsdatenbanken sicherzustellen, sollten sie mithilfe einer Gruppe für automatisches Failover in eine andere Region georepliziert werden (in der Vorschau) (Schritt 1). Die laufenden Kosten der Notfallwiederherstellungskonfiguration in diesem Szenario entsprechen den Gesamtkosten der sekundären Datenbanken. Diese Konfiguration ist im nächsten Diagramm dargestellt.
+Um die Anforderung zur Vereinfachung zu erfüllen, stellen Sie alle Mandantendatenbanken in einem Pool für elastische Datenbanken in der Azure-Region Ihrer Wahl und die Verwaltungsdatenbanken als georeplizierte einzelne Datenbanken bereit. Verwenden Sie für die Notfallwiederherstellung von Mandanten die Geowiederherstellung, für die keine zusätzlichen Kosten anfallen. Um die Verfügbarkeit der Verwaltungsdatenbanken sicherzustellen, sollten sie mithilfe einer Gruppe für automatisches Failover in eine andere Region georepliziert werden (Schritt 1). Die laufenden Kosten der Notfallwiederherstellungskonfiguration in diesem Szenario entsprechen den Gesamtkosten der sekundären Datenbanken. Diese Konfiguration ist im nächsten Diagramm dargestellt.
 
 ![Abbildung 1](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-1.png)
 

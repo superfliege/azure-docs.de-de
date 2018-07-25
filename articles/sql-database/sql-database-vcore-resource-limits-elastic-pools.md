@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 01f213c7cf5f6be3ef84601a50bb4455422faf22
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 5503ffaf8a429221a0a0730fc999cb7a90f43785
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311184"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092119"
 ---
-# <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools-preview"></a>Limits des auf virtuellen Kernen basierenden Kaufmodells für Pools für elastische Datenbanken in Azure SQL-Datenbank (Vorschauversion)
+# <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Limits des V-Kern-basierten Kaufmodells für Pools für elastische Datenbanken in Azure SQL-Datenbank
 
 Dieser Artikel enthält ausführliche Angaben zu Ressourcenlimits für Pools für elastische Datenbanken und in einem Pool zusammengefasste Datenbanken in Azure SQL-Datenbank mit dem auf virtuellen Kernen basierenden Kaufmodell.
 
@@ -38,7 +38,7 @@ Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für ela
 |Hardwaregeneration|4|4|4|4|4|4|
 |V-Kerne|1|2|4|8|16|24|
 |Arbeitsspeicher (GB)|7|14|28|56|112|168|
-|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
+|Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|JA|
 |In-Memory-OLTP-Speicher (GB)|N/V|N/V|N/V|N/V|N/V|N/V|
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |Maximale Datengröße (GB)|512|756|1536|2048|3.584|4096|
@@ -62,7 +62,7 @@ Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für ela
 |Hardwaregeneration|5|5|5|5|5|5|5|5|
 |V-Kerne|2|4|8|16|24|32|40|80|
 |Arbeitsspeicher (GB)|11|22|44|88|132|176|220|440|
-|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
+|Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|Ja|Ja|JA|
 |In-Memory-OLTP-Speicher (GB)|N/V|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |Maximale Datengröße (GB)|512|756|1536|2048|3072|4096|4096|4096|
@@ -88,7 +88,7 @@ Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für ela
 |Hardwaregeneration|4|4|4|4|4|4|
 |V-Kerne|1|2|4|8|16|24|
 |Arbeitsspeicher (GB)|7|14|28|56|112|168|
-|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
+|Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|JA|
 |In-Memory-OLTP-Speicher (GB)|1|2|4|8|20|36|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |Maximale Datengröße (GB)|1024|1024|1024|1024|1024|1024|
@@ -102,7 +102,7 @@ Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für ela
 |Minimale/maximale click-stop-Ereignisse in Pools für elastische Datenbanken|N/V|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|
 |Anzahl von Replikaten|3|3|3|3|3|3|
 |Multi-AZ|N/V|N/V|N/V|N/V|N/V|N/V|
-|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|
+|Horizontale Leseskalierung|JA|Ja|Ja|Ja|Ja|JA|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 |||
 
@@ -112,7 +112,7 @@ Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für ela
 |Hardwaregeneration|5|5|5|5|5|5|5|5|
 |V-Kerne|2|4|8|16|24|32|40|80|
 |Arbeitsspeicher (GB)|11|22|44|88|132|176|220|440|
-|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
+|Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|Ja|Ja|JA|
 |In-Memory-OLTP-Speicher (GB)|1,571|3,142|6,284|15,768|25,252|37,936|52,22|131,64|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
@@ -126,7 +126,7 @@ Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für ela
 |Minimale/maximale click-stop-Ereignisse in Pools für elastische Datenbanken|N/V|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, 0,5, 1, 2, 4, 8, 16, 24, 32|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 40|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
 |Anzahl von Replikaten|3|3|3|3|3|3|3|3|
 |Multi-AZ|N/V|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
-|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
+|Horizontale Leseskalierung|JA|Ja|Ja|Ja|Ja|Ja|Ja|JA|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 |||
 

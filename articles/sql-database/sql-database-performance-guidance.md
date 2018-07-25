@@ -7,21 +7,21 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 2956dfab3b9c1e6e8de54648dae9d2be99788ac2
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 630ef13fbd64fac8c2a2a31e4174552e64aaa789
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309213"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092646"
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Optimieren der Leistung bei Azure SQL-Datenbank
 
 Azure SQL-Datenbank bietet [Empfehlungen](sql-database-advisor.md), mit denen Sie die Leistung Ihrer Datenbank verbessern können. Wahlweise können Sie die [automatische Anpassung an Ihre Anwendung](sql-database-automatic-tuning.md) durch Azure SQL-Datenbank veranlassen und Änderungen anwenden, die die Leistung Ihres Workloads verbessern.
 
 Wenn Sie keine entsprechenden Empfehlungen erhalten und trotzdem Leistungsprobleme auftreten, können Sie die Leistung anhand der folgenden Methoden eventuell verbessern:
-- Erhöhen Sie die Diensttarife in Ihrem [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) oder in Ihrem [V-Kern-basierten Kaufmodell (Vorschauversion)](sql-database-service-tiers-vcore.md), um weitere Ressourcen für Ihre Datenbank bereitzustellen.
+- Erhöhen Sie die Dienstebenen in Ihrem [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) oder in Ihrem [V-Kern-basierten Kaufmodell](sql-database-service-tiers-vcore.md), um weitere Ressourcen für Ihre Datenbank bereitzustellen.
 - Optimieren Sie Ihre Anwendung, und wenden Sie einige Best Practices zur Verbesserung der Leistung an. 
 - Optimieren Sie die Datenbank durch die Änderung von Indizes und Abfragen, um ein effizienteres Arbeiten mit Daten sicherzustellen.
 
@@ -29,7 +29,7 @@ Dies sind manuelle Methoden, da Sie entscheiden müssen, wie viele Ressourcen Si
 
 ## <a name="increasing-performance-tier-of-your-database"></a>Erhöhen der Leistungsstufe Ihrer Datenbank
 
-Azure SQL-Datenbank bietet zwei Kaufmodelle zur Auswahl, ein [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und ein [V-Kern-basiertes Kaufmodell (Vorschauversion)](sql-database-service-tiers-vcore.md). Auf jeder Dienstebene sind die Ressourcen, die von der SQL-Datenbank genutzt werden können, streng voneinander isoliert, und es wird eine vorhersagbare Leistung für die Dienstebene sichergestellt. In diesem Artikel erhalten Sie nützliche Informationen zum Auswählen der Dienstebene für Ihre Anwendung. Außerdem werden Möglichkeiten zum Optimieren Ihrer Anwendung beschrieben, um mit Azure SQL-Datenbank das beste Ergebnis zu erzielen.
+Azure SQL-Datenbank bietet zwei Kaufmodelle zur Auswahl, ein [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und ein [V-Kern-basiertes Kaufmodell](sql-database-service-tiers-vcore.md). Auf jeder Dienstebene sind die Ressourcen, die von der SQL-Datenbank genutzt werden können, streng voneinander isoliert, und es wird eine vorhersagbare Leistung für die Dienstebene sichergestellt. In diesem Artikel erhalten Sie nützliche Informationen zum Auswählen der Dienstebene für Ihre Anwendung. Außerdem werden Möglichkeiten zum Optimieren Ihrer Anwendung beschrieben, um mit Azure SQL-Datenbank das beste Ergebnis zu erzielen.
 
 > [!NOTE]
 > In diesem Artikel geht es schwerpunktmäßig um die Verbesserung der Leistung für Einzeldatenbanken in Azure SQL-Datenbank. Informationen zur Verbesserung der Leistung für Pools für elastische Datenbanken finden Sie unter [Wo sollte ein Pool für elastische Datenbanken verwendet werden?](sql-database-elastic-pool-guidance.md). Beachten Sie aber, dass Sie viele Optimierungsempfehlungen in diesem Artikel auf Datenbanken in einem Pool für elastische Datenbanken anwenden und ähnliche Leistungsvorteile erzielen können.
@@ -40,7 +40,7 @@ Azure SQL-Datenbank bietet zwei Kaufmodelle zur Auswahl, ein [DTU-basiertes Kauf
   * **Sie verfügen über eine Datenbank mit nur einem Benutzer**. Für Anwendungen, bei denen einer Datenbank nur ein Benutzer zugeordnet wird, bestehen in der Regel keine hohen Anforderungen an Parallelität und Leistung. Diese Anwendungen sind Kandidaten für die Dienstebene Basic.
 * **Standard**: Der Diensttarif Standard bietet eine verbesserte Leistungsvorhersagbarkeit und gute Leistung, die für Datenbanken mit mehreren gleichzeitigen Anforderungen konzipiert sind, z.B. Arbeitsgruppen und Webanwendungen. Wenn Sie eine Datenbank der Dienstebene Standard wählen, können Sie die Größe Ihrer Datenbankanwendung basierend auf einer minutengenauen vorhersagbaren Leistung festlegen.
   * **Ihre Datenbank verfügt über mehrere gleichzeitige Anforderungen**. Anwendungen, die für mehr als einen Benutzer gleichzeitig bestimmt sind, benötigen normalerweise höhere Leistungsebenen. Gute Kandidaten für den Diensttarif Standard sind beispielsweise Arbeitsgruppen- oder Webanwendungen, die niedrige bis mittelhohe Anforderungen an den E/A-Datenverkehr stellen und mehrere gleichzeitige Abfragen unterstützen.
-* **Premium**: Der Premium-Diensttarif bietet für jede Datenbank vom Typ Premium oder Unternehmenskritisch (Vorschauversion) eine sekundengenau vorhersagbare Leistung. Wenn Sie die Dienstebene Premium wählen, können Sie die Größe Ihrer Datenbankanwendung basierend auf der Spitzenlast der Datenbank festlegen. Bei diesem Plan werden Fälle verhindert, in denen die Leistungsvarianz bewirkt, dass kleinere Abfragen bei latenzanfälligen Vorgängen länger als erwartet dauern. Dieses Modell kann für eine starke Vereinfachung bei Entwicklungs- und Produktprüfungszyklen für Anwendungen sorgen, bei denen in Bezug auf Ressourcenspitzenlast, Leistungsvarianz oder Abfragewartezeit hohe Anforderungen bestehen. Für die meisten Anwendungsfälle der Dienstebene Premium gelten die folgenden Merkmale bzw. Teile dieser Merkmale:
+* **Premium**: Die Premium-Dienstebene bietet für jede Datenbank vom Typ „Premium“ oder „Unternehmenskritisch“ eine sekundengenau vorhersagbare Leistung. Wenn Sie die Dienstebene Premium wählen, können Sie die Größe Ihrer Datenbankanwendung basierend auf der Spitzenlast der Datenbank festlegen. Bei diesem Plan werden Fälle verhindert, in denen die Leistungsvarianz bewirkt, dass kleinere Abfragen bei latenzanfälligen Vorgängen länger als erwartet dauern. Dieses Modell kann für eine starke Vereinfachung bei Entwicklungs- und Produktprüfungszyklen für Anwendungen sorgen, bei denen in Bezug auf Ressourcenspitzenlast, Leistungsvarianz oder Abfragewartezeit hohe Anforderungen bestehen. Für die meisten Anwendungsfälle der Dienstebene Premium gelten die folgenden Merkmale bzw. Teile dieser Merkmale:
   * **Hohe Spitzenlast**. Eine Anwendung, für die zum Durchführen der Vorgänge hohe Werte in Bezug auf CPU, Arbeitsspeicher oder Eingabe/Ausgabe (E/A) erforderlich sind, wird eine dedizierte, hohe Leistungsebene benötigt. Falls ein Datenbankvorgang über einen längeren Zeitraum mehrere CPU-Kerne nutzt, ist dies beispielsweise ein Kandidat für die Dienstebene Premium.
   * **Hohe Zahl von gleichzeitigen Anforderungen**: Einige Datenbankanwendungen verarbeiten viele gleichzeitige Anforderungen, z.B. bei einer Website mit hohem Datenverkehrsaufkommen. Für die Dienstebenen Basic und Standard gelten bei der Anzahl von gleichzeitigen Anforderungen bestimmte Einschränkungen pro Datenbank. Für Anwendungen, die mehr Verbindungen benötigen, muss eine angemessene Reservierungsgröße gewählt werden, um die maximale Anzahl von erforderlichen Anforderungen verarbeiten zu können.
   * **Niedrige Latenz**. Für einige Anwendungen muss eine Reaktion der Datenbank in kürzester Zeit garantiert werden. Wenn eine bestimmte gespeicherte Prozedur im Rahmen eines größeren Kundenvorgangs aufgerufen wird, kann unter Umständen die Anforderung bestehen, dass die Rückgabe für diesen Aufruf in 99 Prozent der Fälle innerhalb von maximal 20 Millisekunden erfolgt. Diese Art von Anwendung profitiert von der Dienstebene Premium, da sichergestellt ist, dass genügend erforderliche Rechenleistung verfügbar ist.
@@ -272,7 +272,7 @@ Einige Datenbankanwendungen verfügen über Workloads mit einer hohen Zahl von L
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu den DTU-basierten Diensttarifen finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md).
-* Weitere Informationen zu den V-Kern-basierten Diensttarifen finden Sie unter [V-Kern-basiertes Kaufmodell (Vorschauversion)](sql-database-service-tiers-vcore.md).
+* Weitere Informationen zu den V-Kern-basierten Dienstebenen finden Sie unter [V-Kern-basiertes Kaufmodell](sql-database-service-tiers-vcore.md).
 * Weitere Informationen zu Pools für elastische Datenbanken finden Sie unter [Was ist ein Pool für elastische Azure-Datenbanken?](sql-database-elastic-pool.md).
 * Informationen zur Leistung und zu Pools für elastische Datenbanken finden Sie unter [Wann ein Pool für elastische Datenbanken in Frage kommt](sql-database-elastic-pool-guidance.md).
 

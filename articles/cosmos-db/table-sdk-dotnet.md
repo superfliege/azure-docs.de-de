@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/26/2018
 ms.author: rnagpal
-ms.openlocfilehash: 391948af7fe00e0a5e6171d5322c09c05fcd1cc3
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 2fba67b247ad0b53e11ca012969163a68013e82f
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798473"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126710"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB-Tabellen-.NET-API: Herunterladen und Versionshinweise
 > [!div class="op_single_selector"]
@@ -37,6 +37,10 @@ ms.locfileid: "34798473"
 >
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="a-name113113"></a><a name="1.1.3"/>1.1.3
+* NuGet-Paketabhängigkeiten von Microsoft.Azure.Storage.Common und Microsoft.Azure.DocumentDB korrigiert.
+* Fehlerkorrekturen bei der Tabellenserialisierung, wenn JsonConvert.DefaultSettings konfiguriert ist.
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
 * Überprüfung falsch formatierter ETAGs im Direktmodus wurde hinzugefügt.
@@ -65,6 +69,7 @@ Anforderungen an Azure Cosmos DB mithilfe eines deaktivierten SDK werden vom Die
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.1.3](#1.1.3) |17. Juli 2018|--- |
 | [1.1.1](#1.1.1) |26. März 2018|--- |
 | [1.1.0](#1.1.0) |21. Februar 2018|--- |
 | [1.0.0](#1.0.0) |15. November 2017|--- |

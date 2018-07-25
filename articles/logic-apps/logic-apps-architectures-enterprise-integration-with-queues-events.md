@@ -1,6 +1,6 @@
 ---
-title: Azure Integration Services-Referenzarchitektur
-description: Referenzarchitektur, die zeigt, wie Sie eine ein Muster einer Unternehmensintegration mit Logic Apps, API Management, Service Bus und Event Grid implementieren.
+title: Azure Integration Services – Referenzarchitektur für Unternehmensintegration
+description: Beschreibt die Referenzarchitektur, die zeigt, wie Sie ein Muster einer Unternehmensintegration mit Logic Apps, API Management, Service Bus und Event Grid implementieren.
 author: mattfarm
 manager: jonfan
 editor: ''
@@ -14,118 +14,119 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: db3350b3c70f6e6f35949e8423334061849b7b37
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a86c4c4227795a712dd51ace1fbefe9d2b96518a
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232034"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39116111"
 ---
-# <a name="enterprise-integration-with-queues-and-events-reference-architecture"></a>Unternehmensintegration mit Warteschlangen und Ereignissen: Referenzarchitektur
+# <a name="reference-architecture-enterprise-integration-with-queues-and-events"></a>Referenzarchitektur: Unternehmensintegration mit Warteschlangen und Ereignissen
 
-## <a name="overview"></a>Übersicht
-
-Diese Referenzarchitektur zeigt eine Reihe bewährter Methoden für eine Integrationsanwendung, die Azure Integration Services verwendet. Diese Architektur kann als Grundlage für viele verschiedene Anwendungsmuster dienen, die HTTP-APIs, Workflow und Orchestrierung erfordern.
-
-*Es gibt viele mögliche Anwendungen der Integrationstechnologie, von einer einfachen Punkt-zu-Punkt-Anwendung bis hin zu einem vollständigen Unternehmensservicebus. Diese Architekturserie legt die wiederverwendbaren Komponenten für die Erstellung jeder beliebigen Integrationsanwendung fest – daher sollten Architekten die Komponenten berücksichtigen, die sie für ihre Anwendungen und Infrastruktur benötigen.*
+Die folgende Referenzarchitektur zeigt eine Reihe bewährter Methoden, die Sie für eine Integrationsanwendung einsetzen können, die Azure Integration Services verwendet. Die Architektur kann als Grundlage für viele verschiedene Anwendungsmuster dienen, die HTTP-APIs, Workflow und Orchestrierung erfordern.
 
 ![Architekturdiagramm – Unternehmensintegration mit Warteschlangen und Ereignissen](media/logic-apps-architectures-enterprise-integration-with-queues-events/integr_queues_events_arch_diagram.png)
 
+*Es gibt viele mögliche Anwendungen für die Integrationstechnologien. Diese reichen von einer einfachen Punkt-zu-Punkt-Anwendung bis hin zu einer vollständigen Enterprise Azure Service Bus-Anwendung. Die Architekturreihe beschreibt die wiederverwendbaren Komponenten, die für die Erstellung einer generischen Integrationsanwendung genutzt werden können. Architekten sollten überlegen, welche Komponenten sie für ihre Anwendung und Infrastruktur implementieren müssen.*
+
 ## <a name="architecture"></a>Architecture
 
-Diese Architektur basiert auf der in [Einfache Unternehmensintegration](logic-apps-architectures-simple-enterprise-integration.md) gezeigten Architektur. Sie enthält die folgenden Komponenten:
+Diese Architektur *basiert auf* der Architektur der [einfachen Unternehmensintegration](logic-apps-architectures-simple-enterprise-integration.md). Hier gelten auch die [Empfehlungen für die einfache Unternehmensarchitektur](logic-apps-architectures-simple-enterprise-integration.md#recommendations). Sie sind in den [Empfehlungen](#recommendations) in diesem Artikel der Kürze wegen weggelassen. 
 
-- Ressourcengruppe: Eine Ressourcengruppe ist ein logischer Container für Azure-Ressourcen.
-- Azure API Management: Azure API Management ist eine vollständig verwaltete Plattform zur Veröffentlichung, Sicherung und Transformation von HTTP-APIs.
-- Azure API Management-Entwicklerportal: Jede Instanz von Azure API Management verfügt über ein Entwicklerportal, das Zugriff auf Dokumentation, Codebeispiele und Testfunktionen für die API bietet.
-- Azur Logic Apps: Bei Logic Apps handelt es sich um eine serverlose Plattform, die Unternehmensworkflow und -integration unterstützt.
-- Connectors: Connectors werden von Logic Apps verwendet, um eine Verbindung zu häufig verwendeten Diensten herzustellen. Logic Apps verfügt bereits über hunderte von verschiedenen Connectors, aber es kann auch ein benutzerdefinierter Connector verwendet werden.
-- Azure Service Bus: Service Bus bietet sicheres und zuverlässiges Messaging. Mit Messaging können Anwendungen voneinander entkoppelt und in andere nachrichtenbasierte Systeme integriert werden.
-- Azure Event Grid: Event Grid ist eine serverlose Plattform zur Veröffentlichung und Bereitstellung von Anwendungsereignissen.
-- IP-Adresse: Der Azure API Management-Dienst weist eine feste öffentliche IP-Adresse und einen Domänennamen auf. Der Domänenname ist eine Unterdomäne von azure-api.net, wie z.B. contoso. azure-api.net: Logic Apps und Service Bus haben auch eine öffentliche IP-Adresse; in dieser Architektur beschränken wir jedoch den Zugriff auf die Endpunkte von Logic Apps auf die IP-Adresse von API Management (aus Sicherheitsgründen). Aufrufe an Service Bus werden durch eine Shared Access Signature (SAS) gesichert.
-- Azure DNS: Azure DNS ist ein Hostingdienst für DNS-Domänen, der die Namensauflösung mithilfe der Microsoft Azure-Infrastruktur durchführt. Durch das Hosten Ihrer Domänen in Azure können Sie Ihre DNS-Einträge mithilfe der gleichen Anmeldeinformationen, APIs, Tools und Abrechnung wie für die anderen Azure-Dienste verwalten. Erstellen Sie zur Verwendung eines benutzerdefinierten Domänennamens (etwa contoso.com) DNS-Einträge, die den benutzerdefinierten Domänennamen der IP-Adresse zuordnen. Weitere Informationen finden Sie unter „Konfigurieren eines benutzerdefinierten Domänennamens in Azure API Management“.
-- Azure Active Directory (Azure AD): Verwenden Sie Azure AD oder einen anderen Identitätsanbieter für die Authentifizierung. Azure AD bietet Authentifizierung für den Zugriff auf API-Endpunkte (durch Übergabe eines JSON Web Token für API Management zur Überprüfung) und kann den Zugriff auf das API Management-Entwicklerportal sichern (nur Standard- & Premium-Tarife).
+Die Architektur besteht aus den folgenden Komponenten:
 
-Bei Vorgängen weist diese Architektur einige grundlegende Muster auf:
+- **Ressourcengruppe**. Eine [Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) ist ein logischer Container für Azure-Ressourcen.
+- **Azure API Management:** [API Management](https://docs.microsoft.com/azure/api-management/) ist eine vollständig verwaltete Plattform, die zum Veröffentlichen, Schützen und Transformieren von HTTP-APIs verwendet wird.
+- **Azure API Management-Entwicklerportal**. Jede Instanz von Azure API Management kann auf das [Entwicklerportal](https://docs.microsoft.com/azure/api-management/api-management-customize-styles) zugreifen. Über das API Management-Entwicklerportal erhalten Sie Zugriff auf Dokumentation und Codebeispiele. Im Entwicklerportal können Sie zudem APIs testen.
+- **Azur Logic Apps**. Bei [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview) handelt es sich um eine serverlose Plattform, die für den Unternehmensworkflow und die -integration verwendet wird.
+- **Connectors**. Logic Apps verwendet [Connectors](https://docs.microsoft.com/azure/connectors/apis-list), um eine Verbindung zu häufig verwendeten Diensten herzustellen. Logic Apps verfügt bereits über hunderte von verschiedenen Connectors, aber Sie können auch einen benutzerdefinierten Connector erstellen.
+- **Azure Service Bus** [Service Bus](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview) bietet sicheres und zuverlässiges Messaging. Mit Messaging können Anwendungen entkoppelt und in andere nachrichtenbasierte Systeme integriert werden.
+- **Azure Event Grid**. [Event Grid](https://docs.microsoft.com/azure/event-grid/overview) ist eine serverlose Plattform zur Veröffentlichung und Bereitstellung von Anwendungsereignissen.
+- **IP-Adresse**. Der Azure API Management-Dienst weist eine feste öffentliche [IP-Adresse](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm) und einen Domänennamen auf. Der Domänenname ist eine Unterdomäne von azure-api.net, wie z.B. contoso. azure-api.net: Logic Apps und Service Bus haben auch eine öffentliche IP-Adresse. In dieser Architektur beschränken wir jedoch den Aufruf von Endpunkten von Logic Apps ausschließlich auf die IP-Adresse von API Management (aus Sicherheitsgründen). Aufrufe an Service Bus werden durch eine Shared Access Signature (SAS) gesichert.
+- **Azure DNS:** [Azure DNS](https://docs.microsoft.com/azure/dns/) ist ein Hostingdienst für DNS-Domänen. Azure DNS bietet eine Namensauflösung mithilfe der Microsoft Azure-Infrastruktur. Durch das Hosten Ihrer Domänen in Azure können Sie Ihre DNS-Einträge mithilfe der gleichen Anmeldeinformationen, APIs, Tools und Abrechnung wie für die anderen Azure-Dienste verwalten. Erstellen Sie zur Verwendung eines benutzerdefinierten Domänennamens (etwa contoso.com) DNS-Einträge, die den benutzerdefinierten Domänennamen der IP-Adresse zuordnen. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens in API Management](https://docs.microsoft.com/en-us/azure/api-management/configure-custom-domain).
+- **Azure Active Directory (Azure AD):** Verwenden Sie [Azure AD](https://docs.microsoft.com/azure/active-directory/) oder einen anderen Identitätsanbieter für die Authentifizierung. Azure AD bietet die Authentifizierung für den Zugriff auf API-Endpunkte durch die Weitergabe eines [JSON Web Token für API Management](https://docs.microsoft.com/azure/api-management/policies/authorize-request-based-on-jwt-claims) zur Validierung. Azure AD ermöglicht einen sicheren Zugriff auf das API Management-Entwicklerportal (nur Standard und Premium-Tarife).
 
-1. Bestehende Back-End-HTTP-APIs werden über das API Management-Entwicklerportal veröffentlicht, sodass Entwickler (organisationsinterne, externe oder beide) Aufrufe dieser APIs in Anwendungen integrieren können.
-2. Verbund-APIs werden mithilfe von Logic Apps erstellt; sie orchestrieren Aufrufe an SAAS-Systeme, Azure-Dienste und alle APIs, die in API Management veröffentlicht werden. Die Logic Apps werden auch über das API Management-Entwicklerportal veröffentlicht.
-3. Anwendungen erhalten ein OAuth 2.0-Sicherheitstoken, das für den Zugriff auf eine API mit Azure Active Directory erforderlich ist.
-4. Azure API Management überprüft das Sicherheitstoken und leitet die Anforderung an die Back-End-API/Logik-App weiter.
-5. Service Bus-Warteschlangen dienen der Entkopplung von Anwendungsaktivitäten und der Glättung von Lastspitzen. Nachrichten werden durch Logic Apps, Anwendungen von Drittanbietern oder (nicht abgebildet) durch die Veröffentlichung der Warteschlange als HTTP-API über API Management hinzugefügt.
-6. Sobald Nachrichten zu einer Service Bus-Warteschlange hinzugefügt werden, wird ein Ereignis ausgelöst. Durch dieses Ereignis wird dann eine Logik-App ausgelöst, die diese Nachricht verarbeitet.
-7. Auf ähnliche Weise veröffentlichen andere Azure-Dienste (z.B. Blob Storage, Event Hub) Ereignisse in Event Grid. Diese lösen aus, dass Logic Apps das Ereignis empfängt und nachfolgende Aktionen ausführt.
+Beim Betrieb weist diese Architektur einige grundlegende Muster auf:
+
+* Vorhandene Back-End-HTTP-APIs werden über das API Management-Entwicklerportal veröffentlicht. Im Portal können Entwickler (entweder unternehmensintern, extern oder beides) Aufrufe dieser APIs in Anwendungen integrieren.
+* Verbund-APIs werden mithilfe von Logic Apps und der Orchestrierung von Aufrufen an Software-as-a-Service (SaaS)-Systeme, Azure-Dienste und alle APIs, die in API Management veröffentlicht werden, erstellt. [Logik-Apps](https://docs.microsoft.com/azure/api-management/import-logic-app-as-api) werden auch über das API Management-Entwicklerportal veröffentlicht.
+- Anwendungen verwenden Azure AD, um [einen OAuth 2.0-Sicherheitstoken zu erwerben](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad), das für den Zugriff auf eine API erforderlich ist.
+- API Management [überprüft das Sicherheitstoken](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad) und leitet die Anforderung dann an die Back-End-API oder die Logik-App weiter.
+- Service Bus-Warteschlangen dienen der [Entkopplung](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-overview) von Anwendungsaktivitäten zur [Glättung von Lastspitzen](https://docs.microsoft.com/azure/architecture/patterns/queue-based-load-leveling). Nachrichten werden durch Logik-Apps, Anwendungen von Drittanbietern oder (nicht abgebildet) durch die Veröffentlichung der Warteschlange als HTTP-API über API Management hinzugefügt.
+- Sobald Nachrichten zu einer Service Bus-Warteschlange hinzugefügt werden, wird ein Ereignis ausgelöst. Durch das Ereignis wird eine Logik-App ausgelöst. Diese verarbeitet dann die Nachricht.
+- Andere Azure-Dienste (z.B. Azure Blob Storage und Azure Event Hubs) veröffentlichen ebenfalls Ereignisse in Event Grid. Diese Dienste lösen aus, dass Logic Apps das Ereignis empfängt und dann nachfolgende Aktionen ausführt.
 
 ## <a name="recommendations"></a>Empfehlungen
 
-Ihre Anforderungen können von der hier beschriebenen Architektur abweichen. Verwenden Sie die Empfehlungen in diesem Abschnitt als Ausgangspunkt.
+Ihre spezifischen Anforderungen können von der in diesem Artikel beschriebenen generischen Architektur abweichen. Verwenden Sie die Empfehlungen in diesem Abschnitt als Ausgangspunkt.
 
 ### <a name="service-bus-tier"></a>Service Bus-Tarif
 
-Verwenden Sie den Service Bus-Premium-Tarif, da dieser derzeit Benachrichtigungen über Event Grid unterstützt. (Die Unterstützung für alle Tarife wird erwartet.) Siehe [Service Bus-Preise](https://azure.microsoft.com/pricing/details/service-bus/).
+Verwenden Sie den Service Bus Premium-Tarif. Der Premium-Tarif unterstützt Event Grid-Benachrichtigungen. Weitere Informationen finden Sie unter [Service Bus – Preise](https://azure.microsoft.com/pricing/details/service-bus/).
 
 ### <a name="event-grid-pricing"></a>Event Grid-Preise
 
-Event Grid arbeitet mit einem serverlosen Modell – die Abrechnung erfolgt basierend auf der Anzahl von Vorgängen (Ereignisausführung). Weitere Informationen finden Sie unter [Event Grid-Preise](https://azure.microsoft.com/pricing/details/event-grid/). Für Event Grid gibt es derzeit keine Überlegungen zu den Tarifen.
+Event Grid verwendet ein serverloses Modell. Die Abrechnung erfolgt auf Basis der Anzahl der Vorgänge (Ereignisausführung). Weitere Informationen finden Sie unter [Event Grid-Preise](https://azure.microsoft.com/pricing/details/event-grid/). Für Event Grid gibt es derzeit keine Überlegungen zu den Tarifen.
 
-### <a name="use-peeklock-when-consuming-service-bus-messages"></a>Nutzen von Service Bus-Nachrichten mit PeekLock
+### <a name="use-peeklock-to-consume-service-bus-messages"></a>Nutzen von PeekLock für Service Bus-Nachrichten
 
-Beim Erstellen von Logik-Apps zur Nutzung von Service Bus-Nachrichten verwenden Sie [PeekLock](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md#queues) innerhalb der Logik-App, um auf eine Gruppe von Nachrichten zuzugreifen. Die Logik-App kann dann Schritte ausführen, um die einzelnen Nachrichten zu überprüfen, bevor sie abgeschlossen oder verworfen werden. Dieser Ansatz schützt vor versehentlichem Nachrichtenverlust.
+Beim Erstellen von Logik-Apps zur Nutzung von Service Bus-Nachrichten verwenden Sie [PeekLock](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md#queues) innerhalb der Logik-App, um auf eine Gruppe von Nachrichten zuzugreifen. Mit PeekLock kann die Logik-App dann Schritte ausführen, um die einzelnen Nachrichten zu überprüfen, bevor sie abgeschlossen oder verworfen werden. Dieser Ansatz schützt vor versehentlichem Nachrichtenverlust.
 
 ### <a name="check-for-multiple-objects-when-an-event-grid-trigger-fires"></a>Überprüfung auf mehrere Objekte beim Auslösen eines Event Grid-Triggers
 
-Wenn ein Event Grid-Trigger ausgelöst wird, was bedeutet, dass „mindestens eins dieser Ereignisse aufgetreten ist“. Wenn Event Grid beispielsweise eine Logik-App bei einer Nachricht auslöst, die in einer Service-Bus-Warteschlange erscheint, wird in der Logik-App immer davon ausgegangen, dass eine oder mehrere Nachrichten zur Verarbeitung verfügbar sind.
+Wenn ein Event Grid-Ereignis ausgelöst wird, bedeutet das einfach, dass „mindestens eines dieser Dinge passiert ist“. Wenn Event Grid beispielsweise eine Logik-App bei einer Nachricht auslöst, die in einer Service Bus-Warteschlange erscheint, wird in der Logik-App immer davon ausgegangen, dass eine oder mehrere Nachrichten zur Verarbeitung verfügbar sind.
 
 ### <a name="region"></a>Region
 
 Stellen Sie API Management, Logic Apps und Service Bus in der gleichen Region bereit, um die Netzwerklatenz zu verringern. Wählen Sie grundsätzlich die Ihren Benutzern am nächsten gelegene Region aus.
 
-Die Ressourcengruppe weist ebenfalls eine Region auf, die angibt, wo die Metadaten der Bereitstellung gespeichert werden und von wo aus die Bereitstellungsvorlage ausgeführt wird. Implementieren Sie die Ressourcengruppe und ihre Ressourcen in der gleichen Region. Dies kann die Verfügbarkeit während der Bereitstellung verbessern.
+Die Ressourcengruppe weist ebenfalls eine Region auf. Diese gibt an, wo die Metadaten der Bereitstellung gespeichert werden und von wo aus die Bereitstellungsvorlage ausgeführt wird. Platzieren Sie die Ressourcengruppe und ihre Ressourcen in der gleichen Region, um die Verfügbarkeit während der Bereitstellung zu verbessern.
 
-## <a name="scalability-considerations"></a>Überlegungen zur Skalierbarkeit
+## <a name="scalability"></a>Skalierbarkeit
 
-Mit dem Premium-Tarif von Azure Service Bus lässt sich die Anzahl von Nachrichteneinheiten horizontal skalieren, um eine höhere Skalierbarkeit zu erreichen. Beim Premium-Tarif können 1, 2 oder 4 Nachrichteneinheiten vorhanden sein. Weitere Informationen zum Skalieren von Azure Service Bus finden Sie unter [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus-Messaging](../service-bus-messaging/service-bus-performance-improvements.md).
+Mit dem Service Bus-Premium-Tarif lässt sich die Anzahl von Nachrichteneinheiten horizontal skalieren, um eine höhere Skalierbarkeit zu erreichen. Premium-Tarif-Konfigurationen können über eine, zwei oder vier Nachrichteneinheiten verfügen. Weitere Informationen zum Skalieren von Service Bus finden Sie unter [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus Messaging](../service-bus-messaging/service-bus-performance-improvements.md).
 
-## <a name="availability-considerations"></a>Überlegungen zur Verfügbarkeit
+## <a name="availability"></a>Verfügbarkeit
 
-Zum Zeitpunkt der Erstellung beträgt die Vereinbarung zum Servicelevel (SLA) für Azure API Management für die Tarife „Basic“, „Standard“ und „Premium“ 99,9%. Vom Premium-Tarif abgedeckte Konfigurationen mit Bereitstellung von mindestens einer Einheit in zwei oder mehr Regionen haben eine SLA von 99,95%.
+Derzeit beträgt die Vereinbarung zum Servicelevel (SLA) für Azure API Management für die Tarife „Basic“, „Standard“ und „Premium“ 99,9 %. Vom Premium-Tarif abgedeckte Konfigurationen mit Bereitstellung von mindestens einer Einheit in zwei oder mehr Regionen haben eine SLA von 99,95%.
 
-Zum Zeitpunkt der Erstellung liegt die SLA für Azure Logic Apps bei 99,9%.
+Derzeit beträgt die SLA für Azure Logic Apps 99,9 %.
 
 ### <a name="disaster-recovery"></a>Notfallwiederherstellung
 
-Erwägen Sie die Implementierung einer georedundanten Notfallwiederherstellung im Service Bus-Premium-Tarif, um ein Failover im Falle eines schwerwiegenden Ausfalls sicherzustellen. Lesen Sie mehr zum Thema [Georedundante Notfallwiederherstellung in Azure Service Bus](../service-bus-messaging/service-bus-geo-dr.md).
+Erwägen Sie die Implementierung einer georedundanten Notfallwiederherstellung im Service Bus-Premium-Tarif, um ein Failover im Falle eines schwerwiegenden Ausfalls sicherzustellen. Weitere Informationen finden Sie unter [Georedundante Notfallwiederherstellung in Azure Service Bus](../service-bus-messaging/service-bus-geo-dr.md).
 
-## <a name="manageability-considerations"></a>Überlegungen zur Verwaltbarkeit
+## <a name="manageability"></a>Verwaltbarkeit
 
-Erstellen Sie separate Ressourcengruppen für Produktions-, Entwicklungs- und Testumgebungen. Dies erleichtert das Verwalten von Bereitstellungen, das Löschen von Testbereitstellungen und das Zuweisen von Zugriffsrechten.
-Berücksichtigen Sie beim Zuweisen von Ressourcengruppen die folgenden Punkte:
+Erstellen Sie separate Ressourcengruppen für Produktions-, Entwicklungs- und Testumgebungen. Separate Ressourcengruppen erleichtern das Verwalten von Bereitstellungen, das Löschen von Testbereitstellungen und das Zuweisen von Zugriffsrechten.
 
-- Lebenszyklus. Platzieren Sie Ressourcen mit gleichem Lebenszyklus im Allgemeinen in der gleichen Ressourcengruppe.
-- Zugriff. Sie können die [rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md) (RBAC) verwenden, um Zugriffsrichtlinien auf die in einer Gruppe enthaltenen Ressourcen anzuwenden.
-- Abrechnung. Sie können die angefallenen Kosten für die Ressourcengruppe anzeigen.
-- Tarif für API Management – für Entwicklungs- und Testumgebungen wird die Verwendung des Developer-Tarifs empfohlen. Vor der Einführung in die Produktionsumgebung empfehlen wir, ein Replikat Ihrer Produktionsumgebung bereitzustellen, Tests durchzuführen und dann herunterzufahren, um die Kosten zu minimieren.
+Berücksichtigen Sie beim Zuweisen von Ressourcen zu Ressourcengruppen die folgenden Punkte:
 
-Weitere Informationen finden Sie in der [Ressourcengruppenübersicht](../azure-resource-manager/resource-group-overview.md).
+- **Lebenszyklus**. Platzieren Sie Ressourcen mit gleichem Lebenszyklus im Allgemeinen in der gleichen Ressourcengruppe.
+- **Zugriff**. Sie können die [rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md) (RBAC) verwenden, um Zugriffsrichtlinien auf die in einer Gruppe enthaltenen Ressourcen anzuwenden.
+- **Abrechnung**. Sie können die anfallenden Kosten für die Ressourcengruppe anzeigen.
+- **Tarif für API Management**. Für Entwicklungs- und Testumgebungen wird die Verwendung des Developer-Tarifs empfohlen. Vor der Einführung in die Produktionsumgebung empfehlen wir, ein Replikat Ihrer Produktionsumgebung bereitzustellen, Tests durchzuführen und dann herunterzufahren, um die Kosten zu minimieren.
+
+Weitere Informationen finden Sie unter [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 
 ### <a name="deployment"></a>Bereitstellung
 
-Es wird empfohlen, [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md) zu verwenden, um Azure API Management, Logic Apps, Event Grid und Service Bus bereitzustellen. Mithilfe von Vorlagen können Bereitstellungen über PowerShell oder die Azure-Befehlszeilenschnittstelle (CLI) einfacher automatisiert werden.
+Es wird empfohlen, [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md) zu verwenden, um API Management, Logic Apps, Event Grid und Service Bus bereitzustellen. Mithilfe von Vorlagen können Bereitstellungen über PowerShell oder die Azure-Befehlszeilenschnittstelle einfacher automatisiert werden.
 
-Es wird empfohlen, Azure API Management, die einzelnen Logik-Apps, Event Grid-Themen und Service Bus-Namespaces in eigene separate Resource Manager-Vorlagen zu integrieren. Dadurch können sie in Systemen für die Quellcodeverwaltung gespeichert werden. Diese Vorlagen können dann gemeinsam oder einzeln im Rahmen eines Continuous Integration/Continous Deployment-Prozesses (CI/CD) eingesetzt werden.
+Es wird empfohlen, API Management, die einzelnen Logik-Apps, Event Grid-Themen und Service Bus-Namespaces in eigene separate Resource Manager-Vorlagen zu integrieren. Wenn Sie unterschiedliche Vorlagen verwenden, können Sie die Ressourcen in Quellcodeverwaltungs-Systemen speichern. Diese Vorlagen können Sie dann gemeinsam oder einzeln im Rahmen eines Continuous Integration/Continous Deployment-Prozesses (CI/CD) einsetzen.
 
 ### <a name="diagnostics-and-monitoring"></a>Diagnose und Überwachung
 
-Service Bus, wie auch API Management und Logic Apps, lassen sich mithilfe von Azure Monitor überwachen. Azure Monitor ist standardmäßig aktiviert und liefert Informationen basierend auf den verschiedenen Metriken, die für jeden Dienst konfiguriert sind.
+Service Bus, wie auch API Management und Logic Apps, lassen sich mithilfe von Azure Monitor überwachen. Azure Monitor liefert Informationen basierend auf den Metriken, die für jeden Dienst konfiguriert sind. Azure Monitor ist standardmäßig aktiviert.
 
-## <a name="security-considerations"></a>Sicherheitshinweise
+## <a name="security"></a>Sicherheit
 
-Sichern Sie Service Bus mithilfe einer Shared Access Signature (SAS). Mit der [SAS-Authentifizierung](../service-bus-messaging/service-bus-sas.md) können Sie einem Benutzer Zugriff auf Service Bus-Ressourcen mit spezifischen Rechten gewähren. Lesen Sie mehr zum Thema [Service Bus-Authentifizierung und -Autorisierung](../service-bus-messaging/service-bus-authentication-and-authorization.md).
+Service Bus kann mit einer SAS gesichert werden. Mit der [SAS-Authentifizierung](../service-bus-messaging/service-bus-sas.md) können Sie einem Benutzer Zugriff auf Service Bus-Ressourcen mit spezifischen Rechten gewähren. Weitere Informationen finden Sie unter [Service Bus-Authentifizierung und -Autorisierung](../service-bus-messaging/service-bus-authentication-and-authorization.md).
 
-Wenn darüber hinaus eine Service Bus-Warteschlange als HTTP-Endpunkt verfügbar gemacht werden muss (um das Bereitstellen neuer Nachrichten zu ermöglichen), sollte API Management verwendet werden, um sie zu sichern, indem der Endpunkt verfügbar gemacht wird. Diese kann dann mit Zertifikaten oder OAuth gesichert werden. Dies lässt sich am einfachsten erreichen, indem eine Logik-App mit einem zwischengeschalteten Anforderung/Antwort-HTTP-Trigger verwendet wird.
+Wenn eine Service Bus-Warteschlange als HTTP-Endpunkt verfügbar gemacht werden muss (zum Bereitstellen neuer Nachrichten), sollte zum Sichern API Management verwendet werden, indem der Endpunkt verfügbar gemacht wird. Dieser kann dann mit Zertifikaten oder OAuth gesichert werden. Ein Endpunkt lässt sich am einfachsten sichern, indem eine Logik-App mit einem zwischengeschalteten Anforderung/Antwort-HTTP-Trigger verwendet wird.
 
-Event Grid sichert die Ereignisübermittlung durch einen Validierungscode. Wenn Sie Logic Apps verwenden, um das Ereignis abzurufen, wird dies automatisch ausgeführt. Weitere Informationen finden Sie unter [Event Grid – Sicherheit und Authentifizierung](../event-grid/security-authentication.md).
+Event Grid sichert die Ereignisübermittlung durch einen Validierungscode. Wenn Sie Logic Apps verwenden, um das Ereignis abzurufen, wird die Validierung automatisch ausgeführt. Weitere Informationen finden Sie unter [Event Grid – Sicherheit und Authentifizierung](../event-grid/security-authentication.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Einfache Unternehmensintegration](logic-apps-architectures-simple-enterprise-integration.md)
+- Erfahren Sie mehr über die [einfache Unternehmensintegration](logic-apps-architectures-simple-enterprise-integration.md).

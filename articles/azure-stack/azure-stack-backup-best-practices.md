@@ -3,7 +3,7 @@ title: Bewährte Methoden für den Infrastructure Backup-Dienst für Azure Stack
 description: Bei der Bereitstellung und Verwaltung von Azure Stack in Ihrem Rechenzentrum können Sie eine Reihe bewährter Methoden anwenden, um den Verlust von Daten bei einem schwerwiegenden Fehler zu minimieren.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: 221FDE40-3EF8-4F54-A075-0C4D66EECE1A
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/20/2017
-ms.author: mabrigg
+ms.date: 7/18/2018
+ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 06a2d4ab12d2a7e03a538a98f5232a417fb39e4f
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0b6153a863b0637f314b4f333b255ec8d24b5b0c
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969468"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136433"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>Bewährte Methoden für den Infrastructure Backup-Dienst
 
@@ -34,7 +34,7 @@ Bei der Bereitstellung und Verwaltung von Azure Stack in Ihrem Rechenzentrum kö
 
 ### <a name="deployment"></a>Bereitstellung
 
-Aktivieren Sie Infrastructure Backup nach der Bereitstellung jeder Azure Stack-Cloud. Mithilfe von AzureStack-Tools können Sie Sicherungen über jeden Client/Server mit Zugriff auf den API-Endpunkt der Bedienerverwaltung planen.
+Aktivieren Sie Infrastructure Backup nach der Bereitstellung jeder Azure Stack-Cloud. Mithilfe von Azure Stack PowerShell können Sie Sicherungen über jeden Client/Server mit Zugriff auf den API-Endpunkt der Bedienerverwaltung planen.
 
 ### <a name="networking"></a>Netzwerk
 

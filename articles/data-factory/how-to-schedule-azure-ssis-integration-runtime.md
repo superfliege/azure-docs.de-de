@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 06/01/2018
+ms.date: 07/16/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 3758b04fc9b5ecd5dc69c82a8bd07999a9f1074a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: f83715d2a382db271686210d9df285c255c09216
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050606"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113993"
 ---
 # <a name="how-to-start-and-stop-the-azure-ssis-integration-runtime-on-a-schedule"></a>Starten und Beenden der Azure SSIS Integration Runtime nach einem Zeitplan
 Dieser Artikel beschreibt die Planung des Startens und Beendens einer Azure-SSIS-Integration Runtime (IR) mithilfe von Azure Automation und Azure Data Factory. Das Ausführen einer Azure SSIS (SQL Server Integration Services) Integration Runtime (IR) ist mit einer Gebühr verbunden. Sie sollten die IR daher in der Regel nur ausführen, wenn Sie SSIS-Pakete in Azure ausführen müssen, und die IR andernfalls beenden. Sie können die Data Factory-Benutzeroberfläche oder Azure PowerShell zum [manuellen Starten oder Beenden einer Azure SSIS-IR](manage-azure-ssis-integration-runtime.md) verwenden.
@@ -373,15 +373,40 @@ Nun, da die Pipeline wie erwartet funktioniert, können Sie einen Trigger zum Au
 5. Veröffentlichen Sie die Projektmappe in Data Factory, indem Sie im linken Bereich **Alle veröffentlichen** auswählen. 
 
     ![Alle veröffentlichen](./media/how-to-schedule-azure-ssis-integration-runtime/publish-all.png)
-6. Verwenden Sie zum Überwachen der Ausführung von Triggern und Pipelines die Registerkarte **Monitor** auf der linken Seite. Ausführliche Schritte finden Sie unter [Überwachen der Pipeline](quickstart-create-data-factory-portal.md#monitor-the-pipeline).
+
+### <a name="monitor-the-pipeline-and-trigger-in-the-azure-portal"></a>Überwachen der Pipeline und Trigger im Azure-Portal
+
+1. Verwenden Sie zum Überwachen der Ausführung von Triggern und Pipelines die Registerkarte **Monitor** auf der linken Seite. Ausführliche Schritte finden Sie unter [Überwachen der Pipeline](quickstart-create-data-factory-portal.md#monitor-the-pipeline).
 
     ![Pipelineausführungen](./media/how-to-schedule-azure-ssis-integration-runtime/pipeline-runs.png)
-7. Wenn Sie mit einer Pipelineausführung verbundene Aktivitätsausführungen anzeigen möchten, wählen Sie in der Spalte **Aktionen** den ersten Link (**View Activity Runs**, Aktivitätsausführungen anzeigen) aus. Jeder Aktivität in der Pipeline (erste Web-Aktivität, Gespeicherte Prozedur-Aktivität und zweite Web-Aktivität) sind drei Aktivitätsausführungen zugeordnet. Wählen Sie den Link **Pipelines** ganz oben aus, um zurück zur Ansicht mit den Pipelineausführungen zu wechseln.
+2. Wenn Sie mit einer Pipelineausführung verbundene Aktivitätsausführungen anzeigen möchten, wählen Sie in der Spalte **Aktionen** den ersten Link (**View Activity Runs**, Aktivitätsausführungen anzeigen) aus. Jeder Aktivität in der Pipeline (erste Web-Aktivität, Gespeicherte Prozedur-Aktivität und zweite Web-Aktivität) sind drei Aktivitätsausführungen zugeordnet. Wählen Sie den Link **Pipelines** ganz oben aus, um zurück zur Ansicht mit den Pipelineausführungen zu wechseln.
 
     ![Aktivitätsausführungen](./media/how-to-schedule-azure-ssis-integration-runtime/activity-runs.png)
-8. Sie können die Triggerausführungen auch anzeigen, indem Sie in der Dropdownliste neben der Option **Pipeline Runs** (Pipelineausführungen) ganz oben die Option **Trigger runs** (Triggerausführungen) auswählen. 
+3. Sie können die Triggerausführungen auch anzeigen, indem Sie in der Dropdownliste neben der Option **Pipeline Runs** (Pipelineausführungen) ganz oben die Option **Trigger runs** (Triggerausführungen) auswählen. 
 
     ![Triggerausführungen](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-runs.png)
+
+### <a name="monitor-the-pipeline-and-trigger-with-powershell"></a>Überwachen der Pipeline und Trigger mit PowerShell
+
+Verwenden Sie Skripte wie die folgenden Beispiele, um Pipeline und Trigger zu überwachen.
+
+1. Rufen Sie den Status einer Pipelineausführung ab.
+
+  ```powershell
+  Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $myPipelineRun
+  ```
+
+2. Rufen Sie Informationen über den Trigger ab.
+
+  ```powershell
+  Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name  "myTrigger"
+  ```
+
+3. Rufen Sie den Status einer Triggerausführung ab.
+
+  ```powershell
+  Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "myTrigger" -TriggerRunStartedAfter "2018-07-15" -TriggerRunStartedBefore "2018-07-16"
+  ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen finden Sie im folgenden Blogbeitrag:

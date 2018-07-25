@@ -11,20 +11,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/07/2018
+ms.date: 07/17/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 6479db44681071932ff92ee17ea0aec6518dc74e
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 503d5913efe67bd0de738f68921b9631c63acfa8
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128638"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39116043"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Häufig gestellte Fragen zum Übergang vom OMS-Portal zum Azure-Portal für Log Analytics-Benutzer
 Log Analytics verwendete zunächst ein eigenes Portal, das OMS-Portal, um die Konfiguration zu verwalten und gesammelte Daten zu analysieren.  Alle Funktionen dieses Portals wurden in das Azure-Portal übernommen, wo sie weiter entwickelt werden.
 
 Dieser Artikel beantwortet häufig gestellte Fragen von Benutzern, die diesen Wechsel vornehmen.  Wenn Sie Log Analytics im OMS-Portal verwendet haben, finden Sie hier Antworten darauf, wie Sie die gleichen Aufgaben im Azure-Portal ausführen können.
+
+## <a name="do-i-need-to-migrate-anything"></a>Muss ich eine Migration durchführen?
+Nein. Es werden keine Änderungen an Log Analytics selbst vorgenommen, sodass nichts migriert werden muss. Das Einzige, was sich ändert, ist die Schnittstelle, über die Sie darauf zugreifen. Tatsächlich können Sie jetzt über das Azure-Portal auf dieselben Arbeitsbereiche, Lösungen, Ansichten und Protokollsuchen zugreifen, die Sie heute im OMS-Portal verwenden.
 
 ## <a name="where-do-i-find-log-analytics-in-azure"></a>Wo finde ich Log Analytics in Azure?
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.  Klicken Sie auf **Alle Dienste**, und geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Wählen Sie **Log Analytics**, und wählen Sie dann Ihren Arbeitsbereich aus. Die Seite mit der Zusammenfassung für den Arbeitsbereich wird angezeigt.

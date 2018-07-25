@@ -1,6 +1,6 @@
 ---
 title: Nutzungsberichtsinfrastruktur für Cloud-Dienstanbieter für Azure Stack | Microsoft-Dokumentation
-description: Azure Stack umfasst die erforderliche Infrastruktur zum Nachverfolgen der Nutzung in Echtzeit und leitet das Ergebnis an Azure weiter.
+description: Azure Stack umfasst die erforderliche Infrastruktur zum Nachverfolgen der Nutzung für von einem Cloud-Dienstanbieter verwalteten Mandanten in Echtzeit und leitet das Ergebnis an Azure weiter.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,21 +11,21 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
-ms.author: mabrigg
+ms.date: 07/12/2018
+ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: 7fe2a6444e605f388df68803b89643420b19fb54
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: e38f0a5e8aa911a168ee7f648692c31ecb44d4dd
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823485"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090607"
 ---
 ## <a name="usage-reporting-infrastructure-for-cloud-service-providers"></a>Nutzungsberichtsinfrastruktur für Cloud-Dienstanbieter
 
-Azure Stack umfasst die erforderliche Infrastruktur zum Nachverfolgen der Nutzung in Echtzeit und leitet das Ergebnis an Azure weiter. In Azure verarbeitet Azure Commerce die Nutzungsdaten und stellt die Nutzung den entsprechenden Azure-Abonnements in Rechnung – auf die gleiche Weise wie Nutzung, die in der globalen Azure-Cloud stattfindet.
+Azure Stack umfasst die erforderliche Infrastruktur zum Nachverfolgen der Nutzung in Echtzeit und leitet das Ergebnis an Azure weiter. In Azure verarbeitet Azure Commerce die Nutzungsdaten und stellt die Nutzung den entsprechenden Azure-Abonnements in Rechnung. Dies erfolgt auf die gleiche Weise wie die Nutzungsnachverfolgung in der globalen Azure-Cloud.
 
-Sie sollten wissen, dass bestimmte Konzepte zwischen globalem Azure und Azure Stack konsistent sind. Azure Stack verfügt über lokale Abonnements, die eine ähnliche Rolle wie ein Azure-Abonnement erfüllen. Lokale Abonnements sind nur lokal gültig. Lokale Abonnements werden Azure-Abonnements zugeordnet, wenn die Nutzung an Azure weitergeleitet wird.
+Sie sollten beachten, dass bestimmte Konzepte zwischen globalem Azure und Azure Stack konsistent sind. Azure Stack verfügt über lokale Abonnements, die eine ähnliche Rolle wie ein Azure-Abonnement erfüllen. Lokale Abonnements sind nur lokal gültig. Lokale Abonnements werden Azure-Abonnements zugeordnet, wenn die Nutzung an Azure weitergeleitet wird.
 
 Azure Stack verfügt über lokale Nutzungszähler. Die lokale Nutzung wird den in Azure Commerce verwendeten Zählern zugeordnet. Allerdings unterscheiden sich die Zähler-IDs. Es sind lokal mehr Zähler verfügbar als derjenige, den Microsoft für die Abrechnung verwendet.
 

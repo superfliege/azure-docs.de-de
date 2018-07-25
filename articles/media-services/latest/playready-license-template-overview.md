@@ -11,21 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/18/2018
+ms.date: 07/08/2018
 ms.author: juliako
-ms.openlocfilehash: 00a5e6df532e30deec0f6755ec0309c7fc58e0bb
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: d5315c6cc4ade94bc829aa77f795d9688f78b0ec
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37133307"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115159"
 ---
-# <a name="media-services-playready-license-template-overview"></a>Media Services PlayReady-Lizenzvorlage – Übersicht
+# <a name="media-services-playready-license-template-overview"></a>Media Services PlayReady-Lizenzvorlage – Übersicht 
 
-Azure Media Services bietet jetzt einen Dienst für die Bereitstellung von PlayReady-Lizenzen. Wenn der Player (z. B. Silverlight) versucht, Ihre durch PlayReady geschützten Inhalte wiederzugeben, wird eine Anforderung zum Erwerben einer Lizenz an den Lizenzübermittlungsdienst gesendet. Wenn der Lizenzdienst die Anforderung genehmigt, wird die Lizenz ausgegeben. Diese wird an den Client gesendet und zum Entschlüsseln und Wiedergeben des angegebenen Inhalts verwendet.
+Mit Azure Media Services können Sie Ihre Inhalte mit **Microsoft PlayReady** verschlüsseln. Media Services bietet darüber hinaus einen Dienst für die Bereitstellung von PlayReady-Lizenzen. PlayReady-Lizenzen können mithilfe von Media Services-APIs konfiguriert werden. Wenn der Player versucht, Ihre durch PlayReady geschützten Inhalte wiederzugeben, wird eine Anforderung zum Erwerben einer Lizenz an den Lizenzbereitstellungsdienst gesendet. Wenn der Lizenzdienst die Anforderung genehmigt, wird die Lizenz ausgegeben. Diese wird an den Client gesendet und zum Entschlüsseln und Wiedergeben des angegebenen Inhalts verwendet.
 
-Media Services bietet außerdem APIs, mit denen Sie Ihre PlayReady-Lizenzen konfigurieren können. Lizenzen enthalten die Rechte und Einschränkungen, die von der PlayReady-DRM-Laufzeit durchgesetzt werden sollen, wenn ein Benutzer versucht, geschützte Inhalte wiederzugeben.
-Hier finden Sie einige Beispiele für Einschränkungen für PlayReady-Lizenzen, die Sie angeben können:
+PlayReady-Lizenzen enthalten die Rechte und Einschränkungen, die von der PlayReady-DRM-Laufzeit durchgesetzt werden sollen, wenn ein Benutzer versucht, geschützte Inhalte wiederzugeben. Hier finden Sie einige Beispiele für Einschränkungen für PlayReady-Lizenzen, die Sie angeben können:
 
 * Das Datum und die Uhrzeit, ab wann die Lizenz gültig ist.
 * Der DateTime-Wert für den Ablauf der Lizenz. 
@@ -38,9 +37,14 @@ Hier finden Sie einige Beispiele für Einschränkungen für PlayReady-Lizenzen, 
 > Derzeit können Sie nur PlayRight der PlayReady-Lizenz konfigurieren. Dieses Recht ist erforderlich. PlayRight ermöglicht es dem Client, den Inhalt wiederzugeben. Mit PlayRight können Sie auch spezifische Einschränkungen der Wiedergabe konfigurieren. 
 > 
 
-Zum Konfigurieren von PlayReady-Lizenzen mit Media Services müssen Sie die Media Services PlayReady-Lizenzvorlage konfigurieren. Die Vorlage wird im XML-Format definiert.
+Dieses Thema beschreibt die Konfiguration von PlayReady-Lizenzen mit Media Services.
 
-Das folgende Beispiel zeigt die einfachste (und am häufigsten verwendete) Vorlage, mit der eine grundlegende Streaming-Lizenz konfiguriert wird. Mit dieser Lizenz können Ihre Clients Ihre mit PlayReady geschützten Inhalte wiedergeben.
+## <a name="basic-streaming-license-example"></a>Beispiel für eine grundlegende Streaminglizenz
+
+Das folgende Beispiel zeigt die einfachste (und am häufigsten verwendete) Vorlage, mit der eine grundlegende Streaming-Lizenz konfiguriert wird. Mit dieser Lizenz können Ihre Clients Ihre mit PlayReady geschützten Inhalte wiedergeben. 
+
+Der XML-Code entspricht dem XML-Schema der PlayReady-Lizenzvorlage, das im Abschnitt zum [XML-Schema der PlayReady-Lizenzvorlage](#schema) definiert wurde.
+
 
     <?xml version="1.0" encoding="utf-8"?>
     <PlayReadyLicenseResponseTemplate xmlns:i="http://www.w3.org/2001/XMLSchema-instance" 
@@ -53,18 +57,17 @@ Das folgende Beispiel zeigt die einfachste (und am häufigsten verwendete) Vorla
       </LicenseTemplates>
     </PlayReadyLicenseResponseTemplate>
 
-Der XML-Code entspricht dem XML-Schema der PlayReady-Lizenzvorlage, das im Abschnitt zum XML-Schema der PlayReady-Lizenzvorlage definiert wurde.
 
 ## <a id="classes"></a>Verwenden von Media Services-APIs zum Konfigurieren von Lizenzvorlagen
 
-Media Services umfasst Typen, mit denen Sie eine PlayReady-Lizenzvorlage konfigurieren können. Diese Typen sind den im [XML-Schema für PlayReady-Lizenzvorlage](#schema) definierten Typen zugeordnet.
+Media Services umfasst Typen, mit denen Sie eine PlayReady-Lizenzvorlage konfigurieren können. 
 
-Im nachfolgenden Codeausschnitt wird die PlayReady-Lizenzvorlage mit Media Services .NET-PlayReady-Klassen konfiguriert. Die Klassen sind im Namespace [Microsoft.Azure.Management.Media.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) definiert. Im Codeausschnitt wird PlayRight der PlayReady-Lizenz konfiguriert. PlayRight gewährt dem Benutzer die Möglichkeit, Inhalte gemäß den Einschränkungen wiederzugeben, die in der Lizenz oder in PlayRight selbst (für wiedergabespezifische Richtlinien) konfiguriert wurden. Ein Großteil der Richtlinien für PlayRight betrifft Ausgabeeinschränkungen, die die Art der Ausgaben steuern, über die der Inhalt wiedergegeben werden kann. Sie enthält auch alle Einschränkungen, die bei der Verwendung einer bestimmten Ausgabe festgelegt werden müssen. Wenn z. B. „DigitalVideoOnlyContentRestriction“ aktiviert ist, erlaubt die DRM-Runtime nur die Anzeige des Videos über digitale Ausgänge. (Analogen Videoausgaben ist es nicht gestattet, Inhalte zu übergeben.)
+Im nachfolgenden Codeausschnitt wird die PlayReady-Lizenzvorlage mit Media Services .NET-Klassen konfiguriert. Die Klassen sind im Namespace [Microsoft.Azure.Management.Media.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) definiert. Im Codeausschnitt wird PlayRight der PlayReady-Lizenz konfiguriert. PlayRight gewährt dem Benutzer die Möglichkeit, Inhalte gemäß den Einschränkungen wiederzugeben, die in der Lizenz oder in PlayRight selbst (für wiedergabespezifische Richtlinien) konfiguriert wurden. Ein Großteil der Richtlinien für PlayRight betrifft Ausgabeeinschränkungen, die die Art der Ausgaben steuern, über die der Inhalt wiedergegeben werden kann. Sie enthält auch alle Einschränkungen, die bei der Verwendung einer bestimmten Ausgabe festgelegt werden müssen. Wenn z. B. „DigitalVideoOnlyContentRestriction“ aktiviert ist, erlaubt die DRM-Runtime nur die Anzeige des Videos über digitale Ausgänge. (Analogen Videoausgaben ist es nicht gestattet, Inhalte zu übergeben.)
 
 > [!IMPORTANT]
-> Dieser Einschränkungstypen können effektiv sein, aber auch die Benutzerfreundlichkeit beeinträchtigen. Wenn der Ausgabeschutz zu viele Einschränkungen aufweist, kann der Inhalt möglicherweise in einigen Clients nicht wiedergegeben werden. Weitere Informationen finden Sie unter den [Regeln zur PlayReady Compliance](https://www.microsoft.com/playready/licensing/compliance/).
-> 
-> 
+> Die PlayReady-Lizenz verfügt über leistungsstarke Einschränkungen. Wenn der Ausgabeschutz zu viele Einschränkungen aufweist, kann der Inhalt möglicherweise in einigen Clients nicht wiedergegeben werden. Weitere Informationen finden Sie unter den [Regeln zur PlayReady Compliance](https://www.microsoft.com/playready/licensing/compliance/).
+
+### <a name="configure-playready-license-template-with-net"></a>Konfigurieren der PlayReady-Lizenzvorlage mit .NET
 
 ```csharp
 ContentKeyPolicyPlayReadyLicense objContentKeyPolicyPlayReadyLicense;
@@ -84,8 +87,6 @@ objContentKeyPolicyPlayReadyLicense = new ContentKeyPolicyPlayReadyLicense
     }
 };
 ```
-
-Ein Beispiel für die von Silverlight unterstützten Schutzebenen finden Sie unter [Silverlight-Unterstützung für Ausgabeschutz](http://go.microsoft.com/fwlink/?LinkId=617318).
 
 ## <a id="schema"></a>XML-Schema für PlayReady-Lizenzvorlage
     <?xml version="1.0" encoding="utf-8"?>
@@ -312,4 +313,4 @@ Ein Beispiel für die von Silverlight unterstützten Schutzebenen finden Sie unt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Übersicht](content-protection-overview.md)
+Informieren Sie sich über das [Schützen mit DRM](protect-with-drm.md).

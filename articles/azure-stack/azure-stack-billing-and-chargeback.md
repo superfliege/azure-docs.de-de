@@ -11,30 +11,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2018
-ms.author: mabrigg
+ms.date: 07/12/2018
+ms.author: brenduns
 ms.reviewer: alfredop
-ms.openlocfilehash: eca335797f48b7c44351655f17c8b6499f3d5999
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: f055837711b52fc32cb387fb86c623d3502f47ab
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29877482"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090138"
 ---
 # <a name="usage-and-billing-in-azure-stack"></a>Verbrauch und Abrechnung in Azure Stack
 
 Dieser Artikel beschreibt, wie Azure Stack-Benutzern die Ressourcennutzung in Rechnung gestellt wird. Sie erfahren, wie der Zugriff auf Abrechnungsinformationen für Analysen und verbrauchsbasierte Kostenzuteilung erfolgt.
 
-Azure Stack erfasst und gruppiert Nutzungsdaten für alle verwendeten Ressourcen und leitet diese Daten an Azure Commerce weiter. Azure Commerce stellt Ihnen die Azure Stack-Nutzung genauso in Rechnung wie die Azure-Nutzung.
+Azure Stack erfasst und gruppiert Nutzungsdaten für verwendete Ressourcen. Azure Stack leitet dann diese Daten an Azure Commerce weiter. Azure Commerce stellt Ihnen die Azure Stack-Nutzung genauso in Rechnung wie die Azure-Nutzung.
 
-Sie können auch Nutzungsdaten abrufen und mithilfe eines Abrechnungsadapters in Ihr eigenes System für die Abrechnung und verbrauchsbasierte Kostenzuteilung oder in ein Business Intelligence-Tool wie z.B. Microsoft Power BI exportieren und für die Analyse verwenden.
+Sie können auch Nutzungsdaten abrufen und mithilfe eines Abrechnungsadapters in Ihr eigenes System für die Abrechnung und verbrauchsbasierte Kostenzuteilung oder in ein Business Intelligence-Tool wie z.B. Microsoft Power BI exportieren.
 
 
 ## <a name="usage-pipeline"></a>Nutzungspipeline
 
 Jeder Ressourcenanbieter in Azure Stack gibt Nutzungsdaten gemäß Ressourcennutzung aus. Der Nutzungsdienst aggregiert Nutzungsdaten in regelmäßigen Abständen (stündlich und täglich) und speichert sie in der Nutzungsdatenbank. Azure Stack-Operatoren und -Benutzer können über die Azure Stack-Ressourcennutzungs-APIs auf die gespeicherten Nutzungsdaten zugreifen. 
 
-Wenn Sie [Ihre Azure Stack-Instanz bei Azure registriert haben](azure-stack-register.md), ist Azure Stack zum Senden der Nutzungsdaten an Azure Commerce konfiguriert. Nachdem die Daten in Azure hochgeladen wurden, können Sie über das Abrechnungsportal oder mithilfe der Ressourcennutzungs-APIs von Azure darauf zugreifen. Weitere Informationen dazu, welche Nutzungsdaten an Azure gemeldet werden, finden Sie im Thema [Nutzungsdatenberichte](azure-stack-usage-reporting.md).  
+Wenn Sie [Ihre Azure Stack-Instanz bei Azure registriert haben](azure-stack-register.md), ist Azure Stack zum Senden der Nutzungsdaten an Azure Commerce konfiguriert. Nachdem die Daten in Azure hochgeladen wurden, können Sie über das Abrechnungsportal oder mithilfe der Ressourcennutzungs-APIs von Azure darauf zugreifen. Weitere Informationen dazu, welche Nutzungsdaten an Azure gemeldet werden, finden Sie im Artikel [Nutzungsdatenberichte](azure-stack-usage-reporting.md).  
 
 Die folgende Abbildung zeigt die wichtigsten Komponenten in der Nutzungspipeline: 
 
@@ -46,8 +46,7 @@ Azure Stack-Ressourcenanbieter wie Compute-, Speicher- und Netzwerkressourcen ge
 
 Die gesammelten Nutzungsdaten werden [an Azure gemeldet](azure-stack-usage-reporting.md), um eine Rechnung zu generieren, die im Azure-Abrechnungsportal angezeigt werden kann. 
 
-
-> [!NOTE]
+> [!NOTE]  
 > Das Melden von Nutzungsdaten ist für Azure Stack Development Kit-Benutzer und Benutzer von integrierten Azure Stack-Systemen, die unter dem Kapazitätsmodell lizenziert sind, nicht erforderlich. Weitere Informationen zur Lizenzierung in Azure Stack finden Sie im Datenblatt zu [Paketerstellung und Preisen](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf).
 
 Das Azure-Abrechnungsportal zeigt Nutzungsdaten für kostenpflichtige Ressourcen. Zusätzlich zu den kostenpflichtigen Ressourcen erfasst Azure Stack Nutzungsdaten für eine umfassendere Palette an Ressourcen. Auf diese Daten können Sie in Ihrer Azure Stack-Umgebung über REST-APIs oder PowerShell zugreifen. Azure Stack-Operatoren können die Nutzungsdaten für alle Benutzerabonnements abrufen. Einzelne Benutzer können nur ihre Nutzungsdetails abrufen. 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 1/19/2017
+ms.date: 07/15/2018
 ms.author: tamram
-ms.openlocfilehash: 3c313025917bba06675d3b2d844a6740fab89fbc
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 160fe756458e067125b9d696fd0cdb929774446e
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30323150"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072033"
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Vorgehensweise beim Ausfall von Azure Storage
 Bei Microsoft arbeiten wir hart, um sicherzustellen, dass unsere Dienste immer verfügbar sind. Aufgrund höherer Gewalt können ungeplante Dienstausfälle in einer Region oder auch mehreren Regionen auftreten. Damit Sie mit diesen seltenen Vorkommen umgehen können, stellen wir Ihnen den folgenden allgemeinen Leitfaden für Azure Storage-Dienste zur Verfügung.
@@ -65,9 +65,8 @@ Ein paar Punkte in Bezug auf das Geofailoverereignis des Speichers:
 Es gibt einige empfohlenen Vorgehensweisen, um die Speicherdaten in regelmäßigen Abständen zu sichern.
 
 * VM-Datenträger – Verwenden Sie den [Azure Backup-Dienst](https://azure.microsoft.com/services/backup/) , um die von Ihrem virtuellen Computer verwendeten VM-Datenträger zu sichern.
-* Blockblobs – Erstellen Sie eine [Momentaufnahme](https://msdn.microsoft.com/library/azure/hh488361.aspx) von jedem Blockblob, oder kopieren Sie die Blobs in ein anderes Speicherkonto in einer andere Region mithilfe von [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md) oder [Azure Data Movement Library](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/).
+* Blockblobs – Aktivieren Sie [Vorläufiges Löschen](../blobs/storage-blob-soft-delete.md), um das versehentliche Löschen und Überschreiben von Objekten zu verhindern, oder kopieren Sie die Blobs in ein anderes Speicherkonto in einer andere Region mithilfe von [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md) oder [Azure Data Movement Library](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/).
 * Tabellen – Verwenden Sie [AzCopy](storage-use-azcopy.md) , um die Tabellendaten in ein anderes Speicherkonto in einer anderen Region zu exportieren.
 * Dateien – Verwenden Sie [AzCopy](storage-use-azcopy.md) oder [Azure PowerShell](storage-powershell-guide-full.md), um die Dateien in ein anderes Speicherkonto in einer anderen Region zu kopieren.
 
 Informationen zum Erstellen von Anwendungen, welche die RA-GRS-Funktion optimal nutzen, finden Sie unter [Entwerfen hochverfügbarer Anwendungen mithilfe des RA-GRS-Speichers](../storage-designing-ha-apps-with-ragrs.md).
-

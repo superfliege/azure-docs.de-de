@@ -9,14 +9,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 07/16/2018
 ms.author: bonova
-ms.openlocfilehash: 1015600343886333655a921f2e0944ebb676f3e6
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e0de9a1494641fef87d11545b99e5e7275f6b614
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050125"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069262"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migration einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -91,11 +91,11 @@ Weitere Informationen zu diesem Szenario und zu Konfigurationsschritten für DMS
 
 Das Wiederherstellen mit der RESTORE-Option von nativen Sicherungen (.bak-Dateien), die von lokalen SQL Server-Instanzen oder von [SQL Servern auf virtuellen Computern](https://azure.microsoft.com/services/virtual-machines/sql-server/) erstellt wurden, die in [Azure Storage](https://azure.microsoft.com/services/storage/) verfügbar sind, ist eine der wichtigsten Funktionen von verwalteten SQL-Datenbank-Instanzen, die eine schnelle und einfache Offlinedatenbankmigration ermöglicht. 
 
-Das folgende Diagramm verdeutlicht den Prozess im Überblick:
+Das folgende Diagramm bietet einen allgemeinen Überblick über den Prozess:
 
 ![Migrationsflow](./media/sql-database-managed-instance-migration/migration-flow.png)
 
-In der folgenden Tabelle finden Sie weitere Informationen über die Methode, die Sie je nach Version der ausgeführten SQL Server-Quellinstanz, verwenden können:
+In der folgenden Tabelle finden Sie weitere Informationen über die Methoden, die Sie je nach Version der ausgeführten SQL Server-Quellinstanz verwenden können:
 
 |Schritt|SQL-Engine und -Version|Sicherungs- und Wiederherstellungsmethode|
 |---|---|---|
@@ -105,7 +105,8 @@ In der folgenden Tabelle finden Sie weitere Informationen über die Methode, die
 |Aus Azure Storage in verwalteter Instanz wiederherstellen|[RESTORE FROM URL mit SAS CREDENTIAL](sql-database-managed-instance-restore-from-backup-tutorial.md)|
 
 > [!IMPORTANT]
-> Das Wiederherstellen von Systemdatenbanken wird nicht unterstützt. Um Objekte auf Instanzebene (gespeichert in Master- oder msdb-Datenbanken) zu migrieren, wird empfohlen, diese zu skripten und T-SQL-Skripts auf der Zielinstanz auszuführen.
+> - Beim Migrieren einer Datenbank, die durch [Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) geschützt ist, zu einer verwalteten Azure SQL-Instanz mithilfe der nativen Wiederherstellungsoption muss das entsprechende Zertifikat aus dem lokalen oder IaaS-SQL-Server vor der Wiederherstellung der Datenbank migriert werden. Eine ausführliche Schrittbeschreibung finden Sie unter [Migrieren von TDE zur verwalteten Instanz](sql-database-managed-instance-migrate-tde-certificate.md).
+> - Das Wiederherstellen von Systemdatenbanken wird nicht unterstützt. Um Objekte auf Instanzebene (gespeichert in Master- oder msdb-Datenbanken) zu migrieren, wird empfohlen, diese zu skripten und T-SQL-Skripts auf der Zielinstanz auszuführen.
 
 Ein vollständiges Tutorial über das Wiederherstellen einer Datenbanksicherung auf einer verwalteten Instanz mithilfe von SAS-Anmeldeinformationen finden Sie unter [Wiederherstellen einer Datenbanksicherung in einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-restore-from-backup-tutorial.md).
 

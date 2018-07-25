@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.workload: On Demand
-ms.date: 06/27/2018
+ms.date: 07/16/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 18c162e03030fc4277fa0a7b3e953bf780574a21
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: dfea1587cddbf7440771ca7007928f7e4054f61a
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37084959"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092289"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank
 
@@ -38,7 +38,7 @@ Die folgende Tabelle vergleicht ERT und RPO für die einzelnen Dienstebenen und 
 
 ### <a name="use-point-in-time-restore-to-recover-a-database"></a>Verwenden der Point-in-Time-Wiederherstellung für die Wiederherstellung einer Datenbank
 
-SQL-Datenbank führt automatisch eine Kombination aus wöchentlichen vollständigen Datenbanksicherungen, stündlichen differenziellen Datenbanksicherungen sowie Transaktionsprotokollsicherungen im Abstand von fünf bis zehn Minuten durch, um Ihr Unternehmen vor Datenverlusten zu schützen. Wenn Sie das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md) verwenden, werden diese Sicherungen im RA-GRS-Speicher gespeichert – für Datenbanken in den Tarifen „Standard“ und „Premium“ 35 Tage lang, für Datenbanken im Tarif „Basic“ sieben Tage lang. Wenn der Aufbewahrungszeitraum für Ihren Tarif Ihre Geschäftsanforderungen nicht erfüllt, können Sie diesen verlängern, indem Sie [den Tarif wechseln](sql-database-single-database-scale.md). Wenn Sie das [auf virtuellen Kernen basierende Kaufmodell für Azure SQL Datenbank (Vorschau)](sql-database-service-tiers-vcore.md) verwenden, ist die Aufbewahrung von Sicherungen in den Tarifen „Universell“ und „Unternehmenskritisch“ bis zu 35 Tage konfigurierbar. Die vollständigen und differenziellen Datenbanksicherungen werden auch in ein [gekoppeltes Rechenzentrum](../best-practices-availability-paired-regions.md) repliziert, um weiteren Schutz bei Rechenzentrumsausfällen zu bieten. Weitere Informationen finden Sie unter [Automatische Datenbanksicherungen](sql-database-automated-backups.md).
+SQL-Datenbank führt automatisch eine Kombination aus wöchentlichen vollständigen Datenbanksicherungen, stündlichen differenziellen Datenbanksicherungen sowie Transaktionsprotokollsicherungen im Abstand von fünf bis zehn Minuten durch, um Ihr Unternehmen vor Datenverlusten zu schützen. Wenn Sie das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md) verwenden, werden diese Sicherungen im RA-GRS-Speicher gespeichert – für Datenbanken in den Tarifen „Standard“ und „Premium“ 35 Tage lang, für Datenbanken im Tarif „Basic“ sieben Tage lang. Wenn der Aufbewahrungszeitraum für Ihren Tarif Ihre Geschäftsanforderungen nicht erfüllt, können Sie diesen verlängern, indem Sie [den Tarif wechseln](sql-database-single-database-scale.md). Wenn Sie das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md) verwenden, ist die Aufbewahrung von Sicherungen in den Ebenen „Universell“ und „Unternehmenskritisch“ bis zu 35 Tage konfigurierbar. Die vollständigen und differenziellen Datenbanksicherungen werden auch in ein [gekoppeltes Rechenzentrum](../best-practices-availability-paired-regions.md) repliziert, um weiteren Schutz bei Rechenzentrumsausfällen zu bieten. Weitere Informationen finden Sie unter [Automatische Datenbanksicherungen](sql-database-automated-backups.md).
 
 Wenn die maximal unterstützte PITR-Aufbewahrungsdauer (Point-in-Time-Wiederherstellung) für Ihre Anwendung nicht ausreicht, können Sie sie verlängern, indem Sie eine Richtlinie für die langfristige Aufbewahrung (LTR) für die Datenbanken konfigurieren. Weitere Informationen finden Sie unter [Automatisierte Sicherungen](sql-database-automated-backups.md) und [Langfristiges Aufbewahren von Sicherungen](sql-database-long-term-retention.md).
 
@@ -57,19 +57,19 @@ Verwenden Sie automatisierte Sicherungen als Mechanismus für Geschäftskontinui
 
 Wenn Sie eine schnellere Wiederherstellung benötigen, verwenden Sie die [aktive Georeplikation](sql-database-geo-replication-overview.md) (im nächsten Abschnitt beschrieben). Wenn Sie Daten, die älter sind als 35 Tage, wiederherstellen müssen, verwenden Sie die [langfristige Aufbewahrung](sql-database-long-term-retention.md). 
 
-### <a name="use-active-geo-replication-and-auto-failover-groups-in-preview-to-reduce-recovery-time-and-limit-data-loss-associated-with-a-recovery"></a>Verwenden von aktiver Georeplikation und automatischen Failovergruppen (in der Vorschau) zum Verkürzen der Wiederherstellungszeit und Begrenzen von Datenverlusten im Zusammenhang mit einer Wiederherstellung
+### <a name="use-active-geo-replication-and-auto-failover-groups-to-reduce-recovery-time-and-limit-data-loss-associated-with-a-recovery"></a>Verwenden von aktiver Georeplikation und automatischen Failovergruppen zum Verkürzen der Wiederherstellungszeit und Begrenzen von mit einer Wiederherstellung verknüpften Datenverlusten
 
 Zusätzlich zu Datenbanksicherungen zur Wiederherstellung von Datenbanken nach einer Unterbrechung des Geschäftsbetriebs können Sie die [aktive Georeplikation](sql-database-geo-replication-overview.md) verwenden, um eine Datenbank so zu konfigurieren, dass sie über bis zu vier lesbare sekundäre Datenbanken in den Regionen Ihrer Wahl verfügt. Diese sekundären Datenbanken werden mithilfe eines asynchronen Replikationsmechanismus mit der primären Datenbank synchronisiert. Dieses Feature dient zum Schutz vor Unterbrechungen des Geschäftsbetriebs bei einem Rechenzentrumsausfall oder während eines Anwendungsupgrades. Die aktive Georeplikation kann auch verwendet werden, um die Leistung schreibgeschützter Abfragen für geografisch verteilte Benutzer zu verbessern.
 
-Zum Aktivieren des automatisierten und transparenten Failovers organisieren Sie Ihre georeplizierten Datenbanken unter Verwendung des SQL Database-Features [Automatische Failovergruppen](sql-database-geo-replication-overview.md) (in der Vorschau) in Gruppen.
+Zum Aktivieren des automatisierten und transparenten Failovers organisieren Sie Ihre georeplizierten Datenbanken unter Verwendung des SQL-Datenbank-Features [Automatische Failovergruppen](sql-database-geo-replication-overview.md) in Gruppen.
 
-Wenn die primäre Datenbank unerwartet offline geschaltet wird oder Sie sie für Wartungsaktivitäten offline schalten müssen, können Sie schnell eine sekundäre Datenbank zur primären hochstufen (dies wird als Failover bezeichnet) und Anwendungen so konfigurieren, dass sie eine Verbindung mit dieser hochgestuften Datenbank herstellen. Wenn Ihre Anwendung über den Failovergruppenlistener eine Verbindung mit den Datenbanken herstellt, brauchen Sie die Konfiguration der SQL-Verbindungszeichenfolge nach dem Failover nicht zu ändern. Bei einem geplanten Failover entstehen keine Datenverluste. Bei einem ungeplanten Failover können aufgrund der Natur der asynchronen Replikation einige wenige Daten aus Transaktionen verloren gehen, die vor sehr kurzer Zeit erfolgt sind. Mit automatischen Failovergruppen (in der Vorschau) können Sie die Failoverrichtlinie anpassen, um potenzielle Datenverluste zu minimieren. Nach einem Failover können Sie zu einem späteren Zeitpunkt ein Failback durchführen – entweder gemäß einem definierten Zeitplan oder sobald das Rechenzentrum wieder online ist. In allen Fällen können die Benutzer die Datenbank für einen kurzen Zeitraum nicht nutzen und müssen die Verbindung erneut herstellen.
+Wenn die primäre Datenbank unerwartet offline geschaltet wird oder Sie sie für Wartungsaktivitäten offline schalten müssen, können Sie schnell eine sekundäre Datenbank zur primären hochstufen (dies wird als Failover bezeichnet) und Anwendungen so konfigurieren, dass sie eine Verbindung mit dieser hochgestuften Datenbank herstellen. Wenn Ihre Anwendung über den Failovergruppenlistener eine Verbindung mit den Datenbanken herstellt, brauchen Sie die Konfiguration der SQL-Verbindungszeichenfolge nach dem Failover nicht zu ändern. Bei einem geplanten Failover entstehen keine Datenverluste. Bei einem ungeplanten Failover können aufgrund der Natur der asynchronen Replikation einige wenige Daten aus Transaktionen verloren gehen, die vor sehr kurzer Zeit erfolgt sind. Mit automatischen Failovergruppen können Sie die Failoverrichtlinie anpassen, um potenzielle Datenverluste zu minimieren. Nach einem Failover können Sie zu einem späteren Zeitpunkt ein Failback durchführen – entweder gemäß einem definierten Zeitplan oder sobald das Rechenzentrum wieder online ist. In allen Fällen können die Benutzer die Datenbank für einen kurzen Zeitraum nicht nutzen und müssen die Verbindung erneut herstellen.
 
 > [!IMPORTANT]
-> Um die aktive Georeplikation und automatische Failovergruppen (in der Vorschau) verwenden zu können, müssen Sie entweder der Besitzer des Abonnements sein oder über Administratorberechtigungen in SQL Server verfügen. Zum Konfigurieren und Durchführen des Failovers können Sie das Azure-Portal, PowerShell oder die REST-API mit den Berechtigungen des Azure-Abonnements oder Transact-SQL mit SQL Server-Berechtigungen verwenden.
+> Um die aktive Georeplikation und automatische Failovergruppen verwenden zu können, müssen Sie entweder der Besitzer des Abonnements sein oder über Administratorberechtigungen in SQL Server verfügen. Zum Konfigurieren und Durchführen des Failovers können Sie das Azure-Portal, PowerShell oder die REST-API mit den Berechtigungen des Azure-Abonnements oder Transact-SQL mit SQL Server-Berechtigungen verwenden.
 > 
 
-Verwenden Sie die aktive Georeplikation und automatische Failovergruppen (in der Vorschau), wenn Ihre Anwendung einen Teil der folgenden Kriterien erfüllt:
+Verwenden Sie die aktive Georeplikation und automatische Failovergruppen, wenn Ihre Anwendung einen Teil der folgenden Kriterien erfüllt:
 
 * Sie ist geschäftskritisch.
 * Es ist eine Vereinbarung zum Servicelevel (SLA) vorhanden, die keine Ausfallzeit von 24 Stunden oder länger erlaubt.
@@ -126,7 +126,7 @@ Unabhängig von der Funktion für die Geschäftskontinuität, die Sie einsetzen 
 Wenn die Vorbereitung nicht sorgfältig durchgeführt wird, dauert es länger, Anwendungen nach einem Failover oder einer Datenbank-Wiederherstellung wieder online zu schalten. Zudem werden voraussichtlich weitere Problembehandlungsmaßnahmen zu einem Zeitpunkt erforderlich sein, zu dem Sie bereits unter Stress stehen – eine ungünstige Kombination.
 
 ### <a name="fail-over-to-a-geo-replicated-secondary-database"></a>Failover auf eine georeplizierte sekundäre Datenbank
-Wenn Sie aktive Georeplikation und automatische Failovergruppen (in der Vorschau) als Wiederherstellungsmechanismus verwenden, können Sie eine Richtlinie für automatisches Failover konfigurieren oder [manuelles Failover](sql-database-disaster-recovery.md#fail-over-to-geo-replicated-secondary-server-in-the-failover-group) verwenden. Sobald das Failover initiiert wurde, bewirkt es, dass die sekundäre Datenbank zur neuen primären Datenbank wird und neue Transaktionen aufzeichnen sowie auf Abfragen antworten kann. Hierbei entsteht ein minimaler Datenverlust für noch nicht replizierte Daten. Informationen zum Entwerfen des Failoverprozesses finden Sie unter [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
+Wenn Sie aktive Georeplikation und automatische Failovergruppen als Wiederherstellungsmechanismus verwenden, können Sie eine Richtlinie für automatisches Failover konfigurieren oder [manuelles Failover](sql-database-disaster-recovery.md#fail-over-to-geo-replicated-secondary-server-in-the-failover-group) verwenden. Sobald das Failover initiiert wurde, bewirkt es, dass die sekundäre Datenbank zur neuen primären Datenbank wird und neue Transaktionen aufzeichnen sowie auf Abfragen antworten kann. Hierbei entsteht ein minimaler Datenverlust für noch nicht replizierte Daten. Informationen zum Entwerfen des Failoverprozesses finden Sie unter [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
 
 > [!NOTE]
 > Wenn das Rechenzentrum wieder online geschaltet wird, werden die alten primären Datenbanken automatisch wieder mit der neuen primären Datenbank verbunden und damit zu sekundären Datenbanken. Wenn Sie die primäre Datenbank wieder in den ursprünglichen Bereich verschieben müssen, können Sie manuell ein geplantes Failover initiieren (Failback). 

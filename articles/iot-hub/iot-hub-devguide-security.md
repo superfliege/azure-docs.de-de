@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/12/2018
+ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 43eb988915fb917923ab968d22b9b7f0ee36c0f5
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 754449dcf759820c8bb99d082c3a5ba2792f02c8
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444394"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126322"
 ---
 # <a name="control-access-to-iot-hub"></a>Verwalten des Zugriffs auf IoT Hub
 
@@ -35,7 +35,7 @@ Sie müssen über Berechtigungen für den Zugriff auf IoT Hub-Endpunkte verfüge
 
 Sie können [Berechtigungen](#iot-hub-permissions) auf folgende Weise gewähren:
 
-* **Richtlinien für den gemeinsamen Zugriff auf IoT Hub-Ebene**. SAS-Richtlinien können eine beliebige Kombination von [Berechtigungen](#iot-hub-permissions) gewähren. Sie können Richtlinien im [Azure-Portal][lnk-management-portal] oder programmgesteuert mithilfe von [IoT Hub-Ressourcenanbieter-REST-APIs][lnk-resource-provider-apis] definieren. Ein neu erstellter IoT Hub verfügt über die folgenden Standardrichtlinien:
+* **Richtlinien für den gemeinsamen Zugriff auf IoT Hub-Ebene**. SAS-Richtlinien können eine beliebige Kombination von [Berechtigungen](#iot-hub-permissions) gewähren. Sie können Richtlinien im [Azure-Portal][lnk-management-portal], programmgesteuert mithilfe von [IoT Hub-Ressourcenanbieter-REST-APIs][lnk-resource-provider-apis] oder mit dem CLI-Befehl [az iot hub policy](https://docs.microsoft.com/cli/azure/iot/hub/policy?view=azure-cli-latest) definieren. Ein neu erstellter IoT Hub verfügt über die folgenden Standardrichtlinien:
   
   | SAS-Richtlinie | Berechtigungen |
   | -------------------- | ----------- |
@@ -91,7 +91,9 @@ HTTPS implementiert die Authentifizierung, indem ein gültiges Token in den Anfo
 
 Benutzername (bei der Geräte-ID wird Groß-/Kleinschreibung berücksichtigt): `iothubname.azure-devices.net/DeviceId`
 
-Kennwort (SAS-Token mit dem Tool [Device Explorer][lnk-device-explorer] generieren): `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
+Kennwort (Sie können ein SAS-Token mit dem Tool [Device Explorer][lnk-device-explorer] oder dem CLI-Erweiterungsbefehl [az iot hub generate-sas-token](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token) generieren):
+
+`SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
 > [!NOTE]
 > Die [Azure IoT SDKs][lnk-sdks] generieren automatisch Token, wenn eine Verbindung mit dem Dienst hergestellt wird. In einigen Fällen unterstützen die Azure IoT SDKs nicht alle Protokolle oder Authentifizierungsmethoden.
@@ -268,7 +270,7 @@ Das Ergebnis, das Zugriff auf alle Funktionen für „device1“ gewährt wird, 
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> Es ist möglich, mit dem .NET-[Geräteexplorer][lnk-device-explorer]-Tool oder dem plattformübergreifenden, Python-basierten Befehlszeilen-Hilfsprogramm [IoT-Erweiterung für Azure CLI 2.0][lnk-IoT-extension-CLI-2.0] ein SAS-Token zu generieren.
+> Es ist möglich, mit dem .NET-Tool [Device Explorer][lnk-device-explorer], dem plattformübergreifenden, Python-basierten Befehlszeilenhilfsprogramm [IoT-Erweiterung für Azure CLI 2.0][lnk-IoT-extension-CLI-2.0] oder der [Azure IoT Toolkit-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) ein SAS-Token zu generieren.
 
 ### <a name="use-a-shared-access-policy"></a>Verwenden einer SAS-Richtlinie
 
@@ -308,7 +310,7 @@ Ein Protokollgateway könnte das gleiche Token für alle Geräte verwenden, inde
 
 Dienstkomponenten können nur Sicherheitstoken mithilfe von SAS-Richtlinien generieren, die die entsprechenden Berechtigungen erteilen, wie bereits erläutert.
 
-Im Anschluss finden Sie die Dienstfunktionen, die für die Endpunkte verfügbar gemacht werden:
+Hier sind die Dienstfunktionen, die für die Endpunkte verfügbar gemacht werden:
 
 | Endpunkt | Funktionalität |
 | --- | --- |
@@ -348,11 +350,13 @@ Unterstützte Zertifikate:
 
 Ein Gerät verwendet entweder ein X.509-Zertifikat oder ein Sicherheitstoken für die Authentifizierung, aber nicht beides.
 
-Weitere Informationen zur Authentifizierung per Zertifizierungsstelle finden Sie unter [Konzeptgrundlagen der X.509-Zertifizierungsstellenzertifikate in der IoT-Branche](iot-hub-x509ca-concept.md).
+Weitere Informationen zur Authentifizierung per Zertifizierungsstelle finden Sie unter [Geräteauthentifizierung mit X.509-Zertifikaten](iot-hub-x509ca-overview.md).
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>Registrieren eines X.509-Zertifikats für ein Gerät
 
 Das [Azure IoT-Dienst-SDK für C#][lnk-service-sdk] (mindestens Version 1.0.8) unterstützt die Registrierung von Geräten, die ein X.509-Zertifikat für die Authentifizierung verwenden. Andere APIs wie beispielsweise für den Import/Export von Geräten unterstützen ebenfalls X.509-Zertifikate.
+
+Sie können auch den CLI-Erweiterungsbefehl [az iot hub device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) verwenden, um X.509-Zertifikate für Geräte zu konfigurieren.
 
 ### <a name="c-support"></a>C\#-Unterstützung
 

@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 06/26/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 6b217690b88f303268f5abe66abb7868711d3125
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 8032fd2a0150597c55178648511c80233e63a911
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045091"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054725"
 ---
 # <a name="develop-and-debug-nodejs-modules-with-azure-iot-edge-for-visual-studio-code"></a>Entwickeln und Debuggen von Node.js-Modulen mit Azure IoT Edge für Visual Studio Code
 
@@ -43,7 +43,7 @@ Um das Modul auf einem Gerät zu testen, benötigen Sie einen aktiven IoT Hub mi
 
 ## <a name="create-a-new-solution-template"></a>Erstellen einer neuen Lösungsvorlage
 
-Die folgenden Schritte zeigen, wie Sie mithilfe von Visual Studio Code und der Azure IoT Edge-Erweiterung ein IoT Edge-Modul auf Basis von .NET Core 2.0 erstellen. Als Erstes erstellen Sie eine Projektmappe, und anschließend generieren Sie das erste Modul in dieser Projektmappe. Jede Projektmappe kann mehrere Module enthalten. 
+Die folgenden Schritte zeigen, wie Sie mithilfe von Visual Studio Code und der Azure IoT Edge-Erweiterung ein IoT Edge-Modul auf Basis von .NET Core 2.0 erstellen. Als Erstes erstellen Sie eine Projektmappe, dann generieren Sie das erste Modul in dieser Projektmappe. Jede Projektmappe kann mehrere Module enthalten. 
 
 1. Klicken Sie in Visual Studio Code auf **Ansicht** > **Integriertes Terminal**.
 2. Geben Sie im integrierten Terminal den folgenden Befehl ein, um die aktuelle Version der Azure IoT Edge-Modulvorlage für Node.js zu installieren (bzw. zu aktualisieren):
@@ -52,7 +52,7 @@ Die folgenden Schritte zeigen, wie Sie mithilfe von Visual Studio Code und der A
    npm install -g yo generator-azure-iot-edge-module
    ```
 3. Klicken Sie in Visual Studio Code auf **Ansicht** > **Befehlspalette**. 
-4. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: New IoT Edge Solution** (Azure IoT Edge: Neue IoT Edge-Projektmappe) ein, und führen Sie ihn aus.
+4. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: New IoT Edge Solution** ein, und führen Sie ihn aus.
 
    ![Ausführen einer neuen IoT Edge-Projektmappe](./media/how-to-develop-csharp-module/new-solution.png)
 
@@ -65,10 +65,20 @@ Die folgenden Schritte zeigen, wie Sie mithilfe von Visual Studio Code und der A
 Visual Studio Code verwendet die angegebenen Informationen, erstellt eine IoT Edge-Projektmappe und lädt diese in einem neuen Fenster.
 
 In der Projektmappe sind drei Elemente enthalten: 
-* Ein Ordner **.vscode**, der Debugkonfigurationen enthält.
-* Ein Ordner **modules**, der Unterordner für jedes Modul enthält. Im Moment gibt es nur einen Ordner, aber Sie können über die Befehlspalette mit dem Befehl **Azure IoT Edge: Add IoT Edge Module** weitere hinzufügen. 
+* Einen Ordner **.vscode**, der Debugkonfigurationen enthält.
+* Einen Ordner **modules**, der Unterordner für jedes Modul enthält. Im Moment gibt es nur einen Ordner, aber Sie können über die Befehlspalette mit dem Befehl **Azure IoT Edge: Add IoT Edge Module** weitere hinzufügen. 
 * Eine **.env**-Datei, in der Ihre Umgebungsvariablen aufgeführt werden. Wenn Sie ACR als Registrierung verwenden, befinden sich darin derzeit der ACR-Benutzername und das Kennwort. 
+
+   >[!NOTE]
+   >Die Umgebungsdatei wird nur erstellt, wenn Sie ein Imagerepository für das Modul angeben. Wenn Sie die „localhost“-Standardeinstellungen zum lokalen Testen und Debuggen akzeptiert haben, müssen Sie keine Umgebungsvariablen deklarieren. 
+
 * Eine Datei **deployment.template.json**, in der Ihr neues Modul zusammen mit dem Beispielmodul **tempSensor**, mit dem Daten zum Testen simuliert werden, aufgeführt ist. Weitere Informationen zur Funktionsweise von Bereitstellungsmanifesten finden Sie unter [Verstehen, wie IoT Edge-Module verwendet, konfiguriert und wiederverwendet werden können](module-composition.md).
+
+## <a name="devlop-your-module"></a>Entwickeln Ihres Moduls
+
+Der im Lieferumfang der Projektmappe enthaltene standardmäßige Azure-Funktionscode befindet sich unter **modules** > **\<Name Ihres Moduls\>** > **app.js**. Das Modul und die Datei „deployment.template.json“ werden so eingerichtet, dass Sie die Projektmappe erstellen, in Ihre Containerregistrierung verschieben und zum Starten des Tests für ein Gerät bereitstellen können, ohne Code ändern zu müssen. Das Modul ist so konzipiert, dass es einfach eine Eingabe aus einer Quelle akzeptiert (in diesem Fall das Daten simulierende tempSensor-Modul) und IoT Hub übergibt. 
+
+Wenn Sie bereit sind, die Node.js-Vorlage mit Ihrem eigenen Code anzupassen, erstellen Sie mit den [Azure IoT Hub SDKs](../iot-hub/iot-hub-devguide-sdks.md) Module, die die wesentlichen Anforderungen für IoT-Lösungen wie Sicherheit, Geräteverwaltung und Zuverlässigkeit berücksichtigen. 
 
 ## <a name="build-and-deploy-your-module-for-debugging"></a>Erstellen und Bereitstellen Ihres Moduls zum Debuggen
 
@@ -104,5 +114,6 @@ Im obigen Beispiel wird veranschaulicht, wie Sie Node.js-IoT Edge-Module in Cont
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lesen Sie nach dem Erstellen des Moduls die Informationen unter [Bereitstellen von Azure IoT Edge-Modulen mithilfe von Visual Studio Code](how-to-deploy-modules-vscode.md).
+Nachdem Sie das Modul erstellt haben, erfahren Sie, wie Sie [Azure IoT Edge-Module aus Visual Studio Code bereitstellen](how-to-deploy-modules-vscode.md).
 
+Weitere Informationen zum Entwickeln Ihrer Module für Ihre IoT Edge-Geräte finden Sie unter [Verstehen und Verwenden von Azure IoT Hub SDKs](../iot-hub/iot-hub-devguide-sdks.md).

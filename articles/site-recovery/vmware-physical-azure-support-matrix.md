@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 07/13/2018
 ms.author: raynew
-ms.openlocfilehash: cb01e71ae45ae8a7e37e8ab5cdf60e3b3fcb9983
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: a02218922a4d4238abf752190293a788504e0cfb
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919759"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070908"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Unterstützungsmatrix für die Replikation von VMware-VMs und physischen Servern in Azure
 
@@ -24,13 +24,13 @@ Dieser Artikel enthält eine Übersicht über die unterstützten Komponenten und
 **Szenario** | **Details**
 --- | ---
 Virtuelle VMware-Computer | Replikation lokaler VMware-VMs in Azure. Dieses Szenario können Sie über das Azure-Portal oder mit [PowerShell](vmware-azure-disaster-recovery-powershell.md) bereitstellen.
-Physische Server | Die Replikation lokaler physischen Windows-/Linux-Server in Azure. Dieses Szenario können Sie im Azure-Portal bereitstellen.
+Physische Server | Die Replikation lokaler physischer Windows-/Linux-Server in Azure. Dieses Szenario können Sie im Azure-Portal bereitstellen.
 
 ## <a name="on-premises-virtualization-servers"></a>Lokale Virtualisierungsserver
 
 **Server** | **Anforderungen** | **Details**
 --- | --- | ---
-VMware | vCenter Server 6.5, 6.0 oder 5.5 bzw. vSphere 6.5, 6.0 oder 5.5 | Es wird die Verwendung eines vCenter-Servers empfohlen.<br/><br/> Ihre vSphere-Hosts und vCenter-Server sollten sich im gleichen Netzwerk befinden wie der Prozessserver. Die Prozessserverkomponenten werden standardmäßig auf dem Konfigurationsserver ausgeführt. Daher wird der Konfigurationsserver in diesem Netzwerk eingerichtet – es sei denn, Sie richten einen dedizierten Prozessserver ein.
+VMware | vCenter Server 6.7, 6.5, 6.0 oder 5.5 bzw. vSphere 6.7, 6.5, 6.0 oder 5.5 | Es wird die Verwendung eines vCenter-Servers empfohlen.<br/><br/> Ihre vSphere-Hosts und vCenter-Server sollten sich im gleichen Netzwerk befinden wie der Prozessserver. Die Prozessserverkomponenten werden standardmäßig auf dem Konfigurationsserver ausgeführt. Daher wird der Konfigurationsserver in diesem Netzwerk eingerichtet – es sei denn, Sie richten einen dedizierten Prozessserver ein.
 Physisch | N/V
 
 ## <a name="site-recovery-configuration-server"></a>Site Recovery-Konfigurationsserver
@@ -61,8 +61,9 @@ Site Recovery unterstützt die Replikation beliebiger Workloads, die auf einem u
 **Komponente** | **Details**
 --- | ---
 Computereinstellungen | Computer, die in Azure repliziert werden sollen, müssen die [Azure-Anforderungen](#azure-vm-requirements) erfüllen.
-Windows-Betriebssystem | Windows Server 2016, 64-Bit (Server Core, Server mit Desktopdarstellung), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 mit mindestens SP1. Windows 2016 Nano Server wird nicht unterstützt.
-Linux-Betriebssystem | Red Hat Enterprise Linux: 5.2 bis 5.11, 6.1 bis 6.9, 7.0 bis 7.4 <br/><br/>CentOS: 5.2 bis 5.11, 6.1 bis 6.9, 7.0 bis 7.4 <br/><br/>Ubuntu 14.04 LTS Server[ (unterstützte Kernel-Versionen)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS Server[ (unterstützte Kernel-Versionen)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (unterstützte Kernel-Versionen)](#debian-kernel-versions)<br/><br/>Oracle Enterprise Linux 6.4, 6.5, unter dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird. <br/><br/>SUSE Linux Enterprise Server 11 SP3 oder SUSE Linux Enterprise Server 11 SP4 <br/><br/>Das Upgrade replizierter Computer von SP3 auf SP4 wird nicht unterstützt. Um ein Upgrade auszuführen, deaktivieren Sie die Replikation und aktivieren Sie sie nach dem Upgrade erneut.
+Windows-Betriebssystem | Windows Server 2016, 64-Bit (Server Core, Server mit Desktopdarstellung), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 mit mindestens SP1. </br></br>  [Windows Server 2008 mit mindestens SP2 – 32-Bit und 64-Bit](migrate-tutorial-windows-server-2008.md) (nur Migration). </br></br> * *Windows 2016 Nano Server wird nicht unterstützt.*
+Linux-Betriebssystem | Red Hat Enterprise Linux: 5.2 bis 5.11, 6.1 bis 6.9, 7.0 bis 7.5 <br/><br/>CentOS: 5.2 bis 5.11, 6.1 bis 6.9, 7.0 bis 7.5 <br/><br/>Ubuntu 14.04 LTS Server[ (unterstützte Kernel-Versionen)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS Server[ (unterstützte Kernel-Versionen)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (unterstützte Kernel-Versionen)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1, SP2, SP3 [ (unterstützte Kernelversionen)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3 oder SUSE Linux Enterprise Server 11 SP4 * </br></br>Oracle Enterprise Linux 6.4, 6.5, unter dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird. <br/><br/></br>* *Das Upgrade replizierter Computer von SUSE Linux Enterprise Server 11 SP3 auf SP4 wird nicht unterstützt. Um ein Upgrade auszuführen, deaktivieren Sie die Replikation, und aktivieren Sie sie nach dem Upgrade erneut.*
+
 
 >[!NOTE]
 >
@@ -70,21 +71,22 @@ Linux-Betriebssystem | Red Hat Enterprise Linux: 5.2 bis 5.11, 6.1 bis 6.9, 7.0 
 >
 > - Das Aktualisieren geschützter Computer über die wichtigsten Linux-Distributionsversionen hinweg wird nicht unterstützt. Um ein Upgrade auszuführen, deaktivieren Sie die Replikation, aktualisieren das Betriebssystem und aktivieren die Replikation erneut.
 >
+> - Auf Servern mit Red Hat Enterprise Linux 5.2 bis 5.11 oder CentOS 5.2 bis 5.11 müssen die Linux Integration Services-Komponenten (LIS) installiert sein, sodass die Computer in Azure starten können.
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu-Kernelversionen
 
 
 **Unterstütztes Release** | **Azure Site Recovery Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
+14.04 LTS | 9.18 | 3.13.0-24-generic bis 3.13.0-153-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-130-generic |
 14.04 LTS | 9.17 | 3.13.0-24-generic bis 3.13.0-149-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-127-generic |
 14.04 LTS | 9.16 | 3.13.0-24-generic bis 3.13.0-144-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-119-generic |
 14.04 LTS | 9.15 | 3.13.0-24-generic bis 3.13.0-144-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-119-generic |
-14.04 LTS | 9.14 | 3.13.0-24-generic bis 3.13.0-142-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-116-generic |
 |||
+16.04 LTS | 9.18 | 4.4.0-21-generic bis 4.4.0-130-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic |
 16.04 LTS | 9.17 | 4.4.0-21-generic bis 4.4.0-127-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-43-generic |
 16.04 LTS | 9.16 | 4.4.0-21-generic bis 4.4.0-119-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-38-generic |
 16.04 LTS | 9.15 | 4.4.0-21-generic bis 4.4.0-119-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-38-generic |
-16.04 LTS | 9.14 | 4.4.0-21-generic bis 4.4.0-116-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-36-generic |
 
 
 ### <a name="debian-kernel-versions"></a>Debian-Kernelversionen
@@ -92,13 +94,18 @@ Linux-Betriebssystem | Red Hat Enterprise Linux: 5.2 bis 5.11, 6.1 bis 6.9, 7.0 
 
 **Unterstütztes Release** | **Azure Site Recovery Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
-Debian 7 | 9.17 | 3.2.0-4-amd64 bis 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
-Debian 7 | 9.14, 9.15, 9.16 | 3.2.0-4-amd64 bis 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.17, 9.18 | 3.2.0-4-amd64 bis 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.15, 9.16 | 3.2.0-4-amd64 bis 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
 |||
-Debian 8 | 9.17 | 3.16.0-4-amd64 bis 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.6-amd64 |
+Debian 8 | 9.17, 9.18 | 3.16.0-4-amd64 bis 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.6-amd64 |
 Debian 8 | 9.16 | 3.16.0-4-amd64 bis 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.6-amd64 |
-Debian 8 | 9.14, 9.15 | 3.16.0-4-amd64 bis 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.5-amd64 |
+Debian 8 | 9.15 | 3.16.0-4-amd64 bis 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.5-amd64 |
 
+### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>SUSE Linux Enterprise Server 12 – unterstützte Kernelversionen
+
+**Release** | **Mobility Service-Version** | **Kernelversion** |
+--- | --- | --- |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.18 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.96-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.85-default</br></br>SP3 4.4.73-5-default bis 4.4.138-94.39-default |
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux-Dateisysteme/-Gastspeicher
 
@@ -135,39 +142,39 @@ Mehrere NICs im Gast-/Servernetzwerk | Ja.
 
 **Komponente** | **Unterstützt**
 --- | ---
-Azure ExpressRoute | Ja
-ILB | Ja
-ELB | Ja
-Azure Traffic Manager | Ja
-Multi-NIC | Ja
-Reservierte IP-Adresse | Ja
-IPv4 | Ja
-Quell-IP-Adresse beibehalten | Ja
-Azure Virtual Network-Dienstendpunkte<br/> (ohne Azure Storage-Firewalls) | Ja
+Azure ExpressRoute | JA
+ILB | JA
+ELB | JA
+Azure Traffic Manager | JA
+Multi-NIC | JA
+Reservierte IP-Adresse | JA
+IPv4 | JA
+Quell-IP-Adresse beibehalten | JA
+Azure Virtual Network-Dienstendpunkte<br/> (ohne Azure Storage-Firewalls) | JA
 Beschleunigter Netzwerkbetrieb | Nein 
 
 ## <a name="storage"></a>Speicher
 **Komponente** | **Unterstützt**
 --- | ---
 Host-NFS | Ja für VMware<br/><br/> Nein für physische Server
-Host-SAN (iSCSI/FC) | Ja
+Host-SAN (iSCSI/FC) | JA
 Host-vSAN | Ja für VMware<br/><br/> Nicht verfügbar für physische Server
 Multipfad auf dem Host (MPIO) | Ja, getestet mit: Microsoft DSM, EMC PowerPath 5.7 SP4, EMC PowerPath DSM für CLARiiON
 Virtuelle Hostvolumes (VVols) | Ja für VMware<br/><br/> Nicht verfügbar für physische Server
-Gast-/Server-VMDK | Ja
+Gast-/Server-VMDK | JA
 Gast-/Server-EFI/UEFI| Teilweise (nur bei Migration zu Azure für virtuelle VMware-Computer mit Windows Server 2012 und höher) </br></br> Siehe Hinweis am Ende der Tabelle
 Freigegebener Gast-/Server-Clusterdatenträger | Nein 
 Verschlüsselter Gast-/Serverdatenträger | Nein 
 Gast-/Server-NFS | Nein 
 Gast/Server-SMB 3.0 | Nein 
-Gast-/Server-RDM | Ja<br/><br/> Nicht verfügbar für physische Server
-Gast-/Serverdatenträger > 1 TB | Ja<br/><br/>Bis zu 4.095 GB
-Gast-/Serverdatenträger mit einer logischen Sektorgröße von 4K und einer physischen Sektorgröße von 4k | Ja
-Gast-/Serverdatenträger mit einer logischen Sektorgröße von 4K und einer physischen Sektorgröße von 512 Bytes | Ja
-Gast-/Servervolume mit Stripesetdatenträgern > 4 TB <br><br/>Logische Volumeverwaltung (Logical Volume Management, LVM)| Ja
+Gast-/Server-RDM | JA<br/><br/> Nicht verfügbar für physische Server
+Gast-/Serverdatenträger > 1 TB | JA<br/><br/>Bis zu 4.095 GB
+Gast-/Serverdatenträger mit einer logischen Sektorgröße von 4K und einer physischen Sektorgröße von 4k | JA
+Gast-/Serverdatenträger mit einer logischen Sektorgröße von 4K und einer physischen Sektorgröße von 512 Bytes | JA
+Gast-/Servervolume mit Stripesetdatenträgern > 4 TB <br><br/>Logische Volumeverwaltung (Logical Volume Management, LVM)| JA
 Gast/Server – Speicherplätze | Nein 
 Gast/Server – Datenträger bei laufendem Systembetrieb hinzufügen/entfernen | Nein 
-Gast/Server – Datenträger ausschließen | Ja
+Gast/Server – Datenträger ausschließen | JA
 Gast-/Servermultipfad (MPIO) | Nein 
 
 > [!NOTE]
@@ -182,14 +189,14 @@ Gast-/Servermultipfad (MPIO) | Nein
 
 **Komponente** | **Unterstützt**
 --- | ---
-Lokal redundanter Speicher | Ja
-Georedundanter Speicher | Ja
-Georedundanter Speicher mit Lesezugriff | Ja
+Lokal redundanter Speicher | JA
+Georedundanter Speicher | JA
+Georedundanter Speicher mit Lesezugriff | JA
 Speicherebene „Kalt“ | Nein 
 Speicherebene „Heiß“| Nein 
 Blockblobs | Nein 
-Verschlüsselung ruhender Daten (Speicherdienstverschlüsselung)| Ja
-Storage Premium | Ja
+Verschlüsselung ruhender Daten (Speicherdienstverschlüsselung)| JA
+Storage Premium | JA
 Import-/Exportdienst | Nein 
 Azure Storage-Firewalls für virtuelle Netzwerke, konfiguriert im Zielspeicher-/Cachespeicherkonto (zum Speichern von Replikationsdaten) | Nein 
 Universelle v2-Speicherkonten (heiße und kalte Ebene) | Nein 
@@ -198,9 +205,9 @@ Universelle v2-Speicherkonten (heiße und kalte Ebene) | Nein
 
 **Feature** | **Unterstützt**
 --- | ---
-Verfügbarkeitsgruppen | Ja
-HUB | Ja
-Verwaltete Datenträger | Ja
+Verfügbarkeitsgruppen | JA
+HUB | JA
+Verwaltete Datenträger | JA
 
 ## <a name="azure-vm-requirements"></a>Azure-VM-Anforderungen
 

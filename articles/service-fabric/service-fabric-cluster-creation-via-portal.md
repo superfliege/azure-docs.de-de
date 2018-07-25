@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/09/2018
 ms.author: aljo
-ms.openlocfilehash: fbe3dde48fa1be79356ff1cb9e47c46832d8cdaa
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5d8f1d2634fd2efd624d1000f2fbc0400af4af11
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212754"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136807"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal
 > [!div class="op_single_selector"]
@@ -71,9 +71,7 @@ Zum Zweck der Anwendungssicherheit kann eine beliebige Anzahl zusätzlicher Zert
 * Verschlüsselung und Entschlüsselung von Anwendungskonfigurationswerten
 * Knotenübergreifende Verschlüsselung von Daten während der Replikation 
 
-Anwendungszertifikate können nicht konfiguriert werden, wenn Sie einen Cluster über das Azure-Portal erstellen. Um Anwendungszertifikate während der Einrichtung eines Clusters zu konfigurieren, müssen Sie [den Cluster mithilfe von Azure Resource Manager erstellen][create-cluster-arm]. Sie können dem Cluster nach der Erstellung auch Anwendungszertifikate hinzufügen.
-
-</a "create-cluster-portal" ></a>
+Anwendungszertifikate können nicht konfiguriert werden, wenn Sie [einen Cluster über das Azure-Portal erstellen](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/service-fabric/service-fabric-cluster-creation-via-portal.md). Um Anwendungszertifikate während der Einrichtung eines Clusters zu konfigurieren, müssen Sie [den Cluster mithilfe von Azure Resource Manager erstellen][create-cluster-arm]. Sie können dem Cluster nach der Erstellung auch Anwendungszertifikate hinzufügen.
 
 ## <a name="create-cluster-in-the-azure-portal"></a>Erstellen eines Clusters im Azure-Portal
 
@@ -121,7 +119,7 @@ Konfigurieren Sie die Clusterknoten. Knotentypen definieren die Größe, die Anz
 5. **Cluster mit einem Knoten und Cluster mit drei Knoten**: Diese sind nur für Testzwecke vorgesehen. Sie werden für ausgeführte Produktionsworkloads nicht unterstützt.
 6. Konfigurieren Sie benutzerdefinierte Endpunkte. In diesem Feld können Sie eine durch Trennzeichen getrennte Liste der Ports eingeben, die Sie über den Azure Load Balancer verfügbar machen möchten, damit Ihre Anwendungen auf das öffentliche Internet zugreifen können. Wenn Sie z.B. die Bereitstellung einer Webanwendung in Ihrem Cluster planen, geben Sie hier „80“ ein, um Datenverkehr in Ihren Cluster über Port 80 zuzulassen. Weitere Informationen zu Endpunkten finden Sie unter [Kommunikation mit Anwendungen][service-fabric-connect-and-communicate-with-services].
 7. Konfigurieren der **Diagnose**für Cluster. Die Diagnose ist standardmäßig in Ihrem Cluster aktiviert, um die Behebung von Problemen in Ihrem Cluster zu vereinfachen. Zum Deaktivieren der Diagnose ändern Sie den **Status** in **Aus**. Das Ausschalten der Diagnose wird **nicht** empfohlen. Wenn Sie bereits ein Application Insights-Projekt erstellt haben, geben Sie seinen Schlüssel an, damit die Anwendungsablaufverfolgungen an dieses Projekt weitergeleitet werden.
-8. Wählen Sie den gewünschten Fabric-Upgrademodus für Ihren Cluster aus. Wählen Sie **Automatisch**aus, wenn für Ihren Cluster automatisch ein Upgrade auf die neueste verfügbare Version durchgeführt werden soll. Legen Sie den Modus auf **Manuell**fest, wenn Sie selbst eine unterstützte Version auswählen möchten. Weitere Informationen zum Fabric-Upgrademodus finden Sie unter [Upgraden von Service Fabric-Clustern][service-fabric-cluster-upgrade].
+8. Wählen Sie den gewünschten Fabric-Upgrademodus für Ihren Cluster aus. Wählen Sie **Automatisch**aus, wenn für Ihren Cluster automatisch ein Upgrade auf die neueste verfügbare Version durchgeführt werden soll. Legen Sie den Modus auf **Manuell**fest, wenn Sie selbst eine unterstützte Version auswählen möchten. Weitere Informationen zum Fabric-Upgrademodus finden Sie im [Dokument zum Upgrade von Service Fabric-Clustern].[service-fabric-cluster-upgrade]
 
 > [!NOTE]
 > Es werden nur Cluster mit einer unterstützten Service Fabric-Version unterstützt. Bei Verwendung des **manuellen** Modus müssen Sie Ihren Cluster eigenverantwortlich auf eine unterstützte Version upgraden. > 
@@ -227,9 +225,7 @@ Sie verfügen jetzt über einen sicheren Cluster, der Zertifikate zur Verwaltung
 [service-fabric-connect-and-communicate-with-services]: service-fabric-connect-and-communicate-with-services.md
 [service-fabric-health-introduction]: service-fabric-health-introduction.md
 [service-fabric-reliable-services-backup-restore]: service-fabric-reliable-services-backup-restore.md
-<!--[remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md#remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node -->
-[remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md
-[service-fabric-cluster-upgrade]: service-fabric-cluster-upgrade.md
+<!--[remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md#remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node --> [remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md [service-fabric-cluster-upgrade]: service-fabric-cluster-upgrade.mdd
 
 <!--Image references-->
 [SearchforServiceFabricClusterTemplate]: ./media/service-fabric-cluster-creation-via-portal/SearchforServiceFabricClusterTemplate.png

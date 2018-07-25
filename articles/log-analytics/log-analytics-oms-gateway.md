@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: a13057769bad7fcad5f95e49102adac234ebcdb4
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: bbb17d1b47c5409d15a15a7461da981fa5e09f7e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868938"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056833"
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Verbinden von Computern ohne Internetzugriff über das OMS-Gateway
 Dieses Dokument beschreibt, wie die Kommunikation mit Azure Automation and Log Analytics über das OMS-Gateway konfiguriert wird, wenn direkt verbundene oder durch Operations Manager überwachte Computer keinen Internetzugang haben.  Das OMS-Gateway, ein HTTP-Weiterleitungsproxy, der HTTP-Tunnel mit dem Befehl HTTP CONNECT unterstützt, kann Daten erfassen und im Auftrag der Computer an Azure Automation und Log Analytics senden.  
@@ -89,8 +89,8 @@ Die folgende Tabelle zeigt die unterstützte Anzahl der Agents, die mit einem Ga
 
 |Gateway |Ungefähre Anzahl unterstützter Agents|  
 |--------|----------------------------------|  
-|- CPU: Intel XEON CPU E5-2660 v3 mit 2,6 GHz, 2 Kerne<br> - Arbeitsspeicher: 4 GB<br> - Netzwerkbandbreite: 1 GBit/s| 600|  
-|- CPU: Intel XEON CPU E5-2660 v3 mit 2,6 GHz, 4 Kerne<br> - Arbeitsspeicher: 8 GB<br> - Netzwerkbandbreite: 1 GBit/s| 1000|  
+|- CPU: Intel XEON CPU E5-2660 v3 \@ 2,6 GHz, 2 Kerne<br> - Arbeitsspeicher: 4 GB<br> - Netzwerkbandbreite: 1 GBit/s| 600|  
+|- CPU: Intel XEON CPU E5-2660 v3 \@ 2,6 GHz, 4 Kerne<br> - Arbeitsspeicher: 8 GB<br> - Netzwerkbandbreite: 1 GBit/s| 1000|  
 
 ## <a name="download-the-oms-gateway"></a>Herunterladen des OMS-Gateways
 

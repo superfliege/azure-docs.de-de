@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d7b92359e8875c281fd460f1f5307a7941c11c1f
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 99d69c7e49179a7849e274c830d539833da33786
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261575"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049451"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung
 
@@ -82,7 +82,8 @@ Einstellungen zum Ein-/Ausschalten
 | Typ            | Anzeigename | Feldname | Datentyp |
 | --------------- | ------------ | ---------- | --------- |
 | Geräteeigenschaft | Nummer   | dieNumber  | number    |
-| Text            | Speicherort     | location   | N/V       |
+| Geräteeigenschaft | Gerätestandort   | location  | location    |
+| Text            | Hergestellt in     | manufacturedIn   | N/V       |
 
 
 ### <a name="add-a-real-device"></a>Hinzufügen eines echten Geräts
@@ -91,8 +92,8 @@ Fügen Sie in Ihrer Azure IoT Central-Anwendung ein echtes Gerät aus der Gerät
 
 ## <a name="prepare-the-devkit-device"></a>Vorbereiten des DevKit-Geräts
 
-> [!TIP]
-> Anleitungen zur Problembehandlung bei DevKit-Geräten finden Sie unter [Einstieg in IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/get-started/).
+> [!NOTE]
+> Wenn Sie das Gerät bereits vorher verwendet, WLAN-Anmeldeinformationen gespeichert haben und das Gerät für ein anderes WLAN, eine andere Verbindungszeichenfolge oder eine andere Telemetriemessung neu konfigurieren möchten, drücken Sie am Board gleichzeitig die Tasten **A** und **B**. Wenn dies nicht funktioniert, drücken Sie **Rücksetztaste**, und wiederholen Sie den Vorgang.
 
 So bereiten Sie das DevKit-Gerät vor
 
@@ -127,7 +128,7 @@ So bereiten Sie das DevKit-Gerät vor
     - Das Kennwort für das WLAN. 
     - Den auf dem Geräte-LCD angezeigten PIN-Code. 
     - Die Verbindungszeichenfolge Ihres Geräts. 
-      Sie finden die Verbindungszeichenfolge unter `https://apps.iotcentral.com` -> `Device Explorer` -> `Device` -> `Select or Create a new Real Device` -> `Connect this device` (oben rechts). 
+      Sie finden die Verbindungszeichenfolge unter \@ `https://apps.iotcentral.com` -> `Device Explorer` -> `Device` -> `Select or Create a new Real Device` -> `Connect this device` (oben rechts). 
     - Wählen Sie alle verfügbaren Telemetriemessungen aus. 
 
 1. Nachdem Sie **Gerät konfiguriere** ausgewählt haben, wird diese Seite angezeigt:
@@ -136,8 +137,7 @@ So bereiten Sie das DevKit-Gerät vor
 
 1. Drücken Sie an Ihrem Gerät die **Rücksetztaste**.
 
-> [!NOTE]
-> Um das Gerät für ein anderes WLAN, eine andere Verbindungszeichenfolge oder eine andere Telemetriemessung zu konfigurieren, drücken Sie am Board gleichzeitig die Tasten **A** und **B**. Wenn dies nicht funktioniert, drücken Sie **Rücksetztaste**, und wiederholen Sie den Vorgang. 
+
 
 ## <a name="view-the-telemetry"></a>Anzeigen der Telemetrie
 
@@ -153,19 +153,24 @@ Sie können die Telemetriemessungen und die gemeldeten Eigenschaftswerte anzeige
 
 1. Verwenden Sie den **Device Explorer**, um die Seite **Messungen** für das reale MXChip-Gerät aufzurufen, das Sie hinzugefügt haben:
 
-    ![Navigieren zum realen Gerät](media/howto-connect-devkit/realdevice.png)
+    ![Navigieren zum realen Gerät](media/howto-connect-devkit/realdevicenew.png)
 
 1. Auf der Seite **Messungen** sehen Sie die vom MXChip-Gerät gesendeten Telemetriedaten:
 
-    ![Anzeigen der Telemetrie vom realen Gerät](media/howto-connect-devkit/realtelemetry.png)
+    ![Anzeigen der Telemetrie vom realen Gerät](media/howto-connect-devkit/devicetelemetrynew.png)
 
-1. Auf der Seite **Eigenschaften** sehen Sie die letzte vom Gerät gemeldete Nummer:
+1. Auf der Seite **Eigenschaften** sehen Sie die Nummer und den Gerätestandort, die zuletzt vom Gerät gemeldet wurden:
 
-    ![Anzeigen von Geräteeigenschaften](media/howto-connect-devkit/deviceproperties.png)
+    ![Anzeigen von Geräteeigenschaften](media/howto-connect-devkit/devicepropertynew.png)
 
 1. Auf der Seite **Einstellungen** können Sie die Einstellungen für das MXChip-Gerät aktualisieren:
 
-    ![Anzeigen der Geräteeinstellungen](media/howto-connect-devkit/settings.png)
+    ![Anzeigen der Geräteeinstellungen](media/howto-connect-devkit/devicesettingsnew.png)
+
+1. Auf der Seite **Dashboard** sehen Sie die Standortzuordnung.
+
+    ![Anzeigen des Gerätedashboards](media/howto-connect-devkit/devicedashboardnew.png)
+
 
 ## <a name="download-the-source-code"></a>Herunterladen des Quellcodes
 

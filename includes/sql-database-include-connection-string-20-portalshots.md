@@ -1,15 +1,24 @@
-
-<!--
-includes/sql-database-include-connection-string-20-portalshots.md
-
-Latest Freshness check:  2015-09-02 , GeneMi.
-
-## Connection string
--->
-
-
+---
+title: Abrufen der Verbindungszeichenfolge aus dem Azure-Portal
+description: Abrufen der Verbindungszeichenfolge aus dem Azure-Portal
+keywords: SQL-Verbindung,Verbindungszeichenfolge
+services: sql-database
+author: dalechen
+manager: craigg
+ms.service: sql-database
+ms.custom: develop apps
+ms.topic: include
+ms.date: 07/13/2018
+ms.author: ninarn
+ms.openlocfilehash: dab7623c86bea4e562313e618f238b9b33c0fdc5
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39117289"
+---
 ### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Abrufen der Verbindungszeichenfolge aus dem Azure-Portal
-Nutzen Sie das [Azure-Portal](https://portal.azure.com/) zum Abrufen der Verbindungszeichenfolge, die für die Interaktion des Clientprogramms mit Azure SQL-Datenbank benötigt wird. 
+Nutzen Sie das [Azure-Portal](https://portal.azure.com/) zum Abrufen der Verbindungszeichenfolge, die für die Interaktion des Clientprogramms mit Azure SQL-Datenbank benötigt wird.
 
 1. Wählen Sie **Alle Dienste** > **SQL-Datenbanken** aus.
 
@@ -17,14 +26,17 @@ Nutzen Sie das [Azure-Portal](https://portal.azure.com/) zum Abrufen der Verbind
 
 3. Wählen Sie die Zeile für die Datenbank aus.
 
-4. Nachdem das Blatt für die Datenbank angezeigt wird, können Sie der visuellen Einfachheit halber die Schaltflächen zum **Minimieren** auswählen, um die Blätter auszublenden, die Sie zum Durchsuchen und Filtern verwendet haben. 
-   
+4. Nachdem das Blatt für die Datenbank angezeigt wird, können Sie der visuellen Einfachheit halber die Schaltflächen zum **Minimieren** auswählen, um die Blätter auszublenden, die Sie zum Durchsuchen und Filtern verwendet haben.
+
 5. Wählen Sie auf dem Blatt für die Datenbank **Datenbankverbindungszeichenfolgen anzeigen** aus.
 
-6. Wenn Sie die ADO.NET-Verbindungsbibliothek verwenden wollen, kopieren Sie die Zeichenfolge mit der Bezeichnung **ADO**. 
-   
+6. Kopieren Sie die entsprechende Verbindungszeichenfolge. Wenn Sie also die ADO.NET-Verbindungsbibliothek verwenden möchten, kopieren Sie die entsprechende Zeichenfolge von der Registerkarte **ADO.NET**.
+
     ![Kopieren der ADO-Verbindungszeichenfolge für die Datenbank][20-CopyAdoConnectionString]
-7. Fügen Sie in dem ein oder anderen Format die Informationen der Verbindungszeichenfolge in den Clientcode für die Anwendung ein.
+
+7. Bearbeiten Sie Verbindungszeichenfolge nach Bedarf. Fügen Sie Ihr Kennwort in die Verbindungszeichenfolge ein, oder entfernen Sie „@&lt;Servername&gt;“ aus dem Benutzernamen, wenn der Benutzer- oder Servername zu lang ist.
+
+8. Fügen Sie in dem ein oder anderen Format die Informationen der Verbindungszeichenfolge in den Clientcode für die Anwendung ein.
 
 Weitere Informationen finden Sie unter [Verbindungszeichenfolgen und Konfigurationsdateien](http://msdn.microsoft.com/library/ms254494.aspx).
 

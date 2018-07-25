@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: data-sync
 ms.topic: conceptual
-ms.date: 07/01/2018
+ms.date: 07/16/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 56117953c6cd11b952a312e15cd4515895021e10
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 81616522f479175dc58188bd6acc4db4f9007756
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342656"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069383"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung
 
@@ -24,6 +24,16 @@ SQL-Datensynchronisierung ist ein Dienst, der auf Azure SQL-Datenbank basiert un
 ## <a name="architecture-of-sql-data-sync"></a>Architektur der SQL-Datensynchronisierung
 
 Grundlage der Datensynchronisierung ist eine Synchronisierungsgruppe. Eine Synchronisierungsgruppe ist eine Gruppe von Datenbanken, die Sie synchronisieren möchten.
+
+Für die Datensynchronisierung wird eine Topologie der Art „Nabe und Speiche“ genutzt, um Daten zu synchronisieren. Sie definieren eine der Datenbanken in der Synchronisierungsgruppe als Hub-Datenbank. Die übrigen Datenbanken sind Mitgliedsdatenbanken. Die Synchronisierung erfolgt nur zwischen dem Hub und den einzelnen Mitgliedern.
+-   Die **Hub-Datenbank** muss eine Azure SQL-Datenbank sein.
+-   Die **Mitgliedsdatenbanken** können entweder SQL-Datenbanken, lokale SQL Server-Datenbanken oder SQL Server-Instanzen auf virtuellen Azure-Computern sein.
+-   Die **Synchronisierungsdatenbank** enthält die Metadaten und das Protokoll für die Datensynchronisierung. Bei der Synchronisierungsdatenbank muss es sich um eine Azure SQL-Datenbank handeln, die in derselben Region wie die Hub-Datenbank angeordnet ist. Die Synchronisierungsdatenbank wird vom Kunden erstellt und befindet sich in seinem Besitz.
+
+> [!NOTE]
+> Wenn Sie eine lokale Datenbank als Mitgliedsdatenbank verwenden, ist es erforderlich, einen [lokalen Synchronisierungs-Agent zu installieren und zu konfigurieren](sql-database-get-started-sql-data-sync.md#add-on-prem).
+
+![Synchronisieren von Daten zwischen Datenbanken](media/sql-database-sync-data/sync-data-overview.png)
 
 Eine Synchronisierungsgruppe hat die folgenden Eigenschaften:
 
@@ -34,16 +44,6 @@ Eine Synchronisierungsgruppe hat die folgenden Eigenschaften:
 -   Mit dem **Synchronisierungsintervall** wird die Häufigkeit der Synchronisierung angegeben.
 
 -   Die **Richtlinie zur Konfliktlösung** ist eine Richtlinie auf Gruppenebene, die den Typ *Hub gewinnt* oder *Mitglied gewinnt* haben kann.
-
-Für die Datensynchronisierung wird eine Topologie der Art „Nabe und Speiche“ genutzt, um Daten zu synchronisieren. Sie definieren eine der Datenbanken in der Gruppe als Hub-Datenbank. Die übrigen Datenbanken sind Mitgliedsdatenbanken. Die Synchronisierung erfolgt nur zwischen dem Hub und den einzelnen Mitgliedern.
--   Die **Hub-Datenbank** muss eine Azure SQL-Datenbank sein.
--   Die **Mitgliedsdatenbanken** können entweder SQL-Datenbanken, lokale SQL Server-Datenbanken oder SQL Server-Instanzen auf virtuellen Azure-Computern sein.
--   Die **Synchronisierungsdatenbank** enthält die Metadaten und das Protokoll für die Datensynchronisierung. Bei der Synchronisierungsdatenbank muss es sich um eine Azure SQL-Datenbank handeln, die in derselben Region wie die Hub-Datenbank angeordnet ist. Die Synchronisierungsdatenbank wird vom Kunden erstellt und befindet sich in seinem Besitz.
-
-> [!NOTE]
-> Wenn Sie eine lokale Datenbank als Mitgliedsdatenbank verwenden, ist es erforderlich, einen [lokalen Synchronisierungs-Agent zu installieren und zu konfigurieren](sql-database-get-started-sql-data-sync.md#add-on-prem).
-
-![Synchronisieren von Daten zwischen Datenbanken](media/sql-database-sync-data/sync-data-overview.png)
 
 ## <a name="when-to-use-data-sync"></a>Verwenden der Datensynchronisierung
 

@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 06/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 4e9aac5f19fa75613dee2aba3853a0243d7d966b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 31fe210b87a052438956d813db0d104e0f2cdb6e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048259"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041248"
 ---
 # <a name="develop-an-iot-edge-solution-with-multiple-modules-in-visual-studio-code"></a>Entwickeln einer IoT Edge-Projektmappe mit mehreren Modulen in Visual Studio Code
 
@@ -74,5 +74,7 @@ Außerdem benötigen Sie [Docker für VS Code](https://marketplace.visualstudio.
 
 Informieren Sie sich über weitere Szenarien zur Entwicklung mit Azure IoT Edge in Visual Studio Code:
 
-* [Entwickeln eines C#-Moduls in Visual Studio Code](how-to-develop-csharp-module.md)
-* [Entwickeln einer C#-Funktion in Visual Studio Code](how-to-develop-csharp-function.md)
+* Entwickeln von Modulen in VS Code mit [C#](how-to-develop-csharp-module.md) oder [Node.js](how-to-develop-node-module.md).
+* Entwickeln von Azure Functions in VS Code mit [C#](how-to-develop-csharp-function.md).
+
+Weitere Informationen zum Entwickeln Ihrer Module für Ihre IoT Edge-Geräte finden Sie unter [Verstehen und Verwenden von Azure IoT Hub SDKs](../iot-hub/iot-hub-devguide-sdks.md).

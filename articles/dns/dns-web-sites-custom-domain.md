@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: kumud
-ms.openlocfilehash: 00a56a2683e95e70bb13acd6b936e766f044e1cd
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 7ee3dbdcd4d8b2627273a871aec94583b6c5dd6a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32771972"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39058122"
 ---
 # <a name="create-dns-records-for-a-web-app-in-a-custom-domain"></a>Erstellen von DNS-Einträgen für eine Web-App in einer benutzerdefinierten Domäne
 
@@ -42,7 +42,7 @@ Nach dem Erstellen einer Zone und ihrer Delegierung an Azure DNS können Sie Ein
 
 ## <a name="1-create-an-a-record-for-your-custom-domain"></a>1. Hinzufügen eines A-Eintrags für Ihre benutzerdefinierte Domäne
 
-Ein A-Eintrag wird verwendet, um der IP-Adresse einen Namen zuzuordnen. Im folgenden Beispiel wird „@“ als A-Datensatz einer IPv4-Adresse zugewiesen:
+Ein A-Eintrag wird verwendet, um der IP-Adresse einen Namen zuzuordnen. Im folgenden Beispiel wird \@ als A-Eintrag einer IPv4-Adresse zugewiesen:
 
 ### <a name="step-1"></a>Schritt 1
 
@@ -54,7 +54,7 @@ $rs= New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" -
 
 ### <a name="step-2"></a>Schritt 2
 
-Fügen Sie den IPv4-Wert dem zuvor erstellten Ressourceneintragssatz „@“ mithilfe der zugewiesenen Variable $rs hinzu. Der zugewiesene IPv4-Wert ist die IP-Adresse für Ihre Web-App.
+Fügen Sie den IPv4-Wert dem zuvor erstellten Ressourceneintragssatz „\@“ mithilfe der zugewiesenen Variablen $rs hinzu. Der zugewiesene IPv4-Wert ist die IP-Adresse für Ihre Web-App.
 
 Befolgen Sie zum Auffinden der IP-Adresse für eine Web-App die Anleitungen unter [Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service](../app-service/app-service-web-tutorial-custom-domain.md).
 

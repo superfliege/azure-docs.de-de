@@ -11,12 +11,12 @@ ms.workload: azure
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: ghogen
-ms.openlocfilehash: 55b083ac5384e749098338d2f3b7b24bfe16fe8f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fd13dc94e0199aac04ae86aaf003ea9a70fa50d5
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38696564"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070554"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet"></a>Erste Schritte mit Azure Blob Storage und verbundenen Visual Studio-Diensten (ASP.NET)
 
@@ -135,11 +135,11 @@ Die folgenden Schritte veranschaulichen, wie Sie einen Blobcontainer erstellen:
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf den Ordner **Ansichten**.
 
-2. Wählen Sie im Kontextmenü **Hinzufügen** > **Neuer Ordner** aus. Nennen Sie den neuen Ordner *Blobs*. 
+1. Wenn kein **Blobs**-Ordner vorhanden ist, erstellen Sie ihn. Wählen Sie im Kontextmenü **Hinzufügen** > **Neuer Ordner** aus. Nennen Sie den neuen Ordner *Blobs*. 
  
 1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Ansichten**, und klicken Sie mit der rechten Maustaste auf **Blobs**.
 
-4. Wählen Sie im Kontextmenü **Hinzufügen** > **Ansicht** aus.
+1. Wählen Sie im Kontextmenü **Hinzufügen** > **Ansicht** aus.
 
 1. Geben Sie im Dialogfeld **Ansicht hinzufügen** für den Ansichtsnamen **CreateBlobContainer** ein, und wählen Sie **Hinzufügen** aus.
 

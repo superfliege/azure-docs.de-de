@@ -2,18 +2,18 @@
 title: Verwenden von Azure Import/Export zum Exportieren von Daten aus Azure-Blob | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Exportaufträge im Azure-Portal erstellen und Daten aus Azure-Blobs übertragen.
 author: alkohli
-manager: jeconnoc
+manager: twooley
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 07/17/2018
 ms.author: alkohli
-ms.openlocfilehash: eb41708c7446b3139758678c9247ffbb11da8b40
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: eb714086a0142d9780bd018d77dc880a430f240e
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969264"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113757"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Exportieren von Daten aus Azure Blob Storage
 Dieser Artikel enthält ausführliche Anweisungen zum Verwenden des Azure Import/Export-Diensts, um große Datenmengen sicher aus Azure Blob Storage zu exportieren. Für diesen Dienst müssen Sie leere Laufwerke an das Azure-Rechenzentrum senden. Der Dienst exportiert Daten aus Ihrem Speicherkonto auf die Laufwerke und versendet diese dann zurück.
@@ -25,6 +25,13 @@ Vor dem Erstellen eines Exportauftrags zum Übertragen von Daten aus Azure Blob 
 - Ein aktives Azure-Abonnement, das für den Import/Export-Dienst verwendet werden kann
 - Mindestens ein Azure Storage-Konto Hier finden Sie die Liste der [für den Import/Export-Dienst unterstützten Speicherkonten und Speichertypen](storage-import-export-requirements.md). Weitere Informationen zum Erstellen eines neuen Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](storage-create-storage-account.md#create-a-storage-account).
 - Eine angemessene Anzahl von Datenträgern der [unterstützten Typen](storage-import-export-requirements.md#supported-disks)
+- Sie benötigen ein FedEx/DHL-Konto.  
+    - Das Konto muss gültig sein, es muss Guthaben vorhanden sein und es muss der Rückversand aktiviert sein.
+    - Generieren Sie eine Nachverfolgungsnummer für den Exportauftrag.
+    - Jeder Auftrag benötigt eine separate Nachverfolgungsnummer. Mehrere Aufträge mit derselben Nachverfolgungsnummer werden nicht unterstützt. 
+    - Wenn Sie kein Spediteurskonto haben, wechseln Sie zu:
+        - [Erstellen eines FedEx-Kontos](https://www.fedex.com/en-us/create-account.html) oder 
+        - [Erstellen eines DHL-Kontos](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
 ## <a name="step-1-create-an-export-job"></a>Schritt 1: Erstellen eines Exportauftrags
 
@@ -52,7 +59,7 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Exportauftrag z
     
 3. Gehen Sie unter **Auftragsdetails** wie folgt vor:
 
-    - Wählen Sie das Speicherkonto aus, das die zu exportierenden Daten enthält. 
+    - Wählen Sie das Speicherkonto aus, das die zu exportierenden Daten enthält. Verwenden Sie ein Speicherkonto in der Nähe Ihres Standorts.
     - Der Abgabeort wird automatisch basierend auf der Region des ausgewählten Speicherkontos aufgefüllt. 
     - Geben Sie die Blobdaten an, die Sie von Ihrem Speicherkonto auf Ihr leeres Laufwerk bzw. Ihre leeren Laufwerke exportieren möchten. 
     - Wählen Sie für die Blobdaten im Speicherkonto **Alle exportieren** aus.
@@ -78,11 +85,18 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Exportauftrag z
     - Wählen Sie den Spediteur in der Dropdownliste aus.
     - Geben Sie eine gültige Spediteurkontonummer ein, die Sie mit diesem Spediteur erstellt haben. Microsoft verwendet dieses Konto, um die Laufwerke nach Abschluss des Importauftrags an Sie zurückzuschicken. 
     - Geben Sie vollständige und gültige Kontaktdaten an: Name, Telefonnummer, E-Mail-Adresse, Straße, Stadt, PLZ, Bundesstaat/Provinz und Land/Region.
+
+        > [!TIP] 
+        > Geben Sie anstelle einer E-Mail-Adresse für einen einzelnen Benutzer, eine Gruppen E-Mail-Adresse ein. Dadurch wird sichergestellt, dass Sie Benachrichtigungen erhalten, selbst wenn ein Administrator geht.
    
 5. Gehen Sie in **Zusammenfassung** wie folgt vor:
 
     - Überprüfen Sie die Details zum Auftrag.
     - Notieren Sie den Auftragsnamen und die angegebene Lieferadresse des Azure-Rechenzentrums für das Senden der Datenträger an Azure. 
+
+        > [!NOTE] 
+        > Senden Sie die Datenträger immer an das im Azure-Portal angegebene Rechenzentrum. Wenn die Datenträger an das falsche Rechenzentrum versendet werden, wird der Auftrag nicht verarbeitet.
+
     - Klicken Sie auf **OK**, um das Erstellen des Exportauftrags abzuschließen.
 
 ## <a name="step-2-ship-the-drives"></a>Schritt 2: Senden der Laufwerke

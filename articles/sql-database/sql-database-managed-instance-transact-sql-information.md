@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 80d06a6c40fa804c543a1cee9dc75b57b293beaf
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 89544ea72a4356fb8d4f3a192e6fc546eb6b3cff
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446876"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092009"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server 
 
@@ -50,7 +50,7 @@ Wichtigste Unterschiede in der Syntax von `CREATE AUDIT` zur Überwachung in Azu
 - Mit der neuen Syntax `TO URL` können Sie die URL des Azure Blob Storage-Containers angeben, in dem Dateien mit der Endung `.xel` gespeichert werden. 
 - Die Syntax `TO FILE` wird nicht unterstützt, da die verwaltete Instanz nicht auf Windows-Dateifreigaben zugreifen kann. 
  
-Weitere Informationen finden Sie unter   
+Weitere Informationen finden Sie unter  
 - [CREATE SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)  
 - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql) 
 - [Überwachung](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)     
@@ -267,7 +267,7 @@ Externe Tabellen, die auf die Dateien in HDFS oder Azure Blob Storage verweisen,
 
 ### <a name="replication"></a>Replikation 
  
-Die Replikation wird noch nicht unterstützt. Informationen zur Replikation finden Sie unter [SQL Server-Replikation](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication).
+Die Replikation wird in der verwalteten Instanz unterstützt. Informationen zur Replikation finden Sie unter [SQL Server-Replikation](http://review.docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance).
  
 ### <a name="restore-statement"></a>RESTORE-Anweisung 
  
@@ -371,11 +371,11 @@ Weitere Informationen zum SQL Server-Agent finden Sie unter [SQL Server-Agent](h
 Folgende Tabellen werden nicht unterstützt: 
 - `FILESTREAM` 
 - `FILETABLE` 
-- `EXTERNAL TABLE` 
+- `EXTERNAL TABLE`
 - `MEMORY_OPTIMIZED`  
 
 Weitere Informationen zum Erstellen und Ändern von Tabellen finden Sie unter [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) und [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).
- 
+
 ## <a name="Changes"></a> Behavior Changes 
  
 Die folgenden Variablen, Funktionen und Sichten geben abweichende Ergebnisse zurück:  
