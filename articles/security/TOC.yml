@@ -19,7 +19,7 @@
     - name: Isolation in der Azure-Cloud
       href: azure-isolation.md
     - name: Sichere Hybrid-Netzwerkarchitektur
-      href: 'https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2Fazure%2Fsecurity%2Ftoc.json'
+      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Technische Sicherheitsfunktionen
       href: azure-security-technical-capabilities.md
 - name: Datensicherheit und -verschlüsselung
@@ -46,11 +46,11 @@
             - name: Problembehandlung
               href: azure-security-disk-encryption-tsg.md
         - name: Verschlüsseln eines virtuellen Azure-Computers
-          href: ../security-center/security-center-disk-encryption.md?toc=%2fazure%2fsecurity%2ftoc.json
+          href: ../security-center/security-center-disk-encryption.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: Azure Storage-Sicherheit
       href: security-storage-overview.md
     - name: Sicherheitsleitfaden zu Storage
-      href: ../storage/common/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json
+      href: ../storage/common/storage-security-guide.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
 - name: Plattform und Infrastruktur
   items:
     - name: Sicherheit der Infrastruktur
@@ -104,7 +104,7 @@
         - name: DDoS Protection
           href: azure-ddos-best-practices.md
         - name: Sicherheit von Grenzen
-          href: ../best-practices-network-security.md?toc=%2fazure%2fsecurity%2ftoc.json
+          href: ../best-practices-network-security.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
 - name: Anwendung
   items:
     - name: PaaS
@@ -116,15 +116,15 @@
           href: security-paas-applications-using-storage.md
         - name: 'DB: Bewährte Methoden für PaaS'
           href: security-paas-applications-using-sql.md
-        - name: IoT
-          href: security-internet-of-things-overview.md
-          items:
-            - name: Bewährte Methoden für die IoT-Sicherheit
-              href: ../iot-accelerators/iot-security-best-practices.md
-            - name: IoT-Sicherheit
-              href: '../iot-accelerators/iot-security-architecture.md#security-in-iot'
-            - name: Schützen Ihrer IoT-Bereitstellung
-              href: ../iot-accelerators/iot-accelerators-security-deployment.md
+    - name: IoT
+      href: security-internet-of-things-overview.md
+      items:
+        - name: Bewährte Methoden für die IoT-Sicherheit
+          href: ../iot-accelerators/iot-security-best-practices.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: IoT-Sicherheit
+          href: '../iot-accelerators/iot-security-architecture.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json#security-in-iot'
+        - name: Schützen Ihrer IoT-Bereitstellung
+          href: ../iot-accelerators/iot-accelerators-security-deployment.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: Azure Service Fabric-Sicherheit
       href: azure-service-fabric-security-overview.md
       items:
@@ -138,7 +138,7 @@
     - name: Überwachung und Protokollierung
       items:
         - name: Sicherheitsverwaltung
-          href: ../security-center/security-center-intro.md?toc=%2fazure%2fsecurity%2ftoc.json
+          href: ../security-center/security-center-intro.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
         - name: Sicherheit bei der Remoteverwaltung
           href: azure-security-management.md
         - name: Azure-Protokollintegration
