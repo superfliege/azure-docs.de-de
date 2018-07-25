@@ -157,18 +157,26 @@
           href: iot-accelerators-device-simulation-custom-model.md
 - name: Verweis
   items:
-    - name: Referenzhandbuch für Entwickler
-      href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
-    - name: Handbuch zur Problembehandlung für Entwickler
-      href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
-    - name: Sicherheitsarchitektur
-      href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-accelerators/rc/rc
-    - name: Bewährte Methoden für die Sicherheit
-      href: /azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-accelerators/rc/rc
-    - name: Schützen Ihrer IoT-Bereitstellung
-      href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-accelerators/rc/rc
-    - name: Sicherheit von Anfang an
-      href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-accelerators/rc/rc
+    - name: Remoteüberwachung
+      items:
+        - name: Referenzhandbuch für Entwickler
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
+        - name: Handbuch zur Problembehandlung für Entwickler
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
+    - name: Gerätesimulation
+      items:
+        - name: Referenzhandbuch für Entwickler
+          href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsarchitektur
+          href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-accelerators/rc/rc
+        - name: Bewährte Methoden für die Sicherheit
+          href: /azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-accelerators/rc/rc
+        - name: Schützen Ihrer IoT-Bereitstellung
+          href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-accelerators/rc/rc
+        - name: Sicherheit von Anfang an
+          href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-accelerators/rc/rc
 - name: Verwandte Themen
   items:
     - name: Lösungen
@@ -203,6 +211,18 @@
       href: /azure/machine-learning/
 - name: angeben
   items:
+    - name: GitHub-Repositorys
+      items:
+        - name: Remoteüberwachung (.NET)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet'
+        - name: Remoteüberwachung (Java)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java'
+        - name: Verbundene Factory
+          href: 'https://github.com/Azure/azure-iot-connected-factory'
+        - name: Predictive Maintenance
+          href: 'https://github.com/Azure/azure-iot-predictive-maintenance'
+        - name: Gerätesimulation
+          href: 'https://github.com/Azure/device-simulation-dotnet'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Häufig gestellte Fragen

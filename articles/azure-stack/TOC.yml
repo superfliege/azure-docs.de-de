@@ -6,14 +6,14 @@
       href: azure-stack-poc.md
     - name: Versionshinweise
       items:
+        - name: Update 1807
+          href: azure-stack-update-1807.md
         - name: Update 1805
           href: azure-stack-update-1805.md
         - name: Update 1804
           href: azure-stack-update-1804.md
         - name: Update 1803
           href: azure-stack-update-1803.md
-        - name: Update 1802
-          href: azure-stack-update-1802.md
 - name: Schnellstarts
   expanded: true
   items:
@@ -140,6 +140,8 @@
               href: azure-stack-manage-storage-shares.md
             - name: Verwalten der Kapazität des physischen Speichers
               href: azure-stack-manage-storage-physical-memory-capacity.md
+            - name: Hinzufügen von Skalierungseinheitknoten
+              href: azure-stack-add-scale-node.md
         - name: Austauschen von Hardware
           items:
             - name: Knotenaktionen

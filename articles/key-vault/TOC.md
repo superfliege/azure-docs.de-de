@@ -7,7 +7,7 @@
 ## [Erstellen einer Key Vault-Instanz: CLI](quick-create-cli.md)
 ## [Erstellen einer Key Vault-Instanz: PowerShell](quick-create-powershell.md)
 ## [Erstellen einer Key Vault-Instanz: Portal](quick-create-portal.md)
-
+## [Lesen aus einem Schlüsseltresor: .NET](quick-create-net.md)
 # Tutorials
 ## [Lesen eines Geheimnisses aus Key Vault](tutorial-web-application-keyvault.md)
 ## [Erste Schritte mit Key Vault](key-vault-get-started.md)
