@@ -639,7 +639,7 @@ Der Dienst gibt diesen Statuscode aus verschiedenen Gründen zurück. Dies wird 
 
 * „Incorrect message format. Binary message has invalid header size prefix.“ (Fehlerhaftes Nachrichtenformat. Die binäre Nachricht enthält ein ungültiges Präfix für die Headergröße.) Der Client hat eine binäre Nachricht mit einem ungültigen Präfix für die Headergröße gesendet.
 
-* „Incorrect message format. Binary message has invalid header size." (Fehlerhaftes Nachrichtenformat. Die binäre Nachricht enthält eine ungültige Headergröße.) Der Client hat eine binäre Nachricht gesendet, in der eine ungültige Headergröße enthalten war.
+* „Incorrect message format. Binary message has invalid header size." (Fehlerhaftes Nachrichtenformat. Die binäre Nachricht enthält einen Header mit ungültiger Größe.) Der Client hat eine binäre Nachricht gesendet, in der eine ungültige Headergröße enthalten war.
 
 * „Incorrect message format. Binary message headers decoding into UTF-8 failed.“ (Fehlerhaftes Nachrichtenformat. Fehler beim Decodieren von Headern binärer Nachrichten in UTF-8.) Der Client hat eine binäre Nachricht gesendet, die Header mit einer fehlerhaften Codierung in UTF-8 enthält.
 

@@ -131,6 +131,9 @@
   items:
     - name: Abrechnungsautomatisierungsszenarien
       href: billing-cost-management-automation-scenarios.md
+      items:
+        - name: Verwalten von Kosten mit Azure Budgets
+          href: billing-cost-management-budget-scenario.md
     - name: 'Azure-Abrechnungs-API: Übersicht'
       href: billing-usage-rate-card-overview.md
       items:

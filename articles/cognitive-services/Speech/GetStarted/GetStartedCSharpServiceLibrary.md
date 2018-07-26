@@ -119,7 +119,7 @@ Dieses Ereignis wird jedes Mal aufgerufen, wenn der Speech-Dienst noch während 
 **Rückgabeformat** | Beschreibung |
 ------|------
 **LexicalForm** | Dieses Format ist optimal für Anwendungen, die unformatierte, unverarbeitete Spracherkennungsergebnisse benötigen.
-**DisplayText** | Der erkannte Ausdruck mit inverser Textnormalisierung, Groß-/Kleinschreibung, Zeichensetzung und Filterung anstößiger Ausdrücke. Anstößige Ausdrücke werden nach dem Anfangszeichen durch Sternchen ersetzt (Beispiel: P****). Dieses Format ist optimal für Anwendungen, bei denen die Spracherkennungsergebnisse einem Benutzer angezeigt werden.
+**DisplayText** | Der erkannte Ausdruck mit inverser Textnormalisierung, Groß-/Kleinschreibung, Zeichensetzung und Filterung anstößiger Ausdrücke. Anstößige Ausdrücke werden nach dem Anfangszeichen durch Sternchen ersetzt (Beispiel: P***). Dieses Format ist optimal für Anwendungen, bei denen die Spracherkennungsergebnisse einem Benutzer angezeigt werden.
 **Confidence** | Das Konfidenzniveau des erkannten Ausdrucks für das dazugehörige Audio gemäß Definition des Spracherkennungsservers.
 **MediaTime** | Die aktuelle Zeit in Relation zum Beginn des Audiostreams (Zeiteinheit: 100 Nanosekunden).
 **MediaDuration** | Die aktuelle Ausdrucksdauer/-länge in Relation zum Audiosegment (Zeiteinheit: 100 Nanosekunden).

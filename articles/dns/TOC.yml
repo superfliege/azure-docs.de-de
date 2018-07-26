@@ -45,7 +45,7 @@
       href: ../networking/disaster-recovery-dns-traffic-manager.md
 - name: Anleitung
   items:
-    - name: 'Erstellen einer benutzerdefinierten DNS-Zone und eines Eintrags: Azure CLI'
+    - name: 'Erstellen einer privaten DNS-Zone und eines Eintrags: Azure CLI'
       href: private-dns-getstarted-cli.md
     - name: Verwalten von DNS-Zonen
       items:

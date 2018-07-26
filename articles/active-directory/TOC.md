@@ -46,6 +46,7 @@
 ## Verwalten von Benutzern
 ### [Hinzufügen neuer Benutzer zu Azure AD](fundamentals/add-users-azure-active-directory.md)
 ### [Verwalten von Benutzerprofilen](fundamentals/active-directory-users-profile-azure-portal.md)
+### [Zurücksetzen von Benutzerkennwörtern](fundamentals/active-directory-users-reset-password-azure-portal.md)
 ### [Freigeben von Konten](active-directory-sharing-accounts.md)
 ### [Zuweisen von Benutzern zu Administratorrollen](fundamentals/active-directory-users-assign-role-azure-portal.md)
 ### [Wiederherstellen eines gelöschten Benutzers](fundamentals/active-directory-users-restore.md)
@@ -113,26 +114,32 @@
 ### [Gefährdete Benutzer](active-directory-reporting-security-user-at-risk.md)
 ### [Riskante Anmeldungen](active-directory-reporting-security-risky-sign-ins.md)
 ### [Risikoereignisse](active-directory-reporting-risk-events.md)
+### [Überwachen von Protokollen mithilfe von Azure Monitor](reporting-azure-monitor-diagnostics-overview.md)
 ### [HÄUFIG GESTELLTE FRAGEN](active-directory-reporting-faq.md)
+
 ### Aufgaben
 #### [Konfigurieren benannter Orte](active-directory-named-locations.md)
 #### [Suchen nach Aktivitätsberichten](active-directory-reporting-migration.md)
-#### [Verwenden des Azure Active Directory-Power BI-Inhaltspakets](active-directory-reporting-power-bi-content-pack-how-to.md)
+#### [Verwenden des Azure AD-Power BI-Inhaltspakets](active-directory-reporting-power-bi-content-pack-how-to.md)
 #### [Bereinigen von Benutzern mit Risikomarkierung](active-directory-report-security-user-at-risk-remediation.md)
+#### [Weiterleiten von Aktivitätsprotokollen an eine Azure Event Hub-Instanz](reporting-azure-monitor-diagnostics-azure-event-hub.md)
+#### [Archivieren von Aktivitätsprotokollen in einem Azure-Speicherkonto](reporting-azure-monitor-diagnostics-azure-storage-account.md)
+#### [Integrieren von Aktivitätsprotokollen mit Splunk unter Verwendung von Azure Monitor](reporting-azure-monitor-diagnostics-splunk-integration.md)
+
 ### Verweis
 #### [Vermerkdauer](active-directory-reporting-retention.md)
 #### [Wartezeiten](active-directory-reporting-latencies-azure-portal.md)
 #### [Referenz zu Überwachungsaktivitäten](active-directory-reporting-activity-audit-reference.md)
 #### [Fehlercodes für Anmeldeaktivitäten](active-directory-reporting-activity-sign-ins-errors.md)
 #### [Multi-Factor Authentication](active-directory-reporting-activity-sign-ins-mfa.md)
-
+#### [Interpretieren des Überwachungsprotokollschemas in Azure Monitor](reporting-azure-monitor-diagnostics-audit-log-schema.md)
+#### [Interpretieren des Anmeldeprotokollschemas in Azure Monitor](reporting-azure-monitor-diagnostics-sign-in-log-schema.md)
 
 ### Problembehandlung
 #### [Fehlende Überwachungsdaten](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [Fehlende Daten in den Downloads](active-directory-reporting-troubleshoot-missing-data-download.md)
-#### [Azure Active Directory-Aktivitätsprotokolle: Fehler in Inhaltspaketen](active-directory-reporting-troubleshoot-content-pack.md)
-#### [Fehler in Azure Active Directory-Berichterstellungs-API](active-directory-reporting-troubleshoot-graph-api.md)
-
+#### [Fehler am Inhaltspaket von Azure AD-Aktivitätsprotokollen](active-directory-reporting-troubleshoot-
+#### [Fehler in der Azure AD Reporting-API](active-directory-reporting-troubleshoot-graph-api.md)
 
 ### [Programmgesteuerter Zugriff](active-directory-reporting-api-getting-started-azure-portal.md)
 #### [Voraussetzungen](active-directory-reporting-api-prerequisites-azure-portal.md)
@@ -140,13 +147,11 @@
 #### [Anmeldebeispiele](active-directory-reporting-api-sign-in-activity-samples.md)
 #### [Verwenden von Zertifikaten](active-directory-reporting-api-with-certificates.md)
 
-## Verwalten von Kennwörtern (active-directory/authentication/concept-sspr-howitworks.md)
+## [Verwalten von Kennwörtern](authentication/concept-sspr-howitworks.md)
 ### Benutzerdokumente
 #### [Zurücksetzen oder Ändern des Kennworts](user-help/active-directory-passwords-update-your-own-password.md)
-#### [Bewährte Methoden für Kennwörter](active-directory-secure-passwords.md)
 #### [Registrieren für die Self-Service-Kennwortzurücksetzung](user-help/active-directory-passwords-reset-register.md)
-### IT-Administratoren: Zurücksetzen von Kennwörtern
-#### [Azure-Portal](fundamentals/active-directory-users-reset-password-azure-portal.md)
+
 
 ## Verwalten von Geräten
 ### [Einführung](device-management-introduction.md)
