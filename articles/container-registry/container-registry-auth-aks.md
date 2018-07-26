@@ -2,28 +2,28 @@
 title: Authentifizieren per Azure Container Registry über Azure Kubernetes Service
 description: Es wird beschrieben, wie Sie Zugriff auf Images in Ihrer privaten Containerregistrierung über den Azure Kubernetes Service gewähren, indem Sie einen Azure Active Directory-Dienstprinzipal verwenden.
 services: container-service
-author: iainfoulds
+author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 02/24/2018
-ms.author: iainfou
-ms.openlocfilehash: 8cfd70275caa13c708f7d2f46cdc71e0f190ca0e
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.date: 07/11/2018
+ms.author: marsma
+ms.openlocfilehash: ca05e5091d5c96a1a0c2373404e8a6dff5802ffb
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100622"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968402"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Authentifizieren per Azure Container Registry über Azure Kubernetes Service
 
-Wenn Sie Azure Container Registry (ACR) mit dem Azure Kubernetes Service (AKS) nutzen, ist es erforderlich, einen Authentifizierungsmechanismus einzurichten. In diesem Dokument werden die empfohlenen Konfigurationen für die Authentifizierung zwischen diesen beiden Azure-Diensten beschrieben.
+Wenn Sie Azure Container Registry (ACR) mit dem Azure Kubernetes Service (AKS) nutzen, ist es erforderlich, einen Authentifizierungsmechanismus einzurichten. In diesem Artikel werden die empfohlenen Konfigurationen für die Authentifizierung zwischen diesen beiden Azure-Diensten beschrieben.
 
 ## <a name="grant-aks-access-to-acr"></a>Gewähren von AKS-Zugriff auf ACR
 
-Beim Erstellen eines AKS-Clusters wird auch ein Dienstprinzipal zum Verwalten der Clusteroperabilität mit Azure-Ressourcen erstellt. Dieser Dienstprinzipal kann auch für die Authentifizierung per ACR verwendet werden. Hierfür muss eine Rollenzuweisung erstellt werden, um für den Dienstprinzipal Zugriff auf die ACR-Ressource zu gewähren.
+Wenn Sie einen AKS-Cluster erstellen, erstellt Azure auch einen Dienstprinzipal zur Unterstützung der Clusteroperabilität mit anderen Azure-Ressourcen. Sie können diesen automatisch generierten Dienstprinzipal auch für die Authentifizierung bei einer ACR-Registrierung verwenden. Dazu müssen Sie eine Azure AD-[Rollenzuweisung](../role-based-access-control/overview.md#role-assignment) erstellen, die dem Dienstprinzipal des Clusters Zugriff auf die Containerregistrierung gewährt.
 
-Sie können das folgende Beispiel für diesen Vorgang nutzen.
+Verwenden Sie das folgende Skript, um dem mit AKS generierten Dienstprinzipal Zugriff auf eine Azure-Containerregistrierung zu gewähren. Ändern Sie die Variablen `AKS_*` und `ACR_*` für Ihre Umgebung, bevor Sie das Skript ausführen.
 
 ```bash
 #!/bin/bash
@@ -45,9 +45,9 @@ az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
 
 ## <a name="access-with-kubernetes-secret"></a>Zugreifen per Kubernetes-Geheimnis
 
-In einigen Fällen kann der von AKS verwendete Dienstprinzipal nicht an ACR angepasst werden. Zur Lösung dieses Problems können Sie einen eindeutigen Dienstprinzipal erstellen und speziell an ACR anpassen.
+In einigen Fällen können Sie dem automatisch generierten AKS-Dienstprinzipal nicht die erforderliche Rolle für den Zugriff auf ACR zuweisen. Beispielsweise haben Sie aufgrund des Sicherheitsmodells Ihrer Organisation möglicherweise keine ausreichenden Berechtigungen in Ihrem Azure AD-Verzeichnis, um dem mit AKS generierten Dienstprinzipal eine Rolle zuzuweisen. In diesem Fall können Sie einen neuen Dienstprinzipal erstellen und diesem dann mit einem Kubernetes-Geheimnis für einen Image-Pullvorgang Zugriff auf die Containerregistrierung gewähren.
 
-Das folgende Skript kann verwendet werden, um den Dienstprinzipal zu erstellen.
+Verwenden Sie das folgende Skript, um einen neuen Dienstprinzipal zu erstellen. (Sie verwenden dessen Anmeldeinformationen für das Kubernetes-Geheimnis für den Image-Pullvorgang.) Ändern Sie die `ACR_NAME`-Variable für Ihre Umgebung, bevor Sie das Skript ausführen.
 
 ```bash
 #!/bin/bash
@@ -70,15 +70,15 @@ echo "Service principal ID: $CLIENT_ID"
 echo "Service principal password: $SP_PASSWD"
 ```
 
-Die Anmeldeinformationen des Dienstprinzipals können jetzt in einem [Kubernetes-Geheimnis für einen Image-Pullvorgang][image-pull-secret] gespeichert werden, und beim Ausführen von Containern in einem AKS-Cluster kann darauf verwiesen werden.
+Nun können Sie die Anmeldeinformationen des Dienstprinzipals in einem [Kubernetes-Geheimnis für einen Image-Pullvorgang][image-pull-secret] speichern, auf das der AKS-Cluster beim Ausführen von Containern verweist.
 
-Mit dem folgenden Befehl wird das Kubernetes-Geheimnis erstellt. Ersetzen Sie den Servernamen durch den ACR-Anmeldeserver, den Benutzernamen durch die Dienstprinzipal-ID und das Kennwort durch das Dienstprinzipal-Kennwort.
+Verwenden Sie den folgenden **kubectl**-Befehl, um das Kubernetes-Geheimnis zu erstellen. Ersetzen Sie `<acr-login-server>` durch den vollqualifizierten Namen Ihrer Azure-Containerregistrierung (im Format „acrname.azurecr.io“). Ersetzen Sie `<service-principal-ID>` und `<service-principal-password>` durch die Werte, die Sie durch Ausführen des vorhergehenden Skripts erhalten haben.
 
 ```bash
 kubectl create secret docker-registry acr-auth --docker-server <acr-login-server> --docker-username <service-principal-ID> --docker-password <service-principal-password> --docker-email <email-address>
 ```
 
-Das Kubernetes-Geheimnis kann in einer Podbereitstellung mit dem Parameter `ImagePullSecrets` verwendet werden.
+Sie können jetzt das Kubernetes-Geheimnis in Podbereitstellungen verwenden, indem Sie seinen Namen (in diesem Fall „acr-auth“) im `imagePullSecrets`-Parameter angeben:
 
 ```yaml
 apiVersion: apps/v1beta1

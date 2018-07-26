@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: a6bd63598781a60c2dd717c07b96fcb498a67d30
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 77675b3c0b2ed9fcdb923c92638384d215bddc40
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636605"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972399"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informationen zu Schlüsseln, Geheimnissen und Zertifikaten
 Mit Azure Key Vault können Benutzer kryptografische Schlüssel in der Microsoft Azure-Umgebung speichern und verwenden. Key Vault unterstützt mehrere Schlüsseltypen und Algorithmen und ermöglicht die Verwendung von Hardwaresicherheitsmodulen (Hardware Security Modules, HSM) für Schlüssel von hohem Wert. Darüber hinaus ermöglicht Key Vault Benutzern das sichere Speichern von geheimen Schlüsseln. Geheime Schlüssel sind Oktettobjekte von begrenzter Größe ohne spezifische Semantik. Key Vault unterstützt auch Zertifikate, die auf Schlüsseln und Geheimnissen aufbauen und ein automatisiertes Verlängerungsfeature hinzufügen.
@@ -122,7 +122,7 @@ Das erste Release von Azure Key Vault unterstützt nur RSA-Schlüssel. Zukünfti
 -   **RSA**: ein 2.048-Bit-RSA-Schlüssel. Dies ist ein „Soft“-Schlüssel, der in der Software von Key Vault verarbeitet wird, aber im Ruhezustand unter Verwendung eines Systemschlüssels gespeichert wird, der sich in einem HSM befindet. Clients können einen vorhandenen RSA-Schlüssel importieren oder anfordern, dass Azure Key Vault einen generiert.  
 -   **RSA-HSM**: ein RSA-Schlüssel, der in einem HSM verarbeitet wird. RSA-HSM-Schlüssel werden in einer der HSM Security Worlds von Azure Key Vault geschützt (es gibt in jeder geografischen Region eine Security World, um die Isolation aufrechtzuerhalten). Clients können einen RSA-Schlüssel importieren, entweder in „Soft“-Form oder durch Exportieren von einem kompatiblen HSM-Gerät, oder anfordern, dass Azure Key Vault einen generiert. Dieser Schlüsseltyp fügt dem JWK das T-Attribut hinzu, um das HSM-Schlüsselmaterial zu tragen.  
 
-     Weitere Informationen zu geografischen Grenzen finden Sie unter [Datenschutz](https://azure.microsoft.com/en-us/support/trust-center/privacy/).  
+     Weitere Informationen zu geografischen Grenzen finden Sie unter [Datenschutz](https://azure.microsoft.com/support/trust-center/privacy/).  
 
 ###  <a name="BKMK_RSAAlgorithms"></a> RSA-Algorithmen  
  Die folgenden Algorithmusbezeichner werden mit RSA-Schlüsseln in Azure Key Vault unterstützt.  
@@ -172,7 +172,7 @@ Azure Key Vault unterstützt die folgenden Vorgänge bei Schlüsselobjekten:
 -   **Sichern**: Exportiert einen Schlüssel in einer geschützten Form.  
 -   **Wiederherstellen**: Importiert einen zuvor gesicherten Schlüssel.  
 
-Weitere Informationen finden Sie unter [Schlüsselvorgänge](/rest/api/keyvault/key-operations.md).  
+Weitere Informationen finden Sie unter [Schlüsselvorgänge](/rest/api/keyvault/key-operations).  
 
 Nachdem ein Schlüssel in Azure Key Vault erstellt wurde, können die folgenden kryptografischen Vorgänge mit dem Schlüssel ausgeführt werden:  
 
@@ -281,7 +281,7 @@ Die folgenden Berechtigungen können pro Prinzipal im Zugriffssteuerungseintrag 
 -   *delete*: Löschen des Geheimnisses  
 -   *all*: Alle Berechtigungen  
 
-Weitere Informationen zum Arbeiten mit Geheimnissen finden Sie unter [Azure Key Vault-Geheimnisvorgänge](/rest/api/keyvault/secret-operations.md).  
+Weitere Informationen zum Arbeiten mit Geheimnissen finden Sie unter [Azure Key Vault-Geheimnisvorgänge](/rest/api/keyvault/secret-operations).  
 
 ###  <a name="BKMK_SecretTags"></a> Geheimnistags  
 Sie können zusätzliche anwendungsspezifische Metadaten in Form von Tags angeben. Azure Key Vault unterstützt bis zu 15 Tags, von denen jeder einen 256 Zeichen langen Namen und einen Wert von 256 Zeichen aufweisen kann.  
@@ -443,9 +443,9 @@ Wenn für die Richtlinie eines Zertifikats eine automatische Verlängerung festg
 
 ## <a name="additional-information-for-certificates"></a>Zusätzliche Informationen zu Zertifikaten
 
-- [Azure Key Vault-Zertifikate und -Schlüssel](/rest/api/keyvault/certificates-and-policies.md)
-- [Zertifikataussteller](/rest/api/keyvault/certificate-issuers.md)
-- [Zertifikatkontakte](/rest/api/keyvault/certificate-contacts.md)
+- [Azure Key Vault-Zertifikate und -Schlüssel](/rest/api/keyvault/certificates-and-policies)
+- [Zertifikataussteller](/rest/api/keyvault/certificate-issuers)
+- [Zertifikatkontakte](/rest/api/keyvault/certificate-contacts)
 
 ## <a name="see-also"></a>Siehe auch
 

@@ -5,15 +5,15 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/09/2018
+ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 638b52edb554b6bddb206943fca42b03bdc69060
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 033ae1de25fbaada0c2bce715e6bdd71818b341a
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "30845130"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37906801"
 ---
 <!-- F-series, Fs-series* -->
 
@@ -32,6 +32,10 @@ Die Fs-Serie verfügt zusätzlich zum Premium-Speicher über alle Vorteile der F
 ## <a name="fsv2-series-sup1sup"></a>Fsv2-Serie <sup>1</sup>
 
 ACU: 195 – 210
+
+Storage Premium: unterstützt
+
+Storage Premium-Zwischenspeicherung: unterstützt
 
 | Größe             | vCPUs | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
 |------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|------------------------------------------------|
@@ -53,6 +57,10 @@ ACU: 195 – 210
 
 ACU: 210 - 250
 
+Storage Premium: unterstützt
+
+Storage Premium-Zwischenspeicherung: unterstützt
+
 | Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_F1s |1 |2 |4 |4 |4.000/32 (12) |3.200/48 |2/750 |
@@ -71,6 +79,10 @@ MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 ## <a name="f-series"></a>F-Serie
 
 ACU: 210 - 250
+
+Storage Premium: nicht unterstützt
+
+Storage Premium-Zwischenspeicherung: nicht unterstützt
 
 | Größe         | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|

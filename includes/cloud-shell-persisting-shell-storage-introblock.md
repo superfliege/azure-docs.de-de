@@ -19,7 +19,7 @@ Wenn Sie die grundlegenden Einstellungen verwenden und nur ein Abonnement auswä
 Die Dateifreigabe wird in Ihrem Verzeichnis `$Home` als `clouddrive` bereitgestellt. Dies ist eine einmalige Aktion, und die Dateifreigabe wird in den nachfolgenden Sitzungen automatisch bereitgestellt. 
 
 > [!NOTE]
-> Aus Sicherheitsgründen sollte jeder Benutzer einen eigenen Speicher bereitstellen.  Für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) benötigen Benutzer zumindest die Berechtigungen eines Mitwirkenden.
+> Aus Sicherheitsgründen sollte jeder Benutzer ein eigenes Speicherkonto bereitstellen.  Für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) benötigen Benutzer zumindest die Berechtigungen eines Mitwirkenden auf Speicherkontoebene.
 
 In Bash enthält die Dateifreigabe auch ein 5-GB-Image, das für Sie erstellt wird und mit dem Daten automatisch in Ihrem Verzeichnis `$Home` beibehalten werden. 
 
@@ -27,7 +27,7 @@ In Bash enthält die Dateifreigabe auch ein 5-GB-Image, das für Sie erstellt wi
 
 Sie können vorhandene Ressourcen zuordnen, indem Sie die erweiterte Option verwenden. Wählen Sie bei der Anzeige mit der Aufforderung zum Einrichten des Speichers die Option **Erweiterte Einstellungen anzeigen**, um weitere Optionen anzuzeigen. Die Dropdownmenüs werden für Ihre zugewiesene Cloud Shell-Region und die Konten für den lokal redundanten und georedundanten Speicher gefiltert.
 
-In Bash erhalten vorhandene Dateifreigaben ein für Sie erstelltes 5-GB-Image zum Beibehalten Ihres Verzeichnisses `$Home`.
+Dateifreigaben erhalten ein für Sie erstelltes 5-GB-Image zum Beibehalten Ihres Verzeichnisses `$Home`.
 
 ![Einstellung „Ressourcengruppe“](../articles/cloud-shell/media/persisting-shell-storage/advanced-storage.png)
 

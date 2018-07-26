@@ -1,6 +1,6 @@
 ---
-title: Häufig gestellte Fragen zu Azure Traffic Analytics | Microsoft-Dokumentation
-description: Hier finden Sie Antworten auf einige der am häufigsten gestellten Fragen zu Traffic Analytics.
+title: Häufig gestellte Fragen zu Azure-Datenverkehrsanalysen | Microsoft-Dokumentation
+description: Hier finden Sie Antworten auf einige der am häufigsten gestellten Fragen zu Datenverkehrsanalysen.
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: a4b87d92751c84d96bc70915d16adae7943c145e
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 9f7fb5009468dccae50190ee40a53d11040d0348
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062876"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903746"
 ---
-# <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Traffic Analytics
+# <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Datenverkehrsanalysen
 
 In diesem Artikel werden an zentraler Stelle viele der am häufigsten gestellten Fragen zu Traffic Analytics in Azure Network Watcher beantwortet.
 
@@ -192,9 +192,11 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 
 
-## <a name="how-is-traffic-analytics-priced"></a>Was kostet Traffic Analytics?
+## <a name="how-is-traffic-analytics-priced"></a>Was kosten Datenverkehrsanalysen?
 
-Traffic Analytics ist getaktet. Die Taktung basiert auf der Verarbeitung von Flussprotokolldaten durch den Dienst und der Speicherung der resultierenden verbesserten Protokolle in einem Log Analytics-Arbeitsbereich. Weitere Informationen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/en-us/pricing/details/network-watcher/). 
+Traffic Analytics ist getaktet. Die Taktung basiert auf der Verarbeitung von Flussprotokolldaten durch den Dienst und der Speicherung der resultierenden verbesserten Protokolle in einem Log Analytics-Arbeitsbereich. 
+
+Beispiel, gemäß dem [Tarif](https://azure.microsoft.com/en-us/pricing/details/network-watcher/) und der Region „USA, Westen-Mitte“: Wenn in einem von Traffic Analytics verarbeiteten Speicherkonto gespeicherte Flowprotokolldaten 10 GB und im Log Analytics-Arbeitsbereich erfasste erweiterte Protokolle 1 GB umfassen, fallen als Gebühren an: 10 x 2,3 $ + 1 x 2,76 $ = 25,76 $
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Wie kann ich mit der Tastatur in der geografischen Kartenansicht navigieren?
 
@@ -214,8 +216,8 @@ Die Seite mit der geografischen Karte enthält zwei Hauptbereiche:
     
 - Nachdem Sie einen beliebigen Filter im Banner ausgewählt und `Ctrl+F6` gedrückt haben, bewegt sich der Fokus zu einem der hervorgehobenen Knoten (**Azure-Rechenzentrum** oder **Land/Region**) in der Kartenansicht.
 - Um zu anderen hervorgehobenen Knoten auf der Karte zu gelangen, drücken Sie für die Vorwärtsbewegung entweder die Taste `Tab` oder `Right arrow`. Drücken Sie für die Rückwärtsbewegung `Shift+Tab` oder die Taste `Left arrow`.
-- Zur Auswahl eines markierten Knotens in der Karte drücken Sie `Enter` oder die Taste `Down arrow`.
-- Bei Auswahl eines solchen Knotens wird der Fokus zur **Infotoolbox** des Knotens verschoben. Standardmäßig wird der Fokus zur Schaltfläche „Schließen“ in der **Infotoolbox** verschoben. Zur weiteren Navigation in der Ansicht **Box** drücken Sie die Taste `Right arrow` und `Left arrow`, um vorwärts bzw. rückwärts zu navigieren. Das Drücken von `Enter` hat die gleiche Wirkung wie die Auswahl der fokussierten Schaltfläche in der **Infotoolbox**.
+- Zur Auswahl eines markierten Knotens in der Karte verwenden Sie `Enter` oder die Taste `Down arrow`.
+- Bei Auswahl eines solchen Knotens wird der Fokus auf die **Infotoolbox** des Knotens verschoben. Standardmäßig wird der Fokus auf die geschlossene Schaltfläche in der **Infotoolbox** verschoben. Zur weiteren Navigation in der Ansicht **Box** drücken Sie die Taste `Right arrow` und `Left arrow`, um vorwärts bzw. rückwärts zu navigieren. Das Drücken von `Enter` hat die gleiche Wirkung wie die Auswahl der fokussierten Schaltfläche in der **Infotoolbox**.
 - Wenn Sie `Tab` drücken, während der Fokus auf der **Infotoolbox** liegt, bewegt sich der Fokus zu den Endpunkten auf demselben Kontinent wie der ausgewählte Knoten. Mit den Tasten `Right arrow` und `Left arrow` können Sie durch diese Endpunkte navigieren.
 - Um zu anderen Clustern von Datenflussendpunkten bzw. Kontinenten zu wechseln, drücken Sie `Tab` für die Vorwärtsbewegung und `Shift+Tab` für die Rückwärtsbewegung.
 - Sobald der Fokus auf **Kontinentcluster** liegt, können Sie mit `Enter` oder der Pfeiltaste `Down` die Endpunkte innerhalb des Kontinentclusters markieren. Um im Informationsfeld des Kontinentclusters zu den Endpunkten und zur Schaltfläche zum Schließen zu navigieren, drücken Sie die Taste `Right arrow` oder `Left arrow` für die Vorwärts- bzw. Rückwärtsbewegung. An jedem beliebigen Endpunkt können Sie mit `Shift+L` zur Verbindungslinie vom ausgewählten Knoten zum Endpunkt wechseln. Sie können erneut `Shift+L` drücken, um zum ausgewählten Endpunkt zu navigieren.

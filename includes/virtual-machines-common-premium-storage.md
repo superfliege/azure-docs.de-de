@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 5cbe6f1f8f15e9da8e1fe6961d3da9b9e2a31e4b
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 4c14bfbad58849acefdc8c3a5513f681aba84ab8
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34806382"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37909984"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Storage Premium-Hochleistungsspeicher und verwaltete Datenträger für VMs
 Azure Storage Premium bietet Datenträgerunterstützung mit hoher Leistung und geringer Wartezeit für virtuelle Computer (VMs) mit E/A-intensiven Workloads. Für VM-Datenträger, die Storage Premium nutzen, werden Daten auf SSD-Laufwerken (Solid-State Drives) gespeichert. Um die Geschwindigkeit und Leistung von Storage Premium-Datenträgern zu nutzen, können Sie vorhandene VM-Datenträger zu Storage Premium migrieren.
@@ -52,7 +52,7 @@ Hier sind einige Features von Storage Premium aufgeführt:
 
 * **Storage Premium-Datenträger**
 
-    Storage Premium unterstützt VM-Datenträger, die an VMs einer bestimmten Größenserie angefügt werden können. Storage Premium unterstützt virtuelle Computer der Serien DS, DSv2, GS, Ls, Fs und Esv3. Sie können aus sieben Datenträgergrößen auswählen:  P4 (32 GB), P6 (64 GB), P10 (128 GB), P20 (512 GB), P30 (1024 GB), P40 (2048 GB), P50 (4095 GB). Die Datenträgergrößen P4 und P6 werden aktuell nur für verwaltete Datenträger unterstützt. Für jede Datenträgergröße gelten eigene Leistungsspezifikationen. Je nach Anwendungsanforderung können Sie einen oder mehrere Datenträger an Ihre VM anfügen. Unter [Skalierbarkeits- und Leistungsziele für Storage Premium](#scalability-and-performance-targets) werden die Spezifikationen ausführlicher beschrieben.
+    Storage Premium unterstützt VM-Datenträger, die an VMs einer bestimmten Größenserie angefügt werden können. Storage Premium unterstützt eine Vielzahl von virtuellen Azure-Computern. Sie können aus sieben Datenträgergrößen auswählen:  P4 (32 GB), P6 (64 GB), P10 (128 GB), P20 (512 GB), P30 (1024 GB), P40 (2048 GB), P50 (4095 GB). Die Datenträgergrößen P4 und P6 werden aktuell nur für verwaltete Datenträger unterstützt. Für jede Datenträgergröße gelten eigene Leistungsspezifikationen. Je nach Anwendungsanforderung können Sie einen oder mehrere Datenträger an Ihre VM anfügen. Unter [Skalierbarkeits- und Leistungsziele für Storage Premium](#scalability-and-performance-targets) werden die Spezifikationen ausführlicher beschrieben.
 
 * **Premium-Seitenblobs**
 
@@ -78,16 +78,16 @@ Hier sind einige Features von Storage Premium aufgeführt:
 
 ## <a name="supported-vms"></a>Unterstützte VMs
 
-Storage Premium unterstützt virtuelle Computer der Serien B, DS, DSv2, DSv3, Esv3, GS, Ls, M und Fs. Mit diesen VM-Typen können Sie Standard- und Premium-Speicherdatenträger verwenden. Sie können keine Premium-Speicherdatenträger für VM-Serien verwenden, die nicht mit Storage Premium kompatibel sind.
+Storage Premium wird von einer Vielzahl von virtuellen Azure-Computern unterstützt. Mit diesen VM-Typen können Sie Standard- und Premium-Speicherdatenträger verwenden. Sie können keine Premium-Speicherdatenträger für VM-Serien verwenden, die nicht mit Storage Premium kompatibel sind.
 
 
 Informationen zu VM-Typen und -Größen in Azure für Windows finden Sie unter [Windows-VM-Größen](../articles/virtual-machines/windows/sizes.md). Informationen zu VM-Typen und -Größen in Azure für Linux finden Sie unter [Linux-VM-Größen](../articles/virtual-machines/linux/sizes.md).
 
-Hier sind einige Funktionen von VMs der DS-, DSv2-, GS- und Fs-Serie:
+Dies sind einige der unterstützten Features auf Storage Premium-fähigen virtuellen Computern:
 
-* **Clouddienst**
+* **Verfügbarkeitsgruppe**
 
-    Sie können VMs der DS-Serie einem Clouddienst hinzufügen, der nur über VMs der DS-Serie verfügt. Fügen Sie VMs der DS-Serie nicht einem vorhandenen Clouddienst mit virtuellen Computern hinzu, die nicht aus der DS-Serie stammen. Sie können vorhandene virtuelle Festplatten zu einem neuen Clouddienst migrieren, in dem nur virtuelle Computer der DS-Serie ausgeführt werden. Wenn Sie für den neuen Clouddienst, unter dem die virtuellen Computer der DS-Serie gehostet werden, die gleiche virtuelle IP-Adresse (VIP) nutzen möchten, verwenden Sie [reservierte IP-Adressen](../articles/virtual-network/virtual-networks-instance-level-public-ip.md). Virtuelle Computer der GS-Serie können einem vorhandenen Clouddienst hinzugefügt werden, der ausschließlich über virtuelle Computer der GS-Serie verfügt.
+    Anhand des Beispiels für virtuelle Computer der DS-Serie können Sie einen virtuellen Computer der DS-Serie einem Clouddienst hinzufügen, der nur virtuelle Computer der DS-Serie aufweist. Fügen Sie VMs der DS-Serie nicht einem vorhandenen Clouddienst mit virtuellen Computern hinzu, die nicht aus der DS-Serie stammen. Sie können vorhandene virtuelle Festplatten zu einem neuen Clouddienst migrieren, in dem nur virtuelle Computer der DS-Serie ausgeführt werden. Wenn Sie für den neuen Clouddienst, unter dem die virtuellen Computer der DS-Serie gehostet werden, die gleiche virtuelle IP-Adresse (VIP) nutzen möchten, verwenden Sie [reservierte IP-Adressen](../articles/virtual-network/virtual-networks-instance-level-public-ip.md).
 
 * **Betriebssystemdatenträger**
 
@@ -104,7 +104,13 @@ Hier sind einige Funktionen von VMs der DS-, DSv2-, GS- und Fs-Serie:
 
 * **Cache**
 
-    VMs der Größenserien, die Storage Premium unterstützen, verfügen über eine einzigartige Cachefunktion für hohen Durchsatz und längere Wartezeiten. Die Leistung der Cachefunktion ist höher als die Leistung des zugrunde liegenden Premium-Speicherdatenträgers. Sie können die Datenträger-Cacherichtlinie auf den Storage Premium-Datenträgern auf **ReadOnly**, **ReadWrite** oder **None** festlegen. Die standardmäßige Datenträger-Cacherichtlinie lautet **ReadOnly** für alle Premium-Datenträger und **ReadWrite** für Betriebssystemdatenträger. Verwenden Sie die richtige Cacheeinstellung, um für Ihre Anwendung eine optimale Leistung zu erzielen. Legen Sie die Datenträger-Cacherichtlinie beispielsweise für Datenträger mit hohem Leseaufkommen oder schreibgeschützte Datenträger, z.B. SQL Server-Datendateien, auf **ReadOnly** fest. Legen Sie die Datenträger-Cacherichtlinie bei Datenträgern mit hohem Schreibaufkommen oder vom Typ „Nur schreiben“, z.B. SQL Server-Protokolldateien, dagegen auf **None** fest. Weitere Informationen zur Optimierung Ihres Entwurfs mit Storage Premium finden Sie unter [Hohe Anwendungsleistung mit Storage Premium](../articles/virtual-machines/windows/premium-storage-performance.md).
+    VMs, die Storage Premium unterstützen, verfügen über eine einzigartige Zwischenspeicherungsfunktion für höheren Durchsatz und geringere Wartezeiten. Die Leistung der Zwischenspeicherungsfunktion ist höher als die Leistung des zugrunde liegenden Storage Premium-Datenträgers. Nicht alle VMs unterstützen die Zwischenspeicherung, daher sollten Sie weitere Informationen den VM-Spezifikationen für die VM-Größen, an denen Sie interessiert sind, entnehmen.  Bei VMs, die Zwischenspeicherung unterstützen, enthält die Spezifikation die Angabe „Maximaler Durchsatz (Cache und temporärer Speicher)“.  Dies ist auch direkt unter dem Titel des virtuellen Computers angegeben.
+    
+    Mit Zwischenspeicherung können Sie die Datenträger-Cacherichtlinie auf den Storage Premium-Datenträgern auf **ReadOnly**, **ReadWrite** oder **None** festlegen. Die standardmäßige Datenträger-Cacherichtlinie lautet **ReadOnly** für alle Premium-Datenträger und **ReadWrite** für Betriebssystemdatenträger. Denken Sie daran, Sie die richtige Cacheeinstellung zu verwenden, um für Ihre Anwendung eine optimale Leistung zu erzielen. 
+    
+    Legen Sie die Datenträger-Cacherichtlinie beispielsweise für Datenträger mit hohem Leseaufkommen oder schreibgeschützte Datenträger, z.B. SQL Server-Datendateien, auf **ReadOnly** fest. Legen Sie die Datenträger-Cacherichtlinie bei Datenträgern mit hohem Schreibaufkommen oder vom Typ „Nur schreiben“, z.B. SQL Server-Protokolldateien, dagegen auf **None** fest. 
+    
+    Weitere Informationen zur Optimierung Ihres Entwurfs mit Storage Premium finden Sie unter [Hohe Anwendungsleistung mit Storage Premium](../articles/virtual-machines/windows/premium-storage-performance.md).
 
 * **Analyse**
 

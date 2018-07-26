@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 1566cf2b61749121c4eaff5a32b0a940f3341f7e
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: a3267d8f2f088c93a8f69f949dc928437a80f455
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751777"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856945"
 ---
 # <a name="understanding-policy-effects"></a>Grundlegendes zu Richtlinienauswirkungen
 
@@ -125,11 +125,11 @@ Beispiel zur Verwendung der Auswirkung „deny“
 
 ## <a name="audit"></a>Audit
 
-Die Auswirkung „audit“ wird verwendet, um ein Warnungsereignis im Überwachungsprotokoll zu erstellen, wenn eine nicht konforme Ressource ausgewertet wird. Die Anforderung wird jedoch nicht beendet.
+Die Auswirkung „audit“ wird verwendet, um ein Warnungsereignis im Aktivitätsprotokoll zu erstellen, wenn eine nicht konforme Ressource ausgewertet wird. Die Anforderung wird jedoch nicht beendet.
 
 ### <a name="audit-evaluation"></a>Auswertung von „audit“
 
-Die Auswirkung „audit“ wird beim Erstellen oder Aktualisieren einer Ressource zuletzt ausgeführt, bevor die Anforderung an den Ressourcenanbieter gesendet wird. „audit“ funktioniert gleichermaßen für eine Ressourcenanforderung innerhalb eines Auswertungszyklus und führt einen `Microsoft.Authorization/policies/audit/action`-Vorgang im Aktivitätsprotokoll durch. In beiden Fällen wird die Ressource als nicht konform markiert.
+Die Auswirkung „audit“ wird beim Erstellen oder Aktualisieren einer Ressource zuletzt ausgeführt, bevor die Anforderung an den Ressourcenanbieter gesendet wird. „audit“ funktioniert gleichermaßen für eine Ressourcenanforderung innerhalb eines Auswertungszyklus und führt einen `Microsoft.Authorization/policies/audit/action`-Vorgang im Aktivitätsprotokoll aus. In beiden Fällen wird die Ressource als nicht konform markiert.
 
 ### <a name="audit-properties"></a>Eigenschaften von „audit“
 

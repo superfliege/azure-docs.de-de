@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: laviswa
-ms.openlocfilehash: ee804ddc9e8fe9901173bb3d9357a273ea28057d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: f6829d497c85ef1b4e74e26befe42d5d6fa87e36
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056816"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205968"
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>SQL-Abfragen für Azure Cosmos DB
 
@@ -522,7 +522,7 @@ Für andere Vergleichsoperatoren wie >, >=, !=, < und <= gelten die folgenden Re
 
 Wenn das Ergebnis eines skalaren Ausdrucks im Filter Undefined ist, wird das entsprechende Dokument aus dem Ergebnis ausgeschlossen, da Undefined logisch nicht gleich "true" ist.
 
-### <a name="between-keyword"></a>Schlüsselwort BETWEEN
+## <a name="between-keyword"></a>Schlüsselwort BETWEEN
 Mit BETWEEN können Abfragen für Wertebereiche wie ANSI SQL ausgedrückt werden. BETWEEN kann für Zeichenfolgen oder Zahlen verwendet werden.
 
 Diese Abfrage gibt beispielsweise alle Familiendokumente zurück, in denen das erste Kind die Klassen 1-5 besucht. 
@@ -561,7 +561,7 @@ Logische Operatoren arbeiten mit booleschen Werten. Es folgt eine Liste der logi
 | False |True |
 | Undefined |Undefined |
 
-### <a name="in-keyword"></a>IN-Schlüsselwort
+## <a name="in-keyword"></a>IN-Schlüsselwort
 Mit dem Schlüsselwort „IN“ kann überprüft werden, ob ein angegebener Wert mit einem Wert in einer Liste übereinstimmt. Bei dieser Abfrage werden beispielsweise alle Familiendokumente zurückgegeben, bei denen die ID entweder „WakefieldFamily“ oder „AndersenFamily“ lautet. 
 
     SELECT *
@@ -574,7 +574,7 @@ In diesem Beispiel werden alle Dokumente zurückgegeben, in denen der Bundesstaa
     FROM Families 
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 
-### <a name="ternary--and-coalesce--operators"></a>Ternäre (?) und koaleszierte (??) Operatoren
+## <a name="ternary--and-coalesce--operators"></a>Ternäre (?) und koaleszierte (??) Operatoren
 Ternäre und koaleszierte Operatoren können ähnlich wie in den gängigen Programmiersprachen wie C# und JavaScript zum Erstellen von bedingten Ausdrücken verwendet werden. 
 
 Der ternäre (?) Operator kann beim schnellen Erstellen von neuen JSON-Eigenschaften sehr nützlich sein. Sie können nun z. B. Abfragen zum Klassifizieren von Klassenstufen in einem für Menschen lesbaren Format wie Anfänger/Fortgeschrittene/Profis wie unten dargestellt erstellen.
@@ -594,7 +594,7 @@ Der koaleszierte (??) Operator kann zur effizienten Prüfung des Vorkommens eine
     SELECT f.lastName ?? f.surname AS familyName
     FROM Families f
 
-### <a id="EscapingReservedKeywords"></a>Eigenschaftenaccessor in Anführungszeichen
+## <a id="EscapingReservedKeywords"></a>Eigenschaftenaccessor in Anführungszeichen
 Sie können auf Eigenschaften auch zugreifen, indem Sie den Anführungszeichenoperator `[]`für Eigenschaften verwenden. `SELECT c.grade` and `SELECT c["grade"]` gleichwertig. Diese Syntax ist hilfreich, wenn Sie eine Eigenschaft mit Escapezeichen versehen müssen, die Leerzeichen oder Sonderzeichen enthält oder zufällig den gleichen Namen wie ein SQL-Schlüsselwort oder ein reserviertes Wort hat.
 
     SELECT f["lastName"]
@@ -682,7 +682,7 @@ Beachten Sie die Rolle von `$1`. Die `SELECT`-Klausel muss ein JSON-Objekt erste
     }]
 
 
-### <a name="aliasing"></a>Aliase
+## <a name="aliasing"></a>Aliase
 Wir werden das obige Beispiel nun erweitern und explizite Aliase für Werte verwenden. AS ist das Schlüsselwort für die Aliasvergabe. Dieses Schlüsselwort ist optional, wie Sie bei der Projektion des zweiten Werts als `NameInfo` sehen. 
 
 Wenn eine Abfrage zwei Eigenschaften mit demselben Namen hat, müssen Aliase verwendet werden, um mindestens eine der Eigenschaften umzubenennen, sodass diese im projizierten Ergebnis eindeutig sind.
@@ -708,7 +708,7 @@ Wenn eine Abfrage zwei Eigenschaften mit demselben Namen hat, müssen Aliase ver
     }]
 
 
-### <a name="scalar-expressions"></a>Skalare Ausdrücke
+## <a name="scalar-expressions"></a>Skalare Ausdrücke
 Neben Eigenschaftsverweisen unterstützt die SELECT-Klausel auch skalare Ausdrücke wie Konstanten, arithmetische Ausdrücke, logische Ausdrücke usw. Hier sehen Sie z. B. eine einfache „Hello World“-Abfrage.
 
 **Abfrage**
@@ -754,7 +754,7 @@ Das Ergebnis des skalaren Ausdrucks im folgenden Beispiel ist ein Boolean-Wert.
     ]
 
 
-### <a name="object-and-array-creation"></a>Objekt- und Arrayerstellung
+## <a name="object-and-array-creation"></a>Objekt- und Arrayerstellung
 Eine weitere Schlüsselfunktion der SQL-API ist die Objekt- und Arrayerstellung. Im vorherigen Beispiel haben wir ein neues JSON-Objekt erstellt. Auf dieselbe Weise können Sie Arrays erstellen, wie in den folgenden Beispielen gezeigt:
 
 **Abfrage**
@@ -779,7 +779,7 @@ Eine weitere Schlüsselfunktion der SQL-API ist die Objekt- und Arrayerstellung.
       }
     ]
 
-### <a id="ValueKeyword"></a>VALUE-Schlüsselwort
+## <a id="ValueKeyword"></a>VALUE-Schlüsselwort
 Das **VALUE**-Schlüsselwort ermöglicht die Rückgabe von JSON-Werten. Die folgende Abfrage gibt z. B. den skalaren Wert `"Hello World"` anstelle von `{$1: "Hello World"}` zurück.
 
 **Abfrage**
@@ -830,7 +830,7 @@ Das folgende Beispiel zeigt, wie Sie primitive JSON-Werte zurückgeben können (
     ]
 
 
-### <a name="-operator"></a>* Operator
+## <a name="-operator"></a>* Operator
 Der Sonderoperator (*) wird unterstützt, um das Dokument unverändert zu projizieren. Wenn dieser Operator verwendet wird, dürfen keine weiteren projizierten Felder existieren. So sind beispielsweise Abfragen wie `SELECT * FROM Families f` gültig, `SELECT VALUE * FROM Families f ` und `SELECT *, f.id FROM Families f ` aber nicht.
 
 **Abfrage**
@@ -859,7 +859,7 @@ Der Sonderoperator (*) wird unterstützt, um das Dokument unverändert zu projiz
         "isRegistered": true
     }]
 
-### <a id="TopKeyword"></a>TOP-Operator
+## <a id="TopKeyword"></a>TOP-Operator
 Das TOP-Schlüsselwort kann verwendet werden, um die Anzahl der Werte aus einer Abfrage zu beschränken. Wenn TOP in Verbindung mit der ORDER BY-Klausel verwendet wird, ist das Resultset auf die ersten N der geordneten Werte beschränkt. Andernfalls werden die ersten N der Ergebnisse in einer nicht definierten Reihenfolge zurückgegeben. Es hat sich bewährt, in einer SELECT-Anweisung immer eine ORDER BY-Klausel mit der TOP-Klausel zu verwenden. Dies ist die einzige Möglichkeit, zuverlässig anzugeben, welche Zeilen von TOP betroffen sind. 
 
 **Abfrage**
@@ -889,7 +889,7 @@ Das TOP-Schlüsselwort kann verwendet werden, um die Anzahl der Werte aus einer 
 
 TOP kann mit einem konstanten Wert (wie oben gezeigt) oder einen Variablenwert mithilfe von parametrisierten Abfragen verwendet werden. Weitere Informationen finden Sie unten zu parametrisierte Abfragen.
 
-### <a id="Aggregates"></a>Aggregatfunktionen
+## <a id="Aggregates"></a>Aggregatfunktionen
 Außerdem können Sie in der `SELECT`-Klausel Aggregationen ausführen. Aggregatfunktionen führen eine Berechnung für eine Gruppe von Werten durch und geben einen einzelnen Wert zurück. Bei dieser Abfrage werden beispielsweise alle Familiendokumente in der Sammlung zurückgegeben.
 
 **Abfrage**

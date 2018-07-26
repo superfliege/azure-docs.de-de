@@ -2,18 +2,18 @@
 title: Includedatei
 description: Includedatei
 services: virtual-machines
-author: rogara
+author: roygara
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 812f11a1ced3bac765441bf66f402abb4da4bc3f
-ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
+ms.openlocfilehash: 336e6e163178cd6d244460dbf9bee2a5bc9d714e
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2018
-ms.locfileid: "35414568"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37935751"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
 
@@ -102,7 +102,7 @@ Kunden können eine Momentaufnahme ihrer verwalteten Datenträger erstellen und 
 Ja, es werden verwaltete und nicht verwaltete Datenträger unterstützt. Allerdings wird empfohlen, für neue Workloads verwaltete Datenträger zu verwenden und aktuelle Workloads zu verwalteten Datenträgern zu migrieren.
 
 
-**Wenn ich einen Datenträger mit einer Größe von 128 GB erstelle und die Größe anschließend auf 130 GB erhöhe, wird mir dann die nächsthöhere Datenträgergröße (512 GB) in Rechnung gestellt?**
+**Wenn ich einen Datenträger mit einer Größe von 128 GB erstelle und die Größe anschließend auf 130 GB erhöhe, wird mir dann die nächsthöhere Datenträgergröße (256 GB) in Rechnung gestellt?**
 
 Ja.
 
@@ -126,6 +126,10 @@ Nein. Sie können die Eigenschaft „Computername“ nicht aktualisieren. Die ne
 * [Liste der Vorlagen die Managed Disks verwenden](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * https://github.com/chagarw/MDPP
 
+**Kann ich verwaltete und nicht verwaltete Datenträger zusammen auf derselben VM platzieren?**
+
+Nein.
+
 ## <a name="standard-ssd-disks-preview"></a>Standard-SSD-Datenträger (Vorschau)
 
 **Was sind Azure-Standard-SSD-Datenträger?**
@@ -133,6 +137,13 @@ Standard-SSD-Datenträger sind Standarddatenträger mit Unterstützung durch SSD
 
 <a id="standard-ssds-azure-regions"></a>**Welche Regionen werden derzeit für Standard-SSD-Datenträger (Vorschau) unterstützt?**
 * Nordeuropa
+* Frankreich, Mitte
+* USA (Ost) 2
+* USA (Mitte)
+* Kanada, Mitte
+* Asien, Osten
+* Korea, Süden
+* Australien (Osten)
 
 **Wie erstelle ich Standard-SSD-Datenträger?**
 Derzeit können Sie Standard-SSD-Datenträger mithilfe von Azure Resource Manager-Vorlagen erstellen. Im Folgenden werden die in der Resource Manager-Vorlage zum Erstellen von Standard-SSD-Datenträgern erforderlichen Parameter aufgeführt:
@@ -156,8 +167,15 @@ Das folgende Beispiel zeigt den Abschnitt *properties.storageProfile.osDisk* fü
 
 Eine vollständige Beispielvorlage zum Erstellen eines Standard-SSD-Datenträgers mit einer Vorlage finden Sie unter [Create a Virtual Machine from a Windows Image with multiple empty Standard SSD Data Disks](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/) (Erstellen eines virtuellen Computers aus einem Windows-Image mit mehreren leeren Standard-SSD-Datenträgern).
 
+**Kann ich meine vorhandenen Laufwerke in Standard-SSD konvertieren?**
+Ja, das ist möglich. Allgemeine Richtlinien zum Konvertieren von verwalteten Datenträgern finden Sie unter [Konvertieren zwischen dem Standardspeicher und Storage Premium für verwaltete Azure-Datenträger](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/convert-disk-storage). Verwenden Sie außerdem den folgenden Wert, um den Datenträgertyp auf Standard-SSD zu aktualisieren.
+-AccountType StandardSSD_LRS
+
 **Kann ich Standard-SSDs als nicht verwaltete Datenträger verwenden?**
 Nein, Standard-SSD-Datenträger sind nur als verwaltete Datenträger verfügbar.
+
+**Unterstützen Standard-SSD-Datenträger SLAs für Einzelinstanz-VMs?**
+Nein, Standard-SSDs weisen keine SLA für Einzelinstanz-VMs auf. Verwenden Sie Premium-SSD-Datenträger für eine SLA für Einzelinstanz-VMs.
 
 ## <a name="migrate-to-managed-disks"></a>Migrieren zu Managed Disks 
 
@@ -209,11 +227,11 @@ Nein.
 
 **Ist Storage Service Encryption nur in bestimmten Regionen verfügbar?**
 
-Nein. Sie ist in allen Regionen verfügbar, in denen Managed Disks verfügbar ist. Managed Disks ist in allen öffentlichen Regionen und Deutschland verfügbar.
+Nein. Sie ist in allen Regionen verfügbar, in denen Managed Disks verfügbar ist. Managed Disks ist in allen öffentlichen Regionen und Deutschland verfügbar. Es ist auch in China verfügbar, jedoch nur für von Microsoft verwaltete Schlüssel, nicht für vom Kunden verwaltete Schlüssel.
 
 **Wie finde ich heraus, ob mein verwalteter Datenträger verschlüsselt ist?**
 
-Sie können im Azure-Portal, der Azure-CLI und in PowerShell herausfinden, wann ein verwaltetet Datenträger erstellt wurde. Wenn der Zeitpunkt nach dem 9. Juni 2017 liegt, ist Ihr Datenträger verschlüsselt. 
+Sie können im Azure-Portal, der Azure-CLI und in PowerShell herausfinden, wann ein verwaltetet Datenträger erstellt wurde. Wenn der Zeitpunkt nach dem 9. Juni 2017 liegt, ist Ihr Datenträger verschlüsselt.
 
 **Wie kann ich meine vorhandenen Laufwerke verschlüsseln, die vor dem 10. Juni 2017 erstellt wurden?**
 

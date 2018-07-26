@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: b25e97b0f0d0b6f63134a774856eb7ec8f77b679
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 03f335634b7ce1fe4aa6251d6ec21922ed9b84c8
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30837437"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887486"
 ---
 # <a name="plans-and-billing-in-azure-scheduler"></a>Pläne und Abrechnung in Azure Scheduler
 ## <a name="job-collection-plans"></a>Pläne für Auftragssammlungen
@@ -42,14 +42,14 @@ Wenn Sie eine Auftragssammlung vom Typ „Standard“ und eine vom Typ „Premiu
 ## <a name="standard-billable-units"></a>Standard-Abrechnungseinheiten
 Eine Standard-Abrechnungseinheit kann bis zu zehn Standard-Auftragssammlungen enthalten. Da eine Auftragssammlung vom Typ „Standard“ bis zu 50 Aufträge enthalten kann, kann ein Abonnement mit einer Standard-Abrechnungseinheit bis zu 500 Aufträge – und nahezu 22 Millionen Auftragsausführungen pro Monat – umfassen.
 
-Bis zu einer Anzahl von zehn Standard-Auftragssammlungen wird eine einzelne Standard-Abrechnungseinheit berechnet. Wenn Sie zwischen elf und 20 Standard-Auftragssammlungen besitzen, werden zwei Standard-Abrechnungseinheiten berechnet. Wenn Sie zwischen 21 und 30 Standard-Auftragssammlungen besitzen, werden drei Standard-Abrechnungseinheiten berechnet, usw.
+Bis zu einer Anzahl von zehn Standard-Auftragssammlungen wird eine Standard-Abrechnungseinheit berechnet. Zwischen 11 und 20 Standard-Auftragssammlungen werden zwei Standard-Abrechnungseinheiten berechnet. Zwischen 21 und 30 Standard-Auftragssammlungen werden drei Standard-Abrechnungseinheiten berechnet usw.
 
 ## <a name="p10-premium-billable-units"></a>P10 Premium-Abrechnungseinheiten
 Eine P10 Premium-Abrechnungseinheit kann bis zu 10.000 P10 Premium-Auftragssammlungen enthalten. Da eine P10 Premium-Auftragssammlung bis zu 50 Aufträge enthalten kann, kann ein Abonnement mit einer Premium-Abrechnungseinheit bis zu 500.000 Aufträge – und nahezu 22 Milliarden Auftragsausführungen pro Monat – umfassen.
 
 Wenn Sie bis zu 10.000 Premium-Auftragssammlungen besitzen, wird eine P10 Premium-Abrechnungseinheit berechnet. Wenn Sie zwischen 10.001 und 20.000 Premium-Auftragssammlungen besitzen, werden zwei P10 Premium-Abrechnungseinheiten berechnet usw.
 
-P10 Premium-Auftragssammlungen haben den gleichen Funktionsumfang wie Standard-Auftragssammlungen, sind preislich aber interessanter, wenn Ihre Anwendung besonders viele Auftragssammlungen benötigt.
+P10 Premium-Auftragssammlungen haben den gleichen Funktionsumfang wie Standard-Auftragssammlungen, sind preislich aber interessanter, wenn Ihre Anwendung viele Auftragssammlungen benötigt.
 
 ## <a name="p20-premium-billable-units"></a>P20 Premium-Abrechnungseinheiten
 Eine P20 Premium-Abrechnungseinheit kann bis zu 5.000 P20 Premium-Auftragssammlungen enthalten. Da eine P20 Premium-Auftragssammlung bis zu 1.000 Aufträge enthalten kann, kann ein Abonnement mit einer Premium-Abrechnungseinheit bis zu 5.000.000 Aufträge – und nahezu 220 Milliarden Auftragsausführungen pro Monat – umfassen.
@@ -57,12 +57,12 @@ Eine P20 Premium-Abrechnungseinheit kann bis zu 5.000 P20 Premium-Auftragssammlu
 P20 Premium-Auftragssammlungen bieten den gleichen Funktionsumfang wie P10 Premium-Auftragssammlungen, unterstützen aber eine größere Anzahl von Aufträgen pro Auftragssammlung und eine größere Anzahl von Aufträgen insgesamt als P10 Premium, sodass Sie von größerer Skalierbarkeit profitieren.
 
 ## <a name="billing-and-active-status"></a>Abrechnung und aktiver Status
-Auftragssammlungen sind immer aktiv, es sei denn, Ihr gesamtes Abonnement wurde aufgrund von Problemen bei der Abrechnung vorübergehend deaktiviert. Wenn Sie sichergehen möchten, dass eine Auftragssammlung nicht in Rechnung gestellt wird, müssen Sie sie entweder auf den Plan *Free* festlegen oder die Auftragssammlung löschen.
+Auftragssammlungen sind immer aktiv, es sei denn, Ihr gesamtes Abonnement wurde aufgrund von Problemen bei der Abrechnung vorübergehend deaktiviert. Wenn Sie sichergehen möchten, dass eine Auftragssammlung nicht in Rechnung gestellt wird, müssen Sie die Auftragssammlung löschen.
 
 Sie können zwar mit einem einzelnen Vorgang alle Aufträge innerhalb einer Auftragssammlung deaktivieren, dies hat jedoch keine Auswirkungen auf deren Abrechnungsstatus. Mit anderen Worten: Die Auftragssammlung wird *weiterhin* in Rechnung gestellt. Darüber hinaus gelten auch leere Auftragssammlungen als aktiv und werden berechnet.
 
 ## <a name="pricing"></a>Preise
-Ausführliche Informationen finden Sie unter [Scheduler Preise](https://azure.microsoft.com/pricing/details/scheduler/).
+Ausführliche Preisinformationen finden Sie unter [Scheduler – Preise](https://azure.microsoft.com/pricing/details/scheduler/).
 
 ## <a name="see-also"></a>Siehe auch
  [Was ist Azure Scheduler?](scheduler-intro.md)

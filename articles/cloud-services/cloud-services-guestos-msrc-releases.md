@@ -12,17 +12,42 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 6/1/2018
+ms.date: 7/6/2018
 ms.author: raiye
-ms.openlocfilehash: aaf91f8394ac4fd4fa6372c6c0f17ff92178589e
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 440f988744a99d4857c6b9fa58f52e0f1eef1a3f
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737536"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902162"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
+
+## <a name="june-guest-os"></a>Gastbetriebssystem Juni
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+| Rel 18-06 | [4284880] |Sicherheitsupdates für Windows 10 |5.20 |12. Juni 2018 |
+| Rel 18-06 | [4284867] |Nur Windows-Sicherheit |2.75 |12. Juni 2018 |
+| Rel 18-06 | [4284846] |Nur Windows-Sicherheit |3.62 |12. Juni 2018 |
+| Rel 18-06 | [4284878] |Nur Windows-Sicherheit |4.55 |12. Juni 2018 |
+| Rel 18-06 | [4230450] |Internet Explorer |2.75, 3.62, 4.75 |12. Juni 2018 |
+| Rel 18-06 | [4287903] |Blinken |3.62, 4.75, 5.20 |12. Juni 2018 |
+| N/V | [4103718] |Sicherheitsrelevanter Rollup für Mai |2.75 |8. Mai 2018 |
+| N/V | [4103730] |Sicherheitsrelevanter Rollup für Mai |3.62 |8. Mai 2018 |
+| N/V | [4103725] |Sicherheitsrelevanter Rollup für Mai |4.55 |8. Mai 2018 |
+| N/V | [4040980], [4040977] |Nicht sicherheitsrelevanter .NET-Rollup für September 2017 |2.75 |14. November 2017 |
+| N/V | [4095874] |Nicht sicherheitsrelevante .NET 3.5-Release für Mai |2.75 |8. Mai 2018 |
+| N/V | [4096495] |Nicht sicherheitsrelevante .NET 4.x-Release für Mai |2.75 |8. Mai 2018 |
+| N/V | [4040975] |Nicht sicherheitsrelevanter .NET-Rollup für September 2017 |3.62 |14. November 2017 |
+| N/V | [4095872] |Nicht sicherheitsrelevante .NET 3.5-Release für Mai |3.62 |8. Mai 2018 |
+| N/V | [4096494] |Nicht sicherheitsrelevante .NET 4.x-Release für Mai |3.62 |8. Mai 2018 |
+| N/V | [4096416] |Nicht sicherheitsrelevante .NET 4.5x-Release für Mai |3.62 |8. Mai 2018 |
+| N/V | [4040974], [4040972] |Nicht sicherheitsrelevanter .NET-Rollup für September 2017 |4.55 |14. November 2017 |
+| N/V | [4043763] |Nicht sicherheitsrelevanter .NET-Rollup für Oktober 2017 |4.55 |12. September 2017 |
+| N/V | [4095876] |Nicht sicherheitsrelevante .NET 4.x-Release für Mai |4.55 |8. Mai 2018 |
+| N/V | [4096417] |Nicht sicherheitsrelevante .NET 4.5x-Release für Mai |4.55 |8. Mai 2018 |
+| N/V | [4132216] |SSU für Mai |5.20 |8. Mai 2018 |
 
 ## <a name="may-guest-os"></a>Gastbetriebssystem Mai
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -648,6 +673,32 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V |[3007054] |PIN-geschützte Druckoption wird beim Drucken eines Dokuments aus einer Windows Store-Anwendung in Windows immer angezeigt |4.15, 3.22, 2.34 |13. Januar 2015 |
 | N/V |[2999802] |In Windows werden durchgezogene Linien statt gepunktete Linien gedruckt |4.15, 3.22, 2.34 |13. Januar 2015 |
 | N/V |[2896881] |Lange Anmeldezeit bei der Verwendung des VBScript-Befehls "AddPrinterConnection" zum Zuordnen von Druckern zu Benutzern während des Anmeldeprozesses in Windows |4.15, 3.22, 2.34 |13. Januar 2015 |
+
+
+[4284880]: http://support.microsoft.com/kb/4284880
+[4284867]: http://support.microsoft.com/kb/4284867
+[4284846]: http://support.microsoft.com/kb/4284846
+[4284878]: http://support.microsoft.com/kb/4284878
+[4230450]: http://support.microsoft.com/kb/4230450
+[4287903]: http://support.microsoft.com/kb/4287903
+[4103718]: http://support.microsoft.com/kb/4103718
+[4103718]: http://support.microsoft.com/kb/4103718
+[4103730]: http://support.microsoft.com/kb/4103730
+[4103725]: http://support.microsoft.com/kb/4103725
+[4040980]: http://support.microsoft.com/kb/4040980
+[4040977]: http://support.microsoft.com/kb/4040977
+[4095874]: http://support.microsoft.com/kb/4095874
+[4096495]: http://support.microsoft.com/kb/4096495
+[4040975]: http://support.microsoft.com/kb/4040975
+[4095872]: http://support.microsoft.com/kb/4095872
+[4096494]: http://support.microsoft.com/kb/4096494
+[4096416]: http://support.microsoft.com/kb/4096416
+[4040974]: http://support.microsoft.com/kb/4040974
+[4040972]: http://support.microsoft.com/kb/4040972
+[4043763]: http://support.microsoft.com/kb/4043763
+[4095876]: http://support.microsoft.com/kb/4095876
+[4096417]: http://support.microsoft.com/kb/4096417
+[4132216]: http://support.microsoft.com/kb/4132216
 
 [4103721]: http://support.microsoft.com/kb/4103721
 [4103727]: http://support.microsoft.com/kb/4103727 

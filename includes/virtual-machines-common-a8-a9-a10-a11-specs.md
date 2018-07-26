@@ -5,14 +5,15 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/09/2018
-ms.author: azcspmt;jonbeck;cynthn
+ms.date: 05/29/2018
+ms.author: azcspmt;jonbeck;cynthn;danlep
 ms.custom: include file
-ms.openlocfilehash: ee32886ddb74bdbbe0f240310629c8ef26230a68
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 296e92d803bb69376f286aa60cfb4a955b08010f
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "34669341"
 ---
 ## <a name="deployment-considerations"></a>Überlegungen zur Bereitstellung
 * **Azure-Abonnement:** Um eine größere Anzahl von rechenintensiven Instanzen bereitzustellen, sollten Sie ein Abonnement mit nutzungsbasierter Bezahlung oder andere Kaufoptionen in Erwägung ziehen. Bei Verwendung eines [kostenlosen Azure-Kontos](https://azure.microsoft.com/free/)können Sie nur eine begrenzte Anzahl von Azure-Compute-Kernen nutzen.
@@ -33,7 +34,7 @@ Eine Teilmenge der rechenintensiven Instanzen (H16r, H16mr, A8 und A9) verfügt 
 Mithilfe dieser Schnittstelle können die RDMA-fähigen Instanzen über ein InfiniBand-Netzwerk (IB) kommunizieren, das mit FDR-Raten für virtuelle Computer der Größe H16r, H16mr und RDMA-fähige virtuelle Computer der N-Serie und QDR-Raten für virtuelle Computer der Größe A8 und A9 betrieben wird. Mit diesen RDMA-Funktionen können Skalierbarkeit und Leistung von bestimmten MPI-Anwendungen (Message Passing Interface) gesteigert werden.
 
 > [!NOTE]
-> In Azure wird „IP over IB“ nicht unterstützt. Es wird nur „RDMA over IB“ unterstützt.
+> In Azure wird „IP over IB“ nicht unterstützt. Nur RDMA over IB wird unterstützt.
 >
 
-Stellen Sie die RDMA-fähigen HPC-VMs in der gleichen Verfügbarkeitsgruppe bzw. VM-Skalierungsgruppe (bei Verwendung des Azure Resource Manager-Bereitstellungsmodells) bzw. im gleichen Clouddienst (bei Verwendung des klassischen Bereitstellungsmodells) bereit. Es folgen weitere Anforderungen für RDMA-fähige HPC-VMs für den Zugriff auf das Azure RDMA-Netzwerk.
+Stellen Sie die RDMA-fähigen HPC-VMs in der gleichen Verfügbarkeitsgruppe bzw. VM-Skalierungsgruppe (bei Verwendung des Azure Resource Manager-Bereitstellungsmodells) bzw. im gleichen Clouddienst (bei Verwendung des klassischen Bereitstellungsmodells) bereit. Wenn Sie eine VM-Skalierungsgruppe verwenden, stellen Sie sicher, dass Sie die Bereitstellung auf eine einzelne Platzierungsgruppe beschränken. Legen Sie z.B. in einer Resource Manager-Vorlage die *SinglePlacementGroup*-Eigenschaft auf *true* fest. Es folgen weitere Anforderungen für RDMA-fähige HPC-VMs für den Zugriff auf das Azure RDMA-Netzwerk.

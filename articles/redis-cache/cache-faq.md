@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: f78dd2a28575ad8e3fa30ac9c2bbd29c7d85a78f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6c308205c5adb05f4c7e1668c67adea414020ea2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640471"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38232960"
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis Cache – häufig gestellte Fragen
 In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und Best Practices für Azure Redis Cache.
@@ -392,7 +392,10 @@ So konfigurieren Sie diese Einstellung:
   > Der in diesem Konfigurationselement angegebene Wert ist eine Einstellung *pro Kern*. Wenn Ihr Computer z.B. über vier Kerne verfügt und Sie eine minIOThreads-Einstellung von 200 zur Laufzeit festlegen möchten, müssen Sie `<processModel minIoThreads="50"/>` verwenden.
   >
 
-* Außerhalb von ASP.NET verwenden Sie die [ThreadPool.SetMinThreads(…)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) -API.
+* Verwenden Sie außerhalb von ASP.NET und der Datei „global.asax“ für Azure WebSites die API [ThreadPool.SetMinThreads (...)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx).
+
+  > [!NOTE]
+  > Der von dieser API festgelegte Wert ist eine globale Einstellung, die die gesamte AppDomain betrifft. Wenn Sie über einen Computer mit 4 Kernen verfügen und minWorkerThreads und minIOThreads auf 50 pro CPU während der Laufzeit festlegen möchten, verwenden Sie ThreadPool.SetMinThreads (200, 200).
 
 <a name="server-gc"></a>
 

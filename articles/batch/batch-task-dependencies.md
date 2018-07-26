@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ba85e075c39251b0b3d7c4b8bc3f8d53a1afadf7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 6a9b44ed56774466bae2f0f5d48b5e012382721b
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30316816"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865232"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Erstellen von Taskabhängigkeiten zum Ausführen von Tasks, die von anderen Tasks abhängen
 
@@ -68,7 +68,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 Dieser Codeausschnitt erstellt einen abhängigen Task mit der Task-ID „Flowers“. Der Task „Flowers“ ist von den Tasks „Rain“ und „Sun“ abhängig. Der Task „Flowers“ wird erst für die Ausführung auf einem Computeknoten eingeplant, nachdem die Tasks „Rain“ und „Sun“ erfolgreich abgeschlossen wurden.
 
 > [!NOTE]
-> Ein Task wird als erfolgreich abgeschlossen angesehen, wenn sie den Zustand **abgeschlossen** aufweist und der **Exitcode** den Wert `0` hat. In Batch .NET bedeutet dies, dass der [CloudTask][net_cloudtask].[State][net_taskstate]-Eigenschaftswert `Completed` und der [TaskExecutionInformation][net_taskexecutioninformation].[ExitCode][net_exitcode]-Eigenschaftswert von „CloudTask“ `0` lautet.
+> Ein Task wird als erfolgreich abgeschlossen angesehen, wenn er den Zustand **abgeschlossen** aufweist und der **Exitcode** den Wert `0` hat. In Batch .NET bedeutet dies, dass der [CloudTask][net_cloudtask].[State][net_taskstate]-Eigenschaftswert `Completed` und der [TaskExecutionInformation][net_taskexecutioninformation].[ExitCode][net_exitcode]-Eigenschaftswert von „CloudTask“ `0` lautet. Informationen zum Ändern dieses Verhaltens finden Sie im Abschnitt [Abhängigkeitsaktionen](#dependency-actions).
 > 
 > 
 
@@ -121,7 +121,9 @@ Bei einer Abhängigkeit von einem Bereich von übergeordneten Tasks hängt ein T
 Um die Abhängigkeit zu erstellen, geben Sie die IDs des ersten und letzten Tasks in dem Bereich für die statische [TaskDependencies][net_taskdependencies].[ OnIdRange][net_onidrange]-Methode an, wenn Sie die [DependsOn][net_dependson]-Eigenschaft von [CloudTask][net_cloudtask] ausfüllen.
 
 > [!IMPORTANT]
-> Wenn Sie Task-ID-Bereiche für Ihre Abhängigkeiten verwenden, *muss* es sich bei den Task-IDs im Bereich um Zeichenfolgendarstellungen von Ganzzahlwerten handeln.
+> Wenn Sie Task-ID-Bereiche für Ihre Abhängigkeiten verwenden, werden nur Tasks mit IDs, die Integerwerte darstellen, durch den Bereich ausgewählt. Der Bereich `1..10` wählt somit die Aufgaben `3` und `7` aus, aber nicht `5flamingoes`. 
+> 
+> Führende Nullen haben für die Auswertung von Bereichsabhängigkeiten keine Bedeutung, die Aufgaben mit den Zeichenfolgenbezeichnern `4`, `04` und `004` befinden sich daher alle *im* Bereich und werden alle als die Aufgabe `4` behandelt, sodass der erste Abschluss die Abhängigkeit erfüllt.
 > 
 > Jeder Task in dem Bereich muss die Abhängigkeit erfüllen. Dies kann durch erfolgreichen Abschluss geschehen oder durch Abschließen mit einem Fehler, der einer Abhängigkeitsaktion zugeordnet ist, die auf **Satisfy** (Erfüllen) festgelegt ist. Weitere Informationen finden Sie im Abschnitt [Abhängigkeitsaktionen](#dependency-actions).
 >

@@ -1,3 +1,20 @@
+---
+title: Includedatei
+description: Includedatei
+services: iot-accelerators
+author: dominicbetts
+ms.service: iot-accelerators
+ms.topic: include
+ms.date: 05/30/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 55920b6c147626f68f51b9e0479949330c71a748
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "38756410"
+---
 > [!div class="op_single_selector"]
 > * [C unter Windows](../articles/iot-suite/iot-suite-v1-connecting-devices.md)
 > * [C unter Linux](../articles/iot-suite/iot-suite-v1-connecting-devices-linux.md)
@@ -16,7 +33,7 @@ Zur Vereinfachung erzeugt der Code auf dem Gerät Beispielwerte. Sie sollten das
 
 Das Gerät kann auch auf Methoden antworten, die über das Lösungsdashboard aufgerufen werden, und auf die gewünschten Eigenschaftswerte, die im Lösungsdashboard festgelegt werden.
 
-Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion][lnk-free-trial].
+Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Konto. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion][lnk-free-trial].
 
 ## <a name="before-you-start"></a>Vorbereitung
 Bevor Sie Code für Ihr Gerät schreiben, müssen Sie Ihre vorkonfigurierte Lösung für die Remoteüberwachung und ein neues benutzerdefiniertes Gerät in dieser Lösung bereitstellen.
@@ -24,13 +41,13 @@ Bevor Sie Code für Ihr Gerät schreiben, müssen Sie Ihre vorkonfigurierte Lös
 ### <a name="provision-your-remote-monitoring-preconfigured-solution"></a>Bereitstellen der vorkonfigurierten Lösung für die Remoteüberwachung
 Das von Ihnen in diesem Tutorial erstellte Gerät sendet Daten an eine Instanz der vorkonfigurierten Lösung für die [Remoteüberwachung][lnk-remote-monitoring]. Führen Sie die folgenden Schritte aus, wenn Sie die vorkonfigurierte Lösung für die Remoteüberwachung noch nicht in Ihrem Azure-Konto bereitgestellt haben:
 
-1. Klicken Sie auf der Seite <https://www.azureiotsuite.com/> auf **+**, um eine Lösung zu erstellen.
+1. Klicken Sie auf der Seite <https://www.azureiotsolutions.com/> auf **+**, um eine Lösung zu erstellen.
 2. Klicken Sie im Bereich **Remoteüberwachung** auf **Auswählen**, um die Lösung zu erstellen.
 3. Geben Sie auf der Seite **Create Remote monitoring solution** (Remoteüberwachungslösung erstellen) einen **Lösungsnamen** Ihrer Wahl ein, wählen Sie die gewünschte **Region** für die Bereitstellung aus, und wählen Sie dann das gewünschte Azure-Abonnement aus. Klicken Sie dann auf **Lösung erstellen**.
 4. Warten Sie, bis der Bereitstellungsvorgang abgeschlossen ist.
 
 > [!WARNING]
-> Die vorkonfigurierten Lösungen verwenden abrechenbare Azure-Dienste. Achten Sie darauf, die vorkonfigurierte Lösung aus dem Abonnement zu entfernen, wenn Sie fertig sind, um unnötige Gebühren zu vermeiden. Sie können eine vorkonfigurierte Lösung vollständig aus Ihrem Abonnement entfernen, indem Sie auf die Seite <https://www.azureiotsuite.com/> zugreifen.
+> Die vorkonfigurierten Lösungen verwenden abrechenbare Azure-Dienste. Achten Sie darauf, die vorkonfigurierte Lösung aus dem Abonnement zu entfernen, wenn Sie fertig sind, um unnötige Gebühren zu vermeiden. Sie können eine vorkonfigurierte Lösung vollständig aus Ihrem Abonnement entfernen, indem Sie die Seite <https://www.azureiotsolutions.com/> besuchen.
 > 
 > 
 

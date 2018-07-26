@@ -1,112 +1,119 @@
 ---
-title: Lokales Ausführen von U-SQL-Skripts mit dem Azure Data Lake-U-SQL SDK
-description: In diesem Artikel erfahren Sie, wie Azure Data Lake Tools für Visual Studio zum Testen und Debuggen von U-SQL-Aufträgen auf der lokalen Arbeitsstation verwendet werden.
+title: Ausführen von Azure Data Lake-U-SQL-Skripts auf dem lokalen Computer | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie U-SQL-Aufträge mithilfe von Azure Data Lake Tools für Visual Studio auf dem lokalen Computer ausführen.
 services: data-lake-analytics
-ms.service: data-lake-analytics
-author: mumian
-ms.author: yanacai
-manager: kfile
-editor: jasonwhowell
+documentationcenter: ''
+author: yanancai
+manager: ''
+editor: ''
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
-ms.topic: conceptual
-ms.date: 11/15/2016
-ms.openlocfilehash: 322278f00f49f718b1ba560e9d21d0af0be49b18
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.service: data-lake-analytics
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: big-data
+ms.date: 07/03/2018
+ms.author: yanacai
+ms.openlocfilehash: a7f43c7e17f36d9b4e0767744eee9604c2628ea8
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736002"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888965"
 ---
-# <a name="runing-u-sql-scripts-locally"></a>Lokales Ausführen von U-SQL-Skripts
+# <a name="run-u-sql-script-on-your-local-machine"></a>Ausführen von U-SQL-Skripts auf dem lokalen Computer
 
-Sie können U-SQL nicht nur in Azure ausführen, sondern auch auf einem eigenen Computer. Dies wird als „lokale Ausführung“ bezeichnet. 
+Beim Entwickeln von U-SQL-Skripts ist es üblich, die U-SQL-Skripts lokal auszuführen, da dies Kosten und Zeit spart. In Azure Data Lake Tools für Visual Studio ist es möglich, U-SQL-Skripts auf dem lokalen Computer auszuführen. 
 
-Die lokale U-SQL-Ausführung ist mit diesen Tools verfügbar:
-* Azure Data Lake Tools für Visual Studio
-* Azure Data Lake-U-SQL SDK
+## <a name="basic-concepts-for-local-run"></a>Grundlegende Konzepte für die lokale Ausführung
 
-## <a name="understand-the-data-root-folder-and-the-file-path"></a>Grundlegendes zum Datenstammordner und zum Dateipfad
+In der folgenden Aufstellung sind die Komponenten für die lokale Ausführung und ihre Entsprechung bei der Ausführung in der Cloud aufgeführt.
 
-Sowohl für lokale Testläufe als auch für das U-SQL-SDK ist ein Datenstammordner erforderlich. Der Datenstammordner ist ein „lokaler Speicher“ für das lokale Computerkonto. Dies entspricht dem Azure Data Lake Store-Konto eines Data Lake Analytics-Kontos. Der Wechsel zu einem anderen Datenstammordner ähnelt dem Wechsel zu einem anderen Speicherkonto. Wenn Sie auf normalerweise freigegebene Daten mit unterschiedlichen Datenstammordnern zugreifen möchten, müssen Sie in Ihren Skripts absolute Pfade verwenden. Alternativ können Sie symbolische Verknüpfungen im Dateisystem (z.B. **mklink** auf NTFS) unterhalb des Datenstammordners erstellen, die auf die freigegebenen Daten verweisen.
+|Komponente|Lokale Ausführung|Ausführung in der Cloud|
+|---------|---------|---------|
+|Speicher|Lokaler Datenstammordner|Azure Data Lake Store-Standardkonto|
+|Compute|Engine für lokale U-SQL-Ausführung|Azure Data Lake Analytics-Dienst|
+|Ausführungsumgebung|Arbeitsverzeichnis auf dem lokalen Computer|Azure Data Lake Analytics-Cluster|
+
+Weitere Erklärungen zu den Komponenten für die lokale Ausführung:
+
+### <a name="local-data-root-folder"></a>Lokaler Datenstammordner
+
+Der lokale Datenstammordner ist ein „lokaler Speicher“ für das lokale Computekonto. Jeder Ordner im lokalen Dateisystem auf dem lokalen Computer kann als lokaler Datenstammordner dienen. Er entspricht dem Azure Data Lake Store-Standardkonto eines Data Lake Analytics-Kontos. Der Wechsel zu einem anderen Datenstammordner entspricht dem Wechsel zu einem anderen Standardspeicherkonto. 
 
 Der Datenstammordner wird für Folgendes verwendet:
+- Speichern von Metadaten, z.B. Datenbanken, Tabellen, Tabellenwertfunktionen und Assemblys.
+- Suchen nach Eingabe- und Ausgabepfaden, die als relative Pfade in U-SQL-Skripts definiert sind. Das Verwenden relativer Pfade erleichtert das Bereitstellen von U-SQL-Skripts in Azure.
 
-- Speichern von Metadaten, einschließlich Datenbanken, Tabellen, Tabellenwertfunktionen (Table-Valued Functions, TVFs) und Assemblys.
-- Suchen nach Eingabe- und Ausgabepfaden, die als relative Pfade in U-SQL definiert sind. Das Verwenden relativer Pfade erleichtert das Bereitstellen von U-SQL-Projekten in Azure.
+### <a name="u-sql-local-run-engine"></a>Engine für lokale U-SQL-Ausführung
 
-Sie können einen relativen Pfad und einen lokalen absoluten Pfad in U-SQL-Skripts verwenden. Der relative Pfad ist relativ zum angegebenen Pfad des Datenstammordners. Wir empfehlen, „/“ als Pfadtrennzeichen zu verwenden, damit Ihre Skripts mit dem Server kompatibel sind. Hier sind einige Beispiele für relative Pfade und ihre entsprechenden absoluten Pfade. In diesen Beispielen ist „C:\LocalRunDataRoot“ der Datenstammordner.
+Die Engine für die lokale U-SQL-Ausführung ist ein „lokales Computekonto“ für U-SQL-Aufträge. Benutzer können U-SQL-Aufträge über Azure Data Lake Tools für Visual Studio lokal ausführen. Die lokale Ausführung wird auch über die Befehlszeilen- und Programmierschnittstellen von Azure Data Lake U-SQL SDK unterstützt. [Erfahren Sie mehr über Azure Data Lake U-SQL SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/).
 
-|Relativer Pfad|Absoluter Pfad|
-|-------------|-------------|
-|/abc/def/input.csv |C:\LocalRunDataRoot\abc\def\input.csv|
-|abc/def/input.csv  |C:\LocalRunDataRoot\abc\def\input.csv|
-|D:/abc/def/input.csv |D:\abc\def\input.csv|
+### <a name="working-directory"></a>Arbeitsverzeichnis
 
-## <a name="use-local-run-from-visual-studio"></a>Verwenden von lokalen Testläufen in Visual Studio
+Beim Ausführen eines U-SQL-Skripts ist ein Arbeitsverzeichnis zum Zwischenspeichern von Kompilierungsergebnissen, Ausführungsprotokollen usw. erforderlich. In Azure Data Lake Tools für Visual Studio ist das Arbeitsverzeichnis das Arbeitsverzeichnis des U-SQL-Projekts (befindet sich normalerweise unter `<U-SQL project root path>/bin/debug>`). Das Arbeitsverzeichnis wird jedes Mal bereinigt, wenn eine neue Ausführung ausgelöst wird.
 
-Die Data Lake-Tools für Visual Studio ermöglichen lokale U-SQL-Testläufe in Visual Studio. Mit dieser Funktion können Sie die folgenden Schritte ausführen:
+## <a name="local-run-in-visual-studio"></a>Lokale Ausführung in Visual Studio
 
-- Ein U-SQL-Skript zusammen mit C#-Assemblys lokal ausführen.
-- Eine C#-Assembly lokal debuggen.
-- U-SQL-Kataloge (lokale Datenbanken, Assemblys, Schemas und Tabellen) über Server-Explorer erstellen, anzeigen und löschen. Sie finden den lokalen Katalog auch über den Server-Explorer.
+Azure Data Lake Tools für Visual Studio umfasst eine integrierte Engine für die lokale Ausführung, die als lokales Computekonto angezeigt wird. Um ein U-SQL-Skript lokal auszuführen, wählen Sie links im Skript-Editor in der Dropdownliste das Konto „(Local-machine)“ oder „(Local-project)“ aus, und klicken Sie auf **Senden**.
 
-    ![Lokaler Katalog für lokale Testläufe der Data Lake-Tools für Visual Studio](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-local-catalog.png)
+![Data Lake Tools für Visual Studio, Senden des Skripts an lokales Konto](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-submit-script-to-local-account.png) 
+ 
+## <a name="local-run-with-local-machine-account"></a>Lokale Ausführung mit dem Konto „(Local-machine)“
 
-Das Installationsprogramm der Data Lake-Tools erstellt den Ordner „C:\LocalRunRoot“, der als standardmäßiger Datenstammordner verwendet wird. Die standardmäßige Parallelität für lokale Testläufe ist 1.
+Das Konto „(Local-machine)“ ist ein freigegebenes lokales Computekonto mit einem einzelnen lokalen Datenstammordner als lokales Speicherkonto. Der Datenstammordner befindet sich standardmäßig unter „C:\Benutzer\<Benutzername>\AppData\Local\USQLDataRoot“ und kann über **Extras > Data Lake > Optionen und Einstellungen** konfiguriert werden.
 
-### <a name="to-configure-local-run-in-visual-studio"></a>So konfigurieren Sie lokale Testläufe in Visual Studio
+![Data Lake Tools für Visual Studio, Konfigurieren des lokalen Datenstammordners](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-local-data-root.png)
+  
+Für die lokale Ausführung ist ein U-SQL-Projekt erforderlich. Das Arbeitsverzeichnis des U-SQL-Projekts wird als Arbeitsverzeichnis für die lokale U-SQL-Ausführung verwendet. Kompilierungsergebnisse, Ausführungsprotokolle und andere auf die Ausführung von Aufträgen bezogene Dateien werden während der lokalen Ausführung im Arbeitsverzeichnis generiert und gespeichert. Jedes Mal, wenn Sie das Skript erneut ausführen, werden alle diese Dateien im Arbeitsverzeichnis bereinigt und neu generiert.
 
-1. Öffnen Sie Visual Studio.
-2. Öffnen Sie **Server-Explorer**.
-3. Erweitern Sie **Azure** > **Data Lake Analytics**.
-4. Klicken Sie im Menü **Data Lake** auf **Optionen und Einstellungen**.
-5. Erweitern Sie in der linken Struktur **Azure Data Lake** und dann **Allgemein**.
+## <a name="local-run-with-local-project-account"></a>Lokale Ausführung mit dem Konto „(Local-project)“
 
-    ![Konfigurationseinstellungen für lokale Testläufe der Data Lake-Tools für Visual Studio](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-configure.png)
+Das Konto „(Local-project)“ ist ein projektisoliertes lokales Computekonto für die einzelnen Projekte mit einem isolierten lokalen Datenstammordner. Bei jedem Öffnen eines aktiven U-SQL-Projekts im Projektmappen-Explorer wird ein entsprechendes `(Local-project: <project name>)`-Konto im Server-Explorer und am Rand des U-SQL-Skript-Editors angezeigt. 
 
-Ein Visual Studio-U-SQL-Projekt ist für lokale Testläufe erforderlich. Hier liegt der Unterschied zur Ausführung von U-SQL-Skripts über Azure.
+Das Konto „(Local-project)“ bietet eine saubere und isolierte Entwicklungsumgebung für Entwickler. Im Gegensatz zum Konto „(Local-machine)“, das einen freigegebenen lokalen Datenstammordner enthält, in dem Metadaten und Eingabe- und Ausgabedaten für alle lokalen Aufträge gespeichert werden, wird beim Konto „(Local-project)“ jedes Mal, wenn ein U-SQL-Skript ausgeführt wird, ein temporärer lokaler Datenstammordner unter dem Arbeitsverzeichnis des U-SQL-Projekts erstellt. Dieser temporäre Datenstammordner wird bereinigt, wenn eine Neuerstellung oder erneute Ausführung erfolgt. 
 
-### <a name="to-run-a-u-sql-script-locally"></a>So führen Sie ein U-SQL-Skript lokal aus
-1. Öffnen Sie Ihr U-SQL-Projekt in Visual Studio.   
-2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf ein U-SQL-Skript, und klicken Sie dann auf **Skript senden**.
-3. Wählen Sie **(Lokal)** als Analytics-Konto für die lokale Ausführung des Skripts aus.
-Sie können auch oben im Skriptfenster auf das Konto **(Lokal)** klicken und dann auf **Senden** klicken (oder verwenden Sie die Tastenkombination STRG+F5).
+In einem U-SQL-Projekt lässt sich diese isolierte Umgebung zur lokalen Ausführung gut über Projektverweise und -eigenschaften verwalten. Sie können sowohl die Eingabedatenquellen für U-SQL-Skripts im Projekt als auch die referenzierten Datenbankumgebungen konfigurieren.
 
-    ![Senden von Aufträgen für lokale Testläufe mit den Data Lake-Tools für Visual Studio](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-submit-job.png)
+### <a name="manage-input-data-source-for-local-project-account"></a>Verwalten der Eingabedatenquelle für das Konto „(Local-project)“
 
-### <a name="debug-scripts-and-c-assemblies-locally"></a>Lokales Debuggen von Skripts und C#-Assemblys
+Die Erstellung des lokalen Datenstammordners und die Einrichtung der Daten für das Konto „(Local-project)“ erfolgt durch das U-SQL-Projekt. Bei jeder Neuerstellung und jeder lokalen Ausführung wird der temporäre Datenstammordner bereinigt und unter dem Arbeitsverzeichnis des U-SQL-Projekts neu erstellt. Alle durch das U-SQL-Projekt konfigurierten Datenquellen werden vor der Ausführung eines lokalen Auftrags in diesen temporären lokalen Datenstammordner kopiert. 
 
-Sie können C#-Assemblys debuggen, ohne sie zu senden und beim Azure Data Lake Analytics-Dienst zu registrieren. Sie können sowohl in der Code-Behind-Datei als auch in einem referenzierten C#-Projekt Haltepunkte festlegen.
+Sie können den Stammordner der Datenquellen über **Rechtsklick auf U-SQL-Projekt > Eigenschaft > Testdatenquelle** konfigurieren. Beim Ausführen eines U-SQL-Skripts im Konto „(Local-project)“ werden alle Dateien und Unterordner (einschließlich der Dateien in den Unterordnern) im Ordner **Testdatenquelle** in den temporären lokalen Datenstammordner kopiert. Nach der Ausführung des lokalen Auftrags befinden sich auch die Ausgabeergebnisse unter dem temporären lokalen Datenstammordners im Arbeitsverzeichnis des Projekts. Beachten Sie, dass alle diese Ausgaben gelöscht und bereinigt werden, wenn das Projekt neu erstellt und bereinigt wird. 
 
-#### <a name="to-debug-local-code-in-code-behind-file"></a>So debuggen Sie lokalen Code in der CodeBehind-Datei:
+![Data Lake Tools für Visual Studio, Konfigurieren der Testdatenquelle des Projekts](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-project-test-data-source.png)
 
-1. Legen Sie Haltepunkte in der CodeBehind-Datei fest.
-2. Drücken Sie F5, um das Skript lokal zu debuggen.
+### <a name="manage-referenced-database-environment-for-local-project-account"></a>Verwalten der referenzierten Datenbankumgebung für das Konto „(Local-project)“ 
 
-> [!NOTE]
-   > Das folgende Verfahren funktioniert nur in Visual Studio 2015. In älteren Versionen von Visual Studio müssen Sie eventuell die PDB-Dateien manuell hinzufügen.  
-   >
-   >
+Wenn bei einer U-SQL-Abfrage U-SQL-Datenbankobjekte verwendet oder abgefragt werden, müssen Sie vor dem lokalen Ausführen dieses U-SQL-Skripts die Datenbankumgebungen lokal einrichten. Für das Konto „(Local-project)“ können U-SQL-Datenbankabhängigkeiten durch U-SQL-Projektverweise verwaltet werden. Sie können dem U-SQL-Projekt U-SQL-Datenbankprojektverweise hinzufügen. Vor dem Ausführen von U-SQL-Skripts im Konto „(Local-project)“ werden alle referenzierten Datenbanken im temporären lokalen Datenstammordner bereitgestellt. Bei jeder Ausführung wird der temporäre Datenstammordner außerdem als neue isolierte Umgebung bereinigt.
 
-#### <a name="to-debug-local-code-in-a-referenced-c-project"></a>So debuggen Sie lokalen Code in einem referenzierten C#-Projekt:
+Verwandte Artikel:
+* [Informationen zum Verwalten einer U-SQL-Datenbankdefinition über ein U-SQL-Datenbankprojekt](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)
+* [Informationen zum Verwalten eines U-SQL-Datenbankverweises in einem U-SQL-Projekt](data-lake-analytics-data-lake-tools-develop-usql-database.md)
 
-1. Erstellen Sie ein C#-Assemblyprojekt, und erstellen Sie es, um die Ausgabe-DLL zu generieren.
-2. Registrieren Sie die DLL mithilfe einer U-SQL-Anweisung:
+## <a name="difference-between-local-machine-and-local-project-account"></a>Unterschied zwischen dem Konto „(Local-machine)“ und dem Konto „(Local-project)“
 
-        CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
-        
-3. Legen Sie Haltepunkte im C#-Code fest.
-4. Drücken Sie F5, um das Skript mit Verweis auf die C#-DLL lokal zu debuggen.
+Das Konto „(Local-machine)“ simuliert ein Azure Data Lake Analytics-Konto auf dem lokalen Computer von Benutzern. Es hat die gleiche Oberfläche wie ein Azure Data Lake Analytics-Konto. Das Konto „(Local-project)“ bietet eine benutzerfreundliche lokale Entwicklungsumgebung, in der Benutzer vor dem lokalen Ausführen des Skripts Datenbankverweise und Eingabedaten bereitstellen können. Das Konto „(Local-machine)“ bietet eine freigegebene permanente Umgebung, auf die über alle Projekte zugegriffen werden kann. Das Konto „(Local-project)“ bietet eine isolierte Entwicklungsumgebung für jedes Projekt und wird bei jeder Ausführung aktualisiert. Im Vergleich bietet das Konto „(Local-project)“ eine schnellere Entwicklungsumgebung, da neue Änderungen rasch angewandt werden.
 
-## <a name="use-local-run-from-the-data-lake-u-sql-sdk"></a>Verwenden lokaler Testläufe über das Data Lake-U-SQL-SDK
+Weitere Unterschiede zwischen dem Konto „(Local-machine)“ und dem Konto „(Local-project)“ finden Sie in der folgenden Tabelle:
 
-Neben der lokalen Ausführung von U-SQL-Skripts mithilfe von Visual Studio können Sie auch das Azure Data Lake-U-SQL-SDK verwenden, um U-SQL-Skripts lokal über die Befehlszeile und Programmierschnittstellen auszuführen. Damit können Sie Ihren lokalen U-SQL-Test skalieren.
+|Unterschied|(Local-machine)|(Local-project)|
+|----------------|---------------|---------------|
+|Lokaler Zugriff|Der Zugriff kann über alle Projekte erfolgen.|Nur das entsprechende Projekt kann auf dieses Konto zugreifen.|
+|Lokaler Datenstammordner|Ein permanenter lokaler Ordner. Wird über **Extras > Data Lake > Optionen und Einstellungen** konfiguriert.|Ein temporärer Ordner, der für jede lokale Ausführung unter dem Arbeitsverzeichnis des U-SQL-Projekts erstellt wird. Der Ordner wird bereinigt, wenn eine Neuerstellung oder erneute Ausführung erfolgt.|
+|Eingabedaten für das U-SQL-Skript|Relativer Pfad unter dem permanenten lokalen Datenstammordner|Wird über **U-SQL-Projekteigenschaft > Testdatenquelle** festgelegt. Alle Dateien und Unterordner werden vor der lokalen Ausführung in den temporären Datenstammordner kopiert.|
+|Ausgabedaten für das U-SQL-Skript|Relativer Pfad unter dem permanenten lokalen Datenstammordner|Werden in den temporären Datenstammordner ausgegeben. Die Ergebnisse werden bereinigt, wenn eine Neuerstellung oder erneute Ausführung erfolgt.|
+|Bereitstellung von referenzierten Datenbanken|Referenzierte Datenbanken werden beim Ausführen im Konto „(Local-machine)“ nicht automatisch bereitgestellt. Dies gilt auch beim Senden in das Azure Data Lake Analytics-Konto.|Referenzierte Datenbanken werden vor der lokalen Ausführung automatisch im Konto „(Local-project)“ bereitgestellt. Alle Datenbankumgebungen werden bereinigt und neu bereitgestellt, wenn eine Neuerstellung oder erneute Ausführung erfolgt.|
 
-Weitere Informationen zu [Azure Data Lake U-SQL SDK](data-lake-analytics-u-sql-sdk.md).
+## <a name="local-run-with-u-sql-sdk"></a>Lokale Ausführung mit U-SQL SDK
 
+Neben der lokalen Ausführung von U-SQL-Skripts in Visual Studio können Sie auch Azure Data Lake U-SQL SDK verwenden, um U-SQL-Skripts lokal über die Befehlszeilen- und Programmierschnittstellen auszuführen. Über diese Schnittstellen können Sie lokale U-SQL-Ausführungen und U-SQL-Tests automatisieren.
+
+[Erfahren Sie mehr über Azure Data Lake U-SQL SDK](data-lake-analytics-u-sql-sdk.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine komplexere Abfrage finden Sie unter [Analysieren von Websiteprotokollen mit Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
-* Informationen zum Anzeigen von Auftragsdetails finden Sie unter [Verwenden des Auftragsbrowsers und der Auftragsansicht für Azure Data Lake Analytics-Aufträge](data-lake-analytics-data-lake-tools-view-jobs.md).
-* Weitere Informationen zur Verwendung der Scheitelpunktausführungsansicht finden Sie unter [Verwenden der Scheitelpunktausführungsansicht in Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).
+- [Azure Data Lake U-SQL SDK](data-lake-analytics-u-sql-sdk.md)
+- [Einrichten einer CI/CD-Pipeline für Azure Data Lake Analytics](data-lake-analytics-cicd-overview.md)
+- [Entwickeln einer U-SQL-Datenbank mithilfe eines U-SQL-Datenbankprojekts](data-lake-analytics-data-lake-tools-develop-usql-database.md)
+- [Testen des Azure Data Lake Analytics-Codes](data-lake-analytics-cicd-test.md)

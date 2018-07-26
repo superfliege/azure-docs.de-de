@@ -5,15 +5,15 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/22/2018
+ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 15f21fd03b0373c189f3b6c4972280d128024217
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: d7cae11314876bf07b9fcf3d3632a9f42b378626
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36943520"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38944765"
 ---
 Arbeitsspeicheroptimierte VM-Größen bieten ein hohes Arbeitsspeicher-zu-CPU-Verhältnis und eignen sich hervorragend für relationale Datenbankserver, mittelgroße bis große Caches und In-Memory-Analysen. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz und zur Netzwerkbandbreite der einzelnen Größen in dieser Gruppe. 
 
@@ -31,6 +31,10 @@ Arbeitsspeicheroptimierte VM-Größen bieten ein hohes Arbeitsspeicher-zu-CPU-Ve
 ## <a name="esv3-series"></a>Esv3-Serie 
 
 ACU: 160 - 190 <sup>1</sup>
+
+Storage Premium: unterstützt
+
+Storage Premium-Zwischenspeicherung: unterstützt
 
 Die Instanzen der ESv3-Serie basieren auf dem Prozessor vom Typ 2,3 GHz Intel XEON ® E5-2673 v4 (Broadwell) und können mit Intel Turbo Boost Technology 2.0 3,5 GHz erreichen und Premium-Speicher nutzen. Die Instanzen der ESv3-Serie eignen sich ideal für speicherintensive Unternehmensanwendungen.
 
@@ -57,6 +61,10 @@ Die Instanzen der ESv3-Serie basieren auf dem Prozessor vom Typ 2,3 GHz Intel XE
 
 ACU: 160 - 190 <sup>1</sup>
 
+Storage Premium: nicht unterstützt
+
+Storage Premium-Zwischenspeicherung: nicht unterstützt
+
 Die Instanzen der Ev3-Serie basieren auf dem Prozessor vom Typ 2,3 GHz Intel XEON ® E5-2673 v4 (Broadwell) und können mit Intel Turbo Boost Technology 2.0 3,5 GHz erreichen. Die Instanzen der ESv3-Serie eignen sich ideal für speicherintensive Unternehmensanwendungen.
 
 Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Verwenden Sie die ESv3-Größen, um Datenträger mit Premium-Speicher zu nutzen. Die Preis- und Abrechnungskennzahlen für die ESv3-Größen entsprechen denen der Ev3-Serie. 
@@ -81,22 +89,28 @@ Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Verwenden
 
 ACU: 160 - 180 <sup>1</sup>
 
+Storage Premium: unterstützt
+
+Storage Premium-Zwischenspeicherung: unterstützt
+
+Schreibbeschleunigung: [unterstützt](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+
 | Größe            | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
-| M8ms&nbsp;<sup>3</sup>    | 8  | 218,75 | 256  | 8  | 10.000 / 100 (793)  | 5.000  / 125 | 4 / 2.000 |
-| M16ms&nbsp;<sup>3</sup>   | 16 | 437,5  | 512  | 16 | 20.000 / 200 (1,587) | 10.000/250 | 8 / 4.000 |
+| Standard_M8ms&nbsp;<sup>3</sup>    | 8  | 218,75 | 256  | 8  | 10.000 / 100 (793)  | 5.000  / 125 | 4 / 2.000 |
+| Standard_M16ms&nbsp;<sup>3</sup>   | 16 | 437,5  | 512  | 16 | 20.000 / 200 (1,587) | 10.000/250 | 8 / 4.000 |
 | Standard_M32ts | 32 | 192    | 1024 | 32 | 40.000 / 400 (3.174) | 20.000/500 | 8 / 8.000 |
 | Standard_M32ls | 32 | 256    | 1024 | 32 | 40.000 / 400 (3.174) | 20.000/500 | 8 / 8.000 |
-| M32ms&nbsp;<sup>3</sup>   | 32 | 875    | 1024 | 32 | 40.000 / 400 (3.174) | 20.000/500 | 8 / 8.000 |
+| Standard_M32ms&nbsp;<sup>3</sup>   | 32 | 875    | 1024 | 32 | 40.000 / 400 (3.174) | 20.000/500 | 8 / 8.000 |
 | Standard_M64s  | 64 | 1024   | 2.048 | 64 | 80.000 / 800 (6.348)| 40.000/1.000 | 8 / 16.000          |
-|Standard_M64ls  | 64 | 512    | 2.048 | 64 | 80.000 / 800 (6.348) | 40.000/1.000 | 8 / 16.000 |
-| Standard_M64ms&nbsp;<sup>3</sup>  | 64   | 1.792 | 2.048 | 64 | 80.000 / 800 (6.348)| 40.000/1.000 | 8 / 160.00          |
+| Standard_M64ls  | 64 | 512    | 2.048 | 64 | 80.000 / 800 (6.348) | 40.000/1.000 | 8 / 16.000 |
+| Standard_M64ms&nbsp;<sup>3</sup>  | 64   | 1.792 | 2.048 | 64 | 80.000 / 800 (6.348)| 40.000/1.000 | 8 / 16.000          |
 | Standard_M128s&nbsp;<sup>2,&nbsp;3</sup> | 128  | 2.048        | 4.096  | 64 | 160,000 / 1,600 (12,696) | 80.000/2.000                            | 8 / 30.000          |
 | Standard_M128ms&nbsp;<sup>2,&nbsp;3,&nbsp;4</sup> | 128  | 3.892  | 4.096 | 64 | 160,000 / 1,600 (12,696) | 80.000/2.000                            | 8 / 30.000          |
-| Standard_M64   | 64  | 1024 | 7.168  | 64 | 80.000  / 800  (1.228) | 40.000 / 1.000 | 8/16000 |
-| Standard_M64m  | 64  | 1.792 | 7.168  | 64 | 80.000  / 800  (1.228) | 40.000 / 1.000 | 8/16000 |
-| Standard_M128&nbsp;<sup>2  | 128 | 2.048 | 14.336 | 64 | 250.000 / 1.600 (2.456) | 80.000 / 2.000 | 8 / 32.000 |
-| Standard_M128m&nbsp;<sup>2 | 128 | 3.892 | 14.336 | 64 | 250.000 / 1.600 (2.456) | 80.000 / 2.000 | 8 / 32.000 |
+| Standard_M64   | 64  | 1024 | 7.168  | 64 | 80.000  / 800  (1.228) | 40.000/1.000 | 8 / 16.000 |
+| Standard_M64m  | 64  | 1.792 | 7.168  | 64 | 80.000  / 800  (1.228) | 40.000/1.000 | 8 / 16.000 |
+| Standard_M128&nbsp;<sup>2  | 128 | 2.048 | 14.336 | 64 | 250.000 / 1.600 (2.456) | 80.000/2.000 | 8/32.000 |
+| Standard_M128m&nbsp;<sup>2 | 128 | 3.892 | 14.336 | 64 | 250.000 / 1.600 (2.456) | 80.000/2.000 | 8/32.000 |
 
 
 
@@ -112,6 +126,10 @@ ACU: 160 - 180 <sup>1</sup>
 ## <a name="gs-series"></a>GS-Serie 
 
 ACU: 180 - 240 <sup>1</sup>
+
+Storage Premium: unterstützt
+
+Storage Premium-Zwischenspeicherung: unterstützt
 
 | Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
 |---|---|---|---|---|---|---|---|
@@ -133,6 +151,10 @@ ACU: 180 - 240 <sup>1</sup>
 
 ACU: 180 - 240
 
+Storage Premium: nicht unterstützt
+
+Storage Premium-Zwischenspeicherung: nicht unterstützt
+
 | Größe         | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_G1  | 2         | 28          | 384            | 6000/93/46                                           | 8/8 x 500                       | 2/2000                     |
@@ -148,6 +170,10 @@ ACU: 180 - 240
 ## <a name="dsv2-series-11-15"></a>DSv2-Serie 11-15
 
 ACU: 210 - 250 <sup>1</sup>
+
+Storage Premium: unterstützt
+
+Storage Premium-Zwischenspeicherung: nicht unterstützt
 
 | Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -171,6 +197,10 @@ ACU: 210 - 250 <sup>1</sup>
 ## <a name="dv2-series-11-15"></a>Dv2-Serie 11-15
 
 ACU: 210 - 250
+
+Storage Premium: nicht unterstützt
+
+Storage Premium-Zwischenspeicherung: nicht unterstützt
 
 | Größe              | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|

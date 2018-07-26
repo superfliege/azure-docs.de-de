@@ -2,31 +2,31 @@
 title: Betrugserkennung in Echtzeit mit Azure Stream Analytics
 description: Erfahren Sie, wie Sie mit Stream Analytics eine Lösung zur Betrugserkennung in Echtzeit erstellen können. Verwenden Sie einen Event Hub für die Ereignisverarbeitung in Echtzeit.
 services: stream-analytics
-author: jasonwhowell
-ms.author: jasonh
+author: mamccrea
+ms.author: mamccrea
 manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 4da848b9d7765b11db67973226a056e73ca5cced
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: e0d430ced1dbddbfca79806591c83c33e732eefd
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824760"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901713"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Erste Schritte mit Azure Stream Analytics: Betrugserkennung in Echtzeit
 
 Dieses Tutorial enthält detaillierte Abbildungen zur Verwendung von Azure Stream Analytics. Folgendes wird vermittelt: 
 
-* Weiterleiten von Datenstromereignissen an eine Instanz von Azure Event Hubs. In diesem Tutorial verwenden Sie eine App, die wir zum Simulieren eines Datenstroms von Mobiltelefon-Metadatensätze bereitstellen.
+* Weiterleiten von Datenstromereignissen an eine Instanz von Azure Event Hubs. In diesem Tutorial verwenden Sie eine App, die einen Datenstrom von Mobiltelefon-Metadatensätzen simuliert.
 
 * Schreiben von SQL-ähnlichen Stream Analytics-Abfragen zum Transformieren von Daten, Aggregieren von Informationen oder Suchen nach Mustern. Sie erfahren, wie Sie über eine Abfrage den eingehenden Datenstrom überprüfen und nach Anrufen mit Verdacht auf betrügerischem Beweggrund suchen.
 
 * Senden der Ergebnisse an eine Ausgabesenke (Speicher), die Sie zur Gewinnung weiterer Erkenntnisse analysieren können. In diesem Fall senden Sie die Daten verdächtiger Anrufe an den Azure Blob Storage.
 
-In diesem Tutorial verwenden wir als Beispiel Telefonanrufdaten im Rahmen einer Betrugserkennung in Echtzeit. Die von uns dargelegten Verfahren lassen sich jedoch auch bei anderen Arten von Betrugserkennungsszenarien einsetzen, z.B. bei Kreditkartenbetrug oder Identitätsdiebstahl. 
+In diesem Tutorial werden als Beispiel Telefonanrufdaten im Rahmen einer Betrugserkennung in Echtzeit verwendet. Die veranschaulichten Verfahren lassen sich jedoch auch bei anderen Arten von Betrugserkennung einsetzen, z.B. bei Kreditkartenbetrug oder Identitätsdiebstahl. 
 
 ## <a name="scenario-telecommunications-and-sim-fraud-detection-in-real-time"></a>Szenario: Telekommunikation und SIM-Betrugserkennung in Echtzeit
 
@@ -39,7 +39,7 @@ In diesem Tutorial simulieren Sie Telefonanrufdaten mithilfe einer Client-App, d
 Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
 
 * Ein Azure-Konto.
-* Die App zum Generieren von Anrufereignissen. Sie erhalten diese, indem Sie die Datei [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) aus dem Microsoft Download Center herunterladen. Entzippen Sie dieses Paket in einem Ordner auf Ihrem Computer. Wenn Sie den Quellcode prüfen und die App in einem Debugger ausführen möchten, können Sie den Quellcode der App über [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) beziehen. 
+* Die App zum Generieren von Anrufereignissen [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip), die im Microsoft Download Center heruntergeladen werden kann. Entzippen Sie dieses Paket in einem Ordner auf Ihrem Computer. Wenn Sie den Quellcode prüfen und die App in einem Debugger ausführen möchten, können Sie den Quellcode der App über [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) beziehen. 
 
     >[!NOTE]
     >Windows blockiert möglicherweise die heruntergeladene ZIP-Datei. Wenn Sie die Datei nicht entzippen können, klicken Sie mit der rechten Maustaste auf die Datei, und wählen Sie **Eigenschaften**. Wenn die Meldung „Die Datei stammt von einem anderen Computer. Der Zugriff wurde aus Sicherheitsgründen eventuell blockiert.“ angezeigt wird, wählen Sie die Option **Nicht mehr blockieren**, und klicken Sie dann auf **Übernehmen**.
@@ -60,22 +60,23 @@ In diesem Verfahren erstellen Sie zuerst einen Event Hub-Namespace und fügen di
 
 2. Geben Sie im Bereich **Namespace erstellen** einen Namen für den Namespace ein (z.B. `<yourname>-eh-ns-demo`). Sie können einen beliebigen Namen für den Namespace verwenden. Der Name muss lediglich für eine URL gültig und innerhalb von Azure eindeutig sein. 
     
-3. Wählen Sie ein Abonnement aus, und erstellen oder wählen Sie eine Ressourcengruppe. Klicken Sie dann auf **Erstellen**. 
+3. Wählen Sie ein Abonnement aus, und erstellen oder wählen Sie eine Ressourcengruppe. Klicken Sie dann auf **Erstellen**.
 
-    ![Erstellen eines Event Hub-Namespace](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-namespace-new-portal.png)
- 
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-namespace-new-portal.png" alt="drawing" width="300px"/>
+
 4. Wenn die Bereitstellung des Namespace abgeschlossen ist, suchen Sie in Ihrer Liste der Azure-Ressourcen den Event Hub-Namespace. 
 
 5. Klicken Sie auf den neuen Namespace, und wählen Sie im Bereich „Namespace“ **Event Hub** aus.
 
-    ![Schaltfläche „Event Hub hinzufügen“ zum Erstellen eines neuen Event Hubs ](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
+   ![Schaltfläche „Event Hub hinzufügen“ zum Erstellen eines neuen Event Hubs ](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
-6. Vergeben Sie einen Namen für den neuen Event Hub `sa-eh-frauddetection-demo`. Sie können auch einen anderen Namen verwenden. In diesem Fall sollten Sie sich den Namen notieren, da Sie ihn später noch benötigen. Vorerst müssen Sie keine weiteren Optionen für den Event Hub festlegen.
+6. Vergeben Sie einen Namen für den neuen Event Hub `asa-eh-frauddetection-demo`. Sie können auch einen anderen Namen verwenden. In diesem Fall sollten Sie sich den Namen notieren, da Sie ihn später noch benötigen. Vorerst müssen Sie keine weiteren Optionen für den Event Hub festlegen.
 
-    ![Blatt zum Erstellen eines neuen Event Hubs](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png)
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="drawing" width="400px"/>
     
  
 7. Klicken Sie auf **Create**.
+
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Gewähren des Zugriffs auf den Event Hub und Abrufen einer Verbindungszeichenfolge
 
 Damit ein Prozess Daten an einen Event Hub senden kann, muss der Event Hub mit einer Richtlinie versehen sein, die einen entsprechenden Zugriff ermöglicht. Die Zugriffsrichtlinie erzeugt eine Verbindungszeichenfolge, die Autorisierungsinformationen enthält.
@@ -89,29 +90,29 @@ Damit ein Prozess Daten an einen Event Hub senden kann, muss der Event Hub mit e
 
 3.  Fügen Sie die Richtlinie namens `sa-policy-manage-demo` hinzu, und wählen Sie für **Anspruch** die Option **Verwalten**.
 
-    ![Blatt zum Erstellen einer neuen Event Hub-Zugriffsrichtlinie](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png)
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="drawing" width="300px"/>
  
 4.  Klicken Sie auf **Create**.
 
 5.  Nachdem die Richtlinie bereitgestellt wurde, klicken sie in der Liste der SAS-Richtlinien darauf.
 
 6.  Navigieren Sie zum Feld **VERBINDUNGSZEICHENFOLGE – PRIMÄRSCHLÜSSEL**, und klicken Sie neben der Verbindungszeichenfolge auf die Schaltfläche „Kopieren“. 
-    
-    ![Kopieren des Primärschlüssels der Verbindungszeichenfolge aus der Zugriffsrichtlinie](./media/stream-analytics-real-time-fraud-detection/stream-analytics-shared-access-policy-copy-connection-string-new-portal.png)
+
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-shared-access-policy-copy-connection-string-new-portal.png" alt="drawing" width="300px"/>
  
 7.  Fügen Sie die Verbindungszeichenfolge in einen Texteditor ein. Sie benötigen diese Verbindungszeichenfolge für den nächsten Abschnitt, nachdem Sie einige kleine Änderungen vorgenommen haben.
 
     Die Verbindungszeichenfolge sieht folgendermaßen aus:
 
-        Endpoint=sb://YOURNAME-eh-ns-demo.servicebus.windows.net/;SharedAccessKeyName=sa-policy-manage-demo;SharedAccessKey=Gw2NFZwU1Di+rxA2T+6hJYAtFExKRXaC2oSQa0ZsPkI=;EntityPath=sa-eh-frauddetection-demo
+        Endpoint=sb://YOURNAME-eh-ns-demo.servicebus.windows.net/;SharedAccessKeyName=asa-policy-manage-demo;SharedAccessKey=Gw2NFZwU1Di+rxA2T+6hJYAtFExKRXaC2oSQa0ZsPkI=;EntityPath=asa-eh-frauddetection-demo
 
     Beachten Sie, dass die Verbindungszeichenfolge mehrere durch ein Semikolon getrennte Schlüssel/Wert-Paare enthält: `Endpoint`, `SharedAccessKeyName`, `SharedAccessKey` und `EntityPath`.  
 
 ## <a name="configure-and-start-the-event-generator-application"></a>Konfigurieren und starten der Ereignisgenerator-Anwendung
 
-Bevor Sie die TelcoGenerator-App starten, konfigurieren Sie sie so, dass Aufrufdatensätze an den von Ihnen erstellten Event Hub gesendet werden.
+Bevor Sie die TelcoGenerator-App starten, müssen Sie sie so konfigurieren, dass Aufrufdatensätze an den von Ihnen erstellten Event Hub gesendet werden.
 
-### <a name="configure-the-telcogeneratorapp"></a>Konfigurieren der TelcoGenerator-App
+### <a name="configure-the-telcogenerator-app"></a>Konfigurieren der TelcoGenerator-App
 
 1.  Notieren Sie im Editor, in den Sie die kopierte Verbindungszeichenfolge eingefügt haben, den Wert `EntityPath`, und entfernen Sie das `EntityPath`-Paar (danken Sie daran, das voranstehende Semikolon zu entfernen). 
 
@@ -122,9 +123,9 @@ Bevor Sie die TelcoGenerator-App starten, konfigurieren Sie sie so, dass Aufrufd
     * Legen Sie den Wert des Schlüssels `EventHubName` auf den Event Hub-Namen fest (d.h. auf den Wert des Entitätspfads).
     * Legen Sie den Wert des Schlüssels `Microsoft.ServiceBus.ConnectionString` auf die Verbindungszeichenfolge fest. 
 
-    Der Abschnitt `<appSettings>` sollte wie im folgenden Beispiel aussehen. (Der Übersichtlichkeit halber wurden die Zeilen umschlossen und einige Zeichen aus dem Autorisierungstoken entfernt.)
+    Der Abschnitt `<appSettings>` sollte wie im folgenden Beispiel aussehen. (Der Übersichtlichkeit halber wurden die Zeilen umbrochen und einige Zeichen aus dem Autorisierungstoken entfernt.)
 
-    ![Konfigurationsdatei der TelcoGenerator-App mit dem Event Hub-Namen und der Verbindungszeichenfolge](./media/stream-analytics-real-time-fraud-detection/stream-analytics-telcogenerator-config-file-app-settings.png)
+   ![Konfigurationsdatei der TelcoGenerator-App mit dem Event Hub-Namen und der Verbindungszeichenfolge](./media/stream-analytics-real-time-fraud-detection/stream-analytics-telcogenerator-config-file-app-settings.png)
  
 4.  Speichern Sie die Datei . 
 
@@ -162,11 +163,11 @@ Nachdem Sie einen Datenstrom von Anrufereignissen eingerichtet haben, können Si
 
 1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Internet der Dinge** > **Stream Analytics-Auftrag**.
 
-2. Vergeben Sie einen Namen für den Auftrag `sa_frauddetection_job_demo`, und geben Sie ein Abonnement, eine Ressourcengruppe und einen Speicherort an.
+2. Vergeben Sie einen Namen für den Auftrag `asa_frauddetection_job_demo`, und geben Sie ein Abonnement, eine Ressourcengruppe und einen Speicherort an.
 
     Es empfiehlt sich, den Auftrag und den Event Hub in derselben Region zu platzieren, damit Sie von einer optimalen Leistung profitieren und Ihnen keine Kosten für die Übertragung von Daten zwischen Regionen entstehen.
 
-    ![Erstellen eines neuen Stream Analytics-Auftrags](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png)
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="drawing" width="300px"/>
 
 3. Klicken Sie auf **Create**.
 
@@ -174,28 +175,29 @@ Nachdem Sie einen Datenstrom von Anrufereignissen eingerichtet haben, können Si
 
 ### <a name="configure-job-input"></a>Konfigurieren einer Auftragseingabe
 
-1. Suchen Sie auf dem Dashboard oder im Bereich **Alle Ressourcen** nach dem Stream Analytics-Auftrag `sa_frauddetection_job_demo`, und wählen Sie ihn aus. 
-2. Klicken Sie im Bereich „Stream Analytics-Auftrag“ im Abschnitt **Auftragstopologie** auf das Feld **Eingabe**.
+1. Suchen Sie auf dem Dashboard oder im Bereich **Alle Ressourcen** nach dem Stream Analytics-Auftrag `asa_frauddetection_job_demo`, und wählen Sie ihn aus. 
+2. Klicken Sie im Bereich „Stream Analytics-Auftrag“ im Abschnitt **Übersicht** auf das Feld **Eingabe**.
 
-    ![Feld „Eingabe“ unter „Topologie“ im Bereich „Stream Analytics-Auftrag“](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-input-box-new-portal.png)
+   ![Feld „Eingabe“ unter „Topologie“ im Bereich „Stream Analytics-Auftrag“](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-input-box-new-portal.png)
  
-3. Klicken Sie auf **+&nbsp;Hinzufügen**, und füllen Sie den Bereich dann mit den folgenden Werten aus:
+3. Klicken Sie im Bereich auf **Datenstromeingabe hinzufügen**, und wählen Sie **Event Hub** aus. Geben Sie dann auf der Seite „Neue Eingabe“ die folgenden Informationen ein:
 
-    * **Eingabealias**: Verwenden Sie den Namen `CallStream`. Wenn Sie einen anderen Namen verwenden, notieren Sie sich diesen, da Sie ihn später benötigen.
-    * **Quelltyp**: Wählen Sie **Datenstrom**. (**Verweisdaten** beziehen sich auf statische Nachschlagedaten, die Sie in diesem Tutorial nicht benötigen.)
-    * **Quelle**: Wählen Sie **Event Hub**.
-    * **Importoption**: Wählen Sie **Event Hub aus aktuellem Abonnement verwenden**. 
-    * **Service Bus-Namespace**: Wählen Sie den Event Hub-Namespace, den Sie zuvor erstellt haben (`<yourname>-eh-ns-demo`).
-    * **Event Hub**: Wählen Sie den Event Hub, den Sie zuvor erstellt haben (`sa-eh-frauddetection-demo`).
-    * **Name der Event Hub-Richtlinie**: Wählen Sie die Zugriffsrichtlinie aus, die Sie zuvor erstellt haben (`sa-policy-manage-demo`).
+   |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
+   |---------|---------|---------|
+   |Eingabealias  |  CallStream   |  Geben Sie einen Namen zur Identifizierung der Auftragseingabe ein.   |
+   |Abonnement   |  \<Ihr Abonnement\> |  Wählen Sie das Azure-Abonnement aus, in dem sich der erstellte Event Hub befindet.   |
+   |Event Hub-Namespace  |  asa-eh-ns-demo |  Geben Sie den Namen des Event Hub-Namespace ein.   |
+   |Event Hub-Name  | asa-eh-frauddetection-demo | Wählen Sie den Namen Ihres Event Hubs aus.   |
+   |Event Hub-Richtlinienname  | asa-policy-manage-demo | Wählen Sie die Zugriffsrichtlinie aus, die Sie zuvor erstellt haben.   |
+    </br>
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="drawing" width="300px"/>
 
-    ![Erstellen einer neuen Eingabe für einen Stream Analytics-Auftrag](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png)
 
 4. Klicken Sie auf **Create**.
 
 ## <a name="create-queries-to-transform-real-time-data"></a>Erstellen von Abfragen zum Transformieren von Daten in Echtzeit
 
-An diesem Punkt haben Sie einen Stream Analytics-Auftrag zum Lesen eines eingehenden Datenstroms eingerichtet. Der nächste Schritt besteht darin, eine Transformation zu erstellen, die die Daten in Echtzeit analysiert. Dazu müssen Sie eine Abfrage erstellen. Stream Analytics unterstützt ein einfaches, deklaratives Abfragemodell zum Beschreiben der Transformationen für Echtzeitverarbeitung. Die Abfragen verwenden eine SQL-ähnliche Sprache, die einige Erweiterungen speziell für Stream Analytics enthält. 
+An diesem Punkt haben Sie einen Stream Analytics-Auftrag zum Lesen eines eingehenden Datenstroms eingerichtet. Der nächste Schritt besteht darin, eine Abfrage zu erstellen, die die Daten in Echtzeit analysiert. Stream Analytics unterstützt ein einfaches, deklaratives Abfragemodell zum Beschreiben der Transformationen für Echtzeitverarbeitung. Die Abfragen verwenden eine SQL-ähnliche Sprache, die einige Erweiterungen speziell für Stream Analytics aufweist. 
 
 Eine einfache Abfrage kann alle eingehenden Daten möglicherweise nur lesen. Allerdings erstellen Sie häufig Abfragen, die nach bestimmten Daten oder Beziehungen in den Daten suchen. In diesem Abschnitt des Tutorials erstellen und testen Sie verschiedene Abfragen, um einige Möglichkeiten kennenzulernen, mit denen Sie einen Eingabedatenstrom zur Analyse transformieren können. 
 
@@ -208,17 +210,16 @@ Weitere Informationen zur Sprache finden Sie in der [Azure Stream Analytics-Abfr
 Die TelcoGenerator-App sendet Anrufdatensätze an den Event Hub, und Ihr Stream Analytics-Auftrag wird zum Lesen von Daten aus dem Event Hub konfiguriert. Mithilfe einer Abfrage können Sie testen, ob die Daten des Auftrags korrekt gelesen werden. Zum Testen einer Abfrage in der Azure-Konsole benötigen Sie Beispieldaten. In dieser exemplarischen Vorgehensweise extrahieren Sie Beispieldaten aus dem Datenstrom, der vom Event Hub stammt.
 
 1. Stellen Sie sicher, dass die TelcoGenerator-App ausgeführt wird und Anrufdatensätze erzeugt.
-2. Kehren Sie im Portal zum Bereich „Stream Analytics-Auftrag“ zurück. (Wenn der Bereich geschlossen ist, suchen Sie im Bereich **Alle Ressourcen** nach `sa_frauddetection_job_demo`.)
+2. Kehren Sie im Portal zum Bereich „Stream Analytics-Auftrag“ zurück. (Wenn der Bereich geschlossen ist, suchen Sie im Bereich **Alle Ressourcen** nach `asa_frauddetection_job_demo`.)
 3. Klicken Sie in das Feld **Abfrage**. In Azure werden die Eingaben und Ausgaben aufgeführt, die für den Auftrag konfiguriert sind. Zudem können Sie eine Abfrage erstellen, mit der Sie die Datenstromeingabe beim Senden an die Ausgabe transformieren können.
 4. Klicken Sie im Bereich **Abfrage** auf die Punkte neben der `CallStream`-Eingabe, und wählen Sie anschließend **Beispieldaten aus Eingabe**.
 
-    ![Menüoptionen zur Verwendung von Beispieldaten für den Stream Analytics-Auftragseintrag bei ausgewählter Option „Beispieldaten aus Eingabe“](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sample-data-from-input.png)
+   ![Menüoptionen zur Verwendung von Beispieldaten für den Stream Analytics-Auftragseintrag bei ausgewählter Option „Beispieldaten aus Eingabe“](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sample-data-from-input.png)
 
-    Daraufhin wird ein Bereich geöffnet, in dem Sie angeben können, wie viele Beispieldaten in einem bestimmten definierten Zeitraum, in dem der Eingabedatenstrom gelesen wird, abgerufen werden sollen.
 
 5. Legen Sie **Minuten** auf „3“ fest, und klicken Sie dann auf **OK**. 
     
-    ![Optionen zur Entnahme von Stichproben aus der Datenstromeingabe mit ausgewählter Option „3 Minuten“](./media/stream-analytics-real-time-fraud-detection/stream-analytics-input-create-sample-data.png)
+   ![Optionen zur Entnahme von Stichproben aus der Datenstromeingabe mit ausgewählter Option „3 Minuten“](./media/stream-analytics-real-time-fraud-detection/stream-analytics-input-create-sample-data.png)
 
     Azure entnimmt für einen Zeitraum von 3 Minuten Stichprobendaten aus der Datenstromeingabe und benachrichtigt Sie, wenn die Beispieldaten bereit sind. (Dies dauert einen Augenblick.) 
 
@@ -244,9 +245,9 @@ Wenn Sie alle Ereignisse archivieren möchten, können Sie eine Pass-Through-Abf
 
 2. Klicken Sie auf **Test**.
 
-    Der Stream Analytics-Auftrags führt die Abfrage für die Beispieldaten aus und zeigt die Ausgabe im unteren Bereich des Fensters an. Dies weist darauf hin, dass der Event Hub und der Stream Analytics-Auftrag korrekt konfiguriert sind. (Wie bereits erwähnt wurde, erstellen Sie später eine Ausgabesenke, in die die Abfrage Daten schreiben kann.)
+    Der Stream Analytics-Auftrags führt die Abfrage für die Beispieldaten aus und zeigt die Ausgabe im unteren Bereich des Fensters an. Die Ergebnisse weisen darauf hin, dass der Event Hub und der Stream Analytics-Auftrag korrekt konfiguriert sind. (Wie bereits erwähnt wurde, erstellen Sie später eine Ausgabesenke, in die die Abfrage Daten schreiben kann.)
 
-    ![Stream Analytics-Auftragsausgabe mit 73 generierten Datensätzen](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output.png)
+   ![Stream Analytics-Auftragsausgabe mit 73 generierten Datensätzen](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output.png)
 
     Die genaue Anzahl der angezeigten Datensätze hängt davon ab, wie viele Datensätze in Ihrer 3-minütigen Stichprobe erfasst wurden.
  
@@ -262,7 +263,7 @@ In vielen Fällen sind bei Ihrer Analyse nicht alle Spalten der Datenstromeingab
 
 2. Klicken Sie erneut auf **Test**. 
 
-    ![Stream Analytics-Auftragsausgabe mit 25 generierten Datensätzen zur Projektion](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-projection.png)
+   ![Stream Analytics-Auftragsausgabe mit 25 generierten Datensätzen zur Projektion](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-projection.png)
  
 ### <a name="count-incoming-calls-by-region-tumbling-window-with-aggregation"></a>Zählen der eingehenden Anrufe pro Region: Rollierendes Fenster mit Aggregation
 
@@ -286,7 +287,7 @@ Für diese Transformation sollte eine Sequenz von temporalen Fenstern erzeugt we
 
 2. Klicken Sie erneut auf **Test**. Beachten Sie, dass die Zeitstempel in den Ergebnissen unter **WindowEnd** in 5-Sekunden-Schritten angegeben werden.
 
-    ![Stream Analytics-Auftragsausgabe mit 13 generierten Datensätzen zur Aggregation](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-aggregation.png)
+   ![Stream Analytics-Auftragsausgabe mit 13 generierten Datensätzen zur Aggregation](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-aggregation.png)
  
 ### <a name="detect-sim-fraud-using-a-self-join"></a>Erkennen von SIM-Kartenbetrug durch Selbstverknüpfung
 
@@ -294,7 +295,7 @@ In diesem Beispiel kann eine betrügerische Verwendung als Anrufe definiert werd
 
 In diesen Fällen können Sie den Datenstrom durch eine Selbstverknüpfung der Streamingdaten basierend auf dem Wert `CallRecTime` mit sich selbst verknüpfen. Sie können dann nach Anrufdatensätzen suchen, bei denen der Wert `CallingIMSI` (die ursprüngliche Anzahl) identisch ist, jedoch nicht der Wert `SwitchNum` (Ursprungsland).
 
-Wenn Sie eine Verknüpfung mit Streamingdaten durchführen, müssen bei der Verknüpfung einige Beschränkungen dazu festgelegt werden, wie stark die übereinstimmenden Zeilen zeitlich getrennt werden können. (Wie bereits erwähnt wurde, sind Streamingdaten faktisch endlos.) Die Zeitgrenzen für die Beziehung werden in der Klausel `ON` der Verknüpfung mit der Funktion `DATEDIFF` angegeben. In diesem Fall basiert die Verknüpfung auf Anrufdaten mit einem Intervall von 5 Sekunden.
+Wenn Sie eine Verknüpfung mit Streamingdaten durchführen, müssen bei der Verknüpfung einige Beschränkungen dazu festgelegt werden, wie stark die übereinstimmenden Zeilen zeitlich getrennt werden können. (Wie bereits erwähnt wurde, sind Streamingdaten faktisch endlos.) Die Zeitgrenzen für die Beziehung werden in der `ON`-Klausel der Verknüpfung mit der `DATEDIFF`-Funktion angegeben. In diesem Fall basiert die Verknüpfung auf Anrufdaten mit einem Intervall von 5 Sekunden.
 
 1. Ändern Sie die Abfrage im Code-Editor wie folgt: 
 
@@ -310,49 +311,49 @@ Wenn Sie eine Verknüpfung mit Streamingdaten durchführen, müssen bei der Verk
             AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5 
         WHERE CS1.SwitchNum != CS2.SwitchNum
 
-    Diese Abfrage ähnelt einer beliebigen SQL-Verknüpfung mit Ausnahme der Funktion `DATEDIFF` in der Verknüpfung. Diese ist eine Version von `DATEDIFF`, die speziell für Stream Analytics gilt, und muss in der Klausel `ON...BETWEEN` angezeigt werden. Die Parameter umfassen eine Zeiteinheit (in diesem Beispiel Sekunden) und die Aliase der beiden Quellen für die Verknüpfung. (Diese unterscheiden sich von der standardmäßigen SQL-Funktion `DATEDIFF`.) 
+    Diese Abfrage ähnelt einer beliebigen SQL-Verknüpfung mit Ausnahme der Funktion `DATEDIFF` in der Verknüpfung. Diese Version von `DATEDIFF` ist spezifisch für Stream Analytics und muss in der `ON...BETWEEN`-Klausel aufgeführt werden. Die Parameter umfassen eine Zeiteinheit (in diesem Beispiel Sekunden) und die Aliase der beiden Quellen für die Verknüpfung. Dies unterscheidet sich von der standardmäßigen SQL-Funktion `DATEDIFF`.
 
     Die Klausel `WHERE` enthält die Bedingung, die den betrügerischen Anruf kennzeichnet: die ursprünglichen Vermittlungen sind nicht identisch. 
 
 2. Klicken Sie erneut auf **Test**. 
 
-    ![Stream Analytics-Auftragsausgabe mit 6 generierten Datensätzen zur Selbstverknüpfung](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-self-join.png)
+   ![Stream Analytics-Auftragsausgabe mit sechs generierten Datensätzen zur Selbstverknüpfung](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-self-join.png)
 
-3. Klicken Sie auf **Speichern**. Hierdurch wird die Selbstverknüpfungsabfrage als Teil des Stream Analytics-Auftrags gespeichert. (Die Beispieldaten werden nicht gespeichert.)
+3. Klicken Sie auf **Speichern**, um die Selbstverknüpfungsabfrage als Teil des Stream Analytics-Auftrags zu speichern. (Die Beispieldaten werden nicht gespeichert.)
 
-    ![Speichern des Stream Analytics-Auftrags](./media/stream-analytics-real-time-fraud-detection/stream-analytics-query-editor-save-button-new-portal.png)
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-query-editor-save-button-new-portal.png" alt="drawing" width="300px"/>
 
 ## <a name="create-an-output-sink-to-store-transformed-data"></a>Erstellen einer Ausgabesenke zum Speichern von transformierten Daten
 
 Sie haben einen Ereignisdatenstrom, eine Event Hub-Eingabe zum Erfassen von Ereignissen und eine Abfrage zur Durchführung einer Transformation über den Datenstrom definiert. Der letzte Schritt besteht darin, eine Ausgabesenke für den Auftrag zu definieren, d.h. einen Ort, in den der transformierte Datenstrom geschrieben wird. 
 
-Sie können viele Ressourcen als Ausgabesenken verwenden, z.B. eine SQL Server-Datenbank, Table Storage, Data Lake Storage, Power BI oder sogar einen anderen Event Hub. Für dieses Tutorial schreiben Sie den Datenstrom in den Azure Blob Storage – eine gängige Option zum Sammeln von Ereignisinformationen zur späteren Analyse, da es unstrukturierte Daten aufnimmt.
+Sie können viele Ressourcen als Ausgabesenken verwenden, z.B. eine SQL Server-Datenbank, Table Storage, Data Lake Storage, Power BI oder sogar einen anderen Event Hub. Für dieses Tutorial schreiben Sie den Datenstrom in Azure Blob Storage – eine gängige Option zum Sammeln von Ereignisinformationen zur späteren Analyse, da hierbei unstrukturierte Daten aufgenommen werden.
 
-Wenn ein Blob Storage-Konto vorhanden ist, können Sie dieses verwenden. In diesem Tutorial zeigen wir Ihnen, wie Sie ein neues Speicherkonto speziell für dieses Tutorial erstellen.
+Wenn ein Blob Storage-Konto vorhanden ist, können Sie dieses verwenden. In diesem Tutorial lernen Sie, wie Sie ein neues Speicherkonto erstellen.
 
 ### <a name="create-an-azure-blob-storage-account"></a>Erstellen eines Azure Blob Storage-Kontos
 
-1. Kehren Sie im Azure-Portal zum Bereich „Stream Analytics-Auftrag“ zurück. (Wenn der Bereich geschlossen ist, suchen Sie im Bereich **Alle Ressourcen** nach `sa_frauddetection_job_demo`.)
-2. Klicken Sie im Abschnitt **Auftragstopologie** in das Feld **Ausgabe**. 
-3. Klicken Sie im Bereich **Ausgaben** auf **+&nbsp;Hinzufügen**, und füllen Sie den Bereich dann mit den folgenden Werten aus:
+1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf **Ressource erstellen** > **Speicher** > **Speicherkonto**. Geben Sie auf der Seite für den Speicherkontoauftrag die entsprechenden Informationen ein: Legen Sie für **Name** den Namen „asaehstorage“, für **Standort** die Option „USA, Osten“ und für **Ressourcengruppe** die Option „asa-eh-ns-rg“ fest. (Hosten Sie für eine höhere Leistung das Speicherkonto in derselben Ressourcengruppe wie den Streamingauftrag.) Bei den übrigen Einstellungen können Sie die Standardwerte übernehmen.  
 
-    * **Ausgabealias**: Verwenden Sie den Namen `CallStream-FraudulentCalls`. 
-    * **Senke**: Wählen Sie **Blobspeicher** aus.
-    * **Importoptionen**: Wählen Sie **Blob Storage aus aktuellem Abonnement verwenden** aus.
-    * **Speicherkonto**: Wählen Sie **Neues Speicherkonto erstellen** aus.
-    * **Speicherkonto** (zweites Feld): Geben Sie `YOURNAMEsademo` ein, wobei `YOURNAME` für Ihren Namen oder eine andere eindeutige Zeichenfolge steht. Der Name darf nur Kleinbuchstaben und Zahlen enthalten und muss innerhalb von Azure eindeutig sein. 
-    * **Container**: Geben Sie `sa-fraudulentcalls-demo` ein.
-    Der Name des Speicherkontos und der Containername werden zusammen verwendet, um einen URI für Blob Storage nach folgendem Muster bereitzustellen: 
+   ![Speicherkonto erstellen](./media/stream-analytics-real-time-fraud-detection/stream-analytics-storage-account-create.png)
 
-    `http://yournamesademo.blob.core.windows.net/sa-fraudulentcalls-demo/...`
+2. Kehren Sie im Azure-Portal zum Bereich „Stream Analytics-Auftrag“ zurück. (Wenn der Bereich geschlossen ist, suchen Sie im Bereich **Alle Ressourcen** nach `asa_frauddetection_job_demo`.)
+
+3. Klicken Sie im Abschnitt **Auftragstopologie** in das Feld **Ausgabe**.
+
+4. Klicken Sie im Bereich **Ausgaben** auf **Hinzufügen**, und wählen Sie **Blobspeicher** aus. Geben Sie dann auf der Seite „Neue Ausgabe“ die folgenden Informationen ein:
+
+   |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
+   |---------|---------|---------|
+   |Ausgabealias  |  CallStream-FraudulentCalls   |  Geben Sie einen Namen zur Identifizierung der Auftragsausgabe ein.   |
+   |Abonnement   |  \<Ihr Abonnement\> |  Wählen Sie das Azure-Abonnement mit dem von Ihnen erstellten Speicherkonto aus. Das Speicherkonto kann sich im gleichen oder in einem anderen Abonnement befinden. In diesem Beispiel wird davon ausgegangen, dass Sie ein Speicherkonto im gleichen Abonnement erstellt haben. |
+   |Speicherkonto  |  asaehstorage |  Geben Sie den Namen des von Ihnen erstellten Speicherkontos ein. |
+   |Container  | asa-fraudulentcalls-demo | Wählen Sie „Neu erstellen“ aus, und geben Sie einen Containernamen ein. |
+    <br/>
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="drawing" width="300px"/>
     
-    ![Bereich „Neue Ausgabe“ für den Stream Analytics-Auftrag](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png)
-    
-4. Klicken Sie auf **Create**. 
+5. Klicken Sie auf **Speichern**. 
 
-    Azure erstellt das Speicherkonto und generiert automatisch einen Schlüssel. 
-
-5. Schließen Sie den Bereich **Ausgaben**. 
 
 ## <a name="start-the-streaming-analytics-job"></a>Starten des Stream Analytics-Auftrags
 
@@ -360,20 +361,11 @@ Der Auftrag ist jetzt konfiguriert. Sie haben eine Eingabe (den Event Hub), eine
 
 1. Stellen Sie sicher, dass die App TelcoGenerator ausgeführt wird.
 
-2. Klicken Sie im Bereich „Auftrag“ auf **Starten**.
+2. Klicken Sie im Bereich „Auftrag“ auf **Starten**. Wählen Sie im Bereich **Auftrag starten** als Startzeit der Auftragsausgabe **Jetzt**. 
 
-    ![Starten des Stream Analytics-Auftrags](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-start-output.png)
+   ![Starten des Stream Analytics-Auftrags](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-start.png)
 
-3. Wählen Sie im Bereich **Auftrag starten** als Startzeit der Auftragsausgabe **Jetzt**. 
 
-4. Klicken Sie auf **Start**. 
-
-    ![Bereich „Auftrag starten“ für den Stream Analytics-Auftrag](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-start-job-blade.png)
-
-    Azure benachrichtigt Sie, wenn der Auftrag gestartet wurde, und im Bereich „Auftrag“ wird der Status **Wird ausgeführt** angezeigt.
-
-    ![Stream Analytics-Auftrag mit dem Status „Wird ausgeführt“](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-running-status.png)
-    
 
 ## <a name="examine-the-transformed-data"></a>Überprüfen der transformierten Daten
 
@@ -383,12 +375,12 @@ Zum Abschluss dieses Tutorials sollten Sie sich die Daten ansehen, die vom Strea
 
 Wenn Sie die Inhalte einer Datei in Blob Storage überprüfen, wird beispielsweise Folgendes angezeigt:
 
-![Azure Blob Storage mit Stream Analytics-Ausgabe](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-blob-storage-view.png)
+   ![Azure Blob Storage mit Stream Analytics-Ausgabe](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-blob-storage-view.png)
  
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Es sind weitere Artikel vorhanden, die das Betrugserkennungsszenario behandeln und die die in diesem Tutorial erstellten Ressourcen verwenden. Wenn Sie fortfahren möchten, lesen Sie die Empfehlungen unter **Nächste Schritte** weiter unten.
+Es sind weitere Artikel vorhanden, die das Betrugserkennungsszenario behandeln und die die in diesem Tutorial erstellten Ressourcen verwenden. Wenn Sie fortfahren möchten, lesen Sie die Empfehlungen unter **Nächste Schritte**.
 
 Wenn Sie jedoch fertig sind und die erstellten Ressourcen nicht benötigen, können Sie sie löschen, damit keine unnötigen Gebühren seitens Azure anfallen. In diesem Fall wird empfohlen, folgendermaßen vorzugehen:
 
@@ -401,7 +393,7 @@ Wenn Sie jedoch fertig sind und die erstellten Ressourcen nicht benötigen, kön
 
 ## <a name="get-support"></a>Support
 
-Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Um Hilfe zu erhalten, nutzen Sie das [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,11 +1,28 @@
-``*.accesscontrol.windows.net``(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Wird für Zugriffssteuerung und Identitätsverwaltung verwendet. (Die ACS-basierte Authentifizierung gilt ab Dezember 2017 als veraltet.) <br/>
-``https://login.microsoftonline.com``: Wird für die Zugriffssteuerung und Identitätsverwaltung mit AAD verwendet.
+---
+title: Includedatei
+description: Includedatei
+services: site-recovery
+author: rayne-wiselman
+manager: carmonm
+ms.service: site-recovery
+ms.topic: include
+ms.date: 06/28/2018
+ms.author: raynew
+ms.openlocfilehash: f7d6c3f68618fec839ccff06b73ba44d106999d2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38765537"
+---
+| NAME | Kommerzielle URL | Behördliche URL | BESCHREIBUNG |
+|---|---|---|---|
+| Azure AD | ``login.microsoftonline.com`` | ``login.microsoftonline.us`` | Für Zugriffssteuerung und Identitätsverwaltung mit AAD verwendet |
+| Backup | ``*.backup.windowsazure.com`` | ``*.backup.windowsazure.us`` | Für die Übertragung und Koordinierung von Replikationsdaten verwendet |
+| Replikation | ``*.hypervrecoverymanager.windowsazure.com`` | ``*.hypervrecoverymanager.windowsazure.us``  | Für Vorgänge und Koordinierung der Replikationsverwaltung verwendet |
+| Speicher | ``*.blob.core.windows.net`` | ``*.blob.core.usgovcloudapi.net``  | Für den Zugriff auf das Speicherkonto zum Speichern von replizierten Daten verwendet |
+| Telemetrie (optional) | ``dc.services.visualstudio.com`` | ``dc.services.visualstudio.com`` | Für Telemetrie verwendet |
 
-``*.backup.windowsazure.com``(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Wird für die Übertragung und Koordinierung von Replikationsdaten verwendet. <br/> ``*.blob.core.windows.net``(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Wird für den Zugriff auf das Speicherkonto zum Speichern von replizierten Daten verwendet.<br/> ``*.hypervrecoverymanager.windowsazure.com``(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Wird für die Vorgänge und Koordinierung der Replikationsverwaltung verwendet.<br/>
-``dc.services.visualstudio.com``: Wird für Telemetrie verwendet. <br>
-``time.nist.gov`` und ``time.windows.com``: Wird zum Überprüfen der Zeitsynchronisierung zwischen Systemzeit und der globalen Zeit verwendet.
-<br/><br/>
-URLs für Azure Government Cloud:<br/>- .ugv.hypervrecoverymanager.windowsazure.us<br/>- .ugv.backup.windowsazure.us<br/>- .ugi.hypervrecoverymanager.windowsazure.us<br/>- .ugi.backup.windowsazure.us<br/>-
-https://login.microsoftonline.us<br/>-
-https://login.microsoftonline.com<br/>
+``time.nist.gov`` und ``time.windows.com`` werden zum Überprüfen der Zeitsynchronisierung zwischen Systemzeit und globaler Zeit in allen Bereitstellungen verwendet.
+
 

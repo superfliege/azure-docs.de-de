@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 07/03/2018
 ms.author: damaerte
-ms.openlocfilehash: cffa67509690f4c594182fbe8104f0620da56bee
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 21bc0633a9cc607325b48998791cb12631ecd0d7
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608949"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856486"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Problembehandlung und Einschränkungen bei Azure Cloud Shell
 
@@ -52,16 +52,6 @@ Zu den bekannten Lösungen für die Behandlung von Problemen in Azure Cloud Shel
 
 ## <a name="powershell-troubleshooting"></a>Problembehandlung bei PowerShell
 
-### <a name="no-home-directory-persistence"></a>Keine $Home-Verzeichnispersistenz
-
-- **Details**: Daten, die eine Anwendung (z.B. git, vim usw.) in `$Home` schreibt, bleiben zwischen den PowerShell-Sitzungen nicht erhalten.
-- **Lösung**: Erstellen Sie in Ihrem PowerShell-Profil einen symbolischen Link zu einem anwendungsbezogenen Ordner in `clouddrive` zu „$Home“.
-
-### <a name="ctrlc-doesnt-exit-out-of-a-cmdlet-prompt"></a>Das Drücken von STRG+C führt nicht zum Verlassen einer Cmdlet-Eingabeaufforderung.
-
-- **Details**: Beim Versuch, eine Cmdlet-Eingabeaufforderung zu verlassen, führt `Ctrl+C` nicht zum Verlassen der Eingabeaufforderung.
-- **Lösung**: Drücken Sie `Ctrl+C` und dann `Enter`, um die Eingabeaufforderung zu verlassen.
-
 ### <a name="gui-applications-are-not-supported"></a>GUI-Anwendungen werden nicht unterstützt.
 
 - **Details**: Wenn ein Benutzer eine GUI-App startet, kehrt die Eingabeaufforderung nicht zurück. Wenn ein Benutzer z.B. ein privates GitHub-Repository klont, für das die zweistufige Authentifizierung aktiviert ist, wird ein Dialogfeld zur Ausführung der zweistufigen Authentifizierung angezeigt.  
@@ -75,18 +65,8 @@ Zu den bekannten Lösungen für die Behandlung von Problemen in Azure Cloud Shel
 ### <a name="troubleshooting-remote-management-of-azure-vms"></a>Problembehandlung bei der Remoteverwaltung von virtuellen Azure-Computern
 
 - **Details**: Aufgrund der Standardeinstellungen der Windows-Firewall für WinRM wird dem Benutzer möglicherweise der folgende Fehler angezeigt: `Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
-- **Lösung**: Stellen Sie sicher, dass Ihr virtueller Computer ausgeführt wird. Sie können `Get-AzureRmVM -Status` ausführen, um den Status des virtuellen Computers zu ermitteln.  Als Nächstes fügen Sie eine neue Firewallregel zum virtuellen Remotecomputer hinzu, um WinRM-Verbindungen aus beliebigen Subnetzen zu ermöglichen. Beispiel:
-
- ``` Powershell
- New-NetFirewallRule -Name 'WINRM-HTTP-In-TCP-PSCloudShell' -Group 'Windows Remote Management' -Enabled True -Protocol TCP -LocalPort 5985 -Direction Inbound -Action Allow -DisplayName 'Windows Remote Management - PSCloud (HTTP-In)' -Profile Public
- ```
- Sie können die [benutzerdefinierte Azure-Skripterweiterung](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript) verwenden, um die Anmeldung am virtuellen Remotecomputer zum Hinzufügen der neuen Firewallregel zu vermeiden.
- Sie können das obige Skript in einer Datei speichern, z. B. `addfirerule.ps1`, und diese in Ihren Azure-Speichercontainer hochladen.
- Versuchen Sie dann den folgenden Befehl:
-
- ``` Powershell
- Get-AzureRmVM -Name MyVM1 -ResourceGroupName MyResourceGroup | Set-AzureRmVMCustomScriptExtension -VMName MyVM1 -FileUri https://mystorageaccount.blob.core.windows.net/mycontainer/addfirerule.ps1 -Run 'addfirerule.ps1' -Name myextension
- ```
+- **Auflösung:** Führen Sie `Enable-AzureRmVMPSRemoting` aus, um alle Aspekte des PowerShell-Remoting auf dem Zielcomputer zu aktivieren.
+ 
 
 ### <a name="dir-caches-the-result-in-azure-drive"></a>`dir` speichert das Ergebnis auf dem Azure-Laufwerk zwischen.
 
@@ -133,21 +113,39 @@ Gehen Sie bei der Bearbeitung von „.bashrc“ vorsichtig vor, da sonst unerwar
 
 ## <a name="powershell-limitations"></a>PowerShell-Einschränkungen
 
-### <a name="slow-startup-time"></a>Langsame Startzeit
+### <a name="azuread-module-name"></a>`AzureAD`-Modulname
 
-Die Initialisierung von PowerShell in Azure Cloud Shell (Vorschauversion) kann in der Vorschauphase bis zu 60 Sekunden dauern.
+Der `AzureAD`-Modulname lautet derzeit `AzureAD.Standard.Preview`, das Modul bietet die gleiche Funktionalität.
+
+### <a name="sqlserver-module-functionality"></a>`SqlServer`-Modulfunktionalität
+
+Das in Cloud Shell enthaltene `SqlServer`-Modul bietet nur Unterstützung für die Vorabversion von PowerShell Core. Insbesondere ist `Invoke-SqlCmd` noch nicht verfügbar.
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>Standard-Dateispeicherort beim Erstellen vom Azure-Laufwerk:
 
-Mithilfe von PowerShell-Cmdlets können Benutzer keine Dateien unter dem Azure-Laufwerk erstellen. Wenn Benutzer neue Dateien mit anderen Tools wie vim oder nano erstellen, werden die Dateien standardmäßig im Ordner „C:\Users“ gespeichert. 
+Mithilfe von PowerShell-Cmdlets können Benutzer keine Dateien unter dem Azure-Laufwerk erstellen. Wenn Benutzer neue Dateien mit anderen Tools wie Vim oder nano erstellen, werden die Dateien standardmäßig in `$HOME` gespeichert. 
 
 ### <a name="gui-applications-are-not-supported"></a>GUI-Anwendungen werden nicht unterstützt.
 
 Wenn der Benutzer einen Befehl (etwa `Connect-AzureAD` oder `Connect-AzureRmAccount`) ausführt, mit dem ein Windows-Dialogfeld erstellt wird, wird etwa folgende Fehlermeldung angezeigt: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
 
-## <a name="gdpr-compliance-for-cloud-shell"></a>DSGVO-Kompatibilität für Cloud Shell
+### <a name="tab-completion-crashes-psreadline"></a>Bei TAB-Vervollständigung stürzt PSReadline ab.
 
-Azure Cloud Shell nimmt Ihre persönlichen Daten ernst. Die vom Azure Cloud Shell-Dienst erfassten und gespeicherten Daten werden verwendet, um Standardwerte für Ihre Benutzererlebnis bereitzustellen, wie Ihre zuletzt verwendete Shell, bevorzugter Schriftgrad, bevorzugte Schriftart und Dateifreigabedetails, die auf clouddrive zurückgreifen. Für den Fall, dass Sie diese Daten exportieren oder löschen möchten, lesen Sie die folgenden Anweisungen.
+Wenn der EditMode des Benutzers in PSReadline auf Emacs festgelegt ist, der Benutzer versucht, alle Möglichkeiten über die TAB-Vervollständigung anzuzeigen und die Größe des Fensters zu klein zum Darstellen aller Möglichkeiten ist, stürzt PSReadline ab.
+
+### <a name="large-gap-after-displaying-progress-bar"></a>Große Lücke nach dem Darstellen der Statusanzeige
+
+Wenn der Benutzer eine Aktion ausführt, mit der eine Statusanzeige dargestellt wird, etwa eine TAB-Vervollständigung für das Laufwerk `Azure:`, ist es möglich, dass der Cursor nicht ordnungsgemäß festgelegt wird und an der vorherigen Stelle der Statusanzeige eine Lücke angezeigt wird.
+
+### <a name="random-characters-appear-inline"></a>In der Eingabe angezeigte zufällige Zeichen
+
+Die Sequenzcodes für die Cursorposition, z.B. `5;13R`, können in der Benutzereingabe angezeigt werden.  Die Zeichen können manuell entfernt werden.
+
+## <a name="personal-data-in-cloud-shell"></a>Personenbezogene Daten in Cloud Shell
+
+Azure Cloud Shell nimmt Ihre personenbezogenen Daten ernst. Die vom Azure Cloud Shell-Dienst erfassten und gespeicherten Daten werden verwendet, um Standardwerte für Ihr Benutzererlebnis bereitzustellen, wie Ihre zuletzt verwendete Shell, Ihr bevorzugter Schriftgrad, Ihre bevorzugte Schriftart und Dateifreigabedetails, die das Cloudlaufwerk unterstützen. Für den Fall, dass Sie diese Daten exportieren oder löschen möchten, lesen Sie die folgenden Anweisungen.
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ### <a name="export"></a>Export
 Um die Benutzereinstellungen zu **exportieren**, die Cloud Shell für Sie speichert (wie bevorzugte Shell, Schriftgrad und Schriftart), führen Sie die folgenden Befehle aus.

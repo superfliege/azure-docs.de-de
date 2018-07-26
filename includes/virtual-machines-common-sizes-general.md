@@ -1,34 +1,34 @@
-﻿---
+---
 title: Includedatei
 description: Includedatei
 services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/09/2018
+ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: ab9ad821c6780c685c884a87f3075a5d58c1d73a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0cd31a6acaa248b53fbe90684894b3bb3e7ebf86
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34222929"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37907042"
 ---
-Universelle VM-Größen zeichnen sich durch ein ausgewogenes Verhältnis zwischen CPU und Arbeitsspeicher aus. Ideal für Tests und Entwicklung, kleine bis mittlere Datenbanken sowie Webserver mit geringer bis mittlerer Auslastung. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz und zur Netzwerkbandbreite der einzelnen Größen in dieser Gruppe. 
+Universelle VM-Größen zeichnen sich durch ein ausgewogenes Verhältnis zwischen CPU und Arbeitsspeicher aus. Ideal für Tests und Entwicklung, kleine bis mittlere Datenbanken sowie Webserver mit geringer bis mittlerer Auslastung. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz für die Größen in dieser Gruppe. 
 
-- Die virtuellen Computer der A- und der Av2-Serie können für viele verschiedene Hardwaretypen und Prozessoren bereitgestellt werden. Die Größe ist basierend auf der Hardware gedrosselt, um eine konsistente Prozessorleistung für die ausgeführte Instanz zu ermöglichen – unabhängig von der Hardware, die für die Bereitstellung gewählt wird. Fragen Sie die virtuelle Hardware über die virtuelle Maschine ab, um die physische Hardware zu ermitteln, auf der diese Größe bereitgestellt wird.
-
-- VMs der D-Serie dienen zum Ausführen von Anwendungen, die eine höhere Rechenleistung und eine höhere temporäre Datenträgerleistung erfordern. VMs der D-Serie zeichnen sich durch schnellere Prozessoren, ein höheres Verhältnis zwischen Arbeitsspeicher und vCPU und ein SSD (Solid State Drive) als temporärer Datenträger aus. Einzelheiten finden Sie in der Ankündigung im Azure-Blog unter [New D-Series Virtual Machine Sizes](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/)(Neue VM-Größen der D-Serie, in englischer Sprache).
+- Die VMs der Av2-Reihe können auf vielen verschiedenen Hardwaretypen und Prozessoren bereitgestellt werden. Die Größe ist basierend auf der Hardware gedrosselt, um eine konsistente Prozessorleistung für die ausgeführte Instanz zu ermöglichen – unabhängig von der Hardware, die für die Bereitstellung gewählt wird. Fragen Sie die virtuelle Hardware über die virtuelle Maschine ab, um die physische Hardware zu ermitteln, auf der diese Größe bereitgestellt wird.
 
 - Die Dv2-Serie, eine Nachfolgerin der ursprünglichen D-Serie, hat eine leistungsfähigere CPU. Die CPU der Dv2-Serie ist ca. 35 % schneller als die CPU der D-Serie. Sie basiert auf der neuesten Generation des 2,4-GHz-Intel Xeon® E5-2673-v3-Prozessors (Haswell) oder 2,3-GHz-E5 2673-v4-Prozessors (Broadwell) und kann mit der Intel Turbo Boost Technology 2.0 bis auf 3,1 GHz erhöht werden. Der Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
 
 - Die Dv3-Serie bietet die gleichen Prozessoren wie die Dv2-Serie, aber in einer Hyperthreadkonfiguration, die ein besseres Preis-Leistungs-Verhältnis für die meisten universellen Workloads bietet und den Dv3 mit den allgemeinen VMs der meisten anderen Clouds in Einklang bringt.  Der Speicher wurde erweitert (von etwa 3.5 GiB/vCPU auf 4 GiB/vCPU), während die Datenträger- und Netzwerkgrenzwerte pro Kern angepasst wurden, um sich für den Übergang zum Hyperthreading anzupassen.  Die Dv3-Serie hat nicht mehr die hohen Arbeitsspeichergrößen der D/Dv2-Familien, diese sind nun in der neuen Ev3-Familie verfügbar.
 
 
-- Die Größen des Basic-Tarifs sind hauptsächlich für Entwicklungsworkloads und andere Anwendungen bestimmt, für die kein Lastenausgleich, keine automatische Skalierung und keine speicherintensiven virtuellen Computer erforderlich sind.
-
 ## <a name="b-series"></a>B-Serie
+
+Storage Premium: unterstützt
+
+Storage Premium-Zwischenspeicherung: nicht unterstützt
 
 Virtuelle Burst-fähige Computer der B-Serie sind ideal für Workloads geeignet, die nicht kontinuierlich die volle Leistung der CPU benötigen. Hierzu zählen beispielsweise Webserver, kleine Datenbanken sowie Entwicklungs- und Testumgebungen. Diese Workloads haben in der Regel kurzfristige Leistungsanforderungen. Mit der B-Serie können diese Kunden eine VM-Größe mit einer preisgünstigen Grundleistung erwerben. Für die VM-Instanz können dann Gutschriften erlangt werden, wenn für die VM weniger als die Grundleistung genutzt wird. Wenn für den virtuellen Computer Guthaben gebildet wurde, kann Leistung genutzt werden, die über die Grundleistung der VM hinausgeht. Dabei kann die CPU zu 100 Prozent verwendet werden, wenn Ihre Anwendung eine solche Leistung benötigt. 
 
@@ -47,6 +47,10 @@ Virtuelle Burst-fähige Computer der B-Serie sind ideal für Workloads geeignet,
 
 ACU: 160 - 190
 
+Storage Premium: unterstützt
+
+Storage Premium-Zwischenspeicherung: unterstützt
+
 Die Größen der Dsv3-Serie basieren auf dem Prozessor vom Typ 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) oder vom Typ 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell) und können mit Intel Turbo Boost Technology 2.0 3,5 GHz erreichen und Premium-Speicher nutzen. Die Größen der Dsv3-Serie bieten eine Kombination aus vCPU, Arbeitsspeicher und temporärem Speicher für die meisten Produktionsworkloads.
 
 
@@ -64,6 +68,10 @@ Die Größen der Dsv3-Serie basieren auf dem Prozessor vom Typ 2,4 GHz Intel Xeo
 ## <a name="dv3-series-sup1sup"></a>Dv3-Serie <sup>1</sup>
 
 ACU: 160 - 190
+
+Storage Premium: nicht unterstützt
+
+Storage Premium-Zwischenspeicherung: nicht unterstützt
 
 Die Größen der Dv3-Serie basieren auf dem Prozessor vom Typ 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) oder vom Typ 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell) und können mit Intel Turbo Boost Technology 2.0 3,5 GHz erreichen. Die Größen der Dv3-Serie bieten eine Kombination aus vCPU, Arbeitsspeicher und temporärem Speicher für die meisten Produktionsworkloads.
 
@@ -86,6 +94,10 @@ Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Verwenden
 
 ACU: 210 - 250
 
+Storage Premium: unterstützt
+
+Storage Premium-Zwischenspeicherung: unterstützt
+
 | Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS1_v2 |1 |3,5 |7 |4 |4.000/32 (43) |3.200/48 |2/750 |
@@ -100,6 +112,10 @@ ACU: 210 - 250
 
 ACU: 210 - 250
 
+Storage Premium: nicht unterstützt
+
+Storage Premium-Zwischenspeicherung: nicht unterstützt
+
 | Größe           | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Anzahl Datenträger | Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
 |----------------|------|-------------|------------------------|------------------------------------------------------------|----------------|------------------|----------------------------------------------|
 | Standard_D1_v2 | 1    | 3,5         | 50                     | 3000/46/23                                             | 4              | 4 x 500            | 2/750                                      |
@@ -109,39 +125,13 @@ ACU: 210 - 250
 | Standard_D5_v2 | 16   | 56          | 800                    | 48000/750/375                                          | 64             | 64 x 500           | 8 / 12000                                    |
 
 
-
-## <a name="ds-series"></a>DS-Serie
-
-ACU: 160
-
-| Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS1 |1 |3,5 |7 |4 |4.000/32 (43) |3.200/32 |2/500 |
-| Standard_DS2 |2 |7 |14 |8 |8.000/64 (86) |6.400/64 |2/1000 |
-| Standard_DS3 |4 |14 |28 |16 |16.000/128 (172) |12.800/128 |4/2000 |
-| Standard_DS4 |8 |28 |56 |32 |32.000/256 (344) |25.600/256 |8/4000 |
-
-<br>
-
-## <a name="d-series"></a>D-Serie 
-
-ACU: 160
-
-| Größe         | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
-|--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_D1  | 1         | 3,5         | 50             | 3000/46/23                                           | 4/4 x 500                         | 2/500                 |
-| Standard_D2  | 2         | 7           | 100            | 6000/93/46                                           | 8/8 x 500                         | 2/1000                     |
-| Standard_D3  | 4         | 14          | 200            | 12000/187/93                                         | 16/16 x 500                         | 4/2000                     |
-| Standard_D4  | 8         | 28          | 400            | 24000/375/187                                        | 32/32 x 500                       | 8/4000                     |
-
-<br>
-
-
 ## <a name="av2-series"></a>Av2-Serie
 
 ACU: 100
 
+Storage Premium: nicht unterstützt
 
+Storage Premium-Zwischenspeicherung: nicht unterstützt
 
 | Größe            | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) | 
 |-----------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
@@ -155,42 +145,7 @@ ACU: 100
 
 <br>
 
-## <a name="a-series"></a>A-Serie
-
-ACU: 50 - 100
-
-| Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (HDD): GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s)  |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_A0 <sup>1</sup> |1 |0,768 |20 |1 |1 x 500 |2/100 |
-| Standard_A1 |1 |1,75 |70 |2 |2 x 500 |2/500  |
-| Standard_A2 |2 |3,5 |135 |4 |4 x 500 |2/500 |
-| Standard_A3 |4 |7 |285 |8 |8 x 500 |2/1000 |
-| Standard_A4 |8 |14 |605 |16 |16 x 500 |4/2000 |
-| Standard_A5 |2 |14 |135 |4 |4 x 500 |2/500 |
-| Standard_A6 |4 |28 |285 |8 |8 x 500 |2/1000 |
-| Standard_A7 |8 |56 |605 |16 |16 x 500 |4/2000 |
-<br>
-
-<sup>1</sup> Die Größe „A0“ ist auf der physischen Hardware „überzeichnet“. Nur für diese spezielle Größe kann es dazu kommen, dass sich andere Kundenbereitstellungen negativ auf die Leistung Ihrer aktiven Workload auswirken. Die relative Leistung ist unten als erwartete Baseline beschrieben und unterliegt einer ungefähren Variabilität von 15 Prozent.
-
-### <a name="standard-a0---a4-using-cli-and-powershell"></a>Standard_A0 – A4 mit Befehlszeilenschnittstelle (CLI) und PowerShell
-Im klassischen Bereitstellungsmodell unterscheiden sich einige VM-Größennamen in der Befehlszeilenschnittstelle und in PowerShell:
-
-* Standard_A0 ist „Sehr klein“ 
-* Standard_A1 ist „Klein“
-* Standard_A2 ist „Mittel“
-* Standard_A3 ist „Groß“
-* Standard_A4 ist „Extragroß“
-
-## <a name="basic-a"></a>Basic A
-
-|Größe – Größe\Name | vCPU |Arbeitsspeicher|Netzwerkkarten (max.)|Max. Größe der temporären Datenträger |Maximal Datenträger (jeweils 1023 GB)|Maximal IOPS (300 pro Datenträger)|
-|---|---|---|---|---|---|---|
-|A0\Basic_A0|1|768 MB|2| 20 GB|1|1 x 300|
-|A1\Basic_A1|1|1,75 GB|2| 40 GB |2|2 x 300|
-|A2\Basic_A2|2|3,5 GB|2| 60 GB|4|4 x 300|
-|A3\Basic_A3|4|7 GB|2| 120 GB |8|4 x 300|
-|A4\Basic_A4|8|14 GB|2| 240 GB |16|16 x 300|
 
 
-Beachten Sie, dass die Anzahl von Datenträgern für klassische virtuelle Computer kleiner sein kann als die Anzahl von Datenträgern für virtuelle Azure Resource Manager-Computer.
+
+

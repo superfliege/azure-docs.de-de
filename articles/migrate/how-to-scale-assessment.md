@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie eine große Anzahl lokaler Computer mit 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: dd7524c0114589e0c145cb4c03b0f531d58ce950
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d7814b976529bf7032edd54e4afd574ce766e5dd
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214690"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919861"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Ermitteln und Bewerten einer umfangreichen VMware-Umgebung
 
@@ -23,6 +23,31 @@ Bei Azure Migrate gilt eine Beschränkung von 1500 Computern pro Projekt. In die
 - **vCenter-Konto**: Sie benötigen ein schreibgeschütztes Konto für den Zugriff auf vCenter Server. Dieses Konto wird in Azure Migrate zum Ermitteln der lokalen virtuellen Computer verwendet.
 - **Berechtigungen:** In vCenter Server benötigen Sie Berechtigungen zum Erstellen eines virtuellen Computers durch Importieren einer Datei im OVA-Format.
 - **Statistikeinstellungen:** Die Statistikeinstellungen für vCenter Server müssen vor der Bereitstellung auf Ebene 3 festgelegt werden. Bei einer niedrigeren Ebene wird die Bewertung zwar ausgeführt, die Leistungsdaten für den Speicher und das Netzwerk werden jedoch nicht erfasst. Die Größenempfehlungen werden in diesem Fall auf der Grundlage von Leistungsdaten für CPU und Arbeitsspeicher sowie basierend auf den Konfigurationsdaten für Datenträger- und Netzwerkadapter erstellt.
+
+
+### <a name="set-up-permissions"></a>Einrichten von Berechtigungen
+
+Azure Migrate benötigt Zugriff auf VMware-Server, um automatisch virtuelle Computer für die Bewertung ermitteln zu können. Für das VMware-Konto sind die folgenden Berechtigungen erforderlich:
+
+- Benutzertyp: mindestens ein Benutzer mit Lesezugriff
+- Berechtigungen: Data Center object (Rechenzentrumsobjekt) –> Propagate to Child Object (An untergeordnetes Objekt weitergeben), role=Read-only (Rolle: schreibgeschützt)
+- Details: Der Benutzer wird auf Datencenterebene zugewiesen und hat Zugriff auf alle Objekte im Datencenter.
+- Um den Zugriff einzuschränken, weisen Sie den untergeordneten Objekten (vSphere-Hosts, Datenspeicher, VMs und Netzwerke) die Rolle „No access“ (Kein Zugriff) mit „Propagate to child object“ (Auf untergeordnetes Objekt übertragen) zu.
+
+Wenn Sie die Bereitstellung in einer Mandantenumgebung ausführen, finden Sie hier eine Möglichkeit zur Einrichtung:
+
+1.  Erstellen Sie einen Benutzer pro Mandant, und weisen Sie mit [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) Nur-Lese-Berechtigungen auf alle VMs zu, die einem bestimmten Mandanten angehören. Verwenden Sie diese Anmeldeinformationen dann für die Ermittlung. Durch die rollenbasierte Zugriffssteuerung wird sichergestellt, dass der entsprechende vCenter-Benutzer nur Zugriff auf die mandantenspezifischen VMs hat.
+2. Sie können RBAC für Benutzer verschiedener Mandanten einrichten, wie im folgenden Beispiel für die Benutzer User#1 und User#2 beschrieben wird:
+
+    - Geben Sie unter **Benutzername** und **Kennwort** die Anmeldeinformationen für das schreibgeschützte Konto an, mit dem der Collector VMs in
+    - Datacenter1 – erteilen Sie User#1 und User#2 Nur-Lese Berechtigungen. Geben Sie diese Berechtigungen nicht an alle untergeordneten Objekte weiter, da Sie Berechtigungen für die einzelnen virtuellen Computer festlegen.
+
+      - VM1 (Tenant#1) (Nur-Lese-Berechtigung für User#1)
+      - VM2 (Tenant#1) (Nur-Lese-Berechtigung für User#1)
+      - VM3 (Tenant#2) (Nur-Lese-Berechtigung für User#2)
+      - VM4 (Tenant#2) (Nur-Lese-Berechtigung für User#2)
+
+   - Wenn Sie die Ermittlung mit den Anmeldeinformationen von User#1 ausführen, werden nur VM1 und VM2 ermittelt.
 
 ## <a name="plan-your-migration-projects-and-discoveries"></a>Planen von Migrationsprojekten und Ermittlungen
 
@@ -100,6 +125,14 @@ Wenn Sie über mehrere Projekte verfügen, müssen Sie die Collectorappliance nu
    Beispielverwendung: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 
 3. Stellen Sie sicher, dass der generierte Hash mit den folgenden Einstellungen übereinstimmt.
+
+    Für OVA-Version 1.0.9.12
+
+    **Algorithmus** | **Hashwert**
+    --- | ---
+    MD5 | d0363e5d1b377a8eb08843cf034ac28a
+    SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
+    SHA256 | f677b6c255e3d4d529315a31b5947edfe46f45e4eb4dbc8019d68d1d1b337c2e
 
     Für OVA-Version 1.0.9.8
 

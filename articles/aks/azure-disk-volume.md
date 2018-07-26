@@ -2,19 +2,19 @@
 title: Verwenden von Azure-Datenträgern mit AKS
 description: Verwenden von Azure-Datenträgern mit AKS
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/21/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4af4620ff7a17cae76c4d5f2cf1a30ce4a3dccd8
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: f807264dc2c2e07ccd175fb1b0427b7ce9e9f524
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34597066"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868244"
 ---
 # <a name="volumes-with-azure-disks"></a>Volumes mit Azure-Datenträgern
 
@@ -49,6 +49,12 @@ Nachdem der Datenträger erstellt wurde, sollte eine Ausgabe ähnlich der folgen
 ```console
 /subscriptions/<subscriptionID>/resourceGroups/MC_myAKSCluster_myAKSCluster_eastus/providers/Microsoft.Compute/disks/myAKSDisk
 ```
+> [!NOTE]
+> Verwaltete Azure-Datenträger werden nach SKU für eine bestimmte Größe berechnet. Diese SKUs reichen von 32 GiB für S4- oder P4-Datenträger bis 4 TiB für S50- oder P50-Datenträger. Darüber hinaus hängen Durchsatz und IOPS-Leistung eines verwalteten Premium-Datenträgers sowohl von der SKU als auch von der Instanzgröße der Knoten im AKS-Cluster ab. Weitere Informationen finden Sie unter [Verwaltete Datenträger – Preise][managed-disk-pricing-performance].
+
+> [!NOTE]
+> Wenn Sie die Datenträger in einer separaten Ressourcengruppe erstellen müssen, müssen Sie auch den AKS-Dienstprinzipal (Azure Kubernetes Service) für Ihren Cluster der Ressourcengruppe, die den Datenträger mit der Rolle `Contributor` enthält, hinzufügen. 
+>
 
 ## <a name="mount-disk-as-volume"></a>Einbinden des Datenträgers als Volume
 
@@ -94,6 +100,7 @@ Erfahren Sie mehr über Kubernetes-Volumes mit Azure-Datenträgern.
 <!-- LINKS - external -->
 [kubernetes-disks]: https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_disk/README.md
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/volumes/
+[managed-disk-pricing-performance]: https://azure.microsoft.com/pricing/details/managed-disks/
 
 <!-- LINKS - internal -->
 [az-disk-list]: /cli/azure/disk#az_disk_list

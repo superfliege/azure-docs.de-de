@@ -1,6 +1,6 @@
 ---
-title: Ausführen eines virtuellen Kubelets in einem Azure Kubernetes Service-Clusters (AKS)
-description: Verwenden Sie das virtuelle Kubelet, um Kubernetes-Container in Azure Container Instances auszuführen.
+title: Ausführen von Virtual Kubelet in einem Azure Kubernetes Service-Cluster (AKS)
+description: Erfahren Sie, wie Sie Virtual Kubelet mit Azure Kubernetes Service (AKS) verwenden, um Linux- und Windows-Container in Azure Container Instances auszuführen.
 services: container-service
 author: iainfoulds
 manager: jeconnoc
@@ -8,14 +8,14 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: iainfou
-ms.openlocfilehash: 04fdb1620dc6e7147ed10ae6eeeaeb3eeae14b62
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 0466f416568b2a1a82e264a8508697fc9de87287
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097358"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952477"
 ---
-# <a name="virtual-kubelet-with-aks"></a>Virtuelles Kubelet mit AKS
+# <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Verwenden von Virtual Kubelet mit Azure Kubernetes Service (AKS)
 
 Azure Container Instances (ACI) bietet eine gehostete Umgebung zum Ausführen von Containern in Azure. Mit ACI ist es nicht erforderlich, die zugrunde liegende Computeinfrastruktur zu verwalten, denn Azure übernimmt diese Verwaltung für Sie. Wenn Sie Container in ACI ausführen, wird sekundengenau jeder ausgeführte Container abgerechnet.
 
@@ -32,7 +32,38 @@ In diesem Dokument wird davon ausgegangen, dass Sie über einen AKS-Cluster verf
 
 Außerdem benötigen Sie mindestens die Azure CLI-Version **2.0.33** oder höher. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
-[Helm](https://docs.helm.sh/using_helm/#installing-helm) ist ebenfalls für die Installation von Virtual Kubelet erforderlich.
+Zum Installieren von Virtual Kubelet ist außerdem [Helm](https://docs.helm.sh/using_helm/#installing-helm) erforderlich.
+
+### <a name="for-rbac-enabled-clusters"></a>Für RBAC-fähige Cluster
+
+Wenn Ihr AKS-Cluster RBAC-fähig ist, müssen Sie ein Dienstkonto und eine Rollenbindung für die Verwendung mit Tiller erstellen. Weitere Informationen finden Sie unter [Helm: Rollenbasierte Zugriffssteuerung][helm-rbac].
+
+Außerdem muss für Virtual Kubelet eine *ClusterRoleBinding* erstellt werden. Um eine Bindung zu erstellen, erstellen Sie eine Datei mit dem Namen *rbac-virtualkubelet.yaml*, und fügen Sie die folgende Definition ein:
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: virtual-kubelet
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: default
+```
+
+Wenden Sie die Bindung mit [kubectl apply][kubectl-apply] an, und geben Sie Ihre Datei *rbac-virtualkubelet.yaml* an, wie im folgenden Beispiel gezeigt:
+
+```
+$ kubectl apply -f rbac-virtual-kubelet.yaml
+
+clusterrolebinding.rbac.authorization.k8s.io/virtual-kubelet created
+```
+
+Sie können nun mit der Installation von Virtual Kubelet in Ihrem AKS-Cluster fortfahren.
 
 ## <a name="installation"></a>Installation
 
@@ -61,7 +92,7 @@ Diese Argumente sind für den `aks install-connector`-Befehl verfügbar.
 
 Um zu überprüfen, ob Virtual Kubelet installiert wurde, geben Sie eine Liste der Kubernetes-Knoten mit dem Befehl [kubectl get nodes][kubectl-get] zurück.
 
-```console
+```
 $ kubectl get nodes
 
 NAME                                    STATUS    ROLES     AGE       VERSION
@@ -102,13 +133,13 @@ spec:
 
 Führen Sie die Anwendung mithilfe des Befehls [kubectl create][kubectl-create] aus.
 
-```azurecli-interactive
+```console
 kubectl create -f virtual-kubelet-linux.yaml
 ```
 
 Verwenden Sie den Befehl [kubectl get pods][kubectl-get] mit dem `-o wide`-Argument, um eine Liste von Pods mit dem geplanten Knoten auszugeben. Beachten Sie, dass der `aci-helloworld`-Pod auf dem `virtual-kubelet-virtual-kubelet-linux`-Knoten geplant wurde.
 
-```console
+```
 $ kubectl get pods -o wide
 
 NAME                                READY     STATUS    RESTARTS   AGE       IP             NODE
@@ -145,13 +176,13 @@ spec:
 
 Führen Sie die Anwendung mithilfe des Befehls [kubectl create][kubectl-create] aus.
 
-```azurecli-interactive
+```console
 kubectl create -f virtual-kubelet-windows.yaml
 ```
 
 Verwenden Sie den Befehl [kubectl get pods][kubectl-get] mit dem `-o wide`-Argument, um eine Liste von Pods mit dem geplanten Knoten auszugeben. Beachten Sie, dass der `nanoserver-iis`-Pod auf dem `virtual-kubelet-virtual-kubelet-win`-Knoten geplant wurde.
 
-```console
+```
 $ kubectl get pods -o wide
 
 NAME                                READY     STATUS    RESTARTS   AGE       IP             NODE
@@ -182,3 +213,5 @@ Weitere Informationen zu virtuellen Kubelets finden Sie im [Virtual Kubelet-GitH
 [node-selector]:https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 [toleration]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
 [vk-github]: https://github.com/virtual-kubelet/virtual-kubelet
+[helm-rbac]: https://docs.helm.sh/using_helm/#role-based-access-control
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply

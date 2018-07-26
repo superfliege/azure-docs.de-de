@@ -3,23 +3,23 @@ title: Informationen zu Bedrohungen in Azure Security Center | Microsoft-Dokumen
 description: Hier erfahren Sie, wie Sie anhand von Informationen zu Bedrohungen in Azure Security Center potenzielle Bedrohungen auf Ihren virtuellen und physischen Computern identifizieren.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: a771a3a1-2925-46ca-8e27-6f6a0746f58b
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2017
-ms.author: yurid
-ms.openlocfilehash: 9654c25bf6b51d48dc195d6a536b61312fdcbeff
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.date: 07/10/2018
+ms.author: terrylan
+ms.openlocfilehash: 832998a6028a8977b43e343ed778cc0b60388728
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32774572"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38561363"
 ---
 # <a name="threat-intelligence-in-azure-security-center"></a>Informationen zu Bedrohungen in Azure Security Center
 In diesem Artikel erfahren Sie, wie Sie anhand von Informationen zu Bedrohungen in Azure Security Center sicherheitsbezogene Probleme lösen.
@@ -43,20 +43,24 @@ Einer der Schritte bei der [Reaktion auf Sicherheitsvorfälle](https://docs.micr
 - Ermitteln der betroffenen Systeme.
 - Ermitteln der Dateien, auf die zugegriffen wurde, und Bestimmen der Vertraulichkeit dieser Dateien.
 
-Bei diesen Aufgaben können Sie auf die Informationen zu Bedrohungen in Security Center zurückgreifen. 
+Bei diesen Aufgaben können Sie auf die Informationen zu Bedrohungen in Security Center zurückgreifen.
 
 ## <a name="access-the-threat-intelligence"></a>Zugreifen auf die Informationen zu Bedrohungen
 Wählen Sie zunächst den Arbeitsbereich aus, in dem sich Ihre Informationen befinden, um die aktuellen Informationen zu Bedrohungen für Ihre Umgebung zu visualisieren. Wenn Sie nicht über mehrere Arbeitsbereiche verfügen, wird die Arbeitsbereichsauswahl umgangen, und Sie gelangen direkt zum Dashboard **Informationen zu Bedrohungen**. So greifen Sie auf das Dashboard zu:
 
 1. Öffnen Sie das Dashboard **Security Center**.
 
-2. Klicken Sie im linken Bereich unter **Erkennung** auf **Informationen zu Bedrohungen**. Das Dashboard **Informationen zu Bedrohungen** wird angezeigt.
+2. Wählen Sie im linken Bereich unter **Bedrohungsschutz** die Option **Informationen zu Bedrohungen** aus. Eine Karte wird geöffnet.
+
+    ![Threat Intelligence-Karte](./media/security-center-threat-intel/security-center-threat-intel.png)
+
+3. Wählen Sie am oberen Rand der Karte **Klassische Threat Intelligence-Benutzeroberfläche** aus. Das Dashboard **Informationen zu Bedrohungen** wird geöffnet.
 
     ![Dashboard „Informationen zu Bedrohungen“](./media/security-center-threat-intel/security-center-threat-intel-fig1.png)
 
     > [!NOTE]
-    > Wenn in der Spalte ganz rechts **UPGRADE PLAN** (PLAN UPGRADEN) angezeigt wird, wird für diesen Arbeitsbereich das kostenlose Abonnement verwendet. Führen Sie ein Upgrade auf „Standard“ durch, um das Feature verwenden zu können. Wenn in der Spalte ganz rechts **REQUIRES UPDATE** (UPDATE ERFORDERLICH) angezeigt wird, aktualisieren Sie [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), um das Feature verwenden zu können. Weitere Informationen zum Tarif finden Sie unter „Azure Security Center-Preise“. 
-    > 
+    > Wenn in der Spalte ganz rechts **UPGRADE PLAN** (PLAN UPGRADEN) angezeigt wird, wird für diesen Arbeitsbereich das kostenlose Abonnement verwendet. Führen Sie ein Upgrade auf „Standard“ durch, um das Feature verwenden zu können. Wenn in der Spalte ganz rechts **REQUIRES UPDATE** (UPDATE ERFORDERLICH) angezeigt wird, aktualisieren Sie [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), um das Feature verwenden zu können. Weitere Informationen zum Tarif finden Sie unter „Azure Security Center-Preise“.
+    >
 3. Falls Sie mehrere Arbeitsbereiche untersuchen müssen, priorisieren Sie die Untersuchung anhand der Spalte **Schädliche IP**. Sie enthält die aktuelle Anzahl schädlicher IP-Adressen in diesem Arbeitsbereich. Wählen Sie den gewünschten Arbeitsbereich aus. Das Dashboard **Informationen zu Bedrohungen** wird angezeigt.
 
     ![Informationen zu Bedrohungen](./media/security-center-threat-intel/security-center-threat-intel-fig5.png)
@@ -97,7 +101,6 @@ In diesem Artikel wurde beschrieben, wie Sie Informationen zu Bedrohungen in Sec
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Hier erfahren Sie, wie Sie Warnungen verwalten und auf Sicherheitsvorfälle in Security Center reagieren.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md). Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 * [Verstehen der Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Hier finden Sie Informationen zu den unterschiedlichen Arten von Sicherheitswarnungen.
-* [Azure Security Center – Handbuch zur Problembehandlung](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Hier erfahren Sie, wie Sie allgemeine Probleme in Security Center behandeln. 
+* [Azure Security Center – Handbuch zur Problembehandlung](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Hier erfahren Sie, wie Sie allgemeine Probleme in Security Center behandeln.
 * [Azure Security Center – häufig gestellte Fragen](security-center-faq.md)festgelegt ist. Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security-Blog](http://blogs.msdn.com/b/azuresecurity/). Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
-

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 6/1/2018
+ms.date: 7/3/2018
 ms.author: raiye
-ms.openlocfilehash: dd6a9b3e8777c6efa4d6db07d4d65c86463f6cfe
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 518e55de440daa93dc0a9a9eebc207ebcde07d57
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063611"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970161"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix
 Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemreleases für Cloud Services. Anhand dieser Informationen können Sie Ihren Upgradepfad planen, bevor ein Gastbetriebssystem abgekündigt wird. Wenn Sie die Rollen so konfigurieren, dass die *automatischen* Gast-BS-Updates, wie unter [Updateeinstellungen für Azure-Gast-BS][Azure Guest OS Update Settings] beschrieben, verwendet werden, müssen Sie diese Seite nicht unbedingt lesen. 
@@ -43,6 +43,10 @@ Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemrele
 Sie wissen nicht genau, wie Sie Ihr Gastbetriebssystem aktualisieren sollen? Entsprechende Informationen finden Sie [hier][cloud updates].
 
 ## <a name="news-updates"></a>Neuigkeiten
+
+###### <a name="july-3-2018"></a>**3. Juli 2018**
+Das Gastbetriebssystem für Juni wurde veröffentlicht.
+
 ###### <a name="june-1-2018"></a>**1. Juni 2018**
 Das Gastbetriebssystem für Mai wurde veröffentlicht.
 
@@ -70,9 +74,6 @@ Das Gastbetriebssystem für November wurde veröffentlicht.
 ###### <a name="november-8-2017"></a>**8. November 2017**
 Das Gastbetriebssystem für Oktober wurde veröffentlicht.
 
-###### <a name="october-6-2017"></a>**6. Oktober 2017**
-Das Gastbetriebssystem für September wurde veröffentlicht. Für die Windows Server 2016-Version vom September ist netfx3 standardmäßig aktiviert. Kunden müssen „dism /online /disable-feature /featurename:netfx3“ zu „OnStart“ hinzufügen, wenn für ihren Workflow eine .NET 2.x-App mit einer 4.x-Runtime ausgeführt werden muss oder wenn eine .NET 2.x-App ausgeführt, ein Fehler behandelt und anschließend eine .NET 4.x-App ausgeführt wurde.
-
 
 
 ## <a name="releases"></a>Releases
@@ -89,8 +90,9 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-5.20_201806-01 |3. Juli 2018 |Post 5.22 |TBD |
 | WA-GUEST-OS-5.19_201805-01 |1. Juni 2018 |Post 5.21 |TBD |
-| WA-GUEST-OS-5.18_201804-01 |4. Mai 2018 |Post 5.20 |TBD |
+|~~WA-GUEST-OS-5.18_201804-01~~ |4. Mai 2018 |3. Juli 2018 |TBD |
 |~~WA-GUEST-OS-5.17_201803-01~~ |6. April 2018 |1. Juni 2018|TBD |
 |~~WA-GUEST-OS-5.16_201802-01~~ |12. März 2018 |4. Mai 2018 |TBD |
 |~~WA-GUEST-OS-5.15_201801-01~~ |4. Januar 2018 |6. April 2018 |TBD |
@@ -98,7 +100,6 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
 |~~WA-GUEST-OS-5.13_201711-01~~ |14. Dezember 2017 |4. Januar 2018|TBD |
 |~~WA-GUEST-OS-5.12_201710-02~~ |8. November 2017 |4. Januar 2018 |TBD |
 |~~WA-GUEST-OS-5.11_201709-01~~ |6. Oktober 2017 |14. Dezember 2017 |TBD |
-|~~WA-GUEST-OS-5.10_201708-01~~ |24. August 2017 |14. Dezember 2017 |TBD |
 
 
 ## <a name="family-4-releases"></a>Releases von Familie 4
@@ -113,8 +114,9 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-4.55_201806-01 |3. Juli 2018 |Post 4.57 |TBD |
 | WA-GUEST-OS-4.54_201805-01 |1. Juni 2018 |Post 4.56 |TBD |
-| WA-GUEST-OS-4.53_201804-01 |4. Mai 2018 |Post 4.55 |TBD |
+|~~WA-GUEST-OS-4.53_201804-01~~ |4. Mai 2018 |3. Juli 2018 |TBD |
 |~~WA-GUEST-OS-4.52_201803-01~~ |6. April 2018 |1. Juni 2018 |TBD |
 |~~WA-GUEST-OS-4.51_201802-01~~ |12. März 2018 |4. Mai 2018 |TBD |
 |~~WA-GUEST-OS-4.50_201801-01~~ |4. Januar 2018 |6. April 2018 |TBD |
@@ -122,7 +124,6 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
 |~~WA-GUEST-OS-4.48_201711-01~~ |14. Dezember 2017 |4. Januar 2018 |TBD |
 |~~WA-GUEST-OS-4.47_201710-02~~ |8. November 2017 |4. Januar 2018 |TBD |
 |~~WA-GUEST-OS-4.46_201709-01~~ |6. Oktober 2017 |14. Dezember 2017 |TBD |
-|~~WA-GUEST-OS-4.45_201708-01~~ |24. August 2017 |14. Dezember 2017 |TBD |
 
 
 
@@ -138,8 +139,9 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-3.62_201806-01 |3. Juli 2018 |Post 3.64 |TBD |
 | WA-GUEST-OS-3.61_201805-01 |1. Juni 2018 |Post 3.63 |TBD |
-| WA-GUEST-OS-3.60_201804-01 |4. Mai 2018 |Post 3.62 |TBD |
+|~~WA-GUEST-OS-3.60_201804-01~~ |4. Mai 2018 |3. Juli 2018 |TBD |
 |~~WA-GUEST-OS-3.59_201803-01~~ |6. April 2018 |1. Juni 2018 |TBD |
 |~~WA-GUEST-OS-3.58_201802-01~~ |19. März 2018 |4. Mai 2018 |TBD |
 |~~WA-GUEST-OS-3.57_201801-01~~ |29. Januar 2018 |6. April 2018 |TBD |
@@ -162,8 +164,9 @@ Installierte .NET Framework-Versionen: 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-2.75_201806-01 |3. Juli 2018 |Post 2.77 |TBD |
 | WA-GUEST-OS-2.74_201805-01 |1. Juni 2018 |Post 2.76 |TBD |
-| WA-GUEST-OS-2.73_201804-01 |4. Mai 2018 |Post 2.75 |TBD |
+|~~WA-GUEST-OS-2.73_201804-01~~ |4. Mai 2018 |3. Juli 2018 |TBD |
 |~~WA-GUEST-OS-2.72_201803-01~~ |6. April 2018 |1. Juni 2018 |TBD |
 |~~WA-GUEST-OS-2.71_201802-01~~ |12. März 2018 |4. Mai 2018 |TBD |
 |~~WA-GUEST-OS-2.70_201801-01~~ |29. Januar 2018 |6. April 2018 |TBD |
@@ -229,7 +232,7 @@ Wenn Sie Ihr Gastbetriebssystem manuell aktualisieren, finden Sie in der [Deakti
 ## <a name="guest-os-supportability-and-retirement-policy"></a>Unterstützungs- und Deaktivierungsrichtlinie für Gastbetriebssysteme
 Die Unterstützungs- und Deaktivierungsrichtlinie für Gastbetriebssysteme wird [hier][retirepolicy] erläutert.
 
-[cloud updates]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-update-azure-service
+[cloud updates]: https://docs.microsoft.com/azure/cloud-services/cloud-services-update-azure-service
 [RSS-Feed zu Gastbetriebssystemupdates]: https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/master/GuestOS/GuestOSFeed.xml
 [Install .NET on a Cloud Service Role]: https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
 [Azure Guest OS Update Settings]: cloud-services-how-to-configure-portal.md
@@ -242,7 +245,7 @@ Die Unterstützungs- und Deaktivierungsrichtlinie für Gastbetriebssysteme wird 
 [server and gos]: https://msdn.microsoft.com/library/dn775043.aspx
 [azuresupport]: http://azure.microsoft.com/support/options/
 [net install pkg]: http://www.microsoft.com/download/details.aspx?id=42643
-[msrc]: https://technet.microsoft.com/en-us/security/dn440717.aspx
+[msrc]: https://technet.microsoft.com/security/dn440717.aspx
 [update guest os portal]: https://msdn.microsoft.com/library/gg433101.aspx
 [update guest os svc]: https://msdn.microsoft.com/library/gg456324.aspx
 [restarts]: http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx
