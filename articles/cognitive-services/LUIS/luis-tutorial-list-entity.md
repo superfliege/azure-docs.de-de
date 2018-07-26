@@ -2,20 +2,20 @@
 title: Automatisches Bezeichnen von Entitäten mit einer Listenentität mithilfe von Node.js | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie eine Listenentität hinzufügen, um den LUIS bei der Bezeichnung von Varianten eines Worts oder Ausdrucks zu unterstützen.
 services: cognitive-services
-author: v-geberr
+author: diberry
 titleSuffix: Azure
-manager: kamran.iqbal
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
-ms.author: v-geberr
-ms.openlocfilehash: e8558ecf4a64dbccef6e6367c1447bdcdb005126
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: diberry
+ms.openlocfilehash: 12a6cfbe7267d3575fbb33978d7ea6e743802d12
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "35373266"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237161"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Erhöhen der Entitätserkennung mithilfe einer Listenentität 
 Dieses Tutorial veranschaulicht die Verwendung einer [Listenentität](luis-concept-entity-types.md) zur Erhöhung der Entitätserkennung. Listenentitäten müssen nicht bezeichnet werden, da sie exakte Übereinstimmungen der Benennungen darstellen.  

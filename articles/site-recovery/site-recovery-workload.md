@@ -2,24 +2,17 @@
 title: Welche Workloads können mit Azure Site Recovery geschützt werden? | Microsoft-Dokumentation
 description: Hier werden die Workloads beschrieben, die mithilfe der Notfallwiederherstellung mit dem Azure Site Recovery-Dienst geschützt werden können.
 services: site-recovery
-documentationcenter: ''
 author: rayne-wiselman
-manager: cfreeman
-editor: ''
-ms.assetid: 4953948f-26c0-4699-8fe7-59d3bfc1d3da
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 07/22/2018
 ms.author: raynew
-ms.openlocfilehash: e0094b48bc602a1b59339458b430319f4a705d44
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 5295002e823dc864f0f0dcc67594f49b5431bce7
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920108"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205951"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Welche Workloads können mit Azure Site Recovery geschützt werden?
 
@@ -61,7 +54,6 @@ Mit Site Recovery können alle Apps repliziert werden, die auf einem unterstütz
 | Remotedesktop/VDI |J |J |J |J |J|
 | Linux (Betriebssystem und Apps) |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft)|
 | Dynamics AX |J |J |J |J |J|
-| Oracle |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft)|
 | Windows-Dateiserver |J |J |J |J |J|
 | Citrix XenApp und XenDesktop |J|N/V |J |N/V |J |
 
@@ -113,7 +105,7 @@ Mit Remotedesktopdiensten (RDS) werden eine Virtual Desktop Infrastructure (VDI)
 |---| --- | --- | --- | --- | --- | --- | --- |
 | **Virtuelle Desktops eines Pools (nicht verwaltet)** |Nein |Ja |Nein |Ja |Nein |Ja |Nein  |
 | **Virtuelle Desktops eines Pools (verwaltet und ohne UPD)** |Nein |Ja |Nein |Ja |Nein |Ja |Nein  |
-| **Remoteanwendungen und Remotedesktopsitzungen (ohne UPD)** |Ja|Ja |Ja |Ja |Ja |Ja |Ja |
+| **Remoteanwendungen und Remotedesktopsitzungen (ohne UPD)** |JA|Ja |Ja |Ja |Ja |Ja |JA |
 
 [Set up disaster recovery for RDS using Azure Site Recovery](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure) (Einrichten der Notfallwiederherstellung für RDS mit Azure Site Recovery)
 

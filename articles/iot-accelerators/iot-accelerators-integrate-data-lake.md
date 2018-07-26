@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 5ba9b5534e986be1cbe55043a9acdd981d2ed7fd
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: a918866ff5e206ea4d2dedde2711424924a478fe
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971736"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188064"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>Integrieren der Remoteüberwachungslösung in Azure Data Lake Store
 
@@ -25,7 +25,7 @@ In dieser schrittweisen Vorgehensweise verwenden Sie einen Azure Stream Analytic
 
 Für diese Vorgehensweise ist Folgendes erforderlich:
 
-* [Bereitstellen des Solution Accelerators für die Remoteüberwachung](iot-accelerators-remote-monitoring-deploy.md)
+* [Bereitstellen des Solution Accelerators für die Remoteüberwachung](quickstart-remote-monitoring-deploy.md)
   * Die Remoteüberwachungslösung stellt den IoT Hub und den Azure Stream Analytics-Auftrag in Ihrem Azure-Abonnement bereit, der in diesem Artikel verwendet wird.
 * [Bereitstellen eines Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md)
   * Ihr Data Lake Store sollte in der gleichen Region wie Ihre Remoteüberwachungslösung bereitgestellt werden.

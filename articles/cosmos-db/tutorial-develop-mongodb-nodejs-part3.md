@@ -2,7 +2,7 @@
 title: MongoDB-, Angular- und Note-Tutorial für Azure – Teil 3 | Microsoft-Dokumentation
 description: Teil 3 der Tutorialreihe zur Erstellung einer MongoDB-App mit Angular und Note in Azure Cosmos DB unter Verwendung der gleichen APIs wie für MongoDB
 services: cosmos-db
-author: SnehaGunda
+author: johnpapa
 manager: kfile
 editor: ''
 ms.service: cosmos-db
@@ -10,14 +10,14 @@ ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
-ms.author: sngun
+ms.author: john.papa
 ms.custom: mvc
-ms.openlocfilehash: eba96be567094a3e2e3977f505d4e4a67f0b5cea
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: d38d6048a59b1a284f4dc24157b2105a748c348d
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798303"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249035"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-3-build-the-ui-with-angular"></a>Erstellen einer MongoDB-App mit Angular und Azure Cosmos DB – Teil 3: Erstellen der Benutzeroberfläche mit Angular
 
@@ -112,8 +112,8 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
 
     @Component({
       selector: 'app-heroes',
-      templateUrl: './heroes.component.html'
-        styleUrls: ['./heroes.component.scss']
+      templateUrl: './heroes.component.html',
+      styleUrls: ['./heroes.component.scss']
     })
     export class HeroesComponent implements OnInit {
       addingHero = false;
@@ -416,7 +416,7 @@ Wir verfügen nun also über die Komponente. Aber wie bekommen wir sie auf den B
     ng g s hero -m app.module
     ```
 
-2. Navigieren Sie in Visual Studio Code wieder zu **heroes.components.ts** Beachten Sie, dass in der Zeile mit `constructor(private heroService: HeroService) {}` (Zeile 13) der Text `HeroService` rot unterringelt ist. Klicken Sie auf `HeroService`. Daraufhin wird links neben dem Codeblock eine Glühbirne angezeigt. Klicken Sie auf die Glühbirne und anschließend auf **"HeroService" aus "./hero.service" importieren**. oder auf **"HeroService" aus "/app/hero.service" importieren**.
+2. Navigieren Sie in Visual Studio Code wieder zu **heroes.components.ts** Beachten Sie, dass in der Zeile mit `constructor(private heroService: HeroService) {}` (Zeile 13) der Text `HeroService` rot unterringelt ist. Klicken Sie auf `HeroService`. Daraufhin wird links neben dem Codeblock eine Glühbirne angezeigt. Klicken Sie auf die Glühbirne und anschließend auf **"HeroService" aus "./hero.service" importieren.** oder auf **"HeroService" aus "/app/hero.service" importieren**.
 
     Durch Klicken auf die Glühbirne wird in Zeile 2 eine neue Codezeile eingefügt. Falls Zeile 2 auf den Ordner „/app/hero.service“ verweist, passen Sie sie so an, dass sie auf die hero-Datei aus dem lokalen Ordner (./hero.service) verweist. Zeile 2 sollte wie folgt aussehen:
     

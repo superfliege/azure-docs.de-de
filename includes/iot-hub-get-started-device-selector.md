@@ -1,8 +1,8 @@
 > [!div class="op_single_selector"]
 > * [Raspberry Pi-Websimulator](../articles/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md)   
-> * [Simuliertes Gerät mit .NET](../articles/iot-hub/iot-hub-csharp-csharp-getstarted.md)
-> * [Simuliertes Gerät mit Java](../articles/iot-hub/iot-hub-java-java-getstarted.md)
-> * [Simuliertes Gerät mit Node.js](../articles/iot-hub/iot-hub-node-node-getstarted.md)
+> * [Simuliertes Gerät mit .NET](../articles/iot-hub/quickstart-send-telemetry-dotnet.md)
+> * [Simuliertes Gerät mit Java](../articles/iot-hub/quickstart-send-telemetry-java.md)
+> * [Simuliertes Gerät mit Node.js](../articles/iot-hub/quickstart-send-telemetry-node.md)
 > * [IoT DevKit AZ3166 mit VS-Code](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md)
 > * [Raspberry Pi mit Node.js](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md)
 > * [Raspberry Pi mit Python](../articles/iot-hub/iot-hub-raspberry-pi-kit-python-get-started.md)

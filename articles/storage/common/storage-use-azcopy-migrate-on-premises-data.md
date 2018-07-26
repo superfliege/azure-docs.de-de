@@ -10,12 +10,12 @@ ms.devlang: azcopy
 ms.topic: tutorial
 ms.date: 12/14/2017
 ms.author: rogarana
-ms.openlocfilehash: 3f9735a1e5a6973ab1c1c3f575cf3aa345a3a5a4
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 4e2d891705cbe4d51ddc6af6fe178257424220ab
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267441"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205322"
 ---
 #  <a name="migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>Migrieren von lokalen Daten zum Cloudspeicher mithilfe von AzCopy
 
@@ -70,7 +70,7 @@ Mit AzCopy können Sie unter [Windows](https://docs.microsoft.com/azure/storage/
         --recursive
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey: key /S
+    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /S
 ---
 
 Ersetzen Sie `<key>` und `key` durch Ihren Kontoschlüssel. Im Azure-Portal können Sie den Kontoschlüssel unter **Einstellungen** im Abschnitt **Zugriffsschlüssel** abrufen. Wählen Sie einen Schlüssel aus, und fügen Sie ihn in den AzCopy-Befehl ein. Wenn der angegebene Zielcontainer nicht vorhanden ist, wird er von AzCopy erstellt und die Datei anschließend in den Container hochgeladen. Aktualisieren Sie den Quellpfad zu Ihrem Datenverzeichnis, und ersetzen Sie **myaccount** in der Ziel-URL durch den Namen Ihres Speicherkontos.
@@ -91,7 +91,7 @@ Falls Sie nur Quellressourcen kopieren möchten, die im Ziel nicht vorhanden sin
     --exclude-older
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey: key /S /XO
+    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /S /XO
 ---
 
 ## <a name="create-a-scheduled-task-or-cron-job"></a>Erstellen eines geplanten Tasks oder Cron-Auftrags 
@@ -104,7 +104,7 @@ Kopieren Sie den AzCopy-Befehl in einen Text-Editor. Aktualisieren Sie die Param
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
     cd C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy
-    AzCopy /Source: C:\myfolder  /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey: key /V /XO /XN >C:\Path\to\logfolder\azcopy%date:~-4,4%%date:~-7,2%%date:~-10,2%%time:~-11,2%%time:~-8,2%%time:~-5,2%.log
+    AzCopy /Source: C:\myfolder  /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /V /XO /XN >C:\Path\to\logfolder\azcopy%date:~-4,4%%date:~-7,2%%date:~-10,2%%time:~-11,2%%time:~-8,2%%time:~-5,2%.log
 ---
 
 AzCopy wird mit der Verboseoption `--verbose` (Linux) oder `/V` (Windows) ausgeführt. Die Ausgabe wird in eine Protokolldatei umgeleitet. 

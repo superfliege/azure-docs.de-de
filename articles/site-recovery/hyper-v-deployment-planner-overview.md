@@ -9,12 +9,12 @@ ms.workload: storage-backup-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: f4e8a579e020e81540c1fd52e412c8e6184813d2
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 120c78d9adb83ca58ae61700ae70d07ead42ebd0
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921211"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226559"
 ---
 # <a name="site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Site Recovery-Bereitstellungsplaner für „Hyper-V zu Azure“
 
@@ -74,7 +74,7 @@ Das Tool umfasst die folgenden Details:
 
 | | **VMware zu Azure** |**Hyper-V in Azure**|**Azure zu Azure**|**Hyper-V zum sekundären Standort**|**VMware zum sekundären Standort**
 --|--|--|--|--|--
-Unterstützte Szenarien |Ja|Ja|Nein |Ja*|Nein 
+Unterstützte Szenarien |JA|JA|Nein |Ja*|Nein 
 Unterstützte Version | vCenter 6.5, 6.0 oder 5.5| Windows Server 2016, Windows Server 2012 R2 | Nicht verfügbar |Windows Server 2016, Windows Server 2012 R2|Nicht verfügbar
 Unterstützte Konfiguration|vCenter, ESXi| Hyper-V-Cluster, Hyper-V-Host|Nicht verfügbar|Hyper-V-Cluster, Hyper-V-Host|Nicht verfügbar|
 Anzahl von Servern, für die pro ausgeführter Azure Site Recovery-Bereitstellungsplaner-Instanz die Profilerstellung durchgeführt werden kann |Einzeln (für VMs, die zu einem vCenter Server oder einem ESXi-Server gehören, kann die Profilerstellung auf einmal durchgeführt werden)|Mehrere (für VMs mehrerer Hosts oder Hostcluster kann die Profilerstellung auf einmal durchgeführt werden)| Nicht verfügbar |Mehrere (für VMs mehrerer Hosts oder Hostcluster kann die Profilerstellung auf einmal durchgeführt werden)| Nicht verfügbar
@@ -94,13 +94,13 @@ Das Tool verfügt für Hyper-V über drei Hauptphasen: Abrufen der VM-Liste, Pro
 ## <a name="steps-to-add-servers-into-trustedhosts-list"></a>Schritte zum Hinzufügen von Servern zur Liste „TrustedHosts“
 1.  Für die VM, über die das Tool bereitgestellt werden soll, sollten alle Hosts für die Profilerstellung in der dazugehörigen Liste „TrustedHosts“ aufgeführt sein. Führen Sie auf der VM in einem PowerShell-Fenster mit erhöhten Rechten den folgenden Befehl aus, um den Client der Liste „TrustedHosts“ hinzuzufügen. Auf der VM kann Windows Server 2012 R2 oder Windows Server 2016 ausgeführt werden. 
 
-            set-item wsman:\localhost\Client\TrustedHosts -value <ComputerName>[,<ComputerName>]
+            set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
 
 2.  Jeder Hyper-V-Host, für den die Profilerstellung durchgeführt werden soll, sollte über Folgendes verfügen:
 
     a. Die VM, auf der das Tool ausgeführt werden soll, muss in der Liste „TrustedHosts“ enthalten sein. Führen Sie den folgenden Befehl in einem PowerShell-Fenster mit erhöhten Rechten auf dem Hyper-V-Host aus:
 
-            set-item wsman:\localhost\Client\TrustedHosts -value <ComputerName>[,<ComputerName>]
+            set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
 
     b. PowerShell-Remoting muss aktiviert sein.
 

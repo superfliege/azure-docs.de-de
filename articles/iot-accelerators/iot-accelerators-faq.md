@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 3ac5c00aa0c617659f7ac5d386003b8bc34aac81
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: c5621d5e16e31104ee28cc521386a5c0ca290a8b
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075298"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187698"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Häufig gestellte Fragen zu IoT-Solution Accelerators
 
@@ -86,7 +86,7 @@ Informationen hierzu finden Sie im Blogbeitrag von Eric Golpe: [Walkthrough of D
 
 Sie können auch einige andere Features und Funktionen der IoT-Solution Accelerators ausprobieren:
 
-* [Erkunden der Funktionen des Solution Accelerators für Remoteüberwachung](iot-accelerators-remote-monitoring-explore.md)
+* [Erkunden der Funktionen des Solution Accelerators für Remoteüberwachung](quickstart-remote-monitoring-deploy.md)
 * [Übersicht über den Solution Accelerator für Predictive Maintenance](iot-accelerators-predictive-overview.md)
 * [Bereitstellen des Solution Accelerators für Connected Factory](quickstart-connected-factory-deploy.md)
 * [Sicherheit im Internet der Dinge von Anfang an](/azure/iot-fundamentals/iot-security-ground-up)

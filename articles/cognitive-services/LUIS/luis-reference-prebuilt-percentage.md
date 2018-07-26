@@ -3,19 +3,19 @@ title: Referenz zur vorgefertigten Prozentsatzentität in LUIS – Azure | Micro
 titleSuffix: Azure
 description: In diesem Artikel erhalten Sie Informationen zur vorgefertigten Prozentsatzentität in Language Understanding Intelligent Service (LUIS).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 4d502e93f8b6bf3af2da05a499c359faeabb51da
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: d445dbf69e3d2163b5d44b894f8795d41fbd34e3
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321602"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238963"
 ---
 # <a name="percentage-entity"></a>Prozentsatzentität
 Prozentzahlen können als Bruchzahlen (`3 1/2`) oder als Prozentzahlen (`2%`) angezeigt werden. Da diese Entität bereits trainiert wurde, müssen Sie den Anwendungsabsichten keine Beispieläußerungen mit Prozentsätzen hinzufügen. Die Prozentsatzentität wird in [vielen Kulturen](luis-reference-prebuilt-entities.md) unterstützt. 
@@ -55,4 +55,4 @@ Im folgenden Beispiel wird die Auflösung der Entität **builtin.percentage** ve
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr zu den [Ordinal](luis-reference-prebuilt-ordinal.md)-, [Anzahl](luis-reference-prebuilt-number.md)- und [Temperaturentitäten](luis-reference-prebuilt-temperature.md). 
+Erfahren Sie mehr über die Entitäten [ordinal](luis-reference-prebuilt-ordinal.md), [number](luis-reference-prebuilt-number.md) und [temperature](luis-reference-prebuilt-temperature.md). 

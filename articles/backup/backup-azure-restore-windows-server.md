@@ -6,14 +6,14 @@ author: saurabhsensharma
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 1/4/2018
+ms.date: 7/25/2018
 ms.author: saurse
-ms.openlocfilehash: 16f0460dea75b0dc52c3852d9947db0ad15f8fbe
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a1c9df57ddebbb1cf471f705acfbd6651c151d7b
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606323"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247277"
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Wiederherstellen von Dateien auf einem Windows-Server- oder Windows-Clientcomputer mit dem Resource Manager-Bereitstellungsmodell
 
@@ -143,33 +143,6 @@ In diesen Schritten wird folgende Terminologie verwendet:
     > [!Important]
     > Wenn Sie nicht auf „Bereitstellung aufheben“ klicken, bleibt die Bereitstellung des Wiederherstellungsvolumes ab dem Bereitstellungszeitpunkt sechs Stunden lang bestehen. Im Falle eines laufenden Dateikopiervorgangs wird die Bereitstellungszeit jedoch auf bis zu 24 Stunden verlängert. Während der Bereitstellung des Volumes werden keine Sicherungsvorgänge durchgeführt. Alle Sicherungsvorgänge, deren Ausführung für den Zeitraum der Volumebereitstellung geplant ist, werden ausgeführt, nachdem die Bereitstellung des Wiederherstellungsvolumes aufgehoben wurde.
     >
-
-## <a name="troubleshooting"></a>Problembehandlung
-Falls Azure Backup das Wiederherstellungsvolume auch mehrere Minuten nach dem Klicken auf **Einbinden** nicht erfolgreich eingebunden hat oder beim Einbinden des Wiederherstellungsvolumes Fehler auftreten, führen Sie die folgenden Schritte für eine normale Wiederherstellung aus.
-
-1.  Brechen Sie den laufenden Einbindungsvorgang ab, falls dieser bereits mehrere Minuten lang ausgeführt wird.
-
-2.  Vergewissern Sie sich, dass Sie über die neueste Version des Azure Backup-Agents verfügen. Klicken Sie zum Ermitteln der Versionsinformationen für den Azure Backup-Agent im Bereich **Aktionen** der Microsoft Azure Backup-Konsole auf **About Microsoft Azure Recovery Services Agent** (Informationen zum Microsoft Azure Recovery Services-Agent), und vergewissern Sie sich, dass die **Versionsummer** mindestens der in [diesem Artikel](https://go.microsoft.com/fwlink/?linkid=229525) angegebenen Version entspricht. Sie können die neueste Version [hier](https://go.microsoft.com/fwLink/?LinkID=288905) herunterladen.
-
-3.  Wechseln Sie zu **Geräte-Manager** -> **Speichercontroller**, und vergewissern Sie sich, dass **Microsoft iSCSI-Initiator** vorhanden ist. Ist dies der Fall, fahren Sie direkt mit Schritt 7 fort. 
-
-4.  Ist der in Schritt 3 erwähnte Microsoft iSCSI-Initiator-Dienst nicht vorhanden, suchen Sie unter **Geräte-Manager** -> **Speichercontroller** nach einem Eintrag vom Typ **Unbekanntes Gerät** mit der Hardware-ID **ROOT\ISCSIPRT**.
-
-5.  Klicken Sie mit der rechten Maustaste auf **Unbekanntes Gerät**, und wählen Sie **Treibersoftware aktualisieren** aus.
-
-6.  Aktualisieren Sie den Treiber durch Auswählen der Option **Automatisch nach aktueller Treibersoftware suchen**. Nach Abschluss des Updates sollte **Unbekanntes Gerät** durch **Microsoft iSCSI-Initiator** ersetzt werden, wie im Anschluss dargestellt. 
-
-    ![Verschlüsselung](./media/backup-azure-restore-windows-server/UnknowniSCSIDevice.png)
-
-7.  Wechseln Sie zu **Task-Manager** -> **Dienste (lokal)** -> **Microsoft iSCSI-Initiator-Dienst**. 
-
-    ![Verschlüsselung](./media/backup-azure-restore-windows-server/MicrosoftInitiatorServiceRunning.png)
-    
-8.  Starten Sie den Microsoft iSCSI-Initiator-Dienst neu, indem Sie mit der rechten Maustaste auf den Dienst und anschließend auf **Beenden** klicken. Klicken Sie dann erneut mit der rechten Maustaste auf den Dienst und anschließend auf **Starten**.
-
-9.  Wiederholen Sie die Wiederherstellung mit der sofortigen Wiederherstellung. 
-
-Ist die Wiederherstellung weiterhin nicht erfolgreich, starten Sie Ihren Server/Client neu. Sollte ein Neustart nicht wünschenswert oder die Wiederherstellung auch nach einem Neustart des Servers nicht erfolgreich sein, versuchen Sie, die Bereitstellung über einen anderen Computer durchzuführen, und wenden Sie sich an den Azure-Support, indem Sie über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) eine Supportanfrage senden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Nachdem Sie nun Ihre Dateien und Ordner wiederhergestellt haben, können Sie [Ihre Sicherungen verwalten](backup-azure-manage-windows-server.md).

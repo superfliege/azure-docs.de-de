@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: f16fdfca704b8f8cb175de637ad7f3ef143d3ed7
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 10617c129212d8196897af750c02647f0086c8e5
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968954"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185889"
 ---
 # <a name="visualize-remote-monitoring-data-with-time-series-insights"></a>Visualisieren von Remoteüberwachungsdaten mit Time Series Insights
 
@@ -23,7 +23,7 @@ Ein Operator kann die sofort einsatzbereite Datenvisualisierung erweitern, die d
 
 Für diese Vorgehensweise ist Folgendes erforderlich:
 
-* [Bereitstellen der vorkonfigurierten Remoteüberwachungslösung](iot-accelerators-remote-monitoring-deploy.md)
+* [Bereitstellen der vorkonfigurierten Remoteüberwachungslösung](quickstart-remote-monitoring-deploy.md)
 
 ## <a name="create-a-consumer-group"></a>Erstellen einer Consumergruppe
 
@@ -57,7 +57,7 @@ Azure Time Series Insights ist ein vollständig verwalteter Analyse-, Speicher- 
     | Umgebungsname | Im folgenden Screenshot wird der Name **contorosrmtsi** verwendet. Wählen Sie Ihren eigenen eindeutigen Namen, wenn Sie diesen Schritt durchführen. |
     | Abonnement | Wählen Sie Ihr Azure-Abonnement in der Dropdownliste aus. |
     | Ressourcengruppe | **Neu erstellen**. Wir verwenden den Namen **ContosoRM**. |
-    | Speicherort | Hier verwenden wir **USA, Osten**. Erstellen Sie Ihre Umgebung in derselben Region wie Ihre Remoteüberwachungslösung. |
+    | Standort | Hier verwenden wir **USA, Osten**. Erstellen Sie Ihre Umgebung in derselben Region wie Ihre Remoteüberwachungslösung. |
     | Sku |**S1** |
     | Capacity | **1** |
     | An Dashboard anheften | **Ja** |

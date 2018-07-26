@@ -2,23 +2,23 @@
 title: 'Tutorial: Erstellen und Verwalten eines Stream Analytics-Auftrags mit dem Azure-Portal | Microsoft-Dokumentation'
 description: In diesem Tutorial wird umfassend dargestellt, wie Sie Azure Stream Analytics zum Analysieren von betrügerischen Anrufen in einem Telefonanruf-Datenstrom verwenden.
 services: stream-analytics
-author: SnehaGunda
-ms.author: sngun
+author: sidramadoss
+ms.author: sidram
 manager: kfile
 ms.service: stream-analytics
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/04/2018
-ms.openlocfilehash: 524b15747a275c76fec6c529e4f00d0da1b41420
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 39b39a1d00c91e0ff114a28c13da0d4b6920ec13
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "32778188"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186229"
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>Erstellen eines Stream Analytics-Auftrags zum Analysieren von Telefonanrufdaten und Visualisieren von Ergebnissen in einem Power BI-Dashboard
-
+ 
 In diesem Tutorial wird gezeigt, wie Sie Azure Stream Analytics zum Analysieren eines Beispieltelefonanrufs verwenden, der von einer Clientanwendung generiert wird. Die von der Clientanwendung generierten Telefonanrufdaten enthalten einige betrügerische Anrufe, und wir definieren einen Stream Analytics-Auftrag, um diese Anrufe zu filtern.
 
 In diesem Tutorial lernen Sie Folgendes:
@@ -54,7 +54,7 @@ Bevor Stream Analytics den Datenstrom mit den betrügerischen Anrufen analysiere
    |NAME     | myEventHubNS        |  Ein eindeutiger Name zum Identifizieren des Event Hub-Namespace.       |
    |Abonnement     |   \<Ihr Abonnement\>      |   Wählen Sie ein Azure-Abonnement aus, unter dem Sie den Event Hub erstellen möchten.      |
    |Ressourcengruppe     |   MyASADemoRG      |  Wählen Sie **Neu erstellen** aus, und geben Sie einen neuen Ressourcengruppennamen für Ihr Konto ein.       |
-   |Speicherort     |   USA, Westen 2      |    Der Standort, an dem der Event Hub-Namespace bereitgestellt werden kann.     |
+   |Standort     |   USA, Westen 2      |    Der Standort, an dem der Event Hub-Namespace bereitgestellt werden kann.     |
 
 4. Verwenden Sie für die verbleibenden Einstellungen die Standardoptionen, und wählen Sie **Erstellen**.  
 
@@ -135,7 +135,7 @@ Nachdem Sie nun über einen Datenstrom mit Anrufereignissen verfügen, können S
    |Auftragsname     |  ASATutorial       |   Ein eindeutiger Name zum Identifizieren des Event Hub-Namespace.      |
    |Abonnement    |  \<Ihr Abonnement\>   |   Wählen Sie ein Azure-Abonnement aus, unter dem Sie den Auftrag erstellen möchten.       |
    |Ressourcengruppe   |   MyASADemoRG      |   Wählen Sie **Vorhandene verwenden**, und geben Sie einen neuen Ressourcengruppennamen für Ihr Konto ein.      |
-   |Speicherort   |    USA, Westen 2     |      Der Standort, an dem der Auftrag bereitgestellt werden kann. Es empfiehlt sich, den Auftrag und den Event Hub in derselben Region zu platzieren, damit Sie die optimale Leistung erzielen und Ihnen keine Kosten für die Übertragung von Daten zwischen Regionen entstehen.      |
+   |Standort   |    USA, Westen 2     |      Der Standort, an dem der Auftrag bereitgestellt werden kann. Es empfiehlt sich, den Auftrag und den Event Hub in derselben Region zu platzieren, damit Sie die optimale Leistung erzielen und Ihnen keine Kosten für die Übertragung von Daten zwischen Regionen entstehen.      |
    |Hosting-Umgebung    | Cloud        |     Für Stream Analytics-Aufträge ist eine Cloud- oder Edge-Bereitstellung möglich. Mit der Option „Cloud“ können die Aufträge in der Azure Cloud und mit der Option „Edge“ auf einem IoT Edge-Gerät bereitgestellt werden.    |
    |Streamingeinheiten     |    1       |      Streamingeinheiten sind die Computingressourcen, die für die Ausführung eines Auftrags erforderlich sind. Standardmäßig ist dieser Wert auf 1 festgelegt. Informationen zum Skalieren von Streamingeinheiten finden Sie im Artikel [Überblick über Streamingeinheiten und Informationen zu Anpassungen](stream-analytics-streaming-unit-consumption.md).      |
 

@@ -3,19 +3,19 @@ title: Hinzufügen von LUIS-Daten zu Application Insights mit C# | Microsoft-Dok
 titleSuffix: Azure
 description: Erstellen Sie mit C# einen Bot, der in eine LUIS-Anwendung und Application Insights integriert ist.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: 52b6ae224b0e8da12eb4903f5100a6e5cc39704d
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.author: diberry
+ms.openlocfilehash: f1efe305f5659bfab50cee13ac30d56531cc6093
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35378838"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237790"
 ---
 # <a name="add-luis-results-to-application-insights-from-a-web-app-bot"></a>Hinzufügen von LUIS-Ergebnissen zu Application Insights von einem Web-App-Bot
 In diesem Tutorial werden [Application Insights](https://azure.microsoft.com/services/application-insights/)-Telemetriedatenspeichern LUIS-Antwortinformationen hinzugefügt. Sobald Sie über diese Daten verfügen, können Sie mit der Sprache Kusto oder mit Power BI Absichten und Entitäten der Äußerung in Echtzeit analysieren, aggregieren und Berichte für sie erstellen. Diese Analyse hilft Ihnen dabei, zu ermitteln, ob Sie die Absichten und Entitäten aus Ihrer LUIS-App hinzufügen oder bearbeiten sollten.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 82ec2b71ee83d2ec697fa44521c103b11976f1ed
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: a30c6a8d02b46656a0d76cf8438bdf0b3361ae91
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264601"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248460"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor
 Viele Teams müssen den Zugriff auf Überwachungsdaten und -einstellungen streng regulieren. Wenn einige Ihrer Teammitglieder beispielsweise ausschließlich an der Überwachung arbeiten (Supporttechniker, DevOps-Techniker) oder wenn Sie einen verwalteten Dienstanbieter verwenden, sollten Sie diesen nur Zugriff auf Überwachungsdaten erteilen und deren Möglichkeit zum Erstellen, Ändern oder Löschen von Ressourcen einschränken. Dieser Artikel beschreibt, wie Sie schnell eine integrierte RBAC-Rolle zur Überwachung auf einen Benutzer in Azure anwenden oder Ihre eigene benutzerdefinierte Rolle für einen Benutzer erstellen, der eingeschränkte Überwachungsberechtigungen benötigt. Anschließend werden Sicherheitsaspekte für Ihre Azure Monitor-Ressourcen erörtert, und es wird beschrieben, wie Sie den Zugriff auf die darin enthaltenen Daten beschränken können.
@@ -28,7 +28,7 @@ Personen, denen die Überwachungsleserrolle zugewiesen wird, können alle Überw
 * Anzeigen von in [Azure-Warnungen](monitoring-overview-unified-alerts.md) definierten Warnungsregeln
 * Abfragen von Metriken über die [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931930.aspx), [PowerShell-Cmdlets](insights-powershell-samples.md) oder die [plattformübergreifende Befehlszeilenschnittstelle](insights-cli-samples.md).
 * Abfragen des Aktivitätsprotokolls über das Portal, die Azure Monitor-REST-API, PowerShell-Cmdlets oder die plattformübergreifende Befehlszeilenschnittstelle.
-* Anzeigen der [Diagnoseeinstellungen](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) für eine Ressource.
+* Anzeigen der [Diagnoseeinstellungen](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) für eine Ressource.
 * Anzeigen des [Protokollprofils](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile) für ein Abonnement.
 * Anzeigen von Einstellungen für die automatische Skalierung.
 * Anzeigen von Warnaktivitäten und -einstellungen.
@@ -49,7 +49,7 @@ Personen, denen die Überwachungsleserrolle zugewiesen wird, können alle Überw
 Personen, denen die Rolle für Überwachungsmitwirkende zugewiesen wird, können alle Überwachungsdaten in einem Abonnement anzeigen sowie Überwachungseinstellungen erstellen und ändern, aber keine weiteren Ressourcen ändern. Diese Rolle ist eine Obermenge der Überwachungsleserrolle und eignet sich für Mitglieder des Überwachungsteams einer Organisation oder für Anbieter verwalteter Dienste, die neben den oben genannten Berechtigungen auch folgende Aufgaben ausführen müssen:
 
 * Veröffentlichen von Überwachungsdashboards als freigegebenes Dashboard.
-* Festlegen von [Diagnoseeinstellungen](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) für eine Ressource.*
+* Festlegen von [Diagnoseeinstellungen](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) für eine Ressource.*
 * Festlegen des [Protokollprofils](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile) für ein Abonnement.*
 * Festlegen der Aktivität und der Einstellungen für Warnungsregeln über [Azure-Warnungen](monitoring-overview-unified-alerts.md).
 * Erstellen von Application Insights-Webtests und -Komponenten.

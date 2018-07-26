@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 227fae2f38189a5b8ed5b6eff359e09bedc8e628
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: e3543c2056934372a2795bd50f340432ceec3b6d
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071129"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257945"
 ---
 # <a name="about-the-text-to-speech-api"></a>Informationen zur Text-to-Speech-API
 
@@ -35,7 +35,7 @@ Zu Szenarios, in denen die Sprachsynthese übernommen wird, zählen die folgende
 
 ## <a name="voice-support"></a>Sprachunterstützung
 
-Der **Text-to-Speech**-Dienst von Microsoft bietet mehr als 75 Stimmen in mehr als 45 Sprachen und Gebietsschemas. Wenn Sie diese standardmäßigen „Voicefonts“ verwenden möchten, müssen Sie beim Aufrufen der REST-API nur den Namen der Stimme mit einigen anderen Parametern angeben. Einzelheiten zu den unterstützten Stimmen finden Sie unter [Unterstützte Sprachen](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/supported-languages#text-to-speech). 
+Der **Text-to-Speech**-Dienst von Microsoft bietet mehr als 75 Stimmen in mehr als 45 Sprachen und Gebietsschemas. Wenn Sie diese standardmäßigen „Voicefonts“ verwenden möchten, müssen Sie beim Aufrufen der REST-API nur den Namen der Stimme mit einigen anderen Parametern angeben. Einzelheiten zu den unterstützten Stimmen finden Sie unter [Unterstützte Sprachen](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#text-to-speech). 
 
 Wenn Sie für Ihre Anwendung eine einzigartige Stimme verwenden möchten, können Sie aus Ihren eigenen Sprachbeispielen [benutzerdefinierte Voicefonts](how-to-customize-voice-font.md) erstellen.
 

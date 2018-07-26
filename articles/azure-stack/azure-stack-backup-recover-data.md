@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 4/20/2017
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: 7ca3945dd3768ac71e0a962417f0a621aa83be1e
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: f1582efa7d357f6f535c562a656ec17024357320
+ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34075719"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39242868"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>Wiederherstellen nach schwerwiegendem Datenverlust
 
@@ -46,7 +46,7 @@ Im ungünstigsten Fall, bei dem alle Daten verloren gehen, besteht die Wiederher
 
 ![Erneutes Bereitstellen von Azure Stack](media\azure-stack-backup\azure-stack-backup-workflow2.png)
 
-## <a name="restore"></a>Restore 
+## <a name="restore"></a>Restore
 
 Wenn der Datenverlust schwerwiegend ist, die Hardware jedoch weiterhin genutzt werden kann, muss Azure Stack erneut bereitgestellt werden. Während der erneuten Bereitstellung können Sie den Speicherort und die für den Zugriff auf Sicherungen erforderlichen Anmeldeinformationen angeben. In diesem Modus müssen die wiederherzustellenden Dienste nicht angegeben werden. Infrastructure Backup Controller fügt den Status der Steuerungsebene als Teil des Bereitstellungsworkflows ein.
 

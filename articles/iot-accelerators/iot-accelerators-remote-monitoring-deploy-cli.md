@@ -8,16 +8,16 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 736d0394b61bd2830a155d6ad714a2a8d19af82b
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: dd696330c9ee78ef84ac9fcf85946c837ad5b824
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37017508"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188011"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Bereitstellen des Solution Accelerators für die Remoteüberwachung mithilfe der CLI
 
-Dieses Tutorial zeigt, wie Sie den Solution Accelerator für die Remoteüberwachung bereitstellen. Sie stellen die Lösung über die Befehlszeilenschnittstelle bereit. Sie können die Lösung auch über die webbasierte Benutzeroberfläche auf azureiotsuite.com bereitstellen. Informationen zu dieser Möglichkeit finden Sie unter [Bereitstellen des Solution Accelerators für die Remoteüberwachung](iot-accelerators-remote-monitoring-deploy.md).
+Dieses Tutorial zeigt, wie Sie den Solution Accelerator für die Remoteüberwachung bereitstellen. Sie stellen die Lösung über die Befehlszeilenschnittstelle bereit. Sie können die Lösung auch über die webbasierte Benutzeroberfläche auf azureiotsuite.com bereitstellen. Informationen zu dieser Möglichkeit finden Sie unter [Bereitstellen des Solution Accelerators für die Remoteüberwachung](quickstart-remote-monitoring-deploy.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -135,6 +135,6 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Bereitstellen des Solution Accelerators
 > * Anmelden beim Solution Accelerator
 
-Nach Bereitstellung der Remoteüberwachungslösung können Sie sich als Nächstes [mit den Funktionen des Lösungsdashboards vertraut machen](./iot-accelerators-remote-monitoring-deploy.md).
+Nach Bereitstellung der Remoteüberwachungslösung können Sie sich als Nächstes [mit den Funktionen des Lösungsdashboards vertraut machen](./quickstart-remote-monitoring-deploy.md).
 
 <!-- Next tutorials in the sequence -->

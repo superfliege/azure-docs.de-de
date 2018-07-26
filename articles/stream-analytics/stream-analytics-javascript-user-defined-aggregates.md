@@ -2,22 +2,22 @@
 title: Benutzerdefinierte JavaScript-Aggregate in Azure Stream Analytics
 description: In diesem Artikel wird beschrieben, wie Sie erweiterte Abfragemechanismen mit benutzerdefinierten JavaScript-Aggregaten in Azure Stream Analytics durchführen.
 services: stream-analytics
-author: minhe-msft
-ms.author: minhe
-manager: santoshb
-ms.reviewer: jasonh
+author: rodrigoamicrosoft
+ms.author: rodrigoa
+manager: kfile
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: 718109d17309747a3c19f22921e4a316b0b88dc6
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: eb433a322f8077c947fd6db1aaa0e2266a109938
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30907322"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187053"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Azure Stream Analytics – benutzerdefinierte JavaScript-Aggregate (Vorschau)
-
+ 
 Azure Stream Analytics unterstützt in JavaScript geschriebene, benutzerdefinierte Aggregate (UDA), mit deren Hilfe Sie komplexe zustandsbehaftete Geschäftslogik implementieren können. Innerhalb von UDA haben Sie die vollständige Kontrolle über die Zustandsdatenstruktur, die Zustandsakkumulation/-dekumulation und die Berechnung des Aggregatergebnisses. Der Artikel beschreibt die beiden unterschiedlichen JavaScript-UDA-Schnittstellen, Schritte zum Erstellen eines UDA sowie die Verwendung von UDA mit Windows-basierten Vorgängen in Stream Analytics-Abfragen.
 
 ## <a name="javascript-user-defined-aggregates"></a>Benutzerdefinierte Aggregate in JavaScript

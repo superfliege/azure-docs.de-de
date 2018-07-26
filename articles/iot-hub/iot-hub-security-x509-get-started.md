@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/10/2017
 ms.author: dkshir
-ms.openlocfilehash: d7330623ac5c9322b067951406920f8c0264f69c
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 61aefe70b7091f666dbb40bec6a4f25437f489d3
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39012248"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186933"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Einrichten der X.509-Sicherheit in Ihrem Azure IoT Hub
 
@@ -177,8 +177,8 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 * [Deploy Azure IoT Edge on a simulated device in Linux - preview][lnk-iotedge] (Bereitstellen von Azure IoT Edge auf einem simulierten Gerät in Linux – Vorschauversion)
 
-[lnk-security-best-practices]: iot-hub-security-best-practices.md
-[lnk-security-architecture]: iot-hub-security-architecture.md
-[lnk-security-deployment]: iot-hub-security-deployment.md
+[lnk-security-best-practices]: ../iot-fundamentals/iot-security-best-practices.md
+[lnk-security-architecture]: ../iot-fundamentals/iot-security-architecture.md
+[lnk-security-deployment]: ../iot-fundamentals/iot-security-deployment.md
 
 [lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md

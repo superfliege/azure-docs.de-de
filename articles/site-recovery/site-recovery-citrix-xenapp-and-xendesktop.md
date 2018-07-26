@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: c4bc8a1b2ab8f6569d6893f5c4fc16339ebddbe6
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 45d366842416ddfa7b0153a1d075ee6de58e45a1
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917209"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213632"
 ---
 # <a name="replicate-a-multi-tier-citrix-xenapp-and-xendesktop-deployment-using-azure-site-recovery"></a>Replizieren einer Citrix XenApp- und and XenDesktop-Bereitstellung mit mehreren Schichten mit Azure Site Recovery
 
@@ -63,9 +63,9 @@ Für diesen Artikel wurden für das DR-Setup Citrix-Bereitstellungen auf virtuel
 
 **Szenario** | **Am sekundären Standort** | **In Azure**
 --- | --- | ---
-**Hyper-V** | Nicht zutreffend | Ja
-**VMware** | Nicht zutreffend | Ja
-**Physischer Server** | Nicht zutreffend | Ja
+**Hyper-V** | Nicht zutreffend | JA
+**VMware** | Nicht zutreffend | JA
+**Physischer Server** | Nicht zutreffend | JA
 
 ### <a name="versions"></a>Versionen
 Kunden können XenApp-Komponenten als virtuelle Computer unter Hyper-V oder VMware oder als physische Server bereitstellen. Mit Azure Site Recovery können physische und virtuelle Bereitstellungen in Azure geschützt werden.
@@ -182,7 +182,7 @@ Unten wird der angepasste Wiederherstellungsplan dargestellt:
 
 
    >[!NOTE]
-   >Sie können [diese Scripts](https://github.com/Azure/azure-quickstart-templates/blob/>master/asr-automation-recovery/scripts) verwenden, um DNS mit den neuen IP-Adressen der virtuellen Computer zu aktualisieren, für die ein Failover ausgeführt wurde, oder um bei Bedarf einen Lastenausgleich für den Computer anzufügen, für den ein Failover ausgeführt wurde.
+   >Sie können [diese Scripts](https://github.com/Azure/azure-quickstart-templates/tree/master/asr-automation-recovery/scripts) verwenden, um DNS mit den neuen IP-Adressen der virtuellen Computer zu aktualisieren, für die ein Failover ausgeführt wurde, oder um bei Bedarf einen Lastenausgleich für den Computer anzufügen, für den ein Failover ausgeführt wurde.
 
 
 ## <a name="doing-a-test-failover"></a>Durchführen eines Testfailovers

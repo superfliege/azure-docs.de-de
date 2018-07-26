@@ -3,19 +3,19 @@ title: Hinzufügen von LUIS-Daten zu Application Insights mit Node.js | Microsof
 titleSuffix: Azure
 description: Erstellen Sie mit Node.js einen Bot, der in eine LUIS-Anwendung und Application Insights integriert ist.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 01/18/2018
-ms.author: v-geberr
-ms.openlocfilehash: 929b6e1cc980d7215f91a616820e257aed26bab7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: diberry
+ms.openlocfilehash: 5b65747bea7d2496558c5b3b533bb8420eee6254
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35378186"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39236838"
 ---
 # <a name="add-luis-results-to-application-insights-from-a-web-app-bot"></a>Hinzufügen von LUIS-Ergebnissen zu Application Insights von einem Web-App-Bot
 In diesem Tutorial werden [Application Insights](https://azure.microsoft.com/services/application-insights/)-Telemetriedatenspeichern Informationen aus LUIS-Anforderungen und -Antworten hinzugefügt. Sobald Sie über diese Daten verfügen, können Sie sie mit der Sprache Kusto oder mit Power BI abfragen, um Absichten und Entitäten einer Äußerung in Echtzeit zu analysieren, zu aggregieren und Berichte dazu zu erstellen. Diese Analyse hilft Ihnen dabei, zu ermitteln, ob Sie die Absichten und Entitäten aus Ihrer LUIS-App hinzufügen oder bearbeiten sollten.
@@ -25,7 +25,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
 * Hinzufügen der Application Insights-Bibliothek zu einem Web-App-Bot
 * Erfassen und Senden von LUIS-Abfrageergebnissen an Application Insights
-* Abfragen von Application Insights nach den wichtigsten Absichten, Bewertungen und Äußerungen
+* Abfragen von Application Insights nach den besten Absichten, Bewertungen und Äußerungen
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -113,7 +113,7 @@ Damit der Web-App-Bot LUIS-Anforderungen und -Antworten erfassen kann, muss das 
 
 
 
-2. Wenn die Ressource geöffnet wurde, klicken Sie auf das Symbol **Suchen** (Lupensymbol) im Bereich ganz rechts. Ein neuer Bereich wird rechts angezeigt. Je nach Umfang der gefundenen Telemetriedaten kann es einen Moment dauern, bis der Bereich angezeigt wird. Suchen Sie nach `LUIS-results`, und drücken Sie die EINGABETASTE auf der Tastatur. Die Liste ist nur auf LUIS-Abfrageergebnisse beschränkt, die mit diesem Tutorial hinzugefügt wurden.
+2. Nachdem die Ressource geöffnet wurde, klicken Sie auf das Symbol **Suchen** (Lupensymbol) im Bereich ganz rechts. Ein neuer Bereich wird rechts angezeigt. Je nach Umfang der gefundenen Telemetriedaten kann es einen Moment dauern, bis der Bereich angezeigt wird. Suchen Sie nach `LUIS-results`, und drücken Sie die EINGABETASTE auf der Tastatur. Die Liste ist nur auf LUIS-Abfrageergebnisse beschränkt, die mit diesem Tutorial hinzugefügt wurden.
 
     ![Filtern nach Abhängigkeiten](./media/luis-tutorial-appinsights/app-insights-filter.png)
 
@@ -138,7 +138,7 @@ In Application Insights können Sie Daten mit der Sprache [Kusto](https://docs.m
 
     ![Fenster „Analyseabfrage“](./media/luis-tutorial-appinsights/analytics-query-window.png)
 
-3. Um die wichtigsten Absichten, Bewertungen und Äußerungen abzurufen, fügen Sie Folgendes direkt über der letzten Zeile im Abfragefenster ein:
+3. Um die besten Absichten, Bewertungen und Äußerungen abzurufen, fügen Sie Folgendes direkt über der letzten Zeile im Abfragefenster ein:
 
     ```SQL
     | extend topIntent = tostring(customDimensions.LUIS_intent_intent)
@@ -146,18 +146,18 @@ In Application Insights können Sie Daten mit der Sprache [Kusto](https://docs.m
     | extend utterance = tostring(customDimensions.LUIS_text)
     ```
 
-4. Führen Sie die Abfrage aus. Scrollen Sie in der Datentabelle ganz nach rechts. Die neuen Spalten „topIntent“, „score“ und „utterance“ sind verfügbar. Klicken Sie auf die Spalte „topIntent“, um die Tabelle nach dieser Spalte zu sortieren.
+4. Führen Sie die Abfrage aus. Scrollen Sie in der Datentabelle nach ganz rechts. Die neuen Spalten „topIntent“, „score“ und „utterance“ sind verfügbar. Klicken Sie auf die Spalte „topIntent“, um die Tabelle nach dieser Spalte zu sortieren.
 
     ![Spalte „topIntent“ der Analyse](./media/luis-tutorial-appinsights/app-insights-top-intent.png)
 
 
-Erfahren Sie mehr über die [Abfragesprache Kusto](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-queries), oder [exportieren Sie die Daten nach Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
+Erfahren Sie mehr über die [Abfragesprache Kusto](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-queries), oder [exportieren Sie die Daten in Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen, die Sie den Application Insights-Daten hinzufügen können, sind z.B. die App-ID, die Versions-ID, das Datum der letzten Modelländerung, das Datum des letzten Trainings und das Datum der letzten Veröffentlichung. Diese Werte können über die Endpunkt-URL (App-ID und Versions-ID) abgerufen werden. Alternativ dazu können sie mit einem Aufruf der [Erstellungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3d) abgerufen, in den Web-App-Bot-Einstellungen festgelegt und von dort per Pull abgerufen werden.  
+Weitere Informationen, die Sie möglicherweise den Application Insights-Daten hinzufügen sollten, sind z.B. App-ID, Versions-ID, Datum der letzten Modelländerung, Datum des letzten Trainings, Datum der letzten Veröffentlichung. Diese Werte können über die Endpunkt-URL (App-ID und Versions-ID) oder über einen [Erstellungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3d)-Aufruf abgerufen und dann in den Web-App-Boteinstellungen festgelegt und von dort abgerufen werden.  
 
-Wenn Sie dasselbe Endpunktabonnement für mehrere LUIS-Apps verwenden, sollten Sie auch die Abonnement-ID und eine Eigenschaft einschließen, die besagt, dass es sich um einen gemeinsam verwendeten Schlüssel handelt. 
+Wenn Sie dasselbe Endpunktabonnement für mehrere LUIS-Apps verwenden, sollten Sie auch die Abonnement-ID und eine Eigenschaft, die besagt, dass es sich um einen gemeinsam verwendeten Schlüssel handelt, einschließen. 
 
 > [!div class="nextstepaction"]
 > [Weitere Informationen zu Beispieläußerungen](luis-how-to-add-example-utterances.md)
