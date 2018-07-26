@@ -1,31 +1,33 @@
 ---
-title: Upgrade auf das Azure Resource Manager-Bereitstellungsmodell für Azure VM-Sicherungsstapel
+title: Upgrade auf Azure VM-Sicherungsstapel V2
 description: Upgradeprozess und FAQs für VM-Sicherungsstapel, Resource Manager-Bereitstellungsmodell
-services: backup, virtual-machines
+services: backup
 author: trinadhk
 manager: vijayts
 tags: azure-resource-manager, virtual-machine-backup
-ms.service: backup, virtual-machines
+ms.service: backup
 ms.topic: conceptual
-ms.date: 03/08/2018
+ms.date: 7/18/2018
 ms.author: trinadhk
-ms.openlocfilehash: e822e0c354fd671ee2802506e0e268d4078b395e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c9dff77f6b9fffc02ec94caa3454500772651195
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606901"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136900"
 ---
-# <a name="upgrade-to-the-azure-resource-manager-deployment-model-for-azure-vm-backup-stack"></a>Upgrade auf das Azure Resource Manager-Bereitstellungsmodell für Azure VM-Sicherungsstapel
+# <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Upgrade auf Azure VM-Sicherungsstapel V2
+
 Das Resource Manager-Bereitstellungsmodell für das Upgrade auf den VM-Sicherungsstapel bietet folgende Featureverbesserungen:
+
 * Die als Teil eines Sicherungsauftrags erstellte Momentaufnahme kann angezeigt werden, um für die Wiederherstellung verfügbar zu sein, ohne das Ende der Datenübertragung abzuwarten. Die Wartezeit, bis Momentaufnahmen vor dem Auslösen einer Wiederherstellung in den Tresor kopiert werden, wird reduziert. Darüber hinaus hebt diese Funktion die zusätzlichen Speicheranforderungen für das Sichern von Premium-VMs auf – die erste Sicherung ausgenommen.  
 
-* Die Sicherungs- und Wiederherstellungszeiten werden reduziert, weil Momentaufnahmen sieben Tage lang lokal beibehalten werden.
+* Die Sicherungs- und Wiederherstellungszeiten werden reduziert, indem Momentaufnahmen sieben Tage lang lokal gespeichert werden.
 
 * Unterstützung für Datenträgergrößen bis zu 4 TB.
 
-* Die Möglichkeit zur Verwendung der ursprünglichen Speicherkonten einer nicht verwalteten VM bei der Wiederherstellung. Diese Möglichkeit ist auch dann vorhanden, wenn die VM Datenträger enthält, die über Speicherkonten verteilt werden. Sie beschleunigt die Wiederherstellung bei einer Vielzahl von VM-Konfigurationen.
-    > [!NOTE] 
+* Die Möglichkeit zur Verwendung der ursprünglichen Speicherkonten einer nicht verwalteten VM bei der Wiederherstellung. Diese Funktion ist auch dann vorhanden, wenn die VM Datenträger enthält, die an mehrere Speicherkonten verteilt werden. Sie beschleunigt Wiederherstellungsvorgänge für verschiedene VM-Konfigurationen.
+    > [!NOTE]
     > Diese Funktion entspricht nicht dem Überschreiben der ursprünglichen VM. 
     >
 
@@ -41,15 +43,16 @@ Ein Wiederherstellungspunkt gilt erst dann als erstellt, wenn die Phasen 1 und 2
 Momentaufnahmen werden standardmäßig sieben Tage lang aufbewahrt. Mit diesem Feature kann die Wiederherstellung über diese Momentaufnahmen schneller erfolgen. Es verringert die Zeit, die für das Kopieren der Daten aus dem Tresor in das Speicherkonto des Kunden benötigt wird. 
 
 ## <a name="considerations-before-upgrade"></a>Überlegungen vor dem Upgrade
-* Das Upgrade des VM-Sicherungsstapels ist unidirektional. Folglich wechseln alle Sicherungen in diesen Fluss. Da eine Aktivierung auf Abonnementebene vorliegt, wechseln sämtliche VMs in diesen Fluss. Alle neuen Featureergänzungen basieren auf demselben Stapel. In zukünftigen Releases wird es möglich sein, dies auf Richtlinienebene zu steuern.
 
-* Momentaufnahmen werden zur Verbesserung der Erstellung eines Wiederherstellungspunkts und zur Beschleunigung der Wiederherstellung lokal gespeichert. Daher werden Ihnen Speicherkosten angezeigt, die den Momentaufnahmen in einem Zeitraum von sieben Tagen entsprechen.
+* Das Upgrade des VM-Sicherungsstapels ist unidirektional, d.h., alle Sicherungen wechseln in diesen Flow. Da die Änderung auf Abonnementebene vorgenommen wird, wechseln sämtliche VMs in diesen Flow. Alle neuen Featureergänzungen basieren auf demselben Stapel. Derzeit können Sie den Stapel nicht auf Richtlinienebene kontrollieren.
 
-* Inkrementelle Momentaufnahmen werden als Seitenblobs gespeichert. Für alle Kunden, die nicht verwaltete Datenträger verwenden, werden die 7-Tage-Momentaufnahmen berechnet, die im lokalen Speicherkonto des Kunden gespeichert sind. Gemäß dem aktuellen Preismodell entstehen Kunden keine Kosten für verwaltete Datenträger.
+* Momentaufnahmen werden zur Verbesserung der Erstellung eines Wiederherstellungspunkts und zur Beschleunigung von Wiederherstellungsvorgängen lokal gespeichert. Aus diesem Grund werden Ihnen Speicherkosten angezeigt, die den Momentaufnahmen eines Zeitraums von sieben Tagen entsprechen.
 
-* Wenn Sie eine Wiederherstellung von einem Momentaufnahmen-Wiederherstellungspunkt aus für eine Premium-VM durchführen, sehen Sie, dass ein temporärer Speicherort verwendet wird, während die VM im Rahmen der Wiederherstellung erstellt wird.
+* Inkrementelle Momentaufnahmen werden als Seitenblobs gespeichert. Für alle Kunden, die nicht verwaltete Datenträger verwenden, werden die 7-Tage-Momentaufnahmen berechnet, die im lokalen Speicherkonto des Kunden gespeichert sind. Gemäß des aktuellen Preismodells entstehen Kunden keine Kosten für verwaltete Datenträger.
 
-* Bei Premium-Speicherkonten belegen die Momentaufnahmen, die für eine sofortige Wiederherstellung erfasst werden, 10 TB des zugeordneten Speicherplatzes.
+* Wenn Sie eine Wiederherstellung von einem Wiederherstellungspunkt für die Momentaufnahme für eine Premium-V durchführen, wird ein temporärer Speicherort verwendet, während die VM im Rahmen der Wiederherstellung erstellt wird.
+
+* Bei Premium-Speicherkonten werden die für die Momentaufnahmen, die für die Punkte erstellt werden, die zur sofortigen Wiederherstellung dienen, zu den 10 TB des zugeordneten Speicherplatzes gezählt.
 
 ## <a name="upgrade"></a>Upgrade
 ### <a name="the-azure-portal"></a>Das Azure-Portal
@@ -89,3 +92,39 @@ Get-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNa
 ```
 
 Wenn „Registriert“ anzeigt wird, wird Ihr Abonnement auf VM-Sicherungsstapel, Resource Manager-Bereitstellungsmodell, aktualisiert.
+
+## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+
+Die folgenden Fragen und Antworten wurden Foren entnommen oder von Kunden eingereicht.
+
+### <a name="will-upgrading-to-v2-impact-current-backups"></a>Hat das Upgrade auf V2 Einfluss auf aktuelle Sicherungen?
+
+Wenn Sie ein Upgrade auf V2 durchführen, hat dies keinen Einfluss auf aktuelle Sicherungen, und Sie müssen Ihre Umgebung nicht neu konfigurieren. Wenn Sie das Upgrade durchführen, funktioniert Ihre Sicherungsumgebung wie gewohnt weiter.
+
+### <a name="what-does-it-cost-to-upgrade-to-azure-backup-stack-v2"></a>Was kostet das Upgrade auf V2 des Azure Backup-Stapels?
+
+Das Upgrade auf V2 des Azure Backup-Stapels ist kostenlos. Momentaufnahmen werden zur Beschleunigung des Erstellungsvorgangs von Wiederherstellungspunkten und Wiederherstellungsvorgängen lokal gespeichert. Aus diesem Grund werden Ihnen Speicherkosten angezeigt, die den Momentaufnahmen eines Zeitraums von sieben Tagen entsprechen.
+
+### <a name="does-upgrading-to-stack-v2-increase-the-premium-storage-account-snapshot-limit-by-10-tb"></a>Wird die Momentaufnahmengrenze von 10 TB für Premium-Speicherkonten durch das Upgrade auf V2 erhöht?
+
+Nein.
+
+### <a name="in-premium-storage-accounts-do-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>Halten Momentaufnahmen, die für die Punkte erstellt werden, die zur sofortigen Wiederherstellung dienen, in Storage Premium-Konten die 10 TB-Grenze für Momentaufnahmen ein?
+
+Ja, Momentaufnahmen, die für die Punkte erstellt werden, die zur sofortigen Wiederherstellung dienen, halten in Premium-Speicherkonten die 10 TB-Grenze für Momentaufnahmen ein.
+
+### <a name="how-does-the-snapshot-work-during-the-seven-day-period"></a>Wie funktioniert die Momentaufnahme in dem festgelegten Zeitraum von sieben Tagen? 
+
+Es wird jeden Tag eine neue Momentaufnahme erstellt. Es gibt sieben unterschiedliche Momentaufnahmen. Der Dienst erstellt am ersten Tag **keine** Kopie und nimmt in den nächsten sechs Tagen keine Änderungen vor.
+
+### <a name="what-happens-if-the-default-resource-group-is-deleted-accidentally"></a>Was passiert, wenn die Standardressourcengruppe aus Versehen gelöscht wird?
+
+Wenn die Ressourcengruppe gelöscht wird, gehen sämtliche Punkte, die zur sofortigen Wiederherstellung dienen, für alle geschützten VMs in dieser Region verloren. Bei der nächsten Sicherung wird die Ressourcengruppe neu erstellt, und die Sicherungen werden weiter wie erwartet ausgeführt. Diese Funktion ist nicht nur auf Punkte begrenzt, die zur sofortigen Wiederherstellung dienen.
+
+### <a name="can-i-delete-the-default-resource-group-created-for-instant-recovery-points"></a>Kann ich die Standardressourcengruppe für Punkte löschen, die zur sofortigen Wiederherstellung dienen?
+
+Der Azure Backup-Dienst erstellt die verwaltete Ressourcengruppe. Sie können derzeit keine Änderungen an der Ressourcengruppe vornehmen. Außerdem sollten Sie die Ressourcengruppe nicht sperren. Die Anleitung gilt nicht nur für Version 2 des Stapels.
+ 
+### <a name="is-a-v2-snapshot-an-incremental-snapshot-or-full-snapshot"></a>Handelt es sich bei einer Momentaufnahme mit V2 um eine inkrementelle Momentaufnahme oder eine vollständige Momentaufnahme?
+
+Inkrementelle Momentaufnahmen werden für nicht verwaltete Datenträger verwendet. Bei verwalteten Datenträgern werden vollständige Momentaufnahmen verwendet.

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/15/2017
+ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: ba2466f58b3af0ef208474adb3e4c7ff184ceccc
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 7833147e455d5f43f05d87261287061db4291e45
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018645"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036845"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Verwenden der Resource Manager-Authentifizierungs-API für den Zugriff auf Abonnements
 ## <a name="introduction"></a>Einführung
@@ -73,15 +73,21 @@ Da Ihre App auf andere Abonnements zugreift, müssen Sie sie als mehrinstanzenf�
 
 Im folgenden Beispiel wird gezeigt, wie Sie die App mithilfe von Azure PowerShell registrieren. Damit dieser Befehl funktioniert, benötigen Sie die aktuelle Version von Azure PowerShell (August 2016).
 
-    $app = New-AzureRmADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true
+```azurepowershell-interactive
+$app = New-AzureRmADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true
+```
 
 Um sich als AD-Anwendung anzumelden, benötigen Sie die Anwendungs-ID und das Kennwort. Damit die Anwendungs-ID angezeigt wird, die vom vorherigen Befehl zurückgegeben wird, verwenden Sie Folgendes:
 
-    $app.ApplicationId
+```azurepowershell-interactive
+$app.ApplicationId
+```
 
 Im folgenden Beispiel wird gezeigt, wie Sie die App mithilfe der Azure-CLI registrieren.
 
-    azure ad app create --name {app name} --home-page https://{your domain}/{app name} --identifier-uris https://{your domain}/{app name} --password {your password} --available true
+```azurecli-interactive
+az ad app create --display-name {app name} --homepage https://{your domain}/{app name} --identifier-uris https://{your domain}/{app name} --password {your password} --available-to-other-tenants true
+```
 
 Die Ergebnisse enthalten die AppID, die Sie beim Authentifizieren als Anwendung benötigen.
 

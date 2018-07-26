@@ -6,19 +6,22 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e16130dc41418b22f2dea4ceae5e0a90ed963161
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: e56b6f9360bdbfe2c5dcb2e81862cb80310bf54c
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939803"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928731"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure Active Directory B2C: Häufig gestellte Fragen 
 Auf dieser Seite werden häufig gestellte Fragen zu Azure Active Directory (Azure AD) B2C beantwortet. Die Seite wird bei Bedarf aktualisiert.
+
+### <a name="why-cant-i-access-the-azure-ad-b2c-extension-in-the-azure-portal"></a>Warum kann ich nicht auf die Azure AD B2C-Erweiterung im Azure-Portal zugreifen?
+Es gibt zwei häufige Gründe, warum Sie nicht auf die Azure AD-Erweiterung zugreifen können.  In Azure AD B2C muss Ihnen im Verzeichnis die Benutzerrolle „Globaler Administrator“ zugewiesen sein.  Wenden Sie sich an den Administrator, wenn Sie denken, dass Sie Zugriff haben sollten.  Wenn Sie über globale Administratorrechte verfügen, stellen Sie sicher, dass Sie sich in einem Azure AD B2C-Verzeichnis und nicht in einem Azure Active Directory-Verzeichnis befinden.  Anweisungen zum Erstellen eines Azure AD B2C-Verzeichnisses finden Sie [hier](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant).
 
 ### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>Kann ich Azure AD B2C-Features in meinem vorhandenen mitarbeiterbasierten Azure AD Directory-Mandanten nutzen?
 Azure AD und Azure AD B2C sind separate Produktangebote, die nicht zusammen unter demselben Mandanten verwendet werden können.  Ein Azure AD-Mandant repräsentiert eine Organisation.  Ein Azure AD B2C-Mandant repräsentiert eine Sammlung mit Identitäten, die mit Anwendungen der vertrauenden Seite verwendet werden sollen.  Mit benutzerdefinierten Richtlinien (öffentliche Vorschauversion) kann Azure AD B2C einen Verbund mit Azure AD herstellen, um die Authentifizierung von Mitarbeitern einer Organisation zu ermöglichen.
@@ -97,9 +100,9 @@ Lesen Sie diesen Artikel über [externe Identitäten](../active-directory/active
 ### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide-are-they-the-same-as-in-azure-ad-premium"></a>Welche Funktionen für Berichterstellung und Überwachung bietet Azure AD B2C? Sind die Funktionen mit denen in Azure AD Premium identisch?
 Nein. Azure AD B2C unterstützt nicht den gleichen Berichtssatz wie Azure AD Premium. Es gibt aber viele Gemeinsamkeiten:
 
-* **Anmeldeberichte** sind nur im Azure-Portal (Azure Active Directory > Aktivität > Anmeldungen) und nicht über die Graph-API verfügbar. Sie enthalten einen Eintrag für jede Anmeldung mit reduzierten Details.
-* **Prüfberichte** sind nur im Azure-Portal (Azure Active Directory > Aktivität > Überwachungsprotokolle) und nicht über die Graph-API verfügbar. Sie enthalten die Administratoraktivität sowie die Anwendungsaktivität. 
-* **Verwendungsberichte** stehen nur über die [Verwendungsberichts-API](active-directory-b2c-reference-usage-reporting-api.md) und nicht über das Azure-Portal zur Verfügung. Sie enthalten die Anzahl von Benutzern, die Anzahl von Anmeldungen und den MFA-Umfang. 
+* **Anmeldeberichte** enthalten einen Eintrag für jede Anmeldung mit reduzierten Details.
+* **Überwachungsberichte** enthalten die Administratoraktivität sowie die Anwendungsaktivität. 
+* **Verwendungsberichte** enthalten die Anzahl von Benutzern, die Anzahl von Anmeldungen und den MFA-Umfang. 
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Kann ich die Benutzeroberfläche von Seiten lokalisieren, die von Azure AD B2C bereitgestellt werden? Welche Sprachen werden unterstützt?
 Ja.  Lesen Sie die Informationen zur [Sprachanpassung](active-directory-b2c-reference-language-customization.md). Diese Funktion befindet sich in der öffentlichen Vorschauphase.  Wir bieten Übersetzungen für 36 Sprachen an, und Sie können alle Zeichenfolgen gemäß Ihren Anforderungen außer Kraft setzen und anpassen.

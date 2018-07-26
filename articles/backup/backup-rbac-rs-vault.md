@@ -6,14 +6,14 @@ author: trinadhk
 manager: shreeshd
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/22/2017
+ms.date: 7/11/2018
 ms.author: trinadhk
-ms.openlocfilehash: 37240b211e055682c4ce93c9057c4b266bba49e3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 855b75652fca421df12766f7711152d1e3ca2aeb
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607445"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39012058"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Backup-Wiederherstellungspunkten
 Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure. Mithilfe von RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen.
@@ -37,9 +37,9 @@ In der folgenden Tabelle sind die Aktionen der Sicherungsverwaltung und die ents
 | Verwaltungsvorgang | Minimal erforderliche RBAC-Rolle |
 | --- | --- |
 | Erstellen eines Recovery Services-Tresors | Mitwirkender der Ressourcengruppe des Tresors |
-| Aktivieren der Sicherung von virtuellen Azure-Computern | Sicherungsoperator für den Tresor, Mitwirkender für virtuelle Computer auf virtuellen Computern |
+| Aktivieren der Sicherung von virtuellen Azure-Computern | Sicherungsoperator, der für die Ressourcengruppe definiert ist, die den Tresor enthält, Mitwirkender für virtuelle Computer auf VMs |
 | Bedarfsgesteuerte Sicherung eines virtuellen Computers | Sicherungsoperator |
-| Wiederherstellen eines virtuellen Computers | Sicherungsoperator, Mitwirkender der Ressourcengruppe, in der VM und VNETs bereitgestellt werden sollen |
+| Wiederherstellen eines virtuellen Computers | Sicherungsoperator, Mitwirkender der Ressourcengruppe, in der die VM bereitgestellt werden soll. Bitte machen Sie sich mit VNET und Joins im Subnetz vertraut. |
 | Wiederherstellen von Datenträgern, einzelnen Dateien aus VM-Sicherungen | Sicherungsoperator, Mitwirkender für virtuelle Computer auf virtuellen Computern |
 | Erstellen einer Sicherungsrichtlinie für Azure-VM-Sicherungen | Mitwirkender für Sicherungen |
 | Ändern der Sicherungsrichtlinie der Azure-VM-Sicherungen | Mitwirkender für Sicherungen |

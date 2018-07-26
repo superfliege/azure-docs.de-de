@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/25/2018
+ms.date: 07/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 899e5dc13dfaf7d7545955e7b4b73939c3275d3f
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: cd2578f2fd8217d513a693ef348a5c26a4b18623
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930306"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126506"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Ausführen von Runbooks auf einem Hybrid Runbook Worker
 
@@ -160,9 +160,69 @@ Speichern Sie das *Export-RunAsCertificateToHybridWorker*-Runbook mit der Erweit
 
 Aufträge werden auf Hybrid Runbook Workers etwas anders behandelt als bei der Ausführung in Azure Sandboxes. Ein Hauptunterschied besteht darin, dass es keine Beschränkung der Auftragsdauer auf Hybrid Runbook Workers gibt. In Azure-Sandboxes ausgeführte Runbooks sind aufgrund von [gleichmäßiger Auslastung](automation-runbook-execution.md#fair-share) auf 3 Stunden beschränkt. Wenn Sie über ein Runbook mit langer Ausführungsdauer verfügen, stellen Sie sicher, dass es mögliche Neustarts überlebt (wenn z.B. der Computer, der den Hybridworker hostet, neu gestartet wird). Wenn der Hostcomputer des Hybridworkers neu gestartet wird, werden alle ausgeführten Runbookaufträge von vorne oder – im Fall von PowerShell-Workflow-Runbooks – beim letzten Prüfpunkt neu gestartet. Wenn ein Runbookauftrag mehr als drei Mal neu gestartet wird, wird er angehalten.
 
+## <a name="run-only-signed-runbooks"></a>Ausschließliches Ausführen signierter Runbooks
+
+Hybrid Runbook Workers können dafür konfiguriert werden, nur signierte Runbooks auszuführen. In folgendem Abschnitt werden das Setup von Hybrid Runbook Workern für die Ausführung von signierten Runbooks sowie das Signieren von Runbooks beschrieben.
+
+> [!NOTE]
+> Sobald Sie einen Hybrid Runbook Worker dafür konfiguriert haben, nur signierte Runbooks auszuführen, schlägt die Ausführung von Runbooks, die **nicht** signiert sind, auf dem Worker fehl.
+
+### <a name="create-signing-certificate"></a>Auswählen des Signaturzertifikats
+
+In folgendem Beispiel wird ein selbstsigniertes Zertifikat erstellt, das für das Signieren von Runbooks verwendet werden kann. Im Beispiel wird das Zertifikat erstellt und exportiert. Das Zertifikat wird später in die Hybrid Runbook Workers importiert. Der Fingerabdruck wird ebenfalls zurückgegeben und später verwendet, um auf das Zertifikat zu verweisen.
+
+```powershell
+# Create a self signed runbook that can be used for code signing
+$SigningCert = New-SelfSignedCertificate -CertStoreLocation cert:\LocalMachine\my `
+                                        -Subject "CN=contoso.com" `
+                                        -KeyAlgorithm RSA `
+                                        -KeyLength 2048 `
+                                        -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" `
+                                        -KeyExportPolicy Exportable `
+                                        -KeyUsage DigitalSignature `
+                                        -Type CodeSigningCert
+
+
+# Export the certificate so that it can be imported to the hybrid workers
+Export-Certificate -Cert $SigningCert -FilePath .\hybridworkersigningcertificate.cer
+
+# Import the certificate into the trusted root store so the certificate chain can be validated
+Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLocation Cert:\LocalMachine\Root
+
+# Retrieve the thumbprint for later use
+$SigningCert.Thumbprint
+```
+
+### <a name="configure-the-hybrid-runbook-workers"></a>Konfigurieren der Hybrid Runbook Workers
+
+Kopieren Sie das erstellte Zertifikat in jeden Hybrid Runbook Worker in einer Gruppe. Führen Sie folgendes Skript aus, um das Zertifikat zu importieren und den Hybrid Worker dafür zu konfigurieren, die Signaturüberprüfung auf Runbooks anzuwenden.
+
+```powershell
+# Install the certificate into a location that will be used for validation.
+New-Item -Path Cert:\LocalMachine\AutomationHybridStore
+Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLocation Cert:\LocalMachine\AutomationHybridStore
+
+# Import the certificate into the trusted root store so the certificate chain can be validated
+Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLocation Cert:\LocalMachine\Root
+
+# Configure the hybrid worker to use signature validation on runbooks.
+Set-HybridRunbookWorkerSignatureValidation -Enable $true -TrustedCertStoreLocation "Cert:\LocalMachine\AutomationHybridStore"
+```
+
+### <a name="sign-your-runbooks-using-the-certificate"></a>Signieren von Runbooks mithilfe des Zertifikats
+
+Wenn Sie die Hybrid Runbook Workers dafür konfiguriert haben, nur signierte Runbooks zu verwenden, müssen Sie Runbooks signieren, die im Hybrid Runbook Worker verwendet werden sollen. Verwenden Sie folgenden PowerShell-Beispielcode, um Ihre Runbooks zu signieren.
+
+```powershell
+$SigningCert = ( Get-ChildItem -Path cert:\LocalMachine\My\<CertificateThumbprint>)
+Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
+```
+
+Sobald das Runbook signiert wurde, muss es in Ihr Automation-Konto importiert und innerhalb des Signaturblocks veröffentlicht werden. Weitere Informationen zum Importieren von Runbooks finden Sie unter [Importieren eines Runbooks aus einer Datei in Azure Automation](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation).
+
 ## <a name="troubleshoot"></a>Problembehandlung
 
-Wenn Ihre Runbooks nicht erfolgreich ausgeführt werden und in der Auftragsübersicht der Status **Angehalten** angezeigt wird, lesen Sie den Problembehandlungsleitfaden zu [Runbookausführungsfehlern](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
+Wenn Ihre Runbooks nicht erfolgreich ausgeführt werden, lesen Sie den Problembehandlungsleitfaden zu [Fehlern bei der Ausführung von Runbooks](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

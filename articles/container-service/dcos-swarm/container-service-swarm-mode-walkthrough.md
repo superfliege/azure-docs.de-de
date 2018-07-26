@@ -6,15 +6,15 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: 46e93953ba8db141b99b14aa78674e85b343adbc
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 4a592a20d009b269f1e8f7079311caa4c33cf613
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903393"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113105"
 ---
 # <a name="deploy-docker-ce-cluster"></a>Bereitstellen eines Docker CE-Clusters
 
@@ -30,10 +30,10 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist eine logische Gruppe, in der Azure-Ressourcen bereitgestellt und verwaltet werden.
 
-Im folgenden Beispiel wird eine Ressourcengruppe namens *myResourceGroup* am Standort *ukwest* erstellt.
+Im folgenden Beispiel wird am Standort *westus2* eine Ressourcengruppe mit dem Namen *myResourceGroup* erstellt.
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location ukwest
+az group create --name myResourceGroup --location westus2
 ```
 
 Ausgabe:
@@ -41,7 +41,7 @@ Ausgabe:
 ```json
 {
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup",
-  "location": "ukwest",
+  "location": "westus2",
   "managedBy": null,
   "name": "myResourceGroup",
   "properties": {
@@ -53,12 +53,12 @@ Ausgabe:
 
 ## <a name="create-docker-swarm-cluster"></a>Erstellen eines Docker Swarm-Clusters
 
-Erstellen Sie mit dem Befehl [az acs create](/cli/azure/acs#az_acs_create) einen Docker CE-Cluster in Azure Container Service. 
+Erstellen Sie mit dem Befehl [az acs create](/cli/azure/acs#az_acs_create) einen Docker CE-Cluster in Azure Container Service. Weitere Informationen zur Verfügbarkeit von Docker CE in den verschiedenen Regionen finden Sie unter [ACS regions for Docker CE (ACS-Regionen für Docker CE)](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md).
 
 Im folgenden Beispiel wird ein Cluster namens *mySwarmCluster* mit einem Linux-Masterknoten und drei Linux-Agent-Knoten erstellt.
 
 ```azurecli-interactive
-az acs create --name mySwarmCluster --orchestrator-type swarm --resource-group myResourceGroup --generate-ssh-keys
+az acs create --name mySwarmCluster --orchestrator-type dockerce --resource-group myResourceGroup --generate-ssh-keys
 ```
 
 Manchmal hat ein Azure-Abonnement eingeschränkten Zugriff auf Azure-Ressourcen. Dies ist beispielsweise bei einem eingeschränkten Testabonnement der Fall. Tritt bei der Bereitstellung ein Fehler aufgrund von begrenzt verfügbaren Kernen auf, verringern Sie die Anzahl der Standard-Agents, indem Sie `--agent-count 1` zum Befehl [az acs create](/cli/azure/acs#az_acs_create) hinzufügen. 

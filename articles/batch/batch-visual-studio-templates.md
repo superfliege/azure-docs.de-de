@@ -15,19 +15,19 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 98a5af1c0b321b7f9acf2bfd936a16d22088babf
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 5a44c249a957050afb500decd094183c71d6ca5e
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128859"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114095"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Verwenden von Visual Studio-Vorlagen für den schnellen Einstieg in Batch-Lösungen
 
 Die Visual Studio-Vorlagen vom Typ **Auftrags-Manager** und **Aufgabenprozessor** für Batch enthalten Code zum Implementieren und Ausführen Ihrer rechenintensiven Workloads in Batch mit dem geringstmöglichen Aufwand. In diesem Dokument werden diese Vorlagen beschrieben, und es enthält eine Anleitung zur Verwendung.
 
 > [!IMPORTANT]
-> Im Artikel geht es nur um Informationen zu diesen beiden Vorlagen, und es wird vorausgesetzt, dass Sie mit dem Batch-Dienst und seinen wichtigsten Begriffen vertraut sind: Pools, Computeknoten, Aufträge und Aufgaben, Auftrags-Manager-Aufgaben, Umgebungsvariablen und andere relevante Informationen. Weitere Informationen finden Sie unter [Grundlagen von Azure Batch](batch-technical-overview.md), [Übersicht über Batch-Features für Entwickler](batch-api-basics.md) und [Erste Schritte mit der Azure Batch-Bibliothek für .NET](batch-dotnet-get-started.md).
+> Im Artikel geht es nur um Informationen zu diesen beiden Vorlagen, und es wird vorausgesetzt, dass Sie mit dem Batch-Dienst und seinen wichtigsten Begriffen vertraut sind: Pools, Computeknoten, Aufträge und Aufgaben, Auftrags-Manager-Aufgaben, Umgebungsvariablen und andere relevante Informationen. Weitere Informationen finden Sie unter [Grundlagen von Azure Batch](batch-technical-overview.md) und [Übersicht über Batch-Features für Entwickler](batch-api-basics.md).
 > 
 > 
 

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: 33566bd31f320ccc21f32a256d96d89ee25198bb
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 8d8835bd97b489a730a040e86748c668963c7196
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37088421"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187722"
 ---
 # <a name="create-a-new-simulated-device"></a>Erstellen eines neuen simulierten Geräts
 
@@ -87,9 +87,9 @@ Im folgenden Video wird eine exemplarische Vorgehensweise zum Verbinden von simu
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Eine bereitgestellte Instanz der Lösung für die Remoteüberwachung in Ihrem Azure-Abonnement. Falls Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, absolvieren Sie zuerst das Tutorial [Bereitstellen des Solution Accelerators für die Remoteüberwachung](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md).
+* Eine bereitgestellte Instanz der Lösung für die Remoteüberwachung in Ihrem Azure-Abonnement. Falls Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, absolvieren Sie zuerst das Tutorial [Bereitstellen des Solution Accelerators für die Remoteüberwachung](../iot-accelerators/quickstart-remote-monitoring-deploy.md).
 
-* Visual Studio 2017 Falls Sie Visual Studio 2017 nicht installiert haben, können Sie die kostenlose [Visual Studio Community](https://www.visualstudio.com/free-developer-offers/) Edition herunterladen.
+* Visual Studio 2017. Falls Sie Visual Studio 2017 nicht installiert haben, können Sie die kostenlose [Visual Studio Community](https://www.visualstudio.com/free-developer-offers/) Edition herunterladen.
 
 * Visual Studio-Erweiterung [Cloud-Explorer für Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVS15Preview).
 

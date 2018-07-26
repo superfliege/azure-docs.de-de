@@ -10,26 +10,26 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6baeba9cc7e631c6dbdf2284db484dc5f95adcce
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9fb2d2ccabf79a95a108d4ecf39a4957fc9ffff4
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444200"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113673"
 ---
 # <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Azure Active Directory B2C: OAuth 2.0-Autorisierungscodefluss
 Durch Gewähren des OAuth 2.0-Autorisierungcodes in Apps, die auf einem Gerät installiert sind, können Sie auf geschützte Ressourcen wie Web-APIs zugreifen. Mithilfe der Azure Active Directory B2C(Azure AD B2C)-Implementierung von OAuth 2.0 können Sie Ihre mobilen und Desktop-Apps Aufgaben zur Registrierung, Anmeldung und Identitätsverwaltung hinzufügen. Dieser Artikel ist sprachunabhängig. In dem Artikel wird beschrieben, wie HTTP-Nachrichten ohne Verwendung von Open Source-Bibliotheken gesendet und empfangen werden.
 
 <!-- TODO: Need link to libraries -->
 
-Der OAuth 2.0-Autorisierungscodefluss wird in [Abschnitt 4.1 der OAuth 2.0-Spezifikation](http://tools.ietf.org/html/rfc6749)beschrieben. Sie können ihn zum Ausführen der Authentifizierung und Autorisierung bei den meisten App-Typen nutzen, einschließlich [Web-Apps](active-directory-b2c-apps.md#web-apps) und [nativ installierten Apps](active-directory-b2c-apps.md#mobile-and-native-apps). Über den OAuth 2.0-Autorisierungscodeflow können Sie sicher *Zugriffstokens* für Ihre Apps abrufen, die zum Zugriff auf mit einem [Autorisierungsserver](active-directory-b2c-reference-protocols.md#the-basics) geschützten Ressourcen verwendet werden können.
+Der OAuth 2.0-Autorisierungscodefluss wird in [Abschnitt 4.1 der OAuth 2.0-Spezifikation](http://tools.ietf.org/html/rfc6749)beschrieben. Sie können ihn zum Ausführen der Authentifizierung und Autorisierung bei den meisten [Anwendungstypen](active-directory-b2c-apps.md) verwenden, einschließlich Webanwendungen und nativ installierten Anwendungen. Über den OAuth 2.0-Autorisierungscodeflow können Sie sicher Zugriffstokens für Ihre Anwendungen abrufen, die zum Zugriff auf mit einem [Autorisierungsserver](active-directory-b2c-reference-protocols.md) geschützten Ressourcen verwendet werden können.
 
-Dieser Artikel behandelt den OAuth 2.0-Autorisierungscodeflow von **öffentlichen Clients**. Ein öffentlicher Client ist jede Clientanwendung, der nicht bei der sicheren Verwaltung der Integrität von geheimen Kennwörtern vertraut werden kann. Dazu gehören mobile Apps, Desktop-Apps und im Wesentlichen jede Anwendung, die auf einem Gerät ausgeführt wird und Zugriffstokens abrufen muss. 
+Dieser Artikel behandelt den OAuth 2.0-Autorisierungscodeflow von **öffentlichen Clients**. Ein öffentlicher Client ist jede Clientanwendung, der nicht bei der sicheren Verwaltung der Integrität von geheimen Kennwörtern vertraut werden kann. Dazu gehören mobile Anwendungen, Desktopanwendungen und im Wesentlichen jede Anwendung, die auf einem Gerät ausgeführt wird und Zugriffstokens abrufen muss. 
 
 > [!NOTE]
 > Wenn Sie in einer Web-App mit Azure AD B2C eine Identitätsverwaltung hinzufügen möchten, verwenden Sie [OpenID Connect](active-directory-b2c-reference-oidc.md) anstelle von OAuth 2.0.
 
-Azure AD B2C erweitert den OAuth 2.0-Standardfluss, sodass mehr als nur eine einfache Authentifizierung und Autorisierung erfolgt. Dabei wird der [Richtlinienparameter](active-directory-b2c-reference-policies.md) eingeführt. Durch integrierte Richtlinien können Sie mit OAuth 2.0 Funktionen für die Benutzeroberfläche zu Ihrer App hinzufügen, z.B. Registrierungs-, Anmelde- und Profilverwaltungsfunktionen. In diesem Artikel zeigen wir, wie Sie mit OAuth 2.0 und Richtlinien diese Benutzeroberflächenfunktionen in Ihre nativen Anwendungen implementieren. Wir zeigen Ihnen außerdem, wie Zugriffstokens für den Zugriff auf Web-APIs abgerufen werden.
+Azure AD B2C erweitert den OAuth 2.0-Standardfluss, sodass mehr als nur eine einfache Authentifizierung und Autorisierung erfolgt. Dabei wird der [Richtlinienparameter](active-directory-b2c-reference-policies.md) eingeführt. Durch integrierte Richtlinien können Sie mit OAuth 2.0 Funktionen für die Benutzeroberfläche zu Ihrer Anwendung hinzufügen, z.B. Registrierungs-, Anmelde- und Profilverwaltungsfunktionen. In diesem Artikel zeigen wir, wie Sie mit OAuth 2.0 und Richtlinien diese Benutzeroberflächenfunktionen in Ihre nativen Anwendungen implementieren. Wir zeigen Ihnen außerdem, wie Zugriffstokens für den Zugriff auf Web-APIs abgerufen werden.
 
 In den HTTP-Beispielanforderungen in diesem Artikel wird das Azure AD B2C-Beispielverzeichnis **fabrikamb2c.onmicrosoft.com** verwendet. Zudem kommen unsere Beispielanwendung und -richtlinien zum Einsatz. Sie können selbst Anforderungen mit diesen Werten testen oder eigene Werte verwenden.
 Erfahren Sie, wie Sie [eigene Azure AD B2C-Verzeichnisse, -Anwendungen und -Richtlinien abrufen](#use-your-own-azure-ad-b2c-directory).
@@ -189,7 +189,7 @@ POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
 Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
-grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
+grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&client_secret=JqQX2PNo9bpM0uEihUPzyrh&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
 | Parameter | Erforderlich | BESCHREIBUNG |

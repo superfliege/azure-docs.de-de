@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 9f550af869ccfc44ba4d840f54503ad017cdaf95
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: ab3982c85cfb008bde08495f8cb8aa86d066d8c0
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901210"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114853"
 ---
 # <a name="configure-a-vmss-managed-service-identity-by-using-a-template"></a>Konfigurieren von MSI für eine VM-Skalierungsgruppe mithilfe einer Vorlage
 
@@ -55,7 +55,7 @@ In diesem Abschnitt aktivieren und deaktivieren Sie die systemzugewiesene Identi
 
 1. Laden Sie die Vorlage in einen Editor, und suchen Sie nach der gewünschten `Microsoft.Compute/virtualMachineScaleSets`-Ressource im Abschnitt `resources`. Dieser Screenshot weicht möglicherweise geringfügig von der Darstellung bei Ihnen ab. Dies hängt davon ab, welchen Editor Sie verwenden und ob Sie eine Vorlage für eine neue oder eine vorhandene Bereitstellung bearbeiten.
    
-   ![Screenshot der Vorlage – VM suchen](../media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-before-vmss.png) 
+   ![Screenshot der Vorlage – VM suchen](../managed-service-identity/media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-before-vmss.png) 
 
 2. Um die systemzugewiesene Identität zu aktivieren, fügen Sie die Eigenschaft `"identity"` auf derselben Ebene wie die Eigenschaft `"type": "Microsoft.Compute/virtualMachineScaleSets"` hinzu. Verwenden Sie die folgende Syntax:
 
@@ -91,7 +91,7 @@ In diesem Abschnitt aktivieren und deaktivieren Sie die systemzugewiesene Identi
 
 4. Wenn Sie fertig sind, sollte Ihre Vorlage wie folgt aussehen:
 
-   ![Screenshot der Vorlage nach dem Update](../media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-after-vmss.png) 
+   ![Screenshot der Vorlage nach dem Update](../managed-service-identity/media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-after-vmss.png) 
 
 ### <a name="disable-a-system-assigned-identity-from-an-azure-virtual-machine-scale-set"></a>Deaktivieren einer systemzugewiesenen Identität in einer Azure VM-Skalierungsgruppe
 
@@ -113,6 +113,9 @@ In diesem Abschnitt weisen Sie einer Azure VM-Skalierungsgruppe mit der Azure Re
 
 1. Fügen Sie unter dem `resources`-Element den folgenden Eintrag hinzu, um Ihrer VM-Skalierungsgruppe eine benutzerzugewiesene Identität zuzuweisen.  Achten Sie darauf, dass Sie `<USERASSIGNEDIDENTITY>` durch den Namen der benutzerzugewiesenen Identität ersetzen, die Sie erstellt haben.
 
+   > [!Important]
+   > Der `<USERASSIGNEDIDENTITYNAME>`-Wert, der in folgendem Beispiel dargestellt wird, muss in einer Variable gespeichert werden.  Außerdem muss die API-Version für die derzeit unterstützte Implementierung für das Zuweisen von Identitäten zu virtuellen Computern in einer Resource Manager-Vorlage durch Benutzer mit der Version im folgenden Beispiel übereinstimmen. 
+
     ```json
     {
         "name": "[variables('vmssName')]",
@@ -121,7 +124,7 @@ In diesem Abschnitt weisen Sie einer Azure VM-Skalierungsgruppe mit der Azure Re
         "identity": {
             "type": "userAssigned",
             "identityIds": [
-                "[resourceID('Micrososft.ManagedIdentity/userAssignedIdentities/<USERASSIGNEDIDENTITY>)']"
+                "[resourceID('Micrososft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITY>'))]"
             ]
         }
 

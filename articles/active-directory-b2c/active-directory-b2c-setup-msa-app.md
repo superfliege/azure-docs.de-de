@@ -1,59 +1,51 @@
 ---
-title: Konfiguration für Microsoft-Konten in Azure Active Directory B2C | Microsoft-Dokumentation
-description: Bereitstellen von Registrierung und Anmeldung für Kunden mit Microsoft-Konten in mit Azure Active Directory B2C gesicherten Anwendungen
+title: Einrichten der Registrierung und Anmeldung mit einem Microsoft-Konto mithilfe von Azure Active Directory B2C | Microsoft-Dokumentation
+description: Bereitstellen von Registrierung und Anmeldung für Kunden mit Microsoft-Konten in Ihren Anwendungen mithilfe von Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/06/2016
+ms.date: 07/05/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c788b14a99125a208390cd4f8ead338efed06933
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 16e4dbac4c8146b048d4d9b76544677a6111e2a5
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444166"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37900828"
 ---
-# <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-microsoft-accounts"></a>Azure Active Directory B2C: Bereitstellen von Registrierung und Anmeldung für Kunden mit Microsoft-Konten
+# <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Microsoft-Konto mithilfe von Azure Active Directory B2C
+
 ## <a name="create-a-microsoft-account-application"></a>Erstellen einer Microsoft-Kontoanwendung
-Um den Dienst „Microsoft-Konto“ als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwenden zu können, müssen Sie eine Microsoft-Kontoanwendung erstellen und die entsprechenden Parameter bereitstellen. Sie benötigen dazu ein Microsoft-Konto. Wenn Sie keins besitzen, können Sie unter [https://www.live.com/](https://www.live.com/) eines erstellen.
 
-1. Navigieren Sie zum [Microsoft-Portal für die Anwendungsregistrierung](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), und melden Sie sich mit den Anmeldeinformationen für Ihr Microsoft-Konto an.
-2. Klicken Sie auf **App hinzufügen**.
-   
-    ![Microsoft-Konto – Hinzufügen einer neuen App](./media/active-directory-b2c-setup-msa-app/msa-add-new-app.png)
-3. Geben Sie einen **Namen** für Ihre Anwendung ein, und klicken Sie auf **Anwendung erstellen**.
-   
-    ![Microsoft-Konto – App-Name](./media/active-directory-b2c-setup-msa-app/msa-app-name.png)
-4. Kopieren Sie den Wert unter **Anwendungs-ID**. Sie benötigen ihn, um Microsoft-Konto als Identitätsanbieter in Ihrem Mandanten zu konfigurieren.
-   
-    ![Microsoft-Konto – Anwendungs-ID](./media/active-directory-b2c-setup-msa-app/msa-app-id.png)
-5. Klicken Sie auf **Plattform hinzufügen**, und wählen Sie **Web**.
-   
-    ![Microsoft-Konto – Plattform hinzufügen](./media/active-directory-b2c-setup-msa-app/msa-add-platform.png)
-   
-    ![Microsoft-Konto – Web](./media/active-directory-b2c-setup-msa-app/msa-web.png)
-6. Geben Sie im Feld `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`Umleitungs-URIs **den Wert** ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z.B. „contosob2c.onmicrosoft.com“).
-   
-    ![Microsoft-Konto – Umleitungs-URL](./media/active-directory-b2c-setup-msa-app/msa-redirect-url.png)
-7. Klicken Sie im Abschnitt **Anwendungsgeheimnisse** auf **Neues Kennwort generieren**. Kopieren Sie das neue Kennwort, das auf dem Bildschirm angezeigt wird. Sie benötigen ihn, um Microsoft-Konto als Identitätsanbieter in Ihrem Mandanten zu konfigurieren. Dieses Kennwort ist eine wichtige Anmeldeinformation.
-   
-    ![Microsoft-Konto – Neues Kennwort generieren](./media/active-directory-b2c-setup-msa-app/msa-generate-new-password.png)
-   
-    ![Microsoft-Konto – Neues Kennwort](./media/active-directory-b2c-setup-msa-app/msa-new-password.png)
-8. Aktivieren Sie im Abschnitt **Erweiterte Optionen** das Kontrollkästchen **Live SDK-Unterstützung**. Klicken Sie auf **Speichern**.
-   
-    ![Microsoft-Konto – Live SDK-Unterstützung](./media/active-directory-b2c-setup-msa-app/msa-live-sdk-support.png)
+Um ein Microsoft-Konto als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwenden zu können, müssen Sie eine Anwendung in Ihrem Mandanten erstellen, die es darstellt. Wenn Sie noch über kein Microsoft-Konto verfügen, können Sie eines unter [https://www.live.com/](https://www.live.com/) erstellen.
 
-## <a name="configure-microsoft-account-as-an-identity-provider-in-your-tenant"></a>Konfigurieren von Microsoft-Konto als Identitätsanbieter in Ihrem Mandanten
-1. Führen Sie diese Schritte aus, um im Azure-Portal [zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
-2. Klicken Sie auf dem B2C-Featureblatt auf **Identitätsanbieter**.
-3. Klicken Sie oben auf dem Blatt auf **+Hinzufügen**.
-4. Geben Sie als **Name** einen aussagekräftigen Namen für die Konfiguration des Identitätsanbieters ein. Geben Sie z.B. „MSA“ ein.
-5. Klicken Sie auf **Typ des Identitätsanbieters**, wählen Sie **Microsoft-Konto** aus, und klicken Sie auf **OK**.
-6. Klicken Sie auf **Diesen Identitätsanbieter einrichten**, und geben Sie die Anwendungs-ID und das Kennwort der Microsoft-Kontoanwendung ein, die Sie zuvor erstellt haben.
-7. Klicken Sie auf **OK** und dann auf **Erstellen**, um die Konfiguration für das Microsoft-Konto zu speichern.
+1. Melden Sie sich beim [Microsoft App-Registrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) mit den Anmeldeinformationen für Ihr Microsoft-Konto an.
+2. Wählen Sie oben rechts **App hinzufügen** aus.
+3. Geben Sie einen **Namen** für Ihre Anwendung an, und klicken Sie auf **Erstellen**.
+4. Kopieren Sie auf der Registrierungsseite den Wert für **Anwendungs-ID**. Sie verwenden ihn, um das Microsoft-Konto als Identitätsanbieter in Ihrem Mandanten zu konfigurieren.
+5. Wählen Sie **Plattform hinzufügen** und dann **Web** aus.
+6. Geben Sie `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` unter **Umleitungs-URLs** ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z.B. „contosob2c.onmicrosoft.com“).
+7. Wählen Sie unter **Anwendungsgeheimnisse** die Option **Neues Kennwort generieren** aus. Kopieren Sie das neue Kennwort, das auf dem Bildschirm angezeigt wird. Sie benötigen es, um das Microsoft-Konto als Identitätsanbieter in Ihrem Mandanten zu konfigurieren. Dieses Kennwort ist eine wichtige Anmeldeinformation.
+
+## <a name="configure-a-microsoft-account-as-an-identity-provider"></a>Konfigurieren eines Microsoft-Kontos als Identitätsanbieter
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Azure AD B2C-Mandanten an.
+2. Vergewissern Sie sich, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie oben rechts im Azure-Portal zu diesem Verzeichnis wechseln. Wählen Sie die Abonnementinformationen aus, und klicken Sie dann auf **Verzeichnis wechseln**. 
+
+    ![Wechseln zu Ihrem Azure AD B2C-Mandanten](./media/active-directory-b2c-setup-msa-app/switch-directories.png)
+
+    Wählen Sie das Verzeichnis aus, das den Mandanten enthält.
+
+    ![Auswählen des Verzeichnisses](./media/active-directory-b2c-setup-msa-app/select-directory.png)
+
+3. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf.
+4. Wählen Sie **Identitätsanbieter** und dann **Hinzufügen** aus.
+5. Geben Sie einen **Namen** an. Geben Sie z.B. *MSA* ein.
+6. Wählen Sie **Identitätsanbietertyp** und dann **Microsoft-Konto** aus, und klicken Sie auf **OK**.
+7. Wählen Sie **Diesen Identitätsanbieter einrichten** aus, und geben Sie die zuvor notierte Anwendungs-ID als **Client-ID** und das notierte Kennwort als **Clientgeheimnis** der zuvor erstellten Microsoft-Anwendung ein.
+8. Klicken Sie auf **OK** und dann auf **Erstellen**, um die Konfiguration für das Microsoft-Konto zu speichern.
 

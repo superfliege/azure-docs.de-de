@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/17/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ec106b46097f9a35b9e41e08de4c18339f1b28f0
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 66cd3644611c1d837de717661a3515a0c0d3956f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710405"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38308030"
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Erstellen Sie mithilfe von Azure Active Directory B2C eine ASP.NET-Web-App mit Registrierung, Anmeldung, Profilbearbeitung und Kennwortzurücksetzung.
 
@@ -31,19 +31,21 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 - Sie müssen eine Verbindung Ihres B2C-Mandanten mit einem Azure-Konto herstellen. Sie können [hier](https://azure.microsoft.com/) ein kostenloses Azure-Konto erstellen.
 - Sie benötigen [Microsoft Visual Studio](https://www.visualstudio.com/) oder eine ähnliche Anwendung zum Anzeigen und Ändern des Beispielcodes.
 
-## <a name="create-an-azure-ad-b2c-directory"></a>Erstellen eines Azure AD B2C-Verzeichnisses
+## <a name="create-an-azure-ad-b2c-tenant"></a>Erstellen eines Azure AD B2C-Mandanten
 
-Bevor Sie Azure AD B2C verwenden können, müssen Sie ein Verzeichnis oder einen Mandanten erstellen. Ein Verzeichnis ist ein Container für alle Benutzer, Apps, Gruppen usw. Wenn Sie noch keines verwenden, sollten Sie ein B2C-Verzeichnis erstellen, bevor Sie die weiteren Schritte in diesem Leitfaden ausführen.
+Damit Sie Azure AD B2C verwenden können, müssen Sie einen Mandanten erstellen. Ein Mandant ist ein Container für alle Benutzer, Apps, Gruppen usw. Wenn Sie noch keinen verwenden, erstellen Sie einen B2C-Mandanten, bevor Sie die weiteren Schritte in diesem Leitfaden ausführen.
 
 [!INCLUDE [active-directory-b2c-create-tenant](../../includes/active-directory-b2c-create-tenant.md)]
 
 > [!NOTE]
 > 
-> Sie müssen eine Verbindung Ihres B2C-Mandanten mit Ihrem Azure-Abonnement herstellen. Wählen Sie nach **Erstellen** die Option **Vorhandenen Azure AD B2C-Mandanten mit meinem Azure-Abonnement verknüpfen** und dann in der Dropdownliste **Azure AD B2C-Mandant** den Mandanten, den Sie zuordnen möchten.
+> Sie müssen eine Verbindung zwischen dem Azure AD B2C-Mandanten und Ihrem Azure-Abonnement herstellen. Wählen Sie nach **Erstellen** die Option **Vorhandenen Azure AD B2C-Mandanten mit meinem Azure-Abonnement verknüpfen** und dann in der Dropdownliste **Azure AD B2C-Mandant** den Mandanten, den Sie zuordnen möchten.
 
 ## <a name="create-and-register-an-application"></a>Erstellen und Registrieren einer Anwendung
 
-Als Nächstes müssen Sie die App in Ihrem B2C-Verzeichnis erstellen und registrieren. So werden Informationen bereitgestellt, die Azure AD B2C für die sichere Kommunikation mit Ihrer App benötigt. 
+Als Nächstes müssen Sie die App in Ihrem Azure AD B2C-Mandanten erstellen und registrieren. So werden Informationen bereitgestellt, die Azure AD B2C für die sichere Kommunikation mit Ihrer App benötigt. 
+
+Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf. Verwenden Sie nun den zuvor erstellten Mandanten.
 
 [!INCLUDE [active-directory-b2c-register-web-api](../../includes/active-directory-b2c-register-web-api.md)]
 

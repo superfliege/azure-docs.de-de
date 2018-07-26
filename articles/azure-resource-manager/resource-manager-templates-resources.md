@@ -1,5 +1,5 @@
 ---
-title: Azure Resource Manager-Vorlagenressourcen | Microsoft-Dokumentation
+title: Azure Resource Manager-Vorlagenressourcen | Microsoft Docs
 description: Beschreibt den Abschnitt „Resources“ der Azure Resource Manager-Vorlagen mithilfe deklarativer JSON-Syntax.
 services: azure-resource-manager
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
+ms.date: 07/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1619f3bfdf49820ec529947ea02d1602a7b2aa8c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6723cf8cc18637c157b295361425357e1c47ec2e
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723452"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39007160"
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Abschnitt „Resources“ von Azure Resource Manager-Vorlagen
 
@@ -30,7 +30,7 @@ Sie definieren Ressourcen mit der folgenden Struktur:
 ```json
 "resources": [
   {
-      "condition": "<boolean-value-whether-to-deploy>",
+      "condition": "<true-to-deploy-this-resource>",
       "apiVersion": "<api-version-of-resource>",
       "type": "<resource-provider-namespace/resource-type-name>",
       "name": "<name-of-the-resource>",
@@ -83,10 +83,10 @@ Sie definieren Ressourcen mit der folgenden Struktur:
 
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--- |:--- |:--- |
-| condition | Nein  | Boolescher Wert, der angibt, ob die Ressource bereitgestellt wird. |
-| apiVersion |Ja |Version der REST-API zum Erstellen der Ressource. |
-| type |Ja |Der Typ der Ressource. Dieser Wert ist eine Kombination aus dem Namespace des Ressourcenanbieters und dem Ressourcentyp (z.B. **Microsoft.Storage/storageAccounts**). |
-| name |Ja |Der Name der Ressource. Der Name muss die Einschränkungen für URI-Komponenten laut Definition in RFC3986 erfüllen. Darüber hinaus überprüfen Azure-Dienste, die externen Parteien den Ressourcennamen verfügbar machen, den Namen, um sicherzustellen, dass es sich nicht um einen Versuch handelt, eine andere Identität vorzutäuschen. |
+| condition | Nein  | Boolescher Wert, der angibt, ob die Ressource während dieser Bereitstellung bereitgestellt wird. Wenn der Wert `true` lautet, wird die Ressource während der Bereitstellung erstellt. Wenn der Wert `false` lautet, wird die Ressource für diese Bereitstellung ausgelassen. |
+| apiVersion |JA |Version der REST-API zum Erstellen der Ressource. |
+| type |JA |Der Typ der Ressource. Dieser Wert ist eine Kombination aus dem Namespace des Ressourcenanbieters und dem Ressourcentyp (z.B. **Microsoft.Storage/storageAccounts**). |
+| name |JA |Der Name der Ressource. Der Name muss die Einschränkungen für URI-Komponenten laut Definition in RFC3986 erfüllen. Darüber hinaus überprüfen Azure-Dienste, die externen Parteien den Ressourcennamen verfügbar machen, den Namen, um sicherzustellen, dass es sich nicht um einen Versuch handelt, eine andere Identität vorzutäuschen. |
 | location |Variabel |Unterstützte Standorte der angegebenen Ressource Wählen Sie einen der verfügbaren Standorte. In der Regel ist es jedoch sinnvoll, einen in der Nähe der Benutzer zu wählen. Normalerweise ist es auch sinnvoll, Ressourcen, die miteinander interagieren, in der gleichen Region zu platzieren. Die meisten Ressourcentypen benötigen einen Speicherort, andere Typen (z.B. eine Rollenzuordnung) jedoch nicht. |
 | tags |Nein  |Markierungen, die der Ressource zugeordnet sind Verwenden Sie Tags zum logischen Organisieren der Ressourcen in Ihrem Abonnement. |
 | Kommentare |Nein  |Ihre Notizen zur Dokumentierung der Ressourcen in Ihrer Vorlage |
@@ -100,7 +100,7 @@ Sie definieren Ressourcen mit der folgenden Struktur:
 
 ## <a name="condition"></a>Bedingung
 
-Wenn Sie sich während der Bereitstellung entscheiden müssen, ob Sie eine Ressource erstellen möchten, verwenden Sie das `condition`-Element. Der Wert für dieses Element wird mit „true“ oder „false“ aufgelöst. Wenn der Wert „true“ ist, wird die Ressource bereitgestellt. Ist der Wert „false“, wird die Ressource nicht bereitgestellt. Verwenden Sie beispielsweise Folgendes, um anzugeben, ob ein neues Speicherkonto bereitgestellt wird oder ob ein vorhandenes Speicherkonto verwendet wird:
+Wenn Sie sich während der Bereitstellung entscheiden müssen, ob Sie eine Ressource erstellen möchten, verwenden Sie das `condition`-Element. Der Wert für dieses Element wird mit „true“ oder „false“ aufgelöst. Wenn der Wert TRUE lautet, wird die Ressource erstellt. Wenn der Wert FALSE lautet, wird die Ressource nicht erstellt. Dieser Wert wird üblicherweise verwendet, wenn Sie eine neue Ressource erstellen oder eine bereits vorhandene verwenden möchten. Verwenden Sie beispielsweise Folgendes, um anzugeben, ob ein neues Speicherkonto bereitgestellt wird oder ob ein vorhandenes Speicherkonto verwendet wird:
 
 ```json
 {
@@ -181,7 +181,7 @@ Für Ressourcentypen, auf die hauptsächlich über eine andere Ressource zugegri
 }
 ```
 
-## <a name="location"></a>Speicherort
+## <a name="location"></a>Standort
 Beim Bereitstellen einer Vorlage müssen Sie einen Speicherort für jede Ressource angeben. An verschiedenen Speicherorten werden unterschiedliche Ressourcentypen unterstützt. Um eine Liste aller für Ihr Abonnement verfügbaren Speicherorte für einen bestimmten Ressourcentyp anzuzeigen, verwenden Sie Azure PowerShell oder die Azure-Befehlszeilenschnittstelle. 
 
 Das folgende Beispiel verwendet PowerShell, um die Speicherorte für den Ressourcentyp `Microsoft.Web\sites` abzurufen:

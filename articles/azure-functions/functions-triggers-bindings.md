@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/24/2018
 ms.author: tdykstra
-ms.openlocfilehash: 1b22357b201306ec09e586bfa52fbe9a821250da
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 912176df2681f890cf3bbe6f69395ad39c9263fc
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887469"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004896"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Konzepte für Azure Functions-Trigger und -Bindungen
 
@@ -32,7 +32,7 @@ Ein *Trigger* definiert, wie eine Funktion aufgerufen wird. Eine Funktion darf n
 
 Eingabe- und Ausgabe-*Bindungen* bieten eine deklarative Möglichkeit, aus Code heraus Verbindungen mit Daten herzustellen. Bindungen sind optional, und eine Funktion kann mehrere Eingabe- und Ausgabebindungen haben. 
 
-Mithilfe von Triggern und Bindungen können Sie die Hartcodierung der Informationen zu den Diensten vermeiden, mit denen Sie arbeiten. Ihre Funktion empfängt Daten (z.B. den Inhalt einer Warteschlangennachricht) in Funktionsparametern. Sie senden Daten (z.B. um eine Warteschlangennachricht zu erstellen), indem Sie den Rückgabewert der Funktion, einen `out`-Parameter oder ein [Sammlerobjekt](functions-reference-csharp.md#writing-multiple-output-values) verwenden.
+Mithilfe von Triggern und Bindungen können Sie die Hartcodierung der Informationen zu den Diensten vermeiden, mit denen Sie arbeiten. Ihre Funktion empfängt Daten (z.B. den Inhalt einer Warteschlangennachricht) in Funktionsparametern. Sie senden Daten (z.B., um eine Warteschlangennachricht zu erstellen), indem Sie den Rückgabewert der Funktion verwenden. In C# und C#-Skripts können Daten alternativ mithilfe von `out`-Parametern und [Collector-Objekten](functions-reference-csharp.md#writing-multiple-output-values) gesendet werden.
 
 Wenn Sie Funktionen mithilfe des Azure-Portals entwickeln, werden Trigger und Bindungen in einer *function.json*-Datei konfiguriert. Das Portal stellt eine Benutzeroberfläche für diese Konfiguration zur Verfügung, Sie können die Datei jedoch direkt bearbeiten, indem Sie in den **erweiterten Editor** wechseln.
 
@@ -224,9 +224,11 @@ In Sprachen mit Rückgabewert können Sie eine Ausgabebindung an den Rückgabewe
 * Wenden Sie in einer C#-Klassenbibliothek das Attribut der Ausgabebindung auf den Rückgabewert der Methode an.
 * In anderen Sprachen legen Sie die Eigenschaft `name` in *function.json* auf `$return` fest.
 
-Wenn Sie mehrere Elemente schreiben müssen, verwenden Sie anstatt des Rückgabewerts ein [Sammlerobjekt](functions-reference-csharp.md#writing-multiple-output-values). Wenn mehrere Ausgabebindungen vorhanden sind, verwenden Sie den Rückgabewert für nur eine davon.
+Wenn mehrere Ausgabebindungen vorhanden sind, verwenden Sie den Rückgabewert für nur eine davon.
 
-Sehen Sie sich das sprachspezifische Beispiel an:
+In C# und C#-Skripts können Daten alternativ mithilfe von `out`-Parametern und [Collector-Objekten](functions-reference-csharp.md#writing-multiple-output-values) an eine Ausgabebindung gesendet werden.
+
+In diesen sprachspezifischen Beispielen wird die Verwendung des Rückgabewerts veranschaulicht:
 
 * [C#](#c-example)
 * [C#-Skript (.csx)](#c-script-example)

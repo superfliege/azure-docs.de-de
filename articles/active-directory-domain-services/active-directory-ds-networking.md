@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 12/01/2017
 ms.author: maheshu
-ms.openlocfilehash: a91120e2592e6fdaa38334f36bfd9b67c0f1b50d
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 07f63eb9ed316f7798bd890bb6125617c6a1e886
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300994"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929636"
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Netzwerkaspekte für die Azure AD Domain Services
 ## <a name="how-to-select-an-azure-virtual-network"></a>Auswählen eines virtuellen Azure-Netzwerks
@@ -55,7 +55,6 @@ Die folgenden Richtlinien dienen Ihnen als Hilfe bei der Auswahl eines virtuelle
 * Wenden Sie auf das dedizierte Subnetz für Ihre verwaltete Domäne keine Netzwerksicherheitsgruppen an. Wenn Sie Netzwerksicherheitsgruppen auf das dedizierte Netzwerk anwenden müssen, stellen Sie sicher, dass Sie **keine Ports blockieren, die für den Dienst und zum Verwalten Ihrer Domäne benötigt werden**.
 * Schränken Sie die Anzahl verfügbarer IP-Adressen im dedizierten Subnetz für Ihre verwaltete Domäne nicht zu stark ein. Diese Einschränkung verhindert, dass der Dienst zwei Domänencontroller für Ihre verwaltete Domäne zur Verfügung stellt.
 * **Aktivieren Sie die Azure AD Domain Services nicht im Gatewaysubnetz** Ihres virtuellen Netzwerks.
-* Blockieren Sie nicht den ausgehenden Zugriff aus dem Subnetz, in dem Ihre verwaltete Domäne aktiviert ist.
 
 > [!WARNING]
 > Wenn Sie eine NSG einem Subnetz zuordnen, für das die Azure AD Domain Services aktiviert sind, kann es passieren, dass die Domäne von Microsoft nicht mehr gewartet und verwaltet werden kann. Darüber hinaus wird die Synchronisierung zwischen Ihrem Azure AD-Mandanten und der verwalteten Domäne beeinträchtigt. **Die Vereinbarung zum Servicelevel (SLA) gilt nicht für Bereitstellungen, bei denen eine NSG auf das Subnetz angewendet wurde, mit der das Aktualisieren und Verwalten Ihrer Domäne durch die Azure AD Domain Services blockiert wird.**
@@ -80,8 +79,8 @@ Die folgenden Ports werden für Azure AD Domain Services benötigt, um Ihre verw
 **Port 5986 (PowerShell-Remoting)**
 * Dient zum Ausführen von Verwaltungsaufgaben mithilfe von PowerShell-Remoting in Ihrer verwalteten Domäne.
 * Der Zugriff über diesen Port muss in Ihrer NSG zugelassen werden. Ohne Zugriff auf diesen Port kann Ihre verwaltete Domäne nicht aktualisiert, konfiguriert, gesichert oder überwacht werden.
-* Für alle neuen Domänen oder Domänen mit einem virtuellen ARM-Netzwerk können Sie den eingehenden Zugriff auf diesen Port auf die folgenden Quell-IP-Adressen beschränken: 52.180.179.108, 52.180.177.87, 13.75.105.168, 52.175.18.134, 52.138.68.41, 52.138.65.157, 104.41.159.212, 104.45.138.161, 52.169.125.119, 52.169.218.0, 52.187.19.1, 52.187.120.237, 13.78.172.246, 52.161.110.169, 52.174.189.149, 40.68.160.142, 40.83.144.56, 13.64.151.161, 52.180.183.67, 52.180.181.39, 52.175.28.111, 52.175.16.141, 52.138.70.93, 52.138.64.115, 40.80.146.22, 40.121.211.60, 52.138.143.173, 52.169.87.10, 13.76.171.84, 52.187.169.156, 13.78.174.255, 13.78.191.178, 40.68.163.143, 23.100.14.28, 13.64.188.43, 23.99.93.197
-* Für Domänen in einem klassischen virtuellen Netzwerk können Sie den eingehenden Zugriff auf diesen Port auf die folgenden Quell-IP-Adressen beschränken: 52.180.183.8, 23.101.0.70, 52.225.184.198, 52.179.126.223, 13.74.249.156, 52.187.117.83, 52.161.13.95, 104.40.156.18, 104.40.87.209, 52.180.179.108, 52.175.18.134, 52.138.68.41, 104.41.159.212, 52.169.218.0, 52.187.120.237, 52.161.110.169, 52.174.189.149, 13.64.151.161
+* Für alle neuen Domänen oder Domänen mit einem virtuellen Azure Resource Manager-Netzwerk können Sie den eingehenden Zugriff auf diesen Port auf die folgenden Quell-IP-Adressen beschränken: 52.180.179.108, 52.180.177.87, 13.75.105.168, 52.175.18.134, 52.138.68.41, 52.138.65.157, 104.41.159.212, 104.45.138.161, 52.169.125.119, 52.169.218.0, 52.187.19.1, 52.187.120.237, 13.78.172.246, 52.161.110.169, 52.174.189.149, 40.68.160.142, 40.83.144.56, 13.64.151.161, 52.180.183.67, 52.180.181.39, 52.175.28.111, 52.175.16.141, 52.138.70.93, 52.138.64.115, 40.80.146.22, 40.121.211.60, 52.138.143.173, 52.169.87.10, 13.76.171.84, 52.187.169.156, 13.78.174.255, 13.78.191.178, 40.68.163.143, 23.100.14.28, 13.64.188.43, 23.99.93.197
+* Für Domänen in einem klassischen virtuellen Netzwerk können Sie den eingehenden Zugriff auf diesen Port auf die folgenden Quell-IP-Adressen beschränken: 52.180.183.8, 23.101.0.70, 52.225.184.198, 52.179.126.223, 13.74.249.156, 52.187.117.83, 52.161.13.95, 104.40.156.18, 104.40.87.209
 * Die Domänencontroller für die verwaltete Domäne lauschen in der Regel nicht an diesem Port. Der Dienst öffnet diesen Port auf Controllern der verwalteten Domäne nur, wenn ein Verwaltungs- oder Wartungsvorgang für die verwaltete Domäne ausgeführt werden muss. Nach Abschluss des Vorgangs schließt der Dienst diesen Port auf den Controllern der verwalteten Domäne.
 
 **Port 3389 (Remotedesktop)**
@@ -94,11 +93,9 @@ Die folgenden Ports werden für Azure AD Domain Services benötigt, um Ihre verw
 * Das Öffnen dieses Ports über Ihre NSG ist optional. Öffnen Sie den Port nur, wenn Sie den sicheren LDAP-Zugriff über das Internet aktiviert haben.
 * Der eingehende Zugriff auf diesen Port kann auf die Quell-IP-Adressen beschränkt werden, über die Sie voraussichtlich eine sichere LDAP-Verbindung herstellen.
 
-**Ausgehender Zugriff** AAD Domain Services benötigt ausgehenden Zugriff auf verschiedene andere Azure-Dienste, um Ihre verwaltete Domäne zu verwalten, zu sichern und zu überwachen. Blockieren Sie nicht den ausgehenden Zugriff aus dem dedizierten Subnetz, in dem Ihre verwaltete Domäne aktiviert ist.
-
 
 ## <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
-Eine [Netzwerksicherheitsgruppe (NSG)](../virtual-network/security-overview.md) enthält eine Zugriffssteuerungsliste (Access Control List, ACL) zum Zulassen oder Verweigern von Netzwerkdatenverkehr an Ihre VM-Instanzen in einem virtuellen Netzwerk. NSGs können Subnetzen oder einzelnen VM-Instanzen innerhalb dieses Subnetzes zugeordnet werden. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die ACL-Regeln für alle VM-Instanzen in diesem Subnetz. Darüber hinaus kann Datenverkehr zu einem einzelnen virtuellen Computer weiter beschränkt werden, indem eine NSG direkt diesem virtuellen Computer zugewiesen wird.
+Eine [Netzwerksicherheitsgruppe (NSG)](../virtual-network/virtual-networks-nsg.md) enthält eine Zugriffssteuerungsliste (Access Control List, ACL) zum Zulassen oder Verweigern von Netzwerkdatenverkehr an Ihre VM-Instanzen in einem virtuellen Netzwerk. NSGs können Subnetzen oder einzelnen VM-Instanzen innerhalb dieses Subnetzes zugeordnet werden. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die ACL-Regeln für alle VM-Instanzen in diesem Subnetz. Darüber hinaus kann Datenverkehr zu einem einzelnen virtuellen Computer weiter beschränkt werden, indem eine NSG direkt diesem virtuellen Computer zugewiesen wird.
 
 ### <a name="sample-nsg-for-virtual-networks-with-azure-ad-domain-services"></a>Beispiel-NSG für virtuelle Netzwerke in Azure AD Domain Services
 Die folgende Tabelle zeigt ein NSG-Beispiel, das Sie für ein virtuelles Netzwerk mit einer von Azure AD Domain Services verwalteten Domäne konfigurieren können. Diese Regel ermöglicht eingehenden Datenverkehr von den erforderlichen Ports, um sicherzustellen, dass Ihre verwaltete Domäne gepatcht und aktualisiert bleibt und von Microsoft überwacht werden kann. Die standardmäßige Regel „DenyAll“ gilt für sämtlichen eingehenden Datenverkehr aus dem Internet.

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: ddce312d6299a7749f1a40a83f67ce3c26876591
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 4410adfd5788b06163b8da18b96d2f8a9c350ac8
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34713999"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39011428"
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>Verwalten von Geräten mit dem Azure-Portal
 
@@ -198,6 +198,9 @@ Zum Anzeigen oder Kopieren der BitLocker-Schlüssel müssen Sie entweder der Bes
 - Sicherheitsadministratoren
 - Benutzer mit Leseberechtigung für Sicherheitsfunktionen
 - Intune-Dienstadministratoren
+
+> [!NOTE]
+> In Hybrid-Azure AD eingebundene Windows 10-Geräte haben keinen Besitzer. Wenn Sie also ein Gerät nach Besitzer suchen und es nicht finden, suchen Sie nach der Geräte-ID.
 
 
 ## <a name="audit-logs"></a>Überwachungsprotokolle

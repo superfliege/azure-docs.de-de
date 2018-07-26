@@ -1,38 +1,38 @@
 ---
-title: Verwenden von Azure-Datenträgern mit AKS
-description: Verwenden von Azure-Datenträgern mit AKS
+title: Erstellen von persistenten Volumes mit Azure Kubernetes Service
+description: Erfahren Sie, wie Sie mithilfe von Azure-Datenträgern persistente Volumes für Pods in Azure Kubernetes Service (AKS) erstellen.
 services: container-service
 author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 07/10/2018
 ms.author: iainfou
-ms.openlocfilehash: ddac68b2a47fc830055b9dd5bd705802cc29c52f
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 14617b57f59c068aa015c9bfea9b4d18520b4152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37095925"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38473681"
 ---
-# <a name="persistent-volumes-with-azure-disks"></a>Persistente Volumes mit Azure-Datenträgern
+# <a name="create-persistent-volumes-with-azure-disks-for-azure-kubernetes-service-aks"></a>Erstellen von persistenten Volumes mit Azure-Datenträgern für Azure Kubernetes Service (AKS)
 
-Ein persistentes Volume stellt ein Speicherelement dar, das für die Verwendung in Kubernetes-Pods bereitgestellt wurde. Ein persistentes Volume kann von einem oder mehreren Pods verwendet und dynamisch oder statisch bereitgestellt werden. Weitere Informationen zu persistenten Kubernetes-Volumes finden Sie unter [Persistente Kubernetes-Volumes][kubernetes-volumes].
-
-Dieses Dokument enthält Informationen zur Verwendung von persistenten Volumes mit Azure-Datenträgern in einem AKS-Cluster (Azure Kubernetes Service).
+Ein persistentes Volume stellt ein Speicherelement dar, das für die Verwendung in Kubernetes-Pods bereitgestellt wurde. Ein persistentes Volume kann von einem oder mehreren Pods verwendet und dynamisch oder statisch bereitgestellt werden. Weitere Informationen zu persistenten Kubernetes-Volumes finden Sie unter [Persistente Kubernetes-Volumes][kubernetes-volumes]. In diesem Artikel wird erläutert, wie Sie persistente Volumes mit Azure-Datenträgern in einem AKS-Cluster (Azure Kubernetes Service) verwenden können.
 
 > [!NOTE]
-> Ein Azure-Datenträger kann nur mit dem Zugriffsmodustyp „ReadWriteOnce“ eingebunden werden. Dadurch ist er nur für einen einzelnen AKS-Knoten verfügbar. Wenn Sie ein persistentes Volume für mehrere Knoten freigeben möchten, ziehen Sie die Verwendung von [Azure Files][azure-files-pvc] in Erwägung.
+> Ein Azure-Datenträger kann nur mit dem *Zugriffsmodustyp* *ReadWriteOnce* eingebunden werden. Dadurch ist er nur für einen einzelnen AKS-Knoten verfügbar. Wenn Sie ein persistentes Volume für mehrere Knoten freigeben möchten, ziehen Sie die Verwendung von [Azure Files][azure-files-pvc] in Erwägung.
 
 ## <a name="built-in-storage-classes"></a>Integrierte Speicherklassen
 
 Mit einer Speicherklasse wird festgelegt, wie eine Speichereinheit dynamisch in einem persistenten Volume erstellt wird. Weitere Informationen zu Kubernetes-Speicherklassen finden Sie unter [Kubernetes-Speicherklassen][kubernetes-storage-classes].
 
-Jeder AKS-Cluster schließt zwei vorab erstellte Speicherklassen ein, die beide für die Arbeit mit Azure-Datenträgern konfiguriert sind. Die Speicherklasse `default` stellt einen Azure Standard-Datenträger bereit. Die Speicherklasse `managed-premium` stellt einen Azure Premium-Datenträger bereit. Wenn die AKS-Knoten in Ihrem Cluster Storage Premium verwenden, wählen Sie die `managed-premium`-Klasse aus.
+Jeder AKS-Cluster schließt zwei vorab erstellte Speicherklassen ein, die beide für die Arbeit mit Azure-Datenträgern konfiguriert sind. Die Speicherklasse *default* stellt einen Azure Standard-Datenträger bereit. Die Speicherklasse *managed-premium* stellt einen Azure Premium-Datenträger bereit. Wenn die AKS-Knoten in dem Cluster Storage Premium verwenden, wählen Sie die *managed-premium*-Klasse aus.
 
-Mit dem Befehl [kubectl get sc][kubectl-get] können Sie die vorab erstellten Speicherklassen anzeigen.
+Mit dem Befehl [kubectl get sc][kubectl-get] können Sie die vorab erstellten Speicherklassen anzeigen. Im folgenden Beispiel werden die in einem AKS-Cluster verfügbaren vorab erstellten Speicherklassen gezeigt:
 
-```console
+```
+$ kubectl get sc
+
 NAME                PROVISIONER                AGE
 default (default)   kubernetes.io/azure-disk   1h
 managed-premium     kubernetes.io/azure-disk   1h
@@ -41,38 +41,37 @@ managed-premium     kubernetes.io/azure-disk   1h
 > [!NOTE]
 > Ansprüche für persistente Volumes werden in GiB angegeben, verwaltete Azure-Datenträger werden jedoch nach SKU für eine bestimmte Größe abgerechnet. Diese SKUs reichen von 32 GiB für S4- oder P4-Datenträger bis 4 TiB für S50- oder P50-Datenträger. Darüber hinaus hängen Durchsatz und IOPS-Leistung eines verwalteten Premium-Datenträgers sowohl von der SKU als auch von der Instanzgröße der Knoten im AKS-Cluster ab. Weitere Informationen finden Sie unter [Verwaltete Datenträger – Preise][managed-disk-pricing-performance].
 
-## <a name="create-persistent-volume-claim"></a>Erstellen eines Anspruchs auf ein persistentes Volume
+## <a name="create-a-persistent-volume-claim"></a>Erstellen eines Anspruchs auf ein persistentes Volume
 
 Ein Anspruch auf ein persistentes Volume (Persistent Volume Claim, PVC) wird verwendet, um basierend auf einer Speicherklasse automatisch Speicher bereitzustellen. In diesem Fall kann ein PVC eine der zuvor erstellten Speicherklassen verwenden, um einen verwalteten Azure Standard- oder Premium-Datenträger zu erstellen.
 
 Erstellen Sie eine Datei namens `azure-premium.yaml`, und fügen Sie das folgende Manifest ein.
 
-Beachten Sie, dass die Speicherklasse `managed-premium` in der Anmerkung angegeben wird und dass der Anspruch einen Datenträger der Größe `5GB` mit `ReadWriteOnce`-Zugriff anfordert.
+Beachten Sie, dass die Speicherklasse *managed-premium* in der Anmerkung angegeben wird und dass der Anspruch einen Datenträger der Größe *5 GB* mit *ReadWriteOnce*-Zugriff anfordert.
 
 ```yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: azure-managed-disk
-  annotations:
-    volume.beta.kubernetes.io/storage-class: managed-premium
 spec:
   accessModes:
   - ReadWriteOnce
+  storageClassName: managed-premium
   resources:
     requests:
       storage: 5Gi
 ```
 
-Erstellen Sie mit dem Befehl [kubectl apply][kubectl-apply] einen Anspruch auf ein persistentes Volume.
+Erstellen Sie mit dem Befehl [kubectl apply][kubectl-apply] einen Anspruch auf ein persistentes Volume, und geben Sie die Datei *azure-premium.yaml* an:
 
-```azurecli-interactive
+```console
 kubectl apply -f azure-premium.yaml
 ```
 
-## <a name="using-the-persistent-volume"></a>Verwenden des persistenten Volumes
+## <a name="use-the-persistent-volume"></a>Verwenden des persistenten Volumes
 
-Nachdem der Anspruch auf ein persistentes Volumes erstellt und der Datenträger erfolgreich bereitgestellt wurde, kann ein Pod mit Zugriff auf den Datenträger erstellt werden. Das folgende Manifest erstellt einen Pod, der den Anspruch auf das persistente Volume `azure-managed-disk` verwendet, um den Azure-Datenträger im Pfad `/mnt/azure` einzubinden.
+Nachdem der Anspruch auf ein persistentes Volumes erstellt und der Datenträger erfolgreich bereitgestellt wurde, kann ein Pod mit Zugriff auf den Datenträger erstellt werden. Das folgende Manifest erstellt einen Pod, der den Anspruch auf das persistente Volume *azure-managed-disk* verwendet, um den Azure-Datenträger im Pfad `/mnt/azure` einzubinden.
 
 Erstellen Sie eine Datei namens `azure-pvc-disk.yaml`, und fügen Sie das folgende Manifest ein.
 
@@ -96,7 +95,7 @@ spec:
 
 Verwenden Sie den Befehl [kubectl apply][kubectl-apply] zum Erstellen des Pods.
 
-```azurecli-interactive
+```console
 kubectl apply -f azure-pvc-disk.yaml
 ```
 

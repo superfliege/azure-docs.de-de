@@ -1,47 +1,51 @@
 ---
-title: Amazon-Konfiguration in Azure Active Directory B2C | Microsoft-Dokumentation
-description: Bereitstellen von Registrierung und Anmeldung für Kunden mit Amazon-Konten in mit Azure Active Directory B2C gesicherten Anwendungen.
+title: Einrichten der Registrierung und Anmeldung mit einem Amazon-Konto mithilfe von Azure Active Directory B2C | Microsoft-Dokumentation
+description: Bereitstellen von Registrierung und Anmeldung für Kunden mit Amazon-Konten in Ihren Anwendungen mithilfe von Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/06/2016
+ms.date: 07/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e3b3d66b913b595e68c03b68990d1a4806952579
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 5fb6289f75f0c98cc218233d8adb900484ee4a17
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443700"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916495"
 ---
-# <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-amazon-accounts"></a>Azure Active Directory B2C: Bereitstellen von Registrierung und Anmeldung für Kunden mit Amazon-Konten
+# <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Amazon-Konto mithilfe von Azure Active Directory B2C
+
 ## <a name="create-an-amazon-application"></a>Erstellen einer Amazon-Anwendung
-Um Amazon als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwenden zu können, müssen Sie eine Amazon-Anwendung erstellen und mit den entsprechenden Parametern bereitstellen. Sie benötigen dazu ein Amazon-Konto. Wenn Sie keins besitzen, können Sie unter [http://www.amazon.com/](http://www.amazon.com/) eines erstellen.
 
-1. Navigieren Sie zum [Amazon Developers Center](https://login.amazon.com/) (Amazon-Entwicklerzentrum), und melden Sie sich mit den Anmeldeinformationen für Ihr Amazon-Konto an.
+Um ein Amazon-Konto als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwenden zu können, müssen Sie eine Anwendung in Ihrem Mandanten erstellen, die es darstellt. Wenn Sie noch über kein Amazon-Konto verfügen, können Sie eines unter [http://www.amazon.com/](http://www.amazon.com/) erstellen.
+
+1. Melden Sie sich beim [Amazon Developer Center](https://login.amazon.com/) mit den Anmeldeinformationen für Ihr Amazon-Konto an.
 2. Wenn Sie dies nicht bereits getan haben, klicken Sie auf **Sign Up**, führen Sie die Schritte zur Registrierung von Entwicklern aus, und akzeptieren Sie die Richtlinie.
-3. Klicken Sie auf **Register new application**.
-   
-    ![Registrieren einer neuen Anwendung auf der Amazon-Website](./media/active-directory-b2c-setup-amzn-app/amzn-new-app.png)
-4. Geben Sie Informationen zur Anwendung unter **Name**, **Description** und **Privacy Notice URL** ein, und klicken Sie auf **Save**.
-   
-    ![Bereitstellen von Anwendungsinformationen zum Registrieren einer neuen Anwendung bei Amazon](./media/active-directory-b2c-setup-amzn-app/amzn-register-app.png)
-5. Kopieren Sie im Abschnitt **Web Settings** die Werte für **Client ID** und **Client Secret**. (Hierzu müssen Sie auf die Schaltfläche **Show Secret** klicken.) Sie benötigen beide Angaben, um Amazon als Identitätsanbieter in Ihrem Mandanten zu konfigurieren. Klicken Sie unten im Abschnitt auf **Edit**. Das **Clientgeheimnis** ist eine wichtige Sicherheitsanmeldeinformation.
-   
-    ![Bereitstellen von Client-ID und Clientgeheimnis für die neue Anwendung bei Amazon](./media/active-directory-b2c-setup-amzn-app/amzn-client-secret.png)
-6. Geben Sie im Feld `https://login.microsoftonline.com`Allowed JavaScript Origins **den Wert** und im Feld **Allowed Return URLs** den Wert `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z.B. „contoso.onmicrosoft.com“). Klicken Sie auf **Save**. Beim Wert für **{tenant}** wird die Groß-/Kleinschreibung beachtet.
-   
-    ![Bereitstellen von JavaScript-Ursprüngen und Rückgabe-URLs für die neue Anwendung bei Amazon](./media/active-directory-b2c-setup-amzn-app/amzn-urls.png)
+3. Wählen Sie **Register new application** (Neue Anwendung registrieren) aus.
+4. Geben Sie einen **Namen**, unter **Description** eine Beschreibung und unter **Privacy Notice URL** eine URL für den Datenschutzhinweis ein, und klicken Sie dann auf **Save** (Speichern).
+5. Kopieren Sie im Abschnitt **Web Settings** (Webeinstellungen) den Wert für **Client ID** (Client-ID). Wählen Sie **Show Secret** (Geheimnis anzeigen) aus, um den geheimen Clientschlüssel abzurufen, und kopieren Sie ihn dann. Sie benötigen beide Angaben, um ein Amazon-Konto als Identitätsanbieter in Ihrem Mandanten zu konfigurieren. **geheime Clientschlüssel** ist eine wichtige Sicherheitsanmeldeinformation.
+6. Wählen Sie im Abschnitt **Web Settings** (Webeinstellungen) die Option **Edit** (Bearbeiten) aus, und geben Sie dann `https://login.microsoftonline.com` unter **Allowed JavaScript Origins** (Zulässige JavaScript-Quellen) und `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` unter **Allowed Return URLs** (Zulässige Rückgabe-URIs) ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z.B. „contoso.onmicrosoft.com“). 
+7. Klicken Sie auf **Speichern**.
 
-## <a name="configure-amazon-as-an-identity-provider-in-your-tenant"></a>Konfigurieren von Amazon als Identitätsanbieter in Ihrem Mandanten
-1. Führen Sie diese Schritte aus, um im Azure-Portal [zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
-2. Klicken Sie auf dem B2C-Featureblatt auf **Identitätsanbieter**.
-3. Klicken Sie oben auf dem Blatt auf **+Hinzufügen**.
-4. Geben Sie als **Name** einen aussagekräftigen Namen für die Konfiguration des Identitätsanbieters ein. Geben Sie z.B. „Amzn“ ein.
-5. Klicken Sie auf **Typ des Identitätsanbieters**, wählen Sie **Amazon** aus, und klicken Sie auf **OK**.
-6. Klicken Sie auf **Diesen Identitätsanbieter einrichten**, und geben Sie die Client-ID und das Clientgeheimnis der Amazon-Anwendung ein, die Sie zuvor erstellt haben.
-7. Klicken Sie auf **OK** und dann auf **Erstellen**, um die Amazon-Konfiguration zu speichern.
+## <a name="configure-an-amazon-account-as-an-identity-provider"></a>Konfigurieren eines Amazon-Kontos als Identitätsanbieter
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Azure AD B2C-Mandanten an.
+2. Vergewissern Sie sich, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie oben rechts im Azure-Portal zu diesem Verzeichnis wechseln. Wählen Sie die Abonnementinformationen aus, und klicken Sie dann auf **Verzeichnis wechseln**. 
+
+    ![Wechseln zu Ihrem Azure AD B2C-Mandanten](./media/active-directory-b2c-setup-fb-app/switch-directories.png)
+
+    Wählen Sie das Verzeichnis aus, das den Mandanten enthält.
+
+    ![Auswählen des Verzeichnisses](./media/active-directory-b2c-setup-fb-app/select-directory.png)
+
+3. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf.
+4. Wählen Sie **Identitätsanbieter** und dann **Hinzufügen** aus.
+5. Geben Sie einen **Namen** ein. Geben Sie z.B. *Amazon* ein.
+6. Wählen Sie **Identitätsanbietertyp** und dann **Amazon** aus, und klicken Sie auf **OK**.
+7. Wählen Sie **Diesen Identitätsanbieter einrichten** aus, und geben Sie die zuvor notierte Client-ID als **Client-ID** und das notierte Clientgeheimnis als **Clientgeheimnis** der zuvor erstellten Amazon-Anwendung ein.
+8. Klicken Sie auf **OK** und dann auf **Erstellen**, um die Amazon-Konfiguration zu speichern.
 

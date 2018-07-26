@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: b5a50b01da220f8da2f518895a61221f80d098f6
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 51a614a2411cf60bf88d384119c26bc9d406e66f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826045"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38635140"
 ---
 # <a name="billing-options"></a>Abrechnungsoptionen  
 
@@ -67,12 +67,12 @@ Ein wesentlicher Vorteil der Listingoption „Transaktion“ besteht darin, dass
 In diesem Szenario wickelt Microsoft Abrechnung und Zahlungseingänge in Ihrem Auftrag ab. Bei der Abrechnung durch Microsoft entfällt für Sie die Notwendigkeit, eine eigene Zahlungsvereinbarung mit Ihren Kunden zu treffen. Durch Einzelabrechnungen können Sie Zeit und Ressourcen sparen. So können Sie sich darauf konzentrieren, Ihr Produkt zu verkaufen, und müssen sich nicht um Rechnungsangelegenheiten kümmern. 
 
 ## <a name="enterprise-agreement"></a>Enterprise Agreement  
-Wenn Sie Microsoft-Kunde mit Enterprise Agreement (EA) sind, können Sie Ihr EA verwenden, um für Microsoft-Produkte zu bezahlen. Sie können Produkte unter Berücksichtigung Ihrer Azure-Nutzung abrechnen. Die Verwendung des Enterprise Agreements ist für Organisationen gedacht, die Software und Clouddienste für mindestens drei Jahre lizenzieren möchten. Sie können Zahlungen verteilen, anstatt vorab eine große Summe zu zahlen. Wenn Sie Transaktionslistings mit nutzungsbasierter Bezahlung verwenden, folgt die Abrechnung für Ihre Softwarelizenzkosten dem vierteljährlichen EA-Abrechnungszyklus für Überschreitungen.  
+Wenn Sie Microsoft-Kunde mit Enterprise Agreement (EA) sind, können Sie Ihr EA verwenden, um für Microsoft-Produkte zu bezahlen. Ihnen können Produkte, einschließlich Ihrer Azure-Nutzung, berechnet werden. Die Verwendung des Enterprise Agreements ist für Organisationen gedacht, die Software und Clouddienste für mindestens drei Jahre lizenzieren möchten. Sie können Zahlungen verteilen, anstatt vorab eine große Summe zu zahlen. Wenn Sie Transaktionslistings mit nutzungsbasierter Bezahlung verwenden, folgt die Abrechnung für Ihre Softwarelizenzkosten dem vierteljährlichen EA-Abrechnungszyklus für Überschreitungen.  
 
 ### <a name="monetary-commitment"></a>Finanzielle Verpflichtung  
 Wenn Sie EA-Kunde sind, können Sie Azure zu Ihrer Vereinbarung hinzufügen. Dazu vereinbaren Sie im Rahmen der EA einen verbindlichen Betrag für Azure. Dieser verbindliche Betrag wird im Laufe des Jahres verbraucht. Der Betrag deckt jede Art und Kombination der Nutzung der vielfältigen Dienste in Azure ab.  
 
 ## <a name="next-steps"></a>Nächste Schritte
-*   Sehen Sie sich den [Herausgeberleitfaden für Azure Marketplace und AppSource](./marketplace-publishers-guide.md) an.  
+*   Besuchen Sie die Seite [Herausgeberleitfaden für Azure Marketplace und AppSource](./marketplace-publishers-guide.md).  
  
 ---  

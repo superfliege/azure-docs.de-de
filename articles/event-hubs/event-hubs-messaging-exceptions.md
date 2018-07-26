@@ -5,25 +5,23 @@ services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: 2c6273de-0106-47e5-b45d-59040e51f2c5
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2017
+ms.date: 07/03/2018
 ms.author: sethm
-ms.openlocfilehash: 964475ba8b42ac41707fa78468bfe551677c595f
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 22fcedfdb1921c941250b63f09bfa7fcff9c2f1b
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26783127"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856704"
 ---
 # <a name="event-hubs-messaging-exceptions"></a>Event Hubs-Messagingausnahmen
 
-In diesem Artikel werden einige der Ausnahmen aufgeführt, die von der Azure Service Bus-Messaging-API-Bibliothek generiert werden. Hierzu zählen auch Event Hubs-APIs. Diese Referenz kann geändert werden. Prüfen Sie darum bei Bedarf, ob Aktualisierungen vorgenommen wurden.
+In diesem Artikel werden einige der Ausnahmen aufgeführt, die von der Azure Service Bus-Messaging-API-Bibliothek generiert werden, einschließlich .NET Framework-Event Hubs-APIs. Diese Referenz kann geändert werden. Prüfen Sie darum bei Bedarf, ob Aktualisierungen vorgenommen wurden.
 
 ## <a name="exception-categories"></a>Ausnahmekategorien
 
@@ -87,7 +85,7 @@ Dieser Fehler kann aus zwei Gründen auftreten:
 
 2. Der Event Hubs-Namespace enthält nicht genügend Durchsatzeinheiten. (Überprüfen Sie die Angabe im [Azure-Portal](https://portal.azure.com) im Fenster des Event Hubs-Namespace auf dem Bildschirm **Metriken**). Beachten Sie, dass im Portal aggregierte Informationen für einen Zeitraum von einer Minute angezeigt werden. Wir messen den Durchsatz jedoch in Echtzeit, daher handelt es sich nur um eine Schätzung.
 
-    Lösung: Die Erhöhung der Durchsatzeinheiten für den Namespace kann helfen. Diesen Schritt können Sie im Portal im Fenster **Skalieren** des Bildschirms mit dem Event Hubs-Namespace ausführen.
+    Lösung: Die Erhöhung der Durchsatzeinheiten für den Namespace kann helfen. Diesen Schritt können Sie im Portal im Fenster **Skalieren** des Bildschirms mit dem Event Hubs-Namespace ausführen. Sie können auch die [automatische Vergrößerung](event-hubs-auto-inflate.md) verwenden.
 
 ### <a name="error-code-50001"></a>Fehlercode 50001
 
@@ -95,6 +93,7 @@ Dieser Fehler sollte kaum auftreten. Er tritt auf, wenn der Container, der Code 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 
 * [Übersicht über Event Hubs](event-hubs-what-is-event-hubs.md)

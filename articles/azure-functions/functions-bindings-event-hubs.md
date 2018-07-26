@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: 7ea233f3d5b0e0b6ad1470af146f963fce6c4e94
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 51f64f6f74875c6afac350dc9cc235573b89c524
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970671"
+ms.locfileid: "38989587"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Event Hubs-Bindungen für Azure Functions
 
@@ -367,6 +367,8 @@ Die Datei [host.json](functions-host-json.md#eventhub) enthält Einstellungen, d
 ## <a name="output"></a>Output
 
 Mit der Event Hubs-Ausgabebindung werden Ereignisse in einen Ereignisdatenstrom geschrieben. Um Ereignisse in einen Event Hub schreiben zu können, müssen Sie über eine Sendeberechtigung verfügen.
+
+Stellen Sie sicher, dass die erforderlichen Paketverweise vorhanden sind: [Functions 1.x](#packages---functions-1.x) oder [Function 2.x](#packages---functions-2.x). 
 
 ## <a name="output---example"></a>Ausgabe: Beispiel
 

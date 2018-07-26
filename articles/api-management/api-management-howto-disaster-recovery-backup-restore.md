@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: apimpm
-ms.openlocfilehash: 3fcd2fc4162cfbf549be979e15745934c2e4c6ff
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: b06a179459a449762555879669d177f811cb9560
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019278"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090876"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
 
@@ -51,7 +51,7 @@ Alle Aufgaben, die Sie mithilfe von Azure Resource Manager für Ressourcen ausf�
 ### <a name="create-an-azure-active-directory-application"></a>Erstellen einer Azure Active Directory-Anwendung
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
-2. Navigieren Sie unter Verwendung des Abonnements, das Ihre API Management-Dienstinstanz enthält, zur Registerkarte **App-Registrierungen**.
+2. Verwenden Sie das Abonnement, das Ihre API Management-Dienstinstanz enthält, und navigieren Sie zur Registerkarte **App-Registrierungen** in **Azure Active Directory** (Azure Active Directory > Verwalten > App-Registrierungen).
 
     > [!NOTE]
     > Wenn das Azure Active Directory-Standardverzeichnis in Ihrem Konto nicht angezeigt wird, bitten Sie den Administrator des Azure-Abonnements, die erforderlichen Berechtigungen für das Konto zu erteilen.
@@ -112,11 +112,14 @@ Ersetzen Sie `{tentand id}`, `{application id}` und `{redirect uri}` entsprechen
 
     ![Endpunkte][api-management-endpoint]
 2. Ersetzen Sie `{application id}` durch den Wert, den Sie durch Navigieren zur Seite **Einstellungen** erhalten.
-3. Ersetzen Sie die URL auf der Registerkarte **Weiterleitungs-URIs** durch die Ihrer Azure Active Directory-Anwendung.
+3. Ersetzen Sie `{redirect uri}` durch den Wert der Registerkarte **Weiterleitungs-URIs** Ihrer Azure Active Directory-Anwendung.
 
     Wenn die Werte angegeben wurden, sollte im Codebeispiel ein Token ähnlich dem folgenden Beispiel zurückgegeben werden:
 
     ![Tokenverschlüsselung][api-management-arm-token]
+
+    > [!NOTE]
+    > Das Token kann nach einer bestimmten Zeit ablaufen. Führen Sie das Codebeispiel erneut aus, um ein neues Token zu generieren.
 
 ## <a name="calling-the-backup-and-restore-operations"></a>Aufrufen der Sicherungs- und Wiederherstellungsvorgänge
 
@@ -134,7 +137,7 @@ Zum Sichern eines API Management-Diensts führen Sie die folgende HTTP-Anforderu
 Hierbei gilt:
 
 * `subscriptionId` – Abonnement-ID des API Management-Diensts, den Sie sichern möchten
-* `resourceGroupName` – Zeichenfolge in der Form „Api-Default-{service-region}“, wobei `service-region` die Azure-Region angibt, in der der zu sichernde API Management-Dienst gehostet wird, z.B. `North-Central-US`
+* `resourceGroupName` – der Name der Ressourcengruppe Ihres Azure API Management-Diensts
 * `serviceName` – Der Name des zu sichernden API Management-Diensts zum Zeitpunkt seiner Erstellung
 * `api-version` – ersetzen durch `2014-02-14`
 
@@ -193,8 +196,9 @@ Die Wiederherstellung ist ein länger anhaltender Vorgang, der bis zum Abschluss
 > **Die SKU** des wiederherzustellenden Diensts **muss** mit der SKU des gesicherten Diensts übereinstimmen.
 >
 > **Änderungen** an der Dienstkonfiguration (z.B. APIs, Richtlinien, Erscheinungsbild des Entwicklerportals), die während des Wiederherstellungsvorgangs vorgenommen werden, **könnten überschrieben werden**.
->
->
+
+> [!NOTE]
+> Sicherungs- und Wiederherstellungsvorgänge können ebenfalls mithilfe der PowerShell-Befehle *Backup-AzureRmApiManagement* bzw. *Restore-AzureRmApiManagement* ausgeführt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sehen Sie sich die folgenden Microsoft-Blogs für zwei verschiedene Vorgehensweisen des Sicherungs- und Wiederherstellungsvorgangs an.

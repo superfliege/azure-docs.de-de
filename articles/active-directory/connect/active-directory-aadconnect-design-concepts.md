@@ -16,12 +16,12 @@ ms.workload: Identity
 ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0a648d0733d9d81cc0e586f5fa54dc8d75d2f6f0
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 6d8d911acf3e3eff2cf3340972b9b77a10be0a5f
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801931"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "35636890"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Designkonzepte
 Hier erfahren Sie, welche Aspekte bei der Planung der Implementierung von Azure AD Connect berücksichtigt werden müssen. Dieses Dokument enthält ausführliche Informationen zu bestimmten Aspekten, und diese Konzepte werden auch in anderen Dokumenten kurz beschrieben.
@@ -44,7 +44,7 @@ Der Attributwert muss den folgenden Regeln entsprechen:
 
 * Weniger als 60 Zeichen lang
   * Zeichen, bei denen es sich nicht um a-z, A-Z oder 0-9 handelt, werden als drei Zeichen codiert und gezählt.
-* Keine Sonderzeichen: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " @ _
+* Keine Sonderzeichen: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " \@ _
 * Global eindeutig
 * Zeichenfolge, Ganzzahl oder Binärzahl
 * Sollte nicht auf Benutzernamen beruhen, da sich diese ändern können.
@@ -61,7 +61,7 @@ Wenn Sie mehrere Gesamtstrukturen besitzen und keine Benutzer zwischen Gesamtstr
 
 Wenn Sie Benutzer zwischen Gesamtstrukturen und Domänen verschieben, müssen Sie ein Attribut finden, das nicht geändert wird oder während des Verschiebevorgangs zusammen mit den Benutzern verschoben werden kann. Ein empfohlenes Verfahren ist die Einführung eines synthetischen Attributs. Ein Attribut, das etwas Ähnliches wie eine GUID enthält, wäre geeignet. Beim Erstellen des Objekts wird eine neue GUID erstellt und dem Benutzer zugewiesen. Im Synchronisierungsmodulserver kann eine benutzerdefinierte Synchronisierungsregel erstellt werden, um diesen Wert basierend auf **objectGUID** zu erstellen und das ausgewählte Attribut in ADDS zu aktualisieren. Wenn Sie das Objekt verschieben, stellen Sie sicher, dass Sie auch den Inhalt dieses Werts kopieren.
 
-Eine andere Lösung ist, ein vorhandenes Attribut zu wählen, von dem Sie wissen, dass es nicht geändert wird. Zu den häufig verwendeten Attributen zählt **employeeID**. Wenn Sie ein Attribut in Betracht ziehen, das Buchstaben enthält, stellen Sie sicher, dass keine Möglichkeit besteht, dass sich die Groß-/Kleinschreibung für den Wert des Attributs ändern kann. Zu schlechten Attributen, die nicht verwendet werden sollten, gehören Attribute mit dem Namen des Benutzers. Durch Hochzeit oder Scheidung könnte sich der Name ändern, und dies ist für dieses Attribut nicht zulässig. Dies ist auch ein Grund, warum Attribute wie **userPrincipalName**, **mail** und **targetAddress** im Installations-Assistenten von Azure AD Connect nicht einmal ausgewählt werden können. Diese Attribute enthalten außerdem das „@“-Zeichen, das in „sourceAnchor“ nicht zulässig ist.
+Eine andere Lösung ist, ein vorhandenes Attribut zu wählen, von dem Sie wissen, dass es nicht geändert wird. Zu den häufig verwendeten Attributen zählt **employeeID**. Wenn Sie ein Attribut in Betracht ziehen, das Buchstaben enthält, stellen Sie sicher, dass keine Möglichkeit besteht, dass sich die Groß-/Kleinschreibung für den Wert des Attributs ändern kann. Zu schlechten Attributen, die nicht verwendet werden sollten, gehören Attribute mit dem Namen des Benutzers. Durch Hochzeit oder Scheidung könnte sich der Name ändern, und dies ist für dieses Attribut nicht zulässig. Dies ist auch ein Grund, warum Attribute wie **userPrincipalName**, **mail** und **targetAddress** im Installations-Assistenten von Azure AD Connect nicht einmal ausgewählt werden können. Diese Attribute enthalten außerdem das „\@“-Zeichen, das in „sourceAnchor“ nicht zulässig ist.
 
 ### <a name="changing-the-sourceanchor-attribute"></a>Ändern des Attributs sourceAnchor
 Der Wert des Attributs sourceAnchor kann nicht geändert werden, nachdem das Objekt in Azure AD erstellt und die Identität synchronisiert wurde.
@@ -180,7 +180,7 @@ Bei der Integration Ihres lokalen Verzeichnisses in Azure AD ist es wichtig zu w
 ### <a name="choosing-the-attribute-for-userprincipalname"></a>Auswählen des Attributs für userPrincipalName
 Bei Auswahl des Attributs, das den in Azure zu verwendenden UPN-Wert bereitstellt, sollten Sie Folgendes sicherstellen:
 
-* Die Attributwerte entsprechen der UPN-Syntax (RFC 822) und müssen somit im Format username@domain
+* Die Attributwerte entsprechen der UPN-Syntax (RFC 822) und müssen somit im Format „Benutzername\@Domain“ vorliegen.
 * Das Suffix in den Werten stimmt mit einer der überprüften benutzerdefinierten Domänen in Azure AD überein.
 
 In den Expresseinstellungen wird userPrincipalName für das Attribut angenommen. Falls das userPrincipalName-Attribut nicht den Wert enthält, den Ihre Benutzer zum Anmelden bei Azure verwenden sollen, müssen Sie **Benutzerdefinierte Installation**wählen.
@@ -188,7 +188,7 @@ In den Expresseinstellungen wird userPrincipalName für das Attribut angenommen.
 ### <a name="custom-domain-state-and-upn"></a>Benutzerdefinierter Domänenstatus und UPN
 Sie müssen unbedingt sicherstellen, dass eine überprüfte Domäne für das UPN-Suffix existiert.
 
-John ist ein Benutzer in contoso.com. John soll den lokalen UPN john@contoso.com für die Anmeldung bei Azure verwenden, nachdem Sie die Benutzer mit Ihrem Azure AD-Verzeichnis „contoso.onmicrosoft.com“ synchronisiert haben. Zu diesem Zweck müssen Sie „contoso.com“ als benutzerdefinierte Domäne in Azure AD hinzufügen und überprüfen, bevor Sie mit dem Synchronisieren der Benutzer beginnen können. Wenn das UPN-Suffix von John (beispielsweise „contoso.com“) mit keiner überprüften Domäne in Azure übereinstimmt, ersetzt Azure AD das UPN-Suffix durch „contoso.onmicrosoft.com“.
+John ist ein Benutzer in contoso.com. John soll den lokalen UPN „john\@contoso.com“ für die Anmeldung bei Azure verwenden, nachdem Sie die Benutzer mit Ihrem Azure AD-Verzeichnis „contoso.onmicrosoft.com“ synchronisiert haben. Zu diesem Zweck müssen Sie „contoso.com“ als benutzerdefinierte Domäne in Azure AD hinzufügen und überprüfen, bevor Sie mit dem Synchronisieren der Benutzer beginnen können. Wenn das UPN-Suffix von John (beispielsweise „contoso.com“) mit keiner überprüften Domäne in Azure übereinstimmt, ersetzt Azure AD das UPN-Suffix durch „contoso.onmicrosoft.com“.
 
 ### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>Nicht routingfähige lokale Domänen und UPN für Azure AD
 Einige Unternehmen verfügen über nicht routingfähige Domänen, z.B. „contoso.local“, oder einteilige Domänen, z.B. „contoso“. Sie können eine nicht routingfähige Domäne in Azure AD nicht überprüfen. Azure AD Connect kann Synchronisierungen nur mit einer überprüften Domäne in Azure AD durchführen. Wenn Sie ein Azure AD-Verzeichnis erstellen, wird eine routingfähige Domäne erstellt, die zur Standarddomäne für Ihre Azure AD-Instanz wird, z.B. „contoso.onmicrosoft.com“. Daher ist es notwendig, in einem solchen Szenario alle anderen routingfähigen Domänen zu überprüfen, wenn Sie Synchronisierungen nicht mit der standardmäßigen Domäne „onmicrosoft.com“ durchführen möchten.

@@ -15,16 +15,18 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 864f790db48d3d4542ed56a4c7272a198df5bd56
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 10d6b81915432d9f41c0d4751f98cbf380ff2d13
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901135"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136569"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
+**F: Kann ich Android- oder iOS-BYOD-Geräte registrieren?**
 
+**A:** Ja, aber nur mit dem Azure-Dienst zur Geräteregistrierung und wenn Sie Hybrid-Kunde sind. Für den lokalen Dienst zur Geräteregistrierung in AD FS wird dies nicht unterstützt.
 
 **F: Wie kann ich ein macOS-Gerät registrieren?**
 
@@ -98,6 +100,11 @@ Für früherer Windows-Versionen, die in die lokale AD-Domäne eingebunden sind:
 **F: Meine Benutzer können von in Azure AD eingebundenen Geräten aus keine Drucker durchsuchen. Wie kann ich das Drucken von in Azure AD eingebundenen Geräten aktivieren?**
 
 **A:** Informationen zum Bereitstellen von Druckern für in Azure AD eingebundene Geräte finden Sie unter [Drucken in Hybrid Clouds](https://docs.microsoft.com/en-us/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Sie benötigen einen lokalen Windows-Server, um das Drucken in Hybrid Clouds bereitzustellen. Aktuell ist kein cloudbasierter Druckdienst verfügbar. 
+
+---
+
+**F: Wie kann ich eine Verbindung zu einem in einen Azure AD-Remoteserver eingebundenen Gerät herstellen?**
+**A:** Weitere Informationen finden Sie im Artikel https://docs.microsoft.com/en-us/windows/client-management/connect-to-remote-aadj-pc.
 
 ---
 

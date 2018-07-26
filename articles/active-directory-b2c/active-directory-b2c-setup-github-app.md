@@ -1,55 +1,53 @@
 ---
-title: GitHub-Identitätsanbieterkonfiguration in Azure Active Directory B2C | Microsoft-Dokumentation
-description: Bereitstellen von Registrierung und Anmeldung für Kunden mit GitHub-Konten in mit Azure Active Directory B2C gesicherten Anwendungen
+title: Einrichten der Registrierung und Anmeldung mit einem GitHub-Konto mithilfe von Azure Active Directory B2C | Microsoft-Dokumentation
+description: Bereitstellen von Registrierung und Anmeldung für Kunden mit GitHub-Konten in Ihren Anwendungen mithilfe von Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/06/2017
+ms.date: 07/09/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 3754a169b301bac97f3e12d10b754222e3cf325d
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 88fffd28319101c112f848eebc6e8ee27f7f863e
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443340"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952017"
 ---
-# <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-github-accounts"></a>Azure Active Directory B2C: Bereitstellen von Registrierung und Anmeldung für Kunden mit GitHub-Konten
+# <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem GitHub-Konto mithilfe von Azure Active Directory B2C
 
 > [!NOTE]
 > Dieses Feature befindet sich in der Vorschauphase.
 > 
 
-In diesem Artikel erfahren Sie, wie Sie Benutzern die Anmeldung mit einem GitHub-Konto ermöglichen.
+Um ein GitHub-Konto als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwenden zu können, müssen Sie eine Anwendung in Ihrem Mandanten erstellen, die es darstellt. Wenn Sie noch über kein GitHub-Konto verfügen, können Sie eines unter [https://www.github.com/](https://www.github.com/) erstellen.
 
 ## <a name="create-a-github-oauth-application"></a>Erstellen einer GitHub-OAuth-Anwendung
 
-Um GitHub als Identitätsanbieter in Azure AD B2C verwenden zu können, müssen Sie eine GitHub-OAuth-App erstellen und die entsprechenden Parameter bereitstellen.
+1. Melden Sie sich auf der [GitHub-Entwickler-Website](https://github.com/settings/developers) mit Ihren GitHub-Anmeldeinformationen an.
+2. Wählen Sie **OAuth Apps** (OAuth-Apps) und dann **Register a new application** (Neue Anwendung registrieren) aus.
+3. Geben Sie einen **Anwendungsnamen** und Ihre **Homepage-URL** ein.
+4. Geben Sie `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` unter **Authorization callback URL** (Autorisierungsrückruf-URL) ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Azure AD B2C-Mandanten (z.B. „B2C.onmicrosoft.com“).
+5. Klicken Sie zum Registrieren der Anwendung auf **Register application**.
+6. Kopieren Sie die Werte für **Client ID** und **Client Secret**. Sie benötigen beide Angaben, um den Identitätsanbieter Ihrem Mandanten hinzuzufügen.
 
-1. Öffnen Sie nach der Anmeldung bei GitHub die [GitHub-Entwicklereinstellungen](https://github.com/settings/developers).
-1. Klicken Sie auf **New OAuth App** (Neue OAuth-App).
-1. Geben Sie einen **Anwendungsnamen** und Ihre **Homepage-URL** ein.
-1. Geben Sie in **Authorization callback URL** (Autorisierungsrückruf-URL) `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Azure AD B2C-Mandanten (z.B. „B2C.onmicrosoft.com“).
+## <a name="configure-a-github-account-as-an-identity-provider"></a>Konfigurieren eines GitHub-Kontos als Identitätsanbieter
 
-    >[!NOTE]
-    >Der Wert für „tenant“ muss in der **Sign-on URL** (Anmelde-URL) in Kleinbuchstaben angegeben werden.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Azure AD B2C-Mandanten an.
+2. Vergewissern Sie sich, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie oben rechts im Azure-Portal zu diesem Verzeichnis wechseln. Wählen Sie die Abonnementinformationen aus, und klicken Sie dann auf **Verzeichnis wechseln**. 
 
-1. Klicken Sie zum Registrieren der Anwendung auf **Register application**.
-1. Speichern Sie die Werte für **Client ID** (Client-ID) und **Client Secret** (Geheimer Clientschlüssel). Sie benötigen beide Angaben im nächsten Abschnitt.
+    ![Wechseln zu Ihrem Azure AD B2C-Mandanten](./media/active-directory-b2c-setup-github-app/switch-directories.png)
 
-## <a name="configure-github-as-an-identity-provider-in-your-azure-ad-b2c-tenant"></a>Konfigurieren von GitHub als Identitätsanbieter in Ihrem Azure AD B2C-Mandanten
+    Wählen Sie das Verzeichnis aus, das den Mandanten enthält.
 
-1. Führen Sie diese Schritte aus, um im Azure-Portal [zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
-1. Klicken Sie auf dem B2C-Featureblatt auf **Identitätsanbieter**.
-1. Klicken Sie oben auf dem Blatt auf **+Hinzufügen**.
-1. Geben Sie als **Name** einen aussagekräftigen Namen für die Konfiguration des Identitätsanbieters ein. Geben Sie z.B. „GitHub“ ein.
-1. Klicken Sie auf **Identitätsanbietertyp**, wählen Sie **GitHub** aus, und klicken Sie auf **OK**.
-1. Klicken Sie auf **Diesen Identitätsanbieter einrichten**, und geben Sie die Client-ID und den geheimen Clientschlüssel der GitHub-OAuth-Anwendung ein, die Sie zuvor kopiert haben.
-1. Klicken Sie auf **OK** und dann auf **Erstellen**, um Ihre GitHub-Konfiguration zu speichern.
+    ![Auswählen des Verzeichnisses](./media/active-directory-b2c-setup-github-app/select-directory.png)
 
-## <a name="next-steps"></a>Nächste Schritte
-
-Erstellen oder bearbeiten Sie eine [integrierte Richtlinie](active-directory-b2c-reference-policies.md), und fügen Sie GitHub als Identitätsanbieter hinzu.
+3. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf.
+4. Wählen Sie **Identitätsanbieter** und dann **Hinzufügen** aus.
+5. Geben Sie einen **Namen** an. Geben Sie z.B. *GitHub* ein.
+6. Wählen Sie **Identitätsanbietertyp** und dann **GitHub (Vorschau)** aus, und klicken Sie auf **OK**.
+7. Wählen Sie **Diesen Identitätsanbieter einrichten** aus, und geben Sie die zuvor notierte Client-ID als **Client-ID** und das notierte Clientgeheimnis als **Clientgeheimnis** der zuvor erstellten GitHub-Kontoanwendung ein.
+8. Klicken Sie auf **OK** und dann auf **Erstellen**, um die Konfiguration des GitHub-Kontos zu speichern.

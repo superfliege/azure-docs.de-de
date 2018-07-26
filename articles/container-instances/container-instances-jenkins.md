@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 07/13/2018
 ms.author: marsma
-ms.openlocfilehash: ff94a250ca40aa546ebb07faa96563f49dea974a
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: d8ac5850a61c1dec9daa508236ef56836876c3fe
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887690"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072074"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Verwenden von Azure Container Instances als Jenkins-Build-Agent
 
@@ -92,31 +92,21 @@ Jenkins ist jetzt konfiguriert und kann zum Erstellen und Bereitstellen von Code
 
 ## <a name="create-a-build-job"></a>Erstellen eines Buildauftrags
 
-Wenn Sie ein Containerimage als Jenkins-Buildziel verwenden, müssen Sie ein Image angeben, das alle für einen erfolgreichen Buildvorgang erforderlichen Tools enthält. So geben Sie das Image an
+Nun wird ein Jenkins-Buildauftrag erstellt, um Jenkins-Builds auf einer Azure-Containerinstanz zu veranschaulichen.
 
-1. Wählen Sie **Manage Jenkins** (Jenkins verwalten) > **Configure System** (System konfigurieren), und scrollen Sie nach unten zum Abschnitt **Cloud**. In diesem Beispiel aktualisieren Sie den Wert des Docker-Images auf **microsoft/java-on-azure-jenkins-slave**.
-
-   Wählen Sie anschließend **Save** (Speichern), um zum Jenkins-Dashboard zurückzukehren.
-
-   ![Jenkins-Cloudkonfiguration](./media/container-instances-jenkins/jenkins-aci-image.png)
-
-2. Erstellen Sie nun einen Jenkins-Buildauftrag. Wählen Sie **New Item** (Neues Element) aus, geben Sie dem Buildprojekt einen Namen wie **aci-java-demo**, wählen Sie **Freestyle project** (Freestyleprojekt) aus, und wählen Sie dann **OK**.
+1. Klicken Sie auf **Neues Element**, geben Sie dem Buildprojekt einen Namen wie **aci-demo**, wählen Sie **Freestyle project** (Freestyleprojekt) aus, und klicken Sie dann auf **OK**.
 
    ![Das Feld für den Namen des Buildauftrags und die Liste der Projekttypen](./media/container-instances-jenkins/jenkins-new-job.png)
 
-3. Vergewissern Sie sich, dass unter **General** (Allgemein) die Option **Restrict where this project can be run** (Ausführungsort dieses Projekts beschränken) aktiviert ist. Geben Sie als Bezeichnungsausdruck **linux** ein. Mit dieser Konfiguration wird sichergestellt, dass dieser Buildauftrag in der ACI-Cloud ausgeführt wird.
+2. Vergewissern Sie sich, dass unter **General** (Allgemein) die Option **Restrict where this project can be run** (Ausführungsort dieses Projekts beschränken) aktiviert ist. Geben Sie als Bezeichnungsausdruck **linux** ein. Mit dieser Konfiguration wird sichergestellt, dass dieser Buildauftrag in der ACI-Cloud ausgeführt wird.
 
    ![Die Registerkarte „Allgemein“ mit Konfigurationsdetails](./media/container-instances-jenkins/jenkins-job-01.png)
 
-4. Wählen Sie unter **Source Code Management** (Quellcodeverwaltung) die Option **Git** aus, und geben Sie als Repository-URL **https://github.com/spring-projects/spring-petclinic.git** ein. Dieses GitHub-Repository enthält den Beispielanwendungscode.
+3. Klicken Sie unter **Build** auf **Buildschritt hinzufügen**, und klicken Sie auf **Execute Shell** (Shell ausführen). Geben Sie den Befehl `echo "aci-demo"` ein.
 
-   ![Die Registerkarte „Quellcodeverwaltung“ mit Quellcodeinformationen](./media/container-instances-jenkins/jenkins-job-02.png)
+   ![Die Registerkarte „Build“ mit der Auswahl für den Buildschritt](./media/container-instances-jenkins/jenkins-job-02.png)
 
-5. Wählen Sie unter **Build** die Option **Add build step** (Buildschritt hinzufügen) und dann **Invoke top-level Maven targets** (Oberste Maven-Ziele aufrufen) aus. Geben Sie als Ziel für den Buildschritt **package** ein.
-
-   ![Die Registerkarte „Build“ mit der Auswahl für den Buildschritt](./media/container-instances-jenkins/jenkins-job-03.png)
-
-6. Wählen Sie **Speichern**aus.
+5. Wählen Sie **Speichern**aus.
 
 ## <a name="run-the-build-job"></a>Ausführen des Buildauftrags
 

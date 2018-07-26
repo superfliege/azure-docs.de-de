@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2017
+ms.date: 07/10/2018
 ms.author: terrylan
-ms.openlocfilehash: d83beecfc5a8f6b8a01c64e809bc84c6fd0238bf
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a68c0ecc15f81efe6045f4c298b48f9809916297
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31416488"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38479460"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Integrieren von Azure Security Center Standard für erhöhte Sicherheit
 Führen Sie ein Upgrade auf Security Center Standard durch, um von erhöhter Sicherheit und besserem Schutz vor Bedrohungen für Ihre Hybridcloud-Workloads zu profitieren.  Sie können die Standard-Edition 60 Tage lang kostenlos testen. Weitere Informationen finden Sie auf der Seite mit den [Preisen für Security Center](https://azure.microsoft.com/pricing/details/security-center/).
@@ -42,7 +42,7 @@ Sie können ein gesamtes Azure-Abonnement auf den Standard-Tarif upgraden, da di
 
 ## <a name="upgrade-an-azure-subscription"></a>Upgraden eines Azure-Abonnements
 So führen Sie ein Upgrade aller Abonnements auf Standard durch:
-1. Klicken Sie im Hauptmenü von Security Center auf **Onboarding**.
+1. Klicken Sie im Hauptmenü von Security Center auf **Integration in erweiterte Sicherheit**.
 2. Unter **Integration in erweiterte Sicherheit** werden für die Integration geeignete Abonnements aufgeführt. Durch Klicken auf **Standardplan anwenden** können Sie alle aufgeführten Abonnements upgraden.
 
   ![Upgraden aller Abonnements][1]
@@ -113,8 +113,8 @@ Sie können einen Computer mithilfe des Workflows unter **Onboarding** hinzufüg
 
    ![Übersicht][5]
 
-2. Klicken Sie auf die Kachel **Compute**.
-3. Klicken Sie unter **Compute** auf **Computer hinzufügen**.
+2. Wählen Sie **Compute und Apps** aus.
+3. Wählen Sie unter **Compute und Apps** die Option **Computer hinzufügen** aus.
 
    ![Blatt „Compute“][6]
 

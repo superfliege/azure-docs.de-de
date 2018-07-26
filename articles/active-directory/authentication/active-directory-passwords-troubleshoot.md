@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 7a23702b40ea46edd6dd139ebdb0a3742193429e
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e24f5070a793f62481bdc80044c97163c5b5c79f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857217"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045188"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Behandeln von Problemen mit der Self-Service-Kennwortzurücksetzung
 
@@ -35,7 +35,7 @@ Haben Sie Probleme mit der Self-Service-Kennwortzurücksetzung (Self-Service Pas
 | OnPremisesConnectivityError = 30 | Wir können Ihr Kennwort aufgrund von Konnektivitätsproblemen mit Ihrer Organisation zurzeit nicht zurücksetzen. Im Moment können Sie nichts unternehmen, aber möglicherweise ist das Problem gelöst, wenn Sie es später noch mal versuchen. Wenn das Problem weiterhin auftritt, wenden Sie sich an Ihren Administrator, und bitten Sie ihn, nachzuforschen. Weitere Informationen zu Konnektivitätsproblemen finden Sie unter [Behandeln von Konnektivitätsproblemen beim Kennwortrückschreiben](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback-connectivity). | SSPR_0030: Wir können Ihr Kennwort aufgrund einer schlechten Verbindung mit Ihrer lokalen Umgebung nicht zurücksetzen. Bitten Sie Ihren Administrator, das Problem zu untersuchen.|
 
 
-## <a name="troubleshoot-the-password-reset-configuration-in-the-azure-portal"></a>Behandeln von Problemen bei der Konfiguration der Kennwortzurücksetzung im Azure-Portal
+## <a name="troubleshoot-the-password-reset-configuration-in-the-azure-portal"></a>Behandeln von Problemen mit Konfiguration der Kennwortzurücksetzung im Azure-Portal
 
 | Error | Lösung |
 | --- | --- |
@@ -296,8 +296,8 @@ Damit wir Sie bestmöglich unterstützen können, geben Sie bitte so viele Detai
 Die folgenden Artikel enthalten weitere Informationen zur Kennwortzurücksetzung über Azure AD:
 
 * [Erfolgreiches Rollout der Self-Service-Kennwortzurücksetzung](howto-sspr-deployment.md)
-* [Zurücksetzen oder Ändern des Kennworts](../active-directory-passwords-update-your-own-password.md)
-* [Registrieren für die Self-Service-Kennwortzurücksetzung](../active-directory-passwords-reset-register.md)
+* [Zurücksetzen oder Ändern des Kennworts](../user-help/active-directory-passwords-update-your-own-password.md)
+* [Registrieren für die Self-Service-Kennwortzurücksetzung](../user-help/active-directory-passwords-reset-register.md)
 * [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](concept-sspr-licensing.md)
 * [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](howto-sspr-authenticationdata.md)
 * [Authentifizierungsmethoden](concept-sspr-howitworks.md#authentication-methods)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: f1ce47874b759748f4a2e2ce1fb438b394443058
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e1964b7f46259e54c65aeb46aa795713922c3504
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36334797"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114611"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen
 In diesem Artikel wird die Struktur einer Azure Resource Manager-Vorlage beschrieben. Er zeigt die verschiedenen Abschnitte einer Vorlage und die Eigenschaften, die in diesen Abschnitten verfügbar sind. Die Vorlage besteht aus JSON-Code und Ausdrücken, mit denen Sie Werte für Ihre Bereitstellung erstellen können. Ein ausführliches Tutorial zum Erstellen einer Vorlage finden Sie unter [Erstellen Ihrer ersten Azure Resource Manager-Vorlage](resource-manager-create-first-template.md).
@@ -41,12 +41,12 @@ In der einfachsten Struktur weist eine Vorlage die folgenden Elemente auf:
 
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--- |:--- |:--- |
-| $schema |Ja |Speicherort der JSON-Schemadatei, die die Version der Vorlagensprache beschreibt. Verwenden Sie die im vorherigen Beispiel gezeigte URL. |
-| contentVersion |Ja |Version der Vorlage (z. B. 1.0.0.0). Sie können einen beliebigen Wert für dieses Element resources. Mit diesem Wert können Sie wichtige Änderungen in der Vorlage dokumentieren. Bei der Bereitstellung von Ressourcen mithilfe der Vorlage kann mit diesem Wert sichergestellt werden, dass die richtige Vorlage verwendet wird. |
+| $schema |JA |Speicherort der JSON-Schemadatei, die die Version der Vorlagensprache beschreibt. Verwenden Sie die im vorherigen Beispiel gezeigte URL. |
+| contentVersion |JA |Version der Vorlage (z. B. 1.0.0.0). Sie können einen beliebigen Wert für dieses Element resources. Mit diesem Wert können Sie wichtige Änderungen in der Vorlage dokumentieren. Bei der Bereitstellung von Ressourcen mithilfe der Vorlage kann mit diesem Wert sichergestellt werden, dass die richtige Vorlage verwendet wird. |
 | Parameter |Nein  |Werte, die bei der Bereitstellung angegeben werden, um die Bereitstellung der Ressourcen anpassen. |
 | variables |Nein  |Werte, die als JSON-Fragmente in der Vorlage verwendet werden, um Vorlagensprachausdrücke zu vereinfachen. |
 | functions |Nein  |Benutzerdefinierte Funktionen, die in der Vorlage verfügbar sind. |
-| resources |Ja |Ressourcentypen, die in einer Ressourcengruppe bereitgestellt oder aktualisiert werden. |
+| resources |JA |Ressourcentypen, die in einer Ressourcengruppe bereitgestellt oder aktualisiert werden. |
 | outputs |Nein  |Werte, die nach der Bereitstellung zurückgegeben werden. |
 
 Jedes Element weist Eigenschaften auf, die Sie festlegen können. Das folgende Beispiel zeigt die vollständige Syntax für eine Vorlage:
@@ -214,6 +214,7 @@ In Ihrer Vorlage können Sie Ihre eigenen Funktionen erstellen. Diese Funktionen
 Beim Definieren einer benutzerdefinierten Funktion gelten einige Einschränkungen:
 
 * Die Funktion kann nicht auf Variablen zugreifen.
+* Die Funktion kann nicht auf Vorlagenparameter zugreifen. Das bedeutet, dass die [Parameterfunktion](resource-group-template-functions-deployment.md#parameters) auf Funktionsparameter beschränkt ist.
 * Die Funktion kann keine anderen benutzerdefinierten Funktionen aufrufen.
 * Die Funktion kann nicht die [Referenzfunktion](resource-group-template-functions-resource.md#reference) verwenden.
 * Für die Parameter der Funktion können keine Standardwerte verwendet werden.
@@ -312,4 +313,4 @@ Sie können einige Vorlagengrenzwerte überschreiten, indem Sie eine geschachtel
 * Komplette Vorlagen für viele verschiedene Lösungstypen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/).
 * Ausführliche Informationen zu den Funktionen, die Sie innerhalb einer Vorlage nutzen können, finden Sie unter [Funktionen von Azure Resource Manager-Vorlagen](resource-group-template-functions.md).
 * Informationen zum Zusammenführen mehrerer Vorlagen während der Bereitstellung finden Sie unter [Verwenden von verknüpften Vorlagen mit Azure Resource Manager](resource-group-linked-templates.md).
-* Möglicherweise müssen Sie Ressourcen verwenden, die in einer anderen Ressourcengruppe enthalten sind. Dieses Szenario ist bei der Arbeit mit Speicherkonten oder virtuellen Netzwerken üblich, die in mehreren Ressourcengruppen gemeinsam verwendet werden. Weitere Informationen finden Sie unter der [resourceId-Funktion](resource-group-template-functions-resource.md#resourceid).
+* Weitere Empfehlungen zum Erstellen von Resource Manager-Vorlagen, die Sie global in Azure, unabhängigen Azure-Clouds und Azure Stack finden Sie unter [Entwickeln von Azure Resource Manager-Vorlagen für cloudübergreifende Konsistenz](templates-cloud-consistency.md).

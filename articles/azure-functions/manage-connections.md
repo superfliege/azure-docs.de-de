@@ -10,14 +10,14 @@ ms.service: functions
 ms.workload: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 07/13/2018
 ms.author: tdykstra
-ms.openlocfilehash: 6c0af8f6f7e1d4aea8880a7af311aaa21f474f7e
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 9e5c56dc3679e9ffbd67d906ca7d971439319ee5
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969003"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125375"
 ---
 # <a name="how-to-manage-connections-in-azure-functions"></a>Verwalten von Verbindungen in Azure Functions
 
@@ -27,11 +27,12 @@ Azure Functions nutzt in einer Funktionen-App gemeinsame Ressourcen. Zu diesen g
 
 Die Anzahl der verfügbaren Verbindungen ist teilweise begrenzt, da eine Funktionen-App im [Azure App Service-Sandkasten](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) ausgeführt wird. Eine Einschränkung, die der Sandkasten Ihrem Code auferlegt, ist eine [Obergrenze für die Anzahl der Verbindungen (derzeit 300)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits). Wenn dieses Limit erreicht ist, erstellt Functions Runtime ein Protokoll mit folgender Meldung: `Host thresholds exceeded: Connections`.
 
-Die Chancen, den Grenzwert zu überschreiten, steigen, wenn der [Skalierungscontroller Funktionen-App-Instanzen hinzufügt](functions-scale.md#how-the-consumption-plan-works). Jede Funktionen-App-Instanz kann Funktionen mehrfach auf einmal aufrufen, und all diese Funktionen verwenden Verbindungen, die unter den Grenzwert von 300 fallen.
+Die Wahrscheinlichkeit, dass das Limit überschritten wird, steigt, wenn der [Skalierungscontroller Funktions-App-Instanzen hinzufügt](functions-scale.md#how-the-consumption-plan-works), um mehr Anforderungen zu verarbeiten. Jede Funktions-App-Instanz kann mehrere Funktionen auf einmal ausführen, die alle Verbindungen nutzen, die in die Berechnung des Grenzwerts „300“ einbezogen werden.
 
 ## <a name="use-static-clients"></a>Verwenden von statischen Clients
 
-Um zu vermeiden, dass mehr Verbindungen als nötig gehalten werden, erstellen Sie bei jedem Funktionsaufruf keine neuen Instanzen, sondern verwenden die Clientinstanzen erneut. .NET-Clients wie `HttpClient`, `DocumentClient` und Azure Storage-Clients können Verbindungen verwalten, wenn Sie einen einzelnen, statischen Client verwenden.
+Um zu vermeiden, dass mehr Verbindungen als nötig gehalten werden, erstellen Sie bei jedem Funktionsaufruf keine neuen Instanzen, sondern verwenden die Clientinstanzen erneut. .NET-Clients wie [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) und [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+) sowie Azure Storage-Clients können Verbindungen verwalten, wenn Sie einen einzelnen, statischen Client verwenden.
 
 Es folgen einige Richtlinien, die zu beachten sind, wenn Sie einen dienstspezifischen Client in einer Azure Functions-Anwendung verwenden:
 
@@ -41,7 +42,7 @@ Es folgen einige Richtlinien, die zu beachten sind, wenn Sie einen dienstspezifi
 
 ## <a name="httpclient-code-example"></a>Codebeispiel für HttpClient
 
-Es folgt ein Beispiel für einen Funktionscode, der einen statischen `HttpClient` erstellt:
+Es folgt ein Beispiel für einen Funktionscode, der einen statischen [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) erstellt:
 
 ```cs
 // Create a single, static HttpClient
@@ -54,15 +55,16 @@ public static async Task Run(string input)
 }
 ```
 
-Eine häufig gestellte Frage zum .NET `HttpClient` lautet: „Soll ich meinen Client löschen?“ Im Allgemeinen löschen Sie Objekte, die `IDisposable` implementieren, wenn Sie sie nicht mehr verwenden. Sie löschen jedoch keinen statischen Client, da dessen Verwendung mit dem Funktionsende nicht abgeschlossen ist. Der statische Client soll für die Dauer der Anwendung gültig sein.
+Eine häufig gestellte Frage zum .NET-[HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) lautet: „Soll ich meinen Client löschen?“. Im Allgemeinen löschen Sie Objekte, die `IDisposable` implementieren, wenn Sie sie nicht mehr verwenden. Sie löschen jedoch keinen statischen Client, da dessen Verwendung mit dem Funktionsende nicht abgeschlossen ist. Der statische Client soll für die Dauer der Anwendung gültig sein.
 
 ## <a name="documentclient-code-example"></a>Codebeispiel für DocumentClient
 
-`DocumentClient` stellt eine Verbindung zu einer Cosmos DB-Instanz her. Die Cosmos DB-Dokumentation empfiehlt das [Verwenden eines Singleton-Azure Cosmos DB-Clients für die Lebensdauer der Anwendung](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage). Das folgende Beispiel zeigt ein Muster dafür in einer Funktion.
+[DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+) stellt eine Verbindung mit einer Azure Cosmos DB-Instanz her. In der Azure Cosmos DB-Dokumentation wird empfohlen, dass Sie [einen Singleton-Azure Cosmos DB-Client für die Lebensdauer der Anwendung verwenden](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage). Im folgenden Beispiel wird ein Muster dafür in einer Funktion gezeigt:
 
 ```cs
 #r "Microsoft.Azure.Documents.Client"
-using Microsoft.Azure.Documents.Client; 
+using Microsoft.Azure.Documents.Client;
 
 private static Lazy<DocumentClient> lazyClient = new Lazy<DocumentClient>(InitializeDocumentClient);
 private static DocumentClient documentClient => lazyClient.Value;
@@ -85,6 +87,14 @@ public static async Task Run(string input)
     // Rest of function
 }
 ```
+
+## <a name="sqlclient-connections"></a>SqlClient-Verbindungen
+
+Funktionscode kann den .NET Framework-Datenanbieter für SQL Server ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) verwenden, um Verbindungen zu einer relationalen SQL-Datenbank herzustellen. Dies ist auch der zugrunde liegende Anbieter für Daten-Frameworks, die ADO.NET verwenden, z.B. Entity Framework. Im Gegensatz zu [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)- und [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+)-Verbindungen implementiert ADO.NET standardmäßig das Verbindungspooling. Da jedoch noch immer nicht genügend Verbindungen verfügbar sein können, sollten Sie die Verbindungen mit der Datenbank optimieren. Weitere Informationen finden Sie unter [SQL Server-Verbindungspooling (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling).
+
+> [!TIP]
+> Einige Daten-Frameworks, z.B. [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx), rufen Verbindungszeichenfolgen üblicherweise aus dem Abschnitt **ConnectionStrings** einer Konfigurationsdatei ab. In diesem Fall müssen Sie der Sammlung **Verbindungszeichenfolgen** der Funktions-App-Einstellungen und der Datei [local.settings.json](functions-run-local.md#local-settings-file) im lokalen Projekt explizit SQL-Datenbank-Verbindungszeichenfolgen hinzufügen. Bei der Erstellung einer [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx)-Klasse in Ihrem Funktionscode sollten Sie den Verbindungszeichenfolgenwert zusammen mit den anderen Verbindungen in den **Anwendungseinstellungen** speichern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

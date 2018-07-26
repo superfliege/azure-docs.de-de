@@ -1,6 +1,6 @@
 ---
-title: Add-On für HTTP-Anwendungsrouting in Azure-Container Service (AKS)
-description: Verwenden des Add-Ons für HTTP-Anwendungsrouting in Azure-Container Service (AKS)
+title: Add-On für HTTP-Anwendungsrouting in Azure Kubernetes Service (AKS)
+description: In diesem Artikel erfahren Sie mehr zur Verwendung des Add-Ons für HTTP-Anwendungsrouting in Azure Kubernetes Service (AKS).
 services: container-service
 author: lachie83
 manager: jeconnoc
@@ -8,33 +8,51 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: 6e5a81742b4a6b21e5cfa28d8e772430f8ae30ba
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 4484031b20e625f81ba8b3869110e90df189323e
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34067502"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39116970"
 ---
 # <a name="http-application-routing"></a>HTTP-Anwendungsrouting
 
-Die Lösung für das HTTP-Anwendungsrouting ermöglicht einen einfachen Zugriff auf Anwendungen, die in Ihrem AKS-Cluster bereitgestellt sind. Bei Aktivierung konfiguriert die Lösung einen Eingangscontroller in Ihrem AKS-Cluster. Darüber hinaus erstellt die Lösung bei der Bereitstellung von Anwendungen auch öffentlich zugängliche DNS-Namen für Anwendungsendpunkte.
+Die Lösung für das HTTP-Anwendungsrouting ermöglicht einen einfachen Zugriff auf Anwendungen, die in Ihrem AKS-Cluster (Azure Kubernetes Service) bereitgestellt sind. Bei Aktivierung konfiguriert die Lösung einen Eingangscontroller in Ihrem AKS-Cluster. Darüber hinaus erstellt die Lösung bei der Bereitstellung von Anwendungen auch öffentlich zugängliche DNS-Namen für Anwendungsendpunkte.
 
-Wenn Sie dieses Add-On aktivieren, wird eine DNS-Zone in Ihrem Abonnement erstellt. Weitere Informationen zu den DNS-Kosten finden Sie unter [Azure DNS – Preise][dns-pricing].
+Wenn Sie dieses Add-On aktivieren, erstellt es eine DNS-Zone in Ihrem Abonnement. Weitere Informationen zu den DNS-Kosten finden Sie unter [Azure DNS – Preise][dns-pricing].
 
 ## <a name="http-routing-solution-overview"></a>Übersicht über die HTTP-Routinglösung
 
 Das Add-On stellt zwei Komponenten bereit: einen [Kubernetes-Eingangscontroller][ingress] und einen [externen DNS-Controller][external-dns].
 
-- **Eingangscontroller**: Der Eingangscontroller ist über einen Kubernetes-Dienst vom Typ „LoadBalancer“ online verfügbar. Der Eingangscontroller überwacht und implementiert [Kubernetes-Eingangsressourcen][ingress-resource], die Routen zu Anwendungsendpunkten erstellen.
+- **Eingangscontroller**: Der Eingangscontroller ist über einen Kubernetes-Dienst vom Typ „LoadBalancer“ mit dem Internet verbunden. Er überwacht und implementiert [Kubernetes-Eingangsressourcen][ingress-resource], die Routen zu Anwendungsendpunkten erstellen.
 - **Externer DNS-Controller**: Er überwacht die Kubernetes-Eingangsressourcen und erstellt in der clusterspezifischen DNS-Zone DNS-A-Einträge.
 
-## <a name="deploy-http-routing"></a>Bereitstellen von HTTP-Routing
+## <a name="deploy-http-routing-cli"></a>Bereitstellen von HTTP-Routing: CLI
+
+Das Add-On für HTTP-Anwendungsrouting kann beim Bereitstellen eines AKS-Clusters über die Azure-Befehlszeilenschnittstelle (Command-Line Interface, CLI) aktiviert werden. Verwenden Sie hierzu den Befehl [az aks create][az-aks-create] mit dem Argument `--enable-addons`.
+
+```azurecli
+az aks create --resource-group myAKSCluster --name myAKSCluster --enable-addons http_application_routing
+```
+
+Nachdem das Cluster bereitgestellt ist, rufen Sie mit dem Befehl [az aks show][az-aks-show] den Namen der DNS-Zone ab. Dieser Name wird zur Bereitstellung von Anwendungen im AKS-Cluster benötigt.
+
+```azurecli
+$ az aks show --resource-group myAKSCluster --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
+
+Result
+-----------------------------------------------------
+9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
+```
+
+## <a name="deploy-http-routing-portal"></a>Bereitstellen von HTTP-Routing: Portal
 
 Das Add-On für HTTP-Anwendungsrouting kann beim Bereitstellen eines AKS-Clusters über das Azure-Portal aktiviert werden.
 
 ![Aktivieren der HTTP-Routingfunktion](media/http-routing/create.png)
 
-Nachdem der Cluster bereitgestellt wurde, navigieren Sie zur automatisch erstellten AKS-Ressourcengruppe und wählen die DNS-Zone aus. Notieren Sie sich den DNS-Zonennamen. Dieser Name wird bei der Bereitstellung von Anwendungen im AKS-Cluster benötigt.
+Nachdem der Cluster bereitgestellt wurde, navigieren Sie zur automatisch erstellten AKS-Ressourcengruppe, und wählen Sie die DNS-Zone aus. Notieren Sie sich den DNS-Zonennamen. Dieser Name wird zur Bereitstellung von Anwendungen im AKS-Cluster benötigt.
 
 ![Abrufen des DNS-Zonennamens](media/http-routing/dns.png)
 
@@ -47,7 +65,7 @@ annotations:
   kubernetes.io/ingress.class: addon-http-application-routing
 ```
 
-Erstellen Sie eine Datei namens „`samples-http-application-routing.yaml`“, und fügen Sie den folgenden YAML-Code ein. Aktualisieren Sie in Zeile 43 `<CLUSTER_SPECIFIC_DNS_ZONE>` mit dem im letzten Schritt dieses Dokuments gesammelten DNS-Zonennamen.
+Erstellen Sie eine Datei namens **samples-http-application-routing.yaml**, und kopieren Sie den folgenden YAML-Code. Aktualisieren Sie in Zeile 43 `<CLUSTER_SPECIFIC_DNS_ZONE>` mit dem im letzten Schritt dieses Artikels erfassten DNS-Zonennamen.
 
 
 ```yaml
@@ -109,7 +127,7 @@ service "party-clippy" created
 ingress "party-clippy" created
 ```
 
-Verwenden Sie cURL oder einen Browser, um zu dem im Hostbereich der Datei `samples-http-application-routing.yaml` angegebenen Hostnamen zu navigieren. Es kann bis zu einer Minute dauern, bevor die Anwendung über das Internet verfügbar ist.
+Verwenden Sie cURL oder einen Browser, um zu dem im Hostbereich der Datei „samples-http-application-routing.yaml“ angegebenen Hostnamen zu navigieren. Es kann bis zu einer Minute dauern, bevor die Anwendung über das Internet verfügbar ist.
 
 ```
 $ curl party-clippy.471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io
@@ -132,9 +150,9 @@ $ curl party-clippy.471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io
 
 ```
 
-## <a name="troubleshooting"></a>Problembehandlung
+## <a name="troubleshoot"></a>Problembehandlung
 
-Verwenden Sie den Befehl [kubectl logs][kubectl-logs], um die Anwendungsprotokolle für die externe DNS-Anwendung anzuzeigen. Die Protokolle sollten bestätigen, dass ein A- und TXT-DNS-Eintrag erfolgreich erstellt wurde.
+Verwenden Sie den Befehl [kubectl logs][kubectl-logs], um die Anwendungsprotokolle für die externe DNS-Anwendung anzuzeigen. Die Protokolle sollten bestätigen, dass ein A- und TXT-DNS-Eintrag erfolgreich erstellt wurden.
 
 ```
 $ kubectl logs -f deploy/addon-http-application-routing-external-dns -n kube-system
@@ -147,7 +165,7 @@ Diese Datensätze können auch bei der DNS-Zonenressource im Azure-Portal einges
 
 ![Abrufen der DNS-Datensätze](media/http-routing/clippy.png)
 
-Verwenden Sie den Befehl [kubectl logs][kubectl-logs], um die Anwendungsprotokolle für den Nginx-Eingangscontroller anzuzeigen. Die Protokolle sollten das ERSTELLEN einer Eingangsressource und das erneute Laden des Controllers bestätigen. Alle HTTP-Aktivitäten werden protokolliert.
+Mithilfe des Befehls [kubectl logs][kubectl-logs] können Sie sich die Anwendungsprotokolle für den Nginx-Eingangscontroller anzeigen lassen. Die Protokolle sollten den `CREATE`-Befehl für eine Eingangsressource und das erneute Laden des Controllers bestätigen. Alle HTTP-Aktivitäten werden protokolliert.
 
 ```
 $ kubectl logs -f deploy/addon-http-application-routing-nginx-ingress-controller -n kube-system
@@ -186,9 +204,9 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 167.220.24.46 - [167.220.24.46] - - [26/Apr/2018:21:53:20 +0000] "GET / HTTP/1.1" 200 234 "" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)" 197 0.001 [default-party-clippy-80] 10.244.0.13:8080 234 0.004 200
 ```
 
-## <a name="cleanup"></a>Cleanup
+## <a name="clean-up"></a>Bereinigen
 
-Entfernen Sie die zugeordneten Kubernetes-Objekte, die in diesem Schritt erstellt wurden.
+Entfernen Sie die zugeordneten Kubernetes-Objekte, die in diesem Artikel erstellt wurden.
 
 ```
 $ kubectl delete -f samples-http-application-routing.yaml
@@ -200,10 +218,13 @@ ingress "party-clippy" deleted
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur Installation eines HTTPS-gesicherten Eingangscontrollers in AKS finden Sie unter [Eingehende HTTPS-Daten in Azure Container Service (AKS)][ingress-https].
+Informationen zur Installation eines HTTPS-gesicherten Eingangscontrollers in AKS finden Sie unter [Eingehender HTTPS-Datenverkehr in Azure Kubernetes Service (AKS)][ingress-https].
 
 <!-- LINKS - internal -->
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
+[az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az-aks-show
 [ingress-https]: ./ingress.md
+
 
 <!-- LINKS - external -->
 [dns-pricing]: https://azure.microsoft.com/pricing/details/dns/

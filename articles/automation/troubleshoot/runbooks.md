@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie Probleme mit Azure Automation-Runbooks behebe
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b96d723f6c7ca423343c0586f59770abb55ada9f
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 286a777e16dea72e38b316e86ba57e1811888eec
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929348"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044865"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Beheben von Fehlern bei Runbooks
 
@@ -94,6 +94,31 @@ Falls für Ihr Azure-Konto die mehrstufige Authentifizierung eingerichtet ist, k
 Informationen zum Verwenden eines Zertifikats mit den klassischen Azure-Bereitstellungsmodell finden Sie unter [Managing Azure Services with the Microsoft Azure Automation Preview Service](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx) (Verwalten von Azure Services mit dem Microsoft Azure Automation Preview-Dienst). Informationen zum Verwenden eines Dienstprinzipals mit Azure Resource Manager-Cmdlets finden Sie unter [Erstellen eines Dienstprinzipals mit dem Azure-Portal](../../azure-resource-manager/resource-group-create-service-principal-portal.md) und [Authentifizieren eines Dienstprinzipals mit dem Azure Resource Manager](../../azure-resource-manager/resource-group-authenticate-service-principal.md).
 
 ## <a name="common-errors-when-working-with-runbooks"></a>Häufige Fehler beim Verwenden von Runbooks
+
+### <a name="not-recognized-as-cmdlet"></a>Szenario: Runbookfehler aufgrund eines fehlenden Cmdlets
+
+#### <a name="issue"></a>Problem
+
+Für Ihr Runbook tritt ein Fehler auf, der dem im folgenden Beispiel ähnelt:
+
+```
+The term 'Connect-AzureRmAccount' is not recognized as the name of a cmdlet, function, script file, or operable program.  Check the spelling of the name, or if the path was included verify that the path is correct and try again.
+```
+
+#### <a name="cause"></a>Ursache
+
+Dieser Fehler kann die folgenden Gründe haben:
+
+1. Das Modul, das das Cmdlet enthält, wird nicht in das Automation-Konto importiert.
+2. Das Modul, das das Cmdlet enthält, wird zwar importiert, ist jedoch veraltet.
+
+#### <a name="resolution"></a>Lösung
+
+Dieser Fehler kann behoben werden, indem Sie eine der folgenden Aufgaben ausführen:
+
+Wenn es sich bei dem Modul um ein Azure-Modul handelt, finden Sie weitere Informationen zum Aktualisieren Ihrer Module in Ihrem Automation-Konto unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](../automation-update-azure-modules.md).
+
+Wenn es ein separates Modul ist, sollten Sie sicherstellen, dass es in Ihr Automation-Konto importiert wird.
 
 ### <a name="job-attempted-3-times"></a>Szenario: Es wurde dreimal ohne Erfolg versucht, den Runbookauftrag zu starten
 

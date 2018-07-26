@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: glenga
-ms.openlocfilehash: 5c582b080ec6f2cff801758fc4bff4f7d07fd7df
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: c7be9079da6be8d9d7f25b910ab07e905e8ac449
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083068"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126213"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Arbeiten mit Azure Functions Core Tools
 
@@ -62,7 +62,7 @@ Die Tools der Version 2.x verwenden die Azure Functions-Laufzeit 2.x, die auf .N
 
 Die folgenden Schritte verwenden npm zum Installieren der Core Tools unter Windows. Sie können auch [Chocolatey](https://chocolatey.org/) verwenden. Weitere Informationen finden Sie in der [Infodatei zu den Core Tools](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
 
-1. Installieren Sie [.NET Core 2.0 für Windows](https://www.microsoft.com/net/download/windows).
+1. Installieren Sie [.NET Core 2.1 für Windows](https://www.microsoft.com/net/download/windows).
 
 2. Installieren Sie [Node.js] (enthält npm). Für Version 2.x der Tools werden nur Node.js 8.5 und höhere Versionen unterstützt.
 
@@ -76,7 +76,7 @@ Die folgenden Schritte verwenden npm zum Installieren der Core Tools unter Windo
 
 Die folgenden Schritte verwenden Homebrew zum Installieren der Core Tools unter macOS.
 
-1. Installieren Sie [.NET Core 2.0 für macOS](https://www.microsoft.com/net/download/macos).
+1. Installieren Sie [.NET Core 2.1 für macOS](https://www.microsoft.com/net/download/macos).
 
 2. Installieren Sie [Homebrew](https://brew.sh/), sofern dies noch nicht geschehen ist.
 
@@ -91,7 +91,7 @@ Die folgenden Schritte verwenden Homebrew zum Installieren der Core Tools unter 
 
 Die folgenden Schritte verwenden [APT](https://wiki.debian.org/Apt) zum Installieren der Core Tools unter Ihrer Ubuntu/Debian Linux-Distribution. Informationen zu anderen Linux-Distributionen finden Sie in der [Infodatei zu den Core Tools](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux).
 
-1. Installieren Sie [.NET Core 2.0 für Linux](https://www.microsoft.com/net/download/linux).
+1. Installieren Sie [.NET Core 2.1 für Linux](https://www.microsoft.com/net/download/linux).
 
 2. Registrieren Sie den Microsoft Product Key als vertrauenswürdig:
 
@@ -137,6 +137,7 @@ In Version 2.x müssen Sie beim Ausführen des Befehls eine Runtime für das Pro
 Select a worker runtime:
 dotnet
 node
+java
 ```
 
 Verwenden Sie die NACH-OBEN- oder NACH-UNTEN-TASTE, um eine Sprache auszuwählen, und drücken Sie dann die EINGABETASTE. Die Ausgabe ähnelt dem folgenden Beispiel für ein JavaScript-Projekt:
@@ -151,6 +152,9 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 ```
 
 Verwenden Sie die Option `--no-source-control [-n]`, um das Projekt ohne lokales Git-Repository zu erstellen.
+
+> [!IMPORTANT]
+> In Version 2.x der Core-Tools werden Funktions-App-Projekte für die .NET-Runtime als [C#-Klassenprojekte](functions-dotnet-class-library.md) (.csproj) erstellt. Diese C#-Projekte, die mit Visual Studio 2017 oder Visual Studio Code verwendet werden können, werden während der Tests und beim Veröffentlichen in Azure kompiliert. Wenn Sie stattdessen dieselben C#-Skriptdateien (.csx) erstellen und verwenden möchten, die in Version 1.x und im Portal erstellt wurden, müssen Sie die `--csx`-Parameter beim Erstellen und Bereitstellen von Funktionen einschließen.
 
 ## <a name="register-extensions"></a>Registrieren von Erweiterungen
 
@@ -177,7 +181,7 @@ Die Datei „local.settings.json“ speichert App-Einstellungen, Verbindungszeic
     "CORS": "*"
   },
   "ConnectionStrings": {
-    "SQLConnectionString": "Value"
+    "SQLConnectionString": "<sqlclient-connection-string>"
   }
 }
 ```
@@ -189,7 +193,7 @@ Die Datei „local.settings.json“ speichert App-Einstellungen, Verbindungszeic
 | **Host** | Die Einstellungen in diesem Abschnitt passen den Hostprozess von Functions bei der lokalen Ausführung an. |
 | **LocalHttpPort** | Legt den Standardport fest, der bei der Ausführung des lokalen Functions-Host verwendet wird (`func host start` und `func run`). Die Befehlszeilenoption `--port` hat Vorrang vor diesem Wert. |
 | **CORS** | Definiert die für die [Ressourcenfreigabe zwischen verschiedenen Ursprüngen (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) zulässigen Ursprünge. Ursprünge werden als durch Trennzeichen getrennte Liste ohne Leerzeichen bereitgestellt. Den Platzhalterwert (\*) wird unterstützt, wodurch Anforderungen von einem beliebigen Ursprung zulässig sind. |
-| **ConnectionStrings** | Verwenden Sie diese Sammlung nicht für die Verbindungszeichenfolgen, die von Ihren Funktionsbindungen verwendet werden. Diese Sammlung wird nur von Frameworks verwendet, die Verbindungszeichenfolgen aus dem Abschnitt **ConnectionStrings** einer Konfigurationsdatei abrufen müssen, z.B. [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Verbindungszeichenfolgen in diesem Objekt werden der Umgebung mit dem Anbietertyp [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx) hinzugefügt. Elemente in dieser Sammlung werden nicht mit anderen App-Einstellungen in Azure veröffentlicht. Sie müssen diese Werte explizit zum Abschnitt **Verbindungszeichenfolgen** unter den **Anwendungseinstellungen** für Ihre Funktions-App hinzufügen. |
+| **ConnectionStrings** | Verwenden Sie diese Sammlung nicht für die Verbindungszeichenfolgen, die von Ihren Funktionsbindungen verwendet werden. Diese Sammlung wird nur von Frameworks verwendet, die Verbindungszeichenfolgen üblicherweise aus dem Abschnitt **ConnectionStrings** einer Konfigurationsdatei abrufen, z.B. [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Verbindungszeichenfolgen in diesem Objekt werden der Umgebung mit dem Anbietertyp [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx) hinzugefügt. Elemente in dieser Sammlung werden nicht mit anderen App-Einstellungen in Azure veröffentlicht. Sie müssen diese Werte explizit zur Sammlung **Verbindungszeichenfolgen** in den Einstellungen Ihrer Funktions-App hinzufügen. Bei der Erstellung einer [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx)-Klasse in Ihrem Funktionscode sollten Sie den Verbindungszeichenfolgenwert zusammen mit den anderen Verbindungen in den **Anwendungseinstellungen** speichern. |
 
 Die Werte für Funktions-App-Einstellungen können auch im Code als Umgebungsvariablen gelesen werden. Weitere Informationen finden Sie im Abschnitt „Umgebungsvariablen“ dieser sprachspezifischen Referenzthemen:
 
@@ -271,8 +275,9 @@ Sie können diese Optionen im Befehl auch mit folgenden Argumenten angeben:
 | Argument     | BESCHREIBUNG                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--language -l`**| Die Vorlagenprogrammiersprache, z.B. C#, F# oder JavaScript. Diese Option ist in Version 1.x erforderlich. In Version 2.x sollten Sie nicht diese Option verwenden oder die Standardsprache des Projekts auswählen. |
-| **`--template -t`** | Der Name der Vorlage, der einer der folgenden Werte sein kann:<br/><ul><li>`Blob trigger`</li><li>`Cosmos DB trigger`</li><li>`Event Grid trigger`</li><li>`HTTP trigger`</li><li>`Queue trigger`</li><li>`SendGrid`</li><li>`Service Bus Queue trigger`</li><li>`Service Bus Topic trigger`</li><li>`Timer trigger`</li></ul> |
+| **`--template -t`** | Mit dem Befehl `func templates list` können Sie sich die vollständige Liste der verfügbaren Vorlagen für jede unterstützte Sprache anzeigen lassen.   |
 | **`--name -n`** | Der Funktionsname. |
+| **`--csx`** | (Version 2.x) Generiert dieselben C#-Skriptvorlagen (.csx), die in Version 1.x und im Portal verwendet wurden. |
 
 Führen Sie z.B. zum Erstellen eines JavaScript-HTTP-Triggers in einem einzelnen Befehl Folgendes aus:
 

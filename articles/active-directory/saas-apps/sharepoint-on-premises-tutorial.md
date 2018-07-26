@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2018
+ms.date: 07/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 02421ace226f42da58eb9864fe0ef2e1ca550391
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: a792db670602f736489ee962df5078531e0a8e88
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319281"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050949"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Tutorial: Azure Active Directory-Integration in lokales SharePoint
 
@@ -85,7 +85,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines lokalen SharePoint-Testbenutzers](#create-a-sharePoint-on-premises-test-user)**, um eine Entsprechung für Britta Simon in der lokalen SharePoint-Instanz zu haben, die mit ihrer Darstellung in Azure AD verknüpft ist.
+3. **[Erteilen des Zugriffs für lokalen SharePoint-Testbenutzer](#grant-access-to-sharePoint-on-premises-test-user)**, um ein Pendant zu Britta Simon in der lokalen SharePoint-Instanz zu erstellen, das mit der Azure AD-Repräsentation des Benutzers verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
@@ -109,12 +109,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<YourSharePointServerURL>/_trust/default.aspx`.
 
-    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `urn:sharepoint:<YourSharePointServerURL>`
+    b. Geben Sie im Textfeld **Bezeichner** die folgende URL ein: `urn:sharepoint:federation`.
 
-    > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam der lokalen SharePoint-Instanz](https://support.office.com/), um diese Werte zu erhalten.
-
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei mit der Erweiterung CER auf Ihrem Computer. Kopieren Sie den vollständigen Pfad der heruntergeladenen Metadatendatei und fügen Sie ihn im Editor ein.
+4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_certificate.png)
 
@@ -197,7 +194,9 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     d. Klicken Sie auf **Create**.
 
-### <a name="create-a-sharepoint-on-premises-test-user"></a>Erstellen eines lokalen SharePoint-Testbenutzers
+### <a name="grant-access-to-sharepoint-on-premises-test-user"></a>Erteilen des Zugriffs für lokalen SharePoint-Testbenutzer
+
+Die Benutzer, die sich bei Azure AD anmelden und auf SharePoint zugreifen, müssen Zugriff auf die Anwendung erhalten. Führen Sie die folgenden Schritte aus, um die Berechtigungen für den Zugriff auf die Webanwendung festzulegen.
 
 1. Klicken Sie in der Zentraladministration auf **Anwendungsverwaltung**.
 
@@ -213,7 +212,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 6. Klicken Sie im Dialogfeld **Richtlinie für Webanwendung** im Abschnitt **Benutzer auswählen** auf das Symbol **Durchsuchen**.
 
-7. Geben Sie im Textfeld **Suchen** den Anmeldenamen eines Benutzers in Ihrem Verzeichnis ein, und klicken Sie auf **Suchen**. </br>Beispiel: *demouser@blueskyabove.onmicrosoft.com*.
+7. Geben Sie im Textfeld **Suchen** den Wert für den **Benutzerprinzipalnamen** ein, für den Sie die lokale SharePoint-Anwendung in Azure AD konfiguriert haben, und klicken Sie auf **Suche**. </br>Beispiel: *brittasimon@contoso.com*.
 
 8. Wählen Sie unter der Azure AD-Überschrift in der Listenansicht die Eigenschaft „Name“ aus. Klicken Sie dann auf **Hinzufügen** und auf **OK**, um das Dialogfeld zu schließen.
 
@@ -222,6 +221,29 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Gewähren des Vollzugriffs für Benutzer mit Ansprüchen](./media\sharepoint-on-premises-tutorial/fig12-grantfullcontrol.png)
 
 10. Klicken Sie auf **Fertig stellen** und dann auf **OK**.
+
+### <a name="configuring-one-trusted-identity-provider-for-multiple-web-applications"></a>Konfigurieren eines vertrauenswürdigen Identitätsanbieters für mehrere Webanwendungen
+
+Die Konfiguration funktioniert für eine einzelne Webanwendung, benötigt jedoch weitere Konfiguration, wenn Sie beabsichtigen, denselben vertrauenswürdigen Identitätsanbieter für mehrere Webanwendungen zu verwenden. Angenommen, eine Webanwendung wäre erweitert worden, um die URL `https://portal.contoso.local` zu verwenden. Nun möchten Sie die Benutzer für `https://sales.contoso.local` ebenfalls authentifizieren. Dazu müssen Sie den Identitätsanbieter aktualisieren, sodass dieser den WReply-Parameter berücksichtigt. Außerdem müssen Sie die Anwendungsregistrierung in Azure AD aktualisieren, um eine Antwort-URL hinzuzufügen.
+
+1. Öffnen Sie im Azure-Portal das Azure AD-Verzeichnis. Klicken Sie auf **App-Registrierungen** und dann auf **Alle Anwendungen anzeigen**. Klicken Sie auf die Anwendung, die Sie zuvor erstellt haben (SharePoint-SAML-Integration).
+
+2. Klicken Sie auf **Einstellungen**.
+
+3. Klicken Sie auf dem Einstellungsblatt auf **Antwort-URLs**. 
+
+4. Fügen Sie die URL für die zusätzliche Webanwendung hinzu, die auf `/_trust/default.aspx` endet (z.B. `https://sales.contoso.local/_trust/default.aspx`), und klicken Sie auf **Speichern**.
+
+5. Öffnen Sie auf dem SharePoint-Server die **SharePoint 2016-Verwaltungsshell**, und führen Sie die folgenden Befehle mithilfe des Namens des Tokenausstellers des vertrauenswürdige Identitätsanbieter aus, den Sie zuvor verwendet haben.
+
+    ```
+    $t = Get-SPTrustedIdentityTokenIssuer "AzureAD"
+    $t.UseWReplyParameter=$true
+    $t.Update()
+    ```
+6. Navigieren Sie in der Zentraladministration zu der Web-Anwendung, und aktivieren Sie den vorhandenen vertrauenswürdigen Identitätsanbieter. Denken Sie daran, auch die URL der Anmeldeseite als eine benutzerdefinierte Anmeldeseite `/_trust/` zu konfigurieren.
+
+7. Klicken Sie in der Zentraladministration auf die Webanwendung, und wählen Sie **User Policy** (Benutzerrichtlinie) aus. Fügen Sie einen Benutzer, wie zuvor in diesem Artikel gezeigt, mit den entsprechenden Berechtigungen hinzu.
 
 ### <a name="fixing-people-picker"></a>Verbesserte Personenauswahl
 
@@ -268,13 +290,13 @@ In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf die lokale SharePoint
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Lokales SharePoint“ klicken, werden Sie automatisch bei Ihrer lokalen SharePoint-Anwendung angemeldet.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
+* [Verwenden von Azure AD für die SharePoint Server-Authentifizierung](https://docs.microsoft.com/en-us/office365/enterprise/using-azure-ad-for-sharepoint-server-authentication)
 
 <!--Image references-->
 

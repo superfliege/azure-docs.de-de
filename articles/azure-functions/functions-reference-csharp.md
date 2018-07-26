@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: 1706eaeaa59f09f343d831f0c09f98210eadb820
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 42b9f574d09429d95fbf79da02c137e1079ac369
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970835"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006946"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>C#-Skriptentwicklerreferenz (C#-Skript, CSX) zu Azure Functions
 
@@ -202,17 +202,19 @@ Die `#load`-Direktive kann nur mit *CSX*-Dateien verwendet werden, nicht mit *CS
 
 Sie können für eine Ausgabebindung den Rückgabewert einer Methode verwenden, indem Sie den Namen `$return` in der Datei *function.json* verwenden. Beispiele finden Sie unter [Konzepte für Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md#using-the-function-return-value).
 
+Verwenden Sie den Rückgabewert nur dann, wenn eine erfolgreiche Ausführung der Funktion immer einen Rückgabewert ergibt, der an die Ausgabebindung übergeben werden soll. Verwenden Sie andernfalls, wie im folgenden Abschnitt gezeigt, `ICollector` oder `IAsyncCollector`.
+
 ## <a name="writing-multiple-output-values"></a>Schreiben von mehreren Ausgabewerten
 
-Um mehrere Werte in eine Ausgabebindung zu schreiben, verwenden Sie die Typen [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) oder [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs). Diese Typen stellen lesegeschützte Sammlungen dar, die nach Durchführung der Methode in die Ausgabebindung geschrieben werden.
+Verwenden Sie die Typen [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) oder [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) in folgenden Fällen: 1. um mehrere Werte in eine Ausgabebindung zu schreiben oder 2. wenn ein erfolgreicher Funktionsaufruf möglicherweise keinen übergebbaren Wert für die Ausgabebindung ergibt. Diese Typen stellen lesegeschützte Sammlungen dar, die nach Durchführung der Methode in die Ausgabebindung geschrieben werden.
 
 In diesem Beispiel werden mehrere Warteschlangennachrichten mit `ICollector` in die gleiche Warteschlange geschrieben:
 
 ```csharp
-public static void Run(ICollector<string> myQueueItem, TraceWriter log)
+public static void Run(ICollector<string> myQueue, TraceWriter log)
 {
-    myQueueItem.Add("Hello");
-    myQueueItem.Add("World!");
+    myQueue.Add("Hello");
+    myQueue.Add("World!");
 }
 ```
 

@@ -4,18 +4,18 @@ description: Informationen zu Protokollierung und allgemeiner Problembehandlung 
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 06/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: e5b3dc1bfa7c7890be83529e863907ec056f188f
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 1eea6380d4276644db0c7681f23a4b0c5e79ff09
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36292015"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187348"
 ---
 # <a name="preview-azure-ad-password-protection-monitoring-reporting-and-troubleshooting"></a>Vorschau: Überwachung, Berichterstellung und Problembehandlung beim Azure AD-Kennwortschutz
 
@@ -197,7 +197,7 @@ Wenn die Software der öffentlichen Vorschau deinstalliert und jeder zugehörige
    ```
    $scp = “serviceConnectionPoint”
    $keywords = “{EBEFB703-6113-413D-9167-9F8DD4D24468}*”
-   Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -eq $keywords }
+   Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
    Lassen Sie nicht das Sternchen („*“) am Ende des Variablenwerts „$keywords“ aus.
@@ -209,7 +209,7 @@ Wenn die Software der öffentlichen Vorschau deinstalliert und jeder zugehörige
    ```
    $scp = “serviceConnectionPoint”
    $keywords = “{B11BB10A-3E7D-4D37-A4C3-51DE9D0F77C9}*”
-   Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -eq $keywords }
+   Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
    Das über den `Get-ADObject`-Befehl gefundene resultierende Objekt kann dann an `Remove-ADObject` weitergereicht oder manuell gelöscht werden.

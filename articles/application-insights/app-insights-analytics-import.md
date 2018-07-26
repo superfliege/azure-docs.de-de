@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 688d620e19a8a6f536d134d9c4d7c837ec06bbdc
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d891cd92e70d3491ee0c7a58f1409823301b299c
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293620"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989756"
 ---
 # <a name="import-data-into-analytics"></a>Importieren von Daten in Analytics
 
@@ -116,15 +116,16 @@ JSON-Format
 ]
 ```
  
-Jede Spalte wird durch ihre Position, ihren Namen und ihren Typ identifiziert. 
+Jede Spalte wird durch ihre Position, ihren Namen und ihren Typ identifiziert.
 
 * Position: Im DSV-Format die Position des zugeordneten Werts. Im JSON-Format der „jpath“ des zugeordneten Schlüssels.
 * Name: Der Anzeigename der Spalte.
 * Typ: Der Datentyp der Spalte.
  
-Bei Verwendung von Beispieldaten im DSV-Dateiformat müssen in der Schemadefinition alle Spalten zugeordnet sein, wobei neue Spalten am Ende hinzugefügt werden. 
-
-JSON unterstützt auch eine partielle Datenzuordnung. Daher müssen in der Schemadefinition des JSON-Formats nicht alle in den Beispieldaten vorkommenden Schlüssel zugeordnet sein. In der Definition können auch Spalten zugeordnet sein, die nicht in den Beispieldaten enthalten sind. 
+> [!NOTE]
+> Bei Verwendung von Beispieldaten in einem Dateiformat mit Trennzeichen müssen in der Schemadefinition alle Spalten zugeordnet sein, wobei neue Spalten am Ende hinzugefügt werden.
+> 
+> JSON unterstützt auch eine partielle Datenzuordnung. Daher müssen in der Schemadefinition im JSON-Format nicht alle in den Beispieldaten vorkommenden Schlüssel zugeordnet sein. In der Definition können auch Spalten zugeordnet sein, die nicht in den Beispieldaten enthalten sind. 
 
 ## <a name="import-data"></a>Daten importieren
 

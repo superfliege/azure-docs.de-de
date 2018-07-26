@@ -2,7 +2,7 @@
 title: 'Benutzerinteraktion und Zeitlimits in Durable Functions: Azure'
 description: In diesem Artikel wird erläutert, wie Sie die Benutzerinteraktion und Zeitlimits in der Erweiterung „Durable Functions“ für Azure Functions behandeln.
 services: functions
-author: cgillum
+author: kashimiz
 manager: cfowler
 editor: ''
 tags: ''
@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/19/2018
+ms.date: 07/11/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 071a9ffb8305a30b0fedeaa49c4a95d91fbce6c1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a62baf64e35dfad55f76138e2f1aaef65dd434be
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30168400"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036304"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Benutzerinteraktion in Durable Functions: Beispiel zur Telefonüberprüfung
 
@@ -51,7 +51,7 @@ In diesem Artikel werden die folgenden Funktionen in der Beispiel-App schrittwei
 * **E4_SmsPhoneVerification**
 * **E4_SendSmsChallenge**
 
-In den folgenden Abschnitten werden die Konfiguration und der Code beschrieben, die für C#-Skripts verwendet werden. Der Code für die Visual Studio-Entwicklung ist am Ende des Artikels angegeben.
+In den folgenden Abschnitten werden die Konfiguration und der Code beschrieben, die für C#-Skripts und JavaScript verwendet werden. Der Code für die Visual Studio-Entwicklung ist am Ende des Artikels angegeben.
  
 ## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Die Orchestrierung der SMS-Überprüfung (Visual Studio Code und Azure-Portal-Beispielcode) 
 
@@ -61,7 +61,13 @@ Die Funktion **E4_SmsPhoneVerification** verwendet für Orchestratorfunktionen d
 
 Im Folgenden wird der Code dargestellt, der die Funktion implementiert:
 
+### <a name="c"></a>C#
+
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript (nur Functions v2)
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
 Nach dem Start führt diese Orchestratorfunktion Folgendes aus:
 
@@ -76,7 +82,7 @@ Der Benutzer erhält eine SMS-Nachricht mit einem vierstelligen Code. Zum Abschl
 > Es ist möglicherweise nicht gleich erkennbar, aber diese Orchestratorfunktion ist komplett deterministisch. Grund hierfür ist, dass die Eigenschaft `CurrentUtcDateTime` zur Berechnung der Zeit bis zum Ablauf des Timers verwendet wird und diese Eigenschaft an diesem Punkt im Orchestratorcode bei jeder Wiedergabe den gleichen Wert zurückgibt. Dies ist wichtig, um sicherzustellen, dass jeder wiederholte Aufruf in `Task.WhenAny` den gleichen `winner` ergibt.
 
 > [!WARNING]
-> Es ist wichtig, [Timer über eine CancellationTokenSource abzubrechen](durable-functions-timers.md), wenn Sie diese nicht mehr benötigen, z.B. wenn wie im obigen Beispiel eine Abfragerückmeldung akzeptiert wurde.
+> Es ist wichtig, [Timer abzubrechen](durable-functions-timers.md), wenn Sie diese nicht mehr benötigen, z.B. wenn wie im obigen Beispiel eine Abfragerückmeldung akzeptiert wurde.
 
 ## <a name="send-the-sms-message"></a>Senden der SMS-Nachricht
 
@@ -86,7 +92,13 @@ Die Funktion **E4_SendSmsChallenge** sendet die SMS-Nachricht mit dem vierstelli
 
 Dies ist der Code, der den vierstelligen Abfragecode generiert und die SMS-Nachricht sendet:
 
+### <a name="c"></a>C#
+
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript (nur Functions v2)
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
 
 Die Funktion **E4_SendSmsChallenge** wird nur einmal aufgerufen, selbst dann, wenn der Prozess abstürzt oder wiedergegeben wird. Dies ist gut, da auf diese Weise sichergestellt wird, dass der Benutzer nicht mehrere SMS-Nachrichten erhält. Der Rückgabewert `challengeCode` wird automatisch gespeichert, sodass die Orchestratorfunktion immer weiß, wie der korrekte Code lautet.
 
@@ -109,6 +121,9 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/741c6565
 
 {"id":"741c65651d4c40cea29acdd5bb47baf1","statusQueryGetUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","sendEventPostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","terminatePostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}"}
 ```
+
+   > [!NOTE]
+   > Derzeit können JavaScript-Orchestrierungsstartfunktionen keine Instanzverwaltungs-URIs zurückgeben. Diese Funktion wird in einem späteren Release hinzugefügt.
 
 Die Orchestratorfunktion empfängt die angegebene Telefonnummer und sendet sofort eine SMS-Nachricht mit einem zufällig generierten vierstelligen Überprüfungscode an diese Nummer, &mdash;z.B. *2168*. Anschließend wartet die Funktion 90 Sekunden auf eine Antwort.
 

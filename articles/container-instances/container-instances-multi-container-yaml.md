@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 07/17/2018
 ms.author: marsma
-ms.openlocfilehash: 5dfee15e978d2dba0f50d1dc4b78953698389950
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 1d1885112b8e7f7b1e187073c86d561eb57fd23f
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34851130"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114462"
 ---
 # <a name="deploy-a-multi-container-container-group-with-yaml"></a>Bereitstellen einer Containergruppe mit mehreren Containern mit YAML
 
@@ -35,7 +35,7 @@ Um eine Containergruppe mit mehreren Containern mit dem Befehl [az container cre
 
 Starten Sie, indem Sie den folgenden YAML-Inhalt in eine neue Datei mit dem Namen **deploy-aci.yaml** kopieren.
 
-Diese YAML-Datei definiert eine Containergruppe mit zwei Containern, einer öffentlichen IP-Adresse und zwei verfügbar gemachten Ports. Der erste Container in der Gruppe führt eine Webanwendung mit Internetverbindung aus. Vom zweiten Container, dem Sidecar, erfolgen in regelmäßigen Abständen HTTP-Anforderungen an die Webanwendung, die im ersten Container über das lokale Netzwerk der Containergruppe ausgeführt wird.
+Diese YAML-Datei definiert eine Containergruppe namens „myContainerGroup“ mit zwei Containern, einer öffentlichen IP-Adresse und zwei verfügbar gemachten Ports. Der erste Container in der Gruppe führt eine Webanwendung mit Internetverbindung aus. Vom zweiten Container, dem Sidecar, erfolgen in regelmäßigen Abständen HTTP-Anforderungen an die Webanwendung, die im ersten Container über das lokale Netzwerk der Containergruppe ausgeführt wird.
 
 ```YAML
 apiVersion: 2018-06-01
@@ -83,7 +83,7 @@ az group create --name myResourceGroup --location eastus
 Stellen Sie die Containergruppe mit dem Befehl [az container create] [ az-container-create] bereit, und geben Sie die YAML-Datei als Argument weiter:
 
 ```azurecli-interactive
-az container create --resource-group myResourceGroup --name myContainerGroup -f deploy-aci.yaml
+az container create --resource-group myResourceGroup --file deploy-aci.yaml
 ```
 
 Innerhalb weniger Sekunden sollten Sie eine erste Antwort von Azure erhalten.
@@ -200,14 +200,15 @@ Durch den Export können Sie die Konfiguration einer Containergruppe beibehalten
 Exportieren Sie die Konfiguration für die schon erstellte Containergruppe mithilfe des folgenden Befehls [az container export][az-container-export].
 
 ```azurecli-interactive
-az container export --resource-group rg604 --name myContainerGroup --file deployed-aci.yaml
+az container export --resource-group myResourceGroup --name myContainerGroup --file deployed-aci.yaml
 ```
 
 Es wird keine Ausgabe angezeigt, wenn der Befehl erfolgreich ist. Um das Ergebnis zu sehen, können Sie jedoch den Inhalt der Datei aufrufen. Beispielsweise die ersten Zeilen mit `head`:
 
 ```console
 $ head deployed-aci.yaml
-apiVersion: 2018-02-01-preview
+additional_properties: {}
+apiVersion: '2018-06-01'
 location: eastus
 name: myContainerGroup
 properties:
@@ -216,11 +217,7 @@ properties:
     properties:
       environmentVariables: []
       image: microsoft/aci-helloworld:latest
-      ports:
 ```
-
-> [!NOTE]
-> Ab Azure CLI-Version 2.0.34 besteht ein [bekanntes Problem][cli-issue-6525], bei dem in exportierten Containergruppen eine alte API-Version mit **2018-02-01-preview** angegeben ist (gesehen im vorherigen JSON-Ausgabebeispiel). Wenn Sie mit der exportierten YAML-Datei eine erneute Bereitstellung durchführen möchten, können Sie den `apiVersion`-Wert in der exportierte YAML-Datei problemlos auf **2018-06-01** aktualisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

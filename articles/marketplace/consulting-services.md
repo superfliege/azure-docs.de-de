@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/9/2018
 ms.author: ellacroi
-ms.openlocfilehash: 7cd902f289d0743b4aecf004f5f64a04024aa790
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 0bfb06add64f5f1cd6ccfb772f604ab588bb1baf
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32312082"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950405"
 ---
 # <a name="azure-marketplace-consulting-services"></a>Azure Marketplace-Beratungsdienste
 Beratungsdienste in Azure Marketplace ermöglichen Microsoft-Partnern, Verbindungen zwischen Kunden und Diensten herzustellen, um ihre Nutzung von Azure zu unterstützen und auszuweiten. Azure Marketplace unterstützt die Auflistung der Beratungsdiensteangebote von Systemintegrator-Partnern (SI) von Microsoft. 
 
-Diese Beratungsdienste sind kundenspezifische Angebote. Sie sind in Umfang und Dauer festgelegt, können zum Festpreis oder kostenlos sein und haben ein konkretes Ergebnis. Potenzielle Kunden können einfach eine Kontaktaufnahme durch Partner anfordern. Partner erhalten eine Benachrichtigung in ihrem CRM-System und beantworten Anfragen innerhalb von 48 Stunden.
+Diese Beratungsdienste sind kundenspezifische Angebote. Herausgeber haben die Möglichkeit, die Auflistungsart mit festem Umfang und fester Dauer entweder zum Festpreis oder kostenlos und mit einem konkreten Ergebnis für den Kunden festzulegen. Partner erhalten eine Benachrichtigung in ihrem CRM-System und beantworten Anfragen innerhalb von 48 Stunden.
 
 ## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Beratungsdienste in Azure Marketplace im Vergleich zur AppSource-Storefront
 Die Marketplace-Storefronts sind auf Zielgruppen und Microsoft-Cloudprodukte ausgerichtet, damit Kunden das finden, was sie benötigen. Jede Storefront verfügt über spezielle Veröffentlichungsoptionen, die bewirken sollen, dass sich Ihre Investitionen in die Veröffentlichung noch besser amortisieren. Diese Optionen sind in der folgenden Tabelle zusammengefasst:
@@ -37,7 +37,8 @@ Die Marketplace-Storefronts sind auf Zielgruppen und Microsoft-Cloudprodukte aus
 |In Produkterfahrung      |Azure-Verwaltungsportal|Dynamics 365, Office 365, Office-Client-Apps| 
 |Andere      |Lokale Veröffentlichung über Azure Stack|Beratungsdienste für Dynamics und Power BI|
 
-Beratungsdienste in Azure Marketplace sollten Angebote nutzen, die sich mit Schwerpunkt auf Azure-technischen Lösungen und Diensten an eine technische Zielgruppe richten.
+>[!Note]
+>Beratungsdienste in Azure Marketplace sollten Angebote nutzen, die sich mit Schwerpunkt auf *Azure-technischen Lösungen und Diensten* an eine technische Zielgruppe richten.
 
 
 Die auf Microsoft Dynamics 365, Office 365 und Power BI basierenden Dienstangebote sind für das Listing in AppSource geeignet. Weitere Informationen finden Sie unter [Richtlinien zum Listing von Microsoft AppSource-Beratungsdiensten](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
@@ -71,8 +72,16 @@ SI-Partner können Beratungsdienstangebote für die folgenden 18 Länder übermi
 
 Die Einführung von Azure Marketplace-Beratungsdiensten ist zunächst für Australien, Kanada, das Vereinigte Königreich und die USA geplant. Die Kataloge für andere Länder werden online verfügbar sein, sobald eine bedeutende Anzahl und überzeugende Auswahl von Dienstangeboten von Partnern übermittelt und von Microsoft genehmigt wurden.
 
+## <a name="how-to-register-for-consulting-services-in-azure-marketplace"></a>Registrieren für Beratungsdienste im Azure Marketplace
+Registrieren Sie zunächst Ihre Beratungsdienste in [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/sell/signup). Unter [Ihr Weg zum Herausgeber im Marketplace](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher) finden Herausgeber eine vollständige Prüfliste der Registrierungsanforderungen. 
+
+**Was erwartet Sie nach der Registrierung:** Das Onboardingteam sendet Ihnen innerhalb von 1 bis 3 Arbeitstagen eine Willkommens-E-Mail mit Ihren Anmeldeinformationen für das Cloud-Partnerportal (CPP). Das [Cloud-Partnerportal](https://cloudpartner.azure.com) ist das Portal für die Angebotsauflistung, über das Herausgeber Auflistungsinformationen und Einreichungen übermitteln. 
+
+>[!Note]
+>Partner müssen sich nur einmal registrieren, um Herausgeber zu werden. Nachdem sie ihre Willkommens-E-Mail und die Anmeldungsinformationen für das Cloud-Partnerportal erhalten haben, müssen sich Herausgeber nicht erneut registrieren, um andere Auflistungsarten zu veröffentlichen. 
+
 ## <a name="prepare-your-publishing-artifacts"></a>Vorbereiten von Veröffentlichungsartefakten
-Noch bevor Sie Ihren Dienst nominieren, können Sie mit der Sammlung und Vorbereitung der Inhalte beginnen, mit denen Sie im Rahmen Ihres Listings den Wert Ihres Diensts und Ihrer Lösung gegenüber Ihrem Zielkunden darstellen können. 
+Vor der Registrierung können Sie mit der Sammlung und Vorbereitung der Inhalte beginnen, mit denen Sie im Rahmen Ihrer Auflistung den Wert Ihres Diensts und Ihrer Lösung gegenüber Ihrem Zielkunden darstellen können. 
 
 |Einrichten für neue Herausgeber  |
 |---------|
@@ -142,3 +151,12 @@ Bei der Prüfung von Angebotsbeschreibungen und -zusammenfassungen berücksichti
 |Workshop    |   Fügen Sie abhängig von der gewählten Dauer Ihres Angebots eine detaillierte Tages-, Wochen- oder Monatsplanung hinzu. Formulieren Sie die Lernziele oder andere Ergebnisse Ihres Workshops.     |   Optimieren Sie Ihre Angebotszusammenfassung mit Ihren Top-Stichwörtern zur Suchmaschinenoptimierung.      |
 
 Im Cloud-Partnerportal können Sie Ihrem Angebot mithilfe von [Markdown](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown) Formatierungen hinzufügen. Dies ist eine schlanke Designsprache, die Ihnen hilft, Ihr Angebot attraktiver zu gestalten. 
+
+**Anmerkungen zu Markdown**
+*   Hinzufügen von * am Anfang und Ende des Kopieblocks ohne Leerzeichen für Kursivschrift (z.B. *Inhalt*)
+* Einfügen eines Zeilenumbruchs nach Doppelpunkt „:“
+*   Leerzeichen nach „*“ für Aufzählungszeichen (z.B. *(Leerzeichen)Inhalt)
+*    ### <a name="space-for-heading-ex-spaceagendadeliverables"></a>Leerzeichen für Überschrift (z.B: ###(Leerzeichen)Agenda/Deliverables)
+*   Zeilenumbruch nach Überschrift
+*   ** = Fett (ohne Leerzeichen) (z.B **ohne Leerzeichen**) •   Angebotszusammenfassung in Kursivschrift •   Agenda und Ergebnisse als Überschrift
+

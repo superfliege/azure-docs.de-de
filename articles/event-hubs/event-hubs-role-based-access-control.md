@@ -5,21 +5,17 @@ services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/19/2017
+ms.date: 07/05/2018
 ms.author: sethm
-ms.openlocfilehash: 0d3a779eb2cccf242bcd42d82c1a90048b3512ab
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 9c38f74cd4499fad1feaadb6c1bbc99da791ebd6
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26783348"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888366"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Rollenbasierte Zugriffssteuerung in Active Directory (Vorschau)
 
@@ -35,7 +31,7 @@ In der ersten öffentlichen Vorschauversion können Sie Azure AD-Konten und -Die
 
 ## <a name="use-event-hubs-with-an-azure-ad-domain-user-account"></a>Verwenden von Event Hubs mit einem Azure AD-Domänenbenutzerkonto
 
-Der folgende Abschnitt beschreibt die Schritte, die erforderlich sind, um eine Beispielanwendung zu erstellen und bereitzustellen, die einen Benutzer zur interaktiven Azure AD-Anmeldung auffordert. Zudem erläutert der Abschnitt, wie Sie Event Hubs Zugriff auf dieses Benutzerkonto gewähren und wie Sie diese Identität für den Zugriff auf Event Hubs verwenden. 
+Der folgende Abschnitt beschreibt die Schritte, die erforderlich sind, um eine Beispielanwendung zu erstellen und bereitzustellen, die einen Benutzer zur interaktiven Azure AD-Anmeldung auffordert. Zudem wird erläutert, wie Sie Event Hubs Zugriff auf dieses Benutzerkonto gewähren und wie Sie diese Identität für den Zugriff auf Event Hubs verwenden. 
 
 Diese Einführung beschreibt eine einfache Konsolenanwendung. Den [zugehörigen Code finden Sie auf GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Rbac/EventHubsSenderReceiverRbac/).
 
@@ -59,7 +55,7 @@ Das Benutzerkonto verfügt jetzt über Zugriff auf den Event Hubs-Namespace und 
 
 Bevor Sie die Beispielanwendung ausführen können, registrieren Sie sie in Azure AD, und bestätigen Sie die Zustimmungsaufforderung, die der Anwendung in Ihrem Namen Zugriff auf Event Hubs gewährt. 
 
-Da es sich bei der Beispielanwendung um eine Konsolenanwendung handelt, müssen Sie eine native Anwendung registrieren und den „erforderlichen Berechtigungen“ API-Berechtigungen für **Microsoft.EventHub** hinzufügen. Native Anwendungen benötigen auch einen **redirect-URI**-Wert in Azure AD, der als Bezeichner fungiert. Bei dem URI muss es sich nicht um ein Netzwerkziel handeln. Verwenden Sie in diesem Beispiel `http://eventhubs.microsoft.com`, da der Beispielcode diesen URI bereits verwendet.
+Da es sich bei der Beispielanwendung um eine Konsolenanwendung handelt, müssen Sie eine native Anwendung registrieren und den „erforderlichen Berechtigungen“ API-Berechtigungen für **Microsoft.EventHub** hinzufügen. Native Anwendungen benötigen auch einen **redirect-URI** in Azure AD, der als Bezeichner fungiert. Bei dem URI muss es sich nicht um ein Netzwerkziel handeln. Verwenden Sie in diesem Beispiel `http://eventhubs.microsoft.com`, da der Beispielcode diesen URI bereits verwendet.
 
 Die detaillierten Schritte für die Registrierung werden in [diesem Tutorial](../active-directory/develop/active-directory-integrating-applications.md) erläutert. Führen Sie die Schritte zum Registrieren einer **nativen** App aus, und befolgen Sie dann die Aktualisierungsanweisungen, um die **Microsoft.EventHub**-API zu den erforderlichen Berechtigungen hinzuzufügen. Notieren Sie sich die Werte für **TenantId** und **ApplicationId** – diese werden Sie zum Ausführen der Anwendung benötigen.
 
@@ -70,7 +66,7 @@ Bevor Sie das Beispiel ausführen können, müssen Sie die Datei „App.config�
 - `tenantId`: Legen Sie diesen Parameter auf den Wert von **TenantId** fest.
 - `clientId`: Legen Sie diesen Parameter auf den Wert von **ApplicationId** fest. 
 - `clientSecret`: Wenn Sie beim Anmelden einen geheimen Clientschlüssel verwenden möchten, erstellen Sie diesen in Azure AD. Verwenden Sie zudem eine Web-App oder eine API anstelle einer nativen App. Fügen Sie die App außerdem unter **Zugriffssteuerung (IAM)** zum zuvor erstellten Namespace hinzu.
-- `eventHubNamespaceFQDN`: Legen Sie diesen Parameter auf den vollständigen DNS-Namen Ihres neu erstellten Event Hubs-Namespace fest, z.B. `example.servicebus.windows.net`.
+- `eventHubNamespaceFQDN`: Legen Sie diesen Parameter auf den vollqualifizierten DNS-Namen Ihres neu erstellten Event Hubs-Namespace fest, z.B. `example.servicebus.windows.net`.
 - `eventHubName`: Legen Sie diesen Parameter auf den von Ihnen erstellten Event Hub fest.
 - Der Umleitungs-URI, den Sie in den vorherigen Schritten in Ihrer App angegeben haben.
  

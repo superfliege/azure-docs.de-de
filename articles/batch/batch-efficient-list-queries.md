@@ -12,28 +12,25 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 08/02/2017
+ms.date: 06/26/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 950e422b3076e5abd5db6dd0ac452fa1c2d500d0
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 6bc31e8541797930583e41fb6efbb6473cd4b894
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129267"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004454"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Erstellen von Abfragen zum effizienten Auflisten von Batch-Ressourcen
 
-Hier erfahren Sie, wie Sie die Leistung Ihrer Azure Batch-Anwendung steigern, indem Sie die Datenmenge verringern, die vom Dienst zurückgegeben wird, wenn Sie Aufträge, Aufgaben und Computeknoten mit der [Batch .NET][api_net]-Bibliothek abfragen.
+Hier erfahren Sie, wie Sie die Leistung Ihrer Azure Batch-Anwendung steigern, indem Sie die Datenmenge verringern, die vom Dienst zurückgegeben wird, wenn Sie Aufträge, Tasks, Computeknoten und andere Ressourcen mit der [Batch .NET][api_net]-Bibliothek abfragen.
 
 Nahezu alle Batch-Anwendungen führen eine Überwachung oder eine andere Art von Vorgang aus, die den Batch-Dienst (häufig in regelmäßigen Abständen) abfragt. Wenn Sie etwa bestimmen möchten, ob bei einem Auftrag noch Aufgaben in der Warteschlange vorhanden sind, müssen Daten zu allen Aufgaben des Auftrags abgerufen werden. Wenn Sie den Status von Knoten im Pool ermitteln möchten, müssen Daten zu jedem Knoten im Pool abgerufen werden. In diesem Artikel wird erläutert, wie diese Abfragen auf möglichst effiziente Weise ausgeführt werden.
 
 > [!NOTE]
-> Der Batch-Dienst bietet spezielle API-Unterstützung für das allgemeine Szenario zum Zählen von Aufgaben in einem Auftrag. Statt dafür eine list-Abfrage zu verwenden, können Sie den Vorgang [Get Task Counts][rest_get_task_counts] (Taskanzahl abrufen) aufrufen. „Get Task Counts“ (Taskanzahl abrufen) gibt an, wie viele Aufgaben ausstehen, ausgeführt werden oder abgeschlossen sind und wie viele Aufgaben erfolgreich oder fehlerhaft waren. „Get Task Counts“ (Taskanzahl abrufen) ist effizienter als eine list-Abfrage. Weitere Informationen finden Sie unter [Count tasks by state to monitor a job's progress (Preview)](batch-get-task-counts.md) (Zählen von Aufgaben nach Zustand zur Überwachung des Auftragsstatus (Vorschau)). 
->
-> Der Vorgang „Get Task Counts“ (Taskanzahl abrufen) ist nicht in Versionen des Batch-Diensts verfügbar, die älter als 2017-06-01.5.1 sind. Falls Sie eine ältere Version des Diensts nutzen, können Sie stattdessen eine list-Abfrage zum Zählen von Tasks einsetzen.
->
-> 
+> Der Batch-Dienst bietet spezielle API-Unterstützung für allgemeine Szenarios, in denen Tasks in einem Auftrag und Compute-Knoten in einem Batch-Pool gezählt werden. Statt dafür eine Listenabfrage zu verwenden, können Sie den Vorgänge [Get Task Counts][rest_get_task_counts] (Taskanzahl abrufen) und [List Pool Node Counts][rest_get_node_counts] (Poolknotenanzahl auflisten) aufrufen. Diese Vorgänge sind effizienter als eine Listenabfrage, geben jedoch eingeschränkte Informationen zurück. Weitere Informationen finden Sie unter [Monitor Batch solutions by counting tasks and nodes by state (Überwachen von Batch-Lösungen durch das Zählen von Tasks und Knoten nach Bundesstaat)](batch-get-resource-counts.md). 
+
 
 ## <a name="meet-the-detaillevel"></a>DetailLevel
 In einer Batch-Produktionsanwendung kann die Anzahl von Entitäten wie Aufträgen, Aufgaben und Computeknoten leicht in die Tausende gehen. Beim Anfordern von Informationen zu diesen Ressourcen muss häufig für jede Abfrage eine größere Menge von Daten den Weg vom Batch-Dienst zu Ihrer Anwendung zurücklegen. Durch Einschränken der Anzahl von Elementen und der Art der zurückgegebenen Informationen können Sie die Geschwindigkeit Ihrer Abfragen und damit die Leistung der Anwendung steigern.
@@ -297,4 +294,5 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 [net_schedule]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjobschedule.aspx
 [net_task]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
 
-[rest_get_task_counts]: https://docs.microsoft.com/rest/api/batchservice/get-the-task-counts-for-a-job
+[rest_get_task_counts]: /rest/api/batchservice/get-the-task-counts-for-a-job
+[rest_get_node_counts]: /rest/api/batchservice/account/listpoolnodecounts

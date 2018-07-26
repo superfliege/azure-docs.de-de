@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ec1630f4de70f77c13e335c68aff16180e524c12
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 9d8f74bd66fc7c980c4fc5f83492aad7d8a4aa5c
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36307807"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866966"
 ---
 # <a name="manage-server-administrators"></a>Verwalten von Serveradministratoren
 „Serveradministratoren“ muss eine gültige Benutzer- oder Sicherheitsgruppe in Azure Active Directory (Azure AD) für den Mandanten sein, in dem sich der Server befindet. Zum Verwalten von Serveradministratoren können Sie die Option **Analysis Services-Administratoren** für Ihren Server im Azure-Portal oder die Servereigenschaften in SSMS verwenden. 
@@ -22,7 +22,7 @@ ms.locfileid: "36307807"
 > Für Sicherheitsgruppen muss die `MailEnabled`-Eigenschaft auf `True` gesetzt sein.
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>So fügen Sie Serveradministratoren über das Azure-Portal hinzu
-1. Klicken Sie im Azure-Portal im Bereich für Ihren Server auf **Analysis Services-Administratoren**.
+1. Klicken Sie im Portal im Bereich für Ihren Server auf **Analysis Services-Administratoren**.
 2. Klicken Sie unter **\<Servername> – Analysis Services-Administratoren** auf **Hinzufügen**.
 3. Wählen Sie unter **Serveradministratoren hinzufügen** Benutzerkonten aus Ihrem Azure AD-Verzeichnis aus, oder laden Sie externe Benutzer per E-Mail ein.
 

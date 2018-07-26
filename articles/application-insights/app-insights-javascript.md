@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: c3c5a3029916b91b65a5bd0f6efa5c83f5dfcb66
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 70269fc71fcb2ef9158b50d3bb281097abee0740
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38992415"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
 Informieren Sie sich über die Leistung und Nutzung Ihrer Webseite oder App. Wenn Sie [Application Insights](app-insights-overview.md) Ihrem Seitenskript hinzufügen, erhalten Sie Zeitangaben zu Seitenladevorgängen und AJAX-Aufrufen, Anzahl und Details von Browserausnahmen und AJAX-Fehlern sowie die Anzahl von Benutzern und Sitzungen. Diese Informationen können jeweils nach Seite, Clientbetriebssystem und Browserversion, geografischer Position und anderen Dimensionen segmentiert werden. Sie können Warnungen für die Fehleranzahl oder das langsame Laden von Seiten festlegen. Und indem Sie Ablaufverfolgungsaufrufe in JavaScript-Code einfügen, können Sie nachverfolgen, wie die verschiedenen Funktionen Ihre Webseitenanwendung genutzt werden.
@@ -56,7 +57,7 @@ Rufen Sie im Schnellstart das Skript für Webseiten ab:
 
 ```HTML
 <!-- 
-To collect end-user usage analytics about your application, 
+To collect user behavior analytics about your application, 
 insert the following script into each page you want to track.
 Place this code immediately before the closing </head> tag,
 and before any other scripts. Your first data will appear 
@@ -126,7 +127,7 @@ Wenn Sie die Telemetrie, die von einer Web-App an Application Insights gesendet 
 
 ![Öffnen Sie unter „portal.azure.com“ die Ressource Ihrer App, und klicken Sie auf „Einstellungen“ > „Browser“.](./media/app-insights-javascript/03.png)
 
-*Noch keine Daten verfügbar? Klicken Sie am oberen Seitenrand auf **Aktualisieren**. Immer noch nichts? Informationen hierzu finden Sie unter [Problembehandlung](app-insights-troubleshoot-faq.md).*
+Noch keine Daten verfügbar? Klicken Sie am oberen Seitenrand auf **Aktualisieren**. Immer noch nichts? Informationen hierzu finden Sie unter [Problembehandlung](app-insights-troubleshoot-faq.md).
 
 Das Blatt „Browser“ ist ein [Metrik-Explorer-Blatt](app-insights-metrics-explorer.md) mit voreingestellter Filter- und Diagrammauswahl. Sie können bei Bedarf den Zeitbereich, die Filter und die Diagrammkonfiguration ändern und das Ergebnis als Favorit speichern. Klicken Sie auf **Standard wiederherstellen** , um zur ursprünglichen Blattkonfiguration zurückzukehren.
 
@@ -235,7 +236,7 @@ Der Seitenname kann die gleichen Zeichen wie eine URL enthalten, aber alles nach
 ## <a name="usage-tracking"></a>Nutzungsverfolgung
 Möchten Sie herausfinden, wofür die Benutzer Ihre App verwenden?
 
-* [Weitere Informationen zur Nutzungsnachverfolgung](app-insights-web-track-usage.md)
+* [Informationen zu den Analysetools für Benutzerverhalten](app-insights-web-track-usage.md)
 * [Informationen zur API für benutzerdefinierte Ereignisse und Metriken](app-insights-api-custom-events-metrics.md).
 
 ## <a name="video"></a> Video

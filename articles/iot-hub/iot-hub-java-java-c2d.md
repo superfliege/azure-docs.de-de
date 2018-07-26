@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: 410a156d60aa9b17da9c36e043082c291eea4849
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 853754947b8d89af15a8c773a765f33523721e12
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808110"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187881"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>Senden von C2D-Nachrichten mit IoT Hub (Java)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -41,7 +41,7 @@ Am Ende dieses Tutorials führen Sie zwei Java-Konsolen-Apps aus:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Eine vollständig funktionierende Version des Tutorials [Erste Schritte mit IoT Hub](iot-hub-java-java-getstarted.md) oder [Verarbeiten von D2C-Nachrichten mit IoT Hub](tutorial-routing.md)
+* Eine vollständig funktionierende Version des Tutorials [Erste Schritte mit IoT Hub](quickstart-send-telemetry-java.md) oder [Verarbeiten von D2C-Nachrichten mit IoT Hub](tutorial-routing.md)
 * Das neueste [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Maven 3](https://maven.apache.org/install.html)
 * Ein aktives Azure-Konto. (Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.)
@@ -203,7 +203,7 @@ Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [Io
 [img-send-command]:  media/iot-hub-java-java-c2d/sendc2d.png
 <!-- Links -->
 
-[Erste Schritte mit IoT Hub]: iot-hub-java-java-getstarted.md
+[Erste Schritte mit IoT Hub]: quickstart-send-telemetry-java.md
 [IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
 [IoT Hub-Entwicklerhandbuch]: iot-hub-devguide.md
 [Azure IoT Developer Center]: http://azure.microsoft.com/develop/iot

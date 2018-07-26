@@ -8,12 +8,12 @@ ms.date: 05/24/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 2f756d65fa167b3812772088aec7232d08b04b9f
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 7f01464c4b9063f20a83c3626d7f92a5e0524f7a
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937331"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989124"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -210,9 +210,13 @@ Folgende Felder werden unterstützt:
 - `type`
 - `location`
 - `tags`
-- `tags.tagName`
-- `tags[tagName]`
+- `tags.<tagName>`
+  - Wobei **\<tagName\>** der Name des Tags ist, auf das die Bedingung geprüft wird.
+  - Beispiel: `tags.CostCenter`, wobei **CostCenter** der Name des Tags ist.
+- `tags[<tagName>]`
   - Diese Klammersyntax unterstützt Tagnamen, die Punkte enthalten.
+  - Wobei **\<tagName\>** der Name des Tags ist, auf das die Bedingung geprüft wird.
+  - Beispiel: `tags.[Acct.CostCenter]`, wobei **Acct.CostCenter** der Name des Tags ist.
 - Eigenschaftenaliase – Eine Liste finden Sie unter [Aliase](#aliases).
 
 ### <a name="alternative-accessors"></a>Alternative Accessoren

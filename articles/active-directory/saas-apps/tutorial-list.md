@@ -16,12 +16,12 @@ ms.date: 07/09/2018
 ms.author: markvi
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: e9bd1f91f7e7fac1b882c89ffb2195491ca2c07b
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: f1d85b031abda73c6ca41d6d2551db9d9cd36f1f
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929932"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092153"
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>SaaS-Anwendungsintegration mit Azure Active Directory
 
@@ -109,11 +109,11 @@ Die umfassende Liste bereits in Azure AD integrierter SaaS-Apps finden Sie im [A
 | ![Logo](./media/tutorial-list/active-directory-saas-blackboard-learn-shibboleth-tutorial.png)| [Blackboard Learn – Shibboleth](blackboard-learn-shibboleth-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-bluejeans-tutorial.png)| [BlueJeans](bluejeans-tutorial.md)|[BlueJeans – Benutzerbereitstellung](bluejeans-provisioning-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-bomgarremotesupport-tutorial.png)| [Bomgar Remote Support](bomgarremotesupport-tutorial.md)|
-| ![Logo](./media/tutorial-list/active-directory-saas-bonus-tutorial.png)| [Bonusly](bonus-tutorial.md)|
+| ![Logo](./media/tutorial-list/active-directory-saas-bonus-tutorial.png)| [Bonusly](bonus-tutorial.md)|[Bonusly – Benutzerbereitstellung](bonusly-provisioning-tutorial.md)
 | ![Logo](./media/tutorial-list/active-directory-saas-boomi-tutorial.png)| [Boomi](boomi-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-box-tutorial.png)| [Box](box-tutorial.md)| [Box – Benutzerbereitstellung](box-userprovisioning-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-boxcryptor-tutorial.png)| [Boxcryptor](boxcryptor-tutorial.md)|
-| ![Logo](./media/tutorial-list/active-directory-saas-bpmonline-tutorial.png)| [Bpmâonline](bpmonline-tutorial.md)|
+| ![Logo](./media/tutorial-list/active-directory-saas-bpmonline-tutorial.png)| [Bpm’online](bpmonline-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-bridge-tutorial.png)| [Bridge](bridge-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-brightspace-desire2learn-tutorial.png)| [Brightspace by Desire2Learn](brightspace-desire2learn-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-bynder-tutorial.png)| [Bynder](bynder-tutorial.md)|
@@ -178,7 +178,7 @@ Die umfassende Liste bereits in Azure AD integrierter SaaS-Apps finden Sie im [A
 | ![Logo](./media/tutorial-list/active-directory-saas-dome9arc-tutorial.png)| [Dome9 Arc](dome9arc-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-domo-tutorial.png)| [Domo](domo-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-dowjones-factiva-tutorial.png)| [Dow Jones Factiva](dowjones-factiva-tutorial.md)|
-| ![Logo](./media/tutorial-list/active-directory-saas-dropboxforbusiness-tutorial.png)| [Dropbox für Unternehmen](dropboxforbusiness-tutorial.md)| [Dropbox for Business – Benutzerbereitstellung](dropboxforbusiness-provisioning-tutorial.md)|
+| ![Logo](./media/tutorial-list/active-directory-saas-dropboxforbusiness-tutorial.png)| [Dropbox für Unternehmen](dropboxforbusiness-tutorial.md)| [Dropbox for Business – Benutzerbereitstellung](dropboxforbusiness-provisioning-tutorial.md)| 
 | ![Logo](./media/tutorial-list/active-directory-saas-druva-tutorial.png)| [Druva](druva-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-dynamicsignal-tutorial.png)| [Dynamic Signal](dynamicsignal-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-easyterritory-tutorial.png)| [EasyTerritory](easyterritory-tutorial.md)|

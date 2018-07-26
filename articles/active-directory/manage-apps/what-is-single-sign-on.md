@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.workload: identity
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 199aaf60a21e0362f27707de04f14854aa528297
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: b7ea8a755f1f23c76bb0f7d8120970bb7795e95b
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081505"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091832"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?
 Einmaliges Anmelden bedeutet, dass Sie Zugriff auf sämtliche für Ihre Geschäftsaktivitäten benötigten Anwendungen und Ressourcen erhalten, indem Sie sich nur einmal mit einem einzigen Benutzerkonto anmelden. Nach der Anmeldung können Sie auf alle benötigten Anwendungen zugreifen, ohne sich ein zweites Mal (z.B. durch Eingabe eines Kennworts) authentifizieren zu müssen.
@@ -45,8 +45,7 @@ Wenn Benutzer sich bei einer Anwendung anmelden, durchlaufen sie einen Authentif
 Azure AD unterstützt drei verschiedene Methoden für die Anwendungsanmeldung:
 
 * **Einmalige Verbundanmeldung** ermöglicht Anwendungen die Umleitung zu Azure AD für die Benutzerauthentifizierung, statt zur Eingabe eines eigenen Kennworts aufgefordert zu werden. Das einmalige Anmelden im Verbund kann für Anwendungen verwendet werden, die Protokolle wie SAML 2.0, WS-Verbund oder OpenID Connect unterstützen, und ist der umfassendste Modus bei der einmaligen Anmeldung.
-* **Kennwortbasierte einmalige Anmeldung** ermöglicht die sichere Speicherung des Anwendungskennworts und dessen Wiedergabe mit einer Webbrowsererweiterung oder einer mobilen App. Das kennwortbasierte einmalige Anmelden verwendet den bestehenden 
-*  durch die Anwendung bereitgestellten Vorgang, die Kennwortverwaltung übernimmt jedoch der Administrator, sodass der Benutzer das Kennwort nicht kennen muss.
+* **Kennwortbasierte einmalige Anmeldung** ermöglicht die sichere Speicherung des Anwendungskennworts und dessen Wiedergabe mit einer Webbrowsererweiterung oder einer mobilen App. Bei der kennwortbasierten einmaligen Anmeldung wird der von der Anwendung bereitgestellte vorhandene Vorgang verwendet, die Kennwortverwaltung übernimmt jedoch der Administrator, sodass der Benutzer das Kennwort nicht kennen muss.
 * **Vorhandenes einmaliges Anmelden** ermöglicht Azure AD, eine beliebige Methode, die für die Anwendung eingerichtet wurde, für das einmalige Anmelden zu nutzen. Es ist auch möglich, diese Anwendungen mit dem Office 365- oder dem Azure AD-Zugriffsbereichsportal zu verknüpfen und darüber hinaus die Berichterstellung in Azure AD zu aktivieren, wenn die Anwendungen auf diese Weise gestartet werden.
 
 Sobald ein Benutzer bei einer Anwendung authentifiziert wurde, muss zu der Anwendung auch ein Kontodatensatz vorhanden sein, dem zu entnehmen ist, wo die Zugriffsberechtigungen und die Zugriffsebene in der Anwendung zu finden sind. Die Bereitstellung dieses Kontodatensatzes kann entweder automatisch oder manuell durch einen Administrator erfolgen, bevor dem Benutzer Zugriff mit einmaliger Anmeldung gewährt wird.
@@ -158,7 +157,7 @@ Der Zugriffsbereich unter https://myapps.microsoft.com ist ein webbasiertes Port
 
 Der Zugriffsbereich ist unabhängig vom Azure-Portal und setzt nicht voraus, dass Benutzer über ein Azure- oder Office 365-Abonnement verfügen.
 
-Weitere Informationen zum Azure AD-Zugriffsbereich finden Sie in der [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Azure AD-Zugriffsbereich finden Sie in der [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ### <a name="office-365-application-launcher"></a>Office 365-Anwendungsstartprogramm
 Für Organisationen, die Office 365 bereitgestellt haben, werden Anwendungen, die Benutzern über Azure AD zugewiesen werden, auch im Office 365-Portal unter https://portal.office.com/myapps angezeigt. So können Benutzer in einer Organisation auf einfache und komfortable Weise ihre Apps starten, ohne ein zweites Portal verwenden zu müssen. Diese Lösung für den App-Start wird für Unternehmen empfohlen, die Office 365 einsetzen.
@@ -194,7 +193,7 @@ Diese Links verwenden die gleichen Mechanismen der Zugriffssteuerung wie der Zug
 ## <a name="related-articles"></a>Verwandte Artikel
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](../active-directory-apps-index.md)
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](../saas-apps/tutorial-list.md)
-* [Einrichten von Cloud Discovery](/cloud-app/security/set-up-cloud-discovery)
+* [Einrichten von Cloud Discovery](/cloud-app-security/set-up-cloud-discovery)
 * [Einführung in die Verwaltung des Zugriffs auf Apps](what-is-access-management.md)
 * [Vergleich von Funktionen zum Verwalten externer Identitäten in Azure AD](../active-directory-b2b-compare-b2c.md)
 

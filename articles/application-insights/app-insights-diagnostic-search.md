@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/14/2017
+ms.date: 07/18/2018
 ms.author: mbullwin
-ms.openlocfilehash: c6a94fd1cebff4aa657ad5293715550161003d21
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 1a343e238662393995404b8e4c705cf799866855
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294383"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136907"
 ---
 # <a name="using-search-in-application-insights"></a>Verwenden von Search in Application Insights
 Search ist eine Funktion in [Application Insights](app-insights-overview.md), mit der Sie einzelne Telemetrieelemente wie Seitenaufrufe, Ausnahmen und Webanforderungen suchen und untersuchen können. Außerdem können Sie Protokollablaufverfolgungen und Ereignisse anzeigen, die Sie programmiert haben.
@@ -26,16 +26,14 @@ Search ist eine Funktion in [Application Insights](app-insights-overview.md), mi
 (Verwenden Sie [Analytics](app-insights-analytics-tour.md) zum Anwenden komplexerer Abfragen auf Ihre Daten.)
 
 ## <a name="where-do-you-see-search"></a>Wo steht Search zur Verfügung?
+
 ### <a name="in-the-azure-portal"></a>Im Azure-Portal
+
 Sie können die Diagnosesuche explizit auf dem Blatt „Application Insights-Übersicht“ Ihrer Anwendung öffnen:
 
-![Diagnosesuche öffnen](./media/app-insights-diagnostic-search/01-open-Diagnostic.png)
+![Diagnosesuche öffnen](./media/app-insights-diagnostic-search/001.png)
 
-Sie wird auch geöffnet, wenn Sie sich durch einige Diagramme und Rasterelemente klicken. In diesem Fall werden ihre Filter so voreingestellt, dass der Fokus auf dem ausgewählten Elementtyp liegt. 
-
-Auf dem Blatt „Übersicht“ gibt es z.B. ein Balkendiagramm von nach Antwortzeit klassifizierten Anforderungen. Klicken Sie sich durch einen Leistungsbereich, um eine Liste einzelner Anforderungen im jeweiligen Antwortzeitbereich anzuzeigen:
-
-![Klicken durch die Anforderungsleistung](./media/app-insights-diagnostic-search/07-open-from-filters.png)
+![Screenshot der Graphen zur Diagnosesuche](./media/app-insights-diagnostic-search/002.png)
 
 Den Hauptteil der Diagnosesuche bildet eine Liste von Telemetrieelementen: Serveranforderungen, Seitenaufrufe, benutzerdefinierte Ereignisse, die Sie programmiert haben, usw. Am Anfang der Liste befindet sich ein Übersichtsdiagramm, das die Anzahl der Ereignisse im Zeitablauf zeigt.
 
@@ -56,9 +54,14 @@ Das Fenster „Search“ bietet ähnliche Features wie das Webportal:
 Die Registerkarte „Nachverfolgungsvorgang“ ist verfügbar, wenn Sie eine Anforderung oder einen Seitenaufruf öffnen. Ein „Vorgang“ ist eine Folge von Ereignissen, die einer einzelnen Anforderung oder einem einzelnem Seitenaufruf zugeordnet sind. Abhängigkeitsaufrufe, Ausnahmen, Ablaufverfolgungsprotokolle und benutzerdefinierte Ereignisse können beispielsweise Teil eines einzelnen Vorgangs sein. Die Registerkarte "Nachverfolgungsvorgang" zeigt den Zeitpunkt und die Dauer dieser Ereignisse in Bezug auf die Anforderung oder den Seitenaufruf. 
 
 ## <a name="inspect-individual-items"></a>Überprüfen einzelner Elemente
-Wählen Sie ein beliebiges Telemetrieelement aus, um Schlüsselfelder und verwandte Elemente anzuzeigen. Wenn Sie alle Felder anzeigen möchten, klicken Sie auf "...". 
 
-![Klicken Sie auf „Neues Arbeitselement“, bearbeiten Sie die Felder, und klicken Sie dann auf „OK“.](./media/app-insights-diagnostic-search/10-detail.png)
+Wählen Sie ein beliebiges Telemetrieelement aus, um Schlüsselfelder und verwandte Elemente anzuzeigen.
+
+![Screenshot einer einzelnen Abhängigkeitsanforderung](./media/app-insights-diagnostic-search/003.png)
+
+Dies startet die Detailansicht der End-to-End-Transaktion:
+
+![Screenshot der Detailansicht der End-to-End-Transaktion](./media/app-insights-diagnostic-search/004.png)
 
 ## <a name="filter-event-types"></a>Filtern von Ereignistypen
 Öffnen Sie das Blatt "Filter", und wählen Sie die Ereignistypen, die Sie anzeigen möchten. (Wenn Sie später die Filter wiederherstellen möchten, mit denen Sie das Blatt geöffnet haben, klicken Sie auf "Zurücksetzen".)
@@ -91,14 +94,10 @@ In diesem Beispiel ist es klar, dass die Anforderung „Rpt/Employees“ die Meh
 
 ![Erweitern Sie eine Eigenschaft, und wählen Sie einen Wert](./media/app-insights-diagnostic-search/04-failingReq.png)
 
-
-
-
 ## <a name="find-events-with-the-same-property"></a>Suchen von Ereignissen mit der gleichen Eigenschaft
 Suchen Sie alle Elemente mit dem gleichen Eigenschaftswert:
 
 ![Klicken Sie mit der rechten Maustaste auf eine Eigenschaft ](./media/app-insights-diagnostic-search/12-samevalue.png)
-
 
 ## <a name="search-the-data"></a>Durchsuchen der Daten
 
@@ -128,14 +127,10 @@ Dies sind einige Suchausdrücke, die Sie verwenden können:
 | `apple OR banana`<br/>`apple banana` |Findet Ereignisse, die eines der beiden Wörter enthalten. Verwenden Sie „OR“ in Großbuchstaben, nicht „or“.<br/>Kurzform. |
 | `apple NOT banana` |Findet Ereignisse, die das eine Wort enthalten, aber nicht das andere. |
 
-
-
 ## <a name="sampling"></a>Stichproben
 Wenn die Anwendung viele Telemetriedaten generiert (und Sie die ASP.NET SDK-Version 2.0.0-beta3 oder höher verwenden), reduziert das adaptive Stichprobenmodul automatisch die an das Portal gesendete Datenmenge, indem nur ein repräsentativer Bruchteil der Ereignisse gesendet wird. Ereignisse, die mit derselben Anforderung im Zusammenhang stehen, werden als Gruppe aus- oder abgewählt, sodass Sie zwischen verwandten Ereignissen navigieren können. 
 
 [Erfahren Sie mehr über das Erstellen von Stichproben.](app-insights-sampling.md)
-
-
 
 ## <a name="create-work-item"></a>Erstellen eines Arbeitselements
 Sie können einen Fehler mit den Details aus einem beliebigen Telemetrieelement in GitHub oder Visual Studio Team Services erstellen. 
@@ -147,17 +142,6 @@ Wenn Sie diesen Vorgang zum ersten Mal ausführen, werden Sie aufgefordert, eine
 ![Geben Sie die URL Ihres Team Services-Servers und den Projektnamen ein, und klicken Sie auf „Autorisieren“.](./media/app-insights-diagnostic-search/41.png)
 
 (Sie können den Link auch auf dem Blatt „Arbeitsaufgaben“ konfigurieren.)
-
-## <a name="save-your-search"></a>Speichern der Suche
-Wenn Sie alle gewünschten Filter festgelegt haben, können Sie die Suche als Favoriten speichern. Wenn Sie mit einem Organisationskonto arbeiten, können Sie wählen, ob Sie sie für andere Teammitglieder freigeben.
-
-![Klicken Sie auf "Favoriten", legen Sie den Namen fest, und klicken Sie auf "Speichern"](./media/app-insights-diagnostic-search/08-favorite-save.png)
-
-Um die Suche erneut zu verwenden, **wechseln Sie zum Blatt "Übersicht"** und öffnen "Favoriten":
-
-![Kachel "Favoriten"](./media/app-insights-diagnostic-search/09-favorite-get.png)
-
-Wenn Sie mit dem Zeitraum "Relativ" gespeichert haben, enthält das neu geöffnete Blatt die neuesten Daten. Wenn Sie mit dem Zeitraum "Absolut" gespeichert haben, werden jedes Mal dieselben Daten gezeigt. (Sollte „Relativ“ nicht verfügbar sein, wenn Sie einen Favoriten speichern möchten, klicken Sie in der Kopfzeile auf „Zeitbereich“ und legen einen Zeitbereich fest, der kein benutzerdefinierter Bereich ist.)
 
 ## <a name="send-more-telemetry-to-application-insights"></a>Senden weiterer Telemetriedaten an Application Insights
 Neben der standardmäßig vom Application Insights SDK gesendeten Telemetriedaten können Sie folgende Aktionen ausführen:

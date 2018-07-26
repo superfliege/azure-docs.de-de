@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 29ac86ed5c744d37150b0f1b2db17f60306fe77e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: fd4226254e076957ac8651f9172f1f3f82427a60
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799801"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001829"
 ---
 # <a name="monitor-batch-solutions"></a>Überwachen von Batch-Lösungen
 
@@ -41,9 +41,9 @@ Ereignisse können unter anderem über das Azure-Portal aus dem Aktivitätsproto
 
 ## <a name="batch-resource-monitoring"></a>Überwachung von Batch-Ressourcen
 
-Verwenden Sie in Ihren Batch-Anwendungen die Batch-APIs, um den Status von Ressourcen wie Aufträgen, Aufgaben, Knoten und Pools zu überwachen oder abzufragen. Beispiel:
+Verwenden Sie in Ihren Batch-Anwendungen die Batch-APIs, um den Status von Ressourcen wie Aufträgen, Aufgaben, Knoten und Pools zu überwachen oder abzufragen. Beispiel: 
 
-* [Zählen von Aufgaben nach Zustand](batch-get-task-counts.md)
+* [Monitor Batch solutions by counting tasks and nodes by state (Überwachen von Batch-Lösungen durch das Zählen von Tasks und Knoten nach Bundesstaat)](batch-get-resource-counts.md)
 * [Erstellen von Abfragen zum effizienten Auflisten von Batch-Ressourcen](batch-efficient-list-queries.md)
 * [Erstellen von Auftragsabhängigkeiten](batch-task-dependencies.md)
 * Verwenden einer [Auftrags-Manager-Aufgabe](/rest/api/batchservice/job/add#jobmanagertask)

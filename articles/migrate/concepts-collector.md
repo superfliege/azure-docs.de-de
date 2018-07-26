@@ -4,15 +4,15 @@ description: Bietet eine Übersicht über die Collectorappliance und deren Konfi
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 07/10/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: d0f36370f5093f8c1d06c83a62532b3854597fa4
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8cc5863489c58a0603d8aa464911031a22dba8f3
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211668"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951038"
 ---
 # <a name="collector-appliance"></a>Collectorappliance
 
@@ -176,7 +176,7 @@ Der Collector ermittelt nur die Computerdaten und sendet sie an das Projekt. Das
 Je nach Anzahl der virtuellen Computer im ausgewählten Bereich dauert das Senden der statischen Metadaten an das Projekt bis zu 15 Minuten. Sobald die statischen Metadaten im Portal verfügbar sind, können Sie die Liste der Computer im Portal anzeigen und mit der Gruppenerstellung beginnen. Eine Bewertung kann erst erstellt werden, wenn der Auftrag abgeschlossen ist und das Projekt die Daten verarbeitet hat. Nachdem der Sammlungsauftrag auf dem Collector abgeschlossen ist, kann es bis zu einer Stunde dauern, bis die Leistungsdaten im Portal verfügbar sind. Die Dauer hängt von der Anzahl der virtuellen Computer im ausgewählten Bereich ab.
 
 ## <a name="locking-down-the-collector-appliance"></a>Sperren der Collectorappliance
-Wir empfehlen Ihnen, für die Collectorappliance fortlaufende Windows-Updates auszuführen. Wenn ein Collector 45 Tage lang nicht aktualisiert wird, beginnt der Collector mit dem automatischen Herunterfahren des Computers. Wenn eine Ermittlung ausgeführt wird, wird der Computer auch dann nicht ausgeschaltet, wenn die 45 Tage überschritten wurden. Nachdem der Ermittlungsauftrag abgeschlossen wurde, wird der Computer ausgeschaltet. Wenn Sie den Collector länger als 45 Tage verwenden, empfehlen wir Ihnen, den Computer durch die Ausführung von Windows-Updates stets auf dem neuesten Stand zu halten.
+Wir empfehlen Ihnen, für die Collectorappliance fortlaufende Windows-Updates auszuführen. Wenn ein Collector 60 Tage lang nicht aktualisiert wird, beginnt er mit dem automatischen Herunterfahren des Computers. Wenn eine Ermittlung ausgeführt wird, wird der Computer auch beim Überschreiten der 60 Tage nicht ausgeschaltet. Nachdem der Ermittlungsauftrag abgeschlossen wurde, wird der Computer ausgeschaltet. Wenn Sie den Collector länger als 45 Tage verwenden, empfehlen wir Ihnen, den Computer durch die Ausführung von Windows-Updates stets auf dem neuesten Stand zu halten.
 
 Außerdem ist es ratsam, die folgenden Schritte auszuführen, um Ihre Appliance zu schützen:
 1. Teilen Sie Administratorkennwörter nicht unbefugten Personen mit, und verlieren Sie sie nicht.

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/08/2018
+ms.date: 07/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3ecc1a9557c7854a0771decb3cc7f7597bcd87dd
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 562e8e49d769f15ba0b965bfb03c0d56076c78f1
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34360018"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091321"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager
 
@@ -104,7 +104,21 @@ Wählen Sie die Meldung aus, um weitere Details zu sehen. In der folgenden Abbil
 
 ### <a name="deployment-errors"></a>Bereitstellungsfehler
 
-Wenn der Vorgang die Überprüfung besteht, aber ein Fehler während der Bereitstellung auftritt, wird der Fehler in den Benachrichtigungen angezeigt. Wählen Sie die Benachrichtigung aus.
+Wenn der Vorgang die Überprüfung besteht, aber ein Fehler während der Bereitstellung auftritt, wird ein Bereitstellungsfehler angezeigt.
+
+Verwenden Sie Folgendes, um Fehlercodes und -meldungen bei der Bereitstellung mit PowerShell anzuzeigen:
+
+```azurepowershell-interactive
+(Get-AzureRmResourceGroupDeploymentOperation -DeploymentName exampledeployment -ResourceGroupName examplegroup).Properties.statusMessage
+```
+
+Verwenden Sie Folgendes, um Fehlercodes und -meldungen bei der Bereitstellung mit Azure CLI anzuzeigen:
+
+```azurecli-interactive
+az group deployment operation list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
+```
+
+Wählen Sie im Portal die Benachrichtigung aus.
 
 ![Benachrichtigungsfehler](./media/resource-manager-common-deployment-errors/notification.png)
 
@@ -118,59 +132,91 @@ Die Fehlermeldung und die Fehlercodes werden angezeigt. Es sind zwei Fehlercodes
 
 ## <a name="enable-debug-logging"></a>Debugprotokollierung aktivieren
 
-Manchmal benötigen Sie weitere Informationen zur Anforderung und zur Antwort, um den genauen Fehler zu ermitteln. Mithilfe von PowerShell oder der Azure CLI können Sie anfordern, dass während der Bereitstellung zusätzliche Informationen protokolliert werden.
+Manchmal benötigen Sie weitere Informationen zur Anforderung und zur Antwort, um den genauen Fehler zu ermitteln. Sie können anfordern, dass während der Bereitstellung zusätzliche Informationen protokolliert werden. 
 
-- PowerShell
+### <a name="powershell"></a>PowerShell
 
-   Legen Sie in PowerShell den Parameter **DeploymentDebugLogLevel** auf „All“, „ResponseContent“ oder „RequestContent“ fest.
+Legen Sie in PowerShell den Parameter **DeploymentDebugLogLevel** auf „All“, „ResponseContent“ oder „RequestContent“ fest.
 
-  ```powershell
-  New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile c:\Azure\Templates\storage.json -DeploymentDebugLogLevel All
-  ```
+```powershell
+New-AzureRmResourceGroupDeployment `
+  -Name exampledeployment `
+  -ResourceGroupName examplegroup `
+  -TemplateFile c:\Azure\Templates\storage.json `
+  -DeploymentDebugLogLevel All
+```
 
-   Überprüfen Sie den Anforderungsinhalt mit folgendem Cmdlet:
+Überprüfen Sie den Anforderungsinhalt mit folgendem Cmdlet:
 
-  ```powershell
-  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName storageonly -ResourceGroupName startgroup).Properties.request | ConvertTo-Json
-  ```
+```powershell
+(Get-AzureRmResourceGroupDeploymentOperation `
+-DeploymentName exampledeployment `
+-ResourceGroupName examplegroup).Properties.request `
+| ConvertTo-Json
+```
 
-   Oder überprüfen Sie den Antwortinhalt mit:
+Oder überprüfen Sie den Antwortinhalt mit:
 
-  ```powershell
-  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName storageonly -ResourceGroupName startgroup).Properties.response | ConvertTo-Json
-  ```
+```powershell
+(Get-AzureRmResourceGroupDeploymentOperation `
+-DeploymentName exampledeployment `
+-ResourceGroupName examplegroup).Properties.response `
+| ConvertTo-Json
+```
 
-   Mithilfe dieser Informationen können Sie ermitteln, ob ein Wert in der Vorlage nicht ordnungsgemäß festgelegt wurde.
+Mithilfe dieser Informationen können Sie ermitteln, ob ein Wert in der Vorlage nicht ordnungsgemäß festgelegt wurde.
 
-- Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-   Untersuchen Sie die Bereitstellungsvorgänge mit folgendem Befehl:
+Derzeit unterstützt Azure CLI das Aktivieren der Debugprotokollierung nicht, Sie können diese jedoch abrufen.
 
-  ```azurecli
-  az group deployment operation list --resource-group ExampleGroup --name vmlinux
-  ```
+Untersuchen Sie die Bereitstellungsvorgänge mit folgendem Befehl:
 
-- Geschachtelte Vorlage
+```azurecli
+az group deployment operation list \
+  --resource-group examplegroup \
+  --name exampledeployment
+```
 
-   Verwenden Sie zum Protokollieren von Debuginformationen zu einer geschachtelten Vorlage das **debugSetting**-Element.
+Überprüfen Sie den Anforderungsinhalt mit folgendem Befehl:
 
-  ```json
-  {
-      "apiVersion": "2016-09-01",
-      "name": "nestedTemplate",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-          "mode": "Incremental",
-          "templateLink": {
-              "uri": "{template-uri}",
-              "contentVersion": "1.0.0.0"
-          },
-          "debugSetting": {
-             "detailLevel": "requestContent, responseContent"
-          }
-      }
-  }
-  ```
+```azurecli
+az group deployment operation list \
+  --name exampledeployment \
+  -g examplegroup \
+  --query [].properties.request
+```
+
+Überprüfen Sie den Antwortinhalt mit folgendem Befehl:
+
+```azurecli
+az group deployment operation list \
+  --name exampledeployment \
+  -g examplegroup \
+  --query [].properties.response
+```
+
+### <a name="nested-template"></a>Geschachtelte Vorlage
+
+Verwenden Sie zum Protokollieren von Debuginformationen zu einer geschachtelten Vorlage das **debugSetting**-Element.
+
+```json
+{
+    "apiVersion": "2016-09-01",
+    "name": "nestedTemplate",
+    "type": "Microsoft.Resources/deployments",
+    "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+            "uri": "{template-uri}",
+            "contentVersion": "1.0.0.0"
+        },
+        "debugSetting": {
+           "detailLevel": "requestContent, responseContent"
+        }
+    }
+}
+```
 
 ## <a name="create-a-troubleshooting-template"></a>Erstellen einer Vorlage zur Problembehandlung
 

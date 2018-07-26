@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 306032ece4feda0e8132db1e95c4a229472e6c04
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 3630d4d694452f2c619e707d1e2e58f1bfe71c0e
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34643497"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858951"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Überwachung in Azure SQL Data Warehouse
 
@@ -52,8 +52,9 @@ Eine Überwachungsrichtlinie kann für eine spezifische Datenbank oder als Stand
 > * Sie möchten ein anderes *Speicherkonto* oder eine andere *Beibehaltungsdauer* für eine bestimmte Datenbank verwenden.
 > * Sie möchten andere Ereignistypen oder Kategorien für eine bestimmte Datenbank überwachen als die, die für die restlichen Datenbanken auf dem Server überwacht werden. Beispielsweise sollen Tabelleneinfügungen nur für eine bestimmte Datenbank überwacht werden.
 > * Sie möchten die Bedrohungserkennung nutzen, die zurzeit nur bei der Überwachung auf Datenbankebene unterstützt wird.
->
 
+> [!IMPORTANT]
+>Das Aktivieren der Überwachung in einem Azure SQL Data Warehouse oder auf einem Server mit einem Azure SQL Data Warehouse **führt dazu, dass das Data Warehouse wieder aufgenommen wird**, auch wenn es zuvor angehalten wurde. **Stellen Sie sicher, dass Sie das Data Warehouse nach dem Aktivieren der Überwachung erneut anhalten**.
 
 ## <a id="subheading-5"></a>Einrichten der Überwachung auf Serverebene für alle Datenbanken
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
 ms.openlocfilehash: 8160752b0116c3ef3e6b6ab7920bb35e471f180b
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
-ms.locfileid: "24010803"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38687694"
 ---
 # <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-enable-remote-firmware-updates-using-c"></a>Verbinden Ihres Raspberry Pi 3 mit der Remoteüberwachungslösung und Ermöglichen von Remote-Firmwareupdates mithilfe von C
 
@@ -123,7 +123,7 @@ Drücken Sie **STRG+C**, um das Programm zu einem beliebigen Zeitpunkt zu beende
 
 1. Wählen Sie auf der Seite **Methode aufrufen** in der Dropdownliste **Methode** die Option **InitiateFirmwareUpdate** aus.
 
-1. Geben Sie im Feld **FWPackageURI** **https://github.com/Azure-Samples/iot-remote-monitoring-c-raspberrypi-getstartedkit/raw/master/advanced/2.0/package/remote_monitoring.zip** ein. Diese Archivdatei enthält die Implementierung der Version 2.0 der Firmware.
+1. Geben Sie im Feld **FWPackageURI** den URI **https://github.com/Azure-Samples/iot-remote-monitoring-c-raspberrypi-getstartedkit/raw/master/advanced/2.0/package/remote_monitoring.zip** ein. Diese Archivdatei enthält die Implementierung der Version 2.0 der Firmware.
 
 1. Wählen Sie **InvokeMethod** aus. Die App auf dem Raspberry Pi gibt eine Bestätigung an das Lösungsdashboard zurück. Anschließend wird das Update der Firmware gestartet, indem die neue Version der Firmware heruntergeladen wird:
 

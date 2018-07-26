@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: ergreenl
-ms.openlocfilehash: 9eefbdb8acd7dff14817c8358a05ae0f91e5eb11
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 360c6c98227e52f0540b00ef136888d3d143b9fb
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218876"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951073"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services – Problembehandlung von Warnungen
 Dieser Artikel enthält Leitfäden für die Problembehandlung aller Warnungen, denen Sie in Ihrer verwalteten Domäne begegnen können.
@@ -39,7 +39,7 @@ Verwenden Sie die Problembehandlungsschritte für die ID oder Meldung in der War
 | AADDS105 | *Der Dienstprinzipal mit der Anwendungs-ID „d87dcbc6-a371-462e-88e3-28ad15ec4e64“ wurde gelöscht und dann neu erstellt. Die Wiederherstellung hinterlässt inkonsistente Berechtigungen für Azure AD Domain Services-Ressourcen, die für Ihre verwaltete Domäne benötigt werden. Die Synchronisierung von Kennwörtern in Ihrer verwalteten Domäne kann beeinträchtigt werden.* | [Die Kennwortsynchronisierungsanwendung ist veraltet.](active-directory-ds-troubleshoot-service-principals.md#alert-aadds105-password-synchronization-application-is-out-of-date) |
 | AADDS500 | *Die verwaltete Domäne wurde zuletzt am [Datum] mit Azure AD synchronisiert. Benutzer können sich möglicherweise nicht bei der verwalteten Domäne anmelden, oder Gruppenmitgliedschaften sind möglicherweise nicht mit Azure AD synchronisiert.* | [Die Synchronisierung wurde eine Weile nicht durchgeführt.](#aadds500-synchronization-has-not-completed-in-a-while) |
 | AADDS501 | *Die verwaltete Domäne wurde zuletzt am [Datum] gesichert.* | [Eine Sicherung wurde eine Weile nicht durchgeführt.](#aadds501-a-backup-has-not-been-taken-in-a-while) |
-| AADDS502 | *Das sichere LDAP-Zertifikat für die verwaltete Domäne läuft am XX ab.* | [Ablauf des sicheren LDAP-Zertifikats](active-directory-ds-troubleshoot-ldaps.md#aadds502-secure-ldap-certificate-expiring) |
+| AADDS502 | *Das sichere LDAP-Zertifikat für die verwaltete Domäne läuft am [Datum] ab.* | [Ablauf des sicheren LDAP-Zertifikats](active-directory-ds-troubleshoot-ldaps.md#aadds502-secure-ldap-certificate-expiring) |
 | AADDS503 | *Die verwaltete Domäne wird angehalten, da das mit der Domäne verknüpfte Azure-Abonnement nicht aktiv ist.* | [Anhalten aufgrund eines deaktivierten Abonnements](#aadds503-suspension-due-to-disabled-subscription) |
 | AADDS504 | *Die verwaltete Domäne wird aufgrund einer ungültigen Konfiguration angehalten. Der Dienst konnte die Domänencontroller für Ihre verwaltete Domäne für einen längeren Zeitraum nicht verwalten, kein Patch für sie ausführen oder sie nicht aktualisieren.* | [Anhalten aufgrund einer ungültigen Konfiguration](#aadds504-suspension-due-to-an-invalid-configuration) |
 
@@ -112,6 +112,9 @@ Innerhalb des virtuellen Netzwerks können Computer Anforderungen für Azure-Res
 
 [Überprüfen Sie die Integrität Ihrer Domäne](active-directory-ds-check-health.md) auf Warnungen, die auf Probleme in Ihrer Konfiguration der verwalteten Domäne hinweisen könnten. In einigen Fällen können Probleme mit der Konfiguration die Fähigkeit von Microsoft zum Synchronisieren Ihrer verwalteten Domäne blockieren. Wenn Sie Warnungen auflösen können, warten Sie zwei Stunden, und überprüfen Sie dann, ob die Synchronisierung abgeschlossen ist.
 
+Einige häufige Gründe, warum die Synchronisierung in verwalteten Domänen unterbrochen wird:
+- Die Netzwerkverbindung ist für die verwaltete Domäne blockiert. Weitere Informationen zum Überprüfen des Netzwerks auf Probleme finden Sie unter [Problembehandlung bei Netzwerksicherheitsgruppen](active-directory-ds-troubleshoot-nsg.md) und [Netzwerkanforderungen für Azure AD Domain Services](active-directory-ds-networking.md).
+-  Die Kennwortsynchronisierung wurde nicht eingerichtet oder nicht abgeschlossen. Informationen zum Einrichten der Kennwortsynchronisierung finden Sie in [diesem Artikel](active-directory-ds-getting-started-password-sync.md).
 
 ## <a name="aadds501-a-backup-has-not-been-taken-in-a-while"></a>AADDS501: Eine Sicherung wurde eine Weile nicht durchgeführt.
 
@@ -132,6 +135,9 @@ Innerhalb des virtuellen Netzwerks können Computer Anforderungen für Azure-Res
 
 **Lösung:**
 
+> [!WARNING]
+> Wenn die verwaltete Domäne über einen längeren Zeitraum angehalten wird, besteht die Gefahr, dass sie gelöscht wird. Es empfiehlt sich, dies möglichst schnell zu beheben. Weitere Informationen finden Sie in [diesem Artikel](active-directory-ds-suspension.md).
+
 Zum Wiederherstellen Ihres Diensts [erneuern Sie Ihr Azure-Abonnement](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable), das Ihrer verwalteten Domäne zugeordnet ist.
 
 ## <a name="aadds504-suspension-due-to-an-invalid-configuration"></a>AADDS504: Anhalten aufgrund einer ungültigen Konfiguration
@@ -142,7 +148,11 @@ Zum Wiederherstellen Ihres Diensts [erneuern Sie Ihr Azure-Abonnement](https://d
 
 **Lösung:**
 
+> [!WARNING]
+> Wenn die verwaltete Domäne über einen längeren Zeitraum angehalten wird, besteht die Gefahr, dass sie gelöscht wird. Es empfiehlt sich, dies möglichst schnell zu beheben. Weitere Informationen finden Sie in [diesem Artikel](active-directory-ds-suspension.md).
+
 [Überprüfen Sie die Integrität Ihrer Domäne](active-directory-ds-check-health.md) auf Warnungen, die auf Probleme in Ihrer Konfiguration der verwalteten Domäne hinweisen könnten. Wenn Sie einige von diesen Warnungen auflösen können, tun Sie dies. Wenden Sie sich danach an den Support, um Ihr Abonnement erneut zu aktivieren.
+
 
 ## <a name="contact-us"></a>Kontakt
 Wenden Sie sich an das Produktteam der Azure Active Directory Domain Services, um [Feedback zu geben oder Support zu erhalten](active-directory-ds-contact-us.md).

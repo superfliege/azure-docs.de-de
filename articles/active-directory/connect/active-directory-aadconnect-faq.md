@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7edabc99da5e1466e848336c647a33213c9edd8b
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 545766aa6c39fe678113297e584422872a6ded87
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37133316"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008143"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Häufig gestellte Fragen zu Azure Active Directory Connect
 
@@ -65,7 +65,7 @@ Aus Gründen der Einfachheit wird empfohlen, dass Benutzer, die Azure AD Connect
 Für Netzwerksoftware, physische Geräte und andere Komponenten, durch die die maximale Dauer von offenen Verbindungen eingeschränkt wird, sollte ein Schwellenwert von mindestens 5 Minuten (300 Sekunden) für die Konnektivität zwischen dem Server, auf dem der Azure AD Connect-Client installiert ist, und Azure Active Directory verwendet werden. Diese Empfehlung gilt auch für alle zuvor veröffentlichten Microsoft-Identitätssynchronisierungswerkzeuge.
 
 **F: Werden einteilige Domänen (SLDs) unterstützt?**  
-Nein. Azure AD Connect unterstützt keine lokalen Gesamtstrukturen oder Domänen mit SLDs.
+Von dieser Netzwerkkonfiguration wird zwar dringend abgeraten ([siehe Artikel](https://support.microsoft.com/en-us/help/2269810/microsoft-support-for-single-label-domains)), die Verwendung der Azure AD Connect-Synchronisierung mit einer einteiligen Domäne wird jedoch unterstützt, solange die Netzwerkkonfiguration für diese ordnungsgemäß funktioniert.
 
 **F: Werden Gesamtstrukturen mit nicht zusammenhängenden AD-Domänen unterstützt?**  
 Nein. Azure AD Connect unterstützt keine lokalen Gesamtstrukturen mit nicht zusammenhängenden Namespaces.

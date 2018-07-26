@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/19/2018
+ms.date: 07/11/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 9cb7a076ea922b9868bd439d160aec96f044e3b6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 02c068fc70748584583b2c71659b1a1abdc0a46d
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32157474"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035770"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Überwachungsszenario in Durable Functions – Beispiel einer Wetterbeobachtungsstation
 
@@ -65,7 +65,7 @@ In diesem Artikel werden die folgenden Funktionen in der Beispiel-App beschriebe
 * `E3_GetIsClear`: Eine Aktivitätsfunktion, die die aktuellen Wetterbedingungen an einem Ort beobachtet.
 * `E3_SendGoodWeatherAlert`: Eine Aktivitätsfunktion, die eine SMS-Nachricht über Twilio sendet.
 
-In den folgenden Abschnitten werden die Konfiguration und der Code beschrieben, die für C#-Skripts verwendet werden. Der Code für die Visual Studio-Entwicklung ist am Ende des Artikels angegeben.
+In den folgenden Abschnitten werden die Konfiguration und der Code beschrieben, die für C#-Skripts und JavaScript verwendet werden. Der Code für die Visual Studio-Entwicklung ist am Ende des Artikels angegeben.
  
 ## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Die Orchestrierung der Wetterbeobachtung (Beispielcode für Visual Studio Code und Azure-Portal)
 
@@ -75,7 +75,13 @@ Die Funktion **E3_Monitor** verwendet die Standarddatei *function.json* für Orc
 
 Im Folgenden wird der Code dargestellt, der die Funktion implementiert:
 
+### <a name="c"></a>C#
+
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript (nur Functions v2)
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
 Diese Orchestratorfunktion führt die folgenden Aktionen aus:
 
@@ -88,11 +94,13 @@ Diese Orchestratorfunktion führt die folgenden Aktionen aus:
 
 Durch Senden mehrerer **MonitorRequests** können mehrere Orchestratorinstanzen gleichzeitig ausgeführt werden. Der zu überwachende Standort und die Telefonnummer, an die eine SMS-Benachrichtigung gesendet werden soll, können angegeben werden.
 
-## <a name="strongly-typed-data-transfer"></a>Stark typisierte Datenübertragung
+## <a name="strongly-typed-data-transfer-net-only"></a>Stark typisierte Datenübertragung (nur .NET)
 
-Der Orchestrator erfordert eine Vielzahl von Daten, daher werden [freigegebene POCOs](functions-reference-csharp.md#reusing-csx-code) für eine stark typisierte Datenübertragung verwendet: [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
+Der Orchestrator erfordert eine Vielzahl von Daten, daher werden [freigegebene POCO-Objekte](functions-reference-csharp.md#reusing-csx-code) für eine stark typisierte Datenübertragung in C# und C#-Skripts verwendet: [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/Location.csx)]
+
+Im JavaScript-Beispiel werden reguläre JSON-Objekte als Parameter verwendet.
 
 ## <a name="helper-activity-functions"></a>Hilfsaktivitätsfunktionen
 
@@ -100,9 +108,15 @@ Bei den Hilfsaktivitätsfunktionen handelt es sich, wie bei anderen Beispielen, 
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/function.json)]
 
-Hier ist die Implementierung. Wie bei den für die Datenübertragung verwendeten POCOs ist die Logik für die Verarbeitung des API-Aufrufs und die Analyse der Antwort-JSON in eine freigegebene Klasse abstrahiert. Sie finden die Logik im [Visual Studio-Beispielcode](#run-the-sample).
+Hier ist die Implementierung. Wie bei den für die Datenübertragung verwendeten POCO-Objekten wird die Logik für die Verarbeitung des API-Aufrufs und die Analyse der Antwort-JSON in eine freigegebene C#-Klasse abstrahiert. Sie finden die Logik im [Visual Studio-Beispielcode](#run-the-sample).
+
+### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript (nur Functions v2)
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
 Die Funktion **E3_SendGoodWeatherAlert** verwendet die Twilio-Bindung, um eine SMS zu senden, die den Endbenutzer darüber informiert, dass jetzt ein guter Zeitpunkt für einen Spaziergang ist. Die *function.json* ist einfach:
 
@@ -110,7 +124,13 @@ Die Funktion **E3_SendGoodWeatherAlert** verwendet die Twilio-Bindung, um eine S
 
 Hier sehen Sie den Code, der die SMS-Nachricht sendet:
 
+### <a name="c"></a>C#
+
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript (nur Functions v2)
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
 
 ## <a name="run-the-sample"></a>Ausführen des Beispiels
 
@@ -131,6 +151,9 @@ RetryAfter: 10
 
 {"id": "f6893f25acf64df2ab53a35c09d52635", "statusQueryGetUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "sendEventPostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/raiseEvent/{eventName}?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "terminatePostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason={text}&taskHub=SampleHubVS&connection=Storage&code={systemKey}"}
 ```
+
+   > [!NOTE]
+   > Derzeit können JavaScript-Orchestrierungsstartfunktionen keine Instanzverwaltungs-URIs zurückgeben. Diese Funktion wird in einem späteren Release hinzugefügt.
 
 Die Instanz **E3_Monitor** wird gestartet und ruft die aktuellen Wetterbedingungen für den angeforderten Standort ab. Wenn das Wetter schön ist, ruft die Instanz eine Aktivitätsfunktion auf, die eine Benachrichtigung sendet. Andernfalls legt sie einen Timer fest. Wenn der Timer abläuft, wird die Orchestrierung fortgesetzt.
 

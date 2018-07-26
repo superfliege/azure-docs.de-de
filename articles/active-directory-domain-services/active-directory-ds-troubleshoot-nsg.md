@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: ergreenl
-ms.openlocfilehash: 807dd2bdcc1e2ad18b1a93c3337c8244e3f1366b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 67f4f0850d0600fc7ca0f1323e7c7801187089f5
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218978"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950733"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>Beheben von Problemen bei einer ungültigen Netzwerkkonfiguration für verwaltete Domänen
 Dieser Artikel hilft Ihnen bei der Problembehandlung und Lösung von Konfigurationsfehlern im Zusammenhang mit dem Netzwerk, die zu der folgenden Fehlermeldung führen:
@@ -35,7 +35,7 @@ Die häufigste Ursache von Netzwerkfehlern für Azure AD Domain Services sind un
 1. Navigieren Sie zur Seite [Netzwerksicherheitsgruppen](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups) im Azure-Portal.
 2. Wählen Sie in der Tabelle die NSG aus, die dem Subnetz zugeordnet ist, in dem Ihre verwaltete Domäne aktiviert ist.
 3. Klicken Sie im linken Bereich unter **Einstellungen** auf **Eingangssicherheitsregeln**.
-4. Überprüfen Sie die bestehenden Regeln, und finden Sie heraus, welche Regeln den Zugang auf [diese Ports](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services) blockieren.
+4. Überprüfen Sie die bestehenden Regeln, und finden Sie heraus, welche Regeln den Zugriff auf [diese Ports](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services) blockieren.
 5. Bearbeiten Sie die NSG, um Konformität sicherzustellen, indem Sie entweder die Regel löschen, eine Regel hinzufügen oder eine komplett neue NSG erstellen. Schritte zum [Hinzufügen einer Regel](#add-a-rule-to-a-network-security-group-using-the-azure-portal) oder [Erstellen einer neuen, konformen NSG](#create-a-nsg-for-azure-ad-domain-services-using-powershell) finden Sie weiter unten.
 
 ## <a name="sample-nsg"></a>NSG-Beispiel

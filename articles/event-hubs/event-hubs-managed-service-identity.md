@@ -5,21 +5,17 @@ services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/18/2017
+ms.date: 07/05/2018
 ms.author: sethm
-ms.openlocfilehash: dd50e4f6ebc5fdf5496a5127fde20bd052087b59
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: abff3f715a1fccba172147f02b83f7209f87cf9e
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26783347"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902515"
 ---
 # <a name="managed-service-identity-preview"></a>Verwaltete Dienstidentität (Vorschau)
 
@@ -53,19 +49,22 @@ Wenn Sie das Feature aktiviert haben, wird in Ihrem Azure Active Directory eine 
 
 ### <a name="create-a-new-event-hubs-namespace"></a>Erstellen eines neuen Event Hubs-Namespace
 
-Als Nächstes [erstellen Sie einen Event Hubs-Namespace](event-hubs-create.md) in einer der Azure-Regionen, die Vorschauunterstützung für die rollenbasierte Zugriffssteuerung für verwaltete Dienstidentitäten bieten: **USA, Osten**, **USA, Osten 2** oder **Europa, Westen**. 
+Erstellen Sie als Nächstes [einen Event Hubs-Namespace](event-hubs-create.md) in einer der Azure-Regionen, die Vorschauunterstützung für verwaltete Dienstidentitäten bieten: **USA, Osten**, **USA, Osten 2** oder **Europa, Westen**. 
 
 Navigieren Sie im Portal zur Seite **Zugriffssteuerung (IAM)** des Namespace, und klicken Sie auf **Hinzufügen**, um die verwaltete Dienstidentität zur Rolle **Besitzer** hinzuzufügen. Suchen Sie hierzu im Bereich **Berechtigungen hinzufügen** im Feld **Auswählen** nach dem Namen der Webanwendung, und klicken Sie auf den entsprechenden Eintrag. Klicken Sie anschließend auf **Speichern**.
 
 ![](./media/event-hubs-managed-service-identity/msi2.png)
  
-Die verwaltete Dienstidentität der Webanwendung verfügt jetzt über Zugriff auf den Event Hubs-Namespace und den zuvor erstellten Event Hub. 
+Die verwaltete Dienstidentität für die Webanwendung verfügt jetzt über Zugriff auf den Event Hubs-Namespace und den zuvor erstellten Event Hub. 
 
 ### <a name="run-the-app"></a>Ausführen der App
 
 Bearbeiten Sie jetzt die Standardseite der von Ihnen erstellten ASP.NET-Anwendung. Sie können auch den Webanwendungscode aus [diesem GitHub-Repository](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/MSI/EventHubsMSIDemoWebApp) verwenden. 
 
-Nachdem Sie Ihre App gestartet haben, zeigen Sie in Ihrem Browser auf „EventHubsMSIDemo.aspx“. Sie können die Seite auch als Startseite festlegen. Sie finden den Code in der Datei „EventHubsMSIDemo.aspx.cs“. Das Ergebnis ist eine kleine Webanwendung mit einigen wenigen Eingabefeldern sowie Schaltflächen zum **Senden** und **Empfangen**, mit denen eine Verbindung mit Event Hubs hergestellt wird, um Nachrichten zu senden oder zu empfangen. 
+>[!NOTE] 
+> Während das Feature der verwalteten Dienstidentitäten sich in der Vorschauphase befindet, achten Sie darauf, die [Vorschauversion der Service Bus-Bibliothek](https://www.nuget.org/packages/WindowsAzure.ServiceBus/4.2.2-preview) zu verwenden, um auf die neuen APIs zuzugreifen. 
+
+Nachdem Sie die App gestartet haben, zeigen Sie in Ihrem Browser auf „EventHubsMSIDemo.aspx“. Sie können die Seite auch als Startseite festlegen. Sie finden den Code in der Datei „EventHubsMSIDemo.aspx.cs“. Das Ergebnis ist eine kleine Webanwendung mit einigen wenigen Eingabefeldern sowie Schaltflächen zum **Senden** und **Empfangen**, mit denen eine Verbindung mit Event Hubs hergestellt wird, um Ereignisse zu senden oder zu empfangen. 
 
 Beachten Sie, wie das Objekt [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) initialisiert wird. Der Code verwendet nicht den SAS-Tokenanbieter (Shared Access Signature), sondern erstellt mit dem Aufruf `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.EventHubAudience)` einen Tokenanbieter für die verwaltete Dienstidentität. Daher müssen keine Geheimnisse aufbewahrt und verwendet werden. Der Flow vom MSI-Kontext zu Event Hubs und der Autorisierungshandshake werden automatisch vom Tokenanbieter verarbeitet. Dies ist ein einfacheres Modell als die Verwendung von SAS.
 

@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 06/15/2018
+ms.date: 07/16/2018
 ms.author: marsma
-ms.openlocfilehash: 207accc30e10c4e2bed5b713fc59e2f9ad86a876
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: cb7b27b178197cde040e1d106ed5a5ee20905823
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311094"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115794"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Netzwerkkonfiguration in Azure Kubernetes Service (AKS)
 
@@ -27,8 +27,7 @@ Für Knoten in einem AKS-Cluster, für den die Netzwerkoption „Basic“ (Grund
 
 ## <a name="advanced-networking"></a>Erweiterte Netzwerke
 
-Bei der Netzwerkoption **Advanced** (Erweitert) werden Ihre Pods in einem virtuellen Azure-Netzwerk (VNET) angeordnet. Sie konfigurieren dieses Netzwerk, um für die Pods die automatische Konnektivität mit VNET-Ressourcen herzustellen und die Integration in die umfassenden Funktionen von VNETs zu ermöglichen.
-Die Netzwerkoption „Advanced“ (Erweitert) ist verfügbar, wenn AKS-Cluster mit dem [Azure-Portal][portal], mit Azure CLI oder mit einer Resource Manager-Vorlage bereitgestellt werden.
+Bei der Netzwerkoption **Advanced** (Erweitert) werden Ihre Pods in einem virtuellen Azure-Netzwerk (VNET) angeordnet. Sie konfigurieren dieses Netzwerk, um für die Pods die automatische Konnektivität mit VNET-Ressourcen herzustellen und die Integration in die umfassenden Funktionen von VNETs zu ermöglichen. Die Netzwerkoption „Advanced“ (Erweitert) ist verfügbar, wenn AKS-Cluster mit dem [Azure-Portal][portal], mit Azure CLI oder mit einer Resource Manager-Vorlage bereitgestellt werden.
 
 Für Knoten in einem AKS-Cluster, für das die Netzwerkoption „Advanced“ (Erweitert) konfiguriert ist, wird das Kubernetes-Plug-In [Azure Container Networking Interface (CNI)][cni-networking] verwendet.
 
@@ -45,9 +44,6 @@ Die Netzwerkoption „Advanced“ (Erweitert) bietet die folgenden Vorteile:
 * Pods in einem Subnetz mit aktivierten Dienstendpunkten können eine sichere Verbindung mit Azure-Diensten herstellen, z.B. Azure Storage und SQL-Datenbank.
 * Verwenden Sie benutzerdefinierte Routen (UDRs) zum Weiterleiten von Datenverkehr von Pods an eine virtuelle Netzwerkappliance.
 * Pods können auf Ressourcen im öffentlichen Internet zugreifen. Dies ist auch ein Feature der Netzwerkoption „Basic“ (Grundlegend).
-
-> [!IMPORTANT]
-> Jeder Knoten in einem AKS-Cluster, für den die Netzwerkoption „Advanced“ (Erweitert) konfiguriert ist, kann maximal **30 Pods** hosten, wenn er mit dem Azure-Portal konfiguriert wurde.  Sie können den maximalen Wert nur ändern, indem Sie beim Bereitstellen eines Clusters mit einer Resource Manager-Vorlage die maxPods-Eigenschaft ändern. Jedes VNET, das für die Verwendung mit dem Azure CNI-Plug-In bereitgestellt wird, ist auf **4096 konfigurierte IP-Adressen** begrenzt.
 
 ## <a name="advanced-networking-prerequisites"></a>Voraussetzungen für erweiterte Netzwerke
 
@@ -67,19 +63,36 @@ Der IP-Addressplan eines AKS-Clusters beinhaltet neben einem VNET mindestens ein
 
 | Adressbereich/Azure-Ressourcen | Grenzen und Kontingente |
 | --------- | ------------- |
-| Virtuelles Netzwerk | Ein Azure-VNET kann eine Größe von bis zu /8 haben, dabei aber nur 4096 konfigurierte IP-Adressen aufweisen. |
-| Subnetz | Es muss groß genug sein, um die Knoten und Pods abzudecken. So berechnen Sie die Mindestgröße Ihres Subnetzes: (Anzahl von Knoten) + (Anzahl von Knoten * Pods pro Knoten). Bei einem Cluster mit 50 Knoten: (50) + (50 * 30) = 1,550, Ihr Subnetz müsste eine Größe von mindestens /21 aufweisen. |
+| Virtuelles Netzwerk | Ein Azure-VNET kann eine Größe von bis zu /8 haben, dabei aber nur 16.000 konfigurierte IP-Adressen aufweisen. |
+| Subnetz | Muss groß genug für die Knoten, Pods und alle Kubernetes- und Azure-Ressourcen sein, die in Ihrem Cluster bereitgestellt werden können. Wenn Sie beispielsweise einen internen Azure Load Balancer bereitstellen, werden dessen Front-End-IP-Adressen aus dem Clusternetzwerk zugeordnet, nicht die öffentlichen IP-Adressen. <p/>So wird die *mindestens erforderliche* Subnetzgröße berechnet: `(number of nodes) + (number of nodes * pods per node)` <p/>Beispiel für einen Cluster mit 50 Knoten: `(50) + (50 * 30) = 1,550` (/ 21 oder mehr) |
 | Kubernetes-Dienstadressbereich | Dieser Bereich sollte nicht von Netzwerk-Elementen verwendet werden, die sich in diesem VNET befinden oder damit verbunden sind. Das Dienstadress-CIDR darf höchstens eine Größe von /12 aufweisen. |
 | Kubernetes-DNS-Dienst – IP-Adresse | Die IP-Adresse im Kubernetes-Dienstadressbereich wird bei der Clusterdienstermittlung (kube-dns) verwendet. |
 | Docker-Bridge-Adresse | Die IP-Adresse (in CIDR-Schreibweise) wird auf Knoten als Docker-Bridge-Adresse verwendet. Standard 172.17.0.1/16. |
 
-Wie bereits erwähnt, ist jedes VNET, das für die Verwendung mit dem Azure CNI-Plug-In bereitgestellt wird, auf **4096 konfigurierte IP-Adressen** begrenzt. Jeder Knoten in einem Cluster, für den die Netzwerkoption „Advanced“ (Erweitert) konfiguriert ist, kann maximal **30 Pods** hosten.
+Jedes VNET, das für die Verwendung mit dem Azure CNI-Plug-In bereitgestellt wird, ist auf **16.000 konfigurierte IP-Adressen** begrenzt.
+
+## <a name="maximum-pods-per-node"></a>Maximale Pods pro Knoten
+
+Standardmäßig variiert die maximale Anzahl von Pods pro Knoten in einem AKS-Cluster zwischen grundlegenden und erweiterten Netzwerken und je nach Methode für die Clusterbereitstellung.
+
+### <a name="default-maximum"></a>Höchstwert (Standard)
+
+* Grundlegende Netzwerke: **110 Pods pro Knoten**
+* Erweiterte Netzwerke: **30 Pods pro Knoten**
+
+### <a name="configure-maximum"></a>Konfigurieren des Höchstwerts
+
+Je nach Ihrer Bereitstellungsmethode können Sie die maximale Anzahl von Pods pro Knoten in einem AKS-Cluster anpassen.
+
+* **Azure CLI:** Geben Sie das `--max-pods`-Argument an, wenn Sie einen Cluster mit dem Befehl [az aks create][az-aks-create] bereitstellen.
+* **Resource Manager-Vorlage:** Geben Sie die `maxPods`-Eigenschaft im Objekt [ManagedClusterAgentPoolProfile] an, wenn Sie einen Cluster mit einer Resource Manager-Vorlage bereitstellen.
+* **Azure-Portal:** Sie können die maximale Anzahl von Pods pro Knoten nicht ändern, wenn Sie einen Cluster über das Azure-Portal bereitstellen. Die Cluster in erweiterten Netzwerken sind auf 30 Pods pro Knoten beschränkt, wenn diese im Azure-Portal bereitgestellt werden.
 
 ## <a name="deployment-parameters"></a>Bereitstellungsparameter
 
-Beim Erstellen eines AKS-Clusters können für die Netzwerkoption „Advanced“ (Erweitert) die folgenden Parameter konfiguriert werden:
+Beim Erstellen eines AKS-Clusters können folgende Parameter für erweiterte Netzwerke konfiguriert werden:
 
-**Virtuelles Netzwerk**: Das VNET, in dem Sie den Kubernetes-Cluster bereitstellen möchten. Wenn Sie ein neues VNET für Ihren Cluster erstellen möchten, können Sie *Neu erstellen* wählen und die Schritte im Abschnitt *Erstellen eines virtuellen Netzwerks* ausführen.
+**Virtuelles Netzwerk**: Das VNET, in dem Sie den Kubernetes-Cluster bereitstellen möchten. Wenn Sie ein neues VNET für Ihren Cluster erstellen möchten, können Sie *Neu erstellen* wählen und die Schritte im Abschnitt *Erstellen eines virtuellen Netzwerks* ausführen. Das VNET ist auf 16.000 konfigurierte IP-Adressen beschränkt.
 
 **Subnetz**: Das Subnetz im VNET, in dem Sie den Cluster bereitstellen möchten. Wenn Sie ein neues Subnetz im VNET für Ihren Cluster erstellen möchten, können Sie *Neu erstellen* wählen und die Schritte im Abschnitt *Erstellen eines Subnetzes* ausführen.
 
@@ -125,10 +138,6 @@ Im folgenden Screenshot des Azure-Portals ist ein Beispiel für die Konfiguratio
 
 Die folgenden Fragen und Antworten gelten für die Netzwerkkonfiguration vom Typ **Advanced** (Erweitert).
 
-* *Kann ich die Netzwerkoption „Advanced“ (Erweitert) mit der Azure CLI konfigurieren?*
-
-  Nein. Die Netzwerkoption „Advanced“ (Erweitert) ist derzeit nur verfügbar, wenn AKS-Cluster im Azure-Portal oder mit einer Resource Manager-Vorlage bereitgestellt werden.
-
 * *Kann ich VMs in meinem Clustersubnetz bereitstellen?*
 
   Nein. Die Bereitstellung von VMs in dem Subnetz, das von Ihrem Kubernetes-Cluster verwendet wird, wird nicht unterstützt. VMs können in demselben VNET bereitgestellt werden, aber es muss ein anderes Subnetz verwendet werden.
@@ -139,7 +148,7 @@ Die folgenden Fragen und Antworten gelten für die Netzwerkkonfiguration vom Typ
 
 * *Ist die maximale Anzahl von Pods, die auf einem Knoten bereitgestellt werden können, konfigurierbar?*
 
-  Standardmäßig können auf jedem Knoten maximal 30 Pods gehostet werden. Sie können den maximalen Wert nur ändern, indem Sie beim Bereitstellen eines Clusters mit einer Resource Manager-Vorlage die `maxPods`-Eigenschaft ändern.
+  Ja, wenn Sie einen Cluster mit der Azure CLI oder einer Resource Manager-Vorlage bereitstellen. Weitere Informationen finden Sie unter [Maximale Pods pro Knoten](#maximum-pods-per-node).
 
 * *Wie kann ich zusätzliche Eigenschaften für das Subnetz konfigurieren, das ich während der Erstellung des AKS-Clusters erstellt habe? Beispiel: Dienstendpunkte.*
 
@@ -177,3 +186,4 @@ Für per ACS Engine erstellte Kubernetes-Cluster werden sowohl [kubenet][kubenet
 <!-- LINKS - Internal -->
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [aks-ssh]: aks-ssh.md
+[ManagedClusterAgentPoolProfile]: /azure/templates/microsoft.containerservice/managedclusters#managedclusteragentpoolprofile-object

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 07/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 7609cea0d16a52a927f87ee9ab6d4445bfc2eb20
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 68613b8613a2e5a9139b83eb23e66884659efc47
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228923"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114933"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-atlassian-cloud"></a>Tutorial: Azure Active Directory-Integration mit Atlassian Cloud
 
@@ -39,7 +39,7 @@ Weitere Informationen zur Integration von SaaS-Apps (Software-as-a-Service) in A
 Für das Konfigurieren der Azure AD-Integration mit Atlassian Cloud benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement
-- Um SAML-SSO (Security Assertion Markup Language) für Atlassian Cloud-Produkte zu ermöglichen, müssen Sie Identity Manager einrichten. Weitere Informationen zu [Identity Manager]( https://www.atlassian.com/enterprise/cloud/identity-manager).
+- Um SAML-SSO (Security Assertion Markup Language) für Atlassian Cloud-Produkte zu ermöglichen, müssen Sie Atlassian Access einrichten. Hier finden Sie weitere Informationen zu [Atlassian Access]( https://www.atlassian.com/enterprise/cloud/identity-manager).
 
 > [!NOTE]
 > Es wird nicht empfohlen, zum Testen der Schritte in diesem Tutorial eine Produktionsumgebung zu verwenden.
@@ -99,22 +99,27 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens bei Atlassian Cloud mit A
 
     ![Fenster „Einmaliges Anmelden“](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_samlbase.png)
 
-3. Um die Anwendung im IDP-initiierten Modus zu konfigurieren, führen Sie unter **Domäne und URLs für Atlassian Cloud** die folgenden Schritte aus:
+3. Um die Anwendung im **IDP-initiierten** Modus zu konfigurieren, führen Sie unter **Atlassian Cloud Domain and URLs** (Domäne und URLs für Atlassian Cloud) die folgenden Schritte aus:
 
     ![SSO-Informationen zur Domäne und den URLs für Atlassian Cloud](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_url.png)
     
-    a. Geben Sie im Feld **Bezeichner** **`https://auth.atlassian.com/saml/<unique ID>`** ein.
+    a. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: `https://auth.atlassian.com/saml/<unique ID>`.
     
-    b. Geben Sie im Feld **Antwort-URL** **`https://auth.atlassian.com/login/callback?connection=saml-<unique ID>`** ein.
+    b. Geben Sie im Feld **Antwort-URL** eine URL im folgenden Format ein: `https://auth.atlassian.com/login/callback?connection=saml-<unique ID>`.
 
-    c. Geben Sie im Feld **Relayzustand** eine URL mit der folgenden Syntax ein: **`https://<instancename>.atlassian.net`**.
+    c. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**.
 
-4. Um die Anwendung im SP-initiierten Modus zu konfigurieren, wählen Sie **Erweiterte URL-Einstellungen anzeigen** aus, und geben Sie dann im Feld **Anmelde-URL** eine URL mit der folgenden Syntax ein: **`https://<instancename>.atlassian.net`**.
+    d. Geben Sie im Feld **Relayzustand** eine URL im folgenden Format ein: `https://<instancename>.atlassian.net`.
+
+    > [!NOTE]
+    > Die vorangehenden Werte sind keine echten Werte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Diese tatsächlichen Werte können Sie dem Bildschirm für die Atlassian Cloud-SAML-Konfiguration entnehmen. Dies wird im Verlauf des Tutorials erläutert.
+
+4. Um die Anwendung im SP-initiierten Modus zu konfigurieren, klicken Sie auf **Erweiterte URL-Einstellungen anzeigen**, und geben Sie dann im Feld **Anmelde-URL** eine URL im folgenden Format ein: `https://<instancename>.atlassian.net`.
 
     ![SSO-Informationen zur Domäne und den URLs für Atlassian Cloud](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_url1.png)
 
     > [!NOTE]
-    > Die vorangehenden Werte sind keine echten Werte. Aktualisieren Sie sie mit den tatsächlichen Werten für Bezeichner, Antwort-URL und Anmelde-URL. Sie finden die tatsächlichen Werte auf dem Bildschirm für die SAML-Konfiguration für Atlassian Cloud. Wir erläutern die Werte später im Tutorial.
+    > Der hier angegebene Wert für die Anmelde-URL entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der tatsächlichen Anmelde-URL. Wenden Sie sich an das [Supportteam des Atlassian Cloud-Clients](https://support.atlassian.com/), um diesen Wert zu erhalten.
 
 5. Wählen Sie unter **SAML-Signaturzertifikat** die Option **Zertifikat (Base64)** aus, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
@@ -255,7 +260,7 @@ In diesem Abschnitt ermöglichen Sie der Benutzerin „Britta Simon“ das einma
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich die Kachel **Atlassian Cloud** auswählen, sollten Sie automatisch bei Ihrer Atlassian Cloud-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

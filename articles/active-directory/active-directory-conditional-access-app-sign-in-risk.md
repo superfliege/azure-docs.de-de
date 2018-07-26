@@ -13,15 +13,15 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/03/2018
+ms.date: 07/17/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 98e2f88c85d21cde2ecc7196f93d531a80b14d13
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f1a6a11f827248d098c018390e9ae5557d9c22d1
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449146"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113375"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Schnellstart: Blockieren des Zugriffs, wenn ein Sitzungsrisiko beim bedingten Azure Active Directory-Zugriff erkannt wird  
 
@@ -62,7 +62,7 @@ Mit diesem Schritt soll sichergestellt werden, dass Sie mit dem Tor Browser übe
 
 ## <a name="create-your-conditional-access-policy"></a>Erstellen der Richtlinie für bedingten Zugriff 
 
-Für das Szenario in dieser Schnellstartanleitung wird eine Anmeldung über einen Tor Browser verwendet, um ein erkanntes Risikoereignis vom Typ **Anmeldungen von anonymen IP-Adressen** zu generieren. Dieses Risikoereignis weist eine mittlere Risikostufe auf.   
+Für das Szenario in dieser Schnellstartanleitung wird eine Anmeldung über einen Tor Browser verwendet, um ein erkanntes Risikoereignis vom Typ **Anmeldungen von anonymen IP-Adressen** zu generieren. Dieses Risikoereignis weist eine mittlere Risikostufe auf. Reagieren Sie auf dieses Risikoereignis, indem Sie die Bedingung für das Anmelderisiko auf „Mittel“ festlegen. In einer Produktionsumgebung sollten Sie die Bedingung für das Anmelderisiko entweder auf „Hoch“ oder auf „Mittel“ und „Hoch“ festlegen.     
 
 In diesem Abschnitt wird gezeigt, wie Sie die erforderliche Richtlinie für bedingten Zugriff erstellen. Legen Sie in Ihrer Richtlinie Folgendes fest:
 
@@ -70,10 +70,11 @@ In diesem Abschnitt wird gezeigt, wie Sie die erforderliche Richtlinie für bedi
 |---     | --- |
 | Benutzer und Gruppen | Alain Charon  |
 | Cloud-Apps | Alle Cloud-Apps |
+| Anmelderisiko | Mittel |
 | Gewährung | Zugriff blockieren |
  
 
-![Richtlinie erstellen](./media/active-directory-conditional-access-app-sign-in-risk/115.png)
+![Richtlinie erstellen](./media/active-directory-conditional-access-app-sign-in-risk/130.png)
 
  
 
@@ -125,6 +126,26 @@ In diesem Abschnitt wird gezeigt, wie Sie die erforderliche Richtlinie für bedi
     a. Klicken Sie auf **Alle Cloud-Apps**.
 
     b. Klicken Sie auf **Fertig**.
+
+10. Klicken Sie auf **Bedingungen**. 
+
+    ![Zugriffssteuerung](./media/active-directory-conditional-access-app-sign-in-risk/19.png)
+
+11. Gehen Sie auf der Seite **Bedingungen** folgendermaßen vor:
+
+    ![Risikostufe für die Anmeldung](./media/active-directory-conditional-access-app-sign-in-risk/21.png)
+
+    a. Klicken Sie auf **Anmelderisiko**.
+ 
+    b. Legen Sie **Konfigurieren** auf **Ja** fest.
+
+    c. Legen Sie die Risikostufe für die Anmeldung auf **Mittel** fest.
+
+    d. Klicken Sie auf **Auswählen**.
+
+    e. Klicken Sie auf der Seite **Bedingungen** auf **Fertig**.
+
+
 
 10. Klicken Sie im Abschnitt **Zugriffssteuerungen** auf **Gewähren**.
 

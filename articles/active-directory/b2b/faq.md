@@ -6,23 +6,23 @@ ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 05/11/2018
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: bc63e320053ec4e8dbb9f166a9a69bb24d91fa02
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 1ff2332e2867f99492d3da254282498d1627a5bf
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34259615"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39058262"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit
 
 Diese häufig gestellten Fragen (FAQs) zur Azure AD B2B-Zusammenarbeit (Azure Active Directory Business-to-Business) werden regelmäßig mit neuen Themen aktualisiert.
 
 ### <a name="can-we-customize-our-sign-in-page-so-it-is-more-intuitive-for-our-b2b-collaboration-guest-users"></a>Können wir unsere Anmeldeseite anpassen, damit sie für Gastbenutzer der B2B-Zusammenarbeit intuitiver ist?
-Auf jeden Fall. Lesen Sie unseren [Blogbeitrag zu diesem Feature](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/). Weitere Informationen zum Anpassen der Anmeldeseite Ihrer Organisation finden Sie unter [Hinzufügen von Unternehmensbranding zu Anmelde- und Zugriffsbereichsseiten](../customize-branding.md).
+Auf jeden Fall. Lesen Sie unseren [Blogbeitrag zu diesem Feature](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/). Weitere Informationen zum Anpassen der Anmeldeseite Ihrer Organisation finden Sie unter [Hinzufügen von Unternehmensbranding zu Anmelde- und Zugriffsbereichsseiten](../fundamentals/customize-branding.md).
 
 ### <a name="can-b2b-collaboration-users-access-sharepoint-online-and-onedrive"></a>Können B2B-Zusammenarbeitsbenutzer auf SharePoint Online und OneDrive zugreifen?
 Ja. Allerdings ist die Möglichkeit, in SharePoint Online mithilfe der Personenauswahl nach vorhandenen Gastbenutzern zu suchen, standardmäßig auf **Aus** gesetzt. Um die Option zum Suchen nach vorhandenen Gastbenutzern zu aktivieren, setzen Sie **ShowPeoplePickerSuggestionsForGuestUsers** auf **Ein**. Sie können diese Einstellung entweder auf Mandantenebene oder Websitesammlungsebene aktivieren. Sie können diese Einstellung mithilfe der Cmdlets „Set-SPOTenant“ und „Set-SPOSite“ ändern. Mit diesen Cmdlets können Mitglieder nach allen vorhandenen Gastbenutzern im Verzeichnis suchen. Änderungen im Mandantenbereich wirken sich nicht auf SharePoint Online-Websites aus, die bereits bereitgestellt wurden.
@@ -44,6 +44,9 @@ Dieses Feature ist für ein zukünftiges Release geplant. Sie können dann besti
 
 ### <a name="how-can-i-use-delayed-invitations"></a>Wie kann ich verzögerte Einladungen senden?
 Es kann vorkommen, dass eine Organisation Benutzer der B2B-Zusammenarbeit hinzufügen, diese bei Bedarf für Anwendungen bereitstellen und erst dann die Einladungen senden möchte. Sie können die Einladungs-API für die B2B-Zusammenarbeit verwenden, um den Onboardingworkflow benutzerdefiniert anzupassen.
+
+### <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Kann ich Gastbenutzer in der globalen Adressliste von Exchange sichtbar machen?
+Ja. Standardmäßig sind Gastobjekte in der globalen Adressliste Ihres Unternehmens nicht sichtbar. Sie können jedoch Azure Active Directory PowerShell verwenden, um diese sichtbar zu machen. Weitere Informationen finden Sie unter **Can I make guest objects visible in the global address list? (Kann ich Gastobjekte in der globalen Adressliste sichtbar machen?)** im Artikel [Gastzugriff in Office 365-Gruppen](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6#PickTab=FAQ).
 
 ### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>Kann ich einen Gastbenutzer in einen eingeschränkten Administrator konvertieren?
 Absolut. Weitere Informationen finden Sie unter [Zuweisen einer Rolle für Gastbenutzer](add-guest-to-role.md).

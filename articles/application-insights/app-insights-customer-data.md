@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/18/2018
 ms.reviewer: Evgeny.Ternovsky
 ms.author: mbullwin
-ms.openlocfilehash: 95e421278b46015e761764792e11dec0351b9785
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: a59b57c546f18a7d91160f2ae7282af82fc42160
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294420"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044712"
 ---
 # <a name="guidance-for-personal-data-stored-in-application-insights"></a>Leitfaden für personenbezogene Daten, die in Application Insights gespeichert sind
 
@@ -63,7 +63,7 @@ Es wird __dringend__ empfohlen, Ihre Richtlinien zur Datensammlung nach Möglich
 
 ### <a name="view-and-export"></a>Anzeigen und Exportieren
 
-Sowohl für Anforderungen zum Anzeigen als auch Exportieren von Daten sollte die [Abfrage-API](https://dev.applicationinsights.io/quickstart) verwendet werden. Das Implementieren einer Logik zum Konvertieren der Daten in eine geeignete Form für die Bereitstellung für Ihre Benutzer liegt in Ihrem Ermessen. [Azure Functions](https://azure.microsoft.com/services/functions/) eignet sich hervorragend zum Hosten einer solchen Logik.
+Sowohl bei Anforderungen zum Anzeigen von Daten als auch bei Anforderungen zum Exportieren von Daten sollte jeweils die [Abfrage-API](https://dev.applicationinsights.io/quickstart) verwendet werden. Das Implementieren einer Logik zum Konvertieren der Daten in eine geeignete Form für die Bereitstellung für Ihre Benutzer liegt in Ihrem Ermessen. [Azure Functions](https://azure.microsoft.com/services/functions/) eignet sich hervorragend zum Hosten einer solchen Logik.
 
 ### <a name="delete"></a>Löschen
 
@@ -77,12 +77,13 @@ Das Bereinigen ist ein Vorgang, der hohe Berechtigungen erfordert, und weder ein
 Nachdem die Azure Resource Manager-Rolle zugewiesen wurde, sind zwei neue API-Pfade mit vollständiger Entwicklerdokumentation und verknüpfter Form für den Aufruf verfügbar:
 
 * [POST purge](https://docs.microsoft.com/rest/api/application-insights/components/purge): Verwendet ein Objekt, das Parameter der zu löschenden Daten angibt, und gibt eine Verweis-GUID zurück.
-* GET purge status: Der Aufruf „POST purge“ gibt einen Header des Typs „x-ms-status-location“ zurück, der eine URL enthält, die Sie zum Ermitteln des Status Ihrer Bereinigungs-API aufrufen können. Beispiel: 
+* GET purge status: Der Aufruf von „POST purge“ gibt einen Header vom Typ „x-ms-status-location“ zurück, der eine URL enthält, die Sie zum Ermitteln des Status Ihrer Bereinigungs-API aufrufen können. Beispiel: 
    ```
    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/microsoft.insights/components/[ComponentName]/operations/purge-[PurgeOperationId]?api-version=2015-05-01
    ```
 
-Obwohl die Mehrzahl der Bereinigungsvorgänge wesentlich schneller als die SLA ausgeführt werden kann, ist aufgrund der starken Auswirkung auf die von Application Insights verwendete Datenplattform die formelle SLA für die Ausführung von Bereinigungsvorgängen auf 30 Tage festgelegt.
+> [!IMPORTANT]
+>  Obwohl die Mehrzahl der Bereinigungsvorgänge wesentlich schneller als die SLA ausgeführt werden kann, ist aufgrund der starken Auswirkung auf die von Application Insights verwendete Datenplattform **die formelle SLA für die Ausführung von Bereinigungsvorgängen auf 30 Tage festgelegt**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Sammeln, Verarbeiten und Sichern von Daten finden Sie unter [Application Insights – Datensicherheit](app-insights-data-retention-privacy.md).

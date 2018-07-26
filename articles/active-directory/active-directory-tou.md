@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance-reports
-ms.date: 06/29/2018
+ms.date: 07/18/2018
 ms.author: rolyon
-ms.openlocfilehash: 7833c9da2303d119f0cb421f21bea455ab449898
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: b1a11fdb685b8b4e5c513931269c479506d943a0
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856415"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136654"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Nutzungsbedingungsfeature für Azure Active Directory
 Mit den Azure AD-Nutzungsbedingungen können Organisationen komfortabel Informationen für Endbenutzer anzeigen. Dadurch wird sichergestellt, dass Benutzern relevante Haftungsausschlüsse angezeigt werden, um rechtliche oder compliancebezogene Anforderungen zu erfüllen. Dieser Artikel enthält eine Einführung in die Verwendung der Azure AD-Nutzungsbedingungen.
@@ -86,7 +86,7 @@ Gehen Sie nach Fertigstellung Ihres Dokuments mit Nutzungsbedingungen wie folgt 
 
     ![Hinzufügen von Nutzungsbedingungen](media/active-directory-tou/create-tou.png)
 
-## <a name="view-who-has-accepted-and-declined"></a>Anzeigen, wer die Bedingungen abgelehnt oder akzeptiert hat
+## <a name="view-report-of-who-has-accepted-and-declined"></a>Anzeigen des Berichts über abgelehnte und akzeptierte Nutzungsbedingungen
 Auf dem Blatt für die Nutzungsbedingungen wird angezeigt, wie viele Benutzer die Bedingungen akzeptiert bzw. abgelehnt haben. Diese Werte sowie die Angabe, wer die Bedingungen akzeptiert/abgelehnt hat, werden für die Lebensdauer der Nutzungsbedingungen gespeichert.
 
 1. Melden Sie sich unter [https://aka.ms/catou](https://aka.ms/catou) bei Azure an, und navigieren Sie zu **Nutzungsbedingungen**.
@@ -97,10 +97,10 @@ Auf dem Blatt für die Nutzungsbedingungen wird angezeigt, wie viele Benutzer di
 
     ![Überwachungsereignis](media/active-directory-tou/accepted-tou.png)
 
-## <a name="view-audit-logs"></a>Anzeigen von Überwachungsprotokollen
+## <a name="view-azure-ad-audit-logs"></a>Anzeigen der Azure AD-Überwachungsprotokolle
 Für den Fall, dass Sie zusätzliche Aktivitäten anzeigen möchten, enthalten die Azure AD-Nutzungsbedingungen auch Überwachungsprotokolle. Jede Benutzerzustimmung löst ein Ereignis in den Überwachungsprotokollen aus, die 30 Tage lang gespeichert werden. Diese Protokolle können im Portal angezeigt oder als CSV-Datei heruntergeladen werden.
 
-Gehen Sie wie folgt vor, um mit der Verwendung von Überwachungsprotokollen zu beginnen:
+Gehen Sie wie folgt vor, um mit der Verwendung von Azure AD-Überwachungsprotokollen zu beginnen:
 
 1. Melden Sie sich unter [https://aka.ms/catou](https://aka.ms/catou) bei Azure an, und navigieren Sie zu **Nutzungsbedingungen**.
 
@@ -167,10 +167,19 @@ Richtlinien für den bedingten Zugriff werden sofort wirksam. In diesem Fall wer
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
 **F: Wie sehe ich, wann/ob ein Benutzer Nutzungsbedingungen akzeptiert hat?**</br>
-A: Klicken Sie auf dem Nutzungsbedingungenblatt auf die Zahl unter **Akzeptiert**. Sie können die Zustimmungsaktivität auch in den Überwachungsprotokollen anzeigen oder suchen. Weitere Informationen finden Sie unter [Anzeigen, wer die Bedingungen abgelehnt oder akzeptiert hat](#view-who-has-accepted-and-declined) und [Überwachungsprotokolle anzeigen](#view-audit-logs).
+A: Klicken Sie auf dem Nutzungsbedingungenblatt auf die Zahl unter **Akzeptiert**. Sie können die Zustimmungsaktivität auch in den Azure AD-Überwachungsprotokollen anzeigen oder suchen. Weitere Informationen finden Sie unter [Anzeigen des Berichts über abgelehnte und akzeptierte Nutzungsbedingungen](#view-who-has-accepted-and-declined) und [Anzeigen der Azure AD-Überwachungsprotokolle](#view-azure-ad-audit-logs).
+ 
+**F: Wie lange werden die Informationen gespeichert?**</br>
+A: Die Benutzeranzahl im Bericht zu den Nutzungsbedingungen sowie die Angabe, wer die Bedingungen akzeptiert/abgelehnt hat, werden für die Lebensdauer der Nutzungsbedingungen gespeichert. Die Azure AD-Überwachungsprotokolle werden 30 Tage lang gespeichert.
+
+**F: Warum sehe ich eine andere Anzahl von Zustimmungen im Bericht zu den Nutzungsbedingungen als in den Azure AD-Überwachungsprotokollen?**</br>
+A: Der Bericht zu den Nutzungsbedingungen wird für die Lebensdauer dieser Nutzungsbedingungen gespeichert, während Azure AD-Überwachungsprotokolle nur für 30 Tage gespeichert werden. Darüber hinaus werden im Bericht zu den Nutzungsbedingungen nur der aktuelle Zustimmungsstatus der Benutzer angezeigt. Lehnt ein Benutzer z.B. die Nutzungsbedingungen ab und akzeptiert sie aber später, enthält der Bericht zu den Nutzungsbedingungen nur die Zustimmung. Wenn Sie den Verlauf anzeigen möchten, können Sie in den Azure AD-Überwachungsprotokollen nachsehen.
 
 **F: Müssen Benutzer die Nutzungsbedingungen erneut akzeptieren, wenn diese geändert werden?**</br>
 A: Ja. Wenn ein Administrator die Nutzungsbedingungen ändert, müssen sie durch Benutzer erneut akzeptiert werden.
+
+**F: Wenn das PDF-Dokument mit den Nutzungsbedingungen Links enthält, können Benutzer darauf klicken?**</br>
+A: Die PDF-Datei wird standardmäßig im JPEG-Format gerendert, damit Links nicht angeklickt werden können. Benutzer haben die Möglichkeit, auf die Option **Probleme mit der Anzeige? Klicken Sie hier** zu klicken. Dadurch wird die PDF-Datei nativ gerendert, und Links werden unterstützt.
 
 **F: Können Nutzungsbedingungen mehrere Sprachen unterstützen?**</br>
 A: Ja.  Derzeit sind 18 verschiedene Sprachen verfügbar, die ein Administrator für eine einzelne Version der Nutzungsbedingungen konfigurieren kann. 
@@ -189,6 +198,7 @@ A: Der Benutzer kann nicht auf die Anwendung zugreifen. Wenn er auf die Anwendun
  
 **F: Ist es möglich, die Zustimmung zu Nutzungsbedingungen rückgängig zu machen, die bereits akzeptiert wurden?**</br>
 A: Sie können [zuvor akzeptierte Nutzungsbedingungen überprüfen](#how-users-can-review-their-terms-of-use), aber zurzeit besteht keine Möglichkeit, die Zustimmung rückgängig zu machen.
- 
-**F: Wie lange werden die Informationen gespeichert?**</br>
-A: Die Benutzeranzahl sowie die Angabe, wer die Bedingungen akzeptiert/abgelehnt hat, werden für die Lebensdauer der Nutzungsbedingungen gespeichert. Die Überwachungsprotokolle werden 30 Tage lang gespeichert.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- [Best Practices für den bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-best-practices.md)

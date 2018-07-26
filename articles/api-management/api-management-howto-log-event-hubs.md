@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 2334aefdfb442054226ef6d7d55a8c097a433565
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 496928697af069f773e47974129bb7d3de3e1cbc
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316322"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37886970"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Protokollieren von Ereignissen in Azure Event Hubs mit Azure API Management
 Azure Event Hubs ist ein hochgradig skalierbarer Dateneingangsdienst, der Millionen von Ereignissen pro Sekunde erfassen kann. Auf diese Weise können Sie riesige Datenmengen verarbeiten und analysieren, die von vernetzten Geräten und Anwendungen erzeugt werden. Event Hubs fungiert als „Eingangstür“ für eine Ereignispipeline. Nach der Erfassung in Event Hubs können Sie Daten mit einem beliebigen Echtzeit-Analyseanbieter oder mit Batchverarbeitungs-/Speicheradaptern umwandeln und speichern. Event Hubs entkoppelt die Erzeugung eines Datenstroms von Ereignissen von der Nutzung dieser Ereignisse, sodass  Ereignisconsumer nach einem eigenen Zeitplan auf Ereignisse zugreifen können.
@@ -55,7 +55,7 @@ Geben Sie den Anforderungstext mithilfe der folgenden Vorlage ein:
   "loggerType" : "AzureEventHub",
   "description" : "Sample logger description",
   "credentials" : {
-    "name" : "Name of the Event Hub from the Azure Classic Portal",
+    "name" : "Name of the Event Hub from the portal",
     "connectionString" : "Endpoint=Event Hub Sender connection string"
     }
 }
@@ -65,7 +65,21 @@ Geben Sie den Anforderungstext mithilfe der folgenden Vorlage ein:
 * `description` stellt eine optionale Beschreibung des Loggers bereit und kann auf Wunsch auch leer gelassen werden (als Zeichenfolge mit der Länge null).
 * `credentials` enthält den `name` und die `connectionString` Ihres Azure Event Hubs.
 
-Wenn Sie die Anforderung senden und der Logger daraufhin erstellt wurde, wird der Statuscode `201 Created` zurückgegeben.
+Wenn Sie die Anforderung senden und die Protokollierung daraufhin erstellt wurde, wird der Statuscode `201 Created` zurückgegeben. Eine Beispielantwort basierend auf der oben angegebenen Beispielanforderung ist unten dargestellt.
+
+```json
+{
+    "id": "/loggers/{new logger name}",
+    "loggerType": "azureEventHub",
+    "description": "Sample logger description",
+    "credentials": {
+        "name": "Name of the Event Hub from the Portal",
+        "connectionString": "{{Logger-Credentials-xxxxxxxxxxxxxxx}}"
+    },
+    "isBuffered": true,
+    "resourceId": null
+}
+```
 
 > [!NOTE]
 > Informationen über weitere mögliche Rückgabecodes und die Gründe dafür erhalten Sie unter [Erstellen eines Loggers](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity#PUT). Die Vorgehensweisen für weitere Vorgänge, z.B. zum Auflisten, Aktualisieren und Löschen, finden Sie in der Dokumentation zur Entität [Logger](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity).
@@ -91,7 +105,7 @@ Nachdem Sie den Logger in API Management konfiguriert haben, können Sie die Ric
   @( string.Join(",", DateTime.UtcNow, context.Deployment.ServiceName, context.RequestId, context.Request.IpAddress, context.Operation.Name))
 </log-to-eventhub>
 ```
-Ersetzen Sie `logger-id` durch den Namen des API Management-Loggers, den Sie im vorherigen Schritt konfiguriert haben.
+Ersetzen Sie `logger-id` durch den Wert, den Sie im vorherigen Schritt in der URL für `{new logger name}` verwendet haben, um die Protokollierung zu erstellen.
 
 Sie können jeden Ausdruck verwenden, der eine Zeichenfolge als Wert für das Element `log-to-eventhub` zurückgibt. In diesem Beispiel wird eine Zeichenfolge protokolliert, die das Datum, die Uhrzeit, den Dienstnamen, die Anforderungs-ID, die IP-Adresse der Anforderung und den Vorgangsnamen enthält.
 

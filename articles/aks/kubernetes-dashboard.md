@@ -1,40 +1,55 @@
 ---
 title: Verwalten von Azure-Kubernetes-Clustern mit der Webbenutzeroberfläche
-description: Verwenden des Kubernetes-Dashboards in AKS
+description: Erfahren Sie mehr über die Verwendung des integrierten Kubernetes-Dashboards mit Webbenutzeroberfläche mit Azure Kubernetes Service (AKS).
 services: container-service
 author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 02/24/2018
+ms.date: 07/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b56751750d5c0731a79b3229106a6bc2a5eccac9
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 65525114f46002c5b9300f6bbabcee06cc27ef3a
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100424"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091137"
 ---
-# <a name="kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Kubernetes-Dashboard mit Azure Kubernetes Service (AKS)
+# <a name="access-the-kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Zugriff auf das Kubernetes-Dashboard mit Azure Kubernetes Service (AKS)
 
-Das Kubernetes-Dashboard kann über die Azure-Befehlszeilenschnittstelle gestartet werden. In diesem Dokument erfahren Sie Schritt für Schritt, wie Sie das Kubernetes-Dashboard über die Azure-Befehlszeilenschnittstelle starten und einige grundlegende Dashboardvorgänge ausführen. Weitere Informationen zum Kubernetes-Dashboard finden Sie unter [Web UI (Dashboard)][kubernetes-dashboard] (Webbenutzeroberfläche – Dashboard).
+Kubernetes enthält ein Webdashboard, das für einfache Verwaltungsvorgänge verwendet werden kann. In diesem Artikel wird erläutert, wie Sie mithilfe von Azure CLI auf das Kubernetes-Dashboard zugreifen können. Anschließend werden einige grundlegende Vorgänge im Dashboard vorgestellt. Weitere Informationen zum Kubernetes-Dashboard finden Sie unter [Kubernetes Web UI Dashboard (Kubernetes-Dashboard mit Webbenutzeroberfläche)][kubernetes-dashboard].
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Bei den Schritten in diesem Dokument wird davon ausgegangen, dass Sie einen AKS-Cluster erstellt und eine kubectl-Verbindung mit dem Cluster hergestellt haben. Informationen hierzu finden Sie in der [AKS-Schnellstartanleitung][aks-quickstart].
+Bei den Schritten in diesem Dokument wird davon ausgegangen, dass Sie einen AKS-Cluster erstellt und eine `kubectl`-Verbindung mit dem Cluster hergestellt haben. Wenn Sie einen AKS-Cluster erstellen müssen, finden Sie weitere Informationen unter [AKS-Schnellstart][aks-quickstart].
 
-Außerdem muss mindestens Version 2.0.27 oder höher der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie „az --version“ aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][install-azure-cli] Informationen dazu.
+Außerdem muss mindestens Version 2.0.27 oder höher der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][install-azure-cli] Informationen dazu.
 
 ## <a name="start-kubernetes-dashboard"></a>Starten des Kubernetes-Dashboards
 
-Verwenden Sie den Befehl `az aks browse`, um das Kubernetes-Dashboard zu starten. Ersetzen Sie beim Ausführen dieses Befehls die Ressourcengruppe und den Clusternamen.
+Verwenden Sie den Befehl [az aks browse][az-aks-browse], um das Kubernetes-Dashboard zu starten. Im folgenden Beispiel wird das Dashboard für den Cluster namens *myAKSCluster* in der Ressourcengruppe namens *myResourceGroup* geöffnet:
 
 ```azurecli
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
 Der Befehl erstellt einen Proxy zwischen Ihrem Entwicklungssystem und der Kubernetes-API und öffnet einen Webbrowser mit dem Kubernetes-Dashboard.
+
+### <a name="for-rbac-enabled-clusters"></a>Für RBAC-fähige Cluster
+
+Wenn Ihr AKS-Cluster RBAC verwendet, muss ein *ClusterRoleBinding*-Element erstellt werden, bevor Sie ordnungsgemäß auf das Dashboard zugreifen können. Verwenden Sie wie im folgenden Beispiel dargestellt den Befehl [kubectl create clusterrolebinding][kubectl-create-clusterrolebinding], um eine Bindung zu erstellen. 
+
+> [!WARNING]
+> Diese Beispielbindung wendet keine zusätzlichen Authentifizierungskomponenten an und kann daher zu unsicherer Verwendung führen. Das Kubernetes-Dashboard steht allen Personen zur Verfügung, die Zugriff auf die URL haben. Machen Sie das Kubernetes-Dashboard nicht öffentlich verfügbar.
+>
+> Sie können Mechanismen wie Bearer-Tokens oder einen Benutzernamen und ein Kennwort verwenden, um zu steuern, wer auf das Dashboard zugreifen kann und welche Berechtigungen die Benutzer haben. Dadurch wird die Verwendung des Dashboards sicherer. Weitere Informationen zur Verwendung der unterschiedlichen Authentifizierungsmethoden finden Sie in der Wiki des Kubernetes-Dashboards unter [Zugriffssteuerung][dashboard-authentication].
+
+```console
+kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
+```
+
+Sie können nun in Ihrem RBAC-fähigen Cluster auf das Kubernetes-Dashboard zugreifen. Verwenden Sie wie zuvor beschrieben den Befehl [az aks browse][az-aks-browse], um das Kubernetes-Dashboard zu starten.
 
 ## <a name="run-an-application"></a>Ausführen einer Anwendung
 
@@ -81,7 +96,11 @@ Weitere Informationen zum Kubernetes-Dashboard finden Sie in der Kubernetes-Doku
 
 <!-- LINKS - external -->
 [kubernetes-dashboard]: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
+[dashboard-authentication]: https://github.com/kubernetes/dashboard/wiki/Access-control
+[kubectl-create-clusterrolebinding]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-clusterrolebinding-em-
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 
 <!-- LINKS - internal -->
 [aks-quickstart]: ./kubernetes-walkthrough.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[az-aks-browse]: /cli/azure/aks#az-aks-browse

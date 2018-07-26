@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 08/30/2017
 ms.author: jlian
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86c733f138e9926fb13c2c1cb404cc9b61f4780e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 089bb6f3fd187a56495dfd353ee89086e6bea120
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32769170"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39124982"
 ---
 # <a name="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go"></a>Aktualisieren Ihrer kostenlosen Testversion oder Ihres Microsoft Imagine Azure-Abonnements auf nutzungsbasierte Bezahlung
 
@@ -37,3 +37,8 @@ Upgraden Sie Ihre [kostenlose Testversion](https://azure.microsoft.com/free/) od
     ![Screenshot der zeigt, was Sie auswählen müssen, um zu bestätigen, dass Sie ein Upgrade Ihres Abonnements durchführen möchten](./media/billing-upgrade-azure-subscription/Upgrade.png)
 
  Wenn Sie ein Upgrade von einem kostenlosen Testabonnement durchführen, behalten Sie Ihr Restguthaben für die vollen 30 Tage nach Erstellung des Abonnements. Sie haben auch Zugang zu kostenlosen Diensten für 12 Monate.
+ 
+ Wenn Sie [das Abonnement nach dem Upgrade übertragen](billing-subscription-transfer.md) möchten, müssen Sie warten, bis die Angebots-ID des Abonnements sich in **MS-AZR-003P** ändert. Die Angebots-ID ändert sich in folgenden Fällen:
+
+* Wenn Sie das gesamte verbleibende Guthaben verbraucht haben
+* Wenn 30 Tage seit dem Start der kostenlosen Testversion vergangen sind

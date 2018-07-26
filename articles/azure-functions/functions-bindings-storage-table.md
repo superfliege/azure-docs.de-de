@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: 51b9f7bfd25da7dfd4ae9038f8dab70e9232b944
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 2e6b63e3ff48d4234bceadfe0556a8af92d9f8cc
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724580"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136586"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table Storage-Bindungen für Azure Functions
 
@@ -50,14 +50,16 @@ Verwenden Sie die Azure Table Storage-Eingabebindung, um eine Tabelle in einem A
 
 Sehen Sie sich das sprachspezifische Beispiel an:
 
-* [C#: Lesen einer einzelnen Entität](#input---c-example-1)
-* [C#: Lesen mehrerer Entitäten](#input---c-example-2)
-* [C#-Skript: Lesen einer einzelnen Entität](#input---c-script-example-1)
-* [C#-Skript: Lesen mehrerer Entitäten](#input---c-script-example-2)
-* [F#](#input---f-example-2)
+* [C#: Lesen einer einzelnen Entität](#input---c-example---one-entity)
+* [C#: Binden an IQueryable](#input---c-example---iqueryable)
+* [C#: Binden an CloudTable](#input---c-example---cloudtable)
+* [C#: Lesen einer einzelnen Entität mit einem Skript](#input---c-script-example---one-entity)
+* [C#: Binden an IQueryable mit einem Skript](#input---c-script-example---iqueryable)
+* [C#: Binden an CloudTable mit einem Skript](#input---c-script-example---cloudtable)
+* [F#](#input---f-example)
 * [JavaScript](#input---javascript-example)
 
-### <a name="input---c-example-1"></a>Eingabe: C#-Beispiel 1
+### <a name="input---c-example---one-entity"></a>Eingabe: C#-Beispiel – eine Entität
 
 Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md) zum Lesen einer einzelnen Tabellenzeile. 
 
@@ -84,7 +86,7 @@ public class TableStorage
 }
 ```
 
-### <a name="input---c-example-2"></a>Eingabe: C#-Beispiel 2
+### <a name="input---c-example---iqueryable"></a>Eingabe: C#-Beispiel – IQueryable
 
 Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md) zum Lesen mehrerer Tabellenzeilen. Die Klasse `MyPoco` leitet sich von `TableEntity` ab.
 
@@ -110,10 +112,58 @@ public class TableStorage
 }
 ```
 
-  > [!NOTE]
-  > `IQueryable` wird in der [Laufzeit von Functions v2](functions-versions.md) nicht unterstützt. Als Alternative kann beispielsweise ein [CloudTable paramName-Methodenparameter verwendet werden](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable), um die Tabelle unter Verwendung des Azure Storage SDKs zu lesen. Wenn Sie versuchen, eine Bindung an `CloudTable` herzustellen, und eine Fehlermeldung erhalten, stellen Sie sicher, dass ein Verweis auf [die richtige Storage SDK-Version](#azure-storage-sdk-version-in-functions-1x) vorliegt.
+### <a name="input---c-example---cloudtable"></a>Eingabe: C#-Beispiel – CloudTable
 
-### <a name="input---c-script-example-1"></a>Eingabe: C#-Skriptbeispiel 1
+`IQueryable` wird in der [Laufzeit von Functions v2](functions-versions.md) nicht unterstützt. Als Alternative kann beispielsweise ein `CloudTable`-Methodenparameter verwendet werden, um die Tabelle unter Verwendung des Azure Storage SDKs zu lesen. Hier finden Sie ein Beispiel einer 2.x-Funktion, die eine Azure Functions-Protokolltabelle abfragt:
+
+```csharp
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using Microsoft.WindowsAzure.Storage.Table;
+using System;
+using System.Threading.Tasks;
+
+namespace FunctionAppCloudTable2
+{
+    public class LogEntity : TableEntity
+    {
+        public string OriginalName { get; set; }
+    }
+    public static class CloudTableDemo
+    {
+        [FunctionName("CloudTableDemo")]
+        public static async Task Run(
+            [TimerTrigger("0 */1 * * * *")] TimerInfo myTimer, 
+            [Table("AzureWebJobsHostLogscommon")] CloudTable cloudTable,
+            TraceWriter log)
+        {
+            log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
+
+            TableQuery<LogEntity> rangeQuery = new TableQuery<LogEntity>().Where(
+                TableQuery.CombineFilters(
+                    TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, 
+                        "FD2"),
+                    TableOperators.And,
+                    TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThan, 
+                        "t")));
+
+            // Execute the query and loop through the results
+            foreach (LogEntity entity in 
+                await cloudTable.ExecuteQuerySegmentedAsync(rangeQuery, null))
+            {
+                log.Info(
+                    $"{entity.PartitionKey}\t{entity.RowKey}\t{entity.Timestamp}\t{entity.OriginalName}");
+            }
+        }
+    }
+}
+```
+
+Weitere Informationen zur Verwendung von „CloudTable“ finden Sie unter [Erste Schritte mit Azure Table Storage](../cosmos-db/table-storage-how-to-use-dotnet.md).
+
+Wenn Sie versuchen, eine Bindung an `CloudTable` herzustellen, und eine Fehlermeldung erhalten, stellen Sie sicher, dass ein Verweis auf [die richtige Storage SDK-Version](#azure-storage-sdk-version-in-functions-1x) vorliegt.
+
+### <a name="input---c-script-example---one-entity"></a>Eingabe: C#-Skriptbeispiel – eine Entität
 
 Das folgende Beispiel zeigt eine Tabelleneingabebindung in einer Datei vom Typ *function.json* sowie [C#-Skriptcode](functions-reference-csharp.md), der die Bindung verwendet. Die Funktion verwendet einen Warteschlangentrigger zum Lesen einer einzelnen Tabellenzeile. 
 
@@ -162,7 +212,7 @@ public class Person
 }
 ```
 
-### <a name="input---c-script-example-2"></a>Eingabe: C#-Skriptbeispiel 2
+### <a name="input---c-script-example---iqueryable"></a>Eingabe: C#-Skriptbeispiel – IQueryable
 
 Das folgende Beispiel zeigt eine Tabelleneingabebindung in einer Datei vom Typ *function.json* sowie [C#-Skriptcode](functions-reference-csharp.md), der die Bindung verwendet. Die Funktion liest Entitäten für einen Partitionsschlüssel, der in einer Warteschlangenmeldung angegeben ist.
 
@@ -212,6 +262,68 @@ public class Person : TableEntity
     public string Name { get; set; }
 }
 ```
+
+### <a name="input---c-script-example---cloudtable"></a>Eingabe: C#-Skriptbeispiel – CloudTable
+
+`IQueryable` wird in der [Laufzeit von Functions v2](functions-versions.md) nicht unterstützt. Als Alternative kann beispielsweise ein `CloudTable`-Methodenparameter verwendet werden, um die Tabelle unter Verwendung des Azure Storage SDKs zu lesen. Hier finden Sie ein Beispiel einer 2.x-Funktion, die eine Azure Functions-Protokolltabelle abfragt:
+
+```json
+{
+  "bindings": [
+    {
+      "name": "myTimer",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "0 */1 * * * *"
+    },
+    {
+      "name": "cloudTable",
+      "type": "table",
+      "connection": "AzureWebJobsStorage",
+      "tableName": "AzureWebJobsHostLogscommon",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+```csharp
+#r "Microsoft.WindowsAzure.Storage"
+using Microsoft.WindowsAzure.Storage.Table;
+using System;
+using System.Threading.Tasks;
+
+public static async Task Run(TimerInfo myTimer, CloudTable cloudTable, TraceWriter log)
+{
+    log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
+
+    TableQuery<LogEntity> rangeQuery = new TableQuery<LogEntity>().Where(
+    TableQuery.CombineFilters(
+        TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, 
+            "FD2"),
+        TableOperators.And,
+        TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThan, 
+            "a")));
+
+    // Execute the query and loop through the results
+    foreach (LogEntity entity in 
+    await cloudTable.ExecuteQuerySegmentedAsync(rangeQuery, null))
+    {
+        log.Info(
+            $"{entity.PartitionKey}\t{entity.RowKey}\t{entity.Timestamp}\t{entity.OriginalName}");
+    }
+}
+
+public class LogEntity : TableEntity
+{
+    public string OriginalName { get; set; }
+}
+```
+
+Weitere Informationen zur Verwendung von „CloudTable“ finden Sie unter [Erste Schritte mit Azure Table Storage](../cosmos-db/table-storage-how-to-use-dotnet.md).
+
+Wenn Sie versuchen, eine Bindung an `CloudTable` herzustellen, und eine Fehlermeldung erhalten, stellen Sie sicher, dass ein Verweis auf [die richtige Storage SDK-Version](#azure-storage-sdk-version-in-functions-1x) vorliegt.
 
 ### <a name="input---f-example"></a>Eingabe: F#-Beispiel
 
@@ -648,7 +760,7 @@ Die Table Storage-Ausgabebindung unterstützt folgende Szenarien:
 
   Verwenden Sie in C# und C#-Skripts einen Methodenparameter vom Typ `ICollector<T> paramName` oder `IAsyncCollector<T> paramName`, um auf die Ausgabetabellenentität zuzugreifen. In C#-Skripts ist `paramName` der Wert, der in der Eigenschaft `name` von *function.json* angegeben ist. `T` gibt das Schema der hinzuzufügenden Entitäten an. In der Regel leitet sich `T` von `TableEntity` ab oder implementiert `ITableEntity`, dies ist aber nicht zwingend erforderlich. Die Partitionsschlüssel- und Zeilenschlüsselwerte in *function.json* oder im Konstruktor des Attributs `Table` werden in diesem Szenario nicht verwendet.
 
-  Als Alternative kann beispielsweise ein `CloudTable paramName`-Methodenparameter verwendet werden, um unter Verwendung des Azure Storage SDKs in die Tabelle zu schreiben. Wenn Sie versuchen, eine Bindung an `CloudTable` herzustellen, und eine Fehlermeldung erhalten, stellen Sie sicher, dass ein Verweis auf [die richtige Storage SDK-Version](#azure-storage-sdk-version-in-functions-1x) vorliegt.
+  Als Alternative kann beispielsweise ein `CloudTable`-Methodenparameter verwendet werden, um unter Verwendung des Azure Storage SDKs in die Tabelle zu schreiben. Wenn Sie versuchen, eine Bindung an `CloudTable` herzustellen, und eine Fehlermeldung erhalten, stellen Sie sicher, dass ein Verweis auf [die richtige Storage SDK-Version](#azure-storage-sdk-version-in-functions-1x) vorliegt. Beispielcode für das Binden von `CloudTable` finden Sie unter in den Beispielen für Eingabebindungen für[C#](#input---c-example---cloudtable) oder [C#-Skripts](#input---c-script-example---cloudtable) weiter oben in diesem Artikel.
 
 * **Schreiben von Zeilen in JavaScript**
 

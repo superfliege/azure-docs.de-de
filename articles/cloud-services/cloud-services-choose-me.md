@@ -1,9 +1,9 @@
 ---
-title: Compute-Optionen in Azure – Azure Cloud Services | Microsoft-Dokumentation
-description: 'Erfahren Sie mehr über die Compute-Hostingoptionen in Azure und deren Funktionsweise: App Service, Azure Cloud Services und Virtual Machines'
+title: Was ist Azure Cloud Services? | Microsoft-Dokumentation
+description: Weitere Informationen zu Azure Cloud Services
 services: cloud-services
 documentationcenter: ''
-author: Thraka
+author: jpconnock
 manager: timlt
 ms.assetid: ed7ad348-6018-41bb-a27d-523accd90305
 ms.service: multiple
@@ -12,22 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: adegeo
-ms.openlocfilehash: 2871a8c02db0ffc6d9033724e7c9f4a454afef8e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: jeconnoc
+ms.openlocfilehash: 6af4533a4ab374071b904cc4b03ca239a3e83364
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29120283"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39011658"
 ---
-# <a name="should-i-choose-azure-cloud-services-or-something-else"></a>Sollte ich mich für Azure Cloud Services oder eine andere Lösung entscheiden?
-Ist Azure Cloud Services das Richtige für Sie? Azure bietet verschiedene Hostingmodelle für die Ausführung von Anwendungen. Jedes bietet einen anderen Satz von Diensten an. Welches Sie auswählen, hängt ausschließlich davon ab, was Sie versuchen möchten.
-
-[!INCLUDE [compute-table](../../includes/compute-options-table.md)]
-
-<a name="tellmecs"></a>
-
-## <a name="tell-me-about-azure-cloud-services"></a>Informationen zu Azure Cloud Services
+# <a name="overview-of-azure-cloud-services"></a>Übersicht zu Azure Cloud Services
 Azure Cloud Services sind ein Beispiel für [Platform-as-a-Service](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Diese Technologie unterstützt genau wie [Azure App Service](../app-service/app-service-web-overview.md) skalierbare und zuverlässige Anwendungen mit geringen Betriebskosten. Azure Cloud Services werden wie App Service auf virtuellen Computern (VMs) gehostet. Sie haben jedoch mehr Kontrolle über die virtuellen Computer. Sie können Ihre eigene Software auf virtuellen Computern installieren, die Azure Cloud Services verwenden, und remote darauf zugreifen.
 
 ![Azure Cloud Services-Diagramm](./media/cloud-services-choose-me/diagram.png)

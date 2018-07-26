@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/13/2017
+ms.date: 06/16/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: adfce1195a6a322e0225ee09a45148001d0167c8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1cc58832d5f863f5bbfa6fc20d38b4be81ddad8f
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592128"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39089960"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatisches Upgrade
-Diese Funktion wurde mit Build 1.1.105.0 eingeführt (veröffentlicht im Februar 2016).
+Dieses Feature wurde mit [Build 1.1.105.0 (veröffentlicht im Februar 2016)](active-directory-aadconnect-version-history.md#111050) eingeführt.  Dieses Feature wurde in [Build 1.1.561](active-directory-aadconnect-version-history.md#115610) aktualisiert und unterstützt nun zusätzliche Szenarios, die zuvor nicht unterstützt wurden.
 
 ## <a name="overview"></a>Übersicht
 Noch nie konnten Sie so leicht sicherstellen, dass Ihre Azure AD Connect-Installation immer auf dem neuesten Stand ist  – mit dem **automatischen Upgradefeature** . Dieses Feature ist standardmäßig für Express-Installationen und DirSync-Upgrades aktiviert. Wenn eine neue Version veröffentlicht wird, erfolgt ein automatisches Upgrade Ihrer Installation.

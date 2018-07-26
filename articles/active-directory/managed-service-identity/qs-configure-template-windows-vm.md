@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: d8490dcba35cfeabb3da589f3d079571d5e98d3b
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 7acbef216c182e5de80515258841af59d9529908
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969203"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114878"
 ---
 # <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>Konfigurieren einer verwalteten VM-Dienstidentität mithilfe einer Vorlage
 
@@ -59,7 +59,7 @@ In diesem Abschnitt aktivieren und deaktivieren Sie eine vom System zugewiesene 
    > Dieses Beispiel setzt voraus, dass Variablen wie z. B. `vmName`, `storageAccountName`, und `nicName` in der Vorlage definiert wurden.
    >
 
-   ![Screenshot der Vorlage – VM suchen](../media/msi-qs-configure-template-windows-vm/template-file-before.png) 
+   ![Screenshot der Vorlage – VM suchen](../managed-service-identity/media/msi-qs-configure-template-windows-vm/template-file-before.png) 
 
 3. Um eine vom System zugewiesene Identität zu aktivieren, fügen Sie die Eigenschaft `"identity"` auf der gleichen Ebene wie die Eigenschaft `"type": "Microsoft.Compute/virtualMachines"` hinzu. Verwenden Sie die folgende Syntax:
 
@@ -99,7 +99,7 @@ In diesem Abschnitt aktivieren und deaktivieren Sie eine vom System zugewiesene 
 
 5. Wenn Sie fertig sind, sollte Ihre Vorlage wie folgt aussehen:
 
-   ![Screenshot der Vorlage nach dem Update](../media/msi-qs-configure-template-windows-vm/template-file-after.png)
+   ![Screenshot der Vorlage nach dem Update](../managed-service-identity/media/msi-qs-configure-template-windows-vm/template-file-after.png)
 
 ### <a name="assign-a-role-the-vms-system-assigned-identity"></a>Zuweisen einer Rolle zur vom VM-System zugewiesenen Identität
 
@@ -173,7 +173,11 @@ In diesem Abschnitt weisen Sie einer Azure-VM mit der Azure Resource Manager-Vor
 
  ### <a name="assign-a-user-assigned-identity-to-an-azure-vm"></a>Zuweisen einer vom Benutzer zugewiesenen Identität zu einer Azure-VM
 
-1. Fügen Sie unter dem `resources`-Element den folgenden Eintrag hinzu, um Ihrer VM eine vom Benutzer zugewiesene Identität zuzuweisen.  Achten Sie darauf, dass Sie `<USERASSIGNEDIDENTITY>` durch den Namen der vom Benutzer zugewiesenen Identität ersetzen, die Sie erstellt haben.
+1. Fügen Sie unter dem `resources`-Element den folgenden Eintrag hinzu, um Ihrer VM eine vom Benutzer zugewiesene Identität zuzuweisen.  Achten Sie darauf, dass Sie `<USERASSIGNEDIDENTITY>` durch den Namen der benutzerzugewiesenen Identität ersetzen, die Sie erstellt haben.
+   
+   > [!Important]
+   > Der Wert `<USERASSIGNEDIDENTITYNAME>`, der in folgendem Beispiel dargestellt wird, muss in einer Variable gespeichert werden.  Für die derzeit unterstützte Implementierung der Zuweisung von Identitäten zu virtuellen Computern durch Benutzer mithilfe von Resource Manager-Vorlagen muss die API-Version mit der im folgenden Beispiel übereinstimmen.
+    
     ```json
     {
         "apiVersion": "2017-12-01",

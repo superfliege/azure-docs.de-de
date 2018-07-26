@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 7740da505f7635944536252d60ec2c2039295975
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 8546b1228c8d8f213cb87692144e8d1d31a949d8
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36323385"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001802"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Vorgehensweise beim Integrieren von Azure API Management in Azure Application Insights
 
@@ -50,6 +50,9 @@ Bevor Sie Azure Application Insights verwenden können, müssen Sie zunächst ei
 6. Sie haben gerade eine Azure Application Insights-Protokollierung mit einem Instrumentierungsschlüssel erstellt. Sie sollte jetzt in der Liste angezeigt werden.  
     ![Application Insights-Protokollierung](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
+> [!NOTE]
+> Im Hintergrund wird eine [Protokollierungsentität](https://docs.microsoft.com/en-us/rest/api/apimanagement/logger/createorupdate) in der API Management-Instanz erstellt, die den Instrumentierungsschlüssel der Application Insights-Instanz enthält.
+
 ## <a name="enable-application-insights-logging-for-your-api"></a>Aktivieren der Application Insights-Protokollierung für Ihre API
 
 1. Navigieren Sie im **Azure-Portal** zu Ihrer **Azure API Management-Dienstinstanz**.
@@ -63,6 +66,9 @@ Bevor Sie Azure Application Insights verwenden können, müssen Sie zunächst ei
 8. Geben Sie **100** als **Sampling (%)** ein, und aktivieren Sie das Kontrollkästchen **Fehler immer protokollieren**.
 9. Geben Sie **1024** in das Feld **Erste Bytes des Texts** ein.
 10. Klicken Sie auf **Speichern**.
+
+> [!NOTE]
+> Im Hintergrund wird eine [Diagnoseentität](https://docs.microsoft.com/en-us/rest/api/apimanagement/diagnostic/createorupdate) namens „applicationinsights“ auf API-Ebene erstellt.
 
 | Einstellungsname                        | Werttyp                        | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

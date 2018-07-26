@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2018
+ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ffd774477881be6b7f46dd38bbc88c8d019223aa
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: e2b8b1f63e4c23c0beeaff6fd246fa2ba8afe106
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36317203"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036750"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Optionale Ansprüche in Azure AD (Preview)
 
@@ -48,31 +48,35 @@ Eines der Ziele des [v2.0 Azure AD-Endpunkts](active-directory-appmodel-v2-overv
 Die Gruppe optionaler Ansprüche, die standardmäßig zur Verwendung in Anwendungen bereitstehen, sind nachfolgend aufgeführt.  Informationen zum Hinzufügen benutzerdefinierter optionaler Ansprüche für Ihre Anwendung finden Sie unter [Verzeichniserweiterungen](active-directory-optional-claims.md#Configuring-custom-claims-via-directory-extensions) weiter unten. 
 
 > [!Note]
->Die Mehrzahl dieser Ansprüche kann in JWTs, jedoch nicht in SAML-Token eingeschlossen werden, mit Ausnahme derjenigen, die einen entsprechenden Hinweis in der Spalte „Tokentyp“ enthalten.  Obwohl optionale Ansprüche derzeit nur für AAD-Benutzer unterstützt werden, wird MSA-Unterstützung hinzugefügt.  Wenn MSA optionale Ansprüche am v2.0-Endpunkt unterstützt, ist in der Spalte „Benutzertyp“ angegeben, ob ein Anspruch für einen AAD- oder MSA-Benutzer verfügbar ist.  
+>Die Mehrzahl dieser Ansprüche kann in JWTs für v1.0- und v2.0-Token, jedoch nicht in SAML-Token eingeschlossen werden. Ausnahmen stellen die Ansprüche dar, die einen entsprechenden Hinweis in der Spalte „Tokentyp“ enthalten.  Obwohl optionale Ansprüche derzeit nur für AAD-Benutzer unterstützt werden, wird MSA-Unterstützung hinzugefügt.  Wenn MSA optionale Ansprüche am v2.0-Endpunkt unterstützt, ist in der Spalte „Benutzertyp“ angegeben, ob ein Anspruch für einen AAD- oder MSA-Benutzer verfügbar ist.  
 
 **Tabelle 2: Standardmäßige optionale Ansprüche**
 
-| NAME                     | BESCHREIBUNG                                                                                                                                                                                     | Tokentyp | Benutzertyp | Notizen                                                                                                                                                                                                                                                                                   |
-|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `auth_time`                | Zeitpunkt der letzten Authentifizierung des Benutzers.  Siehe OpenID Connect-Spezifikation.                                                                                                                                | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `tenant_region_scope`      | Region des Ressourcenmandanten                                                                                                                                                                   | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `signin_state`             | Anspruch für Anmeldestatus                                                                                                                                                                             | JWT        |           | 6 Rückgabewerte als Flags:<br> „dvc_mngd“: Gerät wird verwaltet.<br> „dvc_cmp“: Gerät ist kompatibel.<br> „dvc_dmjd“: Gerät ist in die Domäne eingebunden.<br> „dvc_mngd_app“: Gerät wird über MDM verwaltet.<br> „inknownntwk“: Gerät befindet sich in einem bekannten Netzwerk.<br> „kmsi“: „Angemeldet bleiben“ wurde verwendet. <br> |
-| `controls`                 | Mehrwertiger Anspruch, der die durch Richtlinien für bedingten Zugriff erzwungenen Sitzungssteuerelemente enthält.                                                                                                       | JWT        |           | 3 Werte:<br> „app_res“: Die App muss präzisere Einschränkungen erzwingen. <br> „ca_enf“: Die Durchsetzung des bedingten Zugriffs wurde verzögert und ist immer noch erforderlich. <br> „no_cookie“: Dieses Token ist für den Austausch gegen ein Cookie im Browser nicht ausreichend. <br>                              |
-| `home_oid`                 | Bei Gastbenutzern: Die Objekt-ID des Benutzers im Home-Mandanten des Benutzers.                                                                                                                           | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `sid`                      | Sitzungs-ID, die zur sitzungsbezogenen Abmeldung des Benutzers verwendet wird.                                                                                                                                                  | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `platf`                    | Geräteplattform                                                                                                                                                                                 | JWT        |           | Beschränkt auf verwaltete Geräte, die den Gerätetyp überprüfen können.                                                                                                                                                                                                                              |
-| `verified_primary_email`   | Stammt von „PrimaryAuthoritativeEmail“ des Benutzers.                                                                                                                                               | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `verified_secondary_email` | Stammt von „SecondaryAuthoritativeEmail“ des Benutzers.                                                                                                                                             | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `enfpolids`                | IDs erzwungener Richtlinien. Eine Liste der Richtlinien-IDs, die für den aktuellen Benutzer ausgewertet wurden.                                                                                                         | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `vnet`                     | Informationen zum VNET-Spezifizierer                                                                                                                                                                     | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `fwd`                      | IP-Adresse.  Fügt die ursprüngliche IPv4-Adresse des anfordernden Clients hinzu (wenn innerhalb eines VNET).                                                                                                       | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `ctry`                     | Land des Benutzers                                                                                                                                                                                  | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `tenant_ctry`              | Land des Ressourcenmandanten                                                                                                                                                                       | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `acct`    | Benutzerkontostatus im Mandanten.  Wenn der Benutzer dem Mandanten angehört, lautet der Wert `0`.  Bei einem Gastbenutzer lautet der Wert `1`.  | JWT, SAML | | |
-| `upn`                      | Anspruch „UserPrincipalName“.  Obwohl dieser Anspruch automatisch hinzugefügt wird, können Sie ihn als einen optionalen Anspruch angeben, um zusätzliche Eigenschaften zum Ändern des Verhaltens im Fall eines Gastbenutzer anzufügen. | JWT, SAML  |           | Zusätzliche Eigenschaften: <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash`                                                                                                                                                                 |
+| NAME                        | BESCHREIBUNG   | Tokentyp | Benutzertyp | Notizen  |
+|-----------------------------|----------------|------------|-----------|--------|
+| `auth_time`                | Zeitpunkt der letzten Authentifizierung des Benutzers.  Siehe OpenID Connect-Spezifikation.| JWT        |           |  |
+| `tenant_region_scope`      | Region des Ressourcenmandanten | JWT        |           | |
+| `signin_state`             | Anspruch für Anmeldestatus   | JWT        |           | 6 Rückgabewerte als Flags:<br> „dvc_mngd“: Gerät wird verwaltet.<br> „dvc_cmp“: Gerät ist kompatibel.<br> „dvc_dmjd“: Gerät ist in die Domäne eingebunden.<br> „dvc_mngd_app“: Gerät wird über MDM verwaltet.<br> „inknownntwk“: Gerät befindet sich in einem bekannten Netzwerk.<br> „kmsi“: „Angemeldet bleiben“ wurde verwendet. <br> |
+| `controls`                 | Mehrwertiger Anspruch, der die durch Richtlinien für bedingten Zugriff erzwungenen Sitzungssteuerelemente enthält.  | JWT        |           | 3 Werte:<br> „app_res“: Die App muss präzisere Einschränkungen erzwingen. <br> „ca_enf“: Die Durchsetzung des bedingten Zugriffs wurde verzögert und ist immer noch erforderlich. <br> „no_cookie“: Dieses Token ist für den Austausch gegen ein Cookie im Browser nicht ausreichend. <br>  |
+| `home_oid`                 | Bei Gastbenutzern: Die Objekt-ID des Benutzers im Home-Mandanten des Benutzers.| JWT        |           | |
+| `sid`                      | Sitzungs-ID, die zur sitzungsbezogenen Abmeldung des Benutzers verwendet wird. | JWT        |           |         |
+| `platf`                    | Geräteplattform    | JWT        |           | Beschränkt auf verwaltete Geräte, die den Gerätetyp überprüfen können.|
+| `verified_primary_email`   | Stammt von „PrimaryAuthoritativeEmail“ des Benutzers.      | JWT        |           |         |
+| `verified_secondary_email` | Stammt von „SecondaryAuthoritativeEmail“ des Benutzers.   | JWT        |           |        |
+| `enfpolids`                | IDs erzwungener Richtlinien. Eine Liste der Richtlinien-IDs, die für den aktuellen Benutzer ausgewertet wurden.  | JWT |  |  |
+| `vnet`                     | Informationen zum VNET-Spezifizierer    | JWT        |           |      |
+| `fwd`                      | IP-Adresse.| JWT    |   | Fügt die ursprüngliche IPv4-Adresse des anfordernden Clients hinzu (wenn innerhalb eines VNET). |
+| `ctry`                     | Land des Benutzers | JWT |           | Azure AD gibt den optionalen Anspruch `ctry` zurück, wenn er vorhanden ist und der Wert des Anspruchs aus einem standardmäßigen Ländercode mit zwei Buchstaben besteht, z.B. FR, JP oder SZ. |
+| `tenant_ctry`              | Land des Ressourcenmandanten | JWT | | |
+| `xms_pdl`          | Bevorzugter Datenspeicherort   | JWT | | Für Multi-Geo-Mandanten ist dies ein aus drei Buchstaben bestehender Code, der anzeigt, in welcher geografischen Region sich der Benutzer befindet.  Weitere Informationen finden Sie unter [Azure Active Directory Connect-Synchronisierung: Konfigurieren des bevorzugten Datenspeicherorts für Office 365-Ressourcen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation). <br> Zum Beispiel: `APC` für Asien-Pazifik. |
+| `xms_pl`                   | Bevorzugte Benutzersprache  | JWT ||Die bevorzugte Sprache des Benutzers, falls festgelegt.  Wird in Szenarios mit Gastzugriff aus dem Basismandanten abgerufen.  Format: Sprachraum-Land (z.B.: en-us) |
+| `xms_tpl`                  | Bevorzugte Mandantensprache| JWT | | Die bevorzugte Sprache des Ressourcenmandanten, falls festgelegt.  Format: Sprachraum (z.B.: en) |
+| `ztdid`                    | ID der Bereitstellung ohne manuelles Eingreifen | JWT | | Die für [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) verwendete Geräteidentität |
+| `acct`             | Benutzerkontostatus im Mandanten.   | JWT, SAML | | Wenn der Benutzer dem Mandanten angehört, lautet der Wert `0`.  Bei einem Gastbenutzer lautet der Wert `1`.  |
+| `upn`                      | Anspruch „UserPrincipalName“.  | JWT, SAML  |           | Obwohl dieser Anspruch automatisch hinzugefügt wird, können Sie ihn als einen optionalen Anspruch angeben, um zusätzliche Eigenschaften zum Ändern des Verhaltens im Fall eines Gastbenutzer anzufügen.  <br> Zusätzliche Eigenschaften: <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash` |
 
 ### <a name="v20-optional-claims"></a>Optionale Ansprüche in v2.0
-Diese Ansprüche sind in v1.0-Token immer enthalten, wurden aber aus v2.0-Token entfernt, sofern nicht angefordert.  Diese Ansprüche gelten nur für JWTs (ID-Token und Zugriffstoken).  
+Diese Ansprüche sind in v1.0-Token immer enthalten, jedoch nie in v2.0-Token, sofern nicht angefordert.  Diese Ansprüche gelten nur für JWTs (ID-Token und Zugriffstoken).  
 
 **Tabelle 3: Nur in v2.0 enthaltene optionale Ansprüche**
 
@@ -95,7 +99,7 @@ Einige optionale Ansprüche können so konfiguriert werden, dass sie auf andere 
 
 | Eigenschaftenname                                     | Name der zusätzlichen Eigenschaft                                                                                                             | BESCHREIBUNG |
 |---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| `upn`                                                 |                                                                                                                                      |             |
+| `upn`                                                 |                                                                                                                                      |  Kann für sowohl für SAML- als auch für JWT-Antworten verwendet werden            |
 | | `include_externally_authenticated_upn`              | Bezieht den Gast-UPN ein, wie er im Ressourcenmandanten gespeichert ist.  Zum Beispiel, `foo_hometenant.com#EXT#@resourcetenant.com`                            |             
 | | `include_externally_authenticated_upn_without_hash` | Wie oben, außer dass die Rautenzeichen (`#`) durch Unterstriche (`_`) ersetzt werden. Beispiel: `foo_hometenant.com_EXT_@resourcetenant.com` |             
 
@@ -118,7 +122,7 @@ Einige optionale Ansprüche können so konfiguriert werden, dass sie auf andere 
 }
 ```
 
-Dieses OptionalClaims-Objekt bewirkt, dass das an den Client zurückgegebene ID-Token einen weiteren UPN mit den zusätzlichen Informationen zum Home- und zum Ressourcenmandanten enthält.  
+Dieses OptionalClaims-Objekt bewirkt, dass das an den Client zurückgegebene ID-Token einen weiteren UPN mit den zusätzlichen Informationen zum Home- und zum Ressourcenmandanten enthält.  Dies ändert den `upn`-Anspruch im Token nur dann, wenn der Benutzer ein Gastbenutzer im Mandanten ist (und einen anderen Identitätsanbieter für die Authentifizierung verwendet). 
 
 ## <a name="configuring-optional-claims"></a>Konfigurieren optionaler Ansprüche
 
@@ -131,14 +135,13 @@ Sie können optionale Ansprüche für Ihre Anwendung konfigurieren, indem Sie da
    {
        "idToken": [
              { 
-                   "name": "upn", 
-                   "essential": false, 
-                   "additionalProperties": [ "include_externally_authenticated_upn"]  
+                   "name": "auth_time", 
+                   "essential": false
               }
         ],
  "accessToken": [ 
              {
-                    "name": "auth_time", 
+                    "name": "ipaddr", 
                     "essential": false
               }
         ],

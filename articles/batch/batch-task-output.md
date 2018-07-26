@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cb8b1ca3514e27221e95cb2def823c8f89d151e5
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b578abfa6fc0a10edc5daab40f8a0eea5e6653d9
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "30312442"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115061"
 ---
 # <a name="persist-job-and-task-output"></a>Persistente Aufträge und Aufgabenausgabe
 
@@ -102,7 +102,7 @@ Verwenden Sie die Konventionen für die Batch-Bibliothek für .NET, um die Taska
 
 Informationen zum Beibehalten von Taskausgaben mit der Dateikonventionenbibliothek für .NET finden Sie unter [Persist job and task data to Azure Storage with the Batch File Conventions library for .NET to persist (Beibehalten von Auftrags- und Taskdaten in Azure Storage mit der Batch-Dateikonventionenbibliothek für .NET zur Beibehaltung)](batch-task-output-file-conventions.md). Sehen Sie sich auch das Beispielprojekt [PersistOutputs][github_persistoutputs] auf GitHub an, das zeigt, wie die Dateikonventionenbibliothek für .NET verwendet wird, um die Taskausgabe in dauerhaftem Speicher beizubehalten.
 
-Das Beispielprojekt [PersistOutputs][github_persistoutputs] auf GitHub veranschaulicht, wie die Batch-Clientbibliothek für .NET verwendet wird, um die Taskausgabe in dauerhaftem Speicher beizubehalten.
+Das Beispielprojekt [PersistOutputs][github_persistoutputs] auf GitHub veranschaulicht, wie die Batch-Clientbibliothek für .NET verwendet wird, um die Taskausgabe im dauerhaften Speicher beizubehalten.
 
 ### <a name="implement-the-batch-file-conventions-standard"></a>Implementieren des Batch-Konventionenstandards
 
@@ -121,9 +121,10 @@ Sie können auch Ihre eigene vollständige Lösung zur Dateiverschiebung impleme
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Untersuchen Sie mithilfe der neuen Funktionen in der Batch-Dienst-API das Beibehalten von Daten unter [Persist task data to Azure Storage with the Batch service API (Beibehalten von Taskdaten in Azure Storage mit der Batch-Dienst-API)](batch-task-output-files.md).
-- Informationen zur Verwendung der Batch-Dateikonventionenbibliothek für .NET finden Sie unter [Persist job and task data to Azure Storage with the Batch File Conventions library for .NET to persist (Beibehalten von Auftrags- und Taskdaten in Azure Storage mit der Batch-Dateikonventionenbibliothek für .NET zur Beibehaltung)](batch-task-output-file-conventions.md).
-- Sehen Sie sich das Beispielprojekt [PersistOutputs][github_persistoutputs] auf GitHub an, das zeigt, wie die Batch-Clientbibliothek für .NET und die Dateikonventionenbibliothek für .NET verwendet werden, um die Taskausgabe in dauerhaftem Speicher beizubehalten.
+- Informationen zur Verwendung der Batch-Dateikonventionenbibliothek für .NET finden Sie unter [Beibehalten von Auftrags- und Taskdaten in Azure Storage mit der Batch-Dateikonventionenbibliothek für .NET](batch-task-output-file-conventions.md).
+- Sehen Sie sich das Beispielprojekt [PersistOutputs][github_persistoutputs] auf GitHub an, das zeigt, wie die Batch-Clientbibliothek für .NET und die Dateikonventionenbibliothek für .NET verwendet werden, um die Taskausgabe im dauerhaften Speicher beizubehalten.
 
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [portal]: https://portal.azure.com
 [storage_explorer]: http://storageexplorer.com/
+[github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs 

@@ -1,54 +1,56 @@
 ---
-title: 'Azure Active Directory B2C: Benutzerdefinierte Attribute | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie benutzerdefinierte Attribute in Azure Active Directory B2C zum Erfassen von Informationen über Ihre Kunden verwenden.
+title: Definieren benutzerdefinierter Attribute in Azure Active Directory B2C | Microsoft-Dokumentation
+description: Definieren benutzerdefinierter Attribute für Ihre Anwendung in Azure Active Directory B2C zum Erfassen von Informationen zu Ihren Kunden.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/06/2016
+ms.date: 07/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 893dfbae96d2cfea01b1f281f888e9281bf582f9
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: d5ef77ab0bbf00d4ddbb05b7a38516e3c3e7d800
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441915"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968773"
 ---
-# <a name="azure-active-directory-b2c-use-custom-attributes-to-collect-information-about-your-consumers"></a>Azure Active Directory B2C: Verwenden benutzerdefinierter Attribute zum Erfassen von Informationen über Ihre Kunden
-Das Azure Active Directory (Azure AD) B2C-Verzeichnis bietet einen integrierten Satz von Informationen (Attributen): Vorname, Nachname, Ort, Postleitzahl und weitere Attribute. Allerdings hat jede kundenorientierte Anwendung eigene Anforderungen an die Attribute, die von Kunden erfasst werden sollen. Mit Azure AD B2C haben Sie die Möglichkeit, den für die einzelnen Kundenkonten gespeicherten Satz von Attributen zu erweitern. Im [Azure-Portal](https://portal.azure.com/) können Sie benutzerdefinierte Attribute erstellen und wie unten dargestellt in den Registrierungsrichtlinien verwenden. Außerdem können Sie diese Attribute mit der [Azure AD Graph-API](active-directory-b2c-devquickstarts-graph-dotnet.md)lesen und schreiben.
+# <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Definieren benutzerdefinierter Attribute in Azure Active Directory B2C
 
-> [!NOTE]
-> Benutzerdefinierte Attribute verwenden die [Verzeichnisschemaerweiterungen der Azure AD Graph-API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).
-> 
-> 
+ Für jede kundenorientierte Anwendung gelten spezifische Anforderungen im Hinblick auf die Informationen, die erfasst werden sollen. Der Azure Active Directory (Azure AD) B2C-Mandant umfasst einen integrierten Satz von in Attributen gespeicherten Informationen, z.B. Vorname, Nachname, Ort und Postleitzahl. Mit Azure AD B2C haben Sie die Möglichkeit, den für die einzelnen Kundenkonten gespeicherten Satz von Attributen zu erweitern. 
+ 
+ Im [Azure-Portal](https://portal.azure.com/) können Sie benutzerdefinierte Attribute erstellen und sie in Ihren Registrierungsrichtlinien, Registrierungs- oder Anmelderichtlinien oder Richtlinien zur Profilbearbeitung verwenden. Außerdem können Sie diese Attribute mit der [Azure AD Graph-API](active-directory-b2c-devquickstarts-graph-dotnet.md)lesen und schreiben. Benutzerdefinierte Attribute in Azure AD B2C verwenden die [Verzeichnisschemaerweiterungen der Azure AD Graph-API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).
 
 ## <a name="create-a-custom-attribute"></a>Erstellen eines benutzerdefinierten Attributs
-1. [Führen Sie diese Schritte aus, um im Azure-Portal zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
-2. Klicken Sie auf **Benutzerattribute**.
-3. Klicken Sie oben auf dem Blatt auf **+Hinzufügen** .
-4. Geben Sie im Feld **Name** den Namen für das benutzerdefinierte Attribut (z.B. „ShoeSize“) und optional eine **Beschreibung** ein. Klicken Sie auf **Create**.
-   
-   > [!NOTE]
-   > Nur die **Datentypen** „String“, „Boolean“ und „Int“ sind zurzeit verfügbar.
-   > 
-   > 
 
-Das benutzerdefinierte Attribut steht jetzt in der Liste der **Benutzerattribute**zur Verfügung und kann in den Registrierungsrichtlinien verwendet werden.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Azure AD B2C-Mandanten an.
+2. Vergewissern Sie sich, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie oben rechts im Azure-Portal zu diesem Verzeichnis wechseln. Wählen Sie die Abonnementinformationen aus, und klicken Sie dann auf **Verzeichnis wechseln**. 
 
-## <a name="use-a-custom-attribute-in-your-sign-up-policy"></a>Verwenden eines benutzerdefinierten Attributs in der Registrierungsrichtlinie
-1. [Führen Sie diese Schritte aus, um im Azure-Portal zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
-2. Klicken Sie auf **Registrierungsrichtlinien**.
-3. Klicken Sie auf die Registrierungsrichtlinie (z. B. „B2C_1_SiUp“), um sie zu öffnen. Klicken Sie oben auf dem Blatt auf **Bearbeiten** .
-4. Klicken Sie auf **Registrierungsattribute**, und wählen Sie das benutzerdefinierte Attribut aus (z.B. „ShoeSize“). Klicken Sie auf **OK**.
-5. Klicken Sie auf **Anwendungsansprüche** , und wählen Sie das benutzerdefinierte Attribut aus. Klicken Sie auf **OK**.
-6. Klicken Sie oben auf dem Blatt auf **Speichern** .
+    ![Wechseln zu Ihrem Azure AD B2C-Mandanten](./media/active-directory-b2c-reference-custom-attr/switch-directories.png)
 
-Mit dem Feature "Jetzt ausführen" für die Richtlinie können Sie die Benutzererfahrung überprüfen. „ShoeSize“ sollte jetzt in der Liste der Attribute angezeigt werden, die während der Registrierung von Kunden erfasst werden, sowie in dem Token, das zurück an die Anwendung gesendet wird.
+    Wählen Sie das Verzeichnis aus, das den Mandanten enthält.
 
-## <a name="notes"></a>Notizen
-* Zusammen mit Registrierungsrichtlinien können benutzerdefinierte Attribute auch in Registrierungs- oder Anmelderichtlinien sowie in Richtlinien für die Profilbearbeitung verwendet werden.
-* Die Einschränkung von benutzerdefinierten Attributen ist bekannt. Sie wird nur erstellt, wenn sie zum ersten Mal in einer Richtlinie verwendet wird und nicht, wenn Sie sie zur Liste der **Benutzerattribute**hinzufügen.
+    ![Auswählen des Verzeichnisses](./media/active-directory-b2c-reference-custom-attr/select-directory.png)
+
+3. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf.
+4. Wählen Sie **Benutzerattribute** und dann **Hinzufügen** aus.
+5. Geben Sie einen **Namen** für das benutzerdefinierte Attribut an (z.B. „ShoeSize“).
+6. Wählen Sie einen **Datentyp** aus. Es stehen nur **Zeichenfolge**, **Boolescher Wert** und **Int** zur Verfügung.
+7. Geben Sie optional eine **Beschreibung** zu Informationszwecken ein. 
+8. Klicken Sie auf **Create**.
+
+Das benutzerdefinierte Attribut steht jetzt in der Liste der **Benutzerattribute** zur Verfügung und kann in den Richtlinien verwendet werden. Ein benutzerdefiniertes Attribut wird nur erstellt, wenn es zum ersten Mal in einer Richtlinie verwendet wird, und nicht, wenn Sie es der Liste der **Benutzerattribute** hinzufügen.
+
+## <a name="use-a-custom-attribute-in-your-policy"></a>Verwenden eines benutzerdefinierten Attributs in einer Richtlinie
+
+1. Wählen Sie in Ihrem Azure AD B2C-Mandanten die Option **Registrierungs- oder Anmelderichtlinien** aus.
+2. Wählen Sie eine Richtlinie aus (z.B. „B2C_1_SignupSignin“), um sie zu öffnen. 
+3. Klicken Sie auf **Edit**.
+4. Wählen Sie **Registrierungsattribute** und dann das benutzerdefinierte Attribut aus (z.B. „ShoeSize“). Klicken Sie auf **OK**.
+5. Wählen Sie **Anwendungsansprüche** und dann das benutzerdefinierte Attribut aus. Klicken Sie auf **OK**.
+6. Klicken Sie auf **Speichern**.
+
+Mit dem Feature **Jetzt ausführen** für die Richtlinie können Sie die Benutzerfreundlichkeit überprüfen. **ShoeSize** sollte jetzt in der Liste der Attribute, die während der Registrierung erfasst werden, sowie in dem Token angezeigt werden, das zurück an die Anwendung gesendet wird.
 
