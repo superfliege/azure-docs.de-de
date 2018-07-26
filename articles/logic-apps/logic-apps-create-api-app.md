@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/26/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 3ca55bb0a9f4719bd2229aca626d20c53af9fd1e
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 748070d43c34b501af3455d03429be1f44178b7f
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299527"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172016"
 ---
 # <a name="create-custom-apis-that-you-can-call-from-logic-app-workflows"></a>Erstellen benutzerdefinierter APIs, die in Logik-App-Workflows aufgerufen werden können
 
@@ -43,7 +43,8 @@ Sie können Ihre APIs in [Azure App Service](../app-service/app-service-web-over
 > * [Java](../app-service/app-service-web-get-started-java.md)
 > * [Node.js](../app-service/app-service-web-get-started-nodejs.md)
 > * [PHP](../app-service/app-service-web-get-started-php.md)
-> * [Python](../app-service/app-service-web-get-started-python.md)
+> * [Python](../app-service/containers/quickstart-python.md)
+> * [Ruby](../app-service/containers/quickstart-ruby.md)
 >
 > API-App-Beispiele für Logik-Apps finden Sie im [Azure Logic Apps GitHub-Repository](http://github.com/logicappsio) oder [Blog](http://aka.ms/logicappsblog).
 
@@ -180,7 +181,7 @@ Um beispielsweise Ihren Dienst in regelmäßigen Abständen auf neue Dateien zu 
 | Anforderung enthält `triggerState`? | API-Antwort | 
 | -------------------------------- | -------------| 
 | Nein  | Zurückgeben eines HTTP-`202 ACCEPTED`-Status zuzüglich eines `location`-Headers, wobei `triggerState` auf den aktuellen Zeitpunkt und das `retry-after`-Intervall auf 15 Sekunden festgelegt ist. | 
-| Ja | Überprüfen Ihres Diensts auf Dateien, die nach `DateTime` für `triggerState` hinzugefügt wurden. | 
+| JA | Überprüfen Ihres Diensts auf Dateien, die nach `DateTime` für `triggerState` hinzugefügt wurden. | 
 ||| 
 
 | Anzahl der gefundenen Dateien | API-Antwort | 

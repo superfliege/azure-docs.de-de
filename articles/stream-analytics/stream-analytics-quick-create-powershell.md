@@ -2,24 +2,24 @@
 title: Erstellen eines Stream Analytics-Auftrags mithilfe von Azure PowerShell
 description: In dieser Schnellstartanleitung wird ausführlich die Bereitstellung und Ausführung eines Azure Stream Analytics-Auftrags mithilfe des Azure PowerShell-Moduls beschrieben.
 services: stream-analytics
-author: SnehaGunda
-ms.author: sngun
+author: sidramadoss
+ms.author: sidram
 ms.date: 05/14/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 2b5d8bfd6dbe36637a0c6873e941118e7ee71b80
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 18903dfbe187de73a6edb14196fa29e02d35dbca
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212431"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185379"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-azure-powershell"></a>Schnellstart: Erstellen eines Stream Analytics-Auftrags mithilfe von Azure PowerShell
 
 Das Azure PowerShell-Modul dient zum Erstellen und Verwalten von Azure-Ressourcen über PowerShell-Cmdlets oder -Skripts. In dieser Schnellstartanleitung wird ausführlich die Bereitstellung und Ausführung eines Azure Stream Analytics-Auftrags mithilfe des Azure PowerShell-Moduls beschrieben. 
-
+ 
 Der Beispielauftrag liest Streamingdaten aus einem Blob in Azure Blob Storage. Die in diesem Schnellstart verwendete Eingabedatendatei enthält statische Daten, die lediglich der Veranschaulichung dienen. In der Praxis verwenden Sie später Streamingeingabedaten für einen Stream Analytics-Auftrag. Im nächsten Schritt transformiert der Auftrag die Daten unter Verwendung der Stream Analytics-Abfragesprache, um bei Überschreitung von 100° die Durchschnittstemperatur zu berechnen. Abschließend werden die entsprechenden Ausgabeereignisse in eine andere Datei geschrieben. 
 
 ## <a name="before-you-begin"></a>Voraussetzungen

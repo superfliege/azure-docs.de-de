@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/11/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: b68468cd8174d658d04d8e67433a8f18884493bd
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: da022af164af640c01c09a64ffcc64f2a67d25fc
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34076144"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39162984"
 ---
 # <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>Schnellstartanleitung: Erstellen Ihres ersten Containers in Azure Container Instances
 
@@ -26,7 +26,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][azu
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Sie können Azure Cloud Shell oder eine lokale Installation der Azure CLI für diesen Schnellstart verwenden. Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.27 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI 2.0][azure-cli-install].
+Sie können Azure Cloud Shell oder eine lokale Installation der Azure CLI für diesen Schnellstart verwenden. Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.27 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli-install] Informationen dazu.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -124,7 +124,7 @@ Wenn Sie den Container nicht mehr benötigen, entfernen Sie ihn mithilfe des Bef
 az container delete --resource-group myResourceGroup --name mycontainer
 ```
 
-Um sicherzustellen, dass der Container gelöscht wurde, führen Sie den Befehl [az container list](/cli/azure/container#az_container_list) aus:
+Um sicherzustellen, dass der Container gelöscht wurde, führen Sie den Befehl [az container list](/cli/azure/container#az-container-list) aus:
 
 ```azurecli-interactive
 az container list --resource-group myResourceGroup --output table
@@ -150,12 +150,12 @@ Um Optionen zum Ausführen von Containern in einem Orchestrierungssystem in Azur
 [node-js]: http://nodejs.org
 
 <!-- LINKS - Internal -->
-[az-container-attach]: /cli/azure/container#az_container_attach
-[az-container-create]: /cli/azure/container#az_container_create
-[az-container-delete]: /cli/azure/container#az_container_delete
-[az-container-list]: /cli/azure/container#az_container_list
-[az-container-logs]: /cli/azure/container#az_container_logs
-[az-container-show]: /cli/azure/container#az_container_show
+[az-container-attach]: /cli/azure/container#az-container-attach
+[az-container-create]: /cli/azure/container#az-container-create
+[az-container-delete]: /cli/azure/container#az-container-delete
+[az-container-list]: /cli/azure/container#az-container-list
+[az-container-logs]: /cli/azure/container#az-container-logs
+[az-container-show]: /cli/azure/container#az-container-show
 [az-group-create]: /cli/azure/group#az_group_create
 [azure-cli-install]: /cli/azure/install-azure-cli
 [container-service]: ../aks/kubernetes-walkthrough.md

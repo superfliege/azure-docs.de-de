@@ -3,8 +3,8 @@ Sie können einen mit **Azure Storage verknüpften Dienst** verwenden, um ein Az
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type |Die type-Eigenschaft muss auf **AzureStorage** |Ja |
-| connectionString |Geben Sie Informationen, die zur Verbindung mit dem Azure-Speicher erforderlich sind, für die connectionString-Eigenschaft ein. |Ja |
+| type |Die type-Eigenschaft muss auf **AzureStorage** |JA |
+| connectionString |Geben Sie Informationen, die zur Verbindung mit dem Azure-Speicher erforderlich sind, für die connectionString-Eigenschaft ein. |JA |
 
 Im folgenden Artikel finden Sie Schritte zum Anzeigen bzw. Kopieren des Kontoschlüssels für einen Azure-Speicher: [Anzeigen, Kopieren und erneutes Generieren von Speicherzugriffsschlüsseln](../articles/storage/common/storage-create-storage-account.md#manage-your-storage-account).
 
@@ -26,7 +26,7 @@ Im folgenden Artikel finden Sie Schritte zum Anzeigen bzw. Kopieren des Kontosch
 Shared Access Signatures (SAS) bieten delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto. Sie ermöglichen es Ihnen, einem Client für einen bestimmten Zeitraum spezielle eingeschränkte Berechtigungen für Objekte in Ihrem Speicherkonto zu erteilen, ohne Ihre Konto-Zugriffsschlüssel weitergeben zu müssen. Die SAS ist ein URI, dessen Abfrageparameter alle erforderlichen Informationen für den authentifizierten Zugriff auf eine Speicherressource enthalten. Für den Zugriff auf Speicherressourcen mit der SAS braucht der Client diese nur an den entsprechenden Konstruktor bzw. die entsprechende Methode zu übergeben. Weitere Informationen zu SAS finden Sie unter [Shared Access Signatures: Grundlagen zum SAS-Modell](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 > [!IMPORTANT]
-> Azure Data Factory unterstützt nur **Dienst-SAS**, nicht Konto-SAS. Unter [Typen von Shared Access Signatures](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures) finden Sie ausführliche Informationen zu diesen beiden Typen und ihrer Erstellung. Beachten Sie, dass es sich bei der SAS-URL, die im Azure-Portal oder Speicher-Explorer erstellt werden kann, um eine Konto-SAS handelt. Diese wird nicht unterstützt.
+> Azure Data Factory unterstützt nur **Dienst-SAS**, nicht Konto-SAS. Unter [Typen von Shared Access Signatures](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures) finden Sie ausführliche Informationen zu diesen beiden Typen und ihrer Erstellung. Beachten Sie, dass es sich bei der SAS-URL, die im Azure-Portal oder im Storage-Explorer erstellt werden kann, um eine Konto-SAS handelt. Diese wird nicht unterstützt.
 
 > [!TIP]
 > Sie können die folgenden PowerShell-Befehle ausführen, um eine Dienst-SAS für Ihr Speicherkonto zu generieren (ersetzen Sie die Platzhalter, und erteilen Sie die erforderliche Berechtigung): `$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
@@ -36,8 +36,8 @@ Sie können einen mit Azure Storage SAS verknüpften Dienst verwenden, um ein Az
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type |Die type-Eigenschaft muss auf **AzureStorageSas** |Ja |
-| sasUri |Geben Sie den Shared Access Signature-URI für Azure-Speicher-Ressourcen wie BLOB, Container oder Tabelle an.  |Ja |
+| type |Die type-Eigenschaft muss auf **AzureStorageSas** |JA |
+| sasUri |Geben Sie den Shared Access Signature-URI für Azure-Speicher-Ressourcen wie BLOB, Container oder Tabelle an.  |JA |
 
 **Beispiel:**
 

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8ba187fd82fa6a698905313bfda2802324a9034d
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: c453998eea2a747b2cb608482f0ef9c1ee197ee0
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097079"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185430"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>Integrieren von SIM-Daten in die Remoteüberwachungslösung
 
@@ -67,7 +67,7 @@ Folgende Konnektivitätsparameter werden veröffentlicht:
 
 Nachdem Sie sich hier einen Überblick über die Integration von SIM-Daten in die Azure IoT-Remoteüberwachungslösung verschafft haben, können Sie sich als Nächstes mit Folgendem beschäftigen:
 
-* [Erkunden der Funktionen der vorkonfigurierten Remoteüberwachungslösung](iot-accelerators-remote-monitoring-explore.md)
+* [Erkunden der Funktionen der vorkonfigurierten Remoteüberwachungslösung](quickstart-remote-monitoring-deploy.md)
 * [Ausführen der erweiterten Überwachung](iot-accelerators-remote-monitoring-monitor.md)
 * [Verwalten von Geräten](iot-accelerators-remote-monitoring-manage.md)
 * [Beheben von Geräteproblemen](iot-accelerators-remote-monitoring-maintain.md)

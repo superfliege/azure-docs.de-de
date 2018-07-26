@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 0eaf1115dc6ed5a7dc9e7354340d5eb529116c88
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 181432c3050bbc614898b1ddf779bc90239a35be
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37780654"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39189356"
 ---
 # <a name="internet-of-things-security-from-the-ground-up"></a>Sicherheit im Internet der Dinge von Anfang an
 
@@ -45,7 +45,7 @@ Die Systeme von Microsoft bieten eine kontinuierliche Erkennung und Verhinderung
 
 Für die Solution Accelerators werden die Sicherheits- und Datenschutzfeatures der Azure-Plattform sowie die SDL- und OSA-Prozesse für die sichere Entwicklung und den sicheren Betrieb der gesamten Microsoft-Software genutzt. Diese Verfahren ermöglichen Infrastrukturschutz, Netzwerkschutz und Identitäts- und Verwaltungsfeatures, die für die Sicherheit jeder Lösung von großer Wichtigkeit sind.
 
-Der [Azure IoT Hub](../articles/iot-hub/iot-hub-what-is-iot-hub.md) in den [IoT Solution Accelerators](../articles/iot-accelerators/iot-accelerators-what-is-azure-iot.md) stellt einen vollständig verwalteten Dienst bereit, der die zuverlässige und sichere bidirektionale Kommunikation zwischen IoT-Geräten und Azure-Diensten wie [Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) und [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) über gerätebezogene Sicherheitsanmeldeinformationen und Zugriffssteuerung ermöglicht.
+Der [Azure IoT Hub](../articles/iot-hub/about-iot-hub.md) in den [IoT Solution Accelerators](../articles/iot-fundamentals/iot-introduction.md) stellt einen vollständig verwalteten Dienst bereit, der die zuverlässige und sichere bidirektionale Kommunikation zwischen IoT-Geräten und Azure-Diensten wie [Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) und [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) über gerätebezogene Sicherheitsanmeldeinformationen und Zugriffssteuerung ermöglicht.
 
 Um die in die Azure IoT Solution Accelerators integrierten Sicherheits- und Datenschutzfeatures auf bestmögliche Weise kommunizieren zu können, wird die Suite in diesem Artikel in drei Hauptsicherheitsbereiche unterteilt.
 

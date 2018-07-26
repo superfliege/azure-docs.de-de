@@ -3,7 +3,7 @@ title: Verwalten von DNS-Zonen in Azure DNS – Azure-Portal | Microsoft-Dokumen
 description: Sie können DNS-Zonen mithilfe des Azure-Portals verwalten. In diesem Artikel wird das Aktualisieren, Löschen und Erstellen von DNS-Zonen in Azure DNS beschrieben.
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: timlt
 ms.service: dns
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
-ms.author: kumud
-ms.openlocfilehash: 3fbf59010e690ac022e4363eddebe1cfbba53d13
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: victorh
+ms.openlocfilehash: ca9d03cb14e79b23ccc2021e0a31650eb9bbd95b
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779038"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171237"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>Verwalten von DNS-Zonen im Azure-Portal
 

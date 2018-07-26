@@ -8,12 +8,12 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: e795a6c5f76fb8d40c7e6778555de619d00b3a41
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c01fcc7e69cf5af26b127519f183062ccf4923cc
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31600902"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172743"
 ---
 # <a name="app-service-documentation"></a>App Service-Dokumentation
 Azure App Service ermöglicht Ihnen das Erstellen und Hosten von Webanwendungen in der Programmiersprache Ihrer Wahl, ohne dass eine Infrastruktur oder die Sprach- bzw. Webframeworkruntime verwaltet werden muss. Der Dienst bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über GitHub, Visual Studio Team Services oder ein anderes beliebiges Git-Repository. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure App Service verwenden.
@@ -29,7 +29,7 @@ Erfahren Sie, wie Sie mit App Service für Web-Apps Ihre erste Anwendung in der 
 - [Node.js](/azure/app-service/app-service-web-get-started-nodejs)
 - [PHP](/azure/app-service/app-service-web-get-started-php)
 - [Java](/azure/app-service/app-service-web-get-started-java)
-- [Python](/azure/app-service/app-service-web-get-started-python)
+- [Python](/azure/app-service/containers/quickstart-python)
 - [HTML](/azure/app-service/app-service-web-get-started-html)
 
 ## <a name="step-by-step-tutorials"></a>Schritt-für-Schritt-Tutorials
@@ -40,7 +40,7 @@ Es wird beschrieben, wie Sie sichere Webanwendungen in Azure bereitstellen, verw
   - [.NET mit Azure SQL-Datenbank](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)
   - [Node.js mit MongoDB](/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app)
   - [Java mit MySQL](/app-service/app-service-web-tutorial-java-mysql)
-  - [Python mit PostgreSQL](/app-service/app-service-web-tutorial-python-postgresql)
+  - [Python mit PostgreSQL](/app-service/containers/tutorial-docker-python-postgresql-app)
 - [Zuordnen einer vorhandenen benutzerdefinierten Domäne zu Ihrer Anwendung](/azure/app-service/app-service-web-tutorial-custom-domain)
 - [Binden eines vorhandenen SSL-Zertifikats an Ihre Anwendung](/azure/app-service/app-service-web-tutorial-custom-SSL)
 

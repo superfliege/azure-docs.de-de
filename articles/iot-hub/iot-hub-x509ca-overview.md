@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: eebaf679ada9da554f8582ad89db4e7491dcc134
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: b5028010953b9dbe2386c30e6fa05cc4a94cb971
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004352"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185491"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Geräteauthentifizierung mit X.509-Zertifikaten
 
@@ -30,7 +30,7 @@ Das X.509-CA-Feature ermöglicht die Geräteauthentifizierung bei IoT Hub mithil
 
 ## <a name="prerequisite"></a>Voraussetzung
 
-Die Verwendung des X.509-CA-Features setzt voraus, dass Sie über ein IoT Hub-Konto verfügen.  [Erfahren Sie, wie Sie eine IoT Hub-Instanz erstellen](iot-hub-csharp-csharp-getstarted.md), falls Sie noch keine besitzen.
+Die Verwendung des X.509-CA-Features setzt voraus, dass Sie über ein IoT Hub-Konto verfügen.  [Erfahren Sie, wie Sie eine IoT Hub-Instanz erstellen](quickstart-send-telemetry-dotnet.md), falls Sie noch keine besitzen.
 
 ## <a name="how-to-get-an-x509-ca-certificate"></a>Abrufen eines X.509-Zertifizierungsstellenzertifikats
 

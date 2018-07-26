@@ -3,7 +3,7 @@ title: Verwenden von Azure DNS für private Domänen | Microsoft-Dokumentation
 description: Übersicht über den privaten DNS-Hostingdienst in Microsoft Azure.
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2018
-ms.author: kumud
-ms.openlocfilehash: 0ee3b18b7f874c4f6b7b2c9c559aa7e393ad7d8d
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.author: victorh
+ms.openlocfilehash: 2ab7070a4cf46dae543af8d3e1d688e12ec1eb2a
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700603"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173641"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>Verwenden von Azure DNS für private Domänen
 Das Domain Name System (DNS) ist für die Übersetzung (oder Auflösung) eines Dienstnamens in die IP-Adresse verantwortlich. Als Hostingdienst für DNS-Domänen bietet Azure DNS eine Namensauflösung mithilfe der Microsoft Azure-Infrastruktur. Zusätzlich zu DNS-Domänen mit Internetverbindung unterstützt Azure DNS als Vorschaufeature jetzt auch private DNS-Domänen. 
@@ -44,7 +44,7 @@ Azure DNS bietet folgende Vorteile:
 
 * **Vertraute Tools und Benutzerfreundlichkeit**. Zur Reduzierung der Lernkurve verwendet dieses neue Angebot die bewährten Azure DNS-Tools (PowerShell, Azure Resource Manager-Vorlagen, REST-API).
 
-* **Split-Horizon-DNS-Unterstützung**. Mit Azure DNS können Sie Zonen mit gleichem Namen erstellen, die innerhalb eines virtuellen Netzwerks und im öffentlichen Internet unterschiedlich aufgelöst werden. Ein typisches Szenario für Split-Horizon-DNS ist die Bereitstellung einer bestimmte Version eines Diensts für die Verwendung in Ihrem virtuellen Netzwerk.
+* **Split-Horizon-DNS-Unterstützung**. Mit Azure DNS können Sie Zonen mit gleichem Namen erstellen, die innerhalb eines virtuellen Netzwerks und im öffentlichen Internet unterschiedlich aufgelöst werden. Ein typisches Szenario für Split-Horizon-DNS ist die Bereitstellung einer bestimmte Version eines Diensts für die Verwendung in Ihrem virtuellen Netzwerk .
 
 * **In allen Azure-Regionen verfügbar**. Das Azure DNS-Feature für private Zonen ist in allen Azure-Regionen in der öffentlichen Azure-Cloud verfügbar. 
 

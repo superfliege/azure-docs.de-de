@@ -3,7 +3,7 @@ title: Verwalten von DNS-Zonen in Azure DNS – Azure CLI 2.0 | Microsoft-Dokume
 description: Sie können DNS-Zonen mithilfe der Azure CLI 2.0 verwalten. In diesem Artikel erfahren Sie, wie Sie DNS-Zonen in Azure DNS aktualisieren, löschen und erstellen.
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: timlt
 ms.assetid: 8ab63bc4-5135-4ed8-8c0b-5f0712b9afed
 ms.service: dns
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
-ms.author: kumud
-ms.openlocfilehash: 3fee44e282424caa0a9e57dae1228d8af075e4a6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: victorh
+ms.openlocfilehash: c81d8add7ae37e03a98da0ad86deaa1d9d7ec8e0
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32166166"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172618"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli-20"></a>Verwalten von DNS-Zonen in Azure DNS mithilfe von Azure CLI 2.0
 
@@ -76,7 +76,7 @@ az extension add --name dns
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Der Azure Resource Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Dieser wird als Standardspeicherort für Ressourcen in dieser Ressourcengruppe verwendet. Da alle DNS-Ressourcen global und nicht regional sind, hat die Auswahl des Speicherorts für die Ressourcengruppe jedoch keine Auswirkungen auf Azure DNS.
+Azure Resource Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Dieser wird als Standardspeicherort für Ressourcen in dieser Ressourcengruppe verwendet. Da alle DNS-Ressourcen global und nicht regional sind, hat die Auswahl des Speicherorts für die Ressourcengruppe jedoch keine Auswirkungen auf Azure DNS.
 
 Dieser Schritt kann übersprungen werden, wenn Sie eine vorhandene Ressourcengruppe verwenden.
 

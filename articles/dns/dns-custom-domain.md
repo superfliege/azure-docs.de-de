@@ -3,7 +3,7 @@ title: Integrieren von Azure DNS in Ihre Azure-Ressourcen | Microsoft-Dokumentat
 description: Erfahren Sie, wie Sie mit Azure DNS für Ihre Azure-Ressourcen DNS bereitstellen.
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
 ms.service: dns
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/19/2018
-ms.author: kumud
-ms.openlocfilehash: cbc769cd7356b3057fd2aae295071b04d2e40d91
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.author: victorh
+ms.openlocfilehash: 9c0ccb7c5ccb3eced32ea5bcd9f1961c5ccd2110
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
-ms.locfileid: "27994381"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173842"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Bereitstellen von benutzerdefinierten Domäneneinstellungen für einen Azure-Dienst mit Azure DNS
 

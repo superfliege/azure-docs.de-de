@@ -1,5 +1,5 @@
 > [!WARNING]
-> Wenn Sie die Diagnose für eine vorhandene Rolle aktivieren, werden alle Erweiterungen, die Sie festgelegt haben, beim Bereitstellen des Pakets deaktiviert. Diese umfassen:
+> Wenn Sie die Diagnose für eine vorhandene Rolle aktivieren, werden alle Erweiterungen, die Sie festgelegt haben, beim Bereitstellen des Pakets deaktiviert. Das umfasst:
 >
 > * Microsoft Monitoring Agent-Diagnose
 > * Microsoft Azure-Sicherheitsüberwachung

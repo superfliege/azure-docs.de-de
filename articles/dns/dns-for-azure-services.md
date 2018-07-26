@@ -3,7 +3,7 @@ title: Verwenden von Azure DNS mit anderen Azure-Diensten | Microsoft Docs
 description: Grundlegendes zum Verwenden von Azure DNS zum Auflösen von Namen für andere Azure-Dienste
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
 editor: ''
 tags: azure dns
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 09/21/2016
-ms.author: kumud
-ms.openlocfilehash: 6d052bc82c35aa3f2fdf5b5820e3901bd5c4080d
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.author: victorh
+ms.openlocfilehash: 2f5ff425eadc4572f5e109f503c57969ab310f6b
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
-ms.locfileid: "25989842"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171805"
 ---
 # <a name="how-azure-dns-works-with-other-azure-services"></a>Funktionsweise von Azure DNS mit anderen Azure-Diensten
 
@@ -32,10 +32,10 @@ Azure DNS ist ein gehosteter Dienst für die DNS-Verwaltung und -Namensauflösun
 
 Die folgende Tabelle enthält die unterstützten Eintragstypen, die für verschiedene Azure-Dienste verwendet werden können. Wie Sie in dieser Tabelle erkennen können, unterstützt Azure DNS nur DNS-Einträge für Netzwerkressourcen mit Internetzugriff. Azure DNS kann nicht für die Namensauflösung interner, privater Adressen verwendet werden.
 
-| Azure-Dienst | Netzwerkschnittstelle | Beschreibung |
+| Azure-Dienst | Netzwerkschnittstelle | BESCHREIBUNG |
 | --- | --- | --- |
 | Application Gateway |[Öffentliche IP-Adresse des Front-Ends](dns-custom-domain.md#public-ip-address) |Sie können einen DNS A- oder CNAME-Eintrag erstellen. |
-| Lastenausgleichsmodul |[Öffentliche IP-Adresse des Front-Ends](dns-custom-domain.md#public-ip-address)  |Sie können einen DNS A- oder CNAME-Eintrag erstellen. Der Load Balancer kann eine öffentliche IPv6-Adresse haben, die dynamisch zugewiesen wird. Daher müssen Sie einen CNAME-Eintrag für eine IPv6-Adresse erstellen. |
+| Load Balancer |[Öffentliche IP-Adresse des Front-Ends](dns-custom-domain.md#public-ip-address)  |Sie können einen DNS A- oder CNAME-Eintrag erstellen. Der Load Balancer kann eine öffentliche IPv6-Adresse haben, die dynamisch zugewiesen wird. Daher müssen Sie einen CNAME-Eintrag für eine IPv6-Adresse erstellen. |
 | Traffic Manager |Öffentlicher Name |Sie können nur einen CNAME-Eintrag erstellen, der dem „trafficmanager.net“-Namen des Traffic Manager-Profils zugewiesen ist. Weitere Informationen finden Sie unter [Funktionsweise von Traffic Manager](../traffic-manager/traffic-manager-overview.md#traffic-manager-example). |
 | Clouddienst |[Öffentliche IP-Adresse](dns-custom-domain.md#public-ip-address) |Für statisch zugewiesene IP-Adressen können Sie einen DNS A-Eintrag erstellen. Für dynamisch zugewiesenen IP-Adressen müssen Sie einen CNAME-Eintrag erstellen, der dem *cloudapp.net* -Namen zugeordnet ist.|
 | App Service | [Externe IP-Adresse](dns-custom-domain.md#app-service-web-apps) |Für externe IP-Adressen können Sie einen DNS A-Eintrag erstellen. Andernfalls müssen Sie einen CNAME-Eintrag erstellen, der dem „azurewebsites.net“-Namen zugeordnet ist. Weitere Informationen finden Sie unter [Zuordnen eines benutzerdefinierten Domänennamens zu einer Azure-App](../app-service/app-service-web-tutorial-custom-domain.md) |
