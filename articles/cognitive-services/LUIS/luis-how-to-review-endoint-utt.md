@@ -2,19 +2,19 @@
 title: Bezeichnen von vorgeschlagenen Äußerungen mit LUIS | Microsoft-Dokumentation
 description: Verwenden Sie Language Understanding Intelligent Service (LUIS), um vorgeschlagene Äußerungen zu bezeichnen und das aktive maschinelle Lernen zu verbessern.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/08/2017
-ms.author: v-geberr
-ms.openlocfilehash: c695aed4bc6d2553c719f8dfe664634e2f3b2613
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.author: diberry
+ms.openlocfilehash: 5e195b8ef5aeb35b73c22438980fe2b2e3856977
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37966831"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224550"
 ---
 # <a name="review-endpoint-utterances"></a>Überprüfen von Endpunktäußerungen
 
@@ -79,4 +79,4 @@ Um mehrere Äußerungen zu löschen, wählen Sie jedes Element und dann den Papi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Um zu testen, wie die Leistung nach dem Bezeichnen der vorgeschlagenen Äußerungen verbessert wird, können Sie auf die Testkonsole zugreifen, die Sie im oberen Bereich **Test** auswählen. Anleitungen zum Testen Ihrer App mit der Testkonsole finden Sie unter [Trainieren und Testen Ihrer App](interactive-test.md).
+Um zu testen, wie die Leistung nach dem Bezeichnen der vorgeschlagenen Äußerungen verbessert wird, können Sie auf die Testkonsole zugreifen, die Sie im oberen Bereich **Test** auswählen. Anleitungen zum Testen Ihrer App mit der Testkonsole finden Sie unter [Trainieren und Testen Ihrer App](luis-interactive-test.md).

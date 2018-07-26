@@ -2,19 +2,19 @@
 title: Grundlegendes zur Verwendung von Rollen in musterbasierten Entitäten – Azure | Microsoft-Dokumentation
 description: Erfahren Sie, wie Rollen in einer musterbasierten Entität verwendet werden, um einen kontextabhängigen Entitätsuntertyp zu benennen.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: v-geberr;
-ms.openlocfilehash: ab6100e33fb767528b87c6afde4c5ef275fc7c81
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.author: diberry
+ms.openlocfilehash: d2692cdce9da7428bd7b30c4feaf7347792618f5
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35379066"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222702"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>Entitätsrollen in Mustern sind kontextabhängige Untertypen
 Rollen sind benannte, kontextabhängige Untertypen einer Entität, die nur in [Mustern](luis-concept-patterns.md) verwendet wird.
@@ -25,8 +25,8 @@ Rollen benennen diese Unterschiede:
 
 |Entität|Rolle|Zweck|
 |--|--|--|
-|Speicherort|origin|Start des Flugs|
-|Speicherort|Ziel|Ziel des Flugs|
+|Standort|origin|Start des Flugs|
+|Standort|Ziel|Ziel des Flugs|
 
 ## <a name="how-are-roles-used-in-patterns"></a>Wie werden Rollen in Mustern verwendet?
 In der Äußerungsvorlage eines Musters werden Rollen innerhalb der Äußerung verwendet: 

@@ -4,24 +4,25 @@ description: Häufig gestellte Fragen und Antworten im Zusammenhang mit Azure Mu
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 06/16/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 00eab947120cdfa76de64536ddaa0600c2dff2ec
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.reviewer: michmcla
+ms.openlocfilehash: b4fc67acae83573db772923a94cdbb6b1c4a301f
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049410"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159840"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Häufig gestellte Fragen zu Azure Multi-Factor Authentication
 
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen zur Azure Multi-Factor Authentication und zur Nutzung des Multi-Factor Authentication-Diensts. Er ist unterteilt in allgemeine Fragen zum Dienst sowie in Fragen zu Abrechnungsmodellen, zur Benutzeroberfläche und zur Problembehandlung.
 
 ## <a name="general"></a>Allgemein
+
 **F: Wie werden Benutzerdaten vom Azure Multi-Factor Authentication-Server behandelt?**
 
 Bei Multi-Factor Authentication-Server werden die Daten eines Benutzers nur auf den lokalen Servern gespeichert. Daten werden nicht dauerhaft in der Cloud gespeichert. Wenn der Benutzer die zweistufige Überprüfung ausführt, sendet der Multi-Factor Authentication-Server für die Authentifizierung Daten an den Multi-Factor Authentication-Clouddienst. Zur Kommunikation zwischen Multi-Factor Authentication-Server und dem Multi-Factor Authentication-Clouddienst wird Secure Sockets Layer (SSL) oder Transport Layer Security (TLS) über den ausgehenden Port 443 verwendet.
@@ -60,6 +61,7 @@ In Kanada verwendet Microsoft die folgenden SMS-Kurzcodes:
 Microsoft kann keine Bereitstellung konsistenter SMS- oder Sprachaufforderungen für Multi-Factor Authentication an dieselbe Nummer garantieren. Im Interesse unserer Benutzer kann Microsoft jederzeit Kurzcodes hinzuzufügen oder entfernen, wenn wir Streckenanpassungen zur Verbesserung der SMS-Bereitstellung vornehmen. Microsoft unterstützt keine Kurzcodes für Länder außerhalb der USA und Kanadas.
 
 ## <a name="billing"></a>Abrechnung
+
 Die meisten Fragen zur Abrechnung werden auf der Seite [Multi-Factor Authentication – Preise](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) und in der Dokumentation zum [Beziehen von Azure Multi-Factor Authentication](concept-mfa-licensing.md) beantwortet.
 
 **F: Werden meiner Organisation die Kosten der für die Authentifizierung verwendeten Telefonanrufe und SMS in Rechnung gestellt?**
@@ -119,7 +121,6 @@ Azure Active Directory ist für das Lizenzmodell erforderlich, da Lizenzen dem A
 Im Idealfall haben alle Ihre Benutzer mehrere Überprüfungsmethoden konfiguriert. Fordern Sie sie auf, sich erneut anzumelden und dabei auf der Anmeldeseite eine andere Überprüfungsmethode auszuwählen.
 
 Unter [Probleme bei der Überprüfung in zwei Schritten](../user-help/multi-factor-authentication-end-user-troubleshoot.md) finden Ihre Endbenutzer einen Problembehandlungsleitfaden.
-
 
 **F: Was kann ich tun, wenn ein Benutzer nicht auf sein Konto zugreifen kann?**
 
@@ -196,8 +197,8 @@ Benutzer können aus mehreren Gründen zur Registrierung ihrer Sicherheitsinform
 - Eine von der Organisation erstellte und aktivierte MFA-Registrierungsrichtlinie wurde auf den Benutzer angewendet.
 - Der Benutzer hat sich zwar bereits für MFA registriert, dabei aber eine Überprüfungsmethode gewählt, die inzwischen von einem Administrator deaktiviert wurde. Daher muss der Benutzer die MFA-Registrierung erneut durchlaufen und eine neue Standardüberprüfungsmethode auswählen.
 
-
 ## <a name="errors"></a>Errors
+
 **F: Was sollten Benutzer tun, wenn bei der Verwendung von Benachrichtigungen über die mobile App die Fehlermeldung „Authentication request is not for an activated account“ (Authentifizierungsanforderung gilt nicht für ein aktiviertes Konto) angezeigt wird?**
 
 Informieren Sie die Benutzer, dass sie wie Folgt vorgehen sollen, um ihr Konto aus der mobilen App zu löschen, und anschließend wieder hinzuzufügen:
@@ -214,6 +215,7 @@ Der Fehler „0x800434D4L“ tritt auf, wenn Sie versuchen, sich bei einer nicht
 Um diesen Fehler zu umgehen, können Sie separate Benutzerkonten für Administratoraufgaben und Nicht-Administratoraufgaben erstellen. Später können Sie die Postfächer beider Konten miteinander verknüpfen, sodass Sie sich bei Outlook lediglich über ihr Nicht-Administratorkonto anmelden. Weitere Informationen über diese Lösung und wie ein Administrator die Möglichkeit erhält, den Inhalt des Postfachs eines Benutzers zu öffnen und anzuzeigen, finden Sie in [Verwalten von Berechtigungen für Empfänger](http://help.outlook.com/141/gg709759.aspx?sl=1).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Wenn Ihre Frage hier nicht beantwortet wurde, schreiben Sie sie bitte in die Kommentare unten auf der Seite. Alternativ finden Sie hier weitere Optionen zur Hilfesuche:
 
 * Durchsuchen Sie die [Microsoft Support Wissensdatenbank](https://www.microsoft.com/en-us/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport) nach Lösungen für häufige technische Probleme.

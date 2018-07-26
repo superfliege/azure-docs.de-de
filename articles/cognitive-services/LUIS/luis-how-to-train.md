@@ -2,19 +2,19 @@
 title: Trainieren der LUIS-App – Azure | Microsoft-Dokumentation
 description: Verwenden Sie Language Understanding Intelligent Service (LUIS), um Ihr Modell zu trainieren.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/14/2018
-ms.author: v-geberr
-ms.openlocfilehash: 8ec731ee2110b21a35d76d53fae4a1a6756fb5b8
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.author: diberry
+ms.openlocfilehash: e947df20141b0b9870f318f410488aea23bafcf5
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951813"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223183"
 ---
 # <a name="train-your-luis-app"></a>Trainieren Ihrer LUIS-App
 
@@ -45,5 +45,5 @@ Sie müssen Ihre LUIS-App mindestens einmal trainieren, damit Sie den iterativen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Label suggested utterances with LUIS (Bezeichnen von vorgeschlagenen Äußerungen mit LUIS)](luis-how-to-review-endoint-utt.md) 
-* [Use features to improve your LUIS app's performance (Verwenden von Features zum Verbessern der Leistung Ihrer LUIS-App)](luis-how-to-add-features.md) 
+* [Bezeichnen von vorgeschlagenen Äußerungen mit LUIS](luis-how-to-review-endoint-utt.md) 
+* [Verwenden von Features zum Verbessern der Leistung Ihrer LUIS-App](luis-how-to-add-features.md) 

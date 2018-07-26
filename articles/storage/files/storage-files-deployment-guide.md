@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: wgries
-ms.openlocfilehash: 38a0e64bf958ef6aebac41136ffcb9c213cc7ec0
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 4cced4a735aaf92f803b45fab4afe5102020d469
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029780"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144270"
 ---
 # <a name="how-to-deploy-azure-files"></a>Bereitstellen von Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll SMB zugegriffen werden kann. In diesem Artikel erfahren Sie, wie Sie Azure Files praktisch in Ihrer Organisation bereitstellen.
@@ -35,8 +35,8 @@ In diesem Artikel wird davon ausgegangen, dass Sie die folgenden Schritte bereit
 ## <a name="transfer-data-into-azure-files"></a>Übertragen von Daten in Azure Files
 Sobald Sie eine neue Azure-Dateifreigabe erstellt haben, können Sie vorhandene Dateien, die z.B. lokal gespeichert sind, in diese übertragen. In diesem Abschnitt erfahren Sie, wie Sie Daten mithilfe verschiedener gängiger Methoden, die im [Planungshandbuch](storage-files-planning.md#data-transfer-method) ausgeführt sind, in eine Azure-Dateifreigabe übertragen.
 
-### <a name="azure-file-sync-preview"></a>Azure File Sync (Vorschau)
-Mit Azure File Sync (Vorschau) können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
+### <a name="azure-file-sync"></a>Azure-Dateisynchronisierung
+Mit Azure File Sync können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
 
 Sie können Azure File Sync verwenden, um Daten in eine Azure-Dateifreigabe zu übertragen, auch wenn Sie diesen Synchronisierungsmechanismus nicht langfristig einsetzen möchten. Weitere Informationen zur Verwendung von Azure File Sync für die Datenübertragung in eine Azure-Dateifreigabe finden Sie unter [Planung für eine Azure File Sync-Bereitstellung](storage-sync-files-planning.md) und [Bereitstellen von Azure File Sync](storage-sync-files-deployment-guide.md).
 

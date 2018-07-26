@@ -4,23 +4,24 @@ description: Enthält Informationen zu Gruppenrichtlinien- und MDM-Einstellungen
 services: active-directory
 keywords: Was sind Gruppenrichtlinien- und MDM-Einstellungen für Enterprise State Roaming, Enterprise State Roaming, Windows-Cloud
 documentationcenter: ''
-author: tanning
+author: MarkusVi
 manager: mtillman
 editor: curtand
+ms.component: devices
 ms.assetid: 6471a9b3-8dd4-4237-89d1-bfbeca9f8252
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: 588084481ffc5cbbeed34e9527271179fa359ed5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9db0fa29f6af0053d45f9f0238b52ac34fdb464a
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26614907"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223260"
 ---
 # <a name="group-policy-and-mdm-settings"></a>Gruppenrichtlinien- und MDM-Einstellungen
 Verwenden Sie diese Gruppenrichtlinien- und MDM-Einstellungen (Mobile Device Management, Verwaltung mobiler Geräte) nur für unternehmenseigene Geräte, da diese Richtlinien auf das gesamte Gerät eines Benutzers angewendet werden. Das Anwenden einer MDM-Richtlinie zum Deaktivieren der Einstellungssynchronisierung für ein persönliches, benutzereigenes Gerät hat eine negative Auswirkung auf die Nutzung dieses Geräts. Außerdem werden weitere Benutzerkonten auf dem Gerät von der Richtlinie ebenfalls beeinflusst.
@@ -31,7 +32,7 @@ In den folgenden Tabellen sind die verfügbaren Richtlinieneinstellungen beschri
 ## <a name="mdm-settings"></a>MDM-Einstellungen
 Die MDM-Richtlinieneinstellungen gelten sowohl für Windows 10 als auch für Windows 10 Mobile.  Für Windows 10 Mobile wird das auf einem Microsoft-Konto basierende Roaming nur über das OneDrive-Konto eines Benutzers unterstützt.  Im Abschnitt „Geräte und Endpunkte“ finden Sie Informationen zu den Geräten, die bei der Azure AD-basierten Synchronisierung unterstützt werden.
 
-| Name | Beschreibung |
+| NAME | BESCHREIBUNG |
 | --- | --- |
 | Microsoft-Konto-Verbindung zulassen |Ermöglicht Benutzern die Authentifizierung mit einem Microsoft-Konto auf dem Gerät. |
 | Einstellungen synchronisieren zulassen |Ermöglicht Benutzern das Roaming von Windows-Einstellungen und App-Daten; durch Deaktivieren dieser Richtlinie wird die Synchronisierung mobiler Geräte ebenso wie Sicherungen auf mobilen Geräten deaktiviert. |
@@ -39,7 +40,7 @@ Die MDM-Richtlinieneinstellungen gelten sowohl für Windows 10 als auch für Wi
 ## <a name="group-policy-settings"></a>Gruppenrichtlinien-Einstellungen
 Die Gruppenrichtlinien-Einstellungen gelten für Windows 10-Geräte, die einer Active Directory-Domäne beigetreten sind. Die Tabelle enthält Legacyeinstellungen, die scheinbar zum Verwalten von Synchronisierungseinstellungen geeignet sind, aber für Enterprise State Roaming für Windows 10 nicht funktionieren (in der Beschreibung als „Nicht verwenden“ gekennzeichnet).
 
-| Name | Beschreibung |
+| NAME | BESCHREIBUNG |
 | --- | --- |
 | Konten: Microsoft-Konten blockieren |Diese Richtlinieneinstellung verhindert, dass Benutzer auf diesem Computer neue Microsoft-Konten hinzufügen. |
 | Nicht synchronisieren |Verhindert das Roaming von Windows-Einstellungen und App-Daten durch Benutzer. |

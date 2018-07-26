@@ -4,23 +4,24 @@ description: Vollständige Liste mit allen Einstellungen, für die unter Windows
 services: active-directory
 keywords: Enterprise State Roaming, Windows-Cloud
 documentationcenter: ''
-author: tanning
+author: MarkusVi
 manager: mtillman
 editor: curtand
+ms.component: devices
 ms.assetid: 17cffc3e-2928-4235-91f7-a685bd6bdcbf
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: 741b76935b5a6d9b2a6869ef57caa0ac0dc6351a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9a06ff345d1bf91efd1abff9960a1a6f9a681dce
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32159076"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223666"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10-Roamingeinstellungen – Referenz
 Hier ist eine vollständige Liste mit allen Einstellungen angegeben, für die unter Windows 10 das Roaming oder eine Sicherung durchgeführt wird. 
@@ -30,10 +31,10 @@ Die folgende Tabelle enthält eine Zusammenfassung der Geräte und Kontotypen, d
 
 | Kontotyp und Vorgang | Desktop | Mobile |
 | --- | --- | --- |
-| Azure Active Directory: Synchronisierung |Ja |Nein  |
+| Azure Active Directory: Synchronisierung |JA |Nein  |
 | Azure Active Directory: Sicherung/Wiederherstellung |Nein  |Nein  |
-| Microsoft-Konto: Synchronisierung |Ja |Ja |
-| Microsoft-Konto: Sicherung/Wiederherstellung |Nein  |Ja |
+| Microsoft-Konto: Synchronisierung |JA |JA |
+| Microsoft-Konto: Sicherung/Wiederherstellung |Nein  |JA |
 
 ## <a name="what-is-backup"></a>Was ist die Sicherung?
 Windows-Einstellungen werden normalerweise standardmäßig synchronisiert. Einige Einstellungen werden aber nur gesichert, z. B. die Liste mit den installierten Anwendungen auf einem Gerät. Sicherungen können nur für mobile Geräte angewendet werden und sind zurzeit für Enterprise State Roaming-Benutzer nicht verfügbar. Bei der Sicherung wird ein Microsoft-Konto verwendet, die Einstellungen und Anwendungsdaten werden in OneDrive gespeichert. Wenn ein Benutzer die Synchronisierung auf dem Gerät mit der Einstellungen-App deaktiviert, werden die Anwendungsdaten, die normalerweise synchronisiert werden, nur noch gesichert. Auf Sicherungsdaten kann nur über den Wiederherstellungsvorgang während der ersten Ausführung eines neuen Geräts zugegriffen werden. Sicherungen können über die Geräteeinstellungen deaktiviert und über das OneDrive-Konto des Benutzers verwaltet und gelöscht werden.

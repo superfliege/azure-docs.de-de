@@ -11,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/13/2018
-ms.author: carolz
-ms.openlocfilehash: 134a34f7995e8153f3f28f7ff389ad0254177711
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: mtillman
+ms.openlocfilehash: 218de4388c88161d3277c94fcb859e6ee3dc04e9
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594632"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224779"
 ---
 # <a name="azure-active-directory-documentation"></a>Dokumentation zu Azure Active Directory
 
@@ -82,7 +82,7 @@ Azure Active Directory (Azure AD) ist ein mehrinstanzenfähiger cloudbasierter V
                         <h3>Authentifizierung</h3>
                         <p>
                         <a href="/azure/active-directory/active-directory-passwords-overview">Kennwörter</a><br/>
-                        <a href="/azure/active-directory/active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements">Multi-Factor Authentication</a><br/>
+                        <a href="/azure/active-directory/authentication/concept-mfa-howitworks">Multi-Factor Authentication</a><br/>
                         <a href="/azure/active-directory/active-directory-azureadjoin-passport">Windows Hello</a><br/>
                         <a href="/azure/active-directory/active-directory-certificate-based-authentication-get-started">Zertifikatbasierte Authentifizierung</a>
                         </p>
@@ -100,7 +100,7 @@ Azure Active Directory (Azure AD) ist ein mehrinstanzenfähiger cloudbasierter V
                         <p>
                         <a href="/azure/active-directory/active-directory-identityprotection">Identitätsschutz</a><br/>
                         <a href="/azure/active-directory/active-directory-conditional-access-azure-portal">Bedingter Zugriff</a><br/>
-                        <a href="/azure/active-directory/active-directory-privileged-identity-management-configure?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json">Privileged Identity Management</a>
+                        <a href="/azure/active-directory/privileged-identity-management/pim-configure">Privileged Identity Management</a>
                         </p>
                     </div>
                 </div>

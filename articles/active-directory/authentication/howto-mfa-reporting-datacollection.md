@@ -2,20 +2,20 @@
 title: Azure Multi-Factor Authentication – Erfassen von Benutzerdaten
 description: Welche Informationen verwendet Azure Multi-Factor Authentication, um Benutzer zu authentifizieren?
 services: multi-factor-authentication
+ms.service: active-directory
+ms.component: authentication
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.topic: article
-ms.date: 05/01/2018
-ms.openlocfilehash: 2281a35d1616aa88b0c646fb96cb9f95c3272536
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.reviewer: michmcla
+ms.openlocfilehash: 1b380bc20c9f80710ca62672b99649ce3498a8e8
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264367"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223761"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication – Erfassen von Benutzerdaten
 

@@ -58,7 +58,7 @@ Das Azure-Portal verfügt über einen Assistenten, der Sie durch das Erstellen d
 
 ### <a name="specify-routes"></a>Angeben von Routen
 
-Standardmäßig erhalten Sie vom Assistenten eine Route mit dem Namen **route**, die als **FROM /* INTO $upstream** definiert ist. Dies bedeutet, dass alle Nachrichten, die von Modulen ausgegeben werden, an Ihren IoT Hub gesendet werden.  
+Standardmäßig erhalten Sie vom Assistenten eine Route mit dem Namen **route**, die als **FROM /\* INTO $upstream** definiert ist. Dies bedeutet, dass alle Nachrichten, die von Modulen ausgegeben werden, an Ihren IoT Hub gesendet werden.  
 
 Fügen Sie die Routen mit Informationen aus dem Abschnitt [Deklarieren von Routen](module-composition.md#declare-routes) hinzu, oder aktualisieren Sie diese, und wählen Sie dann **Weiter** aus, um mit dem Abschnitt zur Überprüfung fortzufahren.
 

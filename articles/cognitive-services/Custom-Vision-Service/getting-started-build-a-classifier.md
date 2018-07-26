@@ -9,12 +9,12 @@ ms.component: custom-vision
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: anroth
-ms.openlocfilehash: 6dc271c13f53a445c7d1101f5264d890208bd03c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c5183078d2f9d5eb16abef4f5df240f77eea6b8b
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374771"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223368"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Erstellen einer Klassifizierung mit Custom Vision
 
@@ -57,7 +57,7 @@ Führen Sie die folgenden Schritte aus, um ein neues Projekt zu erstellen:
 
     |Domäne|Zweck|
     |---|---|
-    |__Generic (Allgemein)__| Für eine breite Palette von Aufgaben in der Bildklassifizierung optimiert. Wenn keine der anderen Domänen geeignet erscheint oder Sie unsicher sind, welche Domäne Sie wählen sollen, verwenden Sie die Domäne „Generic“. |
+    |__Allgemein__| Für eine breite Palette von Aufgaben in der Bildklassifizierung optimiert. Wenn keine der anderen Domänen geeignet erscheint oder Sie unsicher sind, welche Domäne Sie wählen sollen, verwenden Sie die Domäne „Generic“. |
     |__Food (Lebensmittel)__|Für Fotos von Gerichten optimiert, wie sie beispielsweise auf der Speisekarte von Restaurants abgebildet werden. Wenn Sie Fotos von einzelnen Früchten oder Gemüsen klassifizieren möchten, verwenden Sie die Domäne „Food“.|
     |__Landmarks (Wahrzeichen)__|Für erkennbare Wahrzeichen (Naturdenkmäler oder künstliche Wahrzeichen) optimiert. Diese Domäne funktioniert am besten, wenn das Wahrzeichen im Foto deutlich zu sehen ist. Die Domäne funktioniert auch, wenn das Wahrzeichen etwas von Personen im Vordergrund verdeckt wird.|
     |__Retail (Einzelhandel)__|Für Bilder optimiert, wie man sie in einem Einkaufskatalog oder auf einer Einkaufswebsite findet. Wenn Sie eine präzise Klassifizierung zwischen Kleidern, Hosen und Hemden wünschen, verwenden Sie diese Domäne.|
@@ -83,8 +83,6 @@ Führen Sie die folgenden Schritte aus, um ein neues Projekt zu erstellen:
     Der Custom Vision Service akzeptiert Trainingsbilder in den Formaten JPG, PNG und BMP mit bis zu 6 MB pro Bild. (Vorhersagebilder dürfen bis zu 4 MB pro Bild groß sein.) Wir empfehlen, dass Bilder an der kürzesten Seite mindestens 256 Pixel messen. Bilder, die an der kürzesten Seite kleiner als 256 Pixel sind, werden vom Custom Vision Service hochskaliert.
 
     ![Das Steuerelement zum Hinzufügen von Bildern wird oben links und als Schaltfläche unten in der Mitte angezeigt.](./media/getting-started-build-a-classifier/add-images01.png)
-
-    ![Die Schaltfläche zum Durchsuchen von lokalen Dateien wird unten nahe der Mitte angezeigt.](./media/getting-started-build-a-classifier/add-images02.png)
 
     >[!NOTE] 
     > Die REST-API kann zum Laden von Trainingsbildern über URLs verwendet werden.
@@ -125,7 +123,7 @@ Die Qualität der Klassifizierungsergebnisse wird angezeigt.
 
 |Begriff|Definition|
 |---|---|
-|__Precision (Genauigkeit)__|Wenn Sie ein Bild klassifizieren, wie hoch ist die Wahrscheinlichkeit, dass Ihre Klassifizierung das Bild richtig klassifiziert? Von allen Bildern, die zum Trainieren der Klassifizierung verwendet wurden (Hunde und Ponys), welchen Prozentsatz hat das Modell richtig erkannt? 99 richtige Kategorien aus 100 Bildern ergeben eine Genauigkeit von 99 Prozent.|
+|__Genauigkeit__|Wenn Sie ein Bild klassifizieren, wie hoch ist die Wahrscheinlichkeit, dass Ihre Klassifizierung das Bild richtig klassifiziert? Von allen Bildern, die zum Trainieren der Klassifizierung verwendet wurden (Hunde und Ponys), welchen Prozentsatz hat das Modell richtig erkannt? 99 richtige Kategorien aus 100 Bildern ergeben eine Genauigkeit von 99 Prozent.|
 |__Recall (Trefferquote)__|Wie viele der Bilder, die korrekt klassifiziert werden sollten, wurden von Ihrer Klassifizierung korrekt identifiziert? Eine Trefferquote von 100 % bedeutet, dass in 38 Hundebildern, die zum Trainieren der Klassifizierung verwendet wurden, 38 Hunde gefunden wurden.|
 
 ## <a name="next-steps"></a>Nächste Schritte
