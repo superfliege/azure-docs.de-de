@@ -2,19 +2,19 @@
 title: 'Azure: Erstellen einer einfachen App mit zwei Absichten | Microsoft-Dokumentation'
 description: In diesem Schnellstart erfahren Sie, wie Sie eine einfache LUIS-App mit zwei Absichten und ohne Entitäten zur Identifizierung von Benutzeräußerungen erstellen.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 06/27/2018
-ms.author: v-geberr
-ms.openlocfilehash: 0668ba050a6918995deb42d8feea5afbbab3b010
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.author: diberry
+ms.openlocfilehash: 4be36e9d5b34c46138a657429680689014d0fd3d
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865810"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237773"
 ---
 # <a name="tutorial-1-build-app-with-custom-domain"></a>Tutorial 1: Erstellen einer App mit einer benutzerdefinierten Domäne
 In diesem Tutorial erstellen Sie eine App, die die Verwendung von **Absichten** veranschaulicht, um die _Intention_ des Benutzers basierend auf der Äußerung (Text) zu ermitteln, die sie an die App senden. Wenn Sie diesen Schnellstart abschließen, verfügen Sie über einen LUIS-Endpunkt in der Cloud.

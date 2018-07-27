@@ -2,19 +2,19 @@
 title: 'Tutorial: Erstellen einer LUIS-App zum Abrufen von Textdaten, die genau mit Daten in einer Liste übereinstimmen – Azure | Microsoft-Dokumentation'
 description: In diesem Tutorial wird im Rahmen einer Schnellstartanleitung beschrieben, wie Sie eine einfache LUIS-App mit Absichten und Listenentitäten erstellen, um Daten zu extrahieren.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
-ms.author: v-geberr
-ms.openlocfilehash: da0491aae571f085a8cbe3cd372f905202e9db9b
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: 4ba2ba5d947a112f780579bf4b31ba38cb26ae03
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931064"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222969"
 ---
 # <a name="tutorial-4-add-list-entity"></a>Tutorial: 4. Hinzufügen einer Entität vom Typ „Liste“
 In diesem Tutorial erstellen Sie eine App, mit der veranschaulicht wird, wie Sie Daten abrufen, die mit Angaben in einer vordefinierten Liste übereinstimmen. 
