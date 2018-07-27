@@ -1,10 +1,16 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 7649d78e764c547f2211d8993514a1b793d76609
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264047"
 documentType: LandingData
 title: Dokumentation zur verwalteten Dienstidentität von Azure Active Directory
 metadata:
   document_id: 
   title: Dokumentation zur verwalteten Dienstidentität von Azure Active Directory
-  description: Hier erfahren Sie, wie Sie sich mit der verwalteten Dienstidentität (Managed Service Identity, MSI) sicher bei Azure-Clouddiensten authentifizieren, ohne Anmeldeinformationen in den Quellcode aufnehmen zu müssen.
+  description: Hier erfahren Sie, wie Sie sich mit der verwalteten Dienstidentität sicher bei Azure-Clouddiensten authentifizieren, ohne Anmeldeinformationen in den Quellcode aufnehmen zu müssen.
   services: active-directory
   ms.component: msi
   author: daveba
@@ -15,19 +21,13 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/16/2018
   ms.author: daveba
-  ms.openlocfilehash: ca90d9d2bb3fffb65d2cefe156d0425de9634bdd
-  ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
-  ms.translationtype: HT
-  ms.contentlocale: de-DE
-  ms.lasthandoff: 05/20/2018
-  ms.locfileid: "34354281"
 abstract:
-  description: Eine verwaltete Dienstidentität (Managed Service Identity, MSI) stellt für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.  Anhand unserer Schnellstartanleitungen und Tutorials erfahren Sie, wie Sie verwaltete Dienstidentitäten erstellen und verwalten.
+  description: Eine verwaltete Dienstidentität stellt für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.  Anhand unserer Schnellstartanleitungen und Tutorials erfahren Sie, wie Sie verwaltete Dienstidentitäten erstellen und verwalten.
 sections:
 - title: Fünfminütige Schnellstarts
   items:
   - type: paragraph
-    text: Hier erfahren Sie, wie Sie mithilfe der verwalteten Dienstidentität (Managed Service Identity, MSI) auf die Azure Resource Manager-API zugreifen.
+    text: Hier erfahren Sie, wie Sie mithilfe der verwalteten Dienstidentität auf die Azure Resource Manager-API zugreifen.
   - type: list
     style: unordered
     items:
@@ -36,7 +36,7 @@ sections:
 - title: Schritt-für-Schritt-Tutorials
   items:
   - type: paragraph
-    text: Hier erfahren Sie, wie Sie mithilfe der verwalteten Dienstidentität (Managed Service Identity, MSI) sicher auf Azure-Ressourcen zugreifen.
+    text: Hier erfahren Sie, wie Sie mithilfe der verwalteten Dienstidentität sicher auf Azure-Ressourcen zugreifen.
   - type: paragraph
     text: Windows-VM/-VMSS
   - type: list

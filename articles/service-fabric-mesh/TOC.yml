@@ -45,6 +45,12 @@
       href: service-fabric-mesh-howto-deploy-app-azurefiles-volume.md
     - name: Unabhängige Skalierung von Microservices in einer App
       href: service-fabric-mesh-howto-app-scale-out.md
+- name: Verweis
+  items:
+    - name: Ressourcenanbieter-REST-APIs in Service Fabric Mesh
+      href: /rest/api/servicefabric/sfmeshrp-index
+    - name: Ressourcen-REST-APIs im Service Fabric-Client
+      href: '/rest/api/servicefabric/sfclient-index#service-fabric-resource-model'
 - name: angeben
   items:
     - name: Häufig gestellte Fragen

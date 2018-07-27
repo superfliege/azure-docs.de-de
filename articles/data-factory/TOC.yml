@@ -387,24 +387,26 @@
           href: create-azure-ssis-integration-runtime.md
     - name: Ausführen von SSIS-Paketen in Azure
       items:
-        - name: Verknüpfen der Azure-SSIS-IR mit einem virtuellen Netzwerk
-          href: join-azure-ssis-integration-runtime-virtual-network.md
-        - name: Aktivieren der Azure AD-Authentifizierung für Azure-SSIS IR
-          href: enable-aad-authentication-azure-ssis-ir.md
-        - name: Konfigurieren einer hohen Leistung für Azure-SSIS-IR
-          href: configure-azure-ssis-integration-runtime-performance.md
-        - name: Bereitstellen von Enterprise Edition für Azure-SSIS-IR
-          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
-        - name: Anpassen der Einrichtung für Azure-SSIS-IR
-          href: how-to-configure-azure-ssis-ir-custom-setup.md
-        - name: Installieren von lizenzierten Komponenten für Azure-SSIS-IR
-          href: how-to-develop-azure-ssis-ir-licensed-components.md
         - name: Ausführen von SSIS-Paketen mit der Aktivität „SSIS-Paket ausführen“
           href: how-to-invoke-ssis-package-ssis-activity.md
         - name: Ausführen von SSIS-Paketen mit der Aktivität „Gespeicherte Prozedur“
           href: how-to-invoke-ssis-package-stored-procedure-activity.md
         - name: Planen der Azure-SSIS Integration Runtime
           href: how-to-schedule-azure-ssis-integration-runtime.md
+        - name: Verknüpfen der Azure-SSIS-IR mit einem virtuellen Netzwerk
+          href: join-azure-ssis-integration-runtime-virtual-network.md
+        - name: Aktivieren der Azure AD-Authentifizierung für Azure-SSIS IR
+          href: enable-aad-authentication-azure-ssis-ir.md
+        - name: Bereitstellen von Enterprise Edition für Azure-SSIS-IR
+          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
+        - name: Anpassen der Einrichtung für Azure-SSIS-IR
+          href: how-to-configure-azure-ssis-ir-custom-setup.md
+        - name: Installieren von lizenzierten Komponenten für Azure-SSIS-IR
+          href: how-to-develop-azure-ssis-ir-licensed-components.md
+        - name: Konfigurieren einer hohen Leistung für Azure-SSIS-IR
+          href: configure-azure-ssis-integration-runtime-performance.md
+        - name: Konfigurieren der Notfallwiederherstellung für die Azure-SSIS-IR
+          href: configure-bcdr-azure-ssis-integration-runtime.md
     - name: Erstellen von Triggern
       items:
         - name: Erstellen eines Zeitplantriggers

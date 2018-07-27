@@ -312,9 +312,9 @@
     - name: Schema für die Workflowdefinitionssprache
       href: logic-apps-workflow-definition-language.md
       items:
-        - name: Workflowaktionen und -trigger
+        - name: Referenz zu Trigger- und Aktionstypen
           href: logic-apps-workflow-actions-triggers.md
-        - name: Funktionen für die Workflowdefinitionssprache
+        - name: Funktionsreferenz
           href: workflow-definition-language-functions-reference.md
         - name: 'Allgemeine Verfügbarkeit: Schemaverlauf'
           href: logic-apps-schema-2016-04-01.md

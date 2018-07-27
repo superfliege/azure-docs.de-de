@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: 522d24c1c03a338633c340502087300c890d1771
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: f51c296b39fda08d0bcc704fb974e71465385d67
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128444"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929370"
 ---
 # <a name="tutorial-3-add-regular-expression-entity"></a>Tutorial 3: Hinzufügen einer Entität vom Typ „Regulärer Ausdruck“
 In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie Sie mithilfe der Entität **Regulärer Ausdruck** einheitlich formatierte Daten aus einer Äußerung extrahieren.
@@ -31,7 +31,7 @@ In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie Sie mithilfe
 Für diesen Artikel benötigen Sie ein kostenloses [LUIS](luis-reference-regions.md#luis-website)-Konto für die Erstellung Ihrer LUIS-Anwendung.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-Falls Sie nicht über die Personal-App aus dem Tutorial zu [vordefinierten Entitäten](luis-tutorial-prebuilt-intents-entities.md) verfügen, [importieren](create-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS](luis-reference-regions.md#luis-website)-Website über das GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json)).
+Falls Sie nicht über die Personal-App aus dem Tutorial zu [vordefinierten Entitäten](luis-tutorial-prebuilt-intents-entities.md) verfügen, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS](luis-reference-regions.md#luis-website)-Website über das GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json)).
 
 Wenn Sie die ursprüngliche Personal-App behalten möchten, klonen Sie die Version auf der Seite [Einstellungen](luis-how-to-manage-versions.md#clone-a-version), und nennen Sie sie `regex`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. 
 
@@ -253,7 +253,7 @@ Ihr Chatbot verfügt nun über genügend Informationen, um die primäre Aktion (
 Für LUIS ist diese Anforderung abgeschlossen. Die aufrufende Anwendung (etwa ein Chatbot) kann das topScoringIntent-Ergebnis und die Formularnummern für eine Suche über eine Drittanbieter-API verwenden. Diese Schritte werden nicht von LUIS ausgeführt. LUIS bestimmt lediglich die Absicht des Benutzers und extrahiert entsprechende Daten. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Klicken Sie im Menü oben links auf **Meine Apps**. Klicken Sie in der Liste rechts vom App-Namen auf die drei Punkte (...) und anschließend auf **Löschen**. Klicken Sie im Popupdialogfenster **Delete app?** (App löschen?) auf **OK**.
+Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Klicken Sie im Menü oben links auf **Meine Apps**. Klicken Sie in der Liste rechts vom App-Namen auf die Auslassungspunkte (***...***) und anschließend auf **Löschen**. Wählen Sie im Popupdialogfenster **Delete App?** (App löschen?) **OK** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

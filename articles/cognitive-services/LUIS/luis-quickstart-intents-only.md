@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: v-geberr
-ms.openlocfilehash: fea311eb36c0654b45b2354cb283f1699be7257c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 0668ba050a6918995deb42d8feea5afbbab3b010
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109340"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865810"
 ---
 # <a name="tutorial-1-build-app-with-custom-domain"></a>Tutorial 1: Erstellen einer App mit einer benutzerdefinierten Domäne
 In diesem Tutorial erstellen Sie eine App, die die Verwendung von **Absichten** veranschaulicht, um die _Intention_ des Benutzers basierend auf der Äußerung (Text) zu ermitteln, die sie an die App senden. Wenn Sie diesen Schnellstart abschließen, verfügen Sie über einen LUIS-Endpunkt in der Cloud.
@@ -86,15 +86,15 @@ Diese App verfügt über einige Absichten. Die erste Absicht (**`GetJobInformati
     In der Anwendung, die den LUIS-Dienst aufruft (beispielsweise ein Chatbot), kann der Bot den Benutzer fragen, ob er die Unterhaltung beenden möchte, wenn LUIS für eine Äußerung die Absicht vom Typ **None** (Keine) zurückgibt. Der Chatbot kann außerdem weitere Anweisungen zum Fortsetzen der Unterhaltung geben, falls der Benutzer sie nicht beenden möchte. 
 
 ## <a name="train-and-publish-the-app"></a>Trainieren und Veröffentlichen der App
-1. Klicken Sie oben rechts auf der LUIS-Website auf die Schaltfläche **Train** (Trainieren). 
+1. Wählen Sie oben rechts auf der LUIS-Website die Schaltfläche **Train** (Trainieren) aus. 
 
-    ![Schaltfläche „Trainieren“](./media/luis-quickstart-intents-only/train-button.png)
+    ![Schaltfläche „Train“ (Trainieren)](./media/luis-quickstart-intents-only/train-button.png)
 
     Das Training ist abgeschlossen, wenn oben auf der Website die grüne Statusleiste angezeigt wird.
 
     ![Statusleiste bei abgeschlossenem Training](./media/luis-quickstart-intents-only/trained.png)
 
-2. Klicken Sie rechts oben auf der LUIS-Website auf die Schaltfläche **Publish** (Veröffentlichen), um die Seite „Publish“ (Veröffentlichen) zu öffnen. Der Produktionsslot ist standardmäßig aktiviert. Wählen Sie den Produktionsslot aus, und klicken Sie auf die Schaltfläche **Publish** (Veröffentlichen). Die Veröffentlichung ist abgeschlossen, wenn oben auf der Website die grüne Statusleiste angezeigt wird.
+2. Wählen Sie rechts oben auf der LUIS-Website die Schaltfläche **Publish** (Veröffentlichen) aus, um die Seite „Publish“ (Veröffentlichen) zu öffnen. Der Produktionsslot ist standardmäßig aktiviert. Wählen Sie den Produktionsslot und dann die Schaltfläche **Publish** (Veröffentlichen) aus. Die Veröffentlichung ist abgeschlossen, wenn oben auf der Website die grüne Statusleiste angezeigt wird.
 
     Vor dem Veröffentlichen oder dem Testen der Endpunkt-URL müssen Sie keinen LUIS-Endpunktschlüssel im Azure-Portal erstellen. Jede LUIS-App verfügt über einen kostenlosen Startschlüssel für die Erstellung. Dieser ermöglicht das unbegrenzte Erstellen und eine [geringe Anzahl an Endpunkttreffern](luis-boundaries.md#key-limits). 
 
@@ -188,7 +188,7 @@ Das JSON-Ergebnis identifiziert die am höchsten bewertete Absicht. Alle Bewertu
 LUIS hat diese Anforderung abgeschlossen. Die aufrufende Anwendung, z.B. ein Chatbot, kann das Ergebnis der am höchsten bewerteten Absicht zum Suchen von Informationen (die nicht in LUIS gespeichert sind) verwenden, um die Frage zu beantworten oder die Konversation zu beenden. Dies sind programmgesteuerte Optionen für den Bot oder die aufrufende Anwendung. Diese Schritte werden nicht von LUIS ausgeführt. LUIS bestimmt lediglich die Absicht des Benutzers. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Wählen Sie hierzu im Menü oben links **Meine Apps** aus. Klicken Sie in der Liste rechts vom App-Namen auf die drei Punkte (...) und anschließend auf **Löschen**. Klicken Sie im Popupdialogfenster **Delete app?** (App löschen?) auf **OK**.
+Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Wählen Sie hierzu im Menü oben links **Meine Apps** aus. Klicken Sie in der Liste rechts vom App-Namen auf die Auslassungspunkte (***...***) und anschließend auf **Löschen**. Wählen Sie im Popupdialogfenster **Delete App?** (App löschen?) **OK** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

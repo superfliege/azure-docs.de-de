@@ -9,14 +9,14 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: e6ab9d1db0144ffa68fe9dc3381ba31d57aa0cae
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: a4bf63b7a2fbbb26b8c121f5360aea0a5ca8a687
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130891"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952384"
 ---
-# <a name="tutorial-6-add-simple-entity-and-phrase-list"></a>Tutorial: 6. Hinzufügen einer Entität vom Typ „Einfach“ sowie einer Begriffsliste
+# <a name="tutorial-7-add-simple-entity-and-phrase-list"></a>Tutorial: 7. Hinzufügen einer Entität vom Typ „Einfach“ sowie einer Begriffsliste
 In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie mithilfe der Entität vom Typ **Einfach** ML-Daten aus einer Äußerung extrahiert werden.
 
 <!-- green checkmark -->
@@ -32,7 +32,7 @@ In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie mithilfe der
 Für diesen Artikel benötigen Sie ein kostenloses [LUIS](luis-reference-regions.md#luis-website)-Konto für die Erstellung Ihrer LUIS-Anwendung.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-Falls Sie nicht über die Personal-App aus dem [Tutorial zur hierarchischen Entität](luis-quickstart-intent-and-hier-entity.md) verfügen, [importieren](create-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-hier-HumanResources.json).
+Falls Sie nicht über die Personal-App aus dem [Tutorial zur zusammengesetzten Entität](luis-tutorial-composite-entity.md) verfügen, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-composite-HumanResources.json).
 
 Wenn Sie die ursprüngliche Personal-App behalten möchten, klonen Sie die Version auf der Seite [Einstellungen](luis-how-to-manage-versions.md#clone-a-version), und nennen Sie sie `simple`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren.  
 
@@ -69,7 +69,7 @@ Diese LUIS-App verfügt über Stellennamen in verschiedenen Absichten. Durch die
 
 ## <a name="create-job-simple-entity"></a>Erstellen einer einfachen Stellenentität
 
-1. Vergewissern Sie sich, dass sich Ihre Personal-App im LUIS-Abschnitt **Build** befindet. Zu diesem Abschnitt gelangen Sie, indem Sie rechts oben auf der Menüleiste auf **Build** klicken. 
+1. Vergewissern Sie sich, dass sich Ihre Personal-App im LUIS-Abschnitt **Build** befindet. Zu diesem Abschnitt gelangen Sie, indem Sie rechts oben auf der Menüleiste **Build** auswählen. 
 
     [ ![Screenshot: LUIS-App mit hervorgehobener Build-Option (rechts oben auf der Navigationsleiste)](./media/luis-quickstart-primary-and-secondary-data/hr-first-image.png)](./media/luis-quickstart-primary-and-secondary-data/hr-first-image.png#lightbox)
 
@@ -113,7 +113,7 @@ Diese LUIS-App verfügt über Stellennamen in verschiedenen Absichten. Durch die
     |I would like to apply for the position in photography. (Ich möchte mich gerne als Fotograf bewerben.)|photography (Fotografie)|Git 
 
 ## <a name="label-entity-in-example-utterances-for-getjobinformation-intent"></a>Kennzeichnen der Entität in Beispieläußerungen für die Absicht „GetJobInformation“
-1. Wählen Sie im linken Menü die Option **Absichten**.
+1. Wählen Sie im linken Menü die Option **Intents** (Absichten) aus.
 
 2. Wählen Sie in der Liste mit den Absichten die Option **GetJobInformation** aus. 
 
@@ -122,7 +122,7 @@ Diese LUIS-App verfügt über Stellennamen in verschiedenen Absichten. Durch die
     |Äußerung|Entität „Job“|
     |:--|:--|
     |Is there any work in databases? (Gibt es offene Stellen im Datenbankbereich?)|Datenbanken|
-    |Looking for a new situation with responsibilities in accounting (Ich möchte mich beruflich neu orientieren und suche nach Aufgaben in der Buchhaltung.)|accounting (Buchhaltung)|
+    |Ich möchte mich beruflich neu orientieren und suche nach Aufgaben in der Buchhaltung.|accounting (Buchhaltung)|
     |What positions are available for senior engineers? (Welche Positionen sind für Oberingenieure verfügbar?)|senior engineers (Oberingenieure)|
 
     Es gibt noch andere Beispieläußerungen, diese enthalten jedoch keine Wörter für Stellen.
@@ -366,7 +366,7 @@ Da ein Name eine beliebige Zeichenfolge sein kann, sagt LUIS Entitäten präzise
     ```
 
 ## <a name="phrase-lists"></a>Begriffslisten
-Durch Hinzufügen der Begriffsliste wurde das Signal der Wörter in der Liste verstärkt. Sie wird jedoch **nicht** für exakte Übereinstimmungen verwendet. Die Begriffsliste enthält sowohl mehrere Stellen, die mit dem Wort `lead` beginnen, als auch die Stelle `welder`, aber nicht die Stelle `lead welder`. Diese Begriffsliste für Stellen ist wahrscheinlich nicht vollständig. Fügen Sie Ihrer Begriffsliste daher nach und nach weitere Stellenwörter hinzu, die Sie im Zuge der regelmäßigen [Überprüfung von Endpunktäußerungen](label-suggested-utterances.md) ermitteln. Trainieren und veröffentlichen Sie die App anschließend erneut.
+Durch Hinzufügen der Begriffsliste wurde das Signal der Wörter in der Liste verstärkt. Sie wird jedoch **nicht** für exakte Übereinstimmungen verwendet. Die Begriffsliste enthält sowohl mehrere Stellen, die mit dem Wort `lead` beginnen, als auch die Stelle `welder`, aber nicht die Stelle `lead welder`. Diese Begriffsliste für Stellen ist wahrscheinlich nicht vollständig. Fügen Sie Ihrer Begriffsliste daher nach und nach weitere Stellenwörter hinzu, die Sie im Zuge der regelmäßigen [Überprüfung von Endpunktäußerungen](luis-how-to-review-endoint-utt.md) ermitteln. Trainieren und veröffentlichen Sie die App anschließend erneut.
 
 ## <a name="what-has-this-luis-app-accomplished"></a>Was wurde mit dieser LUIS-App erreicht?
 Diese App mit einer einfachen Entität und einer Begriffsliste mit Wörtern hat eine Abfrageabsicht in natürlicher Sprache ermittelt und die Auftragsdaten zurückgegeben. 
@@ -377,7 +377,7 @@ Ihr Chatbot verfügt nun über genügend Informationen, um die primäre Aktion (
 LUIS hat diese Anforderung abgeschlossen. Die aufrufende Anwendung (etwa ein Chatbot) kann das Ergebnis für „topScoringIntent“ und die Daten aus der Entität verwenden, um die Stelleninformationen über eine Drittanbieter-API an einen Mitarbeiter der Personalabteilung zu senden. Sind andere programmgesteuerte Optionen für den Bot oder die aufrufende Anwendung vorhanden, werden sie nicht von LUIS verwendet. LUIS bestimmt lediglich die Absicht des Benutzers. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Wählen Sie im Menü oben links die Option **Meine Apps**. Klicken Sie in der Liste rechts vom App-Namen auf die drei Punkte (...) und anschließend auf **Löschen**. Klicken Sie im Popupdialogfenster **Delete app?** (App löschen?) auf **OK**.
+Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Wählen Sie im Menü oben links die Option **Meine Apps**. Klicken Sie in der Liste rechts vom App-Namen auf die Auslassungspunkte (***...***) und anschließend auf **Löschen**. Wählen Sie im Popupdialogfenster **Delete App?** (App löschen?) **OK** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

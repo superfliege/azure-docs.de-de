@@ -4,9 +4,10 @@
   items:
     - name: Was ist Event Hubs?
       href: event-hubs-about.md
-    - name: Vergleich von Messagingdiensten
-      href: ../event-grid/compare-messaging-services.md
-      maintainContext: true
+    - name: Event Hubs für Apache Kafka
+      href: event-hubs-for-kafka-ecosystem-overview.md
+    - name: Event Hubs Capture
+      href: event-hubs-capture-overview.md
 - name: Schnellstarts
   expanded: true
   items:
@@ -16,14 +17,31 @@
       href: event-hubs-quickstart-cli.md
     - name: 'Verarbeiten von Ereignisdatenströmen: Azure PowerShell'
       href: event-hubs-quickstart-powershell.md
+    - name: Streamen an Event Hubs für Apache Kafka
+      href: event-hubs-quickstart-kafka-enabled-event-hubs.md
 - name: Tutorials
   items:
     - name: Visualisieren von Datenanomalien in Event Hubs-Datenströmen
       href: event-hubs-tutorial-visualize-anomalies.md
+    - name: Streamen von Big Data in ein Data Warehouse
+      href: ../event-grid/event-grid-event-hubs-integration.md
+      maintainContext: true
+    - name: Streamen von Daten an Azure Databricks unter Verwendung von Event Hubs
+      href: ../azure-databricks/databricks-stream-from-eventhubs.md
+    - name: Event Hubs für Apache Kafka
+      items:
+        - name: Apache Kafka MirrorMaker mit Event Hubs
+          href: event-hubs-kafka-mirror-maker-tutorial.md
+        - name: Apache Flink mit Event Hubs
+          href: event-hubs-kafka-flink-tutorial.md
+        - name: Akka Streams mit Event Hubs
+          href: event-hubs-kafka-akka-streams-tutorial.md
 - name: Beispiele
   href: event-hubs-samples.md
 - name: Konzepte
   items:
+    - name: Event Hubs-Funktionen
+      href: event-hubs-features.md
     - name: Übersicht über den Ereignisprozessorhost
       href: event-hubs-event-processor-host.md
     - name: IP-Verbindungsfilter
@@ -35,8 +53,6 @@
     - name: Integrieren in Event Grid
       href: ../event-grid/event-grid-event-hubs-integration.md
       maintainContext: true
-    - name: Event Hubs-Funktionen
-      href: event-hubs-features.md
     - name: Verwaltete Dienstidentität (Vorschau)
       href: event-hubs-managed-service-identity.md
     - name: Rollenbasierte Zugriffssteuerung (Vorschauversion)
@@ -64,20 +80,10 @@
       href: event-hubs-dotnet-framework-getstarted-send.md
     - name: Empfangen von Ereignissen mit .NET Framework
       href: event-hubs-dotnet-framework-getstarted-receive-eph.md
-    - name: Event Hubs für Kafka
+    - name: Event Hubs für Apache Kafka
       items:
-        - name: Übersicht über Event Hubs für Kafka-Ökosysteme
-          href: event-hubs-for-kafka-ecosystem-overview.md
-        - name: Erstellen von Kafka-fähigen Event Hubs
+        - name: Erstellen von Apache Kafka-fähigen Event Hubs
           href: event-hubs-create-kafka-enabled.md
-        - name: Streamen in Event Hubs für das Kafka-Ökosystem
-          href: event-hubs-quickstart-kafka-enabled-event-hubs.md
-        - name: 'Tutorial: Kafka MirrorMaker mit Event Hubs'
-          href: event-hubs-kafka-mirror-maker-tutorial.md
-        - name: 'Tutorial: Apache Flink mit Event Hubs'
-          href: event-hubs-kafka-flink-tutorial.md
-        - name: 'Tutorial: Akka Streams mit Event Hubs'
-          href: event-hubs-kafka-akka-streams-tutorial.md
     - name: Verfügbare APIs
       href: event-hubs-api-overview.md
       items:
@@ -113,12 +119,8 @@
           href: event-hubs-metrics-azure-monitor.md
         - name: Event Hubs-Verwaltungsbibliotheken
           href: event-hubs-management-libraries.md
-        - name: Erfassen
-          items:
-            - name: Event Hubs Capture
-              href: event-hubs-capture-overview.md
-            - name: Erfassen von Event Hubs-Daten mithilfe von Python
-              href: event-hubs-capture-python.md
+        - name: Erfassen von Event Hubs-Daten mithilfe von Python
+          href: event-hubs-capture-python.md
         - name: Streamen von Azure-Diagnosedaten mit Event Hubs
           href: event-hubs-streaming-azure-diags-data.md
         - name: Erstellen und Bereitstellen von Event Hubs anhand einer Resource Manager-Vorlage

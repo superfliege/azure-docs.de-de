@@ -9,14 +9,14 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: v-geberr
-ms.openlocfilehash: f3808620c4527f2971d8eb6d53a09c893b162b59
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: ccefb4c2890d74978f340778cfab7cad979c9802
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37340949"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929550"
 ---
-# <a name="tutorial-7-add-keyphrase-entity"></a>Tutorial: 7. Hinzufügen der keyPhrase-Entität 
+# <a name="tutorial-8-add-keyphrase-entity"></a>Tutorial: 8. Hinzufügen der keyPhrase-Entität 
 In diesem Tutorial verwenden Sie eine App, die veranschaulicht, wie Sie Schlüsselinhalte aus Äußerungen extrahieren.
 
 <!-- green checkmark -->
@@ -30,7 +30,7 @@ In diesem Tutorial verwenden Sie eine App, die veranschaulicht, wie Sie Schlüss
 Für diesen Artikel können Sie das kostenlose [LUIS](luis-reference-regions.md#publishing-regions)-Konto für die Erstellung Ihrer LUIS-Anwendung verwenden.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-Falls Sie nicht über die Personal-App aus dem [Tutorial zur einfachen Entität](luis-quickstart-primary-and-secondary-data.md) verfügen, [importieren](create-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-simple-HumanResources.json).
+Falls Sie nicht über die Personal-App aus dem [Tutorial zur einfachen Entität](luis-quickstart-primary-and-secondary-data.md) verfügen, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-simple-HumanResources.json).
 
 Wenn Sie die ursprüngliche Personal-App behalten möchten, klonen Sie die Version auf der Seite [Einstellungen](luis-how-to-manage-versions.md#clone-a-version), und nennen Sie sie `keyphrase`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. 
 
@@ -75,7 +75,7 @@ Fügen Sie die vordefinierte keyPhrase-Entität hinzu, um Schlüsselinhalte aus 
 ## <a name="train-the-luis-app"></a>Trainieren der LUIS-App
 Die neue `keyphrase`-Version der App muss trainiert werden.  
 
-1. Klicken Sie oben rechts auf der LUIS-Website auf die Schaltfläche **Train** (Trainieren).
+1. Wählen Sie oben rechts auf der LUIS-Website die Schaltfläche **Train** (Trainieren) aus.
 
     ![Trainieren der App](./media/luis-quickstart-intent-and-key-phrase/train-button.png)
 
@@ -89,7 +89,7 @@ Die neue `keyphrase`-Version der App muss trainiert werden.
 
     [![](media/luis-quickstart-intent-and-key-phrase/hr-publish-button-top-nav.png "Screenshot der Seite „Veröffentlichen“ mit hervorgehobener Schaltfläche zum Veröffentlichen im Produktionsslot")](media/luis-quickstart-intent-and-key-phrase/hr-publish-button-top-nav.png#lightbox)
 
-2. Wählen Sie den Produktionsslot aus, und klicken Sie auf die Schaltfläche **Publish** (Veröffentlichen).
+2. Wählen Sie den Produktionsslot und dann die Schaltfläche **Publish** (Veröffentlichen) aus.
 
     [![](media/luis-quickstart-intent-and-key-phrase/hr-publish-to-production-expanded.png "Screenshot der Seite „Veröffentlichen“ mit hervorgehobener Schaltfläche zum Veröffentlichen im Produktionsslot")](media/luis-quickstart-intent-and-key-phrase/hr-publish-to-production-expanded.png#lightbox)
 
@@ -201,10 +201,9 @@ Ihr Chatbot verfügt nun über ausreichend Informationen, um den nächsten Schri
 Für LUIS ist diese Anforderung abgeschlossen. Die aufrufende Anwendung (etwa ein Chatbot) kann das Ergebnis für „topScoringIntent“ und die keyPhrase-Daten aus der Äußerung verwenden, um den nächsten Schritt auszuführen. LUIS führt diese programmgesteuerte Aufgabe nicht für den Bot oder die aufrufende Anwendung aus. LUIS bestimmt lediglich die Absicht des Benutzers. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Wählen Sie im Menü oben links die Option **Meine Apps**. Klicken Sie in der Liste rechts vom App-Namen auf die drei Punkte (...) und anschließend auf **Löschen**. Klicken Sie im Popupdialogfenster **Delete app?** (App löschen?) auf **OK**.
+Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Wählen Sie im Menü oben links die Option **Meine Apps**. Wählen Sie in der App-Liste rechts vom App-Namen die Auslassungspunkte (***...***) und anschließend die Option **Löschen**. Wählen Sie im Popupdialogfenster **Delete App?** (App löschen?) **OK** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
 > [Erstellen einer App, die neben der Absichtsvorhersage die Stimmung zurückgibt](luis-quickstart-intent-and-sentiment-analysis.md)
-

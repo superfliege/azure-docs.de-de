@@ -9,14 +9,14 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: v-geberr
-ms.openlocfilehash: 1a48810287c1639910db8e39af2da61d836b2988
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 8dc6b8d4dd4cbe64841c4b36c498cf9021b4196f
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37340932"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930605"
 ---
-# <a name="tutorial-8--add-sentiment-analysis"></a>Tutorial: 8.  Hinzufügen einer Standpunktanalyse
+# <a name="tutorial-9--add-sentiment-analysis"></a>Tutorial: 9.  Hinzufügen einer Standpunktanalyse
 In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie Sie positive, negative und neutrale Emotionen aus Äußerungen extrahieren.
 
 <!-- green checkmark -->
@@ -30,7 +30,7 @@ In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie Sie positive
 Für diesen Artikel benötigen Sie ein kostenloses [LUIS](luis-reference-regions.md#luis-website)-Konto für die Erstellung Ihrer LUIS-Anwendung.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-Falls Sie nicht über die Personal-App aus dem Tutorial zur [vordefinierten keyPhrase-Entität](luis-quickstart-intent-and-key-phrase.md) verfügen, [importieren](create-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-keyphrase-HumanResources.json).
+Falls Sie nicht über die Personal-App aus dem Tutorial zur [vordefinierten keyPhrase-Entität](luis-quickstart-intent-and-key-phrase.md) verfügen, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-keyphrase-HumanResources.json).
 
 Wenn Sie die ursprüngliche Personal-App behalten möchten, klonen Sie die Version auf der Seite [Einstellungen](luis-how-to-manage-versions.md#clone-a-version), und nennen Sie sie `sentiment`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. 
 
@@ -53,7 +53,7 @@ Fügen Sie eine neue Absicht für die Erfassung von internem Mitarbeiterfeedback
 
     [ ![Screenshot: LUIS-App mit hervorgehobener Build-Option (rechts oben auf der Navigationsleiste)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-first-image.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-first-image.png#lightbox)
 
-2. Klicken Sie auf **Create new intent** (Neue Absicht erstellen).
+2. Wählen Sie **Create new intent** (Neue Absicht erstellen) aus.
 
     [ ![Screenshot: LUIS-App mit hervorgehobener Build-Option (rechts oben auf der Navigationsleiste)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent.png#lightbox)
 
@@ -81,7 +81,7 @@ Fügen Sie eine neue Absicht für die Erfassung von internem Mitarbeiterfeedback
 ## <a name="train-the-luis-app"></a>Trainieren der LUIS-App
 LUIS muss mit der neuen Absicht und den dazugehörigen Beispieläußerungen erst vertraut gemacht werden. 
 
-1. Klicken Sie oben rechts auf der LUIS-Website auf die Schaltfläche **Train** (Trainieren).
+1. Wählen Sie oben rechts auf der LUIS-Website die Schaltfläche **Train** (Trainieren) aus.
 
     ![Screenshot der hervorgehobenen Schaltfläche „Trainieren“](./media/luis-quickstart-intent-and-sentiment-analysis/train-button.png)
 
@@ -96,7 +96,7 @@ Konfigurieren Sie die Standpunktanalyse auf der Seite **Veröffentlichen**.
 
     ![Screenshot der Seite „Absicht“ mit erweiterter Schaltfläche „Veröffentlichen“ ](./media/luis-quickstart-intent-and-sentiment-analysis/hr-publish-button-in-top-nav-highlighted.png)
 
-2. Aktivieren Sie **Enable Sentiment Analysis** (Stimmungsanalyse aktivieren). Wählen Sie den Produktionsslot aus, und klicken Sie auf die Schaltfläche **Publish** (Veröffentlichen).
+2. Aktivieren Sie **Enable Sentiment Analysis** (Stimmungsanalyse aktivieren). Wählen Sie den Produktionsslot und dann die Schaltfläche **Publish** (Veröffentlichen) aus.
 
     [![](media/luis-quickstart-intent-and-sentiment-analysis/hr-publish-to-production-expanded.png "Screenshot der Seite „Veröffentlichen“ mit hervorgehobener Schaltfläche zum Veröffentlichen im Produktionsslot")](media/luis-quickstart-intent-and-sentiment-analysis/hr-publish-to-production-expanded.png#lightbox)
 
@@ -212,10 +212,10 @@ Ihr Chatbot verfügt nun über ausreichend Informationen, um den nächsten Schri
 Für LUIS ist diese Anforderung abgeschlossen. Die aufrufende Anwendung (etwa ein Chatbot) kann das Ergebnis für „topScoringIntent“ und die Stimmungsdaten aus der Äußerung verwenden, um den nächsten Schritt auszuführen. LUIS führt diese programmgesteuerte Aufgabe nicht für den Bot oder die aufrufende Anwendung aus. LUIS bestimmt lediglich die Absicht des Benutzers. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Wählen Sie im Menü oben links die Option **Meine Apps**. Klicken Sie in der Liste rechts vom App-Namen auf die drei Punkte (...) und anschließend auf **Löschen**. Klicken Sie im Popupdialogfenster **Delete app?** (App löschen?) auf **OK**.
+Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Klicken Sie im Menü oben links auf **Meine Apps**. Klicken Sie in der Liste rechts vom App-Namen auf die Auslassungspunkte (***...***) und anschließend auf **Löschen**. Wählen Sie im Popupdialogfenster **Delete App?** (App löschen?) **OK** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"] 
-> [Aufrufen der LUIS-Endpunkt-API mit C#](luis-get-started-cs-get-intent.md) 
+> [Überprüfen von Endpunktäußerungen in der Personal-App](luis-tutorial-review-endpoint-utterances.md) 
 

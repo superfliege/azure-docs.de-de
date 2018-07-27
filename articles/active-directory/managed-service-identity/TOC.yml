@@ -6,7 +6,7 @@
       href: overview.md
 - name: Schnellstarts
   items:
-    - name: Zugreifen auf Azure Resource Manager per VM-MSI
+    - name: Verwenden einer verwalteten Identität für den virtuellen Computer für den Zugriff auf Azure Resource Manager
       items:
         - name: Windows-VM
           href: tutorial-windows-vm-access-arm.md
@@ -49,11 +49,11 @@
         - name: Zugreifen auf Azure Resource Manager mit einer vom zugewiesenen Identität
           href: msi-tutorial-linux-vm-access-arm.md
     - name: Azure-Servicebus
-      href: /azure/service-bus-messaging/service-bus-managed-service-identity?context=azure/active-directory/context/msi-context
+      href: /azure/service-bus-messaging/service-bus-managed-service-identity?context=azure/active-directory/managed-service-identity/context/msi-context
     - name: Azure App Service und Functions
-      href: /azure/app-service/app-service-managed-service-identity?context=azure/active-directory/context/msi-context
+      href: /azure/app-service/app-service-managed-service-identity?context=azure/active-directory/managed-service-identity/context/msi-context
     - name: Azure Event Hubs
-      href: /azure/event-hubs/event-hubs-managed-service-identity?context=azure/active-directory/context/msi-context
+      href: /azure/event-hubs/event-hubs-managed-service-identity?context=azure/active-directory/managed-service-identity/context/msi-context
 - name: Anleitungen
   items:
     - name: Konfigurieren der Identität für einen virtuellen Azure-Computer
@@ -82,7 +82,7 @@
           href: qs-configure-template-windows-vmss.md
         - name: REST
           href: qs-configure-rest-vmss.md
-    - name: Verwenden einer VM-MSI
+    - name: Verwenden einer verwalteten VM-Identität
       items:
         - name: Abrufen eines Zugriffstokens
           href: how-to-use-vm-token.md

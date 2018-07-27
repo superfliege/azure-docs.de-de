@@ -138,7 +138,7 @@
 ### Problembehandlung
 #### [Fehlende Überwachungsdaten](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [Fehlende Daten in den Downloads](active-directory-reporting-troubleshoot-missing-data-download.md)
-#### [Fehler am Inhaltspaket von Azure AD-Aktivitätsprotokollen](active-directory-reporting-troubleshoot-
+#### [Azure AD-Aktivitätsprotokolle: Fehler in Inhaltspaketen](active-directory-reporting-troubleshoot-content-pack.md)
 #### [Fehler in der Azure AD Reporting-API](active-directory-reporting-troubleshoot-graph-api.md)
 
 ### [Programmgesteuerter Zugriff](active-directory-reporting-api-getting-started-azure-portal.md)
@@ -222,11 +222,13 @@
 #### [Problembehandlung](manage-apps/application-proxy-troubleshoot.md)
 
 ### Verwalten von Unternehmens-Apps
+#### [Hinzufügen einer Anwendung](manage-apps/add-application-portal.md)
+#### [Anzeigen von Mandanten-Apps](manage-apps/view-applications-portal.md)
 #### [Zuweisen von Benutzern](manage-apps/assign-user-or-group-access-portal.md)
 #### [Anpassen des Brandings](manage-apps/change-name-or-logo-portal.md)
 #### [Deaktivieren von Benutzeranmeldungen](manage-apps/disable-user-sign-in-portal.md)
 #### [Entfernen von Benutzern](manage-apps/remove-user-or-group-access-portal.md)
-#### [Anzeigen aller meiner Apps](manage-apps/view-applications-portal.md)
+
 #### [Verwalten der Bereitstellung von Benutzerkonten](manage-apps/configure-automatic-user-provisioning-portal.md)
 #### [Verwalten des einmaligen Anmeldens für Unternehmens-Apps](manage-apps/configure-single-sign-on-portal.md)
 #### [Erweiterte Zertifikatsignatur für SAML-Apps](manage-apps/certificate-signing-options.md)

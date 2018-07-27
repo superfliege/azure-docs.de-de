@@ -138,9 +138,9 @@
           items:
             - name: Langfristiges Aufbewahren von Sicherungen
               href: sql-database-long-term-retention.md
-            - name: 'Konfigurieren der langfristigen Sicherungsaufbewahrung: SQL-Speicher'
+            - name: Konfigurieren mit Azure-Blobspeicher
               href: sql-database-long-term-backup-retention-configure.md
-            - name: 'Konfigurieren der langfristigen Sicherungsaufbewahrung: Azure-Tresor (veraltet)'
+            - name: Konfigurieren mit Azure Vault (veraltet)
               href: sql-database-long-term-backup-retention-configure-vault.md
         - name: Failovergruppen und Georeplikation
           items:

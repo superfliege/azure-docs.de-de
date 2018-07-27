@@ -6,18 +6,18 @@ author: v-geberr
 manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
-ms.topic: article
-ms.date: 06/11/2018
+ms.topic: tutorial
+ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: 20950ced66497fb0dc96365975b37f244f677ce3
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 387f20d2080a67041c90ec1af93e791716839dd9
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266378"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929048"
 ---
-# <a name="use-prebuilt-intents-and-entities-to-handle-common-intents-and-data"></a>Verwenden von vordefinierten Absichten und Entitäten zum Verarbeiten allgemeiner Absichten und Daten
-Fügen Sie der Personal-App aus dem Schnellstart vordefinierte Absichten und Entitäten hinzu, um schnell Absichtsvorhersagen und extrahierte Daten zu erhalten. 
+# <a name="tutorial-2-add-prebuilt-intents-and-entities"></a>Tutorial: 2. Hinzufügen von vordefinierten Absichten und Entitäten
+Fügen Sie der Personal-App aus dem Tutorial vordefinierte Absichten und Entitäten hinzu, um schnell Absichtsvorhersagen und extrahierte Daten zu erhalten. 
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -28,7 +28,7 @@ In diesem Tutorial lernen Sie Folgendes:
 * Abfragen von LUIS und Empfangen von Vorhersageantworten
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-Falls Sie nicht über die Personal-App aus dem Schnellstart zu [benutzerdefinierten Domänen](luis-quickstart-intents-only.md) verfügen, [importieren](create-new-app.md#import-new-app) Sie den JSON-Code auf der [LUIS][LUIS]-Website über das GitHub-Repository mit [LUIS-Beispielen](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json) in eine neue App.
+Falls Sie nicht über die [Personal](luis-quickstart-intents-only.md)-App aus dem vorherigen Tutorial verfügen, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS](luis-reference-regions.md#luis-website)-Website über das GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json)).
 
 Wenn Sie die ursprüngliche Personal-App behalten möchten, klonen Sie die Version auf der Seite [Einstellungen](luis-how-to-manage-versions.md#clone-a-version), und nennen Sie sie `prebuilts`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. 
 
@@ -52,8 +52,9 @@ LUIS enthält mehrere vordefinierte Absichten für allgemeine Benutzerabsichten.
     * Utilities.Cancel
     * Utilities.Confirm
     * Utilities.Help
-    * Utilities.Stop
     * Utilities.StartOver
+    * Utilities.Stop
+
 
 ## <a name="add-prebuilt-entities"></a>Hinzufügen vordefinierter Entitäten
 LUIS enthält mehrere vordefinierte Entitäten für das Extrahieren allgemeiner Daten. 
@@ -79,9 +80,11 @@ LUIS enthält mehrere vordefinierte Entitäten für das Extrahieren allgemeiner 
 
     ![Statusleiste bei abgeschlossenem Training](./media/luis-quickstart-intents-only/trained.png)
 
-2. Wählen Sie rechts oben auf der LUIS-Website die Schaltfläche **Publish** (Veröffentlichen) aus, um die Seite „Publish“ (Veröffentlichen) zu öffnen. Der Produktionsslot ist standardmäßig aktiviert. Wählen Sie den Produktionsslot und dann die Schaltfläche **Publish** (Veröffentlichen) aus. Die Veröffentlichung ist abgeschlossen, wenn oben auf der Website die grüne Statusleiste angezeigt wird.
+2. Wählen Sie rechts oben auf der LUIS-Website die Schaltfläche **Publish** (Veröffentlichen) aus, um die Seite „Publish“ (Veröffentlichen) zu öffnen. 
 
-    Sie müssen, bevor Sie veröffentlichen oder die Endpunkt-URL testen, keinen LUIS Schlüssel im Azure-Portal erstellen. Jede LUIS-App verfügt über einen kostenlosen Startschlüssel für die Erstellung. Dieser ermöglicht das unbegrenzte Erstellen und eine [geringe Anzahl an Endpunkttreffern](luis-boundaries.md#key-limits). 
+3. Der Produktionsslot ist standardmäßig aktiviert. Wählen Sie den Produktionsslot und dann die Schaltfläche **Publish** (Veröffentlichen) aus. Die Veröffentlichung ist abgeschlossen, wenn oben auf der Website die grüne Statusleiste angezeigt wird.
+
+    Vor dem Veröffentlichen oder dem Testen der Endpunkt-URL müssen Sie keinen LUIS-Endpunktschlüssel im Azure-Portal erstellen. Jede LUIS-App verfügt über einen kostenlosen Startschlüssel für die Erstellung. Dieser ermöglicht das unbegrenzte Erstellen und eine [geringe Anzahl an Endpunkttreffern](luis-boundaries.md#key-limits). 
 
 ## <a name="query-endpoint-with-an-utterance"></a>Abfragen des Endpunkts mit einer Äußerung
 Wählen Sie unten auf der Seite **Publish** (Veröffentlichen) den Link **endpoint** (Endpunkt) aus. Hierdurch wird ein weiteres Browserfenster mit der Endpunkt-URL in der Adressleiste geöffnet. Geben Sie in der Adressleiste am Ende der URL `I want to cancel on March 3` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). 
@@ -163,12 +166,15 @@ Das Ergebnis hat die Absicht „Utilities.Cancel“ vorhergesagt und als Datum d
     }
     ```
 
+Es sind zwei Werte für den 3. März vorhanden, da die Äußerung keine Angaben dazu enthielt, ob der 3. März in der Vergangenheit oder in der Zukunft liegt. Es ist Aufgabe der Anwendung, mit der LUIS aufgerufen wird, eine Annahme zu treffen oder nachzufragen, falls dies erforderlich ist. 
+
 Durch das einfache und schnelle Hinzufügen von vordefinierten Absichten und Entitäten kann die Clientanwendung eine Unterhaltungsverwaltung hinzufügen und allgemeine Datentypen extrahieren. 
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Wählen Sie hierzu im Menü oben links die Option **Meine Apps**. Klicken Sie in der Liste rechts vom App-Namen auf die Auslassungspunkte (***...***) und anschließend auf **Löschen**. Wählen Sie im Popupdialogfenster **Delete App?** (App löschen?) **OK** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erfahren Sie mehr über Entitäten.](luis-concept-entity-types.md) 
+> [!div class="nextstepaction"]
+> [Hinzufügen einer Entität vom Typ „Regulärer Ausdruck“ zur App](luis-quickstart-intents-regex-entity.md)
 
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions

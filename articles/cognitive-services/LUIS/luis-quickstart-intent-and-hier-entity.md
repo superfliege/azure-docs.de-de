@@ -7,14 +7,14 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/22/2018
+ms.date: 07/04/2018
 ms.author: v-geberr
-ms.openlocfilehash: 6ba45de8ef41c8a57ca9c042a304e323a4fac263
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: babfc2f82e17f3745af1d940df89763170a002bd
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081692"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929585"
 ---
 # <a name="tutorial-5-add-hierarchical-entity"></a>Tutorial: 5. Hinzufügen einer Entität vom Typ „Hierarchisch“
 In diesem Tutorial erstellen Sie eine App, mit der veranschaulicht wird, wie Sie anhand des Kontexts nach zusammengehörenden Datenelementen suchen. 
@@ -27,10 +27,10 @@ In diesem Tutorial erstellen Sie eine App, mit der veranschaulicht wird, wie Sie
 > * Trainieren und Veröffentlichen der App
 > * Abfragen des App-Endpunkts zum Anzeigen der LUIS-JSON-Antwort, einschließlich hierarchischer untergeordneter Elemente 
 
-Für diesen Artikel benötigen Sie ein kostenloses [LUIS][LUIS]-Konto für die Erstellung Ihrer LUIS-Anwendung.
+Für diesen Artikel benötigen Sie ein kostenloses [LUIS](luis-reference-regions.md#luis-website)-Konto für die Erstellung Ihrer LUIS-Anwendung.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-Falls Sie nicht über die Personal-App aus dem [Tutorial zu Listenentitäten](luis-quickstart-intent-and-list-entity.md) verfügen, [importieren](create-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-list-HumanResources.json).
+Falls Sie nicht über die Personal-App aus dem [Tutorial zu Listenentitäten](luis-quickstart-intent-and-list-entity.md) verfügen, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-list-HumanResources.json).
 
 Wenn Sie die ursprüngliche Personal-App behalten möchten, klonen Sie die Version auf der Seite [Einstellungen](luis-how-to-manage-versions.md#clone-a-version), und nennen Sie sie `hier`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. 
 
@@ -64,14 +64,14 @@ Entfernen Sie die vordefinierte Zahlenentität vorübergehend, um die gesamte Ä
     [![Screenshot: LUIS-App mit Hervorhebung der Schaltfläche „Entities“ (Entitäten) im linken Menü](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png#lightbox)
 
 
-3. Wählen Sie die drei Punkte (...) rechts von der Zahlenentität in der Liste aus. Klicken Sie auf **Löschen**. 
+3. Wählen Sie die Auslassungspunkte (***...***) rechts von der Zahlenentität in der Liste aus. Klicken Sie auf **Löschen**. 
 
     [ ![Screenshot: LUIS-App auf der Seite mit den Entitäten mit Hervorhebung der Löschschaltfläche für die vordefinierte Zahlenentität](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png)](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png#lightbox)
 
 
-## <a name="add-utterances-to-findform-intent"></a>Hinzufügen von Äußerungen zur FindForm-Absicht
+## <a name="add-utterances-to-moveemployee-intent"></a>Hinzufügen von Äußerungen zur MoveEmployee-Absicht
 
-1. Wählen Sie im linken Menü die Option **Absichten**.
+1. Wählen Sie im linken Menü die Option **Intents** (Absichten) aus.
 
     [ ![Screenshot: LUIS-App mit Hervorhebung von „Intents“ (Absichten) im linken Menü](./media/luis-quickstart-intent-and-hier-entity/hr-select-intents-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-intents-button.png#lightbox)
 
@@ -268,12 +268,8 @@ Ihr Chatbot verfügt jetzt über genügend Informationen, um die Hauptaktion `Mo
 LUIS hat diese Anforderung abgeschlossen. Die aufrufende Anwendung (z.B. ein Chatbot) kann das Ergebnis für „topScoringIntent“ und die Daten aus der Entität verwenden, um den nächsten Schritt auszuführen. LUIS führt diese programmgesteuerte Aufgabe nicht für den Bot oder die aufrufende Anwendung aus. LUIS bestimmt lediglich die Absicht des Benutzers. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Klicken Sie dazu in der Liste rechts vom App-Namen auf die drei Punkte (...) und anschließend auf **Löschen**. Klicken Sie im Popupdialogfenster **Delete app?** (App löschen?) auf **OK**.
+Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Wählen Sie hierzu in der App-Liste rechts vom App-Namen die Auslassungspunkte (***...***) und anschließend die Option **Löschen**. Wählen Sie im Popupdialogfenster **Delete App?** (App löschen?) **OK** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"] 
-> [Erfahren Sie, wie Sie eine Listenentität hinzufügen](luis-quickstart-intent-and-list-entity.md) 
-
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions
+> [Hinzufügen einer zusammengesetzten Entität](luis-tutorial-composite-entity.md) 

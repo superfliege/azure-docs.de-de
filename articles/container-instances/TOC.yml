@@ -59,7 +59,7 @@
           href: container-instances-log-analytics.md
     - name: Ausführen von Workloads
       items:
-        - name: Ausführen von Aufgaben in Containern
+        - name: Ausführen von Tasks mit Neustartrichtlinie
           href: container-instances-restart-policy.md
         - name: Jenkins-Build-Agents in ACI
           href: container-instances-jenkins.md

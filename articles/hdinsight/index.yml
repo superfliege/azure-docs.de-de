@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 3d9fad10a11d3df29f81524eec0e4a03eb72c02f
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264231"
 documentType: LandingData
 title: Azure HDInsight-Dokumentation
 metadata:
@@ -13,12 +19,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/07/2018
   ms.author: nitinme
-  ms.openlocfilehash: 4d10acb6d3597b5f5007098775b9bd7751ed4b2a
-  ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
-  ms.translationtype: HT
-  ms.contentlocale: de-DE
-  ms.lasthandoff: 06/27/2018
-  ms.locfileid: "37053618"
 abstract:
   description: Hier erfahren Sie, wie Sie Azure HDInsight verwenden, um Streamingdaten oder historische Daten zu analysieren. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie Cluster erstellen, Big Data verarbeiten und analysieren und Lösungen mit den beliebtesten Open Source-Frameworks wie Hadoop, Spark, Hive, LLAP, Kafka, Storm und Microsoft Machine Learning Server entwerfen.<p>Azure HDInsight ist ein umfassender, vollständig verwalteter Open Source-Analysedienst für Unternehmen. HDInsight ist ein Clouddienst, mit dem sich riesige Datenmengen einfach, schnell und kostengünstig verarbeiten lassen. HDInsight unterstützt darüber hinaus eine breite Palette an Szenarien, u.a. Extrahieren, Transformieren und Laden (ETL); Data Warehousing; Machine Learning und IoT.</p>
   aside:
@@ -86,6 +86,8 @@ sections:
     style: cards
     className: cardsD
     items:
+    - title: Tools
+      html: <p><a href="https://docs.microsoft.com/en-us/azure/hdinsight/spark/apache-spark-intellij-tool-plugin">HDInsight-Tool für IntelliJ</a></p><p><a href="https://docs.microsoft.com/en-us/azure/hdinsight/spark/apache-spark-eclipse-tool-plugin">HDInsight-Tool für Eclipse</a></p><p><a href="https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-for-vscode">HDInsight-Tool für VSCode</a></p><p><a href="https://docs.microsoft.com/en-us/azure/hdinsight/hadoop/apache-hadoop-visual-studio-tools-get-started">HDInsight-Tool für Visual Studio</a></p>
     - title: Befehlszeile
       html: <p><a href="/powershell/resourcemanager/azurerm.hdinsight/v2.3.0/azurerm.hdinsight">Azure PowerShell</a></p>
     - title: Sprachen
