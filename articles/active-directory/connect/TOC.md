@@ -83,6 +83,7 @@
 
 ## Verwalten von Verbunddiensten
 ### [Verwalten und Anpassen](active-directory-aadconnect-federation-management.md)
+### [Verwalten der AD FS-Vertrauensstellung mit Azure AD und Azure AD Connect](active-directory-azure-ad-connect-azure-ad-trust.md)
 ### [Erstellen eines Verbunds mit mehreren Instanzen von Azure AD und einer Einzelinstanz von AD FS](active-directory-aadconnectfed-single-adfs-multitenant-federation.md)
 
 

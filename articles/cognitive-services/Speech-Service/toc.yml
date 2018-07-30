@@ -3,50 +3,86 @@
   href: index.yml
 - name: Übersicht
   items:
+    - name: Speech-Szenarien
+      href: speech-scenarios.md
     - name: Worum handelt es sich beim Speech-Dienst?
       href: overview.md
       expanded: true
-    - name: Speech-Szenarien
-      href: speech-scenarios.md
+    - name: Sprach-SDK
+      href: speech-sdk.md
+      displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows, NuGet, Maven, download, install, sample'
+    - name: Speech-Geräte-SDK
+      href: speech-devices-sdk.md
+      displayName: 'roobo, speech devices sdk'
 - name: Schnellstarts
   items:
     - name: Kostenloses Testen des Speech-Diensts
       href: get-started.md
-    - name: 'Erkennen von Sprache in C# (.NET unter Windows)'
-      href: quickstart-csharp-dotnet-windows.md
-      displayName: 'recognize speech, speech recognition, speech to text'
-    - name: 'Erkennen von Sprache in C# (.NET Core unter Windows)'
-      href: quickstart-csharp-dotnetcore-windows.md
-      displayName: 'recognize speech, speech recognition, speech to text'
-    - name: Erkennen von Sprache in einer UWP-App
-      href: quickstart-csharp-uwp.md
-      displayName: 'recognize speech, speech recognition, speech to text, C#'
-    - name: Erkennen von Sprache in C++ für Windows
-      href: quickstart-cpp-windows.md
-      displayName: 'recognize speech, speech recognition, speech to text'
-    - name: Erkennen von Sprache in C++ für Linux
-      href: quickstart-cpp-linux.md
-      displayName: 'recognize speech, speech recognition, speech to text'
-    - name: Erkennen von Sprache in Java für Android
-      href: quickstart-java-android.md
-      displayName: 'recognize speech, speech recognition, speech to text'
+      displayName: 'get started, subscription key'
+    - name: 'C#'
+      items:
+        - name: 'Erkennen von Sprache in C# (.NET unter Windows)'
+          href: quickstart-csharp-dotnet-windows.md
+          displayName: 'recognize speech, speech recognition, speech to text, stt'
+        - name: 'Erkennen von Sprache in C# (.NET Core unter Windows)'
+          href: quickstart-csharp-dotnetcore-windows.md
+          displayName: 'recognize speech, speech recognition, speech to text, stt'
+        - name: Erkennen von Sprache in einer UWP-App
+          href: quickstart-csharp-uwp.md
+          displayName: 'recognize speech, speech recognition, speech to text, stt, C#'
+    - name: C++
+      items:
+        - name: Erkennen von Sprache in C++ für Windows
+          href: quickstart-cpp-windows.md
+          displayName: 'recognize speech, speech recognition, speech to text, stt'
+        - name: Erkennen von Sprache in C++ für Linux
+          href: quickstart-cpp-linux.md
+          displayName: 'recognize speech, speech recognition, speech to text, stt'
+    - name: Java
+      items:
+        - name: Erkennen von Sprache in Java für Android
+          href: quickstart-java-android.md
+          displayName: 'recognize speech, speech recognition, speech to text, stt'
     - name: Erste Schritte mit dem SDK für sprachaktivierte Geräte
       href: speech-devices-sdk-qsg.md
       displayName: 'roobo, speech devices sdk'
 - name: Anleitungen
   items:
     - name: Erkennen von Sprache
-      href: how-to-speech-to-text.md
-      displayName: 'recognize speech, speech recognition, speech to text'
-    - name: Synthetisieren von Sprache
+      displayName: 'recognize speech, speech recognition, speech to text, stt'
+      items:
+        - name: 'C#'
+          href: how-to-recognize-speech-csharp.md
+        - name: C++
+          href: how-to-recognize-speech-cpp.md
+        - name: Java
+          href: how-to-recognize-speech-java.md
+        - name: REST
+          href: how-to-recognize-speech-rest.md
+    - name: Synthetisieren von Sprache (REST)
       href: how-to-text-to-speech.md
-      displayName: 'synthesize speech, speech synthesis, text to speech'
+      displayName: 'synthesize speech, speech synthesis, text to speech, tts'
+    - name: Erkennen von Absichten anhand von gesprochener Sprache
+      displayName: 'recognize intent, intent recognition, language understanding service, luis'
+      items:
+        - name: 'C#'
+          href: how-to-recognize-intents-from-speech-csharp.md
+        - name: C++
+          href: how-to-recognize-intents-from-speech-cpp.md
+        - name: Java
+          href: how-to-recognize-intents-from-speech-java.md
     - name: Übersetzen von gesprochener Sprache
-      href: how-to-translate-speech.md
-      displayName: 'translate speech, speech translation, translator'
-    - name: Batch-Transkription
+      displayName: 'translate speech, speech translation, translator, s2s, speech to speech'
+      items:
+        - name: 'C#'
+          href: how-to-translate-speech-csharp.md
+        - name: C++
+          href: how-to-translate-speech-cpp.md
+        - name: Java
+          href: how-to-translate-speech-java.md
+    - name: Batch-Transkriptions (REST)
       href: batch-transcription.md
-      displayName: 'recognize speech, speech recognition, speech to text'
+      displayName: 'recognize speech, speech recognition, speech to text, stt'
     - name: Abrufen des SDK für sprachaktivierte Geräte
       href: get-speech-devices-sdk.md
       displayName: 'roobo, speech devices sdk, download'
@@ -69,36 +105,17 @@
     - name: Anpassen des Codeworts für das Gerät (Geräte-SDK)
       href: speech-devices-sdk-create-kws.md
       displayName: 'roobo, speech devices sdk, wake word, keyword spotting, kws'
-- name: Beispiele
-  items:
-    - name: Herunterladen von Beispielen
-      href: samples.md
-    - name: Spracherkennung
-      href: speech-to-text-sample.md
-      displayName: 'recognize speech, speech recognition, speech to text'
-    - name: Absichtserkennung
-      href: intent.md
-      displayName: 'recognize intent, intent recognition, language understanding service, luis'
-    - name: Sprachübersetzung
-      href: translation.md
-      displayName: 'translate speech, speech translation, translator'
 - name: Konzepte
   items:
     - name: Spracherkennung
       href: speech-to-text.md
-      displayName: 'recognize speech, speech recognition, speech to text'
+      displayName: 'recognize speech, speech recognition, speech to text, stt'
     - name: Text-zu-Sprache
       href: text-to-speech.md
-      displayName: 'synthesize speech, speech synthesis, text to speech'
+      displayName: 'synthesize speech, speech synthesis, text to speech, tts'
     - name: Sprachübersetzung
       href: speech-translation.md
-      displayName: 'translate speech, speech translation, translator'
-    - name: Sprach-SDK
-      href: speech-sdk.md
-      displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows, NuGet, download'
-    - name: Speech-Geräte-SDK
-      href: speech-devices-sdk.md
-      displayName: 'roobo, speech devices sdk'
+      displayName: 'translate speech, speech translation, translator, s2s, speech to speech'
 - name: Verweis
   items:
     - name: Unterstützte Sprachen
@@ -112,42 +129,48 @@
       displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows'
     - name: Markup für Sprachsynthese
       href: speech-synthesis-markup.md
-      displayName: 'synthesize speech, speech synthesis, text to speech'
+      displayName: 'synthesize speech, speech synthesis, text to speech, tts'
 - name: angeben
   items:
-    - name: Versionsanmerkungen zum Speech-SDK
-      href: releasenotes.md
     - name: Häufig gestellte Fragen
       items:
         - name: Spracherkennung – Häufig gestellte Fragen
           href: faq-stt.md
-          displayName: 'recognize speech, speech recognition, speech to text'
+          displayName: 'recognize speech, speech recognition, speech to text, stt'
         - name: 'Text-zu-Sprache: Häufig gestellte Fragen'
           href: faq-text-to-speech.md
-          displayName: 'synthesize speech, speech synthesis, text to speech'
+          displayName: 'synthesize speech, speech synthesis, text to speech, tts'
         - name: 'Übersetzung: Häufig gestellte Fragen'
           href: 'https://www.microsoft.com/translator/faq.aspx'
-          displayName: 'translate speech, speech translation, translator'
+          displayName: 'translate speech, speech translation, translator, s2s, speech to speech'
+    - name: Sprach-SDK
+      items:
+        - name: Download
+          href: 'speech-sdk.md#get-the-sdk'
+        - name: Beispiele
+          href: 'speech-sdk.md#get-the-samples'
+        - name: Versenden Ihrer Anwendung
+          href: ship-application.md
+        - name: Versionshinweise
+          href: releasenotes.md
+        - name: Lizenz
+          href: license.md
+        - name: Drittanbieterhinweise
+          href: third-party-notices.md
+    - name: Speech-Geräte-SDK
+      items:
+        - name: Lizenz
+          href: speech-devices-sdk-license.md
+          displayName: 'roobo, speech devices sdk'
+        - name: Drittanbieterhinweise
+          href: devices-sdk-third-party-notices.md
+          displayName: 'roobo, speech devices sdk'
     - name: Problembehandlung
       href: troubleshooting.md
     - name: Support
       href: support.md
-    - name: Versenden Ihrer Anwendung
-      href: ship-application.md
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
-    - name: Lizenz/Rechtliche Hinweise
-      items:
-        - name: Sprach-SDK – Lizenz
-          href: license.md
-        - name: Drittanbieterhinweise für das Speech-SDK
-          href: third-party-notices.md
-        - name: SDK für sprachaktivierte Geräte – Lizenz
-          href: speech-devices-sdk-license.md
-          displayName: 'roobo, speech devices sdk'
-        - name: Drittanbieterhinweise für das Geräte-SDK
-          href: devices-sdk-third-party-notices.md
-          displayName: 'roobo, speech devices sdk'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
     - name: Datenschutz und Cookies

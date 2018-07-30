@@ -89,6 +89,10 @@
         - name: Lösung für Azure-Containerintegrität
           href: ../monitoring/monitoring-container-health.md
           maintainContext: true
+        - name: Anzeigen der Protokolle für die Master-Komponenten
+          href: view-master-logs.md
+        - name: Anzeigen der Kubelet-Protokolle
+          href: kubelet-logs.md
     - name: Entwickeln und Ausführen von Anwendungen
       items:
         - name: Ausführen von Anwendungen mit Helm
@@ -121,8 +125,6 @@
       items:
         - name: SSH-Knotenzugriff
           href: aks-ssh.md
-        - name: Abrufen von Kubelet-Protokollen
-          href: kubelet-logs.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle

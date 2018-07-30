@@ -209,6 +209,8 @@
       items:
         - name: Verwalten von Clusterressourcen
           href: apache-spark-resource-manager.md
+        - name: Verwalten von Spark-Anwendungen mithilfe eines erweiterten Verlaufsservers
+          href: apache-azure-spark-history-server.md
         - name: Konfigurieren von Spark-Einstellungen
           href: apache-spark-settings.md
         - name: Optimieren von Spark-Aufträgen
