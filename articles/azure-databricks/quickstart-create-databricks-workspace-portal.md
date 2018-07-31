@@ -1,25 +1,22 @@
 ---
-title: 'Schnellstart: Ausführen eines Spark-Auftrags in Azure Databricks mit dem Azure-Portal | Microsoft-Dokumentation'
+title: 'Schnellstart: Ausführen eines Spark-Auftrags in Azure Databricks mit dem Azure-Portal'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie über das Azure-Portal einen Azure Databricks-Arbeitsbereich und einen Apache Spark-Cluster erstellen und einen Spark-Auftrag ausführen.
 services: azure-databricks
-documentationcenter: ''
-author: nitinme
+ms.service: azure-databricks
+author: jasonwhowell
+ms.author: jasonh
 manager: cgronlun
 editor: cgronlun
-ms.service: azure-databricks
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/23/2018
-ms.author: nitinme
+ms.date: 07/23/2018
 ms.custom: mvc
-ms.openlocfilehash: 19dcdeefe4a65f5c0fab06766a0fa40838df8b08
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a302c0c6c4ecbaff2d11d852caf9e1e1500931b8
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30232431"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225345"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Schnellstart: Ausführen eines Spark-Auftrags in Azure Databricks mit dem Azure-Portal
 
@@ -41,7 +38,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
 
     ![Databricks im Azure-Portal](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Databricks im Azure-Portal")
 
-3. Geben Sie unter **Azure Databricks-Dienst** die Werte für die Erstellung eines Databricks-Arbeitsbereichs an.
+2. Geben Sie unter **Azure Databricks-Dienst** die Werte für die Erstellung eines Databricks-Arbeitsbereichs an.
 
     ![Erstellen eines Azure Databricks-Arbeitsbereichs](./media/quickstart-create-databricks-workspace-portal/create-databricks-workspace.png "Erstellen eines Azure Databricks-Arbeitsbereichs")
 
@@ -63,6 +60,9 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Erstellen eines Spark-Clusters in Databricks
 
+> [!NOTE] 
+> Navigieren Sie vor dem Erstellen des Clusters zu Ihrem Profil, und legen Sie für Ihr Abonnement die **nutzungsbasierte Bezahlung** fest, um für die Erstellung des Azure Databricks-Clusters ein kostenloses Konto zu verwenden. Weitere Informationen finden Sie unter [Kostenloses Azure-Konto](https://azure.microsoft.com/en-us/free/).  
+
 1. Navigieren Sie im Azure-Portal zum erstellten Databricks-Arbeitsbereich, und klicken Sie auf **Launch Workspace** (Arbeitsbereich starten).
 
 2. Sie werden zum Azure Databricks-Portal weitergeleitet. Klicken Sie im Portal auf **Cluster**.
@@ -83,14 +83,34 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
 
 Weitere Informationen zum Erstellen von Clustern in Azure Databricks finden Sie unter [Creating Clusters](https://docs.azuredatabricks.net/user-guide/clusters/create.html) (Erstellen von Clustern).
 
+
+## <a name="download-a-sample-data-file"></a>Herunterladen einer Datei mit Beispieldaten
+Laden Sie eine Datei mit JSON-Beispieldaten herunter, und speichern Sie sie in Azure-Blobspeicher.
+
+1. Laden Sie diese Datei mit JSON-Beispieldaten [von GitHub](https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) auf Ihren lokalen Computer herunter. Klicken Sie mit der rechten Maustaste darauf, und speichern Sie die unformatierte Datei an einem lokalen Speicherort. 
+
+2. Wenn Sie noch nicht über ein Speicherkonto verfügen, sollten Sie jetzt eins erstellen. 
+   - Klicken Sie im Azure-Portal auf **Ressource erstellen**.  Wählen Sie die Kategorie **Storage** und dann die Option **Speicherkonten**.  
+   - Geben Sie einen eindeutigen Namen für das Speicherkonto an.
+   - Wählen Sie **Kontoart**: **Blob Storage**.
+   - Wählen Sie eine Namen für die **Ressourcengruppe** aus. Verwenden Sie dieselbe Ressourcengruppe, die Sie für den Databricks-Arbeitsbereich erstellt haben.
+   
+   Weitere Informationen finden Sie unter [Erstellen eines Azure Blob Storage-Kontos](../storage/common/storage-create-storage-account.md#create-a-storage-account). 
+
+3. Erstellen Sie einen Speichercontainer im Blob Storage-Konto, und laden Sie die JSON-Beispieldatei in den Container hoch. Sie können das Azure-Portal oder den [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) verwenden, um die Datei hochzuladen.
+
+   - Öffnen Sie das Speicherkonto im Azure-Portal.
+   - Wählen Sie **Blobs**aus.
+   - Wählen Sie **+ Container**, um einen neuen leeren Container zu erstellen.
+   - Geben Sie unter **Name** einen Namen für den Container an, z.B. `databricks`. 
+   - Wählen Sie die Zugriffsebene **Private (non anonymous access)** (Privat (kein anonymer Zugriff)).
+   - Wählen Sie den Containernamen aus, nachdem der Container erstellt wurde.
+   - Wählen Sie die Schaltfläche **Hochladen**.
+   - Wählen Sie auf der Seite **Dateien** das **Ordnersymbol**, um nach der Beispieldatei `small_radio_json.json` zu suchen und sie für den Upload auszuwählen. 
+   - Wählen Sie **Hochladen**, um die Datei hochzuladen.
+   
+   
 ## <a name="run-a-spark-sql-job"></a>Ausführen eines Spark SQL-Auftrags
-
-Bevor Sie mit diesem Abschnitt beginnen, müssen folgende Schritte ausgeführt werden:
-
-* [Erstellen Sie ein Azure Blob Storage-Konto.](../storage/common/storage-create-storage-account.md#create-a-storage-account) 
-* Laden Sie eine JSON-Beispieldatei von [GitHub](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) herunter. 
-* Laden Sie die JSON-Beispieldatei in das Azure Blob Storage-Konto hoch, das Sie erstellt haben. Dateien können mit dem [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) hochgeladen werden.
-
 Gehen Sie wie folgt vor, um ein Notizbuch in Databricks zu erstellen, das Notizbuch zum Lesen von Daten aus einem Azure Blob Storage-Konto zu konfigurieren und anschließend einen Spark SQL-Auftrag für die Daten auszuführen:
 
 1. Klicken Sie im linken Bereich auf **Arbeitsbereich**. Klicken Sie im Dropdownmenü **Arbeitsbereich** auf **Erstellen** > **Notizbuch**.

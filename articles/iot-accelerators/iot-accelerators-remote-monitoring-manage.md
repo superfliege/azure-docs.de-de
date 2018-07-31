@@ -1,20 +1,20 @@
 ---
-title: Verwalten von Geräten in einer Azure-basierten Lösung für die Remoteüberwachung | Microsoft-Dokumentation
+title: 'Tutorial: Verwalten von Geräten in einer Azure-basierten Lösung für die Remoteüberwachung | Microsoft-Dokumentation'
 description: In diesem Tutorial wird veranschaulicht, wie Sie die Geräte verwalten, die mit dem Solution Accelerator für die Remoteüberwachung verbunden sind.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 06/12/2018
+ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 63baf6397b2542311525bac740c50b5eacbd35cf
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: cd8e8c1fe1b77113968b7af635f45f9e0e077b7c
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097426"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159196"
 ---
 # <a name="tutorial-configure-and-manage-devices-connected-to-your-monitoring-solution"></a>Tutorial: Konfigurieren und Verwalten von Geräten, die mit der Überwachungslösung verbunden sind
 
@@ -33,11 +33,9 @@ In diesem Tutorial führen Sie Folgendes durch:
 > * Neukonfigurieren eines Geräts
 > * Organisieren Ihrer Geräte
 
-## <a name="prerequisites"></a>Voraussetzungen
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Für dieses Tutorial benötigen Sie eine bereitgestellte Instanz des Solution Accelerators für die Remoteüberwachung in Ihrem Azure-Abonnement.
-
-Falls Sie den Solution Accelerator für die Remoteüberwachung noch nicht bereitgestellt haben, sollten Sie die Schnellstartanleitung [Bereitstellen einer cloudbasierten Lösung für die Remoteüberwachung](quickstart-remote-monitoring-deploy.md) durcharbeiten.
+[!INCLUDE [iot-iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
 ## <a name="add-a-simulated-device"></a>Hinzufügen eines simulierten Geräts
 
@@ -51,7 +49,7 @@ Wählen Sie im Panel **New device** (Neues Gerät) die Option **Simulated** (Sim
 
 ## <a name="test-the-simulated-device"></a>Testen des simulierten Geräts
 
-Um zu testen, ob das simulierte Gerät Telemetriedaten sendet und Eigenschaftswerte meldet, wählen Sie es auf der Seite **Devices** (Geräte) in der Liste mit den Geräten aus. Live-Informationen zum Gerät werden im Bereich **Device Details** (Gerätedetails) angezeigt:
+Um zu testen, ob das simulierte Engine-Gerät Telemetriedaten sendet und Eigenschaftswerte meldet, wählen Sie es auf der Seite **Devices** (Geräte) in der Liste mit den Geräten aus. Live-Informationen zur Engine werden im Bereich **Device Details** (Gerätedetails) angezeigt:
 
 [![Anzeigen des neuen simulierten Engine-Geräts](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-expanded.png#lightbox)
 
@@ -61,13 +59,11 @@ Um zu testen, ob das simulierte Gerät Telemetriedaten sendet und Eigenschaftswe
 
 Im Bereich **Device Details** (Gerätedetails) werden weitere Informationen zum Gerät angezeigt, z.B. Tagwerte, die unterstützten Methoden und die vom Gerät gemeldeten Eigenschaften.
 
-Scrollen Sie zum Anzeigen von detaillierten Diagnosedaten nach unten, um **Diagnostics** (Diagnose) anzuzeigen:
-
-[![Anzeigen der Gerätediagnose](./media/iot-accelerators-remote-monitoring-manage/devicediagnostics-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicediagnostics-expanded.png#lightbox)
+Scrollen Sie zum Anzeigen von detaillierten Diagnosedaten im Panel **Device Details** (Gerätedetails) nach unten, um den Abschnitt **Diagnose** anzuzeigen.
 
 ## <a name="act-on-a-device"></a>Aktionen für ein Gerät
 
-Führen Sie die **FirmwareUpdate**-Methode aus, um zu testen, ob das simulierte Engine-Gerät richtig auf die vom Solution Accelerator initiierten Aktionen reagiert. Um für ein Gerät per Ausführung einer Methode tätig zu werden, wählen Sie das Gerät in der Liste mit den Geräten aus und klicken dann auf **Jobs** (Aufträge). Sie können auch mehr als ein Gerät auswählen, falls Sie für mehrere Geräte tätig werden möchten. Wählen Sie im Panel **Jobs** (Aufträge) die Option **Run method** (Methode ausführen). Für das Gerätemodell **Engine** werden drei Methoden angegeben: **FirmwareUpdate**, **FillTank** und **EmptyTank**:
+Führen Sie die **FirmwareUpdate**-Methode aus, um zu testen, ob das simulierte Engine-Gerät richtig auf die über das Dashboard initiierten Aktionen reagiert. Um für ein Gerät per Ausführung einer Methode tätig zu werden, wählen Sie das Gerät in der Liste mit den Geräten aus und klicken dann auf **Jobs** (Aufträge). Sie können auch mehr als ein Gerät auswählen, falls Sie für mehrere Geräte tätig werden möchten. Wählen Sie im Panel **Jobs** (Aufträge) die Option **Run method** (Methode ausführen). Für das Gerätemodell **Engine** werden drei Methoden angegeben: **FirmwareUpdate**, **FillTank** und **EmptyTank**:
 
 [![Engine-Methoden](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-expanded.png#lightbox)
 
@@ -103,7 +99,7 @@ Nachdem der Auftrag abgeschlossen ist, können Sie zur Seite **Dashboard** navig
 
 ## <a name="organize-your-devices"></a>Organisieren Ihrer Geräte
 
-Um für Sie als Bediener das Organisieren und Verwalten Ihrer Geräte zu vereinfachen, möchten Sie die Teams mit dem entsprechenden Teamnamen kennzeichnen. Contoso verfügt über zwei unterschiedliche Teams für Außendienstaktivitäten:
+Um für Sie als Bediener das Organisieren und Verwalten Ihrer Geräte zu vereinfachen, sollten Sie sie mit einem Teamnamen kennzeichnen. Contoso verfügt über zwei unterschiedliche Teams für Außendienstaktivitäten:
 
 * Das Team „Smart Vehicle“ (Intelligentes Fahrzeug) verwaltet LKW und Geräte für die Prototyperstellung.
 * Das Team „Smart Building“ (Intelligentes Gebäude) verwaltet Kältemaschinen, Aufzüge und Motoren.
@@ -114,19 +110,15 @@ Navigieren Sie zum Anzeigen Ihrer gesamten Geräte zur Seite **Devices** (Gerät
 
 ### <a name="add-tags"></a>Hinzufügen von Tags
 
-Wählen Sie alle Geräte vom Typ **Trucks** (LKW) und **Prototyping** (Prototyperstellung) aus. Klicken Sie dann auf **Jobs** (Aufträge):
+Wählen Sie alle Geräte vom Typ **Trucks** (LKW) und **Prototyping** (Prototyperstellung) aus. Klicken Sie dann auf **Jobs** (Aufträge).
 
-[![Auswählen von Geräten vom Typ „Prototyp“ und „LKW“](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect-expanded.png#lightbox)
-
-Wählen Sie die Option **Tag**, legen Sie den Auftragsnamen auf **AddConnectedVehicleTag** fest, und fügen Sie dann ein Texttag mit dem Namen **FieldService** und dem Wert **ConnectedVehicle** hinzu. Klicken Sie anschließend auf **Übernehmen**:
+Wählen Sie im Panel **Jobs** (Aufträge) die Option **Tag**, legen Sie den Auftragsnamen auf **AddConnectedVehicleTag** fest, und fügen Sie dann ein Texttag mit dem Namen **FieldService** und dem Wert **ConnectedVehicle** hinzu. Klicken Sie anschließend auf **Übernehmen**:
 
 [![Hinzufügen von Tags zu Prototyp- und LKW-Geräten](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-expanded.png#lightbox)
 
-Wählen Sie auf der Geräteseite alle Geräte vom Typ **Chiller** (Kältemaschine), **Elevator** (Aufzug) und **Engine** aus. Klicken Sie dann auf **Jobs** (Aufträge):
+Wählen Sie auf der Geräteseite alle Geräte vom Typ **Chiller** (Kältemaschine), **Elevator** (Aufzug) und **Engine** aus. Klicken Sie dann auf **Jobs** (Aufträge).
 
-[![Auswählen von Geräten vom Typ Kältemaschine, Aufzug und Engine](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect2-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmultiselect2-expanded.png#lightbox)
-
-Wählen Sie die Option **Tag**, legen Sie den Auftragsnamen auf **AddSmartBuildingTag** fest, und fügen Sie dann ein Texttag mit dem Namen **FieldService** und dem Wert **SmartBuilding** hinzu. Klicken Sie anschließend auf **Übernehmen**:
+Wählen Sie im Panel **Jobs** (Aufträge) die Option **Tag**, legen Sie den Auftragsnamen auf **AddSmartBuildingTag** fest, und fügen Sie dann ein Texttag mit dem Namen **FieldService** und dem Wert **SmartBuilding** hinzu. Klicken Sie anschließend auf **Übernehmen**:
 
 [![Hinzufügen eines Tags zu Geräten vom Typ „Kältemaschine“, „Aufzug“ und „Engine“](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-expanded.png#lightbox)
 
@@ -148,17 +140,7 @@ Der Contoso-Bediener kann Geräte jetzt basierend auf dem Betriebsteam abfragen:
 
 [![Erstellen des Filters „Connected Vehicle“](./media/iot-accelerators-remote-monitoring-manage/filterinaction-inline.png)](./media/iot-accelerators-remote-monitoring-manage/filterinaction-expanded.png#lightbox)
 
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-
-Wenn Sie mit dem nächsten Tutorial fortfahren möchten, können Sie die Bereitstellung des Solution Accelerators für die Remoteüberwachung beibehalten. Zum Reduzieren der Kosten für die Ausführung des Solution Accelerators, wenn Sie ihn nicht nutzen, können Sie die simulierten Geräte im Panel mit den Einstellungen beenden:
-
-[![Anhalten der Telemetrie](./media/iot-accelerators-remote-monitoring-manage/togglesimulation-inline.png)](./media/iot-accelerators-remote-monitoring-manage/togglesimulation-expanded.png#lightbox)
-
-Sie können die simulierten Geräte neu starten, wenn Sie mit dem nächsten Tutorial beginnen möchten.
-
-Falls Sie den Solution Accelerator nicht mehr benötigen, können Sie ihn auf der Seite [Bereitgestellte Lösungen](https://www.azureiotsolutions.com/Accelerators#dashboard) löschen:
-
-![Löschen der Lösung](media/iot-accelerators-remote-monitoring-manage/deletesolution.png)
+[!INCLUDE [iot-iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e39e5861c0606c43a869fe02a7de2dc9b6f489ea
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: ad6812f25ee33bf723ed86d4ec32ca6898d01774
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125652"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186737"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-web-application"></a>Tutorial: Debuggen einer Service Fabric Mesh-Webanwendung
 
@@ -75,8 +75,8 @@ Wenn die lokale Bereitstellung fertig gestellt wurde und Ihre App von Visual Stu
 **Tipps zum Debuggen**
 
 * Sollte der Fehler **No Service Fabric local cluster is running** (Es wird kein lokaler Service Fabric-Cluster ausgeführt.) auftreten, vergewissern Sie sich, dass der SLCM (Service Local Cluster Manager) ausgeführt wird, klicken Sie auf der Taskleiste mit der rechten Maustaste auf das SLCM-Symbol, und klicken Sie anschließend auf **Start Local Cluster** (Lokalen Cluster starten). Kehren Sie nach dem Start des Clusters zu Visual Studio zurück, und drücken Sie**F5**.
-* Sollte beim Start der App ein Fehler vom Typ **404** auftreten, sind wahrscheinlich die Umgebungsvariablen in **service.yaml** nicht korrekt. Vergewissern Sie sich, dass `AppName`, `ApiHostPort` und `ServiceName` ordnungsgemäß festgelegt sind, wie unter [Festlegen von Umgebungsvariablen](#set-environment-variables) beschrieben.
-* Vergewissern Sie sich im Falle von Buildfehlern in **service.yaml**, dass zum Einrücken der Zeilen keine Tabulatoren, sondern Leerzeichen verwendet wurden.
+* Sollte beim Start der App ein Fehler vom Typ **404** auftreten, sind wahrscheinlich die Umgebungsvariablen in **service.yaml** nicht korrekt. Vergewissern Sie sich, dass `ApiHostPort` und `ServiceName` ordnungsgemäß festgelegt sind, wie unter [Tutorial: Erstellen, Debuggen und Bereitstellen einer Webanwendung mit mehreren Diensten in Service Fabric Mesh](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore#create-environment-variables) beschrieben.
+* Vergewissern Sie sich im Falle von Buildfehlern in **service.yaml**, dass zum Einrücken der Zeilen keine Tabulatoren, sondern Leerzeichen verwendet wurden. Darüber hinaus müssen Sie die App vorerst mit dem englischen Gebietsschema erstellen.
 
 ### <a name="debug-in-visual-studio"></a>Debuggen in Visual Studio
 

@@ -1,6 +1,6 @@
 ---
-title: Verwenden einer Windows-VM-MSI für den Zugriff auf Azure SQL
-description: Dieses Tutorial erläutert, wie Sie eine Windows-VM-MSI (Managed Service Identity, verwaltete Dienstidentität) verwenden, um auf Azure SQL zuzugreifen.
+title: Verwenden eines virtuellen Windows-Computers für den Zugriff auf Azure SQL
+description: Dieses Tutorial erläutert, wie Sie mithilfe einer verwalteten Dienstidentität eines virtuellen Windows-Computers auf Azure SQL zugreifen.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 72452382c4fd2f9c1acb0d773da5c7ed014f9bda
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: ace7f11eeea081077855a409824272b4b55f3c33
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001931"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247226"
 ---
-# <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>Tutorial: Verwenden einer Windows-VM-MSI (Managed Service Identity, verwaltete Dienstidentität) für den Zugriff auf Azure SQL
+# <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-sql"></a>Tutorial: Verwenden einer verwalteten Dienstidentität eines virtuellen Windows-Computers für den Zugriff auf Azure SQL
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Dienstidentität (Managed Service Identity, MSI) für einen virtuellen Windows-Computer für den Zugriff auf einen Azure SQL-Server verwenden. Verwaltete Dienstidentitäten werden von Azure automatisch verwaltet und ermöglichen Ihnen die Authentifizierung für Dienste, die die Azure AD-Authentifizierung unterstützen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Folgendes wird vermittelt:
+In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Dienstidentität für einen virtuellen Windows-Computer für den Zugriff auf einen Azure SQL-Server verwenden. Verwaltete Dienstidentitäten werden von Azure automatisch verwaltet und ermöglichen Ihnen die Authentifizierung für Dienste, die die Azure AD-Authentifizierung unterstützen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
-> * Aktivieren von MSI auf einem virtuellen Windows-Computer 
+> * Aktivieren einer verwalteten Dienstidentität auf einem virtuellen Windows-Computer 
 > * Gewähren des Zugriffs auf eine Azure SQL-Server durch Ihre VM
 > * Abrufen eines Zugriffstokens mithilfe der VM-Identität und Verwenden dieses Zugriffstokens zum Aufrufen eines Azure SQL-Servers
 
@@ -44,7 +44,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Erstellen eines virtuellen Windows-Computers in einer neuen Ressourcengruppe
 
-In diesem Tutorial wird ein neuer virtueller Windows-Computer erstellt.  Sie können MSI auch auf einem vorhandenen virtuellen Computer aktivieren.
+In diesem Tutorial wird ein neuer virtueller Windows-Computer erstellt.  Sie können die verwaltete Dienstidentität auch auf einem vorhandenen virtuellen Computer aktivieren.
 
 1.  Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Ressource erstellen**.
 2.  Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**. 
@@ -55,13 +55,13 @@ In diesem Tutorial wird ein neuer virtueller Windows-Computer erstellt.  Sie kö
 
     ![Alternativer Bildtext](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-msi-on-your-vm"></a>Aktivieren von MSI auf dem virtuellen Computer 
+## <a name="enable-managed-service-identity-on-your-vm"></a>Aktivieren der verwalteten Dienstidentität auf Ihrem virtuellen Computer 
 
-Eine VM-MSI ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Durch das Aktivieren von MSI weisen Sie Azure an, eine verwaltete Identität für den virtuellen Computer zu erstellen. Im Hintergrund werden durch das Aktivieren der MSI zwei Vorgänge ausgelöst: Der virtuelle Computer wird bei Azure Active Directory registriert, um die zugehörige verwaltete Identität zu erstellen, und die Identität wird auf dem virtuellen Computer konfiguriert.
+Eine verwaltete Dienstidentität eines virtuellen Computers ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Durch das Aktivieren der verwalteten Dienstidentität weisen Sie Azure an, eine verwaltete Identität für den virtuellen Computer zu erstellen. Durch das Aktivieren der verwalteten Dienstidentität werden zwei Vorgänge im Hintergrund ausgelöst: Der virtuelle Computer wird bei Azure Active Directory registriert, um die zugehörige verwaltete Identität zu erstellen, und die Identität wird auf dem virtuellen Computer konfiguriert.
 
-1.  Wählen Sie den **virtuellen Computer** aus, auf dem Sie MSI aktivieren möchten.  
+1.  Wählen Sie den virtuellen Computer aus, auf dem Sie die verwaltete Dienstidentität aktivieren möchten.  
 2.  Klicken Sie in der links angezeigten Navigationsleiste auf **Konfiguration**. 
-3.  Die Option **Verwaltete Dienstidenität** wird angezeigt. Wählen Sie zum Registrieren und Aktivieren von MSI die Option **Ja** oder zum Deaktivieren „Nein“. 
+3.  Die Option **Verwaltete Dienstidenität** wird angezeigt. Wählen Sie zum Registrieren und Aktivieren der verwalteten Dienstidentität die Option **Ja** oder zum Deaktivieren „Nein“. 
 4.  Achten Sie darauf, zum Speichern der Konfiguration auf **Speichern** zu klicken.  
     ![Alternativer Bildtext](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
@@ -70,38 +70,38 @@ Eine VM-MSI ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne das
 Nun können Sie Ihrer VM den Zugriff auf eine Datenbank auf einem Azure SQL-Server gewähren.  Für diesen Schritt können Sie einen vorhandenen SQL-Server verwenden oder einen neuen erstellen.  Zum Erstellen eines neuen Servers und einer Datenbank mithilfe des Azure-Portals befolgen Sie diesen [Azure SQL-Schnellstart](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal). Es gibt in der [Azure SQL-Dokumentation](https://docs.microsoft.com/azure/sql-database/) auch Schnellstarts, in denen die Azure-Befehlszeilenschnittstelle und Azure PowerShell verwendet werden.
 
 Das Gewähren des Zugriffs durch eine VM auf eine Datenbank umfasst drei Schritte:
-1.  Erstellen einer Gruppe in Azure AD und Hinzufügen der VM-MSI als Mitglied dieser Gruppe
+1.  Erstellen einer Gruppe in Azure AD und Hinzufügen der verwalteten Dienstidentität des virtuellen Computers als Mitglied dieser Gruppe
 2.  Aktivieren der Azure AD-Authentifizierung für den SQL-Server
 3.  Erstellen eines in der Datenbank **enthaltenen Benutzers**, der die Azure AD-Gruppe darstellt
 
 > [!NOTE]
-> Normalerweise würden Sie einen enthaltenen Benutzer erstellen, der direkt der MSI des virtuellen Computers zugeordnet ist.  Azure SQL erlaubt es derzeit nicht, den Azure AD-Dienstprinzipal, der die VM-MSI darstellt, einem enthaltenen Benutzer zuzuordnen.  Zum Umgehen dieser Einschränkung machen Sie die VM-MSI zu einem Mitglied einer Azure AD-Gruppe und erstellen dann einen enthaltenen Benutzer in der Datenbank, die die Gruppe darstellt.
+> Normalerweise würden Sie einen enthaltenen Benutzer erstellen, der direkt der verwalteten Dienstidentität des virtuellen Computers zugeordnet ist.  Azure SQL erlaubt es derzeit nicht, den Azure AD-Dienstprinzipal, der die verwaltete Dienstidentität des virtuellen Computers darstellt, einem enthaltenen Benutzer zuzuordnen.  Zum Umgehen dieser Einschränkung machen Sie die verwaltete Dienstidentität des virtuellen Computers zu einem Mitglied einer Azure AD-Gruppe und erstellen dann einen enthaltenen Benutzer in der Datenbank, die die Gruppe darstellt.
 
 
-### <a name="create-a-group-in-azure-ad-and-make-the-vm-msi-a-member-of-the-group"></a>Erstellen einer Gruppe in Azure AD und Hinzufügen der VM-MSI als Mitglied dieser Gruppe
+### <a name="create-a-group-in-azure-ad-and-make-the-vm-managed-service-identity-a-member-of-the-group"></a>Erstellen einer Gruppe in Azure AD und Hinzufügen der verwalteten Dienstidentität des virtuellen Computers als Mitglied dieser Gruppe
 
 Sie können eine vorhandene Azure AD-Gruppe verwenden oder mithilfe von Azure AD PowerShell eine neue erstellen.  
 
 Installieren Sie zunächst das [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2)-Modul. Melden Sie sich mit `Connect-AzureAD` an, und führen Sie den folgenden Befehl aus, um die Gruppe zu erstellen und in einer Variable zu speichern:
 
 ```powershell
-$Group = New-AzureADGroup -DisplayName "VM MSI access to SQL" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
+$Group = New-AzureADGroup -DisplayName "VM Managed Service Identity access to SQL" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
 ```
 
 Die Ausgabe ähnelt der folgenden, die auch den Wert der Variable untersucht:
 
 ```powershell
-$Group = New-AzureADGroup -DisplayName "VM MSI access to SQL" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
+$Group = New-AzureADGroup -DisplayName "VM Managed Service Identity access to SQL" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
 $Group
 ObjectId                             DisplayName          Description
 --------                             -----------          -----------
-6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 VM MSI access to SQL
+6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 VM Managed Service Identity access to SQL
 ```
 
-Fügen Sie anschließend die VM-MSI der Gruppe hinzu.  Sie benötigen die **ObjectId** der MSI, die Sie mit Azure PowerShell abrufen können.  Laden Sie zunächst [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) herunter. Melden Sie sich anschließend mit `Connect-AzureRmAccount` an, und führen Sie die folgenden Befehle aus:
+Fügen Sie anschließend die verwaltete Dienstidentität des virtuellen Computers zur Gruppe hinzu.  Sie benötigen das **ObjectId**-Element der verwalteten Dienstidentität, die Sie mit Azure PowerShell abrufen können.  Laden Sie zunächst [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) herunter. Melden Sie sich anschließend mit `Connect-AzureRmAccount` an, und führen Sie die folgenden Befehle aus:
 - Wenn Sie über mehrere Azure-Abonnements verfügen, stellen Sie sicher, dass der Sitzungskontext auf das richtige festgelegt ist.
 - Listen Sie die verfügbaren Ressourcen in Ihrem Azure-Abonnement auf, und überprüfen Sie die Ressourcengruppe und die Namen der virtuellen Computer.
-- Rufen Sie die Eigenschaften der VM-MSI ab, und verwenden Sie dabei die richtigen Werte für `<RESOURCE-GROUP>` und `<VM-NAME>`.
+- Rufen Sie die Eigenschaften der verwalteten Dienstidentität des virtuellen Computers ab, und verwenden Sie dabei die richtigen Werte für `<RESOURCE-GROUP>` und `<VM-NAME>`.
 
 ```powershell
 Set-AzureRMContext -subscription "bdc79274-6bb9-48a8-bfd8-00c140fxxxx"
@@ -109,14 +109,14 @@ Get-AzureRmResource
 $VM = Get-AzureRmVm -ResourceGroup <RESOURCE-GROUP> -Name <VM-NAME>
 ```
 
-Die Ausgabe ähnelt der folgenden, die auch die Objekt-ID des Dienstprinzipals der VM-MSI untersucht:
+Die Ausgabe ähnelt der folgenden, die auch die Objekt-ID des Dienstprinzipals der verwalteten Dienstidentität des virtuellen Computers untersucht:
 ```powershell
 $VM = Get-AzureRmVm -ResourceGroup DevTestGroup -Name DevTestWinVM
 $VM.Identity.PrincipalId
 b83305de-f496-49ca-9427-e77512f6cc64
 ```
 
-Fügen Sie nun die VM-MSI der Gruppe hinzu.  Sie können einen Dienstprinzipal nur mit Azure AD PowerShell einer Gruppe hinzufügen.  Führen Sie den folgenden Befehl aus:
+Fügen Sie nun die verwaltete Dienstidentität des virtuellen Computers zur Gruppe hinzu.  Sie können einen Dienstprinzipal nur mit Azure AD PowerShell einer Gruppe hinzufügen.  Führen Sie den folgenden Befehl aus:
 ```powershell
 Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId $VM.Identity.PrincipalId
 ```
@@ -134,7 +134,7 @@ b83305de-f496-49ca-9427-e77512f6cc64 0b67a6d6-6090-4ab4-b423-d6edda8e5d9f DevTes
 
 ### <a name="enable-azure-ad-authentication-for-the-sql-server"></a>Aktivieren der Azure AD-Authentifizierung für den SQL-Server
 
-Nachdem Sie die Gruppe erstellt und ihr die VM-MSI als Mitglied hinzugefügt haben, können Sie die [Azure AD-Authentifizierung für den SQL-Server konfigurieren](/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-azure-sql-server). Gehen Sie dazu wie folgt vor:
+Nachdem Sie die Gruppe erstellt und ihr die verwaltete Dienstidentität des virtuellen Computers als Mitglied hinzugefügt haben, können Sie die [Azure AD-Authentifizierung für den SQL-Server konfigurieren](/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-azure-sql-server). Gehen Sie dazu wie folgt vor:
 
 1.  Wählen Sie im Azure-Portal im Navigationsbereich links **SQL-Server** aus.
 2.  Klicken Sie auf den SQL-Server, für den die Azure AD-Authentifizierung aktiviert werden soll.
@@ -162,25 +162,25 @@ Für den nächsten Schritt benötigen Sie [Microsoft SQL Server Management Studi
 10.  Geben Sie im Abfragefenster die folgende Zeile ein, und klicken Sie auf der Symbolleiste auf **Ausführen**:
     
      ```
-     CREATE USER [VM MSI access to SQL] FROM EXTERNAL PROVIDER
+     CREATE USER [VM Managed Service Identity access to SQL] FROM EXTERNAL PROVIDER
      ```
     
      Der Befehl sollte erfolgreich abgeschlossen werden und den enthaltenen Benutzer für die Gruppe erstellen.
 11.  Leeren Sie das Abfragefenster, geben Sie die folgende Zeile ein, und klicken Sie auf der Symbolleiste auf **Ausführen**:
      
      ```
-     ALTER ROLE db_datareader ADD MEMBER [VM MSI access to SQL]
+     ALTER ROLE db_datareader ADD MEMBER [VM Managed Service Identity access to SQL]
      ```
 
      Der Befehl sollte erfolgreich abgeschlossen werden und dem enthaltenen Benutzer die Möglichkeit gewähren, die gesamte Datenbank zu lesen.
 
-Auf dem virtuellen Computer ausgeführter Code kann jetzt ein Token von der MSI abrufen und damit die Authentifizierung auf dem SQL-Server durchführen.
+Auf dem virtuellen Computer ausgeführter Code kann jetzt ein Token von der verwalteten Dienstidentität abrufen und damit die Authentifizierung auf dem SQL-Server durchführen.
 
 ## <a name="get-an-access-token-using-the-vm-identity-and-use-it-to-call-azure-sql"></a>Abrufen eines Zugriffstokens mithilfe der VM-Identität und Verwenden dieses Zugriffstokens zum Aufrufen von Azure SQL 
 
-Azure SQL unterstützt die Azure AD-Authentifizierung nativ, sodass Zugriffstoken, die mit der MSI abgerufen wurden, direkt angenommen werden können.  Verwenden Sie das Verfahren für **Zugriffstoken**, um eine Verbindung mit SQL herzustellen.  Dieses ist Teil des Azure SQL-Integration in Azure AD und unterscheidet sich vom Bereitstellen von Anmeldeinformationen in der Verbindungszeichenfolge.
+Azure SQL unterstützt die Azure AD-Authentifizierung nativ, sodass Zugriffstoken, die mit der verwalteten Dienstidentität abgerufen wurden, direkt angenommen werden können.  Verwenden Sie das Verfahren für **Zugriffstoken**, um eine Verbindung mit SQL herzustellen.  Dieses ist Teil des Azure SQL-Integration in Azure AD und unterscheidet sich vom Bereitstellen von Anmeldeinformationen in der Verbindungszeichenfolge.
 
-Mit dem folgenden .NET-Codebeispiel wird eine Verbindung mit SQL mithilfe eines Zugriffstokens hergestellt.  Dieser Code muss auf dem virtuellen Computer ausgeführt werden, um auf den VM-MSI-Endpunkt zugreifen zu können.  Für die Verwendung des Verfahrens mit Zugriffstoken ist **.NET Framework 4.6** oder höher erforderlich.  Ersetzen Sie die Werte für AZURE-SQL-SERVERNAME und DATABASE entsprechend.  Beachten Sie, dass die Ressourcen-ID für Azure SQL „https://database.windows.net/“ ist.
+Mit dem folgenden .NET-Codebeispiel wird eine Verbindung mit SQL mithilfe eines Zugriffstokens hergestellt.  Dieser Code muss auf dem virtuellen Computer ausgeführt werden, um auf den Endpunkt für die verwaltete Dienstidentität des virtuellen Computers zugreifen zu können.  Für die Verwendung des Verfahrens mit Zugriffstoken ist **.NET Framework 4.6** oder höher erforderlich.  Ersetzen Sie die Werte für AZURE-SQL-SERVERNAME und DATABASE entsprechend.  Beachten Sie, dass die Ressourcen-ID für Azure SQL „https://database.windows.net/“ ist.
 
 ```csharp
 using System.Net;
@@ -198,7 +198,7 @@ string accessToken = null;
 
 try
 {
-    // Call MSI endpoint.
+    // Call Managed Service Identity endpoint.
     HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
     // Pipe response Stream to a StreamReader and extract access token.
@@ -229,7 +229,7 @@ Eine andere schnelle Möglichkeit zum Testen der umfassenden Einrichtung ohne Sc
 1.  Navigieren Sie im Portal zu **Virtuelle Computer**, wechseln Sie dann zu Ihrem virtuellen Windows-Computer, und klicken Sie in der **Übersicht** auf **Verbinden**. 
 2.  Geben Sie Ihren **Benutzernamen** und Ihr **Kennwort** ein, das Sie beim Erstellen des virtuellen Windows-Computers hinzugefügt haben. 
 3.  Sie haben nun eine **Remotedesktopverbindung** mit dem virtuellen Computer erstellt. Öffnen Sie jetzt **PowerShell** in der Remotesitzung. 
-4.  Erstellen Sie mithilfe des PowerShell-Befehls `Invoke-WebRequest` eine Anforderung an den lokalen MSI-Endpunkt, um ein Zugriffstoken für Azure SQL zu erhalten.
+4.  Erstellen Sie mithilfe des PowerShell-Befehls `Invoke-WebRequest` eine Anforderung an den lokalen Endpunkt für die verwaltete Dienstidentität, um ein Zugriffstoken für Azure SQL zu erhalten.
 
     ```powershell
        $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatabase.windows.net%2F' -Method GET -Headers @{Metadata="true"}
@@ -268,7 +268,7 @@ Eine andere schnelle Möglichkeit zum Testen der umfassenden Einrichtung ohne Sc
     $SqlAdapter.Fill($DataSet)
     ```
 
-Überprüfen Sie den Wert von `$DataSet.Tables[0]` zum Anzeigen der Ergebnisse der Abfrage.  Herzlichen Glückwunsch, Sie haben die Datenbank mithilfe einer VM-MSI abgefragt, ohne dafür Anmeldeinformationen anzugeben!
+Überprüfen Sie den Wert von `$DataSet.Tables[0]` zum Anzeigen der Ergebnisse der Abfrage.  Herzlichen Glückwunsch, Sie haben die Datenbank mithilfe einer verwalteten Dienstidentität des virtuellen Computers abgefragt, ohne dafür Anmeldeinformationen anzugeben!
 
 ## <a name="next-steps"></a>Nächste Schritte
 

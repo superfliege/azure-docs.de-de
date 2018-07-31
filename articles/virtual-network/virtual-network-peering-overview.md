@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: jdial
-ms.openlocfilehash: 27eaa6582a355198b61e996cce0a4acce48061cb
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 63ea834401e5c6798b6f84b6f09a964005d14306
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267127"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257870"
 ---
 # <a name="virtual-network-peering"></a>Peering in virtuellen Netzwerken
 
@@ -85,7 +85,9 @@ Informationen zu erforderlichen Berechtigungen für die Erstellung eines Peering
 
 ## <a name="pricing"></a>Preise
 
-Für ein- und ausgehenden Datenverkehr, der eine VNET-Peeringverbindung verwendet, fällt eine Gebühr an. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/virtual-network).
+Für ein- und ausgehenden Datenverkehr, der eine VNET-Peeringverbindung verwendet, fällt eine Gebühr an. Weitere Informationen zu den Preisen für VNET-Peering und globales VNET-Peering finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/virtual-network).
+
+Gatewaytransit ist eine Peeringeigenschaft, die es einem virtuellen Netzwerk ermöglicht, ein VPN-Gateway im virtuellen Netzwerk mit Peeringbeziehung für standortübergreifende oder VNET-zu-VNET-Konnektivität zu nutzen. In diesem Szenario fallen für Datenverkehr über ein Remotegateway [Gebühren für das VPN-Gateway](https://azure.microsoft.com/en-us/pricing/details/vpn-gateway/), aber keine [Gebühren für VNET-Peering](https://azure.microsoft.com/pricing/details/virtual-network) an. Beispiel: Wenn VNetA ein VPN-Gateway für lokale Verbindungen nutzt und VNetB über Peering mit VNetA verbunden ist und die entsprechenden Eigenschaften konfiguriert sind, wird nur ausgehender Datenverkehr von VNetB an lokale Ressourcen gemäß den Preisen für VPN-Gateways in Rechnung gestellt. Es fallen keine Gebühren für VNET-Peering an. Lesen Sie mehr über das [Konfigurieren des VPN-Gatewaytransits für ein Peering virtueller Netzwerke](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

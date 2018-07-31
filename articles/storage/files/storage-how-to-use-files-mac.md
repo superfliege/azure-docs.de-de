@@ -1,12 +1,12 @@
 ---
-title: "Einbinden einer Azure-Dateifreigabe über SMB mit macOS | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie mit macOS eine Azure-Dateifreigabe über SMB einbinden."
+title: Einbinden einer Azure-Dateifreigabe über SMB mit macOS | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mit macOS eine Azure-Dateifreigabe über SMB einbinden.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: RenaShahMSFT
 manager: aungoo
-editor: tysonn
-ms.assetid: 
+editor: tamram
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: 6e71a13f99160fdd310be1e9a59717c9fecbf35d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eaa59e0568a6fc6ac9c867c6f05b7bfb22b71055
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39206506"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>Einbinden einer Azure-Dateifreigabe über SMB mit macOS
-[Azure Files](storage-files-introduction.md) ist ein Dienst von Microsoft zum Erstellen und Verwenden von branchenstandardkonformen Netzwerkdateifreigaben in Azure. Azure-Dateifreigaben können in macOS Sierra (10.12) und El Capitan (10.11) eingebunden werden. In diesem Artikel werden zwei Methoden zum Einbinden einer Azure-Dateifreigabe unter macOS behandelt: über die Finder-Benutzeroberfläche unter Verwendung des Terminals.
+[Azure Files](storage-files-introduction.md) ist ein Dienst von Microsoft zum Erstellen und Verwenden von branchenstandardkonformen Netzwerkdateifreigaben in Azure. Azure-Dateifreigaben können in macOS El Capitan (10.11) und neuere Versionen eingebunden werden. In diesem Artikel werden zwei Methoden zum Einbinden einer Azure-Dateifreigabe unter macOS behandelt: über die Finder-Benutzeroberfläche und mithilfe des Terminals.
 
 > [!Note]  
 > Vor dem Einbinden einer Azure-Dateifreigabe über SMB sollten Sie die SMB-Paketsignatur deaktivieren. Andernfalls leidet unter Umständen die Leistung beim Zugriff auf die Azure-Dateifreigabe über macOS. Da die SMB-Verbindung verschlüsselt wird, hat dies keine Auswirkungen auf die Verbindungssicherheit. Über das Terminal können Sie die SMB-Paketsignatur mithilfe folgender Befehle deaktivieren, wie unter [Paketsignaturen für SMB 2- und SMB 3-Verbindungen deaktivieren](https://support.apple.com/HT205926) beschrieben:  
@@ -45,9 +46,9 @@ ms.lasthandoff: 10/11/2017
 
 2. **Wählen Sie im Menü „Gehe zu“ die Option „Mit Server verbinden“ aus:** Wandeln Sie die beiden umgekehrten Schrägstriche am Anfang (`\\`) unter Verwendung des UNC-Pfads aus den [Voraussetzungen](#preq) in `smb://` und alle anderen umgekehrten Schrägstriche (`\`) in normale Schrägstriche (`/`) um. Der Link sollte wie folgt aussehen: ![Dialogfeld „Mit Server verbinden“](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
 
-3. **Geben Sie als Benutzername und Kennwort den Namen der Freigabe bzw. den Speicherkontoschlüssel an:** Wenn Sie im Dialogfeld „Mit Server verbinden“ auf „Verbinden“ klicken, werden Sie zur Angabe eines Benutzernamens und eines Kennworts aufgefordert. (Hier wird automatisch Ihr macOS-Benutzername eingefügt.) Sie können den Namen der Freigabe und den Speicherkontoschlüssel optional in Ihrem macOS-Schlüsselbund platzieren.
+3. **Geben Sie als Benutzername und Kennwort den Speicherkontonamen und den Speicherkontoschlüssel an:** Wenn Sie im Dialogfeld „Mit Server verbinden“ auf „Verbinden“ klicken, werden Sie zur Angabe eines Benutzernamens und eines Kennworts aufgefordert. (Hier wird automatisch Ihr macOS-Benutzername eingefügt.) Sie können den Namen des Speicherkontos und den Speicherkontoschlüssel optional in Ihrem macOS-Schlüsselbund platzieren.
 
-4. **Verwenden Sie die Azure-Dateifreigabe nach Bedarf:** Nach Angabe des Freigabenamens und des Speicherkontoschlüssels als Benutzername/Kennwort wird die Freigabe eingebunden. Die Freigabe kann wie ein normaler lokaler Ordner oder eine normale Dateifreigabe verwendet werden. So können Sie beispielsweise Dateien per Drag&Drop in der Dateifreigabe platzieren:
+4. **Verwenden Sie die Azure-Dateifreigabe nach Bedarf:** Nach Angabe des Freigabenamens und des Speicherkontoschlüssels als Benutzername und Kennwort wird die Freigabe eingebunden. Die Freigabe kann wie ein normaler lokaler Ordner oder eine normale Dateifreigabe verwendet werden. So können Sie beispielsweise Dateien per Drag&Drop in der Dateifreigabe platzieren:
 
     ![Momentaufnahme einer eingebundenen Azure-Dateifreigabe](./media/storage-how-to-use-files-mac/mount-via-finder-3.png)
 
@@ -66,6 +67,6 @@ ms.lasthandoff: 10/11/2017
 Weitere Informationen zu Azure Files erhalten Sie über diese Links.
 
 * [Auf dem Mac eine Verbindung über die Dateifreigabe herstellen](https://support.apple.com/HT204445)
-* [Häufig gestellte Fragen](../storage-files-faq.md)
+* [HÄUFIG GESTELLTE FRAGEN](../storage-files-faq.md)
 * [Troubleshoot Azure File storage problems in Windows](storage-troubleshoot-windows-file-connection-problems.md) (Beheben von Problemen mit Azure File Storage unter Windows)      
 * [Troubleshoot Azure File storage problems in Linux](storage-troubleshoot-linux-file-connection-problems.md) (Beheben von Problemen mit Azure File Storage unter Linux)    

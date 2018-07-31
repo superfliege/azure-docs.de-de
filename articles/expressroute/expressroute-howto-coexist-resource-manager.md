@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.author: charwen,cherylmc
-ms.openlocfilehash: 9b0e19ac859d3f0185c42a79353651996fcbf631
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: cdeda7d72461f35c138f12ca9b2758cdba44d5f6
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823562"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259254"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections"></a>Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen
 > [!div class="op_single_selector"]
@@ -75,7 +75,7 @@ Sie haben die Wahl zwischen zwei Vorgehensweisen. Welches Konfigurationsverfahre
     Wenn Sie noch nicht über ein virtuelles Netzwerk verfügen, werden Sie in diesem Verfahren durch die Schritte zum Erstellen eines neuen virtuellen Netzwerks mithilfe des Resource Manager-Bereitstellungsmodells und zum Erstellen neuer ExpressRoute- sowie Site-to-Site-VPN-Verbindungen geführt. Führen Sie zum Konfigurieren eines virtuellen Netzwerks die Schritte in [So erstellen Sie ein neues virtuelles Netzwerk und parallele Verbindungen](#new) aus.
 * Ich verfüge bereits über ein VNET, das auf dem Resource Manager-Bereitstellungsmodell basiert.
   
-    Möglicherweise haben Sie bereits ein virtuelles Netzwerk mit einer vorhandenen Standort-zu-Standort-VPN-Verbindung oder einer ExpressRoute-Verbindung. Bei diesem Szenario müssen Sie das vorhandene Gateway löschen, wenn die Gatewaysubnetzmaske /28 oder größer ist. Im Abschnitt [So konfigurieren Sie parallele Verbindungen für ein bereits vorhandenes VNET](#add) werden Sie durch die Schritte zum Löschen des Gateways und zum anschließenden Erstellen neuer ExpressRoute- und Site-to-Site-VPN-Verbindungen geführt.
+    Möglicherweise haben Sie bereits ein virtuelles Netzwerk mit einer vorhandenen Standort-zu-Standort-VPN-Verbindung oder einer ExpressRoute-Verbindung. Bei diesem Szenario müssen Sie das vorhandene Gateway löschen, wenn die Gatewaysubnetzmaske /28 oder kleiner (/28, /29 usw.) ist. Im Abschnitt [So konfigurieren Sie parallele Verbindungen für ein bereits vorhandenes VNET](#add) werden Sie durch die Schritte zum Löschen des Gateways und zum anschließenden Erstellen neuer ExpressRoute- und Site-to-Site-VPN-Verbindungen geführt.
   
     Wenn Sie Ihr Gateway löschen und neu erstellen, kommt es für Ihre standortübergreifenden Verbindungen zu Ausfallzeiten. Die VMs und Dienste können aber immer noch über den Load Balancer kommunizieren, während Sie Ihr Gateway konfigurieren, wenn sie entsprechend konfiguriert sind.
 
@@ -91,7 +91,7 @@ Dieses Verfahren führt Sie durch das Erstellen eines VNETs sowie durch das Erst
   Select-AzureRmSubscription -SubscriptionName 'yoursubscription'
   $location = "Central US"
   $resgrp = New-AzureRmResourceGroup -Name "ErVpnCoex" -Location $location
-  $VNetASN = 65010
+  $VNetASN = 65515
   ```
 3. Erstellen Sie ein virtuelles Netzwerk mit einem Gatewaysubnetz. Weitere Informationen zum Erstellen von virtuellen Netzwerken finden Sie unter [Create a virtual network](../virtual-network/manage-virtual-network.md#create-a-virtual-network) (Erstellen eines virtuellen Netzwerks). Weitere Informationen zum Erstellen von Subnetzen finden Sie unter [Erstellen eines Subnetzes](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet).
    

@@ -3,20 +3,19 @@ title: Überwachung und Problembehandlung für eine Cloudspeicheranwendung in Az
 description: Sie können Diagnosetools, Metriken und Warnungen für die Problembehandlung und Überwachung von Cloudanwendungen verwenden.
 services: storage
 author: tamram
-manager: jeconnoc
+manager: twooley
 ms.service: storage
 ms.workload: web
-ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 02/20/2018
+ms.date: 07/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: eb58104309802125a8424cbbf8a1bef3d1c5e79c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ad64384ff17b1666f88ba99e04ec345015e07276
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418185"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39206053"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Überwachung und Problembehandlung für eine Cloudspeicheranwendung
 
@@ -30,9 +29,9 @@ Im vierten Teil der Serie lernen Sie Folgendes:
 > * Ausführen von Testdatenverkehr mit falschen SAS-Token
 > * Herunterladen und Analysieren von Protokollen
 
-Die [Azure Storage-Analyse](../common/storage-analytics.md) stellt die Protokollierungs- und Metrikdaten für ein Speicherkonto bereit. Diese Daten bieten Einblicke in die Integrität Ihres Speicherkontos. Bevor Sie Ihr Speicherkonto analysieren können, müssen Sie die Datensammlung einrichten. Hierzu müssen Sie die Protokollierung aktivieren, Metriken konfigurieren und Warnungen aktivieren.
+Die [Azure Storage-Analyse](../common/storage-analytics.md) stellt die Protokollierungs- und Metrikdaten für ein Speicherkonto bereit. Diese Daten bieten Einblicke in die Integrität Ihres Speicherkontos. Sie können Protokollierung, Metriken und Warnungen konfigurieren, um Daten in Azure Storage Analytics zu sammeln. Hierzu müssen Sie die Protokollierung aktivieren, Metriken konfigurieren und Warnungen aktivieren.
 
-Protokolle und Metriken für Speicherkonten werden über die Registerkarte **Diagnose** im Azure-Portal aktiviert. Es gibt zwei Arten von Metriken: Bei **aggregierten** Metriken werden Eingang/Ausgang, Verfügbarkeit, Latenz sowie Erfolgsprozentwerte erfasst. Diese Metriken werden für die Blob-, Warteschlangen-, Tabellen- und Dateidienste aggregiert. Bei **Pro API**-Metriken wird der gleichen Satz Metriken für jeden Speichervorgang in der Azure Storage-Dienst-API erfasst. Die Speicherprotokollierung ermöglicht es Ihnen, Details zu erfolgreichen und fehlerhaften Anforderungen in Ihrem Speicherkonto aufzuzeichnen. Anhand dieser Protokolle können Sie Informationen zu Lese-, Schreib- und Löschvorgängen für Ihre Tabellen, Warteschlangen und Blobs in Azure anzeigen. Außerdem können Sie die Ursachen für Anforderungsfehler wie Zeitüberschreitungen, Drosselung und Autorisierungsfehler sehen.
+Protokolle und Metriken für Speicherkonten werden über die Registerkarte **Diagnose** im Azure-Portal aktiviert. Die Speicherprotokollierung ermöglicht es Ihnen, Details zu erfolgreichen und fehlerhaften Anforderungen in Ihrem Speicherkonto aufzuzeichnen. Anhand dieser Protokolle können Sie Informationen zu Lese-, Schreib- und Löschvorgängen für Ihre Tabellen, Warteschlangen und Blobs in Azure anzeigen. Außerdem können Sie die Ursachen für Anforderungsfehler wie Zeitüberschreitungen, Drosselung und Autorisierungsfehler sehen.
 
 ## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
 
@@ -42,11 +41,11 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
 
 Wählen Sie im linken Menü **Ressourcengruppen**, **myResourceGroup** und dann Ihr Speicherkonto in der Ressourcenliste aus.
 
-Legen Sie unter **Diagnose** die Option **Status** auf **Ein** fest. Stellen Sie sicher, dass alle Optionen unter **Blob-Eigenschaften** aktiviert sind.
+Legen Sie unter **Diagnostics settings (classic)** (Diagnoseeinstellungen (klassisch)) die Option **Status** auf **Ein** fest. Stellen Sie sicher, dass alle Optionen unter **Blob-Eigenschaften** aktiviert sind.
 
 Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
-![Diagnosebereich](media/storage-monitor-troubleshoot-storage-application/contoso.png)
+![Diagnosebereich](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
 
 ## <a name="enable-alerts"></a>Aktivieren von Warnungen
 
@@ -54,34 +53,33 @@ Warnungen bieten die Möglichkeit, Administratoren per E-Mail zu benachrichtigen
 
 ### <a name="navigate-to-the-storage-account-in-the-azure-portal"></a>Navigieren Sie im Azure-Portal zum Speicherkonto.
 
-Wählen Sie im linken Menü **Ressourcengruppen**, **myResourceGroup** und dann Ihr Speicherkonto in der Ressourcenliste aus.
+Wählen Sie im Abschnitt **Überwachung** die Option **Warnungen (klassisch)** aus.
 
-Wählen Sie im Abschnitt **Überwachung** die Option **Warnungsregeln** aus.
+Wählen Sie **Metrikwarnung hinzufügen (klassisch)**, und geben Sie im Formular **Regel hinzufügen** die erforderlichen Informationen ein. Wählen Sie im Dropdownmenü **Metrik** die Option `SASClientOtherError` aus. Wählen Sie im Dropdownmenü **Bedingung** die Option **Größer oder gleich** aus, um die Auslösung der Warnung beim ersten Fehler zu ermöglichen.
 
-Wählen Sie **+ Warnung hinzufügen** aus, und geben Sie unter **Warnungsregel hinzufügen** die erforderlichen Informationen ein. Wählen Sie in der Dropdownliste **Metrik** die Option `SASClientOtherError` aus.
-
-![Diagnosebereich](media/storage-monitor-troubleshoot-storage-application/figure2.png)
+![Diagnosebereich](media/storage-monitor-troubleshoot-storage-application/add-alert-rule.png)
 
 ## <a name="simulate-an-error"></a>Simulieren eines Fehlers
 
-Zum Simulieren einer gültigen Warnung können Sie ein nicht vorhandenes Blob aus Ihrem Speicherkonto anfordern. Ersetzen Sie hierzu den Wert `<incorrect-blob-name>` durch einen Wert, der nicht vorhanden ist. Führen Sie das folgende Codebeispiel einige Male aus, um ungültige Blobanforderungen zu simulieren.
+Zum Simulieren einer gültigen Warnung können Sie ein nicht vorhandenes Blob aus Ihrem Speicherkonto anfordern. Für den folgenden Befehl ist ein Speichercontainername erforderlich. Für dieses Beispiel können Sie entweder den Namen eines vorhandenen Containers verwenden oder einen neuen erstellen.
+
+Ersetzen Sie die Platzhalter durch echte Werte. (Stellen Sie sicher, dass für `<INCORRECT_BLOB_NAME>` ein nicht vorhandener Wert festgelegt wird.) Führen Sie anschließend den Befehl aus.
 
 ```azurecli-interactive
 sasToken=$(az storage blob generate-sas \
-    --account-name <storage-account-name> \
-    --account-key <storage-account-key> \
-    --container-name <container> \
-    --name <incorrect-blob-name> \
+    --account-name <STORAGE_ACCOUNT_NAME> \
+    --account-key <STORAGE_ACCOUNT_KEY> \
+    --container-name <CONTAINER_NAME> \
+    --name <INCORRECT_BLOB_NAME> \
     --permissions r \
-    --expiry `date --date="next day" +%Y-%m-%d` \
-    --output tsv)
+    --expiry `date --date="next day" +%Y-%m-%d`)
 
-curl https://<storage-account-name>.blob.core.windows.net/<container>/<incorrect-blob-name>?$sasToken
+curl https://<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/<CONTAINER_NAME>/<INCORRECT_BLOB_NAME>?$sasToken
 ```
 
 Die folgende Abbildung zeigt eine Beispielwarnung für den simulierten Fehler auf Grundlage des oben beschriebenen Beispiels.
 
- ![Beispiel für Warnung](media/storage-monitor-troubleshoot-storage-application/alert.png)
+ ![Beispiel für Warnung](media/storage-monitor-troubleshoot-storage-application/email-alert.png)
 
 ## <a name="download-and-view-logs"></a>Herunterladen und Anzeigen von Protokollen
 

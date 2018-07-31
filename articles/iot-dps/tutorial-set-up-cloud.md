@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e334ff0c8dec3a9611b60f64e565111064d10c18
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ccc699a500cbaf20c9b90d71e7c730e617bc572c
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38619281"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145535"
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Konfigurieren von Cloudressourcen für die Gerätebereitstellung mit dem IoT Hub Device Provisioning-Dienst
 
@@ -28,9 +28,9 @@ In diesem Tutorial wird gezeigt, wie die Cloud für die automatische Gerätebere
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
+## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-a-device-provisioning-service-instance-and-get-the-id-scope"></a>Erstellen einer Device Provisioning-Dienstinstanz und Abrufen des ID-Bereichs
 
@@ -50,9 +50,9 @@ Führen Sie zum Erstellen einer neuen Device Provisioning-Dienstinstanz folgende
 
    ![Eingeben grundlegender Informationen zum DPS im Portal](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
-5. Klicken Sie auf **Create**.
-6. Der *ID-Bereich* dient zum Identifizieren von Registrierungs-IDs und gewährleistet, dass die Registrierungs-ID eindeutig ist. Klicken Sie zum Abrufen dieses Werts auf **Übersicht**, um die Seite **Zusammenfassung** für den Device Provisioning-Dienst zu öffnen. Kopieren Sie den Wert von **ID-Bereich** zur späteren Verwendung an einem temporären Speicherort.
-7. Notieren Sie sich auch den Wert von **Dienstendpunkt**, oder kopieren Sie ihn zur späteren Verwendung an einem temporären Speicherort. 
+5. Klicken Sie auf **Create**. Nach einigen Augenblicken wird die Device Provisioning Service-Instanz erstellt und die Seite **Übersicht** angezeigt.
+6. Kopieren Sie auf der Seite **Übersicht** für die neue Dienstinstanz den Wert für **ID-Bereich** zur späteren Verwendung. Der Wert dient zum Identifizieren von Registrierungs-IDs und gewährleistet, dass die Registrierungs-ID eindeutig ist.
+7. Kopieren Sie außerdem den Wert unter **Dienstendpunkt** zur späteren Verwendung. 
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
@@ -65,8 +65,11 @@ Der nächste Schritt besteht darin, den Device Provisioning-Dienst und IoT Hub z
 1. Klicken Sie auf der Seite **Alle Ressourcen** auf die Device Provisioning-Dienstinstanz, die Sie zuvor erstellt haben.
 2. Klicken Sie auf der Seite „Device Provisioning-Dienst“ auf **Verknüpfte IoT Hubs**.
 3. Klicken Sie auf **Hinzufügen**.
-4. Aktivieren Sie auf der Seite **Verknüpfung zu IoT Hub hinzufügen** die Optionsfelder, um anzugeben, ob sich der verknüpfte IoT Hub im aktuellen Abonnement oder in einem anderen Abonnement befindet. Wählen Sie dann im Feld **IoT Hub** den Namen von IoT Hub.
-5. Klicken Sie auf **Speichern**.
+4. Geben Sie auf der Seite **Verknüpfung zu IoT Hub hinzufügen** die folgenden Informationen ein, und klicken Sie auf **Speichern**:
+
+    * **Abonnement:** Stellen Sie sicher, dass das Abonnement mit der IoT Hub-Instanz ausgewählt ist. Sie können eine Verknüpfung mit einer IoT Hub-Instanz erstellen, die in einem anderen Abonnement enthalten ist.
+    * **IoT Hub:** Wählen Sie den Namen der IoT Hub-Instanz aus, die Sie mit dieser Device Provisioning Service-Instanz verknüpfen möchten.
+    * **Zugriffsrichtlinie:** Wählen Sie **iothubowner** als Anmeldeinformationen zum Erstellen der Verknüpfung mit der IoT Hub-Instanz aus.
 
    ![Verknüpfen des Hubnamens mit dem DPS im Portal](./media/tutorial-set-up-cloud/link-iot-hub-to-dps-portal.png)
 

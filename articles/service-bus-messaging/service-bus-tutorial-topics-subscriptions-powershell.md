@@ -1,5 +1,5 @@
 ---
-title: Tutorial – Aktualisieren des Einzelhandelsbestands-Sortiments mit Veröffentlichen/Abonnieren-Kanälen und Themenfiltern über Azure PowerShell | Microsoft-Dokumentation
+title: 'Tutorial: Aktualisieren des Einzelhandelsbestands-Sortiments mit Veröffentlichen/Abonnieren-Kanälen und Themenfiltern über Azure PowerShell | Microsoft-Dokumentation'
 description: In diesem Tutorial erfahren Sie, wie Sie Nachrichten für ein Thema und ein Abonnement senden und empfangen und Filterregeln per Azure PowerShell hinzufügen und verwenden.
 services: service-bus-messaging
 author: sethmanheim
@@ -9,12 +9,12 @@ ms.date: 05/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 824235cfdae6df9d852875281346e35a18277f74
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 05c30504eb9b4440694f78ee979d4b25f30f65dc
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38531659"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237963"
 ---
 # <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>Tutorial: Aktualisieren des Bestands mit PowerShell und Themen/Abonnements
 
@@ -47,7 +47,7 @@ Für dieses Tutorial ist die Ausführung der aktuellen Version von Azure PowerSh
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="log-in-to-azure"></a>Anmelden bei Azure
+## <a name="log-in-to-azure"></a>Anmelden an Azure
 
 Führen Sie die folgenden Befehle aus, um sich an Azure anzumelden. Diese Schritte sind nicht erforderlich, wenn Sie PowerShell-Befehle in Cloud Shell ausführen: 
 

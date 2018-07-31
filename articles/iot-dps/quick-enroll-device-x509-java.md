@@ -1,8 +1,8 @@
 ---
-title: Registrieren von X.509-Geräten für den Azure Device Provisioning-Dienst per Java | Microsoft-Dokumentation
-description: Azure-Schnellstart – Registrieren von X.509-Geräten für den Azure IoT Hub Device Provisioning-Dienst per Java-Dienst-SDK
-author: dsk-2015
-ms.author: dkshir
+title: 'Schnellstart: Registrieren von X.509-Geräten für den Azure Device Provisioning-Dienst per Java | Microsoft-Dokumentation'
+description: In dieser Schnellstartanleitung registrieren Sie X.509-Geräte für den Azure IoT Hub Device Provisioning-Dienst per Java.
+author: wesmc7777
+ms.author: wesmc
 ms.date: 12/20/2017
 ms.topic: quickstart
 ms.service: iot-dps
@@ -10,54 +10,45 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: e9400c476179d801eb66f574373bf75cfb672d9d
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 505aee35c839a0224ca158d918fc5e54dc6e0f28
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091083"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205764"
 ---
-# <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Registrieren von X.509-Geräten für den IoT Hub Device Provisioning-Dienst per Java-Dienst-SDK
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Schnellstart: Registrieren von X.509-Geräten für den Device Provisioning-Dienst per Java
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-Diese Schritte veranschaulichen, wie Sie eine Gruppe mit simulierten X.509-Geräten programmgesteuert für den Azure IoT Hub Device Provisioning-Dienst registrieren, indem Sie das [Java-Dienst-SDK](https://azure.github.io/azure-iot-sdk-java/service/) zusammen mit einer Java-Beispielanwendung verwenden. Das Java-Dienst-SDK funktioniert auf Windows- und Linux-Computern, aber in diesem Artikel wird nur ein Windows-Entwicklungscomputer verwendet, um die einzelnen Schritte des Registrierungsprozesses zu veranschaulichen.
+In dieser Schnellstartanleitung wird veranschaulicht, wie Sie Java nutzen, um eine Gruppe mit simulierten X.509-Geräten programmgesteuert für den Azure IoT Hub Device Provisioning-Dienst zu registrieren. Geräte werden für eine Instanz des Device Provisioning-Diensts registriert, indem eine [Registrierungsgruppe](concepts-service.md#enrollment-group) oder eine [individuelle Registrierung](concepts-service.md#individual-enrollment) erstellt wird. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie beide Arten von Registrierungen erstellen. Die Registrierungen werden mit dem [Java-Dienst-SDK](https://azure.github.io/azure-iot-sdk-java/service/) mithilfe einer Java-Beispielanwendung erstellt. 
 
-Führen Sie vor dem Fortfahren zunächst das [Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal](./quick-setup-auto-provision.md) durch.
+In dieser Schnellstartanleitung wird vorausgesetzt, dass Sie bereits einen IoT Hub und eine Instanz des Device Provisioning-Diensts erstellt haben. Falls diese Ressourcen noch nicht vorhanden sind, sollten Sie die Schnellstartanleitung [Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal](./quick-setup-auto-provision.md) durcharbeiten, bevor Sie mit diesem Artikel fortfahren.
 
-<a id="setupdevbox"></a>
+Das Java-Dienst-SDK funktioniert auf Windows- und Linux-Computern, aber in diesem Artikel wird nur ein Windows-Entwicklungscomputer verwendet, um die einzelnen Schritte des Registrierungsprozesses zu veranschaulichen.
 
-## <a name="prepare-the-development-environment"></a>Vorbereiten der Entwicklungsumgebung 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-1. Vergewissern Sie sich, dass das [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) auf Ihrem Computer installiert ist. 
+## <a name="prerequisites"></a>Voraussetzungen
 
-2. Richten Sie Umgebungsvariablen für Ihre Java-Installation ein. Die Variable `PATH` sollte den vollständigen Pfad zum Verzeichnis *jdk1.8.x\bin* enthalten. Falls dies die erste Java-Installation Ihres Computers ist, sollten Sie eine neue Umgebungsvariable mit dem Namen `JAVA_HOME` erstellen und dafür auf den vollständigen Pfad zum Verzeichnis *jdk1.8.x* verweisen. Auf einem Windows-Computer befindet sich dieses Verzeichnis normalerweise im Ordner *C:\\Programme\\Java\\*. Sie können Umgebungsvariablen erstellen oder bearbeiten, indem Sie in der **Systemsteuerung** Ihres Windows-Computers nach **Systemumgebungsvariablen bearbeiten** suchen. 
+* Installieren Sie [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+* Installieren Sie [Maven 3](https://maven.apache.org/download.cgi). Sie können Ihre aktuelle Maven-Version anzeigen, indem Sie Folgendes ausführen:
 
-  Sie können überprüfen, ob die Java-Einrichtung auf Ihrem Computer erfolgreich war, indem Sie im Befehlsfenster den folgenden Befehl ausführen:
-
-    ```cmd\sh
-    java -version
-    ```
-
-3. Laden Sie [Maven 3](https://maven.apache.org/download.cgi) auf Ihren Computer herunter, und extrahieren Sie die Datei. 
-
-4. Bearbeiten Sie die Umgebungsvariable `PATH` so, dass sie auf den Ordner *apache-maven-3.x.x\\bin* in dem Ordner verweist, in den Sie Maven extrahiert haben. Sie können sicherstellen, dass die Installation von Maven erfolgreich war, indem Sie diesen Befehl in Ihrem Befehlsfenster ausführen:
-
-    ```cmd\sh
+    ```cmd/sh
     mvn --version
     ```
 
-5. Stellen Sie sicher, dass [git](https://git-scm.com/download/) auf Ihrem Computer installiert ist und der Umgebungsvariablen `PATH` hinzugefügt wurde. 
+* Installieren Sie [Git](https://git-scm.com/download/).
 
 
 <a id="javasample"></a>
 
 ## <a name="download-and-modify-the-java-sample-code"></a>Herunterladen und Ändern des Java-Beispielcodes
 
-In diesem Abschnitt wird ein selbstsigniertes X.509-Zertifikat verwendet, wobei Folgendes zu beachten ist:
+In diesem Abschnitt wird ein selbstsigniertes X.509-Zertifikat verwendet, wobei folgende Punkte zu beachten sind:
 
 * Selbstsignierte Zertifikate dienen nur zu Testzwecken und sollten nicht in der Produktion verwendet werden.
-* Die Standardgültigkeitsdauer für ein selbstsigniertes Zertifikat beträgt 1 Jahr.
+* Die Standardgültigkeitsdauer für ein selbstsigniertes Zertifikat beträgt ein Jahr.
 
 In den folgenden Schritten wird gezeigt, wie Sie die Bereitstellungsdetails Ihres X.509-Geräts dem Beispielcode hinzufügen. 
 

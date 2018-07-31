@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 600be7518bc526d3f147bb16377677854b676f63
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: d4bfd684792e5ec13b2a4a020fa21249f1888657
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823128"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226346"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Tutorial: Einrichten eines Lab-Kontos mit Azure Lab Services
 In Azure Lab Services fungiert ein Lab-Konto als zentrales Konto, unter dem die Labs Ihrer Organisation verwaltet werden. In Ihrem Lab-Konto können Sie anderen Benutzern die Berechtigung zum Erstellen von Labs erteilen und Richtlinien festlegen, die für alle Labs unter dem Lab-Konto gelten. In diesem Tutorial erfahren Sie, wie Sie als Lab-Administrator ein Lab-Konto erstellen. 
@@ -29,6 +29,7 @@ In diesem Tutorial führen Sie die folgenden Aktionen aus:
 > [!div class="checklist"]
 > * Erstellen eines Lab-Kontos
 > * Hinzufügen eines Benutzers zur Rolle „Lab-Ersteller“
+> * Angeben eines für Lab-Besitzer verfügbaren Marketplace-Images
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -56,7 +57,9 @@ Die folgenden Schritte veranschaulichen, wie Sie Azure-Portal verwenden, um ein 
     ![Seite des Lab-Kontos](../media/tutorial-setup-lab-account/lab-account-page.png)
 
 ## <a name="add-a-user-to-the-lab-creator-role"></a>Hinzufügen eines Benutzers zur Rolle „Lab-Ersteller“
-Um Lehrkräften die Berechtigung zum Erstellen von Labs für ihre Klassen zu erteilen, fügen Sie sie zur Rolle „Lab-Ersteller“ hinzu:
+Zum Einrichten eines Classroom-Labs in einem Labkonto muss der Benutzer Mitglied der Rolle **Ersteller des Labs** für das Labkonto sein. Das zum Erstellen des Labkontos verwendete Konto wird dieser Rolle automatisch hinzugefügt. Wenn Sie zum Erstellen eines Classroom-Labs das gleiche Benutzerkonto verwenden möchten, können Sie diesen Schritt überspringen. Führen Sie die folgenden Schritte aus, um zum Erstellen eines Classroom-Labs ein anderes Benutzerkonto zu verwenden: 
+
+Um Lehrkräften die Berechtigung zum Erstellen von Labs für ihre Klassen zu erteilen, fügen Sie sie zur Rolle **Lab-Ersteller** hinzu:
 
 1. Wählen Sie auf der Seite **Lab-Konto** die Option **Zugriffssteuerung (IAM)** aus, und klicken Sie auf der Symbolleiste auf **+ Hinzufügen**. 
 
@@ -65,6 +68,22 @@ Um Lehrkräften die Berechtigung zum Erstellen von Labs für ihre Klassen zu ert
 
     ![Hinzufügen eines Benutzers zur Rolle „Lab-Ersteller“](../media/tutorial-setup-lab-account/add-user-to-lab-creator-role.png)
 
+## <a name="specify-marketplace-images-available-to-lab-owners"></a>Angeben eines für Lab-Besitzer verfügbaren Marketplace-Images
+In diesem Abschnitt geben Sie Marketplace-Images an, die Lab-Besitzer zum Erstellen von Classroom-Labs verwenden können. 
+
+1. Klicken Sie im Menü auf der linken Seite auf **Marketplace-Images**. Standardmäßig wird die vollständige Liste der Images (aktiviert und deaktiviert) angezeigt. Sie können die Liste filtern, um nur aktivierte bzw. deaktivierte Images anzuzeigen. Wählen Sie dazu in der Dropdownliste oben die Option **Enabled only**/**Disabled only** (Nur aktivierte/Nur deaktivierte). 
+
+    ![Seite „Marketplace-Images“](../media/tutorial-setup-lab-account/marketplace-images-page.png)
+2. Führen Sie eine der folgenden Aktionen aus, um ein aktiviertes Marketplace-Image zu **deaktivieren**: 
+    1. Klicken Sie in der letzten Spalte auf die Ellipse (**...**) und dann auf **Disable image** (Image deaktivieren). 
+
+        ![Deaktivieren eines einzelnen Images](../media/tutorial-setup-lab-account/disable-one-image.png) 
+    2. Wählen Sie mehrere Images in der Liste aus, indem Sie die Kontrollkästchen vor den Imagenamen in der Liste aktivieren, und klicken Sie auf **Disable selected images** (Ausgewählte Images deaktivieren). 
+
+        ![Deaktivieren von mehreren Images](../media/tutorial-setup-lab-account/disable-multiple-images.png) 
+1. Führen Sie eine der folgenden Aktionen aus, um ein Marketplace-Image zu **aktivieren**: 
+    1. Klicken Sie in der letzten Spalte auf die Ellipse (**...**) und dann auf **Enable image** (Image aktivieren). 
+    2. Wählen Sie mehrere Images in der Liste aus, indem Sie die Kontrollkästchen vor den Imagenamen in der Liste aktivieren, und klicken Sie auf **Enable selected images** (Ausgewählte Images aktivieren). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie ein Lab-Konto erstellt. Um zu erfahren, wie Sie als beruflicher Benutzer ein Classroom-Lab erstellen, fahren Sie mit dem nächsten Tutorial fort:

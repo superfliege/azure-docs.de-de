@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 05736495d0d4a0c3a5072d29ad27801b6d4a7241
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 2f894549951a0ef23a95acaab48ab20ce6646443
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37967645"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39189478"
 ---
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Erstellen eines Kubernetes-Clusters mit Aktivierung für Azure Dev Spaces
 
@@ -32,7 +32,11 @@ ms.locfileid: "37967645"
 
    ![Einstellungen für Kubernetes-Konfiguration](../media/common/Kubernetes-Create-Cluster-2.PNG)
 
-   Wählen Sie danach **Weiter: Netzwerk** aus.
+   Wählen Sie nach Abschluss des Vorgangs **Next: Authentication** (Nächster Schritt: Authentifizierung).
+
+1. Wählen Sie die gewünschte Einstellung für die rollenbasierte Zugriffssteuerung (RBAC). Azure Dev Spaces unterstützt Cluster mit aktivierter und deaktivierter RBAC.
+
+    ![RBAC-Einstellung](../media/common/k8s-RBAC.PNG)
 
 1. Stellen Sie sicher, dass das HTTP-Anwendungsrouting aktiviert ist.
 
@@ -40,9 +44,5 @@ ms.locfileid: "37967645"
 
     > [!IMPORTANT]
     > Sie müssen das HTTP-Anwendungsrouting aktivieren, wenn Sie einen AKS-Cluster erstellen. Es ist nicht möglich, diese Einstellung später zu ändern.
-
-1. Wählen Sie die gewünschte Einstellung für die rollenbasierte Zugriffssteuerung (RBAC). Azure Dev Spaces unterstützt Cluster mit aktivierter und deaktivierter RBAC.
-
-    ![RBAC-Einstellung](../media/common/k8s-RBAC.PNG)
 
 1. Wählen Sie **Überprüfen + erstellen** und danach **Erstellen**.

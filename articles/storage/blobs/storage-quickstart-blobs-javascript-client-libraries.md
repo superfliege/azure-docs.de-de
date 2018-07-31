@@ -10,12 +10,12 @@ ms.service: storage
 ms.author: cshoe
 ms.date: 04/06/2018
 ms.topic: quickstart
-ms.openlocfilehash: 3d01788050779ea5d6e67b345f048775f8e98e9e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8bde281eab22fc720e2e2420f22ff4eb0a610b93
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31419102"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216584"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -49,7 +49,7 @@ Erstellen Sie als Nächstes mithilfe von Azure Cloud Shell ein Sicherheitstoken.
 [!INCLUDE [Open the Azure cloud shell](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-shared-access-signature"></a>Erstellen einer SAS (Shared Access Signature)
-Die SAS (Shared Access Signature) wird von dem im Browser ausgeführten Code verwendet, um Anforderungen an den Blob-Speicher zu authentifizieren. Mithilfe der SAS kann sich der Client authentifizieren, ohne über den Kontozugriffsschlüssel oder die Verbindungszeichenfolge zu verfügen. Weitere Informationen zur SAS finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md).
+Die SAS (Shared Access Signature) wird von dem im Browser ausgeführten Code verwendet, um Anforderungen an Blob Storage zu autorisieren. Mithilfe der SAS kann der Client den Zugriff auf Speicherressourcen ohne Kontozugriffsschlüssel oder Verbindungszeichenfolge autorisieren. Weitere Informationen zur SAS finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md).
 
 Sie können eine SAS mithilfe der Azure-Befehlszeilenschnittstelle über Azure Cloud Shell oder den Azure Storage-Explorer erstellen. In der folgenden Tabelle werden die Parameter beschrieben, für die Sie Werte angeben müssen, um eine SAS mit der CLI zu generieren:
 
@@ -84,7 +84,7 @@ Die Reihe von Werten nach den einzelnen Parametern erscheint unter Umständen et
 Kopieren Sie nach der Generierung der SAS den zurückgegebenen Wert aus der Konsole in einen Text-Editor. Dieser Wert wird in einem späteren Schritt benötigt.
 
 > [!IMPORTANT]
-> Übergeben Sie SAS-Token in einer Produktionsumgebung immer unter Verwendung von SSL. SAS-Token sollten für die Rückgabe an Azure Blob Storage außerdem auf dem Server generiert und an die HTML-Seite gesendet werden. Eine Möglichkeit besteht darin, SAS-Funktionen mit einer serverlosen Funktion zu generieren. Im Azure Portal stehen Funktionsvorlagen zur Verfügung, die die Generierung einer SAS mit einer JavaScript-Funktion ermöglichen.
+> Übergeben Sie SAS-Token in einer Produktionsumgebung immer unter Verwendung von SSL. SAS-Token sollten für die Rückgabe an Azure Blob Storage außerdem auf dem Server generiert und an die HTML-Seite gesendet werden. Eine Möglichkeit besteht darin, SAS-Funktionen mit einer serverlosen Funktion zu generieren. Im Azure-Portal stehen Funktionsvorlagen zur Verfügung, die die Generierung einer SAS mit einer JavaScript-Funktion ermöglichen.
 
 ## <a name="implement-the-html-page"></a>Implementieren der HTML-Seite
 
@@ -254,4 +254,4 @@ Kehren Sie zum Bereinigen der Ressourcen, die im Rahmen dieser Schnellstartanlei
 Machen Sie sich anhand der Beispiele mit dem Herunterladen von Blobs und dem Melden des Fortschritts von Dateiuploads vertraut.
 
 > [!div class="nextstepaction"]
-> [Clientbibliotheken für Blob-Speicher](https://github.com/Azure/azure-storage-node/tree/master/browser)
+> [Blobspeicher-Clientbibliotheken](https://github.com/Azure/azure-storage-node/tree/master/browser)

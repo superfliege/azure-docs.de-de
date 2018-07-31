@@ -1,6 +1,6 @@
 ---
 title: Verwenden einer Linux-VM-MSI für den Zugriff auf Azure Cosmos DB
-description: In diesem Tutorial wird erläutert, wie Sie eine vom System zugewiesene verwaltete Dienstidentität (Managed Service Identity, MSI) auf einem virtuellen Linux-Computer verwenden, um auf Azure Cosmos DB zuzugreifen.
+description: In diesem Tutorial wird erläutert, wie Sie eine vom System zugewiesene verwaltete Dienstidentität auf einem virtuellen Linux-Computer verwenden, um auf Azure Cosmos DB zuzugreifen.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: daveba
-ms.openlocfilehash: 30962827d0a7fbc70c2ed4c642d9bb8a586124da
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: af148cd8b3eececb258057a8bf6a78216ec0e50a
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904423"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258329"
 ---
-# <a name="tutorial-use-a-linux-vm-msi-to-access-azure-cosmos-db"></a>Tutorial: Verwenden einer Linux-VM-MSI für den Zugriff auf Azure Cosmos DB 
+# <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-cosmos-db"></a>Tutorial: Verwenden einer Linux-VM-MSI für den Zugriff auf Azure Cosmos DB 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 
-In diesem Tutorial erfahren Sie, wie Sie eine Linux-VM-MSI erstellen und verwenden. Folgendes wird vermittelt:
+In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Dienstidentität für eine Linux-VM erstellen und verwenden. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
-> * Erstellen eines virtuellen Linux-Computers mit MSI-Aktivierung
+> * Erstellen eines virtuellen Linux-Computers mit Aktivierung der verwalteten Dienstidentität
 > * Erstellen eines Cosmos DB-Kontos
 > * Erstellen einer Sammlung im Cosmos DB-Konto
-> * Gewähren des Zugriffs für die MSI auf eine Azure Cosmos DB-Instanz
-> * Abrufen der `principalID` der MSI des virtuellen Linux-Computers
+> * Gewähren des Zugriffs auf eine Azure Cosmos DB-Instanz für die verwaltete Dienstidentität
+> * Abrufen der `principalID` für die verwaltete Dienstidentität einer Linux-VM
 > * Abrufen eines Zugriffstokens und Verwenden dieses Zugriffstokens zum Aufrufen von Azure Resource Manager
 > * Abrufen von Zugriffsschlüsseln aus Azure Resource Manager für Cosmos DB-Aufrufe
 
@@ -54,9 +54,9 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 ## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Erstellen eines virtuellen Linux-Computers in einer neuen Ressourcengruppe
 
-In diesem Tutorial erstellen Sie einen neuen MSI-fähigen virtuellen Linux-Computer.
+Für dieses Tutorial erstellen Sie eine neue Linux-VM, für die die verwaltete Dienstidentität aktiviert ist.
 
-So erstellen Sie einen MSI-fähigen virtuellen Computer:
+Erstellen Sie die VM, die für die verwaltete Dienstidentität aktiviert ist, wie folgt:
 
 1. Melden Sie sich bei Verwendung der Azure CLI in einer lokalen Konsole zunächst mit [az login](/cli/azure/reference-index#az_login) bei Azure an. Verwenden Sie ein Konto, das dem Azure-Abonnement zugeordnet ist, unter dem Sie den virtuellen Computer bereitstellen möchten:
 
@@ -70,7 +70,7 @@ So erstellen Sie einen MSI-fähigen virtuellen Computer:
    az group create --name myResourceGroup --location westus
    ```
 
-3. Erstellen Sie einen virtuellen Computer mit [az vm create](/cli/azure/vm/#az_vm_create). Im folgenden Beispiel wird ein virtueller Computer mit dem Namen *myVM* mit einer MSI erstellt, wie vom `--assign-identity`-Parameter angefordert. Der `--admin-username`-Parameter und der `--admin-password`-Parameter geben den Namen und das Kennwort des Administratorbenutzers für die Anmeldung am virtuellen Computer an. Aktualisieren Sie diese Werte ggf. mit den entsprechenden Werten für Ihre Umgebung: 
+3. Erstellen Sie einen virtuellen Computer mit [az vm create](/cli/azure/vm/#az_vm_create). Im folgenden Beispiel wird ein virtueller Computer mit dem Namen *myVM* mit einer verwalteten Dienstidentität erstellt. Dies wird über den Parameter `--assign-identity` angefordert. Der `--admin-username`-Parameter und der `--admin-password`-Parameter geben den Namen und das Kennwort des Administratorbenutzers für die Anmeldung am virtuellen Computer an. Aktualisieren Sie diese Werte ggf. mit den entsprechenden Werten für Ihre Umgebung: 
 
    ```azurecli-interactive 
    az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --generate-ssh-keys --assign-identity --admin-username azureuser --admin-password myPassword12
@@ -95,14 +95,14 @@ Als Nächstes fügen Sie im Cosmos DB-Konto eine Datensammlung hinzu, die Sie in
 2. Klicken Sie auf der Registerkarte **Übersicht** auf die Schaltfläche **+ Sammlung hinzufügen**. Daraufhin wird der Bereich „Sammlung hinzufügen“ eingeblendet.
 3. Weisen Sie der Sammlung eine Datenbank-ID und eine Sammlungs-ID zu, wählen Sie eine Speicherkapazität aus, geben Sie einen Partitionsschlüssel und einen Durchsatzwert ein, und klicken Sie dann auf **OK**.  Für dieses Tutorial ist es ausreichend, als Datenbank-ID und Sammlungs-ID „Test“ zu verwenden und eine feste Speicherkapazität sowie den niedrigsten Durchsatz (400 RU/s) auszuwählen.  
 
-## <a name="retrieve-the-principalid-of-the-linux-vms-msi"></a>Abrufen der `principalID` der MSI des virtuellen Linux-Computers
+## <a name="retrieve-the-principalid-of-the-linux-vms-managed-service-identity"></a>Abrufen der `principalID` für die verwaltete Dienstidentität einer Linux-VM
 
-Um im folgenden Abschnitt über den Ressourcen-Manager auf die Zugriffsschlüssel des Cosmos DB-Kontos zugreifen zu können, müssen Sie die `principalID` der MSI des virtuellen Linux-Computers abrufen.  Vergessen Sie nicht, die Parameterwerte für `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` (Ressourcengruppe, in der sich Ihr virtueller Computer befindet) und `<VM NAME>` durch Ihre eigenen Werte zu ersetzen.
+Um im folgenden Abschnitt über den Ressourcen-Manager auf die Zugriffsschlüssel des Cosmos DB-Kontos zugreifen zu können, müssen Sie die `principalID` der verwalteten Dienstidentität des virtuellen Linux-Computers abrufen.  Vergessen Sie nicht, die Parameterwerte für `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` (Ressourcengruppe, in der sich Ihr virtueller Computer befindet) und `<VM NAME>` durch Ihre eigenen Werte zu ersetzen.
 
 ```azurecli-interactive
 az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAMe> --api-version 2017-12-01
 ```
-Die Antwort enthält die Details der vom System zugewiesenen MSI (notieren Sie die im nächsten Abschnitt verwendete principalID):
+Die Antwort enthält die Details der vom System zugewiesenen verwalteten Dienstidentität (notieren Sie die im nächsten Abschnitt verwendete principalID):
 
 ```bash  
 {
@@ -114,11 +114,11 @@ Die Antwort enthält die Details der vom System zugewiesenen MSI (notieren Sie d
  }
 
 ```
-## <a name="grant-your-linux-vm-msi-access-to-the-cosmos-db-account-access-keys"></a>Gewähren von Zugriff auf die Zugriffsschlüssel des Cosmos DB-Kontos für die Linux-VM-MSI
+## <a name="grant-your-linux-vm-managed-service-identity-access-to-the-cosmos-db-account-access-keys"></a>Gewähren des Zugriffs auf die Zugriffsschlüssel des Cosmos DB-Kontos für Ihre verwaltete Dienstidentität der Linux-VM
 
-Cosmos DB unterstützt die Azure AD-Authentifizierung nicht nativ. Sie können eine MSI jedoch zum Abrufen eines Cosmos DB-Zugriffsschlüssels aus Resource Manager verwenden und mithilfe des Schlüssels auf Cosmos DB zugreifen. In diesem Schritt gewähren Sie der MSI Zugriff auf die Schlüssel des Cosmos DB-Kontos.
+Cosmos DB unterstützt die Azure AD-Authentifizierung nicht nativ. Sie können eine verwaltete Dienstidentität aber zum Abrufen eines Cosmos DB-Zugriffsschlüssels aus Resource Manager verwenden und mithilfe des Schlüssels auf Cosmos DB zugreifen. In diesem Schritt gewähren Sie der verwalteten Dienstidentität Zugriff auf die Schlüssel des Cosmos DB-Kontos.
 
-Um der MSI-Identität Zugriff auf das Cosmos DB-Konto in Azure Resource Manager über die Azure-Befehlszeilenschnittstelle zu gewähren, aktualisieren Sie die Werte für `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` und `<COSMOS DB ACCOUNT NAME>` für Ihre Umgebung. Ersetzen Sie `<MSI PRINCIPALID>` durch die Eigenschaft `principalId`, die durch Ausführen des Befehls `az resource show` unter [Abrufen der principalID der MSI des virtuellen Linux-Computers](#retrieve-the-principalID-of-the-linux-VM's-MSI) zurückgegeben wird.  Cosmos DB unterstützt beim Verwenden von Zugriffsschlüsseln zwei Granularitätsebenen: Lese-/Schreibzugriff auf das Konto und schreibgeschützter Zugriff auf das Konto.  Weisen Sie die Rolle `DocumentDB Account Contributor` zu, wenn Sie die Schlüssel für Lese-/Schreibzugriff für das Konto abrufen möchten, oder weisen Sie die Rolle `Cosmos DB Account Reader Role` zu, wenn Sie die Schlüssel für schreibgeschützten Zugriff auf das Konto abrufen möchten:
+Um der verwalteten Dienstidentität Zugriff auf das Cosmos DB-Konto in Azure Resource Manager über die Azure-Befehlszeilenschnittstelle zu gewähren, aktualisieren Sie die Werte für `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` und `<COSMOS DB ACCOUNT NAME>` für Ihre Umgebung. Ersetzen Sie `<MSI PRINCIPALID>` durch die Eigenschaft `principalId`, die durch Ausführen des Befehls `az resource show` unter [Abrufen der principalID der MSI des virtuellen Linux-Computers](#retrieve-the-principalID-of-the-linux-VM's-MSI) zurückgegeben wird.  Cosmos DB unterstützt beim Verwenden von Zugriffsschlüsseln zwei Granularitätsebenen: Lese-/Schreibzugriff auf das Konto und schreibgeschützter Zugriff auf das Konto.  Weisen Sie die Rolle `DocumentDB Account Contributor` zu, wenn Sie die Schlüssel für Lese-/Schreibzugriff für das Konto abrufen möchten, oder weisen Sie die Rolle `Cosmos DB Account Reader Role` zu, wenn Sie die Schlüssel für schreibgeschützten Zugriff auf das Konto abrufen möchten:
 
 ```azurecli-interactive
 az role assignment create --assignee <MSI PRINCIPALID> --role '<ROLE NAME>' --scope "/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.DocumentDB/databaseAccounts/<COSMODS DB ACCOUNT NAME>"
@@ -140,7 +140,7 @@ Die Antwort enthält Details zu der erstellten Rollenzuweisung:
 }
 ```
 
-## <a name="get-an-access-token-using-the-linux-vms-msi-and-use-it-to-call-azure-resource-manager"></a>Abrufen eines Zugriffstokens mithilfe der MSI des virtuellen Linux-Computers und Verwenden dieses Zugriffstokens zum Aufrufen von Azure Resource Manager
+## <a name="get-an-access-token-using-the-linux-vms-managed-service-identity-and-use-it-to-call-azure-resource-manager"></a>Abrufen eines Zugriffstokens mithilfe der verwalteten Dienstidentität des virtuellen Linux-Computers und Verwenden dieses Zugriffstokens zum Aufrufen von Azure Resource Manager
 
 Für den Rest des Tutorials arbeiten wir von dem zuvor erstellten virtuellen Computer aus.
 

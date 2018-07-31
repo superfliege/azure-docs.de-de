@@ -9,70 +9,82 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1e4e93c276fe62caae17c85bf9ac92282dfdfb88
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d589c0ece2b36970a31884aa72ee7ab87941a656
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631267"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39146434"
 ---
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Einrichten eines bereitzustellenden Geräts mithilfe des Azure IoT Hub Device Provisioning-Diensts
 
-Im vorherigen Tutorial haben Sie erfahren, wie Sie den Azure IoT Hub Device Provisioning-Dienst einrichten, um Ihre Geräte automatisch für IoT Hub bereitzustellen. In diesem Tutorial wird gezeigt, wie Sie Ihr Gerät während des Herstellungsprozesses einrichten und dadurch die automatische Bereitstellung mit IoT Hub ermöglichen. Ihr Gerät wird beim ersten Starten und Herstellen einer Verbindung mit dem Bereitstellungsdienst basierend auf seinem [Nachweismechanismus](concepts-device.md#attestation-mechanism) bereitgestellt. In diesem Tutorial werden folgende Prozesse erläutert:
+Im vorherigen Tutorial haben Sie erfahren, wie Sie den Azure IoT Hub Device Provisioning-Dienst einrichten, um Ihre Geräte automatisch für IoT Hub bereitzustellen. In diesem Tutorial wird gezeigt, wie Sie Ihr Gerät während des Herstellungsprozesses einrichten und dadurch die automatische Bereitstellung mit IoT Hub ermöglichen. Ihr Gerät wird beim ersten Starten und Herstellen einer Verbindung mit dem Bereitstellungsdienst basierend auf seinem [Nachweismechanismus](concepts-device.md#attestation-mechanism) bereitgestellt. Dieses Tutorial enthält die folgenden Aufgaben:
 
 > [!div class="checklist"]
 > * Erstellen eines plattformspezifischen Client-SDK für den Device Provisioning-Dienst
 > * Extrahieren der Sicherheitsartefakte
 > * Erstellen der Geräteregistrierungssoftware
 
-## <a name="prerequisites"></a>Voraussetzungen
-
-Bevor Sie fortfahren, erstellen Sie anhand der Anweisungen im vorherigen Tutorial [Konfigurieren von Cloudressourcen für die Gerätebereitstellung mit dem IoT Hub Device Provisioning-Dienst](./tutorial-set-up-cloud.md) Ihre Device Provisioning-Dienstinstanz und eine IoT Hub-Instanz.
+In diesem Tutorial wird vorausgesetzt, dass Sie bereits Ihre Instanz des Device Provisioning-Diensts und einen IoT Hub erstellt haben, indem Sie die Anleitung im vorherigen Tutorial [Einrichten von Cloudressourcen](tutorial-set-up-cloud.md) verwendet haben.
 
 In diesem Tutorial wird das [Repository „Azure IoT SDKs and libraries for C“](https://github.com/Azure/azure-iot-sdk-c) (Azure IoT SDKs und -Bibliotheken für C) verwendet. Dieses Repository enthält das Client-SDK für den Device Provisioning-Dienst für C. Das SDK bietet derzeit TPM- und X.509-Unterstützung für Geräte in Windows- oder Ubuntu-Implementierungen. Dieses Tutorial basiert auf der Nutzung eines Windows-Bereitstellungsclients und setzt allgemeine Kenntnisse von Visual Studio 2017 voraus. 
 
 Wenn Sie mit der automatischen Bereitstellung nicht vertraut sind, lesen Sie die Informationen unter [Konzepte für die automatische Bereitstellung](concepts-auto-provisioning.md), bevor Sie fortfahren. 
 
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Visual Studio 2015 oder [Visual Studio 2017](https://www.visualstudio.com/vs/) mit der aktivierten Workload ["Desktopentwicklung mit C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/).
+* Die neueste Version von [Git](https://git-scm.com/download/) ist installiert.
+
+
+
 ## <a name="build-a-platform-specific-version-of-the-sdk"></a>Erstellen einer plattformspezifischen Version des SDK
 
 Das Client-SDK für den Device Provisioning-Dienst unterstützt Sie beim Implementieren Ihrer Geräteregistrierungssoftware. Vor seiner Verwendung müssen Sie jedoch eine Version des SDK erstellen, das speziell für Ihre Entwicklungsclientplattform und den Nachweismechanismus gilt. In diesem Tutorial erstellen Sie ein SDK, das Visual Studio 2017 auf einer Windows-Entwicklungsplattform für einen unterstützten Nachweistyp nutzt:
 
-1. Installieren Sie die erforderlichen Tools, und klonen Sie das GitHub-Repository mit dem Bereitstellungsdienst-Client-SDK für C:
+1. Laden Sie die aktuelle Version des [CMake-Buildsystems](https://cmake.org/download/) herunter. Suchen Sie auf derselben Website den kryptografischen Hash für die Version der ausgewählten binären Verteilung. Überprüfen Sie die heruntergeladene Binärdatei mit dem entsprechenden kryptografischen Hashwert. Im folgenden Beispiel wird Windows PowerShell verwendet, um den kryptografischen Hash für Version 3.11.4 der x64 MSI-Verteilung zu überprüfen:
 
-   a. Vergewissern Sie sich, dass auf Ihrem Computer entweder Visual Studio 2015 oder [Visual Studio 2017](https://www.visualstudio.com/vs/) installiert ist. Für Ihre Visual Studio-Installation muss die Workload [Desktopentwicklung mit C++](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) aktiviert sein.
+    ```PowerShell
+    PS C:\Users\wesmc\Downloads> $hash = get-filehash .\cmake-3.11.4-win64-x64.msi
+    PS C:\Users\wesmc\Downloads> $hash.Hash -eq "56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869"
+    True
+    ```
 
-   b. Laden Sie das [CMake-Buildsystem](https://cmake.org/download/) herunter, und installieren Sie es. Wichtig: Visual Studio mit der Workload „Desktopentwicklung mit C++“ muss **vor** der Installation von CMake auf dem Computer installiert sein.
+    Wichtig: Die Voraussetzungen für Visual Studio (Visual Studio und die Workload „Desktopentwicklung mit C++“) müssen **vor** Beginn der Installation von `CMake` auf dem Computer installiert sein. Sobald die Voraussetzungen erfüllt sind und der Download überprüft wurde, installieren Sie das CMake-Buildsystem.
 
-   c. Vergewissern Sie sich, dass `git` auf Ihrem Computer installiert ist und den Umgebungsvariablen hinzugefügt wurde, auf die das Befehlsfenster Zugriff hat. Die aktuellen `git`-Tools, einschließlich **Git Bash** (eine Befehlszeilen-Bash-Shell für die Interaktion mit dem lokalen Git-Repository), finden Sie unter [Git-Clienttools von Software Freedom Conservancy](https://git-scm.com/download/). 
-
-   d. Öffnen Sie Git Bash, und klonen Sie das Repository „Azure IoT SDKs and libraries for C“ (Azure IoT SDKs und -Bibliotheken für C). Die Ausführung des Befehls zum Klonen kann einige Minuten dauern, da dabei auch einige abhängige Submodule heruntergeladen werden:
+2. Öffnen Sie eine Eingabeaufforderung oder die Git Bash-Shell. Führen Sie den folgenden Befehl zum Klonen des [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-GitHub-Repositorys aus:
     
-   ```cmd/sh
-   git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
-   ```
+    ```cmd/sh
+    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    ```
+    Die Größe dieses Repositorys beträgt derzeit ca. 220 MB. Sie sollten damit rechnen, dass die Ausführung dieses Vorgangs mehrere Minuten in Anspruch nimmt.
 
-   e. Erstellen Sie in dem neu erstellten Repositoryunterverzeichnis ein neues `cmake`-Unterverzeichnis:
 
-   ```cmd/sh
-   mkdir azure-iot-sdk-c/cmake
-   ``` 
+3. Erstellen Sie ein `cmake`-Unterverzeichnis im Stammverzeichnis des Git-Repositorys, und navigieren Sie zu diesem Ordner. 
 
-2. Wechseln Sie über die Git Bash-Eingabeaufforderung in das Unterverzeichnis `cmake` des Repositorys „azure-iot-sdk-c“:
+    ```cmd/sh
+    cd azure-iot-sdk-c
+    mkdir cmake
+    cd cmake
+    ```
 
-   ```cmd/sh
-   cd azure-iot-sdk-c/cmake
-   ```
+4. Erstellen Sie das SDK für Ihre Entwicklungsplattform basierend auf den Nachweismechanismen, die Sie verwenden möchten. Verwenden Sie einen der folgenden Befehle (achten Sie jeweils auf die beiden nachgestellten Punkte). CMake erstellt anschließend das Unterverzeichnis `/cmake` mit für Ihr Gerät spezifischem Inhalt:
+ 
+    - Bei Geräten, die den TPM-Simulator für den Nachweis verwenden:
 
-3. Erstellen Sie das SDK für Ihre Entwicklungsplattform und einen der unterstützten Nachweismechanismen. Verwenden Sie dazu einen der folgenden Befehle. (Beachten Sie dabei auch die zwei nachgestellten Punkte.) CMake erstellt anschließend das Unterverzeichnis `/cmake` mit für Ihr Gerät spezifischem Inhalt:
-    - Bei Geräten, die eine physische TPM-/HSM-Instanz oder ein simuliertes X.509-Zertifikat für den Nachweis verwenden:
+        ```cmd/sh
+        cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..
+        ```
+
+    - Für alle anderen Geräte (physisches TPM/HSM/X.509 oder ein simuliertes X.509-Zertifikat):
+
         ```cmd/sh
         cmake -Duse_prov_client:BOOL=ON ..
         ```
 
-    - Bei Geräten, die den TPM-Simulator für den Nachweis verwenden:
-        ```cmd/sh
-        cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..
-        ```
 
 Nun können Sie das SDK verwenden, um Ihren Geräteregistrierungscode zu erstellen. 
  
@@ -82,20 +94,24 @@ Nun können Sie das SDK verwenden, um Ihren Geräteregistrierungscode zu erstell
 
 Der nächste Schritt besteht darin, die Sicherheitsartefakte für den von Ihrem Gerät verwendeten Nachweismechanismus zu extrahieren. 
 
-### <a name="physical-device"></a>Physisches Gerät 
+### <a name="physical-devices"></a>Physische Geräte 
 
-Wenn Sie das SDK zur Verwendung des Nachweises von einer physischen TPM-/HSM-Instanz erstellt haben:
+Je nachdem, ob Sie das SDK für die Verwendung eines Nachweismechanismus für ein physisches TPM/HSM oder für die Verwendung von X.509-Zertifikaten erstellt haben, werden die Sicherheitsartefakte wie folgt gesammelt:
 
 - Bei einem TPM-Gerät müssen Sie den zugehörigen **Endorsement Key** über den Hersteller des TPM-Chips in Erfahrung bringen. Sie können eine eindeutige **Registrierungs-ID** für Ihr TPM-Gerät ableiten, indem Sie den Hash des Endorsement Key abrufen.  
 
-- Bei einem X.509-Gerät müssen Sie die für Ihre Geräte ausgestellten Zertifikate abrufen: Endeinheitszertifikate für einzelne Geräteregistrierungen bzw. Stammzertifikate für die Gruppenregistrierung von Geräten. 
+- Für ein X.509-Gerät müssen Sie die Zertifikate abrufen, die für Ihre Geräte ausgestellt wurden. Der Bereitstellungsdienst macht zwei Arten von Registrierungseinträgen verfügbar, mit denen der Zugriff auf Geräte gesteuert wird, indem der X.509-Nachweismechanismus verwendet wird. Die benötigten Zertifikate richten sich nach den Registrierungstypen, die Sie verwenden.
 
-### <a name="simulated-device"></a>Simuliertes Gerät
+    1. Individuelle Registrierungen: Registrierung für ein bestimmtes einzelnes Gerät. Für diese Art von Registrierungseinträgen sind [Zertifikate für die endgültige Entität](concepts-security.md#end-entity-leaf-certificate) erforderlich.
+    2. Registrierungsgruppen: Für diese Art von Registrierungseinträgen sind Zwischen- oder Stammzertifikate erforderlich. Weitere Informationen finden Sie unter [Steuern des Gerätezugriffs auf den Bereitstellungsdienst mit X.509-Zertifikaten](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
 
-Wenn Sie das SDK zur Verwendung des Nachweises von einem simulierten TPM- oder X.509-Zertifikat erstellt haben:
+### <a name="simulated-devices"></a>Simulierte Geräte
+
+Je nachdem, ob Sie das SDK für die Verwendung eines Nachweismechanismus für ein simuliertes Gerät mit TPM oder für X.509-Zertifikate erstellt haben, werden die Sicherheitsartefakte wie folgt gesammelt:
 
 - Bei einem simulierten TPM-Gerät:
-   1. Navigieren Sie in einer separaten bzw. neuen Eingabeaufforderung zum Unterverzeichnis `azure-iot-sdk-c`, und führen Sie den TPM-Simulator aus. Dieser lauscht über einen Socket an den Ports 2321 und 2322. Lassen Sie das Befehlsfenster geöffnet. Es wird benötigt, um den Simulator bis zum Ende der folgenden Schnellstartanleitung auszuführen. 
+
+   1. Öffnen Sie eine Windows-Eingabeaufforderung, navigieren Sie zum Unterverzeichnis `azure-iot-sdk-c`, und führen Sie den TPM-Simulator aus. Dieser lauscht über einen Socket an den Ports 2321 und 2322. Lassen Sie das Befehlsfenster geöffnet. Es wird benötigt, um den Simulator bis zum Ende der folgenden Schnellstartanleitung auszuführen. 
 
       Führen Sie aus dem Unterverzeichnis `azure-iot-sdk-c` den folgenden Befehl aus, um den Simulator zu starten:
 
@@ -103,13 +119,17 @@ Wenn Sie das SDK zur Verwendung des Nachweises von einem simulierten TPM- oder X
       .\provisioning_client\deps\utpm\tools\tpm_simulator\Simulator.exe
       ```
 
+      > [!NOTE]
+      > Wenn Sie für diesen Schritt die Git Bash-Eingabeaufforderung verwenden, müssen Sie die umgekehrten Schrägstriche in normale Schrägstriche ändern, z.B. `./provisioning_client/deps/utpm/tools/tpm_simulator/Simulator.exe`.
+
    2. Öffnen Sie mithilfe von Visual Studio die im Ordner *cmake* generierte Projektmappe namens `azure_iot_sdks.sln`, und erstellen Sie sie mithilfe des Befehls „Projektmappe erstellen“ im Menü „Build“.
 
    3. Navigieren Sie in Visual Studio im *Projektmappen-Explorer* zum Ordner **Provision\_Tools**. Klicken Sie mit der rechten Maustaste auf das Projekt **tpm_device_provision**, und wählen Sie **Als Startprojekt festlegen** aus. 
 
-   4. Führen Sie die Projektmappe über einen der Startbefehle im Menü „Debuggen“ aus. Im Ausgabefenster werden die **_Registrierungs-ID_** und der **_Endorsement Key_** des TPM-Simulators für die Geräteregistrierung angezeigt. Kopieren Sie diese Werte für die spätere Verwendung. Sie können dieses Fenster (mit Registrierungs-ID und Endorsement Key) schließen. Lassen Sie jedoch das TPM-Simulatorfenster geöffnet, das Sie in Schritt 1 geöffnet haben.
+   4. Führen Sie die Projektmappe über einen der Startbefehle im Menü „Debuggen“ aus. Im Ausgabefenster werden die **_Registrierungs-ID_** und der **_Endorsement Key_** des TPM-Simulators für die Geräteregistrierung angezeigt. Kopieren Sie diese Werte für die spätere Verwendung. Sie können dieses Fenster (mit Registrierungs-ID und Endorsement Key) schließen. Lassen Sie aber das TPM-Simulatorfenster geöffnet, das Sie in Schritt 1 geöffnet haben.
 
 - Bei einem simulierten X.509-Gerät:
+
   1. Öffnen Sie mithilfe von Visual Studio die im Ordner *cmake* generierte Projektmappe namens `azure_iot_sdks.sln`, und erstellen Sie sie mithilfe des Befehls „Projektmappe erstellen“ im Menü „Build“.
 
   2. Navigieren Sie in Visual Studio im *Projektmappen-Explorer* zum Ordner **Provision\_Tools**. Klicken Sie mit der rechten Maustaste auf das Projekt **dice\_device\_enrollment**, und wählen Sie **Als Startprojekt festlegen** aus. 

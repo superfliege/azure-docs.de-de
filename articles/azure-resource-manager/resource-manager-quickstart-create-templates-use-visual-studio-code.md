@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 07/17/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: a66d845fcf7507613cda475bbc96225f8a7cc7eb
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: bb0e3ee685d5a52a9f372e99d97f3608f67c17c0
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126852"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185396"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code
 
@@ -144,7 +144,7 @@ Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie gelernt, wie Sie eine Vorlage mit Visual Studio Code erstellen, und wie Sie die Vorlage mit Cloud Shell im Azure-Portal bereitstellen. Die in diesem Schnellstart verwendete Vorlage enthält nur eine Azure-Ressource.  Im nächsten Tutorial entwickeln Sie eine Vorlage mit mehreren Ressourcen.  Einige der Ressourcen verfügen über abhängige Ressourcen.
+In diesem Tutorial haben Sie gelernt, wie Sie eine Vorlage mit Visual Studio Code erstellen, und wie Sie die Vorlage mit Cloud Shell im Azure-Portal bereitstellen. Im nächsten Tutorial erfahren Sie mehr darüber, wie Sie eine Vorlage entwickeln und eine Vorlagenreferenz nutzen.
 
 > [!div class="nextstepaction"]
-> [Erstellen von Vorlagen mit Visual Studio](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
+> [Tutorial: create an Azure Resource Manager template for deploying an encrypted storage account](./resource-manager-tutorial-create-encrypted-storage-accounts.md) (Tutorial: Erstellen einer Azure Resource Manager-Vorlage zum Bereitstellen eines verschlüsselten Speicherkontos)

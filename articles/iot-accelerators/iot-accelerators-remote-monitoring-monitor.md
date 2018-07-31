@@ -1,28 +1,28 @@
 ---
-title: Überwachen Ihrer IoT-Geräte über eine Azure-Lösung | Microsoft-Dokumentation
+title: 'Tutorial: Überwachen Ihrer IoT-Geräte über eine Azure-Lösung | Microsoft-Dokumentation'
 description: In diesem Tutorial wird beschrieben, wie Sie Ihre IoT-Geräte mit dem Solution Accelerator für die Remoteüberwachung überwachen.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 06/08/2018
+ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 5f42ed0fa5362959e5619f2d550ca1ae3711ed65
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: d31ea1fe579e5ac7a846c1c0d03012d70be9884d
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097460"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159347"
 ---
 # <a name="tutorial-monitor-your-iot-devices"></a>Tutorial: Überwachen Ihrer IoT-Geräte
 
 In diesem Tutorial verwenden Sie den Solution Accelerator für die Remoteüberwachung, um Ihre verbundenen IoT-Geräte zu überwachen. Sie nutzen das Lösungsdashboard, um Telemetriedaten, Geräteinformationen, Warnungen und KPIs anzuzeigen.
 
-Zur Einführung in diese Überwachungsfunktionen werden im Tutorial zwei simulierte Geräte vom Typ „LKW“ verwendet. Die LKW werden von der Organisation Contoso verwaltet und sind mit dem Solution Accelerator für die Remoteüberwachung verbunden. Als Contoso-Bediener müssen Sie den Standort und das Verhalten der Trucks im Feld überwachen.
+Im Tutorial werden zwei Geräte verwendet, die LKW simulieren und Telemetriedaten zu Standort, Geschwindigkeit und Temperatur der Ladung senden. Die LKW werden von der Organisation Contoso verwaltet und sind mit dem Solution Accelerator für die Remoteüberwachung verbunden. Als Contoso-Bediener müssen Sie den Standort und das Verhalten von einem Ihrer LKW (truck-02) während der Fahrt überwachen.
 
-In diesem Tutorial haben Sie Folgendes durchgeführt:
+In diesem Tutorial führen Sie Folgendes durch:
 
 >[!div class="checklist"]
 > * Filtern der Geräte im Dashboard
@@ -31,11 +31,9 @@ In diesem Tutorial haben Sie Folgendes durchgeführt:
 > * Anzeigen von Benachrichtigungen Ihrer Geräte
 > * Anzeigen der System-KPIs
 
-## <a name="prerequisites"></a>Voraussetzungen
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Für dieses Tutorial benötigen Sie eine bereitgestellte Instanz des Solution Accelerators für die Remoteüberwachung in Ihrem Azure-Abonnement.
-
-Falls Sie den Solution Accelerator für die Remoteüberwachung noch nicht bereitgestellt haben, sollten Sie die Schnellstartanleitung [Bereitstellen einer cloudbasierten Lösung für die Remoteüberwachung](quickstart-remote-monitoring-deploy.md) durcharbeiten.
+[!INCLUDE [iot-iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
 ## <a name="choose-the-devices-to-display"></a>Auswählen der anzuzeigenden Geräte
 
@@ -43,31 +41,27 @@ Verwenden Sie Filter, um festzulegen, welche verbundenen Geräte auf der Seite *
 
 [![Filtern nach LKW im Dashboard](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-expanded.png#lightbox)
 
-Wenn Sie einen Filter anwenden, werden nur die Geräte, die die Filterbedingungen erfüllen, auf der Karte der Seite **Dashboard** angezeigt:
+Wenn Sie einen Filter anwenden, werden auf der Karte und im Telemetriebereich auf der Seite **Dashboard** nur die Geräte angezeigt, die die Filterbedingungen erfüllen. Sie sehen, dass zwei LKW mit dem Solution Accelerator verbunden sind, darunter auch „truck-02“:
 
 [![Nur LKW werden auf der Karte angezeigt](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-expanded.png#lightbox)
 
-Durch den Filter wird zudem vorgegeben, welche Geräte im Diagramm **Telemetry** (Telemetrie) angezeigt werden:
-
-[![LKW-Telemetriedaten werden im Dashboard angezeigt](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetry-expanded.png#lightbox)
-
-Wählen Sie **Manage device groups** (Gerätegruppen verwalten), um Filter zu erstellen, zu bearbeiten und zu löschen.
+Klicken Sie auf **Manage device groups** (Gerätegruppen verwalten), um Filter zu erstellen, zu bearbeiten und zu löschen.
 
 ## <a name="view-real-time-telemetry"></a>Anzeigen von Echtzeit-Telemetriedaten
 
-Der Solution Accelerator stellt im Diagramm auf der Seite **Dashboard** Echtzeit-Telemetriedaten dar. Oben im Diagramm mit den Telemetriedaten werden die verfügbaren Telemetriedatentypen für die Geräte angezeigt, die mit dem aktuellen Filter ausgewählt wurden:
+Der Solution Accelerator stellt im Diagramm auf der Seite **Dashboard** Echtzeit-Telemetriedaten dar. Oben im Diagramm mit den Telemetriedaten werden die verfügbaren Telemetriedatentypen für die Geräte angezeigt, z.B. „truck-02“, die mit dem aktuellen Filter ausgewählt wurden. Standardmäßig wird im Diagramm der Breitengrad der LKW angezeigt, und „truck-02“ ist scheinbar gerade nicht in Bewegung:
 
 [![Typen von LKW-Telemetriedaten](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-expanded.png#lightbox)
 
-Klicken Sie auf **Temperature** (Temperatur), um die Telemetriedaten für die Temperatur anzuzeigen:
+Klicken Sie auf **Temperatur**, um für die LKW die Telemetriedaten zur Temperatur anzuzeigen. Sie sehen, wie sich die Temperatur für „truck-02“ während der letzten Stunde verändert hat:
 
 [![Darstellung der Telemetriedaten für die LKW-Temperatur](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-expanded.png#lightbox)
 
-## <a name="use-the-map"></a>Verwenden der Karte
+## <a name="view-the-map"></a>Anzeigen der Karte
 
-Auf der Karte werden Informationen zu den simulierten Trucks angezeigt, die durch den aktuellen Filter ausgewählt sind. Sie können die Karte zoomen und schwenken, um Positionen mehr oder weniger detailliert anzuzeigen. Mit der Farbe eines Gerätesymbols auf der Karte wird angegeben, ob für das Gerät **Alerts** (Benachrichtigungen) oder **Warnings** (Warnungen) vorliegen. Eine Zusammenfassung der Anzahl von **Benachrichtigungen** und **Warnungen** wird auf der linken Seite der Karte angezeigt.
+Auf der Karte werden Informationen zu den simulierten Trucks angezeigt, die durch den aktuellen Filter ausgewählt sind. Sie können die Karte zoomen und schwenken, um Positionen mehr oder weniger detailliert anzuzeigen. Mit der Farbe eines Gerätesymbols auf der Karte wird angegeben, ob für das Gerät **Alerts** (Benachrichtigungen) (dunkelblau) oder **Warnings** (Warnungen) (rot) vorliegen. Eine Zusammenfassung der Anzahl von **Benachrichtigungen** und **Warnungen** wird auf der linken Seite der Karte angezeigt.
 
-Zum Anzeigen der Gerätedetails können Sie die Karte zoomen und schwenken, um die Geräte zu lokalisieren. Anschließend können Sie das Gerät in der Karte auswählen. Klicken Sie dann auf die Gerätebezeichnung, um das Panel **Device details** (Gerätedetails) zu öffnen. Zu den Gerätedetails zählt Folgendes:
+Zum Anzeigen der Details für „truck-02“ können Sie die Karte schwenken und zoomen, um den LKW zu finden, und diesen anschließend in der Karte auswählen. Klicken Sie dann auf die Gerätebezeichnung, um das Panel **Device details** (Gerätedetails) zu öffnen. Zu den Gerätedetails zählt Folgendes:
 
 * Aktuelle Telemetriewerte
 * Vom Gerät unterstützte Methoden
@@ -77,13 +71,11 @@ Zum Anzeigen der Gerätedetails können Sie die Karte zoomen und schwenken, um d
 
 ## <a name="view-alerts"></a>Anzeigen von Warnungen
 
-Im Bereich **Benachrichtigungen** werden detaillierte Informationen zu den neuesten Benachrichtigungen von den Geräten angezeigt:
+Im Bereich **Benachrichtigungen** werden detaillierte Informationen zu den neuesten Benachrichtigungen von den Geräten angezeigt. Die Benachrichtigungen für „truck-02“ weisen auf eine Ladungstemperatur hin, die höher als normal ist:
 
 [![Anzeigen von Gerätebenachrichtigungen im Dashboard](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-expanded.png#lightbox)
 
-Mit einem Filter können Sie die Zeitspanne für aktuelle Benachrichtigungen anpassen. Standardmäßig werden Benachrichtigungen der letzten Stunde angezeigt:
-
-[![Filtern der Benachrichtigungen nach Zeit](./media/iot-accelerators-remote-monitoring-monitor/dashboardalarmsfilter-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardalarmsfilter-expanded.png#lightbox)
+Mit einem Filter können Sie die Zeitspanne für aktuelle Benachrichtigungen anpassen. Standardmäßig werden die Benachrichtigungen der letzten Stunde angezeigt.
 
 ## <a name="view-the-system-kpis"></a>Anzeigen der System-KPIs
 
@@ -97,19 +89,11 @@ Im Dashboard werden drei KPIs für die Benachrichtigungen angezeigt, die mit den
 * Der Anteil von Benachrichtigungen nach dem Gerätetyp.
 * Der Prozentsatz an Benachrichtigungen, die kritisch sind.
 
+Für „truck-02“ handelt es sich bei allen Benachrichtigungen um Warnungen, dass die Temperatur der Ladung höher als normal ist.
+
 Die gleichen Filter, mit denen die Zeitspanne für Benachrichtigungen festgelegt und mit denen gesteuert wird, welche Geräte angezeigt werden, bestimmen die Art der Aggregierung von KPIs. Standardmäßig werden die während der letzten Stunde aggregierten KPIs im Bereich angezeigt.
 
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-
-Wenn Sie mit dem nächsten Tutorial fortfahren möchten, können Sie die Bereitstellung des Solution Accelerators für die Remoteüberwachung beibehalten. Zum Reduzieren der Kosten für die Ausführung des Solution Accelerators, wenn Sie ihn nicht nutzen, können Sie die simulierten Geräte im Panel mit den Einstellungen beenden:
-
-[![Anhalten der Telemetrie](./media/iot-accelerators-remote-monitoring-monitor/togglesimulation-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/togglesimulation-expanded.png#lightbox)
-
-Sie können die simulierten Geräte neu starten, wenn Sie mit dem nächsten Tutorial beginnen möchten.
-
-Falls Sie den Solution Accelerator nicht mehr benötigen, können Sie ihn auf der Seite [Bereitgestellte Lösungen](https://www.azureiotsolutions.com/Accelerators#dashboard) löschen:
-
-![Löschen der Lösung](media/iot-accelerators-remote-monitoring-monitor/deletesolution.png)
+[!INCLUDE [iot-iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

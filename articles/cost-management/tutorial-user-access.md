@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/17/2018
+ms.date: 07/10/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 3ceed8b88b9c81954c967d3d7ddd964c532867ab
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 4b45d917118d5be1252c3bb232e4b24e68d7857f
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301606"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188181"
 ---
 # <a name="tutorial-assign-access-to-cost-management-data"></a>Tutorial: Zuweisen des Zugriffs auf Kostenverwaltungsdaten
 
@@ -28,6 +28,8 @@ Bei der Registrierung Ihrer Azure-Vereinbarung oder Ihres Azure-Kontos wurde ein
 > [!div class="checklist"]
 > * Erstellen eines Benutzers mit Administratorzugriff
 > * Erstellen eines Benutzers mit Benutzerzugriff
+> * Löschen eines Benutzers
+> * Löschen oder Exportieren von personenbezogenen Daten
 > * Erstellen und Verwalten von Entitäten
 
 
@@ -35,14 +37,14 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Sie benötigen ein Azure-Abonnement.
+- Sie benötigen ein Azure-Konto.
 - Sie müssen entweder über eine Registrierung für die Testversion oder ein kostenpflichtiges Abonnement für Azure Cost Management verfügen.
 
 ## <a name="create-a-user-with-admin-access"></a>Erstellen eines Benutzers mit Administratorzugriff
 
 Obwohl Sie bereits über Administratorzugriff verfügen, benötigen Kollegen in Ihrer Organisation möglicherweise ebenfalls Administratorzugriff. Klicken Sie im Cloudyn-Portal auf das Zahnradsymbol in der rechten oberen Ecke, und wählen Sie **User Management** (Benutzerverwaltung) aus. Klicken Sie auf **Add New User** (Neuen Benutzer hinzufügen), um einen neuen Benutzer hinzuzufügen.
 
-Geben Sie die erforderlichen Informationen zum Benutzer ein. Die Anmelde-ID muss eine gültige E-Mail-Adresse sein. Wählen Sie die erforderlichen Berechtigungen für die Benutzerverwaltung aus, damit der Benutzer andere Benutzer erstellen und ändern kann. Dank der Empfängerlistenverwaltung kann der Benutzer Empfängerlisten bearbeiten. Ein Link mit Anmeldeinformationen wird von Cloudyn per E-Mail an den Benutzer gesendet, wenn Sie **Notify user by email** (Benutzer per E-Mail benachrichtigen) aktivieren. Bei der ersten Anmeldung legt der Benutzer ein Kennwort fest.
+Geben Sie die erforderlichen Informationen zum Benutzer ein. Die **Anmelde-ID** muss eine gültige E-Mail-Adresse sein. Wählen Sie die erforderlichen Berechtigungen für die Benutzerverwaltung aus, damit der Benutzer andere Benutzer erstellen und ändern kann. Dank der Empfängerlistenverwaltung kann der Benutzer Empfängerlisten bearbeiten. Ein Link mit Anmeldeinformationen wird von Cloudyn per E-Mail an den Benutzer gesendet, wenn Sie **Notify user by email** (Benutzer per E-Mail benachrichtigen) aktivieren. Bei der ersten Anmeldung legt der Benutzer ein Kennwort fest.
 
 Unter **User has admin access** (Benutzer verfügt über Administratorzugriff) ist die Stammentität Ihrer Organisation ausgewählt. Lassen Sie den Stamm ausgewählt, und speichern Sie die Benutzerinformationen. Durch das Auswählen der Stammentität verfügt der Benutzer nicht nur für die Stammentität in der Struktur über Administratorberechtigungen, sondern auch für alle Entitäten, die sich darunter befinden.  
   ![Neuen Benutzer mit Administratorzugriff hinzufügen](.\media\tutorial-user-access\new-admin-access.png)
@@ -57,6 +59,24 @@ Typische Benutzer, die Zugriff auf Kostenverwaltungsdaten wie Dashboards oder Be
 ![Neuen Benutzer mit Benutzerzugriff erstellen](.\media\tutorial-user-access\new-user-access.png)
 
 Ein Videotutorial zum Hinzufügen von Benutzern finden Sie unter [Adding Users to Azure Cost Management](https://youtu.be/Nzn7GLahx30) (Hinzufügen von Benutzern zu Azure Cost Management).
+
+## <a name="delete-a-user"></a>Löschen eines Benutzers
+
+Wenn Sie einen Benutzer löschen, bleiben alle Entitäten intakt, auf die der Benutzer Zugriff hat. Gespeicherte *persönliche* Berichte werden entfernt, wenn der Benutzer gelöscht wird. Gespeicherte *öffentliche* Berichte, die vom Benutzer erstellt wurden, werden nicht gelöscht.
+
+Sie können sich nicht selbst als Benutzer löschen.
+
+> [!WARNING]
+> Wenn Sie einen Benutzer löschen, kann er nicht wiederhergestellt werden.
+
+1.  Klicken Sie im Cloudyn-Portal rechts oben auf das Zahnradsymbol, und wählen Sie anschließend die Option **User Management** (Benutzerverwaltung).
+2.  Wählen Sie in der Liste mit den Benutzern den Benutzer aus, den Sie löschen möchten, und klicken Sie dann auf **Benutzer löschen** (Papierkorbsymbol).
+3.  Klicken Sie im Feld zum Löschen von Benutzern auf **Ja** und dann auf **OK**.
+
+
+## <a name="delete-or-export-personal-data"></a>Löschen oder Exportieren von personenbezogenen Daten
+
+Wenn Sie personenbezogene Daten für Cloudyn löschen oder exportieren möchten, müssen Sie ein Supportticket erstellen. Ein erstelltes Supportticket dient als formeller Antrag: ein so genannter Antrag einer betroffenen Person. Microsoft unternimmt dann unmittelbar die Schritte zum Entfernen des Kontos und Löschen von Kundendaten bzw. personenbezogenen Daten. Informationen dazu, wie Sie das Löschen bzw. Exportieren Ihrer Daten anfordern können, finden Sie unter [Data Subject Requests of Cloudyn Data](https://www.cloudyn.com/cloudyn-gdpr-requests) (Anträge betroffener Personen für Cloudyn-Daten).
 
 ## <a name="create-and-manage-entities"></a>Erstellen und Verwalten von Entitäten
 
@@ -105,6 +125,8 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > [!div class="checklist"]
 > * Erstellen eines Benutzers mit Administratorzugriff
 > * Erstellen eines Benutzers mit Benutzerzugriff
+> * Löschen eines Benutzers
+> * Löschen oder Exportieren von personenbezogenen Daten
 > * Erstellen und Verwalten von Entitäten
 
 

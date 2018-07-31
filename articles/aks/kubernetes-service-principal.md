@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 04/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4dbb8b7abf6da77115d0e1d12621ec20ec60d174
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: dcb142b8b648f3f02855cb211789a4dee62183c0
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035199"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145579"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Dienstprinzipale mit Azure Kubernetes Service (AKS)
 
@@ -81,7 +81,7 @@ Beachten Sie bei Verwendung von AKS und Azure AD-Dienstprinzipalen Folgendes:
 
 * Der Dienstprinzipal für Kubernetes ist Bestandteil der Clusterkonfiguration. Verwenden Sie diese Identität jedoch nicht zum Bereitstellen des Clusters.
 * Jeder Dienstprinzipal ist einer Azure AD-Anwendung zugeordnet. Der Dienstprinzipal für einen Kubernetes-Cluster kann einem beliebigen gültigen Azure AD-Anwendungsnamen zugeordnet sein (z.B. `https://www.contoso.org/example`). Bei der URL für die Anwendung muss es sich nicht um einen realen Endpunkt handeln.
-* Verwenden Sie zur Angabe der **Client-ID** des Dienstprinzipals den Wert für `appId` (wie in diesem Artikel gezeigt) oder den entsprechenden `name`-Wert des Dienstprinzipals (etwa `https://www.contoso.org/example`).
+* Geben Sie als **Client-ID** des Dienstprinzipals den `appId`-Wert an.
 * Auf dem virtuellen Mastercomputer und den virtuellen Knotencomputern des Kubernetes-Clusters werden die Dienstprinzipal-Anmeldeinformationen in der Datei `/etc/kubernetes/azure.json` gespeichert.
 * Wenn Sie den Dienstprinzipal mithilfe des Befehls `az aks create` automatisch generieren, werden die Dienstprinzipal-Anmeldeinformationen auf dem Computer, auf dem der Befehl ausgeführt wird, in die Datei `~/.azure/aksServicePrincipal.json` geschrieben.
 * Beim Löschen eines AKS-Clusters, der mit `az aks create` erstellt wurde, wird der automatisch erstellte Dienstprinzipal nicht gelöscht. Zum Löschen des Dienstprinzipals rufen Sie zuerst mit [az ad app list][az-ad-app-list] die ID für den Dienstprinzipal ab. Das folgende Beispiel fragt den Cluster mit dem Namen *myAKSCluster* ab und löscht dann die App-ID mit [az ad app delete][az-ad-app-delete]. Ersetzen Sie diese Namen durch Ihre eigenen Werte:

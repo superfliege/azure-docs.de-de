@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
 manager: douge
-ms.openlocfilehash: 93c9f42df1136f242a5a04dc3056e0b1595cfb02
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: facf2de40c555ccd79fe73543a85f0b5cc150450
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37933441"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247482"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Teamentwicklung mit Azure Dev Spaces
 
@@ -127,7 +127,7 @@ Gehen Sie wie folgt vor, um einen neuen Bereich zu erstellen:
 
     ![](media/get-started-netcore-visualstudio/Settings.png)
 
-6. Geben Sie im Dialogfeld **Add Space** (Bereich hinzufügen) einen Namen für den Bereich ein, und klicken Sie auf **OK**. Sie können Ihren Namen (z.B. „scott“) für den neuen Bereich verwenden, damit Ihre Kollegen erkennen können, in welchem Bereich Sie arbeiten.
+6. Legen Sie im Dialogfeld **Bereich hinzufügen** den übergeordneten Bereich auf **default** fest, und geben Sie einen Namen für den neuen Bereich ein. Sie können Ihren Namen (z.B. „scott“) für den neuen Bereich verwenden, damit Ihre Kollegen erkennen können, in welchem Bereich Sie arbeiten. Klicken Sie auf **OK**.
 
     ![](media/get-started-netcore-visualstudio/AddSpace.png)
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 7a127f53985f39913c83958be1f1730c64b33a76
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 8db3f0ffbd65f3601bc05054e53a1e8e17384866
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001949"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145317"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
 
@@ -71,10 +71,10 @@ Erstellen Sie zunächst eine Ressourcengruppe für die Ressourcen, die zum Berei
 2. Geben Sie unter **Ressourcengruppenname** die Zeichenfolge **Test-FW-RG** ein.
 3. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
 4. Wählen Sie unter **Ressourcengruppenstandort** einen Standort aus. Alle weiteren Ressourcen, die Sie erstellen, müssen sich am gleichen Standort befinden.
-5. Klicken Sie auf **Erstellen**.
+5. Klicken Sie auf **Create**.
 
 
-### <a name="create-a-vnet"></a>Erstellen eines VNets
+### <a name="create-a-vnet"></a>Erstellen eines VNET
 1. Klicken Sie auf der Startseite des Azure-Portals auf **Alle Dienste**.
 2. Klicken Sie unter **Netzwerk** auf **Virtuelle Netzwerke**.
 3. Klicken Sie auf **Hinzufügen**.
@@ -158,7 +158,7 @@ Konfigurieren Sie die **Einstellungen** für den virtuellen Computer „Srv-Work
    
    |Einstellung  |Wert  |
    |---------|---------|
-   |Name     |Test-FW01|
+   |NAME     |Test-FW01|
    |Abonnement     |\<Ihr Abonnement\>|
    |Ressourcengruppe     |**Vorhandene verwenden**: Test-FW-RG |
    |Standort     |Wählen Sie den gleichen Standort aus wie zuvor.|
@@ -235,7 +235,7 @@ Konfigurieren Sie die ausgehende Standardroute für das Subnetz **Workload-SN** 
 6. Geben Sie unter **Regeln** für **Name** die Zeichenfolge **AllowDNS** ein.
 8. Wählen Sie für **Protokoll** die Option **TCP** aus.
 9. Geben Sie unter **Quelladressen** die Zeichenfolge **10.0.2.0/24** ein.
-10. Geben Sie für die Zieladresse die Zeichenfolge **209.244.0.3, 209.244.0.4** ein.
+10. Geben Sie für die Zieladresse die Zeichenfolge **209.244.0.3,209.244.0.4** ein.
 11. Geben Sie unter **Zielports** den Wert **53** ein.
 12. Klicken Sie auf **Hinzufügen**.
 

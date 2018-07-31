@@ -1,6 +1,6 @@
 ---
 title: Verwenden einer verwalteten Dienstidentität für einen virtuellen Linux-Computer für den Zugriff auf Azure Data Lake Store
-description: Dieses Tutorial veranschaulicht die Verwendung einer verwalteten Dienstidentität (Managed Service Identity, MSI) für einen virtuellen Linux-Computer für den Zugriff auf Azure Data Lake Store.
+description: In diesem Tutorial wird die Verwendung einer verwalteten Dienstidentität für einen virtuellen Linux-Computer für den Zugriff auf Azure Data Lake Store veranschaulicht.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: ce38dabbe9aa69f7c54bb49888ad83e01a7c9522
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 6854b0a6c72b44bcd3f778e0c46cb109b34ce826
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004879"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258829"
 ---
 # <a name="tutorial-use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>Tutorial: Verwenden einer verwalteten Dienstidentität für einen virtuellen Linux-Computer für den Zugriff auf Azure Data Lake Store
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Dienstidentität für einen virtuellen Linux-Computer für den Zugriff auf Azure Data Lake Store verwenden. Azure verwaltet von Ihnen erstellte Identitäten automatisch über MSI. Sie können MSI verwenden, um sich bei Diensten mit Unterstützung für die Azure Active Directory-Authentifizierung (Azure AD) zu authentifizieren, ohne dass Anmeldeinformationen in Ihren Code eingebettet werden müssen. 
+In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Dienstidentität für einen virtuellen Linux-Computer für den Zugriff auf Azure Data Lake Store verwenden. Azure verwaltet von Ihnen erstellte Identitäten automatisch über die verwaltete Dienstidentität. Sie können die verwaltete Dienstidentität verwenden, um sich bei Diensten mit Unterstützung für die Azure Active Directory-Authentifizierung (Azure AD) zu authentifizieren, ohne dass Anmeldeinformationen in Ihren Code eingebettet werden müssen. 
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Aktivieren von MSI auf einem virtuellen Linux-Computer 
+> * Aktivieren der verwalteten Dienstidentität auf einer Linux-VM 
 > * Gewähren des Zugriffs auf Azure Data Lake Store durch Ihren virtuellen Computer
 > * Abrufen eines Zugriffstokens mithilfe der VM-Identität und Verwenden dieses Zugriffstokens für den Zugriff auf Azure Data Lake Store
 
@@ -58,13 +58,13 @@ In diesem Tutorial wird ein neuer virtueller Linux-Computer erstellt. Sie könne
 5. Um eine neue Ressourcengruppe auszuwählen, in der der virtuelle Computer erstellt werden soll, klicken Sie auf **Ressourcengruppe** > **Neu erstellen**. Wenn Sie fertig sind, klicken Sie auf **OK**.
 6. Wählen Sie eine Größe für den virtuellen Computer. Wählen Sie die Option **Alle anzeigen**, oder ändern Sie den Filter **Supported disk type** (Unterstützter Datenträgertyp), um weitere Größen anzuzeigen. Behalten Sie im Bereich „Einstellungen“ die Standardwerte bei, und klicken Sie auf **OK**.
 
-## <a name="enable-msi-on-your-vm"></a>Aktivieren von MSI auf dem virtuellen Computer
+## <a name="enable-managed-service-identity-on-your-vm"></a>Aktivieren der verwalteten Dienstidentität auf Ihrer VM
 
-Eine VM-MSI ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Durch das Aktivieren der verwalteten Dienstidentität auf einem virtuellen Computer werden zwei Vorgänge ausgelöst: Der virtuelle Computer wird bei Azure Active Directory registriert, um die zugehörige verwaltete Identität zu erstellen, und die Identität wird auf dem virtuellen Computer konfiguriert.
+Eine verwaltete Dienstidentität eines virtuellen Computers ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Durch das Aktivieren der verwalteten Dienstidentität auf einem virtuellen Computer werden zwei Vorgänge ausgelöst: Der virtuelle Computer wird bei Azure Active Directory registriert, um die zugehörige verwaltete Identität zu erstellen, und die Identität wird auf dem virtuellen Computer konfiguriert.
 
-1. Wählen Sie unter **Virtueller Computer** den virtuellen Computer aus, auf dem Sie MSI aktivieren möchten.
+1. Wählen Sie unter **Virtueller Computer** den virtuellen Computer aus, auf dem Sie die verwaltete Dienstidentität aktivieren möchten.
 2. Wählen Sie im linken Bereich die Option **Konfiguration**.
-3. Die Option **Verwaltete Dienstidentität** wird angezeigt. Klicken Sie zum Registrieren und Aktivieren von MSI auf **Ja**. Klicken Sie zum Deaktivieren auf **Nein**.
+3. Die Option **Verwaltete Dienstidentität** wird angezeigt. Wählen Sie **Ja**, um die verwaltete Dienstidentität zu registrieren und zu aktivieren. Klicken Sie zum Deaktivieren auf **Nein**.
    ![Auswahl „Registrierung bei Azure Active Directory“](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 4. Wählen Sie **Speichern**aus.
 
@@ -72,7 +72,7 @@ Eine VM-MSI ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne das
 
 Sie können Ihrem virtuellen Computer nun Zugriff auf Dateien und Ordner in Azure Data Lake Store gewähren. Für diesen Schritt können Sie eine vorhandene Data Lake Store-Instanz verwenden oder eine neue erstellen. Um im Azure-Portal eine Data Lake Store-Instanz zu erstellen, führen Sie diesen [Schnellstart zu Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal) durch. Es gibt in der [Dokumentation zu Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) auch Schnellstarts, in denen die Azure-Befehlszeilenschnittstelle und Azure PowerShell verwendet werden.
 
-Erstellen Sie in Data Lake Store einen neuen Ordner, und gewähren Sie MSI die Berechtigungen zum Lesen, Schreiben und Ausführen von Dateien in diesem Ordner:
+Erstellen Sie in Data Lake Store einen neuen Ordner, und gewähren Sie für die verwaltete Dienstidentität die Berechtigungen zum Lesen, Schreiben und Ausführen von Dateien in diesem Ordner:
 
 1. Wählen Sie im Azure-Portal im linken Bereich **Data Lake Store**.
 2. Wählen Sie die Data Lake Store-Instanz aus, die Sie verwenden möchten.
@@ -90,7 +90,7 @@ MSI kann nun alle Vorgänge für Dateien in dem erstellten Ordner ausführen. We
 
 ## <a name="get-an-access-token-and-call-the-data-lake-store-file-system"></a>Abrufen eines Zugriffstokens und Aufrufen des Data Lake Store-Dateisystems
 
-Azure Data Lake Store unterstützt die Azure AD-Authentifizierung nativ, sodass Zugriffstoken, die über MSI abgerufen wurden, direkt angenommen werden können. Für die Authentifizierung im Data Lake Store-Dateisystem übermitteln Sie ein Zugriffstoken, das von Azure AD für Ihren Endpunkt des Data Lake Store-Dateisystems ausgestellt wurde. Das Zugriffstoken ist in einem Autorisierungsheader im Format „Bearer \<ZUGRIFFSTOKENWERT\>“ enthalten.  Weitere Informationen zur Unterstützung von Data Lake Store für die Azure AD-Authentifizierung finden Sie unter [Authentifizierung bei Data Lake Store mithilfe von Azure Active Directory](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory).
+Azure Data Lake Store unterstützt die Azure AD-Authentifizierung nativ, sodass Zugriffstoken, die über die verwaltete Dienstidentität abgerufen wurden, direkt angenommen werden können. Für die Authentifizierung im Data Lake Store-Dateisystem übermitteln Sie ein Zugriffstoken, das von Azure AD für Ihren Endpunkt des Data Lake Store-Dateisystems ausgestellt wurde. Das Zugriffstoken ist in einem Autorisierungsheader im Format „Bearer \<ZUGRIFFSTOKENWERT\>“ enthalten.  Weitere Informationen zur Unterstützung von Data Lake Store für die Azure AD-Authentifizierung finden Sie unter [Authentifizierung bei Data Lake Store mithilfe von Azure Active Directory](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory).
 
 In diesem Tutorial authentifizieren Sie sich bei der REST-API für das Data Lake Store-Dateisystem mit REST-Anforderungen in cURL.
 
@@ -101,7 +101,7 @@ Zum Ausführen dieser Schritte benötigen Sie einen SSH-Client. Wenn Sie Windows
 
 1. Navigieren Sie im Portal zu Ihrem virtuellen Linux-Computer. Klicken Sie unter **Übersicht** auf **Verbinden**.  
 2. Stellen Sie mithilfe des gewünschten SSH-Clients eine Verbindung mit dem virtuellen Computer her. 
-3. Stellen Sie im Terminalfenster mit cURL eine Anforderung an den lokalen MSI-Endpunkt, um ein Zugriffstoken für das Data Lake Store-Dateisystem abzurufen. Der Ressourcenbezeichner für Data Lake Store lautet https://datalake.azure.net/.  Es ist wichtig, den abschließenden Schrägstrich in den Ressourcenbezeichner einzuschließen.
+3. Senden Sie im Terminalfenster mit cURL eine Anforderung an den lokalen Endpunkt der verwalteten Dienstidentität, um ein Zugriffstoken für das Data Lake Store-Dateisystem abzurufen. Der Ressourcenbezeichner für Data Lake Store lautet https://datalake.azure.net/.  Es ist wichtig, den abschließenden Schrägstrich in den Ressourcenbezeichner einzuschließen.
     
    ```bash
    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -H Metadata:true   
@@ -180,7 +180,7 @@ Zum Ausführen dieser Schritte benötigen Sie einen SSH-Client. Wenn Sie Windows
 
 Mithilfe anderer APIs für das Data Lake Store-Dateisystem können Sie Dateien anfügen und herunterladen und viele andere Aufgaben durchführen.
 
-Glückwunsch! Sie haben sich mit MSI für einen virtuellen Linux-Computer beim Data Lake Store-Dateisystem authentifiziert.
+Glückwunsch! Sie haben sich mit der verwalteten Dienstidentität für einen virtuellen Linux-Computer beim Data Lake Store-Dateisystem authentifiziert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

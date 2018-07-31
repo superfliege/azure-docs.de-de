@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 8c92b45cd3949e56515286c963b035e3c449835b
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 192992917432a64c2f9f81761e22bf7d9205703a
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37967404"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205560"
 ---
 # <a name="create-a-cicd-pipeline-for-your-existing-code-with-the-azure-devops-project"></a>Erstellen einer CI-/CD-Pipeline für vorhandenen Code mit Azure DevOps-Projekt
 
@@ -67,7 +67,7 @@ Mit dem Azure DevOps-Projekt wird in VSTS eine CI/CD-Pipeline erstellt.  Sie kö
 
 ## <a name="configure-vsts-and-an-azure-subscription"></a>Konfigurieren von VSTS und eines Azure-Abonnements 
 
-1. Erstellen Sie ein **neues** VSTS-Konto, oder wählen Sie ein **vorhandenes** Konto aus.  Wählen Sie für Ihr VSTS-Projekt einen **Namen** aus.  Wählen Sie Ihr **Azure-Abonnement**, den **Speicherort** und einen **Namen** für Ihre Anwendung aus.  Wählen Sie **Fertig** aus, wenn Sie fertig sind.
+1. Erstellen Sie ein **neues** VSTS-Konto, oder wählen Sie ein **vorhandenes** Konto aus.  Wählen Sie für Ihr VSTS-Projekt einen **Namen** aus.  Wählen Sie Ihr **Azure-Abonnement**, den **Speicherort** und einen **Namen** für Ihre Anwendung aus.  Klicken Sie auf **Fertig**, wenn Sie fertig sind.
 
     ![Eingeben von VSTS-Informationen](_img/azure-devops-project-github/vstsazureinfo.png)
 
@@ -93,7 +93,7 @@ Mit dem Azure DevOps-Projekt wurde in Ihrem VSTS-Konto automatisch eine vollstä
 
 1. Verschieben Sie den Cursor rechts neben die Builddefinition neben das Feld **Status**. Wählen Sie die **Auslassungspunkte** aus, die angezeigt werden.  Mit dieser Aktion wird ein Menü geöffnet, über das Sie verschiedene Aktivitäten starten können. So können Sie beispielsweise einen neuen Build zur Warteschlange hinzufügen, einen Build anhalten und die Builddefinition bearbeiten.
 
-1. Wählen Sie **Bearbeiten** aus.
+1. Klicken Sie auf **Bearbeiten**.
 
 1. In dieser Ansicht können Sie sich **die verschiedenen Aufgaben ansehen**, die Sie für Ihre Builddefinition durchführen können.  Vom Build werden verschiedene Aufgaben durchgeführt. So werden beispielsweise Quellen aus dem Git-Repository abgerufen, Abhängigkeiten wiederhergestellt und für Bereitstellungen verwendete Ausgaben veröffentlicht.
 
@@ -117,7 +117,7 @@ Mit dem Azure DevOps-Projekt wurde in Ihrem VSTS-Konto automatisch eine vollstä
 
 1. Wählen Sie links im Browser die Option **Aufgaben** aus.  Bei den Aufgaben handelt es sich um die Aktivitäten, die beim Bereitstellungsprozess durchgeführt werden.  In diesem Beispiel wurde für die Bereitstellung für **Azure App Service** eine Aufgabe erstellt.
 
-1. Wählen Sie rechts im Browser **Releases anzeigen** aus.  In dieser Ansicht wird ein Verlauf von Releases angezeigt.
+1. Wählen Sie rechts im Browser **Releases anzeigen** aus.  In dieser Ansicht wird der Verlauf von Releases angezeigt.
 
 1. Wählen Sie die **Auslassungsp** neben einem Ihrer Releases und dann die Option **Öffnen** aus.  In dieser Ansicht finden Sie verschiedene Menüs, wie etwa eine Releasezusammenfassung, zugeordnete Arbeitsaufgaben und Tests.
 
@@ -142,12 +142,12 @@ Mithilfe von Azure Application Insights können Sie die Leistung und Nutzung Ihr
 1. Geben Sie einen **Namen** für die Warnung ein.
 
 1. Wählen Sie die Dropdownliste für **Source Alter on** (Quellwarnung auf) aus.  Wählen Sie Ihre **App Service-Ressource** aus.
-
+<!-- Could you please confirm if this should be "Source Alter on" instead of "Source Alert on"? -->
 1. Für die Standardwarnung gilt eine **Serverantwortzeit, die größer als 1 Sekunde** ist.  Wählen Sie die Dropdownliste **Metrik** aus, um die verschiedenen Warnungsmetriken anzuzeigen.  Sie können problemlos eine Vielzahl von Warnungen konfigurieren und dadurch die Überwachungsfunktionen Ihrer App verbessern.
 
 1. Aktivieren Sie das Kontrollkästchen für **Notify via Email owners, contributors, and readers** (Besitzer, Mitwirkende und Leser über E-Mail informieren).  Optional können Sie zusätzliche Aktionen ausführen, wenn eine Warnung beim Ausführen einer Azure-Logik-App ausgelöst wird.
 
-1. Wählen Sie **OK** aus, um die Warnung zu erstellen.  In wenigen Augenblicken wird die Warnung als aktiv auf dem Dashboard angezeigt.  **Beenden** Sie den Warnungsbereich, und navigieren Sie zurück zum Blatt **Application Insights**.
+1. Wählen Sie **OK** aus, um die Warnung zu erstellen.  In wenigen Augenblicken wird die Warnung als aktiv auf dem Dashboard angezeigt.  **Verlassen** Sie den Warnungsbereich, und navigieren Sie zurück zum Blatt **Application Insights**.
 
 1. Wählen Sie **Verfügbarkeit** und anschließend **+ Test hinzufügen** aus. 
 

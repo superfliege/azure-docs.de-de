@@ -6,15 +6,15 @@ author: seanmck
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
-ms.date: 03/29/2018
+ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 2da61d52e43857237f6e231c03ea62ba5eefdadd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 953d1dfd633f2fee52a2e6d197c6f32e7ab053f7
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33767970"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160449"
 ---
 # <a name="azure-container-instances"></a>Azure Container Instances
 
@@ -47,6 +47,8 @@ Dank der Möglichkeit zur direkten [Einbindung von Azure Files-Freigaben](contai
 Azure Container Instances kann sowohl Windows- als auch Linux-Container mit der gleichen API planen. Geben Sie einfach den BS-Typ an, wenn Sie Ihre [Containergruppen](container-instances-container-groups.md) erstellen.
 
 Einige Features sind momentan auf Linux-Container beschränkt. Bis zur Erreichung der Featureparität für Windows-Container finden Sie die aktuellen Plattformunterschiede unter [Kontingente und Regionsverfügbarkeit für Azure Container Instances](container-instances-quotas.md).
+
+Azure Container Instances unterstützt Windows-Images, die auf LTSC-Versionen (Long-Term Servicing Channel, langfristiger Wartungskanal) basieren. SAC-Releases (Semi-Annual Channel, halbjährlicher Kanal) von Windows wie 1709 und 1803 werden nicht unterstützt.
 
 ## <a name="co-scheduled-groups"></a>Gemeinsam geplante Gruppen
 

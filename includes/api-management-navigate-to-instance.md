@@ -1,18 +1,18 @@
-## <a name="navigate-to-your-apim-instance"></a>Navigieren zur APIM-Instanz
-
-Führen Sie die folgenden Schritte aus, um zu Ihrer APIM-Instanz zu navigieren:
+## <a name="go-to-your-api-management-instance"></a>Navigieren zur API Management-Instanz
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
-2. Wählen Sie auf dem Bildschirm oben links **Alle Dienste** aus.  
-3. Geben Sie im Suchfeld den Suchbegriff „api“ ein.
-4. Klicken Sie auf **API Management-Dienste**.
+2. Wählen Sie **Alle Dienste** aus.  
+3. Geben Sie im Suchfeld **api** ein.
+4. Klicken Sie in den Suchergebnissen auf **API Management-Dienste**.
 
-    ![Navigieren](./media/api-management-navigate-to-instance/navigate-to-api-management-services.png)
+    ![Auswählen der API Management-Dienste in den Suchergebnissen](./media/api-management-navigate-to-instance/navigate-to-api-management-services.png)
 
-5. Wählen Sie Ihre APIM-Dienstinstanz aus.
+5. Wählen Sie Ihre API Management-Dienstinstanz aus.
 
->[!TIP]
->Fügen Sie API Management (APIM) zu Ihren Favoriten im Azure-Portal hinzu, indem Sie auf den Stern klicken. <br/>Dadurch wird das APIM-Symbol zum Menü im linken Bereich des Portals hinzugefügt. Klicken Sie auf das Symbol (![APIM-Symbol](./media/api-management-navigate-to-instance/apim-icon.png)), um alle APIM-Dienste anzuzeigen.
+> [!TIP]
+> Klicken Sie auf den Stern, um API Management zu Ihren Favoriten im Azure-Portal hinzuzufügen.
+>
+> Das API Management-Symbol (![API Management-Symbol](./media/api-management-navigate-to-instance/apim-icon.png)) wird nun im linken Menü im Portal angezeigt.
  
 
 

@@ -1,6 +1,6 @@
 ---
-title: Verwenden einer Windows-VM-MSI für den Zugriff auf Azure Data Lake Store
-description: Dieses Tutorial veranschaulicht die Verwendung einer Windows-VM-MSI (Managed Service Identity, verwaltete Dienstidentität) für den Zugriff auf Azure Data Lake Store.
+title: Verwenden einer verwalteten Dienstidentität eines virtuellen Windows-Computers für den Zugriff auf Azure Data Lake Store
+description: Dieses Tutorial veranschaulicht die Verwendung einer verwalteten Dienstidentität eines virtuellen Windows-Computers für den Zugriff auf Azure Data Lake Store.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: a7935aa245239ed32527d2c22fd41845c6da2ae1
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f5d4a5e26ecf4bde286a5163bf5ec7da492e474d
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007966"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247912"
 ---
-# <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Tutorial: Verwenden einer Windows-VM-MSI für den Zugriff auf Azure Data Lake Store
+# <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-data-lake-store"></a>Tutorial: Verwenden einer verwalteten Dienstidentität eines virtuellen Windows-Computers für den Zugriff auf Azure Data Lake Store
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Dienstidentität (Managed Service Identity, MSI) für einen virtuellen Windows-Computer für den Zugriff auf einen Azure Data Lake Store verwenden. Verwaltete Dienstidentitäten werden von Azure automatisch verwaltet und ermöglichen Ihnen die Authentifizierung für Dienste, die die Azure AD-Authentifizierung unterstützen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Folgendes wird vermittelt:
+In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Dienstidentität für einen virtuellen Windows-Computer für den Zugriff auf Azure Data Lake Store verwenden. Verwaltete Dienstidentitäten werden von Azure automatisch verwaltet und ermöglichen Ihnen die Authentifizierung für Dienste, die die Azure AD-Authentifizierung unterstützen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
-> * Aktivieren von MSI auf einem virtuellen Windows-Computer 
+> * Aktivieren einer verwalteten Dienstidentität auf einem virtuellen Windows-Computer 
 > * Gewähren des Zugriffs auf eine Azure Data Lake Store-Instanz durch Ihre VM
 > * Abrufen eines Zugriffstokens mithilfe der VM-Identität und Verwenden dieses Zugriffstokens für den Zugriff auf Azure Data Lake Store
 
@@ -44,7 +44,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Erstellen eines virtuellen Windows-Computers in einer neuen Ressourcengruppe
 
-In diesem Tutorial wird ein neuer virtueller Windows-Computer erstellt.  Sie können MSI auch auf einem vorhandenen virtuellen Computer aktivieren.
+In diesem Tutorial wird ein neuer virtueller Windows-Computer erstellt.  Sie können die verwaltete Dienstidentität auch auf einem vorhandenen virtuellen Computer aktivieren.
 
 1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Ressource erstellen**.
 2. Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**. 
@@ -55,17 +55,17 @@ In diesem Tutorial wird ein neuer virtueller Windows-Computer erstellt.  Sie kö
 
    ![Alternativer Bildtext](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-msi-on-your-vm"></a>Aktivieren von MSI auf dem virtuellen Computer 
+## <a name="enable-managed-service-identity-on-your-vm"></a>Aktivieren der verwalteten Dienstidentität auf Ihrem virtuellen Computer 
 
-Eine VM-MSI ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Durch das Aktivieren von MSI weisen Sie Azure an, eine verwaltete Identität für den virtuellen Computer zu erstellen. Im Hintergrund werden durch das Aktivieren der MSI zwei Vorgänge ausgelöst: Der virtuelle Computer wird bei Azure Active Directory registriert, um die zugehörige verwaltete Identität zu erstellen, und die Identität wird auf dem virtuellen Computer konfiguriert.
+Eine verwaltete Dienstidentität eines virtuellen Computers ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Durch das Aktivieren der verwalteten Dienstidentität weisen Sie Azure an, eine verwaltete Identität für den virtuellen Computer zu erstellen. Durch das Aktivieren der verwalteten Dienstidentität werden zwei Vorgänge im Hintergrund ausgelöst: Der virtuelle Computer wird bei Azure Active Directory registriert, um die zugehörige verwaltete Identität zu erstellen, und die Identität wird auf dem virtuellen Computer konfiguriert.
 
-1. Wählen Sie den **virtuellen Computer** aus, auf dem Sie MSI aktivieren möchten.  
+1. Wählen Sie den **virtuellen Computer** aus, auf dem Sie die verwaltete Dienstidentität aktivieren möchten.  
 2. Klicken Sie in der links angezeigten Navigationsleiste auf **Konfiguration**. 
-3. Die Option **Verwaltete Dienstidenität** wird angezeigt. Wählen Sie zum Registrieren und Aktivieren von MSI die Option **Ja** oder zum Deaktivieren „Nein“. 
+3. Die Option **Verwaltete Dienstidenität** wird angezeigt. Wählen Sie zum Registrieren und Aktivieren der verwalteten Dienstidentität die Option **Ja** oder zum Deaktivieren „Nein“. 
 4. Achten Sie darauf, zum Speichern der Konfiguration auf **Speichern** zu klicken.  
    ![Alternativer Bildtext](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
-5. Wenn Sie überprüfen möchten, welche Erweiterungen sich auf diesem virtuellen Computer befinden, klicken Sie auf **Erweiterungen**. Wenn MSI aktiviert ist, wird **ManagedIdentityExtensionforWindows** in der Liste angezeigt.
+5. Wenn Sie überprüfen möchten, welche Erweiterungen sich auf diesem virtuellen Computer befinden, klicken Sie auf **Erweiterungen**. Wenn die verwaltete Dienstidentität aktiviert ist, wird **ManagedIdentityExtensionforWindows** in der Liste angezeigt.
 
    ![Alternativer Bildtext](media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
 
@@ -73,7 +73,7 @@ Eine VM-MSI ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne das
 
 Sie können Ihrem virtuellen Computer nun Zugriff auf Dateien und Ordner in einer Azure Data Lake Store-Instanz gewähren.  Für diesen Schritt können Sie eine vorhandene Data Lake Store-Instanz verwenden oder eine neue erstellen.  Um im Azure-Portal eine neue Data Lake Store-Instanz zu erstellen, führen Sie diesen [Schnellstart zu Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal) durch. Es gibt in der [Dokumentation zu Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) auch Schnellstarts, in denen die Azure-Befehlszeilenschnittstelle und Azure PowerShell verwendet werden.
 
-Erstellen Sie in Ihrer Data Lake Store-Instanz einen neuen Ordner, und gewähren Sie Ihrer VM-MSI die Berechtigungen zum Lesen, Schreiben und Ausführen von Dateien in diesem Ordner:
+Erstellen Sie in Data Lake Store einen neuen Ordner, und gewähren Sie für die verwaltete Dienstidentität des virtuellen Computers die Berechtigungen zum Lesen, Schreiben und Ausführen von Dateien in diesem Ordner:
 
 1. Klicken Sie im Azure-Portal im linken Navigationsbereich auf **Data Lake Store**.
 2. Klicken Sie auf die Data Lake Store-Instanz, die Sie für dieses Tutorial verwenden möchten.
@@ -87,21 +87,21 @@ Erstellen Sie in Ihrer Data Lake Store-Instanz einen neuen Ordner, und gewähren
 10. Klicken Sie wie in Schritt 5 auf **Hinzufügen**, geben Sie im Feld **Auswählen** den Namen Ihres virtuellen Computers ein, wählen Sie ihn aus, und klicken Sie dann auf **Auswählen**.
 11. Klicken Sie wie in Schritt 6 auf **Berechtigungen auswählen**, wählen Sie **Lesen**, **Schreiben** und **Ausführen** aus, und fügen Sie diese Berechtigungen **diesem Ordner** als **Ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** hinzu.  Klicken Sie auf **OK**.  Die Berechtigung sollte erfolgreich hinzugefügt werden.
 
-Ihre VM-MSI kann nun alle Vorgänge für Dateien in dem erstellten Ordner ausführen.  Weitere Informationen zum Verwalten des Zugriffs auf Data Lake Store finden Sie in diesem Artikel zur [Zugriffssteuerung in Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control).
+Ihre verwaltete Dienstidentität des virtuellen Computers kann nun alle Vorgänge für Dateien in dem erstellten Ordner ausführen.  Weitere Informationen zum Verwalten des Zugriffs auf Data Lake Store finden Sie in diesem Artikel zur [Zugriffssteuerung in Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control).
 
-## <a name="get-an-access-token-using-the-vm-msi-and-use-it-to-call-the-azure-data-lake-store-filesystem"></a>Abrufen eines Zugriffstokens mithilfe der VM-MSI und Verwenden dieses Zugriffstokens für den Aufruf des Azure Data Lake Store-Dateisystems
+## <a name="get-an-access-token-using-the-vm-managed-service-identity-and-use-it-to-call-the-azure-data-lake-store-filesystem"></a>Abrufen eines Zugriffstokens mithilfe der verwalteten Dienstidentität des virtuellen Computers und Verwenden dieses Zugriffstokens für den Aufruf des Azure Data Lake Store-Dateisystems
 
-Azure Data Lake Store unterstützt die Azure AD-Authentifizierung nativ, sodass Zugriffstoken, die mit der MSI abgerufen wurden, direkt angenommen werden können.  Für die Authentifizierung im Data Lake Store-Dateisystem übermitteln Sie ein Zugriffstoken, das von Azure AD für Ihren Endpunkt des Data Lake Store-Dateisystems ausgestellt wurde, in einem Autorisierungsheader im Format „Bearer <ZUGRIFFSTOKENWERT>“.  Weitere Informationen zur Unterstützung von Data Lake Store für die Azure AD-Authentifizierung finden Sie unter [Authentifizierung bei Data Lake Store mithilfe von Azure Active Directory](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory).
+Azure Data Lake Store unterstützt die Azure AD-Authentifizierung nativ, sodass Zugriffstoken, die über die verwaltete Dienstidentität abgerufen wurden, direkt angenommen werden können.  Für die Authentifizierung im Data Lake Store-Dateisystem übermitteln Sie ein Zugriffstoken, das von Azure AD für Ihren Endpunkt des Data Lake Store-Dateisystems ausgestellt wurde, in einem Autorisierungsheader im Format „Bearer <ZUGRIFFSTOKENWERT>“.  Weitere Informationen zur Unterstützung von Data Lake Store für die Azure AD-Authentifizierung finden Sie unter [Authentifizierung bei Data Lake Store mithilfe von Azure Active Directory](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory).
 
 > [!NOTE]
 > Die Client-SDKs für das Data Lake Store-Dateisystem unterstützen noch keine verwalteten Dienstidentitäten (MSIs).  Dieses Tutorial wird aktualisiert, wenn die Unterstützung im SDK hinzugefügt wird.
 
-In diesem Tutorial authentifizieren Sie sich bei der REST-API für das Data Lake Store-Dateisystem mit REST-Anforderungen in PowerShell. Um die VM-MSI für die Authentifizierung zu verwenden, müssen Sie die Anforderungen auf dem virtuellen Computer auszuführen.
+In diesem Tutorial authentifizieren Sie sich bei der REST-API für das Data Lake Store-Dateisystem mit REST-Anforderungen in PowerShell. Um die verwaltete Dienstidentität des virtuellen Computers für die Authentifizierung zu verwenden, müssen Sie die Anforderungen auf dem virtuellen Computer auszuführen.
 
 1. Navigieren Sie im Portal zu **Virtuelle Computer**, wechseln Sie dann zu Ihrem virtuellen Windows-Computer, und klicken Sie in der **Übersicht** auf **Verbinden**.
 2. Geben Sie Ihren **Benutzernamen** und Ihr **Kennwort** ein, das Sie beim Erstellen des virtuellen Windows-Computers hinzugefügt haben. 
 3. Sie haben nun eine **Remotedesktopverbindung** mit dem virtuellen Computer erstellt. Öffnen Sie jetzt **PowerShell** in der Remotesitzung. 
-4. Erstellen Sie mithilfe des PowerShell-Befehls `Invoke-WebRequest` eine Anforderung an den lokalen MSI-Endpunkt, um ein Zugriffstoken für Azure Data Lake Store zu erhalten.  Der Ressourcenbezeichner für Data Lake Store lautet https://datalake.azure.net/.  Data Lake führt eine Prüfung auf genaue Übereinstimmung der Ressourcen-ID durch, bei der auf der abschließende Schrägstrich wichtig ist.
+4. Erstellen Sie mithilfe des PowerShell-Befehls `Invoke-WebRequest` eine Anforderung an den lokalen Endpunkt für die verwaltete Dienstidentität, um ein Zugriffstoken für Azure Data Lake Store zu erhalten.  Der Ressourcenbezeichner für Data Lake Store lautet https://datalake.azure.net/.  Data Lake führt eine Prüfung auf genaue Übereinstimmung der Ressourcen-ID durch, bei der auf der abschließende Schrägstrich wichtig ist.
 
    ```powershell
    $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -Method GET -Headers @{Metadata="true"}
@@ -207,7 +207,7 @@ In diesem Tutorial authentifizieren Sie sich bei der REST-API für das Data Lake
 
 Mithilfe anderer APIs für das Data Lake Store-Dateisystem können Sie Dateien anfügen und herunterladen und viele andere Aufgaben durchführen.
 
-Glückwunsch!  Sie haben sich mit einer VM-MSI beim Data Lake Store-Dateisystem authentifiziert.
+Glückwunsch!  Sie haben sich mit einer verwalteten Dienstidentität eines virtuellen Computers beim Data Lake Store-Dateisystem authentifiziert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

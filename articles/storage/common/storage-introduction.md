@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: get-started-article
 ms.date: 07/11/2018
 ms.author: tamram
-ms.openlocfilehash: 30741e48adbdb621317c13ec286b419bed2f9ea1
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e6a3ff22d6224ff0accdf39ad098505626659688
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001540"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238249"
 ---
 # <a name="introduction-to-azure-storage"></a>Einführung in Azure Storage
 
@@ -23,7 +23,7 @@ Azure Storage ist die Cloudspeicherlösung von Microsoft für moderne Datenspeic
 - **Sicher:** Alle Daten, die in Azure Storage geschrieben werden, werden vom Dienst verschlüsselt. Bei Azure Storage können Sie genau steuern, wer Zugriff auf Ihre Daten hat.
 - **Skalierbar:** Azure Storage ist auf hohe Skalierbarkeit ausgelegt, um die Datenspeicherungs- und Leistungsanforderungen heutiger Anwendungen zu erfüllen. 
 - **Verwaltet:** Microsoft Azure übernimmt für Sie die Wartung und Behandlung aller kritischen Probleme.
-- **Zugänglich:** Auf Daten in Azure Storage kann weltweit per HTTP oder HTTPS zugegriffen werden. Microsoft stellt SDKs für Azure Storage in verschiedenen Sprachen – .NET, Java, Node.js, Python, PHP, Ruby, Go und anderen – sowie eine ausgereifte REST-API bereit. Azure Storage unterstützt die Verwendung von Skripts in Azure PowerShell oder der Azure CLI. Darüber hinaus werden im Azure-Portal und über Azure Storage-Explorer einfache visuelle Lösungen für die Arbeit mit Ihren Daten bereitgestellt.  
+- **Zugänglich:** Auf Daten in Azure Storage kann weltweit per HTTP oder HTTPS zugegriffen werden. Microsoft stellt SDKs für Azure Storage in verschiedenen Sprachen – .NET, Java, Node.js, Python, PHP, Ruby, Go und anderen – sowie eine ausgereifte REST-API bereit. Azure Storage unterstützt die Skripterstellung in Azure PowerShell oder der Azure CLI. Darüber hinaus werden im Azure-Portal und über Azure Storage-Explorer einfache visuelle Lösungen für die Arbeit mit Ihren Daten bereitgestellt.  
 
 ## <a name="azure-storage-services"></a>Azure Storage-Dienste
 

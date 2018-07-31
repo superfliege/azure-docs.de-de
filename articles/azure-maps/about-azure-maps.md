@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 93fe8dc3f8ff991cd6c48923d9e2073e4e93f1ad
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d0ec146d276f72abf4cbbe3da4d11c0d5539df6d
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040846"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144192"
 ---
 # <a name="what-is-azure-maps"></a>Was ist Azure Maps?
 Azure Maps ist eine Sammlung mit Geodiensten, die auf aktuellen Kartendaten basieren, damit Sie für Ihre Webanwendungen und mobilen Anwendungen den präzisen geografischen Kontext bereitstellen können. Die Sammlung umfasst REST-APIs zum Rendern von Karten, eine Suchfunktion für Points of Interest, Routen zu Points of Interest, Verkehrsinformationen, Zeitzonen und IP to Location-Dienste. Sie können diese APIs verwenden, um mithilfe vertrauter Entwicklungstools im Handumdrehen Lösungen für die Integration von Standortinformationen in Ihre Azure-Lösungen zu entwickeln und zu skalieren. Zusammen mit den REST-APIs wird ein webbasiertes JavaScript-Steuerelement bereitgestellt, um die Entwicklung für verschiedene Medien einfach, flexibel und portabel zu gestalten. 
@@ -92,6 +92,7 @@ Weitere Informationen finden Sie auf der Seite zu den [Azure Maps-Verkehrsinfo-A
 
 „IP to Location“ ist ein Vorschaudienst, mit dem Sie den zweistelligen Ländercode für eine bestimmte IP-Adresse abrufen können. Mit diesem Dienst können Sie Ihre Anwendung so anpassen, dass sie bestimmte geopolitische Einschränkungen erfüllt, und die Benutzerfreundlichkeit erhöhen, indem Sie den Inhalt der Anwendung basierend auf dem geografischen Standort ändern. 
 
+Informationen zu den REST-APIs für den IP to Location-Dienst finden Sie auf der Seite mit Informationen zu den [Geolocation-APIs von Azure Maps](https://docs.microsoft.com/rest/api/maps/geolocation).
 
 ## <a name="programming-model"></a>Programmiermodell
 

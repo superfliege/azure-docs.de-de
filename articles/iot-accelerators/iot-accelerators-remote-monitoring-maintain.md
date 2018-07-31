@@ -1,22 +1,22 @@
 ---
-title: Verwenden von Warnungen und Beheben von Geräteproblemen in der Lösung für die Remoteüberwachung | Microsoft-Dokumentation
+title: 'Tutorial: Verwenden von Warnungen und Beheben von Geräteproblemen in der Lösung für die Remoteüberwachung – Azure | Microsoft-Dokumentation'
 description: In diesem Tutorial wird veranschaulicht, wie Sie Warnungen zum Identifizieren und Beheben von Problemen mit Geräten verwenden können, die mit dem Solution Accelerator für die Remoteüberwachung verbunden sind.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 06/18/2018
+ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 9607705220450b30d2ffaf0f2be9fa2a5664b879
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: acff6586f35f1c86cba8d519586d72247255ccd7
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081787"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159382"
 ---
-# <a name="troubleshoot-and-remediate-device-issues"></a>Beheben von Geräteproblemen
+# <a name="troubleshoot-and-fix-device-issues"></a>Beheben von Geräteproblemen
 
 In diesem Tutorial verwenden Sie den Solution Accelerator für die Remoteüberwachung zum Identifizieren und Beheben von Problemen mit Ihren verbundenen IoT-Geräten. Verwenden Sie Warnungen im Dashboard des Solution Accelerators, um Probleme zu identifizieren, führen Sie dann Remoteaufträge aus, um diese Probleme zu beheben.
 
@@ -28,11 +28,9 @@ In diesem Tutorial führen Sie Folgendes durch:
 > * Untersuchen einer Warnung von einem Gerät
 > * Beheben des Problems mit dem Gerät
 
-## <a name="prerequisites"></a>Voraussetzungen
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Für dieses Tutorial benötigen Sie eine bereitgestellte Instanz des Solution Accelerators für die Remoteüberwachung in Ihrem Azure-Abonnement.
-
-Falls Sie den Solution Accelerator für die Remoteüberwachung noch nicht bereitgestellt haben, sollten Sie den Schnellstart [Bereitstellen einer cloudbasierten Lösung für die Remoteüberwachung](quickstart-remote-monitoring-deploy.md) durcharbeiten.
+[!INCLUDE [iot-iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
 ## <a name="investigate-an-alert"></a>Untersuchen einer Warnung
 
@@ -58,7 +56,7 @@ Wählen Sie alle **Alert occurrences** (Warnungsvorkommen) aus, und klicken Sie 
 
 Wenn Sie die Warnung bestätigen, ändert sich der Status des Vorkommens in **Acknowledged** (Bestätigt).
 
-In der Liste können Sie das **Prototyp**-Gerät sehen, für das die Temperaturwarnung ausgelöst wurde:
+In der Liste der Geräte mit Warnungen können Sie das **Prototyp**-Gerät sehen, für das die Temperaturwarnung ausgelöst wurde:
 
 [![Liste der Geräte, die die Warnung verursachen](./media/iot-accelerators-remote-monitoring-maintain/maintenanceresponsibledevice-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenanceresponsibledevice-expanded.png#lightbox)
 
@@ -66,11 +64,11 @@ In der Liste können Sie das **Prototyp**-Gerät sehen, für das die Temperaturw
 
 Um das Problem bei dem **Prototyp**-Gerät zu beheben, müssen Sie die **DecreaseTemperature**-Methode auf dem Gerät aufrufen.
 
-Um Aktionen für ein Gerät auszuführen, wählen Sie es in der Geräteliste aus, und wählen Sie dann **Jobs** (Aufträge) aus. Das Gerätemodell **Prototyp** gibt sechs Methoden an, die ein Gerät unterstützen muss:
+Um Aktionen für ein Gerät auszuführen, wählen Sie es in der Liste der Geräte mit Warnungen aus, und wählen Sie dann **Jobs** (Aufträge) aus. Das Gerätemodell **Prototyp** unterstützt sechs Methoden:
 
 [![Anzeigen der vom Gerät unterstützten Methoden](./media/iot-accelerators-remote-monitoring-maintain/maintenancemethods-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancemethods-expanded.png#lightbox)
 
-Wählen Sie **DecreaseTemperature** aus, und legen Sie den Auftragsnamen auf **DecreaseTemperature** fest. Wählen Sie dann **Apply** (Übernehmen) aus:
+Wählen Sie **DecreaseTemperature** aus, und legen Sie den Auftragsnamen auf **DecreaseTemperature** fest. Klicken Sie anschließend auf **Übernehmen**:
 
 [![Erstellen des Auftrags zum Verringern der Temperatur](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-expanded.png#lightbox)
 
@@ -81,6 +79,8 @@ Klicken Sie auf **View job status** (Auftragsstatus anzeigen), um den Status des
 Sie können überprüfen, ob sich die Temperatur des Geräts verringert hat, indem Sie die Telemetrie auf der Seite **Dashboard** anzeigen:
 
 [![Anzeigen des Temperaturabstiegs](./media/iot-accelerators-remote-monitoring-maintain/jobresult-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/jobresult-expanded.png#lightbox)
+
+[!INCLUDE [iot-iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

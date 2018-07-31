@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 122fe9be768341716fb423a58560885c7d3035fe
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: a8f081ca9a0868bee11b27e1065a72806cb8c2c9
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920636"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214597"
 ---
 # <a name="migrate-azure-vms-to-another-region"></a>Migrieren virtueller Azure-Computer zu einer anderen Region
 
@@ -67,7 +67,7 @@ Wenn Sie gerade ein kostenloses Azure-Konto erstellt haben, sind Sie der Adminis
 ### <a name="verify-vm-outbound-access"></a>Überprüfen des ausgehenden Zugriffs der VM
 
 1. Stellen Sie sicher, dass Sie keinen Authentifizierungsproxy verwenden, um die Netzwerkkonnektivität für VMs zu steuern, die Sie migrieren möchten. 
-2. Für die Zwecke dieses Tutorials gehen wir davon aus, dass die VMs, die Sie migrieren möchten, auf das Internet zugreifen können und keinen Firewallproxy zur Steuerung des ausgehenden Zugriffs verwenden. Falls doch, überprüfen Sie die Anforderungen [hier](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity).
+2. Für die Zwecke dieses Tutorials gehen wir davon aus, dass die virtuellen Computer, die Sie migrieren möchten, auf das Internet zugreifen können und keinen Firewallproxy zur Steuerung des ausgehenden Zugriffs verwenden. Falls doch, überprüfen Sie die Anforderungen [hier](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity).
 
 ### <a name="verify-vm-certificates"></a>Überprüfen von VM-Zertifikaten
 

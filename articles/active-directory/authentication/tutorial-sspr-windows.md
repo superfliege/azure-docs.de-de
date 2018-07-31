@@ -1,41 +1,45 @@
 ---
-title: Azure AD SSPR über den Windows 10-Anmeldebildschirm | Microsoft-Dokumentation
-description: Konfigurieren von Windows 10-Anmeldebildschirm, Azure AD-Kennwortzurücksetzung und „PIN vergessen“
+title: Azure AD-SSPR über den Windows 10-Anmeldebildschirm
+description: In diesem Tutorial aktivieren Sie die Kennwortzurücksetzung auf dem Windows 10-Anmeldebildschirm, um Helpdesk-Anrufe zu reduzieren.
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 04/27/2018
+ms.topic: tutorial
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 2a6fbd9e52e07141ae1d8c630bde6ab23801fb18
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e4e94567cf978631be52a3304b47b68f61ac3fff
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054500"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161162"
 ---
-# <a name="azure-ad-password-reset-from-the-login-screen"></a>Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm
+# <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Tutorial: Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm
 
-Sie haben die Azure AD-Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) bereits bereitgestellt, aber die Benutzer wenden sich weiterhin per Telefon an den Helpdesk, wenn sie ihr Kennwort vergessen haben. Sie rufen den Helpdesk an, weil sie keinen Webbrowser zum Zugreifen auf SSPR nutzen können.
+In diesem Tutorial ermöglichen Sie Benutzern das Zurücksetzen ihrer Kennwörter über den Windows 10-Anmeldebildschirm. Mit dem neuen Windows 10 April 2018 Update wird Benutzern mit in **Azure AD eingebundenen Geräten** oder in **Azure AD eingebundenen Hybridgeräten** auf dem Anmeldebildschirm der Link „Kennwort zurücksetzen“ angezeigt. Wenn Benutzer auf diesen Link klicken, gelangen sie zur vertrauten Benutzeroberfläche für die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR).
 
-Mit dem neuen Windows 10 April 2018 Update wird Benutzern mit in **Azure AD eingebundenen Geräten** oder in **Azure AD eingebundenen Hybridgeräten** auf dem Anmeldebildschirm der Link „Kennwort zurücksetzen“ angezeigt. Wenn die Benutzer auf diesen Link klicken, gelangen sie zur vertrauten Benutzeroberfläche für die Self-Service-Kennwortzurücksetzung.
+> [!div class="checklist"]
+> * Konfigurieren des Links „Kennwort zurücksetzen“ mit Intune
+> * Optionales Konfigurieren mithilfe der Windows-Registrierung
+> * Grundlegendes zu den Elementen, die Benutzern angezeigt werden
 
-Die folgenden Voraussetzungen müssen erfüllt sein, damit Benutzer ihr Azure AD-Kennwort über den Windows 10-Anmeldebildschirm zurücksetzen können:
+## <a name="prerequisites"></a>Voraussetzungen
 
-* Windows 10 April 2018 Update oder ein neuerer Client, der in [Azure AD eingebunden](../device-management-azure-portal.md) oder in [Hybrid-Azure AD eingebunden](../device-management-hybrid-azuread-joined-devices-setup.md) ist
+* Client mit Windows 10 April 2018 Update oder einer höheren Version und entweder:
+   * [eingebunden in Azure AD](../device-management-azure-portal.md) oder 
+   * [eingebunden in Hybrid Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md)
 * Die Azure AD-Self-Service-Kennwortzurücksetzung muss aktiviert sein.
-* Führen Sie das Konfigurieren und Bereitstellen der Einstellung zum Aktivieren des Links „Kennwort zurücksetzen“ durch, indem Sie eine der folgenden Methoden verwenden:
-   * [Profil für Intune-Gerätekonfiguration](tutorial-sspr-windows.md#configure-reset-password-link-using-intune) Diese Methode erfordert die Registrierung des Gerätes über Intune.
-   * [Registrierungsschlüssel](tutorial-sspr-windows.md#configure-reset-password-link-using-the-registry)
 
 ## <a name="configure-reset-password-link-using-intune"></a>Konfigurieren des Links „Kennwort zurücksetzen“ mit Intune
 
+Die Bereitstellung der Konfigurationsänderung zum Aktivieren der Kennwortzurücksetzung über den Anmeldebildschirm mithilfe von Intune ist die flexibelste Methode. Mit Intune können Sie die Konfigurationsänderung für eine bestimmte Gruppe von Computern bereitstellen, die Sie definieren. Diese Methode erfordert die Registrierung des Gerätes über Intune.
+
 ### <a name="create-a-device-configuration-policy-in-intune"></a>Erstellen einer Richtlinie für die Gerätekonfiguration in Intune
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Intune**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Intune**.
 2. Erstellen Sie ein neues Profil für die Gerätekonfiguration, indem Sie zu **Gerätekonfiguration** > **Profile** > **Profil erstellen** navigieren.
    * Geben Sie einen aussagekräftigen Namen für das Profil an.
    * Geben Sie optional eine aussagekräftige Beschreibung des Profils an.
@@ -59,7 +63,7 @@ Die folgenden Voraussetzungen müssen erfüllt sein, damit Benutzer ihr Azure AD
 
 #### <a name="create-a-group-to-apply-device-configuration-policy-to"></a>Erstellen einer Gruppe, auf die die Richtlinie für die Gerätekonfiguration angewendet werden kann
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Azure Active Directory**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Azure Active Directory**.
 2. Navigieren Sie zu **Benutzer und Gruppen** > **Alle Gruppen** > **Neue Gruppe**.
 3. Geben Sie einen Namen für die Gruppe ein, und wählen Sie unter **Mitgliedschaftstyp** die Option **Zugewiesen**.
    * Wählen Sie unter **Mitglieder** die in Azure AD eingebundenen Windows 10-Geräte aus, auf die Sie die Richtlinie anwenden möchten.
@@ -70,7 +74,7 @@ Weitere Informationen zum Erstellen von Gruppen finden Sie im Artikel [Verwalten
 
 #### <a name="assign-device-configuration-policy-to-device-group"></a>Zuweisen einer Richtlinie für die Gerätekonfiguration zu einer Gerätegruppe
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Intune**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Intune**.
 2. Suchen Sie wie folgt nach dem zuvor erstellten Profil für die Gerätekonfiguration: Navigieren Sie zu **Gerätekonfiguration** > **Profile**, und klicken Sie auf das erstellte Profil.
 3. Weisen Sie das Profil einer Gruppe mit Geräten zu. 
    * Klicken Sie unter **Include** > **Select groups to include** (Einschließen > Einzuschließende Gruppen auswählen) auf **Assignments** (Zuweisungen).
@@ -85,7 +89,7 @@ Sie haben jetzt eine Richtlinie für die Gerätekonfiguration erstellt und zugew
 
 Es wird empfohlen, diese Methode nur zum Testen der Einstellungsänderung zu verwenden.
 
-1. Melden Sie sich mit Administratoranmeldeinformationen an dem Gerät an, das in Azure AD eingebunden ist.
+1. Melden Sie sich mit Administratoranmeldeinformationen am Windows-PC an.
 2. Führen Sie den Befehl **regedit** als Administrator aus.
 3. Legen Sie den folgenden Registrierungsschlüssel fest:
    * `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
@@ -97,6 +101,7 @@ Was ändert sich für die Benutzer, nachdem die Richtlinie nun konfiguriert und 
 
 ![LoginScreen][LoginScreen]
 
+Wenn Benutzer versuchen, sich anzumelden, wird jetzt der Link „Kennwort zurücksetzen“ angezeigt. Mit diesem Link wird die Oberfläche für die Self-Service-Kennwortzurücksetzung auf dem Anmeldebildschirm geöffnet. Mit dieser Funktion können Benutzer ihr Kennwort zurücksetzen, ohne ein anderes Gerät für den Zugriff auf einen Webbrowser verwenden zu müssen.
 Wenn Benutzer versuchen, sich anzumelden, wird jetzt der Link „Kennwort zurücksetzen“ angezeigt. Mit diesem Link wird die Oberfläche für die Self-Service-Kennwortzurücksetzung auf dem Anmeldebildschirm geöffnet. Mit dieser Funktion können Benutzer ihr Kennwort zurücksetzen, ohne ein anderes Gerät für den Zugriff auf einen Webbrowser verwenden zu müssen.
 
 Eine Anleitung für Benutzer zur Verwendung dieses Features befindet sich unter [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in).
@@ -111,13 +116,16 @@ Beim Testen dieser Funktionalität per Remotedesktop wird der Link „Kennwort z
 
 * Die Kennwortzurücksetzung wird für Remotedesktop derzeit nicht unterstützt.
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie die im Rahmen dieses Tutorials konfigurierte Funktion nicht mehr nutzen möchten, löschen Sie das von Ihnen erstellte Intune-Gerätekonfigurationsprofil bzw. den Registrierungsschlüssel.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD:
+In diesem Tutorial haben Sie Benutzern das Zurücksetzen ihrer Kennwörter über den Windows 10-Anmeldebildschirm ermöglicht. Im nächsten Tutorial erfahren Sie, wie Azure Identity Protection in die Self-Service-Kennwortzurücksetzung und Multi-Factor Authentication integriert werden kann.
 
-* [Erfolgreicher Rollout der Self-Service-Kennwortzurücksetzung](howto-sspr-deployment.md)
-* [Zurücksetzen der Kennung auf Windows-Geräten mit dem integrierten PIN-Zurücksetzungsdienst von Microsoft mithilfe von Intune](https://docs.microsoft.com/intune/device-windows-pin-reset)
-* [Policy CSP – Authentication](https://docs.microsoft.com/windows/client-management/mdm/policy-csp-authentication) (Richtlinien-Kryptografiedienstanbieter – Authentifizierung)
+> [!div class="nextstepaction"]
+> [Tutorial: Use risk events to trigger Multi-Factor Authentication and password changes](tutorial-risk-based-sspr-mfa.md) (Tutorial: Auslösen von Multi-Factor Authentication und Kennwortänderungen mithilfe von Risikoereignissen)
 
 [CreateProfile]: ./media/tutorial-sspr-windows/create-profile.png "Erstellen eines Intune-Gerätekonfigurationsprofils zum Aktivieren des Links „Kennwort zurücksetzen“ auf dem Windows 10-Anmeldebildschirm"
 [Assignment]: ./media/tutorial-sspr-windows/profile-assignment.png "Zuweisen der Intune-Gerätekonfigurationsrichtlinie zu einer Gruppe mit Windows 10-Geräten"

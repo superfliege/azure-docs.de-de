@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen einer Lösung in Azure zum Verwalten industrieller IoT-Geräte | Microsoft-Dokumentation
+title: Ausprobieren einer Lösung in Azure zum Verwalten industrieller IoT-Geräte | Microsoft-Dokumentation
 description: In dieser Schnellstartanleitung stellen Sie den Azure IoT Solution Accelerator für verbundene Factorys bereit und melden sich am Lösungsdashboard an, um es zu nutzen.
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2018
 ms.author: dobett
-ms.openlocfilehash: ce4d32c80040ec658070a3fa3132e34931a6755a
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 649ce7bcd2d2e4ceb2fc397643f4dd0d3ef89c1e
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072651"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144512"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Schnellstart: Testen einer cloudbasierten Lösung zum Verwalten von industriellen IoT-Geräten
 
@@ -48,7 +48,7 @@ Klicken Sie auf **Lösung erstellen**, um mit der Bereitstellung zu beginnen. Di
 
 ## <a name="sign-in-to-the-solution"></a>Anmelden bei der Lösung
 
-Wenn die Bereitstellung in Ihrem Azure-Abonnement abgeschlossen ist, wird auf der Kachel der Lösung ein grünes Häkchen und **Bereit** angezeigt. Jetzt können Sie sich beim Dashboard für den Solution Accelerator für verbundene Factorys anmelden.
+Wenn die Bereitstellung in Ihrem Azure-Abonnement abgeschlossen ist, werden auf der Kachel der Lösung ein grünes Häkchen und **Bereit** angezeigt. Jetzt können Sie sich beim Dashboard für den Solution Accelerator für verbundene Factorys anmelden.
 
 Klicken Sie auf der Seite **Bereitgestellte Lösungen** auf Ihren Solution Accelerator für die neue verbundene Factory:
 

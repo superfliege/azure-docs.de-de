@@ -1,20 +1,20 @@
 ---
-title: Erkennen von Geräteproblemen in einer Azure-basierten Lösung für die Remoteüberwachung | Microsoft-Dokumentation
+title: 'Tutorial: Erkennen von Geräteproblemen in einer Azure-basierten Lösung für die Remoteüberwachung | Microsoft-Dokumentation'
 description: In diesem Tutorial wird erläutert, wie Sie mithilfe von Regeln und Aktionen automatisch schwellenwertbasierte Geräteprobleme in der Remoteüberwachungslösung erkennen können.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 06/08/2018
+ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 1e3eaeec1d2eae3c36f285a3e4c536657504cbb8
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 29d4289f5b83e37cddec652b976aeb5aa255ed4c
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098480"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158876"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Tutorial: Erkennen von Problemen mit Geräten, die mit der Überwachungslösung verbunden sind
 
@@ -24,7 +24,7 @@ Zur Einführung von Regeln und Benachrichtigungen wird im Tutorial ein simuliert
 
 Sie wurden außerdem gebeten, eine kritische Benachrichtigung für eine Kältemaschine zu erstellen, wenn innerhalb der letzten fünf Minuten die durchschnittliche Luftfeuchtigkeit im Gerät über 80% und die Temperatur des Geräts oberhalb von 75 Grad Fahrenheit gelegen hat.
 
-In diesem Tutorial haben Sie Folgendes durchgeführt:
+In diesem Tutorial führen Sie Folgendes durch:
 
 >[!div class="checklist"]
 > * Anzeigen der Regeln in der Lösung
@@ -33,29 +33,19 @@ In diesem Tutorial haben Sie Folgendes durchgeführt:
 > * Bearbeiten einer vorhandenen Regel
 > * Ein- und Ausschalten von Regeln
 
-## <a name="prerequisites"></a>Voraussetzungen
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Für dieses Tutorial benötigen Sie eine bereitgestellte Instanz des Solution Accelerators für die Remoteüberwachung in Ihrem Azure-Abonnement.
+[!INCLUDE [iot-iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
-Falls Sie den Solution Accelerator für die Remoteüberwachung noch nicht bereitgestellt haben, sollten Sie die Schnellstartanleitung [Bereitstellen einer cloudbasierten Lösung für die Remoteüberwachung](quickstart-remote-monitoring-deploy.md) durcharbeiten.
-
-## <a name="view-the-existing-rules"></a>Anzeigen der vorhandenen Regeln
+## <a name="review-the-existing-rules"></a>Überprüfen der vorhandenen Regeln
 
 Im Solution Accelerator wird auf der Seite **Regeln** eine Liste mit allen aktuellen Regeln angezeigt:
 
 [![Seite „Regeln“](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-expanded.png#lightbox)
 
-Wenden Sie einen Filter an, um nur die Regeln anzuzeigen, die für Geräte vom Typ „Kältemaschine“ gelten:
-
-[![Filtern der Regelliste](./media/iot-accelerators-remote-monitoring-automate/rulesactionsfilter_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsfilter_v2-expanded.png#lightbox)
-
-Sie können weitere Informationen zu einer Regel anzeigen und diese bearbeiten, wenn Sie sie in der Liste auswählen:
+Wenden Sie einen Filter an, um nur die Regeln anzuzeigen, die für Geräte vom Typ „Kältemaschine“ gelten. Sie können weitere Informationen zu einer Regel anzeigen und diese bearbeiten, wenn Sie sie in der Liste auswählen:
 
 [![Anzeigen der Regeldetails](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdetail_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdetail_v2-expanded.png#lightbox)
-
-Wählen Sie in der Liste mindestens eine Regel aus, um eine oder mehrere Regeln zu deaktivieren oder zu aktivieren:
-
-[![Auswählen mehrerer Regeln](./media/iot-accelerators-remote-monitoring-automate/rulesactionsmultiselect_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsmultiselect_v2-expanded.png#lightbox)
 
 ## <a name="create-a-rule"></a>Erstellen einer Regel
 
@@ -80,7 +70,7 @@ Der Auslösezeitpunkt der Regel wird auf der Seite **Regeln** und auf der Seite 
 
 [![Warnungsregel ausgelöst](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-expanded.png#lightbox)
 
-## <a name="create-a-rule-with-multiple-conditions"></a>Erstellen einer Regel mit mehreren Bedingungen
+## <a name="create-an-advanced-rule"></a>Erstellen einer erweiterten Regel
 
 Klicken Sie auf **New rule** (Neue Regel), um eine Regel mit mehreren Bedingungen zu erstellen, die im folgenden Fall eine kritische Benachrichtigung generiert: Innerhalb der letzten fünf Minuten hat für ein Gerät vom Typ „Kältemaschine“ die durchschnittliche Luftfeuchtigkeit über 80% und die Durchschnittstemperatur oberhalb von 75 Grad Fahrenheit gelegen. Verwenden Sie zum Erstellen der Regel die folgenden Werte:
 
@@ -128,23 +118,7 @@ Um eine Regel vorübergehend auszuschalten, können Sie sie in der Regelliste de
 
 Sie können mehrere Regeln gleichzeitig aktivieren und deaktivieren, indem Sie in der Liste mehrere Regeln auswählen.
 
-<!-- ## Delete a rule
-
-To permanently delete a rule, choose the rule in the list of rules and then choose **Delete**.
-
-You can delete multiple rules at the same time if you select multiple rules in the list.-->
-
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-
-Wenn Sie mit dem nächsten Tutorial fortfahren möchten, können Sie die Bereitstellung des Solution Accelerators für die Remoteüberwachung beibehalten. Zum Reduzieren der Kosten für die Ausführung des Solution Accelerators, wenn Sie ihn nicht nutzen, können Sie die simulierten Geräte im Panel mit den Einstellungen beenden:
-
-[![Anhalten der Telemetrie](./media/iot-accelerators-remote-monitoring-automate/togglesimulation-inline.png)](./media/iot-accelerators-remote-monitoring-automate/togglesimulation-expanded.png#lightbox)
-
-Sie können die simulierten Geräte neu starten, wenn Sie mit dem nächsten Tutorial beginnen möchten.
-
-Falls Sie den Solution Accelerator nicht mehr benötigen, können Sie ihn auf der Seite [Bereitgestellte Lösungen](https://www.azureiotsolutions.com/Accelerators#dashboard) löschen:
-
-![Löschen der Lösung](media/iot-accelerators-remote-monitoring-automate/deletesolution.png)
+[!INCLUDE [iot-iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

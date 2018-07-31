@@ -1,42 +1,40 @@
 ---
-title: Erste Schritte mit Azure DNS im Azure-Portal | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine DNS-Zone und einen DNS-Eintrag in Azure DNS erstellen. Dies ist eine Schrittanleitung zum Erstellen und Verwalten Ihrer ersten DNS-Zone und Ihres ersten DNS-Eintrags im Azure-Portal.
+title: 'Schnellstart: Erstellen einer DNS-Zone und eines DNS-Eintrags mithilfe des Azure-Portals'
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie eine DNS-Zone und einen DNS-Eintrag in Azure DNS erstellen. Dies ist eine Schrittanleitung zum Erstellen und Verwalten Ihrer ersten DNS-Zone und Ihres ersten DNS-Eintrags im Azure-Portal.
 services: dns
-documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: fb0aa0a6-d096-4d6a-b2f6-eda1c64f6182
 ms.service: dns
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/18/2017
-ms.author: kumud
-ms.openlocfilehash: 22bf52f7452f182510c3714f7d1c2ca884446953
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.topic: quickstart
+ms.date: 6/13/2018
+ms.author: victorh
+ms.openlocfilehash: 421c4e0464eac22a7feba01e2e84660b02a32455
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29388627"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39174648"
 ---
-# <a name="get-started-with-azure-dns-using-the-azure-portal"></a>Erste Schritte mit Azure DNS im Azure-Portal
+# <a name="quickstart-configure-azure-dns-for-name-resolution-using-the-azure-portal"></a>Schnellstart: Konfigurieren von Azure DNS für die Namensauflösung über das Azure-Portal
 
-> [!div class="op_single_selector"]
-> * [Azure portal](dns-getstarted-portal.md)
-> * [PowerShell](dns-getstarted-powershell.md)
-> * [Azure CLI 2.0](dns-getstarted-cli.md)
+ Sie können Azure DNS zum Auflösen der Hostnamen in Ihrer öffentlichen Domäne konfigurieren. Wenn Sie beispielsweise den Domänennamen „contoso.com“ von einer Domänennamen-Registrierungsstelle erworben haben, können Sie Azure DNS zum Hosten der Domäne „contoso.com“ und zum Auflösen von „www.contoso.com“ in die IP-Adresse für Ihren Webserver oder Ihre Web-App konfigurieren.
 
-In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie Ihre erste DNS-Zone und Ihren ersten DNS-Eintrag im Azure-Portal erstellen. Sie können diese Schritte auch mithilfe von Azure PowerShell oder der plattformübergreifenden Azure CLI ausführen.
+In dieser Schnellstartanleitung erstellen Sie eine Testdomäne und anschließend einen Adresseintrag mit dem Namen „www“, der in die IP-Adresse 10.10.10.10 aufgelöst wird.
 
-Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verwendet. Wenn Sie eine Domäne in Azure DNS hosten möchten, müssen Sie eine DNS-Zone für diesen Domänennamen erstellen. Jeder DNS-Eintrag für Ihre Domäne wird dann in dieser DNS-Zone erstellt. Und schließlich müssen Sie die Namenserver für die Domäne konfigurieren, um Ihre DNS-Zone im Internet zu veröffentlichen. Die einzelnen Schritte werden im weiteren Verlauf beschrieben.
+Es ist wichtig zu wissen, dass alle in dieser Schnellstartanleitung verwendeten Namen und IP-Adressen lediglich Beispiele sind und kein reales Szenario darstellen. Allerdings werden ggf. auch reale Szenarien beschrieben.
+
+<!---
+You can also perform these steps using [Azure PowerShell](dns-getstarted-powershell.md) or the cross-platform [Azure CLI 2.0](dns-getstarted-cli.md).
+--->
+
+Eine DNS-Zone wird die DNS-Einträge für eine bestimmte Domäne enthalten. Wenn Sie eine Domäne in Azure DNS hosten möchten, müssen Sie eine DNS-Zone für diesen Domänennamen erstellen. Jeder DNS-Eintrag für Ihre Domäne wird dann in dieser DNS-Zone erstellt. Die folgenden Schritte veranschaulichen die Vorgehensweise.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="create-a-dns-zone"></a>Erstellen einer DNS-Zone
 
 1. Melden Sie sich beim Azure-Portal an.
-2. Klicken Sie im Hubmenü auf **Ressource erstellen > Netzwerk** und anschließend auf **DNS-Zone**, um die Seite **DNS-Zone erstellen** zu öffnen.
+2. Klicken Sie oben links auf **+ Ressource erstellen** und anschließend auf **Netzwerk**. Klicken Sie dann auf **DNS-Zone**, um die Seite **DNS-Zone erstellen** zu öffnen.
 
     ![DNS-Zone](./media/dns-getstarted-portal/openzone650.png)
 
@@ -45,19 +43,18 @@ Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verw
 
    | **Einstellung** | **Wert** | **Details** |
    |---|---|---|
-   |**Name**|contoso.com|Der Name der DNS-Zone.|
+   |**Name**|contoso.xyz|Der Name der DNS-Zone für dieses Beispiel. Sie können einen beliebigen Wert für diese Schnellstartanleitung verwenden, sofern er nicht bereits auf den Azure DNS-Servern konfiguriert ist. Ein realer Wert ist eine Domäne, die Sie von einer Domänennamen-Registrierungsstelle erworben haben.|
    |**Abonnement**|[Ihr Abonnement]|Wählen Sie ein Abonnement aus, in dem die DNS-Zone erstellt werden soll.|
-   |**Ressourcengruppe**|**Neu erstellen:** contosoDNSRG|Erstellen Sie eine Ressourcengruppe. Der Name der Ressourcengruppe muss innerhalb des ausgewählten Abonnements eindeutig sein. Weitere Informationen zu Ressourcengruppen finden Sie in der [Übersicht über Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups).|
-   |**Location**|USA (Westen)||
+   |**Ressourcengruppe**|**Neu erstellen:** dns-test|Erstellen Sie eine Ressourcengruppe. Der Name der Ressourcengruppe muss innerhalb des ausgewählten Abonnements eindeutig sein. |
+   |**Location**|USA (Ost)||
 
-> [!NOTE]
-> Die Ressourcengruppe bezieht sich auf den Standort der Ressourcengruppe und hat keine Auswirkung auf die DNS-Zone. Der Speicherort der DNS-Zone ist immer global und wird nicht angezeigt.
+Die Erstellung der Zone kann einige Minuten dauern.
 
 ## <a name="create-a-dns-record"></a>Erstellen eines DNS-Eintrags
 
-Im folgenden Beispiel werden die einzelnen Schritte zur Erstellung eines neuen A-Eintrags erläutert. Informationen zu anderen Eintragstypen und zum Ändern vorhandener Einträge finden Sie unter [Verwalten von DNS-Einträgen und - Ressourceneintragssätzen im Azure-Portal](dns-operations-recordsets-portal.md). 
+Erstellen Sie nun einen neuen Adresseintrag (A-Eintrag). A-Einträge werden zum Auflösen eines Hostnamens in eine IPv4-Adresse verwendet.
 
-1. Klicken Sie nach der Erstellung der DNS-Zone im Bereich **Favoriten** des Azure-Portals auf **Alle Ressourcen**. Klicken Sie auf der Seite „Alle Ressourcen“ auf die DNS-Zone **contoso.com**. Falls das ausgewählte Abonnement bereits mehrere Ressourcen enthält, können Sie **contoso.com** in das Feld **Nach Name filtern...** eingeben und komfortabel auf die DNS-Zone zugreifen.
+1. Klicken Sie im Azure-Portal im Bereich **Favoriten** auf **Alle Ressourcen**. Klicken Sie auf der Seite „Alle Ressourcen“ auf die DNS-Zone **contoso.xyz**. Falls das ausgewählte Abonnement bereits mehrere Ressourcen enthält, können Sie **contoso.xyz** in das Feld **Nach Name filtern...** eingeben und komfortabel auf die DNS-Zone zugreifen.
 
 1. Wählen Sie oben auf der Seite **DNS-Zone** die Option **+ Datensatzgruppe** aus, um die Seite **Datensatzgruppe hinzufügen** zu öffnen.
 
@@ -65,41 +62,48 @@ Im folgenden Beispiel werden die einzelnen Schritte zur Erstellung eines neuen A
 
    |**Einstellung** | **Wert** | **Details** |
    |---|---|---|
-   |**Name**|www|Der Name des Eintrags.|
-   |**Typ**|Eine Datei| Die Art des zu erstellenden DNS-Eintrags. Zulässige Werte: „A“, „AAAA“, „CNAME“, „MX“, „NS“, „SRV“, „TXT“ und „PTR“.  Weitere Informationen zu Datensatztypen finden Sie in der [Übersicht über DNS-Zonen und -Einträge](dns-zones-records.md).|
-   |**TTL**|1|Die Gültigkeitsdauer (Time To Live, TTL) der DNS-Anforderung.|
-   |**TTL-Einheit**|Stunden|Die Zeiteinheit für den TTL-Wert.|
-   |**IP-Adresse**|ipAddressValue| Bei diesem Wert handelt es sich um die IP-Adresse, die der DNS-Eintrag auflöst.|
-
-## <a name="view-records"></a>Anzeigen von Datensätzen
-
-Im unteren Teil der Seite „DNS-Zone“ finden Sie die Einträge für die DNS-Zone. Hier müssten sowohl die in jeder Zone erstellten DNS- und SOA-Standardeinträge als auch alle neuen, von Ihnen erstellen Einträge angezeigt werden.
-
-![Zone](./media/dns-getstarted-portal/viewzone500.png)
+   |**Name**|www|Der Name des Eintrags. Dies ist der für den Host zu verwendende Name, den Sie in eine IP-Adresse auflösen möchten.|
+   |**Typ**|Eine Datei| Typ des zu erstellenden DNS-Eintrags. A-Einträge sind am gängigsten. Es gibt jedoch weitere Eintragstypen für E-Mail-Server (MX), IPv6-Adressen (AAAA) usw. |
+   |**TTL**|1|Die Gültigkeitsdauer (Time To Live, TTL) der DNS-Anforderung. Gibt an, wie lange DNS-Server und -Clients eine Antwort zwischenspeichern können.|
+   |**TTL-Einheit**|hours|Die Zeiteinheit für den TTL-Wert.|
+   |**IP-Adresse**|10.10.10.10| Bei diesem Wert handelt es sich um die IP-Adresse, in die der A-Eintrag aufgelöst wird. Dies ist nur ein Testwert für diese Schnellstartanleitung. Bei einem realen Beispiel geben Sie die öffentliche IP-Adresse für Ihren Webserver ein.|
 
 
-## <a name="update-name-servers"></a>Aktualisieren der Namenserver
+In dieser Schnellstartanleitung erwerben Sie nicht tatsächlich einen echten Domänennamen, daher müssen Sie Azure DNS nicht als Namenserver bei Ihrer Domänenname-Registrierungsstelle konfigurieren. In einem realen Szenario soll jedoch jeder Benutzer im Internet Ihren Hostnamen auflösen können, um eine Verbindung mit Ihrem Webserver oder Ihrer Web-App herzustellen. Weitere Informationen zu diesem realen Szenario finden Sie unter [Delegieren von Domänen an Azure DNS](dns-delegate-domain-azure-dns.md).
 
-Wenn Sie sicher sind, dass Ihre DNS-Zone und die Einträge ordnungsgemäß eingerichtet wurden, müssen Sie den Namen Ihrer Domäne für die Verwendung der Azure-DNS-Namenserver konfigurieren. Auf diese Weise können andere Benutzer im Internet Ihre DNS-Einträge finden.
 
-Die Namenserver für Ihre Zone sind im Azure-Portal angegeben:
+## <a name="test-the-name-resolution"></a>Testen der Namensauflösung
 
-![Zone](./media/dns-getstarted-portal/viewzonens500.png)
+Sie besitzen nun eine Testzone mit einem A-Testeintrag darin und können die Namensauflösung mit einem Tool namens nslookup testen. 
 
-Diese Namenserver müssen in der Domänennamen-Registrierungsstelle konfiguriert werden (das ist die Stelle, bei der Sie den Domänennamen erworben haben). Die Registrierungsstelle bietet die Möglichkeit zur Einrichtung der Namenserver für die Domäne. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](dns-domain-delegation.md).
+1. Zunächst müssen Sie die Azure DNS-Namenserver für die Verwendung mit nslookup notieren. 
 
-## <a name="delete-all-resources"></a>Löschen aller Ressourcen
+   Die Namenserver für Ihre Zone sind auf der Seite **Übersicht** für die DNS-Zone aufgeführt. Kopieren Sie den Namen von einem der Namenserver:
 
-Führen Sie die folgenden Schritte aus, um alle Ressourcen zu löschen, die in diesem Artikel erstellt wurden:
+   ![Zone](./media/dns-getstarted-portal/viewzonens500.png)
 
-1. Klicken Sie im Azure-Portal im Bereich **Favoriten** auf **Alle Ressourcen**. Klicken Sie auf der Seite „Alle Ressourcen“ auf die Ressourcengruppe **MyResourceGroup**. Falls das ausgewählte Abonnement bereits mehrere Ressourcen enthält, können Sie **MyResourceGroup** in das Feld **Nach Name filtern...** eingeben und komfortabel auf die Ressourcengruppe zugreifen.
-1. Klicken Sie auf der Seite **MyResourceGroup** auf die Schaltfläche **Löschen**.
-1. Zur Bestätigung des Löschvorgangs werden Sie vom Portal zur Eingabe des Ressourcengruppennamens aufgefordert. Klicken Sie auf **Löschen**, geben Sie den Ressourcengruppennamen *MyResourceGroup* ein, und klicken Sie anschließend auf **Löschen**. Da beim Löschen einer Ressourcengruppe alle Ressourcen innerhalb der Ressourcengruppe gelöscht werden, überprüfen Sie vor dem Löschen immer den Inhalt der Ressourcengruppe. Das Portal löscht zuerst alle in der Ressourcengruppe enthaltenen Ressourcen und anschließend die Ressourcengruppe selbst. Dieser Vorgang dauert einige Minuten.
+2. Öffnen Sie nun eine Eingabeaufforderung, und führen Sie den folgenden Befehl aus:
+
+   ```
+   nslookup <host name> <name server>
+   
+   For example:
+
+   nslookup www.contoso.xyz ns1-08.azure-dns.com
+   ```
+
+Das angezeigte Ergebnis sollte ähnlich wie der folgende Screenshot aussehen:
+
+![nslookup](media/dns-getstarted-portal/nslookup.PNG)
+
+Dadurch wird bestätigt, dass die Namensauflösung ordnungsgemäß funktioniert. www.contoso.xyz wird gemäß Ihrer Konfiguration in 10.10.10.10 aufgelöst.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Löschen Sie die Ressourcengruppe **dns-test**, wenn Sie sie nicht mehr benötigen, um die in dieser Schnellstartanleitung erstellten Ressourcen zu löschen. Klicken Sie dazu auf die Ressourcengruppe **dns-test** und dann auf **Ressourcengruppe löschen**.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure DNS finden Sie unter [Azure DNS – Übersicht](dns-overview.md).
-
-Weitere Informationen zum Verwalten von DNS-Einträgen in Azure DNS finden Sie unter [Verwalten von DNS-Einträgen und - Ressourceneintragssätzen im Azure-Portal](dns-operations-recordsets-portal.md).
-
+> [!div class="nextstepaction"]
+> [Erstellen von DNS-Einträgen für eine Web-App in einer benutzerdefinierten Domäne](./dns-web-sites-custom-domain.md)

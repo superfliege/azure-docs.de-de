@@ -15,12 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2018
 ms.author: alkohli
-ms.openlocfilehash: f523cd69747c0eceb470e4ad5c8d15b4ba448114
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: c76d8bc6af808fd1257e44ad296e3e2d65b8695d
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010071"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238113"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-preview"></a>Verwalten Ihrer Data Box (Vorschauversion) über das Azure-Portal
 
@@ -87,7 +87,7 @@ Sie können nur Aufträge löschen, die abgeschlossen sind oder abgebrochen wurd
      ![Löschen eines Data Box Disk-Auftrags (2)](media/data-box-portal-ui-admin/delete-order2.png)
 
 
-## <a name="download-shipping-label"></a>Herunterladen eines Adressetiketts
+## <a name="download-shipping-label"></a>Versandetikett herunterladen
 
 Das Adressetikett muss unter Umständen heruntergeladen werden, wenn Sie das Rücksendeetikett, das Ihren Datenträgern beilag, verlegt oder verloren haben. 
 
@@ -130,7 +130,7 @@ Führen Sie die folgenden Schritte aus, um die Benachrichtigungsdetails zu bearb
 
 ## <a name="view-order-status"></a>Anzeigen des Auftragsstatus
 
-|Auftragsstatus |Beschreibung |
+|Auftragsstatus |BESCHREIBUNG |
 |---------|---------|
 |Bestellt     | Der Auftrag wurde erfolgreich erteilt. <br> Sollten die Datenträger nicht verfügbar sein, erhalten Sie eine entsprechende Benachrichtigung. <br>Sind die Datenträger verfügbar, identifiziert Microsoft einen Datenträger für den Versand und bereitet das Datenträgerpaket vor.        |
 |Verarbeitet     | Die Auftragsverarbeitung ist abgeschlossen. <br> Während der Auftragsverarbeitung werden folgende Aktionen ausgeführt:<li>Die Datenträger werden mithilfe von AES-128-BitLocker-Verschlüsselung verschlüsselt. </li> <li>Die Data Box-Datenträger werden gesperrt, um nicht autorisierte Zugriffe zu verhindern.</li><li>Während dieses Vorgangs wird der Hauptschlüssel zum Entsperren der Datenträger generiert.</li>        |
@@ -141,7 +141,7 @@ Führen Sie die folgenden Schritte aus, um die Benachrichtigungsdetails zu bearb
 |Daten kopiert     |Die Daten werden gerade kopiert.<br> Warten Sie, bis der Datenkopiervorgang abgeschlossen ist.         |
 |Abgeschlossen       |Der Auftrag wurde erfolgreich abgeschlossen.<br> Vergewissern Sie sich, dass sich Ihre Daten in Azure befinden, bevor Sie die lokalen Daten von Servern löschen.         |
 |Mit Fehlern abgeschlossen| Die Daten wurden kopiert, es sind jedoch Fehler aufgetreten. <br> Sehen Sie sich die Kopierprotokolle unter dem Pfad aus der **Übersicht** an. Weitere Informationen finden Sie unter [Herunterladen von Diagnoseprotokollen](data-box-disk-troubleshoot.md#download-diagnostic-logs).   |
-|Abgebrochen            |Der Auftrag wurde abgebrochen. <br> Entweder haben Sie den Auftrag abgebrochen, oder es ist ein Fehler aufgetreten, und der Auftrag wurde durch den Dienst abgebrochen.     |
+|Canceled            |Der Auftrag wurde abgebrochen. <br> Entweder haben Sie den Auftrag abgebrochen, oder es ist ein Fehler aufgetreten, und der Auftrag wurde durch den Dienst abgebrochen.     |
 
 
 
