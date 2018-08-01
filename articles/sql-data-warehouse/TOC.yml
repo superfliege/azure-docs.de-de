@@ -111,8 +111,12 @@
           href: memory-and-concurrency-limits.md
         - name: Columnstore-Komprimierung
           href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
-    - name: Überwachen
-      href: sql-data-warehouse-manage-monitor.md
+    - name: Verwaltbarkeit und Überwachung
+      items:
+        - name: Überwachen
+          href: sql-data-warehouse-manage-monitor.md
+        - name: Empfehlungen
+          href: sql-data-warehouse-concept-recommendations.md
     - name: Entwickeln von Data Warehouses
       items:
         - name: Übersicht

@@ -11,6 +11,7 @@
 ##### [Erstellen eines Microsoft-Kontos](./guidelines.md)
 ##### [Registrierung in Dev Center](./register-dev-center.md) 
 ##### [Abrechnungsoptionen für Azure Marketplace](./billing-options-azure-marketplace.md)  
+##### [Zuordnung der Nutzung durch Kunden von Azure-Partnern](./azure-partner-customer-usage-attribution.md)
 
 ### Leitfaden zum Veröffentlichen nach Angebotstyp 
 #### [Virtual Machines](./marketplace-virtual-machines.md)

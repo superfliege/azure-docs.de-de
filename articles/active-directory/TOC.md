@@ -131,7 +131,6 @@
 #### [Wartezeiten](active-directory-reporting-latencies-azure-portal.md)
 #### [Referenz zu Überwachungsaktivitäten](active-directory-reporting-activity-audit-reference.md)
 #### [Fehlercodes für Anmeldeaktivitäten](active-directory-reporting-activity-sign-ins-errors.md)
-#### [Multi-Factor Authentication](active-directory-reporting-activity-sign-ins-mfa.md)
 #### [Interpretieren des Überwachungsprotokollschemas in Azure Monitor](reporting-azure-monitor-diagnostics-audit-log-schema.md)
 #### [Interpretieren des Anmeldeprotokollschemas in Azure Monitor](reporting-azure-monitor-diagnostics-sign-in-log-schema.md)
 
@@ -159,9 +158,16 @@
 ### [Planen der Azure AD-Einbindung](active-directory-azureadjoin-deployment-aadjoindirect.md)
 ### [Häufig gestellte Fragen](device-management-faq.md)
 ### Aufgaben
+#### [Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](devices/hybrid-azuread-join-plan.md)
+#### [Konfigurieren der Azure Active Directory-Hybrideinbindung für verwaltete Domänen](devices/hybrid-azuread-join-managed-domains.md)
+#### [Konfigurieren der Azure Active Directory-Hybrideinbindung für Verbunddomänen](devices/hybrid-azuread-join-federated-domains.md)
+#### [Steuern der Azure AD-Hybrideinbindung für Ihre Geräte](devices/hybrid-azuread-join-control.md)
+
+
+
 #### [Einrichten von bei Azure AD registrierten Windows 10-Geräten](user-help/device-management-azuread-registered-devices-windows10-setup.md)
 #### [Einrichten von in Azure AD eingebundenen Geräten](user-help/device-management-azuread-joined-devices-setup.md)
-#### [Einrichten von in Azure AD eingebundenen Hybridgeräten](device-management-hybrid-azuread-joined-devices-setup.md)
+#### [Einrichten von in Azure AD eingebundenen Hybridgeräten](devices/hybrid-azuread-join-manual-steps.md)
 #### [Lokale Bereitstellung](active-directory-device-registration-on-premises-setup.md)
 #### [Azure AD-Einbindung während des Eindrucks beim ersten Ausführen von Windows 10](device-management-azuread-joined-devices-frx.md)
 ### Problembehandlung

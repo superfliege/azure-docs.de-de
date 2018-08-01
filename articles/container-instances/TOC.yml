@@ -51,6 +51,8 @@
           href: container-instances-liveness-probe.md
     - name: Verwalten
       items:
+        - name: Aktualisieren ausgeführter Container
+          href: container-instances-update.md
         - name: Ausführen eines Befehls (exec)
           href: container-instances-exec.md
         - name: Überwachen der CPU- und Arbeitsspeicherauslastung
@@ -59,7 +61,7 @@
           href: container-instances-log-analytics.md
     - name: Ausführen von Workloads
       items:
-        - name: Ausführen von Tasks mit Neustartrichtlinie
+        - name: Ausführen von Tasks mit Neustartrichtlinien
           href: container-instances-restart-policy.md
         - name: Jenkins-Build-Agents in ACI
           href: container-instances-jenkins.md

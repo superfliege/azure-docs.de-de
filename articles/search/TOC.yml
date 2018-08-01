@@ -175,16 +175,20 @@
               href: search-indexer-field-mappings.md
     - name: Durchsuchen von Daten
       items:
-        - name: Grundlegende Abfrageerstellung
+        - name: Grundlagen zu Abfragen
           href: search-query-overview.md
         - name: Suchexplorer (Portal)
           href: search-explorer.md
-        - name: Einfache Abfragesyntax
-          href: 'https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search'
-        - name: Lucene-Abfragesyntax
-          href: 'https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search'
-        - name: Lucene-Abfragebeispiele
+        - name: Beispiele für eine einfache Syntax
+          href: search-query-simple-examples.md
+        - name: Beispiele für eine vollständige Syntax
           href: search-query-lucene-examples.md
+        - name: Abfragereferenz
+          items:
+            - name: Einfache Abfragesyntax
+              href: 'https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search'
+            - name: Lucene-Abfragesyntax
+              href: 'https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search'
         - name: Auslagerungsergebnisse
           href: search-pagination-page-layout.md
         - name: Relevanzoptimierung

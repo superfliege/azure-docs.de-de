@@ -91,7 +91,7 @@ Die Telemetrieebenen sind kumulativ und in vier Ebenen (0–3) unterteilt:
  - Speicherattribute wie Laufwerkanzahl, Art und Größe
 - **Telemetriefunktion** einschließlich hochgeladener Ereignisse (in Prozent), gelöschter Ereignisse und Zeitpunkt des letzten Uploads
 - **Qualitätsbezogene Informationen**, die Microsoft einen grundlegenden Einblick in die Leistung von Azure Stack geben. Ein Beispiel wäre etwa die Anzahl kritischer Warnungen für eine bestimmte Hardwarekonfiguration.
-- **Kompatibilitätsdaten, die Aufschluss darüber geben, welche Ressourcenanbieter in einem System und auf einem virtuellen Computer installiert sind, und die Identifizierung möglicher Kompatibilitätsprobleme ermöglichen.
+- \*\*Kompatibilitätsdaten, die Aufschluss darüber geben, welche Ressourcenanbieter in einem System und auf einem virtuellen Computer installiert sind, und die Identifizierung möglicher Kompatibilitätsprobleme ermöglichen.
 
 **2 (Erweitert)**. Zusätzliche Informationen, etwa zur Verwendung und Leistung des Betriebssystems und anderer Azure Stack-Dienste, sowie erweiterte Zuverlässigkeitsdaten und Daten der Ebenen „Standard“ und „Sicherheit“.
 

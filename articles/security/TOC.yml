@@ -39,8 +39,16 @@
         - name: Verschlüsselung ruhender Daten
           href: azure-security-encryption-atrest.md
         - name: Datenträgerverschlüsselung für virtuelle IaaS-Computer
-          href: azure-security-disk-encryption.md
+          href: azure-security-disk-encryption-overview.md
           items:
+            - name: Voraussetzungen für die Datenträgerverschlüsselung
+              href: azure-security-disk-encryption-prerequisites.md
+            - name: Datenträgerverschlüsselung für virtuelle Windows-Computer
+              href: azure-security-disk-encryption-windows.md
+            - name: Datenträgerverschlüsselung für virtuelle Linux-Computer
+              href: azure-security-disk-encryption-linux.md
+            - name: Anhang zur Datenträgerverschlüsselung
+              href: azure-security-disk-encryption-appendix.md
             - name: Häufig gestellte Fragen zur Datenträgerverschlüsselung
               href: azure-security-disk-encryption-faq.md
             - name: Problembehandlung
@@ -198,6 +206,16 @@
       items:
         - name: Integritätsdaten und KI
           href: ./blueprints/azure-health.md
+    - name: NIST SP 800-171
+      items:
+        - name: Datenanalysen
+          href: ./blueprints/nist171-analytics-overview.md
+        - name: Data Warehouse
+          href: ./blueprints/nist171-datawarehouse-overview.md
+        - name: IaaS-Webanwendung
+          href: ./blueprints/nist171-iaaswa-overview.md
+        - name: PaaS-Webanwendung
+          href: ./blueprints/nist171-paaswa-overview.md
     - name: PCI-DSS
       items:
         - name: Datenanalysen

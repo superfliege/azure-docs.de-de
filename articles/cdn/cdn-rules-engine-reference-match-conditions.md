@@ -738,7 +738,7 @@ Wichtige Informationen:
     
 - Sie können mehrere URL-Pfade angeben, indem Sie sie durch ein einzelnes Leerzeichen voneinander trennen.
 
-   Beispiel: /marketing/asset.* /sales/*.htm
+   Beispiel: /marketing/asset.* /sales/\*.htm
 
 - Abfragezeichenfolgen in der URL werden ignoriert.
     
