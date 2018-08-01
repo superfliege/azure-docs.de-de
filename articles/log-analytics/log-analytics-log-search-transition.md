@@ -50,7 +50,7 @@ Die folgende Tabelle zeigt einen Vergleich zwischen verschiedenen häufigen Abfr
 |                        | Type=Event &#124; top 100 | Event &#124; take 100 |
 | Zeichenfolgenvergleich      | Type=Event Computer=srv01.contoso.com   | Event &#124; where Computer == "srv01.contoso.com" |
 |                        | Type=Event Computer=contains("contoso") | Event &#124; where Computer contains "contoso" (ohne Berücksichtigung von Groß-/Kleinschreibung)<br>Event &#124; where Computer contains_cs "Contoso" (unter Berücksichtigung von Groß-/Kleinschreibung) |
-|                        | Type=Event Computer=RegEx("\@contoso@")  | Event &#124; where Computer matches regex ".*contoso*" |
+|                        | Type=Event Computer=RegEx("\@contoso\@")  | Event &#124; where Computer matches regex ".*contoso*" |
 | Datumsvergleich        | Type=Event TimeGenerated > NOW-1DAYS | Event &#124; where TimeGenerated > ago(1d) |
 |                        | Type=Event TimeGenerated>2017-05-01 TimeGenerated<2017-05-31 | Event &amp;#124; where TimeGenerated between (datetime(2017-05-01) . datetime(2017-05-31)) |
 | Boolescher Vergleich     | Type=Heartbeat IsGatewayInstalled=false  | Heartbeat \| where IsGatewayInstalled == false |
