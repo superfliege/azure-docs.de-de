@@ -37,13 +37,13 @@ Die folgende Tabelle verdeutlicht, wie Endbenutzerauthentifizierung und Authenti
 
 |Verwenden Sie diese Authentifizierungsoption mit...                   |.NET         |Java     |PowerShell |CLI 2.0 | Python   |REST     |
 |:---------------------------------------------|:------------|:--------|:----------|:-------------|:---------|:--------|
-|Endbenutzer (ohne MFA**)                        |   ✔ |    ✔    |    ✔      |       ✔      |    **[✔*](data-lake-store-end-user-authenticate-python.md#end-user-authentication-without-multi-factor-authentication)** (veraltet)     |    **[✔*](data-lake-store-end-user-authenticate-rest-api.md)**    |
+|Endbenutzer (ohne MFA\*\*)                        |   ✔ |    ✔    |    ✔      |       ✔      |    **[✔*](data-lake-store-end-user-authenticate-python.md#end-user-authentication-without-multi-factor-authentication)** (veraltet)     |    **[✔*](data-lake-store-end-user-authenticate-rest-api.md)**    |
 |Endbenutzer (mit MFA)                           |    **[✔*](data-lake-store-end-user-authenticate-net-sdk.md)**        |    **[✔*](data-lake-store-end-user-authenticate-java-sdk.md)**     |    ✔      |       **[✔*](data-lake-store-get-started-cli-2.0.md)**      |    **[✔*](data-lake-store-end-user-authenticate-python.md#end-user-authentication-with-multi-factor-authentication)**     |    ✔    |
 |Zwischen Diensten (mit Clientschlüssel)         |    **[✔*](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-client-secret)** |    **[✔*](data-lake-store-service-to-service-authenticate-java.md)**    |    ✔      |       ✔      |    **[✔*](data-lake-store-service-to-service-authenticate-python.md#service-to-service-authentication-with-client-secret-for-account-management)**     |    **[✔*](data-lake-store-service-to-service-authenticate-rest-api.md)**    |
 |Zwischen Diensten (mit Clientzertifikat) |    **[✔*](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-certificate)**        |    ✔    |    ✔      |       ✔      |    ✔     |    ✔    |
 
 <i>* Klicken Sie auf das Symbol <b>✔\*</b>. Es ist ein Link.</i><br>
-<i>**MFA steht für Multi-Factor Authentication (mehrstufige Authentifizierung)</i>
+<i>\*\* MFA steht für Multi-Factor Authentication (mehrstufige Authentifizierung)</i>
 
 Weitere Informationen zur Authentifizierung mit Azure Active Directory finden Sie unter [Authentifizierungsszenarien für Azure AD](../active-directory/develop/active-directory-authentication-scenarios.md).
 

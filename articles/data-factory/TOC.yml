@@ -116,6 +116,8 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Integrationslaufzeit
       href: concepts-integration-runtime.md
+    - name: Benennungsregeln
+      href: naming-rules.md
 - name: Anleitungen
   items:
     - name: Autor
