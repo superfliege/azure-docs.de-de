@@ -2,26 +2,22 @@
 title: Einrichten von bei Azure Active Directory registrierten Geräten | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie bei Azure Active Directory registrierte Geräte einrichten.
 services: active-directory
-documentationcenter: ''
-author: MarkusVi
+author: eross-msft
 manager: mtillman
-editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
-ms.component: devices
+ms.component: user-help
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/15/2018
-ms.author: markvi
+ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: 7ce632c76a86fb00101db6664e9e79615484f9a1
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 0c38c0160cea51940ac5b04ee64095c6a6f25b5d
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39058112"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414673"
 ---
 # <a name="set-up-azure-active-directory-registered-windows-10-devices"></a>Einrichten von bei Azure Active Directory registrierten Windows 10-Geräten
 
@@ -32,7 +28,7 @@ Wenn Sie **Bring Your Own Device (BYOD)** ermöglichen möchten, konfigurieren S
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Um ein Windows 10-Gerät zu registrieren, muss der Geräteregistrierungsdienst so konfiguriert sein, dass Sie Geräte registrieren können. Darüber hinaus darf die Anzahl registrierter Geräte die konfigurierte Maximalanzahl nicht übersteigen. Weitere Informationen finden Sie unter [Configure device settings](../device-management-azure-portal.md#configure-device-settings) (Konfigurieren von Geräteeinstellungen).
+Um ein Windows 10-Gerät zu registrieren, muss der Geräteregistrierungsdienst so konfiguriert sein, dass Sie Geräte registrieren können. Darüber hinaus darf die Anzahl registrierter Geräte die konfigurierte Maximalanzahl nicht übersteigen. Weitere Informationen finden Sie unter [Configure device settings](../devices/device-management-azure-portal.md#configure-device-settings) (Konfigurieren von Geräteeinstellungen).
 
 ## <a name="what-you-should-know"></a>Wichtige Informationen
 

@@ -13,19 +13,19 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/03/2018
-ms.author: danis
-ms.openlocfilehash: 1febf81745ed804de59113da4f48376e9564b68f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.author: roiyz
+ms.openlocfilehash: d95a1b510411f913a05762494dd48d6a5b6f84fd
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449188"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413670"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>NVIDIA-GPU-Treibererweiterung für Linux
 
 ## <a name="overview"></a>Übersicht
 
-Diese Erweiterung installiert NVIDIA-GPU-Treiber auf Linux-VMs der N-Serie. Je nach VM-Familie installiert die Erweiterung CUDA- oder GRID-Treiber. Bei der Installation von NVIDIA-Treibern mit dieser Erweiterung akzeptieren Sie die Bedingungen des NVIDIA-Endbenutzer-Lizenzvertrags und stimmen diesen zu. Während der Installation wird Ihr virtueller Computer möglicherweise neu gestartet, um die Treibereinrichtung abzuschließen.
+Diese Erweiterung installiert NVIDIA-GPU-Treiber auf Linux-VMs der N-Serie. Je nach VM-Familie installiert die Erweiterung CUDA- oder GRID-Treiber. Bei der Installation von NVIDIA Treibern mit dieser Erweiterung akzeptieren Sie die Bedingungen des NVIDIA-Endbenutzer-Lizenzvertrags und stimmen diesen zu. Während der Installation wird Ihr virtueller Computer möglicherweise neu gestartet, um die Treibereinrichtung abzuschließen.
 
 Es ist auch eine Erweiterung zum Installieren von NVIDIA-GPU-Treibern auf [Windows-VMs der N-Serie](hpccompute-gpu-windows.md) verfügbar.
 

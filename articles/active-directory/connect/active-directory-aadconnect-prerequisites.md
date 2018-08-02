@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/09/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 23d2c858fc51e35948bf83c6b5824b35020cb2e9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 22751d7ab38717fefdebe107e7a7d6fc10dda4c4
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593366"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39326189"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Voraussetzungen für Azure AD Connect
 Dieses Thema beschreibt die Voraussetzungen und die Hardwareanforderungen für Azure AD Connect.
@@ -43,7 +43,6 @@ Vor der Installation von Azure AD Connect gibt es einige Dinge, die Sie benötig
 * Die AD-Schemaversion und Funktionsebene der Gesamtstruktur müssen Windows Server 2003 oder höher entsprechen. Die Domänencontroller können eine beliebige Version ausführen, solange die Anforderungen an Schema und Gesamtstrukturebene erfüllt werden.
 * Wenn Sie das Feature **Kennwortrückschreiben** verwenden möchten, müssen die Domänencontroller unter Windows Server 2008 (mit dem neuesten Service Pack) oder höher ausgeführt werden. Falls Ihre Domaincontroller unter 2008 (vor R2) ausgeführt werden, müssen Sie auch den [Hotfix KB2386717](http://support.microsoft.com/kb/2386717) anwenden.
 * Der von Azure AD verwendete Domänencontroller darf nicht schreibgeschützt sein. Die Verwendung eines schreibgeschützten Domänencontrollers wird **nicht unterstützt**, und Azure AD Connect folgt keinen Umleitungen für Schreibvorgänge.
-* Die Verwendung lokaler Gesamtstrukturen/Domänen unter Einsatz einteiliger Domänen wird **nicht unterstützt**.
 * Die Verwendung lokaler Gesamtstrukturen/Domänen mit NetBios-Namen, die einen Punkt (.) enthalten, wird **nicht unterstützt**.
 * Es wird empfohlen, den [Active Directory-Papierkorb zu aktivieren](active-directory-aadconnectsync-recycle-bin.md).
 
@@ -94,7 +93,7 @@ Vor der Installation von Azure AD Connect gibt es einige Dinge, die Sie benötig
     </system.net>
 ```
 
-* Wenn für den Proxyserver eine Authentifizierung erforderlich ist, muss sich das [Dienstkonto](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account) in der Domäne befinden, und Sie müssen den Installationspfad aus den benutzerdefinierten Einstellungen zur Angabe eines [benutzerdefinierten Dienstkontos](active-directory-aadconnect-get-started-custom.md#install-required-components) verwenden. Außerdem müssen Sie in „machine.config“ eine weitere Änderung vornehmen. Durch diese Änderung in „machine.config“ antworten der Installations-Assistent und das Synchronisierungsmodul auf Authentifizierungsanfragen des Proxyservers. Auf allen Seiten des Installations-Assistenten mit Ausnahme der Seite **Konfigurieren** werden die Anmeldeinformationen des angemeldeten Benutzers verwendet. Auf der Seite **Konfigurieren** am Ende des Installations-Assistenten wird der Kontext in das von Ihnen erstellte [Dienstkonto](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account) geändert. Im Abschnitt „machine.config“ sollte wie folgt aussehen.
+* Wenn für den Proxyserver eine Authentifizierung erforderlich ist, muss sich das [Dienstkonto](active-directory-aadconnect-accounts-permissions.md#adsync-service-account) in der Domäne befinden, und Sie müssen den Installationspfad aus den benutzerdefinierten Einstellungen zur Angabe eines [benutzerdefinierten Dienstkontos](active-directory-aadconnect-get-started-custom.md#install-required-components) verwenden. Außerdem müssen Sie in „machine.config“ eine weitere Änderung vornehmen. Durch diese Änderung in „machine.config“ antworten der Installations-Assistent und das Synchronisierungsmodul auf Authentifizierungsanfragen des Proxyservers. Auf allen Seiten des Installations-Assistenten mit Ausnahme der Seite **Konfigurieren** werden die Anmeldeinformationen des angemeldeten Benutzers verwendet. Auf der Seite **Konfigurieren** am Ende des Installations-Assistenten wird der Kontext in das von Ihnen erstellte [Dienstkonto](active-directory-aadconnect-accounts-permissions.md#adsync-service-account) geändert. Im Abschnitt „machine.config“ sollte wie folgt aussehen.
 
 ```
     <system.net>

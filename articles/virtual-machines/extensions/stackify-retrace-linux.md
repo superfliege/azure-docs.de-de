@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/12/2018
-ms.author: danis
-ms.openlocfilehash: 376c5a087f74fbe087db9fa2df38b2ba4e6cf1ff
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: roiyz
+ms.openlocfilehash: b286ebc2e50166e8491b45346a81b161227f8d21
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944842"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39415963"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Stackify Retrace-Agent-Erweiterung für Linux
 
@@ -46,7 +46,7 @@ Der Retrace-Agent kann für folgende Linux-Distributionen ausgeführt werden:
 |---|---|
 | Ubuntu | 16.04 LTS, 14.04 LTS, 16.10 und 17.04 |
 | Debian | 7.9 und höher, 8.2 und höher und 9 |
-| RedHat | 6.7 und höher und 7.1 und höher |
+| Red Hat | 6.7 und höher und 7.1 und höher |
 | CentOS | 6.3 und höher und 7.0 und höher |
 
 ### <a name="internet-connectivity"></a>Internetkonnektivität

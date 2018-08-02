@@ -25,6 +25,8 @@
   items:
     - name: Authentifizierungsmethoden
       href: concept-authentication-methods.md
+    - name: Zusammengeführte Registrierung
+      href: concept-registration-mfa-sspr-converged.md
     - name: Self-Service-Kennwortzurücksetzung
       items:
         - name: Funktionsweise der Kennwortzurücksetzung

@@ -48,7 +48,6 @@ Um weitere Befehlsoptionen zu erhalten, führen Sie `az acs scale --help` aus.
 
 * Je nach der im Cluster bereitgestellten Orchestrierung können Sie die Anzahl von Instanzen eines im Cluster ausgeführten Containers separat skalieren. Verwenden Sie in einem DC/OS-Cluster z.B. die [Marathon-Schnittstelle](../articles/container-service/dcos-swarm/container-service-mesos-marathon-ui.md), um die Anzahl von Instanzen einer Containeranwendung zu ändern.
 
-* Zurzeit wird die automatische Skalierung von Agent-Knoten in einem Containerdienstcluster nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Sehen Sie sich [weitere Beispiele](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) für die Verwendung von Befehlen von Azure CLI 2.0 mit Azure Container Service an.

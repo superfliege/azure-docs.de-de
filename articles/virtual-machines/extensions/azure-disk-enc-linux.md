@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
-ms.author: danis
-ms.openlocfilehash: e7926fa488ad38784a3db96035055a80f841aed8
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.author: ejarvi
+ms.openlocfilehash: 36e8875e91e2f04dbb60bab3211f07b2053e78f5
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449019"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414771"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption für Linux (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -30,16 +30,15 @@ Azure Disk Encryption nutzt das Subsystem dm-crypt in Linux zur Gewährleistung 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Eine vollständige Liste der Voraussetzungen finden Sie unter [Voraussetzungen für Azure Disk Encryption](
-../../security/azure-security-disk-encryption.md#prerequisites).
+../../security/azure-security-disk-encryption-prerequisites.md).
 
 ### <a name="operating-system"></a>Betriebssystem
 
-Azure Disk Encryption wird für die folgenden ausgewählten Verteilungen und Versionen unterstützt.  Die Liste der unterstützten Linux-Verteilungen finden Sie unter [Häufig gestellte Fragen zu Azure Disk Encryption](../../security/azure-security-disk-encryption-faq.md#what-linux-distributions-does-azure-disk-encryption-support).
+Azure Disk Encryption wird für die folgenden ausgewählten Verteilungen und Versionen unterstützt.  Die Liste der unterstützten Linux-Verteilungen finden Sie unter [Häufig gestellte Fragen zu Azure Disk Encryption](../../security/azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport).
 
 ### <a name="internet-connectivity"></a>Internetkonnektivität
 
-Für Azure Disk Encryption für Linux ist eine Internetverbindung für den Zugriff auf Active Directory, Key Vault, Storage und Paketverwaltungs-Endpunkte erforderlich.  Weitere Informationen finden Sie unter [Voraussetzungen für Azure Disk Encryption](
-../../security/azure-security-disk-encryption.md#prerequisites).
+Für Azure Disk Encryption für Linux ist eine Internetverbindung für den Zugriff auf Active Directory, Key Vault, Storage und Paketverwaltungs-Endpunkte erforderlich.  Weitere Informationen finden Sie unter [Voraussetzungen für Azure Disk Encryption](../../security/azure-security-disk-encryption-prerequisites.md).
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
@@ -97,7 +96,7 @@ Ein Beispiel für die Bereitstellung von Vorlagen finden Sie unter [Aktivieren d
 
 ## <a name="azure-cli-deployment"></a>Bereitstellung mithilfe der Azure-Befehlszeilenschnittstelle
 
-Anweisungen finden Sie in der aktuellen [Dokumentation zur Azure-Befehlszeilenschnittstelle](/cli/azure/vm/encryption?view=azure-cli-latest). 
+Anweisungen finden Sie in der aktuellen [Dokumentation der Azure-Befehlszeilenschnittstelle](/cli/azure/vm/encryption?view=azure-cli-latest). 
 
 ## <a name="troubleshoot-and-support"></a>Problembehandlung und Support
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 0f7f389df96f38bea3634bf712af3f9bf4bdde09
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 9ea843df4cf437b97f7fe1d62636a51f8201376e
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33893948"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414571"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb
 
@@ -53,7 +53,7 @@ Die folgenden Distributionen werden standardmäßig aus dem Azure-Katalog unters
 ## <a name="limitations-and-constraints"></a>Einschränkungen
 
 ### <a name="supported-vm-instances"></a>Unterstützte VM-Instanzen
-Der beschleunigte Netzwerkbetrieb wird in den meisten allgemeinen, computeoptimierten Instanzgrößen mit mindestens 2 vCPUs unterstützt.  Folgende Reihen werden unterstützt: D/DSv2 und F/Fs
+Der beschleunigte Netzwerkbetrieb wird in den meisten universellen, computeoptimierten Instanzgrößen mit mindestens 2 vCPUs unterstützt.  Folgende Reihen werden unterstützt: D/DSv2 und F/Fs
 
 Bei Instanzen, die Hyperthreading unterstützen, wird der beschleunigte Netzwerkbetrieb auf VM-Instanzen mit mindestens 4 vCPUs unterstützt. Folgende Reihen werden unterstützt: D/DSv3, E/ESv3, Fsv2 und Ms/Mms.
 
@@ -232,13 +232,13 @@ az vm deallocate \
     --name myVM
 ```
 
-Wichtiger Hinweis: Wenn Ihre VM einzeln erstellt wurde (ohne Verfügbarkeitsgruppe), müssen Sie nur diese eine VM beenden und ihre Zuordnung aufheben, um den beschleunigten Netzwerkbetrieb zu aktivieren.  Wenn Ihre VM mit einer Verfügbarkeitsgruppe erstellt wurde, müssen alle VMs in dieser Verfügbarkeitsgruppe beendet und ihre Zuordnung muss aufgehoben werden, bevor Sie den beschleunigten Netzwerkbetrieb in einer der Netzwerkschnittstellen aktivieren können. 
+Wichtiger Hinweis: Wenn Ihre VM einzeln erstellt wurde (ohne Verfügbarkeitsgruppe), müssen Sie nur diese eine VM beenden und ihre Zuordnung aufheben, um den beschleunigten Netzwerkbetrieb zu aktivieren.  Wenn Ihre VM mit einer Verfügbarkeitsgruppe erstellt wurde, müssen alle VMs, die in dieser Verfügbarkeitsgruppe enthalten sind, beendet und deren Zuordnungen aufgehoben werden, bevor Sie den beschleunigten Netzwerkbetrieb in einer der Netzwerkschnittstellen aktivieren können. 
 
 Aktivieren Sie dann den beschleunigten Netzwerkbetrieb in der Netzwerkschnittstelle Ihrer VM:
 
 ```azurecli
 az network nic update \
-    --name myVM -n myNic \
+    --name myNic \
     --resource-group myResourceGroup \
     --accelerated-networking true
 ```
@@ -267,7 +267,7 @@ az vmss update --name myvmss \
     --set virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].enableAcceleratedNetworking=true
 ```
 
-Beachten Sie, dass in einer VM-Skalierungsgruppe VM-Upgrades aktiviert sind, die Aktualisierungen anwenden. Dabei gibt es drei Einstellungen: automatisch, parallel und manuell.  In diesen Anweisungen ist die Richtlinie auf „automatisch“ festgelegt, sodass die VM-Skalierungsgruppe die Änderungen sofort nach dem Neustart übernimmt.  So legen Sie die Einstellung auf „automatisch“ fest, damit die Änderungen sofort übernommen werden: 
+Beachten Sie, dass eine VM-Skalierungsgruppe VM-Upgrades hat, die Aktualisierungen entsprechend drei unterschiedlichen Einstellungen anwenden: „Automatisch“, „Parallel“ (Rolling) und „Manuell“.  In diesen Anweisungen wird die Richtlinie auf „Automatisch“ festgelegt, sodass die VM-Skalierungsgruppe die Änderungen sofort nach dem Neustart übernimmt.  So legen Sie die Einstellung auf „Automatisch“ fest, damit die Änderungen sofort übernommen werden: 
 
 ```azurecli
 az vmss update \
@@ -293,6 +293,6 @@ VMs mit aktiviertem beschleunigtem Netzwerkbetrieb können nur zu VM-Größen ge
 Eine VM mit aktiviertem beschleunigtem Netzwerkbetrieb kann nicht in eine VM-Instanz geändert werden, die den beschleunigten Netzwerkbetrieb nicht unterstützt.  Ändern Sie die VM-Größe stattdessen in eine der folgenden VMs: 
 
 * Beenden Sie die VM, und heben Sie ihre Zuordnung auf. Falls es sich um eine VM-Skalierungsgruppe handelt, führen Sie diese Vorgänge für alle VMs in der Gruppe aus.
-* Der beschleunigte Netzwerkbetrieb muss in der Netzwerkschnittstelle der VM bzw. im Fall einer Verfügbarkeits- oder Skalierungsgruppe in den Netzwerkschnittstellen aller VMs deaktiviert werden.
-* Sobald der beschleunigte Netzwerkbetrieb deaktiviert ist, kann die VM bzw. die Verfügbarkeits- oder Skalierungsgruppe in eine neue Größe ohne Unterstützung des beschleunigten Netzwerkbetriebs geändert und neu gestartet werden.  
+* Der beschleunigte Netzwerkbetrieb muss in der Netzwerkschnittstelle der VM bzw. im Fall einer Verfügbarkeits- oder VM-Skalierungsgruppe in den Netzwerkschnittstellen aller VMs deaktiviert werden.
+* Sobald der beschleunigte Netzwerkbetrieb deaktiviert ist, kann die VM bzw. die Verfügbarkeits- oder VM-Skalierungsgruppe in eine neue Größe ohne Unterstützung des beschleunigten Netzwerkbetriebs geändert und neu gestartet werden.  
 

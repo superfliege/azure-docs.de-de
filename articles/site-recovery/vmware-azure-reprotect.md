@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 04cb658da6a22643e21104f5673a3f211f48b7fc
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 1b410b2832d856f80d640aab2096fef270156c81
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916478"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346678"
 ---
 # <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>Erneutes Schützen von Computern von Azure an einem lokalen Standort
 
@@ -63,7 +63,7 @@ So stellen Sie einen Prozessserver in Azure bereit:
 Der Masterzielserver empfängt Failbackdaten. Standardmäßig wird der Masterzielserver auf dem lokalen Konfigurationsserver ausgeführt. Je nach Datenverkehrsvolumen beim Failback müssen Sie jedoch u.U. einen separaten Masterzielserver für das Failback erstellen. Gehen Sie zum Erstellen wie folgt vor:
 
 * [Richten Sie einen Linux-Masterzielserver](vmware-azure-install-linux-master-target.md) für Failbacks von Linux-VMs ein. Dies ist erforderlich.
-* Erstellen Sie optional einen separaten Masterzielserver für das Failback virtueller Windows-Computer. Führen Sie zu diesem Zweck das einheitliche Setup erneut aus, und wählen Sie dabei die Erstellung eines Masterzielservers aus. [Weitere Informationen](physical-azure-set-up-source.md#run-azure-site-recovery-unified-setup)
+* Erstellen Sie optional einen separaten Masterzielserver für das Failback virtueller Windows-Computer. Führen Sie zu diesem Zweck das einheitliche Setup erneut aus, und wählen Sie dabei die Erstellung eines Masterzielservers aus. [Weitere Informationen](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers)
 
 Nachdem Sie einen Masterzielserver erstellt haben, führen Sie folgende Aufgaben aus:
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: fdadc29aa1d25e90afe088053ae4fe2139fa7f16
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 77dca29b0c60726f0a072dd662aba0d12730502a
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034159"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413687"
 ---
 # <a name="create-mysql-databases"></a>Erstellen von MySQL-Datenbanken
 
@@ -35,7 +35,7 @@ Self-Service-Datenbanken können im Benutzerportal erstellt und verwaltet werden
 
 4. Klicken Sie unter **Datenbank erstellen** auf **SKU**. Wählen Sie unter **Select a MySQL SKU** (MySQL-SKU auswählen) die SKU für Ihre Datenbank aus.
 
-    ![Auswählen einer MySQL-SKU](./media/azure-stack-mysql-rp-deploy/mysql-select-a-sku.png)
+    ![Auswählen einer MySQL-SKU](./media/azure-stack-mysql-rp-deploy/mysql-select-sku.png)
 
     >[!Note]
     >Wenn Hostserver in Azure Stack hinzugefügt werden, wird ihnen eine SKU zugewiesen. Datenbanken werden im Pool von Hostservern in einer SKU erstellt.
@@ -59,7 +59,7 @@ Notieren Sie sich nach der Bereitstellung der Datenbank die **Verbindungszeichen
 Das Kennwort kann in der MySQL Server-Instanz geändert werden.
 
 1. Wählen Sie **VERWALTUNGSRESSOURCEN** > **MySQL-Hostserver** aus. Wählen Sie den Hostserver aus.
-2. Klicken Sie unter **Einstellungen** auf **Kennwort**.
+2. Wählen Sie unter **Einstellungen** die Option **Kennwort** aus.
 3. Geben Sie unter **Kennwort** das neue Kennwort ein, und klicken Sie anschließend auf **Speichern**.
 
 ![Aktualisieren des Administratorkennworts](./media/azure-stack-mysql-rp-deploy/mysql-update-password.png)

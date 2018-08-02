@@ -153,26 +153,23 @@
 
 
 ## Verwalten von Geräten
-### [Einführung](device-management-introduction.md)
-### [Verwenden des Azure-Portals](device-management-azure-portal.md)
-### [Planen der Azure AD-Einbindung](active-directory-azureadjoin-deployment-aadjoindirect.md)
-### [Häufig gestellte Fragen](device-management-faq.md)
+### [Übersicht](devices/overview.md)
+### [Verwenden des Azure-Portals](devices/device-management-azure-portal.md)
+### [Planen der Azure AD-Einbindung](devices/azureadjoin-plan.md)
+### [Häufig gestellte Fragen](devices/faq.md)
 ### Aufgaben
 #### [Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](devices/hybrid-azuread-join-plan.md)
 #### [Konfigurieren der Azure Active Directory-Hybrideinbindung für verwaltete Domänen](devices/hybrid-azuread-join-managed-domains.md)
 #### [Konfigurieren der Azure Active Directory-Hybrideinbindung für Verbunddomänen](devices/hybrid-azuread-join-federated-domains.md)
 #### [Steuern der Azure AD-Hybrideinbindung für Ihre Geräte](devices/hybrid-azuread-join-control.md)
-
-
-
 #### [Einrichten von bei Azure AD registrierten Windows 10-Geräten](user-help/device-management-azuread-registered-devices-windows10-setup.md)
 #### [Einrichten von in Azure AD eingebundenen Geräten](user-help/device-management-azuread-joined-devices-setup.md)
 #### [Einrichten von in Azure AD eingebundenen Hybridgeräten](devices/hybrid-azuread-join-manual-steps.md)
 #### [Lokale Bereitstellung](active-directory-device-registration-on-premises-setup.md)
-#### [Azure AD-Einbindung während des Eindrucks beim ersten Ausführen von Windows 10](device-management-azuread-joined-devices-frx.md)
+#### [Azure AD-Einbindung während des Eindrucks beim ersten Ausführen von Windows 10](devices/azuread-joined-devices-frx.md)
 ### Problembehandlung
-#### [In Azure AD eingebundene Windows 10- und Windows Server 2016-Hybridgeräte](device-management-troubleshoot-hybrid-join-windows-current.md)
-#### [In Azure AD eingebundene ältere Windows-Hybridgeräte](device-management-troubleshoot-hybrid-join-windows-legacy.md)
+#### [In Azure AD eingebundene Windows 10- und Windows Server 2016-Hybridgeräte](devices/troubleshoot-hybrid-join-windows-current.md)
+#### [In Azure AD eingebundene ältere Windows-Hybridgeräte](devices/troubleshoot-hybrid-join-windows-legacy.md)
 
 ## Verwalten von Apps
 ### [Übersicht](manage-apps/what-is-application-management.md)

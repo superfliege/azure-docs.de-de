@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: e0fed608ac9dd02a6fe5563eefc30edb63d224b1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 37859a117c88238089a681e3814c2a52f62bfce4
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205364"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412582"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Konfigurationseinstellungen für einen eigenständigen Windows-Cluster
 In diesem Artikel wird beschrieben, wie Sie einen eigenständigen Azure Service Fabric-Cluster mithilfe der Datei „ClusterConfig.json“ konfigurieren. Sie verwenden diese Datei, um Informationen zu den Knoten des Clusters, den Sicherheitskonfigurationen sowie zur Netzwerktopologie in Bezug auf Fehler- und Upgradedomänen anzugeben.
@@ -47,9 +47,6 @@ Allgemeine Clusterkonfigurationen behandeln wie im folgenden JSON-Ausschnitt dar
 Sie können für Ihren Service Fabric-Cluster einen beliebigen Anzeigenamen festlegen, indem sie ihn der Variablen „name“ zuweisen. Die „clusterConfigurationVersion“ ist die Versionsnummer Ihres Clusters. Erhöhen Sie diese Nummer jedes Mal, wenn Sie Ihr Service Fabric-Cluster upgraden. Behalten Sie für „apiVersion“ den Standardwert bei.
 
 ## <a name="nodes-on-the-cluster"></a>Knoten im Cluster
-
-    <a id="clusternodes"></a>
-
 Sie können die Knoten in Ihrem Service Fabric-Cluster, wie im folgenden Codeausschnitt gezeigt, mithilfe des „nodes“-Abschnitts konfigurieren:
 
     "nodes": [{
@@ -88,8 +85,6 @@ Im Abschnitt „properties“ der Datei „ClusterConfig.json“ wird der Cluste
 ### <a name="reliability"></a>Zuverlässigkeit
 Das Konzept „reliabilityLevel“ definiert die Anzahl von Replikaten oder Instanzen der Service Fabric-Systemdienste, die auf den primären Knoten des Clusters ausgeführt werden können. Es bestimmt die Zuverlässigkeit dieser Dienste und damit auch des Clusters. Der Wert wird vom System bei der Clustererstellung und beim Upgraden des Clusters berechnet.
 
-    <a id="reliability"></a>
-
 ### <a name="diagnostics"></a>Diagnose
 Im Abschnitt „diagnosticsStore“ können Sie Parameter konfigurieren, um bei Knoten- und Clusterausfällen die Diagnose und Fehlerbehandlung zu ermöglichen. Dies wird im folgenden Codeausschnitt veranschaulicht: 
 
@@ -124,9 +119,6 @@ Der Abschnitt „security“ wird für einen sicheren eigenständigen Service Fa
 „Metadata“ ist eine Beschreibung Ihres sicheren Clusters und kann gemäß Ihrem Setup festgelegt werden. „ClusterCredentialType“ und „ServerCredentialType“ bestimmen den Typ der Sicherheit, der im Cluster und in den Knoten implementiert wird. Sie können *X509* für eine auf Zertifikaten basierende Sicherheit oder *Windows* für eine auf Azure Active Directory basierende Sicherheit festlegen. Die übrigen Festlegungen im Abschnitt „security“ hängen vom Typ der Sicherheit ab. Informationen darüber, wie Sie die restlichen Teile des Abschnitts „security“ ausfüllen, erhalten Sie in den Artikeln [Zertifikatbasierte Sicherheit in eigenständigen Windows-Clustern](service-fabric-windows-cluster-x509-security.md) und [Windows-Sicherheit in eigenständigen Windows-Clustern](service-fabric-windows-cluster-windows-security.md).
 
 ### <a name="node-types"></a>Knotentypen
-
-    <a id="nodetypes"></a>
-
 Im Abschnitt „nodeTypes“ werden die Typen der Knoten beschrieben, die in Ihrem Cluster vorhanden sind. Es muss wie im folgenden Codeausschnitt gezeigt mindestens ein Knotentyp für einen Cluster angegeben sein: 
 
     "nodeTypes": [{

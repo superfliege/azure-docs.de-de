@@ -319,6 +319,8 @@
       items:
         - name: Debuggen von Spark-Aufträgen
           href: apache-spark-job-debugging.md
+        - name: Debuggen von Spark-Aufträgen über das Auftragsdiagramm
+          href: apache-azure-spark-history-server.md
         - name: Debuggen von Spark-Aufträgen mithilfe von IntelliJ
           href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
         - name: Problembehandlung bei einem langsamen oder fehlerhaften HDInsight-Cluster
