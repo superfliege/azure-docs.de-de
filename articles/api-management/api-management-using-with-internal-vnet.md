@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apimpm
-ms.openlocfilehash: b2b690978c2d67dbf26b74ecd38a408cece91566
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6b6fd7395f7aff303f4950fb07bd0472cf7057a2
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32151228"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145739"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Verwenden von Azure API Management mit einem internen virtuellen Netzwerk
 Mit virtuellen Azure-Netzwerken kann API Management APIs verwalten, auf die nicht über das Internet zugegriffen werden kann. Für die Verbindungsherstellung stehen verschiedene VPN-Technologien zur Verfügung. API Management kann in einem virtuellen Netzwerk in zwei Hauptmodi bereitgestellt werden:
@@ -61,6 +61,9 @@ Der API Management-Dienst in einem internen virtuellen Netzwerk wird hinter eine
 Nach erfolgreicher Bereitstellung sollte die interne virtuelle IP-Adresse des Diensts auf dem Dashboard angezeigt werden.
 
 ![API Management-Dashboard mit konfiguriertem internem virtuellen Netzwerk][api-management-internal-vnet-dashboard]
+
+> [!NOTE]
+> Die im Azure-Portal verfügbare Testkonsole funktioniert nicht bei **intern** bereitgestelltem VNET-Dienst, da der Gateway-URI nicht unter öffentlichem DNS registriert ist. Verwenden Sie stattdessen die im **Entwicklerportal** bereitgestellte Testkonsole.
 
 ### <a name="enable-a-virtual-network-connection-by-using-powershell-cmdlets"></a>Aktivieren einer Verbindung mit einem virtuellen Netzwerk mithilfe von PowerShell-Cmdlets
 Verbindungen mit virtuellen Netzwerken können auch mithilfe von PowerShell-Cmdlets aktiviert werden.

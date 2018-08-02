@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/08/2018
+ms.date: 07/25/2018
 ms.author: ganesr
-ms.openlocfilehash: 2f0fed77a676bc46e8daa9c41efd533dffe72d8b
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 7e1faa9dc5901861aab8e7911c241e6704b805b1
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29874996"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257842"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung mithilfe von PowerShell (klassisch)
 > [!div class="op_single_selector"]
@@ -57,6 +57,12 @@ Sie können das folgende Cmdlet verwenden, um ein virtuelles Netzwerk mit einer 
 
     New-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
     Provisioned
+    
+## <a name="remove-a-virtual-network-link-to-a-circuit"></a>Entfernen der Verknüpfung eines virtuellen Netzwerks mit einer Verbindung
+Sie können das folgende Cmdlet verwenden, um die Verknüpfung eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung zu entfernen. Stellen Sie sicher, dass das aktuelle Abonnement für das angegebene virtuelle Netzwerk ausgewählt ist. 
+
+    Remove-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
+ 
 
 ## <a name="connect-a-virtual-network-in-a-different-subscription-to-a-circuit"></a>Herstellen einer Verbindung zwischen einem virtuellen Netzwerk in einem anderen Abonnement und einer Verbindung
 Sie können eine ExpressRoute-Verbindung für mehrere Abonnements freigeben. Die folgende Abbildung zeigt eine einfache schematische Darstellung der Freigabe von Lasten für ExpressRoute-Verbindungen für mehrere Abonnements.

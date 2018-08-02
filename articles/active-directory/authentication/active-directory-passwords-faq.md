@@ -4,18 +4,18 @@ description: Häufig gestellte Fragen zur Self-Service-Kennwortzurücksetzung in
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: c006e448b8da1acaf51c8339cbcd0b6170f29874
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 92f9732adadc4eb580d89f8a43cf76177450aeb7
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054810"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160741"
 ---
 # <a name="password-management-frequently-asked-questions"></a>Häufig gestellte Fragen zur Kennwortverwaltung
 
@@ -115,7 +115,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F: Wie informiere ich meine Benutzer, wo sie ihre Kennwörter zurücksetzen können?**
 
-  > **A:** Nutzen Sie die Vorschläge in unserem [Artikel zur SSPR-Bereitstellung](howto-sspr-deployment.md#email-based-rollout).
+  > **A:** Nutzen Sie die Vorschläge in unserem [Artikel zur SSPR-Bereitstellung](howto-sspr-deployment.md#sample-communication).
   >
   >
 * **F: Kann ich diese Seite von einem mobilen Gerät aus verwenden?**
@@ -170,7 +170,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F: Ich konfigurierte meine Richtlinie so, dass Benutzer zum Zurücksetzen Sicherheitsfragen verwenden müssen, aber die Azure-Administratoren scheinen anders konfiguriert zu sein.**
 
-  > **A:** Dies entspricht dem erwarteten Verhalten. Microsoft erzwingt eine starke standardmäßige Zwei-Tor-Kennwortzurücksetzungs-Richtlinie für jede Azure-Administratorrolle. Damit wird verhindert, dass Administratoren Sicherheitsfragen verwenden. Weitere Informationen zu dieser Richtlinie finden Sie im Artikel [Kennwortrichtlinien und -Einschränkungen in Azure Active Directory](concept-sspr-policy.md#administrator-password-policy-differences).
+  > **A:** Dies entspricht dem erwarteten Verhalten. Microsoft erzwingt eine starke standardmäßige Zwei-Tor-Kennwortzurücksetzungs-Richtlinie für jede Azure-Administratorrolle. Damit wird verhindert, dass Administratoren Sicherheitsfragen verwenden. Weitere Informationen zu dieser Richtlinie finden Sie im Artikel [Kennwortrichtlinien und -Einschränkungen in Azure Active Directory](concept-sspr-policy.md).
   >
   >
 * **F: Wie werden die Sicherheitsfragen während der Zurücksetzung ausgewählt, wenn ein Benutzer mehr als die maximale Anzahl von Fragen registriert, die für die Zurücksetzung erforderlich sind?**
@@ -274,7 +274,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F: Ist die Kennwortrückschreibung sicher?  Wie kann ich sicher sein, dass ich nicht gehackt werde?**
 
-  > **A:** Ja, das Kennwortrückschreiben ist sicher. Weitere Informationen zu den vier Sicherheitsstufen, die durch den Dienst zum Kennwortrückschreiben implementiert werden, finden Sie im Abschnitt [Sicherheitsmodell für das Kennwortrückschreiben](howto-sspr-writeback.md#password-writeback-security-model) im Artikel [Übersicht über die Kennwortrückschreibung](howto-sspr-writeback.md).
+  > **A:** Ja, das Kennwortrückschreiben ist sicher. Weitere Informationen zu den mehrere Sicherheitsstufen, die durch den Dienst zum Kennwortrückschreiben implementiert werden, finden Sie im Abschnitt [Sicherheit für das Kennwortrückschreiben](concept-sspr-writeback.md#password-writeback-security) im Artikel [Übersicht über die Kennwortrückschreibung](howto-sspr-writeback.md).
   >
   >
 

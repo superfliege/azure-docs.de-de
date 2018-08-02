@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: alkohli
-ms.openlocfilehash: ab73420d1bfe0dbddcf2a0e3c3dd34203e4bb2d7
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: c435e21d85ae0ab35bc2fa99f7006e841eaecec0
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008415"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248774"
 ---
 # <a name="what-is-azure-importexport-service"></a>Was ist der Azure Import/Export-Dienst?
 
@@ -71,13 +71,18 @@ Ein Importauftrag umfasst im Allgemeinen die folgenden Schritte:
 1. Bestimmen Sie die zu importierenden Daten, die Anzahl der erforderlichen Laufwerke und den Ziel-Blobspeicherort für Ihre Daten in Azure Storage.
 2. Verwenden Sie das WAImportExport-Tool, um die Daten auf die Festplatten zu kopieren. Verschlüsseln Sie die Datenträger mit BitLocker.
 3. Erstellen Sie einen Importauftrag in Ihrem Zielspeicherkonto im Azure-Portal. Laden Sie die Laufwerks-Journaldateien hoch.
-2. Geben Sie die Rücksendeadresse und die Nummer Ihres Kontos beim Kurierdienst für das Zurücksenden der Festplatten an.
-3. Schicken Sie die Festplatten an die Versandadresse, die Sie während der Erstellung des Auftrags erhalten haben.
-4. Aktualisieren Sie die Nummer für die Sendungsverfolgung in den Details des Importauftrags, und senden Sie den Importauftrag ab.
-5. Die Festplatten kommen im Azure-Rechenzentrum an und werden verarbeitet.
-6. Die Festplatten werden über Ihr Kurierdienstkonto an die Rücksendeadresse geschickt, die im Importauftrag angegeben ist.
-  
-    ![Abbildung 1: Ablauf eines Importauftrags](./media/storage-import-export-service/importjob.png)
+4. Geben Sie die Rücksendeadresse und die Nummer Ihres Kontos beim Kurierdienst für das Zurücksenden der Festplatten an.
+5. Schicken Sie die Festplatten an die Versandadresse, die Sie während der Erstellung des Auftrags erhalten haben.
+6. Aktualisieren Sie die Nummer für die Sendungsverfolgung in den Details des Importauftrags, und senden Sie den Importauftrag ab.
+7. Die Festplatten kommen im Azure-Rechenzentrum an und werden verarbeitet.
+8. Die Festplatten werden über Ihr Kurierdienstkonto an die Rücksendeadresse zurückgeschickt, die im Importauftrag angegeben ist.
+
+> [!NOTE]
+> Geben Sie für nationale Lieferungen (innerhalb des Landes, in dem sich das Rechenzentrum befindet) ein inländisches Spediteurkonto an. 
+>
+> Geben Sie für internationale Lieferungen (außerhalb des Landes, in dem sich das Rechenzentrum befindet) ein internationales Spediteurkonto an.
+
+ ![Abbildung 1: Ablauf eines Importauftrags](./media/storage-import-export-service/importjob.png)
 
 Ausführliche Anweisungen zum Datenimport finden Sie unter:
 
@@ -101,8 +106,13 @@ Ein Exportauftrag umfasst im Allgemeinen die folgenden Schritte:
 8. Die Festplatten kommen im Azure-Rechenzentrum an und werden verarbeitet.
 9. Die Festplatten werden mit BitLocker verschlüsselt. Die Schlüssel sind über das Azure-Portal verfügbar.  
 10. Die Festplatten werden über Ihr Kurierdienstkonto an die Rücksendeadresse zurückgeschickt, die im Importauftrag angegeben ist.
+
+> [!NOTE]
+> Geben Sie für nationale Lieferungen (innerhalb des Landes, in dem sich das Rechenzentrum befindet) ein inländisches Spediteurkonto an. 
+>
+> Geben Sie für internationale Lieferungen (außerhalb des Landes, in dem sich das Rechenzentrum befindet) ein internationales Spediteurkonto an.
   
-    ![Abbildung 2: Ablauf eines Exportauftrags](./media/storage-import-export-service/exportjob.png)
+ ![Abbildung 2: Ablauf eines Exportauftrags](./media/storage-import-export-service/exportjob.png)
 
 Eine ausführliche Anleitung zum Datenexport finden Sie unter [Exportieren von Daten aus Azure-Blobs](storage-import-export-data-from-blobs.md).
 

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 5/17/2018
+ms.date: 7/13/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: e226aadbe499d5905b1814bec5d042f67d898c18
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 57b610b40edff56207617e212d0eb6e591ad50d4
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294848"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224295"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Bereitstellen von Azure Blockchain Workbench
 
@@ -196,7 +196,7 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
     | Bereitstellungsregion | Geben Sie an, wo die Blockchain Workbench-Ressourcen bereitgestellt werden sollen. Für optimale Verfügbarkeit sollte dies der Einstellung **Ort** entsprechen. |
     | Abonnement | Geben Sie das Azure-Abonnement an, das Sie für Ihre Bereitstellung verwenden möchten. |
     | Ressourcengruppen | Erstellen Sie eine Ressourcengruppe, indem Sie **Neu erstellen** auswählen, und geben Sie einen eindeutigen Namen für die Ressourcengruppe ein. |
-    | Speicherort | Geben Sie die Region an, in der Sie das Framework bereitstellen möchten. |
+    | Standort | Geben Sie die Region an, in der Sie das Framework bereitstellen möchten. |
 
 6.  Wählen Sie **OK**, um die Konfiguration der Grundeinstellungen fertig zu stellen.
 
@@ -213,9 +213,13 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
 
 8.  Klicken Sie auf **OK**, um die Konfiguration der Azure AD-Parameter fertig zu stellen.
 
-9.  Schließen Sie die Einstellungen für **Netzwerkgröße und -leistung** ab.
+9.  Wählen Sie in **Netzwerkeinstellungen und Leistung**, ob Sie ein neues Blockchainnetzwerk erstellen oder ein bestehendes Blockchainnetzwerk mit Proof-of-Authority (PoA) verwenden möchten.
 
-    ![Netzwerk- und Leistungseinstellungen](media/blockchain-workbench-deploy/blockchain-workbench-settings-network.png)
+    Für **Neues Element erstellen**:
+
+    Über die Option *Neues Element erstellen* wird ein Satz von Ethereum-PoA-Knoten innerhalb des Abonnements eines einzelnen Mitglieds erstellt. 
+
+    ![Netzwerkeinstellungen und Leistung](media/blockchain-workbench-deploy/blockchain-workbench-settings-network-new.png)
 
     | Einstellung | BESCHREIBUNG  |
     |---------|--------------|
@@ -223,7 +227,23 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
     | Speicherleistung | Wählen Sie die bevorzugte VM-Speicherleistung für Ihr Blockchainnetzwerk. |
     | Größe des virtuellen Computers | Wählen Sie die bevorzugte VM-Größe für Ihr Blockchainnetzwerk. |
 
-10. Wählen Sie **OK**, um den Abschnitt zu Netzwerkgröße und -leistung fertig zu stellen.
+    Für **Vorhandene verwenden**:
+
+    Die Option *Vorhandene verwenden* ermöglicht Ihnen, ein Ethereum-PoA-Blockchainnetzwerk festzulegen. Endpunkte haben die folgenden Anforderungen:
+
+    * Beim Endpunkt muss es sich um ein Ethereum-PoA-Blockchainnetzwerk handeln.
+    * Der Endpunkt muss öffentlich über das Netzwerk zugänglich sein.
+    * Für das PoA-Blockchainnetzwerk sollte der Gaspreis auf 0 (null) gesetzt sein (Hinweis: Blockchain Workbench-Konten werden nicht unterstützt. Wenn Geldmittel erforderlich sind, tritt ein Fehler bei der Transaktion auf.)
+
+    ![Netzwerkeinstellungen und Leistung](media/blockchain-workbench-deploy/blockchain-workbench-settings-network-existing.png)
+
+    | Einstellung | BESCHREIBUNG  |
+    |---------|--------------|
+    | Ethereum-RPC-Endpunkt | Geben Sie den RPC-Endpunkt eines bestehenden PoA-Blockchainnetzwerks an. Der Endpunkt startet mit „http://“ und endet mit einer Portnummer. Zum Beispiel, `http://contoso-chain.onmicrosoft.com:8545` |
+    | Speicherleistung | Wählen Sie die bevorzugte VM-Speicherleistung für Ihr Blockchainnetzwerk. |
+    | Größe des virtuellen Computers | Wählen Sie die bevorzugte VM-Größe für Ihr Blockchainnetzwerk. |
+
+10. Wählen Sie **OK** aus, um die Konfiguration von Netzwerkeinstellungen und Leistung abzuschließen.
 
 11. Schließen Sie die **Azure Monitor**-Einstellungen ab.
 

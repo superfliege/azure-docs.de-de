@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: c320f27dd53f0545ff5074d2d4f5a7bdd445fd89
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: f2af7c65d42cbbec28fd511be18c72a6cd3c3d0c
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866177"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249018"
 ---
 # <a name="configure-stateful-reliable-services"></a>Konfigurieren zustandsbehafteter Reliable Services
 Es gibt zwei Sets von Konfigurationseinstellungen für Reliable Services. Ein Set gilt global für alle Reliable Services im Cluster, während das andere für den jeweiligen Reliable Service spezifisch ist.
@@ -124,6 +124,7 @@ ReplicatorConfig
 | SharedLogId |GUID |"" |Gibt eine eindeutige GUID zum Identifizieren der freigegebenen Protokolldatei an, die mit diesem Replikat verwendet wird. Diese Einstellung sollte von Diensten normalerweise nicht verwendet werden. Aber wenn SharedLogId angegeben ist, muss SharedLogPath ebenfalls angegeben werden. |
 | SharedLogPath |Vollständig qualifizierter Pfadname |"" |Gibt den vollständig qualifizierten Pfad an, in dem die freigegebene Protokolldatei für dieses Replikat erstellt wird. Diese Einstellung sollte von Diensten normalerweise nicht verwendet werden. Aber wenn SharedLogPath angegeben ist, muss SharedLogId ebenfalls angegeben werden. |
 | SlowApiMonitoringDuration |Sekunden |300 |Legt das Überwachungsintervall für verwaltete API-Aufrufe fest. Beispiel: Vom Benutzer bereitgestellte Sicherungsrückruffunktion. Nach Ablauf des Intervalls wird ein Warnbericht zur Integrität an den Health Manager gesendet. |
+| LogTruncationIntervalSeconds |Sekunden |0 |Konfigurierbares Intervall, in dem bei jedem Replikat eine Protokollkürzung initiiert wird. Mit seiner Hilfe wird sichergestellt, dass das Protokoll auch nach Zeit und nicht nur nach Größe des Protokolls abgeschnitten wird. Diese Einstellung erzwingt auch das endgültige Löschen der gelöschten Einträge im zuverlässigen Wörterbuch. Daher kann es verwendet werden, um sicherzustellen, dass gelöschte Elemente rechtzeitig endgültig gelöscht werden. |
 
 ### <a name="sample-configuration-via-code"></a>Beispielkonfiguration per Code
 ```csharp

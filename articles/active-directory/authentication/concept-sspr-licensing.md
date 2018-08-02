@@ -4,42 +4,44 @@ description: Lizenzanforderungen für die Self-Service-Kennwortzurücksetzung in
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/17/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: e185b67ae73b86b5f1c3b6cda884de05eb89c6fd
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 83054c505689768c14d168841764a4557c3e1f8b
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049083"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158997"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung
 
-In *Ihrer Organisation muss mindestens eine Lizenz für diesen Benutzer zugewiesen sein*, damit die Kennwortzurücksetzung in Azure Active Directory (Azure AD) funktioniert. Wenn ein Benutzer direkt oder indirekt von einem durch diese Lizenz abgedeckten Feature profitiert, ist eine vollständige Lizenz erforderlich.
+Azure Active Directory (Azure AD) ist in vier Editionen erhältlich: Free, Basic, Premium P1 und Premium P2. Die Self-Service-Kennwortzurücksetzung setzt sich aus mehreren verschiedenen Features einschließlich Ändern, Zurücksetzen, Entsperren und Rückschreiben zusammen, die in den verschiedenen Editionen von Azure AD verfügbar sind. In diesem Artikel werden die Unterschiede erläutert. Weitere Informationen zu den in den einzelnen Editionen von Azure AD enthaltenen Features finden Sie auf der Seite [Azure Active Directory – Preise ](https://azure.microsoft.com/pricing/details/active-directory/).
 
-* **Nur Cloudbenutzer**: beliebige kostenpflichtige SKU für Office 365 oder Azure AD Basic
-* **Cloudbenutzer** oder **lokale Benutzer**: Azure AD Premium P1 oder P2, Enterprise Mobility + Security (EMS) oder Microsoft 365
+## <a name="compare-editions-and-features"></a>Vergleich von Editionen und Features
 
-## <a name="licensing-requirements-for-password-writeback"></a>Lizenzierungsanforderungen für das Kennwortrückschreiben
+Die Azure AD-Self-Service-Kennwortzurücksetzung wird pro Benutzer lizenziert. Aus Gründen der Kompatibilität müssen Organisationen ihren Benutzern die entsprechende Lizenz zuweisen.
 
-**Self-Service-Kennwortzurücksetzung/-änderung/-entsperrung mit lokalem Rückschreiben ist eine Premium-Funktion von Azure AD**. Weitere Informationen zur Lizenzierung finden Sie auf der [Preiswebsite für Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
+* Self-Service-Kennwortänderung für Cloudbenutzer
+   * Ich bin ein **reiner Cloudbenutzer** und kenne mein Kennwort.
+      * Ich würde mein Kennwort gerne in etwas Neues **ändern**.
+   * Diese Funktionalität ist in allen Editionen von Azure AD enthalten.
 
-Damit Kennwortrückschreiben verwendet werden kann, muss in Ihrem Mandanten eine der folgenden Lizenzen zugewiesen sein:
+* Self-Service-Kennwortrücksetzung für Cloudbenutzer
+   * Ich bin ein **reiner Cloudbenutzer** und habe mein Kennwort vergessen.
+      * Ich würde mein Kennwort gerne auf etwas **zurücksetzen**, was ich kenne.
+   * Diese Funktionalität ist in den Editionen Azure AD Basic, Premium P1 oder Premium P2 enthalten.
 
-* Azure AD Premium P1
-* Azure AD Premium P2
-* Enterprise Mobility + Security E3 oder A3
-* Enterprise Mobility + Security E5 oder A5
-* Microsoft 365 E3 oder A3
-* Microsoft 365 E5 oder A5
-* Microsoft 365 F1
+* Self-Service-Kennwortzurücksetzung/-änderung/-entsperrung **mit lokalem Rückschreiben**
+   * Ich bin ein **Hybridbenutzer** – mein lokales Active Directory-Benutzerkonto ist mittels Azure AD Connect mit meinem Azure AD-Konto synchronisiert. Ich möchte mein Kennwort ändern, habe mein Kennwort vergessen oder wurde ausgesperrt.
+      * Ich möchte mein Kennwort ändern oder auf etwas zurücksetzen, das mir bekannt ist, bzw. mein Konto entsperren, **und** habe diese Änderung wieder mit meinem lokalen Active Directory synchronisiert.
+   * Diese Funktionalität ist in den Editionen Azure AD Premium P1 oder Premium P2 enthalten.
 
 > [!WARNING]
-> Eigenständige Office 365-Lizenzierungspläne *bieten keine Unterstützung für das Kennwortrückschreiben* und erfordern, dass Sie einen der obigen Pläne haben, damit diese Funktion verwendbar ist.
+> Eigenständige Office 365-Lizenzierungspläne **bieten keine Unterstützung für das Kennwortrückschreiben** und erfordern die Editionen Azure AD Premium P1 oder Premium P2, damit diese Funktionalität nutzbar ist.
 >
 
 Weitere Informationen zur Lizenzierung, einschließlich der Kosten, finden Sie auf den folgenden Seiten:

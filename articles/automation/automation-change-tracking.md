@@ -10,12 +10,12 @@ ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 891206e88173d72a0bacf6694a331c4ad8cc9acc
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 86b8f76bd221be9f30a5b9336af858359ae0af8f
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069446"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238878"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für die Änderungsnachverfolgung
 
@@ -99,7 +99,7 @@ Führen Sie zum Konfigurieren der Dateinachverfolgung auf Windows-Computern die 
 
 ## <a name="configure-file-content-tracking"></a>Konfigurieren der Nachverfolgung von Dateiinhalten
 
-Mithilfe der Nachverfolgung von Dateiinhalten können Sie die Inhalte vor und nach vorgenommenen Änderungen an einer Datei anzeigen. Dies ist für Windows- und Linux-Dateien verfügbar. Bei jeder Dateiänderung werden die Inhalte der Datei in einem Speicherkonto gespeichert, und die Datei wird in den Versionen vor und nach der Änderung angezeigt, wahlweise inline oder nebeneinander. Weitere Informationen finden Sie unter [View the contents of a tracked file](change-tracking-file-contents.md) (Anzeigen der Inhalte einer nachverfolgten Datei).
+Mithilfe der Änderungsnachverfolgung für Dateiinhalte können Sie die Inhalte vor und nach den vorgenommenen Änderungen an einer Datei anzeigen. Dies ist für Windows- und Linux-Dateien verfügbar. Bei jeder Dateiänderung werden die Inhalte der Datei in einem Speicherkonto gespeichert, und die Datei wird in den Versionen vor und nach der Änderung angezeigt, wahlweise inline oder nebeneinander. Weitere Informationen finden Sie unter [View the contents of a tracked file](change-tracking-file-contents.md) (Anzeigen der Inhalte einer nachverfolgten Datei).
 
 ![Anzeigen von Änderungen in einer Datei](./media/change-tracking-file-contents/view-file-changes.png)
 

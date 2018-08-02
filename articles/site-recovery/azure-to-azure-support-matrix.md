@@ -7,14 +7,14 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 07/19/2018
 ms.author: sujayt
-ms.openlocfilehash: 3825183fa7e8ca15a86935b5b96ff8d25d7bef14
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: c2892d51c6eb5e71c0b1af400b78e993742fede0
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070870"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173049"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Unterstützungsmatrix für die Replikation von einer Azure-Region in eine andere
 
@@ -27,34 +27,21 @@ In diesem Artikel werden die unterstützten Konfigurationen und Komponenten bei 
 **Benutzeroberfläche** |  **Unterstützt/Nicht unterstützt**
 --- | ---
 **Azure-Portal** | Unterstützt
-**Klassisches Portal** | Nicht unterstützt
 **PowerShell** | [Replikation von Azure zu Azure mit PowerShell](azure-to-azure-powershell.md)
 **REST-API** | Derzeit nicht unterstützt
 **BEFEHLSZEILENSCHNITTSTELLE (CLI)** | Derzeit nicht unterstützt
 
 
-## <a name="resource-move-support"></a>Unterstützung für das Verschieben von Ressourcen
+## <a name="resource-support"></a>Ressourcenunterstützung
 
-**Typ des Verschiebevorgangs für Ressourcen** | **Unterstützt/Nicht unterstützt** | **Anmerkungen**  
+**Typ des Verschiebevorgangs für Ressourcen** | **Details** 
 --- | --- | ---
-**Tresor über Ressourcengruppen hinweg verschieben** | Nicht unterstützt |Sie können den Recovery Services-Tresor nicht über Ressourcengruppen hinweg verschieben.
-**Verschieben von Compute, Speicher und Netzwerk über Ressourcengruppen hinweg** | Nicht unterstützt |Wenn Sie nach dem Aktivieren der Replikation einen virtuellen Computer (oder zugehörige Komponenten wie Speicher und Netzwerk) verschieben, müssen Sie die Replikation deaktivieren und dann wieder für den virtuellen Computer aktivieren.
+**Tresor über Ressourcengruppen hinweg verschieben** | Nicht unterstützt<br/><br/> Sie können den Recovery Services-Tresor nicht über Ressourcengruppen hinweg verschieben.
+**Verschieben von Compute-, Speicher- und Netzwerkressourcen über Ressourcengruppen hinweg** | Nicht unterstützt.<br/><br/> Wenn Sie eine VM oder zugehörige Komponenten wie Speicher bzw. Netzwerke verschieben, nachdem diese repliziert wurden, müssen Sie die Replikation deaktivieren und die Replikation für die VM erneut aktivieren.
+**Replizieren von Azure-VMs von einem Abonnement in ein anderes zur Notfallwiederherstellung** | Nicht unterstützt.
+**Abonnementübergreifendes Migrieren von VMs** | Nicht unterstützt.
+**Migrieren von VMs in derselben Region** | Nicht unterstützt.
 
-
-
-## <a name="support-for-deployment-models"></a>Unterstützung für Bereitstellungsmodelle
-
-**Bereitstellungsmodell** | **Unterstützt/Nicht unterstützt** | **Anmerkungen**  
---- | --- | ---
-**Klassisch** | Unterstützt | Sie können einen replizierten klassischen virtuellen Computer nur als klassischen virtuellen Computer wiederherstellen. Eine Wiederherstellung als virtueller Ressourcen-Manager-Computer ist nicht möglich. Wenn Sie einen klassischen virtuellen Computer ohne ein virtuelles Netzwerk und direkt in einer Azure-Region bereitstellen, wird er nicht unterstützt.
-**Resource Manager** | Unterstützt |
-
->[!NOTE]
->
-> 1. Das Replizieren virtueller Azure-Computer zwischen Abonnements für Notfallwiederherstellungsszenarien wird nicht unterstützt.
-> 2. Die abonnementübergreifende Migration virtueller Azure-Computer wird nicht unterstützt.
-> 3. Die Migration virtueller Azure-Computer in derselben Region wird nicht unterstützt.
-> 4. Die Migration virtueller Azure-Computer vom klassischen Bereitstellungsmodell zum Resource Manager-Bereitstellungsmodell wird nicht unterstützt.
 
 ## <a name="support-for-replicated-machine-os-versions"></a>Unterstützung für replizierte Computer-Betriebssystemversionen
 
@@ -145,6 +132,13 @@ China | „China, Osten“, „China, Norden“
 >[!NOTE]
 >
 > Für die Region „Brasilien, Süden“ sind Replikation, Failover und Failback nur zu „USA, Süden-Mitte“, „USA, Westen-Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Westen“, „USA, Westen 2“ und „USA, Norden-Mitte“ möglich.
+
+## <a name="support-for-vmdisk-management"></a>Unterstützung für die VM-/Datenträgerverwaltung
+
+**Aktion** | **Details**
+-- | ---
+Größe des Datenträgers auf einer replizierten VM ändern | Unterstützt
+Datenträger zu einer replizierten VM hinzufügen | Nicht unterstützt. Sie müssen die Replikation für die VM deaktivieren, den Datenträger hinzufügen und die Replikation dann erneut aktivieren.
 
 
 ## <a name="support-for-compute-configuration"></a>Unterstützung für Computekonfiguration

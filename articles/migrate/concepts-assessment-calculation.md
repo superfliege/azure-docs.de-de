@@ -4,14 +4,14 @@ description: Bietet eine Übersicht über Bewertungsberechnungen im Azure Migrat
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/05/2018
+ms.date: 07/25/2018
 ms.author: raynew
-ms.openlocfilehash: 6d5a0b959b25c0ee294b22b3f4066d006806b524
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 7900a02ba9112b910589d04850a4cd5d52e044d2
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920923"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249188"
 ---
 # <a name="assessment-calculations"></a>Bewertungsberechnungen
 
@@ -40,7 +40,7 @@ Azure Migrate überprüft die folgenden Eigenschaften des lokalen virtuellen Com
 --- | --- | ---
 **Starttyp** | Azure unterstützt virtuelle Computer mit dem Starttyp BIOS, jedoch nicht UEFI. | Bedingt bereit für Azure, wenn der Starttyp UEFI ist.
 **Kerne** | Die Anzahl der Kerne in den Computern darf maximal der Anzahl der für einen virtuellen Azure-Computer unterstützten Kerne (32) entsprechen.<br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate die genutzten Kerne beim Vergleich. Wenn in den Bewertungseinstellungen ein Komfortfaktor festgelegt ist, wird die Anzahl der genutzten Kerne mit dem Komfortfaktor multipliziert.<br/><br/> Wenn kein Leistungsverlauf vorhanden ist, verwendet Azure Migrate die zugeordneten Kerne ohne Anwendung des Komfortfaktors. | Nicht bereit, wenn die Anzahl der Kerne größer als 32 ist.
-**Memory** | Die Größe des Computerarbeitsspeichers darf maximal dem zulässigen Arbeitsspeicher (448 GB) für einen virtuellen Azure-Computer entsprechen. <br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate den genutzten Arbeitsspeicher beim Vergleich. Wenn ein Komfortfaktor festgelegt ist, wird der genutzte Arbeitsspeicher mit dem Komfortfaktor multipliziert.<br/><br/> Wenn kein Verlauf vorhanden ist, wird der zugeordnete Arbeitsspeicher ohne Anwendung des Komfortfaktors verwendet.<br/><br/> | Nicht bereit, wenn die Speichergröße größer als 448 GB ist.
+**Memory** | Die Größe des Computerarbeitsspeichers darf maximal dem zulässigen Arbeitsspeicher (3.892GB bei Azure M-Serie Standard_M128m&nbsp;<sup>2</sup>) für einen virtuellen Azure-Computer entsprechen. [Weitere Informationen](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory.md#m-series)<br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate den genutzten Arbeitsspeicher beim Vergleich. Wenn ein Komfortfaktor festgelegt ist, wird der genutzte Arbeitsspeicher mit dem Komfortfaktor multipliziert.<br/><br/> Wenn kein Verlauf vorhanden ist, wird der zugeordnete Arbeitsspeicher ohne Anwendung des Komfortfaktors verwendet.<br/><br/> | Nicht bereit, wenn die Speichergröße größer als 448 GB ist.
 **Speicherdatenträger** | Die zugeteilte Größe eines Datenträgers darf höchstens 4 TB (4096 GB) betragen.<br/><br/> An den Computer dürfen einschließlich des Betriebssystem-Datenträgers höchstens 65 Datenträger angefügt sein. | Nicht bereit, wenn ein Datenträger eine Größe von über 4 TB aufweist oder mehr als 65 Datenträger an den Computer angefügt sind.
 **Netzwerk** | An einen Computer dürfen höchstens 32 NICs angefügt sein. | Nicht bereit, wenn der Computer über mehr als 32 NICs verfügt.
 
@@ -58,7 +58,8 @@ Windows Server 2016 und alle SPs | Azure bietet vollständige Unterstützung. | 
 Windows Server 2012 R2 und alle SPs | Azure bietet vollständige Unterstützung. | Bereit für Azure
 Windows Server 2012 und alle SPs | Azure bietet vollständige Unterstützung. | Bereit für Azure
 Windows Server 2008 R2 mit allen SPs | Azure bietet vollständige Unterstützung.| Bereit für Azure
-Windows Server 2003-2008 | Der Unterstützungszeitraum für diese Betriebssysteme ist abgelaufen. Für die Unterstützung in Azure wird eine benutzerdefinierte Supportvereinbarung ([Custom Support Agreement, CSA](https://aka.ms/WSosstatement)) benötigt. | Bedingt bereit für Azure, erwägen Sie ein Upgrade des Betriebssystems vor der Migration zu Azure.
+Windows Server 2008 (32-Bit und 64-Bit) | Azure bietet vollständige Unterstützung. | Bereit für Azure
+Windows Server 2003, 2003 R2 | Der Unterstützungszeitraum für diese Betriebssysteme ist abgelaufen. Für die Unterstützung in Azure wird eine benutzerdefinierte Supportvereinbarung ([Custom Support Agreement, CSA](https://aka.ms/WSosstatement)) benötigt. | Bedingt bereit für Azure, erwägen Sie ein Upgrade des Betriebssystems vor der Migration zu Azure.
 Windows 2000, 98, 95, NT, 3.1, MS-DOS | Der Unterstützungszeitraum für diese Betriebssysteme ist abgelaufen. Der Computer kann in Azure gestartet werden, es wird jedoch keine Unterstützung des Betriebssystems bereitgestellt. | Bedingt bereit für Azure, es empfiehlt sich ein Upgrade des Betriebssystems vor der Migration zu Azure.
 Windows Client 7, 8 und 10 | Azure bietet nur mit Visual Studio-Abonnement Unterstützung. | Bedingt bereit für Azure
 Windows Vista, XP Professional | Der Unterstützungszeitraum für diese Betriebssysteme ist abgelaufen. Der Computer kann in Azure gestartet werden, es wird jedoch keine Unterstützung des Betriebssystems bereitgestellt. | Bedingt bereit für Azure, es empfiehlt sich ein Upgrade des Betriebssystems vor der Migration zu Azure.
@@ -106,10 +107,9 @@ Bei der leistungsbasierten Größenanpassung prüft Azure Migrate zunächst die 
 Wenn als Größenkriterium die Größenanpassung vom Typ *Wie lokal* angegeben ist, berücksichtigt Azure Migrate den Leistungsverlauf der virtuellen Computer und Datenträger nicht und ordnet einer VM SKU basierend auf der lokal zugeordneten Größe zu. Analog dazu berücksichtigt Azure Migrate bei der Größenanpassung des Datenträgers den Storage-Typ, der in den Bewertungseigenschaften angegeben wurde (Standard oder Premium), und empfiehlt einen entsprechenden Datenträgertyp. Der Standard-Storage-Typ ist Premium.
 
 ### <a name="confidence-rating"></a>Zuverlässigkeitsstufe
+Jeder leistungsbasierten Bewertung in Azure Migrate wird eine Zuverlässigkeitsstufe zugeordnet. Die Skala reicht von einem Stern (niedrigster Wert) bis zu fünf Sternen (höchster Wert). Die Zuverlässigkeitsstufe wird einer Bewertung auf der Grundlage der Verfügbarkeit von Datenpunkten zugeordnet, die zum Berechnen der Bewertung erforderlich sind. Anhand der Zuverlässigkeitsstufe können Sie die Zuverlässigkeit der von Azure Migrate bereitgestellten Größenempfehlungen besser einschätzen. Die Zuverlässigkeitsstufe gilt nicht für lokale Bewertungen.
 
-Jeder Bewertung in Azure Migrate wird eine Zuverlässigkeitsstufe zugeordnet. Die Skala reicht von einem Stern (niedrigster Wert) bis zu fünf Sternen (höchster Wert). Die Zuverlässigkeitsstufe wird einer Bewertung auf der Grundlage der Verfügbarkeit von Datenpunkten zugeordnet, die zum Berechnen der Bewertung erforderlich sind. Anhand der Zuverlässigkeitsstufe können Sie die Zuverlässigkeit der von Azure Migrate bereitgestellten Größenempfehlungen besser einschätzen.
-
-Die Zuverlässigkeitsstufe einer Bewertung ist besonders bei Bewertungen hilfreich, bei denen die leistungsbasierte Größenanpassung als Größenkriterium verwendet wird. Bei Verwendung der leistungsbasierten Größenanpassung benötigt Azure Migrate Nutzungsdaten für CPU und Arbeitsspeicher des virtuellen Computers. Außerdem werden für jeden an den virtuellen Computer angefügten Datenträger Informationen zu IOPS und Durchsatzdaten benötigt. Analog dazu benötigt Azure Migrate für jeden Netzwerkadapter, der an einen virtuellen Computer angefügt ist, Informationen zu ein- und ausgehenden Netzwerkdaten, um die leistungsbasierte Größenanpassung durchführen zu können. Steht eine der oben aufgeführten Nutzungsangaben in vCenter Server nicht zur Verfügung, ist die Größenempfehlung von Azure Migrate unter Umständen nicht zuverlässig. Die Zuverlässigkeitsstufe für die Bewertung ist abhängig davon, wie viele Datenpunkte verfügbar sind (in Prozent), wie es nachfolgend angegeben ist:
+Bei Verwendung der leistungsbasierten Größenanpassung benötigt Azure Migrate Nutzungsdaten für CPU und Arbeitsspeicher des virtuellen Computers. Außerdem werden für jeden an den virtuellen Computer angefügten Datenträger Informationen zu IOPS und Durchsatzdaten benötigt. Analog dazu benötigt Azure Migrate für jeden Netzwerkadapter, der an einen virtuellen Computer angefügt ist, Informationen zu ein- und ausgehenden Netzwerkdaten, um die leistungsbasierte Größenanpassung durchführen zu können. Steht eine der oben aufgeführten Nutzungsangaben in vCenter Server nicht zur Verfügung, ist die Größenempfehlung von Azure Migrate unter Umständen nicht zuverlässig. Die Zuverlässigkeitsstufe für die Bewertung ist abhängig davon, wie viele Datenpunkte verfügbar sind (in Prozent), wie es nachfolgend angegeben ist:
 
    **Verfügbarkeit von Datenpunkten** | **Zuverlässigkeitsstufe**
    --- | ---

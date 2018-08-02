@@ -3,7 +3,7 @@ title: Übersicht über DNS-Zonen und -Einträge – Azure DNS | Microsoft-Dokum
 description: Übersicht über die Unterstützung für das Hosten von DNS-Zonen und -Einträgen in Microsoft Azure DNS.
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
 editor: ''
 ms.assetid: be4580d7-aa1b-4b6b-89a3-0991c0cda897
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
-ms.author: kumud
-ms.openlocfilehash: 0a0808d3963cc037aaf113c67fd01679ee8c1d40
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.author: victorh
+ms.openlocfilehash: 7f69d77ac7a6c2a17ef2568f0c7edaef2e1ee3f5
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2017
-ms.locfileid: "26761912"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39174291"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Übersicht über DNS-Zonen und -Einträge
 
@@ -46,7 +46,7 @@ Azure DNS unterstützt derzeit nicht den Kauf von Domänennamen. Wenn Sie einen 
 
 ### <a name="time-to-live"></a>Gültigkeitsdauer
 
-Die Gültigkeitsdauer (TTL oder Time-to-Live) gibt an, wie lange jeder Eintrag von den Clients zwischengespeichert wird, bevor er erneut abgefragt wird. Im obigen Beispiel ist der TTL-Wert 3600 Sekunden oder 1 Stunde.
+Die Gültigkeitsdauer (Time to Live, TTL) gibt an, wie lange jeder Eintrag von den Clients zwischengespeichert wird, bevor er erneut abgefragt wird. Im obigen Beispiel ist der TTL-Wert 3600 Sekunden oder 1 Stunde.
 
 In Azure DNS wird der TTL-Wert für den Ressourceneintragssatz und nicht für jeden Eintrag angegeben. Dadurch wird der gleiche Wert für alle Einträge in diesem Ressourceneintragssatz verwendet.  Sie können einen beliebigen TTL-Wert zwischen 1 und 2.147.483.647 Sekunden angeben.
 
@@ -70,21 +70,21 @@ Mit CAA-Einträgen können Domänenbesitzer angeben, welche Zertifizierungsstell
 
 CNAME-Ressourceneintragssätze können nicht gleichzeitig neben anderen Ressourceneintragssätzen mit dem gleichen Namen vorhanden sein. Sie können einen CNAME-Ressourceneintragssatz z.B. nicht mit dem relativen Namen „www“ und gleichzeitig einen A-Eintrag mit dem relativen Namen „www“ erstellen.
 
-Da die Zonenspitze (name = „@“) immer die NS- und SOA-Ressourceneintragssätze enthält, die beim Erstellen der Zone erstellt wurden, können Sie keinen CNAME-Ressourceneintragssatz an der Zonenspitze erstellen.
+Da der Zonen-Apex (name = „\@“) immer die NS- und SOA-Ressourceneintragssätze enthält, die beim Erstellen der Zone erstellt wurden, können Sie keinen CNAME-Ressourceneintragssatz am Zonen-Apex erstellen.
 
 Diese Einschränkungen ergeben sich aus den DNS-Standards und sind keine Einschränkungen von Azure DNS.
 
 ### <a name="ns-records"></a>NS-Einträge
 
-Der NS-Datensatz am Zonen-Apex (Name „@“) wird automatisch bei jeder DNS-Zone erstellt und automatisch gelöscht, wenn die Zone gelöscht wird (er kann nicht separat gelöscht werden).
+Der NS-Datensatz am Zonen-Apex (Name „\@“) wird automatisch bei jeder DNS-Zone erstellt und automatisch gelöscht, wenn die Zone gelöscht wird (er kann nicht separat gelöscht werden).
 
 Dieser Datensatz enthält die Namen der Azure-DNS-Namensserver, die der Zone zugewiesen sind. Sie können diesem NS-Datensatz weitere Namensserver hinzufügen, um das gemeinsame Hosten von Domänen mit mehr als einem DNS-Anbieter zu unterstützen. Sie können auch die Gültigkeitsdauer und die Metadaten für diesen Datensatz ändern. Es ist aber nicht möglich, die vorab mit Daten aufgefüllten Azure-DNS-Namensserver zu entfernen oder zu ändern. 
 
-Beachten Sie, dass dies nur für den NS-Datensatz am Zonen-Apex gilt. Andere NS-Datensätze in Ihrer Zone (zur Delegierung von untergeordneten Zonen) können ohne Einschränkungen erstellt, geändert und gelöscht werden.
+Dies gilt nur für den NS-Eintragssatz des Zonen-Apex. Andere NS-Eintragssätze in Ihrer Zone (zur Delegierung von untergeordneten Zonen) können ohne Einschränkungen erstellt, geändert und gelöscht werden.
 
 ### <a name="soa-records"></a>SOA-Einträge
 
-Ein Satz von SOA-Einträgen wird automatisch an der Spitze jeder Zone erstellt (name = „@“), und wird automatisch gelöscht, wenn die Zone gelöscht wird.  SOA-Einträge können nicht separat erstellt oder gelöscht werden.
+Ein Satz von SOA-Einträgen wird automatisch am Apex jeder Zone erstellt (name = „\@“), und wird automatisch gelöscht, wenn die Zone gelöscht wird.  SOA-Einträge können nicht separat erstellt oder gelöscht werden.
 
 Sie können alle Eigenschaften des SOA-Eintrags ändern, bis auf die Eigenschaft „host“, die vorkonfiguriert ist, um auf den primären Namen des Namenserver zu verweisen, der von Azure DNS bereitgestellt wird.
 
@@ -96,7 +96,7 @@ Sie können alle Eigenschaften des SOA-Eintrags ändern, bis auf die Eigenschaft
 
 [SRV-Einträge](https://en.wikipedia.org/wiki/SRV_record) werden von verschiedenen Diensten verwendet, um Serverstandorte anzugeben. Wenn Sie einen SRV-Eintrag in Azure DNS angeben:
 
-* Müssen *service* und *protocol* als Teil des Namens des Eintragssatzes angegeben werden, und mit Unterstrichen vorangestellt werden.  z.B. '\_sip.\_tcp.name'.  Bei einem Eintrag an der Spitze der Zone ist es nicht nötig, „@“ im Namen des Eintrags anzugeben. Verwenden Sie einfach den Dienst und das Protokoll, z.B. „\_sip.\_tcp“.
+* Müssen *service* und *protocol* als Teil des Namens des Eintragssatzes angegeben werden, und mit Unterstrichen vorangestellt werden.  z.B. '\_sip.\_tcp.name'.  Bei einem Eintrag am Zonen-Apex ist es nicht nötig, „\@“ im Namen des Eintrags anzugeben. Verwenden Sie einfach den Dienst und das Protokoll, z.B. „\_sip.\_tcp“.
 * Werden *priority*, *weight*, *port* und *target* als Parameter jedes Eintrags im Eintragssatz angegeben.
 
 ### <a name="txt-records"></a>TXT-Einträge

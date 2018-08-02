@@ -1,45 +1,111 @@
 ---
-title: Erste Schritte mit Azure MFA in der Cloud | Microsoft Docs
-description: Auf dieser Seite zu Microsoft Azure Multi-Factor Authentication werden die ersten Schritte mit Azure MFA in der Cloud beschrieben.
+title: Erste Schritte mit Azure MFA in der Cloud
+description: Erste Schritte mit Microsoft Azure Multi-Factor Authentication mit bedingtem Zugriff
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 06/24/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 0a822d55e8d7bd0d503eb7d77f96dc9e60e1a4ba
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: michmcla
+ms.openlocfilehash: 0afe5ba21fe17d8aec4d72c30086c6840f9e3c8e
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33882867"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161569"
 ---
-# <a name="getting-started-with-azure-multi-factor-authentication-in-the-cloud"></a>Erste Schritte mit Azure Multi-Factor Authentication in der Cloud
-In diesem Artikel wird Schritt für Schritt beschrieben, wie Sie die ersten Schritte mit Azure Multi-Factor Authentication in der Cloud ausführen.
+# <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Bereitstellen von cloudbasierter Azure Multi-Factor Authentication
 
-> [!NOTE]
-> Die folgende Dokumentation enthält Informationen zum Aktivieren von Benutzern mithilfe des **Azure-Portals**. Weitere Informationen zum Einrichten von Azure Multi-Factor Authentication für Office 365-Benutzer finden Sie unter [Einrichten der mehrstufigen Authentifizierung für Office 365-Benutzer](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6?ui=en-US&rs=en-US&ad=US).
+Die ersten Schritte mit Azure Multi-Factor Authentication (Azure MFA) sind sehr einfach.
 
-![MFA in der Cloud](./media/howto-mfa-getstarted/mfa_in_cloud.png)
+Stellen zu zuerst sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
-## <a name="prerequisite"></a>Voraussetzung
-[Registrieren Sie sich für ein Azure-Abonnement:](https://azure.microsoft.com/pricing/free-trial/) Falls Sie noch nicht über ein Azure-Abonnement verfügen, müssen Sie sich für ein Abonnement registrieren. Wenn Sie die Verwendung von Azure MFA testen möchten, können Sie ein Testabonnement verwenden.
+* Ein globales Administratorkonto in Ihrem Azure AD-Mandanten. Wenn Sie Hilfe bei diesem Schritt benötigen, lesen Sie unseren Artikel [Erste Schritte mit Azure AD](../get-started-azure-ad.md).
+* Den Benutzern sind die richtigen Lizenzen zugewiesen. Weitere Informationen finden Sie unter [Beziehen von Azure Multi-Factor Authentication](concept-mfa-licensing.md).
 
-## <a name="enable-azure-multi-factor-authentication"></a>Aktivieren von Azure Multi-Factor Authentication
-Solange Ihre Benutzer über Lizenzen verfügen, die Azure Multi-Factor Authentication enthalten, müssen Sie nichts unternehmen, um Azure MFA zu aktivieren. Sie können die zweistufige Überprüfung auf Benutzerbasis obligatorisch machen. Azure MFA kann mit den folgenden Lizenzen aktiviert werden:
-- Azure Multi-Factor Authentication
-- Azure Active Directory Premium
-- Enterprise Mobility + Security
+## <a name="choose-how-to-enable"></a>Auswählen der Art und Weise der Aktivierung
 
-Falls Sie nicht über eine dieser drei Lizenzen verfügen oder nicht genügend Lizenzen für alle Benutzer haben, ist dies auch kein Problem. Sie müssen lediglich einen zusätzlichen Schritt ausführen und in Ihrem Verzeichnis [einen Anbieter für die Multi-Factor Authentication erstellen](concept-mfa-authprovider.md).
+**Aktiviert mit der Richtlinie für bedingten Zugriff** – Diese Methode wird in diesem Artikel erläutert. Dies ist die flexibelste Möglichkeit, die zweistufige Überprüfung für Ihre Benutzer zu aktivieren. Die Aktivierung mit der Richtlinie für bedingten Zugriff funktioniert jedoch nur bei Azure MFA in der Cloud und ist eine Premium-Funktion von Azure AD.
 
-## <a name="turn-on-two-step-verification-for-users"></a>Aktivieren der zweistufigen Überprüfung für Benutzer
+Aktiviert durch Azure AD Identity Protection – Diese Methode nutzt die Risikorichtlinie von Azure AD Identity Protection, um die zweistufige Überprüfung ausschließlich auf Basis des Anmelderisikos für alle Cloudanwendungen zu erzwingen. Diese Methode erfordert die Azure Active Directory P2-Lizenzierung. Weitere Informationen zu dieser Methode finden Sie unter [Azure Active Directory Identity Protection](../active-directory-identityprotection.md#risky-sign-ins).
 
-Verwenden Sie eine der unter [Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer oder eine Gruppe](howto-mfa-userstates.md) aufgeführten Verfahrensweisen, um mit der Verwendung von Azure MFA zu beginnen. Sie können die zweistufige Überprüfung auch für alle Anmeldungen erzwingen oder Richtlinien für bedingten Zugriff erstellen, um die zweistufige Überprüfung nur dann vorauszusetzen, wenn Sie es für wichtig erachten.
+Aktiviert durch Ändern des Benutzerstatus – Dies ist die herkömmliche Methode, die zweistufige Überprüfung zu erfordern. Dies funktioniert sowohl für Azure MFA in der Cloud als auch für Azure MFA Server. Diese Methode erfordert, dass Benutzer **jedes Mal**, wenn sie sich anmelden, die zweistufige Überprüfung durchführen, und überschreibt Richtlinien für bedingten Zugriff. Weitere Informationen zu dieser Methode finden Sie in [Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer](howto-mfa-userstates.md).
+
+> [!Note]
+> Weitere Informationen zu Lizenzen und Preisen finden Sie auf den Preisgestaltungsseiten von [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/
+) und [mehrstufiger Authentifizierung](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
+
+## <a name="choose-authentication-methods"></a>Auswählen der Authentifizierungsmethoden
+
+Aktivieren Sie basierend auf den Anforderungen Ihrer Organisation mindestens eine Authentifizierungsmethode für Ihre Benutzer. Wir denken, dass die Microsoft Authenticator-App die beste Benutzererfahrung bietet, wenn sie für Benutzer aktiviert ist. Wenn Sie wissen möchten, welche Methoden verfügbar sind und wie diese festgelegt werden, lesen Sie den Artikel [Was sind Authentifizierungsmethoden]](concept-authentication-methods.md).
+
+## <a name="get-users-to-enroll"></a>Benutzer registrieren
+
+Nachdem Sie die Richtlinie für bedingten Zugriff aktiviert haben, müssen sich Benutzer registrieren, wenn die beim nächsten Mal eine App verwenden, die von dieser Richtlinie geschützt ist. Wenn Sie eine Richtlinie aktivieren, die für alle Benutzer in allen Cloud-Apps MFA erfordert, könnte diese Aktion für Ihre Benutzer und Ihr Helpdesk zu Schwierigkeiten führen. Es wird empfohlen, die Benutzer aufzufordern, Authentifizierungsmethoden vorab über das Registrierungsportal unter [https://aka.ms/mfasetup](https://aka.ms/mfasetup) zu registrieren. Viele Organisationen stellen fest, dass die Erstellung von Postern, Tischkarten und E-Mail-Nachrichten die Akzeptanz fördert.
+
+## <a name="enable-multi-factor-authentication-with-conditional-access"></a>Aktivieren von Multi-Factor Authentication mit bedingtem Zugriff
+
+Melden Sie sich mit dem globalen Administratorkonto am [Azure-Portal](https://portal.azure.com) an.
+
+### <a name="choose-verification-options"></a>Auswählen der Überprüfungsoptionen
+
+Bevor Sie die Azure Multi-Factor Authentication aktivieren, muss Ihre Organisation festlegen, welche Überprüfungsoptionen zugelassen werden. Für den Zweck dieser Übung aktivieren Sie „Auf Telefon anrufen“ und „Textnachricht an Telefon“, da es sich um generische Optionen handelt, die die meisten verwenden können. Weitere Informationen zu Authentifizierungsmethoden und deren Verwendung finden Sie im Artikel [Was sind Authentifizierungsmethoden?](concept-authentication-methods.md)
+
+1. Navigieren Sie zu **Azure Active Directory**, **Benutzer**, **Multi-Factor Authentication**
+   ![Zugreifen auf das Multi-Factor Authentication-Portal über das Blatt „Azure AD-Benutzer“ im Azure-Portal](media/howto-mfa-getstarted/users-mfa.png) 
+2. Navigieren Sie in der neuen Registerkarte, die geöffnet wird, zu **Diensteinstellungen**
+3. Aktivieren Sie unter **Überprüfungsoptionen** die folgenden Kontrollkästchen für Methoden, die den Benutzern zur Verfügung stehen sollen:
+   * Auf Telefon anrufen
+   * Textnachricht an Telefon
+
+   ![Konfigurieren von Überprüfungsmethoden, in der Registerkarte „Diensteinstellung“ von Multi-Factor Authentication](media/howto-mfa-getstarted/mfa-servicesettings-verificationoptions.png)
+
+4. Klicken Sie auf **Speichern**.
+5. Schließen Sie die Registerkarte **Diensteinstellungen**.
+
+### <a name="create-conditional-access-policy"></a>Erstellen der Richtlinie für den bedingten Zugriff
+
+1. Melden Sie sich mit dem globalen Administratorkonto am [Azure-Portal](https://portal.azure.com) an.
+1. Navigieren Sie zu **Azure Active Directory**  > **Bedingter Zugriff**.
+1. Wählen Sie **Neue Richtlinie**.
+1. Geben Sie einen aussagekräftigen Namen für die Richtlinie an.
+1. Unter **Benutzer und Gruppen**.
+   * Wählen Sie auf der Registerkarte **Einschließen** das Optionsfeld **Alle Benutzer**.
+   * EMPFOHLEN: Aktivieren Sie auf der Registerkarte **Ausschließen** das Kontrollkästchen für **Benutzer und Gruppen** und wählen Sie eine Gruppe, die für Ausschlüsse verwendet werden soll, wenn Benutzer keinen Zugriff auf ihre Authentifizierungsmethoden haben.
+   * Klicken Sie auf **Fertig**.
+1. Wählen Sie unter **Cloud-Apps** das Optionsfeld **Alle Cloud-Apps** aus.
+   * OPTIONAL:  Wählen Sie auf der Registerkarte **Ausschließen** Cloud-Apps, für die Ihre Organisation keine MFA benötigt.
+   * Klicken Sie auf **Fertig**.
+1. Im Abschnitt **Bedingungen**.
+   * OPTIONAL: Wenn Sie die Azure Identity Protection aktiviert haben, können Sie entscheiden, ob das Anmelderisiko als Teil der Richtlinie ausgewertet werden soll.
+   * Optional: Wenn Sie vertrauenswürdige Speicherorte oder benannte Orte konfiguriert haben, können Sie angeben, ob diese in die Richtlinie ein- oder von dieser ausgeschlossen werden.
+1. Stellen Sie unter **Gewähren** sicher, dass das Optionsfeld **Zugriff gewähren** ausgewählt ist.
+    * Aktivieren Sie das Kontrollkästchen **Multi-Factor Authentication erforderlich**.
+    * Klicken Sie auf **Auswählen**.
+1. Überspringen Sie den Abschnitt **Sitzung**.
+1. Legen Sie den Umschalter **Richtlinie aktivieren** auf **Ein** fest.
+1. Klicken Sie auf **Erstellen**
+
+![Erstellen Sie eine Richtlinie für bedingten Zugriff, um MFA für Azure-Portal-Benutzer in der Pilotgruppe zu aktivieren.](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
+
+### <a name="test-azure-multi-factor-authentication"></a>Testen der Azure Multi-Factor Authentication
+
+Um zu prüfen, ob Ihre Richtlinie für bedingten Zugriff funktioniert, testen Sie das Anmelden an einer Ressource, für die MFA nicht erforderlich ist, und dann am Azure-Portal mit MFA.
+
+1. Öffnen Sie ein neues Browserfenster im InPrivate- oder Inkognitomodus, und navigieren Sie zu [https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com).
+   * Melden Sie sich mit dem Testbenutzer an, den Sie im Abschnitt „Voraussetzungen“ dieses Artikels erstellt haben. Sie sollten nicht zur Durchführung des MFA-Vorgangs aufgefordert werden.
+   * Schließen Sie das Browserfenster.
+2. Öffnen Sie ein neues Browserfenster im InPrivate- oder Inkognitomodus, und navigieren Sie zu [https://portal.azure.com](https://portal.azure.com).
+   * Melden Sie sich mit dem Testbenutzer an, den Sie im Abschnitt „Voraussetzungen“ dieses Artikels erstellt haben. Sie sollten jetzt aufgefordert werden, die Registrierung für Azure Multi-Factor Authentication durchzuführen und diese Art der Authentifizierung zu nutzen.
+   * Schließen Sie das Browserfenster.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie die Azure Multi-Factor Authentication in der Cloud eingerichtet haben, können Sie die Bereitstellung konfigurieren und einrichten. Weitere Informationen finden Sie unter [Konfigurieren von Azure Multi-Factor Authentication](howto-mfa-mfasettings.md).
 
+Herzlichen Glückwunsch, Sie haben Azure Multi-Factor Authentication in der Cloud eingerichtet.
+
+Wie Sie zusätzliche Einstellungen wie vertrauenswürdige IP-Adressen, benutzerdefinierte Sprachnachrichten und Betrugswarnungen konfigurieren, erfahren Sie im Artikel [Konfigurieren von Azure Multi-Factor Authentication-Einstellungen](howto-mfa-mfasettings.md).
+
+Informationen zum Verwalten von Benutzereinstellungen für die Microsoft Azure Multi-Factor Authentication finden Sie im Artikel [Verwalten von Benutzereinstellungen mit Azure Multi-Factor Authentication (MFA) in der Cloud](howto-mfa-userdevicesettings.md).

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: glenga
-ms.openlocfilehash: bc280e9b4ade8a4fb8107ec2dcc1c33f538472e1
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 318a39e244f0fca3a1b2d8531dd9197a15400e02
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38602974"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205356"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Entwickeln von Azure Functions mithilfe von Visual Studio  
 
@@ -132,7 +132,7 @@ In vorab kompilierten Funktionen werden die von der Funktion verwendeten Bindung
         }
     }
     ````
-    Ein bindungsspezifisches Attribut wird auf jeden Bindungsparameter angewendet, der der Einstiegspunktmethode bereitgestellt wird. Das Attribut verwendet die Bindungsinformationen als Parameter. Im vorherigen Beispiel wurde auf den ersten Parameter ein **QueueTrigger**-Attribut angewendet, das die durch eine Warteschlange ausgelöste Funktion angab. Die Namen der Warteschlange und der Einstellung für die Verbindungszeichenfolge werden als Parameter an das Attribut **QueueTrigger** übergeben.
+    Ein bindungsspezifisches Attribut wird auf jeden Bindungsparameter angewendet, der der Einstiegspunktmethode bereitgestellt wird. Das Attribut verwendet die Bindungsinformationen als Parameter. Im vorherigen Beispiel wurde auf den ersten Parameter ein **QueueTrigger**-Attribut angewendet, das die durch eine Warteschlange ausgelöste Funktion angab. Die Namen der Warteschlange und der Einstellung für die Verbindungszeichenfolge werden als Parameter an das Attribut **QueueTrigger** übergeben. Weitere Informationen finden Sie unter [Azure Queue Storage-Bindungen für Azure Functions](functions-bindings-storage-queue.md#trigger---c-example).
     
 Sie können das obige Verfahren nutzen, um Ihrem Funktions-App-Projekt weitere Funktionen hinzuzufügen. Jede Funktion im Projekt kann über einen anderen Trigger verfügen, aber einer Funktion muss genau ein Trigger zugeordnet sein. Weitere Informationen finden Sie unter [Konzepte für Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md).
 

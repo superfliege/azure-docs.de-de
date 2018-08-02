@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: deguhath
-ms.openlocfilehash: 89fb805ac64be358ed4f52865d2e89ab16fe2b17
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: dae8549cb951a463688869454e2f4c71103c1363
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005797"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226392"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Der Team Data Science-Prozess in Aktion: Verwenden von SQL Server
 In diesem Tutorial werden Sie durch die Erstellung und Bereitstellung eines Machine Learning-Modells geleitet. Hierfür werden SQL Server und das öffentlich zugängliche Dataset [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) verwendet. Die Prozedur entspricht dem standardmäßigen Data Science-Workflow: Erfassen und Durchsuchen der Daten, Entwickeln von Features zur Vereinfachung des Lernens und anschließendes Erstellen und Bereitstellen eines Modells.
@@ -623,7 +623,7 @@ In der folgenden Abbildung finden Sie ein Beispiel für ein Bewertungsexperiment
 Zusammenfassend haben Sie in diesem Tutorial eine Azure Data Science-Umgebung erstellt und mit einem großen öffentlichen DataSet gearbeitet und dabei alle Schritte von der Datenerfassung bis zum Modelltraining und zur Bereitstellung eines Azure Machine Learning-Webdiensts durchlaufen.
 
 ### <a name="license-information"></a>Lizenzinformationen
-Diese exemplarische Vorgehensweise und die zugehörigen Skripts und IPython Notebook(s) werden von Microsoft unter MIT-Lizenz bereitgestellt. Weitere Informationen finden Sie in der Datei LICENSE.txt im Verzeichnis mit dem Beispielcode auf GitHub.
+Diese exemplarische Vorgehensweise und die zugehörigen Skripts und IPython Notebook(s) werden von Microsoft unter MIT-Lizenz bereitgestellt. Weitere Informationen finden Sie in der Datei „LICENSE.txt“ im Verzeichnis mit dem Beispielcode auf GitHub.
 
 ### <a name="references"></a>Referenzen
 •    [Andrés Monroy NYC Taxi Trips – Downloadseite](http://www.andresmh.com/nyctaxitrips/)  

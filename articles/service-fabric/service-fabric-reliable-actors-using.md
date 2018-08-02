@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 41548c3395fa0c8f56e62cfcfb7338a2d53f040f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 6aff9e9599d31942f994f3cb4e5e9219f33dc7e1
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212890"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205519"
 ---
 # <a name="implementing-service-level-features-in-your-actor-service"></a>Implementieren von Features auf Dienstebene in Ihren Actordienst
 Wie in [Dienstebenen](service-fabric-reliable-actors-platform.md#service-layering) beschrieben, ist der Actordienst selbst ein zuverlässiger Dienst.  Sie können einen eigenen Dienst schreiben, der von `ActorService` abgeleitet ist und Funktionen auf Dienstebene auf die gleiche Weise implementiert wie bei der Vererbung von StatefulService. Beispiel:
@@ -149,24 +149,53 @@ public class Program
 ## <a name="implementing-actor-backup-and-restore"></a>Implementieren der Sicherung und Wiederherstellung von Akteuren
 Der benutzerdefinierte Actordienst kann eine Methode zum Sichern von Actordaten bereitstellen. Diese nutzt die Vorteile des Remoting-Listeners, der bereits im `ActorService` enthalten ist.  Ein Beispiel finden Sie unter [Implementieren von Sicherung und Wiederherstellung von Actors](service-fabric-reliable-actors-backup-and-restore.md).
 
+## <a name="actor-using-remoting-v2interfacecompatible-stack"></a>Actor mit dem Remoting V2(InterfaceCompatible)-Stapel
+Der Remoting V2(InterfaceCompatible)-Stapel (auch als „V2_1“ bezeichnet) verfügt über alle Features des Remoting V2-Stapels und ist darüber hinaus ein Stapel, dessen Schnittstelle mit dem Remoting V1-Stapel kompatibel ist, der allerdings nicht mit V2 und V1 abwärtskompatibel ist. Um ohne Beeinträchtigung der Dienstverfügbarkeit ein Upgrade von V1 auf V2_1 durchzuführen, führen Sie die Schritte im folgenden [Artikel](#actor-service-upgrade-to-remoting-v2interfacecompatible-stack-without-impacting-service-availability) durch.
+
+Folgende Änderungen sind erforderlich, um den Remoting V2_1-Stapel verwenden zu können.
+ 1. Fügen Sie das folgende Assembly-Attribut zu Actor-Schnittstellen hinzu.
+   ```csharp
+   [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
+   ```
+
+ 2. Erstellen und aktualisieren Sie ActorService- und Akteurclient-Projekte, sodass in ihnen der V2-Stapel verwendet wird.
+
+#### <a name="actor-service-upgrade-to-remoting-v2interfacecompatible-stack-without-impacting-service-availability"></a>Upgrade für den Actordienst auf den Remoting V2(InterfaceCompatible)-Stapel ohne Beeinträchtigung der Dienstverfügbarkeit
+Diese Änderung ist ein Upgrade in 2 Schritten. Führen Sie die Schritte in der Reihenfolge aus, in der sie aufgeführt sind.
+
+1.  Fügen Sie das folgende Assembly-Attribut zu Actor-Schnittstellen hinzu. Mit diesem Attribut werden zwei Listener für ActorService gestartet, der Listener V1 (vorhanden) und V2_1. Aktualisieren Sie ActorService mit dieser Änderung.
+
+  ```csharp
+  [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
+  ```
+
+2. Aktualisieren Sie ActorClients (Akteurclients), nachdem Sie das vorgenannte Upgrade abgeschlossen haben.
+Mit diesem Schritt wird sichergestellt, dass der Actorproxy den Remoting V2_1-Stapel verwendet.
+
+3. Dieser Schritt ist optional. Ändern Sie das oben aufgeführte Attribut, um den V1-Listener zu entfernen.
+
+    ```csharp
+    [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
+    ```
+
 ## <a name="actor-using-remoting-v2-stack"></a>Akteur (Actor), der den Remoting V2-Stapel verwendet
 Ab dem 2.8-NuGet-Paket können Benutzer den Remoting V2-Stapel verwenden, der leistungsfähiger ist und Funktionalität wie etwa benutzerdefinierte Serialisierung bietet. Remoting V2 ist nicht abwärtskompatibel mit vorhandenen dem Remotingstapel (dieser wird jetzt als V1-Remotingstapel bezeichnet).
 
 Folgende Änderungen sind erforderlich, um den Remoting V2-Stapel verwenden zu können.
  1. Fügen Sie das folgende Assembly-Attribut zu Actor-Schnittstellen hinzu.
    ```csharp
-   [assembly:FabricTransportActorRemotingProvider(RemotingListener = RemotingListener.V2Listener,RemotingClient = RemotingClient.V2Client)]
+   [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
    ```
 
  2. Erstellen und aktualisieren Sie ActorService- und Akteurclient-Projekte, sodass in ihnen der V2-Stapel verwendet wird.
 
-### <a name="actor-service-upgrade-to-remoting-v2-stack-without-impacting-service-availability"></a>ActorService-Upgrade auf den Remoting V2-Stapel, ohne dass die Dienstverfügbarkeit beeinträchtigt wird
+#### <a name="actor-service-upgrade-to-remoting-v2-stack-without-impacting-service-availability"></a>ActorService-Upgrade auf den Remoting V2-Stapel, ohne dass die Dienstverfügbarkeit beeinträchtigt wird
 Diese Änderung ist ein Upgrade in 2 Schritten. Führen Sie die Schritte in der Reihenfolge aus, in der sie aufgeführt sind.
 
 1.  Fügen Sie das folgende Assembly-Attribut zu Actor-Schnittstellen hinzu. Mit diesem Attribut werden zwei Listener für ActorService gestartet, V1- (vorhandener) und V2-Listener. Aktualisieren Sie ActorService mit dieser Änderung.
 
   ```csharp
-  [assembly:FabricTransportActorRemotingProvider(RemotingListener = RemotingListener.CompatListener,RemotingClient = RemotingClient.V2Client)]
+  [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
   ```
 
 2. Aktualisieren Sie ActorClients (Akteurclients), nachdem Sie das vorgenannte Upgrade abgeschlossen haben.
@@ -175,7 +204,7 @@ Mit diesem Schritt wird sichergestellt, dass der Akteur-Proxy den Remoting V2-St
 3. Dieser Schritt ist optional. Ändern Sie das oben aufgeführte Attribut, um den V1-Listener zu entfernen.
 
     ```csharp
-    [assembly:FabricTransportActorRemotingProvider(RemotingListener = RemotingListener.V2Listener,RemotingClient = RemotingClient.V2Client)]
+    [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte

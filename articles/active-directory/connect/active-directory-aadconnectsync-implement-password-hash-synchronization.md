@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 07/20/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: abe439cc91a003137c116f57c0cc8bbb61430114
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5d62eb4d5f43625b336ade68532cf734ef0cde6a
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593451"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214692"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 In diesem Artikel finden Sie alle Informationen, die Sie benötigen, um Benutzerkennwörter aus einer lokalen Active Directory-Instanz mit einer cloudbasierten Azure Active Directory-Instanz (Azure AD) zu synchronisieren.
@@ -68,7 +68,7 @@ Das Feature der Kennworthashsynchronisierung versucht automatisch, fehlerhafte S
 Die Synchronisierung eines Kennworts hat keinen Einfluss auf den derzeit angemeldeten Benutzer.
 Wenn eine synchronisierte Kennwortänderung durchgeführt wird, während Sie an einem Clouddienst angemeldet sind, wirkt sich dies nicht direkt auf Ihre aktuelle Clouddienstsitzung aus. Wenn aber für den Clouddienst eine erneute Authentifizierung erforderlich ist, müssen Sie Ihr neues Kennwort angeben.
 
-Ein Benutzer muss seine Unternehmensanmeldeinformationen ein zweites Mal eingeben, um sich bei Azure AD zu authentifizieren, und zwar unabhängig davon, ob er bei seinem Unternehmensnetzwerk angemeldet ist. Dieses Verhalten kann jedoch auf ein Mindestmaß beschränkt werden, indem der Benutzer bei der Anmeldung das Kontrollkästchen „Angemeldet bleiben“ aktiviert. Dadurch wird ein Sitzungscookie festgelegt, das die Authentifizierung für einen kurzen Zeitraum umgeht. Die Einstellung „Angemeldet bleiben“ kann vom Azure AD-Administrator aktiviert oder deaktiviert werden.
+Ein Benutzer muss seine Unternehmensanmeldeinformationen ein zweites Mal eingeben, um sich bei Azure AD zu authentifizieren, und zwar unabhängig davon, ob er bei seinem Unternehmensnetzwerk angemeldet ist. Dieses Verhalten kann jedoch auf ein Mindestmaß beschränkt werden, indem der Benutzer bei der Anmeldung das Kontrollkästchen „Angemeldet bleiben“ aktiviert. Dadurch wird ein Sitzungscookie festgelegt, das die Authentifizierung 180 Tage lang umgeht. Die Einstellung „Angemeldet bleiben“ kann vom Azure AD-Administrator aktiviert oder deaktiviert werden. Darüber hinaus können Sie die Kennworteingabeaufforderungen reduzieren, indem Sie [nahtloses einmaliges Anmelden](active-directory-aadconnect-sso.md) aktivieren. Dabei werden Benutzer automatisch auf ihren Unternehmensgeräten, die mit dem Unternehmensnetzwerk verbunden sind, angemeldet.
 
 > [!NOTE]
 > Die Kennwortsynchronisierung wird nur für Objekttyp-Benutzer in Active Directory unterstützt. Sie wird vom iNetOrgPerson-Objektyp nicht unterstützt.
@@ -99,10 +99,6 @@ Beim Synchronisieren von Kennwörtern wird die Nur-Text-Version Ihres Kennworts 
 
 Die Authentifizierung von Benutzern erfolgt im Abgleich mit Azure AD und nicht mit der organisationseigenen Active Directory-Instanz. Wenn Ihre Organisation Bedenken dahingehend hat, dass Kennwortdaten die lokale Umgebung verlassen, berücksichtigen Sie die Tatsache, dass die in Azure AD gespeicherten SHA256-Kennwortdaten (ein Hash des ursprünglichen MD4-Hashes) wesentlich sichererer als die in Active Directory gespeicherten Daten sind. Da dieser SHA256-Hash darüber hinaus nicht entschlüsselt werden kann, lässt er sich nicht in die Active Directory-Umgebung der Organisation zurückübertragen, um in einem Pass-the-Hash-Angriff als gültiges Benutzerkennwort vorgelegt zu werden.
 
-
-
-
-
 ### <a name="password-policy-considerations"></a>Überlegungen zur Kennwortrichtlinie
 Es gibt zwei Arten von Kennwortrichtlinien, die von der Aktivierung der Kennworthashsynchronisierung betroffen sind:
 
@@ -121,7 +117,7 @@ Wenn sich ein Benutzer im Bereich der Kennworthashsynchronisierung befindet, wir
 Sie können sich mit einem synchronisierten Kennwort, das in der lokalen Umgebung abgelaufen ist, weiterhin bei Ihren Clouddiensten anmelden. Ihr Cloudkennwort wird aktualisiert, wenn Sie das Kennwort in der lokalen Umgebung das nächste Mal ändern.
 
 #### <a name="account-expiration"></a>Kontoablauf
-Wenn Ihre Organisation im Rahmen der Verwaltung von Benutzerkonten das accountExpires-Attribut verwendet, beachten Sie, dass dieses Attribut nicht mit Azure AD synchronisiert wird. Deshalb bleibt ein abgelaufenes Active Directory-Konto in einer für die Kennworthashsynchronisierung konfigurierten Umgebung in Azure AD weiter aktiv. Wenn das Konto abgelaufen ist, wird eine Workflowaktion empfohlen, die ein PowerShell-Skript zum Deaktivieren des Azure AD-Kontos des Benutzers auslöst. Umgekehrt sollte die Azure AD-Instanz aktiviert sein, wenn das Konto aktiviert ist.
+Wenn Ihre Organisation im Rahmen der Verwaltung von Benutzerkonten das accountExpires-Attribut verwendet, beachten Sie, dass dieses Attribut nicht mit Azure AD synchronisiert wird. Deshalb bleibt ein abgelaufenes Active Directory-Konto in einer für die Kennworthashsynchronisierung konfigurierten Umgebung in Azure AD weiter aktiv. Wenn das Konto abgelaufen ist, wird eine Workflowaktion empfohlen, die ein PowerShell-Skript zum Deaktivieren des Azure AD-Kontos des Benutzers auslöst (verwenden Sie das Cmdlet [Set-AzureADUser](https://docs.microsoft.com/powershell/module/azuread/set-azureaduser?view=azureadps-2.0)). Umgekehrt sollte die Azure AD-Instanz aktiviert sein, wenn das Konto aktiviert ist.
 
 ### <a name="overwrite-synchronized-passwords"></a>Überschreiben synchronisierter Kennwörter
 Ein Administrator kann Ihr Kennwort mithilfe von Windows PowerShell manuell zurücksetzen.
@@ -134,21 +130,14 @@ Die Synchronisierung eines Kennworts hat keinen Einfluss auf den angemeldeten Az
 
 ### <a name="additional-advantages"></a>Zusätzliche Vorteile
 
-- Im Allgemeinen ist die Kennworthashsynchronisierung einfacher zu implementieren als ein Verbunddienst. Sie erfordert keine zusätzliche Server und beseitigt die Abhängigkeit von einem hoch verfügbaren Verbunddienst zum Authentifizieren von Benutzern. 
+- Im Allgemeinen ist die Kennworthashsynchronisierung einfacher zu implementieren als ein Verbunddienst. Sie erfordert keine zusätzliche Server und beseitigt die Abhängigkeit von einem hoch verfügbaren Verbunddienst zum Authentifizieren von Benutzern.
 - Die Kennworthashsynchronisierung kann auch zusätzlich zum Verbund aktiviert werden. Sie kann als Fallback dienen, wenn der Verbunddienst ausfällt.
 
-
-
-
-
-
-
-
-
-
-
-
 ## <a name="enable-password-hash-synchronization"></a>Aktivieren der Kennworthashsynchronisierung
+
+>[!IMPORTANT]
+>Wenn Sie von AD FS (oder anderen Verbundtechnologien) zur Kennworthashsynchronisierung migrieren, wird dringend empfohlen, dem ausführlichen [Leitfaden zur Bereitstellung](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Password%20Hash%20Synchronization.docx) zu folgen.
+
 Wenn Sie Azure AD Connect mit den **Expresseinstellungen** installieren, wird die Kennworthashsynchronisierung automatisch aktiviert. Weitere Informationen finden Sie unter [Erste Schritte mit Azure AD Connect mit Expresseinstellungen](active-directory-aadconnect-get-started-express.md).
 
 Wenn Sie beim Installieren von Azure AD Connect benutzerdefinierte Einstellungen verwenden, steht die Kennworthashsynchronisierung auf der Seite „Benutzeranmeldung“ zur Verfügung. Weitere Informationen finden Sie unter [Benutzerdefinierte Installation von Azure AD Connect](active-directory-aadconnect-get-started-custom.md).

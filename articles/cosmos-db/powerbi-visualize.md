@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: sngun
-ms.openlocfilehash: 67ea7a9ea1a1be4fd0780f8b8ce22f1a133615e0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3734c30dad0735164d4501d1d63d8ffe301396a3
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34615868"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249113"
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Power BI-Tutorial für Azure Cosmos DB: Visualisieren von Daten mithilfe des Power BI-Connectors
 [PowerBI.com](https://powerbi.microsoft.com/) ist ein Onlinedienst zum Erstellen und Freigeben von Dashboards und Berichten mit Daten, die für Sie und Ihr Unternehmen wichtig sind.  Power BI Desktop ist ein dediziertes Berichterstellungstool, mit dem Sie Daten aus verschiedenen Datenquellen abrufen, die Daten zusammenführen und transformieren, leistungsstarke Berichte und Visualisierungen erstellen und Berichte in Power BI veröffentlichen können.  Mit der neuesten Version von Power BI Desktop können Sie jetzt über den Azure Cosmos DB-Connector für Power BI eine Verbindung mit Ihrem Azure Cosmos DB-Konto herstellen.   
@@ -34,7 +34,7 @@ Nach Abschluss dieses Power BI-Tutorials können Sie die folgenden Fragen beant
 > Für die Extraktion und Transformation von Daten stellt der Power BI-Connector für Azure Cosmos DB eine Verbindung mit Power BI Desktop her. In Power BI Desktop erstellte Berichte können dann auf „PowerBI.com“ veröffentlicht werden. Direkte Extraktion und Transformation von Azure Cosmos DB-Daten kann nicht auf „PowerBI.com“ ausgeführt werden. 
 
 > [!NOTE]
-> Um Power BI mithilfe der MongoDB-API mit Azure Cosmos DB zu verbinden, müssen Sie den [Simba MongoDB-ODBC-Treiber](http://www.simba.com/drivers/mongodb-odbc-jdbc/) verwenden.
+> Das Herstellen einer Verbindung mit Azure Cosmos DB mit dem Power BI-Connector wird derzeit nur für Azure Cosmos DB-SQL- und MongoDB-API-Konten unterstützt. Um Power BI mithilfe der MongoDB-API mit Azure Cosmos DB zu verbinden, müssen Sie den [Simba MongoDB-ODBC-Treiber](http://www.simba.com/drivers/mongodb-odbc-jdbc/) verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Vergewissern Sie sich vor dem Ausführen der Anweisungen dieses Power BI-Tutorials, dass Sie über Zugriff auf folgende Ressourcen verfügen:

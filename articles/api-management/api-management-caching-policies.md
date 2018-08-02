@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 488a4c4b7daf5c07ca5f6b6bb72464279658d372
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: f3734304bdcc4b3f0944ebf568094595eea01a4e
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
-ms.locfileid: "26344821"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214899"
 ---
 # <a name="api-management-caching-policies"></a>Cacherichtlinien für API Management
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -104,21 +104,21 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 ### <a name="elements"></a>Elemente  
   
-|Name|Beschreibung|Erforderlich|  
+|NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
-|cache-lookup|Stammelement.|Ja|  
-|vary-by-header|Startet das Zwischenspeichern je nach Wert des angegebenen Headers, z.B. Accept, Accept-Charset, Accept-Encoding, Accept-Language, Authorization, Expect, From, Host, If-Match.|Nein|  
-|vary-by-query-parameter|Antworten werden je nach Wert der angegebenen Abfrageparameter zwischengespeichert. Geben Sie einen oder mehrere Parameter an. Verwenden Sie Semikolons als Trennzeichen. Wenn kein Parameter angegeben ist, werden alle Abfrageparameter verwendet.|Nein|  
+|cache-lookup|Stammelement|JA|  
+|vary-by-header|Startet das Zwischenspeichern je nach Wert des angegebenen Headers, z.B. Accept, Accept-Charset, Accept-Encoding, Accept-Language, Authorization, Expect, From, Host, If-Match.|Nein |  
+|vary-by-query-parameter|Antworten werden je nach Wert der angegebenen Abfrageparameter zwischengespeichert. Geben Sie einen oder mehrere Parameter an. Verwenden Sie Semikolons als Trennzeichen. Wenn kein Parameter angegeben ist, werden alle Abfrageparameter verwendet.|Nein |  
   
 ### <a name="attributes"></a>Attribute  
   
-|Name|Beschreibung|Erforderlich|Standard|  
+|NAME|BESCHREIBUNG|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
-|allow-private-response-caching|Bei Festlegung auf `true` wird das Zwischenspeichern von Anforderungen erlaubt, die einen Autorisierungsheader enthalten.|Nein|false|  
-|downstream-caching-type|Dieses Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> –   none: Downstreamzwischenspeicherung ist unzulässig.<br />–   private: Private Downstreamzwischenspeicherung ist zulässig.<br />–   public: Private und gemeinsam genutzte Downstreamzwischenspeicherung ist zulässig.|Nein|(Keine)|  
-|must-revalidate|Wenn die Downstreamzwischenspeicherung aktiviert ist, aktiviert oder deaktiviert dieses Attribut die `must-revalidate`-Cachesteuerungsanweisung in Gatewayantworten.|Nein|true|  
-|vary-by-developer|Legen Sie diese Option auf `true` fest, um Antworten pro Entwicklerschlüssel zwischenzuspeichern.|Ja||  
-|vary-by-developer-groups|Legen Sie diese Option auf `true` fest, um Antworten pro Benutzerrolle zwischenzuspeichern.|Ja||  
+|allow-private-response-caching|Bei Festlegung auf `true` wird das Zwischenspeichern von Anforderungen erlaubt, die einen Autorisierungsheader enthalten.|Nein |false|  
+|downstream-caching-type|Dieses Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> –   none: Downstreamzwischenspeicherung ist unzulässig.<br />–   private: Private Downstreamzwischenspeicherung ist zulässig.<br />–   public: Private und gemeinsam genutzte Downstreamzwischenspeicherung ist zulässig.|Nein |none|  
+|must-revalidate|Wenn die Downstreamzwischenspeicherung aktiviert ist, aktiviert oder deaktiviert dieses Attribut die `must-revalidate`-Cachesteuerungsanweisung in Gatewayantworten.|Nein |true|  
+|vary-by-developer|Legen Sie diese Option auf `true` fest, um Antworten pro Entwicklerschlüssel zwischenzuspeichern.|JA||  
+|vary-by-developer-groups|Legen Sie diese Option auf `true` fest, um Antworten pro Benutzerrolle zwischenzuspeichern.|JA||  
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
@@ -182,15 +182,15 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 ### <a name="elements"></a>Elemente  
   
-|Name|Beschreibung|Erforderlich|  
+|NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
-|cache-store|Stammelement.|Ja|  
+|cache-store|Stammelement|JA|  
   
 ### <a name="attributes"></a>Attribute  
   
-|Name|Beschreibung|Erforderlich|Standard|  
+|NAME|BESCHREIBUNG|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
-|duration|Lebensdauer der zwischengespeicherten Einträge, angegeben in Sekunden.|Ja|N/V|  
+|duration|Lebensdauer der zwischengespeicherten Einträge, angegeben in Sekunden.|JA|N/V|  
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
@@ -224,17 +224,17 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 ### <a name="elements"></a>Elemente  
   
-|Name|Beschreibung|Erforderlich|  
+|NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
-|cache-lookup-value|Stammelement.|Ja|  
+|cache-lookup-value|Stammelement|JA|  
   
 ### <a name="attributes"></a>Attribute  
   
-|Name|Beschreibung|Erforderlich|Standard|  
+|NAME|BESCHREIBUNG|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
-|default-value|Ein Wert, der der Variablen zugewiesen wird, wenn die Cacheschlüsselsuche zu keinem Ergebnis führt. Wenn dieses Attribut nicht angegeben wird, wird `null` zugewiesen.|Nein|`null`|  
-|key|In der Suche zu verwendender Cacheschlüsselwert.|Ja|N/V|  
-|variable-name|Der Name der [Kontextvariablen](api-management-policy-expressions.md#ContextVariables), der der gesuchte Wert zugewiesen wird, wenn die Suche erfolgreich ist. Wenn die Suche zu keinem Ergebnis führt, wird der Variablen der Wert des `default-value`-Attribut oder `null` zugewiesen, wenn das `default-value`-Attribut ausgelassen wird.|Ja|N/V|  
+|default-value|Ein Wert, der der Variablen zugewiesen wird, wenn die Cacheschlüsselsuche zu keinem Ergebnis führt. Wenn dieses Attribut nicht angegeben wird, wird `null` zugewiesen.|Nein |`null`|  
+|key|In der Suche zu verwendender Cacheschlüsselwert.|JA|N/V|  
+|variable-name|Der Name der [Kontextvariablen](api-management-policy-expressions.md#ContextVariables), der der gesuchte Wert zugewiesen wird, wenn die Suche erfolgreich ist. Wenn die Suche zu keinem Ergebnis führt, wird der Variablen der Wert des `default-value`-Attribut oder `null` zugewiesen, wenn das `default-value`-Attribut ausgelassen wird.|JA|N/V|  
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
@@ -266,17 +266,17 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 ### <a name="elements"></a>Elemente  
   
-|Name|Beschreibung|Erforderlich|  
+|NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
-|cache-store-value|Stammelement.|Ja|  
+|cache-store-value|Stammelement|JA|  
   
 ### <a name="attributes"></a>Attribute  
   
-|Name|Beschreibung|Erforderlich|Standard|  
+|NAME|BESCHREIBUNG|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
-|duration|Der Wert wird für die in Sekunden angegebene Dauer zwischengespeichert.|Ja|N/V|  
-|key|Der Cacheschlüssel, unter dem der Wert gespeichert wird.|Ja|N/V|  
-|value|Der Wert, der zwischengespeichert werden soll.|Ja|N/V|  
+|duration|Der Wert wird für die in Sekunden angegebene Dauer zwischengespeichert.|JA|N/V|  
+|key|Der Cacheschlüssel, unter dem der Wert gespeichert wird.|JA|N/V|  
+|value|Der Wert, der zwischengespeichert werden soll.|JA|N/V|  
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
@@ -305,15 +305,15 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 #### <a name="elements"></a>Elemente  
   
-|Name|Beschreibung|Erforderlich|  
+|NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
-|cache-remove-value|Stammelement.|Ja|  
+|cache-remove-value|Stammelement.|JA|  
   
 #### <a name="attributes"></a>Attribute  
   
-|Name|Beschreibung|Erforderlich|Standard|  
+|NAME|BESCHREIBUNG|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
-|key|Der Schlüssel des zuvor zwischengespeicherten Werts, der aus dem Cache entfernt werden soll.|Ja|N/V|  
+|key|Der Schlüssel des zuvor zwischengespeicherten Werts, der aus dem Cache entfernt werden soll.|JA|N/V|  
   
 #### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  

@@ -1,6 +1,6 @@
 ---
 title: Abrechnungsoptionen im Azure Marketplace | Azure
-description: Hier finden Sie Abrechnungsoptionen im Azure Marketplace für Herausgeber.
+description: Abrechnungsoptionen im Azure Marketplace für Herausgeber.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
 author: jm-aditi-ms
@@ -14,65 +14,66 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 51a614a2411cf60bf88d384119c26bc9d406e66f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d0dbf603c600639679e121723556a7f3ceb17e37
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635140"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158980"
 ---
-# <a name="billing-options"></a>Abrechnungsoptionen  
+# <a name="billing-options-in-the-azure-marketplace"></a>Abrechnungsoptionen im Azure Marketplace
 
-## <a name="commercial-considerations-on-the-marketplace"></a>Kommerzielle Aspekte im Marketplace  
-Im Marketplace erfolgt keine Aufteilung des Umsatzes für die folgenden Arten von Listings.  
-*   Auflisten  
-*   Testversion  
+In diesem Artikel werden Abrechnungsoptionen beschrieben, die im [Azure Marketplace](https://azuremarketplace.microsoft.com) verfügbar sind.
+
+## <a name="commercial-considerations-in-the-marketplace"></a>Kommerzielle Aspekte im Marketplace
+Im Marketplace erfolgt keine Aufteilung des Umsatzes für die folgenden Arten von Listings: 
+*   Auflisten
+*   Testversion
 *   Transaktionen über das BYOL-Abrechnungsmodell (Bring Your Own License)
 
-Für die Teilnahme an den Storefronts im Marketplace werden Ihnen keine zusätzlichen Gebühren berechnet.  
-*   Weitere Informationen finden Sie in den Teilnahmerichtlinien für den Microsoft Azure Marketplace unter [azure.microsoft.com/support/legal/marketplace/participation-policies](https://azure.microsoft.com/support/legal/marketplace/participation-policies).  
+Für die Teilnahme an den Storefronts im Marketplace werden Ihnen keine zusätzlichen Gebühren berechnet.
 
-## <a name="pay-as-you-go-and-bring-your-own-license-billing-options"></a>Abrechnungsoptionen „Nutzungsbasierte Zahlung“ und „Bring Your Own License“  
-Wenn Sie ein Abrechnungsmodell mit nutzungsbasierter Bezahlung als Veröffentlichungsoption verwenden, wird Ihr nutzungsbasierter Softwarelizenzierungsumsatz im Verhältnis 80/20 zwischen Ihnen und Microsoft aufgeteilt. Bei der Preisgestaltung für ein einzelnes Angebot kann sowohl das Abrechnungsmodell mit nutzungsbasierter Bezahlung als auch das BYOL-Modell verwendet werden. Beide Abrechnungsmodelle stehen auf Angebotsebene als separate SKUs zur Verfügung. Sie konfigurieren die Abrechnungsmodelle in Ihrem Angebot im Cloud-Partnerportal. 
+Weitere Informationen finden Sie in den [Microsoft Azure Marketplace-Teilnahmerichtlinien](https://azure.microsoft.com/support/legal/marketplace/participation-policies).  
 
-Betrachten Sie die folgenden Beispiele.  
-*   Wenn Sie die Option mit nutzungsbasierter Bezahlung aktivieren, sieht das Ergebnis folgendermaßen aus.  
-    | Ihre Lizenzkosten | 1,00 USD pro Stunde |  
-    |:--- |:--- |  
-    | Azure-Nutzungskosten (D1/1-Kern) | 0,14 USD pro Stunde |  
-    | *Microsoft führt die Abrechnung mit dem Kunden durch* | *1,14 USD pro Stunde* |  
+## <a name="pay-as-you-go-and-byol-billing-options"></a>Nutzungsbasierte und BYOL-Abrechnungsoptionen
+Wenn Sie ein Abrechnungsmodell mit nutzungsbasierter Bezahlung als Veröffentlichungsoption verwenden, wird Ihr nutzungsbasierter Softwarelizenzierungsumsatz im Verhältnis 80%/20% zwischen Ihnen und Microsoft aufgeteilt. Zur Preisgestaltung für ein einzelnes Angebot können Sie sowohl das Abrechnungsmodell mit nutzungsbasierter Bezahlung als auch das BYOL-Modell verwenden. Beide Abrechnungsmodelle stehen auf Angebotsebene als separate SKUs zur Verfügung. Sie konfigurieren die Abrechnungsmodelle in Ihrem Angebot im Cloud-Partnerportal. 
 
-    In diesem Szenario berechnet Microsoft 1,14 USD pro Stunde für die Verwendung Ihres veröffentlichten VM-Images.  
-    | Berechnung durch Microsoft | 1,14 USD pro Stunde |  
-    |:--- |:--- |  
-    | Microsoft zahlt Ihnen 80% Ihrer Lizenzkosten | 0,80 USD pro Stunde |  
-    | Microsoft behält 20% Ihrer Lizenzkosten ein | 0,20 USD pro Stunde |  
-    | Microsoft behält die Kosten der Azure-Nutzung ein | 0,14 USD pro Stunde |  
+Betrachten Sie die folgenden Beispiele:
+*   Wenn Sie die Option mit nutzungsbasierter Bezahlung aktivieren, sieht das Ergebnis folgendermaßen aus:
+    | Ihre Lizenzkosten | 1,00 USD pro Stunde |
+    |:--- |:--- |
+    | Azure-Nutzungskosten (D1/1-Kern) | 0,14 USD pro Stunde |
+    | *Microsoft führt die Abrechnung mit dem Kunden durch* | *1,14 USD pro Stunde* |
 
-*   Wenn Sie die BYOL-Option aktivieren, sieht das Ergebnis folgendermaßen aus.  
-    | Ihre Lizenzkosten | Ausgehandelte und von Ihnen in Rechnung gestellte Lizenzgebühr |  
-    |:--- |:--- |  
-    | Azure-Nutzungskosten (D1/1-Kern) | 0,14 USD pro Stunde |  
-    | *Microsoft führt die Abrechnung mit dem Kunden durch* | *0,14 USD pro Stunde* |  
+    In diesem Szenario berechnet Microsoft 1,14 USD pro Stunde für die Verwendung Ihres veröffentlichten VM-Images:
+    | Berechnung durch Microsoft | 1,14 USD pro Stunde |
+    |:--- |:--- |
+    | Microsoft zahlt Ihnen 80% Ihrer Lizenzkosten | 0,80 USD pro Stunde |
+    | Microsoft behält 20% Ihrer Lizenzkosten ein | 0,20 USD pro Stunde |
+    | Microsoft behält die Kosten der Azure-Nutzung ein | 0,14 USD pro Stunde |
 
-    In diesem Szenario berechnet Microsoft 0,14 USD pro Stunde für die Verwendung Ihres veröffentlichten VM-Images.  
-    | Berechnung durch Microsoft | 0,14 USD pro Stunde |  
-    |:--- |:--- |  
-    | Microsoft behält die Kosten der Azure-Nutzung ein | 0,14 USD pro Stunde |  
-    | Microsoft behält 0% Ihrer Lizenzkosten ein | 0,00 USD pro Stunde |  
+*   Wenn Sie die BYOL-Option aktivieren, sieht das Ergebnis folgendermaßen aus:
+    | Ihre Lizenzkosten | Ausgehandelte und von Ihnen in Rechnung gestellte Lizenzgebühr |
+    |:--- |:--- |
+    | Azure-Nutzungskosten (D1/1-Kern) | 0,14 USD pro Stunde |
+    | *Microsoft führt die Abrechnung mit dem Kunden durch* | *0,14 USD pro Stunde* |
 
-## <a name="single-billing-and-payment-methods"></a>Einzelabrechnung und Zahlungsmethoden  
-Ein wesentlicher Vorteil der Listingoption „Transaktion“ besteht darin, dass Ihre Lizenzkosten und Azure-Nutzung Ihrem Kunden direkt als Einzelposten berechnet werden.  
+    In diesem Szenario berechnet Microsoft 0,14 USD pro Stunde für die Verwendung Ihres veröffentlichten VM-Images: 
+    | Berechnung durch Microsoft | 0,14 USD pro Stunde |
+    |:--- |:--- |
+    | Microsoft behält die Kosten der Azure-Nutzung ein | 0,14 USD pro Stunde |
+    | Microsoft behält 0% Ihrer Lizenzkosten ein | 0,00 USD pro Stunde |
 
-In diesem Szenario wickelt Microsoft Abrechnung und Zahlungseingänge in Ihrem Auftrag ab. Bei der Abrechnung durch Microsoft entfällt für Sie die Notwendigkeit, eine eigene Zahlungsvereinbarung mit Ihren Kunden zu treffen. Durch Einzelabrechnungen können Sie Zeit und Ressourcen sparen. So können Sie sich darauf konzentrieren, Ihr Produkt zu verkaufen, und müssen sich nicht um Rechnungsangelegenheiten kümmern. 
+## <a name="single-billing-and-payment-methods"></a>Einzelabrechnung und Zahlungsmethoden
+Ein wesentlicher Vorteil der Veröffentlichungsoption „Transaktion“ im Marketplace besteht darin, dass Ihre Lizenzkosten und Azure-Nutzung Ihrem Kunden direkt als Einzelposten berechnet werden.
+
+In diesem Szenario wickelt Microsoft Abrechnung und Zahlungseingänge in Ihrem Auftrag ab. Bei der Abrechnung durch Microsoft entfällt für Sie die Notwendigkeit, eine eigene Zahlungsvereinbarung mit Ihren Kunden zu treffen. Durch Einzelabrechnungen können Sie Zeit und Ressourcen sparen. Außerdem können Sie sich so vielleicht eher auf das Erzielen von Verkäufen statt auf das Abkassieren konzentrieren. 
 
 ## <a name="enterprise-agreement"></a>Enterprise Agreement  
-Wenn Sie Microsoft-Kunde mit Enterprise Agreement (EA) sind, können Sie Ihr EA verwenden, um für Microsoft-Produkte zu bezahlen. Ihnen können Produkte, einschließlich Ihrer Azure-Nutzung, berechnet werden. Die Verwendung des Enterprise Agreements ist für Organisationen gedacht, die Software und Clouddienste für mindestens drei Jahre lizenzieren möchten. Sie können Zahlungen verteilen, anstatt vorab eine große Summe zu zahlen. Wenn Sie Transaktionslistings mit nutzungsbasierter Bezahlung verwenden, folgt die Abrechnung für Ihre Softwarelizenzkosten dem vierteljährlichen EA-Abrechnungszyklus für Überschreitungen.  
+Wenn Sie ein Microsoft Enterprise Agreement-Kunde sind, können Sie Ihr Enterprise Agreement verwenden, um Microsoft-Produkte zu bezahlen. Ihnen können Produkte in Rechnung gestellt werden, Ihre Azure-Nutzung inbegriffen. Die Verwendung des Enterprise Agreements ist für Organisationen gedacht, die Software und Clouddienste für mindestens drei Jahre lizenzieren möchten. Sie können Zahlungen verteilen statt eine große Zahlung zu leisten. Vorauszahlung. Wenn Sie eine Veröffentlichungsoption mit nutzungsbasierter Bezahlung verwenden, folgt die Abrechnung für Ihre Softwarelizenzkosten dem vierteljährlichen Enterprise Agreement-Abrechnungszyklus für Überschreitungen.  
 
-### <a name="monetary-commitment"></a>Finanzielle Verpflichtung  
-Wenn Sie EA-Kunde sind, können Sie Azure zu Ihrer Vereinbarung hinzufügen. Dazu vereinbaren Sie im Rahmen der EA einen verbindlichen Betrag für Azure. Dieser verbindliche Betrag wird im Laufe des Jahres verbraucht. Der Betrag deckt jede Art und Kombination der Nutzung der vielfältigen Dienste in Azure ab.  
+### <a name="monetary-commitment"></a>Finanzielle Verpflichtung
+Wenn Sie ein Enterprise Agreement-Kunde sind, können Sie Azure Ihrer Vereinbarung hinzufügen. Dazu vereinbaren Sie im Rahmen der EA einen verbindlichen Betrag für Azure. Dieser verbindliche Betrag wird im Laufe des Jahres verbraucht. Der Betrag deckt jede Kombination der Nutzung von Azure-Diensten ab.
 
 ## <a name="next-steps"></a>Nächste Schritte
-*   Besuchen Sie die Seite [Herausgeberleitfaden für Azure Marketplace und AppSource](./marketplace-publishers-guide.md).  
- 
----  
+Lesen Sie den [Veröffentlichungsleitfaden für Azure Marketplace und AppSource](./marketplace-publishers-guide.md).

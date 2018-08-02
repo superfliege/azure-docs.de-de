@@ -10,18 +10,18 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 338d89b47ea451efcf8300d4ac016a6946a95259
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 443ac895085053b7c4c876c3deecaa1943c9f506
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786839"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171057"
 ---
 #   <a name="language-detection-cognitive-skill"></a>Der kognitive Skill „Spracherkennung“
 
 Bis zu 120 Sprachen des eingegebenen Textes erkennt die **Spracherkennung** und meldet einen einzigen Sprachcode für jedes Dokument, das auf Anforderung gesendet wird. Der Sprachcode ist mit einem Wert kombiniert, der die Stärke der Analyse angibt.
 
-Diese Funktion ist besonders nützlich, wenn Sie die Sprache des Texts als Eingabe für andere Skills (z.B. den [Skill „Stimmung“](cognitive-search-skill-sentiment.md) oder den [Skill „Text teilen“](cognitive-search-skill-textsplit.md)) benötigen.
+Diese Funktion ist besonders nützlich, wenn Sie die Sprache des Texts als Eingabe für andere Skills (z.B. den [Skill „Standpunktanalyse“](cognitive-search-skill-sentiment.md) oder den [Skill „Text teilen“](cognitive-search-skill-textsplit.md)) benötigen.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.LanguageDetectionSkill
@@ -33,13 +33,13 @@ Die maximale Größe eines Datensatzes ist 50.000 Zeichen, gemessen durch `Strin
 
 Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
-| Eingaben     | Beschreibung |
+| Eingaben     | BESCHREIBUNG |
 |--------------------|-------------|
 | text | Der zu analysierende Text|
 
 ## <a name="skill-outputs"></a>Skillausgaben
 
-| Ausgabename    | Beschreibung |
+| Ausgabename    | BESCHREIBUNG |
 |--------------------|-------------|
 | languageCode | Der für die Sprache identifizierte ISO-6391-Sprachcode. Beispiel: „en“. |
 | languageName | Der Name der Sprache. Beispiel: „Englisch“. |

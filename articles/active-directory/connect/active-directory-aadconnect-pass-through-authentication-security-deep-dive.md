@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ea7fb5951cd0b2925aa3dd5ae14b452292ba582c
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: ad4567ffb927694872d5b86dd38833466f944ca8
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917991"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215083"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory-Passthrough-Authentifizierung – ausführliche Informationen zur Sicherheit
 
@@ -37,14 +37,14 @@ Die folgenden Themen werden behandelt:
 Dies sind die wichtigsten Sicherheitsaspekte des Features:
 - Es basiert auf einer sicheren mehrinstanzenfähigen Architektur, die eine Isolation von Anmeldeanforderungen zwischen Mandanten ermöglicht.
 - Lokale Kennwörter werden niemals in irgendeiner Form in der Cloud gespeichert.
-- Lokale Authentifizierungs-Agents, die auf Anforderungen zur Kennwortvalidierung lauschen und darauf antworten, stellen aus Ihrem Netzwerk nur ausgehende Verbindungen her. Es ist nicht erforderlich, diese Authentifizierungs-Agents in einem Umkreisnetzwerk (DMZ) zu installieren.
+- Lokale Authentifizierungs-Agents, die auf Anforderungen zur Kennwortvalidierung lauschen und darauf antworten, stellen aus Ihrem Netzwerk nur ausgehende Verbindungen her. Es ist nicht erforderlich, diese Authentifizierungs-Agents in einem Umkreisnetzwerk (DMZ) zu installieren. Eine bewährte Methode ist die Behandlung aller Server, auf denen Authentifizierungs-Agents ausgeführt werden, als Ebene-0-Systeme (siehe [Referenz](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 - Nur Standardports (80 und 443) werden für die ausgehende Kommunikation von den Authentifizierungs-Agents mit Azure AD verwendet. Sie müssen keine eingehenden Ports in Ihrer Firewall öffnen. 
   - Port 443 wird für die gesamte authentifizierte ausgehende Kommunikation verwendet.
   - Port 80 wird nur zum Herunterladen der Zertifikatsperrlisten (Certificate Revocation Lists, CRLs) verwendet, um sicherzustellen, dass keines der von diesem Feature verwendeten Zertifikate widerrufen wurde.
   - Die vollständige Liste der Netzwerkanforderungen finden Sie unter [Azure Active Directory-Passthrough-Authentifizierung: Schnellstart](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-1-check-the-prerequisites).
 - Kennwörter, die Benutzer während einer Anmeldung angeben, werden in der Cloud verschlüsselt, bevor sie von den lokalen Authentifizierungs-Agents zur Validierung für Active Directory akzeptiert werden.
 - Der HTTPS-Kanal zwischen Azure AD und dem lokalen Authentifizierungs-Agent wird durch Verwenden von gegenseitiger Authentifizierung geschützt.
-- Das Feature wird nahtlos in die Cloudschutzfunktionen von Azure AD, z.B. Richtlinien für bedingten Zugriff (einschließlich Azure Multi-Factor Authentication), Identity Protection und Smart Lockout, integriert.
+- Ihre Benutzerkonten werden durch die nahtlose Zusammenarbeit mit [Azure AD-Richtlinien für den bedingten Zugriff](../active-directory-conditional-access-azure-portal.md), einschließlich der Multi-Factor Authentication (MFA), durch das [Blockieren von Legacyauthentifizierung](../active-directory-conditional-access-conditions.md) und durch das [Filtern von Brute-Force-Kennwortangriffen](../authentication/howto-password-smart-lockout.md) geschützt.
 
 ## <a name="components-involved"></a>Beteiligte Komponenten
 
@@ -156,7 +156,7 @@ Um sicherzustellen, dass die Passthrough-Authentifizierung im Betrieb sicher ble
 
 So erneuern Sie die Vertrauensstellung eines Authentifizierungs-Agents mit Azure AD:
 
-1. Der Authentifizierungs-Agent pingt Azure AD in regelmäßigen Abständen nach einigen Stunden, um zu überprüfen, ob es an der Zeit ist, sein Zertifikat zu erneuern. 
+1. Der Authentifizierungs-Agent pingt Azure AD in regelmäßigen Abständen nach einigen Stunden, um zu überprüfen, ob es an der Zeit ist, sein Zertifikat zu erneuern. Das Zertifikat wird 30 Tage vor dessen Ablauf erneuert.
     - Diese Überprüfung wird über einen HTTPS-Kanal mit gegenseitiger Authentifizierung und mit dem Zertifikat ausgeführt, das während der Registrierung ausgestellt wurde.
 2. Wenn der Dienst angibt, dass es Zeit für eine Erneuerung ist, generiert der Authentifizierungs-Agent ein neues Schlüsselpaar: einen öffentlichen Schlüssel und einen privaten Schlüssel.
     - Diese Schlüssel werden über die standardmäßige RSA-2048-Bit-Verschlüsselung generiert.
@@ -208,8 +208,9 @@ So wird ein Authentifizierungs-Agent automatisch aktualisiert:
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Aktuelle Einschränkungen:](active-directory-aadconnect-pass-through-authentication-current-limitations.md) Informationen zu den unterstützten und nicht unterstützten Szenarien
-- [Schnellstart](active-directory-aadconnect-pass-through-authentication-quick-start.md): Aktivieren und Ausführen der Passthrough-Authentifizierung von Azure AD
-- [Smart Lockout](../authentication/howto-password-smart-lockout.md): Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten, um Benutzerkonten zu schützen
+- [Schnellstart:](active-directory-aadconnect-pass-through-authentication-quick-start.md) Aktivieren und Ausführen der Passthrough-Authentifizierung von Azure AD
+- [Migrieren von AD FS zur Passthrough-Authentifizierung:](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) Ein detaillierter Leitfaden zur Migration von AD FS (oder anderen Verbundtechnologien) zur Passthrough-Authentifizierung.
+- [Smart Lockout:](../authentication/howto-password-smart-lockout.md) Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten, um Benutzerkonten zu schützen
 - [Funktionsweise](active-directory-aadconnect-pass-through-authentication-how-it-works.md): Grundlegende Funktionsweise der Passthrough-Authentifizierung von Azure AD
 - [Häufig gestellte Fragen](active-directory-aadconnect-pass-through-authentication-faq.md): Antworten auf häufig gestellte Fragen
 - [Problembehandlung](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): Informationen zum Beheben von allgemeinen Problemen, die es bei der Passthrough-Authentifizierung geben kann

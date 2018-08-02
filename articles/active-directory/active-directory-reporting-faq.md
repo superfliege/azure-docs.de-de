@@ -15,21 +15,22 @@ ms.component: compliance-reports
 ms.date: 05/10/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 8d627abfe7b686eeeb5a65c4515e184f4ce62f4e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d069d0e74c1bc10baa4d14cdb91c137203495ae2
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335056"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247407"
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Häufig gestellte Fragen zu Azure Active Directory-Berichten
 
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active Directory-Berichten (Azure AD). Weitere Informationen finden Sie unter [Azure Active Directory-Berichterstellung](active-directory-reporting-azure-portal.md). 
 
+## <a name="getting-started"></a>Erste Schritte 
+
 **F: Ich verwende die Endpunkt-APIs unter „https://graph.windows.net/&ltMandantenname&gt;/reports/“ zum programmgesteuerten Abrufen der Azure AD-Überwachungsberichte und integrierten Anwendungsnutzungsberichte in unsere Berichtssysteme. Welche Umstellung sollte ich vornehmen?**
 
 **A**: In der [API-Referenzdokumentation](https://developer.microsoft.com/graph/) finden Sie Informationen dazu, wie Sie die neuen APIs für den Zugriff auf [Aktivitätsberichte](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) verwenden können. Dieser Endpunkt verfügt über zwei Berichte (Überwachung und Anmeldevorgänge), die alle Daten des alten API-Endpunkts enthalten. Dieser neue Endpunkt verfügt auch über einen Bericht zu Anmeldeaktivitäten für die Azure AD Premium-Lizenz, über den Sie Informationen zur App-Nutzung, Gerätenutzung und Benutzeranmeldung abrufen können.
-
 
 --- 
 
@@ -38,6 +39,34 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 **A:** Sie können die [API für Identity Protection-Risikoereignisse](active-directory-identityprotection-graph-getting-started.md) für den Zugriff auf Sicherheitserkennungen über Microsoft Graph verwenden. Dieses neue Format ermöglicht höhere Flexibilität beim Abfragen von Daten mit erweiterter Filterung, Feldauswahl und vielem mehr, und standardisiert Risikoereignisse in einem Typ zur einfacheren Integration in SIEMs und andere Tools zur Datensammlung. Da die Daten in einem anderen Format vorliegen, können Sie Ihre alten Abfragen nicht durch eine neue Abfrage ersetzen. Allerdings [verwendet die neue API Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), den Microsoft-Standard für diese APIs wie z.B. Office 365 oder Azure AD. So können Sie entweder Ihre aktuellen MS Graph-Investitionen erweitern oder die Umstellung auf diese neue Standardplattform beginnen.
 
 --- 
+
+**F: Wie erhalte ich eine Premium-Lizenz?**
+
+**A:** Die Antwort auf diese Frage finden Sie unter [Erste Schritte mit Azure Active Directory Premium](fundamentals/active-directory-get-started-premium.md).
+
+---
+
+**F: Wie schnell werden nach Erwerb einer Premium-Lizenz Daten zu Aktivitäten angezeigt?**
+
+**A:** Wenn Ihnen bereits mit einer Lizenz im Tarif „Free“ Daten zu Aktivitäten angezeigt werden, sehen Sie dieselben Daten. Wenn Sie noch keine Daten haben, dauert es ein bis zwei Tage.
+
+---
+
+**F:Werden nach Erwerb einer Azure AD-Premium-Lizenz die Daten des letzten Monats angezeigt?**
+
+**A:** Wenn Sie vor Kurzem zu einer Premium-Version (einschließlich einer Testversion) gewechselt sind, werden Ihnen anfänglich Daten von bis zu 7 Tagen angezeigt. Sobald sich Daten angesammelt haben, werden Daten von bis zu 30 Tagen angezeigt.
+
+---
+
+**F: Muss ich ein globaler Administrator sein, um die Anmeldeaktivitäten im Azure-Portal anzuzeigen oder die Daten über die API abzurufen?**
+
+**A:** Nein. Sie müssen ein **Benutzer mit Leseberechtigung für Sicherheitsfunktionen**, **Sicherheitsadministrator** oder **globaler Administrator** sein, um Berichtsdaten im Azure-Portal oder über die API abrufen zu können.
+
+---
+
+
+## <a name="activity-logs"></a>Aktivitätsprotokolle
+
 
 **F: Wie lange werden Aktivitätsprotokolldaten (Überwachung und Anmeldevorgänge) im Azure-Portal aufbewahrt?** 
 
@@ -51,11 +80,6 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 ---
 
-**F: Muss ich ein globaler Administrator sein, um die Anmeldeaktivitäten im Azure-Portal anzuzeigen oder die Daten über die API abzurufen?**
-
-**A:** Nein. Sie müssen ein **Benutzer mit Leseberechtigung für Sicherheitsfunktionen**, **Sicherheitsadministrator** oder **globaler Administrator** sein, um Berichtsdaten im Azure-Portal oder über die API abrufen zu können.
-
----
 
 **F: Kann ich Office 365-Aktivitätsprotokollinformationen über das Azure Portal abrufen?**
 
@@ -82,23 +106,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 ---
 
-**F: Wie erhalte ich eine Premium-Lizenz?**
-
-**A:** Die Antwort auf diese Frage finden Sie unter [Erste Schritte mit Azure Active Directory Premium](fundamentals/active-directory-get-started-premium.md).
-
----
-
-**F: Wie schnell werden nach Erwerb einer Premium-Lizenz Daten zu Aktivitäten angezeigt?**
-
-**A:** Wenn Ihnen bereits mit einer Lizenz im Tarif „Free“ Daten zu Aktivitäten angezeigt werden, sehen Sie dieselben Daten. Wenn Sie noch keine Daten haben, dauert es ein bis zwei Tage.
-
----
-
-**F:Werden nach Erwerb einer Azure AD-Premium-Lizenz die Daten des letzten Monats angezeigt?**
-
-**A:** Wenn Sie vor Kurzem zu einer Premium-Version (einschließlich einer Testversion) gewechselt sind, werden Ihnen anfänglich Daten von bis zu 7 Tagen angezeigt. Sobald sich Daten angesammelt haben, werden Daten von bis zu 30 Tagen angezeigt.
-
----
+## <a name="risky-sign-ins"></a>Riskante Anmeldungen
 
 **F: Es gibt ein Risikoereignis in Identity Protection, aber ich sehe keine entsprechende Anmeldung unter „Alle Anmeldungen“. Entspricht dies dem erwarteten Verhalten?**
 
@@ -129,3 +137,35 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 **A:** Das Ereignis „Anmeldung mit erhöhtem Risiko erkannt“ dient als Platzhalter für Anmeldungen für Erkennungen, die exklusiv für Azure AD Identity Protection-Abonnenten sind, um Ihnen einen Einblick in sämtliche riskante Anmeldungen in Ihrer Umgebung zu geben.
 
 ---
+
+## <a name="conditional-access"></a>Bedingter Zugriff
+
+**F: Was ist neu an dieser Funktion?**
+
+**A:** Benutzer können nun im Bericht für alle Anmeldungen Probleme mit Richtlinien für bedingten Zugriff beheben. Benutzer können den Status des bedingten Zugriffs überprüfen und die Richtliniendetails für die Anmeldung sowie die jeweiligen Richtlinienergebnisse ansehen.
+
+**F: Wie nutze ich die Funktion?**
+
+**A:** Die ersten Schritte sehen folgendermaßen aus:
+    * Navigieren Sie im [Azure-Portal](https://portal.azure.com) zum Anmeldebericht. 
+    * Klicken Sie auf die Anmeldung für die Problembehandlung.
+    * Navigieren Sie zur Registerkarte **Bedingter Zugriff**. Hier werden alle Richtlinien angezeigt, die die Anmeldung und das Ergebnis der einzelnen Richtlinien betreffen. 
+    
+**F: Welche Status kann der bedingte Zugriff haben?**
+
+**A:** Es gibt folgende Status für den bedingten Zugriff:
+    * **Nicht angewendet**: Auf den Benutzer und die App wurde keine Richtlinie für bedingten Zugriff angewendet. 
+    * **Erfolgreich**: Auf den Benutzer und die App wurden Richtlinien für bedingten Zugriff angewendet und erfolgreich umgesetzt. 
+    * **Fehler**: Auf den Benutzer und die App wurden Richtlinien für bedingten Zugriff angewendet und nicht erfolgreich umgesetzt. 
+    
+**F: Welches Ergebnis kann die Richtlinie für bedingten Zugriff erzielen?**
+
+**A:** Die Richtlinie für bedingten Zugriff kann die folgenden Ergebnisse liefern:
+    * **Erfolgreich**: Die Richtlinie wurde erfolgreich umgesetzt.
+    * **Fehler**: Die Richtlinie wurde nicht erfolgreich umgesetzt.
+    * **Nicht angewendet**: Die Richtlinienbedingungen wurden möglicherweise nicht erfüllt.
+    * **Nicht aktiviert**: Die Richtlinie ist deaktiviert. 
+    
+**F: Der Richtlinienname im Bericht für alle Anmeldungen entspricht nicht dem Namen der Richtlinie für bedingten Zugriff. Warum?**
+
+**A:** Der Richtlinienname im Bericht für alle Anmeldungen basiert auf dem Namen der Richtlinie für bedingten Zugriff zum Anmeldezeitpunkt. Die Namen müssen anfangs nicht übereinstimmen, wenn Sie den Richtliniennamen später aktualisieren, d. h. nach der Anmeldung.

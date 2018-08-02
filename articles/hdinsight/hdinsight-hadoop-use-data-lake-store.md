@@ -1,27 +1,23 @@
 ---
-title: Verwenden von Data Lake Store mit Hadoop in Azure HDInsight | Microsoft-Dokumentation
+title: Verwenden von Data Lake Store mit Hadoop in Azure HDInsight
 description: Erfahren Sie, wie Sie Daten in Azure Data Lake Store abfragen und die Ergebnisse Ihrer Analyse speichern.
-keywords: Blobspeicher,HDFS,strukturierte Daten,unstrukturierte Daten,Data Lake Store
 services: hdinsight,storage
-documentationcenter: ''
 tags: azure-portal
-author: mumian
+author: jasonwhowell
+ms.author: jasonh
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: get-started-article
-ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: 362a9ae9cb1a1ebc30193b76929f0a683414e5fd
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.topic: conceptual
+ms.date: 07/23/2018
+ms.openlocfilehash: 48b98e170601f80e8cd1348ccc9afa3b5fc0c4e1
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435296"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258030"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>Verwenden von Data Lake Store mit Azure HDInsight-Clustern
 
@@ -32,9 +28,9 @@ In diesem Artikel erfahren Sie, wie Data Lake Store mit HDInsight-Clustern funkt
 > [!NOTE]
 > Da auf Data Lake Store immer über einen sicheren Kanal zugegriffen wird, ist kein `adls`-Dateisystem-Schemaname vorhanden. Sie verwenden immer `adl`.
 > 
-> 
 
-## <a name="availabilities-for-hdinsight-clusters"></a>Verfügbarkeit für HDInsight-Cluster
+
+## <a name="availability-for-hdinsight-clusters"></a>Verfügbarkeit für HDInsight-Cluster
 
 Hadoop unterstützt eine Variante des Standarddateisystems. Das Standarddateisystem gibt ein Standardschema und eine Standardautorität vor. Es kann auch zur Auflösung relativer Pfade verwendet werden. Bei der Erstellung des HDInsight-Clusters können Sie einen Blobcontainer in Azure Storage als Standarddateisystem angeben. Mit HDInsight 3.5 oder einer neueren Version können Sie mit einigen wenigen Ausnahmen Azure Storage oder Azure Data Lake Store als Standarddateisystem auswählen. 
 
@@ -48,8 +44,8 @@ Zum aktuellen Zeitpunkt unterstützen nur einige der HDInsight-Clustertypen/-ver
 | HDInsight-Clustertyp | Data Lake Store als Standardspeicher | Data Lake Store als Zusatzspeicher| Notizen |
 |------------------------|------------------------------------|---------------------------------------|------|
 | HDInsight-Version 3.6 | Ja | Ja | |
-| HDInsight-Version 3.5 | Ja | Ja | Mit Ausnahme von HBase|
-| HDInsight-Version 3.4 | Nein  | Ja | |
+| HDInsight-Version 3.5 | Ja | JA | Mit Ausnahme von HBase|
+| HDInsight-Version 3.4 | Nein  | JA | |
 | HDInsight, Version 3.3 | Nein  | Nein  | |
 | HDInsight, Version 3.2 | Nein  | Ja | |
 | Storm | | |Sie können Data Lake Store verwenden, um dort Daten aus einer Storm-Topologie zu schreiben. Sie können Data Lake Store auch zum Speichern von Verweisdaten verwenden, die anschließend von einer Storm-Topologie gelesen werden.|
@@ -81,13 +77,13 @@ Weitere Informationen zum Erstellen von Dienstprinzipalen und zum Gewähren des 
 
 ## <a name="use-data-lake-store-as-additional-storage"></a>Verwenden von Data Lake Store als Zusatzspeicher
 
-Sie können Data Lake Store zudem als zusätzlichen Speicher für den Cluster verwenden. In solchen Fällen kann der Clusterstandardspeicher ein Azure Storage Blob- oder ein Data Lake Store-Konto sein. Wenn Sie HDInsight-Aufträge mit den in Data Lake Store gespeicherten Daten als zusätzlichem Speicher ausführen, müssen Sie den vollqualifizierten Pfad zu den Dateien verwenden. Beispiel:
+Sie können Data Lake Store zudem als zusätzlichen Speicher für den Cluster verwenden. In solchen Fällen kann der Clusterstandardspeicher ein Azure Storage Blob- oder ein Data Lake Store-Konto sein. Wenn Sie HDInsight-Aufträge mit den in Data Lake Store gespeicherten Daten als zusätzlichem Speicher ausführen, müssen Sie den vollqualifizierten Pfad zu den Dateien verwenden. Beispiel: 
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
 Beachten Sie, dass die URL jetzt keinen **cluster_root_path** enthält. Dies liegt daran, dass Data Lake Store hier kein Standardspeicher ist. Sie müssen also nur den Pfad zu den Dateien angeben.
 
-Um Data Lake Store als zusätzlichen Speicher verwenden zu können, müssen Sie lediglich dem Dienstprinzipal Zugriff auf die Pfade gewähren, in denen Ihre Dateien gespeichert sind.  Beispiel:
+Um Data Lake Store als zusätzlichen Speicher verwenden zu können, müssen Sie lediglich dem Dienstprinzipal Zugriff auf die Pfade gewähren, in denen Ihre Dateien gespeichert sind.  Beispiel: 
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
@@ -135,6 +131,60 @@ Unter den folgenden Links finden Sie eine ausführliche Anleitung, wie Sie HDIns
 * [Erstellen eines HDInsight-Clusters mit Data Lake Store mithilfe von Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [Erstellen eines HDInsight-Clusters mit Data Lake Store mithilfe einer Azure Resource Manager-Vorlage](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 
+## <a name="refresh-the-hdinsight-certificate-for-data-lake-store-access"></a>Aktualisieren des HDInsight-Zertifikats für den Data Lake Store-Zugriff
+
+Im folgenden Beispiel liest PowerShell-Code eine lokale Zertifikatdatei und aktualisiert Ihren HDInsight-Cluster mit dem neuen Zertifikat für den Zugriff auf den Azure Data Lake Store. Geben Sie Ihren eigenen HDInsight-Clusternamen, den Ressourcengruppennamen, die Abonnement-ID, die App-ID und den lokalen Pfad zum Zertifikat an. Geben Sie Ihr Kennwort ein, wenn Sie dazu aufgefordert werden.
+
+```powershell-interactive
+$clusterName = '<clustername>'
+$resourceGroupName = '<resourcegroupname>'
+$subscriptionId = '01234567-8a6c-43bc-83d3-6b318c6c7305'
+$appId = '01234567-e100-4118-8ba6-c25834f4e938'
+$generateSelfSignedCert = $false
+$addNewCertKeyCredential = $true
+$certFilePath = 'C:\localfolder\adls.pfx'
+$certPassword = Read-Host "Enter Certificate Password"
+
+if($generateSelfSignedCert)
+{
+    Write-Host "Generating new SelfSigned certificate"
+    
+    $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=hdinsightAdlsCert" -KeySpec KeyExchange
+    $certBytes = $cert.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Pkcs12, $certPassword);
+    $certString = [System.Convert]::ToBase64String($certBytes)
+}
+else
+{
+
+    Write-Host "Reading the cert file from path $certFilePath"
+
+    $cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2($certFilePath, $certPassword)
+    $certString = [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes($certFilePath))
+}
+
+Login-AzureRmAccount
+
+if($addNewCertKeyCredential)
+{
+    Write-Host "Creating new KeyCredential for the app"
+    $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
+    New-AzureRmADAppCredential -ApplicationId $appId -CertValue $keyValue -EndDate $cert.NotAfter -StartDate $cert.NotBefore
+    Write-Host "Waiting for 30 seconds for the permissions to get propagated"
+    Start-Sleep -s 30
+}
+
+Select-AzureRmSubscription -SubscriptionId $subscriptionId
+Write-Host "Updating the certificate on HDInsight cluster..."
+
+Invoke-AzureRmResourceAction `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType 'Microsoft.HDInsight/clusters' `
+    -ResourceName $clusterName `
+    -ApiVersion '2015-03-01-preview' `
+    -Action 'updateclusteridentitycertificate' `
+    -Parameters @{ ApplicationId = $appId; Certificate = $certString; CertificatePassword = $certPassword.ToString() } `
+    -Force
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wurde beschrieben, wie Sie Azure Data Lake Store HDFS-kompatibel mit HDInsight verwenden. Dadurch können Sie skalierbare Datenerfassungslösungen mit langfristiger Archivierung aufbauen und HDInsight verwenden, um die Informationen innerhalb der gespeicherten strukturierten und unstrukturierten Daten zu entsperren.

@@ -10,15 +10,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance-reports
-ms.date: 09/19/2017
+ms.date: 07/16/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 0ac43637adc91c22aaab78f04732a613c74706d9
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f583e962023603dbd7428c32bde52b9040246814
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446126"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205118"
 ---
 # <a name="review-your-access"></a>Überprüfen des Zugriffs
 
@@ -26,7 +26,11 @@ Azure Active Directory (Azure AD) erleichtert Unternehmen das Verwalten des Zugr
 
 ## <a name="open-an-access-review"></a>Öffnen einer Zugriffsüberprüfung
 
-Um ausstehende Zugriffsüberprüfungen anzuzeigen, wählen Sie den Link in der E-Mail. Wenn Sie nicht über die E-Mail verfügen, können Sie die Zugriffsüberprüfungen mit folgenden Schritten anzeigen:
+Um die ausstehenden Zugriffsüberprüfungen anzuzeigen, klicken Sie auf den Zugriffsüberprüfungslink in der E-Mail. Ab August 2018 weisen die E-Mail-Benachrichtigungen für Azure AD-Rollen einen aktualisierten Entwurf auf. Das folgende Beispiel zeigt eine E-Mail, die gesendet wird, wenn ein Benutzer für die Rolle als Prüfer eingeladen wurde.
+
+![E-Mail zur Zugriffsüberprüfung](./media/active-directory-azure-ad-controls-how-to-review-your-access/new-ar-email.png)
+
+Wenn Sie nicht über die E-Mail verfügen, können Sie die Zugriffsüberprüfungen mit folgenden Schritten anzeigen:
 
 1. Melden Sie sich beim [Azure AD-Zugriffsbereich](https://myapps.microsoft.com) an.
 

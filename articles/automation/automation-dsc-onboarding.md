@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: dsc
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
 ms.topic: conceptual
+ms.date: 07/20/2018
 manager: carmonm
-ms.openlocfilehash: 4493f9da0de12fbdfffdf0f4da0dd581ac3b589f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 907bb9b998012a5b907c041b3eba061036289cc1
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195555"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186984"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Integrieren von Computern für die Verwaltung durch Azure Automation DSC
 
@@ -24,9 +24,8 @@ Wie [PowerShell DSC](https://technet.microsoft.com/library/dn249912.aspx)(Desire
 
 Azure Automation DSC kann verwendet werden, um eine Vielzahl von Computern zu verwalten:
 
-* Virtuelle Azure-Computer (klassisch)
-* Azure Virtual Machines
-* Virtuelle Computer von Amazon Web Services (AWS)
+* Virtuelle Azure-Computer (im klassischen Bereitstellungsmodell und im Azure Resource Manager-Bereitstellungsmodell bereitgestellt)
+* Amazon Web Services-EC2-Instanzen (AWS) 
 * Physische/virtuelle Windows-Computer, lokal oder in einer anderen Cloud als Azure/AWS
 * Physische/virtuelle Linux-Computer, lokal, in Azure oder in einer anderen Cloud als Azure
 

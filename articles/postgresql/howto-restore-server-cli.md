@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 4e745a5de8000e0f26491c9f4f236f7f8a735ae9
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: de0d6ee32380367bfba4a27958c9c1e739b5dba3
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635067"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173425"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>Gewusst wie: Sichern und Wiederherstellen eines Servers in Azure Database for PostgreSQL mit Azure CLI
 
@@ -84,6 +84,8 @@ Die Werte zum Standort und Tarif des wiederhergestellten Servers bleiben mit den
 
 Suchen Sie nach Abschluss der Wiederherstellung den neuen Server, um zu überprüfen, ob die Daten wie erwartet wiederhergestellt wurden.
 
+Der neue Server, der während einer Wiederherstellung erstellt wird, weist nicht die Firewallregeln auf, die auf dem ursprünglichen Server vorhanden waren. Firewallregeln müssen separat für diesen neuen Server eingerichtet werden.
+
 ## <a name="geo-restore"></a>Geowiederherstellung
 Wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben, kann aus der Sicherung dieses vorhandenen Servers ein neuer Server erstellt werden. Dieser neue Server kann in allen Regionen erstellt werden, in denen Azure Database for PostgreSQL verfügbar ist.  
 
@@ -121,6 +123,8 @@ Für den Befehl `az postgres server georestore` sind folgende Parameter erforder
 >Beim Erstellen von einer Geowiederherstellung erbt ein neuer Server Speichergröße und Tarif vom Quellserver. Diese Werte können während der Erstellung nicht geändert werden. Sobald der neue Server erstellt ist, kann die Speichergröße zentral hochskaliert werden.
 
 Suchen Sie nach Abschluss der Wiederherstellung den neuen Server, um zu überprüfen, ob die Daten wie erwartet wiederhergestellt wurden.
+
+Der neue Server, der während einer Wiederherstellung erstellt wird, weist nicht die Firewallregeln auf, die auf dem ursprünglichen Server vorhanden waren. Firewallregeln müssen separat für diesen neuen Server eingerichtet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Informieren Sie sich über die [Sicherungen](concepts-backup.md) des Diensts.

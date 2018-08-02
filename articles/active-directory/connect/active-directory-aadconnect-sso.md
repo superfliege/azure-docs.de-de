@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ad7c412ee92db53dd797e38df2fc6db0a762fe78
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 88869fbeef0475f2c674e0f154a3624545182363
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916165"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213230"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Nahtlose einmalige Anmeldung mit Azure Active Directory
 
@@ -55,17 +55,17 @@ Die nahtlose SSO kann mit den Anmeldemethoden [Kennworthashsynchronisierung](act
 - Leitet eine Anwendung (z.B. https://myapps.microsoft.com/contoso.com) die Parameter `domain_hint` (OpenID Connect) oder `whr` (SAML) – die Ihren Mandanten identifizieren, oder den Parameter `login_hint`, der den Benutzer identifiziert, in der Azure AD-Anmeldeanforderung weiter, werden Benutzer automatisch ohne Eingabe von Benutzername oder Kennwort angemeldet.
 - Benutzer genießen auch dann eine Anmeldung ohne Benutzereingriff, wenn eine Anwendung (z.B. https://contoso.sharepoint.com) Anmeldeanforderungen an Mandantenendpunkte von Azure AD – d.h. https://login.microsoftonline.com/contoso.com/<..> oder https://login.microsoftonline.com/<tenant_ID>/<..> – anstelle des allgemeinem Azure AD-Endpunkts (https://login.microsoftonline.com/common/<...>) sendet.
 - Die Abmeldung wird unterstützt. Dadurch können Benutzer ein anderes Azure AD-Konto für die Anmeldung auswählen, anstatt mit der nahtlosen einmaligen Anmeldung automatisch angemeldet zu werden.
-- Office 365-Clients (ab 16.0.8730.xxxx) werden mit einem nicht interaktiven Ablauf unterstützt.
+- Office 365 Win32-Clients (Outlook, Word, Excel etc.) mit Versionen ab 16.0.8730.xxxx werden mit einem nicht interaktiven Fluss unterstützt. Bei OneDrive müssen Sie das [OneDrive-Feature zur automatischen Konfiguration](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) aktivieren, um von einer automatischen Anmeldung profitieren zu können.
 - Kann über Azure AD Connect aktiviert werden
 - Es handelt sich um ein kostenloses Feature, sodass Sie für dessen Verwendung keine kostenpflichtigen Editionen von Azure AD benötigen.
 - Ist auf webbrowserbasierten Clients und Office-Clients möglich, die eine [moderne Authentifizierung](https://aka.ms/modernauthga) auf Plattformen und Browsern unterstützen, die eine Kerberos-Authentifizierung ausführen können:
 
 | Betriebssystem/Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Ja|Nein|Ja|Ja\*|N/V
-|Windows 8.1|Ja|N/V|Ja|Ja\*|N/V
-|Windows 8|Ja|N/V|Ja|Ja\*|N/V
-|Windows 7|Ja|N/V|Ja|Ja\*|N/V
+|Windows 10|JA|Nein|JA|Ja\*|N/V
+|Windows 8.1|JA|N/V|JA|Ja\*|N/V
+|Windows 8|JA|N/V|JA|Ja\*|N/V
+|Windows 7|JA|N/V|JA|Ja\*|N/V
 |Mac OS X|N/V|N/V|Ja\*|Ja\*|Ja\*
 
 \*Erfordert [zusätzliche Konfigurationsschritte](active-directory-aadconnect-sso-quick-start.md#browser-considerations)

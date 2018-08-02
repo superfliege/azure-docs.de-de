@@ -11,24 +11,47 @@ ms.topic: article
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
 manager: douge
-ms.openlocfilehash: 4dee39b56cf0f6494f6e79c70b85bbf711d33d65
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b2ef450a429b26843cf770a6243c6f4de932de43
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044593"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247320"
 ---
 # <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
 
 Dieses Handbuch enthält Informationen über allgemeine Probleme, die bei Verwendung von Azure Dev Spaces auftreten können.
 
+## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>Fehler „Azure Dev Spaces-Controller kann nicht erstellt werden“
+
+Dieser Fehler kann angezeigt werden, wenn beim Erstellen des Controllers ein Fehler auftritt. Wenn es sich um einen vorübergehenden Fehler handelt, löschen Sie den Controller und erstellen Sie ihn dann erneut.
+
+### <a name="try"></a>Versuchen Sie Folgendes:
+
+Löschen Sie den Controller über die CLI von Azure Dev Spaces (AZDS CLI). Sie können diesen Vorgang nicht in Visual Studio oder Cloud Shell ausführen. Um die AZDS CLI zu installieren, installieren Sie zuerst die Azure CLI, und führen Sie diesen Befehl aus:
+
+```cmd
+az aks use-dev-spaces -g <resource group name> -n <cluster name>
+```
+
+Führen Sie dann diesen Befehl aus, um den Controller zu löschen:
+
+```cmd
+azds remove -g <resource group name> -n <cluster name>
+```
+
+Sie können den Controller über die CLI oder in Visual Studio erneut erstellen. Folgen Sie den Anweisungen in den Tutorials wie beim ersten Start.
+
+
 ## <a name="error-service-cannot-be-started"></a>Fehler „Dienst kann nicht gestartet werden.“
 
 Dieser Fehler kann angezeigt werden, wenn der Dienstcode nicht gestartet wird. Die Ursache liegt häufig im Benutzercode. Um weitere Diagnoseinformationen zu erhalten, nehmen Sie die folgenden Änderungen Ihrer Befehle und Einstellungen vor:
 
+### <a name="try"></a>Versuchen Sie Folgendes:
+
 In der Befehlszeile:
 
-1. Verwenden Sie bei Verwendung von _azds.exe_ die Befehlszeilenoption „--verbose“, und verwenden Sie die Befehlszeilenoption „--output“ zur Angabe des Ausgabeformats.
+Verwenden Sie bei Verwendung von _azds.exe_ die Befehlszeilenoption „--verbose“, und verwenden Sie die Befehlszeilenoption „--output“ zur Angabe des Ausgabeformats.
  
     ```cmd
     azds up --verbose --output json

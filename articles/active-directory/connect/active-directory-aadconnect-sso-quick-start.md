@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2017
+ms.date: 07/25/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f8639cbb5c7ba86b4786f3d0b913d64bad59ad66
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: df936c697f500f5ab98becd1529cd321f9f3f5c4
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917515"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259118"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure AD Connect: Nahtloses einmaliges Anmelden – Schnellstart
 
@@ -41,9 +41,15 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
     >[!NOTE]
     >Die Azure AD Connect-Versionen 1.1.557.0, 1.1.558.0, 1.1.561.0 und 1.1.614.0 weisen ein Problem in Bezug auf die Kennworthashsynchronisierung auf. Wenn Sie die Kennworthashsynchronisierung _nicht_ zusammen mit der Passthrough-Authentifizierung verwenden möchten, finden Sie weitere Informationen dazu in den [Versionshinweisen zu Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470).
 
+* **Verwenden Sie eine unterstützte Azure AD Connect-Topologie**: Stellen Sie sicher, dass Sie eine der [hier](active-directory-aadconnect-topologies.md) beschriebenen, von Azure AD Connect unterstützten Topologien verwenden.
+
 * **Richten Sie Anmeldeinformationen des Domänenadministrators ein:**: Sie benötigen Anmeldeinformationen des Domänenadministrators für jede Active Directory-Gesamtstruktur, die:
     * Sie über Azure AD Connect mit Azure AD synchronisieren.
     * Benutzer enthält, für die Sie nahtloses SSO aktivieren möchten.
+    
+* **Aktivieren Sie die moderne Authentifizierung**: Sie müssen die [moderne Authentifizierung](https://aka.ms/modernauthga) auf Ihrem Mandanten aktivieren, damit dieses Feature funktioniert.
+
+* **Verwenden Sie die neuesten Versionen der Office 365-Clients**: Zur automatischen Anmeldung bei Office 365-Clients (Outlook, Word, Excel und andere) benötigen Sie Versionen ab 16.0.8730.xxxx.
 
 ## <a name="step-2-enable-the-feature"></a>Schritt 2: Aktivieren des Features
 
@@ -77,21 +83,27 @@ Befolgen Sie diese Anweisungen, um zu überprüfen, ob die nahtlose SSO ordnungs
 
 ## <a name="step-3-roll-out-the-feature"></a>Schritt 3: Ausrollen des Features
 
-Um das Rollout für das Feature durchzuführen, müssen Sie den Intranetzoneneinstellungen Ihrer Benutzer mithilfe der Gruppenrichtlinie in Active Directory die folgende Azure AD-URL hinzufügen:
+Sie können mithilfe der unten stehenden Anleitung nach und nach das Rollout des nahtlosen einmaligen Anmeldens für Ihre Benutzer ausführen. Sie fügen zuerst die folgende Azure AD-URL allen oder ausgewählten Intranetzoneneinstellungen Ihrer Benutzer mithilfe der Gruppenrichtlinie in Active Directory hinzu:
 
 - https://autologon.microsoftazuread-sso.com
-
 
 Darüber hinaus müssen Sie mithilfe der Gruppenrichtlinie eine Richtlinieneinstellung für eine Intranetzone namens **Aktualisierungen der Statusleiste per Skript zulassen** aktivieren. 
 
 >[!NOTE]
-> Die folgenden Anweisungen funktionieren nur für Internet Explorer und Google Chrome unter Windows (wenn ein Satz von URLs vertrauenswürdiger Websites wie für Internet Explorer freigegeben wird). Lesen Sie im nächsten Abschnitt die Anweisungen zum Einrichten von Mozilla Firefox und Google Chrome auf Mac.
+> Die folgenden Anweisungen funktionieren nur für Internet Explorer und Google Chrome unter Windows (wenn ein Satz von URLs vertrauenswürdiger Websites wie für Internet Explorer freigegeben wird). Lesen Sie im nächsten Abschnitt die Anweisungen zum Einrichten von Mozilla Firefox und Google Chrome auf macOS.
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>Warum müssen Sie Einstellungen von Benutzern für Intranetzonen ändern?
 
 Der Browser berechnet standardmäßig anhand der URL automatisch die richtige Zone (Internet oder Intranet). Beispielsweise ist „http://contoso/“ der Intranetzone und „http://intranet.contoso.com/“ der Internetzone zugeordnet (da die URL einen Punkt enthält). Browser senden keine Kerberos-Tickets an Cloudendpunkte wie die Azure AD-URL, sofern Sie die URL nicht explizit zur Intranetzone des Browsers hinzufügen.
 
-### <a name="detailed-steps"></a>Ausführliche Schritte
+Es gibt zwei Möglichkeiten, die Einstellungen von Benutzern für Intranetzonen zu ändern:
+
+| Option | Maßnahme des Administrators | Benutzererfahrung |
+| --- | --- | --- |
+| Gruppenrichtlinie | Der Administrator sperrt die Bearbeitung von Einstellungen für Intranetzonen. | Benutzer können ihre eigenen Einstellungen nicht ändern. |
+| Gruppenrichtlinieneinstellung |  Der Administrator lässt die Bearbeitung von Einstellungen für Intranetzonen zu. | Benutzer können ihre eigenen Einstellungen ändern. |
+
+### <a name="group-policy-option---detailed-steps"></a>Option „Gruppenrichtlinie“ – detaillierte Schritte
 
 1. Öffnen Sie das Tool Gruppenrichtlinienverwaltungs-Editor.
 2. Bearbeiten Sie die Gruppenrichtlinie, die auf einige oder alle Benutzer angewendet wird. In diesem Beispiel wird **Standardrichtlinie der Domäne** verwendet.
@@ -123,6 +135,32 @@ Der Browser berechnet standardmäßig anhand der URL automatisch die richtige Zo
 
     ![Einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso12.png)
 
+### <a name="group-policy-preference-option---detailed-steps"></a>Option „Gruppenrichtlinieneinstellung“ – detaillierte Schritte
+
+1. Öffnen Sie das Tool Gruppenrichtlinienverwaltungs-Editor.
+2. Bearbeiten Sie die Gruppenrichtlinie, die auf einige oder alle Benutzer angewendet wird. In diesem Beispiel wird **Standardrichtlinie der Domäne** verwendet.
+3. Navigieren Sie zu **Benutzerkonfiguration** > **Voreinstellungen** > **Windows-Einstellungen** > **Registrierung** > **Neu** > **Registrierungselement**.
+
+    ![Einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso15.png)
+
+4. Geben Sie die folgenden Werte in die entsprechenden Felder ein, und klicken Sie anschließend auf **OK**.
+   - **Schlüsselpfad**: ***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon***
+   - **Wertname**: ***https***.
+   - **Werttyp**: ***REG_DWORD***.
+   - **Wertdaten**: ***00000001***.
+ 
+    ![Einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso16.png)
+ 
+    ![Einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso17.png)
+
+6. Navigieren Sie zu **Benutzerkonfiguration** > **Verwaltungsvorlagen** > **Windows-Komponenten** > **Internet Explorer** > **Internetsystemsteuerung** > **Seite „Sicherheit“** > **Intranetzone**. Wählen Sie dann **Aktualisierungen der Statusleiste per Skript zulassen**.
+
+    ![Einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso11.png)
+
+7. Aktivieren Sie die Richtlinieneinstellung, und klicken Sie dann auf **OK**.
+
+    ![Einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso12.png)
+
 ### <a name="browser-considerations"></a>Überlegungen zum Browser
 
 #### <a name="mozilla-firefox-all-platforms"></a>Mozilla Firefox (alle Plattformen)
@@ -134,15 +172,15 @@ Mozilla Firefox verwendet nicht automatisch die Kerberos-Authentifizierung. Jede
 4. Geben Sie https://autologon.microsoftazuread-sso.com in das Feld ein.
 5. Klicken Sie auf **OK**, und öffnen Sie den Browser erneut.
 
-#### <a name="safari-mac-os"></a>Safari (Mac OS)
+#### <a name="safari-macos"></a>Safari (macOS)
 
-Stellen Sie sicher, dass der Computer mit Mac OS in AD eingebunden ist. Anweisungen zum Verknüpfen mit AD finden Sie unter [Best Practices for Integrating OS X with Active Directory](http://www.isaca.org/Groups/Professional-English/identity-management/GroupDocuments/Integrating-OS-X-with-Active-Directory.pdf) (Bewährte Methoden für die Integration von OS X in Active Directory).
+Stellen Sie sicher, dass der Computer mit macOS in AD eingebunden ist. Anweisungen zum Verknüpfen mit AD finden Sie unter [Best Practices for Integrating OS X with Active Directory](http://www.isaca.org/Groups/Professional-English/identity-management/GroupDocuments/Integrating-OS-X-with-Active-Directory.pdf) (Bewährte Methoden für die Integration von OS X in Active Directory).
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (alle Plattformen)
 
-Wenn Sie die Richtlinieneinstellungen [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) oder [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) in Ihrer Umgebung außer Kraft gesetzt haben, stellen Sie sicher, dass Sie ihnen auch die URL von Azure AD (https://autologon.microsoftazuread-sso.com)) hinzufügen.
+Wenn Sie die Richtlinieneinstellungen [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) oder [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) in Ihrer Umgebung außer Kraft gesetzt haben, stellen Sie sicher, dass Sie ihnen auch die URL von Azure AD (https://autologon.microsoftazuread-sso.com) hinzufügen.
 
-#### <a name="google-chrome-mac-os-only"></a>Google Chrome (nur Mac OS)
+#### <a name="google-chrome-macos-only"></a>Google Chrome (nur macOS)
 
 Informationen dazu, wie Sie in Google Chrome unter Mac OS und anderen Nicht-Windows-Plattformen die Azure AD-URL für die integrierte Authentifizierung auf eine Whitelist setzen, finden Sie unter [The Chromium Project Policy List](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist) (Richtlinienliste von The Chromium Project).
 
@@ -169,7 +207,12 @@ Führen Sie zum Testen des Szenarios, in dem der Benutzer weder den Benutzername
 
 ## <a name="step-5-roll-over-keys"></a>Schritt 5: Durchführen des Rollovers für Schlüssel
 
-In Schritt 2 erstellt Azure AD Connect Computerkonten (die Azure AD repräsentieren) in allen Active Directory-Gesamtstrukturen, für die Sie das nahtlose einmalige Anmelden aktiviert haben. Weitere Informationen finden Sie unter [Azure Active Directory: Nahtloses einmaliges Anmelden: Technische Einblicke](active-directory-aadconnect-sso-how-it-works.md). Zur Erhöhung der Sicherheit wird empfohlen, für die Kerberos-Entschlüsselungsschlüssel dieser Computerkonten regelmäßig ein Rollover durchzuführen. Anweisungen zum Durchführen des Rollovers für Schlüssel finden Sie unter [Nahtloses einmaliges Anmelden mit Azure Active Directory: Häufig gestellte Fragen (FAQs)](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account).
+In Schritt 2 erstellt Azure AD Connect Computerkonten (die Azure AD repräsentieren) in allen Active Directory-Gesamtstrukturen, für die Sie das nahtlose einmalige Anmelden aktiviert haben. Weitere Informationen finden Sie unter [Azure Active Directory: Nahtloses einmaliges Anmelden: Technische Einblicke](active-directory-aadconnect-sso-how-it-works.md).
+
+>[!IMPORTANT]
+>Wenn der Kerberos-Entschlüsselungsschlüssel auf einem Computerkonto kompromittiert wird, kann er dazu verwendet werden, für jeden Benutzer in der AD-Gesamtstruktur Kerberos-Tickets zu generieren. Böswillige Täter können dann Azure AD-Anmeldungen für kompromittierte Benutzer imitieren. Sie sollten das Rollover dieser Kerberos-Entschlüsselungsschlüssel regelmäßig durchführen – mindestens alle 30 Tage.
+
+Anweisungen zum Durchführen des Rollovers für Schlüssel finden Sie unter [Nahtloses einmaliges Anmelden mit Azure Active Directory: Häufig gestellte Fragen (FAQs)](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account). Wir arbeiten an einer Funktion zur Einführung des automatischen Rollovers von Schlüsseln.
 
 >[!IMPORTANT]
 >Sie müssen diesen Schritt nicht _sofort_ nach der Aktivierung des Features ausführen. Führen Sie für die Kerberos-Entschlüsselungsschlüssel mindestens alle 30 Tage ein Rollover durch.

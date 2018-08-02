@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: bhanupr
-ms.openlocfilehash: d6cd0dd8b326f5340e5014bba4babc6dd945744d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8845a049ebcda59bc0e6fd26618c33f51565e0ca
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31406829"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225488"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>Aktualisieren eines HDInsight-Clusters auf eine neuere Version
 Um die neuesten HDInsight-Funktionen nutzen zu können, wird empfohlen, HDInsight-Cluster auf die neueste Version zu aktualisieren. Befolgen Sie die nachstehenden Leitlinien zum Aktualisieren Ihrer HDInsight-Clusterversionen.
 
 > [!NOTE]
-> HDInsight-Cluster der Versionen 3.2 und 3.3 nähern sich dem Veralterungsdatum. Informationen zu unterstützten HDInsight-Versionen finden Sie unter [HDInsight-Komponentenversionen](hdinsight-component-versioning.md#supported-hdinsight-versions).
+> Informationen zu unterstützten HDInsight-Versionen finden Sie unter [HDInsight-Komponentenversionen](hdinsight-component-versioning.md#supported-hdinsight-versions).
 >
 >
 

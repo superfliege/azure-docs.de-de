@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 11af7a7a8acde263ad278239546e145245343581
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: deba3ad8a283b111dc94a5361f3fa4e73d95c0b8
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437194"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187382"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Verwenden von Azure API Management mit virtuellen Netzwerken
 Mit Azure Virtual Networks (VNets) können Sie alle Ihre Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann, und zu dem Sie den Zugang kontrollieren. Diese Netzwerke können dann durch verschiedene VPN-Technologien mit Ihren lokalen Netzwerken verbunden werden. Beginnen Sie mit dem folgenden Thema, um weitere Informationen zu Azure Virtual Networks zu erhalten: [Virtuelle Netzwerke](../virtual-network/virtual-networks-overview.md).
@@ -111,7 +111,7 @@ Beim Hosten einer API Management-Dienstinstanz in einem VNET werden die in der f
 | * / 80, 443 |Eingehend |TCP |INTERNET/VIRTUAL_NETWORK|Kommunikation zwischen Clients und API Management|Extern |
 | */3443 |Eingehend |TCP |INTERNET/VIRTUAL_NETWORK|Verwaltungsendpunkt für Azure-Portal und PowerShell |Intern |
 | * / 80, 443 |Ausgehend |TCP |VIRTUAL_NETWORK/INTERNET|**Abhängigkeit von Azure Storage**, Azure Service Bus und Azure Active Directory (falls zutreffend)|Extern & Intern |
-| * / 1433 |Ausgehend |TCP |VIRTUAL_NETWORK/INTERNET|**Zugriff auf Azure SQL-Endpunkte** |Extern & Intern |
+| * / 1433 |Ausgehend |TCP |VIRTUAL_NETWORK/SQL|**Zugriff auf Azure SQL-Endpunkte** |Extern & Intern |
 | * / 5672 |Ausgehend |TCP |VIRTUAL_NETWORK/INTERNET|Abhängigkeit für Richtlinie zum Anmelden bei Event Hub und Überwachungs-Agent |Extern & Intern |
 | */445 |Ausgehend |TCP |VIRTUAL_NETWORK/INTERNET|Abhängigkeit von Azure File Share für GIT |Extern & Intern |
 | * / 1886 |Ausgehend |TCP |VIRTUAL_NETWORK/INTERNET|Zum Veröffentlichen des Integritätsstatus in Resource Health erforderlich |Extern & Intern |
@@ -150,6 +150,7 @@ Beim Hosten einer API Management-Dienstinstanz in einem VNET werden die in der f
 * **Erste Einrichtung**: Wenn die erste Bereitstellung des API Management-Diensts in einem Subnetz nicht erfolgreich ist, sollte zuerst ein virtueller Computer in demselben Subnetz bereitgestellt werden. Stellen Sie als Nächstes eine Remotedesktop-Verbindung mit dem virtuellen Computer her, und überprüfen Sie die Konnektivität mit jeweils einer Ressource der unten aufgeführten Arten in Ihrem Azure-Abonnement.
     * Azure Storage-Blob
     * Azure SQL-Datenbank
+    * Azure Storage-Tabelle
 
  > [!IMPORTANT]
  > Nachdem Sie die Konnektivität überprüft haben, entfernen Sie sämtliche im Subnetz bereitgestellten Ressourcen, bevor Sie API Management im Subnetz bereitstellen.

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/13/2018
+ms.date: 07/19/2018
 ms.author: raynew
-ms.openlocfilehash: a02218922a4d4238abf752190293a788504e0cfb
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 516cb69042e923a46168c7655dc3e3010d9557e6
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070908"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173791"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Unterstützungsmatrix für die Replikation von VMware-VMs und physischen Servern in Azure
 
@@ -61,7 +61,7 @@ Site Recovery unterstützt die Replikation beliebiger Workloads, die auf einem u
 **Komponente** | **Details**
 --- | ---
 Computereinstellungen | Computer, die in Azure repliziert werden sollen, müssen die [Azure-Anforderungen](#azure-vm-requirements) erfüllen.
-Windows-Betriebssystem | Windows Server 2016, 64-Bit (Server Core, Server mit Desktopdarstellung), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 mit mindestens SP1. </br></br>  [Windows Server 2008 mit mindestens SP2 – 32-Bit und 64-Bit](migrate-tutorial-windows-server-2008.md) (nur Migration). </br></br> * *Windows 2016 Nano Server wird nicht unterstützt.*
+Windows-Betriebssystem | Windows Server 2016, 64-Bit (Server Core, Server mit Desktopdarstellung), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 mit mindestens SP1. </br></br>  [Windows Server 2008 mit mindestens SP2 – 32-Bit und 64-Bit](migrate-tutorial-windows-server-2008.md) (nur Migration). </br></br> Windows 2016 Nano Server wird nicht unterstützt.
 Linux-Betriebssystem | Red Hat Enterprise Linux: 5.2 bis 5.11, 6.1 bis 6.9, 7.0 bis 7.5 <br/><br/>CentOS: 5.2 bis 5.11, 6.1 bis 6.9, 7.0 bis 7.5 <br/><br/>Ubuntu 14.04 LTS Server[ (unterstützte Kernel-Versionen)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS Server[ (unterstützte Kernel-Versionen)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (unterstützte Kernel-Versionen)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1, SP2, SP3 [ (unterstützte Kernelversionen)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3 oder SUSE Linux Enterprise Server 11 SP4 * </br></br>Oracle Enterprise Linux 6.4, 6.5, unter dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird. <br/><br/></br>* *Das Upgrade replizierter Computer von SUSE Linux Enterprise Server 11 SP3 auf SP4 wird nicht unterstützt. Um ein Upgrade auszuführen, deaktivieren Sie die Replikation, und aktivieren Sie sie nach dem Upgrade erneut.*
 
 
@@ -120,7 +120,12 @@ Verzeichnisse | Diese Verzeichnisse (sofern als separate Partitionen/Dateisystem
 Erforderlicher Speicherbedarf| 2 GB auf der /root-Partition <br/><br/> 250 MB im Installationsordner
 XFSv5 | XFSv5-Features auf XFS-Dateisystemen wie Metadatenprüfsummen werden ab Mobility Service-Version 9.10 unterstützt. Verwenden Sie das Hilfsprogramm „xfs_info“, um den XFS-Superblock für die Partition zu überprüfen. Wenn „ftype“ auf 1 festgelegt ist, werden XFSv5-Features verwendet.
 
+## <a name="vmdisk-management"></a>VM-/Datenträgerverwaltung
 
+**Aktion** | **Details**
+--- | ---
+Größe des Datenträgers auf einer replizierten VM ändern | Unterstützt.
+Datenträger auf einer replizierten VM hinzufügen | Deaktivieren Sie die Replikation für die VM, fügen Sie den Datenträger hinzu, und aktivieren Sie dann erneut die Replikation. Das Hinzufügen eines Datenträgers auf einer replizierenden VM wird derzeit nicht unterstützt.
 
 ## <a name="network"></a>Netzwerk
 

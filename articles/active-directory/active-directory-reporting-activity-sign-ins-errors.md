@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/31/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: bbd826b636bebca90eacba43ca879a725cddf7d2
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: aab03c92bee0d3b69062cdcb179eebbb5c0fc8f8
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971073"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160245"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Fehlercodes des Berichts mit den Anmeldeaktivitäten im Azure Active Directory-Portal
 
@@ -59,6 +59,7 @@ Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglic
 
 |Error|BESCHREIBUNG|
 |---|---|
+|16000|Dies ist ein internes Implementierungsdetail und keine Fehlerbedingung. Sie können diesen Verweis ignorieren.|
 |20001|Es besteht ein Problem mit Ihrem Verbundidentitätsanbieter. Wenden Sie sich an Ihren Identitätsanbieter, um das Problem zu beheben.|
 |20012|Es besteht ein Problem mit Ihrem Verbundidentitätsanbieter. Wenden Sie sich an Ihren Identitätsanbieter, um das Problem zu beheben.|
 |20033|Es besteht ein Problem mit Ihrem Verbundidentitätsanbieter. Wenden Sie sich an Ihren Identitätsanbieter, um das Problem zu beheben.|
@@ -174,6 +175,7 @@ Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglic
 |81001|Das Kerberos-Ticket des Benutzers ist zu groß. Dies kann passieren, wenn der Benutzer zu vielen Gruppen angehört und das Kerberos-Ticket aus diesem Grund zu viele Gruppenmitgliedschaften enthält. Reduzieren Sie die Gruppenmitgliedschaften des Benutzers, und versuchen Sie es erneut.|
 |81005|Das Authentifizierungspaket wird nicht unterstützt.|
 |81007|Der Mandant ist nicht für das nahtlose einmalige Anmelden aktiviert.|
+|81012|Dies ist keine Fehlerbedingung. Es wird darauf hingewiesen, dass der Benutzer, der versucht, sich an Azure AD anzumelden, sich von dem Benutzer, der am Gerät angemeldet ist, unterscheidet. Sie können diesen Code in den Protokollen ignorieren.|
 |90010|Die Anforderung wird aus verschiedenen Gründen nicht unterstützt. Die Anforderung wird z.B. mit einer nicht unterstützten Anforderungsmethode ausgeführt (nur die POST-Methode wird unterstützt), oder der Tokensignaturalgorithmus, der angefordert wurde, wird nicht unterstützt. Wenden Sie sich an den Anwendungsentwickler.|
 |90014| Ein Pflichtfeld für eine Protokollmeldung fehlt. Wenden Sie sich an den Besitzer der Anwendung. Wenn Sie der Besitzer der Anwendung sind, stellen Sie sicher, dass Sie über alle erforderlichen Parameter für die Anmeldeanforderung verfügen. |
 |90072| Das Konto muss zunächst als externer Benutzer im Mandanten hinzugefügt werden. Melden Sie sich ab, und melden Sie sich mit einem anderen Azure AD-Konto erneut an.|

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 15c580a026495d11ffdeb161d4bf0793850040f5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0eefb8ecb7c9641b3e025054f54e2b7cf97b94bd
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32158765"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39206002"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -52,7 +52,7 @@ App Service-Web-Apps protokollieren auch Bereitstellungsinformationen, wenn Sie 
 Zum Aktivieren der Diagnose im [Azure-Portal](https://portal.azure.com) navigieren Sie zur Seite für Ihre Web-App und klicken auf **Einstellungen > Diagnoseprotokolle**.
 
 <!-- todo:cleanup dogfood addresses in screenshot -->
-![Protokolle Teil](./media/web-sites-enable-diagnostic-log/logspart.png)
+![Bereich „Protokolle“](./media/web-sites-enable-diagnostic-log/logspart.png)
 
 Wenn Sie die **Anwendungsdiagnose** aktivieren, können Sie auch die **Ebene** auswählen. Diese Einstellung ermöglicht das Filtern der aufgezeichneten Informationen nach **Informationen**, **Warnungen** oder **Fehlern**. Sie können auch **Ausführlich** auswählen, um alle von der Anwendung erzeugten Informationen zu protokollieren.
 
@@ -82,7 +82,7 @@ Sie können gleichzeitig eine Kombination aus Dateisystem-, Tabellen- und BLOB-S
 Obwohl alle drei Speicherorte dieselben grundlegenden Informationen zu protokollierten Ereignissen bieten, zeichnen **Table Storage** und **Blob Storage** mehr Informationen, wie Instanz-ID, Thread-ID und einen ausführlicheren Zeitstempel (Tick-Format), als die Protokollierung im **Dateisystem** auf.
 
 > [!NOTE]
-> In **Table Storage** oder **Blob Storage** gespeicherte Informationen können nur über Storage-Clients oder Anwendungen aufgerufen werden, die direkt mit diesen Speichersystemen arbeiten. Beispielsweise enthält Visual Studio 2013 einen Storage-Explorer, mit dem Table Storage oder Blob Storage erkundet werden können, und HDInsight kann auf die in Blob Storage gespeicherten Daten zugreifen. Sie können auch mithilfe der [Azure SDKs](/downloads/#)eine Anwendung schreiben, die auf den Azure-Speicher zugreift.
+> In **Table Storage** oder **Blob Storage** gespeicherte Informationen können nur über Storage-Clients oder Anwendungen aufgerufen werden, die direkt mit diesen Speichersystemen arbeiten. Beispielsweise enthält Visual Studio 2013 einen Storage-Explorer, mit dem Table Storage oder Blob Storage erkundet werden können, und HDInsight kann auf die in Blob Storage gespeicherten Daten zugreifen. Sie können auch mithilfe der [Azure SDKs](https://azure.microsoft.com/en-us/downloads/)eine Anwendung schreiben, die auf den Azure-Speicher zugreift.
 >
 > [!NOTE]
 > Diagnosen können auch über die Azure PowerShell mit dem Cmdlet **Set-AzureWebsite** aktiviert werden. Wenn Sie Azure PowerShell nicht installiert haben oder nicht zur Verwendung des Azure-Abonnements konfiguriert haben, finden Sie weitere Informationen unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).

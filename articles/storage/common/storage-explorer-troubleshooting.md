@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/08/2017
+ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 531ca6d781ae62aacd85dce600e3ea8b46ccf360
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: eeb23b52d5910c3da39d29d3a9c47f598ed5fc5a
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32777076"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188680"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage-Explorer – Leitfaden zur Problembehandlung
 
@@ -60,17 +60,35 @@ Wenn Sie mit den oben beschriebenen Schritten keine selbstsignierten Zertifikate
 
 ## <a name="sign-in-issues"></a>Probleme bei der Anmeldung
 
-Wenn Sie sich nicht anmelden können, probieren Sie die folgenden Methoden zur Problembehandlung:
+### <a name="reauthentication-loop-or-upn-change"></a>Schleife für eine erneute Authentifizierung oder Änderung des UPN
+Wenn Sie sich in einer Schleife für eine erneute Authentifizierung befinden oder den UPN von einem Ihrer Konten geändert haben, versuchen Sie Folgendes:
+1. Entfernen Sie alle Konten, und schließen Sie dann den Storage-Explorer.
+2. Löschen Sie den Ordner „.IdentityService“ von Ihrem Computer. Der Ordner befindet sich unter Windows unter `C:\users\<username>\AppData\Local`. Bei Mac und Linux finden Sie den Ordner im Stammverzeichnis Ihres Benutzerverzeichnisses.
+3. Wenn Sie Mac oder Linux verwenden, müssen Sie auch den Eintrag „Microsoft.Developer.IdentityService“ aus Ihrem Betriebssystemkeystore löschen. Unter Mac ist der Keystore die Anwendung „Gnome Keychain“. Bei Linux wird die Anwendung in der Regel als „Schlüsselbund“ bezeichnet, der Name kann jedoch abhängig von Ihrer Distribution abweichen.
 
-* Wenn Sie unter macOS arbeiten und im Anmeldefenster nie das Dialogfeld „Warten auf Authentifizierung...“ angezeigt wird, versuchen Sie diese [Schritte](#Resetting-the-Mac-Keychain).
+## <a name="mac-keychain-errors"></a>Mac-Keychainfehler
+Die macOS-Keychain kann sich manchmal in einem Zustand befinden, der Probleme in Verbindung mit der Storage Explorer-Authentifizierungsbibliothek verursacht. Versuchen Sie, diesen Zustand der Keychain mit folgenden Schritte aufzuheben:
+1. Schließen Sie Storage Explorer.
+2. Öffnen Sie die Keychain (**BEFEHL+ LEER**, geben Sie die Keychain ein, drücken Sie EINGABE).
+3. Wählen Sie den Keychain-Wert „login“ (Anmelden).
+4. Klicken Sie auf das Vorhängeschlosssymbol, um die Keychain zu sperren (das Schloss wird nach Abschluss des Vorgangs in gesperrter Position dargestellt; dies kann ein paar Sekunden dauern, je nachdem, welche Apps Sie geöffnet haben).
+
+    ![image](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
+
+5. Starten Sie Storage Explorer.
+6. Ein Popupfenster mit einem Text wie dem Folgenden sollte angezeigt werden: „Servicehub möchte auf den Schlüsselbund zugreifen.“ Geben Sie in diesem Fall das Kennwort Ihres Mac-Administratorkontos ein, und klicken Sie auf **Immer zulassen** (oder **Zulassen**, falls **Immer zulassen** nicht verfügbar ist).
+7. Versuchen Sie, sich anzumelden.
+
+### <a name="general-sign-in-troubleshooting-steps"></a>Allgemeine Schritte zur Behandlung von Anmeldeproblemen
+* Wenn Sie unter macOS arbeiten und im Anmeldefenster nie das Dialogfeld „Warten auf Authentifizierung...“ angezeigt wird, versuchen Sie diese [Schritte](#Mac-Keychain-Errors).
 * Neustart von Storage-Explorer
 * Wenn das Fenster „Authentifizierung“ leer ist, warten Sie mindestens eine Minute, bevor Sie das Dialogfeld für die Authentifizierung schließen.
-* Stellen Sie sicher, dass Ihre Proxy- und Zertifikateinstellungen für Ihren Computer und Storage-Explorer ordnungsgemäß konfiguriert sind.
-* Wenn Sie unter Windows arbeiten und auf dem gleichen Computer auf Visual Studio 2017 zugreifen und sich anmelden können, versuchen Sie, sich bei Visual Studio 2017 anzumelden.
+* Stellen Sie sicher, dass Ihre Proxy- und Zertifikateinstellungen für Ihren Computer und den Storage-Explorer ordnungsgemäß konfiguriert sind.
+* Wenn Sie unter Windows arbeiten und auf dem gleichen Computer auf Visual Studio 2017 zugreifen und sich anmelden können, versuchen Sie, sich bei Visual Studio 2017 anzumelden. Nach einer erfolgreichen Anmeldung bei Visual Studio 2017 sollten Sie den Storage-Explorer öffnen und Ihr Konto im Kontobereich sehen können. 
 
 Wenn keine dieser Methoden funktioniert, [eröffnen Sie auf GitHub ein Problem](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
-## <a name="unable-to-retrieve-subscriptions"></a>Abonnements können nicht abgerufen werden
+### <a name="missing-subscriptions-and-broken-tenants"></a>Fehlende Abonnements und fehlerhafte Mandanten
 
 Wenn Sie nach erfolgreicher Anmeldung Ihre Abonnements nicht abrufen können, probieren Sie die folgenden Methoden zur Problembehebung:
 
@@ -78,7 +96,7 @@ Wenn Sie nach erfolgreicher Anmeldung Ihre Abonnements nicht abrufen können, pr
 * Stellen Sie sicher, dass die Anmeldung mit der richtigen Azure-Umgebung (Azure, Azure China, Azure Deutschland, Azure US-Regierung oder Benutzerdefinierte Umgebung) erfolgt ist.
 * Wenn Sie sich hinter einem Proxy befinden, stellen Sie sicher, dass Sie den Storage-Explorer-Proxy richtig konfiguriert haben.
 * Entfernen Sie das Konto, und fügen Sie es wieder hinzu.
-* Beobachten Sie die Konsole mit den Entwicklertools (Hilfe > Entwicklertools ein-/ausschalten), während Storage-Explorer die Abonnements lädt. Suchen Sie nach Fehlermeldungen (roter Text) oder nach Meldungen mit dem Text "Abonnements für Mandant konnten nicht geladen werden". Wenn Sie diesbezügliche Meldungen finden, [eröffnen Sie auf GitHub ein Problem](https://github.com/Microsoft/AzureStorageExplorer/issues).
+* Wenn ein Link namens „Weitere Informationen“ vorhanden ist, prüfen Sie, welche Fehlermeldungen für die fehlerhaften Mandanten gemeldet werden. Wenn Sie sich nicht sicher sind, wie Sie mit den angezeigten Fehlermeldungen umgehen sollen, können Sie jederzeit [ein Thema auf GitHub erstellen](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
 ## <a name="cannot-remove-attached-account-or-storage-resource"></a>Zugeordnetes Konto oder verbundene Speicherressource kann nicht entfernt werden
 
@@ -155,19 +173,6 @@ Für andere Linux-Distributionen als Ubuntu 16.04 müssen Sie einige Abhängigke
 * Aktuelle GCC
 
 Abhängig von Ihrer Distribution müssen Sie möglicherweise weitere Pakete installieren. Die [Anmerkungen zu dieser Version](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409) des Storage-Explorers enthalten spezielle Schritte für einige Distributionen.
-
-## <a name="resetting-the-mac-keychain"></a>Zurücksetzen der Mac-Keychain
-Die macOS-Keychain kann sich manchmal in einem Zustand befinden, der Probleme in Verbindung mit der Storage Explorer-Authentifizierungsbibliothek verursacht. Versuchen Sie, diesen Zustand der Keychain mit folgenden Schritte aufzuheben:
-1. Schließen Sie Storage Explorer.
-2. Öffnen Sie die Keychain (**BEFEHL+ LEER**, geben Sie die Keychain ein, drücken Sie EINGABE).
-3. Wählen Sie den Keychain-Wert „login“ (Anmelden).
-4. Klicken Sie auf das Vorhängeschlosssymbol, um die Keychain zu sperren (das Schloss wird nach Abschluss des Vorgangs in gesperrter Position dargestellt; dies kann ein paar Sekunden dauern, je nachdem, welche Apps Sie geöffnet haben).
-
-    ![image](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
-
-5. Starten Sie Storage Explorer.
-6. Ein Popupfenster mit einer Meldung wie etwa „Service hub wants to access the keychain“ (Servicehub möchte auf Keychain zugreifen) sollte angezeigt werden. Geben Sie Ihr Mac-Administratorkennwort ein, und klicken Sie auf **Always Allow (Immer zulassen)** bzw. **Allow (Zulassen)**, wenn **Always Allow** nicht verfügbar ist.
-7. Versuchen Sie, sich anzumelden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

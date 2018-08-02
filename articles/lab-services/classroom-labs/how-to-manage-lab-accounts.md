@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 6039ea482b0968d48fc21ff3dfec82a2ff0db43d
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ff2968f8e2fa9a705817b020f2daa6582d78029c
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715325"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225301"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Verwalten von Lab-Konten in Azure Lab Services 
 In Azure Lab Services ist ein Lab-Konto ein Container für verwaltete Labs (beispielsweise Classroom-Labs). Ein Administrator richtet ein Lab-Konto mit Azure Lab Services ein und gewährt Lab-Besitzern Zugriff, sodass sie Labs unter dem Konto erstellen können. In diesem Artikel erfahren Sie, wie Sie ein Lab-Konto erstellen, alle Lab-Konten anzeigen oder ein Lab-Konto löschen.
@@ -45,7 +45,7 @@ In Azure Lab Services ist ein Lab-Konto ein Container für verwaltete Labs (beis
     ![Seite des Lab-Kontos](../media/how-to-manage-lab-accounts/lab-account-page.png)
 
 ## <a name="add-a-user-to-the-lab-creator-role"></a>Hinzufügen eines Benutzers zur Rolle „Lab-Ersteller“
-Um Lehrkräften die Berechtigung zum Erstellen von Labs für ihre Klassen zu erteilen, fügen Sie sie zur Rolle „Lab-Ersteller“ hinzu:
+Zum Einrichten eines Classroom-Labs in einem Labkonto muss der Benutzer Mitglied der Rolle **Ersteller des Labs** für das Labkonto sein. Das zum Erstellen des Labkontos verwendete Konto wird dieser Rolle automatisch hinzugefügt. Wenn Sie zum Erstellen eines Classroom-Labs das gleiche Benutzerkonto verwenden möchten, können Sie diesen Schritt überspringen. Führen Sie die folgenden Schritte aus, um zum Erstellen eines Classroom-Labs ein anderes Benutzerkonto zu verwenden: 
 
 1. Wählen Sie auf der Seite **Lab-Konto** die Option **Zugriffssteuerung (IAM)** aus, und klicken Sie auf der Symbolleiste auf **+ Hinzufügen**. 
 
@@ -54,6 +54,22 @@ Um Lehrkräften die Berechtigung zum Erstellen von Labs für ihre Klassen zu ert
 
     ![Hinzufügen eines Benutzers zur Rolle „Lab-Ersteller“](../media/tutorial-setup-lab-account/add-user-to-lab-creator-role.png)
 
+## <a name="specify-marketplace-images-available-to-lab-owners"></a>Festlegen von Marketplace-Images für Lab-Besitzer
+In diesem Abschnitt legen Sie Marketplace-Images fest, die Lab-Besitzer zum Erstellen von Classroom-Labs verwenden können. 
+
+1. Wählen Sie links im Menü die Option **Marketplace-Images** aus. Standardmäßig wird die vollständige Liste der Images (sowohl aktivierte als auch deaktivierte) angezeigt. Sie können die Liste so filtern, dass nur aktivierte/deaktivierte Images angezeigt werden, indem Sie oben in der Dropdownliste die Option **Nur aktiviert**/**Nur deaktiviert** auswählen. 
+
+    ![Seite mit Marketplace-Images](../media/tutorial-setup-lab-account/marketplace-images-page.png)
+2. Um ein aktiviertes Marketplace-Image zu **deaktivieren**, führen Sie eine der folgenden Aktionen aus: 
+    1. Wählen Sie **.... (Auslassungspunkte)** in der letzten Spalte und dann **Image deaktivieren** aus. 
+
+        ![Deaktivieren eines Images](../media/tutorial-setup-lab-account/disable-one-image.png) 
+    2. Wählen Sie mindestens ein Image in der Liste aus, indem Sie die Kontrollkästchen vor den Imagenamen in der Liste aktivieren, und wählen Sie **Ausgewählte Images deaktivieren** aus. 
+
+        ![Deaktivieren mehrerer Images](../media/tutorial-setup-lab-account/disable-multiple-images.png) 
+1. Ebenso führen Sie zum **Aktivieren** eines Marketplace-Images eine der folgenden Aktionen aus: 
+    1. Wählen Sie **... (Auslassungspunkte)** in der letzten Spalte und dann **Image aktivieren** aus. 
+    2. Wählen Sie mindestens ein Image in der Liste aus, indem Sie die Kontrollkästchen vor den Imagenamen in der Liste aktivieren, und wählen Sie **Ausgewählte Images aktivieren** aus. 
 
 ## <a name="view-lab-accounts"></a>Anzeigen von Lab-Konten
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.

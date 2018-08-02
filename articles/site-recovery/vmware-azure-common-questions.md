@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 07/06/2018
+ms.date: 07/19/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: dc316df754ea0b8630abe341dc5ce6b0adffa685
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: e8d30ae6cde7c787f1aa950506e0eb74bac0c12d
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920034"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238807"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Allgemeine Fragen – VMware-zu-Azure-Replikation
 
@@ -72,7 +72,7 @@ Ja, mit ExpressRoute können VMs zu Azure repliziert werden. Site Recovery repli
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Warum kann ich nicht über VPN replizieren?
 
-Wenn Sie zu Azure replizieren, erreicht der Replikationsdatenverkehr die öffentlichen Endpunkte eines Azure Storage-Kontos, d.h. Sie können nur über das öffentliche Internet mit ExpressRoute replizieren (öffentliches Peering), und VPN funktioniert nicht. 
+Wenn Sie zu Azure replizieren, erreicht der Replikationsdatenverkehr die öffentlichen Endpunkte eines Azure Storage-Kontos. Das bedeutet Sie können nur über das öffentliche Internet mit ExpressRoute replizieren (öffentliches Peering). VPN ist nicht verfügbar. 
 
 
 
@@ -95,8 +95,12 @@ Ja, sie können Datenträger von der Replikation ausschließen.
 ### <a name="can-i-replicate-vms-with-dynamic-disks"></a>Kann ich virtuelle Computer mit dynamischen Datenträgern replizieren?
 Dynamische Datenträger können repliziert werden. Der Betriebssystem-Datenträger muss ein Basisdatenträger sein.
 
-### <a name="can-i-add-a-new-vm-to-an-existing-replication-group"></a>Kann ich eine neue VM einer vorhandenen Replikationsgruppe hinzufügen?
-Ja.
+### <a name="if-i-use-replication-groups-for-multi-vm-consistency-can-i-add-a-new-vm-to-an-existing-replication-group"></a>Wenn ich Replikationsgruppen für die Konsistenz mehrerer VMs verwende, kann ich einer vorhandenen Replikationsgruppe eine neue VM hinzufügen?
+Ja, Sie können einer vorhandenen Replikationsgruppe neue VMs hinzufügen, wenn Sie die Replikation für sie aktivieren. Einer bestehenden Replikationsgruppe lassen sich keine VMs hinzufügen, nachdem die Replikation gestartet wurde. Außerdem können Sie keine Replikationsgruppe für vorhandene VMs erstellen.
+
+### <a name="can-i-modify-vms-that-are-replicating-by-adding-or-resizing-disks"></a>Kann ich replizierende VMs durch Hinzufügen oder Ändern der Datenträgergröße ändern?
+
+Für die VMware-Replikation in Azure können Sie die Datenträgergröße ändern. Wenn Sie neue Datenträger hinzufügen möchten, müssen Sie den Datenträger hinzufügen und den Schutz für die VM erneut aktivieren.
 
 ## <a name="configuration-server"></a>Konfigurationsserver
 

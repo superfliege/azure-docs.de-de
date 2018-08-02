@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 3204329dc7c9efe2b0ba0ae05d17bc93d51620b4
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 709afe03570ca4cf81718fb071778439444d6bf6
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37923468"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171982"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Unterstützungsmatrix für die Hyper-V-Replikation in Azure
 
@@ -48,22 +48,27 @@ Konfiguration des virtuellen Computers | Virtuelle Computer, die nach Azure repl
 Gastbetriebssystem | Alle von Azure unterstützten Gastbetriebssysteme.<br/><br/> Windows Server 2016 Nano Server wird nicht unterstützt.
 
 
+## <a name="vmdisk-management"></a>VM-/Datenträgerverwaltung
 
+**Aktion** | **Details**
+--- | ---
+Größe des Datenträgers auf einer replizierten Hyper-V-VM ändern | Nicht unterstützt. Deaktivieren Sie die Replikation, nehmen Sie die Änderung vor, und aktivieren Sie anschließend erneut die Replikation für die VM.
+Datenträger auf einer replizierten Hyper-V-VM hinzufügen | Nicht unterstützt. Deaktivieren Sie die Replikation, nehmen Sie die Änderung vor, und aktivieren Sie anschließend erneut die Replikation für die VM.
 
 ## <a name="hyper-v-network-configuration"></a>Hyper-V-Netzwerkkonfiguration
 
 **Komponente** | **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
 --- | --- | ---
-Hostnetzwerk: NIC-Teaming | Ja
-Hostnetzwerk: VLAN | Ja
-Hostnetzwerk: IPv4 | Ja
+Hostnetzwerk: NIC-Teaming | JA
+Hostnetzwerk: VLAN | JA
+Hostnetzwerk: IPv4 | JA
 Hostnetzwerk: IPv6 | Nein 
 Gast-VM-Netzwerk: NIC-Teaming | Nein 
-Gast-VM-Netzwerk: IPv4 | Ja
+Gast-VM-Netzwerk: IPv4 | JA
 Gast-VM-Netzwerk: IPv6 | Nein 
-Gast-VM-Netzwerk: statische IP-Adresse (Windows) | Ja
+Gast-VM-Netzwerk: statische IP-Adresse (Windows) | JA
 Gast-VM-Netzwerk: statische IP-Adresse (Linux) | Nein 
-Gast-VM-Netzwerk: Multi-NIC | Ja
+Gast-VM-Netzwerk: Multi-NIC | JA
 
 
 
@@ -71,15 +76,15 @@ Gast-VM-Netzwerk: Multi-NIC | Ja
 
 **Komponente** | **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
 --- | --- | ---
-Azure ExpressRoute | Ja | Ja
-ILB | Ja | Ja
-ELB | Ja | Ja
-Azure Traffic Manager | Ja | Ja
-Multi-NIC | Ja | Ja
-Reservierte IP | Ja | Ja
-IPv4 | Ja | Ja
-Quell-IP-Adresse beibehalten | Ja | Ja
-Azure Virtual Network-Dienstendpunkte<br/> (ohne Azure Storage-Firewalls) | Ja | Ja
+Azure ExpressRoute | JA | JA
+ILB | JA | JA
+ELB | JA | JA
+Azure Traffic Manager | JA | JA
+Multi-NIC | JA | JA
+Reservierte IP | JA | JA
+IPv4 | JA | JA
+Quell-IP-Adresse beibehalten | JA | JA
+Azure Virtual Network-Dienstendpunkte<br/> (ohne Azure Storage-Firewalls) | JA | JA
 Beschleunigter Netzwerkbetrieb | Nein  | Nein 
 
 
@@ -88,18 +93,18 @@ Beschleunigter Netzwerkbetrieb | Nein  | Nein
 **Speicher** | **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
 --- | --- | --- | ---
 NFS | Nicht verfügbar | Nicht verfügbar
-SMB 3.0 | Ja | Ja
-SAN (ISCSI) | Ja | Ja
-Multipfad (MPIO). Getestet mit:<br></br> Microsoft DSM, EMC PowerPath 5.7 SP4<br/><br/> EMC PowerPath DSM für CLARiiON | Ja | Ja
+SMB 3.0 | JA | JA
+SAN (ISCSI) | JA | JA
+Multipfad (MPIO). Getestet mit:<br></br> Microsoft DSM, EMC PowerPath 5.7 SP4<br/><br/> EMC PowerPath DSM für CLARiiON | JA | JA
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V-VM-Gastspeicher
 
 **Speicher** | **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
 --- | --- | ---
 VMDK | Nicht verfügbar | Nicht verfügbar
-VHD/VHDX | Ja | Ja
-VM der 2. Generation | Ja | Ja
-EFI/UEFI| Ja | Ja
+VHD/VHDX | JA | JA
+VM der 2. Generation | JA | JA
+EFI/UEFI| JA | JA
 Freigegebener Clusterdatenträger | Nein  | Nein 
 Verschlüsselter Datenträger | Nein  | Nein 
 NFS | Nicht verfügbar | Nicht verfügbar
@@ -107,25 +112,25 @@ SMB 3.0 | Nein  | Nein
 RDM | Nicht verfügbar | Nicht verfügbar
 Datenträger > 1 TB | Ja, bis zu 4.095 GB | Ja, bis zu 4.095 GB
 Datenträger: 4K für logischen und physischen Sektor | Nicht unterstützt: 1./2. Generation | Nicht unterstützt: 1./2. Generation
-Datenträger: 4K für logischen, 512 Byte für physischen Sektor | Ja |  Ja
-Volume mit Stripesetdatenträger > 1 TB<br/><br/> Logische Volumeverwaltung (Logical Volume Management, LVM) | Ja | Ja
-Speicherplätze | Ja | Ja
+Datenträger: 4K für logischen, 512 Byte für physischen Sektor | JA |  JA
+Volume mit Stripesetdatenträger > 1 TB<br/><br/> Logische Volumeverwaltung (Logical Volume Management, LVM) | JA | JA
+Speicherplätze | JA | JA
 Datenträger laufendem Systembetrieb hinzufügen/entfernen | Nein  | Nein 
-Ausschließen von Datenträgern | Ja | Ja
-Multipfad (MPIO) | Ja | Ja
+Ausschließen von Datenträgern | JA | JA
+Multipfad (MPIO) | JA | JA
 
 ## <a name="azure-storage"></a>Azure Storage
 
 **Komponente** | **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
 --- | --- | ---
-Lokal redundanter Speicher | Ja | Ja
-Georedundanter Speicher | Ja | Ja
-Georedundanter Speicher mit Lesezugriff | Ja | Ja
+Lokal redundanter Speicher | JA | JA
+Georedundanter Speicher | JA | JA
+Georedundanter Speicher mit Lesezugriff | JA | JA
 Speicherebene „Kalt“ | Nein  | Nein 
 Speicherebene „Heiß“| Nein  | Nein 
 Blockblobs | Nein  | Nein 
-Verschlüsselung ruhender Daten (SSE)| Ja | Ja
-Storage Premium | Ja | Ja
+Verschlüsselung ruhender Daten (SSE)| JA | JA
+Storage Premium | JA | JA
 Import-/Exportdienst | Nein  | Nein 
 Azure Storage-Firewalls für virtuelle Netzwerke, konfiguriert im Zielspeicher-/Cachespeicherkonto (zum Speichern von Replikationsdaten) | Nein  | Nein 
 
@@ -134,8 +139,8 @@ Azure Storage-Firewalls für virtuelle Netzwerke, konfiguriert im Zielspeicher-/
 
 **Feature** | **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
 --- | --- | ---
-Verfügbarkeitsgruppen | Ja | Ja
-HUB | Ja | Ja  
+Verfügbarkeitsgruppen | JA | JA
+HUB | JA | JA  
 Verwaltete Datenträger | Ja, für Failover.<br/><br/> Failback von verwalteten Datenträgern wird nicht unterstützt. | Ja, für Failover.<br/><br/> Failback von verwalteten Datenträgern wird nicht unterstützt.
 
 ## <a name="azure-vm-requirements"></a>Azure-VM-Anforderungen

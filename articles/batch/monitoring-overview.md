@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: fd4226254e076957ac8651f9172f1f3f82427a60
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 5a321ef7dca86993a913a283fe7b9b076c127d94
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001829"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171254"
 ---
 # <a name="monitor-batch-solutions"></a>Überwachen von Batch-Lösungen
 
@@ -63,7 +63,7 @@ Verwenden Sie in Ihren Batch-Anwendungen die Batch-APIs, um den Status von Resso
   > Durch die Verwendung von Application Insights können zusätzliche Kosten entstehen. Weitere Informationen finden Sie in den [Preisoptionen](https://azure.microsoft.com/pricing/details/application-insights/). 
   >
 
-* [BatchLabs](https://github.com/Azure/BatchLabs) ist ein kostenloses eigenständiges Clienttool mit zahlreichen Features, die Sie beim Erstellen, Debuggen und Überwachen von Azure Batch-Anwendungen unterstützen. Ein Installationspaket für Mac, Linux oder Windows können Sie [hier](https://azure.github.io/BatchLabs/) herunterladen. Konfigurieren Sie optional die Batch-Lösung zum [Anzeigen von Application Insights-Daten](https://github.com/Azure/batch-insights) (etwa VM-Leistungsindikatoren) in BatchLabs.
+* Der [Batch Explorer](https://github.com/Azure/BatchExplorer) ist ein kostenloses eigenständiges Clienttool mit zahlreichen Features, das Sie beim Erstellen, Debuggen und Überwachen von Azure Batch-Anwendungen unterstützt. Ein Installationspaket für Mac, Linux oder Windows können Sie [hier](https://azure.github.io/BatchExplorer/) herunterladen. Konfigurieren Sie optional die Batch-Lösung zum [Anzeigen von Application Insights-Daten](https://github.com/Azure/batch-insights) (etwa VM-Leistungsindikatoren) in Batch Explorer.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

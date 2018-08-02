@@ -17,53 +17,44 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 42792170593dbd94d0eae9b408c70f326891508a
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 59ae7e83bc2b76cb679b0baf1f5739f28ec7046c
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "36232019"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248279"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Was sind Bedingungen beim bedingten Zugriff in Azure Active Directory? 
 
-Mit dem [bedingten Zugriff von Azure Active Directory (Azure AD)](active-directory-conditional-access-azure-portal.md) können Sie den Zugriff von autorisierten Benutzern auf Ihre Cloud-Apps steuern. Bei einer Richtlinie für bedingten Zugriff definieren Sie die Reaktion („do this“) für den Grund der Auslösung Ihrer Richtlinie („when this happens“). 
+Mit dem [bedingten Zugriff von Azure Active Directory (Azure AD)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal) können Sie den Zugriff von autorisierten Benutzern auf Ihre Cloud-Apps steuern. Mit einer Richtlinie für bedingten Zugriff definieren Sie die Reaktion für die Ursache der Richtlinienauslösung. Ein Beispiel für eine Reaktion ist **Then do this**. Ein Beispiel für eine Ursache ist **When this happens**.
 
-![Kontrolle](./media/active-directory-conditional-access-conditions/10.png)
-
-
-Im Kontext des bedingten Zugriffs gilt:
-
-- „**When this happens**“ fällt unter **Bedingungen**. 
-- „**Then do this**“ fällt unter **Zugriffssteuerungen**.
-
-Die Kombination aus Ihren Bedingungen und Ihren Zugriffssteuerungen ergibt eine Richtlinie für bedingten Zugriff.
-
-![Kontrolle](./media/active-directory-conditional-access-conditions/61.png)
+![Ursache und Reaktion](./media/active-directory-conditional-access-conditions/10.png)
 
 
-Bedingungen, die Sie nicht in einer Richtlinie für bedingten Zugriff konfiguriert haben, werden nicht angewendet. Einige Bedingungen sind [obligatorisch](active-directory-conditional-access-best-practices.md#whats-required-to-make-a-policy-work) für die Anwendung einer Richtlinie für bedingten Zugriff auf eine Umgebung. 
+Im Kontext des bedingten Zugriffs ist **When this happens** eine **Bedingung**. **Then do this** ist eine **Zugriffssteuerung**. Die Kombination aus Ihren Bedingungen und Zugriffssteuerungen ergibt eine Richtlinie für bedingten Zugriff.
 
-In diesem Artikel erhalten Sie eine Übersicht über die Bedingungen und ihre Verwendung in einer Richtlinie für bedingten Zugriff. 
+![Richtlinie für bedingten Zugriff](./media/active-directory-conditional-access-conditions/61.png)
+
+
+Bedingungen, die Sie nicht in einer Richtlinie für bedingten Zugriff konfigurieren, werden nicht angewendet. Einige Bedingungen sind [obligatorisch](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-best-practices) für die Anwendung einer Richtlinie für bedingten Zugriff auf eine Umgebung. 
+
+Dieser Artikel bietet eine Übersicht über die Bedingungen und ihre Verwendung in einer Richtlinie für bedingten Zugriff. 
 
 ## <a name="users-and-groups"></a>Benutzer und Gruppen
 
 Die Bedingung für Benutzer und Gruppen ist in einer Richtlinie für bedingten Zugriff obligatorisch. In Ihrer Richtlinie können Sie entweder die Option **Alle Benutzer** oder bestimmte Benutzer und Gruppen auswählen.
 
-![Kontrolle](./media/active-directory-conditional-access-conditions/111.png)
+![Benutzer und Gruppen](./media/active-directory-conditional-access-conditions/111.png)
 
-Auswahl von:
+Wenn Sie **Alle Benutzer** auswählen, wird Ihre Richtlinie auf alle Benutzer (einschließlich Gastbenutzern) im Verzeichnis angewendet.
 
-- **Alle Benutzer**: Ihre Richtlinie wird auf alle Benutzer im Verzeichnis angewendet. Hierzu gehören auch Gastbenutzer.
+Wenn Sie **Benutzer und Gruppen auswählen** auswählen, können Sie die folgenden Optionen festlegen:
 
-- **Benutzer und Gruppen auswählen**: Sie können die folgenden Optionen festlegen:
+* Mit **Alle Gastbenutzer** können Sie eine Richtlinie auf B2B-Gastbenutzer anwenden. Diese Bedingung gilt für jedes Benutzerkonto, dessen Attribut **userType** **guest** entspricht. Sie können diese Einstellung verwenden, damit eine Richtlinie angewendet wird, sobald das Konto in einem Einladungsfluss in Azure AD erstellt wurde.
 
-    - **Alle Gastbenutzer**: Ermöglicht Ihnen, eine Richtlinie auf B2B-Gastbenutzer anzuwenden. Diese Bedingung entspricht jedem Benutzerkonto, dessen Attribut *userType* auf *guest* gesetzt ist. Sie können diese Einstellung in Fällen verwenden, in denen eine Richtlinie angewendet werden muss, sobald das Konto in einem Einladungsfluss in Azure AD erstellt wird.
+* Mit **Verzeichnisrollen** können Sie eine Richtlinie basierend auf der zugewiesenen Benutzerrolle anwenden. Diese Bedingung unterstützt Verzeichnisrollen wie **Globaler Administrator** oder **Kennwortadministrator**.
 
-    - **Verzeichnisrollen**: Ermöglicht Ihnen, eine Richtlinie basierend auf der Rollenzuweisung des Benutzers anzuwenden. Diese Bedingung unterstützt Verzeichnisrollen wie *Globaler Administrator* oder *Kennwortadministrator*.
-
-    - **Benutzer und Gruppen**: Ermöglicht Ihnen die Anwendung auf bestimmte Gruppen von Benutzern. Beispielsweise können Sie eine Gruppe auswählen, die alle Mitglieder der HR-Abteilung enthält, wenn Sie eine HR-App als Cloud-App ausgewählt haben.
-
-Dies kann eine Gruppe sein (beliebiger Typ von Gruppe in Azure AD), die dynamische oder zugewiesene Sicherheits- und Verteilungsgruppen umfasst.
+* Mit **Benutzer und Gruppen** können Sie bestimmte Benutzergruppen adressieren. Beispielsweise können Sie eine Gruppe auswählen, die alle Mitglieder der HR-Abteilung enthält, wenn eine HR-App als Cloud-App ausgewählt wurde. Als Gruppe gilt eine beliebige Gruppe in Azure AD, einschließlich dynamischer oder zugewiesener Sicherheits- und Verteilungsgruppen.
 
 Sie können bestimmte Benutzer und Gruppen auch aus einer Richtlinie ausschließen. Ein häufiger Anwendungsfall sind Dienstkonten, falls bei Ihrer Richtlinie die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) erzwungen wird. 
 
@@ -73,45 +64,43 @@ Die Ausrichtung auf bestimmte Gruppen von Benutzern ist für die Bereitstellung 
 
 ## <a name="cloud-apps"></a>Cloud-Apps 
 
-Eine Cloud-App ist eine Website- oder Dienst-App. Dies schließt auch Websites ein, die per Azure-Anwendungsproxy geschützt sind. Eine ausführliche Beschreibung der unterstützten Cloud-Apps finden Sie unter [Zuweisungen von Cloud-Apps](active-directory-conditional-access-technical-reference.md#cloud-apps-assignments).    
+Eine Cloud-App ist eine Website oder ein Dienst. Websites, die durch den Azure AD-Anwendungsproxy geschützt sind, sind ebenfalls Cloud-Apps. Eine ausführliche Beschreibung der unterstützten Cloud-Apps finden Sie unter [Zuweisungen von Cloud-Apps](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference#cloud-apps-assignments). 
 
-Die Bedingung für Cloud-Apps ist in einer Richtlinie für bedingten Zugriff obligatorisch. In Ihrer Richtlinie können Sie die Option **Alle Cloud-Apps** oder bestimmte Apps wählen.
+Die Bedingung für **Cloud-Apps** ist in einer Richtlinie für bedingten Zugriff obligatorisch. In Ihrer Richtlinie können Sie die Option **Alle Cloud-Apps** oder bestimmte Apps wählen.
 
-![Kontrolle](./media/active-directory-conditional-access-conditions/03.png)
+![Einschließen von Cloud-Apps](./media/active-directory-conditional-access-conditions/03.png)
 
-Sie können Folgendes auswählen:
+- Wählen Sie **Alle Cloud-Apps** als Basisoption für Richtlinien aus, die auf die gesamte Organisation angewendet werden sollen. Verwenden Sie diese Auswahl für Richtlinien, die eine mehrstufige Authentifizierung erfordern, wenn für eine Cloud-App ein Anmelderisiko erkannt wird. Eine auf **Alle Cloud-Apps** angewendete Richtlinie gilt für den Zugriff auf alle Websites und Dienste. Diese Einstellung beschränkt sich nicht auf die Cloud-Apps in der Liste **Cloud-Apps auswählen**. 
 
-- **Alle Cloud-Apps**: Dies ist die Basisoption für Richtlinien, die auf die gesamte Organisation angewendet werden sollen. Ein häufiger Anwendungsfall für diese Auswahl ist eine Richtlinie, für die die mehrstufige Authentifizierung erforderlich ist, wenn für eine Cloud-App ein Anmelderisiko erkannt wird. Eine auf **Alle Cloud-Apps** angewendete Richtlinie gilt für den Zugriff auf alle Websites und Dienste. Diese Einstellung ist nicht auf die Cloud-Apps in der Liste **Select Cloud apps** (Cloud-Apps auswählen) beschränkt.
+- Wählen Sie einzelne Cloud-Apps aus, um bestimmte Dienste nach Richtlinien auszurichten. Sie können beispielsweise vorgeben, dass Benutzer über ein [konformes Gerät](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) verfügen müssen, um auf SharePoint Online zuzugreifen. Diese Richtlinie wird auch auf andere Dienste angewendet, wenn diese auf SharePoint-Inhalte zugreifen. Ein Beispiel ist Microsoft Teams. 
 
-- Einzelne Cloud-Apps zur Ausrichtung auf bestimmte Dienste anhand der Richtlinie. Sie können beispielsweise vorgeben, dass Benutzer über ein [konformes Gerät](active-directory-conditional-access-policy-connected-applications.md) verfügen müssen, um auf SharePoint Online zuzugreifen. Diese Richtlinie wird auch auf andere Dienste angewendet, wenn diese auf SharePoint-Inhalte zugreifen, z.B. Microsoft Teams. 
-
-Sie können auch bestimmte Apps aus einer Richtlinie ausschließen. Diese Apps unterliegen dann aber weiterhin den Richtlinien, die auf die Dienste angewendet wurden, auf die zugegriffen wird. 
+Sie können bestimmte Apps von einer Richtlinie ausschließen. Diese Apps unterliegen jedoch weiterhin den Richtlinien, die für die Dienste gelten, auf die sie zugreifen. 
 
 
 
 ## <a name="sign-in-risk"></a>Anmelderisiko
 
-Ein Anmelderisiko ist ein Hinweis auf die Wahrscheinlichkeit (hoch, mittel oder niedrig), dass ein Anmeldeversuch nicht vom rechtmäßigen Besitzer eines Benutzerkontos durchgeführt wurde. Azure AD berechnet die Anmelderisikostufe während der Anmeldung eines Benutzers. Sie können die berechnete Anmelderisikostufe als Bedingung in einer Richtlinie für den bedingten Zugriff verwenden. 
+Ein Anmelderisiko ist ein Indikator für die hohe, mittlere oder geringe Wahrscheinlichkeit, dass ein Anmeldeversuch nicht vom rechtmäßigen Besitzer eines Benutzerkontos durchgeführt wurde. Azure AD berechnet die Stufe des Anmelderisikos bei der Benutzeranmeldung. Die berechnete Anmelderisikostufe kann als Bedingung in einer Richtlinie für bedingten Zugriff dienen. 
 
-![Bedingungen](./media/active-directory-conditional-access-conditions/22.png)
+![Anmelderisikostufen](./media/active-directory-conditional-access-conditions/22.png)
 
-Für die Nutzung dieser Bedingung muss [Azure Active Directory Identity Protection](active-directory-identityprotection.md) aktiviert sein.
+Für die Nutzung dieser Bedingung muss [Azure Active Directory Identity Protection](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-identityprotection-enable) aktiviert sein.
  
-Häufige Anwendungsfälle für diese Bedingung sind Richtlinien, für die Folgendes gilt:
+Häufige Anwendungsfälle für diese Bedingung sind Richtlinien, für die folgende Schutzmaßnahmen gelten: 
 
-- Blockieren von Benutzern mit einem hohen Anmelderisiko, um zu verhindern, dass potenziell unberechtigte Benutzer auf Ihre Cloud-Apps zugreifen. 
-- Erzwingen der mehrstufigen Authentifizierung für Benutzer mit einem mittleren Anmelderisiko. Indem die mehrstufige Authentifizierung erzwungen wird, können Sie zusätzliches Vertrauen schaffen, dass die Anmeldung vom rechtmäßigen Besitzer eines Kontos durchgeführt wird.
+- Blockieren von Benutzern mit einem hohen Anmelderisiko. Diese Schutzmaßnahme verhindert, dass potenziell unrechtmäßige Benutzer auf Ihre Cloud-Apps zugreifen. 
+- Erzwingen der mehrstufigen Authentifizierung für Benutzer mit einem mittleren Anmelderisiko. Durch das Erzwingen der mehrstufigen Authentifizierung erhalten Sie zusätzliche Sicherheit, dass die Anmeldung vom rechtmäßigen Besitzer eines Kontos durchgeführt wird.
 
-Weitere Informationen finden Sie unter [Riskante Anmeldungen](active-directory-identityprotection.md#risky-sign-ins).  
+Weitere Informationen finden Sie unter [Riskante Anmeldungen](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-security-risky-sign-ins).  
 
 ## <a name="device-platforms"></a>Geräteplattformen
 
-Die Geräteplattform ist durch das Betriebssystem gekennzeichnet, das auf dem Gerät ausgeführt wird. Azure AD identifiziert die Plattform, indem vom Gerät, z.B. einem Benutzer-Agent, bereitgestellte Informationen verwendet werden. Da dies unbestätigte Informationen sind, ist es ratsam, auf alle Plattformen eine Richtlinie anzuwenden: entweder durch das Blockieren des Zugriffs, das Erzwingen der Einhaltung von Intune-Richtlinien oder das Erzwingen einer Einbindung des Geräts in die Domäne. Die Standardvorgehensweise ist die Anwendung einer Richtlinie auf alle Geräteplattformen. 
+Die Geräteplattform ist durch das Betriebssystem gekennzeichnet, das auf dem Gerät ausgeführt wird. Azure AD identifiziert die Plattform, indem vom Gerät, z.B. einem Benutzer-Agent, bereitgestellte Informationen verwendet werden. Diese Informationen wurden nicht überprüft. Es wird empfohlen, auf alle Plattformen eine Richtlinie anzuwenden. Die Richtlinie sollte den Zugriff blockieren, die Einhaltung der Microsoft Intune-Richtlinien erfordern oder festlegen, dass das Gerät in die Domäne eingebunden ist. Standardmäßig wird eine Richtlinie auf alle Geräteplattformen angewendet. 
 
 
-![Bedingungen](./media/active-directory-conditional-access-conditions/24.png)
+![Konfigurieren von Geräteplattformen](./media/active-directory-conditional-access-conditions/24.png)
 
-Eine vollständige Liste der unterstützten Geräteplattformen finden Sie unter [Geräteplattformbedingung](active-directory-conditional-access-technical-reference.md#device-platform-condition).
+Eine Liste der unterstützten Geräteplattformen finden Sie unter [Geräteplattformbedingung](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference#device-platform-condition).
 
 
 Ein häufiger Anwendungsfall für diese Bedingung ist eine Richtlinie, mit der der Zugriff auf Ihre Cloud-Apps auf [verwaltete Geräte](active-directory-conditional-access-policy-connected-applications.md#managed-devices) beschränkt wird. Informationen zu weiteren Szenarien, z.B. zur Geräteplattformbedingung, finden Sie unter [App-basierter bedingter Zugriff mit Azure Active Directory](active-directory-conditional-access-mam.md).
@@ -120,128 +109,123 @@ Ein häufiger Anwendungsfall für diese Bedingung ist eine Richtlinie, mit der d
 
 ## <a name="device-state"></a>Gerätestatus
 
-Mit der Gerätestatusbedingung können in Hybrid-Azure AD eingebundene und als konform gekennzeichnete Geräte von einer Richtlinie für bedingten Zugriff ausgenommen werden. Dies ist hilfreich, wenn eine Richtlinie nur auf ein nicht verwaltetes Gerät angewendet werden sollte, um weitere Sitzungssicherheit zu bieten. Erzwingen Sie z.B. nur dann die Microsoft Cloud App Security-Sitzungssteuerung, wenn ein Gerät nicht verwaltet wird. 
+Die Gerätestatusbedingung schließt in Hybrid-Azure AD eingebundene und als konform gekennzeichnete Geräte von einer Richtlinie für bedingten Zugriff aus. Diese Bedingung ist hilfreich, wenn eine Richtlinie nur auf ein nicht verwaltetes Gerät angewendet werden soll, um zusätzliche Sitzungssicherheit zu bieten. Erzwingen Sie z.B. nur dann die Microsoft Cloud App Security-Sitzungssteuerung, wenn ein Gerät nicht verwaltet wird. 
 
 
-![Bedingungen](./media/active-directory-conditional-access-conditions/112.png)
+![Konfigurieren des Gerätstatus](./media/active-directory-conditional-access-conditions/112.png)
 
-Wenn Sie den Zugriff für nicht verwaltete Geräte blockieren möchten, sollten Sie [gerätebasierten bedingten Zugriff](active-directory-conditional-access-policy-connected-applications.md) implementieren.
+Wenn Sie den Zugriff für nicht verwaltete Geräte blockieren möchten, implementieren Sie den [gerätebasierten bedingten Zugriff](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online).
 
 
 ## <a name="locations"></a>Standorte
 
-Mit Standorten haben Sie die Möglichkeit Bedingungen zu definieren, je nachdem wo ein Verbindungsversuch initiiert wurde. 
-     
-![Bedingungen](./media/active-directory-conditional-access-conditions/25.png)
+Mit Standorten können Sie Bedingungen definieren, die darauf basieren, wo ein Verbindungsversuch stattgefunden hat. 
 
-Häufige Anwendungsfälle für diese Bedingung sind Richtlinien, für die Folgendes gilt:
+![Konfigurieren von Standorten](./media/active-directory-conditional-access-conditions/25.png)
+
+Häufige Anwendungsfälle für diese Bedingung sind Richtlinien mit den folgenden Schutzmaßnahmen:
 
 - Erzwingen der mehrstufigen Authentifizierung für Benutzer beim Zugriff auf einen Dienst, wenn sie sich außerhalb des Unternehmensnetzwerks befinden  
 
 - Blockieren des Zugriffs auf einen Dienst für Benutzer, die sich in bestimmten Ländern oder Regionen aufhalten 
 
-Weitere Informationen finden Sie unter [Was sind Standortbedingungen beim bedingten Zugriff in Azure Active Directory?](active-directory-conditional-access-locations.md)
+Weitere Informationen finden Sie unter [Was sind Standortbedingungen beim bedingten Zugriff in Azure Active Directory?](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-locations).
 
 
 ## <a name="client-apps"></a>Client-Apps
 
-Mit der Bedingung für Client-Apps können Sie eine Richtlinie auf unterschiedliche Arten von Anwendungen anwenden, z.B.:
-
-- Websites und Dienste
-- Mobile Apps und Desktopanwendungen 
+Mit der Bedingung für Client-Apps können Sie eine Richtlinie auf unterschiedliche Anwendungstypen anwenden, z. B. Websites, Dienste, mobile Apps und Desktopanwendungen. 
 
 
 
 Eine Anwendung wird wie folgt klassifiziert:
 
-- Als Website oder Dienst, wenn die Web-SSO-Protokolle, SAML, WS-Fed oder OpenID Connect für einen vertraulichen Client verwendet werden.
+- Als Website oder Dienst, wenn Web-SSO-Protokolle, SAML, WS-Fed oder OpenID Connect für einen vertraulichen Client verwendet werden.
 
 - Als mobile App oder Desktopanwendung, wenn für einen nativen Client OpenID Connect für eine mobile App verwendet wird.
 
-Eine vollständige Liste der Client-Apps, die Sie in der Richtlinie für bedingten Zugriff verwenden können, finden Sie in der Technischen Referenz zum bedingten Azure Active Directory-Zugriff unter [Client-Apps-Bedingung](active-directory-conditional-access-technical-reference.md#client-apps-condition).
+Eine vollständige Liste der Client-Apps, die Sie in der Richtlinie für bedingten Zugriff verwenden können, finden Sie in der technischen Referenz zum bedingten Zugriff in Azure Active Directory unter [Client-Apps-Bedingung](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference#client-apps-condition).
 
-Häufige Anwendungsfälle für diese Bedingung sind Richtlinien, für die Folgendes gilt:
+Häufige Anwendungsfälle für diese Bedingung sind Richtlinien mit den folgenden Schutzmaßnahmen: 
 
-- Erzwingen der Nutzung eines [konformen Geräts](active-directory-conditional-access-policy-connected-applications.md) für mobile Apps und Desktopanwendungen, mit denen große Datenmengen auf das Gerät heruntergeladen werden, während der Browserzugriff mit jedem Gerät zulässig ist.
+- Erzwingen der Nutzung eines [konformen Geräts](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) für mobile Apps und Desktopanwendungen, mit denen große Datenmengen auf das Gerät heruntergeladen werden. Der Browserzugriff ist dabei mit jedem Gerät zulässig.
 
 - Blockieren des Zugriffs über Webanwendungen und Zulassen des Zugriffs über mobile Apps und Desktopanwendungen.
 
-Zusätzlich zur Verwendung von Web-SSO und modernen Authentifizierungsprotokollen können Sie diese Bedingung auch auf E-Mail-Anwendungen anwenden, für die Exchange ActiveSync verwendet wird, z.B. die nativen E-Mail-Apps auf den meisten Smartphones. Derzeit müssen Client-Apps, für die Legacyprotokolle genutzt werden, mit AD FS geschützt werden.
+Sie können diese Bedingung auf Web-SSO und moderne Authentifizierungsprotokolle anwenden. Außerdem können Sie sie auch auf E-Mail-Apps anwenden, die Microsoft Exchange ActiveSync verwenden. Ein Beispiel sind native E-Mail-Apps auf den meisten Smartphones. Derzeit müssen Client-Apps, die Legacyprotokolle verwenden, mit Azure AD-Verbunddiensten gesichert werden.
 
-Sie können diese Bedingung nur auswählen, wenn **Office 365 Exchange Online** als einzige Cloud-App ausgewählt ist.
+Sie können die Client-Apps-Bedingung nur auswählen, wenn Microsoft Office 365 Exchange Online die einzige ausgewählte Cloud-App ist.
 
 ![Cloud-Apps](./media/active-directory-conditional-access-conditions/32.png)
 
-Die Auswahl von **Exchange ActiveSync** als Client-App-Bedingung wird nur unterstützt, wenn Sie keine anderen Bedingungen in einer Richtlinie konfiguriert haben. Sie können den Umfang dieser Bedingung aber so eingrenzen, dass er nur für unterstützte Plattformen gilt.
+Die Auswahl von **Exchange ActiveSync** als Client-App-Bedingung wird nur unterstützt, wenn Sie keine anderen Bedingungen in einer Richtlinie konfiguriert haben. Sie können diese Bedingung aber so eingrenzen, dass sie nur für unterstützte Plattformen gilt.
 
  
-![Unterstützte Plattformen](./media/active-directory-conditional-access-conditions/33.png)
+![Anwendend er Richtlinie nur auf unterstützte Plattformen](./media/active-directory-conditional-access-conditions/33.png)
 
-Das ausschließliche Anwenden dieser Bedingung auf unterstützte Plattformen entspricht der Verwendung von allen Geräteplattformen bei einer [Geräteplattformbedingung](active-directory-conditional-access-conditions.md#device-platforms).
+Das ausschließliche Anwenden dieser Bedingung auf unterstützte Plattformen entspricht der Verwendung von allen Geräteplattformen bei einer [Geräteplattformbedingung](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online).
 
-![Unterstützte Plattformen](./media/active-directory-conditional-access-conditions/34.png)
+![Konfigurieren von Geräteplattformen](./media/active-directory-conditional-access-conditions/34.png)
 
 
- Weitere Informationen finden Sie unter 
+ Weitere Informationen und Beispiele finden Sie in diesen Artikeln:
 
-- [Einrichten von SharePoint Online und Exchange Online für bedingten Zugriff mit Azure Active Directory](active-directory-conditional-access-no-modern-authentication.md)
+- [Einrichten von SharePoint Online und Exchange Online für bedingten Zugriff mit Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-no-modern-authentication)
  
-- [App-basierter bedingter Zugriff mit Azure Active Directory](active-directory-conditional-access-mam.md) 
+- [App-basierter bedingter Zugriff mit Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-mam) 
 
 
 ### <a name="legacy-authentication"></a>Legacyauthentifizierung  
 
-Der bedingte Zugriff gilt jetzt für ältere Office-Clients, die keine moderne Authentifizierung unterstützen, und für Clients, für die E-Mail-Protokolle wie POP, IMAP, SMTP usw. verwendet werden. Dies ermöglicht Ihnen das Konfigurieren von Richtlinien wie **Zugriff von anderen Clients blockieren**.
+Der bedingte Zugriff gilt nun auch für ältere Microsoft Office-Clients, die keine moderne Authentifizierung unterstützen. Dies gilt auch für Clients, die E-Mail-Protokolle wie POP, IMAP und SMTP verwenden. Durch die Verwendung von Legacyauthentifizierung können Sie Richtlinien wie **Zugriff über andere Clients blockieren** konfigurieren.
 
 
-![Legacyauthentifizierung](./media/active-directory-conditional-access-conditions/160.png)
- 
-
+![Konfigurieren von Client-Apps](./media/active-directory-conditional-access-conditions/160.png)  
 
 
 #### <a name="known-issues"></a>Bekannte Probleme
 
-- Durch das Konfigurieren einer Richtlinie für **Andere Clients** wird die gesamte Organisation für bestimmte Clients blockiert, z.B. SPConnect. Dies liegt daran, dass diese älteren Clients die Authentifizierung auf ungewöhnliche Weise durchführen. Dieses Problem gilt nicht für die wichtigen Office-Anwendungen, z.B. die älteren Office-Clients. 
+- Durch das Konfigurieren einer Richtlinie für **Andere Clients** wird die gesamte Organisation für bestimmte Clients blockiert, z.B. SPConnect. Dies tritt ein, weil sich ältere Clients auf unerwartete Weise authentifizieren. Dieses Problem gilt nicht für Office-Hauptanwendungen wie ältere Office-Clients. 
 
 - Es kann bis zu 24 Stunden dauern, bis die Richtlinie wirksam wird. 
 
 
 #### <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
-**Werden hierdurch die Exchange-Webdienste (EWS) blockiert?**
+**F:** Blockiert diese Authentifizierung die Microsoft Exchange-Webdienste?
 
-Dies hängt vom Authentifizierungsprotokoll ab, das für EWS verwendet wird. Wenn für die EWS-Anwendung eine moderne Authentifizierung genutzt wird, wird dies von der Client-App „Mobile Apps und Desktop-Apps“ abgedeckt. Wenn für die EWS-Anwendung die Standardauthentifizierung verwendet wird, wird dies durch die Client-App „Andere Clients“ abgedeckt.
+Dies hängt vom Authentifizierungsprotokoll ab, das die Exchange-Webdienste verwenden. Wenn die Anwendung der Exchange-Webdienste eine moderne Authentifizierung nutzt, wird dies von der Client-App **Mobile Apps und Desktopclients** abgedeckt. Die Standardauthentifizierung wird durch die Client-App **Andere Clients** abgedeckt.
 
 
-**Welche Steuerelemente kann ich für „Andere Clients“ verwenden?**
+**F:** Welche Steuerelemente kann ich für **Andere Clients** verwenden?
 
-Für „Andere Clients“ können alle Steuerelemente konfiguriert werden. In Bezug auf die Endbenutzerumgebung wird der Zugriff aber für alle Fälle blockiert. Für „Andere Clients“ werden Steuerelemente wie MFA, Konformes Gerät, Domänenbeitritt usw. nicht unterstützt. 
+Für **Andere Clients** können alle Steuerelemente konfiguriert werden. Allerdings wird in der Endbenutzerumgebung der Zugriff für alle Fälle blockiert. **Andere Clients** unterstützt nicht Steuerelemente wie „MFA“, „Konformes Gerät“, „Domänenbeitritt“. 
  
-**Welche Bedingungen kann ich für „Andere Clients“ verwenden?**
+**F:** Welche Bedingungen kann ich für **Andere Clients** verwenden?
 
-Für „Andere Clients“ können alle Bedingungen konfiguriert werden.
+Für **Andere Clients** können alle Bedingungen konfiguriert werden.
 
-**Werden für Exchange ActiveSync alle Bedingungen und Steuerelemente unterstützt?**
+**F:** Unterstützt Exchange ActiveSync alle Bedingungen und Steuerelemente?
 
-Nein. Hier ist die Zusammenfassung für die Unterstützung von Exchange ActiveSync (EAS) angegeben:
+Nein. Die folgende Liste enthält weitere Informationen zur Exchange ActiveSync-Unterstützung: 
 
-- Für EAS wird nur die Zielgruppenadressierung für Benutzer und Gruppen unterstützt. Gäste und Rollen werden nicht unterstützt. Wenn die Gast-/Rollenbedingung konfiguriert wird, werden alle Benutzer blockiert, da wir nicht bestimmen können, ob die Richtlinie für den Benutzer gelten soll oder nicht.
+- Exchange ActiveSync unterstützt nur Zielgruppenadressierung für Benutzer und Gruppen. Gäste und Rollen werden nicht unterstützt. Wenn eine Gast- oder Rollenbedingung konfiguriert wird, werden alle Benutzer blockiert. Exchange ActiveSync blockiert alle Benutzer, weil das Protokoll nicht ermittelt kann, ob die Richtlinie für einen Benutzer gilt.
 
-- EAS funktioniert nur mit Exchange als Cloud-App. 
+- Exchange ActiveSync funktioniert nur mit Microsoft Exchange Online als Cloud-App. 
 
-- Mit Ausnahme der eigentlichen Client-App unterstützt EAS keine Bedingung.
+- Exchange ActiveSync unterstützt keine Bedingungen, mit Ausnahme der Client-App selbst. 
 
-- EAS kann mit allen Steuerelementen konfiguriert werden (alles andere als Gerätekonformität führt zur Blockierung).
+- Exchange ActiveSync kann mit jedem Steuerelement konfiguriert werden. Alle Steuerelemente mit Ausnahme der Gerätecompliance werden blockiert.
 
-**Gelten die Richtlinien für alle zukünftigen Client-Apps?**
+**F:** Gelten die Richtlinien standardmäßig für alle zukünftigen Client-Apps?
 
-Nein. Es ist gibt keine Änderung beim Standardverhalten von Richtlinien. Die Richtlinien gelten weiterhin standardmäßig für Browser und mobile Anwendungen bzw. Desktopclients.
+Nein. Es ist gibt keine Änderung beim Standardverhalten von Richtlinien. Die Richtlinien gelten weiterhin standardmäßig für Browser, mobile Apps und Desktopclients.
 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie wissen möchten, wie Sie eine Richtlinie für den bedingten Zugriff konfigurieren, finden Sie Informationen unter [Schnellstart: Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](active-directory-conditional-access-app-based-mfa.md).
+- Weitere Informationen zum Konfigurieren einer Richtlinie für bedingten Zugriff finden Sie unter [Schnellstart: Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-app-based-mfa).
 
-- Wenn Sie bereit sind, Richtlinien für den bedingten Zugriff für Ihre Umgebung zu konfigurieren, lesen Sie unter [Best Practices für den bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-best-practices.md) nach. 
+- Wie Sie Richtlinien für bedingten Zugriff für Ihre Umgebung konfigurieren, erfahren Sie unter [Best Practices für den bedingten Zugriff in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-best-practices). 
 

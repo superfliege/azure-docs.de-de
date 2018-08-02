@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 83d5b89422a0181c06dbfe3b2bd8975ef7214b9d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f6d49ffa59ed53c0a1966a4132fd5fe1689a13ce
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193256"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247348"
 ---
 # <a name="azure-automation-dsc-overview"></a>Azure Automation DSC – Übersicht
 
@@ -27,7 +27,7 @@ Azure Automation DSC bietet verschiedene Vorteile gegenüber der Verwendung von 
 
 ### <a name="built-in-pull-server"></a>Integrierter Pullserver
 
-Azure Automation bietet einen [DSC-Pullserver](https://msdn.microsoft.com/powershell/dsc/pullserver), sodass Zielknoten Konfigurationen automatisch empfangen, dem gewünschten Zustand entsprechen und ihre Konformität melden.
+Azure Automation bietet einen DSC-Pullserver, der dem [Windows-Dienst DSC](/powershell/dsc/pullserver) ähnelt, sodass Zielknoten Konfigurationen automatisch empfangen, dem gewünschten Zustand entsprechen und ihre Konformität melden.
 Durch den integrierten Pullserver in Azure Automation entfällt die Notwendigkeit zur Einrichtung und Verwaltung Ihres eigenen Pullservers.
 Azure Automation eignet sich für virtuelle oder physische Windows- oder Linux-Computer in Cloud- oder lokalen Umgebungen.
 

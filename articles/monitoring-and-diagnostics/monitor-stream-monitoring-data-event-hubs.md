@@ -5,19 +5,21 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 7/06/2018
+ms.date: 7/24/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 5e8d8947643494e06faaabb5335c52df5908303e
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 0376fc3eb3ad0b98f1d98ecd35683b08e08090da
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902988"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248095"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool
 
 Azure Monitor stellt eine zentrale Pipeline für den Zugriff auf sämtliche Überwachungsdaten aus der Azure-Umgebung bereit, sodass Sie mühelos SIEM- und Überwachungstools von Partnern für die Datenverarbeitung einrichten können. In diesem Artikel wird das Einrichten der verschiedenen Schichten an Daten aus der Azure-Umgebung erläutert, die für die Erfassung durch ein externes Tool an einen einzelnen Event Hubs-Namespace oder Event Hub gesendet werden sollen.
+
+> [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
 
 ## <a name="what-data-can-i-send-into-an-event-hub"></a>Welche Daten kann ich an einen Event Hub senden? 
 
@@ -27,8 +29,9 @@ In Ihrer Azure-Umgebung gibt es mehrere Schichten von Überwachungsdaten, weshal
   - Durch Instrumentieren des Codes mit einem SDK wie dem [Application Insights-SDK](../application-insights/app-insights-overview.md)
   - Durch Ausführen eines Überwachungs-Agents, der nach neuen Anwendungsprotokollen auf dem Computer lauscht, auf dem Ihre Anwendung ausgeführt wird (z.B. der [Azure-Diagnose-Agent für Windows](./azure-diagnostics.md) oder [Azure-Diagnose-Agent für Linux](../virtual-machines/linux/diagnostic-extension.md))
 - **Überwachungsdaten zum Gast-BS:** Daten zum Betriebssystem, unter dem die Anwendung ausgeführt wird. Zu Überwachungsdaten zum Gast-BS zählen z.B. das Linux-Syslog oder Windows-Systemereignisse. Um diesen Typ von Daten zu sammeln, müssen Sie einen Agent wie den [Azure-Diagnose-Agent für Windows](./azure-diagnostics.md) oder [Azure-Diagnose-Agent für Linux](../virtual-machines/linux/diagnostic-extension.md) installieren.
-- **Überwachungsdaten zu Azure-Ressourcen:** Daten zum Betrieb einer Azure-Ressource. Bei einigen Arten von Azure-Ressourcen wie virtuellen Computern gibt es ein Gast-BS und Anwendungen, die für die Überwachung innerhalb dieses Azure-Diensts vorgesehen sind. Bei anderen Azure-Ressourcen wie Netzwerksicherheitsgruppen sind Überwachungsdaten zu Ressourcen in der höchsten Datenschicht verfügbar (da weder ein Gast-BS noch eine Anwendung in diesen Ressourcen ausgeführt wird). Diese Daten können mithilfe von [Ressourcendiagnoseeinstellungen](./monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) gesammelt werden.
-- **Überwachungsdaten zur Azure-Plattform:** Daten zum Betrieb und zur Verwaltung eines Azure-Abonnements oder -Mandanten sowie Daten zur Integrität und zum Betrieb von Azure selbst. Überwachungsdaten zur Plattform können beispielsweise [Aktivitätsprotokolle](./monitoring-overview-activity-logs.md) sein, einschließlich Dienstintegritätsdaten und Active Directory-Überwachungsdaten. Diese Daten können auch mithilfe von Diagnoseeinstellungen gesammelt werden.
+- **Überwachungsdaten zu Azure-Ressourcen:** Daten zum Betrieb einer Azure-Ressource. Bei einigen Arten von Azure-Ressourcen wie virtuellen Computern gibt es ein Gast-BS und Anwendungen, die für die Überwachung innerhalb dieses Azure-Diensts vorgesehen sind. Bei anderen Azure-Ressourcen wie Netzwerksicherheitsgruppen sind Überwachungsdaten zu Ressourcen in der höchsten Datenschicht verfügbar (da weder ein Gast-BS noch eine Anwendung in diesen Ressourcen ausgeführt wird). Diese Daten können mithilfe von [Ressourcendiagnoseeinstellungen](./monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) gesammelt werden.
+- **Überwachungsdaten zum Azure-Abonnement:** Daten zum Betrieb und zur Verwaltung eines Azure-Abonnements sowie Daten zur Integrität und zum Betrieb von Azure selbst. Das [Aktivitätsprotokoll](./monitoring-overview-activity-logs.md) enthält die meisten Überwachungsdaten zum Abonnement, z. B. zu Dienstintegritätsvorfällen und Azure Resource Manager-Überwachungen. Sie können diese Daten mit einem Protokollprofil sammeln.
+- **Überwachungsdaten zu Azure-Mandanten:** Daten zum Betrieb von Azure-Diensten auf Mandantenebene, z. B. Azure Active Directory. Azure Active Directory-Überwachungen und -Anmeldungen sind Beispiele für Mandantenüberwachungsdaten. Diese Daten können mithilfe einer Diagnoseeinstellung für Mandanten gesammelt werden.
 
 Daten aus beliebigen Schichten können an einen Event Hub gesendet und in ein Partnertool geladen werden. In den nächsten Abschnitten wird beschrieben, wie Sie Daten aus den einzelnen Schichten zum Streamen an einen Event Hub konfigurieren können. Bei der Erläuterung der Schritte wird davon ausgegangen, dass bereits zu überwachende Ressourcen in dieser Schicht vorhanden sind.
 
@@ -45,11 +48,17 @@ Bevor Sie beginnen, müssen Sie [einen Event Hubs-Namespace und einen Event Hub 
 
 Lesen Sie auch die Informationen unter [Azure Event Hubs – häufig gestellte Fragen](../event-hubs/event-hubs-faq.md).
 
-## <a name="how-do-i-set-up-azure-platform-monitoring-data-to-be-streamed-to-an-event-hub"></a>Wie richte ich die Überwachungsdaten zur Azure-Plattform für das Streaming an einen Event Hub ein?
+## <a name="how-do-i-set-up-azure-tenant-monitoring-data-to-be-streamed-to-an-event-hub"></a>Wie richte ich Überwachungsdaten zu Azure-Mandaten für das Streaming an einen Event Hub ein?
 
-Überwachungsdaten zur Azure-Plattform stammen aus zwei Hauptquellen:
-1. [Azure-Aktivitätsprotokolle](./monitoring-overview-activity-logs.md), die Erstellungs-, Aktualisierungs- und Löschvorgänge im Resource Manager, Änderungen in [Azure Service Health](../service-health/service-health-overview.md) mit Auswirkungen auf Ressourcen in Ihrem Abonnement, [Ressourcenintegrität](../service-health/resource-health-overview.md)-Zustandsübergänge und diverse andere Typen von Ereignissen auf Abonnementebene umfassen. [In diesem Artikel werden alle Kategorien von Ereignissen erläutert, die im Azure-Aktivitätsprotokoll angezeigt werden](./monitoring-activity-log-schema.md).
-2. [Azure Active Directory-Berichterstellung](../active-directory/active-directory-reporting-azure-portal.md), die den Verlauf der Anmeldeaktivität und des Überwachungspfads von Änderungen beinhaltet, die innerhalb eines bestimmten Mandanten vorgenommen wurden. Es ist noch nicht möglich, Azure Active Directory-Daten an einen Event Hub zu streamen.
+Überwachungsdaten zu Azure-Mandanten sind derzeit nur für Azure Active Directory verfügbar. Sie können die [Azure Active Directory-Berichterstellungsdaten](../active-directory/active-directory-reporting-azure-portal.md) verwenden, die den Verlauf der Anmeldeaktivität und des Überwachungspfads von Änderungen beinhaltet, die innerhalb eines bestimmten Mandanten vorgenommen wurden.
+
+### <a name="stream-azure-active-directory-data-into-an-event-hub"></a>Streamen von Azure Active Directory-Daten an einen Event Hub
+
+Um Daten aus dem Azure Active Directory-Protokoll an einen Event Hubs-Namespace zu senden, richten Sie eine Mandantendiagnoseeinstellung für Ihren AAD-Mandanten ein. [Befolgen Sie diese Anleitung](../active-directory/reporting-azure-monitor-diagnostics-azure-event-hub.md), um eine Diagnoseeinstellung für Mandanten einzurichten.
+
+## <a name="how-do-i-set-up-azure-subscription-monitoring-data-to-be-streamed-to-an-event-hub"></a>Wie richte ich Überwachungsdaten zum Azure-Abonnement für das Streaming an einen Event Hub ein?
+
+Überwachungsdaten zum Azure-Abonnement finden Sie im [Azure-Aktivitätsprotokoll](./monitoring-overview-activity-logs.md). Dieses umfasst die Erstellungs-, Aktualisierungs- und Löschvorgänge im Resource Manager, Änderungen in [Azure Service Health](../service-health/service-health-overview.md) mit Auswirkungen auf Ihre Abonnementressourcen, [Resource Health](../service-health/resource-health-overview.md)-Statusübergänge und diverse andere Ereignistypen auf Abonnementebene. [In diesem Artikel werden alle Kategorien von Ereignissen erläutert, die im Azure-Aktivitätsprotokoll angezeigt werden](./monitoring-activity-log-schema.md).
 
 ### <a name="stream-azure-activity-log-data-into-an-event-hub"></a>Streamen von Azure-Aktivitätsprotokolldaten an einen Event Hub
 

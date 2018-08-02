@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: d4b84904db703d1e8e78240cb971250672ef9615
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 69e0e8282ee0b8503fe11a57b8ba6037247822dd
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753285"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160500"
 ---
 # <a name="restore-an-app-in-azure"></a>Wiederherstellen einer App in Azure
 In diesem Artikel erfahren Sie, wie Sie eine App in [Azure App Service](../app-service/app-service-web-overview.md) wiederherstellen, die zuvor gesichert wurde (siehe [Sichern einer App in Azure](web-sites-backup.md)). Sie können Ihre App mit den zugehörigen verknüpften Datenbanken bei Bedarf in einem vorherigen Zustand wiederherstellen oder basierend auf den Sicherungen der ursprünglichen App eine neue App erstellen. Azure App Service unterstützt die folgenden Datenbanken für Sicherung und Wiederherstellung:
@@ -49,6 +49,11 @@ Das Wiederherstellen aus Sicherungen ist für Apps verfügbar, die in den Tarife
    
    > [!WARNING]
    > Wenn Sie **Überschreiben** wählen, werden alle Daten in Ihrer vorhandenen App gelöscht und überschrieben. Bevor Sie auf **OK**klicken, stellen Sie sicher, dass alles genau Ihren Vorstellungen entspricht.
+   > 
+   > 
+   
+   > [!WARNING]
+   > Wenn der App Service Daten in die Datenbank schreibt, während Sie sie wiederherstellen, kann es zu Symptomen wie die Verletzung des PRIMARY KEY und Datenverlust kommen. Es wird empfohlen, den App Service zuerst zu beenden, bevor Sie mit der Wiederherstellung der Datenbank beginnen.
    > 
    > 
    

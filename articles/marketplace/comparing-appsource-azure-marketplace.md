@@ -1,6 +1,6 @@
 ---
 title: Vergleich zwischen AppSource und Azure Marketplace | Azure
-description: Dieser Artikel beschreibt die Storefronts in AppSource und im Azure Marketplace.
+description: Dieser Artikel beschreibt die Storefronts in Microsoft AppSource und im Azure Marketplace.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
 author: jm-aditi-ms
@@ -14,42 +14,41 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: b0ed71efd99d55315b217686e978048712a7b7c4
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: be7c7e5ad66d6a3412b358c95f74a7d2d653a190
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826052"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158776"
 ---
-# <a name="comparing-appsource-and-azure-marketplace"></a>Vergleich zwischen AppSource und Azure Marketplace  
-Die Storefronts erfüllen individuelle Kundenanforderungen und ermöglichen es, die Kunden basierend auf ihren jeweiligen Rollen anzusprechen. Damit können Sie Ihren Kunden genau die richtige Lösung oder Dienstleistung anbieten.  
+# <a name="comparing-appsource-and-the-azure-marketplace"></a>Vergleich zwischen AppSource und Azure Marketplace
+Storefronts im [Azure Marketplace](https://azuremarketplace.microsoft.com) und in [Microsoft AppSource](https://appsource.microsoft.com) dienen eindeutigen Kundenanforderungen. Verwenden Sie Storefronts, um Kunden gemäß ihrer Rollen zu erreichen. Sie können Ihren Kunden die Lösungen oder Dienste anbieten, die genau für sie richtig sind.
 
-## <a name="understanding-the-differences-between-the-storefronts"></a>Grundlegendes zu den Unterschieden zwischen den Storefronts  
-Die Auswahl einer Storefront beginnt mit dem Identifizieren der Zielgruppe für Ihr Angebot. Wenn Sie beide Zielgruppen ansprechen möchten, können Sie Ihr Produkt einmal veröffentlichen und in beiden Storefronts verkaufen.  
+## <a name="understanding-the-differences-between-storefronts"></a>Grundlegendes zu den Unterschieden zwischen Storefronts
+Um eine Storefront auszuwählen, identifizieren Sie zuerst die Zielgruppe Ihres Angebots. Wenn Sie Zielgruppen in mehreren Storefronts erreichen möchten, können Sie einmal veröffentlichen, um in mehreren Storefronts zu verkaufen.
  
-Betrachten Sie die zusätzlichen Vorteile der Storefronts.   
+Die folgenden Tabellen beschreiben die Vorteile der Verwendung einer Storefront:
 
-### <a name="appsource"></a>AppSource  
+### <a name="appsource"></a>AppSource
 
-| Vorteile | Details | 
+| Vorteil | Details | 
 |:--- |:--- | 
-| ***Abrechnungsflexibilität*** | Ermöglicht die Bereitstellung von Testversionen. Bietet zurzeit keine Veröffentlichungsoption für den kommerziellen Vertrieb. Sie können Ihre derzeitige Bestell- und Abrechnungsinfrastruktur ohne zusätzliche Investitionen oder Änderungen nutzen. | 
-| ***Verbindungen mit anderen Partnern*** | Verknüpft unabhängige Softwarehersteller, Systemintegratoren und Anbieter von verwalteten Diensten mit bestimmten Implementierungsszenarien. Sie können Ihr Produkt zusammen mit diesen Partnern an neue Kunden verkaufen. | 
-| ***Automation*** | Verknüpft unabhängige Softwarehersteller, Systemintegratoren und Anbieter von verwalteten Diensten mit bestimmten Implementierungsszenarien. Sie können Ihr Produkt zusammen mit diesen Partnern an neue Kunden verkaufen. |  
-| ***Mehrere Cloudtypen*** | Bietet derzeit keine Unterstützung für Azure Stack, Azure Government oder regionale Clouds. | 
-| ***Kontextbezogene Präsentation gegenüber Kunden*** | Erreichen Sie über die In-App-Funktionalität für Microsoft-Produkte wie Dynamics 365, Power BI und Office 365 mehr Kunden. |  
+| **Abrechnungsflexibilität** | Ermöglicht die Bereitstellung von Testversionen. Bietet zurzeit keine Veröffentlichungsoption für den kommerziellen Vertrieb. Sie können Ihre derzeitige Bestellungs- und Abrechnungsinfrastruktur ohne zusätzliche Investitionen oder Änderungen nutzen. | 
+| **Verbindungen mit anderen Partnern** | Verknüpft unabhängige Softwarehersteller, Systemintegratoren und Anbieter von verwalteten Diensten mit bestimmten Implementierungsszenarien. Sie können Ihr Produkt zusammen mit diesen Partnern an neue Kunden verkaufen. | 
+| **Automation** | Verknüpft unabhängige Softwarehersteller, Systemintegratoren und Anbieter von verwalteten Diensten mit bestimmten Implementierungsszenarien. Sie können Ihr Produkt zusammen mit diesen Partnern an neue Kunden verkaufen. |
+| **Mehrere Cloudtypen** | Bietet derzeit keine Unterstützung für Azure Stack, Azure Government oder regionale Clouds. | 
+| **Kontextbezogene Präsentation gegenüber Kunden** | Erreichen Sie über die In-App-Funktionalität für Microsoft-Produkte wie Dynamics 365, Power BI und Office 365 mehr Kunden. |
 
-### <a name="azure-marketplace"></a>Azure Marketplace  
+### <a name="azure-marketplace"></a>Azure Marketplace
 
-| Vorteile | Details | 
+| Vorteil | Details | 
 |:--- |:--- | 
-| ***Abrechnungsflexibilität*** | Bei den Abrechnungsoptionen mit nutzungsbasierter Bezahlung für VMs werden Microsoft Enterprise Agreements (EAs) oder Modelle für den Direktverkauf im Internet verwendet. Zu den Preisoptionen gehört auch ein Abonnement im Free-Tarif mit einem unbefristet kostenlosen Angebot. Ein Testabonnement wird ebenfalls angeboten. Ein solches Testangebot ist für einen begrenzten Zeitraum kostenlos. Nach Ablauf dieses Zeitraums wird die VM in ein kostenpflichtiges Abonnement umgewandelt. BYOL (Bring Your Own License) steht Ihnen als Abrechnungsoption ebenfalls zur Verfügung.<br />Für beide Abrechnungsoptionen und die folgenden VM-Angebote werden alle bereitgestellten Azure-Ressourcen dem Kunden direkt in Rechnung gestellt.<ul> <li>Azure-Apps: Verwaltete App</li> <li>Azure-Apps: Lösungsvorlage</li> </ul> | 
-| ***Verbindungen mit anderen Partnern*** | Sie können derzeit keinen Dienstanbieter oder Bereitstellungspartner mit Ihrem Angebot verknüpfen. Diese Funktion wird im Lauf des Jahres 2018 zur Verfügung stehen. | 
-| ***Automation*** | Sie können derzeit keinen Dienstanbieter oder Bereitstellungspartner mit Ihrem Angebot verknüpfen. Nutzen Sie den Vorteil der SaaS-Automatisierung mit Add-On-Bereitstellung. Verwenden Sie Lösungsvorlagen für Azure-Apps, um die SaaS-basierte Datensammlung und die zugehörigen Bereitstellungsszenarien zu automatisieren. |  
-| ***Mehrere Cloudtypen*** | Nutzen Sie die folgenden Typen für die Veröffentlichung in der öffentlichen Cloud und in lokalen Lösungen.<ul> <li>Azure Stack</li> <li>Azure Government</li> <li>Regionale Clouds, einschließlich China und Deutschland</li> </ul> | 
-| ***Kontextbezogene Präsentation gegenüber Kunden*** | Stellen Sie Ihre Lösung im Azure-Portal im Bereich der Kontextsuche (virtuelle Computer und Lösungsvorlagen für Azure-Apps) zur Verfügung. |  
+| **Abrechnungsflexibilität** | Bei den Abrechnungsoptionen mit nutzungsbasierter Bezahlung für VMs werden Microsoft Enterprise Agreements (EAs) oder Modelle für den Direktverkauf im Internet verwendet. Zu den Preisoptionen gehört auch ein Abonnement im Free-Tarif mit einem unbefristet kostenlosen Angebot. Ein Testabonnement wird ebenfalls angeboten. Ein „Jetzt testen“-Abonnement ist für einen begrenzten Zeitraum kostenlos verfügbar. Bei Ablauf des Zeitraums wird der virtuelle Computer in ein kostenpflichtiges Abonnement umgewandelt. Die „Bring-Your-Own-License“-Aktivierung (BYOL) ist eine weitere Option, die Sie Kunden anbieten können.<br /><br/>Für beide Abrechnungsoptionen und die folgenden VM-Angebote werden alle bereitgestellten Azure-Ressourcen dem Kunden direkt in Rechnung gestellt:<ul> <li>Azure-Apps: Verwaltete App</li> <li>Azure-Apps: Lösungsvorlage</li> </ul> | 
+|**Verbindungen mit anderen Partnern** | Sie können derzeit keinen Dienstanbieter oder Bereitstellungspartner mit Ihrem Angebot verknüpfen. | 
+| **Automation** | Sie können derzeit keinen Dienstanbieter oder Bereitstellungspartner mit Ihrem Angebot verknüpfen. Nutzen Sie den Vorteil der „Software-as-a-Service“-Automatisierung (SaaS) mit Add-On-Bereitstellung. Verwenden Sie die Veröffentlichungsoption „Azure-Apps: Lösungsvorlage“, um die SaaS-basierte Datensammlung und die zugehörigen Bereitstellungsszenarien zu automatisieren. |
+| **Mehrere Cloudtypen** | Veröffentlichen Sie Lösungen sowohl für die öffentliche Cloud als auch lokal mit folgen Typen:<ul> <li>Azure Stack</li> <li>Azure Government</li> <li>Regionale Clouds, einschließlich China und Deutschland</li></ul> | 
+| **Kontextbezogene Präsentation gegenüber Kunden** | Stellen Sie Ihre Lösung im Azure-Portal für die Kontextsuche zur Verfügung. Verwenden Sie die Veröffentlichungsoptionen „Virtueller Computer“ und „Azure-Apps: Lösungsvorlage“. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-*   Sehen Sie sich den [Herausgeberleitfaden für Azure Marketplace und AppSource](./marketplace-publishers-guide.md) an.  
-*   
----  
+*   Lesen Sie den [Veröffentlichungsleitfaden für Azure Marketplace und AppSource](./marketplace-publishers-guide.md).
+

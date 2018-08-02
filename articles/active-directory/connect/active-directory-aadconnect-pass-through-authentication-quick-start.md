@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: fc98f15303f23937d58131de971d5c60017c9034
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 280d62f127c333ff195e921de380721170fd6a96
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917709"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214981"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory-Passthrough-Authentifizierung: Schnellstart
 
@@ -29,7 +29,7 @@ ms.locfileid: "37917709"
 Mit der Azure Active Directory-Passthrough-Authentifizierung (Azure AD) können sich Benutzer mit denselben Kennwörtern sowohl bei lokalen als auch bei cloudbasierten Anwendungen anmelden. Benutzer werden bei der Passthrough-Authentifizierung angemeldet, indem sie ihre Kennwörter direkt für Ihre lokale Active Directory-Instanz angeben.
 
 >[!IMPORTANT]
->Wenn Sie dieses Feature über eine Vorschauversion nutzen, aktualisieren Sie die Vorschauversionen der Authentifizierungs-Agenten unbedingt anhand der Anweisungen unter [Azure Active Directory-Passthrough-Authentifizierung – Upgrade von Authentifizierungs-Agents der Vorschau](./active-directory-aadconnect-pass-through-authentication-upgrade-preview-authentication-agents.md).
+>Wenn Sie von AD FS (oder andere Verbundtechnologien nutzen) zur Passthrough-Authentifizierung migrieren, wird dringend empfohlen, dem ausführlichen [Leitfaden zur Bereitstellung](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) zu folgen.
 
 Befolgen Sie diese Anweisungen, um die Passthrough-Authentifizierung bereitzustellen:
 
@@ -50,7 +50,11 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
     >[!NOTE]
     >Die Azure AD Connect-Versionen 1.1.557.0, 1.1.558.0, 1.1.561.0 und 1.1.614.0 weisen ein Problem in Bezug auf die Kennworthashsynchronisierung auf. Wenn Sie die Kennworthashsynchronisierung _nicht_ zusammen mit der Passthrough-Authentifizierung verwenden möchten, finden Sie Informationen dazu in den [Versionshinweisen zu Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470).
 
-3. Identifizieren Sie einen weiteren Server (mit Windows Server 2012 R2 oder höher), auf dem ein eigenständiger Authentifizierungs-Agent ausgeführt werden kann. Die Version des Authentifizierungs-Agents muss 1.5.193.0 oder höher sein. Dieser zusätzliche Server wird benötigt, um die Hochverfügbarkeit von Anmeldeanforderungen sicherzustellen. Fügen Sie den Server derselben Active Directory-Gesamtstruktur wie die Benutzer hinzu, deren Kennwörter überprüft werden müssen.
+3. Identifizieren Sie mindestens einen weiteren Server (mit Windows Server 2012 R2 oder höher), auf dem eigenständige Authentifizierungs-Agents ausgeführt werden können. Diese zusätzlichen Server werden benötigt, um die Hochverfügbarkeit von Anmeldeanforderungen sicherzustellen. Fügen Sie die Server derselben Active Directory-Gesamtstruktur wie die Benutzer hinzu, deren Kennwörter überprüft werden müssen.
+
+    >[!IMPORTANT]
+    >Für Produktionsumgebungen wird empfohlen, dass Sie mindestens drei Authentifizierungs-Agents auf Ihrem Mandanten ausführen. In einem System können maximal 12 Authentifizierungs-Agents pro Mandant installiert werden. Eine bewährte Methode ist die Behandlung aller Server, auf denen Authentifizierungs-Agents ausgeführt werden, als Ebene-0-Systeme (siehe [Referenz](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
+
 4. Wenn zwischen Ihren Servern und Azure AD eine Firewall eingerichtet wurde, konfigurieren Sie die folgenden Elemente:
    - Stellen Sie sicher, dass Authentifizierung-Agents *ausgehende* Anforderungen an Azure AD über die folgenden Ports senden können:
    
@@ -62,32 +66,14 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
     Wenn Ihre Firewall Regeln gemäß Ursprungsbenutzern erzwingt, öffnen Sie diese Ports für den Datenverkehr aus Windows-Diensten, die als Netzwerkdienst ausgeführt werden.
    - Wenn Ihre Firewall oder ihr Proxy DNS-Whitelisting zulässt, beschränken Sie Verbindungen mit **\*.msappproxy.net** und **\*.servicebus.windows.net** mittels Whitelist. Aktivieren Sie andernfalls den Zugriff auf die [IP-Adressbereiche für das Azure-Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=41653), die wöchentlich aktualisiert werden.
    - Ihre Authentifizierungs-Agents benötigen für den anfänglichen Registrierungsprozess Zugriff auf **login.windows.net** und **login.microsoftonline.com**. Öffnen Sie Ihre Firewall auch für diese URLs.
-   - Geben Sie für die Überprüfung des Zertifikats folgende URLs frei: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80** und **www.microsoft.com:80**. Diese URLs werden für die Überprüfung des Zertifikats in Verbindung mit anderen Microsoft-Produkten verwendet. Daher haben Sie diese möglicherweise bereits freigegeben.
+   - Geben Sie für die Überprüfung des Zertifikats folgende URLs frei: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80** und **www.microsoft.com:80**. Da diese URLs für die Überprüfung des Zertifikats in Verbindung mit anderen Microsoft-Produkten verwendet werden, haben Sie diese möglicherweise bereits freigegeben.
 
-## <a name="step-2-enable-exchange-activesync-support-optional"></a>Schritt 2: Aktivieren der Exchange ActiveSync-Unterstützung (optional)
-
-Um Exchange ActiveSync-Unterstützung zu aktivieren, gehen Sie wie folgt vor:
-
-1. Führen Sie mit [Exchange PowerShell](https://technet.microsoft.com/library/mt587043(v=exchg.150).aspx) folgenden Befehl aus:
-```
-Get-OrganizationConfig | fl per*
-```
-
-2. Überprüfen Sie den Wert der `PerTenantSwitchToESTSEnabled`-Einstellung. Wenn der Wert **true** lautet, ist der Mandant ordnungsgemäß konfiguriert. Dies ist im Allgemeinen bei den meisten Kunden der Fall. Wenn der Wert **false** ist, führen Sie folgenden Befehl aus:
-```
-Set-OrganizationConfig -PerTenantSwitchToESTSEnabled:$true
-```
-
-3. Überprüfen Sie, ob der Wert der `PerTenantSwitchToESTSEnabled`-Einstellung nun auf **true** festgelegt ist. Warten Sie eine Stunde, bevor Sie mit dem nächsten Schritt fortfahren.
-
-Wenn bei diesem Schritt Probleme auftreten, lesen Sie unter [Behandlung von Problemen bei der Azure Active Directory-Passthrough-Authentifizierung](active-directory-aadconnect-troubleshoot-pass-through-authentication.md#exchange-activesync-configuration-issues) nach.
-
-## <a name="step-3-enable-the-feature"></a>Schritt 3: Aktivieren des Features
+## <a name="step-2-enable-the-feature"></a>Schritt 2: Aktivieren des Features
 
 Aktivieren Sie die Passthrough-Authentifizierung über [Azure AD Connect](active-directory-aadconnect.md).
 
 >[!IMPORTANT]
->Sie können die Passthrough-Authentifizierung auf dem primären Server oder dem Stagingserver von Azure AD Connect aktivieren. Es wird empfohlen, sie auf dem primären Server zu aktivieren.
+>Sie können die Passthrough-Authentifizierung auf dem primären Server oder dem Stagingserver von Azure AD Connect aktivieren. Es wird empfohlen, die Aktivierung über den primären Server durchzuführen.
 
 Wählen Sie den [benutzerdefinierten Installationspfad](active-directory-aadconnect-get-started-custom.md), wenn Sie Azure AD Connect zum ersten Mal installieren. Wählen Sie auf der Seite **Benutzeranmeldung** die Option **Passthrough-Authentifizierung** als **Anmeldemethode** aus. Nach erfolgreicher Durchführung wird auf demselben Server wie Azure AD Connect ein Passthrough-Authentifizierungs-Agent installiert. Darüber hinaus wird die Passthrough-Authentifizierungsfunktion auf Ihrem Mandanten aktiviert.
 
@@ -98,9 +84,9 @@ Wenn Sie Azure AD Connect bereits installiert haben (per [Expressinstallation](a
 ![Azure AD Connect: Benutzeranmeldung ändern](./media/active-directory-aadconnect-user-signin/changeusersignin.png)
 
 >[!IMPORTANT]
->Die Passthrough-Authentifizierung ist ein Feature auf Mandantenebene. Wenn Sie es aktivieren, wirkt sich dies auf die Anmeldung der Benutzer in _allen_ verwalteten Domänen Ihres Mandanten aus. Wenn Sie von Active Directory-Verbunddienste (AD FS) zur Passthrough-Authentifizierung wechseln, sollten Sie mindestens zwölf Stunden warten, bevor Sie Ihre AD FS-Infrastruktur herunterfahren. Diese Wartezeit soll sicherstellen, dass Benutzer sich während des Übergangs weiterhin bei Exchange ActiveSync anmelden können.
+>Die Passthrough-Authentifizierung ist ein Feature auf Mandantenebene. Wenn Sie es aktivieren, wirkt sich dies auf die Anmeldung der Benutzer in _allen_ verwalteten Domänen Ihres Mandanten aus. Wenn Sie von Active Directory-Verbunddienste (AD FS) zur Passthrough-Authentifizierung wechseln, sollten Sie mindestens zwölf Stunden warten, bevor Sie Ihre AD FS-Infrastruktur herunterfahren. Diese Wartezeit soll sicherstellen, dass Benutzer sich während des Übergangs weiterhin bei Exchange ActiveSync anmelden können. Weitere Informationen zur Migration von AD FS zur Passthrough-Authentifizierung finden Sie im ausführlichen Leitfaden, der [hier](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) veröffentlicht ist.
 
-## <a name="step-4-test-the-feature"></a>Schritt 4: Testen des Features
+## <a name="step-3-test-the-feature"></a>Schritt 3: Testen des Features
 
 Befolgen Sie diese Anweisungen, um zu überprüfen, ob die Passthrough-Authentifizierung ordnungsgemäß aktiviert ist:
 
@@ -116,9 +102,12 @@ Befolgen Sie diese Anweisungen, um zu überprüfen, ob die Passthrough-Authentif
 
 Jetzt können sich Benutzer aus allen verwalteten Domänen Ihres Mandanten mit der Passthrough-Authentifizierung anmelden. Benutzer von Verbunddomänen melden sich aber weiterhin mithilfe der AD FS oder einem anderen Verbundanbieter an, den Sie zuvor konfiguriert haben. Wenn Sie eine Verbunddomäne in eine verwaltete Domäne konvertieren, melden sich alle Benutzer dieser Domäne automatisch mit der Passthrough-Authentifizierung an. Benutzer, die auf die Cloud beschränkt sind, sind von der Passthrough-Authentifizierungsfunktion nicht betroffen.
 
-## <a name="step-5-ensure-high-availability"></a>Schritt 5: Sicherstellen der Hochverfügbarkeit
+## <a name="step-4-ensure-high-availability"></a>Schritt 4: Sicherstellen der Hochverfügbarkeit
 
-Wenn Sie die Bereitstellung der Passthrough-Authentifizierung in einer Produktionsumgebung planen, müssen Sie mindestens einen eigenständigen Authentifizierungs-Agent installieren. Installieren Sie Authentifizierungs-Agents auf _anderen_ Servern als dem, auf dem Azure AD Connect ausgeführt wird. Mit dieser Einrichtung erzielen Sie Hochverfügbarkeit für Anforderungen zur Benutzeranmeldung.
+Wenn Sie die Bereitstellung der Passthrough-Authentifizierung in einer Produktionsumgebung planen, sollten Sie weitere eigenständige Authentifizierungs-Agents installieren. Installieren Sie Authentifizierungs-Agents auf _anderen_ Servern als dem, auf dem Azure AD Connect ausgeführt wird. Mit dieser Einrichtung erzielen Sie Hochverfügbarkeit für Anforderungen zur Benutzeranmeldung.
+
+>[!IMPORTANT]
+>Für Produktionsumgebungen wird empfohlen, dass Sie mindestens drei Authentifizierungs-Agents auf Ihrem Mandanten ausführen. In einem System können maximal 12 Authentifizierungs-Agents pro Mandant installiert werden. Eine bewährte Methode ist die Behandlung aller Server, auf denen Authentifizierungs-Agents ausgeführt werden, als Ebene-0-Systeme (siehe [Referenz](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 
 Befolgen Sie diese Anweisungen zum Herunterladen der Authentifizierungs-Agent-Software:
 
@@ -132,7 +121,7 @@ Befolgen Sie diese Anweisungen zum Herunterladen der Authentifizierungs-Agent-So
 ![Azure Active Directory Admin Center: Bereich „Agent herunterladen“](./media/active-directory-aadconnect-pass-through-authentication/pta10.png)
 
 >[!NOTE]
->Sie können die Authentifizierungs-Agent-Software auch [hier](https://aka.ms/getauthagent) direkt herunterladen. Lesen und akzeptieren Sie die [Nutzungsbedingungen](https://aka.ms/authagenteula) für den Authentifizierungs-Agent, _bevor_ Sie ihn installieren.
+>Sie können die [Authentifizierungs-Agent-Software auch direkt herunterladen](https://aka.ms/getauthagent). Lesen und akzeptieren Sie die [Nutzungsbedingungen](https://aka.ms/authagenteula) für den Authentifizierungs-Agent, _bevor_ Sie ihn installieren.
 
 Es gibt zwei Methoden zum Bereitstellen eines eigenständigen Authentifizierungs-Agents:
 
@@ -152,6 +141,7 @@ Zweitens können Sie auch ein unbeaufsichtigtes Bereitstellungsskript erstellen 
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
 
 ## <a name="next-steps"></a>Nächste Schritte
+- [Migrieren von AD FS zur Passthrough-Authentifizierung:](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) Ein detaillierter Leitfaden zur Migration von AD FS (oder anderen Verbundtechnologien) zur Passthrough-Authentifizierung.
 - [Smart Lockout:](../authentication/howto-password-smart-lockout.md) Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten, um Benutzerkonten zu schützen
 - [Aktuelle Einschränkungen:](active-directory-aadconnect-pass-through-authentication-current-limitations.md) Informationen zu den unterstützten und nicht unterstützten Szenarien mit Passthrough-Authentifizierung
 - [Technische Einzelheiten:](active-directory-aadconnect-pass-through-authentication-how-it-works.md) Informationen zur Funktionsweise des Features für die Passthrough-Authentifizierung

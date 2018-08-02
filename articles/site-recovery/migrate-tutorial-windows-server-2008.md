@@ -11,14 +11,14 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 07/11/2018
+ms.date: 07/23/2018
 ms.author: bsiva
-ms.openlocfilehash: 0d3f28f0a9f1e9862fabb6ce5e96597f1534abd8
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 552a0d131f630db7b3a73293d330377ee350d2a9
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39011398"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214617"
 ---
 # <a name="migrate-servers-running-windows-server-2008-2008-r2-to-azure"></a>Migrieren von Servern mit Windows Server 2008 oder 2008 R2 zu Azure
 
@@ -110,15 +110,47 @@ Der neue Tresor wird dem **Dashboard** unter **Alle Ressourcen** und der Hauptse
 ## <a name="prepare-your-on-premises-environment-for-migration"></a>Vorbereiten Ihrer lokalen Umgebung für die Migration
 
 - Herunterladen des Konfigurationsserver-Installationsprogramms (einheitliches Setup) von [https://aka.ms/asr-w2k8-migration-setup](https://aka.ms/asr-w2k8-migration-setup)
-- [Richten Sie die Quellumgebung ein](physical-azure-disaster-recovery.md#set-up-the-source-environment), indem Sie die im vorherigen Schritt heruntergeladene Installationsdatei zu Hilfe nehmen.
+- Befolgen Sie die nachfolgend beschriebenen Schritte, um mithilfe der im vorherigen Schritt heruntergeladenen Installationsdatei die Quellumgebung einzurichten.
 
 > [!IMPORTANT]
-> Verwenden Sie die Setupdatei, die Sie im ersten Schritt weiter oben heruntergeladen haben, um den Konfigurationsserver zu installieren und zu registrieren. Laden Sie die Setupdatei nicht aus dem Azure-Portal herunter. Die Setupdatei unter [https://aka.ms/asr-w2k8-migration-setup](https://aka.ms/asr-w2k8-migration-setup) ist die einzige Version, die Windows Server 2008-Migrationen unterstützt.
+> - Verwenden Sie die Setupdatei, die Sie im ersten Schritt weiter oben heruntergeladen haben, um den Konfigurationsserver zu installieren und zu registrieren. Laden Sie die Setupdatei nicht aus dem Azure-Portal herunter. Die Setupdatei unter [https://aka.ms/asr-w2k8-migration-setup](https://aka.ms/asr-w2k8-migration-setup) ist die einzige Version, die Windows Server 2008-Migrationen unterstützt.
 >
-> Sie können nicht mit einem vorhandenen Konfigurationsserver Computer migrieren, auf denen Windows Server 2008 ausgeführt wird. Über den oben angegebenen Link müssen Sie einen neuen Konfigurationsserver einrichten.
+> - Sie können nicht mit einem vorhandenen Konfigurationsserver Computer migrieren, auf denen Windows Server 2008 ausgeführt wird. Über den oben angegebenen Link müssen Sie einen neuen Konfigurationsserver einrichten.
+>
+> - Führen Sie die folgenden Schritte aus, um den Konfigurationsserver zu installieren. Versuchen Sie nicht, das GUI-basierte Installationsverfahren zu verwenden, indem Sie das einheitliche Setup direkt ausführen. Dies führt dazu, dass beim Installationsversuch eine falsche Fehlermeldung angezeigt wird, die besagt, dass keine Internetkonnektivität besteht.
+
+ 
+1) Laden Sie die Datei mit Tresoranmeldeinformationen aus dem Portal herunter: Wählen Sie im Azure-Portal den Recovery Services-Tresor aus, den Sie im vorherigen Schritt erstellt haben. Öffnen Sie im Menü auf der Tresorseite **Site Recovery-Infrastruktur** > **Konfigurationsserver** aus. Klicken Sie dann auf **+Server**. Wählen Sie aus dem Dropdownformular auf der Seite, die geöffnet wird, *Konfigurationsserver für physische Computer* aus. Klicken Sie bei Schritt 4 auf die Schaltfläche „Herunterladen“, um die Datei mit Tresoranmeldeinformationen herunterzuladen.
 
  ![Herunterladen des Tresorregistrierungsschlüssels](media/migrate-tutorial-windows-server-2008/download-vault-credentials.png) 
- 
+
+2) Kopieren Sie die Datei mit Tresoranmeldeinformationen, die Sie im vorherigen Schritt heruntergeladen haben, und die Datei zum einheitlichen Setup, die Sie zuvor auf dem Desktop des Konfigurationsservercomputers heruntergeladen haben (der Windows Server 2012 R2- oder Windows Server 2016-Computer, auf dem die Konfigurationsserversoftware installiert wird).
+
+3) Stellen Sie sicher, dass der Konfigurationsserver über Internetkonnektivität verfügt und die Systemuhr und Zeitzoneneinstellungen auf dem Computer richtig konfiguriert sind. Laden Sie das Installationsprogramm [MySQL 5.7](https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi) herunter, und platzieren Sie es unter *C:\Temp\ASRSetup*. (Falls das Verzeichnis nicht vorhanden ist, erstellen Sie es.) 
+
+4) Erstellen Sie eine Datei mit MySQL-Anmeldeinformationen mit den folgenden Zeilen, und platzieren Sie sie auf dem Desktop **C:\Users\Administrator\MySQLCreds.txt**. Ersetzen Sie „Password~1“ unten durch ein geeignetes und sicheres Kennwort:
+
+```
+[MySQLCredentials]
+MySQLRootPassword = "Password~1"
+MySQLUserPassword = "Password~1"
+```
+
+5) Extrahieren Sie den Inhalt der heruntergeladenen Datei mit dem einheitliche Setup auf dem Desktop, indem Sie den folgenden Befehl ausführen:
+
+```
+cd C:\Users\Administrator\Desktop
+
+MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Users\Administrator\Desktop\9.18
+```
+  
+6) Installieren Sie mithilfe der extrahierten Inhalte die Konfigurationsserversoftware, indem Sie die folgenden Befehle ausführen:
+
+```
+cd C:\Users\Administrator\Desktop\9.18.1
+
+UnifiedSetup.exe /AcceptThirdpartyEULA /ServerMode CS /InstallLocation "C:\Program Files (x86)\Microsoft Azure Site Recovery" /MySQLCredsFilePath "C:\Users\Administrator\Desktop\MySQLCreds.txt" /VaultCredsFilePath <vault credentials file path> /EnvType VMWare /SkipSpaceCheck
+```
 
 ## <a name="set-up-the-target-environment"></a>Einrichten der Zielumgebung
 

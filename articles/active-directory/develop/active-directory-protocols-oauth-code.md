@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a01c5bc2ca6310ee87f2ead1ea590987c854e733
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fab9ddefc022cb5643f98cf7fea4ca74d4f7101b
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595324"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39227780"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autorisieren des Zugriffs auf Azure Active Directory-Webanwendungen mit dem Flow zum Erteilen des OAuth 2.0-Codes
 Azure Active Directory (Azure AD) verwendet OAuth 2.0, um den Zugriff auf Webanwendungen und Web-APIs in Ihrem Azure AD-Mandanten zu autorisieren. Diese sprachunabhängige Anleitung beschreibt das Senden und Empfangen von HTTP-Nachrichten ohne Verwendung unserer [Open Source-Bibliotheken](active-directory-authentication-libraries.md).
@@ -44,7 +44,7 @@ Der Autorisierungscodefluss beginnt damit, dass der Client den Benutzer auf den 
 https://login.microsoftonline.com/{tenant}/oauth2/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=code
-&redirect_uri=http%3A%2F%2Flocalhost%3A%12345
+&redirect_uri=http%3A%2F%2Flocalhost%3A12345
 &response_mode=query
 &resource=https%3A%2F%2Fservice.contoso.com%2F
 &state=12345
@@ -56,7 +56,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | client_id |required |Die Anwendungs-ID, die Ihrer App zugewiesen wird, wenn Sie sie bei Azure AD registrieren. Diese finden Sie im Azure-Portal. Klicken Sie auf der Randleiste mit den Diensten auf **Azure Active Directory** und auf **App-Registrierungen**. Wählen Sie dann die Anwendung. |
 | response_type |required |Muss `code` für den Autorisierungscodefluss enthalten. |
 | redirect_uri |empfohlen |Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden können. Er muss genau mit einer der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss. Für native und mobile Apps sollten Sie den Standardwert `urn:ietf:wg:oauth:2.0:oob` verwenden. |
-| response_mode |empfohlen |Gibt die Methode an, die zum Senden des resultierenden Tokens zurück an Ihre App verwendet werden soll. Kann `query` oder `form_post` sein. `query` stellt den Code als Abfragezeichenfolgenparameter für Ihren Umleitungs-URI bereit, während `form_post` eine POST-Anforderung mit dem Code für Ihren Umleitungs-URI ausführt. |
+| response_mode |empfohlen |Gibt die Methode an, die zum Senden des resultierenden Tokens zurück an Ihre App verwendet werden soll. Kann `query`, `fragment` oder `form_post` sein. `query` gibt den Code als ein Abfragezeichenfolgen-Parameter in der Umleitungs-URI an. Wenn Sie ein ID-Token mit dem impliziten Flow anfordern, können Sie `query` nicht gemäß [OpenID-Spezifikation](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations) verwenden. Wenn Sie lediglich den Code anfordern, können Sie `query`, `fragment` oder `form_post` verwenden. `form_post` führt ein POST-Element mit dem Code zu Ihrer Umleitungs-URI aus. |
 | state |empfohlen |Ein in der Anforderung enthaltener Wert, der ebenfalls in der Tokenantwort zurückgegeben wird. Ein zufällig generierter eindeutiger Wert wird normalerweise verwendet, um [websiteübergreifende Anforderungsfälschungsangriffe zu verhindern](http://tools.ietf.org/html/rfc6749#section-10.12). Der Status wird auch verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z. B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
 | resource | empfohlen |Der App-ID-URI der Ziel-Web-API (geschützte Ressource). Klicken Sie zum Ermitteln des App-ID-URI im Azure-Portal auf **Azure Active Directory** und auf **App-Registrierungen**. Öffnen Sie anschließend die Seite **Einstellungen**, und klicken Sie auf **Eigenschaften**. Es kann sich auch um eine externe Ressource wie `https://graph.microsoft.com` handeln. Dieser Parameter muss in einer der Autorisierungs- oder Tokenanforderungen vorhanden sein, um sicherzustellen, dass weniger Authentifizierungsanforderungen diesen in die Autorisierungsanforderung platzieren und so die Zustimmung des Benutzers empfangen wird. |
 | scope | **ignoriert** | Bei Azure AD v1-Apps müssen Bereiche im Azure-Portal unter **Einstellungen** der Anwendungen sowie **Erforderliche Berechtigungen** statisch konfiguriert werden. |

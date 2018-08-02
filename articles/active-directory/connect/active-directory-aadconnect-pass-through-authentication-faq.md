@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2018
+ms.date: 07/23/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6d5cd79a6336b2e5c4b3c5c6f5765d92cd602552
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 8b5f62daf2b43453aadb0373171bc98f96494688
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048967"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215066"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory Passthrough-Authentifizierung: Häufig gestellte Fragen
 
@@ -28,7 +28,7 @@ In diesem Artikel werden häufig gestellte Fragen zur Passthrough-Authentifizier
 
 ## <a name="which-of-the-methods-to-sign-in-to-azure-ad-pass-through-authentication-password-hash-synchronization-and-active-directory-federation-services-ad-fs-should-i-choose"></a>Welche der Methoden für die Anmeldung bei Azure AD (Passthrough-Authentifizierung, Kennworthashsynchronisierung oder Active Directory-Verbunddienste (AD FS)) sollte ich auswählen?
 
-Das hängt von Ihrer lokalen Umgebung und den Anforderungen Ihres Unternehmens ab. Im Artikel [Azure AD Connect-Optionen für die Benutzeranmeldung](active-directory-aadconnect-user-signin.md) finden Sie einen Vergleich der verschiedenen Azure AD-Anmeldemethoden.
+Einen Vergleich der verschiedenen Azure AD-Anmeldemethoden und, wie Sie die richtige Anmeldemethode für Ihr Unternehmen wählen, finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/security/azure-ad-choose-authn).
 
 ## <a name="is-pass-through-authentication-a-free-feature"></a>Ist die Passthrough-Authentifizierung ein kostenloses Feature?
 
@@ -48,7 +48,7 @@ Ja. Die Passthrough-Authentifizierung unterstützt `Alternate ID` als Benutzerna
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Kann die Kennworthashsynchronisierung als Fallback für die Passthrough-Authentifizierung verwendet werden?
 
-Nein. Bei der Passthrough-Authentifizierung wird _kein_ automatisches Failover auf die Kennworthashsynchronisierung ausgeführt. Sie dient nur als Fallback für [Szenarios, die zurzeit noch nicht von der Passthrough-Authentifizierung unterstützt werden](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios). Um Benutzeranmeldefehler zu vermeiden, sollten Sie die Passthrough-Authentifizierung für [Hochverfügbarkeit](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability) konfigurieren.
+Nein. Bei der Passthrough-Authentifizierung wird _kein_ automatisches Failover auf die Kennworthashsynchronisierung ausgeführt. Sie dient nur als Fallback für [Szenarios, die zurzeit noch nicht von der Passthrough-Authentifizierung unterstützt werden](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios). Um Benutzeranmeldefehler zu vermeiden, sollten Sie die Passthrough-Authentifizierung für [Hochverfügbarkeit](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability) konfigurieren.
 
 ## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Kann ich einen [Azure AD-Anwendungsproxy](../manage-apps/application-proxy.md)-Connector auf demselben Server wie dem eines Passthrough-Authentifizierungs-Agents installieren?
 
@@ -82,7 +82,7 @@ Ja. Wenn in Ihrer lokalen Umgebung WPAD (Web Proxy Auto-Discovery) aktiviert ist
 
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>Kann ich zwei oder mehr Passthrough-Authentifizierungs-Agents auf dem gleichen Server installieren?
 
-Nein, Sie können nur einen Passthrough-Authentifizierungs-Agent auf einem einzelnen Server installieren. Wenn Sie die Passthrough-Authentifizierung für Hochverfügbarkeit konfigurieren möchten, befolgen Sie die Anweisungen unter [Azure Active Directory-Passthrough-Authentifizierung: Schnellstart](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability).
+Nein, Sie können nur einen Passthrough-Authentifizierungs-Agent auf einem einzelnen Server installieren. Wenn Sie die Passthrough-Authentifizierung für Hochverfügbarkeit konfigurieren möchten, befolgen Sie die Anweisungen unter [Azure Active Directory-Passthrough-Authentifizierung: Schnellstart](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>Gewusst wie: Entfernen eines Passthrough-Authentifizierungs-Agents
 
@@ -92,12 +92,7 @@ Nach Abschluss des vorherigen Schritts sehen Sie auf dem Blatt „Passthrough-Au
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>Ich verwende bereits AD FS für die Anmeldung bei Azure AD. Wie kann ich zur Passthrough-Authentifizierung wechseln?
 
-Wenn Sie mit dem Azure AD Connect-Assistenten AD FS als Ihre Methode für die Anmeldung konfiguriert haben, ändern Sie die Anmeldemethode für Benutzer in die Passthrough-Authentifizierung. Diese Änderung ermöglicht die Passthrough-Authentifizierung für den Mandanten und konvertiert _alle_ Ihre Verbunddomänen in verwaltete Domänen. Die Passthrough-Authentifizierung verarbeitet alle nachfolgenden Anforderungen für die Anmeldung bei Ihrem Mandanten. Derzeit besteht in Azure AD Connect keine Möglichkeit, AD FS und die Passthrough-Authentifizierung domänenübergreifend zusammen zu verwenden.
-
-Wenn AD FS _außerhalb_ des Azure AD Connect-Assistenten als Anmeldemethode konfiguriert wurde, ändern Sie die Anmeldemethode für Benutzer in die Passthrough-Authentifizierung. Sie können diese Änderung über die Option **Nicht konfigurieren** vornehmen. Diese Änderung ermöglicht die Passthrough-Authentifizierung für den Mandanten, alle Verbunddomänen verwenden jedoch weiterhin AD FS für die Anmeldung. Mit PowerShell lassen sich einige oder alle dieser Verbunddomänen manuell in verwaltete Domänen konvertieren. Nach dieser Änderung verarbeitet *nur* die Passthrough-Authentifizierung alle Anforderungen für die Anmeldung bei verwalteten Domänen.
-
->[!IMPORTANT]
->Die Passthrough-Authentifizierung verarbeitet jedoch nicht die Anmeldung für ausschließlich cloudbasierte Azure AD-Benutzer.
+Wenn Sie von AD FS (oder andere Verbundtechnologien nutzen) zur Passthrough-Authentifizierung migrieren, wird dringend empfohlen, dem ausführlichen [Leitfaden zur Bereitstellung](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) zu folgen.
 
 ## <a name="can-i-use-pass-through-authentication-in-a-multi-forest-active-directory-environment"></a>Kann ich die Passthrough-Authentifizierung in einer Active Directory-Umgebung mit mehreren Gesamtstrukturen verwenden?
 
@@ -105,7 +100,7 @@ Ja. Umgebungen mit mehreren Gesamtstrukturen werden unterstützt, wenn Gesamtstr
 
 ## <a name="how-many-pass-through-authentication-agents-do-i-need-to-install"></a>Wie viele Passthrough-Authentifizierungs-Agents muss ich installieren?
 
-Mit der Installation von mehreren Passthrough-Authentifizierungs-Agents wird für [Hochverfügbarkeit](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability) gesorgt. Es wird aber kein deterministischer Lastenausgleich zwischen den Authentifizierungs-Agents bereitgestellt.
+Mit der Installation von mehreren Passthrough-Authentifizierungs-Agents wird für [Hochverfügbarkeit](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability) gesorgt. Es wird aber kein deterministischer Lastenausgleich zwischen den Authentifizierungs-Agents bereitgestellt.
 
 Berücksichtigen Sie die Spitzenlast und durchschnittliche Last in Bezug auf die Anmeldeanforderungen, die Sie für Ihren Mandanten erwarten. Als Richtwert gilt, dass ein einzelner Authentifizierungs-Agent auf einem Standardserver mit einer CPU mit vier Kernen und 16 GB RAM pro Sekunde 300 bis 400 Authentifizierungen verarbeiten kann.
 
@@ -133,6 +128,7 @@ Wenn Sie einen Passthrough-Authentifizierungs-Agents auf einem Server deinstalli
 ## <a name="next-steps"></a>Nächste Schritte
 - [Aktuelle Einschränkungen:](active-directory-aadconnect-pass-through-authentication-current-limitations.md) Informationen zu den unterstützten und nicht unterstützten Szenarien
 - [Schnellstart:](active-directory-aadconnect-pass-through-authentication-quick-start.md) Aktivieren und Ausführen der Passthrough-Authentifizierung von Azure AD
+- [Migrieren von AD FS zur Passthrough-Authentifizierung:](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) Ein detaillierter Leitfaden zur Migration von AD FS (oder anderen Verbundtechnologien) zur Passthrough-Authentifizierung.
 - [Smart Lockout:](../authentication/howto-password-smart-lockout.md) Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten, um Benutzerkonten zu schützen
 - [Technische Einzelheiten:](active-directory-aadconnect-pass-through-authentication-how-it-works.md) Informationen zur Funktionsweise der Passthrough-Authentifizierung
 - [Problembehandlung:](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) Informationen zum Beheben von allgemeinen Problemen, die es bei der Passthrough-Authentifizierung geben kann

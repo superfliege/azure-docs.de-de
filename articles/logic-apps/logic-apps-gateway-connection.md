@@ -1,176 +1,161 @@
 ---
 title: Zugreifen auf lokale Datenquellen für Azure Logic Apps | Microsoft-Dokumentation
-description: Richten Sie das lokale Datengateway ein, damit Sie aus Logik-Apps auf lokale Datenquellen zugreifen können.
-keywords: Zugreifen auf Daten, lokal, Datenübertragung, Verschlüsselung, Datenquellen
+description: Erstellen Sie das lokale Datengateway und richten Sie es ein, damit Sie aus Logik-Apps auf lokale Datenquellen zugreifen können.
 services: logic-apps
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: 6cb4449d-e6b8-4c35-9862-15110ae73e6a
 ms.service: logic-apps
-ms.devlang: na
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 09/14/2017
-ms.author: LADocs; millopis; estfan
-ms.openlocfilehash: 0bf51f22e41ec78ef1dca7cba7bd5e26cbe1d969
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 07/20/2018
+ms.reviewer: yshoukry, LADocs
+ms.suite: integration
+ms.openlocfilehash: 65c7e03b349314ad61fa5f1ea8322f4d1352b8e6
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300005"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145688"
 ---
-# <a name="connect-to-data-sources-on-premises-from-logic-apps-with-on-premises-data-gateway"></a>Herstellen einer Verbindung mit lokalen Datenquellen über Logik-Apps mit dem lokalen Datengateway
+# <a name="connect-to-data-sources-on-premises-from-azure-logic-apps-with-on-premises-data-gateway"></a>Herstellen einer Verbindung mit lokalen Datenquellen in Azure Logic Apps mit dem lokalen Datengateway
 
-Um aus Ihren Logik-Apps auf lokale Datenquellen zuzugreifen, richten Sie ein lokales Datengateway ein, das von Logik-Apps mit unterstützten Connectors verwendet werden kann. Das Gateway fungiert als Brücke, die schnelle Datenübertragung und Verschlüsselung zwischen lokalen Datenquellen und Ihren Logik-Apps bereitstellt. Das Gateway überträgt Daten aus lokalen Quellen durch verschlüsselte Kanäle über Azure Service Bus. Der gesamte Datenverkehr stammt als sicherer ausgehender Datenverkehr vom Gateway-Agent. Erfahren Sie mehr darüber, [wie das Datengateway funktioniert](logic-apps-gateway-install.md#gateway-cloud-service). 
-
-Das Gateway unterstützt Verbindungen mit diesen lokalen Datenquellen:
-
-*   BizTalk Server 2016
-*   DB2  
-*   Dateisystem
-*   Informix
-*   MQ
-*   MySQL
-*   Oracle-Datenbank
-*   PostgreSQL
-*   SAP-Anwendungsserver 
-*   SAP-Nachrichtenserver
-*   SharePoint
-*   SQL Server
-*   Teradata
-
-In diesen Schritten wird gezeigt, wie das lokale Datengateway einzurichten ist, damit es mit Ihren Logik-Apps funktioniert. Weitere Informationen zu unterstützten Connectors finden Sie unter [Connectors für Azure Logic Apps](../connectors/apis-list.md). 
+Um aus Ihren Logik-Apps auf lokale Datenquellen zuzugreifen, können Sie eine Datengatewayressource in Azure erstellen, damit Ihre Logik-Apps die [lokalen Connectors](../logic-apps/logic-apps-gateway-install.md#supported-connections) verwenden können. In diesem Artikel wird gezeigt, wie Sie Ihre Azure-Gatewayressource erstellen, *nachdem* Sie [das Gateway auf Ihren lokalen Computer heruntergeladen und installiert haben](../logic-apps/logic-apps-gateway-install.md). 
 
 Informationen zum Verwenden des Gateways mit anderen Diensten finden Sie in den folgenden Artikeln:
 
-*   [Microsoft Power BI | Lokales Datengateway](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-*   [Azure Analysis Services | Lokales Datengateway](../analysis-services/analysis-services-gateway.md)
-*   [Microsoft Flow | Lokales Datengateway](https://flow.microsoft.com/documentation/gateway-manage/)
-*   [Microsoft Power Apps lokales Datengateway](https://powerapps.microsoft.com/tutorials/gateway-management/)
+* [Microsoft Power BI | Lokales Datengateway](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
+* [Microsoft Flow | Lokales Datengateway](https://flow.microsoft.com/documentation/gateway-manage/)
+* [Microsoft Power Apps lokales Datengateway](https://powerapps.microsoft.com/tutorials/gateway-management/)
+* [Azure Analysis Services | Lokales Datengateway](../analysis-services/analysis-services-gateway.md)
 
-## <a name="requirements"></a>Requirements (Anforderungen)
+## <a name="prerequisites"></a>Voraussetzungen
 
-* Sie müssen [das Datengateway bereits auf einem lokalen Computer installiert](logic-apps-gateway-install.md) haben.
+* Sie müssen [das Datengateway bereits heruntergeladen und auf einem lokalen Computer installiert](../logic-apps/logic-apps-gateway-install.md) haben.
 
-* Wenn Sie sich beim Azure-Portal anmelden, müssen Sie das gleiche Geschäfts-, Schul- oder Unikonto verwenden, das zum [Installieren des lokalen Datengateways](logic-apps-gateway-install.md#requirements) verwendet wurde. Ihr Anmeldekonto muss auch über ein Azure-Abonnement verfügen, das Sie beim Erstellen einer Gateway-Ressource für die Gatewayinstallation im Azure-Portal verwenden müssen.
+* Ihre Gatewayinstallation ist nicht bereits einer Gatewayressource in Azure zugeordnet. Sie können Ihre Gatewayinstallation nur mit einer einzigen Gatewayressource verknüpfen, was der Fall ist, wenn Sie die Gatewayressource erstellen und Ihre Gatewayinstallation auswählen. Diese Verknüpfung macht die Gatewayinstallation für andere Ressourcen nicht mehr verfügbar.
 
-* Die Gatewayinstallation darf noch nicht von einer Azure-Gatewayressource beansprucht sein. Sie können Ihre Gatewayinstallation nur einer Azure-Gatewayressource zuordnen. Beanspruchen tritt auf, wenn Sie die Gatewayressource so erstellen, dass die Installation für andere Ressourcen nicht verfügbar ist.
+* Wenn Sie sich beim Azure-Portal anmelden und die Gatewayressource erstellen, müssen Sie dasselbe Anmeldekonto verwenden, das Sie zuvor zum [Installieren des lokalen Datengateways](../logic-apps/logic-apps-gateway-install.md#requirements) verwendet haben.
+Sie müssen außerdem dasselbe [Azure-Abonnement](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer) verwenden, das zum Installieren des Gateways verwendet wurde. Wenn Sie noch kein Azure-Abonnement haben, <a href="https://azure.microsoft.com/free/" target="_blank">melden Sie sich für ein kostenloses Azure-Konto an</a>.
 
-* Das lokale Datengateway wird als Windows-Dienst ausgeführt und ist so eingerichtet, dass es `NT SERVICE\PBIEgwService` für die Anmeldeinformationen des Windows-Diensts verwendet. Um die Gatewayressource über das Azure-Portal erstellen und verwalten zu können, muss das [Windows-Dienstkonto](../logic-apps/logic-apps-gateway-install.md) mindestens über die Berechtigung **Mitwirkender** verfügen. 
+* Um die Gatewayressource über das Azure-Portal erstellen und verwalten zu können, muss Ihr [Windows-Dienstkonto](../logic-apps/logic-apps-gateway-install.md#windows-service-account) mindestens über die Berechtigung **Mitwirkender** verfügen. Das lokale Datengateway wird als Windows-Dienst ausgeführt und ist so eingerichtet, dass es `NT SERVICE\PBIEgwService` für die Anmeldeinformationen des Windows-Diensts verwendet. 
 
   > [!NOTE]
   > Das Windows-Dienstkonto ist weder mit dem Konto, das zum Herstellen von Verbindungen mit den lokalen Datenquellen verwendet wird, noch mit dem Geschäfts-, Schul- oder Unikonto identisch, das Sie zum Anmelden bei Clouddiensten verwenden.
 
-## <a name="install-the-on-premises-data-gateway"></a>Installieren des lokalen Datengateways
+## <a name="download-and-install-gateway"></a>Herunterladen und Installieren des Gateways
 
-Führen Sie (sofern noch nicht geschehen) [die Schritte zum Installieren des lokalen Datengateways](logic-apps-gateway-install.md) aus. Bevor Sie mit den weiteren Schritten fortfahren, müssen Sie das Datengateway auf einem lokalen Computer installiert haben.
+Bevor Sie mit den Schritten in diesem Artikel fortfahren können, muss das Gateway heruntergeladen und installiert sein.
+Führen Sie – sofern noch nicht geschehen – die Schritte zum [Herunterladen und Installieren des lokalen Datengateways](../logic-apps/logic-apps-gateway-install.md) aus. 
 
 <a name="create-gateway-resource"></a>
 
-## <a name="create-an-azure-resource-for-the-on-premises-data-gateway"></a>Erstellen einer Azure-Ressource für das lokale Datengateway
+## <a name="create-azure-resource-for-gateway"></a>Erstellen von Azure-Ressourcen für Gateways
 
-Nachdem Sie das Gateway auf einem lokalen Computer installiert haben, müssen Sie Ihr Datengateway als Ressource in Azure erstellen. In diesem Schritt wird Ihre Gatewayressource auch Ihrem Azure-Abonnement zugeordnet.
+Nachdem Sie das Gateway auf einem lokalen Computer installiert haben, können Sie eine Azure-Ressource für Ihr Gateway erstellen. In diesem Schritt wird Ihre Gatewayressource auch Ihrem Azure-Abonnement zugeordnet.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com "Azure-Portal") an. Achten Sie darauf, dass Sie die Azure-Geschäfts- oder -Schul-E-Mail-Adresse verwenden, mit der Sie das Gateway installiert haben.
+1. Melden Sie sich beim <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> an. Achten Sie darauf, dass Sie dieselbe Azure-Geschäfts- oder -Schul-E-Mail-Adresse verwenden, mit der Sie das Gateway installiert haben.
 
-2. Wählen Sie im Azure-Hauptmenü die Optionen **Ressource erstellen** > **Unternehmensintegration** > **Lokales Datengateway** aus.
+2. Wählen Sie im Azure-Hauptmenü **Ressource erstellen** > 
+**Integration** > **Lokales Datengateway** aus.
 
    ![Nach „Lokales Datengateway“ suchen](./media/logic-apps-gateway-connection/find-on-premises-data-gateway.png)
 
-3. Geben Sie auf der Seite **Verbindungsgateway erstellen** die folgenden Details an, um Ihre Datengatewayressource zu erstellen:
+3. Geben Sie auf der Seite **Verbindungsgateway erstellen** die folgenden Informationen für Ihre Gatewayressource an:
 
-    * **Name**: Geben Sie einen Namen für die Gatewayressource ein. 
+   | Eigenschaft | BESCHREIBUNG | 
+   |----------|-------------|
+   | **Name** | Der Name für Ihre Gatewayressource | 
+   | **Abonnement** | Der Name Ihres Azure-Abonnements, das mit dem Abonnement für Ihre Logik-App identisch sein muss. Das standardmäßige Abonnement basiert auf dem Azure-Konto, das Sie zum Anmelden verwendet haben. | 
+   | **Ressourcengruppe** | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die zum Organisieren verwandter Ressourcen verwendet wird. | 
+   | **Location** | Azure schränkt diesen Standort auf die Region ein, die während der [Gatewayinstallation](../logic-apps/logic-apps-gateway-install.md) für den Gatewayclouddienst ausgewählt wurde. <p>**Hinweis**: Stellen Sie sicher, dass der Standort der Gatewayressource mit dem Standort des Gatewayclouddiensts übereinstimmt. Andernfalls kann es sein, dass Ihre Gatewayinstallation im nächsten Schritt nicht in der Liste der installierten Gateways zur Auswahl angezeigt wird. Sie können unterschiedliche Regionen für Ihre Gatewayressource und Ihre Logik-App verwenden. | 
+   | **Installationsname** | Wenn Ihre Gatewayinstallation noch nicht ausgewählt ist, wählen Sie das Gateway aus, das Sie zuvor installiert haben. | 
+   | | | 
 
-    * **Abonnement**: Wählen Sie das Azure-Abonnement aus, das Sie Ihrer Gatewayressource zuordnen möchten. 
-    Dieses Abonnement muss mit dem Abonnement für Ihre Logik-App identisch sein.
-   
-      Das standardmäßige Abonnement basiert auf dem Azure-Konto, das Sie zum Anmelden verwendet haben.
+   Beispiel: 
 
-    * **Ressourcengruppe**: Erstellen Sie eine Ressourcengruppe, oder wählen Sie eine vorhandene Ressourcengruppe aus, um die Gatewayressource bereitzustellen. 
-    Über Ressourcengruppen können Sie zugehörige Azure-Assets als eine Sammlung verwalten.
+   ![Angeben von Details zum Erstellen Ihres lokalen Datengateways](./media/logic-apps-gateway-connection/createblade.png)
 
-    * **Standort**: Azure schränkt diesen Standort auf die Region ein, die während der [Gatewayinstallation](logic-apps-gateway-install.md) für den Gatewayclouddienst ausgewählt wurde . 
+4. Um die Gatewayressource Ihrem Azure-Dashboard hinzuzufügen, wählen Sie **An Dashboard anheften** aus. Wenn Sie fertig sind, wählen Sie **Erstellen** aus.
 
-      > [!NOTE]
-      > Stellen Sie sicher, dass der Standort der Gatewayressource mit dem Standort des Gatewayclouddiensts übereinstimmt. Andernfalls kann es sein, dass Ihre Gatewayinstallation im nächsten Schritt nicht in der Liste der installierten Gateways zur Auswahl angezeigt wird.
-      > 
-      > Sie können unterschiedliche Regionen für Ihre Gatewayressource und Ihre Logik-App verwenden.
+   Um Ihr Gateway jederzeit suchen oder anzeigen zu können, wählen Sie im Azure-Hauptmenü die Option **Alle Dienste** aus. 
+   Geben Sie im Suchfeld den Begriff „lokale Datengateways“ ein, und wählen Sie dann **Lokale Datengateways** aus.
 
-    * **Installationsname**: Wenn Ihre Gatewayinstallation noch nicht ausgewählt ist, wählen Sie das Gateway aus, das Sie zuvor installiert haben. 
-
-    Um die Gatewayressource zu Ihrem Azure-Dashboard hinzuzufügen, wählen Sie **An Dashboard anheften** aus. 
-    Wenn Sie fertig sind, wählen Sie **Erstellen** aus.
-
-    Beispiel: 
-
-    ![Angeben von Details zum Erstellen Ihres lokalen Datengateways](./media/logic-apps-gateway-connection/createblade.png)
-
-    Um Ihr Datengateway jederzeit suchen oder anzeigen zu können, wählen Sie im Azure-Hauptmenü die Option **Alle Dienste** aus. 
-    Geben Sie im Suchfeld den Begriff „lokale Datengateways“ ein, und wählen Sie dann **Lokale Datengateways** aus.
-
-    ![Nach „Lokale Datengateways“ suchen](./media/logic-apps-gateway-connection/find-on-premises-data-gateway-enterprise-integration.png)
+   ![Nach „Lokale Datengateways“ suchen](./media/logic-apps-gateway-connection/find-on-premises-data-gateway-enterprise-integration.png)
 
 <a name="connect-logic-app-gateway"></a>
 
-## <a name="connect-your-logic-app-to-the-on-premises-data-gateway"></a>Verbinden Ihrer Logik-App mit dem lokalen Datengateway
+## <a name="connect-to-on-premises-data"></a>Herstellen einer Verbindung mit lokalen Daten
 
-Nachdem Sie Ihre Datengatewayressource erstellt und Ihr Azure-Abonnement mit dieser Ressource verknüpft haben, erstellen Sie eine Verbindung zwischen Ihrer Logik-App und dem Datengateway.
+Nachdem Sie die Gatewayressource erstellt und Ihr Azure-Abonnement mit dieser Ressource verknüpft haben, können Sie jetzt mit dem Gateway eine Verbindung zwischen Ihrer Logik-App und Ihrer lokalen Datenquelle herstellen.
 
-> [!NOTE]
-> Der Standort für die Gatewayverbindung muss sich in derselben Region befinden wie Ihre Logik-App, Sie können aber ein Datengateway verwenden, das sich in einer anderen Region befindet.
+1. Erstellen oder öffnen Sie im Azure-Portal Ihre Logik-App im Logik-App-Designer.
 
-1. Erstellen oder öffnen Sie Ihre Logik-App im Azure-Portal im Logik-App-Designer.
+2. Fügen Sie einen Connector hinzu, der lokale Verbindungen unterstützt, z.B. **SQL Server**.
 
-2. Fügen Sie einen Connector hinzu, der lokale Verbindungen unterstützt, z.B. SQL Server.
+3. Richten Sie jetzt die Verbindung ein:
 
-3. Gehen Sie entsprechend der gezeigten Reihenfolge vor. Aktivieren Sie **Über lokales Datengateway verbinden**, geben Sie einen eindeutigen Namen und die erforderlichen Informationen ein, und wählen Sie die Datengatewayressource aus, die Sie verwenden möchten. Wenn Sie fertig sind, wählen Sie **Erstellen** aus.
+   1. Wählen Sie **Verbinden über lokales Datengateway**. 
 
-   > [!TIP]
-   > Ein eindeutiger Verbindungsname vereinfacht später ein Erkennen dieser Verbindung, insbesondere wenn Sie mehrere Verbindungen erstellen. Sofern erforderlich, geben Sie auch die qualifizierte Domäne für Ihren Benutzernamen an. 
+   2. Wählen Sie die für **Gateways** die Gatewayressource, die Sie zuvor erstellt haben. 
 
-   ![Erstellen der Verbindung zwischen der Logik-App und dem Datengateway](./media/logic-apps-gateway-connection/blankconnection.png)
+      Der Standort für die Gatewayverbindung muss sich zwar in derselben Region befinden wie Ihre Logik-App, Sie können aber ein Gateway auswählen, das sich in einer anderen Region befindet.
 
-Herzlichen Glückwunsch, die Gatewayverbindung kann nun für Ihre Logik-App verwendet werden.
+   3. Geben Sie einen eindeutigen Verbindungsnamen und die weiteren erforderlichen Informationen an. 
 
-## <a name="edit-your-gateway-connection-settings"></a>Bearbeiten der Einstellungen für die Gatewayverbindung
+      Ein eindeutiger Verbindungsname vereinfacht später ein Erkennen dieser Verbindung, insbesondere wenn Sie mehrere Verbindungen herstellen. Sofern erforderlich, geben Sie auch die qualifizierte Domäne für Ihren Benutzernamen an.
+   
+      Beispiel: 
+
+      ![Erstellen der Verbindung zwischen der Logik-App und dem Datengateway](./media/logic-apps-gateway-connection/blankconnection.png)
+
+   4. Wenn Sie fertig sind, wählen Sie **Erstellen** aus. 
+
+Die Gatewayverbindung kann nun für Ihre Logik-App verwendet werden.
+
+## <a name="edit-connection"></a>Bearbeiten der Verbindung
 
 Nach dem Sie eine Gatewayverbindung für Ihre Logik-App erstellt haben, kann es sein, dass Sie die Einstellungen für diese Verbindung später aktualisieren möchten.
 
-1. So finden Sie die Gatewayverbindung:
+1. Suchen Sie Ihre Gatewayverbindung:
 
-   * Klicken Sie im Menü für die Logik-App unter **Entwicklungstools** auf **API-Verbindungen**. 
+   * Um alle API-Verbindungen nur für Ihre Logik-App zu suchen, wählen Sie im Menü Ihrer Logik-App unter **Entwicklungstools** die Option **API-Verbindungen** aus. 
    
-     Im Bereich **API-Verbindungen** werden alle API-Verbindungen aufgeführt, die Ihrer Logik-App zugeordnet sind, darunter auch die Gatewayverbindungen.
-
      ![Navigieren zu Ihrer Logik-App, Auswählen von „API-Verbindungen“](./media/logic-apps-gateway-connection/logic-app-find-api-connections.png)
 
-   * Alternative: Wechseln Sie über das Azure-Hauptmenü zu **Weitere Dienste** > **Web und Mobil** > **API-Verbindungen**, um alle API-Verbindungen anzuzeigen – einschließlich der Gatewayverbindungen, die Ihrem Azure-Abonnement zugeordnet sind. 
+   * So suchen Sie alle API-Verbindungen, die mit Ihrem Azure-Abonnement verknüpft sind: 
 
-   * Weitere Alternative: Wechseln Sie über das Azure-Hauptmenü zu **Alle Ressourcen**, um alle API-Verbindungen anzuzeigen – einschließlich der Gatewayverbindungen, die Ihrem Azure-Abonnement zugeordnet sind.
+     * Wechseln Sie über das Azure-Hauptmenü zu **Alle Dienste** > **Web** > **API-Verbindungen**. 
+     * Wechseln Sie alternativ über das Azure-Hauptmenü zu **Alle Ressourcen**.
 
-2. Wählen Sie die Gatewayverbindung aus, die Sie anzeigen oder bearbeiten möchten, und wählen Sie **API-Verbindung bearbeiten** aus.
+2. Wählen Sie die gewünschte Gatewayverbindung und dann **API-Verbindung bearbeiten** aus.
 
    > [!TIP]
    > Sollten Ihre Aktualisierungen nicht wirksam werden, [beenden Sie den Gateway-Windows-Dienst, und starten Sie ihn neu](./logic-apps-gateway-install.md#restart-gateway).
 
 <a name="change-delete-gateway-resource"></a>
 
-## <a name="switch-or-delete-your-on-premises-data-gateway-resource"></a>Wechseln oder Löschen der lokalen Datengatewayressource
+## <a name="delete-gateway-resource"></a>Löschen der Gatewayressource
 
 Um eine andere Ressource zu erstellen, Ihr Gateway mit einer anderen Ressource zu verknüpfen oder die Gatewayressource zu entfernen, können Sie die Gatewayressource löschen, ohne dass sich dies auf die Gatewayinstallation auswirkt. 
 
 1. Wechseln Sie über das Azure-Hauptmenü zu **Alle Ressourcen**. 
-2. Suchen Sie nach Ihrem Datengatewayressource, und wählen Sie es aus.
-3. Wählen Sie **Lokales Datengateway** aus, und wählen Sie auf der Symbolleiste für Ressourcen das Symbol **Löschen** aus.
+
+2. Suchen Sie Ihre Gatewayressource, und wählen Sie sie aus.
+
+3. Wenn nicht bereits ausgewählt, wählen Sie in Ihrem Gatewayressourcenmenü **Lokales Datengateway** aus. 
+
+4. Wählen Sie in der Ressourcensymbolleiste die Option **Löschen** aus.
 
 <a name="faq"></a>
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
+
+## <a name="get-support"></a>Support
+
+* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

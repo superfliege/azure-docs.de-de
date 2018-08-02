@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
 ms.author: daveba
-ms.openlocfilehash: 8851d2cad5958b01df1d21ea44e5c03bb788c83b
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 36df9d00d41f3c092320fa88772b41c9a41c6d8e
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904041"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237280"
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-azure-cli"></a>Konfigurieren einer MSI (Managed Service Identity, verwaltete Dienstidentität) für eine VM-Skalierungsgruppe mit der Azure CLI
 
@@ -36,12 +36,14 @@ In diesem Artikel erfahren Sie, wie Sie mit der Azure CLI die folgenden Vorgäng
 
 - Wenn Sie nicht mit „Verwaltete Dienstidentität“ vertraut sind, helfen Ihnen die Informationen in dieser [Übersicht](overview.md) weiter. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen Identität](overview.md#how-does-it-work)** bewusst.
 - Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
-
-Um die CLI-Skriptbeispiele auszuführen, haben Sie drei Möglichkeiten:
-
-- Verwenden Sie [Azure Cloud Shell](../../cloud-shell/overview.md) aus dem Azure-Portal (siehe nächster Abschnitt).
-- Verwenden Sie die eingebettete Azure Cloud Shell, indem Sie die Schaltfläche „Ausprobieren“ in der oberen rechten Ecke jedes Codeblocks verwenden.
-- [Installieren Sie die neueste Version von CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 oder höher), wenn Sie lieber eine lokale CLI-Konsole verwenden möchten. 
+- Um die Verwaltungsvorgänge in diesem Artikel durchzuführen, benötigt Ihr Konto die folgenden Rollenzuordnungen:
+    - [Mitwirkender für virtuelle Computer](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor), um eine VM-Skalierungsgruppe zu erstellen und die vom System und/oder Benutzer zugewiesene verwaltete Identität aus einer VM-Skalierungsgruppe zu aktivieren bzw. zu entfernen.
+    - [Mitwirkender für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-contributor), um eine vom Benutzer zugewiesene Identität zu erstellen.
+    - [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator), um eine vom Benutzer zugewiesene Identität einer VM-Skalierungsgruppe zuzuweisen bzw. daraus zu entfernen.
+- Um die CLI-Skriptbeispiele auszuführen, haben Sie drei Möglichkeiten:
+    - Verwenden Sie [Azure Cloud Shell](../../cloud-shell/overview.md) aus dem Azure-Portal (siehe nächster Abschnitt).
+    - Verwenden Sie die eingebettete Azure Cloud Shell, indem Sie die Schaltfläche „Ausprobieren“ in der oberen rechten Ecke jedes Codeblocks verwenden.
+    - [Installieren Sie die neueste Version von CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 oder höher), wenn Sie lieber eine lokale CLI-Konsole verwenden möchten. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -89,20 +91,26 @@ Wenn Sie die systemzugewiesene Identität in einer vorhandenen Azure VM-Skalieru
 
 ### <a name="disable-system-assigned-identity-from-an-azure-virtual-machine-scale-set"></a>Deaktivieren der systemzugewiesenen Identität in einer Azure VM-Skalierungsgruppe
 
-> [!NOTE]
-> Ein Deaktivieren von MSI (Managed Service Identity, Verwaltete Dienstidentität) aus einer VM-Skalierungsgruppe wird derzeit nicht unterstützt. In der Zwischenzeit können Sie zwischen vom System zugewiesenen und vom Benutzer zugewiesenen Identitäten wechseln. Überprüfen Sie zu einem späteren Zeitpunkt auf dieser Seite, ob neue Informationen vorliegen.
-
-Wenn Sie eine VM-Skalierungsgruppe haben, die keine systemzugewiesene Identität mehr, jedoch weiterhin benutzerzugewiesene Identitäten benötigt, verwenden Sie den folgenden Befehl:
+Wenn Sie über eine VM-Skalierungsgruppe verfügen, die nicht mehr die vom System zugewiesene Identität, jedoch weiterhin vom Benutzer zugewiesene Identitäten benötigt, verwenden Sie den folgenden Befehl:
 
 ```azurecli-interactive
-az vmss update -n myVMSS -g myResourceGroup --set identity.type='UserAssigned' 
+az vmss update -n myVM -g myResourceGroup --set identity.type='UserAssigned' 
+```
+
+Bei einem virtuellen Computer, der nicht mehr die vom System zugewiesene Identität benötigt und über keine vom Benutzer zugewiesene Identitäten verfügt, verwenden Sie den folgenden Befehl:
+
+> [!NOTE]
+> Für den Wert `none` müssen Sie die Groß-/Kleinschreibung beachten. Er darf nur aus Kleinbuchstaben bestehen. 
+
+```azurecli-interactive
+az vmss update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
 Möchten Sie die MSI-Erweiterung für virtuelle Computer entfernen, verwenden Sie den Befehl [az vmss identity remove](/cli/azure/vmss/identity/#az_vmss_remove_identity), um die systemzugewiesene Identität aus einer VM-Skalierungsgruppe zu entfernen:
 
-   ```azurecli-interactive
-   az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGroup -vmss-name myVMSS
-   ```
+```azurecli-interactive
+az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGroup -vmss-name myVMSS
+```
 
 ## <a name="user-assigned-identity"></a>Benutzerzugewiesene Identität
 
@@ -120,13 +128,12 @@ Dieser Abschnitt führt Sie durch das Erstellen einer VM-Skalierungsgruppe und d
 
 2. Erstellen Sie mit [az identity create](/cli/azure/identity#az-identity-create) eine benutzerzugewiesene Identität.  Mit dem Parameter `-g` wird die Ressourcengruppe angegeben, in der die benutzerzugewiesene Identität erstellt wird, und mit dem Parameter `-n` wird deren Name angegeben. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<USER ASSIGNED IDENTITY NAME>` durch Ihre eigenen Werte:
 
-[!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
+   [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
-
-    ```azurecli-interactive
-    az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
-    ```
-Die Antwort enthält Details zu der erstellten benutzerzugewiesenen Identität, ähnlich dem folgenden Beispiel. Der Ressourcen-`id`-Wert, der der benutzerzugewiesenen Identität zugewiesen ist, wird im nächsten Schritt verwendet.
+   ```azurecli-interactive
+   az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
+   ```
+   Die Antwort enthält Details zu der erstellten benutzerzugewiesenen Identität, ähnlich dem folgenden Beispiel. Der Ressourcen-`id`-Wert, der der benutzerzugewiesenen Identität zugewiesen ist, wird im nächsten Schritt verwendet.
 
    ```json
    {
@@ -182,20 +189,27 @@ Die Antwort enthält Details zu der erstellten benutzerzugewiesenen Identität, 
     az vmss identity assign -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY ID>
     ```
 
-### <a name="remove-a-user-assigned-identity-from-an-azure-vmss"></a>Entfernen einer benutzerzugewiesenen Identität aus einer Azure VM-Skalierungsgruppe
+### <a name="remove-a-user-assigned-identity-from-an-azure-virtual-machine-scale-set"></a>Entfernen einer vom Benutzer zugewiesenen Identität aus einer Azure-VM-Skalierungsgruppe
 
-> [!NOTE]
->  Ein Entfernen aller benutzerzugewiesenen Identitäten aus einer VM-Skalierungsgruppe wird derzeit nicht unterstützt, es sei denn, Sie verwenden eine systemzugewiesene Identität. 
-
-Wenn Ihre VM-Skalierungsgruppe mehrere benutzerzugewiesene Identitäten hat, können Sie mit dem Befehl [az vmss identity remove](/cli/azure/vmss/identity#az-vmss-identity-remove) alle Identitäten mit Ausnahme der letzten entfernen. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<VMSS NAME>` durch Ihre eigenen Werte. `<MSI NAME>` ist die Namenseigenschaft der benutzerzugewiesen Identität. Diese Eigenschaft kann mit `az vm show` aus dem Identitätsabschnitt des virtuellen Computers abgerufen werden:
+Zum Entfernen einer vom Benutzer zugewiesenen Identität aus einer VM-Skalierungsgruppe verwenden Sie [az vmss identity remove](/cli/azure/vmss/identity#az-vmss-identity-remove). Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<VMSS NAME>` durch Ihre eigenen Werte. `<MSI NAME>` ist die `name`-Eigenschaft der benutzerzugewiesenen Identität. Diese Eigenschaft kann mit `az vmss identity show` aus dem Identitätsabschnitt des virtuellen Computers abgerufen werden:
 
 ```azurecli-interactive
 az vmss identity remove -g <RESOURCE GROUP> -n <VMSS NAME> --identities <MSI NAME>
 ```
-Wenn Ihre VM-Skalierungsgruppe sowohl system- als auch benutzerzugewiesene Identitäten hat, können Sie alle benutzerzugewiesenen Identitäten entfernen, indem Sie so wechseln, dass ausschließlichen die systemzugewiesene Identität verwendet wird. Verwenden Sie den folgenden Befehl: 
+
+Wenn Ihre VM-Skalierungsgruppe keine vom System zugewiesene Identität hat und Sie alle vom Benutzer zugewiesenen Identitäten entfernen möchten, verwenden Sie den folgenden Befehl:
+
+> [!NOTE]
+> Für den Wert `none` müssen Sie die Groß-/Kleinschreibung beachten. Er darf nur aus Kleinbuchstaben bestehen.
 
 ```azurecli-interactive
-az vmss update -n <VMSS NAME> -g <RESOURCE GROUP> --set identity.type='SystemAssigned' identity.identityIds=null
+az vmss update -n myVMSS -g myResourceGroup --set identity.type="none" identity.identityIds=null
+```
+
+Wenn die VM-Skalierungsgruppe sowohl vom System als auch vom Benutzer zugewiesene Identitäten aufweist, können Sie alle vom Benutzer zugewiesenen Identitäten entfernen, indem Sie in den Modus wechseln, in dem nur die vom System zugewiesene Identität verwendet wird. Verwenden Sie den folgenden Befehl:
+
+```azurecli-interactive
+az vmss update -n myVMSS -g myResourceGroup --set identity.type='SystemAssigned' identity.identityIds=null 
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

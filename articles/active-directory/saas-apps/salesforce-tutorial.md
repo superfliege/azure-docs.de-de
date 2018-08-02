@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 07/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 64b94baeaede9b05e953b69324648c63d97cea8e
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a453e2d16edecda9753c2940a745b260a3a2b893
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39045437"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160262"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Tutorial: Azure Active Directory-Integration mit Salesforce
 
@@ -60,14 +60,14 @@ Zum Konfigurieren der Integration von Salesforce in Azure AD müssen Sie Salesfo
 
 **Um Salesforce aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
     ![Schaltfläche „Azure Active Directory“][1]
 
 2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“][2]
-    
+
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
@@ -103,26 +103,26 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
+
     ![Dialogfeld „Einmaliges Anmelden“](./media/salesforce-tutorial/tutorial_salesforce_samlbase.png)
 
 3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für Salesforce** aus:
 
     ![SSO-Informationen zur Domäne und zu den URLs für Salesforce](./media/salesforce-tutorial/tutorial_salesforce_url.png)
-    
+
     a. Geben Sie im Textfeld **Anmelde-URL** den Wert im folgenden Format ein:
-    
+
     Enterprise-Konto: `https://<subdomain>.my.salesforce.com`
 
     Developer-Konto: `https://<subdomain>-dev-ed.my.salesforce.com`
-    
+
     b. Geben Sie im Textfeld **Bezeichner** den Wert in folgendem Format ein:
-    
+
     Enterprise-Konto: `https://<subdomain>.my.salesforce.com`
 
     Developer-Konto: `https://<subdomain>-dev-ed.my.salesforce.com`
-    
-    > [!NOTE] 
+
+    > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Kundensupportteam von Salesforce](https://help.salesforce.com/support), um diese Werte zu erhalten.
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
@@ -170,14 +170,14 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     b. Fügen Sie im Feld **Issuer** (Aussteller) den Wert der **SAML Entity ID** (SAML-Entitäts-ID) ein, den Sie aus dem Azure-Portal kopiert haben.
 
     c. Geben Sie in das **Entitäts-ID-Textfeld**Ihren Salesforce-Domänennamen nach folgendem Muster ein:
-      
+
       * Enterprise-Konto: `https://<subdomain>.my.salesforce.com`
       * Developer-Konto: `https://<subdomain>-dev-ed.my.salesforce.com`
-      
+
     d. Um das **Zertifikat des Identitätsanbieters** hochzuladen, klicken Sie auf **Choose File** (Datei auswählen). Navigieren Sie dann zu der Zertifikatdatei, die Sie aus dem Azure-Portal heruntergeladen haben, und wählen Sie diese aus.
 
     e. Wählen Sie als **SAML Identity Type** (SAML-Identitätstyp) eine der folgenden Optionen aus:
-    
+
       * Wählen Sie **Assertion contains the User's Salesforce username** (Assertion enthält den Salesforce-Benutzernamen des Benutzers) aus, wenn in der SAML-Assertion der Salesforce-Benutzername des Benutzers übergeben wird.
 
       * Wählen Sie **Assertion contains the Federation ID from the User object** (Assertion enthält die Verbund-ID aus dem Benutzerobjekt) aus, wenn die Verbund-ID aus dem Benutzerobjekt in der SAML-Assertion übergeben wird.
@@ -189,7 +189,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     g. Wählen Sie für **Vom Dienstanbieter initiierte Anforderungsbindung** die Einstellung **HTTP-Umleitung**.
 
     h. Fügen Sie im Textfeld **Identity Provider Login URL** (Anmelde-URL des Identitätsanbieters) den Wert der **Single Sign-On Service URL** (Dienst-URL für das einmalige Anmelden) ein, den Sie aus dem Azure-Portal kopiert haben.
-    
+
     i. Klicken Sie abschließend auf **Speichern** , um Ihre SAML-Einstellungen für die einmalige Anmeldung anzuwenden.
 
 14. Klicken Sie in Salesforce im linken Navigationsbereich auf **Company Settings** (Unternehmenseinstellungen), um den zugehörigen Abschnitt zu erweitern, und klicken Sie dann auf **My Domain** (Meine Domäne).
@@ -200,7 +200,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on](./media/salesforce-tutorial/sf-edit-auth-config.png)
 
-16. Wählen Sie im Abschnitt **Authentication Configuration** (Konfiguration der Authentifizierung) die Option **Login Page** (Anmeldeseite) als **Authentication Service** (Authentifizierungsdienst) Ihrer SAML-SSO-Konfiguration, und klicken Sie dann auf **Save** (Speichern).
+16. Wählen Sie im Abschnitt **Konfiguration der Authentifizierung** die Option **AzureSSO** als **Authentifizierungsdienst** Ihrer SAML-SSO-Konfiguration, und klicken Sie dann auf **Speichern**.
 
     ![Configure single sign-on](./media/salesforce-tutorial/sf-auth-config.png)
 

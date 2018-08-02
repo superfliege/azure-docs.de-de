@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 07/21/2018
-ms.openlocfilehash: 3637ee63c94ea54145d99b9d5632f0a77c95d2f4
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 7494f139f824d3794fced3a0eb4f8d676f3961f5
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970260"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173706"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL – Tarife
 
@@ -97,6 +97,8 @@ Der Server ist als schreibgeschützt gekennzeichnet, wenn die Menge des freien S
 Wenn der Server als schreibgeschützt festgelegt ist, werden alle bestehenden Sitzungen getrennt, und für Transaktionen ohne Commit wird ein Rollback ausgeführt. Nachfolgende Schreibvorgänge und Transaktionscommits ergeben einen Fehler. Alle nachfolgenden Abfragen werden ununterbrochen fortgesetzt.  
 
 Sie können die Menge des bereitgestellten Speichers für Ihren Server erhöhen oder eine neue Sitzung im Lese-/ Schreibmodus starten und Daten löschen, um Speicherplatz freizugeben. Durch Ausführen von `SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;` wird die aktuelle Sitzung in den Lese-/Schreibmodus versetzt. Um eine Datenbeschädigung zu verhindern, führen Sie keine Schreibvorgänge durch, solange der Server noch den schreibgeschützten Status aufweist.
+
+Sie sollten eine Benachrichtigung einrichten, die Sie benachrichtigt, wenn sich der Serverspeicher dem Schwellenwert nähert, um zu verhindern, dass Sie in den schreibgeschützten Zustand geraten. Weitere Informationen finden Sie in der Dokumentation zum [Einrichten einer Benachrichtigung](howto-alert-on-metric.md).
 
 ## <a name="backup"></a>Backup
 

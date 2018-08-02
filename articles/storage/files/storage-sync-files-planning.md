@@ -1,5 +1,5 @@
 ---
-title: Planen einer Bereitstellung der Azure-Dateisynchronisierung (Vorschau) | Microsoft-Dokumentation
+title: Planen einer Azure File Sync-Bereitstellung | Microsoft-Dokumentation
 description: Erfahren Sie, was Sie beim Planen einer Azure Files-Bereitstellung berücksichtigen müssen.
 services: storage
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: 1927ab29e82836c60b2ba36c3eec0acf49778082
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 79f3787713d7615d8f5c42d1747dfa5ed96780cd
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335838"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214882"
 ---
-# <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Planen einer Bereitstellung der Azure-Dateisynchronisierung (Vorschau)
-Verwenden Sie Azure File Sync (Vorschau), um die Dateifreigaben Ihrer Organisation in Azure Files zu zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit Azure File Sync werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
+# <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
+Mit Azure File Sync können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit Azure File Sync werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
 
 Dieser Artikel beschreibt wichtige Überlegungen für die Bereitstellung von Azure File Sync. Es wird empfohlen, dass Sie [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md) lesen. 
 
@@ -180,13 +180,13 @@ Die Azure-Dateisynchronisierung funktioniert nicht mit:
 
 - NTFS EFS (Encrypted File System)
 
-Im Allgemeinen sollte Azure File Sync Interoperabilität mit Verschlüsselungslösungen unterstützen, die unterhalb des Dateisystems ansetzen, wie etwa BitLocker, sowie mit Lösungen, die im Dateiformat implementiert sind, wie etwa BitLocker. Es wurde keine besondere Interoperabilität für Lösungen implementiert, die oberhalb des Dateisystems ansetzen (wie etwa NTFS EFS).
+Im Allgemeinen sollte Azure File Sync Interoperabilität mit Verschlüsselungslösungen unterstützen, die unterhalb des Dateisystems ansetzen, wie etwa BitLocker, sowie mit Lösungen, die im Dateiformat implementiert sind, wie etwa Azure Information Protection. Es wurde keine besondere Interoperabilität für Lösungen implementiert, die oberhalb des Dateisystems ansetzen (wie etwa NTFS EFS).
 
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Andere Lösungen für hierarchisches Speichermanagement (HSM)
 Es sollten keine anderen HSM-Lösungen in Verbindung mit Azure File Sync verwendet werden.
 
 ## <a name="region-availability"></a>Regionale Verfügbarkeit
-Azure File Sync ist nur in den folgenden Regionen als Vorschau verfügbar:
+Azure File Sync ist nur in den folgenden Regionen verfügbar:
 
 | Region | Standort des Rechenzentrums |
 |--------|---------------------|
@@ -205,7 +205,29 @@ Azure File Sync ist nur in den folgenden Regionen als Vorschau verfügbar:
 | Europa, Westen | Niederlande |
 | USA (Westen) | Kalifornien |
 
-In der Vorschauversion wird nur die Synchronisierung mit einer Azure-Dateifreigabe in der gleichen Region wie der Speichersynchronisierungsdienst unterstützt.
+Azure File Sync unterstützt nur die Synchronisierung mit einer Azure-Dateifreigabe in der gleichen Region wie der Speichersynchronisierungsdienst.
+
+### <a name="azure-disaster-recovery"></a>Azure-Notfallwiederherstellung
+Um vor dem Verlust einer Azure-Region zu schützen, integriert Azure File Sync die Option für [Redundanz durch georedundante Speicher](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS). Der GRS funktioniert durch die Verwendung von asynchroner Blockreplikation zwischen Speichern in der primären Region, mit der Sie normalerweise interagieren, und Speichern in der gekoppelten sekundären Region. Bei einem Notfall, infolgedessen eine Azure-Region vorübergehend oder dauerhaft offline geschaltet wird, führt Microsoft für den Speicher ein Failover auf die gekoppelte Region durch. 
+
+Um die Failoverintegration zwischen georedundantem Speicher und Azure File Sync zu unterstützen, werden alle Azure File Sync-Regionen mit einer sekundären Region gekoppelt, die der vom Speicher verwendeten sekundären Region entspricht. Bei diesen Paaren handelt es sich um Folgende:
+
+| Primäre Region      | Regionspaar      |
+|---------------------|--------------------|
+| Australien (Osten)      | Australien, Südosten |
+| Australien, Südosten | Australien (Osten)     |
+| Kanada, Mitte      | Kanada, Osten        |
+| Kanada, Osten         | Kanada, Mitte     |
+| USA (Mitte)          | USA (Ost) 2          |
+| Asien, Osten           | Asien, Südosten     |
+| USA (Ost)             | USA (Westen)            |
+| USA (Ost) 2           | USA (Mitte)         |
+| Nordeuropa        | Europa, Westen        |
+| Asien, Südosten      | Asien, Osten          |
+| UK, Süden            | UK, Westen            |
+| UK, Westen             | UK, Süden           |
+| Europa, Westen         | Nordeuropa       |
+| USA (Westen)             | USA (Ost)            |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Updaterichtlinie für den Azure-Dateisynchronisierungs-Agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

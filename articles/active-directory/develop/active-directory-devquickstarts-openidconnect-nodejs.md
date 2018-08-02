@@ -17,12 +17,12 @@ ms.date: 04/20/2018
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 7d9b8a740c331a73ac66398be801ba3878312969
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: a98a23de3ea58af5c4a63958f554de1e002ec456
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969077"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248314"
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Erste Schritte mit der Node.js-Web-App in Azure AD
 Hier wird Passport für Folgendes verwendet:
@@ -62,7 +62,10 @@ Die fertige Anwendung wird außerdem am Ende dieses Lernprogramms bereitgestellt
 
 6. Nach Abschluss der Registrierung weist Azure AD Ihrer App eine eindeutige Anwendungs-ID zu. Diesen Wert benötigen Sie in den nächsten Abschnitten. Daher sollten Sie ihn von der Anwendungsseite kopieren.
 7. Aktualisieren Sie auf der Seite **Einstellungen** -> **Eigenschaften** für Ihre Anwendung den App-ID-URI. Die **App-ID-URI** ist eine eindeutige Kennung für die Anwendung. Üblicherweise wird das Format `https://<tenant-domain>/<app-name>` verwendet, z. B.: `https://contoso.onmicrosoft.com/my-first-aad-app`.
-8. Führen Sie zum Erstellen eines geheimen Schlüssels Schritt 4 unter [So fügen Sie Anmeldeinformationen für Anwendungen oder Zugriffsberechtigungen für Web-APIs hinzu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#to-add-application-credentials-or-permissions-to-access-web-apis) aus.
+
+8. Fügen Sie auf der Seite **Einstellungen** -> **Antwort-URLs** für Ihre Anwendung die URL hinzu, die in Schritt 5 der Anmelde-URL hinzugefügt wurde, und klicken Sie auf „Speichern“.
+
+9. Führen Sie zum Erstellen eines geheimen Schlüssels Schritt 4 unter [So fügen Sie Anmeldeinformationen für Anwendungen oder Zugriffsberechtigungen für Web-APIs hinzu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#to-add-application-credentials-or-permissions-to-access-web-apis) aus.
 
    > [!IMPORTANT]
    > Kopieren Sie den Wert des Anwendungsschlüssels. Dies ist der Wert für `clientSecret` und wird weiter unten in **Schritt 3** benötigt. 
@@ -91,7 +94,7 @@ Hier konfigurieren wir Express für die Verwendung des OpenID Connect-Authentifi
 
   * `clientID` ist die **Anwendungs-ID** , die Ihrer App im Registrierungsportal zugewiesen ist.
 
-  * `returnURL` ist der **Umleitungs-URI** , den Sie im Portal eingegeben haben.
+  * `returnURL` ist die **Antwort-URL**, die Sie im Portal eingegeben haben.
 
   * `clientSecret` ist der geheime Schlüssel, den Sie im Portal generiert haben.
 
@@ -382,7 +385,7 @@ Ihre Anwendung ist nun ordnungsgemäß für die Kommunikation mit dem Endpunkt �
     <% } %>
     ```
 
-5. Wir optimieren die Darstellung durch Hinzufügen eines Layouts. Erstellen Sie die Ansicht „/views/layout.ej“ im Stammverzeichnis.
+5. Wir optimieren die Darstellung durch Hinzufügen eines Layouts. Erstellen Sie die Ansicht `/views/layout.ejs` im Stammverzeichnis.
 
     ```HTML
 

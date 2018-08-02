@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 07/16/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: ee1c48c4a33d699dcb3da24b2e9a3d6e001b16c5
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 706afa7cb79b7b5c2afcd729f36ff150b87dd6df
+ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801472"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39242936"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack-Datencenterintegration: Identität
 Azure Stack kann mithilfe von Azure Active Directory (Azure AD) oder den Active Directory-Verbunddiensten (AD FS) als Identitätsanbieter bereitgestellt werden. Sie müssen die entsprechende Entscheidung treffen, bevor Sie Azure Stack bereitstellen. Die Bereitstellung mithilfe von AD FS wird auch als „Bereitstellen von Azure Stack im getrennten Modus“ bezeichnet.
@@ -162,7 +162,7 @@ Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter 
 |Parameter|BESCHREIBUNG|Beispiel|
 |---------|---------|---------|
 |CustomAdfsName|Der Name der Anspruchsanbieter-Vertrauensstellung. Er wird wie hier angegeben auf der AD FS-Startseite angezeigt.|Contoso|
-|CustomADFSFederationMetadataFile|Verbundmetadatendatei|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
+|CustomADFSFederationMetadataFileContent|Metadateninhalte|$using:federationMetadataFileContent|
 
 ### <a name="create-federation-metadata-file"></a>Erstellen der Verbundmetadatendatei
 
@@ -176,27 +176,22 @@ Für das folgende Verfahren müssen Sie einen Computer verwenden, der über eine
    $Metadata.outerxml|out-file c:\metadata.xml
    ```
 
-2. Kopieren Sie die Metadatendatei auf eine Freigabe, auf die vom privilegierten Endpunkt aus zugegriffen werden kann.
-
+2. Kopieren Sie die Metadatendatei auf einen Computer, der mit dem privilegierten Endpunkt kommunizieren kann.
 
 ### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>Auslösen der Automatisierung zum Konfigurieren der Anspruchsanbieter-Vertrauensstellung in Azure Stack
 
-Verwenden Sie für diesen Vorgang einen Computer, der mit dem privilegierten Endpunkt in Azure Stack kommunizieren kann.
+Verwenden Sie für diese Prozedur einen Computer, der mit dem privilegierten Endpunkt in Azure Stack kommunizieren kann und Zugriff auf die Metadatendatei hat, die Sie zuvor erstellt haben.
 
-1. Öffnen Sie eine Windows PowerShell-Sitzung mit erhöhten Rechten, und stellen Sie eine Verbindung mit dem privilegierten Endpunkt her.
+1. Öffnen Sie eine Windows PowerShell-Sitzung mit erhöhten Rechten.
 
    ```PowerShell  
+   $federationMetadataFileContent = get-content c:\metadata.cml
    $creds=Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
+   Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataFileContent $using:federationMetadataFileContent
    ```
 
-2. Da Sie nun mit dem privilegierten Endpunkt verbunden sind, führen Sie den folgenden Befehl mit den Parametern aus, die für Ihre Umgebung geeignet sind:
-
-   ```PowerShell  
-   Register-CustomAdfs -CustomAdfsName Contoso – CustomADFSFederationMetadataFile \\share\metadataexample.xml
-   ```
-
-3. Führen Sie den folgenden Befehl aus, um den Besitzer des Anbieterstandardabonnements zu aktualisieren. Verwenden Sie dabei für Ihre Umgebung geeignete Parameter:
+2. Führen Sie den folgenden Befehl aus, um den Besitzer des Anbieterstandardabonnements zu aktualisieren. Verwenden Sie dabei für Ihre Umgebung geeignete Parameter:
 
    ```PowerShell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"

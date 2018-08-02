@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5106bbbb073908af7e7e8f045fa6fb60e8a306f4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c52c9fc6b47b03b3ca6db96decb8b4777577d00e
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30316911"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39174241"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Gleichzeitige Ausführung von Tasks zur optimalen Nutzung von Batch-Computeknoten 
 
@@ -56,15 +56,15 @@ Mithilfe der [CloudPool.TaskSchedulingPolicy][task_schedule]-Eigenschaft können
 Als Beispiel für den Wert dieser Eigenschaft betrachten Sie den Pool aus S[Standard\_D14](../cloud-services/cloud-services-sizes-specs.md)-Knoten (im obigen Beispiel), der mit dem [CloudPool.MaxTasksPerComputeNode][maxtasks_net]-Wert 16 konfiguriert wurde. Bei Konfiguration von [CloudPool.TaskSchedulingPolicy][task_schedule] mit einem [ComputeNodeFillType][fill_type] der Art *Pack* wird die Auslastung aller 16 Kerne für die einzelnen Knoten maximiert und ein [Pool mit automatischer Skalierung](batch-automatic-scaling.md) ermöglicht, der nicht verwendete Knoten (Knoten, denen keine Aufgaben zugewiesen sind) aus dem Pool löscht. Dies minimiert die Ressourcenverwendung und spart Geld.
 
 ## <a name="batch-net-example"></a>Beispiel für Batch .NET
-Dieser [Batch .NET][api_net]-API-Codeausschnitt zeigt eine Anforderung zum Erstellen eines Pools aus vier großen Knoten mit maximal vier Aufgaben pro Knoten. Er gibt eine Richtlinie für die Aufgabenplanung vor, die besagt, dass jeder Knoten mit Aufgaben gefüllt werden soll, bevor diese den anderen Knoten im Pool zugewiesen werden. Weitere Informationen zum Hinzufügen von Pools mit der Batch .NET-API finden Sie unter [BatchClient.PoolOperations.CreatePool][poolcreate_net].
+Dieser [Batch .NET][api_net]-API-Codeausschnitt zeigt eine Anforderung zum Erstellen eines Pools aus vier Knoten mit maximal vier Tasks pro Knoten. Er gibt eine Richtlinie für die Aufgabenplanung vor, die besagt, dass jeder Knoten mit Aufgaben gefüllt werden soll, bevor diese den anderen Knoten im Pool zugewiesen werden. Weitere Informationen zum Hinzufügen von Pools mit der Batch .NET-API finden Sie unter [BatchClient.PoolOperations.CreatePool][poolcreate_net].
 
 ```csharp
 CloudPool pool =
     batchClient.PoolOperations.CreatePool(
         poolId: "mypool",
         targetDedicatedComputeNodes: 4
-        virtualMachineSize: "large",
-        cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));
+        virtualMachineSize: "standard_d1_v2",
+        cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));
 
 pool.MaxTasksPerComputeNode = 4;
 pool.TaskSchedulingPolicy = new TaskSchedulingPolicy(ComputeNodeFillType.Pack);
@@ -125,13 +125,13 @@ Die zweite Ausführung des Beispiels zeigt eine deutliche Verringerung der Aufga
 >
 
 ## <a name="next-steps"></a>Nächste Schritte
-### <a name="batchlabs-heat-map"></a>BatchLabs-Wärmebild
-[BatchLabs][batch_labs] ist ein kostenloses eigenständiges Clienttool mit zahlreichen Features, das Sie beim Erstellen, Debuggen und Überwachen von Azure Batch-Anwendungen unterstützt. BatchLabs enthält ein *Wärmebild*-Feature, das die Visualisierung der Aufgabenausführung ermöglicht. Wenn Sie die [ParallelTasks][parallel_tasks_sample]-Beispielanwendung ausführen, können Sie die Heat Map-Funktion für eine einfache Visualisierung der Ausführung paralleler Aufgaben auf jedem Knoten verwenden.
+### <a name="batch-explorer-heat-map"></a>Heat Map für Batch Explorer
+Der [Batch Explorer][batch_labs] ist ein kostenloses eigenständiges Clienttool mit zahlreichen Features, das Sie beim Erstellen, Debuggen und Überwachen von Azure Batch-Anwendungen unterstützt. Der Batch Explorer enthält ein *Wärmebild*-Feature, das die Visualisierung der Taskausführung ermöglicht. Wenn Sie die [ParallelTasks][parallel_tasks_sample]-Beispielanwendung ausführen, können Sie die Heat Map-Funktion für eine einfache Visualisierung der Ausführung paralleler Aufgaben auf jedem Knoten verwenden.
 
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
-[batch_labs]: https://azure.github.io/BatchLabs/
+[batch_labs]: https://azure.github.io/BatchExplorer/
 [cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
 [enable_autoscaling]: https://msdn.microsoft.com/library/azure/dn820173.aspx
 [fill_type]: https://msdn.microsoft.com/library/microsoft.azure.batch.common.computenodefilltype.aspx

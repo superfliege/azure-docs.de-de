@@ -1,5 +1,5 @@
 ---
-title: Verwalten registrierter Server mit Azure File Sync (Vorschau) | Microsoft-Dokumentation
+title: Verwalten registrierter Server mit Azure File Sync | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie einen Windows Server bei einem Azure-Datei-/Speichersynchronisierungsdienst registrieren bzw. die Registrierung aufheben.
 services: storage
 documentationcenter: ''
@@ -12,19 +12,19 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: 7385e8b84668facf8bf44f569a611e7dcdba9a1e
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: fde4f7eeb07dff1e44edcabec390ae2921ecf832
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738291"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160925"
 ---
-# <a name="manage-registered-servers-with-azure-file-sync-preview"></a>Verwalten registrierter Server mit Azure File Sync (Vorschau)
-Mit Azure File Sync (Vorschau) können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
+# <a name="manage-registered-servers-with-azure-file-sync"></a>Verwalten registrierter Server mit Azure File Sync
+Mit Azure File Sync können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
 
-Im folgenden Artikel wird beschrieben, wie Sie einen Server bei einem Speichersynchronisierungsdienst registrieren und verwalten. Informationen über die End-to-End-Bereitstellung der Azure-Dateisynchronisierung finden Sie unter [Bereitstellen der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-deployment-guide.md).
+Im folgenden Artikel wird beschrieben, wie Sie einen Server bei einem Speichersynchronisierungsdienst registrieren und verwalten. Informationen zur End-to-End-Bereitstellung von Azure File Sync finden Sie unter [Bereitstellen von Azure File Sync](storage-sync-files-deployment-guide.md).
 
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>Registrieren eines Servers beim Speichersynchronisierungsdienst und Aufheben der Registrierung
 Beim Registrieren eines Servers bei Azure File Sync wird eine Vertrauensstellung zwischen Windows Server und Azure eingerichtet. Mithilfe dieser Beziehung können dann *Serverendpunkte* auf dem Server erstellt werden, die bestimmte Ordner darstellen, die mit einer Azure-Dateifreigabe (auch als *Cloudendpunkt* bezeichnet) synchronisiert werden sollen. 
@@ -33,7 +33,7 @@ Beim Registrieren eines Servers bei Azure File Sync wird eine Vertrauensstellung
 Bevor Sie einen Server bei einem Speichersynchronisationsdienst registrieren können, müssen die erforderlichen Voraussetzungen auf dem Server erfüllt sein:
 
 * Ihr Server muss unter einer unterstützten Version von Windows Server ausgeführt werden. Weitere Informationen finden Sie unter [Unterstützte Windows Server-Versionen](storage-sync-files-planning.md#supported-versions-of-windows-server).
-* Stellen Sie sicher, dass der Speichersynchronisierungsdienst bereitgestellt wurde. Weitere Informationen zum Bereitstellen eines Speichersynchronisierungsdiensts finden Sie unter [Bereitstellen der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-deployment-guide.md).
+* Stellen Sie sicher, dass der Speichersynchronisierungsdienst bereitgestellt wurde. Weitere Informationen zum Bereitstellen eines Speichersynchronisierungsdiensts finden Sie unter [Bereitstellen der Azure File Sync](storage-sync-files-deployment-guide.md).
 * Stellen Sie sicher, dass der Server mit dem Internet verbunden ist und dass der Zugriff auf Azure möglich ist.
 * Deaktivieren Sie die verstärkte Sicherheitskonfiguration für IE über die Server-Manager-Benutzeroberfläche.
     
@@ -194,6 +194,6 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 Wenn Azure File Sync auf einem virtuellen Computer auf einem Windows Server-Virtualisierungshost ausgeführt wird, können Sie Quality of Service für Speicher verwenden, um die Speicher-E/A-Nutzung zu steuern. Die Richtlinie für QoS für Speicher kann entweder als Maximum (oder Grenzwert, wie das StorageSyncNetwork-Limit oben erzwungen wird) oder als Minimum (bzw. Reservierung) festgelegt werden. Das Festlegen eines Minimums anstelle eines Maximums ermöglicht Azure File Sync die Nutzung der verfügbaren Speicherbandbreite, wenn diese nicht von anderen Workloads genutzt wird. Weitere Informationen finden Sie unter [Quality of Service für Speicher](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview).
 
 ## <a name="see-also"></a>Weitere Informationen
-- [Planen einer Bereitstellung von Azure File Sync (Vorschau)](storage-sync-files-planning.md)
-- [Bereitstellen von Azure File Sync (Vorschau)](storage-sync-files-deployment-guide.md) 
-- [Problembehandlung bei Azure File Sync (Vorschau)](storage-sync-files-troubleshoot.md)
+- [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md)
+- [Bereitstellen von Azure File Sync](storage-sync-files-deployment-guide.md) 
+- [Problembehandlung für Azure File Sync](storage-sync-files-troubleshoot.md)

@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 07/11/2018
-ms.openlocfilehash: 547839234e15455f3e268bad4d92972ea1f47e4c
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 70891e4c1425badb43dac66ada9c0b3a43b8fb0d
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971936"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173672"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL – Tarife
 
@@ -94,6 +94,8 @@ Sie können Ihren E/A-Verbrauch im Azure-Portal oder mit Azure CLI-Befehlen übe
 Der Server ist als schreibgeschützt gekennzeichnet, wenn die Menge des freien Speichers kleiner als 5 GB oder 5 % des bereitgestellten Speicher ist, je nachdem, welcher Wert kleiner ist. Wenn Sie beispielsweise 100 GB des Speichers bereitgestellt haben und die tatsächliche Auslastung über 95 GB hinausgeht, wird der Server als schreibgeschützt gekennzeichnet. Wenn Sie 5 GB des Speichers bereitgestellt haben, wird der Server ebenfalls als schreibgeschützt markiert, sofern sich der freie Speicher auf weniger als 250 MB beläuft.  
 
 Während der Dienst versucht, den Server als schreibgeschützt zu kennzeichnen, werden alle neuen Schreibtransaktionsanforderungen blockiert, und bestehende aktive Transaktionen werden weiterhin ausgeführt. Wenn der Server als schreibgeschützt festgelegt ist, führen alle nachfolgenden Schreibvorgänge und die Transaktionscommits zu einem Fehler. Leseabfragen werden weiterhin ununterbrochen fortgesetzt. Nachdem Sie den bereitgestellten Speicher erhöht haben, ist der Server für die erneute Annahme von Schreibtransaktionen bereit.
+
+Sie sollten eine Benachrichtigung einrichten, damit Sie informiert werden, wenn sich der Serverspeicher dem Schwellenwert nähert. So können Sie vermeiden, in den schreibgeschützten Zustand zu geraten. Weitere Informationen finden Sie in der Dokumentation zum [Einrichten einer Benachrichtigung](howto-alert-on-metric.md).
 
 ## <a name="backup"></a>Backup
 

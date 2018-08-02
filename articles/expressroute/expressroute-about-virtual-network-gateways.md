@@ -1,35 +1,32 @@
 ---
-title: Informationen zu ExpressRoute-Gateways für virtuelle Netzwerke | Microsoft Docs
+title: Informationen zu Azure ExpressRoute-Gateways für virtuelle Netzwerke | Microsoft Docs
 description: Informieren Sie sich über Gateways für virtuelle Netzwerke für ExpressRoute.
 services: expressroute
-documentationcenter: na
 author: cherylmc
-manager: carmonm
-editor: ''
-tags: azure-resource-manager, azure-service-management
-ms.assetid: 7e0d9658-bc00-45b0-848f-f7a6da648635
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/22/2018
+ms.topic: conceptual
+ms.date: 07/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: ae971e7743d6dd3269c0a4f976bd2a5316300f58
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a27200803ff13ed04a194fcbe45cf5edfe62ea50
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30235324"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161722"
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>Informationen zu Gateways für virtuelle Netzwerke für ExpressRoute
-Ein Gateway für virtuelle Netzwerke dient zum Senden von Netzwerkdatenverkehr zwischen virtuellen Azure-Netzwerken und lokalen Standorten. Wenn Sie eine ExpressRoute-Verbindung konfigurieren, müssen Sie ein Gateway für virtuelle Netzwerke und eine dazugehörige Verbindung erstellen und konfigurieren.
+Ein Gateway für virtuelle Netzwerke dient zum Senden von Netzwerkdatenverkehr zwischen virtuellen Azure-Netzwerken und lokalen Standorten. Sie können ein virtuelles Netzwerk-Gateway entweder für ExpressRoute-oder VPN-Datenverkehr verwenden. In diesem Artikel geht es um ExpressRoute-Gateways für virtuelle Netzwerke.
 
-Beim Erstellen eines Gateways für virtuelle Netzwerke werden mehrere Einstellungen angegeben. Eine dieser erforderlichen Einstellungen gibt an, ob das Gateway für ExpressRoute- oder für Standort-zu-Standort-VPN-Datenverkehr verwendet wird. Beim Resource Manager-Bereitstellungsmodell lautet die Einstellung „-GatewayType“.
+## <a name="gateway-types"></a>Gatewaytypen
 
-Verwenden Sie den Gatewaytyp „ExpressRoute“, wenn Netzwerkdatenverkehr über eine private Verbindung gesendet wird. Dies wird auch als ExpressRoute-Gateway bezeichnet. Wenn Netzwerkdatenverkehr verschlüsselt und über das öffentliche Internet gesendet wird, verwenden Sie den Gatewaytyp „Vpn“. Dies wird als VPN Gateway bezeichnet. Bei Site-to-Site-, Point-to-Site- und VNet-zu-VNet-Verbindungen wird jeweils VPN Gateway verwendet.
+Beim Erstellen eines Gateways für virtuelle Netzwerke werden mehrere Einstellungen angegeben. Eine dieser erforderlichen Einstellungen, „-GatewayType“, gibt an, ob das Gateway für ExpressRoute- oder für VPN-Datenverkehr verwendet wird. Die zwei Gatewaytypen sind: 
 
-Ein virtuelles Netzwerk kann pro Gatewaytyp immer nur über ein einzelnes virtuelles Netzwerkgateway verfügen. So können Sie beispielsweise ein virtuelles Netzwerkgateway mit „-GatewayType Vpn“ und ein virtuelles Netzwerkgateway mit „-GatewayType ExpressRoute“ verwenden. In diesem Artikel steht das ExpressRoute-Gateway für virtuelle Netzwerke im Mittelpunkt.
+* **Vpn** – Wenn verschlüsselter Netzwerkdatenverkehr über das öffentliche Internet gesendet wird, verwenden Sie den Gatewaytyp „Vpn“. Dies wird auch als VPN Gateway bezeichnet. Bei Site-to-Site-, Point-to-Site- und VNet-zu-VNet-Verbindungen wird jeweils VPN Gateway verwendet.
+
+* **ExpressRoute** – Verwenden Sie den Gatewaytyp „ExpressRoute“, wenn Netzwerkdatenverkehr über eine private Verbindung gesendet wird. Dies wird auch als ExpressRoute-Gateway bezeichnet und ist der Gatewaytyp, der auch zum Konfigurieren von ExpressRoute verwendet wird.
+
+
+Ein virtuelles Netzwerk kann pro Gatewaytyp immer nur über ein einzelnes virtuelles Netzwerkgateway verfügen. So können Sie beispielsweise ein virtuelles Netzwerkgateway mit „-GatewayType Vpn“ und ein virtuelles Netzwerkgateway mit „-GatewayType ExpressRoute“ verwenden.
 
 ## <a name="gwsku"></a>Gateway-SKUs
 [!INCLUDE [expressroute-gwsku-include](../../includes/expressroute-gwsku-include.md)]
@@ -45,6 +42,20 @@ In der folgenden Tabelle sind die Gatewaytypen und die geschätzten Leistungen a
 > Die Anwendungsleistung hängt von mehreren Faktoren ab, z.B. der End-to-End-Latenz und der Anzahl der Datenflüsse, die die Anwendung öffnet. Die Zahlen in der Tabelle stellen die Obergrenze dar, die die Anwendung theoretisch in einer idealen Umgebung erzielen kann. 
 > 
 >
+
+### <a name="zrgw"></a>Zonenredundante Gateway-SKUs (Vorschauversion)
+
+Sie können VPN- und ExpressRoute-Gateways auch in Azure-Verfügbarkeitszonen bereitstellen. Dadurch werden sie physisch und logisch in verschiedene Verfügbarkeitszonen unterteilt, wodurch Ihre lokale Netzwerkverbindung zu Azure vor Ausfällen auf Zonenebene geschützt wird.
+
+![Zonenredundante ExpressRoute-Gateway](./media/expressroute-about-virtual-network-gateways/zone-redundant.png)
+
+Zonenredundante Gateways verwenden bestimmte neue Gateway-SKUs für ExpressRoute-Gateway. Dies neuen SKUs sind derzeit in der **Public Preview-Version** verfügbar.
+
+* ErGw1AZ
+* ErGw2AZ
+* ErGw3AZ
+
+Die neuen Gateway-SKUs unterstützen zudem andere Bereitstellungsoptionen, die Ihre Anforderungen am besten zu erfüllen. Wenn Sie ein virtuelles Netzwerkgateway mit den neuen Gateway-SKUs erstellen, haben Sie auch die Möglichkeit, das Gateway in einer bestimmten Zone bereitzustellen. Dies wird als zonenbasiertes Gateway bezeichnet. Wenn Sie ein zonenbasiertes Gateway bereitstellen, werden alle Instanzen des Gateways in derselben Verfügbarkeitszone bereitgestellt. Informationen zum Registrieren der Vorschauversion finden Sie in [Erstellen eines zonenredundanten Gateways für virtuelle Netzwerke](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md).
 
 ## <a name="resources"></a>REST-APIs und PowerShell-Cmdlets
 Zusätzliche technische Ressourcen und spezielle Syntaxanforderungen bei der Verwendung von REST-APIs und PowerShell-Cmdlets für Gatewaykonfigurationen für virtuelle Netzwerke finden Sie auf den folgenden Seiten:

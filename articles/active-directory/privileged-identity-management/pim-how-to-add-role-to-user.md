@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen oder Entfernen einer Benutzerrolle | Microsoft Docs
-description: Erfahren Sie, wie Sie mit der Anwendung Azure Active Directory Privileged Identity Management Rollen zu privilegierten Identitäten hinzufügen.
+title: Zuweisen von Verzeichnisrollen zu Benutzern mithilfe von Azure AD PIM | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Benutzern mit Azure Active Directory Privileged Identity Management und dem Azure-Portal Verzeichnisrollen zuweisen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,57 +10,106 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: protection
-ms.date: 01/03/2018
+ms.date: 07/23/2018
 ms.author: rolyon
-ms.openlocfilehash: eac0869c0f4a7dd780d6988ff9bc4362458a7e3d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 1834addb4e51030afda43a2d7acad5d7ffc1889a
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723332"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226695"
 ---
-# <a name="azure-ad-privileged-identity-management-how-to-add-or-remove-a-user-role"></a>Azure AD Privileged Identity Management: Hinzufügen oder Entfernen einer Benutzerrolle
-In Azure Active Directory (AD) kann ein globaler Administrator (oder ein Unternehmensadministrator) festlegen, welchen Benutzern Rollen in Azure AD **permanent** zugewiesen werden. Dies erfolgt über PowerShell-Cmdlets wie `Add-MsolRoleMember` und `Remove-MsolRoleMember`. Administratoren können auch das Azure-Portal verwenden, wie unter [Zuweisen von Administratorrollen in Azure Active Directory (Azure AD)](../users-groups-roles/directory-assign-admin-roles.md) beschrieben.
+# <a name="assign-directory-roles-to-users-using-azure-ad-pim"></a>Zuweisen von Verzeichnisrollen zu Benutzern mithilfe von Azure AD PIM
 
-Die Anwendung Azure AD Privileged Identity Management ermöglicht Administratoren für privilegierte Rollen auch das Festlegen von permanenten Rollenzuweisungen. Außerdem können Administratoren für privilegierte Rollen Benutzer als für Administratorrollen **geeignet** festlegen. Ein berechtigter Administrator kann die Rolle bei Bedarf aktivieren, und die entsprechenden Berechtigungen laufen nach einem bestimmten Zeitraum ab.
+Mit Azure Active Directory (Azure AD) kann ein globaler Administrator **permanente** Verzeichnisrollenzuweisungen vornehmen. Diese Rollenzuweisungen können über das [Azure-Portal](../users-groups-roles/directory-assign-admin-roles.md) oder über [PowerShell-Befehle](/powershell/module/azuread#directory_roles) erstellt werden.
 
-## <a name="manage-roles-with-pim-in-the-azure-portal"></a>Verwalten von Rollen mit PIM im Azure-Portal
-Sie können Benutzern Ihrer Organisation in Azure AD, Office 365 und anderen Microsoft-Diensten und -Anwendungen verschiedene Administratorrollen zuweisen.  Weitere Informationen zu den verfügbaren Rollen finden Sie unter [Rollen in Azure AD Privileged Identity Management](pim-roles.md).
+Der Dienst Azure AD Privileged Identity Management (PIM) ermöglicht es auch Administratoren für privilegierte Rollen, permanente Verzeichnisrollenzuweisungen vorzunehmen. Außerdem können Administratoren für privilegierte Rollen Benutzer als für Verzeichnisrollen **berechtigt** festlegen. Ein berechtigter Administrator kann die Rolle bei Bedarf aktivieren, und die entsprechenden Berechtigungen laufen nach einem bestimmten Zeitraum ab. Informationen zu den Rollen, die Sie mit PIM verwalten können, finden Sie unter [Verschiedene Administratorrollen in Azure Active Directory PIM](pim-roles.md).
 
-Um einen Benutzer mithilfe von PIM (Privileged Identity Management) einer Rolle hinzuzufügen oder den Benutzer aus einer Rolle zu entfernen, öffnen Sie das PIM-Dashboard. Klicken Sie dann auf die Schaltfläche **Benutzer in Administratorrollen**, oder wählen Sie in der Tabelle mit den Rollen eine bestimmte Rolle aus (z.B. den globalen Administrator).
+## <a name="make-a-user-eligible-for-a-role"></a>Festlegen eines Benutzers als „berechtigt“ für eine Rolle
 
-> [!NOTE]
-> Wenn PIM im Azure-Portal noch nicht aktiviert ist, finden Sie die erforderlichen Informationen unter [Erste Schritte mit Azure AD Privileged Identity Management](pim-getting-started.md) .
+Führen Sie folgende Schritte aus, um einen Benutzer für eine Azure AD-Verzeichnisrolle als „berechtigt“ festzulegen.
 
-Wenn Sie einem anderen Benutzer Zugriff zu PIM gewähren möchten, werden die Rollen, die ein Benutzer für PIM benötigt, unter [Gewähren von Zugriff auf PIM](pim-how-to-give-access-to-pim.md)beschrieben.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) mit einem Benutzer an, der ein Mitglied der Rolle [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) ist.
 
-## <a name="add-a-user-to-a-role"></a>Hinzufügen eines Benutzers zu einer Rolle
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/)auf dem Dashboard die Kachel **Azure AD Privileged Identity Management** aus.
-2. Wählen Sie **Privilegierte Rollen verwalten**aus.
-3. Wählen Sie in der Tabelle **Rollenzusammenfassung** die Rolle aus, die Sie verwalten möchten.
-4. Wählen Sie auf dem Blatt der Rolle **Hinzufügen**aus.
-5. Klicken Sie auf **Benutzer auswählen**, und suchen Sie auf dem Blatt **Benutzer auswählen** nach dem Benutzer.  
-6. Wählen Sie den Benutzer aus der Liste der Suchergebnisse aus, und klicken Sie auf **Fertig**.
-7. Klicken Sie zum Speichern der Auswahl auf **OK** . Der von Ihnen ausgewählte Benutzer wird in der Liste als berechtigt für die Rolle angezeigt.
+    Weitere Informationen darüber, wie Sie einem anderen Benutzer Zugriff auf die Verwaltung von PIM gewähren, finden Sie unter [Gewähren des Zugriffs für einen anderen Benutzer zur Verwaltung von PIM](pim-how-to-give-access-to-pim.md).
 
-> [!NOTE]
-> Neue Benutzer in einer Rolle sind standardmäßig für die Rolle nur berechtigt. Wenn die Rolle permanent sein soll, klicken Sie auf den Benutzer in der Liste. Die Informationen des Benutzers werden auf einem neuen Blatt angezeigt. Wählen Sie im Menü mit den Benutzerinformationen **Als permanent festlegen** aus.  
-> Wenn sich ein Benutzer nicht für Azure Multi-Factor Authentication (MFA) registrieren kann oder ein Microsoft-Konto nutzt (in der Regel @outlook.com), müssen Sie ihn in allen Rollen als permanent einrichten. Geeignete Administratoren werden während der Aktivierung aufgefordert, sich für MFA zu registrieren.
+1. Öffnen Sie **Azure AD Privileged Identity Management**.
 
-Nachdem der Benutzer für eine Rolle geeignet ist, informieren Sie ihn darüber, dass er die Rolle entsprechend den Anweisungen unter [Gewusst wie: Aktivieren oder Deaktivieren einer Rolle](pim-how-to-activate-role.md)aktivieren kann.
+    Wenn PIM im Azure-Portal noch nicht aktiviert ist, finden Sie entsprechende Informationen unter [Erste Schritte mit Azure AD Privileged Identity Management](pim-getting-started.md).
+
+1. Klicken Sie auf **Azure AD-Verzeichnisrollen**.
+
+1. Klicken Sie auf **Rolle (Vorschau)** oder **Mitglieder**.
+
+    ![Azure AD-Verzeichnisrollen](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
+
+1. Klicken Sie auf **Mitglied hinzufügen**, um das Dialogfeld „Verwaltete Mitglieder hinzufügen“ zu öffnen.
+
+1. Klicken Sie auf **Rolle auswählen**, klicken Sie auf eine Rolle, die Sie verwalten möchten, und klicken Sie dann auf **Auswählen**.
+
+    ![Auswählen einer Rolle](./media/pim-how-to-add-role-to-user/pim-select-a-role.png)
+
+1. Klicken Sie auf **Mitglieder auswählen**, wählen Sie die Benutzer aus, die der Rolle zugewiesen werden sollen, und klicken Sie dann auf **Auswählen**.
+
+    ![Auswählen einer Rolle](./media/pim-how-to-add-role-to-user/pim-select-members.png)
+
+1. Klicken Sie in „Verwaltete Mitglieder hinzufügen“ auf **OK**, um den Benutzer zur Rolle hinzuzufügen.
+
+     Nach dem Zuweisen der Rolle wird der von Ihnen ausgewählte Benutzer in der Liste als **berechtigt** für die Rolle angezeigt.
+
+    ![Berechtigter Benutzer für eine Rolle](./media/pim-how-to-add-role-to-user/pim-directory-role-eligible.png)
+
+1. Nachdem der Benutzer für eine Rolle berechtigt ist, informieren Sie ihn darüber, dass er die Rolle entsprechend den Anweisungen unter [Gewusst wie: Aktivieren oder Deaktivieren einer Rolle](pim-how-to-activate-role.md)aktivieren kann.
+
+    Berechtigte Administratoren werden aufgefordert, sich während der Aktivierung für die Multi-Factor Authentication (MFA) von Azure zu registrieren. Wenn sich ein Benutzer nicht für MFA registrieren kann oder ein Microsoft-Konto nutzt (in der Regel @outlook.com), müssen Sie ihn in allen Rollen als permanent einrichten.
+
+## <a name="make-a-role-assignment-permanent"></a>Einrichten einer permanenten Rollenzuweisung
+
+Standardmäßig sind neue Benutzer nur für eine Verzeichnisrolle berechtigt. Führen Sie die folgenden Schritte aus, wenn Sie eine Rollenzuweisung permanent festlegen möchten.
+
+1. Öffnen Sie **Azure AD Privileged Identity Management**.
+
+1. Klicken Sie auf **Azure AD-Verzeichnisrollen**.
+
+1. Klicken Sie auf **Mitglieder**.
+
+    ![Liste der Mitglieder](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
+
+1. Klicken Sie auf eine **berechtigte** Rolle, die Sie als permanente Rollenzuweisung festlegen möchten.
+
+1. Klicken Sie auf **Weitere**, und klicken Sie anschließend auf **Als permanent festlegen**.
+
+    ![Einrichten einer permanenten Rollenzuweisung](./media/pim-how-to-add-role-to-user/pim-make-perm.png)
+
+    Die Rolle wird jetzt als **permanent** aufgeführt.
+
+    ![Liste der Mitglieder mit Änderung in „permanent“](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members-permanent.png)
 
 ## <a name="remove-a-user-from-a-role"></a>Entfernen eines Benutzers aus einer Rolle
-Sie können Benutzer aus berechtigten Rollenzuweisungen entfernen. Stellen Sie dabei jedoch sicher, dass immer mindestens ein Benutzer als permanenter globaler Administrator vorhanden ist.
 
-Führen Sie die folgenden Schritte aus, um einen bestimmten Benutzer aus einer Rolle zu entfernen:
+Sie können Benutzer aus Rollenzuweisungen entfernen. Stellen Sie dabei jedoch sicher, dass immer mindestens ein Benutzer als permanenter globaler Administrator vorhanden ist. Wenn Sie nicht sicher sind, welche Benutzer ihre Rollenzuweisungen noch benötigen, können Sie [eine Zugriffsüberprüfung für die Rolle starten](pim-how-to-start-security-review.md).
 
-1. Wechseln Sie zu der Rolle in der Rollenliste, indem Sie eine Rolle im Azure AD PIM-Dashboard auswählen oder auf die Schaltfläche **Benutzer in Administratorrollen** klicken.
-2. Klicken Sie auf den Benutzer in der Benutzerliste.
-3. Klicken Sie auf **Entfernen**. Sie werden in einer Meldung aufgefordert, den Vorgang zu bestätigen.
-4. Klicken Sie auf **Ja** , um die Rolle vom Benutzer zu entfernen.
+Führen Sie die folgenden Schritte aus, um einen bestimmten Benutzer aus einer Verzeichnisrolle zu entfernen.
 
-Wenn Sie nicht sicher sind, welche Benutzer ihre Rollenzuweisungen noch benötigen, können Sie [eine Zugriffsüberprüfung für die Rolle starten](pim-how-to-start-security-review.md).
+1. Öffnen Sie **Azure AD Privileged Identity Management**.
+
+1. Klicken Sie auf **Azure AD-Verzeichnisrollen**.
+
+1. Klicken Sie auf **Mitglieder**.
+
+    ![Liste der Mitglieder](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
+
+1. Klicken Sie auf die zu entfernende Rollenzuweisung.
+
+1. Klicken Sie auf **Weitere** und anschließend auf **Entfernen**.
+
+    ![Entfernen einer Rolle](./media/pim-how-to-add-role-to-user/pim-remove-role.png)
+
+1. Klicken Sie im Bestätigungsdialogfeld auf **Ja**.
+
+    ![Entfernen einer Rolle](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
+
+    Die Rollenzuweisung wurde entfernt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
-

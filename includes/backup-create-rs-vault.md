@@ -8,49 +8,52 @@ ms.topic: include
 ms.date: 5/14/2018
 ms.author: markgal
 ms.custom: include file
-ms.openlocfilehash: 5590da80a1c217e7902e8e010688e40f5624898c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0ff9bf829e2dbe1bca078360ccded94bad63d9a6
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38730497"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249460"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
-Bei einem Recovery Services-Tresor handelt es sich um eine Entität, in der alle Sicherungen und Wiederherstellungspunkte gespeichert werden, die im Laufe der Zeit erstellt wurden. Der Recovery Services-Tresor enthält auch die Sicherungsrichtlinien, die den geschützten virtuellen Computern zugeordnet sind.
+Bei einem Recovery Services-Tresor handelt es sich um eine Entität, in der alle im Laufe der Zeit erstellten Sicherungen und Wiederherstellungspunkte gespeichert werden. Der Recovery Services-Tresor enthält auch die Sicherungsrichtlinien, die den geschützten virtuellen Computern zugeordnet sind.
 
 So erstellen Sie einen Recovery Services-Tresor
 
 1. Melden Sie sich bei Ihrem Abonnement im [Azure-Portal](https://portal.azure.com/) an.
-2. Wählen Sie im linken Menü **Alle Dienste** aus.
 
-    ![Auswählen der Option „Alle Dienste“ im Hauptmenü](./media/backup-create-rs-vault/click-all-services.png) <br/>
+2. Wählen Sie im Menü links **Alle Dienste** aus.
 
-3. Geben Sie im Dialogfeld „Alle Dienste“ *Recovery Services* ein. Sobald Sie mit der Eingabe beginnen, wird die Ressourcenliste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Recovery Services-Tresore** aus, wenn der Eintrag angezeigt wird.
+    ![Auswählen von „Alle Dienste“](./media/backup-create-rs-vault/click-all-services.png)
 
-    ![Eingeben von Recovery Services im Dialogfeld „Alle Dienste“](./media/backup-create-rs-vault/all-services.png) <br/>
+3. Geben Sie im Dialogfeld **Alle Dienste** **Recovery Services** ein. Die Liste der Ressourcen wird Ihrer Eingabe entsprechend gefiltert. Wählen Sie in der Liste der Ressourcen **Recovery Services-Tresore** aus.
+
+    ![Eingeben und Auswählen von „Recovery Services-Tresore“](./media/backup-create-rs-vault/all-services.png)
 
     Die Liste mit den Recovery Services-Tresoren im Abonnement wird angezeigt.
-4. Wählen Sie im Menü **Recovery Services-Tresore** die Option **Hinzufügen**.
+    
+4. Wählen Sie auf dem Dashboard **Recovery Services-Tresore** die Option **Hinzufügen** aus.
 
-    ![Erstellen eines Recovery Services-Tresors – Schritt 2](./media/backup-create-rs-vault/add-button-create-vault.png)
+    ![Hinzufügen eines Recovery Services-Tresors](./media/backup-create-rs-vault/add-button-create-vault.png)
 
-    Das Menü **Recovery Services-Tresore** wird geöffnet. Sie werden aufgefordert, Informationen für **Name**, **Abonnement**, **Ressourcengruppe** und **Speicherort** anzugeben.
+    Das Dialogfeld **Recovery Services-Tresor** wird geöffnet. Legen Sie Werte für **Name**, **Abonnement**, **Ressourcengruppe** und **Speicherort** fest.
 
-    ![Bereich „Recovery Services-Tresore“](./media/backup-create-rs-vault/create-new-vault-dialog.png)
-5. Geben Sie unter **Name**einen Anzeigenamen für den Tresor ein. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der mindestens zwei, aber nicht mehr als 50 Zeichen enthält. Der Name muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
-6. Wählen Sie unter **Abonnement** das Abonnement aus, das Sie verwenden möchten. Wenn Sie nur in einem Abonnement Mitglied sind, wird dessen Name angezeigt. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Geschäfts-, Schul- oder Unikonto mehreren Azure-Abonnements zugeordnet ist.
-7. Sie können unter **Ressourcengruppe** eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen. Um eine Liste der verfügbaren Ressourcengruppen in Ihrem Abonnement anzuzeigen, wählen Sie **Vorhandene verwenden** aus, und klicken Sie auf das Dropdownmenü. Wählen Sie zum Erstellen einer neuen Ressourcengruppe **Neu erstellen** aus, und geben Sie den Namen ein. Umfassende Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../articles/azure-resource-manager/resource-group-overview.md).
-8. Wählen Sie unter **Standort** die geografische Region für den Tresor aus. Wenn Sie einen Tresor zum Schutz virtueller Computer erstellen, *muss* sich dieser in derselben Region wie die virtuellen Computer befinden.
+    ![Konfigurieren des Recovery Services-Tresors](./media/backup-create-rs-vault/create-new-vault-dialog.png)
 
-   > [!IMPORTANT]
-   > Wenn Sie sich nicht sicher sind, an welchem Standort sich Ihr virtueller Computer befindet, schließen Sie das Dialogfeld zur Tresorerstellung, und wechseln Sie zur Liste der virtuellen Computer im Portal. Falls Sie über virtuelle Computer in mehreren Regionen verfügen, erstellen Sie in jeder Region einen Recovery Services-Tresor. Erstellen Sie den Tresor am ersten Standort, bevor Sie mit dem nächsten Standort fortfahren. Das Angeben von Speicherkonten zum Speichern der Sicherungsdaten ist nicht erforderlich. Der Recovery Services-Tresor und der Azure Backup-Dienst nehmen dies automatisch vor.
-   >
-   >
+   - **Name**: Geben Sie einen Anzeigenamen ein, über den der Tresor identifiziert wird. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der mindestens zwei, aber nicht mehr als 50 Zeichen enthält. Der Name muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
+   - **Abonnement**: Wählen Sie das zu verwendende Abonnement aus. Wenn Sie nur in einem Abonnement Mitglied sind, wird dessen Name angezeigt. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Geschäfts-, Schul- oder Unikonto mehreren Azure-Abonnements zugeordnet ist.
+   - **Ressourcengruppe**: Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. Um eine Liste der verfügbaren Ressourcengruppen in Ihrem Abonnement anzuzeigen, wählen Sie **Vorhandene verwenden** und dann eine Ressource im Dropdownlistenfeld aus. Wählen Sie zum Erstellen einer neuen Ressourcengruppe **Neu erstellen** aus, und geben Sie den Namen ein. Umfassende Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../articles/azure-resource-manager/resource-group-overview.md).
+   - **Speicherort**: Wählen Sie die geografische Region für den Tresor aus. Um einen Tresor zum Schutz virtueller Computer zu erstellen, **muss** sich dieser in derselben Region wie die virtuellen Computer befinden.
 
-9. Wenn Sie den Recovery Services-Tresor erstellen möchten, klicken Sie auf **Erstellen**.
+      > [!IMPORTANT]
+      > Wenn Sie den Speicherort des virtuellen Computers nicht kennen, schließen Sie das Dialogfeld. Wechseln Sie zur Liste der virtuellen Computer im Portal. Falls Sie über virtuelle Computer in mehreren Regionen verfügen, erstellen Sie in jeder Region einen Recovery Services-Tresor. Erstellen Sie den Tresor am ersten Speicherort, bevor Sie den Tresor für einen anderen Speicherort erstellen. Das Angeben von Speicherkonten zum Speichern der Sicherungsdaten ist nicht erforderlich. Der Recovery Services-Tresor und der Azure Backup-Dienst nehmen dies automatisch vor.
+      >
+      >
 
-    ![Liste der Sicherungstresore](./media/backup-create-rs-vault/click-create-button.png)
+5. Wenn Sie den Recovery Services-Tresor erstellen möchten, wählen Sie **Erstellen** aus.
 
-    Es kann einige Zeit dauern, bis der Recovery Services-Tresor erstellt wurde. Verfolgen Sie die Statusbenachrichtigungen im Benachrichtigungsbereich (rechts oben im Portal). Nach Abschluss des Erstellungsvorgangs wird der Tresor in der Liste mit den Recovery Services-Tresoren angezeigt. Sollte der Tresor weiterhin nicht angezeigt werden, klicken Sie auf **Aktualisieren**.
+    ![Erstellen des Recovery Services-Tresors](./media/backup-create-rs-vault/click-create-button.png)
 
-     ![Liste der Sicherungstresore](./media/backup-create-rs-vault/refresh-button.png)
+    Es kann einige Zeit dauern, denn Recovery Services-Tresor zu erstellen. Verfolgen Sie die Statusbenachrichtigungen im **Benachrichtigungsbereich** in der oberen rechten Ecke im Portal. Nach Abschluss des Erstellungsvorgangs wird der Tresor in der Liste mit den Recovery Services-Tresoren angezeigt. Sollte der Tresor nicht angezeigt werden, wählen Sie **Aktualisieren**.
+
+     ![Aktualisieren der Liste der Sicherungstresore](./media/backup-create-rs-vault/refresh-button.png)

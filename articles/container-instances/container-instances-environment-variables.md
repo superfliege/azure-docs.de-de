@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 07/19/2018
 ms.author: marsma
-ms.openlocfilehash: bc30352f50344031f8356d2be1b800dd035f12ad
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7a3d521d4382e3d9b5b1b1cf4eb3e43fa02c9a40
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830461"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159548"
 ---
 # <a name="set-environment-variables"></a>Festlegen von Umgebungsvariablen
 
@@ -25,7 +25,7 @@ Wenn Sie beispielsweise das Containerimage [microsoft/aci-wordcount][aci-wordcou
 
 *MinLength*: Die Mindestanzahl von Zeichen in einem Wort, damit es gezählt wird. Bei einem höheren Wert werden häufige Wörter wie „von“ und „das“ ignoriert.
 
-Wenn Sie geheime Schlüssel als Umgebungsvariablen weitergeben müssen, unterstützt Azure Container Instances [sichere Werte](#secure-values) für sowohl Windows- als auch Linux-Container.
+Wenn Sie Geheimnisse als Umgebungsvariablen weitergeben müssen, unterstützt Azure Container Instances [sichere Werte](#secure-values) sowohl für Windows- als auch Linux-Container.
 
 ## <a name="azure-cli-example"></a>Azure CLI-Beispiel
 
@@ -156,9 +156,10 @@ Klicken Sie zum Anzeigen der Protokolle des Containers unter **EINSTELLUNGEN** a
 ![Portal mit der Containerprotokollausgabe][portal-env-vars-02]
 
 ## <a name="secure-values"></a>Sichere Werte
+
 Objekte mit sicheren Werten sind zur Aufbewahrung sensibler Informationen wie Passwörter oder Schlüssel für Ihre Anwendung gedacht. Die Verwendung von sicheren Werten für Umgebungsvariablen ist sowohl sicherer als auch flexibler als die Einbindung in Ihr Containerimage. Eine andere Möglichkeit ist die Verwendung von geheimen Volumes, wie in [Einbinden eines geheimen Volumes in Azure Container Instances](container-instances-volume-secret.md) beschrieben.
 
-Sichere Umgebungsvariablen mit sicheren Werten zeigen den sicheren Wert in den Eigenschaften Ihres Containers nicht an, sodass auf den Wert nur innerhalb Ihres Containers zugegriffen werden kann. Beispielsweise werden Containereigenschaften, die im Azure-Portal oder in der Azure CLI angegeben werden, keine Umgebungsvariable mit einem sicheren Wert anzeigen.
+Umgebungsvariablen mit sicheren Werten sind in den Eigenschaften Ihres Containers nicht sichtbar – der Zugriff auf ihre Werte ist nur von innerhalb des Containers möglich. Beispielsweise wird in den Containereigenschaften, die im Azure-Portal oder in der Azure CLI angezeigt werden, nur der Name einer sicheren Variablen angezeigt, nicht ihr Wert.
 
 Legen Sie eine sichere Umgebungsvariable fest, indem Sie für den Variablentypen den `secureValue`-Wert anstelle des normalen `value` angeben. Die in der folgenden YAML definierten zwei Variablen veranschaulichen die zwei Variablentypen.
 
@@ -168,17 +169,17 @@ Erstellen Sie eine `secure-env.yaml`-Datei mit dem folgenden Ausschnitt.
 
 ```yaml
 apiVersion: 2018-06-01
-location: westus
+location: eastus
 name: securetest
 properties:
   containers:
   - name: mycontainer
     properties:
       environmentVariables:
-        - "name": "SECRET"
-          "secureValue": "my-secret-value"
         - "name": "NOTSECRET"
           "value": "my-exposed-value"
+        - "name": "SECRET"
+          "secureValue": "my-secret-value"
       image: nginx
       ports: []
       resources:
@@ -191,43 +192,50 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Führen Sie den folgenden Befehl aus, um die Containergruppe mit YAML bereitzustellen.
+Führen Sie den folgenden Befehl zum Bereitstellen der Containergruppe mit YAML aus (passen Sie den Namen der Ressourcengruppe nach Bedarf an):
 
 ```azurecli-interactive
-az container create --resource-group myRG --name securetest -f secure-env.yaml
+az container create --resource-group myResourceGroup --file secure-env.yaml
 ```
 
 ### <a name="verify-environment-variables"></a>Überprüfen von Umgebungsvariablen
 
-Führen Sie den folgenden Befehl aus, um die Umgebungsvariablen für Ihren Container abzufragen.
+Führen Sie den Befehl [az container show][az-container-show] aus, um die Umgebungsvariablen für Ihren Container abzufragen:
 
 ```azurecli-interactive
-az container show --resource-group myRG --name securetest --query 'containers[].environmentVariables`
+az container show --resource-group myResourceGroup --name securetest --query 'containers[].environmentVariables'
 ```
 
-Die JSON-Antwort mit Details zu diesem Container zeigt nur den Schlüssel der nicht sicheren Umgebungsvariablen und der sicheren Umgebungsvariablen an.
+Die JSON-Antwort zeigt Schlüssel und Wert der unsicheren Umgebungsvariablen an, aber nur den Namen der sicheren Umgebungsvariablen:
 
 ```json
-  "environmentVariables": [
+[
+  [
     {
       "name": "NOTSECRET",
+      "secureValue": null,
       "value": "my-exposed-value"
     },
     {
-      "name": "SECRET"
+      "name": "SECRET",
+      "secureValue": null,
+      "value": null
     }
+  ]
+]
 ```
 
-Sie können die sichere Umgebungsvariable mit dem `exec`-Befehl überprüfen, der die Ausführung eines Befehls aus einem laufenden Container heraus ermöglicht. 
+Mit dem Befehl [az container exec][az-container-exec], der die Ausführung eines Befehls aus einem laufenden Container heraus ermöglicht, können Sie überprüfen, ob die sichere Umgebungsvariable festgelegt wurde. Führen Sie den folgenden Befehl aus, um eine interaktive Bash-Sitzung im Container zu starten:
 
-Führen Sie den folgenden Befehl aus, um eine interaktive Bash-Sitzung mit dem Container zu starten.
 ```azurecli-interactive
-az container exec --resource-group myRG --name securetest --exec-command "/bin/bash"
+az container exec --resource-group myResourceGroup --name securetest --exec-command "/bin/bash"
 ```
 
-Innerhalb Ihres Containers können Sie Ihre Umgebungsvariable mit dem folgenden Bash-Befehl drucken.
-```bash
-echo $SECRET
+Wenn Sie eine interaktive Shell innerhalb des Containers geöffnet haben, können Sie auf den Wert der `SECRET`-Variablen zugreifen:
+
+```console
+root@caas-ef3ee231482549629ac8a40c0d3807fd-3881559887-5374l:/# echo $SECRET
+my-secret-value
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -243,6 +251,7 @@ Aufgabenbasierte Szenarien, z. B. Stapelverarbeitung eines großen Datasets mit 
 
 <!-- LINKS Internal -->
 [az-container-create]: /cli/azure/container#az-container-create
+[az-container-exec]: /cli/azure/container#az-container-exec
 [az-container-logs]: /cli/azure/container#az-container-logs
 [az-container-show]: /cli/azure/container#az-container-show
 [azure-cli-install]: /cli/azure/

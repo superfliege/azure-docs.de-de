@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/13/2018
+ms.date: 07/20/2018
 ms.author: kumud
-ms.openlocfilehash: dd92fca89e3bdb123be46a52708feec1c939f7cc
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 8d354e3f409a51bdbb03ad340c951c39cc6137e1
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112721"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186443"
 ---
 # <a name="understand-load-balancer-probes"></a>Grundlegendes zu Load Balancer-Tests
 
@@ -28,7 +28,7 @@ Azure Load Balancer nutzt Integritätstests, um zu bestimmen, welche Back-End-Po
 
 Mit Integritätstests können Sie steuern, ob neue Flows zu fehlerfreien Back-End-Instanzen eingerichtet werden. Wenn ein einem Integritätstest ein Fehler auftritt, beendet der Load Balancer das Senden neuer Flows an die entsprechende fehlerhafte Instanz.  Eingerichtete TCP-Verbindungen werden nach einem fehlerhaften Integritätstest fortgesetzt.  Vorhandene UDP-Flows werden aus der fehlerhaften Instanz auf eine andere fehlerfreie Instanz im Back-End-Pool verschoben.
 
-Wenn bei allen Tests für einen Back-End-Pool Fehler auftreten, beenden Basic Load Balancer alle bestehenden TCP-Flows zum Back-End-Pool, während Standard Load Balancer die Fortsetzung eingerichteter TCP-Flows erlaubt; es werden keine neuen Flows an den Back-End-Pool gesendet.  Alle vorhandene UDP-Datenflüssen werden für Basic und Standard Load Balancer beendet, wenn bei allen Tests für einen Back-End-Pool Fehler auftreten.
+Wenn bei allen Tests für einen Back-End-Pool Fehler auftreten, beenden Basic Load Balancer alle bestehenden TCP-Flows zum Back-End-Pool, während Standard Load Balancer die Fortsetzung eingerichteter TCP-Flows erlaubt; es werden keine neuen Flows an den Back-End-Pool gesendet.  Alle vorhandene UDP-Datenflüssen werden für Basic und Standard Load Balancer beendet, wenn bei allen Tests für einen Back-End-Pool Fehler auftreten.  Das UDP ist verbindungslos und es werden kein Flusszustände für das UDP nachverfolgt.  Solange der Hash das gleiche Ergebnis erzeugt, bleibt der Fluss der Datagramme auf einer bestimmten Instanz.  Durch eine Änderung eines Integritätstests im Back-End-Pool können neue Datagramme in eine andere Instanz im Back-End-Pool verschoben werden.
 
 Clouddienstrollen (Workerrollen und Webrollen) verwenden einen Gast-Agent für die Testüberwachung. Wenn Sie Load Balancer Cloud Services mit IaaS-VMs nachstellen, müssen benutzerdefinierte TCP- oder HTTP-Integritätstests konfiguriert werden.
 

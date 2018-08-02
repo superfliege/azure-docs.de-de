@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2d88bf5d20beb9de9bf4a0cdcb43548d0d582779
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: dfee42f813989da2333720ac92313344343d57a7
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917277"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214028"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Benutzeranmeldung mit der Azure Active Directory-Passthrough-Authentifizierung
 
@@ -30,7 +30,7 @@ Mit der Azure AD-Passthrough-Authentifizierung (Azure Active Directory) können 
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-Diese Funktion ist eine Alternative zum [Kennworthashsynchronisierung von Azure AD](active-directory-aadconnectsync-implement-password-hash-synchronization.md), die Organisationen auch eine Möglichkeit zur Cloudauthentifizierung bereitstellt. Die Sicherheits- und Compliancerichtlinien einiger Organisationen verbieten es jedoch, Benutzerkennwörter selbst im Hashformat an externe Empfänger zu senden. Die Passthrough-Authentifizierung ist die richtige Lösung für solche Organisationen.
+Diese Funktion ist eine Alternative zum [Kennworthashsynchronisierung von Azure AD](active-directory-aadconnectsync-implement-password-hash-synchronization.md), die Organisationen auch eine Möglichkeit zur Cloudauthentifizierung bereitstellt. Allerdings können bestimmte Organisationen, die ihre lokale Active Directory-Sicherheits- und -Kennwortrichtlinien erzwingen möchten, stattdessen die Passthrough-Authentifizierung verwenden. Einen Vergleich der verschiedenen Azure AD-Anmeldemethoden und Informationen, wie Sie die richtige Anmeldemethode für Ihre Organisation wählen, finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/security/azure-ad-choose-authn).
 
 ![Azure AD-Passthrough-Authentifizierung](./media/active-directory-aadconnect-pass-through-authentication/pta1.png)
 
@@ -49,7 +49,7 @@ Sie können die Passthrough-Authentifizierung mit dem Feature zum [nahtlosen ein
 - *Schützen*
   - Lokale Kennwörter werden niemals in irgendeiner Form in der Cloud gespeichert.
   - Der Agent stellt innerhalb des Netzwerks nur ausgehende Verbindungen her. Daher muss der Agent nicht in einem Umkreisnetzwerk (auch als DMZ bezeichnet) installiert werden.
-  - Ihre Benutzerkonten werden durch die nahtlose Zusammenarbeit mit [Azure AD-Richtlinien für den bedingten Zugriff](../active-directory-conditional-access-azure-portal.md), einschließlich der Multi-Factor Authentication (MFA), und durch das [Filtern von Brute-Force-Kennwortangriffen](../authentication/howto-password-smart-lockout.md) geschützt.
+  - Ihre Benutzerkonten werden durch die nahtlose Kompatibilität mit [Azure AD-Richtlinien für bedingten Zugriff](../active-directory-conditional-access-azure-portal.md), einschließlich der Multi-Factor Authentication (MFA), durch das [Blockieren der Legacyauthentifizierung](../active-directory-conditional-access-conditions.md) und durch das [Herausfiltern von Brute-Force-Kennwortangriffen](../authentication/howto-password-smart-lockout.md) geschützt.
 - *Hoch verfügbar*
   - Zusätzliche Agents können auf mehrere lokalen Servern installiert werden, um Hochverfügbarkeit von Anmeldeanforderungen bereitzustellen.
 
@@ -68,12 +68,13 @@ Sie können die Passthrough-Authentifizierung mit dem Feature zum [nahtlosen ein
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [**Schnellstart**](active-directory-aadconnect-pass-through-authentication-quick-start.md): Einrichten und Ausführen der Passthrough-Authentifizierung mit Azure AD
-- [**Smart Lockout**](../authentication/howto-password-smart-lockout.md): Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten zum Schutz der Benutzerkonten.
-- [**Aktuelle Einschränkungen**](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Informationen zu den unterstützten und nicht unterstützten Szenarien
-- [**Technische Einzelheiten**](active-directory-aadconnect-pass-through-authentication-how-it-works.md) – Funktionsweise dieses Features verstehen
-- [**Häufig gestellte Fragen**](active-directory-aadconnect-pass-through-authentication-faq.md) – Antworten auf häufig gestellte Fragen
-- [**Problembehandlung**](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) – Beheben von häufig auftretenden Problemen mit diesem Feature
-- [**Ausführliche Informationen zur Sicherheit**](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md): zusätzliche ausführliche technische Informationen zum Feature.
-- [**Nahtlose SSO mit Azure AD**](active-directory-aadconnect-sso.md): Informationen zu dieser Ergänzungsfunktion
-- [**UserVoice:**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) Verfassen neuer Feature-Anforderungen
+- [Schnellstart](active-directory-aadconnect-pass-through-authentication-quick-start.md): Einrichten und Ausführen der Passthrough-Authentifizierung mit Azure AD
+- [Migrieren von AD FS zur Passthrough-Authentifizierung](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx): Ein detaillierter Leitfaden zur Migration von AD FS (oder anderen Verbundtechnologien) zur Passthrough-Authentifizierung
+- [Smart Lockout](../authentication/howto-password-smart-lockout.md): Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten zum Schutz der Benutzerkonten
+- [Aktuelle Einschränkungen](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Informationen zu den unterstützten und nicht unterstützten Szenarien
+- [Technische Einzelheiten](active-directory-aadconnect-pass-through-authentication-how-it-works.md): Funktionsweise dieses Features verstehen
+- [Häufig gestellte Fragen](active-directory-aadconnect-pass-through-authentication-faq.md): Antworten auf häufig gestellte Fragen
+- [Problembehandlung](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): Beheben häufig auftretender Probleme mit dieser Funktion
+- [Ausführliche Informationen zur Sicherheit](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md): Zusätzliche ausführliche technische Informationen zum Feature
+- [Nahtloses SSO mit Azure AD](active-directory-aadconnect-sso.md): Informationen zu diesem ergänzendem Feature
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Verfassen neuer Featureanforderungen

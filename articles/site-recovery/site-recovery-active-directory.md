@@ -7,14 +7,14 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 07/19/2018
 ms.author: manayar
-ms.openlocfilehash: e8094c582af6ea03f5ffcc4f61914488891cb556
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 3a2ad35a5382394a6886ed14dcc4f659762f2833
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920888"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172237"
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Verwenden von Azure Site Recovery zum Schützen von Active Directory und DNS
 
@@ -31,13 +31,10 @@ In diesem Artikel wird erläutert, wie eine Notfallwiederherstellungslösung fü
 
 ## <a name="replicate-the-domain-controller"></a>Replizieren des Domänencontrollers
 
-Sie müssen die [Site Recovery-Replikation](#enable-protection-using-site-recovery) auf mindestens einem virtuellen Computer einrichten, der einen Domänencontroller oder DNS hostet. Wenn Ihre Umgebung [mehrere Domänencontroller](#environment-with-multiple-domain-controllers) enthält, müssen Sie auch einen [zusätzlichen Domänencontroller](#protect-active-directory-with-active-directory-replication) am Zielstandort einrichten. Der zusätzliche Domänencontroller kann in Azure oder einem sekundären lokalen Datencenter vorhanden sein.
-
-### <a name="single-domain-controller"></a>Einzelner Domänencontroller
-Wenn Sie nur wenige Anwendungen und einen Domänencontroller haben, sollten Sie ein Failover des gesamten Standorts ausführen. In diesem Fall sollten Sie mithilfe von Site Recovery den Domänencontroller im Zielstandort replizieren (entweder in Azure oder in einem sekundären lokalen Rechenzentrum). Sie können denselben replizierten Domänencontroller bzw. virtuellen DNS-Computer auch für ein [Testfailover](#test-failover-considerations) verwenden.
-
-### <a name="multiple-domain-controllers"></a>Mehrere Domänencontroller
-Bei vielen Anwendungen und mehreren Domänencontrollern in der Umgebung, oder wenn Sie das gleichzeitige Failover verschiedener Anwendungen planen, empfehlen wir Ihnen, zusätzlich zum Replizieren des virtuellen Computers, auf dem sich der Domänencontroller befindet, mit Site Recovery auch die Einrichtung eines [zusätzlichen Domänencontrollers](#protect-active-directory-with-active-directory-replication) am Zielstandort (entweder in Azure oder einem sekundären lokalen Rechenzentrum). Für ein [Testfailover](#test-failover-considerations) können Sie den von Site Recovery replizierten Domänencontroller verwenden. Für das Failover können Sie den zusätzlichen Domänencontroller am Zielstandort verwenden.
+- Sie müssen die [Site Recovery-Replikation](#enable-protection-using-site-recovery) auf mindestens einem virtuellen Computer einrichten, der einen Domänencontroller oder DNS hostet.
+- Wenn Ihre Umgebung [mehrere Domänencontroller](#environment-with-multiple-domain-controllers) enthält, müssen Sie auch einen [zusätzlichen Domänencontroller](#protect-active-directory-with-active-directory-replication) am Zielstandort einrichten. Der zusätzliche Domänencontroller kann in Azure oder einem sekundären lokalen Datencenter vorhanden sein.
+- Wenn Sie nur wenige Anwendungen und einen Domänencontroller haben, sollten Sie ein Failover des gesamten Standorts ausführen. In diesem Fall sollten Sie mithilfe von Site Recovery den Domänencontroller im Zielstandort replizieren (entweder in Azure oder in einem sekundären lokalen Rechenzentrum). Sie können denselben replizierten Domänencontroller bzw. virtuellen DNS-Computer auch für ein [Testfailover](#test-failover-considerations) verwenden.
+- - Bei vielen Anwendungen und mehreren Domänencontrollern in der Umgebung, oder wenn Sie das gleichzeitige Failover verschiedener Anwendungen planen, empfehlen wir Ihnen, zusätzlich zum Replizieren des virtuellen Computers, auf dem sich der Domänencontroller befindet, mit Site Recovery auch die Einrichtung eines [zusätzlichen Domänencontrollers](#protect-active-directory-with-active-directory-replication) am Zielstandort (entweder in Azure oder einem sekundären lokalen Rechenzentrum). Für ein [Testfailover](#test-failover-considerations) können Sie den von Site Recovery replizierten Domänencontroller verwenden. Für das Failover können Sie den zusätzlichen Domänencontroller am Zielstandort verwenden.
 
 ## <a name="enable-protection-with-site-recovery"></a>Aktivieren des Schutzes mit Site Recovery
 
@@ -186,9 +183,11 @@ Wenn die oben genannten Bedingungen erfüllt sind, ist es wahrscheinlich, dass d
     Weitere Informationen finden Sie unter [Deaktivieren der Anforderung, dass ein globaler Katalogserver zur Überprüfung der Benutzeranmeldung verfügbar sein muss](http://support.microsoft.com/kb/241789).
 
 ### <a name="dns-and-domain-controller-on-different-machines"></a>DNS und Domänencontroller auf unterschiedlichen Computern
-Wenn das DNS sich nicht auf dem gleichen virtuellen Computer wie der Domänencontroller befindet, müssen Sie eine DNS-VM für das Testfailover erstellen. Wenn DNS und Domänencontroller sich auf demselben virtuellen Computer befinden, können Sie diesen Abschnitt überspringen.
 
-Sie können einen neuen DNS-Server verwenden und alle erforderlichen Zonen erstellen. Wenn Ihre Active Directory-Domäne beispielsweise „contoso.com“ lautet, können Sie eine DNS-Zone mit dem Namen „contoso.com“ erstellen. Die zu Active Directory gehörenden Einträge müssen wie folgt in DNS aktualisiert werden:
+Wenn Sie den Domänencontroller und das DNS auf der gleichen VM ausführen, können Sie dieses Verfahren überspringen.
+
+
+Wenn sich das DNS nicht auf der gleichen VM wie der Domänencontroller befindet, müssen Sie eine DNS-VM für das Testfailover erstellen. Sie können einen neuen DNS-Server verwenden und alle erforderlichen Zonen erstellen. Wenn Ihre Active Directory-Domäne beispielsweise „contoso.com“ lautet, können Sie eine DNS-Zone mit dem Namen „contoso.com“ erstellen. Die zu Active Directory gehörenden Einträge müssen wie folgt in DNS aktualisiert werden:
 
 1. Stellen Sie sicher, dass diese Einstellungen vorhanden sind, bevor ein anderer virtueller Computer im Wiederherstellungsplan startet:
    * Die Zone muss nach dem Stammnamen der Gesamtstruktur benannt werden.

@@ -13,19 +13,19 @@ ms.component: protection
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 386be8737fcddacab9fdd7ec19ae00188342d917
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e8aacc95f73294420042549681aff5494dc63cce
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38506320"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257809"
 ---
 # <a name="how-to-complete-an-access-review-in-azure-ad-privileged-identity-management"></a>Abschließen einer Zugriffsüberprüfung in Azure AD Privileged Identity Management
-Nachdem eine [Sicherheitsüberprüfung gestartet wurde](pim-how-to-start-security-review.md), können Administratoren für privilegierte Rollen den privilegierten Zugriff überprüfen. Azure AD Privileged Identity Management (PIM) sendet automatisch eine E-Mail, in der Benutzer aufgefordert werden, ihren Zugriff zu überprüfen. Benutzern, die diese E-Mail nicht erhalten, können Sie die Anweisungen unter [Ausführen einer Sicherheitsüberprüfung](pim-how-to-perform-security-review.md)senden.
+Nachdem eine [Zugriffsüberprüfung gestartet wurde](pim-how-to-start-security-review.md), können Administratoren für privilegierte Rollen den privilegierten Zugriff überprüfen. Azure AD Privileged Identity Management (PIM) sendet automatisch eine E-Mail, in der Benutzer aufgefordert werden, ihren Zugriff zu überprüfen. Benutzern, die diese E-Mail nicht erhalten, können Sie die Anweisungen unter [Ausführen einer Zugriffsüberprüfung](pim-how-to-perform-security-review.md) senden.
 
-Wenn der Zeitraum für die Sicherheitsüberprüfung abgelaufen ist oder alle Benutzer die Selbstüberprüfung abgeschlossen haben, führen Sie die Schritte in diesem Artikel aus, um die Überprüfung zu verwalten und die Ergebnisse anzuzeigen.
+Wenn der Zeitraum für die Zugriffsüberprüfung abgelaufen ist oder alle Benutzer die Selbstüberprüfung abgeschlossen haben, führen Sie die Schritte in diesem Artikel aus, um die Überprüfung zu verwalten und die Ergebnisse anzuzeigen.
 
-## <a name="manage-security-reviews"></a>Verwalten von Sicherheitsüberprüfungen
+## <a name="manage-access-reviews"></a>Verwalten von Zugriffsüberprüfungen
 1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com/) , und wählen Sie auf dem Dashboard die Anwendung **Azure AD Privileged Identity Management** aus.
 2. Wählen Sie auf dem Dashboard den Abschnitt **Zugriffsüberprüfungen** aus.
 3. Wählen Sie die Zugriffsüberprüfung aus, die Sie verwalten möchten.
@@ -44,7 +44,7 @@ Alle Zugriffsüberprüfungen weisen ein Enddatum auf, Sie können jedoch die Sch
 Nachdem eine Überprüfung abgeschlossen wurde, weil das Enddatum erreicht ist oder weil sie manuell beendet wurde, wird mit der Schaltfläche **Übernehmen** das Ergebnis der Überprüfung implementiert. Wenn bei der Überprüfung der Zugriff eine Benutzers verweigert wurde, ist dies der Schritt, mit dem die Rollenzuweisung entfernt wird.  
 
 ### <a name="export"></a>Export
-Wenn Sie die Ergebnisse der Sicherheitsüberprüfung manuell anwenden möchten, können Sie die Überprüfung exportieren. Über die Schaltfläche **Export** können Sie den Download einer CSV-Datei starten. Sie können die Ergebnisse in Excel oder einem anderen Programm verwalten, in dem sich CSV-Dateien öffnen lassen.
+Wenn Sie die Ergebnisse der Zugriffsüberprüfung manuell anwenden möchten, können Sie die Überprüfung exportieren. Über die Schaltfläche **Export** können Sie den Download einer CSV-Datei starten. Sie können die Ergebnisse in Excel oder einem anderen Programm verwalten, in dem sich CSV-Dateien öffnen lassen.
 
 ### <a name="delete"></a>Löschen
 Wenn Sie an einer Überprüfung nicht weiter interessiert sind, löschen Sie sie. Über die Schaltfläche **Löschen** entfernen Sie die Überprüfung aus der PIM-Anwendung.

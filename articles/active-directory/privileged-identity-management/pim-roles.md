@@ -10,25 +10,22 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: protection
-ms.date: 03/04/2018
+ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: bbc87f529cb70b6f4b21984199ed87427b4e3108
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6553fdba463144c6eda1e35c0967e92a3c44aff6
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38506410"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225575"
 ---
-# <a name="different-administrative-role-in-azure-active-directory-pim"></a>Verschiedene Administratorrollen in Azure Active Directory PIM
+# <a name="directory-roles-you-can-manage-using-azure-ad-pim"></a>Verzeichnisrollen, die Sie mit Azure AD PIM verwalten können
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
 
 Sie können Benutzern Ihrer Organisation in Azure AD verschiedene Administratorrollen zuweisen. Mit diesen Rollenzuweisungen wird gesteuert, welche Aufgaben (beispielsweise das Hinzufügen oder Entfernen von Benutzern oder das Ändern von Diensteinstellungen) Benutzer in Azure AD, Office 365 und weiteren Microsoft Online Services und zugehörigen Anwendungen ausführen können.  
 
-> [!IMPORTANT]
-> Microsoft empfiehlt die Verwaltung von Azure AD mithilfe des [Azure AD Admin Centers](https://aad.portal.azure.com) im Azure-Portal.
-
-Ein globaler Administrator kann die **permanente** Rollenzuweisung von Benutzern in Azure AD aktualisieren. Hierzu können PowerShell-Cmdlets wie `Add-MsolRoleMember` und `Remove-MsolRoleMember` oder das Portal verwendet werden, wie unter [Zuweisen von Administratorrollen in Azure Active Directory (Azure AD)](../users-groups-roles/directory-assign-admin-roles.md) beschrieben.
+Ein globaler Administrator kann die **permanente** Rollenzuweisung von Benutzern in Azure AD aktualisieren. Hierzu können das Portal, wie unter [Zuweisen von Administratorrollen in Azure Active Directory (Azure AD)](../users-groups-roles/directory-assign-admin-roles.md) beschrieben, oder [PowerShell-Befehle](/powershell/module/azuread#directory_roles) verwendet werden.
 
 Azure AD Privileged Identity Management (PIM) verwaltet Richtlinien für den privilegierten Zugriff für Benutzer in Azure AD. PIM weist Benutzer einer oder mehreren Rollen in Azure AD zu, und Sie können eine Person permanent der Rolle zuweisen oder als für die Rolle berechtigt festlegen. Wenn ein Benutzer einer Rolle permanent zugewiesen ist oder eine berechtigte Rollenzuweisung aktiviert, kann er mit den dieser Rolle zugewiesenen Berechtigungen Verwaltungsaufgaben in Azure Active Directory, Office 365 und andere Anwendungen ausführen.
 

@@ -6,14 +6,14 @@ author: banisadr
 manager: darosa
 ms.service: event-grid
 ms.topic: reference
-ms.date: 02/21/2018
+ms.date: 07/23/2018
 ms.author: babanisa
-ms.openlocfilehash: 991679eeb0f7c98606133750b193a5895f39178f
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 39bf8df69f491aace546386b1b3aabce9ea6c696
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303316"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226542"
 ---
 # <a name="azure-event-grid-event-schema-for-service-bus"></a>Azure Event Grid-Ereignisschema für Service Bus
 
@@ -93,7 +93,7 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| nameSpaceName | Zeichenfolge | Der Service Bus-Namespace, in dem sich die Ressource befindet. |
+| namespaceName | Zeichenfolge | Der Service Bus-Namespace, in dem sich die Ressource befindet. |
 | requestUri | Zeichenfolge | Der URI für die spezifische Warteschlange oder das Abonnement, von der bzw. von dem das Ereignis ausgegeben wird. |
 | entityType | Zeichenfolge | Die Art der Service Bus-Entität, die Ereignisse ausgibt (Warteschlange oder Abonnement). |
 | queueName | Zeichenfolge | Die Warteschlange mit aktiven Nachrichten, falls eine Warteschlange abonniert wird. Bei Verwendung von Themen/Abonnements ist der Wert NULL. |

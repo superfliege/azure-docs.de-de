@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 4da9696761747874395ec90cb3b446e3621650ba
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 9c45b428a6d2060243f1eba9a284c7eb1b1b21c0
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113256"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259101"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Überwachen einer Integrationslaufzeit in Azure Data Factory  
 Bei der **Integrationslaufzeit** (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory mehrere Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Es werden drei Arten von Integrationslaufzeiten von Azure Data Factory angeboten:
@@ -76,10 +76,18 @@ Die folgende Tabelle enthält Beschreibungen von Überwachungseigenschaften für
 | Verfügbarer Arbeitsspeicher | Verfügbarer Arbeitsspeicher auf einem Knoten der selbstgehosteten Integrationslaufzeit. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. | 
 | CPU-Auslastung | CPU-Auslastung für einen Knoten der selbstgehosteten Integrationslaufzeit. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. |
 | Netzwerk (Eingang/Ausgang) | Netzwerkauslastung für einen Knoten der selbstgehosteten Integrationslaufzeit. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. | 
-| Gleichzeitige Aufträge (ausgeführt/Limit) | Anzahl von Aufträgen oder Aufgaben, die auf den einzelnen Knoten ausgeführt werden. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. Mit „Limit“ wird angegeben, wie viele Aufträge für einen Knoten jeweils gleichzeitig ausgeführt werden können. Dieser Wert wird basierend auf der Größe des Computers definiert. Sie können das Limit erhöhen, um die Ausführung von gleichzeitigen Aufträgen in erweiterten Szenarien zentral hochzuskalieren, in denen CPU, Arbeitsspeicher und Netzwerk nicht voll ausgelastet sind, aber Zeitüberschreitungen für Aktivitäten auftreten. Diese Funktion ist auch für eine selbstgehostete Integrationslaufzeit mit einem einzelnen Knoten verfügbar. |
+| Gleichzeitige Aufträge (ausgeführt/Limit) | **Wird ausgeführt**. Anzahl von Aufträgen oder Aufgaben, die auf den einzelnen Knoten ausgeführt werden. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. <br/><br/>**Limit**. Mit „Limit“ wird angegeben, wie viele Aufträge für einen Knoten jeweils gleichzeitig ausgeführt werden können. Dieser Wert wird basierend auf der Größe des Computers definiert. Wenn Zeitüberschreitungen für Aktivitäten auftreten, können Sie das Limit auch dann erhöhen, um die gleichzeitige Ausführung von Aufträgen in erweiterten Szenarien zentral hochzuskalieren, wenn CPU, Arbeitsspeicher oder Netzwerk nicht voll ausgelastet sind. Diese Funktion ist auch für eine selbstgehostete Integrationslaufzeit mit einem einzelnen Knoten verfügbar. |
 | Rolle | Bei einer selbstgehosteten Integrationslaufzeit mit mehreren Knoten gibt es zwei Arten von Rollen: Verteiler und Worker. Alle Knoten sind Worker. Dies bedeutet, dass alle Knoten zum Ausführen von Aufträgen verwendet werden können. Es ist nur ein Verteilerknoten vorhanden, der zum Durchführen der Pullvorgänge für Aufgaben bzw. Aufträge von Clouddiensten und Verteilen an die einzelnen Workerknoten genutzt wird. Der Verteilerknoten ist auch ein Workerknoten. |
 
-Einige Einstellungen der Eigenschaften sind sinnvoller, wenn in der selbstgehosteten Integrationslaufzeit mindestens zwei Knoten enthalten sind (Szenario mit horizontalem Hochskalieren). 
+Einige Einstellungen der Eigenschaften sind sinnvoller, wenn in der selbstgehosteten Integrationslaufzeit (d.h. in einem Szenario mit horizontalem Hochskalieren) mindestens zwei Knoten enthalten sind.
+
+#### <a name="concurrent-jobs-limit"></a>Limit für gleichzeitige Aufträge
+
+Der Standardwert des Limits für gleichzeitige Aufträge basierend auf der Größe des Computers. Welche Faktoren zum Berechnen dieses Wertes verwendet werden, hängt von der Größe des Arbeitsspeichers und der Anzahl der CPU-Kerne des Computers ab. Je mehr Kerne und Arbeitsspeicher, desto höher das Standardlimit für gleichzeitige Aufträge.
+
+Sie skalieren horizontal hoch, indem Sie die Anzahl der Knoten erhöhen. Wenn Sie die Anzahl der Knoten erhöhen, entspricht das Limit für gleichzeitige Aufträge der Summe der Grenzwerte für gleichzeitige Aufträge aller verfügbaren Knoten.  Wenn Sie z.B. auf einem Knoten maximal zwölf gleichzeitige Aufträge ausführen können und drei ähnliche Knoten hinzufügen, können Sie maximal 48 (d.h. 4 x 12) gleichzeitige Aufträge ausführen. Sie sollten das Limit für gleichzeitige Aufträge nur dann erhöhen, wenn Sie mit den Standardwerten auf jedem Knoten eine geringe Ressourcennutzung feststellen.
+
+Sie können den berechneten Standardwert im Azure-Portal überschreiben. Wählen Sie „Autor > Verbindungen > Integration Runtimes > Bearbeiten > Knoten > Wert für gleichzeitige Aufträge pro Knoten ändern“ aus. Sie können auch den PowerShell-Befehl [update-azurermdatafactoryv2integrationruntimenode](https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactoryv2/update-azurermdatafactoryv2integrationruntimenode?view=azurermps-6.4.0#examples) verwenden.
   
 ### <a name="status-per-node"></a>Status (pro Knoten)
 Die folgende Tabelle enthält die möglichen Statuswerte eines Knotens einer selbstgehosteten Integrationslaufzeit:

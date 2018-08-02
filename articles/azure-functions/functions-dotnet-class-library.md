@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: 2308419ba79f6b482df6f68e865aafd0152ae090
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 542e3563a31a181db8eb7c97a90b61e1a503f2cb
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001887"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39162200"
 ---
 # <a name="azure-functions-c-developer-reference"></a>C#-Entwicklerreferenz zu Azure Functions
 
@@ -262,6 +262,8 @@ public static class AsyncExample
     }
 }
 ```
+
+Sie können keine `out`-Parameter in asynchronen Funktionen verwenden. Für Ausgabebindungen verwenden Sie stattdessen [Funktionsrückgabewert ](#binding-to-method-return-value) oder [Sammlerobjekt](#writing-multiple-output-values).
 
 ## <a name="cancellation-tokens"></a>Abbruchtoken
 

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 7/18/2018
 ms.author: trinadhk
-ms.openlocfilehash: c9dff77f6b9fffc02ec94caa3454500772651195
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 787c4b0f6e8d5ed76260582bfa3d6c49574bd102
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136900"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205339"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Upgrade auf Azure VM-Sicherungsstapel V2
 
@@ -48,7 +48,7 @@ Momentaufnahmen werden standardmäßig sieben Tage lang aufbewahrt. Mit diesem F
 
 * Momentaufnahmen werden zur Verbesserung der Erstellung eines Wiederherstellungspunkts und zur Beschleunigung von Wiederherstellungsvorgängen lokal gespeichert. Aus diesem Grund werden Ihnen Speicherkosten angezeigt, die den Momentaufnahmen eines Zeitraums von sieben Tagen entsprechen.
 
-* Inkrementelle Momentaufnahmen werden als Seitenblobs gespeichert. Für alle Kunden, die nicht verwaltete Datenträger verwenden, werden die 7-Tage-Momentaufnahmen berechnet, die im lokalen Speicherkonto des Kunden gespeichert sind. Gemäß des aktuellen Preismodells entstehen Kunden keine Kosten für verwaltete Datenträger.
+* Inkrementelle Momentaufnahmen werden als Seitenblobs gespeichert. Für alle Kunden, die nicht verwaltete Datenträger verwenden, werden die 7-Tage-Momentaufnahmen berechnet, die im lokalen Speicherkonto des Kunden gespeichert sind. Da die Wiederherstellungspunktsammlungen, die bei Sicherungen von verwalteten VMs verwendet werden, Blobmomentaufnahmen auf der zugrunde liegenden Speicherebene verwenden, werden für verwaltete Datenträger Kosten angezeigt, die [Preisen für Blobmomentaufnahmen](https://docs.microsoft.com/rest/api/storageservices/understanding-how-snapshots-accrue-charges) entsprechen, und inkrementell sind. 
 
 * Wenn Sie eine Wiederherstellung von einem Wiederherstellungspunkt für die Momentaufnahme für eine Premium-V durchführen, wird ein temporärer Speicherort verwendet, während die VM im Rahmen der Wiederherstellung erstellt wird.
 
@@ -56,7 +56,7 @@ Momentaufnahmen werden standardmäßig sieben Tage lang aufbewahrt. Mit diesem F
 
 ## <a name="upgrade"></a>Upgrade
 ### <a name="the-azure-portal"></a>Das Azure-Portal
-Wenn Sie das Azure-Portal verwenden, wird Ihnen eine Benachrichtigung im Tresordashboard angezeigt. Diese Benachrichtigung bezieht sich auf die Unterstützung für große Datenträger und Verbesserungen der Geschwindigkeit beim Sichern und Wiederherstellen.
+Wenn Sie das Azure-Portal verwenden, wird Ihnen eine Benachrichtigung im Tresordashboard angezeigt. Diese Benachrichtigung bezieht sich auf die Unterstützung für große Datenträger und Verbesserungen der Geschwindigkeit beim Sichern und Wiederherstellen. Sie können auch zur Seite „Eigenschaften“ des Tresors navigieren, um die Upgradeoption abzurufen.
 
 ![Sicherungsauftrag im VM-Sicherungsstapel, Resource Manager-Bereitstellungsmodell – Unterstützungsbenachrichtigung](./media/backup-azure-vms/instant-rp-banner.png) 
 
@@ -72,13 +72,13 @@ Führen Sie die folgenden Cmdlets in einem PowerShell-Terminal mit erhöhten Rec
     PS C:> Connect-AzureRmAccount
     ```
 
-2.  Wählen Sie das Abonnement aus, das Sie für die Vorschau registrieren möchten:
+2.  Wählen Sie das Abonnement aus, das Sie registrieren möchten:
 
     ```
     PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
     ```
 
-3.  Registrieren Sie dieses Abonnement für die private Vorschau:
+3.  Registrieren Sie das folgende Abonnement:
 
     ```
     PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
@@ -101,13 +101,13 @@ Die folgenden Fragen und Antworten wurden Foren entnommen oder von Kunden einger
 
 Wenn Sie ein Upgrade auf V2 durchführen, hat dies keinen Einfluss auf aktuelle Sicherungen, und Sie müssen Ihre Umgebung nicht neu konfigurieren. Wenn Sie das Upgrade durchführen, funktioniert Ihre Sicherungsumgebung wie gewohnt weiter.
 
-### <a name="what-does-it-cost-to-upgrade-to-azure-backup-stack-v2"></a>Was kostet das Upgrade auf V2 des Azure Backup-Stapels?
+### <a name="what-does-it-cost-to-upgrade-to-azure-vm-backup-stack-v2"></a>Was kostet ein Upgrade auf v2 des Azure-VM-Sicherungsstapels?
 
-Das Upgrade auf V2 des Azure Backup-Stapels ist kostenlos. Momentaufnahmen werden zur Beschleunigung des Erstellungsvorgangs von Wiederherstellungspunkten und Wiederherstellungsvorgängen lokal gespeichert. Aus diesem Grund werden Ihnen Speicherkosten angezeigt, die den Momentaufnahmen eines Zeitraums von sieben Tagen entsprechen.
+Für das Upgrade des Stapels auf v2 fallen keine Kosten an. Momentaufnahmen werden zur Beschleunigung des Erstellungsvorgangs von Wiederherstellungspunkten und Wiederherstellungsvorgängen lokal gespeichert. Aus diesem Grund werden Ihnen Speicherkosten angezeigt, die den Momentaufnahmen eines Zeitraums von sieben Tagen entsprechen.
 
 ### <a name="does-upgrading-to-stack-v2-increase-the-premium-storage-account-snapshot-limit-by-10-tb"></a>Wird die Momentaufnahmengrenze von 10 TB für Premium-Speicherkonten durch das Upgrade auf V2 erhöht?
 
-Nein.
+Für Momentaufnahmen, die im Rahmen des v2-Stapels erstellt werden, gilt der Momentaufnahmengrenzwert eines Storage Premium-Kontos für nicht verwaltete Datenträger von 10 TB. 
 
 ### <a name="in-premium-storage-accounts-do-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>Halten Momentaufnahmen, die für die Punkte erstellt werden, die zur sofortigen Wiederherstellung dienen, in Storage Premium-Konten die 10 TB-Grenze für Momentaufnahmen ein?
 
@@ -117,14 +117,6 @@ Ja, Momentaufnahmen, die für die Punkte erstellt werden, die zur sofortigen Wie
 
 Es wird jeden Tag eine neue Momentaufnahme erstellt. Es gibt sieben unterschiedliche Momentaufnahmen. Der Dienst erstellt am ersten Tag **keine** Kopie und nimmt in den nächsten sechs Tagen keine Änderungen vor.
 
-### <a name="what-happens-if-the-default-resource-group-is-deleted-accidentally"></a>Was passiert, wenn die Standardressourcengruppe aus Versehen gelöscht wird?
-
-Wenn die Ressourcengruppe gelöscht wird, gehen sämtliche Punkte, die zur sofortigen Wiederherstellung dienen, für alle geschützten VMs in dieser Region verloren. Bei der nächsten Sicherung wird die Ressourcengruppe neu erstellt, und die Sicherungen werden weiter wie erwartet ausgeführt. Diese Funktion ist nicht nur auf Punkte begrenzt, die zur sofortigen Wiederherstellung dienen.
-
-### <a name="can-i-delete-the-default-resource-group-created-for-instant-recovery-points"></a>Kann ich die Standardressourcengruppe für Punkte löschen, die zur sofortigen Wiederherstellung dienen?
-
-Der Azure Backup-Dienst erstellt die verwaltete Ressourcengruppe. Sie können derzeit keine Änderungen an der Ressourcengruppe vornehmen. Außerdem sollten Sie die Ressourcengruppe nicht sperren. Die Anleitung gilt nicht nur für Version 2 des Stapels.
- 
 ### <a name="is-a-v2-snapshot-an-incremental-snapshot-or-full-snapshot"></a>Handelt es sich bei einer Momentaufnahme mit V2 um eine inkrementelle Momentaufnahme oder eine vollständige Momentaufnahme?
 
-Inkrementelle Momentaufnahmen werden für nicht verwaltete Datenträger verwendet. Bei verwalteten Datenträgern werden vollständige Momentaufnahmen verwendet.
+Inkrementelle Momentaufnahmen werden für nicht verwaltete Datenträger verwendet. Bei verwalteten Datenträgern werden bei der Wiederherstellungspunktsammlung, die von Azure Backup erstellt wird, Blobmomentaufnahmen verwendet. Diese sind daher inkrementell. 

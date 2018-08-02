@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren einer MSI in einer Azure-VM-Skalierungsgruppe mithilfe einer Vorlage
-description: Schritt-für-Schritt-Anweisungen zum Konfigurieren einer verwalteten Dienstidentität (Managed Service Identity, MSI) in einer Azure-VMSS mithilfe einer Azure Resource Manager-Vorlage
+title: Konfigurieren einer verwalteten Dienstidentität für eine Azure-VM-Skalierungsgruppe über eine Vorlage
+description: Schritt-für-Schritt-Anweisungen zum Konfigurieren einer verwalteten Dienstidentität in einer Azure-VMSS mithilfe einer Azure Resource Manager-Vorlage.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: ab3982c85cfb008bde08495f8cb8aa86d066d8c0
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 562bf5e5239114a8dad16727089f94f378db82ff
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114853"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258863"
 ---
-# <a name="configure-a-vmss-managed-service-identity-by-using-a-template"></a>Konfigurieren von MSI für eine VM-Skalierungsgruppe mithilfe einer Vorlage
+# <a name="configure-managed-service-identity-on-virtual-machine-scale-using-a-template"></a>Konfigurieren einer verwalteten Dienstidentität für eine VM-Skalierungsgruppe über eine Vorlage
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 Eine verwaltete Dienstidentität stellt für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein. 
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure Resource Manager-Bereitstellungsvorlage die folgenden Vorgänge für verwaltete Dienstidentitäten (Managed Service Identity, MSI) für eine Azure VM-Skalierungsgruppe ausführen können:
+In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure Resource Manager-Bereitstellungsvorlage die folgenden Vorgänge für verwaltete Dienstidentitäten für eine Azure-VM-Skalierungsgruppe ausführen können:
 - Aktivieren und Deaktivieren der systemzugewiesenen Identität in einer Azure VM-Skalierungsgruppe
 - Hinzufügen und Entfernen einer benutzerzugewiesenen Identität in einer Azure VM-Skalierungsgruppe
 
@@ -35,6 +35,10 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure Resource Manager-Bere
 
 - Wenn Sie nicht mit „Verwaltete Dienstidentität“ vertraut sind, helfen Ihnen die Informationen in dieser [Übersicht](overview.md) weiter. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen Identität](overview.md#how-does-it-work)** bewusst.
 - Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
+- Um die Verwaltungsvorgänge in diesem Artikel auszuführen, benötigt Ihr Konto die folgenden Rollenzuweisungen:
+    - [Mitwirkender für virtuelle Computer](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor), um eine VM-Skalierungsgruppe zu erstellen und die vom System und/oder Benutzer zugewiesene verwaltete Identität auf einer VM-Skalierungsgruppe zu aktivieren bzw. daraus zu entfernen.
+    - [Mitwirkender für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-contributor), um eine vom Benutzer zugewiesene Identität zu erstellen.
+    - [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator), um eine vom Benutzer zugewiesene Identität einer VM-Skalierungsgruppe zuzuweisen bzw. daraus zu entfernen.
 
 ## <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
 
@@ -45,13 +49,13 @@ Wie beim Azure-Portal und der Skripterstellung bieten [Azure Resource Manager](.
    - Verwenden eines lokalen [JSON-Editors (z.B. VS Code)](../../azure-resource-manager/resource-manager-create-first-template.md) und anschließendes Hochladen und Bereitstellen mithilfe von PowerShell oder CLI.
    - Verwenden des [Azure-Ressourcengruppenprojekts](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) von Visual Studio für das Erstellen und Bereitstellen einer Vorlage.  
 
-Unabhängig von der gewählten Option ist die Vorlagensyntax während der ursprünglichen und erneuten Bereitstellung identisch. Die MSI-Aktivierung erfolgt auf einer neuen oder vorhandenen VM auf dieselbe Weise. Standardmäßig führt Azure Resource Manager außerdem ein [inkrementelles Update](../../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments) für Bereitstellungen durch.
+Unabhängig von der gewählten Option ist die Vorlagensyntax während der ursprünglichen und erneuten Bereitstellung identisch. Die Aktivierung einer verwalteten Dienstidentität auf einer neuen oder vorhandenen VM erfolgt auf dieselbe Weise. Standardmäßig führt Azure Resource Manager außerdem ein [inkrementelles Update](../../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments) für Bereitstellungen durch.
 
 ## <a name="system-assigned-identity"></a>Systemzugewiesene Identität
 
 In diesem Abschnitt aktivieren und deaktivieren Sie die systemzugewiesene Identität mithilfe einer Azure Resource Manager-Vorlage.
 
-### <a name="enable-system-assigned-identity-during-creation-of-an-azure-vmss-or-an-existing-azure-vmss"></a>Aktivieren einer systemzugewiesenen Identität beim Erstellen einer Azure VM-Skalierungsgruppe oder in einer vorhandenen VM-Skalierungsgruppe
+### <a name="enable-system-assigned-identity-during-creation-the-creation-of-or-an-existing-azure-virtual-machine-scale-set"></a>Aktivieren der systemzugewiesenen Identität bei der Erstellung einer Azure-VM-Skalierungsgruppe oder auf einer vorhandenen Azure-VM-Skalierungsgruppe
 
 1. Laden Sie die Vorlage in einen Editor, und suchen Sie nach der gewünschten `Microsoft.Compute/virtualMachineScaleSets`-Ressource im Abschnitt `resources`. Dieser Screenshot weicht möglicherweise geringfügig von der Darstellung bei Ihnen ab. Dies hängt davon ab, welchen Editor Sie verwenden und ob Sie eine Vorlage für eine neue oder eine vorhandene Bereitstellung bearbeiten.
    
@@ -65,7 +69,7 @@ In diesem Abschnitt aktivieren und deaktivieren Sie die systemzugewiesene Identi
    },
    ```
 
-3. (Optinal) Fügen Sie dann die MSI-Erweiterung für die VM-Skalierungsgruppe als ein `extensionsProfile`-Element hinzu. Dieser Schritt ist optional, da Sie für den Tokenabruf auch die Azure IMDS-Identität (Instance Metadata Service) verwenden können.  Verwenden Sie die folgende Syntax:
+3. (Optinal) Fügen Sie dann die Erweiterung der verwalteten Dienstidentität für die VM-Skalierungsgruppe als `extensionsProfile`-Element hinzu. Dieser Schritt ist optional, da Sie für den Tokenabruf auch die Azure IMDS-Identität (Instance Metadata Service) verwenden können.  Verwenden Sie die folgende Syntax:
 
    >[!NOTE] 
    > Im folgenden Beispiel wird angenommen, dass eine Windows-VM-Skalierungsgruppenerweiterung (`ManagedIdentityExtensionForWindows`) bereitgestellt wird. Sie können die Konfiguration auch für Linux ausführen, indem Sie stattdessen `ManagedIdentityExtensionForLinux` für die Elemente `"name"` und `"type"` verwenden.
@@ -95,12 +99,23 @@ In diesem Abschnitt aktivieren und deaktivieren Sie die systemzugewiesene Identi
 
 ### <a name="disable-a-system-assigned-identity-from-an-azure-virtual-machine-scale-set"></a>Deaktivieren einer systemzugewiesenen Identität in einer Azure VM-Skalierungsgruppe
 
-> [!NOTE]
-> Die Deaktivierung von „Verwaltete Dienstidentität“ von einem virtuellen Computer wird derzeit nicht unterstützt. In der Zwischenzeit können Sie zwischen systemzugewiesenen und benutzerzugewiesenen Identitäten wechseln.
+Wenn die verwaltete Dienstidentität in einer VM-Skalierungsgruppe nicht mehr benötigt wird, gehen Sie wie folgt vor:
 
-Wenn Sie eine VM-Skalierungsgruppe haben, die keine systemzugewiesene Identität mehr, jedoch weiterhin benutzerzugewiesene Identitäten benötigt, gehen Sie wie folgt vor:
+1. Verwenden Sie unabhängig davon, ob Sie sich bei Azure lokal oder über das Azure-Portal anmelden, ein Konto, das dem Azure-Abonnement zugeordnet ist, das die VM-Skalierungsgruppe enthält.
 
-- Laden Sie die Vorlage in einen Editor, und ändern Sie den Identitätstyp in `'UserAssigned'`
+2. Laden Sie die Vorlage in einen [Editor](#azure-resource-manager-templates), und suchen Sie nach der gewünschten `Microsoft.Compute/virtualMachineScaleSets`-Ressource im Abschnitt `resources`. Wenn Ihre VM-Skalierungsgruppe nur über eine vom System zugewiesene Identität verfügt, können Sie diese deaktivieren, indem Sie den Identitätstyp in `None` ändern.  Wenn Ihre VM-Skalierungsgruppe sowohl vom System als auch vom Benutzer zugewiesene Identitäten enthält, entfernen Sie `SystemAssigned` aus dem Identitätstyp, und behalten Sie `UserAssigned` zusammen mit dem Array `identityIds` der vom Benutzer zugewiesenen Identitäten bei.  Das folgende Beispiel zeigt Ihnen, wie Sie eine vom System zugewiesene Identität aus einer VM-Skalierungsgruppe ohne vom Benutzer zugewiesene Identitäten entfernen:
+   
+   ```json
+   {
+       "name": "[variables('vmssName')]",
+       "apiVersion": "2017-03-30",
+       "location": "[parameters(Location')]",
+       "identity": {
+           "type": "None"
+        }
+
+   }
+   ```
 
 ## <a name="user-assigned-identity"></a>Benutzerzugewiesene Identität
 
@@ -114,7 +129,7 @@ In diesem Abschnitt weisen Sie einer Azure VM-Skalierungsgruppe mit der Azure Re
 1. Fügen Sie unter dem `resources`-Element den folgenden Eintrag hinzu, um Ihrer VM-Skalierungsgruppe eine benutzerzugewiesene Identität zuzuweisen.  Achten Sie darauf, dass Sie `<USERASSIGNEDIDENTITY>` durch den Namen der benutzerzugewiesenen Identität ersetzen, die Sie erstellt haben.
 
    > [!Important]
-   > Der `<USERASSIGNEDIDENTITYNAME>`-Wert, der in folgendem Beispiel dargestellt wird, muss in einer Variable gespeichert werden.  Außerdem muss die API-Version für die derzeit unterstützte Implementierung für das Zuweisen von Identitäten zu virtuellen Computern in einer Resource Manager-Vorlage durch Benutzer mit der Version im folgenden Beispiel übereinstimmen. 
+   > Der Wert `<USERASSIGNEDIDENTITYNAME>`, der in folgendem Beispiel dargestellt wird, muss in einer Variable gespeichert werden.  Für die derzeit unterstützte Implementierung der Zuweisung von Identitäten zu virtuellen Computern durch Benutzer mithilfe von Resource Manager-Vorlagen muss die API-Version mit der im folgenden Beispiel übereinstimmen. 
 
     ```json
     {
@@ -130,6 +145,7 @@ In diesem Abschnitt weisen Sie einer Azure VM-Skalierungsgruppe mit der Azure Re
 
     }
     ```
+
 2. Fügen Sie den folgenden Eintrag unter dem `extensionProfile`-Element hinzu, um Ihrer VM-Skalierungsgruppe die MSI-Erweiterung zuzuweisen. Dieser Schritt ist optional, da Sie für den Tokenabruf auch den Azure IMDS-Identitätsendpunkt (Instance Metadata Service) verwenden können. Verwenden Sie die folgende Syntax:
    
     ```JSON
@@ -148,12 +164,37 @@ In diesem Abschnitt weisen Sie einer Azure VM-Skalierungsgruppe mit der Azure Re
                         "protectedSettings": {}
                     }
                 }
-   ```
+    ```
+
 3.  Wenn Sie fertig sind, sollte Ihre Vorlage wie folgt aussehen:
    
       ![Screenshot einer benutzerzugewiesenen Identität](./media/qs-configure-template-windows-vmss/qs-configure-template-windows-final.PNG)
 
+### <a name="remove-user-assigned-identity-from-an-azure-virtual-machine-scale-set"></a>Entfernen einer vom Benutzer zugewiesenen Identität aus einer Azure-VM-Skalierungsgruppe
+
+Wenn die verwaltete Dienstidentität in einer VM-Skalierungsgruppe nicht mehr benötigt wird, gehen Sie wie folgt vor:
+
+1. Verwenden Sie unabhängig davon, ob Sie sich bei Azure lokal oder über das Azure-Portal anmelden, ein Konto, das dem Azure-Abonnement zugeordnet ist, das die VM-Skalierungsgruppe enthält.
+
+2. Laden Sie die Vorlage in einen [Editor](#azure-resource-manager-templates), und suchen Sie nach der gewünschten `Microsoft.Compute/virtualMachineScaleSets`-Ressource im Abschnitt `resources`. Wenn Ihre VM-Skalierungsgruppe nur über eine vom Benutzer zugewiesene Identität verfügt, können Sie diese deaktivieren, indem Sie den Identitätstyp in `None` ändern.  Wenn Ihre VM-Skalierungsgruppe sowohl vom System als auch vom Benutzer zugewiesene Identitäten enthält, und Sie die vom System zugewiesene Identität behalten möchten, entfernen Sie `UserAssigned` zusammen mit dem `identityIds`-Array der vom Benutzer zugewiesenen Identitäten aus dem Identitätstyp.
+    
+   Um eine einzelne vom Benutzer zugewiesene Identität aus einer VM-Skalierungsgruppe zu entfernen, entfernen Sie sie aus dem `identityIds`-Array.
+   
+   Das folgende Beispiel zeigt Ihnen, wie Sie alle vom Benutzer zugewiesenen Identitäten aus einer VM-Skalierungsgruppe ohne vom System zugewiesene Identitäten entfernen:
+   
+   ```json
+   {
+       "name": "[variables('vmssName')]",
+       "apiVersion": "2017-03-30",
+       "location": "[parameters(Location')]",
+       "identity": {
+           "type": "None"
+        }
+
+   }
+   ```
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Ausführliche Informationen zu MSI finden Sie unter [Verwaltete Dienstidentität (Managed Service Identity, MSI) für Azure-Ressourcen](overview.md).
+- Ausführliche Informationen zur verwalteten Dienstidentität finden Sie unter [Was ist die verwaltete Dienstidentität (Managed Service Identity, MSI) für Azure-Ressourcen?](overview.md).
 

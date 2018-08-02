@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 07/12/2018
 ms.author: rclaus
 ms.custom: ''
-ms.openlocfilehash: d1d2bd74a5118b48f7ed79a77ca2d7b6545607c6
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: f293adc6a25ef9e6ed916043c40233f9dd7bfbc1
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072379"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171280"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>SAP-Zertifizierungen und -Konfigurationen in Microsoft Azure
 
@@ -36,13 +36,13 @@ Referenzen:
 | SAP-Produkt | Unterstütztes Betriebssystem | Azure-Angebote |
 | --- | --- | --- |
 | SAP HANA Developer Edition (einschließlich HANA-Clientsoftware, bestehend aus SQLODBC, ODBO [nur Windows], ODBC, JDBC-Treibern, HANA Studio und HANA Database) | Red Hat Enterprise Linux, SUSE Linux Enterprise | VMs der D-Serie |
-| Business One unter HANA | SUSE Linux Enterprise | DS14_v2 |
-| SAP S/4 HANA | Red Hat Enterprise Linux, SUSE Linux Enterprise | Kontrollierte Verfügbarkeit für GS5, M64s, M64ms, M128s, M128ms, SAP HANA in Azure (große Instanzen) |
-| Suite on HANA, OLTP | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5 für Nicht-Produktionsszenarien, M64s, M64ms, M128s, M128ms, SAP HANA in Azure (große Instanzen) |
-| HANA Enterprise für BW, OLAP | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, SAP HANA in Azure (große Instanzen) |
-| SAP BW/4 HANA | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, SAP HANA in Azure (große Instanzen) |
+| Business One unter HANA | SUSE Linux Enterprise | DS14_v2 <br /> [Zertifizierte SAP HANA-IaaS-Plattformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) |
+| SAP S/4 HANA | Red Hat Enterprise Linux, SUSE Linux Enterprise | Kontrollierte Verfügbarkeit für GS5. Vollständige Unterstützung für M64s, M64ms, M128s, M128ms, M128ms, SAP HANA in Azure (große Instanzen) <br /> [Zertifizierte SAP HANA-IaaS-Plattformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| Suite on HANA, OLTP | Red Hat Enterprise Linux, SUSE Linux Enterprise | M64s, M64ms, M128s, M128ms, SAP HANA in Azure (große Instanzen) <br /> [Zertifizierte SAP HANA-IaaS-Plattformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| HANA Enterprise für BW, OLAP | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, SAP HANA in Azure (große Instanzen) <br /> [Zertifizierte SAP HANA-IaaS-Plattformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| SAP BW/4 HANA | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, SAP HANA in Azure (große Instanzen) <br /> [Zertifizierte SAP HANA-IaaS-Plattformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
 
-Bisher sind alle Azure-VMs für SAP HANA-Konfigurationen mit zentraler Hochskalierung zertifiziert.
+Beachten Sie, dass SAP den Begriff „Clustering“ bei [zertifizierten SAP HANA-IaaS-Plattformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) als Synonym für „Horizontale Skalierung“ und NICHT für Hochverfügbarkeits- „Clustering“ verwendet.
 
 ## <a name="sap-netweaver-certifications"></a>SAP NetWeaver-Zertifizierungen
 Microsoft Azure ist für die folgenden SAP-Produkte zertifiziert. Microsoft und SAP bieten vollständigen Support für die Plattform.

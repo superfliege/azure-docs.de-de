@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 42ede975f2cfde2d9c0a61d15ba1af412a88c556
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 55ce85702804d99d806220d7f0a4ea0820975f4f
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628537"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39206036"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Verbinden einer generischen Clientanwendung mit Ihrer Azure IoT Central-Anwendung (Node.js)
 
@@ -25,6 +25,8 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 
 1. Eine Azure IoT Central-Anwendung. Weitere Informationen finden Sie unter [Erstellen Ihrer Azure IoT Central-Anwendung](howto-create-application.md).
 1. Einen Entwicklungscomputer mit installierter [Node.js](https://nodejs.org/) Version 4.0.0 oder höher. Sie können `node --version` in der Befehlszeile ausführen, um Ihre Version zu überprüfen. Node.js ist für eine Vielzahl von Betriebssystemen verfügbar.
+
+## <a name="create-a-device-template"></a>Erstellen einer Gerätevorlage
 
 In Ihrer Azure IoT Central-Anwendung benötigen Sie eine Gerätevorlage, bei denen die folgenden Messungen und Geräteeigenschaften definiert sind:
 
@@ -89,11 +91,11 @@ Fügen Sie auf der Seite **Einstellungen** folgende **Nummerneinstellungen** hin
 
 Geben Sie den Feldnamen genau wie in der Tabelle angegeben in die Gerätevorlage ein. Wenn die Feldnamen nicht übereinstimmen, kann das Gerät nicht den Einstellungswert empfangen.
 
-### <a name="add-a-real-device"></a>Hinzufügen eines echten Geräts
+## <a name="add-a-real-device"></a>Hinzufügen eines echten Geräts
 
 Fügen Sie in Ihrer Azure IoT Central-Anwendung ein echtes Gerät über die Gerätevorlage hinzu, die Sie erstellen, und notieren Sie sich die Verbindungszeichenfolge des Geräts. Weitere Informationen finden Sie unter [Hinzufügen eines echten Geräts zu Ihrer Azure IoT Central-Anwendung](tutorial-add-device.md).
 
-## <a name="create-a-nodejs-application"></a>Erstellen einer Node.js-Anwendung
+### <a name="create-a-nodejs-application"></a>Erstellen einer Node.js-Anwendung
 
 In den folgenden Schritten wird gezeigt, wie eine Clientanwendung mit Implementierung des echten Geräts, das Sie der Anwendung hinzugefügt haben, erstellt wird.
 

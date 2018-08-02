@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/23/2018
 ms.author: sngun
-ms.openlocfilehash: 0d098b7befe5426db4aff503e9633623b1249dbf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: db621cdd6d38cb2f235c45c9bfcb76677ed6ba17
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659770"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39227808"
 ---
 # <a name="table-design-patterns"></a>Entwurfsmuster für die Tabelle
 Dieser Abschnitt beschreibt einige Muster, die zur Verwendung mit Tabellenspeicherdienstlösungen geeignet sind. Darüber hinaus wird gezeigt, wie Sie einige der in anderen Artikeln zum Tabellenspeicherentwurf angesprochenen Probleme und Kompromisse praktisch behandeln können. Das folgende Diagramm fasst die Beziehungen zwischen den verschiedenen Mustern zusammen:  
@@ -45,13 +45,13 @@ Um das Fehlen von sekundären Indizes zu umgehen, können Sie mehrere Kopien der
 
 Die beiden folgenden Filterkriterien (eine Suche nach Mitarbeiter-ID und eine Suche nach E-Mail-Adresse) definieren jeweils eine Punktabfrage:  
 
-* $filter=(PartitionKey eq 'Vertrieb') and (RowKey eq 'empid_000223')  
-* $filter=(PartitionKey eq 'Vertrieb') and (RowKey eq 'email_jonesj@contoso.com')  
+* $filter=(PartitionKey eq 'Sales') and (RowKey eq 'empid_000223')  
+* $filter=(PartitionKey eq 'Sales') and (RowKey eq 'email_jonesj@contoso.com')  
 
 Bei einer Abfrage nach einem Bereich von Mitarbeiterentitäten können Sie einen Bereich festlegen, der entweder nach Mitarbeiter-ID oder nach E-Mail-Adresse sortiert ist, indem Sie die Entitäten mit dem entsprechenden Präfix in **RowKey** abfragen.  
 
 * Um alle Mitarbeiter in der Vertriebsabteilung mit einer Mitarbeiter-ID im Bereich von 000100 bis 000199 zu finden, verwenden Sie: $filter=(PartitionKey eq 'Vertrieb') und (RowKey ge 'empid_000100') und (RowKey le 'empid_000199')  
-* Um alle Mitarbeiter in der Vertriebsabteilung mit einer E-Mail-Adresse zu finden, die mit dem Buchstaben "a" beginnt, verwenden Sie: $filter=(PartitionKey eq 'Vertrieb') und (RowKey ge 'email_a') und (RowKey lt 'email_b')  
+* Um alle Mitarbeiter in der Vertriebsabteilung mit einer E-Mail-Adresse zu finden, die mit dem Buchstaben "a" beginnt, verwenden Sie: $filter=(PartitionKey eq 'Sales') und (RowKey ge 'email_a') und (RowKey lt 'email_b')  
   
   Beachten Sie, dass die in den obigen Beispielen verwendete Filtersyntax aus der REST-API des Tabellenspeicherdiensts stammt. Weitere Informationen finden Sie unter [Query Entities](http://msdn.microsoft.com/library/azure/dd179421.aspx) (Abfragen von Entitäten).  
 
@@ -101,13 +101,13 @@ Zur Umgehung fehlender sekundärer Indizes können Sie mehrere Kopien der einzel
 
 Die beiden folgenden Filterkriterien (eine Suche nach Mitarbeiter-ID und eine Suche nach E-Mail-Adresse) definieren jeweils eine Punktabfrage:  
 
-* $filter=(PartitionKey eq 'empid_Vertrieb') and (RowKey eq '000223')
-* $filter=(PartitionKey eq 'email_Vertrieb') und (RowKey eq 'jonesj@contoso.com')  
+* $filter=(PartitionKey eq 'empid_Sales') and (RowKey eq '000223')
+* $filter=(PartitionKey eq 'email_Sales') and (RowKey eq 'jonesj@contoso.com')  
 
 Bei einer Abfrage nach einem Bereich von Mitarbeiterentitäten können Sie einen Bereich festlegen, der entweder nach Mitarbeiter-ID oder nach E-Mail-Adresse sortiert ist, indem Sie die Entitäten mit dem entsprechenden Präfix in **RowKey** abfragen.  
 
 * Verwenden Sie Folgendes, um alle Mitarbeiter in der Vertriebsabteilung mit einer Mitarbeiter-ID im Bereich von **000100** bis **000199** zu suchen und nach Mitarbeiter-ID zu sortieren: $filter=(PartitionKey eq 'empid_Vertrieb') und (RowKey ge '000100') und (RowKey le '000199').  
-* Um alle Mitarbeiter in der Vertriebsabteilung mit einer E-Mail-Adresse zu finden, die mit dem Buchstaben "a" beginnt, und die in E-Mail-Adressen-Reihenfolge sortiert sind, verwenden Sie: $filter=(PartitionKey eq 'email_Vertrieb') und (RowKey ge 'a') und (RowKey lt 'b')  
+* Um alle Mitarbeiter in der Vertriebsabteilung mit einer E-Mail-Adresse zu finden, die mit dem Buchstaben "a" beginnt, und die in E-Mail-Adressen-Reihenfolge sortiert sind, verwenden Sie: $filter=(PartitionKey eq 'email_Sales') und (RowKey ge 'a') und (RowKey lt 'b')  
 
 Beachten Sie, dass die in den obigen Beispielen verwendete Filtersyntax aus der REST-API des Tabellenspeicherdiensts stammt. Weitere Informationen finden Sie unter [Query Entities](http://msdn.microsoft.com/library/azure/dd179421.aspx) (Abfragen von Entitäten).  
 
@@ -142,7 +142,7 @@ Aktivieren Sie Eventual Consistency über Partitions- oder Speichersystemgrenzen
 ### <a name="context-and-problem"></a>Kontext und Problem
 EGTs ermöglichen atomische Transaktionen über mehrere Entitäten, die den gleichen Partitionsschlüssel gemeinsam nutzen. Aus Gründen der Leistung und Skalierbarkeit möchten Sie Entitäten speichern, die Anforderungen an die Datenkonsistenz in separaten Partitionen oder in einem separaten Speichersystem haben. In diesem Fall können keine EGTs zur Gewährleistung der Konsistenz verwendet werden. Beispiel: Sie haben eine Anforderung, bei der in den folgenden Fällen Eventual Consistency beibehalten werden muss:  
 
-* Entitäten, die in verschiedenen Partitionen in derselben Tabelle, in verschiedenen Tabellen oder in verschiedenen Speicherkonten gespeichert sind.  
+* Entitäten, die in zwei verschiedenen Partitionen in derselben Tabelle, in verschiedenen Tabellen oder in verschiedenen Speicherkonten gespeichert sind.  
 * Eine Entität, die im Tabellenspeicherdienst gespeichert ist und einen Blob, der im Blob-Dienst gespeichert ist.  
 * Eine Entität, die im Tabellenspeicherdienst gespeichert ist und eine Datei in einem Dateisystem.  
 * Speicherung einer Entität im Tabellenspeicherdienst, der jedoch mithilfe des Azure-Suchdienstes indiziert ist.  
@@ -204,7 +204,7 @@ Um die Suche nach dem Nachnamen mit der oben dargestellten Entitätsstruktur zu 
 
 <u>Option 1: Verwenden von Blob-Speicher</u>  
 
-Für die erste Option erstellen Sie ein Blob für jeden eindeutigen Nachnamen und speichern in jedem Blob eine Liste mit den Werten **PartitionKey** (Abteilung) und **RowKey** (Mitarbeiter-ID) für die Mitarbeiter mit diesem Nachnamen. Beim Hinzufügen oder Löschen eines Mitarbeiters sollten Sie sicherstellen, dass der Inhalt des relevanten Blob mit den Mitarbeiterentitäten letztendlich Eventual Consistency aufweist.  
+Für die erste Option erstellen Sie ein Blob für jeden eindeutigen Nachnamen und speichern in jedem Blob eine Liste mit den Werten **PartitionKey** (Abteilung) und **RowKey** (Mitarbeiter-ID) für die Mitarbeiter mit diesem Nachnamen. Beim Hinzufügen oder Löschen eines Mitarbeiters sollten Sie sicherstellen, dass der Inhalt des relevanten Blob mit den Mitarbeiterentitäten Eventually Consistent ist.  
 
 <u>Option 2:</u> Erstellen von Indexentitäten in der gleichen Partition  
 
@@ -216,7 +216,7 @@ Die Eigenschaft **EmployeeIDs** enthält eine Liste der Mitarbeiter-IDs für Mit
 
 Wenn Sie die zweite Option verwenden, beschreiben die folgenden Schritte den Prozess, den Sie befolgen sollten, wenn Sie einen neuen Mitarbeiter hinzufügen. In diesem Beispiel werden wir einen Mitarbeiter mit der ID 000152 und einen Nachnamen Jones in der Vertriebsabteilung hinzufügen:  
 
-1. Rufen Sie die Indexentität mit dem **PartitionKey**-Wert „Vertrieb“ und dem **RowKey**-Wert „Jones“ ab. Speichern Sie das ETag der Entität, die in Schritt 2 verwendet wird.  
+1. Rufen Sie die Indexentität mit dem **PartitionKey**-Wert „Sales“ und dem **RowKey**-Wert „Jones“ ab. Speichern Sie das ETag der Entität, die in Schritt 2 verwendet wird.  
 2. Erstellen Sie eine Entitätsgruppentransaktion (also einen Batchvorgang), mit der die neue Mitarbeiterentität eingefügt wird (**PartitionKey**= „Vertrieb“ und **RowKey** = „000152“), und aktualisieren Sie die Indexentität (**PartitionKey** = „Vertrieb“ und **RowKey** = „Jones“) durch Hinzufügen der neuen Mitarbeiter-ID zur Liste im Feld „EmployeeIDs“. Weitere Informationen zu Entitätsgruppentransaktionen finden Sie unter [Entitätsgruppentransaktionen](#entity-group-transactions).  
 3. Falls die Entitätsgruppentransaktion aufgrund eines Fehlers der vollständigen Nebenläufigkeit (jemand hat gerade die Indexentität geändert) nicht erfolgreich ist, müssen Sie erneut mit Schritt 1 beginnen.  
 
@@ -224,9 +224,9 @@ Wenn Sie die zweite Option verwenden, können Sie einen ähnlichen Ansatz beim L
 
 Wenn Sie die zweite Option verwenden, beschreiben die folgenden Schritte den Prozess, den Sie befolgen sollten, wenn Sie alle Mitarbeiter mit einem bestimmten Nachnamen in einer Abteilung nachschlagen. In diesem Beispiel schlagen wir alle Mitarbeiter in der Vertriebsabteilung mit dem Nachnamen Jones nach:  
 
-1. Rufen Sie die Indexentität mit dem **PartitionKey**-Wert „Vertrieb“ und dem **RowKey**-Wert „Jones“ ab.  
+1. Rufen Sie die Indexentität mit dem **PartitionKey**-Wert „Sales“ und dem **RowKey**-Wert „Jones“ ab.  
 2. Analysieren Sie die Liste der Mitarbeiter-IDs im Feld EmployeeIDs.  
-3. Falls Sie zusätzliche Informationen zu den einzelnen Mitarbeitern benötigen (etwa ihre E-Mail-Adressen), rufen Sie die einzelnen Mitarbeiterentitäten mit dem **PartitionKey**-Wert „Vertrieb“ und den **RowKey**-Werten aus der Liste der Mitarbeiter ab, die Sie in Schritt 2 abgerufen haben.  
+3. Falls Sie zusätzliche Informationen zu den einzelnen Mitarbeitern benötigen (etwa ihre E-Mail-Adressen), rufen Sie die einzelnen Mitarbeiterentitäten mit dem **PartitionKey**-Wert „Sales“ und den **RowKey**-Werten aus der Liste der Mitarbeiter ab, die Sie in Schritt 2 abgerufen haben.  
 
 <u>Option 3:</u> Erstellen von Indexentitäten in einer separaten Partition oder Tabelle  
 
@@ -315,7 +315,7 @@ Beachten Sie, dass **RowKey** jetzt ein Schlüssel ist, der sich aus der Mitarbe
 
 Im folgende Beispiel wird erläutert, wie Sie alle Review-Daten für einen bestimmten Mitarbeiter (z. B. Mitarbeiter 000123 in der Vertriebsabteilung) abrufen können:  
 
-$filter=(PartitionKey eq 'Vertrieb') und (RowKey ge 'empid_000123') und (RowKey lt 'empid_000124')&$select=RowKey,Manager Rating,Peer Rating,Comments  
+$filter=(PartitionKey eq 'Sales') und (RowKey ge 'empid_000123') und (RowKey lt 'empid_000124')&$select=RowKey,Manager Rating,Peer Rating,Comments  
 
 ### <a name="issues-and-considerations"></a>Probleme und Überlegungen
 Beachten Sie die folgenden Punkte bei der Entscheidung, wie dieses Muster implementiert werden soll:  
@@ -564,7 +564,7 @@ Dieser Abschnitt beschreibt einige Überlegungen, die Sie berücksichtigen sollt
 Wie im Abschnitt [Entwurf für Abfragen](#design-for-querying)erläutert, ist die effizienteste Abfrage eine Punktabfrage. In einigen Szenarien müssen Sie jedoch mehrere Entitäten abrufen. Dieser Abschnitt beschreibt einige allgemeine Ansätze zum Abrufen von Entitäten mithilfe der Storage Client Library.  
 
 ### <a name="executing-a-point-query-using-the-storage-client-library"></a>Ausführen einer Punktabfrage mithilfe der Storage Client Library
-Die einfachste Möglichkeit zum Ausführen einer Punktabfrage ist die Verwendung des Tabellenvorgangs **Abrufen**, wie im folgenden C#-Codeausschnitt gezeigt, der eine Entität mit dem **PartitionKey**-Wert „Vertrieb“ und dem **RowKey**-Wert „212“ abruft:  
+Die einfachste Möglichkeit zum Ausführen einer Punktabfrage ist die Verwendung des Tabellenvorgangs **Abrufen**, wie im folgenden C#-Codeausschnitt gezeigt, der eine Entität mit dem **PartitionKey**-Wert „Sales“ und dem **RowKey**-Wert „212“ abruft:  
 
 ```csharp
 TableOperation retrieveOperation = TableOperation.Retrieve<EmployeeEntity>("Sales", "212");
@@ -809,7 +809,7 @@ Der Tabellenspeicherdienst ist ein *schemaloser* Tabellenspeicher. Das bedeutet,
 
 Beachten Sie, dass jede Entität trotzdem über **PartitionKey**-, **RowKey**- und **Timestamp**-Werte verfügen muss, aber einen beliebigen Satz an Eigenschaften besitzen kann. Darüber hinaus gibt es nichts, was den Typ einer Entität anzeigen kann, es sei denn, Sie entscheiden sich dafür, diese Information irgendwo zu speichern. Es gibt zwei Optionen für die Identifizierung des Entitätstyps:  
 
-* Voranstellen des Entitätstyps vor den **RowKey**-Wert (oder möglicherweise den **PartitionKey**-Wert). Beispielsweise **MITARBEITER_000123** oder **ABTEILUNG_VERTRIEB** als **RowKey**-Werte.  
+* Voranstellen des Entitätstyps vor den **RowKey**-Wert (oder möglicherweise den **PartitionKey**-Wert). Beispielsweise **EMPLOYEE_000123** oder **DEPARTMENT_SALES** als **RowKey**-Werte.  
 * Verwenden Sie eine separate Eigenschaft zum Aufzeichnen des Entitätstyps, wie in der folgenden Tabelle dargestellt.  
 
 <table>
@@ -875,7 +875,7 @@ Beachten Sie, dass jede Entität trotzdem über **PartitionKey**-, **RowKey**- u
 <th>EmployeeCount</th>
 </tr>
 <tr>
-<td>Abteilung</td>
+<td>Department</td>
 <td></td>
 <td></td>
 </tr>
@@ -1022,7 +1022,7 @@ employeeTable.Execute(TableOperation.Merge(department));
 ```
 
 ## <a name="controlling-access-with-shared-access-signatures"></a>Steuern des Zugriffs mit Shared Access Signatures
-Sie können Shared Access Signature (SAS)-Token verwenden, um Clientanwendungen zu ermöglichen, Tabellenentitäten direkt zu ändern (und abzufragen)ohne die Notwendigkeit, direkt mit dem Tabellenspeicherdienst zu authentifizieren. Es gibt in der Regel drei Hauptvorteile, wenn Sie SAS in Ihrer Anwendung verwenden:  
+Sie können Shared Access Signature (SAS)-Token verwenden, um Clientanwendungen zu ermöglichen, Tabellenentitäten zu ändern (und abzufragen) ohne die Notwendigkeit, Ihren Speicherkontoschlüssel in Ihren Code einzuschließen. Es gibt in der Regel drei Hauptvorteile, wenn Sie SAS in Ihrer Anwendung verwenden:  
 
 * Sie müssen Ihren Speicherkontoschlüssel nicht auf eine unsichere Plattform (z. B. ein mobiles Gerät) verteilen, um auf das Gerät zuzugreifen und Entitäten im Tabellenspeicherdienst zu ändern.  
 * Sie können einige der Aufgaben auslagern, die Web- und Workerrollen beim Verwalten von Entitäten in Client-Geräten durchführen, z. B. für Computer der Endbenutzer und mobile Geräte.  

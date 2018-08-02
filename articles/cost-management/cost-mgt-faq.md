@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 07/20/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 0742e1e96e03840f138dde2bca7b2bcda1e49dfe
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 255056390cdbdbee49eba47f8168618929b386c8
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298408"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187256"
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Häufig gestellte Fragen zu Azure Cost Management
 
@@ -138,6 +138,14 @@ In Cloudyn werden Daten für den vorherigen Tag verarbeitet, wenn alle Daten des
 Daten für den aktuellen Monat können am Anfang des Monats nicht gesammelt werden. Während dieses Zeitraums schließen Dienstanbieter ihre Abrechnungen für den vorherigen Monat ab. Die Daten des vorherigen Monats werden in Cloudyn fünf bis zehn Tage nach Beginn eines Monats angezeigt. Während dieses Zeitraums werden ggf. nur amortisierte Kosten des vorherigen Monats angegeben. Tägliche Abrechnungs- oder Nutzungsdaten werden unter Umständen nicht angezeigt. Wenn die Daten verfügbar sind, werden sie von Cloudyn im Nachhinein verarbeitet. Nach der Verarbeitung werden alle monatlichen Daten für die Zeit zwischen dem 5. und 10. jedes Monats angezeigt.
 
 Wenn es beim Senden von Daten aus Azure an Cloudyn zu einer Verzögerung kommt, werden die Daten trotzdem in Azure aufgezeichnet. Die Daten werden an Cloudyn übertragen, nachdem die Verbindung wiederhergestellt wurde.
+
+## <a name="cost-fluctuations-in-cloudyn-cost-reports"></a>Kostenschwankungen in Cloudyn-Kostenberichten
+
+Wenn Clouddienstanbieter aktualisierte Abrechnungsdateien senden, kann dies zu Kostenschwankungen bei Kostenberichten führen. Schwankende Kosten entstehen, wenn außerhalb des üblichen täglichen oder monatlichen Berichterstellungszeitplans neue Dateien von einem Clouddienstanbieter empfangen werden. Kostenänderungen werden nicht durch eine Neuberechnung in Cloudyn verursacht. 
+
+Alle Abrechnungsdateien, die von Ihrem Clouddienstanbieter im Laufe des Monats gesendet werden, stellen eine Schätzung Ihrer täglichen Kosten dar. In einigen Fällen werden Daten häufig aktualisiert, mitunter mehrmals täglich. Updates kommen bei AWS häufiger vor als bei Azure. Die Gesamtkosten sollten stabil bleiben, wenn die Abrechnung für den vorherigen Monat abgeschlossen ist und die endgültige Abrechnungsdatei empfangen wurde. Stichtag hierbei ist in der Regel der 10. des Monats.
+
+Änderungen kommen vor, wenn Kostenanpassungen seitens Ihres Clouddienstanbieters vorgenommen werden. Ein Beispiel hierfür ist die Zuteilung von Guthaben. Änderungen können Monate nach dem betreffenden Monat, in dem die Abrechnung abgeschlossen wurde, vorkommen. Änderungen werden immer dann angezeigt, wenn eine Neuberechnung seitens Ihres Clouddienstanbieters vorgenommen wurde. Cloudyn aktualisiert seine Verlaufsdaten, um sicherzustellen, dass alle Anpassungen neu berechnet werden. Darüber hinaus wird überprüft, ob diese Kosten korrekt in den jeweiligen Berichten aufgeführt werden.
 
 ## <a name="how-can-a-direct-csp-configure-cloudyn-access-for-indirect-csp-customers-or-partners"></a>Wie kann ein direkter Cloudlösungsanbieter (CSP) den Cloudyn-Zugriff für Kunden oder Partner eines indirekten CSP konfigurieren?
 

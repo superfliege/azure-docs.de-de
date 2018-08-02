@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2017
 ms.author: robb
 ms.component: metrics
-ms.openlocfilehash: 878ba004e7572ad78f574c15fd76c8868b281117
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 44daf6461a062e75435ec6f70fbc3cf10327e799
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262255"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213043"
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Überblick über Metriken in Microsoft Azure
 Alle Azure-Dienste verfolgen wichtige Metriken, die Ihnen das Überwachen der Integrität, Leistung, Verfügbarkeit und Nutzung Ihrer Dienste ermöglichen. Sie können diese Metriken im Azure-Portal anzeigen, und Sie können darüber hinaus mithilfe von [REST-API](https://msdn.microsoft.com/library/azure/dn931930.aspx) oder [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) programmgesteuert auf sämtliche Metriken zugreifen.
@@ -42,7 +42,7 @@ Sie können für beliebige Metriken und einen gewählten Zeitraum ein Diagramm e
 Dank der umfangreichen Anpassungsmöglichkeiten im Portal können Sie so viele Diagramme hinzufügen, wie Sie möchten.
 
 1. Klicken Sie im oberen Bereich des Blatts im Menü **...** auf **Kacheln hinzufügen**:  
-    ![Menü „Hinzufügen“](./media/insights-how-to-customize-monitoring/Insights_AddMenu.png)
+    ![Menü "Hinzufügen"](./media/insights-how-to-customize-monitoring/Insights_AddMenu.png)
 2. Anschließend können Sie ein Diagramm aus dem **Katalog** auf der rechten Bildschirmseite auswählen: ![Katalog](./media/insights-how-to-customize-monitoring/Insights_Gallery.png)
 3. Wenn die gewünschte Metrik nicht angezeigt wird, können Sie einfach eine der voreingestellten Metriken hinzufügen und durch **Bearbeiten** des Diagramms die Metrik anzeigen, die Sie benötigen.
 

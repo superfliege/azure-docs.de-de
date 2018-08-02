@@ -6,14 +6,14 @@ manager: jeconnoc
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 07/19/2018
 ms.author: alkohli
-ms.openlocfilehash: 4c6e22f50f4550cb4a6e25960bcc13a4d92e9819
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 68e31f6b88a772ad67e3c58e11925f46f1cc37e9
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825066"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188670"
 ---
 # <a name="azure-importexport-system-requirements"></a>Systemanforderungen für Azure Import/Export
 
@@ -56,7 +56,7 @@ Die folgende Liste von Speichertypen wird vom Azure Import/Export-Dienst unterst
 
 ## <a name="supported-hardware"></a>Unterstützte Hardware 
 
-Für den Azure Import/Export-Dienst benötigen Sie unterstützte Datenträger und unterstützte SATA-Connectors, um Daten zu kopieren.
+Für den Azure Import/Export-Dienst benötigen Sie unterstützte Datenträger, um Daten zu kopieren.
 
 ### <a name="supported-disks"></a>Unterstützte Datenträger
 
@@ -73,18 +73,9 @@ Eine einzelner Import-/Export-Auftrag kann über Folgendes verfügen:
 - Maximal 10 Festplattenlaufwerke/SSDs
 - Eine Mischung aus Festplattenlaufwerken/SSDs beliebiger Größe
 
-Eine große Anzahl von Laufwerken kann über mehrere Aufträge verteilt werden, und es gibt keine Beschränkung hinsichtlich der Anzahl der Aufträge, die erstellt werden können. 
+Eine große Anzahl von Laufwerken kann über mehrere Aufträge verteilt werden, und es gibt keine Beschränkung hinsichtlich der Anzahl der Aufträge, die erstellt werden können. Bei Importaufträgen wird nur das erste Datenvolume auf dem Laufwerk verarbeitet. Das Datenvolume muss mit NTFS formatiert sein.
 
-Bei Importaufträgen wird nur das erste Datenvolume auf dem Laufwerk verarbeitet. Das Datenvolume muss mit NTFS formatiert sein.
-
-### <a name="supported-external-usb-adaptors"></a>Unterstützte externe USB-Adapter
-
-Bei der Vorbereitung von Laufwerken und dem Kopieren der Daten mit dem WAImportExport-Tool können Sie folgende externe USB-Adapter (off-the-shelf) verwenden: 
-- Anker 68UPSATAA-02BU
-- Anker 68UPSHHDS-BU
-- Startech SATADOCK22UE
-- Orico 6628SUS3-C-BK (6628-Serie)
-- Thermaltake BlacX Dockingstation für externe Hot-Swap-SATA-Festplatten (USB 2.0 und eSATA)
+Bei der Vorbereitung von Festplatten und dem Kopieren der Daten mit dem WAImportExport-Tool können Sie externe USB-Adapter verwenden. Hierbei sollten die meisten Standardadapter mit der Version USB 3.0 oder höher funktionieren. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

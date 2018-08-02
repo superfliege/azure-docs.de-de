@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 58f363c522f3e5abe6bf49a2aebafe4e953e00df
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 63843797cca7fe84cdb9ce91d2282b1c0c288f0c
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628588"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205135"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Verbinden eines Raspberry Pi-Geräts mit Ihrer Azure IoT Central-Anwendung (C#)
 
@@ -29,53 +29,24 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 * Eine Azure IoT Central-Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde. Weitere Informationen finden Sie unter [Erstellen Ihrer Azure IoT Central-Anwendung](howto-create-application.md).
 * Sie verfügen über ein Raspberry Pi-Gerät, auf dem das Raspbian-Betriebssystem ausgeführt wird.
 
-Eine Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde, enthält eine Gerätevorlage **Raspberry Pi** mit den folgenden Eigenschaften:
 
-### <a name="telemetry-measurements"></a>Telemetriemessungen
+## <a name="sample-devkits-application"></a>Anwendungsvorlage **Beispiel-DevKits**
 
-| Feldname     | Units  | Minimum | Maximum | Dezimalstellen |
-| -------------- | ------ | ------- | ------- | -------------- |
-| Luftfeuchtigkeit       | %      | 0       | 100     | 0              |
-| temp           | °C     | -40     | 120     | 0              |
-| pressure       | hPa    | 260     | 1260    | 0              |
-| magnetometerX  | mgauss | -1000   | 1000    | 0              |
-| magnetometerY  | mgauss | -1000   | 1000    | 0              |
-| magnetometerZ  | mgauss | -1000   | 1000    | 0              |
-| accelerometerX | mg     | -2000   | 2000    | 0              |
-| accelerometerY | mg     | -2000   | 2000    | 0              |
-| accelerometerZ | mg     | -2000   | 2000    | 0              |
-| gyroscopeX     | mdps   | -2000   | 2000    | 0              |
-| gyroscopeY     | mdps   | -2000   | 2000    | 0              |
-| gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
+Eine Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde, enthält eine Gerätevorlage **Raspberry Pi** mit den folgenden Eigenschaften: 
 
-### <a name="settings"></a>Einstellungen
+- Telemetriedaten, die die Messwerte für das Gerät enthalten: **Luftfeuchtigkeit**, **Temperatur**, **Druck**, **Magnometer** (entlang der X-, Y- und Z-Achse gemessen), **Beschleunigungssensor** (entlang der X-, Y- und Z-Achse gemessen) und **Gyroskop** (entlang der X-, Y- und Z-Achse gemessen)
+- Einstellungen für **Spannung**, **Stromstärke** und **Lüftergeschwindigkeit** und eine Umschaltschaltfläche namens **IR**
+- Eigenschaften mit der Geräteeigenschaft **Nummer** und der Cloudeigenschaft **Standort**
 
-Numerische Einstellungen
 
-| Anzeigename | Feldname | Units | Dezimalstellen | Minimum | Maximum | Initial |
-| ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| Spannung      | setVoltage | Volt | 0              | 0       | 240     | 0       |
-| Aktuell      | setCurrent | Ampere  | 0              | 0       | 100     | 0       |
-| Lüfterdrehzahl    | fanSpeed   | U/Min   | 0              | 0       | 1000    | 0       |
+Vollständige Informationen zur Konfiguration der Gerätevorlage finden Sie unter [Details zur Raspberry Pi-Gerätevorlage](howto-connect-raspberry-pi-csharp.md#raspberry-pi-device-template-details).
 
-Einstellungen zum Ein-/Ausschalten
 
-| Anzeigename | Feldname | Text, wenn „eingeschaltet“ | Text, wenn „ausgeschaltet“ | Initial |
-| ------------ | ---------- | ------- | -------- | ------- |
-| IR           | activateIR | EIN      | OFF      | Aus     |
-
-### <a name="properties"></a>Eigenschaften
-
-| Typ            | Anzeigename | Feldname | Datentyp |
-| --------------- | ------------ | ---------- | --------- |
-| Geräteeigenschaft | Nummer   | dieNumber  | number    |
-| Text            | Speicherort     | location   | N/V       |
-
-### <a name="add-a-real-device"></a>Hinzufügen eines echten Geräts
+## <a name="add-a-real-device"></a>Hinzufügen eines echten Geräts
 
 Fügen Sie in Ihrer Azure IoT Central-Anwendung ein echtes Gerät aus der Gerätevorlage **Raspberry Pi** hinzu, und notieren Sie sich die Verbindungszeichenfolge des Geräts. Weitere Informationen finden Sie unter [Hinzufügen eines echten Geräts zu Ihrer Azure IoT Central-Anwendung](tutorial-add-device.md).
 
-## <a name="create-your-net-application"></a>Erstellen Ihrer .NET-Anwendung
+### <a name="create-your-net-application"></a>Erstellen Ihrer .NET-Anwendung
 
 Sie erstellen und testen die Geräteanwendung auf dem Desktopcomputer.
 
@@ -335,6 +306,51 @@ Fügen Sie dem Code Ihre gerätespezifische Verbindungszeichenfolge zur Authenti
     Der folgende Screenshot zeigt das Raspberry Pi-Gerät, das gerade die Einstellungsänderung empfängt:
 
     ![Raspberry Pi empfängt Einstellungsänderung](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
+
+
+## <a name="raspberry-pi-device-template-details"></a>Details zur Raspberry Pi-Gerätevorlage
+
+Eine Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde, enthält eine Gerätevorlage **Raspberry Pi** mit den folgenden Eigenschaften:
+
+### <a name="telemetry-measurements"></a>Telemetriemessungen
+
+| Feldname     | Units  | Minimum | Maximum | Dezimalstellen |
+| -------------- | ------ | ------- | ------- | -------------- |
+| Luftfeuchtigkeit       | %      | 0       | 100     | 0              |
+| temp           | °C     | -40     | 120     | 0              |
+| pressure       | hPa    | 260     | 1260    | 0              |
+| magnetometerX  | mgauss | -1000   | 1000    | 0              |
+| magnetometerY  | mgauss | -1000   | 1000    | 0              |
+| magnetometerZ  | mgauss | -1000   | 1000    | 0              |
+| accelerometerX | mg     | -2000   | 2000    | 0              |
+| accelerometerY | mg     | -2000   | 2000    | 0              |
+| accelerometerZ | mg     | -2000   | 2000    | 0              |
+| gyroscopeX     | mdps   | -2000   | 2000    | 0              |
+| gyroscopeY     | mdps   | -2000   | 2000    | 0              |
+| gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
+
+### <a name="settings"></a>Einstellungen
+
+Numerische Einstellungen
+
+| Anzeigename | Feldname | Units | Dezimalstellen | Minimum | Maximum | Initial |
+| ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
+| Spannung      | setVoltage | Volt | 0              | 0       | 240     | 0       |
+| Aktuell      | setCurrent | Ampere  | 0              | 0       | 100     | 0       |
+| Lüfterdrehzahl    | fanSpeed   | U/Min   | 0              | 0       | 1000    | 0       |
+
+Einstellungen zum Ein-/Ausschalten
+
+| Anzeigename | Feldname | Text, wenn „eingeschaltet“ | Text, wenn „ausgeschaltet“ | Initial |
+| ------------ | ---------- | ------- | -------- | ------- |
+| IR           | activateIR | EIN      | OFF      | Aus     |
+
+### <a name="properties"></a>Eigenschaften
+
+| Typ            | Anzeigename | Feldname | Datentyp |
+| --------------- | ------------ | ---------- | --------- |
+| Geräteeigenschaft | Nummer   | dieNumber  | number    |
+| Text            | Standort     | location   | N/V       |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/26/2018
 ms.author: daveba
-ms.openlocfilehash: afeac0cdb24593f5b7614a145021eefd7b376be9
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 70a8c9018cdc2929abc85336211beecf82bf32cb
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904024"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188045"
 ---
 # <a name="create-list-or-delete-a-user-assigned-identity-using-rest-api-calls"></a>Erstellen, Auflisten oder Löschen einer benutzerzugewiesenen Identität mithilfe von REST-API-Aufrufen
 
@@ -36,11 +36,14 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe von CURL zum Durchführen von R
 - Wenn Sie Windows verwenden, installieren Sie das [Windows-Subsystem für Linux](https://msdn.microsoft.com/commandline/wsl/about) oder verwenden Sie [Azure Cloud Shell](../../cloud-shell/overview.md) im Azure-Portal.
 - Wenn Sie das [Windows-Subsystem für Linux](https://msdn.microsoft.com/commandline/wsl/about) oder eine [Linux-Distribution](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) verwenden, [installieren Sie die lokale Konsole für die Azure-Befehlszeilenschnittstelle](/azure/install-azure-cli).
 - Wenn Sie die lokale Konsole für die Azure-Befehlszeilenschnittstelle verwenden, melden Sie sich über `az login` bei Azure mit einem Konto an, das dem Azure-Abonnement zugeordnet ist, das Sie bereitstellen möchten oder für das Sie Informationen zu benutzerzugewiesenen verwalteten Identitäten abrufen möchten.
+- Um die Verwaltungsvorgänge in diesem Artikel durchzuführen, benötigt Ihr Konto die folgenden Rollenzuweisungen:
+    - Rolle [Mitwirkender für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) zum Erstellen, Lesen (Auflisten), Aktualisieren und Löschen einer vom Benutzer zugewiesenen Identität
+    - Rolle [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator) zum Lesen (Auflisten) der Eigenschaften einer vom Benutzer zugewiesenen Identität
 - Rufen Sie mit `az account get-access-token` ein Bearer-Zugriffstoken ab, um die folgenden Vorgänge für benutzerzugewiesene verwaltete Identitäten auszuführen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-user-assigned-managed-identity"></a>Erstellen einer benutzerzugewiesenen verwalteten Identität 
+## <a name="create-a-user-assigned-managed-identity"></a>Erstellen einer vom Benutzer zugewiesenen verwalteten Identität 
 
 Zum Erstellen einer benutzerzugewiesenen verwalteten Identität verwenden Sie die folgende CURL-Anforderung für die Azure Resource Manager-API. Ersetzen Sie die Werte `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, `<USER ASSIGNED IDENTITY NAME>`,`<LOCATION>` und `<ACCESS TOKEN>` durch Ihre eigenen Werte:
 
@@ -54,7 +57,7 @@ ation": "<LOCATION>"}' -H "Content-Type: application/json" -H "Authorization: Be
 
 ## <a name="list-user-assigned-managed-identities"></a>Auflisten von benutzerzugewiesenen verwalteten Identitäten
 
-Zum Auflisten von benutzerzugewiesenen verwalteten Identitäten verwenden Sie die folgende CURL-Anforderung für die Azure Resource Manager-API.  Ersetzen Sie die Werte `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` und `<ACCESS TOKEN>` durch Ihre eigenen Werte:
+Zum Auflisten von benutzerzugewiesenen verwalteten Identitäten verwenden Sie die folgende CURL-Anforderung für die Azure Resource Manager-API. Ersetzen Sie die Werte `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` und `<ACCESS TOKEN>` durch Ihre eigenen Werte:
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2015-08-31-preview' -H "Authorization: Bearer <ACCESS TOKEN>"

@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/07/2018
+ms.date: 07/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: a0146c0bf2b5a10f27cb59e32978aa6dff8f5982
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 266404a69c691cfbbfabc49e4d78deb11db74b52
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916325"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249154"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archivieren von Azure-Diagnoseprotokollen
 
@@ -33,7 +33,7 @@ Bevor Sie beginnen, müssen Sie [ein Speicherkonto erstellen](../storage/storage
 
 ## <a name="diagnostic-settings"></a>Diagnoseeinstellungen
 
-Legen Sie eine **Diagnoseeinstellung** für eine bestimmte Ressource fest, um die Diagnoseprotokolle mit einer der weiter unten angegebenen Methoden zu archivieren. Eine Diagnoseeinstellung für eine Ressource definiert die Kategorien der Protokolle und Metrikdaten, die an ein Ziel (Speicherkonto, Event Hubs-Namespace oder Log Analytics) gesendet werden. Außerdem definiert sie die Aufbewahrungsrichtlinie (Anzahl von Tagen für die Aufbewahrung) für Ereignisse jeder Protokollkategorie und Metrikdaten, die in einem Speicherkonto gespeichert werden. Wird die Aufbewahrungsrichtlinie auf Null festgelegt, werden Ereignisse für diese Protokollkategorie dauerhaft (also für immer) gespeichert. Für eine Aufbewahrungsrichtlinie kann andernfalls eine beliebige Anzahl von Tagen zwischen 1 und 2.147.483.647 festgelegt werden. [Hier](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)erfahren Sie mehr über Diagnoseeinstellungen. Aufbewahrungsrichtlinien werden pro Tag angewendet, sodass Protokolle am Ende eines Tages (UTC) ab dem Tag, der nun außerhalb der Aufbewahrungsrichtlinie liegt, gelöscht werden. Beispiel: Wenn Sie eine Aufbewahrungsrichtlinie für einen Tag verwenden, werden heute am Anfang des Tages die Protokolle von vorgestern gelöscht. Der Löschvorgang beginnt um Mitternacht (UTC), jedoch kann es bis zu 24 Stunden dauern, bis die Protokolle aus Ihrem Speicherkonto gelöscht werden. 
+Legen Sie eine **Diagnoseeinstellung** für eine bestimmte Ressource fest, um die Diagnoseprotokolle mit einer der weiter unten angegebenen Methoden zu archivieren. Eine Diagnoseeinstellung für eine Ressource definiert die Kategorien der Protokolle und Metrikdaten, die an ein Ziel (Speicherkonto, Event Hubs-Namespace oder Log Analytics) gesendet werden. Außerdem definiert sie die Aufbewahrungsrichtlinie (Anzahl von Tagen für die Aufbewahrung) für Ereignisse jeder Protokollkategorie und Metrikdaten, die in einem Speicherkonto gespeichert werden. Wird die Aufbewahrungsrichtlinie auf Null festgelegt, werden Ereignisse für diese Protokollkategorie dauerhaft (also für immer) gespeichert. Für eine Aufbewahrungsrichtlinie kann andernfalls eine beliebige Anzahl von Tagen zwischen 1 und 2.147.483.647 festgelegt werden. [Hier](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)erfahren Sie mehr über Diagnoseeinstellungen. Aufbewahrungsrichtlinien werden pro Tag angewendet, sodass Protokolle am Ende eines Tages (UTC) ab dem Tag, der nun außerhalb der Aufbewahrungsrichtlinie liegt, gelöscht werden. Beispiel: Wenn Sie eine Aufbewahrungsrichtlinie für einen Tag verwenden, werden heute am Anfang des Tages die Protokolle von vorgestern gelöscht. Der Löschvorgang beginnt um Mitternacht (UTC), jedoch kann es bis zu 24 Stunden dauern, bis die Protokolle aus Ihrem Speicherkonto gelöscht werden. 
 
 > [!NOTE]
 > Das Senden mehrdimensionaler Metriken über die Diagnoseeinstellungen wird derzeit nicht unterstützt. Metriken mit Dimensionen werden als vereinfachte eindimensionale Metriken exportiert und dimensionswertübergreifend aggregiert.
@@ -74,10 +74,10 @@ Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-
 
 | Eigenschaft | Erforderlich | BESCHREIBUNG |
 | --- | --- | --- |
-| ResourceId |Ja |Ressourcen-ID der Ressource, für die Sie eine Diagnoseeinstellung festlegen möchten |
+| ResourceId |JA |Ressourcen-ID der Ressource, für die Sie eine Diagnoseeinstellung festlegen möchten |
 | StorageAccountId |Nein  |Ressourcen-ID des Speicherkontos, in dem Diagnoseprotokolle gespeichert werden sollen |
 | Categories |Nein  |Durch Trennzeichen getrennte Liste der zu aktivierenden Protokollkategorien |
-| Aktiviert |Ja |Boolescher Wert, der angibt, ob die Diagnose für diese Ressource aktiviert oder deaktiviert werden soll |
+| Aktiviert |JA |Boolescher Wert, der angibt, ob die Diagnose für diese Ressource aktiviert oder deaktiviert werden soll |
 | RetentionEnabled |Nein  |Boolescher Wert, der angibt, ob eine Aufbewahrungsrichtlinie für diese Ressource aktiviert ist |
 | RetentionInDays |Nein  |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft gespeichert. |
 
@@ -163,4 +163,5 @@ Die einzelnen Ereignisse werden innerhalb der Datei „PT1H.json“ im folgenden
 
 * [Herunterladen von Blobs für die Analyse](../storage/storage-dotnet-how-to-use-blobs.md)
 * [Streamen von Diagnoseprotokollen an einen Event Hubs-Namespace](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Archivieren von Azure Active Directory-Protokollen mit Azure Monitor](../active-directory/reporting-azure-monitor-diagnostics-azure-storage-account.md)
 * [Weitere Informationen zu Diagnoseprotokollen](monitoring-overview-of-diagnostic-logs.md)

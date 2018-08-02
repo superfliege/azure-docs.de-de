@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/07/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 93532f4b0b2d527a4d5c79e2ee1b2810394b2f11
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: ce8630f5718a849f460b372d9e15b03902ac2117
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442082"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159678"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Erste Schritte mit der Berichterstellungs-API von Azure Active Directory
 
@@ -49,7 +49,7 @@ Ausführliche Anweisungen finden Sie in den [Voraussetzungen für den Zugriff au
 
 ## <a name="apis-with-graph-explorer"></a>APIs mit Graph-Tester
 
-Sie können den [MSGraph-Tester](https://developer.microsoft.com/en-us/graph/graph-explorer) verwenden, um Ihre Anmeldung und API-Daten zu überprüfen. Achten Sie darauf, bei der Anmeldung bei Ihrem Konto beide Anmeldeschaltflächen auf der Benutzeroberfläche des Graph-Testers zu verwenden und die Berechtigungen **Tasks.ReadWrite** und **Directory.ReadAll** wie dargestellt festzulegen.   
+Sie können den [MSGraph-Tester](https://developer.microsoft.com/en-us/graph/graph-explorer) verwenden, um Ihre Anmeldung und API-Daten zu überprüfen. Achten Sie darauf, bei der Anmeldung bei Ihrem Konto beide Anmeldeschaltflächen auf der Benutzeroberfläche des Graph-Testers zu verwenden und die Berechtigungen **AuditLog.Read.All** und **Directory.Read.All** wie dargestellt festzulegen.   
 
 ![Graph-Tester](./media/active-directory-reporting-api-getting-started-azure-portal/graph-explorer.png)
 

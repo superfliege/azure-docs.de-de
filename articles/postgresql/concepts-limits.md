@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/30/2018
-ms.openlocfilehash: dc1f8581df5dc7c5728094577298ba078cc2c527
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 52dfac826de86f67b3143cce49c35088547c4b39
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37343208"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171771"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Einschränkungen in Azure-Datenbank für PostgreSQL
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen im Datenbankdienst beschrieben.
@@ -55,8 +55,9 @@ Das Azure-System benötigt fünf Verbindungen, um den Azure Database for Postgre
 ### <a name="vnet-service-endpoints"></a>VNET-Dienstendpunkte
 - VNET-Dienstendpunkte werden nur für Server vom Typ „Universell“ und „Arbeitsspeicheroptimiert“ unterstützt.
 
-### <a name="point-in-time-restore-pitr"></a>Point-in-Time-Wiederherstellung (PITR)
-- Wenn Sie das PITR-Feature verwenden, wird der neue Server mit den gleichen Konfigurationen erstellt wie der Server, auf dem er basiert.
+### <a name="restoring-a-server"></a>Wiederherstellen eines Servers
+- Wenn Sie das PITR-Feature verwenden, wird der neue Server mit den gleichen Tarifkonfigurationen erstellt wie der Server, auf dem er basiert.
+- Der neue Server, der während einer Wiederherstellung erstellt wird, weist nicht die Firewallregeln auf, die auf dem ursprünglichen Server vorhanden waren. Firewallregeln müssen separat für diesen neuen Server eingerichtet werden.
 - Die Wiederherstellung eines gelöschten Servers wird nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte

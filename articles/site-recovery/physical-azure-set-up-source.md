@@ -2,19 +2,17 @@
 title: Einrichten der Quellumgebung (physische Server in Azure) | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt, wie Sie Ihre lokale Umgebung einrichten, um mit dem Replizieren von physischen Servern unter Windows oder Linux in Azure zu beginnen.
 services: site-recovery
-documentationcenter: ''
-author: AnoopVasudavan
-manager: gauravd
+author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
-ms.author: anoopkv
-ms.openlocfilehash: 00b09db97e597521de5c73eeefab77b0dfa1304d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 07/21/2018
+ms.author: raynew
+ms.openlocfilehash: 0cbba45ce49667293d8f16bf370424acd70ff78b
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38671021"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213484"
 ---
 # <a name="set-up-the-source-environment-physical-server-to-azure"></a>Einrichten der Quellumgebung (physische Server in Azure)
 
@@ -23,8 +21,9 @@ Dieser Artikel beschreibt, wie Sie Ihre lokale Umgebung einrichten, um mit dem R
 ## <a name="prerequisites"></a>Voraussetzungen
 
 In diesem Artikel wird davon ausgegangen, dass Sie über Folgendes bereits verfügen:
-1. Einen Recovery Services-Tresor im [Azure-Portal](http://portal.azure.com "Azure-Portal").
-3. Einen physischen Computer, um den Konfigurationsserver zu installieren.
+- Einen Recovery Services-Tresor im [Azure-Portal](http://portal.azure.com "Azure-Portal").
+- Einen physischen Computer, um den Konfigurationsserver zu installieren.
+- Wenn Sie TLS 1.0 auf dem Computer deaktiviert haben, auf dem der Konfigurationsserver installiert wird, stellen Sie sicher, dass TLS 1.2 aktiviert ist und .NET Framework Version 4.6 oder höher auf dem Computer (mit deaktivierter starker Kryptografie) installiert ist. [Weitere Informationen](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1)
 
 ### <a name="configuration-server-minimum-requirements"></a>Mindestanforderungen für den Konfigurationsserver
 Die folgende Tabelle enthält die minimalen Hardware-, Software- und Netzwerkanforderungen für einen Konfigurationsserver.
@@ -63,7 +62,7 @@ Die folgende Tabelle enthält die minimalen Hardware-, Software- und Netzwerkanf
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> Der Konfigurationsserver kann über eine Befehlszeile installiert werden. Weitere Informationen finden Sie im Thema zum [Installieren eines Konfigurationsservers mithilfe von Befehlszeilentools](http://aka.ms/installconfigsrv).
+> Der Konfigurationsserver kann über eine Befehlszeile installiert werden. [Weitere Informationen](physical-manage-configuration-server.md#install-from-the-command-line)
 
 
 ## <a name="common-issues"></a>Häufige Probleme

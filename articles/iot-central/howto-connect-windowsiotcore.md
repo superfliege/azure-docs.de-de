@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c36a9798718c37fba889323830b76cf8201785cf
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 39eb6f137750f7f741c88dcdf9a55f34d24eaa59
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261898"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205747"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Herstellen einer Verbindung zwischen einem Windows IoT Core-Gerät und Ihrer Azure IoT Central-Anwendung
 
@@ -26,31 +26,17 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 1. Eine Azure IoT Central-Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde. Weitere Informationen finden Sie unter [Erstellen Ihrer Azure IoT Central-Anwendung](howto-create-application.md).
 2. Ein Gerät, auf dem das Betriebssystem Windows 10 IoT Core ausgeführt wird. In dieser exemplarischen Vorgehensweise wird Raspberry Pi verwendet.
 
-Eine Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde, enthält eine **Windows IoT Core**-Gerätevorlage mit folgenden Merkmalen:
 
-### <a name="telemetry-measurements"></a>Telemetriemessungen
+## <a name="sample-devkits-application"></a>Anwendungsvorlage **Beispiel-DevKits**
 
-| Feldname     | Units  | Minimum | Maximum | Dezimalstellen |
-| -------------- | ------ | ------- | ------- | -------------- |
-| Luftfeuchtigkeit       | %      | 0       | 100     | 0              |
-| temp           | °C     | -40     | 120     | 0              |
-| pressure       | hPa    | 260     | 1260    | 0              |
+Eine Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde, enthält eine **Windows IoT Core**-Gerätevorlage mit folgenden Merkmalen: 
 
-### <a name="settings"></a>Einstellungen
-
-Numerische Einstellungen
-
-| Anzeigename | Feldname | Units | Dezimalstellen | Minimum | Maximum | Initial |
-| ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| Lüfterdrehzahl    | fanSpeed   | U/Min   | 0              | 0       | 1000    | 0       |
+- Telemetriedaten, die die Messwerte für das Gerät enthält: **Luftfeuchtigkeit**, **Temperatur** und **Druck** 
+- Einstellungen, die **Lüftergeschwindigkeit** zeigen
+- Eigenschaften mit der Geräteeigenschaft **Nummer** und der Cloudeigenschaft **Standort**
 
 
-### <a name="properties"></a>Eigenschaften
-
-| Typ            | Anzeigename | Feldname | Datentyp |
-| --------------- | ------------ | ---------- | --------- |
-| Geräteeigenschaft | Nummer   | dieNumber  | number    |
-| Text            | Speicherort     | location   | N/V       |
+Vollständige Informationen zur Konfiguration der Gerätevorlage finden Sie unter [Details zur Windows IoT Core-Gerätevorlage](howto-connect-windowsiotcore.md#windows-iot-core-device-template-details).
 
 ## <a name="add-a-real-device"></a>Hinzufügen eines echten Geräts
 
@@ -105,4 +91,32 @@ In Azure IoT Central können Sie sehen, wie der auf dem Raspberry Pi-Gerät ausg
 Wenn Sie den Quellcode für die Clientanwendung weiter untersuchen und bearbeiten möchten, können Sie diesen [hier](https://github.com/Microsoft/Windows-iotcore-samples/tree/develop/Samples/Azure/IoTHubClients) von GitHub herunterladen. Wenn Sie den Code bearbeiten möchten, befolgen Sie die Anweisungen für Ihr Desktopbetriebssystem in [dieser Infodatei](https://github.com/Microsoft/Windows-iotcore-samples).
 
 > [!NOTE]
-> Wenn **Git** nicht in Ihrer Entwicklungsumgebung installiert ist, können Sie es von [https://git-scm.com/download](https://git-scm.com/download) herunterladen.
+> Wenn **Git** in Ihrer Entwicklungsumgebung nicht installiert ist, können Sie es von [https://git-scm.com/download](https://git-scm.com/download) herunterladen.
+
+## <a name="windows-iot-core-device-template-details"></a>Details zur Windows IoT Core-Gerätevorlage
+
+Eine Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde, enthält eine **Windows IoT Core**-Gerätevorlage mit folgenden Merkmalen:
+
+### <a name="telemetry-measurements"></a>Telemetriemessungen
+
+| Feldname     | Units  | Minimum | Maximum | Dezimalstellen |
+| -------------- | ------ | ------- | ------- | -------------- |
+| Luftfeuchtigkeit       | %      | 0       | 100     | 0              |
+| temp           | °C     | -40     | 120     | 0              |
+| pressure       | hPa    | 260     | 1260    | 0              |
+
+### <a name="settings"></a>Einstellungen
+
+Numerische Einstellungen
+
+| Anzeigename | Feldname | Units | Dezimalstellen | Minimum | Maximum | Initial |
+| ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
+| Lüfterdrehzahl    | fanSpeed   | U/Min   | 0              | 0       | 1000    | 0       |
+
+
+### <a name="properties"></a>Eigenschaften
+
+| Typ            | Anzeigename | Feldname | Datentyp |
+| --------------- | ------------ | ---------- | --------- |
+| Geräteeigenschaft | Nummer   | dieNumber  | number    |
+| Text            | Standort     | location   | N/V       |

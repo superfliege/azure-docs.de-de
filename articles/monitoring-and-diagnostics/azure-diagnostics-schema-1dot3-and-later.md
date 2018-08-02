@@ -6,15 +6,15 @@ author: rboucher
 ms.service: azure-monitor
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 05/15/2017
+ms.date: 06/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 501e28cf3d01385d65a2308db06702d2db0d91ee
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: d9d61762a2e7956c95356cb4e884675e38deeb1b
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937912"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145382"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Konfigurationsschema für Azure-Diagnose 1.3 und höher
 > [!NOTE]
@@ -408,7 +408,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Attribute|BESCHREIBUNG|  
 |----------------|-----------------|  
 | **overallQuotaInMB** | Der maximale lokale Speicherplatz, der von den verschiedenen Typen von Diagnosedaten genutzt werden kann, die von der Azure-Diagnose erfasst werden. Die Standardeinstellung lautet 4.096 MB.<br />
-|**useProxyServer** | Konfigurieren Sie die Azure-Diagnose, um die Proxyservereinstellungen den IE-Einstellungen entsprechend zu verwenden.|  
+|**useProxyServer** | Konfigurieren Sie die Azure-Diagnose, um die Proxyservereinstellungen den IE-Einstellungen entsprechend zu verwenden.|
+|**Senken** | Hinzugefügt in 1.5. Optional. Verweist auf einen Senkenspeicherort, um auch Diagnosedaten für alle untergeordneten Elemente zu senden, die Senken unterstützen. Senkenbeispiele sind Application Insights oder Event Hubs.|  
+
 
 <br /> <br />
 
@@ -570,7 +572,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**bufferQuotaInMB**|**unsignedInt**|Optional. Gibt die Höchstmenge des Dateisystemspeichers an, der für die angegebenen Daten verfügbar ist.<br /><br /> Der Standardwert ist 0.|  
 |**scheduledTransferLogLevelFilterr**|**string**|Optional. Gibt den minimalen Schweregrad für Protokolleinträge an, die übertragen werden. Der Standardwert ist **Undefined**, der alle Protokolle überträgt. Weitere mögliche Werte (meiste Informationen bis wenigste Informationen) sind **Verbose**, **Information**, **Warning**, **Error** und **Critical**.|  
 |**scheduledTransferPeriod**|**duration**|Optional. Gibt das Intervall zwischen geplanten Datenübertragungen an (minutengenau gerundet).<br /><br /> Die Standardeinstellung lautet „PT0S“.|  
-|**sinks** Hinzugefügt in 1.5|**string**|Optional. Verweist auf einen Senkenspeicherort, um auch Diagnosedaten zu senden. Beispiel: Application Insights.|  
+|**Senken** |**string**| Hinzugefügt in 1.5. Optional. Verweist auf einen Senkenspeicherort, um auch Diagnosedaten zu senden. Beispielsweise Application Insights oder Event Hubs.|  
 
 ## <a name="dockersources"></a>DockerSources
  *Tree: Root – DiagnosticsConfiguration – PublicConfig – WadCFG – DiagnosticMonitorConfiguration – DockerSources*

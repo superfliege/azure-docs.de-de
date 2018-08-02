@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/16/2018
+ms.date: 07/23/2018
 ms.author: marsma
-ms.openlocfilehash: cb7b27b178197cde040e1d106ed5a5ee20905823
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: cfe034d6dcac48d7c9e4b2ce17e4926a81a27886
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115794"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216103"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Netzwerkkonfiguration in Azure Kubernetes Service (AKS)
 
@@ -49,9 +49,10 @@ Die Netzwerkoption „Advanced“ (Erweitert) bietet die folgenden Vorteile:
 
 * Das VNET des AKS-Clusters muss eine ausgehende Internetkonnektivität zulassen.
 * In einem Subnetz sollte nicht mehr als ein AKS-Cluster erstellt werden.
-* Erweiterte Netzwerke für AKS unterstützen keine VNETs, für die Azure DNS Private Zones verwendet werden.
 * AKS-Cluster verwenden möglicherweise nicht `169.254.0.0/16`, `172.30.0.0/16` oder `172.31.0.0/16` für den Kubernetes-Dienstadressbereich.
-* Der für den AKS-Cluster verwendete Dienstprinzipal muss `Contributor`-Berechtigungen für die Ressourcengruppe mit dem bestehenden VNET haben.
+* Der vom AKS-Cluster verwendete Dienstprinzipal muss zumindest über Berechtigungen als [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md#network-contributor) im Subnetz in Ihrem VNET verfügen. Wenn Sie eine [benutzerdefinierte Rolle](../role-based-access-control/custom-roles.md) anstelle der integrierten Rolle des Netzwerkmitwirkenden definieren möchten, sind die folgenden Berechtigungen erforderlich:
+  * `Microsoft.Network/virtualNetworks/subnets/join/action`
+  * `Microsoft.Network/virtualNetworks/subnets/read`
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>Planen der IP-Adressierung für Ihren Cluster
 

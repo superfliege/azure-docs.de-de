@@ -1,6 +1,6 @@
 ---
-title: Vorläufiges Löschen für Azure Storage-Blobs (Vorschau) | Microsoft Docs
-description: Azure Storage bietet jetzt vorläufiges Löschen (Vorschau) für Blobobjekte, sodass Sie Ihre Daten leichter wiederherstellen können, wenn sie irrtümlich von einer Anwendung oder einem anderen Benutzer des Speicherkontos geändert oder gelöscht wurden.
+title: Vorläufiges Löschen für Azure Storage-Blobs | Microsoft-Dokumentation
+description: Azure Storage ermöglicht jetzt das vorläufige Löschen für Blobobjekte, sodass Sie Ihre Daten leichter wiederherstellen können, wenn sie irrtümlich von einer Anwendung oder einem anderen Benutzer des Speicherkontos geändert oder gelöscht wurden.
 services: storage
 author: MichaelHauss
 manager: vamshik
@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: mihauss
-ms.openlocfilehash: 408e2167e60cbdfa2b4eee136bf3ac4321ae8121
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 37ae52b34cc87a7d78524f893a3b1577a5a59f7e
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091730"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248824"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Vorläufiges Löschen für Azure Storage-Blobs
 Azure Storage ermöglicht jetzt das vorläufige Löschen für Blobobjekte, sodass Sie Ihre Daten leichter wiederherstellen können, wenn sie irrtümlich von einer Anwendung oder einem anderen Benutzer des Speicherkontos geändert oder gelöscht wurden.

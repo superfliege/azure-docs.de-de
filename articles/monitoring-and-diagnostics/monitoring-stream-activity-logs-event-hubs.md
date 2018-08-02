@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 03/02/2018
+ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 45352c1cf4aca9043c23bbe12e94ba770a38c01b
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 7a5372174fcc7cd9552c00c9d283772c9863b815
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436704"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257997"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Streamen des Azure-Aktivitätsprotokolls an Event Hubs
 Sie können das [Azure-Aktivitätsprotokoll](monitoring-overview-activity-logs.md) nahezu in Echtzeit in jede beliebige Anwendung streamen, indem Sie eine der folgenden Möglichkeiten nutzen:
@@ -34,7 +34,7 @@ Wenn Sie nicht über einen Event Hubs-Namespace verfügen, müssen Sie diesen zu
 
 Die SAS-Richtlinie definiert die Berechtigungen für den Streamingmechanismus. Für das Streaming an Event Hubs werden aktuell Berechtigungen für das **Verwalten**, **Senden** und **Lauschen** benötigt. Sie können freigegebene Zugriffsrichtlinien für den Event Hubs-Namespace im Azure-Portal auf der Registerkarte **Konfigurieren** für Ihren Event Hubs-Namespace erstellen oder ändern. 
 
-Wenn Sie dem Protokollprofil für das Aktivitätsprotokoll das Streamingfeature hinzufügen möchten, muss der Benutzer, der die Änderung vornimmt, in der Event Hubs-Autorisierungsregel über die ListKey-Berechtigung verfügen. Der Event Hubs-Namespace muss sich nicht in demselben Abonnement wie das Abonnement befinden, das Protokolle ausgibt – sofern der Benutzer, der die Einstellung konfiguriert, über den entsprechenden RBAC-Zugriff auf beide Abonnements verfügt.
+Wenn Sie dem Protokollprofil für das Aktivitätsprotokoll das Streamingfeature hinzufügen möchten, muss der Benutzer, der die Änderung vornimmt, in der Event Hubs-Autorisierungsregel über die ListKey-Berechtigung verfügen. Der Event Hubs-Namespace muss sich nicht in demselben Abonnement wie das Abonnement befinden, das Protokolle ausgibt – sofern der Benutzer, der die Einstellung konfiguriert, über den entsprechenden RBAC-Zugriff auf beide Abonnements verfügt und beide Abonnements sich in demselben AAD-Mandanten befinden.
 
 ### <a name="via-the-azure-portal"></a>Über das Azure-Portal
 1. Navigieren Sie zum Abschnitt **Aktivitätsprotokoll**, indem Sie die Suche **Alle Dienste** auf der linken Seite des Portals verwenden.
@@ -53,8 +53,9 @@ Wenn Sie dem Protokollprofil für das Aktivitätsprotokoll das Streamingfeature 
    > Falls Sie etwas anderes als **Alle Regionen** auswählen, entgehen Ihnen wichtige Ereignisse, auf die Sie warten. Da das Aktivitätsprotokoll ein globales Protokoll ist (kein regionales), ist den meisten Ereignissen keine Region zugeordnet. 
    >
 
-4. Wählen Sie **Speichern**, um diese Einstellungen zu speichern. Die Einstellungen werden sofort auf Ihr Abonnement angewendet.
-5. Wenn Sie über mehrere Abonnements verfügen, können Sie diesen Vorgang wiederholen und alle Daten an denselben Event Hub senden.
+4. Klicken Sie auf die Option **Azure Event Hubs**, wählen Sie einen Event Hubs-Namespace aus, an den Protokolle gesendet werden sollen, und klicken Sie dann auf **OK**.
+5. Wählen Sie **Speichern**, um diese Einstellungen zu speichern. Die Einstellungen werden sofort auf Ihr Abonnement angewendet.
+6. Wenn Sie über mehrere Abonnements verfügen, können Sie diesen Vorgang wiederholen und alle Daten an denselben Event Hub senden.
 
 ### <a name="via-powershell-cmdlets"></a>Verwenden von PowerShell-Cmdlets
 Wenn bereits ein Protokollprofil vorhanden ist, müssen Sie zuerst das vorhandene Protokollprofil entfernen und dann ein neues Profil erstellen.

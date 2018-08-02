@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 99d69c7e49179a7849e274c830d539833da33786
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ea9ff8f93ede3b9ec5e7eed83c6049b0c23de7e8
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049451"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205458"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung
 
@@ -26,76 +26,38 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 1. Eine Azure IoT Central-Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde. Weitere Informationen finden Sie unter [Erstellen Ihrer Azure IoT Central-Anwendung](howto-create-application.md).
 1. Ein DevKit-Gerät. Um ein DevKit-Gerät zu erwerben, besuchen Sie [MXChip IoT DevKit](http://mxchip.com/az3166).
 
-Eine Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde, enthält eine Gerätevorlage **MXChip** mit den folgenden Eigenschaften:
 
-### <a name="measurements"></a>Messungen
+## <a name="sample-devkits-application"></a>Anwendungsvorlage **Beispiel-DevKits**
 
-#### <a name="telemetry"></a>Telemetrie 
+Eine Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde, enthält eine Gerätevorlage **MXChip** mit den folgenden Eigenschaften: 
 
-| Feldname     | Units  | Minimum | Maximum | Dezimalstellen |
-| -------------- | ------ | ------- | ------- | -------------- |
-| Luftfeuchtigkeit       | %      | 0       | 100     | 0              |
-| temp           | °C     | -40     | 120     | 0              |
-| pressure       | hPa    | 260     | 1260    | 0              |
-| magnetometerX  | mgauss | -1000   | 1000    | 0              |
-| magnetometerY  | mgauss | -1000   | 1000    | 0              |
-| magnetometerZ  | mgauss | -1000   | 1000    | 0              |
-| accelerometerX | mg     | -2000   | 2000    | 0              |
-| accelerometerY | mg     | -2000   | 2000    | 0              |
-| accelerometerZ | mg     | -2000   | 2000    | 0              |
-| gyroscopeX     | mdps   | -2000   | 2000    | 0              |
-| gyroscopeY     | mdps   | -2000   | 2000    | 0              |
-| gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
-
-#### <a name="states"></a>Zustände 
-
-| NAME          | Anzeigename   | NORMAL | VORSICHT | GEFAHR | 
-| ------------- | -------------- | ------ | ------- | ------ | 
-| DeviceState   | Gerätestatus   | Grün  | Orange  | Rot    | 
-
-#### <a name="events"></a>Ereignisse 
-
-| NAME             | Anzeigename      | 
-| ---------------- | ----------------- | 
-| ButtonBPressed   | Schaltfläche „B“ gedrückt  | 
+- Telemetriedaten, die die Messwerte für das Gerät enthalten: **Luftfeuchtigkeit**, **Temperatur**, **Druck**, **Magnometer** (entlang der X-, Y- und Z-Achse gemessen), **Beschleunigungssensor** (entlang der X-, Y- und Z-Achse gemessen) und **Gyroskop** (entlang der X-, Y- und Z-Achse gemessen)
+- Zustand, der einen Beispielmesswert für **Gerätestatus** enthält
+- Ereignismessung mit einem Ereignis namens **Taste B gedrückt** 
+- Einstellungen für **Spannung**, **Stromstärke** und **Lüftergeschwindigkeit** und eine Umschaltschaltfläche namens **IR**
+- Eigenschaften, die die Geräteeigenschaft **Nummer**, den **Gerätestandort**, d.h. eine Eigenschaft für den Standort, sowie eine Cloudeigenschaft namens **Hergestellt in** enthält 
 
 
-
-### <a name="settings"></a>Einstellungen
-
-Numerische Einstellungen
-
-| Anzeigename | Feldname | Units | Dezimalstellen | Minimum | Maximum | Initial |
-| ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| Spannung      | setVoltage | Volt | 0              | 0       | 240     | 0       |
-| Aktuell      | setCurrent | Ampere  | 0              | 0       | 100     | 0       |
-| Lüfterdrehzahl    | fanSpeed   | U/Min   | 0              | 0       | 1000    | 0       |
-
-Einstellungen zum Ein-/Ausschalten
-
-| Anzeigename | Feldname | Text, wenn „eingeschaltet“ | Text, wenn „ausgeschaltet“ | Initial |
-| ------------ | ---------- | ------- | -------- | ------- |
-| IR           | activateIR | EIN      | OFF      | Aus     |
-
-### <a name="properties"></a>Eigenschaften
-
-| Typ            | Anzeigename | Feldname | Datentyp |
-| --------------- | ------------ | ---------- | --------- |
-| Geräteeigenschaft | Nummer   | dieNumber  | number    |
-| Geräteeigenschaft | Gerätestandort   | location  | location    |
-| Text            | Hergestellt in     | manufacturedIn   | N/V       |
+Vollständige Informationen zur Konfiguration finden Sie unter [Details zur MXChip-Gerätevorlage](howto-connect-devkit.md#mxchip-device-template-details).
 
 
-### <a name="add-a-real-device"></a>Hinzufügen eines echten Geräts
+## <a name="add-a-real-device"></a>Hinzufügen eines echten Geräts
 
 Fügen Sie in Ihrer Azure IoT Central-Anwendung ein echtes Gerät aus der Gerätevorlage **MXChip** hinzu, und notieren Sie sich die Verbindungszeichenfolge des Geräts. Weitere Informationen finden Sie unter [Hinzufügen eines echten Geräts zu Ihrer Azure IoT Central-Anwendung](tutorial-add-device.md).
 
-## <a name="prepare-the-devkit-device"></a>Vorbereiten des DevKit-Geräts
+### <a name="prepare-the-devkit-device"></a>Vorbereiten des DevKit-Geräts
 
 > [!NOTE]
 > Wenn Sie das Gerät bereits vorher verwendet, WLAN-Anmeldeinformationen gespeichert haben und das Gerät für ein anderes WLAN, eine andere Verbindungszeichenfolge oder eine andere Telemetriemessung neu konfigurieren möchten, drücken Sie am Board gleichzeitig die Tasten **A** und **B**. Wenn dies nicht funktioniert, drücken Sie **Rücksetztaste**, und wiederholen Sie den Vorgang.
 
-So bereiten Sie das DevKit-Gerät vor
+#### <a name="before-you-start-configuring-the-device"></a>Bevor Sie mit der Konfiguration des Geräts beginnen, führen Sie folgende Schritte durch:
+1. Navigieren Sie in Ihrer IoT Central-Anwendung unter **Beispiel-DevKits** in der rechten oberen Ecke zu `Device Explorer`-> `select MXChip Template` -> `Click on +New and choose **Real** Device` -> `Connect this device`. 
+2. Kopieren Sie die primäre Verbindungszeichenfolge.
+3. Speichern Sie unbedingt die Verbindungszeichenfolge, da bei der Vorbereitung des DevKit-Geräts Ihre Internetverbindung vorübergehend getrennt wird. 
+
+
+#### <a name="to-prepare-the-devkit-device"></a>So bereiten Sie das DevKit-Gerät vor
+
 
 1. Laden Sie die neueste vorgefertigte Azure IoT Central-Firmware für den MXChip von der Seite [Releases](https://github.com/Azure/iot-central-firmware/releases) in GitHub herunter. Der Downloaddateiname auf der Seite mit Releases sieht folgendermaßen aus: `AZ3166-IoT-Central-X.X.X.bin`.
 
@@ -113,7 +75,7 @@ So bereiten Sie das DevKit-Gerät vor
     ```
 
     > [!NOTE]
-    > Wenn im Bildschirm etwas anderes angezeigt wird, drücken Sie am Gerät die **Rücksetztaste**. 
+    > Wenn auf dem Bildschirm andere Daten angezeigt werden, drücken Sie auf dem Gerät gleichzeitig die Tasten **A** und **B**, um das Gerät neu zu starten. 
 
 1. Das Gerät befindet sich jetzt im Zugriffspunktmodus (Access Point, AP). Sie können von Ihrem Computer oder Mobilgerät aus eine Verbindung mit diesem WLAN-Zugriffspunkt herstellen.
 
@@ -125,10 +87,9 @@ So bereiten Sie das DevKit-Gerät vor
 
     Fügen Sie auf der Webseite Folgendes hinzu: 
     - Den Namen Ihres WLAN. 
-    - Das Kennwort für das WLAN. 
+    - Das Kennwort für das WLAN.
     - Den auf dem Geräte-LCD angezeigten PIN-Code. 
-    - Die Verbindungszeichenfolge Ihres Geräts. 
-      Sie finden die Verbindungszeichenfolge unter \@ `https://apps.iotcentral.com` -> `Device Explorer` -> `Device` -> `Select or Create a new Real Device` -> `Connect this device` (oben rechts). 
+    - Die Verbindungszeichenfolge Ihres Geräts (diese sollten Sie gemäß diesen Schritten bereits gespeichert haben): Die Verbindungszeichenfolge finden Sie in der rechten oberen Ecke unter `https://apps.iotcentral.com` -> `Device Explorer` -> `Device` -> `Select or Create a new Real Device` -> `Connect this device`.
     - Wählen Sie alle verfügbaren Telemetriemessungen aus. 
 
 1. Nachdem Sie **Gerät konfiguriere** ausgewählt haben, wird diese Seite angezeigt:
@@ -206,6 +167,66 @@ Die Funktion `telemetryLoop` sendet die gemeldete Eigenschaft **doubleTap**, wen
 Der Code in der Quelldatei **iotHubClient.cpp** verwendet Funktionen aus den [Microsoft Azure IoT SDKs und Bibliotheken für C](https://github.com/Azure/azure-iot-sdk-c) für die Interaktion mit IoT Hub.
 
 Informationen zum Ändern, Erstellen und Hochladen des Beispielcodes auf Ihr Gerät finden Sie in der Datei **readme.md** im Ordner `AZ3166`.
+
+## <a name="mxchip-device-template-details"></a>Details zur MXChip-Gerätevorlage 
+
+Eine Anwendung, die mit der Anwendungsvorlage „Beispiel-DevKits“ erstellt wurde, enthält eine MXChip-Gerätevorlage mit den folgenden Eigenschaften:
+
+### <a name="measurements"></a>Messungen
+
+#### <a name="telemetry"></a>Telemetrie 
+
+| Feldname     | Units  | Minimum | Maximum | Dezimalstellen |
+| -------------- | ------ | ------- | ------- | -------------- |
+| Luftfeuchtigkeit       | %      | 0       | 100     | 0              |
+| temp           | °C     | -40     | 120     | 0              |
+| pressure       | hPa    | 260     | 1260    | 0              |
+| magnetometerX  | mgauss | -1000   | 1000    | 0              |
+| magnetometerY  | mgauss | -1000   | 1000    | 0              |
+| magnetometerZ  | mgauss | -1000   | 1000    | 0              |
+| accelerometerX | mg     | -2000   | 2000    | 0              |
+| accelerometerY | mg     | -2000   | 2000    | 0              |
+| accelerometerZ | mg     | -2000   | 2000    | 0              |
+| gyroscopeX     | mdps   | -2000   | 2000    | 0              |
+| gyroscopeY     | mdps   | -2000   | 2000    | 0              |
+| gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
+
+
+#### <a name="states"></a>Zustände 
+| NAME          | Anzeigename   | NORMAL | VORSICHT | GEFAHR | 
+| ------------- | -------------- | ------ | ------- | ------ | 
+| DeviceState   | Gerätestatus   | Grün  | Orange  | Rot    | 
+
+#### <a name="events"></a>Ereignisse 
+| NAME             | Anzeigename      | 
+| ---------------- | ----------------- | 
+| ButtonBPressed   | Schaltfläche „B“ gedrückt  | 
+
+### <a name="settings"></a>Einstellungen
+
+Numerische Einstellungen
+
+| Anzeigename | Feldname | Units | Dezimalstellen | Minimum | Maximum | Initial |
+| ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
+| Spannung      | setVoltage | Volt | 0              | 0       | 240     | 0       |
+| Aktuell      | setCurrent | Ampere  | 0              | 0       | 100     | 0       |
+| Lüfterdrehzahl    | fanSpeed   | U/Min   | 0              | 0       | 1000    | 0       |
+
+Einstellungen zum Ein-/Ausschalten
+
+| Anzeigename | Feldname | Text, wenn „eingeschaltet“ | Text, wenn „ausgeschaltet“ | Initial |
+| ------------ | ---------- | ------- | -------- | ------- |
+| IR           | activateIR | EIN      | OFF      | Aus     |
+
+### <a name="properties"></a>Eigenschaften
+
+| Typ            | Anzeigename | Feldname | Datentyp |
+| --------------- | ------------ | ---------- | --------- |
+| Geräteeigenschaft | Nummer   | dieNumber  | number    |
+| Geräteeigenschaft | Gerätestandort   | location  | location    |
+| Text            | Hergestellt in     | manufacturedIn   | N/V       |
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: c59b9982f5ba5a4fa52ab36df5ebb6995b2d45b0
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 5b4a15204a934bf55810fcdccd48a7a15a48c5ed
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085088"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258183"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Streamen von Azure-Diagnoseprotokollen an Event Hubs
 **[Azure-Diagnoseprotokolle](monitoring-overview-of-diagnostic-logs.md)** können nahezu in Echtzeit an eine beliebige Anwendung gestreamt werden – entweder mithilfe der integrierten Portaloption „In Event Hubs exportieren“ oder durch die Aktivierung der Event Hub-Autorisierungsregel-ID in einer Diagnoseeinstellung (über die Azure PowerShell-Cmdlets oder Azure CLI 2.0).
@@ -22,16 +22,16 @@ ms.locfileid: "37085088"
 Im Anschluss finden Sie eine kleine Auswahl von Verwendungsmöglichkeiten für das Streamen von Diagnoseprotokollen:
 
 * **Streamen von Protokollen an Protokollierungs- und Telemetriesysteme von Drittanbietern**: Sie können alle Diagnoseprotokolle an einen einzelnen Event Hub streamen, um Protokolldaten an ein SIEM- oder Protokollanalysetool eines Drittanbieters weiterzureichen.
-* **Anzeigen der Dienstintegrität durch Streamen von Daten zum langsamsten Pfad an PowerBI:** Mithilfe von Event Hubs, Stream Analytics und PowerBI können Sie sich anhand Ihrer Diagnosedaten problemlos und nahezu in Echtzeit einen Einblick in Ihre Azure-Dienste verschaffen. [Dieser Dokumentationsartikel](../stream-analytics/stream-analytics-power-bi-dashboard.md)bietet eine gute Übersicht über die Einrichtung von Event Hubs, die Verarbeitung von Daten mit Stream Analytics und die Verwendung von PowerBI als Ausgabe. Hier finden Sie einige Tipps für die Einrichtung von Diagnoseprotokollen:
+* **Anzeigen der Dienstintegrität durch Streamen von Daten zum langsamsten Pfad an Power BI**: Mithilfe von Event Hubs, Stream Analytics und Power BI können Sie sich anhand Ihrer Diagnosedaten problemlos und nahezu in Echtzeit einen Einblick in Ihre Azure-Dienste verschaffen. [Dieser Dokumentationsartikel bietet eine gute Übersicht über die Einrichtung von Event Hubs, die Verarbeitung von Daten mit Stream Analytics und die Verwendung von Power BI als Ausgabe](../stream-analytics/stream-analytics-power-bi-dashboard.md). Hier finden Sie einige Tipps für die Einrichtung von Diagnoseprotokollen:
 
   * Ein Event Hub wird automatisch für eine Kategorie von Diagnoseprotokollen erstellt, wenn Sie die entsprechende Option im Portal oder über PowerShell aktivieren. Es empfiehlt sich daher, den Event Hub im Namespace mit dem Namen auszuwählen, der mit **insights-** beginnt.
-  * Der folgende SQL-Code ist ein Beispiel für eine Stream Analytics-Abfrage, mit der Sie alle Protokolldaten in einer PowerBI-Tabelle analysieren können:
+  * Der folgende SQL-Code ist ein Beispiel für eine Stream Analytics-Abfrage, mit der Sie alle Protokolldaten in einer Power BI-Tabelle analysieren können:
 
     ```sql
     SELECT
     records.ArrayValue.[Properties you want to track]
     INTO
-    [OutputSourceName – the PowerBI source]
+    [OutputSourceName – the Power BI source]
     FROM
     [InputSourceName] AS e
     CROSS APPLY GetArrayElements(e.records) AS records
@@ -46,7 +46,7 @@ Das Streamen von Diagnoseprotokollen kann programmgesteuert, über das Portal od
 > [!WARNING]
 > Zum Aktivieren und Streamen von Diagnoseprotokollen aus Computeressourcen (beispielsweise virtuelle Computer oder Service Fabric) müssen [andere Schritte](../event-hubs/event-hubs-streaming-azure-diags-data.md)ausgeführt werden.
 
-Der Event Hubs-Namespace muss sich nicht im selben Abonnement befinden wie die Ressource, die das Protokolle ausgibt – sofern der Benutzer, der die Einstellung konfiguriert, über den entsprechenden RBAC-Zugriff auf beide Abonnements verfügt.
+Der Event Hubs-Namespace muss sich nicht in demselben Abonnement wie die Ressource befinden, die Protokolle ausgibt – sofern der Benutzer, der die Einstellung konfiguriert, über den entsprechenden RBAC-Zugriff auf beide Abonnements verfügt und beide Abonnements Teil desselben AAD-Mandanten sind.
 
 > [!NOTE]
 > Das Senden mehrdimensionaler Metriken über die Diagnoseeinstellungen wird derzeit nicht unterstützt. Metriken mit Dimensionen werden als vereinfachte eindimensionale Metriken exportiert und dimensionswertübergreifend aggregiert.
@@ -195,5 +195,6 @@ Mithilfe des Azure-Diagnose-Agents können Sie auch Diagnoseprotokolle von Compu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* [Streamen von Azure Active Directory-Protokollen mit Azure Monitor](../active-directory/reporting-azure-monitor-diagnostics-azure-event-hub.md)
 * [Informieren Sie sich ausführlicher über Azure-Diagnoseprotokolle.](monitoring-overview-of-diagnostic-logs.md)
 * [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)

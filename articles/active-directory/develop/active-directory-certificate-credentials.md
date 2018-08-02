@@ -13,26 +13,27 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 07/24/2018
 ms.author: celested
-ms.reviewer: nacanuma
+ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c782429ac2d8ee030ca8b589b4241242c7b101d6
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 49561434688806b3959824f87d1c81e07d7a7559
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156499"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238704"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Zertifikatanmeldeinformationen für die Anwendungsauthentifizierung
 
-Mit Azure Active Directory kann eine Anwendung ihre eigenen Anmeldeinformationen für die Authentifizierung verwenden – beispielsweise im Ablauf zur Gewährung von OAuth 2.0-Clientanmeldeinformationen ([v1](active-directory-protocols-oauth-service-to-service.md), [v2](active-directory-v2-protocols-oauth-client-creds.md)) und im Ablauf vom Typ „Im Auftrag von“ ([v1](active-directory-protocols-oauth-on-behalf-of.md), [v2](active-directory-v2-protocols-oauth-on-behalf-of.md)).
-Eine verwendbare Form von Anmeldeinformationen ist eine JWT-Assertion (JSON Web Token), die mit einem der Anwendung zugehörigen Zertifikat signiert ist.
+Azure Active Directory (Azure AD) ermöglicht einer Anwendung, ihre eigenen Anmeldeinformationen für die Authentifizierung z.B. im Flow zum Erteilen der OAuth 2.0-Clientanmeldeinformationen ([v1.0](active-directory-protocols-oauth-service-to-service.md), [v2.0](active-directory-v2-protocols-oauth-client-creds.md)) und den Im-Auftrag-von-Flow ([v1.0](active-directory-protocols-oauth-on-behalf-of.md), [v2.0](active-directory-v2-protocols-oauth-on-behalf-of.md)) zu verwenden.
 
-## <a name="format-of-the-assertion"></a>Format der Assertion
-Für die Berechnung der Assertion empfiehlt sich die Verwendung einer der zahlreichen [JSON Web Token](https://jwt.ms/)-Bibliotheken in der Sprache Ihrer Wahl. Das Token enthält folgende Informationen:
+Eine Form von Anmeldeinformationen, die eine Anwendung zur Authentifizierung verwenden kann, ist eine JWT-Assertion (JSON Web Token), die mit einem der Anwendung zugehörigen Zertifikat signiert ist.
 
-#### <a name="header"></a>Header
+## <a name="assertion-format"></a>Assertionformat
+Für die Berechnung der Assertion können Sie eine der zahlreichen [JSON Web Token](https://jwt.ms/)-Bibliotheken in der Sprache Ihrer Wahl nutzen. Das Token enthält folgende Informationen:
+
+### <a name="header"></a>Header
 
 | Parameter |  Anmerkung |
 | --- | --- |
@@ -40,9 +41,9 @@ Für die Berechnung der Assertion empfiehlt sich die Verwendung einer der zahlre
 | `typ` | Muss **JWT** sein. |
 | `x5t` | Muss der SHA-1-Fingerabdruck des X.509-Zertifikats sein. |
 
-#### <a name="claims-payload"></a>Ansprüche (Nutzlast)
+### <a name="claims-payload"></a>Ansprüche (Nutzlast)
 
-| Parameter |  Anmerkung |
+| Parameter |  Anmerkungen |
 | --- | --- |
 | `aud` | Zielgruppe: Muss **https://login.microsoftonline.com/*Mandanten-ID*/oauth2/token** lauten. |
 | `exp` | Ablaufdatum: Datum, an dem das Token abläuft. Die Zeit wird als Anzahl der Sekunden ab dem 1. Januar 1970 (1970-01-01T0:0:0Z) UTC bis zum Zeitpunkt dargestellt, an dem die Gültigkeit des Tokens abläuft.|
@@ -51,11 +52,11 @@ Für die Berechnung der Assertion empfiehlt sich die Verwendung einer der zahlre
 | `nbf` | Nicht vor: Datum, vor dem das Token nicht verwendet werden kann. Die Zeit wird als Anzahl der Sekunden ab dem 1. Januar 1970 (1970-01-01T0:0:0Z) (UTC) bis zur Zeit der Ausstellung des Tokens dargestellt. |
 | `sub` | Antragsteller: Muss wie bei `iss` die Client-ID (Anwendungs-ID des Clientdiensts) sein. |
 
-#### <a name="signature"></a>Signatur
+### <a name="signature"></a>Signatur
 
 Zur Berechnung der Signatur wird das Zertifikat wie in der [Spezifikation für JSON-Webtoken vom Typ „RFC7519“](https://tools.ietf.org/html/rfc7519) beschrieben angewendet.
 
-### <a name="example-of-a-decoded-jwt-assertion"></a>Beispiel einer decodierten JWT-Assertion
+## <a name="example-of-a-decoded-jwt-assertion"></a>Beispiel einer decodierten JWT-Assertion
 
 ```
 {
@@ -77,24 +78,32 @@ Zur Berechnung der Signatur wird das Zertifikat wie in der [Spezifikation für J
 
 ```
 
-### <a name="example-of-an-encoded-jwt-assertion"></a>Beispiel einer codierten JWT-Assertion
+## <a name="example-of-an-encoded-jwt-assertion"></a>Beispiel einer codierten JWT-Assertion
 
-Die folgende Zeichenfolge ist ein Beispiel für eine codierte Assertion. Bei genauer Betrachtung sehen Sie drei Abschnitte, die jeweils durch einen Punkt getrennt sind.
-Der erste Abschnitt codiert den Header, der zweite die Nutzlast. Bei dem letzten Abschnitt handelt es sich um die Signatur, die mit den Zertifikaten aus dem Inhalt der ersten beiden Abschnitte berechnet wurde.
+Die folgende Zeichenfolge ist ein Beispiel für eine codierte Assertion. Bei genauer Betrachtung sehen Sie drei Abschnitte, die jeweils durch einen Punkt getrennt sind:
+* Im ersten Abschnitt wird der Header codiert.
+* Im zweiten Abschnitt wird die Nutzlast codiert.
+* Der letzte Abschnitt enthält die Signatur, die mit den Zertifikaten aus dem Inhalt der ersten beiden Abschnitte berechnet wurde.
+
 ```
 "eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJhdWQiOiJodHRwczpcL1wvbG9naW4ubWljcm9zb2Z0b25saW5lLmNvbVwvam1wcmlldXJob3RtYWlsLm9ubWljcm9zb2Z0LmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTQ4NDU5MzM0MSwiaXNzIjoiOTdlMGE1YjctZDc0NS00MGI2LTk0ZmUtNWY3N2QzNWM2ZTA1IiwianRpIjoiMjJiM2JiMjYtZTA0Ni00MmRmLTljOTYtNjVkYmQ3MmMxYzgxIiwibmJmIjoxNDg0NTkyNzQxLCJzdWIiOiI5N2UwYTViNy1kNzQ1LTQwYjYtOTRmZS01Zjc3ZDM1YzZlMDUifQ.
 Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
-### <a name="register-your-certificate-with-azure-ad"></a>Registrieren Ihres Zertifikats bei Azure AD
+## <a name="register-your-certificate-with-azure-ad"></a>Registrieren Ihres Zertifikats bei Azure AD
 
 Über das Azure-Portal können Sie die Zertifikatanmeldeinformationen in Azure AD mit der Clientanwendung verknüpfen. Dazu haben Sie folgende Möglichkeiten:
 
-**Hochladen der Zertifikatsdatei**
+### <a name="uploading-the-certificate-file"></a>Hochladen der Zertifikatdatei
 
-Klicken Sie in der Azure-App-Registrierung für die Clientanwendung auf **Einstellungen**, auf **Schlüssel** und anschließend auf **Öffentlichen Schlüssel hochladen**. Wählen Sie die Zertifikatsdatei aus, die Sie hochladen möchten, und klicken Sie auf **Speichern**. Daraufhin wird das Zertifikat hochgeladen, und der Fingerabdruck, das Startdatum und der Ablaufzeitpunkt werden angezeigt. 
+In der Azure-App-Registrierung für die Clientanwendung:
+1. Wählen Sie **Einstellungen > Schlüssel** und dann **Öffentlichen Schlüssel hochladen** aus. 
+2. Wählen Sie die Zertifikatdatei aus, die Sie hochladen möchten.
+3. Wählen Sie **Speichern**aus. 
+   
+   Daraufhin wird das Zertifikat hochgeladen, und der Fingerabdruck, das Startdatum und der Ablaufzeitpunkt werden angezeigt. 
 
-**Aktualisieren des Anwendungsmanifests**
+### <a name="updating-the-application-manifest"></a>Aktualisieren des Anwendungsmanifests
 
 Wenn Sie über ein Zertifikat verfügen, berechnen Sie Folgendes:
 
@@ -103,18 +112,25 @@ Wenn Sie über ein Zertifikat verfügen, berechnen Sie Folgendes:
 
 Geben Sie außerdem eine GUID an, um den Schlüssel im Anwendungsmanifest (`$keyId`) zu identifizieren.
 
-Öffnen Sie bei der Registrierung der Azure-App für die Clientanwendung das Anwendungsmanifest, und ersetzen Sie mithilfe des folgenden Schemas die Eigenschaft *keyCredentials* durch Ihre neuen Zertifikatsinformationen:
+In der Azure-App-Registrierung für die Clientanwendung:
+1. Öffnen Sie das Anwendungsmanifest.
+2. Ersetzen Sie die Eigenschaft *keyCredentials* gemäß dem folgenden Schema durch Ihre neuen Zertifikatinformationen.
 
-```
-"keyCredentials": [
-    {
-        "customKeyIdentifier": "$base64Thumbprint",
-        "keyId": "$keyid",
-        "type": "AsymmetricX509Cert",
-        "usage": "Verify",
-        "value":  "$base64Value"
-    }
-]
-```
+   ```
+   "keyCredentials": [
+       {
+           "customKeyIdentifier": "$base64Thumbprint",
+           "keyId": "$keyid",
+           "type": "AsymmetricX509Cert",
+           "usage": "Verify",
+           "value":  "$base64Value"
+       }
+   ]
+   ```
+3. Speichern Sie die Änderungen am Anwendungsmanifest, und laden Sie dann das Manifest in Azure AD hoch. 
 
-Speichern Sie die Änderungen am Anwendungsmanifest, und laden Sie es in Azure AD hoch. Da die keyCredentials-Eigenschaft mehrere Werte besitzen kann, können Sie mehrere Zertifikate hochladen, um eine vielfältigere Schlüsselverwaltung zu erreichen.
+   Da die `keyCredentials`-Eigenschaft mehrere Werte besitzen kann, können Sie mehrere Zertifikate hochladen, um eine vielfältigere Schlüsselverwaltung zu erreichen.
+   
+## <a name="code-sample"></a>Codebeispiel
+
+Das Codebeispiel unter [Authenticating to Azure AD in daemon apps with certificates](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) (Authentifizierung bei Azure AD in Daemonanwendungen mit Zertifikaten) zeigt, wie eine Anwendung ihre eigenen Anmeldeinformationen für die Authentifizierung verwendet. Zudem erfahren Sie darin, wie Sie mit dem `New-SelfSignedCertificate`-PowerShell-Befehl ein [selbstsigniertes Zertifikat erstellen](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) können. Sie können auch die [App-Erstellungsskripte](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) verwenden, um die Zertifikate zu erstellen, den Fingerabdruck zu berechnen und so weiter.

@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 07/18/2018
 ms.author: genli
-ms.openlocfilehash: 604e2ee6d2ac7e30813f8b4cd02253407c2b1e3f
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 0bd0fca54ae5bf4292564a15adf38b7586768450
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34067434"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145450"
 ---
 # <a name="cancel-your-subscription-for-azure"></a>Kündigen Ihres Abonnements für Azure
 
@@ -32,7 +32,7 @@ Vor der Kündigung Ihres Abonnements:
 * Beenden Sie Ihre Dienste. Wechseln Sie zur [Ressourcenseite im Verwaltungsportal](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources), und **beenden** Sie alle ausgeführten virtuellen Computer, Anwendungen oder anderen Dienste.
 * Ziehen Sie die Migration Ihrer Daten in Betracht. Informationen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md).
 
-Wenn Sie einen kostenpflichtigen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) kündigen, werden Ihnen die Gebühren für die Laufzeit von 6 Monaten weiterhin monatlich in Rechnung gestellt.
+Wenn Sie einen kostenpflichtigen Azure-Supportplan kündigen, werden Ihnen die Gebühren für die restliche Laufzeit weiterhin in Rechnung gestellt. Weitere Informationen finden Sie unter [Azure-Supportpläne](https://azure.microsoft.com/support/plans/).
 
 ## <a name="cancel-subscription-using-the-azure-portal"></a>Kündigen eines Abonnements unter Verwendung des Azure-Portals
 

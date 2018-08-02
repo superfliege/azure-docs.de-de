@@ -9,19 +9,20 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: c96e9825cddd0b60e67cd4752fab8f440ceaae76
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 482f0403cfd4bbd6587ba7e3e936cdac7f82b54a
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39227774"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Überblick über Streamingeinheiten und Informationen zu Anpassungen
 
-Azure Stream Analytics aggregiert die Leistungsgewichtung für die Ausführung eines Auftrags in Premium-Streamingeinheiten. Premium-Streamingeinheiten stellen die Computerressourcen dar, die bei der Ausführung eines Auftrags verbraucht werden. SUs bieten anhand eines kombinierten Maßes aus CPU, Arbeitsspeicher und Schreib- und Leseraten eine Möglichkeit zur Beschreibung der relativen Ereignisverarbeitungskapazität. Mit dieser Kapazität können Sie sich auf die Abfragelogik konzentrieren. Zudem wird der Bedarf zur Verwaltung der Hardware abstrahiert, um Ihren Stream Analytics-Auftrag rechtzeitig auszuführen.
+Streamingeinheiten stellen die Computeressourcen dar, die zur Ausführung eines Auftrags zugeordnet werden. Je höher die Anzahl von Streamingeinheiten ist, desto mehr CPU- und Arbeitsspeicherressourcen werden Ihrem Auftrag zugeordnet. Mit dieser Kapazität können Sie sich auf die Abfragelogik konzentrieren. Zudem wird der Bedarf zur Verwaltung der Hardware abstrahiert, um Ihren Stream Analytics-Auftrag rechtzeitig auszuführen.
 
-Um eine Streamingverarbeitung mit geringer Latenz zu erreichen, führen Azure Stream Analytics-Aufträge (ASA) die gesamte Verarbeitung im Arbeitsspeicher durch. Wenn nicht genügend Arbeitsspeicher vorhanden ist, tritt beim Streamingauftrag ein Fehler auf. Daher ist es bei einem Produktionsauftrag wichtig, die Ressourcennutzung eines Streamingauftrags zu überwachen und sicherzustellen, dass genügend Ressourcen zugewiesen werden, damit die Aufträge rund um die Uhr ausgeführt werden.
+Um eine Streamingverarbeitung mit geringer Latenz zu erreichen, führen Azure Stream Analytics-Aufträge (ASA) die gesamte Verarbeitung im Arbeitsspeicher durch. Wenn nicht genügend Arbeitsspeicher vorhanden ist, tritt beim Streamingauftrag ein Fehler auf. Daher ist es bei einem Produktionsauftrag wichtig, die Ressourcennutzung eines Streamingauftrags zu überwachen und sicherzustellen, dass genügend Ressourcen zugewiesen werden, um die Aufträge rund um die Uhr auszuführen.
 
-Die Metrik ist eine Prozentzahl zwischen 0 % und 100 %. Bei einem Streamingauftrag mit minimalem Ressourcenbedarf liegt die Metrik „Speichereinheitnutzung in %“ in der Regel zwischen 10 % und 20 %. Die Metrik sollte im Idealfall bei unter 80 % liegen, damit gelegentliche Spitzen verarbeitet werden können. Microsoft empfiehlt, eine Warnung für die Metrik „Nutzung der Speichereinheit in %“ bei 80 % festzulegen, um eine Ressourcenauslastung zu verhindern. Weitere Informationen finden Sie unter [Tutorial: Einrichten von Warnungen für Azure Stream Analytics-Aufträge](stream-analytics-set-up-alerts.md).
+Die Nutzungsmetrik der Streamingeinheit in Prozent, die von 0 % bis 100 % reicht, zeigt die Arbeitsspeichernutzung Ihrer Workload auf. Bei einem Streamingauftrag mit minimalem Ressourcenbedarf liegt die Metrik in der Regel zwischen 10 % und 20 %. Wenn die prozentuale Nutzung der Streamingeinheit niedrig ist und Eingabeereignisse in den Rückstand geraten, benötigt Ihre Workload wahrscheinlich mehr Computeressourcen, sodass Sie die Anzahl der Streamingeinheiten erhöhen müssen. Die Metrik für die Streamingeinheit sollte im Idealfall bei unter 80 % liegen, damit gelegentliche Spitzen verarbeitet werden können. Microsoft empfiehlt, eine Warnung für die Metrik „Nutzung der Speichereinheit in %“ bei 80 % festzulegen, um eine Ressourcenauslastung zu verhindern. Weitere Informationen finden Sie unter [Tutorial: Einrichten von Warnungen für Azure Stream Analytics-Aufträge](stream-analytics-set-up-alerts.md).
 
 ## <a name="configure-stream-analytics-streaming-units-sus"></a>Konfigurieren von Streamingeinheiten (SUs) für Stream Analytics-Aufträge
 1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com/) an.
@@ -45,7 +46,7 @@ Berechnen Sie den erwarteten Durchsatz der Workload. Für den Fall, dass der Dur
 
 Die benötigte Anzahl an Premium-Streamingeinheiten für einen bestimmten Auftrag hängt von der Partitionskonfiguration für die Eingaben und der Abfrage ab, die für den Auftrag definiert ist. Auf der Seite **Skalieren** können Sie die richtige Anzahl von SUs festlegen. Es wird empfohlen, mehr Premium-Streamingeinheiten als erforderlich zuzuweisen. Die Stream Analytics-Verarbeitungs-Engine führt zu einer niedrigeren Latenz und einem höheren Durchsatz. Dabei wird zusätzlicher Speicherplatz beansprucht.
 
-Im Allgemeinen wird empfohlen, für Abfragen, die nicht **PARTITIONIEREN NACH** verwenden, mit 6 Premium-Streamingeinheiten zu beginnen. Ermitteln Sie dann die optimale Anzahl mittels Trial-and-Error-Methode. Dabei ändern Sie die Anzahl der SUs, nachdem Sie eine repräsentative Datenmenge übertragen und die Metrik „Speichereinheitnutzung in %“ überprüft haben.
+Im Allgemeinen wird empfohlen, für Abfragen, die nicht **PARTITIONIEREN NACH** verwenden, mit 6 Premium-Streamingeinheiten zu beginnen. Ermitteln Sie dann die optimale Anzahl mittels Trial-and-Error-Methode. Dabei ändern Sie die Anzahl der SUs, nachdem Sie eine repräsentative Datenmenge übertragen und die Metrik „Speichereinheitnutzung in %“ überprüft haben. Die Höchstzahl der von einem Stream Analytics-Auftrag verwendbaren Streamingeinheiten hängt von der Anzahl an Schritten in der für den Auftrag definierten Abfrage und der Anzahl an Partitionen für die einzelnen Schritte ab. Weitere Informationen zu diesen Grenzwerten finden Sie [hier](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job).
 
 Weitere Informationen über die Auswahl der richtigen Anzahl von SUs finden Sie auf folgender Seite: [Skalieren von Azure Stream Analytics-Aufträgen zur Erhöhung des Durchsatzes bei der Streamingdatenverarbeitung](stream-analytics-scale-jobs.md).
 

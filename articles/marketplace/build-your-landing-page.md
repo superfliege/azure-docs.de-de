@@ -1,6 +1,6 @@
 ---
-title: Erstellen Ihrer Angebotsseite | Azure
-description: Angebotsseite für den Azure Marketplace und AppSource für Herausgeber von Apps und Diensten
+title: Erstellen Ihrer Angebotsseite im Azure Marketplace | Azure
+description: Erfahren Sie, wie Sie eine Angebotsseite im Azure Marketplace und in Microsoft AppSource für App- und den Dienstherausgeber erstellen.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
 author: jm-aditi-ms
@@ -14,48 +14,50 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: bc2e1e735f4d3dd97fdb291154da656b9a2c71c7
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: d3af6484a2c62a0ffa0a21e2df277ef3255ada84
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826053"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160857"
 ---
-# <a name="build-your-landing-page"></a>Erstellen Ihrer Angebotsseite  
-Eine Angebotsseite auf der Website Ihres Unternehmens ist sozusagen das Tor zwischen Ihren Aktivitäten zum Generieren von Nachfrage und Ihrem Listing im Azure Marketplace.  
+# <a name="build-your-landing-page"></a>Erstellen Ihrer Angebotsseite
 
-Beginnen Sie mit der Identifikation Ihre Ziele. Wählen Sie die Zielgruppe für Ihre Lösungen aus, und entscheiden Sie, welche Aktion Ihr Kunde durchführen soll.  Ihre Lösung kann die folgenden Aktionen umfassen:  
-*   Lösung testen  
-*   Lösung sofort kaufen  
-*   und vieles mehr...  
+Eine Angebotsseite auf der Website Ihres Unternehmens ist der Schlüssel zu Ihren Nachfragegenerierungsaktivitäten für Ihre Auflistung in [Azure Marketplace](https://azuremarketplace.microsoft.com).
 
-Sie können verschiedene Marketingtaktiken anwenden, um auf Ihre Angebotsseite zu verweisen. Hierzu gehören beispielsweise folgende:  
-*   Ereignisse  
-*   Webcasts  
-*   Soziale Medien  
-*   Whitepaper  
-*   Technische Schulungen  
-*   Pressemitteilungen  
+Beginnen Sie mit der Identifikation Ihre Ziele. Wählen Sie die Zielgruppe für Ihre Lösungen aus, und entscheiden Sie, welche Aktion Ihr Kunde durchführen soll. Ihre Lösung kann die folgenden Aktionen umfassen:
+*   Die Lösung testen
+*   Lösung sofort kaufen
 
-Je konsistenter Ihr Messaging und Ihr Call-to-Action sind, desto einfacher ist es für Ihre Kunden, Ihre Lösung zu finden.  
+Sie können verschiedene Marketingtaktiken anwenden, um auf Ihre Angebotsseite zu verweisen. Sie können die folgenden Marketingstrategien verwenden: 
+*   Ereignisse
+*   Webcasts
+*   Soziale Medien
+*   Whitepaper
+*   Technische Schulungen
+*   Pressemitteilungen
 
-Wenn Sie Ihre Kampagne geplant haben, erstellen Sie Ihre Angebotsseite. Sehen Sie sich die folgende Tabelle an, um Ihre Angebotsseite so effektiv wie möglich zu gestalten.  
+Je konsistenter Ihr Messaging und Ihr Call-to-Action sind, desto einfacher ist es für Ihre Kunden, Ihre Lösung zu finden.
 
-| Bewährte Methode | Was Sie vermeiden sollten |  
-|:--- |:--- |  
-| ***Verdeutlichen Sie, welches Kundenproblem Ihre Anwendung löst und wie Azure dabei hilft.*** |  Keine Erläuterung, wie Ihre Lösung und Azure zusammenarbeiten. |  
-| ***Erstellen Sie eine kurze, leicht zu merkende URL.*** | Verwenden langer URLs. Lange URLs sind nicht einprägsam und schwer zu finden. |  
-| ***Fügen Sie relevanten visuellen Inhalt hinzu, z.B. ein Kundenreferenzvideo oder eine Lösungsarchitektur.*** | Zu viel Text – Kunden verlieren die Lust am Herumstöbern und ignorieren Ihre Inhalte. |  
-| ***Erstellen Sie einen klaren Call-to-Action, um Besucher zu Ihrer Marketplace-Katalogseite zu leiten.*** | Verwenden von zu vielen Links oder Aktionen auf der Seite. |  
-| ***Setzen Sie Ihren Call-to-Action in eine Titelzeile oder einen klar abgegrenzten Abschnitt.*** |  Einbetten der Links zu Ihrem Marketplace-Listing in einen Textabsatz. |  
-| ***Recherchieren Sie die besten Stichwörter, und optimieren Sie die Seite für die Suche.*** | Annehmen, dass Ihr Produktname höhere Suchrangfolgen generiert. |  
-| ***Nutzen Sie Stichwörter aus Ihren Werbekampagnen.*** |  Die Verwendung vieler verschiedener Stichwörter in den Webeigenschaften verwässert Ihre Werbeinvestitionen. |  
-| ***Verwenden Sie relevante Produktnamen und Stichwörter.`above the fold`*** | Benutzer müssen scrollen, um zu sehen, welches Produkt oder welche Lösung Sie präsentieren. |  
-| ***Verwenden Sie Markenkennzeichen wie z.B. Azure Certified – in Übereinstimmung mit den Microsoft-Brandingrichtlinien – um den Wert Ihrer Lösung zu unterstreichen.<br />*** | Nicht genehmigte Nutzung von Microsoft-Markenkennzeichen. |  
+## <a name="recommendations"></a>Empfehlungen
 
-*   Weitere Informationen zum Azure Certified-Badge finden Sie auf der Seite der Microsoft Azure Certified-Richtlinien unter [azure.microsoft.com/support/legal/marketplace/certified-guidelines](https://azure.microsoft.com/support/legal/marketplace/certified-guidelines).  
-*   Weitere Brandingressourcen finden Sie auf der Brand Central-Seite unter [microsoft.sharepoint.com/teams/brandcentral](https://microsoft.sharepoint.com/teams/brandcentral).  
-*   Informationen zum Logo Builder-Tool finden Sie auf der Seite zu Logo Builder unter [logobuilder.partner.microsoft.com](https://logobuilder.partner.microsoft.com).  
-*   Weitere Informationen finden Sie auf der Seite „So funktioniert‘s“ unter [partner.microsoft.com/membership/how-it-works](https://partner.microsoft.com/membership/how-it-works).  
+Wenn Sie Ihre Kampagne geplant haben, erstellen Sie Ihre Angebotsseite im Marketplace. In der folgenden Tabelle finden Sie Hinweise, um Ihre Angebotsseite so effektiv wie möglich zu gestalten. 
 
----  
+| Bewährte Methode | Vermeiden |
+|:--- |:--- |
+| **Kommunizieren Sie, welches Kundenproblem Ihre Anwendung löst, und wie Sie Azure dafür einsetzen** | Keine Erläuterung, wie Ihre Lösung und Azure zusammenarbeiten. |
+| **Erstellen Sie eine kurze, leicht zu merkende URL** | Verwenden langer URLs. Lange URLs sind nicht einprägsam und schwer zu finden. |
+| **Fügen Sie relevanten visuellen Inhalt hinzu, z.B. ein Kundenreferenzvideo oder eine Lösungsarchitektur** | Zu viel Text – Kunden verlieren die Lust am Herumstöbern und ignorieren Ihre Inhalte.|
+| **Erstellen Sie einen klaren Aktionsaufruf, um Besucher zu Ihrer Marketplace-Katalogseite zu führen** | Verwenden von zu vielen Links oder Aktionen auf der Seite. |
+| **Setzen Sie Ihren Aktionsaufruf in eine Titelzeile oder einen deutlichen Beschreibungsabschnitt** | Einbetten der Links zu Ihrem Marketplace-Listing in einen Textabsatz. |
+| **Recherchieren Sie die besten Schlüsselwörter, und optimieren Sie die Seite für die Suche** | Annehmen, dass Ihr Produktname höhere Suchrangfolgen generiert. |
+| **Nutzen Sie Schlüsselwörter aus Ihren Werbekampagnen** | Die Verwendung vieler verschiedener Stichwörter in den Webeigenschaften verwässert Ihre Werbeinvestitionen. |
+| **Setzen Sie relevante Produktnamen und Schlüsselwörter „über den Falz“** | Benutzer müssen scrollen, um zu sehen, welches Produkt oder welche Lösung Sie präsentieren. |
+| **Verwenden Sie Markenkennzeichen wie z.B. Azure Certified – in Übereinstimmung mit den Microsoft-Brandingrichtlinien – um den Wert Ihrer Lösung zu unterstreichen.** | Nicht genehmigte Nutzung von Microsoft-Markenkennzeichen. |
+
+## <a name="next-steps"></a>Nächste Schritte
+
+*   Weitere Informationen zum Azure Certified-Badge finden Sie unter [Microsoft Azure Certified-Richtlinien](https://azure.microsoft.com/support/legal/marketplace/certified-guidelines).
+*   Weitere Informationen zum Branding finden Sie unter [Brand Central](https://microsoft.sharepoint.com/teams/brandcentral).
+*   Weitere Informationen über das Logo-Generator-Tool finden Sie unter [Logo-Generator](https://logobuilder.partner.microsoft.com).
+*   Schauen Sie sich [Lernen Sie die Vorteile des Microsoft Partner-Programms kennen](https://partner.microsoft.com/membership/how-it-works) an.

@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren einer MSI in einer Azure-VM-Skalierungsgruppe mit dem Azure-Portal
-description: Schritt-für-Schritt-Anweisungen zum Konfigurieren einer verwalteten Dienstidentität (Managed Service Identity, MSI) für eine Azure-VMSS über das Azure-Portal.
+title: Konfigurieren einer verwalteten Dienstidentität für eine Azure-VM-Skalierungsgruppe über das Azure-Portal
+description: Schritt-für-Schritt-Anweisungen zum Konfigurieren einer verwalteten Dienstidentität für eine Azure-VMSS über das Azure-Portal.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 8779600f2c85a8bb309f7b2a8874608170de8877
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 93c532cf2864db28b580303ecefec8b6dbed65f6
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035240"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257758"
 ---
-# <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-the-azure-portal"></a>Konfigurieren einer verwalteten Dienstidentität für eine VM-Skalierungsgruppe im Azure-Portal
+# <a name="configure-a-virtual-machine-scale-set-managed-service-identity-using-the-azure-portal"></a>Konfigurieren einer verwalteten Dienstidentität für eine VM-Skalierungsgruppe im Azure-Portal
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -34,9 +34,10 @@ In diesem Artikel erfahren Sie, wie Sie die vom System zugewiesene Identität f�
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-
 - Wenn Sie nicht mit „Verwaltete Dienstidentität“ vertraut sind, helfen Ihnen die Informationen in dieser [Übersicht](overview.md) weiter.
 - Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
+- Um die Verwaltungsvorgänge in diesem Artikel durchzuführen, benötigt Ihr Konto die folgende Rollenzuweisung:
+    - [Mitwirkender für virtuelle Computer](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) zum Aktivieren und Entfernen einer vom System zugewiesenen verwalteten Identität auf einer VM-Skalierungsgruppe.
 
 ## <a name="managed-service-identity-during-creation-of-an-azure-virtual-machine-scale-set"></a>Verwaltete Dienstidentität während der Erstellung einer Azure-VM-Skalierungsgruppe
 
@@ -44,7 +45,7 @@ Derzeit werden bei der Erstellung von virtuellen Computern über das Azure-Porta
 
 - [Erstellen einer VM-Skalierungsgruppe im Azure-Portal](../../virtual-machine-scale-sets/quick-create-portal.md)  
 
-Fahren Sie dann mit dem nächsten Abschnitt fort, um weitere Details zum Aktivieren der MSI in der VM-Skalierungsgruppe zu erhalten.
+Fahren Sie anschließend mit dem nächsten Abschnitt fort, um ausführlichere Informationen zur Aktivierung der verwalteten Dienstidentität auf der VM-Skalierungsgruppe zu erhalten.
 
 ## <a name="enable-managed-service-identity-on-an-existing-azure-vmms"></a>Aktivieren der verwalteten Dienstidentität für eine vorhandene Azure-VM-Skalierungsgruppe
 
@@ -60,7 +61,7 @@ So aktivieren Sie die vom System zugewiesene Identität auf einem virtuellen Com
 
 ## <a name="remove-managed-service-identity-from-an-azure-virtual-machine-scale-set"></a>Entfernen der verwalteten Dienstidentität aus einer Azure-VM-Skalierungsgruppe
 
-Wenn die MSI in einer VM-Skalierungsgruppe nicht mehr benötigt wird, gehen Sie wie folgt vor:
+Wenn die verwaltete Dienstidentität in einer VM-Skalierungsgruppe nicht mehr benötigt wird, gehen Sie wie folgt vor:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Konto an, das dem Azure-Abonnement zugeordnet ist, das die VM-Skalierungsgruppe enthält. Stellen Sie außerdem sicher, dass Ihr Konto zu einer Rolle gehört, die Ihnen Schreibberechtigungen für die VM-Skalierungsgruppe erteilt.
 
@@ -76,6 +77,6 @@ Wenn die MSI in einer VM-Skalierungsgruppe nicht mehr benötigt wird, gehen Sie 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Gewähren Sie der MSI einer Azure-VM-Skalierungsgruppe über das Azure-Portal den [Zugriff auf eine andere Azure-Ressource](howto-assign-access-portal.md).
+- Gewähren Sie der verwalteten Dienstidentität einer Azure-VM-Skalierungsgruppe über das Azure-Portal den [Zugriff auf eine andere Azure-Ressource](howto-assign-access-portal.md).
 
 Verwenden Sie den folgenden Kommentarabschnitt, um uns Feedback zu senden und uns bei der Verbesserung unserer Inhalte zu unterstützen.

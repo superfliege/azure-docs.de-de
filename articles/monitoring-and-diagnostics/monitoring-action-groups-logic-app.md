@@ -1,21 +1,21 @@
 ---
-title: Auslösen komplexer Aktionen mit Azure Monitor-Warnungen und Aktionsgruppen
+title: Auslösen komplexer Aktionen mit Azure Monitor-Warnungen
 description: Erfahren Sie, wie eine Aktion einer Logik-App zum Verarbeiten von Azure Monitor-Warnungen erstellt wird.
 author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/30/2018
+ms.date: 07/18/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 51d47b87f898aa65fe4ee76c312240a50d45231d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 034e708b79bbdf15d7fa628f388402998f49c0d9
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049186"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161505"
 ---
-# <a name="create-a-logic-app-action"></a>Erstellen einer Logik-App-Aktion
+# <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Auslösen komplexer Aktionen mit Azure Monitor-Warnungen
 
 Dieser Artikel zeigt Ihnen, wie eine Logik-App eingerichtet und ausgelöst wird, um eine Konversation in Microsoft Teams zu erstellen, wenn eine Warnung ausgelöst wird.
 
@@ -290,6 +290,9 @@ Der Prozess zum Erstellen einer Metrikwarnung ähnelt abgesehen von ein paar Än
        ![„Veröffentlichungsaktion Metrikwarnung, wenn Bedingung FALSE ist“](media/monitoring-action-groups/metric-alert-false-condition-post-action.png "Veröffentlichungsaktion Metrikwarnung, wenn Bedingung FALSE ist")
 
 - Schritt 15 ist identisch. Befolgen Sie die Anweisungen zum Speichern Ihrer Logik-App und Aktualisieren Ihrer Aktionsgruppe.
+
+## <a name="calling-other-applications-besides-microsoft-teams"></a>Aufrufen anderer Anwendungen außer Microsoft Teams
+Logic Apps verfügt über verschiedene Connectors, mit denen Sie Aktionen in einer Vielzahl von Anwendungen und Datenbanken auslösen können. Slack, SQL Server, Oracle, Salesforce sind lediglich einige Beispiele. Weitere Informationen zu Connectors finden Sie unter [Logic App-Connectors](../connectors/apis-list.md).  
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Verschaffen Sie sich eine [Übersicht über Azure Aktivitätsprotokollwarnungen](monitoring-overview-alerts.md), und erfahren Sie, wie Sie Warnungen empfangen können.  

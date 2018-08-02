@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 8c045bed943427b5cb74291d70ee2eebcb90b2ef
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 396d514d0d75c43f20ab7b0fcdf8c7351cb3dd89
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625232"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213451"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-data-lake-store-using-azure-stream-analytics"></a>Streamen von Daten aus Azure Storage-Blob in Data Lake-Speicher mit Azure Stream Analytics
 In diesem Artikel erfahren Sie, wie Sie Azure Data Lake-Speicher als Ausgabe für einen Azure Stream Analytics-Auftrag verwenden. Dieser Artikel beschreibt ein einfaches Szenario, bei dem Daten aus einem Azure Storage-Blob (Eingabe) gelesen und in Data Lake-Speicher (Ausgabe) geschrieben werden.
@@ -77,7 +77,7 @@ Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle u
 
     ![Hinzufügen einer Ausgabe zu Ihrem Auftrag](./media/data-lake-store-stream-analytics/create.output.2.png "Hinzufügen einer Ausgabe zu Ihrem Auftrag")
 
-    * Geben Sie unter **Ausgabealias** einen eindeutigen Namen für diese Auftragsausgabe ein. Dies ist ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diesen Data Lake-Speicher weiterzuleiten.
+    * Geben Sie unter **Ausgabealias** einen eindeutigen Namen für die Auftragsausgabe ein. Dies ist ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diesen Data Lake-Speicher weiterzuleiten.
     * Wählen Sie unter **Senke** die Option **Data Lake Store** aus.
     * Sie werden aufgefordert, sich für den Zugriff auf das Data Lake Store-Konto zu autorisieren. Klicken Sie auf **Autorisieren**.
 

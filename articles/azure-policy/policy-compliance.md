@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: d36ecb18811901fb781e151c06badc0697c2d769
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 390935d80e903631287b1a4b9f1075e547298d99
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659351"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39250289"
 ---
 # <a name="getting-compliance-data"></a>Abrufen von Konformitätsdaten
 
@@ -224,14 +224,13 @@ Ihre Ergebnisse sollten in etwa wie im folgenden Beispiel aussehen:
 
 Weitere Informationen zum Abfragen von Richtlinienereignissen finden Sie im Referenzartikel zu [Richtlinienereignissen](/rest/api/policy-insights/policyevents).
 
-### <a name="azure-powershell-preview"></a>Azure PowerShell (Vorschauversion)
+### <a name="azure-powershell"></a>Azure PowerShell
 
-Das Azure PowerShell-Modul für Policy ist noch nicht ganz fertig, ist jedoch derzeit im PowerShell-Katalog als [Vorschauversion](https://www.powershellgallery.com/packages/AzureRM.PolicyInsights) verfügbar.
-Wenn PowerShellGet mindestens die Version 1.6.0 besitzt (für die Unterstützung von Vorschauversionselementen erforderlich), können Sie die Vorschauversion über `Install-Module` herunterladen (stellen Sie sicher, dass Sie die neueste Version von [Azure PowerShell](/powershell/azure/install-azurerm-ps) installiert haben):
+Das Azure PowerShell-Modul für Policy ist im PowerShell-Katalog unter [AzureRM.PolicyInsights](https://www.powershellgallery.com/packages/AzureRM.PolicyInsights) verfügbar. Mit PowerShellGet können Sie das Modul mit `Install-Module -Name AzureRM.PolicyInsights` installieren (stellen Sie sicher, dass Sie die neueste Version von [Azure PowerShell](/powershell/azure/install-azurerm-ps) installiert haben):
 
 ```powershell
-# Download preview from PowerShell Gallery via PowerShellGet
-Install-Module -Name AzureRM.PolicyInsights -AllowPrerelease
+# Install from PowerShell Gallery via PowerShellGet
+Install-Module -Name AzureRM.PolicyInsights
 
 # Import the downloaded module
 Import-Module AzureRM.PolicyInsights
@@ -240,7 +239,7 @@ Import-Module AzureRM.PolicyInsights
 Connect-AzureRmAccount
 ```
 
-Das Vorschaumodul verfügt über drei Cmdlets:
+Das Modul verfügt über drei Cmdlets:
 
 - `Get-AzureRmPolicyStateSummary`
 - `Get-AzureRmPolicyState`
@@ -354,4 +353,4 @@ Wenn Sie über einen [Log Analytics](../log-analytics/log-analytics-overview.md)
 
 - Befassen Sie sich mit der [Struktur von Azure Policy-Definitionen](policy-definition.md).
 - Lesen Sie [Grundlegendes zu Richtlinienauswirkungen](policy-effects.md).
-- Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organize your resources with Azure Management Groups (Organisieren von Ressourcen mit Azure-Verwaltungsgruppen)](../azure-resource-manager/management-groups-overview.md).
+- Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../azure-resource-manager/management-groups-overview.md).

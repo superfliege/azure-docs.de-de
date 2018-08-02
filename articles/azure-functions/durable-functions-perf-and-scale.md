@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 110f393e723c7e784a4bd7e79559dd9d55147140
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b7e6a5a4f4e449926bfb63425c2f45bd09f63827
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34599431"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214766"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Leistung und Skalierbarkeit in Durable Functions (Azure Functions)
 
@@ -122,7 +122,7 @@ Die Parallelitätslimits für Aktivitätsfunktionen und Orchestratorfunktionen k
 Im vorherigen Beispiel können maximal 10 Orchestratorfunktionen und 10 Aktivitätsfunktionen gleichzeitig auf einem einzelnen virtuellen Computer ausgeführt werden. Wenn kein Wert angegeben ist, ist die Anzahl der gleichzeitigen Ausführungen von Aktivitäts- und Orchestratorfunktionen auf das Zehnfache der Anzahl von Kernen auf dem virtuellen Computer begrenzt.
 
 > [!NOTE]
-> Diese Einstellungen sind nützlich bei der Verwaltung der Speicher- und CPU-Auslastung auf einem einzelnen virtuellen Computer. Bei der horizontalen Hochskalierung auf mehrere virtuelle Computer sind jedoch für jeden virtuellen Computer jeweils eigene Limits festgelegt. Mit diesen Einstellungen kann die Parallelität nicht auf globaler Ebene gesteuert werden.
+> Diese Einstellungen sind nützlich bei der Verwaltung der Speicher- und CPU-Auslastung auf einem einzelnen virtuellen Computer. Bei der horizontalen Hochskalierung auf mehrere VMs sind jedoch für jede VM jeweils eigene Limits festgelegt. Mit diesen Einstellungen kann die Parallelität nicht auf globaler Ebene gesteuert werden.
 
 ## <a name="orchestrator-function-replay"></a>Wiedergabe von Orchestratorfunktionen
 Wie zuvor erwähnt, werden Orchestratorfunktionen unter Verwendung der Inhalte der **Verlaufstabelle** wiedergegeben. Standardmäßig wird der Orchestratorfunktionscode immer dann wiedergegeben, wenn ein Batch von Nachrichten aus einer Steuerelement-Warteschlange entfernt wird.

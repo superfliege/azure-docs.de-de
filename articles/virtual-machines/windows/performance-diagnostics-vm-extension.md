@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 9ea7f4652aff07282c9c106f3894db807f341210
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 4663da6d28d62230ced937cdb5e597a1236c7f99
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072537"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258944"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Azure-VM-Erweiterung für die Leistungsdiagnose unter Windows
 
@@ -52,7 +52,8 @@ Der folgende JSON-Code zeigt das Schema für die Azure-VM-Erweiterung für die L
             "xperfTrace": "[parameters('xperfTrace')]",
             "storPortTrace": "[parameters('storPortTrace')]",
             "srNumber": "[parameters('srNumber')]",
-            "requestTimeUtc":  "[parameters('requestTimeUtc')]"
+            "requestTimeUtc":  "[parameters('requestTimeUtc')]",
+            "resourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
         },
         "protectedSettings": {
             "storageAccountKey": "[parameters('storageAccountKey')]"        
@@ -77,6 +78,7 @@ Der folgende JSON-Code zeigt das Schema für die Azure-VM-Erweiterung für die L
 |storPortTrace|s|Option zum Aktivieren der StorPort-Ablaufverfolgung. Gültige Werte sind **s** oder ein leerer Wert. Lassen Sie den Wert leer, wenn Sie diese Ablaufverfolgung nicht erfassen möchten.
 |srNumber|123452016365929|Die Supportticketnummer, sofern verfügbar. Lassen Sie den Wert andernfalls leer.
 |requestTimeUtc|2017-09-28T22:08:53.736Z|Aktueller Wert für Datum und Uhrzeit in UTC. Sie müssen diesen Wert nicht angeben, wenn Sie das Portal verwenden, um diese Erweiterung zu installieren.
+|Ressourcen-ID|/subscriptions/{Abonnement-ID}/resourceGroups/{Ressourcengruppenname}/providers/{Ressourcenanbieter-Namespace}/{Ressourcentyp}/{Ressourcenname}|Der eindeutige Bezeichner einer VM.
 |storageAccountName|mystorageaccount|Der Name des Speicherkontos zum Speichern der Diagnoseprotokolle und Ergebnisse.
 |storageAccountKey|lDuVvxuZB28NNP…hAiRF3voADxLBTcc==|Der Schlüssel für das Speicherkonto.
 
@@ -192,10 +194,11 @@ Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bere
             "xperfTrace": "[parameters('xperfTrace')]",
             "storPortTrace": "[parameters('storPortTrace')]",
             "srNumber": "[parameters('srNumber')]",
-            "requestTimeUtc":  "[parameters('requestTimeUtc')]"
+            "requestTimeUtc":  "[parameters('requestTimeUtc')]",
+            "resourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
         },
-        "protectedSettings": {            
-            "storageAccountKey": "[parameters('storageAccountKey')]"        
+        "protectedSettings": {
+            "storageAccountKey": "[parameters('storageAccountKey')]"
         }
       }
     }
@@ -209,7 +212,7 @@ Mit dem Befehl `Set-AzureRmVMExtension` können Sie die Azure-VM-Erweiterung fü
 PowerShell
 
 ````
-$PublicSettings = @{ "storageAccountName"="mystorageaccount";"performanceScenario"="basic";"traceDurationInSeconds"=300;"perfCounterTrace"="p";"networkTrace"="";"xperfTrace"="";"storPortTrace"="";"srNumber"="";"requestTimeUtc"="2017-09-28T22:08:53.736Z" }
+$PublicSettings = @{ "storageAccountName"="mystorageaccount";"performanceScenario"="basic";"traceDurationInSeconds"=300;"perfCounterTrace"="p";"networkTrace"="";"xperfTrace"="";"storPortTrace"="";"srNumber"="";"requestTimeUtc"="2017-09-28T22:08:53.736Z";"resourceId"="VMResourceId" }
 $ProtectedSettings = @{"storageAccountKey"="mystoragekey" }
 
 Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `

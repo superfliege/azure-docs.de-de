@@ -14,12 +14,12 @@ ms.date: 06/13/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 658ec5bb2aa7c15fb1d38da5249ff9b13973cf41
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 9e065b04083cce958bc42f2efade0038bf137f8a
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867996"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145110"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen
 Dieser Artikel enthält Anweisungen für die Verwendung von PowerShell-Cmdlets für Azure Active Directory (Azure AD), um Gruppen zu erstellen und zu aktualisieren. Dieser Inhalt gilt nur für Office 365-Gruppen (zuweilen auch als einheitliche Gruppen bezeichnet). 
@@ -96,7 +96,8 @@ Folgende Einstellungen sind im SettingsTemplate-Objekt „Group.Unified“ defin
 |  <ul><li>EnableGroupCreation<li>Typ: Boolescher Wert<li>Standard: True |Das Flag, das angibt, ob die Erstellung von Office 365-Gruppen im Verzeichnis durch Benutzer ohne Administratorrechte zulässig ist. Für diese Einstellung ist keine Azure Active Directory Premium P1-Lizenz erforderlich.|
 |  <ul><li>GroupCreationAllowedGroupId<li>Typ: Zeichenfolge<li>Standardwert: “” |GUID der Sicherheitsgruppe, deren Mitgliedern das Erstellen von Office 365-Gruppen erlaubt ist, auch wenn der EnableGroupCreation-Wert „false“ lautet. |
 |  <ul><li>UsageGuidelinesUrl<li>Typ: Zeichenfolge<li>Standardwert: “” |Ein Link zu den Nutzungsrichtlinien für die Gruppe. |
-|  <ul><li>ClassificationDescriptions<li>Typ: Zeichenfolge<li>Standardwert: “” | Eine durch Trennzeichen getrennte Liste mit Klassifizierungsbeschreibungen. |
+|  <ul><li>ClassificationDescriptions<li>Typ: Zeichenfolge<li>Standardwert: “” | Eine durch Trennzeichen getrennte Liste mit Klassifizierungsbeschreibungen. Der Wert von ClassificationDescriptions ist nur in folgendem Format gültig:
+  $setting["ClassificationDescriptions"] ="Classification:Description,Classification:Description", wobei „Classification“ mit den Zeichenfolgen in der ClassificationList übereinstimmt.|
 |  <ul><li>DefaultClassification<li>Typ: Zeichenfolge<li>Standardwert: “” | Die Klassifizierung, die als Standardklassifizierung einer Gruppe verwendet werden soll, falls keine angegeben wurde.|
 |  <ul><li>PrefixSuffixNamingRequirement<li>Typ: Zeichenfolge<li>Standardwert: “” | Zeichenfolge mit einer maximalen Länge von 64 Zeichen, mit der die für Office 365-Gruppen konfigurierte Namenskonvention definiert wird. Weitere Informationen finden Sie unter [Erzwingen einer Benennungsrichtlinie für Office 365-Gruppen](groups-naming-policy.md). |
 | <ul><li>CustomBlockedWordsList<li>Typ: Zeichenfolge<li>Standardwert: “” | Eine durch Trennzeichen getrennte Zeichenfolge mit Ausdrücken, deren Verwendung in Gruppennamen oder -aliasen nicht gestattet ist. Weitere Informationen finden Sie unter [Erzwingen einer Benennungsrichtlinie für Office 365-Gruppen](groups-naming-policy.md). |

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/01/2018
 ms.author: shlo
-ms.openlocfilehash: a7efe75507fad8e0391f9ad433ba416ed771063b
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 655a6ab2960047cde50bec2953015283ca8577f0
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265287"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214851"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visuelles Erstellen in Azure Data Factory
 Mithilfe der Azure Data Factory-Benutzeroberfläche (UX) können Sie Ressourcen für Ihre Data Factory visuell erstellen und bereitstellen, ohne Code schreiben zu müssen. Sie können Aktivitäten auf eine Pipelinecanvas ziehen, Testläufe ausführen, iterativ debuggen sowie Ihre Pipelineausführungen bereitstellen und überwachen. Die Benutzeroberfläche kann auf zwei Arten zum visuellen Erstellen verwendet werden:

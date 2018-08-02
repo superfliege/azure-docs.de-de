@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 23567c985f4f9df46ee7d80051c15dc5910a1ea8
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 5deaace49bfff994defc06a5f60597add6affc0b
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904061"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188147"
 ---
 # <a name="create-list-or-delete-a-user-assigned-identity-using-the-azure-cli"></a>Erstellen, Auflisten oder Löschen einer vom Benutzer zugewiesenen Identität mithilfe der Azure CLI
 
@@ -33,9 +33,10 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure CLI eine vom Benutzer
 
 - Wenn Sie nicht mit „Verwaltete Dienstidentität“ vertraut sind, helfen Ihnen die Informationen in dieser [Übersicht](overview.md) weiter. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen Identität](overview.md#how-does-it-work)** bewusst.
 - Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
-
+- Um die Verwaltungsvorgänge in diesem Artikel durchzuführen, benötigt Ihr Konto die folgenden Rollenzuweisungen:
+    - Rolle [Mitwirkender für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) zum Erstellen, Lesen (Auflisten), Aktualisieren und Löschen einer vom Benutzer zugewiesenen Identität
+    - Rolle [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator) zum Lesen (Auflisten) der Eigenschaften einer vom Benutzer zugewiesenen Identität
 - Um die CLI-Skriptbeispiele auszuführen, haben Sie drei Möglichkeiten:
-
     - Verwenden Sie [Azure Cloud Shell](../../cloud-shell/overview.md) aus dem Azure-Portal (siehe nächster Abschnitt).
     - Verwenden Sie die eingebettete Azure Cloud Shell, indem Sie die Schaltfläche „Ausprobieren“ in der oberen rechten Ecke jedes Codeblocks verwenden.
     - [Installieren Sie die neueste Version von CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 oder höher), wenn Sie lieber eine lokale CLI-Konsole verwenden möchten. Melden Sie sich mit `az login` mit einem Konto bei Azure an, das mit dem Azure-Abonnement verknüpft ist, unter dem Sie die vom Benutzer zugewiesene Identität bereitstellen möchten.
@@ -53,7 +54,7 @@ az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
 ```
 ## <a name="list-user-assigned-identities"></a>Auflisten der vom Benutzer zugewiesenen Identitäten
 
-Verwenden Sie zum Auflisten von Identitäten, die vom Benutzer zugewiesen werden, den Befehl [az identity list](/cli/azure/identity#az-identity-list).  Der Parameter `-g` gibt die Ressourcengruppe an, in der die vom Benutzer zugewiesene Identität erstellt wurde.  Ersetzen Sie `<RESOURCE GROUP>` durch Ihren eigenen Wert:
+Verwenden Sie zum Auflisten von Identitäten, die vom Benutzer zugewiesen werden, den Befehl [az identity list](/cli/azure/identity#az-identity-list). Ersetzen Sie `<RESOURCE GROUP>` durch Ihren eigenen Wert:
 
 ```azurecli-interactive
 az identity list -g <RESOURCE GROUP>
@@ -64,7 +65,7 @@ In der JSON-Antwort wird bei Benutzeridentitäten der Wert `"Microsoft.ManagedId
 
 ## <a name="delete-a-user-assigned-identity"></a>Löschen einer vom Benutzer zugewiesenen Identität
 
-Um eine vom Benutzer zugewiesene Identität zu löschen, verwenden Sie den Befehl [az identity delete](/cli/azure/identity#az-identity-delete).  Der Parameter „-n“ gibt den Namen an, während der Parameter „-g“ die Ressourcengruppe angibt, in der die vom Benutzer zugewiesene Identität erstellt wurde.  Ersetzen Sie die Parameterwerte `<USER ASSIGNED IDENTITY NAME>` und `<RESOURCE GROUP>` durch Ihre eigenen Werte:
+Um eine vom Benutzer zugewiesene Identität zu löschen, verwenden Sie den Befehl [az identity delete](/cli/azure/identity#az-identity-delete).  Der Parameter „-n“ gibt den Namen an, während der Parameter „-g“ die Ressourcengruppe angibt, in der die vom Benutzer zugewiesene Identität erstellt wurde. Ersetzen Sie die Parameterwerte `<USER ASSIGNED IDENTITY NAME>` und `<RESOURCE GROUP>` durch Ihre eigenen Werte:
 
  ```azurecli-interactive
 az identity delete -n <USER ASSIGNED IDENTITY NAME> -g <RESOURCE GROUP>

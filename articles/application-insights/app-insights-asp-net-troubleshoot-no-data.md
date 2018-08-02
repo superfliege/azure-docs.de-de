@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/14/2017
+ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: ddc9941792b0c5d8fbf29bfdc698b16a999a3858
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 1a46564c324edb1999a2e1b1d482817685df2893
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971039"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205985"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Problembehandlung ohne Daten – Application Insights für .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Einige meiner Telemetriedaten fehlen
@@ -175,8 +175,11 @@ Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application I
 
 Sie können diese Funktion deaktivieren, aber dies ist nicht zu empfehlen. Die Stichprobenerstellung ist so konzipiert, dass die zugehörigen Telemetriedaten zu Diagnosezwecken richtig übertragen werden. 
 
+## <a name="client-ip-address-is-0000"></a>Die Client-IP-Adresse lautet 0.0.0.0. 
+Im Februar 2018 haben wir [angekündigt](https://blogs.msdn.microsoft.com/applicationinsights-status/2018/02/01/all-octets-of-ip-address-will-be-set-to-zero/), dass wir die Protokollierung der Client-IP-Adresse entfernt haben. Dies wirkt sich nicht auf geografische Standorte aus.
+
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>Falsche geografische Daten in Benutzertelemetriedaten
-Die Dimensionen für Ort, Region und Land werden von IP-Adressen abgeleitet und sind nicht immer exakt.
+Die Dimensionen für Ort, Region und Land werden von IP-Adressen abgeleitet und sind nicht immer exakt. Diese IP-Adressen werden zuerst im Hinblick auf den Standort verarbeitet und dann für die Speicherung in „0.0.0.0“ geändert.
 
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>Ausnahme „Methode nicht gefunden“ bei der Ausführung in Azure Cloud Services
 Haben Sie für .NET 4.6 erstellt? 4.6 wird nicht automatisch in Azure Cloud Services-Rollen unterstützt. [Installieren Sie 4.6 für jede Rolle](../cloud-services/cloud-services-dotnet-install-dotnet.md) , bevor Sie Ihre App ausführen.

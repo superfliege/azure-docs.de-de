@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: protection
-ms.date: 07/14/2018
+ms.date: 07/24/2018
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 6c329554b5854f113fb216f874fa5a918110f9c5
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ffac7768fefece24cb69789558ce500e1ff64d98
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39058092"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257899"
 ---
 # <a name="email-notifications-in-azure-ad-pim"></a>E-Mail-Benachrichtigungen in Azure AD PIM
 
@@ -32,7 +32,7 @@ Wenn in Azure AD Privileged Identity Management (PIM) wichtige Ereignisse auftre
 - Wenn eine privilegierte Rolle zugewiesen wird
 - Wenn Azure AD PIM aktiviert wird
 
-Ab Ende Juli 2018 weisen über PIM versendete E-Mail-Benachrichtigungen eine neue Absender-E-Mail-Adresse und ein neues Layout auf. Dieses Update wirkt sich sowohl auf PIM für Azure AD als auch auf PIM für Azure-Ressourcen aus. Bei allen Ereignissen, die zuvor eine E-Mail-Benachrichtigung ausgelöst haben, wird auch weiterhin eine gesendet. Dieses Update enthält nur optische Änderungen, keine funktionellen.
+Ab Ende Juli 2018 weisen über PIM versendete E-Mail-Benachrichtigungen eine neue Absender-E-Mail-Adresse und ein neues Layout auf. Dieses Update wirkt sich sowohl auf PIM für Azure AD als auch auf PIM für Azure-Ressourcen aus. Bei allen Ereignissen, die zuvor eine E-Mail-Benachrichtigung ausgelöst haben, wird auch weiterhin eine gesendet. Einige E-Mails werden über aktualisierten Inhalt verfügen, der gezieltere Informationen bietet.
 
 ## <a name="sender-email-address"></a>E-Mail-Adresse des Absenders
 
@@ -45,6 +45,12 @@ Zuvor wurden E-Mail-Benachrichtigungen über die folgende Adresse versendet:
 
 - E-Mail-Adresse: **azureadnotifications@microsoft.com**
 - Anzeigename: Microsoft Azure AD-Benachrichtigungsdienst
+
+## <a name="email-subject-line"></a>E-Mail-Betreffzeile
+
+Ab Ende Juli 2018 werden E-Mail-Benachrichtigungen für Azure AD- und Azure-Ressourcenrollen in der Betreffzeile ein **PIM**-Präfix aufweisen. Hier sehen Sie ein Beispiel:
+
+- PIM: Alain Charon wurde permanent die Rolle des Benutzers mit Leseberechtigung für Sicherungsfunktionen zugewiesen.
 
 ## <a name="pim-emails-for-azure-ad-roles"></a>PIM-E-Mails für Azure AD-Rollen
 

@@ -1,114 +1,190 @@
 ---
 title: 'Behandeln von Inhaltstypen: Azure Logic Apps | Microsoft-Dokumentation'
-description: Umgang von Azure Logic Apps mit Inhaltstypen zur Entwurfs- und Laufzeit
+description: Erfahren Sie, wie Logic Apps Inhaltstypen zur Entwurfszeit und Laufzeit behandelt.
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-ms.assetid: cd1f08fd-8cde-4afc-86ff-2e5738cc8288
 ms.service: logic-apps
-ms.devlang: multiple
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 10/18/2016
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 809cc8524bf0d9922aec1f88aa5bfe3b8f2f4d78
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 07/20/2018
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 82eb9c895f016efe569651dc89885d2e4850fd59
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297120"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159090"
 ---
-# <a name="handle-content-types-in-logic-apps"></a>Behandeln von Inhaltstypen in Logik-Apps
+# <a name="handle-content-types-in-azure-logic-apps"></a>Behandeln von Inhaltstypen in Azure Logic Apps
 
-Viele verschiedene Arten von Inhalten können durch Logik-Apps fließen – einschließlich JSON, XML, Flatfiles und binären Daten. Zwar werden alle Inhaltstypen unterstützt, für einige bietet die Logic Apps-Engine jedoch native Unterstützung. während andere möglicherweise eine Umwandlung oder Konvertierung erfordern. In diesem Artikel wird beschrieben, wie die Engine verschiedene Inhaltstypen behandelt und wie diese Typen bei Bedarf ordnungsgemäß behandelt werden.
+Verschiedene Inhaltstypen können durch eine Logik-App fließen, z.B. JSON, XML, Flatfiles und binäre Daten. Logic Apps unterstützt zwar alle Inhaltstypen, doch einige verfügen über native Unterstützung und benötigen keine Umformung oder Umwandlung in Ihren Logik-Apps. Bei anderen Typen ist möglicherweise eine Umformung oder Umwandlung notwendig. In diesem Artikel wird beschrieben, wie Logic Apps Inhaltstypen behandelt, und wie Sie diese Typen bei Bedarf ordnungsgemäß umformen oder umwandeln können.
 
-## <a name="content-type-header"></a>Header „Content-Type“
+Um die geeignete Methode zur Behandlung von Inhaltstypen zu bestimmen, bezieht sich Logic Apps auf den `Content-Type`-Headerwert in HTTP-Aufrufen, z.B.:
 
-Sehen Sie sich zum Einstieg zunächst die beiden `Content-Types` an, die keine Konvertierung oder Umwandlung innerhalb einer Logik-App erfordern: `application/json` und `text/plain`.
+* [application/json](#application-json) (nativer Typ)
+* [text/plain](#text-plain) (nativer Typ)
+* [application/xml und application/octet-stream](#application-xml-octet-stream)
+* [Andere Inhaltstypen](#other-content-types)
 
-## <a name="applicationjson"></a>Anwendung/JSON
+<a name="application-json"></a>
 
-Die Workflow-Engine verlässt sich auf den `Content-Type`-Header aus HTTP-Aufrufen, um die richtige Verarbeitung zu ermitteln. Jede Anforderung mit dem Inhaltstyp `application/json` wird als JSON-Objekt gespeichert und behandelt. Zudem kann JSON-Inhalt standardmäßig ohne Umwandlung analysiert werden. 
+## <a name="applicationjson"></a>Anwendung/json
 
-Beispielsweise können Sie eine Anforderung mit dem Header `application/json ` in einem Workflow analysieren, indem Sie mithilfe eines Ausdruck wie `@body('myAction')['foo'][0]` den Wert `bar` in diesem Fall abrufen:
+Logic Apps speichert und behandelt jede Anforderung mit dem Inhaltstyp *application/json* als JavaScript Notation-Objekt (JSON). Standardmäßig können Sie JSON-Inhalt ohne Umwandlung analysieren. Um eine Anforderung mit einem Header des Inhaltstyps „application/json“ zu analysieren, können Sie einen Ausdruck verwenden. Dieses Beispiel gibt den Wert `dog` aus dem `animal-type`-Array ohne Umwandlung zurück: 
+ 
+`@body('myAction')['animal-type'][0]` 
+  
+  ```json
+  {
+    "client": {
+       "name": "Fido",
+       "animal-type": [ "dog", "cat", "rabbit", "snake" ]
+    }
+  }
+  ```
 
-```
-{
-    "data": "a",
-    "foo": [
-        "bar"
-    ]
-}
-```
+Wenn Sie mit JSON-Daten arbeiten, die keinen Header angeben, können Sie diese Daten manuell mithilfe der [json()-Funktion](../logic-apps/workflow-definition-language-functions-reference.md#json) in JSON umwandeln, z.B.: 
+  
+`@json(triggerBody())['animal-type']`
 
-Es ist keine zusätzliche Umwandlung erforderlich. Wenn Sie mit JSON-Daten arbeiten, für die kein Header angegeben wurde, können Sie diese mithilfe der `@json()`-Funktion manuell in JSON umwandeln, z.B.: `@json(triggerBody())['foo']`.
+### <a name="create-tokens-for-json-properties"></a>Erstellen von Token für JSON-Eigenschaften
 
-### <a name="schema-and-schema-generator"></a>Schema und Schemagenerator
+Logic Apps ermöglicht Ihnen, benutzerfreundliche Token zu generieren, die die Eigenschaften im JSON-Inhalt darstellen, sodass Sie auf diese Eigenschaften verweisen und sie leichter in Ihrem Logik-App-Workflow verwenden können.
 
-Der Anforderungstrigger ermöglicht Ihnen, ein JSON-Schema für die Nutzlast eingeben, deren Empfang Sie erwarten. Dieses Schema ermöglicht dem Designer, Token zu generieren, damit Sie den Inhalt der Anforderung nutzen können. Wenn Sie kein Schema haben, wählen Sie **Beispielnutzlast zum Generieren eines Schemas verwenden** aus, um ein JSON-Schema für eine Beispielnutzlast generieren zu können.
+* **Anforderungstrigger**
 
-![Schema](./media/logic-apps-http-endpoint/manualtrigger.png)
+  Wenn Sie diesen Trigger im Logik-App-Designer verwenden, können Sie ein JSON-Schema angeben, das die Nutzlast beschreibt, die Sie zu empfangen erwarten. 
+  Der Designer analysiert JSON-Inhalte mithilfe dieses Schemas und generiert benutzerfreundliche Token, die die Eigenschaften in Ihrem JSON-Inhalt darstellen. 
+  Sie können dann in Ihrem Logik-App-Workflow ganz einfach auf diese Eigenschaften verweisen und sie verwenden. 
+  
+  Wenn Sie nicht über ein Schema verfügen, können Sie das Schema generieren. 
+  
+  1. Wählen Sie im Anforderungstrigger **Beispielnutzlast zum Generieren eines Schemas verwenden** aus.  
+  
+  2. Geben Sie unter **Geben oder fügen Sie eine JSON-Beispielnutzlast ein** eine Beispielnutzlast ein, und wählen Sie dann **Fertig**. Beispiel:  
 
-### <a name="parse-json-action"></a>JSON-Analyseaktion
+     ![Angeben einer JSON-Beispielnutzlast](./media/logic-apps-content-type/request-trigger.png)
 
-Mit der Aktion vom Typ `Parse JSON` können Sie JSON-Inhalt analysieren, um anzeigbare Token zur Nutzung in der Logik-App zu erhalten. Ähnlich wie beim Anforderungstrigger können Sie mit dieser Aktion ein JSON-Schema für den Inhalt, den Sie analysieren möchten, eingeben oder generieren. Dieses Tool erleichtert die Nutzung von Daten von Service Bus, Azure Cosmos DB usw. wesentlich.
+     Das generierte Schema wird jetzt in Ihrem Trigger angezeigt.
 
-![JSON-Analyse](./media/logic-apps-content-type/ParseJSON.png)
+     ![Angeben einer JSON-Beispielnutzlast](./media/logic-apps-content-type/generated-schema.png)
+
+     Hier ist die zugrunde liegende Definition für Ihren Anforderungstrigger im Codeansicht-Editor:
+
+     ```json
+     "triggers": { 
+        "manual": {
+           "type": "Request",
+           "kind": "Http",
+           "inputs": { 
+              "schema": {
+                 "type": "object",
+                 "properties": {
+                    "client": {
+                       "type": "object",
+                       "properties": {
+                          "animal-type": {
+                             "type": "array",
+                             "items": {
+                                "type": "string"
+                             },
+                          },
+                          "name": {
+                             "type": "string"
+                          }
+                       }
+                    }
+                 }
+              }
+           }
+        }
+     }
+     ```
+
+  3. Stellen Sie in der Anforderung sicher, dass Sie einen `Content-Type`-Header einbeziehen, und legen Sie als Headerwert `application/json` fest.
+
+* **JSON-Analyseaktion**
+
+  Wenn Sie diese Aktion im Logik-App-Designer verwenden, können Sie die JSON-Ausgabe analysieren und benutzerfreundliche Token generieren, die die Eigenschaften in Ihrem JSON-Inhalt darstellen. 
+  Sie können dann in Ihrem Logik-App-Workflow ganz einfach auf diese Eigenschaften verweisen und sie verwenden. Ähnlich wie beim Anforderungstrigger können Sie ein JSON-Schema eingeben oder generieren, das den JSON-Inhalt beschreibt, den Sie analysieren möchten. 
+  Auf diese Weise können Sie leichter Daten von Azure Service Bus, Azure Cosmos DB usw. nutzen.
+
+  ![JSON-Analyse](./media/logic-apps-content-type/parse-json.png)
+
+<a name="text-plain"></a>
 
 ## <a name="textplain"></a>text/plain
 
-Ähnlich wie bei `application/json` werden eingehende HTTP-Nachrichten mit dem `Content-Type`-Header `text/plain` im Rohformat gespeichert. Darüber hinaus wird die Anforderung bei nachfolgenden Aktionen ohne Umwandlung mit dem Header `Content-Type`: `text/plain` übermittelt. Bei der Arbeit mit einer Flatfile erhalten Sie beispielsweise den folgenden HTTP-Inhalt als `text/plain`:
+Wenn Ihre Logik-App HTTP-Nachrichten empfängt, für deren `Content-Type`-Header `text/plain` festgelegt ist, speichert Ihre Logik-App diese Nachrichten unformatiert. Wenn Sie diese Nachrichten ohne Umwandlung in nachfolgende Aktionen einbeziehen, werden Anforderungen ausgegeben, in denen der `Content-Type`-Header auf `text/plain` festgelegt ist. 
 
-```
-Date,Name,Address
-Oct-1,Frank,123 Ave.
-```
+Wenn Sie z.B. mit einer Flatfile-Datei arbeiten, erhalten Sie möglicherweise eine HTTP-Anforderung, in der für den `Content-Type`-Header der `text/plain`-Inhaltstyp festgelegt ist:
 
-Wenn Sie in der nächsten Aktion diese Anforderung als Text einer anderen Anforderung senden (`@body('flatfile')`), hat die Anforderung den Inhaltstypheader `text/plain`. Wenn Sie mit Daten im Textformat arbeiten, für die kein Header angegeben wurde, können Sie diese mithilfe der `@string()`-Funktion manuell umwandeln , z.B. `@string(triggerBody())`.
+`Date,Name,Address`</br>
+`Oct-1,Frank,123 Ave`
 
-## <a name="applicationxml-and-applicationoctet-stream-and-converter-functions"></a>application/xml und application/octet-stream und Konvertierungsfunktionen
+Wenn Sie diese Anforderung anschließend in einer späteren Aktion als Text für eine andere Anforderung senden, z.B. `@body('flatfile')`, dann verfügt diese zweite Anforderung auch über einen `Content-Type`-Header, für den `text/plain` festgelegt ist. Wenn Sie mit Nur-Text-Daten arbeiten, jedoch keinen Header angegeben haben, können Sie diese Daten mithilfe der [string()-Funktion](../logic-apps/workflow-definition-language-functions-reference.md#string) wie in diesem Ausdruck manuell in Text umwandeln: 
 
-Die Logic Apps-Engine behält immer den `Content-Type` bei, der in der HTTP-Anforderung oder der Antwort empfangen wurde. Wenn ein Inhalt mit dem `Content-Type` `application/octet-stream` eingeht, führt das Einfügen in eine nachfolgende Aktion ohne Umwandlung zu einer ausgehenden Anforderung mit `Content-Type`: `application/octet-stream`. Auf diese Weise kann die Engine garantieren, dass die Daten beim Austausch im gesamten Workflow nicht verloren gehen. Der Aktionszustand (Eingaben und Ausgaben) wird jedoch in einem JSON-Objekt gespeichert, während er den Workflow durchläuft. Zum Erhalten einiger Datentypen konvertiert die Engine den Inhalt in eine Base64-codierte Binärzeichenfolge mit entsprechenden Metadaten, in der `$content` und `$content-type` beibehalten werden, wobei eine automatische Konvertierung erfolgt. 
+`@string(triggerBody())`
 
-* `@json()`: wandelt Daten in `application/json` um
-* `@xml()`: wandelt Daten in `application/xml` um
-* `@binary()`: wandelt Daten in `application/octet-stream` um
-* `@string()`: wandelt Daten in `text/plain` um
-* `@base64()` : konvertiert Inhalt in eine Base64-Zeichenfolge
-* `@base64toString()`: konvertiert eine Base64-codierte Zeichenfolge in `text/plain`
-* `@base64toBinary()`: konvertiert eine Base64-codierte Zeichenfolge in `application/octet-stream`
-* `@encodeDataUri()` : codiert eine Zeichenfolge als dataUri-Bytearray
-* `@decodeDataUri()` : decodiert einen dataUri in ein Bytearray
+<a name="application-xml-octet-stream"></a>
 
-Wenn Sie z.B. eine HTTP-Anforderung mit `Content-Type`: `application/xml` empfangen:
+## <a name="applicationxml-and-applicationoctet-stream"></a>application/xml und application/octet-stream
 
-```
+Logic Apps behält den `Content-Type` immer in einer empfangenen HTTP-Anforderung oder Antwort bei. Wenn also Ihre Logik-App Inhalt empfängt, bei dem `Content-Type` auf `application/octet-stream` festgelegt ist, und Sie diesen Inhalt ohne Umwandlung in eine nachfolgende Aktion einschließen, ist in der ausgehenden Anforderung auch für `Content-Type` der Wert `application/octet-stream` festgelegt. So kann Logic Apps garantieren, dass keine Daten auf dem Weg durch den Workflow verlorengehen. Der Aktionszustand, d.h. Eingaben und Ausgaben, wird jedoch in einem JSON-Objekt gespeichert, während er den Workflow durchläuft. 
+
+## <a name="converter-functions"></a>Konvertierungsfunktionen
+
+Zum Erhalten einiger Datentypen konvertiert Logic Apps den Inhalt in eine Base64-codierte Binärzeichenfolge mit entsprechenden Metadaten, in der `$content`-Nutzlast und `$content-type` beibehalten werden, wobei eine automatische Konvertierung erfolgt. 
+
+In dieser Liste wird beschrieben, wie Logic Apps Inhalt konvertiert, wenn Sie diese [Funktionen](../logic-apps/workflow-definition-language-functions-reference.md) verwenden:
+
+* `json()`: konvertiert Daten in `application/json`
+* `xml()`: konvertiert Daten in `application/xml`
+* `binary()`: konvertiert Daten in `application/octet-stream`
+* `string()`: konvertiert Daten in `text/plain`
+* `base64()`: konvertiert Inhalt in eine Base64-Zeichenfolge
+* `base64toString()`: konvertiert eine Base64-codierte Zeichenfolge in `text/plain`
+* `base64toBinary()`: konvertiert eine Base64-codierte Zeichenfolge in `application/octet-stream`
+* `encodeDataUri()`: codiert eine Zeichenfolge als dataUri-Bytearray
+* `decodeDataUri()`: decodiert eine `dataUri` in ein Bytearray
+
+Wenn Sie z.B. eine HTTP-Anforderung erhalten, in der für `Content-Type` der Wert `application/xml` festgelegt ist, z.B. diesen Inhalt:
+
+```html
 <?xml version="1.0" encoding="UTF-8" ?>
 <CustomerName>Frank</CustomerName>
 ```
 
-können Sie mit `@xml(triggerBody())` eine Umwandlung durchführen und sie später verwenden, oder Sie verwenden dazu eine Funktion wie `@xpath(xml(triggerBody()), '/CustomerName')`.
+Sie können diesen Inhalt mithilfe des `@xml(triggerBody())`-Ausdrucks mit der `xml()`- und `triggerBody()`-Funktion umwandeln und diesen Inhalt später verwenden. Alternativ können Sie den `@xpath(xml(triggerBody()), '/CustomerName')`-Ausdruck mit der `xpath()`- und `xml()`-Funktion verwenden. 
 
 ## <a name="other-content-types"></a>Andere Inhaltstypen
 
-Andere Inhaltstypen werden ebenfalls unterstützt und können in einer Logik-App verwendet werden. Sie müssen aber möglicherweise den Nachrichtentext manuell abrufen, indem Sie den `$content` decodieren. Lösen Sie beispielsweise eine `application/x-www-url-formencoded`-Anforderung aus, bei der `$content` die Nutzlast ist, die als Base64-Zeichenfolge codiert ist, um alle Daten zu erhalten:
+Logic Apps arbeitet mit anderen Inhaltstypen und unterstützt sie, aber es kann erforderlich sein, dass Sie den Nachrichtentext manuell durch Decodieren der `$content`-Variablen erhalten.
 
-```
-CustomerName=Frank&Address=123+Avenue
-```
+Nehmen Sie beispielsweise an, dass Ihre Logik-App durch eine Anforderung mit dem `application/x-www-url-formencoded`-Inhaltstyp ausgelöst wird. Um alle Daten beizubehalten, hat die `$content`-Variable im Anforderungstext eine Nutzlast, die als Base64-Zeichenfolge codiert ist:
+
+`CustomerName=Frank&Address=123+Avenue`
 
 Da die Eingabe der Anforderung nicht im Nur-Text- oder JSON-Format erfolgt ist, wird die Anforderung wie folgt in der Aktion gespeichert:
 
-```
-...
+```json
 "body": {
-    "$content-type": "application/x-www-url-formencoded",
-    "$content": "AAB1241BACDFA=="
+   "$content-type": "application/x-www-url-formencoded",
+   "$content": "AAB1241BACDFA=="
 }
 ```
 
-Derzeit gibt es keine native Funktion für Formulardaten. Daher können Sie diese Daten innerhalb eines Workflows verwenden. Greifen Sie dazu manuell mit einer Funktion wie `@string(body('formdataAction'))` auf die Daten zu. Wenn die ausgehende Anforderung auch den Inhaltstypheader `application/x-www-url-formencoded` haben soll, können Sie die Anforderung einfach im Aktionstext hinzufügen, ohne eine Umwandlung wie `@body('formdataAction')` durchzuführen. Diese Methode funktioniert jedoch nur, wenn der Text der einzige Parameter der `body`-Eingabe ist. Wenn Sie versuchen, `@body('formdataAction')` in einer `application/json`-Anforderung zu verwenden, erhalten Sie einen Laufzeitfehler, da der codierte Text gesendet wird.
+Logic Apps bietet native Funktionen für die Behandlung von Formulardaten, z.B.: 
 
+* [triggerFormDataValue()](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue)
+* [triggerFormDataMultiValues()](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataMultiValues)
+* [formDataValue()](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) 
+* [formDataMultiValues()](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues)
+
+Alternativ können Sie mithilfe eines Ausdrucks wie in diesem Beispiel manuell auf die Daten zugreifen:
+
+`@string(body('formdataAction'))` 
+
+Wenn die ausgehende Anforderung denselben Inhaltstypheader `application/x-www-url-formencoded` haben soll, können Sie die Anforderung mithilfe eines Ausdrucks wie `@body('formdataAction')` ohne Umwandlung dem Aktionstext hinzufügen. Diese Methode funktioniert jedoch nur, wenn der Text der einzige Parameter der `body`-Eingabe ist. Wenn Sie versuchen, den `@body('formdataAction')`-Ausdruck in einer `application/json`-Anforderung zu verwenden, erhalten Sie eine Laufzeitfehlermeldung, da der Text codiert gesendet wird.

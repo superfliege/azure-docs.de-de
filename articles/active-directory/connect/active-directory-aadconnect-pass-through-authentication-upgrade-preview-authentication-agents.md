@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/14/2018
+ms.date: 07/23/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: e955973008f1ba3900deb691426d0409440ad08a
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: be76965e99a20c1f7164187255e26f6463926c2f
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917726"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214726"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory-Passthrough-Authentifizierung – Upgrade von Authentifizierungs-Agents der Vorschau
 
@@ -51,7 +51,7 @@ Um die Versionen der Authentifizierungs-Agents zu überprüfen, die im vorherige
 
 1. Wechseln Sie auf dem lokalen Server zu **Systemsteuerung -> Programme -> Programme und Funktionen**.
 2. Wenn ein Eintrag für **Microsoft Azure AD Connect-Authentifizierungs-Agent** vorhanden ist, müssen Sie auf diesem Server nichts weiter tun.
-3. Wenn Sie einen Eintrag für **Microsoft Azure AD-Anwendungsproxyconnector** Version 1.5.132.0 oder früher sehen, müssen Sie auf diesem Server ein manuelles Upgrade durchführen.
+3. Wenn Sie einen Eintrag für **Microsoft Azure AD-Anwendungsproxyconnector** sehen, müssen Sie auf diesem Server ein manuelles Upgrade durchführen.
 
 ![Vorschauversion des Authentifizierungs-Agents](./media/active-directory-aadconnect-pass-through-authentication/pta6.png)
 
@@ -60,7 +60,7 @@ Um die Versionen der Authentifizierungs-Agents zu überprüfen, die im vorherige
 Stellen Sie vor dem Upgrade sicher, dass folgende Elemente vorhanden sind:
 
 1. **Erstellen Sie ein rein cloudbasiertes globales Administratorkonto**: Führen Sie ein Upgrade erst durch, wenn Sie über ein globales Administratorkonto verfügen, das nur in der Cloud verwendet wird. Dieses benötigen Sie für Notfallsituationen, in denen Ihre Passthrough-Authentifizierungs-Agents nicht ordnungsgemäß funktionieren. Erfahren Sie, wie Sie ein [rein cloudbasiertes Konto für den globalen Administrator hinzufügen](../active-directory-users-create-azure-portal.md). Dieser Schritt ist unerlässlich und stellt sicher, dass Sie sich nicht aus Ihrem Mandanten aussperren.
-2.  **Stellen Sie Hochverfügbarkeit sicher**: Sofern noch nicht geschehen, installieren Sie einen zweiten eigenständigen Authentifizierungs-Agent, um Hochverfügbarkeit für Anmeldeanforderungen bereitzustellen. Folgen Sie [diesen Anweisungen](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability).
+2.  **Stellen Sie Hochverfügbarkeit sicher**: Sofern noch nicht geschehen, installieren Sie einen zweiten eigenständigen Authentifizierungs-Agent, um Hochverfügbarkeit für Anmeldeanforderungen bereitzustellen. Folgen Sie [diesen Anweisungen](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
 
 ## <a name="upgrading-the-authentication-agent-on-your-azure-ad-connect-server"></a>Aktualisieren des Authentifizierungs-Agents auf Ihrem Azure AD Connect-Server
 

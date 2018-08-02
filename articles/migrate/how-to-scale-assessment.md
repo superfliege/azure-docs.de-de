@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: d7814b976529bf7032edd54e4afd574ce766e5dd
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 4bcb6734c33d70e4045860a2c0f0acfedfa06eff
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919861"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215178"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Ermitteln und Bewerten einer umfangreichen VMware-Umgebung
 

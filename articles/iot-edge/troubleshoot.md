@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ecd19acdeba57a29a28187d42783bbf146095190
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: eb185a83ea154025e94c01c7b142a8d16fce91ab
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001904"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258346"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Häufig auftretende Probleme und Lösungen für Azure IoT Edge
 
@@ -292,6 +292,24 @@ Im Bereitstellungsmanifest:
       }
     },
 ```
+## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>IoT Edge-Daemonprotokolle in Windows können nicht abgerufen werden.
+Wenn Sie bei Verwendung von `Get-WinEvent` unter Windows eine EventLogException-Meldung erhalten, überprüfen Sie Ihre Registrierungseinträge.
+
+### <a name="root-cause"></a>Grundursache
+Damit der `Get-WinEvent`-PowerShell-Befehl Protokolle anhand eines bestimmten `ProviderName` suchen kann, muss ein Registrierungseintrag vorhanden sein.
+
+### <a name="resolution"></a>Lösung
+Legen Sie einen Registrierungseintrag für den IoT Edge-Daemon fest. Erstellen Sie eine Datei vom Typ **iotedge.reg** mit dem folgenden Inhalt, und importieren Sie sie in die Windows-Registrierung, indem Sie auf die Datei doppelklicken oder den Befehl `reg import iotedge.reg` ausführen:
+
+```
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\Application\iotedged]
+"CustomSource"=dword:00000001
+"EventMessageFile"="C:\\ProgramData\\iotedge\\iotedged.exe"
+"TypesSupported"=dword:00000007
+```
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sind Sie der Meinung, dass Sie in der IoT Edge-Plattform einen Fehler gefunden haben? [Übermitteln Sie Ihr Problem](https://github.com/Azure/iotedge/issues), damit wir die Plattform weiter verbessern können. 

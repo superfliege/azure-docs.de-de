@@ -11,17 +11,17 @@ ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 05/31/2018
+ms.date: 07/19/2018
 ms.author: renash
-ms.openlocfilehash: d11ddb0bc15798187ccea22fe1a80a9c86162dcd
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 89c1bb0404e1fbff9241fe42404123288fffea71
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866469"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160228"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
-[Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das branchenübliche [Protokoll Server Message Block (SMB) zugegriffen werden kann](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem Azure File Sync (Vorschauversion) verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
+[Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das branchenübliche [Protokoll Server Message Block (SMB) zugegriffen werden kann](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem Azure File Sync verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
 
 In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -Funktionen beantwortet, z.B. die Nutzung von Azure File Sync mit Azure Files. Wenn Sie hier keine Antwort auf Ihre Frage finden, können Sie sich über die folgenden Kanäle an uns wenden (Eskalationsreihenfolge):
 
@@ -90,8 +90,8 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 ## <a name="azure-file-sync"></a>Azure-Dateisynchronisierung
 
 * <a id="afs-region-availability"></a>
-**Welche Regionen werden für Azure File Sync (Vorschau) unterstützt?**  
-    Azure File Sync ist derzeit in den Regionen „Australien, Osten“, „Australien, Südosten“, „Kanada, Mitte“, „Kanada, Osten“, „USA, Mitte“, „Asien, Osten“, „USA Osten“, „USA, Osten 2“, „Europa, Norden“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Europa, Westen“ und „USA, Westen“ verfügbar. Unterstützung für weitere Regionen wird hinzugefügt, während auf die allgemeine Verfügbarkeit hingearbeitet wird. Weitere Informationen finden Sie unter [Regionale Verfügbarkeit](storage-sync-files-planning.md#region-availability).
+**Welche Regionen werden für Azure File Sync unterstützt?**  
+    Eine Liste der verfügbaren Regionen finden Sie im Abschnitt [Regionsverfügbarkeit](storage-sync-files-planning.md#region-availability) im Azure File Sync-Planungshandbuch. Wir erweitern den Support kontinuierlich auf weitere Regionen, einschließlich nicht öffentliche Regionen.
 
 * <a id="cross-domain-sync"></a>
 **Kann ich in Domänen eingebundene Server und nicht in Domänen eingebundene Server in derselben Synchronisierungsgruppe verwenden?**  
@@ -367,4 +367,4 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 ## <a name="see-also"></a>Weitere Informationen
 * [Behandeln von Azure Files-Problemen unter Windows](storage-troubleshoot-windows-file-connection-problems.md)
 * [Behandeln von Azure Files-Problemen unter Linux](storage-troubleshoot-linux-file-connection-problems.md)
-* [Problembehandlung bei Azure File Sync (Vorschau)](storage-sync-files-troubleshoot.md)
+* [Problembehandlung für Azure File Sync](storage-sync-files-troubleshoot.md)

@@ -6,15 +6,15 @@ author: seanmck
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 39c43c079ea4d10686bd656ba2d451ff42aac9f6
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 550b53cf40133c8a67306c61cbfa7dae21be4648
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700229"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39163628"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Beheben von häufigen Problemen in Azure Container Instances
 
@@ -22,25 +22,43 @@ In diesem Artikel wird veranschaulicht, wie Sie häufige Probleme beim Verwalten
 
 ## <a name="naming-conventions"></a>Benennungskonventionen
 
-Wenn Sie Ihre Containerspezifikation definieren, erfordern bestimmte Parameter die Einhaltung von Benennungseinschränkungen. Nachfolgend sehen Sie eine Tabelle mit bestimmten Anforderungen für Containergruppeneigenschaften.
-Weitere Informationen zu Benennungskonventionen für Azure finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions) Im Azure Architecture Center.
+Wenn Sie Ihre Containerspezifikation definieren, erfordern bestimmte Parameter die Einhaltung von Benennungseinschränkungen. Nachfolgend sehen Sie eine Tabelle mit bestimmten Anforderungen für Containergruppeneigenschaften. Weitere Informationen zu Benennungskonventionen für Azure finden Sie unter [Benennungskonventionen][azure-name-restrictions] Im Azure Architecture Center.
 
-| Umfang | Länge | Schreibweise | Gültige Zeichen | Vorgeschlagenes Muster | Beispiel |
+| Bereich | Länge | Schreibweise | Gültige Zeichen | Vorgeschlagenes Muster | Beispiel |
 | --- | --- | --- | --- | --- | --- | --- |
 | Containergruppenname | 1-64 |Groß-/Kleinschreibung nicht beachten |Alphanumerisch und Bindestrich (beliebig), außer das erste oder letzte Zeichen |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Containername | 1-64 |Groß-/Kleinschreibung nicht beachten |Alphanumerisch und Bindestrich (beliebig), außer das erste oder letzte Zeichen |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Containerports | Zwischen 1 und 65535 |Ganze Zahl  |Eine ganze Zahl zwischen 1 und 65535 |`<port-number>` |`443` |
 | DNS-Namensbezeichnung | 5–63 |Groß-/Kleinschreibung nicht beachten |Alphanumerisch und Bindestrich (beliebig), außer das erste oder letzte Zeichen |`<name>` |`frontend-site1` |
-| Umgebungsvariable | 1 - 63 |Groß-/Kleinschreibung nicht beachten |Alphanumerisch und das Zeichen „_“ (Unterstrich), außer das erste oder letzte Zeichen |`<name>` |`MY_VARIABLE` |
+| Umgebungsvariable | 1 - 63 |Groß-/Kleinschreibung nicht beachten |Alphanumerisch und Unterstrich (beliebig), außer das erste oder letzte Zeichen |`<name>` |`MY_VARIABLE` |
 | Volumename | 5–63 |Groß-/Kleinschreibung nicht beachten |Kleinbuchstaben, Zahlen und Bindestriche (beliebig), außer das erste oder letzte Zeichen. Zwei aufeinanderfolgende Bindestriche sind nicht erlaubt. |`<name>` |`batch-output-volume` |
 
-## <a name="image-version-not-supported"></a>Imageversion wird nicht unterstützt
+## <a name="os-version-of-image-not-supported"></a>Betriebssystemversion des Images wird nicht unterstützt
 
-Wenn Sie ein Image angeben, das von Azure Container Instances nicht unterstützt werden kann, wird der Fehler `ImageVersionNotSupported` zurückgegeben. Der Wert des Fehlers lautet `The version of image '{0}' is not supported.` und gilt derzeit für Windows 1709-Images. Verwenden Sie ein LTS Windows-Image, um dieses Problem zu beheben. An der Unterstützung für Windows 1709-Images wird gearbeitet.
+Wenn Sie ein Image angeben, das von Azure Container Instances nicht unterstützt wird, wird der Fehler `OsVersionNotSupported` zurückgegeben. Der Fehler ähnelt dem folgenden, wobei `{0}` der Name des Images ist, das Sie bereitstellen wollten:
+
+```json
+{
+  "error": {
+    "code": "OsVersionNotSupported",
+    "message": "The OS version of image '{0}' is not supported."
+  }
+}
+```
+
+Dieser Fehler tritt am häufigsten bei der Bereitstellung von Windows-Images auf, die auf einem SAC-Release (Semi-Annual Channel, halbjährlicher Kanal) basieren. Zum Beispiel sind die Windows-Versionen 1709 und 1803 SAC-Releases und generieren diesen Fehler bei der Bereitstellung.
+
+Azure Container Instances unterstützt Windows-Images, die ausschließlich auf LTSC-Versionen (Long-Term Servicing Channel, langfristiger Wartungskanal) basieren. Um dieses Problem bei der Bereitstellung von Windows-Containern zu beheben, sollten Sie immer LTSC-basierte Images einsetzen.
+
+Weitere Informationen zu den LTSC- und SAC-Versionen von Windows finden Sie unter [Übersicht: Windows Server, Semi-Annual Channel][windows-sac-overview].
 
 ## <a name="unable-to-pull-image"></a>Pullvorgang für Image nicht möglich
 
-Wenn Azure Container Instances den anfänglichen Pullvorgang für Ihr Image nicht durchführen kann, werden eine Zeit lang erneute Versuche gestartet, bevor der Fehler auftritt. Wenn das Image nicht abgerufen werden kann, werden in der Ausgabe von [az container show][az-container-show] beispielsweise folgende Ereignisse angezeigt:
+Wenn Azure Container Instances den anfänglichen Pullvorgang für Ihr Image nicht durchführen kann, werden eine Zeit lang erneute Versuche gestartet. Wenn während des Pullvorgangs für das Image weiterhin ein Fehler auftritt, tritt auch während der Bereitstellung in ACI schließlich ein Fehler auf, und Sie sehen möglicherweise einen `Failed to pull image`-Fehler.
+
+Um dieses Problem zu beheben, löschen Sie die Containerinstanz, und wiederholen Sie die Bereitstellung. Stellen Sie sicher, dass das Bild in der Registrierung vorhanden ist und Sie den Imagenamen richtig eingegeben haben.
+
+Wenn das Image nicht abgerufen werden kann, werden in der Ausgabe von [az container show][az-container-show] beispielsweise folgende Ereignisse angezeigt:
 
 ```bash
 "events": [
@@ -71,13 +89,11 @@ Wenn Azure Container Instances den anfänglichen Pullvorgang für Ihr Image nich
 ],
 ```
 
-Löschen Sie den Container, und führen Sie die Bereitstellung erneut durch, um zu versuchen, das Problem zu beheben. Achten Sie hierbei darauf, dass Sie den Imagenamen richtig eingegeben haben.
-
 ## <a name="container-continually-exits-and-restarts"></a>Container wird fortlaufend beendet und neu gestartet
 
 Wenn Ihr Container bis zum Ende ausgeführt und anschließend neu gestartet wird, müssen Sie unter Umständen für [Neustartrichtlinie](container-instances-restart-policy.md) entweder **OnFailure** oder **Never** festlegen. Wenn Sie **OnFailure** festlegen und der Container weiterhin neu gestartet wird, liegt unter Umständen ein Problem mit der Anwendung oder dem Skript vor, die bzw. das im Container ausgeführt wird.
 
-Die Container Instances-API enthält eine `restartCount`-Eigenschaft. Die Anzahl von Neustarts für einen Container können Sie mit dem Befehl [az container show][az-container-show] in der Azure CLI 2.0 überprüfen. In der folgenden (gekürzten) Beispielausgabe sehen Sie die `restartCount`-Eigenschaft am Ende der Ausgabe.
+Die Container Instances-API enthält eine `restartCount`-Eigenschaft. Die Anzahl von Neustarts für einen Container können Sie mit dem Befehl [az container show][az-container-show] in der Azure CLI überprüfen. In der folgenden (gekürzten) Beispielausgabe sehen Sie die `restartCount`-Eigenschaft am Ende der Ausgabe.
 
 ```json
 ...
@@ -173,10 +189,16 @@ Dieser Fehler gibt an, dass aufgrund starker Auslastung in der Region, in der di
 * Führen Sie die Bereitstellung in einer anderen Azure-Region durch.
 * Führen Sie die Bereitstellung zu einem späteren Zeitpunkt durch.
 
+## <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>Verbinden mit zugrundeliegender Docker-API zum Ausführen privilegierte Container nicht möglich
+
+Azure Container Instances bietet keinen direkten Zugriff auf die zugrundeliegende Infrastruktur, die Containergruppen hostet. Dazu gehört der Zugriff auf die Docker-API, die auf dem Containerhost läuft, und die Ausführung von privilegierten Containern. Wenn Sie Docker-Interaktion benötigen, lesen Sie die [REST-Referenzdokumentation](https://aka.ms/aci/rest), um zu sehen, was die ACI-API unterstützt. Wenn Sie etwas nicht finden, senden Sie eine Anforderung an die [ACI-Feedbackforen](https://aka.ms/aci/feedback).
+
 ## <a name="next-steps"></a>Nächste Schritte
 Erfahren Sie, wie Sie [Containerprotokolle und -ereignisse abrufen](container-instances-get-logs.md), um Ihre Container zu debuggen.
 
 <!-- LINKS - External -->
+[azure-name-restrictions]: https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions
+[windows-sac-overview]: https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/r/microsoft/windowsservercore/
 [docker-hub-windows-nano]: https://hub.docker.com/r/microsoft/nanoserver/

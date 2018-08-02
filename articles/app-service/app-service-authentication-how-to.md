@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: cephalin
-ms.openlocfilehash: 688ea090384755b9a6d60a4968d958678edc27ad
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 191d42f43e500c7f8041a02aeba2fbcb7dfd5379
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337178"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226525"
 ---
 # <a name="customize-authentication-and-authorization-in-azure-app-service"></a>Anpassen der Authentifizierung und Autorisierung in Azure App Service
 
@@ -53,6 +53,12 @@ Fügen Sie auf der Anmeldeseite, der Navigationsleiste oder an einer anderen Ste
 ```
 
 Wenn der Benutzer auf einen der Links klickt, wird die entsprechende Anmeldeseite geöffnet, um den Benutzer anzumelden.
+
+Um den Benutzer nach der Anmeldung auf eine benutzerdefinierte URL umzuleiten, verwenden Sie den `post_login_redirect_url`-Abfragezeichenfolgen-Parameter (nicht zu verwechseln mit der Umleitungs-URI in der Konfiguration Ihres Identitätsanbieters). Zur Umleitung des Benutzers auf `/Home/Index` nach der Anmeldung verwenden Sie zum Beispiel den folgenden HTML-Code:
+
+```HTML
+<a href="/.auth/login/<provider>?post_login_redirect_url=/Home/Index">Log in</a>
+```
 
 ## <a name="access-user-claims"></a>Zugriff auf Benutzeransprüche
 

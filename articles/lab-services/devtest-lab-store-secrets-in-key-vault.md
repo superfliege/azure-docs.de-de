@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 0397c520dd0135df56e7eb7e8cd6ed7ffa46156e
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: d87c8a46459a9b4bf80bef895ec97e436d38e699
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39012238"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186831"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Speichern von Geheimnissen in einem Schlüsseltresor in Azure DevTest Labs
 Möglicherweise möchten Sie bei der Verwendung von Azure DevTest Labs ein komplexes Geheimnis eingeben: das Kennwort für Ihre Windows-VM, den öffentlichen SSH-Schlüssel für Ihre Linux-VM oder das persönliche Zugriffstoken zum Klonen Ihres Git-Repositorys über ein Artefakt. Geheimnisse sind in der Regel lang und weisen zufällige Zeichen auf. Aus diesem Grund kann ihre Eingabe schwierig und unpraktisch sein, insbesondere dann, wenn Sie das gleiche Geheimnis mehrmals verwenden.
 
-Um dieses Problem zu lösen und auch Ihre Geheimnisse an einem sicheren Ort zu speichern, unterstützt DevTest Labs das Speichern von Geheimnissen in einer [Azure Key Vault-Instanz](../key-vault/key-vault-overview.md). Wenn ein Benutzer zum ersten Mal ein Geheimnis speichert, erstellt der DevTest Labs-Dienst automatisch einen Schlüsseltresor in der gleichen Ressourcengruppe, die das Lab enthält, und speichert das Geheimnis im Schlüsseltresor. 
+Um dieses Problem zu lösen und auch Ihre Geheimnisse an einem sicheren Ort zu speichern, unterstützt DevTest Labs das Speichern von Geheimnissen in einer [Azure Key Vault-Instanz](../key-vault/key-vault-overview.md). Wenn ein Benutzer zum ersten Mal ein Geheimnis speichert, erstellt der DevTest Labs-Dienst automatisch einen Schlüsseltresor in der gleichen Ressourcengruppe, die das Lab enthält, und speichert das Geheimnis im Schlüsseltresor. DevTest Labs erstellt für jeden Benutzer einen separaten Schlüsseltresor. 
 
 ## <a name="save-a-secret-in-azure-key-vault"></a>Speichern eines Geheimnisses in Azure Key Vault
 Um Ihr Geheimnis in Azure Key Vault zu speichern, führen Sie die folgenden Schritte aus:

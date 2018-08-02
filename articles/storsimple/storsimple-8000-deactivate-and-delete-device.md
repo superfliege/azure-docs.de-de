@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/23/2017
+ms.date: 07/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 3c00867a29cf8343a57e74e2aabe3971ae6837af
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a2b764e76cd1987c83e7be38d365c1dfa8513db9
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108458"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214787"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>Deaktivieren und Löschen eines StorSimple-Geräts
 
@@ -110,7 +110,7 @@ Beim Deaktivieren werden die folgenden Aktionen ausgeführt:
 
 * Die StorSimple Cloud Appliance wird aus dem Dienst entfernt.
 * Der virtuelle Computer der StorSimple-Appliance Cloud wird gelöscht.
-* Der für die StorSimple Cloud Appliance erstellte Betriebssystemdatenträger und die Datenträger für Daten werden entfernt.
+* Der für die StorSimple-Cloudappliance erstellte Betriebssystemdatenträger und die Datenträger für Daten werden entfernt. Wenn diese Entitäten nicht verwendet werden, sollten sie manuell gelöscht werden.
 * Der bei der Bereitstellung erstellte gehostete Dienst und das virtuelle Netzwerk bleiben erhalten. Wenn diese Entitäten nicht verwendet werden, sollten sie manuell gelöscht werden.
 * Von der StorSimple Cloud Appliance erstellte Cloudmomentaufnahmen werden beibehalten.
 

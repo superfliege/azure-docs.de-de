@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: a7ddcb834b135d2177355a0523c7e99bcc599e99
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 42d5b55e0bddf2d027810bfdf146de9bfee8a0fb
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931513"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188130"
 ---
 # <a name="create-list-and-delete-a-user-assigned-identity-using-azure-resource-manager"></a>Erstellen, Auflisten und Löschen einer vom Benutzer zugewiesenen Identität mithilfe des Azure Resource Manager
 
@@ -37,8 +37,8 @@ Das Auflisten und Löschen einer vom Benutzer zugewiesenen Identität mithilfe e
 
 - Wenn Sie nicht mit „Verwaltete Dienstidentität“ vertraut sind, helfen Ihnen die Informationen in dieser [Übersicht](overview.md) weiter. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen Identität](overview.md#how-does-it-work)** bewusst.
 - Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
-
-Verwenden Sie unabhängig davon, ob Sie sich bei Azure lokal oder über das Azure-Portal anmelden, ein Konto, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält. Stellen Sie außerdem sicher, dass Ihr Konto zu einer Rolle gehört, durch die Sie Schreibberechtigungen auf dem virtuellen Computer erhalten (z.B. die Rolle „Mitwirkender für virtuelle Computer“).
+- Um die Vorgänge in diesem Artikel durchzuführen, benötigt Ihr Konto die folgende Rollenzuweisung:
+    - Rolle [Mitwirkender für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) zum Erstellen, Lesen (Auflisten), Aktualisieren und Löschen einer vom Benutzer zugewiesenen Identität
 
 ## <a name="template-creation-and-editing"></a>Erstellung und Bearbeitung von Vorlagen
 

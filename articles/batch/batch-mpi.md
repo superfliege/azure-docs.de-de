@@ -11,15 +11,15 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
-ms.date: 5/22/2017
+ms.date: 06/12/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0fb5ea21c6403369cbcb60df58c0f70a57a61d4e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a443dd7ed4f95b3e283603fa8938a08c2c177827
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30160755"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39174301"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Verwenden von Tasks mit mehreren Instanzen zum Ausführen von MPI-Anwendungen (Message Passing Interface) in Batch
 
@@ -62,8 +62,8 @@ CloudPool myCloudPool =
     myBatchClient.PoolOperations.CreatePool(
         poolId: "MultiInstanceSamplePool",
         targetDedicatedComputeNodes: 3
-        virtualMachineSize: "small",
-        cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));
+        virtualMachineSize: "standard_d1_v2",
+        cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));
 
 // Multi-instance tasks require inter-node communication, and those nodes
 // must run only one task at a time.
@@ -73,10 +73,7 @@ myCloudPool.MaxTasksPerComputeNode = 1;
 
 > [!NOTE]
 > Wenn Sie versuchen, einen Task mit mehreren Instanzen in einem Pool auszuführen, in dem die knotenübergreifende Kommunikation deaktiviert ist oder der einen höheren *maxTasksPerNode* -Wert als 1 aufweist, wird der Task nie geplant – er bleibt auf unbestimmte Zeit im aktiven Zustand. 
->
-> Tasks mit mehreren Instanzen können nur auf Knoten in Pools ausgeführt werden, die nach dem 14. Dezember 2015 erstellt wurde.
->
->
+
 
 ### <a name="use-a-starttask-to-install-mpi"></a>Verwenden eines StartTask-Elements für die MPI-Installation
 Zum Ausführen von MPI-Anwendungen mit einem Task mit mehreren Instanzen müssen Sie zunächst eine MPI-Implementierung (z.B. MS-MPI oder Intel MPI) auf den Computeknoten im Pool installieren. Dies ist der ideale Zeitpunkt, um einen [StartTask][net_starttask] zu verwenden, der immer ausgeführt wird, wenn ein Knoten mit einem Pool verknüpft oder neu gestartet wird. Mit diesem Codeausschnitt wird ein StartTask erstellt, mit dem das MS-MPI-Setup-Paket als [Ressourcendatei][net_resourcefile] angegeben wird. Die Befehlszeile des Starttask wird ausgeführt, nachdem die Ressourcendatei auf den Knoten heruntergeladen wird. In diesem Fall führt die Befehlszeile eine unbeaufsichtigte Installation von MS-MPI durch.
@@ -284,12 +281,12 @@ Im Codebeispiel [MultiInstanceTasks][github_mpi] auf GitHub wird veranschaulicht
 
 ### <a name="execution"></a>Ausführung
 1. Laden Sie [azure-batch-samples][github_samples_zip] von GitHub herunter.
-2. Öffnen Sie die MultiInstanceTasks-**Projektmappe** in Visual Studio 2015 oder höher. Die Lösungsdatei `MultiInstanceTasks.sln` befindet sich hier:
+2. Öffnen Sie die **Lösung** „MultiInstanceTasks“ in Visual Studio 2017. Die Lösungsdatei `MultiInstanceTasks.sln` befindet sich hier:
 
     `azure-batch-samples\CSharp\ArticleProjects\MultiInstanceTasks\`
 3. Geben Sie die Anmeldeinformationen für Ihr Batch- und Storage-Konto in `AccountSettings.settings` im Projekt **Microsoft.Azure.Batch.Samples.Common** ein.
 4. **Erstellen Sie die Lösung MultiInstanceTasks, und führen Sie sie aus**, damit die MPI-Beispielanwendung auf den Computeknoten in einem Batch-Pool ausgeführt wird.
-5. *Optional*: Verwenden Sie das [Azure-Portal][portal] oder [BatchLabs][batch_labs], um Beispielpool, -auftrag und -task („MultiInstanceSamplePool“, „MultiInstanceSampleJob“, „MultiInstanceSampleTask“) vor dem Löschen der Ressourcen zu untersuchen.
+5. *Optional*: Verwenden Sie das [Azure-Portal][portal] oder den [Batch Explorer][batch_labs], um Beispielpool, -auftrag und -task („MultiInstanceSamplePool“, „MultiInstanceSampleJob“, „MultiInstanceSampleTask“) vor dem Löschen der Ressourcen zu untersuchen.
 
 > [!TIP]
 > Sie können [Visual Studio Community][visual_studio] kostenlos herunterladen, falls Sie Visual Studio noch nicht erworben haben.
@@ -339,7 +336,7 @@ Sample complete, hit ENTER to exit...
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
-[batch_labs]: https://azure.github.io/BatchLabs/
+[batch_labs]: https://azure.github.io/BatchExplorer/
 [blog_mpi_linux]: https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/
 [cmd_start]: https://technet.microsoft.com/library/cc770297.aspx
 [coord_cmd_example]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/article_samples/mpi/data/linux/openfoam/coordination-cmd

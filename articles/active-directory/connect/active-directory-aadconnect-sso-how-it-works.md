@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0b1940894ffb01595d11bc49889c6ec01714816b
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 6507158a63de508164fc74bcafe39785046a2c79
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918253"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213349"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory: Nahtloses einmaliges Anmelden: Technische Einblicke
 
@@ -36,8 +36,8 @@ Dieser Abschnitt enthält drei Teile:
 ### <a name="how-does-set-up-work"></a>Wie funktioniert die Einrichtung?
 
 Das nahtlose einmalige Anmelden wird mithilfe von Azure AD Connect wie [hier](active-directory-aadconnect-sso-quick-start.md) gezeigt aktiviert. Während der Aktivierung des Features laufen die folgenden Schritte ab:
-- Ein Computerkonto namens `AZUREADSSOACC` (das Azure AD darstellt) wird in Ihrem lokalen Active Directory (AD) erstellt.
-- Der Kerberos-Entschlüsselungsschlüssel des Computerkontos wird sicher für Azure AD freigegeben.
+- Ein Computerkonto namens `AZUREADSSOACC` (das Azure AD darstellt) wird in jeder AD-Gesamtstruktur in Ihrem lokalen Active Directory (AD) erstellt.
+- Der Kerberos-Entschlüsselungsschlüssel des Computerkontos wird sicher für Azure AD freigegeben. Wenn mehrere AD-Gesamtstrukturen vorhanden sind, müssen die Gesamtstrukturen jeweils einen eigenen Kerberos-Entschlüsselungsschlüssel aufweisen.
 - Darüber hinaus werden zwei Kerberos-Dienstprinzipalnamen (SPNs) erstellt, um die zwei URLs darzustellen, die während der Azure AD-Anmeldung verwendet werden.
 
 >[!NOTE]

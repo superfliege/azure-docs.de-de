@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: ef1fa64a276926a35dbf98646317bfe29200bb22
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: d0b802842d60d68bab36e87913a84c5e40b8e431
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261677"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39206070"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Verwenden von Gerätegruppen in Ihrer Azure IoT Central-Anwendung
 
@@ -77,7 +77,7 @@ Nachdem Sie Ihre Gerätegruppe erstellt haben, können Sie deren **Dashboard** k
 
     1. Geben Sie für Ihr Raster einen **Titel** ein.
     1. Wählen Sie über die Schaltfläche „Einstellungen“ die Spalten aus, die angezeigt werden sollen. Im eingeblendeten Bereich wählen Sie nun die gewünschte Spalte und anschließend den Pfeil nach rechts, um sie auszuwählen.
-    1. Wählen Sie **OK**.
+    1. Klicken Sie auf **OK**.
     1. Wählen Sie **Speichern** aus.
 
         ![Speichern des Rasters](media/howto-use-device-sets/image9.png)
@@ -112,13 +112,13 @@ Damit Sie Ihrem Gerätegruppen-Dashboard eine Standortkarte hinzufügen können,
     ![Dashboardkarten speichern](media/howto-use-device-sets/LocationMaps3.png)
 
 
-5. Wenn ein Benutzer das Gerätegruppen-Dashboard anzeigt, sieht er jetzt alle von Ihnen konfigurierten Kacheln, einschließlich der Standortkarte, in der er die visualisierten Gerätestandorte auf einen Blick erfassen kann.
+5. Wenn ein Benutzer das Gerätegruppen-Dashboard anzeigt, sieht er jetzt alle von Ihnen konfigurierten Kacheln, einschließlich der Standortkarte, in der er die visualisierten Gerätestandorte auf einen Blick erfassen kann. 
 
     ![Dashboardkarten – Benutzeransicht](media/howto-use-device-sets/LocationMaps4.png)
 
-    Sie können die Kartengröße an Ihre Anforderungen anpassen.
+    Sie können die Karte auf die gewünschte Größe ändern.
 
-
+    Durch Klicken auf einen Pin auf der Karte werden Geräteinformationen, Name und Standort angezeigt. Sie können auf das Popupfenster klicken, um zur Seite „Geräteeigenschaft“ zu wechseln.  
 
 
 ## <a name="configure-the-list-for-your-device-set"></a>Konfigurieren der Liste für Ihre Gerätegruppe
@@ -137,7 +137,7 @@ Nachdem Sie Ihre Gerätegruppe erstellt haben, können Sie die **Liste** konfigu
 
     ![Auswählen von Spalten](media/howto-use-device-sets/image12.png)
 
-1. Wählen Sie **OK**.
+1. Klicken Sie auf **OK**.
 
 ## <a name="analytics"></a>Analytics
 

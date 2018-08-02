@@ -1,31 +1,31 @@
 ---
-title: Richtlinien für die Self-Service-Kennwortzurücksetzung – Azure Active Directory
-description: Richtlinienoptionen zur Self-Service-Kennwortzurücksetzung in Azure AD
+title: Richtlinien zur Self-Service-Kennwortzurücksetzung in Azure AD
+description: Konfigurieren der Richtlinienoptionen zur Self-Service-Kennwortzurücksetzung in Azure AD
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: a851b3842e44dbb81ef80bacde645ebafdb48d86
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 8396db3a45c2b6f2c88a9fd6bbf0b8e5a7df4efb
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054759"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39162047"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Kennwortrichtlinien und -einschränkungen in Azure Active Directory
 
 In diesem Artikel sind die Kennwortrichtlinien und Komplexitätsanforderungen beschrieben, die zu Benutzerkonten gehören, die in Ihrem Azure Active Directory-Mandenten (Azure AD-Mandanten) gespeichert sind.
 
-## <a name="administrator-password-policy-differences"></a>Unterschiede zu Richtlinien für Administratorkennwörter
+## <a name="administrator-reset-policy-differences"></a>Unterschiede zu Richtlinien zum Zurücksetzen von Administratorkennwörtern
 
-Microsoft erzwingt eine starke standardmäßige *Zwei-Gate*-Kennwortzurücksetzungs-Richtlinie für jede Azure-Administratorrolle. 
+**Microsoft erzwingt standardmäßige eine starke *Zwei-Gate*-Richtlinie zur Kennwortzurücksetzung für alle Azure-Administratorrollen**. Diese Richtlinie kann von der Richtlinie abweichen, die Sie für Ihre Benutzer definiert haben, und kann nicht geändert werden. Sie sollten die Funktion zum Zurücksetzen des Kennworts immer als Benutzer ohne zugewiesene Azure-Administratorrollen testen.
 
-Mit einer Zwei-Gate-Richtlinie haben Administratoren nicht die Möglichkeit, Sicherheitsfragen zu verwenden.
+Mit einer Zwei-Gate-Richtlinie haben **Administratoren nicht die Möglichkeit, Sicherheitsfragen zu verwenden**.
 
  Eine Zwei-Gate-Richtlinie erfordert Authentifizierungsdaten, die aus zwei Elementen bestehen, z.B. eine E-Mail-Adresse *und* eine Telefonnummer. Eine Zwei-Gate-Richtlinie gilt in folgenden Situationen:
 
@@ -49,7 +49,7 @@ Mit einer Zwei-Gate-Richtlinie haben Administratoren nicht die Möglichkeit, Sic
   * Anwendungsproxy-Dienstadministrator
   * CRM-Dienstadministrator
   * Power BI-Dienstadministrator
-  
+
 * Wenn 30 Tage in einem Testabonnement abgelaufen sind.
 
   oder
@@ -61,18 +61,18 @@ Mit einer Zwei-Gate-Richtlinie haben Administratoren nicht die Möglichkeit, Sic
 * Azure AD Connect synchronisiert Identitäten aus Ihrem lokalen Verzeichnis.
 
 ### <a name="exceptions"></a>Ausnahmen
+
 Eine Ein-Gate-Richtlinie erfordert Authentifizierungsdaten, die aus einem Element bestehen, z.B. eine E-Mail-Adresse *oder* eine Telefonnummer. Eine Ein-Gate-Richtlinie gilt in folgenden Situationen:
 
 * Für ein Testabonnement sind noch keine 30 Tage vergangen.
 
   oder
 
-* Es ist keine benutzerdefinierte Domäne vorhanden (*.onmicrosoft.com). 
+* Es ist keine benutzerdefinierte Domäne vorhanden (*.onmicrosoft.com).
 
-  and 
+  and
 
   Azure AD Connect synchronisiert keine Identitäten.
-
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName-Richtlinien, die für alle Benutzerkonten gelten
 
@@ -109,13 +109,13 @@ Diese Anleitung gilt für andere Anbieter wie Intune und Office 365, die ebenfal
 > [!NOTE]
 > Nur Kennwörter für Benutzerkonten, die nicht über die Verzeichnissynchronisierung synchronisiert werden, können so konfiguriert werden, dass sie nicht ablaufen. Weitere Informationen zur Verzeichnissynchronisierung finden Sie unter [Integrieren Ihrer lokalen Verzeichnisse in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
 >
->
 
 ## <a name="set-or-check-the-password-policies-by-using-powershell"></a>Festlegen oder Überprüfen der Kennwortrichtlinien mithilfe von PowerShell
 
 Zunächst müssen Sie [das Azure AD PowerShell-Modul herunterladen und installieren](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0). Nachdem Sie das Modul installiert haben, können Sie jedes Feld mit den folgenden Schritten konfigurieren.
 
-### <a name="how-to-check-the-expiration-policy-for-a-password"></a>Überprüfen der Ablaufrichtlinie für ein Kennwort
+### <a name="check-the-expiration-policy-for-a-password"></a>Überprüfen der Ablaufrichtlinie für ein Kennwort
+
 1. Stellen Sie mit den Anmeldeinformationen des Unternehmensadministrators eine Verbindung mit Windows PowerShell her.
 2. Führen Sie einen der folgenden Befehle aus:
 

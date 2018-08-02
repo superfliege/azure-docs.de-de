@@ -5,19 +5,19 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 7/06/2018
+ms.date: 7/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: f4bf77f07bd8f6b8172798ec3faf8c0bdaf3d3f5
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: c1189e1b120f0bd1b3169618bebdb929d1cee18e
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921228"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248790"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle
 
-[Azure-Ressourcendiagnoseprotokolle](monitoring-overview-of-diagnostic-logs.md) sind von Ihren Azure-Ressourcen ausgegebene Protokolle, die den Betrieb der jeweiligen Ressource beschreiben. Für alle Diagnoseprotokolle, die über Azure Monitor verfügbar sind, wird ein Schema der obersten Ebene gemeinsam genutzt. Auf diese Weise kann jeder Dienst für seine eigenen Ereignisse flexibel eindeutige Eigenschaften ausgeben.
+[Azure Monitor-Diagnoseprotokolle](monitoring-overview-of-diagnostic-logs.md) sind von Azure-Diensten ausgegebene Protokolle, die die Vorgänge der jeweiligen Dienste oder Ressourcen beschreiben. Für alle Diagnoseprotokolle, die über Azure Monitor verfügbar sind, wird ein Schema der obersten Ebene gemeinsam genutzt. Auf diese Weise kann jeder Dienst für seine eigenen Ereignisse flexibel eindeutige Eigenschaften ausgeben.
 
 Ein Schema wird mit einer Kombination aus dem Ressourcentyp (in der `resourceId`-Eigenschaft verfügbar) und dem `category`-Element eindeutig identifiziert. In diesem Artikel wird das Schema der obersten Ebene für Diagnoseprotokolle beschrieben, und es sind Links zu den Schemas für jeden Dienst vorhanden.
 
@@ -26,9 +26,10 @@ Ein Schema wird mit einer Kombination aus dem Ressourcentyp (in der `resourceId`
 | NAME | Erforderlich/Optional | BESCHREIBUNG |
 |---|---|---|
 | time | Erforderlich | Der Zeitstempel (UTC) des Ereignisses. |
-| Ressourcen-ID | Erforderlich | Die Ressourcen-ID der Ressource, die das Ereignis ausgegeben hat. |
+| Ressourcen-ID | Erforderlich | Die Ressourcen-ID der Ressource, die das Ereignis ausgegeben hat. Für Mandantendienste sieht das Format folgendermaßen aus: /tenants/tenant-id/providers/provider-name. |
+| tenantId | Erforderlich für Mandantenprotokolle | Die Mandanten-ID des Active Directory-Mandanten, mit dem dieses Ereignis verknüpft ist. Diese Eigenschaft wird nur für Protokolle auf Mandantenebene verwendet. Sie erscheint nicht in Protokollen auf Ressourcenebene. |
 | operationName | Erforderlich | Der Name des Vorgangs, für den dieses Ereignis steht. Wenn das Ereignis für einen RBAC-Vorgang steht, ist dies der RBAC-Vorgangsname (z.B. Microsoft.Storage/storageAccounts/blobServices/blobs/Read). Ist normalerweise in Form eines Resource Manager-Vorgangs modelliert, auch wenn es sich nicht tatsächlich um dokumentierte Resource Manager-Vorgänge handelt (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`). |
-| operationVersion | Optional | Die API-Version, die dem Vorgang zugeordnet ist, wenn für „operationName“ eine API verwendet wurde (z.B. http://myservice.windowsazure.net/object?api-version=2016-06-01). Wenn keine API für diesen Vorgang vorhanden ist, entspricht die Version der Version dieses Vorgangs für den Fall, dass sich die dem Vorgang zugeordneten Eigenschaften in Zukunft ändern. |
+| operationVersion | Optional | Die API-Version, die dem Vorgang zugeordnet ist, wenn für „operationName“ eine API verwendet wurde (z.B. http://myservice.windowsazure.net/object?api-version=2016-06-01)(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Wenn keine API für diesen Vorgang vorhanden ist, entspricht die Version der Version dieses Vorgangs für den Fall, dass sich die dem Vorgang zugeordneten Eigenschaften in Zukunft ändern. |
 | category | Erforderlich | Die Protokollkategorie des Ereignisses. „category“ ist die Granularität, mit der Sie Protokolle für eine bestimmte Ressource aktivieren oder deaktivieren können. Die Eigenschaften, die im Eigenschaftenblob eines Ereignisses angezeigt werden, sind für eine bestimmte Protokollkategorie und einen Ressourcentyp gleich. Häufige Protokollkategorien sind „Audit“, „Operational“, „Execution“ und „Request“ (Überwachung, Betrieb, Ausführung, Anforderung). |
 | resultType | Optional | Der Status des Ereignisses. Häufige Werte sind „Started“, „In Progress“, „Succeeded“, „Failed“, „Active“ und „Resolved“ (Gestartet, In Bearbeitung, Erfolgreich, Fehler, Aktiv, Gelöst). |
 | resultSignature | Optional | Der Unterstatus des Ereignisses. Wenn dieser Vorgang einem REST-API-Aufruf entspricht, ist dies der HTTP-Statuscode des entsprechenden REST-Aufrufs. |
@@ -46,6 +47,7 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 
 | Dienst | Schema und Dokumente |
 | --- | --- |
+| Azure Active Directory | [Übersicht](../active-directory/reporting-azure-monitor-diagnostics-overview.md), [Überwachungsprotokollschema](../active-directory/reporting-azure-monitor-diagnostics-audit-log-schema.md) und [Anmeldeschema](../active-directory/reporting-azure-monitor-diagnostics-sign-in-log-schema.md) |
 | Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
 | API Management | [API Management-Diagnoseprotokolle](../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | Anwendungsgateways |[Diagnoseprotokollierung für Application Gateway](../application-gateway/application-gateway-diagnostics.md) |

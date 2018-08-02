@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: robb
 ms.component: ''
-ms.openlocfilehash: 571e4707cd89f1d159928845eca955801ffb9209
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: dfc9a65325d25889c9d8d3c10aa0dcda2b5a9980
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971644"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213208"
 ---
 # <a name="azure-monitor-cli-20-quick-start-samples"></a>CLI 2.0-Beispiele für den Schnellstart mit Azure Monitor
 In diesem Artikel werden Beispielbefehle für die Befehlszeilenschnittstelle (Command Line Interface, CLI) beschrieben, mit denen Sie auf Azure Monitor-Features zugreifen können. Azure Monitor ermöglicht die automatische Skalierung von Clouddiensten, virtuellen Computern und Web-Apps sowie das Senden von Warnbenachrichtigungen oder das Aufrufen von Web-URLs basierend auf Werten konfigurierter Telemetriedaten.
@@ -22,7 +22,7 @@ In diesem Artikel werden Beispielbefehle für die Befehlszeilenschnittstelle (Co
 
 Wenn Sie die Azure CLI noch nicht installiert haben, befolgen Sie die Anweisungen zum [Installieren der Azure CLI 2.0](/cli/azure/install-azure-cli). Sie können auch [Azure Cloud Shell](/azure/cloud-shell) für die Ausführung der CLI als interaktive Oberfläche in Ihrem Browser verwenden. Eine vollständige Referenz aller verfügbaren Befehle finden Sie in der [Azure Monitor-CLI-Referenz](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest). 
 
-## <a name="log-in-to-azure"></a>Anmelden bei Azure
+## <a name="log-in-to-azure"></a>Anmelden an Azure
 Der erste Schritt besteht darin, sich am Azure-Konto anzumelden.
 
 ```azurecli

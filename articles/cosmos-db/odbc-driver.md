@@ -10,18 +10,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: e93b241c79a50380f4ef1538dfbf7615232e6c49
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: ffd13f5077ca91537d8397c1940521f475133a03
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096508"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248871"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Herstellen einer Azure Cosmos DB-Verbindung mithilfe von BI-Analysetools per ODBC-Treiber
 
 Mit dem Azure Cosmos DB-ODBC-Treiber können Sie eine Verbindung mit Azure Cosmos DB über die BI-Analysetools herstellen, z. B. SQL Server Integration Services, Power BI Desktop und Tableau, um Visualisierungen Ihrer Azure Cosmos DB-Daten in diesen Lösungen zu analysieren und zu erstellen.
 
 Der Azure Cosmos DB-ODBC-Treiber ist ODBC 3.8-konform und unterstützt die ANSI SQL-92-Syntax. Der Treiber verfügt über umfassende Features zum Renormalisieren von Daten in Azure Cosmos DB. Mit dem Treiber können Sie Daten in Azure Cosmos DB als Tabellen und Ansichten darstellen. Sie können damit SQL-Vorgänge für die Tabellen und Ansichten durchführen, z.B. das Gruppieren nach Abfragen, Einfügungen, Updates und Löschungen.
+
+> [!NOTE]
+> Das Herstellen einer Verbindung mit Azure Cosmos DB mit dem ODBC-Treiber wird derzeit nur für Azure Cosmos DB-SQL-API-Konten unterstützt.
 
 ## <a name="why-do-i-need-to-normalize-my-data"></a>Warum muss ich meine Daten normalisieren?
 Azure Cosmos DB ist eine schemalose Datenbank und ermöglicht daher die schnelle Entwicklung von Apps. Anwendungen können ihr Datenmodell spontan durchlaufen und sind nicht auf ein striktes Schema beschränkt. Eine einzelne Azure Cosmos DB-Datenbank kann JSON-Dokumente mit unterschiedlichen Strukturen enthalten. Dies ist eine gute Voraussetzung für die schnelle Anwendungsentwicklung. Aber wenn Sie Daten analysieren und mit Datenanalyse- und BI-Tools Berichte dazu erstellen möchten, müssen die Daten häufig vereinfacht und an ein bestimmtes Schema angepasst werden.

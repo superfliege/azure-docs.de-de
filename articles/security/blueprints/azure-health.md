@@ -3,23 +3,18 @@ title: 'Azure Health Analytics: Entwurf'
 description: Leitfaden zum Bereitstellen eines HIPAA/HITRUST Health Analytics-Entwurfs
 services: security
 documentationcenter: na
-author: jomolesk
-manager: mbaldwin
-editor: tomsh
+author: RajeevRangappa
 ms.assetid: 26566e0a-0a54-49f4-a91d-48e20b7cef71
 ms.service: security
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/27/2018
-ms.author: jomolesk
-ms.openlocfilehash: f58466bb4cc90823d8e75e0371b400ee674e8b5d
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.date: 07/23/2018
+ms.author: rarangap
+ms.openlocfilehash: b20da0f31f197ed23aa73b185d127a6d5f2dbd8a
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37113230"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214940"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Entwurf zu Azure-Sicherheit und -Kompatibilität: HIPAA/HITRUST-Gesundheitsdaten und -KI
 
@@ -31,7 +26,7 @@ Der Entwurf zu Azure-Sicherheit und -Kompatibilität: HIPAA/HITRUST-Gesundheitsd
 
 ![](images/components.png)
 
-Die Lösung wurde dafür konzipiert, einen Beispieldatensatz, der mit Fast Healthcare Interoperability Resources (FHIR) – einem weltweiten Standard für den elektronischen Austausch von Gesundheitsinformationen – formatiert wurde, zu nutzen und sicher zu speichern. Kunden können dann mit Azure Machine Learning die Vorteile von leistungsstarken Business Intelligence-Tools und Analysen nutzen, um Vorhersagen zu überprüfen, die für die Beispieldaten getroffen wurden. Als Beispiel für die Art von Experiment, das Azure Machine Learning ermöglichen kann, enthält der Entwurf einen Beispieldatensatz, Skripts und Tools zur Vorhersage der Verweildauer eines Patienten in einer Krankenhauseinrichtung. 
+Die Lösung wurde dafür konzipiert, einen Beispieldatensatz, der mit Fast Healthcare Interoperability Resources (FHIR) – einem weltweiten Standard für den elektronischen Austausch von Gesundheitsinformationen – formatiert wurde, zu nutzen und sicher zu speichern. Kunden können dann mit Azure Machine Learning Studio die Vorteile von leistungsstarken Business Intelligence-Tools und -Analysen nutzen, um Vorhersagen zu überprüfen, die für die Beispieldaten getroffen wurden. Als Beispiel für die Art von Experiment, das Azure Machine Learning Studio ermöglichen kann, enthält der Entwurf einen Beispieldatensatz, Skripts und Tools zur Vorhersage der Verweildauer eines Patienten in einer Krankenhauseinrichtung. 
 
 Mit diesem Entwurf soll eine modulare Grundlage geschaffen werden, auf der sich die Kunden auf ihre spezifischen Anforderungen einstellen können, indem sie neue Azure Machine Learning-Experimente entwickeln, um sowohl klinische als auch betriebliche Anwendungsfallszenarien zu lösen. Er ist so konzipiert, dass er bei der Bereitstellung sicher und konform ist. Der Kunde ist jedoch für die richtige Konfiguration der Rollen und die Implementierung von Änderungen verantwortlich. Beachten Sie Folgendes:
 
@@ -66,7 +61,7 @@ Eine schnelle Übersicht über die Funktionsweise dieser Lösung finden Sie in d
 
 Die grundlegende Architektur besteht aus den folgenden Komponenten:
 
--   **[Bedrohungsmodell](https://aka.ms/healththreatmodel)** Ein umfassendes Bedrohungsmodell wird im tm7-Format für die Verwendung mit dem [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/download/details.aspx?id=49168) bereitgestellt, das die Komponenten der Lösung, die Datenflüsse zwischen ihnen und die Vertrauensgrenzen zeigt. Das Modell kann Kunden dabei helfen, die potenziellen Risikopunkte in der Systeminfrastruktur bei der Entwicklung von Machine Learning-Komponenten oder anderen Änderungen zu verstehen.
+-   **[Bedrohungsmodell](https://aka.ms/healththreatmodel)** Ein umfassendes Bedrohungsmodell wird im tm7-Format für die Verwendung mit dem [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/download/details.aspx?id=49168) bereitgestellt, das die Komponenten der Lösung, die Datenflüsse zwischen ihnen und die Vertrauensgrenzen zeigt. Das Modell kann Kunden dabei helfen, die potenziellen Risikopunkte in der Systeminfrastruktur bei der Entwicklung von Machine Learning Studio-Komponenten oder anderen Änderungen zu verstehen.
 
 -   **[Kundenimplementierungsmatrix](https://aka.ms/healthcrmblueprint)** Eine Microsoft Excel-Arbeitsmappe listet die relevanten HITRUST-Anforderungen auf und erläutert, wie Microsoft und der Kunde für die Erfüllung der jeweiligen Anforderungen verantwortlich sind.
 
@@ -107,7 +102,7 @@ Er besitzt keinen Zugriff auf die Patientenakten.
  ### <a name="data-scientist"></a>Data Scientist
 
 
-Der Data Scientist betreibt den Azure Machine Learning-Dienst. Er kann Daten importieren, exportieren, verwalten und Berichte ausführen. Der Data Scientist besitzt Zugriff auf Patientendaten, verfügt aber nicht über Administratorrechte.
+Der Data Scientist betreibt die Azure Machine Learning Studio-Instanz. Er kann Daten importieren, exportieren, verwalten und Berichte ausführen. Der Data Scientist besitzt Zugriff auf Patientendaten, verfügt aber nicht über Administratorrechte.
 
 -   Integrierten Rollenzuweisungen: [Speicherkontomitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
 
@@ -148,12 +143,12 @@ Der Prüfer wertet die Lösung bezüglich der Konformität aus. Er besitzt keine
 ## <a name="example-use-case"></a>Beispiel eines Anwendungsfalls
 
 
-Das in diesem Entwurf enthaltene Anwendungsfallbeispiel veranschaulicht, wie der Entwurf verwendet werden kann, um Machine Learning und Analysen von Gesundheitsdaten in der Cloud zu ermöglichen. Contosoclinic ist ein kleines Krankenhaus in den USA. Die Administratoren des Krankenhausnetzwerks möchten mit Azure Machine Learning die Verweildauer eines Patienten zum Zeitpunkt der Aufnahme besser vorhersagen, um die Effizienz der betrieblichen Arbeitsauslastung zu erhöhen und die Qualität der Versorgung zu verbessern.
+Das in diesem Entwurf enthaltene Anwendungsfallbeispiel veranschaulicht, wie der Entwurf verwendet werden kann, um Machine Learning und Analysen von Gesundheitsdaten in der Cloud zu ermöglichen. Contosoclinic ist ein kleines Krankenhaus in den USA. Die Administratoren des Krankenhausnetzwerks möchten mit Azure Machine Learning Studio die Verweildauer eines Patienten zum Zeitpunkt der Aufnahme besser vorhersagen, um die Effizienz der betrieblichen Arbeitsauslastung zu erhöhen und die Qualität der Versorgung zu verbessern.
 
 ### <a name="predicting-length-of-stay"></a>Prognostizieren der Aufenthaltsdauer
 
 
-Das Anwendungsfall-Beispielszenario verwendet Azure Machine Learning, um die Verweildauer eines neu aufgenommenen Patienten vorherzusagen, indem die medizinischen Details bei der Aufnahme mit den aggregierten historischen Daten früherer Patienten verglichen werden.
+Das Anwendungsfall-Beispielszenario verwendet Azure Machine Learning Studio, um die Verweildauer eines neu aufgenommenen Patienten vorherzusagen, indem die medizinischen Details bei der Aufnahme mit den aggregierten historischen Daten früherer Patienten verglichen werden.
 Der Entwurf enthält eine große Anzahl anonymisierter medizinischer Datensätze, um die Trainings- und Prognosefähigkeiten der Lösung zu zeigen. In einer Produktionsbereitstellung würden Kunden ihre eigenen Datensätze verwenden, um die Lösung für genauere Vorhersagen zu trainieren, die die einzigartigen Details ihrer Umgebung, Einrichtungen und Patienten widerspiegeln.
 
 ### <a name="users-and-roles"></a>Benutzer und Rollen
@@ -356,8 +351,8 @@ Die Lösung unterstützt Azure Event Grid, einen einzelnen Dienst für die Verwa
 ### <a name="machine-learning"></a>Machine Learning
 
 
--   [Protokollierung ist aktiviert](/azure/machine-learning/studio/web-services-logging) für Machine Learning-Webdienste.
-- Die Verwendung von [Machine Learning](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) Workbench erfordert die Entwicklung von Experimenten, die die Fähigkeit zur Vorhersage eines Lösungssatzes bereitstellen. [Integration der Workbench](/azure/machine-learning/desktop-workbench/using-git-ml-project) kann dabei helfen, die Verwaltung von Experimenten zu optimieren.
+-   [Protokollierung ist aktiviert](/azure/machine-learning/studio/web-services-logging) für Machine Learning Studio-Webdienste.
+- Die Verwendung von [Machine Learning Studio](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) Workbench erfordert die Entwicklung von Experimenten, die die Fähigkeit zur Vorhersage eines Lösungssatzes bereitstellen. [Integration der Workbench](/azure/machine-learning/desktop-workbench/using-git-ml-project) kann dabei helfen, die Verwaltung von Experimenten zu optimieren.
 
 ## <a name="security"></a>SICHERHEIT
 

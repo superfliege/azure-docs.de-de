@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 84baf01ce6eeed8dc569d7a856189aefba788126
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 246943b7e3df955394a6a79f9b3130633fe4ec50
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096474"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186612"
 ---
 # <a name="continuous-deployment-with-jenkins-and-azure-kubernetes-service"></a>Continuous Deployment mit Jenkins und Azure Kubernetes Service
 
@@ -149,6 +149,9 @@ Es wurde ein Skript erstellt, mit dem ein virtueller Computer bereitgestellt, de
 
 Führen Sie die folgenden Befehle aus, um das Skript herunterzuladen und auszuführen. Die unten angegebene URL kann auch verwendet werden, um den Inhalt des Skripts zu prüfen.
 
+> [!WARNING]
+> Dieses Beispielskript ist für Demozwecke bestimmt, um schnell eine auf einer Azure-VM ausgeführte Jenkins-Umgebung bereitzustellen. Hierbei wird die benutzerdefinierte Azure-Skripterweiterung verwendet, um eine VM zu konfigurieren und dann die erforderlichen Anmeldeinformationen anzuzeigen. Ihre *~/.kube/config* wird auf die Jenkins-VM kopiert.
+
 ```console
 curl https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh > azure-jenkins.sh
 sh azure-jenkins.sh
@@ -263,12 +266,11 @@ Nachdem der Prozess abgeschlossen ist, klicken Sie unter „build history“ auf
 Hängen Sie als Nächstes das Anwendungsrepository an den Jenkins-Buildserver an, damit bei jedem Commit ein neuer Buildvorgang ausgelöst wird.
 
 1. Navigieren Sie zum geforkten GitHub-Repository.
-2. Wählen Sie **Einstellungen** und anschließend **Integrations & Services** (Integrationen und Dienste) auf der linken Seite aus.
-3. Wählen Sie die Option **Add Service**, geben Sie im Filterfeld `Jenkins (GitHub plugin)` ein, und wählen Sie das Plug-In aus.
-4. Geben Sie als Jenkins-Hook-URL `http://<publicIp:8080>/github-webhook/` ein, wobei `publicIp` die IP-Adresse des Jenkins-Servers ist. Stellen Sie sicher, dass Sie den nachgestellten Schrägstrich (/) hinzufügen.
-5. Wählen Sie „Add service“.
+2. Wählen Sie **Einstellungen** und anschließend **Webhooks** auf der linken Seite aus.
+3. Wählen Sie **Webhook hinzufügen** aus. Geben Sie als *Nutzlast-URL* `http://<publicIp:8080>/github-webhook/` ein, wobei `publicIp` die IP-Adresse des Jenkins-Servers ist. Stellen Sie sicher, dass Sie den nachgestellten Schrägstrich (/) hinzufügen. Übernehmen Sie die anderen Standardwerte für den Inhaltstyp, damit *push*-Ereignisse ausgelöst werden.
+4. Wählen Sie **Webhook hinzufügen** aus.
 
-![GitHub-Webhook](media/aks-jenkins/webhook.png)
+    ![GitHub-Webhook](media/aks-jenkins/webhook.png)
 
 ## <a name="test-cicd-process-end-to-end"></a>Durchführen eines Ende-zu-Ende-Tests des CI/CD-Prozesses
 

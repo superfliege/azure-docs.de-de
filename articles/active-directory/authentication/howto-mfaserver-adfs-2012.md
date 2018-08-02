@@ -4,18 +4,18 @@ description: In diesem Artikel werden die ersten Schritte mit Azure Multi-Factor
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 08/25/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 4ed4db6fa2c712c0fd858815d89dd0094dd5cfbd
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: michmcla
+ms.openlocfilehash: 663ed2f42f59093252506fc5bb5fe2581d4dd200
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868227"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160211"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Konfigurieren von Azure Multi-Factor Authentication-Server zur Verwendung mit AD FS unter Windows Server
 
@@ -79,7 +79,7 @@ An diesem Punkt ist Multi-Factor Authentication-Server als zusätzlicher Authent
 Führen Sie die folgenden Schritte aus, um die Datei „MultiFactorAuthenticationAdfsAdapter.config“ zu bearbeiten:
 
 1. Legen Sie den Knoten **UseWebServiceSdk** auf **true** fest.  
-2. Legen Sie den Wert für **WebServiceSdkUrl** auf die URL des Multi-Factor Authentication-Webdienst-SDKs fest. Beispiel: *https://contoso.com/&lt;Zertifikatname&gt;/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*, wobei *Zertifikatname* der Name Ihres Zertifikats ist.  
+2. Legen Sie den Wert für **WebServiceSdkUrl** auf die URL des Multi-Factor Authentication-Webdienst-SDKs fest. Beispiel: *https://contoso.com/&ltZertifikatname&gt;/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*, wobei *Zertifikatname* der Name Ihres Zertifikats ist.  
 3. Bearbeiten Sie das Skript „Register-MultiFactorAuthenticationAdfsAdapter.ps1“, indem Sie `-ConfigurationFilePath &lt;path&gt;` am Ende des Befehls `Register-AdfsAuthenticationProvider` hinzufügen, wobei *&lt;path&gt;* der vollständige Pfad zur Datei „MultiFactorAuthenticationAdfsAdapter.config“ ist.
 
 ### <a name="configure-the-web-service-sdk-with-a-username-and-password"></a>Konfigurieren des Webdienst-SDKs mit einem Benutzernamen und einem Kennwort

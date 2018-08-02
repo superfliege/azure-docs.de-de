@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 07/20/2018
 ms.author: iainfou
-ms.openlocfilehash: 915f74df69596b1677a0e03770e076ae50efc609
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: ea22b33233f85da117de54829e5a16bd7dcab36a
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001244"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205247"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 
@@ -37,7 +37,7 @@ Ja, die automatische Skalierung ist ab Kubernetes 1.10 über den [Kubernetes Aut
 
 ## <a name="does-aks-support-kubernetes-role-based-access-control-rbac"></a>Unterstützt AKS die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Kubernetes?
 
-Ja, RBAC kann bei der Bereitstellung eines AKS-Clusters über die Azure CLI oder eine Azure Resource Manager-Vorlage aktiviert werden. Diese Funktion ist bald im Azure-Portal verfügbar.
+Ja, die RBAC kann bei der [Bereitstellung eines AKS-Clusters über die Azure CLI oder eine Azure Resource Manager-Vorlage](https://docs.microsoft.com/en-us/azure/aks/aad-integration) aktiviert werden. Diese Funktion ist bald im Azure-Portal verfügbar.
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-this-be-configured"></a>Welche Kubernetes-Zugangssteuerungen werden von AKS unterstützt? Kann das konfiguriert werden?
 
@@ -59,6 +59,10 @@ Derzeit ist es nicht möglich, die Liste der Zugriffssteuerungen in AKS zu ände
 ## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Kann ich AKS in meinem vorhandenen virtuellen Netzwerk bereitstellen?
 
 Ja, Sie können einen AKS-Cluster in einem vorhandenen Netzwerk mithilfe dem [erweiterten Netzwerkfeature](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/aks/networking-overview.md) bereitstellen.
+
+## <a name="can-i-restrict-the-kubernetes-api-server-to-only-be-accessible-within-my-virtual-network"></a>Kann ich einschränken, dass auf den Kubernetes-API-Server nur über meinem virtuellen Netzwerk zugegriffen werden kann?
+
+Derzeit leider nicht. Der Kubernetes-API-Server wird als öffentlicher vollqualifizierter Domänenname (FQDN) verfügbar gemacht. Den Zugriff auf Ihren Cluster sollten Sie mit der [rollenbasierten Kubernetes-Zugriffssteuerung (Role-Based Access Control, RBAC) und mit Azure Active Directory (AAD)](https://docs.microsoft.com/en-us/azure/aks/aad-integration) steuern.
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>Ist Azure Key Vault in AKS integriert?
 

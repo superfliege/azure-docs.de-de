@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: ellacroi
-ms.openlocfilehash: 7da3ae1ca0fc59b0d606a22e9c00b8e7b58674ba
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2814e5f8641e9287b94eb23b719601c75afe9c9f
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335090"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214831"
 ---
 # <a name="what-is-appsource"></a>Was ist AppSource?
 Mit AppSource können Microsoft-Partner ihre Technologien und Dienste über eine von Microsoft unterstützte Webstorefront für Kunden auffindbar machen. Wecken Sie als AppSource-Herausgeber bei Geschäftsbenutzern das Interesse, in AppSource branchenspezifische SaaS-Anwendungen und Implementierungsdienste zu entdecken, zu testen und abzurufen und so gute Geschäftsergebnisse zu erzielen und die Amortisationszeit zu verkürzen: 
@@ -72,7 +72,7 @@ Für die Veröffentlichung einer Integration in Azure Active Directory (Azure AD
 | Verwalteter Dynamics NAV-Dienst | Nein  | Eine lizenzbasiertes Angebot erfordert keine Integration in Azure AD. |
 | Power BI | Nein  | Eine lizenzbasiertes Angebot erfordert keine Integration in Azure AD. |
 | Beratungsangebote | Nein  | Dienste werden vom Partner koordiniert, nicht über eine Webumgebung. |
-| Cortana Intelligence | Ja | Azure AD ist eine bewährte Methode, um eine reibungslose Kundenerfahrung sicherzustellen, und die qualifiziertesten Leads zu generieren. |
+| Cortana Intelligence | JA | Azure AD ist eine bewährte Methode, um eine reibungslose Kundenerfahrung sicherzustellen, und die qualifiziertesten Leads zu generieren. |
 | SaaS-Apps (ehemals Web-Apps) | Bevorzugt | Azure AD ist eine bewährte Methode, um eine reibungslose Kundenerfahrung sicherzustellen, und die qualifiziertesten Leads zu generieren. |
 ###### <a name="table-appsource-offerings-that-require-azure-active-directory-integration"></a>Tabelle: AppSource-Angebote, die eine Integration in Azure Active Directory erfordern
 

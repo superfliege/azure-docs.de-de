@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: 2de926746a5e6b94a458dbc1a126ab5bc86b12fe
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: f87bc1d8140bea9ebb09e45d42b27e201b474026
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838533"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214341"
 ---
 # <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>Paralleler Massenimport mithilfe von partitionierten SQL-Tabellen
 In diesem Dokument wird das Erstellen partitionierter Tabellen für das schnelle parallele Massenimportieren von Daten in eine SQL Server-Datenbank beschrieben. Die Leistung beim Laden/Übertragen/Importieren großer Datenmengen in eine SQL-Datenbank und bei den nachfolgenden Abfragen kann mithilfe von *partitionierten Tabellen und Sichten* verbessert werden. 
