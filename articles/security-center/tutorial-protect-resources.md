@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
+ms.date: 07/30/2018
 ms.author: terrylan
-ms.openlocfilehash: cda204f5b54aef239cc0795b62c6fa484a27ebb5
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: b882f9740a9b29cddb2cbe0359056cf66c293717
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29529413"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39363753"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Tutorial: Schützen Ihrer Ressourcen mit Azure Security Center
 Security Center verringert Ihre Gefährdung durch Bedrohungen, indem mithilfe von Zugriffs- und Anwendungssteuerungen böswillige Aktivitäten blockiert werden. Durch einen Just-in-Time-Zugriff auf einen virtuellen Computer (VM) wird die Anfälligkeit für Angriffe verringert, da Sie den dauerhaften Zugriff auf VMs verweigern können. Stattdessen bieten Sie einen gesteuerten und überwachten Zugriff auf VMs nur bei Bedarf. Adaptive Anwendungssteuerungen helfen dabei, VMs gegen Schadsoftware abzusichern, indem sie steuern, welche Anwendungen auf Ihren VMs ausgeführt werden können. Security Center nutzt Machine Learning, um die auf dem virtuellen Computer ausgeführten Prozesse zu analysieren, und unterstützt Sie beim Anwenden von Whitelistregeln, die auf diesen Daten basieren.
@@ -38,8 +38,6 @@ Zum Durchlaufen der in diesem Tutorial behandelten Features müssen Sie den Tari
 
 ## <a name="manage-vm-access"></a>Verwalten des VM-Zugriffs
 Mit einem Just-In-Time-VM-Zugriff kann eingehender Datenverkehr auf den Azure-VMs gesperrt werden, um die Gefährdung durch Angriffe zu reduzieren und bei Bedarf einen einfachen Zugriff auf Verbindungen mit virtuellen Computern bereitzustellen.
-
-Der JIT-VM-Zugriff befindet sich in der Vorschauphase.
 
 Verwaltungsports müssen nicht jederzeit geöffnet sein. Sie müssen nur geöffnet sein, während eine Verbindung mit dem virtuellen Computer besteht, z.B. zum Ausführen von Verwaltungs- oder Wartungsaufgaben. Wenn Just-In-Time aktiviert ist, verwendet das Security Center Netzwerksicherheitsgruppen-Regeln (NSG), die den Zugriff auf Verwaltungsports beschränken, um sie vor Angriffen zu schützen.
 
@@ -75,7 +73,7 @@ Verwaltungsports müssen nicht jederzeit geöffnet sein. Sie müssen nur geöffn
 ## <a name="harden-vms-against-malware"></a>Absichern von VMs gegen Schadsoftware
 Mit adaptiven Anwendungssteuerungen können Sie eine Gruppe von Anwendungen definieren, deren Ausführung in konfigurierten Ressourcengruppen zulässig ist. Dadurch können Sie Ihre VMs gegen Schadsoftware absichern. Security Center nutzt Machine Learning, um die auf dem virtuellen Computer ausgeführten Prozesse zu analysieren, und unterstützt Sie beim Anwenden von Whitelistregeln, die auf diesen Daten basieren.
 
-Adaptive Anwendungssteuerungen sind in der Vorschauphase. Dieses Feature steht nur für Windows-Computer zur Verfügung.
+Dieses Feature steht nur für Windows-Computer zur Verfügung.
 
 1. Kehren Sie zum Hauptmenü von Security Center zurück. Klicken Sie unter **ERWEITERTER CLOUDSCHUTZ** auf **Adaptive Anwendungssteuerungen**.
 

@@ -3,25 +3,24 @@ title: Behandeln von Problemen bei der Azure-Zugriffsbereichserweiterung für IE
 description: So stellen Sie das Internet Explorer-Add-On für das Portal "Meine Apps" mithilfe von Gruppenrichtlinien bereit
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
-editor: ''
-ms.assetid: f56b3230-26fd-42ec-9e3d-2c12daf15479
 ms.service: active-directory
+ms.component: app-mgmt
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/31/2017
-ms.author: markvi
+ms.date: 07/30/2018
+ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4f1538cf598da8b5b9aa19def2d5f86ceaca0a0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 682973e6781a1de2c8d9628e39347650a3852b81
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34337757"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364776"
 ---
 # <a name="troubleshooting-the-access-panel-extension-for-internet-explorer"></a>Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer
 Dieser Artikel hilft Ihnen bei der Behandlung der folgenden Probleme:
@@ -29,7 +28,7 @@ Dieser Artikel hilft Ihnen bei der Behandlung der folgenden Probleme:
 * Während der Verwendung von Internet Explorer ist nicht möglich, über das Portal "Meine Apps" auf Ihre Apps zuzugreifen.
 * Die Meldung „Software installieren“ wird angezeigt, obwohl Sie die Software bereits installiert haben.
 
-Als Administrator finden Sie weitere Informationen unter: [Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer mit der Gruppenrichtlinie; in englischer Sprache](active-directory-saas-ie-group-policy.md)
+Als Administrator finden Sie weitere Informationen unter: [How to Deploy the Access Panel Extension for Internet Explorer using Group Policy](active-directory-saas-ie-group-policy.md)
 
 ## <a name="run-the-diagnostic-tool"></a>Ausführen des Diagnoseprogramms
 Sie können Probleme bei der Installation mithilfe der Zugriffsbereichserweiterung diagnostizieren, indem Sie das Diagnoseprogramm "Zugriffsbereich" herunterladen und ausführen:

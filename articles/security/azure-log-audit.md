@@ -91,7 +91,7 @@ Azure-Diagnoseprotokolle bieten mehrere Konfigurationsoptionen, wie z.B. das Azu
 
 * Diagnoseprotokolle können zur Überwachung oder manuellen Überprüfung in einem [Speicherkonto](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-archive-diagnostic-logs) gespeichert werden. In den Diagnoseeinstellungen können Sie eine Aufbewahrungsdauer (in Tagen) angeben.
 
-* [Sie können Diagnoseprotokolle zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/) an Event Hubs](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs) streamen.
+* [Sie können Diagnoseprotokolle zur Erfassung](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs) durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/) an Event Hubs streamen.
 
 * Analysieren Sie sie mit [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview).
 

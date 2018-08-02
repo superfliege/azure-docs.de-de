@@ -10,17 +10,17 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/27/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: cf1c39d0270dcb7de3ae8ff487b21874b23db74a
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: c4ecb812156eae7402065cff4dc4bae3aef1554b
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161523"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365174"
 ---
 # <a name="compare-remote-access-solutions"></a>Vergleichen von Remotezugriffslösungen
 
@@ -33,21 +33,21 @@ Verwenden Sie diese Tabelle zum Vergleich von Threat Management Gateway (TMG), U
 
 | Feature | TMG | UAG | WAP | AP |
 | ------- | --- | --- | --- | --- |
-| Zertifikatauthentifizierung | Ja | Ja | - | - |
-| Ausgewählte Veröffentlichung von Browser-Apps | Ja | Ja | Ja | Ja |
-| Vorauthentifizierung und einmaliges Anmelden | Ja | Ja | Ja | Ja | 
-| Layer 2/3-Firewall | Ja | Ja | - | - |
-| Weiterleitungs-Proxyfunktionen | Ja | - | - | - |
-| VPN-Funktionen | Ja | Ja | - | - |
-| Umfangreiche Protokollunterstützung | - | Ja | Ja, bei Ausführung über HTTP | Ja, bei Ausführung über HTTP oder über Remotedesktopgateway |
-| Dient als AD FS-Proxyserver | - | Ja | Ja | - |
-| Ein Portal für den Anwendungszugriff | - | Ja | - | Ja |
-| Übersetzung von Antworttext in Link | Ja | Ja | - | Ja | 
-| Authentifizierung mit Headern | - | Ja | - | Ja, mit PingAccess | 
-| Sicherheit auf Cloud-Ebene | - | - | - | Ja | 
-| Bedingter Zugriff | - | Ja | - | Ja |
-| Keine Komponenten in der demilitarisierten Zone (DMZ) | - | - | - | Ja |
-| Keine eingehenden Verbindungen | - | - | - | Ja |
+| Zertifikatauthentifizierung | JA | JA | - | - |
+| Ausgewählte Veröffentlichung von Browser-Apps | JA | Ja | Ja | JA |
+| Vorauthentifizierung und einmaliges Anmelden | JA | Ja | Ja | JA | 
+| Layer 2/3-Firewall | JA | JA | - | - |
+| Weiterleitungs-Proxyfunktionen | JA | - | - | - |
+| VPN-Funktionen | JA | JA | - | - |
+| Umfangreiche Protokollunterstützung | - | JA | Ja, bei Ausführung über HTTP | Ja, bei Ausführung über HTTP oder über Remotedesktopgateway |
+| Dient als AD FS-Proxyserver | - | JA | JA | - |
+| Ein Portal für den Anwendungszugriff | - | JA | - | JA |
+| Übersetzung von Antworttext in Link | JA | Ja | - | JA | 
+| Authentifizierung mit Headern | - | JA | - | Ja, mit PingAccess | 
+| Sicherheit auf Cloud-Ebene | - | - | - | JA | 
+| Bedingter Zugriff | - | JA | - | JA |
+| Keine Komponenten in der demilitarisierten Zone (DMZ) | - | - | - | JA |
+| Keine eingehenden Verbindungen | - | - | - | JA |
 
 In den meisten Szenarien empfiehlt sich Azure AD-Anwendungsproxy als moderne Lösung. Webanwendungsproxy wird nur in Szenarien bevorzugt, bei denen ein Proxyserver für AD FS erforderlich ist. Außerdem können Sie in Azure Active Directory keine benutzerdefinierten Domänen verwenden. 
 
