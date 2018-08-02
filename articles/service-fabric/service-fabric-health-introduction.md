@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: fc0bb56e85c2a9cf7a458b0f6d97887d392ee65f
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 6cba4e1fd9c9fe5fdaa7ff4513218a606a4eace9
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114315"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215229"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Einführung in die Service Fabric-Integritätsüberwachung
 Mit Azure Service Fabric wird ein Integritätsmodell eingeführt, das eine umfassende, flexible und erweiterbare Integritätsevaluierung und -berichterstellung bietet. Mithilfe dieses Modells lässt sich der Zustand des Clusters und der darin ausgeführten Dienste nahezu in Echtzeit überwachen. Sie können mühelos Integritätsdaten ermitteln und potenzielle Probleme beheben, bevor sie sich ausbreiten und umfangreiche Ausfälle verursachen. In einem typischen Modell senden die Dienste Berichte basierend auf ihren lokalen Informationen. Anhand dieser Informationen wird ein Gesamtüberblick auf Clusterebene erstellt.
@@ -186,8 +186,8 @@ Nachdem der Integritätsspeicher alle untergeordneten Elemente ausgewertet hat, 
 
 * Wenn alle untergeordneten Elemente den Zustand „OK“ aufweisen, lautet der aggregierte Integritätszustand „OK“.
 * Wenn sowohl untergeordnete Elemente mit dem Status „OK“ als auch mit dem Status „Warning“ vorliegen, lautet der aggregierte Integritätszustand „Warning“.
-* Wenn untergeordnete Elemente mit dem Status „Error“ vorliegen und der maximal zulässige Prozentsatz für fehlerhafte untergeordnete Elemente überschritten wird, lautet der aggregierte Integritätszustand „Error“.
-* Wenn untergeordnete Elemente mit dem Zustand „Error“ vorliegen und der maximal zulässige Prozentsatz für fehlerhafte untergeordnete Elemente nicht überschritten wird, lautet der aggregierte Integritätszustand „Warning“.
+* Wenn untergeordnete Elemente mit dem Status „Error“ vorliegen und der maximal zulässige Prozentsatz für fehlerhafte untergeordnete Elemente überschritten wird, lautet der aggregierte Integritätszustand des übergeordneten Elements „Error“.
+* Wenn untergeordnete Elemente mit dem Zustand „Error“ vorliegen und der maximal zulässige Prozentsatz für fehlerhafte untergeordnete Elemente nicht überschritten wird, lautet der aggregierte Integritätszustand des übergeordneten Elements „Warning“.
 
 ## <a name="health-reporting"></a>Integritätsberichterstellung
 Berichte für Service Fabric-Entitäten können von Systemkomponenten, System Fabric-Anwendungen und internen/externen Watchdogs erstellt werden. Die Berichterstatter führen eine *lokale* Ermittlung der Integrität der überwachten Entitäten basierend auf den Bedingungen durch, die sie überwachen. Globale Zustände oder aggregierte Daten werden von den Berichterstattern nicht berücksichtigt. Das Ziel sind einfache Berichterstatter und keine komplexen Gebilde, die zahlreiche Aspekte prüfen müssen, um zu entscheiden, welche Informationen gesendet werden sollen.

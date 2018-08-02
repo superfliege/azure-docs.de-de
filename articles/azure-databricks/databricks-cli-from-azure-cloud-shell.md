@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: c20ad02f962fbee22bb16653c5eab351d9f3de17
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3ea4ebbd95237b50054fb0e344f260120d597ab5
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598724"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225233"
 ---
 # <a name="use-databricks-cli-from-azure-cloud-shell"></a>Verwenden der Databricks-Befehlszeilenschnittstelle über Azure Cloud Shell
 
@@ -36,13 +36,13 @@ Hier erfahren Sie, wie Sie die Databricks-Befehlszeilenschnittstelle über Azure
  
 2. Klicken Sie in der Ecke oben rechts auf das Symbol für **Cloud Shell**.
 
-   ![Starten von Cloud Shell](./media/databricks-cli-from-azure-cloud-shell/launch-azure-cloud-shell.png "Starten von ODBC über Excel")
+   ![Starten von Cloud Shell](./media/databricks-cli-from-azure-cloud-shell/launch-azure-cloud-shell.png "Starten von Azure Cloud Shell")
 
 3. Stellen Sie sicher, dass für die Cloud Shell-Umgebung **Bash** ausgewählt ist. Sie können die Option in der Dropdownliste auswählen, wie im folgenden Screenshot gezeigt:
 
-   ![Starten von Cloud Shell](./media/databricks-cli-from-azure-cloud-shell/select-bash-for-shell.png "Starten von ODBC über Excel") 
+   ![Auswählen von Bash für die Cloud Shell-Umgebung](./media/databricks-cli-from-azure-cloud-shell/select-bash-for-shell.png "Auswählen von Bash") 
 
-4. Erstellen Sie eine virtuelle Umgebung, in der Sie die Databtricks-Befehlszeilenschnittstelle installieren können. Im folgenden Codeausschnitt erstellen Sie eine virtuelle Umgebung namens `databrickscli`.
+4. Erstellen Sie eine virtuelle Umgebung, in der Sie die Databricks-Befehlszeilenschnittstelle installieren können. Im folgenden Codeausschnitt erstellen Sie eine virtuelle Umgebung namens `databrickscli`.
 
        virtualenv -p /usr/bin/python2.7 databrickscli
 
@@ -60,11 +60,9 @@ Hier erfahren Sie, wie Sie die Databricks-Befehlszeilenschnittstelle über Azure
 
     Sie erhalten folgende Aufforderungen:
 
-    * Sie werden zur Eingabe des Databricks-Hosts aufgefordert. Geben Sie den Wert im Format `https://eastus2.azuredatabricks.net` ein. **USA, Osten 2** ist in diesem Fall die Azure-Region, in der Sie Ihren Azure Databricks-Arbeitsbereich erstellt haben.
+    * Sie werden zunächst zur Eingabe des Databricks-Hosts aufgefordert. Geben Sie den Wert im Format `https://eastus2.azuredatabricks.net` ein. **USA, Osten 2** ist in diesem Fall die Azure-Region, in der Sie Ihren Azure Databricks-Arbeitsbereich erstellt haben.
 
-    * Sie werden aufgefordert, einen Benutzernamen einzugeben. Geben Sie **Token** ein.
-
-    * Und schließlich werden Sie zur Eingabe des Kennworts aufgefordert. Geben Sie das Token ein, das Sie zuvor erstellt haben.
+    * Als Nächstes werden Sie zur Eingabe eines Benutzernamens aufgefordert. Geben Sie das Token ein, das Sie zuvor erstellt haben.
 
 Nachdem Sie diese Schritte abgeschlossen haben, können Sie die Databricks-Befehlszeilenschnittstelle über Azure Cloud Shell verwenden.
 

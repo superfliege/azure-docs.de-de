@@ -6,15 +6,15 @@ author: gabrtv
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 07/18/2018
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: f6b8e964f4277150e104cd6d77db092aaa8553b4
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9557311c97ea0fde66790c37b08d1a22d1197405
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33933273"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144583"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Durchführen eines Upgrades für einen Azure Kubernetes Service-Cluster (AKS)
 
@@ -36,10 +36,10 @@ Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
 default  mytestaks007     1.8.10           1.8.10             1.9.1, 1.9.2, 1.9.6
 ```
 
-Für das Upgrade stehen drei Versionen zur Verfügung: 1.9.1, 1.9.2 und 1.9.6. Wir können den Befehl `az aks upgrade` verwenden, um auf die neueste verfügbare Version zu aktualisieren.  Während des Upgradevorgangs werden die Knoten sorgfältig [gesperrt und ausgeglichen][kubernetes-drain], um die Unterbrechung ausgeführter Anwendungen zu minimieren.  Stellen Sie vor dem Initiieren eines Clusterupgrades sicher, dass ausreichend zusätzliche Computekapazität für die Verarbeitung der Workload vorhanden ist, wenn Clusterknoten hinzugefügt und entfernt werden.
+Für das Upgrade stehen drei Versionen zur Verfügung: 1.9.1, 1.9.2 und 1.9.6. Wir können den Befehl `az aks upgrade` verwenden, um auf die neueste verfügbare Version zu aktualisieren.  Während des Upgrades wird von AKS ein neuer Knoten zum Cluster hinzugefügt, und anschließend werden die Knoten nacheinander sorgfältig [abgesperrt und ausgeglichen][kubernetes-drain], um die Unterbrechung ausgeführter Anwendungen zu minimieren.
 
 > [!NOTE]
-> Beim Upgrade eines AKS-Clusters können Nebenversionen von Kubernetes nicht übersprungen werden. Upgrades von 1.7.x auf 1.8.x oder von 1.8.x auf 1.9.x sind zulässig, ein Upgrade von 1.7 auf 1.9 ist nicht zulässig.
+> Beim Upgrade eines AKS-Clusters können Nebenversionen von Kubernetes nicht übersprungen werden. Upgrades von 1.8.x auf 1.9.x oder von 1.9.x auf 1.10.x sind beispielsweise zulässig, ein Upgrade von 1.8 auf 1.10 ist jedoch nicht zulässig.
 
 ```azurecli-interactive
 az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.9.6

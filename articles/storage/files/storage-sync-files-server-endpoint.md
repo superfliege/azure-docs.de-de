@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen/Entfernen eines Serverendpunkts für Azure File Sync (Vorschau) | Microsoft-Dokumentation
+title: Hinzufügen/Entfernen eines Serverendpunkts für Azure File Sync | Microsoft-Dokumentation
 description: Erfahren Sie, was Sie beim Planen einer Azure Files-Bereitstellung berücksichtigen müssen.
 services: storage
 documentationcenter: ''
@@ -12,27 +12,27 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: 93331dd936a6d7b30ca18743d2079900421b2620
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: c8da3f501d03a05ef5490197d4fd38ada01a4997
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738478"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158437"
 ---
-# <a name="addremove-an-azure-file-sync-preview-server-endpoint"></a>Hinzufügen/Entfernen eines Serverendpunkts für Azure File Sync (Vorschau)
-Mit Azure File Sync (Vorschau) können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
+# <a name="addremove-an-azure-file-sync-server-endpoint"></a>Hinzufügen/Entfernen eines Azure-Dateisynchronisierungsserver-Endpunkts
+Mit Azure File Sync können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
 
 Ein *Serverendpunkt* stellt einen bestimmten Speicherort auf einem *registrierten Server* dar, z.B. einen Ordner auf einem Servervolume oder das Stammverzeichnis des Volumes. Mehrere Serverendpunkte können auf dem gleichen Volume vorhanden sein, wenn sich deren Namespaces nicht überschneiden (z.B. „F:\sync1“ und „F:\sync2“). Sie können Richtlinien für das Cloudtiering für jeden Serverendpunkt separat konfigurieren. Wenn Sie einen Serverspeicherort mit einem vorhandenen Satz von Dateien einer Synchronisierungsgruppe als Serverendpunkt hinzufügen, werden diese Dateien mit anderen Dateien, die sich bereits auf anderen Endpunkten in der Synchronisierungsgruppe befinden, zusammengeführt.
 
-Informationen über die End-to-End-Bereitstellung der Azure-Dateisynchronisierung finden Sie unter [Bereitstellen der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-deployment-guide.md).
+Informationen zur End-to-End-Bereitstellung von Azure File Sync finden Sie unter [Bereitstellen von Azure File Sync (Vorschau)](storage-sync-files-deployment-guide.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Erstellen eines Serverendpunkts müssen Sie zunächst sicherstellen, dass die folgenden Kriterien erfüllt sind: 
-- Auf dem Server ist der Azure-Dateisynchronisierungs-Agent installiert und registriert. Anweisungen zum Installieren des Azure-Dateisynchronisierungs-Agents finden Sie im Artikel [Registrieren/Aufheben der Registrierung eines Servers mit der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-server-registration.md). 
-- Stellen Sie sicher, dass der Speichersynchronisierungsdienst bereitgestellt wurde. Informationen zum Bereitstellen eines Speichersynchronisierungsdiensts finden Sie unter [Bereitstellen der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-deployment-guide.md). 
-- Stellen Sie sicher, dass eine Synchronisierungsgruppe bereitgestellt wurde. Erfahren Sie, wie Sie eine [Synchronisierungsgruppe erstellen](storage-sync-files-deployment-guide.md#create-a-sync-group).
+- Auf dem Server ist der Azure-Dateisynchronisierungs-Agent installiert und registriert. Anweisungen zum Installieren des Azure File Sync-Agents finden Sie im Artikel [Verwalten registrierter Server mit Azure File Sync (Vorschau)](storage-sync-files-server-registration.md). 
+- Stellen Sie sicher, dass der Speichersynchronisierungsdienst bereitgestellt wurde. Ausführliche Informationen zum Bereitstellen eines Speichersynchronisierungsdiensts finden Sie unter [Bereitstellen von Azure File Sync (Vorschau)](storage-sync-files-deployment-guide.md). 
+- Stellen Sie sicher, dass eine Synchronisierungsgruppe bereitgestellt wurde. Erfahren Sie, wie Sie eine [Synchronisierungsgruppe erstellen](storage-sync-files-deployment-guide.md#create-a sync-group-and-a-cloud-endpoint).
 - Stellen Sie sicher, dass der Server mit dem Internet verbunden ist und dass der Zugriff auf Azure möglich ist. Wir verwenden Port 443 für die gesamte Kommunikation zwischen dem Server und unserem Dienst.
 
 ## <a name="add-a-server-endpoint"></a>Hinzufügen eines Serverendpunkts
@@ -74,5 +74,5 @@ So entfernen Sie den Serverendpunkt
     ![Entfernen eines Serverendpunkts aus einer Synchronisierungsgruppe](media/storage-sync-files-server-endpoint/remove-server-endpoint-1.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Registrieren/Aufheben der Registrierung eines Servers mit der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-server-registration.md)
+- [Registrieren/Aufheben der Registrierung eines Servers bei Azure File Sync](storage-sync-files-server-registration.md)
 - [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md)

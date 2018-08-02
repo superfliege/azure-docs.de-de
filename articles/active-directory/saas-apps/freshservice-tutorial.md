@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/16/2017
+ms.date: 07/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 28a334cc43f8c14d2bf639b715e891cc6bb8c1cd
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: cccbe2052336012b9ac98b3e28dc6481cbf9aefb
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214449"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144531"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshservice"></a>Tutorial: Azure Active Directory-Integration mit Freshservice
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Freshservice** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/freshservice-tutorial/tutorial_freshservice_samlbase.png)
+    ![Configure single sign-on](./media/freshservice-tutorial/tutorial_freshservice_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Freshservice** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/freshservice-tutorial/tutorial_freshservice_url.png)
+    ![Configure single sign-on](./media/freshservice-tutorial/tutorial_freshservice_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<democompany>.freshservice.com`.
 
@@ -121,15 +121,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
 4. Kopieren Sie im Abschnitt **SAML-Signaturzertifikat** den Wert **FINGERABDRUCK** des Zertifikats.
 
-    ![Configure Single Sign-On](./media/freshservice-tutorial/tutorial_freshservice_certificate.png) 
+    ![Configure single sign-on](./media/freshservice-tutorial/tutorial_freshservice_certificate.png)
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/freshservice-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/freshservice-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Freshservice-Konfiguration** auf **Freshservice konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/freshservice-tutorial/tutorial_freshservice_configure.png) 
+    ![Configure single sign-on](./media/freshservice-tutorial/tutorial_freshservice_configure.png) 
 
 7. Melden Sie sich in einem anderen Webbrowserfenster bei der Freshservice-Unternehmenswebsite als Administrator an.
 
@@ -149,17 +149,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     b. Wählen Sie **SAML-SSO**aus.
 
-    c. Fügen Sie in das Textfeld **SAML-Anmelde-URL** den Wert der **Dienst-URL für einmalige Anmeldung** ein, den Sie aus dem Azure-Portal kopiert haben.
+    c. Fügen Sie in das Textfeld **SAML-Anmelde-URL** den Wert der **SAML-Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
 
     d. Fügen Sie in das Textfeld **Abmelde-URL** den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    e. Fügen Sie in das Textfeld **Security Certificate Fingerprint** den Wert **FINGERABDRUCK** des Zertifikats ein, das Sie aus dem Azure-Portal kopiert haben.
+    e. Fügen Sie in das Textfeld **Fingerabdruck des Sicherheitszertifikats** den Wert **FINGERABDRUCK** des Zertifikats ein, das Sie aus dem Azure-Portal kopiert haben.
 
     f. Klicken Sie unten auf der Seite auf **Speichern**.
-   
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
@@ -238,7 +234,7 @@ Damit sich Azure AD-Benutzer bei Freshservice anmelden können, müssen sie in F
 
 2. Wählen Sie in der Anwendungsliste den Eintrag **Freshservice** aus.
 
-    ![Configure Single Sign-On](./media/freshservice-tutorial/tutorial_freshservice_app.png) 
+    ![Configure single sign-on](./media/freshservice-tutorial/tutorial_freshservice_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 

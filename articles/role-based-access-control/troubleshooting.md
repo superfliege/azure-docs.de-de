@@ -11,29 +11,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 07/23/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 186bcf26639f5cff2dcbf1e805913ac7edab7df4
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: d1a0e46fe348bbc60a4d02a4727a9bb27cb26742
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437365"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223295"
 ---
-# <a name="troubleshooting-rbac-in-azure"></a>Beheben von RBAC-Fehlern in Azure
+# <a name="troubleshoot-rbac-in-azure"></a>Beheben von RBAC-Fehlern in Azure
 
-In diesem Artikel werden häufig gestellte Fragen über die rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) beantwortet. Sie erfahren also, was Sie erwarten können, wenn Sie die Rollen im Azure-Portal verwenden und wie Sie Zugriffsprobleme lösen können. Diese drei Rollen decken alle Ressourcentypen ab:
+In diesem Artikel werden häufig gestellte Fragen über die rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) beantwortet. Sie erfahren also, was Sie erwarten können, wenn Sie die Rollen im Azure-Portal verwenden und wie Sie Zugriffsprobleme lösen können.
 
-* Owner (Besitzer)  
-* Mitwirkender  
-* Leser  
+## <a name="web-app-features-that-require-write-access"></a>Web-App-Features, für die Schreibzugriff erforderlich ist
 
-Sowohl Besitzer als auch Mitwirkende haben Vollzugriff auf alle Verwaltungsfunktionen, Mitwirkende können jedoch anderen Benutzern oder Gruppen keinen Zugriff gewähren. Die Leserolle werden wir aufgrund ihrer umfassenden Eigenschaften ausführlicher beschreiben. Informationen zum Gewähren des Zugriffs finden Sie unter [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](role-assignments-portal.md).
-
-## <a name="app-service"></a>App Service
-### <a name="write-access-capabilities"></a>Schreibzugriff
 Wenn Sie einem Benutzer schreibgeschützten Zugriff für eine einzelne Web-App gewähren, sind einige Features deaktiviert, von denen Sie das unter Umständen nicht erwartet haben. Die folgenden Verwaltungsfunktionen erfordern **Schreibzugriff** auf eine Web-App (entweder als Mitwirkender oder Besitzer) und stehen nicht zur Verfügung, wenn der Benutzer nur über Lesezugriff für die Web-App verfügt.
 
 * Befehle (z.B. starten, anhalten usw.)
@@ -49,7 +43,8 @@ Wenn Sie einem Benutzer schreibgeschützten Zugriff für eine einzelne Web-App g
 
 Wenn Sie auf keine dieser Kacheln zugreifen können, fragen Sie den Administrator nach Zugriff als Mitwirkender auf die Web-App.
 
-### <a name="dealing-with-related-resources"></a>Umgang mit zugehörigen Ressourcen
+## <a name="web-app-resources-that-require-write-access"></a>Web-App-Ressourcen, für die Schreibzugriff erforderlich ist
+
 Web-Apps können aufgrund verschiedener miteinander verknüpfter Ressourcen kompliziert sein. Im Folgenden ist eine typische Ressourcengruppe mit einigen Websites dargestellt:
 
 ![Web-App-Ressourcengruppe](./media/troubleshooting/website-resource-model.png)
@@ -70,15 +65,9 @@ Die folgenden Elemente erfordern **Schreibzugriff** auf die gesamte **Ressourcen
 * Application Insights-Komponenten  
 * Webtests  
 
-## <a name="azure-functions"></a>Azure-Funktionen
-Einige Funktionen von [Azure Functions](../azure-functions/functions-overview.md) erfordern Schreibzugriff. Wenn einem Benutzer beispielsweise die Leserolle zugewiesen ist, können Sie nicht die Funktionen in einer Funktions-App anzeigen. Im Portal wird **(Kein Zugriff)** angezeigt.
+## <a name="virtual-machine-features-that-require-write-access"></a>Features virtueller Computer, für die Schreibzugriff erforderlich ist
 
-![Funktions-Apps ohne Zugriff](./media/troubleshooting/functionapps-noaccess.png)
-
-Ein Leser kann auf die Registerkarte **Plattformfeatures** und dann auf **Alle Einstellungen** klicken, um einige Einstellungen im Zusammenhang mit einer Funktions-App (ähnlich wie bei einer Web-App) anzuzeigen, kann diese Einstellungen jedoch nicht ändern.
-
-## <a name="virtual-machine"></a>Virtueller Computer
-Ähnlich wie bei Web-Apps erfordern einige Funktionen auf dem Blatt "Virtueller Computer" Schreibzugriff auf den virtuellen Computer oder auf andere Ressourcen in der Ressourcengruppe.
+Ähnlich wie bei Web-Apps erfordern einige Funktionen auf dem Blatt „Virtueller Computer“ Schreibzugriff auf den virtuellen Computer oder auf andere Ressourcen in der Ressourcengruppe.
 
 Virtuelle Computer stehen in Verbindung mit Domänennamen, virtuellen Netzwerken, Speicherkonten und Warnungsregeln.
 
@@ -96,6 +85,18 @@ Die folgenden Elemente erfordern **Schreibzugriff** auf den **virtuellen Compute
 * Warnregeln  
 
 Wenn Sie auf keine dieser Kacheln zugreifen können, fragen Sie den Administrator nach Zugriff als Mitwirkender auf diese Ressourcengruppe.
+
+## <a name="azure-functions-and-write-access"></a>Azure Functions und Schreibzugriff
+
+Einige Funktionen von [Azure Functions](../azure-functions/functions-overview.md) erfordern Schreibzugriff. Wenn einem Benutzer beispielsweise die Leserolle zugewiesen ist, können Sie nicht die Funktionen in einer Funktions-App anzeigen. Im Portal wird **(Kein Zugriff)** angezeigt.
+
+![Funktions-Apps ohne Zugriff](./media/troubleshooting/functionapps-noaccess.png)
+
+Ein Leser kann auf die Registerkarte **Plattformfeatures** und dann auf **Alle Einstellungen** klicken, um einige Einstellungen im Zusammenhang mit einer Funktions-App (ähnlich wie bei einer Web-App) anzuzeigen, kann diese Einstellungen jedoch nicht ändern.
+
+## <a name="rbac-changes-are-not-being-detected"></a>Keine Erkennung von RBAC-Änderungen
+
+Azure Resource Manager speichert Konfigurationen und Daten manchmal zwischen, um die Leistung zu verbessern. Beim Erstellen oder Löschen von Rollenzuweisungen kann es bis zu 30 Minuten dauern, bis Änderungen wirksam werden. Wenn Sie das Azure-Portal, Azure PowerShell oder die Azure CLI verwenden, können Sie eine Aktualisierung der Rollenzuweisungsänderungen erzwingen, indem Sie sich abmelden und wieder anmelden. Wenn Sie Rollenzuweisungsänderungen mit REST-API-Aufrufen vornehmen, können Sie eine Aktualisierung erzwingen, indem Sie das Zugriffstoken aktualisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](role-assignments-portal.md)

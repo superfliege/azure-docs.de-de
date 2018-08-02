@@ -1,21 +1,21 @@
 ---
-title: Anpassung der Self-Service-Kennwortzurücksetzung – Azure Active Directory
+title: Anpassen der Self-Service-Kennwortzurücksetzung in Azure AD
 description: Anpassungsoptionen für die Self-Service-Kennwortzurücksetzung in Azure AD
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 23a2897142f5cba90513e8b79e4cd461f1dd25b7
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 69f6ed7814feacbd5adf60325aae123d388ffb61
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054589"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222787"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Anpassen der Azure AD-Funktionalität für die Self-Service-Kennwortzurücksetzung
 
@@ -24,8 +24,9 @@ IT-Experten, die die Self-Service-Kennwortzurücksetzung (Self-Service Password 
 ## <a name="customize-the-contact-your-administrator-link"></a>Anpassen des Links „Wenden Sie sich an Ihren Administrator“
 
 Selbst wenn SSPR nicht aktiviert ist, gibt es für Benutzer im Portal für die Kennwortzurücksetzung den Link „Wenden Sie sich an Ihren Administrator“. Wählt ein Benutzer diesen Link aus, wird einer der folgenden Vorgänge ausgelöst:
-   * Es wird eine E-Mail an Ihre Administratoren gesendet, in der diese gebeten werden, den Benutzer beim Ändern des Kennworts zu unterstützen. 
-   * Die Benutzer werden an eine URL weitergeleitet, die Sie für Unterstützung angegeben haben. 
+
+   * Es wird eine E-Mail an Ihre Administratoren gesendet, in der diese gebeten werden, den Benutzer beim Ändern des Kennworts zu unterstützen.
+   * Die Benutzer werden an eine URL weitergeleitet, die Sie für Unterstützung angegeben haben.
 
 Es wird empfohlen, diesen Kontakt für Ihre Benutzer beispielsweise auf eine vertraute E-Mail-Adresse oder Website festzulegen, die von Ihren Benutzern bereits für Fragen an den Support verwendet wird.
 
@@ -45,9 +46,7 @@ Weitere Informationen zu den verschiedenen Administratorrollen und wie sie zugew
 
 Wenn Ihre Organisation nicht möchte, dass Administratoren über Anforderungen zur Kennwortzurücksetzung benachrichtigt werden, können Sie die folgende Konfiguration aktivieren:
 
-* Aktivieren Sie die Self-Service-Kennwortzurücksetzung für alle Endbenutzer. Diese Option finden Sie unter **Zurücksetzen des Kennworts** > **Eigenschaften**.
-  
-  Wenn Sie nicht möchten, dass Benutzer ihre eigenen Kennwörter zurücksetzen, können Sie den Zugriff auf eine leere Gruppe beschränken. *Dies ist nicht zu empfehlen.*
+* Aktivieren Sie die Self-Service-Kennwortzurücksetzung für alle Endbenutzer. Diese Option finden Sie unter **Zurücksetzen des Kennworts** > **Eigenschaften**. Wenn Sie nicht möchten, dass Benutzer ihre eigenen Kennwörter zurücksetzen, können Sie den Zugriff auf eine leere Gruppe beschränken. *Dies ist nicht zu empfehlen.*
 * Passen Sie den Helpdesklink an, um eine Web-URL oder eine mailto:-Adresse bereitzustellen, die Benutzer verwenden können, um Unterstützung zu erhalten. Diese Option finden Sie unter **Zurücksetzen des Kennworts** > **Anpassung** > **Benutzerdefinierte Helpdesk-E-Mail oder -URL**.
 
 ## <a name="customize-the-ad-fs-sign-in-page-for-sspr"></a>Anpassen der AD FS-Anmeldeseite für SSPR
@@ -56,7 +55,7 @@ AD FS-Administratoren (Active Directory Federation Services) können einen Link 
 
 Um der AD FS-Anmeldeseite einen Link hinzuzufügen, verwenden Sie den folgenden Befehl auf dem AD FS-Server. Benutzer können diese Seite verwenden, um den SSPR-Workflow einzugeben.
 
-``` Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href=’https://passwordreset.microsoftonline.com’>Can’t access your account?</A></p>" ```
+``` Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwordreset.microsoftonline.com' target='_blank'>Can’t access your account?</A></p>" ```
 
 ## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>Anpassen des Aussehens und Verhaltens der Anmeldeseite und des Zugriffsbereichs
 

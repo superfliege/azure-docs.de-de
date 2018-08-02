@@ -14,13 +14,14 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 13/22/2018
+ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 425310f50cebc920a71090d2017dca2a6c135991
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a4b63c9d184f58fe13c1271f9a425919a42fd897
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216719"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurieren der SQL Server-Failoverclusterinstanz auf Azure Virtual Machines
 
@@ -71,12 +72,15 @@ Es gibt einige Dinge, die Sie wissen müssen, und einige Voraussetzungen müssen
 Sie sollten die folgende Technologie verwenden können:
 
 - [Windows-Clustertechnologie](http://technet.microsoft.com/library/hh831579.aspx)
--  [SQL Server-Failoverclusterinstanzen](http://msdn.microsoft.com/library/ms189134.aspx).
+- [SQL Server-Failoverclusterinstanzen](http://msdn.microsoft.com/library/ms189134.aspx).
 
 Außerdem sollten Sie über Grundlagenkenntnisse in Bezug auf die folgende Technologie verfügen:
 
 - [Zusammengeführte Lösung unter Verwendung von „Direkte Speicherplätze“ in Windows Server 2016](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
 - [Azure-Ressourcengruppen](../../../azure-resource-manager/resource-group-portal.md)
+
+> [!IMPORTANT]
+> Derzeit wird die [SQL Server-IaaS-Agent-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md) nicht für SQL Server-Failoverclusterinstanzen (FCI) in Azure unterstützt. Sie sollten die Erweiterung auf virtuellen Computern deinstallieren, die an den FCI beteiligt sind. Diese Erweiterung unterstützt Features wie automatisierte Sicherung und automatisiertes Patchen sowie einige Portalfeatures für SQL. Diese Features sind nach der Deinstallation des Agents nicht für SQL-VMs einsetzbar.
 
 ### <a name="what-to-have"></a>Voraussetzungen
 

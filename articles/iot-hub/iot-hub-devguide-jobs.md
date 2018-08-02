@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 35b8536b944df39d0d47bf3529698fc94e51110e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 460c7d24b2810de41e20ea803ded2ea988613f10
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633943"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223795"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Planen von Aufträgen auf mehreren Geräten
 
@@ -84,7 +84,7 @@ Der folgende Ausschnitt enthält die HTTPS 1.1-Anforderungsdetails, um die Eigen
     }
 
 ## <a name="querying-for-progress-on-jobs"></a>Abfragen des Fortschritts von Aufträgen
-Der folgende Ausschnitt enthält die HTTPS 1.1-Anforderungsdetails für das [Abfragen von Aufträgen][lnk-query]:
+Der folgende Ausschnitt enthält die HTTPS 1.1-Anforderungsdetails für das Abfragen von Aufträgen:
 
     GET /jobs/v2/query?api-version=2016-11-14[&jobType=<jobType>][&jobStatus=<jobStatus>][&pageSize=<pageSize>][&continuationToken=<continuationToken>]
 
@@ -94,6 +94,8 @@ Der folgende Ausschnitt enthält die HTTPS 1.1-Anforderungsdetails für das [Abf
     User-Agent: <sdk-name>/<sdk-version>
 
 Das „continuationToken“ wird aus der Antwort bereitgestellt.  
+
+Sie können mithilfe der [IoT Hub-Abfragesprache für Geräte- und Modulzwillinge, Aufträge und Nachrichtenrouting][lnk-query] den Auftragsausführungsstatus für die einzelnen Geräte abfragen.
 
 ## <a name="jobs-properties"></a>Auftragseigenschaften
 Die folgende Liste enthält die Eigenschaften und entsprechenden Beschreibungen, die beim Abfragen von Aufträgen oder Auftragsergebnissen verwendet werden können.
@@ -143,7 +145,7 @@ Um einige der in diesem Artikel beschriebenen Konzepte auszuprobieren, sehen Sie
 [lnk-query]: iot-hub-devguide-query-language.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
 [lnk-jobs-tutorial]: iot-hub-node-node-schedule-jobs.md
-[lnk-c2d-methods]: iot-hub-node-node-direct-methods.md
+[lnk-c2d-methods]: quickstart-control-device-node.md
 [lnk-dev-methods]: iot-hub-devguide-direct-methods.md
 [lnk-get-started-twin]: iot-hub-node-node-twin-getstarted.md
 [lnk-twin-devguide]: iot-hub-devguide-device-twins.md

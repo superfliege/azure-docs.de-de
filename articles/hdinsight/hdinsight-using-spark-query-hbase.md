@@ -1,24 +1,22 @@
 ---
-title: Verwenden von Spark zum Lesen und Schreiben von HBase-Daten – Azure HDInsight | Microsoft-Dokumentation
+title: 'Verwenden von Spark zum Lesen und Schreiben von HBase-Daten: Azure HDInsight'
 description: Verwenden Sie den Spark HBase-Connector, um Daten aus einem Spark-Cluster zu lesen und in einen HBase-Cluster zu schreiben.
 services: hdinsight
-documentationcenter: ''
 author: maxluk
+ms.author: maxluk
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.date: 01/11/2018
-ms.author: maxluk
-ms.openlocfilehash: 7cfc7f586e8a92c29736a7c4cff0b12796be430a
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.topic: conceptual
+ms.date: 07/18/2018
+ms.openlocfilehash: 5123a95852fae58adf0b4a4684b012d3b9c71e3b
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161174"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144770"
 ---
 # <a name="use-spark-to-read-and-write-hbase-data"></a>Verwenden von Spark zum Lesen und Schreiben von HBase-Daten
 
@@ -130,7 +128,7 @@ In diesem Schritt erstellen Sie einfache Tabelle in HBase und füllen sie auf, d
 1. Stellen Sie über SSH eine Verbindung mit dem Hauptknoten Ihres Spark-Clusters her.
 2. Starten Sie die Spark-Shell, und geben Sie das Spark HBase-Connector-Paket an:
 
-        spark-shell --packages com.hortonworks:shc-core:1.1.0-2.1-s_2.11 --repositories http://repo.hortonworks.com/coroups/public/
+        spark-shell --packages com.hortonworks:shc-core:1.1.0-2.1-s_2.11 --repositories http://repo.hortonworks.com/content/groups/public/
 
 3. Lassen Sie diese Instanz der Spark-Shell geöffnet, und fahren Sie mit dem nächsten Schritt fort.
 

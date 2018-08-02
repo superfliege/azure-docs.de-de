@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/05/2016
 ms.author: mlearned
-ms.openlocfilehash: 7fb3de72e28b19f9ca30968b267bf985ae384275
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 2764d8a17d50f1589d413c2343badfded6adb66e
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164838"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216341"
 ---
 # <a name="tutorial-devops-with-the-azure-portal"></a>Tutorial: DevOps mit dem Azure-Portal
 Die Azure-Plattform enthält viele flexible DevOps-Workflows. In diesem Tutorial erfahren Sie, wie Sie die Funktionen des Azure-Portals nutzen, um ausgeführte Anwendungen zu entwickeln, zu testen, bereitzustellen, die Problembehandlung durchzuführen, zu überwachen und zu verwalten. In diesem Tutorial geht es vor allem um Folgendes:

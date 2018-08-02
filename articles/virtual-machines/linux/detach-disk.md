@@ -13,18 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 11/17/2017
+ms.date: 07/18/2018
 ms.author: cynthn
-ms.openlocfilehash: 572fe5bd4d6d79bb9dd94353732e273282e2a0af
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0225c6605109489c4b9b599918dc09983ae25ac8
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30903681"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144073"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Trennen eines Datenträgers von einem virtuellen Linux-Computer
 
-Wenn Sie einen Datenträger, der an einen virtuellen Computer angefügt ist, nicht mehr benötigen, können Sie ihn leicht trennen. Dadurch wird der Datenträger von dem virtuellen Computer entfernt, aber nicht aus dem Speicher. 
+Wenn Sie einen Datenträger, der an einen virtuellen Computer angefügt ist, nicht mehr benötigen, können Sie ihn leicht trennen. Dadurch wird der Datenträger von dem virtuellen Computer entfernt, aber nicht aus dem Speicher. In diesem Artikel wird eine Ubuntu LTS 16.04-Distribution verwendet. Wenn Sie eine andere Distribution verwenden, können die Anweisungen zum Aufheben der Datenträgereinbindung abweichen.
 
 > [!WARNING]
 > Beim Trennen eines Datenträgers wird dieser nicht automatisch gelöscht. Wenn Sie Storage Premium abonniert haben, fallen auch weiterhin Speichergebühren für den Datenträger an. Weitere Informationen finden Sie unter [Preisgestaltung und Abrechnung bei der Verwendung von Storage Premium](../windows/premium-storage.md#pricing-and-billing). 
@@ -33,7 +33,75 @@ Wenn Sie einen Datenträger, der an einen virtuellen Computer angefügt ist, nic
 
 Wenn Sie die vorhandenen Daten erneut auf dem Datenträger verwenden möchten, können Sie ihn erneut an denselben virtuellen Computer oder an einen anderen anfügen.  
 
+
+## <a name="connect-to-the-vm-to-unmount-the-disk"></a>Herstellen einer Verbindung mit dem virtuellen Computer zum Aufheben der Datenträgereinbindung
+
+Bevor Sie den Datenträger über die CLI oder das Portal trennen können, müssen Sie seine Einbindung aufheben und Verweise auf ihn aus der FSTAB-Datei entfernen.
+
+Stellen Sie eine Verbindung zur VM her. In diesem Beispiel lautet die öffentliche IP-Adresse des virtuellen Computers *10.0.1.4* und der Benutzername *azureuser*: 
+
+```bash
+ssh azureuser@10.0.1.4
+```
+
+Suchen Sie zunächst den Datenträger, den Sie trennen möchten. Im folgenden Beispiel wird „dmesg“ zum Filtern auf SCSI-Datenträgern verwendet:
+
+```bash
+dmesg | grep SCSI
+```
+
+Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
+
+```bash
+[    0.294784] SCSI subsystem initialized
+[    0.573458] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 252)
+[    7.110271] sd 2:0:0:0: [sda] Attached SCSI disk
+[    8.079653] sd 3:0:1:0: [sdb] Attached SCSI disk
+[ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
+```
+
+Hier ist *sdc* der Datenträger, den wir trennen möchten. Sie sollten auch die UUID des Datenträgers abrufen.
+
+```bash
+sudo -i blkid
+```
+
+Die Ausgabe sieht in etwa wie im folgenden Beispiel aus:
+
+```bash
+/dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
+/dev/sdb1: UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4"
+/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
+```
+
+
+Bearbeiten Sie die Datei */etc/fstab*, um Verweise auf den Datenträger zu entfernen. 
+
+> [!NOTE]
+> Eine falsche Bearbeitung der Datei **/etc/fstab** könnte zu einem nicht startfähigen System führen. Wenn Sie sich nicht sicher sind, helfen Ihnen die Informationen zur richtigen Bearbeitung dieser Datei in der Dokumentation weiter. Außerdem wird empfohlen, ein Backup der Datei /etc/fstab zu erstellen, bevor Sie sie bearbeiten.
+
+Öffnen Sie die Datei */etc/fstab* wie folgt in einem Text-Editor:
+
+```bash
+sudo vi /etc/fstab
+```
+
+In diesem Beispiel muss die folgende Zeile aus der Datei */etc/fstab* gelöscht werden:
+
+```bash
+UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
+```
+
+Heben Sie die Einbindung des Datenträgers mithilfe von `umount` auf. Im folgenden Beispiel wird die Einbindung der Partition */dev/sdc1* im Einbindungspunkt */datadrive* aufgehoben:
+
+```bash
+sudo umount /dev/sdc1 /datadrive
+```
+
+
 ## <a name="detach-a-data-disk-using-cli-20"></a>Trennen eines Datenträgers mit CLI 2.0
+
+Im folgenden Beispiel wird der Datenträger *myDataDisk* vom virtuellen Computer *myVM* in *myResourceGroup* getrennt:
 
 ```azurecli
 az vm disk detach \
@@ -46,6 +114,7 @@ Der Datenträger verbleibt im Speicher, ist jedoch nicht mehr an einen virtuelle
 
 
 ## <a name="detach-a-data-disk-using-the-portal"></a>Trennen eines Datenträgers im Portal
+
 1. Wählen Sie im Menü auf der linken Seite die Option **Virtuelle Computer** aus.
 2. Wählen Sie den virtuellen Computer mit dem zu trennenden Datenträger aus, und klicken Sie auf **Beenden**, um die Zuordnung der VM aufzuheben.
 3. Klicken Sie im Bereich für den virtuellen Computer auf **Datenträger**.
@@ -55,6 +124,7 @@ Der Datenträger verbleibt im Speicher, ist jedoch nicht mehr an einen virtuelle
 6. Klicken Sie im Bereich für den virtuellen Computer auf **Übersicht** und dann oben im Bereich auf die Schaltfläche **Starten**, um die VM neu zu starten.
 
 Der Datenträger verbleibt im Speicher, ist jedoch nicht mehr an einen virtuellen Computer angefügt.
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte

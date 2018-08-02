@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 89ebc804aeabfa76309d37721576e7fe833ea2ce
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1e59ed093417d8761135b946e2fa3f183bb085c9
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625898"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215970"
 ---
 # <a name="service-to-service-authentication-with-data-lake-store-using-azure-active-directory"></a>Dienst-zu-Dienst-Authentifizierung mit Data Lake Store mithilfe von Azure Active Directory
 > [!div class="op_single_selector"]
@@ -78,7 +78,7 @@ Beim programmgesteuerten Anmelden benötigen Sie die ID für Ihre Anwendung. Wen
     ![Zuweisen von Berechtigungen zu einer Gruppe](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "Zuweisen von Berechtigungen zu einer Gruppe")
 
 > [!NOTE]
-> Wenn Sie Ihre Azure Active Directory-Anwendung auf einen bestimmten Ordner beschränken möchten, müssen Sie außerdem derselben Azure Active Directory-Anwendung die **Execute**-Berechtigung für das Stammverzeichnis gewähren, um den Dateierstellungszugriff über das .NET-SDK zu aktivieren.
+> Wenn Sie Ihre Azure Active Directory-Anwendung auf einen bestimmten Ordner beschränken möchten, müssen Sie außerdem derselben Azure Active Directory-Anwendung die **Execute**-Berechtigung für das Stammverzeichnis gewähren, um den Dateierstellungszugriff über das .NET SDK zu aktivieren.
 
 > [!NOTE]
 > Wenn Sie die SDKs zum Erstellen eines Data Lake Store-Kontos verwenden möchten, müssen Sie die Azure AD-Webanwendung als Rolle der Ressourcengruppe zuweisen, in der Sie das Data Lake Store-Konto erstellen.

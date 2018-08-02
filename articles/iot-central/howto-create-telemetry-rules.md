@@ -8,12 +8,12 @@ ms.date: 04/16/2018
 ms.topic: article
 ms.prod: microsoft-iot-central
 manager: timlt
-ms.openlocfilehash: 083410c6407ce7aa83c3829f884890561b0b44b8
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 42516e4dd6a85e0d07d4a8e70e958b2ec6e84aad
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008211"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225199"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-an-action-in-your-azure-iot-central-application"></a>Erstellen einer Telemetrieregel und Einrichten einer Aktion in Ihrer Azure IoT Central-Anwendung
 
@@ -60,7 +60,9 @@ In diesem Abschnitt erfahren Sie, wie Sie eine Bedingung zum Überwachen der Tem
 
 ### <a name="add-an-action"></a>Hinzufügen einer Aktion
 
-In diesem Abschnitt erfahren Sie, wie Sie eine Aktion zu einer Regel hinzufügen. Dabei wird veranschaulicht, wie die E-Mail-Aktion hinzugefügt wird, Sie können jedoch auch [eine Microsoft Flow-Aktion zu Ihrer Regel hinzufügen](howto-add-microsoft-flow.md), um bei Auslösung der Regel einen Workflow in Microsoft Flow zu initiieren.
+In diesem Beispiel erfahren Sie, wie Sie eine Aktion zu einer Regel hinzufügen. Dabei wird veranschaulicht, wie die E-Mail-Aktion hinzugefügt wird, Sie können jedoch auch andere Aktionen hinzufügen:
+-  [Microsoft Flow-Aktion](howto-add-microsoft-flow.md) zum Initiieren eines Workflows in Microsoft Flow bei Auslösung einer Regel
+- [Webhookaktion](howto-create-webhooks.md) zum Benachrichtigen anderer Dienste bei Auslösung einer Regel
 
 > [!NOTE]
 > Gegenwärtig kann einer einzigen Regel nur eine Aktion zugeordnet werden.

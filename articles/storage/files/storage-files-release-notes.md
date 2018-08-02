@@ -1,21 +1,21 @@
 ---
-title: Versionshinweise zum Azure File Sync-Agent (Vorschauversion) | Microsoft-Dokumentation
-description: Versionshinweise zum Azure File Sync-Agent (Vorschauversion)
+title: Versionshinweise zum Azure File Sync-Agent | Microsoft-Dokumentation
+description: Versionshinweise zum Azure File Sync-Agent
 services: storage
 author: wmgries
 manager: aungoo
 ms.service: storage
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: c1ca8146db8c5d67be53ba4e30d8ab0218aca104
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 7422300ffe315e0a12812c38f9b823a125eaf344
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128757"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144787"
 ---
-# <a name="release-notes-for-the-azure-file-sync-agent-preview"></a>Versionshinweise zum Azure File Sync-Agent (Vorschauversion)
+# <a name="release-notes-for-the-azure-file-sync-agent"></a>Versionshinweise zum Azure File Sync-Agent
 Mit Azure File Sync können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Ihre Windows Server-Installationen werden in einen schnellen Cache Ihrer Azure-Dateifreigabe transformiert. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen (z.B. SMB, NFS und FTPS). Sie können weltweit so viele Caches wie nötig nutzen.
 
 Dieser Artikel enthält die Versionshinweise für die unterstützten Versionen des Azure File Sync-Agents.
@@ -25,19 +25,69 @@ Für den Azure File Sync-Agent werden die folgenden Versionen unterstützt:
 
 | Meilenstein | Agent-Versionsnummer | Herausgabedatum | Status |
 |----|----------------------|--------------|------------------|
-| Updaterollup für Juni | 3.0.13.0 | 29. Juni 2018 | Unterstützt (empfohlene Version) |
-| Aktualisieren 2 | 3.0.12.0 | 22. Mai 2018 | Unterstützt |
-| Updaterollup von April | 2.3.0.0 | 8. Mai 2018 | Unterstützt |
-| Updaterollup von März | 2.2.0.0 | 12. März 2018 | Unterstützt |
-| Updaterollup von Februar | 2.1.0.0 | 28. Februar 2018 | Unterstützt |
-| Aktualisierung 1 | 2.0.11.0 | 8. Februar 2018 | Unterstützt |
-| Updaterollup von Januar | 1.4.0.0 | 8. Januar 2018 | Unterstützt |
-| Updaterollup von November | 1.3.0.0 | 30. November 2017 | Unterstützt |
-| Updaterollup von Oktober | 1.2.0.0 | 31. Oktober 2017 | Unterstützt |
-| Erste Vorschauversion | 1.1.0.0 | 26. September 2017 | Unterstützt |
+| Allgemeine Verfügbarkeit | 3.1 | 19. Juli 2018 | Unterstützt (empfohlene Version) |
+| Updaterollup für Juni | 3.0.13.0 | 29. Juni 2018 | Agent-Version läuft am 4. September 2018 ab. |
+| Aktualisieren 2 | 3.0.12.0 | 22. Mai 2018 | Agent-Version läuft am 4. September 2018 ab. |
+| Updaterollup von April | 2.3.0.0 | 8. Mai 2018 | Agent-Version läuft am 4. September 2018 ab. |
+| Updaterollup von März | 2.2.0.0 | 12. März 2018 | Agent-Version läuft am 4. September 2018 ab. |
+| Updaterollup von Februar | 2.1.0.0 | 28. Februar 2018 | Agent-Version läuft am 4. September 2018 ab. |
+| Aktualisierung 1 | 2.0.11.0 | 8. Februar 2018 | Agent-Version läuft am 4. September 2018 ab. |
+| Updaterollup von Januar | 1.4.0.0 | 8. Januar 2018 | Agent-Version läuft am 4. September 2018 ab. |
+| Updaterollup von November | 1.3.0.0 | 30. November 2017 | Agent-Version läuft am 4. September 2018 ab. |
+| Updaterollup von Oktober | 1.2.0.0 | 31. Oktober 2017 | Agent-Version läuft am 4. September 2018 ab. |
+| Erste Vorschauversion | 1.1.0.0 | 26. September 2017 | Agent-Version läuft am 4. September 2018 ab. |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Updaterichtlinie für den Azure-Dateisynchronisierungs-Agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-3100"></a>Agent-Version 3.1.0.0
+Die folgenden Versionshinweise gelten für Version 3.1.0.0 des Azure File Sync-Agents (Veröffentlichung: 19. Juli 2018).
+
+### <a name="agent-installation-and-server-configuration"></a>Agent-Installation und Serverkonfiguration
+Weitere Informationen zum Installieren und Konfigurieren des Azure File Sync-Agents mit Windows Server finden Sie unter [Planen einer Bereitstellung der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-planning.md) sowie unter [Bereitstellen von Azure File Sync (Vorschau)](storage-sync-files-deployment-guide.md).
+
+- Das Agent-Installationspaket muss mit erhöhten Berechtigungen (Administratorberechtigungen) installiert werden.
+- Der Agent wird für die Bereitstellungsoptionen „Windows Server Core“ oder „Nano Server“ nicht unterstützt.
+- Der Agent wird nur unter Windows Server 2016 und Windows Server 2012 R2 unterstützt.
+- Der Agent benötigt mindestens 2 GB physischen Speicher.
+- Der Dienst „Storage-Synchronisierungs-Agent“ (FileSyncSvc) unterstützt keine Serverendpunkte, die sich auf einem Volume befinden, für das das Verzeichnis „System Volume Information“ (SVI) komprimiert ist. Diese Konfiguration führt zu unerwarteten Ergebnissen.
+
+### <a name="interoperability"></a>Interoperabilität
+- Virenschutz, Sicherung und andere Anwendungen, die auf Tieringdateien zugreifen, können zu unerwünschten Rückrufen führen, wenn sie das Offlineattribut nicht berücksichtigen und das Lesen des Inhalts dieser Dateien nicht überspringen. Weitere Informationen finden Sie unter [Problembehandlung bei der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-troubleshoot.md).
+- Verwenden Sie nicht den Ressourcen-Manager für Dateiserver oder andere Dateiprüfungen. Dateiprüfungen können zu endlosen Synchronisierungsfehlern führen, wenn Dateien aufgrund der damit verbundenen Vorgänge blockiert werden.
+- Die Ausführung von Sysprep auf einem Server, für den der Azure File Sync-Agent installiert ist, wird nicht unterstützt und kann zu unerwarteten Ergebnissen führen. Die Agent-Installation und Serverregistrierung sollte nach der Bereitstellung des Serverimages und nach Abschluss des Mini-Setups für Sysprep erfolgen.
+- Datendeduplizierung und Cloudtiering auf demselben Volume werden nicht unterstützt.
+
+### <a name="sync-limitations"></a>Einschränkungen bei der Synchronisierung
+Folgende Elemente werden nicht synchronisiert, aber der restliche Systembetrieb ist nicht beeinträchtigt:
+- Pfade, die länger als 2.048 Zeichen sind.
+- Der DACL-Teil (besitzerverwaltete Zugriffssteuerungsliste) einer Sicherheitsbeschreibung, sofern dieser größer als 2 KB ist. (Dieses Problem trifft nur zu, wenn Sie für ein einzelnes Element über mehr als ca. 40 Zugriffssteuerungseinträge verfügen.)
+- Der SACL-Teil (System-Zugriffssteuerungsliste) einer Sicherheitsbeschreibung, die für die Überwachung verwendet wird.
+- Erweiterte Attribute
+- Alternative Datenströme
+- Analysepunkte
+- Feste Links
+- Die Komprimierung (sofern für eine Serverdatei festgelegt) wird nicht beibehalten, wenn Änderungen mit der Datei von anderen Endpunkten synchronisiert werden.
+- Mit EFS (oder einer anderen Benutzermodusverschlüsselung) verschlüsselte Dateien, die den Dienst am Lesen der Daten hindern.
+
+    > [!Note]  
+    > Bei Azure File Sync werden Daten während der Übertragung immer verschlüsselt. Ruhende Daten werden in Azure immer verschlüsselt.
+ 
+### <a name="server-endpoint"></a>Serverendpunkt
+- Ein Serverendpunkt kann nur auf einem NTFS-Volume erstellt werden. ReFS, FAT, FAT32 und andere Dateisysteme werden von Azure File Sync derzeit nicht unterstützt.
+- Mehrstufige Dateien werden unbrauchbar, wenn für die Dateien vor dem Löschen des Serverendpunkts kein Rückruf erfolgt.
+- Das Cloudtiering wird auf dem Systemvolume nicht unterstützt. Um einen Serverendpunkt auf dem Systemvolume zu erstellen, deaktivieren Sie Cloudtiering, wenn Sie den Serverendpunkt erstellen.
+- Failoverclustering wird nur mit Clusterdatenträgern, aber nicht mit freigegebenen Clustervolumes (Cluster Shared Volumes, CSVs) unterstützt.
+- Ein Serverendpunkt kann nicht geschachtelt werden. Er kann auf demselben Volume parallel zu einem anderen Endpunkt vorhanden sein (Koexistenz).
+- Speichern Sie keine Betriebssystem- oder Anwendungsauslagerungsdatei, die sich innerhalb eines Serverendpunkts befindet.
+- Der Servername im Portal wird bei Umbenennung des Servers nicht aktualisiert. Heben Sie zur Aktualisierung des Servernamens im Portal die Registrierung des Servers auf, und registrieren Sie ihn neu.
+
+### <a name="cloud-endpoint"></a>Cloudendpunkt
+- Azure File Sync unterstützt direkte Änderungen an der Azure-Dateifreigabe. Allerdings müssen alle Änderungen, die Sie an der Azure-Dateifreigabe vornehmen, zuerst von einem Azure File Sync-Auftrag zum Erkennen von Änderungen erkannt werden. Ein Auftrag zum Erkennen von Änderungen für einen Cloudendpunkt wird einmal alle 24 Stunden gestartet. Darüber hinaus bewirken Änderungen, die über das REST-Protokoll an einer Azure-Dateifreigabe vorgenommen wurden, keine Aktualisierung der letzten SMB-Änderungszeit, und die Änderungen sind für eine Synchronisierung nicht zu sehen.
+
+### <a name="cloud-tiering"></a>Cloudtiering
+- Wenn eine Tieringdatei mit Robocopy an einen anderen Speicherort kopiert wird, ist die sich ergebende Datei keine Tieringdatei. Das Offlineattribut kann festgelegt werden, da dieses Attribut fälschlicherweise von Robocopy in Kopiervorgänge eingefügt wird.
+- Beim Anzeigen von Dateieigenschaften über einen SMB-Client sieht es aufgrund der Zwischenspeicherung von Dateimetadaten unter Umständen so aus, als wäre das Offlineattribut nicht korrekt festgelegt.
 
 ## <a name="agent-version-30130"></a>Agent-Version 3.0.13.0
 Die folgenden Versionshinweise gelten für Version 3.0.13.0 des Azure File Sync-Agents, die am 29. Juni 2018 veröffentlicht wurde. Diese Hinweise gelten zusätzlich zu den Versionshinweisen, die für Version 3.0.12.0 angegeben sind.
@@ -49,7 +99,7 @@ Diese Version umfasst die folgende Fehlerbehebung:
 Die folgenden Versionshinweise gelten für Version 3.0.12.0 des Azure File Sync-Agents (veröffentlicht am 22. Mai 2018).
 
 ### <a name="agent-installation-and-server-configuration"></a>Agent-Installation und Serverkonfiguration
-Weitere Informationen zum Installieren und Konfigurieren des Azure File Sync-Agents mit Windows Server finden Sie unter [Planen einer Bereitstellung der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-planning.md) sowie unter [Bereitstellen der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-deployment-guide.md).
+Weitere Informationen zum Installieren und Konfigurieren des Azure File Sync-Agents mit Windows Server finden Sie unter [Planen einer Bereitstellung der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-planning.md) sowie unter [Bereitstellen von Azure File Sync (Vorschau)](storage-sync-files-deployment-guide.md).
 
 - Das Agent-Installationspaket muss mit erhöhten Berechtigungen (Administratorberechtigungen) installiert werden.
 - Der Agent wird für die Bereitstellungsoptionen „Windows Server Core“ oder „Nano Server“ nicht unterstützt.
@@ -119,7 +169,7 @@ Diese Version umfasst die folgenden Änderungen:
 Die folgenden Versionshinweise gelten für Version 2.0.11.0 des Azure File Sync-Agents (veröffentlicht am 9. Februar 2018). 
 
 ### <a name="agent-installation-and-server-configuration"></a>Agent-Installation und Serverkonfiguration
-Weitere Informationen zum Installieren und Konfigurieren des Azure File Sync-Agents mit Windows Server finden Sie unter [Planen einer Bereitstellung der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-planning.md) sowie unter [Bereitstellen der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-deployment-guide.md).
+Weitere Informationen zum Installieren und Konfigurieren des Azure File Sync-Agents mit Windows Server finden Sie unter [Planen einer Bereitstellung der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-planning.md) sowie unter [Bereitstellen von Azure File Sync (Vorschau)](storage-sync-files-deployment-guide.md).
 
 - Das Agent-Installationspaket (MSI) muss mit erhöhten Berechtigungen (Administratorberechtigungen) installiert werden.
 - Der Agent wird für die Bereitstellungsoptionen „Windows Server Core“ oder „Nano Server“ nicht unterstützt.
@@ -170,7 +220,7 @@ Folgende Elemente werden nicht synchronisiert, aber der restliche Systembetrieb 
 Die folgenden Versionshinweise gelten für Version 1.1.0.0 des Azure File Sync-Agents (veröffentlicht am 9. September 2017, erste Vorschauversion). 
 
 ### <a name="agent-installation-and-server-configuration"></a>Agent-Installation und Serverkonfiguration
-Weitere Informationen zum Installieren und Konfigurieren des Azure File Sync-Agents mit Windows Server finden Sie unter [Planen einer Bereitstellung der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-planning.md) sowie unter [Bereitstellen der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-deployment-guide.md).
+Weitere Informationen zum Installieren und Konfigurieren des Azure File Sync-Agents mit Windows Server finden Sie unter [Planen einer Bereitstellung der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-planning.md) sowie unter [Bereitstellen von Azure File Sync (Vorschau)](storage-sync-files-deployment-guide.md).
 
 - Das Agent-Installationspaket (MSI) muss mit erhöhten Berechtigungen (Administratorberechtigungen) installiert werden.
 - Der Agent wird für die Bereitstellungsoptionen „Windows Server Core“ oder „Nano Server“ nicht unterstützt.

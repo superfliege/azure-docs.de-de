@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/03/2018
+ms.date: 07/20/2018
 ms.author: kumud
-ms.openlocfilehash: 20897137c617ddf9a33a8f4966bcd7e30ac7c60c
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 1a7f37d3f95701779a16cf5dc6844fb67ee7f956
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261932"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215100"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Übersicht: Azure Standard Load Balancer
 
@@ -49,7 +49,7 @@ Standard Load Balancer ermöglicht Ihnen das Skalieren Ihrer Anwendungen sowie d
 In der folgenden Tabelle finden Sie einen Überblick über die Unterschiede zwischen Standard Load Balancer und Basic Load Balancer:
 
 >[!NOTE]
-> Für neue Entwürfe sollte Standard Load Balancer verwendet werden. 
+> Für neue Entwürfe sollte Load Balancer Standard verwendet werden. 
 
 | | Standard-SKU | Basic-SKU |
 | --- | --- | --- |
@@ -59,8 +59,9 @@ In der folgenden Tabelle finden Sie einen Überblick über die Unterschiede zwis
 | Diagnose | Azure Monitor, mehrdimensionale Metriken einschließlich Byte- und Paketleistungsindikatoren, Integritätsteststatus, Verbindungsversuche (TCP SYN), Integrität ausgehender Verbindungen (erfolgreiche und fehlgeschlagene SNAT-Datenströme), Messungen für die aktive Datenebene | Azure Log Analytics nur für öffentlichen Load Balancer, SNAT-Überlastungswarnung, Integritätsanzahl für Back-End-Pool |
 | HA-Ports | Interner Load Balancer | / |
 | Standardmäßig sicher | Standardmäßig geschlossen für öffentliche IP- und Load Balancer-Endpunkte, und es muss eine Netzwerksicherheitsgruppe verwendet werden, über die explizit eine Whitelist verwendet wird, damit Datenverkehr möglich ist | Standardmäßig geöffnet, Netzwerksicherheitsgruppe ist optional |
-| Ausgehende Verbindungen | Mehrere Front-Ends mit Deaktivierung über Regel. Es _muss_ explizit ein Szenario für ausgehenden Datenverkehr erstellt werden, damit der virtuelle Computer ausgehende Verbindungen verwenden kann.  [VNet-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) können ohne ausgehende Verbindungen erreicht werden und werden nicht für verarbeitete Daten angerechnet.  Alle öffentlichen IP-Adressen, einschließlich der Azure-PaaS-Dienste, die nicht als VNet-Dienstendpunkte verfügbar sind, müssen über ausgehende Verbindungen erreicht werden und werden als verarbeitete Daten angerechnet. Wenn nur ein interner Load Balancer einen virtuellen Computer versorgt, sind ausgehende Verbindungen nicht über Standard-SNAT verfügbar. Ausgehende SNAT-Programmierung ist transportprotokollspezifisch entsprechend dem Protokoll der Regel für eingehenden Lastenausgleich. | Einzelnes Front-End, ausgewählt nach dem Zufallsprinzip, wenn mehrere Front-Ends vorhanden sind.  Wenn Sie nur ein interner Load Balancer einen virtuellen Computer versorgt, wird Standard-SNAT verwendet. |
-| Mehrere Front-Ends | Eingehend und ausgehend | Nur eingehend |
+| [Ausgehende Verbindungen](load-balancer-outbound-connections.md) | Mehrere Front-Ends mit Deaktivierung über Lastenausgleichsregel. Es _muss_ explizit ein Szenario für ausgehenden Datenverkehr erstellt werden, damit der virtuelle Computer ausgehende Verbindungen verwenden kann.  [VNet-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) können ohne ausgehende Verbindungen erreicht werden und werden nicht für verarbeitete Daten angerechnet.  Alle öffentlichen IP-Adressen, einschließlich der Azure-PaaS-Dienste, die nicht als VNet-Dienstendpunkte verfügbar sind, müssen über ausgehende Verbindungen erreicht werden und werden als verarbeitete Daten angerechnet. Wenn nur ein interner Load Balancer einen virtuellen Computer versorgt, sind ausgehende Verbindungen nicht über Standard-SNAT verfügbar. Ausgehende SNAT-Programmierung ist transportprotokollspezifisch entsprechend dem Protokoll der Regel für eingehenden Lastenausgleich. | Einzelnes Front-End, ausgewählt nach dem Zufallsprinzip, wenn mehrere Front-Ends vorhanden sind.  Wenn Sie nur ein interner Load Balancer einen virtuellen Computer versorgt, wird Standard-SNAT verwendet. |
+| [Mehrere Front-Ends](load-balancer-multivip-overview.md) | Eingehend und [ausgehend](load-balancer-outbound-connections.md) | Nur eingehend |
+| [Verhalten bei Ausfall während Integritätstest](load-balancer-custom-probe-overview.md) | TCP-Verbindungen bleiben bei Ausfällen während Instanztests __und__ bei Ausfällen aller Tests bestehen. | TCP-Verbindungen bleiben bei Ausfällen während Instanztests bestehen. Alle TCP-Verbindungen werden bei Ausfällen während Tests beendet. |
 | Verwaltungsvorgänge | Die meisten Vorgänge < 30 Sekunden | Meist 60 bis 90+ Sekunden |
 | SLA | 99,99 % für Datenpfad mit zwei fehlerfreien virtuellen Computern | Implizit in VM SLA | 
 | Preise | Berechnet anhand der Anzahl der Regeln, Daten, die eingehend oder ausgehend verarbeitet werden, werden der Ressource zugeordnet  | Keine Berechnung |
