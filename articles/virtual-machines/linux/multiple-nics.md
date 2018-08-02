@@ -3,7 +3,7 @@ title: Erstellen eines virtuellen Linux-Computers in Azure mit mehreren Netzwerk
 description: Erfahren Sie, wie Sie mithilfe von Azure CLI 2.0 oder mithilfe von Resource Manager-Vorlagen einen virtuellen Linux-Computer mit mehreren angefügten Netzwerkkarten erstellen.
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
+author: iainfoulds
 manager: jeconnoc
 editor: ''
 ms.assetid: 5d2d04d0-fc62-45fa-88b1-61808a2bc691
@@ -12,19 +12,19 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/26/2017
-ms.author: cynthn
-ms.openlocfilehash: 257b80c30823be41893be8659845d4fcbc922da3
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.date: 06/07/2018
+ms.author: iainfou
+ms.openlocfilehash: aae71dafd3685e44975049c4287c083abc2330bc
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932271"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144855"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Erstellen eines virtuellen Linux-Computers in Azure mit mehreren Netzwerkschnittstellenkarten
 Sie können einen virtuellen Computer in Azure erstellen, an den mehrere Netzwerkkarten angefügt werden. Häufige Szenarien hierfür sind z.B. unterschiedliche Subnetze für Front-End- und Back-End-Verbindung oder ein Netzwerk für eine Überwachungs- oder Sicherungslösung. In diesem Artikel erfahren Sie, wie Sie einen virtuellen Computer mit mehreren Netzwerkkarten erstellen und wie Sie Netzwerkkarten vorhandener virtueller Computer hinzufügen oder entfernen. Verschiedene [VM-Größen](sizes.md) unterstützen eine unterschiedliche Anzahl von Netzwerkkarten, passen Sie die Größe Ihres virtuellen Computers daher entsprechend an.
 
-In diesem Artikel erfahren Sie, wie Sie eine VM mit mehreren Netzwerkkarten mithilfe von Azure CLI 2.0 erstellen. 
+In diesem Artikel erfahren Sie, wie Sie eine VM mit mehreren Netzwerkkarten mithilfe von Azure CLI 2.0 erstellen. Sie können diese Schritte auch per [Azure CLI 1.0](multiple-nics-nodejs.md) ausführen.
 
 
 ## <a name="create-supporting-resources"></a>Erstellen von unterstützenden Ressourcen
@@ -44,9 +44,9 @@ Erstellen Sie das virtuelle Netzwerk mit [az network vnet create](/cli/azure/net
 az network vnet create \
     --resource-group myResourceGroup \
     --name myVnet \
-    --address-prefix 192.168.0.0/16 \
+    --address-prefix 10.0.0.0/16 \
     --subnet-name mySubnetFrontEnd \
-    --subnet-prefix 192.168.1.0/24
+    --subnet-prefix 10.0.1.0/24
 ```
 
 Erstellen Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) ein Subnetz für den Back-End-Datenverkehr. Im folgenden Beispiel wird das Subnetz *mySubnetBackEnd* erstellt:
@@ -56,7 +56,7 @@ az network vnet subnet create \
     --resource-group myResourceGroup \
     --vnet-name myVnet \
     --name mySubnetBackEnd \
-    --address-prefix 192.168.2.0/24
+    --address-prefix 10.0.2.0/24
 ```
 
 Erstellen Sie mit [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) eine Netzwerksicherheitsgruppe. Im folgenden Beispiel wird eine Netzwerksicherheitsgruppe namens *myNetworkSecurityGroup* erstellt:
@@ -86,7 +86,7 @@ az network nic create \
 ```
 
 ## <a name="create-a-vm-and-attach-the-nics"></a>Erstellen eines virtuellen Computers und Anfügen der Netzwerkkarten
-Wenn Sie den virtuellen Computer erstellen, geben Sie mit `--nics` die Netzwerkkarten an, die Sie erstellt haben. Gehen Sie umsichtig vor, wenn Sie die Größe der virtuellen Computer auswählen. Sie können einem virtuellen Computer nur eine bestimmte Anzahl von Netzwerkkarten hinzufügen. Weitere Informationen finden Sie unter [Linux-VM-Größen](sizes.md). 
+Wenn Sie den virtuellen Computer erstellen, geben Sie mit `--nics` die Netzwerkkarten an, die Sie erstellt haben. Gehen Sie umsichtig vor, wenn Sie die Größe der virtuellen Computer auswählen. Sie können einem virtuellen Computer nur eine bestimmte Anzahl von Netzwerkkarten hinzufügen. Weitere Informationen finden Sie unter [Linux-VM-Größen](sizes.md).
 
 Erstellen Sie mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. Im folgenden Beispiel wird ein virtueller Computer namens *myVM* erstellt:
 
@@ -187,75 +187,68 @@ Ein vollständiges Beispiel finden Sie unter [Erstellen von mehreren Netzwerkkar
 Fügen Sie dem Gastbetriebssystem Routingtabellen hinzu, indem Sie die Schritte unter [Konfigurieren des Gastbetriebssystems für mehrere Netzwerkadapter](#configure-guest-os-for- multiple-nics) ausführen.
 
 ## <a name="configure-guest-os-for-multiple-nics"></a>Konfigurieren von Gastbetriebssystem für mehrere Netzwerkadapter
-Wenn Sie einem virtuellen Linux-Computer mehrere NICs hinzufügen, müssen Sie Routingregeln erstellen. Diese Regeln ermöglichen den virtuellen Computer das Senden und Empfangen von Datenverkehr, der zu einer bestimmten NIC gehört. Andernfalls kann Datenverkehr, der beispielsweise zu *eth1* gehört, von der definierten Standardroute nicht ordnungsgemäß verarbeitet werden.
 
-Fügen Sie zum Beheben dieses Problems */etc/iproute2/rt_tables* zuerst zwei Routingtabellen hinzu. Gehen Sie hierzu wie folgt vor:
+Im vorherigen Schritt wurden ein virtuelles Netzwerk und Subnetz erstellt, dann wurden Netzwerkadapter angefügt, und anschließend wurde ein virtueller Computer erstellt. Eine öffentliche IP-Adresse und Netzwerksicherheitsgruppen-Regeln, die SSH-Datenverkehr zulassen, wurden nicht erstellt. Um das Gastbetriebssystem für mehrere Netzwerkadapter zu konfigurieren, müssen Sie Remoteverbindungen zulassen und Befehle lokal auf dem virtuellen Computer ausführen.
 
-```bash
-echo "200 eth0-rt" >> /etc/iproute2/rt_tables
-echo "201 eth1-rt" >> /etc/iproute2/rt_tables
+Erstellen Sie mit [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) wie folgt eine Netzwerksicherheitsgruppen-Regel, um SSH-Datenverkehr zuzulassen:
+
+```azurecli
+az network nsg rule create \
+    --resource-group myResourceGroup \
+    --nsg-name myNetworkSecurityGroup \
+    --name allow_ssh \
+    --priority 101 \
+    --destination-port-ranges 22
 ```
 
-Damit die Änderung dauerhaft ist und während der Netzwerkstapelaktivierung angewendet wird, bearbeiten Sie */etc/sysconfig/network-scripts/ifcfg-eth0* und */etc/sysconfig/network-scripts/ifcfg-eth1*. Ändern Sie die Zeile *NM_CONTROLLED=yes* in *NM_CONTROLLED=no*. Ohne diesen Schritt werden die zusätzlichen Regeln/das Routing nicht automatisch angewendet.
- 
-Als Nächstes werden die Routingtabellen erweitert. Wir gehen von der folgenden Einrichtung aus:
+Erstellen Sie eine öffentliche IP-Adresse mit [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create), und weisen Sie sie dem ersten Netzwerkadapter mit [az network nic ip-config update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update) zu:
 
-*Routing*
+```azurecli
+az network public-ip-address create --resource-group myResourceGroup --name myPublicIP
 
-```bash
-default via 10.0.1.1 dev eth0 proto static metric 100
-10.0.1.0/24 dev eth0 proto kernel scope link src 10.0.1.4 metric 100
-10.0.1.0/24 dev eth1 proto kernel scope link src 10.0.1.5 metric 101
-168.63.129.16 via 10.0.1.1 dev eth0 proto dhcp metric 100
-169.254.169.254 via 10.0.1.1 dev eth0 proto dhcp metric 100
+az network nic ip-config update \
+    --resource-group myResourceGroup \
+    --nic-name myNic1 \
+    --name ipconfig1 \
+    --public-ip-addres myPublicIP
 ```
 
-*Schnittstellen*
+Zeigen Sie die öffentliche IP-Adresse des virtuellen Computers mithilfe von [az vm show](/cli/azure/vm#az-vm-show) wie folgt an:
 
-```bash
-lo: inet 127.0.0.1/8 scope host lo
-eth0: inet 10.0.1.4/24 brd 10.0.1.255 scope global eth0    
-eth1: inet 10.0.1.5/24 brd 10.0.1.255 scope global eth1
+```azurecli
+az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-Sie würden dann die folgenden Dateien erstellen und ihnen jeweils die entsprechenden Regeln und Routen hinzufügen:
-
-- */etc/sysconfig/network-scripts/rule-eth0*
-
-    ```bash
-    from 10.0.1.4/32 table eth0-rt
-    to 10.0.1.4/32 table eth0-rt
-    ```
-
-- */etc/sysconfig/network-scripts/route-eth0*
-
-    ```bash
-    10.0.1.0/24 dev eth0 table eth0-rt
-    default via 10.0.1.1 dev eth0 table eth0-rt
-    ```
-
-- */etc/sysconfig/network-scripts/rule-eth1*
-
-    ```bash
-    from 10.0.1.5/32 table eth1-rt
-    to 10.0.1.5/32 table eth1-rt
-    ```
-
-- */etc/sysconfig/network-scripts/route-eth1*
-
-    ```bash
-    10.0.1.0/24 dev eth1 table eth1-rt
-    default via 10.0.1.1 dev eth1 table eth1-rt
-    ```
-
-Zum Übernehmen der Änderungen starten Sie den *Netzwerkdienst* wie folgt neu:
+Stellen Sie nun eine SSH-Verbindung mit der öffentlichen IP-Adresse Ihres virtuellen Computers her. Der in einem vorherigen Schritt angegebene Standardbenutzername war *azureuser*. Geben Sie Ihren eigenen Benutzernamen und die öffentliche IP-Adresse an:
 
 ```bash
-systemctl restart network
+ssh azureuser@137.117.58.232
 ```
 
-Die Routingregeln sind jetzt ordnungsgemäß eingerichtet, und Sie können je nach Bedarf mit beiden Schnittstellen eine Verbindung herstellen.
+Zum Senden an oder von einer sekundären Netzwerkschnittstelle müssen Sie manuell für jede sekundäre Netzwerkschnittstelle beständige Routen zum Betriebssystem hinzufügen. In diesem Artikel ist *eth1* die sekundäre Schnittstelle. Anweisungen zum Hinzufügen beständiger Routen zum Betriebssystem variieren je nach Distribution. Anweisungen finden Sie in der Dokumentation für Ihre Distribution.
 
+Wenn Sie die Route zum Betriebssystem hinzufügen, lautet die Gatewayadresse für jedes Subnetz, in dem sich die Netzwerkschnittstelle befindet, *.1*. Wenn die Netzwerkschnittstelle beispielsweise der Adresse *10.0.2.4* zugewiesen ist, legen Sie für die Route das Gateway *10.0.2.1* fest. Sie können ein bestimmtes Netzwerk für das Ziel der Route definieren oder das Ziel *0.0.0.0* angeben, wenn der gesamte Datenverkehr für die Schnittstelle das angegebene Gateway durchlaufen soll. Das Gateway für jedes Subnetz wird vom virtuellen Netzwerk verwaltet.
+
+Nachdem Sie die Route für eine sekundäre Schnittstelle hinzugefügt haben, prüfen Sie, ob die Route in der Routingtabelle mit `route -n` enthalten ist. Die folgende Beispielausgabe gilt für die Routingtabelle, die die beiden Netzwerkschnittstellen enthält, die in diesem Artikel dem virtuellen Computer hinzugefügt wurden:
+
+```bash
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         10.0.1.1        0.0.0.0         UG    0      0        0 eth0
+0.0.0.0         10.0.2.1        0.0.0.0         UG    0      0        0 eth1
+10.0.1.0        0.0.0.0         255.255.255.0   U     0      0        0 eth0
+10.0.2.0        0.0.0.0         255.255.255.0   U     0      0        0 eth1
+168.63.129.16   10.0.1.1        255.255.255.255 UGH   0      0        0 eth0
+169.254.169.254 10.0.1.1        255.255.255.255 UGH   0      0        0 eth0
+```
+
+Vergewissern Sie sich, dass die hinzugefügte Route nach einem Neustart beibehalten wird, indem Sie die Routingtabelle nach einem Neustart erneut prüfen. Zum Testen der Konnektivität können Sie z.B. den folgenden Befehl eingeben, wobei *eth1* der Name einer sekundären Netzwerkschnittstelle ist:
+
+```bash
+ping bing.com -c 4 -I eth1
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Überprüfen Sie die [Linux-VM-Größen](sizes.md), wenn Sie einen virtuellen Computer mit mehreren Netzwerkkarten erstellen. Achten Sie auf die maximale Anzahl von Netzwerkkarten, die von jeder VM-Größe unterstützt wird. 
+Überprüfen Sie die [Linux-VM-Größen](sizes.md), wenn Sie einen virtuellen Computer mit mehreren Netzwerkkarten erstellen. Achten Sie auf die maximale Anzahl von Netzwerkkarten, die von jeder VM-Größe unterstützt wird.
+
+Schützen Sie Ihre virtuellen Computer zusätzlich mit Just-in-Time-VM-Zugriff. Dieses Feature öffnet bei Bedarf und für einen festgelegten Zeitraum Netzwerksicherheitsgruppen-Regeln für den SSH-Datenverkehr. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf virtuelle Computer mithilfe des Just-In-Time-Features](../../security-center/security-center-just-in-time.md).

@@ -1,33 +1,35 @@
 ---
-title: Auswahl zwischen Azure MFA-Cloud und Server | Microsoft Dokumentation
-description: Entscheiden Sie sich für die am besten geeignete Multi-Factor Authentication-Sicherheitslösung, indem Sie sich fragen, was Sie sichern möchten und wo sich Ihre Benutzer befinden.
+title: Azure MFA-Server oder Dienst, lokal oder in der Cloud?
+description: Welche Version von MFA soll ich als Azure AD-Administrator bereitstellen?
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 10/02/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 8314d72aa2cc6787d3f65dd48cd693a0ac332c0a
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: michmcla
+ms.openlocfilehash: 0d68c88bdad63bb022babcc4a6ee4ee7c59ce58a
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866351"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158453"
 ---
-# <a name="choose-the-azure-multi-factor-authentication-solution-for-you"></a>Auswählen einer geeigneten Azure Multi-Factor Authentication-Lösung
-Da es mehrere Arten von Azure Multi-Factor Authentication (MFA) gibt, müssen Sie einige Fragen klären, um herauszufinden, welche Version für Sie die richtige ist.  Diese Fragen sollten Sie beantworten:
+# <a name="which-version-of-azure-mfa-is-right-for-my-organization"></a>Welche Version von Azure MFA ist für meine Organisation die richtige?
+
+Bevor Sie entscheiden, wo und wie Sie Multi-Factor Authentication (MFA) bereitstellen, müssen Sie drei grundlegende Fragen beantworten.
 
 * [Was möchte ich sichern?](#what-am-i-trying-to-secure)
 * [Wo befinden sich die Benutzer?](#where-are-the-users-located)
 * [Welche Features benötige ich?](#what-features-do-i-need)
 
-In den folgenden Abschnitten erhalten Sie Informationen, die Ihnen helfen, die Antworten auf diese Fragen zu geben.
+Jeder der folgenden Abschnitte enthält Details, die Ihnen dabei helfen, diese Fragen zu beantworten.
 
 ## <a name="what-am-i-trying-to-secure"></a>Was möchte ich sichern?
-Um die richtige zweistufige Überprüfungslösung zu ermitteln, müssen Sie zunächst die Frage beantworten, was Sie über die zweite Methode zur Authentifizierung sichern möchten.  Handelt es sich um eine Anwendung in Azure?  Oder ist es ein RAS-System?  Die Antwort auf die Frage, wo Multi-Factor Authentication aktiviert werden muss, richtet sich danach, was Sie sichern möchten.  
+
+Um die richtige zweistufige Überprüfungslösung zu ermitteln, müssen Sie zunächst die Frage beantworten, was Sie mithilfe des zusätzlichen Authentifizierungsschritts sichern möchten. Handelt es sich um eine Anwendung in Azure? Oder ist es ein RAS-System? Die Antwort auf die Frage, wo Multi-Factor Authentication aktiviert werden muss, richtet sich danach, was Sie sichern möchten.
 
 | Was möchte ich sichern? | MFA in der Cloud | MFA-Server |
 | --- |:---:|:---:|
@@ -38,17 +40,19 @@ Um die richtige zweistufige Überprüfungslösung zu ermitteln, müssen Sie zun�
 | Remotezugriff, z. B. VPN, RDG | ● | ● |
 
 ## <a name="where-are-the-users-located"></a>Wo befinden sich die Benutzer?
-Außerdem hängt die Entscheidung für die richtige Lösung – in der Cloud oder lokal über den MFA-Server – davon ab, wo sich die Benutzer befinden.
+
+Außerdem hängt die Entscheidung für die richtige Lösung – in der Cloud oder lokal über den MFA-Server – davon ab, wo sich die Benutzer Ihrer Organisation befinden.
 
 | Benutzerstandort | MFA in der Cloud | MFA-Server |
 | --- |:---:|:---:|
 | Azure Active Directory |● | |
 | Azure AD und lokales AD über einen Verbund mit AD FS |● |● |
-| Azure AD und lokales AD mit DirSync, Azure AD Sync, Azure AD Connect ohne Kennworthashsynchronisierung oder Passthrough-Authentifizierung |● |● |
-| Azure AD und lokales AD mit DirSync, Azure AD Sync, Azure AD Connect mit Kennworthashsynchronisierung oder Passthrough-Authentifizierung |● | |
+| Azure AD und lokales AD mit Azure AD Connect ohne Kennworthashsynchronisierung oder Passthrough-Authentifizierung |● |● |
+| Azure AD und lokales AD mit Azure AD Connect mit Kennworthashsynchronisierung oder Passthrough-Authentifizierung |● | |
 | Lokales Active Directory | |● |
 
 ## <a name="what-features-do-i-need"></a>Welche Features benötige ich?
+
 Die folgende Tabelle enthält eine Gegenüberstellung der Features von Multi-Factor Authentication in der Cloud und dem Multi-Factor Authentication-Server.
 
 | Feature | MFA in der Cloud | MFA-Server |
@@ -57,13 +61,12 @@ Die folgende Tabelle enthält eine Gegenüberstellung der Features von Multi-Fac
 | Bestätigungscode in der mobilen App als zweite Stufe | ● | ● |
 | Telefonanruf als zweite Stufe | ● | ● |
 | Unidirektionale SMS als zweite Stufe | ● | ● |
-| Bidirektionale SMS als zweite Stufe | | ●  (veraltet)| 
 | Hardwaretoken als zweite Stufe | | ● |
 | App-Kennwörter für Office 365-Clients, die MFA nicht unterstützen | ● | |
 | Administrative Kontrolle über Authentifizierungsmethoden | ● | ● |
 | PIN-Modus | | ● |
-| Betrugswarnung |● | ● |
-| MFA-Berichte |● | ● |
+| Betrugswarnung | ● | ● |
+| MFA-Berichte | ● | ● |
 | Einmalumgehung | | ● |
 | Benutzerdefinierte Begrüßungen für Telefonanrufe | ● | ● |
 | Benutzerdefinierte Anrufer-ID für Telefonanrufe | ● | ● |

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
-ms.openlocfilehash: 82a7449bf75cd31f8da5bb93618c4e6977ed312b
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 67b2babcd19268a61794d123f5aa9780af16976b
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144933"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364011"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers
 
@@ -152,7 +152,7 @@ In der vorangehenden Ausgabe lautet der Netzwerkschnittstellenname *myVMVMNic in
 
 ## <a name="interpret-command-output"></a>Interpretieren der Befehlsausgabe
 
-Unabhängig davon, ob Sie [PowerShell](#diangose-using-powershell) oder die [Azure CLI](#diagnose-using-azure-cli) zum Diagnostizieren eines Problems verwendet haben, erhalten Sie eine Ausgabe mit den folgenden Informationen:
+Unabhängig davon, ob Sie [PowerShell](#diagnose-using-powershell) oder die [Azure CLI](#diagnose-using-azure-cli) zum Diagnostizieren eines Problems verwendet haben, erhalten Sie eine Ausgabe mit den folgenden Informationen:
 
 - **NetworkSecurityGroup**: Die ID der Netzwerksicherheitsgruppe.
 - **Zuordnung**: Gibt an, ob die Netzwerksicherheitsgruppe *NetworkInterface* oder *Subnet* zugeordnet ist. Wenn eine NSG beidem zugeordnet ist, wird die Ausgabe mit **NetworkSecurityGroup**, **Association** und **EffectiveSecurityRules** für jede NSG zurückgegeben. Wenn die NSG unmittelbar vor dem Ausführen dieses Befehls zum Anzeigen der effektiven Sicherheitsregeln zugeordnet oder ihre Zuordnung aufgehoben wird, müssen Sie möglicherweise einen Moment warten, damit die Änderung in der Befehlsausgabe angezeigt wird.
