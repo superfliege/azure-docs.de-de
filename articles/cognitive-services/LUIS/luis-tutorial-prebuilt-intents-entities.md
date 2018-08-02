@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: diberry
-ms.openlocfilehash: 3fc2040e66f6fc649448d3241b01678b7bb7f214
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 0ec6f002b35b1224118b62accda1f69e7be22fb8
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239034"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358521"
 ---
 # <a name="tutorial-2-add-prebuilt-intents-and-entities"></a>Tutorial: 2. Hinzufügen von vordefinierten Absichten und Entitäten
 Fügen Sie der Personal-App aus dem Tutorial vordefinierte Absichten und Entitäten hinzu, um schnell Absichtsvorhersagen und extrahierte Daten zu erhalten. 
@@ -27,6 +27,8 @@ In diesem Tutorial lernen Sie Folgendes:
 * Trainieren und Veröffentlichen
 * Abfragen von LUIS und Empfangen von Vorhersageantworten
 
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
 ## <a name="before-you-begin"></a>Voraussetzungen
 Falls Sie nicht über die [Personal](luis-quickstart-intents-only.md)-App aus dem vorherigen Tutorial verfügen, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS](luis-reference-regions.md#luis-website)-Website über das GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json)).
 
@@ -36,8 +38,6 @@ Wenn Sie die ursprüngliche Personal-App behalten möchten, klonen Sie die Versi
 LUIS enthält mehrere vordefinierte Absichten für allgemeine Benutzerabsichten.  
 
 1. Vergewissern Sie sich, dass sich Ihre App im LUIS-Abschnitt **Build** befindet. Zu diesem Abschnitt gelangen Sie, indem Sie rechts oben auf der Menüleiste **Build** auswählen. 
-
-    [ ![Screenshot: LUIS-App mit hervorgehobener Build-Option (rechts oben auf der Navigationsleiste)](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png)](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png#lightbox)
 
 2. Wählen Sie **Add prebuilt domain intent** (Vordefinierte Domänenabsicht hinzufügen) aus. 
 
@@ -72,24 +72,20 @@ LUIS enthält mehrere vordefinierte Entitäten für das Extrahieren allgemeiner 
     ![Screenshot: Auswahl von „number“ im Dialogfeld mit den vordefinierten Entitäten](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
 
 ## <a name="train-and-publish-the-app"></a>Trainieren und Veröffentlichen der App
-1. Wählen Sie oben rechts auf der LUIS-Website die Schaltfläche **Train** (Trainieren) aus. 
 
-    ![Schaltfläche „Train“ (Trainieren)](./media/luis-quickstart-intents-only/train-button.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-    Das Training ist abgeschlossen, wenn oben auf der Website die grüne Statusleiste angezeigt wird.
+## <a name="publish-app-to-endpoint"></a>Veröffentlichen der App im Endpunkt
 
-    ![Statusleiste bei abgeschlossenem Training](./media/luis-quickstart-intents-only/trained.png)
-
-2. Wählen Sie rechts oben auf der LUIS-Website die Schaltfläche **Publish** (Veröffentlichen) aus, um die Seite „Publish“ (Veröffentlichen) zu öffnen. 
-
-3. Der Produktionsslot ist standardmäßig aktiviert. Wählen Sie den Produktionsslot und dann die Schaltfläche **Publish** (Veröffentlichen) aus. Die Veröffentlichung ist abgeschlossen, wenn oben auf der Website die grüne Statusleiste angezeigt wird.
-
-    Vor dem Veröffentlichen oder dem Testen der Endpunkt-URL müssen Sie keinen LUIS-Endpunktschlüssel im Azure-Portal erstellen. Jede LUIS-App verfügt über einen kostenlosen Startschlüssel für die Erstellung. Dieser ermöglicht das unbegrenzte Erstellen und eine [geringe Anzahl an Endpunkttreffern](luis-boundaries.md#key-limits). 
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-endpoint-with-an-utterance"></a>Abfragen des Endpunkts mit einer Äußerung
-Wählen Sie unten auf der Seite **Publish** (Veröffentlichen) den Link **endpoint** (Endpunkt) aus. Hierdurch wird ein weiteres Browserfenster mit der Endpunkt-URL in der Adressleiste geöffnet. Geben Sie in der Adressleiste am Ende der URL `I want to cancel on March 3` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). 
 
-Das Ergebnis hat die Absicht „Utilities.Cancel“ vorhergesagt und als Datum den 3. März und die Zahl 3 extrahiert. 
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+
+2. Geben Sie in der Adressleiste am Ende der URL `I want to cancel on March 3` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). 
+
+    Das Ergebnis hat die Absicht „Utilities.Cancel“ vorhergesagt und als Datum den 3. März und die Zahl 3 extrahiert. 
 
     ```
     {
@@ -166,12 +162,13 @@ Das Ergebnis hat die Absicht „Utilities.Cancel“ vorhergesagt und als Datum d
     }
     ```
 
-Es sind zwei Werte für den 3. März vorhanden, da die Äußerung keine Angaben dazu enthielt, ob der 3. März in der Vergangenheit oder in der Zukunft liegt. Es ist Aufgabe der Anwendung, mit der LUIS aufgerufen wird, eine Annahme zu treffen oder nachzufragen, falls dies erforderlich ist. 
+    Es sind zwei Werte für den 3. März vorhanden, da die Äußerung keine Angaben dazu enthielt, ob der 3. März in der Vergangenheit oder in der Zukunft liegt. Es ist Aufgabe der Anwendung, mit der LUIS aufgerufen wird, eine Annahme zu treffen oder nachzufragen, falls dies erforderlich ist. 
 
-Durch das einfache und schnelle Hinzufügen von vordefinierten Absichten und Entitäten kann die Clientanwendung eine Unterhaltungsverwaltung hinzufügen und allgemeine Datentypen extrahieren. 
+    Durch das einfache und schnelle Hinzufügen von vordefinierten Absichten und Entitäten kann die Clientanwendung eine Unterhaltungsverwaltung hinzufügen und allgemeine Datentypen extrahieren. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Wählen Sie hierzu im Menü oben links die Option **Meine Apps**. Klicken Sie in der Liste rechts vom App-Namen auf die Auslassungspunkte (***...***) und anschließend auf **Löschen**. Wählen Sie im Popupdialogfenster **Delete App?** (App löschen?) **OK** aus.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

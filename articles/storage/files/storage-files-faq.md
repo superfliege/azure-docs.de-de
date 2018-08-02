@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 07/19/2018
 ms.author: renash
-ms.openlocfilehash: 89c1bb0404e1fbff9241fe42404123288fffea71
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 9ecedb171fba9ae8719121f51026134f2bdc1a5f
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160228"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413704"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das branchenübliche [Protokoll Server Message Block (SMB) zugegriffen werden kann](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem Azure File Sync verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -54,7 +54,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     Eine ausführliche Beschreibung der Unterschiede zwischen Azure Files und dem Azure Blob Storage finden Sie unter [Entscheidung zwischen Azure-Blobs, Azure Files und Azure-Datenträger](../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Weitere Informationen zum Azure Blob Storage finden Sie unter [Einführung in Blob Storage](../blobs/storage-blobs-introduction.md).
 
 * <a id="files-versus-disks"></a>**Warum sollte ich eine Azure-Dateifreigabe anstelle von Azure-Datenträgern verwenden?**  
-    Unter Azure-Datenträger ist ein Datenträger nicht mehr als ein einfacher Datenträger. Ein eigenständiger Datenträger allein ist nicht sehr nützlich. Sie erhöhen den Nutzen von Azure-Datenträgern, indem Sie einen Datenträger an einen virtuellen Computer anfügen, der in Azure ausgeführt wird. Azure-Datenträger können für alle Zwecke verwendet werden, die auch für einen Datenträger auf einem lokalen Server gelten. Sie können sie als Betriebssystemdatenträger, als Auslagerungsbereich für ein Betriebssystem oder als dedizierten Speicher für eine Anwendung einsetzen. Ein interessanter Einsatzzweck von Azure-Datenträgern ist die Erstellung eines Dateiservers in der Cloud, der in denselben Situationen wie bei einer Azure-Dateifreigabe verwendet wird. Die Bereitstellung eines Dateiservers auf Azure Virtual Machines ist ein auf hohe Leistung ausgelegtes Verfahren, um Dateispeicher in Azure freizugeben, wenn Sie Bereitstellungsoptionen benötigen (z.B. NFS-Protokollunterstützung oder Storage Premium), die derzeit nicht von Azure Files unterstützt werden. 
+    Unter Azure-Datenträger ist ein Datenträger nicht mehr als ein einfacher Datenträger. Sie erhöhen den Nutzen von Azure-Datenträgern, indem Sie einen Datenträger an einen virtuellen Computer anfügen, der in Azure ausgeführt wird. Azure-Datenträger können für alle Zwecke verwendet werden, die auch für einen Datenträger auf einem lokalen Server gelten. Sie können sie als Betriebssystemdatenträger, als Auslagerungsbereich für ein Betriebssystem oder als dedizierten Speicher für eine Anwendung einsetzen. Ein interessanter Einsatzzweck von Azure-Datenträgern ist die Erstellung eines Dateiservers in der Cloud, der in denselben Situationen wie bei einer Azure-Dateifreigabe verwendet wird. Die Bereitstellung eines Dateiservers auf Azure Virtual Machines ist ein auf hohe Leistung ausgelegtes Verfahren, um Dateispeicher in Azure freizugeben, wenn Sie Bereitstellungsoptionen benötigen (z.B. NFS-Protokollunterstützung oder Storage Premium), die derzeit nicht von Azure Files unterstützt werden. 
 
     Das Ausführen eines Dateiservers mit Azure-Datenträgern als Back-End-Speicher ist aus einigen Gründen normalerweise aber deutlich teurer als die Verwendung einer Azure-Dateifreigabe. Zunächst einmal müssen Sie nicht nur für die Kosten des Datenträgerspeichers aufkommen, sondern auch für die Ausgaben zum Betrieb von einer oder mehreren Azure-VMs. Zweitens müssen Sie auch die VMs verwalten, die zum Ausführen des Dateiservers verwendet werden. Beispielsweise sind Sie für Upgrades des Betriebssystems verantwortlich. Und falls Daten lokal zwischengespeichert werden müssen, sind Sie auch für die Einrichtung und Verwaltung der Replikationstechnologien (z.B. DFS-Replikation (Distributed File System Replication)) zuständig.
 

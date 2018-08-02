@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 07/16/2018
+ms.date: 08/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 706afa7cb79b7b5c2afcd729f36ff150b87dd6df
-ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
+ms.openlocfilehash: c22831ae781239f2474720ee9cd1b58f6e14fe41
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39242936"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412864"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack-Datencenterintegration: Identität
 Azure Stack kann mithilfe von Azure Active Directory (Azure AD) oder den Active Directory-Verbunddiensten (AD FS) als Identitätsanbieter bereitgestellt werden. Sie müssen die entsprechende Entscheidung treffen, bevor Sie Azure Stack bereitstellen. Die Bereitstellung mithilfe von AD FS wird auch als „Bereitstellen von Azure Stack im getrennten Modus“ bezeichnet.
@@ -26,7 +26,7 @@ Die folgende Tabelle zeigt die Unterschiede zwischen den Auswahlmöglichkeiten f
 |---------|---------|---------|
 |Abrechnung|Muss „Capacity“ sein<br> Nur Enterprise Agreement (EA)|„Capacity“ oder nutzungsbasiert<br>EA oder Cloud Solution Provider (CSP)|
 |Identity|Muss AD FS sein|Azure AD oder AD FS|
-|Marketplace-Syndikation|Unterstützt<br>BYOL Lizenzierung|Unterstützt<br>BYOL Lizenzierung|
+|Marketplace |Unterstützt<br>BYOL Lizenzierung|Unterstützt<br>BYOL Lizenzierung|
 |Registrierung|Empfohlen, erfordert Wechselmedium<br> und ein separates verbundenes Gerät.|Automatisiert|
 |Patch und Update|Erforderlich, erfordert Wechselmedium<br> und ein separates verbundenes Gerät.|Updatepaket kann direkt aus dem Internet<br> in Azure Stack heruntergeladen werden.|
 

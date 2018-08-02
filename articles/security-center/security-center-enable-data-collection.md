@@ -12,24 +12,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2018
+ms.date: 07/26/2018
 ms.author: rkarlin
-ms.openlocfilehash: d70eb1a329b2d1ba560aecbbb4132d2a8e2b7df1
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: a5151d1f9498b29c79638445a58a8337abff8961
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160126"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281921"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Datensammlung in Azure Security Center
 Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs) und Azure-fremden Computern, um sie hinsichtlich Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mithilfe von Microsoft Monitoring Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in Ihren Arbeitsbereich. Beispiele für Daten dieser Art: Betriebssystemtyp und -version, Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen, angemeldeter Benutzer, AppLocker-Ereignisse und Mandanten-ID. Darüber hinaus kopiert der Microsoft Monitoring Agent Absturzabbilddateien in Ihren Arbeitsbereich.
+
+> [!NOTE]
+> Um die Datensammlung für [Adaptive Anwendungssteuerungen](security-center-adaptive-application.md) zu aktivieren, konfiguriert Security Center eine lokale AppLocker-Richtlinie im Überwachungsmodus, um alle Anwendungen zuzulassen. Damit generiert AppLocker Ereignisse, die dann von Security Center gesammelt und genutzt werden können. Es ist wichtig zu beachten, dass diese Richtlinie nicht auf Computern konfiguriert wird, auf denen bereits eine AppLocker-Richtlinie konfiguriert ist. 
+>
 
 ## <a name="enable-automatic-provisioning-of-microsoft-monitoring-agent"></a>Aktivieren der automatischen Bereitstellung von Microsoft Monitoring Agent     
 Die automatische Bereitstellung ist standardmäßig deaktiviert. Bei aktivierter automatischer Bereitstellung wird Microsoft Monitoring Agent von Security Center auf allen unterstützten virtuellen Azure-Computern sowie auf allen neu erstellten virtuellen Computern bereitgestellt. Die automatische Bereitstellung wird dringend empfohlen, die manuelle Agent-Installation ist jedoch ebenfalls verfügbar. [Erfahren Sie, wie Sie die Microsoft Monitoring Agent-Erweiterung installieren.](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
 
 > [!NOTE]
 > - Wenn Sie die automatische Bereitstellung deaktivieren, schränkt dies die Sicherheitsüberwachung für Ihre Ressourcen ein. Weitere Informationen finden Sie in diesem Artikel unter [Deaktivieren der automatischen Bereitstellung](security-center-enable-data-collection.md#disable-automatic-provisioning). Momentaufnahmen von VM-Datenträgern sowie die Artefaktsammlung sind auch bei deaktivierter automatischer Bereitstellung aktiviert.
-> - Um die Datensammlung für [Adaptive Anwendungssteuerungen](security-center-adaptive-application.md) zu aktivieren, konfiguriert Security Center eine lokale AppLocker-Richtlinie im Überwachungsmodus, um alle Anwendungen zuzulassen. Damit generiert AppLocker Ereignisse, die dann von Security Center gesammelt und genutzt werden können. Es ist wichtig zu beachten, dass diese Richtlinie nicht auf Computern konfiguriert wird, auf denen bereits eine AppLocker-Richtlinie konfiguriert ist. 
 >
 
 So aktivieren Sie die automatische Bereitstellung von Microsoft Monitoring Agent:

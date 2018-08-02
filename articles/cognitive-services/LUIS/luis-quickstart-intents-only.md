@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 06/27/2018
+ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: 4be36e9d5b34c46138a657429680689014d0fd3d
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 578fdb5593e75e3584e81d73d7643162f7af5cbc
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237773"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358137"
 ---
 # <a name="tutorial-1-build-app-with-custom-domain"></a>Tutorial 1: Erstellen einer App mit einer benutzerdefinierten Domäne
 In diesem Tutorial erstellen Sie eine App, die die Verwendung von **Absichten** veranschaulicht, um die _Intention_ des Benutzers basierend auf der Äußerung (Text) zu ermitteln, die sie an die App senden. Wenn Sie diesen Schnellstart abschließen, verfügen Sie über einen LUIS-Endpunkt in der Cloud.
@@ -32,7 +32,7 @@ Diese App ist die einfachste Art von LUIS-App, da sie keine Daten von Äußerung
 > * Hinzufügen von Beispieläußerungen zur Absicht ApplyForJob 
 > * Erneutes Trainieren, Veröffentlichen und Abfragen des Endpunkts 
 
-Für diesen Artikel benötigen Sie ein kostenloses [LUIS](luis-reference-regions.md#luis-website)-Konto für die Erstellung Ihrer LUIS-Anwendung.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="purpose-of-the-app"></a>Zweck der App
 Diese App verfügt über einige Absichten. Die erste Absicht (**`GetJobInformation`**) identifiziert, ob ein Benutzer Informationen über verfügbare Stellen in einem Unternehmen möchte. Die zweite Absicht (**`None`**) identifiziert jede andere Art von Äußerung. Im späteren Verlauf dieses Schnellstarts wird eine dritte Absicht (`ApplyForJob`) hinzugefügt. 
@@ -49,8 +49,6 @@ Diese App verfügt über einige Absichten. Die erste Absicht (**`GetJobInformati
     ![Neue LUIS-App](./media/luis-quickstart-intents-only/create-app.png)
 
 4. Nach Abschluss dieses Vorgangs wird in der App die Seite **Intents** (Absichten) mit der Absicht **None** (Keine) angezeigt. 
-
-    [![](media/luis-quickstart-intents-only/intents-list.png "Screenshot der Seite mit der Liste der Absichten")](media/luis-quickstart-intents-only/intents-list.png#lightbox)
 
 ## <a name="create-getjobinformation-intention"></a>Erstellen der Absicht GetJobInformation
 1. Klicken Sie auf **Create new intent** (Neue Absicht erstellen). Geben Sie den Namen für die neue Absicht ein: `GetJobInformation`. Diese Absicht wird jedes Mal vorhergesagt, wenn ein Benutzer Informationen über offene Stellen in Ihrem Unternehmen möchte.
@@ -90,16 +88,16 @@ Diese App verfügt über einige Absichten. Die erste Absicht (**`GetJobInformati
 
     ![Schaltfläche „Train“ (Trainieren)](./media/luis-quickstart-intents-only/train-button.png)
 
-    Das Training ist abgeschlossen, wenn oben auf der Website die grüne Statusleiste angezeigt wird.
+2. Das Training ist abgeschlossen, wenn oben auf der Website die grüne Statusleiste angezeigt wird.
 
     ![Statusleiste bei abgeschlossenem Training](./media/luis-quickstart-intents-only/trained.png)
 
-2. Wählen Sie rechts oben auf der LUIS-Website die Schaltfläche **Publish** (Veröffentlichen) aus, um die Seite „Publish“ (Veröffentlichen) zu öffnen. Der Produktionsslot ist standardmäßig aktiviert. Wählen Sie den Produktionsslot und dann die Schaltfläche **Publish** (Veröffentlichen) aus. Die Veröffentlichung ist abgeschlossen, wenn oben auf der Website die grüne Statusleiste angezeigt wird.
+## <a name="publish-app-to-endpoint"></a>Veröffentlichen der App im Endpunkt
 
-    Vor dem Veröffentlichen oder dem Testen der Endpunkt-URL müssen Sie keinen LUIS-Endpunktschlüssel im Azure-Portal erstellen. Jede LUIS-App verfügt über einen kostenlosen Startschlüssel für die Erstellung. Dieser ermöglicht das unbegrenzte Erstellen und eine [geringe Anzahl an Endpunkttreffern](luis-boundaries.md#key-limits). 
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
 ## <a name="query-endpoint-for-getjobinformation-intent"></a>Abfragen des Endpunkts für die Absicht GetJobInformation
-1. Klicken Sie unten auf der Seite **Publish** (Veröffentlichen) auf den Link **endpoint** (Endpunkt). Hierdurch wird ein weiteres Browserfenster mit der Endpunkt-URL in der Adressleiste geöffnet. 
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Geben Sie in der Adressleiste am Ende der URL `I'm looking for a job with Natual Language Processing` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). Diese Äußerung entspricht keiner der Beispieläußerungen in Schritt 4. Sie ist daher ein guter Test und sollte die Absicht `GetJobInformation` als höchst bewertete Absicht zurückgeben. 
 
@@ -152,7 +150,10 @@ Kehren Sie zur Browserregisterkarte der LUIS-Website zurück, und erstellen Sie 
     [Trainieren und veröffentlichen](#train-and-publish-the-app) Sie die App erneut. 
 
 ## <a name="query-endpoint-for-applyforjob-intent"></a>Abfragen des Endpunkts für die Absicht ApplyForJob
-Klicken Sie unten auf der Seite **Publish** (Veröffentlichen) auf den Link **endpoint** (Endpunkt). Geben Sie im neuen Browserfenster `Can I submit my resume for job 235986` am Ende der URL ein. 
+
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+
+2. Geben Sie im neuen Browserfenster `Can I submit my resume for job 235986` am Ende der URL ein. 
 
     ```
     {

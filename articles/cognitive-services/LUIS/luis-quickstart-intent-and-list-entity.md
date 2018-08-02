@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/29/2018
+ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: 4ba2ba5d947a112f780579bf4b31ba38cb26ae03
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 4b842f9a00587e8a9771e6ca92806c09e711e6db
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222969"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345779"
 ---
 # <a name="tutorial-4-add-list-entity"></a>Tutorial: 4. Hinzufügen einer Entität vom Typ „Liste“
 In diesem Tutorial erstellen Sie eine App, mit der veranschaulicht wird, wie Sie Daten abrufen, die mit Angaben in einer vordefinierten Liste übereinstimmen. 
@@ -27,7 +27,7 @@ In diesem Tutorial erstellen Sie eine App, mit der veranschaulicht wird, wie Sie
 > * Trainieren und Veröffentlichen der App
 > * Abfragen des App-Endpunkts zum Anzeigen der LUIS-JSON-Antwort
 
-Für diesen Artikel benötigen Sie ein kostenloses [LUIS](luis-reference-regions.md#luis-website)-Konto, um Ihre LUIS-Anwendung erstellen zu können.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 Falls Sie nicht über die Personal-App aus dem Tutorial zur [RegEx](luis-quickstart-intents-regex-entity.md)-Entität verfügen, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json).
@@ -69,13 +69,9 @@ mv john.w.smith@mycompany from office b-1234 to office h-4452
 
 ## <a name="add-moveemployee-intent"></a>Hinzufügen einer MoveEmployee-Absicht
 
-1. Vergewissern Sie sich, dass sich Ihre Personal-App im LUIS-Abschnitt **Build** befindet. Zu diesem Abschnitt gelangen Sie, indem Sie rechts oben auf der Menüleiste auf **Build** klicken. 
+1. Vergewissern Sie sich, dass sich Ihre Personal-App im LUIS-Abschnitt **Build** befindet. Zu diesem Abschnitt gelangen Sie, indem Sie rechts oben auf der Menüleiste **Build** auswählen. 
 
-    [ ![Screenshot: LUIS-App mit hervorgehobener Build-Option (rechts oben auf der Navigationsleiste)](./media/luis-quickstart-intent-and-list-entity/hr-first-image.png)](./media/luis-quickstart-intent-and-list-entity/hr-first-image.png#lightbox)
-
-2. Klicken Sie auf **Create new intent** (Neue Absicht erstellen). 
-
-    [ ![Screenshot: Seite „Intents“ (Absichten) mit hervorgehobener Schaltfläche „Create new intent“ (Neue Absicht erstellen)](./media/luis-quickstart-intent-and-list-entity/hr-create-new-intent-button.png) ](./media/luis-quickstart-intent-and-list-entity/hr-create-new-intent-button.png#lightbox)
+2. Wählen Sie **Create new intent** (Neue Absicht erstellen) aus. 
 
 3. Geben Sie im Popupdialogfeld die Zeichenfolge `MoveEmployee` ein, und klicken Sie anschließend auf **Fertig**. 
 
@@ -103,11 +99,7 @@ Nachdem die Absicht **MoveEmployee** jetzt über Äußerungen verfügt, muss LUI
 
 1. Klicken Sie im linken Bereich auf **Entitäten**.
 
-    [ ![Screenshot: Seite „Intent“ (Absicht) mit Hervorhebung der Schaltfläche „Entities“ (Entitäten) im linken Navigationsbereich](./media/luis-quickstart-intent-and-list-entity/hr-select-entity-button.png) ](./media/luis-quickstart-intent-and-list-entity/hr-select-entity-button.png#lightbox)
-
-2. Klicken Sie auf **Neue Entität erstellen**.
-
-    [![Screenshot: Seite „Entities“ (Entitäten) mit Hervorhebung von „Neue Entität erstellen“](./media/luis-quickstart-intent-and-list-entity/hr-create-new-entity-button.png) ](./media/luis-quickstart-intent-and-list-entity/hr-create-new-entity-button.png#lightbox)
+2. Wählen Sie **Neue Entität erstellen** aus.
 
 3. Geben Sie im Popupdialogfeld `Employee` als Entitätsname und **List** (Liste) als Entitätstyp ein. Wählen Sie **Fertig**aus.  
 
@@ -153,136 +145,126 @@ LUIS ist erst dann über die Änderungen an den Absichten und Entitäten (Modell
     ![Training erfolgreich](./media/luis-quickstart-intent-and-list-entity/trained.png)
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Veröffentlichen der App zum Abrufen der Endpunkt-URL
-Damit Sie eine LUIS-Vorhersage in einem Chatbot oder einer anderen Anwendung abrufen können, muss die App veröffentlicht werden. 
 
-1. Klicken Sie oben rechts auf der LUIS-Website auf die Schaltfläche **Publish** (Veröffentlichen). 
-
-    [![](media/luis-quickstart-intent-and-list-entity/publish.png "Screenshot: Auswahl der Schaltfläche „Publish“ (Veröffentlichen)")](media/luis-quickstart-intent-and-list-entity/publish.png#lightbox)
-
-2. Wählen Sie den Produktionsslot aus, und klicken Sie auf die Schaltfläche **Publish** (Veröffentlichen). 
-
-    [![](media/luis-quickstart-intent-and-list-entity/publish-to-production.png "Screenshot: Auswahl von „Publish“ (Veröffentlichen) für den Produktionsslot")](media/luis-quickstart-intent-and-list-entity/publish-to-production.png#lightbox)
-
-3. Die Veröffentlichung ist abgeschlossen, wenn oben auf der Website die grüne Statusleiste angezeigt wird.
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>Abfragen des Endpunkts mit einer anderen Äußerung
-1. Klicken Sie unten auf der Seite **Veröffentlichen** auf den Link **Endpunkt**. Hierdurch wird ein weiteres Browserfenster mit der Endpunkt-URL in der Adressleiste geöffnet. 
 
-    [![](media/luis-quickstart-intent-and-list-entity/publish-select-endpoint.png "Screenshot: Endpunkt-URL auf der Seite „Publish“ (Veröffentlichen)")](media/luis-quickstart-intent-and-list-entity/publish-select-endpoint.png#lightbox)
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
 2. Geben Sie in der Adressleiste am Ende der URL `shift 123-45-6789 from Z-1242 to T-54672` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage („**q**uery“) der Äußerung). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test, und es sollte die Absicht `MoveEmployee` mit Extrahierung von `Employee` zurückgegeben werden.
 
-```JSON
-{
-  "query": "shift 123-45-6789 from Z-1242 to T-54672",
-  "topScoringIntent": {
-    "intent": "MoveEmployee",
-    "score": 0.9882801
-  },
-  "intents": [
-    {
+  ```JSON
+  {
+    "query": "shift 123-45-6789 from Z-1242 to T-54672",
+    "topScoringIntent": {
       "intent": "MoveEmployee",
       "score": 0.9882801
     },
-    {
-      "intent": "FindForm",
-      "score": 0.016044287
-    },
-    {
-      "intent": "GetJobInformation",
-      "score": 0.007611245
-    },
-    {
-      "intent": "ApplyForJob",
-      "score": 0.007063288
-    },
-    {
-      "intent": "Utilities.StartOver",
-      "score": 0.00684710965
-    },
-    {
-      "intent": "None",
-      "score": 0.00304174074
-    },
-    {
-      "intent": "Utilities.Help",
-      "score": 0.002981
-    },
-    {
-      "intent": "Utilities.Confirm",
-      "score": 0.00212222221
-    },
-    {
-      "intent": "Utilities.Cancel",
-      "score": 0.00191026414
-    },
-    {
-      "intent": "Utilities.Stop",
-      "score": 0.0007461446
-    }
-  ],
-  "entities": [
-    {
-      "entity": "123 - 45 - 6789",
-      "type": "Employee",
-      "startIndex": 6,
-      "endIndex": 16,
-      "resolution": {
-        "values": [
-          "Employee-24612"
-        ]
+    "intents": [
+      {
+        "intent": "MoveEmployee",
+        "score": 0.9882801
+      },
+      {
+        "intent": "FindForm",
+        "score": 0.016044287
+      },
+      {
+        "intent": "GetJobInformation",
+        "score": 0.007611245
+      },
+      {
+        "intent": "ApplyForJob",
+        "score": 0.007063288
+      },
+      {
+        "intent": "Utilities.StartOver",
+        "score": 0.00684710965
+      },
+      {
+        "intent": "None",
+        "score": 0.00304174074
+      },
+      {
+        "intent": "Utilities.Help",
+        "score": 0.002981
+      },
+      {
+        "intent": "Utilities.Confirm",
+        "score": 0.00212222221
+      },
+      {
+        "intent": "Utilities.Cancel",
+        "score": 0.00191026414
+      },
+      {
+        "intent": "Utilities.Stop",
+        "score": 0.0007461446
       }
-    },
-    {
-      "entity": "123",
-      "type": "builtin.number",
-      "startIndex": 6,
-      "endIndex": 8,
-      "resolution": {
-        "value": "123"
+    ],
+    "entities": [
+      {
+        "entity": "123 - 45 - 6789",
+        "type": "Employee",
+        "startIndex": 6,
+        "endIndex": 16,
+        "resolution": {
+          "values": [
+            "Employee-24612"
+          ]
+        }
+      },
+      {
+        "entity": "123",
+        "type": "builtin.number",
+        "startIndex": 6,
+        "endIndex": 8,
+        "resolution": {
+          "value": "123"
+        }
+      },
+      {
+        "entity": "45",
+        "type": "builtin.number",
+        "startIndex": 10,
+        "endIndex": 11,
+        "resolution": {
+          "value": "45"
+        }
+      },
+      {
+        "entity": "6789",
+        "type": "builtin.number",
+        "startIndex": 13,
+        "endIndex": 16,
+        "resolution": {
+          "value": "6789"
+        }
+      },
+      {
+        "entity": "-1242",
+        "type": "builtin.number",
+        "startIndex": 24,
+        "endIndex": 28,
+        "resolution": {
+          "value": "-1242"
+        }
+      },
+      {
+        "entity": "-54672",
+        "type": "builtin.number",
+        "startIndex": 34,
+        "endIndex": 39,
+        "resolution": {
+          "value": "-54672"
+        }
       }
-    },
-    {
-      "entity": "45",
-      "type": "builtin.number",
-      "startIndex": 10,
-      "endIndex": 11,
-      "resolution": {
-        "value": "45"
-      }
-    },
-    {
-      "entity": "6789",
-      "type": "builtin.number",
-      "startIndex": 13,
-      "endIndex": 16,
-      "resolution": {
-        "value": "6789"
-      }
-    },
-    {
-      "entity": "-1242",
-      "type": "builtin.number",
-      "startIndex": 24,
-      "endIndex": 28,
-      "resolution": {
-        "value": "-1242"
-      }
-    },
-    {
-      "entity": "-54672",
-      "type": "builtin.number",
-      "startIndex": 34,
-      "endIndex": 39,
-      "resolution": {
-        "value": "-54672"
-      }
-    }
-  ]
-}
-```
+    ]
+  }
+  ```
 
-Der Mitarbeiter wurde gefunden und mit dem Typ `Employee` mit dem Auflösungswert `Employee-24612` zurückgegeben.
+  Der Mitarbeiter wurde gefunden und mit dem Typ `Employee` mit dem Auflösungswert `Employee-24612` zurückgegeben.
 
 ## <a name="where-is-the-natural-language-processing-in-the-list-entity"></a>Wo wird für die Listenentität die Verarbeitung natürlicher Sprache durchgeführt? 
 Da für die Listenentität eine genaue Textübereinstimmung erforderlich ist, wird keine Verarbeitung von natürlicher Sprache durchgeführt (und auch kein maschinelles Lernen). Die Verarbeitung natürlicher Sprache (bzw. maschinelles Lernen) wird für LUIS verwendet, um die richtige Absicht mit der höchsten Bewertung auszuwählen. Darüber hinaus kann eine Äußerung eine Mischung von mehr als einer Entität oder sogar mehr als einem Entitätstyp sein. Jede Äußerung wird für alle Entitäten der App verarbeitet, einschließlich der Entitäten, die auf der Verarbeitung natürlicher Sprache (oder maschinellem Lernen) basieren.
