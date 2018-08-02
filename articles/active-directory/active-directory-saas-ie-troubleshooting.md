@@ -28,7 +28,7 @@ Dieser Artikel hilft Ihnen bei der Behandlung der folgenden Probleme:
 * Während der Verwendung von Internet Explorer ist nicht möglich, über das Portal "Meine Apps" auf Ihre Apps zuzugreifen.
 * Die Meldung „Software installieren“ wird angezeigt, obwohl Sie die Software bereits installiert haben.
 
-Als Administrator finden Sie weitere Informationen unter: [How to Deploy the Access Panel Extension for Internet Explorer using Group Policy](active-directory-saas-ie-group-policy.md)
+Als Administrator finden Sie weitere Informationen unter: [Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer mit der Gruppenrichtlinie; in englischer Sprache](active-directory-saas-ie-group-policy.md)
 
 ## <a name="run-the-diagnostic-tool"></a>Ausführen des Diagnoseprogramms
 Sie können Probleme bei der Installation mithilfe der Zugriffsbereichserweiterung diagnostizieren, indem Sie das Diagnoseprogramm "Zugriffsbereich" herunterladen und ausführen:
@@ -93,5 +93,5 @@ Wenn beim Deinstallieren der Erweiterung Probleme auftreten, können Sie diese a
 ## <a name="related-articles"></a>Verwandte Artikel
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 * [Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory](manage-apps/what-is-single-sign-on.md)
-* [How to Deploy the Access Panel Extension for Internet Explorer using Group Policy (auf Englisch)](active-directory-saas-ie-group-policy.md)
+* [Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer mit der Gruppenrichtlinie; in englischer Sprache](active-directory-saas-ie-group-policy.md)
 
