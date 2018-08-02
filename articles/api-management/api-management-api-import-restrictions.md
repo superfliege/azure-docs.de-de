@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: 03d785898398cb0bcd7b43e8d7feab705bce4b34
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a9f4a4ed4a8771f32a4d66aed2457a43abb92a63
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598469"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39295334"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Einschränkungen und bekannte Probleme beim Import von APIs
 ## <a name="about-this-list"></a>Informationen zu dieser Liste
 Beim Importieren einer API stoßen Sie unter Umständen auf Einschränkungen oder Probleme, die behoben werden müssen, damit der Import erfolgreich ausgeführt werden kann. Diese Probleme werden nachfolgend unter dem jeweiligen Importformat der API beschrieben.
 
 ## <a name="open-api"> </a>OpenAPI/Swagger
-Wenn Ihnen beim Importieren Ihres OpenAPI-Dokuments Fehler gemeldet werden, vergewissern Sie sich, dass Sie das Dokument überprüft haben. Diese Überprüfung können Sie mit dem Designer des neuen Azure-Portals (Design – Front-End – OpenAPI Specification Editor) oder mit einem Tool eines Drittanbieters, zum Beispiel mit <a href="http://www.swagger.io">Swagger Editor</a>, vornehmen.
+Wenn Ihnen beim Importieren Ihres OpenAPI-Dokuments Fehler gemeldet werden, vergewissern Sie sich, dass Sie das Dokument überprüft haben. Diese Überprüfung können Sie mit dem Designer des neuen Azure-Portals (Design – Front-End – OpenAPI Specification Editor) oder mit einem Tool eines Drittanbieters, zum Beispiel mit <a href="http://editor.swagger.io">Swagger Editor</a>, vornehmen.
 
 * Nur das JSON-Format für OpenAPI wird unterstützt.
 * Erforderliche Parameter für Pfad und Abfrage müssen eindeutige Namen besitzen. (In OpenAPI muss ein Parametername nur an einem Ort (beispielsweise im Pfad, in der Abfrage oder im Header) eindeutig sein.  In API Management können Vorgänge jedoch sowohl nach Pfad- als auch nach Abfrageparametern unterschieden werden. (Dies wird von OpenAPI nicht unterstützt.) Daher müssen Parameternamen innerhalb der gesamten URL-Vorlage eindeutig sein.)
@@ -36,7 +36,7 @@ Wenn Ihnen beim Importieren Ihres OpenAPI-Dokuments Fehler gemeldet werden, verg
 * Benutzerdefinierte Erweiterungen werden beim Import ignoriert und nicht für den Export gespeichert oder aufbewahrt.
 
 > [!IMPORTANT]
-> Dieses [Dokument](https://blogs.msdn.microsoft.com/apimanagement/2018/03/28/important-changes-to-openapi-import-and-export/) enthält wichtige Informationen und Tipps zum OpenAPI-Import.
+> Dieses [Dokument](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/) enthält wichtige Informationen und Tipps zum OpenAPI-Import.
 
 ## <a name="wsdl"></a>WSDL
 WSDL-Dateien werden zur Generierung von SOAP-Pass-Through-APIs verwendet oder dienen als Back-End einer SOAP-to-REST-API.

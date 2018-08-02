@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/12/2018
+ms.date: 07/26/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f9dea759f6556bc521dda4efbd27176f1e06452b
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 350749161260768071afbb47b854cb2e9184bd9d
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126574"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284726"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-web-application"></a>Tutorial: Bereitstellen einer Service Fabric Mesh-Anwendung
 
@@ -46,7 +46,7 @@ Sie erfahren, wie Sie eine Azure Service Fabric Mesh-App erstellen, die über ei
 
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
-* Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+* Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 * Stellen Sie sicher, dass Sie [Ihre Entwicklungsumgebung eingerichtet haben](service-fabric-mesh-howto-setup-developer-environment-sdk.md). Dies umfasst auch das Installieren der Service Fabric-Laufzeit, des SDK und die Installation von Docker sowie Visual Studio 2017.
 
@@ -74,11 +74,11 @@ Wählen Sie unter **Ressourcengruppe** die Option **\<Neue Ressourcengruppe erst
 
 ![Dialogfeld „Neue Ressourcengruppe“ von Service Fabric Mesh in Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-resource-group-dialog.png)
 
-Zurück im Dialogfeld **Service Fabric-Anwendung veröffentlichen** wählen Sie unter **Azure Container Registry** die Option **\<Neue Containerregistrierung erstellen** aus. Verwenden Sie im Dialogfeld **Containerregistrierung erstellen** einen eindeutigen Namen für den **Containerregistrierungsnamen**. Geben Sie einen **Standort** an (in diesem Tutorial wird **USA, Osten** verwendet). Wählen Sie in der Dropdownliste die **Ressourcengruppe** aus, die Sie im vorherigen Schritt erstellt haben, z.B. **sfmeshTutorial1RG**. Legen Sie die **SKU** auf **Basic** fest, und klicken Sie dann auf **Erstellen**, um zum Dialogfeld „Veröffentlichen“ zurückzukehren.
+Im Dialogfeld **Service Fabric-Anwendung veröffentlichen** wählen Sie unter **Azure Container Registry** die Option **\<Neue Containerregistrierung erstellen...>** aus. Verwenden Sie im Dialogfeld **Containerregistrierung erstellen** einen eindeutigen Namen für den **Containerregistrierungsnamen**. Geben Sie einen **Standort** an (in diesem Tutorial wird **USA, Osten** verwendet). Wählen Sie in der Dropdownliste die **Ressourcengruppe** aus, die Sie im vorherigen Schritt erstellt haben, z.B. **sfmeshTutorial1RG**. Legen Sie die **SKU** auf **Basic** fest, und klicken Sie dann auf **Erstellen**, um zum Dialogfeld „Veröffentlichen“ zurückzukehren.
 
 ![Dialogfeld „Neue Ressourcengruppe“ von Service Fabric Mesh in Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
 
-Wenn Sie einen Fehler erhalten, dass kein Ressourcenanbieter für Ihr Abonnement registriert wurde, können Sie diesen registrieren. Untersuchen Sie zunächst, ob der Ressourcenanbieter für Ihr Abonnement verfügbar ist:
+Wenn Sie einen Fehler erhalten, dass kein Ressourcenanbieter für Ihr Abonnement registriert wurde, können Sie diesen registrieren. Prüfen Sie zunächst, ob der Ressourcenanbieter für Ihr Abonnement verfügbar ist:
 
 ```Powershell
 Get-AzureRmResourceProvider -ListAvailable
@@ -106,26 +106,9 @@ The application was deployed successfully and it can be accessed at http://10.00
 
 Öffnen Sie einen Webbrowser, und navigieren Sie zu der URL, um die Ausführung der Website in Azure anzuzeigen.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="set-up-service-fabric-mesh-cli"></a>Einrichten der Service Fabric Mesh-CLI 
+Sie können Azure Cloud Shell oder eine lokale Installation der Azure CLI für die verbleibenden Schritte verwenden. Installieren Sie das CLI-Erweiterungsmodul von Azure Service Fabric Mesh, indem Sie die folgenden [Anweisungen](service-fabric-mesh-howto-setup-cli.md) befolgen.
 
-Sie können Azure Cloud Shell oder eine lokale Installation der Azure CLI für die verbleibenden Schritte verwenden.
-
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.35 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zur Installation und zu einem Upgrade auf die neueste Version der CLI finden Sie unter [Installieren von Azure CLI 2.0][azure-cli-install].
-
-## <a name="install-the-az-mesh-cli"></a>Installieren der Azure Mesh CLI
-In der CLI-Eingabeaufforderung
-
-1) Entfernen Sie alle vorherigen Installationen des Azure Service Fabric Mesh CLI-Moduls.
-
-```cli
-az extension remove --name mesh
-```
-
-2)  Installieren Sie das Azure Service Fabric Mesh CLI-Erweiterungsmodul. Für die Vorschau wurde die Azure Service Fabric Mesh CLI als Erweiterung der Azure CLI programmiert. In der öffentlichen Vorschauversion wird sie jedoch als Teil der Azure CLI ausgeliefert.
-
-```cli
-az extension add --source https://sfmeshcli.blob.core.windows.net/cli/mesh-0.8.1-py2.py3-none-any.whl
-```
 
 ## <a name="check-application-deployment-status"></a>Überprüfen des Status der Anwendungsbereitstellung
 

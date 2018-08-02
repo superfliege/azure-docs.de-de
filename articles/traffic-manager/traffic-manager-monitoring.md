@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2017
 ms.author: kumud
-ms.openlocfilehash: 6d07bd333e4d1663e37a840975cde2d9c73cec9c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0124c70916d1c9a6f6b818a68f13d7a189a1b70f
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211717"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398834"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager-Endpunktüberwachung
 
@@ -156,7 +156,7 @@ Weitere Informationen zur Behandlung von Fehlern bei Integritätsprüfungen find
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich über die [Funktionsweise von Traffic Manager](traffic-manager-how-traffic-manager-works.md)
+Informieren Sie sich über die [Funktionsweise von Traffic Manager](traffic-manager-how-it-works.md)
 
 Informieren Sie sich über die von Traffic Manager unterstützten [Methoden für das Datenverkehrsrouting](traffic-manager-routing-methods.md) .
 

@@ -6,15 +6,15 @@ author: adiganmsft
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 11/10/2017
+ms.date: 07/26/2018
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 81653f9125b9cc4411e5cfe358bd602f92c5bf89
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: bd6228b6cb7409144a0cd16d6c9617b7127c3624
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448365"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264960"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 In diesem Artikel werden die Schritte für das Konfigurieren von Berichten für Azure Backup mithilfe des Recovery Services-Tresors beschrieben, und es wird gezeigt, wie Sie auf diese Berichte mithilfe von PowerBI zugreifen können. Nachdem Sie diese Schritte ausgeführt haben, können Sie direkt in Power BI alle Berichte anzeigen, Berichte anpassen und erstellen. 
@@ -24,7 +24,6 @@ In diesem Artikel werden die Schritte für das Konfigurieren von Berichten für 
 2. Berichte über Azure SQL, DPM und Azure Backup Server werden derzeit nicht unterstützt.
 3. Sie können die Berichte in allen Tresoren mit allen Abonnements anzeigen, sofern für alle Tresore dasselbe Speicherkonto verwendet wird. Das ausgewählte Speicherkonto muss sich in derselben Region wie der Recovery Services-Tresor befinden.
 4. Die Häufigkeit der geplanten Aktualisierungen für die Berichte beträgt in Power BI 24 Stunden. In Power BI können Sie die Berichte auch ad hoc aktualisieren. In diesem Fall werden die aktuellsten Daten im Kundenspeicherkonto zum Rendern der Berichte verwendet. 
-5. Azure Backup-Berichte werden in nationalen Clouds derzeit nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 1. Erstellen Sie ein [Azure-Speicherkonto](../storage/common/storage-create-storage-account.md#create-a-storage-account), um Berichte zu konfigurieren. Dieses Speicherkonto wird zum Speichern von berichtsbezogenen Daten verwendet.
@@ -75,7 +74,7 @@ Mit den folgenden Schritten konfigurieren Sie das Speicherkonto für Recovery Se
 ## <a name="view-reports-in-power-bi"></a>Anzeigen von Berichten in Power BI 
 Nachdem das Speicherkonto mit dem Recovery Services-Tresor für Berichte konfiguriert wurde, dauert es etwa 24 Stunden, bis die ersten Daten an das Speicherkonto übermittelt werden. Nach Ablauf von 24 Stunden nach dem Konfigurieren des Speicherkontos können Sie mit den folgenden Schritten Berichte in Power BI anzeigen:
 1. Melden Sie sich bei Power BI [an](https://powerbi.microsoft.com/landing/signin/).
-2. Klicken Sie auf **Daten abrufen**, und klicken Sie dann in der Bibliothek des Inhaltspakets unter **Dienste** auf **Abrufen**. Folgen Sie den Schritten, die in der [Power BI-Dokumentation für den Zugriff auf das Inhaltspaket](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-packs-services/) beschrieben werden.
+2. Klicken Sie auf **Daten abrufen**, und klicken Sie dann in der Bibliothek des Inhaltspakets unter **Dienste** auf **Abrufen**. Folgen Sie den Schritten, die in der [Power BI-Dokumentation für den Zugriff auf das Inhaltspaket](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/) beschrieben werden.
 
      ![Importieren eines Inhaltspakets](./media/backup-azure-configure-reports/content-pack-import.png)
 3. Geben Sie **Azure Backup** in die Suchleiste ein, und klicken Sie auf **Jetzt abrufen**.

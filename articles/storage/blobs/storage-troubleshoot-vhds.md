@@ -3,17 +3,17 @@ title: Problembehandlung bei an virtuelle Azure-Computer angeschlossenen Datentr
 description: Azure Blob Storage dient zum Speichern großer Mengen unstrukturierter Objektdaten wie etwa Text- und Binärdaten. Ihre Anwendungen können über PowerShell oder über die Azure-Befehlszeilenschnittstelle, über Code mittels Azure Storage-Clientbibliotheken oder über REST auf Objekte in Blob Storage zugreifen.
 services: storage
 author: genlin
-manager: cshepard
 ms.service: storage
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: genli
-ms.openlocfilehash: 766062b085c359499046151f337921a51d948715
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.component: disks
+ms.openlocfilehash: 0dbd89c28d18d64908d92cd38d8bd1cf3138fd5c
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362705"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397966"
 ---
 # <a name="troubleshoot-disks-attached-to-azure-vms"></a>Problembehandlung bei an virtuelle Azure-Computer angeschlossenen Datenträgern 
 

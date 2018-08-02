@@ -10,17 +10,17 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 8c3cd66a376c1526f50201b7fd662c4faf650df5
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 618df9b4bcc4a1b6f44d9cabc29c797a2cabcc80
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161603"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366791"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Umleiten von hartcodierten Links für Apps, die mit Azure AD-Anwendungsproxy veröffentlicht wurden
 
@@ -31,13 +31,13 @@ Die beste Möglichkeit sicherzustellen, dass Links sowohl innerhalb als auch au�
 
 Wenn Sie in Ihrem Mandanten keine benutzerdefinierten Domänen verwenden können, stehen mehrere andere Optionen für die Bereitstellung dieser Funktionalität zur Verfügung. Alle diese Optionen sind auch mit benutzerdefinierten Domänen und untereinander kompatibel, sodass Sie bei Bedarf benutzerdefinierte Domänen und andere Lösungen konfigurieren können. 
 
-**Option 1: Verwenden von Managed Browser**: Diese Lösung ist nur anwendbar, wenn Sie empfehlen oder festlegen möchten, dass Benutzer über Intune Managed Browser auf die Anwendung zugreifen. Es werden alle veröffentlichten URLs verarbeitet. 
+**Option 1: Verwenden von Managed Browser:** Diese Lösung ist nur anwendbar, wenn Sie empfehlen oder festlegen möchten, dass Benutzer über Intune Managed Browser auf die Anwendung zugreifen. Es werden alle veröffentlichten URLs verarbeitet. 
 
-**Option 2: Verwenden der MyApps-Erweiterung**: Diese Lösung macht erforderlich, dass Benutzer eine clientseitige Browsererweiterung installieren. Die Lösung verarbeitet jedoch alle veröffentlichten URLs und kann in den meisten gängigen Browsern verwendet werden. 
+**Option 2: Verwenden der MyApps-Erweiterung:** Für diese Lösung müssen Benutzer eine clientseitige Browsererweiterung installieren. Die Lösung verarbeitet jedoch alle veröffentlichten URLs und kann in den meisten gängigen Browsern verwendet werden. 
 
-**Option 3: Verwenden der Einstellung für die Linkübersetzung**: Diese Einstellung wird vom Administrator festgelegt und ist für Benutzer nicht sichtbar. Allerdings werden nur URLs in HTML und CSS verarbeitet. Hartcodierte interne URLs, die (beispielsweise) über JavaScript generiert werden, werden nicht ausgeführt.  
+**Option 3: Verwenden der Einstellung für die Linkübersetzung:** Diese Einstellung wird vom Administrator festgelegt und ist für Benutzer nicht sichtbar. Allerdings werden nur URLs in HTML und CSS verarbeitet. Hartcodierte interne URLs, die (beispielsweise) über JavaScript generiert werden, werden nicht ausgeführt.  
 
-Mit diesen drei Funktionen funktionieren Ihre Links, unabhängig davon, wo sich Ihre Benutzer befinden. Wenn Sie über Apps verfügen, die direkt auf interne Endpunkte oder Ports verweisen, können Sie diese internen URLs den veröffentlichten externen Anwendungsproxy-URLs zuordnen. 
+Mit diesen drei Features funktionieren Ihre Links unabhängig davon, wo sich Ihre Benutzer befinden. Wenn Sie über Apps verfügen, die direkt auf interne Endpunkte oder Ports verweisen, können Sie diese internen URLs den veröffentlichten externen Anwendungsproxy-URLs zuordnen. 
 
  
 > [!NOTE]
@@ -54,9 +54,9 @@ Weitere Informationen, auch zum Konfigurieren dieser Option, finden Sie in der D
 
 ### <a name="option-2-myapps-browser-extension"></a>Option 2: MyApps-Browsererweiterung 
 
-Mit der MyApps-Browsererweiterung werden alle internen mit dem Anwendungsproxy veröffentlichten URLs erkannt und an die entsprechende externe URL umgeleitet. Dadurch wird sichergestellt, dass alle hartcodierten internen URLs funktionieren. Wenn ein Benutzer in der Adressleiste des Browsers direkt die interne URL eingibt, funktioniert diese, auch wenn der Benutzer remote arbeitet.  
+Mit der MyApps-Browsererweiterung werden alle internen mit dem Anwendungsproxy veröffentlichten URLs erkannt und an die entsprechende externe URL umgeleitet. Dadurch wird sichergestellt, dass alle hartcodierten internen URLs funktionieren. Wenn ein Benutzer auf der Adressleiste des Browsers direkt die interne URL eingibt, funktioniert diese, auch wenn der Benutzer remote arbeitet.  
 
-Zur Verwendung dieser Funktion muss der Benutzer die Erweiterung herunterladen und angemeldet sein. Administratoren oder Benutzer müssen keine weitere Konfiguration vornehmen. 
+Zur Verwendung dieses Features muss der Benutzer die Erweiterung herunterladen und angemeldet sein. Administratoren oder Benutzer müssen keine weitere Konfiguration vornehmen. 
 
  
 

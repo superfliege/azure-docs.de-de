@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: kumud
-ms.openlocfilehash: 792712e3e529d77ff20a7603b5fbf028ca60f8c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 115511d15bc2366e49f6b3d1b89b513ea0ee5e90
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23112688"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398027"
 ---
 # <a name="traffic-manager-endpoints"></a>Traffic Manager-Endpunkte
-Mit Microsoft Azure Traffic Manager können Sie steuern, wie Datenverkehr im Netzwerk auf Anwendungsbereitstellungen in verschiedenen Rechenzentren verteilt wird. Sie konfigurieren jede Anwendungsbereitstellung in Traffic Manager als „Endpunkt“. Wenn Traffic Manager eine DNS-Anforderung empfängt, wählt er einen verfügbaren Endpunkt, der in der DNS-Antwort zurückgegeben wird. Traffic Manager trifft die Auswahl nach dem aktuellen Endpunktstatus und der Methode für das Datenverkehrsrouting. Weitere Informationen finden Sie unter [Funktionsweise von Traffic Manager](traffic-manager-how-traffic-manager-works.md).
+Mit Microsoft Azure Traffic Manager können Sie steuern, wie Datenverkehr im Netzwerk auf Anwendungsbereitstellungen in verschiedenen Rechenzentren verteilt wird. Sie konfigurieren jede Anwendungsbereitstellung in Traffic Manager als „Endpunkt“. Wenn Traffic Manager eine DNS-Anforderung empfängt, wählt er einen verfügbaren Endpunkt, der in der DNS-Antwort zurückgegeben wird. Traffic Manager trifft die Auswahl nach dem aktuellen Endpunktstatus und der Methode für das Datenverkehrsrouting. Weitere Informationen finden Sie unter [Funktionsweise von Traffic Manager](traffic-manager-how-it-works.md).
 
 Es gibt drei Arten von Endpunkten, die von Traffic Manager unterstützt werden:
 * **Azure-Endpunkte** werden für Dienste verwendet, die unter Azure gehostet werden.
@@ -74,7 +74,7 @@ Das Deaktivieren eines Endpunkts in Traffic Manager kann sehr hilfreich sein, um
 Endpunkte können per Traffic Manager-Portal, PowerShell, CLI oder REST-API aktiviert und deaktiviert werden, die im Resource Manager und dem klassischen Bereitstellungsmodell unterstützt werden.
 
 > [!NOTE]
-> Das Deaktivieren eines Azure-Endpunkts hat nichts mit dessen Bereitstellungsstatus in Azure zu tun. Ein Azure-Dienst (z.B. eine VM oder eine Webanwendung) wird weiterhin ausgeführt und kann auch dann Datenverkehr empfangen, wenn er im Traffic Manager deaktiviert ist. Datenverkehr kann nicht über den Traffic Manager-Profil DNS-Namen, sondern direkt an die Dienstinstanz adressiert werden. Weitere Informationen finden Sie unter [Funktionsweise von Traffic Manager](traffic-manager-how-traffic-manager-works.md).
+> Das Deaktivieren eines Azure-Endpunkts hat nichts mit dessen Bereitstellungsstatus in Azure zu tun. Ein Azure-Dienst (z.B. eine VM oder eine Webanwendung) wird weiterhin ausgeführt und kann auch dann Datenverkehr empfangen, wenn er im Traffic Manager deaktiviert ist. Datenverkehr kann nicht über den Traffic Manager-Profil DNS-Namen, sondern direkt an die Dienstinstanz adressiert werden. Weitere Informationen finden Sie unter [Funktionsweise von Traffic Manager](traffic-manager-how-it-works.md).
 
 Die aktuelle Berechtigung jedes Endpunkts zum Empfangen von Datenverkehr hängt von den folgenden Faktoren ab:
 
@@ -92,6 +92,6 @@ Wenn alle Endpunkte eines Profils deaktiviert werden oder das Profil selbst deak
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zur [Funktionsweise von Traffic Manager](traffic-manager-how-traffic-manager-works.md)
+* Informationen zur [Funktionsweise von Traffic Manager](traffic-manager-how-it-works.md)
 * Informationen zu [Endpunktüberwachung und automatisches Failover](traffic-manager-monitoring.md)von Traffic Manager
 * Informationen zu Traffic Manager- [Routingmethoden für Datenverkehr](traffic-manager-routing-methods.md)

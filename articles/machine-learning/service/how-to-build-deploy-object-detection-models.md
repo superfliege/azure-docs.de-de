@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 06/01/2018
-ms.openlocfilehash: 62cc37d8c462d0fc1831de7b50a85738d6e63a17
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 44059de5a0ef0667b4268d9cdc2997162bab474a
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726636"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39295374"
 ---
 # <a name="build-and-deploy-object-detection-models-with-azure-machine-learning"></a>Erstellen und Bereitstellen von Objekterkennungsmodellen mit Azure Machine Learning
 
@@ -68,26 +68,21 @@ Die folgende Abbildung zeigt die empfohlene Ordnerstruktur.
 
 Mit Anmerkungen versehene Objektstandorte sind zum Trainieren und Auswerten eines Objektdetektors erforderlich. [LabelImg](https://tzutalin.github.io/labelImg) ist ein Open-Source-Anmerkungstool, das Bilder mit einer Anmerkung versehen kann. LabelImg schreibt eine XML-Datei pro Bild im Pascal-VOC-Format, das von diesem Paket gelesen werden kann. 
 
-## <a name="storage-context"></a>Speicherkontext
-Der Speicherkontext wird verwendet, um zu bestimmen, wo verschiedene Ausgabedateien wie DNN-Modelldateien gespeichert werden. Weitere Informationen finden Sie in der [StorageContext-Dokumentation](https://docs.microsoft.com/en-us/python/api/cvtk.core.context.storagecontext?view=azure-ml-py-latest). Normalerweise muss der Speicherinhalt nicht explizit festgelegt werden. Um jedoch das Workbench-Projektgrößenlimit von 25 MB zu vermeiden, legen Sie fest, dass das Ausgabenverzeichnis auf einen Speicherort außerhalb des AML-Projekts verweist („../../../../cvtk_output“). Achten Sie darauf, das Verzeichnis „cvtk_output“ zu entfernen, sobald es nicht mehr benötigt wird.
-
 
 ```python
 import warnings
 warnings.filterwarnings("ignore")
 import os, time
 from cvtk.core import Context, ObjectDetectionDataset, TFFasterRCNN
+from cvtk.evaluation import DetectionEvaluation
+from cvtk.evaluation.evaluation_utils import graph_error_counts
 from cvtk.utils import detection_utils
-from matplotlib import pyplot as plt
 
 # Disable printing of logging messages
 from azuremltkbase.logging import ToolkitLogger
 ToolkitLogger.getInstance().setEnabled(False)
 
-# Initialize the context object
-out_root_path = "../../../cvtk_output"
-Context.create(outputs_path=out_root_path, persistent_path=out_root_path, temp_path=out_root_path)
-
+from matplotlib import pyplot as plt
 # Display the images
 %matplotlib inline
 ```
@@ -98,7 +93,7 @@ Erstellen Sie ein CVTK-Dataset, das aus einem Satz von Bildern mit ihren jeweili
 
 
 ```python
-image_folder = "../sample_data/foods/train"
+image_folder = "detection/sample_data/foods/train"
 data_train = ObjectDetectionDataset.create_from_dir(dataset_name='training_dataset', data_dir=image_folder,
                                                     annotations_dir="Annotations", image_subdirectory='JPEGImages')
 
@@ -202,7 +197,7 @@ Die Methode "evaluate" wird zum Auswerten des Modells verwendet. Diese Funktion 
 
 
 ```python
-image_folder = "../sample_data/foods/test"
+image_folder = "detection/sample_data/foods/test"
 data_val = ObjectDetectionDataset.create_from_dir(dataset_name='val_dataset', data_dir=image_folder)
 eval_result = my_detector.evaluate(dataset=data_val)
 ```
@@ -280,7 +275,7 @@ Sobald Sie mit der Leistung des trainierten Modells zufrieden sind, kann die „
 ```python
 image_path = data_val.images[1].storage_path
 detections_dict = my_detector.score(image_path)
-path_save = out_root_path + "/scored_images/scored_image_preloaded.jpg"
+path_save = "./scored_images/scored_image_preloaded.jpg"
 ax = detection_utils.visualize(image_path, detections_dict, image_size=(8, 12))
 path_save_dir = os.path.dirname(os.path.abspath(path_save))
 os.makedirs(path_save_dir, exist_ok=True)
@@ -295,7 +290,7 @@ Das trainierte Modell kann auf einem Datenträger gespeichert und wieder in den 
 
 
 ```python
-save_model_path = out_root_path + "/frozen_model/faster_rcnn.model" # Please save your model to outside of your AML workbench project folder because of the size limit of AML project
+save_model_path = "./frozen_model/faster_rcnn.model"
 my_detector.save(save_model_path)
 ```
 
@@ -355,7 +350,7 @@ Visualisieren Sie die Ergebnisse wie zuvor.
 
 
 ```python
-path_save = out_root_path + "/scored_images/scored_image_frozen_graph.jpg"
+path_save = "./scored_images/scored_image_frozen_graph.jpg"
 ax = detection_utils.visualize(image_path, detections_dict, path_save=path_save, image_size=(8, 12))
 # ax.get_figure() # use this code extract the returned image
 ```
@@ -368,7 +363,7 @@ Als „Operationalisierung“ wird das Veröffentlichen von Modellen und Code al
 
 Sobald Ihr Modell trainiert ist, können Sie dieses Modell als Webdienst für die Nutzung mithilfe von [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/cli-for-azure-machine-learning) bereitstellen. Ihre Modelle können auf dem lokalen Computer oder in einem ACS-Cluster (Azure Container Service) bereitgestellt werden. Mithilfe von ACS können Sie Ihren Webdienst manuell skalieren, oder Sie verwenden die Funktionalität für automatische Skalierung.
 
-**Anmelden mit Azure CLI**
+**Anmelden bei Azure CLI**
 
 Melden Sie sich mit einem [Azure](https://azure.microsoft.com/)-Konto mit einem gültigen Abonnement mit dem folgenden CLI-Befehl an:
 <br>`az login`
@@ -596,7 +591,7 @@ print("Parsed result:", parsed_result)
 
 ```python
 ax = detection_utils.visualize(image_path, parsed_result)
-path_save = "../../../cvtk_output/scored_images/scored_image_web.jpg"
+path_save = "./scored_images/scored_image_web.jpg"
 path_save_dir = os.path.dirname(os.path.abspath(path_save))
 os.makedirs(path_save_dir, exist_ok=True)
 ax.get_figure().savefig(path_save)

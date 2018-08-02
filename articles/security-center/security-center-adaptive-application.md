@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2018
+ms.date: 07/31/2018
 ms.author: rkarlin
-ms.openlocfilehash: 27e013ad9e94bb025cfad87cc68b244882a207b3
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 6dd971ff8cd51435978ab80db006f6494dff8a94
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161931"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389326"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Adaptive Anwendungssteuerungen in Azure Security Center
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Anwendungssteuerung in Azure Security Center verwenden.
@@ -87,8 +87,7 @@ Der Abschnitt **Groups of VMs** (VM-Gruppen) enthält drei Registerkarten:
 
 5. Klicken Sie nach Abschluss Ihrer Auswahl auf **Erstellen**.
 
-6. Security Center wendet unter Verwendung der integrierten AppLocker-Funktionen für Windows-Server die entsprechenden Regeln auf die einzelnen ausgewählten virtuellen Computer an. Darüber hinaus aktiviert Security Center standardmäßig die Anwendungssteuerung immer im Überwachungsmodus. Nachdem Sie sich vergewissert haben, dass Ihre Whitelist keine nachteiligen Auswirkungen auf Ihre Workload hat, können Sie in den **Erzwingungsmodus** wechseln. Weitere Informationen finden Sie unter [How AppLocker works](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/how-applocker-works-techref) (Funktionsweise von AppLocker).
- 
+
 > [!NOTE]
 > - Security Center zieht zur Erstellung einer Baseline sowie für die individuellen Empfehlungen pro VM-Gruppe die Daten eines Zeitraums von mindestens zwei Wochen heran. Bei neuen Kunden mit dem Standardtarif von Security Center werden VM-Gruppen zunächst auf der Registerkarte *Keine Empfehlung* angezeigt.
 > - Adaptive Anwendungssteuerungen in Security Center unterstützen keine virtuellen Computer, für die entweder über ein Gruppenrichtlinienobjekt oder eine lokale Sicherheitsrichtlinie bereits eine AppLocker-Richtlinie aktiviert wurde.

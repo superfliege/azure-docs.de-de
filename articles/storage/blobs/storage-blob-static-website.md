@@ -3,17 +3,17 @@ title: Hosten von statischen Websites in Azure Storage (Vorschauversion) | Micro
 description: Azure Storage ermöglicht jetzt das Hosten von statischen Websites (Vorschauversion), und es wird eine kostengünstige, skalierbare Lösung zum Hosten von modernen Webanwendungen bereitgestellt.
 services: storage
 author: MichaelHauss
-manager: vamshik
 ms.service: storage
 ms.topic: article
 ms.date: 06/26/18
 ms.author: mihauss
-ms.openlocfilehash: df1661b5fe7a2c0e37deef5259d6b5842ed6ee5e
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: blobs
+ms.openlocfilehash: e53b573a27f0b1462ccf1170bbde2f8af01d0d3a
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131608"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397474"
 ---
 # <a name="static-website-hosting-in-azure-storage-preview"></a>Hosten von statischen Websites in Azure Storage (Vorschauversion)
 Azure Storage ermöglicht jetzt das Hosten von statischen Websites (Vorschauversion), und Sie können moderne Webanwendungen kostengünstig und skalierbar in Azure bereitstellen. Auf einer statischen Website enthalten Webseiten statischen Inhalt und JavaScript oder anderen clientseitigen Code. Im Gegensatz dazu sind dynamische Websites von serverseitigem Code abhängig und können mit [Azure-Web-Apps](/app-service/app-service-web-overview.md) gehostet werden.

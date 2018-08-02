@@ -2,26 +2,22 @@
 title: Einrichten von in Azure Active Directory eingebundenen Geräten | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie in Azure Active Directory eingebundene Geräte einrichten.
 services: active-directory
-documentationcenter: ''
-author: MarkusVi
+author: eross-msft
 manager: mtillman
-editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
-ms.component: devices
+ms.component: user-help
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/15/2018
-ms.author: markvi
+ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: f2d285735b92c3acd67dc741f344b836e791be04
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 83eea565cc775a0569015c04d79d627d6ba120e6
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39058462"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39411708"
 ---
 # <a name="set-up-azure-active-directory-joined-devices"></a>Einrichten von in Azure Active Directory eingebundenen Geräten
 
@@ -32,7 +28,7 @@ Wenn Sie unternehmenseigene Windows 10-Geräte über Azure AD steuern möchten, 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um ein Windows 10-Gerät einzubinden, muss der Geräteregistrierungsdienst so konfiguriert sein, dass Sie Geräte registrieren können. Sie benötigen Berechtigungen zum Einbinden von Geräten in den Azure AD-Mandanten. Darüber hinaus müssen weniger Geräte registriert sein als die konfigurierte maximale Anzahl. Weitere Informationen finden Sie unter [Configure device settings](../device-management-azure-portal.md#configure-device-settings) (Konfigurieren von Geräteeinstellungen).
+Um ein Windows 10-Gerät einzubinden, muss der Geräteregistrierungsdienst so konfiguriert sein, dass Sie Geräte registrieren können. Sie benötigen Berechtigungen zum Einbinden von Geräten in den Azure AD-Mandanten. Darüber hinaus müssen weniger Geräte registriert sein als die konfigurierte maximale Anzahl. Weitere Informationen finden Sie unter [Configure device settings](../devices/device-management-azure-portal.md#configure-device-settings) (Konfigurieren von Geräteeinstellungen).
 
 
 
@@ -120,16 +116,14 @@ Sie können die Geräteeinstellungen auch im Azure AD-Portal überprüfen.
 
 ![Verbunden](./media/device-management-azuread-joined-devices-setup/15.png)
 
-Weitere Informationen finden Sie unter [Locate devices](../device-management-azure-portal.md#locate-devices) (Geräte ermitteln).
+Weitere Informationen finden Sie unter [Locate devices](../devices/device-management-azure-portal.md#locate-devices) (Geräte ermitteln).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen finden Sie unter 
 
-- [Einführung in die Geräteverwaltung in Azure Active Directory](../device-management-introduction.md)
-- [Verwalten von Geräten mithilfe des Azure-Portals – Vorschau](../device-management-azure-portal.md)
-- 
-
+- [Einführung in die Geräteverwaltung in Azure Active Directory](../devices/overview.md)
+- [Verwalten von Geräten mithilfe des Azure-Portals – Vorschau](../devices/device-management-azure-portal.md)
 
 

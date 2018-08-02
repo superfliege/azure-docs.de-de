@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/06/2018
+ms.date: 07/31/2018
 ms.author: douglasl
-ms.openlocfilehash: 4a4ec63d41f013ebfef8a78eddc88a6131a960fc
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 127438e1e65400daac75cec525197a5cfc8cd46a
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070041"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390210"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
 In diesem Artikel werden verschiedene Compute-Umgebungen beschrieben, mit denen Sie Daten verarbeiten oder transformieren können. Darüber hinaus werden Einzelheiten zu verschiedenen Konfigurationen beschrieben (bedarfsgesteuerte Compute-Umgebung im Vergleich zu einer eigenen Compute-Umgebung). Diese beiden Konfigurationen werden von Data Factory unterstützt, wenn Sie verknüpfte Dienste konfigurieren, um diese Compute-Umgebungen mit Azure Data Factory zu verknüpfen.
@@ -429,8 +429,8 @@ Sie erstellen einen mit **Azure Data Lake Analytics** verknüpften Dienst, um ei
 | type                 | Legen Sie die Typeigenschaft auf **AzureDataLakeAnalytics**fest. | JA                                      |
 | accountName          | Name des Azure Data Lake Analytics-Kontos.  | JA                                      |
 | dataLakeAnalyticsUri | URI des Azure Data Lake Analytics-Kontos.           | Nein                                        |
-| subscriptionId       | Azure-Abonnement-ID                    | Nein (falls nicht angegeben, wird das Abonnement der Data Factory verwendet). |
-| resourceGroupName    | Azure-Ressourcengruppenname                | Nein (falls nicht angegeben, wird die Ressourcengruppe der Data Factory verwendet). |
+| subscriptionId       | Azure-Abonnement-ID                    | Nein                                        |
+| resourceGroupName    | Azure-Ressourcengruppenname                | Nein                                        |
 | servicePrincipalId   | Geben Sie die Client-ID der Anwendung an.     | JA                                      |
 | servicePrincipalKey  | Geben Sie den Schlüssel der Anwendung an.           | JA                                      |
 | Mandant               | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | JA                                      |
@@ -505,15 +505,6 @@ Sie erstellen einen mit Azure SQL Data Warehouse verknüpften Dienst und verwend
 
 ## <a name="sql-server-linked-service"></a>Mit SQL Server verknüpfter Dienst
 Sie erstellen einen mit SQL Server verknüpften Dienst und verwenden ihn mit der [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md) zum Aufrufen einer gespeicherten Prozedur in einer Data Factory-Pipeline. Im Artikel [SQL Server-Connector](connector-sql-server.md#linked-service-properties) finden Sie weitere Informationen zu diesem verknüpften Dienst.
-
-## <a name="azure-data-factory---naming-rules"></a>Azure Data Factory – Benennungsregeln
-Die folgende Tabelle enthält Benennungsregeln für Data Factory-Artefakte.
-
-| NAME                             | Eindeutigkeit des Namens                          | Überprüfungen                        |
-| :------------------------------- | :--------------------------------------- | :--------------------------------------- |
-| Data Factory                     | Für Microsoft Azure eindeutig. Bei Namen wird die Groß-/Kleinschreibung nicht berücksichtigt, sodass `MyDF` und `mydf` auf die gleiche Data Factory verweisen. | <ul><li>Jede Data Factory ist an genau ein Azure-Abonnement gebunden.</li><li>Objektnamen müssen mit einem Buchstaben oder einer Zahl beginnen und dürfen nur Buchstaben, Zahlen und Bindestriche (-) enthalten.</li><li>Jedem Bindestrich (-) muss unmittelbar ein Buchstabe oder eine Ziffer vorangestellt werden und er muss von diesen gefolgt sein. Aufeinanderfolgende Bindestriche sind in Containernamen nicht zulässig.</li><li>Namen können 3 bis 63 Zeichen lang sein.</li></ul> |
-| Verknüpfte Dienste/Tabellen/Pipelines | Innerhalb einer Data Factory eindeutig. Bei Namen wird die Groß-/Kleinschreibung nicht berücksichtigt. | <ul><li>Maximale Anzahl von Zeichen in einem Tabellennamen: 260.</li><li>Objektnamen müssen mit einem Buchstaben, einer Zahl oder einem Unterstrich (_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\\“.</li></ul> |
-| Ressourcengruppe                   | Für Microsoft Azure eindeutig. Bei Namen wird die Groß-/Kleinschreibung nicht berücksichtigt. | <ul><li>Maximale Anzahl von Zeichen: 1000.</li><li>Der Name kann Buchstaben, Zahlen und die folgenden Zeichen enthalten: „-“, „_“, „,“ und „.“.</li></ul> |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Liste der Transformationsaktivitäten, die von Azure Data Factory unterstützt werden, finden Sie unter [Transform data in Azure Data Factory](transform-data.md) (Transformieren von Daten in Azure Data Factory).

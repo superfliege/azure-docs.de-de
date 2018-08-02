@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 9c961c06a01bba0b645088a19cd55e72a54396c1
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6dc5d494135fde3740d41453f3f484b49fcb3f80
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38586851"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308659"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Erstellen einer Funktion in Azure, die von einem Timer ausgelöst wird
 
@@ -62,7 +62,7 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
     | Einstellung | Empfohlener Wert | Beschreibung |
     |---|---|---|
     | **Name** | Standard | Definiert den Namen der Funktion mit Auslösung per Timer |
-    | **[Zeitplan](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 \*/1 \* \* \* \* | Ein sechs Felder umfassender [CRON-Ausdruck](http://en.wikipedia.org/wiki/Cron#CRON_expression), der die minütliche Ausführung der Funktion festlegt. |
+    | **Zeitplan** | 0 \*/1 \* \* \* \* | Ein sechs Felder umfassender [CRON-Ausdruck](functions-bindings-timer.md#cron-expressions), der die minütliche Ausführung der Funktion festlegt. |
 
 2. Klicken Sie auf **Create**. Eine Funktion wird in der gewählten Sprache erstellt. Sie wird minütlich ausgeführt.
 

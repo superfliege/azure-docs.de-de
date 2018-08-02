@@ -11,16 +11,16 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: barbkess
 ms.reviewer: luleon
-ms.openlocfilehash: 487312cb79c5c278849668a472acfda7823e4bc1
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: f23c9976dacc1ca696772d6bf02b5d59e3e0b4d5
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35302507"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39368688"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory
 Zum Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App benötigen Sie die entsprechenden Berechtigungen zum Verwalten der Unternehmens-App, und Sie müssen globaler Administrator für das Verzeichnis sein.
@@ -120,7 +120,7 @@ In diesem Beispiel wird die Benutzerin Britta Simon mithilfe von PowerShell der 
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Alle meine Gruppen anzeigen](../active-directory-groups-view-azure-portal.md)
+* [Alle meine Gruppen anzeigen](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Entfernen einer Benutzer- oder Gruppenzuweisung aus einer Unternehmens-App](remove-user-or-group-access-portal.md)
 * [Deaktivieren von Benutzeranmeldungen für eine Unternehmens-App](disable-user-sign-in-portal.md)
 * [Ändern des Namens oder Logos einer Unternehmens-App](change-name-or-logo-portal.md)

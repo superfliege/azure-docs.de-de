@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 2/06/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c1bebe46832226e822d9eeb002cb555b72a1d7fa
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: e008fb87b57b92f8f7e914e6b4344b52d42f9ef8
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441606"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263928"
 ---
 # <a name="azure-active-directory-b2c-disable-email-verification-during-consumer-sign-up"></a>Azure Active Directory B2C: Deaktivieren der E-Mail-Überprüfung während der Registrierung von Endbenutzern
 Wenn diese Funktionalität aktiviert ist, ermöglicht Azure Active Directory B2C es Endbenutzern, sich durch Angeben einer E-Mail-Adresse und Erstellen eines lokalen Kontos für Anwendungen zu registrieren. Azure AD B2C stellt sicher, dass gültige E-Mail-Adressen verwendet werden, indem Endbenutzer diese während des Registrierungsvorgangs verifizieren müssen. B2C verhindert auch, dass ein automatisierter Prozess böswillig gefälschte Konten für die Anwendungen generiert.
@@ -26,13 +26,14 @@ Standardmäßig ist die E-Mail-Überprüfung in Registrierungsrichtlinien aktivi
 
 1. [Führen Sie diese Schritte aus, um im Azure-Portal zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
 2. Klicken Sie auf **Registrierungsrichtlinien** oder auf **Registrierungs- oder Anmelderichtlinien**, je nachdem, welche Art Richtlinien Sie für die Registrierung konfiguriert haben.
-3. Klicken Sie auf Ihre Richtlinie (z.B. „B2C_1_SiUp“), um sie zu öffnen. Klicken Sie oben auf dem Blatt auf **Bearbeiten**.
-4. Klicken Sie auf **Seite für die Benutzeroberflächenanpassung**.
-5. Klicken Sie auf **Registrierungsseite für lokales Konto**.
-6. Klicken Sie im Abschnitt **Registrierungsattribute** in der Spalte **Name** auf **E-Mail-Adresse**.
-7. Legen Sie die Option **Überprüfung anfordern** auf **Nein** fest.
-8. Klicken Sie im unteren Bereich auf **OK**, bis Sie zum Blatt **Richtlinie bearbeiten** gelangen.
-9. Klicken Sie oben auf dem Blatt auf **Speichern** . Sie haben es geschafft!
+3. Klicken Sie auf Ihre Richtlinie (z.B. „B2C_1_SiUp“), um sie zu öffnen. 
+4. Klicken Sie oben auf dem Blatt auf **Bearbeiten**.
+5. Klicken Sie auf **Seite für die Benutzeroberflächenanpassung**.
+6. Klicken Sie auf **Registrierungsseite für lokales Konto**.
+7. Klicken Sie im Abschnitt **Registrierungsattribute** in der Spalte **Name** auf **E-Mail-Adresse**.
+8. Legen Sie die Option **Überprüfung anfordern** auf **Nein** fest.
+9. Klicken Sie im unteren Bereich auf **OK**, bis Sie zum Blatt **Richtlinie bearbeiten** gelangen.
+10. Klicken Sie oben auf dem Blatt auf **Speichern** . Sie haben es geschafft!
 
 > [!NOTE]
 > Die Deaktivierung der E-Mail-Überprüfung während des Registrierungsvorgangs kann zu Spam führen. Wenn Sie den Standardprozess deaktivieren, empfiehlt es sich, ein eigenes Überprüfungssystem einzurichten.

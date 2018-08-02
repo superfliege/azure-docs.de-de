@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 545766aa6c39fe678113297e584422872a6ded87
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 1897f2c5d532c030b2711a35eabeefd889f560c8
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008143"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264994"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Häufig gestellte Fragen zu Azure Active Directory Connect
 
@@ -54,7 +54,7 @@ Die einfachste Möglichkeit hierzu ist die Verwendung von SQL Server Management 
 3. Installieren Sie Azure AD Connect für die vorhandene [SQL-Remotedatenbank](active-directory-aadconnect-existing-database.md).
    Der Artikel veranschaulicht die Migration zu einer lokalen SQL-Datenbank. Wenn Sie zu einer Remote-SQL-Datenbank migrieren, müssen Sie in Schritt 5 dieses Vorgangs auch ein vorhandenes Dienstkonto eingeben, unter dem der Windows-Synchronisierungsdienst ausgeführt wird. Dieses Dienstkonto der Synchronisierungs-Engine wird hier beschrieben:
    
-      **Verwenden eines bestehenden Dienstkontos:** Für Azure AD Connect wird standardmäßig ein virtuelles Dienstkonto für die Synchronisierungsdienste genutzt. Wenn Sie eine SQL Server-Remoteinstanz oder einen Proxy mit Authentifizierungsanforderung verwenden, verwenden Sie ein verwaltetes Dienstkonto oder ein Dienstkonto in der Domäne. Das Kennwort muss Ihnen bekannt sein. Geben Sie in diesen Fällen das zu verwendende Konto ein. Stellen Sie sicher, dass die Benutzer, die die Installation ausführen, Systemadministratoren in SQL sind, damit die Anmeldeinformationen für das Dienstkonto erstellt werden können. Weitere Informationen finden Sie unter [Azure AD Connect: Konten und Berechtigungen](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account). 
+      **Verwenden eines bestehenden Dienstkontos:** Für Azure AD Connect wird standardmäßig ein virtuelles Dienstkonto für die Synchronisierungsdienste genutzt. Wenn Sie eine SQL Server-Remoteinstanz oder einen Proxy mit Authentifizierungsanforderung verwenden, verwenden Sie ein verwaltetes Dienstkonto oder ein Dienstkonto in der Domäne. Das Kennwort muss Ihnen bekannt sein. Geben Sie in diesen Fällen das zu verwendende Konto ein. Stellen Sie sicher, dass die Benutzer, die die Installation ausführen, Systemadministratoren in SQL sind, damit die Anmeldeinformationen für das Dienstkonto erstellt werden können. Weitere Informationen finden Sie unter [Azure AD Connect: Konten und Berechtigungen](active-directory-aadconnect-accounts-permissions.md#adsync-service-account). 
    
       Mit dem neuesten Build kann der SQL-Administrator nun eine Out-of-Band-Datenbankbereitstellung ausführen, sodass die Datenbank anschließend vom Azure AD Connect-Administrator mit Datenbankbesitzerrechten installiert werden kann. Weitere Informationen finden Sie unter [Installieren von Azure AD Connect mit Berechtigungen eines delegierten SQL-Administrators](active-directory-aadconnect-sql-delegation.md).
 

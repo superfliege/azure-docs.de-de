@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: a72873678323d31181654923caf07ba509c9ab81
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: bec2e443b920a1f163b7b328197d3688d207ed35
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301579"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39309118"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverseproxy in Azure Service Fabric
 Über den in Azure Service Fabric integrierten Reverseproxy können die in einem Service Fabric-Cluster ausgeführten Microservices andere Dienste mit HTTP-Endpunkten ermitteln und mit ihnen kommunizieren.
@@ -158,7 +158,7 @@ Zum Konfigurieren eines sicheren Reverseproxys können Sie in Schritt 3 (Sicherh
 
 Sie können den Service Fabric-Reverseproxy über die [Azure Resource Manager-Vorlage](service-fabric-cluster-creation-via-arm.md) für den Cluster aktivieren.
 
-Unter [Configure HTTPS Reverse Proxy in a secure cluster](https://github.com/ChackDan/Service-Fabric/tree/master/ARM Templates/ReverseProxySecureSample#configure-https-reverse-proxy-in-a-secure-cluster) (Konfigurieren des HTTPS-Reverseproxys in einem sicheren Cluster) finden Sie Azure Resource Manager-Vorlagenbeispiele zum Konfigurieren eines sicheren Reverseproxys mit einem Zertifikat und Umgang mit einem Zertifikatrollover.
+Unter [Configure HTTPS Reverse Proxy in a secure cluster](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) (Konfigurieren des HTTPS-Reverseproxys in einem sicheren Cluster) finden Sie Azure Resource Manager-Vorlagenbeispiele zum Konfigurieren eines sicheren Reverseproxys mit einem Zertifikat und Umgang mit einem Zertifikatrollover.
 
 Zunächst rufen Sie die Vorlage für den Cluster ab, den Sie bereitstellen möchten. Sie können entweder die Beispielvorlagen verwenden oder eine benutzerdefinierte Resource Manager-Vorlage erstellen. Anschließend können Sie den Reverseproxy mit folgenden Schritten aktivieren:
 

@@ -40,7 +40,7 @@
   items:
     - name: Was ist der Lastenausgleich im Standard-Tarif?
       href: load-balancer-standard-overview.md
-    - name: Load Balancer-Tests
+    - name: Integritätstests
       href: load-balancer-custom-probe-overview.md
     - name: Hochverfügbarkeitsports
       href: load-balancer-ha-ports-overview.md

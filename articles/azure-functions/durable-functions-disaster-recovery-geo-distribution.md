@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 8eb42a60045304416ec6aa1099a84b1e264c692d
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: bbfbf351b8976f4140b6dd98a9a54ba982c3d865
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33206508"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399396"
 ---
 # <a name="disaster-recovery-and-geo-distribution"></a>Notfallwiederherstellung und geografische Verteilung
 
@@ -50,7 +50,7 @@ Bei diesem Szenario sollten Sie jedoch Folgendes berücksichtigen:
 - Dieses Szenario deckt zwar Ausfälle in der Computeinfrastruktur ab, doch das Speicherkonto ist weiterhin der Single Point of Failure für die Funktionen-App. Ein Ausfall von Storage zieht einen Ausfall der Anwendung nach sich.
 - Wenn ein Failover für die Funktionen-App ausgeführt wird, kommt es zu längeren Latenzen, da diese auf das Speicherkonto in verschiedenen Regionen zugreift.
 - Der Zugriff auf den Speicherdienst von einer anderen Region als der Region, in der sich der Dienst befindet, führt aufgrund des ausgehenden Netzwerkdatenverkehrs zu erhöhten Kosten.
-- Dieses Szenario basiert auf dem Traffic Manager. Angesichts der [Funktionsweise des Traffic Managers](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works) kann es eine Weile dauern, bis eine Clientanwendung, die Durable Functions nutzt, erneut die Adresse der Funktionen-App des Traffic Managers abrufen muss. 
+- Dieses Szenario basiert auf dem Traffic Manager. Angesichts der [Funktionsweise des Traffic Managers](../traffic-manager/traffic-manager-how-it-works.md) kann es eine Weile dauern, bis eine Clientanwendung, die Durable Functions nutzt, erneut die Adresse der Funktionen-App des Traffic Managers abrufen muss. 
 
 
 ## <a name="scenario-2---load-balanced-compute-with-regional-storage"></a>Szenario 2 – Lastenausgleich von Computekapazitäten mit regionalem Speicher

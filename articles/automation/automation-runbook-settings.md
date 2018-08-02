@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 951e59333ab1a1e982386c5c71f79b86f5e62440
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 589df59e02a18629d5f405ff1ce8870333f2228e
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194195"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397712"
 ---
 # <a name="runbook-settings"></a>Runbookeinstellungen
 Jedes Runbook in Azure Automation verfügt über mehrere Einstellungen, mit denen das Runbook identifiziert und sein Protokollierungsverhalten geändert werden kann. Nachfolgend wird jede dieser Einstellungen beschrieben, und Sie erfahren, wie die Einstellungen geändert werden können.
@@ -34,12 +34,12 @@ Standardmäßig werden keine Verbose- und Progress-Datensätze in den Auftragsve
 ### <a name="changing-runbook-settings-with-the-azure-portal"></a>Ändern von Runbookeinstellungen mit dem Azure-Portal
 Sie können die Einstellungen für ein Runbook im Azure-Portal oder über das Blatt **Einstellungen** für das Runbook ändern.
 
-1. Wählen Sie im Azure-Portal die Option **Automation** , und klicken Sie auf den Namen eines Automation-Kontos.
+1. Wählen Sie im Azure-Portal die Option **Automation**, und klicken Sie auf den Namen eines Automation-Kontos.
 2. Wählen Sie die Registerkarte **Runbooks** .
 3. Wenn Sie auf den Namen eines Runbooks klicken, werden Sie auf das Blatt „Einstellungen“ für das Runbook weitergeleitet. Hier können Sie Tags und die Runbookbeschreibung angeben oder ändern, die Protokollierung und Ablaufverfolgungseinstellungen konfigurieren und auf die Supporttools zum Lösen von Problemen zugreifen.     
 
 ### <a name="changing-runbook-settings-with-windows-powershell"></a>Ändern von Runbookeinstellungen mit Windows PowerShell
-Sie können mit dem Cmdlet [Set-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603786.aspx) die Einstellungen für ein Runbook ändern. Wenn Sie mehrere Tags angeben möchten, können Sie entweder ein Array oder eine einzelne Zeichenfolge mit durch Kommas getrennten Werten zum Tags-Parameter hinzufügen. Sie rufen die aktuellen Tags mit [Get-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603728.aspx) ab.
+Sie können mit dem Cmdlet [Set-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/set-azurermautomationrunbook) die Einstellungen für ein Runbook ändern. Wenn Sie mehrere Tags angeben möchten, können Sie entweder ein Array oder eine einzelne Zeichenfolge mit durch Kommas getrennten Werten zum Tags-Parameter hinzufügen. Sie rufen die aktuellen Tags mit [Get-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/get-azurermautomationrunbook) ab.
 
 Die folgenden Beispielbefehle zeigen, wie Sie die Eigenschaften für ein Runbook festlegen. In diesem Beispiel werden drei Tags zu den vorhandenen Tags hinzugefügt, und es wird festgelegt, dass Verbose-Datensätze protokolliert werden sollen.
 
