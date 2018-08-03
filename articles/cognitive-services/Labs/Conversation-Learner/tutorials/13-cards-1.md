@@ -1,7 +1,7 @@
 ---
-title: Karten in einer Unterhaltungslernanwendung, Teil 1 – Microsoft Cognitive Services | Microsoft-Dokumentation
+title: Karten in einem Unterhaltungslernanwendungsmodell, Teil 1 – Microsoft Cognitive Services | Microsoft-Dokumentation
 titleSuffix: Azure
-description: Verwenden von Karten in einer Unterhaltungslernanwendung
+description: Verwenden von Karten in einem Unterhaltungslernmodell
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,18 +10,23 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: e90ccd42b21eea6139c402937be7e20513d73c84
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 988a2433f098f41bca4796299825293efd4de44b
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376203"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171133"
 ---
 # <a name="how-to-use-cards-part-1-of-2"></a>Verwenden von Karten (Teil 1 von 2)
 
 Dieses Tutorial zeigt, wie Sie einfache Karte in Ihrem Bot hinzufügen und verwenden.
 
-Das Unterhaltungslernmodul geht davon aus, dass Ihre Kartendefinitionsdateien in einem Verzeichnis namens „cards“ gespeichert sind, das sich in dem Verzeichnis befindet, in dem der Bot gestartet wird.
+> [!NOTE]
+> Derzeit geht das Unterhaltungslernmodul davon aus, dass Ihre Kartendefinitionsdateien in einem Verzeichnis namens „cards“ gespeichert sind, das sich in dem Verzeichnis befindet, in dem der Bot gestartet wird. Dies wird in der Zukunft konfigurierbar sein.
+
+## <a name="video"></a>Video
+
+[![Tutorial 13 – Vorschau](http://aka.ms/cl-tutorial-13-preview)](http://aka.ms/blis-tutorial-13)
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
@@ -34,7 +39,7 @@ Karten sind Benutzeroberflächenelemente, mit denen Benutzer eine Option in der 
 
 ### <a name="open-the-demo"></a>Öffnen der Demo
 
-Klicken Sie in der App-Liste der Webbenutzeroberfläche auf „Tutorial-13-Cards-1“. 
+Klicken Sie in der Modellliste der Webbenutzeroberfläche auf „Tutorial-13-Cards-1“. 
 
 ### <a name="the-card"></a>Die Karte
 
@@ -44,8 +49,9 @@ Das System geht davon aus, dass Ihre Kartendefinitionen sich in diesem Kartenver
 
 ![](../media/tutorial13_prompt.PNG)
 
-- Beachten Sie „TextBlock“ und die Fragevorlage.
-- Es gibt zwei Schaltflächen zum Übermitteln, für die jeweils ein anderer Text gesendet wird.
+> [!NOTE]
+> Beachten Sie den Textkörper `TextBlock` und den Platzhalter `{{question}}` im Textfeld.
+> Es gibt zwei Schaltflächen zum Übermitteln, für die jeweils ein anderer Text gesendet wird.
 
 ### <a name="actions"></a>Actions
 
@@ -57,7 +63,8 @@ Der Aktionstyp „Karte“ wurde folgendermaßen erstellt:
 
 ![](../media/tutorial13_cardaction.PNG)
 
-Sehen Sie sich die Felder „Frage“, „Schaltfläche 1“ und „Schaltfläche 2“ an. Das sind Vorlagenreferenzen der Karte, denen Sie die Frage und die entsprechenden Antworten hinzufügen. Sie können auch auf Entitäten verweisen und diese verwenden oder eine Kombination aus Text und Entitäten.
+> [!NOTE]
+> Die Felder „Frage“, „Schaltfläche 1“ und „Schaltfläche 2“. Das sind Vorlagenreferenzen der Karte, denen Sie die Frage und die entsprechenden Antworten hinzufügen. Sie können auch auf Entitäten verweisen und diese verwenden oder eine Kombination aus Text und Entitäten.
 
 Das Augensymbol zeigt, wie die Karte aussieht.
 

@@ -9,12 +9,12 @@ ms.technology: qna-maker
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 15f0415819bc0ae51e8160bb2b4a12c409b13baa
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 4bcc52547b5610bcb8dfa9b0cc56b2afc40e3c32
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301333"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866082"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-c"></a>Schnellstart für die Microsoft QnA Maker-API mit C# 
 <a name="HOLTop"></a>
@@ -437,7 +437,7 @@ Press any key to continue.
 
 ## <a name="get-request-status"></a>Abrufen des Anforderungsstatus
 
-Sie können die Methode [Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) (Vorgang) aufrufen, um den Status einer Anforderung zum Erstellen oder Aktualisieren einer Wissensdatenbank zu prüfen. Sie können dem Beispielcode für die Methoden zum [Erstellen](#Create) oder [Aktualisieren](#Update) entnehmen, wie diese Methode verwendet wird.
+Sie können die Methode für [Vorgänge](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) aufrufen, um den Status einer Anforderung zum Erstellen oder Aktualisieren einer Wissensdatenbank zu prüfen. Sie können dem Beispielcode für die Methoden zum [Erstellen](#Create) oder [Aktualisieren](#Update) entnehmen, wie diese Methode verwendet wird.
 
 [Nach oben](#HOLTop)
 
@@ -779,7 +779,7 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues C#-Projekt.
 1. Fügen Sie den unten stehenden Code hinzu.
 1. Ersetzen Sie den `host`-Wert durch den Websitenamen für Ihr QnA Maker-Abonnement. Weitere Informationen finden Sie unter [Erstellen eines QnA Maker-Diensts](../How-To/set-up-qnamaker-service-azure.md).
-1. Ersetzen Sie den `endpoint_key`-Wert durch einen für Ihr Abonnement gültigen Endpunktschlüssel. Beachten Sie, dass es sich dabei nicht um den Abonnementschlüssel handelt. Sie können Ihre Endpunktschlüssel mithilfe der Methode zum [Abrufen von Endpunktschlüssel](#GetKeys) abrufen.
+1. Ersetzen Sie den `endpoint_key`-Wert durch einen für Ihr Abonnement gültigen Endpunktschlüssel. Beachten Sie, dass es sich dabei nicht um den Abonnementschlüssel handelt. Sie können Ihre Endpunktschlüssel über die Methode zum [Abrufen von Endpunktschlüsseln](#GetKeys) abrufen.
 1. Ersetzen Sie den `kb`-Wert durch die ID der Wissensdatenbank, die Sie auf Antworten abfragen möchten. Beachten Sie, dass diese Wissensdatenbank bereits mithilfe der Methode zum [Veröffentlichen](#Publish) veröffentlicht worden sein muss.
 1. Führen Sie das Programm aus.
 
@@ -1168,7 +1168,7 @@ namespace QnAMaker
 }
 ```
 
-**Antwort auf das Löschen einer Wissensdatenbank**
+**Antwort auf das Löschen von Wissensdatenbanken**
 
 Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
@@ -1425,7 +1425,7 @@ namespace QnAMaker
 }
 ```
 
-**Antwort auf das Abrufen von Wortänderungen**
+**Antwort auf das Abrufen von Wortvarianten**
 
 Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
@@ -1549,7 +1549,7 @@ namespace QnAMaker
 }
 ```
 
-**Antwort auf das Ersetzen von Wortänderungen**
+**Antwort auf das Ersetzen von Wortvarianten**
 
 Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 

@@ -2,25 +2,25 @@
 title: Grundlegendes zum Zugriff auf LUIS-Anwendungen – Azure | Microsoft-Dokumentation
 description: Erfahren Sie etwas über den Zugriff für die LUIS-Erstellung.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: 44380e12e6d095e8d40675af0b6b2fddc5e4c4e9
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: 13b769a0b5a940e0f3dd5f2e0cc3567d9879ee0d
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264266"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223778"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Zugriff für die Erstellung und Benutzerzugriff auf Endpunkte
 Erstellungszugriff ist für Besitzer und Projektmitarbeiter möglich. Bei einer privaten App ist der Zugriff auf den Endpunkt für Besitzer und Projektmitarbeiter möglich. Bei einer öffentlichen App ist der Zugriff auf den Endpunkt für jede Person möglich, die über ein eigenes LUIS-Konto und die öffentliche App-ID verfügt. 
 
 ## <a name="access-to-authoring"></a>Zugriff für die Erstellung
-Der Zugriff auf die App von der [LUIS][LUIS]-Website oder den [Erstellungs-APIs](https://aka.ms/luis-authoring-apis) wird vom Besitzer der App gesteuert. 
+Der Zugriff auf die App von der [LUIS](luis-reference-regions.md#luis-website)-Website oder den [Erstellungs-APIs](https://aka.ms/luis-authoring-apis) wird vom Besitzer der App gesteuert. 
 
 Der Besitzer und alle Projektmitarbeiter haben Zugriff für die Erstellung der App. 
 
@@ -33,7 +33,7 @@ Der Besitzer und alle Projektmitarbeiter haben Zugriff für die Erstellung der A
 |Öffentlichmachen von Apps|Wenn eine App öffentlich ist, kann jede Person mit einem Erstellungs- oder Endpunktschlüssel die App abfragen.|
 |Ändern von Modellen|
 |Veröffentlichen|
-|Überprüfen von Endpunktäußerungen für das [aktive Lernen](label-suggested-utterances.md)|
+|Überprüfen von Endpunktäußerungen für das [aktive Lernen](luis-how-to-review-endoint-utt.md)|
 |Trainieren|
 
 ## <a name="access-to-endpoint"></a>Zugriff auf den Endpunkt
@@ -50,7 +50,7 @@ Der Endpunkt einer privaten App ist nur für Folgendes verfügbar:
 |--|--|--|
 |Erstellungsschlüssel des Besitzers| Bis zu 1.000 Endpunkttreffer|
 |Erstellungsschlüssel von Projektmitarbeitern| Bis zu 1.000 Endpunkttreffer|
-|Endpunktschlüssel, die auf der Seite **[Veröffentlichen](publishapp.md)** hinzugefügt werden|Besitzer und Projektmitarbeiter können Endpunktschlüssel hinzufügen.|
+|Endpunktschlüssel, die auf der Seite **[Veröffentlichen](luis-how-to-publish-app.md)** hinzugefügt werden|Besitzer und Projektmitarbeiter können Endpunktschlüssel hinzufügen.|
 
 Andere Erstellungs- oder Endpunktschlüssel haben **keinen** Zugriff.
 
@@ -61,6 +61,8 @@ Ein Benutzer, der nicht Besitzer oder Projektmitarbeiter ist, hat Zugriff auf ei
 
 ## <a name="microsoft-user-accounts"></a>Microsoft-Benutzerkonten
 Ersteller und Projektmitarbeiter können LUIS auf der Seite „Veröffentlichen“ Schlüssel hinzufügen. Das Microsoft-Benutzerkonto, das den LUIS-Schlüssel im Azure-Portal erstellt, muss dem App-Besitzer oder einem App-Projektmitarbeiter zugeordnet sein. 
+
+Unter [Azure Active Directory-Mandantenbenutzer](luis-how-to-account-settings.md#azure-active-directory-tenant-user) finden Sie weitere Informationen zu Active Directory-Benutzerkonten. 
 
 <!--
 ### Individual consent
@@ -78,5 +80,3 @@ LUIS hat die Überprüfung nach ISO 27001:2013 und ISO 27018:2014 mit 0 (null) A
 ## <a name="next-steps"></a>Nächste Schritte
 
 Unter [Best Practices](luis-concept-best-practices.md) erfahren Sie, wie Sie Absichten und Entitäten für die besten Vorhersagen verwenden.
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

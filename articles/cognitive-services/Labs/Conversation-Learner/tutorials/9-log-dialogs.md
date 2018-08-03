@@ -1,7 +1,7 @@
 ---
-title: Protokollieren von Dialogen in einer Unterhaltungslernanwendung – Microsoft Cognitive Services | Microsoft-Dokumentation
+title: Protokollieren von Dialogen in einem Unterhaltungslernmodell – Microsoft Cognitive Services | Microsoft-Dokumentation
 titleSuffix: Azure
-description: Hier erfahren Sie, wie Sie Dialoge in einer Unterhaltungslernanwendung protokollieren.
+description: Erfahren Sie, wie Sie Dialoge in einem Unterhaltungslernmodell protokollieren.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,18 +10,22 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 477545c48aeca05d56fdae28ac65a8f381a482fe
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6ceeb9683a979256a8a52347fc74ab758fd1d348
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376379"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171434"
 ---
-# <a name="how-to-log-dialogs-in-a-conversation-learner-application"></a>Protokollieren von Dialogen in einer Unterhaltungslernanwendung
+# <a name="how-to-log-dialogs-in-a-conversation-learner-model"></a>Protokollieren von Dialogen in einem Unterhaltungslernmodell
 
 In diesem Tutorial wird gezeigt, wie Sie Endbenutzertests innerhalb der Unterhaltungslernschnittstelle durchführen und Dialoge protokollieren. Außerdem erfahren Sie, wie Sie Korrekturen an protokollierten Dialogen vornehmen, um Ihr Modell zu verbessern.
 
-## <a name="requirements"></a>Anforderungen
+## <a name="video"></a>Video
+
+[![Tutorial 9 – Vorschau](http://aka.ms/cl-tutorial-09-preview)](http://aka.ms/blis-tutorial-09)
+
+## <a name="requirements"></a>Requirements (Anforderungen)
 Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
 
     npm run tutorial-general
@@ -31,9 +35,9 @@ Mithilfe der Dialogprotokollierung können Sie Dialoge, die mit Endbenutzern gef
 
 ## <a name="steps"></a>Schritte
 
-### <a name="create-the-application"></a>Erstellen der Anwendung
+### <a name="create-the-model"></a>Erstellen des Modells
 
-1. Klicken Sie auf der Webbenutzeroberfläche auf „Neue App“.
+1. Klicken Sie in der Webbenutzeroberfläche auf „Neues Modell“.
 2. Geben Sie im Feld „Name“ die Bezeichnung „Dialogprotokoll“ ein. Klicken Sie dann auf „Erstellen“.
 
 ### <a name="create-an-entity"></a>Erstellen einer Entität
@@ -46,14 +50,14 @@ Mithilfe der Dialogprotokollierung können Sie Dialoge, die mit Endbenutzern gef
 
 1. Klicken Sie auf „Aktionen“ und dann auf „Neue Aktion“.
 2. Geben Sie im Feld „Antwort“ die Frage „Welche Stadt?“ ein.
-3. Geben Sie im Feld „Disqualifizierende Entitäten“ die Zeichenfolge „$Stadt“ ein.
+3. Geben Sie im Feld „Disqualifizierende Entitäten“ die Zeichenfolge „$city“ ein.
 3. Klicken Sie auf „Erstellen“.
 
 Erstellen Sie dann die zweite Aktion:
 
 1. Klicken Sie auf „Aktionen“ und dann auf „Neue Aktion“.
 3. Geben Sie im Feld „Antwort“ den Satz „Das Wetter in $Stadt ist wahrscheinlich sonnig“ ein.
-4. Geben Sie als erforderliche Entitäten die Zeichenfolge „$Stadt“ ein.
+4. Geben Sie als erforderliche Entitäten die Zeichenfolge „$city“ ein.
 4. Klicken Sie auf „Erstellen“.
 
 Jetzt sind zwei Aktionen vorhanden.
@@ -117,7 +121,7 @@ Nehmen Sie nun Korrekturen am anderen Dialog vor:
 
 1. Klicken Sie unter „Dialoge protokollieren“ auf „hallo“.
     - Daraufhin wird die Unterhaltung geöffnet.
-3. Beachten Sie, dass auf „hallo“ die Antwort „welche Stadt“ folgt. Dies soll nun in eine sinnvollere Aussage geändert werden. Eine bessere Antwort wäre z.B. „Hallo, ich bin der Wetterbot“. Da es dafür aber keine passende Aktion gibt, muss eine Aktion erstellt werden.
+3. Auf „hallo“ folgt die Antwort „welche Stadt“. Dies soll nun in eine sinnvollere Aussage geändert werden. Eine bessere Antwort wäre z.B. „Hallo, ich bin der Wetterbot“. Da es dafür aber keine passende Aktion gibt, muss eine Aktion erstellt werden.
 4. Klicken Sie auf „Aktion“.
     - Geben Sie unter „Antwort“ den Text „Ich bin der Wetterbot. Ich helfe bei Vorhersagen.“ ein.
 6. Deaktivieren Sie das Kontrollkästchen „Auf Antwort warten“, damit dies eine Aktion ohne Wartezeit ist.

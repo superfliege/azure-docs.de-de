@@ -3,386 +3,233 @@ title: Verwenden von Batchtests zum Verbessern der LUIS-Vorhersagen | Microsoft-
 titleSuffix: Azure
 description: Laden Sie Batchtests, überprüfen Sie die Ergebnisse, und verbessern Sie die Vorhersagen von LUIS durch Änderungen.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/19/2018
-ms.author: v-geberr
-ms.openlocfilehash: 5788f17f2724a0354a1db506971c2343c1800f01
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.date: 07/16/2018
+ms.author: diberry
+ms.openlocfilehash: 0e1f5d29917ba381d4767faffb65847cd2ff210f
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266395"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237807"
 ---
-# <a name="use-batch-testing-to-find-prediction-accuracy-issues"></a>Verwenden von Batchtests zum Ermitteln von Problemen mit der Vorhersagegenauigkeit
+# <a name="improve-app-with-batch-test"></a>Verbessern einer App mithilfe eines Batchtests
 
 Dieses Tutorial veranschaulicht die Verwendung von Batchtests zum Ermitteln von Problemen bei der Vorhersage für Äußerungen.  
 
 In diesem Tutorial lernen Sie Folgendes:
 
+<!-- green checkmark -->
 > [!div class="checklist"]
 * Erstellen einer Batchtestdatei 
 * Ausführen eines Batchtests
 * Überprüfen der Testergebnisse
-* Beheben von Fehlern bei Absichten
+* Beheben von Fehlern 
 * Erneutes Testen des Batchs
 
-## <a name="prerequisites"></a>Voraussetzungen
+Für diesen Artikel benötigen Sie ein kostenloses [LUIS](luis-reference-regions.md#luis-website)-Konto für die Erstellung Ihrer LUIS-Anwendung.
 
-> [!div class="checklist"]
-> * Für diesen Artikel benötigen Sie ein kostenloses [LUIS][LUIS]-Konto für die Erstellung Ihrer LUIS-Anwendung.
+## <a name="before-you-begin"></a>Voraussetzungen
+Falls Sie nicht über die Personalabteilungs-App aus dem Tutorial [Überprüfen von Endpunktäußerungen](luis-tutorial-review-endpoint-utterances.md) verfügen, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS](luis-reference-regions.md#luis-website)-Website). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-review-HumanResources.json).
 
-> [!Tip]
-> Wenn Sie noch kein Abonnement besitzen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/) registrieren.
+Wenn Sie die ursprüngliche Personal-App behalten möchten, klonen Sie die Version auf der Seite [Einstellungen](luis-how-to-manage-versions.md#clone-a-version), und nennen Sie sie `batchtest`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. 
 
-## <a name="create-new-app"></a>Erstellen einer neuen App
-In diesem Artikel wird die vordefinierte Domäne HomeAutomation verwendet. Diese vordefinierte Domäne enthält Absichten, Entitäten und Äußerungen zum Steuern von HomeAutomation-Geräten wie Lampen. Erstellen Sie die App, fügen Sie die Domäne hinzu, und trainieren und veröffentlichen Sie sie.
+Nun können Sie mit dem Trainieren der App beginnen.
 
-1. Erstellen Sie auf der [LUIS]-Website eine neue App, indem Sie **Neue App erstellen** auf der Seite **MyApps** auswählen. 
+## <a name="purpose-of-batch-testing"></a>Zweck von Batchtests
+Anhand von Batchtests können Sie den Zustand des aktiven, trainierten Modells mit einer bekannten Gruppe von bezeichneten Äußerungen und Entitäten überprüfen. Fügen Sie in die JSON-formatierte Batchdatei die Äußerungen hinzu, und legen Sie die Entitätsbezeichnungen fest, die innerhalb der Äußerung vorhergesagt werden sollen. 
 
-    ![Erstellen einer neuen App](./media/luis-tutorial-batch-testing/create-app-1.png)
+<!--The recommended test strategy for LUIS uses three separate sets of data: example utterances provided to the model, batch test utterances, and endpoint utterances. --> Wenn Sie eine andere App als die in diesem Tutorial verwenden, verwenden Sie *nicht* die Beispieläußerungen, die einer Absicht bereits hinzugefügt wurden. Um die Äußerungen aus Ihrem Batchtest mit den Beispieläußerungen abzugleichen, [exportieren](luis-how-to-start-new-app.md#export-app) Sie die App. Vergleichen Sie die Beispieläußerungen der App mit den Äußerungen aus dem Batchtest. 
 
-2. Geben Sie den Namen `Batchtest-HomeAutomation` im Dialogfeld ein.
+Anforderungen für Batchtests:
 
-    ![Eingeben des App-Namens](./media/luis-tutorial-batch-testing/create-app-2.png)
+* Maximal 1000 Äußerungen pro Test 
+* Keine Duplikate 
+* Zulässige Entitätstypen: nur per Machine Learning trainierte Entitäten von einfachen, hierarchischen (nur übergeordneten) und zusammengesetzten Entitäten. Batchtests eignen sich nur für mit Machine Learning trainierten Absichten und Entitäten.
 
-3. Wählen Sie in der linken unteren Ecke **Prebuilt Domains** (Vordefinierte Domänen) aus. 
+## <a name="create-a-batch-file-with-utterances"></a>Erstellen einer Batchdatei mit Äußerungen
+1. Erstellen Sie `HumanResources-jobs-batch.json` in einem Text-Editor wie [VS Code](https://code.visualstudio.com/). 
 
-    ![Auswählen einer vordefinierten Domäne](./media/luis-tutorial-batch-testing/prebuilt-domain-1.png)
+2. Fügen Sie in die JSON-formatierte Batchdatei Äußerungen mit der **Absicht** hinzu, für die Sie im Test eine Vorhersage erhalten möchten. 
 
-4. Wählen Sie **Domäne hinzufügen** für HomeAutomation aus.
-
-    ![Hinzufügen der Domäne HomeAutomation](./media/luis-tutorial-batch-testing/prebuilt-domain-2.png)
-
-5. Wählen Sie auf der rechten oberen Navigationsleiste **Train** (Trainieren) aus.
-
-    ![Auswählen der Schaltfläche „Train“ (Trainieren)](./media/luis-tutorial-batch-testing/train-button.png)
-
-## <a name="batch-test-criteria"></a>Kriterien für Batchtests
-Sie können beim Testen in Batches bis zu 1.000 Äußerungen auf einmal testen. Der Batch sollte keine Duplikate enthalten. [Exportieren](create-new-app.md#export-app) Sie die App, um die Liste der aktuellen Äußerungen anzuzeigen.  
-
-Die Teststrategie für LUIS nutzt drei separate Datensätze: Modelläußerungen, Äußerungen für den Batchtest und Endpunktäußerungen. Stellen Sie in diesem Tutorial sicher, dass Sie weder Modelläußerungen (einer Absicht hinzugefügt) noch Endpunktäußerungen verwenden. 
-
-Verwenden Sie bei Batchtests keine der Äußerungen, die bereits in der App enthalten sind:
-
-```
-'breezeway on please',
-'change temperature to seventy two degrees',
-'coffee bar on please',
-'decrease temperature for me please',
-'dim kitchen lights to 25 .',
-'fish pond off please',
-'fish pond on please',
-'illuminate please',
-'living room lamp on please',
-'living room lamps off please',
-'lock the doors for me please',
-'lower your volume',
-'make camera 1 off please',
-'make some coffee',
-'play dvd',
-'set lights bright',
-'set lights concentrate',
-'set lights out bedroom',
-'shut down my work computer',
-'silence the phone',
-'snap switch fan fifty percent',
-'start master bedroom light .',
-'theater on please',
-'turn dimmer off',
-'turn off ac please',
-'turn off foyer lights',
-'turn off living room light',
-'turn off staircase',
-'turn off venice lamp',
-'turn on bathroom heater',
-'turn on external speaker',
-'turn on my bedroom lights .',
-'turn on the furnace room lights',
-'turn on the internet in my bedroom please',
-'turn on thermostat please',
-'turn the fan to high',
-'turn thermostat on 70 .' 
-```
-
-## <a name="create-a-batch-to-test-intent-prediction-accuracy"></a>Erstellen eines Batchs zum Testen der Vorhersagegenauigkeit von Absichten
-1. Erstellen Sie `homeauto-batch-1.json` in einem Text-Editor wie [VS Code](https://code.visualstudio.com/). 
-
-2. Fügen Sie Äußerungen mit der **Absicht**, für die Sie im Test eine Vorhersage erhalten möchten, hinzu. Zur Vereinfachung verwenden Sie in diesem Tutorial Äußerungen in `HomeAutomation.TurnOn` und `HomeAutomation.TurnOff` und vertauschen `on` und `off` in den Äußerungen. Fügen Sie für die Absicht `None` eine Reihe von Äußerungen hinzu, die nicht Teil der [Domäne](luis-glossary.md#domain) (des Themenbereichs) sind. 
-
-    Um zu verstehen, in welchem Verhältnis die Ergebnisse von Batchtests zum JSON-Code im Batch stehen, fügen Sie nur sechs Absichten hinzu.
-
-    ```JSON
-    [
-        {
-          "text": "lobby on please",
-          "intent": "HomeAutomation.TurnOn",
-          "entities": []
-        },
-        {
-          "text": "change temperature to seventy one degrees",
-          "intent": "HomeAutomation.TurnOn",
-          "entities": []
-        },
-        {
-          "text": "where is my pizza",
-          "intent": "None",
-          "entities": []
-        },
-        {
-          "text": "help",
-          "intent": "None",
-          "entities": []
-        },
-        {
-          "text": "breezeway off please",
-          "intent": "HomeAutomation.TurnOff",
-          "entities": []
-        },
-        {
-          "text": "coffee bar off please",
-          "intent": "HomeAutomation.TurnOff",
-          "entities": []
-        }
-    ]
-    ```
+   [!code-json[Add the intents to the batch test file](~/samples-luis/documentation-samples/tutorial-batch-testing/HumanResources-jobs-batch.json "Add the intents to the batch test file")]
 
 ## <a name="run-the-batch"></a>Ausführen des Batchs
+
 1. Wählen Sie auf der oberen Navigationsleiste **Test** aus. 
 
-    ![Auswählen von „Test“ auf der Navigationsleiste](./media/luis-tutorial-batch-testing/test-1.png)
+    [ ![Screenshot der LUIS-App mit hervorgehobener Option „Test“ (rechts oben auf der Navigationsleiste)](./media/luis-tutorial-batch-testing/hr-first-image.png)](./media/luis-tutorial-batch-testing/hr-first-image.png#lightbox)
 
 2. Wählen Sie im rechten Bereich **Batch testing panel** (Batchtestbereich) aus. 
 
-    ![Auswählen des Batchtestbereichs](./media/luis-tutorial-batch-testing/test-2.png)
+    [ ![Screenshot der LUIS-App mit hervorgehobener Option „Batchtestbereich“](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png)](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png#lightbox)
 
 3. Wählen Sie **Dataset importieren** aus.
 
-    ![Auswählen von „Dataset importieren“](./media/luis-tutorial-batch-testing/test-3.png)
+    [ ![Screenshot der LUIS-App mit hervorgehobener Option „Dataset importieren“](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png)](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png#lightbox)
 
-4. Wählen Sie den Speicherort im Dateisystem für die Datei `homeauto-batch-1.json` aus.
+4. Wählen Sie den Speicherort im Dateisystem für die Datei `HumanResources-jobs-batch.json` aus.
 
-5. Benennen Sie das Dataset mit `set 1`.
+5. Versehen Sie das Dataset mit dem Namen `intents only`, und klicken Sie auf **Fertig**.
 
-    ![Datei auswählen](./media/luis-tutorial-batch-testing/test-4.png)
+    ![Datei auswählen](./media/luis-tutorial-batch-testing/hr-import-new-dataset-ddl.png)
 
 6. Wählen Sie die Schaltfläche **Ausführen**. Warten Sie, bis der Test abgeschlossen ist.
 
-    ![Auswählen von „Ausführen“](./media/luis-tutorial-batch-testing/test-5.png)
+    [ ![Screenshot der LUIS-App mit hervorgehobener Option „Ausführen“](./media/luis-tutorial-batch-testing/hr-run-button.png)](./media/luis-tutorial-batch-testing/hr-run-button.png#lightbox)
 
 7. Wählen Sie **See results** (Ergebnisse anzeigen) aus.
 
-    ![Anzeigen der Ergebnisse](./media/luis-tutorial-batch-testing/test-6.png)
-
 8. Überprüfen Sie die Ergebnisse im Diagramm und in der Legende.
 
-    ![Batchergebnisse](./media/luis-tutorial-batch-testing/batch-result-1.png)
+    [ ![Screenshot der LUIS-App mit hervorgehobener Option „Batchtestergebnisse“](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png)](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png#lightbox)
 
 ## <a name="review-batch-results"></a>Überprüfen der Batchergebnisse
-Die Batchergebnisse werden in zwei Abschnitten dargestellt. Der obere Abschnitt enthält das Diagramm und die Legende. Im unteren Abschnitt werden Äußerungen angezeigt, wenn Sie einen Bereichsnamen des Diagramms auswählen.
+Das Batchdiagramm zeigt die Ergebnisse in vier Quadranten an. Rechts neben dem Diagramm befindet sich ein Filter. Standardmäßig ist der Filter auf die erste Absicht in der Liste festgelegt. Der Filter enthält alle Absichten und nur einfache, hierarchische (nur übergeordnete) und zusammengesetzte Entitäten. Wenn Sie einen [Diagrammabschnitt](luis-concept-batch-test.md#batch-test-results) oder einen Punkt innerhalb des Diagramms auswählen, werden die zugehörigen Äußerungen unterhalb des Diagramms angezeigt. 
 
-Fehler werden rot angezeigt. Das Diagramm ist in vier Abschnitte unterteilt, von denen zwei in Rot angezeigt werden. **Auf diese Abschnitte sollten Sie besonders achten**. 
+Wenn Sie auf das Diagramm zeigen, können Sie mit dem Mausrad die Ansicht im Diagramm vergrößern oder verkleinern. Dies ist hilfreich, wenn es viele Punkte im Diagramm gibt, die nah beieinander gruppiert sind. 
 
-Im Abschnitt rechts oben hat der Test falsch vorhergesagt, dass eine Absicht oder Entität vorhanden ist. Im Abschnitt links unten hat der Test falsch vorhergesagt, dass eine Absicht oder Entität fehlt.
+Das Diagramm ist in vier Quadranten unterteilt, von denen zwei in Rot angezeigt werden. **Auf diese Abschnitte sollten Sie besonders achten**. 
 
-### <a name="homeautomationturnoff-test-results"></a>Testergebnisse von HomeAutomation.TurnOff
-Wählen Sie in der Legende die Absicht `HomeAutomation.TurnOff` aus. Links neben ihrem Namen steht in der Legende ein grünes Erfolgssymbol. Für diese Absicht liegen keine Fehler vor. 
+### <a name="getjobinformation-test-results"></a>GetJobInformation-Testergebnisse
+Die im Filter angezeigten **GetJobInformation**-Testergebnisse zeigen, dass zwei der vier Vorhersagen erfolgreich waren. Klicken Sie auf die Bezeichnung **Falsch positives Ergebnis** oberhalb des oberen rechten Quadranten, damit die Äußerungen unterhalb des Diagramms angezeigt werden. 
 
-![Batchergebnisse](./media/luis-tutorial-batch-testing/batch-result-1.png)
+![Äußerungen aus dem LUIS-Batchtest](./media/luis-tutorial-batch-testing/hr-applyforjobs-false-positive-results.png)
 
-### <a name="homeautomationturnon-and-none-intents-have-errors"></a>Absichten „HomeAutomation.TurnOn“ und „None“ mit Fehlern
-Die anderen beiden Absichten weisen Fehler auf. Dies bedeutet, dass die Testvorhersagen nicht den Erwartungen der Batchdatei entsprechen. Wählen Sie die Absicht `None` in der Legende aus, um den ersten Fehler zu überprüfen. 
+Warum wird für zwei Äußerungen anstelle der richtigen Absicht **GetJobInformation** **ApplyForJob** vorhergesagt? Beide Absichten gleichen sich sehr stark in Bezug auf Wortwahl und Wortanordnung. Darüber hinaus stehen für **ApplyForJob** fast dreimal so viele Beispiele zur Verfügung wie für **GetJobInformation**. Diese Ungleichheit bei den Beispieläußerungen hat den Ausschlag für die Absicht **ApplyForJob** gegeben. 
 
-![Absicht „None“](./media/luis-tutorial-batch-testing/none-intent-failures.png)
+Beachten Sie, dass beide Absichten die gleiche Anzahl von Fehlern aufweisen. Eine falsche Vorhersage bei einer Absicht wirkt sich auch auf die andere Absicht aus. Beide Absichten weisen Fehler auf, da die Äußerungen für beide Absichten falsch vorhergesagt wurden. 
 
-Fehler werden im Diagramm in den roten Abschnitten angezeigt: **Falsch positives Ergebnis** und **Falsch negatives Ergebnis**. Wählen Sie den Abschnittsnamen **Falsch negatives Ergebnis** im Diagramm aus, um die fehlerhaften Äußerungen unterhalb des Diagramms anzuzeigen. 
+![Fehler bei LUIS-Batchtestfiltern](./media/luis-tutorial-batch-testing/hr-intent-error-count.png)
 
-![Falsch negative Ergebnisse](./media/luis-tutorial-batch-testing/none-intent-false-negative.png)
-
-Die fehlerhafte Äußerung `help` wurde als Absicht `None` erwartet, aber der Test hat die Absicht `HomeAutomation.TurnOn` vorhergesagt.  
-
-Es gibt zwei Fehler, einen in „HomeAutomation.TurnOn“ und einen in „None“. Beide wurden durch die Äußerung `help` verursacht, da diese nicht die Erwartung in „None“ erfüllt hat, sondern stattdessen eine unerwartete Übereinstimmung mit der Absicht „HomeAutomation.TurnOn“ auftrat. 
-
-Um zu bestimmen, warum die Äußerungen in `None` zu Fehlern geführt haben, überprüfen Sie die Äußerungen, die sich derzeit in `None` befinden. 
-
-## <a name="review-none-intents-utterances"></a>Überprüfen der Äußerungen der Absicht „None“
-
-1. Schließen Sie den Bereich **Test** durch Auswählen der Schaltfläche **Test** auf der oberen Navigationsleiste. 
-
-2. Wählen Sie im oberen Navigationsbereich **Build** aus. 
-
-3. Wählen Sie in der Liste der Absichten die Absicht **None** aus.
-
-4. Drücken von STRG+E zum Anzeigen der Tokenansicht der Äußerungen 
-    
-    |Äußerungen der Absicht „None“|Vorhersageergebnis|
-    |--|--|
-    |"decrease temperature for me please"|0.44|
-    |"dim kitchen lights to 25."|0.43|
-    |"lower your volume"|0,46|
-    |"turn on the internet in my bedroom please"|0.28|
-
-## <a name="fix-none-intents-utterances"></a>Beheben von Problemen mit Äußerungen der Absicht „None“
-    
-Alle Äußerungen in `None` sollten außerhalb der App-Domäne liegen. Diese Äußerungen haben Bezug zu HomeAutomation, sodass sie der falschen Absicht angehören. 
-
-LUIS bewertet die Äußerungen ebenfalls mit einem Vorhersageergebnis von weniger als 50 % (<.50). Bei den Äußerungen in den anderen beiden Absichten finden Sie deutlich höhere Vorhersagebewertungen. Wenn LUIS niedrige Bewertungen für Beispieläußerungen zurückgibt, ist dies ein deutlicher Hinweis, dass LUIS die Äußerungen nicht sicher der aktuellen Absicht oder anderen Absichten zuordnen kann. 
-
-Zum Korrigieren der App müssen die Äußerungen, die sich derzeit in der Absicht `None` befinden, der richtigen Absicht zugeordnet werden. Gleichzeitig benötigt die Absicht `None` neue, angemessene Absichten. 
-
-Drei der Äußerungen in der Absicht `None` sollen die Einstellungen des Automatisierungsgeräts verringern. Sie verwenden Wörter wie `dim`, `lower` oder `decrease`. Die vierte Äußerung fordert das Aktivieren des Internets an. Da alle vier Äußerungen dem Einschalten oder Ändern der Leistung eines Geräts dienen, sollten sie in die Absicht `HomeAutomation.TurnOn` verschoben werden. 
-
-Dies ist nur eine Lösung. Sie können auch eine neue Absicht `ChangeSetting` erstellen und die Äußerungen mit „dim“, „lower“ und „decrease“ in diese neue Absicht verschieben. 
+Bei den Äußerungen, die dem obersten Punkt im Abschnitt **Falsch positives Ergebnis** entsprechen, handelt es sich um `Can I apply for any database jobs with this resume?` und `Can I apply for any database jobs with this resume?`. Bei der ersten Äußerung wurde das Wort `resume` nur in **ApplyForJob** verwendet. Bei der zweiten Äußerung wurde das Wort `apply` nur in der Absicht **ApplyForJob** verwendet.
 
 ## <a name="fix-the-app-based-on-batch-results"></a>Korrigieren der App anhand der Batchergebnisse
-Verschieben Sie die vier Äußerungen in die Absicht `HomeAutomation.TurnOn`. 
+Ziel dieses Abschnitts ist es, alle Äußerungen für **GetJobInformation** durch Korrigieren der App korrekt vorherzusagen. 
 
-1. Aktivieren Sie das Kontrollkästchen oberhalb der Äußerungsliste, damit alle Äußerungen ausgewählt werden. 
+Eine scheinbar schnelle Lösung wäre es, die Äußerungen aus dieser Batchdatei der richtigen Absicht hinzuzufügen. Davon ist jedoch abzuraten. Die LUIS-App sollte diese Äußerungen richtig vorhersagen, ohne dass diese als Beispiele hinzugefügt werden. 
 
-2. Wählen Sie in der Dropdownliste **Reassign intent** (Absicht neu zuweisen) die Option `HomeAutomation.TurnOn` aus. 
+Möglicherweise gedenken Sie auch, Äußerungen aus **ApplyForJob** zu entfernen, bis die Anzahl der Äußerungen der von **GetJobInformation** entspricht. Hierdurch werden zwar eventuell die Testergebnisse korrigiert, die LUIS-App würde diese Absicht beim nächsten Mal allerdings trotzdem nicht korrekt vorhersagen. 
 
-    ![Verschieben von Äußerungen](./media/luis-tutorial-batch-testing/move-utterances.png)
+Die erste Lösung besteht darin, weitere Äußerungen zu **GetJobInformation** hinzuzufügen. Die zweite Lösung wäre, die Gewichtung von Wörtern wie `resume` und `apply` der Gewichtung der Absicht **ApplyForJob** nach unten hin anzugleichen. 
 
-    Nachdem die vier Äußerungen neu zugewiesen wurden, ist die Liste der Äußerung für die Absicht `None` leer.
+### <a name="add-more-utterances-to-getjobinformation"></a>Hinzufügen von weiteren Äußerungen zu **GetJobInformation**
+1. Schließen Sie den Batchtestbereich, indem Sie auf der oberen Navigationsleiste auf die Schaltfläche **Test** klicken. 
 
-3. Fügen Sie der Absicht „None“ vier neue Absichten hinzu:
+    [ ![Screenshot der LUIS-App mit hervorgehobener Schaltfläche „Test“](./media/luis-tutorial-batch-testing/hr-close-test-panel.png)](./media/luis-tutorial-batch-testing/hr-close-test-panel.png#lightbox)
 
-    ```
-    "fish"
-    "dogs"
-    "beer"
-    "pizza"
-    ```
+2. Wählen Sie aus der Liste mit Absichten die Option **GetJobInformation** aus. 
 
-    Diese Äußerungen liegen definitiv außerhalb der Domäne von HomeAutomation. Beachten Sie, während Sie die einzelnen Äußerungen eingeben, das zugehörige Ergebnis. Die Bewertung kann niedrig oder sogar sehr niedrig sein (mit einem roten Rahmen). Nachdem Sie die App in Schritt 8 trainiert haben, wird das Ergebnis deutlich höher sein. 
+    [ ![Screenshot der LUIS-App mit hervorgehobener Schaltfläche „Test“](./media/luis-tutorial-batch-testing/hr-select-intent-to-fix-1.png)](./media/luis-tutorial-batch-testing/hr-select-intent-to-fix-1.png#lightbox)
 
-7. Entfernen Sie alle Bezeichnungen, indem Sie die blaue Beschriftung in der Äußerung markieren und dann **Beschriftung entfernen** auswählen.
+3. Fügen Sie weitere Äußerungen hinzu, die im Hinblick auf Länge, Wortwahl und Wortanordnung variieren, und schließen Sie dabei die Benennungen `resume`, `c.v.` und `apply` ein:
 
-8. Wählen Sie auf der rechten oberen Navigationsleiste **Train** (Trainieren) aus. Die Bewertung der einzelnen Äußerungen ist deutlich höher. Alle Bewertungen für die Absicht `None` sollten nun über 0,80 liegen. 
+    |Beispieläußerungen für die Absicht **GetJobInformation**|
+    |--|
+    |Does the new job in the warehouse for a stocker require that I apply with a resume?|
+    |Where are the roofing jobs today?|
+    |I heard there was a medical coding job that requires a resume.|
+    |I would like a job helping college kids write their c.v.s. |
+    |Here is my resume, looking for a new post at the community college using computers.|
+    |What positions are available in child and home care?|
+    |Is there an intern desk at the newspaper?|
+    |My C.v. shows I'm good at analyzing procurement, budgets, and lost money. Is there anything for this type of work?|
+    |Where are the earth drilling jobs right now?|
+    |I've worked 8 years as an EMS driver. Any new jobs?|
+    |New food handling jobs require application?|
+    |How many new yard work jobs are available?|
+    |Is there a new HR post for labor relations and negotiations?|
+    |I have a masters in library and archive management. Any new positions?|
+    |Are there any babysitting jobs for 13 year olds in the city today?|
+
+    Versehen Sie die Entität **Job** nicht mit Bezeichnungen in den Äußerungen. In diesem Abschnitt des Tutorials wird ausschließlich die Absichtsvorhersage behandelt.
+
+4. Trainieren Sie die App, indem Sie im oberen rechten Navigationsbereich auf **Trainieren** klicken.
 
 ## <a name="verify-the-fix-worked"></a>Überprüfen der Korrektur
-Um sicherzustellen, dass die Äußerungen im Batchtest für die Absicht **None** richtig vorhergesagt werden, führen Sie den Batchtest erneut aus.
+Um sicherzustellen, dass die Äußerungen im Batchtest richtig vorhergesagt werden, führen Sie den Batchtest erneut aus.
+
+1. Wählen Sie auf der oberen Navigationsleiste **Test** aus. Wenn die Batchergebnisse noch geöffnet sind, wählen Sie **Zurück zur Liste** aus.  
+
+2. Klicken Sie auf die Schaltfläche mit Auslassungspunkten (**...**) rechts neben dem Batchnamen und dann auf ***Dataset ausführen***. Warten Sie, bis der Batchtest abgeschlossen ist. Beachten Sie, dass die Schaltfläche **Ergebnisse anzeigen** nun in Grün angezeigt wird. Dies bedeutet, dass der gesamte Batch erfolgreich ausgeführt wurde.
+
+3. Wählen Sie **See results** (Ergebnisse anzeigen) aus. Links neben dem Namen aller Absichten sollten grüne Symbole angezeigt werden. 
+
+    ![Screenshot der LUIS-App mit hervorgehobener Schaltfläche „Batchergebnisse“](./media/luis-tutorial-batch-testing/hr-batch-test-intents-no-errors.png)
+
+## <a name="create-batch-file-with-entities"></a>Erstellen einer Batchdatei mit Entitäten 
+Um Entitäten in einem Batchtest zu überprüfen, müssen die Entitäten in der JSON-Batchdatei mit Bezeichnungen versehen werden. Nur die per Machine Learning trainierten Entitäten werden verwendet, d.h. einfache, hierarchische (nur übergeordnete) und zusammengesetzte Entitäten. Fügen Sie keine Entitäten hinzu, die nicht per Machine Learning trainiert wurden, da sie immer entweder über reguläre Ausdrücke oder über explizite Textübereinstimmungen gefunden werden.
+
+Die Entitätsvielfalt für die Gesamtwortzahl ([token](luis-glossary.md#token)) kann sich auf die Qualität der Vorhersagen auswirken. Stellen Sie sicher, dass die für die Absicht bereitgestellten Trainingsdaten mit bezeichneten Äußerungen Entitäten mit unterschiedlichen Längen enthalten. 
+
+Wenn Sie zum ersten Mal Batchdateien schreiben und testen, sollten Sie für den Einstieg Äußerungen und Entitäten verwenden, von denen Sie wissen, dass sie funktionieren, und Äußerungen, die Ihrer Ansicht nach eventuell falsch vorhergesagt werden. Auf diese Weise können Sie die Problemherde schnell eingrenzen. Nachdem Sie die Absichten **GetJobInformation** und **ApplyForJob** mit verschiedenen Auftragsnamen getestet haben, die nicht vorhergesagt wurden, weist diese Batchtestdatei gezielt darauf hin, ob ein Vorhersageproblem mit bestimmten Werten für die Entität **Job** vorliegt. 
+
+Der Wert einer **Job**-Entität, die in den Testäußerungen angegeben wurde, besteht in der Regel aus einem oder zwei Wörtern, wobei einige Beispiele mehr Wörter enthalten. Wenn _Ihre eigene_ Personalabteilungs-App üblicherweise Auftragsnamen mit einer Vielzahl von Wörtern enthält, wären die mit der **Job**-Entität in dieser App bezeichneten Beispieläußerungen nicht gut geeignet.
+
+1. Erstellen Sie `HumanResources-entities-batch.json` in einem Text-Editor wie [VS Code](https://code.visualstudio.com/). Laden Sie alternativ die [Datei](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorial-batch-testing/HumanResources-entities-batch.json) aus dem GitHub-Repository „LUIS-Samples“ herunter.
+
+
+2. Fügen Sie in der JSON-formatierten Batchdatei ein Array von Objekten hinzu, das Äußerungen mit der **Absicht** enthält, für die im Test Vorhersagen erzeugt und für die Standorte von Entitäten in der Äußerung vorhergesagt werden sollen. Da eine Entität auf Token basiert, achten Sie darauf, dass jede Entität mit einem Zeichen beginnt und endet. Die Äußerung darf nicht mit einem Leerraum beginnen oder enden. Denn dieser verursacht einen Fehler beim Import der Batchdatei.  
+
+   [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorial-batch-testing/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
+
+<!--TBD: when will the patterns fix be in for batch testing? -->
+## <a name="run-the-batch-with-entities"></a>Ausführen der Batchdatei mit Entitäten
 
 1. Wählen Sie auf der oberen Navigationsleiste **Test** aus. 
 
 2. Wählen Sie im rechten Bereich **Batch testing panel** (Batchtestbereich) aus. 
 
-3. Wählen Sie die drei Punkte (...) rechts neben dem Batchnamen und dann **Dataset ausführen** aus. Warten Sie, bis der Batchtest abgeschlossen ist.
+3. Wählen Sie **Dataset importieren** aus.
 
-    ![Dataset ausführen](./media/luis-tutorial-batch-testing/run-dataset.png)
+4. Wählen Sie den Speicherort im Dateisystem für die Datei `HumanResources-entities-batch.json` aus.
 
-4. Wählen Sie **See results** (Ergebnisse anzeigen) aus. Links neben dem Namen aller Absichten sollten grüne Symbole angezeigt werden. Legen Sie den Filter auf die Absicht `HomeAutomation.Turnoff` fest, und wählen Sie den grünen Punkt im rechten oberen Bereich in der Mitte des Diagramms aus. Der Name der Äußerung wird in der Tabelle unterhalb des Diagramms angezeigt. Die Bewertung von `breezeway off please` ist sehr niedrig. Optional können Sie der Absicht auch weitere Äußerungen hinzufügen, um ihre Bewertung zu erhöhen. 
+5. Versehen Sie das Dataset mit dem Namen `entities`, und klicken Sie auf **Fertig**.
 
-    ![Dataset ausführen](./media/luis-tutorial-batch-testing/turnoff-low-score.png)
+6. Wählen Sie die Schaltfläche **Ausführen**. Warten Sie, bis der Test abgeschlossen ist.
 
-<!--
-    The Entities section of the legend may have errors. That is the next thing to fix.
+    [ ![Screenshot der LUIS-App mit hervorgehobener Option „Ausführen“](./media/luis-tutorial-batch-testing/hr-run-button.png)](./media/luis-tutorial-batch-testing/hr-run-button.png#lightbox)
 
-## Create a batch to test entity detection
-1. Create `homeauto-batch-2.json` in a text editor such as [VSCode](https://code.visualstudio.com/). 
+7. Wählen Sie **See results** (Ergebnisse anzeigen) aus.
 
-2. Utterances have entities identified with `startPos` and `endPost`. These two elements identify the entity before [tokenization](luis-glossary.md#token), which happens in some [cultures](luis-supported-languages.md#tokenization) in LUIS. If you plan to batch test in a tokenized culture, learn how to [extract](luis-concept-data-extraction.md#tokenized-entity-returned) the non-tokenized entities.
+## <a name="review-entity-batch-results"></a>Überprüfen der Entitätsbatchergebnisse
+Das Diagramm wird geöffnet und zeigt alle Absichten mit den richtigen Vorhersagen an. Scrollen Sie im Filter auf der rechten Seite nach unten, um die fehlerhaften Entitätsvorhersagen zu finden. 
 
-    Copy the following JSON into the file:
+1. Wählen Sie die **Job**-Entität im Filter aus.
 
-    ```JSON
-    [
-        {
-          "text": "lobby on please",
-          "intent": "HomeAutomation.TurnOn",
-          "entities": [
-            {
-              "entity": "HomeAutomation.Room",
-              "startPos": 0,
-              "endPos": 4
-            }
-          ]
-        },
-        {
-          "text": "change temperature to seventy one degrees",
-          "intent": "HomeAutomation.TurnOn",
-          "entities": [
-            {
-              "entity": "HomeAutomation.Operation",
-              "startPos": 7,
-              "endPos": 17
-            }
-          ]
-        },
-        {
-          "text": "where is my pizza",
-          "intent": "None",
-          "entities": []
-        },
-        {
-          "text": "help",
-          "intent": "None",
-          "entities": []
-        },
-        {
-          "text": "breezeway off please",
-          "intent": "HomeAutomation.TurnOff",
-          "entities": [
-            {
-              "entity": "HomeAutomation.Room",
-              "startPos": 0,
-              "endPos": 9
-            }
-          ]
-        },
-        {
-          "text": "coffee bar off please",
-          "intent": "HomeAutomation.TurnOff",
-          "entities": [
-            {
-              "entity": "HomeAutomation.Device",
-              "startPos": 0,
-              "endPos": 10
-            }
-          ]
-        }
-      ]
-    ```
+    ![Fehlerhafte Entitätsvorhersagen im Filter](./media/luis-tutorial-batch-testing/hr-entities-filter-errors.png)
 
-3. Import the batch file, following the [same instructions](#run-the-batch) as the first import, and name the dataset `set 2`. Run the test.
+    Das Diagramm wechselt zur Anzeige der Entitätsvorhersagen. 
 
-## Possible entity errors
-Since the intents in the right-side filter of the test panel still pass the test, this section focuses on correct entity identification. 
+2. Wählen Sie im unteren linken Quadranten des Diagramms **Falsch negatives Ergebnis** aus. Drücken Sie dann die Tastenkombination STRG+E, um zur Tokenansicht zu wechseln. 
 
-Entity testing is diferrent than intents. An utterance will have only one top scoring intent, but it may have several entities. An utterance's entity may be correctly identified, may be incorrectly identified as an entity other than the one in the batch test, may overlap with other entities, or not identified at all. 
+    [ ![Tokenansicht der Entitätsvorhersagen](./media/luis-tutorial-batch-testing/token-view-entities.png)](./media/luis-tutorial-batch-testing/token-view-entities.png#lightbox)
+    
+    Bei den Äußerungen unterhalb des Diagramms wird ein konsistenter Fehler angezeigt, wenn der Auftragsname `SQL` enthält. In den Beispieläußerungen und der Liste von Auftragsausdrücken wird „sql“ nur einmal und nur als Bestandteil des längeren Auftragsnamens `sql/oracle database administrator` verwendet.
 
-## Review entity errors
-1. Select `HomeAutomation.Device` in the filter panel. The chart changes to show a single false positive and several true negatives. 
+## <a name="fix-the-app-based-on-entity-batch-results"></a>Korrigieren der App anhand der Entitätsbatchergebnisse
+Für die Korrektur der App muss die LUIS-App die Varianten der SQL-Aufträge korrekt ermitteln. Es gibt mehrere Optionen für diese Korrektur. 
 
-2. Select the False positive section name. The utterance for this chart point is displayed below the chart. The labeled intent and the predicted intent are the same, which is consistent with the test -- the intent prediction is correct. 
+* Explizites Hinzufügen von weiteren Beispieläußerungen, in denen „sql“ verwendet wird und die diese Wörter als Job-Entität bezeichnen 
+* Explizites Hinzufügen von weiteren SQL-Aufträgen zur Liste von Ausdrücken
 
-    The issue is that the HomeAutomation.Device was detected but the batch expected HomeAutomation.Room for the utterance "coffee bar off please". `Coffee bar` could be a room or a device, depending on the environment and context. As the model designer, you can either enforce the selection as `HomeAutomation.Room` or change the batch file to use `HomeAutomation.Device`. 
+Diese Aufgaben liegen in Ihrem Zuständigkeitsbereich.
 
-    If you want to reinforce that coffee bar is a room, you nee to add an utterances to LUIS that help LUIS decide a coffee bar is a room. 
+Durch Hinzufügen eines [Musters](luis-concept-patterns.md), bevor die Entität richtig vorhergesagt wird, wird das Problem nicht behoben. Denn es werden Musterübereinstimmungen gefunden, wenn alle Entitäten im Muster erkannt wurden. 
 
-    The most direct route is to add the utterance to the intent but that to add the utterance for every entity detection error is not the machine-learned solution. Another fix would be to add an utterance with `coffee bar`.
+## <a name="what-has-this-tutorial-accomplished"></a>Was wurde mit diesem Tutorial erreicht?
+Durch die Suche nach Fehlern im Batch und durch Korrigieren des Modells wurde die Vorhersagegenauigkeit der App erhöht. 
 
-## Add utterance to help extract entity
-1. Select the **Test** button on the top navigation to close the batch test panel.
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Wählen Sie im Menü oben links die Option **Meine Apps**. Klicken Sie in der App-Liste rechts vom App-Namen auf die Auslassungspunkte (**...**) und dann auf **Löschen**. Wählen Sie im Popupdialogfenster **Delete App?** (App löschen?) **OK** aus.
 
-2. On the `HomeAutomation.TurnOn` intent, add the utterance, `turn coffee bar on please`. The uttterance should have all three entities detected after you select enter. 
 
-3. Select **Train** on the top navigation panel. Wait until training completes successfully.
-
-3. Select **Test** on the top navigation panel to open the Batch testing pane again. 
-
-4. If the list of datasets is not visible, select **Back to list**. Select the three dots (...) at the end of `Set 2` and select `Run Dataset`. Wait for the test to complete.
-
-5. Select **See results** to review the test results.
-
-6. 
--->
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Weitere Informationen zu Beispieläußerungen](luis-how-to-add-example-utterances.md)
+> [Mehr über Muster erfahren](luis-tutorial-pattern.md)
 
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

@@ -1,7 +1,7 @@
 ---
-title: Erstellen einer Unterhaltungslernanwendung des Typs „Hallo Welt“ – Microsoft Cognitive Services | Microsoft-Dokumentation
+title: Erstellen eines Unterhaltungslernmodells des Typs „Hallo Welt“ – Microsoft Cognitive Services | Microsoft-Dokumentation
 titleSuffix: Azure
-description: Informationen zum Erstellen einer Demo des Typs „Hallo Welt“ in einer Unterhaltungslernanwendung
+description: Informationen zum Erstellen einer Demo des Typs „Hallo Welt“ in einem Unterhaltungslernmodell
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,16 +10,21 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 30026285ac6dda45d2f5e3718aae741b928cf242
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 70b8f25bd699cbdb069892d65bf766ef3953f59d
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376362"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170870"
 ---
-# <a name="how-to-create-a-hello-world-application-with-conversation-learner"></a>Erstellen einer Hallo Welt-Anwendung mit dem Unterhaltungslernmodul
+# <a name="how-to-create-a-hello-world-model-with-conversation-learner"></a>Erstellen eines Hallo Welt-Modells mit dem Unterhaltungslernmodul
 
 Dieses Tutorial ist eine Einführung in das Unterhaltungslernmodul. Hier lernen Sie, wie Sie Aktionen erstellen, interaktive Trainings durchführen, und Korrekturen an protokollierten Dialogen von Endbenutzern vornehmen.
+
+## <a name="video"></a>Video
+
+[![Tutorial 1 – Vorschau](http://aka.ms/cl-tutorial-01-preview)](http://aka.ms/blis-tutorial-01)
+
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 Überprüfen Sie als Erstes, ob alle Setupschritte abgeschlossen wurden, einschließlich der Erstellung einer `.env`-Datei mit Ihrem LUIS-Erstellungsschlüssel.  Weitere Informationen finden Sie unter [Schnellstart](https://github.com/Microsoft/ConversationLearner-Samples).
@@ -32,14 +37,14 @@ Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
 
 Beginnen Sie auf der Homepage in der Webbenutzeroberfläche.
 
-### <a name="create-the-app"></a>Erstellen der App
-1. Klicken Sie auf „Neue App“.
+### <a name="create-the-model"></a>Erstellen des Modells
+1. Klicken Sie auf „Neues Modell“.
 2. Geben Sie im Feld „Name“ „Hallo Welt“ ein.
 3. Klicken Sie auf „Erstellen“.
 
 ### <a name="create-an-action"></a>Erstellen einer Aktion
 
-1. Klicken Sie auf die Hallo Welt-App, um diese zu starten.
+1. Klicken Sie auf das „Hallo Welt-Modell“, um dieses zu starten.
 2. Klicken Sie auf „Aktionen“ und dann auf „Neue Aktion“.
     - Eine Aktion kann eine Textnachricht sein, die das Unterhaltungslernmodul an den Benutzer zurückgibt, ein API-Aufruf oder eine Karte.
 3. Geben Sie im Feld „Antwort“ „Hallo Welt“ ein.

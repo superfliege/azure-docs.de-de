@@ -2,19 +2,19 @@
 title: Hinzufügen von Absichten in LUIS-Anwendungen | Microsoft-Dokumentation
 description: Verwenden Sie Language Understanding Intelligent Service (LUIS) zum Hinzufügen von Absichten, mit denen Apps Benutzeranforderungen besser verstehen und ordnungsgemäß auf sie reagieren können.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
+ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 6e013e994a3bcb60c3104aa10cd7bad1535706f1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0ebf15ea49467674ab3c56aa7983131593cf5c9a
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35378526"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225885"
 ---
 # <a name="manage-intents"></a>Verwalten von Absichten 
 Fügen Sie Ihrer LUIS-App [Absichten](luis-concept-intent.md) hinzu, um Gruppen von Fragen oder Befehlen zu identifizieren, die den gleichen Zweck verfolgen. 
@@ -75,9 +75,9 @@ Weitere Informationen finden Sie unter [Hinzufügen eines Musters aus einer vorh
 
 ## <a name="edit-an-utterance-on-intent-page"></a>Bearbeiten einer Äußerung auf der Seite der Absicht
 
-Um eine Äußerung zu bearbeiten, wählen Sie das Symbol mit den drei Punkten („...“) am rechten Ende der Zeile für diese Äußerung aus, und wählen Sie dann **Bearbeiten** aus. Ändern Sie den Text, und drücken Sie die EINGABETASTE.
+Um eine Äußerung zu bearbeiten, wählen Sie die Auslassungspunkte (***...***) am rechten Ende der Zeile für diese Äußerung aus, und wählen Sie dann **Bearbeiten** aus. Ändern Sie den Text, und drücken Sie die EINGABETASTE.
 
-![Screenshot der Seite „Intents details“ (Details zu den Absichten) mit hervorgehobenem Symbol mit drei Punkten](./media/luis-how-to-add-intents/edit-utterance.png) 
+![Screenshot der Seite „Intents details“ (Details zu den Absichten) mit hervorgehobenen Auslassungspunkten](./media/luis-how-to-add-intents/edit-utterance.png) 
 
 ## <a name="reassign-utterances-on-intent-page"></a>Neues Zuweisen von Äußerungen auf der Seite der Absicht
 Sie können die Absicht von Äußerungen ändern, indem Sie diese einer anderen Absicht neu zuweisen. 
@@ -92,7 +92,7 @@ Um die Absicht mehrerer Äußerungen zu ändern, aktivieren Sie die Kontrollkäs
 
 ## <a name="delete-utterances-on-intent-page"></a>Löschen von Äußerungen auf der Seite der Absicht
 
-Um eine Äußerung zu löschen, wählen Sie das Symbol mit den drei Punkten („...“) am rechten Ende der Zeile für diese Äußerung aus, und wählen Sie dann **Löschen** aus. Die Äußerung wird aus der Liste und der LUIS-App entfernt.
+Um eine Äußerung zu löschen, wählen Sie die Auslassungspunkte (***...***) am rechten Ende der Zeile für diese Äußerung aus, und wählen Sie dann **Löschen** aus. Die Äußerung wird aus der Liste und der LUIS-App entfernt.
 
 ![Screenshot der Seite „Intents details“ (Details zu den Absichten) mit hervorgehobener Option „Löschen“](./media/luis-how-to-add-intents/delete-utterance-ddl.png)
 
@@ -139,7 +139,7 @@ Wechseln Sie zur **Tokens View** (Tokenansicht), um die Token anstelle der Entit
 ![Screenshot der Seite der Absicht „BookFlight“ mit hervorgehobener „Token View“ (Tokenansicht)](./media/luis-how-to-add-intents/toggle-tokens-view.png)
 
 ## <a name="train-your-app-after-changing-model-with-intents"></a>Trainieren der App nach dem Ändern des Modells mit Absichten
-Nachdem Sie Absichten hinzufügen, bearbeiten oder entfernen, [trainieren](luis-how-to-train.md) und [veröffentlichen](PublishApp.md) Sie Ihre App, damit die Änderungen auf Endpunktabfragen angewandt werden. 
+Nachdem Sie Absichten hinzufügen, bearbeiten oder entfernen, [trainieren](luis-how-to-train.md) und [veröffentlichen](luis-how-to-publish-app.md) Sie Ihre App, damit die Änderungen auf Endpunktabfragen angewandt werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

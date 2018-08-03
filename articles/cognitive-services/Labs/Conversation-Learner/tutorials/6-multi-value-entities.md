@@ -1,7 +1,7 @@
 ---
-title: Verwenden von mehrwertigen Entitäten in einer Unterhaltungslernanwendung – Microsoft Cognitive Services | Microsoft Docs
+title: Verwenden von mehrwertigen Entitäten in einem Unterhaltungslernmodell – Microsoft Cognitive Services | Microsoft-Dokumentation
 titleSuffix: Azure
-description: Hier erfahren Sie, wie Sie mehrwertige Entitäten in einer Unterhaltungslernanwendung verwenden.
+description: Erfahren Sie, wie Sie mehrwertige Entitäten in einem Unterhaltungslernmodell verwenden.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,17 +10,21 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 865b50747b2c9574b5f88d4902bea9e4c8e0e032
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6193a515f0d8136e0d420b7554cf26fee8f50953
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376242"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173100"
 ---
-# <a name="how-to-use-multi-value-entities-with-a-conversation-learner-application"></a>Verwenden von mehrwertigen Entitäten in einer Unterhaltungslernanwendung
+# <a name="how-to-use-multi-value-entities-with-a-conversation-learner-model"></a>Verwenden von mehrwertigen Entitäten in einem Unterhaltungslernmodell
 In diesem Tutorial wird die Eigenschaft „mehrwertig“ von Entitäten erörtert.
 
-##<a name="requirements"></a>Anforderungen
+## <a name="video"></a>Video
+
+[![Tutorial 6 – Vorschau](http://aka.ms/cl-tutorial-06-preview)](http://aka.ms/blis-tutorial-06)
+
+##<a name="requirements"></a>Requirements (Anforderungen)
 Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
 
     npm run tutorial-general
@@ -32,9 +36,9 @@ Konkret bedeutet das Folgendes: Wenn eine Entität als „mehrwertig“ gekennze
 
 ## <a name="steps"></a>Schritte
 
-### <a name="create-the-application"></a>Erstellen der Anwendung
+### <a name="create-the-model"></a>Erstellen des Modells
 
-1. Klicken Sie auf der Webbenutzeroberfläche auf „Neue App“.
+1. Klicken Sie in der Webbenutzeroberfläche auf „Neues Modell“.
 2. Geben Sie im Feld „Name“ die Zeichenfolge „MultiValueEntities“ ein. Klicken Sie dann auf „Erstellen“.
 
 ### <a name="create-an-entity"></a>Erstellen einer Entität
@@ -76,7 +80,7 @@ Jetzt sind zwei Aktionen vorhanden.
 3. Klicken Sie auf „Pilze“, und wählen Sie „Beläge“ aus.
 4. Klicken Sie auf „Käse“, und wählen Sie „Beläge“ aus.
 5. Klicken Sie auf „Bewertungsaktionen“.
-    - Beachten Sie, dass die beiden Werte jetzt in der Entität „Beläge“ vorhanden sind. 
+    - Die beiden Werte sind jetzt in der Entität „Toppings“ vorhanden. 
 6. Wählen Sie „Hier sind Ihre Beläge: $Beläge“ aus.
 
 Wir können noch mehr hinzufügen:
@@ -84,7 +88,7 @@ Wir können noch mehr hinzufügen:
 7. Geben Sie „Paprika hinzufügen“ ein.
     - Klicken Sie unter „Entitätserkennung“ auf „Paprika“, und wählen Sie „Beläge“ aus.
 3. Klicken Sie auf „Bewertungsaktionen“.
-    - Beachten Sie, dass „Paprika“ jetzt als zusätzlicher Wert für „Beläge“ angezeigt wird.
+    - „Paprika“ jetzt als zusätzlicher Wert für die Beläge angezeigt.
 6. Wählen Sie „Hier sind Ihre Beläge: $Beläge“ aus.
 
 Als Nächstes werden wir einen Belag entfernen und einen Belag hinzufügen:
@@ -93,7 +97,7 @@ Als Nächstes werden wir einen Belag entfernen und einen Belag hinzufügen:
 1. Klicken Sie auf „Paprika“, und klicken Sie auf das rote X, um diesen Belag zu entfernen.
 2. Klicken Sie auf „Paprika“, und wählen Sie „-Beläge“ aus.
 3. Klicken Sie auf „Bewertungsaktionen“.
-    - Beachten Sie, dass „Paprika“ gelöscht und „Salami“ hinzugefügt wurde.
+    - „Paprika“ wurde gelöscht und „Salami“ wurde hinzugefügt.
 6. Wählen Sie „Hier sind Ihre Beläge: $Beläge“ aus.
 
 Jetzt versuchen wir, alles zu entfernen:
@@ -101,7 +105,7 @@ Jetzt versuchen wir, alles zu entfernen:
 6. Geben Sie „Pilze entfernen, Käse entfernen und Salami entfernen“ ein.
 7. Klicken Sie auf jeden der drei Beläge, und wählen Sie „-Beläge“ aus.
 7. Klicken Sie auf „Bewertungsaktionen“.
-    - Beachten Sie, dass alle Beläge entfernt werden.
+    - Alle Beläge werden entfernt.
 2. Wählen Sie „Welche Beläge möchten Sie?“ aus.
 3. Klicken Sie auf „Training abgeschlossen“.
 

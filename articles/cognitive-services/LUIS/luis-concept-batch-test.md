@@ -2,19 +2,19 @@
 title: Batchtesten der LUIS-App – Azure | Microsoft-Dokumentation
 description: Verwenden Sie Batchtests, um Ihre Anwendung fortlaufend zu optimieren und ihr Sprachverständnis zu verbessern.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/14/2018
-ms.author: v-geberr
-ms.openlocfilehash: 3803df32d6431b8413e8df0837ed62b2e4344cdc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 07/06/2018
+ms.author: diberry
+ms.openlocfilehash: bba3f2ff942fbe5dffc9b694990964e4e3078dbe
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35375362"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222652"
 ---
 # <a name="batch-testing-in-luis"></a>Batchtests in LUIS
 
@@ -34,14 +34,99 @@ Senden Sie eine Batchdatei mit Äußerungen, die als *Dataset* bezeichnet wird, 
 
 * Als doppelte Äußerungen gelten exakt übereinstimmende Zeichenfolgen, nicht Übereinstimmungen, die zuerst in Token übersetzt wurden. 
 
+## <a name="entities-allowed-in-batch-tests"></a>In Batchtests zulässige Entitäten
+Entitäten umfassen einfache, hierarchisch übergeordnete und zusammengesetzte Elemente. Alle Entitäten dieser Typen treten auch dann im Batchtest-Entitätenfilter auf, wenn keine entsprechenden Entitäten in der Batchdatei vorhanden sind.
+
+
 <a name="json-file-with-no-duplicates"></a>
 <a name="example-batch-file"></a>
 ## <a name="batch-file-format"></a>Batchdateiformat
 Die Batchdatei besteht aus Äußerungen. Jeder Äußerung muss eine erwartete Absichtsvorhersage in Verbindung mit allen [maschinell gelernten Entitäten](luis-concept-entity-types.md#types-of-entities), deren Erkennung Sie erwarten, zugeordnet sein. 
 
-Hier folgt eine Beispielbatchdatei:
+Dies ist ein Beispiel für eine Batchdatei mit richtiger Syntax:
 
-   [!code-json[Valid batch test](~/samples-luis/documentation-samples/batch-testing/travel-agent-1.json)]
+```JSON
+[
+  {
+    "text": "Are there any janitorial jobs currently open?",
+    "intent": "GetJobInformation",
+    "entities": 
+    [
+        {
+            "entity": "Job",
+            "startPos": 14,
+            "endPos": 23
+        }
+    ]
+  },
+  {
+    "text": "I would like a fullstack typescript programming with azure job",
+    "intent": "GetJobInformation",
+    "entities": 
+    [
+        {
+            "entity": "Job",
+            "startPos": 15,
+            "endPos": 46
+        }
+    ]
+  },
+  {
+    "text": "Is there a database position open in Los Colinas?",
+    "intent": "GetJobInformation",
+    "entities": 
+    [
+        {
+            "entity": "Job",
+            "startPos": 11,
+            "endPos": 18
+        }
+    ]
+  },
+  {
+    "text": "Please find database jobs open today in Seattle",
+    "intent": "GetJobInformation",
+    "entities": 
+    [
+        {
+            "entity": "Job",
+            "startPos": 12,
+            "endPos": 19
+        }
+    ]
+  }
+]
+```
+
+## <a name="batch-syntax-template"></a>Batchsyntaxvorlage
+
+Verwenden Sie die folgende Vorlage, um die Batchdatei zu starten:
+
+```JSON
+[
+  {
+    "text": "example utterance goes here",
+    "intent": "intent name goes here",
+    "entities": 
+    [
+        {
+            "entity": "entity name 1 goes here",
+            "startPos": 14,
+            "endPos": 23
+        },
+        {
+            "entity": "entity name 2 goes here",
+            "startPos": 14,
+            "endPos": 23
+        }
+    ]
+  }
+]
+```
+
+Die Batchdatei erkennt anhand der Eigenschaften **startPos** und **endPos** Anfang und Ende einer Entität. Die Werte sind nullbasiert und dürfen nicht mit einem Leerzeichen beginnen oder enden. 
+
+Dies ist ein Unterschied zu den Abfrageprotokollen, die die Eigenschaften startIndex und endIndex verwenden. 
 
 
 ## <a name="common-errors-importing-a-batch"></a>Häufige Fehler beim Importieren eines Batches
@@ -49,6 +134,7 @@ Häufige Fehler sind z.B. folgende:
 
 > * Mehr als 1.000 Äußerungen
 > * Ein JSON-Äußerungsobjekt ohne Entitätseigenschaft
+> * Wörter, die in mehreren Entitäten bezeichnet werden
 
 ## <a name="batch-test-state"></a>Batchteststatus
 LUIS verfolgt für jedes Dataset den Status des letzten Tests nach. Dieser umfasst die Größe (Anzahl der Äußerungen im Batch), das Datum der letzten Ausführung und das letzte Ergebnis (Anzahl der erfolgreich vorhergesagten Äußerungen).
@@ -75,4 +161,4 @@ Wenn im Batchtest Fehler auftreten, können Sie entweder weitere Äußerungen zu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, [wie ein Batchtest durchgeführt wird](luis-how-to-batch-test.md)
+* Erfahren Sie, wie Sie [in Batches testen](luis-how-to-batch-test.md).

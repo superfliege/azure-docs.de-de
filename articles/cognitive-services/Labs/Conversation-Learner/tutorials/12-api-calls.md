@@ -1,7 +1,7 @@
 ---
-title: Verwenden von API-Aufrufen in einer Unterhaltungslernanwendung – Microsoft Cognitive Services | Microsoft Docs
+title: Verwenden von API-Aufrufe in einem Unterhaltungslernmodell – Microsoft Cognitive Services | Microsoft-Dokumentation
 titleSuffix: Azure
-description: Hier erfahren Sie, wie Sie API-Aufrufe in einer Unterhaltungslernanwendung verwenden.
+description: Erfahren Sie, wie Sie API-Aufrufe in einem Unterhaltungslernmodell verwenden.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,18 +10,22 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: ec752cbadfac7a47e08ed7b0ffe8bb475969fac5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1d4013d736d8cfcb75874bc0c86d20b86ab4dd62
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376275"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215838"
 ---
-# <a name="how-to-add-api-calls-to-a-conversation-learner-application"></a>Hinzufügen von API-Aufrufen zu einer Unterhaltungslernanwendung
+# <a name="how-to-add-api-calls-to-a-conversation-learner-model"></a>Hinzufügen von API-Aufrufen zu einem Unterhaltungslernmodell
 
-Dieses Tutorial zeigt, wie Sie Ihrer Anwendung API-Aufrufe hinzufügen. API-Aufrufe sind Funktionen, die Sie in Ihrem Bot definieren und erstellen und die vom Unterhaltungslernmodul aufgerufen werden können.
+Dieses Tutorial zeigt, wie Sie Ihrem Modell API-Aufrufe hinzufügen. API-Aufrufe sind Funktionen, die Sie in Ihrem Bot definieren und erstellen und die vom Unterhaltungslernmodul aufgerufen werden können.
 
-## <a name="requirements"></a>Anforderungen
+## <a name="video"></a>Video
+
+[![Tutorial 12 – Vorschau](http://aka.ms/cl-tutorial-12-preview)](http://aka.ms/blis-tutorial-12)
+
+## <a name="requirements"></a>Requirements (Anforderungen)
 Für dieses Tutorial muss der tutorialAPICalls.ts-Bot ausgeführt werden.
 
     npm run tutorial-api-calls
@@ -34,11 +38,11 @@ Für dieses Tutorial muss der tutorialAPICalls.ts-Bot ausgeführt werden.
 
 ### <a name="open-the-demo"></a>Öffnen der Demo
 
-Klicken Sie in der App-Liste der Webbenutzeroberfläche auf „Tutorial-12-APICalls“. 
+Klicken Sie in der Modellliste der Webbenutzeroberfläche auf „Tutorial-12-APICalls“. 
 
 ### <a name="entities"></a>Entitäten
 
-Wir haben in der Anwendung eine Entität mit dem Namen „number“ (Zahl) definiert.
+Wir haben im Modell eine Entität mit dem Namen „number“ (Zahl) definiert.
 
 ![](../media/tutorial12_entities.PNG)
 
@@ -51,7 +55,7 @@ Der Code für die API-Aufrufe ist in dieser Datei definiert: „C:\<Installation
 - Der Multiply-API-Rückruf: Er multipliziert zwei vom Benutzer angegebene Zahlen. Anschließend gibt er das Ergebnis der Multiplikation der zwei Zahlen zurück. Dies zeigt, dass API-Rückrufe Eingaben annehmen können. Beachten Sie, dass der Speichermanager das erste Argument ist. 
 - Der ClearEntities-API-Rückruf: Löscht die number-Entität, um dem Benutzer die Eingabe der nächsten Zahl zu ermöglichen. Dies veranschaulicht, wie Entitäten mithilfe von API-Aufrufen bearbeitet werden können.
 
-### <a name="actions"></a>Aktionen
+### <a name="actions"></a>Actions
 
 Wir haben vier Aktionen erstellt. 
 
@@ -71,9 +75,9 @@ So haben wir die Multiply-Aktion erstellt: Nach dem Auswählen von API_Local und
 
 ### <a name="train-dialog"></a>Trainingsdialog
 
-Im Folgenden befassen wir uns mit einem Trainingsdialog.
+Im Folgenden sehen wir uns einen Trainingsdialog an.
 
-1. Klicken Sie auf „Train Dialogs“ (Trainingsdialoge) und dann auf „New Train Dialog“ (Neuer Trainingsdialog).
+1. Klicken Sie auf „Trainingsdialoge“ und dann auf „Neuer Trainingsdialog“.
 1. Geben Sie „Hi“ ein.
 2. Klicken Sie auf „Score Action“ (Bewertungsaktion).
 3. Klicken Sie, um „RandomGreeting“ auszuwählen. Dadurch wird der Random-Greeting-API-Aufruf ausgeführt.
@@ -81,7 +85,7 @@ Im Folgenden befassen wir uns mit einem Trainingsdialog.
 4. Geben Sie „8“ ein. Klicken Sie dann auf „Score Actions“ (Bewertungsaktionen).
 4. Wählen Sie „Multiply $number 12“ aus. Beachten Sie das Ergebnis der Multiplikation.
 5. Wählen Sie „Clear Entities“ (Entitäten löschen) aus.
-    - Beachten Sie, dass der Wert der Zahlentität gelöscht wurde.
+    - Der Wert der Entität `number` wurde gelöscht.
 3. Klicken Sie, um „What number to do you want to multiply by 12?“ (Welche Zahl möchten Sie mit 12 multiplizieren?) auszuwählen.
 4. Klicken Sie auf „Test abgeschlossen“.
 

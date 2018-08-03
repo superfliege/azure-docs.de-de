@@ -2,19 +2,19 @@
 title: Grundlegendes zu den Entitätstypen in LUIS-Apps in Azure | Microsoft-Dokumentation
 description: Hinzufügen von Entitäten (Schlüsseldaten in Ihrer Anwendungsdomäne) in LUIS-Apps (Language Understanding Intelligent Service)
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/22/2018
-ms.author: v-geberr
-ms.openlocfilehash: ccb7269109309355e2af95f6fb2aa060c1998b22
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.date: 06/28/2018
+ms.author: diberry
+ms.openlocfilehash: ace4aa48d3bfce5f88bce8947ab568f0990d67fa
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286017"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226610"
 ---
 # <a name="entities-in-luis"></a>Entitäten in LUIS
 
@@ -65,19 +65,19 @@ LUIS bietet viele Typen von Entitäten: vordefinierte Entitäten, benutzerdefini
 
 | NAME | Bezeichnung möglich | BESCHREIBUNG |
 | -- |--|--|
-| **Vordefiniert** <br/>[Benutzerdefiniert](#prebuilt)| |  **Definition**<br>Integrierte Typen, die allgemeine Konzepte darstellen <br><br>**Liste**<br/>key phrase number, ordinal, temperature, dimension, money, age, percentage, email, URL, phone number und key phrase. <br><br>Vordefinierte Entitätsnamen sind reserviert. <br><br>Alle vordefinierten Entitäten, die der Anwendung hinzugefügt wurden, werden in der Abfrage an den [Endpunkt](luis-glossary.md#endpoint) zurückgegeben. Weitere Informationen finden Sie unter [Vordefinierte Entitäten](./Pre-builtEntities.md). <br/><br/>[Beispielantwort für Entität](luis-concept-data-extraction.md#prebuilt-entity-data)|
+| **Vordefiniert** <br/>[Benutzerdefiniert](#prebuilt)| |  **Definition**<br>Integrierte Typen, die allgemeine Konzepte darstellen <br><br>**Liste**<br/>key phrase number, ordinal, temperature, dimension, money, age, percentage, email, URL, phone number und key phrase. <br><br>Vordefinierte Entitätsnamen sind reserviert. <br><br>Alle vordefinierten Entitäten, die der Anwendung hinzugefügt wurden, werden in der Abfrage an den [Endpunkt](luis-glossary.md#endpoint) zurückgegeben. Weitere Informationen finden Sie unter [Vordefinierte Entitäten](./luis-prebuilt-entities.md). <br/><br/>[Beispielantwort für Entität](luis-concept-data-extraction.md#prebuilt-entity-data)|
 |<!-- added week of 3/21/08 --> **Regulärer Ausdruck**<br/>[RegEx](#regex)||**Definition**<br>Benutzerdefinierter regulärer Ausdruck für die formatierte Nur-Text-Äußerung. Die Groß-/Kleinschreibung sowie die Kultur werden ignoriert.  <br><br>Diese Entität eignet sich für Wörter oder Ausdrücke, die konsistent mit einer Variante formatiert sind, die ebenfalls einheitlich ist.<br><br>Reguläre Ausdrücke werden nach Änderungen durch die Rechtschreibprüfung angewandt. <br><br>Wenn der reguläre Ausdruck zu komplex ist (z.B. mit zu vielen Klammern), können Sie den Ausdruck dem Modell nicht hinzufügen. <br><br>**Beispiel**<br>`kb[0-9]{6,}` entspricht kb123456.<br/><br/>[Schnellstart](luis-quickstart-intents-regex-entity.md)<br>[Beispielantwort für Entität](luis-concept-data-extraction.md)|
 | **Einfach** <br/>[durch maschinelles Lernen erworben](#machine-learned) | ✔ | **Definition**<br>Eine einfache Entität ist eine generische Entität, die ein einzelnes Konzept beschreibt und im Kontext des maschinellen Lernen erworben wurde. Der Kontext umfasst die Wortwahl, die Wortanordnung und die Länge der Äußerung.<br/><br/>Diese Entität eignet sich gut für Wörter oder Ausdrücke, die nicht konsistent formatiert sind, jedoch dasselbe angeben. <br/><br/>[Schnellstart](luis-quickstart-primary-and-secondary-data.md)<br/>[Beispielantwort für Entität](luis-concept-data-extraction.md#simple-entity-data)|  
-| **Liste** <br/>[Genaue Übereinstimmung](#exact-match)|| **Definition**<br>Listenentitäten stellen einen festen, abgeschlossenen Satz verwandter Wörter zusammen mit ihren Synonymen in Ihrem System dar. <br><br>Jede Listenentität kann eine oder mehrere Formen aufweisen. Sie werden am besten für einen bekannten Satz von Variationen angewandt, um dasselbe Konzept darzustellen.<br/><br/>LUIS ermittelt keine zusätzlichen Werte für Listenentitäten. Suchen Sie mithilfe des [semantischen Wörterbuchs](luis-glossary.md#semantic-dictionary) nach Vorschlägen für neue Wörter basierend auf der aktuellen Liste.<br/><br>Wenn mehr als eine Listenentität mit demselben Wert vorhanden ist, wird in der Endpunktabfrage jede Entität zurückgegeben. <br/><br/>[Schnellstart](luis-quickstart-intent-and-list-entity.md)<br>[Beispielantwort für Entität](luis-concept-data-extraction.md#list-entity-data)| 
+| **Liste** <br/>[Genaue Übereinstimmung](#exact-match)|| **Definition**<br>Listenentitäten stellen einen festen, abgeschlossenen Satz verwandter Wörter zusammen mit ihren Synonymen in Ihrem System dar. <br><br>Jede Listenentität kann eine oder mehrere Formen aufweisen. Sie werden am besten für einen bekannten Satz von Variationen angewandt, um dasselbe Konzept darzustellen.<br/><br/>LUIS ermittelt keine zusätzlichen Werte für Listenentitäten. Suchen Sie mithilfe des Features **Empfehlen** nach Vorschlägen für neue Wörter basierend auf der aktuellen Liste.<br/><br>Wenn mehr als eine Listenentität mit demselben Wert vorhanden ist, wird in der Endpunktabfrage jede Entität zurückgegeben. <br/><br/>[Schnellstart](luis-quickstart-intent-and-list-entity.md)<br>[Beispielantwort für Entität](luis-concept-data-extraction.md#list-entity-data)| 
 | **Pattern.any** <br/>[Gemischt](#mixed) | ✔|**Definition**<br>Pattern.any ist ein Platzhalter variabler Länge, der nur in der Vorlagenäußerung eines Musters verwendet wird, um zu kennzeichnen, wo die Entität beginnt und endet.  <br><br>**Beispiel**<br>Wenn Sie eine Suche zu einer Äußerung für Bücher basierend auf dem Titel durchführen, extrahiert Pattern.any den vollständigen Titel. Eine Vorlagenäußerung mit Pattern.any ist `Who wrote {BookTitle}[?]`.<br/><br/>[Tutorial](luis-tutorial-pattern.md)<br>[Beispielantwort für Entität](luis-concept-data-extraction.md#composite-entity-data)|  
-| **Composite** <br/>[durch maschinelles Lernen erworben](#machine-learned) | ✔|**Definition**<br>Eine zusammengesetzte Entität besteht aus anderen Entitäten, z.B. vordefinierten und einfachen Entitäten. Die einzelnen Entitäten bilden zusammen die gesamte Entität. Listenentitäten sind in zusammengesetzten Entitäten nicht zulässig. <br><br>**Beispiel**<br>Der zusammengesetzten Entität PlaneTicketOrder könnten z.B. die vordefinierte Entität `number` sowie die Entität `ToLocation` untergeordnet sein. <br/><br/>[Tutorial](luis-tutorial-composite-entity.md)<br>[Beispielantwort für Entität](luis-concept-data-extraction.md#composite-entity-data)|  
-| **Hierarchical** <br/>[durch maschinelles Lernen erworben](#machine-learned) |✔ | **Definition**<br>Eine hierarchische Entität ist eine Kategorie von kontextbezogen erlernten Entitäten.<br><br>**Beispiel**<br>Bei der hierarchischen Entität `Location` mit den untergeordneten Entitäten `ToLocation` und `FromLocation` können die einzelnen untergeordnete Entitäten basierend auf dem **Kontext** innerhalb der Äußerung bestimmt werden. In der Äußerung `Book 2 tickets from Seattle to New York` sind `ToLocation` und `FromLocation` kontextbezogen aufgrund der umgebenden Wörter unterschiedlich. <br/><br/>**Nicht verwenden, wenn**<br>Wenn Sie eine Entität mit genauen Textübereinstimmungen für die untergeordneten Entitäten benötigen, und zwar unabhängig vom Kontext, dann sollten Sie eine Listenentität verwenden. Wenn Sie eine Klassifizierung mit anderen Entitätstypen suchen, sollten Sie eine zusammengesetzte Entität verwenden.<br/><br/>[Schnellstart](luis-quickstart-intent-and-hier-entity.md)<br>[Beispielantwort für Entität](luis-concept-data-extraction.md#hierarchical-entity-data)|
+| **Composite** <br/>[durch maschinelles Lernen erworben](#machine-learned) | ✔|**Definition**<br>Eine zusammengesetzte Entität besteht aus anderen Entitäten, z.B. vordefinierten, einfachen, „Regulärer Ausdruck“-, Listen- und hierarchischen Entitäten. Die einzelnen Entitäten bilden zusammen die gesamte Entität. Listenentitäten sind in zusammengesetzten Entitäten nicht zulässig. <br><br>**Beispiel**<br>Der zusammengesetzten Entität PlaneTicketOrder könnten z.B. die vordefinierte Entität `number` sowie die Entität `ToLocation` untergeordnet sein. <br/><br/>[Tutorial](luis-tutorial-composite-entity.md)<br>[Beispielantwort für Entität](luis-concept-data-extraction.md#composite-entity-data)|  
+| **Hierarchical** <br/>[durch maschinelles Lernen erworben](#machine-learned) |✔ | **Definition**<br>Eine hierarchische Entität ist eine Kategorie von kontextbezogen erlernten einfachen Entitäten.<br><br>**Beispiel**<br>Bei der hierarchischen Entität `Location` mit den untergeordneten Entitäten `ToLocation` und `FromLocation` können die einzelnen untergeordnete Entitäten basierend auf dem **Kontext** innerhalb der Äußerung bestimmt werden. In der Äußerung `Book 2 tickets from Seattle to New York` sind `ToLocation` und `FromLocation` kontextbezogen aufgrund der umgebenden Wörter unterschiedlich. <br/><br/>**Nicht verwenden, wenn**<br>Wenn Sie eine Entität mit genauen Textübereinstimmungen für die untergeordneten Entitäten benötigen, und zwar unabhängig vom Kontext, dann sollten Sie eine Listenentität verwenden. Wenn Sie eine Klassifizierung mit anderen Entitätstypen suchen, sollten Sie eine zusammengesetzte Entität verwenden.<br/><br/>[Schnellstart](luis-quickstart-intent-and-hier-entity.md)<br>[Beispielantwort für Entität](luis-concept-data-extraction.md#hierarchical-entity-data)|
 
 <a name="prebuilt"></a>
 **Vordefinierte** Entitäten sind benutzerdefinierte Entitäten, die von LUIS bereitgestellt werden. Einige dieser Entitäten werden im Open-Source-Projekt [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) definiert. Im Verzeichnis „/Specs“ der unterstützten Kulturen finden Sie viele [Beispiele](https://github.com/Microsoft/Recognizers-Text/tree/master/Specs). Wenn Ihre Kultur oder Entität derzeit nicht unterstützt wird, können Sie sich am Projekt beteiligen. 
 
 <a name="machine-learned"></a>
-**Durch maschinelles Lernen erworbene** Entitäten funktionieren am besten, wenn sie mithilfe von [Endpunktabfragen](luis-concept-test.md#endpoint-testing) und durch [Überprüfen der Endpunktäußerungen](label-suggested-utterances.md) getestet werden. 
+**Durch maschinelles Lernen erworbene** Entitäten funktionieren am besten, wenn sie mithilfe von [Endpunktabfragen](luis-concept-test.md#endpoint-testing) und durch [Überprüfen der Endpunktäußerungen](luis-how-to-review-endoint-utt.md) getestet werden. 
 
 <a name="regex"></a>
 **RegEx-Entitäten** werden durch einen regulären Ausdruck definiert, den der Benutzer bei der Definition der Entität angibt. 
@@ -90,6 +90,9 @@ LUIS bietet viele Typen von Entitäten: vordefinierte Entitäten, benutzerdefini
 
 ## <a name="entity-limits"></a>Grenzwerte für Entitäten
 Informieren Sie sich über die [Grenzwerte](luis-boundaries.md#model-boundaries), um zu erfahren, wie viele Entitäten jedes Typs Sie einem Modell hinzufügen können.
+
+## <a name="entity-roles"></a>Entitätsrollen
+[Entitätsrollen](luis-concept-roles.md) werden nur in Mustern verwendet. 
 
 ## <a name="composite-vs-hierarchical-entities"></a>Hierarchische und zusammengesetzte Entitäten
 Zusammengesetzte Entitäten und hierarchische Entitäten verfügen jeweils über eine Über- und Unterordnungsbeziehung, und sie wurden durch maschinelles Lernen erworben. Durch maschinelles Lernen kann LUIS die Entitäten basierend auf unterschiedlichen Kontexten (Anordnung von Wörtern) verstehen. Zusammengesetzte Entitäten sind flexibler, da sie unterschiedliche Entitätstypen als untergeordnete Elemente zulassen. Bei einer hierarchischen Entität sind die untergeordneten Entitäten immer einfache Entitäten. 
@@ -194,7 +197,7 @@ Zusammengesetzte Entitäten stellen Teile eines Ganzen dar. Die zusammengesetzte
 
 LUIS bietet auch den Listenentitätstyp, der nicht per maschinellem Lernen erworben wird, sondern es Ihrer LUIS-App ermöglicht, eine feste Liste mit Werten anzugeben. In der Referenz zu [LUIS-Grenzen](luis-boundaries.md) finden Sie Informationen zu den Grenzwerten des Listenentitätstyps. 
 
-Wenn Sie bereits hierarchische, zusammengesetzte und Listenentitäten berücksichtigt haben und trotzdem mehr als den Grenzwert benötigen, wenden Sie sich an den Support. Sammeln Sie dazu ausführliche Informationen über Ihr System, navigieren Sie zur [LUIS][LUIS]-Website, und wählen Sie dann **Support** aus. Wenn Ihr Azure-Abonnement Supportdienste umfasst, wenden Sie sich an den [technischen Support von Azure](https://azure.microsoft.com/support/options/). 
+Wenn Sie bereits hierarchische, zusammengesetzte und Listenentitäten berücksichtigt haben und trotzdem mehr als den Grenzwert benötigen, wenden Sie sich an den Support. Sammeln Sie dazu ausführliche Informationen über Ihr System, navigieren Sie zur [LUIS](luis-reference-regions.md#luis-website)-Website, und wählen Sie dann **Support** aus. Wenn Ihr Azure-Abonnement Supportdienste umfasst, wenden Sie sich an den [technischen Support von Azure](https://azure.microsoft.com/support/options/). 
 
 ## <a name="best-practices"></a>Bewährte Methoden
 
@@ -213,5 +216,3 @@ Weitere Informationen finden Sie unter [Best Practices](luis-concept-best-practi
 Erfahren Sie mehr über die Konzepte für gute [Äußerungen](luis-concept-utterance.md). 
 
 Weitere Informationen zum Hinzufügen von Entitäten zu LUIS-Apps finden Sie unter [Hinzufügen von Entitäten](luis-how-to-add-entities.md).
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

@@ -1,7 +1,7 @@
 ---
-title: Hinzufügen von vorgefertigten Entitäten zu einer Unterhaltungslernanwendung – Microsoft Cognitive Services | Microsoft-Dokumentation
+title: Hinzufügen von vorgefertigten Entitäten zu einem Unterhaltungslernmodell – Microsoft Cognitive Services | Microsoft-Dokumentation
 titleSuffix: Azure
-description: Hier erfahren Sie, wie Sie vorgefertigte Entitäten in einer Unterhaltungslernanwendung verwenden.
+description: Erfahren Sie, wie Sie vorgefertigte Entitäten in einem Unterhaltungslernmodell verwenden.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,15 +10,19 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: f014464419bfac39a9e57e679fcd28a737e9ebdb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 84d73add5586aaaf130253a8122a4152e39bcbe9
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377682"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171366"
 ---
 # <a name="how-to-add-pre-built-entities"></a>Hinzufügen von vorgefertigten Entitäten
-In diesem Tutorial erfahren Sie, wie Sie „vorgefertigte“ Entitäten zu Ihrer Unterhaltungslernanwendung hinzufügen.
+In diesem Tutorial erfahren Sie, wie Sie „vorgefertigte“ Entitäten zu Ihrem Unterhaltungslernmodell hinzufügen.
+
+## <a name="video"></a>Video
+
+[![Tutorial 7 – Vorschau](http://aka.ms/cl-tutorial-07-preview)](http://aka.ms/blis-tutorial-07)
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
@@ -31,9 +35,9 @@ Vorgefertigte Entitäten erkennen häufig verwendete Entitätstypen wie Nummern,
 
 ## <a name="steps"></a>Schritte
 
-### <a name="create-the-application"></a>Erstellen der Anwendung
+### <a name="create-the-model"></a>Erstellen des Modells
 
-1. Klicken Sie auf der Webbenutzeroberfläche auf „Neue App“.
+1. Klicken Sie in der Webbenutzeroberfläche auf „Neues Modell“.
 2. Geben Sie unter „Name“ „BuiltInEntities“ ein. Klicken Sie dann auf „Erstellen“.
 
 ### <a name="create-an-entity"></a>Erstellen einer Entität
@@ -66,7 +70,7 @@ Jetzt sind zwei Aktionen vorhanden.
 
 ### <a name="train-the-bot"></a>Trainieren des Bots
 
-1. Klicken Sie erst auf „Trainingsdialoge“ und dann auf „Neuer Trainingsdialog“.
+1. Klicken Sie auf „Trainingsdialoge“ und dann auf „Neuer Trainingsdialog“.
 2. Geben Sie „Hallo“ ein.
 3. Klicken Sie erst auf „Bewertungsaktionen“ und dann auf „Wie lautet das Datum?“.
 2. Geben Sie „heute“ ein. 
@@ -75,7 +79,7 @@ Jetzt sind zwei Aktionen vorhanden.
     - Beachten Sie, dass das Datum jetzt im Abschnitt „Entitätsspeicher“ angezeigt wird. 
     - Wenn Sie mit dem Mauszeiger über das Datum fahren, werden Ihnen die zusätzlichen von LUIS zur Verfügung gestellten Daten angezeigt, die verwendet und in Code umgewandelt werden können. 
 6. Klicken Sie auf „The date is $luis-datetimev2“ (Das Datum ist „$luis-datetimev2“).
-7. Klicken Sie auf „Done Teaching“ (Training abgeschlossen).
+7. Klicken Sie auf „Training abgeschlossen“.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

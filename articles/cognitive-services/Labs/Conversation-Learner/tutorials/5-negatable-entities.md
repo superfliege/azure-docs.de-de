@@ -1,7 +1,7 @@
 ---
-title: Verwenden von negierbaren Entitäten in einer Unterhaltungslernanwendung – Microsoft Cognitive Services | Microsoft Docs
+title: Verwenden von negierbaren Entitäten in einem Unterhaltungslernmodell – Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Hier erfahren Sie, wie Sie negierbare Entitäten in einer Unterhaltungslernanwendung verwenden.
+description: Hier erfahren Sie, wie Sie negierbare Entitäten in einem Unterhaltungslernmodell verwenden.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,18 +10,22 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 3d65376c9c43ee1407468f3e8bf3e058048bd556
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2fd00d53755e44e3a3d86782c40aa6a53ff4d378
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376315"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171400"
 ---
-# <a name="how-to-use-negatable-entities-with-a-conversation-learner-application"></a>Verwenden von negierbaren Entitäten in einer Unterhaltungslernanwendung
+# <a name="how-to-use-negatable-entities-with-a-conversation-learner-model"></a>Erfahren Sie, wie Sie negierbare Entitäten in einem Unterhaltungslernmodell verwenden.
 
 In diesem Tutorial wird die „negierbare“ Eigenschaft von Entitäten veranschaulicht.
 
-## <a name="requirements"></a>Anforderungen
+## <a name="video"></a>Video
+
+[![Tutorial 5 – Vorschau](http://aka.ms/cl-tutorial-05-preview)](http://aka.ms/blis-tutorial-05)
+
+## <a name="requirements"></a>Requirements (Anforderungen)
 Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
 
     npm run tutorial-general
@@ -37,9 +41,9 @@ Konkret gilt Folgendes, wenn die „negierbare“ Eigenschaft einer Entität fes
 
 ## <a name="steps"></a>Schritte
 
-### <a name="create-the-application"></a>Erstellen der Anwendung
+### <a name="create-the-model"></a>Erstellen des Modells
 
-1. Klicken Sie auf der Webbenutzeroberfläche auf „Neue App“.
+1. Klicken Sie in der Webbenutzeroberfläche auf „Neues Modell“.
 2. Geben Sie im Feld „Name“ die Zeichenfolge „NegatableEntity“ ein. Klicken Sie dann auf „Erstellen“.
 
 ### <a name="create-an-entity"></a>Erstellen einer Entität
@@ -47,7 +51,7 @@ Konkret gilt Folgendes, wenn die „negierbare“ Eigenschaft einer Entität fes
 1. Klicken Sie auf „Entitäten“ und dann auf „Neue Entität“.
 2. Geben Sie im Feld „Entitätsname“ die Zeichenfolge „name“ ein.
 3. Aktivieren Sie „Negierbar“.
-    - Dadurch wird angegeben, dass der Benutzer einen Wert für die Entität bereitstellen oder festlegen kann, dass etwas *nicht* der Wert der Entität ist. Im letzteren Fall führt dies zum Löschen eines übereinstimmenden Werts der Entität.
+    - Mit dieser Eigenschaft wird angegeben, dass der Benutzer einen Wert für die Entität bereitstellen oder festlegen kann, dass etwas *nicht* der Wert der Entität ist. Im letzteren Fall führt dies zum Löschen eines übereinstimmenden Werts der Entität.
 3. Klicken Sie auf „Erstellen“.
 
 ![](../media/tutorial5_entities.PNG)
@@ -74,19 +78,19 @@ Jetzt sind zwei Aktionen vorhanden.
 1. Klicken Sie auf „Trainingsdialoge“ und dann auf „Neuer Trainingsdialog“.
 2. Geben Sie „Hallo“ ein.
 3. Klicken Sie auf „Bewertungsaktionen“, und wählen Sie „Ich kenne Ihren Namen nicht“ aus.
-    - Beachten Sie, dass diese Aktion eine Bewertung von 100 % erhält, weil es sich um die einzige gültige Aktion handelt.
+    - Die Bewertung ist 100 %, da es die einzige gültige Aktion ist.
 2. Geben Sie „Mein Name ist David“ ein.
 3. Wählen Sie „David“ aus, und wählen Sie die Bezeichnung „+name“ aus.
-    - Beachten Sie, dass es zwei Instanzen von „name“ gibt: „+name“ und „-name“.  Das Pluszeichen bedeutet, dass wir diesen Wert bereitstellen. Das Minuszeichen bedeutet, dass wir dem System mitteilen, dass etwas nicht der Wert ist.
+    - Es gibt zwei Instanzen von „name“: „+name“ und „-name“.  (+) Plus fügt den Wert hinzu oder überschreibt ihn. (-) Minus entfernt den Wert.
 5. Klicken Sie auf „Bewertungsaktionen“.
-    - Beachten Sie, dass der Wert „name“ jetzt im Speicher des Bots vorhanden ist.
+    - Der Wert „name“ ist jetzt im Speicher des Bots vorhanden.
     - „Ich kenne Ihren Namen, er lautet $name“ ist die einzige verfügbare Antwort. 
 6. Wählen Sie Folgendes aus: „Ich kenne Ihren Namen, er lautet $name“.
 
 Lassen Sie uns versuchen, die negierbare Entität zu löschen:
 
 7. Geben Sie „Mein Name ist nicht David“ ein.
-    - Beachten Sie, dass basierend auf dem vorherigen Muster „nicht“ als Name ausgewählt ist. Das ist falsch.
+    - Beachten Sie, dass basierend auf dem vorherigen Muster „nicht“ als Name ausgewählt ist. Diese Bezeichnung ist falsch.
 2. Klicken Sie auf „nicht“, und klicken Sie dann auf das rote X. 
 3. Klicken Sie auf „David“.
     - Dies ist jetzt eine negative Entität, die dem System mitteilt, dass dies nicht der Wert der Entität „name“ ist.

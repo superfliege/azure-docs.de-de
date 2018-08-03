@@ -1,7 +1,7 @@
 ---
-title: Verwenden von Branching- und Rückgängig-Aktionen in einer Unterhaltungslernanwendung – Microsoft Cognitive Services | Microsoft-Dokumentation
+title: Verwenden von Branching- und Rückgängig-Aktionen in einem Unterhaltungslernmodell – Microsoft Cognitive Services | Microsoft-Dokumentation
 titleSuffix: Azure
-description: Hier erfahren Sie, wie Sie Branching- und Rückgängig-Aktionen in einer Unterhaltungslernanwendung verwenden.
+description: Erfahren Sie, wie Sie Branching- und Rückgängig-Aktionen in einem Unterhaltungslernmodell verwenden.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,15 +10,16 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 724a9e47267e0bd7417130efe54c609ac7a465fb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 05140693026e21a73b756ed0ea7bc9936bef067e
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376274"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173297"
 ---
 # <a name="how-to-use-branching-and-undo-operations"></a>Verwenden von Branching- und Rückgängig-Vorgängen
 In diesem Tutorial befassen wir uns mit Rückgängig- und Branching-Vorgängen.
+
 
 ## <a name="details"></a>Details
 - Rückgängig: ermöglicht es dem Entwickler, eine Benutzereingabe oder eine Aktionsauswahl „rückgängig“ zu machen. Hinter den Kulissen erstellt „rückgängig“ tatsächlich einen neuen Dialog und spielt ihn bis zum vorhergehenden Schritt ab.  Dies bedeutet, dass der Rückruf zur Entitätserkennung und die API-Aufrufe im Dialog erneut aufgerufen werden.
@@ -26,14 +27,14 @@ In diesem Tutorial befassen wir uns mit Rückgängig- und Branching-Vorgängen.
 - Branch: erstellt einen neuen Trainingsdialog, der genau so beginnt wie der vorhandene Trainingsdialog – dadurch entfällt die Mühe, Dialogwendungen manuell erneut einzugeben. Hinter den Kulissen erstellt „branch“ einen neuen Dialog und spielt den vorhandenen Trainingsdialog noch einmal bis zum ausgewählten Schritt ab.  Dies bedeutet, dass der Rückruf zur Entitätserkennung und die API-Aufrufe im Dialog erneut aufgerufen werden.
 
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 Für dieses Tutorial muss der Pizzabestellungsbot ausgeführt werden:
 
     npm run demo-pizza
 
 ### <a name="open-the-demo"></a>Öffnen der Demo
 
-Klicken Sie in der App-Liste der Webbenutzeroberfläche auf „TutorialDemo Pizza Order“. 
+Klicken Sie in der Modellliste der Webbenutzeroberfläche auf „TutorialDemo Pizza Order“. 
 
 Details zur Pizzabestellungsdemo finden Sie im Pizzabestellungstutorial.
 
@@ -55,7 +56,7 @@ Beginnen wir eine Trainingssitzung.
 7. Geben Sie „remove mushrooms and add peppers“ (Pilze entfernen und Paprika hinzufügen) ein.
     - Wählen Sie „mushrooms“ (Pilze) aus, und deaktivieren Sie die Entität „Toppings“. Wir erstellen eine Aktion, die wir rückgängig machen werden.
 2. Klicken Sie auf „Undo Step“ (Schritt rückgängig machen).
-    - Beachten Sie, dass der letzte Eintrag entfernt wird und wir wieder bei „Would you like anything else?“ (Wünschen Sie sonst noch etwas?) sind.  Siehe den Screenshot unten.
+    - Der letzte Eintrag wird entfernt und wir sind wieder bei „Wünschen Sie sonst noch etwas?“.  Siehe den Screenshot unten.
 2. Geben Sie „remove mushrooms and add peppers“ (Pilze entfernen und Paprika hinzufügen) ein.
 8. Wählen Sie „you have $Toppings on your pizza“ (Sie haben $Toppings auf Ihrer Pizza) durch Klicken aus.
     - Achten Sie darauf, dass beide Einträge ordnungsgemäß ausgewählt sind.
@@ -66,14 +67,14 @@ Sie haben jetzt gesehen, wie „rückgängig“ zum Entfernen einer Benutzereing
 
 ![](../media/tutorial15_undo.PNG)
 
-## <a name="branch"></a>Branch
+## <a name="branch"></a>Verzweigung
 
 Lassen Sie uns als Beispiel einen vorhandenen Trainingsdialog öffnen und durch Verzweigen (Branchen) einen weiteren Trainingsdialog erstellen.
 
 1. Klicken Sie auf „Train Dialogs“ (Trainingsdialoge) und dann auf „new order“ (neue Bestellung), um den vorhandenen Dialog zu öffnen. 
 2. Klicken Sie auf das letzte „No“ (Nein) im Dialog (siehe den Screenshot unten).
 3. Klicken Sie auf „Branch“.
-    - Beachten Sie, dass „No“ (Nein) entfernt wird und der gesamte Dialog bis zu diesem Punkt in einen neuen kopiert wird. 
+    - „Nein“ wird entfernt und der gesamte Dialog bis zu diesem Punkt wird in einen neuen kopiert. 
     - Dies erspart Ihnen die erneute Eingabe der vorhergehenden Wendungen, um eine neue Verzweigung ab diesem Punkt zu untersuchen.
 1. Geben Sie „yes“ (Ja) ein.
 2. Klicken Sie auf „Score Action“ (Bewertungsaktion).

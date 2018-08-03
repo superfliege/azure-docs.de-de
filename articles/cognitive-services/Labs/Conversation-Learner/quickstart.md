@@ -1,7 +1,7 @@
 ---
-title: Erstellen einer Unterhaltungslernanwendung mithilfe von Node.js – Microsoft Cognitive Services | Microsoft-Dokumentation
+title: Erstellen eines Unterhaltungslernmodells mithilfe von Node.js – Microsoft Cognitive Services | Microsoft-Dokumentation
 titleSuffix: Azure
-description: Hier erfahren Sie, wie Sie eine Unterhaltungslernanwendung mithilfe von Node.js erstellen.
+description: Erfahren Sie, wie Sie ein Unterhaltungslernmodell mithilfe von Node.js erstellen.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,16 +10,16 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: a3a51aa86a30b060c8dc4113da69462904d7df54
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 68ff9c5402c3fa409999e9933a6c1f7bf6d5a089
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377675"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172329"
 ---
-# <a name="create-a-conversation-learner-application-using-nodejs"></a>Erstellen einer Unterhaltungslernanwendung mithilfe von Node.js
+# <a name="create-a-conversation-learner-model-using-nodejs"></a>Erstellen eines Unterhaltungslernmodells mithilfe von Node.js
 
-Ein Unterhaltungslernmodul vereinfacht das Erstellen von Bots. Es ermöglicht einen hybriden Entwicklungsworkflow mit selbst geschriebenem Code und maschinellem Lernen, um die Codemenge zu reduzieren, die für das Schreiben von Bots erforderlich ist. Bestimmte feste Teile Ihrer Anwendung, z.B. das Überprüfen, ob der Benutzer angemeldet ist, oder das Durchführen einer API-Anforderung zur Überprüfung des Lagerbestands, können weiterhin programmiert werden. Andere Änderungen an der Status- und Aktionsauswahl können jedoch von Beispieldialogen gelernt werden, die vom Domänenexperten oder Entwickler bereitgestellt werden.
+Ein Unterhaltungslernmodul vereinfacht das Erstellen von Bots. Es ermöglicht einen hybriden Entwicklungsworkflow mit selbst geschriebenem Code und maschinellem Lernen, um die Codemenge zu reduzieren, die für das Schreiben von Bots erforderlich ist. Bestimmte feste Teile Ihres Modells, z.B. das Überprüfen, ob der Benutzer angemeldet ist, oder das Durchführen einer API-Anforderung zur Überprüfung des Lagerbestands, können weiterhin programmiert werden. Andere Änderungen an der Status- und Aktionsauswahl können jedoch von Beispieldialogen gelernt werden, die vom Domänenexperten oder Entwickler bereitgestellt werden.
 
 ## <a name="invitation-required"></a>Erforderliche Einladung
 
@@ -96,7 +96,7 @@ Sie verwenden nun das Unterhaltungslernmodul und können ein Unterhaltungslernmo
 
 Durch die obigen Anweisungen wurde der generische leere Bot gestartet.  So führen Sie stattdessen ein Tutorial oder einen Demobot aus:
 
-1. Wenn Sie die Webbenutzeroberfläche des Unterhaltungslernmoduls geöffnet haben, kehren Sie zur Liste der Apps unter http://localhost:5050/home zurück.
+1. Wenn Sie die Webbenutzeroberfläche des Unterhaltungslernmoduls geöffnet haben, kehren Sie zur Modellliste unter http://localhost:5050/home zurück.
     
 2. Wenn ein anderer Bot ausgeführt wird (wie `npm start` oder `npm run demo-pizza`), beenden Sie diesen.  Sie müssen den Benutzeroberflächenprozess nicht beenden oder den Webbrowser schließen.
 
@@ -123,7 +123,7 @@ Die Quelldateien für die Demos befinden sich unter `cl-bot-01/src/demos`.
 
 ## <a name="create-a-bot-which-includes-back-end-code"></a>Erstellen eines Bots mit Back-End-Code
 
-1. Wenn Sie die Webbenutzeroberfläche des Unterhaltungslernmoduls geöffnet haben, kehren Sie zur Liste der Apps unter http://localhost:5050/home zurück.
+1. Wenn Sie die Webbenutzeroberfläche des Unterhaltungslernmoduls geöffnet haben, kehren Sie zur Modellliste unter http://localhost:5050/home zurück.
     
 2. Wenn ein Bot ausgeführt wird (z.B. `npm run demo-pizza`), beenden Sie diesen.  Sie müssen den Benutzeroberflächenprozess nicht beenden oder den Webbrowser schließen.
 
@@ -138,7 +138,7 @@ Die Quelldateien für die Demos befinden sich unter `cl-bot-01/src/demos`.
 
 5. Wenn Sie dies nicht bereits getan haben, wechseln Sie zur Webbenutzeroberfläche des Unterhaltungslernmoduls in Chrome, indem Sie http://localhost:5050/home laden. 
 
-6. Erstellen Sie eine neue Unterhaltungslernanwendung auf der Benutzeroberfläche, und beginnen Sie mit dem Training.
+6. Erstellen Sie ein neues Unterhaltungslernmodell auf der Benutzeroberfläche, und beginnen Sie mit dem Training.
 
 7. Wiederholen Sie die obigen Schritte ab Schritt 2, um Codeänderungen in `cl-bot-01/src/app.ts` vorzunehmen.
 

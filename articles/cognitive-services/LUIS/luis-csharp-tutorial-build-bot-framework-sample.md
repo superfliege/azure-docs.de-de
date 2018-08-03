@@ -2,19 +2,19 @@
 title: Integrieren eines Bots in LUIS mit dem Bot Builder SDK für C# in Azure | Microsoft-Dokumentation
 description: Erstellen Sie mithilfe des Bot-Frameworks einen Bot, der in eine LUIS-Anwendung integriert ist.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/06/2018
-ms.author: v-geberr
-ms.openlocfilehash: 273fca51d83f25e2657b51b68179e46f4295f92b
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: ca893dadfed04c90a4d89087299bf1cc2bf55eb9
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36263879"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225957"
 ---
 # <a name="web-app-bot-using-the-luis-template-for-c"></a>Web-App-Bot mit der LUIS-Vorlage für C#
 
@@ -47,7 +47,7 @@ Erstellen Sie einen Chatbot mit Integration von Language Understanding.
     * Legen Sie den **App-Namen** auf den Namen Ihres Bots fest. Der Name wird als Unterdomäne verwendet, wenn Ihr Bot in der Cloud bereitgestellt wird (z.B. meinnotizbot.azurewebsites.net). <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
     * Wählen Sie das Abonnement, die [Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), den App Service-Plan und den [Standort](https://azure.microsoft.com/regions/) aus.
     * Wählen Sie die Vorlage **Language Understanding (C#)** im Feld **Bot template** (Botvorlage) aus.
-    * Wählen Sie **LUIS App Location** (Standort der LUIS-App) aus. Dies ist die [Erstellungsregion][LUIS], in der die App erstellt wird.
+    * Wählen Sie **LUIS App Location** (Standort der LUIS-App) aus. Dies ist die [Erstellungsregion](luis-reference-regions.md), in der die App erstellt wird.
     * Aktivieren Sie das Kontrollkästchen zur Bestätigung der rechtlichen Hinweise. Die Bestimmungen der rechtlichen Hinweise werden unterhalb des Kontrollkästchens angezeigt.
 
     ![Botdienst](./media/luis-tutorial-cscharp-web-bot/bot-service-setting-callout-template.png)
@@ -72,7 +72,7 @@ Der Bot antwortet mit „You have reached Greeting. You said: hello“.  Durch d
 
 ## <a name="connect-your-luis-app-to-the-bot"></a>Verbinden der LUIS-App mit dem Bot
 
-Öffnen Sie **Anwendungseinstellungen**, und bearbeiten Sie das Feld **LuisAppId**, sodass es die Anwendungs-ID Ihrer LUIS-App enthält. Wenn Sie Ihre LUIS-App HomeAutomation in einer anderen Region als „USA, Westen“ erstellen, müssen Sie den **LuisAPIHostName** ebenfalls ändern. Der **LuisAPIKey** ist derzeit auf Ihren Erstellungsschlüssel festgelegt. Ändern Sie dies in Ihren Abonnementschlüssel, wenn der Datenverkehr das kostenlose Kontingent überschreitet. 
+Öffnen Sie **Anwendungseinstellungen**, und bearbeiten Sie das Feld **LuisAppId**, sodass es die Anwendungs-ID Ihrer LUIS-App enthält. Wenn Sie Ihre LUIS-App HomeAutomation in einer anderen Region als „USA, Westen“ erstellen, müssen Sie den **LuisAPIHostName** ebenfalls ändern. Der **LuisAPIKey** ist derzeit auf Ihren Erstellungsschlüssel festgelegt. Ändern Sie dies in Ihren Endpunktschlüssel, wenn der Datenverkehr das kostenlose Kontingent überschreitet. 
 
   ![Aktualisieren der LUIS-App-ID in Azure](./media/luis-tutorial-cscharp-web-bot/bot-service-app-settings.png)
 
@@ -80,7 +80,7 @@ Der Bot antwortet mit „You have reached Greeting. You said: hello“.  Durch d
 > Wenn Ihnen die LUIS-App-ID der [HomeAutomation-App](luis-get-started-create-app.md) nicht bekannt ist, melden Sie sich mit demselben Konto, das Sie zum Anmelden bei Azure verwenden, bei der [LUIS](luis-reference-regions.md)-Website an. 
 > 1. Klicken Sie auf **Meine Apps**. 
 > 2. Suchen Sie die zuvor erstellte LUIS-App, die die Absichten und Entitäten aus der Domäne HomeAutomation enthält.
-> 3. Suchen Sie auf der Seite **Einstellungen** für die LUIS-App die App-ID, und kopieren Sie sie. Stellen Sie sicher, dass sie [trainiert](interactive-test.md) und [veröffentlicht](PublishApp.md) wurde. 
+> 3. Suchen Sie auf der Seite **Einstellungen** für die LUIS-App die App-ID, und kopieren Sie sie. Stellen Sie sicher, dass sie [trainiert](luis-interactive-test.md) und [veröffentlicht](luis-how-to-publish-app.md) wurde. 
 
     > [!WARNING]
     > If you delete your app ID or LUIS key, the bot will stop working.
@@ -145,7 +145,7 @@ Klicken Sie im Azure-Portal auf **Test in Web Chat** (Im Webchat testen), um den
    ![Testen des Bots HomeAutomation im Webchat](./media/luis-tutorial-cscharp-web-bot/bot-service-chat-results.png)
 
 > [!TIP]
-> Sie können Ihre LUIS-App erneut trainieren, ohne Änderungen am Code Ihres Bots vorzunehmen. Weitere Informationen finden Sie unter [Hinzufügen von Beispieläußerungen](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) und [Trainieren und Testen der LUIS-App](https://docs.microsoft.com/azure/cognitive-services/LUIS/interactive-test). 
+> Sie können Ihre LUIS-App erneut trainieren, ohne Änderungen am Code Ihres Bots vorzunehmen. Weitere Informationen finden Sie unter [Hinzufügen von Beispieläußerungen](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) und [Trainieren und Testen der LUIS-App](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-interactive-test). 
 
 ## <a name="download-the-bot-to-debug"></a>Herunterladen des Bots zum Debuggen
 Wenn Ihr Bot nicht funktioniert, laden Sie das Projekt auf Ihren lokalen Computer herunter, und fahren Sie mit dem [Debuggen](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-an-azure-app-service-web-app-c-bot) fort. 
@@ -170,7 +170,6 @@ Fügen Sie die LUIS-Absichten und die Dialoge des Botdiensts zum Behandeln der A
 [BFPortal]: https://dev.botframework.com/
 [RegisterInstructions]: https://docs.microsoft.com/bot-framework/portal-register-bot
 [BotFramework]: https://docs.microsoft.com/bot-framework/
-[AssignedEndpointDoc]: https://docs.microsoft.com/azure/cognitive-services/LUIS/manage-keys
 [VisualStudio]: https://www.visualstudio.com/
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+
 <!-- tested on Win10 -->

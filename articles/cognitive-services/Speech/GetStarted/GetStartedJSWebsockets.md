@@ -9,12 +9,12 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: zhouwang
-ms.openlocfilehash: 56c41fd7f6a00d80bc6bccd61894654e057e926e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 04332c453d22122e65a758a65b09e17300e07f02
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373811"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39040537"
 ---
 # <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>Erste Schritte mit der Spracherkennungs-API in JavaScript
 
@@ -48,7 +48,7 @@ Wenn Sie das Beispiel lokal verwenden möchten, klonen Sie das folgende Reposito
 git clone https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript
 ```
 
-Kompilieren Sie die TypeScript-Quellen, und bündeln Sie sie mithilfe von Browserify in einer einzelnen JavaScript-Datei. (Auf Ihrem Computer muss [npm](https://www.npmjs.com/) installiert sein.) Wechseln Sie zum Stamm des geklonten Repositorys, und führen Sie die folgenden Befehle aus:
+Kompilieren Sie die TypeScript-Quellen, und bündeln Sie sie in einer einzelnen JavaScript-Datei. (Auf Ihrem Computer muss [npm](https://www.npmjs.com/) installiert sein.) Wechseln Sie zum Stamm des geklonten Repositorys, und führen Sie die folgenden Befehle aus:
 
 ```
 cd SpeechToText-WebSockets-Javascript && npm run bundle

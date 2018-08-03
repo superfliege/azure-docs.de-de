@@ -1,6 +1,6 @@
 ---
 title: Verwenden von Sprachsynthese mit Spracherkennungsdiensten | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Sprachsynthese im Spracherkennungsdienst verwenden.
+description: Erfahren Sie, wie Sie Text-to-Speech im Spracherkennungsdienst verwenden.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
@@ -10,22 +10,22 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 6c358b5a40b1d8e91c2e1af5eb493b13604cf82e
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 84b577cd00d333717a7a5ad1f66182605429f9f1
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045057"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213332"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Verwenden von „Sprachsynthese“ im Spracherkennungsdienst
 
 Der Spracherkennungsdienst bietet Sprachsynthese-Funktionalität über eine einfache HTTP-Anforderung. Sie senden den zu sprechenden Text per POST-Anweisung an den entsprechenden Endpunkt, und der Dienst gibt eine Audiodatei (`.wav`) mit synthetisierter Sprache zurück. Ihre Anwendung kann dieses Audio dann beliebig verwenden.
 
-Der Textkörper der POST-Anforderung für Sprachsynthese kann einfacher Text (ASCII oder UTF8) oder ein [SSML](speech-synthesis-markup.md)-Dokument sein. Nur-Text-Anforderungen werden mit einer Standardstimme gesprochen. In den meisten Fällen ist es ratsam, einen SSML-Textkörper zu verwenden. Die HTTP-Anforderung muss ein Autorisierungstoken enthalten. 
+Der Textkörper der POST-Anforderung für Sprachsynthese kann einfacher Text (ASCII oder UTF8) oder ein [SSML](speech-synthesis-markup.md)-Dokument sein. Nur-Text-Anforderungen werden mit einer Standardstimme gesprochen. In den meisten Fällen ist es ratsam, einen SSML-Textkörper zu verwenden. Die HTTP-Anforderung muss ein [Autorisierungstoken](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#authentication) enthalten. 
 
 Hier finden Sie die regionalen Endpunkte für Sprachsynthese. Verwenden Sie den entsprechenden Endpunkt für Ihr Abonnement.
 
-[!include[](includes/endpoints-text-to-speech.md)]
+[!include[](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
 ## <a name="specify-a-voice"></a>Angeben einer Stimme
 
@@ -48,7 +48,7 @@ Eine Sprachsynthese-HTTP-Anforderung erfolgt im POST-Modus mit dem zu sprechende
 Header|Werte|Kommentare
 -|-|-
 |`Content-Type` | `application/ssml+xml` | Textformat der Eingabe.
-|`X-Microsoft-OutputFormat`|     `raw-16khz-16bit-mono-pcm`<br>`audio-16khz-16kbps-mono-siren`<br>`riff-16khz-16kbps-mono-siren`<br>`riff-16khz-16bit-mono-pcm`<br>`audio-16khz-128kbitrate-mono-mp3`<br>`audio-16khz-64kbitrate-mono-mp3`<br>`audio-16khz-32kbitrate-mono-mp3`<br>`raw-24khz-16bit-mono-pcm`<br>`riff-24khz-16bit-mono-pcm`<br>`audio-24khz-160kbitrate-mono-mp3`<br>`audio-24khz-96kbitrate-mono-mp3`<br>`audio-24khz-48kbitrate-mono-mp3` | Audioformat der Ausgabe.
+|`X-Microsoft-OutputFormat`|     `raw-16khz-16bit-mono-pcm`<br>`audio-16khz-16kbps-mono-siren`<br>`riff-16khz-16kbps-mono-siren`<br>`riff-16khz-16bit-mono-pcm`<br>`audio-16khz-128kbitrate-mono-mp3`<br>`audio-16khz-64kbitrate-mono-mp3`<br>`audio-16khz-32kbitrate-mono-mp3`<br>`raw-24khz-16bit-mono-pcm`<br>`riff-24khz-16bit-mono-pcm`<br>`audio-24khz-160kbitrate-mono-mp3`<br>`audio-24khz-96kbitrate-mono-mp3`<br>`audio-24khz-48kbitrate-mono-mp3` | Das Audioformat der Ausgabe.
 |`User-Agent`   |Anwendungsname | Der Anwendungsname ist erforderlich und muss weniger als 255 Zeichen umfassen.
 | `Authorization`   | Autorisierungstoken, das durch die Bereitstellung Ihres Abonnementschlüssels an den Tokendienst abgerufen wird. Jedes Token ist 10 Minuten gültig. Weitere Informationen finden Sie unter [REST-APIs: Authentifizierung](rest-apis.md#authentication).
 
@@ -95,5 +95,7 @@ Weitere Informationen zur REST-API für die Sprachsynthese finden Sie unter [RES
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Abrufen Ihres Testabonnements für die Spracherkennung](https://azure.microsoft.com/try/cognitive-services/)
-- [Erkennen von Sprache in C#](quickstart-csharp-windows.md)
+- [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
+- [Erkennen von Sprache in C++](quickstart-cpp-windows.md)
+- [Erkennen von Sprache in C#](quickstart-csharp-dotnet-windows.md)
+- [Erkennen von Sprache in Java](quickstart-java-android.md)

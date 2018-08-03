@@ -1,7 +1,7 @@
 ---
-title: Verwenden von Aktionen mit und ohne Wartezeit in einer Unterhaltungslernanwendung – Microsoft Cognitive Services | Microsoft Docs
+title: Verwenden von Aktionen mit und ohne Wartezeit in einem Unterhaltungslernmodell – Microsoft Cognitive Services | Microsoft-Dokumentation
 titleSuffix: Azure
-description: Hier erfahren Sie, wie Sie Aktionen mit und ohne Wartezeit in einer Unterhaltungslernanwendung verwenden.
+description: Erfahren Sie, wie Sie Aktionen mit und ohne Wartezeit in einem Unterhaltungslernmodell verwenden.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,18 +10,22 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: bb2cbd55b6c8be51213095926bb592169613d1fc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a8f7ccf79e750c9f3c21c25c50c3e275db7e4195
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376155"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173083"
 ---
 # <a name="wait-and-non-wait-actions"></a>Aktionen mit und ohne Wartezeit
 
 In diesem Tutorial wird der Unterschied zwischen Aktionen mit und ohne Wartezeit im Unterhaltungslernmodul aufgezeigt.
 
-## <a name="requirements"></a>Anforderungen
+## <a name="video"></a>Video
+
+[![Tutorial 2 – Vorschau](http://aka.ms/cl-tutorial-02-preview)](http://aka.ms/blis-tutorial-02)
+
+## <a name="requirements"></a>Requirements (Anforderungen)
 Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
 
     npm run tutorial-general
@@ -33,9 +37,9 @@ Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
 
 ## <a name="steps"></a>Schritte
 
-### <a name="create-a-new-app"></a>Erstellen einer neuen App
+### <a name="create-a-new-model"></a>Erstellen Sie ein neues Modell.
 
-1. Klicken Sie auf der Webbenutzeroberfläche auf „Neue App“.
+1. Klicken Sie in der Webbenutzeroberfläche auf „Neues Modell“.
 2. Geben Sie im Feld „Name“ die Zeichenfolge „WaitNonWait“ ein. Klicken Sie dann auf „Erstellen“.
 
 ### <a name="create-the-first-wait-action"></a>Erstellen der ersten Aktion mit Wartezeit
@@ -43,7 +47,7 @@ Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
 1. Klicken Sie auf „Aktionen“ und dann auf „Neue Aktion“.
 2. Geben Sie für „Antwort“ die Frage „Welches Tier möchten Sie?“ ein.
     - Dies ist eine Aktion mit Wartezeit. Lassen Sie daher das Kontrollkästchen „Auf Antwort warten“ aktiviert.
-3. Klicken Sie auf „Fertig“.
+3. Klicken Sie auf „Erstellen“.
 
 ### <a name="create-a-non-wait-action"></a>Erstellen einer Aktion ohne Wartezeit
 
@@ -68,14 +72,15 @@ Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
 3. Klicken Sie auf „Bewertungsaktionen“, und wählen Sie „Welches Tier möchten Sie?“ aus.
 4. Geben Sie „Kuh“ ein.
 5. Klicken Sie auf „Bewertungsaktionen“, und wählen Sie „Kühe sagen muh“ aus.
-    - Beachten Sie, dass der Bot nicht auf eine Eingabe wartet und die nächste Aktion ausführt.
+    - Der Bot wartet nicht auf eine Eingabe und führt die nächste Aktion aus.
 2. Wählen Sie „Welches Tier möchten Sie?“ aus.
 3. Geben Sie „Ente“ ein.
 5. Klicken Sie auf „Bewertungsaktionen“, und wählen Sie „Enten sagen quak“ aus.
 
 ![](../media/tutorial2_dialogs.PNG)
 
-Beachten Sie die Reihenfolge der Botantworten im Hinblick auf die Aktionen mit und ohne Wartezeit.
+> [!NOTE]
+> Beachten Sie die Reihenfolge der Botantworten im Hinblick auf die Aktionen mit und ohne Wartezeit.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,19 +3,19 @@ title: Hinzufügen der Bing-Rechtschreibprüfungs-API v7 zu LUIS-Abfragen | Micr
 titleSuffix: Azure
 description: Korrigieren Sie falsch geschriebene Wörter in Äußerungen, indem Sie LUIS-Endpunktabfragen die Bing-Rechtschreibprüfungs-API V7 hinzufügen.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/27/2018
-ms.author: v-geberr
-ms.openlocfilehash: 340fb34c234a12f93fcfc3182ac3fd44fce324fe
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.author: diberry
+ms.openlocfilehash: 87882052ed7faf0a7d2a665d51afb20db7ee839c
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35378837"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39239150"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Korrigieren falsch geschriebener Wörter mit der Bing-Rechtschreibprüfung
 
@@ -26,8 +26,9 @@ Ihr [erster Schlüssel für die Bing-Rechtschreibprüfungs-API v7](https://azure
 
 ![Erstellen eines kostenlosen Schlüssels](./media/luis-tutorial-bing-spellcheck/free-key.png)
 
-## <a name="create-subscription-key"></a>Erstellen eines Abonnementschlüssels
-Wenn Ihr kostenloser Schlüssel abgelaufen ist, erstellen Sie einen Abonnementschlüssel.
+<a name"create-subscription-key"></a>
+## <a name="create-endpoint-key"></a>Erstellen eines Endpunktschlüssels
+Wenn Ihr kostenloser Schlüssel abgelaufen ist, erstellen Sie einen Endpunktschlüssel.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an. 
 
@@ -56,7 +57,7 @@ Wenn Ihr kostenloser Schlüssel abgelaufen ist, erstellen Sie einen Abonnementsc
 10. Kopieren Sie den ersten Schlüssel. Sie benötigen nur einen der beiden Schlüssel. 
 
 ## <a name="using-the-key-in-luis-test-panel"></a>Verwenden des Schlüssels im LUIS-Testbereich
-Es gibt zwei Bereiche in LUIS, in denen Sie den Schlüssel verwenden. Die erste ist der [Testbereich](train-test.md#view-bing-spell-check-corrections-in-test-panel). Der Schlüssel wird nicht in LUIS gespeichert, sondern ist stattdessen eine Sitzungsvariable. Sie müssen den Schlüssel jedes Mal festlegen, wenn Sie im Testbereich den Dienst Bing-Rechtschreibprüfungs-API V7 auf eine Äußerung anwenden möchten. [Anweisungen](train-test.md#view-bing-spell-check-corrections-in-test-panel) zum Festlegen des Schlüssels finden Sie im Testbereich.
+Es gibt zwei Bereiche in LUIS, in denen Sie den Schlüssel verwenden. Die erste ist der [Testbereich](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). Der Schlüssel wird nicht in LUIS gespeichert, sondern ist stattdessen eine Sitzungsvariable. Sie müssen den Schlüssel jedes Mal festlegen, wenn Sie im Testbereich den Dienst Bing-Rechtschreibprüfungs-API V7 auf eine Äußerung anwenden möchten. [Anweisungen](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) zum Festlegen des Schlüssels finden Sie im Testbereich.
 
 ## <a name="adding-the-key-to-the-endpoint-url"></a>Hinzufügen des Schlüssels zur Endpunkt-URL
 Sie müssen der Endpunktabfrage den Schlüssel in den Parametern der Abfragezeichenfolgen für jede Abfrage übergeben, auf die Sie die Rechtschreibprüfung anwenden möchten. Ihr Chatbot könnte beispielsweise LUIS aufrufen, oder Sie rufen die LUIS-Endpunkt-API direkt auf. Unabhängig davon, wie der Endpunkt aufgerufen wird, muss jeder Aufruf die erforderlichen Informationen enthalten, damit die Rechtschreibkorrektur ordnungsgemäßen funktioniert.
@@ -90,7 +91,7 @@ https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appID}?subscription
 Wenn Sie den Dienst Bing-Rechtschreibprüfungs-API V7 nicht verwenden möchten, können Sie Äußerungen mit Rechtschreibfehlern kennzeichnen, damit LUIS die richtige Schreibweise sowie Tippfehler erlernen kann. Diese Option erfordert einen höheren Aufwand für die Bezeichnung als die Verwendung einer Rechtschreibprüfung.
 
 ## <a name="publishing-page"></a>Seite „Veröffentlichen“
-Die Seite [Veröffentlichen](publishapp.md) enthält das Kontrollkästchen **Enable Bing spell checker** (Bing-Rechtschreibprüfung aktivieren). Dieses vereinfacht das Erstellen des Schlüssels und hilft zu verstehen, wie sich die Endpunkt-URL ändert. Sie müssen trotzdem die richtigen Endpunktparameter verwenden, damit die Rechtschreibung für jede Äußerung korrigiert wird. 
+Die Seite [Veröffentlichen](luis-how-to-publish-app.md) enthält das Kontrollkästchen **Enable Bing spell checker** (Bing-Rechtschreibprüfung aktivieren). Dieses vereinfacht das Erstellen des Schlüssels und hilft zu verstehen, wie sich die Endpunkt-URL ändert. Sie müssen trotzdem die richtigen Endpunktparameter verwenden, damit die Rechtschreibung für jede Äußerung korrigiert wird. 
 
 > [!div class="nextstepaction"]
 > [Weitere Informationen zu Beispieläußerungen](luis-how-to-add-example-utterances.md)

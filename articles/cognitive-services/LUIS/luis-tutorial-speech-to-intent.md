@@ -3,19 +3,19 @@ title: Verwenden des Speech C# SDKs mit LUIS – Azure | Microsoft-Dokumentation
 titleSuffix: Azure
 description: Verwenden Sie das Speech C# SDK-Beispiel, um von LUIS Absichts- und Entitätenvorhersagen zu erhalten, wenn Sie in das Mikrofon sprechen.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/26/2018
-ms.author: v-geberr;
-ms.openlocfilehash: b681598f953d217ca636fb5c0adc3de4ddbebd60
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.author: diberry;
+ms.openlocfilehash: 286efcd97c0c9ab95a8241215bc36799c486a8b6
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031786"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247714"
 ---
 # <a name="integrate-speech-service"></a>Integrieren des Spracherkennungsdiensts
 Der [Spracherkennungsdienst](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) ermöglicht Ihnen, mit einer einzigen Anforderung Audio zu empfangen und JSON-Objekte der LUIS-Vorhersage zurückgeben zu lassen.
@@ -28,7 +28,7 @@ Für diesen Artikel benötigen Sie ein kostenloses [LUIS][LUIS]-Websitekonto, um
 [Erstellen](luis-how-to-azure-subscription.md#create-luis-endpoint-key) Sie im Azure-Portal einen **Sprachverständnis**-Schlüssel (LUIS). 
 
 ## <a name="import-human-resources-luis-app"></a>Importieren der LUIS-App „Personalwesen“
-Die Absichten und Äußerungen für diesen Artikel stammen aus der LUIS-App „Personalwesen“, die im Github-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) verfügbar ist. Laden Sie die Datei [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/HumanResources.json) herunter, speichern Sie sie mit der Erweiterung *.json, und [importieren](create-new-app.md#import-new-app) Sie sie in LUIS. 
+Die Absichten und Äußerungen für diesen Artikel stammen aus der LUIS-App „Personalwesen“, die im Github-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) verfügbar ist. Laden Sie die Datei [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/HumanResources.json) herunter, speichern Sie sie mit der Erweiterung *.json, und [importieren](luis-how-to-start-new-app.md#import-new-app) Sie sie in LUIS. 
 
 Diese App enthält Absichten, Entitäten und Äußerungen aus dem Bereich „Personalwesen“. Hier sehen Sie einige einfache Beispieläußerungen:
 
@@ -120,7 +120,7 @@ Die richtige Absicht, **GetEmployeeOrgChart**, wurde mit einer Zuverlässigkeit 
 Das Speech SDK gibt die gesamte LUIS-Antwort zurück. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Löschen Sie die LUIS-App „HumanResources“, falls Sie sie nicht mehr benötigen. Klicken Sie dazu in der Liste rechts vom App-Namen auf die drei Punkte (...) und anschließend auf **Löschen**. Klicken Sie im Popupdialogfenster **Delete app?** (App löschen?) auf **OK**.
+Löschen Sie die LUIS-App „HumanResources“, falls Sie sie nicht mehr benötigen. Wählen Sie dazu in der Liste rechts vom App-Namen die Auslassungspunkte (***...***) und dann **Delete** (Löschen) aus. Wählen Sie im Popupdialogfenster **Delete App?** (App löschen?) **OK** aus.
 
 Denken Sie daran, das Verzeichnis „LUIS-Samples“ zu löschen, wenn Sie mit der Verwendung des Beispielcodes fertig sind.
 

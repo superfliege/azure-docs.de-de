@@ -3,19 +3,19 @@ title: Hinzufügen von Mustervorlagen in LUIS-Apps | Microsoft-Dokumentation
 titleSuffix: Azure
 description: Erfahren Sie, wie Sie Mustervorlagen in LUIS-Anwendungen (Language Understanding Intelligent Service) hinzufügen, um die Vorhersagegenauigkeit zu verbessern.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: v-geberr;
-ms.openlocfilehash: 68c0ea1fd3f2e60e0adec631f33c8bd09a3d9960
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.author: diberry;
+ms.openlocfilehash: bf1931355fd873eaeac6c313b70717dfa99814c6
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35379083"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222595"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Hinzufügen von Mustern zum Verbessern der Vorhersagegenauigkeit
 Nachdem eine LUIS-App Endpunktäußerungen empfängt, verbessern Sie mithilfe des [Konzepts](luis-concept-patterns.md) von Mustern die Vorhersagegenauigkeit für Äußerungen, die ein Muster in der Wortreihenfolge und Wortwahl zeigen. Muster verwenden [Entitäten](luis-concept-entity-types.md) und deren Rollen zum Extrahieren von Daten mithilfe einer spezifischen Mustersyntax. 
@@ -57,7 +57,7 @@ Sie können Muster suchen, die einen bestimmten Text enthalten.
 <!-- TBD: should I be able to click on the magnifying glass again to close the search box? It doesn't reset the list. -->
 
 ## <a name="edit-a-pattern"></a>Bearbeiten eines Musters
-1. Um ein Muster zu bearbeiten, wählen Sie das Symbol mit den drei Punkten („...“) am rechten Ende der Zeile für dieses Muster aus, und wählen Sie dann **Bearbeiten** aus. 
+1. Um ein Muster zu bearbeiten, wählen Sie die Auslassungspunkte (**...**) am rechten Ende der Zeile für dieses Muster aus, und wählen Sie dann ***Bearbeiten*** aus. 
 
     ![Screenshot des Menüelements „Bearbeiten“ in einer Musterzeile](./media/luis-how-to-model-intent-pattern/patterns-three-dots.png) 
 
@@ -79,7 +79,7 @@ Um mehrere Muster einer anderen Absicht neu zuzuweisen, aktivieren Sie die Kontr
 
 ## <a name="delete-a-single-pattern"></a>Löschen eines einzelnen Musters
 
-1. Um ein Muster zu löschen, wählen Sie das Symbol mit den drei Punkten („...“) am rechten Ende der Zeile für dieses Muster und dann **Löschen** aus. 
+1. Um ein Muster zu löschen, wählen Sie die Auslassungspunkte (**...**) am rechten Ende der Zeile für dieses Muster aus, und wählen Sie dann ***Löschen*** aus. 
 
     ![Screenshot des Löschens einer Äußerung](./media/luis-how-to-model-intent-pattern/patterns-three-dots-ddl.png)
 
@@ -123,7 +123,7 @@ Der Filter wird entfernt, und alle Muster werden angezeigt.
 ## <a name="add-pattern-from-existing-utterance-on-intent-or-entity-page"></a>Hinzufügen von Mustern aus vorhandenen Äußerungen auf der Seite einer Absicht oder Entität
 Sie können auf einer der Seiten **Intent** (Absicht) oder **Entity** (Entität) ein Muster aus einer vorhandenen Äußerung erstellen. Alle Äußerungen auf einer beliebigen Seite einer Absicht oder Entität werden in einer Liste angezeigt, wobei die rechte Spalte Zugriff auf Optionen auf Äußerungsebene bietet, z.B. **Bearbeiten**, **Löschen** oder **Add as pattern** (Als Muster hinzufügen).
 
-1. Wählen Sie in der ausgewählten Zeile der Äußerung die drei Punkte („...“) rechts neben der Äußerung und dann **Add as pattern** (Als Muster hinzufügen) aus.
+1. Wählen Sie in der ausgewählten Zeile der Äußerung die Auslassungspunkte (**...**) rechts neben der Äußerung und dann ***Als Muster hinzufügen*** aus.
 
     [![](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png "Screenshot der Äußerungstabelle mit hervorgehobener Option „Add as pattern“ (Als Muster hinzufügen) im Menü „Optionen“")](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png)
 
@@ -132,7 +132,7 @@ Sie können auf einer der Seiten **Intent** (Absicht) oder **Entity** (Entität)
     ![Screenshot von nach Entität gefilterten Mustern](./media/luis-how-to-model-intent-pattern/confirm-patterns-modal.png)
 
 ## <a name="train-your-app-after-changing-model-with-patterns"></a>Trainieren Ihrer App nach dem Ändern des Modells mit Mustern
-Nachdem Sie ein Muster hinzufügen, bearbeiten, entfernen oder neu zuweisen, [trainieren](luis-how-to-train.md) und [veröffentlichen](PublishApp.md) Sie Ihre App, damit die Änderungen auf Endpunktabfragen angewandt werden. 
+Nachdem Sie ein Muster hinzufügen, bearbeiten, entfernen oder neu zuweisen, [trainieren](luis-how-to-train.md) und [veröffentlichen](luis-how-to-publish-app.md) Sie Ihre App, damit die Änderungen auf Endpunktabfragen angewandt werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -2,19 +2,19 @@
 title: Anwendungsdashboard für LUIS-Apps | Microsoft-Dokumentation
 description: Erfahren Sie etwas über das Anwendungsdashboard, ein visualisiertes Berichterstellungstool, mit dem Sie Ihre Apps auf einen Blick überwachen können.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
-ms.author: v-geberr
-ms.openlocfilehash: 4e117aa734c551f76c3602f81e3e2ebc6aa9f337
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: diberry
+ms.openlocfilehash: 518227d9f4165a08fafefa357de255d97c710f61
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35378543"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224499"
 ---
 # <a name="application-dashboard"></a>Anwendungsdashboard
 Das App-Dashboard ermöglicht Ihnen, Ihre App auf einen Blick zu überwachen. Das **Dashboard** wird angezeigt, wenn Sie eine App öffnen, indem Sie auf der Seite **Meine Apps** auf den Namen der Anwendung klicken, und dann im oberen Bereich **Dashboard** auswählen. 
@@ -69,7 +69,7 @@ So wählen Sie einen Punkt zum Anzeigen im Diagramm aus
 2. Wählen Sie einen Zeitraum in der Liste aus, und klicken Sie dann auf den Pfeil „Zurück“, ![Pfeil „Zurück“](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) um das Diagramm anzuzeigen.
 
 ### <a name="key-usage"></a>Schlüsselverwendung
-Die Anzahl der vom Abonnementschlüssel der Anwendung erzielten Treffer. Weitere Informationen zu Abonnementschlüsseln finden Sie unter [Schlüssel in LUIS](luis-concept-keys.md). 
+Die Anzahl der vom Endpunktschlüssel der Anwendung erzielten Treffer. Weitere Informationen zu Endpunktschlüsseln finden Sie unter [Schlüssel in LUIS](luis-concept-keys.md). 
   
 ## <a name="intent-breakdown"></a>Absichtsaufschlüsselung
 Unter **Intent Breakdown** (Absichtsaufschlüsselung) wird eine Aufschlüsselung der Absichten anhand der bezeichneten Äußerungen oder der Endpunkttreffer angezeigt. Dieses zusammenfassende Diagramm zeigt die relative Bedeutung der einzelnen Absichten in der App. Wenn Sie auf ein Segment zeigen, werden der Name der Absicht und deren prozentualer Anteil an der Gesamtanzahl der bezeichneten Äußerungen oder der Endpunkttreffer angezeigt. 

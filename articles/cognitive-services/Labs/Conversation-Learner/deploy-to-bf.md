@@ -10,22 +10,22 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 77cc998227d996a6e52b1b5629204da5dc735ede
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bb977df92cf0ada1e50a929a9ea714313a70165a
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376178"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171475"
 ---
 # <a name="how-to-deploy-a-conversation-learner-bot"></a>Bereitstellen eines Unterhaltungslernmodul-Bots
 
 In diesem Dokument wird erläutert, wie Sie einen Unterhaltungslernmodul-Bot – entweder lokal oder in Azure – bereitstellen.
 
-## <a name="prerequisite-determine-the-application-id"></a>Voraussetzung: Ermitteln der Anwendungs-ID 
+## <a name="prerequisite-determine-the-model-id"></a>Voraussetzung: Ermitteln der Modell-ID 
 
-Damit Sie einen Bot außerhalb der Benutzeroberfläche des Unterhaltungslernmoduls ausführen können, müssen Sie die vom Bot verwendete Anwendungs-ID des Unterhaltungslernmoduls, also die ID des Machine Learning-Modells in der Unterhaltungslernmodul-Cloud festlegen.  (Bei der Ausführung des Bots über die Benutzeroberfläche des Unterhaltungslernmoduls wird die zu verwendende Anwendungs-ID dagegen von der Benutzeroberfläche ausgewählt.)  
+Damit Sie einen Bot außerhalb der Benutzeroberfläche des Unterhaltungslernmodells ausführen können, müssen Sie die vom Bot verwendete Anwendungs-ID des Unterhaltungslernmoduls, also die ID des Modells für maschinelles Lernen in der Unterhaltungslernmodul-Cloud festlegen.  (Bei der Ausführung des Bots über die Benutzeroberfläche des Unterhaltungslernmodells wird die zu verwendende Anwendungs-ID dagegen von der Benutzeroberfläche ausgewählt.)  
 
-Nachfolgend wird beschrieben, wie Sie die Anwendungs-ID abrufen:
+Nachfolgend wird beschrieben, wie Sie die Modell-ID abrufen:
 
 1. Starten Sie Ihren Bot und die Benutzeroberfläche des Unterhaltungslernmoduls.  Vollständige Anweisungen finden Sie im Leitfaden für den Schnellstart. Hier folgt eine Zusammenfassung:
 
@@ -47,11 +47,11 @@ Nachfolgend wird beschrieben, wie Sie die Anwendungs-ID abrufen:
 
 2. Öffnen Sie den Browser, und navigieren Sie zu http://localhost:5050. 
 
-3. Klicken Sie auf die Unterhaltungslernanwendung, deren ID Sie abrufen möchten.
+3. Klicken Sie auf das Unterhaltungslernmodell, dessen ID Sie abrufen möchten.
 
 4. Klicken Sie auf der linken Navigationsleiste auf „Einstellungen“.
 
-5. Der GUID „App-ID“ wird am oberen Rand der Seite angezeigt.
+5. Der GUID „Modell-ID“ wird am oberen Rand der Seite angezeigt.
 
 ## <a name="option-1-deploying-a-conversation-learner-bot-to-run-locally"></a>Option 1: Bereitstellen eines Unterhaltungslernmodul-Bots zur lokalen Ausführung
 
@@ -62,7 +62,7 @@ Hier wird ein Bot auf dem lokalen Computer bereitgestellt und gezeigt, wie Sie m
 Fügen Sie bei lokaler Ausführung eines Bots die Anwendungs-ID zur `.env`-Datei des Bots hinzu:
 
     ```
-    CONVERSATION_LEARNER_APP_ID=<YOUR_APP_ID>
+    CONVERSATION_LEARNER_MODEL_ID=<YOUR_MODEL_ID>
     ```
 
 Starten Sie dann Ihren Bot:
@@ -113,11 +113,11 @@ Im Folgenden finden Sie Schrittanleitungen zum Bereitstellen eines Unterhaltungs
     1. Scrollen Sie nach unten zum Abschnitt „App-Einstellungen“.
     2. Fügen Sie die folgenden Einstellungen hinzu:
 
-        Umgebungsvariable | Wert
+        Umgebungsvariable | value
         --- | --- 
-        CONVERSATION_LEARNER_SERVICE_URI | „https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/“
-        CONVERSATION_LEARNER_APP_ID      | Die über die Benutzeroberfläche des Unterhaltungslernmoduls unter den „Einstellungen“ für die App abgerufene Anwendungs-ID (GUID)
-        LUIS_AUTHORING_KEY               | Der LUIS-Erstellungsschlüssel für diese App
+        CONVERSATION_LEARNER_SERVICE_URI | "https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/"
+        CONVERSATION_LEARNER_MODEL_ID      | Die über die Benutzeroberfläche des Unterhaltungslernmoduls unter den „Einstellungen“ für das Modell abgerufene ID (GUID)
+        LUIS_AUTHORING_KEY               | LUIS-Erstellungsschlüssel für dieses Modell
     
     4. Klicken Sie am oberen Rand der Seite auf „Speichern“.
     5. Öffnen Sie auf der linken Seite das Navigationselement „Build“.

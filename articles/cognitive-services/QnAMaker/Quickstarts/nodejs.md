@@ -9,12 +9,12 @@ ms.technology: qna-maker
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 79723a914fd41b0197b4d59a6a83304e233d3f64
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 6da1ec00e04ea993923a97c4641880a5f31d18fa
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301535"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868173"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-nodejs"></a>Schnellstart für die Microsoft QnA Maker-API mit Node.js 
 <a name="HOLTop"></a>
@@ -28,8 +28,8 @@ In diesem Artikel erfahren Sie, wie Sie die [Microsoft QnA Maker-API](../Overvie
 - [Ersetzen der Inhalte einer Wissensdatenbank](#Replace)
 - [Herunterladen von Inhalten einer Wissensdatenbank](#GetQnA)
 - [Abrufen von Antworten auf Fragen mithilfe einer Wissensdatenbank](#GetAnswers)
-- [Abrufen von Informationen zu einer Wissensdatenbank](#GetKB)
-- [Abrufen von Informationen zu allen Wissensdatenbanken eines bestimmten Benutzers](#GetKBsByUser)
+- [Abrufen von Details zu einer Wissensdatenbank](#GetKB)
+- [Abrufen von Details zu allen Wissensdatenbanken eines bestimmten Benutzers](#GetKBsByUser)
 - [Löschen einer Wissensdatenbank](#Delete)
 - [Abrufen der aktuellen Endpunktschlüssel](#GetKeys)
 - [Erneutes Generieren der aktuellen Endpunktschlüssel](#PutKeys)
@@ -49,7 +49,7 @@ Sie müssen über ein [Cognitive Services-API-Konto](https://docs.microsoft.com/
 Über den folgenden Code können Sie mithilfe der [Methode zum Erstellen einer Wissensdatenbank](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) eine neue Wissensdatenbank erstellen.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Node.js-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -245,7 +245,7 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 Über den folgenden Code können Sie eine Wissensdatenbank mithilfe der [Methode zum Aktualisieren einer Wissensdatenbank](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) aktualisieren.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Node.js-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -446,7 +446,7 @@ Sie können die [Methode für Vorgänge](https://westus.dev.cognitive.microsoft.
 Über den folgenden Code können Sie eine Wissensdatenbank mithilfe der [Methode zum Veröffentlichen](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) veröffentlichen.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Node.js-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -558,7 +558,7 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 Über den folgenden Code können Sie den Inhalt einer angegebenen Wissensdatenbank mithilfe der [Methode zum Ersetzen](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) ersetzen.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Node.js-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -691,7 +691,7 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 Über den folgenden Code können Sie die Inhalte einer angegebenen Datenbank über die [Methode zum Herunterladen einer Wissensdatenbank](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) herunterladen.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Node.js-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -953,7 +953,7 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 Über den folgenden Code können Sie Informationen zur angegebenen Wissensdatenbank abrufen, indem Sie die Methode [zum Abrufen von Details zur Wissensdatenbank](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) verwenden.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Node.js-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -1068,7 +1068,7 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 Über den folgenden Code können Sie Informationen zu allen Wissensdatenbanken für einen angegebenen Benutzer abrufen, indem Sie die [Methode zum Abrufen von Details zur Wissensdatenbank](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) verwenden.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Node.js-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -1196,7 +1196,7 @@ Press any key to continue.
 Über den folgenden Code werden die Inhalte einer angegebenen Datenbank mithilfe der [Methode zum Löschen von Wissensdatenbanken](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) gelöscht.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Node.js-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -1308,7 +1308,7 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 Über den folgenden Code können Sie mithilfe der [Methode zum Abrufen von Endpunktschlüsseln](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys) die aktuellen Endpunktschlüssel abrufen.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Node.js-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -1409,7 +1409,7 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 Über den folgenden Code können Sie mithilfe der [Methode zum Aktualisieren von Endpunktschlüsseln](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys) die aktuellen Endpunktschlüssel aktualisieren.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Node.js-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -1535,7 +1535,7 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 Über den folgenden Code können Sie aktuelle Wortvarianten mithilfe der [Methode zum Herunterladen von Varianten](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc) abrufen.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Node.js-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -1642,7 +1642,7 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 Über den folgenden Code können Sie die aktuellen Wortvarianten mithilfe der [Methode zum Ersetzen von Varianten](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) ersetzen.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Node.js-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -1764,4 +1764,4 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 
 ## <a name="see-also"></a>Weitere Informationen 
 
-[Übersicht zu QnA Maker](../Overview/overview.md)
+[Übersicht über QnA Maker](../Overview/overview.md)

@@ -2,19 +2,19 @@
 title: Grundlegendes zur Versionsverwaltung in LUIS – Azure | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Versionen verwenden, um Änderungen in Language Understanding Intelligent Service (LUIS) zu verwalten.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/13/2018
-ms.author: v-geberr
-ms.openlocfilehash: dabe7def2766770b686be3c43d4af4f331dd9577
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: 17abe383d3074d636605c3b1b91927f89f7dd896
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266072"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225726"
 ---
 # <a name="versions"></a>Versionen
 Mithilfe von [Versionen](luis-how-to-manage-versions.md) können Sie unterschiedliche Modelle derselben App erstellen. 
@@ -26,7 +26,7 @@ Die Versions-ID besteht aus Zeichen, Ziffern oder „.“ und darf nicht länger
 Die ursprüngliche Version (0.1) ist standardmäßig die aktive Version. 
 
 ## <a name="active-version"></a>Aktive Version
-Das [Festlegen einer Version](luis-how-to-manage-versions.md#set-active-version) als die aktive bedeutet, dass sie derzeit auf der [LUIS][LUIS]-Website bearbeitet und getestet wird. Legen Sie eine Version als aktiv fest, um auf ihre Daten zuzugreifen, Updates vorzunehmen und sie zu testen und zu veröffentlichen.
+Das [Festlegen einer Version](luis-how-to-manage-versions.md#set-active-version) als die aktive bedeutet, dass sie derzeit auf der [LUIS](luis-reference-regions.md)-Website bearbeitet und getestet wird. Legen Sie eine Version als aktiv fest, um auf ihre Daten zuzugreifen, Updates vorzunehmen und sie zu testen und zu veröffentlichen.
 
 Der Name der derzeit aktiven Version wird im Bereich links oben nach dem Namen der App angezeigt. 
 
@@ -52,7 +52,7 @@ Um Ihre LUIS-App zu sichern, exportieren Sie jede Version auf der Seite **[Einst
 Sie können alle Versionen außer der aktiven Version aus der Versionsliste auf der Seite „Einstellungen“ löschen. 
 
 ## <a name="version-availability-at-the-endpoint"></a>Versionsverfügbarkeit am Endpunkt
-Trainierte Versionen stehen nicht automatisch am App-[Endpunkt](luis-glossary.md#endpoint) zur Verfügung. Sie müssen eine Version [veröffentlichen](PublishApp.md) oder erneut veröffentlichen, damit sie am App-Endpunkt verfügbar ist. Sie können für das **Staging** und die **Produktion** veröffentlichen. Damit stehen Ihnen am Endpunkt bis zu zwei Versionen zur Verfügung. Wenn Sie weitere Versionen der App an einem Endpunkt benötigen, sollten Sie die Version exportieren und in eine neue App importieren. Die neue App hat eine andere App-ID.
+Trainierte Versionen stehen nicht automatisch am App-[Endpunkt](luis-glossary.md#endpoint) zur Verfügung. Sie müssen eine Version [veröffentlichen](luis-how-to-publish-app.md) oder erneut veröffentlichen, damit sie am App-Endpunkt verfügbar ist. Sie können für das **Staging** und die **Produktion** veröffentlichen. Damit stehen Ihnen am Endpunkt bis zu zwei Versionen zur Verfügung. Wenn Sie weitere Versionen der App an einem Endpunkt benötigen, sollten Sie die Version exportieren und in eine neue App importieren. Die neue App hat eine andere App-ID.
 
 ## <a name="collaborators"></a>Projektmitarbeiter
 Der Besitzer und alle [Projektmitarbeiter](luis-how-to-collaborate.md) haben Vollzugriff auf alle Versionen der App.
@@ -62,5 +62,3 @@ Der Besitzer und alle [Projektmitarbeiter](luis-how-to-collaborate.md) haben Vol
 Erfahren Sie, wie Sie auf der Seite mit den App-Einstellungen eine [Versionsverwaltung](luis-how-to-manage-versions.md) hinzufügen. 
 
 Erfahren Sie, wie Sie [Absichten](luis-concept-intent.md) im Modell entwerfen.
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

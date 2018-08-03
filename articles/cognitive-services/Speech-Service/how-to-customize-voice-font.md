@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: ad5af799fd46dc51b85432999f986de8cdb056ec
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7c4abb6832a030c2cb3cc2088dc5d0f1350a6ab8
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377690"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258846"
 ---
 # <a name="creating-custom-voice-fonts"></a>Erstellen benutzerdefinierter Voicefonts
 
@@ -29,17 +29,7 @@ Die Stimmanpassung ist für US-amerikanisches Englisch (en-us) und vereinfachtes
 
 Das Text-to-Speech-API-Feature zur Anpassung einer Stimme befindet sich aktuell in der privaten Vorschau. Wenn Sie das Feature nutzen möchten, ist es erforderlich, dass Sie [das Antragsformular ausfüllen](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0N8Vcdi8MZBllkZb70o6KdURjRaUzhBVkhUNklCUEMxU0tQMEFPMjVHVi4u).
 
-Außerdem benötigen Sie:
-
-* Ein Azure-Konto. Falls Sie noch kein Konto besitzen, können Sie sich [kostenlos dafür registrieren](https://azure.microsoft.com/free/ai/).
-
-* Ein Abonnement für den Speech-Dienst. Falls dies noch nicht geschehen ist, müssen Sie ein [Abonnement erstellen](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices).
-
-    ![Bereich „Erstellen“](media/custom-voice/create-panel.png)
-
-Nach dem Erstellen Ihres Abonnements befinden sich im Schnellstart- oder Übersichtsbereich des neuen Abonnements zwei Abonnementschlüssel. Sie können einen der beiden Schlüssel verwenden.
-
-Stellen Sie abschließend zwischen Ihrem Abonnement und dem Custom Voice-Portal wie folgt eine Verbindung her:
+Außerdem benötigen Sie ein Azure-Konto und ein Abonnement für den Speech-Dienst. Falls dies noch nicht geschehen ist, müssen Sie ein [Abonnement erstellen](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started). Stellen Sie zwischen Ihrem Abonnement und dem Custom Voice-Portal wie folgt eine Verbindung her.
 
 1. Melden Sie sich im [Custom Voice-Portal](https://customvoice.ai) mit demselben Microsoft-Konto an, mit dem Sie dem Nutzungsantrag gestellt haben.
 
@@ -51,7 +41,7 @@ Stellen Sie abschließend zwischen Ihrem Abonnement und dem Custom Voice-Portal 
 
      ![Verbindung mit vorhandenem Abonnement herstellen](media/custom-voice/connect-existing-sub.png)
 
-4. Fügen Sie Ihren Abonnementschlüssel wie unten gezeigt in die Tabelle ein.
+4. Fügen Sie Ihren Abonnementschlüssel wie unten gezeigt in die Tabelle ein. Jedem Abonnement sind zwei Schlüssel zugewiesen. Sie können beide verwenden.
 
      ![Abonnement hinzufügen](media/custom-voice/add-subscription.png)
 
@@ -63,7 +53,7 @@ Ein Stimmentrainingsdataset umfasst mehrere Audiodateien und eine Textdatei, die
 
 Sie können die Dateien auf zwei unterschiedliche Arten vorbereiten. Entweder erstellen Sie zunächst das Skript, das dann von einem Sprecher eingesprochen wird, oder Sie nutzen eine öffentlich zugängliche Audiodatei und transkribieren diese. Wenn Sie sich für Letzteres entscheiden, müssen Füllwörter wie „ähm“ sowie gestotterte, undeutlich gesprochene und falsch ausgesprochene Wörter entfernt werden.
 
-Die Erstellung eines guten Voicefonts setzt voraus, dass die Aufnahmen in einem ruhigen Raum mit einem qualitativ hochwertigen Mikrofon erfolgen. Eine gleichmäßige Lautstärke, Geschwindigkeit und Tonhöhe sowie eine ausdrucksstarke Prosodie sind bei der Erstellung einer angenehmen digitalen Stimme entscheidend. Wenn Sie eine Stimme für eine Produktionsumgebung erstellen möchten, werden ein professioneller Sprecher und ein professionelles Tonstudio empfohlen.
+Die Erstellung eines guten Voicefonts setzt voraus, dass die Aufnahmen in einem ruhigen Raum mit einem qualitativ hochwertigen Mikrofon erfolgen. Eine gleichmäßige Lautstärke, Geschwindigkeit und Tonhöhe sowie eine ausdrucksstarke Prosodie sind bei der Erstellung einer angenehmen digitalen Stimme entscheidend. Wenn Sie eine Stimme für eine Produktionsumgebung erstellen möchten, werden ein professioneller Sprecher und ein professionelles Tonstudio empfohlen. Weitere Informationen finden Sie im Artikel [Aufzeichnen von Sprachbeispielen für eine benutzerdefinierte Stimme](record-custom-voice-samples.md).
 
 ### <a name="audio-files"></a>Audiodateien
 
@@ -74,9 +64,8 @@ Die Audiodateien sollten so vorbereitet werden, dass sie die unten aufgeführten
 | **Eigenschaft** | **Wert** |
 | ------------ | --------- |
 | Dateiformat  | RIFF (WAV)|
-| Samplingfrequenz| 16.000 Hz |
-| Kanäle     | 1 (Mono)  |
-| Samplingformat| PCM, 16 Bit |
+| Samplingrate| Mindestens 16.000 Hz |
+| Beispielformat| PCM, 16 Bit |
 | Dateiname    | Numerisch mit `.wav`-Erweiterung |
 | Archivformat| ZIP      |
 | Maximale Archivgröße|200 MB|
@@ -84,11 +73,12 @@ Die Audiodateien sollten so vorbereitet werden, dass sie die unten aufgeführten
 Stellen Sie alle Dateien in genau einem Ordner ohne Unterverzeichnisse zur Verfügung, und erstellen Sie daraus ein Paket mit einem ZIP-Datei-Archiv.
 
 > [!NOTE]
+> WAVE-Dateien mit einer Samplingrate von unter 16.000 Hz werden zurückgewiesen. Wenn eine ZIP-Datei WAVE-Dateien mit unterschiedlichen Samplingraten enthält, werden nur solche importiert, deren Rate gleich oder höher als 16.000 Hz ist.
 > Aktuell werden im Portal ZIP-Archiv-Importe von bis zu 200 MB unterstützt. Sie haben allerdings die Möglichkeit, auch mehrere Archive hochzuladen. Benutzer des kostenlosen Abonnements können maximal zehn ZIP-Dateien als Datasets hochladen. Bei Benutzern des Standardabonnements liegt die Höchstzahl bei 50.
 
 ### <a name="transcripts"></a>Transkripte
 
-Die Transkriptionsdatei ist eine einfache Unicode-Textdatei (UTF-16 Little-Endian). In jeder Zeile der Transkriptionsdatei muss der Name einer Audiodatei vermerkt sein. Darauf folgen das Tabstoppzeichen (Codepunkt 9) und das Transkript. Leeren Zeilen sind nicht erlaubt.
+Die Transkriptionsdatei ist eine reine Textdatei (ANSI/UTF-8/UTF-8-BOM/UTF-16-LE/UTF-16-BE). In jeder Zeile der Transkriptionsdatei muss der Name einer Audiodatei vermerkt sein. Darauf folgen das Tabstoppzeichen (Codepunkt 9) und das Transkript. Leeren Zeilen sind nicht erlaubt.
 
 Beispiel: 
 
@@ -198,7 +188,7 @@ Der angezeigte Status gibt Aufschluss über den Prozess, durch den das Dataset i
 Die Trainingszeit variiert je nach Umfang der verarbeiteten Audiodaten. In der Regel liegt diese zwischen 30 Minuten bei mehreren Hundert Äußerungen und maximal 40 Stunden im Fall von 20.000 Äußerungen.
 
 > [!NOTE]
-> Benutzer des kostenlosen Abonnements können zwei Voicefonts gleichzeitig trainieren. Bei Benutzern des Standardabonnements sind es drei. Wenn die maximale Uploadanzahl erreicht wurde, müssen Sie warten, bis der Trainingsvorgang eines oder mehrerer Voicefonts beendet wurde. Versuchen Sie es anschließend erneut.
+> Benutzer mit einem kostenlosen Abonnement können jeweils nur einen Voicefont trainieren. Bei Benutzern des Standardabonnements sind es drei. Wenn die maximale Uploadanzahl erreicht wurde, müssen Sie warten, bis der Trainingsvorgang eines oder mehrerer Voicefonts beendet wurde. Versuchen Sie es anschließend erneut.
 
 ## <a name="test-your-voice-font"></a>Testen des Voicefonts
 
@@ -218,21 +208,21 @@ Füllen Sie zuerst das Textfeld aus, und wählen Sie den Eingabemodus aus. Klick
 
 Nach dem erfolgreichen Erstellen und Testen des Sprachmodells können Sie es auf einem benutzerdefinierten Text-to-Speech-API-Endpunkt bereitstellen. Diesen verwenden Sie anschließend anstelle des üblichen Endpunkts beim Senden von Text-to-Speech-API-Anforderungen über die REST-API. Der benutzerdefinierte Endpunkt kann nur von dem Abonnement aufgerufen werden, mit dem Sie den Voicefont bereitgestellt haben.
 
-Wählen Sie zum Erstellen eines Endpunkts aus dem Menü „Custom Voice“ am oberen Rand der Seite die Option **Endpoints** (Endpunkte) aus. Die Seite „Deployment“ (Bereitstellung) mit der Tabelle der aktuellen Stimmenendpunkte wird angezeigt.
+Wählen Sie zum Erstellen eines Endpunkts aus dem Menü „Custom Voice“ am oberen Rand der Seite die Option **Endpoints** (Endpunkte) aus. Die Seite „My Deployed Voices“ (Meine bereitgestellten Stimmen) mit der Tabelle der aktuellen Stimmenendpunkte wird angezeigt. Das aktuelle Gebietsschema wird in der ersten Zeile der Tabelle angezeigt. Wenn Sie eine Bereitstellung für eine andere Sprache durchführen möchten, müssen Sie das Gebietsschema ändern. Dieses muss mit dem Gebietsschema der Stimme übereinstimmen, die Sie bereitstellen.
 
-Klicken Sie auf **Deploy voices** (Stimmen bereitstellen), um einen Endpunkt zu erstellen. Auf der Seite „Create Endpoint“ (Endpunkt erstellen) wird das aktuelle Gebietsschema in der ersten Zeile der Tabelle angezeigt. Wenn Sie eine Bereitstellung für eine andere Sprache durchführen möchten, müssen Sie das Gebietsschema ändern. Dieses muss mit dem Gebietsschema der Stimme übereinstimmen, die Sie bereitstellen. Geben Sie den Namen und die Beschreibung für den benutzerdefinierten Endpunkt an.
+Klicken Sie auf **Deploy voices** (Stimmen bereitstellen), um einen Endpunkt zu erstellen. Geben Sie den Namen und die Beschreibung für den benutzerdefinierten Endpunkt an.
 
 Wählen Sie im Menü „Subscription“ (Abonnement) das Abonnement aus, das Sie verwenden möchten. Benutzer des kostenlosen Abonnements können nur ein Modell gleichzeitig bereitstellen. Benutzer des Standardabonnements können bis zu 20 Endpunkte erstellen, wobei für jeden eine eigene Stimme verwendet werden kann.
 
 ![Endpunkt erstellen](media/custom-voice/create-endpoint.png)
 
-Klicken Sie nach der Auswahl des bereitzustellenden Modells auf **Create** (Erstellen). Die Seite „Deployment“ (Bereitstellung) wird erneut angezeigt und enthält nun einen Eintrag für den neuen Endpunkt. Das Instanziieren des neuen Endpunkts kann einige Minuten in Anspruch nehmen. Wenn als Bereitstellungsstatus „Succeeded“ (Erfolgreich) angezeigt wird, kann der Endpunkt verwendet werden.
+Klicken Sie nach der Auswahl des bereitzustellenden Modells auf **Create** (Erstellen). Die Seite „My Deployed Voices“ (Meine bereitgestellten Stimmen) wird erneut angezeigt und enthält nun einen Eintrag für den neuen Endpunkt. Das Instanziieren des neuen Endpunkts kann einige Minuten in Anspruch nehmen. Wenn als Bereitstellungsstatus „Succeeded“ (Erfolgreich) angezeigt wird, kann der Endpunkt verwendet werden.
 
 ![Meine bereitgestellten Stimmen](media/custom-voice/my-deployed-voices.png)
 
 Wenn als Bereitstellungsstatus „Succeeded“ (Erfolgreich) angezeigt wird, wird der Endpunkt des bereitstellen Voicefonts in der Tabelle „My Deployed Voices“ (Meine bereitgestellten Stimmen) angezeigt. Sie können diesen URI direkt in einer HTTP-Anforderung verwenden.
 
-Die Onlineüberprüfung des Endpunkts kann auch über das Custom Voice-Portal erfolgen. Wählen Sie zum Testen des Endpunkts **Endpoints testing** (Endpunkte testen) aus dem Custom Voice-Dropdownmenü aus. Die Seite zum Testen des Endpunkts wird angezeigt. Wählen Sie eine bereitgestellte Stimme aus, und geben Sie im Textfeld den Text ein, der vorgelesen werden soll. Als Eingabe kann entweder das Nur-Text- oder SSML-Format verwendet werden.
+Die Onlineüberprüfung des Endpunkts kann auch über das Custom Voice-Portal erfolgen. Wählen Sie zum Testen des Endpunkts **Endpoints testing** (Endpunkte testen) aus dem Custom Voice-Dropdownmenü aus. Die Seite zum Testen des Endpunkts wird angezeigt. Wählen Sie eine bereitgestellte benutzerdefinierte Stimme aus, und geben Sie im Textfeld den Text ein, der vorgelesen werden soll. Als Eingabe kann entweder das Nur-Text- oder SSML-Format verwendet werden.
 
 > [!NOTE] 
 > Wenn Sie das SSML-Format verwenden, muss mit dem `<voice>`-Tag der Namen angegeben werden, den Sie bei der Erstellung Ihrer individuellen Stimme verwendet haben.
@@ -245,5 +235,5 @@ Der benutzerdefinierte Endpunkt verfügt über dieselben Funktionen wie der Stan
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Abrufen Ihres Testabonnements für die Spracherkennung](https://azure.microsoft.com/try/cognitive-services/)
-- [Erkennen von Sprache in C#](quickstart-csharp-windows.md)
+- [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
+- [Erkennen von Sprache in C#](quickstart-csharp-dotnet-windows.md)

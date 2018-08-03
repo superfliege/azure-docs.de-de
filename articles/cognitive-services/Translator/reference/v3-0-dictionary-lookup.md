@@ -9,12 +9,12 @@ ms.technology: microsoft translator
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 31435fcfca61517bfc72d534e911a1dcadbee52b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5a186f60dc099b095c00056d965aa92618c2c708
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377530"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868084"
 ---
 # <a name="text-api-30-dictionary-lookup"></a>Text-API 3.0: Wörterbuchsuche
 
@@ -22,7 +22,7 @@ Die Suche stellt alternative Übersetzungen für ein Wort und eine kleine Anzahl
 
 ## <a name="request-url"></a>Anfrage-URL
 
-Senden Sie eine `POST`-Anforderung an:
+Sendet eine `POST`-Anforderung an:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
@@ -44,16 +44,16 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
     <td>*Erforderlicher Parameter*.<br/>Gibt die Sprache des Eingabetexts an. Sie müssen eine der zum `dictionary`-Bereich hinzugefügten [unterstützten Sprachen](.\v3-0-languages.md) als Quellsprache auswählen.</td>
   </tr>
   <tr>
-    <td>to</td>
+    <td>in:</td>
     <td>*Erforderlicher Parameter*.<br/>Gibt die Sprache des Ausgabetexts an. Sie müssen eine der zum `dictionary`-Bereich hinzugefügten [unterstützten Sprachen](.\v3-0-languages.md) als Zielsprache auswählen.</td>
   </tr>
 </table>
 
-Anforderungsheader bestehen aus Folgendem:
+Anforderungsheader enthalten Folgendes:
 
 <table width="100%">
   <th width="20%">Header</th>
-  <th>Beschreibung</th>
+  <th>BESCHREIBUNG</th>
   <tr>
     <td>_Eine Autorisierung_<br/>_Header_</td>
     <td>*Erforderlicher Anforderungsheader*.<br/>Weitere Informationen finden Sie in den [verfügbaren Optionen für die Authentifizierung](./v3-0-reference.md#authentication).</td>
@@ -84,7 +84,7 @@ Der Anforderungstext ist ein JSON-Array. Jedes Arrayelement ist ein JSON-Objekt 
 
 Es gelten die folgenden Einschränkungen:
 
-* Das Array kann über höchstens 10 Elemente verfügen.
+* Das Array darf höchstens 10 Elemente enthalten.
 * Der Textwert eines Arrayelements kann 100 Zeichen (einschließlich Leerzeichen) nicht überschreiten.
 
 ## <a name="response-body"></a>Antworttext

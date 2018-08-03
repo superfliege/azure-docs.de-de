@@ -9,12 +9,12 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 48fc234e15ce3b9172d766f6fae11b51a017ce70
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5d9391cc486dc868a1a291ccc7095291cddd3e4c
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35378495"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858458"
 ---
 # <a name="call-bing-custom-search-endpoint-nodejs"></a>Aufrufen des Endpunkts für die benutzerdefinierte Bing-Suche (Node.js)
 
@@ -34,12 +34,16 @@ Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 Um den Endpunkt der benutzerdefinierten Bing-Suche aufzurufen, gehen Sie folgendermaßen vor:
 
 1. Erstellen Sie einen Ordner für Ihren Code.
+
 2. Navigieren Sie an einer Eingabeaufforderung oder einem Terminal zu dem Ordner, den Sie gerade erstellt haben.
+
 3. Installieren Sie das Modul zum **Anfordern** eines Knotens:
     <pre>
     npm install request
     </pre>
-4. Erstellen Sie die Datei „BingCustomSearch.js“, und kopieren Sie den folgenden Code in diese:
+    
+4. Erstellen Sie die Datei „BingCustomSearch.js“, und kopieren Sie den folgenden Code in die Datei.
+
 5. Ersetzen Sie **YOUR-SUBSCRIPTION-KEY** und **YOUR-CUSTOM-CONFIG-ID** durch Ihren Schlüssel bzw. Ihre Konfigurations-ID (siehe Schritt 1).
 
     ``` javascript
@@ -78,5 +82,5 @@ Um den Endpunkt der benutzerdefinierten Bing-Suche aufzurufen, gehen Sie folgend
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Konfigurieren der gehosteten Benutzeroberfläche](./hosted-ui.md)
-- [Verwenden von Dekorationsmarkierungen zum Hervorheben von Text](./hit-highlighting.md)
+- [Verwenden von Decorator-Markierungen zum Hervorheben von Text](./hit-highlighting.md)
 - [Einteilen von Webseiten](./page-webpages.md)

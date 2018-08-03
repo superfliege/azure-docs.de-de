@@ -3,19 +3,19 @@ title: Einschränkungen von LUIS (Language Understanding Intelligent Service) | 
 titleSuffix: Azure
 description: Dieser Artikel enthält die bekannte Einschränkungen von LUIS.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: 7f46e55e11c4eb68b515a743b0f51392ffc1269e
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: ea4f31094e27f1abbe57c212f262845fd16dd984
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266803"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225277"
 ---
 # <a name="luis-boundaries"></a>Einschränkungen von LUIS
 Für LUIS gelten verschiedene Einschränkungsbereiche. Der erste umfasst die [Modelleinschränkung](#model-boundaries), mit der Absichten, Entitäten und Features in LUIS gesteuert werden. Der zweite Bereich sind [Kontingentlimits](#key-limits), die auf dem Schlüsseltyp basieren. Ein dritter Bereich umfasst die [Tastenkombinationen](#keyboard-controls) zum Steuern der LUIS-Website. Ein vierter Bereich bezieht sich auf die [Zuordnung der Regionen weltweit](luis-reference-regions.md) zwischen der LUIS-Erstellungswebsite und den LUIS-[Endpunkt](luis-glossary.md#endpoint)-APIs. 
@@ -35,7 +35,7 @@ Für LUIS gelten verschiedene Einschränkungsbereiche. Der erste umfasst die [Mo
 | [Muster](luis-concept-patterns.md)|500 Muster pro Anwendung.<br>Muster dürfen maximal 400 Zeichen lang sein.<br>3 Pattern.any-Entitäten pro Muster<br>Maximal 2 geschachtelte optionale Texte im Muster|
 | [Pattern.any-Entitäten](./luis-concept-entity-types.md)|100 pro Anwendung, 3 Pattern.any-Entitäten pro Muster |
 | [Ausdrucksliste][phrase-list]|10 Ausdruckslisten; 5.000 Elemente pro Liste|
-| [Vordefinierte Entitäten](./Pre-builtEntities.md) | Keine Begrenzung|
+| [Vordefinierte Entitäten](./luis-prebuilt-entities.md) | Keine Begrenzung|
 | [RegEx-Entitäten](./luis-concept-entity-types.md)|20 Entitäten<br>max. 500 Zeichen pro RegEx-Entitätsmuster|
 | [Rollen](luis-concept-roles.md)|300 Rollen pro Anwendung. 10 Rollen pro Entität|
 | **[Simple-Entitäten](./luis-concept-entity-types.md)| 100 Entitäten|
@@ -59,14 +59,14 @@ Verwenden Sie die folgenden Zeichen nicht in Namen von Absichten und Entitäten:
 |`\`|Umgekehrter Schrägstrich|
 
 ## <a name="key-limits"></a>Schlüsselgrenzwerte
-Beim Erstellungsschlüssel gelten verschiedene Limits für die Verwendung beim Erstellen und auf Endpunkten. Der Abonnementschlüssel für den LUIS-Dienst gilt ausschließlich für Endpunktabfragen.
+Beim Erstellungsschlüssel gelten verschiedene Limits für die Verwendung beim Erstellen und auf Endpunkten. Der Endpunktschlüssel für den LUIS-Dienst gilt ausschließlich für Endpunktabfragen.
 
 |Schlüssel|Erstellen|Endpunkt|Zweck|
 |--|--|--|--|
 |Erstellungs-/Startschlüssel|1 Mio./Monat, 5/Sekunde|1.000/Monat, 5/Sekunde|Erstellen Ihrer LUIS-App|
 |[Abonnement][pricing] – F0 – Free-Tarif |ungültig|10.000/Monat, 5/Sekunde|Abfragen Ihres LUIS-Endpunkts|
 |[Abonnement][pricing] – S0 – Basic-Tarif|ungültig|50/Sekunde|Abfragen Ihres LUIS-Endpunkts|
-|[Integration der Standpunktanalyse](publishapp.md#enable-sentiment-analysis)|ungültig|kostenlos|Hinzufügen von Informationen zur Stimmung, einschließlich Datenextraktion für Schlüsselausdrücke |
+|[Integration der Standpunktanalyse](luis-how-to-publish-app.md#enable-sentiment-analysis)|ungültig|kostenlos|Hinzufügen von Informationen zur Stimmung, einschließlich Datenextraktion für Schlüsselausdrücke |
 |Speech-Integration|ungültig|5,50 USD/1.000 Endpunktanforderungen|Konvertieren gesprochener Äußerungen in Textäußerungen und Zurückgeben der LUIS-Ergebnisse|
 
 ## <a name="keyboard-controls"></a>Tastenkombinationen

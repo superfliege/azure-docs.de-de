@@ -9,12 +9,12 @@ ms.technology: project-answer-search
 ms.topic: article
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 8c95fac0c031ec62a9d98d6c3278bd3b3f345140
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a12761c2d913cd7ffaa2cbc2cd42576c6bc96434
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376450"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866983"
 ---
 # <a name="project-answer-search-v7-reference"></a>Referenz zu Project Answer Search v7
 
@@ -63,7 +63,7 @@ Die folgenden Header kann eine Anforderung und Antwort möglicherweise enthalten
   
 |Header|BESCHREIBUNG|  
 |------------|-----------------|  
-|Accept|Optionaler Anforderungsheader.<br /><br /> Der Standardmedientyp ist application/json. Um anzugeben, dass die Antwort [JSON-LD](http://json-ld.org/) verwenden soll, legen Sie den Accept-Header auf application/ld+json fest.|  
+|Akzeptieren|Optionaler Anforderungsheader.<br /><br /> Der Standardmedientyp ist application/json. Um anzugeben, dass die Antwort [JSON-LD](http://json-ld.org/) verwenden soll, legen Sie den Accept-Header auf application/ld+json fest.|  
 |<a name="acceptlanguage" />Accept-Language|Optionaler Anforderungsheader.<br /><br /> Eine durch Kommas voneinander getrennte Liste mit Sprachen, die für Zeichenfolgen der Benutzeroberfläche verwendet werden sollen. Die Liste ist absteigend nach Präferenz sortiert. Weitere Informationen hierzu (sowie zum erwarteten Format) finden Sie unter [RFC2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Dieser Header und der Abfrageparameter [setLang](#setlang) schließen sich gegenseitig aus. Geben Sie daher nicht beide an.<br /><br /> Wenn Sie diesen Header festlegen, müssen Sie auch den Abfrageparameter [cc](#cc) angeben. Bing verwendet die erste unterstützte Sprache aus der Liste, um den Markt zu bestimmen, für den Ergebnisse zurückgegeben werden, und kombiniert sie mit dem Parameterwert `cc`. Enthält die Liste keine unterstützte Sprache, sucht Bing die nächstgelegene Sprache und den nächstgelegenen Markt, die bzw. der die Anforderung unterstützt. Alternativ dazu wird für die Ergebnisse ein aggregierter oder Standardmarkt verwendet. Wenn Sie sehen möchten, welchen Markt Bing verwendet hat, untersuchen Sie den Header „BingAPIs-Market“.<br /><br /> Verwenden Sie diesen Header und den `cc`-Abfrageparameter nur, wenn Sie mehrere Sprachen angeben. Verwenden Sie andernfalls die Abfrageparameter [mkt](#mkt) und [setLang](#setlang).<br /><br /> Eine Zeichenfolge der Benutzeroberfläche ist eine Zeichenfolge, die als Bezeichnung in einer Benutzeroberfläche verwendet wird. Die JSON-Antwortobjekte enthalten nur wenige Zeichenfolgen für Benutzeroberflächen. Die Links zu Eigenschaften von Bing.com in den Antwortobjekten verwenden die angegebene Sprache.|  
 |<a name="market" />BingAPIs-Market|Antwortheader.<br /><br /> Der von der Anforderung verwendete Markt. Das Format lautet \<Sprachcode\>-\<Ländercode\>. Beispiel: en-US.|  
 |<a name="traceid" />BingAPIs-TraceId|Antwortheader.<br /><br /> Die ID des Protokolleintrags, der die Details der Anforderung enthält. Erfassen Sie diese ID, wenn ein Fehler auftritt. Wenn Sie das Problem nicht ermitteln und beheben können, übermitteln Sie diese ID und weitere Informationen an das Supportteam.|  
@@ -199,7 +199,7 @@ Definiert Informationen zu einer Webseite in der Vorschau.
 |----------|-----------|----------|
 |name|Der Seitentitel, nicht notwendigerweise der HTML-Titel.|Zeichenfolge|
 |URL|Die URL, die tatsächlich durchforstet wurde (die Anforderung wurde möglicherweise weitergeleitet).|Zeichenfolge|  
-|Beschreibung|Eine kurze Beschreibung der Seite und des Inhalts.|Zeichenfolge|  
+|Beschreibung|Kurze Beschreibung der Seite und des Inhalts|Zeichenfolge|  
 |isFamilyFriendly|Am genauesten für Elemente im Webindex. Abrufvorgänge in Echtzeit führen diese Erkennung ausschließlich basierend auf der URL und nicht auf dem Seiteninhalt aus.|boolean|
 |primaryImageOfPage/contentUrl|Die URL zu einem repräsentativen Bild, das in die Vorschau eingeschlossen werden soll.|Zeichenfolge| 
   

@@ -3,19 +3,19 @@ title: Referenz zur vordefinierten Entität „datetimeV2“ in LUIS – Azure |
 titleSuffix: Azure
 description: In diesem Artikel erhalten Sie Informationen zur vordefinierten Entität „datetimeV2“ in Language Understanding Intelligent Service (LUIS).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 261f6f27c39c280efdcd070888d735374a473c85
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: 13f62e98a33aac51eae86d5ce1b802d4701ef3f6
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321572"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39236770"
 ---
 # <a name="datetimev2-entity"></a>DatetimeV2-Entität
 
@@ -51,7 +51,7 @@ Die folgende JSON-Beispielantwort enthält eine `datetimeV2`-Entität mit einem 
 
 |Eigenschaftenname |Eigenschaftentyp und Beschreibung|
 |---|---|
-|Entity|**string**: Text, der aus der Äußerung mit Datumstyp, Uhrzeit, Datumsbereich oder Zeitraum extrahiert wurde.|
+|Entität|**string**: Text, der aus der Äußerung mit Datumstyp, Uhrzeit, Datumsbereich oder Zeitraum extrahiert wurde.|
 |type|**string**: Einer der [Untertypen von datetimeV2](#subtypes-of-datetimev2)
 |startIndex|**int**: Der Index in der Äußerung, an dem die Entität beginnt.|
 |endIndex|**int**: Der Index in der Äußerung, an dem die Entität endet.|
@@ -88,7 +88,7 @@ Jedes Element des `values`-Arrays kann folgende Felder enthalten:
 
 **datetimeV2** unterstützt Datumsangaben in folgenden Bereichen:
 
-| Min. | Max. |
+| Min | max |
 |----------|-------------|
 | 1. Januar 1900   | 31. Dezember 2099 |
 
@@ -219,7 +219,7 @@ Im folgenden Beispiel wird veranschaulicht, wie LUIS **datetimeV2** verwendet, u
 
 ## <a name="deprecated-prebuilt-datetime"></a>Die veraltete vordefinierte datetime-Entität
 
-Die vordefinierte `datetime`-Entität ist veraltet und wurde durch [`datetimeV2`](#builtindatetimev2) ersetzt. 
+Die vordefinierte `datetime`-Entität ist veraltet und wurde durch **datetimeV2** ersetzt. 
 
 Führen Sie folgende Schritte durch, um `datetime` in Ihrer LUIS-App durch `datetimeV2` zu ersetzen:
 
@@ -230,5 +230,5 @@ Führen Sie folgende Schritte durch, um `datetime` in Ihrer LUIS-App durch `date
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu den Entitäten [dimension](luis-reference-prebuilt-dimension.md), [email](luis-reference-prebuilt-email.md) und [number](luis-reference-prebuilt-number.md). 
+Erfahren Sie mehr über die Entitäten [dimension](luis-reference-prebuilt-dimension.md), [email](luis-reference-prebuilt-email.md) und [number](luis-reference-prebuilt-number.md). 
 

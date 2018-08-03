@@ -2,19 +2,19 @@
 title: Grundlegendes zur Zusammenarbeit bei LUIS-Apps – Azure | Microsoft-Dokumentation
 description: LUIS-Apps erfordern einen einzelnen Besitzer und optionale Projektmitarbeiter.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: 51b3958f83cd110ace27f6ee42571c05843f5aa2
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: 684507b58e5ac766e9b42d3aa53cb0867a131a93
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265064"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222671"
 ---
 # <a name="collaborating"></a>Zusammenarbeiten
 
@@ -24,6 +24,8 @@ LUIS ermöglicht die Zusammenarbeit einer Gruppe von Personen beim Erstellen ein
 Ein LUIS-Konto ist einem einzelnen [Microsoft Live](https://login.live.com/)-Konto zugeordnet. Jedes LUIS-Konto erhält einen kostenlosen [Erstellungsschlüssel](luis-concept-keys.md#authoring-key) zum Erstellen sämtlicher LUIS-Apps, auf die das Konto Zugriff hat. 
 
 Ein LUIS-Konto kann über viele LUIS-Apps verfügen.
+
+Unter [Azure Active Directory-Mandantenbenutzer](luis-how-to-account-settings.md#azure-active-directory-tenant-user) finden Sie weitere Informationen zu Active Directory-Benutzerkonten. 
 
 ## <a name="luis-app-owner"></a>LUIS-App-Besitzer
 Das Konto, das eine App erstellt, ist der Besitzer. Jede App weist genau einen Besitzer auf. Der Besitzer wird in den **[Einstellungen](luis-how-to-collaborate.md)** der App aufgeführt. Dies ist das Konto, das die App löschen kann. Dies ist auch das Konto, das eine E-Mail empfängt, wenn das Endpunktkontingent 75 % des monatliches Limits erreicht. 
@@ -37,7 +39,7 @@ Ein App-Besitzer kann einer App Projektmitarbeiter hinzufügen. Der Besitzer mus
 Wenn Sie mehrere Apps mit Projektmitarbeitern gemeinsam bearbeiten möchten, müssen Sie jeder App die E-Mail-Adressen der Projektmitarbeiter hinzufügen. 
 
 ## <a name="managing-multiple-authors"></a>Verwalten mehrerer Ersteller
-Die [LUIS][LUIS]-Website erlaubt derzeit keine Erstellung auf Transaktionsebene. Sie können Erstellern die Arbeit an unabhängigen Versionen einer Basisversion ermöglichen. In den folgenden Abschnitten werden zwei unterschiedliche Methoden beschrieben.
+Die [LUIS](luis-reference-regions.md#luis-website)-Website erlaubt derzeit keine Erstellung auf Transaktionsebene. Sie können Erstellern die Arbeit an unabhängigen Versionen einer Basisversion ermöglichen. In den folgenden Abschnitten werden zwei unterschiedliche Methoden beschrieben.
 
 ### <a name="manage-multiple-versions-inside-the-same-app"></a>Verwalten mehrerer Versionen in derselben App
 Zunächst [klonen](luis-how-to-manage-versions.md#clone-a-version) Sie für jeden Ersteller eine Version aus einer Basisversion. 
@@ -60,6 +62,3 @@ Grundlegendes zu den Konzepten der [Versionsverwaltung](luis-concept-version.md)
 Weitere Informationen zum Verwalten von Projektmitarbeitern in Ihrer LUIS-App finden Sie unter [App-Einstellungen](luis-how-to-collaborate.md).
 
 Weitere Informationen zu den APIs für das Erstellen finden Sie unter [Add email to access list](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58fcccdd5aca2f08a4104342) (Hinzufügen von E-Mail-Adressen zu Zugriffslisten).
-
-[luis-reference-prebuilt-domains]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-domains
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

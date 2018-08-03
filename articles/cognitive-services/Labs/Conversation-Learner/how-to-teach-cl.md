@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 639fea64fc8eeb2c1f6e6240c4eb26efc68febbd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 41fe350fd712f6c521a9020af9a540e554abe94b
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376187"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170598"
 ---
 # <a name="how-to-teach-with-conversation-learner"></a>Einsetzen des Unterhaltungslernmoduls 
 
@@ -45,7 +45,7 @@ Einige Signale werden vom Lernprozesses natürlich bevorzugt.  Mit anderen Worte
 
 In der folgenden Tabelle werden alle Signale im Unterhaltungslernmodul aufgeführt, und es wird angegeben, welche von der Aktionsauswahl verwendet werden.  Beachten Sie, dass die Wortreihenfolge in Benutzeräußerungen ignoriert wird.
 
-Signal | Einstellung (1 = bevorzugt) | Hinweise
+Signal | Einstellung (1 = bevorzugt) | Notizen
 --- | --- | --- 
 Systemaktion in vorheriger Sequenz | 1 | 
 In der aktuellen Sequenz vorhandene Entitäten | 1 | 
@@ -56,9 +56,10 @@ Systemaktionen vor der vorherigen Sequenz | 4 |
 In Sequenzen vor der aktuellen Sequenz vorhandene Entitäten | 4 | 
 Benutzeräußerungen vor der aktuellen Sequenz | 5 | 
 
-Beachten Sie, dass die Aktionsauswahl nicht den Inhalt von Systemaktionen – den Text, den Karteninhalt oder den API-Namen oder das Verhalten – verwendet, sondern nur die Identität der Systemaktion.  Durch eine Änderung des Inhalts einer Aktion ändert sich daher nicht das Verhalten des Aktionsauswahlmodells.
-
-Beachten Sie außerdem, dass die Inhalte/Werte von Entitäten nicht verwendet werden. Es wird nur deren Vorhandensein/Abwesenheit berücksichtigt.
+> [!NOTE]
+> Die Aktionsauswahl verwendet nicht den Inhalt von Systemaktionen – den Text, den Karteninhalt oder den API-Namen oder das Verhalten – sondern nur die Identität der Systemaktion.  Durch eine Änderung des Inhalts einer Aktion ändert sich daher nicht das Verhalten des Aktionsauswahlmodells.
+>
+> Beachten Sie außerdem, dass die Inhalte/Werte von Entitäten nicht verwendet werden. Es wird nur deren Vorhandensein/Abwesenheit berücksichtigt.
 
 Nachfolgend werden mögliche Lösungen aufgeführt, die Sie anwenden können, wenn die Aktionsauswahl nicht das erwartete Verhalten zeigt:
 

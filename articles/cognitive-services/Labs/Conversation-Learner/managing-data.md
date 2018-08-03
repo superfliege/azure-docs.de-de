@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 8d42f903559a1e07b42ded33972be4b552f21b5e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f9de4377857188a8cf483321654fb857e428c7f5
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376195"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171638"
 ---
 # <a name="managing-user-data"></a>Verwalten von Benutzerdaten
 
@@ -27,7 +27,7 @@ Standardmäßig protokolliert der Unterhaltungslernmodul-Clouddienst Interaktion
 
 ## <a name="how-to-disable-logging"></a>So deaktivieren Sie die Protokollierung
 
-Sie können steuern, ob Unterhaltungen mit Endbenutzern auf der Seite „Einstellungen“ für Ihre Unterhaltungslernanwendung aktiviert sind.  Es gibt ein Kontrollkästchen für „Unterhaltungen protokollieren“.  Wenn Sie dieses Kontrollkästchen deaktivieren, werden die Unterhaltungen mit Endbenutzern nicht protokolliert.
+Sie können steuern, ob Unterhaltungen mit Endbenutzern auf der Seite „Einstellungen“ für Ihr Unterhaltungslernmodell aktiviert sind.  Es gibt ein Kontrollkästchen für „Unterhaltungen protokollieren“.  Wenn Sie dieses Kontrollkästchen deaktivieren, werden die Unterhaltungen mit Endbenutzern nicht protokolliert.
 
 ## <a name="what-is-logged"></a>Protokollierte Inhalte 
 
@@ -81,9 +81,10 @@ Zum Abrufen der Rohdaten für einen protokollierten Dialog können Sie den folge
 GET https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/logdialog/<logDialogId>
 ```
 
-Dabei ist `<appId>` der globale eindeutige Bezeichner (Globally Unique Identifier, GUID) für diese Unterhaltungslernanwendung, und `<logDialgoId>` ist die ID des protokollierten Dialogs, den Sie abrufen möchten.  
+Dabei ist `<appId>` der globale eindeutige Bezeichner (Globally Unique Identifier, GUID) für dieses Unterhaltungslernmodell, und `<logDialgoId>` ist die ID des protokollierten Dialogs, den Sie abrufen möchten.  
 
-Protokollierte Dialoge können vom Entwickler bearbeitet und dann als Trainingsdialoge gespeichert werden.  Wenn dies erfolgt, speichert das Unterhaltungslernmodul die ID des protokollierten Quelldialogs mit dem Trainingsdialog.  Darüber hinaus kann ein Trainingsdialog auf der Benutzeroberfläche „verzweigt“ werden. Wenn einem Trainingsdialog die ID des protokollierten Quelldialogs zugeordnet ist, werden Verzweigungen dieses Trainingsdialogs mit der gleichen ID des protokollierten Dialogs gekennzeichnet.
+> [!NOTE]
+> Protokollierte Dialoge können vom Entwickler bearbeitet und dann als Trainingsdialoge gespeichert werden.  Wenn dies erfolgt, speichert das Unterhaltungslernmodul die ID des protokollierten Quelldialogs mit dem Trainingsdialog.  Darüber hinaus kann ein Trainingsdialog auf der Benutzeroberfläche „verzweigt“ werden. Wenn einem Trainingsdialog die ID des protokollierten Quelldialogs zugeordnet ist, werden Verzweigungen dieses Trainingsdialogs mit der gleichen ID des protokollierten Dialogs gekennzeichnet.
 
 Führen Sie die folgenden Schritte aus, um alle von einem protokollierten Dialog abgeleiteten Trainingsdialoge abzurufen.
 
@@ -93,7 +94,7 @@ Rufen Sie zuerst alle Trainingsdialoge ab:
 GET https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/traindialogs
 ```
 
-Dabei ist `<appId>` der GUID für diese Unterhaltungslernanwendung.  
+Dabei ist `<appId>` der GUID für dieses Unterhaltungslernmodell.  
 
 Dadurch werden alle Trainingsdialoge zurückgegeben.  Suchen Sie in dieser Liste nach der zugeordneten `sourceLogDialogId`, und notieren Sie sich die zugeordnete `trainDialogId`. 
 
@@ -103,7 +104,7 @@ Um einen einzelnen Trainingsdialog nach ID abzurufen, gehen Sie wie folgt vor:
 GET https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/traindialog/<trainDialogId>
 ```
 
-Dabei ist `<appId>` der GUID für diese Unterhaltungslernanwendung, und `<trainDialogId>` ist die ID des Trainingsdialogs, den Sie abrufen möchten.  
+Dabei ist `<appId>` der globale eindeutige Bezeichner (Globally Unique Identifier, GUID) für dieses Unterhaltungslernmodell, und `<trainDialogId>` ist die ID des Trainingsdialogs, den Sie abrufen möchten.  
 
 ## <a name="how-to-delete-a-logged-dialog"></a>So löschen Sie einen protokollierten Dialog
 
@@ -113,7 +114,7 @@ Wenn Sie einen protokollierten Dialog anhand seiner ID löschen möchten, könne
 DELETE https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/logdialog/<logDialogId>
 ```
 
-Dabei ist `<appId>` der GUID für diese Unterhaltungslernanwendung, und `<logDialogId>` ist die ID des protokollierten Dialogs, den Sie löschen möchten. 
+Dabei ist `<appId>` der globale eindeutige Bezeichner (Globally Unique Identifier, GUID) für dieses Unterhaltungslernmodell, und `<logDialogId>` ist die ID des protokollierten Dialogs, den Sie löschen möchten. 
 
 Wenn Sie einen Trainingsdialog anhand seiner ID löschen möchten, können Sie den folgenden HTTP-Aufruf verwenden:
 
@@ -121,4 +122,4 @@ Wenn Sie einen Trainingsdialog anhand seiner ID löschen möchten, können Sie d
 DELETE https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/traindialog/<trainDialogId>
 ```
 
-Dabei ist `<appId>` der GUID für diese Unterhaltungslernanwendung, und `<trainDialogId>` ist die ID des Trainingsdialogs, den Sie löschen möchten. 
+Dabei ist `<appId>` der globale eindeutige Bezeichner (Globally Unique Identifier, GUID) für dieses Unterhaltungslernmodell, und `<trainDialogId>` ist die ID des Trainingsdialogs, den Sie löschen möchten. 

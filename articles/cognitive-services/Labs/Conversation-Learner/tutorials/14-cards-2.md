@@ -1,7 +1,7 @@
 ---
-title: Verwenden von Karten in einer Unterhaltungslernanwendung, Teil 2 – Microsoft Cognitive Services | Microsoft Docs
+title: Karten in einem Unterhaltungslernmodell, Teil 2 – Microsoft Cognitive Services | Microsoft-Dokumentation
 titleSuffix: Azure
-description: Hier erfahren Sie, wie Sie Karten in einer Unterhaltungslernanwendung verwenden.
+description: Verwenden von Karten in einem Unterhaltungslernmodell
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,30 +10,34 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 254f0953fd3e281a35857e69d9795e3decebf45d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1c7c88742c69041594006add76f7e3c642c64dec
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376179"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170571"
 ---
 # <a name="how-to-use-cards-part-1-of-2"></a>Verwenden von Karten (Teil 1 von 2)
 In diesem Tutorial wird gezeigt, wie Sie Ihrem Bot eine ausfüllbare Formularkarte hinzufügen. Es wird veranschaulicht, wie Formularfelder in Entitäten verschoben werden.
 
 Das Unterhaltungslernmodul geht davon aus, dass Ihre Kartendefinitionsdateien in einem Verzeichnis namens „cards“ gespeichert sind, das sich in dem Verzeichnis befindet, in dem der Bot gestartet wird.
 
-## <a name="requirements"></a>Anforderungen
+## <a name="video"></a>Video
+
+[![Tutorial 14 – Vorschau](http://aka.ms/cl-tutorial-14-preview)](http://aka.ms/blis-tutorial-14)
+
+## <a name="requirements"></a>Requirements (Anforderungen)
 Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
 
     npm run tutorial-general
 
 ## <a name="details"></a>Details
 
-Karten sind Benutzeroberflächenelemente, mit es dem Benutzer ermöglichen, eine Option in der Unterhaltung auszuwählen. 
+Karten sind Benutzeroberflächenelemente, mit denen Benutzer eine Option in der Unterhaltung auswählen können. 
 
 ### <a name="open-the-demo"></a>Öffnen der Demo
 
-Klicken Sie in der App-Liste der Webbenutzeroberfläche auf „Tutorial-14-Cards-2“. 
+Klicken Sie in der Modellliste der Webbenutzeroberfläche auf „Tutorial-14-Cards-2“. 
 
 ### <a name="the-card"></a>Die Karte
 
@@ -43,9 +47,9 @@ Diese Karte erfasst drei Felder der Lieferanschrift: Ort, Straße und Bundesland
 
 ![](../media/tutorial14_card.PNG)
 
-### <a name="actions"></a>Aktionen
+### <a name="actions"></a>Actions
 
-Wir haben drei Aktionen erstellt. Wie Sie unten sehen können, handelt es sich bei der ersten Aktion um eine Karte.
+Wir haben drei Aktionen erstellt. Wie Sie unten sehen, ist die erste Aktion eine Karte.
 
 ![](../media/tutorial14_actions.PNG)
 
@@ -61,7 +65,7 @@ Wir haben drei Entitäten definiert, die mit der Karte übereinstimmen, wie oben
 
 ![](../media/tutorial14_entities.PNG)
 
-## <a name="actions"></a>Aktionen
+## <a name="actions"></a>Actions
 
 Wir haben zwei Aktionen definiert.
 
@@ -74,7 +78,7 @@ Wir haben zwei Aktionen definiert.
 
 ### <a name="train-dialog"></a>Trainingsdialog
 
-Im Folgenden befassen wir uns mit einem Trainingsdialog.
+Im Folgenden sehen wir uns einen Trainingsdialog an.
 
 1. Klicken Sie auf „Trainingsdialoge“ und dann auf „Neuer Trainingsdialog“.
 1. Geben Sie „Hi“ ein.

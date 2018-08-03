@@ -2,19 +2,19 @@
 title: Versionsverwaltung in LUIS-Apps in Azure | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Versionen in LUIS-Anwendungen (Language Understanding Intelligent Service) verwalten.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/29/2017
-ms.author: v-geberr
-ms.openlocfilehash: 672f7991be0fc236e39daf7d1ce1d6080b31815b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: diberry
+ms.openlocfilehash: 4941cf533f1b860ead07a416d5af6f62a1978305
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373163"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226593"
 ---
 # <a name="manage-versions"></a>Verwalten von Versionen
 
@@ -28,7 +28,7 @@ Jedes Mal, wenn Sie am Modell Änderungen vorgenommen haben, wird eine neue [Ver
 Auf der Seite **Einstellungen** können Sie Einstellungen für die gesamte App konfigurieren, einschließlich der Versionen und Projektmitarbeiter. 
 
 ## <a name="clone-a-version"></a>Klonen einer Version
-1. Suchen Sie auf der Seite **Einstellungen** unter den Abschnitten „App-Einstellungen“ > „Projektmitarbeiter“ die Zeile mit der Version, die geklont werden soll. Klicken Sie ganz rechts auf die drei Punkte „...“. 
+1. Suchen Sie auf der Seite **Einstellungen** unter den Abschnitten „App-Einstellungen“ > „Projektmitarbeiter“ die Zeile mit der Version, die geklont werden soll. Wählen Sie die Auslassungspunkte (***...*** ) ganz rechts aus. 
 
     ![Versionszeileneigenschaften](./media/luis-how-to-manage-versions/version-section.png)
 
@@ -51,7 +51,7 @@ Auf der Seite **Einstellungen** können Sie Einstellungen für die gesamte App k
  > Wie in der vorhergehenden Abbildung zu sehen ist, ist eine veröffentlichte Version mit einer farbigen Markierung versehen, die den Typ des Slots angibt, in dem sie veröffentlicht wurde: Produktion (grün), Staging (rot) und beides (schwarz). Für jede veröffentlichte Version werden die Trainings- und Veröffentlichungsdaten angezeigt.
 
 ## <a name="set-active-version"></a>Festlegen der aktiven Version
-1. Klicken Sie auf der Seite **Einstellungen** in der Liste **Versionen** ganz rechts auf die drei Punkte „...“.
+1. Wählen Sie auf der Seite **Einstellungen** in der Liste **Versionen** ganz rechts die Auslassungspunkte (***...***) aus.
 
 2. Wählen Sie in der Popupliste **Als aktiv festlegen** aus.
 
@@ -82,14 +82,14 @@ Sie können eine Version in eine JSON-Datei exportieren.
 
 **So exportieren Sie eine Version**
 
-1. Klicken Sie auf der Seite **Einstellungen** in der Liste **Versionen** ganz rechts auf die drei Punkte „...“.
+1. Wählen Sie auf der Seite **Einstellungen** in der Liste **Versionen** ganz rechts die Auslassungspunkte (***...***) aus.
 
 2. Wählen Sie in der Popupliste der Aktionen **Exportieren** und dann den Speicherort aus, an dem die Datei gespeichert werden soll.
 
 ## <a name="delete-a-version"></a>Löschen einer Version
 Versionen können gelöscht werden, allerdings muss mindestens eine Version der App vorhanden sein. Sie können alle Versionen außer der aktiven Version löschen. 
 
-1. Klicken Sie auf der Seite **Einstellungen** in der Liste **Versionen** ganz rechts auf die drei Punkte „...“.
+1. Wählen Sie auf der Seite **Einstellungen** in der Liste **Versionen** ganz rechts die Auslassungspunkte (***...***) aus.
 
 2. Wählen Sie in der Popupliste der Aktionen **Löschen** und dann den Speicherort aus, an dem die Datei gespeichert werden soll.
 
@@ -99,7 +99,7 @@ Versionen können gelöscht werden, allerdings muss mindestens eine Version der 
 ## <a name="rename-a-version"></a>Umbenennen einer Version
 Versionen können umbenannt werden, sofern der Versionsname noch nicht verwendet wird.  
 
-1. Klicken Sie auf der Seite **Einstellungen** in der Liste **Versionen** ganz rechts auf die drei Punkte „...“.
+1. Wählen Sie auf der Seite **Einstellungen** in der Liste **Versionen** ganz rechts die Auslassungspunkte (***...***) aus.
 
 2. Wählen Sie in der Popupliste der Aktionen **Umbenennen** aus.
 

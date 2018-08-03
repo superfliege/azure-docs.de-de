@@ -10,16 +10,20 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 2214436b193932e5b3b80c190f7754a0436b7ed8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8d3b3f419ceacbb9a6fe2b19cf68ea6873de536f
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376387"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171016"
 ---
 # <a name="how-to-use-alternative-inputs"></a>Alternative Eingaben
 
 Dieses Tutorial zeigt Ihnen, wie Sie das Feld „Alternative Eingaben“ für Benutzereingaben in der Trainingsoberfläche verwenden.
+
+## <a name="video"></a>Video
+
+[![Tutorial 8 – Vorschau](http://aka.ms/cl-tutorial-08-preview)](http://aka.ms/blis-tutorial-08)
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
@@ -31,9 +35,9 @@ Alternative Eingaben sind alternative Benutzeräußerungen, die möglicherweise 
 
 ## <a name="steps"></a>Schritte
 
-### <a name="create-the-application"></a>Erstellen der Anwendung
+### <a name="create-the-model"></a>Erstellen des Modells
 
-1. Klicken Sie in der Webbenutzeroberfläche auf „Neue App“.
+1. Klicken Sie in der Webbenutzeroberfläche auf „Neues Modell“.
 2. Geben Sie im Feld „Name“ „AlternativeInputs“ ein. Klicken Sie auf „Erstellen“.
 
 ### <a name="create-an-entity"></a>Erstellen einer Entität
@@ -52,7 +56,7 @@ Alternative Eingaben sind alternative Benutzeräußerungen, die möglicherweise 
 Erstellen Sie dann die zweite Aktion:
 
 1. Klicken Sie auf „Aktionen“ und dann auf „Neue Aktion“.
-3. Geben Sie im Feld „Antwort“ den Satz „Das Wetter in $city ist wahrscheinlich sonnig“ ein.
+3. Geben Sie im Feld „Antwort“ den Satz „Das Wetter in $Stadt ist wahrscheinlich sonnig“ ein.
 4. Geben Sie als erforderliche Entitäten die Zeichenfolge „$city“ ein.
 4. Klicken Sie auf „Erstellen“.
 
@@ -97,7 +101,7 @@ Sehen wir uns nun an, was passiert, wenn Sie etwas semantisch Ähnliches äußer
 1. Klicken Sie auf „Neue Aktion“ und dann auf „Neuer Trainingsdialog“.
 2. Geben Sie „Hilfe“ ein.
 3. Klicken Sie auf „Bewertungsaktionen“.
-    - Beachten Sie, dass die Werte für die beiden möglichen Antworten sehr nahe beieinander liegen. Das zeigt, dass das Modell die Grenze zwischen den beiden Aktionen nicht genau bestimmen kann.
+    - Die Werte für die beiden möglichen Antworten liegen sehr nahe beieinander. Das zeigt, dass das Modell die Grenze zwischen den beiden Aktionen nicht genau bestimmen kann.
 6. Klicken Sie auf „Training abbrechen“ und auf „Bestätigen“.
 
 ![](../media/tutorial8_closescores.png)
@@ -145,7 +149,7 @@ Probieren Sie die folgenden Varianten aus:
 1. Klicken Sie auf „Neuer Trainingsdialog“.
 2. Geben Sie „Welche Funktionen hast du“ ein.
 3. Klicken Sie auf „Bewertungsaktionen“.
-    - Nun sind die Werte eindeutiger in Hinblick auf die nächste Aktion. Das zeigt die Sicherheit des Modells.
+    - Die Werte sind jetzt eindeutiger in Hinblick auf die nächste Aktion. Das zeigt die Sicherheit des Modells.
 2. Wählen Sie „Nach dem Wetter fragen“ aus.
 6. Klicken Sie auf „Training abgeschlossen“.
 

@@ -1,7 +1,7 @@
 ---
-title: Verwenden des Rückrufs zur Entitätserkennung in Verbindung mit einer Unterhaltungslernanwendung – Microsoft Cognitive Services | Microsoft-Dokumentation
+title: Verwenden des Rückrufs zur Entitätserkennung in Verbindung mit einem Unterhaltungslernmodell – Microsoft Cognitive Services | Microsoft-Dokumentation
 titleSuffix: Azure
-description: Hier erfahren Sie, wie Sie den Rückruf zur Entitätserkennung in einer Unterhaltungslernanwendung verwenden.
+description: Hier erfahren Sie, wie Sie den Rückruf zur Entitätserkennung in einem Unterhaltungslernmodell verwenden.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,19 +10,23 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: e41ea5930ff0c8395d0c93aa42e224ebfc894ba8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f168018a23d03ffb957da2dd1f67881420a21208
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376258"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171102"
 ---
 # <a name="how-to-use-entity-detection-callback"></a>Verwenden des Rückrufs zur Entitätserkennung
 
 Dieses Tutorial veranschaulicht den Rückruf zur Entitätserkennung und demonstriert ein allgemeines Muster zum Auflösen von Entitäten.
 
-## <a name="requirements"></a>Anforderungen
-Für dieses Tutorial muss der tutorialEntityDetectionCallback-Bot ausgeführt werden.
+## <a name="video"></a>Video
+
+[![Tutorial 10 – Vorschau](http://aka.ms/cl-tutorial-10-preview)](http://aka.ms/blis-tutorial-10)
+
+## <a name="requirements"></a>Requirements (Anforderungen)
+Für dieses Tutorial muss der `tutorialEntityDetectionCallback`-Bot ausgeführt werden:
 
     npm run tutorial-entity-detection
 
@@ -31,21 +35,21 @@ Der Rückruf zur Entitätserkennung ermöglicht die Verwendung von benutzerdefin
 
 ### <a name="open-the-demo"></a>Öffnen der Demo
 
-Klicken Sie in der App-Liste auf „Tutorial-10-EntityDetenctionCallback“. 
+Klicken Sie in der Modellliste auf „Tutorial-10-EntityDetenctionCallback“. 
 
 ### <a name="entities"></a>Entitäten
 
-Wir haben in der Anwendung drei Entitäten definiert.
+In diesem Modell sind drei Entitäten definiert.
 
 ![](../media/tutorial10_entities.PNG)
 
 1. „City“ (Stadt) ist eine benutzerdefinierte Entität, die der Benutzer als Texteingabe bereitstellt.
-2. „CityUnknown“ (UnbekannteStadt) ist eine programmgesteuerte Entität. Diese wird vom System aufgefüllt. Sie besteht aus einer Kopie der Benutzereingabe, wenn das System die gesuchte Stadt nicht erkennt.
+2. „CityUnknown“ (UnbekannteStadt) ist eine programmgesteuerte Entität. Diese Entität wird vom System aufgefüllt. Sie besteht aus einer Kopie der Benutzereingabe, wenn das System die gesuchte Stadt nicht erkennt.
 3. „CityResolved“ (AufgelösteStadt) ist die Stadt, die vom System erkannt wird. Dabei handelt es sich um den kanonischen Namen der Stadt – z. B. wird „Big Apple“ in „New York“ aufgelöst.
 
-### <a name="actions"></a>Aktionen
+### <a name="actions"></a>Actions
 
-Wir haben drei Aktionen erstellt. 
+In diesem Modell sind drei Aktionen definiert.
 
 ![](../media/tutorial10_actions.PNG)
 
@@ -62,7 +66,7 @@ Sehen wir uns den Code an. Sie können die EntityDetectionCallback-Methode in de
 Diese Funktion wird aufgerufen, nachdem eine Entitätsauflösung aufgetreten ist.
  
 - Sie löscht als erste Aktion „$CityUknown“. „$CityUknown“ bleibt nur für einen einzelnen Durchgang erhalten, da es stets am Anfang gelöscht wird.
-- Anschließend rufen wir die Liste der Städte ab, die erkannt wurden. Die erste wird ausgewählt, und es wird versucht, sie aufzulösen.
+- Anschließend rufen Sie die Liste der Städte ab, die erkannt wurden. Die erste wird ausgewählt, und es wird versucht, sie aufzulösen.
 - Die Funktion zur Auflösung (resolveCity) ist weiter oben im Code definiert. Sie weist eine Liste mit kanonischen Stadtnamen auf. Wenn sie den Stadtnamen in der Liste findet, gibt sie ihn zurück. Andernfalls schlägt sie in „cityMap“ nach und gibt den zugeordneten Namen zurück. Wenn sie eine Stadt nicht finden kann, gibt sie NULL zurück.
 - Wenn die Stadt schließlich in einen Namen aufgelöst wurde, wird sie in der Entität „$CityKnown“ gespeichert. Andernfalls wird die Benutzerangabe gelöscht und die Entität „$CityUknown“ aufgefüllt.
 
@@ -72,9 +76,9 @@ Diese Funktion wird aufgerufen, nachdem eine Entitätsauflösung aufgetreten ist
 2. Geben Sie „Hallo“ ein.
 3. Klicken Sie auf „Bewertungsaktionen“, und wählen Sie „Welches Stadt möchten Sie?“ aus.
 2. Geben Sie „New York“ ein.
-    - Beachten Sie, dass es als Stadtentität erkannt wird.
+    - Der Text wird als Stadtentität erkannt.
 5. Klicken Sie auf „Bewertungsaktionen“.
-    - Beachten Sie, dass „City“ und „CityResolved“ aufgefüllt wurden.
+    - `City` und `CityResolved` wurden aufgefüllt.
 6. Wählen Sie „Sie haben ‚$City‘ gesagt, und ich habe das in ‚$CityResolved‘ aufgelöst“ aus.
 7. Klicken Sie auf „Training abgeschlossen“.
 
@@ -84,9 +88,9 @@ Fügen Sie einen weiteren Beispieldialog hinzu:
 2. Geben Sie „Hallo“ ein.
 3. Klicken Sie auf „Bewertungsaktionen“, und wählen Sie „Welches Stadt möchten Sie?“ aus.
 2. Geben Sie „Big Apple“ ein.
-    - Beachten Sie, dass es als Stadtentität erkannt wird.
+    - Der Text wird als Stadtentität erkannt.
 5. Klicken Sie auf „Bewertungsaktionen“.
-    - Beachten Sie, dass „CityResolved“ die Wirkung des ausgeführten Codes anzeigt.
+    - `CityResolved` zeigt die Auswirkung des ausgeführten Codes.
 6. Wählen Sie „Sie haben ‚$City‘ gesagt, und ich habe das in ‚$CityResolved‘ aufgelöst“ aus.
 7. Klicken Sie auf „Training abgeschlossen“.
 
@@ -101,7 +105,7 @@ Fügen Sie einen weiteren Beispieldialog hinzu:
 6. Wählen Sie „Ich kenne diese Stadt nicht, ‚$CityUknown‘. Welche Stadt möchten Sie?“ aus.
 7. Geben Sie „New York“ ein.
 8. Klicken Sie auf „Bewertungsaktionen“.
-    - Beachten Sie, dass „CityUknown“ gelöscht und „CityResolved“ aufgefüllt wurde.
+    - `CityUknown` wurde gelöscht und `CityResolved` wird aufgefüllt.
 6. Wählen Sie „Sie haben ‚$City‘ gesagt, und ich habe das in ‚$CityResolved‘ aufgelöst“ aus.
 7. Klicken Sie auf „Training abgeschlossen“.
 

@@ -2,19 +2,19 @@
 title: Grundlegende Konzepte der Datenextraktion in LUIS – Azure | Microsoft-Dokumentation
 description: Erfahren Sie, welche Art von Daten von LUIS (Language Understanding Intelligent Service) extrahiert werden können.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr;
-ms.openlocfilehash: 28fde09fa9291fbcd64ce4542a008f48dd0018d1
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: f57e7cb85e6d183a59b358e347d70d4d185868a7
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265251"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225681"
 ---
 # <a name="data-extraction"></a>Extrahieren von Daten
 LUIS bietet Ihnen die Möglichkeit, Informationen aus Benutzeräußerungen in natürlicher Sprache zu erfassen. Die Informationen werden so extrahiert, dass sie von einem Programm, einer Anwendung oder einem Chatbot verwendet werden können.
@@ -26,9 +26,9 @@ LUIS stellt die Daten vom veröffentlichten [Endpunkt](luis-glossary.md#endpoint
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-Die `appID` finden Sie auf der Seite **Einstellungen** Ihrer LUIS-App sowie in der URL (nach `/apps/`), wenn Sie diese LUIS-App bearbeiten. Der `subscription-key` ist der Endpunktschlüssel, der für Abfragen an Ihre App verwendet wird. Sie können zwar Ihren kostenlosen Erstellungs-/Startschlüssel verwenden, während Sie LUIS erlernen, es ist aber wichtig, dass Sie den Abonnementschlüssel in einen Schlüssel ändern, der die [erwartete LUIS-Nutzung](luis-boundaries.md#key-limits) unterstützt. Die Einheit für das `timezoneOffset` ist Minuten.
+Die `appID` finden Sie auf der Seite **Einstellungen** Ihrer LUIS-App sowie in der URL (nach `/apps/`), wenn Sie diese LUIS-App bearbeiten. Der `subscription-key` ist der Endpunktschlüssel, der für Abfragen an Ihre App verwendet wird. Sie können zwar Ihren kostenlosen Erstellungs-/Startschlüssel verwenden, während Sie LUIS erlernen, es ist aber wichtig, dass Sie den Endpunktschlüssel in einen Schlüssel ändern, der die [erwartete LUIS-Nutzung](luis-boundaries.md#key-limits) unterstützt. Die Einheit für das `timezoneOffset` ist Minuten.
 
-Die **HTTPS-Antwort** enthält alle Informationen zur Absicht und den Entitäten, die LUIS anhand des aktuell veröffentlichten Modells auf dem Staging- oder Produktionsendpunkt ermitteln konnte. Die Endpunkt-URL finden Sie auf der [LUIS][LUIS]-Website auf der Seite **Veröffentlichen**. 
+Die **HTTPS-Antwort** enthält alle Informationen zur Absicht und den Entitäten, die LUIS anhand des aktuell veröffentlichten Modells auf dem Staging- oder Produktionsendpunkt ermitteln konnte. Die Endpunkt-URL finden Sie auf der [LUIS](luis-reference-regions.md)-Website auf der Seite **Veröffentlichen**. 
 
 ## <a name="data-from-intents"></a>Daten aus Absichten
 Die wichtigste Angabe ist der **Name der Absicht** mit der höchsten Bewertung. Beim [Schnellstart](luis-quickstart-intents-only.md) zu `MyStore` lautet die Endpunktantwort:
@@ -194,14 +194,14 @@ Die vom Endpunkt zurückgegebenen Daten enthalten den Namen der Entität und der
 
 |Datenobjekt|Übergeordnet|Untergeordnet|Wert|
 |--|--|--|--|--|
-|Entität vom Typ „Hierarchical“|Speicherort|ToLocation|"paris"|
+|Entität vom Typ „Hierarchical“|Standort|ToLocation|"paris"|
 
 ## <a name="composite-entity-data"></a>Daten zusammengesetzter Entitäten
 [Zusammengesetzte](luis-concept-entity-types.md) Entitäten sind maschinell erlernt und können ein Wort oder einen Ausdruck enthalten. Betrachten Sie beispielsweise eine zusammengesetzte Entität der vordefinierten Entitäten `number` und `Location::ToLocation` bei der folgenden Äußerung:
 
 `book 2 tickets to paris`
 
-Beachten Sie, dass zwischen der Anzahl `2` und der ToLocation `paris` Wörter stehen, die nicht Teil der Entitäten sind. Die grüne Unterstreichung, die in einer bezeichneten Äußerung auf der [LUIS][LUIS]-Website verwendet wird, gibt eine zusammengesetzte Entität an.
+Beachten Sie, dass zwischen der Anzahl `2` und der ToLocation `paris` Wörter stehen, die nicht Teil der Entitäten sind. Die grüne Unterstreichung, die in einer bezeichneten Äußerung auf der [LUIS](luis-reference-regions.md)-Website verwendet wird, gibt eine zusammengesetzte Entität an.
 
 ![Entität vom Typ „Composite“](./media/luis-concept-data-extraction/composite-entity.png)
 
@@ -426,13 +426,13 @@ Entitäten aus [regulären Ausdrücken](luis-concept-entity-types.md) werden bas
 Das Abrufen von Namen aus einer Äußerung ist schwierig, da es sich bei einem Namen um nahezu jede Kombination aus Buchstaben und Wörtern handeln kann. Je nach Art von Namen, die Sie extrahieren möchten, haben Sie verschiedene Optionen. Dies sind keine Regeln, sondern eher Richtlinien. 
 
 ### <a name="names-of-people"></a>Namen von Personen
-Für Namen von Personen gelten je nach Sprache und Kultur nur wenige Formatvorgaben. Verwenden Sie entweder eine hierarchische Entität mit Vor- und Nachnamen als untergeordnete Entitäten oder eine einfache Entität mit den Vor- und Nachnamen als Rollen. Geben Sie unbedingt Beispiele an, bei denen die Vor- und Nachnamen an unterschiedlichen Positionen in der Äußerung, in Äußerungen von verschiedener Länge und in Äußerungen aller Absichten (einschließlich der Absicht „None“) verwendet werden. [Überprüfen](label-suggested-utterances.md) Sie die Endpunktäußerungen regelmäßig, um alle Namen zu bezeichnen, die nicht richtig vorhergesagt wurden. 
+Für Namen von Personen gelten je nach Sprache und Kultur nur wenige Formatvorgaben. Verwenden Sie entweder eine hierarchische Entität mit Vor- und Nachnamen als untergeordnete Entitäten oder eine einfache Entität mit den Vor- und Nachnamen als Rollen. Geben Sie unbedingt Beispiele an, bei denen die Vor- und Nachnamen an unterschiedlichen Positionen in der Äußerung, in Äußerungen von verschiedener Länge und in Äußerungen aller Absichten (einschließlich der Absicht „None“) verwendet werden. [Überprüfen](luis-how-to-review-endoint-utt.md) Sie die Endpunktäußerungen regelmäßig, um alle Namen zu bezeichnen, die nicht richtig vorhergesagt wurden. 
 
 ### <a name="names-of-places"></a>Namen von Orten
-Namen von Orten sind feststehend und bekannt. Sie umfassen z.B. Städte, Landkreise, Bundesländer, Provinzen und Länder. Wenn Ihre App einen bekannten Satz von Standorten verwendet, sollten Sie eine Listenentität in Erwägung ziehen. Wenn Sie alle Ortsnamen finden müssen, erstellen Sie eine einfache Entität, und geben Sie verschiedene Beispiele an. Fügen Sie eine Ausdrucksliste mit Ortsnamen hinzu, um anzugeben, wie Ortsnamen in Ihrer App vorkommen. [Überprüfen](label-suggested-utterances.md) Sie die Endpunktäußerungen regelmäßig, um alle Namen zu bezeichnen, die nicht richtig vorhergesagt wurden. 
+Namen von Orten sind feststehend und bekannt. Sie umfassen z.B. Städte, Landkreise, Bundesländer, Provinzen und Länder. Wenn Ihre App einen bekannten Satz von Standorten verwendet, sollten Sie eine Listenentität in Erwägung ziehen. Wenn Sie alle Ortsnamen finden müssen, erstellen Sie eine einfache Entität, und geben Sie verschiedene Beispiele an. Fügen Sie eine Ausdrucksliste mit Ortsnamen hinzu, um anzugeben, wie Ortsnamen in Ihrer App vorkommen. [Überprüfen](luis-how-to-review-endoint-utt.md) Sie die Endpunktäußerungen regelmäßig, um alle Namen zu bezeichnen, die nicht richtig vorhergesagt wurden. 
 
 ### <a name="new-and-emerging-names"></a>Neue und sich entwickelnde Namen
-Einige Apps müssen in der Lage sein, neue oder sich entwickelnde Namen, z.B. von Produkten oder Unternehmen, finden zu können. Dies ist die schwierigste Form der Datenextraktion. Beginnen Sie mit einer einfachen Entität, und fügen Sie eine Ausdrucksliste hinzu. [Überprüfen](label-suggested-utterances.md) Sie die Endpunktäußerungen regelmäßig, um alle Namen zu bezeichnen, die nicht richtig vorhergesagt wurden. 
+Einige Apps müssen in der Lage sein, neue oder sich entwickelnde Namen, z.B. von Produkten oder Unternehmen, finden zu können. Dies ist die schwierigste Form der Datenextraktion. Beginnen Sie mit einer einfachen Entität, und fügen Sie eine Ausdrucksliste hinzu. [Überprüfen](luis-how-to-review-endoint-utt.md) Sie die Endpunktäußerungen regelmäßig, um alle Namen zu bezeichnen, die nicht richtig vorhergesagt wurden. 
 
 ## <a name="pattern-roles-data"></a>Daten von Musterrollen
 Rollen sind kontextabhängige Unterschiede von Entitäten. 
@@ -710,5 +710,3 @@ Der LUIS-Endpunkt kann die gleichen Daten in verschiedenen Entitäten erkennen:
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum Hinzufügen von Entitäten zu LUIS-Apps finden Sie unter [Hinzufügen von Entitäten](luis-how-to-add-entities.md).
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

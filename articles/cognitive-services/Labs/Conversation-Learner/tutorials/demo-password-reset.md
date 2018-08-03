@@ -1,7 +1,7 @@
 ---
-title: 'Demo: Unterhaltungslernanwendung, Kennwortzurücksetzung – Microsoft Cognitive Services | Microsoft-Dokumentation'
+title: 'Demo: Unterhaltungslernmodell, Kennwortzurücksetzung – Microsoft Cognitive Services | Microsoft-Dokumentation'
 titleSuffix: Azure
-description: Erstellen einer Demo in einer Unterhaltungslernanwendung
+description: Erstellen einer Demo in einem Unterhaltungslernmodell
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,17 +10,21 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 24d61787a79ee1a1a9737c417aa966cc8fd75930
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f633dd375d690a1c3e66a2a6e02ae69665dbe960
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376219"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170632"
 ---
 # <a name="demo-password-reset"></a>Demo: Kennwortzurücksetzung
 Diese Demo zeigt, wie Sie mithilfe eines einfachen Bots für den technischen Support Ihr Kennwort zurücksetzen. 
 
 Sie erfahren, wie das Unterhaltungslernmodul schwierige Dialogabläufe und Sequenzen aus mehreren Aktionen (einschließlich domänenexterner Klasse) erlernen kann. Diese Demo verwendet keine Codes oder Entitäten.
+
+## <a name="video"></a>Video
+
+[![Demo: Kennwort – Vorschau](http://aka.ms/cl-demo-password-preview)](http://aka.ms/blis-demo-password)
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 Für dieses Tutorial muss der Kennwortzurücksetzung-Bot ausgeführt werden.
@@ -29,7 +33,7 @@ Für dieses Tutorial muss der Kennwortzurücksetzung-Bot ausgeführt werden.
 
 ### <a name="open-the-demo"></a>Öffnen der Demo
 
-Klicken Sie in der App-Liste der Webbenutzeroberfläche auf „Demotutorial: Kennwortzurücksetzung“. 
+Klicken Sie in der Modellliste der Webbenutzeroberfläche auf „Demotutorial: Kennwortzurücksetzung“. 
 
 ### <a name="actions"></a>Actions
 

@@ -1,20 +1,20 @@
 ---
 title: Häufig gestellte Fragen zu Language Understanding (LUIS) in Azure | Microsoft-Dokumentation
 description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Language Understanding (LUIS).
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: fd63ffd312e3ac17a6376eb3c9bef8f1978e3935
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: diberry
+ms.openlocfilehash: 8e0d834b94ff902eb0c1e0ada2fb32d374cee12b
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333614"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39239116"
 ---
 # <a name="language-understanding-faq"></a>Häufig gestellte Fragen zu Language Understanding
 
@@ -53,21 +53,25 @@ Informationen hierzu finden Sie unter [Entitäten](luis-concept-entity-types.md)
 ### <a name="should-variations-of-an-example-utterance-include-punctuation"></a>Sollten Variationen einer Beispieläußerung Satzzeichen enthalten? 
 Sie sollten die Variationen entweder als Beispieläußerung der Absicht hinzufügen oder das Muster der Beispieläußerung zusammen mit der [Syntax](luis-concept-patterns.md#pattern-syntax) hinzufügen, durch die Satzzeichen ignoriert werden. 
 
+### <a name="does-luis-currently-support-cortana"></a>Unterstützt LUIS derzeit Cortana?
+
+Vorgefertigte Cortana-Apps wurden 2017 eingestellt. Sie werden nicht mehr unterstützt. 
+
 ## <a name="luis-endpoint"></a>LUIS-Endpunkt
 
 ### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>Warum fügt LUIS vor und nach Wörtern oder in der Mitte von Wörtern Leerzeichen in die Abfrage ein?
 LUIS nutzt für die [Tokenisierung](luis-supported-languages.md#tokenization) der Äußerung deren [Kultur](luis-glossary.md#token). Sowohl der ursprüngliche Wert als auch der nach der Tokenisierung vorhandene Wert können [extrahiert](luis-concept-data-extraction.md#tokenized-entity-returned) werden.
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>Wie lässt sich ein LUIS-Endpunkt erstellen und zuweisen?
-Erstellen Sie zunächst für Ihren [Servicelevel](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) den [Endpunktschlüssel](luis-how-to-azure-subscription.md#create-luis-endpoint-key) in Azure. Anschließend müssen Sie den Schlüssel auf auf der Seite **[Veröffentlichen](publishapp.md)** [zuweisen](Manage-keys.md#assign-endpoint-key). Für diese Aktion steht keine API zur Verfügung. Danach müssen Sie die HTTP-Anforderung an den Endpunkt so ändern, dass der [neue Endpunktschlüssel](luis-concept-keys.md#use-endpoint-key-in-query) verwendet wird.
+Erstellen Sie zunächst für Ihren [Servicelevel](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) den [Endpunktschlüssel](luis-how-to-azure-subscription.md#create-luis-endpoint-key) in Azure. Anschließend müssen Sie den Schlüssel auf auf der Seite **[Veröffentlichen](luis-how-to-publish-app.md)** [zuweisen](luis-how-to-manage-keys.md#assign-endpoint-key). Für diese Aktion steht keine API zur Verfügung. Danach müssen Sie die HTTP-Anforderung an den Endpunkt so ändern, dass der [neue Endpunktschlüssel](luis-concept-keys.md#use-endpoint-key-in-query) verwendet wird.
 
 ### <a name="how-do-i-interpret-luis-scores"></a>Wie lassen sich LUIS-Bewertungen interpretieren? 
 Ihr System sollte die am höchsten bewertete Absicht unabhängig vom Wert verwenden. Ein Wert unter 0,5 (weniger als 50 %) ist nicht zwangsläufig mit einer geringen Zuverlässigkeit von LUIS gleichzusetzen. Durch das Bereitstellen weiterer Trainingsdaten kann die Bewertung für die wahrscheinlichste Absicht verbessert werden.
 
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>Warum werden Endpunktabrufe nicht im App-Dashboard angezeigt?
-Die Gesamtzahl der Endpunktabrufe in Ihrem App-Dashboard wird regelmäßig aktualisiert. Die Metriken, die dem LUIS-Abonnementschlüssel im Azure-Portal zugeordnet sind, werden jedoch häufiger aktualisiert. 
+Die Gesamtzahl der Endpunktabrufe in Ihrem App-Dashboard wird regelmäßig aktualisiert. Die Metriken, die dem LUIS-Endpunktschlüssel im Azure-Portal zugeordnet sind, werden jedoch häufiger aktualisiert. 
 
-Wenn die Endpunktabrufe im Dashboard nicht aktualisiert werden, müssen Sie sich beim Azure-Portal anmelden, nach der Ressource suchen, die Ihrem LUIS-Abonnementschlüssel zugeordnet ist, und **Metriken** öffnen. Dort wählen Sie dann die Metrik **Aufrufe gesamt** aus. Wenn der Abonnementschlüssel für mehr als eine LUIS-App verwendet wird, zeigt die Metrik im Azure-Portal die aggregieren Aufrufe durch alle LUIS-Apps an, die den Schlüssel verwenden.
+Wenn die Endpunktabrufe im Dashboard nicht aktualisiert werden, melden Sie sich im Azure-Portal an, suchen Sie nach der Ressource, die Ihrem LUIS-Endpunktschlüssel zugeordnet ist, und öffnen Sie **Metriken**. Wählen Sie darin die Metrik **Aufrufe gesamt** aus. Wenn der Endpunktschlüssel für mehr als eine LUIS-App verwendet wird, zeigt die Metrik im Azure-Portal die aggregierten Aufrufe durch alle LUIS-Apps an, die den Schlüssel verwenden.
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Bisher hat meine LUIS-App problemlos funktioniert. Nun werden jedoch 403-Fehlermeldungen angezeigt. Ich habe die App nicht geändert. Wie behebe ich das Problem? 
 Führen Sie die Schritte in der [nächsten FAQ-Anleitung](#how-do-i-create-and-assign-a-luis-endpoint-key) durch, um einen LUIS-Endpunktschlüssel zu erstellen und ihn der App zuzuweisen. Danach müssen Sie die HTTP-Anforderung an den Endpunkt so ändern, dass der [neue Endpunktschlüssel](luis-concept-keys.md#use-endpoint-key-in-query) verwendet wird.
@@ -115,8 +119,9 @@ In Azure stellen Mandanten Clients oder Organisationen dar, die einem Dienst zug
 
 ![Mandanten-ID im Azure-Portal](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
-### <a name="why-are-there-more-subscription-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>Warum befinden sich auf der Veröffentlichungsseite meiner App mehr Abonnementschlüssel, als ich der App zugewiesen habe? 
-Jede LUIS-App verfügt über einen Erstellungsschlüssel (auch als Startschlüssel bezeichnet). LUIS-Abonnementschlüssel, die innerhalb des GA-Zeitrahmens (General Availability, allgemeine Verfügbarkeit) erstellt wurden, werden immer auf Ihrer Veröffentlichungsseite angezeigt, und zwar unabhängig davon, ob Sie diese der App hinzugefügt haben. Dadurch soll die GA-Migration erleichtert werden. Neue LUIS-Abonnementschlüssel werden nicht auf der Veröffentlichungsseite angezeigt. 
+<a name="why-are-there-more-subscription-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>
+### <a name="why-are-there-more-endpoint-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>Warum befinden sich auf der Veröffentlichungsseite meiner App mehr Endpunktschlüssel, als ich der App zugewiesen habe? 
+Jede LUIS-App verfügt über einen Erstellungsschlüssel (auch als Startschlüssel bezeichnet). LUIS-Endpunktschlüssel, die im Zeitrahmen der allgemeinen Verfügbarkeit (General Availability, GA) erstellt wurden, werden auf Ihrer Veröffentlichungsseite angezeigt – unabhängig davon, ob Sie diese der App hinzugefügt haben. Dadurch soll die GA-Migration erleichtert werden. Neue LUIS-Endpunktschlüssel werden nicht auf der Veröffentlichungsseite angezeigt. 
 
 ## <a name="app-management"></a>App-Verwaltung
 
@@ -153,7 +158,7 @@ Sie sollten keine Testäußerungen protokollieren, wenn Sie das Protokoll für d
 ## <a name="app-notification"></a>App-Benachrichtigungen
 
 ### <a name="why-did-i-get-an-email-saying-im-almost-out-of-quota"></a>Wieso habe ich eine E-Mail erhalten, in der darauf hingewiesen wird, dass mein Kontingent bald aufgebraucht ist?
-Ihr Erstellungsschlüssel (auch als Startschlüssel bezeichnet) kann für maximal 1000 Endpunktabfragen pro Monat verwendet werden. Erstellen Sie einen kostenlosen oder kostenpflichtigen LUIS-Abonnementschlüssel, und verwenden Sie diesen für Endpunktabfragen. Wenn Sie Endpunktabfragen über einen Bot oder eine andere Clientanwendung ausführen, müssen Sie den LUIS-Endpunktschlüssel dort ändern. 
+Ihr Erstellungsschlüssel (auch als Startschlüssel bezeichnet) kann für maximal 1000 Endpunktabfragen pro Monat verwendet werden. Erstellen Sie einen kostenlosen oder kostenpflichtigen LUIS-Endpunktschlüssel, und verwenden Sie diesen für Endpunktabfragen. Wenn Sie Endpunktabfragen über einen Bot oder eine andere Clientanwendung ausführen, müssen Sie den LUIS-Endpunktschlüssel dort ändern. 
 
 ## <a name="integrating-luis"></a>Integrieren von LUIS
 
@@ -167,7 +172,7 @@ Die [Sprachoptimierung ](https://docs.microsoft.com/bot-framework/bot-service-ma
 
 ## <a name="luis-service"></a>LUIS-Dienst 
 
-### <a name="is-luis-available-on-premise-or-in-private-cloud"></a>Kann LUIS lokal oder in einer privaten Cloud genutzt werden?
+### <a name="is-luis-available-on-premises-or-in-private-cloud"></a>Kann LUIS lokal oder in einer privaten Cloud genutzt werden?
 Nein. 
 
 ## <a name="changes-to-the-docs"></a>Dokumentationsänderungen
@@ -182,7 +187,7 @@ Die Artikel, die sich zuvor im Tutorialabschnitt befanden, sind nun im Abschnitt
 |Programmgesteuertes Erstellen einer LUIS-App über [Node.js](luis-tutorial-node-import-utterances-csv.md)|
 |Verwenden einer [zusammengesetzten Entität](luis-tutorial-composite-entity.md) zum Extrahieren von gruppierten Daten|
 |Hinzufügen einer [Listenentität](luis-tutorial-list-entity.md) zur verbesserten Entitätserkennung mithilfe von Node.js|
-|Verbessern der Vorhersagegenauigkeit mit [Begriffslisten](luis-tutorial-interchangeable-phrase-list.md), [Mustern](luis-tutorial-pattern.md) und [Batchtests](luis-tutorial-batch-testing.md)|
+|Verbessern der Vorhersagegenauigkeit mit [Begriffslisten](luis-quickstart-primary-and-secondary-data.md), [Mustern](luis-tutorial-pattern.md) und [Batchtests](luis-tutorial-batch-testing.md)|
 |[Verbessern von Rechtschreibfehlern](luis-tutorial-batch-testing.md) mit der Bing-Rechtschreibprüfungs-API v7
 
 ### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>Bei der Build 2018-Konferenz wurde ein Language Understanding-Feature oder eine Language Understanding-Demo erwähnt, aber ich erinnere mich nicht mehr an den Namen. Um welche Features oder Demos handelte es sich? 
@@ -193,7 +198,7 @@ Die folgenden Features wurden bei der Build 2018-Konferenz veröffentlicht:
 |--|--|
 |Verbesserungen|Entitäten für [reguläre Ausdrücke](luis-concept-data-extraction.md##regular-expression-entity-data) und [Schlüsselbegriffe](luis-concept-data-extraction.md#key-phrase-extraction-entity-data)
 |Muster|[Musterkonzept](luis-concept-patterns.md), [Tutorial](luis-tutorial-pattern.md), [Vorgehensweise](luis-how-to-model-intent-pattern.md)<br>[Patterns.Any](luis-concept-entity-types.md)-Entitätskonzept einschließlich [expliziter Listen](luis-concept-patterns.md#explicit-lists) für Ausnahmen<br>[Rollenkonzept](luis-concept-roles.md)|
-|Integrationen|Integration der [Standpunktanalyse](publishapp.md#enable-sentiment-analysis) in die [Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)<br>Integration der [Sprachoptimierung](publishapp.md#enable-speech-priming) in Verbindung mit dem [Speech SDK](https://aka.ms/SpeechSDK) in [Speech](https://docs.microsoft.com/azure/cognitive-services/speech)|
+|Integrationen|Integration der [Standpunktanalyse](luis-how-to-publish-app.md#enable-sentiment-analysis) in die [Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)<br>Integration der [Sprachoptimierung](luis-how-to-publish-app.md#enable-speech-priming) in Verbindung mit dem [Speech SDK](https://aka.ms/SpeechSDK) in [Speech](https://docs.microsoft.com/azure/cognitive-services/speech)|
 |Dispatch-Tool|Das [Dispatch-Befehlszeilentool](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps) ist Teil der [Bot Builder-Tools](https://github.com/Microsoft/botbuilder-tools) und dient dazu, mehrere LUIS- und QnA Maker-Apps in einer einzelnen LUIS-App zu vereinen. Dadurch kann die Absichtserkennung eines Bots verbessert werden.
 
 Zusätzliche [API-Erstellungsrouten](https://github.com/Microsoft/LUIS-Samples/blob/master/authoring-routes.md) wurden hinzugefügt. 
@@ -212,5 +217,3 @@ Projekte:
 Weitere Informationen zu LUIS finden Sie in den folgenden Ressourcen:
 * [Mit dem Tag „LUIS“ versehene Fragen auf Stack Overflow](https://stackoverflow.com/questions/tagged/luis)
 * [MSDN-Forum für Language Understanding Intelligent Services (LUIS)](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS) 
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

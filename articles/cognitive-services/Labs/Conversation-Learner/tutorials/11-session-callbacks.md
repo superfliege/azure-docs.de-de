@@ -1,7 +1,7 @@
 ---
-title: Sitzungsrückrufe in einer Unterhaltungslernanwendung – Microsoft Cognitive Services | Microsoft-Dokumentation
+title: Sitzungsrückrufe in einem Unterhaltungslernmodell – Microsoft Cognitive Services | Microsoft-Dokumentation
 titleSuffix: Azure
-description: Informationen zum Verwenden von Sitzungsrückrufen in einer Unterhaltungslernanwendung
+description: Erfahren Sie, wie Sie Sitzungsrückrufe in einem Unterhaltungslernmodell verwenden.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,19 +10,23 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: f8970620c1f0f87ccae13d031092a048144ffb19
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0f51b232470e4e4da3f25d40d025dd3b09dd1204
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376251"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171914"
 ---
-# <a name="how-to-use-session-callbacks-with-a-conversation-learner-application"></a>Sitzungsrückrufe in einer Unterhaltungslernanwendung
+# <a name="how-to-use-session-callbacks-with-a-conversation-learner-model"></a>Verwenden von Sitzungsrückrufen in einem Unterhaltungslernmodell
 
 Dieses Tutorial veranschaulicht die Rückrufe „onSessionStart“ und „onSessionEnd“.
 
+## <a name="video"></a>Video
+
+[![Tutorial 11 – Vorschau](http://aka.ms/cl-tutorial-11-preview)](http://aka.ms/blis-tutorial-11)
+
 ## <a name="requirements"></a>Requirements (Anforderungen)
-Für dieses Tutorial muss der tutorialSessionCallbacks.ts-Bot ausgeführt werden.
+Für dieses Tutorial muss der `tutorialSessionCallbacks`-Bot ausgeführt werden.
 
     npm run tutorial-session-callbacks
 
@@ -35,19 +39,19 @@ Bei langen Pausen wechselt der Bot zu seiner nächsten Sitzung.  Beim Start eine
 
 ### <a name="open-the-demo"></a>Öffnen der Demo
 
-Klicken Sie in der App-Liste auf „Tutorial-11-SessionCallbacks“. 
+Klicken Sie in der Modellliste auf „Tutorial-11-SessionCallbacks“. 
 
 ### <a name="entities"></a>Entitäten
 
-Wir haben in der Anwendung vier Entitäten definiert.
+In diesem Modell sind vier Entitäten definiert.
 
 ![](../media/tutorial11_entities.PNG)
 
-„BotName“ ist eine Entität des Typs „Programmgesteuert“.  Sie wird vom Bot beim Beginn der Sitzung festgelegt.
+„BotName“ ist eine Entität des Typs „Programmgesteuert“.  Die Entität wird vom Bot beim Beginn der Sitzung festgelegt.
 
 ### <a name="actions"></a>Actions
 
-Wir haben vier Aktionen erstellt. 
+In diesem Modell sind vier Aktionen definiert.
 
 ![](../media/tutorial11_actions.PNG)
 
@@ -70,7 +74,7 @@ Der Code für die Rückrufmethoden befindet sich in folgender Datei: C: \<instal
 Die beiden folgenden Methoden sind optional.
 
 - OnSessionStartCallback: Diese Methode bestimmt die Entität „BotName“.
-- OnSessionEndCallback: Mit dieser Methode können Sie angeben, was Sie löschen möchten. Alle Entitäten außer dem Namen und der Telefonnummer des Benutzers werden gelöscht.
+- OnSessionEndCallback: Mit dieser Methode können Sie angeben, was Sie erhalten möchten. Alle Entitäten außer dem Namen und der Telefonnummer des Benutzers werden gelöscht.
 
 ### <a name="try-the-bot"></a>Testen des Bots
 

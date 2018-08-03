@@ -9,12 +9,12 @@ ms.technology: qna-maker
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jaswel
-ms.openlocfilehash: fcb44a4c737f85941b33c278cfbae3f128df8207
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: d68ff91d74a6c43c6d492aa07e916a842b50e96f
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301290"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867588"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-go"></a>Schnellstart für die Microsoft QnA Maker-API mit Go 
 <a name="HOLTop"></a>
@@ -40,7 +40,7 @@ In diesem Artikel erfahren Sie, wie Sie die [Microsoft QnA Maker-API](../Overvie
 
 Sie benötigen [Go 1.10.1](https://golang.org/dl/), um diesen Code auszuführen.
 
-Sie müssen über ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit der **Microsoft QnA Maker-API** verfügen. Sie benötigen den Schlüssel eines kostenpflichtigen Abonnements von Ihrem [Azure-Dashboard](https://portal.azure.com/#create/Microsoft.CognitiveServices).
+Sie müssen über ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit der **Microsoft QnA Maker-API** verfügen. Sie benötigen einen kostenpflichtigen Abonnementschlüssel aus Ihrem [Azure-Dashboard](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
 <a name="Create"></a>
 
@@ -400,7 +400,7 @@ Press any key to continue.
 
 ## <a name="get-request-status"></a>Abrufen des Anforderungsstatus
 
-Sie können die Methode [Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) (Vorgang) aufrufen, um den Status einer Anforderung zum Erstellen oder Aktualisieren einer Wissensdatenbank zu prüfen. Sie können dem Beispielcode für die Methoden [Create](#Create) oder [Update](#Update) entnehmen, wie diese Methode verwendet wird.
+Sie können die Methode für [Vorgänge](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) aufrufen, um den Status einer Anforderung zum Erstellen oder Aktualisieren einer Wissensdatenbank zu prüfen. Sie können dem Beispielcode für die Methoden zum [Erstellen](#Create) oder [Aktualisieren](#Update) entnehmen, wie diese Methode verwendet wird.
 
 [Nach oben](#HOLTop)
 
@@ -720,8 +720,8 @@ Der folgende Code ruft mithilfe der Methode **Generate answers** (Antworten gene
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Go-Projekt.
 1. Fügen Sie den unten stehenden Code hinzu.
 1. Ersetzen Sie den `host`-Wert durch den Websitenamen für Ihr QnA Maker-Abonnement. Weitere Informationen finden Sie unter [Erstellen eines QnA Maker-Diensts](../How-To/set-up-qnamaker-service-azure.md).
-1. Ersetzen Sie den `endpoint_key`-Wert durch einen für Ihr Abonnement gültigen Endpunktschlüssel. Beachten Sie, dass es sich dabei nicht um den Abonnementschlüssel handelt. Sie können Ihre Endpunktschlüssel mithilfe der Methode [Get endpoint keys](#GetKeys) (Endpunktschlüssel abrufen) abrufen.
-1. Ersetzen Sie den `kb`-Wert durch die ID der Wissensdatenbank, die Sie auf Antworten abfragen möchten. Beachten Sie, dass diese Wissensdatenbank bereits mithilfe der Methode [Publish](#Publish) veröffentlicht worden sein muss.
+1. Ersetzen Sie den `endpoint_key`-Wert durch einen für Ihr Abonnement gültigen Endpunktschlüssel. Beachten Sie, dass es sich dabei nicht um den Abonnementschlüssel handelt. Sie können Ihre Endpunktschlüssel über die Methode zum [Abrufen von Endpunktschlüsseln](#GetKeys) abrufen.
+1. Ersetzen Sie den `kb`-Wert durch die ID der Wissensdatenbank, die Sie auf Antworten abfragen möchten. Beachten Sie, dass diese Wissensdatenbank bereits mithilfe der Methode zum [Veröffentlichen](#Publish) veröffentlicht worden sein muss.
 1. Führen Sie das Programm aus.
 
 ```go
@@ -1083,7 +1083,7 @@ func main() {
 }
 ```
 
-**Antwort auf das Löschen einer Wissensdatenbank**
+**Antwort auf das Löschen von Wissensdatenbanken**
 
 Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
@@ -1324,7 +1324,7 @@ func main() {
 }
 ```
 
-**Antwort auf das Abrufen von Wortänderungen**
+**Antwort auf das Abrufen von Wortvarianten**
 
 Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
@@ -1428,7 +1428,7 @@ func main() {
 }
 ```
 
-**Antwort auf das Ersetzen von Wortänderungen**
+**Antwort auf das Ersetzen von Wortvarianten**
 
 Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 

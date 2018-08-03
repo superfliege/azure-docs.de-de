@@ -2,19 +2,19 @@
 title: Testen der LUIS-App in Batches – Azure | Microsoft-Dokumentation
 description: Verwenden Sie LUIS-Batchtests (Language Understanding Intelligent Service), um Äußerungen mit falschen Absichten und Entitäten zu suchen.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/14/2018
-ms.author: v-geberr
-ms.openlocfilehash: 822fb1e2d5b13941527d242e8501b423bd6b81cb
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.author: diberry
+ms.openlocfilehash: 2c648cdd82f89a9646fa0b311a7f1f68dd4bc4a9
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265512"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223580"
 ---
 # <a name="batch-testing"></a>Testen in Batches
  Batchtests sind umfassende Tests Ihres aktuellen trainierten Modells zum Messen seiner Leistung in LUIS. 
@@ -26,7 +26,7 @@ ms.locfileid: "36265512"
 
     ![Link zum Testen in Batches](./media/luis-how-to-batch-test/batch-testing-link.png)
 
-2. Wählen Sie **Dataset importieren** aus. Das Dialogfeld **Import new dataset** (Neues Dataset importieren) wird angezeigt. Wählen Sie **Datei auswählen** aus, und suchen Sie eine [JSON](luis-concept-batch-test.md#batch-file-format)-Datei, die *höchstens 1.000* zu testende Äußerungen enthält.
+2. Wählen Sie **Dataset importieren** aus. Das Dialogfeld **Import new dataset** (Neues Dataset importieren) wird angezeigt. Wählen Sie **Datei auswählen** aus, und suchen Sie eine JSON-Datei mit dem richtigen [JSON-Format](luis-concept-batch-test.md#batch-file-format), die *höchstens 1.000* zu testende Äußerungen enthält.
 
     ![Importieren einer Datasetdatei](./media/luis-how-to-batch-test/batchtest-importset.png)
 
@@ -37,7 +37,7 @@ ms.locfileid: "36265512"
 4. Wählen Sie **Fertig**aus. Die Datasetdatei wird hinzugefügt.
 
 ## <a name="run-rename-export-or-delete-dataset"></a>Ausführen, Umbenennen, Exportieren oder Löschen eines Datasets
-Verwenden Sie zum Ausführen, Umbenennen, Exportieren oder Löschen des Datasets die drei Punkte (**...** ) am Ende der Datasetzeile.
+Verwenden Sie zum Ausführen, Umbenennen, Exportieren oder Löschen des Datasets die Auslassungspunkte (***...*** ) am Ende der Datasetzeile.
 
 ![Datasetaktionen](./media/luis-how-to-batch-test/batch-testing-options.png)
 
@@ -77,13 +77,6 @@ Um das Diagramm nach einer bestimmten Absicht oder Entität zu filtern, wählen 
  
 ![Visualisierte Batchtestergebnisse](./media/luis-how-to-batch-test/filter-by-entity.png) 
 
-<!--
-## Investigate false sections
-Data points on the **[False Positive][false-positive]** and **[False Negative][false-negative]** sections indicate errors, which should be investigated. If all data points are on the **[True Positive][true-positive]** and **[True Negative][true-negative]** sections, then your application's performance is perfect on this dataset.
-
-
-The graph indicates [F-measure][f-measure], [recall][recall], and [precision][precision].  
--->
 ## <a name="view-single-point-utterance-data"></a>Anzeigen von Einzelpunkt-Äußerungsdaten
 Zeigen Sie im Diagramm auf einen Datenpunkt, um die Bewertung seiner Vorhersage anzuzeigen. Wählen Sie einen Datenpunkt aus, um die zugehörige Äußerung in der Liste der Äußerungen am unteren Rand der Seite abzurufen. 
 
@@ -107,16 +100,7 @@ In den beiden Abschnitten des Diagramms in Grün entsprach die Vorhersage der Er
 
 Wenn sich in Tests herausstellt, dass Ihre LUIS-App nicht die richtige Absichten und Entitäten erkennt, können Sie die Leistung Ihrer LUIS-App verbessern, indem Sie aktiv weitere Äußerungen bezeichnen oder Features hinzufügen. 
 
-* [Bezeichnen von vorgeschlagenen Äußerungen mit LUIS](Label-Suggested-Utterances.md) 
+* [Bezeichnen von vorgeschlagenen Äußerungen mit LUIS](luis-how-to-review-endoint-utt.md) 
 * [Verwenden von Features zum Verbessern der Leistung Ihrer LUIS-App](luis-how-to-add-features.md) 
 * [Tutorial zu Grundlagen von Batchtests](luis-tutorial-batch-testing.md)
 * [Erfahren Sie etwas über Batchtestkonzepte](luis-concept-batch-test.md).
-
-[true-positive]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#true-positive
-[true-negative]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#true-negative
-[false-positive]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#false-positive
-[false-negative]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#false-negative
-[f-measure]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#f-measure
-[recall]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#recall
-[precision]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#precision
-
