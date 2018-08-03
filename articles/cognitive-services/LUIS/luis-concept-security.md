@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: diberry
-ms.openlocfilehash: 13b769a0b5a940e0f3dd5f2e0cc3567d9879ee0d
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: fe0ee7d575e69c883ad7f980477e86fbd004778e
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223778"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397242"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Zugriff für die Erstellung und Benutzerzugriff auf Endpunkte
 Erstellungszugriff ist für Besitzer und Projektmitarbeiter möglich. Bei einer privaten App ist der Zugriff auf den Endpunkt für Besitzer und Projektmitarbeiter möglich. Bei einer öffentlichen App ist der Zugriff auf den Endpunkt für jede Person möglich, die über ein eigenes LUIS-Konto und die öffentliche App-ID verfügt. 
@@ -62,7 +62,7 @@ Ein Benutzer, der nicht Besitzer oder Projektmitarbeiter ist, hat Zugriff auf ei
 ## <a name="microsoft-user-accounts"></a>Microsoft-Benutzerkonten
 Ersteller und Projektmitarbeiter können LUIS auf der Seite „Veröffentlichen“ Schlüssel hinzufügen. Das Microsoft-Benutzerkonto, das den LUIS-Schlüssel im Azure-Portal erstellt, muss dem App-Besitzer oder einem App-Projektmitarbeiter zugeordnet sein. 
 
-Unter [Azure Active Directory-Mandantenbenutzer](luis-how-to-account-settings.md#azure-active-directory-tenant-user) finden Sie weitere Informationen zu Active Directory-Benutzerkonten. 
+Unter [Azure Active Directory-Mandantenbenutzer](luis-how-to-collaborate.md#azure-active-directory-tenant-user) finden Sie weitere Informationen zu Active Directory-Benutzerkonten. 
 
 <!--
 ### Individual consent

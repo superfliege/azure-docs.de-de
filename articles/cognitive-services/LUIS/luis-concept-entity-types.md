@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: diberry
-ms.openlocfilehash: ace4aa48d3bfce5f88bce8947ab568f0990d67fa
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: b0b5852a223a77e33a288bb8061c1ce374018ec1
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226610"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282278"
 ---
 # <a name="entities-in-luis"></a>Entitäten in LUIS
 
@@ -70,7 +70,7 @@ LUIS bietet viele Typen von Entitäten: vordefinierte Entitäten, benutzerdefini
 | **Einfach** <br/>[durch maschinelles Lernen erworben](#machine-learned) | ✔ | **Definition**<br>Eine einfache Entität ist eine generische Entität, die ein einzelnes Konzept beschreibt und im Kontext des maschinellen Lernen erworben wurde. Der Kontext umfasst die Wortwahl, die Wortanordnung und die Länge der Äußerung.<br/><br/>Diese Entität eignet sich gut für Wörter oder Ausdrücke, die nicht konsistent formatiert sind, jedoch dasselbe angeben. <br/><br/>[Schnellstart](luis-quickstart-primary-and-secondary-data.md)<br/>[Beispielantwort für Entität](luis-concept-data-extraction.md#simple-entity-data)|  
 | **Liste** <br/>[Genaue Übereinstimmung](#exact-match)|| **Definition**<br>Listenentitäten stellen einen festen, abgeschlossenen Satz verwandter Wörter zusammen mit ihren Synonymen in Ihrem System dar. <br><br>Jede Listenentität kann eine oder mehrere Formen aufweisen. Sie werden am besten für einen bekannten Satz von Variationen angewandt, um dasselbe Konzept darzustellen.<br/><br/>LUIS ermittelt keine zusätzlichen Werte für Listenentitäten. Suchen Sie mithilfe des Features **Empfehlen** nach Vorschlägen für neue Wörter basierend auf der aktuellen Liste.<br/><br>Wenn mehr als eine Listenentität mit demselben Wert vorhanden ist, wird in der Endpunktabfrage jede Entität zurückgegeben. <br/><br/>[Schnellstart](luis-quickstart-intent-and-list-entity.md)<br>[Beispielantwort für Entität](luis-concept-data-extraction.md#list-entity-data)| 
 | **Pattern.any** <br/>[Gemischt](#mixed) | ✔|**Definition**<br>Pattern.any ist ein Platzhalter variabler Länge, der nur in der Vorlagenäußerung eines Musters verwendet wird, um zu kennzeichnen, wo die Entität beginnt und endet.  <br><br>**Beispiel**<br>Wenn Sie eine Suche zu einer Äußerung für Bücher basierend auf dem Titel durchführen, extrahiert Pattern.any den vollständigen Titel. Eine Vorlagenäußerung mit Pattern.any ist `Who wrote {BookTitle}[?]`.<br/><br/>[Tutorial](luis-tutorial-pattern.md)<br>[Beispielantwort für Entität](luis-concept-data-extraction.md#composite-entity-data)|  
-| **Composite** <br/>[durch maschinelles Lernen erworben](#machine-learned) | ✔|**Definition**<br>Eine zusammengesetzte Entität besteht aus anderen Entitäten, z.B. vordefinierten, einfachen, „Regulärer Ausdruck“-, Listen- und hierarchischen Entitäten. Die einzelnen Entitäten bilden zusammen die gesamte Entität. Listenentitäten sind in zusammengesetzten Entitäten nicht zulässig. <br><br>**Beispiel**<br>Der zusammengesetzten Entität PlaneTicketOrder könnten z.B. die vordefinierte Entität `number` sowie die Entität `ToLocation` untergeordnet sein. <br/><br/>[Tutorial](luis-tutorial-composite-entity.md)<br>[Beispielantwort für Entität](luis-concept-data-extraction.md#composite-entity-data)|  
+| **Composite** <br/>[durch maschinelles Lernen erworben](#machine-learned) | ✔|**Definition**<br>Eine zusammengesetzte Entität besteht aus anderen Entitäten, z.B. vordefinierten, einfachen, „Regulärer Ausdruck“-, Listen- und hierarchischen Entitäten. Die einzelnen Entitäten bilden zusammen die gesamte Entität. <br><br>**Beispiel**<br>Der zusammengesetzten Entität PlaneTicketOrder könnten z.B. die vordefinierte Entität `number` sowie die Entität `ToLocation` untergeordnet sein. <br/><br/>[Tutorial](luis-tutorial-composite-entity.md)<br>[Beispielantwort für Entität](luis-concept-data-extraction.md#composite-entity-data)|  
 | **Hierarchical** <br/>[durch maschinelles Lernen erworben](#machine-learned) |✔ | **Definition**<br>Eine hierarchische Entität ist eine Kategorie von kontextbezogen erlernten einfachen Entitäten.<br><br>**Beispiel**<br>Bei der hierarchischen Entität `Location` mit den untergeordneten Entitäten `ToLocation` und `FromLocation` können die einzelnen untergeordnete Entitäten basierend auf dem **Kontext** innerhalb der Äußerung bestimmt werden. In der Äußerung `Book 2 tickets from Seattle to New York` sind `ToLocation` und `FromLocation` kontextbezogen aufgrund der umgebenden Wörter unterschiedlich. <br/><br/>**Nicht verwenden, wenn**<br>Wenn Sie eine Entität mit genauen Textübereinstimmungen für die untergeordneten Entitäten benötigen, und zwar unabhängig vom Kontext, dann sollten Sie eine Listenentität verwenden. Wenn Sie eine Klassifizierung mit anderen Entitätstypen suchen, sollten Sie eine zusammengesetzte Entität verwenden.<br/><br/>[Schnellstart](luis-quickstart-intent-and-hier-entity.md)<br>[Beispielantwort für Entität](luis-concept-data-extraction.md#hierarchical-entity-data)|
 
 <a name="prebuilt"></a>

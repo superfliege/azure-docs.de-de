@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 68ff9c5402c3fa409999e9933a6c1f7bf6d5a089
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: bc0cf0900ec9f87c75091b3bf219d92e0859aa1f
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172329"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282138"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>Erstellen eines Unterhaltungslernmodells mithilfe von Node.js
 
@@ -66,6 +66,7 @@ Das Projekt „Unterhaltungslernmodul“ besteht aus einem SDK, das Sie zu Ihrem
    Erstellen Sie im Verzeichnis `cl-bot-01` eine Datei namens `.env`.  Der Datei sollte Folgendes beinhalten:
 
    ```
+   NODE_ENV=development
    LUIS_AUTHORING_KEY=<your LUIS authoring key>
    ```
 
@@ -107,6 +108,7 @@ Durch die obigen Anweisungen wurde der generische leere Bot gestartet.  So führ
   npm run tutorial-entity-detection
   npm run tutorial-session-callbacks
   npm run tutorial-api-calls
+  npm run tutorial-hybrid
   npm run demo-password
   npm run demo-pizza
   npm run demo-storage
