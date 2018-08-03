@@ -9,12 +9,12 @@ ms.component: linguistic-analysis
 ms.topic: article
 ms.date: 03/21/2016
 ms.author: davl
-ms.openlocfilehash: 4681098a0e56640e95463272be44f7432be26839
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 78e539f365728ad540308e9cfb07af44bf6d8fe7
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373083"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084041"
 ---
 # <a name="sentence-separation-and-tokenization"></a>Trennung und Tokenisierung von Sätzen
 
@@ -29,7 +29,7 @@ Diese Markierungen erweisen sich jedoch häufig als kompliziert und mehrdeutig.
 
 Betrachten Sie den folgenden Beispieltext:
 
-> What did you say?!? I didn't hear about the director's „new proposal.“ It's important to Mr. and Mrs. Smith. (Was haben Sie gesagt?!? Ich habe nichts von dieser „neuen Ausschreibung“ des Geschäftsführers gehört. Das ist für Herrn und Frau Schmidt wichtig.)
+> What did you say?!? I didn't hear about the director's „new proposal.“ (Ich habe nichts von dieser „neuen Ausschreibung“ des Geschäftsführers gehört.) It's important to Mr. and Mrs. Smith. (Was haben Sie gesagt?!? Ich habe nichts von dieser „neuen Ausschreibung“ des Geschäftsführers gehört. Das ist für Herrn und Frau Schmidt wichtig.)
 
 Dieser Text enthält drei Sätze:
 
@@ -68,4 +68,4 @@ Zu guter Letzt gibt es ungewöhnlichere Token, die z.B. Kontraktionen wie *n’t
 ## <a name="specification"></a>Spezifikation
 
 Es ist wichtig, konsistente Entscheidungen darüber zu treffen, woraus ein Satz und ein Token bestehen.
-Hierfür ziehen wir die [Penn Treebank-Spezifikation](https://www.cis.upenn.edu/~treebank/) heran (einige weitere Details finden Sie hier: [https://www.cis.upenn.edu/~treebank/tokenization.html]).
+Wir arbeiten mit der Spezifikation der [Penn Treebank](https://catalog.ldc.upenn.edu/ldc99t42) (Informationen dazu finden Sie hier: ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html).

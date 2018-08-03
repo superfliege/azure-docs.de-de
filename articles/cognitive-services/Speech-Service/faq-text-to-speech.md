@@ -9,146 +9,48 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 64e505889ef9472603471d67a961985c1290663a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 4a29435c0ace79fc3a5d3a5a42a0e91bdbc8da5e
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045842"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082823"
 ---
-# <a name="custom-speech-service-frequently-asked-questions"></a>Häufig gestellte Fragen zum benutzerdefinierten Spracherkennungsdienst (Custom Speech Service)
+# <a name="text-to-speech-frequently-asked-questions"></a>Häufig gestellte Fragen zur Sprachsynthese
 
-Wenn Sie in diesen FAQs keine Antwort auf Ihre Frage finden, können Sie die Fragen unter [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) und [UserVoice](https://cognitive.uservoice.com/) an die Custom Speech Service-Community stellen.
+Wenn Sie in diesen FAQs keine Antwort auf Ihre Frage finden, können Sie die Fragen unter [Stack Overflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) und [UserVoice](https://cognitive.uservoice.com/) an die Custom Speech Service-Community stellen.
 
 ## <a name="general"></a>Allgemein
 
-**Frage**: Worin besteht der Unterschied zwischen Basis- und benutzerdefinierten Spracherkennungsmodellen?
+**Frage**: Worin besteht der Unterschied zwischen standardmäßigen und benutzerdefinierten Stimmmodellen?
 
-**Antwort**: Basismodelle wurden mit Daten von Microsoft trainiert und sind bereits in der Cloud verfügbar. Benutzerdefinierte Modelle ermöglichen dem Benutzer, ein Modell optimal an eine bestimmte Umgebung mit speziellen Umweltgeräuschen oder individueller Sprache anzupassen. Für Fabrikhallen, Autos, laute Straßen wäre beispielsweise ein angepasstes Akustikmodell erforderlich, während für bestimmte Themen wie z. B. Biologie, Physik, Radiologie, Produktnamen und benutzerdefinierte Akronyme ein Sprachmodell benötigt würde.
+**Antwort**: Die standardmäßigen Stimmmodelle (auch als Voicefonts bekannt) wurden mit Daten von Microsoft trainiert und sind bereits in der Cloud verfügbar. Benutzerdefinierte Stimmmodelle ermöglichen es Benutzern, entweder ein vorhandenes durchschnittliches Modell zu verwenden und Klangfarbe und Sprachausdruck an den Stil der Sprecherstimme anzupassen oder ein vollständig neues Modell basierend auf vom Benutzer vorbereiteten Daten zu trainieren. Heute möchten immer mehr Kunden eine einmalige Stimme mit hohem Wiedererkennungswert für ihre Bots. Hierfür eignet sich die Plattform zum Erstellen benutzerdefinierter Stimmen ideal.
 
-**Frage**: Wo fange ich an, wenn ich ein Basismodell verwenden möchte?
+**Frage**: Wo fange ich an, wenn ich ein Stimmmodell verwenden möchte?
 
-**Antwort**: Zuerst müssen Sie einen [Abonnementschlüssel](get-started.md) erhalten. Wenn Sie REST-Aufrufe an die vorab bereitgestellten Basismodelle ausführen möchten, ziehen Sie [diese Details](rest-apis.md) zurate. Wenn Sie WebSockets verwenden möchten, laden Sie das [SDK](speech-sdk.md) herunter.
+**Antwort**: Mehr als 80 Standardsprachmodelle in über 45 Sprachen sind über HTTP-Anforderungen verfügbar. Zunächst benötigen Sie einen [Abonnementschlüssel](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started). Wenn Sie REST-Aufrufe an die vorab bereitgestellten Stimmmodelle senden möchten, lesen Sie [diese Details](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
 
-**Frage**: Muss ich immer ein benutzerdefiniertes Sprachmodell erstellen?
+**Frage**: Wenn ich ein benutzerdefiniertes Stimmmodell verwenden möchte, ist die API die gleiche wie für die Standardstimmen?
 
-**Antwort**: Nein, wenn Ihre Anwendung generische, alltägliche Sprache ohne benutzerdefiniertes Vokabular oder seltene Terminologie verwendet, dann müssen Sie kein Modell anpassen. Wenn Ihre Anwendung zudem in einer Umgebung eingesetzt werden soll, in der es wenig oder gar keine Hintergrundgeräusche gibt, müssen Sie sie auch nicht anpassen. Das Portal ermöglicht es Benutzern, Basismodelle und angepasste Modelle bereitzustellen und Genauigkeitsprüfungen für diese durchzuführen. Benutzer können diese Funktion verwenden, um die Genauigkeit eines Basismodells im Vergleich zu einem benutzerdefinierten Modell zu messen.
+**Antwort**: Wenn Sie das benutzerdefinierte Stimmmodell erstellt und bereitgestellt haben, erhalten Sie einen eindeutigen Endpunkt für Ihr Modell. Diesen Endpunkt müssen Sie in Ihren HTTP-Anforderungen angeben, damit diese Stimme für Sprachausgaben in Ihren Apps verwendet wird. Die gleiche Funktionalität, die über die REST-API für den Sprachsynthesedienst verfügbar ist, steht auch für Ihren benutzerdefinierten Endpunkt zur Verfügung. Weitere Informationen finden Sie unter [Erstellen und Verwenden eines benutzerdefinierten Endpunkts](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-endpoint).
 
-**Frage**: Wie erfahre ich, wann die Verarbeitung meines Datasets oder Modells abgeschlossen ist?
+**Frage**: Muss ich beim Erstellen von benutzerdefinierten Stimmmodellen die Trainingsdaten selbst vorbereiten?
 
-**Antwort**: Derzeit ist der Status des Modells oder Datasets in der Tabelle die einzige Möglichkeit, dies zu erfahren.
-Wenn die Bearbeitung abgeschlossen ist, lautet der Status „Bereit“.
+**Antwort**: Ja, Sie müssen die Trainingsdaten selbst erstellen. Zum Erstellen eines benutzerdefinierten Stimmmodells ist eine Sammlung von Sprachdaten erforderlich. Diese Sammlung besteht aus einer Reihe von Audiodateien mit Sprachaufnahmen sowie einer Textdatei mit der Transkription jeder Audiodatei. Die resultierende digitale Stimme hängt in hohem Maß von der Qualität der Trainingsdaten ab. Die Erstellung einer guten TTS-Stimme setzt voraus, dass die Aufnahmen in einem ruhigen Raum mit einem hochwertigen Standmikrofon erfolgen. Eine gleichmäßige Lautstärke, Sprechgeschwindigkeit und Tonhöhe sowie eine ausdrucksstarke und doch konsistente Prosodie sind bei der Erstellung einer angenehmen digitalen Stimme entscheidend. Es wird dringend empfohlen, die Stimmen in einem Tonstudio aufzuzeichnen.
+Zurzeit bieten wir keine Unterstützung für Onlineaufnahmen oder Empfehlungen für Tonstudios. Informationen zu den Anforderungen an das Format finden Sie unter [Vorbereiten von Aufnahmen und Transkripten](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-customize-voice-font#prepare-recordings-and-transcripts).
+ 
+**Frage**: Welche Skripts sollte ich zur Aufzeichnung der Sprachdaten für das benutzerdefinierte Stimmtraining verwenden? 
 
-**Frage**: Kann ich mehrere Modelle gleichzeitig erstellen?
+**Antwort**: Es gibt keinerlei Einschränkungen hinsichtlich der für Aufnahmen verwendeten Skripts. Sie können eigene Skripts für die Sprachaufnahmen verwenden. Stellen Sie nur sicher, dass eine ausreichende phonetische Abdeckung in den Sprachdaten gegeben ist. Um eine benutzerdefinierte Stimme zu trainieren, beginnen Sie mit einer geringen Menge an Sprachdaten – ungefähr 50 verschiedene Sätze (3-5 Minuten Spracheingabe). Je mehr Daten Sie bereitstellen, desto natürlicher klingt die Stimme. Sie können einen vollständigen Voicefont trainieren, wenn Sie Aufzeichnungen mit mehr als 2000 Sätzen bereitstellen (ca. 3-4 Stunden Spracheingabe). Um einen vollständigen Voicefont in sehr hoher Qualität zu erhalten, müssen Sie Aufzeichnungen von mehr als 6000 Sätzen erstellen (ca. 8-10 Stunden Spracheingabe).  
+Wir bieten weitere Dienste, um Sie bei der Erstellung von Skripts für die Aufzeichnung zu unterstützen. Um diese Dienste anzufragen, wenden Sie sich an den [Custom Voice-Kundendienst](mailto:customvoice@microsoft.com?subject=Inquiries%20about%20scripts%20generation%20for%20Custom%20Voice%20creation).
 
-**Antwort**: Die Anzahl der Modelle in Ihrer Sammlung ist nicht begrenzt, aber auf jeder Seite kann jeweils nur ein Modell erstellt werden.
-Beispielsweise können Sie keinen Prozess zur Erstellung eines Sprachmodells starten, wenn sich derzeit ein Sprachmodell in der Bearbeitungsphase befindet.
-Sie können jedoch ein Akustikmodell und ein Sprachmodell gleichzeitig verarbeiten. 
+**Frage**: Was geschieht, wenn ich eine höhere Parallelität als den Standardwert oder den im Portal angebotenen Wert benötige?
 
-**Frage**: Ich habe festgestellt, dass ich einen Fehler gemacht habe. Wie kann ich meinen Datenimport oder die laufende Modellerstellung abbrechen? 
-
-**Antwort**: Derzeit können Sie einen akustischen oder sprachlichen Anpassungsprozess nicht rückgängig machen.
-Importierte Daten können nach Abschluss des Imports gelöscht werden.
-
-**Frage**: Was ist der Unterschied zwischen Such- und Diktiermodellen und Konversationsmodellen?
-
-**Antwort**: Im Custom Speech Service stehen zwei Basis-Akustik- und -Sprachmodelle zur Auswahl.
-Suchabfragen oder Diktieren. Das Konversationsakustikmodell von Microsoft eignet sich für die Erkennung von Spracheingaben im Gesprächsstil.
-Diese Art von Spracheingabe richtet sich üblicherweise an eine andere Person, z. B. in Callcentern oder Besprechungen.
-
-**Frage**: Kann ich mein vorhandenes Modell aktualisieren (Modellstapel)?
-
-**Antwort**: Vorhandene Modelle können nicht aktualisiert werden. Als Problemumgehung können Sie das alte Dataset mit dem neuen kombinieren und neu anpassen.
-
-Das alte und das neue Dataset müssen in einer einzigen ZIP-Datei (wenn es sich um akustische Daten handelt) bzw. TXT-Datei (wenn es sich um Sprachdaten handelt) zusammengefasst werden. Sobald die Anpassung abgeschlossen ist, muss die Bereitstellung des neuen, aktualisierten Modells entfernt werden, um einen neuen Endpunkt zu erhalten.
-
-**Frage**: Was geschieht, wenn ich eine höhere Parallelität als den Standardwert oder den im Portal angebotenen Wert benötige? 
-
-**Antwort**: Sie können Ihr Modell in Schritten von 20 gleichzeitigen Anforderungen hochskalieren. 
-
-Kontaktieren Sie uns, wenn Sie eine höhere Skalierung benötigen.
+**Antwort**: Sie können Ihr Modell in Schritten von 20 gleichzeitigen Anforderungen hochskalieren. Um eine höhere Skalierung anzufragen, wenden Sie sich an den [Custom Voice-Kundendienst](mailto:customvoice@microsoft.com?subject=Inquiries%20about%20scripts%20generation%20for%20Custom%20Voice%20creation).
 
 **Frage**: Kann ich mein Modell herunterladen und lokal ausführen?
 
 **Antwort**: Modelle können nicht heruntergeladen und lokal ausgeführt werden.
-
-**Frage**: Werden meine Anforderungen protokolliert?
-
-**Antwort**: Sie haben während der Erstellung einer Bereitstellung die Wahl, die Ablaufverfolgung auszuschalten. Dadurch werden kein Audio und keine Transkriptionen mehr protokolliert. Andernfalls werden Anforderungen normalerweise im sicheren Speicher in Azure protokolliert. Wenn Sie weitere Datenschutzbedenken haben, die Ihnen die Nutzung des Custom Speech Service verbieten, wenden Sie sich an einen der Supportkanäle.
-
-## <a name="importing-data"></a>Importieren von Daten
-
-**Frage**: Wie groß darf das Dataset maximal sein? Warum? 
-
-**Antwort**: Das aktuelle Limit für ein Dataset beträgt 2 GB, da die Größe einer Datei für den HTTP-Upload begrenzt ist. 
-
-**Frage**: Kann ich meine Textdateien komprimieren, um eine größere Textdatei hochzuladen? 
-
-**Antwort**: Nein, derzeit sind nur unkomprimierte Textdateien erlaubt.
-
-**Frage**: Der Datenbericht besagt, dass fehlerhafte Äußerungen gefunden wurden. Was ist das Problem?
-
-**Antwort**: Ein Fehler beim Hochladen von 100 % der Äußerungen in einer Datei stellt kein Problem dar.
-Wenn der Großteil der Äußerungen in einem Akustik- oder Sprachdataset (z. B. > 95 %) erfolgreich importiert werden, kann das Dataset verwendet werden. Allerdings sollten Sie herauszufinden versuchen, warum die Äußerungen fehlgeschlagen sind, und die Probleme beheben. Die meisten Probleme, wie z.B. Formatierungsfehler, sind einfach zu beheben. 
-
-## <a name="creating-am"></a>Erstellen eines Akustikmodells (AM)
-
-**Frage**: Wie viele Akustikdaten benötige ich?
-
-**Antwort**: Es wird empfohlen, zunächst mit 30-60 Minuten Akustikdaten zu beginnen.
-
-**Frage**: Welche Daten soll ich sammeln?
-
-**Antwort**: Sammeln Sie Daten, die dem Anwendungsszenario und dem Anwendungsfall möglichst nahe kommen.
-Die Datenerfassung sollte in Bezug auf Gerät oder Geräte, Umgebungen und Sprechertypen mit der Zielanwendung und den Benutzern übereinstimmen. Generell sollten Sie Daten von möglichst vielen Sprechern sammeln. 
-
-**Frage**: Wie soll ich Daten erfassen? 
-
-**Antwort**: Sie können eine eigenständige Datenerfassungsanwendung erstellen oder eine handelsübliche Audioaufzeichnungssoftware verwenden.
-Sie können auch eine Version der Anwendung erstellen, die Audiodaten protokolliert und diese dann verwendet. 
-
-**Frage**: Muss ich die Anpassungsdaten selbst transkribieren? 
-
-**Antwort**: Die Daten müssen transkribiert werden. Sie können sie selbst transkribieren oder einen professionellen Transkriptionsdienst nutzen. Einige verwenden professionelle Transkribenten und andere verwenden Crowdsourcing.
-
-**Frage**: Wie lange dauert es, ein benutzerdefiniertes Akustikmodell zu erstellen?
-
-**Antwort**: Die Bearbeitungszeit für die Erstellung eines benutzerdefinierten Akustikmodells entspricht in etwa der Länge des akustischen Datasets.
-Daher dauert ein benutzerdefiniertes Akustikmodell, das aus einem fünfstündigen Dataset erstellt wird, also etwa fünf Stunden für die Bearbeitung. 
-
-## <a name="offline-testing"></a>Offlinetests
-
-**Frage**: Kann ich mein benutzerdefiniertes Akustikmodell mit einem benutzerdefinierten Sprachmodell offline testen?
-
-**Antwort**: Ja, wählen Sie beim Einrichten des Offlinetests einfach das benutzerdefinierte Sprachmodell im Dropdownmenü aus.
-
-**Question**: Kann ich mein benutzerdefiniertes Sprachmodell mit einem benutzerdefinierten Akustikmodell offline testen?
-
-**Antwort**: Ja, wählen Sie beim Einrichten des Offlinetests einfach das benutzerdefinierte Akustikmodell im Dropdownmenü aus.
-
-**Frage**: Was ist die Wort-Fehler-Rate, und wie wird sie berechnet?
-
-**Antwort**: Die Wort-Fehler-Rate ist die Auswertungsmetrik für die Spracherkennung. Sie wird berechnet als die Gesamtanzahl von Fehlern, einschließlich Einfügungen, Löschungen und Ersetzungen, dividiert durch die Gesamtzahl der Wörter in der Referenztranskription.
-
-**Frage**: Wie kann ich feststellen, ob die Ergebnisse einer Genauigkeitsprüfung gut sind?
-
-**Antwort**: Die Ergebnisse stellen einen Vergleich zwischen dem Basismodell und dem von Ihnen angepassten Modell dar.
-Sie sollten darauf abzielen, das Basismodell zu übertreffen, damit sich die Anpassung lohnt.
-
-**Frage**: Wie finde ich die Windows-Fehlerberichterstattung (WER) der Basismodelle, damit ich sehen kann, ob es Verbesserungen gab? 
-
-**Antwort**: Die Offlinetestergebnisse zeigen die Genauigkeit des Basismodells und des benutzerdefinierten Modells sowie die Verbesserung gegenüber dem Basismodell.
-
-## <a name="creating-lm"></a>Erstellen eines Sprachmodells (LM)
-
-**Frage**: Wie viele Textdaten muss ich hochladen?
-
-**Answer**: Es hängt davon ab, wie stark sich die in Ihrer Anwendung verwendeten Vokabeln und Ausdrücke von den Ausgangssprachmodellen unterscheiden. Für alle neuen Wörter ist es hilfreich, so viele Beispiele wie möglich für die Verwendung dieser Wörter bereitzustellen. Für gängige Ausdrücke, die in Ihrer Anwendung verwendet werden, sind auch Ausdrücke in den Sprachdaten nützlich, da sie das System anweisen, auch auf diese Begriffe zu achten. Üblicherweise sollte das Sprachdataset mindestens 100 und typischerweise mehrere hundert Äußerungen oder mehr umfassen. Auch wenn bestimmte Arten von Abfragen häufiger als andere erwartet werden, können Sie mehrere Kopien der häufigen Abfragen in das Dataset einfügen.
-
-**Frage**: Kann ich nur eine Liste von Wörtern hochladen?
-
-**Antwort**: Das Hochladen einer Liste von Wörtern bringt die Wörter in den Wortschatz, trainiert das System aber nicht, wie die Wörter typischerweise verwendet werden.
-Durch die Bereitstellung vollständiger oder teilweiser Äußerungen (Sätze oder Ausdrücke, die von Benutzern üblicherweise verwendet werden) kann das Sprachmodell die neuen Wörter und deren Verwendung lernen. Das benutzerdefinierte Sprachmodell eignet sich nicht nur gut dazu, neue Wörter in das System aufzunehmen, sondern auch, die Wahrscheinlichkeit bekannter Wörter für Ihre Anwendung anzupassen. Vollständige Äußerungen helfen dem System, besser zu lernen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

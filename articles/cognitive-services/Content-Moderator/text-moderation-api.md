@@ -9,25 +9,23 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: sajagtap
-ms.openlocfilehash: 5783a7a06d75a409969abad011de3bbd31dec292
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6924807a64cec074d9688eaad158bb9bb638f6bb
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374530"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085758"
 ---
 # <a name="text-moderation"></a>Textmoderation
 
-Verwenden Sie die computergestützte Textmoderation von Content Moderator sowie Funktionen zur [menschlichen Beteiligung](Review-Tool-User-Guide/human-in-the-loop.md) für die Moderation von Textinhalten.
+Verwenden Sie die computergestützte Textmoderation von Content Moderator sowie Funktionen zur [Überprüfung durch Personen](Review-Tool-User-Guide/human-in-the-loop.md), um Textinhalte zu moderieren.
 
-Unternehmen verwenden den Textmoderationsdienst, um Inhalte auf der Grundlage von Richtlinien und Schwellenwerten zu blockieren, zuzulassen oder zu überprüfen. Der Textmoderationsdienst kann die menschliche Moderation in Umgebungen verbessern, in denen Partner, Mitarbeiter und Kunden Textinhalte generieren. Hierzu zählen etwa Chatrooms, Diskussionsforen, Chatbots, E-Commerce-Kataloge, Dokumente und Ähnliches. 
-
-Die API untersucht eingehenden Text (maximal 1.024 Zeichen) auf anstößige Inhalte, erstellt eine Klassifizierung für möglicherweise unerwünschten Text (Vorschauversion), führt automatische Textkorrekturen durch und erkennt mögliche personenbezogene Informationen (Personally Identifiable Information, PII). Darüber hinaus gleicht er den Inhalt mit benutzerdefinierten Begriffslisten ab. Das Autokorrekturfeature hilft bei der Erkennung absichtlich falsch geschriebener Wörter. Nach der Verarbeitung des Inhalts gibt der Dienst eine ausführliche Antwort zurück. Auf der Grundlage dieser Antwort können Sie beispielsweise eine menschliche Überprüfung im Überprüfungstool erstellen oder den Inhalt entfernen.
+Sie können Inhalte basierend auf Ihren Richtlinien und Schwellenwerten entweder blockieren, genehmigen oder überprüfen. Verwenden Sie diese Funktion, um in Umgebungen, in denen Partner, Mitarbeiter und Kunden Textinhalte generieren, die Moderation durch Personen zu ergänzen. Zu solchen Umgebungen zählen etwa Chatrooms, Diskussionsforen, Chatbots, E-Commerce-Kataloge und Dokumente. 
 
 Die Antwort des Diensts enthält folgende Informationen:
 
-- Obszönitäten: Begriffsbasierter Abgleich mit einer integrierten Liste anstößiger Begriffe in mehreren Sprachen
-- Klassifizierung: Computergestützte Klassifizierung in drei Kategorien
+- Obszönitäten: begriffsbasierter Abgleich mit einer integrierten Liste anstößiger Begriffe in verschiedenen Sprachen
+- Klassifizierung: computergestützte Klassifizierung in drei Kategorien
 - Personenbezogene Informationen (Personally Identifiable Information, PII)
 - Automatisch korrigierter Text
 - Ursprünglicher Text
@@ -46,18 +44,15 @@ Wenn die API anstößige Begriffe in einer der [unterstützten Sprachen](Text-Mo
     }
 
 > [!NOTE]
-> Weisen Sie für den Parameter **language** entweder `eng` zu, oder lassen Sie ihn leer, um die computergestützte **Klassifizierungsantwort** (Vorschaufeature) zu erhalten. **Dieses Feature wird nur für Englisch unterstützt.**
+> Weisen Sie für den Parameter **language** entweder `eng` zu, oder lassen Sie ihn leer, um die computergestützte **Klassifizierungsantwort** (Vorschaufeature) zu erhalten. **Dieses Feature wird nur für Englisch unterstützt**.
 >
 > Verwenden Sie für die Erkennung **anstößiger Begriffe** den [ISO 639-3-Code](http://www-01.sil.org/iso639-3/codes.asp) der unterstützten Sprachen aus diesem Artikel, oder lassen Sie ihn leer.
 
-## <a name="classification"></a>Classification
+## <a name="classification"></a>Klassifizierung
 
-Das computergestützte **Textklassifizierungsfeature** von Content Moderator wird **nur für Englisch** unterstützt und hilft bei der Erkennung potenziell unerwünschter Inhalte. Die gekennzeichneten Inhalte sind je nach Kontext unter Umständen ungeeignet. Neben der Vermittlung der Wahrscheinlichkeit einer Kategorie empfiehlt das Feature ggf. auch eine menschliche Überprüfung der Inhalte. Das Feature verwendet ein trainiertes Modell, um möglicherweise beleidigende, abfällige oder diskriminierende Äußerungen zu identifizieren. Dieses schließt Jargon und Abkürzungen sowie anstößige und absichtlich falsch geschriebene Wörter für die Überprüfung ein. 
+Das computergestützte **Textklassifizierungsfeature** von Content Moderator wird **nur für Englisch** unterstützt und hilft bei der Erkennung potenziell unerwünschter Inhalte. Die gekennzeichneten Inhalte werden je nach Kontext unter Umständen als ungeeignet bewertet. Das Feature vermittelt die Wahrscheinlichkeit jeder Kategorie und kann eine Überprüfung durch Personen empfehlen. Für das Feature wird ein trainiertes Modell verwendet, um Äußerungen zu identifizieren, die unter Umständen beleidigend, abfällig oder diskriminierend sind. Dieses schließt Jargon und Abkürzungen sowie anstößige und absichtlich falsch geschriebene Wörter für die Überprüfung ein. 
 
 Der folgende Auszug aus dem JSON-Auszug zeigt eine Beispielausgabe:
-
-> [!NOTE]
-> Das computergestützte Klassifizierungsfeature befindet sich in der Vorschauphase.
 
     "Classification": {
         "ReviewRecommended": true,
@@ -74,10 +69,10 @@ Der folgende Auszug aus dem JSON-Auszug zeigt eine Beispielausgabe:
 
 ### <a name="explanation"></a>Erklärung
 
-- `Category1` gibt an, dass möglicherweise Sprache vorhanden ist, die in bestimmten Situationen als explizit sexuell oder nicht jugendfrei betrachtet werden kann.
-- `Category2` gibt an, dass möglicherweise Sprache vorhanden ist, die in bestimmten Situationen als zweideutig/freizügig oder als für Erwachsene bestimmt betrachtet werden kann.
-- `Category3` gibt an, dass möglicherweise Sprache vorhanden ist, die in bestimmten Situationen als anstößig betrachtet werden kann.
-- `Score` ist ein Wert zwischen 0 und 1. Je höher der Wert, desto höher die vom Modell ermittelte Wahrscheinlichkeit, dass die Kategorie zutreffend ist. Diese Vorschauversion basiert nicht auf manuell programmierten Ergebnissen, sondern auf einem statistischen Modell. Wir empfehlen, anhand Ihrer eigenen Inhalte zu testen, wie die jeweiligen Kategorien zu Ihren Anforderungen passen.
+- `Category1` gibt an, dass unter Umständen Sprache vorhanden ist, die in bestimmten Situationen als sexuell freizügig oder nicht jugendfrei betrachtet werden kann.
+- `Category2` gibt an, dass unter Umständen Sprache vorhanden ist, die in bestimmten Situationen als zweideutig bzw. anzüglich oder als nur für Erwachsene bestimmt betrachtet werden kann.
+- `Category3` gibt an, dass unter Umständen Sprache vorhanden ist, die in bestimmten Situationen als anstößig betrachtet werden kann.
+- `Score` ist ein Wert zwischen 0 und 1. Je höher der Wert, desto höher die vom Modell ermittelte Wahrscheinlichkeit, dass die Kategorie zutreffend ist. Diese Vorschauversion basiert nicht auf manuell programmierten Ergebnissen, sondern auf einem statistischen Modell. Es wird empfohlen, anhand Ihrer eigenen Inhalte zu testen, wie die jeweiligen Kategorien zu Ihren Anforderungen passen.
 - `ReviewRecommended` ist entweder „true“ oder „false“ (abhängig von den internen Ergebnisschwellenwerten). Kunden müssen entscheiden, ob sie diesen Wert verwenden oder auf der Grundlage ihrer Inhaltsrichtlinien eigene Schwellenwerte festlegen möchten.
 
 ## <a name="personally-identifiable-information-pii"></a>Personenbezogene Informationen (Personally Identifiable Information, PII)
@@ -151,10 +146,10 @@ Bei Verwendung der Autokorrektur enthält die Antwort die korrigierte Version de
 
 ## <a name="creating-and-managing-your-custom-lists-of-terms"></a>Erstellen und Verwalten benutzerdefinierter Begriffslisten
 
-Die standardmäßige globale Begriffsliste deckt zwar die meisten Fälle ab, in bestimmten Fällen möchten Sie Inhalte aber ggf. auf spezielle Begriffe im Zusammenhang mit Ihren geschäftlichen Anforderungen überprüfen. So kann es beispielsweise wünschenswert sein, Markennamen von Mitbewerbern aus Benutzerbeiträgen herauszufiltern. Der Schwellenwert für zulässige Textinhalte kann sich vom Schwellenwert der Standardliste unterscheiden.
+Die standardmäßige globale Begriffsliste deckt zwar die meisten Fälle ab, in bestimmten Fällen möchten Sie Inhalte aber ggf. auf spezielle Begriffe im Zusammenhang mit Ihren geschäftlichen Anforderungen überprüfen. So kann es beispielsweise wünschenswert sein, Markennamen von Mitbewerbern aus Benutzerbeiträgen herauszufiltern.
 
 > [!NOTE]
-> Die Obergrenze liegt bei **fünf Begriffslisten**, wobei jede Liste **max. 10.000 Begriffe** enthalten kann.
+> Die Obergrenze liegt bei **fünf Benennungslisten**, wobei jede Liste **max. 10.000 Benennungen** enthalten kann.
 >
 
 Das folgende Beispiel zeigt die entsprechende Listen-ID:
@@ -171,4 +166,4 @@ Content Moderator bietet eine [Begriffslisten-API](https://westus.dev.cognitive.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Testen Sie die [API-Konsole für die Textmoderation](try-text-api.md), und verwenden Sie die REST-API-Codebeispiele. Falls Sie mit Visual Studio und C# vertraut sind, können Sie sich auch die [.NET-Schnellstartanleitung für die Textmoderation](text-moderation-quickstart-dotnet.md) ansehen.
+Testen Sie die [API-Konsole für die Textmoderation](try-text-api.md), und verwenden Sie die REST-API-Codebeispiele. Wenn Sie mit Visual Studio und C# vertraut sind, sehen Sie sich auch die [.NET-Schnellstartanleitung für die Textmoderation](text-moderation-quickstart-dotnet.md) an.

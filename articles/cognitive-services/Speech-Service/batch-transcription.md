@@ -9,12 +9,12 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: 01bbf4ca19b0fb702aa76d5149fb0e38389fe455
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 9dd7479ae95f74123d9b762e42ec95e8dbf25818
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054822"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346442"
 ---
 # <a name="batch-transcription"></a>Batch-Transkription
 
@@ -31,7 +31,7 @@ Die Batch-Transkriptions-API ermöglicht das oben beschriebene Szenario. Sie bie
 
 Die Batch-Transkriptions-API ist darauf ausgelegt, der De-facto-Standard für alle Callcenter-bezogenen Offline-Szenarien zu werden, und bietet Unterstützung für alle zugehörigen Formate. Derzeit unterstützte Formate:
 
-Name| Kanal  |
+NAME| Kanal  |
 ----|----------|
 MP3 |   Mono   |   
 MP3 |  Stereo  | 
@@ -40,7 +40,7 @@ WAV |  Stereo  |
 
 Bei Audiodatenströmen in Stereo wird der linke und rechte Kanal während der Transkription von der Batch-Transkriptions-API geteilt. Die beiden JSON-Dateien mit dem Ergebnis werden jeweils von einem einzigen Kanal erstellt. Die Zeitstempel pro Äußerung ermöglicht es dem Entwickler, eine geordnete endgültige Transkription zu erstellen. Das folgende JSON-Beispiel zeigt die Ausgabe eines Kanals.
 
-    ```
+```json
        {
         "recordingsUrl": "https://mystorage.blob.core.windows.net/cris-e2e-datasets/TranscriptionsDataset/small_sentence.wav?st=2018-04-19T15:56:00Z&se=2040-04-21T15:56:00Z&sp=rl&sv=2017-04-17&sr=b&sig=DtvXbMYquDWQ2OkhAenGuyZI%2BYgaa3cyvdQoHKIBGdQ%3D",
         "resultsUrls": {
@@ -53,10 +53,10 @@ Bei Audiodatenströmen in Stereo wird der linke und rechte Kanal während der Tr
         "status": "Succeeded",
         "locale": "en-US"
     },
-    ```
+```
 
 > [!NOTE]
-> Die Batch-Transkriptions-API verwendet einen REST-Dienst zum Anfordern von Transkriptionen, deren Status und zugehörigen Ergebnissen. Sie basiert auf .NET und weist keinerlei externen Abhängigkeiten auf. Im nächsten Abschnitt wird ihre Verwendung beschrieben.
+> Die Batch-Transkriptions-API verwendet einen REST-Dienst zum Anfordern von Transkriptionen, deren Status und zugehörigen Ergebnissen. Die API kann in jeder Sprache verwendet werden. Im nächsten Abschnitt wird ihre Verwendung beschrieben.
 
 ## <a name="authorization-token"></a>Autorisierungstoken
 
@@ -77,7 +77,24 @@ Wie bei allen Features des vereinheitlichten Spracherkennungsdiensts muss der Be
 
 ## <a name="sample-code"></a>Beispielcode
 
-Die Verwendung der API ist recht unkompliziert. Der nachfolgende Beispielcode muss mit einem Abonnementschlüssel und einem API-Schlüssel angepasst werden.
+Die Verwendung der API ist recht unkompliziert. Der Beispielcode unten muss mit einem Abonnementschlüssel und einem API-Schlüssel angepasst werden, wodurch der Entwickler ein Bearertoken abrufen kann, wie der folgende Codeausschnitt zeigt:
+
+```cs
+    public static async Task<CrisClient> CreateApiV1ClientAsync(string username, string key, string hostName, int port)
+        {
+            var client = new HttpClient();
+            client.Timeout = TimeSpan.FromMinutes(25);
+            client.BaseAddress = new UriBuilder(Uri.UriSchemeHttps, hostName, port).Uri;
+
+            var tokenProviderPath = "/oauth/ctoken";
+            var clientToken = await CreateClientTokenAsync(client, hostName, port, tokenProviderPath, username, key).ConfigureAwait(false);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", clientToken.AccessToken);
+
+            return new CrisClient(client);
+        }
+```
+
+Nachdem das Token abgerufen wurde, muss der Entwickler den SAS-URI angeben, der auf die Audiodatei zeigt, für die eine Transkription erforderlich ist. Der Rest des Codes durchläuft einfach den Status und zeigt Ergebnisse an.
 
 ```cs
    static async Task TranscribeAsync()
@@ -93,7 +110,7 @@ Die Verwendung der API ist recht unkompliziert. Der nachfolgende Beispielcode mu
             var newLocation = 
                 await client.PostTranscriptionAsync(
                     "<selected locale i.e. en-us>", // Locale 
-                    "<your subscripition key>", // Subscription Key
+                    "<your subscription key>", // Subscription Key
                     new Uri("<SAS URI to your file>")).ConfigureAwait(false);
 
             var transcription = await client.GetTranscriptionAsync(newLocation).ConfigureAwait(false);
