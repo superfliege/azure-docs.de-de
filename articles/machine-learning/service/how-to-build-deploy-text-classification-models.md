@@ -91,7 +91,7 @@ pip.main(["show", "azureml-tatk"])
 ```
 
 ### <a name="set-the-location-of-the-data"></a>Festlegen des Speicherorts der Daten
-Legen Sie den Speicherort, in den Sie die Daten heruntergeladen haben, im dir-Parameter der Daten fest. Sie können auch Ihre eigenen Daten verwenden. Das Eingabedataset muss im TSV-Dateiformat vorliegen.
+Legen Sie den Speicherort, in den Sie die Daten heruntergeladen haben, im dir-Parameter der Daten fest. Sie können auch Ihre eigenen Daten verwenden. Das Eingabedataset muss im \*.TSV-Dateiformat vorliegen.
 
 ```python
 import os
