@@ -10,12 +10,12 @@ ms.component: bing-entity-search
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: scottwhi
-ms.openlocfilehash: f1b87c07d5b56307fd6b3fc68999598aeab6eb82
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 275430bc6ee8f935978243e61f68713974648189
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377426"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008109"
 ---
 # <a name="what-is-bing-entity-search"></a>Was ist die Bing-Entitätssuche?
 
@@ -45,6 +45,8 @@ Eine Beispielanforderung finden Sie unter [Erstellen Ihrer ersten Anforderung](.
 ## <a name="the-response"></a>Die Antwort
 
 Die Antwort enthält ein [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#searchresponse)-Objekt. Wenn Bing eine relevante Entität oder einen relevanten Ort findet, enthält das Objekt das `entities`-Feld, das `places`-Feld oder beide Felder. Andernfalls enthält das Antwortobjekt keins der Felder.
+> [!NOTE]
+> Antworten für Entitäten unterstützen verschiedene Märkte, aber die Antworten für Orte unterstützen nur Standorte von US-Unternehmen. 
 
 Das `entities`-Feld ist ein [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entityanswer)-Objekt, das eine Liste von [Entity](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity)-Objekten enthält (siehe `value`-Feld). Die Liste kann eine einzelne dominante Entität, mehrere Entitäten zur genaueren Bestimmung oder beides enthalten. 
 
@@ -189,6 +191,8 @@ Orte umfassen Restaurants, Hotels oder lokale Geschäfte. Das Feld [entityPresen
     "Restaurant"]
 }, ...
 ```
+> [!NOTE]
+> Antworten für Entitäten unterstützen verschiedene Märkte, aber die Antworten für Orte unterstützen nur Standorte von US-Unternehmen. 
 
 Standortbezogene Entitätsabfragen wie z.B. *Restaurant in meiner Nähe* erfordern den Standort des Benutzers, um exakte Ergebnisse zu liefern. Ihre Anforderungen sollten immer die Header „X-Search-Location“ und „X-MSEdge-ClientIP“ verwenden, um den Standort des Benutzers anzugeben. Wenn Bing davon ausgeht, dass der Standort des Benutzers nützlich für die Abfrage ist, legt es das `askUserForLocation`-Feld von [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#querycontext) auf **TRUE** fest. 
 

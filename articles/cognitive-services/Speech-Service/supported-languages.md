@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 5a90f298e80ec4ca1b17e2d3aa4079aebcd38a83
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 06350decd9d9f15db7226b6f2c3580feb49a59d1
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377858"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069573"
 ---
 # <a name="supported-languages-for-speech-service"></a>Unterstützte Sprachen für die Speech-Dienste
 
@@ -25,15 +25,20 @@ Für verschiedene Funktionen der Speech-Dienste werden verschiedene Sprachen unt
 
 Die Microsoft-Spracherkennungs-API unterstützt die folgenden Sprachen. 
 
-| Code | Sprache | Code | Sprache |
-|-----|-----|-----|-----|
-| ar-EG | Arabisch (Ägypten), modernes Hocharabisch | It-IT | Italienisch (Italien) |
-| de-DE | Deutsch (Deutschland) | ja-JP | Japanisch (Japan) |
-| en-US | Englisch (USA) | pt-BR | Portugiesisch (Brasilien) |
-| es-ES | Spanisch (Spanien) | ru-RU | Russisch (Russland) |
-| fr-FR | Französisch (Frankreich) | zh-CN | Chinesisch (Mandarin, vereinfacht) |
+  Code | Sprache | Anpassung der Akustik | Anpassung der Sprache | Anpassung der Aussprache
+ ------|----------|---------------------|---------------------|-------------------------
+ ar-EG | Arabisch (Ägypten), modernes Hocharabisch | Nein  | Ja | Nein 
+ It-IT | Italienisch (Italien) | Nein  | Ja | Nein  
+ de-DE | Deutsch (Deutschland) | Nein  | Ja | JA
+ ja-JP | Japanisch (Japan) | Nein  | Ja | Nein 
+ en-US | Englisch (USA) | JA | Ja | JA
+ pt-BR | Portugiesisch (Brasilien) | Nein  | Ja | Nein 
+ es-ES | Spanisch (Spanien) | Nein  | Ja | Nein 
+ ru-RU | Russisch (Russland) | Nein  | Ja | Nein 
+ fr-FR | Französisch (Frankreich) | Nein  | Ja | Nein 
+ zh-CN | Chinesisch (Mandarin, vereinfacht) | Nein  | Ja | Nein 
 
-## <a name="text-to-speech"></a>Sprachsynthese
+## <a name="text-to-speech"></a>Text-zu-Sprache
 
 Die **Text-to-Speech-API** bietet die folgenden Stimmen. Jede dieser Stimmen steht für eine bestimmte Sprache und einen bestimmten Dialekt und wird durch das Gebietsschema identifiziert.
 
@@ -204,7 +209,7 @@ Sie können die Liste der Sprachen entweder programmgesteuert oder über den Spr
 | Spanisch      | `es`          |
 | Schwedisch      | `sv`          |
 | Tahitisch      | `ty`          |
-| Tamil      | `ta`          |
+| Tamilisch      | `ta`          |
 | Thailändisch      | `th`          |
 | Tongaisch      | `to`          |
 | Türkisch      | `tr`          |
@@ -217,5 +222,5 @@ Sie können die Liste der Sprachen entweder programmgesteuert oder über den Spr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Holen Sie sich Ihr Testabonnement für die Spracherkennung](https://azure.microsoft.com/try/cognitive-services/)
-* [Erkennen von Sprache in C#](quickstart-csharp-windows.md)
+* [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
+* [Erkennen von Sprache in C#](quickstart-csharp-dotnet-windows.md)

@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/04/2018
 ms.author: sajagtap
-ms.openlocfilehash: 238d086e87b0e52f0887af5c4db58e8f72796b49
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7320286e186d7e6ba4041d3ed52f19e573b4d7e3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374483"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049880"
 ---
 # <a name="moderate-text-using-net"></a>Moderieren von Text mithilfe von .NET
 
@@ -29,7 +29,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits mit Visual Studio und
 ## <a name="sign-up-for-content-moderator-services"></a>Registrieren für Content Moderator-Dienste
 
 Um Content Moderator-Dienste über die REST-API oder über das SDK verwenden zu können, benötigen Sie einen Abonnementschlüssel.
-Informationen zum Abrufen des Schlüssels finden Sie in [dieser Schnellstartanleitung](quick-start.md).
+Informationen zum Abrufen des Schlüssels finden Sie in [diesem Schnellstart](quick-start.md).
 
 ## <a name="create-your-visual-studio-project"></a>Erstellen Ihres Visual Studio-Projekts
 
@@ -39,7 +39,7 @@ Informationen zum Abrufen des Schlüssels finden Sie in [dieser Schnellstartanle
 
 1. Wählen Sie dieses Projekt als einzelnes Startprojekt für die Projektmappe aus.
 
-1. Fügen Sie einen Verweis auf die Projektassembly **ModeratorHelper** hinzu, die Sie in [Helper code to return a Content Moderator client](content-moderator-helper-quickstart-dotnet.md) (Hilfscode zum Zurückgeben eines Content Moderator-Clients) erstellt haben.
+1. Fügen Sie einen Verweis auf die Projektassembly **ModeratorHelper** hinzu, die Sie im Schnellstart [Hilfscode zum Zurückgeben eines Content Moderator-Clients](content-moderator-helper-quickstart-dotnet.md) erstellt haben.
 
 ### <a name="install-required-packages"></a>Installieren erforderlicher Pakete
 
@@ -119,7 +119,7 @@ Fügen Sie der Methode **Main** den folgenden Code hinzu:
 > [!NOTE]
 > Die RPS-Rate (Requests Per Second, Anforderungen pro Sekunde) Ihres Content Moderator-Dienstschlüssels ist begrenzt. Bei Überschreitung des Limits löst das SDK eine Ausnahme mit dem Fehlercode 429 aus.
 >
-> Bei einem Schlüssel des Free-Tarifs ist die Anforderungsrate auf eine einzelne Anforderung pro Sekunde beschränkt.
+> Wenn Sie einen Schlüssel des Free-Tarifs verwenden, ist die Rate der Anforderungen auf eine Anforderung pro Sekunde beschränkt.
 
 ## <a name="run-the-program-and-review-the-output"></a>Ausführen des Programms und Überprüfen der Ausgabe
 
@@ -211,4 +211,4 @@ Die Beispielausgabe für das Programm sieht wie folgt aus. (Hierbei handelt es s
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Laden Sie die [entsprechende Visual Studio-Projektmappe](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) sowie andere Content Moderator-Schnellstartanleitungen für .NET herunter, und beginnen Sie mit der Integration.
+[Laden Sie die entsprechende Visual Studio-Projektmappe sowie andere Content Moderator-Schnellstarts für .NET herunter](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator), und beginnen Sie mit der Integration.

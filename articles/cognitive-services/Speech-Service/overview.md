@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: e7c09eee1634c52e78a523a7cc65641ea99f23e6
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: adfc854fc24b9e285c405f3038a21ec84cd2f4c2
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35378873"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989334"
 ---
 # <a name="what-is-the-speech-service-preview"></a>Worum handelt es sich beim Speech-Dienst (Vorschau)?
 
@@ -38,8 +38,8 @@ Der Speech-Dienst wird auf zwei Arten zur Verfügung gestellt. Das [SDK](speech-
 
 |<br>Methode|Spracheingabe<br>Spracherkennung|Sprachsynthese<br>Spracheingabe|Spracheingabe<br>Sprachübersetzung|<br>BESCHREIBUNG|
 |-|-|-|-|-|
-|[SDKs](speech-sdk.md)|Ja|Nein|Ja|Bibliotheken für bestimmte Programmiersprachen, die die Entwicklung vereinfachen|
-|[REST](rest-apis.md)|Ja|Ja|Nein |Eine einfache HTTP-basierte API, über die sich Sprache zu Ihrer Anwendung hinzufügen lässt.|
+|[SDKs](speech-sdk.md)|JA|Nein|JA|Bibliotheken für bestimmte Programmiersprachen, die die Entwicklung vereinfachen|
+|[REST](rest-apis.md)|JA|JA|Nein |Eine einfache HTTP-basierte API, über die sich Sprache zu Ihrer Anwendung hinzufügen lässt.|
 
 ## <a name="speech-to-text"></a>Spracherkennung
 
@@ -60,7 +60,7 @@ Sie können akustische und Sprachmodelle für die Spracherkennung anpassen, um s
 
 Mit der [Sprachsynthese-API](text-to-speech.md) (Text-to-Speech-API, TTS) wird der Text direkt in natürlich klingende Sprache konvertiert, die für Ihre Anwendung als Audiodatei bereitgestellt wird. Es sind mehrere Stimmen, die in Bezug auf das Geschlecht oder den Akzent variieren, für viele unterstützte Sprachen verfügbar.
 
-Die API unterstützt SSML-Tags (Speech Synthesis Markup Language), damit Sie für schwierige Wörter die genaue phonetische Aussprache angeben können. Mit SSML können auch besondere Sprachmerkmale (z.B. Betonung, Geschwindigkeit, Lautstärke, Geschlecht und Tonlage) direkt im Text angegeben werden.
+Die API unterstützt [SSML-Tags (Speech Synthesis Markup Language)](speech-synthesis-markup.md), damit Sie für schwierige Wörter die genaue phonetische Aussprache angeben können. Mit SSML können auch besondere Sprachmerkmale (z.B. Betonung, Geschwindigkeit, Lautstärke, Geschlecht und Tonlage) direkt im Text angegeben werden.
 
 Im Folgenden sind häufige Anwendungsfälle für die Text-to-Speech-API aufgeführt.
 
@@ -68,7 +68,7 @@ Im Folgenden sind häufige Anwendungsfälle für die Text-to-Speech-API aufgefü
 * Sprachausgabe für Kfz-Anwendungen, z.B. Navigation
 * Auf Unterhaltungen ausgelegte Benutzeroberflächen in Verbindung mit der Spracherkennungs-API
 
-Für den Fall, dass Sie für Ihre Anwendung einen nicht unterstützten Dialekt oder eine einzigartige Stimme verwenden möchten, werden in der Text-to-Speech-API benutzerdefinierte Stimmmodelle unterstützt.
+Für den Fall, dass Sie für Ihre Anwendung einen nicht unterstützten Dialekt oder eine einzigartige Stimme verwenden möchten, werden in der Text-to-Speech-API [benutzerdefinierte Stimmmodelle](how-to-customize-voice-font.md) unterstützt.
 
 ## <a name="speech-translation"></a>Sprachübersetzung
 
@@ -84,6 +84,8 @@ Es gibt beispielsweise folgende Anwendungsfälle für die Sprachübersetzung.
 Mit der Einführung des vereinheitlichten Speech-Diensts bieten Microsoft und seine Partner eine integrierte Hardware/Software-Plattform an, die für die Entwicklung von sprachaktivierten Geräten optimiert ist: das [Speech-Geräte-SDK](speech-devices-sdk.md). Dieses SDK ist für die Entwicklung von intelligenten Sprachgeräten für alle Arten von Anwendungen geeignet.
 
 Mit dem Speech-Geräte-SDK können Sie Ihre eigenen Ambient Devices mit einem benutzerdefinierten Codewort erstellen, das zu Ihrer Marke passt und mit dem die Erfassung von Audiodaten ausgelöst wird. Außerdem ermöglicht es eine bessere Audioverarbeitung für Quellen mit mehreren Kanälen, um eine genauere Spracherkennung zu erzielen, z.B. Geräuschunterdrückung, Fernfeldsprache und Beamforming.
+
+Das SDK basiert auf Websockets, die Port 443 verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

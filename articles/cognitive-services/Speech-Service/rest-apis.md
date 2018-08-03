@@ -9,12 +9,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: a25c2b7ea7fdfcc6bcaa10baff3a5ae14ae9753b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 311d0cb7f208c0f720b8611510fb65efc65c12bc
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37044819"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112872"
 ---
 # <a name="speech-service-rest-apis"></a>REST-APIs des Spracherkennungsdiensts
 
@@ -24,7 +24,7 @@ Die REST-APIs des vereinheitlichten Spracherkennungsdiensts ähneln den APIs, di
 
 In der Spracherkennungs-API unterscheiden sich nur die verwendeten Endpunkte von der Spracherkennungs-API des vorhergegangenen Sprachdiensts. Die neuen Endpunkte sind in der Tabelle unten dargestellt. Verwenden Sie den Endpunkt, der die beste Übereinstimmung mit Ihrer Abonnementregion aufweist.
 
-[!include[](includes/endpoints-speech-to-text.md)]
+[!include[](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
 Die Spracherkennungs-API ist ansonsten der [REST-API](https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest) für die vorhergegangene Sprach-API ähnlich.
 
@@ -33,7 +33,7 @@ Die Spracherkennungs-REST-API unterstützt nur kurze Äußerungen. Anforderungen
 > [!NOTE]
 > Wenn Sie das akustische Modell, das Sprachmodell oder die Aussprache angepasst haben, verwenden Sie stattdessen Ihren eigenen Endpunkt.
 
-## <a name="text-to-speech"></a>Sprachsynthese
+## <a name="text-to-speech"></a>Text-zu-Sprache
 
 Die neue Sprachsynthese-API unterstützt die Audioausgabe mit 24 KHz. Der `X-Microsoft-OutputFormat`-Header kann jetzt die folgenden Werte aufweisen.
 
@@ -50,12 +50,12 @@ Der Spracherkennungsdienst bietet jetzt zwei Stimmen mit 24 KHz:
 
 Gebietsschema | Sprache   | Geschlecht | Dienstnamenzuordnung
 -------|------------|--------|------------
-en-US  | Englisch (USA) | Weiblich | „Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)“ 
-en-US  | Englisch (USA) | Männlich   | „Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)“
+en-US  | Englisch (USA) | Female | Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS) 
+en-US  | Englisch (USA) | Male   | Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)
 
 Die folgende Aufstellung enthält die REST-Endpunkte für die Text-to-Speech-API des vereinheitlichten Spracherkennungsdiensts. Verwenden Sie den Endpunkt für Ihre Abonnementregion.
 
-[!include[](includes/endpoints-text-to-speech.md)]
+[!include[](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
 Beachten Sie diese Unterschiede bei der Verwendung der [REST-API-Dokumentation](https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput) der vorhergegangenen Sprach-API.
 
@@ -63,7 +63,7 @@ Beachten Sie diese Unterschiede bei der Verwendung der [REST-API-Dokumentation](
 
 Für das Senden einer Anforderung an die REST-API des Spracherkennungsdiensts ist ein Zugriffstoken erforderlich. Sie erhalten ein Token, indem Sie einem regionalen `issueToken`-Endpunkt des Spracherkennungsdiensts Ihren Abonnementschlüssel zur Verfügung stellen. Verwenden Sie den Endpunkt für Ihre Abonnementregion.
 
-[!include[](includes/endpoints-token-service.md)]
+[!include[](../../../includes/cognitive-services-speech-service-endpoints-token-service.md)]
 
 Jedes Zugriffstoken ist 10 Minuten lang gültig. Sie können jederzeit ein neues Token anfordern – wenn Sie möchten auch vor jeder Anforderung der Sprach-REST-API. Um Netzwerkverkehr und Latenz zu minimieren, empfiehlt es sich jedoch, neun Minuten lang das gleiche Token zu verwenden.
 
@@ -265,5 +265,7 @@ Achten Sie wie auch in den anderen Beispielen darauf, dass der Wert von `FetchTo
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Abrufen Ihres Testabonnements für die Spracherkennung](https://azure.microsoft.com/try/cognitive-services/)
-* [Informationen zum Anpassen eines Sprachmodells](how-to-customize-speech-models.md)
+- [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
+- [Anpassen von Akustikmodellen](how-to-customize-acoustic-models.md)
+- [Anpassen von Sprachmodellen](how-to-customize-language-model.md)
+

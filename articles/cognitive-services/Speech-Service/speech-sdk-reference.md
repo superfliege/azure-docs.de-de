@@ -10,28 +10,21 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 7e0037cc8701c88325c3d55f6b3ab0eccf2fbd28
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9ee7cc2db7ad6e2914d3916ad1aa578a9746e287
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376339"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072230"
 ---
 # <a name="speech-sdk-reference"></a>Referenz zum Speech-SDK
 
-Das Speech SDK (Software Development Kit) stellt Ihren Anwendungen Zugriff auf die Funktionen des Speech-Diensts bereit, wodurch die Entwicklung sprachaktivierter Software erleichtert wird. Zurzeit bieten die SDKs Zugriff auf **Sprache-in-Text** und **Spracherübersetzung**. Für Text-zu-Sprache wird REST (https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)-POST-Aufrufe) über HTTP genutzt.
+Das Speech SDK (Software Development Kit) stellt Ihren Anwendungen Zugriff auf die Funktionen des Speech-Diensts bereit, wodurch die Entwicklung sprachaktivierter Software erleichtert wird. Derzeit stellen die SDKs den Zugriff auf die **Spracherkennung**, die **Sprachübersetzung** und die **Absichtserkennung** bereit.
 
-In der Tabelle unten werden die zurzeit unterstützten Programmiersprachen und Betriebssysteme aufgeführt.
-
-|Programmiersprache|Plattform|API-Referenz|
-|-|-|-|
-|C#|Windows|[Browse](https://aka.ms/csspeech/csharpref)
-|C/C++|Windows, Linux|[Browse](https://aka.ms/csspeech/cppref)
-|Java\*|Geräte|[Browse](https://aka.ms/csspeech/javaref)
-
-\* *Das Java SDK ist Teil des [SDK für sprachaktivierte Geräte](speech-devices-sdk.md).*
+[!include[Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Abrufen Ihres Testabonnements für die Spracherkennung](https://azure.microsoft.com/try/cognitive-services/)
-* [Erkennen von Sprache in C#](quickstart-csharp-windows.md)
+* [Kostenloses Testen des Speech-Diensts](get-started.md)
+* [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
+* [Erkennen von Sprache in C#](quickstart-csharp-dotnet-windows.md)

@@ -10,18 +10,18 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: dd7531004759cdaeb59f4706dc2650d0db3c0cdb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 930a89e3b1996c44f12bd3773565eda40e93ca9c
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377731"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070925"
 ---
 # <a name="your-first-bing-visual-search-query-in-c"></a>Führen Sie Ihre erste Abfrage der visuellen Bing-Suche in C# aus.
 
-Die API für die visuelle Bing-Suche gibt Informationen zu von Ihnen bereitgestellten Bildern zurück. Sie können ein Bild mit dessen URL, einem Auswertungstoken und durch den Upload bereitstellen. Informationen zu diesen Optionen finden Sie im Artikel zur [API für die visuelle Bing-Suche](../overview.md). In diesem Artikel wird gezeigt, wie Sie ein Bild hochladen können. Das Hochladen eines Bilds ist besonders in Szenarios mit einem mobilen Gerät nützlich, wenn Sie ein Foto einer bekannten Sehenswürdigkeit gemacht haben und dann Informationen dazu erhalten. Die Informationen können z.B. Wissenswertes zur Sehenswürdigkeit beinhalten. 
+Die API für die visuelle Bing-Suche gibt Informationen zu von Ihnen bereitgestellten Bildern zurück. Sie können ein Bild über die Bild-URL, ein Erkenntnistoken oder durch Hochladen des Bilds bereitstellen. Informationen zu diesen Optionen finden Sie unter [Was ist die API für die visuelle Bing-Suche?](../overview.md). In diesem Artikel wird gezeigt, wie Sie ein Bild hochladen. Das Hochladen eines Bilds ist besonders in Szenarien mit einem mobilen Gerät nützlich, wenn Sie eine bekannte Sehenswürdigkeit fotografiert haben und Informationen dazu erhalten möchten. Die Informationen können z.B. Wissenswertes zur Sehenswürdigkeit beinhalten. 
 
-Wenn Sie ein lokales Bild hochladen, müssen Sie die folgenden Formulardaten in den Text der POST-Anforderung einfügen. Die Formulardaten müssen den Header „Content-Disposition“ enthalten. Der `name`-Parameter muss auf „image“ und der `filename`-Parameter kann auf eine beliebige Zeichenfolge festgelegt werden. Der Inhalt des Formulars stellt die Binärdaten des Bildes dar. Sie können eine maximale Bildgröße von 1 MB hochladen. 
+Wenn Sie ein lokales Bild hochladen, müssen Sie die folgenden Formulardaten in den Text der POST-Anforderung einfügen. Die Formulardaten müssen den Header „Content-Disposition“ enthalten. Der `name`-Parameter muss auf „image“ festgelegt werden. Der `filename`-Parameter kann auf eine beliebige Zeichenfolge festgelegt werden. Der Inhalt des Formulars sind die Binärdaten des Bilds. Sie können eine maximale Bildgröße von 1 MB hochladen. 
 
 ```
 --boundary_1234-abcd
@@ -39,9 +39,9 @@ Das Beispielprogramm verwendet nur .NET Core-Klassen und wird unter Windows mit 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen [Visual Studio 2017](https://www.visualstudio.com/downloads/), um diesen Code unter Windows ausführen zu können. (Die kostenlose Community Edition ist hierfür geeignet.)
+Sie benötigen [Visual Studio 2017](https://www.visualstudio.com/downloads/), um diesen Code unter Windows ausführen zu können. (Die kostenlose Community Edition ist hierfür ausreichend.)
 
-Für diesen Schnellstart können Sie einen Zugriffsschlüssel einer [kostenlosen Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) oder einen kostenpflichtigen Zugriffsschlüssel verwenden.
+Für diese Schnellstartanleitung können Sie den Schlüssel eines [kostenlosen Testabonnements](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) oder eines kostenpflichtigen Abonnements verwenden.
 
 ## <a name="running-the-application"></a>Ausführen der Anwendung
 
@@ -50,7 +50,7 @@ Das folgende Beispiel zeigt, wie Sie eine Nachricht mit HttpWebRequest senden. U
 Führen Sie die folgenden Schritte aus, um eine Anwendung auszuführen:
 
 1. Erstellen Sie eine neue Konsolenprojektmappe in Visual Studio.
-1. Ersetzen Sie den Inhalt von `Program.cs` durch den Code, der in diesem Schnellstart gezeigt wird.
+1. Ersetzen Sie den Inhalt von `Program.cs` durch den in dieser Schnellstartanleitung gezeigten Code.
 2. Ersetzen Sie den `accessKey`-Wert durch Ihren Abonnementschlüssel.
 2. Ersetzen Sie den `imagePath`-Wert durch den Pfad des Bilds, das Sie hochladen möchten.
 3. Führen Sie das Programm aus.
@@ -386,9 +386,10 @@ Ersetzen Sie die BingImageSearch-Methode durch den folgenden Code:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erhalten Sie Informationen zu einem Bild mithilfe eines Auswertungstokens](../use-insights-token.md)  
+[Abrufen von Informationen zu einem Bild mithilfe eines Erkenntnistokens](../use-insights-token.md)  
+[Tutorial zum Bildupload für die visuelle Bing-Suche](../tutorial-visual-search-image-upload.md)
 [Tutorial zu einer Single-Page-App für die visuelle Bing-Suche](../tutorial-bing-visual-search-single-page-app.md)
-[Übersicht: visuelle Bing-Suche](../overview.md)  
+[Übersicht über die visuelle Bing-Suche](../overview.md)  
 [Testen](https://aka.ms/bingvisualsearchtryforfree)  
-[Holen Sie sich einen Zugriffsschlüssel einer kostenlosen Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
+[Abrufen eines Zugriffsschlüssels für eine kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
 [Referenz zur API für die visuelle Bing-Suche](https://aka.ms/bingvisualsearchreferencedoc)

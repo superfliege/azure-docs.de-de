@@ -1,6 +1,6 @@
 ---
-title: Unterstützte Länder und Sprachen für die Bing-Bildersuche-API in Azure | Microsoft Docs
-description: Finden Sie heraus, welche Länder und Sprachen durch die Bing-Bildersuche-API unterstützt werden.
+title: Unterstützte Länder/Regionen und Sprachen für die Bing-Bildersuche-API in Azure | Microsoft-Dokumentation
+description: Finden Sie heraus, welche Länder/Regionen und Sprachen durch die Bing-Bildersuche-API unterstützt werden.
 services: cognitive-services
 author: v-jerkin
 manager: jhubbard
@@ -9,23 +9,23 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 10/06/2017
 ms.author: v-jerkin
-ms.openlocfilehash: d0d33ee714ba5cd1ce4e846b96c04f755933bee1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 97e2bed509146172c10aa9ac2658b99ed7610fcc
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376898"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004437"
 ---
-# <a name="bing-image-search-countries-and-languages"></a>Länder und Sprachen der Bing-Bildersuche-API
+# <a name="bing-image-search-countriesregions-and-languages"></a>Länder/Regionen und Sprachen der Bing-Bildersuche
 
-Die Bing-Bildersuche-API unterstützt mehr als drei Dutzend Länder, viele davon mit mehreren Sprachen. Das Angeben eines Lands mit einer Abfrage dient in erster Linie dazu, Suchergebnisse auf der Grundlage von Interesse an diesem Land zu verfeinern. Außerdem können die Ergebnisse Links zu Bing enthalten, und diese Links können die Bing-Benutzeroberfläche entsprechend dem angegebenen Land oder der angegebenen Sprache lokalisieren.
+Die Bing-Bildersuche-API unterstützt mehr als drei Dutzend Länder/Regionen, viele davon mit mehreren Sprachen. Die Angabe eines Lands/einer Region mit einer Abfrage dient in erster Linie dazu, Suchergebnisse auf Grundlage des Interesses an diesem Land/dieser Region zu verfeinern. Außerdem können die Ergebnisse Links zu Bing enthalten, und diese Links können die Bing-Benutzeroberfläche entsprechend dem angegebenen Land/der angegebenen Region oder der angegebenen Sprache lokalisieren.
 
-Um das Land und die Sprache anzugeben, legen Sie den `mkt`-Abfrageparameter (Markt) auf einen Code aus der Tabelle **Märkte** unten fest. Der Markt gibt ein Land und eine Sprache an. Wenn der Benutzer es bevorzugt, Text in einer anderen Sprache anzuzeigen, legen Sie den `setLang`-Abfrageparameter auf den entsprechenden Sprachcode fest.
+Um das Land/die Region und die Sprache anzugeben, legen Sie den `mkt`-Abfrageparameter (Markt) auf einen Code aus der Tabelle **Märkte** unten fest. Der Markt gibt ein Land/eine Region und eine Sprache an. Wenn der Benutzer es bevorzugt, Text in einer anderen Sprache anzuzeigen, legen Sie den `setLang`-Abfrageparameter auf den entsprechenden Sprachcode fest.
 
-Alternativ können Sie das Land mit dem `cc`-Abfrageparameter angeben. Wenn Sie ein Land angeben, müssen Sie mithilfe des HTTP-Headers `Accept-Language` auch mindestens einen Sprachcode angeben. Die unterstützten Sprachen sind je nach Land unterschiedlich. Sie werden für jedes Land in der Tabelle „Märkte“ angegeben.
+Alternativ können Sie das Land/die Region mit dem `cc`-Abfrageparameter angeben. Wenn Sie ein Land/eine Region angeben, müssen Sie mithilfe des HTTP-Headers `Accept-Language` auch mindestens einen Sprachcode angeben. Die unterstützten Sprachen sind je nach Land/Region unterschiedlich. Sie werden für jedes Land/jede Region in der Tabelle „Märkte“ angegeben.
 
 > [!NOTE]
-> Die API für Bilder zu Trends unterstützt zurzeit nur die folgenden Märkte:
+> Die API für beliebte Bilder unterstützt zurzeit nur die folgenden Märkte:
 > - en-US (Englisch, USA) 
 > - en-CA (Englisch, Kanada) 
 > - en-AU (Englisch, Australien) 
@@ -33,7 +33,7 @@ Alternativ können Sie das Land mit dem `cc`-Abfrageparameter angeben. Wenn Sie 
 
 ## <a name="countries"></a>Länder
 
-|Country|Code|
+|Land/Region|Code|
 |-------|----|
 |Argentinien|AR|
 |Australien|AU|
@@ -75,7 +75,7 @@ Alternativ können Sie das Land mit dem `cc`-Abfrageparameter angeben. Wenn Sie 
 
 ## <a name="markets"></a>Märkte
 
-|Country|Sprache|Marktcode|
+|Land/Region|Sprache|Marktcode|
 |-------|--------|-----------|
 |Argentinien|Spanisch|es-AR|
 |Australien|Englisch|en-AU|

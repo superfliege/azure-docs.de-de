@@ -47,8 +47,34 @@
   items:
     - name: Azure-Befehlszeilenschnittstelle
       href: cli-samples.md
+      items:
+        - name: Erstellen eines benutzerdefinierten Themas
+          href: scripts/event-grid-cli-create-custom-topic.md
+        - name: Abonnieren eines Azure-Abonnements
+          href: scripts/event-grid-cli-azure-subscription.md
+        - name: Abonnieren eines Blobspeichers
+          href: scripts/event-grid-cli-blob.md
+        - name: Abonnieren eines benutzerdefinierten Themas
+          href: scripts/event-grid-cli-subscribe-custom-topic.md
+        - name: Abonnieren einer Ressourcengruppe
+          href: scripts/event-grid-cli-resource-group.md
+        - name: Abonnieren und Filtern von Ereignissen für eine Ressourcengruppe
+          href: scripts/event-grid-cli-resource-group-filter.md
     - name: Azure PowerShell
       href: powershell-samples.md
+      items:
+        - name: Erstellen eines benutzerdefinierten Themas
+          href: scripts/event-grid-powershell-create-custom-topic.md
+        - name: Abonnieren eines Azure-Abonnements
+          href: scripts/event-grid-powershell-azure-subscription.md
+        - name: Abonnieren eines Blobspeichers
+          href: scripts/event-grid-powershell-blob.md
+        - name: Abonnieren eines benutzerdefinierten Themas
+          href: scripts/event-grid-powershell-subscribe-custom-topic.md
+        - name: Abonnieren einer Ressourcengruppe
+          href: scripts/event-grid-powershell-resource-group.md
+        - name: Abonnieren und Filtern von Ereignissen für eine Ressourcengruppe
+          href: scripts/event-grid-powershell-resource-group-filter.md
     - name: Resource Manager-Vorlagen
       href: template-samples.md
     - name: Codebeispiele
@@ -71,7 +97,7 @@
       href: post-to-custom-topic.md
     - name: Empfangen von Ereignissen am HTTP-Endpunkt
       href: receive-events.md
-    - name: Verwalten der Ereignisbereitstellung
+    - name: Unzustellbare Nachrichten und Wiederholung
       href: manage-event-delivery.md
     - name: Überwachen der Ereignisbereitstellung
       href: monitor-event-delivery.md

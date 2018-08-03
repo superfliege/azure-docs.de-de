@@ -1,7 +1,7 @@
 ---
-title: Unterstützte Länder und Sprachen für die API für visuelle Bing-Suche | Microsoft-Dokumentation
+title: Unterstützte Länder/Regionen und Sprachen für die API für die visuelle Bing-Suche | Microsoft-Dokumentation
 titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Finden Sie heraus, welche Länder und Sprachen durch die API für die visuelle Bing-Suche unterstützt werden.
+description: Finden Sie heraus, welche Länder/Regionen und Sprachen durch die API für die visuelle Bing-Suche unterstützt werden.
 services: cognitive-services
 author: swhite-msft
 manager: rosh
@@ -10,20 +10,20 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 4723d028cc22caf8be3eb294b52506ec112cbab5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 068459f4959bf3f8daea8fe949ec324879ee260c
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376418"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001227"
 ---
-# <a name="bing-visual-search-countries-and-languages"></a>Länder und Sprachen der visuellen Bing-Suche
+# <a name="bing-visual-search-countriesregions-and-languages"></a>Länder/Regionen und Sprachen der visuellen Bing-Suche
 
-Die API für die visuelle Bing-Suche unterstützt mehr als drei Dutzend Länder, viele davon mit mehreren Sprachen. Jede Anforderung sollte das Land und die gewählte Sprache des Benutzers enthalten. Wenn der Markt des Benutzers bekannt ist, kann Bing entsprechende Ergebnisse zurückgeben. Wenn Sie kein Land und keine Sprache angeben, bemüht sich Bing, das Land und die Sprache des Benutzers zu ermitteln. Da die Ergebnisse Links zu Bing enthalten können, kann bei Kenntnis des Lands und der Sprache eine bevorzugte lokalisierte Bing-Benutzeroberfläche bereitgestellt werden, wenn der Benutzer auf die Bing-Links klickt.
+Die API für die visuelle Bing-Suche unterstützt mehr als drei Dutzend Länder/Regionen, viele davon mit mehreren Sprachen. Jede Anforderung sollte das Land/die Region und die gewählte Sprache des Benutzers enthalten. Wenn der Markt des Benutzers bekannt ist, kann Bing entsprechende Ergebnisse zurückgeben. Wenn Sie kein Land/keine Region und keine Sprache angeben, versucht Bing, das Land/die Region und die Sprache des Benutzers zu ermitteln. Da die Ergebnisse Links zu Bing enthalten können, kann bei Kenntnis des Lands/der Region und der Sprache eine bevorzugte lokalisierte Bing-Benutzeroberfläche bereitgestellt werden, wenn der Benutzer auf die Bing-Links klickt.
 
-Um das Land und die Sprache anzugeben, legen Sie den `mkt`-Abfrageparameter (Markt) auf einen Code aus der Tabelle **Märkte** unten fest. Der Markt gibt ein Land und eine Sprache an. Wenn der Benutzer es bevorzugt, Text in einer anderen Sprache anzuzeigen, legen Sie den `setLang`-Abfrageparameter auf den entsprechenden Sprachcode fest.
+Um das Land/die Region und die Sprache anzugeben, legen Sie den `mkt`-Abfrageparameter (Markt) auf einen Code aus der Tabelle **Märkte** unten fest. Der Markt gibt ein Land/eine Region und eine Sprache an. Wenn der Benutzer es bevorzugt, Text in einer anderen Sprache anzuzeigen, legen Sie den `setLang`-Abfrageparameter auf den entsprechenden Sprachcode fest.
 
-Alternativ können Sie das Land mit dem `cc`-Abfrageparameter angeben. Wenn Sie ein Land angeben, müssen Sie mithilfe des HTTP-Headers `Accept-Language` auch mindestens einen Sprachcode angeben. Die unterstützten Sprachen sind je nach Land unterschiedlich. Sie werden für jedes Land in der Tabelle „Märkte“ angegeben.
+Alternativ können Sie das Land/die Region mit dem `cc`-Abfrageparameter angeben. Wenn Sie ein Land/eine Region angeben, müssen Sie mithilfe des HTTP-Headers `Accept-Language` auch mindestens einen Sprachcode angeben. Die unterstützten Sprachen sind je nach Land/Region unterschiedlich. Sie werden für jedes Land in der Tabelle „Märkte“ angegeben.
 
 
 
@@ -36,7 +36,7 @@ Alternativ können Sie das Land mit dem `cc`-Abfrageparameter angeben. Wenn Sie 
 
 ## <a name="countries"></a>Länder
 
-|Land|Code|
+|Land/Region|Code|
 |-------|----|
 |Argentinien|AR|
 |Australien|AU|
@@ -47,7 +47,7 @@ Alternativ können Sie das Land mit dem `cc`-Abfrageparameter angeben. Wenn Sie 
 |Chile|CL|
 |Dänemark|DK|
 |Finnland|FI|
-|Frankreich|FR|
+|Frankreich|BV|
 |Deutschland|DE|
 |Hongkong|HK|
 |Indien|IN|
@@ -78,7 +78,7 @@ Alternativ können Sie das Land mit dem `cc`-Abfrageparameter angeben. Wenn Sie 
 
 ## <a name="markets"></a>Märkte
 
-|Land|Sprache|Marktcode|
+|Land/Region|Sprache|Marktcode|
 |-------|--------|-----------|
 |Argentinien|Spanisch|es-AR|
 |Australien|Englisch|en-AU|

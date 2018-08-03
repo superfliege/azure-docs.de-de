@@ -10,12 +10,12 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: a520466825eb429e45e0500b52bd7af502c0a38c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 96bd94e37c75d10726245fbcea7044d4ae2ed07e
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377659"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070374"
 ---
 # <a name="your-first-bing-visual-search-query-in-python"></a>Ihre erste Abfrage für die visuelle Bing-Suche in Python
 
@@ -100,7 +100,8 @@ if __name__ == '__main__':
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Abrufen von Informationen zu einem Bild mithilfe eines Erkenntnistokens](../use-insights-token.md)  
-[Tutorial: Single-Page-Web-App für die visuelle Suche](../tutorial-bing-visual-search-single-page-app.md)  
+[Tutorial zum Bildupload für die visuelle Bing-Suche](../tutorial-visual-search-image-upload.md)
+[Tutorial zu einer Single-Page-App für die visuelle Bing-Suche](../tutorial-bing-visual-search-single-page-app.md)  
 [Übersicht über die visuelle Bing-Suche](../overview.md)  
 [Testen](https://aka.ms/bingvisualsearchtryforfree)  
 [Abrufen eines Zugriffsschlüssels für eine kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  

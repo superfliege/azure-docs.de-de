@@ -10,12 +10,12 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: scottwhi
-ms.openlocfilehash: 102bd0e916491738d74956c209829008d779bcbf
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 927a02b400c7a7b250b315ad5668feb198fd590a
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376402"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005688"
 ---
 # <a name="examples-of-bing-insights-usage"></a>Beispiele für die Nutzung von Bing-Auswertungen
 
@@ -61,7 +61,7 @@ Nachfolgend wird gezeigt, wie Bing verwandte Suchvorgänge für Bilder anzeigen 
 
 ## <a name="entity-insight-example"></a>Beispiel für eine Auswertung zur Entität
 
-Nachfolgend sehen Sie, wie Bing Informationen zu der im Bild dargestellten Entität (Person, Ort oder Sache) anzeigen kann. Wenn der Benutzer auf den Link für die Entität klickt, wird er zur Suchergebnisseite von bing.com für die Entität weitergeleitet.
+Nachfolgend sehen Sie, wie Bing Informationen zu der im Bild dargestellten Entität (Person, Ort oder Sache) anzeigen kann. Wenn der Benutzer auf den Link für die Entität klickt, wird er zur Suchergebnisseite von Bing.com für die Entität weitergeleitet.
 
 ![Im Bild gezeigte Entität](./media/entity.PNG)
 

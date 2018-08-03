@@ -164,7 +164,7 @@ In diesem Abschnitt erstellen Sie einen Blobcontainer mit dem Namen **adftutoria
 
    ![Auswahl von SQL Server](./media/tutorial-hybrid-copy-data-tool/select-source-data-store.png)
 
-5. Geben Sie unter „New Linked Service (SQL Server)“ (Neuer verknüpfter Dienst (SQL Server)) im Feld **Name** den Namen **SqlServerLinkedService** ein. Wählen Sie unter **Connect via integration runtime** (Verbindung per Integration Runtime herstellen) die Option **+Neu**. Sie müssen eine selbstgehostete Integration Runtime erstellen, auf Ihren Computer herunterladen und bei Data Factory registrieren. Die selbstgehostete Integration Runtime kopiert Daten zwischen Ihrer lokalen Umgebung und der Cloud.
+5. Geben Sie unter „New Linked Service (SQL Server)“ (Neuer verknüpfter Dienst (SQL Server)) im Feld **Name**\*\* den Namen **SqlServerLinkedService** ein. Wählen Sie unter **Connect via integration runtime** (Verbindung per Integration Runtime herstellen) die Option **+Neu**. Sie müssen eine selbstgehostete Integration Runtime erstellen, auf Ihren Computer herunterladen und bei Data Factory registrieren. Die selbstgehostete Integration Runtime kopiert Daten zwischen Ihrer lokalen Umgebung und der Cloud.
 
    ![Erstellen der selbstgehosteten Integration Runtime](./media/tutorial-hybrid-copy-data-tool/create-integration-runtime-link.png)
 
@@ -222,7 +222,7 @@ In diesem Abschnitt erstellen Sie einen Blobcontainer mit dem Namen **adftutoria
 
 16. Führen Sie im Dialogfenster **New Linked Service (Azure Blob Storage)** (Neuer verknüpfter Dienst (Azure Blob Storage)) die folgenden Schritte aus: 
 
-     a. Geben Sie unter **Name** den Namen **AzureStorageLinkedService** ein.
+     a. Geben Sie unter **Name**\*\* den Namen **AzureStorageLinkedService** ein.
 
      b. Wählen Sie unter **Connect via integration runtime** (Verbindung per Integration Runtime herstellen) die Option **TutorialIntegrationRuntime** aus.
 

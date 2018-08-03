@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 2eee1c6f9158f128ed5ffe575f8f498f1d3eb5e9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2ed00377db80849a8355ccc895db12d006bea642
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35378453"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069926"
 ---
 # <a name="about-the-speech-to-text-api"></a>Informationen zur Spracherkennungs-API
 
@@ -25,13 +25,13 @@ Die **Spracherkennungs**-API umfasst die folgenden Features:
 
 - Erweiterte Spracherkennungstechnologie von Microsoft (wird auch von Cortana, Office und anderen Microsoft-Produkten verwendet).
 
-- Kontinuierliche Erkennung in Echtzeit. Mithilfe der **Spracherkennung** können Benutzer in Echtzeit Audiodatenströme in Text übertragen. Sie unterstützt auch den Empfang von Zwischenergebnissen der Wörter, die bis zum jeweiligen Zeitpunkt erkannt worden sind. Der Dienst erkennt automatisch, wenn nichts mehr gesagt wird. Benutzer können außerdem zusätzliche Formatierungsoptionen auswählen, einschließlich Großbuchstaben und Interpunktion, Filterung von anstößigen Ausdrücken und Textnormalisierung.
+- Kontinuierliche Erkennung in Echtzeit. Mithilfe der **Spracherkennung** können Benutzer in Echtzeit Audiodatenströme in Text übertragen. Sie unterstützt auch den Empfang von Zwischenergebnissen der Wörter, die bis zum jeweiligen Zeitpunkt erkannt worden sind. Der Dienst erkennt automatisch, wenn nichts mehr gesagt wird. Benutzer können außerdem zusätzliche Formatierungsoptionen auswählen, einschließlich Großbuchstaben und Interpunktion, Filterung von anstößigen Ausdrücken und inverse Textnormalisierung.
 
 - Optimierte Ergebnisse für die **Spracherkennung** für interaktive Szenarios, Konversation und diktierte Texte 
 
-- Unterstützung vieler Sprachen in verschiedenen Dialekten. Eine Liste der unterstützten Sprachen für die einzelnen Erkennungsmodi finden Sie unter [Supported languages (Unterstützte Sprachen)](supported-languages.md#speech-to-text).
+- Unterstützung vieler Sprachen und Dialekte. Eine Liste der unterstützten Sprachen für die einzelnen Erkennungsmodi finden Sie unter [Supported languages (Unterstützte Sprachen)](supported-languages.md#speech-to-text).
 
-- Angepasste Modelle für Sprache und Akustik, damit Sie Ihre Anwendung an die Sprechweise des Benutzers, die Sprechumgebung und an besonderes Vokabular anpassen können.
+- Angepasste Modelle für Sprache und Akustik, damit Sie Ihre Anwendung an das spezielle Vokabular der Benutzer, die Sprechumgebung und an die Sprechweise anpassen können.
 
 - Verständnis natürlicher Sprache. Sie können über die Integration von [Language Understanding Intelligent Service](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) Absichten und Entitäten aus dem Gesagten ableiten. Die Benutzer müssen die Terminologie Ihrer App nicht kennen und können ihre Wünsche in ihren eigenen Worten erklären.
 
@@ -41,14 +41,14 @@ Einige Funktionen der **Spracherkennungs**-API sind nicht über REST verfügbar.
 
 | Anwendungsfall | REST | SDKs |
 |-----|-----|-----|----|
-| Übertragen einer kurzen Äußerung wie einem Befehl (weniger als 15 Sekunden); keine Zwischenergebnisse | Ja | Ja |
-| Übertragen einer längeren Äußerung (länger als 15 Sekunden) | Nein  | Ja |
-| Übertragen von Audiodatenströmen mithilfe von optionalen Zwischenergebnissen | Nein  | Ja |
-| Nachvollziehen von Sprecherabsichten mithilfe von LUIS | Nein\* | Ja |
+| Übertragen einer kurzen Äußerung wie einem Befehl (weniger als 15 Sekunden); keine Zwischenergebnisse | JA | JA |
+| Übertragen einer längeren Äußerung (länger als 15 Sekunden) | Nein  | JA |
+| Übertragen von Audiodatenströmen mithilfe von optionalen Zwischenergebnissen | Nein  | JA |
+| Nachvollziehen von Sprecherabsichten mithilfe von LUIS | Nein\* | JA |
 
 \* *Sie können die LUIS-Absichten und Entitäten mithilfe eines separaten LUIS-Abonnements ableiten. Über dieses Abonnement kann das SDK LUIS aufrufen und bietet sowohl Ergebnisse für Absichten und Entitäten als auch Sprachtranskriptionen. Mithilfe der REST-API können Sie LUIS selbst aufrufen, um Absichten und Entitäten mithilfe Ihres LUIS-Abonnements abzuleiten.*
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Abrufen Ihres Testabonnements für die Spracherkennung](https://azure.microsoft.com/try/cognitive-services/)
-* [See how to recognize speech in C# (Erkennen von Sprache in C#)](quickstart-csharp-windows.md)
+* [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
+* [Erkennen von Sprache in C#](quickstart-csharp-dotnet-windows.md)

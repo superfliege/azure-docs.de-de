@@ -10,18 +10,18 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: dd28c829d8d24980a746244dc6aca880d2d69224
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 60b1dc9b8ea9eda258e9776b8967df38c97d964e
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377683"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071701"
 ---
 # <a name="your-first-bing-visual-search-query-in-javascript"></a>Führen Sie Ihre erste Abfrage der visuellen Bing-Suche in JavaScript aus.
 
-Die API für die visuelle Bing-Suche gibt Informationen zu von Ihnen bereitgestellten Bildern zurück. Sie können ein Bild mit dessen URL, einem Auswertungstoken und durch den Upload bereitstellen. Informationen zu diesen Optionen finden Sie im Artikel zur [API für die visuelle Bing-Suche](../overview.md). In diesem Artikel wird gezeigt, wie Sie ein Bild hochladen können. Das Hochladen eines Bilds ist besonders in Szenarios mit einem mobilen Gerät nützlich, wenn Sie ein Foto einer bekannten Sehenswürdigkeit gemacht haben und dann Informationen dazu erhalten. Die Informationen können z.B. Wissenswertes zur Sehenswürdigkeit beinhalten. 
+Die API für die visuelle Bing-Suche gibt Informationen zu von Ihnen bereitgestellten Bildern zurück. Sie können ein Bild über die Bild-URL, ein Erkenntnistoken oder durch Hochladen des Bilds bereitstellen. Informationen zu diesen Optionen finden Sie unter [Was ist die API für die visuelle Bing-Suche?](../overview.md). In diesem Artikel wird gezeigt, wie Sie ein Bild hochladen. Das Hochladen eines Bilds ist besonders in Szenarien mit einem mobilen Gerät nützlich, wenn Sie eine bekannte Sehenswürdigkeit fotografiert haben und Informationen dazu erhalten möchten. Die Informationen können z.B. Wissenswertes zur Sehenswürdigkeit beinhalten. 
 
-Wenn Sie ein lokales Bild hochladen, müssen Sie die folgenden Formulardaten in den Text der POST-Anforderung einfügen. Die Formulardaten müssen den Header „Content-Disposition“ enthalten. Der `name`-Parameter muss auf „image“ und der `filename`-Parameter kann auf eine beliebige Zeichenfolge festgelegt werden. Der Inhalt des Formulars stellt die Binärdaten des Bildes dar. Sie können eine maximale Bildgröße von 1 MB hochladen. 
+Wenn Sie ein lokales Bild hochladen, müssen Sie die folgenden Formulardaten in den Text der POST-Anforderung einfügen. Die Formulardaten müssen den Header „Content-Disposition“ enthalten. Der `name`-Parameter muss auf „image“ festgelegt werden. Der `filename`-Parameter kann auf eine beliebige Zeichenfolge festgelegt werden. Der Inhalt des Formulars sind die Binärdaten des Bilds. Sie können eine maximale Bildgröße von 1 MB hochladen. 
 
 ```
 --boundary_1234-abcd
@@ -38,7 +38,7 @@ In diesem Artikel wird eine einfache Konsolenanwendung gezeigt, die eine Anforde
 
 Zum Ausführen dieses Code benötigen Sie [Node.js 6](https://nodejs.org/en/download/).
 
-Für diesen Schnellstart können Sie einen Zugriffsschlüssel einer [kostenlosen Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) oder einen kostenpflichtigen Zugriffsschlüssel verwenden.
+Für diese Schnellstartanleitung können Sie den Schlüssel eines [kostenlosen Testabonnements](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) oder eines kostenpflichtigen Abonnements verwenden.
 
 ## <a name="running-the-application"></a>Ausführen der Anwendung
 
@@ -94,9 +94,10 @@ function requestCallback(err, res, body) {
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erhalten Sie Informationen zu einem Bild mithilfe eines Auswertungstokens](../use-insights-token.md)  
-[Tutorial: Single-Page-App für die visuelle Suche](../tutorial-bing-visual-search-single-page-app.md)  
-[Übersicht: visuelle Bing-Suche](../overview.md)  
+[Abrufen von Informationen zu einem Bild mithilfe eines Erkenntnistokens](../use-insights-token.md)  
+[Tutorial zum Bildupload für die visuelle Bing-Suche](../tutorial-visual-search-image-upload.md)
+[Tutorial zu einer Single-Page-App für die visuelle Bing-Suche](../tutorial-bing-visual-search-single-page-app.md)  
+[Übersicht über die visuelle Bing-Suche](../overview.md)  
 [Testen](https://aka.ms/bingvisualsearchtryforfree)  
-[Holen Sie sich einen Zugriffsschlüssel einer kostenlosen Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
+[Abrufen eines Zugriffsschlüssels für eine kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
 [Referenz zur API für die visuelle Bing-Suche](https://aka.ms/bingvisualsearchreferencedoc)

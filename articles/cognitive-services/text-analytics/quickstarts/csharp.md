@@ -9,12 +9,12 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: ashmaka
-ms.openlocfilehash: d9c61a83450844461f621ff16354881a029f7ad6
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 94847adf761652a25fd3e2d594c7169776fefc89
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266293"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125124"
 ---
 # <a name="quickstart-for-text-analytics-api-with-c"></a>Schnellstart für die Textanalyse-API mit C# 
 <a name="HOLTop"></a>
@@ -48,7 +48,7 @@ Außerdem benötigen Sie den [Endpunkt und den Zugriffsschlüssel](../How-tos/te
 ## <a name="call-the-text-analytics-api-using-the-sdk"></a>Aufrufen der Textanalyse-API mit dem SDK
 1. Ersetzen Sie den Code in „Program.cs“ durch den unten stehenden Code. Dieses Programm demonstriert die Funktionen der Textanalyse-API in drei Abschnitten (Sprachextraktion und Schlüsselausdrucksextraktion und Stimmungsanalyse).
 1. Ersetzen Sie den Headerwert `Ocp-Apim-Subscription-Key` durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
-1. Ersetzen Sie den Standort in `client.AzureRegion` (zurzeit `AzureRegions.Westus`) durch die Region, für die Sie sich registriert haben.
+1. Ersetzen Sie den Standort in `client.BaseUri` durch den Endpunkt, für den Sie sich registriert haben. Sie finden den Endpunkt in der Azure-Portalressource. In der Regel sieht der Endpunkt wie folgt aus: https://[region].api.cognitive.microsoft.com/text/analytics/v2.0.
 1. Führen Sie das Programm aus.
 
 ```csharp
@@ -81,8 +81,8 @@ namespace ConsoleApp1
         {
 
             // Create a client.
-            ITextAnalyticsAPI client = new TextAnalyticsAPI(new ApiKeyServiceClientCredentials());
-            client.AzureRegion = AzureRegions.Westus;
+            ITextAnalyticsClient client = new TextAnalyticsClient(new ApiKeyServiceClientCredentials());
+            client.BaseUri = new Uri("https://westus.api.cognitive.microsoft.com/text/analytics/v2.0");
 
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 

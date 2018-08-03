@@ -9,17 +9,17 @@ ms.component: emotion-api
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: 2578b0212f9b4a6483402074d7c9eff73e51ca6b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: fb9cc2335582c4ec75ec45635e519346d65d7e08
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374098"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072091"
 ---
 # <a name="emotion-api-javascript-quick-start"></a>Emotionen-API JavaScript-Schnellstart
 
 > [!IMPORTANT]
-> Die Video-API-Vorschau ist am 30. Oktober 2017 abgelaufen. Testen Sie die neue [Video-Indexer-API (Vorschauversion)](https://azure.microsoft.com/services/cognitive-services/video-indexer/). Extrahieren Sie Erkenntnisse aus Videos, und verbessern Sie die Auffindbarkeit von Inhalten, z.B. mit Suchergebnissen durch die Erkennung von gesprochenen Wörtern, Gesichtern, Zeichen und Emotionen. [Weitere Informationen](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview)
+> Die Video-API-Vorschau ist am 30. Oktober 2017 abgelaufen. Testen Sie die neue [Video-Indexer-API (Vorschau)](https://azure.microsoft.com/services/cognitive-services/video-indexer/). Extrahieren Sie Erkenntnisse aus Videos, und verbessern Sie die Auffindbarkeit von Inhalten, z.B. Suchergebnissen, durch die Erkennung von gesprochenen Wörtern, Gesichtern, Zeichen und Emotionen. [Weitere Informationen](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview)
 
 Dieser Artikel enthält Informationen und Codebeispiele für den schnellen Einstieg in die Verwendung der [Recognize-Methode der Emotionen-API](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) mit JavaScript zum Erkennen der von einer oder mehreren Personen auf einem Bild ausgedrückten Emotionen.
 
@@ -36,7 +36,7 @@ Kopieren Sie das folgende Skript, und speichern Sie es in einer Datei wie `test.
 
 ![API-Abonnementschlüssel](../Images/keys.png)
 
-und ändern Sie den Anforderungstext in den Speicherort eines Bilds, das Sie verwenden möchten. Zum Ausführen des Beispiels holen Sie die Datei per Drag & Drop in Ihren Browser.
+Ändern Sie den Anforderungstext in den Speicherort eines Bilds, das Sie verwenden möchten. Zum Ausführen des Beispiels holen Sie die Datei per Drag & Drop in Ihren Browser.
 
 ```html
 <!DOCTYPE html>

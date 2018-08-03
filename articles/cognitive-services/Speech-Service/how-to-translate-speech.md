@@ -8,20 +8,20 @@ manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 07/16/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 7f39f284998489574049d82c44b3d3a0a3797adb
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 6acfcf0ae8ab4c63e6cc943f93da6b947f3d118c
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35378979"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071095"
 ---
 # <a name="translate-speech-using-speech-service"></a>Sprachübersetzung mit dem Speech-Dienst
 
 Das [Speech SDK](speech-sdk.md) ist die einfachste Möglichkeit zur Verwendung der Sprachübersetzung in Ihrer Anwendung. Das SDK bietet die volle Funktionalität des Diensts. Die Sprachübersetzung wird mit folgenden grundlegenden Schritten durchgeführt:
 
-1. Erstellen Sie eine Sprachfactory, und geben Sie einen Abonnementschlüssel für den Speech-Dienst oder ein Autorisierungstoken an. Sie konfigurieren auch die Ausgangs- und Zielsprachen für die Übersetzung. Zudem geben Sie an, ob die Übersetzung als Text- oder als Sprachausgabe erfolgt.
+1. Erstellen Sie eine Sprachfactory, und geben Sie einen Abonnementschlüssel und eine [Region](regions.md) für den Speech-Dienst oder ein Autorisierungstoken an. Sie konfigurieren auch die Ausgangs- und Zielsprachen für die Übersetzung. Zudem geben Sie an, ob die Übersetzung als Text- oder als Sprachausgabe erfolgt.
 
 2. Rufen Sie eine Erkennung aus der Factory ab. Wählen Sie für die Übersetzung eine Übersetzungserkennung aus. (Die anderen Erkennungen werden für die *Spracherkennung* verwendet.) Je nach der verwendeten Audioquelle stehen verschiedene Arten von Übersetzungserkennungen zur Verfügung.
 
@@ -36,4 +36,4 @@ Die Sammlung der aktuellsten Beispiele finden Sie im [GitHub-Repository mit Beis
 # <a name="next-steps"></a>Nächste Schritte
 
 - [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
-- [Erkennen von Sprache in C#](quickstart-csharp-windows.md)
+- [Erkennen von Sprache in C#](quickstart-csharp-dotnet-windows.md)

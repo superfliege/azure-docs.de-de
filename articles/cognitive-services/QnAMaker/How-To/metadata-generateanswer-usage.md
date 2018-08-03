@@ -9,12 +9,12 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: pchoudh
-ms.openlocfilehash: 94e3632884d7033971ff1c45b455afb9a09ee798
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 82e3ee460309f293c9bd7eadebe139f85e241f71
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "35378777"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113350"
 ---
 # <a name="using-metadata-and-the-generateanswer-api"></a>Verwenden von Metadaten und der GenerateAnswer-API
 
@@ -57,7 +57,7 @@ Sie rufen GenerateAnswer über eine HTTP POST-Anforderung auf. Beispielcode, der
     - **QnAMaker endpoint** (Zeichenfolge): Hostname des Endpunkts, der in Ihrem Azure-Abonnement bereitgestellt wurde
 - **Anforderungsheader**
     - **Content-Type** (Zeichenfolge): Medientyp des an die API gesendeten Texts
-    - **Authorization** (Zeichenfolge): Ihr Endpunktschlüssel
+    - **Autorisierung** (Zeichenfolge): Ihr Endpunktschlüssel (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
 - **Anforderungstext**
     - **question** (Zeichenfolge): Benutzerfrage, nach der die Knowledge Base abgefragt werden soll
     - **top** (optional, Integer): Anzahl der priorisierten Ergebnisse für die Ausgabe Der Standardwert ist 1.
@@ -82,6 +82,7 @@ Sie rufen GenerateAnswer über eine HTTP POST-Anforderung auf. Beispielcode, der
     - **answers:** Liste von Antworten auf die Benutzerfrage, sortiert in absteigender Rangfolge
         - **score:** Rangfolgewert zwischen 0 und 100
         - **questions:** Fragen des Benutzers
+        - **answer**: Die Antwort auf die Frage.
         - **source:** Name der Quelle, aus der die Antwort extrahiert oder in der Knowledge Base gespeichert wurde
         - **metadata:** die der Antwort zugeordneten Metadaten
             - name: Metadatenname (Zeichenfolge, maximale Länge: 100, erforderlich)

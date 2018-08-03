@@ -1,9 +1,15 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 0db6620c7433486babebe95090f3682582f1c212
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422160"
 documentType: LandingData
-title: Spracherkennungsdienst – Dokumentation (Vorschauversion)
+title: 'Speech-Dienst und SDK: Dokumentation (Vorschauversion)'
 metadata:
   title: Dokumentation zum Spracherkennungsdienst – Tutorials, Schnellstarts, API-Referenz – Cognitive Services | Microsoft-Dokumentation
-  meta.description: The Speech Service provides developers an easy way to add powerful speech-enabled features to their applications, such as voice command control and dialog, natural speech conversation, speech transcription and dictation, and speech translation.
+  meta.description: "The Speech Service provides developers an easy way to add powerful speech-enabled features to their applications. \nExamples include&#58; voice command control & dialog, natural speech conversation, speech transcription & dictation, and speech translation.\n"
   services: cognitive-services
   author: noellelacharite
   manager: nolachar
@@ -15,19 +21,16 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/16/2018
   ms.author: nolachar
-  ms.openlocfilehash: 2b82b50972c2c61c9dda5d1b1862c0c4cc8a9052
-  ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
-  ms.translationtype: HT
-  ms.contentlocale: de-DE
-  ms.lasthandoff: 07/17/2018
-  ms.locfileid: "39070109"
 abstract:
-  description: Mit dem Microsoft Speech-Dienst erhalten Entwickler die Möglichkeit, auf einfache Weise leistungsfähige Sprachfunktionen zu ihren Anwendungen hinzuzufügen, z.B. Steuerung per Sprachbefehl, Transkription, Diktieren und Übersetzen. Dazu verwenden sie eine <a href="rest-apis">REST-API</a> oder ein <a href="speech-sdk">C#-, C++- oder Java-SDK</a>.<p>Mit dem Speech-Dienst können Sie Modelle für die <a href="how-to-customize-speech-models">Spracherkennung</a> anpassen, um spezielles Vokabular, laute Umgebungen und andere Sprechweisen abzudecken. Angepasste Modelle für <a href="https://cris.ai/Home/customvoice">Text-zu-Sprache</a> und <a href="https://www.microsoft.com/translator/customization.aspx">Sprachübersetzung</a> sind ebenfalls verfügbar.<p>Ausführlichere Informationen finden Sie unter <a href="overview">What is the Speech service (preview)?</a> (Worum handelt es sich beim Speech-Dienst (Vorschauversion)?)
+  description: >
+    Der <a href="overview">Speech-Dienst</a> unterstützt Entwickler über das Speech SDK beim Hinzufügen von Sprachfunktionen zu ihren Apps.<br/>
+
+    Enthaltene Features&#58; <i>Spracherkennung</i> (Speech Recognition, SR), <i>Absicht</i>, <i>Übersetzung</i> und <i>Text-zu-Sprache</i> (Text-To-Speech, TTS).
 sections:
-- title: Zehnminütige Schnellstartanleitungen
+- title: SDK-Download und Schnellstart (5 Minuten)
   items:
   - type: paragraph
-    text: 'Hier erfahren Sie, wie Sie das SDK für Speech installieren und erste Schritte durchführen:'
+    text: Klicken Sie unten auf den gewünschten Pfeil, um Informationen zum Download, zur Installation und zur Verwendung zu erhalten <img src="media/index/link.jpg" height="15" width="15"></img> .
   - type: table
     style: dataMatrix
     columns:
@@ -40,13 +43,13 @@ sections:
     - image:
         src: media/index/logo_netcore.svg
     - image:
-        src: media/index/logo_java.svg
+        src: media/index/logo_java.jpg
     - image:
         src: media/index/logo_rest_sr.svg
     - image:
         src: media/index/logo_rest_tts.svg
     rows:
-    - title: Windows
+    - title: Windows (x86/x64)
       values:
       - href: quickstart-csharp-uwp
       - href: quickstart-csharp-windows
@@ -55,14 +58,14 @@ sections:
       - href: 
       - href: 
       - href: 
-    - title: Linux
+    - title: Linux (x86/x64)
       values:
       - href: 
       - href: 
       - href: quickstart-cpp-linux
       - href: 
       - href: 
-    - title: Android-SDK
+    - title: Android (ARM32/ARM64)
       values:
       - href: 
       - href: 
@@ -71,7 +74,7 @@ sections:
       - href: quickstart-java-android
       - href: 
       - href: 
-    - title: Geräte-SDK
+    - title: Geräte-SDK (ARM64)
       values:
       - href: 
       - href: 
@@ -89,17 +92,40 @@ sections:
       - href: 
       - href: rest-apis
       - href: rest-apis
-- title: Beispiele und Referenz
+- title: 'Speech SDK: Beispiele und Referenz'
   items:
   - type: list
     style: cards
     className: cardsD
     items:
     - title: Beispiele
-      html: <ul><li><a href="speech-to-text-sample.md">Spracherkennung</a></li><li><a href="intent.md">Absichtserkennung</a></li><li><a href="translation.md">Übersetzung</a></li></ul>
+      html: >
+        &nbsp;&#8226; <a href="speech-to-text-sample.md">Spracherkennung (SR)</a><br/>
+
+        &nbsp;&#8226; <a href="intent.md">Absichtserkennung</a><br/>
+
+        &nbsp;&#8226; <a href="translation.md">Übersetzung</a>
     - title: API-Referenz
-      html: <ul><li><a href="https://aka.ms/csspeech/csharpref">C#-API (einschließlich UWP und .NET Standard)</a></li><li><a href="https://aka.ms/csspeech/cppref">C++-API</a></li><li><a href="https://aka.ms/csspeech/javaref">Java-API </a> für Speech-SDK<br>und Speech-Geräte-SDK</li></ul>
-- title: Speech-Geräte-SDK
+      html: >
+        &nbsp;&#8226; <a href="https://aka.ms/csspeech/csharpref">C#-API (UWP und .NET)</a><br/>
+
+        &nbsp;&#8226; <a href="https://aka.ms/csspeech/cppref">C++-API</a><br/>
+
+        &nbsp;&#8226; <a href="https://aka.ms/csspeech/javaref">Java-API</a>
+  - type: paragraph
+    text: Verwenden Sie die Beispiele und die API oben mit Ihrem Abonnementschlüssel (siehe <a href="get-started.md">Kostenloses Testen des Speech-Diensts</a>).
+- title: Anpassen gesprochener Sprache mit Ihren eigenen Daten
   items:
   - type: paragraph
-    text: "Mit der Einführung des vereinheitlichten Spracherkennungsdiensts bieten Microsoft und seine Partner jetzt eine integrierte Hardware/Software-Plattform an, die für die Entwicklung von sprachaktivierten Geräten optimiert ist: das <a href='https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk'>SDK für sprachaktivierte Geräte</a>. Dieses SDK ist für die Entwicklung von Ambient-Geräten für alle Arten von Anwendungen geeignet und ermöglicht Ihnen das Definieren eines benutzerdefinierten <I>Aktivierungsworts</I> nur für Ihre Marke. Außerdem bietet die Hardware eine bessere Audioverarbeitung für Quellen mit mehreren Kanälen, um eine genauere Spracherkennung zu erzielen, z.B. Geräuschunterdrückung, Fernfeldsprache und Beamforming."
+    text: >
+      Mit dem Speech-Dienst können Sie Modelle anpassen, um spezielles Vokabular, laute Umgebungen und verschiedene Sprechweisen abzudecken.<br/>
+
+      &nbsp;&#8226; <a href="how-to-customize-speech-models">Angepasste Spracherkennung</a><br/>
+
+      &nbsp;&#8226; <a href="https://www.microsoft.com/translator/customization.aspx">Angepasste Sprachübersetzung</a><br/>
+
+      &nbsp;&#8226; <a href="https://cris.ai/Home/customvoice">Angepasste Sprachsynthese</a>
+- title: Referenzentwurf für Hardware mit Sprachfunktionen
+  items:
+  - type: paragraph
+    text: Wenn Sie neue Gerätehardware mit Sprachfunktionen entwickeln möchten, sehen Sie sich das Referenzgerät unter <a href='https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk'>Informationen zum Speech-Geräte-SDK (Vorschau)</a> an.

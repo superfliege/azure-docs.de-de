@@ -1,6 +1,6 @@
 ---
-title: Unterstützte Länder und Sprachen für die Bing-Websuche-API in Azure | Microsoft-Dokumentation
-description: Finden Sie heraus, welche Länder und Sprachen von der Bing-Websuche-API unterstützt werden.
+title: Unterstützte Länder/Regionen und Sprachen für die Bing-Websuche-API in Azure | Microsoft-Dokumentation
+description: Finden Sie heraus, welche Länder/Regionen und Sprachen von der Bing-Websuche-API unterstützt werden.
 services: cognitive-services
 author: v-jerkin
 manager: jhubbard
@@ -9,24 +9,24 @@ ms.component: bing-web-search
 ms.topic: article
 ms.date: 10/06/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 7b62c4a4feb7144662a8fe4d692f11f1efe5db1b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e1994ddf3bf71d01adeac4ff8688bdd1e6eac660
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373306"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001717"
 ---
-# <a name="bing-web-search-countries-and-languages"></a>Länder und Sprachen der Bing-Websuche-API
+# <a name="bing-web-search-countriesregions-and-languages"></a>Länder/Regionen und Sprachen der Bing-Websuche
 
-Die Bing-Websuche-API unterstützt mehr als drei Dutzend Länder, viele davon mit mehreren Sprachen. Die Angabe eines Lands mit einer Abfrage dient in erster Linie dazu, Suchergebnisse auf Grundlage des Interesse an diesem Land zu verfeinern. Außerdem können die Ergebnisse Links zu Bing enthalten, und diese Links können die Bing-Benutzeroberfläche entsprechend dem angegebenen Land oder der angegebenen Sprache lokalisieren.
+Die Bing-Websuche-API unterstützt mehr als drei Dutzend Länder/Regionen, viele davon mit mehreren Sprachen. Die Angabe eines Lands/einer Region mit einer Abfrage dient in erster Linie dazu, Suchergebnisse auf Grundlage des Interesses an diesem Land/dieser Region zu verfeinern. Außerdem können die Ergebnisse Links zu Bing enthalten, und diese Links können die Bing-Benutzeroberfläche entsprechend dem angegebenen Land/der angegebenen Region oder der angegebenen Sprache lokalisieren.
 
-Sie können mit dem `cc`-Abfrageparameter ein Land angeben. Wenn Sie ein Land angeben, müssen Sie mithilfe des HTTP-Headers `Accept-Language` auch mindestens einen Sprachcode angeben. Die unterstützten Sprachen sind je nach Land unterschiedlich. Sie werden für jedes Land in der Tabelle „Märkte“ angegeben.
+Sie können mit dem `cc`-Abfrageparameter ein Land/eine Region angeben. Wenn Sie ein Land/eine Region angeben, müssen Sie mithilfe des HTTP-Headers `Accept-Language` auch mindestens einen Sprachcode angeben. Die unterstützten Sprachen sind je nach Land/Region unterschiedlich. Sie werden für jedes Land/jede Region in der Tabelle „Märkte“ angegeben.
 
-Alternativ können Sie den Markt mit dem Abfrageparameter `mkt` und einen Code aus der Tabelle **Märkte** angeben. Bei der Angabe eines Markts werden gleichzeitig ein Land und die bevorzugte Sprache angegeben. Der Abfrageparameter `setLang` kann in diesem Fall auf einen Sprachcode festgelegt sein. Dies ist in der Regel dieselbe von `mkt` angegebene Sprache, es sei denn, der Benutzer möchte Bing in einer anderen Sprache anzeigen.
+Alternativ können Sie den Markt mit dem Abfrageparameter `mkt` und einen Code aus der Tabelle **Märkte** angeben. Bei der Angabe eines Markts werden gleichzeitig ein Land/eine Region und die bevorzugte Sprache angegeben. Der Abfrageparameter `setLang` kann in diesem Fall auf einen Sprachcode festgelegt sein. Dies ist in der Regel dieselbe von `mkt` angegebene Sprache, es sei denn, der Benutzer möchte Bing in einer anderen Sprache anzeigen.
 
 ## <a name="countries"></a>Länder
 
-|Country|Code|
+|Land/Region|Code|
 |-------|----|
 |Argentinien|AR|
 |Australien|AU|
@@ -68,7 +68,7 @@ Alternativ können Sie den Markt mit dem Abfrageparameter `mkt` und einen Code a
 
 ## <a name="markets"></a>Märkte
 
-|Country|Sprache|Marktcode|
+|Land/Region|Sprache|Marktcode|
 |-------|--------|-----------|
 |Argentinien|Spanisch|es-AR|
 |Australien|Englisch|en-AU|
