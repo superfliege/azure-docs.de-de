@@ -211,6 +211,8 @@
           href: virtual-network-troubleshoot-connectivity-problem-between-vms.md
         - name: Konfigurieren von PTR für die SMTP-Bannerüberprüfung
           href: create-ptr-for-smtp-service.md
+        - name: Checkliste zur Problembehandlung für virtuelle Geräte
+          href: virtual-network-troubleshoot-nva.md
     - name: Klassisch
       items:
         - name: Erstellen und Verwalten eines virtuellen Netzwerks

@@ -1,21 +1,20 @@
 ---
-title: Worum handelt es sich beim Speech-Dienst (Vorschau)? | Microsoft-Dokumentation
+title: Worum handelt es sich beim Speech-Dienst (Vorschau)?
 description: 'Der Speech-Dienst ist Bestandteil von Microsoft Cognitive Services und vereint mehrere Azure-Sprachdienste, die zuvor separat verfügbar waren: Bing-Spracheingabe (bestehend aus Spracherkennung und Sprachsynthese), Custom Speech und Sprachübersetzung.'
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: adfc854fc24b9e285c405f3038a21ec84cd2f4c2
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: fc6ef4ccbe6e392b991bd375afcc63a54f58db02
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989334"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285458"
 ---
 # <a name="what-is-the-speech-service-preview"></a>Worum handelt es sich beim Speech-Dienst (Vorschau)?
 

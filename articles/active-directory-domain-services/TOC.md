@@ -36,6 +36,9 @@
 #### [Aufgabe 1: Erwerben eines Zertifikats für sicheres LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md)
 #### [Aufgabe 2: Exportieren des Zertifikats für sicheres LDAP](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
 #### [Aufgabe 3: Aktivieren von sicherem LDAP für die verwaltete Domäne über das Azure-Portal](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
+#### [Aufgabe 4: Konfigurieren von DNS für den Zugriff auf die verwaltete Domäne über das Internet](active-directory-ds-ldaps-configure-dns.md)
+#### [Aufgabe 5: Binden an die verwaltete Domäne und Sperren des Secure LDAP-Zugriffs](active-directory-ds-ldaps-bind-lockdown.md)
+#### [Problembehandlung für Secure LDAP](active-directory-ds-ldaps-troubleshoot.md)
 
 ### [Erstellen einer Organisationseinheit für eine verwaltete Domäne](active-directory-ds-admin-guide-create-ou.md)
 ### [Erstellen eines gruppenverwalteten Dienstkontos in einer verwalteten Domäne](active-directory-ds-create-gmsa.md)
