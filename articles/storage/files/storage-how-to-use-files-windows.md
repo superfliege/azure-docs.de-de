@@ -1,181 +1,292 @@
 ---
-title: Einbinden einer Azure-Dateifreigabe und Zugreifen auf die Freigabe unter Windows | Microsoft-Dokumentation
-description: Binden Sie eine Azure-Dateifreigabe unter Windows ein, und greifen Sie darauf zu.
+title: Verwenden einer Azure-Dateifreigabe mit Windows | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie eine Azure-Dateifreigabe mit Windows und Windows Server verwenden.
 services: storage
 documentationcenter: na
 author: RenaShahMSFT
 manager: aungoo
-editor: tysonn
+editor: tamram
 ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/11/2018
+ms.date: 06/07/2018
 ms.author: renash
-ms.openlocfilehash: e283619c7e634a1fbba5940e5c8545b0ee4de3d1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 54e084e6480c872ff6dd4625b8c87d5a60a181ba
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39392266"
 ---
-# <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>Einbinden einer Azure-Dateifreigabe und Zugreifen auf die Freigabe unter Windows
-[Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Windows und in Windows Server eingebunden werden. Dieser Artikel zeigt drei verschiedene Methoden zum Einbinden einer Azure-Dateifreigabe unter Windows: über die Benutzeroberfläche des Explorers, mithilfe von PowerShell und über die Eingabeaufforderung. 
+# <a name="use-an-azure-file-share-with-windows"></a>Verwenden einer Azure-Dateifreigabe mit Windows
+[Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Windows und Windows Server nahtlos verwendet werden. In diesem Artikel werden die Überlegungen zur Verwendung einer Azure-Dateifreigabe mit Windows und Windows Server behandelt.
 
-Wenn Sie eine Azure-Dateifreigabe außerhalb der Azure-Region einbinden möchten, in der sie gehostet wird (beispielsweise lokal oder in einer anderen Azure-Region), muss das Betriebssystem SMB 3.0 unterstützen. 
+Wenn Sie eine Azure-Dateifreigabe außerhalb der Azure-Region verwenden möchten, in der sie gehostet wird (beispielsweise lokal oder in einer anderen Azure-Region), muss das Betriebssystem SMB 3.0 unterstützen. 
 
-Sie können Azure-Dateifreigaben unter einer Windows-Installation einbinden, die entweder auf einer Azure-VM oder lokal ausgeführt wird. In der folgenden Tabelle wird veranschaulicht, welche Betriebssystemversionen das Einbinden von Dateifreigaben in den einzelnen Umgebungen unterstützen:
+Sie können Azure-Dateifreigaben in einer Windows-Installation verwenden, die entweder auf einem virtuellen Azure-Computer oder lokal ausgeführt wird. In der folgenden Tabelle wird veranschaulicht, welche Betriebssystemversionen den Zugriff auf Dateifreigaben in den einzelnen Umgebungen unterstützen:
 
 | Windows-Version        | SMB-Version | Einbindung in Azure-VM möglich | Lokale Einbindung möglich |
 |------------------------|-------------|-----------------------|----------------------|
-| Halbjährlicher Windows Server-Kanal<sup>1</sup> | SMB 3.0 | Ja | Ja |
-| Windows 10<sup>2</sup>  | SMB 3.0 | Ja | Ja |
-| Windows Server 2016    | SMB 3.0     | Ja                   | Ja                  |
-| Windows 8.1            | SMB 3.0     | Ja                   | Ja                  |
-| Windows Server 2012 R2 | SMB 3.0     | Ja                   | Ja                  |
-| Windows Server 2012    | SMB 3.0     | Ja                   | Ja                  |
-| Windows 7              | SMB 2.1     | Ja                   | Nein                    |
-| Windows Server 2008 R2 | SMB 2.1     | Ja                   | Nein                    |
+| Windows Server 2019 (Vorschauversion)<sup>1</sup> | SMB 3.0 | JA | JA |
+| Windows 10<sup>2</sup> | SMB 3.0 | JA | JA |
+| Halbjährlicher Windows Server-Kanal<sup>3</sup> | SMB 3.0 | JA | JA |
+| Windows Server 2016    | SMB 3.0     | JA                   | JA                  |
+| Windows 8.1            | SMB 3.0     | JA                   | JA                  |
+| Windows Server 2012 R2 | SMB 3.0     | JA                   | JA                  |
+| Windows Server 2012    | SMB 3.0     | JA                   | JA                  |
+| Windows 7              | SMB 2.1     | JA                   | Nein                    |
+| Windows Server 2008 R2 | SMB 2.1     | JA                   | Nein                    |
 
-<sup>1</sup>Windows Server Version 1709.  
-<sup>2</sup>Windows 10, Versionen 1507, 1607, 1703 und 1709.
+<sup>1</sup>Windows Server 2019 ist als Vorschauversion über das [Windows Server-Insider-Programm](https://insider.windows.com/for-business-getting-started-server/) verfügbar. Windows Server 2019 wird zwar noch nicht für die Nutzung in der Produktion unterstützt, informieren Sie uns jedoch bitte, wenn beim Herstellen einer Verbindung mit Azure-Dateifreigaben Probleme auftreten, die nicht im [Handbuch zur Problembehandlung für Windows](storage-troubleshoot-windows-file-connection-problems.md) behandelt werden.  
+<sup>2</sup>Windows 10, Versionen 1507, 1607, 1703, 1709 und 1803.  
+<sup>3</sup>Windows Server, Version 1709 und 1803.
 
 > [!Note]  
 > Es empfiehlt sich, immer die neueste KB für Ihre Windows-Version zu verwenden.
 
-## <a name="aprerequisites-for-mounting-azure-file-share-with-windows"></a></a>Voraussetzungen für das Einbinden von Azure-Dateifreigaben mit Windows 
+## <a name="prerequisites"></a>Voraussetzungen 
 * **Name des Speicherkontos:** Zum Einbinden einer Azure-Dateifreigabe benötigen Sie den Namen des Speicherkontos.
 
 * **Speicherkontoschlüssel:** Zum Einbinden einer Azure-Dateifreigabe benötigen Sie den primären (oder sekundären) Speicherschlüssel. SAS-Schlüssel können derzeit nicht zum Einbinden verwendet werden.
 
-* **Sicherstellen, dass Port 445 geöffnet ist:** Azure Files verwendet das SMB-Protokoll. SMB kommuniziert über den TCP-Port 445. Vergewissern Sie sich, dass der TCP-Port 445 des Clientcomputers nicht durch die Firewall blockiert wird. Sie können mit Portqry überprüfen, ob der TCP-Port 445 geöffnet ist. Wenn der TCP-Port 445 als gefiltert angezeigt wird, wird der TCP-Port blockiert. Dies ist eine Beispielabfrage:
+* **Stellen Sie sicher, dass Port 445 geöffnet ist**: Das SMB-Protokoll erfordert dass TCP-Port 445 geöffnet ist. Wenn Port 445 gesperrt ist, sind keine Verbindungen möglich. Mithilfe des Cmdlets `Test-NetConnection` können Sie überprüfen, ob Ihre Firewall Port 445 blockiert. Für den folgenden PowerShell-Code wird vorausgesetzt, dass Sie das AzureRM-PowerShell-Modul installiert haben. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-azurerm-ps). Denken Sie daran, `<your-storage-account-name>` und `<your-resoure-group-name>` durch die entsprechenden Namen für Ihr Speicherkonto zu ersetzen.
 
-    `g:\DataDump\Tools\Portqry>PortQry.exe -n [storage account name].file.core.windows.net -p TCP -e 445`
+    ```PowerShell
+    $resourceGroupName = "<your-resource-group-name>"
+    $storageAccountName = "<your-storage-account-name>"
 
-    Wenn der TCP-Port 445 durch eine Regel entlang des Netzwerkpfads blockiert wird, wird Ihnen die folgende Ausgabe angezeigt:
+    # This command requires you to be logged into your Azure account, run Login-AzureRmAccount if you haven't
+    # already logged in.
+    $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
 
-    `TCP port 445 (Microsoft-ds service): FILTERED`
+    # The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
+    # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as soverign clouds
+    # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
+    Test-NetConnection -ComputerName [System.Uri]::new($storageAccount.Context.FileEndPoint).Host -Port 445
+    ```
 
-    Weitere Informationen zur Verwendung von Portqry finden Sie unter [Beschreibung des Befehlszeilenprogramms Portqry.exe](https://support.microsoft.com/help/310099).
+    Wenn das Verbinden erfolgreich war, wird die folgende Ausgabe angezeigt:
 
+    ```
+    ComputerName     : <storage-account-host-name>
+    RemoteAddress    : <storage-account-ip-address>
+    RemotePort       : 445
+    InterfaceAlias   : <your-network-interface>
+    SourceAddress    : <your-ip-address>
+    TcpTestSucceeded : True
+    ```
 
-## <a name="persisting-connections-across-reboots"></a>Beibehalten von Verbindungen nach einem Neustart
-### <a name="cmdkey"></a>CmdKey
-Die einfachste Methode zu Einrichten einer dauerhaften Verbindung besteht darin, Ihre Speicherkonto-Anmeldeinformationen mithilfe des Befehlszeilentools „CmdKey“ in Windows zu speichern. Im folgenden Befehlszeilenbeispiel werden Ihre Speicherkonto-Anmeldeinformationen auf Ihrem virtuellen Computer gespeichert:
+    > [!Note]  
+    > Der oben genannte Befehl gibt die aktuelle IP-Adresse des Speicherkontos zurück. Diese IP-Adresse bleibt nicht garantiert gleich und kann sich jederzeit ändern. Verwenden Sie keine Hartkodierung für diese IP-Adresse in Skripts oder einer Firewallkonfiguration. 
+
+## <a name="using-an-azure-file-share-with-windows"></a>Verwenden einer Azure-Dateifreigabe mit Windows
+Zum Verwenden einer Azure-Dateifreigabe mit Windows müssen Sie sie entweder einbinden, d.h. ihr einen Laufwerkbuchstaben oder Bereitstellungspunktpfad zuweisen, oder über ihren [UNC-Pfad](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx) darauf zugreifen. 
+
+Im Gegensatz zu anderen SMB-Freigaben, mit denen Sie vielleicht interagiert haben, wie z B. jene, die auf einem Windows Server-Computer, Linux Samba-Server oder NAS-Gerät gehostet werden, unterstützen Azure-Dateifreigaben derzeit keine Kerberos-Authentifizierung mit Ihrer Active Directory (AD) oder Azure Active Directory (AAD)-Identität. Allerdings [arbeiten](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles) wir bereits an dieser Funktion. Stattdessen müssen Sie für den Zugriff auf Ihre Azure-Dateifreigabe den Speicherkontoschlüssel für das Speicherkonto verwenden, das Ihre Azure-Dateifreigabe enthält. Ein Speicherkontoschlüssel ist ein Administratorschlüssel für ein Speicherkonto, der Administratorberechtigungen für alle Dateien und Ordner in der Dateifreigabe, auf die Sie zugreifen, sowie für alle Dateifreigaben und anderen Speicherressourcen (Blobs, Warteschlangen, Tabellen usw.) in Ihrem Speicherkonto umfasst. Wenn dies für Ihre Workload nicht ausreicht, kann die [Azure-Dateisynchronisierung](storage-files-planning.md#data-access-method) den Mangel an Kerberos-Authentifizierung und ACL-Unterstützung in der Zwischenzeit ausgleichen, bis die AAD-basierte Kerberos-Authentifizierung und ACL-Unterstützung öffentlich verfügbar sind.
+
+Ein allgemeines Muster für das Migrieren von Branchenanwendungen per Lift & Shift, die eine SMB-Dateifreigabe an Azure erwarten, ist die Verwendung einer Azure-Dateifreigabe als Alternative für die Ausführung eines dedizierten Windows-Dateiservers auf einem virtuellen Azure-Computer. Ein wichtiger Aspekt für die erfolgreiche Migration einer Branchenanwendung zur Verwendung einer Azure-Dateifreigabe ist, dass viele Branchenanwendungen im Kontext eines dedizierten Dienstkontos mit begrenzten Berechtigungen anstatt des Administratorkontos eines virtuellen Computers ausgeführt werden. Daher müssen Sie sicherstellen, dass Sie die Anmeldeinformationen für die Azure-Dateifreigabe aus dem Kontext des Dienstkontos und nicht Ihres Administratorkontos einbinden/speichern.
+
+### <a name="persisting-azure-file-share-credentials-in-windows"></a>Beibehalten von Anmeldeinformationen für eine Azure-Dateifreigabe in Windows  
+Das Hilfsprogramm [Cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) ermöglicht Ihnen das Speichern Ihrer Speicherkonto-Anmeldeinformationen in Windows. Dies bedeutet, dass Sie keine Anmeldeinformationen angeben müssen, wenn Sie auf eine Azure-Dateifreigabe über deren UNC-Pfad zugreifen oder die Azure-Dateifreigabe einbinden möchten. Zum Speichern der Anmeldeinformationen Ihres Speicherkontos führen Sie die folgenden PowerShell-Befehle aus und ersetzen dabei `<your-storage-account-name>` und `<your-resoure-group-name>` entsprechend.
+
+```PowerShell
+$resourceGroupName = "<your-resource-group-name>"
+$storageAccountName = "<your-storage-account-name>"
+
+# These commands require you to be logged into your Azure account, run Login-AzureRmAccount if you haven't
+# already logged in.
+$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
+$storageAccountKeys = Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName
+
+# The cmdkey utility is a command-line (rather than PowerShell) tool. We use Invoke-Expression to allow us to 
+# consume the appropriate values from the storage account variables. The value given to the add parameter of the
+# cmdkey utility is the host address for the storage account, <storage-account>.file.core.windows.net for Azure 
+# Public Regions. $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as soverign 
+# clouds or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
+Invoke-Expression -Command "cmdkey /add:$([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) " + `
+    "/user:AZURE\$($storageAccount.StorageAccountName) /pass:$($storageAccountKeys[0].Value)"
 ```
-C:\>cmdkey /add:<yourstorageaccountname>.file.core.windows.net /user:<domainname>\<yourstorageaccountname> /pass:<YourStorageAccountKeyWhichEndsIn==>
-```
-> [!Note]
-> Der Domänenname lautet hier „AZURE“.
 
-Mit CmdKey können Sie auch die damit gespeicherten Anmeldeinformationen auflisten:
+Mithilfe des Auflistungsparameters können Sie überprüfen, ob das Cmdkey-Hilfsprogramm die Anmeldeinformationen für das Speicherkonto gespeichert hat:
 
+```PowerShell
+cmdkey /list
 ```
-C:\>cmdkey /list
-```
-Die Ausgabe sieht wie folgt aus:
+
+Wenn die Anmeldeinformationen für Ihre Azure-Dateifreigabe erfolgreich gespeichert wurden, lautet die erwartete Ausgabe wie folgt (in der Liste sind möglicherweise zusätzliche Schlüssel gespeichert):
 
 ```
 Currently stored credentials:
 
-Target: Domain:target=<yourstorageaccountname>.file.core.windows.net
+Target: Domain:target=<storage-account-host-name>
 Type: Domain Password
-User: AZURE\<yourstorageaccountname>
+User: AZURE\<your-storage-account-name>
 ```
-Nach dem Speichern der Anmeldeinformationen müssen sie beim Herstellen der Verbindung mit Ihrer Freigabe nicht mehr angegeben werden. Stattdessen können Sie die Verbindung ganz ohne Angabe von Anmeldeinformationen herstellen.
 
-## <a name="mount-the-azure-file-share-with-file-explorer"></a>Einbinden der Azure-Dateifreigabe über den Explorer
+Sie sollten jetzt ohne Angabe zusätzlicher Anmeldeinformationen in der Lage sein, die Freigabe einzubinden oder darauf zuzugreifen.
+
+#### <a name="advanced-cmdkey-scenarios"></a>Erweiterte Cmdkey-Szenarien
+Für Cmdkey sind zwei zusätzliche Szenarien zu berücksichtigen: Speichern von Anmeldeinformationen für einen anderen Benutzer auf dem Computer, z.B. ein Dienstkonto, und Speichern von Anmeldeinformationen auf einem Remotecomputer mit PowerShell-Remoting.
+
+Das Speichern der Anmeldeinformationen für einen anderen Benutzer auf dem Computer ist äußerst einfach: Nachdem Sie sich bei Ihrem Konto angemeldet haben, führen Sie einfach den folgenden PowerShell-Befehl aus:
+
+```PowerShell
+$password = ConvertTo-SecureString -String "<service-account-password>" -AsPlainText -Force
+$credential = New-Object System.Management.Automation.PSCredential -ArgumentList "<service-account-username>", $password
+Start-Process -FilePath PowerShell.exe -Credential $credential -LoadUserProfile
+```
+
+Daraufhin wird ein neues PowerShell-Fenster im Benutzerkontext Ihres Dienstkontos (oder Benutzerkontos) geöffnet. Anschließend können Sie wie [oben](#persisting-azure-file-share-credentials-in-windows) beschriebenen das Cmdkey-Hilfsprogramm verwenden.
+
+Das Speichern der Anmeldeinformationen auf einem Remotecomputer mithilfe von PowerShell-Remoting ist jedoch nicht möglich, da Cmdkey keinen Zugriff – auch nicht für Hinzufügungen – auf den Anmeldeinformationsspeicher zulässt, wenn der Benutzer über PowerShell-Remoting angemeldet ist. Es wird empfohlen, sich mit [Remotedesktop](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/windows) auf dem Computer anzumelden.
+
+### <a name="mount-the-azure-file-share-with-powershell"></a>Einbinden der Azure-Dateifreigabe mithilfe von PowerShell
+Führen Sie die folgenden Befehle in einer normalen (d.h. ohne erhöhte Rechte) PowerShell-Sitzung aus, um die Azure-Dateifreigabe einzubinden. Denken Sie daran `<your-resource-group-name>`, `<your-storage-account-name>`, `<your-file-share-name>` und `<desired-drive-letter>` durch die richtigen Informationen zu ersetzen.
+
+```PowerShell
+$resourceGroupName = "<your-resource-group-name>"
+$storageAccountName = "<your-storage-account-name>"
+$fileShareName = "<your-file-share-name>"
+
+# These commands require you to be logged into your Azure account, run Login-AzureRmAccount if you haven't
+# already logged in.
+$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
+$storageAccountKeys = Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName
+$fileShare = Get-AzureStorageShare -Context $storageAccount.Context | Where-Object { 
+    $_.Name -eq $fileShareName -and $_.IsSnapshot -eq $false
+}
+
+if ($fileShare -eq $null) {
+    throw [System.Exception]::new("Azure file share not found")
+}
+
+# The value given to the root parameter of the New-PSDrive cmdlet is the host address for the storage account, 
+# <storage-account>.file.core.windows.net for Azure Public Regions. $fileShare.StorageUri.PrimaryUri.Host is 
+# used because non-Public Azure regions, such as soverign clouds or Azure Stack deployments, will have different 
+# hosts for Azure file shares (and other storage resources).
+$password = ConvertTo-SecureString -String $storageAccountKeys[0].Value -AsPlainText -Force
+$credential = New-Object System.Management.Automation.PSCredential -ArgumentList "AZURE\$($storageAccount.StorageAccountName)", $password
+New-PSDrive -Name <desired-drive-letter> -PSProvider FileSystem -Root "\\$($fileShare.StorageUri.PrimaryUri.Host)\$($fileShare.Name)" -Credential $credential -Persist
+```
+
+> [!Note]  
+> Mit der Option `-Persist` des Cmdlets `New-PSDrive` lässt sich die Dateifreigabe beim Starten nur erneut einbinden, wenn die Anmeldeinformationen gespeichert sind. Sie können die Anmeldeinformationen wie [oben beschriebenen](#persisting-azure-file-share-credentials-in-windows) mithilfe von Cmdkey speichern. 
+
+Falls gewünscht können Sie die Einbindung der Azure-Dateifreigabe mit dem folgenden PowerShell-Cmdlet aufheben.
+
+```PowerShell
+Remove-PSDrive -Name <desired-drive-letter>
+```
+
+### <a name="mount-the-azure-file-share-with-file-explorer"></a>Einbinden der Azure-Dateifreigabe über den Explorer
 > [!Note]  
 > Beachten Sie, dass sich die folgenden Anweisungen auf Windows 10 beziehen und bei älteren Versionen unter Umständen geringfügig unterscheiden können. 
 
-1. **Öffnen Sie den Explorer:** Verwenden Sie dazu entweder das Startmenü, oder drücken Sie WINDOWS-TASTE+E.
+1. Öffnen Sie den Datei-Explorer. Verwenden Sie dazu entweder das Startmenü, oder drücken Sie WINDOWS-TASTE+E.
 
-2. **Navigieren Sie im linken Fensterbereich zu „Dieser PC“. Dadurch ändern sich die verfügbaren Menüs auf dem Menüband. Wählen Sie im Menü „Computer“ die Option „Netzlaufwerk verbinden“ aus.**
+2. Navigieren Sie im linken Fensterbereich zu **Dieser PC**. Dadurch ändern sich die verfügbaren Menüs auf dem Menüband. Wählen Sie im Menü „Computer“ die Option **Netzlaufwerk verbinden** aus.
     
     ![Screenshot: Dropdownmenü „Netzlaufwerk verbinden“](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-3. **Kopieren Sie den UNC-Pfad aus dem Bereich „Verbinden“ im Azure-Portal.** 
+3. Kopieren Sie den UNC-Pfad aus dem Bereich **Verbinden** im Azure-Portal. 
 
     ![UNC-Pfad aus dem Verbindungsbereich von Azure Files](./media/storage-how-to-use-files-windows/portal_netuse_connect.png)
 
-4. **Wählen Sie den Laufwerkbuchstaben aus, und geben Sie den UNC-Pfad ein.** 
+4. Wählen Sie den Laufwerkbuchstaben aus, und geben Sie den UNC-Pfad ein. 
     
     ![Screenshot des Dialogfelds „Netzlaufwerk verbinden“](./media/storage-how-to-use-files-windows/2_MountOnWindows10.png)
 
-5. **Verwenden Sie den Speicherkontonamen mit vorangestelltem `Azure\` als Benutzername und einen Speicherkontoschlüssel als Kennwort.**
+5. Verwenden Sie den Speicherkontonamen mit vorangestelltem `AZURE\` als Benutzername und einen Speicherkontoschlüssel als Kennwort.
     
     ![Screenshot des Dialogfelds für die Netzwerkanmeldeinformationen](./media/storage-how-to-use-files-windows/3_MountOnWindows10.png)
 
-6. **Verwenden Sie die Azure-Dateifreigabe wie gewünscht.**
+6. Verwenden Sie die Azure-Dateifreigabe wie gewünscht.
     
     ![Die Azure-Dateifreigabe ist nun eingebunden.](./media/storage-how-to-use-files-windows/4_MountOnWindows10.png)
 
-7. **Wenn Sie die Einbindung der Azure-Dateifreigabe wieder aufheben (also die Verbindung trennen) möchten, klicken Sie im Explorer unter „Netzwerk“ mit der rechten Maustaste auf den Eintrag für die Freigabe, und wählen Sie „Trennen“.**
+7. Wenn Sie die Einbindung der Azure-Dateifreigabe wieder aufheben möchten, klicken Sie im Explorer unter **Netzwerkadressen** mit der rechten Maustaste auf den Eintrag für die Freigabe, und wählen Sie **Trennen**.
 
-## <a name="mount-the-azure-file-share-with-powershell"></a>Einbinden der Azure-Dateifreigabe mithilfe von PowerShell
-1. **Verwenden Sie zum Einbinden der Azure-Dateifreigabe den folgenden Befehl.** Ersetzen Sie dabei `<storage-account-name>`, `<share-name>`, `<storage-account-key>` und `<desired-drive-letter>` durch die entsprechenden Angaben.
+## <a name="securing-windowswindows-server"></a>Sichern von Windows/Windows Server
+Zum Einbinden einer Azure-Dateifreigabe unter Windows muss Port 445 zugänglich sein. Viele Organisationen blockieren Port 445 aufgrund von mit SMB 1 verbundenen Sicherheitsrisiken. SMB 1, auch bekannt als CIFS (Common Internet File System) ist ein älteres Dateisystemprotokoll, das in Windows und Windows Server enthalten ist. SMB 1 ist ein veraltetes, ineffizientes und vor allem unsicheres Protokoll. Die gute Nachricht ist, dass Azure Files SMB 1 nicht unterstützt und alle unterstützten Versionen von Windows und Windows Server das Entfernen oder Deaktivieren von SMB 1 ermöglichen. Wir [empfehlen immer dringend](https://aka.ms/stopusingsmb1), unter Windows den SMB 1-Client und -Server vor der Verwendung von Azure-Dateifreigaben in der Produktion zu entfernen oder zu deaktivieren.
 
-    ```PowerShell
-    $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force
-    $credential = New-Object System.Management.Automation.PSCredential -ArgumentList "Azure\<storage-account-name>", $acctKey
-    New-PSDrive -Name <desired-drive-letter> -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\<share-name>" -Credential $credential
-    ```
+Die folgende Tabelle enthält ausführliche Informationen zum Status von SMB 1 für jede Version von Windows:
 
-2. **Verwenden Sie die Azure-Dateifreigabe wie gewünscht.**
+| Windows-Version                           | SMB 1-Standardstatus | Deaktivierungs-/Entfernungsmethode       | 
+|-------------------------------------------|----------------------|-----------------------------|
+| Windows Server 2019 (Vorschauversion)             | Deaktiviert             | Entfernen mit Windows-Funktion |
+| Windows Server, Versionen ab 1709            | Deaktiviert             | Entfernen mit Windows-Funktion |
+| Windows 10, Versionen ab 1709                | Deaktiviert             | Entfernen mit Windows-Funktion |
+| Windows Server 2016                       | Aktiviert              | Entfernen mit Windows-Funktion |
+| Windows 10,Versionen 1507, 1607 und 1703 | Aktiviert              | Entfernen mit Windows-Funktion |
+| Windows Server 2012 R2                    | Aktiviert              | Entfernen mit Windows-Funktion | 
+| Windows 8.1                               | Aktiviert              | Entfernen mit Windows-Funktion | 
+| Windows Server 2012                       | Aktiviert              | Deaktivieren mit Registrierung       | 
+| Windows Server 2008 R2                    | Aktiviert              | Deaktivieren mit Registrierung       |
+| Windows 7                                 | Aktiviert              | Deaktivieren mit Registrierung       | 
 
-3. **Wenn Sie die Azure-Dateifreigabe nicht mehr benötigen, heben Sie die Einbindung mithilfe des folgenden Befehls wieder auf:**
+### <a name="auditing-smb-1-usage"></a>Überwachung der Verwendung von SMB 1
+> Gilt für Windows Server 2019 (Vorschauversion), den halbjährlichen Windows Server-Kanal (Versionen 1709 und 1803), Windows Server 2016, Windows 10 (Versionen 1507, 1607, 1703, 1709 und 1803), Windows Server 2012 R2 und Windows 8.1
 
-    ```PowerShell
-    Remove-PSDrive -Name <desired-drive-letter>
-    ```
-
-> [!Note]  
-> Mit dem Parameter `-Persist` für `New-PSDrive` können Sie die eingebundene Azure-Dateifreigabe für den Rest des Betriebssystems sichtbar machen.
-
-## <a name="mount-the-azure-file-share-with-command-prompt"></a>Einbinden der Azure-Dateifreigabe über die Eingabeaufforderung
-1. **Verwenden Sie zum Einbinden der Azure-Dateifreigabe den folgenden Befehl.** Ersetzen Sie dabei `<storage-account-name>`, `<share-name>`, `<storage-account-key>` und `<desired-drive-letter>` durch die entsprechenden Angaben.
-
-    ```
-    net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
-    ```
-
-2. **Verwenden Sie die Azure-Dateifreigabe wie gewünscht.**
-
-3. **Wenn Sie die Azure-Dateifreigabe nicht mehr benötigen, heben Sie die Einbindung mithilfe des folgenden Befehls wieder auf:**
-
-    ```
-    net use <desired-drive-letter>: /delete
-    ```
+Vor dem Entfernen von SMB 1 in Ihrer Umgebung kann es von Vorteil sein, die Verwendung von SMB 1 zu überwachen, um festzustellen, ob Clients durch die Änderung beschädigt werden. Wenn Anforderungen für SMB-Dateifreigaben mit SMB 1 erfolgen, wird im Ereignisprotokoll unter `Applications and Services Logs > Microsoft > Windows > SMBServer > Audit` ein Überwachungsereignis aufgezeichnet. 
 
 > [!Note]  
-> Sie können die Azure-Dateifreigabe so konfigurieren, dass die Verbindung nach einem Neustart des Systems automatisch wiederhergestellt wird, indem Sie die Anmeldeinformationen in Windows speichern. Verwenden Sie zum Speichern der Anmeldeinformationen den folgenden Befehl:
->   ```
->   cmdkey /add:<storage-account-name>.file.core.windows.net /user:AZURE\<storage-account-name> /pass:<storage-account-key>
->   ```
+> Zum Aktivieren der Überwachungsunterstützung unter Windows Server 2012 R2 und Windows 8.1 installieren Sie mindestens [KB4022720](https://support.microsoft.com/help/4022720/windows-8-1-windows-server-2012-r2-update-kb4022720).
+
+Zum Aktivieren der Überwachung führen Sie das folgende Cmdlet in einer PowerShell-Sitzung mit erhöhten Rechten aus:
+
+```PowerShell
+Set-SmbServerConfiguration –AuditSmb1Access $true
+```
+
+### <a name="removing-smb-1-from-windows-server"></a>Entfernen von SMB 1 von Windows Server
+> Gilt für Windows Server 2019 (Vorschauversion), den halbjährlichen Windows Server-Kanal (Versionen 1709 und 1803), Windows Server 2016, Windows Server 2012 R2
+
+Zum Entfernen von SMB 1 von einer Windows Server-Instanz führen Sie das folgende Cmdlet in einer PowerShell-Sitzung mit erhöhten Rechten aus:
+
+```PowerShell
+Remove-WindowsFeature -Name FS-SMB1
+```
+
+Starten Sie den Server neu, um den Entfernungsvorgang abzuschließen. 
+
+> [!Note]  
+> Ab Windows 10 und Windows Server-Version 1709, ist SMB 1 nicht mehr standardmäßig installiert und verfügt über separate Windows-Funktionen für den SMB 1-Client und den SMB 1-Server. Es wird immer empfohlen, sowohl den SMB-1-Server (`FS-SMB1-SERVER`) als auch den SMB 1-Client (`FS-SMB1-CLIENT`) nicht zu installieren.
+
+### <a name="removing-smb-1-from-windows-client"></a>Entfernen von SMB 1 von Windows-Clients
+> Gilt für Windows 10 (Versionen 1507, 1607, 1703, 1709 und 1803) und Windows 8.1
+
+Zum Entfernen von SMB 1 von Ihrem Windows-Client führen Sie das folgende Cmdlet in einer PowerShell-Sitzung mit erhöhten Rechten aus:
+
+```PowerShell
+Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol
+```
+
+Starten Sie Ihren PC neu, um den Entfernungsvorgang abzuschließen.
+
+### <a name="disabling-smb-1-on-legacy-versions-of-windowswindows-server"></a>Deaktivieren von SMB 1 unter älteren Versionen von Windows/Windows Server
+> Gilt für Windows Server 2012, Windows Server 2008 R2 und Windows 7
+
+SMB 1 kann unter älteren Versionen von Windows/Windows Server nicht vollständig entfernt werden, lässt sich jedoch über die Registrierung deaktivieren. Zum Deaktivieren von SMB 1 erstellen Sie unter `HKEY_LOCAL_MACHINE > SYSTEM > CurrentControlSet > Services > LanmanServer > Parameters` den neuen Registrierungsschlüssel `SMB1` vom Typ `DWORD` mit dem Wert `0`.
+
+Dazu kann auch problemlos das folgende PowerShell-Cmdlet verwendet werden:
+
+```PowerShell
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" SMB1 -Type DWORD -Value 0 –Force
+```
+
+Nach der Erstellung dieses Registrierungsschlüssels müssen Sie den Server neu starten, um SMB 1 zu deaktivieren.
+
+### <a name="smb-resources"></a>SMB-Ressourcen
+- [Verwendung von SMB 1 beenden](https://blogs.technet.microsoft.com/filecab/2016/09/16/stop-using-smb1/)
+- [Clearinghouse für SMB 1-Produkte](https://blogs.technet.microsoft.com/filecab/2017/06/01/smb1-product-clearinghouse/)
+- [Erkennen von SMB 1 in Ihrer Umgebung mit DSCEA](https://blogs.technet.microsoft.com/ralphkyttle/2017/04/07/discover-smb1-in-your-environment-with-dscea/)
+- [Deaktivieren von SMB 1 über eine Gruppenrichtlinie](https://blogs.technet.microsoft.com/secguide/2017/06/15/disabling-smbv1-through-group-policy/)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Azure Files erhalten Sie über diese Links.
-
+Weitere Informationen zu Azure Files finden Sie unter diesen Links:
+- [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md)
 * [HÄUFIG GESTELLTE FRAGEN](../storage-files-faq.md)
 * [Troubleshoot Azure File storage problems in Windows](storage-troubleshoot-windows-file-connection-problems.md) (Beheben von Problemen mit Azure File Storage unter Windows)      
-
-### <a name="conceptual-articles-and-videos"></a>Konzeptionelle Artikel und Videos
-* [Azure Files: a frictionless cloud SMB file system for Windows and Linux (Azure Files: ein reibungsloses Cloud-SMB-Dateisystem für Windows und Linux)](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-* [How to use Azure Files with Linux (Verwenden von Azure Files mit Linux)](../storage-how-to-use-files-linux.md)
-
-### <a name="tooling-support-for-azure-files"></a>Toolunterstützung für Azure Files
-* [Verwenden von AzCopy mit Microsoft Azure Storage](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
-* [Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
-* [Behandeln von Azure Files-Problemen unter Windows](storage-troubleshoot-windows-file-connection-problems.md)
-* [Troubleshooting Azure Files problems – Linux](storage-troubleshoot-linux-file-connection-problems.md) (Behandeln von Azure Files-Problemen – Linux)
-
-### <a name="blog-posts"></a>Blogbeiträge
-* [Azure Files is now generally available](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/) (Azure Files ist jetzt allgemein verfügbar)
-* [Inside Azure Files](https://azure.microsoft.com/blog/inside-azure-file-storage/) (Einblick in Azure Files)
-* [Einführung in den Microsoft Azure-Dateidienst](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
-* [Migrating Data to Microsoft Azure Files](https://azure.microsoft.com/blog/migrating-data-to-microsoft-azure-files/) (Migrieren von Daten zu Microsoft Azure Files)
-
-### <a name="reference"></a>Verweis
-* [Referenz zur Storage-Clientbibliothek für .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx)
-* [Referenz zur REST-API des Dateidiensts](http://msdn.microsoft.com/library/azure/dn167006.aspx)
