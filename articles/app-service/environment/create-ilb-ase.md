@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/20/2018
+ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 6e09bdc336821720c970f8b8daf13f52b0a69ed0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 9fdbfd0338b1c4b6ac863f07e5808ce6ccd9a6c7
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355371"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39347283"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung #
 
@@ -64,15 +64,9 @@ So erstellen Sie eine ILB-ASE:
 
 4. Wählen Sie ein VNET aus, oder erstellen Sie eines.
 
-    * Wenn Sie ein neues VNET erstellen, können Sie einen Namen und Speicherort angeben. Wenn Sie vorhaben, Linux-Apps in dieser ASE zu hosten, werden derzeit nur diese sechs Regionen unterstützt: **„USA, Westen“, „USA, Osten“, „Europa, Westen“, „Europa, Norden“, „Australien, Osten“, „Asien, Südosten“**. 
+5. Wenn Sie ein vorhandenes VNET auswählen, müssen Sie ein Subnetz erstellen, das die ASE beinhaltet. Die Größe des Subnetzes sollte auf einen ausreichend großen Wert festgelegt werden, um das zukünftige Wachstum Ihrer ASE abzudecken. Empfohlen wird eine Größe von `/24` mit 256 Adressen, die eine ASE in maximaler Größe und alle Skalierungsanforderungen verarbeiten kann. 
 
-5. Wenn Sie ein vorhandenes VNET auswählen, müssen Sie ein Subnetz erstellen, das die ASE beinhaltet. Die Größe des Subnetzes sollte auf einen ausreichend großen Wert festgelegt werden, um das zukünftige Wachstum Ihrer ASE abzudecken. Empfohlen wird eine Größe von `/25` mit 128 Adressen zur Verarbeitung einer ASE in maximaler Größe. Die kleinste Größe, die Sie auswählen können, beträgt `/28`. Diese Größe kann je nach den Infrastrukturanforderungen auf maximal drei Instanzen skaliert werden.
-
-    * Skalieren Sie in Ihren App Service-Plänen über die maximale Anzahl von 100 Instanzen hinaus.
-
-    * Skalieren Sie auf bis zu 100 Instanzen, profitieren Sie jedoch von einer schnelleren Front-End-Skalierung.
-
-6. Wählen Sie **Virtuelles Netzwerk/Speicherort** >  **Konfigurationen virtueller Netzwerke**. Legen Sie den **VIP-Typ** auf **Intern** fest.
+6. Wählen Sie **Virtuelles Netzwerk/Speicherort** > **Konfigurationen virtueller Netzwerke**. Legen Sie den **VIP-Typ** auf **Intern** fest.
 
 7. Geben Sie einen Domänennamen ein. Diese Domäne wird für Apps verwendet, die in dieser ASE erstellt werden. Es gelten einige Einschränkungen. Der Domänenname darf nicht folgendermaßen lauten:
 
@@ -119,7 +113,7 @@ Sie erstellen eine App in einer ILB-ASE auf dieselbe Weise, wie Sie eine App nor
 
 5. Wählen Sie Ihr Betriebssystem aus. 
 
-    * Wenn Sie eine Linux-App mit einem benutzerdefinierten Docker-Container erstellen möchten, können Sie gemäß der hier aufgeführten Anweisungen Ihren eigenen Container verwenden. 
+    * Wenn Sie eine Linux-App mit einem benutzerdefinierten Docker-Container erstellen möchten, können Sie gemäß der [hier][linuxapp] aufgeführten Anweisungen Ihren eigenen Container verwenden. 
 
 6. Wählen Sie einen App Service-Plan aus, oder erstellen Sie einen. Wenn Sie einen neuen App Service-Plan erstellen möchten, wählen Sie Ihre ASE als Speicherort aus. Wählen Sie den Workerpool aus, in dem Ihr App Service-Plan erstellt werden soll. Wählen Sie beim Erstellen des App Service-Plans die ASE als Speicherort und den Workerpool aus. Wenn Sie den Namen der App angeben, wird die Domäne unter Ihrem App-Namen durch die Domäne für Ihre ASE ersetzt.
 
@@ -172,7 +166,6 @@ So laden Sie eigene Zertifikate hoch und prüfen den Zugriff:
 
     > [!NOTE] 
     > Versuchen Sie nicht, diese VM im selben Subnetz wie die der ASE zu erstellen, da dies Fehler bzw. Probleme verursacht.
-    >
     >
 
 6. Legen Sie das DNS für Ihre ASE-Domäne fest. Sie können einen Platzhalter mit Ihrer Domäne in Ihrem DNS verwenden. Um einige einfache Tests auszuführen, bearbeiten Sie die Hostdatei auf Ihrer VM, um den Namen der Web-App auf die virtuelle IP-Adresse festzulegen:
@@ -258,3 +251,4 @@ Weitere Informationen zum Konfigurieren Ihrer ILB-ASE mit einem WAF-Gerät finde
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
 [customdomain]: ../app-service-web-tutorial-custom-domain.md
+[linuxapp]: ../containers/app-service-linux-intro.md

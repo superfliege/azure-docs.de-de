@@ -9,12 +9,12 @@ ms.date: 06/27/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 2293390684a8dcdf5f32bbae8f04fe7317d389e2
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: c94479ca523f0097c8fbf94729f3a255ffc0c2bf
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258960"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413220"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Tutorial: Entwickeln und Bereitstellen eines C#-IoT Edge-Moduls für Ihr simuliertes Gerät
 
@@ -29,18 +29,26 @@ Mithilfe von Azure IoT Edge-Modulen können Sie Code bereitstellen, der Ihre Ges
 
 Das IoT Edge-Modul, das Sie in diesem Tutorial erstellen, filtert die von Ihrem Gerät generierten Temperaturdaten. Es leitet Nachrichten nur dann an nachgeschaltete Geräte weiter, wenn die Temperatur einen angegebenen Schwellenwert überschreitet. Diese Art der Analyse auf Edge-Ebene trägt zur Verringerung der Datenmenge bei, die an die Cloud übermittelt und dort gespeichert wird. 
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Das Azure IoT Edge-Gerät, das Sie mit der Schnellstartanleitung für [Linux](quickstart-linux.md) oder [Windows](quickstart.md) erstellt haben
-* Die Verbindungszeichenfolge des primären Schlüssels für das IoT Edge-Gerät  
+Ein Azure IoT Edge-Gerät:
+
+* Sie können Ihren Entwicklungscomputer oder einen virtuellen Computer als Edge-Gerät verwenden, indem Sie die Schritte ausführen, die in der Schnellstartanleitung für [Linux](quickstart-linux.md)- oder [Windows](quickstart.md)-Geräte beschrieben sind.
+
+Cloudressourcen:
+
+* Ein [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) mit Standardtarif in Azure. 
+
+Entwicklungsressourcen:
+
 * [Visual Studio Code](https://code.visualstudio.com/). 
 * [Erweiterung C# for Visual Studio Code mit Unterstützung von OmniSharp](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 * [Azure IoT Edge-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) für Visual Studio Code 
-* [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)
-* [Docker CE](https://docs.docker.com/install/) auf dem Entwicklungscomputer. 
+* [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
+* [Docker CE](https://docs.docker.com/install/)
 
 
 ## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung
@@ -104,16 +112,6 @@ Die folgenden Schritte dienen zum Erstellen eines auf dem .NET Core 2.0 SDK basi
        public int humidity {get; set;}         
     }
     ```
-
-8. Die **Init**-Methode deklariert ein Kommunikationsprotokoll, das für das Modul verwendet werden soll. Ersetzen Sie die MQTT-Einstellungen durch AMPQ-Einstellungen. 
-
-   ```csharp
-   // MqttTransportSettings mqttSetting = new MqttTransportSettings(TransportType.Mqtt_Tcp_Only);
-   // ITransportSettings[] settings = { mqttSetting };
-
-   AmqpTransportSettings amqpSetting = new AmqpTransportSettings(TransportType.Amqp_Tcp_Only);
-   ITransportSettings[] settings = {amqpSetting};
-   ```
 
 8. In der **Init**-Methode erstellt und konfiguriert der Code ein **ModuleClient**-Objekt. Mit diesem Objekt kann das Modul die Verbindung mit der lokalen Azure IoT Edge-Runtime herstellen, um Nachrichten zu senden und zu empfangen. Die in der Methode **Init** verwendete Verbindungszeichenfolge wird durch die IoT Edge-Runtime für das Modul bereitgestellt. Nach dem Erstellen von **ModuleClient** liest der Code den Wert **temperatureThreshold** aus den gewünschten Eigenschaften des Modulzwillings. Der Code registriert einen Rückruf, um über den Endpunkt **input1** Nachrichten von einer IoT Edge Hub-Instanz zu empfangen. Ersetzen Sie die Methode **SetInputMessageHandlerAsync** durch eine neue, und fügen Sie den gewünschten Eigenschaften eine Methode vom Typ **SetDesiredPropertyUpdateCallbackAsync** hinzu. Zu diesem Zweck ersetzen Sie die letzte Zeile der **Init**-Methode durch folgenden Code:
 

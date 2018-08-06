@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell-Skriptbeispiel – Herstellen einer Verbindung einer Web-App mit einer SQL-­Datenbank | Microsoft-Dokumentation
-description: Azure PowerShell-Skriptbeispiel – Herstellen einer Verbindung einer Web-App mit einer SQL-­Datenbank
+title: Azure PowerShell-Skriptbeispiel – Herstellen einer Verbindung einer Web-App mit einer SQL-Datenbank | Microsoft-Dokumentation
+description: Azure PowerShell-Skriptbeispiel – Herstellen einer Verbindung einer Web-App mit einer SQL-Datenbank
 services: app-service\web
 documentationcenter: ''
 author: syntaxc4
@@ -16,14 +16,14 @@ ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: ffd907d14265a43fd769aaa751fb3678c3c30dea
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: be9a1f138ce858465ba8ded85365043cd823dac1
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31586686"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324744"
 ---
-# <a name="connect-a-web-app-to-a-sql-database"></a>Herstellen einer Verbindung einer Web-App mit einer SQL­Datenbank
+# <a name="connect-a-web-app-to-a-sql-database"></a>Herstellen einer Verbindung einer Web-App mit einer SQL-Datenbank
 
 In diesem Szenario erfahren Sie, wie Sie eine Azure SQL-Datenbank und eine Azure-Web-App erstellen. Anschließend verknüpfen Sie die SQL-Datenbank mithilfe von App-Einstellungen mit der Web-App.
 
@@ -31,7 +31,7 @@ Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure Powe
 
 ## <a name="sample-script"></a>Beispielskript
 
-[!code-powershell[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect a web app to a SQL database")]
+[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect a web app to a SQL database")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
 

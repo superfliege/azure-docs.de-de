@@ -7,18 +7,27 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.topic: overview
-ms.date: 07/16/2018
+ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 8e5518e0a2be98cc080a76cdf0697d6812ab22f8
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: f7a314b3de112ad1fa7a5a356c2325846e9371b1
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092102"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413381"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Worum handelt es sich beim Azure SQL-Datenbankdienst? 
 
-SQL-Datenbank ist ein relationaler verwalteter Datenbankdienst in Microsoft Azure für allgemeine Zwecke, der Strukturen wie relationale Daten, JSON, räumliche Daten und XML unterstützt. SQL-Datenbank verfügt über logische Server, die [einzelne SQL-Datenbanken](sql-database-servers-databases.md) und [Pools für elastische Datenbanken](sql-database-elastic-pool.md) enthalten können, und über [verwaltete Instanzen](sql-database-managed-instance.md) (öffentliche Vorschauversion), die System- und Benutzerdatenbanken enthalten. SQL-Datenbank bietet eine dynamisch skalierbare Leistung und ist in zwei verschiedenen Kaufmodellen verfügbar: im [V-Kern-basierten Kaufmodell](sql-database-service-tiers-vcore.md) und im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md). SQL-Datenbank stellt auch Optionen wie z.B. [Columnstore-Indizes](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) für extrem umfangreiche Analysen und Berichte und [In-Memory-OLTP](sql-database-in-memory.md) für aufwendigste Transaktionsverarbeitungen bereit. Microsoft kümmert sich um sämtliche Patches und Updates der SQL-Codebasis und übernimmt damit die Verwaltung der gesamten zugrunde liegenden Infrastruktur. 
+SQL-Datenbank ist ein relationaler verwalteter Datenbankdienst in Microsoft Azure für allgemeine Zwecke, der Strukturen wie relationale Daten, JSON, räumliche Daten und XML unterstützt. SQL-Datenbank bietet eine dynamisch skalierbare Leistung und ist in zwei verschiedenen Kaufmodellen verfügbar: im [V-Kern-basierten Kaufmodell](sql-database-service-tiers-vcore.md) und im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md). SQL-Datenbank stellt auch Optionen wie z.B. [Columnstore-Indizes](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) für extrem umfangreiche Analysen und Berichte und [In-Memory-OLTP](sql-database-in-memory.md) für aufwendigste Transaktionsverarbeitungen bereit. Microsoft kümmert sich um sämtliche Patches und Updates der SQL-Codebasis und übernimmt damit die Verwaltung der gesamten zugrunde liegenden Infrastruktur. 
+
+Azure SQL-Datenbank bietet die folgenden Bereitstellungsoptionen für eine Azure SQL-Datenbank:
+- Als einzelne Datenbank mit ihrem eigenen Ressourcensatz, der über einen logischen Server verwaltet wird 
+- Als gruppierte Datenbank in einem [Pool für elastische Datenbanken](sql-database-elastic-pool.md) mit einem gemeinsamen Ressourcensatz, der über einen logischen Server verwaltet wird.
+- Als Teil einer Sammlung von Datenbanken, die als [verwaltete Instanz](sql-database-managed-instance.md) bezeichnet wird (in der öffentlichen Vorschau), die System- und Benutzerdatenbanken enthält und einen Ressourcensatz teilt.
+
+Die folgende Abbildung stellt diese Bereitstellungsoptionen dar:
+
+![deployment-options](./media/sql-database-technical-overview/deployment-options.png) 
 
 SQL-Datenbank nutzt diese Codebasis gemeinsam mit der [Microsoft SQL Server-Datenbank-Engine](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation). Mit der Cloud-First-Strategie von Microsoft werden die neuesten Funktionen von SQL Server zunächst in SQL-Datenbank und erst dann in SQL Server selbst veröffentlicht. Durch diesen Ansatz verfügen Sie immer über die neuesten Features von SQL Server – ohne den Mehraufwand für Patches oder Updates –, die in Millionen von Datenbanken getestet wurden. Informationen zu angekündigten neuen Funktionen finden Sie unter:
 

@@ -1,21 +1,19 @@
 ---
 title: Erstellen eines Jenkins-Servers in Azure
 description: Installieren Sie Jenkins auf der Grundlage der Jenkins-Lösungsvorlage auf einem virtuellen Azure-Linux-Computer, und erstellen Sie eine Java-Beispielanwendung.
-author: tomarcher
-manager: rloutlaw
-ms.service: multiple
-ms.workload: web
-ms.devlang: na
-ms.topic: article
-ms.date: 03/12/2018
+ms.topic: quickstart
 ms.author: tarcher
-ms.custom: Jenkins
-ms.openlocfilehash: c9f86ab2536d3c598bb8c7084524395b41f18db0
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+author: tomarcher
+manager: jpconnock
+ms.service: devops
+ms.custom: jenkins
+ms.date: 07/31/2018
+ms.openlocfilehash: af1082d9b7b350f1845d6c8e22108b9238a40f28
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635457"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390427"
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Erstellen eines Jenkins-Servers auf einem virtuellen Azure-Linux-Computer über das Azure-Portal
 
@@ -88,6 +86,10 @@ Wählen Sie **Build Now** (Jetzt erstellen) aus, um den Code zu kompilieren und 
 ![Navigieren zum Arbeitsbereich, um die JAR-Datei aus dem Build abzurufen](./media/install-jenkins-solution-template/jenkins-access-workspace.png) 
 
 Vergewissern Sie sich unter `complete/build/libs`, dass die Datei `gs-spring-boot-0.1.0.jar` vorhanden ist, um sicherzugehen, dass der Buildvorgang erfolgreich war. Der Jenkins-Server ist nun für die Erstellung Ihrer eigenen Projekte in Azure bereit.
+
+## <a name="troubleshooting-the-jenkins-solution-template"></a>Problembehandlung bei der Jenkins-Lösungsvorlage
+
+Wenn bei der Jenkins-Lösungsvorlage Fehler auftreten, melden Sie das Problem im [Jenkins-GitHub-Repository](https://github.com/azure/jenkins/issues).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,6 +1,6 @@
 ---
 title: Bereitstellen von Azure-Funktionen mit Azure IoT Edge | Microsoft-Dokumentation
-description: Stellen Sie eine Azure-Funktion als Modul auf einem Edge-Gerät bereit.
+description: In diesem Tutorial stellen Sie eine Azure-Funktion als Modul auf einem Edge-Gerät bereit.
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3f3ba0ccb1cb8961344b605e7ec386b6d6692262
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: d37e08f58986a1318e6b379d2efeb71bc58d4583
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006876"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413736"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules-preview"></a>Tutorial: Bereitstellen von Azure-Funktionen als IoT Edge-Module (Vorschauversion)
 
@@ -35,14 +35,21 @@ Die Azure-Funktion, die Sie in diesem Tutorial erstellen, filtert die von Ihrem 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen ein IoT Edge-Gerät, um die in diesem Tutorial erstellten Funktionsmodule testen zu können. Sie können das Gerät verwenden, das Sie in der Schnellstartanleitung für [Linux](quickstart-linux.md) oder [Windows](quickstart.md) konfiguriert haben.
+Ein Azure IoT Edge-Gerät:
 
-Auf dem Entwicklungscomputer müssen die folgenden Komponenten vorhanden sein: 
+* Sie können Ihren Entwicklungscomputer oder einen virtuellen Computer als Edge-Gerät verwenden, indem Sie die Schritte ausführen, die in der Schnellstartanleitung für [Linux](quickstart-linux.md)- oder [Windows](quickstart.md)-Geräte beschrieben sind.
+
+Cloudressourcen:
+
+* Ein [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) mit Standardtarif in Azure. 
+
+Entwicklungsressourcen:
+
 * [Visual Studio Code](https://code.visualstudio.com/). 
 * [Erweiterung C# for Visual Studio Code mit Unterstützung von OmniSharp](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 * [Azure IoT Edge-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) für Visual Studio Code 
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)
-* [Docker CE](https://docs.docker.com/install/) auf dem Entwicklungscomputer. 
+* [Docker CE](https://docs.docker.com/install/). 
 
 ## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung
 In diesem Tutorial verwenden Sie die Azure IoT Edge-Erweiterung für VSCode zum Entwickeln eines Moduls und zum Erstellen eines **Containerimages** aus den Dateien. Danach pushen Sie dieses Image in ein **Repository**, in dem Ihre Images gespeichert und verwaltet werden. Abschließend stellen Sie Ihr Image aus der Registrierung zur Ausführung auf dem IoT Edge-Gerät bereit.  

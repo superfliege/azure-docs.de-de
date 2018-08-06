@@ -13,20 +13,20 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/12/2018
+ms.date: 07/30/2018
 ms.author: alkohli
-ms.openlocfilehash: f63eadc9a6ab834e02d62be9a209b504d76d3c8e
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 1ae6d3dbd01d2623fef511ed0663270ac605f257
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090774"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39362659"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk-preview"></a>Behandeln von Problemen mit dem Azure Data Box-Datenträger (Vorschau)
 
 Dieser Artikel gilt für Microsoft Azure Data Box im Vorschaurelease. Dieser Artikel beschreibt einige der komplexen Workflows und Verwaltungsaufgaben, die für Azure Data Box und den Azure Data Box-Datenträger ausgeführt werden können. 
 
-Sie können Azure Data Box über die Benutzeroberfläche des Azure Data Box-Diensts (als „Portalbenutzeroberfläche“ bezeichnet) und über die lokale Webbenutzeroberfläche für das Gerät verwalten. Der Data Box-Datenträger kann nur über das Azure-Portal verwaltet werden. Der Schwerpunkt dieses Artikels liegt auf den Aufgaben, die mithilfe des Azure-Portals ausgeführt werden können. Verwenden Sie das Azure-Portal, um Bestellungen und Geräte zu verwalten und den Status der Bestellung bis zur Auslieferung nachzuverfolgen.
+Die Data Box Disk-Instanz kann über das Azure-Portal verwaltet werden. Der Schwerpunkt dieses Artikels liegt auf den Aufgaben, die mithilfe des Azure-Portals ausgeführt werden können. Verwenden Sie das Azure-Portal, um Bestellungen und Geräte zu verwalten und den Status der Bestellung bis zum Abschluss nachzuverfolgen.
 
 Dieser Artikel enthält folgende Lernprogramme:
 

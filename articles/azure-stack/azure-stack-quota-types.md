@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/08/2018
+ms.date: 07/30/2018
 ms.author: brenduns
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 52d469236d607a145430134c24c4237346dafb4c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 2e884164347239838d08fbbc1616ed54ffc4ff24
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358734"
 ---
 # <a name="quota-types-in-azure-stack"></a>Kontingenttypen in Azure Stack
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 05/07/2018
 
 [Kontingente](azure-stack-plan-offer-quota-overview.md#plans) definieren die Grenzwerte von Ressourcen, die ein Benutzerabonnement bereitstellen oder nutzen kann. Mithilfe eines Kontingents kann ein Benutzer beispielsweise bis zu fünf virtuelle Computer erstellen. Jede Ressource verfügt über eigene Kontingenttypen.
 
-## <a name="compute-quota-types"></a>Computekontingenttypen
+## <a name="compute-quota-types"></a>Computekontingenttypen 
 | **Typ** | **Standardwert** | **Beschreibung** |
 | --- | --- | --- |
 | Maximale Anzahl von virtuellen Computern | 20 | Die maximale Anzahl von virtuellen Computern, die ein Abonnement an diesem Speicherort erstellen kann |
@@ -35,17 +36,14 @@ ms.lasthandoff: 05/07/2018
 | Maximale Anzahl von Verfügbarkeitsgruppen | 10 | Die maximale Anzahl von Verfügbarkeitsgruppen, die an diesem Speicherort erstellt werden können |
 | Maximale Anzahl von Skalierungsgruppen für virtuelle Computer | 20 | Die maximale Anzahl von Skalierungsgruppen für virtuelle Computer, die an diesem Speicherort erstellt werden können |
 
-
-
-## <a name="storage-quota-types"></a>Speicherkontingenttypen
+## <a name="storage-quota-types"></a>Speicherkontingenttypen 
 | **Element** | **Standardwert** | **Beschreibung** |
 | --- | --- | --- |
 | Maximale Kapazität (GB) |500 |Die Gesamtspeicherkapazität, die von einem Abonnement an diesem Speicherort genutzt werden kann |
 | Gesamte Anzahl von Speicherkonten |20 |Die maximale Anzahl von Speicherkonten, die ein Abonnement an diesem Speicherort erstellen kann |
 
 > [!NOTE]  
-> Es kann bis zu zwei Stunden dauern, bis ein Speicherplatzkontingent erzwungen wird. 
-> 
+> Es kann bis zu zwei Stunden dauern, bis ein Speicherplatzkontingent erzwungen wird.
 
 
 ## <a name="network-quota-types"></a>Netzwerkkontingenttypen
@@ -60,11 +58,25 @@ ms.lasthandoff: 05/07/2018
 | Maximale Anzahl von Netzwerksicherheitsgruppen |50 |Die maximale Anzahl von Netzwerksicherheitsgruppen, die ein Abonnement an diesem Speicherort erstellen kann |
 
 ## <a name="view-an-existing-quota"></a>Anzeigen eines vorhandenen Kontingents
-1. Klicken Sie auf **Weitere Dienste** > **Ressourcenanbieter**.
-2. Wählen Sie den Dienst mit dem Kontingent aus, das Sie anzeigen möchten.
-3. Klicken Sie auf **Kontingente**, und wählen Sie das Kontingent aus, das Sie anzeigen möchten.
+1. Auf dem Standarddashboard des Verwaltungsportals finden Sie die Kachel **Ressourcenanbieter**.
+2. Wählen Sie den Dienst mit dem Kontingent aus, das Sie anzeigen möchten (beispielsweise **Compute** oder **Speicher**).
+3. Klicken Sie auf **Kontingente**, und wählen Sie anschließend das Kontingent aus, das Sie anzeigen möchten.
+
+
+## <a name="edit-a-quota"></a>Bearbeiten eines Kontingents  
+Anstatt einen [Add-On-Plan zu verwenden](create-add-on-plan.md), können Sie auch die ursprüngliche Konfiguration eines Kontingents bearbeiten. Wenn Sie ein Kontingent bearbeiten, gilt die neue Konfiguration automatisch global für alle Pläne, die dieses Kontingent verwenden, sowie für alle vorhandenen Abonnements, die diese Pläne verwenden. Die Bearbeitung eines Kontingents ist unterschiedlich, wenn Sie einen Add-On-Plan verwenden, um ein geändertes Kontingent bereitzustellen, das ein Benutzer abonniert. 
+
+### <a name="to-edit-a-quota"></a>Bearbeiten eines Kontingents  
+1. Auf dem Standarddashboard des Verwaltungsportals finden Sie die Kachel **Ressourcenanbieter**.
+2. Wählen Sie den Dienst mit dem Kontingent aus, das Sie ändern möchten (beispielsweise **Compute**, **Netzwerk** oder **Speicher**).
+3. Klicken Sie auf **Kontingente**, und wählen Sie anschließend das Kontingent aus, das Sie ändern möchten.
+4. Bearbeiten Sie die Werte im Bereich **Kontingente festlegen**, und klicken Sie anschließend auf **Speichern**. 
+
+Die neuen Werte für das Kontingent gelten global für alle Pläne, die das geänderte Kontingent verwenden, sowie für alle vorhandenen Abonnements, die diese Pläne verwenden. 
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erfahren Sie mehr über Pläne, Angebote und Kontingente.](azure-stack-plan-offer-quota-overview.md)
 
-[Erstellen Sie Kontingente, während Sie einen Plan erstellen.](azure-stack-create-plan.md)
+- [Erfahren Sie mehr über Pläne, Angebote und Kontingente.](azure-stack-plan-offer-quota-overview.md)
+- [Erstellen Sie Kontingente, während Sie einen Plan erstellen.](azure-stack-create-plan.md)

@@ -13,23 +13,28 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.custom: mvc
-ms.date: 06/07/2018
+ms.date: 07/30/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: a84148a3ac31d51ff30cebffab00e5fec8fdaa87
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: a35ba993e6fd1162fa4a18bc0d6bc9351fe7dfa2
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236951"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358269"
 ---
 # <a name="azure-stack-add-on-plans"></a>Add-On-Pläne für Azure Stack
-Als Azure Stack-Betreiber erstellen Sie Pläne mit den gewünschten Diensten und entsprechenden Kontingenten, die von Ihren Benutzern abonniert werden können. Diese [*Basispläne*](azure-stack-create-plan.md) enthalten die Kerndienste für Ihre Benutzer. Pro Angebot ist jeweils nur ein Basisplan zulässig. Wenn Sie Ihr Angebot ändern müssen, können Sie *Add-On-Pläne* verwenden. Hiermit können Sie den Plan ändern, um die Computer-, Speicher- oder Netzwerkkontingente zu erweitern, die im Rahmen des Basisplans ursprünglich angeboten wurden. 
 
-Das Kombinieren aller Komponenten in einem einzelnen Plan kann in einigen Fällen zwar optimal sein, aber es kann ratsam sein, einen Basisplan zu verwenden und über Add-On-Pläne zusätzliche Dienste anzubieten. Beispielsweise können Sie die Entscheidung treffen, IaaS-Dienste im Rahmen eines Basisplans anzubieten und alle PaaS-Dienste als Add-On-Pläne zu behandeln. Außerdem können Pläne verwendet werden, um den Verbrauch von Ressourcen in Ihrer Azure Stack-Umgebung zu steuern. Wenn Sie beispielsweise erreichen möchten, dass Ihre Benutzer auf Ihre Ressourcennutzung achten, können Sie einen relativ kleinen Basisplan verwenden (je nach den erforderlichen Diensten). Sobald Benutzer die Kapazitätsgrenze erreichen, werden sie benachrichtigt, dass sie die Zuteilung der Ressourcen basierend auf dem zugewiesenen Plan bereits verbraucht haben. Die Benutzer können dann einen verfügbaren Add-On-Plan für zusätzliche Ressourcen auswählen. 
+Als Azure Stack-Bediener erstellen Sie Add-On-Pläne, um einen [*Basisplan*](azure-stack-create-plan.md) zu ändern, wenn Sie zusätzliche Dienste anbieten oder die *Computer*-, *Speicher* - oder *Netzwerkkontingente* ändern möchten, die diese Basispläne ursprünglich enthalten. Add-On-Pläne verändern den Basisplan und sind optionale Erweiterungen, die Benutzer abonnieren können. 
+
+Manchmal besteht die optimale Lösung darin, alles in einem einzelnen Plan zu kombinieren. In anderen Fällen bietet es sich an, einen Basisplan zu verwenden und zusätzliche Dienste mithilfe von Add-On-Plänen anzubieten. Beispielsweise können Sie die Entscheidung treffen, IaaS-Dienste im Rahmen eines Basisplans anzubieten und alle PaaS-Dienste als Add-On-Pläne zu behandeln.
+
+Ein weiterer Grund für die Verwendung von Add-On-Plänen besteht darin, die Benutzer dabei zu unterstützen, auf ihre Ressourcennutzung zu achten. Hierfür können Sie mit einem Basisplan beginnen, der relativ kleine Kontingente enthält (je nach den erforderlichen Diensten). Wenn die Benutzer die Kapazitätsgrenze erreichen, werden sie darüber benachrichtigt, dass sie die Zuordnung von Ressourcen ausgehend von ihrem zugewiesenen Plan erreicht haben. Davon ausgehend können die Benutzer einen Add-On-Plan auswählen, der die zusätzlichen Ressourcen bereitstellt.
 
 > [!NOTE]
-> Wenn ein Benutzer einen Add-On-Plan einem vorhandenen Angebotsabonnement hinzufügt, kann es bis zu eine Stunde dauern, bis die zusätzlichen Ressourcen angezeigt werden. 
+> Wenn Sie keinen Add-On-Plan verwenden möchten, um ein Kontingent zu erweitern, können Sie [die ursprüngliche Konfiguration des Kontingents bearbeiten](azure-stack-quota-types.md#to-edit-a-quota). 
+
+Wenn ein Benutzer einen Add-On-Plan einem vorhandenen Angebotsabonnement hinzufügt, kann es bis zu eine Stunde dauern, bis die zusätzlichen Ressourcen angezeigt werden. 
 
 ## <a name="create-an-add-on-plan"></a>Erstellen eines Add-On-Plans
 Add-On-Pläne werden durch Ändern eines vorhandenen Angebots erstellt:
@@ -44,7 +49,7 @@ Add-On-Pläne werden durch Ändern eines vorhandenen Angebots erstellt:
    
     ![](media/create-add-on-plan/2.PNG)
 
-5. Wählen Sie den hinzuzufügenden Plan aus. In diesem Beispiel hat der Plan den Namen **Key vault plan** (Key Vault-Plan). Klicken Sie auf **Auswählen**, um den Plan dem Angebot hinzuzufügen. Sie sollten eine Benachrichtigung erhalten haben, dass der Plan dem Angebot erfolgreich hinzugefügt wurde.
+5. Wählen Sie den hinzuzufügenden Plan aus. Der Plan in diesem Beispiel heißt **Key vault plan** (Key Vault-Plan). Wenn Sie den Plan ausgewählt haben, klicken Sie auf **Auswählen**, um den Plan zum Angebot hinzuzufügen. Sie sollten eine Benachrichtigung erhalten haben, dass der Plan dem Angebot erfolgreich hinzugefügt wurde.
    
     ![](media/create-add-on-plan/3.PNG)
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/28/2018
+ms.date: 08/01/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: a6da27740efd613b8a81ffa85092d6b00b3e47d8
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: bf69c71a8b361e4a147263bc60324573c710818f
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34257487"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412695"
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Identitätsarchitektur für Azure Stack
 Bevor Sie einen Identitätsanbieter für die Verwendung mit Azure Stack auswählen, sollten Sie sich mit den wichtigen Unterschieden zwischen Azure Active Directory (Azure AD) und Active Directory-Verbunddienste (AD FS) vertraut machen. 
@@ -32,16 +32,16 @@ Die Wahl des Identitätsanbieters schränkt unter Umständen Ihre Optionen ein �
 
 |Funktion oder Szenario        |Azure AD  |AD FS  |
 |------------------------------|----------|-------|
-|Verbindung mit dem Internet vorhanden     |Ja       |Optional|
-|Unterstützung mehrerer Mandanten     |Ja       |Nein       |
-|Marketplace-Syndikation       |Ja       |Ja. Erfordert die Verwendung des Tools für die [Marketplace-Offlinesyndikation](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario).|
-|Unterstützung der Active Directory Authentication Library (ADAL) |Ja |Ja|
-|Unterstützung von Tools wie Azure-Befehlszeilenschnittstelle, Visual Studio und PowerShell  |Ja |Ja|
-|Erstellen von Dienstprinzipalen über das Azure-Portal     |Ja |Nein |
-|Erstellen von Dienstprinzipalen mit Zertifikaten      |Ja |Ja|
-|Erstellen von Dienstprinzipalen mit Geheimnissen (Schlüsseln)    |Ja |Nein |
-|Anwendungen können den Graph-Dienst verwenden           |Ja |Nein |
-|Anwendungen können einen Identitätsanbieter zum Anmelden verwenden |Ja |Ja. Für Anwendungen muss ein Verbund mit lokalen AD FS-Instanzen eingerichtet werden. |
+|Verbindung mit dem Internet vorhanden     |JA       |Optional|
+|Unterstützung mehrerer Mandanten     |JA       |Nein       |
+|Elemente im Marketplace anbieten |JA       |Ja. Erfordert die Verwendung des Tools für die [Marketplace-Offlinesyndikation](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario).|
+|Unterstützung der Active Directory Authentication Library (ADAL) |JA |JA|
+|Unterstützung von Tools wie Azure-Befehlszeilenschnittstelle, Visual Studio und PowerShell  |JA |JA|
+|Erstellen von Dienstprinzipalen über das Azure-Portal     |JA |Nein |
+|Erstellen von Dienstprinzipalen mit Zertifikaten      |JA |JA|
+|Erstellen von Dienstprinzipalen mit Geheimnissen (Schlüsseln)    |JA |Nein |
+|Anwendungen können den Graph-Dienst verwenden           |JA |Nein |
+|Anwendungen können einen Identitätsanbieter zum Anmelden verwenden |JA |Ja. Für Anwendungen muss ein Verbund mit lokalen AD FS-Instanzen eingerichtet werden. |
 
 ## <a name="topologies"></a>Topologien
 In den folgenden Abschnitten werden die verschiedenen Identitätstopologien behandelt, die Sie verwenden können.

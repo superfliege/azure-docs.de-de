@@ -1,5 +1,5 @@
 ---
-title: Streamen von Ereignissen in Azure Event Hubs für das Kafka-Ökosystem | Microsoft-Dokumentation
+title: Streamen in Azure Event Hubs für Apache Kafka | Microsoft-Dokumentation
 description: Streamen von Ereignissen in Event Hubs für das Kafka-Protokoll und die APIs.
 services: event-hubs
 documentationcenter: ''
@@ -11,21 +11,20 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/08/2018
+ms.date: 08/01/2018
 ms.author: bahariri
-ms.openlocfilehash: 8ef6240d19ce1ac1b891c95ce525a8bd211a2900
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: ec6061cac7188f3f94fa1ec0bf138b9398387099
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297222"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413619"
 ---
-# <a name="stream-into-event-hubs-for-the-kafka-ecosystem"></a>Streamen an Event Hubs für das Kafka-Ökosystem
+# <a name="stream-into-event-hubs-for-the-apache-kafka"></a>Streamen in Event Hubs für Apache Kafka
+In dieser Schnellstartanleitung erfahren Sie, wie Daten an Kafka-fähige Event Hubs gestreamt werden können, ohne Protokollclients zu ändern oder eigene Cluster zu betreiben. Sie lernen, wie Sie über Ihre Producer und Consumer mit Kafka-fähigen Event Hubs kommunizieren – mit nur einer Konfigurationsänderung in Ihren Anwendungen. Azure Event Hubs unterstützt [Apache Kafka Version 1.0.](https://kafka.apache.org/10/documentation.html)
 
 > [!NOTE]
 > Dieses Beispiel ist auf [GitHub](https://github.com/Azure/azure-event-hubs) verfügbar.
-
-In dieser Schnellstartanleitung erfahren Sie, wie Daten an Kafka-fähige Event Hubs gestreamt werden können, ohne Protokollclients zu ändern oder eigene Cluster zu betreiben. Sie lernen, wie Sie über Ihre Producer und Consumer mit Kafka-fähigen Event Hubs kommunizieren – mit nur einer Konfigurationsänderung in Ihren Anwendungen. Azure Event Hubs für das Kafka-Ökosystem unterstützt [Apache Kafka Version 1.0](https://kafka.apache.org/10/documentation.html).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -36,6 +35,30 @@ Für diese Schnellstartanleitung benötigen Sie Folgendes:
 * Ein binäres Maven-Archiv ([Download](http://maven.apache.org/download.cgi)/[Installationsanleitung](http://maven.apache.org/install.html))
 * [Git-Client](https://www.git-scm.com/)
 * [Ein Kafka-fähiger Event Hubs-Namespace](event-hubs-create.md)
+
+## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Erstellen eines Kafka-fähigen Event Hubs-Namespace
+
+1. Melden Sie sich beim [Azure-Portal][Azure-Portal] an, und klicken Sie oben links auf **Ressource erstellen**.
+
+2. Suchen Sie nach Event Hubs, und wählen Sie die hier gezeigten Optionen aus:
+    
+    ![Suchen nach Event Hubs im Portal](./media/event-hubs-create-kafka-enabled/event-hubs-create-event-hubs.png)
+ 
+3. Stellen Sie einen eindeutigen Namen bereit, und aktivieren Sie Kafka für den Namespace. Klicken Sie auf **Create**.
+    
+    ![Erstellen eines Namespace](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.png)
+ 
+4. Nachdem der Namespace erstellt wurde, klicken Sie auf der Registerkarte **Einstellungen** auf **SAS-Richtlinien**, um die Verbindungszeichenfolge abzurufen.
+
+    ![Klicken auf „SAS-Richtlinien“](./media/event-hubs-create/create-event-hub7.png)
+
+5. Sie können die Standardrichtlinie **RootManageSharedAccessKey** auswählen oder eine neue Richtlinie hinzufügen. Klicken Sie auf den Richtliniennamen, und kopieren Sie die Verbindungszeichenfolge. 
+    
+    ![Auswählen einer Richtlinie](./media/event-hubs-create/create-event-hub8.png)
+ 
+6. Fügen Sie diese Verbindungszeichenfolge zur Konfiguration Ihrer Kafka-Anwendung hinzu.
+
+Nun können Sie Ereignisse von Ihren Anwendungen streamen, die das Kafka-Protokoll in Event Hubs verwenden.
 
 ## <a name="send-and-receive-messages-with-kafka-in-event-hubs"></a>Senden und Empfangen von Nachrichten mit Kafka in Event Hubs
 
@@ -78,8 +101,7 @@ Für diese Schnellstartanleitung benötigen Sie Folgendes:
 Wenn Ihr Kafka-Cluster in Event Hubs über Ereignisse verfügt, werden diese nun allmählich vom Consumer empfangen.
 
 ## <a name="next-steps"></a>Nächste Schritte
+In diesem Artikel haben Sie erfahren, wie Daten an Kafka-fähige Event Hubs gestreamt werden können, ohne dass Sie Protokollclients ändern oder eigene Cluster betreiben müssen. Fahren Sie mit dem folgenden Tutorial fort, um weitere Informationen zu erhalten:
 
-* [Informationen zu Event Hubs](event-hubs-what-is-event-hubs.md)
-* [Informationen zu Event Hubs für das Kafka-Ökosystem](event-hubs-for-kafka-ecosystem-overview.md)
-* Verwenden Sie [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) zum [Streamen von Ereignissen aus der lokalen Kafka-Instanz an Kafka-fähige Event Hubs in der Cloud](event-hubs-kafka-mirror-maker-tutorial.md).
-* Erfahren Sie, wie Sie [Apache Flink](event-hubs-kafka-flink-tutorial.md) oder [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) zum Streamen an Kafka-fähige Event Hubs verwenden.
+> [!div class="nextstepaction"]
+> [Verwenden von Kafka MirrorMaker mit Event Hubs](event-hubs-kafka-mirror-maker-tutorial.md)

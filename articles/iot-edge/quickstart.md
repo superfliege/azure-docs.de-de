@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 19fd671514da0dbfb1704c37d4347e870763d41b
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 1437c3552a7af5d5474cf3bdaabe95d5415af603
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091812"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414210"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Schnellstartanleitung: Bereitstellen des ersten IoT Edge-Moduls aus dem Azure-Portal auf einem Windows-Gerät – Vorschau
 
@@ -36,18 +36,6 @@ Das Modul, das Sie in dieser Schnellstartanleitung bereitstellen, ist ein simuli
 
 Wenn Sie über kein aktives Azure-Abonnement verfügen, können Sie ein [kostenloses Konto][lnk-account] erstellen, bevor Sie beginnen.
 
-## <a name="prerequisites"></a>Voraussetzungen
-
-In dieser Schnellstartanleitung wird Ihr Windows-Computer bzw. virtueller Computer in ein IoT Edge-Gerät verwandelt. Wenn Sie Windows auf einem virtuellen Computer ausführen, aktivieren Sie die [geschachtelte Virtualisierung][lnk-nested], und weisen Sie mindestens 2 GB Speicher zu. 
-
-Der Computer, den Sie für ein IoT Edge-Gerät verwenden, muss folgende Voraussetzungen erfüllen:
-
-1. Stellen Sie sicher, dass Sie eine unterstützte Windows-Version verwenden:
-   * Windows 10 oder höher
-   * Windows Server 2016 oder höher
-2. Installieren Sie [Docker für Windows][lnk-docker], und stellen Sie sicher, dass dieses Programm ausgeführt wird.
-3. Konfigurieren Sie Docker für die Verwendung von [Linux-Containern](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
-
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Sie verwenden die Azure CLI für viele Schritte in dieser Schnellstartanleitung, und Azure IoT verfügt über eine Erweiterung zur Aktivierung der zusätzlichen Funktionalität. 
@@ -58,24 +46,40 @@ Fügen Sie die Azure IoT-Erweiterung der Cloud Shell-Instanz hinzu.
    az extension add --name azure-cli-iot-ext
    ```
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+## <a name="prerequisites"></a>Voraussetzungen
 
-Beginnen Sie mit der Schnellstartanleitung, indem Sie Ihre IoT Hub-Instanz im Azure-Portal erstellen.
-![Erstellen des IoT Hubs][3]
+Cloudressourcen: 
 
-Der kostenlose IoT Hub kann für diesen Schnellstart verwendet werden. Wenn Sie den IoT Hub schon einmal genutzt und bereits einen kostenlosen Hub erstellt haben, können Sie diesen IoT Hub verwenden. Jedes Abonnement kann nur über einen kostenlosen IoT Hub verfügen. 
-
-1. Erstellen Sie in Azure Cloud Shell eine Ressourcengruppe. Mit dem folgenden Code wird eine Ressourcengruppe mit dem Namen **IoTEdgeResources** in der Region **West US** erstellt. Wenn Sie alle Ressourcen für die Schnellstarts und Tutorials in einer Gruppe anordnen, können Sie sie zusammen verwalten. 
+* Eine Ressourcengruppe zum Verwalten aller Ressourcen, die Sie in dieser Schnellstartanleitung verwenden. 
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus
    ```
 
-1. Erstellen Sie einen IoT Hub in Ihrer neuen Ressourcengruppe. Mit dem folgenden Code wird ein kostenloser **F1**-Hub in der Ressourcengruppe **IoTEdgeResources** erstellt. Ersetzen Sie *{hub_name}* durch einen eindeutigen Namen für Ihren IoT Hub.
+Ein Windows-Computer oder virtueller Computer als IoT Edge-Gerät: 
+
+* Verwenden Sie eine unterstützte Windows-Version:
+   * Windows 10 oder höher
+   * Windows Server 2016 oder höher
+* Wenn es sich um einen virtuellen Computer handelt, aktivieren Sie die [geschachtelte Virtualisierung][lnk-nested], und weisen Sie mindestens 2 GB Speicher zu. 
+* Installieren Sie [Docker für Windows][lnk-docker], und stellen Sie sicher, dass dieses Programm ausgeführt wird.
+* Konfigurieren Sie Docker für die Verwendung von [Linux-Containern](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
+
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+
+Beginnen Sie mit der Schnellstartanleitung, indem Sie Ihre IoT Hub-Instanz mit Azure CLI erstellen. 
+
+![IoT Hub erstellen][3]
+
+Der kostenlose IoT Hub kann für diesen Schnellstart verwendet werden. Wenn Sie den IoT Hub schon einmal genutzt und bereits einen kostenlosen Hub erstellt haben, können Sie diesen IoT Hub verwenden. Jedes Abonnement kann nur über einen kostenlosen IoT Hub verfügen. 
+
+Mit dem folgenden Code wird ein kostenloser **F1**-Hub in der Ressourcengruppe **IoTEdgeResources** erstellt. Ersetzen Sie *{hub_name}* durch einen eindeutigen Namen für Ihren IoT Hub.
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 
    ```
+
+   Wenn Sie eine Fehlermeldung erhalten, da bereits ein kostenloser Hub in Ihrem Abonnement vorhanden ist, ändern Sie die SKU auf **S1**. 
 
 ## <a name="register-an-iot-edge-device"></a>Registrieren eines IoT Edge-Geräts
 
@@ -206,7 +210,13 @@ Konfigurieren Sie die Runtime mit der Verbindungszeichenfolge Ihres IoT Edge-Ger
      workload_uri: "http://<GATEWAY_ADDRESS>:15581"
    ```
 
-8. Suchen Sie nach dem Abschnitt **Moby Container Runtime settings**, und überprüfen Sie, ob der Wert für **network** auf `nat` festgelegt ist.
+8. Suchen Sie nach dem Abschnitt **Moby Container Runtime settings**, und überprüfen Sie, ob der Wert für **network** auskommentiert und auf **azure-iot-edge** festgelegt ist.
+
+   ```yaml
+   moby_runtime:
+     docker_uri: "npipe://./pipe/docker_engine"
+     network: "azure-iot-edge"
+   ```
 
 9. Speichern Sie die Konfigurationsdatei. 
 
@@ -237,7 +247,8 @@ Vergewissern Sie sich, dass die Runtime erfolgreich installiert und konfiguriert
     -FilterHashtable @{ProviderName= "iotedged";
       LogName = "application"; StartTime = [datetime]::Today} |
     select TimeCreated, Message |
-    sort-object @{Expression="TimeCreated";Descending=$false}
+    sort-object @{Expression="TimeCreated";Descending=$false} |
+    format-table -autosize -wrap
    ```
 
 3. Zeigen Sie alle Module an, die auf Ihrem IoT Edge-Gerät ausgeführt werden. Da der Dienst gerade zum ersten Mal gestartet wurde, sollte nur das Modul **edgeAgent** ausgeführt werden. Das Modul „edgeAgent“ wird standardmäßig ausgeführt und unterstützt Sie beim Installieren und Starten von zusätzlichen Modulen, die Sie auf Ihrem Gerät bereitstellen. 

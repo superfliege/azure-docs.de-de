@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/23/2018
+ms.date: 07/26/2018
 ms.author: barclayn
-ms.openlocfilehash: b34b05ae86aed199d80a86c8e1a073cb54b5e75f
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: cd9dd4d400177e511f23c2677b77198a50420a35
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226712"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282995"
 ---
 # <a name="what-is-azure-key-vault"></a>Was ist der Azure-Schlüsseltresor?
 
@@ -37,6 +37,8 @@ Hier sind einige wichtige Begriffe aufgeführt:
 - **[Azure Active Directory](../active-directory/active-directory-whatis.md)** ist der Azure AD-Dienst für einen bestimmten Mandanten. Jedes Verzeichnis verfügt über mindestens eine Domäne. Einem Verzeichnis können viele Abonnements zugeordnet sein, aber nur ein Mandant. 
 - **Azure-Mandanten-ID**: Dies ist eine eindeutige Möglichkeit zum Identifizieren einer Azure Active Directory-Instanz in einem Azure-Abonnement. 
 - **Verwaltete Dienstidentität**: Azure Key Vault bietet eine Möglichkeit zum sicheren Speichern von Anmeldeinformationen und anderen Schlüsseln und Geheimnissen. Um diese abrufen zu können, muss sich Ihr Code aber bei Key Vault authentifizieren. Mithilfe der verwalteten Dienstidentität (Managed Service Identity, MSI) kann dieses Problem leichter gelöst werden, indem für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt wird. Sie können diese Identität für die Authentifizierung bei Key Vault oder jedem anderen Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein. Weitere Informationen zu MSI finden Sie [hier](../active-directory/managed-service-identity/overview.md).
+
+    ![MSI-Graphic](./media/key-vault-whatis/msi.png)
 
 ## <a name="key-vault-roles"></a>Schlüsseltresorrollen
 

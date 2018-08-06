@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/29/2018
+ms.date: 07/30/2018
 ms.author: diberry
-ms.openlocfilehash: 99f796bf26df755ca938c3023057e2e9de1706a1
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 9da2454afa130c4c2ccab458099a90d78354b3e2
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238334"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358289"
 ---
 # <a name="tutorial-3-add-regular-expression-entity"></a>Tutorial 3: Hinzufügen einer Entität vom Typ „Regulärer Ausdruck“
 In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie Sie mithilfe der Entität **Regulärer Ausdruck** einheitlich formatierte Daten aus einer Äußerung extrahieren.
@@ -28,7 +28,7 @@ In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie Sie mithilfe
 > * Trainieren und Veröffentlichen der App
 > * Abfragen des App-Endpunkts zum Anzeigen der LUIS-JSON-Antwort
 
-Für diesen Artikel benötigen Sie ein kostenloses [LUIS](luis-reference-regions.md#luis-website)-Konto für die Erstellung Ihrer LUIS-Anwendung.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 Falls Sie nicht über die Personal-App aus dem Tutorial zu [vordefinierten Entitäten](luis-tutorial-prebuilt-intents-entities.md) verfügen, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS](luis-reference-regions.md#luis-website)-Website über das GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json)).
@@ -65,13 +65,9 @@ LUIS tokenisiert die Äußerung, wenn diese einer Absicht hinzugefügt wird. Bei
 
 ## <a name="add-findform-intent"></a>Hinzufügen der Absicht „FindForm“
 
-1. Vergewissern Sie sich, dass sich Ihre Personal-App im LUIS-Abschnitt **Build** befindet. Zu diesem Abschnitt gelangen Sie, indem Sie rechts oben auf der Menüleiste auf **Build** klicken. 
+1. Vergewissern Sie sich, dass sich Ihre Personal-App im LUIS-Abschnitt **Build** befindet. Zu diesem Abschnitt gelangen Sie, indem Sie rechts oben auf der Menüleiste **Build** auswählen. 
 
-    [ ![Screenshot: LUIS-App mit hervorgehobener Build-Option (rechts oben auf der Navigationsleiste)](./media/luis-quickstart-intents-regex-entity/first-image.png)](./media/luis-quickstart-intents-regex-entity/first-image.png#lightbox)
-
-2. Klicken Sie auf **Create new intent** (Neue Absicht erstellen). 
-
-    [ ![Screenshot: Seite „Intents“ (Absichten) mit hervorgehobener Schaltfläche „Create new intent“ (Neue Absicht erstellen)](./media/luis-quickstart-intents-regex-entity/create-new-intent-button.png) ](./media/luis-quickstart-intents-regex-entity/create-new-intent-button.png#lightbox)
+2. Wählen Sie **Create new intent** (Neue Absicht erstellen) aus. 
 
 3. Geben Sie im Popupdialogfeld die Zeichenfolge `FindForm` ein, und klicken Sie anschließend auf **Fertig**. 
 
@@ -96,14 +92,12 @@ LUIS tokenisiert die Äußerung, wenn diese einer Absicht hinzugefügt wird. Bei
 
     Die Anwendung verfügt über die vorgefertigte Zahlenentität aus dem vorherigen Tutorial, sodass jede Formularnummer über ein Tag verfügt. Unter Umständen reicht das für Ihre Clientanwendung bereits aus, die Nummer ist jedoch nicht mit der Art der Nummer gekennzeichnet. Durch die Erstellung einer neuen Entität mit einem geeigneten Namen kann die Clientanwendung die Entität entsprechend verarbeiten, wenn sie von LUIS zurückgegeben wird.
 
-## <a name="create-a-hrf-number-regular-expression-entity"></a>Erstellen einer Entität vom Typ „Regulärer Ausdruck“ namens „HRF-number“ 
+## <a name="create-an-hrf-number-regular-expression-entity"></a>Erstellen einer Entität vom Typ „Regulärer Ausdruck“ namens „HRF-number“ 
 In den folgenden Schritten erstellen Sie eine Entität vom Typ „Regulärer Ausdruck“, um LUIS mit dem Format von „HRF-number“ vertraut zu machen:
 
 1. Klicken Sie im linken Bereich auf **Entitäten**.
 
 2. Klicken Sie auf der Seite „Entitäten“ auf die Schaltfläche **Create new entity** (Neue Entität erstellen). 
-
-    [![Screenshot: Seite „Entitäten“ mit hervorgehobener Schaltfläche „Create new entity“ (Neue Entität erstellen)](./media/luis-quickstart-intents-regex-entity/create-new-entity-1.png)](./media/luis-quickstart-intents-regex-entity/create-new-entity-1.png#lightbox)
 
 3. Geben Sie im daraufhin angezeigten Popupdialogfeld `HRF-number` als Name der neuen Entität, **RegEx** als Entitätstyp und `hrf-[0-9]{6}` als regulären Ausdruck ein, und klicken Sie anschließend auf **Fertig**.
 
@@ -127,24 +121,14 @@ Für eine Entität vom Typ „Regulärer Ausdruck“ ist zwar kein Training erfo
     ![Abbildung der Benachrichtigungsleiste nach erfolgreicher Ausführung](./media/luis-quickstart-intents-regex-entity/trained.png)
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Veröffentlichen der App zum Abrufen der Endpunkt-URL
-Damit Sie eine LUIS-Vorhersage in einem Chatbot oder einer anderen Anwendung abrufen können, muss die App veröffentlicht werden. 
 
-1. Klicken Sie rechts oben auf der LUIS-Website auf die Schaltfläche **Veröffentlichen**. 
-
-    ![Screenshot: „FindForm“ mit hervorgehobener Veröffentlichungsschaltfläche im oberen Navigationsbereich](./media/luis-quickstart-intents-regex-entity/publish-button.png)
-
-2. Wählen Sie den Produktionsslot aus, und klicken Sie auf die Schaltfläche **Veröffentlichen**.
-
-    ![Screenshot: Veröffentlichungsseite mit hervorgehobener Schaltfläche zum Veröffentlichen im Produktionsslot](./media/luis-quickstart-intents-regex-entity/publish-to-production.png)
-
-3. Die Veröffentlichung ist abgeschlossen, wenn oben auf der Website eine grüne Statusleiste angezeigt wird.
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>Abfragen des Endpunkts mit einer anderen Äußerung
-1. Klicken Sie unten auf der Seite **Veröffentlichen** auf den Link **Endpunkt**. Dadurch wird ein weiteres Browserfenster mit der Endpunkt-URL in der Adressleiste geöffnet. 
 
-    ![Screenshot: Veröffentlichungsseite mit hervorgehobener Endpunkt-URL](./media/luis-quickstart-intents-regex-entity/publish-select-endpoint.png)
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Geben Sie auf der Adressleiste am Ende der URL Folgendes ein: `When were HRF-123456 and hrf-234567 published in the last year?`. Der letzte Parameter der Abfragezeichenfolge lautet `q` (die Äußerung **query** (Abfrage)). Diese Äußerung entspricht keiner der gekennzeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Absicht `FindForm` mit den beiden Formularnummern `HRF-123456` und `hrf-234567` zurückgeben.
+2. Geben Sie in der Adressleiste am Ende der URL `When were HRF-123456 and hrf-234567 published in the last year?` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (die Äußerung **query** (Abfrage)). Diese Äußerung entspricht keiner der gekennzeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Absicht `FindForm` mit den beiden Formularnummern `HRF-123456` und `hrf-234567` zurückgeben.
 
     ```
     {

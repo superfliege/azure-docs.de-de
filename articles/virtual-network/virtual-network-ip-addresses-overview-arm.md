@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: jdial
-ms.openlocfilehash: 30bed569887ce4b25d0b464e9f14a1491c38c736
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: f55dfa8ffadc4ddee1ff3861682e5596b675f0d0
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32767857"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325284"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-Adresstypen und Zuordnungsmethoden in Azure
 
@@ -61,7 +61,7 @@ In Azure-Ressourcen-Manager ist eine [öffentliche IP-Adresse](virtual-network-p
 
 Alle öffentlichen IP-Adressen, die vor der Einführung von SKUs erstellt wurden, sind öffentliche IP-Adressen vom Typ „Basic-SKU“. Nach der Einführung von SKUs können Sie nun angeben, welche SKU für die öffentliche IP-Adresse verwendet werden soll. Für Basic-SKU-Adressen gilt Folgendes:
 
-- Werden mit der statischen oder der dynamischen Zuordnungsmethode zugewiesen.
+- Sie werden mit der statischen oder der dynamischen Zuordnungsmethode zugewiesen.
 - Sind standardmäßig geöffnet.  Netzwerksicherheitsgruppen werden empfohlen, sind aber zum Einschränken des ein- oder ausgehenden Datenverkehrs optional.
 - Die Zuweisung ist für jede Azure-Ressource möglich, der eine öffentliche IP-Adresse zugewiesen werden kann, z.B. Netzwerkschnittstellen, VPN Gateways, Application Gateways und Lastenausgleiche mit Internetzugriff.
 - Sie können einer bestimmten Zone zugewiesen werden.
@@ -71,7 +71,7 @@ Alle öffentlichen IP-Adressen, die vor der Einführung von SKUs erstellt wurden
 
 Für öffentliche IP-Adressen vom Typ „Standard-SKU“ gilt Folgendes:
 
-- Werden nur mit der statischen Zuordnungsmethode zugewiesen.
+- Sie werden nur mit der statischen Zuordnungsmethode zugewiesen.
 - Sind standardmäßig sicher und für eingehenden Datenverkehr geschlossen. Sie müssen zulässigen eingehenden Datenverkehr mithilfe einer [Netzwerksicherheitsgruppe](security-overview.md#network-security-groups) explizit in einer Whitelist angeben.
 - Werden Netzwerkschnittstellen oder öffentlichen Standard-Lastenausgleichsmodulen zugewiesen. Weitere Informationen zum Azure Load Balancer des Typs „Standard“ finden Sie unter [Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Sie sind standardmäßig zonenredundant. Können in Zonen erstellt und in einer bestimmten Verfügbarkeitszone garantiert werden. Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Übersicht über Verfügbarkeitszonen in Azure](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Azure Load Balancer Standard und Verfügbarkeitszonen](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
@@ -97,7 +97,7 @@ Statische öffentliche IP-Adressen werden häufig in den folgenden Szenarien ver
 * Sie verwenden SSL-Zertifikate, die mit einer IP-Adresse verknüpft sind.
 
 > [!NOTE]
-> Azure ordnet öffentliche IP-Adressen aus einem Bereich zu, der für jede Azure-Region eindeutig ist. Ausführliche Informationen finden Sie unter [Azure Datacenter IP ranges](https://www.microsoft.com/download/details.aspx?id=41653) (IP-Bereiche für Azure-Datencenter).
+> Azure ordnet öffentliche IP-Adressen aus einem Bereich zu, der für jede Region in jeder Azure-Cloud eindeutig ist. Sie können die Liste von Bereichen (Präfixen) für die [öffentliche Azure-Cloud](https://www.microsoft.com/download/details.aspx?id=56519), die [Azure US Government-Cloud](https://www.microsoft.com/download/details.aspx?id=57063) sowie für die Azure-Cloud in [China](https://www.microsoft.com/download/details.aspx?id=57062) und [Deutschland](https://www.microsoft.com/download/details.aspx?id=57064) herunterladen.
 >
 
 ### <a name="dns-hostname-resolution"></a>DNS-Hostnamenauflösung
@@ -128,10 +128,10 @@ In der Tabelle unten sind die spezifischen Eigenschaften, über die eine öffent
 
 | Ressource der obersten Ebene | Zuordnung der IP-Adresse | Dynamisch | statischen |
 | --- | --- | --- | --- |
-| Virtueller Computer |Netzwerkschnittstelle |Ja |Ja |
-| Lastenausgleich mit Internetzugriff |Front-End-Konfiguration |Ja |Ja |
-| VPN-Gateway |Gateway-IP-Konfiguration |Ja |Nein  |
-| Anwendungsgateway |Front-End-Konfiguration |Ja |Nein  |
+| Virtueller Computer |Netzwerkschnittstelle |JA |JA |
+| Lastenausgleich mit Internetzugriff |Front-End-Konfiguration |JA |JA |
+| VPN-Gateway |Gateway-IP-Konfiguration |JA |Nein  |
+| Anwendungsgateway |Front-End-Konfiguration |JA |Nein  |
 
 ## <a name="private-ip-addresses"></a>Private IP-Adressen
 Private IP-Adressen ermöglichen Azure-Ressourcen die Kommunikation mit anderen Ressourcen in einem [virtuellen Netzwerk](virtual-networks-overview.md) oder in einem lokalen Netzwerk über ein VPN-Gateway oder eine ExpressRoute-Verbindung, ohne dass dabei eine über das Internet erreichbare IP-Adresse verwendet wird.
@@ -139,7 +139,7 @@ Private IP-Adressen ermöglichen Azure-Ressourcen die Kommunikation mit anderen 
 Im Azure Resource Manager-Bereitstellungsmodell wird den folgenden Typen von Azure-Ressourcen eine private IP-Adresse zugeordnet.
 
 * Netzwerkschnittstellen für virtuelle Computer
-* Interne·Load Balancer (ILBs)
+* Interne Lastenausgleichsmodule (ILBs) abrufen
 * Anwendungsgateways
 
 ### <a name="ip-address-version"></a>IP-Adressversion
@@ -176,9 +176,9 @@ In der Tabelle unten sind die spezifischen Eigenschaften, über die eine private
 
 | Ressource der obersten Ebene | Zuordnung der IP-Adresse | dynamisch | statischen |
 | --- | --- | --- | --- |
-| Virtueller Computer |Netzwerkschnittstelle |Ja |Ja |
-| Load Balancer |Front-End-Konfiguration |Ja |Ja |
-| Anwendungsgateway |Front-End-Konfiguration |Ja |Ja |
+| Virtueller Computer |Netzwerkschnittstelle |JA |JA |
+| Load Balancer |Front-End-Konfiguration |JA |JA |
+| Anwendungsgateway |Front-End-Konfiguration |JA |JA |
 
 ## <a name="limits"></a>Einschränkungen
 Die Grenzwerte für die IP-Adressierung finden Sie in den vollständigen Informationen zu [Grenzwerten für Netzwerke](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) in Azure. Die Grenzwerte gelten pro Region und pro Abonnement. Sie können sich [an den Support wenden](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , um die Standardgrenzwerte je nach Ihren Unternehmensanforderungen bis auf die maximalen Grenzwerte zu erhöhen.

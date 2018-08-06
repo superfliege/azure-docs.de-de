@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/13/2018
+ms.date: 07/27/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 73f8616449141ca91f96e9fcebede74597bc4fe3
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 418b2f6b156853c1a2820271808bdba922d41a87
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044916"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412898"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Herunterladen von Marketplace-Elementen von Azure in Azure Stack
 
@@ -148,26 +148,7 @@ Dieses Szenario besteht aus zwei Teilen:
 ### <a name="import-the-download-and-publish-to-azure-stack-marketplace"></a>Importieren des Downloads und Veröffentlichen im Azure Stack-Marketplace
 1. Die [zuvor heruntergeladenen](#use-the-marketplace-syndication-tool-to-download-marketplace-items) Dateien für VM-Images oder Lösungsvorlagen müssen für die Azure Stack-Umgebung lokal verfügbar gemacht werden.  
 
-2. Importieren Sie das VHD-Image mithilfe des Cmdlets **Add-AzsPlatformimage** in Azure Stack. Ersetzen Sie bei Verwendung dieses Cmdlets die Werte für *publisher*, *offer* und andere Parameter durch die Werte des Images, das Sie importieren möchten. 
-
-   Die Werte für *publisher*, *offer* und *sku* des Images finden Sie in der Textdatei, die mit der AZPKG-Datei heruntergeladen wird. Die Textdatei wird am Zielspeicherort gespeichert.
- 
-   Im folgenden Beispielskript werden die Werte für den virtuellen Computer „Windows Server 2016 Datacenter – Server Core“ verwendet. 
-
-   ```PowerShell  
-   Add-AzsPlatformimage `
-    -publisher "MicrosoftWindowsServer" `
-    -offer "WindowsServer" `
-    -sku "2016-Datacenter-Server-Core" `
-    -osType Windows `
-    -Version "2016.127.20171215" `
-    -OsDiskLocalPath "C:\AzureStack-Tools-master\Syndication\Windows-Server-2016-DatacenterCore-20171215-en.us-127GB.vhd" `
-   ```
-   **Informationen zu Lösungsvorlagen:** Einige Vorlagen können eine kleine VHD-Datei mit 3 MB und dem Namen **fixed3.vhd** enthalten. Sie müssen diese Datei nicht in Azure Stack importieren. Fixed3.vhd.  Diese Datei ist in einigen Lösungsvorlagen enthalten, um Veröffentlichungsanforderungen für den Azure Marketplace zu erfüllen.
-
-   Lesen Sie die Vorlagenbeschreibung, laden Sie zusätzlich erforderliche Komponenten (etwa für die Verwendung mit der Lösungsvorlage erforderliche VHDs) herunter, und importieren Sie sie anschließend.
-
-3. Verwenden Sie das Verwaltungsportal, um das Marketplace-Elementpaket (die AZPKG-Datei) in den Azure Stack-Blobspeicher hochzuladen. Durch das Hochladen des Pakets wird es für Azure Stack verfügbar gemacht, sodass Sie das Element später im Azure Stack-Marketplace veröffentlichen können.
+2. Verwenden Sie das Verwaltungsportal, um das Marketplace-Elementpaket (die AZPKG-Datei) in den Azure Stack-Blobspeicher hochzuladen. Durch das Hochladen des Pakets wird es für Azure Stack verfügbar gemacht, sodass Sie das Element später im Azure Stack-Marketplace veröffentlichen können.
 
    Für den Upload benötigen Sie ein Speicherkonto mit einem öffentlich zugänglichen Container. (Informationen hierzu finden Sie in den Voraussetzungen für dieses Szenario.)   
    1. Navigieren Sie im Azure Stack-Verwaltungsportal zu **Weitere Dienste** > **Speicherkonten**.  
@@ -183,6 +164,33 @@ Dieses Szenario besteht aus zwei Teilen:
 
    5. Hochgeladene Dateien werden im Bereich „Container“ angezeigt. Wählen Sie eine Datei aus, und kopieren Sie die URL aus dem Bereich **Blob-Eigenschaften**. Sie verwenden diese URL im nächsten Schritt beim Importieren des Marketplace-Elements in Azure Stack.  In der folgenden Abbildung heißt der Container *blob-test-storage* und die Datei *Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg*.  Die Datei-URL lautet *https://testblobstorage1.blob.local.azurestack.external/blob-test-storage/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg*.  
       ![Blob-Eigenschaften](media/azure-stack-download-azure-marketplace-item/blob-storage.png)  
+
+3. Importieren Sie das VHD-Image mithilfe des Cmdlets **Add-AzsPlatformimage** in Azure Stack. Ersetzen Sie bei Verwendung dieses Cmdlets die Werte für *publisher*, *offer* und andere Parameter durch die Werte des Images, das Sie importieren möchten. 
+
+   Die Werte für *publisher*, *offer* und *sku* des Images finden Sie in der Textdatei, die mit der AZPKG-Datei heruntergeladen wird. Die Textdatei wird am Zielspeicherort gespeichert. Der *Versionswert* ist die Version, die beim Herunterladen des Elements aus Azure mit dem zuvor genannten Verfahren angegeben ist. 
+ 
+   Im folgenden Beispielskript werden die Werte für den virtuellen Computer „Windows Server 2016 Datacenter – Server Core“ verwendet. Ersetzen Sie *URI_path* durch den Pfad zum Blobspeicherort für das Element.
+
+   ```PowerShell  
+   Add-AzsPlatformimage `
+    -publisher "MicrosoftWindowsServer" `
+    -offer "WindowsServer" `
+    -sku "2016-Datacenter-Server-Core" `
+    -osType Windows `
+    -Version "2016.127.20171215" `
+    -OsUri "URI_path"  
+   ```
+   **Informationen zu Lösungsvorlagen:** Einige Vorlagen können eine kleine VHD-Datei mit 3 MB und dem Namen **fixed3.vhd** enthalten. Sie müssen diese Datei nicht in Azure Stack importieren. Fixed3.vhd.  Diese Datei ist in einigen Lösungsvorlagen enthalten, um Veröffentlichungsanforderungen für den Azure Marketplace zu erfüllen.
+
+   Lesen Sie die Vorlagenbeschreibung, laden Sie zusätzlich erforderliche Komponenten (etwa für die Verwendung mit der Lösungsvorlage erforderliche VHDs) herunter, und importieren Sie sie anschließend.  
+   
+   **Informationen zu Erweiterungen:** Verwenden Sie bei der Arbeit mit Erweiterungen für VM-Images die folgenden Parameter:
+   - *Herausgeber*
+   - *Typ*
+   - *Version*  
+
+   Verwenden Sie nicht *Offer* für Erweiterungen.   
+
 
 4.  Verwenden Sie PowerShell und das Cmdlet **Add-AzsGalleryItem**, um das Marketplace-Element in Azure Stack zu veröffentlichen. Beispiel:   
     ```PowerShell  

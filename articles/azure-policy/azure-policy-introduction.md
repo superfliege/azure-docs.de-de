@@ -4,17 +4,17 @@ description: Azure Policy ist ein Dienst in Azure, mit dem Sie Richtliniendefini
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/24/2018
+ms.date: 07/31/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 51fd0c625ad7e600d54999ddd86e5e49a7c4f14d
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: e00af59c39219cf6efd14a1c6b2d831fc8addf5a
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249863"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364427"
 ---
 # <a name="what-is-azure-policy"></a>Was ist Azure Policy?
 
@@ -127,11 +127,11 @@ Für jeden Objekttyp für Azure Policy gibt es eine maximale Anzahl. Ein _Scope_
 | Bereich | Richtliniendefinitionen | 250 |
 | Bereich | Initiativdefinitionen | 100 |
 | Tenant | Initiativdefinitionen | 1000 |
-| Bereich | Richtlinienzuweisung | 100 |
+| Bereich | Richtlinie/Initiativenzuweisungen | 100 |
 | Richtliniendefinition | Parameter | 20 |
 | Initiativdefinition | Richtlinien | 100 |
 | Initiativdefinition | Parameter | 100 |
-| Richtlinienzuweisung | Ausschlüsse (notScopes) | 100 |
+| Richtlinie/Initiativenzuweisungen | Ausschlüsse (notScopes) | 100 |
 | Richtlinienregel | Konditionelle Abschnitte | 512 |
 
 ## <a name="recommendations-for-managing-policies"></a>Empfehlungen für die Verwaltung von Richtlinien

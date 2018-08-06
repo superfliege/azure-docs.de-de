@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8db3f0ffbd65f3601bc05054e53a1e8e17384866
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: be11ea2195705b344638b93ea2657481897d6ef7
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145317"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358945"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
 
@@ -88,6 +88,9 @@ Erstellen Sie zunächst eine Ressourcengruppe für die Ressourcen, die zum Berei
     Die Firewall befindet sich diesem Subnetz, und der Subnetzname **muss** „AzureFirewallSubnet“ lauten.
 11. Geben Sie unter **Adressbereich** die Zeichenfolge **10.0.1.0/24** ein.
 12. Lassen Sie die restlichen Standardeinstellungen unverändert, und klicken Sie auf **Erstellen**.
+
+> [!NOTE]
+> Die Mindestgröße des Subnetzes AzureFirewallSubnet beträgt /25.
 
 ### <a name="create-additional-subnets"></a>Erstellen zusätzlicher Subnetze
 
@@ -172,6 +175,9 @@ Konfigurieren Sie die **Einstellungen** für den virtuellen Computer „Srv-Work
 4. Navigieren Sie nach Abschluss der Bereitstellung zur Ressourcengruppe **Test-FW-RG**, und klicken Sie auf die Firewall **Test-FW01**.
 6. Notieren Sie sich die private IP-Adresse. Diese wird später für die Erstellung der Standardroute benötigt.
 
+> [!NOTE]
+> Die öffentliche IP-Adresse muss vom Standard-SKU-Typ sein.
+
 [//]: # (Vergessen Sie nicht, sich die private IP-Adresse für die Firewall zu notieren.)
 
 ## <a name="create-a-default-route"></a>Erstellen einer Standardroute
@@ -233,7 +239,7 @@ Konfigurieren Sie die ausgehende Standardroute für das Subnetz **Workload-SN** 
 4. Wählen Sie für **Aktion** die Option **Zulassen** aus.
 
 6. Geben Sie unter **Regeln** für **Name** die Zeichenfolge **AllowDNS** ein.
-8. Wählen Sie für **Protokoll** die Option **TCP** aus.
+8. Wählen Sie für **Protokoll** die Option **UDP** aus.
 9. Geben Sie unter **Quelladressen** die Zeichenfolge **10.0.2.0/24** ein.
 10. Geben Sie für die Zieladresse die Zeichenfolge **209.244.0.3,209.244.0.4** ein.
 11. Geben Sie unter **Zielports** den Wert **53** ein.

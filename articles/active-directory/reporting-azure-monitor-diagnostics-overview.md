@@ -16,20 +16,20 @@ ms.component: compliance-reports
 ms.date: 07/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9b594360bc760fa9eec8ab9900c3aadcb10e9db6
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 0d88aef46761e8c7d8217f04befec88816587c03
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39240103"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358264"
 ---
-# <a name="azure-active-directory-activity-logs-in-azure-monitor-preview"></a>Azure Active Directory-Aktivitätsprotokolle in Azure Monitor (Vorschauversion)
+# <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Azure AD-Aktivitätsprotokolle in Azure Monitor (Vorschauversion)
 
-Sie können Azure AD-Aktivitätsprotokolle jetzt mit Azure Monitor an Ihr eigenes Speicherkonto oder Ihren Event Hub weiterleiten. Mit der öffentlichen Vorschauversion von Azure Active Directory-Protokollen in Azure Monitor haben Sie die folgenden Möglichkeiten:
+Sie können Azure Active Directory (Azure AD)-Aktivitätsprotokolle jetzt mithilfe von Azure Monitor an Ihr eigenes Speicherkonto oder Ihren Event Hub weiterleiten. Mit der öffentlichen Vorschauversion von Azure Active Directory-Protokollen in Azure Monitor haben Sie die folgenden Möglichkeiten:
 
-* Archivieren Ihrer Überwachungsprotokolle für ein Azure-Speicherkonto, damit Sie die Daten über längere Zeiträume aufbewahren können
-* Streamen Ihrer Überwachungsprotokolle zu Analysezwecken an einen Azure Event Hub, indem Sie beliebte SIEM-Tools wie Splunk und QRadar verwenden
-* Integrieren Ihrer Überwachungsprotokolle in Ihre eigenen benutzerdefinierten Protokolllösungen, indem Sie sie an einen Event Hub streamen
+* Archivieren Ihrer Überwachungsprotokolle für ein Azure-Speicherkonto, damit Sie die Daten über längere Zeiträume aufbewahren können.
+* Streamen Ihrer Überwachungsprotokolle zum Analysieren an einen Azure Event Hub mithilfe beliebter Security Information & Event Management (SIEM)-Tools wie etwa Splunk und QRadar.
+* Integrieren Ihrer Überwachungsprotokolle in Ihre eigenen benutzerdefinierten Protokolllösungen, indem Sie sie an einen Event Hub streamen.
 
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
@@ -38,7 +38,7 @@ Sie können Azure AD-Aktivitätsprotokolle jetzt mit Azure Monitor an Ihr eigene
 Mit diesem Feature können Sie Aktivitätsprotokolle zu Überwachungen und Anmeldungen an Ihr Azure-Speicherkonto, einen Event Hub oder eine benutzerdefinierte Lösung weiterleiten. 
 
 * **Überwachungsprotokolle**: Mit dem [Aktivitätsbericht zu Überwachungsprotokollen](active-directory-reporting-activity-audit-logs.md) erhalten Sie Zugriff auf den Verlauf aller Aufgaben, die in Ihrem Mandanten durchgeführt werden.
-* **Anmeldungen**: Mit dem [Aktivitätsbericht zu Anmeldungen](active-directory-reporting-activity-sign-ins.md) können Sie ermitteln, von wem die Aufgaben durchgeführt wurden, die im Bericht zu den Überwachungsprotokollen aufgeführt sind.
+* **Anmeldeprotokolle**: Mit dem [Aktivitätsbericht zu Anmeldungen](active-directory-reporting-activity-sign-ins.md) können Sie ermitteln, von wem die Aufgaben durchgeführt wurden, die in den Überwachungsprotokollen aufgeführt sind.
 
 > [!NOTE]
 > B2C-bezogene Aktivitätsprotokolle für Überwachungen und Anmeldungen werden derzeit nicht unterstützt.
@@ -54,7 +54,7 @@ Sie benötigen Folgendes, um dieses Feature verwenden zu können:
 Je nachdem, wohin die Überwachungsprotokolldaten weitergeleitet werden, benötigen Sie Folgendes:
 
 * Ein Azure-Speicherkonto, für das Sie über *ListKeys*-Berechtigungen verfügen. Wir empfehlen Ihnen, anstelle eines Blobspeicherkontos ein allgemeines Speicherkonto zu verwenden. Preisinformationen zur Speicherung erhalten Sie über den [Azure Storage-Preisrechner](https://azure.microsoft.com/pricing/calculator/?service=storage). 
-* Azure Event Hubs-Namespace, um die Integration in Drittanbieterlösungen zu ermöglichen.
+* Einen Azure Event Hubs-Namespace, um die Integration in Drittanbieterlösungen zu ermöglichen.
 
 > [!NOTE]
 > Sie müssen im Azure AD-Mandanten ein *globaler Administrator* oder *Sicherheitsadministrator* sein, um auf die Azure AD-Aktivitätsprotokolle zugreifen zu können.
@@ -62,40 +62,44 @@ Je nachdem, wohin die Überwachungsprotokolldaten weitergeleitet werden, benöti
 
 ## <a name="cost-considerations"></a>Kostenbetrachtung
 
-Falls Sie bereits über eine Azure AD-Lizenz verfügen, benötigen Sie ein Azure-Abonnement, um das Speicherkonto und den Event Hub einzurichten. Für das Azure-Abonnement fallen keine Kosten an, aber Sie müssen für die Nutzung der Azure-Ressourcen zahlen, z.B. das Speicherkonto, das Sie für die Archivierung verwenden, und den Event Hub, den Sie für das Streamen nutzen. Die Datenmenge und somit auch die anfallenden Kosten variieren je nach Mandantengröße erheblich. 
+Falls Sie bereits über eine Azure AD-Lizenz verfügen, benötigen Sie ein Azure-Abonnement, um das Speicherkonto und den Event Hub einzurichten. Für das Azure-Abonnement fallen keine Kosten an, aber Sie müssen für die Nutzung der Azure-Ressourcen zahlen, z.B. das Speicherkonto, das Sie für die Archivierung verwenden, und den Event Hub, den Sie zum Streamen nutzen. Die Datenmenge und somit auch die anfallenden Kosten variieren je nach Mandantengröße erheblich. 
 
 ### <a name="storage-size-for-activity-logs"></a>Speichergröße für Aktivitätsprotokolle
 
-Für jedes Überwachungsprotokollereignis werden ca. 2 KB an Datenspeicher verbraucht. Für einen Mandanten mit 100.000 Benutzern, für den pro Tag ca. 1,5 Millionen Ereignisse anfallen, benötigen Sie also ungefähr 3 GB an Datenspeicher pro Tag. Da Schreibvorgänge ungefähr in 5-Minuten-Batches erfolgen, können Sie mit ca. 9.000 Schreibvorgängen pro Monat rechnen. Die folgende Tabelle enthält eine ungefähre Schätzung der Kosten in Abhängigkeit der Mandantengröße für ein universelles Speicherkonto (v2) in der Region „USA, Westen“ und einer Aufbewahrungsdauer von mindestens einem Jahr. Verwenden Sie den [Azure Storage-Preisrechner](https://azure.microsoft.com/pricing/details/storage/blobs/), um eine genauere Schätzung für die Datenmenge zu erstellen, mit der Sie für Ihre Anwendung rechnen. Für jedes Überwachungsprotokollereignis werden ca. 2 KB an Datenspeicher verbraucht. Für einen Mandanten mit 100.000 Benutzern, für den pro Tag ca. 1,5 Millionen Ereignisse anfallen, benötigen Sie also ungefähr 3 GB an Datenspeicher pro Tag. Da Schreibvorgänge ungefähr in 5-Minuten-Batches erfolgen, können Sie mit ca. 9.000 Schreibvorgängen pro Monat rechnen. Die folgende Tabelle enthält eine ungefähre Schätzung der Kosten in Abhängigkeit der Mandantengröße für ein universelles Speicherkonto (v2) in der Region „USA, Westen“ und einer Aufbewahrungsdauer von mindestens einem Jahr. Verwenden Sie den [Azure Storage-Preisrechner](https://azure.microsoft.com/pricing/details/storage/blobs/), um eine genauere Schätzung für die Datenmenge zu erstellen, mit der Sie für Ihre Anwendung rechnen. 
+Für jedes Überwachungsprotokollereignis werden ca. 2 KB an Datenspeicher verbraucht. Für einen Mandanten mit 100.000 Benutzern, für den pro Tag ca. 1,5 Millionen Ereignisse anfallen, benötigen Sie also ungefähr 3 GB an Datenspeicher pro Tag. Da Schreibvorgänge in etwa 5-Minuten-Batches erfolgen, können Sie mit ca. 9.000 Schreibvorgängen pro Monat rechnen. 
 
-| Protokollkategorie | Anzahl an Benutzern | Anzahl von Ereignissen/Tag | Ungefähre Datenmenge pro Monat | Ungefähre Kosten pro Monat | Ungefähre Kosten pro Jahr |
+Die folgende Tabelle enthält eine Schätzung der Kosten in Abhängigkeit von der Mandantengröße für ein universelles Speicherkonto (v2) in der Region „USA, Westen“ und einer Aufbewahrungsdauer von mindestens einem Jahr. Verwenden Sie den [Azure Storage-Preisrechner](https://azure.microsoft.com/pricing/details/storage/blobs/), um eine genauere Schätzung für die Datenmenge zu erstellen, mit der Sie für Ihre Anwendung rechnen. 
+
+| Protokollkategorie | Anzahl an Benutzern | Ereignisse pro Tag | Datenmenge pro Monat (Schätzung) | Kosten pro Monat (Schätzung) | Kosten pro Jahr (Schätzung) |
 |--------------|-----------------|----------------------|--------------------------------------|----------------------------|---------------------------|
-| Audit | 100.000 | 1,5 Millionen | 90 GB | 1,93 $ | 23,12 $ |
-| Audit | 1000 | 15000 | 900 MB | 0,02 $ | 0,24 $ |
-| Anmeldungen | 1000 | 34800 | 4 GB | 0,13 $ | 1,56 $ |
-| Anmeldungen | 100.000 | 15 Mio. | 1,7 TB | 35,41 $ | 424,92 $ | 
+| Audit | 100.000 | 1,5&nbsp;Millionen | 90 GB | 1,93 $ | 23,12 $ |
+| Audit | 1.000 | 15.000 | 900 MB | 0,02 $ | 0,24 $ |
+| Anmeldungen | 1.000 | 34.800 | 4 GB | 0,13 $ | 1,56 $ |
+| Anmeldungen | 100.000 | 15&nbsp;Millionen | 1,7 TB | 35,41 $ | 424,92 $ | 
 
 
 ### <a name="event-hub-messages-for-activity-logs"></a>Event Hub-Nachrichten für Aktivitätsprotokolle
 
-Ereignisse werden zu Batchintervallen mit einer Länge von ca. fünf Minuten zusammengefasst und als einzelne Nachricht gesendet, die alle Ereignisse innerhalb dieses Zeitraums enthält. Eine Nachricht im Event Hub hat eine maximale Größe von 256 KB. Wenn die Größe aller Nachrichten innerhalb des Zeitraums diese Menge übersteigt, werden mehrere Nachrichten gesendet. 
+Ereignisse werden zu Batchintervallen mit einer Länge von ca. fünf Minuten zusammengefasst und als einzelne Nachricht gesendet, die alle Ereignisse innerhalb dieses Zeitraums enthält. Eine Nachricht im Event Hub hat eine maximale Größe von 256 KB. Wenn die Gesamtgröße aller Nachrichten innerhalb des Zeitraums diese Menge übersteigt, werden mehrere Nachrichten gesendet. 
 
-Für einen großen Mandanten mit mehr als 100.000 Benutzern sind normalerweise ungefähr 18 Ereignisse pro Sekunde vorhanden. Dies entspricht 5.400 Ereignissen alle fünf Minuten. Da Überwachungsprotokolle pro Ereignis etwa 2 KB benötigen, entspricht dies 10,8 MB an Daten. Aus diesem Grund werden für dieses 5-Minuten-Intervall 43 Nachrichten an den Event Hub gesendet. Die folgende Tabelle enthält die ungefähren Kosten für einen einfachen Event Hub in „USA, Westen“ in Abhängigkeit der Ereignisdatenmenge. Verwenden Sie den [Event Hub-Preisrechner](https://azure.microsoft.com/pricing/details/event-hubs/), um eine genaue Schätzung für die Datenmenge zu berechnen, die für Ihre Anwendung zu erwarten ist.
+Für einen großen Mandanten mit mehr als 100.000 Benutzern treten pro Sekunde beispielsweise im Schnitt 18 Ereignisse auf. Dies entspricht einer Rate von 5.400 Ereignissen alle fünf Minuten. Da Überwachungsprotokolle ca. 2 KB pro Ereignis umfassen, entspricht dies 10,8 MB an Daten. Daher werden im Intervall von fünf Minuten 43 Nachrichten an den Event Hub gesendet. 
 
-| Protokollkategorie | Anzahl an Benutzern | Anzahl von Ereignissen/Sekunde | Anzahl von Ereignissen pro 5-Minuten-Intervall | Menge pro Intervall | Anzahl von Nachrichten pro Intervall | Anzahl von Nachrichten pro Monat | Ungefähre Kosten pro Monat |
+Die folgende Tabelle enthält die ungefähren monatlichen Kosten für einen einfachen Event Hub in „USA, Westen“ in Abhängigkeit der Ereignisdatenmenge. Verwenden Sie den [Event Hubs-Preisrechner](https://azure.microsoft.com/pricing/details/event-hubs/), um eine genaue Schätzung für die Datenmenge zu berechnen, die für Ihre Anwendung zu erwarten ist.
+
+| Protokollkategorie | Anzahl an Benutzern | Ereignisse pro Sekunde | Ereignisse pro Fünf-Minuten-Intervall | Menge pro Intervall | Nachrichten pro Intervall | Nachrichten pro Monat | Kosten pro Monat (Schätzung) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
-| Audit | 100.000 | 18 | 5400 | 10,8 MB | 43 | 371.520 | 10,83 $ |
-| Audit | 1000 | 0,1 | 52 | 104 KB | 1 | 8640 | 10,8 $ |
-| Anmeldungen | 1000 | 178 | 53400 | 106,8 MB | 418 | 3.611.520 | 11,06 $ |  
+| Audit | 100.000 | 18 | 5.400 | 10,8 MB | 43 | 371.520 | 10,83 $ |
+| Audit | 1.000 | 0,1 | 52 | 104 KB | 1 | 8.640 | 10,80 $ |
+| Anmeldungen | 1.000 | 178 | 53.400 | 106,8&nbsp;MB | 418 | 3.611.520 | 11,06 $ |  
 
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
-Dieser Abschnitt enthält die häufig gestellten Fragen und bekannten Probleme zu Azure Active Directory-Protokollen in Azure Monitor.
+Dieser Abschnitt beantwortet häufig gestellte Fragen und bespricht bekannte Probleme zu Azure AD-Protokollen in Azure Monitor.
 
 **F: Wo soll ich beginnen?** 
 
-**A:** Beginnen Sie mit der [Übersicht](reporting-azure-monitor-diagnostics-overview.md), um sich darüber zu informieren, was Sie für die Bereitstellung dieses Features benötigen. Nachdem Sie sich mit den Voraussetzungen vertraut gemacht haben, können Sie mit den Tutorials zum Konfigurieren und Weiterleiten Ihrer Protokolle an Event Hubs fortfahren.
+**A**: In diesem Artikel wird erläutert, was Sie für die Bereitstellung dieses Features benötigen. Wenn die Voraussetzungen erfüllt sind, erhalten Sie in den Tutorials weitere Informationen zum Konfigurieren und Weiterleiten Ihrer Protokolle an einen Event Hub.
 
 ---
 
@@ -107,7 +111,7 @@ Dieser Abschnitt enthält die häufig gestellten Fragen und bekannten Probleme z
 
 **F: Wie lange nach einer Aktion werden die entsprechenden Protokolle in Event Hubs angezeigt?**
 
-**A:** Die Protokolle sollten in Event Hubs etwa zwei bis fünf Minuten nach der Aktion angezeigt werden. Weitere Informationen zu Event Hubs finden Sie unter [Was ist Event Hubs?](/azure/event-hubs/event-hubs-what-is-event-hubs.md).
+**A**: Die Protokolle werden innerhalb von zwei bis fünf Minuten nachdem die Aktion ausgeführt wurde, in Ihrem Event Hub angezeigt. Weitere Informationen zu Event Hubs finden Sie unter [Was ist Azure Event Hubs?](../event-hubs/event-hubs-about.md).
 
 ---
 
@@ -119,25 +123,25 @@ Dieser Abschnitt enthält die häufig gestellten Fragen und bekannten Probleme z
 
 **F: Was kostet das Speichern meiner Daten?**
 
-**A:** Die Speicherkosten richten sich nach der Größe Ihrer Protokolle und nach der gewählten Aufbewahrungsdauer. Eine ungefähre Schätzung der Kosten für Mandanten, die auf der Menge an generierten Protokollen basiert, finden Sie in der [Übersicht](reporting-azure-monitor-diagnostics-overview.md).
+**A:** Die Speicherkosten richten sich nach der Größe Ihrer Protokolle und nach der gewählten Aufbewahrungsdauer. Eine Liste mit geschätzten Kosten pro Mandant, die von der Menge der erstellten Protokolle abhängen, finden Sie im Abschnitt [Speichergröße für Aktivitätsprotokolle](https://review.docs.microsoft.com/en-us/azure/active-directory/reporting-azure-monitor-diagnostics-overview?branch=pr-en-us-47660#storage-size-for-activity-logs).
 
 ---
 
 **F: Was kostet es, meine Daten an Event Hubs zu streamen?**
 
-**A:** Die Streamingkosten richten sich nach der Anzahl von Nachrichten, die Sie pro Minute empfangen. Lesen Sie die [Übersicht](reporting-azure-monitor-diagnostics-overview.md), um mehr zur Berechnung der Kosten zu erfahren und eine ungefähre Schätzung basierend auf der Anzahl von Nachrichten zu erhalten. 
+**A:** Die Streamingkosten richten sich nach der Anzahl von Nachrichten, die Sie pro Minute empfangen. In diesem Artikel wird erläutert, wie die Kosten berechnet werden. Außerdem umfasst er Kostenschätzungen ausgehend von der Anzahl von Nachrichten. 
 
 ---
 
 **F: Welche SIEM-Tools werden derzeit unterstützt?** 
 
-**A:** Derzeit wird Azure Monitor von Splunk, QRadar und Sumologic unterstützt. Splunk ist aber das einzige SIEM-Tool, das für Azure Active Directory-Protokolle unterstützt wird. Weitere Informationen zur Funktionsweise von Connectors finden Sie unter [Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool](/azure/monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs).
+**A:** Derzeit wird Azure Monitor von Splunk, QRadar und Sumo Logic unterstützt. Splunk ist aber das einzige SIEM-Tool, das für Azure AD-Protokolle unterstützt wird. Weitere Informationen zur Funktionsweise von Connectors finden Sie unter [Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md).
 
 ---
 
 **F: Kann ich über Event Hub auf die Daten zugreifen, ohne ein externes SIEM-Tool zu verwenden?** 
 
-**A:** Ja. Sie können die [Event Hub-API](/azure/event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph) nutzen, um über Ihre benutzerdefinierte Anwendung auf die Protokolle zuzugreifen. 
+**A:** Ja. Sie können die [Event Hubs-API](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) nutzen, um über Ihre benutzerdefinierte Anwendung auf die Protokolle zuzugreifen. 
 
 ---
 
@@ -146,4 +150,4 @@ Dieser Abschnitt enthält die häufig gestellten Fragen und bekannten Probleme z
 
 * [Archivieren von Aktivitätsprotokollen in einem Speicherkonto](reporting-azure-monitor-diagnostics-azure-storage-account.md)
 * [Weiterleiten von Aktivitätsprotokollen an Event Hub](reporting-azure-monitor-diagnostics-azure-event-hub.md)
-* [Weitere Informationen zu Azure-Diagnoseprotokollen](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+* [Weitere Informationen zu Azure-Diagnoseprotokollen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)

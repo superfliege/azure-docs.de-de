@@ -1,22 +1,19 @@
 ---
 title: Skalieren von Jenkins-Bereitstellungen mit Azure-VM-Agents.
 description: Verwenden Sie virtuelle Azure-Computer mit dem Jenkins-Plug-In für Azure-Agents, um Ihren Jenkins-Pipelines zusätzliche Kapazität hinzuzufügen.
-services: multiple
-documentationcenter: ''
-author: rloutlaw
-manager: justhe
-ms.service: multiple
-ms.workload: multiple
-ms.topic: article
-ms.date: 8/25/2017
-ms.author: mlearned
-ms.custom: Jenkins
-ms.openlocfilehash: 4d45ed14be499ed927f1433e134a029066146eea
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.topic: tutorial
+ms.author: tarcher
+author: tomarcher
+manager: jpconnock
+ms.service: devops
+ms.custom: jenkins
+ms.date: 07/31/2018
+ms.openlocfilehash: 7f3facbc1bca51061d49ca99778c60d58c525144
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29392639"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39391273"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>Skalieren Ihrer Jenkins-Bereitstellungen für verschiedene Anforderungen mit Azure-VM-Agents
 
@@ -52,7 +49,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 ## <a name="configure-the-azure-vm-agents-plugin"></a>Konfigurieren des Plug-Ins für Azure-VM-Agents
 
 1. Wählen Sie im Jenkins-Dashboard die Optionen **Manage Jenkins** und dann **Configure System** aus.
-2. Scrollen Síe nach unten, und suchen Sie den Abschnitt **Cloud** mit der Dropdownliste **Add new cloud**, und wählen Sie **Microsoft Azure VM Agents** aus.
+2. Scrollen Sie zum Ende der Seite. Suchen Sie den Abschnitt **Cloud** die Dropdownliste **Add new cloud**, und wählen Sie **Microsoft Azure-VM-Agents**.
 3. Wählen Sie aus der Dropdownliste **Add** im Abschnitt **Azure Credentials** einen vorhandenen Dienstprinzipal aus. Wenn kein Dienstprinzipal aufgelistet ist, führen Sie folgende Schritte aus, um für Ihr Azure-Konto [einen Dienstprinzipal zu erstellen](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager) und zu Ihrer Jenkins-Konfiguration hinzuzufügen:   
 
     a. Wählen Sie die Option **Add** neben **Azure Credentials**, und wählen Sie **Jenkins** aus.   
@@ -142,6 +139,10 @@ Wählen Sie **Verify Template**, um die Konfiguration zu überprüfen, und klick
 3. Nachdem der Build abgeschlossen ist, wechseln Sie zu **Console output** (Konsolenausgabe). Sie sehen, dass der Build remote in einem Azure-Agent ausgeführt wurde.
 
 ![Konsolenausgabe](./media/jenkins-azure-vm-agents/console-output.png)
+
+## <a name="troubleshooting-the-jenkins-plugin"></a>Problembehandlung beim Jenkins-Plug-In
+
+Wenn bei den Jenkins-Plug-Ins Fehler auftreten, melden Sie das Problem auf der [Jenkins-JIRA-Seite](https://issues.jenkins-ci.org/) für die jeweilige Komponente.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

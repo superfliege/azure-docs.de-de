@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/29/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 539e41dbd4d9e115c2d8daf90405d7683bcaa462
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: e941eb27e9c55f9a4b0e7af8d4cd8efa0220616b
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763186"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264459"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-mongodb-api"></a>Tutorial: Abfragen von Azure Cosmos BD mithilfe der MongoDB-API
 
@@ -27,9 +27,7 @@ In diesem Artikel werden die folgenden Aufgaben behandelt:
 > [!div class="checklist"]
 > * Abfragen von Daten mit MongoDB
 
-Sehen Sie sich zur Einführung das folgende Video zu MongoDB-Abfragen mit Azure Cosmos DB-Programmleiter Andy Hoh an:
-
->[!VIDEO https://www.youtube.com/tVk8S7lFWMA]
+Sie können mithilfe der Beispiele in diesem Dokument loslegen und sich das Video [Query Azure Cosmos DB with MongoDB shell (Abfragen von Azure Cosmos DB mit MongoDB-Shell)](https://azure.microsoft.com/resources/videos/query-azure-cosmos-db-data-by-using-the-mongodb-shell/) ansehen.
 
 ## <a name="sample-document"></a>Beispieldokument
 

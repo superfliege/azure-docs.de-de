@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: e4e94567cf978631be52a3304b47b68f61ac3fff
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: eefb07136215d79b7c351dd4498bfeb79b6833de
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161162"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413743"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Tutorial: Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm
 
@@ -115,6 +115,8 @@ Beim Testen dieser Funktionalität mit Hyper-V wird der Link „Kennwort zurück
 Beim Testen dieser Funktionalität per Remotedesktop wird der Link „Kennwort zurücksetzen“ nicht angezeigt.
 
 * Die Kennwortzurücksetzung wird für Remotedesktop derzeit nicht unterstützt.
+
+Wenn der Windows-Sperrbildschirm mithilfe eines Registrierungsschlüssels oder einer Gruppenrichtlinie deaktiviert wurde, ist **Kennwort zurücksetzen** nicht verfügbar.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
