@@ -154,7 +154,7 @@ In diesem Abschnitt erstellen Sie einen verknüpften Databricks-Dienst. Dieser v
 
           ![Erstellen eines neuen Ordners](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       3. [Erstellen Sie ein neues Notebook](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python), und geben Sie ihm den Namen **mynotebook**. Klicken Sie im Ordner **adftutorial**** auf **Erstellen**.
+       3. [Erstellen Sie ein neues Notebook](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python), und geben Sie ihm den Namen **mynotebook**. Klicken Sie im Ordner **adftutorial** **auf** **Erstellen**.
 
           ![Erstellen eines neuen Notebooks](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 
