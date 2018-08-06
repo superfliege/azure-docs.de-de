@@ -9,9 +9,9 @@
   items:
     - name: Sammeln – Azure-VMs
       href: log-analytics-quick-collect-azurevm.md
-    - name: Sammeln – Linux-Computer
+    - name: Sammeln – Linux-Hybridcomputer
       href: log-analytics-quick-collect-linux-computer.md
-    - name: Sammeln – Windows-Computer
+    - name: Sammeln – Windows-Hybridcomputer
       href: log-analytics-quick-collect-windows-computer.md
 - name: Tutorials
   items:

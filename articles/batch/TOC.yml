@@ -91,8 +91,6 @@
           href: batch-task-dependencies.md
         - name: Benutzerkonten zum Ausführen von Aufgaben
           href: batch-user-accounts.md
-        - name: Ausführen von Batchaufträgen ohne Code
-          href: batch-cli-templates.md
     - name: Persistente Aufträge und Aufgabenausgabe
       href: batch-task-output.md
       items:
@@ -123,10 +121,13 @@
           href: batch-efficient-list-queries.md
     - name: Verwenden von Skripterstellungstools
       items:
-        - name: Verwenden von PowerShell-Cmdlets
+        - name: Mithilfe von Azure PowerShell
           href: batch-powershell-cmdlets-get-started.md
         - name: Mithilfe der Azure-Befehlszeilenschnittstelle
           href: batch-cli-get-started.md
+          items:
+            - name: Verwenden von Batch-CLI-Vorlagen
+              href: batch-cli-templates.md
     - name: Verwenden des Batch Node.js-SDK
       href: batch-nodejs-get-started.md
 - name: Verweis
