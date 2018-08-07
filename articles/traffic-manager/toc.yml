@@ -7,7 +7,7 @@
 - name: Schnellstart
   items:
     - name: Erstellen eines Traffic Manager-Profils
-      href: traffic-manager-create-profile.md
+      href: quickstart-create-traffic-manager-profile.md
 - name: Tutorials
   items:
     - name: Weiterleiten von Datenverkehr basierend auf dem geografischen Standort des Endpunkts
