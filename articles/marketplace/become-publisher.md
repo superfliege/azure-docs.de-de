@@ -3,8 +3,8 @@ title: So werden Sie Herausgeber in den Storefronts im Marketplace | Azure
 description: Dieser Artikel beschreibt, wie Sie Herausgeber im Marketplace werden.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
-author: jm-aditi-ms
-manager: pabutler
+author: ellacroi
+manager: nunoc
 editor: ''
 ms.assetid: ''
 ms.service: marketplace
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: fb3f307642dc6f4607a626e0b320949306129759
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 4d37aba665fd9b6de89f683ce2785a14b1b6f60b
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172312"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412014"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Weg zum Cloud Marketplace-Herausgeber
 
@@ -103,8 +103,8 @@ Nach Abschluss der [Dev Center](https://developer.microsoft.com/en-us/store/regi
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr über die Marketplace-Storefronts: AppSource und Azure Marketplace
-*   Festlegen des Angebots für den Marketplace
+* Erfahren Sie mehr über die Marketplace-Storefronts: [Vergleich zwischen AppSource und Azure Marketplace](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace)
+*   [Bestimmen des Listingtyps für Ihre Lösung](https://docs.microsoft.com/en-us/azure/marketplace/determine-your-listing-type)
 
  
 ---  

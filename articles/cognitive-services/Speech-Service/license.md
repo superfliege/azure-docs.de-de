@@ -1,21 +1,20 @@
 ---
-title: Cognitive Services-Sprach-SDK – Lizenz | Microsoft-Dokumentation
+title: Cognitive Services Speech SDK – Lizenz
 description: Lizenzseite für das Cognitive Services-Sprach-SDK
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.topic: article
 ms.component: speech-service
 ms.date: 05/01/2018
 ms.author: wolfma
-ms.openlocfilehash: 5a0056690dfb6dc607c30327dc1e90911f3af052
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c21f4511fa995d47c90a65555d3b8f77976e7fe0
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376442"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283350"
 ---
 # <a name="microsoft-software-license-termsbrmicrosoft-cognitive-services-speech-sdk-preview"></a>Microsoft-Software-Lizenzbedingungen<br>Microsoft Cognitive Services-Sprach-SDK (Vorschauversion)
 

@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2018
+ms.date: 08/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: def9d5381144026b5ad0e8a076edd3c0692a08f4
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d64b834f1c6794976461c93d4ad1d05f8647e986
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29120385"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414588"
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Planungsentscheidungen zu mit Azure verbundenen Bereitstellungen für in Azure Stack integrierte Systeme
 Nachdem Sie entschieden haben, [wie Sie Azure Stack in Ihre Hybrid Cloud-Umgebung integrieren](azure-stack-connection-models.md), können Sie Ihre Azure Stack-Bereitstellungsentscheidungen abschließen.
@@ -40,7 +40,7 @@ Bei Verwendung von Azure AD als Identitätsspeicher werden zwei Azure AD-Konten 
 1. **Globales Administratorkonto** (nur für mit Azure verbundene Bereitstellungen erforderlich). Hierbei handelt es sich um ein Azure-Konto, das zum Erstellen von Anwendungen und Dienstprinzipalen für Azure Stack-Infrastrukturdienste in Azure Active Directory verwendet wird. Dieses Konto muss über Administratorrechte für das Verzeichnis verfügen, in dem Ihr Azure Stack-System installiert werden soll. Es wird zum globalen Administratorkonto des „Cloudbetreibers“ für den Azure AD-Mandanten und für die folgenden Aufgaben verwendet: 
     - Bereitstellen und Delegieren von Anwendungen und Dienstprinzipalen für alle Azure Stack-Dienste, die mit Azure Active Directory und Graph-API interagieren. 
     - Als Dienstadministratorkonto. Dies ist der Besitzer des Standardanbieterabonnements (den Sie später jedoch ändern können). Mit diesem Konto können Sie sich beim Azure Stack-Verwaltungsportal anmelden und damit Angebote und Pläne erstellen, Kontingente festlegen und andere administrative Aufgaben in Azure Stack erledigen.
-2. **Abrechnungskonto** (sowohl für mit Azure verbundene als auch nicht verbundene Bereitstellungen erforderlich). Dieses Azure-Konto wird verwendet, um die Abrechnungsbeziehung zwischen Ihrem in Azure Stack integrierten System und dem Azure-Commerce-Back-End herzustellen. Dies ist das Konto, dem Azure Stack-Gebühren in Rechnung gestellt werden. Dieses Konto wird auch für die Marketplace-Syndikation und andere Hybridszenarien verwendet. 
+2. **Abrechnungskonto** (sowohl für mit Azure verbundene als auch nicht verbundene Bereitstellungen erforderlich). Dieses Azure-Konto wird verwendet, um die Abrechnungsbeziehung zwischen Ihrem in Azure Stack integrierten System und dem Azure-Commerce-Back-End herzustellen. Dies ist das Konto, dem Azure Stack-Gebühren in Rechnung gestellt werden. Dieses Konto wird auch zum Anbieten von Elementen im Marketplace und in anderen Hybridszenarien verwendet. 
 
 ### <a name="ad-fs-identity-store"></a>AD FS-Identitätsspeicher
 Wählen Sie diese Option, wenn Sie Ihren eigenen Identitätsspeicher, wie z.B. Ihr unternehmenseigenes Active Directory, für Ihre Dienstadministratorkonten verwenden möchten.  
@@ -64,7 +64,7 @@ Wenn Sie ein CSP-Abonnement verwenden möchten, konsultieren Sie die folgende Ta
 ### <a name="capacity-based-billing"></a>Kapazitätsbasierte Abrechnung
 Wenn Sie sich für das kapazitätsabhängige Abrechnungsmodells entscheiden, müssen Sie eine Azure Stack-Kapazitätsplan-SKU kaufen, die auf der Kapazität Ihres Systems basiert. Sie müssen die Anzahl der physischen Kerne in Ihrem Azure Stack kennen, um die richtige Menge zu kaufen. 
 
-Für die kapazitätsbezogene Abrechnung ist für die Registrierung ein Azure-Abonnement des Typs EA (Enterprise Agreement) erforderlich. Der Grund dafür ist, dass die Registrierung eine Syndikation einrichtet, die ein Azure-Abonnement erfordert. Das Abonnement wird nicht zur Azure Stack-Nutzung verwendet.
+Für die kapazitätsbezogene Abrechnung ist für die Registrierung ein Azure-Abonnement des Typs EA (Enterprise Agreement) erforderlich. Der Grund dafür ist, dass die Registrierung die Verfügbarkeit der Artikel im Marketplace festlegt, wofür ein Azure-Abonnement erforderlich ist. Das Abonnement wird nicht zur Azure Stack-Nutzung verwendet.
 
 ## <a name="learn-more"></a>Weitere Informationen
 - Informationen zu Anwendungsfällen, zum Erwerb, zu Partnern und zu OEM-Hardwareanbietern finden Sie auf der Produktseite von [Azure Stack](https://azure.microsoft.com/overview/azure-stack/).

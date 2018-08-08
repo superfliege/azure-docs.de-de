@@ -2,7 +2,7 @@
 title: Überwachen von Azure Functions
 description: Es wird beschrieben, wie Sie Azure Application Insights mit Azure Functions zum Überwachen der Funktionsausführung verwenden.
 services: functions
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -14,12 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
-ms.author: tdykstra
-ms.openlocfilehash: cbdb4691bac01843a451c988e09d77dd10f97461
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.author: glenga
+ms.openlocfilehash: ba820c594b5afb34c050c74de30300b0dfc8c3a6
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344054"
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -222,7 +223,7 @@ Mit der Datei *host.json* wird konfiguriert, welcher Protokollierungsgrad von ei
       "categoryLevels": {
         "Host.Results": "Error",
         "Function": "Error",
-        "Host.Aggregator": "Information"
+        "Host.Aggregator": "Trace"
       }
     }
   }
@@ -232,7 +233,7 @@ Mit der Datei *host.json* wird konfiguriert, welcher Protokollierungsgrad von ei
 In diesem Beispiel werden die folgenden Regeln eingerichtet:
 
 1. Für Protokolle mit der Kategorie „Host.Results“ oder „Function“ soll nur die Ebene `Error` und höher an Application Insights gesendet werden. Protokolle für die Ebene `Warning` und niedriger werden ignoriert.
-2. Für Protokolle mit der Kategorie „Host. Aggregator“ soll nur die Ebene `Information` und höher an Application Insights gesendet werden. Protokolle für die Ebene `Debug` und niedriger werden ignoriert.
+2. Alle Protokolle der Kategorie „Host.Aggregator“ werden an Application Insights gesendet. Die Protokollebene `Trace` entspricht dem, was in einigen Protokollierungen als `Verbose` bezeichnet wird. In der *host.json*-Datei soll jedoch `Trace` verwendet werden.
 3. Für alle anderen Protokolle soll nur die Ebene `Information` und höher an Application Insights gesendet werden.
 
 Der Kategoriewert in *host.json* steuert die Protokollierung für alle Kategorien, die mit dem gleichen Wert beginnen. Mit „Host“ in *host.json* wird beispielsweise die Protokollierung für „Host.General“, „Host.Executor“, „Host.Results“ usw. gesteuert.
@@ -558,7 +559,7 @@ Verwenden Sie für Azure CLI 2.0 die folgenden Befehle, um sich anzumelden, Ihr 
 az login
 az account list
 az account set <subscriptionNameOrId>
-az appservice web log tail --resource-group <resource group name> --name <function app name>
+az webapp log tail --resource-group <resource group name> --name <function app name>
 ```
 
 Verwenden Sie für Azure PowerShell die folgenden Befehle, um Ihr Azure-Konto hinzuzufügen, Ihr Abonnement auszuwählen und Protokolldateien zu streamen:

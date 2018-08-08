@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/11/2018
+ms.date: 08/01/2018
 ms.author: genli
-ms.openlocfilehash: 2d7ee7050f430efea64d9988adf4f5a603128de2
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 48037bc92d26cd01086451fdc778651df5b6bf67
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053448"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398970"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure
-Bevor Sie einen virtuellen Windows-Computer aus einem lokalen Speicherort in Azure hochladen können, müssen Sie die virtuelle Festplatte (Virtual Hard Disk, VHD oder VHDX) vorbereiten. Azure unterstützt nur virtuelle Computer der 1. Generation, die das VHD-Dateiformat aufweisen und einen Datenträger mit fester Größe umfassen. Die maximal zulässige Größe für die virtuelle Festplatte beträgt 1.023 GB. Sie können virtuelle Computer der 1. Generation vom VHDX- in das VHD-Dateisystemformat und von einem dynamisch erweiterbaren Datenträger in einen Datenträger mit fester Größe konvertieren. Aber die Generation eines virtuellen Computers kann nicht geändert werden. Weitere Informationen finden Sie unter [Should I create a generation 1 or 2 VM in Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) (Sollte ich eine VM der 1. oder 2. Generation in Hyper-V erstellen?).
+Bevor Sie einen virtuellen Windows-Computer aus einem lokalen Speicherort in Azure hochladen können, müssen Sie die virtuelle Festplatte (Virtual Hard Disk, VHD oder VHDX) vorbereiten. Azure unterstützt **nur virtuelle Computer der 1. Generation**, die das VHD-Dateiformat aufweisen und einen Datenträger mit fester Größe umfassen. Die maximal zulässige Größe für die virtuelle Festplatte beträgt 1.023 GB. Sie können virtuelle Computer der 1. Generation vom VHDX- in das VHD-Dateisystemformat und von einem dynamisch erweiterbaren Datenträger in einen Datenträger mit fester Größe konvertieren. Aber die Generation eines virtuellen Computers kann nicht geändert werden. Weitere Informationen finden Sie unter [Should I create a generation 1 or 2 VM in Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) (Sollte ich eine VM der 1. oder 2. Generation in Hyper-V erstellen?).
 
 Weitere Informationen zur Supportrichtlinie für Azure-VMs finden Sie unter [Microsoft-Server-Software-Support für virtuelle Maschinen von Microsoft Azure](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).
 
@@ -73,7 +73,7 @@ Führen Sie alle in den folgenden Schritten genannten Befehle über eine [Eingab
     ```PowerShell
     netsh winhttp reset proxy
     ```
-3. Legen Sie für die Datenträger-SAN-Richtlinie [Onlineall](https://technet.microsoft.com/library/gg252636.aspx) fest. 
+3. Legen Sie für die Datenträger-SAN-Richtlinie [Onlineall](https://technet.microsoft.com/library/gg252636.aspx) fest:
    
     ```PowerShell
     diskpart 
@@ -181,35 +181,13 @@ Stellen Sie sicher, dass die folgenden Einstellungen für die Remotedesktopverbi
 
 9. Wenn die VM Teil einer Domäne sein wird, überprüfen Sie sämtliche der folgenden Einstellungen, um sicherzustellen, dass die vorherigen Einstellungen nicht zurückgesetzt werden. Folgende Richtlinien müssen überprüft werden:
     
-    - RDP ist aktiviert:
-
-         Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Komponenten\Remotedesktopdienste\Remotedesktop-Sitzungshost\Verbindungen:
-         
-         **Remoteverbindungen für Benutzer mithilfe der Remotedesktopdienste zulassen**
-
-    - NLA-Gruppenrichtlinie:
-
-        Einstellungen\Administrative Vorlagen\Komponenten\Remotedesktopdienste\Remotedesktop-Sitzungshost\Sicherheit: 
-        
-        **Benutzerauthentifizierung mit Authentifizierung auf Netzwerkebene ist für Remoteverbindungen erforderlich**
-    
-    - Keep-Alive-Einstellungen:
-
-        Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Windows-Komponenten\Remotedesktopdienste\Remotedesktop-Sitzungshost\Verbindungen: 
-        
-        **Keep-Alive-Verbindungsintervall konfigurieren**
-
-    - Einstellungen zur erneuten Verbindungsherstellung:
-
-        Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Windows-Komponenten\Remotedesktopdienste\Remotedesktop-Sitzungshost\Verbindungen: 
-        
-        **Automatisch erneut verbinden**
-
-    - Einstellung zum Beschränken der Anzahl von Verbindungen:
-
-        Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Windows-Komponenten\Remotedesktopdienste\Remotedesktop-Sitzungshost\Verbindungen: 
-        
-        **Anzahl der Verbindungen einschränken**
+    | Zielsetzung                                     | Richtlinie                                                                                                                                                       | Wert                                                                                    |
+    |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
+    | RDP ist aktiviert                           | Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Komponenten\Remotedesktopdienste\Remotedesktop-Sitzungshost\Verbindungen         | Remoteverbindungen für Benutzer mithilfe der Remotedesktopdienste zulassen                                  |
+    | NLA-Gruppenrichtlinie                         | Einstellungen\Administrative Vorlagen\Komponenten\Remotedesktopdienste\Remotedesktop-Sitzungshost\Sicherheit                                                    | Benutzerauthentifizierung mit Authentifizierung auf Netzwerkebene ist für Remoteverbindungen erforderlich |
+    | Keep-Alive-Einstellungen                      | Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Windows-Komponenten\Remotedesktopdienste\Remotedesktop-Sitzungshost\Verbindungen | Keep-Alive-Verbindungsintervall konfigurieren                                                 |
+    | Einstellungen zur erneuten Verbindungsherstellung                       | Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Windows-Komponenten\Remotedesktopdienste\Remotedesktop-Sitzungshost\Verbindungen | Automatisch erneut verbinden                                                                   |
+    | Einstellung zum Beschränken der Anzahl von Verbindungen | Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Windows-Komponenten\Remotedesktopdienste\Remotedesktop-Sitzungshost\Verbindungen | Anzahl der Verbindungen einschränken                                                              |
 
 ## <a name="configure-windows-firewall-rules"></a>Konfigurieren von Windows-Firewallregeln
 1. Aktivieren Sie die Windows-Firewall für die drei Profile („Domäne“, „Standard“ und „Öffentlich“):
@@ -227,7 +205,7 @@ Stellen Sie sicher, dass die folgenden Einstellungen für die Remotedesktopverbi
     netsh advfirewall firewall set rule dir=in name="Windows Remote Management (HTTP-In)" new enable=yes
     netsh advfirewall firewall set rule dir=in name="Windows Remote Management (HTTP-In)" new enable=yes
    ```
-3. Aktivieren Sie die folgenden Firewallregeln, um RDP-Datenverkehr zuzulassen 
+3. Aktivieren Sie die folgenden Firewallregeln, um RDP-Datenverkehr zuzulassen:
 
    ```PowerShell
     netsh advfirewall firewall set rule group="Remote Desktop" new enable=yes
@@ -239,23 +217,13 @@ Stellen Sie sicher, dass die folgenden Einstellungen für die Remotedesktopverbi
    ``` 
 5. Wenn die VM Teil einer Domäne sein wird, überprüfen Sie sämtliche der folgenden Einstellungen, um sicherzustellen, dass die vorherigen Einstellungen nicht zurückgesetzt werden. Folgende AD-Richtlinien müssen überprüft werden:
 
-    - Aktivieren der Windows-Firewallprofile
-
-        Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Netzwerk\Netzwerkverbindung\Windows-Firewall\Domänenprofil\Windows-Firewall: **Alle Netzwerkverbindungen schützen**
-
-       Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Netzwerk\Netzwerkverbindung\Windows-Firewall\Standardprofil\Windows-Firewall: **Alle Netzwerkverbindungen schützen**
-
-    - Aktivieren von RDP 
-
-        Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Netzwerk\Netzwerkverbindung\Windows-Firewall\Domänenprofil\Windows-Firewall: **Eingehende Remotedesktopausnahmen zulassen**
-
-        Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Netzwerk\Netzwerkverbindung\Windows-Firewall\Standardprofil\Windows-Firewall: **Eingehende Remotedesktopausnahmen zulassen**
-
-    - Aktivieren von ICMP-V4
-
-        Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Netzwerk\Netzwerkverbindung\Windows-Firewall\Domänenprofil\Windows-Firewall: **ICMP-Ausnahmen zulassen**
-
-        Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Netzwerk\Netzwerkverbindung\Windows-Firewall\Standardprofil\Windows-Firewall: **ICMP-Ausnahmen zulassen**
+    | Zielsetzung                                 | Richtlinie                                                                                                                                                  | Wert                                   |
+    |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
+    | Aktivieren der Windows-Firewallprofile | Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Netzwerk\Netzwerkverbindung\Windows-Firewall\Domänenprofil\Windows-Firewall   | Schützen aller Netzwerkverbindungen         |
+    | Aktivieren von RDP                           | Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Netzwerk\Netzwerkverbindung\Windows-Firewall\Domänenprofil\Windows-Firewall   | Zulassen eingehender Remotedesktopausnahmen |
+    |                                      | Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Netzwerk\Netzwerkverbindung\Windows-Firewall\Standardprofil\Windows-Firewall | Zulassen eingehender Remotedesktopausnahmen |
+    | Aktivieren von ICMP-V4                       | Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Netzwerk\Netzwerkverbindung\Windows-Firewall\Domänenprofil\Windows-Firewall   | Zulassen von ICMP-Ausnahmen                   |
+    |                                      | Computerkonfiguration\Richtlinien\Windows-Einstellungen\Administrative Vorlagen\Netzwerk\Netzwerkverbindung\Windows-Firewall\Standardprofil\Windows-Firewall | Zulassen von ICMP-Ausnahmen                   |
 
 ## <a name="verify-vm-is-healthy-secure-and-accessible-with-rdp"></a>Sicherstellen, dass der virtuelle Computer fehlerfrei, sicher und der Zugriff mit RDP darauf möglich ist 
 1. Um sicherzustellen, dass der Datenträger fehlerfrei und konsistent ist, führen Sie beim nächsten VM-Neustart eine Datenträgerüberprüfung durch:
@@ -268,95 +236,123 @@ Stellen Sie sicher, dass die folgenden Einstellungen für die Remotedesktopverbi
 2. Legen Sie die Einstellungen für die Startkonfigurationsdaten (Boot Configuration Data, BCD) fest. 
 
     > [!Note]
-    > Stellen Sie sicher, dass Sie diese Befehle in einem Befehlsfenster mit erhöhten Rechten ausführen und **NICHT** unter PowerShell:
+    > Stellen Sie sicher, dass Sie diese Befehle in einem PowerShell-Fenster mit erhöhten Rechten ausführen.
    
-   ```CMD
-   bcdedit /set {bootmgr} integrityservices enable
-   
-   bcdedit /set {default} device partition=C:
-   
-   bcdedit /set {default} integrityservices enable
-   
-   bcdedit /set {default} recoveryenabled Off
-   
-   bcdedit /set {default} osdevice partition=C:
-   
-   bcdedit /set {default} bootstatuspolicy IgnoreAllFailures
+   ```powershell
+    cmd
+
+    bcdedit /set {bootmgr} integrityservices enable
+    bcdedit /set {default} device partition=C:
+    bcdedit /set {default} integrityservices enable
+    bcdedit /set {default} recoveryenabled Off
+    bcdedit /set {default} osdevice partition=C:
+    bcdedit /set {default} bootstatuspolicy IgnoreAllFailures
+
+    #Enable Serial Console Feature
+    bcdedit /set {bootmgr} displaybootmenu yes
+    bcdedit /set {bootmgr} timeout 10
+    bcdedit /set {bootmgr} bootems yes
+    bcdedit /ems {current} ON
+    bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200
+
+    exit
    ```
-3. Überprüfen Sie, ob das Repository für die Windows-Verwaltungsinstrumentation (Windows Management Instrumentation, WMI) konsistent ist. Führen Sie zu diesem Zweck den folgenden Befehl aus:
+3. Das Abbildprotokoll kann bei der Problembehandlung nach Windows-Abstürzen hilfreich sein. Aktivieren Sie die Sammlung von Abbildprotokollen:
+
+    ```powershell
+    cmd
+
+    #Setup the Guest OS to collect a kernel dump on an OS crash event
+    REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+    REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 2 /f
+    REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
+
+    #Setup the Guest OS to collect user mode dumps on a service crash event
+    md c:\Crashdumps
+    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v DumpFolder /t REG_EXPAND_SZ /d "c:\CrashDumps" /f
+    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v CrashCount /t REG_DWORD /d 10 /f
+    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v DumpType /t REG_DWORD /d 2 /f
+    sc config WerSvc start= demand
+
+    exit
+    
+    ```
+4. Überprüfen Sie, ob das Repository für die Windows-Verwaltungsinstrumentation (Windows Management Instrumentation, WMI) konsistent ist. Führen Sie zu diesem Zweck den folgenden Befehl aus:
 
     ```PowerShell
     winmgmt /verifyrepository
     ```
     Wenn das Repository beschädigt ist, lesen Sie den Blogbeitrag [WMI: Repository Corruption, or Not?](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not) (WMI: Repository beschädigt oder nicht?).
 
-4. Stellen Sie sicher, dass keine andere Anwendung Port 3389 verwendet. Dieser Port wird für den RDP-Dienst in Azure verwendet. Sie können **netstat -anob** ausführen, um anzuzeigen, welche Ports auf der VM verwendet werden:
+5. Stellen Sie sicher, dass keine andere Anwendung Port 3389 verwendet. Dieser Port wird für den RDP-Dienst in Azure verwendet. Sie können **netstat -anob** ausführen, um anzuzeigen, welche Ports auf der VM verwendet werden:
 
     ```PowerShell
     netstat -anob
     ```
 
-5. Wenn es sich bei der Windows-VHD, die Sie hochladen möchten, um einen Domänencontroller handelt, führen Sie diese Schritte aus:
+6. Wenn es sich bei der Windows-VHD, die Sie hochladen möchten, um einen Domänencontroller handelt, führen Sie diese Schritte aus:
 
-    A. Führen Sie [diese zusätzlichen Schritte aus](https://support.microsoft.com/kb/2904015), um den Datenträger vorzubereiten.
+    1. Führen Sie [diese zusätzlichen Schritte aus](https://support.microsoft.com/kb/2904015), um den Datenträger vorzubereiten.
 
-    B: Stellen Sie sicher, dass Sie das DSRM-Kennwort kennen, falls Sie zu einem bestimmten Zeitpunk die VM in DSRM starten müssen. Dieser Link enthält Informationen dazu, wie Sie das [DSRM-Kennwort festlegen](https://technet.microsoft.com/library/cc754363(v=ws.11).aspx).
+    1. Stellen Sie sicher, dass Sie das DSRM-Kennwort kennen, falls Sie zu einem bestimmten Zeitpunk die VM in DSRM starten müssen. Dieser Link enthält Informationen dazu, wie Sie das [DSRM-Kennwort festlegen](https://technet.microsoft.com/library/cc754363(v=ws.11).aspx).
 
-6. Stellen Sie sicher, dass Sie die Anmeldeinformationen für das integrierte Administratorkonto kennen. Setzen Sie ggf. das aktuelle Kennwort des lokalen Administrators zurück, und stellen Sie sicher, dass Sie sich mit diesem Konto über die RDP-Verbindung bei Windows anmelden können. Diese Zugriffsberechtigung wird über das Gruppenrichtlinienobjekt „Anmelden über Remotedesktopdienste zulassen“ gesteuert. Sie können dieses Objekt im folgenden Pfad im Editor für lokale Gruppenrichtlinien anzeigen:
+7. Stellen Sie sicher, dass Sie die Anmeldeinformationen für das integrierte Administratorkonto kennen. Setzen Sie ggf. das aktuelle Kennwort des lokalen Administrators zurück, und stellen Sie sicher, dass Sie sich mit diesem Konto über die RDP-Verbindung bei Windows anmelden können. Diese Zugriffsberechtigung wird über das Gruppenrichtlinienobjekt „Anmelden über Remotedesktopdienste zulassen“ gesteuert. Sie können dieses Objekt im folgenden Pfad im Editor für lokale Gruppenrichtlinien anzeigen:
 
     Computerkonfiguration\Windows-Einstellungen\Sicherheitseinstellungen\Lokale Richtlinien\Zuweisen von Benutzerrechten
 
-7. Überprüfen Sie die folgenden AD-Richtlinien, um sich zu vergewissern, dass Sie den RDP-Zugriff weder über RDP noch aus dem Netzwerk blockieren:
+8. Überprüfen Sie die folgenden AD-Richtlinien, um sich zu vergewissern, dass Sie den RDP-Zugriff weder über RDP noch aus dem Netzwerk blockieren:
 
     - Computerkonfiguration\Windows-Einstellungen\Sicherheitseinstellungen\Lokale Richtlinien\Zuweisen von Benutzerrechten\Zugriff vom Netzwerk auf diesen Computer verweigern
 
     - Computerkonfiguration\Windows-Einstellungen\Sicherheitseinstellungen\Lokale Richtlinien\Zuweisen von Benutzerrechten\Anmelden über Remotedesktopdienste verweigern
 
 
-8. Starten Sie den virtuellen Computer neu, um sicherzustellen, dass Windows weiterhin fehlerfrei ausgeführt wird und über die RDP-Verbindung erreichbar ist. An diesem Punkt können Sie eine VM in Ihrer lokalen Hyper-V-Umgebung einrichten, um sicherzustellen, dass die VM vollständig startet. Anschließend können Sie testen, ob die VM über RDP erreichbar ist.
+9. Starten Sie den virtuellen Computer neu, um sicherzustellen, dass Windows weiterhin fehlerfrei ausgeführt wird und über die RDP-Verbindung erreichbar ist. An diesem Punkt können Sie eine VM in Ihrer lokalen Hyper-V-Umgebung einrichten, um sicherzustellen, dass die VM vollständig startet. Anschließend können Sie testen, ob die VM über RDP erreichbar ist.
 
-9. Entfernen Sie jegliche zusätzlichen Transport Driver Interface-Filter, beispielsweise Software zur Analyse von TCP-Paketen oder zusätzliche Firewalls. Sie können dies ggf. auch später überprüfen, nachdem die VM in Azure bereitgestellt wurde.
+10. Entfernen Sie jegliche zusätzlichen Transport Driver Interface-Filter, beispielsweise Software zur Analyse von TCP-Paketen oder zusätzliche Firewalls. Sie können dies ggf. auch später überprüfen, nachdem die VM in Azure bereitgestellt wurde.
 
-10. Deinstallieren Sie jegliche Drittanbietersoftware und -treiber im Zusammenhang mit physischen Komponenten oder einer anderen Virtualisierungstechnologie.
+11. Deinstallieren Sie jegliche Drittanbietersoftware und -treiber im Zusammenhang mit physischen Komponenten oder einer anderen Virtualisierungstechnologie.
 
 ### <a name="install-windows-updates"></a>Installieren von Windows-Updates
 Die ideale Konfiguration ist die, dass **mindestens die Patchebene des Computers vorliegt**. Wenn dies nicht möglich ist, stellen Sie sicher, dass die folgenden Updates installiert sind:
 
-|                       |                   |           |                                       Mindestdateiversion x64       |                                      |                                      |                            |
-|-------------------------|-------------------|------------------------------------|---------------------------------------------|--------------------------------------|--------------------------------------|----------------------------|
-| Komponente               | Binär            | Windows 7 & Windows Server 2008 R2 | Windows 8 & Windows Server 2012             | Windows 8.1 & Windows Server 2012 R2 | Windows 10 & Windows Server 2016 RS1 | Windows 10 RS2             |
-| Speicher                 | disk.sys          | 6.1.7601.23403 – KB3125574         | 6.2.9200.17638 / 6.2.9200.21757 – KB3137061 | 6.3.9600.18203 – KB3137061           | -                                    | -                          |
-|                         | storport.sys      | 6.1.7601.23403 – KB3125574         | 6.2.9200.17188 / 6.2.9200.21306 – KB3018489 | 6.3.9600.18573 – KB4022726           | 10.0.14393.1358 – KB4022715          | 10.0.15063.332             |
-|                         | ntfs.sys          | 6.1.7601.23403 – KB3125574         | 6.2.9200.17623 / 6.2.9200.21743 – KB3121255 | 6.3.9600.18654 – KB4022726           | 10.0.14393.1198 – KB4022715          | 10.0.15063.447             |
-|                         | Iologmsg.dll      | 6.1.7601.23403 – KB3125574         | 6.2.9200.16384 – KB2995387                  | -                                    | -                                    | -                          |
-|                         | Classpnp.sys      | 6.1.7601.23403 – KB3125574         | 6.2.9200.17061 / 6.2.9200.21180 – KB2995387 | 6.3.9600.18334 – KB3172614           | 10.0.14393.953 – KB4022715           | -                          |
-|                         | Volsnap.sys       | 6.1.7601.23403 – KB3125574         | 6.2.9200.17047 / 6.2.9200.21165 – KB2975331 | 6.3.9600.18265 – KB3145384           | -                                    | 10.0.15063.0               |
-|                         | partmgr.sys       | 6.1.7601.23403 – KB3125574         | 6.2.9200.16681 – KB2877114                  | 6.3.9600.17401 – KB3000850           | 10.0.14393.953 – KB4022715           | 10.0.15063.0               |
-|                         | volmgr.sys        |                                    |                                             |                                      |                                      | 10.0.15063.0               |
-|                         | Volmgrx.sys       | 6.1.7601.23403 – KB3125574         | -                                           | -                                    | -                                    | 10.0.15063.0               |
-|                         | Msiscsi.sys       | 6.1.7601.23403 – KB3125574         | 6.2.9200.21006 – KB2955163                  | 6.3.9600.18624 – KB4022726           | 10.0.14393.1066 – KB4022715          | 10.0.15063.447             |
-|                         | Msdsm.sys         | 6.1.7601.23403 – KB3125574         | 6.2.9200.21474 – KB3046101                  | 6.3.9600.18592 – KB4022726           | -                                    | -                          |
-|                         | Mpio.sys          | 6.1.7601.23403 – KB3125574         | 6.2.9200.21190 – KB3046101                  | 6.3.9600.18616 – KB4022726           | 10.0.14393.1198 – KB4022715          | -                          |
-|                         | Fveapi.dll        | 6.1.7601.23311 – KB3125574         | 6.2.9200.20930 – KB2930244                  | 6.3.9600.18294 – KB3172614           | 10.0.14393.576 – KB4022715           | -                          |
-|                         | Fveapibase.dll    | 6.1.7601.23403 – KB3125574         | 6.2.9200.20930 – KB2930244                  | 6.3.9600.17415 – KB3172614           | 10.0.14393.206 – KB4022715           | -                          |
-| Netzwerk                 | netvsc.sys        | -                                  | -                                           | -                                    | 10.0.14393.1198 – KB4022715          | 10.0.15063.250 – KB4020001 |
-|                         | mrxsmb10.sys      | 6.1.7601.23816 – KB4022722         | 6.2.9200.22108 – KB4022724                  | 6.3.9600.18603 – KB4022726           | 10.0.14393.479 – KB4022715           | 10.0.15063.483             |
-|                         | mrxsmb20.sys      | 6.1.7601.23816 – KB4022722         | 6.2.9200.21548 – KB4022724                  | 6.3.9600.18586 – KB4022726           | 10.0.14393.953 – KB4022715           | 10.0.15063.483             |
-|                         | mrxsmb.sys        | 6.1.7601.23816 – KB4022722         | 6.2.9200.22074 – KB4022724                  | 6.3.9600.18586 – KB4022726           | 10.0.14393.953 – KB4022715           | 10.0.15063.0               |
-|                         | tcpip.sys         | 6.1.7601.23761 – KB4022722         | 6.2.9200.22070 – KB4022724                  | 6.3.9600.18478 – KB4022726           | 10.0.14393.1358 – KB4022715          | 10.0.15063.447             |
-|                         | http.sys          | 6.1.7601.23403 – KB3125574         | 6.2.9200.17285 – KB3042553                  | 6.3.9600.18574 – KB4022726           | 10.0.14393.251 – KB4022715           | 10.0.15063.483             |
-|                         | vmswitch.sys      | 6.1.7601.23727 – KB4022719         | 6.2.9200.22117 – KB4022724                  | 6.3.9600.18654 – KB4022726           | 10.0.14393.1358 – KB4022715          | 10.0.15063.138             |
-| Core                    | ntoskrnl.exe      | 6.1.7601.23807 – KB4022719         | 6.2.9200.22170 – KB4022718                  | 6.3.9600.18696 – KB4022726           | 10.0.14393.1358 – KB4022715          | 10.0.15063.483             |
-| Remotedesktopdienste | rdpcorets.dll     | 6.2.9200.21506 – KB4022719         | 6.2.9200.22104 – KB4022724                  | 6.3.9600.18619 – KB4022726           | 10.0.14393.1198 – KB4022715          | 10.0.15063.0               |
-|                         | termsrv.dll       | 6.1.7601.23403 – KB3125574         | 6.2.9200.17048 – KB2973501                  | 6.3.9600.17415 – KB3000850           | 10.0.14393.0 – KB4022715             | 10.0.15063.0               |
-|                         | termdd.sys        | 6.1.7601.23403 – KB3125574         | -                                           | -                                    | -                                    | -                          |
-|                         | win32k.sys        | 6.1.7601.23807 – KB4022719         | 6.2.9200.22168 – KB4022718                  | 6.3.9600.18698 – KB4022726           | 10.0.14393.594 – KB4022715           | -                          |
-|                         | rdpdd.dll         | 6.1.7601.23403 – KB3125574         | -                                           | -                                    | -                                    | -                          |
-|                         | rdpwd.sys         | 6.1.7601.23403 – KB3125574         | -                                           | -                                    | -                                    | -                          |
-| Sicherheit                | Aufgrund von WannaCrypt | KB4012212                          | KB4012213                                   | KB4012213                            | KB4012606                            | KB4012606                  |
-|                         |                   |                                    | KB4012216                                   |                                      | KB4013198                            | KB4013198                  |
-|                         |                   | KB4012215                          | KB4012214                                   | KB4012216                            | KB4013429                            | KB4013429                  |
-|                         |                   |                                    | KB4012217                                   |                                      | KB4013429                            | KB4013429                  |
+| Komponente               | Binär         | Windows 7 SP1, Windows Server 2008 R2 SP1 | Windows 8, Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Windows 10 Version 1607, Windows Server 2016 Version 1607 | Windows 10, Version 1703    | Windows 10 1709, Windows Server 2016 Version 1709 | Windows 10 1803, Windows Server 2016 Version 1803 |
+|-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
+| Speicher                 | disk.sys       | 6.1.7601.23403 – KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 – KB3137061 | 6.3.9600.18203 – KB3137061         | -                                                       | -                          | -                                               | -                                               |
+|                         | storport.sys   | 6.1.7601.23403 – KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 – KB3018489 | 6.3.9600.18573 – KB4022726         | 10.0.14393.1358 – KB4022715                             | 10.0.15063.332             | -                                               | -                                               |
+|                         | ntfs.sys       | 6.1.7601.23403 – KB3125574                | 6.2.9200.17623 / 6.2.9200.21743 – KB3121255 | 6.3.9600.18654 – KB4022726         | 10.0.14393.1198 – KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
+|                         | Iologmsg.dll   | 6.1.7601.23403 – KB3125574                | 6.2.9200.16384 – KB2995387                  | -                                  | -                                                       | -                          | -                                               | -                                               |
+|                         | Classpnp.sys   | 6.1.7601.23403 – KB3125574                | 6.2.9200.17061 / 6.2.9200.21180 – KB2995387 | 6.3.9600.18334 – KB3172614         | 10.0.14393.953 – KB4022715                              | -                          | -                                               | -                                               |
+|                         | Volsnap.sys    | 6.1.7601.23403 – KB3125574                | 6.2.9200.17047 / 6.2.9200.21165 – KB2975331 | 6.3.9600.18265 – KB3145384         | -                                                       | 10.0.15063.0               | -                                               | -                                               |
+|                         | partmgr.sys    | 6.1.7601.23403 – KB3125574                | 6.2.9200.16681 – KB2877114                  | 6.3.9600.17401 – KB3000850         | 10.0.14393.953 – KB4022715                              | 10.0.15063.0               | -                                               | -                                               |
+|                         | volmgr.sys     |                                           |                                             |                                    |                                                         | 10.0.15063.0               | -                                               | -                                               |
+|                         | Volmgrx.sys    | 6.1.7601.23403 – KB3125574                | -                                           | -                                  | -                                                       | 10.0.15063.0               | -                                               | -                                               |
+|                         | Msiscsi.sys    | 6.1.7601.23403 – KB3125574                | 6.2.9200.21006 – KB2955163                  | 6.3.9600.18624 – KB4022726         | 10.0.14393.1066 – KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
+|                         | Msdsm.sys      | 6.1.7601.23403 – KB3125574                | 6.2.9200.21474 – KB3046101                  | 6.3.9600.18592 – KB4022726         | -                                                       | -                          | -                                               | -                                               |
+|                         | Mpio.sys       | 6.1.7601.23403 – KB3125574                | 6.2.9200.21190 – KB3046101                  | 6.3.9600.18616 – KB4022726         | 10.0.14393.1198 – KB4022715                             | -                          | -                                               | -                                               |
+|                         | vmstorfl.sys   | 6.3.9600.18907 – KB4072650                | 6.3.9600.18080 – KB3063109                  | 6.3.9600.18907 – KB4072650         | 10.0.14393.2007 – KB4345418                             | 10.0.15063.850 – KB4345419 | 10.0.16299.371 – KB4345420                      | -                                               |
+|                         | Fveapi.dll     | 6.1.7601.23311 – KB3125574                | 6.2.9200.20930 – KB2930244                  | 6.3.9600.18294 – KB3172614         | 10.0.14393.576 – KB4022715                              | -                          | -                                               | -                                               |
+|                         | Fveapibase.dll | 6.1.7601.23403 – KB3125574                | 6.2.9200.20930 – KB2930244                  | 6.3.9600.17415 – KB3172614         | 10.0.14393.206 – KB4022715                              | -                          | -                                               | -                                               |
+| Netzwerk                 | netvsc.sys     | -                                         | -                                           | -                                  | 10.0.14393.1198 – KB4022715                             | 10.0.15063.250 – KB4020001 | -                                               | -                                               |
+|                         | mrxsmb10.sys   | 6.1.7601.23816 – KB4022722                | 6.2.9200.22108 – KB4022724                  | 6.3.9600.18603 – KB4022726         | 10.0.14393.479 – KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
+|                         | mrxsmb20.sys   | 6.1.7601.23816 – KB4022722                | 6.2.9200.21548 – KB4022724                  | 6.3.9600.18586 – KB4022726         | 10.0.14393.953 – KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
+|                         | mrxsmb.sys     | 6.1.7601.23816 – KB4022722                | 6.2.9200.22074 – KB4022724                  | 6.3.9600.18586 – KB4022726         | 10.0.14393.953 – KB4022715                              | 10.0.15063.0               | -                                               | -                                               |
+|                         | tcpip.sys      | 6.1.7601.23761 – KB4022722                | 6.2.9200.22070 – KB4022724                  | 6.3.9600.18478 – KB4022726         | 10.0.14393.1358 – KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
+|                         | http.sys       | 6.1.7601.23403 – KB3125574                | 6.2.9200.17285 – KB3042553                  | 6.3.9600.18574 – KB4022726         | 10.0.14393.251 – KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
+|                         | vmswitch.sys   | 6.1.7601.23727 – KB4022719                | 6.2.9200.22117 – KB4022724                  | 6.3.9600.18654 – KB4022726         | 10.0.14393.1358 – KB4022715                             | 10.0.15063.138             | -                                               | -                                               |
+| Core                    | ntoskrnl.exe   | 6.1.7601.23807 – KB4022719                | 6.2.9200.22170 – KB4022718                  | 6.3.9600.18696 – KB4022726         | 10.0.14393.1358 – KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
+| Remotedesktopdienste | rdpcorets.dll  | 6.2.9200.21506 – KB4022719                | 6.2.9200.22104 – KB4022724                  | 6.3.9600.18619 – KB4022726         | 10.0.14393.1198 – KB4022715                             | 10.0.15063.0               | -                                               | -                                               |
+|                         | termsrv.dll    | 6.1.7601.23403 – KB3125574                | 6.2.9200.17048 – KB2973501                  | 6.3.9600.17415 – KB3000850         | 10.0.14393.0 – KB4022715                                | 10.0.15063.0               | -                                               | -                                               |
+|                         | termdd.sys     | 6.1.7601.23403 – KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
+|                         | win32k.sys     | 6.1.7601.23807 – KB4022719                | 6.2.9200.22168 – KB4022718                  | 6.3.9600.18698 – KB4022726         | 10.0.14393.594 – KB4022715                              | -                          | -                                               | -                                               |
+|                         | rdpdd.dll      | 6.1.7601.23403 – KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
+|                         | rdpwd.sys      | 6.1.7601.23403 – KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
+| Sicherheit                | MS17-010       | KB4012212                                 | KB4012213                                   | KB4012213                          | KB4012606                                               | KB4012606                  | -                                               | -                                               |
+|                         |                |                                           | KB4012216                                   |                                    | KB4013198                                               | KB4013198                  | -                                               | -                                               |
+|                         |                | KB4012215                                 | KB4012214                                   | KB4012216                          | KB4013429                                               | KB4013429                  | -                                               | -                                               |
+|                         |                |                                           | KB4012217                                   |                                    | KB4013429                                               | KB4013429                  | -                                               | -                                               |
+|                         | CVE-2018-0886  | KB4103718               | KB4103730                | KB4103725       | KB4103723                                               | KB4103731                  | KB4103727                                       | KB4103721                                       |
+|                         |                | KB4103712          | KB4103726          | KB4103715|                                                         |                            |                                                 |                                                 |
        
 ### Einsatz von Sysprep <a id="step23"></a>    
 
@@ -393,32 +389,11 @@ Nicht jede Rolle oder Anwendung, die auf einem Windows-basierten Computer instal
 ## <a name="complete-recommended-configurations"></a>Abschließen empfohlener Konfigurationen
 Die folgenden Einstellungen wirken sich nicht auf das Hochladen von VHDs aus. Es wird jedoch dringend empfohlen, diese Einstellungen zu konfigurieren.
 
-* Installieren Sie den [Azure-VM-Agent](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Anschließend können Sie VM-Erweiterungen aktivieren. Die VM-Erweiterungen implementieren die meisten der wichtigen Funktionen, die Sie für Ihre virtuellen Computer möglicherweise verwenden möchten, darunter das Zurücksetzen von Kennwörtern, das Konfigurieren von RDP und viele andere. Weitere Informationen finden Sie unter 
+* Installieren Sie den [Azure-VM-Agent](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Anschließend können Sie VM-Erweiterungen aktivieren. Die VM-Erweiterungen implementieren die meisten der wichtigen Funktionen, die Sie für Ihre virtuellen Computer möglicherweise verwenden möchten, darunter das Zurücksetzen von Kennwörtern, das Konfigurieren von RDP und viele andere. Weitere Informationen finden Sie unter
 
     - [VM Agent and Extensions – Part 1](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-1/) (VM-Agent und -Erweiterungen – Teil 1)
     - [VM Agent and Extensions – Part 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/) (VM-Agent und -Erweiterungen – Teil 2)
-* Das Abbildprotokoll kann bei der Problembehandlung nach Windows-Abstürzen hilfreich sein. Aktivieren Sie die Sammlung von Abbildprotokollen:
-  
-    ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name "CrashDumpEnable" -Value "2" -Type DWord
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name "DumpFile" -Value "%SystemRoot%\MEMORY.DMP"
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name "AutoReboot" -Value 0 -Type DWord
-    New-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps'
-    New-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps' -name "DumpFolder" -Value "c:\CrashDumps"
-    New-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps' -name "DumpCount" -Value 10 -Type DWord
-    New-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps' -name "DumpType" -Value 2 -Type DWord
-    Set-Service -Name WerSvc -StartupType Manual
-    ```
-    Wenn bei einem der Schritte in diesem Artikel eine Fehlermeldung angezeigt wird, bedeutet dies, dass die Registrierungsschlüssel bereits vorhanden sind. Verwenden Sie in diesem Fall stattdessen die folgenden Befehle:
 
-    ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name "CrashDumpEnable" -Value "2" -Type DWord
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name "DumpFile" -Value "%SystemRoot%\MEMORY.DMP"
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps' -name "DumpFolder" -Value "c:\CrashDumps"
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps' -name "DumpCount" -Value 10 -Type DWord
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps' -name "DumpType" -Value 2 -Type DWord
-    Set-Service -Name WerSvc -StartupType Manual
-    ```
 *  Nachdem die VM in Azure erstellt wurde, wird empfohlen, die Auslagerungsdatei auf dem Volume für das temporäre Laufwerk zu platzieren, um die Leistung zu verbessern. Die Einrichtung kann wie folgt durchgeführt werden:
 
     ```PowerShell

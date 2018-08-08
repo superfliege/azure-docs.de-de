@@ -6,20 +6,20 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 08/01/2018
 ms.author: marsma
-ms.openlocfilehash: 3ef91270bceb5865bdbdf9c436e4519595a3dc09
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 63bbd9b5711330207c34ac4aa05aac3a71304653
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582629"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413578"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-build"></a>Automatisieren von Betriebssystem- und Frameworkpatching mit ACR Build
 
 Container bieten neue Virtualisierungsmöglichkeiten und trennen Anwendungs- und Entwicklerabhängigkeiten von Infrastruktur- und Betriebsanforderungen. Ein Aspekt, der allerdings weiterhin behandelt werden muss, ist das Patchen dieser Anwendungsvirtualisierung.
 
-**ACR Build**, eine Suite mit Features in Azure Container Registry, bietet nicht nur eine native Funktion für die Erstellung von Containerimages, sondern automatisiert auch das [Betriebssystem- und Frameworkpatching](#automate-os-and-framework-patching) für Ihre Docker-Container.
+**ACR Build** ist eine Suite von Funktionen in Azure Container Registry. Sie bietet cloudbasierte Containerimageerstellung für Linux, Windows und ARM. Außerdem kann sie [Betriebssystem- und Frameworkpatching](#automate-os-and-framework-patching) für Ihre Docker-Container automatisieren.
 
 [!INCLUDE [container-registry-build-preview-note](../../includes/container-registry-build-preview-note.md)]
 
@@ -33,7 +33,20 @@ Lösen Sie Containerimage-Buildvorgänge automatisch aus, wenn Code in einem Git
 
 Die Lebenszyklusverwaltung beginnt bereits, bevor Entwickler ihre ersten Codezeilen committen. Das [Schnellerstellungsfeature](container-registry-tutorial-quick-build.md) von ACR Build bietet eine integrierte, lokale Entwicklungsumgebung für die innere Schleife, durch die Buildvorgänge an Azure ausgelagert werden. Mit der Schnellerstellung können Sie Ihre automatisierten Builddefinitionen überprüfen, bevor Sie Ihren Code committen.
 
-Der Befehl [az acr build][az-acr-build] der Azure CLI verwendet das vertraute `docker build`-Format. Er akzeptiert einen lokalen Kontext, sendet ihn an den ACR Build-Dienst und pusht das erstellte Image nach dessen Fertigstellung standardmäßig an die entsprechende Registrierung. ACR Build berücksichtigt Ihre georeplizierten Registrierungen und ermöglicht verteilten Entwicklungsteams dadurch die Nutzung der nächstgelegenen replizierten Registrierung. Während der Vorschauphase steht ACR Build in den Regionen „USA, Osten“ und „Europa, Westen“ zur Verfügung.
+Der Befehl [az acr build][az-acr-build] der Azure CLI verwendet das vertraute `docker build`-Format. Er akzeptiert einen **Kontext** (Satz zu erstellender Dateien), sendet ihn an den ACR Build-Dienst und pusht das erstellte Image nach dessen Fertigstellung standardmäßig an die entsprechende Registrierung.
+
+Die folgende Tabelle zeigt einige Beispiele von unterstützten Kontextspeicherorten für ACR Build:
+
+| Kontextspeicherort | BESCHREIBUNG | Beispiel |
+| ---------------- | ----------- | ------- |
+| Lokales Dateisystem | Dateien in einem Verzeichnis auf dem lokalen Dateisystem. | `/home/user/projects/myapp` |
+| GitHub-Masterbranch | Dateien im Masterbranch (oder einem anderen Standardbranch) eines GitHub-Repositorys.  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub-Branch | Bestimmter Branch eines GitHub-Repositorys.| `https://github.com/gituser/myapp-repo.git#mybranch` |
+| GitHub-Pull Request | Pull Request in einem GitHub-Repository. | `https://github.com/gituser/myapp-repo.git#pull/23/head` |
+| GitHub-Unterordner | Dateien in einem Unterordner in einem GitHub-Repository. Das Beispiel zeigt die Kombination der Spezifikation aus Pull Request und Unterordner. | `https://github.com/gituser/myapp-repo.git#pull/24/head:myfolder` |
+| Remotetarball | Dateien in einem komprimierten Archiv auf einem Remotewebserver. | `http://remoteserver/myapp.tar.gz` |
+
+ACR Build berücksichtigt auch Ihre georeplizierten Registrierungen und ermöglicht verteilten Entwicklungsteams dadurch die Nutzung der nächstgelegenen replizierten Registrierung.
 
 ACR Build ist als Grundtyp für den Containerlebenszyklus konzipiert. Sie können ACR Build also beispielsweise in Ihre CI/CD-Lösung integrieren. Wenn Sie [az login][az-login] mit einem [Dienstprinzipal][az-login-service-principal] ausführen, kann Ihre CI/CD-Lösung mithilfe von Befehlen vom Typ [az acr build][az-acr-build] Imagebuildvorgänge initiieren.
 
@@ -49,7 +62,7 @@ Informationen zum Auslösen von Buildvorgängen nach dem Committen von Quellcode
 
 Durch die Möglichkeit zur Erkennung von Basisimageaktualisierungen bietet ACR Build einen echten Mehrwert für Ihre Containererstellungspipeline. Wenn das aktualisierte Basisimage an Ihre Registrierung gepusht wird, kann ACR Build automatisch alle darauf basierenden Anwendungsimages erstellen.
 
-Containerimages lassen sich grob in *Basisimages* und *Anwendungsimages* unterteilen. Basisimages enthalten neben anderen Anpassungen in der Regel das Betriebssystem und die Anwendungsframeworks, auf denen Ihre Anwendung basiert. Diese Basisimages basieren üblicherweise auf öffentlichen Upstreamimages (beispielsweise [Alpine Linux][base-alpine] oder [Node.js][base-node]). Ein Basisimage kann mehreren Anwendungsimages zugrunde liegen.
+Containerimages lassen sich grob in *Basisimages* und *Anwendungsimages* unterteilen. Basisimages enthalten neben anderen Anpassungen in der Regel das Betriebssystem und die Anwendungsframeworks, auf denen Ihre Anwendung basiert. Diese Basisimages basieren in der Regel auf öffentlichen Upstreamimages (z. B. [Alpine Linux ][base-alpine], [Windows][base-windows], [.NET][base-dotnet] oder [Node.js][base-node]). Ein Basisimage kann mehreren Anwendungsimages zugrunde liegen.
 
 Wenn ein Betriebssystem- oder App-Framework-Image durch die zuständige Upstream-Instanz aktualisiert wird (etwa mit einem wichtigen Sicherheitspatch für das Betriebssystem), müssen Sie auch Ihre Basisimages aktualisieren, um die Korrektur zu integrieren. Daraufhin müssen auch alle Anwendungsimages neu erstellt werden, um die Upstreamkorrekturen aus Ihrem Basisimage zu integrieren.
 
@@ -58,7 +71,7 @@ Da Basisimageabhängigkeiten bei der Erstellung eines Containerimages von ACR Bu
 Informationen zum Betriebssystem- und Frameworkpatching finden Sie im dritten ACR Build-Tutorial: [Automatisieren von Buildvorgängen für Images nach der Aktualisierung des Basisimages mit Azure Container Registry Build](container-registry-tutorial-base-image-update.md).
 
 > [!NOTE]
-> In der ersten Vorschauversion müssen sich das Basisimage und die Anwendungsimages in der gleichen Azure-Containerregistrierung befinden, damit nach der Aktualisierung eines Basisimages ein Buildvorgang ausgelöst wird.
+> In der ersten Vorschauversion müssen sich Basisimages und Anwendungsimages in der gleichen Azure-Containerregistrierung oder dem gleichen öffentlichen Docker Hub-Repository befinden, damit nach der Aktualisierung eines Basisimages ein Buildvorgang ausgelöst wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/01/2018
 ms.author: ninarn
-ms.openlocfilehash: 62b5f7470491027dbf5a1c60ee478268e969d1a8
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 1da4e8d94007653a43f187322c1d0e4077e337fa
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113493"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398936"
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>Durchführen der Problembehandlung, Diagnose und Verhinderung von SQL-Verbindungsfehlern und vorübergehenden Fehlern für SQL-Datenbank
 In diesem Artikel wird beschrieben, wie Sie Verbindungsausfälle und vorübergehende Fehler verhindern, behandeln, diagnostizieren und beheben, die bei Ihrer Clientanwendung während der Interaktion mit Azure SQL-Datenbank auftreten. Erfahren Sie, wie Sie die Wiederholungslogik konfigurieren, die Verbindungszeichenfolge erstellen und andere Verbindungseinstellungen anpassen.
@@ -181,17 +181,21 @@ Hintergrundinformationen zur Konfiguration von Ports und IP-Adressen finden Sie 
 
 <a id="d-connection-ado-net-4-5" name="d-connection-ado-net-4-5"></a>
 
-### <a name="connection-adonet-461"></a>Verbindung: ADO.NET 4.6.1
-Wenn Ihr Programm ADO.NET-Klassen wie **System.Data.SqlClient.SqlConnection** für Verbindungen mit SQL-Datenbank verwendet, sollten Sie .NET Framework, Version 4.6.1 oder höher, verwenden.
+### <a name="connection-adonet-462-or-later"></a>Verbindung: ADO.NET 4.6.2 oder höher
+Wenn Ihr Programm ADO.NET-Klassen wie **System.Data.SqlClient.SqlConnection** für Verbindungen mit SQL-Datenbank verwendet, sollten Sie .NET Framework, Version 4.6.2 oder höher, verwenden.
 
-ADO.NET 4.6.1:
+Beginnen mit ADO.NET 4.6.2:
+
+- Der Versuch zum Öffnen der Verbindung sollte für Azure SQL-Datenbanken sofort erneut durchgeführt und damit die Leistung cloudfähiger Apps verbessert werden.
+
+Beginnen mit ADO.NET 4.6.1:
 
 * Die Zuverlässigkeit von SQL-Datenbank lässt sich verbessern, wenn Sie eine Verbindung mit der **SqlConnection.Open**-Methode öffnen. Die **Open**-Methode umfasst jetzt bestmögliche Wiederholungsmechanismen, die bei bestimmten vorübergehenden Fehlern innerhalb des Verbindungstimeouts ausgeführt werden.
 * Das Verbindungspooling wird unterstützt und umfasst einen effizienten Mechanismus, der überprüft, ob das für Ihr Programm bereitgestellte Verbindungsobjekt funktionsfähig ist.
 
 Bei Verwendung eines Verbindungsobjekts aus einem Verbindungspool sollte Ihr Programm die Verbindung vorübergehend schließen, wenn diese nicht umgehend verwendet wird. Eine Verbindung erneut zu öffnen, ist nicht aufwendig, eine neue Verbindung zu erstellen, schon.
 
-Wenn Sie ADO.NET 4.0 oder eine frühere Version verwenden, sollten Sie ein Upgrade auf die aktuelle ADO.NET-Version durchführen. Ab November 2015 können Sie [ADO.NET 4.6.1 herunterladen](http://blogs.msdn.com/b/dotnet/archive/2015/11/30/net-framework-4-6-1-is-now-available.aspx).
+Wenn Sie ADO.NET 4.0 oder eine frühere Version verwenden, sollten Sie ein Upgrade auf die aktuelle ADO.NET-Version durchführen. Ab August 2018 können Sie [ADO.NET 4.6.2 herunterladen](https://blogs.msdn.microsoft.com/dotnet/2018/04/30/announcing-the-net-framework-4-7-2/).
 
 <a id="e-diagnostics-test-utilities-connect" name="e-diagnostics-test-utilities-connect"></a>
 

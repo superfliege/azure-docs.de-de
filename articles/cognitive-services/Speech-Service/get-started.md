@@ -1,21 +1,20 @@
 ---
-title: Kostenloses Testen des Speech-Diensts | Microsoft-Dokumentation
+title: Kostenloses Testen des Speech-Diensts
 description: Erfahren Sie, wie Sie den Speech-Dienst kostenlos testen können.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 3feef04694336d9173b419285a96fcaef543e18f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: ff9a258d42f25ded82545909cdeade119548148e
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35378938"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325206"
 ---
 # <a name="try-the-speech-service-for-free"></a>Kostenloses Testen des Speech-Diensts
 
@@ -130,10 +129,8 @@ Gehen Sie wie folgt vor, um Ihrem Azure-Konto eine Ressource des Speech-Diensts 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Laden Sie ein SDK und einige Codebeispiele herunter, um den Speech-Dienst zu testen.
+Führen Sie einen unserer 10-Minuten-Schnellstarts durch, oder sehen Sie sich unsere SDK-Beispiele an.
 
 > [!div class="nextstepaction"]
-> [Speech SDKs](speech-sdk.md)
-
-> [!div class="nextstepaction"]
-> [Beispielcode](samples.md)
+> [Schnellstart: Erkennen von Sprache in C#](quickstart-csharp-dotnet-windows.md)
+> [Speech SDK-Beispiele](speech-sdk.md#get-the-samples)

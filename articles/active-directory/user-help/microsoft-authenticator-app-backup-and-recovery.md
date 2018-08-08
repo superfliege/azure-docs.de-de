@@ -1,25 +1,22 @@
 ---
-title: Sichern und Wiederherstellen mit der Microsoft Authenticator-App – Azure AD | Microsoft-Dokumentation
+title: Sichern und Wiederherstellen mit der Microsoft Authenticator-App – Azure Active Directory | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Ihre Kontoanmeldeinformationen mithilfe der Microsoft Authenticator-App sichern und wiederherstellen.
-services: multi-factor-authentication
-documentationcenter: ''
+services: active-directory
 author: eross-msft
 manager: mtillman
-ms.service: multi-factor-authentication
+ms.component: user-help
+ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
-ms.custom: end-user
-ms.openlocfilehash: a9c950ecafd2eb5f3aed1bee3707f57be6ec3b62
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 29226f0645a772ffe02e378c9b4df0a87909731a
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39058552"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358119"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Sichern und Wiederherstellen von Kontoanmeldeinformationen mithilfe der Microsoft Authenticator-App
 
@@ -51,12 +48,12 @@ Durch die erforderliche Anmeldung bei beiden Konten erhöht sich die Sicherheit 
 ## <a name="recover-your-account-credentials-on-your-new-device"></a>Wiederherstellen Ihrer Kontoanmeldeinformationen auf einem neuen Gerät
 Sie können die Kontoanmeldeinformationen in Ihrem iCloud-Konto mit dem gleichen Microsoft-Wiederherstellungskonto wiederherstellen, das Sie beim Sichern Ihrer Informationen eingerichtet haben.
 
-**So stellen Sie Ihre Informationen wieder her**
+### <a name="to-recover-your-information"></a>So stellen Sie Ihre Informationen wieder her
 1.  Öffnen Sie auf dem iOS-Gerät die Microsoft Authenticator-App, und wählen Sie unten auf dem Bildschirm die Option **Wiederherstellung starten**.
 
     ![Microsoft Authenticator-App mit hervorgehobener Option „Wiederherstellung starten“](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-begin-recovery.png)
 
-2.  Melden Sie sich bei Ihrem Wiederherstellungskonto mit dem gleichen persönlichen Microsoft-Konto an, das Sie während des Wiederherstellungsprozesses verwendet haben.
+2.  Melden Sie sich bei Ihrem Wiederherstellungskonto mit dem gleichen persönlichen Microsoft-Konto an, das Sie während des Sicherungsprozesses verwendet haben.
 
     Ihre Kontoanmeldeinformationen werden auf dem neuen Gerät wiederhergestellt.
 
@@ -67,7 +64,7 @@ Wenn Sie Pushbenachrichtigungen für persönliche Konten oder Geschäfts-, Schul
 
 Bei persönlichen Microsoft-Konten können Sie Ihre Identität bestätigen, indem Sie Ihr Kennwort zusammen mit einer alternativen E-Mail-Adresse oder Telefonnummer eingeben. Bei Geschäfts-, Schul- oder Unikonten müssen Sie einen QR-Code scannen, den Sie vom Kontoanbieter erhalten.
 
-**So führen Sie einen zusätzlichen Überprüfungsschritt für persönliche Konten aus**
+### <a name="to-provide-additional-verification-for-personal-accounts"></a>So führen Sie einen zusätzlichen Überprüfungsschritt für persönliche Konten aus
 1.  Klicken Sie in der Microsoft Authenticator-App auf dem Bildschirm **Konten** auf den Dropdownpfeil neben dem Konto, das Sie wiederherstellen möchten.
 
     ![Microsoft Authenticator-App mit den verfügbaren Konten und den zugehörigen Dropdownpfeilen](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-arrow.png)
@@ -76,7 +73,7 @@ Bei persönlichen Microsoft-Konten können Sie Ihre Identität bestätigen, inde
 
     ![Microsoft Authenticator-App, die die Eingabe der Anmeldeinformationen ermöglicht](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-sign-in.png)
 
-**So führen Sie einen zusätzlichen Überprüfungsschritt für Geschäfts-, Schul- oder Unikonten aus**
+### <a name="to-provide-additional-verification-for-work-or-school-accounts"></a>So führen Sie einen zusätzlichen Überprüfungsschritt für Geschäfts-, Schul- oder Unikonten aus
 1.  Klicken Sie in der Microsoft Authenticator-App auf dem Bildschirm **Konten** auf den Dropdownpfeil neben dem Konto, das Sie wiederherstellen möchten.
 
     ![Microsoft Authenticator-App mit den verfügbaren Konten und den zugehörigen Dropdownpfeilen](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-additonal-accts.png)
@@ -86,7 +83,7 @@ Bei persönlichen Microsoft-Konten können Sie Ihre Identität bestätigen, inde
     ![Microsoft Authenticator-App, die das Scannen des QR-Codes ermöglicht](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-scan-qr-code.png)
 
     >[!NOTE]
-    >Weitere Informationen dazu, wie Sie einen QR-Code erhalten, finden Sie im Artikel [Erste Schritte mit der Microsoft Authenticator-App](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/end-user/microsoft-authenticator-app-how-to).
+    >Weitere Informationen dazu, wie Sie einen QR-Code erhalten, finden Sie im Abschnitt [„Hinzufügen von Konten zur App“ des Artikels „Erste Schritte mit der Microsoft Authenticator-App“](https://docs.microsoft.com/azure/active-directory/user-help/microsoft-authenticator-app-how-to#add-accounts-to-the-app).
 
 ## <a name="troubleshooting-backup-and-recovery-problems"></a>Beheben von Problemen bei Sicherung und Wiederherstellung
 Es gibt einige Gründe, warum die Sicherung möglicherweise nicht verfügbar ist:

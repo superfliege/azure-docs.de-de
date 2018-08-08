@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 07/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: df936c697f500f5ab98becd1529cd321f9f3f5c4
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 24bda501f88d4f96fb558eeb6b21e437edd6d862
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259118"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325386"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure AD Connect: Nahtloses einmaliges Anmelden – Schnellstart
 
@@ -49,7 +49,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
     
 * **Aktivieren Sie die moderne Authentifizierung**: Sie müssen die [moderne Authentifizierung](https://aka.ms/modernauthga) auf Ihrem Mandanten aktivieren, damit dieses Feature funktioniert.
 
-* **Verwenden Sie die neuesten Versionen der Office 365-Clients**: Zur automatischen Anmeldung bei Office 365-Clients (Outlook, Word, Excel und andere) benötigen Sie Versionen ab 16.0.8730.xxxx.
+* **Verwenden Sie die neuesten Versionen der Office 365-Clients:** Zur automatischen Anmeldung bei Office 365-Clients (Outlook, Word, Excel und andere) benötigen Ihre Benutzer Versionen ab 16.0.8730.xxxx.
 
 ## <a name="step-2-enable-the-feature"></a>Schritt 2: Aktivieren des Features
 
@@ -80,6 +80,9 @@ Befolgen Sie diese Anweisungen, um zu überprüfen, ob die nahtlose SSO ordnungs
 4. Überprüfen Sie, ob **Aktiviert** für **Nahtloses einmaliges Anmelden** angezeigt wird.
 
 ![Azure-Portal: Bereich „Azure AD Connect“](./media/active-directory-aadconnect-sso/sso10.png)
+
+>[!IMPORTANT]
+> Für das nahtlose einmalige Anmelden wird das Computerkonto `AZUREADSSOACC` (das Azure AD darstellt) in jeder AD-Gesamtstruktur in Ihrem lokalen Active Directory (AD) erstellt. Dieses Computerkonto ist erforderlich, damit das Feature funktioniert. Verschieben das `AZUREADSSOACC`-Computerkonto zu einer Organisationseinheit (Organization Unit, OU), in der andere Computerkonten gespeichert sind, um sicherzustellen, dass es auf die gleiche Weise verwaltet und nicht gelöscht wird.
 
 ## <a name="step-3-roll-out-the-feature"></a>Schritt 3: Ausrollen des Features
 
@@ -194,7 +197,7 @@ Das nahtlose einmalige Anmelden funktioniert in Firefox- und Microsoft Edge-Brow
 
 Um das Feature für einen bestimmten Benutzer zu testen, stellen Sie sicher, dass alle folgenden Bedingungen erfüllt werden:
   - Der Benutzer meldet sich auf einem Gerät des Unternehmens an.
-  - Das Gerät ist mit Ihrer Active Directory-Domäne verknüpft.
+  - Das Gerät ist mit Ihrer Active Directory-Domäne verknüpft. Das Gerät muss _nicht_ [In Azure AD eingebunden](../active-directory-azureadjoin-overview.md) sein.
   - Es muss eine direkte Verbindung zwischen dem Gerät und Ihrem Domänencontroller (DC) bestehen, entweder über das Unternehmensnetzwerk (Kabel- oder Funknetzwerk) oder per Remotezugriff, z.B. über eine VPN-Verbindung.
   - Sie haben [das Feature für diesen Benutzer mithilfe von Gruppenrichtlinien ausgerollt](##step-3-roll-out-the-feature).
 

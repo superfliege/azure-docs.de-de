@@ -11,31 +11,41 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 07/27/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: e47e8cbd209ea34317ca9b176a2c4b0fef10a2b2
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 1a8ccc818cafac4867cb533c83f297af61a21836
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37133408"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39309101"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Wechsel des OMS-Portals zu Azure
-Wir danken Ihnen für die Verwendung des OMS-Portals. Dank Ihrer tatkräftigen Unterstützung werden wir weiterhin stark in unsere Überwachungs- und Verwaltungsdienste investieren. Das Feedback von Kunden hat wiederholt gezeigt, dass eine einzige Benutzeroberfläche zum Überwachen und Verwalten sowohl lokaler als auch Azure-Workloads benötigt wird. Wie Sie wahrscheinlich wissen, dient das Azure-Portal als Hub für alle Azure-Dienste und bietet eine umfassende Verwaltungsoberfläche mit Funktionen wie Dashboards für das Anheften von Ressourcen, intelligente Suche nach Ressourcen und Tagging für die Ressourcenverwaltung. Zum Konsolidieren und Optimieren des Überwachungs- und Verwaltungsworkflows haben wir damit begonnen, die Funktionen des OMS-Portals in das Azure-Portal einzubinden. Wir freuen uns, Ihnen mitteilen zu können, dass die meisten Features des OMS-Portals nun Bestandteil des Azure-Portals sind. Tatsächlich sind einige der neuen Features, wie z. B. Traffic Manager, nur im Azure-Portal verfügbar. Es sind nur noch wenige Lücken zu schließen. Insbesondere handelt es sich dabei um fünf Lösungen, die sich derzeit noch in der Übergangsphase zum Azure-Portal befinden. Sofern Sie nicht gerade diese Features verwenden, können Sie alles, was Sie bisher im OMS-Portal erledigt haben, nun mit dem Azure-Portal ausführen – und dazu noch vieles mehr. Wenn Sie das Azure-Portal noch nicht verwenden, empfehlen wir Ihnen, noch heute damit zu beginnen! 
+Das Feedback von Log Analytics-Kunden hat wiederholt gezeigt, dass eine einzige Benutzeroberfläche zum Überwachen und Verwalten von lokalen und Azure-Workloads benötigt wird. Wie Sie wahrscheinlich wissen, dient das Azure-Portal als Hub für alle Azure-Dienste und bietet eine umfassende Verwaltungsoberfläche mit Funktionen wie Dashboards für das Anheften von Ressourcen, intelligente Suche nach Ressourcen und Tagging für die Ressourcenverwaltung. Zum Konsolidieren und Optimieren des Überwachungs- und Verwaltungsworkflows haben wir damit begonnen, die Funktionen des OMS-Portals in das Azure-Portal einzubinden. Wir freuen uns, Ihnen mitteilen zu können, dass die meisten Features des OMS-Portals nun Bestandteil des Azure-Portals sind. Tatsächlich sind einige der neuen Features, wie z.B. Traffic Analytics, nur im Azure-Portal verfügbar. Es sind nur noch wenige Lücken zu schließen, darunter einige Lösungen, die sich derzeit noch in der Übergangsphase zum Azure-Portal befinden. Sofern Sie nicht gerade diese Features verwenden, können Sie alles, was Sie bisher im OMS-Portal erledigt haben, nun mit dem Azure-Portal ausführen – und dazu noch vieles mehr. Wenn Sie das Azure-Portal noch nicht verwenden, empfehlen wir Ihnen, noch heute damit zu beginnen! 
 
-Wir gehen davon aus, dass die verbleibenden Lücken zwischen den beiden Portalen bis August 2018 geschlossen sind. Aufgrund von Kundenfeedback teilen wir den zeitlichen Ablauf für das Lebenszyklusende des OMS-Portals mit. Wir freuen uns auf den Wechsel zum Azure-Portal und gehen davon aus, dass der Übergang reibungslos abläuft. Wir wissen aber, dass Änderungen schwierig sind und Störungen verursachen können. Senden Sie Fragen, Feedback oder Bedenken an LAUpgradeFeedback@microsoft.com. Im weiteren Verlauf dieses Artikels werden die wichtigsten Szenarien, die derzeitigen Lücken sowie die Roadmap für diesen Übergang beschrieben. 
+Wir gehen davon aus, dass die verbleibenden Lücken zwischen den beiden Portalen bis August 2018 geschlossen sind. Aufgrund von Kundenfeedback teilen wir den zeitlichen Ablauf für das Lebenszyklusende des OMS-Portals mit. Wir freuen uns auf den Wechsel zum Azure-Portal und gehen davon aus, dass der Übergang reibungslos abläuft. Wir wissen aber, dass Änderungen schwierig sind und Störungen verursachen können. Senden Sie Fragen, Feedback oder Bedenken an **LAUpgradeFeedback@microsoft.com**. Im weiteren Verlauf dieses Artikels werden die wichtigsten Szenarien, die derzeitigen Lücken sowie die Roadmap für diesen Übergang beschrieben. 
 
+## <a name="progress"></a>Status
+Im Folgenden sind Updates aufgeführt, die seit früheren Versionen dieses Artikels abgeschlossen wurden.
+
+### <a name="july-27"></a>27. Juli
+
+- Die [DNS-Analyse](log-analytics-dns.md) ist jetzt im Azure-Portal voll funktionsfähig.
+- Die [Updateverwaltung](../automation/automation-update-management.md) wurde aktualisiert und ist im Azure-Portal voll funktionsfähig. Weitere Informationen finden Sie unter [Migrieren von OMS-Updatebereitstellungen zu Azure](../automation/migrate-oms-update-deployments.md).
+- [Warnungen](#changes-to-alerts) wurden jetzt vollständig in das Azure-Portal erweitert.
+- [Das Vorschaufeature für benutzerdefinierte Protokolle](log-analytics-data-sources-custom-logs.md) ist jetzt für alle Arbeitsbereiche automatisch aktiviert.
 
 ## <a name="what-will-change"></a>Was ändert sich? 
 Die folgenden Änderungen werden mit der Einstellung des OMS-Portals angekündigt. Die einzelnen Änderungen werden in den nachstehenden Abschnitten ausführlicher erläutert.
 
+- Sie können nur im Azure-Portal neue Arbeitsbereiche erstellt.
 - Die neue Oberfläche für die Warnungsverwaltung ersetzt die Warnungsverwaltungslösung (Alert Management).
 - Die Benutzerzugriffsverwaltung erfolgt im Azure-Portal anhand der rollenbasierten Zugriffssteuerung von Azure.
 - Der Application Insights-Connector ist nicht mehr erforderlich, da die gleiche Funktionalität über arbeitsbereichsübergreifende Abfragen ermöglicht wird.
 - Die mobile OMS-App wird nicht mehr verwendet. 
 - Die NSG-Lösung wird durch verbesserte Funktionalität ersetzt, die über die Traffic Analytics-Lösung bereitsteht.
-
+- Neue Verbindungen von System Center Operations Manager mit Log Analytics erfordern aktualisierte Management Packs.
 
 
 ## <a name="current-known-gaps"></a>Derzeitige bekannte Lücken 
@@ -44,19 +54,24 @@ Es bestehen derzeit einige Funktionalitätslücken, die eine weitere Verwendung 
 - Die folgenden Lösungen sind im Azure-Portal noch nicht voll funktionsfähig. Sie sollten diese Lösungen weiterhin im klassischen Portal verwenden, bis sie aktualisiert sind.
 
     - Windows-Analyselösungen ([Upgradebereitschaft](https://technet.microsoft.com/itpro/windows/deploy/upgrade-readiness-get-started), [Integrität für Geräte](https://docs.microsoft.com/windows/deployment/update/device-health-monitor) und [Updatekonformität](https://technet.microsoft.com/itpro/windows/manage/update-compliance-get-started))
-    - [DNS-Analyse](log-analytics-dns.md) 
     - [Surface Hub](log-analytics-surface-hubs.md)
 
 -  Für den Zugriff auf die Log Analytics-Ressource in Azure muss der Benutzer Zugriff über den [rollenbasierten Zugriff in Azure](#user-access-and-role-migration) erhalten.
-- Zeitpläne für Updates, die mit dem OMS-Portal erstellt wurden, sind in den geplanten Updatebereitstellungen oder dem Updateauftragsverlauf des Dashboards für Updateverwaltung im Azure-Portal möglicherweise nicht enthalten. Diese Lücke soll bis Ende Juni 2018 behoben sein.
-- Die Vorschaufunktion für benutzerdefinierte Protokolle kann nur über das OMS-Portal aktiviert werden. Bis Ende Juni 2018 wird dies automatisch für alle Arbeitsbereiche aktiviert.
- 
+
+
 ## <a name="what-should-i-do-now"></a>Wie soll ich jetzt vorgehen?  
 Lesen Sie [Häufig gestellte Fragen zum Übergang vom OMS-Portal zum Azure-Portal für Log Analytics-Benutzer](../log-analytics/log-analytics-oms-portal-faq.md), um Informationen zum Übergang zum Azure-Portal zu erhalten. Falls die [oben beschriebenen Lücken](#current-known-gaps) auf Ihre Umgebung nicht zutreffen, sollten Sie damit beginnen, das Azure-Portal als primäre Benutzeroberfläche zu verwenden. Senden Sie Feedback, Fragen oder Bedenken an LAUpgradeFeedback@microsoft.com.
+
+## <a name="new-workspaces"></a>Neue Arbeitsbereiche
+Ab dem 29. Juli können Sie keine neuen Arbeitsbereiche mehr über das OMS-Portal erstellen. Folgen Sie den Anweisungen unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](log-analytics-quick-create-workspace.md), um einen neuen Arbeitsbereich im Azure-Portal zu erstellen.
 
 ## <a name="changes-to-alerts"></a>Änderungen bei Warnungen 
 
 ### <a name="alert-extension"></a>Warnungserweiterung  
+
+> [!NOTE]
+> Warnungen wurden jetzt vollständig in das Azure-Portal erweitert. Vorhandene Warnungsregeln können im OMS-Portal angezeigt werden, aber sie können nur im Azure-Portal verwaltet werden.
+
 Warnungen werden derzeit [in das Azure-Portal erweitert](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Sobald dieser Prozess abgeschlossen ist, sind Verwaltungsaktionen für Warnungen nur noch im Azure-Portal verfügbar. Vorhandene Warnungen werden weiterhin im OMS-Portal aufgeführt. Wenn Sie programmgesteuert mithilfe der Log Analytics-REST-API für Warnungen oder der Log Analytics-Warnungsressourcenvorlage auf Warnungen zugreifen, müssen Sie in Ihren API-Aufrufen, Azure Resource Manager-Vorlagen und PowerShell-Befehlen anstelle von Aktionen nun Aktionsgruppen verwenden.
 
 ### <a name="alert-management-solution"></a>Lösung „Alert Management“
@@ -67,7 +82,7 @@ Die von der Warnungsverwaltungslösung (Alert Management) gesammelten Daten (Dat
 ## <a name="user-access-and-role-migration"></a>Benutzerzugriff und Rollenmigration
 Die Zugriffsverwaltung des Azure-Portals ist umfangreicher und leistungsfähiger als die Zugriffsverwaltung im OMS-Portal, doch sind einige Konvertierungen erforderlich. Ausführliche Informationen zur Zugriffsverwaltung in Log Analytics finden Sie unter [Verwalten von Arbeitsbereichen](log-analytics-manage-access.md#manage-accounts-and-users).
 
-Ab dem 25. Juni und im Laufe des Juli wird mit der automatischen Konvertierung der Zugriffssteuerungsberechtigungen des OMS-Portals in Azure-Portalberechtigungen begonnen. Nach Abschluss der Konvertierung werden Benutzer über den Abschnitt „Benutzerverwaltung“ des OMS-Portals an „Zugriffssteuerung (IAM)“ in Azure weitergeleitet. 
+Ab dem 30. Juni wird mit der automatischen Konvertierung der Zugriffssteuerungsberechtigungen des OMS-Portals in Azure-Portalberechtigungen begonnen. Nach Abschluss der Konvertierung werden Benutzer über den Abschnitt „Benutzerverwaltung“ des OMS-Portals an „Zugriffssteuerung (IAM)“ in Azure weitergeleitet. 
 
 Während der Konvertierung prüft das System jede Benutzer- oder Sicherheitsgruppe, die Berechtigungen im OMS-Portal aufweist, und ermittelt, ob dieselbe Stufe bzw. dieselben Berechtigungen in Azure vorliegen. Wenn Berechtigungen fehlen, werden die folgenden Rollen für die jeweiligen Arbeitsbereiche und Lösungen zugewiesen.
 
@@ -106,7 +121,10 @@ Diese Lösung analysiert NSG-Datenflussprotokolle und bietet folgende Einblicke.
 - Sicherheit, einschließlich schädlichen Datenverkehrs, zum Internet offenen Ports, Anwendungen oder VMs, die versuchen, auf das Internet zuzugreifen
 - Kapazitätsauslastung, wodurch Sie Probleme einer Überbereitstellung oder Unterauslastung vermeiden
 
-Sie können weiterhin Diagnoseeinstellungen verwenden, um NSG-Protokolle an Log Analytics zu senden, damit Ihre vorhandenen gespeicherten Suchen, Warnungen und Dashboards weiterhin funktionieren. Kunden, bei denen die Lösung bereits installiert ist, können diese bis auf Weiteres verwenden. Ab dem 20. Juni wird die Netzwerksicherheitsgruppen-Analyse-Lösung aus dem Marketplace entfernt und über die Community als eine [Azure-Schnellstartvorlage](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights) zur Verfügung gestellt.
+Sie können weiterhin Diagnoseeinstellungen verwenden, um NSG-Protokolle an Log Analytics zu senden, damit Ihre vorhandenen gespeicherten Suchen, Warnungen und Dashboards weiterhin funktionieren. Kunden, bei denen die Lösung bereits installiert ist, können diese bis auf Weiteres verwenden. Ab dem 15. August wird die Netzwerksicherheitsgruppen-Analyselösung aus dem Marketplace entfernt und über die Community als eine [Azure-Schnellstartvorlage](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights) zur Verfügung gestellt.
+
+## <a name="system-center-operations-manager"></a>System Center Operations Manager
+Wenn Sie [Ihre Operations Manager-Verwaltungsgruppe mit Log Analytics verbunden haben](log-analytics-om-agents.md), funktioniert sie weiterhin ohne Änderungen. Für neue Verbindungen müssen Sie jedoch die Anweisungen in [Microsoft System Center Operations Manager Management Pack to configure Operations Management Suite](https://blogs.technet.microsoft.com/momteam/2018/07/25/microsoft-system-center-operations-manager-management-pack-to-configure-operations-management-suite/) (Microsoft System Center Operations Manager Management Pack zum Konfigurieren der Operations Management Suite) befolgen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Einen Leitfaden für den Wechsel vom OMS-Portal zum Azure-Portal finden Sie unter [Häufig gestellte Fragen zum Übergang vom OMS-Portal zum Azure-Portal für Log Analytics-Benutzer](log-analytics-oms-portal-faq.md).

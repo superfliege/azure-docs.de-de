@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/25/2018
+ms.date: 07/30/2018
 ms.author: juliako
-ms.openlocfilehash: 1568ea3431f18b7a7a020d34d803f883904e18b4
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 600068113fec0549f3993ac57c1daa93577c6be6
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115229"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399752"
 ---
 # <a name="content-protection-overview"></a>Übersicht über den Inhaltsschutz
 
@@ -30,7 +30,7 @@ Die folgende Abbildung veranschaulicht den Media Services-Workflow zum Schutz vo
 
 &#42; *Die dynamische Verschlüsselung unterstützt AES-128 mit unverschlüsseltem Schlüssel, CBCS und CENC. Details finden Sie [hier](#streaming-protocols-and-encryption-types) in der Unterstützungsmatrix.*
 
-Dieser Artikel erläutert die relevanten Konzepte und Begriffe für den Inhaltsschutz mit Media Services. Der Artikel enthält auch Links zu Artikeln, in denen es um den Schutz von Inhalten geht. 
+Dieser Artikel erläutert die relevanten Konzepte und Begriffe für den Inhaltsschutz mit Media Services. Außerdem enthält er den Abschnitt [Häufig gestellte Fragen](#faq) und Links zu Artikeln, in denen es um den Schutz von Inhalten geht. 
 
 ## <a name="main-components-of-the-content-protection-system"></a>Hauptkomponenten des Inhaltsschutzsystems
 
@@ -125,6 +125,65 @@ Bei einer Richtlinie mit Tokeneinschränkung wird der Inhaltsschlüssel nur an e
 
 Bei der Konfiguration der Richtlinie mit Tokeneinschränkung müssen die Parameter für den primären Verifizierungsschlüssel (primary verification key), den Aussteller (issuer) und die Zielgruppe (audience) angegeben werden. Der primäre Verifizierungsschlüssel enthält den Schlüssel, mit dem das Token signiert wurde. Der Aussteller ist der Sicherheitstokendienst, der das Token ausstellt. „Audience“ (manchmal auch „Scope“) beschreibt den Verwendungszweck des Tokens oder die Ressource, auf die durch das Token Zugriff gewährt wird. Der Schlüsselübermittlungsdienst von Media Services überprüft, ob die Werte im Token mit den Werten in der Vorlage übereinstimmen.
 
+## <a name="a-idfaqfrequently-asked-questions"></a><a id="faq"/>Häufig gestellte Fragen
+
+### <a name="question"></a>Frage
+
+Wie kann ich ein Multi-DRM-System (PlayReady, Widevine und FairPlay) mit Azure Media Services (AMS) v3 implementieren und auch die AMS-Lizenz/den AMS-Schlüsselbereitstellungsdienst nutzen?
+
+### <a name="answer"></a>Antwort
+
+Ein End-to-End-Szenario finden Sie in [diesem Codebeispiel](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs). 
+
+Das Beispiel veranschaulicht die folgenden Schritte:
+
+1. Erstellen und konfigurieren Sie ContentKeyPolicies.
+
+  Das Beispiel enthält Funktionen, die [PlayReady](playready-license-template-overview.md)-, [Widevine](widevine-license-template-overview.md)- und [FairPlay](fairplay-license-overview.md)-Lizenzen konfigurieren.
+
+    ```
+    ContentKeyPolicyPlayReadyConfiguration playReadyConfig = ConfigurePlayReadyLicenseTemplate();
+    ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
+    ContentKeyPolicyFairPlayConfiguration fairPlayConfig = ConfigureFairPlayPolicyOptions();
+    ```
+
+2. Erstellen Sie einen StreamingLocator, der so konfiguriert ist, dass er ein verschlüsseltes Objekt streamen kann. 
+
+  In diesem Beispiel wird **StreamingPolicyName** auf **PredefinedStreamingPolicy.SecureStreaming** festgelegt, wodurch der Umschlag und die CENC-Verschlüsselung unterstützt sowie zwei symmetrische Schlüssel für StreamingLocator festgelegt werden. 
+
+  Wenn Sie auch mit FairPlay verschlüsseln möchten, legen Sie **StreamingPolicyName** auf **PredefinedStreamingPolicy.SecureStreamingWithFairPlay** fest.
+
+3. Erstellen Sie einen Testtoken.
+
+  Die **GetTokenAsync**-Methode zeigt, wie Sie einen Testtoken erstellen.
+  
+4. Erstellen Sie die Streaming-URL.
+
+  Die **GetDASHStreamingUrlAsync**-Methode zeigt, wie Sie die Streaming-URL erstellen. In diesem Fall streamt die URL den **DASH**-Inhalt.
+
+### <a name="question"></a>Frage
+
+Wie und wo kann ich JWT-Token abrufen, um damit dann eine Lizenz oder einen Schlüssel anzufordern?
+
+### <a name="answer"></a>Antwort
+
+1. Für die Produktion benötigen Sie einen Sicherheitstokendienst (STS) (Webdienst), der bei einer HTTPS-Anforderung JWT-Token ausgibt. Zum Testen können Sie den in der Methode **GetTokenAsync** angegebenen Code verwenden, der in [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) definiert ist.
+2. Player müssen nach der Authentifizierung eines Benutzers beim STS ein solches Token anfordern und dieses als Wert des Token zuweisen. Sie können die [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/) verwenden.
+
+* Ein Beispiel für die Ausführung des STS mit einem symmetrischen und einem asymmetrischen Schlüssel finden Sie unter [http://aka.ms/jwt](http://aka.ms/jwt). 
+* Ein Beispiel für einen Player, der auf dem Azure Media Player basiert und ein solches JWT-Token verwendet, finden Sie unter [http://aka.ms/amtest](http://aka.ms/amtest) (erweitern Sie den Link „player_settings“, um die Tokeneingabe anzusehen).
+
+### <a name="question"></a>Frage
+
+Wie autorisiere ich Anforderungen zum Streamen von Videos mit der AES-Verschlüsselung?
+
+### <a name="answer"></a>Antwort
+
+Der richtige Ansatz ist die Nutzung von STS:
+
+Fügen Sie in STS je nach Benutzerprofil unterschiedliche Ansprüche hinzu (z. B. „Premiumbenutzer“, „Standardbenutzer“, „Benutzer der kostenlosen Testversion). Bei unterschiedlichen Ansprüchen in einem JWT kann der Benutzer unterschiedliche Inhalte sehen. Selbstverständlich hat ContentKeyPolicyRestriction für unterschiedliche Inhalte/Objekte die entsprechenden RequiredClaims.
+
+Verwenden Sie die Azure Media Services-APIs für die Konfiguration von Lizenzen/Schlüsselbereitstellungen und die Verschlüsselung Ihrer Objekte (siehe [dieses Beispiel](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

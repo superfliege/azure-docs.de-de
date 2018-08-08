@@ -1,27 +1,26 @@
 ---
-title: Verwenden von Sprachsynthese mit Spracherkennungsdiensten | Microsoft-Dokumentation
+title: Verwenden von Sprachsynthese mit Spracherkennungsdiensten
 description: Erfahren Sie, wie Sie Text-to-Speech im Spracherkennungsdienst verwenden.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 84b577cd00d333717a7a5ad1f66182605429f9f1
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 21157af9ad6361234ffa9b927da64baab505f624
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213332"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281513"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Verwenden von „Sprachsynthese“ im Spracherkennungsdienst
 
 Der Spracherkennungsdienst bietet Sprachsynthese-Funktionalität über eine einfache HTTP-Anforderung. Sie senden den zu sprechenden Text per POST-Anweisung an den entsprechenden Endpunkt, und der Dienst gibt eine Audiodatei (`.wav`) mit synthetisierter Sprache zurück. Ihre Anwendung kann dieses Audio dann beliebig verwenden.
 
-Der Textkörper der POST-Anforderung für Sprachsynthese kann einfacher Text (ASCII oder UTF8) oder ein [SSML](speech-synthesis-markup.md)-Dokument sein. Nur-Text-Anforderungen werden mit einer Standardstimme gesprochen. In den meisten Fällen ist es ratsam, einen SSML-Textkörper zu verwenden. Die HTTP-Anforderung muss ein [Autorisierungstoken](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#authentication) enthalten. 
+Der Textkörper der POST-Anforderung für Sprachsynthese kann einfacher Text (ASCII oder UTF8) oder ein [SSML](speech-synthesis-markup.md)-Dokument sein. Nur-Text-Anforderungen werden mit einer Standardstimme gesprochen. In den meisten Fällen ist es ratsam, einen SSML-Textkörper zu verwenden. Die HTTP-Anforderung muss ein [Autorisierungstoken](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#authentication) enthalten. 
 
 Hier finden Sie die regionalen Endpunkte für Sprachsynthese. Verwenden Sie den entsprechenden Endpunkt für Ihr Abonnement.
 

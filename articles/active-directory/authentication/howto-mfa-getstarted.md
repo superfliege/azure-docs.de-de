@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 0afe5ba21fe17d8aec4d72c30086c6840f9e3c8e
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: d248f8bc5708dfe8554f513d4f96a6c1bee7605e
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161569"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412411"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Bereitstellen von cloudbasierter Azure Multi-Factor Authentication
 
@@ -40,7 +40,7 @@ Aktiviert durch Ändern des Benutzerstatus – Dies ist die herkömmliche Method
 
 ## <a name="choose-authentication-methods"></a>Auswählen der Authentifizierungsmethoden
 
-Aktivieren Sie basierend auf den Anforderungen Ihrer Organisation mindestens eine Authentifizierungsmethode für Ihre Benutzer. Wir denken, dass die Microsoft Authenticator-App die beste Benutzererfahrung bietet, wenn sie für Benutzer aktiviert ist. Wenn Sie wissen möchten, welche Methoden verfügbar sind und wie diese festgelegt werden, lesen Sie den Artikel [Was sind Authentifizierungsmethoden]](concept-authentication-methods.md).
+Aktivieren Sie basierend auf den Anforderungen Ihrer Organisation mindestens eine Authentifizierungsmethode für Ihre Benutzer. Wir denken, dass die Microsoft Authenticator-App die beste Benutzererfahrung bietet, wenn sie für Benutzer aktiviert ist. Wenn Sie wissen möchten, welche Methoden verfügbar sind und wie diese festgelegt werden, lesen Sie den Artikel [Was sind Authentifizierungsmethoden](concept-authentication-methods.md).
 
 ## <a name="get-users-to-enroll"></a>Benutzer registrieren
 
@@ -63,7 +63,7 @@ Bevor Sie die Azure Multi-Factor Authentication aktivieren, muss Ihre Organisati
 
    ![Konfigurieren von Überprüfungsmethoden, in der Registerkarte „Diensteinstellung“ von Multi-Factor Authentication](media/howto-mfa-getstarted/mfa-servicesettings-verificationoptions.png)
 
-4. Klicken Sie auf **Speichern**.
+4. Klicken Sie im Menü „Einstellungen“ auf **Speichern**
 5. Schließen Sie die Registerkarte **Diensteinstellungen**.
 
 ### <a name="create-conditional-access-policy"></a>Erstellen der Richtlinie für den bedingten Zugriff

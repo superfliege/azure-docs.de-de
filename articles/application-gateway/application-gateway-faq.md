@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 6/20/2018
 ms.author: victorh
-ms.openlocfilehash: 989ecf209dc5093b5e4c73f01f9e382fc1ad21e8
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: b8b5b1da902a854dacea7e3019e3fa1116f04212
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295527"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399142"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Häufig gestellte Fragen zu Azure Application Gateway
 
@@ -92,6 +92,8 @@ Wenn Application Gateway beispielsweise auf drei Instanzen festgelegt und keine 
 **F: Werden X-Forwarded-For-Header von Application Gateway unterstützt?**
 
 Ja, Application Gateway fügt X-Forwarded-For-, X-Forwarded-Proto- und X-Forwarded-Port-Header in die Anforderung ein, die an das Back-End weitergeleitet wird. Das Format für den X-Forwarded-For-Header ist eine durch Trennzeichen getrennte Liste der Form „IP:Port“. Die gültigen Werte für X-Forwarded-Proto sind „http“ und „https“. X-Forwarded-Port gibt den Port an, an dem die Anforderung Application Gateway erreicht hat.
+
+Application Gateway fügt auch den X-Original-Hostheader ein, der den ursprünglichen Hostheader enthält, mit dem die Anforderung eingegangen ist. Dieser Header ist nützlich in Szenarien wie der Azure-Websiteintegration. Dabei wird der eingehende Hostheader modifiziert, bevor der Datenverkehr zum Back-End weitergeleitet wird.
 
 **F: Wie lange dauert das Bereitstellen eines Application Gateway? Funktioniert das Application Gateway nach einer Aktualisierung immer noch?**
 
@@ -204,7 +206,7 @@ Die folgende Tabelle zeigt einen durchschnittlichen Leistungsdurchsatz für jede
 | Durchschnittliche Größe der Back-End-Seitenantwort | Klein | Mittel | Groß |
 | --- | --- | --- | --- |
 | 6 KB |7,5 MBit/s |13 MBit/s |50 MBit/s |
-| 100 KB |35 MBit/s |100 MBit/s |200 MBit/s |
+| 100 KB |35 MBit/s |100 MBit/s |200 MBit/s |
 
 > [!NOTE]
 > Hierbei handelt es sich um ungefähre Werte für den Durchsatz des Anwendungsgateways. Der tatsächliche Durchsatz ist abhängig von verschiedenen Umgebungsdetails wie etwa durchschnittliche Seitengröße, Speicherort der Back-End-Instanzen und Verarbeitungszeit für die Seitenbereitstellung. Für genaue Leistungsangaben sollten Sie Ihre eigenen Tests ausführen. Diese Werte dienen nur als Leitfaden für die Kapazitätsplanung.

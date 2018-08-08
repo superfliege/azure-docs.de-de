@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: cf4579705e5910f62ca07223cb16405140926119
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 66b4f63e75773aa0c1857dfcc19e22b48a0c3537
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859199"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343155"
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatische Onlinesicherung und -wiederherstellung mit Azure Cosmos DB
 Azure Cosmos DB erstellt in regelmäßigen Abständen automatisch Sicherungen aller Daten. Die automatischen Sicherungen erfolgen ohne Beeinträchtigung der Leistung oder Verfügbarkeit des Betriebs Ihrer Datenbanken. Alle Sicherungskopien werden in einem anderen Speicherdienst getrennt gespeichert, und diese Sicherungen werden zum besseren Schutz vor regionalen Ausfällen global repliziert. Die automatischen Sicherungen sind für den Fall vorgesehen, dass Sie Ihren Cosmos DB-Container versehentlich löschen und später eine Daten- oder Notfallwiederherstellungslösung benötigen sollten.  
@@ -50,7 +50,7 @@ Wie oben beschrieben, erstellt Azure Cosmos DB alle vier Stunden Momentaufnahmen
 Wenn Sie bei Verwendung der SQL-API eigene Momentaufnahmen beibehalten möchten, können Sie die Option zum Export in eine JSON-Datei im [Datenmigrationstool](import-data.md#export-to-json-file) von Azure Cosmos DB verwenden, um zusätzliche Sicherungen zu planen.
 
 > [!NOTE]
-> Beachten Sie bei der Bereitstellung des Durchsatzes für mehrere Container auf Datenbankebene, dass die Wiederherstellung für das gesamte Datenbankkonto erfolgt. Darüber hinaus müssen Sie sich unbedingt innerhalb von acht Stunden an das Supportteam wenden, wenn Sie diese neue Funktion verwenden und versehentlich Ihren Container (Sammlung/Tabelle/Graph) gelöscht haben. 
+> Beachten Sie bei der Bereitstellung des Durchsatzes für mehrere Container auf Datenbankebene, dass die Wiederherstellung für das gesamte Datenbankkonto erfolgt. Darüber hinaus müssen Sie sich unbedingt innerhalb von acht Stunden an das Supportteam wenden, wenn Sie Ihren Container versehentlich gelöscht haben. Daten können nicht wiederhergestellt werden, wenn Sie sich nicht innerhalb von acht Stunden an das Supportteam wenden. 
 
 
 ## <a name="restoring-a-database-from-an-online-backup"></a>Wiederherstellen einer Datenbank von einer Onlinesicherung

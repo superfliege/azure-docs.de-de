@@ -13,15 +13,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/19/2018
+ms.date: 7/30/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 3d19b42e339e9776d0fdbbf7cfcfba07d69549ad
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 430490859e6d8a58a54eea267e0c3f16991f74c8
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249079"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364375"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Sichern von SQL Server-Datenbanken in Azure
 
@@ -258,7 +258,7 @@ Wenn Sie das Tool **DBs ermitteln** verwenden, führt Azure Backup die folgenden
 
     ![Auswählen der VM und der Datenbank](./media/backup-azure-sql-database/registration-errors.png)
 
-## <a name="configure-backup-for-sql-server-databases"></a>Konfigurieren der Sicherung für SQL Server-Datenbanken 
+## <a name="configure-backup-for-sql-server-databases"></a>Konfigurieren der Sicherung für SQL Server-Datenbanken
 
 Azure Backup bietet Verwaltungsdienste zum Schutz Ihrer SQL Server-Datenbanken und zur Verwaltung von Sicherungsaufträgen. Die Verwaltungs- und Überwachungsfunktionen hängen von Ihrem Recovery Services-Tresor ab. 
 
@@ -317,6 +317,9 @@ So konfigurieren Sie den Schutz für Ihre SQL-Datenbank
 
 8. Wählen Sie im Dropdown-Listenfeld **Sicherungsrichtlinie auswählen** eine Sicherungsrichtlinie aus, und wählen Sie dann **OK** aus. Weitere Informationen zum Erstellen einer Sicherungsrichtlinie finden Sie unter [Definieren einer Sicherungsrichtlinie](backup-azure-sql-database.md#define-a-backup-policy).
 
+   > [!NOTE]
+   > Sicherungsrichtlinien können während der Vorschauphase nicht bearbeitet werden. Wenn die in der Liste verfügbaren Richtlinien für Sie nicht ausreichen, müssen Sie selbst eine Richtlinie erstellen. Informationen zum Erstellen einer neuen Sicherungsrichtlinie finden Sie im Abschnitt [Definieren einer Sicherungsrichtlinie](backup-azure-sql-database.md#define-a-backup-policy).
+
     ![Auswählen einer Sicherungsrichtlinie aus der Liste](./media/backup-azure-sql-database/select-backup-policy-steptwo.png)
 
     Im Menü **Sicherungsrichtlinie** haben Sie im Dropdown-Listenfeld **Sicherungsrichtlinie auswählen** folgende Optionen: 
@@ -345,21 +348,28 @@ Eine Sicherungsrichtlinie definiert eine Matrix dafür, wann Sicherungen erstell
 * Differenzielle Sicherung: Ausgangspunkt ist die zuletzt durchgeführte vollständige Datensicherung. Bei einer differenziellen Sicherung werden nur die Daten erfasst, die seit der vollständigen Sicherung geändert wurden. Pro Tag kann höchstens eine differenzielle Sicherung ausgelöst werden. Sie können eine vollständige Sicherung und eine differenzielle Sicherung nicht am gleichen Tag konfigurieren.
 * Transaktionsprotokollsicherung: Eine Point-in-Time-Wiederherstellung bis zu einer bestimmten Sekunde ist möglich. Transaktionsprotokollsicherungen können höchstens alle 15 Minuten durchgeführt werden.
 
-Die Richtlinie wird auf Ebene des Recovery Services-Tresors erstellt. Mehrere Tresore können die gleiche Sicherungsrichtlinie verwenden. Allerdings müssen Sie die Sicherungsrichtlinie auf jeden Tresor anwenden. Wenn Sie eine Sicherungsrichtlinie erstellen, entspricht die tägliche vollständige Sicherung der Standardeinstellung. Sie können eine differenzielle Sicherung nur hinzufügen, wenn Sie für die vollständige Sicherung festlegen, dass diese wöchentlich erfolgt. Die folgende Vorgehensweise erklärt, wie Sie eine Sicherungsrichtlinie für eine SQL Server-Instanz in einem virtuellen Azure-Computer erstellen.
+Die Richtlinie wird auf Ebene des Recovery Services-Tresors erstellt. Mehrere Tresore können die gleiche Sicherungsrichtlinie verwenden. Allerdings müssen Sie die Sicherungsrichtlinie auf jeden Tresor anwenden. Wenn Sie eine Sicherungsrichtlinie erstellen, entspricht die tägliche vollständige Sicherung der Standardeinstellung. Sie können eine differenzielle Sicherung nur hinzufügen, wenn Sie für die vollständige Sicherung festlegen, dass diese wöchentlich erfolgt. Die folgende Vorgehensweise erklärt, wie Sie eine Sicherungsrichtlinie für eine SQL Server-Instanz in einem virtuellen Azure-Computer erstellen. 
 
+> [!NOTE]
+> In der Vorschauphase können Sie keine Sicherungsrichtlinien bearbeiten. Stattdessen müssen Sie eine neue Richtlinie mit den gewünschten Details erstellen.  
+ 
 So erstellen Sie eine Sicherungsrichtlinie
 
-1. Wählen Sie im Menü **Sicherungsrichtlinie** im Dropdown-Listenfeld **Sicherungsrichtlinie auswählen** **Neu erstellen** aus.
+1. Klicken Sie im Recovery Services-Tresor, der die SQL-Datenbank schützt, auf **Sicherungsrichtlinien** und dann auf **Hinzufügen**. 
 
-   ![Erstellen einer neuen Sicherungsrichtlinie](./media/backup-azure-sql-database/create-new-backup-policy.png)
+   ![Öffnen des Dialogfelds zum Erstellen einer neuen Sicherungsrichtlinie](./media/backup-azure-sql-database/new-policy-workflow.png)
 
-    Im Menü **Sicherungsrichtlinie** werden die erforderlichen Felder für jede neue SQL Server-Sicherungsrichtlinie angezeigt.
+   Das Menü **Hinzufügen** wird angezeigt.
 
-   ![Neue Felder für Sicherungsrichtlinien](./media/backup-azure-sql-database/blank-new-policy.png)
+2. Klicken Sie im Menü **Hinzufügen** auf **SQL Server in Azure-VM**.
 
-2. Geben Sie im Feld **Richtlinienname** einen Namen ein.
+   ![Auswählen eines Richtlinientyps für die neue Sicherungsrichtlinie](./media/backup-azure-sql-database/policy-type-details.png)
 
-3. Eine vollständige Sicherung ist obligatorisch. Übernehmen Sie die Standardwerte für die vollständige Sicherung, oder wählen Sie **Vollständige Sicherung** aus, um die Richtlinie zu bearbeiten.
+   Beim Auswählen von „SQL Server in Azure-VM“ wird der Richtlinientyp definiert, und das Menü „Sicherungsrichtlinie“ wird geöffnet. Im Menü **Sicherungsrichtlinie** werden die erforderlichen Felder für jede neue SQL Server-Sicherungsrichtlinie angezeigt.
+
+3. Geben Sie unter **Richtlinienname** einen Namen für die neue Richtlinie ein.
+
+4. Eine vollständige Sicherung ist obligatorisch: Sie können die Option **Vollständige Sicherung** nicht deaktivieren. Klicken Sie auf **Vollständige Sicherung**, um die Richtlinie anzuzeigen und zu bearbeiten. Auch wenn Sie die Sicherungsrichtlinie nicht ändern, sollten Sie die Richtliniendetails anzeigen.
 
     ![Neue Felder für Sicherungsrichtlinien](./media/backup-azure-sql-database/full-backup-policy.png)
 
@@ -371,13 +381,13 @@ So erstellen Sie eine Sicherungsrichtlinie
 
    ![Einstellung für das wöchentliche Intervall](./media/backup-azure-sql-database/weekly-interval.png)
 
-4. Standardmäßig sind alle Optionen für die **Beibehaltungsdauer** aktiviert: „Täglich“, „Wöchentlich“, „Monatlich“ und „Jährlich“. Deaktivieren Sie die Beibehaltungsdauer, die Sie nicht benötigen. Legen Sie die zu verwendenden Intervalle fest. Wählen Sie im Menü **Richtlinie für vollständige Sicherung** **OK** aus, um die Einstellungen zu übernehmen.
+5. Standardmäßig sind alle Optionen für die **Beibehaltungsdauer** aktiviert: „Täglich“, „Wöchentlich“, „Monatlich“ und „Jährlich“. Deaktivieren Sie die Beibehaltungsdauer, die Sie nicht benötigen. Legen Sie die zu verwendenden Intervalle fest. Wählen Sie im Menü **Richtlinie für vollständige Sicherung** **OK** aus, um die Einstellungen zu übernehmen.
 
    ![Intervalleinstellungen für Beibehaltungsdauer](./media/backup-azure-sql-database/retention-range-interval.png)
 
     Wiederherstellungspunkte werden unter Berücksichtigung ihrer Beibehaltungsdauer mit einer Markierung versehen. Wenn Sie beispielsweise eine tägliche vollständige Sicherung wählen, wird pro Tag nur eine vollständige Sicherung ausgelöst. Die Sicherung für einen bestimmten Tag wird auf Grundlage der wöchentlichen Beibehaltungsdauer und Ihrer wöchentlichen Aufbewahrungseinstellung markiert und beibehalten. Mit der monatlichen und jährlichen Beibehaltungsdauer verhält es sich ähnlich.
 
-5. Um eine Richtlinie für eine differenzielle Sicherung hinzuzufügen, wählen Sie **Differenzielle Sicherung** aus. Das Menü **Richtlinie für differenzielle Sicherung** wird geöffnet. 
+6. Um eine Richtlinie für eine differenzielle Sicherung hinzuzufügen, wählen Sie **Differenzielle Sicherung** aus. Das Menü **Richtlinie für differenzielle Sicherung** wird geöffnet. 
 
    ![Öffnen des Menüs „Richtlinie für differenzielle Sicherung“](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
 
@@ -391,30 +401,32 @@ So erstellen Sie eine Sicherungsrichtlinie
 
     Wählen Sie **OK** aus, um die Richtlinie zu speichern und um zum Hauptmenü **Sicherungsrichtlinie** zurückzukehren.
 
-6. Um eine Richtlinie für eine Transaktionsprotokollsicherung hinzuzufügen, wählen Sie **Protokollsicherung** aus. Das Menü **Protokollsicherung** wird geöffnet.
+7. Um eine Richtlinie für eine Transaktionsprotokollsicherung hinzuzufügen, wählen Sie **Protokollsicherung** aus. Das Menü **Protokollsicherung** wird geöffnet.
 
     Wählen Sie im Menü **Protokollsicherung** **Aktivieren** aus, und legen Sie die Einstellungen für Häufigkeit und Aufbewahrung fest. Transaktionsprotokollsicherungen können alle 15 Minuten erfolgen und bis zu 35 Tage aufbewahrt werden. Wählen Sie **OK** aus, um die Richtlinie zu speichern und zum Hauptmenü **Sicherungsrichtlinie** zurückzukehren.
 
    ![Bearbeiten der Richtlinie für die Transaktionsprotokollsicherung](./media/backup-azure-sql-database/log-backup-policy-editor.png)
 
-7. Legen Sie im Menü **Sicherungsrichtlinie** fest, ob die **SQL-Sicherungskomprimierung** aktiviert wird. Die Komprimierung ist standardmäßig deaktiviert.
+8. Legen Sie im Menü **Sicherungsrichtlinie** fest, ob die **SQL-Sicherungskomprimierung** aktiviert wird. Die Komprimierung ist standardmäßig deaktiviert.
 
     Auf dem Back-End verwendet Azure Backup die native SQL-Sicherungskomprimierung.
 
-8. Nachdem Sie die Sicherungsrichtlinie bearbeitet haben, wählen Sie **OK** aus. 
+9. Nachdem Sie die Sicherungsrichtlinie bearbeitet haben, wählen Sie **OK** aus. 
 
    ![Akzeptieren der neuen Sicherungsrichtlinie](./media/backup-azure-sql-database/backup-policy-click-ok.png)
 
 ## <a name="restore-a-sql-database"></a>Wiederherstellen einer SQL-Datenbank-Instanz
-
 Azure Backup bietet Funktionen zur Wiederherstellung einzelner Datenbanken zu einem bestimmten Datum oder einer bestimmten Uhrzeit, (bis zu einer bestimmten Sekunde) unter Verwendung von Transaktionsprotokollsicherungen. Basierend auf Ihren Wiederherstellungszeiten ermittelt Azure Backup automatisch die geeigneten vollständigen Sicherungen, differenziellen Sicherungen und die Kette von Protokollsicherungen, die für die Wiederherstellung Ihrer Daten benötigt werden.
 
 Außerdem können Sie eine bestimmte vollständige oder differenzielle Sicherung auswählen, um sie auf einen bestimmten Wiederherstellungspunkt und nicht auf einen bestimmten Zeitpunkt anzuwenden.
- > [!Note]
- > Bevor Sie eine Wiederherstellung der Datenbank „master“ auslösen, starten Sie die SQL Server-Instanz im Einzelbenutzermodus mit der Startoption `-m AzureWorkloadBackup`. Das Argument für die Option `-m` ist der Name des Clients. Nur dieser Client kann die Verbindung öffnen. Beenden Sie für alle Systemdatenbanken („model“, „master“, „msdb“) vor dem Auslösen der Wiederherstellung den SQL Agent-Dienst. Schließen Sie alle Anwendungen, die ggf. versuchen, eine Verbindung mit einer dieser Datenbanken zu belegen.
->
 
-So stellen Sie eine Datenbank wieder her:
+### <a name="pre-requisite-before-triggering-a-restore"></a>Voraussetzungen vor dem Auslösen einer Wiederherstellung
+
+1. Sie können die Datenbank auf einer SQL Server-Instanz in derselben Azure-Region wiederherstellen. Der Zielserver muss bei demselben Recovery Services-Tresor wie die Quelle registriert werden.  
+2. Um eine mit TDE-verschlüsselte Datenbank auf einer anderen SQL Server-Instanz wiederherzustellen, stellen Sie zuerst das Zertifikat auf den Zielserver wieder her, indem Sie die [hier](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server?view=sql-server-2017) dokumentierten Schritte durchführen.
+3. Bevor Sie eine Wiederherstellung der Datenbank „master“ auslösen, starten Sie die SQL Server-Instanz im Einzelbenutzermodus mit der Startoption `-m AzureWorkloadBackup`. Das Argument für die Option `-m` ist der Name des Clients. Nur dieser Client kann die Verbindung öffnen. Beenden Sie für alle Systemdatenbanken („model“, „master“, „msdb“) vor dem Auslösen der Wiederherstellung den SQL Agent-Dienst. Schließen Sie alle Anwendungen, die ggf. versuchen, eine Verbindung mit einer dieser Datenbanken zu belegen.
+
+### <a name="steps-to-restore-a-database"></a>Schritte zum Wiederherstellen einer Datenbank:
 
 1. Öffnen Sie den Recovery Services-Tresor, der bei der SQL-VM registriert ist.
 

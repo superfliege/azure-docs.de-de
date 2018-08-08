@@ -1,5 +1,5 @@
 ---
-title: SAP HANA-Vorgänge in Azure | Microsoft-Dokumentation
+title: SAP HANA-Infrastrukturkonfigurationen und -Vorgänge in Azure | Microsoft-Dokumentation
 description: Betriebshandbuch für SAP HANA-Systeme, die auf virtuellen Azure-Computern bereitgestellt werden.
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/24/2018
+ms.date: 07/27/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2480ad464f2fc716cf68672387a189aeb92f5737
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 59db39e4d8cc68f8c7b63b347980044f06b4522a
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918831"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344408"
 ---
-# <a name="sap-hana-on-azure-operations-guide"></a>SAP HANA in Azure-Vorgängen – Anleitung
-Dieses Dokument enthält Anleitungen für den Betrieb von SAP HANA-Systemen, die auf nativen virtuellen Azure-Computern bereitgestellt werden. Dieses Dokument ist nicht als Ersatz für die SAP-Standarddokumentation gedacht, zu der folgende Inhalte gehören:
+# <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA-Infrastrukturkonfigurationen und -Vorgänge in Azure
+Dieses Dokument enthält Anleitungen für die Konfiguration der Azure-Infrastruktur und SAP HANA-Betriebssystemen, die auf nativen virtuellen Azure-Computern bereitgestellt werden. Das Dokument enthält auch Informationen zur Konfiguration für die horizontale SAP HANA-Skalierung für die M128s-VM-SKU. Dieses Dokument ist nicht als Ersatz für die SAP-Standarddokumentation gedacht, zu der folgende Inhalte gehören:
 
 - [SAP-Administratorhandbuch](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/330e5550b09d4f0f8b6cceb14a64cd22.html)
 - [SAP-Installationshandbücher](https://service.sap.com/instguides)
@@ -57,7 +57,7 @@ Site-to-Site-Konnektivität über VPN oder ExpressRoute ist für Produktionsszen
 Die Arten von virtuellen Azure-Computern, die für Produktionsszenarien verwendet werden können, sind in der [SAP-Dokumentation für IAAS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html) aufgeführt. Für Nicht-Produktionsszenarien ist eine größere Auswahl von virtuellen Azure-Computern verfügbar.
 
 >[!NOTE]
-> Für Nicht-Produktionsszenarien sollten Sie die Arten von virtuellen Computern verwenden, die im [SAP-Hinweis 1928533](https://launchpad.support.sap.com/#/notes/1928533) aufgeführt sind. Überprüfen Sie zur Verwendung von Azure-VMs für Produktionsszenarien die von SAP veröffentlichte [Liste zertifizierter IaaS-Plattformen ](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html) auf für SAP HANA zertifizierte VMs.
+> Für Nicht-Produktionsszenarien sollten Sie die Arten von virtuellen Computern verwenden, die im [SAP-Hinweis 1928533](https://launchpad.support.sap.com/#/notes/1928533) aufgeführt sind. Überprüfen Sie zur Verwendung von Azure-VMs für Produktionsszenarien die von SAP veröffentlichte [Liste zertifizierter IaaS-Plattformen ](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) auf für SAP HANA zertifizierte VMs.
 
 Stellen Sie die virtuellen Computer in Azure bereit, indem Sie Folgendes verwenden:
 
@@ -79,16 +79,16 @@ Eine Liste der Speichertypen und deren Vereinbarungen zum Servicelevel für IOPS
 
 ### <a name="configuring-the-storage-for-azure-virtual-machines"></a>Konfigurieren des Speichers für virtuelle Computer in Azure
 
-Solange Sie SAP HANA-Appliances für Ihr lokales System gekauft haben, brauchten Sie sich über die E/A-Subsysteme und ihre Funktionen keine Gedanken zu machen, da der Anbieter der Appliance sicherzustellen hatte, dass die minimalen Speicheranforderungen für SAP HANA erfüllt wurden. Wenn Sie die Azure-Infrastruktur selbst erstellen, sollten Sie auch einige dieser Anforderungen kennen, um die Konfigurationsanforderungen zu verstehen, die in den folgenden Abschnitten empfohlen werden. Dies gilt auch, falls Sie die virtuellen Computer konfigurieren, auf denen Sie SAP HANA ausführen möchten. Einige der geforderten Merkmale ergeben sich durch folgende Notwendigkeiten:
+Bislang mussten Sie sich beim Kauf von SAP HANA-Geräten für lokale Umgebungen niemals Gedanken um die E/A-Subsysteme und die zugehörigen Funktionen kümmern. Denn der Hersteller des Geräts musste sicherstellen, dass die Mindestspeicheranforderungen für SAP HANA erfüllt sind. Wenn Sie die Azure-Infrastruktur selbst erstellen, sollten Sie sich auch über einige dieser Anforderungen bewusst sein. Zudem sollten Sie die Konfigurationsanforderungen kennen, die in den folgenden Abschnitten vorgestellt werden. Dies gilt auch, falls Sie die virtuellen Computer konfigurieren, auf denen Sie SAP HANA ausführen möchten. Einige der geforderten Merkmale ergeben sich durch folgende Notwendigkeiten:
 
-- Aktivieren des Lese-/Schreibvolumes in „/hana/log“ mit mindestens 250 MB/s bei E/A-Größen von 1 MB
-- Aktivieren der Leseaktivität mit mindestens 400 MB/s in „/hana/data“ bei E/A-Größen von 16 MB und 64 MB
-- Aktivieren der Schreibaktivität mit mindestens 250 MB/s in „/hana/data“ bei E/A-Größen von 16 MB und 64 MB
+- Aktivieren des Lese-/Schreibvolumes in **/hana/log** mit mindestens 250 MB/s bei E/A-Größen von 1 MB
+- Aktivieren der Leseaktivität mit mindestens 400 MB/s in **/hana/data** bei E/A-Größen von 16 MB und 64 MB
+- Aktivieren der Schreibaktivität mit mindestens 250 MB/s in **/hana/data** bei E/A-Größen von 16 MB und 64 MB
 
-Da geringe Speicherlatenz wichtig für DBMS-Systeme ist, auch für solche wie SAP HANA, behalten Sie Daten im Arbeitsspeicher. Der kritische Pfad beim Speichern sind in der Regel die Schreibvorgänge in das Transaktionsprotokoll der DBMS-Systeme. Aber auch Vorgänge wie das Schreiben von Sicherungspunkten oder das Laden von Daten in den Arbeitsspeicher nach der Wiederherstellung nach einem Systemabsturz können wichtig sein. Daher ist es erforderlich, Azure Premium-Datenträger für die Volumes „/hana/data“ und „/hana/log“ zu verwenden. Um den minimalen Durchsatz von „/hana/log“ und „/hana/data“ zu erreichen, wie er von SAP gewünscht ist, müssen Sie mithilfe von MDADM oder LVM über mehrere Azure Storage Premium-Datenträger ein RAID 0-Volume erstellen und die RAID-Volumes als die Volumes „/hana/data“ und „/hana/log“ verwenden. Als Stripegrößen für RAID 0 gelten folgende Empfehlungen:
+Da geringe Speicherlatenz wichtig für DBMS-Systeme ist, auch für solche wie SAP HANA, behalten Sie Daten im Arbeitsspeicher. Der kritische Pfad beim Speichern sind in der Regel die Schreibvorgänge in das Transaktionsprotokoll der DBMS-Systeme. Aber auch Vorgänge wie das Schreiben von Sicherungspunkten oder das Laden von Daten in den Arbeitsspeicher nach der Wiederherstellung nach einem Systemabsturz können wichtig sein. Daher ist es erforderlich, Azure Premium-Datenträger für die Volumes **/hana/data** und **/hana/log** zu verwenden. Um den minimalen Durchsatz von **/hana/log** und **/hana/data** zu erreichen, wie er von SAP gewünscht ist, müssen Sie mithilfe von MDADM oder LVM über mehrere Azure Storage Premium-Datenträger ein RAID 0-Volume erstellen und die RAID-Volumes als die Volumes **/hana/data** und **/hana/log** verwenden. Als Stripegrößen für RAID 0 gelten folgende Empfehlungen:
 
-- 64 KB oder 128 KB für „/hana/data“
-- 32 KB für „/hana/log“
+- 64 KB oder 128 KB für **/hana/data**
+- 32 KB für **/hana/log**
 
 > [!NOTE]
 > Sie müssen keine Redundanzebenen mit RAID-Volumes konfigurieren, da Azure Storage Premium und Standard drei Images einer virtuellen Festplatte beibehalten. Die Nutzung eines RAID-Volumes dient nur dazu, Volumes zu konfigurieren, die genügend E/A-Durchsatz bieten.
@@ -97,7 +97,7 @@ Das Kumulieren einer Reihe von Azure-VHDs unter einem RAID-Volume ist für den I
 
 Bei den Cacheempfehlungen unten werden E/A-Merkmale für SAP HANA gemäß der folgenden Liste zugrunde gelegt:
 
-- Es gibt kaum Workload durch Lesezugriffe auf die HANA-Datendateien. Ausnahmen betreffen umfangreiche E/As nach dem Neustart der HANA-Instanz oder der Azure VM, wenn Daten in HANA geladen werden. Ein anderer Fall umfangreicherer Lese-E/As für Datendateien sind Sicherungen der HANA-Datenbank. Das hat zur Folge, dass Lesecaches meistens nicht sinnvoll sind, da in den meisten dieser Fälle alle Volumes mit Datendateien vollständig gelesen werden müssen.
+- Es gibt kaum Workload durch Lesezugriffe auf die HANA-Datendateien. Ausnahmen betreffen umfangreiche E/As nach dem Neustart der HANA-Instanz oder wenn Daten in HANA geladen werden. Ein anderer Fall umfangreicherer Lese-E/As für Datendateien sind Sicherungen der HANA-Datenbank. Das hat zur Folge, dass Lesecaches meistens nicht sinnvoll sind, da in den meisten dieser Fälle alle Volumes mit Datendateien vollständig gelesen werden müssen.
 - Das Schreiben in die Datendateien geschieht in Bursts auf der Grundlage der HANA-Sicherungspunkte und der HANA-Absturzwiederherstellung. Das Schreiben von Sicherungspunkten erfolgt asynchron und hält Benutzertransaktionen in keiner Weise auf. Beim Schreiben von Daten während der Wiederherstellung nach Abstürzen ist die Leistung ein kritischer Faktor, um schnell wieder zu einem reaktionsbereiten System zu kommen. Die Wiederherstellung nach Abstürzen dürfte allerdings eher eine Ausnahmesituation darstellen
 - Es gibt kaum Lesevorgänge aus den HANA-Wiederholungsdateien. Ausnahmen bilden umfangreiche E/A-Vorgänge beim Ausführen von Sicherungen des Transaktionsprotokolls, der Wiederherstellung nach Abstürzen oder in der Neustartphase einer HANA-Instanz.  
 - Der hauptsächliche Workload bei SAP HANA-Wiederholungsprotokolldateien besteht aus Schreibvorgängen. Abhängig von der Art des Workloads kann die Größe von E/As bis zu 4 KB herunter- oder in anderen Fällen bis zu 1 MB oder mehr heraufreichen. Wartezeiten beim Schreiben in das SAP HANA-Wiederholungsprotokoll sind ein kritischer Faktor für die Leistung.
@@ -105,9 +105,9 @@ Bei den Cacheempfehlungen unten werden E/A-Merkmale für SAP HANA gemäß der fo
 
 Als Folge dieser beobachteten E/A-Muster von SAP HANA sollten die Caches für verschiedene Volumes unter Verwendung von Azure Premium Storage wie folgt festgelegt werden:
 
-- /hana/data – kein Caching
-- /hana/log – kein Caching – mit Ausnahme der M-Serie (weitere Informationen dazu weiter unten in diesem Dokument)
-- /hana/shared – Lesecache
+- **/hana/data** – kein Caching
+- **/hana/log** – kein Caching – mit Ausnahme der M-Serie (weitere Informationen dazu weiter unten in diesem Dokument)
+- **/hana/shared** – Read-Caching
 
 
 Darüber hinaus sollten Sie den E/A-Gesamtdurchsatz eines virtuellen Computers beachten, wenn Sie die Größe festlegen oder sich für einen virtuellen Computer entscheiden. Der VM-Speicherdurchsatz im Allgemeinen ist im Artikel [Arbeitsspeicheroptimierte Größen virtueller Computer](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) beschrieben.
@@ -135,8 +135,8 @@ In der folgenden Tabelle ist eine Konfiguration mit VM-Typen aufgeführt, die Ku
 | M128ms | 3800 GiB | 2000 MB/s | 5 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 2 x S50 |
 
 
-Die Datenträger, die für die kleineren Typen virtueller Computer mit 3 x P20 empfohlen werden, haben Übergröße im Vergleich zu den Speicherplatzempfehlungen, die im [SAP-Whitepaper zu TDI Speicher](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) angegeben sind. Die in der Tabelle gezeigte Wahl wurde getroffen, um ausreichend Datenträgerdurchsatz für SAP HANA bereitzustellen. Sie können problemlos Änderungen am Volume „/hana/backup“ vornehmen, dessen Größe so festgelegt wurde, dass es Sicherungen aufnehmen kann, die dem Zweifachen der Arbeitsspeichergröße entsprechen.   
-Überprüfen Sie, ob der Speicherdurchsatz für die verschiedenen vorgeschlagenen Volumes die Workload erfüllt, die Sie ausführen möchten. Wenn die Workload größere Volumes für „/hana/data“ und „/hana/log“ erfordert, müssen Sie die Anzahl der Azure Storage Premium-VHDs erhöhen. Durch das Ändern der Größe eines Volumes mit mehr VHDs, als aufgelistet sind, erhöhen Sie den IOPS- und E/A-Durchsatz innerhalb der Grenzen des Azure-VM-Typs. 
+Die Datenträger, die für die kleineren Typen virtueller Computer mit 3 x P20 empfohlen werden, haben Übergröße im Vergleich zu den Speicherplatzempfehlungen, die im [SAP-Whitepaper zu TDI Speicher](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) angegeben sind. Die in der Tabelle gezeigte Wahl wurde getroffen, um ausreichend Datenträgerdurchsatz für SAP HANA bereitzustellen. Sie können problemlos Änderungen am Volume **/hana/backup** vornehmen, dessen Größe so festgelegt wurde, dass es Sicherungen aufnehmen kann, die dem Zweifachen der Arbeitsspeichergröße entsprechen.   
+Überprüfen Sie, ob der Speicherdurchsatz für die verschiedenen vorgeschlagenen Volumes die Workload erfüllt, die Sie ausführen möchten. Wenn die Workload größere Volumes für **/hana/data** und **/hana/log** erfordert, müssen Sie die Anzahl der Azure Storage Premium-VHDs erhöhen. Durch das Ändern der Größe eines Volumes mit mehr VHDs, als aufgelistet sind, erhöhen Sie den IOPS- und E/A-Durchsatz innerhalb der Grenzen des Azure-VM-Typs. 
 
 > [!NOTE]
 > Für die oben angegebenen Konfigurationen bietet die [Vereinbarung zum Servicelevel für einzelne virtuelle Azure-Computer](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_6/) KEINE Vorteile, da Azure Storage Premium und Azure Storage Standard gemeinsam verwendet werden. Die Auswahl wurde jedoch getroffen, um die Kosten zu optimieren.
@@ -164,16 +164,15 @@ Wenn Sie von der [Vereinbarung zum Servicelevel für einzelne virtuelle Azure-Co
 | M128ms | 3800 GiB | 2000 MB/s | 5 x P30 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P50 |
 
 
-Die Datenträger, die für die kleineren Typen virtueller Computer mit 3 x P20 empfohlen werden, haben Übergröße im Vergleich zu den Speicherplatzempfehlungen, die im [SAP-Whitepaper zu TDI Speicher](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) angegeben sind. Die in der Tabelle gezeigte Wahl wurde getroffen, um ausreichend Datenträgerdurchsatz für SAP HANA bereitzustellen. Sie können problemlos Änderungen am Volume „/hana/backup“ vornehmen, dessen Größe so festgelegt wurde, dass es Sicherungen aufnehmen kann, die dem Zweifachen der Arbeitsspeichergröße entsprechen.  
-Überprüfen Sie, ob der Speicherdurchsatz für die verschiedenen vorgeschlagenen Volumes die Workload erfüllt, die Sie ausführen möchten. Wenn die Workload größere Volumes für „/hana/data“ und „/hana/log“ erfordert, müssen Sie die Anzahl der Azure Storage Premium-VHDs erhöhen. Durch das Ändern der Größe eines Volumes mit mehr VHDs, als aufgelistet sind, erhöhen Sie den IOPS- und E/A-Durchsatz innerhalb der Grenzen des Azure-VM-Typs. 
-
+Die Datenträger, die für die kleineren Typen virtueller Computer mit 3 x P20 empfohlen werden, haben Übergröße im Vergleich zu den Speicherplatzempfehlungen, die im [SAP-Whitepaper zu TDI Speicher](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) angegeben sind. Die in der Tabelle gezeigte Wahl wurde getroffen, um ausreichend Datenträgerdurchsatz für SAP HANA bereitzustellen. Sie können problemlos Änderungen am Volume **/hana/backup** vornehmen, dessen Größe so festgelegt wurde, dass es Sicherungen aufnehmen kann, die dem Zweifachen der Arbeitsspeichergröße entsprechen.  
+Überprüfen Sie, ob der Speicherdurchsatz für die verschiedenen vorgeschlagenen Volumes die Workload erfüllt, die Sie ausführen möchten. Wenn die Workload größere Volumes für **/hana/data** und **/hana/log** erfordert, müssen Sie die Anzahl der Azure Storage Premium-VHDs erhöhen. Durch das Ändern der Größe eines Volumes mit mehr VHDs, als aufgelistet sind, erhöhen Sie den IOPS- und E/A-Durchsatz innerhalb der Grenzen des Azure-VM-Typs. 
 
 
 #### <a name="storage-solution-with-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Speicherlösung mit der Azure-Schreibbeschleunigung für virtuelle Computer der Azure-M-Serie
-Die Azure-Schreibbeschleunigung ist eine Funktion, die nur für VMs der M-Serie eingeführt wird. Der Name macht bereits deutlich, dass der Zweck der Funktion die Verbesserung der E/A-Latenz bei Schreibvorgängen mit Azure Storage Premium ist. Für SAP HANA ist die Schreibbeschleunigung nur für das Volume „/hana/log“ vorgesehen. Daher müssen die bisher gezeigten Konfigurationen geändert werden. Die Hauptänderung besteht in der Unterteilung zwischen „/hana/data“ und „/hana/log“, damit die Azure-Schreibbeschleunigung nur für das Volume „/hana/log“ verwendet wird. 
+Die Azure-Schreibbeschleunigung ist eine Funktion, die nur für VMs der M-Serie eingeführt wird. Der Name macht bereits deutlich, dass der Zweck der Funktion die Verbesserung der E/A-Latenz bei Schreibvorgängen mit Azure Storage Premium ist. Für SAP HANA ist die Schreibbeschleunigung nur für das Volume **/hana/log** vorgesehen. Daher müssen die bisher gezeigten Konfigurationen geändert werden. Die Hauptänderung besteht in der Unterteilung zwischen **/hana/data** und **/hana/log**, damit die Azure-Schreibbeschleunigung nur für das Volume **/hana/log** verwendet wird. 
 
 > [!IMPORTANT]
-> Die SAP HANA-Zertifizierung für virtuelle Computer der Azure M-Serie gilt ausschließlich mit der Azure-Schreibbeschleunigung für das Volume „/hana/log“. Folglich müssen SAP HANA-Bereitstellungen in Produktionsszenarien auf virtuellen Computern der Azure M-Serie für das Volume „/hana/log“ mit der Azure-Schreibbeschleunigung konfiguriert werden.  
+> Die SAP HANA-Zertifizierung für virtuelle Computer der Azure M-Serie gilt ausschließlich mit der Azure-Schreibbeschleunigung für das Volume **/hana/log**. Folglich müssen SAP HANA-Bereitstellungen in Produktionsszenarien auf virtuellen Computern der Azure M-Serie für das Volume **/hana/log** mit der Azure-Schreibbeschleunigung konfiguriert werden.  
 
 > [!NOTE]
 > Überprüfen Sie für Produktionsszenarien in der [SAP-Dokumentation für IAAS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html), ob ein bestimmter VM-Typ von SAP für SAP HANA unterstützt wird.
@@ -190,11 +189,11 @@ Die empfohlenen Konfigurationen sehen wie folgt aus:
 | M128s | 2000 GiB | 2000 MB/s |3 x P30 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P40 |
 | M128ms | 3800 GiB | 2000 MB/s | 5 x P30 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P50 |
 
-Überprüfen Sie, ob der Speicherdurchsatz für die verschiedenen vorgeschlagenen Volumes die Workload erfüllt, die Sie ausführen möchten. Wenn die Workload größere Volumes für „/hana/data“ und „/hana/log“ erfordert, müssen Sie die Anzahl der Azure Storage Premium-VHDs erhöhen. Durch das Ändern der Größe eines Volumes mit mehr VHDs, als aufgelistet sind, erhöhen Sie den IOPS- und E/A-Durchsatz innerhalb der Grenzen des Azure-VM-Typs.
+Überprüfen Sie, ob der Speicherdurchsatz für die verschiedenen vorgeschlagenen Volumes die Workload erfüllt, die Sie ausführen möchten. Wenn die Workload größere Volumes für **/hana/data** und **/hana/log** erfordert, müssen Sie die Anzahl der Azure Storage Premium-VHDs erhöhen. Durch das Ändern der Größe eines Volumes mit mehr VHDs, als aufgelistet sind, erhöhen Sie den IOPS- und E/A-Durchsatz innerhalb der Grenzen des Azure-VM-Typs.
 
-Die Azure-Schreibbeschleunigung funktioniert nur in Verbindung mit [verwalteten Azure-Datenträgern](https://azure.microsoft.com/services/managed-disks/). Daher müssen zumindest die Azure Storage Premium-Datenträger, die das Volume „/hana/log“ bilden, als verwaltete Datenträger bereitgestellt werden.
+Die Azure-Schreibbeschleunigung funktioniert nur in Verbindung mit [verwalteten Azure-Datenträgern](https://azure.microsoft.com/services/managed-disks/). Daher müssen zumindest die Azure Storage Premium-Datenträger, die das Volume **/hana/log** bilden, als verwaltete Datenträger bereitgestellt werden.
 
-Es gibt Einschränkungen der Azure Storage Premium-VHDs pro VM, die von der Azure-Schreibbeschleunigung unterstützt werden können. Die aktuellen Limits lauten wie folgt:
+Die Anzahl von Azure Storage Premium-VHDs pro VM, die von der Azure-Schreibbeschleunigung unterstützt werden können, ist begrenzt. Die aktuellen Limits lauten wie folgt:
 
 - 16 VHDs für eine M128xx-VM
 - 8 VHDs für eine M64xx-VM
@@ -205,29 +204,153 @@ Ausführlichere Anweisungen zum Aktivieren der Azure-Schreibbeschleunigung finde
 Details und Einschränkungen für die Azure-Schreibbeschleunigung finden Sie in der gleichen Dokumentation.
 
 
+
 ### <a name="set-up-azure-virtual-networks"></a>Einrichten von virtuellen Azure-Netzwerken
-Wenn Sie Site-to-Site-Konnektivität mit Azure über VPN oder ExpressRoute haben, müssen Sie mindestens ein [virtuelles Azure-Netzwerk](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) haben, das über ein virtuelles Gateway mit der VPN- oder ExpressRoute-Verbindung verbunden ist. Das virtuelle Gateway befindet sich in einem Subnetz im virtuellen Azure-Netzwerk. Um SAP HANA zu installieren, erstellen Sie zwei weitere Subnetze innerhalb des virtuellen Netzwerks. In einem Subnetz werden die virtuellen Computer gehostet, auf denen die SAP HANA-Instanzen ausgeführt werden. Im anderen Subnetz werden virtuelle Jumpbox- oder Verwaltungscomputer ausgeführt, auf denen SAP HANA Studio oder andere Verwaltungssoftware gehostet wird.
+Wenn Sie Site-to-Site-Konnektivität mit Azure über VPN oder ExpressRoute haben, müssen Sie mindestens ein virtuelles Azure-Netzwerk haben, das über ein virtuelles Gateway mit der VPN- oder ExpressRoute-Verbindung verbunden ist. Bei einfachen Bereitstellungen kann das virtuelle Gateway in einem Subnetz des virtuellen Azure-Netzwerks (VNet) bereitgestellt werden, das auch die SAP HANA-Instanzen hostet. Um SAP HANA zu installieren, erstellen Sie zwei weitere Subnetze innerhalb des virtuellen Azure-Netzwerks. In einem Subnetz werden die virtuellen Computer gehostet, auf denen die SAP HANA-Instanzen ausgeführt werden. Im anderen Subnetz werden virtuelle Jumpbox- oder Verwaltungscomputer ausgeführt, auf denen SAP HANA Studio, andere Verwaltungssoftware oder Ihre Anwendungssoftware gehostet wird.
 
 Wenn Sie die virtuellen Computer zum Ausführen von SAP HANA installieren, benötigen die virtuellen Computer Folgendes:
 
 - Zwei installierte virtuelle Netzwerkkarten: eine Netzwerkkarte, um eine Verbindung mit dem Verwaltungssubnetz herzustellen, und eine Netzwerkkarte, um eine Verbindung aus dem lokalen Netzwerk oder aus anderen Netzwerken mit der SAP HANA-Instanz auf dem virtuellen Azure-Computer herzustellen
 - Statische private IP-Adressen, die für beide virtuellen Netzwerkkarten bereitgestellt werden
 
+Für dauerhafte Bereitstellungen müssen Sie jedoch eine virtuelle Rechenzentrums-Netzwerkarchitektur in Azure erstellen. Bei dieser Architektur empfiehlt sich die Trennung des Azure-VNet-Gateway, das sich mit dem lokalen Netzwerk verbindet, in ein separates Azure VNet. Dieses separate VNet sollte den gesamten Datenverkehr hosten, der entweder ins lokale Netzwerk oder ins Internet geleitet wird. Dieser Ansatz ermöglicht es Ihnen, Software zur Überprüfung und Protokollierung des Datenverkehrs, der in das virtuelle Rechenzentrum in Azure einfließt, in diesem separaten Hub-VNet bereitzustellen. Sie haben also ein VNet, das sämtliche Software und Konfigurationen bezüglich des ein- und ausgehenden Datenverkehrs zu Ihrer Azure-Bereitstellung hostet.
+
+Die Artikel [Virtuelles Rechenzentrum in Microsoft Azure: Eine Netzwerkperspektive](https://docs.microsoft.com/azure/networking/networking-virtual-datacenter) und [Virtuelles Azure-Rechenzentrum und die Steuerungsebene für Unternehmen](https://docs.microsoft.com/azure/architecture/vdc/) enthalten weitere Informationen zum virtuellen Rechenzentrumsansatz und dem dazugehörigen Azure-VNet-Design.
+
+
+>[!NOTE]
+>Für den Datenverkehr zwischen dem VNet-Hub und dem Spoke-VNet mit [Azure-VNet-Peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) fallen zusätzliche [Kosten](https://azure.microsoft.com/pricing/details/virtual-network/) an. Basierend auf diesen Kosten müssen Sie möglicherweise Kompromisse zwischen dem Betrieb eines strengen Hub-Spoke-Netzwerkdesigns und dem Betrieb mehrerer [Azure-ExpressRoute-Gateways](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways) eingehen, die Sie mit „Spokes“ verbinden, um VNet-Peering zu umgehen. Für Azure-ExpressRoute-Gateways fallen jedoch ebenfalls zusätzliche [Kosten](https://azure.microsoft.com/pricing/details/vpn-gateway/) an. Darüber hinaus können zusätzliche Kosten für Software von Drittanbietern anfallen, die Sie für die Protokollierung, Überprüfung und Überwachung des Datenverkehrs verwenden. Abhängig von den Kosten für den Datenaustausch über VNet-Peering auf der einen Seite und den Kosten, die durch zusätzliche Azure-ExpressRoute-Gateways und zusätzliche Softwarelizenzen entstehen, auf der anderen, können Sie sich für eine Mikrosegmentierung innerhalb eines VNet entscheiden, indem Sie Subnetze als Isolationseinheit anstelle von VNets verwenden.
+
+
 Einen Überblick über die verschiedenen Methoden zum Zuweisen von IP-Adressen finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm). 
 
 Für VMs mit SAP HANA sollten Sie mit zugewiesenen statischen IP-Adressen arbeiten. Der Grund ist, dass einige Konfigurationsattribute für HANA IP-Adressen referenzieren.
 
-[Azure-Netzwerksicherheitsgruppen (NSGs)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) werden verwendet, um Datenverkehr zu leiten, der an die SAP HANA-Instanz oder die Jumpbox weitergeleitet wird. Die Netzwerksicherheitsgruppen sind mit dem SAP HANA-Subnetz und dem Verwaltungssubnetz verknüpft.
+[Azure-Netzwerksicherheitsgruppen (NSGs)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) werden verwendet, um Datenverkehr zu leiten, der an die SAP HANA-Instanz oder die Jumpbox weitergeleitet wird. Die Netzwerksicherheitsgruppen und [Anwendungssicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview#application-security-groups) sind mit dem SAP HANA-Subnetz und dem Verwaltungssubnetz verknüpft.
 
-Die folgende Abbildung zeigt eine Übersicht eines allgemeinen Bereitstellungsschemas für SAP HANA:
+Die folgende Abbildung zeigt eine Übersicht eines allgemeinen Bereitstellungsschemas für SAP HANA gemäß einer Hub-Spoke-VNet-Architektur:
 
 ![Allgemeines Bereitstellungsschema für SAP HANA](media/hana-vm-operations/hana-simple-networking.PNG)
 
-
-Um SAP HANA in Azure ohne eine Standort-zu-Standort-Verbindung bereitzustellen, greifen Sie über eine öffentliche IP-Adresse auf die SAP HANA-Instanz zu. Die IP-Adresse muss dem virtuellen Azure-Computer zugewiesen sein, auf dem Ihre Jumpbox-VM ausgeführt wird. In diesem einfachen Szenario werden für die Bereitstellung in Azure integrierte DNS-Dienste verwendet, um Hostnamen aufzulösen. In einer komplexeren Bereitstellung, in der öffentlich zugängliche IP-Adressen verwendet werden, sind die in Azure integrierten DNS-Dienste besonders wichtig. Verwenden Sie Azure-NSGs, um die offenen Ports oder die IP-Adressbereiche zu beschränken, über die Verbindungen mit den Azure Subnetzen über Ressourcen hergestellt werden können, die öffentlich zugängliche IP-Adressen haben. Die folgende Abbildung zeigt ein allgemeines Schema für die Bereitstellung von SAP HANA ohne eine Standort-zu-Standort-Verbindung:
+Um SAP HANA in Azure ohne Site-to-Site-Verbindung bereitzustellen, müssen Sie die SAP HANA-Instanz dennoch vor dem öffentlichen Internet schützen und hinter einem Weiterleitungsproxy verstecken. In diesem einfachen Szenario werden für die Bereitstellung in Azure integrierte DNS-Dienste verwendet, um Hostnamen aufzulösen. In einer komplexeren Bereitstellung, in der öffentlich zugängliche IP-Adressen verwendet werden, sind die in Azure integrierten DNS-Dienste besonders wichtig. Verwenden Sie Azure-NSGs und [Azure-NVAs](https://azure.microsoft.com/solutions/network-appliances/), um das Routing vom Internet in Ihre Azure-VNet-Architektur in Azure zu steuern und zu überwachen. Die folgende Abbildung zeigt ein allgemeines Schema für die Bereitstellung von SAP HANA ohne eine Site-to-Site-Verbindung in einer Hub-Spoke-VNet-Architektur:
   
 ![Allgemeines Bereitstellungsschema für SAP HANA ohne eine Standort-zu-Standort-Verbindung](media/hana-vm-operations/hana-simple-networking2.PNG)
  
+
+Eine weitere Beschreibung zur Verwendung von Azure-NVAs zum Steuern und Überwachen des Zugriffs aus dem Internet ohne die Hub-and-Spoke-VNet-Architektur finden Sie im Artikel [Bereitstellen hochverfügbarer virtueller Netzwerkgeräte](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha).
+
+
+## <a name="configuring-azure-infrastructure-for-sap-hana-scale-out"></a>Konfigurieren der Azure-Infrastruktur für die horizontale SAP HANA-Skalierung
+Microsoft bietet eine VM-SKU der M-Serie, die für eine horizontale SAP HANA-Skalierung zertifiziert ist. Der VM-Typ M128s wurde für eine horizontale Skalierung von bis zu 16 Knoten zertifiziert. Informationen zu Änderungen hinsichtlich Zertifizierungen für horizontale SAP HANA-Skalierungen in Azure-VMs finden Sie in der [Liste der zertifizierten IaaS-Plattformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure).
+
+Die minimale Betriebssystemversionen für die Bereitstellung von horizontaler Skalierung in Azure-VMs sind:
+
+- SUSE Linux 12 SP3
+- Red Hat Linux 7.4
+
+Zusammensetzung der horizontalen Skalierung mit 16 Knoten
+
+- Ein Knoten ist der Masterknoten
+- Bis zu 15 Knoten sind Workerknoten
+
+>[!NOTE]
+>In horizontalen Azure-VM-Skalierungen kann kein Standbyknoten verwendet werden.
+>
+
+Es gibt zwei Gründe, warum kein Standbyknoten konfiguriert werden kann:
+
+- Azure bietet an dieser Stelle keinen nativen NFS-Dienst. Daher müssen NFS-Freigaben mithilfe von Drittanbieterfunktionen konfiguriert werden.
+- Keine der NFS-Konfigurationen von Drittanbietern kann mit ihren auf Azure eingesetzten Lösungen die Speicherlatenzkriterien für SAP HANA erfüllen.
+
+Daher können **/hana/data**- und **/hana/log**-Volumes nicht freigegeben werden. Die fehlende Freigabe dieser Volumes der einzelnen Knoten verhindert die Verwendung eines SAP HANA-Standbyknotens in einer horizontalen Skalierung.
+
+Als Ergebnis wird das grundlegende Design für einen einzelnen Knoten in einer horizontalen Skalierung wie folgt aussehen:
+
+![Grundlagen der horizontalen Skalierung eines einzelnen Knotens](media/hana-vm-operations/scale-out-basics.PNG)
+
+Die grundlegende Konfiguration von einem VM-Knoten für die horizontale SAP HANA-Skalierung sieht wie folgt aus:
+
+- Für **/hana/shared** erstellen Sie einen hochverfügbaren NFS-Cluster basierend auf SUSE Linux 12 SP3. Diese Cluster hostet die **/hana/shared**-NFS-Freigabe(n) Ihrer horizontalen Skalierung und SAP NetWeaver oder BW/4HANA Central Services. Informationen zum Erstellen einer solchen Konfiguration finden Sie im Artikel [Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
+- Alle anderen Datenträgervolumes werden **NICHT** für die unterschiedlichen Knoten freigegeben und basieren **NICHT** auf NFS. Installationskonfigurationen und Schritte für horizontale HANA-Installationsskalierungen mit nicht freigegebenen **/hana/data**- und **/hana/log**-Volumes finden Sie im weiteren Verlauf dieses Dokuments.
+
+>[!NOTE]
+>Der in der Grafik dargestellte hoch verfügbare NFS-Cluster wird derzeit nur mit SUSE Linux unterstützt. Eine hoch verfügbare NFS-Lösung basierend auf Red Hat wird später erläutert.
+
+Die Größenanpassung der Volumes für die Knoten entspricht dem horizontalen Skalieren mit Ausnahme von **/hana/shared**. Für M128s werden die folgenden Größen und Typen empfohlenen:
+
+| VM-SKU | RAM | Maximal VM-E/A<br /> Throughput | /hana/data | /hana/log | /root volume | /usr/sap | hana/backup |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| M128s | 2000 GiB | 2000 MB/s |3 x P30 | 2 x P20 | 1 x P6 | 1 x P6 | 2 x P40 |
+
+
+Überprüfen Sie, ob der Speicherdurchsatz für die verschiedenen vorgeschlagenen Volumes die Workload erfüllt, die Sie ausführen möchten. Wenn die Workload größere Volumes für **/hana/data** und **/hana/log** erfordert, müssen Sie die Anzahl der Azure Storage Premium-VHDs erhöhen. Durch das Ändern der Größe eines Volumes mit mehr VHDs, als aufgelistet sind, erhöhen Sie den IOPS- und E/A-Durchsatz innerhalb der Grenzen des Azure-VM-Typs. Verwenden Sie auch die Azure-Schreibbeschleunigung für die Datenträger, die das **/hana/log**-Volume bilden.
+ 
+Im Dokument zu den [SAP HANA-TDI-Speicheranforderungen](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) finden Sie eine Formel, die die Größe des **/hana/shared**-Volumes für die horizontale Skalierung als die Speichergröße eines einzelnen Workerknotens pro 4 Workerknoten definiert.
+
+Angenommen, Sie verwenden die für die horizontale SAP HANA-Skalierung zertifizierte Azure-VM M128s mit ca. 2 TB Speicher, können die SAP-Empfehlungen wie folgt zusammengefasst werden:
+
+- Bei einem Masterknoten und bis zu neun Workerknoten benötigt **/hana/shared** 2 TB an Speicher. 
+- Bei einem Masterknoten und fünf bis acht Workerknoten benötigt **/hana/shared** 4 TB an Speicher. 
+- Bei einem Masterknoten und neun bis zwölf Workerknoten benötigt **/hana/shared** 6 TB an Speicher. 
+- Bei einem Masterknoten und 12 bis 15 Workerknoten wird ein **/hana/shared**-Volume mit 8 TB Speicher benötigt.
+
+Das andere wichtige Design, das in der Grafik der Einzelknotenkonfiguration für eine SAP HANA-VM mit horizontaler Skalierung dargestellt wird, ist die VNet-, besser gesagt die Subnetzkonfiguration. SAP empfiehlt dringend eine Trennung des client-/anwendungsbezogenen Datenverkehrs von der Kommunikation zwischen den HANA-Knoten. Wie in der Grafik dargestellt, können Sie dafür zwei verschiedene VNICs an die VM anfügen. Beide NICs befinden sich in unterschiedlichen Subnetzen und haben zwei verschiedene IP-Adressen. Anschließend steuern Sie den Datenverkehr mit Routingregeln über NSGs oder benutzerdefinierte Routen.
+
+Vor allem in Azure gibt es keine Möglichkeiten und Methoden, um die Dienstqualität und Kontingente für bestimmte vNICs durchzusetzen. Daher eröffnet die Trennung der client-/anwendungsbezogenen Kommunikation und der knotenübergreifenden Kommunikation keine Möglichkeiten, den einen Datenverkehr gegenüber dem anderen zu priorisieren. Stattdessen bleibt die Trennung eine Sicherheitsmaßnahme beim Abschirmen der knotenübergreifenden Kommunikation bei horizontalen Skalierungen.  
+
+>[!IMPORTANT]
+>SAP empfiehlt dringend, den Netzwerkverkehr auf der Client-/Anwendungsseite und den knotenübergreifenden Datenverkehr zu trennen, wie in diesem Dokument beschrieben. Daher wird die Implementierung einer Architektur wie in den letzten Grafiken dringend empfohlen.
+>
+
+Aus Netzwerksicht sieht die minimal erforderliche Netzwerkarchitektur so aus:
+
+![Grundlagen der horizontalen Skalierung eines einzelnen Knotens](media/hana-vm-operations/scale-out-networking-overview.PNG)
+
+Bisher werden maximal 15 Workerknoten zusätzlich zu einem Masterknoten unterstützt.
+
+Aus Speichersicht würde die Speicherarchitektur so aussehen:
+
+
+![Grundlagen der horizontalen Skalierung eines einzelnen Knotens](media/hana-vm-operations/scale-out-storage-overview.PNG)
+
+Das **/hana/shared**-Volume befindet sich in einer hoch verfügbaren NFS-Freigabekonfiguration. Alle anderen Laufwerke sind hingegen „lokal“ in einzelnen VMs implementiert. 
+
+### <a name="highly-available-nfs-share"></a>Hoch verfügbare NFS-Freigabe
+Der hoch verfügbare NFS-Cluster funktioniert derzeit nur mit SUSE Linux. Das Dokument [Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs) beschreibt die entsprechende Einrichtung. Wenn Sie den NFS-Cluster nicht für andere HANA-Konfigurationen außerhalb des Azure-VNets, das die SAP HANA-Instanzen ausführt, freigeben, installieren Sie ihn im gleichen VNet. Installieren Sie ihn in einem eigenen Subnetz und stellen Sie sicher, dass nicht jeder beliebige Datenverkehr auf das Subnetz zugreifen kann. Stattdessen können Sie den Datenverkehr auf dieses Subnetz auf die IP-Adressen der VM beschränken, die den Datenverkehr auf das **/hana/shared**-Volume ausführen.
+
+Hinsichtlich des vNIC einer HANA-VM mit horizontaler Skalierung, der für das Routing des **/hana/shared**-Datenverkehrs zuständig ist, wird folgendes empfohlen:
+
+- Da der Datenverkehr zu **/hana/shared** moderat ist, leiten Sie ihn durch den vNIC, der dem Clientnetzwerk in der Minimalkonfiguration zugewiesen ist.
+- Für den Datenverkehr zu **/hana/shared** können Sie auch ein drittes Subnetz im VNet implementieren, indem Sie die horizontale SAP HANA-Skalierung bereitstellen, und einen dritten vNIC zuweisen, der in diesem Subnetz gehostet wird. Verwenden Sie den dritten vNIC und die zugehörigen IP-Adresse für den Datenverkehr an die NFS-Freigabe. Sie können dann separate Zugriffs- und Routingregeln anwenden.
+
+>[!IMPORTANT]
+>Der Netzwerkverkehr zwischen den VMs, auf denen SAP HANA mit horizontaler Skalierung bereitgestellt ist, und das hochverfügbare NFS dürfen unter keinen Umständen über [NVA](https://azure.microsoft.com/solutions/network-appliances/)- oder ähnliche virtuelle Geräte geleitet werden. Azure-NSGs zählen nicht zu diesen Geräten. Überprüfen Sie Ihre Routingregeln, um sicherzustellen, dass NVAs oder ähnliche virtuelle Geräte beim Zugriff auf die hochverfügbare NFS-Freigabe von den VMs mit SAP HANA umgeleitet werden.
+> 
+
+Wenn Sie den hochverfügbaren NFS-Cluster für SAP HANA-Konfigurationen freigeben möchten, verschieben Sie all diese HANA-Konfigurationen in dasselbe VNet. 
+ 
+
+### <a name="installing-sap-hana-scale-out-n-azure"></a>Installieren der horizontalen SAP HANA-Skalierung in Azure
+Zum Installieren einer horizontalen SAP-Konfiguration führen Sie die folgenden Schritte aus:
+
+- Bereitstellen einer neuen Azure-VNet-Architektur oder Anpassen einer bestehenden
+- Bereitstellen der neuen VMs, die mithilfe von Azure Storage Premium-Volumes verwaltete werden
+- Bereitstellen eines neuen hochverfügbaren NFS-Clusters oder Anpassen eines bestehenden
+- Anpassen des Netzwerkroutings, um sicherzustellen, dass die knotenübergreifende Kommunikation zwischen VMs nicht durch [NVAs](https://azure.microsoft.com/solutions/network-appliances/) geleitet wird. Dasselbe gilt für den Datenverkehr zwischen den VMs und dem hoch verfügbaren NFS-Cluster.
+- Installieren des SAP HANA-Masterknotens
+- Anpassen der Konfigurationsparameter des SAP HANA-Masterknotens
+- Fortsetzen der Installation der SAP HANA-Workerknoten
+
+#### <a name="installation-of-sap-hana-in-scale-out-configuration"></a>Installation von SAP HANA mit horizontaler Skalierung
+Wenn Ihre Azure VM-Infrastruktur bereitgestellt ist und alle anderen Vorbereitungen getroffen sind, müssen Sie die horizontale SAP HANA-Skalierung in diesen Schritten installieren:
+
+- Installieren Sie den SAP HANA-Masterknoten gemäß der SAP-Dokumentation.
+- **Nach der Installation müssen Sie die global.ini-Datei ändern und den Parameter „basepath_shared = no“ zur Datei hinzufügen**. Durch diesen Parameter kann SAP HANA mit horizontaler Skalierung ohne „freigegebene“ **/hana/data**- und **/hana/log**-Volumes zwischen den Knoten ausgeführt werden. Details finden Sie im [SAP-Hinweis #2080991](https://launchpad.support.sap.com/#/notes/2080991).
+- Die SAP HANA-Instanz muss nach dem Ändern des global.ini-Parameters neu gestartet werden.
+- Fügen Sie zusätzliche Workerknoten hinzu. Siehe auch <https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/0d9fe701e2214e98ad4f8721f6558c34.html>. Geben Sie während oder nach der Installation das interne Netzwerk für die knotenübergreifende SAP HANA-Kommunikation an, z.B. das lokale hdblcm. Eine detaillierte Dokumentation finden Sie in [SAP-Hinweis 2183363](https://launchpad.support.sap.com/#/notes/2183363). 
+
+Nach dieser Einrichtung wird die von Ihnen installierte horizontale Skalierung nicht freigegebene Datenträger für die Ausführung von **/hana/data** und **/hana/log** verwenden. Das **/hana/shared**-Volume wird dabei in der hoch verfügbaren NFS-Freigabe platziert.
+  
 
 
 ## <a name="operations-for-deploying-sap-hana-on-azure-vms"></a>Vorgänge für die Bereitstellung von SAP HANA auf virtuellen Azure Computern

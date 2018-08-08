@@ -1,23 +1,24 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache in C++ unter Linux mit dem Cognitive Services Speech SDK | Microsoft-Dokumentation'
+title: 'Schnellstart: Erkennen von Sprache in C++ unter Linux mit dem Cognitive Services Speech SDK'
 titleSuffix: Microsoft Cognitive Services
 description: Erfahren Sie, wie Sie Sprache in C++ unter Linux mit dem Cognitive Services Speech SDK erkennen können.
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: b5f5cdbe202b406c724a9f4f5787e566b432a66c
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 8f794f1d29b5fde9acd43fa4a018ccb39a8ccd25
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116145"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324777"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in C++ unter Linux mit dem Speech SDK
+
+[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Dieser Artikel enthält Informationen zur Erstellung einer C++-Konsolenanwendung in Linux (Ubuntu 16.04) mithilfe des Cognitive Services Speech SDK zum Umwandeln von Sprache in Text.
 
@@ -133,4 +134,4 @@ Suchen Sie nach diesem Beispiel im Ordner `quickstart/cpp-linux`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Beispiele finden Sie auf [dieser Seite](samples.md).
+* [Abrufen der Beispiele](speech-sdk.md#get-the-samples)

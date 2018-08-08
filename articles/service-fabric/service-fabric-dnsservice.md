@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: msfussell
-ms.openlocfilehash: 4d248724597a411f7253be1ccca0be6b85db95af
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 3c8eac98414fa43213136940fb4c91694a78a2c1
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237178"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397525"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>DNS-Dienst in Azure Service Fabric
 Der DNS-Dienst ist ein optionaler Systemdienst, den Sie in Ihrem Cluster aktivieren können, um andere Dienste mithilfe des DNS-Protokolls zu ermitteln. 
@@ -145,7 +145,7 @@ Das folgende Beispiel legt den DNS-Namen für einen zustandsbehafteten Dienst au
     </Service>
 ```
 
-### <a name="setting-the-dns-name-for-a-service-using-powershell"></a>Festlegen des DNS-Namens für einen Dienst mithilfe von PowerShell
+### <a name="setting-the-dns-name-for-a-service-using-powershell"></a>Festlegen des DNS-Namens für einen Dienst mithilfe von Powershell
 Sie können den DNS-Namen für einen Dienst festlegen, während Sie diesen Dienst mit dem PowerShell-Befehl `New-ServiceFabricService` erstellen. Im folgenden Beispiel wird ein neuer zustandsloser Dienst namens mit dem DNS-Namen `service1.application1` erstellt.
 
 ```powershell
@@ -159,7 +159,7 @@ Sie können den DNS-Namen für einen Dienst festlegen, während Sie diesen Diens
     -ServiceDnsName service1.application1
 ```
 
-## <a name="making-dns-queries-on-a-stateful-service-partition"></a>Senden von DNS-Abfragen in einer zustandsbehafteten Dienstpartition
+## <a name="preview-making-dns-queries-on-a-stateful-service-partition"></a>[Vorschau:] Senden von DNS-Abfragen in einer zustandsbehafteten Dienstpartition
 Ab Service Fabric-Version 6.3 unterstützt der Service Fabric-DNS-Dienst Abfragen für Dienstpartitionen.
 
 Bei Partitionen, die in DNS-Abfragen verwendet werden sollen, gelten folgende Einschränkungen bei der Benennung:
@@ -249,6 +249,8 @@ public class ValuesController : Controller
 }
 ```
 
+## <a name="known-issues"></a>Bekannte Probleme
+* Bei Service Fabric ab Version 6.3 besteht ein Problem mit DNS-Lookups für Dienstnamen, die einen Bindestrich im DNS-Namen enthalten. Weitere Informationen zu diesem Problem finden Sie in [diesem GitHub-Problem](https://github.com/Azure/service-fabric-issues/issues/1197). Eine Fehlerbehebung ist für das nächste 6.3-Update vorgesehen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Erfahren Sie mehr über Dienstkommunikation innerhalb des Clusters unter [Herstellung einer Verbindung mit Diensten und Kommunikation mit diesen Diensten](service-fabric-connect-and-communicate-with-services.md).

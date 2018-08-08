@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/9/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0bfb06add64f5f1cd6ccfb772f604ab588bb1baf
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: d89fef56a9fdab799170ed1ccd3261470d66bf95
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950405"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414700"
 ---
 # <a name="azure-marketplace-consulting-services"></a>Azure Marketplace-Beratungsdienste
 Beratungsdienste in Azure Marketplace ermöglichen Microsoft-Partnern, Verbindungen zwischen Kunden und Diensten herzustellen, um ihre Nutzung von Azure zu unterstützen und auszuweiten. Azure Marketplace unterstützt die Auflistung der Beratungsdiensteangebote von Systemintegrator-Partnern (SI) von Microsoft. 
@@ -31,17 +31,17 @@ Die Marketplace-Storefronts sind auf Zielgruppen und Microsoft-Cloudprodukte aus
 
 |         |Azure Marketplace  |AppSource |
 |---------|---------|---------|
-|Zielgruppe   |IT-Profis und Cloudentwickler|Geschäftsbenutzer / Branchenentscheidungsträger|
+|**Zielgruppe**   |**IT-Profis und Cloudentwickler**|**Geschäftsbenutzer / Branchenentscheidungsträger**|
 |Lösungsrelevanz     |Für Azure oder auf Basis von Azure erstellte technische Apps|Geschäfts-Apps, die D365, Power BI, Office 365, Azure nutzen / erweitern. (Fertig gestellte Add-In- oder Add-On-Apps)|
 |Veröffentlichungsoptionen     |Kontakt mit mir aufnehmen, Testversion, Transact oder Beratungsdienste|Kontakt mit mir aufnehmen, Testversion oder Beratungsdienste|
 |In Produkterfahrung      |Azure-Verwaltungsportal|Dynamics 365, Office 365, Office-Client-Apps| 
 |Andere      |Lokale Veröffentlichung über Azure Stack|Beratungsdienste für Dynamics und Power BI|
 
->[!Note]
->Beratungsdienste in Azure Marketplace sollten Angebote nutzen, die sich mit Schwerpunkt auf *Azure-technischen Lösungen und Diensten* an eine technische Zielgruppe richten.
-
-
 Die auf Microsoft Dynamics 365, Office 365 und Power BI basierenden Dienstangebote sind für das Listing in AppSource geeignet. Weitere Informationen finden Sie unter [Richtlinien zum Listing von Microsoft AppSource-Beratungsdiensten](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
+
+>[!Note]
+>Beratungsdienste in Azure Marketplace sollten Angebote nutzen, die sich mit Schwerpunkt auf *Azure-technischen Lösungen und Diensten* an eine **technische Zielgruppe richten. **
+
 
 >[!TIP]
 >Diese Informationen gelten ausschließlich für Azure Marketplace-Dienste. Zur Veröffentlichung in der digitalen Azure Marketplace-Ladenzeile wählen Sie im Cloud-Partnerportal im Dropdownmenü „Primäres Produkt“ die Option „Azure“ aus. Zur Veröffentlichung auf AppSource wählen Sie im Cloud-Partnerportal im Dropdownmenü „Primäres Produkt“ entweder „Dynamics 365“, „Power BI“ oder „Power Apps“.
@@ -59,7 +59,7 @@ Partner müssen zudem über eine **Silver- oder Gold-Kompetenz** im entsprechend
 Erfahren Sie mehr zu den [Kompetenzen über das Microsoft Partner Network](https://partner.microsoft.com/en-US/membership/competencies). 
  
 
-SI-Partner können Beratungsdienstangebote für die folgenden 18 Länder übermitteln. 
+**SI-Partner können Beratungsdienstangebote für die folgenden 18 Länder übermitteln.**
 
 |Qualifizierte Länder |  |  |
 |---------|---------|---------|
@@ -70,7 +70,7 @@ SI-Partner können Beratungsdienstangebote für die folgenden 18 Länder übermi
 |Finnland     |Mexiko         |Vereinigtes Königreich         |
 |Frankreich     |Niederlande         |USA         |
 
-Die Einführung von Azure Marketplace-Beratungsdiensten ist zunächst für Australien, Kanada, das Vereinigte Königreich und die USA geplant. Die Kataloge für andere Länder werden online verfügbar sein, sobald eine bedeutende Anzahl und überzeugende Auswahl von Dienstangeboten von Partnern übermittelt und von Microsoft genehmigt wurden.
+Der Start von Azure Marketplace-Beratungsdiensten wird in bestimmten geografischen Region live geschaltet. Der erste Start findest statt in: USA, Kanada, Großbritannien und Australien. Die Kataloge für andere Länder werden online verfügbar sein, sobald eine bedeutende Anzahl und überzeugende Auswahl von Dienstangeboten von Partnern übermittelt und von Microsoft genehmigt wurden.
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace"></a>Registrieren für Beratungsdienste im Azure Marketplace
 Registrieren Sie zunächst Ihre Beratungsdienste in [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/sell/signup). Unter [Ihr Weg zum Herausgeber im Marketplace](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher) finden Herausgeber eine vollständige Prüfliste der Registrierungsanforderungen. 
@@ -121,7 +121,7 @@ Angebote müssen von einem der folgenden fünf Diensttypen sein (Sie können meh
 * **Proof of Concept**: Eine Implementierung in einem begrenzten Bereich, um zu bestimmen, ob eine Lösung die Anforderungen eines Kunden erfüllt. 
 * **Workshop**: Ein interaktives Angebot, das beim Kunden vor Ort durchgeführt wird. Dabei kann es sich um Schulungen, Briefings, Bewertungen oder Demonstrationen handeln, die auf den Daten oder der Umgebung des Kunden aufbauen. 
 
-Hinweis: Abgesehen von der Art des *Briefings* können Beratungsdenste persönlich (d.h. vor Ort beim Kunden oder bei einem Partner) oder virtuell (d.h. per Telefonkonferenz, Webkonferenz oder Remoteimplementierung) angeboten werden. Briefings müssen in Form einer Präsenzveranstaltung angeboten werden.
+**Hinweis:** Abgesehen von der Art des *Briefings* können Beratungsdienste persönlich (d.h. vor Ort beim Kunden oder bei einem Partner) oder virtuell (d.h. per Telefonkonferenz, Webkonferenz oder Remoteimplementierung) angeboten werden. Briefings müssen in Form einer Präsenzveranstaltung angeboten werden.
 
 Sobald Sie die oben genannten Pflichtelemente konfiguriert haben, prüft das Inhaltsprüfungsteam, ob Ihre Angebotsbeschreibung für Ihre Zielgruppe aussagekräftig und vollständig ist. 
 
@@ -144,11 +144,11 @@ Bei der Prüfung von Angebotsbeschreibungen und -zusammenfassungen berücksichti
 
 |Angebotstyp  |Erforderlich |Empfohlen  |
 |---------|---------|---------|
-|Bewertung    |   Fügen Sie eine detaillierte Terminplanung für mehrtägige oder mehrwöchige Bewertungen hinzu, und erläutern Sie, was der Kunde erwarten kann.      |    Optimieren Sie Ihre Angebotszusammenfassung mit Ihren Top-Stichwörtern zur Suchmaschinenoptimierung.     |
-|Briefing    |   Formulieren Sie, was der Kunde erwarten kann. Beachten Sie, dass Briefings in Form einer Präsenzveranstaltung angeboten werden müssen. Wenn Sie einen virtuellen Dienst bereitstellen, wählen Sie einen anderen Angebotstyp.    |  Optimieren Sie Ihre Angebotszusammenfassung mit Ihren Top-Stichwörtern zur Suchmaschinenoptimierung.       |
-|Implementierung    |  Fügen Sie eine detaillierte Terminplanung für mehrtägige oder mehrwöchige Implementierungen hinzu, und erläutern Sie, welche Entwicklungsänderungen, technischen oder andere Artefakte ein Kunde als Ergebnis des Auftrags erwarten kann.       |    Optimieren Sie Ihre Angebotszusammenfassung mit Ihren Top-Stichwörtern zur Suchmaschinenoptimierung.     |
-|Proof of Concept    |    Erläutern Sie, welche Entwicklungsänderungen, technischen oder andere Artefakte ein Kunde als Ergebnis des Auftrags erwarten kann.     | Optimieren Sie Ihre Angebotszusammenfassung mit Ihren Top-Stichwörtern zur Suchmaschinenoptimierung.        |
-|Workshop    |   Fügen Sie abhängig von der gewählten Dauer Ihres Angebots eine detaillierte Tages-, Wochen- oder Monatsplanung hinzu. Formulieren Sie die Lernziele oder andere Ergebnisse Ihres Workshops.     |   Optimieren Sie Ihre Angebotszusammenfassung mit Ihren Top-Stichwörtern zur Suchmaschinenoptimierung.      |
+|**Bewertung**    |   Fügen Sie eine detaillierte Terminplanung für mehrtägige oder mehrwöchige Bewertungen hinzu, und erläutern Sie, was der Kunde erwarten kann.      |    Optimieren Sie Ihre Angebotszusammenfassung mit Ihren Top-Stichwörtern zur Suchmaschinenoptimierung.     |
+|**Briefing**    |   Formulieren Sie, was der Kunde erwarten kann. Beachten Sie, dass Briefings in Form einer Präsenzveranstaltung angeboten werden müssen. Wenn Sie einen virtuellen Dienst bereitstellen, wählen Sie einen anderen Angebotstyp.    |  Optimieren Sie Ihre Angebotszusammenfassung mit Ihren Top-Stichwörtern zur Suchmaschinenoptimierung.       |
+|**Implementierung**    |  Fügen Sie eine detaillierte Terminplanung für mehrtägige oder mehrwöchige Implementierungen hinzu, und erläutern Sie, welche Entwicklungsänderungen, technischen oder andere Artefakte ein Kunde als Ergebnis des Auftrags erwarten kann.       |    Optimieren Sie Ihre Angebotszusammenfassung mit Ihren Top-Stichwörtern zur Suchmaschinenoptimierung.     |
+|**Proof of Concept**    |    Erläutern Sie, welche Entwicklungsänderungen, technischen oder andere Artefakte ein Kunde als Ergebnis des Auftrags erwarten kann.     | Optimieren Sie Ihre Angebotszusammenfassung mit Ihren Top-Stichwörtern zur Suchmaschinenoptimierung.        |
+|**Workshop**    |   Fügen Sie abhängig von der gewählten Dauer Ihres Angebots eine detaillierte Tages-, Wochen- oder Monatsplanung hinzu. Formulieren Sie die Lernziele oder andere Ergebnisse Ihres Workshops.     |   Optimieren Sie Ihre Angebotszusammenfassung mit Ihren Top-Stichwörtern zur Suchmaschinenoptimierung.      |
 
 Im Cloud-Partnerportal können Sie Ihrem Angebot mithilfe von [Markdown](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown) Formatierungen hinzufügen. Dies ist eine schlanke Designsprache, die Ihnen hilft, Ihr Angebot attraktiver zu gestalten. 
 
@@ -160,3 +160,12 @@ Im Cloud-Partnerportal können Sie Ihrem Angebot mithilfe von [Markdown](https:/
 *   Zeilenumbruch nach Überschrift
 *   ** = Fett (ohne Leerzeichen) (z.B **ohne Leerzeichen**) •   Angebotszusammenfassung in Kursivschrift •   Agenda und Ergebnisse als Überschrift
 
+## <a name="next-steps"></a>Nächste Schritte
+
+Falls Sie dies noch nicht getan haben, 
+
+- [registrieren](https://azuremarketplace.microsoft.com/sell) Sie sich im Marketplace.
+
+Wenn Sie registriert sind und im Cloud-Partnerportal arbeiten, 
+
+- [melden Sie sich beim Cloud-Partnerportal an](https://cloudpartner.azure.com), um Ihr Angebot zu erstellen oder zu vervollständigen.

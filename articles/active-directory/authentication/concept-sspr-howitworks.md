@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: efc62243370ff2cc5214a4ae235139bdb5965486
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 8c0810c4a1b92f14e510d005eaf1b6945a058dd7
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248218"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413102"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Funktionsweise der Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -50,6 +50,7 @@ In den folgenden Schritten wird beschrieben, welche Logik hinter der Seite zur K
        * Wenn die Authentifizierungsmethoden nicht konfiguriert sind, wird der Benutzer aufgefordert, sich an den Administrator zu wenden, um sein Kennwort zurückzusetzen.
      * Wenn die Richtlinie zwei Methoden erfordert, wird sichergestellt, dass der Benutzer für mindestens zwei durch die Administratorrichtlinie aktivierte Authentifizierungsmethoden geeignete Daten definiert hat.
        * Wenn die Authentifizierungsmethoden nicht konfiguriert sind, wird der Benutzer aufgefordert, sich an den Administrator zu wenden, um sein Kennwort zurückzusetzen.
+     * Wenn einem Benutzer eine Azure-Administratorrolle zugewiesen wird, wird dadurch auch die sichere Zwei-Wege-Kennwortrichtlinie erzwungen. Weitere Informationen zu dieser Richtlinie finden Sie im Abschnitt [Unterschiede zu Richtlinien zum Zurücksetzen von Administratorkennwörtern](concept-sspr-policy.md#administrator-reset-policy-differences).
    * Es wird überprüft, ob das Benutzerkennwort lokal verwaltet wird (im Verbund, mit Pass-Through-Authentifizierung oder mit Kennworthashsynchronisierung).
      * Wenn das Rückschreiben von Kennwörtern konfiguriert ist und das Benutzerkennwort lokal verwaltet wird, kann der Benutzer mit der Authentifizierung fortfahren und sein Kennwort zurücksetzen.
      * Wenn das Rückschreiben von Kennwörtern nicht konfiguriert ist und das Benutzerkennwort lokal verwaltet wird, wird der Benutzer aufgefordert, sich zum Zurückzusetzen des Kennworts an den Administrator zu wenden.
@@ -68,6 +69,9 @@ Wenn SSPR aktiviert ist, müssen Sie mindestens eine der folgenden Optionen als 
 
 Benutzer können ihr Kennwort nur zurücksetzen, wenn für sie Daten in den Authentifizierungsmethoden vorliegen, die der Administrator aktiviert hat.
 
+> [!WARNING]
+> Konten, denen Azure-Administratorrollen zugewiesen wurden, müssen Methoden nutzen, die im Abschnitt [Unterschiede zu Richtlinien zum Zurücksetzen von Administratorkennwörtern](concept-sspr-policy.md#administrator-reset-policy-differences) definiert sind.
+
 ![Authentifizierung][Authentication]
 
 ### <a name="number-of-authentication-methods-required"></a>Anzahl erforderlicher Authentifizierungsmethoden
@@ -80,13 +84,16 @@ Sind für einen Benutzer nicht die mindestens erforderlichen Methoden registrier
 
 #### <a name="mobile-app-and-sspr-preview"></a>Mobile App und SSPR (Vorschauversion)
 
-Wenn Sie eine mobile App wie die Microsoft Authenticator-App als Methode zur Kennwortzurücksetzung verwenden, sollten Sie Folgendes beachten. Wenn bei der Self-Service-Kennwortzurücksetzung nur eine Methode erforderlich ist, steht Benutzern nur der Prüfcode zur Verfügung. Wenn zwei Methoden erforderlich sind, können Benutzer zum Zurücksetzen **ENTWEDER** die Option „Benachrichtigung“ **ODER** die Option „Prüfcode“ verwenden – zusätzlich zu anderen aktivierten Methoden.
+Wenn Sie eine mobile App wie die Microsoft Authenticator-App als Methode zur Kennwortzurücksetzung verwenden, sollten Sie Folgendes beachten:
+
+* Wenn Administratoren eine Methode zum Zurücksetzen von Kennwörtern erzwingen, steht als einzige Option der Prüfcode zur Verfügung.
+* Wenn Administratoren zwei Methoden für die Kennwortzurücksetzung erfordern, können Benutzer zum Zurücksetzen **ENTWEDER** die Option „Benachrichtigung“ **ODER** die Option „Prüfcode“ verwenden – zusätzlich zu anderen aktivierten Methoden.
 
 | Anzahl von erforderlichen Methoden zum Zurücksetzen | Eine | Zwei |
 | :---: | :---: | :---: |
 | Verfügbare Funktionen der mobilen App | Code | Code oder Benachrichtigung |
 
-Benutzer können ihre mobile App nicht registrieren, wenn sie sich für die Self-Service-Kennwortzurücksetzung registrieren. Stattdessen haben sie die Möglichkeit, ihre mobile App unter aka.ms/mfasetup oder in den Sicherheitsinformationen in der Registrierungsvorschau unter aka.ms/setupsecurityinfo zu registrieren. 
+Benutzer können ihre mobile App nicht registrieren, wenn sie sich für die Self-Service-Kennwortzurücksetzung von [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) registrieren. Die Benutzer haben die Möglichkeit, ihre mobile App unter [https://aka.ms/mfasetup](https://aka.ms/mfasetup) oder in den neuen Sicherheitsinformationen in der Registrierungsvorschau unter [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) zu registrieren.
 
 ### <a name="change-authentication-methods"></a>Ändern der Authentifizierungsmethoden
 

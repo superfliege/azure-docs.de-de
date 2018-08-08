@@ -8,18 +8,20 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: alkohli
-ms.openlocfilehash: c435e21d85ae0ab35bc2fa99f7006e841eaecec0
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: e9fc74e6cd145cbba5b620b9db6db9635a0c4c77
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248774"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364524"
 ---
 # <a name="what-is-azure-importexport-service"></a>Was ist der Azure Import/Export-Dienst?
 
 Mit dem Azure Import/Export-Dienst können Sie große Datenmengen auf sichere Weise in Azure Blob Storage und Azure Files übertragen, indem Sie Festplattenlaufwerke an ein Azure-Rechenzentrum senden. Sie können diesen Dienst auch zum Übertragen von Daten aus Azure Blob Storage auf Festplattenlaufwerke und zum Versand an lokale Standorte nutzen. Daten von einem oder mehreren Datenträgern können in Azure Blob Storage oder in Azure Files importiert werden. 
 
-Für den Azure Import/Export-Dienst müssen Sie Ihre eigenen Datenträger bereitstellen. Wenn Sie Daten mit den von Microsoft bereitgestellten Datenträgern übertragen möchten, können Sie mithilfe des Azure Data Box-Datenträgers Daten in Azure importieren. Microsoft sendet über einen regionalen Transportdienstleister bis zu fünf verschlüsselte SSDs (Solid State Drives) mit einer Kapazität von 40 TB an Ihr Rechenzentrum. Sie können Datenträger schnell konfigurieren, Daten über eine USB 3.0-Verbindung auf die Datenträger kopieren und sie anschließend wieder an Azure zurücksenden. Weitere Informationen finden Sie in der [Übersicht über den Azure Data Box-Datenträger (Vorschauversion)](https://docs.microsoft.com/azure/databox/data-box-disk-overview).
+Stellen Sie eigene Datenträger bereit, und übermitteln Sie Daten mit dem Azure Import/Export-Dienst. Sie können auch Laufwerke verwenden, die von Microsoft bereitgestellt werden. 
+
+Wenn Sie Daten mit den von Microsoft bereitgestellten Datenträgern übermitteln möchten, können Sie mithilfe des [Azure Data Box-Datenträgers](../../databox/data-box-disk-overview.md) Daten in Azure importieren. Microsoft sendet über einen regionalen Transportdienstleister bis zu fünf verschlüsselte SSDs (Solid State Drives) mit einer Gesamtkapazität von 40 TB an Ihr Rechenzentrum. Sie können Datenträger schnell konfigurieren, Daten über eine USB-3.0-Verbindung auf die Datenträger kopieren und diese anschließend wieder an Azure zurücksenden. Weitere Informationen finden Sie in der [Übersicht über den Azure Data Box-Datenträger (Vorschauversion)](../../databox/data-box-disk-overview.md).
 
 ## <a name="azure-importexport-usecases"></a>Anwendungsfälle für Azure Import/Export
 
@@ -34,7 +36,7 @@ Sie können den Import/Export-Dienst von Azure nutzen, wenn das Hoch- bzw. Herun
 
 Der Import/Export-Dienst verwendet die folgenden Komponenten:
 
-- **Import/Export**-Dienst: Dieser Dienst ist im Azure-Portal verfügbar und hilft Benutzern beim Erstellen und Nachverfolgen von Import- und Exportaufträgen.  
+- **Import/Export**-Dienst: Dieser Dienst ist im Azure-Portal verfügbar und hilft Benutzern beim Erstellen und Nachverfolgen von Import- (Upload) und Exportaufträgen (Download) für Daten.  
 
 - **WAImportExport-Tool:** Dies ist ein Befehlszeilentool für Folgendes: 
     - Vorbereiten der Laufwerke, die für den Import versendet werden
@@ -42,13 +44,13 @@ Der Import/Export-Dienst verwendet die folgenden Komponenten:
     - Verschlüsseln der Daten auf dem Laufwerk mit BitLocker
     - Generieren der Laufwerks-Journaldateien während der Erstellung des Imports
     - Ermitteln der Anzahl der für Exportaufträge erforderlichen Laufwerke
-
-    Dieses Tool ist in zwei Versionen verfügbar: Version 1 und 2. Wir empfehlen Folgendes:
-
-    - Version 1 für den Import/Export in Azure Blob Storage 
-    - Version 2 für den Import von Daten in Azure Files
-
-    Das WAImportExport-Tool ist nur mit dem 64-Bit-Windows-Betriebssystem kompatibel. Informationen zu den unterstützten Betriebssystemversionen finden Sie unter [Azure Import/Export – Anforderungen](storage-import-export-requirements.md#supported-operating-systems).
+    
+> [!NOTE]
+> Das WAImportExport-Tool ist in zwei Versionen verfügbar: Version 1 und 2. Wir empfehlen Folgendes:
+> - Version 1 für den Import/Export in Azure Blob Storage 
+> - Version 2 für den Import von Daten in Azure Files
+>
+> Das WAImportExport-Tool ist nur mit dem 64-Bit-Windows-Betriebssystem kompatibel. Informationen zu den unterstützten Betriebssystemversionen finden Sie unter [Azure Import/Export – Anforderungen](storage-import-export-requirements.md#supported-operating-systems).
 
 - **Datenträger:** Sie können Solid State Drives (SSDs) oder Festplattenlaufwerke (HDDs) an das Azure-Rechenzentrum senden. Beim Erstellen eines Importauftrags senden Sie die Laufwerke, die Ihre Daten enthalten. Wenn Sie einen Exportauftrag erstellen, senden Sie leere Laufwerke an das Azure-Rechenzentrum. Informationen zu den Datenträgertypen finden Sie unter [Unterstützte Datenträgertypen](storage-import-export-requirements.md#supported-hardware).
 
@@ -57,12 +59,6 @@ Der Import/Export-Dienst verwendet die folgenden Komponenten:
 Der Azure Import/Export-Dienst ermöglicht die Datenübertragung an Azure-Blobs und Azure Files durch das Erstellen von Aufträgen. Verwenden Sie das Azure-Portal oder die REST-API des Azure Resource Managers, um Aufträge zu erstellen. Jeder Auftrag ist einem einzelnen Speicherkonto zugeordnet. 
 
 Die Aufträge können Import- oder Exportaufträge sein. Mit einem Importauftrag können Sie Daten in Azure-Blobs oder Azure Files importieren, während ein Exportauftrag das Exportieren von Daten aus Azure-Blobs ermöglicht. Bei einem Importauftrag versenden Sie Laufwerke, die Ihre Daten enthalten. Wenn Sie einen Exportauftrag erstellen, versenden Sie leere Laufwerke an ein Azure-Rechenzentrum. In beiden Fällen können Sie bis zu 10 Festplatten pro Auftrag versenden.
-
-> [!IMPORTANT]
-> Das Exportieren von Daten in Azure Files wird nicht unterstützt.
-
-In diesem Abschnitt werden die allgemeinen Schritte beschrieben, die für Import- und Exportaufträge ausgeführt werden müssen. 
-
 
 ### <a name="inside-an-import-job"></a>Importaufträge
 

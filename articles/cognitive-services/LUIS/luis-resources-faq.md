@@ -7,14 +7,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: 8e0d834b94ff902eb0c1e0ada2fb32d374cee12b
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 93ced2d0c79d80a631ad90aa3f5d2dc9f8c79c7e
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239116"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390193"
 ---
 # <a name="language-understanding-faq"></a>Häufig gestellte Fragen zu Language Understanding
 
@@ -147,6 +147,12 @@ Sie sollten keine Testäußerungen protokollieren, wenn Sie das Protokoll für d
 * Sie können Äußerungen aus der Liste der Benutzeräußerungen löschen, die LUIS auf der Seite **Review endpoint utterance** (Endpunktäußerungen überprüfen) vorschlägt. Das Löschen von Äußerungen aus dieser Liste verhindert, dass diese empfohlen werden. Sie werden aber nicht aus den Protokollen gelöscht.
 * Wenn Sie ein Konto löschen, werden alle Apps zusammen mit ihren Beispieläußerungen und Protokollen gelöscht. Die Daten werden 60 Tage lang auf den Servern gespeichert und erst danach dauerhaft gelöscht.
 
+### <a name="does-microsoft-access-my-luis-app-data-for-its-own-purposes-for-example-to-enhance-luis-or-microsoft-in-general"></a>Greift Microsoft für seine eigenen Zwecke auf meine LUIS-App-Daten zu, z.B. um LUIS oder Microsoft im Allgemeinen zu verbessern? 
+
+Nein. Das Datenmodell der LUIS-App wird weder von LUIS verwendet, um LUIS als Plattform zu verbessern, noch in irgendeiner Weise von Microsoft. Die Daten jeder App sind separat und nur im Besitz des Benutzers und Mitwirkender. 
+
+Erfahren Sie mehr über [Benutzerdatenschutz](luis-reference-gdpr.md), [zusätzliche Sicherheitskonformität](luis-concept-security.md#security-compliance) und [Datenspeicherung](luis-concept-data-storage.md).
+
 ## <a name="language-and-translation-support"></a>Sprach- und Übersetzungsunterstützung 
 
 ### <a name="i-have-an-app-in-one-language-and-want-to-create-a-parallel-app-in-another-language-what-is-the-easiest-way-to-do-so"></a>Ich habe eine App in einer bestimmten Sprache erstellt und möchte nun dieselbe App in einer anderen Sprache erstellen. Wie geht das am einfachsten?
@@ -175,20 +181,6 @@ Die [Sprachoptimierung ](https://docs.microsoft.com/bot-framework/bot-service-ma
 ### <a name="is-luis-available-on-premises-or-in-private-cloud"></a>Kann LUIS lokal oder in einer privaten Cloud genutzt werden?
 Nein. 
 
-## <a name="changes-to-the-docs"></a>Dokumentationsänderungen
-
-### <a name="where-did-the-tutorials-go"></a>Wohin wurden die Tutorials verschoben? 
-Die Artikel, die sich zuvor im Tutorialabschnitt befanden, sind nun im Abschnitt „Vorgehensweise“ der Dokumentation. 
-
-|Tutorial|
-|--|
-|Integrieren von LUIS in einen Bot über [C#](luis-csharp-tutorial-build-bot-framework-sample.md) und [Node.js](luis-nodejs-tutorial-build-bot-framework-sample.md)|
-|Hinzufügen von Application Insights zu einem Bot über [C#](luis-tutorial-bot-csharp-appinsights.md) und [Node.js](luis-tutorial-function-appinsights.md)|
-|Programmgesteuertes Erstellen einer LUIS-App über [Node.js](luis-tutorial-node-import-utterances-csv.md)|
-|Verwenden einer [zusammengesetzten Entität](luis-tutorial-composite-entity.md) zum Extrahieren von gruppierten Daten|
-|Hinzufügen einer [Listenentität](luis-tutorial-list-entity.md) zur verbesserten Entitätserkennung mithilfe von Node.js|
-|Verbessern der Vorhersagegenauigkeit mit [Begriffslisten](luis-quickstart-primary-and-secondary-data.md), [Mustern](luis-tutorial-pattern.md) und [Batchtests](luis-tutorial-batch-testing.md)|
-|[Verbessern von Rechtschreibfehlern](luis-tutorial-batch-testing.md) mit der Bing-Rechtschreibprüfungs-API v7
 
 ### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>Bei der Build 2018-Konferenz wurde ein Language Understanding-Feature oder eine Language Understanding-Demo erwähnt, aber ich erinnere mich nicht mehr an den Namen. Um welche Features oder Demos handelte es sich? 
 
@@ -198,7 +190,7 @@ Die folgenden Features wurden bei der Build 2018-Konferenz veröffentlicht:
 |--|--|
 |Verbesserungen|Entitäten für [reguläre Ausdrücke](luis-concept-data-extraction.md##regular-expression-entity-data) und [Schlüsselbegriffe](luis-concept-data-extraction.md#key-phrase-extraction-entity-data)
 |Muster|[Musterkonzept](luis-concept-patterns.md), [Tutorial](luis-tutorial-pattern.md), [Vorgehensweise](luis-how-to-model-intent-pattern.md)<br>[Patterns.Any](luis-concept-entity-types.md)-Entitätskonzept einschließlich [expliziter Listen](luis-concept-patterns.md#explicit-lists) für Ausnahmen<br>[Rollenkonzept](luis-concept-roles.md)|
-|Integrationen|Integration der [Standpunktanalyse](luis-how-to-publish-app.md#enable-sentiment-analysis) in die [Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)<br>Integration der [Sprachoptimierung](luis-how-to-publish-app.md#enable-speech-priming) in Verbindung mit dem [Speech SDK](https://aka.ms/SpeechSDK) in [Speech](https://docs.microsoft.com/azure/cognitive-services/speech)|
+|Integrationen|Integration der [Standpunktanalyse](luis-how-to-publish-app.md#enable-sentiment-analysis) in die [Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)<br>Integration der Sprachoptimierung in Verbindung mit dem [Speech SDK](https://aka.ms/SpeechSDK) in [Speech](https://docs.microsoft.com/azure/cognitive-services/speech)|
 |Dispatch-Tool|Das [Dispatch-Befehlszeilentool](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps) ist Teil der [Bot Builder-Tools](https://github.com/Microsoft/botbuilder-tools) und dient dazu, mehrere LUIS- und QnA Maker-Apps in einer einzelnen LUIS-App zu vereinen. Dadurch kann die Absichtserkennung eines Bots verbessert werden.
 
 Zusätzliche [API-Erstellungsrouten](https://github.com/Microsoft/LUIS-Samples/blob/master/authoring-routes.md) wurden hinzugefügt. 

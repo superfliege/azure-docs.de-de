@@ -1,23 +1,24 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache in C# in einer UWP-App mit dem Cognitive Services Speech SDK | Microsoft-Dokumentation'
+title: 'Schnellstart: Erkennen von Sprache in C# in einer UWP-App mit dem Cognitive Services Speech SDK'
 titleSuffix: Microsoft Cognitive Services
 description: Erfahren Sie, wie Sie Sprache in einer UWP-App mit dem Cognitive Services Speech SDK erkennen können.
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 751736a4333932a68775589dddeb82ef6fa6f398
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 549a8fd29cf1f986da0af1ae49dbf0e5335603bd
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258207"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325699"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in einer UWP-App mit dem Speech SDK
+
+[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Dieser Artikel enthält Informationen zur Erstellung einer UWP-Anwendung (Universelle Windows-Plattform) mithilfe des Cognitive Services Speech SDK zum Umwandeln von Sprache in Text.
 Die Anwendung basiert auf dem [NuGet-Paket für das Microsoft Cognitive Services Speech SDK](https://aka.ms/csspeech/nuget) und auf Microsoft Visual Studio 2017.
@@ -116,6 +117,6 @@ Suchen Sie nach diesem Beispiel im Ordner `quickstart/csharp-uwp`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Übersetzen von Sprache](how-to-translate-speech.md)
+- [Übersetzen von Sprache](how-to-translate-speech-csharp.md)
 - [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](how-to-customize-acoustic-models.md)
 - [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md)

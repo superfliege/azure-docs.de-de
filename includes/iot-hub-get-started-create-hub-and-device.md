@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: f8cd78e63099f864c5fc54b6268f6e558d738626
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9f7fee71fb2b80be93d978569791dbb57f137949
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38724927"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346833"
 ---
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
 
@@ -21,15 +21,14 @@ ms.locfileid: "38724927"
 
 Nachdem Sie nun einen IoT Hub erstellt haben, können Sie nach den wichtigen Informationen suchen, die Sie zum Herstellen einer Verbindung für Geräte und Anwendungen mit Ihrem IoT Hub nutzen. 
 
-Öffnen Sie in Ihrem IoT Hub-Navigationsmenü die Option **Freigegebene Zugriffsrichtlinien**.
-Wählen Sie die Richtlinie **iothubowner** aus, und kopieren Sie die **Verbindungszeichenfolge – Primärschlüssel** Ihres IoT Hub. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf IoT Hub](../articles/iot-hub/iot-hub-devguide-security.md).
+Öffnen Sie in Ihrem IoT Hub-Navigationsmenü die Option **Freigegebene Zugriffsrichtlinien**. Wählen Sie die Richtlinie **iothubowner** aus, und kopieren Sie die **Verbindungszeichenfolge – Primärschlüssel** Ihres IoT Hub. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf IoT Hub](../articles/iot-hub/iot-hub-devguide-security.md).
 
    > [!NOTE] 
    > Die Verbindungszeichenfolge „iothubowner“ wird für dieses Tutorial nicht benötigt. Sie benötigen sie allerdings unter Umständen für einige Tutorials oder andere IoT-Szenarien, nachdem Sie diese Einrichtung abgeschlossen haben.
 
    ![Abrufen der IoT Hub-Verbindungszeichenfolge](./media/iot-hub-get-started-create-hub-and-device/create-iot-hub5.png)
 
-## <a name="register-a-device-in-the-iot-hub-for-your-device"></a>Registrieren eines Geräts beim IoT Hub für Ihr Gerät
+## <a name="register-your-device-in-the-iot-hub"></a>Registrieren Ihres Geräts bei der IoT Hub-Instanz
 
 1. Öffnen Sie in Ihrem IoT Hub-Navigationsmenü die Option **IoT-Geräte**, und klicken Sie auf **Hinzufügen**, um ein Gerät in Ihrem IoT Hub zu registrieren.
 
@@ -39,8 +38,10 @@ Wählen Sie die Richtlinie **iothubowner** aus, und kopieren Sie die **Verbindun
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
-4. Klicken Sie auf **Speichern**.
-5. Öffnen Sie das Gerät nach der Erstellung in der Liste im Bereich **IoT-Geräte**.
-6. Kopieren Sie **Verbindungszeichenfolge – Primärschlüssel** zur späteren Verwendung.
+3. Klicken Sie auf **Speichern**.
+
+4. Öffnen Sie das Gerät nach der Erstellung in der Liste im Bereich **IoT-Geräte**.
+
+5. Kopieren Sie **Verbindungszeichenfolge – Primärschlüssel** zur späteren Verwendung.
 
    ![Abrufen der Geräte-Verbindungszeichenfolge](./media/iot-hub-get-started-create-hub-and-device/device-connection-string.png)

@@ -1,21 +1,20 @@
 ---
-title: Informationen zur Spracherkennung | Microsoft-Dokumentation
+title: Informationen zur Spracherkennung
 description: Übersicht zu den Funktionen der Spracherkennungs-API
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 2ed00377db80849a8355ccc895db12d006bea642
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: ba6710c8b5b8de1c63fa6778ea3853ab52365254
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069926"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325335"
 ---
 # <a name="about-the-speech-to-text-api"></a>Informationen zur Spracherkennungs-API
 
@@ -51,4 +50,5 @@ Einige Funktionen der **Spracherkennungs**-API sind nicht über REST verfügbar.
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
-* [Erkennen von Sprache in C#](quickstart-csharp-dotnet-windows.md)
+* [Schnellstart: Erkennen von Sprache in C#](quickstart-csharp-dotnet-windows.md)
+* [Erfahren Sie, wie die Absichtserkennung anhand von Sprache in C# funktioniert](how-to-recognize-intents-from-speech-csharp.md)

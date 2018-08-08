@@ -9,12 +9,12 @@ ms.workload: storage
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
-ms.openlocfilehash: 9721935f005bbd9a5dc261fe801ecc14744b004f
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: ec314925635d34baa7b3edeeb397805964b6353d
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752791"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413126"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Verwalten des Azure Blob Storage-Lebenszyklus (Vorschau)
 
@@ -70,7 +70,7 @@ Wenn die Funktion genehmigt und ordnungsgemäß registriert wurde, sollte der St
 
 ## <a name="add-or-remove-policies"></a>Hinzufügen oder Entfernen von Richtlinien 
 
-Sie können eine Richtlinie mithilfe des Azure-Portals, von [PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview), REST-APIs oder Clienttools in den folgenden Sprachen hinzufügen, bearbeiten oder entfernen: [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0), [Ruby]( https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
+Sie können eine Richtlinie über das Azure-Portal bzw. mit [PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview), [REST-APIs](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts/createorupdatemanagementpolicies) oder Clienttools in den folgenden Sprachen hinzufügen, bearbeiten oder entfernen: [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0) und [Ruby]( https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -133,7 +133,7 @@ Parameter, die innerhalb einer Regel erforderlich sind:
 
 ## <a name="rules"></a>Regeln
 
-Jede Regeldefinition enthält einen Filtersatz und einen Aktionssatz. Die folgende Beispielregel ändert die Ebene für Basis-Blockblobs mit dem Präfix `foo`. In der Richtlinie sind diese Regeln wie folgt definiert:
+Jede Regeldefinition enthält einen Filtersatz und einen Aktionssatz. Die folgende Beispielregel ändert die Ebene für Basis-Blockblobs mit dem Präfix `container1/foo`. In der Richtlinie sind diese Regeln wie folgt definiert:
 
 - Blob 30 Tage nach der letzten Änderung in die kalte Speicherebene verschieben
 - Blob 90 Tage nach der letzten Änderung in die Archivspeicherebene verschieben
@@ -150,7 +150,7 @@ Jede Regeldefinition enthält einen Filtersatz und einen Aktionssatz. Die folgen
       "definition": {
         "filters": {
           "blobTypes": [ "blockBlob" ],
-          "prefixMatch": [ "foo" ]
+          "prefixMatch": [ "container1/foo" ]
         },
         "actions": {
           "baseBlob": {
@@ -177,8 +177,8 @@ Diese Filter sind in der Vorschauphase gültig:
 
 | Filtername | Filtertyp | Notizen | Ist erforderlich |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Ein Array von vordefinierten Enumerationswerten. | In der Vorschauversion wird nur `blockBlob` unterstützt. | Ja |
-| prefixMatch | Ein Array von Zeichenfolgen für Präfixe, mit denen Übereinstimmung erzielt werden soll. | Wenn es nicht definiert ist, gilt diese Regel für alle Blobs im Konto. | Nein  |
+| blobTypes   | Ein Array von vordefinierten Enumerationswerten. | In der Vorschauversion wird nur `blockBlob` unterstützt. | JA |
+| prefixMatch | Ein Array von Zeichenfolgen für Präfixe, mit denen Übereinstimmung erzielt werden soll. Eine Präfixzeichenfolge muss mit einem Containernamen beginnen. Wenn beispielsweise alle Blobs unter https://myaccount.blob.core.windows.net/mycontainer/mydir/.. für eine Regel gefunden werden, ist das Präfix „mycontainer/mydir“. | Wenn es nicht definiert ist, gilt diese Regel für alle Blobs im Konto. | Nein  |
 
 ### <a name="rule-actions"></a>Regelaktionen
 
@@ -207,7 +207,7 @@ Die folgenden Beispiele veranschaulichen die Behandlung von gängigen Szenarien 
 
 ### <a name="move-aging-data-to-a-cooler-tier"></a>Verschieben von alternden Daten auf eine kühlere Ebene
 
-Das folgende Beispiel zeigt den Übergang von Blockblobs mit dem Präfix `foo` oder `bar`. Die Richtlinie überführt Blobs, die mehr als 30 Tage nicht verändert wurden, in den kalten Speicher und Blobs, die in 90 Tagen nicht verändert wurden, in die Archivebene:
+Das folgende Beispiel zeigt den Übergang von Blockblobs mit dem Präfix `container1/foo` oder `container2/bar`. Die Richtlinie überführt Blobs, die mehr als 30 Tage nicht verändert wurden, in den kalten Speicher und Blobs, die in 90 Tagen nicht verändert wurden, in die Archivebene:
 
 ```json
 {
@@ -220,7 +220,7 @@ Das folgende Beispiel zeigt den Übergang von Blockblobs mit dem Präfix `foo` o
         {
           "filters": {
             "blobTypes": [ "blockBlob" ],
-            "prefixMatch": [ "foo", "bar" ]
+            "prefixMatch": [ "container1/foo", "container2/bar" ]
           },
           "actions": {
             "baseBlob": {
@@ -236,7 +236,7 @@ Das folgende Beispiel zeigt den Übergang von Blockblobs mit dem Präfix `foo` o
 
 ### <a name="archive-data-at-ingest"></a>Archivieren von Daten bei der Erfassung 
 
-Außerdem gibt es Daten, die in der Cloud lediglich vorgehalten werden und auf die nach der Speicherung nur sehr selten oder gar nicht zugegriffen wird. Diese Daten sollten idealerweise unmittelbar nach der Erfassung archiviert werden. Die folgende Lebenszyklusrichtlinie ist so konfiguriert, dass Daten nach der Erfassung archiviert werden. In diesem Beispiel werden Blockblobs im Speicherkonto mit dem Präfix `archive` sofort an eine Archivebene überführt. Die unmittelbare Umstellung wird durch die Ausführung der Aktion für Blobs 0 Tage nach dem Zeitpunkt der letzten Änderung erreicht:
+Außerdem gibt es Daten, die in der Cloud lediglich vorgehalten werden und auf die nach der Speicherung nur sehr selten oder gar nicht zugegriffen wird. Diese Daten sollten idealerweise unmittelbar nach der Erfassung archiviert werden. Die folgende Lebenszyklusrichtlinie ist so konfiguriert, dass Daten nach der Erfassung archiviert werden. In diesem Beispiel werden Blockblobs im Speicherkonto in Container `archivecontainer` sofort an eine Archivebene überführt. Die unmittelbare Umstellung wird durch die Ausführung der Aktion für Blobs 0 Tage nach dem Zeitpunkt der letzten Änderung erreicht:
 
 ```json
 {
@@ -249,7 +249,7 @@ Außerdem gibt es Daten, die in der Cloud lediglich vorgehalten werden und auf d
         {
           "filters": {
             "blobTypes": [ "blockBlob" ],
-            "prefixMatch": [ "archive" ]
+            "prefixMatch": [ "archivecontainer" ]
           },
           "actions": {
             "baseBlob": { 
@@ -292,7 +292,7 @@ Bei einigen Daten wird der Ablauf Tage oder Monate nach der Erstellung erwartet,
 
 ### <a name="delete-old-snapshots"></a>Löschen von alten Momentaufnahmen
 
-Bei Daten, die regelmäßig geändert und auf die während ihrer Lebensdauer regelmäßig zugegriffen wird, werden Momentaufnahmen häufig verwendet, um ältere Versionen der Daten nachzuverfolgen. Sie können eine Richtlinie erstellen, die alte Momentaufnahmen auf der Grundlage des Alters der Momentaufnahme löscht. Das Alter der Momentaufnahme wird durch Auswertung der Erstellungszeit der Momentaufnahme bestimmt. Diese Richtlinie entdeckt Blockblob-Momentaufnahmen mit dem Präfix `activeData`, die 90 Tage alt oder älter ab dem Zeitpunkt der Erstellung der Momentaufnahme sind.
+Bei Daten, die regelmäßig geändert und auf die während ihrer Lebensdauer regelmäßig zugegriffen wird, werden Momentaufnahmen häufig verwendet, um ältere Versionen der Daten nachzuverfolgen. Sie können eine Richtlinie erstellen, die alte Momentaufnahmen auf der Grundlage des Alters der Momentaufnahme löscht. Das Alter der Momentaufnahme wird durch Auswertung der Erstellungszeit der Momentaufnahme bestimmt. Diese Richtlinie löscht Blockblob-Momentaufnahmen in Container `activedata`, die mindestens 90 Tage alt sind (ab dem Zeitpunkt der Erstellung der Momentaufnahme).
 
 ```json
 {
@@ -305,7 +305,7 @@ Bei Daten, die regelmäßig geändert und auf die während ihrer Lebensdauer reg
         {
           "filters": {
             "blobTypes": [ "blockBlob" ],
-            "prefixMatch": [ "activeData" ]
+            "prefixMatch": [ "activedata" ]
           },
           "actions": {            
             "snapshot": {

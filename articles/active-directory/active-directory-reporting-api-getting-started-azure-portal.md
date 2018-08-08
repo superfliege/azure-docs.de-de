@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/07/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ce8630f5718a849f460b372d9e15b03902ac2117
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 89562e6a2bfb977585cec1925a5f306c69c3d1e8
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159678"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390669"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Erste Schritte mit der Berichterstellungs-API von Azure Active Directory
 
@@ -43,8 +43,6 @@ Um auf die Berichterstellungs-API zuzugreifen, müssen Sie folgende Schritte dur
 3. Erteilen von Berechtigungen
 4. Erfassen von Konfigurationseinstellungen
 
-
- 
 Ausführliche Anweisungen finden Sie in den [Voraussetzungen für den Zugriff auf die Azure Active Directory-Berichterstellungs-API](active-directory-reporting-api-prerequisites-azure-portal.md).
 
 ## <a name="apis-with-graph-explorer"></a>APIs mit Graph-Tester
@@ -55,9 +53,9 @@ Sie können den [MSGraph-Tester](https://developer.microsoft.com/en-us/graph/gra
 
 ![Benutzeroberfläche zum Ändern von Berechtigungen](./media/active-directory-reporting-api-getting-started-azure-portal/modify-permissions.png)
 
-## <a name="recommendation"></a>Empfehlung 
+## <a name="use-certificates-to-access-the-azure-ad-reporting-api"></a>Verwenden von Zertifikaten für den Zugriff auf die Azure AD-Berichterstellungs-API 
 
-Wenn Sie Berichtsdaten ohne Benutzereingriff abrufen möchten, sollten Sie eventuell die Azure AD-Berichterstellungs-API mit Zertifikaten verwenden.
+Erwägen Sie die Verwendung der Azure AD-Berichterstellungs-API mit Zertifikaten, wenn Sie planen, die Daten für die Berichterstellung ohne Benutzeraktion abzurufen.
 
 Ausführliche Anweisungen finden Sie unter [Abrufen von Daten per Azure AD-Berichterstellungs-API mit Zertifikaten](active-directory-reporting-api-with-certificates.md).
 
@@ -67,17 +65,13 @@ Ausführliche Anweisungen finden Sie unter [Abrufen von Daten per Azure AD-Beric
 Verschaffen Sie sich einen ersten Eindruck über die Berichterstellungs-APIs:
    
    - [Verwenden der Beispiele für die Überwachungs-API](active-directory-reporting-api-audit-samples.md) 
- 
    - [Verwenden der Beispiele für die Anmeldeaktivitätsbericht-API](active-directory-reporting-api-sign-in-activity-samples.md)
 
 
-## <a name="customize"></a>Anpassen  
+## <a name="next-steps"></a>Nächste Schritte
 
-Erstellen Sie Ihre eigene Lösung: 
-   
-   - [Verwenden der Referenz zur Überwachungs-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-
-   - [Verwenden der Referenz zur Anmeldeaktivitätsbericht-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
-
+ * [Referenz zur Überwachungs-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
+ * [Referenz zur Anmeldeaktivitätsbericht-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+ * [Beheben von Fehlern in der Azure AD-Berichterstellungs-API](active-directory-reporting-troubleshoot-graph-api.md)
 
 

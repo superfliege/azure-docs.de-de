@@ -10,31 +10,31 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/09/2018
+ms.date: 7/31/2018
 ms.author: rithorn
-ms.openlocfilehash: c8152a6c12c776806d9a17c5e434d825d6c91165
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 146ded37dbf517528af23574cd5b9325f4b5f9d0
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38466642"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358768"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen
 
 Wenn Ihre Organisation über viele Abonnements verfügt, benötigen Sie möglicherweise eine Möglichkeit zur effizienten Verwaltung von Zugriff, Richtlinien und Konformität für diese Abonnements. Azure-Verwaltungsgruppen stellen einen abonnementübergreifenden Bereich dar. Sie organisieren Abonnements in Containern, die als „Verwaltungsgruppen“ bezeichnet werden, und wenden Ihre Governancebedingungen auf die Verwaltungsgruppen an. Alle Abonnements in einer Verwaltungsgruppe erben automatisch die auf die Verwaltungsgruppe angewendeten Bedingungen. Verwaltungsgruppen ermöglichen Ihnen – unabhängig von den Arten Ihrer Abonnements – die unternehmenstaugliche Verwaltung in großem Umfang.
-
-Das Feature für Verwaltungsgruppen ist in einer öffentlichen Vorschauversion verfügbar. Um mit der Verwendung von Verwaltungsgruppen zu beginnen, melden Sie sich am [Azure-Portal](https://portal.azure.com) an, und suchen Sie im Abschnitt **Alle Dienste** nach **Verwaltungsgruppen**.
 
 Beispielsweise können Sie eine Richtlinie auf eine Verwaltungsgruppe anwenden, die die verfügbaren Regionen zum Erstellen virtueller Computer einschränkt. Diese Richtlinie wird auf alle Verwaltungsgruppen, Abonnements und Ressourcen in dieser Verwaltungsgruppe angewendet, sodass virtuelle Computer nur in dieser Region erstellt werden können.
 
 ## <a name="hierarchy-of-management-groups-and-subscriptions"></a>Hierarchie von Verwaltungsgruppen und Abonnements
 
 Sie können eine flexible Struktur von Verwaltungsgruppen und Abonnements aufbauen, um Ihre Ressourcen für die einheitliche Richtlinien- und Zugriffsverwaltung in einer Hierarchie zu organisieren.
-Das folgende Diagramm zeigt eine Beispielhierarchie, die aus Verwaltungsgruppen und Abonnements besteht, die nach Abteilung organisiert sind.
+Das folgende Diagramm zeigt ein Beispiel zum Erstellen einer Hierarchie für die Governance unter Verwendung von Verwaltungsgruppen.
 
 ![Struktur](media/management-groups/MG_overview.png)
 
-Indem Sie eine Hierarchie erstellen, die nach Abteilungen gruppiert ist, können Sie Rollen der [rollenbasierten Zugriffssteuerung (RBAC) in Azure](../role-based-access-control/overview.md) zuweisen, die an die Abteilungen unter dieser Verwaltungsgruppe *vererbt* werden. Mithilfe von Verwaltungsgruppen können Sie die Workload und das Risiko von Fehlern verringern, indem Sie die Rolle nur einmal zuweisen müssen.
+Durch Erstellen einer Hierarchie wie in diesem Beispiel können Sie eine Richtlinie, z.B. auf Region „USA, Westen“ beschränkte Speicherorte, auf die Gruppe „Verwaltungsgruppe Infrastrukturteam“ anwenden, um interne Konformitäts- und Sicherheitsrichtlinien zu aktivieren. Diese Richtlinie wird an beide EA-Abonnements in dieser Verwaltungsgruppe vererbt und gilt für alle virtuellen Computer dieses Abonnements. Da diese Richtlinie von der Verwaltungsgruppe an die Abonnements vererbt wird, kann diese Sicherheitsrichtlinie nicht vom Besitzer der Ressource oder des Abonnements geändert werden und bietet eine verbesserte Governance.
+
+Ein weiteres Szenario, in dem Sie Verwaltungsgruppen verwenden würden, ist das Gewähren von Benutzerzugriff auf mehrere Abonnements.  Indem Sie mehrere Abonnements unter diese Verwaltungsgruppe verschieben, haben Sie die Möglichkeit, eine RBAC-Zuweisung in der Verwaltungsgruppe zu erstellen, die diesen Zugriff an alle Abonnements vererbt.  Ohne dass in einem Skript RBAC-Zuweisungen für mehrere Abonnements erstellt werden müssen, kann eine Zuweisung in der Verwaltungsgruppe Benutzern den Zugriff auf alles ermöglichen, was sie benötigen.
 
 ### <a name="important-facts-about-management-groups"></a>Wichtige Fakten zu Verwaltungsgruppen
 
@@ -44,19 +44,6 @@ Indem Sie eine Hierarchie erstellen, die nach Abteilungen gruppiert ist, können
 - Jede Verwaltungsgruppe und jedes Abonnement kann nur ein übergeordnetes Element unterstützen.
 - Jede Verwaltungsgruppe kann mehrere untergeordnete Elemente besitzen.
 - Alle Abonnements und Verwaltungsgruppen sind in einer einzelnen Hierarchie in jedem Verzeichnis enthalten. Weitere Informationen zu den Ausnahmen während der Vorschauphase finden Sie unter [Wichtige Fakten zur Stammverwaltungsgruppe](#important-facts-about-the-root-management-group).
-
-### <a name="preview-subscription-visibility-limitation"></a>Eingeschränkte Sichtbarkeit von Abonnements in der Vorschauversion
-
-Zurzeit weist die Vorschauversion die Einschränkung auf, dass keine Abonnements angezeigt werden können, deren Zugriff Sie geerbt haben. Der Zugriff wird an das Abonnement vererbt, der Azure Resource Manager kann jedoch vererbte Zugriffe noch nicht berücksichtigen.  
-
-Wenn Sie Informationen zum Abonnement mithilfe der REST-API abrufen, werden Details zurückgegeben, da Sie zwar Zugriff auf die Abonnements haben, diese jedoch weder im Azure-Portal noch in Azure PowerShell angezeigt werden.
-
-An der Lösung dieses Problem wird zurzeit gearbeitet. Noch vor der Ankündigung der allgemeinen Verfügbarkeit von Verwaltungsgruppen wird eine Lösung bereitgestellt.  
-
-### <a name="cloud-solution-provider-csp-limitation-during-preview"></a>CSP-Einschränkung (Cloud Solution Provider) in der Vorschauversion
-
-Es gibt eine aktuelle Einschränkung für CSP-Partner (Cloud Solution Provider), die dazu führt, dass diese ihre Kundenverwaltungsgruppen nicht im Kundenverzeichnis erstellen oder verwalten können.  
-An der Lösung dieses Problem wird zurzeit gearbeitet. Noch vor der Ankündigung der allgemeinen Verfügbarkeit von Verwaltungsgruppen wird eine Lösung bereitgestellt.
 
 ## <a name="root-management-group-for-each-directory"></a>Stammverwaltungsgruppe für jedes Verzeichnis
 
@@ -76,7 +63,7 @@ Jedes Verzeichnis erhält eine einzelne Verwaltungsgruppe auf oberster Ebene, di
   - Niemand erhält Standardzugriff auf die Stammverwaltungsgruppe. Globale Verzeichnisadministratoren sind die einzigen Benutzer, die ihre Rechte erhöhen können, um Zugriff zu erlangen.  Sobald sie über Zugriff verfügen, können die Verzeichnisadministratoren eine beliebige RBAC-Rolle anderen Benutzern zum Verwalten zuweisen.  
 
 >[!NOTE]
->Wenn Ihr Verzeichnis mit der Verwendung des Verwaltungsgruppendiensts vor dem 25.06.2018 begonnen hat, ist Ihr Verzeichnis ggf. nicht mit allen Abonnements in der Hierarchie eingerichtet. Das Verwaltungsgruppenteam aktualisiert im Juli 2018 rückwirkend jedes Verzeichnis, das mit der Verwendung von Verwaltungsgruppen in der öffentlichen Vorschauversion vor diesem Datum begonnen hat. Alle Abonnements in den Verzeichnissen werden zuvor zu untergeordneten Elementen in der Stammverwaltungsgruppe erklärt.  
+>Wenn Ihr Verzeichnis mit der Verwendung des Verwaltungsgruppendiensts vor dem 25.06.2018 begonnen hat, ist Ihr Verzeichnis ggf. nicht mit allen Abonnements in der Hierarchie eingerichtet. Das Verwaltungsgruppenteam aktualisiert im Juli/August 2018 rückwirkend jedes Verzeichnis, das mit der Verwendung von Verwaltungsgruppen in der öffentlichen Vorschauversion vor diesem Datum begonnen hat. Alle Abonnements in den Verzeichnissen werden zuvor zu untergeordneten Elementen in der Stammverwaltungsgruppe erklärt.  
 >
 >Wenn Sie Fragen zu diesem rückwirkenden Vorgang haben, wenden Sie sich an: managementgroups@microsoft.com  
   
@@ -97,9 +84,13 @@ Die folgende Abbildung zeigt die Liste der Rollen und die unterstützten Aktione
 |:-------------------------- |:------:|:------:|:----:|:------:|:-------------:| :------------:|:-----:|
 |Owner (Besitzer)                       | X      | X      | X    | X      | X             |               | X     |
 |Mitwirkender                 | X      | X      | X    | X      |               |               | X     |
+|MG-Mitwirkender*             | X      | X      | X    | X      |               |               | X     |
 |Leser                      |        |        |      |        |               |               | X     |
+|MG-Leser*                  |        |        |      |        |               |               | X     |
 |Ressourcenrichtlinienmitwirkender |        |        |      |        |               | X             |       |
 |Benutzerzugriffsadministrator   |        |        |      |        | X             |               |       |
+
+*: MG-Mitwirkender und MG-Leser lassen nur zu, dass Benutzer diese Aktionen im Bereich der Verwaltungsgruppe ausführen.  
 
 ### <a name="custom-rbac-role-definition-and-assignment"></a>Definition und Zuweisung der benutzerdefinierten RBAC-Rolle
 

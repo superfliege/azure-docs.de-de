@@ -1,5 +1,5 @@
 ---
-title: Zuweisen von Administratorrollen in Azure Active Directory | Microsoft Docs
+title: Zuweisen von Administratorrollen in Azure Active Directory | Microsoft-Dokumentation
 description: Eine Administratorrolle kann zum Hinzufügen von Benutzern, zum Zuweisen von Administratorrollen, zum Zurücksetzen von Benutzerkennwörtern sowie zum Verwalten von Benutzerlizenzen oder Domänen verwendet werden. Ein Benutzer, dem eine Administratorrolle zugewiesen wurde, verfügt für alle Dienste, die Ihre Organisation abonniert hat, über die gleichen Berechtigungen.
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 07/25/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 34b56c7435e2995f806828dce34f3d6bf425ca75
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 5d6254efbb6051bf4fcd01abd4fbf858b0211319
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449075"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399939"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Zuweisen von Administratorrollen in Azure Active Directory
 
@@ -46,10 +46,8 @@ Die folgenden Administratorrollen sind verfügbar:
 
 * **[Administrator für den bedingten Zugriff:](#conditional-access-administrator)** Benutzer mit dieser Rolle haben die Möglichkeit, Azure Active Directory-Einstellungen für den bedingten Zugriff zu verwalten.
   > [!NOTE]
-  > Um die Exchange ActiveSync-Richtlinie für bedingten Zugriff in Azure bereitzustellen, muss der Benutzer auch globaler Administrator sein.
+  > Um die Exchange ActiveSync-Richtlinie für bedingten Zugriff in Azure bereitzustellen, muss der Benutzer auch ein globaler Administrator sein.
   
-* **[Dynamics 365-Dienstadministrator/CRM-Dienstadministrator:](#crm-service-administrator)** Benutzer mit dieser Rolle verfügen über globale Berechtigungen in Microsoft CRM Online, sofern der Dienst vorhanden ist, und können Supporttickets verwalten und die Dienstintegrität überwachen. Weitere Informationen finden Sie unter [Verwenden der Dienstadministratorrolle zum Verwalten Ihres Mandanten](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant).
-
 * **[Geräteadministrator:](#device-administrators)** Benutzer mit dieser Rolle werden zu lokalen Geräteadministratoren für alle Windows 10-Geräte, die Azure Active Directory beitreten. Sie können keine Geräteobjekte in Azure Active Directory verwalten.
 
 * **[Verzeichnis lesen:](#directory-readers)** Dies ist eine Legacyrolle, die Anwendungen ohne Unterstützung für das [Consent Framework](../develop/active-directory-integrating-applications.md) zugewiesen wird. Diese Rolle sollte keinem Benutzer zugewiesen werden.
@@ -57,6 +55,8 @@ Die folgenden Administratorrollen sind verfügbar:
 * **[Konten für die Verzeichnissynchronisierung:](#directory-synchronization-accounts)** Verwenden Sie diese Rolle nicht. Diese Rolle wird automatisch dem Azure AD Connect-Dienst zugewiesen und ist weder für eine andere Verwendung vorgesehen, noch wird eine andere Verwendung unterstützt.
 
 * **[Verzeichnis schreiben:](#directory-writers)** Dies ist eine Legacyrolle, die Anwendungen ohne Unterstützung für das [Consent Framework](../develop/active-directory-integrating-applications.md) zugewiesen wird. Diese Rolle sollte keinem Benutzer zugewiesen werden.
+
+* **[Dynamics 365-Dienstadministrator/CRM-Dienstadministrator:](#dynamics-365-service-administrator)** Benutzer mit dieser Rolle verfügen über globale Berechtigungen in Microsoft Dynamics 365 Online, sofern der Dienst vorhanden ist, und können Supporttickets verwalten und die Dienstintegrität überwachen. Weitere Informationen finden Sie unter [Verwenden der Dienstadministratorrolle zum Verwalten Ihres Mandanten](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant).
 
 * **[Exchange-Dienstadministrator:](#exchange-service-administrator)** Benutzer mit dieser Rolle haben globale Berechtigungen in Microsoft Exchange Online, wenn der Dienst vorhanden ist. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
@@ -267,11 +267,6 @@ Erstellen und Verwalten sämtlicher Aspekte von App-Registrierungen und Enterpri
 Verwalten sämtlicher Aspekte von Azure AD und Microsoft-Diensten, die Azure AD-Identitäten verwenden. In der Microsoft Graph-API, der Azure AD Graph-API und in Azure AD PowerShell wird diese Rolle als „Unternehmensadministrator“ identifiziert. Im [Azure-Portal](https://portal.azure.com)ist dies der „globale Administrator“.
 
   > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der [Benutzerrolle](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
-  >
-  >
-
-  > [!NOTE]
   > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung weiter oben.
   >
   >
@@ -357,27 +352,6 @@ Verwalten von Funktionen zum bedingten Zugriff.
 | microsoft.aad.directory/ConditionalAccessPolicy/Update | Aktualisieren der Standardeigenschaften für ConditionalAccessPolicys in Azure Active Directory. |
 | microsoft.aad.directory/ConditionalAccessPolicy/Update/Owners | Aktualisieren der ConditionalAccessPolicys.Owners-Eigenschaft in Azure Active Directory. |
 
-### <a name="crm-service-administrator"></a>CRM-Dienstadministrator
-Verwalten sämtlicher Aspekte des Produkts Dynamics 365.
-
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der [Benutzerrolle](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
-  >
-  >
-
-  > [!NOTE]
-  > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung weiter oben.
-  >
-  >
-
-| **Aktionen** | **Beschreibung** |
-| --- | --- |
-| microsoft.aad.directory/Organization/Read/TrustedCAsForPasswordlessAuth | Lesen der Organizations.TrustedCAsForPasswordlessAuth-Eigenschaft in Azure Active Directory. |
-| microsoft.aad.accessservice/AllEntities/AllActions | Erstellen und Löschen sämtlicher Ressourcen und Lesen und Aktualisieren der Standardeigenschaften in Azure Access Control. |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Lesen und Konfigurieren des Office 365-Dienststatus. |
-| microsoft.aad.supporttickets/AllEntities/AllActions | Erstellen und Verwalten von Office 365-Supporttickets. |
-| microsoft.crm/AllEntities/AllActions | Verwalten sämtlicher Aspekte von Dynamics 365. |
-
 ### <a name="device-administrators"></a>Geräteadministratoren
 Mitglieder dieser Rolle werden der lokalen Administratorgruppe auf in Azure AD eingebundenen Geräten hinzugefügt.
 
@@ -389,13 +363,8 @@ Mitglieder dieser Rolle werden der lokalen Administratorgruppe auf in Azure AD e
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
 
-### <a name="directory-reader"></a>Verzeichnis lesen
-Lesen von grundlegenden Verzeichnisinformationen. Zum Gewähren des Zugriffs auf Anwendungen
-
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der [Benutzerrolle](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
-  >
-  >
+### <a name="directory-readers"></a>Rolle „Verzeichnis lesen“
+Lesen von grundlegenden Verzeichnisinformationen. Zum Gewähren des Zugriffs auf Anwendungen.
 
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
@@ -449,11 +418,6 @@ Lesen von grundlegenden Verzeichnisinformationen. Zum Gewähren des Zugriffs auf
 ### <a name="directory-synchronization-accounts"></a>Konten zur Verzeichnissynchronisierung
 Nur vom Azure AD Connect-Dienst verwendet.
 
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der [Benutzerrolle](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
-  >
-  >
-
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
 | microsoft.aad.directory/Policy/Create | Erstellen von Richtlinien in Azure Active Directory. |
@@ -483,11 +447,6 @@ Nur vom Azure AD Connect-Dienst verwendet.
 ### <a name="directory-writer"></a>Verzeichnis schreiben
 Lesen und Schreiben von grundlegenden Verzeichnisinformationen. Zum Gewähren des Zugriffs auf Anwendungen
 
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der [Benutzerrolle](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
-  >
-  >
-
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
 | microsoft.aad.directory/DirectorySetting/Create | Erstellen von DirectorySettings in Azure Active Directory. |
@@ -507,6 +466,27 @@ Lesen und Schreiben von grundlegenden Verzeichnisinformationen. Zum Gewähren de
 | microsoft.aad.directory/User/Update | Aktualisieren der Standardeigenschaften für Benutzer in Azure Active Directory. |
 | microsoft.aad.directory/User/Update/AppRoleAssignments | Aktualisieren der Users.AppRoleAssignments-Eigenschaft in Azure Active Directory. |
 | microsoft.aad.directory/User/Update/Manager | Aktualisieren der Users.Manager-Eigenschaft in Azure Active Directory. |
+
+### <a name="dynamics-365-service-administrator"></a>Dynamics 365-Dienstadministrator
+Verwalten sämtlicher Aspekte des Produkts Dynamics 365.
+
+  > [!NOTE]
+  > Diese Rolle erbt zusätzliche Berechtigungen von der [Benutzerrolle](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  >
+  >
+
+  > [!NOTE]
+  > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung weiter oben.
+  >
+  >
+
+| **Aktionen** | **Beschreibung** |
+| --- | --- |
+| microsoft.aad.directory/Organization/Read/TrustedCAsForPasswordlessAuth | Lesen der Organizations.TrustedCAsForPasswordlessAuth-Eigenschaft in Azure Active Directory. |
+| microsoft.aad.accessservice/AllEntities/AllActions | Erstellen und Löschen sämtlicher Ressourcen und Lesen und Aktualisieren der Standardeigenschaften in Azure Access Control. |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Lesen und Konfigurieren des Office 365-Dienststatus. |
+| microsoft.aad.supporttickets/AllEntities/AllActions | Erstellen und Verwalten von Office 365-Supporttickets. |
+| microsoft.crm/AllEntities/AllActions | Verwalten sämtlicher Aspekte von Dynamics 365. |
 
 ### <a name="exchange-service-administrator"></a>Exchange-Dienstadministrator
 Verwalten sämtlicher Aspekte des Produkts Exchange.
@@ -783,6 +763,25 @@ Verwalten von Rollenzuweisungen in Azure AD.
 | microsoft.aad.directory/DirectoryRole/Update | Aktualisieren der Standardeigenschaften für DirectoryRoles in Azure Active Directory. |
 | microsoft.aad.privilegedrolemanagement/AllEntities/AllActions | Verwalten sämtlicher Aspekte des Verwaltungsdiensts für privilegierte Rollen. |
 
+### <a name="reports-reader"></a>Meldet Reader
+Lesen von Anmeldungs- und Überwachungsberichten.
+
+  > [!NOTE]
+  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
+  >
+  >
+
+  > [!NOTE]
+  > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung weiter oben.
+  >
+  >
+
+| **Aktionen** | **Beschreibung** |
+| --- | --- |
+| microsoft.aad.reports/AllEntities/Read | Lesen von Azure AD-Berichten. |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Lesen und Konfigurieren des Office 365-Dienststatus. |
+| microsoft.office365.usagereports/AllEntities/Read | Lesen von Office 365-Nutzungsberichten. |
+
 ### <a name="security-administrator"></a>Sicherheitsadministrator
 Lesen von Sicherheitsinformationen und Berichten
 
@@ -810,25 +809,6 @@ Lesen von Sicherheitsinformationen und Berichten
 | microsoft.aad.privilegedrolemanagement/AllEntities/Read | Lesen sämtlicher Aspekte von Privileged Identity Management. |
 | microsoft.protectioncenter/AllEntities/Read | Lesen sämtlicher Aspekte von Office 365 Protection Center. |
 | microsoft.protectioncenter/AllEntities/Update | Verwalten von Office 365 Protection Center. |
-
-### <a name="reports-reader"></a>Meldet Reader
-Lesen von Anmeldungs- und Überwachungsberichten.
-
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
-
-  > [!NOTE]
-  > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung weiter oben.
-  >
-  >
-
-| **Aktionen** | **Beschreibung** |
-| --- | --- |
-| microsoft.aad.reports/AllEntities/Read | Lesen von Azure AD-Berichten. |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Lesen und Konfigurieren des Office 365-Dienststatus. |
-| microsoft.office365.usagereports/AllEntities/Read | Lesen von Office 365-Nutzungsberichten. |
 
 ### <a name="security-reader"></a>Sicherheit lesen
 Lesen von Sicherheitsinformationen und Berichten in Azure AD und Office 365.

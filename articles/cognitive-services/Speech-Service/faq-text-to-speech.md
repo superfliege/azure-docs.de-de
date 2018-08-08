@@ -1,24 +1,23 @@
 ---
-title: Häufig gestellte Fragen zum Spracherkennungsdienst in Azure | Microsoft-Dokumentation
+title: Häufig gestellte Fragen zum Spracherkennungsdienst in Azure
 description: Hier erhalten Sie Antworten auf die am häufigsten gestellten Fragen zur Spracherkennung.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 4a29435c0ace79fc3a5d3a5a42a0e91bdbc8da5e
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 8d70c4a359c713d6c5f46423193e9c9e7e1f3baf
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082823"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282856"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Häufig gestellte Fragen zur Sprachsynthese
 
-Wenn Sie in diesen FAQs keine Antwort auf Ihre Frage finden, können Sie die Fragen unter [Stack Overflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) und [UserVoice](https://cognitive.uservoice.com/) an die Custom Speech Service-Community stellen.
+Wenn Sie in diesen häufig gestellten Fragen keine Antworten auf Ihre Fragen finden, sehen Sie sich [hier](support.md) weitere Supportoptionen an.
 
 ## <a name="general"></a>Allgemein
 
@@ -46,11 +45,11 @@ Wir bieten weitere Dienste, um Sie bei der Erstellung von Skripts für die Aufze
 
 **Frage**: Was geschieht, wenn ich eine höhere Parallelität als den Standardwert oder den im Portal angebotenen Wert benötige?
 
-**Antwort**: Sie können Ihr Modell in Schritten von 20 gleichzeitigen Anforderungen hochskalieren. Um eine höhere Skalierung anzufragen, wenden Sie sich an den [Custom Voice-Kundendienst](mailto:customvoice@microsoft.com?subject=Inquiries%20about%20scripts%20generation%20for%20Custom%20Voice%20creation).
+**Antwort:** Sie können Ihr Modell in Schritten von 20 gleichzeitigen Anforderungen hochskalieren. Um eine höhere Skalierung anzufragen, wenden Sie sich an den [Custom Voice-Kundendienst](mailto:customvoice@microsoft.com?subject=Inquiries%20about%20scripts%20generation%20for%20Custom%20Voice%20creation).
 
-**Frage**: Kann ich mein Modell herunterladen und lokal ausführen?
+**Frage:** Kann ich mein Modell herunterladen und lokal ausführen?
 
-**Antwort**: Modelle können nicht heruntergeladen und lokal ausgeführt werden.
+**Antwort:** Modelle können nicht heruntergeladen und lokal ausgeführt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

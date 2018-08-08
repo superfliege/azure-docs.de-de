@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 08/01/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 496aea1195885c582d3529d7ddb43210aad5fea1
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 0190298cbf6352feeb71e365f5815e174c9e30cc
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990131"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413515"
 ---
 # <a name="azure-stack-1804-update"></a>Azure Stack-Update 1804
 
@@ -80,7 +80,10 @@ Die folgenden Updates sind jetzt verfügbar, benötigen jedoch nicht Azure Stack
 ## <a name="before-you-begin"></a>Voraussetzungen    
 
 ### <a name="prerequisites"></a>Voraussetzungen
-- Installieren Sie das Azure Stack-[Update 1803](azure-stack-update-1803.md), bevor Sie das Azure Stack-Update 1804 anwenden.    
+- Installieren Sie das Azure Stack-[Update 1803](azure-stack-update-1803.md), bevor Sie das Azure Stack-Update 1804 anwenden.  
+  
+- Installieren Sie das neueste verfügbare [Update oder Hotfix für Version 1803](azure-stack-update-1803.md#post-update-steps). 
+
 
 ### <a name="known-issues-with-the-update-process"></a>Bekannte Probleme mit dem Updateprozess   
 - Während der Installation des Updates 1804 werden möglicherweise Warnungen mit folgender Meldung angezeigt: *Fehler: Die Vorlage für FaultType UserAccounts.New fehlt.*  Sie können diese Warnungen ignorieren. Diese Warnungen werden automatisch geschlossen, nachdem das Update 1804 durchgeführt wurde.   
@@ -99,6 +102,8 @@ Installieren Sie nach der Installation von 1804 alle entsprechenden Hotfixes. We
 Im Folgenden werden bekannte Probleme nach der Installation zum Build **20180513.1** vorgestellt.
 
 #### <a name="portal"></a>Portal
+- <!-- TBD - IS ASDK --> Sie können mit dieser Version von Azure Stack keine Treiberupdates mit einem OEM-Erweiterungspaket durchführen.  Dafür gibt es keine Problemumgehung.
+
 - <!-- 1272111 - IS --> Nach der Installation dieser Azure Stack-Version oder dem Update auf diese können möglicherweise keine Azure Stack-Skalierungseinheiten im Administratorportal angezeigt werden.  
   Problemumgehung: Verwenden Sie PowerShell zum Anzeigen von Informationen zu Skalierungseinheiten. Weitere Informationen finden Sie in der [Hilfe](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0) zum Azure Stack-Modul 1.3.0. 
 

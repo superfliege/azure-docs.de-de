@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 07/27/2018
 ms.author: iainfou
-ms.openlocfilehash: ea22b33233f85da117de54829e5a16bd7dcab36a
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: b64c770bca84fba8cbed98e420abf649897f7a17
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205247"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345853"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 
@@ -29,7 +29,7 @@ Azure wendet automatisch Sicherheitspatches auf die Knoten in Ihrem Cluster an, 
 
 - Manuell über das Azure-Portal oder die Azure-CLI.
 - Durch ein Upgrade des AKS-Clusters. Clusterupgrades [sperren Knoten automatisch ab und gleichen sie aus](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/) und starten sie anschließend mit dem neuesten Ubuntu-Image neu. Aktualisieren Sie das Betriebssystemimage auf Ihren Knoten, ohne Änderungen an den Kubernetes-Versionen vorzunehmen, indem Sie die aktuelle Clusterversion in `az aks upgrade` angeben.
-- Mit [Kured](https://github.com/weaveworks/kured), einem Open Source-Neustartdaemon für Kubernetes. Kured wird als ein [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) ausgeführt und überwacht jeden Knoten auf das Vorhandensein einer Datei, die angibt, dass ein Neustart erforderlich ist. Dann werden Neustarts über den Cluster orchestriert und folgen dem zuvor beschriebenen Vorgang des Absperrens und Ausgleichens.
+- Mit [Kured](https://github.com/weaveworks/kured), einem Open Source-Neustartdaemon für Kubernetes. Kured wird als ein [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) ausgeführt und überwacht jeden Knoten auf das Vorhandensein einer Datei, die angibt, dass ein Neustart erforderlich ist. Dann werden Betriebssystem-Neustarts auf dem gesamten Cluster entsprechend dem zuvor beschriebenen Vorgang des Absperrens und Ausgleichens verwaltet.
 
 ## <a name="does-aks-support-node-autoscaling"></a>Unterstützt AKS die automatische Skalierung von Knoten?
 
@@ -39,7 +39,7 @@ Ja, die automatische Skalierung ist ab Kubernetes 1.10 über den [Kubernetes Aut
 
 Ja, die RBAC kann bei der [Bereitstellung eines AKS-Clusters über die Azure CLI oder eine Azure Resource Manager-Vorlage](https://docs.microsoft.com/en-us/azure/aks/aad-integration) aktiviert werden. Diese Funktion ist bald im Azure-Portal verfügbar.
 
-## <a name="what-kubernetes-admission-controllers-does-aks-support-can-this-be-configured"></a>Welche Kubernetes-Zugangssteuerungen werden von AKS unterstützt? Kann das konfiguriert werden?
+## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Welche Kubernetes-Zugangssteuerungen werden von AKS unterstützt? Können Zulassungscontroller hinzugefügt oder entfernt werden?
 
 AKS unterstützt die folgenden [Zugangssteuerungen][admission-controllers]:
 
@@ -66,7 +66,7 @@ Derzeit leider nicht. Der Kubernetes-API-Server wird als öffentlicher vollquali
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>Ist Azure Key Vault in AKS integriert?
 
-AKS ist derzeit nicht nativ in Azure Key Vault integriert. Es gibt jedoch Communitylösungen wie [den acs-keyvault-agent von Hexadite][hexadite].
+AKS ist derzeit nicht nativ in Azure Key Vault integriert. Das [KeyVault Flex Volume-Projekt](https://github.com/Azure/kubernetes-keyvault-flexvol) ermöglicht die direkte Integration von Kubernetes-Pods in KeyVault-Geheimnisse.
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>Kann ich Windows Server-Container unter AKS ausführen?
 
@@ -76,11 +76,11 @@ Um Windows Server-Container auszuführen, müssen Sie Windows Server-basierte Kn
 
 Jede AKS-Bereitstellung umfasst zwei Ressourcengruppen. Die erste Ressourcengruppe wird von Ihnen erstellt und enthält nur die Kubernetes-Dienstressource. Der AKS-Ressourcenanbieter erstellt während der Bereitstellung automatisch die zweite Ressourcengruppe mit einem Namen wie z.B. *MC_myResourceGroup_myAKSCluster_eastus*. Die zweite Ressourcengruppe enthält alle Infrastrukturressourcen für den Cluster, etwa virtuelle Computer, Netzwerke und Speicherressourcen. Sie wird erstellt, um die Ressourcenbereinigung zu vereinfachen.
 
-Wenn Sie Ressourcen erstellen, die mit Ihrem AKS-Cluster verwendet werden sollen (z.B. Speicherkonten oder eine reservierte öffentliche IP-Adresse), sollten Sie diese in der automatisch generierten Ressourcengruppe platzieren.
+Wenn Sie Ressourcen erstellen, die mit Ihrem AKS-Cluster verwendet werden sollen (z.B. Speicherkonten oder reservierte öffentliche IP-Adressen), sollten Sie diese in der automatisch generierten Ressourcengruppe platzieren.
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>Bietet AKS eine Vereinbarung zum Servicelevel?
 
-In einer Vereinbarung zum Servicelevel (service level agreement, SLA) sichert der Anbieter zu, dem Kunden die Kosten des Diensts zu erstatten, falls das veröffentliche Servicelevel nicht erfüllt wird. AKS ist kostenlos. Da keine Kosten erstattet werden können, gibt es auch keine formale SLA. Wir sind jedoch bestrebt, für den Kubernetes-API-Server eine Verfügbarkeit von mindestens 99,5 Prozent zu bieten.
+In einer Vereinbarung zum Servicelevel (service level agreement, SLA) sichert der Anbieter zu, dem Kunden die Kosten des Diensts zu erstatten, falls das veröffentliche Servicelevel nicht erfüllt wird. AKS ist kostenlos. Da keine Kosten erstattet werden können, gibt es auch keine formale SLA. AKS ist jedoch bestrebt, für den Kubernetes-API-Server eine Verfügbarkeit von mindestens 99,5 % zu bieten.
 
 <!-- LINKS - internal -->
 

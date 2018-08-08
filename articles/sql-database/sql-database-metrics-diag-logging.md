@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: c7a5031fab10f44809f9533e43c3596d46dc77e3
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: c0c2e1748518b794916f1950c288ed1f4df628aa
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346024"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39309060"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank 
 Azure SQL-Datenbank kann Metrik- und Diagnoseprotokolle ausgeben, um die Überwachung zu erleichtern. Sie können SQL-Datenbank zum Speichern von Ressourcenverbrauch, Workern und Sitzungen sowie Verbindungen in einer der folgenden Azure-Ressourcen konfigurieren:
@@ -267,6 +267,8 @@ Weitere Informationen zum [Herunterladen von Metrik- und Diagnoseprotokollen aus
 |Pool für elastische Datenbanken|eDTU-Prozentsatz, eDTU-Verwendung, eDTU-Limit, CPU-Prozentsatz, Prozentsatz der gelesen physischen Daten, Prozentsatz für Protokollschreibvorgang, Sitzungen in Prozent, Worker in Prozent, Speicher, Speicher in Prozent, Speicherbegrenzung, XTP-Speicher in Prozent |
 |||
 
+### <a name="logs"></a>Protokolle
+
 ### <a name="query-store-runtime-statistics"></a>Laufzeitstatistiken für den Abfragespeicher
 
 |Eigenschaft|BESCHREIBUNG|
@@ -460,6 +462,57 @@ Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/
 |resource_owner_type_s|Besitzer der Sperre|
 |blocked_process_filtered_s|Blockierter XML-Prozessbericht|
 |duration_d|Die Dauer der Sperre in Millisekunden.|
+
+### <a name="deadlocks-dataset"></a>Dataset zu Deadlocks
+
+|Eigenschaft|BESCHREIBUNG|
+|---|---|
+|TenantId|Ihre Mandanten-ID.|
+|SourceSystem|Immer: Azure|
+|TimeGenerated [UTC] |Der Zeitstempel für den Aufzeichnungsbeginn des Protokolls.|
+|Typ|Immer: AzureDiagnostics|
+|ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL|
+|Category (Kategorie)|Name der Kategorie Immer: Deadlocks|
+|NameVorgang|Name des Vorgangs. Immer: DeadlockEvent|
+|Ressource|Der Name der Ressource.|
+|ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES|
+|SubscriptionId|Die Abonnement-GUID, zu der die Datenbank gehört.|
+|ResourceGroup|Der Name der Ressourcengruppe, zu der die Datenbank gehört.|
+|LogicalServerName_s|Der Name des Servers, zu dem die Datenbank gehört.|
+|ElasticPoolName_s|Der Name des Pools für elastische Datenbanken, zu dem die Datenbank gehört (falls vorhanden).|
+|DatabaseName_s|Der Name der Datenbank. |
+|ResourceId|Der Ressourcen-URI.|
+|deadlock_xml_s|XML-Bericht zu Deadlocks.|
+
+### <a name="automatic-tuning-dataset"></a>Dataset zur automatischen Optimierung
+
+|Eigenschaft|BESCHREIBUNG|
+|---|---|
+|TenantId|Ihre Mandanten-ID.|
+|SourceSystem|Immer: Azure|
+|TimeGenerated [UTC]|Der Zeitstempel für den Aufzeichnungsbeginn des Protokolls.|
+|Typ|Immer: AzureDiagnostics|
+|ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL|
+|Category (Kategorie)|Name der Kategorie Immer: AutomaticTuning|
+|Ressource|Der Name der Ressource.|
+|ResourceType|Name des Ressourcentyps Immer: SERVERS/DATABASES|
+|SubscriptionId|Die Abonnement-GUID, zu der die Datenbank gehört.|
+|ResourceGroup|Der Name der Ressourcengruppe, zu der die Datenbank gehört.|
+|LogicalServerName_s|Der Name des Servers, zu dem die Datenbank gehört.|
+|LogicalDatabaseName_s|Der Name der Datenbank.|
+|ElasticPoolName_s|Der Name des Pools für elastische Datenbanken, zu dem die Datenbank gehört (falls vorhanden).|
+|DatabaseName_s|Der Name der Datenbank.|
+|ResourceId|Der Ressourcen-URI.|
+|RecommendationHash_s|Eindeutiger Hash der Empfehlung zur automatischen Optimierung.|
+|OptionName_s|Vorgang der automatischen Optimierung.|
+|Schema_s|Datenbankschema.|
+|Table_s|Betroffene Tabelle.|
+|IndexName_s|Indexname.|
+|IndexColumns_s|Spaltenname.|
+|IncludedColumns_s|Enthaltene Spalten.|
+|EstimatedImpact_s|Geschätzte Auswirkung der JSON der Empfehlung zur automatischen Optimierung.|
+|Event_s|Typ des Ereignisses der automatischen Optimierung.|
+|Timestamp_t|Zeitstempel der letzten Aktualisierung.|
 
 ### <a name="intelligent-insights-dataset"></a>Dataset von Intelligent Insights
 Weitere Informationen zum [Protokollformat von Intelligent Insights](sql-database-intelligent-insights-use-diagnostics-log.md).

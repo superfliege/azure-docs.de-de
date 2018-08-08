@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 34248d75c190aa4636c39f087d399d946b589d58
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: dc5b5cbe9b1f000d8ddf9d38cfe13f5275e698f2
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355898"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39347860"
 ---
 # <a name="create-an-external-app-service-environment"></a>Erstellen einer externen App Service-Umgebung #
 
@@ -41,7 +41,7 @@ Nach dem Erstellen einer ASE können Sie folgende Elemente nicht mehr ändern:
 - Subnetzgröße
 
 > [!NOTE]
-> Stellen Sie beim Auswählen eines virtuellen Netzwerks und Angeben eines Subnetzes sicher, dass die jeweilige Größe in Bezug auf zukünftiges Wachstum ausreichend hoch gewählt ist. Es wird eine Größe von `/25` mit 128 Adressen empfohlen.
+> Stellen Sie beim Auswählen eines virtuellen Netzwerks und Angeben eines Subnetzes sicher, dass die jeweilige Größe in Bezug auf zukünftige Wachstums- und Skalierungsanforderungen ausreichend hoch gewählt ist. Es wird eine Größe von `/24` mit 256 Adressen empfohlen.
 >
 
 ## <a name="three-ways-to-create-an-ase"></a>Drei Möglichkeiten zum Erstellen einer ASE ##
@@ -68,10 +68,7 @@ Um eine ASE zu erstellen, während Sie einen App Service-Plan erstellen, gehen S
 
 3. Wählen Sie eine Ressourcengruppe aus, oder erstellen Sie sie. Mithilfe von Ressourcengruppen können Sie verwandte Azure-Ressourcen als Einheit verwalten. Ressourcengruppen sind auch nützlich, wenn Sie Regeln für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Ihre Apps einrichten. Weitere Informationen finden Sie unter [Übersicht über Azure Resource Manager][ARMOverview].
 
-4. Wählen Sie Ihr Betriebssystem aus. 
-
-    * Das Hosten einer Linux-App in einer ASE ist ein neues Feature in der Vorschau, daher wird empfohlen, einer ASE, in der derzeit eine Produktionsworkload ausgeführt wird, keine Apps für Linux hinzuzufügen. 
-    * Durch das Hinzufügen einer Linux-App zu einer ASE befindet sich die ASE auch im Vorschaumodus. 
+4. Wählen Sie Ihr Betriebssystem aus (Windows, Linux oder Docker). 
 
 5. Klicken Sie auf den App Service-Plan, und wählen Sie anschließend die Option **Neu erstellen**. Linux-Web-Apps und Windows-Web-Apps können sich nicht im selben App Service-Plan befinden, jedoch in derselben App Service-Umgebung. 
 
@@ -79,13 +76,7 @@ Um eine ASE zu erstellen, während Sie einen App Service-Plan erstellen, gehen S
 
 6. Wählen Sie in der Dropdownliste **Speicherort** die Region aus, in der Sie die ASE erstellen möchten. Wenn Sie eine vorhandene ASE auswählen, wird keine neue ASE erstellt. Der App Service-Plan wird in der von Ihnen ausgewählten ASE erstellt. 
 
-    > [!NOTE]
-    > Linux unter ASE ist derzeit nur in 6 Regionen aktiviert: **„USA, Westen“, „USA, Osten“, „Europa, Westen“, „Europa, Norden“, „Australien, Osten“, „Asien, Südosten“**. Da es sich bei Linux unter ASE um ein Vorschaufeature handelt, wählen Sie KEINE ASE aus, die Sie vor dieser Vorschau erstellt haben.
-    >
-
 7. Wählen Sie **Tarif**, und wählen Sie eine der SKUs in der Preisstufe **Isolated** aus. Wenn Sie eine SKU vom Typ **Isolated** und einen Speicherort auswählen, der keine ASE ist, wird an diesem Speicherort eine neue ASE erstellt. Um den Erstellungsprozess für eine ASE zu starten, klicken Sie auf **Auswählen**. Eine **Isolated**-SKU ist nur zusammen mit einer ASE verfügbar. Es ist außerdem nicht möglich, einen anderen SKU-Tarif als **Isolated** in einer ASE zu verwenden. 
-
-    * Für die Vorschauversion von Linux unter ASE wird ein Rabatt von 50 % auf die isolierte SKU angerechnet; für die Pauschalgebühr für die eigentlich ASE gilt kein Rabatt.
 
     ![Auswahl des Tarifs][3]
 
@@ -121,13 +112,7 @@ Um eine ASE zu erstellen, während Sie einen App Service-Plan erstellen, gehen S
 
 5. Wählen Sie in der Dropdownliste **Speicherort** die Region aus, in der Sie die ASE erstellen möchten. Wenn Sie eine vorhandene ASE auswählen, wird keine neue ASE erstellt. Der App Service-Plan wird in der von Ihnen ausgewählten ASE erstellt. 
 
-    > [!NOTE]
-    > Linux unter ASE ist derzeit nur in 6 Regionen aktiviert: **„USA, Westen“, „USA, Osten“, „Europa, Westen“, „Europa, Norden“, „Australien, Osten“, „Asien, Südosten“**. Da es sich bei Linux unter ASE um ein Vorschaufeature handelt, wählen Sie KEINE ASE aus, die Sie vor dieser Vorschau erstellt haben.
-    >
-
 6. Wählen Sie **Tarif**, und wählen Sie eine der SKUs in der Preisstufe **Isolated** aus. Wenn Sie eine SKU vom Typ **Isolated** und einen Speicherort auswählen, der keine ASE ist, wird an diesem Speicherort eine neue ASE erstellt. Um den Erstellungsprozess für eine ASE zu starten, klicken Sie auf **Auswählen**. Eine **Isolated**-SKU ist nur zusammen mit einer ASE verfügbar. Es ist außerdem nicht möglich, einen anderen SKU-Tarif als **Isolated** in einer ASE zu verwenden. 
-
-    * Für die Vorschauversion von Linux unter ASE wird ein Rabatt von 50 % auf die isolierte SKU angerechnet; für die Pauschalgebühr für die eigentlich ASE gilt kein Rabatt.
 
     ![Auswahl des Tarifs][3]
 
@@ -171,7 +156,7 @@ Wenn Sie eine eigenständige ASE erstellen, enthält sie keinerlei Elemente. Fü
 
 5. Wählen Sie das VNET und den Standort aus. Sie können ein neues VNET erstellen oder ein vorhandenes VNET auswählen: 
 
-    * Wenn Sie ein neues VNET erstellen, können Sie einen Namen und Speicherort angeben. Wenn Sie vorhaben, Linux-Apps in dieser ASE zu hosten, werden derzeit nur diese sechs Regionen unterstützt: **„USA, Westen“, „USA, Osten“, „Europa, Westen“, „Europa, Norden“, „Australien, Osten“, „Asien, Südosten“**. 
+    * Wenn Sie ein neues VNET erstellen, können Sie einen Namen und Speicherort angeben. 
     
     * Das neue VNET hat den Adressbereich 192.168.250.0/23 und ein Subnetz namens „default“. Das Subnetz ist als 192.168.250.0/24 definiert. Sie können nur ein Resource Manager-VNET auswählen. Die Auswahl des **VIP-Typs** bestimmt, ob auf Ihre ASE ein direkter Zugriff aus dem Internet möglich ist (extern) oder ob ein interner Load Balancer (ILB) verwendet wird. Mehr hierzu erfahren Sie unter [Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung][MakeILBASE]. 
 
@@ -196,7 +181,7 @@ Weitere Informationen zu ASEv1 finden Sie unter [Einführung in die App Service-
 [6]: ./media/how_to_create_an_external_app_service_environment/createexternalase-network.png
 [7]: ./media/how_to_create_an_external_app_service_environment/createexternalase-createwafc.png
 [8]: ./media/how_to_create_an_external_app_service_environment/createexternalase-aspcreatewafc.png
-[8]: ./media/how_to_create_an_external_app_service_environment/createexternalase-configurecontainer.png
+[9]: ./media/how_to_create_an_external_app_service_environment/createexternalase-configurecontainer.png
 
 
 

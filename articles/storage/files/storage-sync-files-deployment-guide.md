@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: d3ff80391214dbc5d29f04c4a1972b46e68d73d4
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 3f377c24a53313ff8c9243152281344200167856
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215144"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414240"
 ---
 # <a name="deploy-azure-file-sync"></a>Bereitstellen von Azure File Sync
 Mit Azure File Sync können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit Azure File Sync werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -83,7 +83,7 @@ Der Azure File Sync-Agent ist ein herunterladbares Paket, mit dem ein Windows Se
 Sie können den Agent aus dem [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257) herunterladen. Doppelklicken Sie nach Abschluss des Downloads auf das MSI-Paket, um die Installation des Azure File Sync-Agents zu starten.
 
 > [!Important]  
-> Wenn Sie Azure File Sync mit einem Failovercluster verwenden möchten, muss der Azure File Sync-Agent auf jedem Knoten im Cluster installiert werden.
+> Wenn Sie Azure File Sync mit einem Failovercluster verwenden möchten, muss der Azure File Sync-Agent auf jedem Knoten im Cluster installiert werden. Jeder Knoten im Cluster muss registriert werden, um mit der Azure-Dateisynchronisierung verwendet werden zu können.
 
 Folgendes Vorgehen wird empfohlen:
 - Übernehmen Sie den Standardinstallationspfad („C:\Programme\Microsoft Files\Azure\StorageSyncAgent“), um die Problembehandlung und Serverwartung zu vereinfachen.
@@ -93,6 +93,9 @@ Wenn die Installation des Azure File Sync-Agents abgeschlossen ist, wird automat
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 Führen Sie den folgenden PowerShell-Code aus, um die entsprechende Version des Azure File Sync-Agents für Ihr Betriebssystem herunterzuladen und auf Ihrem System zu installieren.
+
+> [!Important]  
+> Wenn Sie Azure File Sync mit einem Failovercluster verwenden möchten, muss der Azure File Sync-Agent auf jedem Knoten im Cluster installiert werden. Jeder Knoten im Cluster muss registriert werden, um mit der Azure-Dateisynchronisierung verwendet werden zu können.
 
 ```PowerShell
 # Gather the OS version

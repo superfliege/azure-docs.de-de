@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 92b45c1038fd099926360dc80802ababf0e8ee93
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 6c0921a466864bf2b07711cfcd1eac397c5ced83
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37052765"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325352"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Cosmos DB mithilfe von Azure Data Factory
 
@@ -51,8 +51,8 @@ Folgende Eigenschaften werden für den mit Azure Cosmos DB verknüpften Dienst u
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf **CosmosDb** festgelegt werden. | Ja |
-| connectionString |Geben Sie die zum Verbinden mit der Azure Cosmos DB-Datenbank erforderlichen Informationen an. Beachten Sie, dass Sie wie im folgenden Beispiel gezeigt Datenbankinformationen in der Verbindungszeichenfolge angeben müssen. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja |
+| type | Die type-Eigenschaft muss auf **CosmosDb** festgelegt werden. | JA |
+| connectionString |Geben Sie die zum Verbinden mit der Azure Cosmos DB-Datenbank erforderlichen Informationen an. Beachten Sie, dass Sie wie im folgenden Beispiel gezeigt Datenbankinformationen in der Verbindungszeichenfolge angeben müssen. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |JA |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
 
 **Beispiel:**
@@ -84,8 +84,8 @@ Legen Sie zum Kopieren von Daten aus bzw. nach Azure Cosmos DB die type-Eigensch
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft des Datasets muss auf **DocumentDbCollection** festgelegt werden. |Ja |
-| collectionName |Name der Cosmos DB-Dokumentsammlung |Ja |
+| type | Die type-Eigenschaft des Datasets muss auf **DocumentDbCollection** festgelegt werden. |JA |
+| collectionName |Name der Cosmos DB-Dokumentsammlung |JA |
 
 **Beispiel:**
 
@@ -122,7 +122,7 @@ Legen Sie zum Kopieren von Daten aus Azure Cosmos DB den Quelltyp in der Kopiera
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **DocumentDbCollectionSource** festgelegt werden. |Ja |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **DocumentDbCollectionSource** festgelegt werden. |JA |
 | query |Geben Sie die Cosmos DB-Abfrage an, um Daten zu lesen.<br/><br/>Beispiel: `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nein  <br/><br/>Falls nicht angegeben, wird folgende SQL-Anweisung ausgeführt: `select <columns defined in structure> from mycollection` |
 | nestingSeparator |Sonderzeichen, um anzugeben, dass das Dokument geschachtelt ist und wie das Resultset zu vereinfachen ist.<br/><br/>Wenn eine Cosmos DB-Abfrage beispielsweise das geschachtelte Ergebnis `"Name": {"First": "John"}` zurückgibt, identifiziert die Kopieraktivität den Spaltennamen „Name.First“ mit dem Wert „John“, wenn es sich bei „nestedSeparator“ um einen Punkt handelt. |Nein (der Standardwert ist ein Punkt `.`) |
 
@@ -164,7 +164,9 @@ Legen Sie zum Kopieren von Daten in Azure Cosmos DB den Senkentyp in der Copy-Ak
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf **DocumentDbCollectionSink** festgelegt werden. |Ja |
+| type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf **DocumentDbCollectionSink** festgelegt werden. |JA |
+| writeBehavior |Beschreibt, wie Daten in Cosmos DB geschrieben werden. Zulässige Werte sind: `insert` und `upsert`.<br/>Das Verhalten von **upsert** besteht darin, das Dokument zu ersetzen, wenn ein Dokument mit der gleichen ID bereits vorhanden ist. Andernfalls wird es eingefügt. ADF generiert automatisch eine ID für das Dokument, wenn sie im Originaldokument oder durch Spaltenzuordnung nicht angegeben ist. Dies bedeutet, dass Sie sicherstellen müssen, dass das Dokument eine ID aufweist, damit „upsert“ wie erwartet funktioniert. |Nein, der Standardwert ist „insert“ |
+| writeBatchSize | Data Factory verwendet [Cosmos DB BulkExecutor](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) zum Schreiben von Daten in Cosmos DB. „writeBatchSize“ steuert die Größe der in der Bibliothek bereitgestellten Dokumente. Sie können versuchen, „writeBatchSize“ zu vergrößern, um die Leistung zu verbessern. |Nein  |
 | nestingSeparator |Ein Sonderzeichen im Quellspaltennamen, um anzuzeigen, dass das geschachtelte Dokument erforderlich ist. <br/><br/>Beispielsweise generiert `Name.First` in der Struktur des Ausgabedatasets folgende JSON-Struktur im Cosmos DB-Dokument, sofern es sich bei „nestedSeparator“ um einen Punkt handelt: `"Name": {"First": "[value maps to this column from source]"}`. |Nein (der Standardwert ist ein Punkt `.`) |
 
 **Beispiel:**
@@ -191,7 +193,8 @@ Legen Sie zum Kopieren von Daten in Azure Cosmos DB den Senkentyp in der Copy-Ak
                 "type": "<source type>"
             },
             "sink": {
-                "type": "DocumentDbCollectionSink"
+                "type": "DocumentDbCollectionSink",
+                "writeBehavior": "upsert"
             }
         }
     }

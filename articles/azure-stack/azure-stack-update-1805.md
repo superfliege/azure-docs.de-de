@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 08/01/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: ba162a04d41d9ce6f0bf00e377b7717f78967e7f
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: abc96497c95397a6fab72672f1525462301c5cf9
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091771"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414632"
 ---
 # <a name="azure-stack-1805-update"></a>Azure Stack-Update 1805
 
@@ -72,7 +72,8 @@ Dieses Update enthält die folgenden Verbesserungen für Azure Stack.
 ## <a name="before-you-begin"></a>Voraussetzungen    
 
 ### <a name="prerequisites"></a>Voraussetzungen
-- Installieren Sie das Azure Stack-[Update 1804](azure-stack-update-1804.md), bevor Sie das Azure Stack-Update 1805 anwenden.    
+- Installieren Sie das Azure Stack-[Update 1804](azure-stack-update-1804.md), bevor Sie das Azure Stack-Update 1805 anwenden.  
+- Installieren Sie das neueste verfügbare [Update oder Hotfix für Version 1804](azure-stack-update-1804.md#post-update-steps).   
 - Führen Sie vor Beginn der Installation von Update 1805 [Test-AzureStack](azure-stack-diagnostic-test.md) aus, um den Status Ihrer Azure Stack-Instanz zu überprüfen und ggf. Betriebsprobleme zu beheben. Überprüfen Sie auch aktive Warnungen, und lösen Sie solche auf, die eine Aktion erfordern. 
 
 ### <a name="known-issues-with-the-update-process"></a>Bekannte Probleme mit dem Updateprozess   
@@ -90,6 +91,8 @@ Installieren Sie nach der Installation von 1805 alle entsprechenden Hotfixes. We
 Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversion vorgestellt.
 
 ### <a name="portal"></a>Portal  
+- <!-- TBD - IS ASDK --> Sie können mit dieser Version von Azure Stack keine Treiberupdates mit einem OEM-Erweiterungspaket durchführen.  Dafür gibt es jedoch keine Problemumgehung.
+
 - <!-- 2551834 - IS, ASDK --> Wenn Sie im Verwaltungs- oder Benutzerportal **Übersicht** für ein Speicherkonto auswählen, werden die Informationen aus dem Bereich *Zusammenfassung* nicht angezeigt.  Im Bereich „Zusammenfassung“ werden Informationen über das Konto angezeigt, z.B. *Ressourcengruppe*, *Speicherort*, und *Abonnement-ID*.  Weitere Optionen für die Übersicht sind verfügbar, z.B. *Dienste* und *Überwachung* sowie Optionen zum *Öffnen im Explorer* oder zum *Löschen eines Speicherkontos*. 
 
   Nicht verfügbare Informationen lassen sich mit dem PowerShell-Cmdlet [Get-azureRMstorageaccount](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccount?view=azurermps-6.2.0) anzeigen. 

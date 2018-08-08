@@ -7,14 +7,14 @@ manager: vijayts
 tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/18/2018
+ms.date: 8/1/2018
 ms.author: trinadhk
-ms.openlocfilehash: 787c4b0f6e8d5ed76260582bfa3d6c49574bd102
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 1021900620272cc5476d8972daf9d7e0a161797a
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205339"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398000"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Upgrade auf Azure VM-Sicherungsstapel V2
 
@@ -107,7 +107,7 @@ Für das Upgrade des Stapels auf v2 fallen keine Kosten an. Momentaufnahmen werd
 
 ### <a name="does-upgrading-to-stack-v2-increase-the-premium-storage-account-snapshot-limit-by-10-tb"></a>Wird die Momentaufnahmengrenze von 10 TB für Premium-Speicherkonten durch das Upgrade auf V2 erhöht?
 
-Für Momentaufnahmen, die im Rahmen des v2-Stapels erstellt werden, gilt der Momentaufnahmengrenzwert eines Storage Premium-Kontos für nicht verwaltete Datenträger von 10 TB. 
+Nein, der Grenzwert für sämtliche Momentaufnahmen pro Speicherkonto beträgt weiterhin 10 TB. 
 
 ### <a name="in-premium-storage-accounts-do-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>Halten Momentaufnahmen, die für die Punkte erstellt werden, die zur sofortigen Wiederherstellung dienen, in Storage Premium-Konten die 10 TB-Grenze für Momentaufnahmen ein?
 

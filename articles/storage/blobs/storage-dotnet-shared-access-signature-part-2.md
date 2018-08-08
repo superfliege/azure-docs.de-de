@@ -2,24 +2,19 @@
 title: Erstellen und Verwenden von Shared Access Signatures (SAS) mit Azure Blob Storage | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie Sie Shared Access Signatures für die Verwendung mit Blob Storage erstellen und sie in Ihren Clientanwendungen nutzen.
 services: storage
-documentationcenter: ''
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 491e0b3c-76d4-4149-9a80-bbbd683b1f3e
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: article
+ms.devlang: dotnet
 ms.date: 05/15/2017
 ms.author: tamram
-ms.openlocfilehash: 9dde12acde748c48b56f9f96ee772fca49954358
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: blobs
+ms.openlocfilehash: 6546553fa3537ac63d956dc5febfd77efe9fd34d
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23056795"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39400123"
 ---
 # <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>Shared Access Signatures, Teil 2: Erstellen und Verwenden einer SAS mit Blob Storage
 
@@ -30,7 +25,7 @@ ms.locfileid: "23056795"
 * Erstellen einer gespeicherten Zugriffsrichtlinie zum Verwalten von Signaturen für die Ressourcen eines Containers
 * Testen der Shared Access Signatures in einer Clientanwendung
 
-## <a name="about-this-tutorial"></a>Informationen zu diesem Lernprogramm
+## <a name="about-this-tutorial"></a>Informationen zu diesem Tutorial
 In diesem Tutorial erstellen wir zwei Konsolenanwendungen, die die Erstellung und Verwendung von Shared Access Signatures für Container und Blobs demonstrieren:
 
 **Anwendung 1:** Verwaltungsanwendung. Generiert eine Shared Access Signature für einen Container und ein Blob. Enthält den Speicherkonto-Zugriffsschlüssel im Quellcode.
@@ -72,7 +67,7 @@ Bearbeiten Sie die Datei "app.config", sodass sie eine Konfigurationseinstellung
 ### <a name="generate-a-shared-access-signature-uri-for-a-container"></a>Generieren eines Shared Access Signature-URI für einen Container
 Zu Beginn fügen wir eine Methode hinzu, um eine Shared Access Signature in einem neuen Container zu generieren. In diesem Fall ist die Signatur nicht mit einer gespeicherten Zugriffsrichtlinie verbunden, sodass sie im URI Informationen bezüglich Ablaufzeit und zu gewährenden Berechtigungen enthält.
 
-Fügen Sie den Code zunächst der **Main()** -Methode hinzu, um den Zugriff auf Ihr Speicherkonto zu authentifizieren, und erstellen Sie einen neuen Container:
+Fügen Sie den Code zunächst der **Main()**-Methode hinzu, um den Zugriff auf Ihr Speicherkonto zu autorisieren, und erstellen Sie einen neuen Container:
 
 ```csharp
 static void Main(string[] args)

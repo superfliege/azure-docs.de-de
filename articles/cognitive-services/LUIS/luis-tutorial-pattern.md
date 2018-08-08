@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 07/30/2018
 ms.author: diberry
-ms.openlocfilehash: 9ad1d9e1543c3d9a74025fb23bd1767478b53b4b
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 355c1edd4fa7433e68a9c0e903f4f782203326fe
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238453"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365877"
 ---
 # <a name="tutorial-improve-app-with-patterns"></a>Tutorial: Verbessern der App mit Mustern
 
@@ -23,32 +23,34 @@ In diesem Tutorial verwenden Sie Muster, um die Vorhersagen von LUIS für Absich
 
 > [!div class="checklist"]
 * Ermitteln, ob ein Muster für eine App hilfreich wäre
-* Erstellen eines Musters 
+* Erstellen eines Musters
 * Überprüfen der Verbesserungen bei Vorhersagen durch Muster
 
-Für diesen Artikel benötigen Sie ein kostenloses [LUIS](luis-reference-regions.md)-Konto für die Erstellung Ihrer LUIS-Anwendung.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
+
 Falls Sie die Personal-App aus dem Tutorial zu [Batchtests](luis-tutorial-batch-testing.md) nicht haben, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App auf der [LUIS-Website](luis-reference-regions.md#luis-website). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-batchtest-HumanResources.json).
 
 Wenn Sie die ursprüngliche Personal-App behalten möchten, klonen Sie die Version auf der Seite [Einstellungen](luis-how-to-manage-versions.md#clone-a-version), und nennen Sie sie `patterns`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. 
 
 ## <a name="patterns-teach-luis-common-utterances-with-fewer-examples"></a>Über Muster erlernt LUIS allgemeine Äußerungen mit weniger Beispielen
+
 Im Themenbereich Personalwesen gibt es einige häufig verwendete Methoden, um Mitarbeiterbeziehungen in Organisationen zu erfragen. Beispiel: 
 
-```
-Who does Jill Jones report to?
-Who reports to Jill Jones? 
-```
+|Äußerungen|
+|--|
+|Who does Jill Jones report to?|
+|Who reports to Jill Jones?|
 
 Diese Äußerungen sind zu ähnlich, um jeweils ihre kontextbezogene Eindeutigkeit zu ermitteln, ohne zahlreiche Beispieläußerungen anzugeben. Durch Hinzufügen eines Musters für eine Absicht lernt LUIS häufige Muster von Äußerungen für eine Absicht, ohne dass dafür viele Beispieläußerungen angegeben werden müssen. 
 
 Beispiele für Vorlagenäußerungen zu dieser Absicht sind:
 
-```
-Who does {Employee} report to?
-Who reports to {Employee}? 
-```
+|Beispielhafte Vorlagenäußerungen|
+|--|
+|Who does {Employee} report to?|
+|Who reports to {Employee}?|
 
 Das Muster wird als Beispiel für eine Vorlagenäußerung bereitgestellt, die die Syntax zum Identifizieren von Entitäten und ignorierbarem Text enthält. Ein Muster ist eine Kombination aus der Suche nach Übereinstimmungen mit regulären Ausdrücken und maschinellem Lernen.  Das Beispiel für Vorlagenäußerungen und die Äußerungen der Absicht vermitteln LUIS ein besseres Verständnis dafür, welche Äußerungen zur Absicht passen.
 
@@ -59,9 +61,10 @@ Damit ein Muster mit einer Äußerung übereinstimmt, müssen die Entitäten inn
 Das [Tutorial zum Entitätstyp „Liste“](luis-quickstart-intent-and-list-entity.md) zeigt, wie Mitarbeiter erstellt werden.
 
 ## <a name="create-new-intents-and-their-utterances"></a>Erstellen neuer Absichten samt Äußerungen
+
 Hinzufügen Sie die beiden neuen Absichten `OrgChart-Manager` und `OrgChart-Reports` hinzu. Sobald LUIS eine Vorhersage an die Clientanwendung zurückgibt, kann der Name der Absicht als Funktionsname in der Clientanwendung und die Entität „Employee“ als Parameter für diese Funktion verwendet werden.
 
-```
+```Javascript
 OrgChart-Manager(employee){
     ///
 }
@@ -85,7 +88,7 @@ OrgChart-Manager(employee){
     |Who does Jill Jones directly report to?|
     |Who is Jill Jones supervisor?|
 
-    [![](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "Screenshot von LUIS – Hinzufügen von neuen Äußerungen zu einer Absicht")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
+    [![Screenshot von LUIS beim Hinzufügen neuer Äußerungen für eine Absicht](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "Screenshot von LUIS beim Hinzufügen neuer Äußerungen für eine Absicht")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
 
     Möglicherweise wird auch die keyPhrase-Entität in den Äußerungen der Absicht bezeichnet, anstelle der Employee-Entität. Beide werden im Testbereich und am Endpunkt korrekt vorhergesagt. 
 
@@ -106,35 +109,20 @@ OrgChart-Manager(employee){
     |Who does Jill Jones supervise?|
 
 ## <a name="caution-about-example-utterance-quantity"></a>Wichtiger Hinweis zur Menge der Beispieläußerungen
+
 Die Menge der Beispieläußerungen in diesen Absichten reicht nicht aus, um LUIS richtig zu trainieren. In einer realen App sollte jede Absicht mindestens 15 Äußerungen mit einer vielfältigen Wortauswahl und unterschiedlicher Äußerungslänge beinhalten. Diese wenigen Äußerungen wurden speziell ausgewählt, um Muster hervorzuheben. 
 
 ## <a name="train-the-luis-app"></a>Trainieren der LUIS-App
-Die neue Absicht und die neuen Äußerungen müssen trainiert werden. 
 
-1. Wählen Sie oben rechts auf der LUIS-Website die Schaltfläche **Train** (Trainieren) aus.
-
-    ![Abbildung der Schaltfläche „Trainieren“](./media/luis-tutorial-pattern/hr-train-button.png)
-
-2. Das Training ist abgeschlossen, wenn oben auf der Website eine grüne Statusleiste angezeigt wird.
-
-    ![Abbildung der Benachrichtigungsleiste nach erfolgreicher Ausführung](./media/luis-tutorial-pattern/hr-trained-inline.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Veröffentlichen der App zum Abrufen der Endpunkt-URL
-Damit Sie eine LUIS-Vorhersage in einem Chatbot oder einer anderen Anwendung abrufen können, muss die App veröffentlicht werden. 
 
-1. Klicken Sie oben rechts auf der LUIS-Website auf die Schaltfläche **Veröffentlichen**. 
-
-2. Wählen Sie den Produktionsslot und dann die Schaltfläche **Publish** (Veröffentlichen) aus.
-
-    [ ![Screenshot der Seite „Publish“ (Veröffentlichen) mit hervorgehobener Schaltfläche zum Veröffentlichen im Produktionsslot](./media/luis-tutorial-pattern/hr-publish-to-production.png)](./media/luis-tutorial-pattern/hr-publish-to-production.png#lightbox)
-
-3. Die Veröffentlichung ist abgeschlossen, wenn oben auf der Website die grüne Statusleiste angezeigt wird.
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>Abfragen des Endpunkts mit einer anderen Äußerung
-1. Klicken Sie unten auf der Seite **Veröffentlichen** auf den Link **Endpunkt**. Hierdurch wird ein weiteres Browserfenster mit der Endpunkt-URL in der Adressleiste geöffnet. 
 
-    [ ![Screenshot der Seite „Publish“ (Veröffentlichen) mit hervorgehobener Endpunkt-URL](./media/luis-tutorial-pattern/hr-publish-select-endpoint.png)](./media/luis-tutorial-pattern/hr-publish-select-endpoint.png#lightbox)
-
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Geben Sie in der Adressleiste am Ende der URL `Who is the boss of Jill Jones?` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). 
 
@@ -225,9 +213,11 @@ War diese Abfrage erfolgreich? Für diesen Trainingszyklus war sie erfolgreich. 
 
 Verwenden Sie Muster, um die Bewertung der richtigen Absicht deutlich zu erhöhen (in Prozent) und den Abstand zur nächst höheren Bewertung zu vergrößern. 
 
+Lassen Sie das zweite Browserfenster geöffnet. Sie verwenden es später im Tutorial. 
+
 ## <a name="add-the-template-utterances"></a>Hinzufügen der Vorlagenäußerungen
 
-1. Wählen Sie oben im Menü **Build** (Erstellen) aus.
+1. Wählen Sie oben im Menü **Erstellen** aus.
 
 2. Wählen Sie im linken Navigationsbereich unter **Improve app performance** (App-Leistung verbessern) die Option **Muster** aus.
 
@@ -243,16 +233,14 @@ Verwenden Sie Muster, um die Bewertung der richtigen Absicht deutlich zu erhöhe
     |Who is the boss of {Employee}[?]|
 
     Die Syntax `{Employee}` markiert die Position der Entität innerhalb der Vorlagenäußerung sowie die Entität selbst. 
-    
-    Entitäten mit Rollen verwenden eine Syntax, die den Rollennamen enthält. Sie werden in einem separaten [Tutorial für Rollen](luis-tutorial-pattern-roles.md) behandelt. 
+
+    Entitäten mit Rollen verwenden eine Syntax, die den Rollennamen enthält. Sie werden in einem [separaten Tutorial für Rollen](luis-tutorial-pattern-roles.md) behandelt. 
 
     Die optionale Syntax (`[]`) markiert Wörter oder Satzzeichen, die optional sind. LUIS gleicht die Äußerung ab und ignoriert dabei den optionalen Text in den Klammern.
 
     Bei der Eingabe der Vorlagenäußerung hilft LUIS Ihnen, die Entität auszufüllen, wenn Sie die linke geschweifte Klammer `{` verwenden.
 
-    [ ![Screenshot der Eingabe von Vorlagenäußerungen für eine Absicht](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png)](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png#lightbox)
-
-
+    [![Screenshot der Eingabe von Vorlagenäußerungen für eine Absicht](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png)](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png#lightbox)
 
 4. Wählen Sie die Absicht **OrgChart-Reports** aus, geben Sie dann die folgenden Vorlagenäußerungen einzeln ein, und drücken Sie nach jeder Vorlagenäußerung die Eingabetaste:
 
@@ -269,7 +257,7 @@ Verwenden Sie Muster, um die Bewertung der richtigen Absicht deutlich zu erhöhe
 
 1. Trainieren Sie die App und veröffentlichen Sie sie erneut.
 
-2. Wählen Sie unten auf der Seite **Publish** (Veröffentlichen) den Link **endpoint** (Endpunkt) aus. Hierdurch wird ein weiteres Browserfenster mit der Endpunkt-URL in der Adressleiste geöffnet. 
+2. Wechseln Sie in den Browserregisterkarten wieder zur Endpunkt-URL-Registerkarte.
 
 3. Geben Sie in der Adressleiste am Ende der URL `Who is the boss of Jill Jones?` als Äußerung ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). 
 
@@ -357,10 +345,86 @@ Verwenden Sie Muster, um die Bewertung der richtigen Absicht deutlich zu erhöhe
     }
     ```
 
-Die Vorhersage der Absicht hat nun einen deutlich höheren Wert. 
+Die Vorhersage der Absicht hat nun einen deutlich höheren Wert.
+
+## <a name="working-with-optional-text-and-prebuilt-entities"></a>Arbeiten mit optionalem Text und vordefinierten Entitäten
+
+Die vorherigen Mustervorlagenäußerungen in diesem Tutorial enthielten einige Beispiele für optionalen Text wie die possesive Verwendung des Buchstabens s, `'s`, und die Verwendung des Fragezeichens, `?`. Angenommen, die Endpunktäußerungen zeigen, dass Manager und Personalverantwortliche nach historischen Daten sowie geplanten Mitarbeiterumzügen innerhalb des Unternehmens zu einem späteren Zeitpunkt suchen.
+
+Beispieläußerungen sind:
+
+|Absicht|Beispieläußerungen mit optionalem Text und vordefinierten Entitäten|
+|:--|:--|
+|OrgChart-Manager|`Who was Jill Jones manager on March 3?`|
+|OrgChart-Manager|`Who is Jill Jones manager now?`|
+|OrgChart-Manager|`Who will be Jill Jones manager in a month?`|
+|OrgChart-Manager|`Who will be Jill Jones manager on March 3?`|
+
+Jedes dieser Beispiele verwendet ein Verb, `was`, `is`, `will be`, sowie ein Datum, `March 3`, `now` und `in a month`, das LUIS korrekt voraussagen muss. Beachten Sie, dass die letzten beiden Beispiele fast den gleichen Text verwenden, mit Ausnahme von `in` und `on`.
+
+Beispielhafte Vorlagenäußerungen:
+|Absicht|Beispieläußerungen mit optionalem Text und vordefinierten Entitäten|
+|:--|:--|
+|OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?`]|
+|OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
+|OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+
+Durch die Verwendung der optionalen Syntax von eckigen Klammern, `[]`, kann dieser optionale Text zur Vorlagenäußerung hinzugefügt und bis zu einer zweiten Ebene, `[[]]`, verschachtelt werden und Entitäten oder Text enthalten.
+
+**Frage: Warum konnten die letzten beiden Beispieläußerungen nicht zu einer einzigen Vorlagenäußerung zusammengefasst werden?** Diese Mustervorlage unterstützt nicht die ODER-Syntax. Um sowohl die `in`- als auch die `on`-Version zu erfassen, müssen diese jeweils separate Vorlagenäußerungen sein.
+
+**Frage: Warum sind alle `w`-Buchstaben, den ersten Buchstaben in jeder Vorlagenäußerung, Kleinbuchstaben? Sollten dies nicht optional Groß- oder Kleinbuchstaben sein?** Die von der Clientanwendung an den Abfrageendpunkt übermittelte Äußerung wird in Kleinbuchstaben konvertiert. Die Vorlagenäußerung kann in Groß- oder Kleinbuchstaben geschrieben sein, bei der Endpunktäußerung besteht diese Möglichkeit ebenfalls. Der Vergleich erfolgt immer nach der Konvertierung in Kleinbuchstaben.
+
+**Frage: Warum ist die vordefinierte Zahl nicht Teil der Vorlagenäußerung, wenn der 3. März sowohl als Zahl `3` als auch als Datum vorhergesagt wird`March 3`?** Die Vorlagenäußerung verwendet kontextuell ein Datum, entweder wörtlich wie in `March 3` oder abstrahiert wie `in a month`. Ein Datum kann eine Zahl enthalten, aber eine Zahl muss nicht unbedingt als Datum angesehen werden. Verwenden Sie immer die Entität, die den Typ am besten repräsentiert, den Sie in den JSON-Vorhersageergebnissen zurückgeben möchten.  
+
+**Frage: Was ist mit schlecht formulierten Äußerungen wie z.B. `Who will {Employee}['s] manager be on March 3?`.** Grammatisch unterschiedliche Verbformen wie diese, bei denen `will` und `be` getrennt sind, müssen eine neue Vorlagenäußerung sein. Die vorhandene Vorlagenäußerung wird nicht übereinstimmen. Die Absicht der Äußerung nicht sich zwar nicht geändert, die Wortstellung aber schon. Diese Änderung wirkt sich auf die Vorhersage in LUIS aus.
+
+**Beachten Sie: Entitäten werden zuerst gefunden, dann wird das Muster verglichen.**
+
+## <a name="edit-the-existing-pattern-template-utterance"></a>Bearbeiten der vorhandenen Mustervorlagenäußerung
+
+1. Wählen Sie auf der LUIS-Website die Option **Erstellen** im oberen Menü und anschließend **Muster** im linken Menü. 
+
+2. Suchen Sie die vorhandene Vorlagenäußerung `Who is {Employee}['s] manager[?]`, und wählen Sie die Auslassungspunkte (***...*** ) auf der rechten Seite. 
+
+3. Wählen Sie im Popupmenü **Bearbeiten** aus. 
+
+4. Ändern Sie die Vorlagenäußerung in: `who is {Employee}['s] manager [[on]{datetimeV2}?]]`
+
+## <a name="add-new-pattern-template-utterances"></a>Hinzufügen von neuen Mustervorlagenäußerungen
+
+1. Fügen Sie im Abschnitt **Muster** unter **Erstellen** verschiedene neue Mustervorlagenäußerungen hinzu. Wählen Sie **OrgChart-Manager** im Dropdownmenü „Absicht“, und geben Sie jede der folgenden Vorlagenäußerungen ein:
+
+    |Absicht|Beispieläußerungen mit optionalem Text und vordefinierten Entitäten|
+    |--|--|
+    |OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
+    |OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
+    |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
+    |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+
+2. Trainieren Sie die App.
+
+3. Wählen Sie im oberen Bereich **Test**, um den Testbereich zu öffnen. 
+
+4. Geben Sie mehrere Testäußerungen ein, um zu überprüfen, ob dieses Muster abgeglichen wird und die Absichtsbewertung hoch genug ist. 
+
+    Nachdem Sie die erste Äußerung eingegeben haben, wählen Sie in den Ergebnissen **Untersuchen**, damit alle Vorhersageergebnisse angezeigt werden.
+
+    |Äußerung|
+    |--|
+    |Who will be Jill Jones manager|
+    |who will be jill jones's manager|
+    |Who will be Jill Jones's manager?|
+    |who will be Jill jones manager on March 3|
+    |Who will be Jill Jones manager next Month|
+    |Who will be Jill Jones manager in a month?|
+
+Alle diese Äußerungen beinhalten Entitäten, daher entsprechen sie dem gleichen Muster und haben einen hohen Vorhersagewert.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Wählen Sie dazu in der Liste rechts vom App-Namen die Auslassungspunkte (***...***) und dann **Delete** (Löschen) aus. Wählen Sie im Popupdialogfenster **Delete App?** (App löschen?) **OK** aus.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

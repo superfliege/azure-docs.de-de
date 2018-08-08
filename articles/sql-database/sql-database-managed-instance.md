@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 08/01/2018
 ms.author: bonova
-ms.openlocfilehash: 0951281a584d3c534d82ec5760d29f4b80616d2d
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: ff571035c9360730546732205f34d75ace38fbff
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091992"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414315"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Was ist eine verwaltete Instanz (Vorschauversion)?
 
@@ -131,23 +131,24 @@ Folgende wichtige Merkmale kennzeichnen die Dienstebene „Universell“:
 
 \* Ein virtueller Kern repräsentiert die logische CPU. Virtuelle Kerne werden für verschiedene Hardwaregenerationen angeboten. Logische CPUs der Generation 4 basieren auf Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz und logische CPUs der Generation 5 auf Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz. 
 
-### <a name="business-critical-service-tier"></a>Dienstebene „Unternehmenskritisch“
+### <a name="business-critical-service-tier"></a>Diensttarif „Unternehmenskritisch“
 
 Die unternehmenskritische Dienstebene wurde für Anwendungen mit hohen E/A-Anforderungen konzipiert. Sie bietet höchste Resilienz gegenüber Ausfällen durch mehrere isolierte AlwaysOn-Replikate. Das folgende Diagramm zeigt die zugrundeliegende Architektur für diese Dienstebene:
 
-![Dienstebene „Unternehmenskritisch“](./media/sql-database-managed-instance/business-critical-service-tier.png)  
+![Diensttarif „Unternehmenskritisch“](./media/sql-database-managed-instance/business-critical-service-tier.png)  
 
 Folgende wichtige Merkmale kennzeichnen die Dienstebene „Unternehmenskritisch“: 
 -   Konzipiert für Geschäftsanwendungen mit höchster Leistung und Hochverfügbarkeitsanforderungen 
--   Enthält einen äußerst schnellen SSD-Speicher (bis zu 1 TB auf Gen 4 und bis zu 4 TB auf Gen 5) – unterstützt bis zu 100 Datenbanken pro Instanz 
+-   Enthält einen äußerst schnellen SSD-Speicher (bis zu 1 TB auf Gen 4 und bis zu 4 TB auf Gen 5)
+-   Unterstützt bis zu 100 Datenbanken pro Instanz 
 
 |Feature | BESCHREIBUNG|
 |---|---|
-| Anzahl der virtuellen Kerne* | 8, 16, 24 (Gen 4)<br>8, 16, 24, 32, 40, 64, 80 (Gen 5)|
+| Anzahl der virtuellen Kerne* | 8, 16, 24, 32 (Gen 4)<br>8, 16, 24, 32, 40, 64, 80 (Gen 5)|
 | SQL Server-Version/-Build | SQL Server (neueste verfügbare Version) |
 | Zusätzliche Funktionen | [In-Memory-OLTP](sql-database-in-memory.md)<br> 1 zusätzliches schreibgeschütztes Replikat ([horizontale Leseskalierung](sql-database-read-scale-out.md))
 | Min. Speichergröße | 32 GB |
-| Max. Speichergröße | Gen 4: 1 TB (alle V-Kern-Größen)<br> Gen 5:<ul><li>1 TB für 8, 16 V-Kerne</li><li>2 TB für 24 V-Kerne</li><li>4 TB für 40, 60, 80 V-Kerne</ul>|
+| Max. Speichergröße | Gen 4: 1 TB (alle V-Kern-Größen)<br> Gen 5:<ul><li>1 TB für 8, 16 V-Kerne</li><li>2 TB für 24 V-Kerne</li><li>4 TB für 32, 40, 64, 80 V-Kerne</ul>|
 | Max. Speicherkapazität pro Datenbank | Bestimmt durch die maximale Speichergröße pro Instanz |
 | Anzahl der Datendateien (ROWS) pro Datenbank | Mehrere | 
 | Anzahl der Protokolldateien (LOG) pro Datenbank | 1 | 

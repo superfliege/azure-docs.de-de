@@ -1,23 +1,23 @@
 ---
-title: Problembehandlung bei der zweistufigen Überprüfung – Azure AD | Microsoft-Dokumentation
+title: Problembehandlung bei der zweistufigen Überprüfung – Azure Active Directory | Microsoft-Dokumentation
 description: Enthält Anweisungen für Benutzer zu den Schritten, die bei einem Problem mit Azure Multi-Factor Authentication und der zweistufigen Überprüfung auszuführen sind.
-services: multi-factor-authentication
-documentationcenter: ''
+services: active-directory
 author: eross-msft
 manager: mtillman
 ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
-ms.service: multi-factor-authentication
 ms.workload: identity
+ms.service: active-directory
+ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: lizross
 ms.reviewer: kexia
-ms.openlocfilehash: ec79adcaf7cbef778b8c9e572ae932d5ceb47aa6
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: fd722da236f3e1fff18e2561756635cd95f098e0
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090376"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346522"
 ---
 # <a name="get-help-with-two-step-verification"></a>Hilfe bei der zweistufigen Überprüfung
 
@@ -42,7 +42,7 @@ Es gibt verschiedene Gründe, weshalb Sie möglicherweise eine andere Überprüf
 
 ## <a name="sign-in-using-another-verification-method"></a>Anmelden mit einer anderen Überprüfungsmethode
 
-1. Melden Sie sich wie gewohnt bei Ihrem Konto an, und klicken Sie auf den Link **Sign in another way** (Andere Methode für die Anmeldung verwenden) auf der Seite **Zweistufige Überprüfung**.
+1. Melden Sie sich wie gewohnt bei Ihrem Konto an, und klicken Sie auf der Seite **Zweistufige Überprüfung** auf den Link **Auf andere Weise anmelden**.
 
     ![Ändern der Überprüfungsmethode für die Anmeldung](./media/multi-factor-authentication-end-user-troubleshoot/two-factor-auth-signin-another-way.png)
 

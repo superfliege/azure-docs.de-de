@@ -1,21 +1,20 @@
 ---
-title: Aufzeichnen von Sprachbeispielen für das Erstellen einer benutzerdefinierten Stimme | Microsoft-Dokumentation
+title: Aufzeichnen von Sprachbeispielen für das Erstellen einer benutzerdefinierten Stimme
 titleSuffix: Microsoft Cognitive Services
 description: Erstellen Sie eine benutzerdefinierte Stimme in Produktionsqualität, indem Sie ein überzeugendes Skript vorbereiten, einen guten Sprecher engagieren und professionell aufzeichnen.
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 07/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 1afab3b7c128abdf97c3a16fc493935bab5cfd4c
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 80b65b8bc2e2947575004269f45922e2306dd32e
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072264"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284165"
 ---
 # <a name="how-to-record-voice-samples-for-a-custom-voice"></a>Aufzeichnen von Sprachbeispielen für eine benutzerdefinierte Stimme
 

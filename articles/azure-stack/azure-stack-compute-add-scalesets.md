@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: brenduns
 ms.reviewer: kivenkat
-ms.openlocfilehash: ddde2e6bad8a373df405ac05e78a5dbccd0257fc
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 4e77e187d969af7ea2a12754b18d4a218daceed6
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "34800639"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39411905"
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Bereitstellen von VM-Skalierungsgruppen in Azure Stack
 
@@ -33,8 +33,8 @@ In Azure Stack unterstützen VM-Skalierungsgruppen keine automatische Skalierung
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- **Marketplace-Syndikation**  
-    Registrieren Sie Azure Stack global für Azure, um die Marketplace-Syndikation zu ermöglichen. Befolgen Sie die Anleitung unter [Registrieren von Azure Stack in Azure](azure-stack-registration.md).
+- **Marketplace**  
+    Registrieren Sie Azure Stack global für Azure, um Marketplace-Elemente verfügbar zu machen. Befolgen Sie die Anleitung unter [Registrieren von Azure Stack in Azure](azure-stack-registration.md).
 - **Betriebssystemimage**  
     Wenn Sie dem Azure Stack-Marketplace kein Betriebssystemimage hinzugefügt haben, helfen Ihnen die Informationen unter [Hinzufügen eines Azure Stack-Marketplace-Elements aus Azure](asdk/asdk-marketplace-item.md) weiter.
 

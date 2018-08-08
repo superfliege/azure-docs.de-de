@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
-ms.openlocfilehash: 16a6d8e34bdec6e597c5f04faf421d387a877bff
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 48e0e68794e83739835d97aa8a2b26516c660357
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714883"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345190"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps
 
@@ -77,6 +77,9 @@ Wenn die unten angegebene Benachrichtigung angezeigt wird, ist der Skalierungsvo
 ![Bestätigung des Skalierungsvorgangs](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
 
 ## <a name="buy-the-domain"></a>Kaufen der Domäne
+
+### <a name="pricing-information"></a>Preisinformationen
+Preisinformationen zu Azure App Service-Domänen finden Sie auf der Seite [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/windows/) im Abschnitt „App Service-Domäne“.
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 Öffnen Sie das [Azure-Portal](https://portal.azure.com/), und melden Sie sich mit Ihrem Azure-Konto an.

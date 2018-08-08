@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: alkohli
-ms.openlocfilehash: 68e31f6b88a772ad67e3c58e11925f46f1cc37e9
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: a86d5c1513594f5bc0df03b8ca7671a1f9541b4d
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188670"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308053"
 ---
 # <a name="azure-importexport-system-requirements"></a>Systemanforderungen für Azure Import/Export
 
@@ -30,13 +30,12 @@ Um die Festplatten mit dem WAImportExport-Tool vorzubereiten, werden die folgend
 |Windows Server     |Windows Server 2008 R2 <br> Windows Server 2012, Windows Server 2012 R2         |
 
 
-
 ## <a name="supported-storage-accounts"></a>Unterstützte Speicherkonten
 
-Der Azure Import/Export-Dienst unterstützt die folgenden Azure-Speicherkonten.
-- Klassisch
+Der Azure Import/Export-Dienst unterstützt die folgenden [Azure Storage-Konten](storage-account-options.md).
+- Speicherkonten vom Typ Allgemein v1 (sowohl klassische als auch Azure Resource Manager-Bereitstellungen)
 - Blob Storage-Konten
-- Speicherkonten des Typs „Allgemein v1“. 
+- Speicherkonten vom Typ Allgemein v2
 
 Bei jedem Auftrag können lediglich Daten auf ein oder von einem Speicherkonto übertragen werden. Anders ausgedrückt: Ein einzelner Import/Export-Auftrag kann nicht mehrere Speicherkonten umfassen. Weitere Informationen zum Erstellen eines neuen Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](storage-create-storage-account.md#create-a-storage-account).
 
@@ -48,10 +47,10 @@ Bei jedem Auftrag können lediglich Daten auf ein oder von einem Speicherkonto �
 Die folgende Liste von Speichertypen wird vom Azure Import/Export-Dienst unterstützt.
 
 
-|Auftrag  |Speicher  |Unterstützt  |Nicht unterstützt  |
+|Auftrag  |Speicherdienst |Unterstützt  |Nicht unterstützt  |
 |---------|---------|---------|---------|
-|Importieren     |  Azure Blob-Speicher. <br>Blockblobs und Seitenblobs werden unterstützt. <br> Azure Files wird unterstützt.       |         |
-|Export     |   Azure Blob-Speicher. <br>Blockblobs, Seitenblobs und Anfügeblobs werden unterstützt.       | Azure Files wird nicht unterstützt.        |
+|Importieren     |  Azure Blob Storage <br><br> Azure-Dateispeicher       | Blockblobs und Seitenblobs werden unterstützt. <br><br> Files wird unterstützt.          |
+|Export     |   Azure Blob Storage       | Blockblobs, Seitenblobs und Anfügeblobs werden unterstützt.         | Azure Files wird nicht unterstützt.
 
 
 ## <a name="supported-hardware"></a>Unterstützte Hardware 

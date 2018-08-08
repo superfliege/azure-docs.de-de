@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 04/05/2018
-ms.openlocfilehash: d70d39f027df1fba7934c4b752b1dd2100f2e8b9
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 08/02/2018
+ms.openlocfilehash: 9b182b0efad16f74c21b04712143b70071943c1e
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30905373"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412551"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>Migrieren von lokalem SQL Server zur Azure SQL-Datenbank mithilfe von Azure PowerShell
 In diesem Artikel migrieren Sie die Datenbank **Adventureworks2012**, die in einer lokalen Instanz von SQL Server 2016 (oder höher) wiederhergestellt wurde, mithilfe von Microsoft Azure PowerShell zu einer Azure SQL-Datenbank. Mithilfe des Moduls `AzureRM.DataMigration` in Microsoft Azure PowerShell können Sie Datenbanken aus einer lokalen Instanz von SQL Server zur Azure SQL-Datenbank migrieren.
@@ -38,7 +38,7 @@ Zum Ausführen dieser Schritte benötigen Sie Folgendes:
 - [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595), Version 3.3 oder höher.
 - Für Azure Database Migration Service ist ein VNET erforderlich, das über das Azure Resource Manager-Bereitstellungsmodell erstellt wurde und entweder über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder über [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) Konnektivität zwischen Standorten für Ihre lokalen Quellserver bietet.
 - Abgeschlossene Bewertung der lokalen Datenbank und Schemamigration mithilfe von Data Migration Assistant wie im Artikel [Durchführen einer SQL Server-Migrationsbewertung](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem) beschrieben.
-- Herunterladen und Installieren des AzureRM.DataMigration-Moduls aus dem PowerShell-Katalog mithilfe des [PowerShell-Cmdlets „Install-Module“](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1)
+- Installation des heruntergeladenen AzureRM.DataMigration-Moduls aus dem PowerShell-Katalog mit dem [PowerShell-Cmdlets „Install-Module“](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1).
 - Die für die Verbindung mit der SQL Server-Quellinstanz verwendeten Anmeldeinformationen müssen über die Berechtigung [SERVER STEUERN](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) verfügen.
 - Die für die Verbindung mit der Azure SQL DB-Zielinstanz verwendeten Anmeldeinformationen müssen für die Azure SQL-Datenbank-Zieldatenbanken die Berechtigung DATENBANK STEUERN besitzen.
 - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.

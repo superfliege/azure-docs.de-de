@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 06/22/2018
 ms.author: srrengar
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 79e5622dd73e53854204675b435e99d187a3ab26
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 9f857c23b5500bc7790a0ff7fcf81eaec51f37c9
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075476"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358305"
 ---
 # <a name="monitoring-and-diagnostics"></a>Überwachung und Diagnose
-Azure Service Fabric Mesh ist ein vollständig verwalteter Dienst, mit dem Entwickler Microservicesanwendungen implementieren können, ohne virtuelle Computer, Speicher oder Netzwerke zu verwalten. Die Überwachung und Diagnose für Service Fabric Mesh besteht aus drei Hauptkategorien von Diagnosedaten:
+Azure Service Fabric Mesh ist ein vollständig verwalteter Dienst, der es Entwicklern ermöglicht, Microservicesanwendungen zu implementieren, ohne virtuelle Computer, Speicher oder Netzwerke verwalten zu müssen. Die Überwachung und Diagnose für Service Fabric Mesh besteht aus drei Hauptkategorien von Diagnosedaten:
 
 - Anwendungsprotokolle: Diese sind definiert als die Protokolle aus Ihren Containeranwendungen, basierend darauf, wie Sie Ihre Anwendung instrumentiert haben (z. B. Docker-Protokolle).
 - Plattformereignisse: Die für Containervorgänge relevanten Ereignisse der Mesh-Plattform umfassen derzeit Containeraktivierung, -deaktivierung und -beendigung.
@@ -40,7 +40,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> 
 ```
 
 > [!NOTE]
-> Mit dem Befehl „az mesh servicereplica“ können Sie den Namen des Replikats abrufen. Replikatnamen sind inkrementelle Nummern ab 0.*
+> Mit dem Befehl „az mesh service-replica“ können Sie den Namen des Replikats abrufen. Replikatnamen sind inkrementelle Nummern ab 0.*
 
 So sehen die Protokolle aus dem VotingWeb.Code-Container aus der Abstimmungsanwendung aus:
 

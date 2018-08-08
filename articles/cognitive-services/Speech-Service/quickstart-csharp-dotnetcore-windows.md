@@ -1,23 +1,24 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache in C# unter .NET Core für Windows mit dem Cognitive Services Speech SDK | Microsoft-Dokumentation'
+title: 'Schnellstart: Erkennen von Sprache in C# unter .NET Core für Windows mit dem Cognitive Services Speech SDK'
 titleSuffix: Microsoft Cognitive Services
 description: Hier erfahren Sie, wie die Spracherkennung in C# unter .NET Core für Windows mit dem Cognitive Services Speech SDK funktioniert.
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 50cf1bbbe529b30da6bfe39281d11eee1c788dd8
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 7790920b6553ba0e2738d693710bfc3a1d3b4f89
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259159"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325100"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-core-on-windows-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in C# unter .NET Core für Windows mit dem Speech SDK
+
+[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Dieser Artikel beschreibt, wie Sie eine C#-Konsolen-App für .NET Core unter Windows mit dem Cognitive Services Speech SDK erstellen, um Spracherkennung zu transkribieren.
 Die Anwendung umfasst das [NuGet-Paket für das Microsoft Cognitive Services Speech SDK](https://aka.ms/csspeech/nuget) und Microsoft Visual Studio 2017.
@@ -83,6 +84,6 @@ Suchen Sie nach diesem Beispiel im Ordner `quickstart/csharp-dotnetcore-windows`
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Übersetzen von Sprache](how-to-translate-speech.md)
-- [Anpassen von Akustikmodellen](how-to-customize-acoustic-models.md)
-- [Anpassen von Sprachmodellen](how-to-customize-language-model.md)
+- [Übersetzen von Sprache](how-to-translate-speech-csharp.md)
+- [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](how-to-customize-acoustic-models.md)
+- [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md)

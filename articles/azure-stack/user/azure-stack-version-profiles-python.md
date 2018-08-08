@@ -14,12 +14,12 @@ ms.date: 05/21/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
 <!-- dev: viananth -->
-ms.openlocfilehash: d17ba9ed4548a986d6846d934aee197609ec80ca
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 23b5b5d79f0f905d7c4a173247232ede2cad2877
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "34806835"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412446"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>Verwenden von API-Versionsprofilen mit Python in Azure Stack
 
@@ -121,7 +121,7 @@ Die Beispiele befinden sich nicht unbedingt in der Reihenfolge, die in der obige
 
 6.  Legen Sie die folgenden Variablen fest, und exportieren Sie diese Umgebungsvariablen in Ihre aktuelle Shell. 
 
-    ````bash
+    ```bash
     export AZURE_TENANT_ID={your tenant id}
     export AZURE_CLIENT_ID={your client id}
     export AZURE_CLIENT_SECRET={your client secret}
@@ -129,32 +129,29 @@ Die Beispiele befinden sich nicht unbedingt in der Reihenfolge, die in der obige
     export ARM_ENDPOINT={your AzureStack Resource Manager Endpoint}
     ```
 
-7.  In order to run this sample, Ubuntu 16.04-LTS and WindowsServer 2012-R2-Datacenter images must be present in Azure Stack market place. These can be either [downloaded from Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) or [added to Platform Image Repository](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image).
+7.  Zum Ausführen dieses Beispiels müssen Ubuntu 16.04 LTS- und Windows Server 2012 R2 Datacenter-Images im Azure Stack-Marketplace vorhanden sein. Diese können entweder [aus Azure heruntergeladen](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) oder [dem Plattform Image Repository hinzugefügt](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image) werden.
 
-8. Run the sample.
+8. Führen Sie das Beispiel aus.
 
     ```
     python unmanaged-disks\example.py
     ```
 
-## Notes
+## <a name="notes"></a>Notizen
 
-You may be tempted to try to retrieve a VM's OS disk by using
-`virtual_machine.storage_profile.os_disk`.
-In some cases, this may do what you want,
-but be aware that it gives you an `OSDisk` object.
-In order to update the OS Disk's size, as `example.py` does,
-you need not an `OSDisk` object but a `Disk` object.
-`example.py` gets the `Disk` object with the following:
+Möglicherweise möchten Sie versuchen, den Betriebssystem-Datenträger eines virtuellen Computers mit `virtual_machine.storage_profile.os_disk` abzurufen.
+In einigen Fällen können Sie damit Ihr Ziel erreichen, aber beachten Sie, dass Sie so ein `OSDisk`-Objekt erhalten.
+Zum Aktualisieren der Größe des Betriebssystemdatenträgers, wie von `example.py` ausgeführt, benötigen Sie kein `OSDisk`-Objekt, sondern ein `Disk`-Objekt.
+`example.py` ruft das `Disk`-Objekt mit Folgendem ab:
 
 ```python
 os_disk_name = virtual_machine.storage_profile.os_disk.name
 os_disk = compute_client.disks.get(GROUP_NAME, os_disk_name)
 ```
 
-## Next steps
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Azure Python Development Center](https://azure.microsoft.com/develop/python/)
-- [Azure Virtual Machines documentation](https://azure.microsoft.com/services/virtual-machines/)
-- [Learning Path for Virtual Machines](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
-- If you don't have a Microsoft Azure subscription, you can get a FREE trial account [here](http://go.microsoft.com/fwlink/?LinkId=330212).
+- [Azure Python Developer Center](https://azure.microsoft.com/develop/python/)
+- [Dokumentation zu virtuellen Azure-Computern](https://azure.microsoft.com/services/virtual-machines/)
+- [Lernpfad für Virtual Machines](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
+- Wenn Sie kein Microsoft Azure-Abonnement haben, können Sie [hier](http://go.microsoft.com/fwlink/?LinkId=330212) ein KOSTENLOSES Testkonto erstellen.

@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/02/2018
+ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 62b0639f134a134739b09593a0b21b47d06699dc
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 6f6fa1ebc086530f138d32ee5a9c799b5bfbbdeb
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39236923"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412109"
 ---
 # <a name="overview-azure-sql-database-resource-limits"></a>Übersicht zu Ressourcenlimits für Azure SQL-Datenbank 
 
@@ -28,10 +28,12 @@ Dieser Artikel bietet eine Übersicht zu den Ressourcenlimits für Azure SQL-Dat
 | Standardanzahl von Servern pro Abonnement in beliebiger Region | 20 |
 | Maximale Anzahl von Servern pro Abonnement in beliebiger Region | 200 |
 | DTU/eDTU-Kontingent pro Server | 54.000 |
+| Virtuelle Kerne pro Server | 540 |
+| Maximale Anzahl von Pools pro Server | Begrenzt durch die Anzahl von DTUs oder virtuellen Kernen |
 |||
 
 > [!NOTE]
-> Um ein höheres DTU/eDTU-Kontingent oder eine höhere Anzahl von Servern als die Standardanzahl zu erhalten, können Sie im Azure-Portal eine neue Supportanfrage für das Abonnement mit dem Problemtyp „Kontingent“ übermitteln. Durch das DTU/eDTU-Kontingent und das Limit für Datenbanken pro Server wird die Anzahl der Pools für elastische Datenbanken pro Server eingeschränkt. 
+> Um ein höheres DTU/eDTU-Kontingent oder eine höhere Anzahl von virtuellen Kernen oder Servern als die Standardanzahl zu erhalten, können Sie im Azure-Portal eine neue Supportanfrage für das Abonnement mit dem Problemtyp „Kontingent“ übermitteln. Durch das DTU/eDTU-Kontingent und das Limit für Datenbanken pro Server wird die Anzahl der Pools für elastische Datenbanken pro Server eingeschränkt. 
 
 > [!IMPORTANT]
 > Wenn sich die Anzahl der Datenbanken dem Grenzwert pro Server nähert, kann Folgendes geschehen:
@@ -56,6 +58,7 @@ Wenn eine hohe Speicherplatznutzung festgestellt wird, stehen folgende Optionen 
 
 - Erhöhen der maximalen Größe von Datenbank oder Pool für elastische Datenbanken bzw. Hinzufügen von weiterem Speicher. Siehe [Skalieren der Ressourcen für einzelne Datenbanken](sql-database-single-database-scale.md) und [Skalieren der Ressourcen für elastische Pools in Azure SQL-Datenbank](sql-database-elastic-pool-scale.md).
 - Wenn sich die Datenbank in einem Pool für elastische Datenbanken befindet, kann sie auch aus dem Pool heraus verschoben werden, damit ihr Speicherplatz nicht mit anderen Datenbanken gemeinsam genutzt wird.
+- Verkleinern Sie eine Datenbank, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
 
 ### <a name="sessions-and-workers-requests"></a>Sitzungen und Worker (Anforderungen) 
 

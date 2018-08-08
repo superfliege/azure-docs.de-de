@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: raynew
-ms.openlocfilehash: 2be5ddd51140563efc44b1c1a4c84502bf491020
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: e2fbe766391759f2bbe4a95e75897b2bc9523c0c
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215321"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399072"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso-Migration: Bewerten von lokalen Workloads für die Migration zu Azure
 
@@ -58,7 +58,7 @@ In diesem Diagramm ist die aktuelle lokale Infrastruktur von Contoso dargestellt
 - Contoso verfügt in den USA über drei weitere Niederlassungen.
 - Das zentrale Rechenzentrum ist über eine auf Glasfaser basierende Metro-Ethernet-Verbindung (500 MBit/s) mit dem Internet verbunden.
 - Jede Niederlassung ist lokal über Business-Class-Verbindungen mit dem Internet verbunden, und IPsec-VPN-Tunnel führen zurück zum zentralen Rechenzentrum. Aufgrund dieser Anordnung ist das gesamte Netzwerk von Contoso dauerhaft verbunden, und die Internetverbindung wird optimiert.
-- Das zentrale Rechenzentrum ist vollständig mit VMware virtualisiert. Contoso verfügt über zwei ESXi 6.5-Virtualisierungshosts, die mit vCenter Server 6.5 verwaltet werden.
+- Das Hauptrechenzentrum ist vollständig mit VMware virtualisiert. Contoso verfügt über zwei ESXi 6.5-Virtualisierungshosts, die mit vCenter Server 6.5 verwaltet werden.
 - Contoso nutzt Active Directory für die Identitätsverwaltung. Contoso verwendet im internen Netzwerk DNS-Server.
 - Die Domänencontroller im Rechenzentrum werden auf VMware-VMs ausgeführt. Die Domänencontroller an lokalen Standorten werden auf physischen Servern ausgeführt.
 
@@ -84,7 +84,7 @@ Das Cloudteam von Contoso hat sich Ziele für die Migrationsbewertungen gesetzt:
 
 Contoso nutzt Microsoft-Tools für seine Migrationsbewertung. Die Tools sind an den Zielen des Unternehmens ausgerichtet und sollten Contoso alle benötigten Informationen liefern.
 
-Technologie | Beschreibung | Kosten
+Technologie | BESCHREIBUNG | Kosten
 --- | --- | ---
 [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Contoso nutzt den Datenmigrations-Assistenten, um Kompatibilitätsprobleme zu bewerten und zu erkennen, die ggf. die Datenbankfunktionalität des Unternehmens in Azure beeinträchtigen können. Mit dem Datenmigrations-Assistenten wird die Featureparität zwischen SQL-Quellen und -Zielen bewertet. Er stellt Empfehlungen zu Verbesserungen der Leistung und Zuverlässigkeit bereit. | Der Datenmigrations-Assistent ist ein kostenloses Tool, das heruntergeladen werden kann.
 [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-overview) | Contoso nutzt den Azure Migrate-Dienst, um seine VMware-VMs zu bewerten. Azure Migrate bewertet die Eignung der Computer für die Migration. Der Dienst stellt Schätzungen zur Größe und zu den Kosten für die Ausführung in Azure bereit.  | Ab Mai 2018 ist Azure Migrate ein kostenloser Dienst.
@@ -123,8 +123,10 @@ Contoso und andere Benutzer müssen für diese Bewertung die folgenden Vorausset
 - Mindestens zwei lokale VMware-VMs (mit Ausführung einer SQL Server-Datenbank auf einer VM).
 - Berechtigungen zum Installieren von Azure Migrate-Agents auf jeder VM.
 - Die VMs sollten über eine direkte Internetverbindung verfügen.  
-        - Sie können den Internetzugriff auf die [erforderlichen URLs](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites) beschränken.  
-        - Wenn Ihre VMs nicht über Internetkonnektivität verfügen, muss das [OMS-Gateway](../log-analytics/log-analytics-oms-gateway.md) von Azure Log Analytics darauf installiert sein.
+        
+- Sie können den Internetzugriff auf die [erforderlichen URLs](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites) beschränken.  
+
+- Wenn Ihre VMs nicht über Internetkonnektivität verfügen, muss das [OMS-Gateway](../log-analytics/log-analytics-oms-gateway.md) von Azure Log Analytics darauf installiert sein.
 - FQDN der VM, auf der die SQL Server-Instanz ausgeführt wird, für die Datenbankbewertung.
 - Für die Windows Firewall auf der SQL Server-VM sollten externe Verbindungen über TCP-Port 1433 (Standard) zugelassen sein. Dieses Setup ermöglicht die Verbindungsherstellung für den Datenmigrations-Assistenten.
 
@@ -226,7 +228,7 @@ Contoso vergewissert sich, dass es über Berechtigungen zum Erstellen einer VM p
 
 ### <a name="verify-ports"></a>Überprüfen der Ports
 
-In der Contoso-Bewertung wird die Abhängigkeitszuordnung verwendet. Für die Abhängigkeitszuordnung muss ein Agent auf VMs installiert werden, auf die zugegriffen wird. Der Agent muss über den TCP-Port 443 jeder VM jeweils eine Verbindung mit Azure herstellen können. Informieren Sie sich über die [Verbindungsanforderungen](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid).
+Die Contoso-Bewertung verwendet Abhängigkeitszuordnung. Für die Abhängigkeitszuordnung muss ein Agent auf VMs installiert werden, auf die zugegriffen wird. Der Agent muss über den TCP-Port 443 jeder VM jeweils eine Verbindung mit Azure herstellen können. Informieren Sie sich über die [Verbindungsanforderungen](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid).
 
 ### <a name="set-statistics-settings"></a>Festlegen der Statistikeinstellungen
 
@@ -441,7 +443,7 @@ Contoso kann jetzt die Abhängigkeiten der Computer überprüfen, und eine Grupp
 2. Für SQLVM werden in der Abhängigkeitsübersicht die folgenden Informationen angezeigt:
 
     - Prozessgruppen bzw. Prozesse mit aktiven Netzwerkverbindungen auf der SQLVM für den angegebenen Zeitraum (standardmäßig eine Stunde)
-    - Eingehende (Client) und ausgehende TCP-Verbindungen (Server) zu bzw. von allen abhängigen Computern
+    - Eingehende (Client) und ausgehende TCP-Verbindungen (Server) zu bzw. von allen abhängigen Computern.
     - Abhängige Computer mit installierten Azure Migrate-Agents werden als separate Felder angezeigt
     - Für Computer ohne installierte Agents werden Informationen zum Port und zur IP-Adresse angezeigt
 

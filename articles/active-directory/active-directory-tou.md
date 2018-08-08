@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance-reports
-ms.date: 07/18/2018
+ms.date: 07/31/2018
 ms.author: rolyon
-ms.openlocfilehash: b1a11fdb685b8b4e5c513931269c479506d943a0
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 970e748d7174a9b443fc96f52ac94e082a6c9d44
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136654"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398953"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Nutzungsbedingungsfeature für Azure Active Directory
 Mit den Azure AD-Nutzungsbedingungen können Organisationen komfortabel Informationen für Endbenutzer anzeigen. Dadurch wird sichergestellt, dass Benutzern relevante Haftungsausschlüsse angezeigt werden, um rechtliche oder compliancebezogene Anforderungen zu erfüllen. Dieser Artikel enthält eine Einführung in die Verwendung der Azure AD-Nutzungsbedingungen.
@@ -138,6 +138,42 @@ Benutzer können die Nutzungsbedingungen, die sie akzeptiert haben, wie folgt le
 
 1. Hier können Sie sich die akzeptierten Nutzungsbedingungen ansehen. 
 
+## <a name="edit-terms-of-use-details"></a>Bearbeiten der Details der Nutzungsbedingungen
+Sie können einige Details der Nutzungsbedingungen bearbeiten, aber kein vorhandenes Dokument ändern. Im Folgenden wird das Verfahren zum Bearbeiten von Details beschrieben.
+
+1. Melden Sie sich unter [https://aka.ms/catou](https://aka.ms/catou) bei Azure an, und navigieren Sie zu **Nutzungsbedingungen**.
+
+1. Wählen Sie die Nutzungsbedingungen aus, die Sie bearbeiten möchten.
+
+1. Klicken Sie auf **Bedingungen bearbeiten**.
+
+1. Ändern Sie im Bereich „Bedingungen bearbeiten“ den Namen und Anzeigenamen, oder fordern Sie von Benutzern, Werte zu erweitern.
+
+    ![Hinzufügen von Nutzungsbedingungen](media/active-directory-tou/edit-tou.png)
+
+1. Klicken Sie zum Speichern der Änderungen auf **Speichern**.
+
+    Nachdem Sie die Änderungen gespeichert haben, müssen die Benutzer die neuen Bedingungen erneut akzeptieren.
+
+## <a name="add-a-terms-of-use-language"></a>Hinzufügen einer Sprache der Nutzungsbedingungen
+Im Folgenden wird das Verfahren zum Hinzufügen einer Sprache der Nutzungsbedingungen beschrieben.
+
+1. Melden Sie sich unter [https://aka.ms/catou](https://aka.ms/catou) bei Azure an, und navigieren Sie zu **Nutzungsbedingungen**.
+
+1. Wählen Sie die Nutzungsbedingungen aus, die Sie bearbeiten möchten.
+
+1. Klicken Sie im Bereich „Details“ auf die Registerkarte **Sprachen**.
+
+    ![Hinzufügen von Nutzungsbedingungen](media/active-directory-tou/languages-tou.png)
+
+1. Klicken Sie auf **Sprache hinzufügen**.
+
+1. Laden Sie in den Bereich „Sprache der Nutzungsbedingungen hinzufügen“ Ihre lokalisierte PDF-Datei hoch, und wählen Sie die Sprache aus.
+
+    ![Hinzufügen von Nutzungsbedingungen](media/active-directory-tou/language-add-tou.png)
+
+1. Klicken Sie auf **Hinzufügen**, um die Sprache hinzuzufügen.
+
 ## <a name="delete-terms-of-use"></a>Löschen der Nutzungsbedingungen
 Veraltete Nutzungsbedingungen können wie folgt gelöscht werden:
 
@@ -175,8 +211,11 @@ A: Die Benutzeranzahl im Bericht zu den Nutzungsbedingungen sowie die Angabe, we
 **F: Warum sehe ich eine andere Anzahl von Zustimmungen im Bericht zu den Nutzungsbedingungen als in den Azure AD-Überwachungsprotokollen?**</br>
 A: Der Bericht zu den Nutzungsbedingungen wird für die Lebensdauer dieser Nutzungsbedingungen gespeichert, während Azure AD-Überwachungsprotokolle nur für 30 Tage gespeichert werden. Darüber hinaus werden im Bericht zu den Nutzungsbedingungen nur der aktuelle Zustimmungsstatus der Benutzer angezeigt. Lehnt ein Benutzer z.B. die Nutzungsbedingungen ab und akzeptiert sie aber später, enthält der Bericht zu den Nutzungsbedingungen nur die Zustimmung. Wenn Sie den Verlauf anzeigen möchten, können Sie in den Azure AD-Überwachungsprotokollen nachsehen.
 
-**F: Müssen Benutzer die Nutzungsbedingungen erneut akzeptieren, wenn diese geändert werden?**</br>
-A: Ja. Wenn ein Administrator die Nutzungsbedingungen ändert, müssen sie durch Benutzer erneut akzeptiert werden.
+**F: Müssen Benutzer die Nutzungsbedingungen erneut akzeptieren, wenn ich Details der Nutzungsbedingungen bearbeite?**</br>
+A: Ja. Wenn ein Administrator die Details der Nutzungsbedingungen bearbeitet, müssen sie von den Benutzern erneut akzeptiert werden.
+
+**F: Kann ich ein vorhandenes Dokument mit Nutzungsbedingungen aktualisieren?**</br>
+A: Derzeit können Sie ein vorhandenes Dokument mit Nutzungsbedingungen nicht aktualisieren. Um ein Dokument mit Nutzungsbedingungen zu ändern, müssen Sie eine neue Instanz der Nutzungsbedingungen erstellen.
 
 **F: Wenn das PDF-Dokument mit den Nutzungsbedingungen Links enthält, können Benutzer darauf klicken?**</br>
 A: Die PDF-Datei wird standardmäßig im JPEG-Format gerendert, damit Links nicht angeklickt werden können. Benutzer haben die Möglichkeit, auf die Option **Probleme mit der Anzeige? Klicken Sie hier** zu klicken. Dadurch wird die PDF-Datei nativ gerendert, und Links werden unterstützt.

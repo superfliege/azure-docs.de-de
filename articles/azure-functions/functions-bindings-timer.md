@@ -3,7 +3,7 @@ title: Trigger mit Timer für Azure Functions
 description: Erfahren Sie, wie Trigger mit Timer in Azure Functions verwendet werden.
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -15,14 +15,14 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/27/2017
-ms.author: tdykstra
+ms.author: glenga
 ms.custom: ''
-ms.openlocfilehash: a4895c0c58d1cdb0430b7418ba24dd85157ecdd3
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 8459c08866fb71e755663aaddd32015af8b0d1df
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308158"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345241"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger mit Timer für Azure Functions 
 
@@ -205,7 +205,7 @@ Die Eigenschaft `IsPastDue` lautet `true`, wenn der aktuelle Funktionsaufruf sp�
 
 ## <a name="cron-expressions"></a>CRON-Ausdrücke 
 
-Ein CRON-Ausdruck für den Azure Functions-Trigger mit Timer enthält sechs Felder: 
+Azure Functions verwendet die Bibliothek [NCronTab](https://github.com/atifaziz/NCrontab), um CRON-Ausdrücke zu interpretieren. Ein CRON-Ausdruck enthält sechs Felder:
 
 `{second} {minute} {hour} {day} {month} {day-of-week}`
 
@@ -219,7 +219,12 @@ Jedes Feld kann einen der folgenden Werttypen aufweisen:
 |Eine Gruppe von Werten (`,`-Operator)|<nobr>"5,8,10 * * * * *"</nobr>|um hh:mm:05, hh:mm:08 und hh:mm:10, wobei „hh:mm“ für jede Minute in jeder Stunde steht (dreimal pro Minute)|
 |Ein Intervallwert (`/`-Operator)|<nobr>"0 */5 * * * *"</nobr>|um hh:05:00, hh:10:00, hh:15:00 usw. bis hh:55:00, wobei „hh“ für jede Stunde steht (zwölfmal pro Stunde)|
 
-Um Monate oder Tage anzugeben, können Sie eine aus drei Buchstaben bestehende Abkürzung anstelle von numerischen Werten verwenden. Verwenden Sie z. B. „Jan“ für Januar und „Sun“ für Sonntag.
+Um Monate oder Tage anzugeben, können Sie numerische Werte, Namen oder Abkürzungen von Namen verwenden:
+
+* Bei Tagen reichen die numerischen Werte von 0 bis 6, wobei die 0 für Sonntag steht.
+* Die Namen werden auf Englisch angegeben. Beispiel: `Monday`, `January`.
+* Bei Namen wird die Groß-/Kleinschreibung nicht berücksichtigt.
+* Namen können abgekürzt werden. Drei Buchstaben sind die empfohlene Länge der Abkürzung.  Beispiel: `Mon`, `Jan`. 
 
 ### <a name="cron-examples"></a>CRON-Beispiele
 
@@ -227,13 +232,13 @@ Die folgenden Beispiele zeigen CRON-Ausdrücke, die Sie für den Trigger mit Tim
 
 |Beispiel|Auslösung  |
 |---------|---------|
-|"0 */5 * * * *"|einmal alle fünf Minuten|
-|"0 0 * * * *"|einmal zu jeder vollen Stunde|
-|"0 0 */2 * * *"|einmal alle zwei Stunden|
-|"0 0 9-17 * * *"|zwischen 9:00 und 17:00 Uhr jeweils einmal pro Stunde|
-|"0 30 9 * * *"|täglich um 9:30 Uhr|
-|"0 30 9 * * 1-5"|werktags um 9:30 Uhr|
-
+|`"0 */5 * * * *"`|einmal alle fünf Minuten|
+|`"0 0 * * * *"`|einmal zu jeder vollen Stunde|
+|`"0 0 */2 * * *"`|einmal alle zwei Stunden|
+|`"0 0 9-17 * * *"`|zwischen 9:00 und 17:00 Uhr jeweils einmal pro Stunde|
+|`"0 30 9 * * *"`|täglich um 9:30 Uhr|
+|`"0 30 9 * * 1-5"`|werktags um 9:30 Uhr|
+|`"0 30 9 * Jan Mon"`|jeden Montag im Januar um 9:30|
 >[!NOTE]   
 >Sie können Beispiele für CRON-Ausdrücke online finden, doch wird bei vielen das Feld `{second}` ausgelassen. Wenn Sie einen dieser Ausdrücke kopieren, fügen das fehlende `{second}`-Feld hinzu. In der Regel sollte dieses Feld eine 0 (null) und kein Sternchen enthalten.
 
@@ -246,13 +251,13 @@ Als Standardzeitzone wird in Verbindung mit den CRON-Ausdrücken die Coordinated
 Beispiel: *Eastern Normalzeit* ist UTC-05:00. Wenn Sie Ihren Trigger mit Timer täglich um 10:00 Uhr EST auslösen möchten, verwenden Sie den folgenden CRON-Ausdruck, der die UTC-Zeitzone berücksichtigt:
 
 ```json
-"schedule": "0 0 15 * * *",
+"schedule": "0 0 15 * * *"
 ``` 
 
 Sie können auch eine App-Einstellung für die Funktionen-App mit dem Namen `WEBSITE_TIME_ZONE` erstellen und den Wert auf **Eastern Standard Time** (Eastern Normalzeit) festlegen.  Dann wird der folgende CRON-Ausdruck verwendet: 
 
 ```json
-"schedule": "0 0 10 * * *",
+"schedule": "0 0 10 * * *"
 ``` 
 
 ## <a name="timespan"></a>Zeitraum
