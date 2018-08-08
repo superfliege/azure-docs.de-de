@@ -1,0 +1,653 @@
+---
+title: Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer | Microsoft-Dokumentation
+description: Dieser Artikel enthält den Anhang zu Microsoft Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer.
+services: security
+documentationcenter: na
+author: mestew
+manager: MBaldwin
+ms.assetid: 98bbcb84-8e6c-4eb2-8490-c2a0c67aad79
+ms.service: security
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 07/30/2018
+ms.author: mstewart
+ms.openlocfilehash: cf3e9ce055219bccb44c19fd8e77fe39c938c968
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39392597"
+---
+# <a name="appendix-for-azure-disk-encryption"></a>Anhang zu Azure Disk Encryption 
+Dieser Artikel enthält den Anhang zu [Azure Disk Encryption für virtuelle IaaS-Computer](azure-security-disk-encryption-overview.md). Lesen Sie zuerst die Artikel zu Azure Disk Encryption für virtuelle IaaS-Computer, damit der Kontext für Sie verständlich ist. In diesem Artikel wird beschrieben, wie Sie vorverschlüsselte VHDs vorbereiten und andere Aufgaben durchführen.
+
+## <a name="connect-to-your-subscription"></a>Verbinden mit Ihrem Abonnement
+Lesen Sie den Artikel zu den [Voraussetzungen](azure-security-disk-encryption-prerequisites.md), bevor Sie fortfahren. Wenn Sie sichergestellt haben, dass alle Voraussetzungen erfüllt sind, können Sie die folgenden Cmdlets ausführen, um eine Verbindung mit Ihrem Abonnement herzustellen:
+
+### <a name="bkmk_ConnectPSH"></a> Verbinden Ihres Abonnements mit PowerShell
+
+1. Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich mit dem folgenden Befehl bei Ihrem Azure-Konto an:
+
+     ```powershell
+     Connect-AzureRmAccount 
+     ```
+2. Wenn Sie über mehrere Abonnements verfügen und ein bestimmtes Abonnement verwenden möchten, geben Sie den folgenden Befehl ein, um die Abonnements für Ihr Konto anzuzeigen:
+     
+     ```powershell
+     Get-AzureRmSubscription
+     ```
+3. Geben Sie Folgendes ein, um das zu verwendende Abonnement anzugeben:
+ 
+     ```powershell
+      Select-AzureRmSubscription -SubscriptionName <Yoursubscriptionname>
+     ```
+4. Geben Sie Folgendes ein, um zu überprüfen, ob es sich um das richtige Abonnement handelt:
+     
+     ```powershell
+     Get-AzureRmSubscription
+     ```
+5. Falls erforderlich, können Sie über [Connect-AzureAD](/powershell/module/azuread/connect-azuread) eine Verbindung mit Azure AD herstellen.
+     
+     ```powershell
+     Connect-AzureAD
+     ```
+6. Geben Sie Folgendes ein, um zu überprüfen, ob die Cmdlets für Azure Disk Encryption installiert sind:
+     
+     ```powershell
+     Get-command *diskencryption*
+     ```
+                       
+7. Lesen Sie sich bei Bedarf die Informationen unter [Erste Schritte mit Azure PowerShell](/powershell/azure/get-started-azureps) und [Azure AD](/powershell/module/azuread) durch.
+
+### <a name="bkmk_ConnectCLI"></a> Verbinden Ihres Abonnements mit der Azure CLI
+
+1. Melden Sie sich mit dem Befehl [az login](/cli/azure/authenticate-azure-cli#interactive-log-in) an Azure an. 
+     
+     ```azurecli
+     az login
+     ```
+
+2. Verwenden Sie Folgendes, falls Sie für die Anmeldung einen Mandanten auswählen möchten:
+    
+     ```azurecli
+     az login --tenant <tenant>
+     ```
+
+3. Wenn Sie über mehrere Abonnements verfügen und ein bestimmtes Abonnement angeben möchten, können Sie Ihre Abonnementliste mit [az account list](/cli/azure/account#az-account-list) abrufen und den Befehl [az account set](/cli/azure/account#az-account-set) zum Angeben verwenden.
+     
+     ```azurecli
+     az account list
+     az account set --subscription "<subscription name or ID>"
+     ```
+
+4. Überprüfen Sie, welche Version installiert ist.
+     
+     ```azurecli
+        az --version
+     ``` 
+
+5. Lesen Sie die Informationen unter [Erste Schritte mit Azure CLI 2.0](/cli/azure/get-started-with-azure-cli), falls erforderlich. 
+
+## <a name="sample-powershell-scripts-for-azure-disk-encryption"></a>PowerShell-Beispielskripts für Azure Disk Encryption 
+
+- **Auflisten aller verschlüsselten VMs Ihres Abonnements**
+
+     ```azurepowershell-interactive
+     $osVolEncrypted = {(Get-AzureRmVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
+     $dataVolEncrypted= {(Get-AzureRmVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
+     Get-AzureRmVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
+     ```
+
+- **Auflisten aller Geheimnisse der Datenträgerverschlüsselung, die zum Verschlüsseln von VMs in einem Schlüsseltresor verwendet werden** 
+
+     ```azurepowershell-interactive
+     Get-AzureKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
+     ```
+
+## <a name="resource-manager-templates"></a>Resource Manager-Vorlagen
+
+- [Erstellen eines Schlüsseltresors](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create) 
+ 
+- [Enable disk encryption on new IaaS Windows VM from the Marketplace](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image) (Aktivieren der Datenträgerverschlüsselung auf einem neuen virtuellen Windows-IaaS-Computer über den Marketplace)
+    - Mit dieser Vorlage wird ein neuer verschlüsselter virtueller Windows-Computer erstellt, der das Windows Server 2012-Katalogimage verwendet.
+
+- [Deployment of RHEL 7.2 with full disk encryption](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel) (Bereitstellung von RHEL 7.2 mit vollständiger Datenträgerverschlüsselung)
+    - Mit dieser Vorlage wird eine vollständig verschlüsselte RHEL 7.2-VM in Azure erstellt, die über ein verschlüsseltes Betriebssystemlaufwerk mit 30 GB und ein RAID-0-Array mit 200 GB unter „/mnt/raidencrypted“ verfügt. Der Artikel mit den [häufig gestellten Fragen](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) enthält Informationen zu den unterstützten Linux-Serverdistributionen. 
+
+- [Enable disk encryption on a pre-encrypted VHD for Windows or Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-pre-encrypted-vm) (Aktivieren der Datenträgerverschlüsselung auf einer vorverschlüsselten VHD für Windows oder Linux)
+
+- [Enable disk encryption on existing or running IaaS Windows VMs](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm) (Aktivieren der Datenträgerverschlüsselung auf vorhandenen oder ausgeführten virtuellen Windows-IaaS-Computern)
+
+- [Enable disk encryption on an existing or running IaaS Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrt-running-linux-vm) (Aktivieren der Datenträgerverschlüsselung auf einem vorhandenen oder ausgeführten virtuellen Linux-IaaS-Computer)    
+
+- [Disable disk encryption on running Windows IaaS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm) (Deaktivieren der Datenträgerverschlüsselung auf ausgeführten virtuellen Windows-IaaS-Computern) 
+
+-  [Disable encryption on a running Linux VM](https://aka.ms/decrypt-linuxvm) (Deaktivieren der Verschlüsselung auf einem ausgeführten virtuellen Linux-Computer) 
+    - Die Deaktivierung der Verschlüsselung ist nur auf Datenvolumes für virtuelle Linux-Computer zulässig. 
+
+- [Create a new encrypted managed disk from a pre-encrypted VHD/storage blob](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk) (Erstellen eines neuen verschlüsselten verwalteten Datenträgers auf der Grundlage einer vorverschlüsselten VHD/eines Speicherblobs)
+    - Erstellt einen neuen verschlüsselten verwalteten Datenträger, wenn eine vorverschlüsselte VHD und die entsprechenden Verschlüsselungseinstellungen vorhanden sind.
+
+- [Create a new encrypted Windows IaaS Managed Disk VM from gallery image](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image-managed-disks) (Erstellen eines neuen verschlüsselten virtuellen Windows-IaaS-Computers mit verwaltetem Datenträger auf der Grundlage eines Katalogimages)
+    - Mit dieser Vorlage wird ein neuer verschlüsselter virtueller Windows-Computer mit verwalteten Datenträgern erstellt, indem das Windows Server 2012-Katalogimage verwendet wird.
+    
+
+## <a name="bkmk_preWin"></a> Vorbereiten einer vorverschlüsselten Windows-VHD
+Die folgenden Abschnitte sind erforderlich, um eine vorverschlüsselte Windows-VHD für die Bereitstellung als verschlüsselte VHD in Azure IaaS vorzubereiten. Verwenden Sie die Informationen, um einen neuen virtuellen Windows-Computers (VHD) in Azure Site Recovery oder Azure vorzubereiten und zu starten. Weitere Informationen zum Vorbereiten und Hochladen einer VHD finden Sie unter [Hochladen einer generalisierten VHD und Verwendung dieser zum Erstellen neuer VMs in Azure](../virtual-machines/windows/upload-generalized-managed.md).
+
+### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>Aktualisieren der Gruppenrichtlinie, um Schutz ohne TPM für das Betriebssystem zu ermöglichen
+Sie müssen die BitLocker-Gruppenrichtlinieneinstellung mit dem Namen **BitLocker-Laufwerkverschlüsselung** konfigurieren, die sich unter **Lokale Computerrichtlinie** > **Computerkonfiguration** > **Administrative Vorlagen** > **Windows-Komponenten** befindet. Ändern Sie diese Einstellung wie folgt: **Betriebssystemlaufwerke** > **Zusätzliche Authentifizierung beim Start anfordern** > **BitLocker ohne kompatibles TPM zulassen**. Dies wird in der folgenden Abbildung dargestellt:
+
+![Microsoft-Antischadsoftware in Azure](./media/azure-security-disk-encryption/disk-encryption-fig8.png)
+
+### <a name="install-bitlocker-feature-components"></a>Installieren der Komponenten der BitLocker-Funktion
+Verwenden Sie für Windows Server 2012 und höher den folgenden Befehl:
+
+    dism /online /Enable-Feature /all /FeatureName:BitLocker /quiet /norestart
+
+Verwenden Sie für Windows Server 2008 R2 den folgenden Befehl:
+
+    ServerManagerCmd -install BitLockers
+### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>Vorbereiten des Betriebssystemvolumes für BitLocker mit `bdehdcfg`
+Führen Sie den Befehl [bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment#using-bitlocker-to-encrypt-volumescommand) aus, falls erforderlich, um die Betriebssystempartition zu komprimieren und den Computer für BitLocker vorzubereiten:
+
+    bdehdcfg -target c: shrink -quiet 
+
+
+### <a name="protect-the-os-volume-by-using-bitlocker"></a>Schützen des Betriebssystemvolumes mit BitLocker
+Verwenden Sie den Befehl [`manage-bde`](https://technet.microsoft.com/library/ff829849.aspx), um die Verschlüsselung auf dem Startvolume mit einer externen Schlüsselschutzvorrichtung zu aktivieren. Platzieren Sie außerdem den externen Schlüssel (BEK-Datei) auf dem externen Laufwerk oder Volume. Die Verschlüsselung wird nach dem nächsten Neustart auf dem System-/Startvolume aktiviert.
+
+    manage-bde -on %systemdrive% -sk [ExternalDriveOrVolume]
+    reboot
+
+> [!NOTE]
+> Bereiten Sie den virtuellen Computer mit einer separaten Daten-/Ressourcen-VHD zum Abrufen des externen Schlüssels mit BitLocker vor.
+
+## <a name="bkmk_LinuxRunning"></a> Verschlüsseln eines Betriebssystemdatenträgers auf einer ausgeführten Linux-VM
+
+### <a name="prerequisites-for-os-disk-encryption"></a>Voraussetzungen für die Verschlüsselung des Betriebssystemdatenträgers
+
+* Die VM muss eine Distribution verwenden, die mit der Verschlüsselung von Betriebssystemdatenträgern kompatibel ist. Die infrage kommenden Distributionen werden unter [Häufig gestellte Fragen zu Azure Disk Encryption](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) aufgeführt. 
+* Die VM muss über ein Marketplace-Image im Azure Resource Manager erstellt werden.
+* Azure-VM mit mindestens 4 GB RAM (7 GB empfohlen).
+* (Für RHEL und CentOS) Deaktivieren Sie SELinux. Informationen zum Deaktivieren von SELinux finden Sie unter „4.4.2. Disabling SELinux“ (Deaktivieren von SELinux) im [SELinux User's and Administrator's Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) (SELinux-Handbuch für Benutzer und Administratoren) in der VM.
+* Die VM muss nach dem Deaktivieren von SELinux mindestens einmal neu gestartet werden.
+
+### <a name="steps"></a>Schritte
+1. Erstellen Sie eine VM mit einer der oben angegebenen Distributionen.
+
+ Für CentOS 7.2 wird die Verschlüsselung des Betriebssystemdatenträgers über ein spezielles Image unterstützt. Geben Sie zum Verwenden dieses Images beim Erstellen der VM „7.2n“ als SKU an:
+
+ ```powershell
+    Set-AzureRmVMSourceImage -VM $VirtualMachine -PublisherName "OpenLogic" -Offer "CentOS" -Skus "7.2n" -Version "latest"
+ ```
+2. Konfigurieren Sie die VM gemäß Ihren Anforderungen. Wenn Sie alle Datenträger (für Betriebssystem und Daten) verschlüsseln möchten, müssen die Datenträger für Daten angegeben und über „/etc/fstab“ bereitgestellt werden.
+
+ > [!NOTE]
+ > Verwenden Sie „UUID=...“, um Datenlaufwerke nicht über den Blockgerätnamen, z.B. „/dev/sdb1“, sondern unter „/etc/fstab“ anzugeben. Während der Verschlüsselung ändert sich die Reihenfolge der Laufwerke auf dem virtuellen Computer. Wenn für Ihren virtuellen Computer eine bestimmte Reihenfolge der Blockgeräte erforderlich ist, funktioniert die Bereitstellung nach der Verschlüsselung nicht mehr.
+
+3. Melden Sie sich bei den SSH-Sitzungen ab.
+
+4. Geben Sie zum Verschlüsseln des Betriebssystems für „volumeType“ die Option **All** oder **OS** an, wenn Sie die Verschlüsselung aktivieren.
+
+ > [!NOTE]
+ > Alle Prozesse des Benutzerbereichs, die nicht als `systemd`-Dienste ausgeführt werden, müssen per `SIGKILL` beendet werden. Starten Sie die VM neu. Planen Sie für den virtuellen Computer eine Downtime ein, wenn Sie die Verschlüsselung des Betriebssystemdatenträgers auf einem ausgeführten virtuellen Computer aktivieren.
+
+5. Überprüfen Sie den Fortschritt der Verschlüsselung in regelmäßigen Abständen, indem Sie die Anleitung im [nächsten Abschnitt](#monitoring-os-encryption-progress) befolgen.
+
+6. Wenn für „Get-AzureRmVmDiskEncryptionStatus“ der Status „VMRestartPending“ angezeigt wird, können Sie die VM neu starten, indem Sie sich entweder bei der VM anmelden oder die Anmeldung per Portal/PowerShell/CLI durchführen.
+    ```powershell
+    C:\> Get-AzureRmVmDiskEncryptionStatus  -ResourceGroupName $ResourceGroupName -VMName $VMName
+    -ExtensionName $ExtensionName
+
+    OsVolumeEncrypted          : VMRestartPending
+    DataVolumesEncrypted       : NotMounted
+    OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
+    ProgressMessage            : OS disk successfully encrypted, reboot the VM
+    ```
+Es wird empfohlen, vor dem Neustart die [Startdiagnose](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/) zu speichern.
+
+## <a name="monitoring-os-encryption-progress"></a>Überwachen des Fortschritts der Betriebssystemverschlüsselung
+Es gibt drei Möglichkeiten, den Fortschritt der Betriebssystemverschlüsselung zu überwachen:
+
+* Verwenden Sie das `Get-AzureRmVmDiskEncryptionStatus`-Cmdlet, und untersuchen Sie das Feld „ProgressMessage“:
+    ```powershell
+    OsVolumeEncrypted          : EncryptionInProgress
+    DataVolumesEncrypted       : NotMounted
+    OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
+    ProgressMessage            : OS disk encryption started
+    ```
+ Wenn die VM den Status „OS disk encryption started“ erreicht hat, dauert der Vorgang auf einer VM mit Premium-Speicher ca. 40 bis 50 Minuten.
+
+ Aufgrund von [Issue #388](https://github.com/Azure/WALinuxAgent/issues/388) in WALinuxAgent werden `OsVolumeEncrypted` und `DataVolumesEncrypted` in einigen Distributionen als `Unknown` angezeigt. Bei WALinuxAgent Version 2.1.5 und höher wird dieses Problem automatisch behoben. Falls Sie `Unknown` in der Ausgabe sehen, können Sie den Status der Datenverschlüsselung über den Azure-Ressourcen-Explorer überprüfen.
+
+ Wechseln Sie zum [Azure-Ressourcen-Explorer](https://resources.azure.com/), und erweitern Sie diese Hierarchie im Auswahlbereich auf der linken Seite:
+
+ ~~~~
+ |-- subscriptions
+     |-- [Your subscription]
+          |-- resourceGroups
+               |-- [Your resource group]
+                    |-- providers
+                         |-- Microsoft.Compute
+                              |-- virtualMachines
+                                   |-- [Your virtual machine]
+                                        |-- InstanceView
+~~~~                
+
+ Scrollen Sie unter „InstanceView“ nach unten, um den Verschlüsselungsstatus Ihrer Laufwerke anzuzeigen.
+
+ ![VM-Instanzanzeige](./media/azure-security-disk-encryption/vm-instanceview.png)
+
+* Sehen Sie sich die [Startdiagnose](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/) an. Meldungen der ADE-Erweiterung weisen das Präfix `[AzureDiskEncryption]` auf.
+
+* Melden Sie sich per SSH bei der VM an, und rufen Sie das Erweiterungsprotokoll ab:
+
+    /var/log/azure/Microsoft.Azure.Security.AzureDiskEncryptionForLinux
+
+ Es wird empfohlen, sich nicht bei der VM anzumelden, während die Betriebssystemverschlüsselung durchgeführt wird. Kopieren Sie die Protokolle nur dann, wenn die zwei weiteren Methoden nicht zum Erfolg geführt haben.
+
+## <a name="bkmk_preLinux"></a> Vorbereiten einer vorverschlüsselten Linux-VHD
+Die Vorbereitung für vorverschlüsselte VHDs kann je nach Distribution variieren. Es sind Beispiele zur Vorbereitung von [Ubuntu 16](#bkmk_Ubuntu), [openSUSE 13.2](#bkmk_openSUSE) und [CentOS 7](#bkmk_CentOS) verfügbar. 
+
+### <a name="bkmk_Ubuntu"></a> Ubuntu 16
+Konfigurieren Sie die Verschlüsselung während der Installation einer Distribution, indem Sie diese Schritte ausführen:
+
+1. Wählen Sie beim Partitionieren von Datenträgern die Option **Configure encrypted volumes** (Verschlüsselte Volumes konfigurieren).
+
+ ![Ubuntu 16.04-Setup](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig1.png)
+
+2. Erstellen Sie ein separates Startlaufwerk, das nicht verschlüsselt sein darf. Verschlüsseln Sie Ihr Stammlaufwerk.
+
+ ![Ubuntu 16.04-Setup](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig2.png)
+
+3. Geben Sie eine Passphrase an. Dies ist die Passphrase, die Sie in den Schlüsseltresor hochgeladen haben.
+
+ ![Ubuntu 16.04-Setup](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig3.png)
+
+4. Schließen Sie die Partitionierung ab.
+
+ ![Ubuntu 16.04-Setup](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig4.png)
+
+5. Beim Starten der VM werden Sie nach einer Passphrase gefragt. Verwenden Sie die Passphrase, die Sie in Schritt 3 angegeben haben.
+
+ ![Ubuntu 16.04-Setup](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
+
+6. Bereiten Sie die VM für das Hochladen in Azure anhand [dieser Anleitung](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/) vor. Führen Sie den letzten Schritt (das Aufheben der VM-Bereitstellung) noch nicht aus.
+
+Konfigurieren Sie die Verschlüsselung für Azure, indem Sie die folgenden Schritte ausführen:
+
+1. Erstellen Sie unter „/usr/local/sbin/azure_crypt_key.sh“ eine Datei mit dem Inhalt des folgenden Skripts. Achten Sie auf KeyFileName, da dies der von Azure verwendete Passphrasename ist.
+
+    ```
+    #!/bin/sh
+    MountPoint=/tmp-keydisk-mount
+    KeyFileName=LinuxPassPhraseFileName
+    echo "Trying to get the key from disks ..." >&2
+    mkdir -p $MountPoint
+    modprobe vfat >/dev/null 2>&1
+    modprobe ntfs >/dev/null 2>&1
+    sleep 2
+    OPENED=0
+    cd /sys/block
+    for DEV in sd*; do
+
+        echo "> Trying device: $DEV ..." >&2
+        mount -t vfat -r /dev/${DEV}1 $MountPoint >/dev/null||
+        mount -t ntfs -r /dev/${DEV}1 $MountPoint >/dev/null
+        if [ -f $MountPoint/$KeyFileName ]; then
+                cat $MountPoint/$KeyFileName
+                umount $MountPoint 2>/dev/null
+                OPENED=1
+                break
+        fi
+        umount $MountPoint 2>/dev/null
+    done
+
+      if [ $OPENED -eq 0 ]; then
+        echo "FAILED to find suitable passphrase file ..." >&2
+        echo -n "Try to enter your password: " >&2
+        read -s -r A </dev/console
+        echo -n "$A"
+     else
+        echo "Success loading keyfile!" >&2
+    fi
+```
+
+2. Ändern Sie die Verschlüsselungskonfiguration in */etc/crypttab*. Diese sollte wie folgt aussehen:
+ ```
+    xxx_crypt uuid=xxxxxxxxxxxxxxxxxxxxx none luks,discard,keyscript=/usr/local/sbin/azure_crypt_key.sh
+    ```
+
+3. Wenn Sie *azure_crypt_key.sh* in Windows bearbeitet und nach Linux kopiert haben, führen Sie `dos2unix /usr/local/sbin/azure_crypt_key.sh` aus.
+
+4. Fügen Sie dem Skript Berechtigungen für die Ausführung hinzu:
+ ```
+    chmod +x /usr/local/sbin/azure_crypt_key.sh
+ ```
+5. Bearbeiten Sie */etc/initramfs-tools/modules*, indem Sie Zeilen anfügen:
+ ```
+    vfat
+    ntfs
+    nls_cp437
+    nls_utf8
+    nls_iso8859-1
+```
+6. Führen Sie `update-initramfs -u -k all` zum Aktualisieren von „initramfs“ aus, damit `keyscript` wirksam wird.
+
+7. Nun können Sie die Bereitstellung des virtuellen Computers aufheben.
+
+ ![Ubuntu 16.04-Setup](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig6.png)
+
+8. Fahren Sie mit dem nächsten Schritt fort, und laden Sie Ihre VHD in Azure hoch.
+
+### <a name="bkmk_openSUSE"></a> openSUSE 13.2
+Konfigurieren Sie die Verschlüsselung während der Installation einer Distribution, indem Sie diese Schritte ausführen:
+1. Wählen Sie beim Partitionieren der Datenträger die Option **Encrypt Volume Group** (Volumegruppe verschlüsseln) aus, und geben Sie dann ein Kennwort ein. Dies ist das Kennwort, die Sie in Ihren Schlüsseltresor hochladen.
+
+ ![openSUSE 13.2-Setup](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
+
+2. Starten Sie die VM, indem Sie Ihr Kennwort verwenden.
+
+ ![openSUSE 13.2-Setup](./media/azure-security-disk-encryption/opensuse-encrypt-fig2.png)
+
+3. Bereiten Sie die VM für das Hochladen in Azure mithilfe der Anweisungen im Abschnitt zum [Vorbereiten einer SLES- oder openSUSE-VM für Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131) vor. Führen Sie den letzten Schritt (das Aufheben der VM-Bereitstellung) noch nicht aus.
+
+Konfigurieren Sie die Verschlüsselung für Azure, indem Sie die folgenden Schritte ausführen:
+1. Bearbeiten Sie die Datei „/etc/dracut.conf“, und fügen Sie die folgende Zeile hinzu:
+    ```
+    add_drivers+=" vfat ntfs nls_cp437 nls_iso8859-1"
+    ```
+2. Kommentieren Sie diese Zeilen am Ende der Datei „/usr/lib/dracut/modules.d/90crypt/module-setup.sh“ aus:
+ ```
+    #        inst_multiple -o \
+    #        $systemdutildir/system-generators/systemd-cryptsetup-generator \
+    #        $systemdutildir/systemd-cryptsetup \
+    #        $systemdsystemunitdir/systemd-ask-password-console.path \
+    #        $systemdsystemunitdir/systemd-ask-password-console.service \
+    #        $systemdsystemunitdir/cryptsetup.target \
+    #        $systemdsystemunitdir/sysinit.target.wants/cryptsetup.target \
+    #        systemd-ask-password systemd-tty-ask-password-agent
+    #        inst_script "$moddir"/crypt-run-generator.sh /sbin/crypt-run-generator
+ ```
+
+3. Fügen Sie die folgende Zeile am Anfang der Datei „/usr/lib/dracut/modules.d/90crypt/parse-crypt.sh“ an:
+ ```
+    DRACUT_SYSTEMD=0
+ ```
+Und ändern Sie alle Vorkommen von:
+ ```
+    if [ -z "$DRACUT_SYSTEMD" ]; then
+ ```
+in:
+```
+    if [ 1 ]; then
+```
+4. Bearbeiten Sie die Datei „/usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh“, und fügen Sie sie an „# Open LUKS device“ an:
+
+    ```
+    MountPoint=/tmp-keydisk-mount
+    KeyFileName=LinuxPassPhraseFileName
+    echo "Trying to get the key from disks ..." >&2
+    mkdir -p $MountPoint >&2
+    modprobe vfat >/dev/null >&2
+    modprobe ntfs >/dev/null >&2
+    for SFS in /dev/sd*; do
+    echo "> Trying device:$SFS..." >&2
+    mount ${SFS}1 $MountPoint -t vfat -r >&2 ||
+    mount ${SFS}1 $MountPoint -t ntfs -r >&2
+    if [ -f $MountPoint/$KeyFileName ]; then
+        echo "> keyfile got..." >&2
+        cp $MountPoint/$KeyFileName /tmp-keyfile >&2
+        luksfile=/tmp-keyfile
+        umount $MountPoint >&2
+        break
+    fi
+    done
+    ```
+5. Führen Sie `/usr/sbin/dracut -f -v` aus, um initrd zu aktualisieren.
+
+6. Nun können Sie die Bereitstellung der VM aufheben und Ihre VHD in Azure hochladen.
+
+### <a name="bkmk_CentOS"></a> CentOS 7
+Konfigurieren Sie die Verschlüsselung während der Installation einer Distribution, indem Sie diese Schritte ausführen:
+1. Wählen Sie beim Partitionieren von Datenträgern die Option **Encrypt my data** (Daten verschlüsseln).
+
+ ![CentOS 7-Setup](./media/azure-security-disk-encryption/centos-encrypt-fig1.png)
+
+2. Stellen Sie sicher, dass für die Stammpartition die Option **Encrypt** (Verschlüsseln) ausgewählt ist.
+
+ ![CentOS 7-Setup](./media/azure-security-disk-encryption/centos-encrypt-fig2.png)
+
+3. Geben Sie eine Passphrase an. Dies ist die Passphrase, die Sie in Ihren Schlüsseltresor hochladen.
+
+ ![CentOS 7-Setup](./media/azure-security-disk-encryption/centos-encrypt-fig3.png)
+
+4. Beim Starten der VM werden Sie nach einer Passphrase gefragt. Verwenden Sie die Passphrase, die Sie in Schritt 3 angegeben haben.
+
+ ![CentOS 7-Setup](./media/azure-security-disk-encryption/centos-encrypt-fig4.png)
+
+5. Bereiten Sie die VM für das Hochladen in Azure mithilfe der Anweisungen zu CentOS 7.0+ im Abschnitt zum [Vorbereiten einer CentOS-basierten VM für Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70) vor. Führen Sie den letzten Schritt (das Aufheben der VM-Bereitstellung) noch nicht aus.
+
+6. Nun können Sie die Bereitstellung der VM aufheben und Ihre VHD in Azure hochladen.
+
+Konfigurieren Sie die Verschlüsselung für Azure, indem Sie die folgenden Schritte ausführen:
+
+1. Bearbeiten Sie die Datei „/etc/dracut.conf“, und fügen Sie die folgende Zeile hinzu:
+    ```
+    add_drivers+=" vfat ntfs nls_cp437 nls_iso8859-1"
+    ```
+
+2. Kommentieren Sie diese Zeilen am Ende der Datei „/usr/lib/dracut/modules.d/90crypt/module-setup.sh“ aus:
+```
+    #        inst_multiple -o \
+    #        $systemdutildir/system-generators/systemd-cryptsetup-generator \
+    #        $systemdutildir/systemd-cryptsetup \
+    #        $systemdsystemunitdir/systemd-ask-password-console.path \
+    #        $systemdsystemunitdir/systemd-ask-password-console.service \
+    #        $systemdsystemunitdir/cryptsetup.target \
+    #        $systemdsystemunitdir/sysinit.target.wants/cryptsetup.target \
+    #        systemd-ask-password systemd-tty-ask-password-agent
+    #        inst_script "$moddir"/crypt-run-generator.sh /sbin/crypt-run-generator
+```
+
+3. Fügen Sie die folgende Zeile am Anfang der Datei „/usr/lib/dracut/modules.d/90crypt/parse-crypt.sh“ an:
+```
+    DRACUT_SYSTEMD=0
+```
+Und ändern Sie alle Vorkommen von:
+```
+    if [ -z "$DRACUT_SYSTEMD" ]; then
+```
+in:
+```
+    if [ 1 ]; then
+```
+4. Bearbeiten Sie die Datei „/usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh“, und fügen Sie sie nach „# Open LUKS device“ an:
+    ```
+    MountPoint=/tmp-keydisk-mount
+    KeyFileName=LinuxPassPhraseFileName
+    echo "Trying to get the key from disks ..." >&2
+    mkdir -p $MountPoint >&2
+    modprobe vfat >/dev/null >&2
+    modprobe ntfs >/dev/null >&2
+    for SFS in /dev/sd*; do
+    echo "> Trying device:$SFS..." >&2
+    mount ${SFS}1 $MountPoint -t vfat -r >&2 ||
+    mount ${SFS}1 $MountPoint -t ntfs -r >&2
+    if [ -f $MountPoint/$KeyFileName ]; then
+        echo "> keyfile got..." >&2
+        cp $MountPoint/$KeyFileName /tmp-keyfile >&2
+        luksfile=/tmp-keyfile
+        umount $MountPoint >&2
+        break
+    fi
+    done
+    ```    
+5. Führen Sie „/usr/sbin/dracut -f -v“ aus, um initrd zu aktualisieren.
+
+![CentOS 7-Setup](./media/azure-security-disk-encryption/centos-encrypt-fig5.png)
+
+## <a name="bkmk_UploadVHD"></a> Hochladen einer verschlüsselten VHD in ein Azure-Speicherkonto
+Nachdem die BitLocker- oder DM-Crypt-Verschlüsselung aktiviert wurde, muss die lokale verschlüsselte VHD in Ihr Speicherkonto hochgeladen werden.
+```powershell
+    Add-AzureRmVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
+```
+## <a name="bkmk_UploadSecret"></a> Hochladen des Geheimnisses für den vorverschlüsselten virtuellen Computer in Ihren Schlüsseltresor
+Das zuvor abgerufene Geheimnis der Datenträgerverschlüsselung muss als Geheimnis in den Schlüsseltresor hochgeladen werden. Der Schlüsseltresor muss für die Datenverschlüsselung aktiviert sein und über Berechtigungen für Ihren Azure AD-Client verfügen.
+
+```powershell 
+ $AadClientId = "My-AAD-Client-Id"
+ $AadClientSecret = "My-AAD-Client-Secret"
+
+ $key vault = New-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -Location $Location
+
+ Set-AzureRmKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -ServicePrincipalName $AadClientId -PermissionsToKeys all -PermissionsToSecrets all
+ Set-AzureRmKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -EnabledForDiskEncryption
+``` 
+
+### <a name="bkmk_SecretnoKEK"></a> Geheimnis der Datenträgerverschlüsselung ohne Verschlüsselung per KEK
+Verwenden Sie [Set-AzureKeyVaultSecret](/powershell/module/azurerm.keyvault/set-azurekeyvaultsecret), um das Geheimnis im Schlüsseltresor einzurichten. Im Falle eines virtuellen Windows-Computers wird die BEK-Datei als Base64-Zeichenfolge codiert und dann mit dem `Set-AzureKeyVaultSecret`-Cmdlet in den Schlüsseltresor hochgeladen. Für Linux wird die Passphrase als Base64-Zeichenfolge codiert und dann in den Schlüsseltresor hochgeladen. Stellen Sie außerdem sicher, dass die folgenden Tags festgelegt sind, während das Geheimnis im Schlüsseltresor erstellt wird.
+
+```powershell
+
+ # This is the passphrase that was provided for encryption during the distribution installation
+ $passphrase = "contoso-password"
+
+ $tags = @{"DiskEncryptionKeyEncryptionAlgorithm" = "RSA-OAEP"; "DiskEncryptionKeyFileName" = "LinuxPassPhraseFileName"}
+ $secretName = [guid]::NewGuid().ToString()
+ $secretValue = [Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($passphrase))
+ $secureSecretValue = ConvertTo-SecureString $secretValue -AsPlainText -Force
+
+ $secret = Set-AzureKeyVaultSecret -VaultName $KeyVaultName -Name $secretName -SecretValue $secureSecretValue -tags $tags
+ $secretUrl = $secret.Id
+```
+
+
+Verwenden Sie im nächsten Schritt `$secretUrl`, um [den Betriebssystemdatenträger ohne KEK anzufügen](#bkmk_URLnoKEK).
+
+### <a name="bkmk_SecretKEK"></a> Geheimnis der Datenträgerverschlüsselung mit Verschlüsselung per KEK
+Das Geheimnis kann optional mit einem KEK verschlüsselt werden, bevor er in den Schlüsseltresor hochgeladen wird. Verwenden Sie die Wrapper-[API](https://msdn.microsoft.com/library/azure/dn878066.aspx), um das Geheimnis zuerst mit dem KEK zu verschlüsseln. Die Ausgabe dieses Wrapper-Vorgangs ist eine Base64-codierte URL-Zeichenfolge, die dann als Geheimnis mit dem [`Set-AzureKeyVaultSecret`](/powershell/module/azurerm.keyvault/set-azurekeyvaultsecret)-Cmdlet hochgeladen wird.
+
+```powershell
+    # This is the passphrase that was provided for encryption during the distribution installation
+    $passphrase = "contoso-password"
+
+    Add-AzureKeyVaultKey -VaultName $KeyVaultName -Name "keyencryptionkey" -Destination Software
+    $KeyEncryptionKey = Get-AzureKeyVaultKey -VaultName $KeyVault.OriginalVault.Name -Name "keyencryptionkey"
+
+    $apiversion = "2015-06-01"
+
+    ##############################
+    # Get Auth URI
+    ##############################
+
+    $uri = $KeyVault.VaultUri + "/keys"
+    $headers = @{}
+
+    $response = try { Invoke-RestMethod -Method GET -Uri $uri -Headers $headers } catch { $_.Exception.Response }
+
+    $authHeader = $response.Headers["www-authenticate"]
+    $authUri = [regex]::match($authHeader, 'authorization="(.*?)"').Groups[1].Value
+
+    Write-Host "Got Auth URI successfully"
+
+    ##############################
+    # Get Auth Token
+    ##############################
+
+    $uri = $authUri + "/oauth2/token"
+    $body = "grant_type=client_credentials"
+    $body += "&client_id=" + $AadClientId
+    $body += "&client_secret=" + [Uri]::EscapeDataString($AadClientSecret)
+    $body += "&resource=" + [Uri]::EscapeDataString("https://vault.azure.net")
+    $headers = @{}
+
+    $response = Invoke-RestMethod -Method POST -Uri $uri -Headers $headers -Body $body
+
+    $access_token = $response.access_token
+
+    Write-Host "Got Auth Token successfully"
+
+    ##############################
+    # Get KEK info
+    ##############################
+
+    $uri = $KeyEncryptionKey.Id + "?api-version=" + $apiversion
+    $headers = @{"Authorization" = "Bearer " + $access_token}
+
+    $response = Invoke-RestMethod -Method GET -Uri $uri -Headers $headers
+
+    $keyid = $response.key.kid
+
+    Write-Host "Got KEK info successfully"
+
+    ##############################
+    # Encrypt passphrase using KEK
+    ##############################
+
+    $passphraseB64 = [Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($Passphrase))
+    $uri = $keyid + "/encrypt?api-version=" + $apiversion
+    $headers = @{"Authorization" = "Bearer " + $access_token; "Content-Type" = "application/json"}
+    $bodyObj = @{"alg" = "RSA-OAEP"; "value" = $passphraseB64}
+    $body = $bodyObj | ConvertTo-Json
+
+    $response = Invoke-RestMethod -Method POST -Uri $uri -Headers $headers -Body $body
+
+    $wrappedSecret = $response.value
+
+    Write-Host "Encrypted passphrase successfully"
+
+    ##############################
+    # Store secret
+    ##############################
+
+    $secretName = [guid]::NewGuid().ToString()
+    $uri = $KeyVault.VaultUri + "/secrets/" + $secretName + "?api-version=" + $apiversion
+    $secretAttributes = @{"enabled" = $true}
+    $secretTags = @{"DiskEncryptionKeyEncryptionAlgorithm" = "RSA-OAEP"; "DiskEncryptionKeyFileName" = "LinuxPassPhraseFileName"}
+    $headers = @{"Authorization" = "Bearer " + $access_token; "Content-Type" = "application/json"}
+    $bodyObj = @{"value" = $wrappedSecret; "attributes" = $secretAttributes; "tags" = $secretTags}
+    $body = $bodyObj | ConvertTo-Json
+
+    $response = Invoke-RestMethod -Method PUT -Uri $uri -Headers $headers -Body $body
+
+    Write-Host "Stored secret successfully"
+
+    $secretUrl = $response.id
+```
+
+Verwenden Sie im nächsten Schritt `$KeyEncryptionKey` und `$secretUrl`, um den [ Betriebssystemdatenträger mit KEK](#BKMK_URLKEK) anzufügen.
+
+##  <a name="bkmk_SecretURL"></a> Angeben einer Geheimnis-URL beim Anfügen eines Betriebssystemdatenträgers
+
+###  <a name="bkmk_URLnoKEK"></a>Ohne KEK
+Beim Anfügen des Betriebssystemdatenträgers muss `$secretUrl` übergeben werden. Die URL wurde im Abschnitt „Geheimnis der Datenträgerverschlüsselung ohne Verschlüsselung per KEK“ generiert.
+```powershell
+    Set-AzureRmVMOSDisk `
+            -VM $VirtualMachine `
+            -Name $OSDiskName `
+            -SourceImageUri $VhdUri `
+            -VhdUri $OSDiskUri `
+            -Linux `
+            -CreateOption FromImage `
+            -DiskEncryptionKeyVaultId $KeyVault.ResourceId `
+            -DiskEncryptionKeyUrl $SecretUrl
+```
+### <a name="bkmk_URLKEK"></a>Mit KEK
+Beim Anfügen des Betriebssystemdatenträgers müssen `$KeyEncryptionKey` und `$secretUrl` übergeben werden. Die URL wurde im Abschnitt „Geheimnis der Datenträgerverschlüsselung mit Verschlüsselung per KEK“ generiert.
+```powershell
+    Set-AzureRmVMOSDisk `
+            -VM $VirtualMachine `
+            -Name $OSDiskName `
+            -SourceImageUri $CopiedTemplateBlobUri `
+            -VhdUri $OSDiskUri `
+            -Linux `
+            -CreateOption FromImage `
+            -DiskEncryptionKeyVaultId $KeyVault.ResourceId `
+            -DiskEncryptionKeyUrl $SecretUrl `
+            -KeyEncryptionKeyVaultId $KeyVault.ResourceId `
+            -KeyEncryptionKeyURL $KeyEncryptionKey.Id
+```

@@ -35,7 +35,7 @@ So könnte *table* ein Tisch zum Arbeiten (oder ein 2D-Layout von Zahlen) sein, 
 | ) | Schließende Klammer | ) ] } |
 | dann | Komma | dann |
 | -- | Gedankenstrich | -- |
-| zu erstellen und zu verwalten. | Satzendezeichen | zu erstellen und zu verwalten. ! ? |
+| . | Satzendezeichen | . ! ? |
 | : | Doppelpunkt oder Auslassungszeichen | : ; ... |
 | CC | Konjunktion, gleichordnend | and, but, or, yet|
 | CD | Kardinalzahl | nine, 20, 1980, '96 |
