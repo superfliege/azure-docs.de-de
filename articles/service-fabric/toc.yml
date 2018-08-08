@@ -553,8 +553,8 @@
                   href: service-fabric-cluster-scale-up-down.md
                 - name: Programmgesteuertes horizontales Hochskalieren
                   href: service-fabric-cluster-programmatic-scaling.md
-                - name: Skalieren oder Upgraden der virtuellen Computer des primären Knotentyps
-                  href: service-fabric-cluster-upgrade-primary-nodetype-vm.md
+                - name: Horizontales Hochskalieren des Knotentyps der VM-Skalierungsgruppe
+                  href: virtual-machine-scale-set-scale-node-type-scale-out.md
             - name: Upgrade
               href: service-fabric-cluster-upgrade.md
             - name: Festlegen der Zugriffssteuerung

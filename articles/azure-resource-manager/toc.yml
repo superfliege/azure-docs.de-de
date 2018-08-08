@@ -16,7 +16,6 @@
     - name: Erstellen von Vorlagen – Visual Studio
       href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
 - name: Tutorials
-  expanded: true
   items:
     - name: Erstellen eines verschlüsselten Speicherkontos
       href: resource-manager-tutorial-create-encrypted-storage-accounts.md
@@ -52,10 +51,12 @@
               href: resource-manager-templates-outputs.md
         - name: Verknüpfte und geschachtelte Vorlagen
           href: resource-group-linked-templates.md
-        - name: Definieren der Abhängigkeit zwischen Ressourcen
+        - name: Ressourcenabhängigkeiten
           href: resource-group-define-dependencies.md
         - name: Erstellen mehrerer Instanzen
           href: resource-group-create-multiple.md
+        - name: Erstellen einer Ressourcengruppe in einer Vorlage
+          href: create-resource-group-in-template.md
         - name: Aktualisieren von Ressourcen
           href: /azure/architecture/building-blocks/extending-templates/update-resource
     - name: Bereitstellen

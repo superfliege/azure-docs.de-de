@@ -176,6 +176,8 @@
               href: howto-mfa-nps-extension-errors.md
     - name: Problembehandlung
       items:
+        - name: Deaktivieren der zusammengeführten Registrierung
+          href: howto-registration-mfa-sspr-converged-troubleshoot.md
         - name: Problembehandlung bei SSPR
           href: active-directory-passwords-troubleshoot.md
         - name: Häufig gestellte Fragen zu SSPR
