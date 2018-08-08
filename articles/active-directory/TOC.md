@@ -171,12 +171,13 @@
 #### [Planen der Azure AD-Einbindung](devices/azureadjoin-plan.md)
 #### [Planen der Implementierung Ihrer Azure AD-Hybrideinbindung](devices/hybrid-azuread-join-plan.md)
 #### [Steuern der Azure AD-Hybrideinbindung für Ihre Geräte](devices/hybrid-azuread-join-control.md)
+#### [Zuweisen lokaler Administratoren zu in Azure AD eingebundenen Geräten](devices/assign-local-admin.md)
 #### [Problembehandlung für in Azure AD eingebundene aktuelle Windows-Hybridgeräte](devices/troubleshoot-hybrid-join-windows-current.md)
 #### [Problembehandlung für in Azure AD eingebundene ältere Windows-Hybridgeräte](devices/troubleshoot-hybrid-join-windows-legacy.md)
 
 ### Konzepte
-### [Verwalten von Geräten mithilfe des Azure-Portals](devices/device-management-azure-portal.md)
-### [Häufig gestellte Fragen](devices/faq.md)
+#### [Verwalten von Geräten mithilfe des Azure-Portals](devices/device-management-azure-portal.md)
+#### [Häufig gestellte Fragen](devices/faq.md)
 
 ## Verwalten von Apps
 ### [Übersicht](manage-apps/what-is-application-management.md)
@@ -403,30 +404,30 @@
 ### [Bedingter Zugriff](active-directory-conditional-access-azure-portal.md)
 #### [Erste Schritte](active-directory-conditional-access-azure-portal-get-started.md)
 #### Schnellstarts
-##### [Konfigurieren der Cloud-App-spezifischen MFA](active-directory-conditional-access-app-based-mfa.md)
-##### [Festlegen, dass die Nutzungsbedingungen akzeptiert werden müssen](active-directory-conditional-access-tou.md)
-##### [Blockieren des Zugriffs bei erkanntem Sitzungsrisiko](active-directory-conditional-access-app-sign-in-risk.md)
+##### [Konfigurieren der Cloud-App-spezifischen MFA](conditional-access/app-based-mfa.md)
+##### [Festlegen, dass die Nutzungsbedingungen akzeptiert werden müssen](conditional-access/require-tou.md)
+##### [Blockieren des Zugriffs bei erkanntem Sitzungsrisiko](conditional-access/app-sign-in-risk.md)
 #### Tutorials
-##### [Migrieren der klassischen MFA-Richtlinie](active-directory-conditional-access-migration-mfa.md)
+##### [Migrieren der klassischen MFA-Richtlinie](conditional-access/policy-migration-mfa.md)
 #### Konzepte
-##### [Baselineschutz](active-directory-conditional-access-baseline-protection.md)
-##### [Bedingungen](active-directory-conditional-access-conditions.md)
-##### [Standortbedingungen](active-directory-conditional-access-locations.md)
-##### [Kontrollen](active-directory-conditional-access-controls.md)
-##### [Was-wäre-wenn-Tool](active-directory-conditional-access-whatif.md)
+##### [Baselineschutz](conditional-access/baseline-protection.md)
+##### [Bedingungen](conditional-access/conditions.md)
+##### [Standortbedingungen](conditional-access/location-condition.md)
+##### [Kontrollen](conditional-access/controls.md)
+##### [Was-wäre-wenn-Tool](conditional-access/what-if-tool.md)
 ##### [Grundlegendes zu Geräterichtlinien für Office 365-Dienste](active-directory-conditional-access-device-policies.md)
 #### Anleitungen
-##### [bewährten Methoden](active-directory-conditional-access-best-practices.md)
+##### [bewährten Methoden](conditional-access/best-practices.md)
 ##### [Konfigurieren von Richtlinien für bedingten Zugriff für Zugriffsversuche von nicht vertrauenswürdigen Netzwerken](active-directory-conditional-access-untrusted-networks.md)
 ##### [Einrichten des gerätebasierten bedingten Zugriffs](active-directory-conditional-access-policy-connected-applications.md)
 ##### [Einrichten des App-basierten bedingten Zugriffs](active-directory-conditional-access-mam.md)
 ##### [Angeben von Nutzungsbedingungen für Benutzer und Apps](active-directory-tou.md)
-##### [Migrieren von klassischen Richtlinien](active-directory-conditional-access-migration.md)
+##### [Migrieren von klassischen Richtlinien](conditional-access/policy-migration.md)
 ##### [Einrichten der VPN-Konnektivität](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/always-on-vpn-deploy)
 ##### [Einrichten von SharePoint und Exchange Online](active-directory-conditional-access-no-modern-authentication.md)
 ##### [Problembehandlung](active-directory-conditional-access-device-remediation.md)
 #### [Technische Referenz](active-directory-conditional-access-technical-reference.md)
-#### [Häufig gestellte Fragen](active-directory-conditional-faqs.md)
+#### [Häufig gestellte Fragen](conditional-access/faqs.md)
 
 ### Zertifikatbasierte Authentifizierung
 #### [Android](active-directory-certificate-based-authentication-android.md)

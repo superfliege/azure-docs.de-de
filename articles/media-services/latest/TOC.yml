@@ -39,6 +39,8 @@
       items:
         - name: Übersicht
           href: content-protection-overview.md
+        - name: Multi-DRM-System mit Zugriffssteuerung
+          href: design-multi-drm-system-with-access-control.md
     - name: Codieren
       items:
         - name: Übersicht
