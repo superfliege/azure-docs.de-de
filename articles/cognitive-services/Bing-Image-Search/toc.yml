@@ -47,8 +47,6 @@
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Image+Search'
 - name: Anleitungen
   items:
-    - name: Verwenden und Anzeigen von Ergebnissen
-      href: UseAndDisplayRequirements.md
     - name: Abrufen von Bildauswertungen
       href: image-insights.md
     - name: Abrufen von GIF-Bildern
@@ -67,7 +65,7 @@
       href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference'
     - name: Bing-Bildersuche-API v5
       href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference'
-- name: Ressourcen
+- name: angeben
   items:
     - name: Häufig gestellte Fragen
       href: bing-image-search-resource-faq.md
@@ -91,5 +89,7 @@
       href: image-search-endpoint.md
     - name: Unterstützte Länder und Märkte
       href: supported-countries-markets.md
+    - name: Verwenden und Anzeigen von Anforderungen
+      href: UseAndDisplayRequirements.md
     - name: Analysen für Bing-Bildersuche-API
       href: bing-image-stats.md

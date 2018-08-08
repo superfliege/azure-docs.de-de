@@ -9,6 +9,7 @@
   items:
     - name: Erstellen eines Jenkins-Servers
       href: /azure/jenkins/install-jenkins-solution-template
+      maintainContext: true
 - name: Tutorials
   items:
     - name: CI/CD in App Service
